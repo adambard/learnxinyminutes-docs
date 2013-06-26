@@ -12,6 +12,16 @@ Make a new file, send a pull request, and if it passes muster I'll get it up pro
 Remember to fill in the author and author\_url fields so you get credited
 properly!
 
+### Requests
+
+The most requested languages are:
+
+* Scala
+* Python
+* Javascript
+
+... but there are many more requests to do "every language", so don't let that stop you.
+
 ## License
 
 Contributors remain copyright to their work, and can request removal at any time.
