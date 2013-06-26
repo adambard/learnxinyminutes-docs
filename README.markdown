@@ -12,4 +12,12 @@ Make a new file, send a pull request, and if it passes muster I'll get it up pro
 Remember to fill in the author and author\_url fields so you get credited
 properly!
 
+## License
 
+Contributors remain copyright to their work, and can request removal at any time.
+By uploading a doc here, you agree to publish your work under the default
+[Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US)
+licensing included on each doc page.
+
+Anything not covered by the above -- basically, this README -- you can use
+as you wish, I guess.
