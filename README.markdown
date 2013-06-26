@@ -1,8 +1,3 @@
----
-noindex: true
-layout: home
----
-
 # Learn X in Y minutes
 
 Whirlwind tours of (several, hopefully many someday) popular and
