@@ -388,34 +388,29 @@ g()  -- Prints out 343; nothing printed before now.
 
 --]]
 
-----------------------------------------------------
--- 5. References.
-----------------------------------------------------
-
---[[
+```
+## References
 
 I was excited to learn Lua so I could make games
-with the Love 2D game engine. That's the why.
+with the <a href="http://love2d.org/">Love 2D game engine</a>. That's the why.
 
-I started with BlackBulletIV's Lua for programmers.
-Next I read the official Programming in Lua book.
+I started with <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
+Next I read the official <a href="http://www.lua.org/pil/contents.html">Programming in Lua</a> book.
 That's the how.
 
-It might be helpful to check out the Lua short
-reference on lua-users.org.
+It might be helpful to check out the <a href="http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">Lua short
+reference</a> on lua-users.org.
 
 The main topics not covered are standard libraries:
- * string library
- * table library
- * math library
- * io library
- * os library
 
-By the way, this entire file is valid Lua; save it
+* <a href="http://lua-users.org/wiki/StringLibraryTutorial">string library</a>
+* <a href="http://lua-users.org/wiki/TableLibraryTutorial">table library</a>
+* <a href="http://lua-users.org/wiki/MathLibraryTutorial">math library</a>
+* <a href="http://lua-users.org/wiki/IoLibraryTutorial">io library</a>
+* <a href="http://lua-users.org/wiki/OsLibraryTutorial">os library</a>
+
+By the way, the entire file is valid Lua; save it
 as learn.lua and run it with "lua learn.lua" !
 
 This was first written for tylerneylon.com, and is
-also available as a github gist. Have fun with Lua!
-
---]]
-```
+also available as a <a href="https://gist.github.com/tylerneylon/5853042">github gist</a>. Have fun with Lua!
