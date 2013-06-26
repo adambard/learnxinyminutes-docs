@@ -1,9 +1,16 @@
 ---
 language: clojure
 author: Adam Bard
+author_url: http://adambard.com/
 ---
 
-Clojure is rad
+Clojure is a variant of LISP developed for the Java Virtual Machine. It has
+a much stronger emphasis on pure [functional programming](https://en.wikipedia.org/wiki/Functional_programming) than
+Common Lisp, but includes several [STM](https://en.wikipedia.org/wiki/Software_transactional_memory) utilities to handle
+state as it comes up.
+
+This combination allows it to handle concurrent processing very simply,
+and often automatically.
 
 ```clojure
 ; Comments start with semicolons.
