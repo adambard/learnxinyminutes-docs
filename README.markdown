@@ -1,4 +1,4 @@
-# Learn X in Y minutes
+# [Learn X in Y minutes](http://learnxinyminutes.com)
 
 Whirlwind tours of (several, hopefully many someday) popular and
 ought-to-be-more-popular programming languages, presented as valid,
