@@ -34,6 +34,10 @@ to Python 2.x. Look for another tour of Python 3 soon!
 # automatically.
 11 / 4 #=> 2
 
+# To fix division we need to learn about floats.
+2.0     # This is a float
+5.0 / 2.0 #=> 2.5 ahhh...much better
+
 # Enforce precedence with parentheses
 (1 + 3) * 2 #=> 8
 
@@ -90,13 +94,26 @@ li.append(1)    #li is now [1]
 li.append(2)    #li is now [1, 2]
 li.append(4)    #li is now [1, 2, 4]
 li.append(3)    #li is now [1, 2, 4, 3]
+# Remove from the end with pop
+li.pop()        #=> 3 and li is now [1, 2, 4]
+# Let's put it back
+li.append(3)    # li is now [1, 2, 4, 3] again.
 
 # Access a list like you would any array
 li[0] #=> 1
+# Look at the last element
+li[-1] #=> 4
 # Looking out of bounds is an IndexError
 li[4] # Raises an IndexError
 
-# Remove elements from a list with del
+# You can look at ranges with slice syntax. It's an closed/open range for you mathy types.
+li[1:3] #=> [2, 4]
+# Omit the beginning
+li[:3] #=> [1, 2, 4]
+# Omit the end
+li[2:] #=> [4, 3]
+
+# Remove arbitrary elements from a list with del
 del li[2] # li is now [1, 2, 3]
 
 # You can add lists
@@ -111,10 +128,23 @@ li.extend(other_li) # Now li is [1, 2, 3, 4, 5, 6]
 # Examine the length with len
 len(li) #=> 6
 
-# Tuples are like lists but are immutable
+# Tuples are like lists but are immutable.
 tup = (1, 2, 3)
 tup[0] #=> 1
 tup[0] = 3  # Raises a TypeError
+
+# You can do all those list thingies on tuples too
+len(tup) #=> 3
+tup + (4, 5, 6) #=> (1, 2, 3, 4, 5, 6)
+tup[:2] #=> (1, 2)
+2 in tup #=> True
+
+# However, you can unpack tuples into variables
+a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
+# Tuples are created by default if you leave out the parentheses
+d, e, f = 4, 5, 6
+# Now look how easy it is to swap to values
+e, d = d, e     # d is now 5 and e is now 4
 
 
 # Dictionaries store mappings
@@ -150,9 +180,10 @@ filled_set.add(5) # filled_set is now set([1, 2, 3, 4, 5])
 # Do set intersection with &
 other_set = set([3, 4, 5 ,6])
 filled_set & other_set #=> set([3, 4, 5])
-
 # Do set union with |
 filled_set | other_set #=> set([1, 2, 3, 4, 5, 6])
+# Do set difference with -
+set([1,2,3,4]) - set([2,3,5]) #=> set([1, 4])
 
 # Check for existence in a set with in
 2 in filled_set #=> True
@@ -221,7 +252,7 @@ add(5, 6) #=> 11 and prints out "x is 5 and y is 6"
 # Another way to call functions is with keyword arguments
 add(y=6, x=5)   # Keyword arguments can arrive in any order.
 
-# You can define functions that take a variable number of arguments
+# You can define functions that take a variable number of positional arguments
 def varargs(*args):
     return args
 
@@ -271,7 +302,7 @@ class Human(object):
         # Assign the argument to the instance's name attribute
         self.name = name
 
-    # A method. All methods take self as the first argument
+    # An instance method. All methods take self as the first argument
     def say(self, msg):
        return "%s: %s" % (self.name, msg)
 
@@ -281,26 +312,26 @@ class Human(object):
     def get_species(cls):
         return cls.species
 
-    # Static methods are called without a class or instance reference
+    # A static method is called without a class or instance reference
     @staticmethod
     def grunt():
         return "*grunt*"
 
 
 # Instantiate a class
-h = Human(name="Harry")
-print h.say("hi")     # prints out "Harry: hi"
+i = Human(name="Ian")
+print i.say("hi")     # prints out "Ian: hi"
 
-i = Human("Ian")
-print i.say("hello")  #prints out "Ian: hello"
+j = Human("Joel")
+print j.say("hello")  #prints out "Joel: hello"
 
 # Call our class method
-h.get_species() #=> "H. sapiens"
+i.get_species() #=> "H. sapiens"
 
 # Change the shared attribute
-h.species = "H. neanderthalensis"
-h.get_species() #=> "H. neanderthalensis"
+i.species = "H. neanderthalensis"
 i.get_species() #=> "H. neanderthalensis"
+j.get_species() #=> "H. neanderthalensis"
 
 # Call the static method
 Human.grunt() #=> "*grunt*"
