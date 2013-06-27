@@ -24,7 +24,7 @@ The most requested languages are:
 
 ## License
 
-Contributors remain copyright to their work, and can request removal at any time.
+Contributors retain copyright to their work, and can request removal at any time.
 By uploading a doc here, you agree to publish your work under the default
 [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US)
 licensing included on each doc page.
