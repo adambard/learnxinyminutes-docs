@@ -43,8 +43,8 @@ $integer = 0123; // octal number (equivalent to 83 decimal)
 $integer = 0x1A; // hexadecimal number (equivalent to 26 decimal)
 
 // Floats (aka doubles)
-$float = 1.234; 
-$float = 1.2e3; 
+$float = 1.234;
+$float = 1.2e3;
 $float = 7E-10;
 
 // Arithmetic
@@ -74,7 +74,7 @@ $sgl_quotes
 END; // Nowdoc syntax is available in PHP 5.3.0
 
 // Manipulation
-$concatinated = $sgl_quotes + $dbl_quotes;
+$concatenated = $sgl_quotes + $dbl_quotes;
 ```
 
 ### Compound
@@ -237,7 +237,7 @@ while ($i < 5) {
     if ($i == 3) {
     	break; // Exit out of the while loop and continue.
     }
-    
+
 	echo $i++;
 }
 
@@ -247,7 +247,7 @@ while ($i < 5) {
 	if ($i == 3) {
     	continue; // Skip this iteration of the loop
     }
-    
+
 	echo $i++;
 }
 ```
@@ -338,11 +338,11 @@ Classes are insantiated with the ```new``` keyword. Functions are referred to as
 class MyClass {
 	function myFunction() {
     }
-    
+
     function function youCannotOverrideMe()
     {
     }
-    
+
     public static function myStaticMethod()
     {
     }
@@ -362,12 +362,12 @@ PHP offers some [magic methods](http://www.php.net/manual/en/language.oop5.magic
 ```php
 class MyClass {
 	private $property;
-    
+
     public function __get($key)
     {
     	return $this->$key;
     }
-    
+
     public function __set($key, $value)
     {
     	$this->$key = $value;
