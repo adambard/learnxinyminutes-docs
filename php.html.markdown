@@ -330,7 +330,11 @@ $function_name(); // will execute the my_function_name() function
 Similar to variable functions, functions may be anonymous.
 
 ```php
-my_function(function () {
+function my_function($callback) {
+    $callback('My argument');
+}
+
+my_function(function ($my_argument) {
 	// do something
 });
 
