@@ -97,6 +97,7 @@ $associative["One"]; // Holds the value 1
 echo('Hello World!'); // Prints Hello World! to stdout. Stdout is the web page if running in a browser.
 print('Hello World!'); // The same as echo
 echo 'Hello World!'; // echo is actually a language construct, so you can drop the parentheses.
+print 'Hello World!'; // So is print
 echo 100;
 echo $variable;
 echo function_result(); // Output the result of a function call that returns a value. More on functions later.
