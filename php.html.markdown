@@ -114,7 +114,7 @@ echo function_result(); // Output the result of a function call that returns a v
 $a = 1;
 $b = 2;
 $a = $b; // A now contains the same value sa $b
-$a =& $b; // A now contains a reference to $b. Changing the value of $a will change the value of $b also, and vice-versa.
+$a = &$b; // A now contains a reference to $b. Changing the value of $a will change the value of $b also, and vice-versa.
 ```
 
 ### Comparison
