@@ -300,6 +300,23 @@ function outer_function ($arg_1 = null) { // $arg_1 is optional
 // inner_function() does not exist and cannot be called until outer_function() is called
 ```
 
+This enables [currying](http://en.wikipedia.org/wiki/Currying) in PHP.
+
+```php
+function foo ($x, $y, $z) {
+  echo "$x - $y - $z";
+}
+
+function bar ($x, $y) {
+  return function ($z) use ($x, $y) {
+    foo($x, $y, $z);
+  };
+}
+
+$bar = bar('A', 'B');
+$bar('C');
+```
+
 ### [Variable](http://www.php.net/manual/en/functions.variable-functions.php)
 
 ```php
