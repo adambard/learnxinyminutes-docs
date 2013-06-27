@@ -4,302 +4,280 @@ author: Louie Dinh
 author_url: http://ldinh.ca
 ---
 
-Python was created by Guido Van Rossum in the early 90's. It is not one of the most popular languages in existence.
-
-```clojure
-; Comments start with semicolons.
-
-; Clojure is written in "forms", which are just
-; lists of things inside parentheses, separated by whitespace.
-;
-; The clojure reader  assumes that the first thing is a
-; function or macro to call, and the rest are arguments.
-;
-; Here's a function that sets the current namespace:
-(ns test)
-
-; More basic examples:
-
-; str will create a string out of all its arguments
-(str "Hello" " " "World") ; => "Hello World"
-
-; Math is straightforward
-(+ 1 1) ; => 2
-(- 2 1) ; => 1
-(* 1 2) ; => 2
-(/ 2 1) ; => 2
+Python was created by Guido Van Rossum in the early 90's. It is now one of the most popular languages in existence.I fell in love with Python for it's syntactic clarity. It's basically executable pseudocode.
 
-; Equality is =
-(= 1 1) ; => true
-(= 2 1) ; => false
-
-; You need not for logic, too
-(not true) ; => false
-
-; Nesting forms works as you expect
-(+ 1 (- 3 2)) ; = 1 + (3 - 2) => 2
-
-; Types
-;;;;;;;;;;;;;
-
-; Clojure uses Java's object types for booleans, strings and numbers.
-; Use `class` to inspect them.
-(class 1) ; Integer literals are java.lang.Long by default
-(class 1.); Float literals are java.lang.Double
-(class ""); Strings always double-quoted, and are java.lang.String
-(class false) ; Booleans are java.lang.Boolean
-(class nil); The "null" value is called nil
-
-; If you want to create a literal list of data, use ' to make a "symbol"
-'(+ 1 2) ; => (+ 1 2)
-
-; You can eval symbols.
-(eval '(+ 1 2)) ; => 3
-
-; Collections & Sequences
-;;;;;;;;;;;;;;;;;;;
-
-; Vectors and Lists are java classes too!
-(class [1 2 3]); => clojure.lang.PersistentVector
-(class '(1 2 3)); => clojure.lang.PersistentList
-
-; A list would be written as just (1 2 3), but we have to quote
-; it to stop the reader thinking it's a function.
-; Also, (list 1 2 3) is the same as '(1 2 3)
-
-; Both lists and vectors are collections:
-(coll? '(1 2 3)) ; => true
-(coll? [1 2 3]) ; => true
-
-; Only lists are seqs.
-(seq? '(1 2 3)) ; => true
-(seq? [1 2 3]) ; => false
+```Python
+# Single line comments start with a hash.
+""" Multiline comments can we written
+    using three "'s
+"""
 
-; Seqs are an interface for logical lists, which can be lazy.
-; "Lazy" means that a seq can define an infinite series, like so:
-(range 4) ; => (0 1 2 3)
-(range) ; => (0 1 2 3 4 ...) (an infinite series)
-(take 4 (range)) ;  (0 1 2 3)
+----------------------------------------------------
+-- 1. Primitive Datatypes and Operators
+----------------------------------------------------
 
-; Use cons to add an item to the beginning of a list or vector
-(cons 4 [1 2 3]) ; => (4 1 2 3)
-(cons 4 '(1 2 3)) ; => (4 1 2 3)
+# You have numbers
+3 #=> 3
 
-; Use conj to add an item to the beginning of a list,
-; or the end of a vector
-(conj [1 2 3] 4) ; => [1 2 3 4]
-(conj '(1 2 3) 4) ; => (4 1 2 3)
+# Math is what you would expect
+1 + 1 #=> 2
+8 - 1 #=> 9
+10 * 2 #=> 20
+35 / 5 #=> 7
 
-; Use concat to add lists or vectors together
-(concat [1 2] '(3 4)) ; => (1 2 3 4)
+# Division is a bit tricky. It is integer division and floors the results automatically.
+11 / 4 #=> 2
 
-; Use filter, map to interact with collections
-(map inc [1 2 3]) ; => (2 3 4)
-(filter even? [1 2 3]) ; => (2)
+# Enforce precedence with parentheses
+(1 + 3) * 2 #=> 8
 
-; Use reduce to reduce them
-(reduce + [1 2 3 4])
-; = (+ (+ (+ 1 2) 3) 4)
-; => 10
+# Boolean values are primitives
+True
+False
 
-; Reduce can take an initial-value argument too
-(reduce conj [] '(3 2 1))
-; = (conj (conj (conj [] 3) 2) 1)
-; => [3 2 1]
+# negate with not
+not True #=> False
+not False #=> True
 
-; Functions
-;;;;;;;;;;;;;;;;;;;;;
 
-; Use fn to create new functions. A function always returns
-; its last statement.
-(fn [] "Hello World") ; => fn
+# Equality is ==
+1 == 1 #=> True
+2 == 1 #=> False
 
-; (You need extra parens to call it)
-((fn [] "Hello World")) ; => "Hello World"
+# Strings are created with " or '
+"This is a string."
+'This is also a string.'
 
-; You can create a var using def
-(def x 1)
-x ; => 1
+# Strings can be added too!
+"Hello " + "world!" #=> "Hello world!"
 
-; Assign a function to a var
-(def hello-world (fn [] "Hello World"))
-(hello-world) ; => "Hello World"
+# A string can be treated like a list of characters
+"This is a string"[0] #=> 'H'
 
-; You can shorten this process by using defn
-(defn hello-world [] "Hello World")
+# None is an object
+None #=> None
 
-; The [] is the list of arguments for the function.
-(defn hello [name]
-  (str "Hello " name))
-(hello "Steve") ; => "Hello Steve"
 
-; You can also use this shorthand to create functions:
-(def hello2 #(str "Hello " %1))
-(hello2 "Fanny") ; => "Hello Fanny"
+----------------------------------------------------
+-- 2. Variables and Collections
+----------------------------------------------------
 
-; You can have multi-variadic functions, too
-(defn hello3
-  ([] "Hello World")
-  ([name] (str "Hello " name)))
-(hello3 "Jake") ; => "Hello Jake"
-(hello3) ; => "Hello World"
+# Printing is pretty easy
+print "I'm Python. Nice to meet you!"
 
-; Functions can pack extra arguments up in a seq for you
-(defn count-args [& args]
-  (str "You passed " (count args) " args: " args))
-(count-args 1 2 3) ; => "You passed 3 args: (1 2 3)"
 
-; You can mix regular and packed arguments
-(defn hello-count [name & args]
-  (str "Hello " name ", you passed " (count args) " extra args"))
-(hello-count "Finn" 1 2 3)
-; => "Hello Finn, you passed 3 extra args"
+# No need to declare variables before assigning to them.
+some_var = 5    # Convention is to use lower_case_with_underscores for variables
+some_var #=> 5
 
+# Accessing a previously unassigned variable is an exception
+some_other_var  # Will raise a NameError
 
-; Hashmaps
-;;;;;;;;;;
 
-(class {:a 1 :b 2 :c 3}) ; => clojure.lang.PersistentArrayMap
+# Lists store sequences
+li = []
+# You can start with a prefilled list
+other_li = [4, 5, 6]
 
-; Keywords are like strings with some efficiency bonuses
-(class :a) ; => clojure.lang.Keyword
+# Add stuff to the end of a list with append
+li.append(1)    #li is now [1]
+li.append(2)    #li is now [1, 2]
+li.append(4)    #li is now [1, 2, 4]
+li.append(3)    #li is now [1, 2, 4, 3]
 
-; Maps can use any type as a key, but usually keywords are best
-(def stringmap (hash-map "a" 1, "b" 2, "c" 3))
-stringmap  ; => {"a" 1, "b" 2, "c" 3}
+# Access a list like you would any array
+li[0] #=> 1
+# Looking out of bounds is an IndexError
+li[4] # Raises an IndexError
 
-(def keymap (hash-map :a 1 :b 2 :c 3))
-keymap ; => {:a 1, :c 3, :b 2} (order is not guaranteed)
+# Remove elements from a list with del
+del li[2] # li is now [1, 2, 3]
 
-; By the way, commas are always treated as whitespace and do nothing.
+# You can add lists
+li + other_li #=> [1, 2, 3, 4, 5, 6] - Note: li and other_li is left alone
 
-; Retrieve a value from a map by calling it as a function
-(stringmap "a") ; => 1
-(keymap :a) ; => 1
+# Concatenate lists with extend
+li.extend(other_li) # Now li is [1 ,2 ,3 ,4 ,5 ,6] 
 
-; Keywords can be used to retrieve their value from a map, too!
-(:b keymap) ; => 2
+# Check for existence in a list with in
+1 in li #=> True
 
-; Don't try this with strings.
-;("a" stringmap)
-; => Exception: java.lang.String cannot be cast to clojure.lang.IFn
+# Examine the length with len
+len(li) #=> 6
 
-; Retrieving a non-present value returns nil
-(stringmap "d") ; => nil
+# Tuples are like lists but are immutable
+tup = (1, 2, 3)
+tup[0] #=> 1
+tup[0] = 3  # Raises a TypeError
 
-; Use assoc to add new keys to hash-maps
-(assoc keymap :d 4) ; => {:a 1, :b 2, :c 3, :d 4}
 
-; But remember, clojure types are immutable!
-keymap ; => {:a 1, :b 2, :c 3}
+# Dictionaries store mappings
+empty_dict = {}
+# Here is a prefilled dictionary
+filled_dict = {"one": 1, "two": 2, "three": 3}
 
-; Use dissoc to remove keys
-(dissoc keymap :a :b) ; => {:c 3}
+# Look up values with []
+filled_dict["one"] #=> 1
 
-; Sets
-;;;;;;
+# Get all keys as a list
+filled_dict.keys()
 
-(class #{1 2 3}) ; => clojure.lang.PersistentHashSet
-(set [1 2 3 1 2 3 3 2 1 3 2 1]) ; => #{1 2 3}
+# Get all values as a list
+filled_dict.values()
 
-; Add a member with conj
-(conj #{1 2 3} 4) ; => #{1 2 3 4}
+# Check for existence of keys in a dictionary with in
+"one" in filled_dict #=> True
+1 in filled_dict #=> False
 
-; Remove one with disj
-(disj #{1 2 3} 1) ; => #{2 3}
 
-; Test for existence by using the set as a function:
-(#{1 2 3} 1) ; => 1
-(#{1 2 3} 4) ; => nil
+# Sets store ... well sets
+empty_set = set()
+# Initialize a set with a bunch of values
+filled_set = set([1,2,2,3,4]) # filled_set is now set([1, 2, 3, 4])
 
-; There are more functions in the clojure.sets namespace.
+# Add more items to a set
+filled_set.add(5) # filled_set is now set([1, 2, 3, 4, 5])
 
-; Useful forms
-;;;;;;;;;;;;;;;;;
+# Do set intersection with &
+other_set = set([3, 4, 5 ,6])
+filled_set & other_set #=> set([3, 4, 5])
 
-; Logic constructs in clojure are just macros, and look like
-; everything else
-(if false "a" "b") ; => "b"
-(if false "a") ; => nil
+# Do set union with |
+filled_set | other_set #=> set([1, 2, 3, 4, 5, 6])
 
-; Use let to create temporary bindings
-(let [a 1 b 2]
-  (> a b)) ; => false
+# Check for existence in a set with in
+2 in filled_set #=> True
+10 in filled_set #=> False
 
-; Group statements together with do
-(do
-  (print "Hello")
-  "World") ; => "World" (prints "Hello")
 
-; Functions have an implicit do
-(defn print-and-say-hello [name]
-  (print "Saying hello to " name)
-  (str "Hello " name))
-(print-and-say-hello "Jeff") ;=> "Hello Jeff" (prints "Saying hello to Jeff")
+----------------------------------------------------
+-- 3. Control Flow
+----------------------------------------------------
 
-; So does let
-(let [name "Urkel"]
-  (print "Saying hello to " name)
-  (str "Hello " name)) ; => "Hello Urkel" (prints "Saying hello to Urkel")
+# Let's just make a variable
+some_var = 5
 
-; Modules
-;;;;;;;;;;;;;;;
+# Here is an if statement. INDENTATION IS SIGNIFICANT IN PYTHON!
+if some_var > 10:
+    print "some_var is totally bigger than 10."
+elif some_var < 10:    # This elif clause is optional.
+    print "some_var is smaller than 10."
+else:           # This is optional too.
+    print "some_var is indeed 10."
 
-; Use "use" to get all functions from the module
-(use 'clojure.set)
+# For loops iterate over lists
+for animal in ["dog", "cat", "mouse"]:
+    print "%s is a mammal" % animal     # You can use % to interpolate formatted strings
 
-; Now we can use set operations
-(intersection #{1 2 3} #{2 3 4}) ; => #{2 3}
-(difference #{1 2 3} #{2 3 4}) ; => #{1}
+# While loops go until a condition is no longer met.
+x = 0
+while x < 10:
+    print x
+    x += 1  # Short hand for x = x + 1
 
-; You can choose a subset of functions to import, too
-(use '[clojure.set :only [intersection]])
+# Handle exceptions with a try/except block
+try:
+    raise IndexError("This is an index error")  # Use raise to raise an error
+except IndexError as e:
+    pass    # Pass is just a no-op. Usually you would do recovery here.
 
-; Use require to import a module
-(require 'clojure.string)
 
-; Use / to call functions from a module
-(clojure.string/blank? "") ; => true
+----------------------------------------------------
+-- 4. Functions
+----------------------------------------------------
 
-; You can give a module a shorter name on import
-(require '[clojure.string :as str])
-(str/replace "This is a test." #"[a-o]" str/upper-case) ; => "THIs Is A tEst."
-; (#"" denotes a regular expression literal)
+# Use def to create new functions
+def add(x, y):
+    print "x is %s and y is %s" % (x, y)
+    return x + y    # Return values with a return statement
 
-; You can use require (and use, but don't) from a namespace using :require.
-; You don't need to quote your modules if you do it this way.
-(ns test
-  (:require
-    [clojure.string :as str]
-    [clojure.set :as set]))
+# Calling functions with parameters
+add(5, 6) #=> 11 and prints out "x is 5 and y is 6"
+# Another way to call functions is with keyword arguments
+add(y=6, x=5)   # Equivalent to above. Keyword arguments can arrive in any order.
 
-; Java
-;;;;;;;;;;;;;;;;;
+# You can define functions that take a variable number of positional arguments
+def varargs(*args):
+    return args
 
-; Java has a huge and useful standard library, so
-; you'll want to learn how to get at it.
+varargs(1, 2, 3) #=> (1,2,3)
 
-; Use import to load a java module
-(import java.util.Date)
 
-; You can import from an ns too.
-(ns test
-  (:import java.util.Date
-           java.util.Calendar))
+# You can define functions that take a variable number of keyword arguments
+def keyword_args(**kwargs):
+    return kwargs
 
-; Use the class name with a "." at the end to make a new instance
-(Date.) ; <a date object>
+# Let's call it to see what happens
+keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
 
-; Use . to call methods. Or, use the ".method" shortcut
-(. (Date.) getTime) ; <a timestamp>
-(.getTime (Date.)) ; exactly the same thing.
 
-; Use / to call static methods
-(System/currentTimeMillis) ; <a timestamp> (system is always present)
+# Python has first class functions
+def create_adder(x):
+    def adder(y):
+        return x + y
+    return adder
 
-; Use doto to make dealing with (mutable) classes more tolerable
-(import java.util.Calendar)
-(doto (Calendar/getInstance)
-  (.set 2000 1 1 0 0 0)
-  .getTime) ; => A Date. set to 2000-01-01 00:00:00
-```
+# Let's create a new function that always adds 10 to the argument
+add_10 = create_adder(10):
+add_10(3) #=> 13
+
+# There are also anonymous functions
+(lambda x: x > 2)(3) #=> True
+
+# There are built-in higher order functions
+map(add_10, [1,2,3]) #=> [11, 12, 13]
+filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
+
+# We can use list comprehensions for nice maps and filters
+[add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
+[x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
+
+----------------------------------------------------
+-- 5. Classes
+----------------------------------------------------
+
+# We can define classes with the class statement
+class Human():    # By convention CamelCase is used for classes. 
+    pass
+
+# We subclass from object to get a "new-style class". All your code should do this.
+class Human(object):
+
+     # A class attribute. It is shared by all instances of this class
+    species = "H. sapiens"
+
+    # Basic initializer
+    def __init__(self, name):
+        self.name = name        # We are assigning the argument to the instance's name attribute
+
+    # A method. All methods take self as the first argument, including the initializer
+    def say(self, msg):
+       return "%s: %s" % (this.name, msg)
+
+    # A class method is shared among all instances
+    @classmethod
+    def get_species(cls):
+        return cls.species
+
+    # Static methods are called without a parameter reference to the class or instance
+    @staticmethod
+    def grunt(self):
+        return "*grunt*"
+
+
+# Instantiate a class
+h = Human(name="Harry")
+print h.say("hi")     # prints out "Harry: hi"
+i = Human("Ian")
+print i.say("hello")  #prints out "Ian: hello"
+
+# Call our class method
+h.get_species() #=> "H. sapiens"
+
+# Change the shared attribute
+h.species = "H. neanderthalensis"
+h.get_species() #=> "H. neanderthalensis"
+i.get_species() #=> "H. neanderthalensis"
+
+# Call the static method
+Human.grunt() #=> "*grunt*"
