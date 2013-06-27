@@ -26,7 +26,7 @@ to Python 2.x. Look for another tour of Python 3 soon!
 
 # Math is what you would expect
 1 + 1 #=> 2
-8 - 1 #=> 9
+8 - 1 #=> 7
 10 * 2 #=> 20
 35 / 5 #=> 7
 
