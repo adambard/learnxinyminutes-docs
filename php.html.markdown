@@ -367,10 +367,11 @@ Classes are insantiated with the ```new``` keyword. Functions are referred to as
 
 ```php
 class MyClass {
-    function myFunction() {
+    function myFunction()
+    {
     }
 
-    function function youCannotOverrideMe()
+    final function youCannotOverrideMe()
     {
     }
 
