@@ -8,11 +8,14 @@ This document describes PHP 5+.
 
 ## [Basic Syntax](http://www.php.net/manual/en/language.basic-syntax.php)
 
-All statements must end with a semi-colon; All PHP code must be between <?php and ?> tags. PHP can also be configured to respect the [short open tags](http://www.php.net/manual/en/ini.core.php#ini.short-open-tag) <? and ?>.
+All statements must end with a semi-colon; All PHP code must be between <?php and ?> tags. PHP can also be
+configured to respect the [short open tags](http://www.php.net/manual/en/ini.core.php#ini.short-open-tag) <? and ?>.
 
 ## [Comments](http://www.php.net/manual/en/language.basic-syntax.comments.php)
 
 ```php
+<?php
+
 // Two forward slashes start a one-line comment.
 
 # So will a hash (aka pound symbol) but // is more common
@@ -25,11 +28,14 @@ All statements must end with a semi-colon; All PHP code must be between <?php an
 
 ## [Types](http://www.php.net/manual/en/language.types.php)
 
-Types are [weakly typed](http://en.wikipedia.org/wiki/Strong_and_weak_typing) and begin with the $ symbol. A valid variable name starts with a letter or underscore, followed by any number of letters, numbers, or underscores.
+Types are [weakly typed](http://en.wikipedia.org/wiki/Strong_and_weak_typing) and begin with the $ symbol.
+A valid variable name starts with a letter or underscore, followed by any number of letters, numbers, or underscores.
 
 ### Scalars
 
 ```php
+<?php
+
 // Boolean values are case-insensitive
 $boolean = true; // or TRUE or True
 $boolean = false; // or FALSE or False
@@ -52,20 +58,29 @@ $product = $number * $float;
 $quotient = $number / $float;
 
 // Shorthand arithmetic
-$number += 1; // Will add 1 to $number
-$number++; // Will add 1 to $number after it is used
-++$number; // Will add 1 to $number before it is used.
-$number /= $float // Will divide $number $float, and assign the quotient to $number
+$number += 1; // Add 1 to $number
+$number++; // Add 1 to $number after it is used
+++$number; // Add 1 to $number before it is used.
+$number /= $float // Divide and assign the quotient to $number
 
-// Strings
-$sgl_quotes = 'String'; // Strings should be enclosed in single quotes;
-$dbl_quotes = "This is a $sgl_quotes." // Avoid using double quotes to embed other variables
-$escaped = "This contains a \t tab character."; // Escape special characters with backslash
-$money = "I have $${integer} in the bank." // Enclose a variable in curly braces if needed
+// Strings should be enclosed in single quotes;
+$sgl_quotes = '$String'; // => '$String'
+
+// Avoid using double quotes except to embed other variables
+$dbl_quotes = "This is a $sgl_quotes." // => 'This is a $String'
+
+// Escape special characters with backslash
+$escaped = "This contains a \t tab character.";
+
+// Enclose a variable in curly braces if needed
+$money = "I have $${integer} in the bank."
+
+// Since PHP 5.3, nowdocs can be used for uninterpolated multi-liners
 $nowdoc = <<<'END'
 Multi line
 string
 END;
+
 $heredoc = <<<END
 Multi line
 $sgl_quotes
@@ -78,6 +93,8 @@ $concatenated = $sgl_quotes + $dbl_quotes;
 ### Compound
 
 ```php
+<?php
+
 // Arrays
 $array = array(1, 2, 3);
 $array = [1, 2, 3]; // As of PHP 5.4
@@ -92,14 +109,22 @@ $associative["One"]; // Holds the value 1
 ## Output
 
 ```php
-echo('Hello World!'); // Prints Hello World! to stdout. Stdout is the web page if running in a browser.
+<?php
+
+echo('Hello World!');
+// Prints Hello World! to stdout.
+// Stdout is the web page if running in a browser.
+
 print('Hello World!'); // The same as echo
-echo 'Hello World!'; // echo is actually a language construct, so you can drop the parentheses.
+
+// echo is actually a language construct, so you can drop the parentheses.
+echo 'Hello World!';
 echo 100;
 echo $variable;
-echo function_result(); // Output the result of a function call that returns a value. More on functions later.
+echo function_result();
 
-// If [short open tags](http://www.php.net/manual/en/ini.core.php#ini.short-open-tag) are configured, or your PHP version is 5.4.0 or greater, you can use the short echo syntax
+// If short open tags are configured, or your PHP version is
+// 5.4.0 or greater, you can use the short echo syntax
 <?= $variable ?>
 ```
 
@@ -108,21 +133,27 @@ echo function_result(); // Output the result of a function call that returns a v
 ### Assignment
 
 ```php
+<?php
+
 $a = 1;
 $b = 2;
 $a = $b; // A now contains the same value sa $b
-$a =& $b; // A now contains a reference to $b. Changing the value of $a will change the value of $b also, and vice-versa.
+$a =& $b;
+// A now contains a reference to $b. Changing the value of
+// $a will change the value of $b also, and vice-versa.
 ```
 
 ### Comparison
 
 ```php
+<?php
+
 $a == $b // TRUE if $a is equal to $b after type juggling.
 $a === $b // TRUE if $a is equal to $b, and they are of the same type.
 $a != $b // TRUE if $a is not equal to $b after type juggling.
 $a <> $b // TRUE if $a is not equal to $b after type juggling.
 $a !== $b // TRUE if $a is not equal to $b, or they are not of the same type.
-$a < $b	// TRUE if $a is strictly less than $b.
+$a < $b    // TRUE if $a is strictly less than $b.
 $a > $b // TRUE if $a is strictly greater than $b.
 $a <= $b // TRUE if $a is less than or equal to $b.
 $a >= $b // TRUE if $a is greater than or equal to $b.
@@ -133,14 +164,18 @@ $a >= $b // TRUE if $a is greater than or equal to $b.
 Variables can be converted between types, depending on their usage.
 
 ```php
+<?php
+
 $integer = 1;
 echo $integer + $integer; // Outputs 2;
 
 $string = '1';
-echo $string + $string; // Also outputs 2 because the + operator converts the strings to integers
+echo $string + $string;
+// Also outputs 2 because the + operator converts the strings to integers
 
 $string = 'one';
-echo $string + $string; // Outputs 0 because the + operator cannot cast the string 'one' to a number
+echo $string + $string;
+// Outputs 0 because the + operator cannot cast the string 'one' to a number
 
 $boolean = (boolean) $integer; // $boolean is true
 
@@ -148,7 +183,8 @@ $zero = 0;
 $boolean = (boolean) $zero; // $boolean is false
 
 $integer = 5;
-$string = strval($integer); // There are also dedicated functions for casting most types
+$string = strval($integer);
+// There are also dedicated functions for casting most types
 
 $var = null; // Null value
 ```
@@ -158,29 +194,32 @@ $var = null; // Null value
 ### If Statements
 
 ```php
+<?php
+
 if (/* test */) {
-	// Do something
+    // Do something
 }
 
 if (/* test */) {
-	// Do something
+    // Do something
 } else {
-	// Do something else
+    // Do something else
 }
 
 if (/* test */) {
-	// Do something
+    // Do something
 } elseif(/* test2 */) {
-	// Do something else, only if test2
+    // Do something else, only if test2
 }
 
 if (/* test */) {
-	// Do something
+    // Do something
 } elseif(/* test2 */) {
-	// Do something else, only if test2
+    // Do something else, only if test2
 } else {
-	// Do something default
+    // Do something default
 }
+?>
 
 <?php if (/* test */): ?>
 <!-- Do something that isn't PHP -->
@@ -192,16 +231,18 @@ if (/* test */) {
 ### Switch statements
 
 ```php
+<?php
+
 switch ($variable) {
-	case 'one':
-    	// Do something if $variable == 'one'
+    case 'one':
+        // Do something if $variable == 'one'
         break;
     case 'two':
     case 'three':
-    	// Do something if $variable is either 'two' or 'three'
+        // Do something if $variable is either 'two' or 'three'
         break;
     default:
-    	// Do something by default
+        // Do something by default
 }
 
 ```
@@ -209,44 +250,46 @@ switch ($variable) {
 ### Loops
 
 ```php
+<?php
+
 $i = 0;
 while ($i < 5) {
-	echo $i++;
+    echo $i++;
 }
 
 $i = 0;
 do {
-	echo $i++;
+    echo $i++;
 } while ($i < 5);
 
 for ($x = 0; $x < 10; $x++) {
-	echo $x; // Will echo 0 - 9
+    echo $x; // Will echo 0 - 9
 }
 
 $wheels = ["bicycle" => 2, "car" => 4];
 
 foreach ($wheels as $vehicle => $wheel_count) {
-	echo "A $vehicle has $wheel_count wheels";
+    echo "A $vehicle has $wheel_count wheels";
 }
 
 // This loop will stop after outputting 2
 $i = 0;
 while ($i < 5) {
     if ($i == 3) {
-    	break; // Exit out of the while loop and continue.
+        break; // Exit out of the while loop and continue.
     }
     
-	echo $i++;
+    echo $i++;
 }
 
 // This loop will output everything except 3
 $i = 0;
 while ($i < 5) {
-	if ($i == 3) {
-    	continue; // Skip this iteration of the loop
+    if ($i == 3) {
+        continue; // Skip this iteration of the loop
     }
     
-	echo $i++;
+    echo $i++;
 }
 ```
 
@@ -255,8 +298,10 @@ while ($i < 5) {
 Functions are created with the ```function``` keyword.
 
 ```php
+<?php
+
 function my_function($my_arg) {
-	$my_variable = 1;
+    $my_variable = 1;
 }
 
 // $my_variable and $my_arg cannot be accessed outside of the function
@@ -265,23 +310,28 @@ function my_function($my_arg) {
 Functions may be invoked by name.
 
 ```php
+<?php
+
 my_function_name();
 
 $variable = get_something(); // A function may return a value
 ```
 
-A valid function name starts with a letter or underscore, followed by any number of letters, numbers, or underscores. There are three ways to declare functions.
+A valid function name starts with a letter or underscore, followed by any
+number of letters, numbers, or underscores. There are three ways to declare functions.
 
 ### [User-defined](http://www.php.net/manual/en/functions.user-defined.php)
 
 ```php
+<?php
+
 function my_function_name ($arg_1, $arg_2) { // $arg_1 and $arg_2 are required
-	// Do something with $arg_1 and $arg_2;
+    // Do something with $arg_1 and $arg_2;
 }
 
 // Functions may be nested to limit scope
 function outer_function ($arg_1 = null) { // $arg_1 is optional
-	function inner_function($arg_2 = 'two') { // $arg_2 will default to 'two'
+    function inner_function($arg_2 = 'two') { // $arg_2 will default to 'two'
     }
 }
 
@@ -291,6 +341,8 @@ function outer_function ($arg_1 = null) { // $arg_1 is optional
 ### [Variable](http://www.php.net/manual/en/functions.variable-functions.php)
 
 ```php
+<?php
+
 $function_name = 'my_function_name';
 
 $function_name(); // will execute the my_function_name() function
@@ -301,13 +353,15 @@ $function_name(); // will execute the my_function_name() function
 Similar to variable functions, functions may be anonymous.
 
 ```php
+<?php
+
 my_function(function () {
-	// do something
+    // do something
 });
 
 // Closure style
 $my_function = function() {
-	// Do something
+    // Do something
 };
 
 $my_function();
@@ -318,10 +372,12 @@ $my_function();
 Classes are defined with the ```class``` keyword.
 
 ```php
+<?php
+
 class MyClass {
-	const MY_CONST = 'value';
+    const MY_CONST = 'value';
     static $staticVar = 'something';
-	public $property = 'value'; // Properties must declare their visibility
+    public $property = 'value'; // Properties must declare their visibility
 }
 
 echo MyClass::MY_CONST; // Outputs "value";
@@ -330,11 +386,14 @@ final class YouCannotExtendMe {
 }
 ```
 
-Classes are insantiated with the ```new``` keyword. Functions are referred to as methods if they belong to a class.
+Classes are insantiated with the ```new``` keyword. Functions are referred to as
+methods if they belong to a class.
 
 ```php
+<?php
+
 class MyClass {
-	function myFunction() {
+    function myFunction() {
     }
     
     function function youCannotOverrideMe()
@@ -358,36 +417,40 @@ MyClass::myStaticMethod(); // myStaticMethod cannot be run on $cls
 PHP offers some [magic methods](http://www.php.net/manual/en/language.oop5.magic.php) for classes.
 
 ```php
+<?php
+
 class MyClass {
-	private $property;
+    private $property;
     
     public function __get($key)
     {
-    	return $this->$key;
+        return $this->$key;
     }
     
     public function __set($key, $value)
     {
-    	$this->$key = $value;
+        $this->$key = $value;
     }
 }
 
 $x = new MyClass();
-echo $x->property; // Will use the __get() method to retrieve the value of $property
-$x->property = 'Something'; // Will use the __set() method to set the value of property
+echo $x->property; // Will use the __get() method
+$x->property = 'Something'; // Will use the __set() method
 ```
 
 Classes can be abstract (using the ```abstract``` keyword), extend other classes (using the ```extends``` keyword) and implement interfaces (using the ```implements``` keyword). An interface is declared with the ```interface``` keyword.
 
 ```php
+<?php
+
 interface InterfaceOne
 {
-	public function doSomething();
+    public function doSomething();
 }
 
 interface InterfaceTwo
 {
-	public function doSomething();
+    public function doSomething();
 }
 
 abstract class MyAbstractClass implements InterfaceOne
@@ -409,10 +472,14 @@ class SomeOtherClass implements InterfaceOne, InterfaceTwo
 By default, classes exist in the global namespace, and can be explicitly called with a backslash.
 
 ```php
+<?php
+
 $cls = new \MyClass();
 ```
 
 ```php
+<?php
+
 namespace My\Namespace;
 
 class MyClass
@@ -425,6 +492,8 @@ $cls = new My\Namespace\MyClass;
 Or from within another namespace.
 
 ```php
+<?php
+
 namespace My\Other\Namespace;
 
 use My\Namespace\MyClass;
@@ -435,6 +504,8 @@ $cls = new MyClass();
 Or you can alias the namespace;
 
 ```php
+<?php
+
 namespace My\Other\Namespace;
 
 use My\Namespace as SomeOtherNamespace;
@@ -447,16 +518,18 @@ $cls = new SomeOtherNamespace\MyClass();
 Traits are available since PHP 5.4.0 and are declared using the ```trait``` keyword.
 
 ```php
+<?php
+
 trait MyTrait {
-	public function myTraitMethod()
+    public function myTraitMethod()
     {
-    	// Do something
+        // Do something
     }
 }
 
 class MyClass
 {
-	use MyTrait;
+    use MyTrait;
 }
 
 $cls = new MyClass();
