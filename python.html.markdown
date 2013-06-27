@@ -52,7 +52,7 @@ not False #=> True
 "Hello " + "world!" #=> "Hello world!"
 
 # A string can be treated like a list of characters
-"This is a string"[0] #=> 'H'
+"This is a string"[0] #=> 'T'
 
 # None is an object
 None #=> None
@@ -120,10 +120,10 @@ filled_dict = {"one": 1, "two": 2, "three": 3}
 filled_dict["one"] #=> 1
 
 # Get all keys as a list
-filled_dict.keys()
+filled_dict.keys() #=> ["three", "two", "one"] Note - Dictionary key ordering is not guaranteed. Your results might not match this exactly.
 
 # Get all values as a list
-filled_dict.values()
+filled_dict.values() #=> [3, 2, 1] Note - Same as above regarding key ordering.
 
 # Check for existence of keys in a dictionary with in
 "one" in filled_dict #=> True
@@ -158,6 +158,7 @@ filled_set | other_set #=> set([1, 2, 3, 4, 5, 6])
 some_var = 5
 
 # Here is an if statement. INDENTATION IS SIGNIFICANT IN PYTHON!
+# prints "some var is smaller than 10"
 if some_var > 10:
     print "some_var is totally bigger than 10."
 elif some_var < 10:    # This elif clause is optional.
@@ -165,13 +166,27 @@ elif some_var < 10:    # This elif clause is optional.
 else:           # This is optional too.
     print "some_var is indeed 10."
 
-# For loops iterate over lists
+
+"""
+For loops iterate over lists
+prints:
+    dog is a mammal
+    cat is a mammal
+    mouse is a mammal
+"""
 for animal in ["dog", "cat", "mouse"]:
     print "%s is a mammal" % animal     # You can use % to interpolate formatted strings
 
-# While loops go until a condition is no longer met.
+"""
+While loops go until a condition is no longer met.
+prints:
+    0
+    1
+    2 
+    3
+"""
 x = 0
-while x < 10:
+while x < 4:
     print x
     x += 1  # Short hand for x = x + 1
 
@@ -252,7 +267,7 @@ class Human(object):
 
     # A method. All methods take self as the first argument, including the initializer
     def say(self, msg):
-       return "%s: %s" % (this.name, msg)
+       return "%s: %s" % (self.name, msg)
 
     # A class method is shared among all instances
     @classmethod
@@ -261,7 +276,7 @@ class Human(object):
 
     # Static methods are called without a parameter reference to the class or instance
     @staticmethod
-    def grunt(self):
+    def grunt():
         return "*grunt*"
 
 
