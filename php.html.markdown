@@ -190,9 +190,9 @@ if (/* test */) {
 }
 
 <?php if (/* test */): ?>
-<!-- Do something that isn't PHP -->
+This is displayed if the test is truthy.
 <?php else: ?>
-<!-- Do something default -->
+This is displayed otherwise.
 <?php endif; ?>
 ```
 
