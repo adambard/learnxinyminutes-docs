@@ -411,7 +411,8 @@ echo $x->property; // Will use the __get() method to retrieve the value of $prop
 $x->property = 'Something'; // Will use the __set() method to set the value of property
 ```
 
-Classes can be abstract (using the ```abstract``` keyword), extend other classes (using the ```extends``` keyword) and implement interfaces (using the ```implements``` keyword). An interface is declared with the ```interface``` keyword.
+Classes can be abstract (using the ```abstract``` keyword), extend other classes (using the ```extends``` keyword) and
+implement interfaces (using the ```implements``` keyword). An interface is declared with the ```interface``` keyword.
 
 ```php
 interface InterfaceOne
