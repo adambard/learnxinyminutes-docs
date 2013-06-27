@@ -106,7 +106,8 @@ li[-1] #=> 4
 # Looking out of bounds is an IndexError
 li[4] # Raises an IndexError
 
-# You can look at ranges with slice syntax. It's an closed/open range for you mathy types.
+# You can look at ranges with slice syntax.
+# (It's a closed/open range for you mathy types.)
 li[1:3] #=> [2, 4]
 # Omit the beginning
 li[:3] #=> [1, 2, 4]
@@ -233,7 +234,8 @@ while x < 4:
 
 # Handle exceptions with a try/except block
 try:
-    raise IndexError("This is an index error")  # Use raise to raise an error
+    # Use raise to raise an error
+    raise IndexError("This is an index error")
 except IndexError as e:
     pass    # Pass is just a no-op. Usually you would do recovery here.
 
@@ -252,19 +254,25 @@ add(5, 6) #=> 11 and prints out "x is 5 and y is 6"
 # Another way to call functions is with keyword arguments
 add(y=6, x=5)   # Keyword arguments can arrive in any order.
 
-# You can define functions that take a variable number of positional arguments
+# You can define functions that take a variable number of
+# positional arguments
 def varargs(*args):
     return args
 
 varargs(1, 2, 3) #=> (1,2,3)
 
 
-# You can define functions that take a variable number of keyword arguments
+# You can define functions that take a variable number of
+# keyword arguments, as well
 def keyword_args(**kwargs):
     return kwargs
 
 # Let's call it to see what happens
 keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
+
+# You can do both at once, if you like
+def all_the_args(*args, **kwargs):
+    pass
 
 
 # Python has first class functions
