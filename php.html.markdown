@@ -144,7 +144,11 @@ echo $string + $string; // Also outputs 2 because the + operator converts the st
 
 $string = 'one';
 echo $string + $string; // Outputs 0 because the + operator cannot cast the string 'one' to a number
+```
 
+Type casting can be used to treat a variable as another type temporarily by using cast operators in parentheses.
+
+```php
 $boolean = (boolean) $integer; // $boolean is true
 
 $zero = 0;
