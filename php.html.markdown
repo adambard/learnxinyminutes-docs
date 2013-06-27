@@ -124,7 +124,7 @@ $x = &$y; // A now contains a reference to $y. Changing the value of $x will cha
 $a == $b // TRUE if $a is equal to $b after type juggling.
 $a != $b // TRUE if $a is not equal to $b after type juggling.
 $a <> $b // TRUE if $a is not equal to $b after type juggling.
-$a < $b	// TRUE if $a is strictly less than $b.
+$a < $b    // TRUE if $a is strictly less than $b.
 $a > $b // TRUE if $a is strictly greater than $b.
 $a <= $b // TRUE if $a is less than or equal to $b.
 $a >= $b // TRUE if $a is greater than or equal to $b.
@@ -171,27 +171,27 @@ $var = null; // Null value
 
 ```php
 if (/* test */) {
-	// Do something
+    // Do something
 }
 
 if (/* test */) {
-	// Do something
+    // Do something
 } else {
-	// Do something else
+    // Do something else
 }
 
 if (/* test */) {
-	// Do something
+    // Do something
 } elseif(/* test2 */) {
-	// Do something else, only if test2
+    // Do something else, only if test2
 }
 
 if (/* test */) {
-	// Do something
+    // Do something
 } elseif(/* test2 */) {
-	// Do something else, only if test2
+    // Do something else, only if test2
 } else {
-	// Do something default
+    // Do something default
 }
 
 <?php if (/* test */): ?>
@@ -205,15 +205,15 @@ This is displayed otherwise.
 
 ```php
 switch ($variable) {
-	case 'one':
-    	// Do something if $variable == 'one'
+    case 'one':
+        // Do something if $variable == 'one'
         break;
     case 'two':
     case 'three':
-    	// Do something if $variable is either 'two' or 'three'
+        // Do something if $variable is either 'two' or 'three'
         break;
     default:
-    	// Do something by default
+        // Do something by default
 }
 
 ```
@@ -223,42 +223,42 @@ switch ($variable) {
 ```php
 $i = 0;
 while ($i < 5) {
-	echo $i++;
+    echo $i++;
 }
 
 $i = 0;
 do {
-	echo $i++;
+    echo $i++;
 } while ($i < 5);
 
 for ($x = 0; $x < 10; $x++) {
-	echo $x; // Will echo 0 - 9
+    echo $x; // Will echo 0 - 9
 }
 
 $wheels = ["bicycle" => 2, "car" => 4];
 
 foreach ($wheels as $vehicle => $wheel_count) {
-	echo "A $vehicle has $wheel_count wheels";
+    echo "A $vehicle has $wheel_count wheels";
 }
 
 // This loop will stop after outputting 2
 $i = 0;
 while ($i < 5) {
     if ($i == 3) {
-    	break; // Exit out of the while loop and continue.
+        break; // Exit out of the while loop and continue.
     }
 
-	echo $i++;
+    echo $i++;
 }
 
 // This loop will output everything except 3
 $i = 0;
 while ($i < 5) {
-	if ($i == 3) {
-    	continue; // Skip this iteration of the loop
+    if ($i == 3) {
+        continue; // Skip this iteration of the loop
     }
 
-	echo $i++;
+    echo $i++;
 }
 ```
 
@@ -268,7 +268,7 @@ Functions are created with the ```function``` keyword.
 
 ```php
 function my_function($my_arg) {
-	$my_variable = 1;
+    $my_variable = 1;
 }
 
 // $my_variable and $my_arg cannot be accessed outside of the function
@@ -288,12 +288,12 @@ A valid function name starts with a letter or underscore, followed by any number
 
 ```php
 function my_function_name ($arg_1, $arg_2) { // $arg_1 and $arg_2 are required
-	// Do something with $arg_1 and $arg_2;
+    // Do something with $arg_1 and $arg_2;
 }
 
 // Functions may be nested to limit scope
 function outer_function ($arg_1 = null) { // $arg_1 is optional
-	function inner_function($arg_2 = 'two') { // $arg_2 will default to 'two'
+    function inner_function($arg_2 = 'two') { // $arg_2 will default to 'two'
     }
 }
 
@@ -335,12 +335,12 @@ function my_function($callback) {
 }
 
 my_function(function ($my_argument) {
-	// do something
+    // do something
 });
 
 // Closure style
 $my_function = function() {
-	// Do something
+    // Do something
 };
 
 $my_function();
@@ -352,9 +352,9 @@ Classes are defined with the ```class``` keyword.
 
 ```php
 class MyClass {
-	const MY_CONST = 'value';
+    const MY_CONST = 'value';
     static $staticVar = 'something';
-	public $property = 'value'; // Properties must declare their visibility
+    public $property = 'value'; // Properties must declare their visibility
 }
 
 echo MyClass::MY_CONST; // Outputs "value";
@@ -367,7 +367,7 @@ Classes are insantiated with the ```new``` keyword. Functions are referred to as
 
 ```php
 class MyClass {
-	function myFunction() {
+    function myFunction() {
     }
 
     function function youCannotOverrideMe()
@@ -392,16 +392,16 @@ PHP offers some [magic methods](http://www.php.net/manual/en/language.oop5.magic
 
 ```php
 class MyClass {
-	private $property;
+    private $property;
 
     public function __get($key)
     {
-    	return $this->$key;
+        return $this->$key;
     }
 
     public function __set($key, $value)
     {
-    	$this->$key = $value;
+        $this->$key = $value;
     }
 }
 
@@ -415,12 +415,12 @@ Classes can be abstract (using the ```abstract``` keyword), extend other classes
 ```php
 interface InterfaceOne
 {
-	public function doSomething();
+    public function doSomething();
 }
 
 interface InterfaceTwo
 {
-	public function doSomething();
+    public function doSomething();
 }
 
 abstract class MyAbstractClass implements InterfaceOne
@@ -481,15 +481,15 @@ Traits are available since PHP 5.4.0 and are declared using the ```trait``` keyw
 
 ```php
 trait MyTrait {
-	public function myTraitMethod()
+    public function myTraitMethod()
     {
-    	// Do something
+        // Do something
     }
 }
 
 class MyClass
 {
-	use MyTrait;
+    use MyTrait;
 }
 
 $cls = new MyClass();
