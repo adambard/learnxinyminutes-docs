@@ -4,8 +4,6 @@ author: Malcolm Fell
 author_url: http://emarref.net/
 ---
 
-# PHP
-
 This document describes PHP 5+.
 
 ## [Basic Syntax](http://www.php.net/manual/en/language.basic-syntax.php)
@@ -74,7 +72,7 @@ $sgl_quotes
 END; // Nowdoc syntax is available in PHP 5.3.0
 
 // Manipulation
-$concatinated = $sgl_quotes + $dbl_quotes;
+$concatenated = $sgl_quotes + $dbl_quotes;
 ```
 
 ### Compound

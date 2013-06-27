@@ -1,20 +1,25 @@
 ---
-language: Python
+language: python
 author: Louie Dinh
 author_url: http://ldinh.ca
 ---
 
-Python was created by Guido Van Rossum in the early 90's. It is now one of the most popular languages in existence. I fell in love with Python for it's syntactic clarity. It's basically executable pseudocode.
+Python was created by Guido Van Rossum in the early 90's. It is now one of the most popular
+languages in existence. I fell in love with Python for it's syntactic clarity. It's basically
+executable pseudocode.
 
-```Python
+Note: This article applies to Python 2.7 specifically, but should be applicable
+to Python 2.x. Look for another tour of Python 3 soon!
+
+```python
 # Single line comments start with a hash.
 """ Multiline comments can we written
     using three "'s
 """
 
-----------------------------------------------------
--- 1. Primitive Datatypes and Operators
-----------------------------------------------------
+####################################################
+## 1. Primitive Datatypes and Operators
+####################################################
 
 # You have numbers
 3 #=> 3
@@ -25,7 +30,8 @@ Python was created by Guido Van Rossum in the early 90's. It is now one of the m
 10 * 2 #=> 20
 35 / 5 #=> 7
 
-# Division is a bit tricky. It is integer division and floors the results automatically.
+# Division is a bit tricky. It is integer division and floors the results
+# automatically.
 11 / 4 #=> 2
 
 # Enforce precedence with parentheses
@@ -58,16 +64,16 @@ not False #=> True
 None #=> None
 
 
-----------------------------------------------------
--- 2. Variables and Collections
-----------------------------------------------------
+####################################################
+## 2. Variables and Collections
+####################################################
 
 # Printing is pretty easy
 print "I'm Python. Nice to meet you!"
 
 
 # No need to declare variables before assigning to them.
-some_var = 5    # Convention is to use lower_case_with_underscores for variables
+some_var = 5    # Convention is to use lower_case_with_underscores
 some_var #=> 5
 
 # Accessing a previously unassigned variable is an exception
@@ -97,7 +103,7 @@ del li[2] # li is now [1, 2, 3]
 li + other_li #=> [1, 2, 3, 4, 5, 6] - Note: li and other_li is left alone
 
 # Concatenate lists with extend
-li.extend(other_li) # Now li is [1 ,2 ,3 ,4 ,5 ,6] 
+li.extend(other_li) # Now li is [1, 2, 3, 4, 5, 6] 
 
 # Check for existence in a list with in
 1 in li #=> True
@@ -120,10 +126,13 @@ filled_dict = {"one": 1, "two": 2, "three": 3}
 filled_dict["one"] #=> 1
 
 # Get all keys as a list
-filled_dict.keys() #=> ["three", "two", "one"] Note - Dictionary key ordering is not guaranteed. Your results might not match this exactly.
+filled_dict.keys() #=> ["three", "two", "one"]
+# Note - Dictionary key ordering is not guaranteed.
+# Your results might not match this exactly.
 
 # Get all values as a list
-filled_dict.values() #=> [3, 2, 1] Note - Same as above regarding key ordering.
+filled_dict.values() #=> [3, 2, 1]
+# Note - Same as above regarding key ordering.
 
 # Check for existence of keys in a dictionary with in
 "one" in filled_dict #=> True
@@ -150,9 +159,9 @@ filled_set | other_set #=> set([1, 2, 3, 4, 5, 6])
 10 in filled_set #=> False
 
 
-----------------------------------------------------
--- 3. Control Flow
-----------------------------------------------------
+####################################################
+## 3. Control Flow
+####################################################
 
 # Let's just make a variable
 some_var = 5
@@ -175,7 +184,8 @@ prints:
     mouse is a mammal
 """
 for animal in ["dog", "cat", "mouse"]:
-    print "%s is a mammal" % animal     # You can use % to interpolate formatted strings
+    # You can use % to interpolate formatted strings
+    print "%s is a mammal" % animal 
 
 """
 While loops go until a condition is no longer met.
@@ -188,7 +198,7 @@ prints:
 x = 0
 while x < 4:
     print x
-    x += 1  # Short hand for x = x + 1
+    x += 1  # Shorthand for x = x + 1
 
 # Handle exceptions with a try/except block
 try:
@@ -197,9 +207,9 @@ except IndexError as e:
     pass    # Pass is just a no-op. Usually you would do recovery here.
 
 
-----------------------------------------------------
--- 4. Functions
-----------------------------------------------------
+####################################################
+## 4. Functions
+####################################################
 
 # Use def to create new functions
 def add(x, y):
@@ -209,9 +219,9 @@ def add(x, y):
 # Calling functions with parameters
 add(5, 6) #=> 11 and prints out "x is 5 and y is 6"
 # Another way to call functions is with keyword arguments
-add(y=6, x=5)   # Equivalent to above. Keyword arguments can arrive in any order.
+add(y=6, x=5)   # Keyword arguments can arrive in any order.
 
-# You can define functions that take a variable number of positional arguments
+# You can define functions that take a variable number of arguments
 def varargs(*args):
     return args
 
@@ -232,7 +242,6 @@ def create_adder(x):
         return x + y
     return adder
 
-# Let's create a new function that always adds 10 to the argument
 add_10 = create_adder(10):
 add_10(3) #=> 13
 
@@ -247,15 +256,11 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 [add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
 
-----------------------------------------------------
--- 5. Classes
-----------------------------------------------------
+####################################################
+## 5. Classes
+####################################################
 
-# We can define classes with the class statement
-class Human():    # By convention CamelCase is used for classes. 
-    pass
-
-# We subclass from object to get a "new-style class". All your code should do this.
+# We subclass from object to get a class.
 class Human(object):
 
      # A class attribute. It is shared by all instances of this class
@@ -263,18 +268,20 @@ class Human(object):
 
     # Basic initializer
     def __init__(self, name):
-        self.name = name        # We are assigning the argument to the instance's name attribute
+        # Assign the argument to the instance's name attribute
+        self.name = name
 
-    # A method. All methods take self as the first argument, including the initializer
+    # A method. All methods take self as the first argument
     def say(self, msg):
        return "%s: %s" % (self.name, msg)
 
     # A class method is shared among all instances
+    # They are called with the calling class as the first argument
     @classmethod
     def get_species(cls):
         return cls.species
 
-    # Static methods are called without a parameter reference to the class or instance
+    # Static methods are called without a class or instance reference
     @staticmethod
     def grunt():
         return "*grunt*"
@@ -283,6 +290,7 @@ class Human(object):
 # Instantiate a class
 h = Human(name="Harry")
 print h.say("hi")     # prints out "Harry: hi"
+
 i = Human("Ian")
 print i.say("hello")  #prints out "Ian: hello"
 
