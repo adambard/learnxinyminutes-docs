@@ -74,7 +74,7 @@ $sgl_quotes
 END; // Nowdoc syntax is available in PHP 5.3.0
 
 // Manipulation
-$concatenated = $sgl_quotes + $dbl_quotes;
+$concatenated = $sgl_quotes . $dbl_quotes;
 ```
 
 ### Compound
