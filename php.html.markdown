@@ -111,24 +111,29 @@ echo function_result(); // Output the result of a function call that returns a v
 ### Assignment
 
 ```php
-$a = 1;
-$b = 2;
-$a = $b; // A now contains the same value sa $b
-$a = &$b; // A now contains a reference to $b. Changing the value of $a will change the value of $b also, and vice-versa.
+$x = 1;
+$y = 2;
+$x = $y; // A now contains the same value sa $y
+$x = &$y; // A now contains a reference to $y. Changing the value of $x will change the value of $y also, and vice-versa.
 ```
 
 ### Comparison
 
 ```php
+// These comparisons will always be true, even if the types aren't the same.
 $a == $b // TRUE if $a is equal to $b after type juggling.
-$a === $b // TRUE if $a is equal to $b, and they are of the same type.
 $a != $b // TRUE if $a is not equal to $b after type juggling.
 $a <> $b // TRUE if $a is not equal to $b after type juggling.
-$a !== $b // TRUE if $a is not equal to $b, or they are not of the same type.
 $a < $b	// TRUE if $a is strictly less than $b.
 $a > $b // TRUE if $a is strictly greater than $b.
 $a <= $b // TRUE if $a is less than or equal to $b.
 $a >= $b // TRUE if $a is greater than or equal to $b.
+
+// The following will only be true the values match and they are the same type.
+$a === $b // TRUE if $a is equal to $b, and they are of the same type.
+$a !== $b // TRUE if $a is not equal to $b, or they are not of the same type.
+1 == '1' // TRUE
+1 === '1' // FALSE
 ```
 
 ## [Type Juggling](http://www.php.net/manual/en/language.types.type-juggling.php)
