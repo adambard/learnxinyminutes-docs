@@ -81,7 +81,10 @@ some_var = 5    # Convention is to use lower_case_with_underscores
 some_var #=> 5
 
 # Accessing a previously unassigned variable is an exception
-some_other_var  # Will raise a NameError
+try:
+    some_other_var
+except NameError:
+    print "Raises a name error"
 
 
 # Lists store sequences
@@ -103,8 +106,12 @@ li.append(3)    # li is now [1, 2, 4, 3] again.
 li[0] #=> 1
 # Look at the last element
 li[-1] #=> 4
+
 # Looking out of bounds is an IndexError
-li[4] # Raises an IndexError
+try:
+    li[4] # Raises an IndexError
+except IndexError:
+    print "Raises an IndexError"
 
 # You can look at ranges with slice syntax.
 # (It's a closed/open range for you mathy types.)
@@ -132,7 +139,10 @@ len(li) #=> 6
 # Tuples are like lists but are immutable.
 tup = (1, 2, 3)
 tup[0] #=> 1
-tup[0] = 3  # Raises a TypeError
+try:
+    tup[0] = 3  # Raises a TypeError
+except TypeError:
+    print "Tuples cannot be mutated."
 
 # You can do all those list thingies on tuples too
 len(tup) #=> 3
@@ -295,7 +305,7 @@ def create_adder(x):
         return x + y
     return adder
 
-add_10 = create_adder(10):
+add_10 = create_adder(10)
 add_10(3) #=> 13
 
 # There are also anonymous functions
@@ -357,3 +367,5 @@ j.get_species() #=> "H. neanderthalensis"
 
 # Call the static method
 Human.grunt() #=> "*grunt*"
+```
+
