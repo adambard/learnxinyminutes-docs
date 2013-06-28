@@ -283,12 +283,6 @@ try:
 except IndexError as e:
     pass    # Pass is just a no-op. Usually you would do recovery here.
 
-# Works for Python 2.7 and down:
-try:
-    raise IndexError("This is an index error")
-except IndexError, e: # No "as", comma instead
-    pass
-
 
 ####################################################
 ## 4. Functions
