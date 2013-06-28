@@ -99,6 +99,10 @@ try:
 except NameError:
     print "Raises a name error"
 
+# Conditional Expressions can be used when assigning
+some_var = a if a > b else b
+# If a is greater than b, then a is assigned to some_var.
+# Otherwise b is assigned to some_var.
 
 # Lists store sequences
 li = []
@@ -191,6 +195,17 @@ filled_dict.values() #=> [3, 2, 1]
 # Check for existence of keys in a dictionary with in
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
+
+# Trying to look up a non-existing key will raise a KeyError
+filled_dict["four"] #=> KeyError
+
+# Use get method to avoid the KeyError
+filled_dict.get("one", 4) #=> 1
+filled_dict.get("four", 4) #=> 4
+
+# Setdefault method is a safe way to add new key-value pair into dictionary
+filled_dict.setdefault("five", 5) #filled_dict["five"] is set to 5
+filled_dict.setdefault("five", 6) #filled_dict["five"] is still 5
 
 
 # Sets store ... well sets
@@ -311,6 +326,12 @@ all_the_args(1, 2, a=3, b=4) prints:
     {"a": 3, "b": 4}
 """
 
+# You can also use * and ** when calling a function
+args = (1, 2, 3, 4)
+kwargs = {"a": 3, "b": 4}
+foo(*args) # equivalent to foo(1, 2, 3, 4)
+foo(**kwargs) # equivalent to foo(a=3, b=4)
+foo(*args, **kwargs) # equivalent to foo(1, 2, 3, 4, a=3, b=4)
 
 # Python has first class functions
 def create_adder(x):
