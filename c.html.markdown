@@ -198,7 +198,7 @@ printf("%d\n", (short) 65537); // => 1 (Max short = 65535)
 // then mess with them.
 
 int x = 0;
-printf("%p\n", &x); // Use & to retrive the address of a variable
+printf("%p\n", &x); // Use & to retrieve the address of a variable
 // (%p formats a pointer)
 // => Prints some address in memory;
 
@@ -222,7 +222,7 @@ printf("%d\n", *(x_ptr + 1)); // => Prints 19
 printf("%d\n", x_array[1]); // => Prints 19
 
 // Array indexes are such a thin wrapper around pointer
-// arithmatic that the following works:
+// arithmetic that the following works:
 printf("%d\n", 0[x_array]); // => Prints 20;
 printf("%d\n", 2[x_array]); // => Prints 18;
 
