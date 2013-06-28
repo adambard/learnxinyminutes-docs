@@ -233,11 +233,19 @@ while x < 4:
     x += 1  # Shorthand for x = x + 1
 
 # Handle exceptions with a try/except block
+
+# Works on Python 2.6 and up:
 try:
     # Use raise to raise an error
     raise IndexError("This is an index error")
 except IndexError as e:
     pass    # Pass is just a no-op. Usually you would do recovery here.
+
+# Works for Python 2.7 and down:
+try:
+    raise IndexError("This is an index error")
+except IndexError, e: # No "as", comma instead
+    pass
 
 
 ####################################################
@@ -272,7 +280,13 @@ keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
 
 # You can do both at once, if you like
 def all_the_args(*args, **kwargs):
-    pass
+    print args
+    print kwargs
+"""
+all_the_args(1, 2, a=3, b=4) prints:
+    [1, 2]
+    {"a": 3, "b": 4}
+"""
 
 
 # Python has first class functions
