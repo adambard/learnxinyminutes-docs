@@ -159,7 +159,7 @@ $a > $b // TRUE if $a is strictly greater than $b.
 $a <= $b // TRUE if $a is less than or equal to $b.
 $a >= $b // TRUE if $a is greater than or equal to $b.
 
-// The following will only be true the values match and they are the same type.
+// The following will only be true if the values match and are the same type.
 $a === $b // TRUE if $a is equal to $b, and they are of the same type.
 $a !== $b // TRUE if $a is not equal to $b, or they are not of the same type.
 1 == '1' // TRUE
@@ -334,8 +334,8 @@ number of letters, numbers, or underscores. There are three ways to declare func
 ```php
 <?php
 
-function my_function_name ($arg_1, $arg_2) { // $arg_1 and $arg_2 are required
-    // Do something with $arg_1 and $arg_2;
+function my_function_name ($arg_1, $arg_2) {
+    // $arg_1 and $arg_2 are required
 }
 
 // Functions may be nested to limit scope
@@ -344,7 +344,8 @@ function outer_function ($arg_1 = null) { // $arg_1 is optional
     }
 }
 
-// inner_function() does not exist and cannot be called until outer_function() is called
+// inner_function() does not exist and cannot be called until
+// outer_function() is called
 ```
 
 This enables [currying](http://en.wikipedia.org/wiki/Currying) in PHP.
