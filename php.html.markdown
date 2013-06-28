@@ -47,8 +47,8 @@ $integer = 0123; // octal number (equivalent to 83 decimal)
 $integer = 0x1A; // hexadecimal number (equivalent to 26 decimal)
 
 // Floats (aka doubles)
-$float = 1.234; 
-$float = 1.2e3; 
+$float = 1.234;
+$float = 1.2e3;
 $float = 7E-10;
 
 // Arithmetic
@@ -87,7 +87,7 @@ $sgl_quotes
 END; // Nowdoc syntax is available in PHP 5.3.0
 
 // Manipulation
-$concatenated = $sgl_quotes + $dbl_quotes;
+$concatenated = $sgl_quotes . $dbl_quotes;
 ```
 
 ### Compound
@@ -119,6 +119,8 @@ print('Hello World!'); // The same as echo
 
 // echo is actually a language construct, so you can drop the parentheses.
 echo 'Hello World!';
+print 'Hello World!'; // So is print
+
 echo 100;
 echo $variable;
 echo function_result();
@@ -135,12 +137,12 @@ echo function_result();
 ```php
 <?php
 
-$a = 1;
-$b = 2;
-$a = $b; // A now contains the same value sa $b
-$a =& $b;
-// A now contains a reference to $b. Changing the value of
-// $a will change the value of $b also, and vice-versa.
+$x = 1;
+$y = 2;
+$x = $y; // A now contains the same value sa $y
+$x = &$y;
+// $x now contains a reference to $y. Changing the value of
+// $x will change the value of $y also, and vice-versa.
 ```
 
 ### Comparison
@@ -148,15 +150,20 @@ $a =& $b;
 ```php
 <?php
 
+// These comparisons will always be true, even if the types aren't the same.
 $a == $b // TRUE if $a is equal to $b after type juggling.
-$a === $b // TRUE if $a is equal to $b, and they are of the same type.
 $a != $b // TRUE if $a is not equal to $b after type juggling.
 $a <> $b // TRUE if $a is not equal to $b after type juggling.
-$a !== $b // TRUE if $a is not equal to $b, or they are not of the same type.
 $a < $b    // TRUE if $a is strictly less than $b.
 $a > $b // TRUE if $a is strictly greater than $b.
 $a <= $b // TRUE if $a is less than or equal to $b.
 $a >= $b // TRUE if $a is greater than or equal to $b.
+
+// The following will only be true the values match and they are the same type.
+$a === $b // TRUE if $a is equal to $b, and they are of the same type.
+$a !== $b // TRUE if $a is not equal to $b, or they are not of the same type.
+1 == '1' // TRUE
+1 === '1' // FALSE
 ```
 
 ## [Type Juggling](http://www.php.net/manual/en/language.types.type-juggling.php)
@@ -176,7 +183,11 @@ echo $string + $string;
 $string = 'one';
 echo $string + $string;
 // Outputs 0 because the + operator cannot cast the string 'one' to a number
+```
 
+Type casting can be used to treat a variable as another type temporarily by using cast operators in parentheses.
+
+```php
 $boolean = (boolean) $integer; // $boolean is true
 
 $zero = 0;
@@ -222,9 +233,9 @@ if (/* test */) {
 ?>
 
 <?php if (/* test */): ?>
-<!-- Do something that isn't PHP -->
+This is displayed if the test is truthy.
 <?php else: ?>
-<!-- Do something default -->
+This is displayed otherwise.
 <?php endif; ?>
 ```
 
@@ -278,7 +289,6 @@ while ($i < 5) {
     if ($i == 3) {
         break; // Exit out of the while loop and continue.
     }
-    
     echo $i++;
 }
 
@@ -288,7 +298,6 @@ while ($i < 5) {
     if ($i == 3) {
         continue; // Skip this iteration of the loop
     }
-    
     echo $i++;
 }
 ```
@@ -338,6 +347,23 @@ function outer_function ($arg_1 = null) { // $arg_1 is optional
 // inner_function() does not exist and cannot be called until outer_function() is called
 ```
 
+This enables [currying](http://en.wikipedia.org/wiki/Currying) in PHP.
+
+```php
+function foo ($x, $y, $z) {
+  echo "$x - $y - $z";
+}
+
+function bar ($x, $y) {
+  return function ($z) use ($x, $y) {
+    foo($x, $y, $z);
+  };
+}
+
+$bar = bar('A', 'B');
+$bar('C');
+```
+
 ### [Variable](http://www.php.net/manual/en/functions.variable-functions.php)
 
 ```php
@@ -355,7 +381,11 @@ Similar to variable functions, functions may be anonymous.
 ```php
 <?php
 
-my_function(function () {
+function my_function($callback) {
+    $callback('My argument');
+}
+
+my_function(function ($my_argument) {
     // do something
 });
 
@@ -395,13 +425,11 @@ methods if they belong to a class.
 class MyClass {
     function myFunction() {
     }
-    
-    function function youCannotOverrideMe()
-    {
+
+    final function youCannotOverrideMe() {
     }
-    
-    public static function myStaticMethod()
-    {
+
+    public static function myStaticMethod() {
     }
 }
 
@@ -421,12 +449,12 @@ PHP offers some [magic methods](http://www.php.net/manual/en/language.oop5.magic
 
 class MyClass {
     private $property;
-    
+
     public function __get($key)
     {
         return $this->$key;
     }
-    
+
     public function __set($key, $value)
     {
         $this->$key = $value;
@@ -438,7 +466,8 @@ echo $x->property; // Will use the __get() method
 $x->property = 'Something'; // Will use the __set() method
 ```
 
-Classes can be abstract (using the ```abstract``` keyword), extend other classes (using the ```extends``` keyword) and implement interfaces (using the ```implements``` keyword). An interface is declared with the ```interface``` keyword.
+Classes can be abstract (using the ```abstract``` keyword), extend other classes (using the ```extends``` keyword) and
+implement interfaces (using the ```implements``` keyword). An interface is declared with the ```interface``` keyword.
 
 ```php
 <?php
