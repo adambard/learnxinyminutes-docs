@@ -333,4 +333,6 @@ int area(rect r){
 
 Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language)
 
+Another good resource is [Learn C the hard way](http://c.learncodethehardway.org/book/)
+
 Other than that, Google is your friend.

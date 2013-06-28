@@ -395,7 +395,7 @@ print j.say("hello")  #prints out "Joel: hello"
 i.get_species() #=> "H. sapiens"
 
 # Change the shared attribute
-i.species = "H. neanderthalensis"
+Human.species = "H. neanderthalensis"
 i.get_species() #=> "H. neanderthalensis"
 j.get_species() #=> "H. neanderthalensis"
 
