@@ -132,7 +132,7 @@ f1 / f2; // => 0.5, plus or minus epsilon
 ~0x0F; // => 0xF0 (bitwise negation)
 0x0F & 0xF0; // => 0x00 (bitwise AND)
 0x0F | 0xF0; // => 0xFF (bitwise OR)
-0x04 | 0x0F; // => 0x0A (bitwise XOR)
+0x04 ^ 0x0F; // => 0x0B (bitwise XOR)
 0x01 << 1; // => 0x02 (bitwise left shift (by 1))
 0x02 >> 1; // => 0x01 (bitwise right shift (by 1))
 
