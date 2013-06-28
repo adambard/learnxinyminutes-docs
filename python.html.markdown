@@ -32,7 +32,7 @@ to Python 2.x. Look for another tour of Python 3 soon!
 
 # Division is a bit tricky. It is integer division and floors the results
 # automatically.
-11 / 4 #=> 2
+5 / 2 #=> 2
 
 # To fix division we need to learn about floats.
 2.0     # This is a float
