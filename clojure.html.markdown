@@ -12,6 +12,9 @@ state as it comes up.
 This combination allows it to handle concurrent processing very simply,
 and often automatically.
 
+(You need a version of Clojure 1.2 or newer)
+
+
 ```clojure
 ; Comments start with semicolons.
 
