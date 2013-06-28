@@ -8,6 +8,8 @@ Python was created by Guido Van Rossum in the early 90's. It is now one of the m
 languages in existence. I fell in love with Python for it's syntactic clarity. It's basically
 executable pseudocode.
 
+Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
+
 Note: This article applies to Python 2.7 specifically, but should be applicable
 to Python 2.x. Look for another tour of Python 3 soon!
 
