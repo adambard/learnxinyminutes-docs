@@ -26,7 +26,7 @@ to Python 2.x. Look for another tour of Python 3 soon!
 
 # Math is what you would expect
 1 + 1 #=> 2
-8 - 1 #=> 9
+8 - 1 #=> 7
 10 * 2 #=> 20
 35 / 5 #=> 7
 
@@ -49,10 +49,23 @@ False
 not True #=> False
 not False #=> True
 
-
 # Equality is ==
 1 == 1 #=> True
 2 == 1 #=> False
+
+# Inequality is !=
+1 != 1 #=> False
+2 != 1 #=> True
+
+# More comparisons
+1 < 10 #=> True
+1 > 10 #=> False
+2 <= 2 #=> True
+2 >= 2 #=> True
+
+# Comparisons can be chained  !
+1 < 2 < 3 #=> True
+2 < 3 < 2 #=> False
 
 # Strings are created with " or '
 "This is a string."
@@ -81,8 +94,15 @@ some_var = 5    # Convention is to use lower_case_with_underscores
 some_var #=> 5
 
 # Accessing a previously unassigned variable is an exception
-some_other_var  # Will raise a NameError
+try:
+    some_other_var
+except NameError:
+    print "Raises a name error"
 
+# Conditional Expressions can be used when assigning
+some_var = a if a > b else b
+# If a is greater than b, then a is assigned to some_var.
+# Otherwise b is assigned to some_var.
 
 # Lists store sequences
 li = []
@@ -102,11 +122,16 @@ li.append(3)    # li is now [1, 2, 4, 3] again.
 # Access a list like you would any array
 li[0] #=> 1
 # Look at the last element
-li[-1] #=> 4
-# Looking out of bounds is an IndexError
-li[4] # Raises an IndexError
+li[-1] #=> 3
 
-# You can look at ranges with slice syntax. It's an closed/open range for you mathy types.
+# Looking out of bounds is an IndexError
+try:
+    li[4] # Raises an IndexError
+except IndexError:
+    print "Raises an IndexError"
+
+# You can look at ranges with slice syntax.
+# (It's a closed/open range for you mathy types.)
 li[1:3] #=> [2, 4]
 # Omit the beginning
 li[:3] #=> [1, 2, 4]
@@ -120,7 +145,7 @@ del li[2] # li is now [1, 2, 3]
 li + other_li #=> [1, 2, 3, 4, 5, 6] - Note: li and other_li is left alone
 
 # Concatenate lists with extend
-li.extend(other_li) # Now li is [1, 2, 3, 4, 5, 6] 
+li.extend(other_li) # Now li is [1, 2, 3, 4, 5, 6]
 
 # Check for existence in a list with in
 1 in li #=> True
@@ -131,7 +156,10 @@ len(li) #=> 6
 # Tuples are like lists but are immutable.
 tup = (1, 2, 3)
 tup[0] #=> 1
-tup[0] = 3  # Raises a TypeError
+try:
+    tup[0] = 3  # Raises a TypeError
+except TypeError:
+    print "Tuples cannot be mutated."
 
 # You can do all those list thingies on tuples too
 len(tup) #=> 3
@@ -143,7 +171,7 @@ tup[:2] #=> (1, 2)
 a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
 # Tuples are created by default if you leave out the parentheses
 d, e, f = 4, 5, 6
-# Now look how easy it is to swap to values
+# Now look how easy it is to swap two values
 e, d = d, e     # d is now 5 and e is now 4
 
 
@@ -167,6 +195,21 @@ filled_dict.values() #=> [3, 2, 1]
 # Check for existence of keys in a dictionary with in
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
+
+# Trying to look up a non-existing key will raise a KeyError
+filled_dict["four"] #=> KeyError
+
+# Use get method to avoid the KeyError
+filled_dict.get("one") #=> 1
+filled_dict.get("four") #=> None
+
+# The get method supports a default argument when the value is missing
+filled_dict.get("one", 4) #=> 1
+filled_dict.get("four", 4) #=> 4
+
+# Setdefault method is a safe way to add new key-value pair into dictionary
+filled_dict.setdefault("five", 5) #filled_dict["five"] is set to 5
+filled_dict.setdefault("five", 6) #filled_dict["five"] is still 5
 
 
 # Sets store ... well sets
@@ -216,14 +259,14 @@ prints:
 """
 for animal in ["dog", "cat", "mouse"]:
     # You can use % to interpolate formatted strings
-    print "%s is a mammal" % animal 
+    print "%s is a mammal" % animal
 
 """
 While loops go until a condition is no longer met.
 prints:
     0
     1
-    2 
+    2
     3
 """
 x = 0
@@ -232,10 +275,19 @@ while x < 4:
     x += 1  # Shorthand for x = x + 1
 
 # Handle exceptions with a try/except block
+
+# Works on Python 2.6 and up:
 try:
-    raise IndexError("This is an index error")  # Use raise to raise an error
+    # Use raise to raise an error
+    raise IndexError("This is an index error")
 except IndexError as e:
     pass    # Pass is just a no-op. Usually you would do recovery here.
+
+# Works for Python 2.7 and down:
+try:
+    raise IndexError("This is an index error")
+except IndexError, e: # No "as", comma instead
+    pass
 
 
 ####################################################
@@ -252,20 +304,38 @@ add(5, 6) #=> 11 and prints out "x is 5 and y is 6"
 # Another way to call functions is with keyword arguments
 add(y=6, x=5)   # Keyword arguments can arrive in any order.
 
-# You can define functions that take a variable number of positional arguments
+# You can define functions that take a variable number of
+# positional arguments
 def varargs(*args):
     return args
 
 varargs(1, 2, 3) #=> (1,2,3)
 
 
-# You can define functions that take a variable number of keyword arguments
+# You can define functions that take a variable number of
+# keyword arguments, as well
 def keyword_args(**kwargs):
     return kwargs
 
 # Let's call it to see what happens
 keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
 
+# You can do both at once, if you like
+def all_the_args(*args, **kwargs):
+    print args
+    print kwargs
+"""
+all_the_args(1, 2, a=3, b=4) prints:
+    [1, 2]
+    {"a": 3, "b": 4}
+"""
+
+# You can also use * and ** when calling a function
+args = (1, 2, 3, 4)
+kwargs = {"a": 3, "b": 4}
+foo(*args) # equivalent to foo(1, 2, 3, 4)
+foo(**kwargs) # equivalent to foo(a=3, b=4)
+foo(*args, **kwargs) # equivalent to foo(1, 2, 3, 4, a=3, b=4)
 
 # Python has first class functions
 def create_adder(x):
@@ -273,7 +343,7 @@ def create_adder(x):
         return x + y
     return adder
 
-add_10 = create_adder(10):
+add_10 = create_adder(10)
 add_10(3) #=> 13
 
 # There are also anonymous functions
@@ -329,9 +399,11 @@ print j.say("hello")  #prints out "Joel: hello"
 i.get_species() #=> "H. sapiens"
 
 # Change the shared attribute
-i.species = "H. neanderthalensis"
+Human.species = "H. neanderthalensis"
 i.get_species() #=> "H. neanderthalensis"
 j.get_species() #=> "H. neanderthalensis"
 
 # Call the static method
 Human.grunt() #=> "*grunt*"
+```
+
