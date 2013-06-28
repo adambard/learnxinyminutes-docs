@@ -49,10 +49,23 @@ False
 not True #=> False
 not False #=> True
 
-
 # Equality is ==
 1 == 1 #=> True
 2 == 1 #=> False
+
+# Inequality is !=
+1 != 1 #=> False
+2 != 1 #=> True
+
+# More comparisons
+1 < 10 #=> True
+1 > 10 #=> False
+2 <= 2 #=> True
+2 >= 2 #=> True
+
+# Comparisons can be chained  !
+1 < 2 < 3 #=> True
+2 < 3 < 2 #=> False
 
 # Strings are created with " or '
 "This is a string."
