@@ -200,6 +200,10 @@ filled_dict.values() #=> [3, 2, 1]
 filled_dict["four"] #=> KeyError
 
 # Use get method to avoid the KeyError
+filled_dict.get("one") #=> 1
+filled_dict.get("four") #=> None
+
+# The get method supports a default argument when the value is missing
 filled_dict.get("one", 4) #=> 1
 filled_dict.get("four", 4) #=> 4
 
