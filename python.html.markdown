@@ -122,7 +122,7 @@ li.append(3)    # li is now [1, 2, 4, 3] again.
 # Access a list like you would any array
 li[0] #=> 1
 # Look at the last element
-li[-1] #=> 4
+li[-1] #=> 3
 
 # Looking out of bounds is an IndexError
 try:
@@ -145,7 +145,7 @@ del li[2] # li is now [1, 2, 3]
 li + other_li #=> [1, 2, 3, 4, 5, 6] - Note: li and other_li is left alone
 
 # Concatenate lists with extend
-li.extend(other_li) # Now li is [1, 2, 3, 4, 5, 6] 
+li.extend(other_li) # Now li is [1, 2, 3, 4, 5, 6]
 
 # Check for existence in a list with in
 1 in li #=> True
@@ -259,14 +259,14 @@ prints:
 """
 for animal in ["dog", "cat", "mouse"]:
     # You can use % to interpolate formatted strings
-    print "%s is a mammal" % animal 
+    print "%s is a mammal" % animal
 
 """
 While loops go until a condition is no longer met.
 prints:
     0
     1
-    2 
+    2
     3
 """
 x = 0
