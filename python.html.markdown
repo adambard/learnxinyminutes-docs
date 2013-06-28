@@ -154,7 +154,7 @@ tup[:2] #=> (1, 2)
 a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
 # Tuples are created by default if you leave out the parentheses
 d, e, f = 4, 5, 6
-# Now look how easy it is to swap to values
+# Now look how easy it is to swap two values
 e, d = d, e     # d is now 5 and e is now 4
 
 
