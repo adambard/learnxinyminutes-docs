@@ -59,10 +59,12 @@ and often automatically.
 (class false) ; Booleans are java.lang.Boolean
 (class nil); The "null" value is called nil
 
-; If you want to create a literal list of data, use ' to make a "symbol"
+; If you want to create a literal list of data, use ' to stop it from
+; being evaluated
 '(+ 1 2) ; => (+ 1 2)
+; (shorthand for (quote (+ 1 2))
 
-; You can eval symbols.
+; You can eval a quoted list
 (eval '(+ 1 2)) ; => 3
 
 ; Collections & Sequences
