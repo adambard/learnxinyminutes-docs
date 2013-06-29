@@ -194,13 +194,30 @@ printf("%d\n", (short) 65537); // => 1 (Max short = 65535)
 // Pointers
 ///////////////////////////////////////
 
-// You can retrieve the memory address of your variables,
-// then mess with them.
+// A pointer is a variable declared to store a memory address. Its declaration will
+// also tell you the type of data it points to. You can retrieve the memory address 
+// of your variables, then mess with them.
 
 int x = 0;
 printf("%p\n", &x); // Use & to retrieve the address of a variable
 // (%p formats a pointer)
 // => Prints some address in memory;
+
+// Pointer types end with * in their declaration
+int* px; // px is a pointer to an int
+px = &x; // Stores the address of x in px
+printf("%p\n", px); // => Prints some address in memory
+
+// To retreive the value at the address a pointer is pointing to,
+// put * in front to de-reference it.
+printf("%d\n", *px); // => Prints 0, the value of x, which is what px is pointing to the address of
+
+// You can also change the value the pointer is pointing to.
+// We'll have to wrap the de-reference in parenthesis because
+// ++ has a higher precedence than *.
+(*px)++; // Increment the value px is pointing to by 1
+printf("%d\n", *px); // => Prints 1
+printf("%d\n", x); // => Prints 1
 
 int x_array[20]; // Arrays are a good way to allocate a contiguous block of memory
 int xx;
@@ -208,12 +225,11 @@ for(xx=0; xx<20; xx++){
     x_array[xx] = 20 - xx;
 } // Initialize x_array to 20, 19, 18,... 2, 1
 
-// Pointer types end with *
+// Declare a pointer of type int and initialize it to point to x_array
 int* x_ptr = x_array;
-// This works because arrays are pointers to their first element.
+// This works because an array name is bound to the address of its first element
 
-// Put a * in front to de-reference a pointer and retrieve the value,
-// of the same type as the pointer, that the pointer is pointing at.
+// Arrays are pointers to their first element
 printf("%d\n", *(x_ptr)); // => Prints 20
 printf("%d\n", x_array[0]); // => Prints 20
 
