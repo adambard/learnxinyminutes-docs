@@ -39,10 +39,10 @@ false #=> falsehood
 !false #=> true
 
 # More comparisons
-1 < 10 #=> True
-1 > 10 #=> False
-2 <= 2 #=> True
-2 >= 2 #=> True
+1 < 10 #=> true
+1 > 10 #=> false
+2 <= 2 #=> true
+2 >= 2 #=> true
 
 'I am a string'
 "I am a string too"
