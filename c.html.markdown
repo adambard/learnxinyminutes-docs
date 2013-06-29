@@ -50,8 +50,8 @@ short x_short = 0;
 char x_char = 0;
 char y_char = 'y'; // Char literals are quoted with ''
 
-long x_long = 0; // Still 32 bytes for historical reasons
-long long x_long_long = 0; // Guaranteed to be at least 64 bytes
+long x_long = 0; // Still 32 bits for historical reasons
+long long x_long_long = 0; // Guaranteed to be at least 64 bits
 
 // 32-bit floating-point decimal
 float x_float = 0.0;
