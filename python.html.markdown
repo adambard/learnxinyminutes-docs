@@ -34,11 +34,11 @@ to Python 2.x. Look for another tour of Python 3 soon!
 
 # Division is a bit tricky. It is integer division and floors the results
 # automatically.
-11 / 4 #=> 2
+5 / 2 #=> 2
 
 # To fix division we need to learn about floats.
 2.0     # This is a float
-5.0 / 2.0 #=> 2.5 ahhh...much better
+11.0 / 4.0 #=> 2.75 ahhh...much better
 
 # Enforce precedence with parentheses
 (1 + 3) * 2 #=> 8
