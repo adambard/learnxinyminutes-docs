@@ -225,6 +225,7 @@ for(xx=0; xx<20; xx++){
     x_array[xx] = 20 - xx;
 } // Initialize x_array to 20, 19, 18,... 2, 1
 
+// Declare a pointer of type int and initialize it to point to x_array
 int* x_ptr = x_array;
 // This works because an array name is bound to the address of its first element
 
