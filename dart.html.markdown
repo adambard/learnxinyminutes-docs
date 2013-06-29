@@ -201,7 +201,7 @@ example15() {
     try {
       throw "Some unexpected error.";
     } catch (e) {
-      print("Example15 null value causes an exception: '${e}'");
+      print("Example15 an exception: '${e}'");
       throw e; // Re-throw
     }
   } catch (e) {
