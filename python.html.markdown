@@ -373,7 +373,58 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 [x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
 
 ####################################################
-## 5. Classes
+## 5. File Operations
+####################################################
+
+# We use open to open a file
+f = open('text.txt') # open returns a read-only file object
+
+# Use another parameter to indicate the mode
+f = open('text.txt', 'w') # f is write-only
+f = open('text.txt', 'r') # f is read-only
+# 'r+' for both readable and writable
+# 'rb' and 'wb' for binary mode
+
+# read
+f.read()      # => "line1\nline2\nline3\n"
+f.read()      # => "" # The position of f is at the end of file.
+
+f.seek(0)     # Move the position of f to the beginning.
+f.readline()  # => "line1\n"
+f.readline()  # => "line2\n"
+f.readline()  # => "line3\n"
+
+f.seek(0)
+f.readlines() # => ['line1\n', 'line2\n', 'line3\n']
+
+# Use file object as an iterator
+f.seek(0)
+for line in f:
+    print line # print each lines in f
+
+# Use close to close a file after all operations are completed.
+f.close()
+
+# write
+f = open('text.txt', 'w')
+
+f.write('line4\n')
+f.writelines(['line5\n', 'line6\n', 'line7\n'])
+# Line seperators will not be added by writelines automatically.
+
+f.close()
+
+# 'with' statement
+with open("text.txt") as f:
+    doSomething(f)
+# equivalent to 
+f = open('text.txt')
+doSomething(f)
+f.close()
+
+
+####################################################
+## 6. Classes
 ####################################################
 
 # We subclass from object to get a class.
