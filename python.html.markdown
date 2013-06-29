@@ -134,9 +134,9 @@ except IndexError:
 # (It's a closed/open range for you mathy types.)
 li[1:3] #=> [2, 4]
 # Omit the beginning
-li[:3] #=> [1, 2, 4]
-# Omit the end
 li[2:] #=> [4, 3]
+# Omit the end
+li[:3] #=> [1, 2, 4]
 
 # Remove arbitrary elements from a list with del
 del li[2] # li is now [1, 2, 3]
