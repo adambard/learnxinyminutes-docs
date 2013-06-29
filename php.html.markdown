@@ -417,7 +417,7 @@ final class YouCannotExtendMe {
 }
 ```
 
-Classes are insantiated with the ```new``` keyword. Functions are referred to as
+Classes are instantiated with the ```new``` keyword. Functions are referred to as
 methods if they belong to a class.
 
 ```php
