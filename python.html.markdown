@@ -234,7 +234,7 @@ filled_set = {1 2 2 3 4} # => {1 2 3 4}
 filled_set.add(5) # filled_set is now {1, 2, 3, 4, 5}
 
 # Do set intersection with &
-other_set = set{3, 4, 5, 6}
+other_set = set([3, 4, 5, 6])
 filled_set & other_set #=> {3, 4, 5}
 
 # Do set union with |
