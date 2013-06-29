@@ -228,7 +228,7 @@ empty_set = set()
 some_set = set([1,2,2,3,4]) # filled_set is now set([1, 2, 3, 4])
 
 # Since Python 2.7, {} can be used to declare a set
-filled_set = {1 2 2 3 4} # => {1 2 3 4}
+filled_set = {1, 2, 2, 3, 4} # => {1 2 3 4}
 
 # Add more items to a set
 filled_set.add(5) # filled_set is now {1, 2, 3, 4, 5}
