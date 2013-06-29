@@ -42,7 +42,7 @@ doStuff()
 35 / 5 // = 7
 
 // Uneven division works how you'd expect, too.
-5 / 2 # = 2.5
+5 / 2 // = 2.5
 
 // Enforce precedence with parentheses
 (1 + 3) * 2 // = 8
@@ -68,10 +68,10 @@ false
 2 != 1 // = true
 
 // More comparisons
-1 < 10 #=> True
-1 > 10 #=> False
-2 <= 2 #=> True
-2 >= 2 #=> True
+1 < 10 // => True
+1 > 10 // => False
+2 <= 2 // => True
+2 >= 2 // => True
 
 // Strings are concatenated with +
 "Hello " + "world!" // = "Hello world!"
