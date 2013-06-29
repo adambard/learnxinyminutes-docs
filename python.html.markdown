@@ -217,18 +217,23 @@ filled_dict.setdefault("five", 6) #filled_dict["five"] is still 5
 # Sets store ... well sets
 empty_set = set()
 # Initialize a set with a bunch of values
-filled_set = set([1,2,2,3,4]) # filled_set is now set([1, 2, 3, 4])
+some_set = set([1,2,2,3,4]) # filled_set is now set([1, 2, 3, 4])
+
+# Since Python 2.7, {} can be used to declare a set
+filled_set = {1 2 2 3 4} # => {1 2 3 4}
 
 # Add more items to a set
-filled_set.add(5) # filled_set is now set([1, 2, 3, 4, 5])
+filled_set.add(5) # filled_set is now {1, 2, 3, 4, 5}
 
 # Do set intersection with &
-other_set = set([3, 4, 5 ,6])
-filled_set & other_set #=> set([3, 4, 5])
+other_set = set{3, 4, 5, 6}
+filled_set & other_set #=> {3, 4, 5}
+
 # Do set union with |
-filled_set | other_set #=> set([1, 2, 3, 4, 5, 6])
+filled_set | other_set #=> {1, 2, 3, 4, 5, 6}
+
 # Do set difference with -
-set([1,2,3,4]) - set([2,3,5]) #=> set([1, 4])
+{1,2,3,4} - {2,3,5} #=> {1, 4}
 
 # Check for existence in a set with in
 2 in filled_set #=> True
