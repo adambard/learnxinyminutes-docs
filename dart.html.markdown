@@ -497,7 +497,7 @@ main() {
 
 ## Further Reading
 
-Dart has a compreenshive web-site. It covers API reference, tutorials, articles and more, including a
+Dart has a comprehenshive web-site. It covers API reference, tutorials, articles and more, including a
 useful Try Dart online.
 http://www.dartlang.org/
 http://try.dartlang.org/
