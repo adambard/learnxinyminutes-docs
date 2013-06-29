@@ -36,38 +36,23 @@ System.out.println("Integer: "+10+"Double: "+3.14+ "Boolean: "+true);
 // Types
 ///////////////////////////////////////
 
-// You have to declare variables before using them. A variable declaration
-// requires you to specify its type; a variable's type determines its size
-// in bytes.
+// Byte - 8-bit signed two's complement integer (-128 <= byte <= 127)
 
-// Integers
-int x_int = 0;
+// Short - 16-bit signed two's complement integer (-32,768 <= short <= 32,767)
 
-// shorts are usually 2 bytes
-short x_short = 0;
+//Integer - 32-bit signed two's complement integer (-2,147,483,648 <= int <= 2,147,483,647)
+int x = 1;
 
-// chars are guaranteed to be 1 byte
-char x_char = 0;
-char y_char = 'y'; // Char literals are quoted with ''
+//Long - 64-bit signed two's complement integer (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
 
-// longs are often 4 to 8 bytes; long longs are guaranteed to be at least
-// 64 bits
-long x_long = 0;
-long long x_long_long = 0; 
+//Float - Single-precision 32-bit IEEE 754 Floating Point
 
-// floats are usually 32-bit floating point numbers
-float x_float = 0.0;
+//Double - Double-precision 64-bit IEEE 754 Floating Point
 
-// doubles are usually 64-bit floating-point numbers
-double x_double = 0.0;
+//Boolean - True & False
 
-// Integral types may be unsigned. This means they can't be negative, but
-// the maximum value of an unsigned variable is greater than the maximum
-// value of the same size.
-unsigned char ux_char;
-unsigned short ux_short;
-unsigned int ux_int;
-unsigned long long ux_long_long;
+//Char - A single 16-bit Unicode character
+
 
 // Other than char, which is always 1 byte, these types vary in size depending
 // on your machine. sizeof(T) gives you the size of a variable with type T in 
