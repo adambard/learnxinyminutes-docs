@@ -8,6 +8,8 @@ Python was created by Guido Van Rossum in the early 90's. It is now one of the m
 languages in existence. I fell in love with Python for it's syntactic clarity. It's basically
 executable pseudocode.
 
+Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
+
 Note: This article applies to Python 2.7 specifically, but should be applicable
 to Python 2.x. Look for another tour of Python 3 soon!
 
@@ -167,7 +169,7 @@ tup + (4, 5, 6) #=> (1, 2, 3, 4, 5, 6)
 tup[:2] #=> (1, 2)
 2 in tup #=> True
 
-# However, you can unpack tuples into variables
+# You can unpack tuples into variables
 a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
 # Tuples are created by default if you leave out the parentheses
 d, e, f = 4, 5, 6
