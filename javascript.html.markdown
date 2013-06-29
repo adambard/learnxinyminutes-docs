@@ -111,4 +111,12 @@ some_other_var = 10
 /***********
  * 4. Objects
  ***********/
+
+/***********
+ * 5. Functions, Scope and Closures
+ ***********/
+
+/***********
+ * 6. Constructors and Prototypes
+ ***********/
 ```
