@@ -297,8 +297,8 @@ int add_two_ints(int x1, int x2){
 }
 
 /*
-Pointers are passed-by-reference (duh), so functions
-can mutate their values.
+Functions are pass-by-value, but you can make your own references
+with pointers so functions can mutate their values.
 
 Example: in-place string reversal
 */
