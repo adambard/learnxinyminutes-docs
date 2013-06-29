@@ -80,6 +80,13 @@ not False #=> True
 # A string can be treated like a list of characters
 "This is a string"[0] #=> 'T'
 
+# % can be used to format strings, like this:
+"%s can be %s" % ("strings", "interpolated")
+
+# A newer way to format strings is the format method.
+# This method is the preferred way
+"{0} can be {1}".format("strings", "formatted")
+
 # None is an object
 None #=> None
 
