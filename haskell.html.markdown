@@ -104,6 +104,10 @@ snd ("haskell", 1) -- 1
 -- A simple function that takes two variables
 add a b = a + b
 
+-- Note that if you are using ghci (the Haskell interpreter)
+-- You'll need to use `let`, i.e.
+-- let add a b = a + b
+
 -- Using the function
 add 1 2 -- 3
 
