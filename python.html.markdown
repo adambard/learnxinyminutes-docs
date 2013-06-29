@@ -110,9 +110,10 @@ except NameError:
     print "Raises a name error"
 
 # if can be used as an expression
-some_var = 10 if some_var < 10 else some_var
-# If a is greater than b, then a is assigned to some_var.
-# Otherwise b is assigned to some_var.
+some_other_var = 20
+some_var = 10 if some_var > 10 else some_other_var
+# If some_var is greater than 10, then 10 is assigned to some_var.
+# Otherwise some_other_var is assigned to some_var.
 
 # Lists store sequences
 li = []
@@ -351,9 +352,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # You can also use * and ** when calling a function
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args) # equivalent to foo(1, 2, 3, 4)
-all_the_args(**kwargs) # equivalent to foo(a=3, b=4)
-all_the_args(*args, **kwargs) # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args) # equivalent to all_the_args(1, 2, 3, 4)
+all_the_args(**kwargs) # equivalent to all_the_args(a=3, b=4)
+all_the_args(*args, **kwargs) # equivalent to all_the_args(1, 2, 3, 4, a=3, b=4)
 
 # Python has first class functions
 def create_adder(x):
