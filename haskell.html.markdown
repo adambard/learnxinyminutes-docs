@@ -50,10 +50,10 @@ not False -- True
 'You cant use single quotes for strings.' -- error!
 
 -- Strings can be added too!
-"Hello " ++ "world!" #=> "Hello world!"
+"Hello " ++ "world!" -- "Hello world!"
 
 -- A string can be treated like a list of characters
-"This is a string" !! 0 #=> 'T'
+"This is a string" !! 0 -- 'T'
 
 
 ----------------------------------------------------
@@ -75,11 +75,9 @@ not False -- True
 0:[1..5] -- [0, 1, 2, 3, 4, 5]
 
 -- indexing into a list
-
 [0..] !! 5 -- 4
 
 -- more list operations
-
 head [1..5] -- 1
 tail [1..5] -- [2, 3, 4, 5]
 init [1..5] -- [1, 2, 3, 4]
@@ -89,7 +87,7 @@ last [1..5] -- 5
 [x*2 | x <- [1..5]] -- [2, 4, 6, 8, 10]
 
 -- with a conditional
-[x*2 | x <- [1..5], x*2 > 4] # [6, 8, 10]
+[x*2 | x <- [1..5], x*2 > 4] -- [6, 8, 10]
 
 -- Every element in a tuple can be a different type, but a tuple has a fixed length.
 -- A tuple:
@@ -112,9 +110,7 @@ add 1 2 -- 3
 1 `add` 2 -- 3
 
 -- You can also define functions that have no characters! This lets you define
--- your own operators:
-
--- Here's an operator that does integer division
+-- your own operators! Here's an operator that does integer division
 (//) a b = a `div` b
 35 // 4 -- 8
 
@@ -123,20 +119,19 @@ fib x
   | x < 2 = x
   | otherwise = fib (x - 1) + fib (x - 2)
 
--- You can do the same thing with pattern matching.
+-- Pattern matching is similar. Here we have given three different
+-- definitions for fib. Haskell will automatically call the first
+-- function that matches the pattern of the value. 
 fib 1 = 1
 fib 2 = 2
 fib x = fib (x - 1) + fib (x - 2)
-
--- So we have given three different definitions for fib.
--- Haskell will automatically call the first function that matches
--- the pattern of the value. 
 
 -- Pattern matching on tuples:
 foo (x, y) = (x + 1, y + 2)
 
 -- Pattern matching on arrays. Here `x` is the first element
--- in the array, and `xs` is the rest of the array:
+-- in the array, and `xs` is the rest of the array. We can write
+-- our own map function:
 map func [x] = [func x]
 map func (x:xs) = func x:(map func xs)
 
@@ -149,12 +144,12 @@ map (\x -> x + 2) [1..5] -- [3, 4, 5, 6, 7]
 foldl1 (\acc x -> acc + x) [1..5] -- 15
 
 ----------------------------------------------------
--- 4. Some fancy things you can do with functions
+-- 4. More functions
 ----------------------------------------------------
 
 -- currying: if you don't pass in all the arguments to a function,
-it gets "curried". That means it returns a function that takes the 
-rest of the arguments.
+-- it gets "curried". That means it returns a function that takes the 
+-- rest of the arguments.
 
 add a b = a + b
 foo = add 10 -- foo is now a function that takes a number and adds 10 to it
@@ -165,10 +160,9 @@ foo = (+10)
 foo 5 -- 15
 
 -- function composition
-the (.) function chains functions together.
-For example, here foo is a function that takes a value. It adds 10 to it,
-multiplies the result of that by 5, and then returns the final value.
-
+-- the (.) function chains functions together.
+-- For example, here foo is a function that takes a value. It adds 10 to it,
+-- multiplies the result of that by 5, and then returns the final value.
 foo = (*5) . (+10)
 
 -- (5 + 10) * 5 = 75
@@ -176,9 +170,9 @@ foo 5 -- 75
 
 -- fixing precedence
 -- Haskell has another function called `$`. This changes the precedence
-so that everything to the left of it gets computed first and then applied
-to everything on the right. You can use `.` and `$` to get rid of a lot
-of parentheses:
+-- so that everything to the left of it gets computed first and then applied
+-- to everything on the right. You can use `.` and `$` to get rid of a lot
+-- of parentheses:
 
 -- before
 (even (double 7)) -- true
@@ -190,18 +184,18 @@ even . double $ 7 -- true
 -- 5. Type signatures
 ----------------------------------------------------
 
-Haskell has a very strong type system, and everything has a type signature.
+-- Haskell has a very strong type system, and everything has a type signature.
 
-Some basic types:
+-- Some basic types:
 5 :: Integer
 "hello" :: String
 True :: Bool
 
-Functions have types too.
-Not takes a boolean and returns a boolean:
+-- Functions have types too.
+-- `not` takes a boolean and returns a boolean:
 not :: Bool -> Bool
 
-Here's a function that takes two arguments:
+-- Here's a function that takes two arguments:
 add :: Integer -> Integer -> Integer
 
 ----------------------------------------------------
@@ -216,19 +210,13 @@ haskell = if 1 == 1
             then "awesome"
             else "awful"
 
--- case statements
-
--- Here's how you could parse command line arguments in Haskell
-
+-- case statements: Here's how you could parse command line arguments in Haskell 
 case args of
   "help" -> printHelp
   "start" -> startProgram
   _ -> putStrLn "bad args"
 
-
--- loops: recursion
 -- Haskell doesn't have loops because it uses recursion instead.
-
 -- map a function over every element in an array
 
 map (*2) [1..5] -- [2, 4, 6, 8, 10]
@@ -237,8 +225,10 @@ map (*2) [1..5] -- [2, 4, 6, 8, 10]
 for array func = map func array
 
 -- and then use it
+for [0..5] $ \i -> show i
 
-for [0..5] $ \i -> print i
+-- we could've written that like this too:
+for [0..5] show
 
 ----------------------------------------------------
 -- 7. Data Types
@@ -248,7 +238,7 @@ for [0..5] $ \i -> print i
 
 data Color = Red | Blue | Green
 
-Now you can use it in a function:
+-- Now you can use it in a function:
 
 say :: Color -> IO String
 say Red = putStrLn "You are Red!"
@@ -288,3 +278,5 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
     where lesser  = filter (< p) xs
           greater = filter (>= p) xs
 ```
+
+Haskell is easy to install. Get it [here](http://www.haskell.org/platform/).
