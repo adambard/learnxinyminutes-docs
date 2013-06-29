@@ -4,7 +4,7 @@ author: Joao Pedrosa
 author_url: github.com/jpedrosa/
 ---
 
-Dart is a nwecomer into the realm of programming languages.
+Dart is a newcomer into the realm of programming languages.
 It borrows a lot from other mainstream languages, having as a goal not to deviate too much from
 its JavaScript sibling. Like JavaScript, Dart aims for great browser integration.
 
