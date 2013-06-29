@@ -110,9 +110,10 @@ except NameError:
     print "Raises a name error"
 
 # if can be used as an expression
-some_var = a if a > b else b
-# If a is greater than b, then a is assigned to some_var.
-# Otherwise b is assigned to some_var.
+some_other_var = 20
+some_var = 10 if some_var > 10 else some_other_var
+# If some_var is greater than 10, then 10 is assigned to some_var.
+# Otherwise some_other_var is assigned to some_var.
 
 # Lists store sequences
 li = []
@@ -207,7 +208,10 @@ filled_dict.values() #=> [3, 2, 1]
 1 in filled_dict #=> False
 
 # Trying to look up a non-existing key will raise a KeyError
-filled_dict["four"] #=> KeyError
+try:
+    filled_dict["four"] #=> KeyError
+except KeyError:
+    print "Looking up non-existing key raises KeyError"
 
 # Use get method to avoid the KeyError
 filled_dict.get("one") #=> 1
@@ -234,7 +238,7 @@ filled_set = {1, 2, 2, 3, 4} # => {1 2 3 4}
 filled_set.add(5) # filled_set is now {1, 2, 3, 4, 5}
 
 # Do set intersection with &
-other_set = set{3, 4, 5, 6}
+other_set = set([3, 4, 5, 6])
 filled_set & other_set #=> {3, 4, 5}
 
 # Do set union with |
@@ -348,9 +352,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # You can also use * and ** when calling a function
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-foo(*args) # equivalent to foo(1, 2, 3, 4)
-foo(**kwargs) # equivalent to foo(a=3, b=4)
-foo(*args, **kwargs) # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args) # equivalent to all_the_args(1, 2, 3, 4)
+all_the_args(**kwargs) # equivalent to all_the_args(a=3, b=4)
+all_the_args(*args, **kwargs) # equivalent to all_the_args(1, 2, 3, 4, a=3, b=4)
 
 # Python has first class functions
 def create_adder(x):
