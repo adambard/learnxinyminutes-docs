@@ -101,7 +101,7 @@ try:
 except NameError:
     print "Raises a name error"
 
-# Conditional Expressions can be used when assigning
+# if can be used as an expression
 some_var = a if a > b else b
 # If a is greater than b, then a is assigned to some_var.
 # Otherwise b is assigned to some_var.
