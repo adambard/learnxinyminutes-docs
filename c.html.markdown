@@ -293,7 +293,7 @@ function_1();
 // <return type> <function name>(<args>)
 
 int add_two_ints(int x1, int x2){
-    return x1 + x2; // Use return a return a value
+    return x1 + x2; // Use return to return a value
 }
 
 /*
