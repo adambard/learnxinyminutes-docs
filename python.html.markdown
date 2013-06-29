@@ -409,3 +409,7 @@ j.get_species() #=> "H. neanderthalensis"
 Human.grunt() #=> "*grunt*"
 ```
 
+## Further Reading
+
+Still up for more? Try [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
+
