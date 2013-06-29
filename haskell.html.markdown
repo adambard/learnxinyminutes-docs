@@ -89,7 +89,8 @@ last [1..5] -- 5
 -- with a conditional
 [x*2 | x <- [1..5], x*2 > 4] -- [6, 8, 10]
 
--- Every element in a tuple can be a different type, but a tuple has a fixed length.
+-- Every element in a tuple can be a different type, but a tuple has a
+-- fixed length.
 -- A tuple:
 ("haskell", 1)
 
@@ -106,11 +107,13 @@ add a b = a + b
 -- Using the function
 add 1 2 -- 3
 
--- You can also put the function name between the two arguments with backticks:
+-- You can also put the function name between the two arguments
+-- with backticks:
 1 `add` 2 -- 3
 
--- You can also define functions that have no characters! This lets you define
--- your own operators! Here's an operator that does integer division
+-- You can also define functions that have no characters! This lets
+-- you define your own operators! Here's an operator that does
+-- integer division
 (//) a b = a `div` b
 35 // 4 -- 8
 
@@ -135,12 +138,13 @@ foo (x, y) = (x + 1, y + 2)
 map func [x] = [func x]
 map func (x:xs) = func x:(map func xs)
 
--- Anonymous functions are created with a backslash followed by all the arguments.
+-- Anonymous functions are created with a backslash followed by
+-- all the arguments.
 map (\x -> x + 2) [1..5] -- [3, 4, 5, 6, 7]
 
--- using fold (called `inject` in some languages) with an anonymous function.
--- foldl1 means fold left, and use the first value in the array as the initial
--- value for the accumulator.
+-- using fold (called `inject` in some languages) with an anonymous
+-- function. foldl1 means fold left, and use the first value in the
+-- array as the initial value for the accumulator.
 foldl1 (\acc x -> acc + x) [1..5] -- 15
 
 ----------------------------------------------------
@@ -210,7 +214,7 @@ haskell = if 1 == 1
             then "awesome"
             else "awful"
 
--- case statements: Here's how you could parse command line arguments in Haskell 
+-- case statements: Here's how you could parse command line arguments
 case args of
   "help" -> printHelp
   "start" -> startProgram
@@ -280,3 +284,6 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
 ```
 
 Haskell is easy to install. Get it [here](http://www.haskell.org/platform/).
+
+You can find a much gentler introduction from the excellent [Learn you a Haskell](http://learnyouahaskell.com/)
+
