@@ -1,7 +1,7 @@
 ---
 language: Dart
 author: Joao Pedrosa
-author_url: github.com/jpedrosa/
+author_url: https://github.com/jpedrosa/
 ---
 
 Dart is a newcomer into the realm of programming languages.
