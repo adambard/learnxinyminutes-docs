@@ -15,8 +15,9 @@ to Python 2.x. Look for another tour of Python 3 soon!
 
 ```python
 # Single line comments start with a hash.
-""" Multiline comments can we written
-    using three "'s
+""" Multiline strings can we written
+    using three "'s, and are often used
+    as comments
 """
 
 ####################################################
