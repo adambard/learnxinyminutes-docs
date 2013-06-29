@@ -110,7 +110,7 @@ except NameError:
     print "Raises a name error"
 
 # if can be used as an expression
-some_var = a if a > b else b
+some_var = 10 if some_var < 10 else some_var
 # If a is greater than b, then a is assigned to some_var.
 # Otherwise b is assigned to some_var.
 
@@ -207,7 +207,10 @@ filled_dict.values() #=> [3, 2, 1]
 1 in filled_dict #=> False
 
 # Trying to look up a non-existing key will raise a KeyError
-filled_dict["four"] #=> KeyError
+try:
+    filled_dict["four"] #=> KeyError
+except KeyError:
+    print "Looking up non-existing key raises KeyError"
 
 # Use get method to avoid the KeyError
 filled_dict.get("one") #=> 1
@@ -348,9 +351,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # You can also use * and ** when calling a function
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-foo(*args) # equivalent to foo(1, 2, 3, 4)
-foo(**kwargs) # equivalent to foo(a=3, b=4)
-foo(*args, **kwargs) # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args) # equivalent to foo(1, 2, 3, 4)
+all_the_args(**kwargs) # equivalent to foo(a=3, b=4)
+all_the_args(*args, **kwargs) # equivalent to foo(1, 2, 3, 4, a=3, b=4)
 
 # Python has first class functions
 def create_adder(x):
