@@ -6,15 +6,8 @@ author_url: http://emarref.net/
 
 This document describes PHP 5+.
 
-## [Basic Syntax](http://www.php.net/manual/en/language.basic-syntax.php)
-
-All statements must end with a semi-colon; All PHP code must be between <?php and ?> tags. PHP can also be
-configured to respect the [short open tags](http://www.php.net/manual/en/ini.core.php#ini.short-open-tag) <? and ?>.
-
-## [Comments](http://www.php.net/manual/en/language.basic-syntax.comments.php)
-
 ```php
-<?php
+<?php // PHP code must be enclosed with <?php ? > tags
 
 // Two forward slashes start a one-line comment.
 
@@ -24,27 +17,36 @@ configured to respect the [short open tags](http://www.php.net/manual/en/ini.cor
      Surrounding text in slash-asterisk and asterisk-slash
      makes it a multi-line comment.
 */
-```
 
-## [Types](http://www.php.net/manual/en/language.types.php)
+// Use "echo" or "print" to print output
+print('Hello '); // Prints "Hello " with no line break
 
-Types are [weakly typed](http://en.wikipedia.org/wiki/Strong_and_weak_typing) and begin with the $ symbol.
-A valid variable name starts with a letter or underscore, followed by any number of letters, numbers, or underscores.
+// () are optional for print and echo
+echo 'World\n'; // Prints "World" with a line break
+// (all statements must end with a semicolon)
 
-### Scalars
-
-```php
+// Anything outside <?php tags is echoed automatically
+?>Hello World Again!
 <?php
+
+
+/************************************
+ * Types & Variables
+ */
+
+// Variables begin with the $ symbol.
+// A valid variable name starts with a letter or underscore,
+// followed by any number of letters, numbers, or underscores.
 
 // Boolean values are case-insensitive
 $boolean = true; // or TRUE or True
 $boolean = false; // or FALSE or False
 
 // Integers
-$integer = 1234; // decimal number
-$integer = -123; // a negative number
-$integer = 0123; // octal number (equivalent to 83 decimal)
-$integer = 0x1A; // hexadecimal number (equivalent to 26 decimal)
+$int1 = 19; // => 19
+$int2 = -19; // => -19
+$int3 = 019; // => 15 (a leading 0 denotes an octal number)
+$int4 = 0x0F; // => 15 (a leading 0x denotes a hex literal)
 
 // Floats (aka doubles)
 $float = 1.234;
@@ -52,28 +54,30 @@ $float = 1.2e3;
 $float = 7E-10;
 
 // Arithmetic
-$sum = $number + $float;
-$difference = $number - $float;
-$product = $number * $float;
-$quotient = $number / $float;
+$sum = 1 + 1; // 2
+$difference = 2 - 1; // 1
+$product = 2 * 2; // 4
+$quotient = 2 / 1; // 2
 
 // Shorthand arithmetic
+$number = 0;
 $number += 1; // Add 1 to $number
-$number++; // Add 1 to $number after it is used
-++$number; // Add 1 to $number before it is used.
-$number /= $float // Divide and assign the quotient to $number
+echo $number++; // Prints 1 (increments after evaluation)
+echo ++$number; // Prints 3 (increments before evalutation)
+$number /= $float; // Divide and assign the quotient to $number
 
 // Strings should be enclosed in single quotes;
 $sgl_quotes = '$String'; // => '$String'
 
 // Avoid using double quotes except to embed other variables
-$dbl_quotes = "This is a $sgl_quotes." // => 'This is a $String'
+$dbl_quotes = "This is a $sgl_quotes."; // => 'This is a $String'
 
-// Escape special characters with backslash
+// Special characters are only escaped in double quotes
 $escaped = "This contains a \t tab character.";
+$unescaped = 'This just contains a slash and a t: \t';
 
 // Enclose a variable in curly braces if needed
-$money = "I have $${integer} in the bank."
+$money = "I have $${number} in the bank.";
 
 // Since PHP 5.3, nowdocs can be used for uninterpolated multi-liners
 $nowdoc = <<<'END'
@@ -81,35 +85,40 @@ Multi line
 string
 END;
 
+// Heredocs will do string interpolation
 $heredoc = <<<END
 Multi line
 $sgl_quotes
-END; // Nowdoc syntax is available in PHP 5.3.0
+END;
 
-// Manipulation
-$concatenated = $sgl_quotes . $dbl_quotes;
-```
+// String concatenation is done with .
+echo 'This string ' . 'is concatenated';
 
-### Compound
 
-```php
-<?php
+/********************************
+ * Arrays
+ */
 
-// Arrays
-$array = array(1, 2, 3);
-$array = [1, 2, 3]; // As of PHP 5.4
-$string = ["One", "Two", "Three"];
-$string[0]; // Holds the value "One";
+// All arrays in PHP are associative arrays (hashmaps),
 
 // Associative arrays, known as hashmaps in some languages.
-$associative = ["One" => 1, "Two" => 2, "Three" => 3];
-$associative["One"]; // Holds the value 1
-```
 
-## Output
+// Works with all PHP versions
+$associative = array('One' => 1, 'Two' => 2, 'Three' => 3);
 
-```php
-<?php
+// PHP 5.4 introduced a new syntax
+$associative = ['One' => 1, 'Two' => 2, 'Three' => 3];
+
+echo $associative['One']; // prints "1"
+
+// List literals implicitly assign integer keys
+$array = ['One', 'Two', 'Three'];
+echo $array[0]; // => "One"
+
+
+/********************************
+ * Output
+ */
 
 echo('Hello World!');
 // Prints Hello World! to stdout.
@@ -121,133 +130,127 @@ print('Hello World!'); // The same as echo
 echo 'Hello World!';
 print 'Hello World!'; // So is print
 
+$paragraph = 'paragraph';
+
 echo 100;
-echo $variable;
-echo function_result();
+echo $paragraph;
 
 // If short open tags are configured, or your PHP version is
 // 5.4.0 or greater, you can use the short echo syntax
-<?= $variable ?>
-```
-
-## [Operators](http://www.php.net/manual/en/language.operators.php)
-
-### Assignment
-
-```php
+?>
+<p><?= $paragraph ?></p>
 <?php
 
 $x = 1;
 $y = 2;
 $x = $y; // A now contains the same value sa $y
-$x = &$y;
+$z = &$y;
 // $x now contains a reference to $y. Changing the value of
 // $x will change the value of $y also, and vice-versa.
-```
 
-### Comparison
+echo $x; // => 2
+echo $z; // => 2
+$y = 0;
+echo $x; // => 2
+echo $z; // => 0
 
-```php
-<?php
+
+/********************************
+ * Logic
+ */
+$a = 0;
+$b = '0';
+$c = '1';
+$d = '1';
+
+// assert throws a warning if its argument is not true
 
 // These comparisons will always be true, even if the types aren't the same.
-$a == $b // TRUE if $a is equal to $b after type juggling.
-$a != $b // TRUE if $a is not equal to $b after type juggling.
-$a <> $b // TRUE if $a is not equal to $b after type juggling.
-$a < $b    // TRUE if $a is strictly less than $b.
-$a > $b // TRUE if $a is strictly greater than $b.
-$a <= $b // TRUE if $a is less than or equal to $b.
-$a >= $b // TRUE if $a is greater than or equal to $b.
+assert($a == $b); // equality
+assert($b != $a); // inequality
+assert($a <> $b); // alternative inequality
+assert($a < $c);
+assert($c > $b);
+assert($a <= $b);
+assert($c >= $d);
 
 // The following will only be true if the values match and are the same type.
-$a === $b // TRUE if $a is equal to $b, and they are of the same type.
-$a !== $b // TRUE if $a is not equal to $b, or they are not of the same type.
-1 == '1' // TRUE
-1 === '1' // FALSE
-```
+assert($c === $d);
+assert($a !== $d);
+assert(1 == '1');
+assert(1 !== '1');
 
-## [Type Juggling](http://www.php.net/manual/en/language.types.type-juggling.php)
-
-Variables can be converted between types, depending on their usage.
-
-```php
-<?php
+// Variables can be converted between types, depending on their usage.
 
 $integer = 1;
-echo $integer + $integer; // Outputs 2;
+echo $integer + $integer; // => 2
 
 $string = '1';
-echo $string + $string;
-// Also outputs 2 because the + operator converts the strings to integers
+echo $string + $string; // => 2 (strings are coerced to integers)
 
 $string = 'one';
-echo $string + $string;
+echo $string + $string; // => 0
 // Outputs 0 because the + operator cannot cast the string 'one' to a number
-```
 
-Type casting can be used to treat a variable as another type temporarily by using cast operators in parentheses.
+// Type casting can be used to treat a variable as another type
 
-```php
-$boolean = (boolean) $integer; // $boolean is true
+$boolean = (boolean) 1; // => true
 
 $zero = 0;
-$boolean = (boolean) $zero; // $boolean is false
+$boolean = (boolean) $zero; // => false
 
+// There are also dedicated functions for casting most types
 $integer = 5;
 $string = strval($integer);
-// There are also dedicated functions for casting most types
 
 $var = null; // Null value
-```
 
-## [Control Structures](http://www.php.net/manual/en/language.control-structures.php)
 
-### If Statements
+/********************************
+ * Control Structures
+ */
 
-```php
-<?php
-
-if (/* test */) {
-    // Do something
+if (true) {
+    print 'I get printed';
 }
 
-if (/* test */) {
-    // Do something
+if (false) {
+    print "I don't";
 } else {
-    // Do something else
+    print 'I get printed';
 }
 
-if (/* test */) {
-    // Do something
-} elseif(/* test2 */) {
-    // Do something else, only if test2
+if (false) {
+    print 'Does not get printed';
+} elseif(true) {
+    print 'Does';
 }
 
-if (/* test */) {
-    // Do something
-} elseif(/* test2 */) {
-    // Do something else, only if test2
+$x = 0;
+if ($x === '0') {
+    print 'Does not print';
+} elseif($x == '1') {
+    print 'Does not print';
 } else {
-    // Do something default
+    print 'Does print';
 }
+
+// This alternative syntax is useful for templates:
 ?>
 
-<?php if (/* test */): ?>
+<?php if ($x): ?>
 This is displayed if the test is truthy.
 <?php else: ?>
 This is displayed otherwise.
 <?php endif; ?>
-```
 
-### Switch statements
-
-```php
 <?php
 
-switch ($variable) {
-    case 'one':
-        // Do something if $variable == 'one'
-        break;
+// Use switch to save some logic.
+switch ($x) {
+    case '0':
+        print 'Switch does type coercion';
+        break; // You must include a break, or you will fall through
     case 'two':
     case 'three':
         // Do something if $variable is either 'two' or 'three'
@@ -256,106 +259,98 @@ switch ($variable) {
         // Do something by default
 }
 
-```
-
-### Loops
-
-```php
-<?php
-
+// While, do...while and for loops are probably familiar
 $i = 0;
 while ($i < 5) {
     echo $i++;
-}
+}; // Prints "01234"
+
+echo "\n";
 
 $i = 0;
 do {
     echo $i++;
-} while ($i < 5);
+} while ($i < 5); // Prints "01234"
+
+echo "\n";
 
 for ($x = 0; $x < 10; $x++) {
     echo $x; // Will echo 0 - 9
-}
+}// Prints "0123456789"
 
-$wheels = ["bicycle" => 2, "car" => 4];
+echo "\n";
 
+$wheels = ['bicycle' => 2, 'car' => 4];
+
+// Foreach loops can iterate over arrays
+foreach ($wheels as $wheel_count){
+    echo "$wheel_count";
+} // Prints "24"
+
+echo "\n";
+
+// You can iterate over the keys as well as the values
 foreach ($wheels as $vehicle => $wheel_count) {
     echo "A $vehicle has $wheel_count wheels";
 }
 
-// This loop will stop after outputting 2
+echo "\n";
+
 $i = 0;
 while ($i < 5) {
-    if ($i == 3) {
-        break; // Exit out of the while loop and continue.
+    if ($i === 3) {
+        break; // Exit out of the while loop
     }
     echo $i++;
-}
+}// Prints "012"
 
-// This loop will output everything except 3
-$i = 0;
-while ($i < 5) {
-    if ($i == 3) {
+for($i = 0; $i < 5; $i++){
+    if ($i === 3) {
         continue; // Skip this iteration of the loop
     }
-    echo $i++;
-}
-```
+    echo $i;
+} // Prints "0124"
 
-## Functions
 
-Functions are created with the ```function``` keyword.
+/********************************
+ * Functions
+ */
 
-```php
-<?php
-
-function my_function($my_arg) {
-    $my_variable = 1;
+// Define a function with "function":
+function my_function() {
+  return 'Hello';
 }
 
-// $my_variable and $my_arg cannot be accessed outside of the function
-```
+echo my_function(); // => "Hello"
 
-Functions may be invoked by name.
+// A valid function name starts with a letter or underscore, followed by any
+// number of letters, numbers, or underscores.
 
-```php
-<?php
-
-my_function_name();
-
-$variable = get_something(); // A function may return a value
-```
-
-A valid function name starts with a letter or underscore, followed by any
-number of letters, numbers, or underscores. There are three ways to declare functions.
-
-### [User-defined](http://www.php.net/manual/en/functions.user-defined.php)
-
-```php
-<?php
-
-function my_function_name ($arg_1, $arg_2) {
-    // $arg_1 and $arg_2 are required
+function add($x, $y = 1) { // $y is optional, and defaults to 2
+  $result = $x + $y;
+  return $result;
 }
 
-// Functions may be nested to limit scope
-function outer_function ($arg_1 = null) { // $arg_1 is optional
-    function inner_function($arg_2 = 'two') { // $arg_2 will default to 'two'
-    }
-}
+echo add(4); // => 5
+echo add(4, 2); // => 6
 
-// inner_function() does not exist and cannot be called until
-// outer_function() is called
-```
+// $result is not accessible outside the function
+// print $result; // Gives a warning.
 
-This enables [currying](http://en.wikipedia.org/wiki/Currying) in PHP.
+// Since PHP 5.3 you can declare anonymous functions;
+$inc = function($x){
+  return $x + 1;
+};
 
-```php
+echo $inc(2); // => 3
+
 function foo ($x, $y, $z) {
   echo "$x - $y - $z";
 }
 
+// Functions can return functions
 function bar ($x, $y) {
+  // Use 'use' to bring in outside variables
   return function ($z) use ($x, $y) {
     foo($x, $y, $z);
   };
@@ -363,92 +358,77 @@ function bar ($x, $y) {
 
 $bar = bar('A', 'B');
 $bar('C');
-```
 
-### [Variable](http://www.php.net/manual/en/functions.variable-functions.php)
+// You can call named functions using strings
+$function_name = 'add';
+echo $function_name(1, 2); // => 3
+// But, you should probably use anonymous functions instead.
 
-```php
-<?php
+/********************************
+ * Classes
+ */
 
-$function_name = 'my_function_name';
-
-$function_name(); // will execute the my_function_name() function
-```
-
-### [Anonymous](http://www.php.net/manual/en/functions.anonymous.php)
-
-Similar to variable functions, functions may be anonymous.
-
-```php
-<?php
-
-function my_function($callback) {
-    $callback('My argument');
-}
-
-my_function(function ($my_argument) {
-    // do something
-});
-
-// Closure style
-$my_function = function() {
-    // Do something
-};
-
-$my_function();
-```
-
-## [Classes](http://www.php.net/manual/en/language.oop5.php)
-
-Classes are defined with the ```class``` keyword.
-
-```php
-<?php
+//Classes are defined with the class keyword
 
 class MyClass {
-    const MY_CONST = 'value';
-    static $staticVar = 'something';
-    public $property = 'value'; // Properties must declare their visibility
-}
+    const MY_CONST = 'value'; // A constant
+    static $staticVar = 'static';
+    public $property = 'public'; // Properties must declare their visibility
+    private $privprop = 'private'; // Accessible within the class only
+    protected $protprop = 'protected'; // Accessible within the class and subclasses
+    public $instanceProp;
 
-echo MyClass::MY_CONST; // Outputs "value";
-
-final class YouCannotExtendMe {
-}
-```
-
-Classes are instantiated with the ```new``` keyword. Functions are referred to as
-methods if they belong to a class.
-
-```php
-<?php
-
-class MyClass {
-    function myFunction() {
+    // Create a constructor with __construct
+    public function __construct($instanceProp){
+        // Access instance variables with $this
+        $this->instanceProp = $instanceProp;
+    }
+    // Methods are declared as functions inside a class
+    public function myMethod() {
+        print "MyClass";
     }
 
     final function youCannotOverrideMe() {
     }
 
     public static function myStaticMethod() {
+        print "I am static";
     }
 }
 
-$cls = new MyClass(); // The parentheses are optional.
+echo MyClass::MY_CONST; // Outputs "value";
+echo MyClass::$staticVar; // Outputs 'static';
+MyClass::myStaticMethod(); // Outputs "I am static";
 
-echo MyClass::$staticVar; // Access to static vars
+// Access class members using ->.
+$my_class = new MyClass("An instance property"); // The parentheses are optional.
+echo $my_class->property; // => "public"
+echo $my_class->instanceProp; // => "An instance property"
+$my_class->myMethod(); // => "MyClass"
 
-echo $cls->property; // Access to properties
 
-MyClass::myStaticMethod(); // myStaticMethod cannot be run on $cls
-```
+// Extend classes using "extends"
+class MyOtherClass extends MyClass{
+    function printProtectedProperty(){
+        echo $this->protprop;
+    }
 
-PHP offers some [magic methods](http://www.php.net/manual/en/language.oop5.magic.php) for classes.
+    // Override a method
+    function myMethod() {
+        parent::myMethod();
+        print " > MyOtherClass";
+    }
+}
 
-```php
-<?php
+$my_other_class = new MyOtherClass("Instance prop");
+$my_other_class->printProtectedProperty(); // => Prints "protected"
+$my_other_class->myMethod(); // Prints "MyClass > MyOtherClass"
 
-class MyClass {
+final class YouCannotExtendMe {
+}
+
+// You can use "magic methods" to create getters and setters
+class MyMapClass {
     private $property;
 
     public function __get($key)
@@ -462,16 +442,13 @@ class MyClass {
     }
 }
 
-$x = new MyClass();
+$x = new MyMapClass();
 echo $x->property; // Will use the __get() method
 $x->property = 'Something'; // Will use the __set() method
-```
 
-Classes can be abstract (using the ```abstract``` keyword), extend other classes (using the ```extends``` keyword) and
-implement interfaces (using the ```implements``` keyword). An interface is declared with the ```interface``` keyword.
-
-```php
-<?php
+// Classes can be abstract (using the abstract keyword) or
+// implement interfaces (using the implements keyword).
+// An interface is declared with the interface keyword.
 
 interface InterfaceOne
 {
@@ -480,90 +457,105 @@ interface InterfaceOne
 
 interface InterfaceTwo
 {
-    public function doSomething();
+    public function doSomethingElse();
 }
 
 abstract class MyAbstractClass implements InterfaceOne
 {
+    public $x = "doSomething";
 }
 
-class MyClass extends MyAbstractClass implements InterfaceTwo
+class MyConcreteClass extends MyAbstractClass implements InterfaceTwo
 {
+    public function doSomething(){
+        echo $x;
+    }
+    public function doSomethingElse(){
+        echo "doSomethingElse";
+    }
 }
+
 
 // Classes can implement more than one interface
 class SomeOtherClass implements InterfaceOne, InterfaceTwo
 {
+    public function doSomething(){
+        echo "doSomething";
+    }
+    public function doSomethingElse(){
+        echo "doSomethingElse";
+    }
 }
+
+
+/********************************
+ * Traits
+ */
+
+//Traits are available since PHP 5.4.0 and are declared using the trait keyword.
+
+trait MyTrait {
+    public function myTraitMethod()
+    {
+        print "I have MyTrait";
+    }
+}
+
+class MyTraitfulClass
+{
+    use MyTrait;
+}
+
+$cls = new MyTraitfulClass();
+$cls->myTraitMethod(); // Prints "I have MyTrait"
+
+
+/********************************
+ * Namespaces
+ */
+
+// This section is separate, because a namespace declaration
+// must be the first statement in a file. Let's pretend that is not the case
+
+/*
 ```
-
-### [Namespaces](http://www.php.net/manual/en/language.namespaces.rationale.php)
-
-By default, classes exist in the global namespace, and can be explicitly called with a backslash.
-
 ```php
 <?php
+
+// By default, classes exist in the global namespace, and can
+// be explicitly called with a backslash.
 
 $cls = new \MyClass();
-```
 
-```php
-<?php
 
+
+// Set the namespace for a file
 namespace My\Namespace;
 
 class MyClass
 {
 }
 
+// (from another file)
 $cls = new My\Namespace\MyClass;
-```
 
-Or from within another namespace.
-
-```php
-<?php
-
+//Or from within another namespace.
 namespace My\Other\Namespace;
 
 use My\Namespace\MyClass;
 
 $cls = new MyClass();
-```
 
-Or you can alias the namespace;
-
-```php
-<?php
+// Or you can alias the namespace;
 
 namespace My\Other\Namespace;
 
 use My\Namespace as SomeOtherNamespace;
 
 $cls = new SomeOtherNamespace\MyClass();
-```
 
-### [Traits](http://www.php.net/manual/en/language.oop5.traits.php)
+*/
 
-Traits are available since PHP 5.4.0 and are declared using the ```trait``` keyword.
-
-```php
-<?php
-
-trait MyTrait {
-    public function myTraitMethod()
-    {
-        // Do something
-    }
-}
-
-class MyClass
-{
-    use MyTrait;
-}
-
-$cls = new MyClass();
-$cls->myTraitMethod();
 ```
 
 ## More Information

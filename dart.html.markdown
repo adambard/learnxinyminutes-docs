@@ -1,5 +1,5 @@
 ---
-language: Dart
+language: dart
 author: Joao Pedrosa
 author_url: https://github.com/jpedrosa/
 ---
