@@ -93,6 +93,16 @@ not False #=> True
 # None is an object
 None #=> None
 
+# Don't use the equality `==` symbol to compare objects to None
+# Use `is` instead
+"etc" is None #=> False
+None is None  #=> True
+
+# None, 0, and empty strings/lists all evaluate to False.
+# All other values are True
+0 == False  #=> True
+"" == False #=> True
+
 
 ####################################################
 ## 2. Variables and Collections
@@ -159,6 +169,9 @@ li.extend(other_li) # Now li is [1, 2, 3, 4, 5, 6]
 # Examine the length with len
 len(li) #=> 6
 
+# Note: lists can contain arbitrary values
+li2 = [1, "Hello", [[], "Hi", 5,]]
+
 # Tuples are like lists but are immutable.
 tup = (1, 2, 3)
 tup[0] #=> 1
@@ -170,7 +183,7 @@ tup + (4, 5, 6) #=> (1, 2, 3, 4, 5, 6)
 tup[:2] #=> (1, 2)
 2 in tup #=> True
 
-# You can unpack tuples into variables
+# You can unpack tuples (or lists) into variables
 a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
 # Tuples are created by default if you leave out the parentheses
 d, e, f = 4, 5, 6
@@ -267,6 +280,18 @@ prints:
 for animal in ["dog", "cat", "mouse"]:
     # You can use % to interpolate formatted strings
     print "%s is a mammal" % animal
+    
+"""
+`range(number)` returns a list of numbers 
+from zero to the given number
+prints:
+    0
+    1
+    2
+    3
+"""
+for i in range(4):
+    print i
 
 """
 While loops go until a condition is no longer met.
@@ -350,6 +375,8 @@ add_10(3) #=> 13
 
 # There are also anonymous functions
 (lambda x: x > 2)(3) #=> True
+rectangle_area = lambda a, b: a * b
+print rectangle_area(3, 4) #=> 12
 
 # There are built-in higher order functions
 map(add_10, [1,2,3]) #=> [11, 12, 13]
@@ -358,6 +385,9 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 # We can use list comprehensions for nice maps and filters
 [add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
+
+# You can also use dictionary comprehensions
+{i: add_10(i) for i in [1, 2, 3]} #=> {1: 11, 2: 12, 3: 13}
 
 ####################################################
 ## 5. Classes
@@ -374,7 +404,8 @@ class Human(object):
         # Assign the argument to the instance's name attribute
         self.name = name
 
-    # An instance method. All methods take self as the first argument
+    # An instance method. All methods take self as the first argument,
+    # which refers to the instance of this class
     def say(self, msg):
        return "%s: %s" % (self.name, msg)
 
@@ -407,6 +438,33 @@ j.get_species() #=> "H. neanderthalensis"
 
 # Call the static method
 Human.grunt() #=> "*grunt*"
+
+
+####################################################
+## 6. Modules
+####################################################
+
+# You can import modules
+import math
+print math.sqrt(16) #=> 4
+
+# You can get specific functions from a module
+from math import ceil, floor
+print ceil(3.7)  #=> 4.0
+print floor3.7) #=> 3.0
+
+# You can import all functions from a module.
+# Warning: this is not recommended
+from math import *
+
+# You can shorten module names
+import math as m
+math.sqrt(16) == m.sqrt(16) #=> True
+
+# Python modules are just ordinary python files. You
+# can write your own, and import them.
+
+
 ```
 
 ## Further Reading
@@ -417,3 +475,7 @@ Still up for more? Try:
 * [Dive Into Python](http://www.diveintopython.net/)
 * [The Official Docs](http://docs.python.org/2.6/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
+
+Python has a huge amount of modules within the standard library. See the 
+[official documentation](http://docs.python.org/2/library/index.html) or
+[Python Module of the Week](http://pymotw.com/2/) for more.
