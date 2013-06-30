@@ -216,7 +216,7 @@ if (true) {
 }
 
 if (false) {
-    print "I don't";
+    print 'I don\'t';
 } else {
     print 'I get printed';
 }
