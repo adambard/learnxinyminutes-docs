@@ -139,6 +139,9 @@ myObj.myKey // = "myValue"
 // Objects are mutable; values can be changed and new keys added.
 myObj.myThirdKey = true
 
+// If you try to access a value that's not yet set, you'll get undefined.
+myObj.myFourthKey // = undefined
+
 /***********
  * 3. Control Structures
  ***********/
@@ -151,16 +154,16 @@ myObj.myThirdKey = true
  * 6. More about Objects; Constructors and Prototypes
  ***********/
 
-// Objects can contain functions, which can be called using the dot syntax.
-myObj = {
+// Objects can contain functions.
+var myObj = {
     myFunc: function(){
         return "Hello world!"
     }
 }
 myObj.myFunc() // = "Hello world!"
 
-// When functions are called like this, they can access the object they're
-// attached to using the this keyword.
+// When functions attached to an object are called, they can access the object
+// they're attached to using the this keyword.
 myObj = {
     myString: "Hello world!",
     myFunc: function(){
@@ -169,14 +172,14 @@ myObj = {
 }
 myObj.myFunc() // = "Hello world!"
 
-// The value of this has to do with how the function is called, not where it's
-// defined. So, that doesn't work if the function isn't called in the context of
-// the object.
+// What this is set to has to do with how the function is called, not where
+// it's defined. So, our function doesn't work if it isn't called in the
+// context of the object.
 var myFunc = myObj.myFunc
 myFunc() // = undefined
 
 // Inversely, a function can be assigned to the object and gain access to it
-// through this, even if it wasn't defined as such.
+// through this, even if it wasn't attached when it was defined.
 var myOtherFunc = function(){
     return this.myString.toUpperCase()
 }
@@ -193,18 +196,27 @@ var MyConstructor = function(){
 myNewObj = new MyConstructor() // = {myNumber: 5}
 myNewObj.myNumber // = 5
 
-// JavaScript objects aren't defined in terms of classes like other languages,
-// but you can use prototypes to do many of the same things. When you try to
-// access a property of an object that isn't present, its prototype is searched.
-var myObj = {}
+// Every JavaScript object has a 'prototype'. When you go to access a property
+// on an object that doesn't exist on the actual object, the interpreter will
+// look at its prototype.
+
+// Some JS implementations let you access an object's prototype on the magic
+// property __proto__. While this is useful for explaining prototypes it's not
+// part of the standard; we'll get to standard ways of using prototypes later.
+var myObj = {
+    myString: "Hello world!",
+}
 var myPrototype = {
     meaningOfLife: 42,
-    myThirdFunc: function(){
+    myFunc: function(){
         return this.myString.toLowerCase()
     }
 }
 myObj.__proto__ = myPrototype
-myObj.myThirdFunc() // = "hello world!"
+myObj.meaningOfLife // = 42
+
+// This works for functions, too.
+myObj.myFunc() // = "hello world!"
 
 // Of course, if your property isn't on your prototype, the prototype's
 // prototype is searched, and so on.
@@ -216,13 +228,18 @@ myObj.myBoolean // = true
 // There's no copying involved here; each object stores a reference to its
 // prototype. This means we can alter the prototype and our changes will be
 // reflected everywhere.
-myObj.
+myPrototype.meaningOfLife = 43
+myObj.meaningOfLife // = 43
 
-// The __proto__ magic property we've used to access prototypes isn't standard,
-// and shouldn't be used in real-world code. There is a way to create a new
-// object with another given object as its prototype, though:
+// While the __proto__ magic property we've seen so far is useful for
+// explaining prototypes, it's non-standard. There's no standard way to change
+// an existing object's prototype, but there's two ways to set the prototype of 
+// a new object when you first create it.
+
+// The first is Object.create, which is a recent addition to JS, and therefore
+// not available in all implementations yet.
 var myObj = Object.create(myPrototype)
-myObj.meaningOfLife // = 42
+myObj.meaningOfLife // = 43
 
 // Unfortunately, Object.create is quite recent and isn't available in many
 // browsers, so you often can't use that, either. The most reliable way to set
@@ -231,13 +248,27 @@ myObj.meaningOfLife // = 42
 // TODO: write about the .prototype property on constructors
 
 // Built-in types' prototypes work like this too, so you can actually change
-// the prototype of a string, for instance (although whether you should is
-// another matter).
+// the prototype of a string, for instance.
 String.prototype.firstCharacter = function(){
     return this.charAt(0)
 }
 "abc".firstCharacter() // = "a"
 
+// There are several implementations of JavaScript, which all gain new features
+// at different times. Sometimes, however, it's possible to replicate new
+// features by altering built in types or prototypes, which is called
+// "polyfilling".
+
+// For instance, we mentioned that Object.create isn't yet available in all
+// implementations, but we can still use it if we do this:
+if (Object.create === undefined){
+    Object.create = function(proto){
+        // make a temporary constructor with the right prototype
+        var Constructor = function(){}
+        Constructor.prototype = proto
+        return new Constructor()
+    }
+}
 ```
 
 ## Further Reading
