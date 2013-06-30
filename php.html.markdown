@@ -70,7 +70,7 @@ $number /= $float; // Divide and assign the quotient to $number
 $sgl_quotes = '$String'; // => '$String'
 
 // Avoid using double quotes except to embed other variables
-$dbl_quotes = "This is a $sgl_quotes."; // => 'This is a $String'
+$dbl_quotes = "This is a $sgl_quotes."; // => 'This is a $String.'
 
 // Special characters are only escaped in double quotes
 $escaped   = "This contains a \t tab character.";
