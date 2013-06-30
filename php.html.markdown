@@ -589,3 +589,5 @@ Visit the [official PHP documentation](http://www.php.net/manual/) for reference
 If you're interested in up-to-date best practices, visit [PHP The Right Way](http://www.phptherightway.com/).
 
 If you're coming from a language with good package management, check out [Composer](http://getcomposer.org/).
+
+For common standards, visit the PHP Framework Interoperability Group's [PSR standards](https://github.com/php-fig/fig-standards).
