@@ -119,8 +119,20 @@ someOtherVar = 10
 // Variables declared without being assigned to are set to undefined.
 var someThirdVar // = undefined
 
+// There's shorthand for performing math operations on variables:
+someVar += 5 // equivalent to someVar = someVar + 5; someVar is 10 now
+someVar *= 10 // now someVar is 100
+
+// and an even-shorter-hand for adding or subtracting 1
+someVar++ // now someVar is 101
+someVar-- // back to 100
+
 // Arrays are ordered lists of values, of any type.
-["Hello", 45, true]
+var myArray = ["Hello", 45, true]
+
+// Their members can be accessed using the square-brackets subscript syntax.
+// Array indices start at zero.
+myArray[1] // = 45
 
 // JavaScript's objects are equivalent to 'dictionaries' or 'maps' in other
 // languages: an unordered collection of key-value pairs.
@@ -130,7 +142,7 @@ var someThirdVar // = undefined
 // JavaScript identifier. Values can be any type.
 var myObj = {myKey: "myValue", "my other key": 4}
 
-// Object attributes can be accessed using the 'subscript' syntax,
+// Object attributes can also be accessed using the subscript syntax,
 myObj["my other key"] // = 4
 
 // ... or using the dot syntax, provided the key is a valid identifier.
@@ -143,8 +155,45 @@ myObj.myThirdKey = true
 myObj.myFourthKey // = undefined
 
 /***********
- * 3. Control Structures
+ * 3. Logic and Control Structures
  ***********/
+
+// The if structure works as you'd expect.
+var count = 1
+if (count == 3){
+    // evaluated if count is 3
+} else if (count == 4) {
+    // evaluated if count is 4
+} else {
+    // evaluated if it's not either
+}
+
+// As does while.
+while (true) {
+    // An infinite loop!
+}
+
+// Do-while loops are like while loops, except they always run at least once.
+var input
+do {
+    input = getInput()
+} while (!isValid(input))
+
+// the for loop is the same as C and Java: initialisation; test; iteration.
+for (var i = 0; i < 5; i++){
+    // will run 5 times
+}
+
+// && is logical and, || is logical or
+if (house.size == "big" && house.colour == "blue"){
+    house.contains = "bear"
+}
+if (colour == "red" || colour == "blue"){
+    // colour is either red or blue
+}
+
+// && and || "short circuit", which is useful for setting default values...
+var name = otherName || "default";
 
 /***********
  * 5. Functions, Scope and Closures
@@ -278,3 +327,8 @@ Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) provides
 excellent documentation for JavaScript as it's used in browsers. Plus, it's a
 wiki, so as you learn more you can help others out by sharing your own
 knowledge.
+
+In addition to direct contributors to this article, some content is adapted
+from Louie Dinh's Python tutorial on this site, and the [JS
+Tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
+on the Mozilla Developer Network.
