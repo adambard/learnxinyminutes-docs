@@ -368,6 +368,34 @@ echo $function_name(1, 2); // => 3
 // Useful for programatically determining which function to run.
 // Alternatively, use call_user_func(callable $callback [, mixed $parameter [, mixed $... ]]);
 
+
+/********************************
+ * Includes
+ */
+
+// Included files must also begin with a PHP open tags.
+
+// The code in my-file.php is now available in the current scope.
+// If the file cannot be included (e.g. file not found), a warning is emitted.
+include 'my-file.php';
+
+// If the code in my-file.php has been included elsewhere, it will not be included again.
+// This prevents multiple class declaration errors
+include_once 'my-file.php';
+
+// Same as include(), except require() will cause a fatal error if the file cannot be included.
+require 'my-file.php';
+require_once 'my-file.php';
+
+// Contents of my-include.php:
+<?php
+
+return 'Anything you like.';
+
+// Contents of main-file.php:
+$value = include 'my-include.php'; // Includes and requires may also return a value.
+
+
 /********************************
  * Classes
  */
