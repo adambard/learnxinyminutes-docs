@@ -251,7 +251,7 @@ This is displayed otherwise.
 switch ($x) {
     case '0':
         print 'Switch does type coercion';
-        break; // You must include a break, or you will fall through
+        break; // You must include a break, or you will fall through to cases 'two' and 'three'
     case 'two':
     case 'three':
         // Do something if $variable is either 'two' or 'three'
