@@ -111,7 +111,7 @@ except NameError:
     print "Raises a name error"
 
 # if can be used as an expression
-some_var = a if a > b else b
+some_var = 1 if 1 > 2 else 2 # => 2
 # If a is greater than b, then a is assigned to some_var.
 # Otherwise b is assigned to some_var.
 
@@ -207,8 +207,11 @@ filled_dict.values() #=> [3, 2, 1]
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
 
-# Trying to look up a non-existing key will raise a KeyError
-filled_dict["four"] #=> KeyError
+try:
+    # Trying to look up a non-existing key will raise a KeyError
+    filled_dict["four"] #=> KeyError
+except KeyError:
+    pass
 
 # Use get method to avoid the KeyError
 filled_dict.get("one") #=> 1
@@ -235,7 +238,7 @@ filled_set = {1, 2, 2, 3, 4} # => {1 2 3 4}
 filled_set.add(5) # filled_set is now {1, 2, 3, 4, 5}
 
 # Do set intersection with &
-other_set = set{3, 4, 5, 6}
+other_set = {3, 4, 5, 6}
 filled_set & other_set #=> {3, 4, 5}
 
 # Do set union with |
@@ -337,7 +340,7 @@ def keyword_args(**kwargs):
 keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
 
 # You can do both at once, if you like
-def all_the_args(*args, **kwargs):
+def foo(*args, **kwargs):
     print args
     print kwargs
 """
