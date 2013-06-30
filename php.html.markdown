@@ -442,7 +442,8 @@ final class YouCannotExtendMe
 }
 
 // You can use "magic methods" to create getters and setters
-class MyMapClass {
+class MyMapClass
+{
     private $property;
 
     public function __get($key)
