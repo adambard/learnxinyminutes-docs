@@ -393,7 +393,7 @@ class MyClass
     // Methods are declared as functions inside a class
     public function myMethod()
     {
-        print "MyClass";
+        print 'MyClass';
     }
 
     final function youCannotOverrideMe()
@@ -402,7 +402,7 @@ class MyClass
 
     public static function myStaticMethod()
     {
-        print "I am static";
+        print 'I am static';
     }
 }
 
