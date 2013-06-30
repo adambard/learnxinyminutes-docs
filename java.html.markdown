@@ -12,9 +12,6 @@ Java is a general-purpose, concurrent, class-based, object-oriented computer pro
 Read more here: https://en.wikipedia.org/wiki/Java_(programming_language)
 
 ```java
-///////////////////////////////////////
-// General
-///////////////////////////////////////
 // Single-line comments start with //
 /*
 Multi-line comments look like this.
@@ -46,17 +43,23 @@ System.out.print("Integer: "+10+"Double: "+3.14+ "Boolean: "+true);
 // Types
 ///////////////////////////////////////
 
-// Byte - 8-bit signed two's complement integer (-128 <= byte <= 127)
+// Byte - 8-bit signed two's complement integer
+// (-128 <= byte <= 127)
 byte foo = 100;
 
-// Short - 16-bit signed two's complement integer (-32,768 <= short <= 32,767)
+// Short - 16-bit signed two's complement integer
+// (-32,768 <= short <= 32,767)
 short bar = 10000;
 
-//Integer - 32-bit signed two's complement integer (-2,147,483,648 <= int <= 2,147,483,647)
+//Integer - 32-bit signed two's complement integer
+// (-2,147,483,648 <= int <= 2,147,483,647)
 int foo = 1;
 
-//Long - 64-bit signed two's complement integer (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
+//Long - 64-bit signed two's complement integer
+// (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
 long bar = 100000L;
+
+// (Java has no unsigned types)
 
 //Float - Single-precision 32-bit IEEE 754 Floating Point
 float foo = 234.5f;
@@ -100,7 +103,8 @@ array[1] = 2;
 System.out.println(array[1]); // => 2
 
 //Others to check out
-//ArrayLists - Like arrays except more functionality is offered, and the size is mutable
+//ArrayLists - Like arrays except more functionality is offered,
+//             and the size is mutable
 //LinkedLists
 //Maps
 //HashMaps
@@ -232,7 +236,8 @@ Integer.toString(123);//returns a string version of 123
 
 // You can also cast java objects, there's a lot of details and
 // deals with some more intermediate concepts.
-// Feel free to check it out here: http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
+// Feel free to check it out here:
+// http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
 
 
 ///////////////////////////////////////
@@ -242,7 +247,8 @@ Integer.toString(123);//returns a string version of 123
 // Classes Syntax shown below.
 // Function declaration syntax:
 // <public/private/protected> <return type> <function name>(<args>)
-// Here is a quick rundown on access level modifiers (public, private, etcetc) http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html
+// Here is a quick rundown on access level modifiers (public, private, etc.)
+// http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html
 
 
 public class Bicycle {
