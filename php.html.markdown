@@ -10,7 +10,8 @@ This document describes PHP 5+.
 ```php
 <?php // PHP code must be enclosed with <?php ? > tags
 
-// If your php file only contains PHP code, it is best practise to omit the php closing tag.
+// If your php file only contains PHP code, it is best practise
+// to omit the php closing tag.
 
 // Two forward slashes start a one-line comment.
 
@@ -171,8 +172,8 @@ $d = '1';
 
 // These comparisons will always be true, even if the types aren't the same.
 assert($a == $b); // equality
-assert($b != $a); // inequality
-assert($a <> $b); // alternative inequality
+assert($c != $a); // inequality
+assert($c <> $a); // alternative inequality
 assert($a < $c);
 assert($c > $b);
 assert($a <= $b);
@@ -254,7 +255,8 @@ This is displayed otherwise.
 switch ($x) {
     case '0':
         print 'Switch does type coercion';
-        break; // You must include a break, or you will fall through to cases 'two' and 'three'
+        break; // You must include a break, or you will fall through
+               // to cases 'two' and 'three'
     case 'two':
     case 'three':
         // Do something if $variable is either 'two' or 'three'
@@ -367,7 +369,45 @@ $bar('C'); // Prints "A - B - C"
 $function_name = 'add';
 echo $function_name(1, 2); // => 3
 // Useful for programatically determining which function to run.
-// Alternatively, use call_user_func(callable $callback [, mixed $parameter [, mixed $... ]]);
+// Or, use call_user_func(callable $callback [, $parameter [, ... ]]);
+
+/********************************
+ * Includes
+ */
+
+/*
+```
+```php
+<?php
+// Included files must also begin with a PHP open tags.
+
+include 'my-file.php';
+// The code in my-file.php is now available in the current scope.
+// If the file cannot be included (e.g. file not found), a warning is emitted.
+
+include_once 'my-file.php';
+// If the code in my-file.php has been included elsewhere, it will
+// not be included again. This prevents multiple class declaration errors
+
+require 'my-file.php';
+require_once 'my-file.php';
+// Same as include(), except require() will cause a fatal error if the
+// file cannot be included.
+
+// Contents of my-include.php:
+<?php
+
+return 'Anything you like.';
+// End file
+
+// Includes and requires may also return a value.
+$value = include 'my-include.php';
+
+// Files are included based on the file path given or, if none is given,
+// the include_path configuration directive. If the file isn't found in
+// the include_path, include will finally check in the calling script's
+// own directory and the current working directory before failing.
+/* */
 
 /********************************
  * Classes
@@ -384,8 +424,8 @@ class MyClass
     // Properties must declare their visibility
     public $property    = 'public';
     public $instanceProp;
-    protected $protProp = 'protected'; // Accessible within the class and subclasses
-    private $privProp   = 'private';   // Accessible within the class only
+    protected $prot = 'protected'; // Accessible from the class and subclasses
+    private $priv   = 'private';   // Accessible within the class only
 
     // Create a constructor with __construct
     public function __construct($instanceProp) {
@@ -413,8 +453,11 @@ echo MyClass::MY_CONST;    // Outputs 'value';
 echo MyClass::$staticVar;  // Outputs 'static';
 MyClass::myStaticMethod(); // Outputs 'I am static';
 
+// Instantiate classes using new
+$my_class = new MyClass('An instance property');
+// The parentheses are optional if not passing in an argument.
+
 // Access class members using ->
-$my_class = new MyClass('An instance property'); // The parentheses are optional if not passing in an argument.
 echo $my_class->property;     // => "public"
 echo $my_class->instanceProp; // => "An instance property"
 $my_class->myMethod();        // => "MyClass"
@@ -425,7 +468,7 @@ class MyOtherClass extends MyClass
 {
     function printProtectedProperty()
     {
-        echo $this->protProp;
+        echo $this->prot;
     }
 
     // Override a method
@@ -516,7 +559,7 @@ class SomeOtherClass implements InterfaceOne, InterfaceTwo
  * Traits
  */
 
-// Traits are available since PHP 5.4.0 and are declared using the trait keyword.
+// Traits are available from PHP 5.4.0 and are declared using "trait"
 
 trait MyTrait
 {
