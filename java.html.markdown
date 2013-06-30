@@ -1,177 +1,175 @@
 ---
+
 language: java
+
 author: Jake Prather
+
 author_url: http://github.com/JakeHP
+
 ---
 
 Java is a general-purpose, concurrent, class-based, object-oriented computer programming language.
 Read more here: https://en.wikipedia.org/wiki/Java_(programming_language)
 
 ```java
-// Single-line comments start with //
-/*
-Multi-line comments look like this.
-*/
-
-// Import Packages
-import java.util.ArrayList;
-import package.path.here;
-// Import "sub-packages"
-import java.lang.Math.*;
-
-// Your program's entry point is a function called main
-public class Main
-{
-	public static void main (String[] args) throws java.lang.Exception
+///////////////////////////////////////
+// General
+///////////////////////////////////////
+	// Single-line comments start with //
+	/*
+	Multi-line comments look like this.
+	*/
+	
+	// Import Packages
+	import java.util.ArrayList;
+	import package.path.here;
+	// Import all "sub-packages"
+	import java.lang.Math.*;
+	
+	// Your program's entry point is a function called main
+	public class Main
 	{
-		//stuff here
+		public static void main (String[] args) throws java.lang.Exception
+		{
+			//stuff here
+		}
 	}
-}
-
-// Printing
-System.out.println("Hello World");
-System.out.println("Integer: "+10+"Double: "+3.14+ "Boolean: "+true);
+	
+	// Printing, and forcing a new line on next print = println()
+	System.out.println("Hello World");
+	System.out.println("Integer: "+10+"Double: "+3.14+ "Boolean: "+true);
+	// Printing, without forcing a new line on next print = print()
+	System.out.print("Hello World");
+	System.out.print("Integer: "+10+"Double: "+3.14+ "Boolean: "+true);
 
 ///////////////////////////////////////
 // Types
 ///////////////////////////////////////
 
-// Byte - 8-bit signed two's complement integer (-128 <= byte <= 127)
-
-// Short - 16-bit signed two's complement integer (-32,768 <= short <= 32,767)
-
-//Integer - 32-bit signed two's complement integer (-2,147,483,648 <= int <= 2,147,483,647)
-int x = 1;
-
-//Long - 64-bit signed two's complement integer (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
-
-//Float - Single-precision 32-bit IEEE 754 Floating Point
-
-//Double - Double-precision 64-bit IEEE 754 Floating Point
-
-//Boolean - True & False
-
-//Char - A single 16-bit Unicode character
-
-
-// Other than char, which is always 1 byte, these types vary in size depending
-// on your machine. sizeof(T) gives you the size of a variable with type T in 
-// bytes so you can express the size of these types in a portable way.
-// For example,
-printf("%d\n", sizeof(int)); // => 4 (on machines with 4-byte words)
-
-// Arrays must be initialized with a concrete size.
-char my_char_array[20]; // This array occupies 1 * 20 = 20 bytes
-int my_int_array[20]; // This array occupies 4 * 20 = 80 bytes
-                      // (assuming 4-byte words)
-
-
-// You can initialize an array to 0 thusly:
-char my_array[20] = {0};
-
-// Indexing an array is like other languages -- or,
-// rather, other languages are like C
-my_array[0]; // => 0
-
-// Arrays are mutable; it's just memory!
-my_array[1] = 2;
-printf("%d\n", my_array[1]); // => 2
-
-// Strings are just arrays of chars terminated by a NUL (0x00) byte,
-// represented in strings as the special character '\0'.
-// (We don't have to include the NUL byte in string literals; the compiler
-//  inserts it at the end of the array for us.)
-char a_string[20] = "This is a string";
-printf("%s\n", a_string); // %s formats a string
-
-/*
-You may have noticed that a_string is only 16 chars long.
-Char #17 is the NUL byte. 
-Chars #18, 19 and 20 have undefined values.
-*/
-
-printf("%d\n", a_string[16]); => 0
+	// Byte - 8-bit signed two's complement integer (-128 <= byte <= 127)
+	byte foo = 100;
+	
+	// Short - 16-bit signed two's complement integer (-32,768 <= short <= 32,767)
+	short bar = 10000;
+	
+	//Integer - 32-bit signed two's complement integer (-2,147,483,648 <= int <= 2,147,483,647)
+	int foo = 1;
+	
+	//Long - 64-bit signed two's complement integer (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
+	long bar = 100000L;
+	
+	//Float - Single-precision 32-bit IEEE 754 Floating Point
+	float foo = 234.5f;
+	
+	//Double - Double-precision 64-bit IEEE 754 Floating Point
+	double bar = 123.4;
+	
+	//Boolean - True & False
+	boolean foo = true;
+	boolean bar = false;
+	
+	//Char - A single 16-bit Unicode character
+	char foo = 'A';
+	
+	//Strings
+	String foo = "Hello World!";
+	// \n is an escaped character that starts a new line
+	String foo = "Hello World!\nLine2!";
+	System.out.println(foo);
+	//Hello World!
+	//Line2!
+	
+	//Arrays
+	//The array size must be decided upon declaration
+	//The format for declaring an array is follows:
+	//<datatype> [] <var name> = new <datatype>[<array size>];
+	int [] array = new int[10];
+	String [] array = new String[1];
+	boolean [] array = new boolean[100];
+	
+	// Indexing an array - Accessing an element
+	array[0];
+	
+	// Arrays are mutable; it's just memory!
+	array[1] = 1;
+	System.out.println(array[1]); // => 1
+	array[1] = 2;
+	printf("%d\n", my_array[1]); // => 2
+		
+	//Others to check out
+	//ArrayLists - Like arrays except more functionality is offered, and the size is mutable
+	//LinkedLists
+	//Maps
+	//HashMaps
 
 ///////////////////////////////////////
 // Operators
 ///////////////////////////////////////
 
-int i1 = 1, i2 = 2; // Shorthand for multiple declaration
-float f1 = 1.0, f2 = 2.0;
-
-// Arithmetic is straightforward
-i1 + i2; // => 3
-i2 - i1; // => 1
-i2 * i1; // => 2
-i1 / i2; // => 0 (0.5, but truncated towards 0)
-
-f1 / f2; // => 0.5, plus or minus epsilon
-
-// Modulo is there as well
-11 % 3; // => 2
-
-// Comparison operators are probably familiar, but
-// there is no boolean type in c. We use ints instead.
-// 0 is false, anything else is true. (The comparison 
-// operators always return 0 or 1.)
-3 == 2; // => 0 (false)
-3 != 2; // => 1 (true)
-3 > 2; // => 1
-3 < 2; // => 0
-2 <= 2; // => 1
-2 >= 2; // => 1
-
-// Logic works on ints
-!3; // => 0 (Logical not)
-!0; // => 1
-1 && 1; // => 1 (Logical and)
-0 && 1; // => 0
-0 || 1; // => 1 (Logical or)
-0 || 0; // => 0
-
-// Bitwise operators!
-~0x0F; // => 0xF0 (bitwise negation)
-0x0F & 0xF0; // => 0x00 (bitwise AND)
-0x0F | 0xF0; // => 0xFF (bitwise OR)
-0x04 ^ 0x0F; // => 0x0B (bitwise XOR)
-0x01 << 1; // => 0x02 (bitwise left shift (by 1))
-0x02 >> 1; // => 0x01 (bitwise right shift (by 1))
+	int i1 = 1, i2 = 2; // Shorthand for multiple declarations
+	
+	// Arithmetic is straightforward
+	i1 + i2; // => 3
+	i2 - i1; // => 1
+	i2 * i1; // => 2
+	i1 / i2; // => 0 (0.5, but truncated towards 0)
+	
+	// Modulo
+	11 % 3; // => 2
+	
+	// Comparison operators
+	3 == 2; // => 0 (false)
+	3 != 2; // => 1 (true)
+	3 > 2; // => 1
+	3 < 2; // => 0
+	2 <= 2; // => 1
+	2 >= 2; // => 1
+	
+	// Bitwise operators!
+	~       Unary bitwise complement
+	<<      Signed left shift
+	>>      Signed right shift
+	>>>     Unsigned right shift
+	&       Bitwise AND
+	^       Bitwise exclusive OR
+	|       Bitwise inclusive OR
 
 ///////////////////////////////////////
 // Control Structures
 ///////////////////////////////////////
 
-if (0) {
-  printf("I am never run\n");
-} else if (0) {
-  printf("I am also never run\n");
-} else {
-  printf("I print\n");
-}
+	if (false) {
+		  System.out.println("I never run");
+		} else if (false) {
+		  System.out.println("I am also never run");
+		} else {
+		  System.out.println("I print");
+		}
+	}
 
-// While loops exist
-int ii = 0;
-while (ii < 10) {
-    printf("%d, ", ii++); // ii++ increments ii in-place, after using its value.
-} // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
-
-printf("\n");
-
-int kk = 0;
-do {
-    printf("%d, ", kk);
-} while (++kk < 10); // ++kk increments kk in-place, before using its value
-// => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
-
-printf("\n");
-
-// For loops too
-int jj;
-for (jj=0; jj < 10; jj++) {
-    printf("%d, ", jj);
-} // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
-
-printf("\n");
+	// While loops exist
+	int ii = 0;
+	while (ii < 10) {
+	    printf("%d, ", ii++); // ii++ increments ii in-place, after using its value.
+	} // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
+	
+	printf("\n");
+	
+	int kk = 0;
+	do {
+	    printf("%d, ", kk);
+	} while (++kk < 10); // ++kk increments kk in-place, before using its value
+	// => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
+	
+	printf("\n");
+	
+	// For loops too
+	int jj;
+	for (jj=0; jj < 10; jj++) {
+	    printf("%d, ", jj);
+	} // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
+	
+	printf("\n");
 
 ///////////////////////////////////////
 // Typecasting
