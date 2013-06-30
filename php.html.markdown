@@ -10,6 +10,8 @@ This document describes PHP 5+.
 ```php
 <?php // PHP code must be enclosed with <?php ? > tags
 
+// If your php file only contains PHP code, it is best practise to omit the php closing tag.
+
 // Two forward slashes start a one-line comment.
 
 # So will a hash (aka pound symbol) but // is more common
@@ -23,7 +25,7 @@ This document describes PHP 5+.
 print('Hello '); // Prints "Hello " with no line break
 
 // () are optional for print and echo
-echo 'World\n'; // Prints "World" with a line break
+echo "World\n"; // Prints "World" with a line break
 // (all statements must end with a semicolon)
 
 // Anything outside <?php tags is echoed automatically
@@ -40,13 +42,13 @@ echo 'World\n'; // Prints "World" with a line break
 // followed by any number of letters, numbers, or underscores.
 
 // Boolean values are case-insensitive
-$boolean = true; // or TRUE or True
+$boolean = true;  // or TRUE or True
 $boolean = false; // or FALSE or False
 
 // Integers
-$int1 = 19; // => 19
-$int2 = -19; // => -19
-$int3 = 019; // => 15 (a leading 0 denotes an octal number)
+$int1 = 19;   // => 19
+$int2 = -19;  // => -19
+$int3 = 019;  // => 15 (a leading 0 denotes an octal number)
 $int4 = 0x0F; // => 15 (a leading 0x denotes a hex literal)
 
 // Floats (aka doubles)
@@ -55,26 +57,26 @@ $float = 1.2e3;
 $float = 7E-10;
 
 // Arithmetic
-$sum = 1 + 1; // 2
+$sum        = 1 + 1; // 2
 $difference = 2 - 1; // 1
-$product = 2 * 2; // 4
-$quotient = 2 / 1; // 2
+$product    = 2 * 2; // 4
+$quotient   = 2 / 1; // 2
 
 // Shorthand arithmetic
 $number = 0;
-$number += 1; // Add 1 to $number
-echo $number++; // Prints 1 (increments after evaluation)
-echo ++$number; // Prints 3 (increments before evalutation)
+$number += 1;      // Increment $number by 1
+echo $number++;    // Prints 1 (increments after evaluation)
+echo ++$number;    // Prints 3 (increments before evalutation)
 $number /= $float; // Divide and assign the quotient to $number
 
 // Strings should be enclosed in single quotes;
 $sgl_quotes = '$String'; // => '$String'
 
 // Avoid using double quotes except to embed other variables
-$dbl_quotes = "This is a $sgl_quotes."; // => 'This is a $String'
+$dbl_quotes = "This is a $sgl_quotes."; // => 'This is a $String.'
 
 // Special characters are only escaped in double quotes
-$escaped = "This contains a \t tab character.";
+$escaped   = "This contains a \t tab character.";
 $unescaped = 'This just contains a slash and a t: \t';
 
 // Enclose a variable in curly braces if needed
@@ -110,7 +112,7 @@ $associative = array('One' => 1, 'Two' => 2, 'Three' => 3);
 // PHP 5.4 introduced a new syntax
 $associative = ['One' => 1, 'Two' => 2, 'Three' => 3];
 
-echo $associative['One']; // prints "1"
+echo $associative['One']; // prints 1
 
 // List literals implicitly assign integer keys
 $array = ['One', 'Two', 'Three'];
@@ -133,8 +135,8 @@ print 'Hello World!'; // So is print
 
 $paragraph = 'paragraph';
 
-echo 100;
-echo $paragraph;
+echo 100;        // Echo scalar variables directly
+echo $paragraph; // or variables
 
 // If short open tags are configured, or your PHP version is
 // 5.4.0 or greater, you can use the short echo syntax
@@ -144,10 +146,11 @@ echo $paragraph;
 
 $x = 1;
 $y = 2;
-$x = $y; // A now contains the same value sa $y
+$x = $y; // $x now contains the same value as $y
 $z = &$y;
-// $x now contains a reference to $y. Changing the value of
-// $x will change the value of $y also, and vice-versa.
+// $z now contains a reference to $y. Changing the value of
+// $z will change the value of $y also, and vice-versa.
+// $x will remain unchanged as the original value of $y
 
 echo $x; // => 2
 echo $z; // => 2
@@ -216,7 +219,7 @@ if (true) {
 }
 
 if (false) {
-    print "I don't";
+    print 'I don\'t';
 } else {
     print 'I get printed';
 }
@@ -251,7 +254,7 @@ This is displayed otherwise.
 switch ($x) {
     case '0':
         print 'Switch does type coercion';
-        break; // You must include a break, or you will fall through
+        break; // You must include a break, or you will fall through to cases 'two' and 'three'
     case 'two':
     case 'three':
         // Do something if $variable is either 'two' or 'three'
@@ -276,16 +279,16 @@ do {
 echo "\n";
 
 for ($x = 0; $x < 10; $x++) {
-    echo $x; // Will echo 0 - 9
-}// Prints "0123456789"
+    echo $x;
+} // Prints "0123456789"
 
 echo "\n";
 
 $wheels = ['bicycle' => 2, 'car' => 4];
 
 // Foreach loops can iterate over arrays
-foreach ($wheels as $wheel_count){
-    echo "$wheel_count";
+foreach ($wheels as $wheel_count) {
+    echo $wheel_count;
 } // Prints "24"
 
 echo "\n";
@@ -303,9 +306,9 @@ while ($i < 5) {
         break; // Exit out of the while loop
     }
     echo $i++;
-}// Prints "012"
+} // Prints "012"
 
-for($i = 0; $i < 5; $i++){
+for ($i = 0; $i < 5; $i++) {
     if ($i === 3) {
         continue; // Skip this iteration of the loop
     }
@@ -318,7 +321,7 @@ for($i = 0; $i < 5; $i++){
  */
 
 // Define a function with "function":
-function my_function() {
+function my_function () {
   return 'Hello';
 }
 
@@ -327,7 +330,7 @@ echo my_function(); // => "Hello"
 // A valid function name starts with a letter or underscore, followed by any
 // number of letters, numbers, or underscores.
 
-function add($x, $y = 1) { // $y is optional, and defaults to 2
+function add ($x, $y = 1) { // $y is optional and defaults to 1
   $result = $x + $y;
   return $result;
 }
@@ -339,7 +342,7 @@ echo add(4, 2); // => 6
 // print $result; // Gives a warning.
 
 // Since PHP 5.3 you can declare anonymous functions;
-$inc = function($x){
+$inc = function ($x) {
   return $x + 1;
 };
 
@@ -358,78 +361,92 @@ function bar ($x, $y) {
 }
 
 $bar = bar('A', 'B');
-$bar('C');
+$bar('C'); // Prints "A - B - C"
 
 // You can call named functions using strings
 $function_name = 'add';
 echo $function_name(1, 2); // => 3
-// But, you should probably use anonymous functions instead.
+// Useful for programatically determining which function to run.
+// Alternatively, use call_user_func(callable $callback [, mixed $parameter [, mixed $... ]]);
 
 /********************************
  * Classes
  */
 
-//Classes are defined with the class keyword
+// Classes are defined with the class keyword
 
-class MyClass {
-    const MY_CONST = 'value'; // A constant
-    static $staticVar = 'static';
-    public $property = 'public'; // Properties must declare their visibility
-    private $privprop = 'private'; // Accessible within the class only
-    protected $protprop = 'protected'; // Accessible within the class and subclasses
+class MyClass
+{
+    const MY_CONST      = 'value'; // A constant
+
+    static $staticVar   = 'static';
+
+    // Properties must declare their visibility
+    public $property    = 'public';
     public $instanceProp;
+    protected $protProp = 'protected'; // Accessible within the class and subclasses
+    private $privProp   = 'private';   // Accessible within the class only
 
     // Create a constructor with __construct
-    public function __construct($instanceProp){
+    public function __construct($instanceProp) {
         // Access instance variables with $this
         $this->instanceProp = $instanceProp;
     }
+
     // Methods are declared as functions inside a class
-    public function myMethod() {
-        print "MyClass";
+    public function myMethod()
+    {
+        print 'MyClass';
     }
 
-    final function youCannotOverrideMe() {
+    final function youCannotOverrideMe()
+    {
     }
 
-    public static function myStaticMethod() {
-        print "I am static";
+    public static function myStaticMethod()
+    {
+        print 'I am static';
     }
 }
 
-echo MyClass::MY_CONST; // Outputs "value";
-echo MyClass::$staticVar; // Outputs 'static';
-MyClass::myStaticMethod(); // Outputs "I am static";
+echo MyClass::MY_CONST;    // Outputs 'value';
+echo MyClass::$staticVar;  // Outputs 'static';
+MyClass::myStaticMethod(); // Outputs 'I am static';
 
-// Access class members using ->.
-$my_class = new MyClass("An instance property"); // The parentheses are optional.
-echo $my_class->property; // => "public"
+// Access class members using ->
+$my_class = new MyClass('An instance property'); // The parentheses are optional if not passing in an argument.
+echo $my_class->property;     // => "public"
 echo $my_class->instanceProp; // => "An instance property"
-$my_class->myMethod(); // => "MyClass"
+$my_class->myMethod();        // => "MyClass"
 
 
 // Extend classes using "extends"
-class MyOtherClass extends MyClass{
-    function printProtectedProperty(){
-        echo $this->protprop;
+class MyOtherClass extends MyClass
+{
+    function printProtectedProperty()
+    {
+        echo $this->protProp;
     }
 
     // Override a method
-    function myMethod() {
+    function myMethod()
+    {
         parent::myMethod();
-        print " > MyOtherClass";
+        print ' > MyOtherClass';
     }
 }
 
-$my_other_class = new MyOtherClass("Instance prop");
+$my_other_class = new MyOtherClass('Instance prop');
 $my_other_class->printProtectedProperty(); // => Prints "protected"
-$my_other_class->myMethod(); // Prints "MyClass > MyOtherClass"
+$my_other_class->myMethod();               // Prints "MyClass > MyOtherClass"
 
-final class YouCannotExtendMe {
+final class YouCannotExtendMe
+{
 }
 
 // You can use "magic methods" to create getters and setters
-class MyMapClass {
+class MyMapClass
+{
     private $property;
 
     public function __get($key)
@@ -463,16 +480,19 @@ interface InterfaceTwo
 
 abstract class MyAbstractClass implements InterfaceOne
 {
-    public $x = "doSomething";
+    public $x = 'doSomething';
 }
 
 class MyConcreteClass extends MyAbstractClass implements InterfaceTwo
 {
-    public function doSomething(){
+    public function doSomething()
+    {
         echo $x;
     }
-    public function doSomethingElse(){
-        echo "doSomethingElse";
+
+    public function doSomethingElse()
+    {
+        echo 'doSomethingElse';
     }
 }
 
@@ -480,11 +500,14 @@ class MyConcreteClass extends MyAbstractClass implements InterfaceTwo
 // Classes can implement more than one interface
 class SomeOtherClass implements InterfaceOne, InterfaceTwo
 {
-    public function doSomething(){
-        echo "doSomething";
+    public function doSomething()
+    {
+        echo 'doSomething';
     }
-    public function doSomethingElse(){
-        echo "doSomethingElse";
+
+    public function doSomethingElse()
+    {
+        echo 'doSomethingElse';
     }
 }
 
@@ -493,12 +516,13 @@ class SomeOtherClass implements InterfaceOne, InterfaceTwo
  * Traits
  */
 
-//Traits are available since PHP 5.4.0 and are declared using the trait keyword.
+// Traits are available since PHP 5.4.0 and are declared using the trait keyword.
 
-trait MyTrait {
+trait MyTrait
+{
     public function myTraitMethod()
     {
-        print "I have MyTrait";
+        print 'I have MyTrait';
     }
 }
 
@@ -566,3 +590,5 @@ Visit the [official PHP documentation](http://www.php.net/manual/) for reference
 If you're interested in up-to-date best practices, visit [PHP The Right Way](http://www.phptherightway.com/).
 
 If you're coming from a language with good package management, check out [Composer](http://getcomposer.org/).
+
+For common standards, visit the PHP Framework Interoperability Group's [PSR standards](https://github.com/php-fig/fig-standards).
