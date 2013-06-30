@@ -2,6 +2,7 @@
 language: c
 author: Adam Bard
 author_url: http://adambard.com/
+filename: learnc.c
 ---
 
 Ah, C. Still the language of modern high-performance computing.
@@ -12,6 +13,7 @@ memory management and C will take you as far as you need to go.
 
 ```c
 // Single-line comments start with //
+
 /*
 Multi-line comments look like this.
 */
@@ -19,6 +21,7 @@ Multi-line comments look like this.
 // Import headers with #include
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 // Declare function signatures in advance in a .h file, or at the top of
 // your .c file.
@@ -75,7 +78,7 @@ unsigned long long ux_long_long;
 // on your machine. sizeof(T) gives you the size of a variable with type T in 
 // bytes so you can express the size of these types in a portable way.
 // For example,
-printf("%d\n", sizeof(int)); // => 4 (on machines with 4-byte words)
+printf("%lu\n", sizeof(int)); // => 4 (on machines with 4-byte words)
 
 // Arrays must be initialized with a concrete size.
 char my_char_array[20]; // This array occupies 1 * 20 = 20 bytes
@@ -107,7 +110,7 @@ Char #17 is the NUL byte.
 Chars #18, 19 and 20 have undefined values.
 */
 
-printf("%d\n", a_string[16]); => 0
+printf("%d\n", a_string[16]); // => 0
 
 ///////////////////////////////////////
 // Operators

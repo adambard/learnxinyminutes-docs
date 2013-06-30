@@ -2,6 +2,7 @@
 language: clojure
 author: Adam Bard
 author_url: http://adambard.com/
+filename: test.clj
 ---
 
 Clojure is a variant of LISP developed for the Java Virtual Machine. It has

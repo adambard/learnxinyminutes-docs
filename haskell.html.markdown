@@ -2,6 +2,7 @@
 language: haskell
 author: Adit Bhargava
 author_url: http://adit.io
+filename: learnhaskell.hs
 ---
 
 Haskell was designed as a practical, purely functional programming language. It's famous for
