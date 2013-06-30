@@ -305,7 +305,7 @@ while ($i < 5) {
     echo $i++;
 } // Prints "012"
 
-for($i = 0; $i < 5; $i++){
+for ($i = 0; $i < 5; $i++) {
     if ($i === 3) {
         continue; // Skip this iteration of the loop
     }
