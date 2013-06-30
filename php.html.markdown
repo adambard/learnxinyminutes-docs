@@ -406,9 +406,9 @@ class MyClass
     }
 }
 
-echo MyClass::MY_CONST; // Outputs "value";
-echo MyClass::$staticVar; // Outputs 'static';
-MyClass::myStaticMethod(); // Outputs "I am static";
+echo MyClass::MY_CONST;    // Outputs 'value';
+echo MyClass::$staticVar;  // Outputs 'static';
+MyClass::myStaticMethod(); // Outputs 'I am static';
 
 // Access class members using ->.
 $my_class = new MyClass("An instance property"); // The parentheses are optional.
