@@ -132,8 +132,8 @@ print 'Hello World!'; // So is print
 
 $paragraph = 'paragraph';
 
-echo 100;
-echo $paragraph;
+echo 100;        // Echo scalar variables directly
+echo $paragraph; // or variables
 
 // If short open tags are configured, or your PHP version is
 // 5.4.0 or greater, you can use the short echo syntax
