@@ -419,8 +419,6 @@ Human.grunt() #=> "*grunt*"
 
 Still up for more? Try:
 
-[Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
-
-[Dive Into Python](http://www.diveintopython.net/)
-
-[The Official Docs](http://docs.python.org/2.6/)
+*[Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
+*[Dive Into Python](http://www.diveintopython.net/)
+*[The Official Docs](http://docs.python.org/2.6/)
