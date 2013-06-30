@@ -418,15 +418,18 @@ $my_class->myMethod();        // => "MyClass"
 
 
 // Extend classes using "extends"
-class MyOtherClass extends MyClass{
-    function printProtectedProperty(){
-        echo $this->protprop;
+class MyOtherClass extends MyClass
+{
+    function printProtectedProperty()
+    {
+        echo $this->protProp;
     }
 
     // Override a method
-    function myMethod() {
+    function myMethod()
+    {
         parent::myMethod();
-        print " > MyOtherClass";
+        print ' > MyOtherClass';
     }
 }
 
