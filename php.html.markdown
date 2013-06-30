@@ -358,7 +358,7 @@ function bar ($x, $y) {
 }
 
 $bar = bar('A', 'B');
-$bar('C');
+$bar('C'); // Prints "A - B - C"
 
 // You can call named functions using strings
 $function_name = 'add';
