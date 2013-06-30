@@ -370,7 +370,7 @@ echo $function_name(1, 2); // => 3
  * Classes
  */
 
-//Classes are defined with the class keyword
+// Classes are defined with the class keyword
 
 class MyClass {
     const MY_CONST = 'value'; // A constant
