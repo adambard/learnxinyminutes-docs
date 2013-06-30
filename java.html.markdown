@@ -97,7 +97,7 @@ Read more here: https://en.wikipedia.org/wiki/Java_(programming_language)
 	array[1] = 1;
 	System.out.println(array[1]); // => 1
 	array[1] = 2;
-	printf("%d\n", my_array[1]); // => 2
+	System.out.println(array[1]); // => 2
 		
 	//Others to check out
 	//ArrayLists - Like arrays except more functionality is offered, and the size is mutable
@@ -139,10 +139,10 @@ Read more here: https://en.wikipedia.org/wiki/Java_(programming_language)
 	
 	// Incrementations
 	int i=0;
-	i++; //i = 1. Post Incrementation
-	++i; //i = 2. Pre Incrementation
-	i--; //i = 1. Post Decrementation
-	--i; //i = 0. Pre Decrementation
+	i++; //i = 1. Post-Incrementation
+	++i; //i = 2. Pre-Incrementation
+	i--; //i = 1. Post-Decrementation
+	--i; //i = 0. Pre-Decrementation
 
 ///////////////////////////////////////
 // Control Structures
@@ -288,13 +288,13 @@ Read more here: https://en.wikipedia.org/wiki/Java_(programming_language)
 	}
 	
 	//Now..Later in the main / driver of your java program
-	
 	public class Main
 	{
 		public static void main (String[] args) throws java.lang.Exception
 		{
 			//Call bicycle's constructor
 			Bicycle trek = new Bicycle();
+			//Manipulate your object
 			trek.speedUp(3);
 			trek.setCadence(100);
 		}
