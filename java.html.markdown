@@ -305,9 +305,15 @@ Read more here: https://en.wikipedia.org/wiki/Java_(programming_language)
 ## Further Reading
 
 Other Topics To Research:
-	-Inheritance (http://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming))
-	-Abstraction (http://en.wikipedia.org/wiki/Abstraction_(computer_science))
-	-Exceptions (http://en.wikipedia.org/wiki/Exception_handling)
-	-Interfaces (http://en.wikipedia.org/wiki/Interfaces_(computer_science))
-	-Generics (http://en.wikipedia.org/wiki/Generics_in_Java)
-	The links provided are just to get an understanding of the topic, feel free to google and find specific examples
+
+	* Inheritance (http://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming))
+	
+	* Abstraction (http://en.wikipedia.org/wiki/Abstraction_(computer_science))
+	
+	* Exceptions (http://en.wikipedia.org/wiki/Exception_handling)
+	
+	* Interfaces (http://en.wikipedia.org/wiki/Interfaces_(computer_science))
+	
+	* Generics (http://en.wikipedia.org/wiki/Generics_in_Java)
+	
+	* The links provided are just to get an understanding of the topic, feel free to google and find specific examples
