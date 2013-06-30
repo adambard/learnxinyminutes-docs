@@ -363,7 +363,8 @@ $bar('C'); // Prints "A - B - C"
 // You can call named functions using strings
 $function_name = 'add';
 echo $function_name(1, 2); // => 3
-// But, you should probably use anonymous functions instead.
+// Useful for programatically determining which function to run.
+// Alternatively, use call_user_func(callable $callback [, mixed $parameter [, mixed $... ]]);
 
 /********************************
  * Classes
