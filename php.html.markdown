@@ -303,7 +303,7 @@ while ($i < 5) {
         break; // Exit out of the while loop
     }
     echo $i++;
-}// Prints "012"
+} // Prints "012"
 
 for($i = 0; $i < 5; $i++){
     if ($i === 3) {
