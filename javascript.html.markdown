@@ -5,8 +5,10 @@ author_url: http://adam.brenecki.id.au
 ---
 
 Javascript was created by Netscape's Brendan Eich in 1995. It was originally
-intended as a simpler scripting language for web apps, complimenting Java for
-more complex ones, but has become far more widely used than Java on the web.
+intended as a simpler scripting language for websites, complimenting the use of
+Java for more complex web applications, but its tight integration with Web pages
+and built-in support in browsers has caused it to become far more common than
+Java in web frontends.
 
 Feedback would be highly appreciated! You can reach me at
 [@adambrenecki](https://twitter.com/adambrenecki), or
@@ -225,3 +227,11 @@ String.prototype.firstCharacter = function(){
 "abc".firstCharacter() // = "a"
 
 ```
+
+## Further Reading
+
+The [Mozilla Developer
+Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) provides
+excellent documentation for JavaScript as it's used in browsers. Plus, it's a
+wiki, so as you learn more you can help others out by sharing your own
+knowledge.
