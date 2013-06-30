@@ -373,12 +373,13 @@ echo $function_name(1, 2); // => 3
 // Classes are defined with the class keyword
 
 class MyClass {
-    const MY_CONST = 'value'; // A constant
-    static $staticVar = 'static';
-    public $property = 'public'; // Properties must declare their visibility
-    private $privprop = 'private'; // Accessible within the class only
-    protected $protprop = 'protected'; // Accessible within the class and subclasses
+    const MY_CONST      = 'value'; // A constant
+    static $staticVar   = 'static';
+    // Properties must declare their visibility
+    public $property    = 'public';
     public $instanceProp;
+    private $privprop   = 'private'; // Accessible within the class only
+    protected $protprop = 'protected'; // Accessible within the class and subclasses
 
     // Create a constructor with __construct
     public function __construct($instanceProp){
