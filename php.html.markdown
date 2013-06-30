@@ -284,7 +284,7 @@ echo "\n";
 $wheels = ['bicycle' => 2, 'car' => 4];
 
 // Foreach loops can iterate over arrays
-foreach ($wheels as $wheel_count){
+foreach ($wheels as $wheel_count) {
     echo "$wheel_count";
 } // Prints "24"
 
