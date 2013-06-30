@@ -9,7 +9,7 @@ author_url: http://github.com/JakeHP
 ---
 
 Java is a general-purpose, concurrent, class-based, object-oriented computer programming language.
-Read more here: https://en.wikipedia.org/wiki/Java_(programming_language)
+[Read more here.](http://docs.oracle.com/javase/tutorial/java/index.html)
 
 ```java
 // Single-line comments start with //
@@ -236,8 +236,7 @@ Integer.toString(123);//returns a string version of 123
 
 // You can also cast java objects, there's a lot of details and
 // deals with some more intermediate concepts.
-// Feel free to check it out here:
-// http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
+// Feel free to check it out here: http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
 
 
 ///////////////////////////////////////
@@ -312,14 +311,16 @@ public class Main
 
 Other Topics To Research:
 
-* Inheritance (http://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming))
+* [Inheritance](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
 
-* Abstraction (http://en.wikipedia.org/wiki/Abstraction_(computer_science))
+* [Polymorphism](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
 
-* Exceptions (http://en.wikipedia.org/wiki/Exception_handling)
+* [Abstraction](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
 
-* Interfaces (http://en.wikipedia.org/wiki/Interfaces_(computer_science))
+* [Exceptions](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
 
-* Generics (http://en.wikipedia.org/wiki/Generics_in_Java)
+* [Interfaces](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
+
+* [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
 
 * The links provided are just to get an understanding of the topic, feel free to google and find specific examples
