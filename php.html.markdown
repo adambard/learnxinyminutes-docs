@@ -9,6 +9,8 @@ This document describes PHP 5+.
 ```php
 <?php // PHP code must be enclosed with <?php ? > tags
 
+// If your php file only contains PHP code, it is best practise to omit the php closing tag.
+
 // Two forward slashes start a one-line comment.
 
 # So will a hash (aka pound symbol) but // is more common
