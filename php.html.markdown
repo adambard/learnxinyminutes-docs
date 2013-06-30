@@ -109,7 +109,7 @@ $associative = array('One' => 1, 'Two' => 2, 'Three' => 3);
 // PHP 5.4 introduced a new syntax
 $associative = ['One' => 1, 'Two' => 2, 'Three' => 3];
 
-echo $associative['One']; // prints "1"
+echo $associative['One']; // prints 1
 
 // List literals implicitly assign integer keys
 $array = ['One', 'Two', 'Three'];
