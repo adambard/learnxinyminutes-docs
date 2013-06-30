@@ -435,7 +435,7 @@ class MyOtherClass extends MyClass
 
 $my_other_class = new MyOtherClass('Instance prop');
 $my_other_class->printProtectedProperty(); // => Prints "protected"
-$my_other_class->myMethod(); // Prints "MyClass > MyOtherClass"
+$my_other_class->myMethod();               // Prints "MyClass > MyOtherClass"
 
 final class YouCannotExtendMe {
 }
