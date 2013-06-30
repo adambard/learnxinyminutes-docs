@@ -143,10 +143,11 @@ echo $paragraph; // or variables
 
 $x = 1;
 $y = 2;
-$x = $y; // A now contains the same value sa $y
+$x = $y; // $x now contains the same value as $y
 $z = &$y;
-// $x now contains a reference to $y. Changing the value of
-// $x will change the value of $y also, and vice-versa.
+// $z now contains a reference to $y. Changing the value of
+// $z will change the value of $y also, and vice-versa.
+// $x will remain unchanged as the original value of $y
 
 echo $x; // => 2
 echo $z; // => 2
