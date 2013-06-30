@@ -482,11 +482,14 @@ abstract class MyAbstractClass implements InterfaceOne
 
 class MyConcreteClass extends MyAbstractClass implements InterfaceTwo
 {
-    public function doSomething(){
+    public function doSomething()
+    {
         echo $x;
     }
-    public function doSomethingElse(){
-        echo "doSomethingElse";
+
+    public function doSomethingElse()
+    {
+        echo 'doSomethingElse';
     }
 }
 
@@ -494,11 +497,14 @@ class MyConcreteClass extends MyAbstractClass implements InterfaceTwo
 // Classes can implement more than one interface
 class SomeOtherClass implements InterfaceOne, InterfaceTwo
 {
-    public function doSomething(){
-        echo "doSomething";
+    public function doSomething()
+    {
+        echo 'doSomething';
     }
-    public function doSomethingElse(){
-        echo "doSomethingElse";
+
+    public function doSomethingElse()
+    {
+        echo 'doSomethingElse';
     }
 }
 
@@ -509,10 +515,11 @@ class SomeOtherClass implements InterfaceOne, InterfaceTwo
 
 //Traits are available since PHP 5.4.0 and are declared using the trait keyword.
 
-trait MyTrait {
+trait MyTrait
+{
     public function myTraitMethod()
     {
-        print "I have MyTrait";
+        print 'I have MyTrait';
     }
 }
 
