@@ -71,6 +71,9 @@ Read more here: https://en.wikipedia.org/wiki/Java_(programming_language)
 	//Char - A single 16-bit Unicode character
 	char foo = 'A';
 	
+	//Make a variable a constant
+	final int HOURS_I_WORK_PER_WEEK = 9001;
+	
 	//Strings
 	String foo = "Hello World!";
 	// \n is an escaped character that starts a new line
@@ -133,6 +136,13 @@ Read more here: https://en.wikipedia.org/wiki/Java_(programming_language)
 	&       Bitwise AND
 	^       Bitwise exclusive OR
 	|       Bitwise inclusive OR
+	
+	// Incrementations
+	int i=0;
+	i++; //i = 1. Post Incrementation
+	++i; //i = 2. Pre Incrementation
+	i--; //i = 1. Post Decrementation
+	--i; //i = 0. Pre Decrementation
 
 ///////////////////////////////////////
 // Control Structures
@@ -147,206 +157,125 @@ Read more here: https://en.wikipedia.org/wiki/Java_(programming_language)
 		}
 	}
 
-	// While loops exist
-	int ii = 0;
-	while (ii < 10) {
-	    printf("%d, ", ii++); // ii++ increments ii in-place, after using its value.
-	} // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
+	// While loop
+	int i = 0;
+	while(i < 100){
+		System.out.println(i);
+		//Increment the counter
+		i++;
+	}
 	
-	printf("\n");
+	// Do While Loop
+	int i = 0;
+	do{		
+		System.out.println(i);
+		//Increment the counter
+		i++;
+	}while(i < 100);
 	
-	int kk = 0;
-	do {
-	    printf("%d, ", kk);
-	} while (++kk < 10); // ++kk increments kk in-place, before using its value
-	// => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
+	// For Loop
+	int i;
+	//for loop structure => for(<start_statement>;<conditional>;<step>)
+	for(i=0;i<100;i++){
+		System.out.println(i);
+	}
 	
-	printf("\n");
-	
-	// For loops too
-	int jj;
-	for (jj=0; jj < 10; jj++) {
-	    printf("%d, ", jj);
-	} // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
-	
-	printf("\n");
 
 ///////////////////////////////////////
 // Typecasting
 ///////////////////////////////////////
 
-// Every value in C has a type, but you can cast one value into another type
-// if you want.
-
-int x_hex = 0x01; // You can assign vars with hex literals
-
-// Casting between types will attempt to preserve their numeric values
-printf("%d\n", x_hex); // => Prints 1
-printf("%d\n", (short) x_hex); // => Prints 1
-printf("%d\n", (char) x_hex); // => Prints 1
-
-// Types will overflow without warning
-printf("%d\n", (char) 257); // => 1 (Max char = 255)
-
-// Integral types can be cast to floating-point types, and vice-versa.
-printf("%f\n", (float)100); // %f formats a float
-printf("%lf\n", (double)100); // %lf formats a double
-printf("%d\n", (char)100.0);
-
-///////////////////////////////////////
-// Pointers
-///////////////////////////////////////
-
-// A pointer is a variable declared to store a memory address. Its declaration will
-// also tell you the type of data it points to. You can retrieve the memory address 
-// of your variables, then mess with them.
-
-int x = 0;
-printf("%p\n", &x); // Use & to retrieve the address of a variable
-// (%p formats a pointer)
-// => Prints some address in memory;
-
-// Pointer types end with * in their declaration
-int* px; // px is a pointer to an int
-px = &x; // Stores the address of x in px
-printf("%p\n", px); // => Prints some address in memory
-
-// To retreive the value at the address a pointer is pointing to,
-// put * in front to de-reference it.
-printf("%d\n", *px); // => Prints 0, the value of x, which is what px is pointing to the address of
-
-// You can also change the value the pointer is pointing to.
-// We'll have to wrap the de-reference in parenthesis because
-// ++ has a higher precedence than *.
-(*px)++; // Increment the value px is pointing to by 1
-printf("%d\n", *px); // => Prints 1
-printf("%d\n", x); // => Prints 1
-
-int x_array[20]; // Arrays are a good way to allocate a contiguous block of memory
-int xx;
-for (xx=0; xx<20; xx++) {
-    x_array[xx] = 20 - xx;
-} // Initialize x_array to 20, 19, 18,... 2, 1
-
-// Declare a pointer of type int and initialize it to point to x_array
-int* x_ptr = x_array;
-// x_ptr now points to the first element in the array (the integer 20). 
-// This works because arrays are actually just pointers to their first element.
-
-// Arrays are pointers to their first element
-printf("%d\n", *(x_ptr)); // => Prints 20
-printf("%d\n", x_array[0]); // => Prints 20
-
-// Pointers are incremented and decremented based on their type
-printf("%d\n", *(x_ptr + 1)); // => Prints 19
-printf("%d\n", x_array[1]); // => Prints 19
-
-// You can also dynamically allocate contiguous blocks of memory with the
-// standard library function malloc, which takes one integer argument 
-// representing the number of bytes to allocate from the heap.
-int* my_ptr = (int*) malloc(sizeof(int) * 20);
-for (xx=0; xx<20; xx++) {
-    *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx would also work here
-} // Initialize memory to 20, 19, 18, 17... 2, 1 (as ints)
-
-// Dereferencing memory that you haven't allocated gives
-// unpredictable results
-printf("%d\n", *(my_ptr + 21)); // => Prints who-knows-what?
-
-// When you're done with a malloc'd block of memory, you need to free it, 
-// or else no one else can use it until your program terminates
-free(my_ptr);
-
-// Strings can be char arrays, but are usually represented as char
-// pointers:
-char* my_str = "This is my very own string";
-
-printf("%c\n", *my_str); // => 'T'
-
-function_1();
-} // end main function
+	// Converting data
+	
+	//Convert String To Integer
+	Integer.parseInt("123");//returns an integer version of "123"
+	
+	//Convert Integer To String
+	Integer.toString(123);//returns a string version of 123
+	
+	//For other conversions check out the following classes:
+	//Double
+	//Long
+	//String
+	
+	// You can also cast java objects, there's a lot of details and
+	// deals with some more intermediate concepts.
+	// Feel free to check it out here: http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
+	
 
 ///////////////////////////////////////
-// Functions
+// Classes And Functions
 ///////////////////////////////////////
 
-// Function declaration syntax:
-// <return type> <function name>(<args>)
+	// Classes Syntax shown below.
+	// Function declaration syntax:
+	// <public/private/protected> <return type> <function name>(<args>)
+	// Here is a quick rundown on access level modifiers (public, private, etcetc) http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html
 
-int add_two_ints(int x1, int x2){
-    return x1 + x2; // Use return to return a value
-}
+	
+	public class Bicycle {
+	        
+	    // Bicycle's Fields/Variables
+	    public int cadence;
+	    public int gear;
+	    public int speed;
+	        
+	    // Constructors are a way of creating classes
+	    // This is a default constructor
+	    public Bicycle(){
+	    	gear = 1;
+	    	cadence = 50;
+	    	startGear = 1;
+	    }
 
-/*
-Functions are pass-by-value, but you can make your own references
-with pointers so functions can mutate their values.
-
-Example: in-place string reversal
-*/
-
-// A void function returns no value
-void str_reverse(char* str_in){
-    char tmp;
-    int ii=0, len = strlen(str_in); // Strlen is part of the c standard library
-    for(ii=0; ii<len/2; ii++){
-        tmp = str_in[ii];
-        str_in[ii] = str_in[len - ii - 1]; // ii-th char from end
-        str_in[len - ii - 1] = tmp;
-    }
-}
-
-/*
-char c[] = "This is a test.";
-str_reverse(c);
-printf("%s\n", c); // => ".tset a si sihT"
-*/
-
-///////////////////////////////////////
-// User-defined types and structs
-///////////////////////////////////////
-
-// Typedefs can be used to create type aliases
-typedef int my_type;
-my_type my_type_var = 0;
-
-// Structs are just collections of data
-struct rectangle {
-    int width;
-    int height;
-};
-
-
-void function_1(){
-
-    struct rectangle my_rec;
-
-    // Access struct members with .
-    my_rec.width = 10;
-    my_rec.height = 20;
-
-    // You can declare pointers to structs
-    struct rectangle* my_rec_ptr = &my_rec;
-
-    // Use dereferencing to set struct pointer members...
-    (*my_rec_ptr).width = 30;
-
-    // ... or use the -> shorthand
-    my_rec_ptr->height = 10; // Same as (*my_rec_ptr).height = 10;
-}
-
-// You can apply a typedef to a struct for convenience
-typedef struct rectangle rect;
-
-int area(rect r){
-    return r.width * r.height;
-}
+	    // This is a specified constructor (it contains arguments)
+	    public Bicycle(int startCadence, int startSpeed, int startGear) {
+	        gear = startGear;
+	        cadence = startCadence;
+	        speed = startSpeed;
+	    }
+	        
+	    // the Bicycle class has
+	    // four methods
+	    public void setCadence(int newValue) {
+	        cadence = newValue;
+	    }
+	        
+	    public void setGear(int newValue) {
+	        gear = newValue;
+	    }
+	        
+	    public void applyBrake(int decrement) {
+	        speed -= decrement;
+	    }
+	        
+	    public void speedUp(int increment) {
+	        speed += increment;
+	    }
+	        
+	}
+	
+	//Now..Later in the main / driver of your java program
+	
+	public class Main
+	{
+		public static void main (String[] args) throws java.lang.Exception
+		{
+			//Call bicycle's constructor
+			Bicycle trek = new Bicycle();
+			trek.speedUp(3);
+			trek.setCadence(100);
+		}
+	}
 
 ```
 
 ## Further Reading
 
-Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language)
-
-Another good resource is [Learn C the hard way](http://c.learncodethehardway.org/book/)
-
-Other than that, Google is your friend.
+Other Topics To Research:
+	-Inheritance (http://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming))
+	-Abstraction (http://en.wikipedia.org/wiki/Abstraction_(computer_science))
+	-Exceptions (http://en.wikipedia.org/wiki/Exception_handling)
+	-Interfaces (http://en.wikipedia.org/wiki/Interfaces_(computer_science))
+	-Generics (http://en.wikipedia.org/wiki/Generics_in_Java)
+	The links provided are just to get an understanding of the topic, feel free to google and find specific examples
