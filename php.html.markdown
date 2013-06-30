@@ -513,7 +513,7 @@ class SomeOtherClass implements InterfaceOne, InterfaceTwo
  * Traits
  */
 
-//Traits are available since PHP 5.4.0 and are declared using the trait keyword.
+// Traits are available since PHP 5.4.0 and are declared using the trait keyword.
 
 trait MyTrait
 {
