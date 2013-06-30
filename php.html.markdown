@@ -39,13 +39,13 @@ echo "World\n"; // Prints "World" with a line break
 // followed by any number of letters, numbers, or underscores.
 
 // Boolean values are case-insensitive
-$boolean = true; // or TRUE or True
+$boolean = true;  // or TRUE or True
 $boolean = false; // or FALSE or False
 
 // Integers
-$int1 = 19; // => 19
-$int2 = -19; // => -19
-$int3 = 019; // => 15 (a leading 0 denotes an octal number)
+$int1 = 19;   // => 19
+$int2 = -19;  // => -19
+$int3 = 019;  // => 15 (a leading 0 denotes an octal number)
 $int4 = 0x0F; // => 15 (a leading 0x denotes a hex literal)
 
 // Floats (aka doubles)
@@ -54,16 +54,16 @@ $float = 1.2e3;
 $float = 7E-10;
 
 // Arithmetic
-$sum = 1 + 1; // 2
+$sum        = 1 + 1; // 2
 $difference = 2 - 1; // 1
-$product = 2 * 2; // 4
-$quotient = 2 / 1; // 2
+$product    = 2 * 2; // 4
+$quotient   = 2 / 1; // 2
 
 // Shorthand arithmetic
 $number = 0;
-$number += 1; // Add 1 to $number
-echo $number++; // Prints 1 (increments after evaluation)
-echo ++$number; // Prints 3 (increments before evalutation)
+$number += 1;      // Add 1 to $number
+echo $number++;    // Prints 1 (increments after evaluation)
+echo ++$number;    // Prints 3 (increments before evalutation)
 $number /= $float; // Divide and assign the quotient to $number
 
 // Strings should be enclosed in single quotes;
@@ -73,7 +73,7 @@ $sgl_quotes = '$String'; // => '$String'
 $dbl_quotes = "This is a $sgl_quotes."; // => 'This is a $String'
 
 // Special characters are only escaped in double quotes
-$escaped = "This contains a \t tab character.";
+$escaped   = "This contains a \t tab character.";
 $unescaped = 'This just contains a slash and a t: \t';
 
 // Enclose a variable in curly braces if needed
