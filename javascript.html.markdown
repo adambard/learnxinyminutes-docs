@@ -26,28 +26,33 @@ doStuff();
 // wherever there's a newline, except in certain cases.
 doStuff()
 
-// Semicolons are a heated topic in the JavaScript world, but they're really a
-// matter of personal or style-guide preference. We'll leave them off here.
+// We'll leave semicolons off here; whether you do or not will depend on your
+// personal preference or your project's style guide.
 
 /***********
- * 1. Primitive Datatypes and Operators
+ * 1. Numbers, Strings and Operators
  ***********/
 
 // Javascript has one number type that covers ints and floats.
 3 // = 3
 1.5 // = 1.5
 
-// which support all the operations you'd expect.
+// All the basic arithmetic works as you'd expect.
 1 + 1 // = 2
 8 - 1 // = 7
 10 * 2 // = 20
 35 / 5 // = 7
 
-// Uneven division works how you'd expect, too.
+// Including uneven division.
 5 / 2 // = 2.5
 
 // Enforce precedence with parentheses
 (1 + 3) * 2 // = 8
+
+// There are three special not-a-real-number values:
+Infinity // result of e.g. 1/0
+-Infinity // result of e.g. -1/0
+NaN // result of e.g. 0/0
 
 // There's also a boolean type.
 true
@@ -70,10 +75,10 @@ false
 2 != 1 // = true
 
 // More comparisons
-1 < 10 // => True
-1 > 10 // => False
-2 <= 2 // => True
-2 >= 2 // => True
+1 < 10 // = true
+1 > 10 // = false
+2 <= 2 // = true
+2 >= 2 // = true
 
 // Strings are concatenated with +
 "Hello " + "world!" // = "Hello world!"
@@ -81,17 +86,21 @@ false
 // and are compared with < and >
 "a" < "b" // = true
 
-// You can also compare strings with numbers
+// Type coercion is performed for comparisons...
 "5" == 5 // = true
 
-// but this is almost always not what you want, so use === to stop this
+// ...unless you use ===
 "5" === 5 // = false
 
 // You can access characters in a string with charAt
 "This is a string".charAt(0)
 
-// There's also a null keyword
-null // = null
+// There's also null and undefined
+null // used to indicate a deliberate non-value
+undefined // used to indicate a value that hasn't been set yet
+
+// null, undefined, NaN, 0 and "" are falsy, and everything else is truthy.
+// Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
 /***********
  * 2. Variables, Arrays and Objects
