@@ -87,6 +87,8 @@ not False #=> True
 # A newer way to format strings is the format method.
 # This method is the preferred way
 "{0} can be {1}".format("strings", "formatted")
+# You can use keywords if you don't want to count.
+"{name} wants to eat {food}".format(name="Bob", food="lasagna")
 
 # None is an object
 None #=> None
@@ -104,16 +106,12 @@ print "I'm Python. Nice to meet you!"
 some_var = 5    # Convention is to use lower_case_with_underscores
 some_var #=> 5
 
-# Accessing a previously unassigned variable is an exception
-try:
-    some_other_var
-except NameError:
-    print "Raises a name error"
+# Accessing a previously unassigned variable is an exception.
+# See Control Flow to learn more about exception handling.
+some_other_var  # Raises a name error
 
 # if can be used as an expression
-some_var = 1 if 1 > 2 else 2 # => 2
-# If a is greater than b, then a is assigned to some_var.
-# Otherwise b is assigned to some_var.
+"yahoo!" if 1 > 2 else 2 #=> "yahoo!"
 
 # Lists store sequences
 li = []
@@ -136,10 +134,7 @@ li[0] #=> 1
 li[-1] #=> 3
 
 # Looking out of bounds is an IndexError
-try:
-    li[4] # Raises an IndexError
-except IndexError:
-    print "Raises an IndexError"
+li[4] # Raises an IndexError
 
 # You can look at ranges with slice syntax.
 # (It's a closed/open range for you mathy types.)
@@ -167,10 +162,7 @@ len(li) #=> 6
 # Tuples are like lists but are immutable.
 tup = (1, 2, 3)
 tup[0] #=> 1
-try:
-    tup[0] = 3  # Raises a TypeError
-except TypeError:
-    print "Tuples cannot be mutated."
+tup[0] = 3  # Raises a TypeError
 
 # You can do all those list thingies on tuples too
 len(tup) #=> 3
@@ -207,16 +199,12 @@ filled_dict.values() #=> [3, 2, 1]
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
 
-try:
-    # Trying to look up a non-existing key will raise a KeyError
-    filled_dict["four"] #=> KeyError
-except KeyError:
-    pass
+ # Looking up a non-existing key is a KeyError
+filled_dict["four"] # KeyError
 
 # Use get method to avoid the KeyError
 filled_dict.get("one") #=> 1
 filled_dict.get("four") #=> None
-
 # The get method supports a default argument when the value is missing
 filled_dict.get("one", 4) #=> 1
 filled_dict.get("four", 4) #=> 4
@@ -259,7 +247,7 @@ filled_set | other_set #=> {1, 2, 3, 4, 5, 6}
 # Let's just make a variable
 some_var = 5
 
-# Here is an if statement. INDENTATION IS SIGNIFICANT IN PYTHON!
+# Here is an if statement. Indentation is significant in python!
 # prints "some var is smaller than 10"
 if some_var > 10:
     print "some_var is totally bigger than 10."
@@ -340,21 +328,22 @@ def keyword_args(**kwargs):
 keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
 
 # You can do both at once, if you like
-def foo(*args, **kwargs):
+def all_the_args(*args, **kwargs):
     print args
     print kwargs
 """
 all_the_args(1, 2, a=3, b=4) prints:
-    [1, 2]
+    (1, 2)
     {"a": 3, "b": 4}
 """
 
-# You can also use * and ** when calling a function
+# When calling functions, you can do the opposite of varargs/kwargs!
+# Use * to expand tuples and use ** to expand kwargs.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-foo(*args) # equivalent to foo(1, 2, 3, 4)
-foo(**kwargs) # equivalent to foo(a=3, b=4)
-foo(*args, **kwargs) # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args) # equivalent to foo(1, 2, 3, 4)
+all_the_args(**kwargs) # equivalent to foo(a=3, b=4)
+all_the_args(*args, **kwargs) # equivalent to foo(1, 2, 3, 4, a=3, b=4)
 
 # Python has first class functions
 def create_adder(x):
