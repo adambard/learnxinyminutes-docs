@@ -108,13 +108,16 @@ undefined // used to indicate a value that hasn't been set yet
 
 // Variables are declared with the var keyword. Javascript is dynamically typed,
 // so you don't need to specify type. Assignment uses a single = character.
-var some_var = 5
+var someVar = 5
 
 // if you leave the var keyword off, you won't get an error...
-some_other_var = 10
+someOtherVar = 10
 
-// but your variable will always end up with the global scope, even if it wasn't
-// defined there, so don't do it.
+// ...but your variable will be created in the global scope, not in the scope
+// you defined it in.
+
+// Variables declared without being assigned to are set to undefined.
+var someThirdVar // = undefined
 
 // Arrays are ordered lists of values, of any type.
 ["Hello", 45, true]
@@ -133,7 +136,7 @@ myObj["my other key"] // = 4
 // ... or using the dot syntax, provided the key is a valid identifier.
 myObj.myKey // = "myValue"
 
-// Objects are mutable, values can be changed and new keys added.
+// Objects are mutable; values can be changed and new keys added.
 myObj.myThirdKey = true
 
 /***********
