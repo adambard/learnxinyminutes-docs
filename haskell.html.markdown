@@ -263,7 +263,32 @@ Just "hello"
 Just 1
 
 ----------------------------------------------------
--- 8. The Haskell REPL
+-- 8. Haskell IO
+----------------------------------------------------
+
+-- While IO can't be explained fully without explaining monads
+-- it is not hard to explain enough to get going
+
+-- An IO a value is an IO action: you can chain them with do blocks
+action = do
+   putStrLn "This is a line. Duh"
+   input <- getLine -- this gets a line and gives it the name "input"
+   input2 <- getLine
+   return (input1++"\n"++input2) -- This is the result of the whole action
+
+-- This didn't actually do anything. When a haskell program is executed
+-- an IO action called "main" is read and interprete
+
+main = do
+    putStrLn "Our first program. How exciting!"
+    result <- action -- our defined action is just like the default ones
+    putStrLn result
+    putStrLn "This was all, folks!"
+   
+
+
+----------------------------------------------------
+-- 9. The Haskell REPL
 ----------------------------------------------------
 
 -- Start the repl by typing `ghci`.
