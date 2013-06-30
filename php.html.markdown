@@ -375,27 +375,33 @@ echo $function_name(1, 2); // => 3
 class MyClass
 {
     const MY_CONST      = 'value'; // A constant
+
     static $staticVar   = 'static';
+
     // Properties must declare their visibility
     public $property    = 'public';
     public $instanceProp;
-    private $privprop   = 'private';   // Accessible within the class only
-    protected $protprop = 'protected'; // Accessible within the class and subclasses
+    protected $protProp = 'protected'; // Accessible within the class and subclasses
+    private $privProp   = 'private';   // Accessible within the class only
 
     // Create a constructor with __construct
-    public function __construct($instanceProp){
+    public function __construct($instanceProp) {
         // Access instance variables with $this
         $this->instanceProp = $instanceProp;
     }
+
     // Methods are declared as functions inside a class
-    public function myMethod() {
+    public function myMethod()
+    {
         print "MyClass";
     }
 
-    final function youCannotOverrideMe() {
+    final function youCannotOverrideMe()
+    {
     }
 
-    public static function myStaticMethod() {
+    public static function myStaticMethod()
+    {
         print "I am static";
     }
 }
