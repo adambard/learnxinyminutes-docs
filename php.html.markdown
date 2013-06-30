@@ -412,9 +412,9 @@ MyClass::myStaticMethod(); // Outputs 'I am static';
 
 // Access class members using ->
 $my_class = new MyClass('An instance property'); // The parentheses are optional if not passing in an argument.
-echo $my_class->property; // => "public"
+echo $my_class->property;     // => "public"
 echo $my_class->instanceProp; // => "An instance property"
-$my_class->myMethod(); // => "MyClass"
+$my_class->myMethod();        // => "MyClass"
 
 
 // Extend classes using "extends"
