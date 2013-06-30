@@ -22,7 +22,7 @@ This document describes PHP 5+.
 print('Hello '); // Prints "Hello " with no line break
 
 // () are optional for print and echo
-echo 'World\n'; // Prints "World" with a line break
+echo "World\n"; // Prints "World" with a line break
 // (all statements must end with a semicolon)
 
 // Anything outside <?php tags is echoed automatically
