@@ -379,7 +379,7 @@ echo $function_name(1, 2); // => 3
 ```
 ```php
 <?php
-// Included files must also begin with a PHP open tags.
+// PHP within included files must also begin with a PHP open tag.
 
 include 'my-file.php';
 // The code in my-file.php is now available in the current scope.
