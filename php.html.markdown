@@ -395,9 +395,9 @@ return 'Anything you like.';
 // Contents of main-file.php:
 $value = include 'my-include.php'; // Includes and requires may also return a value.
 
-// Include paths are relative to the current working directory of the executed file (e.g. front controller).
-// If an included file from another directory includes another file, the path will not be relative
-// to the current file from which the include is called.
+// Files are included based on the file path given or, if none is given, the include_path
+// configuration directive. If the file isn't found in the include_path, include will finally check
+// in the calling script's own directory and the current working directory before failing.
 
 
 /********************************
