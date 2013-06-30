@@ -318,7 +318,7 @@ for ($i = 0; $i < 5; $i++) {
  */
 
 // Define a function with "function":
-function my_function() {
+function my_function () {
   return 'Hello';
 }
 
@@ -327,7 +327,7 @@ echo my_function(); // => "Hello"
 // A valid function name starts with a letter or underscore, followed by any
 // number of letters, numbers, or underscores.
 
-function add($x, $y = 1) { // $y is optional, and defaults to 2
+function add ($x, $y = 1) { // $y is optional and defaults to 1
   $result = $x + $y;
   return $result;
 }
@@ -339,7 +339,7 @@ echo add(4, 2); // => 6
 // print $result; // Gives a warning.
 
 // Since PHP 5.3 you can declare anonymous functions;
-$inc = function($x){
+$inc = function ($x) {
   return $x + 1;
 };
 
