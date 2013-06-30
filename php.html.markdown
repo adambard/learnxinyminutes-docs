@@ -276,8 +276,8 @@ do {
 echo "\n";
 
 for ($x = 0; $x < 10; $x++) {
-    echo $x; // Will echo 0 - 9
-}// Prints "0123456789"
+    echo $x;
+} // Prints "0123456789"
 
 echo "\n";
 
