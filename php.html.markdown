@@ -477,7 +477,7 @@ interface InterfaceTwo
 
 abstract class MyAbstractClass implements InterfaceOne
 {
-    public $x = "doSomething";
+    public $x = 'doSomething';
 }
 
 class MyConcreteClass extends MyAbstractClass implements InterfaceTwo
