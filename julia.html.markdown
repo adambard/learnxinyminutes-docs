@@ -286,10 +286,11 @@ end
 error("help") # ERROR: help in error at error.jl:21
 
 try
-  error("my error!")
-except
-  println("caught it!")
-end
+   error("help")
+catch e
+   println("caught it $e")
+end             
+#=> caught it ErrorException("help")
 
 
 ####################################################
