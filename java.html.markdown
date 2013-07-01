@@ -32,7 +32,10 @@ public class LearnJava {
 
         // Use System.out.println to print lines
         System.out.println("Hello World!");
-        System.out.println("Integer: " + 10 + " Double: " + 3.14 + " Boolean: " + true);
+        System.out.println(
+            "Integer: " + 10 +
+            " Double: " + 3.14 +
+            " Boolean: " + true);
 
         // To print without a newline, use System.out.print
         System.out.print("Hello ");
@@ -122,7 +125,7 @@ public class LearnJava {
         System.out.println("1+2 = " + (i1 + i2)); // => 3
         System.out.println("2-1 = " + (i2 - i1)); // => 1
         System.out.println("2*1 = " + (i2 * i1)); // => 2
-        System.out.println("1/2 = " + (i1 / i2)); // => 0 (0.5, but truncated towards 0)
+        System.out.println("1/2 = " + (i1 / i2)); // => 0 (0.5 truncated down)
 
         // Modulo
         System.out.println("11%3 = "+(11 % 3)); // => 2
