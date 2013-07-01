@@ -180,43 +180,37 @@ e, d = d, e  #=> (5,4) # d is now 5 and e is now 4
 
 
 # Dictionaries store mappings
-empty_dict = {}
+empty_dict = Dict() #=> Dict{Any,Any}()
 # Here is a prefilled dictionary
-filled_dict = {"one": 1, "two": 2, "three": 3}
+filled_dict = ["one"=> 1, "two"=> 2, "three"=> 3] #=> ["one"=> 1, "two"=> 2, "three"=> 3] # Dict{ASCIIString,Int64}
 
 # Look up values with []
 filled_dict["one"] #=> 1
 
-# Get all keys as a list
-filled_dict.keys() #=> ["three", "two", "one"]
+# Get all keys
+keys(filled_dict) #=> KeyIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
 # Note - Dictionary key ordering is not guaranteed.
 # Your results might not match this exactly.
 
-# Get all values as a list
-filled_dict.values() #=> [3, 2, 1]
+# Get all values 
+values(d) #=> ValueIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
 # Note - Same as above regarding key ordering.
 
-# Check for existence of keys in a dictionary with in
-"one" in filled_dict #=> True
-1 in filled_dict #=> False
+# Check for existence of keys in a dictionary with contains, haskey
+contains(filled_dict,("one",1)) #=> true
+contains(filled_dict,("two",3)) #=> false
+haskey(filled_dict,"one") #=> true
+haskey(filled_dict,1) #=> false
 
-# Trying to look up a non-existing key will raise a KeyError
-filled_dict["four"] #=> KeyError
+# Trying to look up a non-existing key will raise an error
+filled_dict["four"] #=> ERROR: key not found: four in getindex at dict.jl:489
 
-# Use get method to avoid the KeyError
-filled_dict.get("one") #=> 1
-filled_dict.get("four") #=> None
+# Use get method to avoid the error
+# get(dictionary,key,default_value)
+get(filled_dict,"one",4) #=> 1
+get(filled_dict,"four",4) #=> 4
 
-# The get method supports a default argument when the value is missing
-filled_dict.get("one", 4) #=> 1
-filled_dict.get("four", 4) #=> 4
-
-# Setdefault method is a safe way to add new key-value pair into dictionary
-filled_dict.setdefault("five", 5) #filled_dict["five"] is set to 5
-filled_dict.setdefault("five", 6) #filled_dict["five"] is still 5
-
-
-# Sets store ... well sets
+# Sets store sets
 empty_set = set()
 # Initialize a set with a bunch of values
 some_set = set([1,2,2,3,4]) # filled_set is now set([1, 2, 3, 4])
