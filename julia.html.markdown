@@ -109,7 +109,6 @@ Some!Other1Var! = 6 #=> 6 # You can use uppercase letters, digits, and exclamati
 # * Names of functions and macros are in lower case, without underscores.
 # * Functions that modify their inputs have names that end in !. These functions are sometimes called mutating functions or in-place functions.
 
-
 # Arrays store sequences
 li = Int64[] #=> 0-element Int64 Array
 # 1-dimensional array literals can be written with comma-separated values.
@@ -128,8 +127,8 @@ pop!(other_li)        #=> 6 and other_li is now [4,5]
 # Let's put it back
 push!(other_li,6)   # other_li is now [4,5,6] again.
 
-# Remember that Julia indexes from 1, not 0!
-li[1] #=> 1
+li[1] #=> 1 # remember that Julia indexes from 1, not 0!
+li[end] #=> 6 # end is a shorthand for the last index; it can be used in any indexing expression.
 
 # Function names that end in exclamations points indicate that they modify their argument.
 arr = [5,4,6] #=> 3-element Int64 Array: [5,4,6]
@@ -162,26 +161,22 @@ contains(li,1) #=> true
 # Examine the length with length
 length(li) #=> 7
 
-# Tuples are like lists but are immutable.
-tup = (1, 2, 3)
-tup[0] #=> 1
-try:
-    tup[0] = 3  # Raises a TypeError
-except TypeError:
-    print "Tuples cannot be mutated."
+# Tuples are immutable.
+tup = (1, 2, 3) #=>(1,2,3) # an (Int64,Int64,Int64) tuple.
+tup[1] #=> 1
+tup[0] = 3  # ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
 
-# You can do all those list thingies on tuples too
-len(tup) #=> 3
-tup + (4, 5, 6) #=> (1, 2, 3, 4, 5, 6)
-tup[:2] #=> (1, 2)
-2 in tup #=> True
+# Many list functions also work on tuples
+length(tup) #=> 3
+tup[1:2] #=> (1,2)
+contains(tup,2) #=> true
 
 # You can unpack tuples into variables
-a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
+a, b, c = (1, 2, 3) #=> (1,2,3)  # a is now 1, b is now 2 and c is now 3
 # Tuples are created by default if you leave out the parentheses
-d, e, f = 4, 5, 6
+d, e, f = 4, 5, 6 #=> (4,5,6)
 # Now look how easy it is to swap two values
-e, d = d, e     # d is now 5 and e is now 4
+e, d = d, e  #=> (5,4) # d is now 5 and e is now 4
 
 
 # Dictionaries store mappings
