@@ -245,7 +245,7 @@ Integer.toString(123);//returns a string version of 123
 // Long
 // String
 
-// Typecsating
+// Typecasting
 // You can also cast java objects, there's a lot of details and
 // deals with some more intermediate concepts.
 // Feel free to check it out here: http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
