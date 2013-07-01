@@ -269,6 +269,10 @@ for a in ["dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal"]
     println("$(a[1]) is $(a[2])")
 end
 
+for (k,v) in ["dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal"]
+    println("$k is $v")
+end
+
 
 # While loops go until a condition is no longer met.
 # prints:
