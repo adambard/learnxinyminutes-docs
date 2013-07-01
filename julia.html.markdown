@@ -211,29 +211,22 @@ get(filled_dict,"one",4) #=> 1
 get(filled_dict,"four",4) #=> 4
 
 # Sets store sets
-empty_set = set()
+empty_set = Set() #=> Set{Any}()
 # Initialize a set with a bunch of values
-some_set = set([1,2,2,3,4]) # filled_set is now set([1, 2, 3, 4])
-
-# Since Python 2.7, {} can be used to declare a set
-filled_set = {1, 2, 2, 3, 4} # => {1 2 3 4}
+filled_set = Set(1,2,2,3,4) #=> Set{Int64}(1,2,3,4)
 
 # Add more items to a set
-filled_set.add(5) # filled_set is now {1, 2, 3, 4, 5}
+add!(filled_set,5) #=> Set{Int64}(5,4,2,3,1)
 
-# Do set intersection with &
-other_set = set{3, 4, 5, 6}
-filled_set & other_set #=> {3, 4, 5}
+# There are functions for set intersection, union, and difference.
+other_set = Set(3, 4, 5, 6) #=> Set{Int64}(6,4,5,3)
+intersect(filled_set, other_set) #=> Set{Int64}(3,4,5)
+union(filled_set, other_set) #=> Set{Int64}(1,2,3,4,5,6)
+setdiff(Set(1,2,3,4),Set(2,3,5)) #=> Set{Int64}(1,4)
 
-# Do set union with |
-filled_set | other_set #=> {1, 2, 3, 4, 5, 6}
-
-# Do set difference with -
-{1,2,3,4} - {2,3,5} #=> {1, 4}
-
-# Check for existence in a set with in
-2 in filled_set #=> True
-10 in filled_set #=> False
+# Check for existence in a set with contains 
+contains(filled_set,2) #=> true
+contains(filled_set,10) #=> false
 
 
 ####################################################
