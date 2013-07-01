@@ -447,7 +447,7 @@ print math.sqrt(16) #=> 4
 # You can get specific functions from a module
 from math import ceil, floor
 print ceil(3.7)  #=> 4.0
-print floor3.7) #=> 3.0
+print floor(3.7) #=> 3.0
 
 # You can import all functions from a module.
 # Warning: this is not recommended
