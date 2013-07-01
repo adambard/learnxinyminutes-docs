@@ -298,31 +298,45 @@ end
 ## 4. Functions
 ####################################################
 
-# Use def to create new functions
-def add(x, y):
-    print "x is %s and y is %s" % (x, y)
-    return x + y    # Return values with a return statement
+# Use the keyword function to create new functions
+function add(x, y)
+    println("x is $x and y is $y")
+    x + y    # or equivalently: return x + y
+end
 
-# Calling functions with parameters
 add(5, 6) #=> 11 and prints out "x is 5 and y is 6"
-# Another way to call functions is with keyword arguments
-add(y=6, x=5)   # Keyword arguments can arrive in any order.
 
 # You can define functions that take a variable number of
 # positional arguments
-def varargs(*args):
+function varargs(args...)
     return args
+end
 
 varargs(1, 2, 3) #=> (1,2,3)
 
+# You can define functions with optional positional arguments
+function defaults(a,b,x=5,y=6)
+  return "$a $b and $x $y"
+end
 
-# You can define functions that take a variable number of
-# keyword arguments, as well
-def keyword_args(**kwargs):
-    return kwargs
+defaults('h','g') #=> "h g and 5 6"
+defaults('h','g','j') #=> "h g and j 6"
+defaults('h','g','j','k') #=> "h g and j k"
+defaults('h') #=> ERROR: no method defaults(Char,)
+defaults() #=> ERROR: no methods defaults()
 
-# Let's call it to see what happens
-keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
+# You can define functions that take keyword arguments
+function keyword_args(;k1=4,name2="hello") # note the ;
+    return ["k1"=>k1,"name2"=>name2]
+end 
+
+keyword_args(name2="ness") #=> ["name2"=>"ness","k1"=>4]
+keyword_args(k1="mine") #=> ["k1"=>"mine","name2"=>"hello"]
+keyword_args() #=> ["name2"=>"hello","k2"=>4]
+
+####
+#### In progress point
+####
 
 # You can do both at once, if you like
 def all_the_args(*args, **kwargs):
