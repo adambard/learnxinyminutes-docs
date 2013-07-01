@@ -22,7 +22,7 @@ Multi-line comments look like this.
 // Import ArrayList class inside of the java.util package
 import java.util.ArrayList;
 // Import all classes inside of java.lang package
-import java.lang.*;
+import java.security.*;
 
 // Inside of the learnjava class, is your program's
 // starting point. The main method.
