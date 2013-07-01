@@ -155,7 +155,7 @@ foo (x, y) = (x + 1, y + 2)
 -- Pattern matching on arrays. Here `x` is the first element
 -- in the array, and `xs` is the rest of the array. We can write
 -- our own map function:
-myMap func [x] = [func x]
+myMap func [] = []
 myMap func (x:xs) = func x:(myMap func xs)
 
 -- Anonymous functions are created with a backslash followed by
