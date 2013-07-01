@@ -19,10 +19,10 @@ Java is a general-purpose, concurrent, class-based, object-oriented computer pro
 Multi-line comments look like this.
 */
 
-// Import Packages
+// Import ArrayList class inside of the java.util package
 import java.util.ArrayList;
-// Import all "sub-packages"
-import java.lang.Math.*;
+// Import all classes inside of java.lang package
+import java.lang.*;
 
 // Inside of the learnjava class, is your program's
 // starting point. The main method.
@@ -93,6 +93,9 @@ int [] intArray = new int[10];
 String [] stringArray = new String[1];
 boolean [] booleanArray = new boolean[100];
 
+// Another way to declare & initialize an array
+int [] y = {9000, 1000, 1337};
+
 // Indexing an array - Accessing an element
 System.out.println("intArray @ 0: "+intArray[0]);
 
@@ -118,9 +121,9 @@ int i1 = 1, i2 = 2; // Shorthand for multiple declarations
 
 // Arithmetic is straightforward
 System.out.println("1+2 = "+(i1 + i2)); // => 3
-System.out.println("1+2 = "+(i2 - i1)); // => 1
-System.out.println("1+2 = "+(i2 * i1)); // => 2
-System.out.println("1+2 = "+(i1 / i2)); // => 0 (0.5, but truncated towards 0)
+System.out.println("2-1 = "+(i2 - i1)); // => 1
+System.out.println("2*1 = "+(i2 * i1)); // => 2
+System.out.println("1/2 = "+(i1 / i2)); // => 0 (0.5, but truncated towards 0)
 
 // Modulo
 System.out.println("11%3 = "+(11 % 3)); // => 2
@@ -345,5 +348,7 @@ Other Topics To Research:
 * [Interfaces](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
 
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
+
+* [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
 
 * The links provided are just to get an understanding of the topic, feel free to google and find specific examples
