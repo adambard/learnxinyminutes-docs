@@ -121,8 +121,8 @@ int i1 = 1, i2 = 2; // Shorthand for multiple declarations
 
 // Arithmetic is straightforward
 System.out.println("1+2 = "+(i1 + i2)); // => 3
-System.out.println("1-2 = "+(i2 - i1)); // => 1
-System.out.println("1*2 = "+(i2 * i1)); // => 2
+System.out.println("2-1 = "+(i2 - i1)); // => 1
+System.out.println("2*1 = "+(i2 * i1)); // => 2
 System.out.println("1/2 = "+(i1 / i2)); // => 0 (0.5, but truncated towards 0)
 
 // Modulo
