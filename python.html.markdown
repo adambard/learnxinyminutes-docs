@@ -125,7 +125,7 @@ some_var #=> 5
 some_other_var  # Raises a name error
 
 # if can be used as an expression
-"yahoo!" if 1 > 2 else 2 #=> "yahoo!"
+"yahoo!" if 3 > 2 else 2 #=> "yahoo!"
 
 # Lists store sequences
 li = []
@@ -173,8 +173,6 @@ li.extend(other_li) # Now li is [1, 2, 3, 4, 5, 6]
 # Examine the length with len
 len(li) #=> 6
 
-# Note: lists can contain arbitrary values
-li2 = [1, "Hello", [[], "Hi", 5,]]
 
 # Tuples are like lists but are immutable.
 tup = (1, 2, 3)
@@ -379,8 +377,6 @@ add_10(3) #=> 13
 
 # There are also anonymous functions
 (lambda x: x > 2)(3) #=> True
-rectangle_area = lambda a, b: a * b
-print rectangle_area(3, 4) #=> 12
 
 # There are built-in higher order functions
 map(add_10, [1,2,3]) #=> [11, 12, 13]
@@ -389,9 +385,6 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 # We can use list comprehensions for nice maps and filters
 [add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
-
-# You can also use dictionary comprehensions
-{i: add_10(i) for i in [1, 2, 3]} #=> {1: 11, 2: 12, 3: 13}
 
 ####################################################
 ## 5. Classes
@@ -408,8 +401,7 @@ class Human(object):
         # Assign the argument to the instance's name attribute
         self.name = name
 
-    # An instance method. All methods take self as the first argument,
-    # which refers to the instance of this class
+    # An instance method. All methods take self as the first argument
     def say(self, msg):
        return "%s: %s" % (self.name, msg)
 
@@ -480,7 +472,4 @@ Still up for more? Try:
 * [Dive Into Python](http://www.diveintopython.net/)
 * [The Official Docs](http://docs.python.org/2.6/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
-
-Python has a huge amount of modules within the standard library. See the 
-[official documentation](http://docs.python.org/2/library/index.html) or
-[Python Module of the Week](http://pymotw.com/2/) for more.
+* [Python Module of the Week](http://pymotw.com/2/)
