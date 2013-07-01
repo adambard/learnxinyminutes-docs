@@ -6,7 +6,7 @@ author: Jake Prather
 
 author_url: http://github.com/JakeHP
 
-filename: learnjava.java
+filename: LearnJava.java
 
 ---
 
@@ -24,9 +24,9 @@ import java.util.ArrayList;
 // Import all classes inside of java.lang package
 import java.security.*;
 
-// Inside of the learnjava class, is your program's
+// Inside of the LearnJava class, is your program's
 // starting point. The main method.
-public class learnjava
+public class LearnJava
 {
     //main method
     public static void main (String[] args)
