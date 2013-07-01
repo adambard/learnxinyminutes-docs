@@ -2,9 +2,10 @@
 language: clojure
 author: Adam Bard
 author_url: http://adambard.com/
+filename: learnclojure.clj
 ---
 
-Clojure is a variant of LISP developed for the Java Virtual Machine. It has
+Clojure is a Lisp family language developed for the Java Virtual Machine. It has
 a much stronger emphasis on pure [functional programming](https://en.wikipedia.org/wiki/Functional_programming) than
 Common Lisp, but includes several [STM](https://en.wikipedia.org/wiki/Software_transactional_memory) utilities to handle
 state as it comes up.
@@ -23,9 +24,9 @@ and often automatically.
 ;
 ; The clojure reader  assumes that the first thing is a
 ; function or macro to call, and the rest are arguments.
-;
-; Here's a function that sets the current namespace:
-(ns test)
+
+; The first call in a file should be ns, to set the namespace
+(ns learnclojure)
 
 ; More basic examples:
 
@@ -59,15 +60,18 @@ and often automatically.
 (class false) ; Booleans are java.lang.Boolean
 (class nil); The "null" value is called nil
 
-; If you want to create a literal list of data, use ' to make a "symbol"
+; If you want to create a literal list of data, use ' to stop it from
+; being evaluated
 '(+ 1 2) ; => (+ 1 2)
+; (shorthand for (quote (+ 1 2))
 
-; You can eval symbols.
+; You can eval a quoted list
 (eval '(+ 1 2)) ; => 3
 
 ; Collections & Sequences
 ;;;;;;;;;;;;;;;;;;;
 
+; Lists are linked-list data structures, while Vectors are array-backed.
 ; Vectors and Lists are java classes too!
 (class [1 2 3]); => clojure.lang.PersistentVector
 (class '(1 2 3)); => clojure.lang.PersistentList
@@ -76,16 +80,18 @@ and often automatically.
 ; it to stop the reader thinking it's a function.
 ; Also, (list 1 2 3) is the same as '(1 2 3)
 
+; "Collections" are just groups of data
 ; Both lists and vectors are collections:
 (coll? '(1 2 3)) ; => true
 (coll? [1 2 3]) ; => true
 
+; "Sequences" (seqs) are abstract descriptions of lists of data.
 ; Only lists are seqs.
 (seq? '(1 2 3)) ; => true
 (seq? [1 2 3]) ; => false
 
-; Seqs are an interface for logical lists, which can be lazy.
-; "Lazy" means that a seq can define an infinite series, like so:
+; A seq need only provide an entry when it is accessed.
+; So, seqs which can be lazy -- they can define infinite series:
 (range 4) ; => (0 1 2 3)
 (range) ; => (0 1 2 3 4 ...) (an infinite series)
 (take 4 (range)) ;  (0 1 2 3)
@@ -94,8 +100,8 @@ and often automatically.
 (cons 4 [1 2 3]) ; => (4 1 2 3)
 (cons 4 '(1 2 3)) ; => (4 1 2 3)
 
-; Use conj to add an item to the beginning of a list,
-; or the end of a vector
+; Conj will add an item to a collection in the most efficient way.
+; For lists, they insert at the beginning. For vectors, they insert at the end.
 (conj [1 2 3] 4) ; => [1 2 3 4]
 (conj '(1 2 3) 4) ; => (4 1 2 3)
 
@@ -165,20 +171,26 @@ x ; => 1
 ; => "Hello Finn, you passed 3 extra args"
 
 
-; Hashmaps
+; Maps
 ;;;;;;;;;;
 
+; Hash maps and array maps share an interface. Hash maps have faster lookups
+; but don't retain key order.
 (class {:a 1 :b 2 :c 3}) ; => clojure.lang.PersistentArrayMap
+(class (hash-map :a 1 :b 2 :c 3)) ; => clojure.lang.PersistentHashMap
 
+; Arraymaps will automatically become hashmaps through most operations
+; if they get big enough, so you don't need to worry.
+
+; Maps can use any hashable type as a key, but usually keywords are best
 ; Keywords are like strings with some efficiency bonuses
 (class :a) ; => clojure.lang.Keyword
 
-; Maps can use any type as a key, but usually keywords are best
-(def stringmap (hash-map "a" 1, "b" 2, "c" 3))
+(def stringmap {"a" 1, "b" 2, "c" 3})
 stringmap  ; => {"a" 1, "b" 2, "c" 3}
 
-(def keymap (hash-map :a 1 :b 2 :c 3))
-keymap ; => {:a 1, :c 3, :b 2} (order is not guaranteed)
+(def keymap {:a 1, :b 2, :c 3})
+keymap ; => {:a 1, :c 3, :b 2}
 
 ; By the way, commas are always treated as whitespace and do nothing.
 
@@ -197,7 +209,8 @@ keymap ; => {:a 1, :c 3, :b 2} (order is not guaranteed)
 (stringmap "d") ; => nil
 
 ; Use assoc to add new keys to hash-maps
-(assoc keymap :d 4) ; => {:a 1, :b 2, :c 3, :d 4}
+(def newkeymap (assoc keymap :d 4))
+newkeymap ; => {:a 1, :b 2, :c 3, :d 4}
 
 ; But remember, clojure types are immutable!
 keymap ; => {:a 1, :b 2, :c 3}
@@ -268,6 +281,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 (require 'clojure.string)
 
 ; Use / to call functions from a module
+; Here, the module is clojure.string and the function is blank?
 (clojure.string/blank? "") ; => true
 
 ; You can give a module a shorter name on import
@@ -311,4 +325,56 @@ keymap ; => {:a 1, :b 2, :c 3}
 (doto (Calendar/getInstance)
   (.set 2000 1 1 0 0 0)
   .getTime) ; => A Date. set to 2000-01-01 00:00:00
+
+; STM
+;;;;;;;;;;;;;;;;;
+
+; Software Transactional Memory is the mechanism clojure uses to handle
+; persistent state. There are a few constructs in clojure that use this.
+
+; An atom is the simplest. Pass it an initial value
+(def my-atom (atom {}))
+
+; Update an atom with swap!.
+; swap! takes a function and calls it with the current value of the atom
+; as the first argument, and any trailing arguments as the second
+(swap! my-atom assoc :a 1) ; Sets my-atom to the result of (assoc {} :a 1)
+(swap! my-atom assoc :b 2) ; Sets my-atom to the result of (assoc {:a 1} :b 2)
+
+ ; Use '@' to dereference the atom and get the value 
+my-atom  ;=> Atom<#...> (Returns the Atom object)
+@my-atom ; => {:a 1 :b 2}
+
+; Here's a simple counter using an atom
+(def counter (atom 0))
+(defn inc-counter []
+  (swap! counter inc))
+
+(inc-counter)
+(inc-counter)
+(inc-counter)
+(inc-counter)
+(inc-counter)
+
+@counter ; => 5
+
+; Other STM constructs are refs and agents.
+; Refs: http://clojure.org/refs
+; Agents: http://clojure.org/agents
 ```
+
+### Further Reading
+
+This is far from exhaustive, but hopefully it's enought o get you on your feet.
+
+Clojure.org has lots of articles:
+[http://clojure.org/](http://clojure.org/)
+
+Clojuredocs.org has documentation with examples for most core functions:
+[http://clojuredocs.org/quickref/Clojure%20Core](http://clojuredocs.org/quickref/Clojure%20Core)
+
+4Clojure is a great way to build your clojure/FP skills:
+[http://www.4clojure.com/](http://www.4clojure.com/)
+
+Clojure-doc.org (yeah, really) has a number of getting started articles:
+[http://clojure-doc.org/](http://clojure-doc.org/)

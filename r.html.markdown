@@ -2,12 +2,12 @@
 language: R
 author: e99n09
 author_url: http://github.com/e99n09
-
+filename: learnr.r
 ---
 
 R is a statistical computing language.
 
-```r
+```python
 
 # Comments start with hashtags.
 
@@ -16,9 +16,9 @@ R is a statistical computing language.
 
 # Protip: hit COMMAND-ENTER to execute a line
 
-###################################################################################
+#########################
 # The absolute basics
-###################################################################################
+#########################
 
 # NUMERICS
 
@@ -119,9 +119,9 @@ myFunc <- function(x) {
 # Called like any other R function:
 myFunc(5) # => [1] 19
 
-###################################################################################
+#########################
 # Fun with data: vectors, matrices, data frames, and arrays
-###################################################################################
+#########################
 
 # ONE-DIMENSIONAL
 
@@ -130,7 +130,7 @@ vec <- c(4, 5, 6, 7)
 vec # => [1] 4 5 6 7
 # The class of a vector is the class of its components
 class(vec) # => [1] "numeric"
-# If you vectorize items of different classes, weird coersions happen
+# If you vectorize items of different classes, weird coercions happen
 c(TRUE, 4) # => [1] 1 4
 c("dog", TRUE, 4) # => [1] "dog"  "TRUE" "4"
 
@@ -192,7 +192,7 @@ mat3
 #      [,1] [,2] [,3] [,4]
 # [1,]    1    2    4    5
 # [2,]    6    7    0    4
-# Aah, everything of the same class. No coersions. Much better.
+# Aah, everything of the same class. No coercions. Much better.
 
 # TWO-DIMENSIONAL (DIFFERENT CLASSES)
 
@@ -243,7 +243,7 @@ array(c(c(c(2,300,4),c(8,9,0)),c(c(5,60,0),c(66,7,847))), dim=c(3,2,2))
 # LISTS (MULTI-DIMENSIONAL, POSSIBLY RAGGED, OF DIFFERENT TYPES)
 
 # Finally, R has lists (of vectors)
-list1 <- list(time = 1:40, price = c(rnorm(40,.5*list1$time,4))) # generate random
+list1 <- list(time = 1:40, price = c(rnorm(40,.5*list1$time,4))) # random
 list1
 
 # You can get items in the list like so
@@ -251,9 +251,9 @@ list1$time
 # You can subset list items like vectors
 list1$price[4]
 
-###################################################################################
+#########################
 # The apply() family of functions
-###################################################################################
+#########################
 
 # Remember mat?
 mat
@@ -273,7 +273,7 @@ apply(mat, MAR = 2, myFunc)
 # [2,]    7   19
 # [3,]   11   23
 # Other functions: ?lapply, ?sapply
-# Don't feel too intimiated; everyone agrees they are rather confusing
+# Don't feel too intimidated; everyone agrees they are rather confusing
 
 # The plyr package aims to replace (and improve upon!) the *apply() family.
 
@@ -281,9 +281,9 @@ install.packages("plyr")
 require(plyr)
 ?plyr
 
-###################################################################################
+#########################
 # Loading data
-###################################################################################
+#########################
 
 # "pets.csv" is a file on the internet
 pets <- read.csv("http://learnxinyminutes.com/docs/pets.csv")
@@ -292,14 +292,14 @@ head(pets, 2) # first two rows
 tail(pets, 1) # last row
 
 # To save a data frame or matrix as a .csv file
-write.csv(pets, "pets2.csv") # to make a new .csv file in the working directory
+write.csv(pets, "pets2.csv") # to make a new .csv file
 # set working directory with setwd(), look it up with getwd()
 
 # Try ?read.csv and ?write.csv for more information
 
-###################################################################################
+#########################
 # Plots
-###################################################################################
+#########################
 
 # Scatterplots!
 plot(list1$time, list1$price, main = "fake data")
