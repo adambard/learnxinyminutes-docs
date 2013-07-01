@@ -233,57 +233,63 @@ contains(filled_set,10) #=> false
 ## 3. Control Flow
 ####################################################
 
-# Let's just make a variable
+# Let's make a variable
 some_var = 5
 
-# Here is an if statement. INDENTATION IS SIGNIFICANT IN PYTHON!
+# Here is an if statement. Indentation is NOT meaningful in Julia.
 # prints "some var is smaller than 10"
-if some_var > 10:
-    print "some_var is totally bigger than 10."
-elif some_var < 10:    # This elif clause is optional.
-    print "some_var is smaller than 10."
-else:           # This is optional too.
-    print "some_var is indeed 10."
+if some_var > 10
+    println("some_var is totally bigger than 10.")
+elseif some_var < 10    # This elseif clause is optional.
+    println("some_var is smaller than 10.")
+else           # This is optional too.
+    println("some_var is indeed 10.")
+end
 
 
-"""
-For loops iterate over lists
-prints:
-    dog is a mammal
-    cat is a mammal
-    mouse is a mammal
-"""
-for animal in ["dog", "cat", "mouse"]:
-    # You can use % to interpolate formatted strings
-    print "%s is a mammal" % animal
 
-"""
-While loops go until a condition is no longer met.
-prints:
-    0
-    1
-    2
-    3
-"""
+# For loops iterate over iterable things, such as ranges, lists, sets, dicts, strings. 
+# prints:
+#    dog is a mammal
+#    cat is a mammal
+#    mouse is a mammal
+
+for animal=["dog", "cat", "mouse"]
+    # You can use $ to interpolate into strings
+    println("$animal is a mammal")
+end
+
+# You can use in instead of =, if you want.
+for animal in ["dog", "cat", "mouse"]
+    println("$animal is a mammal")
+end
+
+for a in ["dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal"]
+    println("$(a[1]) is $(a[2])")
+end
+
+
+# While loops go until a condition is no longer met.
+# prints:
+#   0
+#   1
+#   2
+#   3
 x = 0
-while x < 4:
-    print x
+while x < 4
+    println(x)
     x += 1  # Shorthand for x = x + 1
+end
 
 # Handle exceptions with a try/except block
 
-# Works on Python 2.6 and up:
-try:
-    # Use raise to raise an error
-    raise IndexError("This is an index error")
-except IndexError as e:
-    pass    # Pass is just a no-op. Usually you would do recovery here.
+error("help") # ERROR: help in error at error.jl:21
 
-# Works for Python 2.7 and down:
-try:
-    raise IndexError("This is an index error")
-except IndexError, e: # No "as", comma instead
-    pass
+try
+  error("my error!")
+except
+  println("caught it!")
+end
 
 
 ####################################################
