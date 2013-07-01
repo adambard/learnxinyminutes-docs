@@ -72,6 +72,18 @@ snake_case = true
 path_to_project_root = '/good/name/'
 path = '/bad/name/'
 
+# Symbols
+# Symbols are immutable, reusable constants represented internally by an integer value
+# They're often used instead of strings to efficiently convey specific, meaningful values
+
+status = :pending
+
+status == :pending #=> true
+
+status == 'pending' #=> false
+
+position = :left
+
 # Arrays
 
 # This is an array
@@ -114,6 +126,33 @@ array.pop #=> [1, 2, 3, 4, 5, 6]
 
 # Note that push and pop do the opposite of each other
 # Shift and unshift are the same.
+
+# Hashes are Ruby's primary dictionary with keys/value pairs.
+# Hashes are denoted with curly braces:
+hash = {'color' => 'green', 'number' => 5}
+
+hash.keys #=> ['color', 'number']
+
+# Hashes can be quickly looked up by key:
+hash['color'] #=> 'green'
+hash['number'] #=> 5
+
+# Asking a hash for a key that doesn't exist returns nil:
+hash['nothing here'] #=> nil
+
+# Iterate over hashes with the #each method:
+hash.each do |k, v|
+  puts "#{k} is #{v}"
+end
+
+# Since Ruby 1.9, there's a special syntax when using symbols as keys:
+
+new_hash = { defcon: 3, action: true}
+
+new_hash.keys #=> [:defcon, :action]
+
+# Tip: Both Arrays and Hashes are Enumerable
+# This means they share a lot of useful methods
 
 # Control structures
 
@@ -160,7 +199,7 @@ end
 grade = 'B'
 case grade
 when 'A'
-  puts "way to go kiddo"
+  puts "Way to go kiddo"
 when 'B'
   puts "Better luck next time"
 when 'C'
@@ -198,5 +237,15 @@ sum sum(3,4), 5 #=> 12
 # All methods have an implicit, optional block parameter
 # it can be called with the 'yield' keyword
 
+def surround
+  puts "{"
+  yield
+  puts "}"
+end
 
+surround { puts 'hello world' }
+
+# {
+# hello world
+# }
 ```
