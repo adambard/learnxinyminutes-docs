@@ -5,7 +5,7 @@ author_url: http://adit.io
 ---
 
 Haskell was designed as a practical, purely functional programming language. It's famous for
-it's monads and it's type system, but I keep coming back to it because of it's elegance. Haskell
+its monads and its type system, but I keep coming back to it because of its elegance. Haskell
 makes coding a real joy for me.
 
 ```haskell
@@ -222,7 +222,7 @@ True :: Bool
 -- Here's a function that takes two arguments:
 -- add :: Integer -> Integer -> Integer
 
--- When you define a value, it's good practice to write it's type above it:
+-- When you define a value, it's good practice to write its type above it:
 double :: Integer -> Integer
 double x = x * 2
 
@@ -309,7 +309,7 @@ main = do
 -- Haskell does IO through a monad because this allows it to be a purely
 -- functional language. Our `action` function had a type signature of `IO String`.
 -- In general any function that interacts with the outside world (i.e. does IO)
--- gets marked as `IO` in it's type signature. This lets us reason about what
+-- gets marked as `IO` in its type signature. This lets us reason about what
 -- functions are "pure" (don't interact with the outside world or modify state)
 -- and what functions aren't. 
 
