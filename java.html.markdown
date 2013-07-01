@@ -21,7 +21,7 @@ Multi-line comments look like this.
 
 // Import ArrayList class inside of the java.util package
 import java.util.ArrayList;
-// Import all classes inside of java.lang package
+// Import all classes inside of java.security package
 import java.security.*;
 
 // Each .java file contains one public class, with the same name as the file.
