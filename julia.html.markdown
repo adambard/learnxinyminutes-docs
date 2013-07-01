@@ -32,7 +32,7 @@ This is based on the current development version of Julia, as of June 29th, 2013
 5 \ 35 #=> 7.0
 5 / 2 #=> 2.5
 div(5, 2) #=> 2
-2 ^ 2 #=> 4
+2 ^ 2 #=> 4 # power, not bitwise xor
 12 % 10 #=> 2
 
 # Enforce precedence with parentheses
@@ -100,7 +100,7 @@ some_var #=> 5
 some_other_var #=> ERROR: some_other_var not defined
 
 # Variable Names:
-Some!Other1Var! = 6 #=> 6 # You can use uppercase letters, digits, and exclamation points as well.
+SomeOtherVar123! = 6 #=> 6 # You can use uppercase letters, digits, and exclamation points as well.
 ☃ = 8 #=> 8 # You can also use unicode characters
 
 # A note on naming conventions in Julia:
@@ -149,7 +149,8 @@ li[1:3] #=> [1, 2, 3]
 li[2:] #=> [2, 3, 4, 5]
 
 # Remove arbitrary elements from a list with splice!
-splice!(li,2) #=> 2 ; li is now [1, 3, 4, 5]
+arr = [3,4,5]
+splice!(arr,2) #=> 4 ; arr is now [3,5]
 
 # Concatenate lists with append! 
 other_li = [1,2,3]
