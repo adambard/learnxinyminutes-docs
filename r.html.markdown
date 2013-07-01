@@ -130,7 +130,7 @@ vec <- c(4, 5, 6, 7)
 vec # => [1] 4 5 6 7
 # The class of a vector is the class of its components
 class(vec) # => [1] "numeric"
-# If you vectorize items of different classes, weird coersions happen
+# If you vectorize items of different classes, weird coercions happen
 c(TRUE, 4) # => [1] 1 4
 c("dog", TRUE, 4) # => [1] "dog"  "TRUE" "4"
 
@@ -192,7 +192,7 @@ mat3
 #      [,1] [,2] [,3] [,4]
 # [1,]    1    2    4    5
 # [2,]    6    7    0    4
-# Aah, everything of the same class. No coersions. Much better.
+# Aah, everything of the same class. No coercions. Much better.
 
 # TWO-DIMENSIONAL (DIFFERENT CLASSES)
 
@@ -273,7 +273,7 @@ apply(mat, MAR = 2, myFunc)
 # [2,]    7   19
 # [3,]   11   23
 # Other functions: ?lapply, ?sapply
-# Don't feel too intimiated; everyone agrees they are rather confusing
+# Don't feel too intimidated; everyone agrees they are rather confusing
 
 # The plyr package aims to replace (and improve upon!) the *apply() family.
 
