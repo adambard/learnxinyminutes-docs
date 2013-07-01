@@ -5,7 +5,7 @@ author_url: http://adambard.com/
 filename: test.clj
 ---
 
-Clojure is a variant of LISP developed for the Java Virtual Machine. It has
+Clojure is a Lisp family language developed for the Java Virtual Machine. It has
 a much stronger emphasis on pure [functional programming](https://en.wikipedia.org/wiki/Functional_programming) than
 Common Lisp, but includes several [STM](https://en.wikipedia.org/wiki/Software_transactional_memory) utilities to handle
 state as it comes up.
