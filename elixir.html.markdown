@@ -141,33 +141,33 @@ number < atom < reference < functions < port < pid < tuple < list < bit string
 
 # `if` expression
 if false do
-	"This will never be seen"
+  "This will never be seen"
 else
-	"This will"
+  "This will"
 end
 
 # There's also `unless`
 unless true do
-	"This will never be seen"
+  "This will never be seen"
 else
-	"This will"
+  "This will"
 end
 
 # Remember pattern matching? Many control-flow structures in elixir rely on it.
 
 # `case` allows us to compare a value against many patterns:
 case {:one, :two} do
-	{:four, :five} ->
-		"This won't match"
-	{:one, x} ->
-		"This will match and assign `x` to `:two`"
-	_ ->
-		"This will match any value"
+  {:four, :five} ->
+    "This won't match"
+  {:one, x} ->
+    "This will match and assign `x` to `:two`"
+  _ ->
+    "This will match any value"
 end
 
 # It's common practive to assign a value to `_` if we don't need it.
 # For example, if only the head of a list matters to us:
-[head | _] =  [1,2,3]
+[head | _] = [1,2,3]
 head #=> 1
 
 # For better readability we can do the following:
@@ -177,35 +177,35 @@ head #=> :a
 # `cond` lets us check for many conditions at the same time.
 # Use `cond` instead of nesting many `if` expressions.
 cond do
-	1 + 1 == 3 ->
-		"I will never be seen"
-	2 * 5 == 12 ->
-		"Me neither"
-	1 + 2 == 3 ->
-		"But I will"
+  1 + 1 == 3 ->
+    "I will never be seen"
+  2 * 5 == 12 ->
+    "Me neither"
+  1 + 2 == 3 ->
+    "But I will"
 end
 
 # It is common to see a last condition equal to `true`, which will always match.
 cond do
-	1 + 1 == 3 ->
-		"I will never be seen"
-	2 * 5 == 12 ->
-		"Me neither"
-	true ->
-		"But I will (this is essentially an else)"
+  1 + 1 == 3 ->
+    "I will never be seen"
+  2 * 5 == 12 ->
+    "Me neither"
+  true ->
+    "But I will (this is essentially an else)"
 end
 
 # `try/catch` is used to catch values that are thrown, it also supports an
 # `after` clause that is invoked whether or not a value is catched.
 try do
-	throw(:hello)
+  throw(:hello)
 catch
-	message -> "Got #{message}."
+  message -> "Got #{message}."
 after
-	IO.puts("I'm the after clause.")
+  IO.puts("I'm the after clause.")
 end
 #=> I'm the after clause
-#	"Got :hello"
+# "Got :hello"
 
 ## ---------------------------
 ## -- Modules and Functions
@@ -218,8 +218,8 @@ square.(5) #=> 25
 # They also accept many clauses and guards. Guards let you fine tune pattern matching,
 # they are indicated by the `when` keyword:
 f = fn
-	x, y when x > 0 -> x + y
-	x, y -> x * y
+  x, y when x > 0 -> x + y
+  x, y -> x * y
 end
 
 f.(1, 3)  #=> 4
@@ -234,32 +234,32 @@ elem({1,2,3}, 0) #=> 1
 # You can group several functions into a module. Inside a module use `def`
 # to define your functions.
 defmodule Math do
-	def sum(a, b) do
-		a + b
-	end
+  def sum(a, b) do
+    a + b
+  end
 
-	def square(x) do
-		x * x
-	end
+  def square(x) do
+    x * x
+  end
 end
 
 Math.sum(1, 2)  #=> 3
 Match.square(3) #=> 9
 
-# To compile our little Math module save it as `math.ex` and use `elixirc`
-elixirc math.ex
+# To compile our simple Math module save it as `math.ex` and use `elixirc`
+# in your terminal: elixirc math.ex
 
 # Inside a module we can define functions with `def` and private functions with `defp`.
 # A function defined with `def` is available to be invoked from other modules,
 # a private function can only be invoked locally.
 defmodule PrivateMath do
-	def sum(a, b) do
-		do_sum(a, b)
-	end
+  def sum(a, b) do
+    do_sum(a, b)
+  end
 
-	defp do_sum(a, b) do
-		a + b
-	end
+  defp do_sum(a, b) do
+    a + b
+  end
 end
 
 PrivateMath.sum(1, 2)    #=> 3
@@ -267,27 +267,29 @@ PrivateMath.do_sum(1, 2) #=> ** (UndefinedFunctionError)
 
 # Function declarations also support guards and multiple clauses:
 defmodule Geometry do
-	def area({:rectangle, w, h}) do
-		w * h
-	end
+  def area({:rectangle, w, h}) do
+    w * h
+  end
 
-	def area({:circle, r}) when is_number(r) do
-		3.14 * r * r
-	end
+  def area({:circle, r}) when is_number(r) do
+    3.14 * r * r
+  end
 end
 
 Geometry.area({:rectangle, 2, 3}) #=> 6
 Geometry.area({:circle, 3})       #=> 28.25999999999999801048
+Geometry.area({:circle, "not_a_number"})
+#=> ** (FunctionClauseError) no function clause matching in Geometry.area/1
 
 # Due to immutability, recursion is a big part of elixir
 defmodule Recursion do
-	def sum_list([head | tail], acc) do
-		sum_list(tail, acc + head)
-	end
+  def sum_list([head | tail], acc) do
+    sum_list(tail, acc + head)
+  end
 
-	def sum_list([], acc) do
-		acc
-	end
+  def sum_list([], acc) do
+    acc
+  end
 end
 
 Recursion.sum_list([1,2,3], 0) #=> 6
@@ -295,12 +297,12 @@ Recursion.sum_list([1,2,3], 0) #=> 6
 # Elixir modules support attributes, there are built-in attributes and you
 # may also add custom attributes.
 defmodule MyMod do
-	@moduledoc """
-	This is a built-in attribute on a example module.
-	"""
+  @moduledoc """
+  This is a built-in attribute on a example module.
+  """
 
-	@my_data 100 # This is a custom attribute.
-	IO.inspect(@my_data) #=> 100
+  @my_data 100 # This is a custom attribute.
+  IO.inspect(@my_data) #=> 100
 end
 
 ## ---------------------------
@@ -322,18 +324,18 @@ joe_info = joe_info.age(31) #=> Person[name: "Joe", age: 31, height: 180]
 
 # The `try` block with the `rescue` keyword is used to handle exceptions
 try do
-	raise "some error"
+  raise "some error"
 rescue
-	RuntimeError -> "rescued a runtime error"
-	_error -> "this will rescue any error"
+  RuntimeError -> "rescued a runtime error"
+  _error -> "this will rescue any error"
 end
 
 # All exceptions have a message
 try do
-	raise "some error"
+  raise "some error"
 rescue
-	x in [RuntimeError] ->
-		x.message
+  x in [RuntimeError] ->
+    x.message
 end
 
 ## ---------------------------
@@ -354,16 +356,16 @@ spawn(f) #=> #PID<0.40.0>
 # For all of this to be useful we need to be able to receive messages. This is
 # achived with the `receive` mechanism:
 defmodule Geometry do
-	def area_loop do
-		receive do
-			{:rectangle, w, h} ->
-				IO.puts("Area = #{w * h}")
-				area_loop()
-			{:circle, r} ->
-				IO.puts("Area = #{3.14 * r * r}")
-				area_loop()
-		end
-	end
+  def area_loop do
+    receive do
+      {:rectangle, w, h} ->
+        IO.puts("Area = #{w * h}")
+        area_loop()
+      {:circle, r} ->
+        IO.puts("Area = #{3.14 * r * r}")
+        area_loop()
+    end
+  end
 end
 
 # Compile the module and create a process that evaluates `area_loop` in the shell
