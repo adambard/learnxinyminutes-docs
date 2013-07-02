@@ -13,8 +13,13 @@ No-one uses them
 You shouldn't either
 =end
 
+# First and foremost: Everything is an object.
 
-3 #=> 3
+# Numbers are objects
+
+3.class #=> Fixnum
+
+3.to_s #=> "3"
 
 
 # Some basic arithmetic
@@ -23,14 +28,23 @@ You shouldn't either
 10 * 2 #=> 20
 35 / 5 #=> 7
 
-# Special values
-nil #=> Nothing to see here
-true #=> truth
-false #=> falsehood
+# Special values are objects
+nil # Nothing to see here
+true # truth
+false # falsehood
+
+nil.class #=> NilClass
+true.class #=> TrueClass
+false.class #=> FalseClass
 
 # Equality
 1 == 1 #=> true
 2 == 1 #=> false
+
+# apart from false itself, nil is the only other 'falsey' value
+
+nil == false #=> true
+0 == false #=> false
 
 # Inequality
 1 != 1 #=> false
@@ -44,8 +58,10 @@ false #=> falsehood
 2 <= 2 #=> true
 2 >= 2 #=> true
 
-'I am a string'
-"I am a string too"
+# Strings are objects
+
+'I am a string'.class #=> String
+"I am a string too".class #=> String
 
 placeholder = "use string interpolation"
 "I can #{placeholder} when using double quoted strings"
@@ -57,6 +73,7 @@ puts "I'm printing!"
 
 # Variables
 x = 25 #=> 25
+x #=> 25
 
 # Note that assignment returns the value assigned
 # This means you can do multiple assignment:
@@ -72,9 +89,11 @@ snake_case = true
 path_to_project_root = '/good/name/'
 path = '/bad/name/'
 
-# Symbols
+# Symbols (are objects)
 # Symbols are immutable, reusable constants represented internally by an integer value
 # They're often used instead of strings to efficiently convey specific, meaningful values
+
+:pending.class #=> Symbol
 
 status = :pending
 
@@ -82,7 +101,7 @@ status == :pending #=> true
 
 status == 'pending' #=> false
 
-position = :left
+status == :approved #=> false
 
 # Arrays
 
@@ -107,25 +126,8 @@ array[2, 4] #=> [3, 4, 5]
 # Or with a range
 array[1..3] #=> [2, 3, 4]
 
-# Add to the end of an array like this
+# Add to an array like this
 array << 6 #=> [1, 2, 3, 4, 5, 6]
-
-# Or like this
-array.push 7 #=> [1, 2, 3, 4, 5, 6, 7]
-
-# Or to the beginning like this
-array.unshift 0 #=> [0, 1, 2, 3, 4, 5, 6, 7]
-
-# Remove the first item in an array
-
-array.shift #=> [1, 2, 3, 4, 5, 6, 7]
-
-# Or the last
-
-array.pop #=> [1, 2, 3, 4, 5, 6]
-
-# Note that push and pop do the opposite of each other
-# Shift and unshift are the same.
 
 # Hashes are Ruby's primary dictionary with keys/value pairs.
 # Hashes are denoted with curly braces:
@@ -152,7 +154,7 @@ new_hash = { defcon: 3, action: true}
 new_hash.keys #=> [:defcon, :action]
 
 # Tip: Both Arrays and Hashes are Enumerable
-# This means they share a lot of useful methods
+# This means they share a lot of useful methods such as each, map, count, and more
 
 # Control structures
 
@@ -197,6 +199,7 @@ end
 #=> iteration 5
 
 grade = 'B'
+
 case grade
 when 'A'
   puts "Way to go kiddo"
