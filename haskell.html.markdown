@@ -245,7 +245,7 @@ case args of
   _ -> putStrLn "bad args"
 
 -- Haskell doesn't have loops because it uses recursion instead.
--- map a function over every element in an array
+-- map calls a function over every element in an array
 
 map (*2) [1..5] -- [2, 4, 6, 8, 10]
 
@@ -257,6 +257,19 @@ for [0..5] $ \i -> show i
 
 -- we could've written that like this too:
 for [0..5] show
+
+-- You can use foldl or foldr to reduce a list
+-- foldl <fn> <initial value> <list>
+foldl (\x y -> 2*x + y) 4 [1,2,3] -- 43
+
+-- This is the same as
+(2 * (2 * (2 * 4 + 1) + 2) + 3)
+
+-- foldl is left-handed, foldr is right-
+foldr (\x y -> 2*x + y) 4 [1,2,3] -- 16
+
+-- This is now the same as
+(2 * 3 + (2 * 2 + (2 * 1 + 4)
 
 ----------------------------------------------------
 -- 7. Data Types
