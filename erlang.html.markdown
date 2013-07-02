@@ -5,7 +5,7 @@ author_url: http://www.focustheweb.com/
 filename: learnerlang.erl
 ---
 
-```latex
+```erlang
 % Percent sign start a one-line comment.
 
 %% Two percent characters shall be used to comment functions.
