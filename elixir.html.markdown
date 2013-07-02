@@ -6,11 +6,19 @@ filename: learnelixir.ex
 ---
 
 ```elixir
-# Single line comments start with a hash.
+# Single line comments start with a hashtag.
 
-## --------------------
+# There's no multi-line comment,
+# but you can stack multiple comments.
+
+# To use the elixir shell use the `iex` command.
+# Compile your modules with the `elixirc` command.
+
+# Both should be in your path if you installed elixir correctly.
+
+## ---------------------------
 ## -- Basic types
-## --------------------
+## ---------------------------
 
 # There are numbers
 3    # integer
@@ -286,7 +294,6 @@ Recursion.sum_list([1,2,3], 0) #=> 6
 
 # Elixir modules support attributes, there are built-in attributes and you
 # may also add custom attributes.
-
 defmodule MyMod do
 	@moduledoc """
 	This is a built-in attribute on a example module.
@@ -346,7 +353,6 @@ spawn(f) #=> #PID<0.40.0>
 # messages to the process. To do message passing we use the `<-` operator.
 # For all of this to be useful we need to be able to receive messages. This is
 # achived with the `receive` mechanism:
-
 defmodule Geometry do
 	def area_loop do
 		receive do
@@ -371,6 +377,9 @@ pid <- {:rectangle, 2, 3}
 pid <- {:circle, 2}
 #=> Area = 12.56000000000000049738
 #   {:circle,2}
+
+# The shell is also a process, you can use `self` to get the current pid
+self() #=> #PID<0.27.0>
 ```
 
 ## References
