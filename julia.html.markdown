@@ -318,6 +318,17 @@ end
 
 varargs(1, 2, 3) #=> (1,2,3)
 
+# The ... is called a splat.
+# It can also be used in a fuction call
+# to splat a list or tuple out to be the arguments
+Set([1,2,3])    #=>Set{Array{Int64,1}}([1,2,3]) # no ..., produces a Set of Arrays
+Set([1,2,3]...) #=>Set{Int64}(1,2,3) # this is equivalent to Set(1,2,3)
+
+x = (1,2,3)     #=> (1,2,3)
+Set(x)          #=> Set{(Int64,Int64,Int64)}((1,2,3)) # a Set of Tuples
+Set(x...)       #=> Set{Int64}(2,3,1)
+
+
 # You can define functions with optional positional arguments
 function defaults(a,b,x=5,y=6)
   return "$a $b and $x $y"
@@ -338,26 +349,23 @@ keyword_args(name2="ness") #=> ["name2"=>"ness","k1"=>4]
 keyword_args(k1="mine") #=> ["k1"=>"mine","name2"=>"hello"]
 keyword_args() #=> ["name2"=>"hello","k2"=>4]
 
+# You can also do both at once
+function all_the_args(normal_arg, optional_positional_arg=2; keyword_arg="foo")
+    println("normal arg: $normal_arg")
+    println("optional arg: $optional_positional_arg")
+    println("keyword arg: $keyword_arg")
+end
+
+all_the_args(1, 3, keyword_arg=4)
+# prints:
+#   normal arg: 1
+#   optional arg: 3
+#   keyword arg: 4
+
+
 ####
 #### In progress point
 ####
-
-# You can do both at once, if you like
-def all_the_args(*args, **kwargs):
-    print args
-    print kwargs
-"""
-all_the_args(1, 2, a=3, b=4) prints:
-    [1, 2]
-    {"a": 3, "b": 4}
-"""
-
-# You can also use * and ** when calling a function
-args = (1, 2, 3, 4)
-kwargs = {"a": 3, "b": 4}
-foo(*args) # equivalent to foo(1, 2, 3, 4)
-foo(**kwargs) # equivalent to foo(a=3, b=4)
-foo(*args, **kwargs) # equivalent to foo(1, 2, 3, 4, a=3, b=4)
 
 # Python has first class functions
 def create_adder(x):
