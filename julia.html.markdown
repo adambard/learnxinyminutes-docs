@@ -397,61 +397,46 @@ filter(x -> x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 [add_10(i) for i=[1, 2, 3]]  #=> [11, 12, 13]
 [add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
 
+####################################################
+## 5. Types and Multiple-Dispatch 
+####################################################
+
+# Type definition
+type Tiger
+  taillength::Float64
+  coatcolor # no type annotation is implicitly Any
+end
+# default constructor is the properties in order
+# so, Tiger(taillength,coatcolor)
+
+# Type instantiation
+tigger = Tiger(3.5,"orange") # the type doubles as the constructor function
+
+# Abtract Types
+abstract Cat # just a name and point in the type hierarchy
+
+# types defined with the type keyword are concrete types; they can be instantiated
+# types defined with the abstract keyword are abstract types; they can have subtypes
+# each type has one supertype; a supertype can have zero or more subtypes.
+
+type Lion <: Cat # Lion is a subtype of Cat
+  mane_color
+  roar::String
+end
+
+type Panther <: Cat # Panther is also a subtype of Cat
+  eye_color
+  Panther() = new("green") # Panthers will only have this constructor, and no default constructor.
+end
+
 ####
 #### In progress point
 ####
 
-####################################################
-## 5. Classes
-####################################################
-
-# We subclass from object to get a class.
-class Human(object):
-
-     # A class attribute. It is shared by all instances of this class
-    species = "H. sapiens"
-
-    # Basic initializer
-    def __init__(self, name):
-        # Assign the argument to the instance's name attribute
-        self.name = name
-
-    # An instance method. All methods take self as the first argument
-    def say(self, msg):
-       return "%s: %s" % (self.name, msg)
-
-    # A class method is shared among all instances
-    # They are called with the calling class as the first argument
-    @classmethod
-    def get_species(cls):
-        return cls.species
-
-    # A static method is called without a class or instance reference
-    @staticmethod
-    def grunt():
-        return "*grunt*"
-
-
-# Instantiate a class
-i = Human(name="Ian")
-print i.say("hi")     # prints out "Ian: hi"
-
-j = Human("Joel")
-print j.say("hello")  #prints out "Joel: hello"
-
-# Call our class method
-i.get_species() #=> "H. sapiens"
-
-# Change the shared attribute
-Human.species = "H. neanderthalensis"
-i.get_species() #=> "H. neanderthalensis"
-j.get_species() #=> "H. neanderthalensis"
-
-# Call the static method
-Human.grunt() #=> "*grunt*"
-```
+#### Multiple Dispatch
 
 ## Further Reading
 
+#### Link to Maunual
 Still up for more? Try [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 
