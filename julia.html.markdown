@@ -362,30 +362,44 @@ all_the_args(1, 3, keyword_arg=4)
 #   optional arg: 3
 #   keyword arg: 4
 
+# Julia has first class functions
+function create_adder(x)
+  adder = function (y)
+    return x + y
+  end
+  return adder
+end
 
-####
-#### In progress point
-####
+# or equivalently
+function create_adder(x)
+    y -> x + y
+end
 
-# Python has first class functions
-def create_adder(x):
-    def adder(y):
-        return x + y
-    return adder
+# you can also name the internal function, if you want
+function create_adder(x)
+  function adder(y)
+    x + y
+  end
+  adder
+end
 
 add_10 = create_adder(10)
 add_10(3) #=> 13
 
-# There are also anonymous functions
-(lambda x: x > 2)(3) #=> True
+# The first two inner functions above are anonymous functions
+(x -> x > 2)(3) #=> true
 
 # There are built-in higher order functions
 map(add_10, [1,2,3]) #=> [11, 12, 13]
-filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
+filter(x -> x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 
 # We can use list comprehensions for nice maps and filters
+[add_10(i) for i=[1, 2, 3]]  #=> [11, 12, 13]
 [add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
-[x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
+
+####
+#### In progress point
+####
 
 ####################################################
 ## 5. Classes
