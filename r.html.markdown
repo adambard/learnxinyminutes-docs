@@ -243,7 +243,8 @@ array(c(c(c(2,300,4),c(8,9,0)),c(c(5,60,0),c(66,7,847))), dim=c(3,2,2))
 # LISTS (MULTI-DIMENSIONAL, POSSIBLY RAGGED, OF DIFFERENT TYPES)
 
 # Finally, R has lists (of vectors)
-list1 <- list(time = 1:40, price = c(rnorm(40,.5*list1$time,4))) # random
+list1 <- list(time = 1:40)
+list1$price = c(rnorm(40,.5*list1$time,4)) # random
 list1
 
 # You can get items in the list like so
