@@ -329,7 +329,7 @@ class Bicycle {
     }
 } // end class Bicycle
 
-// Use `extends` to extend a class
+// PennyFarthing is a subclass of Bicycle
 class PennyFarthing extends Bicycle {
     // (Penny Farthings are those bicycles with the big front wheel.
     // They have no gears.)
