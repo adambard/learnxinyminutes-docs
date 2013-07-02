@@ -5,7 +5,7 @@ author_url: http://github.com/e99n09
 
 ---
 
-R is a statistical computing language.
+R is a statistical computing language. It has lots of good built-in functions for uploading and cleaning data sets, running common statistical tests, and making graphs. You can also easily compile it within a LaTeX document.
 
 ```r
 
@@ -14,36 +14,28 @@ R is a statistical computing language.
 # You can't make a multi-line comment per se,
 # but you can stack multiple comments like so.
 
-# Protip: hit COMMAND-ENTER to execute a line
-
 ###################################################################################
 # The absolute basics
 ###################################################################################
 
-# NUMERICS
+# NUMBERS
 
-# We've got numbers! Behold the "numeric" class
+# We've got doubles! Behold the "numeric" class
 5 # => [1] 5
 class(5) # => [1] "numeric"
+# We've also got integers! They look suspiciously similar,
+# but indeed are different
+5L # => [1] 5
+class(5L) # => [1] "integer"
 # Try ?class for more information on the class() function
 # In fact, you can look up the documentation on just about anything with ?
-
-# Numerics are like doubles. There's no such thing as integers
-5 == 5.0 # => [1] TRUE
-# Because R doesn't distinguish between integers and doubles,
-# R shows the "integer" form instead of the equivalent "double" form
-# whenever it's convenient:
-5.0 # => [1] 5
 
 # All the normal operations!
 10 + 66 # => [1] 76
 53.2 - 4 # => [1] 49.2
-3.37 * 5.4 # => [1] 18.198
 2 * 2.0 # => [1] 4
-3 / 4 # => [1] 0.75
-2.0 / 2 # => [1] 1
+3L / 4 # => [1] 0.75
 3 %% 2 # => [1] 1
-4 %% 2 # => [1] 0
 
 # Finally, we've got not-a-numbers! They're numerics too
 class(NaN) # => [1] "numeric"
@@ -107,6 +99,17 @@ while (a > 4) {
 # Operations on entire vectors (i.e. a whole row, a whole column)
 # or apply()-type functions (we'll discuss later) are preferred
 
+# IF/ELSE
+
+# Again, pretty standard
+if (4 > 3) {
+	print("Huzzah! It worked!")
+} else {
+	print("Noooo! This is blatantly illogical!")
+}
+# =>
+# [1] "Huzzah! It worked!"
+
 # FUNCTIONS
 
 # Defined like so:
@@ -126,8 +129,8 @@ myFunc(5) # => [1] 19
 # ONE-DIMENSIONAL
 
 # You can vectorize anything, so long as all components have the same type
-vec <- c(4, 5, 6, 7)
-vec # => [1] 4 5 6 7
+vec <- c(8, 9, 10, 11)
+vec # => [1]  8  9 10 11
 # The class of a vector is the class of its components
 class(vec) # => [1] "numeric"
 # If you vectorize items of different classes, weird coersions happen
@@ -135,15 +138,27 @@ c(TRUE, 4) # => [1] 1 4
 c("dog", TRUE, 4) # => [1] "dog"  "TRUE" "4"
 
 # We ask for specific components like so (R starts counting from 1)
-vec[1] # => [1] 4
-# We can also search for the indices of specific components
-which(vec %% 2 == 0) 
+vec[1] # => [1] 8
+# We can also search for the indices of specific components,
+which(vec %% 2 == 0) # => [1] 1 3
+# or grab just the first or last entry in the vector
+head(vec, 1) # => [1] 8
+tail(vec, 1) # => [1] 11
 # If an index "goes over" you'll get NA:
 vec[6] # => [1] NA
+# You can find the length of your vector with length()
+length(vec) # => [1] 4
 
 # You can perform operations on entire vectors or subsets of vectors
 vec * 4 # => [1] 16 20 24 28
 vec[2:3] * 5 # => [1] 25 30
+# and there are many built-in functions to summarize vectors
+mean(vec) # => [1] 9.5
+var(vec) # => [1] 1.666667
+sd(vec) # => [1] 1.290994
+max(vec) # => [1] 11
+min(vec) # => [1] 8
+sum(vec) # => [1] 38
 
 # TWO-DIMENSIONAL (ALL ONE CLASS)
 
@@ -192,7 +207,7 @@ mat3
 #      [,1] [,2] [,3] [,4]
 # [1,]    1    2    4    5
 # [2,]    6    7    0    4
-# Aah, everything of the same class. No coersions. Much better.
+# Aah, everything of the same class. No coercions. Much better.
 
 # TWO-DIMENSIONAL (DIFFERENT CLASSES)
 
@@ -273,7 +288,6 @@ apply(mat, MAR = 2, myFunc)
 # [2,]    7   19
 # [3,]   11   23
 # Other functions: ?lapply, ?sapply
-# Don't feel too intimiated; everyone agrees they are rather confusing
 
 # The plyr package aims to replace (and improve upon!) the *apply() family.
 
@@ -298,18 +312,18 @@ write.csv(pets, "pets2.csv") # to make a new .csv file in the working directory
 # Try ?read.csv and ?write.csv for more information
 
 ###################################################################################
-# Plots
+# Plots and tests
 ###################################################################################
 
 # Scatterplots!
 plot(list1$time, list1$price, main = "fake data")
-# Fit a linear model
-myLm <- lm(price  ~ time, data = list1)
-myLm # outputs result of regression
+# Regressions!
+linearModel <- lm(price  ~ time, data = list1)
+linearModel # outputs result of regression
 # Plot regression line on existing plot
-abline(myLm, col = "red")
+abline(linearModel, col = "red")
 # Get a variety of nice diagnostics
-plot(myLm)
+plot(linearModel)
 
 # Histograms!
 hist(rpois(n = 10000, lambda = 5), col = "thistle")
@@ -325,4 +339,7 @@ require(ggplot2)
 
 ```
 
+## How do I get R?
 
+* Get R and the R GUI from [http://www.r-project.org/](http://www.r-project.org/)
+* [RStudio](http://www.rstudio.com/ide/) is another GUI
