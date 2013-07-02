@@ -47,9 +47,9 @@ false #=> falsehood
 'I am a string'
 "I am a string too"
 
-placeholder = "use variables inline"
+placeholder = "use string interpolation"
 "I can #{placeholder} when using double quoted strings"
-#=> "I can use variables inline when using double quoted strings"
+#=> "I can use string interpolation when using double quoted strings"
 
 
 # print to the output
