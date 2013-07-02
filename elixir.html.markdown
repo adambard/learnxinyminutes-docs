@@ -68,9 +68,9 @@ tail # => [2,3]
 ## JOIN BINARIES AND LISTS
 ######################################################
 
-## --------------------
+## ---------------------------
 ## -- Operators
-## --------------------
+## ---------------------------
 
 # Some math
 1 + 1  # => 2
@@ -118,9 +118,9 @@ number < atom < reference < functions < port < pid < tuple < list < bit string
 # To quote Joe Armstrong on this: "The actual order is not important,
 # but that a total ordering is well defined is important."
 
-## --------------------
+## ---------------------------
 ## -- Control Flow
-## --------------------
+## ---------------------------
 
 # `if` expression
 if false do
@@ -199,6 +199,112 @@ end
 ## -- Modules and Functions
 ## ---------------------------
 
+###############################
+## EXPLAIN built-in functions?
+###############################
 
+# Anonymous functions (notice the dot)
+square = fn(x) -> x * x end
+square.(5) #=> 25
 
+# They also accept many clauses and guards
+f = fn
+	x, y when x > 0 -> x + y
+	x, y -> x * y
+end
+
+f.(1, 3)  #=> 4
+f.(-1, 3) #=> -3
+
+# You can group several functions into a module. Inside a module use `def`
+# to define your functions.
+defmodule Math do
+	def sum(a, b) do
+		a + b
+	end
+
+	def square(x) do
+		x * x
+	end
+end
+
+Math.sum(1, 2)  #=> 3
+Match.square(3) #=> 9
+
+# To compile our little Math module save it as `math.ex` and use `elixirc`
+elixirc math.ex
+
+# Inside a module we can define functions with `def` and
+# private functions with `defp`.
+#
+# A function defined with `def` is available to be invoked from other modules,
+# a private function can only be invoked locally.
+defmodule PrivateMath do
+	def sum(a, b) do
+		do_sum(a, b)
+	end
+
+	defp do_sum(a, b) do
+		a + b
+	end
+end
+
+PrivateMath.sum(1, 2)    #=> 3
+PrivateMath.do_sum(1, 2) #=> ** (UndefinedFunctionError)
+
+# Function declarations also support guards and multiple clauses:
+defmodule Geometry do
+	def area({:rectangle, w, h}) do
+		w * h
+	end
+
+	def area({:circle, r}) when r > 0 do
+		3.14 * r * r
+	end
+end
+
+Geometry.area({:rectangle, 2, 3}) #=> 6
+Geometry.area({:circle, 3})       #=> 28.25999999999999801048
+
+# Due to immutability, recursion is a big part of elixir
+defmodule Recursion do
+	def sum_list([head | tail], acc) do
+		sum_list(tail, acc + head)
+	end
+
+	def sum_list([], acc) do
+		acc
+	end
+end
+
+Recursion.sum_list([1,2,3], 0) #=> 6
+
+###############################
+## EXPLAIN module attributes
+###############################
+
+## ---------------------------
+## -- Records and Exceptions
+## ---------------------------
+
+# Records are basically structures that allow you to associate a name with
+# a particular value.
+defrecord Person, name: nil, age: 0, height: 0
+
+joe_info = Person.new(name: "Joe", age: 30, height: 180)
+#=> Person[name: "Joe", age: 30, height: 180]
+
+# Access the value of name
+joe_info.name #=> "Joe"
+
+# Update the value of age
+joe_info = joe_info.age(31) #=> Person[name: "Joe", age: 31, height: 180]
+
+## TODO: Exceptions
+
+## ---------------------------
+## -- Concurrency
+## ---------------------------
+
+## TODO
 ```
