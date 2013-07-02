@@ -429,14 +429,37 @@ type Panther <: Cat # Panther is also a subtype of Cat
   Panther() = new("green") # Panthers will only have this constructor, and no default constructor.
 end
 
-####
-#### In progress point
-####
+# Multiple Dispatch
 
-#### Multiple Dispatch
+# In Julia, all named functions are generic functions
+# This means that they are built up from many small methods
+# For example, let's make a function meow:
+function meow(cat::Lion)
+  cat.roar # access properties using dot notation
+end
+
+function meow(cat::Panther)
+  "grrr"
+end
+
+function meow(cat::Tiger)
+  "rawwwr"
+end
+
+meow(tigger) #=> "rawwr"
+meow(Lion("brown","ROAAR")) #=> "ROAAR"
+meow(Panther()) #=> "grrr"
+
+function pet_cat(cat::Cat)
+  println("The cat says $(meow(cat))")
+end
+
+pet_cat(tigger) #=> ERROR: no method pet_cat(Tiger,)
+pet_cat(Lion(Panther(),"42")) #=> prints "The cat says 42"
+
 
 ## Further Reading
 
-#### Link to Maunual
-Still up for more? Try [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
+You can get a lot more detail from [The Julia Manual](http://docs.julialang.org/en/latest/manual/)
+
 
