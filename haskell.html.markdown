@@ -245,7 +245,7 @@ case args of
   _ -> putStrLn "bad args"
 
 -- Haskell doesn't have loops because it uses recursion instead.
--- map calls a function over every element in an array
+-- map applies a function over every element in an array
 
 map (*2) [1..5] -- [2, 4, 6, 8, 10]
 
