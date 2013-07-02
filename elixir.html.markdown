@@ -24,15 +24,15 @@ filename: learnelixir.ex
 {1,2,3} # tuple
 
 # We can access a tuple element with the `elem` function:
-elem({1, 2, 3}, 0) # => 1
+elem({1, 2, 3}, 0) #=> 1
 
 # Lists that are implemented as linked lists.
 [1,2,3] # list
 
 # We can access the head and tail of a list as follows:
 [head | tail] = [1,2,3]
-head # => 1
-tail # => [2,3]
+head #=> 1
+tail #=> [2,3]
 
 # In elixir, just like in erlang, the `=` denotes pattern matching and
 # not an assignment.
@@ -44,7 +44,7 @@ tail # => [2,3]
 
 # A pattern match will error when the sides don't match, in this example
 # the tuples have different sizes.
-{a, b, c} = {1, 2} # => ** (MatchError) no match of right hand side value: {1,2}
+{a, b, c} = {1, 2} #=> ** (MatchError) no match of right hand side value: {1,2}
 
 # There's also binaries
 <<1,2,3>> # binary
@@ -53,64 +53,73 @@ tail # => [2,3]
 "hello" # string
 'hello' # char list
 
+# Multi-line strings
+"""
+I'm a multi-line
+string.
+"""
+#=> "I'm a multi-line\nstring.\n"
+
 # Strings are all encoded in UTF-8:
-"héllò" # => "héllò"
+"héllò" #=> "héllò"
 
 # Strings are really just binaries, and char lists are just lists.
-<<?a, ?b, ?c>> # => "abc"
-[?a, ?b, ?c]   # => 'abc'
+<<?a, ?b, ?c>> #=> "abc"
+[?a, ?b, ?c]   #=> 'abc'
 
 # `?a` in elixir returns the ASCII integer for the letter `a`
-?a # => 97
+?a #=> 97
 
-## TODO:
-######################################################
-## JOIN BINARIES AND LISTS
-######################################################
+# To concatenate lists use `++`, for binaries use `<>`
+[1,2,3] ++ [4,5]     #=> [1,2,3,4,5]
+'hello ' ++ 'world'  #=> 'hello world'
+
+<<1,2,3>> <> <<4,5>> #=> <<1,2,3,4,5>>
+"hello " <> "world"  #=> "hello world"
 
 ## ---------------------------
 ## -- Operators
 ## ---------------------------
 
 # Some math
-1 + 1  # => 2
-10 - 5 # => 5
-5 * 2  # => 10
-10 / 2 # => 5.0
+1 + 1  #=> 2
+10 - 5 #=> 5
+5 * 2  #=> 10
+10 / 2 #=> 5.0
 
 # In elixir the operator `/` always returns a float.
 
 # To do integer division use `div`
-div(10, 2) # => 5
+div(10, 2) #=> 5
 
 # To get the division remainder use `rem`
-rem(10, 3) # => 1
+rem(10, 3) #=> 1
 
 # There's also boolean operators: `or`, `and` and `not`.
 # These operators expect a boolean as their first argument.
-true and true # => true
-false or true # => true
-1 and true    # => ** (ArgumentError) argument error
+true and true #=> true
+false or true #=> true
+1 and true    #=> ** (ArgumentError) argument error
 
 # Elixir also provides `||`, `&&` and `!` which accept arguments of any type.
 # All values except `false` and `nil` will evaluate to true.
-1 || true  # => 1
-false && 1 # => false
-nil && 20  # => nil
+1 || true  #=> 1
+false && 1 #=> false
+nil && 20  #=> nil
 
-!true # => false
+!true #=> false
 
 # For comparisons we have: `==`, `!=`, `===`, `!==`, `<=`, `>=`, `<` and `>`
-1 == 1 # => true
-1 != 1 # => false
-1 < 2  # => true
+1 == 1 #=> true
+1 != 1 #=> false
+1 < 2  #=> true
 
 # `===` and `!==` are more strict when comparing integers and floats:
-1 == 1.0  # => true
-1 === 1.0 # => false
+1 == 1.0  #=> true
+1 === 1.0 #=> false
 
 # We can also compare two different data types:
-1 < :hello # => true
+1 < :hello #=> true
 
 # The overall sorting order is defined below:
 number < atom < reference < functions < port < pid < tuple < list < bit string
@@ -151,11 +160,11 @@ end
 # It's common practive to assign a value to `_` if we don't need it.
 # For example, if only the head of a list matters to us:
 [head | _] =  [1,2,3]
-head # => 1
+head #=> 1
 
 # For better readability we can do the following:
 [head | _tail] = [:a, :b, :c]
-head # => :a
+head #=> :a
 
 # `cond` lets us check for many conditions at the same time.
 # Use `cond` instead of nesting many `if` expressions.
@@ -187,27 +196,19 @@ catch
 after
 	IO.puts("I'm the after clause.")
 end
-# => I'm the after clause
-#	 "Got :hello"
-
-## TODO:
-######################################################
-## GUARDS
-######################################################
+#=> I'm the after clause
+#	"Got :hello"
 
 ## ---------------------------
 ## -- Modules and Functions
 ## ---------------------------
 
-###############################
-## EXPLAIN built-in functions?
-###############################
-
 # Anonymous functions (notice the dot)
 square = fn(x) -> x * x end
 square.(5) #=> 25
 
-# They also accept many clauses and guards
+# They also accept many clauses and guards. Guards let you fine tune pattern matching,
+# they are indicated by the `when` keyword:
 f = fn
 	x, y when x > 0 -> x + y
 	x, y -> x * y
@@ -215,6 +216,12 @@ end
 
 f.(1, 3)  #=> 4
 f.(-1, 3) #=> -3
+
+# Elixir also provides many built-in functions.
+# These are available in the current scope.
+is_number(10)    #=> true
+is_list("hello") #=> false
+elem({1,2,3}, 0) #=> 1
 
 # You can group several functions into a module. Inside a module use `def`
 # to define your functions.
@@ -234,9 +241,7 @@ Match.square(3) #=> 9
 # To compile our little Math module save it as `math.ex` and use `elixirc`
 elixirc math.ex
 
-# Inside a module we can define functions with `def` and
-# private functions with `defp`.
-#
+# Inside a module we can define functions with `def` and private functions with `defp`.
 # A function defined with `def` is available to be invoked from other modules,
 # a private function can only be invoked locally.
 defmodule PrivateMath do
@@ -258,7 +263,7 @@ defmodule Geometry do
 		w * h
 	end
 
-	def area({:circle, r}) when r > 0 do
+	def area({:circle, r}) when is_number(r) do
 		3.14 * r * r
 	end
 end
@@ -279,9 +284,17 @@ end
 
 Recursion.sum_list([1,2,3], 0) #=> 6
 
-###############################
-## EXPLAIN module attributes
-###############################
+# Elixir modules support attributes, there are built-in attributes and you
+# may also add custom attributes.
+
+defmodule MyMod do
+	@moduledoc """
+	This is a built-in attribute on a example module.
+	"""
+
+	@my_data 100 # This is a custom attribute.
+	IO.inspect(@my_data) #=> 100
+end
 
 ## ---------------------------
 ## -- Records and Exceptions
@@ -300,11 +313,69 @@ joe_info.name #=> "Joe"
 # Update the value of age
 joe_info = joe_info.age(31) #=> Person[name: "Joe", age: 31, height: 180]
 
-## TODO: Exceptions
+# The `try` block with the `rescue` keyword is used to handle exceptions
+try do
+	raise "some error"
+rescue
+	RuntimeError -> "rescued a runtime error"
+	_error -> "this will rescue any error"
+end
+
+# All exceptions have a message
+try do
+	raise "some error"
+rescue
+	x in [RuntimeError] ->
+		x.message
+end
 
 ## ---------------------------
 ## -- Concurrency
 ## ---------------------------
 
-## TODO
+# Elixir relies on the actor model for concurrency. All we need to write
+# concurrent programs in elixir are three primitives: spawning processes,
+# sending messages and receiving messages.
+
+# To start a new process we use the `spawn` function, which takes a function
+# as argument.
+f = fn -> 2 * 2 end #=> #Function<erl_eval.20.80484245>
+spawn(f) #=> #PID<0.40.0>
+
+# `spawn` returns a pid (process identifier), you can use this pid to send
+# messages to the process. To do message passing we use the `<-` operator.
+# For all of this to be useful we need to be able to receive messages. This is
+# achived with the `receive` mechanism:
+
+defmodule Geometry do
+	def area_loop do
+		receive do
+			{:rectangle, w, h} ->
+				IO.puts("Area = #{w * h}")
+				area_loop()
+			{:circle, r} ->
+				IO.puts("Area = #{3.14 * r * r}")
+				area_loop()
+		end
+	end
+end
+
+# Compile the module and create a process that evaluates `area_loop` in the shell
+pid = spawn(fn -> Geometry.area_loop() end) #=> #PID<0.40.0>
+
+# Send a message to `pid` that will match a pattern in the receive statement
+pid <- {:rectangle, 2, 3}
+#=> Area = 6
+#   {:rectangle,2,3}
+
+pid <- {:circle, 2}
+#=> Area = 12.56000000000000049738
+#   {:circle,2}
 ```
+
+## References
+
+* [Getting started guide](http://elixir-lang.org/getting_started/1.html) from [elixir webpage](http://elixir-lang.org)
+* [Elixir Documentation](http://elixir-lang.org/docs/master/)
+* ["Learn You Some Erlang for Great Good!"](http://learnyousomeerlang.com/) by Fred Hebert
+* "Programming Erlang: Software for a Concurrent World" by Joe Armstrong
