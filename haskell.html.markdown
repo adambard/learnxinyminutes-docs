@@ -307,6 +307,7 @@ Just 1
 
 main :: IO ()
 main = putStrLn "Hello, sky! " ++ (say Blue) 
+-- putStrLn has type putStrLn :: String -> IO()
 
 -- It is easiest to do IO if you can implement your program as 
 -- a function from String to String.
