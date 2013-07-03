@@ -308,33 +308,62 @@ Just 1
 main :: IO ()
 main = putStrLn "Hello, sky! " ++ (say Blue) 
 
+-- It is easiest to do IO if you can implement your program as 
+-- a function from String to String.
+myProgram :: String -> String
+-- DO SOMETHING NICE HERE. Count lines?
+
+-- This inputs some text, runs `myProgram` on it, and prints out 
+-- the output.
+main' = interact myProgram 
+
 -- You can think of a value of type `IO ()` as representing a
 -- sequence of actions for the computer to do, much like a
--- computer program written in an imperative language. The *only*
--- way you *execute* such a program is to make it the value of `main`.
+-- computer program written in an imperative language. We can use
+-- the `do` notation to chain actions together. For example:
 
+sayHello :: IO ()
+sayHello = do 
+   putStrLn "What is your name?"
+   name <- getLine -- this gets a line and gives it the name "input"
+   putStrLn "Hello, " ++ name
+   
+-- Exercise: write your own version of 
+--            interact :: (String -> String) -> IO()
+   
+-- The above code will never be executed, however. The only
+-- way you execute a value of type IO() is to make it the 
+-- value of `main`. So, you can comment out the above definition 
+-- of `main` and add:
+--   main = sayHello
 
+-- Let's unerstand how the function `getLine` we just used works. 
+-- Its type is:
+--    getLine :: IO String
+-- You can think of a value of type `IO String` as representing a
+-- computer program that will generate a value of type `String` 
+-- when executed (in addition to anything else it does). We can
+-- store this value using `<-`. We can also make our own action
+-- of type `IO String`:
 
--- An `IO a` value is an IO action: you can chain them with do blocks
 action :: IO String
 action = do
    putStrLn "This is a line. Duh"
-   input <- getLine -- this gets a line and gives it the name "input"
+   input <- getLine 
    input2 <- getLine
-   return (input1 ++ "\n" ++ input2) -- This is the result of the whole action
+   -- The type of the `do` statement is that of its last line.
+   return (input1 ++ "\n" ++ input2) -- return :: String -> IO String
 
--- This didn't actually do anything. When a haskell program is executed
--- an IO action called "main" is read and interpreted.
+-- We can use this just like `getLine` itself:
 
 main = do
-    putStrLn "Our first program. How exciting!"
-    result <- action -- our defined action is just like the default ones
+    putStrLn "I will print two lines!"
+    result <- action 
     putStrLn result
     putStrLn "This was all, folks!"
 
--- Haskell does IO through a monad because this allows it to be a purely
--- functional language. Our `action` function had a type signature of `IO String`.
--- In general any function that interacts with the outside world (i.e. does IO)
+-- The type `IO` is called a monad. The way Haskell does IO using a monad  allows it to 
+-- be a purely functional language. Any function that interacts with the outside world (i.e. does IO)
 -- gets marked as `IO` in its type signature. This lets us reason about what
 -- functions are "pure" (don't interact with the outside world or modify state)
 -- and what functions aren't. 
