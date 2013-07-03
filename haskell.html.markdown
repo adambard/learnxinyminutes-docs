@@ -307,16 +307,18 @@ Just 1
 
 main :: IO ()
 main = putStrLn "Hello, sky! " ++ (say Blue) 
--- putStrLn has type putStrLn :: String -> IO()
+-- putStrLn has type String -> IO ()
 
 -- It is easiest to do IO if you can implement your program as 
--- a function from String to String.
-myProgram :: String -> String
--- DO SOMETHING NICE HERE. Count lines?
+-- a function from String to String. The function 
+--    interact :: (String -> String) -> IO ()
+-- inputs some text, runs a function on it, and prints out the 
+-- output.
 
--- This inputs some text, runs `myProgram` on it, and prints out 
--- the output.
-main' = interact myProgram 
+countLines :: String -> String
+countLines = show . length . lines
+
+main' = interact countLines
 
 -- You can think of a value of type `IO ()` as representing a
 -- sequence of actions for the computer to do, much like a
@@ -329,13 +331,12 @@ sayHello = do
    name <- getLine -- this gets a line and gives it the name "input"
    putStrLn "Hello, " ++ name
    
--- Exercise: write your own version of 
---            interact :: (String -> String) -> IO()
+-- Exercise: write your own version of `interact`.
    
--- The above code will never be executed, however. The only
--- way you execute a value of type IO() is to make it the 
--- value of `main`. So, you can comment out the above definition 
--- of `main` and add:
+-- The code in `sayHello` will never be executed, however. The only
+-- action that ever gets executed is the value value of `main`. 
+-- To run `sayHello` comment out the above definition of `main` 
+-- and repalce it with:
 --   main = sayHello
 
 -- Let's unerstand how the function `getLine` we just used works. 
