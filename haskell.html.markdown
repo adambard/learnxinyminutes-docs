@@ -339,13 +339,13 @@ sayHello = do
 -- and repalce it with:
 --   main = sayHello
 
--- Let's understand how the function `getLine` we just used works. 
--- Its type is:
+-- Let's understand better how the function `getLine` we just 
+-- used works. Its type is:
 --    getLine :: IO String
 -- You can think of a value of type `IO String` as representing a
 -- computer program that will generate a value of type `String` 
 -- when executed (in addition to anything else it does). We can
--- store this value using `<-` inside a `do` block. We can also 
+-- store and reuse this value using `<-`. We can also 
 -- make our own action of type `IO String`:
 
 action :: IO String
@@ -360,12 +360,12 @@ action = do
 -- We can use this just like we used `getLine`:
 
 main'' = do
-    putStrLn "I will print two lines!"
+    putStrLn "I will echo two lines!"
     result <- action 
     putStrLn result
     putStrLn "This was all, folks!"
 
--- The type `IO` is called a monad. The way Haskell does IO using a monad  allows it to 
+-- The type `IO` is an example of a "monad". The way Haskell uses a monad to do IO allows it to 
 -- be a purely functional language. Any function that interacts with the outside world (i.e. does IO)
 -- gets marked as `IO` in its type signature. This lets us reason about what
 -- functions are "pure" (don't interact with the outside world or modify state)
