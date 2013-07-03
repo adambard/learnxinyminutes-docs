@@ -356,7 +356,7 @@ action = do
 
 -- We can use this just like `getLine` itself:
 
-main = do
+main'' = do
     putStrLn "I will print two lines!"
     result <- action 
     putStrLn result
