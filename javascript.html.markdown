@@ -33,7 +33,7 @@ doStuff()
  * 1. Numbers, Strings and Operators
  ***********/
 
-// Javascript has one number type that covers ints and floats.
+// Javascript has one number type, which is a 64-bit IEEE 754 double.
 3 // = 3
 1.5 // = 1.5
 
@@ -45,6 +45,10 @@ doStuff()
 
 // Including uneven division.
 5 / 2 // = 2.5
+
+// Bitwise operations also work; when you perform a bitwise operation your float
+// is converted to a signed int *up to* 32 bits.
+1 << 2 // = 4
 
 // Enforce precedence with parentheses
 (1 + 3) * 2 // = 8
@@ -165,7 +169,7 @@ if (count == 3){
 } else if (count == 4) {
     // evaluated if count is 4
 } else {
-    // evaluated if it's not either
+    // evaluated if it's not either 3 or 4
 }
 
 // As does while.
@@ -179,7 +183,8 @@ do {
     input = getInput()
 } while (!isValid(input))
 
-// the for loop is the same as C and Java: initialisation; test; iteration.
+// the for loop is the same as C and Java: 
+// initialisation; continue condition; iteration.
 for (var i = 0; i < 5; i++){
     // will run 5 times
 }
@@ -192,8 +197,8 @@ if (colour == "red" || colour == "blue"){
     // colour is either red or blue
 }
 
-// && and || "short circuit", which is useful for setting default values...
-var name = otherName || "default";
+// && and || "short circuit", which is useful for setting default values.
+var name = otherName || "default"
 
 /***********
  * 5. Functions, Scope and Closures
@@ -280,41 +285,63 @@ myObj.myBoolean // = true
 myPrototype.meaningOfLife = 43
 myObj.meaningOfLife // = 43
 
-// While the __proto__ magic property we've seen so far is useful for
-// explaining prototypes, it's non-standard. There's no standard way to change
-// an existing object's prototype, but there's two ways to set the prototype of 
-// a new object when you first create it.
+// We mentioned that __proto__ was non-standard, and there's no standard way to
+// change the prototype of an existing object. However, there's two ways to
+// create a new object with a given prototype.
 
 // The first is Object.create, which is a recent addition to JS, and therefore
 // not available in all implementations yet.
 var myObj = Object.create(myPrototype)
 myObj.meaningOfLife // = 43
 
-// Unfortunately, Object.create is quite recent and isn't available in many
-// browsers, so you often can't use that, either. The most reliable way to set
-// prototypes involves constructors.
+// The second way, which works anywhere, has to do with constructors.
+// Constructors have a property called prototype. This is *not* the prototype of
+// the constructor function itself; instead, it's the prototype that new objects
+// are given when they're created with that constructor and the new keyword.
+myConstructor.prototype = {
+    getMyNumber: function(){
+        return self.myNumber
+    }
+}
+var myNewObj2 = new myConstructor()
+myNewObj2.getMyNumber() // = 5
 
-// TODO: write about the .prototype property on constructors
+// Built-in types like strings and numbers also have constructors that create
+// equivalent wrapper objects.
+var myNumber = 12
+var myNumberObj = new Number(12)
+myNumber == myNumberObj // = true
 
-// Built-in types' prototypes work like this too, so you can actually change
-// the prototype of a string, for instance.
+// Except, they aren't exactly equivalent.
+typeof(myNumber) // = 'number'
+typeof(myNumberObj) // = 'object'
+myNumber === myNumberObj // = false
+if (0){
+    // This code won't execute, because 0 is falsy.
+}
+if (Number(0)){
+    // This code *will* execute, because Number(0) is truthy.
+}
+
+// However, the wrapper objects and the regular builtins share a prototype, so
+// you can actually add functionality to a string, for instance.
 String.prototype.firstCharacter = function(){
     return this.charAt(0)
 }
 "abc".firstCharacter() // = "a"
 
-// There are several implementations of JavaScript, which all gain new features
-// at different times. Sometimes, however, it's possible to replicate new
-// features by altering built in types or prototypes, which is called
-// "polyfilling".
+// This fact is often used in "polyfilling", which is implementing newer
+// features of JavaScript in an older subset of JavaScript, so that they can be
+// used in older environments such as outdated browsers.
 
 // For instance, we mentioned that Object.create isn't yet available in all
-// implementations, but we can still use it if we do this:
-if (Object.create === undefined){
+// implementations, but we can still use it with this polyfill:
+if (Object.create === undefined){ // don't overwrite it if it exists
     Object.create = function(proto){
         // make a temporary constructor with the right prototype
         var Constructor = function(){}
         Constructor.prototype = proto
+        // then use it to create a new, appropriately-prototyped object
         return new Constructor()
     }
 }
