@@ -231,6 +231,9 @@ if (false) {
     print 'Does';
 }
 
+// ternary operator
+print (false ? 'Does not get printed' : 'Does');
+
 $x = 0;
 if ($x === '0') {
     print 'Does not print';
@@ -239,6 +242,8 @@ if ($x === '0') {
 } else {
     print 'Does print';
 }
+
+
 
 // This alternative syntax is useful for templates:
 ?>
