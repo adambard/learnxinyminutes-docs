@@ -302,6 +302,19 @@ Just 1
 -- While IO can't be explained fully without explaining monads,
 -- it is not hard to explain enough to get going.
 
+-- When a Haskell program is executed, the function `main` is
+-- called. It must return a value of type `IO ()`. For example:
+
+main :: IO ()
+main = putStrLn "Hello, sky! " ++ (say Blue) 
+
+-- You can think of a value of type `IO ()` as representing a
+-- sequence of actions for the computer to do, much like a
+-- computer program written in an imperative language. The *only*
+-- way you *execute* such a program is to make it the value of `main`.
+
+
+
 -- An `IO a` value is an IO action: you can chain them with do blocks
 action :: IO String
 action = do
