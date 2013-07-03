@@ -2,6 +2,7 @@
 language: julia
 author: Leah Hanson
 author_url: http://leahhanson.us
+filename: learnjulia.jl
 ---
 
 Julia is a new homoiconic functional language focused on technical computing.
@@ -9,7 +10,8 @@ While having the full power of homoiconic macros, first-class functions, and low
 
 This is based on the current development version of Julia, as of June 29th, 2013.
 
-```julia
+```ruby
+
 # Single line comments start with a hash.
 
 ####################################################
@@ -48,8 +50,10 @@ div(5, 2) #=> 2
 2 << 1  #=> 4 # logical/arithmetic shift left
 
 # You can use the bits function to see the binary representation of a number.
-bits(12345)   #=> "0000000000000000000000000000000000000000000000000011000000111001"
-bits(12345.0) #=> "0100000011001000000111001000000000000000000000000000000000000000"
+bits(12345)
+#=> "0000000000000000000000000000000000000000000000000011000000111001"
+bits(12345.0)
+#=> "0100000011001000000111001000000000000000000000000000000000000000"
 
 # Boolean values are primitives
 true
@@ -96,25 +100,42 @@ println("I'm Julia. Nice to meet you!")
 # No need to declare variables before assigning to them.
 some_var = 5 #=> 5 
 some_var #=> 5
-# Accessing a previously unassigned variable is an error
-some_other_var #=> ERROR: some_other_var not defined
 
-# Variable Names:
-SomeOtherVar123! = 6 #=> 6 # You can use uppercase letters, digits, and exclamation points as well after the initial alphabetic character.
-☃ = 8 #=> 8 # You can also use unicode characters
+# Accessing a previously unassigned variable is an error
+try
+  some_other_var #=> ERROR: some_other_var not defined
+catch e
+    println(e)
+end
+
+# Variable name start with a letter. You can use uppercase letters, digits,
+# and exclamation points as well after the initial alphabetic character.
+SomeOtherVar123! = 6 #=> 6
+
+# You can also use unicode characters
+☃ = 8 #=> 8
 
 # A note on naming conventions in Julia:
-# * Names of variables are in lower case, with word separation indicated by underscores ('\_').
-# * Names of Types begin with a capital letter and word separation is shown with CamelCase instead of underscores.
+#
+# * Names of variables are in lower case, with word separation indicated by
+#   underscores ('\_').
+#
+# * Names of Types begin with a capital letter and word separation is shown
+#   with CamelCase instead of underscores.
+#
 # * Names of functions and macros are in lower case, without underscores.
-# * Functions that modify their inputs have names that end in !. These functions are sometimes called mutating functions or in-place functions.
+#
+# * Functions that modify their inputs have names that end in !. These
+#   functions are sometimes called mutating functions or in-place functions.
 
 # Arrays store a sequence of values indexed by integers 1 through n:
 a = Int64[] #=> 0-element Int64 Array
+
 # 1-dimensional array literals can be written with comma-separated values.
 b = [4, 5, 6] #=> 3-element Int64 Array: [4, 5, 6]
 b[1] #=> 4
 b[end] #=> 6
+
 # 2-dimentional arrays use space-separated values and semicolon-separated rows.
 matrix = [1 2; 3 4] #=> 2x2 Int64 Array: [1 2; 3 4]
 
@@ -124,42 +145,53 @@ push!(a,2)     #=> [1,2]
 push!(a,4)     #=> [1,2,4]
 push!(a,3)     #=> [1,2,4,3]
 append!(a,b) #=> [1,2,4,3,4,5,6]
+
 # Remove from the end with pop
 pop!(a)        #=> 6 and b is now [4,5]
+
 # Let's put it back
 push!(b,6)   # b is now [4,5,6] again.
 
 a[1] #=> 1 # remember that Julia indexes from 1, not 0!
-a[end] #=> 6 # end is a shorthand for the last index; it can be used in any indexing expression.
 
-# Function names that end in exclamations points indicate that they modify their argument.
+# end is a shorthand for the last index. It can be used in any
+# indexing expression
+a[end] #=> 6
+
+# Function names that end in exclamations points indicate that they modify
+# their argument.
 arr = [5,4,6] #=> 3-element Int64 Array: [5,4,6]
 sort(arr) #=> [4,5,6]; arr is still [5,4,6]
 sort!(arr) #=> [4,5,6]; arr is now [4,5,6]
 
 # Looking out of bounds is a BoundsError
-a[0] #=> ERROR: BoundsError() in getindex at array.jl:270
-a[end+1] #=> ERROR: BoundsError() in getindex at array.jl:270
-# Errors list the line and file they came from, even if it's in the standard library.
-# If you built Julia from source, you can look in the folder base inside the julia folder to find these files.
+try
+    a[0] #=> ERROR: BoundsError() in getindex at array.jl:270
+    a[end+1] #=> ERROR: BoundsError() in getindex at array.jl:270
+catch e
+    println(e)
+end
+
+# Errors list the line and file they came from, even if it's in the standard
+# library. If you built Julia from source, you can look in the folder base
+# inside the julia folder to find these files.
 
 # You can initialize arrays from ranges
 a = [1:5] #=> 5-element Int64 Array: [1,2,3,4,5]
 
 # You can look at ranges with slice syntax.
 a[1:3] #=> [1, 2, 3]
-# Omit the beginning
 a[2:] #=> [2, 3, 4, 5]
 
 # Remove arbitrary elements from a list with splice!
 arr = [3,4,5]
 splice!(arr,2) #=> 4 ; arr is now [3,5]
 
-# Concatenate lists with append! 
+# Concatenate lists with append!
 b = [1,2,3]
 append!(a,b) # Now a is [1, 3, 4, 5, 1, 2, 3]
 
-# Check for existence in a list with contains 
+# Check for existence in a list with contains
 contains(a,1) #=> true
 
 # Examine the length with length
@@ -168,7 +200,11 @@ length(a) #=> 7
 # Tuples are immutable.
 tup = (1, 2, 3) #=>(1,2,3) # an (Int64,Int64,Int64) tuple.
 tup[1] #=> 1
-tup[0] = 3 #=> ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
+try:
+    tup[0] = 3 #=> ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
+catch e
+    println(e)
+end
 
 # Many list functions also work on tuples
 length(tup) #=> 3
@@ -177,36 +213,46 @@ contains(tup,2) #=> true
 
 # You can unpack tuples into variables
 a, b, c = (1, 2, 3) #=> (1,2,3)  # a is now 1, b is now 2 and c is now 3
+
 # Tuples are created by default if you leave out the parentheses
 d, e, f = 4, 5, 6 #=> (4,5,6)
+
 # Now look how easy it is to swap two values
 e, d = d, e  #=> (5,4) # d is now 5 and e is now 4
 
 
 # Dictionaries store mappings
 empty_dict = Dict() #=> Dict{Any,Any}()
+
 # Here is a prefilled dictionary
-filled_dict = ["one"=> 1, "two"=> 2, "three"=> 3] #=> ["one"=> 1, "two"=> 2, "three"=> 3] # Dict{ASCIIString,Int64}
+filled_dict = ["one"=> 1, "two"=> 2, "three"=> 3]
+# => Dict{ASCIIString,Int64}
 
 # Look up values with []
 filled_dict["one"] #=> 1
 
 # Get all keys
-keys(filled_dict) #=> KeyIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
+keys(filled_dict)
+#=> KeyIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
 # Note - dictionary keys are not sorted or in the order you inserted them.
 
 # Get all values 
-values(d) #=> ValueIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
+values(filled_dict)
+#=> ValueIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
 # Note - Same as above regarding key ordering.
 
 # Check for existence of keys in a dictionary with contains, haskey
-contains(filled_dict,("one",1)) #=> true
-contains(filled_dict,("two",3)) #=> false
-haskey(filled_dict,"one") #=> true
-haskey(filled_dict,1) #=> false
+contains(filled_dict, ("one", 1)) #=> true
+contains(filled_dict, ("two", 3)) #=> false
+haskey(filled_dict, "one") #=> true
+haskey(filled_dict, 1) #=> false
 
 # Trying to look up a non-existing key will raise an error
-filled_dict["four"] #=> ERROR: key not found: four in getindex at dict.jl:489
+try
+    filled_dict["four"] #=> ERROR: key not found: four in getindex at dict.jl:489
+catch e
+    println(e)
+end
 
 # Use get method to avoid the error
 # get(dictionary,key,default_value)
@@ -250,16 +296,16 @@ else                    # The else clause is optional too.
 end
 
 
-# For loops iterate over iterable things, such as ranges, lists, sets, dicts, strings. 
-# prints:
-#    dog is a mammal
-#    cat is a mammal
-#    mouse is a mammal
+# For loops iterate over iterables, such as ranges, lists, sets, dicts, strings.
 
 for animal=["dog", "cat", "mouse"]
     # You can use $ to interpolate into strings
     println("$animal is a mammal")
 end
+# prints:
+#    dog is a mammal
+#    cat is a mammal
+#    mouse is a mammal
 
 # You can use in instead of =, if you want.
 for animal in ["dog", "cat", "mouse"]
@@ -288,14 +334,11 @@ while x < 4
 end
 
 # Handle exceptions with a try/except block
-
-error("help") # ERROR: help in error at error.jl:21
-
 try
    error("help")
 catch e
    println("caught it $e")
-end             
+end
 #=> caught it ErrorException("help")
 
 
@@ -306,7 +349,9 @@ end
 # Use the keyword function to create new functions
 function add(x, y)
     println("x is $x and y is $y")
-    x + y    # or equivalently: return x + y
+
+    # Functions implicitly return the value of their last statement
+    x + y
 end
 
 add(5, 6) #=> 11 after printing out "x is 5 and y is 6"
@@ -322,7 +367,7 @@ varargs(1,2,3) #=> (1,2,3)
 # The ... is called a splat.
 # It can also be used in a fuction call
 # to splat a list or tuple out to be the arguments
-Set([1,2,3])    #=> Set{Array{Int64,1}}([1,2,3]) # no ..., produces a Set of Arrays
+Set([1,2,3])    #=> Set{Array{Int64,1}}([1,2,3]) # produces a Set of Arrays
 Set([1,2,3]...) #=> Set{Int64}(1,2,3) # this is equivalent to Set(1,2,3)
 
 x = (1,2,3)     #=> (1,2,3)
@@ -338,8 +383,12 @@ end
 defaults('h','g') #=> "h g and 5 6"
 defaults('h','g','j') #=> "h g and j 6"
 defaults('h','g','j','k') #=> "h g and j k"
-defaults('h') #=> ERROR: no method defaults(Char,)
-defaults() #=> ERROR: no methods defaults()
+try
+    defaults('h') #=> ERROR: no method defaults(Char,)
+    defaults() #=> ERROR: no methods defaults()
+catch e
+println(e)
+end
 
 # You can define functions that take keyword arguments
 function keyword_args(;k1=4,name2="hello") # note the ;
@@ -416,9 +465,13 @@ tigger = Tiger(3.5,"orange") # the type doubles as the constructor function
 # Abtract Types
 abstract Cat # just a name and point in the type hierarchy
 
-# types defined with the type keyword are concrete types; they can be instantiated
-# types defined with the abstract keyword are abstract types; they can have subtypes
-# each type has one supertype; a supertype can have zero or more subtypes.
+# * types defined with the type keyword are concrete types; they can be
+#   instantiated
+#
+# * types defined with the abstract keyword are abstract types; they can
+#   have subtypes.
+#
+# * each type has one supertype; a supertype can have zero or more subtypes.
 
 type Lion <: Cat # Lion is a subtype of Cat
   mane_color
@@ -427,7 +480,8 @@ end
 
 type Panther <: Cat # Panther is also a subtype of Cat
   eye_color
-  Panther() = new("green") # Panthers will only have this constructor, and no default constructor.
+  Panther() = new("green")
+  # Panthers will only have this constructor, and no default constructor.
 end
 
 # Multiple Dispatch
@@ -455,9 +509,15 @@ function pet_cat(cat::Cat)
   println("The cat says $(meow(cat))")
 end
 
-pet_cat(tigger) #=> ERROR: no method pet_cat(Tiger,)
+try
+    pet_cat(tigger) #=> ERROR: no method pet_cat(Tiger,)
+catch e
+    println(e)
+end
+
 pet_cat(Lion(Panther(),"42")) #=> prints "The cat says 42"
 
+```
 
 ## Further Reading
 
