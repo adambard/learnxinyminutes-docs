@@ -5,7 +5,12 @@ author_url: http://github.com/mrshankly
 filename: learnelixir.ex
 ---
 
-```elixir
+Elixir is a modern functional language built on top of the Erlang VM.
+It's fully compatible with Erlang, but features a more standard syntax
+and many more features.
+
+```ruby
+
 # Single line comments start with a hashtag.
 
 # There's no multi-line comment,
@@ -52,7 +57,7 @@ tail #=> [2,3]
 
 # A pattern match will error when the sides don't match, in this example
 # the tuples have different sizes.
-{a, b, c} = {1, 2} #=> ** (MatchError) no match of right hand side value: {1,2}
+# {a, b, c} = {1, 2} #=> ** (MatchError) no match of right hand side value: {1,2}
 
 # There's also binaries
 <<1,2,3>> # binary
@@ -107,7 +112,7 @@ rem(10, 3) #=> 1
 # These operators expect a boolean as their first argument.
 true and true #=> true
 false or true #=> true
-1 and true    #=> ** (ArgumentError) argument error
+# 1 and true    #=> ** (ArgumentError) argument error
 
 # Elixir also provides `||`, `&&` and `!` which accept arguments of any type.
 # All values except `false` and `nil` will evaluate to true.
@@ -130,7 +135,7 @@ nil && 20  #=> nil
 1 < :hello #=> true
 
 # The overall sorting order is defined below:
-number < atom < reference < functions < port < pid < tuple < list < bit string
+# number < atom < reference < functions < port < pid < tuple < list < bit string
 
 # To quote Joe Armstrong on this: "The actual order is not important,
 # but that a total ordering is well defined is important."
@@ -215,7 +220,8 @@ end
 square = fn(x) -> x * x end
 square.(5) #=> 25
 
-# They also accept many clauses and guards. Guards let you fine tune pattern matching,
+# They also accept many clauses and guards.
+# Guards let you fine tune pattern matching,
 # they are indicated by the `when` keyword:
 f = fn
   x, y when x > 0 -> x + y
@@ -244,7 +250,7 @@ defmodule Math do
 end
 
 Math.sum(1, 2)  #=> 3
-Match.square(3) #=> 9
+Math.square(3) #=> 9
 
 # To compile our simple Math module save it as `math.ex` and use `elixirc`
 # in your terminal: elixirc math.ex
@@ -263,7 +269,7 @@ defmodule PrivateMath do
 end
 
 PrivateMath.sum(1, 2)    #=> 3
-PrivateMath.do_sum(1, 2) #=> ** (UndefinedFunctionError)
+# PrivateMath.do_sum(1, 2) #=> ** (UndefinedFunctionError)
 
 # Function declarations also support guards and multiple clauses:
 defmodule Geometry do
@@ -278,7 +284,7 @@ end
 
 Geometry.area({:rectangle, 2, 3}) #=> 6
 Geometry.area({:circle, 3})       #=> 28.25999999999999801048
-Geometry.area({:circle, "not_a_number"})
+# Geometry.area({:circle, "not_a_number"})
 #=> ** (FunctionClauseError) no function clause matching in Geometry.area/1
 
 # Due to immutability, recursion is a big part of elixir
