@@ -8,7 +8,7 @@ filename: learnphp.php
 This document describes PHP 5+.
 
 ```php
-<?php // PHP code must be enclosed with <?php ? > tags
+<?php // PHP code must be enclosed with <?php ?> tags
 
 // If your php file only contains PHP code, it is best practise
 // to omit the php closing tag.
