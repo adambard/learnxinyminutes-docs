@@ -339,14 +339,14 @@ sayHello = do
 -- and repalce it with:
 --   main = sayHello
 
--- Let's unerstand how the function `getLine` we just used works. 
+-- Let's understand how the function `getLine` we just used works. 
 -- Its type is:
 --    getLine :: IO String
 -- You can think of a value of type `IO String` as representing a
 -- computer program that will generate a value of type `String` 
 -- when executed (in addition to anything else it does). We can
--- store this value using `<-`. We can also make our own action
--- of type `IO String`:
+-- store this value using `<-` inside a `do` block. We can also 
+-- make our own action of type `IO String`:
 
 action :: IO String
 action = do
@@ -354,9 +354,10 @@ action = do
    input <- getLine 
    input2 <- getLine
    -- The type of the `do` statement is that of its last line.
+   -- `return` is not a keyword, but merely a function 
    return (input1 ++ "\n" ++ input2) -- return :: String -> IO String
 
--- We can use this just like `getLine` itself:
+-- We can use this just like we used `getLine`:
 
 main'' = do
     putStrLn "I will print two lines!"
