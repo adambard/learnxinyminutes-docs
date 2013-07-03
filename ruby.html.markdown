@@ -1,7 +1,7 @@
 ---
 language: ruby
-author: David Underwood
-author_url: http://theflyingdeveloper.com
+contributors:
+  - ["David Underwood", "http://theflyingdeveloper.com"]
 ---
 
 ```ruby
