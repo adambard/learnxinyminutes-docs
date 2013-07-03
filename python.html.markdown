@@ -5,7 +5,7 @@ author_url: http://ldinh.ca
 ---
 
 Python was created by Guido Van Rossum in the early 90's. It is now one of the most popular
-languages in existence. I fell in love with Python for it's syntactic clarity. It's basically
+languages in existence. I fell in love with Python for its syntactic clarity. Its basically
 executable pseudocode.
 
 Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
