@@ -461,6 +461,11 @@ math.sqrt(16) == m.sqrt(16) #=> True
 # can write your own, and import them. The name of the 
 # module is the same as the name of the file.
 
+# You can find out which functions and attributes
+# defines a module.
+import math
+dir(math)
+
 
 ```
 
