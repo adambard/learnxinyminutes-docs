@@ -48,8 +48,8 @@ div(5, 2) #=> 2
 2 << 1  #=> 4 # logical/arithmetic shift left
 
 # You can use the bits function to see the binary representation of a number.
-bits(2)   #=> "0000000000000000000000000000000000000000000000000000000000000010"
-bits(2.0) #=> "0100000000000000000000000000000000000000000000000000000000000000"
+bits(12345)   #=> "0000000000000000000000000000000000000000000000000011000000111001"
+bits(12345.0) #=> "0100000011001000000111001000000000000000000000000000000000000000"
 
 # Boolean values are primitives
 true
@@ -80,7 +80,7 @@ false
 "This is a string"[1] #=> 'T' # Julia indexes from 1
 
 # $ can be used for string interpolation:
-"2 + 2 = $(2+2)" # => "2 + 2 = 4"
+"2 + 2 = $(2 + 2)" #=> "2 + 2 = 4"
 # You can put any Julia expression inside the parenthesis.
 
 # Another way to format strings is the printf macro.
@@ -100,7 +100,7 @@ some_var #=> 5
 some_other_var #=> ERROR: some_other_var not defined
 
 # Variable Names:
-SomeOtherVar123! = 6 #=> 6 # You can use uppercase letters, digits, and exclamation points as well.
+SomeOtherVar123! = 6 #=> 6 # You can use uppercase letters, digits, and exclamation points as well after the initial alphabetic character.
 ☃ = 8 #=> 8 # You can also use unicode characters
 
 # A note on naming conventions in Julia:
@@ -109,26 +109,28 @@ SomeOtherVar123! = 6 #=> 6 # You can use uppercase letters, digits, and exclamat
 # * Names of functions and macros are in lower case, without underscores.
 # * Functions that modify their inputs have names that end in !. These functions are sometimes called mutating functions or in-place functions.
 
-# Arrays store sequences
-li = Int64[] #=> 0-element Int64 Array
+# Arrays store a sequence of values indexed by integers 1 through n:
+a = Int64[] #=> 0-element Int64 Array
 # 1-dimensional array literals can be written with comma-separated values.
-other_li = [4, 5, 6] #=> 3-element Int64 Array: [4, 5, 6]
+b = [4, 5, 6] #=> 3-element Int64 Array: [4, 5, 6]
+b[1] #=> 4
+b[end] #=> 6
 # 2-dimentional arrays use space-separated values and semicolon-separated rows.
 matrix = [1 2; 3 4] #=> 2x2 Int64 Array: [1 2; 3 4]
 
 # Add stuff to the end of a list with push! and append!
-push!(li,1)     #=> [1]
-push!(li,2)     #=> [1,2]
-push!(li,4)     #=> [1,2,4]
-push!(li,3)     #=> [1,2,4,3]
-append!(li,other_li) #=> [1,2,4,3,4,5,6]
+push!(a,1)     #=> [1]
+push!(a,2)     #=> [1,2]
+push!(a,4)     #=> [1,2,4]
+push!(a,3)     #=> [1,2,4,3]
+append!(a,b) #=> [1,2,4,3,4,5,6]
 # Remove from the end with pop
-pop!(other_li)        #=> 6 and other_li is now [4,5]
+pop!(a)        #=> 6 and b is now [4,5]
 # Let's put it back
-push!(other_li,6)   # other_li is now [4,5,6] again.
+push!(b,6)   # b is now [4,5,6] again.
 
-li[1] #=> 1 # remember that Julia indexes from 1, not 0!
-li[end] #=> 6 # end is a shorthand for the last index; it can be used in any indexing expression.
+a[1] #=> 1 # remember that Julia indexes from 1, not 0!
+a[end] #=> 6 # end is a shorthand for the last index; it can be used in any indexing expression.
 
 # Function names that end in exclamations points indicate that they modify their argument.
 arr = [5,4,6] #=> 3-element Int64 Array: [5,4,6]
@@ -136,36 +138,37 @@ sort(arr) #=> [4,5,6]; arr is still [5,4,6]
 sort!(arr) #=> [4,5,6]; arr is now [4,5,6]
 
 # Looking out of bounds is a BoundsError
-li[0] # ERROR: BoundsError() in getindex at array.jl:270
+a[0] #=> ERROR: BoundsError() in getindex at array.jl:270
+a[end+1] #=> ERROR: BoundsError() in getindex at array.jl:270
 # Errors list the line and file they came from, even if it's in the standard library.
 # If you built Julia from source, you can look in the folder base inside the julia folder to find these files.
 
 # You can initialize arrays from ranges
-li = [1:5] #=> 5-element Int64 Array: [1,2,3,4,5]
+a = [1:5] #=> 5-element Int64 Array: [1,2,3,4,5]
 
 # You can look at ranges with slice syntax.
-li[1:3] #=> [1, 2, 3]
+a[1:3] #=> [1, 2, 3]
 # Omit the beginning
-li[2:] #=> [2, 3, 4, 5]
+a[2:] #=> [2, 3, 4, 5]
 
 # Remove arbitrary elements from a list with splice!
 arr = [3,4,5]
 splice!(arr,2) #=> 4 ; arr is now [3,5]
 
 # Concatenate lists with append! 
-other_li = [1,2,3]
-append!(li,other_li) # Now li is [1, 3, 4, 5, 1, 2, 3]
+b = [1,2,3]
+append!(a,b) # Now a is [1, 3, 4, 5, 1, 2, 3]
 
 # Check for existence in a list with contains 
-contains(li,1) #=> true
+contains(a,1) #=> true
 
 # Examine the length with length
-length(li) #=> 7
+length(a) #=> 7
 
 # Tuples are immutable.
 tup = (1, 2, 3) #=>(1,2,3) # an (Int64,Int64,Int64) tuple.
 tup[1] #=> 1
-tup[0] = 3  # ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
+tup[0] = 3 #=> ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
 
 # Many list functions also work on tuples
 length(tup) #=> 3
@@ -190,8 +193,7 @@ filled_dict["one"] #=> 1
 
 # Get all keys
 keys(filled_dict) #=> KeyIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
-# Note - Dictionary key ordering is not guaranteed.
-# Your results might not match this exactly.
+# Note - dictionary keys are not sorted or in the order you inserted them.
 
 # Get all values 
 values(d) #=> ValueIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
@@ -243,10 +245,9 @@ if some_var > 10
     println("some_var is totally bigger than 10.")
 elseif some_var < 10    # This elseif clause is optional.
     println("some_var is smaller than 10.")
-else           # This is optional too.
+else                    # The else clause is optional too.
     println("some_var is indeed 10.")
 end
-
 
 
 # For loops iterate over iterable things, such as ranges, lists, sets, dicts, strings. 
@@ -308,7 +309,7 @@ function add(x, y)
     x + y    # or equivalently: return x + y
 end
 
-add(5, 6) #=> 11 and prints out "x is 5 and y is 6"
+add(5, 6) #=> 11 after printing out "x is 5 and y is 6"
 
 # You can define functions that take a variable number of
 # positional arguments
@@ -316,13 +317,13 @@ function varargs(args...)
     return args
 end
 
-varargs(1, 2, 3) #=> (1,2,3)
+varargs(1,2,3) #=> (1,2,3)
 
 # The ... is called a splat.
 # It can also be used in a fuction call
 # to splat a list or tuple out to be the arguments
-Set([1,2,3])    #=>Set{Array{Int64,1}}([1,2,3]) # no ..., produces a Set of Arrays
-Set([1,2,3]...) #=>Set{Int64}(1,2,3) # this is equivalent to Set(1,2,3)
+Set([1,2,3])    #=> Set{Array{Int64,1}}([1,2,3]) # no ..., produces a Set of Arrays
+Set([1,2,3]...) #=> Set{Int64}(1,2,3) # this is equivalent to Set(1,2,3)
 
 x = (1,2,3)     #=> (1,2,3)
 Set(x)          #=> Set{(Int64,Int64,Int64)}((1,2,3)) # a Set of Tuples
@@ -331,7 +332,7 @@ Set(x...)       #=> Set{Int64}(2,3,1)
 
 # You can define functions with optional positional arguments
 function defaults(a,b,x=5,y=6)
-  return "$a $b and $x $y"
+    return "$a $b and $x $y"
 end
 
 defaults('h','g') #=> "h g and 5 6"
@@ -364,10 +365,10 @@ all_the_args(1, 3, keyword_arg=4)
 
 # Julia has first class functions
 function create_adder(x)
-  adder = function (y)
-    return x + y
-  end
-  return adder
+    adder = function (y)
+        return x + y
+    end
+    return adder
 end
 
 # or equivalently
@@ -377,10 +378,10 @@ end
 
 # you can also name the internal function, if you want
 function create_adder(x)
-  function adder(y)
-    x + y
-  end
-  adder
+    function adder(y)
+        x + y
+    end
+    adder
 end
 
 add_10 = create_adder(10)
@@ -394,8 +395,8 @@ map(add_10, [1,2,3]) #=> [11, 12, 13]
 filter(x -> x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 
 # We can use list comprehensions for nice maps and filters
-[add_10(i) for i=[1, 2, 3]]  #=> [11, 12, 13]
-[add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
+[add_10(i) for i=[1, 2, 3]] #=> [11, 12, 13]
+[add_10(i) for i in [1, 2, 3]] #=> [11, 12, 13]
 
 ####################################################
 ## 5. Types and Multiple-Dispatch 
@@ -461,5 +462,4 @@ pet_cat(Lion(Panther(),"42")) #=> prints "The cat says 42"
 ## Further Reading
 
 You can get a lot more detail from [The Julia Manual](http://docs.julialang.org/en/latest/manual/)
-
 
