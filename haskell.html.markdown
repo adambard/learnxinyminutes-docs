@@ -334,7 +334,7 @@ sayHello = do
 -- Exercise: write your own version of `interact`.
    
 -- The code in `sayHello` will never be executed, however. The only
--- action that ever gets executed is the value value of `main`. 
+-- action that ever gets executed is the value of `main`. 
 -- To run `sayHello` comment out the above definition of `main` 
 -- and repalce it with:
 --   main = sayHello
