@@ -292,9 +292,9 @@ say Green =  "You are Green!"
 data Maybe a = Nothing | Just a
 
 -- These are all of type Maybe
-Nothing
-Just "hello"
-Just 1
+Just "hello"    -- of type `Maybe String`
+Just 1          -- of type `Maybe Int`
+Nothing         -- of type `Maybe a` for any `a`
 
 ----------------------------------------------------
 -- 8. Haskell IO
@@ -344,8 +344,8 @@ sayHello = do
 -- Let's understand better how the function `getLine` we just 
 -- used works. Its type is:
 --    getLine :: IO String
--- You can think of a value of type `IO String` as representing a
--- computer program that will generate a value of type `String` 
+-- You can think of a value of type `IO a` as representing a
+-- computer program that will generate a value of type `a` 
 -- when executed (in addition to anything else it does). We can
 -- store and reuse this value using `<-`. We can also 
 -- make our own action of type `IO String`:
