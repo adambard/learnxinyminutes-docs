@@ -281,10 +281,11 @@ data Color = Red | Blue | Green
 
 -- Now you can use it in a function:
 
-say :: Color -> IO String
-say Red = putStrLn "You are Red!"
-say Blue = putStrLn "You are Blue!"
-say Green = putStrLn "You are Green!"
+
+say :: Color -> String
+say Red = "You are Red!"
+say Blue = "You are Blue!"
+say Green =  "You are Green!"
 
 -- Your data types can have parameters too:
 
@@ -306,7 +307,7 @@ Just 1
 -- called. It must return a value of type `IO ()`. For example:
 
 main :: IO ()
-main = putStrLn "Hello, sky! " ++ (say Blue) 
+main = putStrLn $ "Hello, sky! " ++ (say Blue) 
 -- putStrLn has type String -> IO ()
 
 -- It is easiest to do IO if you can implement your program as 
@@ -329,9 +330,10 @@ sayHello :: IO ()
 sayHello = do 
    putStrLn "What is your name?"
    name <- getLine -- this gets a line and gives it the name "input"
-   putStrLn "Hello, " ++ name
+   putStrLn $ "Hello, " ++ name
    
--- Exercise: write your own version of `interact`.
+-- Exercise: write your own version of `interact` that only reads
+--           one line of input.
    
 -- The code in `sayHello` will never be executed, however. The only
 -- action that ever gets executed is the value of `main`. 
@@ -351,7 +353,7 @@ sayHello = do
 action :: IO String
 action = do
    putStrLn "This is a line. Duh"
-   input <- getLine 
+   input1 <- getLine 
    input2 <- getLine
    -- The type of the `do` statement is that of its last line.
    -- `return` is not a keyword, but merely a function 
@@ -389,6 +391,14 @@ let foo = 5
 
 >:t foo
 foo :: Integer
+
+-- You can also run any action of type `IO ()`
+
+> sayHello
+What is your name?
+Friend!
+Hello, Friend!
+
 ```
 
 There's a lot more to Haskell, including typeclasses and monads. These are the big ideas that make Haskell such fun to code in. I'll leave you with one final Haskell example: an implementation of quicksort in Haskell:
