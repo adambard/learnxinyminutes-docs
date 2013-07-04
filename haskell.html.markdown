@@ -367,14 +367,14 @@ main'' = do
     putStrLn result
     putStrLn "This was all, folks!"
 
--- The type `IO` is an example of a "monad". The way Haskell uses a monad to do IO allows it to 
--- be a purely functional language. Any function that interacts with the outside world (i.e. does IO)
--- gets marked as `IO` in its type signature. This lets us reason about what
--- functions are "pure" (don't interact with the outside world or modify state)
--- and what functions aren't. 
+-- The type `IO` is an example of a "monad". The way Haskell uses a monad to
+-- do IO allows it to be a purely functional language. Any function that
+-- interacts with the outside world (i.e. does IO) gets marked as `IO` in its
+-- type signature. This lets us reason about what functions are "pure" (don't
+-- interact with the outside world or modify state) and what functions aren't.
 
--- This is a powerful feature, because it's easy to run pure functions concurrently
--- so concurrency in Haskell is very easy.
+-- This is a powerful feature, because it's easy to run pure functions
+-- concurrently; so, concurrency in Haskell is very easy.
 
 
 ----------------------------------------------------
