@@ -2,6 +2,7 @@
 language: ruby
 contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]
+  - ["Joel Walden", "http://joelwalden.net"]
 ---
 
 ```ruby
@@ -154,7 +155,7 @@ new_hash = { defcon: 3, action: true}
 new_hash.keys #=> [:defcon, :action]
 
 # Tip: Both Arrays and Hashes are Enumerable
-# This means they share a lot of useful methods such as each, map, count, and more
+# They share a lot of useful methods such as each, map, count, and more
 
 # Control structures
 
@@ -277,8 +278,8 @@ class Human
         @name
     end
 
-    # A class method; uses self to distinguish from instance methods. (Can only be called on class, not an instance).
-
+    # A class method uses self to distinguish from instance methods.
+    $ It can only be called on the class, not an instance.
     def self.say(msg)
        puts "#{msg}"
     end
