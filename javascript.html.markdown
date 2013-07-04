@@ -18,7 +18,7 @@ Feedback would be highly appreciated! You can reach me at
 [@adambrenecki](https://twitter.com/adambrenecki), or
 [adam@brenecki.id.au](mailto:adam@brenecki.id.au).
 
-```javascript
+```js
 // Comments are like C. Single-line comments start with two slashes,
 /* and multiline comments start with slash-star
    and end with star-slash */
@@ -33,9 +33,8 @@ doStuff()
 // We'll leave semicolons off here; whether you do or not will depend on your
 // personal preference or your project's style guide.
 
-/***********
- * 1. Numbers, Strings and Operators
- ***********/
+///////////////////////////////////
+// 1. Numbers, Strings and Operators
 
 // Javascript has one number type (which is a 64-bit IEEE 754 double).
 3 // = 3
@@ -110,9 +109,8 @@ undefined // used to indicate a value that hasn't been set yet
 // null, undefined, NaN, 0 and "" are falsy, and everything else is truthy.
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
-/***********
- * 2. Variables, Arrays and Objects
- ***********/
+///////////////////////////////////
+// 2. Variables, Arrays and Objects
 
 // Variables are declared with the var keyword. Javascript is dynamically typed,
 // so you don't need to specify type. Assignment uses a single = character.
@@ -162,9 +160,8 @@ myObj.myThirdKey = true
 // If you try to access a value that's not yet set, you'll get undefined.
 myObj.myFourthKey // = undefined
 
-/***********
- * 3. Logic and Control Structures
- ***********/
+///////////////////////////////////
+// 3. Logic and Control Structures
 
 // The if structure works as you'd expect.
 var count = 1
@@ -204,9 +201,8 @@ if (colour == "red" || colour == "blue"){
 // && and || "short circuit", which is useful for setting default values.
 var name = otherName || "default"
 
-/***********
- * 5. Functions, Scope and Closures
- ***********/
+///////////////////////////////////
+// 4. Functions, Scope and Closures
 
 // JavaScript functions are declared with the function keyword.
 function myFunction(thing){
@@ -273,9 +269,8 @@ function sayHelloInFiveSeconds(name){
 }
 sayHelloInFiveSeconds("Adam") // will open a popup with "Hello, Adam!" in 5s
 
-/***********
- * 6. More about Objects; Constructors and Prototypes
- ***********/
+///////////////////////////////////
+// 5. More about Objects; Constructors and Prototypes
 
 // Objects can contain functions.
 var myObj = {
