@@ -323,6 +323,30 @@ str_reverse(c);
 printf("%s\n", c); // => ".tset a si sihT"
 */
 
+/* 
+Functions are located in known memory addresses, so they can be called 
+through function pointers. Syntax may be initially confusing.
+
+Example: use str_reverse from a pointer
+*/
+void str_reverse_through_pointer(char * str_in) {
+    // Define a function pointer variable, named f. 
+    void (*f)(char *); // Signature should exactly match the target function.
+    f = &str_reverse; // Assign the address for the actual function (determined at runtime)
+    (*f)(str_in); // Just calling the function through the pointer
+    // f(str_in); // That's an alternate but equally valid syntax for calling it.
+}
+
+/*
+As long as function signatures match, you can assign any function to the same pointer.
+Useful for passing handlers (or callback functions) around.
+Function pointers are usually typedef'd for simplicity and readability, as follows:
+
+typedef void (*my_fnp_type)(char *);
+...
+my_fnp_type f;
+*/
+
 ///////////////////////////////////////
 // User-defined types and structs
 ///////////////////////////////////////
