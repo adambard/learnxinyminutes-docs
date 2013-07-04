@@ -1,11 +1,8 @@
 ---
 
 language: java
-
-author: Jake Prather
-
-author_url: http://github.com/JakeHP
-
+contributors:
+    - ["Jake Prather", "http://github.com/JakeHP"]
 filename: LearnJava.java
 
 ---

@@ -1,7 +1,7 @@
 ---
 language: haskell
-author: Adit Bhargava
-author_url: http://adit.io
+contributors:
+    - ["Adit Bhargava", "http://adit.io"]
 ---
 
 Haskell was designed as a practical, purely functional programming language. It's famous for

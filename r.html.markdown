@@ -1,7 +1,7 @@
 ---
 language: R
-author: e99n09
-author_url: http://github.com/e99n09
+contributors:
+    - ["e99n09", "http://github.com/e99n09"]
 filename: learnr.r
 ---
 

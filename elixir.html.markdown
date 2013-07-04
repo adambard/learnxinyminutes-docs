@@ -1,7 +1,7 @@
 ---
 language: elixir
-author: Joao Marques
-author_url: http://github.com/mrshankly
+contributors:
+    - ["Joao Marques", "http://github.com/mrshankly"]
 filename: learnelixir.ex
 ---
 

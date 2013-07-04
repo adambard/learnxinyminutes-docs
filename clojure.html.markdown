@@ -1,8 +1,8 @@
 ---
 language: clojure
-author: Adam Bard
-author_url: http://adambard.com/
 filename: learnclojure.clj
+contributors:
+    - ["Adam Bard", "http://adambard.com/"]
 ---
 
 Clojure is a Lisp family language developed for the Java Virtual Machine. It has

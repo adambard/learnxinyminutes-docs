@@ -1,7 +1,7 @@
 ---
 language: php
-author: Malcolm Fell
-author_url: http://emarref.net/
+contributors:
+    - ["Malcolm Fell", "http://emarref.net/"]
 filename: learnphp.php
 ---
 

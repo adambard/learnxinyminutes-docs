@@ -1,7 +1,7 @@
 ---
 language: python
-author: Louie Dinh
-author_url: http://ldinh.ca
+contributors:
+    - ["Louie Dinh", "http://ldinh.ca"]
 filename: learnpython.py
 ---
 

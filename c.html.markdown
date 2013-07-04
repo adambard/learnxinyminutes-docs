@@ -1,8 +1,8 @@
 ---
 language: c
-author: Adam Bard
-author_url: http://adambard.com/
 filename: learnc.c
+contributors:
+    - ["Adam Bard", "http://adambard.com/"]
 ---
 
 Ah, C. Still the language of modern high-performance computing.

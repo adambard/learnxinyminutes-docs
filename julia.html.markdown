@@ -1,7 +1,7 @@
 ---
 language: julia
-author: Leah Hanson
-author_url: http://leahhanson.us
+contributors:
+    - ["Leah Hanson", "http://leahhanson.us"]
 filename: learnjulia.jl
 ---
 

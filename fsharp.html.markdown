@@ -1,7 +1,7 @@
 ---
 language: F#
-author: Scott Wlaschin
-author_url: http://fsharpforfunandprofit.com/
+contributors:
+    - ["Scott Wlaschin", "http://fsharpforfunandprofit.com/"]
 filename: learnfsharp.fs
 ---
 

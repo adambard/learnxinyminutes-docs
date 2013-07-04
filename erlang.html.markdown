@@ -1,7 +1,7 @@
 ---
 language: erlang
-author: Giovanni Cappellotto
-author_url: http://www.focustheweb.com/
+contributor:
+    - ["Giovanni Cappellotto", "http://www.focustheweb.com/"]
 filename: learnerlang.erl
 ---
 

@@ -1,7 +1,7 @@
 ---
 language: lua
-author: Tyler Neylon
-author_url: http://tylerneylon.com/
+contributors:
+    - ["Tyler Neylon", "http://tylerneylon.com/"]
 filename: learnlua.lua
 ---
 

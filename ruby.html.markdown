@@ -1,5 +1,6 @@
 ---
 language: ruby
+filename: learnruby.rb
 contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]
   - ["Joel Walden", "http://joelwalden.net"]
