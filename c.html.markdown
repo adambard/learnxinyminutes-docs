@@ -341,11 +341,14 @@ void str_reverse_through_pointer(char * str_in) {
 As long as function signatures match, you can assign any function to the same pointer.
 Useful for passing handlers (or callback functions) around.
 Function pointers are usually typedef'd for simplicity and readability, as follows:
+*/
 
 typedef void (*my_fnp_type)(char *);
-...
-my_fnp_type f;
-*/
+
+// The used when declaring the actual pointer variable:
+// ...
+// my_fnp_type f; 
+
 
 ///////////////////////////////////////
 // User-defined types and structs
