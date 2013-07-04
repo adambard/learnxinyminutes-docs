@@ -11,7 +11,7 @@ makes coding a real joy for me.
 ```haskell
 -- Single line comments start with two dashes.
 {- Multiline comments can be enclosed
-in a block like this.
+en a block like this.
 -}
 
 ----------------------------------------------------
@@ -281,10 +281,11 @@ data Color = Red | Blue | Green
 
 -- Now you can use it in a function:
 
-say :: Color -> IO String
-say Red = putStrLn "You are Red!"
-say Blue = putStrLn "You are Blue!"
-say Green = putStrLn "You are Green!"
+
+say :: Color -> String
+say Red = "You are Red!"
+say Blue = "You are Blue!"
+say Green =  "You are Green!"
 
 -- Your data types can have parameters too:
 
@@ -302,26 +303,72 @@ Just 1
 -- While IO can't be explained fully without explaining monads,
 -- it is not hard to explain enough to get going.
 
--- An `IO a` value is an IO action: you can chain them with do blocks
+-- When a Haskell program is executed, the function `main` is
+-- called. It must return a value of type `IO ()`. For example:
+
+main :: IO ()
+main = putStrLn $ "Hello, sky! " ++ (say Blue) 
+-- putStrLn has type String -> IO ()
+
+-- It is easiest to do IO if you can implement your program as 
+-- a function from String to String. The function 
+--    interact :: (String -> String) -> IO ()
+-- inputs some text, runs a function on it, and prints out the 
+-- output.
+
+countLines :: String -> String
+countLines = show . length . lines
+
+main' = interact countLines
+
+-- You can think of a value of type `IO ()` as representing a
+-- sequence of actions for the computer to do, much like a
+-- computer program written in an imperative language. We can use
+-- the `do` notation to chain actions together. For example:
+
+sayHello :: IO ()
+sayHello = do 
+   putStrLn "What is your name?"
+   name <- getLine -- this gets a line and gives it the name "input"
+   putStrLn $ "Hello, " ++ name
+   
+-- Exercise: write your own version of `interact` that only reads
+--           one line of input.
+   
+-- The code in `sayHello` will never be executed, however. The only
+-- action that ever gets executed is the value of `main`. 
+-- To run `sayHello` comment out the above definition of `main` 
+-- and replace it with:
+--   main = sayHello
+
+-- Let's understand better how the function `getLine` we just 
+-- used works. Its type is:
+--    getLine :: IO String
+-- You can think of a value of type `IO String` as representing a
+-- computer program that will generate a value of type `String` 
+-- when executed (in addition to anything else it does). We can
+-- store and reuse this value using `<-`. We can also 
+-- make our own action of type `IO String`:
+
 action :: IO String
 action = do
    putStrLn "This is a line. Duh"
-   input <- getLine -- this gets a line and gives it the name "input"
+   input1 <- getLine 
    input2 <- getLine
-   return (input1 ++ "\n" ++ input2) -- This is the result of the whole action
+   -- The type of the `do` statement is that of its last line.
+   -- `return` is not a keyword, but merely a function 
+   return (input1 ++ "\n" ++ input2) -- return :: String -> IO String
 
--- This didn't actually do anything. When a haskell program is executed
--- an IO action called "main" is read and interpreted.
+-- We can use this just like we used `getLine`:
 
-main = do
-    putStrLn "Our first program. How exciting!"
-    result <- action -- our defined action is just like the default ones
+main'' = do
+    putStrLn "I will echo two lines!"
+    result <- action 
     putStrLn result
     putStrLn "This was all, folks!"
 
--- Haskell does IO through a monad because this allows it to be a purely
--- functional language. Our `action` function had a type signature of `IO String`.
--- In general any function that interacts with the outside world (i.e. does IO)
+-- The type `IO` is an example of a "monad". The way Haskell uses a monad to do IO allows it to 
+-- be a purely functional language. Any function that interacts with the outside world (i.e. does IO)
 -- gets marked as `IO` in its type signature. This lets us reason about what
 -- functions are "pure" (don't interact with the outside world or modify state)
 -- and what functions aren't. 
@@ -344,6 +391,14 @@ let foo = 5
 
 >:t foo
 foo :: Integer
+
+-- You can also run any action of type `IO ()`
+
+> sayHello
+What is your name?
+Friend!
+Hello, Friend!
+
 ```
 
 There's a lot more to Haskell, including typeclasses and monads. These are the big ideas that make Haskell such fun to code in. I'll leave you with one final Haskell example: an implementation of quicksort in Haskell:
