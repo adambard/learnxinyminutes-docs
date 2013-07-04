@@ -170,7 +170,7 @@ case {:one, :two} do
     "This will match any value"
 end
 
-# It's common practive to assign a value to `_` if we don't need it.
+# It's common practice to assign a value to `_` if we don't need it.
 # For example, if only the head of a list matters to us:
 [head | _] = [1,2,3]
 head #=> 1
