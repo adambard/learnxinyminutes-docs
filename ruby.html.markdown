@@ -92,8 +92,9 @@ path_to_project_root = '/good/name/'
 path = '/bad/name/'
 
 # Symbols (are objects)
-# Symbols are immutable, reusable constants represented internally by an integer value
-# They're often used instead of strings to efficiently convey specific, meaningful values
+# Symbols are immutable, reusable constants represented internally by an
+# integer value. They're often used instead of strings to efficiently convey
+# specific, meaningful values
 
 :pending.class #=> Symbol
 
