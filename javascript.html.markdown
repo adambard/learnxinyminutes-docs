@@ -10,6 +10,10 @@ Java for more complex web applications, but its tight integration with Web pages
 and built-in support in browsers has caused it to become far more common than
 Java in web frontends.
 
+JavaScript isn't just limited to web browsers, though: Node.js, a project that
+provides a standalone runtime for Google Chrome's V8 JavaScript engine, is
+becoming more and more popular.
+
 Feedback would be highly appreciated! You can reach me at
 [@adambrenecki](https://twitter.com/adambrenecki), or
 [adam@brenecki.id.au](mailto:adam@brenecki.id.au).
@@ -33,7 +37,7 @@ doStuff()
  * 1. Numbers, Strings and Operators
  ***********/
 
-// Javascript has one number type, which is a 64-bit IEEE 754 double.
+// Javascript has one number type (which is a 64-bit IEEE 754 double).
 3 // = 3
 1.5 // = 1.5
 
@@ -50,7 +54,7 @@ doStuff()
 // is converted to a signed int *up to* 32 bits.
 1 << 2 // = 4
 
-// Enforce precedence with parentheses
+// Precedence is enforced with parentheses.
 (1 + 3) * 2 // = 8
 
 // There are three special not-a-real-number values:
@@ -419,6 +423,14 @@ Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) provides
 excellent documentation for JavaScript as it's used in browsers. Plus, it's a
 wiki, so as you learn more you can help others out by sharing your own
 knowledge.
+
+MDN's [A re-introduction to
+JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
+covers much of the concepts covered here in more detail. This guide has quite
+deliberately only covered the JavaScript language itself; if you want to learn
+more about how to use JavaScript in web pages, start by learning about the
+[Document Object
+Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 
 In addition to direct contributors to this article, some content is adapted
 from Louie Dinh's Python tutorial on this site, and the [JS
