@@ -204,6 +204,71 @@ var name = otherName || "default"
  * 5. Functions, Scope and Closures
  ***********/
 
+// JavaScript functions are declared with the function keyword.
+function myFunction(thing){
+    return thing.toUpperCase()
+}
+myFunction("foo") // = "FOO"
+
+// Functions can also be defined "anonymously" - without a name:
+function(thing){
+    return thing.toLowerCase()
+}
+// (we can't call our function, since we don't have a name to refer to it with)
+
+// JavaScript functions are first class objects, so they can be reassigned to
+// different variable names and passed to other functions as arguments - for
+// example, when supplying an event handler:
+function myFunction(){
+    // this code will be called in 5 seconds' time
+}
+setTimeout(myFunction, 5000)
+
+// You can even write the function statement directly in the call to the other
+// function.
+
+setTimeout(function myFunction(){
+    // this code will be called in 5 seconds' time
+}, 5000)
+
+// JavaScript has function scope; functions get their own scope but other blocks
+// do not.
+if (true){
+    var i = 5
+}
+i // = 5 - not undefined as you'd expect in a block-scoped language
+
+// This has led to a common pattern of "immediately-executing anonymous
+// functions", which prevent temporary variables from leaking into the global
+// scope.
+function(){
+    var temporary = 5
+    // We can access the global scope by assiging to the 'global object', which
+    // in a web browser is always 'window'. The global object may have a
+    // different name in non-browser environments such as Node.js.
+    window.permanent = 10
+    // Or, as previously mentioned, we can just leave the var keyword off.
+    permanent2 = 15
+}()
+temporary // raises ReferenceError
+permanent // = 10
+permanent2 // = 15
+
+// One of JavaScript's most powerful features is closures. If a function is
+// defined inside another function, the inner function has access to all the
+// outer function's variables.
+function sayHelloInFiveSeconds(name){
+    var prompt = "Hello, " + name + "!"
+    function inner(){
+        alert(prompt)
+    }
+    setTimeout(inner, 5000)
+    // setTimeout is asynchronous, so this function will finish without waiting
+    // 5 seconds. However, once the 5 seconds is up, inner will still have
+    // access to the value of prompt.
+}
+sayHelloInFiveSeconds("Adam") // will open a popup with "Hello, Adam!" in 5s
+
 /***********
  * 6. More about Objects; Constructors and Prototypes
  ***********/
