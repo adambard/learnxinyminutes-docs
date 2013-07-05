@@ -337,6 +337,8 @@ class PennyFarthing extends Bicycle {
     }
 
     // You should mark a method you're overriding with an @annotation
+    // To learn more about what annotations are and their purpose
+    // check this out: http://docs.oracle.com/javase/tutorial/java/annotations/
     @Override
     public void setGear(int gear) {
         gear = 0;
