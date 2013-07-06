@@ -281,7 +281,7 @@ class Human
     end
 
     # A class method uses self to distinguish from instance methods.
-    $ It can only be called on the class, not an instance.
+    # It can only be called on the class, not an instance.
     def self.say(msg)
        puts "#{msg}"
     end
