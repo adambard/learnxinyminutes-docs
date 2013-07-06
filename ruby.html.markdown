@@ -194,6 +194,7 @@ end
 counter = 1
 while counter <= 5 do
   puts "iteration #{counter}"
+  counter += 1
 end
 #=> iteration 1
 #=> iteration 2
