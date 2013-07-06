@@ -1,7 +1,8 @@
 ---
 language: F#
-author: Scott Wlaschin
-author_url: http://fsharpforfunandprofit.com/
+contributors:
+    - ["Scott Wlaschin", "http://fsharpforfunandprofit.com/"]
+filename: learnfsharp.fs
 ---
 
 F# is a general purpose functional/OO programming language.  It's free and open source, and runs on Linux, Mac, Windows and more. 

@@ -1,11 +1,12 @@
 ---
 language: python
-author: Louie Dinh
-author_url: http://ldinh.ca
+contributors:
+    - ["Louie Dinh", "http://ldinh.ca"]
+filename: learnpython.py
 ---
 
 Python was created by Guido Van Rossum in the early 90's. It is now one of the most popular
-languages in existence. I fell in love with Python for it's syntactic clarity. It's basically
+languages in existence. I fell in love with Python for its syntactic clarity. Its basically
 executable pseudocode.
 
 Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
@@ -86,9 +87,25 @@ not False #=> True
 # A newer way to format strings is the format method.
 # This method is the preferred way
 "{0} can be {1}".format("strings", "formatted")
+# You can use keywords if you don't want to count.
+"{name} wants to eat {food}".format(name="Bob", food="lasagna")
 
 # None is an object
 None #=> None
+
+# Don't use the equality `==` symbol to compare objects to None
+# Use `is` instead
+"etc" is None #=> False
+None is None  #=> True
+
+# The 'is' operator tests for object identity. This isn't
+# very useful when dealing with primitive values, but is
+# very useful when dealing with objects.
+
+# None, 0, and empty strings/lists all evaluate to False.
+# All other values are True
+0 == False  #=> True
+"" == False #=> True
 
 
 ####################################################
@@ -103,16 +120,12 @@ print "I'm Python. Nice to meet you!"
 some_var = 5    # Convention is to use lower_case_with_underscores
 some_var #=> 5
 
-# Accessing a previously unassigned variable is an exception
-try:
-    some_other_var
-except NameError:
-    print "Raises a name error"
+# Accessing a previously unassigned variable is an exception.
+# See Control Flow to learn more about exception handling.
+some_other_var  # Raises a name error
 
 # if can be used as an expression
-some_var = a if a > b else b
-# If a is greater than b, then a is assigned to some_var.
-# Otherwise b is assigned to some_var.
+"yahoo!" if 3 > 2 else 2 #=> "yahoo!"
 
 # Lists store sequences
 li = []
@@ -135,10 +148,7 @@ li[0] #=> 1
 li[-1] #=> 3
 
 # Looking out of bounds is an IndexError
-try:
-    li[4] # Raises an IndexError
-except IndexError:
-    print "Raises an IndexError"
+li[4] # Raises an IndexError
 
 # You can look at ranges with slice syntax.
 # (It's a closed/open range for you mathy types.)
@@ -163,13 +173,11 @@ li.extend(other_li) # Now li is [1, 2, 3, 4, 5, 6]
 # Examine the length with len
 len(li) #=> 6
 
+
 # Tuples are like lists but are immutable.
 tup = (1, 2, 3)
 tup[0] #=> 1
-try:
-    tup[0] = 3  # Raises a TypeError
-except TypeError:
-    print "Tuples cannot be mutated."
+tup[0] = 3  # Raises a TypeError
 
 # You can do all those list thingies on tuples too
 len(tup) #=> 3
@@ -177,7 +185,7 @@ tup + (4, 5, 6) #=> (1, 2, 3, 4, 5, 6)
 tup[:2] #=> (1, 2)
 2 in tup #=> True
 
-# You can unpack tuples into variables
+# You can unpack tuples (or lists) into variables
 a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
 # Tuples are created by default if you leave out the parentheses
 d, e, f = 4, 5, 6
@@ -206,13 +214,12 @@ filled_dict.values() #=> [3, 2, 1]
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
 
-# Trying to look up a non-existing key will raise a KeyError
-filled_dict["four"] #=> KeyError
+ # Looking up a non-existing key is a KeyError
+filled_dict["four"] # KeyError
 
 # Use get method to avoid the KeyError
 filled_dict.get("one") #=> 1
 filled_dict.get("four") #=> None
-
 # The get method supports a default argument when the value is missing
 filled_dict.get("one", 4) #=> 1
 filled_dict.get("four", 4) #=> 4
@@ -234,7 +241,7 @@ filled_set = {1, 2, 2, 3, 4} # => {1 2 3 4}
 filled_set.add(5) # filled_set is now {1, 2, 3, 4, 5}
 
 # Do set intersection with &
-other_set = set{3, 4, 5, 6}
+other_set = {3, 4, 5, 6}
 filled_set & other_set #=> {3, 4, 5}
 
 # Do set union with |
@@ -255,7 +262,7 @@ filled_set | other_set #=> {1, 2, 3, 4, 5, 6}
 # Let's just make a variable
 some_var = 5
 
-# Here is an if statement. INDENTATION IS SIGNIFICANT IN PYTHON!
+# Here is an if statement. Indentation is significant in python!
 # prints "some var is smaller than 10"
 if some_var > 10:
     print "some_var is totally bigger than 10."
@@ -275,6 +282,18 @@ prints:
 for animal in ["dog", "cat", "mouse"]:
     # You can use % to interpolate formatted strings
     print "%s is a mammal" % animal
+    
+"""
+`range(number)` returns a list of numbers 
+from zero to the given number
+prints:
+    0
+    1
+    2
+    3
+"""
+for i in range(4):
+    print i
 
 """
 While loops go until a condition is no longer met.
@@ -298,12 +317,6 @@ try:
 except IndexError as e:
     pass    # Pass is just a no-op. Usually you would do recovery here.
 
-# Works for Python 2.7 and down:
-try:
-    raise IndexError("This is an index error")
-except IndexError, e: # No "as", comma instead
-    pass
-
 
 ####################################################
 ## 4. Functions
@@ -315,7 +328,8 @@ def add(x, y):
     return x + y    # Return values with a return statement
 
 # Calling functions with parameters
-add(5, 6) #=> 11 and prints out "x is 5 and y is 6"
+add(5, 6) #=> prints out "x is 5 and y is 6" and returns 11
+
 # Another way to call functions is with keyword arguments
 add(y=6, x=5)   # Keyword arguments can arrive in any order.
 
@@ -341,16 +355,17 @@ def all_the_args(*args, **kwargs):
     print kwargs
 """
 all_the_args(1, 2, a=3, b=4) prints:
-    [1, 2]
+    (1, 2)
     {"a": 3, "b": 4}
 """
 
-# You can also use * and ** when calling a function
+# When calling functions, you can do the opposite of varargs/kwargs!
+# Use * to expand tuples and use ** to expand kwargs.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-foo(*args) # equivalent to foo(1, 2, 3, 4)
-foo(**kwargs) # equivalent to foo(a=3, b=4)
-foo(*args, **kwargs) # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args) # equivalent to foo(1, 2, 3, 4)
+all_the_args(**kwargs) # equivalent to foo(a=3, b=4)
+all_the_args(*args, **kwargs) # equivalent to foo(1, 2, 3, 4, a=3, b=4)
 
 # Python has first class functions
 def create_adder(x):
@@ -420,9 +435,47 @@ j.get_species() #=> "H. neanderthalensis"
 
 # Call the static method
 Human.grunt() #=> "*grunt*"
+
+
+####################################################
+## 6. Modules
+####################################################
+
+# You can import modules
+import math
+print math.sqrt(16) #=> 4
+
+# You can get specific functions from a module
+from math import ceil, floor
+print ceil(3.7)  #=> 4.0
+print floor(3.7) #=> 3.0
+
+# You can import all functions from a module.
+# Warning: this is not recommended
+from math import *
+
+# You can shorten module names
+import math as m
+math.sqrt(16) == m.sqrt(16) #=> True
+
+# Python modules are just ordinary python files. You
+# can write your own, and import them. The name of the 
+# module is the same as the name of the file.
+
+# You can find out which functions and attributes
+# defines a module.
+import math
+dir(math)
+
+
 ```
 
 ## Further Reading
 
-Still up for more? Try [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
+Still up for more? Try:
 
+* [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
+* [Dive Into Python](http://www.diveintopython.net/)
+* [The Official Docs](http://docs.python.org/2.6/)
+* [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
+* [Python Module of the Week](http://pymotw.com/2/)

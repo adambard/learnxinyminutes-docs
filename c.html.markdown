@@ -1,7 +1,8 @@
 ---
 language: c
-author: Adam Bard
-author_url: http://adambard.com/
+filename: learnc.c
+contributors:
+    - ["Adam Bard", "http://adambard.com/"]
 ---
 
 Ah, C. Still the language of modern high-performance computing.
@@ -12,6 +13,7 @@ memory management and C will take you as far as you need to go.
 
 ```c
 // Single-line comments start with //
+
 /*
 Multi-line comments look like this.
 */
@@ -19,6 +21,7 @@ Multi-line comments look like this.
 // Import headers with #include
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 // Declare function signatures in advance in a .h file, or at the top of
 // your .c file.
@@ -75,7 +78,7 @@ unsigned long long ux_long_long;
 // on your machine. sizeof(T) gives you the size of a variable with type T in 
 // bytes so you can express the size of these types in a portable way.
 // For example,
-printf("%d\n", sizeof(int)); // => 4 (on machines with 4-byte words)
+printf("%lu\n", sizeof(int)); // => 4 (on machines with 4-byte words)
 
 // Arrays must be initialized with a concrete size.
 char my_char_array[20]; // This array occupies 1 * 20 = 20 bytes
@@ -107,7 +110,7 @@ Char #17 is the NUL byte.
 Chars #18, 19 and 20 have undefined values.
 */
 
-printf("%d\n", a_string[16]); => 0
+printf("%d\n", a_string[16]); // => 0
 
 ///////////////////////////////////////
 // Operators
@@ -359,6 +362,36 @@ typedef struct rectangle rect;
 int area(rect r){
     return r.width * r.height;
 }
+
+///////////////////////////////////////
+// Function pointers 
+///////////////////////////////////////
+/*
+At runtime, functions are located at known memory addresses. Function pointers are
+much likely any other pointer (they just store a memory address), but can be used 
+to invoke functions directly, and to pass handlers (or callback functions) around.
+However, definition syntax may be initially confusing.
+
+Example: use str_reverse from a pointer
+*/
+void str_reverse_through_pointer(char * str_in) {
+    // Define a function pointer variable, named f. 
+    void (*f)(char *); // Signature should exactly match the target function.
+    f = &str_reverse; // Assign the address for the actual function (determined at runtime)
+    (*f)(str_in); // Just calling the function through the pointer
+    // f(str_in); // That's an alternative but equally valid syntax for calling it.
+}
+
+/*
+As long as function signatures match, you can assign any function to the same pointer.
+Function pointers are usually typedef'd for simplicity and readability, as follows:
+*/
+
+typedef void (*my_fnp_type)(char *);
+
+// The used when declaring the actual pointer variable:
+// ...
+// my_fnp_type f; 
 
 ```
 

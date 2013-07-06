@@ -1,17 +1,17 @@
 ---
 language: haskell
-author: Adit Bhargava
-author_url: http://adit.io
+contributors:
+    - ["Adit Bhargava", "http://adit.io"]
 ---
 
 Haskell was designed as a practical, purely functional programming language. It's famous for
-it's monads and it's type system, but I keep coming back to it because of it's elegance. Haskell
+its monads and its type system, but I keep coming back to it because of its elegance. Haskell
 makes coding a real joy for me.
 
 ```haskell
 -- Single line comments start with two dashes.
 {- Multiline comments can be enclosed
-in a block like this.
+en a block like this.
 -}
 
 ----------------------------------------------------
@@ -44,15 +44,21 @@ not False -- True
 1 /= 1 -- False
 1 < 10 -- True
 
+-- In the above examples, `not` is a function that takes one value.
+-- Haskell doesn't need parentheses for function calls...all the arguments
+-- are just listed after the function. So the general pattern is:
+-- func arg1 arg2 arg3...
+-- See the section on functions for information on how to write your own.
+
 -- Strings and characters
 "This is a string."
 'a' -- character
 'You cant use single quotes for strings.' -- error!
 
--- Strings can be added too!
+-- Strings can be concatenated
 "Hello " ++ "world!" -- "Hello world!"
 
--- A string can be treated like a list of characters
+-- A string is a list of characters
 "This is a string" !! 0 -- 'T'
 
 
@@ -68,14 +74,24 @@ not False -- True
 -- You can also have infinite lists in Haskell!
 [1..] -- a list of all the natural numbers
 
--- joining two lists
+-- Infinite lists work because Haskell has "lazy evaluation". This means
+-- that Haskell only evaluates things when it needs to. So you can ask for
+-- the 1000th element of your list and Haskell will give it to you:
+
+[1..] !! 999 -- 1000
+
+-- And now Haskell has evaluated elements 1 - 1000 of this list...but the
+-- rest of the elements of this "infinite" list don't exist yet! Haskell won't
+-- actually evaluate them until it needs to.
+
+- joining two lists
 [1..5] ++ [6..10]
 
 -- adding to the head of a list
 0:[1..5] -- [0, 1, 2, 3, 4, 5]
 
 -- indexing into a list
-[0..] !! 5 -- 4
+[0..] !! 5 -- 5
 
 -- more list operations
 head [1..5] -- 1
@@ -136,19 +152,19 @@ fib x = fib (x - 1) + fib (x - 2)
 -- Pattern matching on tuples:
 foo (x, y) = (x + 1, y + 2)
 
--- Pattern matching on arrays. Here `x` is the first element
--- in the array, and `xs` is the rest of the array. We can write
+-- Pattern matching on lists. Here `x` is the first element
+-- in the list, and `xs` is the rest of the list. We can write
 -- our own map function:
-map func [x] = [func x]
-map func (x:xs) = func x:(map func xs)
+myMap func [] = []
+myMap func (x:xs) = func x:(myMap func xs)
 
 -- Anonymous functions are created with a backslash followed by
 -- all the arguments.
-map (\x -> x + 2) [1..5] -- [3, 4, 5, 6, 7]
+myMap (\x -> x + 2) [1..5] -- [3, 4, 5, 6, 7]
 
 -- using fold (called `inject` in some languages) with an anonymous
 -- function. foldl1 means fold left, and use the first value in the
--- array as the initial value for the accumulator.
+-- list as the initial value for the accumulator.
 foldl1 (\acc x -> acc + x) [1..5] -- 15
 
 ----------------------------------------------------
@@ -183,10 +199,10 @@ foo 5 -- 75
 -- of parentheses:
 
 -- before
-(even (double 7)) -- true
+(even (fib 7)) -- true
 
 -- after
-even . double $ 7 -- true
+even . fib $ 7 -- true
 
 ----------------------------------------------------
 -- 5. Type signatures
@@ -201,13 +217,17 @@ True :: Bool
 
 -- Functions have types too.
 -- `not` takes a boolean and returns a boolean:
-not :: Bool -> Bool
+-- not :: Bool -> Bool
 
 -- Here's a function that takes two arguments:
-add :: Integer -> Integer -> Integer
+-- add :: Integer -> Integer -> Integer
+
+-- When you define a value, it's good practice to write its type above it:
+double :: Integer -> Integer
+double x = x * 2
 
 ----------------------------------------------------
--- 6. Control Flow
+-- 6. Control Flow and If Statements
 ----------------------------------------------------
 
 -- if statements
@@ -225,7 +245,7 @@ case args of
   _ -> putStrLn "bad args"
 
 -- Haskell doesn't have loops because it uses recursion instead.
--- map a function over every element in an array
+-- map applies a function over every element in an array
 
 map (*2) [1..5] -- [2, 4, 6, 8, 10]
 
@@ -238,6 +258,19 @@ for [0..5] $ \i -> show i
 -- we could've written that like this too:
 for [0..5] show
 
+-- You can use foldl or foldr to reduce a list
+-- foldl <fn> <initial value> <list>
+foldl (\x y -> 2*x + y) 4 [1,2,3] -- 43
+
+-- This is the same as
+(2 * (2 * (2 * 4 + 1) + 2) + 3)
+
+-- foldl is left-handed, foldr is right-
+foldr (\x y -> 2*x + y) 4 [1,2,3] -- 16
+
+-- This is now the same as
+(2 * 3 + (2 * 2 + (2 * 1 + 4)))
+
 ----------------------------------------------------
 -- 7. Data Types
 ----------------------------------------------------
@@ -248,43 +281,100 @@ data Color = Red | Blue | Green
 
 -- Now you can use it in a function:
 
-say :: Color -> IO String
-say Red = putStrLn "You are Red!"
-say Blue = putStrLn "You are Blue!"
-say Green = putStrLn "You are Green!"
+
+say :: Color -> String
+say Red = "You are Red!"
+say Blue = "You are Blue!"
+say Green =  "You are Green!"
 
 -- Your data types can have parameters too:
 
 data Maybe a = Nothing | Just a
 
 -- These are all of type Maybe
-Nothing
-Just "hello"
-Just 1
+Just "hello"    -- of type `Maybe String`
+Just 1          -- of type `Maybe Int`
+Nothing         -- of type `Maybe a` for any `a`
 
 ----------------------------------------------------
 -- 8. Haskell IO
 ----------------------------------------------------
 
--- While IO can't be explained fully without explaining monads
--- it is not hard to explain enough to get going
+-- While IO can't be explained fully without explaining monads,
+-- it is not hard to explain enough to get going.
 
--- An IO a value is an IO action: you can chain them with do blocks
+-- When a Haskell program is executed, the function `main` is
+-- called. It must return a value of type `IO ()`. For example:
+
+main :: IO ()
+main = putStrLn $ "Hello, sky! " ++ (say Blue) 
+-- putStrLn has type String -> IO ()
+
+-- It is easiest to do IO if you can implement your program as 
+-- a function from String to String. The function 
+--    interact :: (String -> String) -> IO ()
+-- inputs some text, runs a function on it, and prints out the 
+-- output.
+
+countLines :: String -> String
+countLines = show . length . lines
+
+main' = interact countLines
+
+-- You can think of a value of type `IO ()` as representing a
+-- sequence of actions for the computer to do, much like a
+-- computer program written in an imperative language. We can use
+-- the `do` notation to chain actions together. For example:
+
+sayHello :: IO ()
+sayHello = do 
+   putStrLn "What is your name?"
+   name <- getLine -- this gets a line and gives it the name "input"
+   putStrLn $ "Hello, " ++ name
+   
+-- Exercise: write your own version of `interact` that only reads
+--           one line of input.
+   
+-- The code in `sayHello` will never be executed, however. The only
+-- action that ever gets executed is the value of `main`. 
+-- To run `sayHello` comment out the above definition of `main` 
+-- and replace it with:
+--   main = sayHello
+
+-- Let's understand better how the function `getLine` we just 
+-- used works. Its type is:
+--    getLine :: IO String
+-- You can think of a value of type `IO a` as representing a
+-- computer program that will generate a value of type `a` 
+-- when executed (in addition to anything else it does). We can
+-- store and reuse this value using `<-`. We can also 
+-- make our own action of type `IO String`:
+
+action :: IO String
 action = do
    putStrLn "This is a line. Duh"
-   input <- getLine -- this gets a line and gives it the name "input"
+   input1 <- getLine 
    input2 <- getLine
-   return (input1++"\n"++input2) -- This is the result of the whole action
+   -- The type of the `do` statement is that of its last line.
+   -- `return` is not a keyword, but merely a function 
+   return (input1 ++ "\n" ++ input2) -- return :: String -> IO String
 
--- This didn't actually do anything. When a haskell program is executed
--- an IO action called "main" is read and interprete
+-- We can use this just like we used `getLine`:
 
-main = do
-    putStrLn "Our first program. How exciting!"
-    result <- action -- our defined action is just like the default ones
+main'' = do
+    putStrLn "I will echo two lines!"
+    result <- action 
     putStrLn result
     putStrLn "This was all, folks!"
-   
+
+-- The type `IO` is an example of a "monad". The way Haskell uses a monad to
+-- do IO allows it to be a purely functional language. Any function that
+-- interacts with the outside world (i.e. does IO) gets marked as `IO` in its
+-- type signature. This lets us reason about what functions are "pure" (don't
+-- interact with the outside world or modify state) and what functions aren't.
+
+-- This is a powerful feature, because it's easy to run pure functions
+-- concurrently; so, concurrency in Haskell is very easy.
 
 
 ----------------------------------------------------
@@ -301,6 +391,14 @@ let foo = 5
 
 >:t foo
 foo :: Integer
+
+-- You can also run any action of type `IO ()`
+
+> sayHello
+What is your name?
+Friend!
+Hello, Friend!
+
 ```
 
 There's a lot more to Haskell, including typeclasses and monads. These are the big ideas that make Haskell such fun to code in. I'll leave you with one final Haskell example: an implementation of quicksort in Haskell:
