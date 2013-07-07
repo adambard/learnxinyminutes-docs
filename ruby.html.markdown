@@ -214,7 +214,9 @@ when 'D'
   puts "Scraping through"
 when 'F'
   puts "You failed!"
-
+else 
+  puts "Alternative grading system, eh?"
+end
 
 # Functions
 
