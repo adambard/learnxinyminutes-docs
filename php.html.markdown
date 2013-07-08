@@ -1,7 +1,8 @@
 ---
 language: php
 contributors:
-    - ["Malcolm Fell", "http://emarref.net/"]
+- [Malcolm Fell](http://emarref.net/)
+- [Trismegiste](https://github.com/Trismegiste)
 filename: learnphp.php
 ---
 
@@ -524,6 +525,12 @@ interface InterfaceOne
 interface InterfaceTwo
 {
     public function doSomethingElse();
+}
+
+// interfaces can be extended
+interface InterfaceThree extends InterfaceTwo
+{
+    public function doAnotherContract();
 }
 
 abstract class MyAbstractClass implements InterfaceOne
