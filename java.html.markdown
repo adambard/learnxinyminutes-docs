@@ -15,6 +15,9 @@ Java is a general-purpose, concurrent, class-based, object-oriented computer pro
 /*
 Multi-line comments look like this.
 */
+/**
+JavaDoc comments look like this. Used to describe the Class or various attributes of a Class.
+*/
 
 // Import ArrayList class inside of the java.util package
 import java.util.ArrayList;
@@ -58,12 +61,12 @@ public class LearnJava {
 
         // Long - 64-bit signed two's complement integer
         // (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
-        long fooLong = 100000L;
+        long fooLong = 100000L; // L is used to denote that this variable value is of type Long; else it is treated as integer by default.
 
-        // (Java has no unsigned types)
+        // Note: Java has no unsigned types
 
         // Float - Single-precision 32-bit IEEE 754 Floating Point
-        float fooFloat = 234.5f;
+        float fooFloat = 234.5f; // f is used to denote that this variable value is of type float; else it is treated as double. 
 
         // Double - Double-precision 64-bit IEEE 754 Floating Point
         double fooDouble = 123.4;
@@ -83,8 +86,11 @@ public class LearnJava {
 
         // \n is an escaped character that starts a new line
         String barString = "Printing on a new line?\nNo Problem!";
+        // \t is an escaped character that adds a tab character
+        String bazString = "Do you want to add a tab?\tNo Problem!";
         System.out.println(fooString);
         System.out.println(barString);
+        System.out.println(bazString);
 
         // Arrays
         //The array size must be decided upon declaration
@@ -128,12 +134,12 @@ public class LearnJava {
         System.out.println("11%3 = "+(11 % 3)); // => 2
 
         // Comparison operators
-        System.out.println("3 == 2? " + (3 == 2)); // => 0 (false)
-        System.out.println("3 != 2? " + (3 != 2)); // => 1 (true)
-        System.out.println("3 > 2? " + (3 > 2)); // => 1
-        System.out.println("3 < 2? " + (3 < 2)); // => 0
-        System.out.println("2 <= 2? " + (2 <= 2)); // => 1
-        System.out.println("2 >= 2? " + (2 >= 2)); // => 1
+        System.out.println("3 == 2? " + (3 == 2)); // => false
+        System.out.println("3 != 2? " + (3 != 2)); // => true
+        System.out.println("3 > 2? " + (3 > 2)); // => true
+        System.out.println("3 < 2? " + (3 < 2)); // => false
+        System.out.println("2 <= 2? " + (2 <= 2)); // => true
+        System.out.println("2 >= 2? " + (2 >= 2)); // => true
 
         // Bitwise operators!
         /*
@@ -144,10 +150,11 @@ public class LearnJava {
         &       Bitwise AND
         ^       Bitwise exclusive OR
         |       Bitwise inclusive OR
+        [Java Bitwise Operators](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/op3.html)
         */
 
         // Incrementations
-        int i=0;
+        int i = 0;
         System.out.println("\n->Inc/Dec-rementation");
         System.out.println(i++); //i = 1. Post-Incrementation
         System.out.println(++i); //i = 2. Pre-Incrementation
@@ -160,12 +167,13 @@ public class LearnJava {
         System.out.println("\n->Control Structures");
 
         // If statements are c-like
-        if (false){
-            System.out.println("I never run");
-        }else if (false) {
-            System.out.println("I am also never run");
-        } else {
-            System.out.println("I print");
+        int j = 10;
+        if (j == 10){ // Evaluates to true only if value of j is equal to 10. 
+            System.out.println("In this case, I get executed and I print this since j is equal to 10.");
+        } else if (i > 10) { // Evaluates to true only if value of j is greater than 10.
+            System.out.println("I never run if j = 10; I will run only if j is greater than 10");
+        } else { // If none of the above if-conditions match, then control will fall back to else-condition; In this case, if value of j is less than 10.
+            System.out.println("I also never run if j = 10; I will run only if j is less than 10");
         }
 
         // While loop
@@ -200,19 +208,47 @@ public class LearnJava {
         System.out.println("fooFor Value: " + fooFor);
 
         // Switch Case
+        //A switch works with the byte, short, char, and int primitive data types. 
+        //It also works with enumerated types (discussed in Enum Types), the String class, and a few special classes that wrap certain primitive types: Character, Byte, Short, and Integer.
         int month = 3;
         String monthString;
         switch (month){
-            case 1:  monthString = "January";
+            case 1:  
+                    monthString = "January";
                     break;
-            case 2:  monthString = "February";
+            case 2: 
+                    monthString = "February";
                     break;
-            case 3:  monthString = "March";
+            case 3:  
+                    monthString = "March";
                     break;
-            default: monthString = "Some other month";
+            default: //The default section handles all values that are not explicitly handled by one of the case sections. 
+                    monthString = "Some other month";
                     break;
         }
         System.out.println("Switch Case Result: " + monthString);
+        
+        // Effective JDK 7.0, Strings can be used for case-matching in Switch statement.
+        final String dayOfWeek = "Friday";
+        switch (dayOfWeek) {
+             case "Monday":
+                 System.out.println("Aargh!! Start of the work week!");
+                 break;
+             case "Tuesday":
+             case "Wednesday":
+             case "Thursday":
+                 System.out.println("Midweek");
+                 break;
+             case "Friday":
+                 System.out.println("Awesome! End of work week");
+                 break;
+             case "Saturday":
+             case "Sunday":
+                 System.out.println("Weekend");
+                 break;
+             default:
+                 System.out.println("There is no such weekday, at least on our planet.");
+         }
 
 
         ///////////////////////////////////////
@@ -251,10 +287,11 @@ public class LearnJava {
         Bicycle trek = new Bicycle();
 
         // Call object methods
-        trek.speedUp(3);
+        trek.speedUp(3); // Should always use setter and getter methods to access the attributes of a class
         trek.setCadence(100);
 
-        // toString is a convention
+        // toString is a convention to display the attribute values of this Object.
+        // Has to be overridden in the POJO (Plain Old Java Objects) to see the actual values else internal representation of the address will be displayed.  
         System.out.println("trek info: " + trek.toString());
 
     } // End main method
@@ -266,15 +303,17 @@ public class LearnJava {
 
 // Class Declaration Syntax:
 // <public/private/protected> class <class name>{
-//    //data fields, constructors, functions all inside
+//    //data fields, constructors, functions all inside.
+//    //functions are called as methods in Java.
 // }
 
 class Bicycle {
 
     // Bicycle's Fields/Variables
     public int cadence; // Public: Can be accessed from anywhere
-    private int speed;  // Private: Only accessable from within the class
-    protected int gear; // Protected: Accessible from the class and subclasses
+    private int speed;  // Private: Only accessible from within the class
+    protected int gear; // Protected: Accessible from the class and all the subclasses
+    String name; // default: Only accessible from within this package
 
     // Constructors are a way of creating classes
     // This is a default constructor
@@ -282,13 +321,15 @@ class Bicycle {
         gear = 1;
         cadence = 50;
         speed = 5;
+        name = "Bontrager";
     }
 
     // This is a specified constructor (it contains arguments)
-    public Bicycle(int startCadence, int startSpeed, int startGear) {
-        gear = startGear;
-        cadence = startCadence;
-        speed = startSpeed;
+    public Bicycle(int startCadence, int startSpeed, int startGear, String name) {
+        this.gear = startGear;
+        this.cadence = startCadence;
+        this.speed = startSpeed;
+        this.name = name;
     }
 
     // Function Syntax:
@@ -319,10 +360,21 @@ class Bicycle {
         speed -= decrement;
     }
 
+    public void setName(int newName) {
+        name = newName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    //Method to display the attribute values of this Object.
+    @Override
     public String toString() {
-        return "gear: "+Integer.toString(gear)+
-                " cadence: "+Integer.toString(cadence)+
-                " speed: "+Integer.toString(speed);
+        return "gear: " + gear +
+                " cadence: " + cadence +
+                " speed: " + speed +
+                " name: " + name;
     }
 } // end class Bicycle
 
@@ -333,7 +385,7 @@ class PennyFarthing extends Bicycle {
 
     public PennyFarthing(int startCadence, int startSpeed){
         // Call the parent constructor with super
-        super(startCadence, startSpeed, 0);
+        super(startCadence, startSpeed, 0, "PennyFarthing");
     }
 
     // You should mark a method you're overriding with an @annotation
@@ -350,13 +402,18 @@ class PennyFarthing extends Bicycle {
 
 ## Further Reading
 
+The links provided here below are just to get an understanding of the topic, feel free to Google and find specific examples.
+
 Other Topics To Research:
 
-* [Inheritance](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
+* [Java Tutorial Trail from Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
 
-* [Polymorphism](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
+* [Java Access level modifiers](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
 
-* [Abstraction](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
+* [Object-Oriented Programming Concepts](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
+    * [Inheritance](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
+    * [Polymorphism](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
+    * [Abstraction](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
 
 * [Exceptions](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
 
@@ -365,5 +422,3 @@ Other Topics To Research:
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
 
 * [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
-
-* The links provided are just to get an understanding of the topic, feel free to google and find specific examples
