@@ -48,9 +48,9 @@ $boolean = true;  // or TRUE or True
 $boolean = false; // or FALSE or False
 
 // Integers
-$int1 = 19;   // => 19
-$int2 = -19;  // => -19
-$int3 = 019;  // => 15 (a leading 0 denotes an octal number)
+$int1 = 12;   // => 12
+$int2 = -12;  // => -12
+$int3 = 012;  // => 10 (a leading 0 denotes an octal number)
 $int4 = 0x0F; // => 15 (a leading 0x denotes a hex literal)
 
 // Floats (aka doubles)
@@ -381,9 +381,6 @@ echo $function_name(1, 2); // => 3
  * Includes
  */
 
-/*
-```
-```php
 <?php
 // PHP within included files must also begin with a PHP open tag.
 
@@ -597,9 +594,6 @@ $cls->myTraitMethod(); // Prints "I have MyTrait"
 // This section is separate, because a namespace declaration
 // must be the first statement in a file. Let's pretend that is not the case
 
-/*
-```
-```php
 <?php
 
 // By default, classes exist in the global namespace, and can
