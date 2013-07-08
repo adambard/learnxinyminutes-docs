@@ -16,7 +16,8 @@ Java is a general-purpose, concurrent, class-based, object-oriented computer pro
 Multi-line comments look like this.
 */
 /**
-JavaDoc comments look like this. Used to describe the Class or various attributes of a Class.
+JavaDoc comments look like this. Used to describe the Class or various
+attributes of a Class.
 */
 
 // Import ArrayList class inside of the java.util package
@@ -61,12 +62,16 @@ public class LearnJava {
 
         // Long - 64-bit signed two's complement integer
         // (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
-        long fooLong = 100000L; // L is used to denote that this variable value is of type Long; else it is treated as integer by default.
+        long fooLong = 100000L;
+        // L is used to denote that this variable value is of type Long;
+        // anything without is treated as integer by default.
 
         // Note: Java has no unsigned types
 
         // Float - Single-precision 32-bit IEEE 754 Floating Point
-        float fooFloat = 234.5f; // f is used to denote that this variable value is of type float; else it is treated as double. 
+        float fooFloat = 234.5f;
+        // f is used to denote that this variable value is of type float;
+        // otherwise it is treated as double.
 
         // Double - Double-precision 64-bit IEEE 754 Floating Point
         double fooDouble = 123.4;
@@ -150,7 +155,6 @@ public class LearnJava {
         &       Bitwise AND
         ^       Bitwise exclusive OR
         |       Bitwise inclusive OR
-        [Java Bitwise Operators](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/op3.html)
         */
 
         // Incrementations
@@ -168,12 +172,12 @@ public class LearnJava {
 
         // If statements are c-like
         int j = 10;
-        if (j == 10){ // Evaluates to true only if value of j is equal to 10. 
-            System.out.println("In this case, I get executed and I print this since j is equal to 10.");
-        } else if (i > 10) { // Evaluates to true only if value of j is greater than 10.
-            System.out.println("I never run if j = 10; I will run only if j is greater than 10");
-        } else { // If none of the above if-conditions match, then control will fall back to else-condition; In this case, if value of j is less than 10.
-            System.out.println("I also never run if j = 10; I will run only if j is less than 10");
+        if (j == 10){
+            System.out.println("I get printed");
+        } else if (j > 10) {
+            System.out.println("I don't");
+        } else {
+            System.out.println("I also don't");
         }
 
         // While loop
@@ -208,47 +212,27 @@ public class LearnJava {
         System.out.println("fooFor Value: " + fooFor);
 
         // Switch Case
-        //A switch works with the byte, short, char, and int primitive data types. 
-        //It also works with enumerated types (discussed in Enum Types), the String class, and a few special classes that wrap certain primitive types: Character, Byte, Short, and Integer.
+        // A switch works with the byte, short, char, and int data types.
+        // It also works with enumerated types (discussed in Enum Types),
+        // the String class, and a few special classes that wrap
+        // primitive types: Character, Byte, Short, and Integer.
         int month = 3;
         String monthString;
         switch (month){
-            case 1:  
+            case 1:
                     monthString = "January";
                     break;
-            case 2: 
+            case 2:
                     monthString = "February";
                     break;
-            case 3:  
+            case 3:
                     monthString = "March";
                     break;
-            default: //The default section handles all values that are not explicitly handled by one of the case sections. 
+            default:
                     monthString = "Some other month";
                     break;
         }
         System.out.println("Switch Case Result: " + monthString);
-        
-        // Effective JDK 7.0, Strings can be used for case-matching in Switch statement.
-        final String dayOfWeek = "Friday";
-        switch (dayOfWeek) {
-             case "Monday":
-                 System.out.println("Aargh!! Start of the work week!");
-                 break;
-             case "Tuesday":
-             case "Wednesday":
-             case "Thursday":
-                 System.out.println("Midweek");
-                 break;
-             case "Friday":
-                 System.out.println("Awesome! End of work week");
-                 break;
-             case "Saturday":
-             case "Sunday":
-                 System.out.println("Weekend");
-                 break;
-             default:
-                 System.out.println("There is no such weekday, at least on our planet.");
-         }
 
 
         ///////////////////////////////////////
@@ -287,11 +271,10 @@ public class LearnJava {
         Bicycle trek = new Bicycle();
 
         // Call object methods
-        trek.speedUp(3); // Should always use setter and getter methods to access the attributes of a class
+        trek.speedUp(3); // You should always use setter and getter methods
         trek.setCadence(100);
 
-        // toString is a convention to display the attribute values of this Object.
-        // Has to be overridden in the POJO (Plain Old Java Objects) to see the actual values else internal representation of the address will be displayed.  
+        // toString is a convention to display the value of this Object.
         System.out.println("trek info: " + trek.toString());
 
     } // End main method
@@ -312,7 +295,7 @@ class Bicycle {
     // Bicycle's Fields/Variables
     public int cadence; // Public: Can be accessed from anywhere
     private int speed;  // Private: Only accessible from within the class
-    protected int gear; // Protected: Accessible from the class and all the subclasses
+    protected int gear; // Protected: Accessible from the class and subclasses
     String name; // default: Only accessible from within this package
 
     // Constructors are a way of creating classes
