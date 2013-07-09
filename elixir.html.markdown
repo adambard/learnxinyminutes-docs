@@ -33,7 +33,7 @@ and many more features.
 # Atoms, that are literals, a constant with name. They start with `:`.
 :hello # atom
 
-# Tuples that are stored contigously in memory.
+# Tuples that are stored contiguously in memory.
 {1,2,3} # tuple
 
 # We can access a tuple element with the `elem` function:
@@ -47,7 +47,7 @@ elem({1, 2, 3}, 0) #=> 1
 head #=> 1
 tail #=> [2,3]
 
-# In elixir, just like in erlang, the `=` denotes pattern matching and
+# In elixir, just like in Erlang, the `=` denotes pattern matching and
 # not an assignment.
 #
 # This means that the left-hand side (pattern) is matched against a
@@ -170,7 +170,7 @@ case {:one, :two} do
     "This will match any value"
 end
 
-# It's common practive to assign a value to `_` if we don't need it.
+# It's common practice to assign a value to `_` if we don't need it.
 # For example, if only the head of a list matters to us:
 [head | _] = [1,2,3]
 head #=> 1
