@@ -412,5 +412,6 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
 
 Haskell is easy to install. Get it [here](http://www.haskell.org/platform/).
 
-You can find a much gentler introduction from the excellent [Learn you a Haskell](http://learnyouahaskell.com/)
-
+You can find a much gentler introduction from the excellent
+[Learn you a Haskell](http://learnyouahaskell.com/) or
+[Real World Haskell](http://book.realworldhaskell.org/).
