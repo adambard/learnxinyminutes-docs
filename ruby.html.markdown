@@ -267,7 +267,7 @@ class Human
     @@species = "H. sapiens"
 
     # Basic initializer
-    def initialize(name, age=0):
+    def initialize(name, age=0)
         # Assign the argument to the "name" instance variable for the instance
         @name = name
         # If no age given, we will fall back to the default in the arguments list.
