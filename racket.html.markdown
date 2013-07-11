@@ -17,6 +17,9 @@ Feedback would be highly appreciated! You can reach me at [@th3rac25](http://twi
     as comments
 |#
 
+
+#lang racket ; defines the language we are using
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 1. Primitive Datatypes and Operators
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -88,12 +91,6 @@ some-var ; => 6
 ; Accessing a previously unassigned variable is an exception
 x ; => x: undefined ...
 
-; if can be used as an expression
-
-some_var = a if a > b else b
-; If a is greater than b, then a is assigned to some_var.
-; Otherwise b is assigned to some_var.
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 3. Collections and Sequences
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -144,7 +141,7 @@ x ; => 1
 (hello-world) ; => "Hello World"
 
 ; You can shorten this to:
-(define (hello-world) "Hello World")
+(define (hello-world2) "Hello World")
 
 ; The () is the list of arguments for the function.
 (define hello 
