@@ -1,38 +1,43 @@
-TODO: sequences, control flow, macros, objects, modules
-
 ---
 language: racket
-author: Th3rac25
+author: th3rac25
 ---
 
 Racket is a general purpose, multi-paradigm programming language in the Lisp/Scheme family. 
 
-Feedback would be highly appreciated! You can reach me at [@th3rac25](http://twitter.com/th3rac25) or th3rac25 [at] [google's email service]
+Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3rac25) or th3rac25 [at] [google's email service]
 
 
 ```racket
+#lang racket ; defines the language we are using
+
+; TODO: 
+; quote
+; collections (set, hash)
+; structs
+; control flow (pattern-matching, loops, sequences)
+; objects
+
+
 ; Single line comments start with a semicolon
 #| Multiline strings can be written
     using three "'s, and are often used
     as comments
 |#
 
-
-#lang racket ; defines the language we are using
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 1. Primitive Datatypes and Operators
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; You have numbers
-1       
 9999999999999999999999 ; big integers
-3.14
+3.14                   ; reals
 6.02e+23
-1/2  ; rationals   
-1+2i ; complex numbers   
+1/2                    ; rationals   
+1+2i                   ; complex numbers   
 
-; Math is what you would expect
+; Operators are functions, functions applications are written
+; (f x y z ...) where f is a function and x, y, z, ... are operands
 (+ 1 1)  ; => 2
 (- 8 1)  ; => 7
 (* 10 2) ; => 20
@@ -47,7 +52,6 @@ Feedback would be highly appreciated! You can reach me at [@th3rac25](http://twi
 #t ; for true  
 #f ; for false
 (not #t) ; => #f
-; In conditionals, all non-#f values are treated as true
 
 ; Equality for numbers is =
 (= 1 1.0) ; => #t
@@ -76,23 +80,27 @@ Feedback would be highly appreciated! You can reach me at [@th3rac25](http://twi
 (printf "I'm Racket. Nice to meet you!\n")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 2. Variables and Collections
+;; 2. Variables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; You need to declare variables before assigning to them.
+; You can create a variable using define
 ; a variable name can use any characters except: () [] {} " , ' ` ; # | \
 (define some-var 5)
 some-var ; => 5
 
-; use set! to reassign
+; Use set! to assign a new value to an existing variable
 (set! some-var 6) 
 some-var ; => 6
 
 ; Accessing a previously unassigned variable is an exception
-x ; => x: undefined ...
+;x ; => x: undefined ...
+
+; Local binding: me is bound to "Bob" only within (let ...)
+(let ([me "Bob"])
+    "Alice"
+    me) ; => "Bob"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 3. Collections and Sequences
+;; 3. Collections
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Lists are linked-list data structures, vectors are fixed-length arrays.
@@ -114,27 +122,22 @@ x ; => x: undefined ...
 ; = (+ 1 (+ 2 (+ 3 (+ 4 0)))
 ; => 10
 
-; a sequence is an ordered collection of value
-(sequence? '(1 2 3)) ; => #t
-(sequence? #(1 2 3)) ; => #t
+; Set
 
-;; more sequence stuff here !
+
+; Hash
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 3. Functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Use fn to create new functions. A function always returns
+; Use lambda to create new functions. A function always returns
 ; its last statement.
 (lambda () "Hello World") ; => #<procedure>
 
 ; (You need extra parens to call it)
 ((lambda () "Hello World")) ; => "Hello World"
-
-; You can create a variable using define
-(define x 1)
-x ; => 1
 
 ; Assign a function to a var
 (define hello-world (lambda () "Hello World"))
@@ -171,12 +174,61 @@ x ; => 1
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 4. Control Flow
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Conditionals
+(if #t               ; test expression
+    "this is true"   ; then expression
+    "this is false"  ; else expression
+    ) ; =>  "this is true"
 
+; In conditionals, all non-#f values are treated as true
+(member "Groucho" '("Harpo" "Groucho" "Zeppo")) ; => '("Groucho" "Zeppo")
+(if (member "Groucho" '("Harpo" "Groucho" "Zeppo"))
+      'yep
+      'nope) ; => 'yep
+
+
+; Cond chains a series of test to select a result
+(cond
+   [(> 2 2) (error "wrong!")]
+   [(< 2 2) (error "wrong again!")]
+   [else 'ok]) ; => 'ok
+
+; Pattern matching
+
+; Loops
+
+; Sequences
+
+; Exceptions
+; To catch an exception, use the with-handlers form
+; To throw an exception use raise
+(with-handlers 
+    ([(lambda (v) (equal? v "infinity"))   
+      (lambda (exn) +inf.0)])
+  (raise "infinity"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 5. Modules
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Modules let you organize code into multiple files and reusable libraries.
 
+(module cake racket/base  ;; define a new module 'cake' based on racket/base
+  
+  (provide print-cake) ;; function exported by the module
+  
+  (define (print-cake n)
+    (show "   ~a   " n #\.)
+    (show " .-~a-. " n #\|)
+    (show " | ~a | " n #\space)
+    (show "---~a---" n #\-))
+  
+  (define (show fmt n ch) ;; internal function       
+    (printf fmt (make-string n ch))
+    (newline)))
+
+(require 'cake) ;; import all 'cake' functions
+(print-cake 3)  
+;(show "~a" 1 #\A) ; => this is an error
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 6. Classes
@@ -186,8 +238,24 @@ x ; => 1
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 7. Macros
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Macros let you extend the syntax of the language
+(define-syntax-rule (unless test then else) 
+  (if test else then))
 
+(unless (even? 10) "odd" "even") ; => "even"
 
+; Macros are hygienic, there is no risk to clobber existing variables!   
+(define-syntax-rule (swap x y)
+  (begin
+    (define tmp x) 
+    (set! x y)
+    (set! y tmp)))
+
+(define tmp 1) 
+(define a 2)
+(define b 3)
+(swap a b)
+(printf "tmp = ~a; a = ~a; b = ~a" tmp a b) ; tmp is unaffected by swap
 ```
 
 ;; Further Reading
