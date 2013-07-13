@@ -13,10 +13,8 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 
 ; TODO: 
 ; quote
-; collections (set, hash)
 ; structs
 ; control flow (pattern-matching, loops, sequences)
-; objects
 
 
 ; Single line comments start with a semicolon
@@ -29,15 +27,17 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 ;; 1. Primitive Datatypes and Operators
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; You have numbers
-9999999999999999999999 ; big integers
+; Numbers
+9999999999999999999999 ; integers
 3.14                   ; reals
 6.02e+23
 1/2                    ; rationals   
 1+2i                   ; complex numbers   
 
-; Operators are functions, functions applications are written
-; (f x y z ...) where f is a function and x, y, z, ... are operands
+; Function application is written (f x y z ...) 
+; where f is a function and x, y, z, ... are operands
+
+; Here are a few arithmetic operators
 (+ 1 1)  ; => 2
 (- 8 1)  ; => 7
 (* 10 2) ; => 20
@@ -103,30 +103,65 @@ some-var ; => 6
 ;; 3. Collections
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Lists are linked-list data structures, vectors are fixed-length arrays.
-'(1 2 3) ; a list
-#(1 2 3) ; a vector
+; Lists are linked-list data structures
+'(1 2 3) 
 
-; Use cons to add an item to the beginning of a list
+; Vectors are fixed-length arrays
+#(1 2 3) 
+
+; Use "cons" to add an item to the beginning of a list
 (cons 4 '(1 2 3)) ; => (4 1 2 3)
 
-; Use append to add lists together
+; Use "append" to add lists together
 (append '(1 2) '(3 4)) ; => (1 2 3 4)
 
-; Use filter, map to interact with collections
+; Use "filter", "map" to interact with collections
 (map add1 '(1 2 3)) ; => (2 3 4)
 (filter even?  '(1 2 3)) ; => (2)
 
-; Use fold to reduce them
+; Use "fold" to reduce them
 (foldl + 0 '(1 2 3 4))
 ; = (+ 1 (+ 2 (+ 3 (+ 4 0)))
 ; => 10
 
-; Set
+;;; Sets
 
+; create a set from a list
+(list->set '(1 2 3 1 2 3 3 2 1 3 2 1)) ; => (set 1 2 3)
 
-; Hash
+; Add a member with "set-add"
+(set-add (set 1 2 3) 4); => (set 1 2 3 4)
 
+; Remove one with "set-remove"
+(set-remove (set 1 2 3) 1) ; => (set 2 3)
+
+; Test for existence with "set-member?"
+(set-member? (set 1 2 3) 1) ; => #t
+(set-member? (set 1 2 3) 4) ; => #f
+
+;;; Hashes
+
+; Create an immutable hash table (There are also mutables ones)
+(define m (hash 'a 1 'b 2 'c 3))
+
+; Retrieve a value
+(hash-ref m 'a) ; => 1
+
+; Retrieving a non-present value is an exception
+; (hash-ref m 'd) => no value found
+
+; You can provide a default value for missing keys
+(hash-ref m 'd 0) ; => 0
+
+; Use "hash-set" to extend a hash table
+(define m2 (hash-set m 'd 4)) 
+m2 ; => '#hash((b . 2) (a . 1) (d . 4) (c . 3))
+
+; Remember, these hashes are immutable!
+m ; => '#hash((b . 2) (a . 1) (c . 3))
+
+; Use "hash-remove" to remove keys
+(hash-remove m 'a) ; => '#hash((b . 2) (c . 3))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 3. Functions
@@ -174,6 +209,7 @@ some-var ; => 6
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 4. Control Flow
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ; Conditionals
 (if #t               ; test expression
     "this is true"   ; then expression
@@ -187,7 +223,7 @@ some-var ; => 6
       'nope) ; => 'yep
 
 
-; Cond chains a series of test to select a result
+; "cond" chains a series of tests to select a result
 (cond
    [(> 2 2) (error "wrong!")]
    [(< 2 2) (error "wrong again!")]
@@ -200,8 +236,8 @@ some-var ; => 6
 ; Sequences
 
 ; Exceptions
-; To catch an exception, use the with-handlers form
-; To throw an exception use raise
+; To catch an exception, use the "with-handlers" form
+; To throw an exception use "raise"
 (with-handlers 
     ([(lambda (v) (equal? v "infinity"))   
       (lambda (exn) +inf.0)])
@@ -226,14 +262,42 @@ some-var ; => 6
     (printf fmt (make-string n ch))
     (newline)))
 
-(require 'cake) ;; import all 'cake' functions
+;; Use "require" to import all functions from the module
+(require 'cake) 
 (print-cake 3)  
-;(show "~a" 1 #\A) ; => this is an error
+;(show "~a" 1 #\A) ; => error, "show" was not exported
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 6. Classes
+;; 6. Classes and Objects
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; Create a class fish%
+(define fish%
+  (class object% 
+    (init size) ; initialization argument
+    (super-new) ; superclass initialization 
+    
+    (define current-size size) ; field
+  
+    ; Public methods
+    (define/public (get-size)  
+      current-size)
+    
+    (define/public (grow amt)
+      (set! current-size (+ amt current-size)))
+    
+    (define/public (eat other-fish)
+      (grow (send other-fish get-size)))))
+
+
+; Create an instance of fish%
+(define charlie 
+  (new fish% [size 10]))
+
+; Use "send" to call an object's methods
+(send charlie grow 6)
+(send charlie get-size) ; => 16
+ 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 7. Macros
@@ -258,7 +322,7 @@ some-var ; => 6
 (printf "tmp = ~a; a = ~a; b = ~a" tmp a b) ; tmp is unaffected by swap
 ```
 
-;; Further Reading
+## Further Reading
 
 Still up for more? Try [Quick: An Introduction to Racket with Pictures](http://docs.racket-lang.org/quick/)
 
