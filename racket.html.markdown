@@ -11,12 +11,6 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 ```racket
 #lang racket ; defines the language we are using
 
-; TODO: 
-; quote
-; structs
-; control flow (pattern-matching, loops, sequences)
-
-
 ; Single line comments start with a semicolon
 #| Multiline strings can be written
     using three "'s, and are often used
@@ -27,7 +21,7 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 ;; 1. Primitive Datatypes and Operators
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Numbers
+;;; Numbers
 9999999999999999999999 ; integers
 3.14                   ; reals
 6.02e+23
@@ -36,8 +30,10 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 
 ; Function application is written (f x y z ...) 
 ; where f is a function and x, y, z, ... are operands
-
-; Here are a few arithmetic operators
+; If you want to create a literal list of data, use ' to stop it from
+; being evaluated
+'(+ 1 2) ; => (+ 1 2)
+; Now, some arithmetic operations
 (+ 1 1)  ; => 2
 (- 8 1)  ; => 7
 (* 10 2) ; => 20
@@ -48,7 +44,7 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 (exact->inexact 1/3) ; => 0.3333333333333333
 (+ 1+2i  2-3i) ; => 3-1i
 
-; Booleans 
+;;; Booleans 
 #t ; for true  
 #f ; for false
 (not #t) ; => #f
@@ -57,12 +53,12 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 (= 1 1.0) ; => #t
 (= 2 1) ; => #f
 
-; Characters 
+;;; Characters 
 #\A ; => #\A
 #\λ ; => #\λ 
 #\u03BB ; => #\λ
 
-; Strings are fixed-length array of characters.
+;;; Strings are fixed-length array of characters.
 "Hello, world!"
 "Benjamin \"Bugsy\" Siegel" ; backslash is an escaping character
 "λx:(μα.α→α).xx" ; any Unicode character can appear in a string constant
@@ -83,7 +79,7 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 ;; 2. Variables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; You can create a variable using define
-; a variable name can use any characters except: () [] {} " , ' ` ; # | \
+; a variable name can use any character except: ()[]{}",'`;#|\
 (define some-var 5)
 some-var ; => 5
 
@@ -100,14 +96,29 @@ some-var ; => 6
     me) ; => "Bob"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 3. Collections
+;; 3. Structs and Collections
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; Structs
+(struct dog (name breed age))
+(define my-pet 
+  (dog "lassie" "collie" 5))
+my-pet ; => #<dog>
+(dog? my-pet) ; => #t
+(dog-name my-pet) ; => "lassie"
+
+; Pairs
+; "cons" constructs pairs, "car" and "cdr" extract the first
+; and second elements
+(cons 1 2) ; => '(1 . 2)
+(car (cons 1 2)) ; => 1
+(cdr (cons 1 2)) ; => 2
+
 ; Lists are linked-list data structures
-'(1 2 3) 
+'(1 2 3) ; => '(1 2 3)
 
 ; Vectors are fixed-length arrays
-#(1 2 3) 
+#(1 2 3) ; => '#(1 2 3)
 
 ; Use "cons" to add an item to the beginning of a list
 (cons 4 '(1 2 3)) ; => (4 1 2 3)
@@ -167,8 +178,8 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 ;; 3. Functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Use lambda to create new functions. A function always returns
-; its last statement.
+; Use lambda to create new functions. 
+; A function always returns its last statement.
 (lambda () "Hello World") ; => #<procedure>
 
 ; (You need extra parens to call it)
@@ -210,7 +221,8 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 ;; 4. Control Flow
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Conditionals
+;;; Conditionals
+
 (if #t               ; test expression
     "this is true"   ; then expression
     "this is false"  ; else expression
@@ -222,20 +234,61 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
       'yep
       'nope) ; => 'yep
 
-
 ; "cond" chains a series of tests to select a result
 (cond
    [(> 2 2) (error "wrong!")]
    [(< 2 2) (error "wrong again!")]
    [else 'ok]) ; => 'ok
 
-; Pattern matching
+;;; Pattern Matching
 
-; Loops
+(define (fizzbuzz? n)
+  (match (list (remainder n 3) (remainder n 5))
+    [(list 0 0) 'fizzbuzz]
+    [(list 0 _) 'fizz]
+    [(list _ 0) 'buzz]
+    [_          #f]))
+  
+(fizzbuzz? 15) ; => 'fizzbuzz
+(fizzbuzz? 37) ; => #f 
 
-; Sequences
+;;; Loops
 
-; Exceptions
+(define (loop i)
+  (when (< i 10)
+    (printf "i:~a~n" i)
+    (loop (add1 i)))) 
+
+(loop 5) ; => i:5 i:6 ... 
+
+(let loop ((i 0))
+  (when (< i 10)
+    (printf "i:~a~n" i)
+    (loop (add1 i)))) ; => i:0 i:1 ...
+
+
+;;; Sequences
+
+; "for" allows iteration over sequences: 
+; lists, vectors, strings, sets, hash tables, etc... 
+(for ([i (in-list '(l i s t))])
+  (displayln i))
+
+(for ([i (in-vector #(v e c t o r))])
+  (displayln i))
+
+(for ([i (in-string "string")])
+  (displayln i))
+
+(for ([i (in-set (set 'x 'y 'z))])
+  (displayln i))
+
+(for ([(k v) (in-hash (hash 'a 1 'b 2 'c 3 ))])
+  (printf "key:~a value:~a ~n" k v))
+
+
+;;; Exceptions
+
 ; To catch an exception, use the "with-handlers" form
 ; To throw an exception use "raise"
 (with-handlers 
@@ -246,11 +299,12 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 5. Modules
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Modules let you organize code into multiple files and reusable libraries.
 
-(module cake racket/base  ;; define a new module 'cake' based on racket/base
+; Modules let you organize code into multiple files and reusable libraries
+
+(module cake racket/base ; define a new module 'cake' based on racket/base
   
-  (provide print-cake) ;; function exported by the module
+  (provide print-cake) ; function exported by the module
   
   (define (print-cake n)
     (show "   ~a   " n #\.)
@@ -262,7 +316,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
     (printf fmt (make-string n ch))
     (newline)))
 
-;; Use "require" to import all functions from the module
+; Use "require" to import all functions from the module
 (require 'cake) 
 (print-cake 3)  
 ;(show "~a" 1 #\A) ; => error, "show" was not exported
@@ -302,6 +356,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 7. Macros
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ; Macros let you extend the syntax of the language
 (define-syntax-rule (unless test then else) 
   (if test else then))
