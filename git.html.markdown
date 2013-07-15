@@ -23,20 +23,20 @@ of your source code.
 ///////////////////////////////////////
 
 	///////////////////////////////////////
-        // What is version control?
-        ///////////////////////////////////////
+	// What is version control?
+	///////////////////////////////////////
 	
-	Version control is a system that records changes to a file, or set of files over time.
+	Version control is a system that records changes to a file, or set of files, over time.
 
 	///////////////////////////////////////
-        // Centralized Versioning VS Distributed Versioning
-        ///////////////////////////////////////
+	// Centralized Versioning VS Distributed Versioning
+	///////////////////////////////////////
 	
 	[Detailed Information & Images.](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
 
 	///////////////////////////////////////
-        // Why Use Git?
-        ///////////////////////////////////////
+	// Why Use Git?
+	///////////////////////////////////////
 	
 	* Can work offline.
 	* Collaborating with others is easy!
@@ -46,53 +46,53 @@ of your source code.
 	* Git is flexible.
 
 	///////////////////////////////////////
-        // Repository
-        ///////////////////////////////////////
+	// Repository
+	///////////////////////////////////////
 
 	A set of files, directories, historical records, commits, and heads. Imagine it as a source 		code datastructure, with the attribute that each source code "element" gives you access to 		its revision history, among other things.
 
 	A git repository is comprised of the .git directory & working tree.
 
 	///////////////////////////////////////
-        // .git Directory (component of repository)
-        ///////////////////////////////////////
+	// .git Directory (component of repository)
+	///////////////////////////////////////
 
 	The .git directory contains all the configurations, logs, branches, HEAD, and more.
 	[Detailed List.](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 	
 	///////////////////////////////////////
-        // Working Tree (component of repository)
-        ///////////////////////////////////////
+	// Working Tree (component of repository)
+	///////////////////////////////////////
 
 	This is basically the directories and files in your repository. It is often referred to
 	as your working directory.
 
 	///////////////////////////////////////
-        // Index (component of .git)
-        ///////////////////////////////////////
+	// Index (component of .git)
+	///////////////////////////////////////
 	
 	The Index is the staging area in git. It's basically layer that separates your working tree
 	from the Git repository. This gives developers more power over what gets sent to the Git
 	repository.
 
 	///////////////////////////////////////
-        // Commit
-        ///////////////////////////////////////
+	// Commit
+	///////////////////////////////////////
 	
 	A git commit is a snapshot of a set of changes, or manipulations to your Working Tree.
 	For example, if you added 5 files, and removed 2 others, you create a commit (or snapshot).
 	This commit can then be pushed to other repositorys.
 
 	///////////////////////////////////////
-        // Branch
-        ///////////////////////////////////////
+	// Branch
+	///////////////////////////////////////
 
 	A branch is essentially a pointer that points to the last commit you made. As you commit
 	this pointer will automatically update and point to the latest commit.
 
 	///////////////////////////////////////
-        // HEAD and head (component of .git)
-        ///////////////////////////////////////
+	// HEAD and head (component of .git)
+	///////////////////////////////////////
 
 	HEAD, is a pointer, to the current branch. A repository only has 1 active HEAD.
 	head, is a pointer, that points to any commit. A repository can have any number of heads.
@@ -102,9 +102,9 @@ of your source code.
 // Commands
 ///////////////////////////////////////
 
-        ///////////////////////////////////////
-        // init
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// init
+	///////////////////////////////////////
 
 	Purpose: 
 	To create an empty Git repository. The Git repository's settings, stored information, 
@@ -113,9 +113,9 @@ of your source code.
 	Examples:
 	$ git init
 
-        ///////////////////////////////////////
-        // config
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// config
+	///////////////////////////////////////
 
 	Purpose:
 	To configure settings. Whether it be for the repository, the system itself, or global
@@ -132,9 +132,9 @@ of your source code.
 
 	[Learn More About git config.](http://git-scm.com/docs/git-config)
 	
-        ///////////////////////////////////////
-        // help
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// help
+	///////////////////////////////////////
 
 	Purpose:
 	To give you quick access to an extremeled detailed guide of each command. Or to
@@ -153,9 +153,9 @@ of your source code.
 	$ git help commit
 	$ git help init
 
-        ///////////////////////////////////////
-        // status
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// status
+	///////////////////////////////////////
 
 	Purpose:
 	To show differences between the index file (basically your working copy/repo) and the current
@@ -168,9 +168,9 @@ of your source code.
 	// To learn other "tid bits" about git status
 	$ git help status
 
-        ///////////////////////////////////////
-        // add
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// add
+	///////////////////////////////////////
 
 	Purpose:
 	To add files to the current working tree/directory/repo. If you do not git add files to the
@@ -186,9 +186,9 @@ of your source code.
 	// Regular Expression support!
 	$ git add ./*.java
 
-        ///////////////////////////////////////
-        // branch
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// branch
+	///////////////////////////////////////
 
 	Purpose:
 	Manage your branches. You can view, edit, create, delete branches using this command.
@@ -210,9 +210,9 @@ of your source code.
 	// edit a branch's description
 	$ git branch myBranchName --edit-description
 
-        ///////////////////////////////////////
-        // checkout             
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// checkout             
+	///////////////////////////////////////
 
 	Purpose:
 	Updates all files in the working tree to match the version in the index, or specified tree.
@@ -223,9 +223,9 @@ of your source code.
 	// Checkout a specified branch
 	$ git checkout -b branchName
 
-        ///////////////////////////////////////
-        // clone
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// clone
+	///////////////////////////////////////
 
 	Purpose:
 	Clones, or copys, an existing repository into a new directory. It almost adds
@@ -236,9 +236,9 @@ of your source code.
 	// Clone learnxinyminutes-docs
 	$ git clone https://github.com/adambard/learnxinyminutes-docs.git
 	
-        ///////////////////////////////////////
-        // commit
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// commit
+	///////////////////////////////////////
 
 	Purpose:
 	Stores the current contents of the index in a new "commit". This commit contains
@@ -248,9 +248,9 @@ of your source code.
 	// commit with a message
 	$ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
 
-        ///////////////////////////////////////
-        // grep
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// grep
+	///////////////////////////////////////
 
 	Purpose:
 	Allows you to quickly search a repository.	
@@ -273,9 +273,9 @@ of your source code.
 	Google is your friend for more examples
 	[Git Grep Ninja](http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
 
-        ///////////////////////////////////////
-        // log
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// log
+	///////////////////////////////////////
 
 	Purpose:
 	Display commits to the repository.
@@ -290,9 +290,9 @@ of your source code.
 	// Show merge commits only
 	$ git log --merges
 
-        ///////////////////////////////////////
-        // merge
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// merge
+	///////////////////////////////////////
 
 	Purpose:
 	"Merge" in changes, from external commits, into the current branch.
@@ -304,9 +304,9 @@ of your source code.
 	// Always generate a merge commit when merging
 	$ git merge --no-ff branchName
 
-        ///////////////////////////////////////
-        // mv
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// mv
+	///////////////////////////////////////
 
 	Purpose:
 	Rename or move a file	
@@ -322,9 +322,9 @@ of your source code.
 	// "existingFile" already exists in the directory, will be overwritten
 	$ git mv -f myFile existingFile
 
-        ///////////////////////////////////////
-        // pull
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// pull
+	///////////////////////////////////////
 
 	Purpose:
 	Pulls from a repository and merges it with another branch.
@@ -335,9 +335,9 @@ of your source code.
 	// git pull <remote> <branch>
 	$ git pull origin master
 
-        ///////////////////////////////////////
-        // push
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// push
+	///////////////////////////////////////
 
 	Purpose:
 	Push, and merge changes from a branch to a remote & branch.
@@ -349,9 +349,9 @@ of your source code.
 	// git push => implicitly defaults to => git push origin master
 	$ git push origin master
 
-        ///////////////////////////////////////
-        // rebase (caution) 
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// rebase (caution) 
+	///////////////////////////////////////
 
 	Purpose:
 	Take all changes that were committed on one branch, and replay them onto another branch.
@@ -364,9 +364,9 @@ of your source code.
 
 	[Additional Reading.](http://git-scm.com/book/en/Git-Branching-Rebasing)
 	
-        ///////////////////////////////////////
-        // reset (caution)
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// reset (caution)
+	///////////////////////////////////////
 
 	Purpose:
 	Reset the current HEAD to the specified state. This allows you to undo merges,
@@ -389,9 +389,9 @@ of your source code.
 	// after the specified commit).
 	$ git reset --hard 31f2bb1
 
-        ///////////////////////////////////////
-        // rm
-        ///////////////////////////////////////
+	///////////////////////////////////////
+	// rm
+	///////////////////////////////////////
 	
 	Purpose:
 	The opposite of git add, git rm removes files from the current working tree.
