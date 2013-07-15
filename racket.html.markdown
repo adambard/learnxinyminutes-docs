@@ -1,6 +1,8 @@
 ---
 language: racket
-author: th3rac25
+contributors:
+    - ["th3rac25", "http://twitter.com/th3rac25"]
+filename: learnracket.py
 ---
 
 Racket is a general purpose, multi-paradigm programming language in the Lisp/Scheme family. 
@@ -8,7 +10,7 @@ Racket is a general purpose, multi-paradigm programming language in the Lisp/Sch
 Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3rac25) or th3rac25 [at] [google's email service]
 
 
-```racket
+```scheme
 #lang racket ; defines the language we are using
 
 ;;; Comments
@@ -447,7 +449,6 @@ vec ; => #(1 2 3 4)
 ; (deposit -5) ; => deposit: contract violation 
 ; expected: positive?
 ; given: -5 
-; more details....
 ```
 
 ## Further Reading

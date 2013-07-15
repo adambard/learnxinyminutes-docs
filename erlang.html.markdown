@@ -1,6 +1,6 @@
 ---
 language: erlang
-contributor:
+contributors:
     - ["Giovanni Cappellotto", "http://www.focustheweb.com/"]
 filename: learnerlang.erl
 ---

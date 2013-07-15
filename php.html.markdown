@@ -1,8 +1,8 @@
 ---
 language: php
 contributors:
-- [Malcolm Fell](http://emarref.net/)
-- [Trismegiste](https://github.com/Trismegiste)
+    - ["Malcolm Fell", "http://emarref.net/"]
+    - ["Trismegiste", "https://github.com/Trismegiste"]
 filename: learnphp.php
 ---
 
