@@ -404,10 +404,18 @@ vec ; => #(1 2 3 4)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Macros let you extend the syntax of the language
-(define-syntax-rule (unless test then else) 
-  (if test else then))
 
-(unless (even? 10) "odd" "even") ; => "even"
+; Let's add a while loop
+(define-syntax-rule (while condition body ...)
+  (let loop ()
+    (when condition
+      body ...
+      (loop))))
+
+(let ([i 0])
+  (while (< i  10)
+    (displayln i)
+    (set! i (add1 i))))
 
 ; Macros are hygienic, you cannot clobber existing variables!   
 (define-syntax-rule (swap x y)
