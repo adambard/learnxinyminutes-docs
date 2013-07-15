@@ -11,12 +11,20 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 ```racket
 #lang racket ; defines the language we are using
 
+;;; Comments
+
 ; Single line comments start with a semicolon
-#| Multiline strings can be written
-    using three "'s, and are often used
-    as comments
+
+#| Block comments
+   can span multiple lines and...
+    #|
+       they can be nested !
+    |#   
 |#
 
+; S-expression comments discard the following expression
+#; "this expression will be discarded" "2nd expression" ; => "2nd expression"
+ 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 1. Primitive Datatypes and Operators
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -46,12 +54,10 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 
 ;;; Booleans 
 #t ; for true  
-#f ; for false
+#f ; for false -- any value other than #f is true
 (not #t) ; => #f
-
-; Equality for numbers is =
-(= 1 1.0) ; => #t
-(= 2 1) ; => #f
+(and 0 #f (error "doesn't get here")) ; => #f
+(or #f 0 (error "doesn't get here"))  ; => 0
 
 ;;; Characters 
 #\A ; => #\A
@@ -83,9 +89,9 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 (define some-var 5)
 some-var ; => 5
 
-; Use set! to assign a new value to an existing variable
-(set! some-var 6) 
-some-var ; => 6
+; You can also use unicode characters
+(define ⊆ subset?)
+(⊆ (set 3 2) (set 1 2 3)); => #t
 
 ; Accessing a previously unassigned variable is an exception
 ;x ; => x: undefined ...
@@ -107,18 +113,17 @@ my-pet ; => #<dog>
 (dog? my-pet) ; => #t
 (dog-name my-pet) ; => "lassie"
 
-; Pairs
+;;; Pairs (immutable)
 ; "cons" constructs pairs, "car" and "cdr" extract the first
 ; and second elements
 (cons 1 2) ; => '(1 . 2)
 (car (cons 1 2)) ; => 1
 (cdr (cons 1 2)) ; => 2
 
-; Lists are linked-list data structures
-'(1 2 3) ; => '(1 2 3)
+;;; Lists
 
-; Vectors are fixed-length arrays
-#(1 2 3) ; => '#(1 2 3)
+; Lists are linked-list data structures
+(list 1 2 3) ; => '(1 2 3)
 
 ; Use "cons" to add an item to the beginning of a list
 (cons 4 '(1 2 3)) ; => (4 1 2 3)
@@ -126,14 +131,13 @@ my-pet ; => #<dog>
 ; Use "append" to add lists together
 (append '(1 2) '(3 4)) ; => (1 2 3 4)
 
-; Use "filter", "map" to interact with collections
-(map add1 '(1 2 3)) ; => (2 3 4)
-(filter even?  '(1 2 3)) ; => (2)
+;;; Vectors
 
-; Use "fold" to reduce them
-(foldl + 0 '(1 2 3 4))
-; = (+ 1 (+ 2 (+ 3 (+ 4 0)))
-; => 10
+; Vectors are fixed-length arrays
+#(1 2 3) ; => '#(1 2 3)
+
+; Use "vector-append" to add vectors together
+(vector-append #(1 2 3) #(4 5 6)) ; => #(1 2 3 4 5 6)
 
 ;;; Sets
 
@@ -218,7 +222,24 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 ; => "Hello Finn, you passed 3 extra args"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 4. Control Flow
+;; 4. Equality
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; for numbers use "="
+(= 3 3.0) ; => #t
+(= 2 1) ; => #f
+
+; for object identity use "eq?"
+(eq? 3 3) ; => #t
+(eq? 3 3.0) ; => #f
+(eq? (list 3) (list 3)) ; => #f
+
+; for collections use "equal?"
+(equal? (list 'a 'b) (list 'a 'b)) ; => #t
+(equal? (list 'a 'b) (list 'b 'a)) ; => #f
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 5. Control Flow
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; Conditionals
@@ -254,6 +275,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 
 ;;; Loops
 
+; looping can be done through recursion
 (define (loop i)
   (when (< i 10)
     (printf "i:~a~n" i)
@@ -261,11 +283,26 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 
 (loop 5) ; => i:5 i:6 ... 
 
+; similarly, with a named let
 (let loop ((i 0))
   (when (< i 10)
     (printf "i:~a~n" i)
     (loop (add1 i)))) ; => i:0 i:1 ...
 
+;;; Comprehensions
+
+(for/list ([i '(1 2 3)])
+    (add1 i)) ; => '(2 3 4)
+
+(for/list ([i '(1 2 3)] #:when (even? i))
+    i) ; => '(2)
+
+(for/hash ([i '(1 2 3)])
+    (values i (number->string i))) ; => '#hash((1 . "1") (2 . "2") (3 . "3"))
+
+; To combine iteration results, use "for/fold"
+(for/fold ([sum 0]) ([i '(1 2 3 4)])
+  (+ sum i)) ; => 10
 
 ;;; Sequences
 
@@ -286,7 +323,6 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 (for ([(k v) (in-hash (hash 'a 1 'b 2 'c 3 ))])
   (printf "key:~a value:~a ~n" k v))
 
-
 ;;; Exceptions
 
 ; To catch an exception, use the "with-handlers" form
@@ -297,7 +333,25 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
   (raise "infinity"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 5. Modules
+;; 6. Mutation
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Use set! to assign a new value to an existing variable
+(define n 5)
+(set! n 6) 
+n ; => 6
+
+; Many Racket datatypes can be immutable or mutable 
+; (Pairs, Lists, Strings, Vectors, Hash Tables, etc...)
+
+; Use "vector" to create a mutable vector
+(define vec (vector 2 2 3 4))
+; Use vector-set! to update a slot
+(vector-set! vec 0 1)
+vec ; => #(1 2 3 4)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 7. Modules
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Modules let you organize code into multiple files and reusable libraries
@@ -322,7 +376,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 ;(show "~a" 1 #\A) ; => error, "show" was not exported
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 6. Classes and Objects
+;; 8. Classes and Objects
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Create a class fish%
@@ -330,19 +384,12 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
   (class object% 
     (init size) ; initialization argument
     (super-new) ; superclass initialization 
-    
-    (define current-size size) ; field
-  
+    ; Field
+    (define current-size size) 
     ; Public methods
-    (define/public (get-size)  
-      current-size)
-    
-    (define/public (grow amt)
-      (set! current-size (+ amt current-size)))
-    
-    (define/public (eat other-fish)
-      (grow (send other-fish get-size)))))
-
+    (define/public (get-size)  current-size)
+    (define/public (grow amt) (set! current-size (+ amt current-size)))
+    (define/public (eat other-fish) (grow (send other-fish get-size)))))
 
 ; Create an instance of fish%
 (define charlie 
@@ -352,9 +399,8 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 (send charlie grow 6)
 (send charlie get-size) ; => 16
  
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 7. Macros
+;; 9. Macros
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Macros let you extend the syntax of the language
@@ -363,7 +409,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 
 (unless (even? 10) "odd" "even") ; => "even"
 
-; Macros are hygienic, there is no risk to clobber existing variables!   
+; Macros are hygienic, you cannot clobber existing variables!   
 (define-syntax-rule (swap x y)
   (begin
     (define tmp x) 
@@ -374,7 +420,34 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 (define a 2)
 (define b 3)
 (swap a b)
-(printf "tmp = ~a; a = ~a; b = ~a" tmp a b) ; tmp is unaffected by swap
+(printf "tmp = ~a; a = ~a; b = ~a~n" tmp a b) ; tmp is unaffected by swap
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 10. Contracts
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Contracts impose constraints on values exported from modules
+
+(module bank-account racket
+  (provide (contract-out
+            [deposit (-> positive? any)] ; amount will always be a positive number
+            [balance (-> positive?)]))
+  
+  (define amount 0)
+  (define (deposit a) (set! amount (+ amount a)))
+  (define (balance) amount)
+)
+
+(require 'bank-account)
+(deposit 5)
+
+(balance) ; => 5
+
+; Any client that attempt to deposit a non-positive amount, will be blamed
+; (deposit -5) ; => deposit: contract violation 
+; expected: positive?
+; given: -5 
+; more details....
 ```
 
 ## Further Reading
