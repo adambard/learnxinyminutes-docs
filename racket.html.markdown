@@ -22,7 +22,7 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 #| Block comments
    can span multiple lines and...
     #|
-       they can be nested !
+       they can be nested!
     |#
 |#
 
@@ -370,7 +370,7 @@ vec ; => #(1 2 3 4)
     (show " | ~a | " n #\space)
     (show "---~a---" n #\-))
 
-  (define (show fmt n ch) ;; internal function
+  (define (show fmt n ch) ; internal function
     (printf fmt (make-string n ch))
     (newline)))
 
@@ -388,9 +388,9 @@ vec ; => #(1 2 3 4)
   (class object%
     (init size) ; initialization argument
     (super-new) ; superclass initialization
-    ; Field
+    ;; Field
     (define current-size size)
-    ; Public methods
+    ;; Public methods
     (define/public (get-size)  current-size)
     (define/public (grow amt) (set! current-size (+ amt current-size)))
     (define/public (eat other-fish) (grow (send other-fish get-size)))))
