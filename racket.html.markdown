@@ -128,14 +128,19 @@ my-pet ; => #<dog>
 
 ;;; Lists
 
-;; Lists are linked-list data structures
+;; Lists are linked-list data structures, made of `cons' pairs and end
+;; with a `null' (or '()) to mark the end of the list
+(cons 1 (cons 2 (cons 3 null))) ; => '(1 2 3)
+;; `list' is a convenience variadic constructor for lists
 (list 1 2 3) ; => '(1 2 3)
+;; and a quote can also be used for a literal list value
+'(1 2 3) ; => '(1 2 3)
 
-;; Use `cons' to add an item to the beginning of a list
-(cons 4 '(1 2 3)) ; => (4 1 2 3)
+;; Can still use `cons' to add an item to the beginning of a list
+(cons 4 '(1 2 3)) ; => '(4 1 2 3)
 
 ;; Use `append' to add lists together
-(append '(1 2) '(3 4)) ; => (1 2 3 4)
+(append '(1 2) '(3 4)) ; => '(1 2 3 4)
 
 ;;; Vectors
 
