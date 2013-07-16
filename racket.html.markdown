@@ -4,6 +4,7 @@ language: racket
 filename: learnracket.rkt
 contributors:
   - ["th3rac25", "https://github.com/voila"]
+  - ["elibarzilay", "https://github.com/elibarzilay"]
 
 ---
 
