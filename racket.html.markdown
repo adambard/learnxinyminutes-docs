@@ -7,7 +7,7 @@ contributors:
 
 ---
 
-Racket is a general purpose, multi-paradigm programming language in the Lisp/Scheme family. 
+Racket is a general purpose, multi-paradigm programming language in the Lisp/Scheme family.
 
 Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3rac25) or th3rac25 [at] [google's email service]
 
@@ -23,12 +23,12 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
    can span multiple lines and...
     #|
        they can be nested !
-    |#   
+    |#
 |#
 
 ;; S-expression comments discard the following expression
 #; "this expression will be discarded" "2nd expression" ; => "2nd expression"
- 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 1. Primitive Datatypes and Operators
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -37,10 +37,10 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 9999999999999999999999 ; integers
 3.14                   ; reals
 6.02e+23
-1/2                    ; rationals   
-1+2i                   ; complex numbers   
+1/2                    ; rationals
+1+2i                   ; complex numbers
 
-;; Function application is written (f x y z ...) 
+;; Function application is written (f x y z ...)
 ;; where f is a function and x, y, z, ... are operands
 ;; If you want to create a literal list of data, use ' to stop it from
 ;; being evaluated
@@ -56,16 +56,16 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 (exact->inexact 1/3) ; => 0.3333333333333333
 (+ 1+2i  2-3i) ; => 3-1i
 
-;;; Booleans 
-#t ; for true  
+;;; Booleans
+#t ; for true
 #f ; for false -- any value other than #f is true
 (not #t) ; => #f
 (and 0 #f (error "doesn't get here")) ; => #f
 (or #f 0 (error "doesn't get here"))  ; => 0
 
-;;; Characters 
+;;; Characters
 #\A ; => #\A
-#\λ ; => #\λ 
+#\λ ; => #\λ
 #\u03BB ; => #\λ
 
 ;;; Strings are fixed-length array of characters.
@@ -111,7 +111,7 @@ some-var ; => 5
 
 ;; Structs
 (struct dog (name breed age))
-(define my-pet 
+(define my-pet
   (dog "lassie" "collie" 5))
 my-pet ; => #<dog>
 (dog? my-pet) ; => #t
@@ -173,7 +173,7 @@ my-pet ; => #<dog>
 (hash-ref m 'd 0) ; => 0
 
 ;; Use "hash-set" to extend a hash table
-(define m2 (hash-set m 'd 4)) 
+(define m2 (hash-set m 'd 4))
 m2 ; => '#hash((b . 2) (a . 1) (d . 4) (c . 3))
 
 ;; Remember, these hashes are immutable!
@@ -186,7 +186,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 ;; 3. Functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Use lambda to create new functions. 
+;; Use lambda to create new functions.
 ;; A function always returns its last statement.
 (lambda () "Hello World") ; => #<procedure>
 
@@ -201,14 +201,14 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 (define (hello-world2) "Hello World")
 
 ;; The () is the list of arguments for the function.
-(define hello 
+(define hello
   (lambda (name)
     (string-append "Hello " name)))
 (hello "Steve") ; => "Hello Steve"
 
 ;; You can have multi-variadic functions, too
 (define hello2
-  (case-lambda 
+  (case-lambda
     [() "Hello World"]
     [(name) (string-append "Hello " name)]))
 (hello2 "Jake") ; => "Hello Jake"
@@ -273,9 +273,9 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
     [(list 0 _) 'fizz]
     [(list _ 0) 'buzz]
     [_          #f]))
-  
+
 (fizzbuzz? 15) ; => 'fizzbuzz
-(fizzbuzz? 37) ; => #f 
+(fizzbuzz? 37) ; => #f
 
 ;;; Loops
 
@@ -283,9 +283,9 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 (define (loop i)
   (when (< i 10)
     (printf "i:~a~n" i)
-    (loop (add1 i)))) 
+    (loop (add1 i))))
 
-(loop 5) ; => i:5 i:6 ... 
+(loop 5) ; => i:5 i:6 ...
 
 ;; similarly, with a named let
 (let loop ((i 0))
@@ -310,8 +310,8 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 
 ;;; Sequences
 
-;; "for" allows iteration over sequences: 
-;; lists, vectors, strings, sets, hash tables, etc... 
+;; "for" allows iteration over sequences:
+;; lists, vectors, strings, sets, hash tables, etc...
 (for ([i (in-list '(l i s t))])
   (displayln i))
 
@@ -331,8 +331,8 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 
 ;; To catch an exception, use the "with-handlers" form
 ;; To throw an exception use "raise"
-(with-handlers 
-    ([(lambda (v) (equal? v "infinity"))   
+(with-handlers
+    ([(lambda (v) (equal? v "infinity"))
       (lambda (exn) +inf.0)])
   (raise "infinity"))
 
@@ -342,10 +342,10 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 
 ;; Use set! to assign a new value to an existing variable
 (define n 5)
-(set! n 6) 
+(set! n 6)
 n ; => 6
 
-;; Many Racket datatypes can be immutable or mutable 
+;; Many Racket datatypes can be immutable or mutable
 ;; (Pairs, Lists, Strings, Vectors, Hash Tables, etc...)
 
 ;; Use "vector" to create a mutable vector
@@ -361,22 +361,22 @@ vec ; => #(1 2 3 4)
 ;; Modules let you organize code into multiple files and reusable libraries
 
 (module cake racket/base ; define a new module 'cake' based on racket/base
-  
+
   (provide print-cake) ; function exported by the module
-  
+
   (define (print-cake n)
     (show "   ~a   " n #\.)
     (show " .-~a-. " n #\|)
     (show " | ~a | " n #\space)
     (show "---~a---" n #\-))
-  
-  (define (show fmt n ch) ;; internal function       
+
+  (define (show fmt n ch) ;; internal function
     (printf fmt (make-string n ch))
     (newline)))
 
 ;; Use "require" to import all functions from the module
-(require 'cake) 
-(print-cake 3)  
+(require 'cake)
+(print-cake 3)
 ; (show "~a" 1 #\A) ; => error, "show" was not exported
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -385,24 +385,24 @@ vec ; => #(1 2 3 4)
 
 ;; Create a class fish%
 (define fish%
-  (class object% 
+  (class object%
     (init size) ; initialization argument
-    (super-new) ; superclass initialization 
+    (super-new) ; superclass initialization
     ; Field
-    (define current-size size) 
+    (define current-size size)
     ; Public methods
     (define/public (get-size)  current-size)
     (define/public (grow amt) (set! current-size (+ amt current-size)))
     (define/public (eat other-fish) (grow (send other-fish get-size)))))
 
 ;; Create an instance of fish%
-(define charlie 
+(define charlie
   (new fish% [size 10]))
 
 ;; Use "send" to call an object's methods
 (send charlie grow 6)
 (send charlie get-size) ; => 16
- 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 9. Macros
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -421,14 +421,14 @@ vec ; => #(1 2 3 4)
     (displayln i)
     (set! i (add1 i))))
 
-;; Macros are hygienic, you cannot clobber existing variables!   
+;; Macros are hygienic, you cannot clobber existing variables!
 (define-syntax-rule (swap x y)
   (begin
-    (define tmp x) 
+    (define tmp x)
     (set! x y)
     (set! y tmp)))
 
-(define tmp 1) 
+(define tmp 1)
 (define a 2)
 (define b 3)
 (swap a b)
@@ -444,7 +444,7 @@ vec ; => #(1 2 3 4)
   (provide (contract-out
             [deposit (-> positive? any)] ; amount will always be a positive number
             [balance (-> positive?)]))
-  
+
   (define amount 0)
   (define (deposit a) (set! amount (+ amount a)))
   (define (balance) amount)
@@ -456,9 +456,9 @@ vec ; => #(1 2 3 4)
 (balance) ; => 5
 
 ;; Any client that attempt to deposit a non-positive amount, will be blamed
-;; (deposit -5) ; => deposit: contract violation 
+;; (deposit -5) ; => deposit: contract violation
 ;; expected: positive?
-;; given: -5 
+;; given: -5
 ;; more details....
 ```
 
