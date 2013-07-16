@@ -482,4 +482,4 @@ vec ; => #(1 2 3 4)
 
 ## Further Reading
 
-Still up for more? Try [Quick: An Introduction to Racket with Pictures](http://docs.racket-lang.org/quick/)
+Still up for more? Try [Getting Started with Racket](http://docs.racket-lang.org/getting-started/)
