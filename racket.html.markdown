@@ -1,6 +1,10 @@
 ---
+
 language: racket
-author: th3rac25
+filename: learnracket.rkt
+contributors:
+  - ["th3rac25", "https://github.com/voila"]
+
 ---
 
 Racket is a general purpose, multi-paradigm programming language in the Lisp/Scheme family. 
