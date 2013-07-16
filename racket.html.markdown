@@ -97,7 +97,7 @@ some-var ; => 5
 
 ;; You can also use unicode characters
 (define ⊆ subset?)
-(⊆ (set 3 2) (set 1 2 3)); => #t
+(⊆ (set 3 2) (set 1 2 3)) ; => #t
 
 ;; Accessing a previously unassigned variable is an exception
 ; x ; => x: undefined ...
@@ -147,11 +147,12 @@ my-pet ; => #<dog>
 
 ;;; Sets
 
-;; create a set from a list
+;; Create a set from a list
 (list->set '(1 2 3 1 2 3 3 2 1 3 2 1)) ; => (set 1 2 3)
 
 ;; Add a member with `set-add'
-(set-add (set 1 2 3) 4); => (set 1 2 3 4)
+;; (Functional: returns the extended set rather than mutate the input)
+(set-add (set 1 2 3) 4) ; => (set 1 2 3 4)
 
 ;; Remove one with `set-remove'
 (set-remove (set 1 2 3) 1) ; => (set 2 3)
@@ -162,7 +163,7 @@ my-pet ; => #<dog>
 
 ;;; Hashes
 
-;; Create an immutable hash table (There are also mutables ones)
+;; Create an immutable hash table (mutable example below)
 (define m (hash 'a 1 'b 2 'c 3))
 
 ;; Retrieve a value
@@ -174,15 +175,25 @@ my-pet ; => #<dog>
 ;; You can provide a default value for missing keys
 (hash-ref m 'd 0) ; => 0
 
-;; Use `hash-set' to extend a hash table
+;; Use `hash-set' to extend an immutable hash table
+;; (Returns the extended hash instdead of mutating it)
 (define m2 (hash-set m 'd 4))
 m2 ; => '#hash((b . 2) (a . 1) (d . 4) (c . 3))
 
 ;; Remember, these hashes are immutable!
-m ; => '#hash((b . 2) (a . 1) (c . 3))
+m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 
-;; Use `hash-remove' to remove keys
+;; Use `hash-remove' to remove keys (functional too)
 (hash-remove m 'a) ; => '#hash((b . 2) (c . 3))
+
+;; Create an empty mutable hash table and manipulate it
+(define m3 (make-hash))
+(hash-set! m3 'a 1)
+(hash-set! m3 'b 2)
+(hash-set! m3 'c 3)
+(hash-ref m3 'a)   ; => 1
+(hash-ref m3 'd 0) ; => 0
+(hash-remove! m3 'a)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 3. Functions
