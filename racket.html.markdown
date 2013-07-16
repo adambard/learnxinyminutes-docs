@@ -324,40 +324,30 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 
 ;;; Loops
 
-;; looping can be done through recursion
+;; Looping can be done through (tail-) recursion
 (define (loop i)
   (when (< i 10)
-    (printf "i:~a\n" i)
+    (printf "i=~a\n" i)
     (loop (add1 i))))
+(loop 5) ; => i=5, i=6, ...
 
-(loop 5) ; => i:5 i:6 ...
-
-;; similarly, with a named let
+;; Similarly, with a named let
 (let loop ((i 0))
   (when (< i 10)
-    (printf "i:~a\n" i)
-    (loop (add1 i)))) ; => i:0 i:1 ...
+    (printf "i=~a\n" i)
+    (loop (add1 i)))) ; => i=0, i=1, ...
 
-;;; Comprehensions
+;; See below how to add a new `loop' form, but Racket already has a very
+;; flexible `for' form for loops:
+(for ([i 10])
+  (printf "i=~a\n" i)) ; => i=0, i=1, ...
+(for ([i (in-range 5 10)])
+  (printf "i=~a\n" i)) ; => i=5, i=6, ...
 
-(for/list ([i '(1 2 3)])
-  (add1 i)) ; => '(2 3 4)
-
-(for/list ([i '(1 2 3)] #:when (even? i))
-  i) ; => '(2)
-
-(for/hash ([i '(1 2 3)])
-  (values i (number->string i)))
-; => '#hash((1 . "1") (2 . "2") (3 . "3"))
-
-;; To combine iteration results, use `for/fold'
-(for/fold ([sum 0]) ([i '(1 2 3 4)])
-  (+ sum i)) ; => 10
-
-;;; Sequences
-
-;; `for' allows iteration over sequences:
+;;; Other Sequences
+;; `for' allows iteration over many other kinds of sequences:
 ;; lists, vectors, strings, sets, hash tables, etc...
+
 (for ([i (in-list '(l i s t))])
   (displayln i))
 
@@ -372,6 +362,52 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 
 (for ([(k v) (in-hash (hash 'a 1 'b 2 'c 3 ))])
   (printf "key:~a value:~a\n" k v))
+
+;;; More Complex Iterations
+
+;; Parallel scan of multiple sequences (stops on shortest)
+(for ([i 10] [j '(x y z)]) (printf "~a:~a\n" i j))
+; => 0:x 1:y 2:z
+
+;; Nested loops
+(for* ([i 2] [j '(x y z)]) (printf "~a:~a\n" i j))
+; => 0:x, 0:y, 0:z, 1:x, 1:y, 1:z
+
+;; Conditions
+(for ([i 1000]
+      #:when (> i 5)
+      #:unless (odd? i)
+      #:break (> i 10))
+  (printf "i=~a\n" i))
+; => i=6, i=8, i=10
+
+;;; Comprehensions
+;; Very similar to `for' loops -- just collect the results
+
+(for/list ([i '(1 2 3)])
+  (add1 i)) ; => '(2 3 4)
+
+(for/list ([i '(1 2 3)] #:when (even? i))
+  i) ; => '(2)
+
+(for/list ([i 10] [j '(x y z)])
+  (list i j)) ; => '((0 x) (1 y) (2 z))
+
+(for/list ([i 1000] #:when (> i 5) #:unless (odd? i) #:break (> i 10))
+  i) ; => '(6 8 10)
+
+(for/hash ([i '(1 2 3)])
+  (values i (number->string i)))
+; => '#hash((1 . "1") (2 . "2") (3 . "3"))
+
+;; There are many kinds of other built-in ways to collect loop values:
+(for/sum ([i 10]) (* i i)) ; => 285
+(for/product ([i (in-range 1 11)]) (* i i)) ; => 13168189440000
+(for/and ([i 10] [j (in-range 10 20)]) (< i j)) ; => #t
+(for/or ([i 10] [j (in-range 0 20 2)]) (= i j)) ; => #t
+;; And to use any arbitrary combination, use `for/fold'
+(for/fold ([sum 0]) ([i '(1 2 3 4)]) (+ sum i)) ; => 10
+;; (This can often replace common imperative loops)
 
 ;;; Exceptions
 
