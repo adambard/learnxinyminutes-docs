@@ -441,7 +441,7 @@ vec ; => #(1 2 3 4)
     (set! i (add1 i))))
 
 ;; Macros are hygienic, you cannot clobber existing variables!
-(define-syntax-rule (swap x y)
+(define-syntax-rule (swap! x y) ; -! is idomatic for mutation
   (let ([tmp x])
     (set! x y)
     (set! y tmp)))
@@ -449,7 +449,7 @@ vec ; => #(1 2 3 4)
 (define tmp 1)
 (define a 2)
 (define b 3)
-(swap a b)
+(swap! a b)
 (printf "tmp = ~a; a = ~a; b = ~a\n" tmp a b) ; tmp is unaffected
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
