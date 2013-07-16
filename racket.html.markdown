@@ -35,6 +35,9 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 
 ;;; Numbers
 9999999999999999999999 ; integers
+#b111                  ; binary => 7
+#o111                  ; octal => 73
+#x111                  ; hexadecimal => 273
 3.14                   ; reals
 6.02e+23
 1/2                    ; rationals   
@@ -49,6 +52,7 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 (+ 1 1)  ; => 2
 (- 8 1)  ; => 7
 (* 10 2) ; => 20
+(expt 2 3) ; => 8
 (quotient 5 2) ; => 2
 (remainder 5 2) ; => 1
 (/ 35 5) ; => 7
