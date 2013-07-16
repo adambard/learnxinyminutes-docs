@@ -375,12 +375,17 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 
 ;;; Exceptions
 
-;; To catch an exception, use the `with-handlers' form
-;; To throw an exception use `raise'
-(with-handlers
-    ([(lambda (v) (equal? v "infinity"))
-      (lambda (exn) +inf.0)])
-  (raise "infinity"))
+;; To catch exceptions, use the `with-handlers' form
+(with-handlers ([exn:fail? (lambda (exn) 999)])
+  (+ 1 "2")) ; => 999
+(with-handlers ([exn:break? (lambda (exn) "no time")])
+  (sleep 3)
+  "phew") ; => "phew", but if you break it => "no time"
+
+;; Use `raise' to throw exceptions or any other value
+(with-handlers ([number?    ; catch numeric values raised
+                 identity]) ; return them as plain values
+  (+ 1 (raise 2))) ; => 2
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 6. Mutation
