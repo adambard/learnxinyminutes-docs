@@ -353,7 +353,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 (for ([i (in-range 5 10)])
   (printf "i=~a\n" i)) ; => i=5, i=6, ...
 
-;;; Other Sequences
+;;; Iteration Over Other Sequences
 ;; `for' allows iteration over many other kinds of sequences:
 ;; lists, vectors, strings, sets, hash tables, etc...
 
@@ -556,6 +556,14 @@ vec ; => #(1 2 3 4)
 (define b 3)
 (swap! a b)
 (printf "tmp = ~a; a = ~a; b = ~a\n" tmp a b) ; tmp is unaffected
+
+;; But the are still code transformations, for example:
+(define-syntax-rule (bad-while condition body ...)
+  (when condition
+    body ...
+    (bad-while condition body ...)))
+;; this macro is broken: it generates infinite code, if you try to use
+;; it, the compiler will get in an infinite loop
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 10. Contracts
