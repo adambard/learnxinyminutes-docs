@@ -101,7 +101,7 @@ some-var ; => 5
 ;; Accessing a previously unassigned variable is an exception
 ; x ; => x: undefined ...
 
-;; Local binding: me is bound to "Bob" only within (let ...)
+;; Local binding: `me' is bound to "Bob" only within the (let ...)
 (let ([me "Bob"])
   "Alice"
   me) ; => "Bob"
@@ -119,7 +119,7 @@ my-pet ; => #<dog>
 (dog-name my-pet) ; => "lassie"
 
 ;;; Pairs (immutable)
-;; "cons" constructs pairs, "car" and "cdr" extract the first
+;; `cons' constructs pairs, `car' and `cdr' extract the first
 ;; and second elements
 (cons 1 2) ; => '(1 . 2)
 (car (cons 1 2)) ; => 1
@@ -130,10 +130,10 @@ my-pet ; => #<dog>
 ;; Lists are linked-list data structures
 (list 1 2 3) ; => '(1 2 3)
 
-;; Use "cons" to add an item to the beginning of a list
+;; Use `cons' to add an item to the beginning of a list
 (cons 4 '(1 2 3)) ; => (4 1 2 3)
 
-;; Use "append" to add lists together
+;; Use `append' to add lists together
 (append '(1 2) '(3 4)) ; => (1 2 3 4)
 
 ;;; Vectors
@@ -141,7 +141,7 @@ my-pet ; => #<dog>
 ;; Vectors are fixed-length arrays
 #(1 2 3) ; => '#(1 2 3)
 
-;; Use "vector-append" to add vectors together
+;; Use `vector-append' to add vectors together
 (vector-append #(1 2 3) #(4 5 6)) ; => #(1 2 3 4 5 6)
 
 ;;; Sets
@@ -149,13 +149,13 @@ my-pet ; => #<dog>
 ;; create a set from a list
 (list->set '(1 2 3 1 2 3 3 2 1 3 2 1)) ; => (set 1 2 3)
 
-;; Add a member with "set-add"
+;; Add a member with `set-add'
 (set-add (set 1 2 3) 4); => (set 1 2 3 4)
 
-;; Remove one with "set-remove"
+;; Remove one with `set-remove'
 (set-remove (set 1 2 3) 1) ; => (set 2 3)
 
-;; Test for existence with "set-member?"
+;; Test for existence with `set-member?'
 (set-member? (set 1 2 3) 1) ; => #t
 (set-member? (set 1 2 3) 4) ; => #f
 
@@ -173,14 +173,14 @@ my-pet ; => #<dog>
 ;; You can provide a default value for missing keys
 (hash-ref m 'd 0) ; => 0
 
-;; Use "hash-set" to extend a hash table
+;; Use `hash-set' to extend a hash table
 (define m2 (hash-set m 'd 4))
 m2 ; => '#hash((b . 2) (a . 1) (d . 4) (c . 3))
 
 ;; Remember, these hashes are immutable!
 m ; => '#hash((b . 2) (a . 1) (c . 3))
 
-;; Use "hash-remove" to remove keys
+;; Use `hash-remove' to remove keys
 (hash-remove m 'a) ; => '#hash((b . 2) (c . 3))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -230,16 +230,16 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 ;; 4. Equality
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; for numbers use "="
+;; for numbers use `='
 (= 3 3.0) ; => #t
 (= 2 1) ; => #f
 
-;; for object identity use "eq?"
+;; for object identity use `eq?'
 (eq? 3 3) ; => #t
 (eq? 3 3.0) ; => #f
 (eq? (list 3) (list 3)) ; => #f
 
-;; for collections use "equal?"
+;; for collections use `equal?'
 (equal? (list 'a 'b) (list 'a 'b)) ; => #t
 (equal? (list 'a 'b) (list 'b 'a)) ; => #f
 
@@ -261,7 +261,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
     'nope)
 ; => 'yep
 
-;; "cond" chains a series of tests to select a result
+;; `cond' chains a series of tests to select a result
 (cond [(> 2 2) (error "wrong!")]
       [(< 2 2) (error "wrong again!")]
       [else 'ok]) ; => 'ok
@@ -305,13 +305,13 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 (for/hash ([i '(1 2 3)])
   (values i (number->string i))) ; => '#hash((1 . "1") (2 . "2") (3 . "3"))
 
-;; To combine iteration results, use "for/fold"
+;; To combine iteration results, use `for/fold'
 (for/fold ([sum 0]) ([i '(1 2 3 4)])
   (+ sum i)) ; => 10
 
 ;;; Sequences
 
-;; "for" allows iteration over sequences:
+;; `for' allows iteration over sequences:
 ;; lists, vectors, strings, sets, hash tables, etc...
 (for ([i (in-list '(l i s t))])
   (displayln i))
@@ -330,8 +330,8 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 
 ;;; Exceptions
 
-;; To catch an exception, use the "with-handlers" form
-;; To throw an exception use "raise"
+;; To catch an exception, use the `with-handlers' form
+;; To throw an exception use `raise'
 (with-handlers
     ([(lambda (v) (equal? v "infinity"))
       (lambda (exn) +inf.0)])
@@ -349,7 +349,7 @@ n ; => 6
 ;; Many Racket datatypes can be immutable or mutable
 ;; (Pairs, Lists, Strings, Vectors, Hash Tables, etc...)
 
-;; Use "vector" to create a mutable vector
+;; Use `vector' to create a mutable vector
 (define vec (vector 2 2 3 4))
 ;; Use vector-set! to update a slot
 (vector-set! vec 0 1)
@@ -375,10 +375,10 @@ vec ; => #(1 2 3 4)
     (printf fmt (make-string n ch))
     (newline)))
 
-;; Use "require" to import all functions from the module
+;; Use `require' to import all functions from the module
 (require 'cake)
 (print-cake 3)
-; (show "~a" 1 #\A) ; => error, "show" was not exported
+; (show "~a" 1 #\A) ; => error, `show' was not exported
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 8. Classes and Objects
@@ -400,7 +400,7 @@ vec ; => #(1 2 3 4)
 (define charlie
   (new fish% [size 10]))
 
-;; Use "send" to call an object's methods
+;; Use `send' to call an object's methods
 (send charlie grow 6)
 (send charlie get-size) ; => 16
 
