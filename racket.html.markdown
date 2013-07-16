@@ -73,7 +73,7 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 "Hello, world!"
 "Benjamin \"Bugsy\" Siegel"   ; backslash is an escaping character
 "Foo\tbar\41\x21\u0021\a\r\n" ; includes C escapes, Unicode
-"λx:(μα.α→α).xx" ; any Unicode character can appear in a string constant
+"λx:(μα.α→α).xx"              ; can include Unicode characters
 
 ;; Strings can be added too!
 (string-append "Hello " "world!") ; => "Hello world!"
@@ -267,8 +267,8 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 ; => "this is true"
 
 ;; In conditionals, all non-#f values are treated as true
-(member "Groucho" '("Harpo" "Groucho" "Zeppo")) ; => '("Groucho" "Zeppo")
-(if (member "Groucho" '("Harpo" "Groucho" "Zeppo"))
+(member 'Groucho '(Harpo Groucho Zeppo)) ; => '(Groucho Zeppo)
+(if (member 'Groucho '(Harpo Groucho Zeppo))
     'yep
     'nope)
 ; => 'yep
@@ -315,7 +315,8 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
   i) ; => '(2)
 
 (for/hash ([i '(1 2 3)])
-  (values i (number->string i))) ; => '#hash((1 . "1") (2 . "2") (3 . "3"))
+  (values i (number->string i)))
+; => '#hash((1 . "1") (2 . "2") (3 . "3"))
 
 ;; To combine iteration results, use `for/fold'
 (for/fold ([sum 0]) ([i '(1 2 3 4)])
@@ -371,9 +372,11 @@ vec ; => #(1 2 3 4)
 ;; 7. Modules
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Modules let you organize code into multiple files and reusable libraries
+;; Modules let you organize code into multiple files and reusable
+;; libraries; here we use sub-modules, nested in the whole module that
+;; this text makes (starting from the "#lang" line)
 
-(module cake racket/base ; define a new module 'cake' based on racket/base
+(module cake racket/base ; define a `cake' module based on racket/base
 
   (provide print-cake) ; function exported by the module
 
@@ -404,9 +407,12 @@ vec ; => #(1 2 3 4)
     ;; Field
     (define current-size size)
     ;; Public methods
-    (define/public (get-size)  current-size)
-    (define/public (grow amt) (set! current-size (+ amt current-size)))
-    (define/public (eat other-fish) (grow (send other-fish get-size)))))
+    (define/public (get-size)
+      current-size)
+    (define/public (grow amt)
+      (set! current-size (+ amt current-size)))
+    (define/public (eat other-fish)
+      (grow (send other-fish get-size)))))
 
 ;; Create an instance of fish%
 (define charlie
@@ -444,7 +450,7 @@ vec ; => #(1 2 3 4)
 (define a 2)
 (define b 3)
 (swap a b)
-(printf "tmp = ~a; a = ~a; b = ~a\n" tmp a b) ; tmp is unaffected by swap
+(printf "tmp = ~a; a = ~a; b = ~a\n" tmp a b) ; tmp is unaffected
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 10. Contracts
@@ -454,7 +460,7 @@ vec ; => #(1 2 3 4)
 
 (module bank-account racket
   (provide (contract-out
-            [deposit (-> positive? any)] ; amount will always be a positive number
+            [deposit (-> positive? any)] ; amounts are always positive
             [balance (-> positive?)]))
 
   (define amount 0)
@@ -467,7 +473,7 @@ vec ; => #(1 2 3 4)
 
 (balance) ; => 5
 
-;; Any client that attempt to deposit a non-positive amount, will be blamed
+;; Clients that attempt to deposit a non-positive amount are blamed
 ;; (deposit -5) ; => deposit: contract violation
 ;; expected: positive?
 ;; given: -5
