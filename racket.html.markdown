@@ -445,7 +445,7 @@ vec ; => #(1 2 3 4)
 ;; 8. Classes and Objects
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Create a class fish%
+;; Create a class fish% (-% is idomatic for class bindings)
 (define fish%
   (class object%
     (init size) ; initialization argument
@@ -465,8 +465,22 @@ vec ; => #(1 2 3 4)
   (new fish% [size 10]))
 
 ;; Use `send' to call an object's methods
+(send charlie get-size) ; => 10
 (send charlie grow 6)
 (send charlie get-size) ; => 16
+
+;; `fish%' is a plain "first class" value, which can get us mixins
+(define (add-color c%)
+  (class c%
+    (init color)
+    (super-new)
+    (define my-color color)
+    (define/public (get-color) my-color)))
+(define colored-fish% (add-color fish%))
+(define charlie2 (new colored-fish% [size 10] [color 'red]))
+(send charlie2 get-color)
+;; or, with no names:
+(send (new (add-color fish%) [size 10] [color 'red]) get-color)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 9. Macros
