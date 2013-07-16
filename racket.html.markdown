@@ -205,15 +205,6 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 ;; Use `hash-remove' to remove keys (functional too)
 (hash-remove m 'a) ; => '#hash((b . 2) (c . 3))
 
-;; Create an empty mutable hash table and manipulate it
-(define m3 (make-hash))
-(hash-set! m3 'a 1)
-(hash-set! m3 'b 2)
-(hash-set! m3 'c 3)
-(hash-ref m3 'a)   ; => 1
-(hash-ref m3 'd 0) ; => 0
-(hash-remove! m3 'a)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 3. Functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -222,7 +213,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 ;; A function always returns the value of its last expression
 (lambda () "Hello World") ; => #<procedure>
 ;; Can also use a unicode `λ'
-(λ () "Hellow World")     ; => same function
+(λ () "Hello World")     ; => same function
 
 ;; Use parens to call all functions, including a lambda expression
 ((lambda () "Hello World")) ; => "Hello World"
@@ -464,6 +455,15 @@ n ; => 6
 (vector-set! wall 99 'down)
 vec ; => #(1 2 3 4)
 
+;; Create an empty mutable hash table and manipulate it
+(define m3 (make-hash))
+(hash-set! m3 'a 1)
+(hash-set! m3 'b 2)
+(hash-set! m3 'c 3)
+(hash-ref m3 'a)   ; => 1
+(hash-ref m3 'd 0) ; => 0
+(hash-remove! m3 'a)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 7. Modules
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -562,7 +562,7 @@ vec ; => #(1 2 3 4)
 (swap! a b)
 (printf "tmp = ~a; a = ~a; b = ~a\n" tmp a b) ; tmp is unaffected
 
-;; But the are still code transformations, for example:
+;; But they are still code transformations, for example:
 (define-syntax-rule (bad-while condition body ...)
   (when condition
     body ...
