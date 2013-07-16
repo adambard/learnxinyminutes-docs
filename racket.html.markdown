@@ -26,8 +26,9 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
     |#
 |#
 
-;; S-expression comments discard the following expression
-#; "this expression will be discarded" "2nd expression" ; => "2nd expression"
+;; S-expression comments discard the following expression,
+;; useful to comment expressions when debugging
+#; (this expression is discarded)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 1. Primitive Datatypes and Operators
