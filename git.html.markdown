@@ -68,7 +68,7 @@ of your source code.
 	as your working directory.
 
 	///////////////////////////////////////
-	// Index (component of .git)
+	// Index (component of .git dir)
 	///////////////////////////////////////
 	
 	The Index is the staging area in git. It's basically layer that separates your working tree
@@ -80,22 +80,29 @@ of your source code.
 	///////////////////////////////////////
 	
 	A git commit is a snapshot of a set of changes, or manipulations to your Working Tree.
-	For example, if you added 5 files, and removed 2 others, you create a commit (or snapshot).
-	This commit can then be pushed to other repositorys.
+	For example, if you added 5 files, and removed 2 others, these changes will be contained
+	in a commit (or snapshot). This commit, can then be pushed to other repositorys, or not!
 
 	///////////////////////////////////////
 	// Branch
 	///////////////////////////////////////
 
-	A branch is essentially a pointer that points to the last commit you made. As you commit
+	A branch is essentially a pointer, that points to the last commit you made. As you commit
 	this pointer will automatically update and point to the latest commit.
 
 	///////////////////////////////////////
-	// HEAD and head (component of .git)
+	// HEAD and head (component of .git dir)
 	///////////////////////////////////////
 
-	HEAD, is a pointer, to the current branch. A repository only has 1 active HEAD.
+	HEAD, is a pointer, that points to the current branch. A repository only has 1 *active* HEAD.
 	head, is a pointer, that points to any commit. A repository can have any number of heads.
+	
+	///////////////////////////////////////
+	// Conceptual Resources
+	///////////////////////////////////////
+	
+	[Git For Computer Scientists](http://eagain.net/articles/git-for-computer-scientists/)
+	[Git For Designers](http://hoth.entp.com/output/git_for_designers.html)
 
 
 ///////////////////////////////////////
@@ -414,3 +421,5 @@ of your source code.
 * [git-scm - Documentation](http://git-scm.com/docs)
 
 * [Atlassian Git - Tutorials & Workflows](https://www.atlassian.com/git/)
+
+* [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
