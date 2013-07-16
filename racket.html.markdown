@@ -354,10 +354,16 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 ;; 6. Mutation
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Use set! to assign a new value to an existing variable
+;; Use `set!' to assign a new value to an existing variable
 (define n 5)
-(set! n 6)
+(set! n (add1 n))
 n ; => 6
+
+;; Use boxes for explicitly mutable values (similar to pointers or
+;; references in other languages)
+(define n* (box 5))
+(set-box! n* (add1 (unbox n*)))
+(unbox n*) ; => 6
 
 ;; Many Racket datatypes can be immutable or mutable
 ;; (Pairs, Lists, Strings, Vectors, Hash Tables, etc...)
