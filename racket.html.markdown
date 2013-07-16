@@ -423,8 +423,7 @@ vec ; => #(1 2 3 4)
 
 ;; Macros are hygienic, you cannot clobber existing variables!
 (define-syntax-rule (swap x y)
-  (begin
-    (define tmp x)
+  (let ([tmp x])
     (set! x y)
     (set! y tmp)))
 
