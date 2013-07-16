@@ -142,6 +142,15 @@ my-pet ; => #<dog>
 ;; Use `append' to add lists together
 (append '(1 2) '(3 4)) ; => '(1 2 3 4)
 
+;; Lists are a very basic type, so there is a *lot* of functionality for
+;; them, a few examples:
+(map add1 '(1 2 3))          ; => '(2 3 4)
+(map + '(1 2 3) '(10 20 30)) ; => '(11 22 33)
+(filter even? '(1 2 3 4))    ; => '(2 4)
+(count even? '(1 2 3 4))     ; => 2
+(take '(1 2 3 4) 2)          ; => '(1 2)
+(drop '(1 2 3 4) 2)          ; => '(3 4)
+
 ;;; Vectors
 
 ;; Vectors are fixed-length arrays
