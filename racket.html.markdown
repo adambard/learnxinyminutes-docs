@@ -70,7 +70,8 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 
 ;;; Strings are fixed-length array of characters.
 "Hello, world!"
-"Benjamin \"Bugsy\" Siegel" ; backslash is an escaping character
+"Benjamin \"Bugsy\" Siegel"   ; backslash is an escaping character
+"Foo\tbar\41\x21\u0021\a\r\n" ; includes C escapes, Unicode
 "λx:(μα.α→α).xx" ; any Unicode character can appear in a string constant
 
 ;; Strings can be added too!
@@ -282,7 +283,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 ;; looping can be done through recursion
 (define (loop i)
   (when (< i 10)
-    (printf "i:~a~n" i)
+    (printf "i:~a\n" i)
     (loop (add1 i))))
 
 (loop 5) ; => i:5 i:6 ...
@@ -290,7 +291,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 ;; similarly, with a named let
 (let loop ((i 0))
   (when (< i 10)
-    (printf "i:~a~n" i)
+    (printf "i:~a\n" i)
     (loop (add1 i)))) ; => i:0 i:1 ...
 
 ;;; Comprehensions
@@ -325,7 +326,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
   (displayln i))
 
 (for ([(k v) (in-hash (hash 'a 1 'b 2 'c 3 ))])
-  (printf "key:~a value:~a ~n" k v))
+  (printf "key:~a value:~a\n" k v))
 
 ;;; Exceptions
 
@@ -431,7 +432,7 @@ vec ; => #(1 2 3 4)
 (define a 2)
 (define b 3)
 (swap a b)
-(printf "tmp = ~a; a = ~a; b = ~a~n" tmp a b) ; tmp is unaffected by swap
+(printf "tmp = ~a; a = ~a; b = ~a\n" tmp a b) ; tmp is unaffected by swap
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 10. Contracts
