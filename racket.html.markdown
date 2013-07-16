@@ -102,8 +102,8 @@ some-var ; => 5
 
 ;; Local binding: me is bound to "Bob" only within (let ...)
 (let ([me "Bob"])
-    "Alice"
-    me) ; => "Bob"
+  "Alice"
+  me) ; => "Bob"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 3. Structs and Collections
@@ -250,20 +250,20 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 
 (if #t               ; test expression
     "this is true"   ; then expression
-    "this is false"  ; else expression
-    ) ; =>  "this is true"
+    "this is false") ; else expression
+; => "this is true"
 
 ;; In conditionals, all non-#f values are treated as true
 (member "Groucho" '("Harpo" "Groucho" "Zeppo")) ; => '("Groucho" "Zeppo")
 (if (member "Groucho" '("Harpo" "Groucho" "Zeppo"))
-      'yep
-      'nope) ; => 'yep
+    'yep
+    'nope)
+; => 'yep
 
 ;; "cond" chains a series of tests to select a result
-(cond
-   [(> 2 2) (error "wrong!")]
-   [(< 2 2) (error "wrong again!")]
-   [else 'ok]) ; => 'ok
+(cond [(> 2 2) (error "wrong!")]
+      [(< 2 2) (error "wrong again!")]
+      [else 'ok]) ; => 'ok
 
 ;;; Pattern Matching
 
@@ -296,13 +296,13 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 ;;; Comprehensions
 
 (for/list ([i '(1 2 3)])
-    (add1 i)) ; => '(2 3 4)
+  (add1 i)) ; => '(2 3 4)
 
 (for/list ([i '(1 2 3)] #:when (even? i))
-    i) ; => '(2)
+  i) ; => '(2)
 
 (for/hash ([i '(1 2 3)])
-    (values i (number->string i))) ; => '#hash((1 . "1") (2 . "2") (3 . "3"))
+  (values i (number->string i))) ; => '#hash((1 . "1") (2 . "2") (3 . "3"))
 
 ;; To combine iteration results, use "for/fold"
 (for/fold ([sum 0]) ([i '(1 2 3 4)])
@@ -448,7 +448,7 @@ vec ; => #(1 2 3 4)
   (define amount 0)
   (define (deposit a) (set! amount (+ amount a)))
   (define (balance) amount)
-)
+  )
 
 (require 'bank-account)
 (deposit 5)
