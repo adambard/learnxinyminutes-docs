@@ -365,13 +365,16 @@ n ; => 6
 (set-box! n* (add1 (unbox n*)))
 (unbox n*) ; => 6
 
-;; Many Racket datatypes can be immutable or mutable
-;; (Pairs, Lists, Strings, Vectors, Hash Tables, etc...)
+;; Many Racket datatypes are immutable (pairs, lists, etc), some come in
+;; both mutable and immutable flavors (strings, vectors, hash tables,
+;; etc...)
 
-;; Use `vector' to create a mutable vector
+;; Use `vector' or `make-vector' to create mutable vectors
 (define vec (vector 2 2 3 4))
+(define wall (make-vector 100 'bottle-of-beer))
 ;; Use vector-set! to update a slot
 (vector-set! vec 0 1)
+(vector-set! wall 99 'down)
 vec ; => #(1 2 3 4)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
