@@ -436,8 +436,8 @@ vec ; => #(1 2 3 4)
     (printf fmt (make-string n ch))
     (newline)))
 
-;; Use `require' to import all functions from the module
-(require 'cake)
+;; Use `require' to get all `provide'd names from a module
+(require 'cake) ; the ' is for a local submodule
 (print-cake 3)
 ; (show "~a" 1 #\A) ; => error, `show' was not exported
 
