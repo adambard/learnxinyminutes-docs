@@ -305,6 +305,8 @@ dwight = Human.new("Dwight K. Schrute")
 # Let's call a couple of methods
 jim.species #=> "H. sapiens"
 jim.name #=> "Jim Halpert"
+jim.name = "Jim Halpert II" #=> "Jim Halpert II"
+jim.name #=> "Jim Halpert II"
 dwight.species #=> "H. sapiens"
 dwight.name #=> "Dwight K. Schrute"
 
