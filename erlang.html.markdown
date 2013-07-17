@@ -6,7 +6,7 @@ filename: learnerlang.erl
 ---
 
 ```erlang
-% Percent sign start a one-line comment.
+% Percent sign starts an one-line comment.
 
 %% Two percent characters shall be used to comment functions.
 
@@ -17,7 +17,7 @@ filename: learnerlang.erl
 % patterns.
 % Periods (`.`) (followed by whitespace) separate entire functions and
 % expressions in the shell.
-% Semicolons (`;`) separate clauses. We find clauses in several contexts: in kn
+% Semicolons (`;`) separate clauses. We find clauses in several contexts:
 % function definitions and in `case`, `if`, `try..catch` and `receive`
 % expressions.
 
@@ -26,8 +26,10 @@ filename: learnerlang.erl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Num = 42.  % All variable names must start with an uppercase letter.
+
 % Erlang has single assignment variables, if you try to assign a different value
 % to the variable `Num`, you’ll get an error.
+Num = 43. % ** exception error: no match of right hand side value 43
 
 % In most languages, `=` denotes an assignment statement. In Erlang, however,
 % `=` denotes a pattern matching operation. `Lhs = Rhs` really means this:
@@ -42,6 +44,11 @@ Pi = 3.14159.
 % start with lowercase letters, followed by a sequence of alphanumeric
 % characters or the underscore (`_`) or at (`@`) sign.
 Hello = hello.
+OtherNode = example@node.
+
+% Atoms with non alphanumeric values can be written by enclosing the atoms
+% with apostrophes.
+AtomWithSpace = 'some atom with space'.
 
 % Tuples are similar to structs in C.
 Point = {point, 10, 45}.
@@ -60,15 +67,15 @@ Person = {person, {name, {first, joe}, {last, armstrong}}, {footsize, 42}}.
 % We create a list by enclosing the list elements in square brackets and
 % separating them with commas.
 % The individual elements of a list can be of any type.
-% The first element of a list the head of the list. If you imagine removing the
+% The first element of a list is the head of the list. If you imagine removing the
 % head from the list, what’s left is called the tail of the list.
 ThingsToBuy = [{apples, 10}, {pears, 6}, {milk, 3}].
 
-% If `T` is a list, then `[H|T]` is also a list, with head H and tail T.
+% If `T` is a list, then `[H|T]` is also a list, with head `H` and tail `T`.
 % The vertical bar (`|`) separates the head of a list from its tail.
 % `[]` is the empty list.
 % We can extract elements from a list with a pattern matching operation. If we
-% have the nonempty list `L`, then the expression `[X|Y] = L`, where `X` and `Y`
+% have a nonempty list `L`, then the expression `[X|Y] = L`, where `X` and `Y`
 % are unbound variables, will extract the head of the list into `X` and the tail
 % of the list into `Y`.
 [FirstThing|OtherThingsToBuy] = ThingsToBuy.
@@ -78,6 +85,7 @@ ThingsToBuy = [{apples, 10}, {pears, 6}, {milk, 3}].
 % There are no strings in Erlang. Strings are really just lists of integers.
 % Strings are enclosed in double quotation marks (`"`).
 Name = "Hello".
+[72, 101, 108, 108, 111] = "Hello".
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -89,9 +97,9 @@ Name = "Hello".
 % Modules must be compiled before the code can be run. A compiled module has the
 % extension `.beam`.
 -module(geometry).
--export([area/1]).
+-export([area/1]). % the list of functions exported from the module.
 
-% The function area consists of two clauses. The clauses are separated by a
+% The function `area` consists of two clauses. The clauses are separated by a
 % semicolon, and the final clause is terminated by dot-whitespace.
 % Each clause has a head and a body; the head consists of a function name
 % followed by a pattern (in parentheses), and the body consists of a sequence of
@@ -109,17 +117,17 @@ c(geometry).  % {ok,geometry}
 geometry:area({rectangle, 10, 5}).  % 50
 geometry:area({circle, 1.4}).  % 6.15752
 
-% In Erlang, two functions with the same name and different arity in the same
-% module represent entirely different functions.
+% In Erlang, two functions with the same name and different arity (number of arguments)
+% in the same module represent entirely different functions.
 -module(lib_misc).
--export([sum/1]).
+-export([sum/1]). % export function `sum` of arity 1 accepting one argument: list of integers.
 sum(L) -> sum(L, 0).
 sum([], N)    -> N;
 sum([H|T], N) -> sum(T, H+N).
 
-% Funs are "anonymous" functions. They are called this because they have no
-% name.
-Double = fun(X) -> 2*X end.
+% Funs are "anonymous" functions. They are called this way because they have no
+% name. However they can be assigned to variables.
+Double = fun(X) -> 2*X end. % `Double` points to an anonymous function with handle: #Fun<erl_eval.6.17052888>
 Double(2).  % 4
 
 % Functions accept funs as their arguments and can return funs.
@@ -133,6 +141,8 @@ Triple(5).  % 15
 % from the list `L`."
 L = [1,2,3,4,5].
 [2*X || X <- L].  % [2,4,6,8,10]
+% A list comprehension can have generators and filters which select subset of the generated values.
+EvenNumbers = [N || N <- [1, 2, 3, 4], N rem 2 == 0]. % [2, 4]
 
 % Guards are constructs that we can use to increase the power of pattern
 % matching. Using guards, we can perform simple tests and comparisons on the
@@ -181,7 +191,7 @@ X2 = X1#todo{status = done}.
 % #todo{status = done,who = joe,text = "Fix errata in book"}
 
 % `case` expressions.
-% `filter` returns a list of all those elements `X` in `L` for which `P(X)` is
+% `filter` returns a list of all elements `X` in a list `L` for which `P(X)` is
 % true.
 filter(P, [H|T]) ->
   case P(H) of
@@ -189,6 +199,7 @@ filter(P, [H|T]) ->
     false -> filter(P, T)
   end;
 filter(P, []) -> [].
+filter(fun(X) -> X rem 2 == 0 end, [1, 2, 3, 4]). % [2, 4]
 
 % `if` expressions.
 max(X, Y) ->
@@ -198,7 +209,7 @@ max(X, Y) ->
     true -> nil;
   end.
 
-% Warning: at least one of the guards in the if expression must evaluate to true;
+% Warning: at least one of the guards in the `if` expression must evaluate to true;
 % otherwise, an exception will be raised.
 
 
@@ -234,6 +245,7 @@ catcher(N) -> catch generate_exception(N).
 
 ## References
 
-* "Programming Erlang: Software for a Concurrent World" by Joe Armstrong
+* ["Learn You Some Erlang for great good!"](http://learnyousomeerlang.com/)
+* ["Programming Erlang: Software for a Concurrent World" by Joe Armstrong](http://pragprog.com/book/jaerlang/programming-erlang)
+* [Erlang/OTP Reference Documentation](http://www.erlang.org/doc/)
 * [Erlang - Programming Rules and Conventions](http://www.erlang.se/doc/programming_rules.shtml)
-* [Erlang/OTP Documentation](http://www.erlang.org/doc/)
