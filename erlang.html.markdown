@@ -245,6 +245,7 @@ catcher(N) -> catch generate_exception(N).
 
 ## References
 
-* "Programming Erlang: Software for a Concurrent World" by Joe Armstrong
+* ["Learn You Some Erlang for great good!"](http://learnyousomeerlang.com/)
+* ["Programming Erlang: Software for a Concurrent World" by Joe Armstrong](http://pragprog.com/book/jaerlang/programming-erlang)
+* [Erlang/OTP Reference Documentation](http://www.erlang.org/doc/)
 * [Erlang - Programming Rules and Conventions](http://www.erlang.se/doc/programming_rules.shtml)
-* [Erlang/OTP Documentation](http://www.erlang.org/doc/)
