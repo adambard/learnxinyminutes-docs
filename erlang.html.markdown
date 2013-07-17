@@ -199,7 +199,7 @@ filter(P, [H|T]) ->
     false -> filter(P, T)
   end;
 filter(P, []) -> [].
-filter(fun(X) -> X rem 2 == 0, [1, 2, 3, 4]). % [2, 4]
+filter(fun(X) -> X rem 2 == 0 end, [1, 2, 3, 4]). % [2, 4]
 
 % `if` expressions.
 max(X, Y) ->
