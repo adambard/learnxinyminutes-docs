@@ -32,7 +32,11 @@ of your source code.
 	// Centralized Versioning VS Distributed Versioning
 	///////////////////////////////////////
 	
-	[Detailed Information & Images.](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
+	* Centralized version control focuses on synchronizing, tracking, and backing up files.
+	* Distributed version control focuses on sharing changes. Every change has a unique id.
+	* Distributed systems have no defined structure. You could easily have a SVN style, 		centralized system, with git.
+
+	[Additional Information](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
 
 	///////////////////////////////////////
 	// Why Use Git?
