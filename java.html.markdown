@@ -343,7 +343,7 @@ class Bicycle {
         speed -= decrement;
     }
 
-    public void setName(int newName) {
+    public void setName(String newName) {
         name = newName;
     }
 
