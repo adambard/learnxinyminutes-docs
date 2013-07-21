@@ -5,16 +5,15 @@ contributors:
     - ["Christina Whyte", "http://github.com/kurisuwhyte/"]
 ---
 
-LiveScript is a functional compile-to-JavaScript language, which shares
+LiveScript is a functional compile-to-JavaScript language which shares
 most of the underlying semantics with its host language. Nice additions
 comes with currying, function composition, pattern matching and lots of
 other goodies heavily borrowed from languages like Haskell, F# and
 Scala.
 
 LiveScript is a fork of [Coco][], which is itself a fork of
-[CoffeeScript][], but they share little code in common nowadays. The
-language is stable, and a new version is in active development to bring
-a plethora of new niceties!
+[CoffeeScript][]. The language is stable, and a new version is in active
+development to bring a plethora of new niceties!
 
 [Coco]: http://satyr.github.io/coco/
 [CoffeeScript]: http://coffeescript.org/
@@ -41,7 +40,7 @@ Feedback is always welcome, so feel free to reach me over at
 ## 1. Basic values
 ########################################################################
 
-# No value is defined by the keyword `void`, rather than `undefined`.
+# Lack of value is defined by the keyword `void` instead of `undefined`
 void            # same as `undefined` but safer (can't be overridden)
 
 # No valid value is represented by Null.
@@ -115,6 +114,7 @@ person["name"]  # => "Christina"
 trailing-space = /\s$/          # dashed-words become dashedWords
 
 # Except you can do multi-line expressions too!
+# (comments and whitespace just gets ignored)
 funRE = //
         function\s+(.+)         # name
         \s* \((.*)\) \s*        # arguments
@@ -150,9 +150,9 @@ not false       # => true
 
 
 # Collections also get some nice additional operators
-[1, 2] ++ [3, 4]        # => [1, 2, 3, 4]
-'a' in <[ a b c ]>      # => true
-'name' of { name: x }   # => true
+[1, 2] ++ [3, 4]                # => [1, 2, 3, 4]
+'a' in <[ a b c ]>              # => true
+'name' of { name: 'Chris' }     # => true
 
 
 ########################################################################
@@ -189,7 +189,9 @@ foo!    # => 3
 
 # You could use it to clone a particular argument to avoid side-effects,
 # for example:
-copy = (^^target, source) -> for k,v of source => target[k] = v; target
+copy = (^^target, source) ->
+  for k,v of source => target[k] = v
+  target
 a = { a: 1 }
 copy a, { b: 2 }        # => { a: 1, b: 2 }
 a                       # => { a: 1 }
@@ -225,10 +227,13 @@ double-minus-one = (- 1) << (* 2)
 
 # And talking about flow of value, LiveScript gets the `|>` and `<|`
 # operators that apply a value to a function:
-xs |> map (* 2)
+map = (f, xs) --> xs.map f
+[1 2 3] |> map (* 2)            # => [2 4 6]
 
-# You can also choose where you want the value to be placed:
-xs |> zipWith (++), _, ys
+# You can also choose where you want the value to be placed, just mark
+# the place with an underscore (_):
+reduce = (f, xs, initial) --> xs.reduce f, initial
+[1 2 3] |> reduce (+), _, 0     # => 6
 
 
 # The underscore is also used in regular partial application, which you
@@ -241,6 +246,7 @@ div-by-2 4      # => 2
 # Last, but not least, LiveScript has back-calls, which might help
 # with some callback-based code (though you should try more functional
 # approaches, like Promises):
+readFile = (name, f) -> f name
 a <- readFile 'foo'
 b <- readFile 'bar'
 console.log a + b
@@ -262,11 +268,12 @@ x = if n > 0 => \positive
 
 # Complex conditions are better-off expressed with the `switch`
 # expression, though:
+y = {}
 x = switch
-  | is-number y => \number
-  | is-string y => \string
-  | is-array y  => \array
-  | otherwise   => \object      # `otherwise` and `_` always matches.
+  | (typeof y) is \number => \number
+  | (typeof y) is \string => \string
+  | 'length' of y         => \array
+  | otherwise             => \object      # `otherwise` and `_` always matches.
 
 # Function bodies, declarations and assignments get a free `switch`, so
 # you don't need to type it again:
@@ -321,7 +328,7 @@ Huggable =
 
 class SnugglyCat extends Cat implements Huggable
 
-kitten = new Cat 'Purr'
+kitten = new SnugglyCat 'Purr'
 kitten.hug!     # => "*Mei (a cat) is hugged*"
 ```
 
