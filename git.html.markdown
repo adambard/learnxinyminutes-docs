@@ -9,12 +9,9 @@ filename: LearnGit.txt
 
 Git is a distributed version control and source code management system. 
 
-Git does this through a series of snapshopts of your project, and it works 
+It does this through a series of snapshopts of your project, and it works 
 with those snapshots to provide you with functionality to version and 
 manage your source code.
-
-In layman's terms, it's a way of managing, and keeping a detailed historical record,
-of your source code.
 
 ## Versioning Concepts
 
@@ -219,6 +216,21 @@ the changes made and a message created by the user.
 $ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
 ```
 
+### diff
+
+Shows differences between a file in the working directory, index and commits.
+
+```bash
+# Show difference between your working dir and the index
+$ git diff
+
+# Show differences between the index and the most recent commit.
+$ git diff --cached
+
+# Show differences between your working dir, and the most recent commit
+$ git diff HEAD
+```
+
 ### grep
 
 Allows you to quickly search a repository.
@@ -370,3 +382,5 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [Atlassian Git - Tutorials & Workflows](https:#www.atlassian.com/git/)
 
 * [SalesForce Cheat Sheet](https:#na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+
+* [GitGuys](http://www.gitguys.com/)
