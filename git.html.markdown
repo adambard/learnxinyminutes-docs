@@ -9,7 +9,7 @@ filename: LearnGit.txt
 
 Git is a distributed version control and source code management system. 
 
-Git does this through a series of snapshopts of your project, and it works 
+Git does this through a series of snapshots of your project, and it works 
 with those snapshots to provide you with functionality to version and 
 manage your source code.
 
