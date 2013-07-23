@@ -9,12 +9,9 @@ filename: LearnGit.txt
 
 Git is a distributed version control and source code management system. 
 
-Git does this through a series of snapshots of your project, and it works 
+It does this through a series of snapshots of your project, and it works 
 with those snapshots to provide you with functionality to version and 
 manage your source code.
-
-In layman's terms, it's a way of managing, and keeping a detailed historical record,
-of your source code.
 
 ## Versioning Concepts
 
@@ -28,7 +25,7 @@ Version control is a system that records changes to a file, or set of files, ove
 * Distributed version control focuses on sharing changes. Every change has a unique id.
 * Distributed systems have no defined structure. You could easily have a SVN style, 		centralized system, with git.
 
-[Additional Information](http:#git-scm.com/book/en/Getting-Started-About-Version-Control)
+[Additional Information](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
 
 ### Why Use Git?
 
@@ -52,7 +49,7 @@ A git repository is comprised of the .git directory & working tree.
 ### .git Directory (component of repository)
 
 The .git directory contains all the configurations, logs, branches, HEAD, and more.
-[Detailed List.](http:#gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+[Detailed List.](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### Working Tree (component of repository)
 
@@ -61,7 +58,7 @@ as your working directory.
 
 ### Index (component of .git dir)
 
-The Index is the staging area in git. It's basically layer that separates your working tree
+The Index is the staging area in git. It's basically a layer that separates your working tree
 from the Git repository. This gives developers more power over what gets sent to the Git
 repository.
 
@@ -69,22 +66,22 @@ repository.
 
 A git commit is a snapshot of a set of changes, or manipulations to your Working Tree.
 For example, if you added 5 files, and removed 2 others, these changes will be contained
-in a commit (or snapshot). This commit, can then be pushed to other repositorys, or not!
+in a commit (or snapshot). This commit can then be pushed to other repositories, or not!
 
 ### Branch
 
-A branch is essentially a pointer, that points to the last commit you made. As you commit
+A branch is essentially a pointer that points to the last commit you made. As you commit,
 this pointer will automatically update and point to the latest commit.
 
 ### HEAD and head (component of .git dir)
 
-HEAD, is a pointer, that points to the current branch. A repository only has 1 *active* HEAD.
-head, is a pointer, that points to any commit. A repository can have any number of heads.
+HEAD is a pointer that points to the current branch. A repository only has 1 *active* HEAD.
+head is a pointer that points to any commit. A repository can have any number of heads.
 
 ### Conceptual Resources
 
-[Git For Computer Scientists](http:#eagain.net/articles/git-for-computer-scientists/)
-[Git For Designers](http:#hoth.entp.com/output/git_for_designers.html)
+* [Git For Computer Scientists](http://eagain.net/articles/git-for-computer-scientists/)
+* [Git For Designers](http://hoth.entp.com/output/git_for_designers.html)
 
 
 ## Commands
@@ -93,7 +90,7 @@ head, is a pointer, that points to any commit. A repository can have any number 
 ### init
 
 Create an empty Git repository. The Git repository's settings, stored information, 
-and more is stored in a directory, or folder named, ".git".
+and more is stored in a directory (a folder) named ".git".
 
 ```bash
 $ git init
@@ -114,11 +111,11 @@ $ git config --global user.email "MyEmail@Zoho.com"
 $ git config --global user.name "My Name"
 ```
 
-[Learn More About git config.](http:#git-scm.com/docs/git-config)
+[Learn More About git config.](http://git-scm.com/docs/git-config)
 
 ### help
 
-To give you quick access to an extremeled detailed guide of each command. Or to
+To give you quick access to an extremely detailed guide of each command. Or to
 just give you a quick reminder of some semantics.
 
 ```bash
@@ -151,8 +148,8 @@ $ git help status
 
 ### add
 
-To add files to the current working tree/directory/repo. If you do not git add new files to the
-working tree/directory they will not be included in commits!
+To add files to the current working tree/directory/repo. If you do not `git add` new files to the
+working tree/directory, they will not be included in commits!
 
 ```bash
 # add a file in your current working directory
@@ -195,28 +192,45 @@ Updates all files in the working tree to match the version in the index, or spec
 # Checkout a repo - defaults to master branch
 $ git checkout
 # Checkout a specified branch
-$ git checkout -b branchName
+$ git checkout branchName
+# Create a new branch & switch to it, like: "git branch <name>; git checkout <name>"
+$ git checkout -b newBranch
 ```
 
 ### clone
 
-Clones, or copys, an existing repository into a new directory. It almost adds
-remote-tracking branches for each branch in the cloned repo. (which allows you to push
-to a remote branch)
+Clones, or copies, an existing repository into a new directory. It also adds
+remote-tracking branches for each branch in the cloned repo, which allows you to push
+to a remote branch.
 
 ```bash
 # Clone learnxinyminutes-docs
-$ git clone https:#github.com/adambard/learnxinyminutes-docs.git
+$ git clone https://github.com/adambard/learnxinyminutes-docs.git
 ```
 
 ### commit
 
-Stores the current contents of the index in a new "commit". This commit contains
+Stores the current contents of the index in a new "commit." This commit contains
 the changes made and a message created by the user.
 
 ```bash
 # commit with a message
 $ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
+```
+
+### diff
+
+Shows differences between a file in the working directory, index and commits.
+
+```bash
+# Show difference between your working dir and the index
+$ git diff
+
+# Show differences between the index and the most recent commit.
+$ git diff --cached
+
+# Show differences between your working dir and the most recent commit
+$ git diff HEAD
 ```
 
 ### grep
@@ -242,8 +256,8 @@ $ git grep 'variableName' -- '*.java'
 $ git grep -e 'arrayListName' --and \( -e add -e remove \) 
 ```
 
-Google is your friend for more examples
-[Git Grep Ninja](http:#travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
+Google is your friend; for more examples
+[Git Grep Ninja](http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
 
 ### log
 
@@ -262,7 +276,7 @@ $ git log --merges
 
 ### merge
 
-"Merge" in changes, from external commits, into the current branch.
+"Merge" in changes from external commits into the current branch.
 
 ```bash
 # Merge the specified branch into the current.
@@ -301,10 +315,10 @@ $ git pull origin master
 
 ### push
 
-Push, and merge changes from a branch to a remote & branch.
+Push and merge changes from a branch to a remote & branch.
 
 ```bash
-# Push, and merge changes from a local repo to a 
+# Push and merge changes from a local repo to a 
 # remote named "origin" and "master" branch.
 # git push <remote> <branch>
 # git push => implicitly defaults to => git push origin master
@@ -314,15 +328,15 @@ $ git push origin master
 ### rebase (caution) 
 
 Take all changes that were committed on one branch, and replay them onto another branch.
-*Do not rebase commits that you have pushed to a public repo*
+*Do not rebase commits that you have pushed to a public repo*.
 
 ```bash
 # Rebase experimentBranch onto master
 # git rebase <basebranch> <topicbranch>
-$ git rebase master oldTest
+$ git rebase master experimentBranch
 ```
 
-[Additional Reading.](http:#git-scm.com/book/en/Git-Branching-Rebasing)
+[Additional Reading.](http://git-scm.com/book/en/Git-Branching-Rebasing)
 
 ### reset (caution)
 
@@ -361,12 +375,14 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 ## Further Information
 
-* [tryGit - A fun interactive way to learn Git.](http:#try.github.io/levels/1/challenges/1)
+* [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
 
-* [git-scm - Video Tutorials](http:#git-scm.com/videos)
+* [git-scm - Video Tutorials](http://git-scm.com/videos)
 
-* [git-scm - Documentation](http:#git-scm.com/docs)
+* [git-scm - Documentation](http://git-scm.com/docs)
 
-* [Atlassian Git - Tutorials & Workflows](https:#www.atlassian.com/git/)
+* [Atlassian Git - Tutorials & Workflows](https://www.atlassian.com/git/)
 
-* [SalesForce Cheat Sheet](https:#na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+* [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+
+* [GitGuys](http://www.gitguys.com/)
