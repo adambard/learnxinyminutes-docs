@@ -43,7 +43,7 @@ filename: elisp.el
 ;; Elisp programs are made of symbolic expressions ("sexps"):
 (+ 2 2)
 
-;; This symbolic expression reads as "Add 3 to 3".
+;; This symbolic expression reads as "Add 2 to 2".
 
 ;; Sexps are enclosed into parentheses, possibly nested:
 (+ 2 (+ 1 1))
