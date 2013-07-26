@@ -6,7 +6,7 @@ filename: learn-emacs-lisp.el
 ---
 
 ```elisp
-;; This gives an introduction to Emacs Lisp in 15 minutes (v0.2)
+;; This gives an introduction to Emacs Lisp in 15 minutes (v0.2a)
 ;;
 ;; First make sure you read this text by Peter Norvig:
 ;; http://norvig.com/21-days.html
@@ -183,7 +183,7 @@ filename: learn-emacs-lisp.el
 ;; Let's create another function which uses `let':
 (defun greeting (name)
   (let ((your-name "Bastien"))
-    (insert (format "Hello %s!\n\nI'am %s."
+    (insert (format "Hello %s!\n\nI am %s."
                     name       ; the argument of the function
                     your-name  ; the let-bound variable "Bastien"
                     ))))
@@ -211,7 +211,7 @@ filename: learn-emacs-lisp.el
   (let ((your-name (read-from-minibuffer "Enter your name: ")))
     (switch-to-buffer-other-window "*test*")
     (erase-buffer)
-    (insert (format "Hello %s!\n\nI'am %s." your-name from-name))
+    (insert (format "Hello %s!\n\nI am %s." your-name from-name))
     (other-window 1)))
 
 ;; Now test it:
@@ -273,17 +273,17 @@ filename: learn-emacs-lisp.el
 ;; replaced by "Bonjour".
 
 ;; You should also get an error: "Search failed: Hello".
-;; You need to tell search-forward whether it should stop searching
-;; at some point in the buffer, and whether it should silently fail
-;; when nothing is found:
+;;
+;; To avoid this error, you need to tell `search-forward' whether it
+;; should stop searching at some point in the buffer, and whether it
+;; should silently fail when nothing is found:
 
-;; (search-forward "Hello" nil t) does it.
+;; (search-forward "Hello" nil t) does the trick:
 
 ;; The `nil' argument says: the search is not bound to a position.
-
 ;; The `t' argument says: silently fail when nothing is found.
 
-;; We do it here, in a new function that also says "Hello first":
+;; We use this sexp in the function below, which don't throw an error:
 
 (defun hello-to-bonjour ()
     (switch-to-buffer-other-window "*test*")
@@ -345,4 +345,5 @@ filename: learn-emacs-lisp.el
 ;; - notbob
 ;; - Kevin Montuori
 ;; - Arne Babenhauserheide
+;; - Alan Schmitt
 ```
