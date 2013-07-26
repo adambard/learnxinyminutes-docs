@@ -2,11 +2,11 @@
 language: elisp
 contributors:
     - ["Bastien Guerry", "http://bzg.fr"]
-filename: elisp.el
+filename: learn-emacs-lisp.el
 ---
 
 ```elisp
-;; This gives an introduction to Emacs Lisp in 15 minutes.
+;; This gives an introduction to Emacs Lisp in 15 minutes (v0.2)
 ;;
 ;; First make sure you read this text by Peter Norvig:
 ;; http://norvig.com/21-days.html
@@ -19,10 +19,20 @@ filename: elisp.el
 ;;
 ;; More general information can be found at:
 ;; http://www.gnu.org/software/emacs/#Obtaining
+
+;; Important warning:
+;;
+;; Going through this tutorial won't damage your computer unless
+;; you get so angry that you throw it on the floor.  In that case,
+;; I hereby decline any responsability.  Have fun!
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 
 ;; Fire up Emacs.
 ;;
-;; Look at the gray line at the bottom of the window:
+;; Hit the `q' key to dismiss the welcome message.
+;;
+;; Now look at the gray line at the bottom of the window:
 ;;
 ;; "*scratch*" is the name of the editing space you are now in.
 ;: This editing space is called a "buffer".
@@ -33,12 +43,14 @@ filename: elisp.el
 ;; 
 ;; "Lisp interaction" refers to a set of commands available here.
 ;; 
-;; This set of command is loaded on top of core Emacs commands.
-;; For exemple, `save-buffer' is a core Emacs command to save a
-;; buffer to its associated file, and `eval-defun' is a command
-;; loaded from the `lisp-interaction-mode' you are now in.
+;; Emacs has a built-in set of commands available in every buffer,
+;; and several subsets of commands available when you activate a
+;; specific mode.  Here we use the `lisp-interaction-mode', which
+;; comes with commands to evaluate and navigate within Elisp code.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Semi-columns start comments anywhere on a line.
+;; Semi-colons start comments anywhere on a line.
 ;;
 ;; Elisp programs are made of symbolic expressions ("sexps"):
 (+ 2 2)
@@ -54,7 +66,7 @@ filename: elisp.el
 
 ;; From `lisp-interaction-mode' you can evaluate sexps.
 ;; Put the cursor right after the closing parenthesis then
-;; hit the control and the j keys ("C-j" for short).
+;; hold down the control and hit the j keys ("C-j" for short).
 
 (+ 3 (+ 1 2))
 ;;           ^ cursor here
@@ -109,13 +121,17 @@ filename: elisp.el
 
 ;; Take a breath.
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Now switch to a new buffer named "*test*" in another window:
 
 (switch-to-buffer-other-window "*test*")
 ;; `C-xC-e'
 ;: => [screen has two windows and cursor is in the *test* buffer]
 
-;; Use the mouse to go back to the window where you code.
+;; Mouse over the top window and left-click to go back.  Or you can
+;; use `C-xo' (i.e. hold down control-x and hit j) to go to the other
+;; window interactively.
 
 ;; You can combine several sexps with `progn':
 (progn
@@ -127,11 +143,13 @@ filename: elisp.el
 ;; Now if you don't mind, I'll stop asking you to hit `C-xC-e': do it
 ;; for every sexp that follows.
 
+;; Always go back to the *scratch* buffer with the mouse or `C-xo'.
+
 ;; It's often useful to erase the buffer:
 (progn
   (switch-to-buffer-other-window "*test*")
   (erase-buffer)
-  (hello "you"))
+  (hello "there"))
 
 ;; Or to go back to the other window:
 (progn
@@ -166,9 +184,9 @@ filename: elisp.el
 (defun greeting (name)
   (let ((your-name "Bastien"))
     (insert (format "Hello %s!\n\nI'am %s."
-		    name       ; the argument of the function
-		    your-name  ; the let-bound variable "Roger"
-		    ))))
+                    name       ; the argument of the function
+                    your-name  ; the let-bound variable "Bastien"
+                    ))))
 
 ;; And evaluate it:
 (greeting "you")
@@ -182,9 +200,9 @@ filename: elisp.el
 (defun greeting (from-name)
   (let ((your-name (read-from-minibuffer "Enter your name: ")))
     (insert (format "Hello!\n\I am %s and you are %s."
-		    from-name ; the argument of the function
-		    your-name ; the let-bound var, entered at prompt
-		    ))))
+                    from-name ; the argument of the function
+                    your-name ; the let-bound var, entered at prompt
+                    ))))
 
 (greeting "Bastien")
 
@@ -201,8 +219,10 @@ filename: elisp.el
 
 ;; Take a breath.
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Let's store a list of names:
-(setq list-of-names '("Sarah" "Chloe"))
+(setq list-of-names '("Sarah" "Chloe" "Mathilde"))
 
 ;; Get the first element of this list with `car':
 (car list-of-names)
@@ -214,6 +234,8 @@ filename: elisp.el
 (push "Stephanie" list-of-names)
 
 ;; NOTE: `car' and `cdr' don't modify the list, but `push' does.
+;; This is an important difference: some functions don't have any
+;; side-effects (like `car') while others have (like `push').
 
 ;; Let's call `hello' for each element in `list-of-names':
 (mapcar 'hello list-of-names)
@@ -283,8 +305,8 @@ filename: elisp.el
     (goto-char (point-min))
     (while (re-search-forward "Bonjour \\(.+\\)!" nil t)
       (add-text-properties (match-beginning 1)
-			   (match-end 1)
-			   (list 'face 'bold)))
+                           (match-end 1)
+                           (list 'face 'bold)))
     (other-window 1))
 
 ;; This functions introduces `re-search-forward': instead of
@@ -306,4 +328,21 @@ filename: elisp.el
 
 ;; OK, we are done.  Happy hacking!
 
+;; If you want to know more about a variable or a function:
+;;
+;; C-h v a-variable RET
+;; C-h f a-function RET
+;;
+;; To read the Emacs Lisp manual with Emacs:
+;;
+;; C-h i m elisp RET
+;;
+;; To read an online introduction to Emacs Lisp:
+;; https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html
+
+;; Thanks to these people for their feedback and suggestions:
+;; - Wes Hardaker
+;; - notbob
+;; - Kevin Montuori
+;; - Arne Babenhauserheide
 ```
