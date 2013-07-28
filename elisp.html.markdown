@@ -130,7 +130,7 @@ filename: learn-emacs-lisp.el
 ;: => [screen has two windows and cursor is in the *test* buffer]
 
 ;; Mouse over the top window and left-click to go back.  Or you can
-;; use `C-xo' (i.e. hold down control-x and hit j) to go to the other
+;; use `C-xo' (i.e. hold down control-x and hit o) to go to the other
 ;; window interactively.
 
 ;; You can combine several sexps with `progn':
@@ -196,17 +196,17 @@ filename: learn-emacs-lisp.el
 
 ;; Evaluating this function returns what you entered at the prompt.
 
-;; Let's make our `greeting' function prompts for your name:
+;; Let's make our `greeting' function prompt for your name:
 (defun greeting (from-name)
   (let ((your-name (read-from-minibuffer "Enter your name: ")))
-    (insert (format "Hello!\n\I am %s and you are %s."
+    (insert (format "Hello!\n\nI am %s and you are %s."
                     from-name ; the argument of the function
                     your-name ; the let-bound var, entered at prompt
                     ))))
 
 (greeting "Bastien")
 
-;; Let complete it by displaying the results in the other window:
+;; Let's complete it by displaying the results in the other window:
 (defun greeting (from-name)
   (let ((your-name (read-from-minibuffer "Enter your name: ")))
     (switch-to-buffer-other-window "*test*")
@@ -283,7 +283,7 @@ filename: learn-emacs-lisp.el
 ;; The `nil' argument says: the search is not bound to a position.
 ;; The `t' argument says: silently fail when nothing is found.
 
-;; We use this sexp in the function below, which don't throw an error:
+;; We use this sexp in the function below, which doesn't throw an error:
 
 (defun hello-to-bonjour ()
     (switch-to-buffer-other-window "*test*")
