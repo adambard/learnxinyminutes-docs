@@ -130,7 +130,7 @@ filename: learn-emacs-lisp.el
 ;: => [screen has two windows and cursor is in the *test* buffer]
 
 ;; Mouse over the top window and left-click to go back.  Or you can
-;; use `C-xo' (i.e. hold down control-x and hit j) to go to the other
+;; use `C-xo' (i.e. hold down control-x and hit o) to go to the other
 ;; window interactively.
 
 ;; You can combine several sexps with `progn':
