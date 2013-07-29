@@ -1,8 +1,7 @@
 ---
-language: scala
+language: Scala
 filename: learn.scala
-author: George Petrov
-author_url: http://www.github.com/petrovg
+contributors:["George Petrov", "http://github.com/petrovg"]
 ---
 
 Scala - the scalable language
@@ -43,7 +42,7 @@ println("Boo!") // printlns the string Boo!
 */
 
 
-// Everything is an object, including a function type these in the repl:
+// Everything is an object, including a function. Type these in the REPL:
 
 7 // results in res30: Int = 7 (res30 is just a generated var name for the result)
 
