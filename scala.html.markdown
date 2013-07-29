@@ -135,8 +135,27 @@ Person("George", "1234") == Person("Kate", "1236")
 
 // Pattern matching
 
+val me = Person("George", "1234")
+
+me match { case Person(name, number) => "We matched someone : " + name + ", phone : " + number }
+
+me match { case Person(name, number) => "Match : " + name; case _ => "Hm..." }
+
+me match { case Person("George", number) => "Match"; case _ => "Hm..." }
+
+me match { case Person("Kate", number) => "Match"; case _ => "Hm..." }
+
+me match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy" }
+
+val kate = Person("Kate", "1234")
+
+kate match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy" }
+
+
 
 // Regular expressions
+
+
 
 
 // Strings
