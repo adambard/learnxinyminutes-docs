@@ -93,6 +93,7 @@ s(1)
 // Tuples
 
 
+
 // Combinators
 
 s.map(sq)
@@ -114,6 +115,37 @@ for { n <- nSquared2 if n < 10 } yield n
 
 for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
 
+/* NB Those were not for loops. The semantics of a for loop is 'repeat', whereas a for-comprehension
+   defines a relationship between two sets of data. Research this further  */
+
+
+
+// Loops and iteration
+
+1 to 5
+val r = 1 to 5
+r.foreach( println )
+
+r foreach println     
+// NB: Scala is quite lenien when it comes to dots and brackets - study the rules separately. This 
+// helps write DSLs and APIs that read like English
+
+(5 to 1 by -1) foreach ( println )
+
+var i = 0
+while (i < 10) {  println("i " + i); i+=1  }
+
+while (i < 10) {  println("i " + i); i+=1  }   // Yes, again. What happened? Why?
+
+i    // Show the value of i. Note that while is a loop in the classical sense - it executes
+     // sequentially while changing the loop variable. while is very fast, faster that Java
+     // loops, but using the combinators and comprehensions above is easier to understand
+     // and parallelize
+
+// Tail recursion is an idiomatic way of doing things in Scala. Recursive functions need an 
+// explicit return type, the compile can't infer it. Here it's Unit.
+def showNumbersInRange(a:Int, b:Int):Unit = { print(a); if (a < b) showNumbersInRange(a+1, b)  }
+
 
 
 // Conditionals
@@ -128,9 +160,11 @@ if (x == 11) println ("yeah") else println("nope")
 println(if (x == 10) "yeah" else "nope")
 val text = if (x == 10) "yeah" else "nope"
 
-
+var i = 0
+while (i < 10) { println("i " + i); i+=1  }
 
 // Object oriented features
+
 
 
 // Case classes
@@ -138,6 +172,7 @@ val text = if (x == 10) "yeah" else "nope"
 case class Person(name:String, phoneNumber:String)
 
 Person("George", "1234") == Person("Kate", "1236")
+
 
 
 
@@ -163,7 +198,14 @@ kate match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy"
 
 // Regular expressions
 
-// TODO
+val email = "(.*)@(.*)".r          // The suffix .r invokes method r on String, which makes it a Regex
+
+val email(user, domain) = "henry@zkpr.com"
+
+"mrbean@pyahoo.com" match {
+  case email(name, domain) => "I know your name, " + name
+}
+
 
 
 // Strings
@@ -177,6 +219,16 @@ println(s"We have $n apples")
 
 val a = Array(11, 9, 6)
 println(s"My second daughter is ${a(2-1)} years old")
+
+// Some characters need to be 'escaped', e.g. a double quote inside a string:
+val a = "They stood outside the \"Rose and Crown\""
+
+// Triple double-quotes allow for strings to span multiple rows and contain funny characters
+val html = """<form id="daform">
+                <p>Press belo', Joe</p>
+             |  <input type="submit">
+              </form>"""
+
 
 // Input and output
 
