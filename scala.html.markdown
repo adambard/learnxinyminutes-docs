@@ -1,3 +1,9 @@
+---
+language: scala
+author: George Petrov
+author_url: http://www.georgepetrov.com
+---
+
 /*
   Set yourself up:
 
@@ -106,6 +112,11 @@ val x = 10
 if (x == 1) println("yeah")
 if (x == 10) println("yeah")
 if (x == 11) println("yeah")
+if (x == 11) println ("yeah") else println("nope")
+
+println(if (x == 10) "yeah" else "nope")
+val text = if (x == 10) "yeah" else "nope"
+
 
 
 // Object oriented features
