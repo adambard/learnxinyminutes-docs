@@ -75,7 +75,7 @@ filename: learn-emacs-lisp.el
 ;; `C-j' inserts the result of the evaluation in the buffer.
 
 ;; `C-xC-e' displays the same result in Emacs bottom line,
-;: called the "minibuffer".  We will generally use `C-xC-e',
+;; called the "minibuffer".  We will generally use `C-xC-e',
 ;; as we don't want to clutter the buffer with useless text.
 
 ;; `setq' stores a value into a variable:
