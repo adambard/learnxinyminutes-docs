@@ -51,3 +51,16 @@ val sq = (x:Int) => x * x
 
 sq(10)   // Gives you this: res33: Int = 100. The result is the Int with a value 100
 
+
+
+// Data structures
+
+val a = Array(1, 2, 3, 5, 8, 13)
+a(0)
+a(3)
+a(21)    // Throws an exception
+
+val m = Map("fork" -> "tenedor", "spoon" -> "cuchara", "knife" -> "cuchillo")
+m("fork")
+m("spoon")
+m("bottle")       // Throws an exception
