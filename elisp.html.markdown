@@ -6,7 +6,9 @@ filename: learn-emacs-lisp.el
 ---
 
 ```elisp
-;; This gives an introduction to Emacs Lisp in 15 minutes (v0.2a)
+;; This gives an introduction to Emacs Lisp in 15 minutes (v0.2d)
+;;
+;; Author: Bastien / @bzg2 / http://bzg.fr
 ;;
 ;; First make sure you read this text by Peter Norvig:
 ;; http://norvig.com/21-days.html
@@ -127,7 +129,7 @@ filename: learn-emacs-lisp.el
 
 (switch-to-buffer-other-window "*test*")
 ;; `C-xC-e'
-;: => [screen has two windows and cursor is in the *test* buffer]
+;; => [screen has two windows and cursor is in the *test* buffer]
 
 ;; Mouse over the top window and left-click to go back.  Or you can
 ;; use `C-xo' (i.e. hold down control-x and hit o) to go to the other
@@ -138,7 +140,7 @@ filename: learn-emacs-lisp.el
   (switch-to-buffer-other-window "*test*")
   (hello "you"))
 ;; `C-xC-e'
-;: => [The screen has two windows and cursor is in the *test* buffer]
+;; => [The screen has two windows and cursor is in the *test* buffer]
 
 ;; Now if you don't mind, I'll stop asking you to hit `C-xC-e': do it
 ;; for every sexp that follows.
@@ -346,4 +348,6 @@ filename: learn-emacs-lisp.el
 ;; - Kevin Montuori
 ;; - Arne Babenhauserheide
 ;; - Alan Schmitt
+;; - LinXitoW
+;; - Aaron Meurer
 ```
