@@ -64,3 +64,49 @@ val m = Map("fork" -> "tenedor", "spoon" -> "cuchara", "knife" -> "cuchillo")
 m("fork")
 m("spoon")
 m("bottle")       // Throws an exception
+
+val safeM = m.withDefaultValue("no lo se")
+safeM("bottle")
+
+val s = Set(1, 3, 7)
+s(0)
+s(1)
+
+
+// Tuples
+
+
+// Combinators
+
+s.map(sq)
+
+val sSquared = s. map(sq)
+
+sSquared.filter(_ < 10)
+
+sSquared.reduce (_+_)
+
+
+// For comprehensions
+
+for { n <- s } yield sq(n)
+
+val nSquared2 = for { n <- s } yield sq(n)
+
+for { n <- nSquared2 if n < 10 } yield n
+
+for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
+
+
+
+// Conditionals
+
+val x = 10
+
+if (x == 1) println("yeah")
+if (x == 10) println("yeah")
+if (x == 11) println("yeah")
+
+
+// Object oriented features
+
