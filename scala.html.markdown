@@ -1,7 +1,8 @@
 ---
 language: Scala
+contributors:
+    - ["George Petrov", "http://github.com/petrovg"]
 filename: learn.scala
-contributors: ["George Petrov", "http://github.com/petrovg"]
 ---
 
 Scala - the scalable language
