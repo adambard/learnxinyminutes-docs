@@ -6,7 +6,9 @@ filename: learn-emacs-lisp.el
 ---
 
 ```scheme
-;; This gives an introduction to Emacs Lisp in 15 minutes (v0.2a)
+;; This gives an introduction to Emacs Lisp in 15 minutes (v0.2d)
+;;
+;; Author: Bastien / @bzg2 / http://bzg.fr
 ;;
 ;; First make sure you read this text by Peter Norvig:
 ;; http://norvig.com/21-days.html
@@ -35,7 +37,7 @@ filename: learn-emacs-lisp.el
 ;; Now look at the gray line at the bottom of the window:
 ;;
 ;; "*scratch*" is the name of the editing space you are now in.
-;: This editing space is called a "buffer".
+;; This editing space is called a "buffer".
 ;;
 ;; The scratch buffer is the default buffer when opening Emacs.
 ;; You are never editing files: you are editing buffers that you
@@ -75,7 +77,7 @@ filename: learn-emacs-lisp.el
 ;; `C-j' inserts the result of the evaluation in the buffer.
 
 ;; `C-xC-e' displays the same result in Emacs bottom line,
-;: called the "minibuffer".  We will generally use `C-xC-e',
+;; called the "minibuffer".  We will generally use `C-xC-e',
 ;; as we don't want to clutter the buffer with useless text.
 
 ;; `setq' stores a value into a variable:
@@ -127,7 +129,7 @@ filename: learn-emacs-lisp.el
 
 (switch-to-buffer-other-window "*test*")
 ;; `C-xC-e'
-;: => [screen has two windows and cursor is in the *test* buffer]
+;; => [screen has two windows and cursor is in the *test* buffer]
 
 ;; Mouse over the top window and left-click to go back.  Or you can
 ;; use `C-xo' (i.e. hold down control-x and hit o) to go to the other
@@ -138,7 +140,7 @@ filename: learn-emacs-lisp.el
   (switch-to-buffer-other-window "*test*")
   (hello "you"))
 ;; `C-xC-e'
-;: => [The screen has two windows and cursor is in the *test* buffer]
+;; => [The screen has two windows and cursor is in the *test* buffer]
 
 ;; Now if you don't mind, I'll stop asking you to hit `C-xC-e': do it
 ;; for every sexp that follows.
@@ -171,7 +173,7 @@ filename: learn-emacs-lisp.el
 ;; Let's format a string:
 (format "Hello %s!\n" "visitor")
 
-;; %s is a place-holder for a string, replaced by "Alice".
+;; %s is a place-holder for a string, replaced by "visitor".
 ;; \n is the newline character.
 
 ;; Let's refine our function by using format:
@@ -346,4 +348,6 @@ filename: learn-emacs-lisp.el
 ;; - Kevin Montuori
 ;; - Arne Babenhauserheide
 ;; - Alan Schmitt
+;; - LinXitoW
+;; - Aaron Meurer
 ```
