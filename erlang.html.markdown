@@ -6,7 +6,7 @@ filename: learnerlang.erl
 ---
 
 ```erlang
-% Percent sign starts an one-line comment.
+% Percent sign starts a one-line comment.
 
 %% Two percent characters shall be used to comment functions.
 
