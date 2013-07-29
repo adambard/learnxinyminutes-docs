@@ -312,4 +312,22 @@ dwight.name #=> "Dwight K. Schrute"
 
 # Call the class method
 Human.say("Hi") #=> "Hi"
+
+
+=begin
+Arithmetic is just syntactic sugar
+for calling a method on an object:
+=end
+1.+ 1  #=> 2
+1.+(1) #=> 2
+
+8.- 1 #=> 7
+8.-(1) #=> 7
+
+10.* 2 #=> 20
+10.*(2) #=> 20
+
+35./ 5 #=> 7
+35./(5) #=> 7
+
 ```
