@@ -35,7 +35,7 @@ filename: learn-emacs-lisp.el
 ;; Now look at the gray line at the bottom of the window:
 ;;
 ;; "*scratch*" is the name of the editing space you are now in.
-;: This editing space is called a "buffer".
+;; This editing space is called a "buffer".
 ;;
 ;; The scratch buffer is the default buffer when opening Emacs.
 ;; You are never editing files: you are editing buffers that you
