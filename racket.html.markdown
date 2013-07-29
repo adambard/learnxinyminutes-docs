@@ -5,6 +5,7 @@ filename: learnracket.rkt
 contributors:
   - ["th3rac25", "https://github.com/voila"]
   - ["Eli Barzilay", "https://github.com/elibarzilay"]
+  - ["Gustavo Schmidt", "https://github.com/gustavoschmidt"]
 ---
 
 Racket is a general purpose, multi-paradigm programming language in the Lisp/Scheme family.
@@ -555,11 +556,15 @@ vec ; => #(1 2 3 4)
     (set! x y)
     (set! y tmp)))
 
-(define tmp 1)
-(define a 2)
-(define b 3)
-(swap! a b)
-(printf "tmp = ~a; a = ~a; b = ~a\n" tmp a b) ; tmp is unaffected
+(define tmp 2)
+(define other 3)
+(swap! tmp other)
+(printf "tmp = ~a; other = ~a\n" tmp other)
+;; The variable `tmp` is renamed to `tmp_1`
+;; in order to avoid name conflict
+;; (let ([tmp_1 tmp])
+;;   (set! tmp other)
+;;   (set! other tmp_1))
 
 ;; But they are still code transformations, for example:
 (define-syntax-rule (bad-while condition body ...)
