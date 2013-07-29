@@ -85,6 +85,10 @@ val s = Set(1, 3, 7)
 s(0)
 s(1)
 
+/* Look up the documentation of map here - http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Map 
+ * and make sure you can read it
+ */
+
 
 // Tuples
 
@@ -128,9 +132,6 @@ val text = if (x == 10) "yeah" else "nope"
 
 // Object oriented features
 
-class Person 
-
-
 
 // Case classes
 
@@ -162,10 +163,32 @@ kate match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy"
 
 // Regular expressions
 
-
+// TODO
 
 
 // Strings
 
+println("ABCDEF".length)
+println("ABCDEF".substring(2, 6))
+println("ABCDEF".replace("C", "3"))
+
+val n = 45
+println(s"We have $n apples")
+
+val a = Array(11, 9, 6)
+println(s"My second daughter is ${a(2-1)} years old")
 
 // Input and output
+
+
+```
+
+## Further resources
+
+[Scala for the impatient](http://horstmann.com/scala/)
+
+[Twitter Scala school(http://twitter.github.io/scala_school/)
+
+[The scala documentation]
+
+Join the [Scala user group](https://groups.google.com/forum/#!forum/scala-user)
