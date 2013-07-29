@@ -121,3 +121,25 @@ val text = if (x == 10) "yeah" else "nope"
 
 // Object oriented features
 
+class Person 
+
+
+
+// Case classes
+
+case class Person(name:String, phoneNumber:String)
+
+Person("George", "1234") == Person("Kate", "1236")
+
+
+
+// Pattern matching
+
+
+// Regular expressions
+
+
+// Strings
+
+
+// Input and output
