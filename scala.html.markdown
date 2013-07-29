@@ -20,7 +20,7 @@ Scala - the scalable language
 
   scala>
 
-  This is the so called REPL. You can run commands in the REPL. Let do just that:
+  This is the so called REPL. You can run commands in the REPL. Let's do just that:
 */
 
 println(10) // prints the integer 10
