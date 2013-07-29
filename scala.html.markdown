@@ -1,8 +1,15 @@
 ---
 language: scala
+filename: learn.scala
 author: George Petrov
-author_url: http://www.georgepetrov.com
+author_url: http://www.github.com/petrovg
 ---
+
+Scala - the scalable language
+
+```c
+
+
 
 /*
   Set yourself up:
