@@ -5,7 +5,7 @@ contributors:
 filename: learn-emacs-lisp.el
 ---
 
-```elisp
+```scheme
 ;; This gives an introduction to Emacs Lisp in 15 minutes (v0.2a)
 ;;
 ;; First make sure you read this text by Peter Norvig:
@@ -14,7 +14,7 @@ filename: learn-emacs-lisp.el
 ;; Then install GNU Emacs 24.3:
 ;;
 ;; Debian: apt-get install emacs (or see your distro instructions)
-;; MacOSX: http://emacsformacosx.com/emacs-builds/Emacs-24.3-universal-10.6.8.dmg
+;; OSX: http://emacsformacosx.com/emacs-builds/Emacs-24.3-universal-10.6.8.dmg
 ;; Windows: http://ftp.gnu.org/gnu/windows/emacs/emacs-24.3-bin-i386.zip
 ;;
 ;; More general information can be found at:
