@@ -35,7 +35,7 @@ filename: learn-emacs-lisp.el
 ;; Now look at the gray line at the bottom of the window:
 ;;
 ;; "*scratch*" is the name of the editing space you are now in.
-;: This editing space is called a "buffer".
+;; This editing space is called a "buffer".
 ;;
 ;; The scratch buffer is the default buffer when opening Emacs.
 ;; You are never editing files: you are editing buffers that you
@@ -171,7 +171,7 @@ filename: learn-emacs-lisp.el
 ;; Let's format a string:
 (format "Hello %s!\n" "visitor")
 
-;; %s is a place-holder for a string, replaced by "Alice".
+;; %s is a place-holder for a string, replaced by "visitor".
 ;; \n is the newline character.
 
 ;; Let's refine our function by using format:
