@@ -31,8 +31,8 @@ You shouldn't either
 10 * 2 #=> 20
 35 / 5 #=> 7
 
-## Arithmetic is just syntactic sugar
-## for calling a method on an object
+# Arithmetic is just syntactic sugar
+# for calling a method on an object
 1.+(3) #=> 4
 10.* 5 #=> 50 
 
