@@ -12,8 +12,8 @@ It has also borrowed a lot of functions and syntax from Haskell(a non-related la
 
 These docs were written by the creator of the language himself. So is this line.
 
-``` lisp
-; Comments are like LISP. Semi-solons...
+```scheme
+; Comments are like LISP. Semi-colons...
 
 ; Majority of first-level statements are inside "forms"
 ; which are just things inside parens separated by whitespace
@@ -107,14 +107,14 @@ undefined ; user to indicate a value that hasn't been set
 ; They basically are just forms without functions at the beginning.
 (1 2 3) ; => [1, 2, 3] (JavaScript syntax)
 
-; Dictionaries are Whip's equivalent to JavaScript 'objects' or Python 'dictionaries'
+; Dictionaries are Whip's equivalent to JavaScript 'objects' or Python 'dicts'
 ; or Ruby 'hashes': an unordered collection of key-value pairs.
 {"key1":"value1" "key2":2 3:3}
 
 ; Keys are just values, either identifier, number, or string.
 (def my_dict {my_key:"my_value" "my other key":4})
-; But in Whip, dictionaries get parsed like: value, colon, value; with whitespace between each.
-; So that means
+; But in Whip, dictionaries get parsed like: value, colon, value;
+; with whitespace between each. So that means
 {"key": "value"
 "another key"
 : 1234
@@ -122,7 +122,8 @@ undefined ; user to indicate a value that hasn't been set
 ; is evaluated to the same as
 {"key":"value" "another key":1234}
 
-; Dictionary definitions can be accessed used the `at` function, like strings and lists.
+; Dictionary definitions can be accessed used the `at` function
+; (like strings and lists.)
 (@ "my other key" my_dict) ; => 4
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

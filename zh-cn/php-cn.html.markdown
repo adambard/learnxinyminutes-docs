@@ -4,8 +4,9 @@ contributors:
     - ["Malcolm Fell", "http://emarref.net/"]
     - ["Trismegiste", "https://github.com/Trismegiste"]
 translators:
-	- ["Chenbo Li", "http://binarythink.net"]
+    - ["Chenbo Li", "http://binarythink.net"]
 filename: learnphp.php
+lang: zh-cn
 ---
 
 这份教程所使用的版本是 PHP 5+.

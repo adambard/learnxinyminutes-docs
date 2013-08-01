@@ -4,7 +4,8 @@ filename: learnc.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
-	- ["Chenbo Li", "http://binarythink.net/"]
+    - ["Chenbo Li", "http://binarythink.net/"]
+lang: zh-cn
 ---
 
 C语言在今天仍然是高性能计算的主要选择。

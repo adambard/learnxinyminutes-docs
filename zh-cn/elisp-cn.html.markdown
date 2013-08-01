@@ -3,12 +3,15 @@ language: elisp
 contributors:
     - ["Bastien Guerry", "http://bzg.fr"]
 translators:
-	- ["Chenbo Li", "http://binarythink.net"]
+    - ["Chenbo Li", "http://binarythink.net"]
 filename: learn-emacs-lisp.el
+lang: zh-cn
 ---
 
 ```scheme
-;; 15分钟学会Emacs Lisp (v0.2a) （作者：bzg，https://github.com/bzg  译者：lichenbo，http://douban.com/people/lichenbo）
+;; 15分钟学会Emacs Lisp (v0.2a)
+;;（作者：bzg，https://github.com/bzg 
+;;  译者：lichenbo，http://douban.com/people/lichenbo）
 ;;
 ;; 请先阅读Peter Norvig的一篇好文:
 ;; http://norvig.com/21-days.html
@@ -301,7 +304,8 @@ filename: learn-emacs-lisp.el
                            (list 'face 'bold)))
     (other-window 1))
  
-;; 这个函数使用了 `re-search-forward': 和查找一个字符串不同，你用这个命令可以查找一个模式，即正则表达式
+;; 这个函数使用了 `re-search-forward':
+;; 和查找一个字符串不同，你用这个命令可以查找一个模式，即正则表达式
  
 ;; 正则表达式 "Bonjour \\(.+\\)!" 的意思是:
 ;; 字符串 "Bonjour ", 之后跟着
