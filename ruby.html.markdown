@@ -4,6 +4,7 @@ filename: learnruby.rb
 contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]
   - ["Joel Walden", "http://joelwalden.net"]
+  - ["Luke Holder", "http://twitter.com/lukeholder"]
 ---
 
 ```ruby
@@ -29,6 +30,11 @@ You shouldn't either
 8 - 1 #=> 7
 10 * 2 #=> 20
 35 / 5 #=> 7
+
+# Arithmetic is just syntactic sugar
+# for calling a method on an object
+1.+(3) #=> 4
+10.* 5 #=> 50 
 
 # Special values are objects
 nil # Nothing to see here
@@ -120,6 +126,12 @@ array = [1, "hello", false] #=> => [1, "hello", false]
 # From the front
 array[0] #=> 1
 array[12] #=> nil
+
+# Like arithmetic, [var] access
+# is just syntactic sugar
+# for calling a method [] on an object
+array.[] 0 #=> 1
+array.[] 12 #=> nil
 
 # From the end
 array[-1] #=> 5
@@ -312,4 +324,5 @@ dwight.name #=> "Dwight K. Schrute"
 
 # Call the class method
 Human.say("Hi") #=> "Hi"
+
 ```
