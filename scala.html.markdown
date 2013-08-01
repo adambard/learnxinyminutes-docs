@@ -2,6 +2,7 @@
 language: Scala
 contributors:
     - ["George Petrov", "http://github.com/petrovg"]
+    - ["Dominic Bou-Samra, "http://dbousamra.github.com"]
 filename: learn.scala
 ---
 
@@ -28,7 +29,43 @@ println(10) // prints the integer 10
 println("Boo!") // printlns the string Boo!
 
 
-// Evaluating a command gives you the type and value of the result
+// Some basics
+
+// Printing, and forcing a new line on the next print
+println("Hello world!")
+// Printing, without forcing a new line on next print
+print("Hello world")
+
+// Declaring values is done using either var or val
+// val declarations are immutable, whereas var's are mutable. Immutablility is a good thing.
+val x = 10 // x is now 10
+x = 20 // error: reassignment to val
+var x = 10 
+x = 20  // x is now 20
+
+//  Single line comments start with two forward slashes
+/* 
+Multi line comments look like this.
+*/
+
+// Boolean values
+true
+false
+
+// Boolean operations
+!true // false
+!false // true
+true == false // false
+10 > 5 // true
+
+// Math is as per usual
+1 + 1 // 2
+2 - 1 // 1
+5 * 3 // 15
+6 / 2 // 3
+
+
+// Evaluating a command in the REPL gives you the type and value of the result
 
 1 + 7
 
@@ -63,6 +100,20 @@ val sq = (x:Int) => x * x
 */
 
 sq(10)   // Gives you this: res33: Int = 100. The result is the Int with a value 100
+
+// Scala allows methods and functions to return, or take as parameters, other functions or methods.
+
+val add10: Int => Int = _ + 10 // A function taking an Int and returning an Int
+List(1, 2, 3) map add10 // List(11, 12, 13) - add10 is applied to each element
+
+// Anonymous functions can be used instead of named functions:
+List(1, 2, 3) map (x => x + 10)
+
+// And the underscore symbol, can be used if there is just one argument to the anonymous function. It gets bound as the variable
+List(1, 2, 3) map (_ + 10)
+
+TODO // If the anonymous block AND the function you are applying both take one argument, you can even omit the underscore
+List("Dom", "Bob", "Natalia") foreach println
 
 
 
@@ -124,6 +175,20 @@ sSquared.filter(_ < 10)
 
 sSquared.reduce (_+_)
 
+// The filter function takes a predicate (a function from A -> Boolean) and selects all elements which satisfy the predicate
+List(1, 2, 3) filter (_ > 2) // List(3)
+List(
+  Person(name = "Dom", age = 23), 
+  Person(name = "Bob", age = 30)
+).filter(_.age > 25) // List(Person("Bob", 30))
+
+
+// Scala a foreach method defined on certain collections that takes a type returning Unit (a void method)
+aListOfNumbers foreach (x => println(x))
+aListOfNumbers foreach println
+
+
+
 
 // For comprehensions
 
@@ -152,6 +217,7 @@ r foreach println
 
 (5 to 1 by -1) foreach ( println )
 
+// A while loops
 var i = 0
 while (i < 10) {  println("i " + i); i+=1  }
 
@@ -162,8 +228,14 @@ i    // Show the value of i. Note that while is a loop in the classical sense - 
      // loops, but using the combinators and comprehensions above is easier to understand
      // and parallelize
 
-// Tail recursion is an idiomatic way of doing things in Scala. Recursive functions need an 
-// explicit return type, the compile can't infer it. Here it's Unit.
+// A do while loop
+do { 
+  println("x is still less then 10"); 
+  x += 1
+} while (x < 10)
+
+// Tail recursion is an idiomatic way of doing recurring things in Scala. Recursive functions need an 
+// explicit return type, the compiler can't infer it. Here it's Unit.
 def showNumbersInRange(a:Int, b:Int):Unit = { print(a); if (a < b) showNumbersInRange(a+1, b)  }
 
 
@@ -175,7 +247,7 @@ val x = 10
 if (x == 1) println("yeah")
 if (x == 10) println("yeah")
 if (x == 11) println("yeah")
-if (x == 11) println ("yeah") else println("nope")
+if (x == 11) println ("yeah") else println("nay")
 
 println(if (x == 10) "yeah" else "nope")
 val text = if (x == 10) "yeah" else "nope"
@@ -183,7 +255,20 @@ val text = if (x == 10) "yeah" else "nope"
 var i = 0
 while (i < 10) { println("i " + i); i+=1  }
 
+
+
 // Object oriented features
+
+// Classname is Dog
+class Dog {
+  //A method called bark, returning a String
+  def bark: String = {
+    // the body of the method
+    "Woof, woof!"
+  }
+}
+
+// Classes can contain nearly any other construct, including other classes, functions, methods, objects, case classes, traits etc.
 
 
 
@@ -230,6 +315,12 @@ val email(user, domain) = "henry@zkpr.com"
 
 // Strings
 
+"Scala strings are surrounded by double quotes" //
+'a' // A Scala Char
+'Single quote strings don't exist' // Error
+"Strings have the usual Java methods defined on them".length
+"They also have some extra Scala methods.".reverse // See scala.collection.immutable.StringOps
+
 println("ABCDEF".length)
 println("ABCDEF".substring(2, 6))
 println("ABCDEF".replace("C", "3"))
@@ -250,7 +341,44 @@ val html = """<form id="daform">
               </form>"""
 
 
+
+// Application structure and organization
+
+// Importing things
+import scala.collection.immutable.List
+
+// Import all "sub packages"
+import scala.collection.immutable._
+
+// Import multiple classes in one statement
+import scala.collection.immutable.{List, Map}
+
+// Rename an import using '=>'
+import scala.collection.immutable{ List => ImmutableList }
+
+// Import all classes, except some. The following excludes Map and Set:
+import scala.collection.immutable.{Map => _, Set => _, _}
+
+// Your programs entry point is defined in an scala file using an object, with a single method, main:
+object Application {
+  def main(args: Array[String]): Unit = {
+    // stuff goes here.
+  }
+}
+
+// Files can contain multiple classes and objects. Compile with scalac
+
+
+
+
 // Input and output
+
+// To read a file line by line
+import scala.io.Source
+for(line <- Source.fromPath("myfile.txt").getLines())
+  println(line)
+
+// To write a file use Java's PrintWriter
 
 
 ```
@@ -264,3 +392,4 @@ val html = """<form id="daform">
 [The scala documentation]
 
 Join the [Scala user group](https://groups.google.com/forum/#!forum/scala-user)
+
