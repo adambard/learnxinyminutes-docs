@@ -1,4 +1,6 @@
 ---
+name: c
+category: language
 language: c
 filename: learnc.c
 contributors:

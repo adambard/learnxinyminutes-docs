@@ -1,12 +1,13 @@
 ---
-
+name: java
+category: language
 language: java
+lang: zh-cn
+filename: LearnJava.java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:
-	- ["Chenbo Li", "http://binarythink.net"]
-filename: LearnJava.java
-
+    - ["Chenbo Li", "http://binarythink.net"]
 ---
 
 Java是一个通用的程序语言, 包含并发, 基于类的面向对象等特性

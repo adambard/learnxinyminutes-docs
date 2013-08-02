@@ -1,9 +1,12 @@
 ---
 language: javascript
-author: Adam Brenecki
-author_url: http://adam.brenecki.id.au
-translator: Chenbo Li
-translator_url: http://binarythink.net
+category: language
+name: javascript
+contributors:
+    - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+translators:
+    - ["Chenbo Li", "http://binarythink.net"]
+lang: zh-cn
 ---
 
 Javascript于1995年由网景公司的Brendan Eich发明。
