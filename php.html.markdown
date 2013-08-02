@@ -9,7 +9,7 @@ filename: learnphp.php
 This document describes PHP 5+.
 
 ```php
-<?php // PHP code must be enclosed with <?php ? > tags
+<?php // PHP code must be enclosed with <?php ?> tags
 
 // If your php file only contains PHP code, it is best practise
 // to omit the php closing tag.
@@ -98,6 +98,21 @@ END;
 
 // String concatenation is done with .
 echo 'This string ' . 'is concatenated';
+
+
+/********************************
+ * Constants
+ */
+ 
+// A constant is defined by using define()
+// and can never be changed during runtime!
+
+// a valid constant name starts with a letter or underscore,
+// followed by any number of letters, numbers, or underscores.
+define("FOO",     "something");
+
+// access to a constant is possible by direct using the choosen name
+echo 'This outputs '.FOO;
 
 
 /********************************
