@@ -126,7 +126,7 @@ $ git help
 $ git help -a
 
 # Command specific help - user manual
-$ git help <command_here>
+# git help <command_here>
 $ git help add
 $ git help commit
 $ git help init
