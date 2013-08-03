@@ -9,7 +9,7 @@ filename: learnphp.php
 This document describes PHP 5+.
 
 ```php
-<?php // PHP code must be enclosed with <?php ?> tags
+<?php // PHP code must be enclosed with <?php tags
 
 // If your php file only contains PHP code, it is best practise
 // to omit the php closing tag.
@@ -31,7 +31,8 @@ echo "World\n"; // Prints "World" with a line break
 // (all statements must end with a semicolon)
 
 // Anything outside <?php tags is echoed automatically
-?>Hello World Again!
+?>
+Hello World Again!
 <?php
 
 
