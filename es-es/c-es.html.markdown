@@ -4,23 +4,23 @@ filename: learnc.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
-    - ["Francisco GarcÌa", "http://flaskbreaker.tumblr.com/"]
+    - ["Francisco Garc√≠a", "http://flaskbreaker.tumblr.com/"]
 lang: es-es
 ---
 
-°Ah!, C. Aun hoy en dÌa sigue siendo el lenguaje por excelencia de la 
-computaciÛn moderna de alto rendimiento.
+¬°Ah!, C. Aun hoy en d√≠a sigue siendo el lenguaje por excelencia de la 
+computaci√≥n moderna de alto rendimiento.
 
-C es el lenguaje de m·s bajo nivel que la mayorÌa de los programadores
-llegar·n a usar, pero lo compensa de sobra con pura velocidad. Solo
-ten en cuenta el manejo manual de memoria y te llevar· tan lejos como
+C es el lenguaje de m√°s bajo nivel que la mayor√≠a de los programadores
+llegar√°n a usar, pero lo compensa de sobra con pura velocidad. Solo
+ten en cuenta el manejo manual de memoria y te llevar√° tan lejos como
 necesites.
 
 ```c
-// Los comentarios de una sola lÌnea comienzan con //
+// Los comentarios de una sola l√≠nea comienzan con //
 
 /*
-Los comentarios multilÌnea tienen este aspecto.
+Los comentarios multil√≠nea tienen este aspecto.
 */
 
 // Importa cabeceras con #include
@@ -33,12 +33,12 @@ Los comentarios multilÌnea tienen este aspecto.
 void function_1();
 void function_2();
 
-// El punto de entrada de tu programa es una funciÛn llamada main con
+// El punto de entrada de tu programa es una funci√≥n llamada main con
 // retorno de tipo entero (integer).
 int main() {
 
 // Muestra la salida usando printf, para el "formato print"
-// %d es un entero, \n es una nueva lÌnea
+// %d es un entero, \n es una nueva l√≠nea
 printf("%d\n", 0); // => Muestra 0
 // Todas las sentencias deben terminar con un punto y coma.
 
@@ -46,9 +46,9 @@ printf("%d\n", 0); // => Muestra 0
 // Tipos
 ///////////////////////////////////////
 
-// Tienes que declarar una variable antes de usarla. La declaraciÛn de una
+// Tienes que declarar una variable antes de usarla. La declaraci√≥n de una
 // variable necesites que especifiques su tipo; el tipo de una variable
-// determina su tamaÒo en bytes.
+// determina su tama√±o en bytes.
 
 // 'ints' (enteros) son normalmente de 4 bytes
 int x_int = 0;
@@ -65,53 +65,53 @@ char y_char = 'y'; // Los caracteres literales se entrecomillan con ''
 long x_long = 0;
 long long x_long_long = 0; 
 
-// 'floats' son normalmente n˙meros de coma flotante de 32 bits
+// 'floats' son normalmente n√∫meros de coma flotante de 32 bits
 float x_float = 0.0;
 
-// 'doubles' son normalmente n˙meros de coma flotante de 64 bits
+// 'doubles' son normalmente n√∫meros de coma flotante de 64 bits
 double x_double = 0.0;
 
 // Todos los tipos enteros pueden ser 'unsigned'. Esto significa que no
-// pueden ser negativos, pero el valor m·ximo de una variable 'unsigned'
-// es mayor que el de una no 'unsigned' del mismo tamaÒo.
+// pueden ser negativos, pero el valor m√°ximo de una variable 'unsigned'
+// es mayor que el de una no 'unsigned' del mismo tama√±o.
 unsigned char ux_char;
 unsigned short ux_short;
 unsigned int ux_int;
 unsigned long long ux_long_long;
 
-// Todos menos 'char', que es siempre de 1 byte, varÌan el tamaÒo 
-// dependiendo de tu m·quina. sizeof(T) te dice el tamaÒo de una variable
-// de tipo T en bytes por lo que podemos expresar el tamaÒo de estos tipos
+// Todos menos 'char', que es siempre de 1 byte, var√≠an el tama√±o 
+// dependiendo de tu m√°quina. sizeof(T) te dice el tama√±o de una variable
+// de tipo T en bytes por lo que podemos expresar el tama√±o de estos tipos
 // portatilmente.
 // Por ejemplo,
-printf("%lu\n", sizeof(int)); // => 4 (en m·quinas con 'words' de 4 bytes)
+printf("%lu\n", sizeof(int)); // => 4 (en m√°quinas con 'words' de 4 bytes)
 
-// Los arrays deben ser inicializados con un tamaÒo concreto.
+// Los arrays deben ser inicializados con un tama√±o concreto.
 char my_char_array[20]; // Este array ocupa 1 * 20 = 20 bytes
 int my_int_array[20]; // Este array ocupa 4 * 20 = 80 bytes
                       // (suponiendo que tenemos 'words' de 4-byte)
 
 
-// Puedes inicializar un array a 0 asÌ:
+// Puedes inicializar un array a 0 as√≠:
 char my_array[20] = {0};
 
-// Indexar un array es como en otros lenguajes -o, m·s bien, otros
+// Indexar un array es como en otros lenguajes -o, m√°s bien, otros
 // lenguajes son como C-
 my_array[0]; // => 0
 
-// Los arrays varÌan; °son sÛlo memoria!
+// Los arrays var√≠an; ¬°son s√≥lo memoria!
 my_array[1] = 2;
 printf("%d\n", my_array[1]); // => 2
 
-// Las cadenas (strings) son sÛlo arrays de 'chars' (caracteres)
-// terminados en un byte NUL (0x00), representado en las cadenas como el car·cter especial '\0'.
-// (No tenemos porquÈ aÒadir el byte nulo en cadenas literales; el
-//  compilador lo aÒade al final por nosotros.)
+// Las cadenas (strings) son s√≥lo arrays de 'chars' (caracteres)
+// terminados en un byte NUL (0x00), representado en las cadenas como el car√°cter especial '\0'.
+// (No tenemos porqu√© a√±adir el byte nulo en cadenas literales; el
+//  compilador lo a√±ade al final por nosotros.)
 char a_string[20] = "Esto es una cadena";
 printf("%s\n", a_string); // %s se sutituye por una cadena.
 
 /*
-Te habr·s dado cuenta de que a_string es solo de 18 caracteres.
+Te habr√°s dado cuenta de que a_string es solo de 18 caracteres.
 El 'char' #19 es el byte nulo. 
 El 'char' #20 es de valor indefinido.
 */
@@ -122,22 +122,22 @@ printf("%d\n", a_string[18]); // => 0
 // Operadores
 ///////////////////////////////////////
 
-int i1 = 1, i2 = 2; // Forma corta de declaraciÛn m˙ltiple
+int i1 = 1, i2 = 2; // Forma corta de declaraci√≥n m√∫ltiple
 float f1 = 1.0, f2 = 2.0;
 
-// La aritmÈtica es sencilla
+// La aritm√©tica es sencilla
 i1 + i2; // => 3
 i2 - i1; // => 1
 i2 * i1; // => 2
 i1 / i2; // => 0 (0.5, pero es truncado tras el 0)
 
-f1 / f2; // => 0.5, m·s o menos Èpsilon
-// MÛdulo est· tambiÈn
+f1 / f2; // => 0.5, m√°s o menos √©psilon
+// M√≥dulo est√° tambi√©n
 11 % 3; // => 2
 
-// Los operadores de comparaciÛn te resultaran familiares, pero no hay
+// Los operadores de comparaci√≥n te resultaran familiares, pero no hay
 // booleanos en C. Usamos enteros (ints) en su lugar. 0 es falso,
-// cualquier otra cosa es verdadero. (Los operadores de comparaciÛn 
+// cualquier otra cosa es verdadero. (Los operadores de comparaci√≥n 
 // siempre devuelven 0 o 1)
 3 == 2; // => 0 (Falso)
 3 != 2; // => 1 (Verdadero)
@@ -146,16 +146,16 @@ f1 / f2; // => 0.5, m·s o menos Èpsilon
 2 <= 2; // => 1
 2 >= 2; // => 1
 
-// La lÛgica funiona en enteros
-!3; // => 0 (not lÛgico)
+// La l√≥gica funiona en enteros
+!3; // => 0 (not l√≥gico)
 !0; // => 1
-1 && 1; // => 1 (and lÛgico)
+1 && 1; // => 1 (and l√≥gico)
 0 && 1; // => 0
-0 || 1; // => 1 (or lÛgico)
+0 || 1; // => 1 (or l√≥gico)
 0 || 0; // => 0
 
-// °Operadores de bits!
-~0x0F; // => 0xF0 (NegaciÛn)
+// ¬°Operadores de bits!
+~0x0F; // => 0xF0 (Negaci√≥n)
 0x0F & 0xF0; // => 0x00 (AND)
 0x0F | 0xF0; // => 0xFF (OR)
 0x04 ^ 0x0F; // => 0x0B (XOR)
@@ -177,7 +177,7 @@ if (0) {
 // Mientras el bucle exista
 int ii = 0;
 while (ii < 10) {
-    printf("%d, ", ii++); // ii++ incrementa ii en uno, despuÈs de usar su valor.
+    printf("%d, ", ii++); // ii++ incrementa ii en uno, despu√©s de usar su valor.
 } // => muestra "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
 printf("\n");
@@ -190,7 +190,7 @@ do {
 
 printf("\n");
 
-// Bucles 'for' tambiÈn
+// Bucles 'for' tambi√©n
 int jj;
 for (jj=0; jj < 10; jj++) {
     printf("%d, ", jj);
@@ -207,13 +207,13 @@ printf("\n");
 
 int x_hex = 0x01; // Puedes asignar hexadecimales a variables
 
-// El cambio de tipos intentar· mantener sus valores numÈricos
+// El cambio de tipos intentar√° mantener sus valores num√©ricos
 printf("%d\n", x_hex); // => Muestra 1
 printf("%d\n", (short) x_hex); // => Muestra 1
 printf("%d\n", (char) x_hex); // => Muestra 1
 
 // Los tipos se desbordan sin aviso
-printf("%d\n", (char) 257); // => 1 (El valor m·ximo de un 'char' es 255)
+printf("%d\n", (char) 257); // => 1 (El valor m√°ximo de un 'char' es 255)
 
 // Los tipos enteros puden cambiarse a tipos de coma flotante, y viceversa
 printf("%f\n", (float)100); // %f se sustituye por un 'float'
@@ -224,28 +224,28 @@ printf("%d\n", (char)100.0);
 // Punteros
 ///////////////////////////////////////
 
-// Un puntero es una variable declarada para almacenar una direcciÛn de 
-// memoria. Su declaraciÛn adem·s nos dir· el tipo de dato al que apunta. 
-// Puedes obtener la direcciÛn de memoria de tus variables, y despuÈs
+// Un puntero es una variable declarada para almacenar una direcci√≥n de 
+// memoria. Su declaraci√≥n adem√°s nos dir√° el tipo de dato al que apunta. 
+// Puedes obtener la direcci√≥n de memoria de tus variables, y despu√©s
 // enlazarlas con ellos.
 
 int x = 0;
-printf("%p\n", &x); // Usa & para obtener la direcciÛn de una variable.
+printf("%p\n", &x); // Usa & para obtener la direcci√≥n de una variable.
 // (%p se sustituye por un puntero)
-// => Muestra alguna direcciÛn de memoria;
+// => Muestra alguna direcci√≥n de memoria;
 
-// Los tipos de puntero terminan con * en su declaraciÛn
+// Los tipos de puntero terminan con * en su declaraci√≥n
 int* px; // px es un puntero a un 'int'
-px = &x; // Almacena la direcciÛn de x en px
-printf("%p\n", px); // => Muestra alguna direcciÛn de memoria
+px = &x; // Almacena la direcci√≥n de x en px
+printf("%p\n", px); // => Muestra alguna direcci√≥n de memoria
 
-// Para obtener el valor de la direcciÛn a la que apunta un puntero, pon
+// Para obtener el valor de la direcci√≥n a la que apunta un puntero, pon
 // * delante para desreferenciarle. 
-printf("%d\n", *px); // => Muestra 0, el valor de x y de la direcciÛn a la
+printf("%d\n", *px); // => Muestra 0, el valor de x y de la direcci√≥n a la
                      //    que apunta px
 
-// TambiÈn puedes cambiar el valor al que est· apuntando el puntero.
-// Tenemos que meter la desreferencia entre parÈntesis porque ++ tiene
+// Tambi√©n puedes cambiar el valor al que est√° apuntando el puntero.
+// Tenemos que meter la desreferencia entre par√©ntesis porque ++ tiene
 // prioridad frente a *.
 (*px)++; // Incrementa el valor al que apunta px en 1
 printf("%d\n", *px); // => Muestra 1
@@ -267,24 +267,24 @@ int* x_ptr = x_array;
 printf("%d\n", *(x_ptr)); // => Muestra 20
 printf("%d\n", x_array[0]); // => Muestra 20
 
-// Los punteros aumentan y disminuyen en funciÛn de su tipo.
+// Los punteros aumentan y disminuyen en funci√≥n de su tipo.
 printf("%d\n", *(x_ptr + 1)); // => Muestra 19
 printf("%d\n", x_array[1]); // => Muestra 19
 
-// Puedes tambiÈn asigner dinamicamente bloques contiguos de memoria con
-// la funciÛn malloc de la librerÌa est·ndard, que toma un entero como
-// argumento representando el n˙mero de bytes a asignar de la pila.
+// Puedes tambi√©n asigner dinamicamente bloques contiguos de memoria con
+// la funci√≥n malloc de la librer√≠a est√°ndard, que toma un entero como
+// argumento representando el n√∫mero de bytes a asignar de la pila.
 int* my_ptr = (int*) malloc(sizeof(int) * 20);
 for (xx=0; xx<20; xx++) {
-    *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx funcionarÌa tambiÈn aquÌ
+    *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx funcionar√≠a tambi√©n aqu√≠
 } // Inicializa la memoria a 20, 19, 18, 17... 2, 1 (como 'ints')
 
-// Desreferenciando la memoria que no has asignado te dar· resultados
+// Desreferenciando la memoria que no has asignado te dar√° resultados
 // impredecibles
 printf("%d\n", *(my_ptr + 21)); // => Prints who-knows-what?
 
-// Cuando hallas acabado con el bloque de memorÌa malloc, necesitas 
-// liberarlo o sino nadie m·s podr· usarlo hasta que tu programa se cierre
+// Cuando hallas acabado con el bloque de memor√≠a malloc, necesitas 
+// liberarlo o sino nadie m√°s podr√° usarlo hasta que tu programa se cierre
 free(my_ptr);
 
 // Las cadenas pueden ser 'arrays' de chars, pero normalmente se
@@ -294,13 +294,13 @@ char* my_str = "This is my very own string";
 printf("%c\n", *my_str); // => 'T'
 
 function_1();
-} // fin de la funciÛn main
+} // fin de la funci√≥n main
 
 ///////////////////////////////////////
 // Funciones
 ///////////////////////////////////////
 
-// Sintexis de la declaraciÛn de funciones:
+// Sintexis de la declaraci√≥n de funciones:
 // <tipo de retorno> <nombre>(<argumentos>)
 
 int add_two_ints(int x1, int x2){
@@ -315,13 +315,13 @@ valores.
 Ejemplo: invertidor de cadenas in-situ
 */
 
-// Una funciÛn 'void' no retorna valor
+// Una funci√≥n 'void' no retorna valor
 void str_reverse(char* str_in){
     char tmp;
-    int ii=0, len = strlen(str_in); // Strlen es parte de la librerÌa 
-    for(ii=0; ii<len/2; ii++){      // est·ndard
+    int ii=0, len = strlen(str_in); // Strlen es parte de la librer√≠a 
+    for(ii=0; ii<len/2; ii++){      // est√°ndard
         tmp = str_in[ii];
-        str_in[ii] = str_in[len - ii - 1]; // ii-th ˙ltimo 'char'
+        str_in[ii] = str_in[len - ii - 1]; // ii-th √∫ltimo 'char'
         str_in[len - ii - 1] = tmp;
     }
 }
@@ -333,14 +333,14 @@ printf("%s\n", c); // => ".abeurp anu se otsE"
 */
 
 ///////////////////////////////////////
-// DefiniciÛn de tipos y estructuras
+// Definici√≥n de tipos y estructuras
 ///////////////////////////////////////
 
 // Los 'Typedefs' pueden ser utilizados para crear alias de tipos.
 typedef int my_type;
 my_type my_type_var = 0;
 
-// Las estructuras son sÛlo grupos de datos.
+// Las estructuras son s√≥lo grupos de datos.
 struct rectangle {
     int width;
     int height;
@@ -365,7 +365,7 @@ void function_1(){
     my_rec_ptr->height = 10; // Lo mismo que (*my_rec_ptr).height = 10;
 }
 
-// Puedes aplicar un 'typedef' a una estructura por conveniencÌa.
+// Puedes aplicar un 'typedef' a una estructura por convenienc√≠a.
 typedef struct rectangle rect;
 
 int area(rect r){
@@ -376,26 +376,26 @@ int area(rect r){
 // Punteros a Funciones
 ///////////////////////////////////////
 /*
-En tiempo de ejecuciÛn,  las funciones se localizan en unas direcciones de
+En tiempo de ejecuci√≥n,  las funciones se localizan en unas direcciones de
 memoria concretas. Los punteros a funciones son como cualquier otro 
-puntero (almacenan una direcciÛn de memoria), pero pueden ser usados para 
+puntero (almacenan una direcci√≥n de memoria), pero pueden ser usados para 
 utilizar funciones directamente, o para pasar 'handlers' (o funciones 
 'callback') por todos lados.
-Sin embargo, la sintaxis de definiciÛn parecera confusa al principio.
+Sin embargo, la sintaxis de definici√≥n parecera confusa al principio.
 
 Ejemplo: usar str_reverse desde un puntero
 */
 void str_reverse_through_pointer(char * str_in) {
-    // Define un puntero a una funciÛn, llamado f.
-    void (*f)(char *); // La armadura debe coincidir exactamente con al funciÛn objetivo.
-    f = &str_reverse; // Assigna la direcciÛn de la funciÛn (determinado en tiempo de ejecuiÛn)
-    (*f)(str_in); // Llamando la funciÛn desde el puntero
-    // f(str_in); // Esta es una alternativa para llamarla pero con una sintaxis igual de v·lida.
+    // Define un puntero a una funci√≥n, llamado f.
+    void (*f)(char *); // La armadura debe coincidir exactamente con al funci√≥n objetivo.
+    f = &str_reverse; // Assigna la direcci√≥n de la funci√≥n (determinado en tiempo de ejecui√≥n)
+    (*f)(str_in); // Llamando la funci√≥n desde el puntero
+    // f(str_in); // Esta es una alternativa para llamarla pero con una sintaxis igual de v√°lida.
 }
 
 /*
-Tanto tiempo como las armaduras de las funciones coincidan, podr·s asignar
-cualquier funciÛn al mismo puntero.
+Tanto tiempo como las armaduras de las funciones coincidan, podr√°s asignar
+cualquier funci√≥n al mismo puntero.
 Los punteros a funciones  son normalmente envueltos en 'typedef' para
 simplificar su legibilidad, como sigue:
 */
