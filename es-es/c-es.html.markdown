@@ -104,9 +104,10 @@ my_array[1] = 2;
 printf("%d\n", my_array[1]); // => 2
 
 // Las cadenas (strings) son sólo arrays de 'chars' (caracteres)
-// terminados en un byte NUL (0x00), representado en las cadenas como el carácter especial '\0'.
+// terminados en un byte NUL (0x00), representado en las cadenas como el
+// carácter especial '\0'.
 // (No tenemos porqué añadir el byte nulo en cadenas literales; el
-//  compilador lo añade al final por nosotros.)
+// compilador lo añade al final por nosotros.)
 char a_string[20] = "Esto es una cadena";
 printf("%s\n", a_string); // %s se sutituye por una cadena.
 
@@ -387,10 +388,17 @@ Ejemplo: usar str_reverse desde un puntero
 */
 void str_reverse_through_pointer(char * str_in) {
     // Define un puntero a una función, llamado f.
-    void (*f)(char *); // La armadura debe coincidir exactamente con al función objetivo.
-    f = &str_reverse; // Assigna la dirección de la función (determinado en tiempo de ejecuión)
-    (*f)(str_in); // Llamando la función desde el puntero
-    // f(str_in); // Esta es una alternativa para llamarla pero con una sintaxis igual de válida.
+    void (*f)(char *);
+    // La armadura debe coincidir exactamente con al función objetivo.
+
+    // Assigna la dirección de la función (determinado en tiempo de ejecuión)
+    f = &str_reverse;
+
+    // Llamando la función desde el puntero
+    (*f)(str_in);
+
+    // Esta es una alternativa para llamarla pero con una sintaxis igual de válida.
+    // f(str_in);
 }
 
 /*
