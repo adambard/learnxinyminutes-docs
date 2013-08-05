@@ -241,7 +241,7 @@ i // = 5 - not undefined as you'd expect in a block-scoped language
 // This has led to a common pattern of "immediately-executing anonymous
 // functions", which prevent temporary variables from leaking into the global
 // scope.
-function(){
+(function(){
     var temporary = 5
     // We can access the global scope by assiging to the 'global object', which
     // in a web browser is always 'window'. The global object may have a
@@ -249,7 +249,7 @@ function(){
     window.permanent = 10
     // Or, as previously mentioned, we can just leave the var keyword off.
     permanent2 = 15
-}()
+})()
 temporary // raises ReferenceError
 permanent // = 10
 permanent2 // = 15
