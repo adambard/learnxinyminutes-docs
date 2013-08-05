@@ -113,7 +113,7 @@ echo 'This string ' . 'is concatenated';
 define("FOO",     "something");
 
 // access to a constant is possible by direct using the choosen name
-echo 'This outputs '.FOO;
+echo 'This outputs '.$FOO;
 
 
 /********************************
