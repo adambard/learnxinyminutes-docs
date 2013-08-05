@@ -70,7 +70,7 @@ double x_double = 0.0;
 
 // Integral types may be unsigned. This means they can't be negative, but
 // the maximum value of an unsigned variable is greater than the maximum
-// value of the same size.
+// signed value of the same size.
 unsigned char ux_char;
 unsigned short ux_short;
 unsigned int ux_int;
