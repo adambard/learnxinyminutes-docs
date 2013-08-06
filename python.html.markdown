@@ -232,7 +232,7 @@ filled_dict.setdefault("five", 6) #filled_dict["five"] is still 5
 # Sets store ... well sets
 empty_set = set()
 # Initialize a set with a bunch of values
-some_set = set([1,2,2,3,4]) # filled_set is now set([1, 2, 3, 4])
+some_set = set([1,2,2,3,4]) # some_set is now set([1, 2, 3, 4])
 
 # Since Python 2.7, {} can be used to declare a set
 filled_set = {1, 2, 2, 3, 4} # => {1 2 3 4}
