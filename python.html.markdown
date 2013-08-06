@@ -470,12 +470,19 @@ dir(math)
 
 ```
 
-## Further Reading
+## Ready For More?
 
-Still up for more? Try:
+### Free Online
 
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
 * [The Official Docs](http://docs.python.org/2.6/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
 * [Python Module of the Week](http://pymotw.com/2/)
+
+### Dead Tree
+
+* [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
+* [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
+* [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
+
