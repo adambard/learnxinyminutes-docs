@@ -12,10 +12,11 @@ filename: learn-emacs-lisp.el
 ;; Introduccion a Emacs Lisp en 15 minutos (v0.2d)
 ;;
 ;; Autor: Bastien / @bzg2 / http://bzg.fr
-;; Traducción: Guillermo Vayá
+;; Traducción: Guillermo Vayá / @Driadan / http://willyfrog.es
 ;;
 ;; Antes de nada, lee este texto de Peter Norvig:
-;; http://norvig.com/21-days.html
+;; Traducido: http://loro.sourceforge.net/notes/21-dias.html
+;; Original: http://norvig.com/21-days.html
 ;;
 ;; Ahora instala GNU Emacs 24.3:
 ;;
