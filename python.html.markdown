@@ -67,7 +67,7 @@ not False #=> True
 2 <= 2 #=> True
 2 >= 2 #=> True
 
-# Comparisons can be chained  !
+# Comparisons can be chained!
 1 < 2 < 3 #=> True
 2 < 3 < 2 #=> False
 
@@ -214,7 +214,7 @@ filled_dict.values() #=> [3, 2, 1]
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
 
- # Looking up a non-existing key is a KeyError
+# Looking up a non-existing key is a KeyError
 filled_dict["four"] # KeyError
 
 # Use get method to avoid the KeyError
@@ -263,7 +263,7 @@ filled_set | other_set #=> {1, 2, 3, 4, 5, 6}
 some_var = 5
 
 # Here is an if statement. Indentation is significant in python!
-# prints "some var is smaller than 10"
+# prints "some_var is smaller than 10"
 if some_var > 10:
     print "some_var is totally bigger than 10."
 elif some_var < 10:    # This elif clause is optional.
@@ -394,7 +394,7 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 # We subclass from object to get a class.
 class Human(object):
 
-     # A class attribute. It is shared by all instances of this class
+    # A class attribute. It is shared by all instances of this class
     species = "H. sapiens"
 
     # Basic initializer
