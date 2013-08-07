@@ -232,7 +232,7 @@ filled_dict.setdefault("five", 6) #filled_dict["five"] is still 5
 # Sets store ... well sets
 empty_set = set()
 # Initialize a set with a bunch of values
-some_set = set([1,2,2,3,4]) # filled_set is now set([1, 2, 3, 4])
+some_set = set([1,2,2,3,4]) # some_set is now set([1, 2, 3, 4])
 
 # Since Python 2.7, {} can be used to declare a set
 filled_set = {1, 2, 2, 3, 4} # => {1 2 3 4}
@@ -470,12 +470,19 @@ dir(math)
 
 ```
 
-## Further Reading
+## Ready For More?
 
-Still up for more? Try:
+### Free Online
 
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
 * [The Official Docs](http://docs.python.org/2.6/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
 * [Python Module of the Week](http://pymotw.com/2/)
+
+### Dead Tree
+
+* [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
+* [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
+* [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
+

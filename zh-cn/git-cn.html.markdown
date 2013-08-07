@@ -120,7 +120,7 @@ $ git help
 $ git help -a
 
 # 在文档当中查找特定的命令
-$ git help <命令>
+# git help <命令>
 $ git help add
 $ git help commit
 $ git help init
