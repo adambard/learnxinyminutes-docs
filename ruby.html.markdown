@@ -325,4 +325,50 @@ dwight.name #=> "Dwight K. Schrute"
 # Call the class method
 Human.say("Hi") #=> "Hi"
 
+# Class also is object in ruby. So class can have instance variables.
+# Class variable is shared among the class and all of its descendants.
+
+# base class
+class Human
+  @@foo = 0
+
+  def self.foo
+    @@foo
+  end
+
+  def self.foo=(value)
+    @@foo = value
+  end
+end
+
+#  derived class
+class Worker < Human
+end
+
+Human.foo # 0
+Worker.foo # 0
+
+Human.foo = 2 # 2
+Worker.foo # 2
+
+# Class instance variable is not shared by the class's descendants.
+
+class Human
+  @bar = 0
+
+  def self.bar
+    @bar
+  end
+
+  def self.bar=(value)
+    @bar = value
+  end
+end
+
+class Doctor < Human
+end
+
+Human.bar # 0
+Doctor.bar # nil
+
 ```
