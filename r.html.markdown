@@ -5,7 +5,7 @@ contributors:
 filename: learnr.r
 ---
 
-R is a statistical computing language. It has lots of good built-in functions for uploading and cleaning data sets, running common statistical tests, and making graphs. You can also easily compile it within a LaTeX document.
+R is a statistical computing language. It has lots of libraries for uploading and cleaning data sets, running statistical procedures, and making graphs. You can also run `R`commands within a LaTeX document.
 
 ```python
 
