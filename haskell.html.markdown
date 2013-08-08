@@ -131,7 +131,7 @@ add 1 2 -- 3
 -- with backticks:
 1 `add` 2 -- 3
 
--- You can also define functions that have no characters! This lets
+-- You can also define functions that have no letters! This lets
 -- you define your own operators! Here's an operator that does
 -- integer division
 (//) a b = a `div` b
