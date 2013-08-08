@@ -16,61 +16,242 @@ R is a statistical computing language. It has lots of good built-in functions fo
 
 # Hit COMMAND-ENTER to execute a line
 
+
+###################################################################
+# Stuff you can do without understanding anything about programming
+###################################################################
+
+data()	# Browse pre-loaded data sets
+data(rivers)	# Lengths of Major North American Rivers
+ls()	# Notice that "rivers" appears in the workspace
+head(rivers)	# peek at the dataset
+# 735 320 325 392 524 450
+length(rivers)	# how many rivers were measured?
+# 141
+summary(rivers)
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#  135.0   310.0   425.0   591.2   680.0  3710.0 
+stem(rivers)	#stem-and-leaf plot (like a histogram)
+#
+#  The decimal point is 2 digit(s) to the right of the |
+#
+#   0 | 4
+#   2 | 011223334555566667778888899900001111223333344455555666688888999
+#   4 | 111222333445566779001233344567
+#   6 | 000112233578012234468
+#   8 | 045790018
+#  10 | 04507
+#  12 | 1471
+#  14 | 56
+#  16 | 7
+#  18 | 9
+#  20 | 
+#  22 | 25
+#  24 | 3
+#  26 | 
+#  28 | 
+#  30 | 
+#  32 | 
+#  34 | 
+#  36 | 1
+
+
+stem(log(rivers))	#Notice that the data are neither normal nor log-normal! Take that, Bell Curve fundamentalists.
+
+#  The decimal point is 1 digit(s) to the left of the |
+#
+#  48 | 1
+#  50 | 
+#  52 | 15578
+#  54 | 44571222466689
+#  56 | 023334677000124455789
+#  58 | 00122366666999933445777
+#  60 | 122445567800133459
+#  62 | 112666799035
+#  64 | 00011334581257889
+#  66 | 003683579
+#  68 | 0019156
+#  70 | 079357
+#  72 | 89
+#  74 | 84
+#  76 | 56
+#  78 | 4
+#  80 | 
+#  82 | 2
+
+
+hist(rivers, col="#333333", border="white", breaks=25)	#play around with these parameters
+hist(log(rivers), col="#333333", border="white", breaks=25)	#you'll do more plotting later
+
+#Here's another neat data set that comes pre-loaded. R has tons of these. data()
+data(discoveries)
+plot(discoveries, col="#333333", lwd=3, xlab="Year", main="Number of important discoveries per year")
+plot(discoveries, col="#333333", lwd=3, type = "h", xlab="Year", main="Number of important discoveries per year")
+
+
+#rather than leaving the default ordering (by year) we could also sort to see what's typical
+sort(discoveries)
+#  [1]  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  1  1  1  1  2  2  2  2
+# [26]  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  3  3  3
+# [51]  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  4  4  4  4  4  4  4  4
+# [76]  4  4  4  4  5  5  5  5  5  5  5  6  6  6  6  6  6  7  7  7  7  8  9 10 12
+
+stem(discoveries, scale=2)
+# 
+#  The decimal point is at the |
+#
+#   0 | 000000000
+#   1 | 000000000000
+#   2 | 00000000000000000000000000
+#   3 | 00000000000000000000
+#   4 | 000000000000
+#   5 | 0000000
+#   6 | 000000
+#   7 | 0000
+#   8 | 0
+#   9 | 0
+#  10 | 0
+#  11 | 
+#  12 | 0
+
+max(discoveries)
+# 12
+
+summary(discoveries)
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#    0.0     2.0     3.0     3.1     4.0    12.0 
+
+
+
+
+#Basic statistical operations don't require any programming knowledge either
+
+#roll a die a few times
+round(runif(7, min=.5, max=6.5))
+# 1 4 6 1 4 6 4
+
+#your numbers will differ from mine unless we set the same random.seed(31337)
+
+
+#draw from a standard Gaussian 9 times
+rnorm(9)
+# [1]  0.07528471  1.03499859  1.34809556 -0.82356087  0.61638975 -1.88757271
+# [7] -0.59975593  0.57629164  1.08455362
+
+
+
+
+
+
+
+
+
 #########################
-# The absolute basics
+# Basic programming stuff
 #########################
 
 # NUMBERS
 
-# We've got doubles! Behold the "numeric" class
-5 # => [1] 5
-class(5) # => [1] "numeric"
-# We've also got integers! They look suspiciously similar,
-# but indeed are different
-5L # => [1] 5
-class(5L) # => [1] "integer"
+# "numeric" means double-precision floating-point numbers
+5	# 5
+class(5)	# "numeric"
+5e4	# 50000				#handy when dealing with large,small,or variable orders of magnitude
+6.02e23	# Avogadro's number
+1.6e-35	# Planck length
+
+# long-storage integers are written with L
+5L	# 5
+class(5L)	# "integer"
+
 # Try ?class for more information on the class() function
-# In fact, you can look up the documentation on just about anything with ?
+# In fact, you can look up the documentation on `xyz` with ?xyz
+# or see the source for `xyz` by evaluating xyz
 
-# All the normal operations!
-10 + 66 # => [1] 76
-53.2 - 4 # => [1] 49.2
-2 * 2.0 # => [1] 4
-3L / 4 # => [1] 0.75
-3 %% 2 # => [1] 1
+# Arithmetic
+10 + 66	# 76
+53.2 - 4	# 49.2
+2 * 2.0	# 4
+3L / 4	# 0.75
+3 %% 2	# 1
 
-# Finally, we've got not-a-numbers! They're numerics too
-class(NaN) # => [1] "numeric"
+# Weird number types
+class(NaN)	# "numeric"
+class(Inf)	# "numeric"
+class(-Inf)	# "numeric"		#used in for example integrate( dnorm(x), 3, Inf ) -- which obviates Z-score tables
+
+# but beware, NaN isn't the only weird type...
+class(NA)	# see below
+class(NULL)	# NULL
+
+
+# SIMPLE LISTS
+c(6, 8, 7, 5, 3, 0, 9)	# 6 8 7 5 3 0 9
+c('alef', 'bet', 'gimmel', 'dalet', 'he')	# "alef"   "bet"    "gimmel" "dalet"  "he"
+c('Z', 'o', 'r', 'o') == "Zoro"	# FALSE FALSE FALSE FALSE
+
+#some more nice built-ins
+5:15	# 5  6  7  8  9 10 11 12 13 14 15
+
+seq(from=0, to=31337, by=1337)
+#  [1]     0  1337  2674  4011  5348  6685  8022  9359 10696 12033 13370 14707
+# [13] 16044 17381 18718 20055 21392 22729 24066 25403 26740 28077 29414 30751
+
+letters
+#  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"
+# [20] "t" "u" "v" "w" "x" "y" "z"
+
+month.abb	# "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"
+
+
+# Access the n'th element of a list with list.name[n] or sometimes list.name[[n]]
+letters[18]	# "r"
+LETTERS[13]	# "M"
+month.name[9]	# "September"
+c(6, 8, 7, 5, 3, 0, 9)[3]	# 7
+
+
 
 # CHARACTERS
 
-# We've (sort of) got strings! Behold the "character" class
-"plugh" # => [1] "plugh"
-class("plugh") # "character"
 # There's no difference between strings and characters in R
+
+"Horatio"	# "Horatio"
+class("Horatio") # "character"
+substr("Fortuna multis dat nimis, nulli satis.", 9, 15)	# "multis "
+gsub('u', 'ø', "Fortuna multis dat nimis, nulli satis.")	# "Fortøna møltis dat nimis, nølli satis."
+
+
 
 # LOGICALS
 
-# We've got booleans! Behold the "logical" class
-class(TRUE) # => [1] "logical"
-class(FALSE) # => [1] "logical"
+# booleans
+class(TRUE)	# "logical"
+class(FALSE)	# "logical"
 # Behavior is normal
-TRUE == TRUE # => [1] TRUE
-TRUE == FALSE # => [1] FALSE
-FALSE != FALSE # => [1] FALSE
-FALSE != TRUE # => [1] TRUE
+TRUE == TRUE	# TRUE
+TRUE == FALSE	# FALSE
+FALSE != FALSE	# FALSE
+FALSE != TRUE	# TRUE
 # Missing data (NA) is logical, too
-class(NA) # => [1] "logical"
+class(NA)	# "logical"
+
+
 
 # FACTORS
 
 # The factor class is for categorical data
-# It has an attribute called levels that describes all the possible categories
-factor("dog")
-# =>
-# [1] dog
-# Levels: dog
-# (This will make more sense once we start talking about vectors)
+# which can be ordered (like childrens' grade levels)
+# or unordered (like gender)
+levels(factor(c("female", "male", "male", "female", "NA", "female")))	# "female" "male"   "NA" 
+
+factor(c("female", "female", "male", "NA", "female"))
+#  female female male   NA     female
+# Levels: female male NA
+
+data(infert)	#Infertility after Spontaneous and Induced Abortion
+levels(infert$education)	# "0-5yrs"  "6-11yrs" "12+ yrs"
+
+
 
 # VARIABLES
 
@@ -80,8 +261,8 @@ y <- "1" # this is preferred
 TRUE -> z # this works but is weird
 
 # We can use coerce variables to different classes
-as.numeric(y) # => [1] 1
-as.character(x) # => [1] "5"
+as.numeric(y)	# 1
+as.character(x)	# "5"
 
 # LOOPS
 
@@ -122,7 +303,7 @@ myFunc <- function(x) {
 }
 
 # Called like any other R function:
-myFunc(5) # => [1] 19
+myFunc(5)	# 19
 
 #########################
 # Fun with data: vectors, matrices, data frames, and arrays
@@ -132,35 +313,35 @@ myFunc(5) # => [1] 19
 
 # You can vectorize anything, so long as all components have the same type
 vec <- c(8, 9, 10, 11)
-vec # => [1]  8  9 10 11
+vec	#  8  9 10 11
 # The class of a vector is the class of its components
-class(vec) # => [1] "numeric"
+class(vec)	# "numeric"
 # If you vectorize items of different classes, weird coercions happen
-c(TRUE, 4) # => [1] 1 4
-c("dog", TRUE, 4) # => [1] "dog"  "TRUE" "4"
+c(TRUE, 4)	# 1 4
+c("dog", TRUE, 4)	# "dog"  "TRUE" "4"
 
 # We ask for specific components like so (R starts counting from 1)
-vec[1] # => [1] 8
+vec[1]	# 8
 # We can also search for the indices of specific components,
-which(vec %% 2 == 0) # => [1] 1 3
+which(vec %% 2 == 0)	# 1 3
 # or grab just the first or last entry in the vector
-head(vec, 1) # => [1] 8
-tail(vec, 1) # => [1] 11
+head(vec, 1)	# 8
+tail(vec, 1)	# 11
 # If an index "goes over" you'll get NA:
-vec[6] # => [1] NA
+vec[6]	# NA
 # You can find the length of your vector with length()
-length(vec) # => [1] 4
+length(vec)	# 4
 
 # You can perform operations on entire vectors or subsets of vectors
-vec * 4 # => [1] 16 20 24 28
-vec[2:3] * 5 # => [1] 25 30
+vec * 4	# 16 20 24 28
+vec[2:3] * 5	# 25 30
 # and there are many built-in functions to summarize vectors
-mean(vec) # => [1] 9.5
-var(vec) # => [1] 1.666667
-sd(vec) # => [1] 1.290994
-max(vec) # => [1] 11
-min(vec) # => [1] 8
-sum(vec) # => [1] 38
+mean(vec)	# 9.5
+var(vec)	# 1.666667
+sd(vec)	# 1.290994
+max(vec)	# 11
+min(vec)	# 8
+sum(vec)	# 38
 
 # TWO-DIMENSIONAL (ALL ONE CLASS)
 
@@ -175,11 +356,11 @@ mat
 # Unlike a vector, the class of a matrix is "matrix", no matter what's in it
 class(mat) # => "matrix"
 # Ask for the first row
-mat[1,] # => [1] 1 4
+mat[1,]	# 1 4
 # Perform operation on the first column
-3 * mat[,1] # => [1] 3 6 9
+3 * mat[,1]	# 3 6 9
 # Ask for a specific cell
-mat[3,2] # => [1] 6
+mat[3,2]	# 6
 # Transpose the whole matrix
 t(mat)
 # =>
@@ -196,7 +377,7 @@ mat2
 # [2,] "2"  "cat"  
 # [3,] "3"  "bird" 
 # [4,] "4"  "dog"
-class(mat2) # => [1] matrix
+class(mat2)	# matrix
 # Again, note what happened!
 # Because matrices must contain entries all of the same class,
 # everything got converted to the character class
@@ -216,7 +397,7 @@ mat3
 # For columns of different classes, use the data frame
 dat <- data.frame(c(5,2,1,4), c("dog", "cat", "bird", "dog"))
 names(dat) <- c("number", "species") # name the columns
-class(dat) # => [1] "data.frame"
+class(dat)	# "data.frame"
 dat
 # =>
 #   number species
@@ -224,14 +405,14 @@ dat
 # 2      2     cat
 # 3      1    bird
 # 4      4     dog
-class(dat$number) # => [1] "numeric"
-class(dat[,2]) # => [1] "factor"
+class(dat$number)	# "numeric"
+class(dat[,2])	# "factor"
 # The data.frame() function converts character vectors to factor vectors
 
 # There are many twisty ways to subset data frames, all subtly unalike
-dat$number # => [1] 5 2 1 4
-dat[,1] # => [1] 5 2 1 4
-dat[,"number"] # => [1] 5 2 1 4
+dat$number	# 5 2 1 4
+dat[,1]	# 5 2 1 4
+dat[,"number"]	# 5 2 1 4
 
 # MULTI-DIMENSIONAL (ALL OF ONE CLASS)
 
