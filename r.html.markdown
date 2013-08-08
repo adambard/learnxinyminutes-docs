@@ -14,7 +14,7 @@ R is a statistical computing language. It has lots of good built-in functions fo
 # You can't make a multi-line comment per se,
 # but you can stack multiple comments like so.
 
-# Hit COMMAND-ENTER to execute a line
+# in Windows, hit COMMAND-ENTER to execute a line
 
 
 ###################################################################
