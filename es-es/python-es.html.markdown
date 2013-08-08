@@ -20,7 +20,7 @@ service].
 Nota: Este articulo aplica específicamente para Python 2.7, pero podría ser
 aplicable a cualquier versión dentro de la rama Python 2.x.
 
-> ```python
+```python
 # Los comentarios de una linea comienzan con un signo numeral.
 """ Para escribir cadenas de multiples lineas, se utilizan tres comillas (")
     en su apertura y cierre, son  mayoritariamente usadas como comentarios.
@@ -482,13 +482,15 @@ dir(math) #[..., 'sqrt', ...]
 
 ### Contenido gratuito:
 
+* [Enlaces de información en español](http://wiki.python.org/moin/SpanishLanguage)
+* [Documentación oficial](http://docs.python.org/2.6/)
+* [Documentos en español](http://pyspanishdoc.sourceforge.net/)
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
-* [The Official Docs](http://docs.python.org/2.6/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
 * [Python Module of the Week](http://pymotw.com/2/)
 
-### Dead Tree
+### Libros
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
