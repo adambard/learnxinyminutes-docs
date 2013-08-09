@@ -120,6 +120,17 @@ Bundler will notify you of the conflict. This becomes extremely helpful as many
 gems refer to other gems (which refer to other gems), which can form a large
 dependency graph to resolve.
 
+# Testing
+
+Testing is a large of ruby culture. Ruby comes with its own Unit-style testing
+framework called minitest (Or TestUnit for ruby version 1.8.x). There are many
+testing libraries with different goals.
+
+* TestUnit - Ruby 1.8's built-in "Unit-style" testing framework
+* minitest - Ruby 1.9/2.0's built-in testing framework
+* RSpec - A testing framework that focuses on expressivity
+* Cucumber - A BDD testing framework that parses Gherkin formatted tests
+
 ## Be Nice
 
 The ruby community takes pride in being an open, diverse, welcoming community.
