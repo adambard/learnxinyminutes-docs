@@ -1,0 +1,531 @@
+---
+
+language: commonlisp
+filename: commonlisp.lisp
+contributors:
+  - ["Paul Nathan", "https://github.com/pnathan"]
+---
+
+ANSI Common Lisp is a general purpose, multi-paradigm programming
+language suited for a wide variety of industry applications. It is
+frequently referred to a programmable programming language.
+
+The classic starting point is [Practical Common Lisp and freely available.](http://www.gigamonkeys.com/book/)
+
+Another popular and recent book is
+[Land of Lisp](http://landoflisp.com/).
+
+
+
+```commonlisp
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 0. Syntax
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;; General form.
+
+;; Lisp has two fundamental pieces of syntax: the ATOM and the
+;; S-expression. Typically, grouped S-expressions are called `forms`.
+
+10  ; an atom; it evaluates to itself
+
+:THING ;Another atom; evaluating to the symbol :thing.
+
+t  ; another atom, denoting true.
+
+(+ 1 2 3 4) ; an s-expression
+
+'(4 :foo  t)  ;another one
+
+
+;;; Comments
+
+;; Single line comments start with a semicolon; use two for normal
+;; comments, three for section comments, and four for file-level
+;; comments.
+
+#| Block comments
+   can span multiple lines and...
+    #|
+       they can be nested!
+    |#
+|#
+
+;;; Environment.
+
+;; A variety of implementations exist; most are
+;; standard-conformant. CLISP is a good starting one.
+
+;; Libraries are managed through Quicklisp.org's Quicklisp system.
+
+;; Common Lisp is usually developed with a text editor and a REPL
+;; (Read Evaluate Print Loop) running at the same time. The REPL
+;; allows for interactive exploration of the program as it is "live"
+;; in the system.
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 1. Primitive Datatypes and Operators
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;; Symbols
+
+'foo ; => FOO
+
+(intern "AAAA") ; => AAAA
+
+;;; Numbers
+9999999999999999999999 ; integers
+#b111                  ; binary => 7
+#o111                  ; octal => 73
+#x111                  ; hexadecimal => 273
+3.14159                ; floating point
+1/2                    ; ratios
+#C(1 2)                ; complex numbers
+
+
+;; Function application is written (f x y z ...)
+;; where f is a function and x, y, z, ... are operands
+;; If you want to create a literal list of data, use ' to stop it from
+;; being evaluated - literally, "quote" the data.
+'(+ 1 2) ; => (+ 1 2)
+;; You can also call a function manually:
+(funcall #'+ 1 2 3) ; => 6
+;; Some arithmetic operations
+(+ 1 1)  ; => 2
+(- 8 1)  ; => 7
+(* 10 2) ; => 20
+(expt 2 3) ; => 8
+(mod 5 2) ; => 1
+(/ 35 5) ; => 7
+(/ 1 3) ; => 1/3
+(+ #C(1 2) #C(6 -4)) ; => #C(7 -2)
+
+;;; Booleans
+t ; for true (any not-nil value is true)
+nil ; for false
+(not nil) ; => t
+(and 0 t) ; => t
+(or 0 nil) ; => 0
+
+;;; Characters
+#\A ; => #\A
+#\λ ; => #\GREEK_SMALL_LETTER_LAMDA
+#\u03BB ; => #\GREEK_SMALL_LETTER_LAMDA
+
+;;; Strings are fixed-length simple-arrays of characters.
+"Hello, world!"
+"Benjamin \"Bugsy\" Siegel"   ; backslash is an escaping character
+
+;; Strings can be concatenated too!
+(concatenate 'string "Hello " "world!") ; => "Hello world!"
+
+;; A string can be treated like a list of characters
+(elt "Apple" 0) ; => #\A
+
+;; format can be used to format strings:
+(format nil "~a can be ~a" "strings" "formatted")
+
+;; Printing is pretty easy
+(format t "Common Lisp is groovy. Dude.\n")
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 2. Variables
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; You can create a global (dynamically scoped) using defparameter
+;; a variable name can use any character except: ()[]{}",'`;#|\
+(defparameter *some-var* 5)
+*some-var* ; => 5
+
+;; You can also use unicode characters. Not very easy to use though...
+(defparameter *foo#\u03BBooo* nil)
+
+
+;; Accessing a previously unassigned variable is an undefined
+;; behavior (but possible). Don't do it.
+
+;; Local binding: `me` is bound to "dance with you" only within the
+;; (let ...). Let always returns the value of the last `form` in the
+;; let form.
+
+(let ((me "dance with you"))
+    me)
+;; => "dance with you"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 3. Structs and Collections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Structs
+(defstruct dog name breed age)
+(defparameter *rover*
+    (make-dog :name "rover"
+              :breed "collie"
+              :age 5))
+*rover* ; => #S(DOG :NAME "rover" :BREED "collie" :AGE 5)
+(dog-p *rover*) ; => t  ;; ewww)
+(dog-name *rover*) ; => "rover"
+
+;;; Pairs
+;; `cons' constructs pairs, `car' and `cdr' extract the first
+;; and second elements
+(cons 'SUBJECT 'VERB) ; => '(SUBJECT . VERB)
+(car (cons 'SUBJECT 'VERB)) ; => SUBJECT
+(cdr (cons 'SUBJECT 'VERB)) ; => VERB
+
+;;; Lists
+
+;; Lists are linked-list data structures, made of `cons' pairs and end
+;; with a `nil' (or '()) to mark the end of the list
+(cons 1 (cons 2 (cons 3 nil))) ; => '(1 2 3)
+;; `list' is a convenience variadic constructor for lists
+(list 1 2 3) ; => '(1 2 3)
+;; and a quote can also be used for a literal list value
+'(1 2 3) ; => '(1 2 3)
+
+;; Can still use `cons' to add an item to the beginning of a list
+(cons 4 '(1 2 3)) ; => '(4 1 2 3)
+
+;; Use `append' to add lists together
+(append '(1 2) '(3 4)) ; => '(1 2 3 4)
+
+;; Lists are a very basic type, so there is a wide variety of functionality for
+;; them, a few examples:
+(mapcar #1+ '(1 2 3))          ; => '(2 3 4)
+(mapcar #'+ '(1 2 3) '(10 20 30)) ; => '(11 22 33)
+(remove-if-not #'evenp '(1 2 3 4))    ; => '(2 4)
+(every #'evenp '(1 2 3 4)) ; => nil
+(some #'oddp '(1 2 3 4)) ; => T
+(butlast '(subject verb object))  ; => (SUBJECT VERB)
+
+
+;;; Vectors
+
+;; Vectors are fixed-length arrays
+#(1 2 3) ; => #(1 2 3)
+
+;; Use concatenate to add vectors together
+(concatenate 'vector #(1 2 3) #(4 5 6)) ; => #(1 2 3 4 5 6)
+
+;;; Arrays
+
+;; Both vectors and strings are special-cases of arrays.
+
+;; 2D arrays
+
+(make-array (list 2 2))
+
+; => #2A((0 0) (0 0))
+
+(make-array (list 2 2 2))
+
+; => #3A(((0 0) (0 0)) ((0 0) (0 0)))
+
+
+; access the element at 1,1,1,
+(aref (make-array (list 2 2 2)) 1 1 1)
+
+; => 0
+
+;;; Sets are just lists:
+
+(set-difference '(1 2 3 4) '(4 5 6 7)) ; => (3 2 1)
+(intersection '(1 2 3 4) '(4 5 6 7)) ; => 4
+(union '(1 2 3 4) '(4 5 6 7))        ; => (3 2 1 4 5 6 7)
+(adjoin 4 '(1 2 3 4))     ; => (1 2 3 4)
+
+;;; Dictionaries are implemented as hash tables.
+
+;; Create a hash table
+(defparameter m (hash-table))
+
+;; set a value
+(setf (gethash 'a hash-table 1))
+
+;; Retrieve a value
+(gethash 'a m) ; => 1
+
+;; Retrieving a non-present value returns a nil
+ (gethash m 'd) ;=> nil
+
+;; You can provide a default value for missing keys
+(gethash m 'd :not-found) ; => :NOT-FOUND
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 3. Functions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Use `lambda' to create anonymous functions.
+;; A function always returns the value of its last expression
+(lambda () "Hello World") ; => #<function>
+
+;; Use funcall to call lambda functions
+(funcall (lambda () "Hello World")) ; => "Hello World"
+
+;; De-anonymize the function
+(defun hello-world () "Hello World")
+(hello-world) ; => "Hello World"
+
+;; The () in the above is the list of arguments for the function
+(defun hello (name)
+    (format nil "Hello, ~a " name))
+(hello "Steve") ; => "Hello, Steve"
+
+;; Functions can have optional arguments; they default to nil
+
+(defun hello (name &optional from)
+    (if from
+        (format t "Hello, ~a, from ~a" name from)
+        (format t "Hello, ~a" name)))
+
+ (hello "Jim" "Alpacas") ;; => Hello, Jim, from Alpacas
+
+;; And the defaults can be set...
+(defun hello (name &optional (from "The world"))
+   (format t "Hello, ~a, from ~a" name from))
+
+
+;; And of course, keywords are allowed as well... usually more
+;;   flexible than &optional.
+
+(defun generalized-greeter (name &key (from "the world") (honorific "Mx"))
+    (format t "Hello, ~a ~a, from ~a" honorific name from))
+
+(generalized-greeter "Jim")   ; => Hello, Mx Jim, from the world
+
+(generalized-greeter "Jim" :from "the alpacas you met last summer" :honorific "Mr")
+; => Hello, Mr Jim, from the alpacas you met last summer
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 4. Equality
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Common Lisp has a sophisticated equality system.
+
+;; for numbers use `='
+(= 3 3.0) ; => t
+(= 2 1) ; => nil
+
+;; for object identity (approximately) use `eq?'
+(eql 3 3) ; => t
+(eql 3 3.0) ; => nil
+(eql (list 3) (list 3)) ; => nil
+
+;; for collections use `equal'
+(equal (list 'a 'b) (list 'a 'b)) ; => t
+(equal (list 'a 'b) (list 'b 'a)) ; => nil
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 5. Control Flow
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;; Conditionals
+
+(if t                ; test expression
+    "this is true"   ; then expression
+    "this is false") ; else expression
+; => "this is true"
+
+;; In conditionals, all non-nil values are treated as true
+(member 'Groucho '(Harpo Groucho Zeppo)) ; => '(GROUCHO ZEPPO)
+(if (member 'Groucho '(Harpo Groucho Zeppo))
+    'yep
+    'nope)
+; => 'YEP
+
+;; `cond' chains a series of tests to select a result
+(cond ((> 2 2) (error "wrong!"))
+      ((< 2 2) (error "wrong again!"))
+      (t 'ok)) ; => 'OK
+
+;; Typecase switches on the type of the value
+(typecase 1
+           (string :string)
+           (integer :int))
+
+; => :int
+
+;;; Iteration
+
+;; Of course recursion is supported:
+
+(defun walker (n)
+    (if (= n 0)
+        :walked
+        (walker (1- n))))
+
+(walker) ; => :walked
+
+;; Most of the time, we use DOLIST or LOOP
+
+
+(dolist (i '(1 2 3 4))
+    (format t "~a" i))
+
+; => 1234
+
+(loop for i from 0 below 10
+    collect i)
+
+; => (0 1 2 3 4 5 6 7 8 9)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 6. Mutation
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Use `setf' to assign a new value to an existing variable. This was
+;; demonstrated earlier in the hash table example.
+
+(let ((variable 10))
+    (setf variable 10))
+ ; => 10
+
+
+;; Good Lisp style is to minimize destructive functions and to avoid
+;; mutation when reasonable.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 7. Classes and Objects
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; No more Animal classes, let's have Human-Powered Mechanical
+;; Conveyances.
+
+(defclass human-powered-conveyance ()
+    ((velocity
+         :accessor velocity
+         :initarg :velocity)
+     (average-efficiency
+         :accessor average-efficiency)
+         :initarg :average-efficiency)
+    (:documentation "A human powered conveyance"))
+
+(defclass bicycle (human-powered-conveyance)
+    ((wheel-size
+        :accessor wheel-size
+        :initarg :wheel-size
+        :documentation "Diameter of the wheel.")
+     (height
+         :accessor height
+         :initarg :height)))
+
+(defclass recumbent (bicycle)
+    ((chain-type
+        :accessor chain-type
+        :initarg  :chain-type)))
+
+(defclass unicycle (human-powered-conveyance) nil)
+
+(defclass canoe (human-powered-conveyance)
+    ((number-of-rowers
+        :accessor number-of-rowers
+        :initarg :number-of-rowers)))
+
+;; Calling DESCRIBE on the human-powered-conveyance class in the REPL gives:
+
+(describe 'human-powered-conveyance)
+
+; COMMON-LISP-USER::HUMAN-POWERED-CONVEYANCE
+;  [symbol]
+;
+; HUMAN-POWERED-CONVEYANCE names the standard-class #<STANDARD-CLASS
+;                                                    HUMAN-POWERED-CONVEYANCE>:
+;  Documentation:
+;    A human powered conveyance
+;  Direct superclasses: STANDARD-OBJECT
+;  Direct subclasses: UNICYCLE, BICYCLE, CANOE
+;  Not yet finalized.
+;  Direct slots:
+;    VELOCITY
+;      Readers: VELOCITY
+;      Writers: (SETF VELOCITY)
+;    AVERAGE-EFFICIENCY
+;      Readers: AVERAGE-EFFICIENCY
+;      Writers: (SETF AVERAGE-EFFICIENCY)
+
+;; Note the reflective behavior available to you! Common Lisp is
+;; designed to be an interactive system
+
+;; To define a method, let's find out what our circumference of the
+;; bike turns out to be using the equation: C = d * pi
+
+(defmethod circumference ((object bicycle))
+  (* 3.14159 (wheel-size object)))
+
+;; Let's suppose we find out that the efficiency value of the number
+;;  of rowers in a canoe is roughly logarithmic. This should probably be set
+;;  in the constructor/initializer.
+
+;; Here's how to initialize your instance after Common Lisp gets done
+;; constructing it:
+
+(defmethod initialize-instance :after ((object canoe) &rest args)
+  (setf (average-efficiency object)  (log (1+ (number-of-rowers object)))))
+
+;; Then to construct an instance and check the average efficiency...
+
+(average-efficiency (make-instance 'canoe :number-of-rowers 15))
+; => 2.7725887
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 8. Macros
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Macros let you extend the syntax of the language
+
+;; Common Lisp doesn't come with a WHILE loop- let's add one.
+;; If we obey our assembler instincts, we wind up with:
+
+(defmacro while (condition &body body)
+    "While `condition` is true, `body` is executed.
+
+`condition` is tested prior to each execution of `body`"
+    (let ((block-name (gensym)))
+        `(tagbody
+           (when (not ,condition)
+               (go ,block-name))
+           (progn
+           ,@body)
+           ,block-name)))
+
+;; Let's look at the high-level version of this:
+
+
+(defmacro while (condition &body body)
+    "While `condition` is true, `body` is executed.
+
+`condition` is tested prior to each execution of `body`"
+  `(loop while ,condition
+         do
+         ,@body))
+
+;; However, with a modern compiler, this is not required; the LOOP
+;; form compiles equally well and is easier to read.
+
+;; Note that ` is used, as well as , and @. ` is a quote-type operator
+;; known as quasiquote; it allows the use of ,. , allows "unquoting"
+;; variables. @ interpolates lists.
+
+;; Gensym creates a unique symbol guaranteed to not exist elsewhere in
+;; the system. This is because macros are expanded at compile time and
+;; variables declared in the macro can collide with variables used in
+;; regular code.
+
+;; See Practical Common Lisp for more information on macros.
+
+
+## Further Reading
+
+[Keep moving on to the Practical Common Lisp book.](http://www.gigamonkeys.com/book/)
+
+
+## Credits.
+
+Lots of thanks to the Scheme people for rolling up a great starting
+point which could be easily moved to Common Lisp.
