@@ -275,36 +275,36 @@ surround { puts 'hello world' }
 # Define a class with the class keyword
 class Human
 
-     # A class variable. It is shared by all instances of this class.
-    @@species = "H. sapiens"
+  # A class variable. It is shared by all instances of this class.
+  @@species = "H. sapiens"
 
-    # Basic initializer
-    def initialize(name, age=0)
-        # Assign the argument to the "name" instance variable for the instance
-        @name = name
-        # If no age given, we will fall back to the default in the arguments list.
-        @age = age
-    end
+  # Basic initializer
+  def initialize(name, age=0)
+    # Assign the argument to the "name" instance variable for the instance
+    @name = name
+    # If no age given, we will fall back to the default in the arguments list.
+    @age = age
+  end
 
-    # Basic setter method
-    def name=(name)
-        @name = name
-    end
+  # Basic setter method
+  def name=(name)
+    @name = name
+  end
 
-    # Basic getter method
-    def name
-        @name
-    end
+  # Basic getter method
+  def name
+    @name
+  end
 
-    # A class method uses self to distinguish from instance methods.
-    # It can only be called on the class, not an instance.
-    def self.say(msg)
-       puts "#{msg}"
-    end
+  # A class method uses self to distinguish from instance methods.
+  # It can only be called on the class, not an instance.
+  def self.say(msg)
+    puts "#{msg}"
+  end
 
-    def species
-        @@species
-    end
+  def species
+    @@species
+  end
 
 end
 

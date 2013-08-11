@@ -16,8 +16,9 @@ properly!
 
 The most requested languages are:
 
-* Scala
-* Javascript
+* Go
+* ~~Scala~~
+* ~~Javascript~~
 
 ... but there are many more requests to do "every language", so don't let that stop you.
 
