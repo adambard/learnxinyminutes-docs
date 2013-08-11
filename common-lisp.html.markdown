@@ -410,7 +410,7 @@ nil                  ; for false - and the empty list
 ;; Of course recursion is supported:
 
 (defun walker (n)
-  (if (zerop 0)
+  (if (zerop n)
       :walked
       (walker (1- n))))
 
