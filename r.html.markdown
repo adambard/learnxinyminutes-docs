@@ -2,6 +2,7 @@
 language: R
 contributors:
     - ["e99n09", "http://github.com/e99n09"]
+    - ["isomorphismes", "http://twitter.com/isomorphisms"]
 filename: learnr.r
 ---
 
@@ -296,14 +297,13 @@ if (4 > 3) {
 # FUNCTIONS
 
 # Defined like so:
-myFunc <- function(x) {
-	x <- x * 4
-	x <- x - 1
+jiggle <- function(x) {
+	x+ rnorm(x, sd=.1)	#add in a bit of (controlled) noise
 	return(x)
 }
 
 # Called like any other R function:
-myFunc(5)	# 19
+jiggle(5)	# 5±ε. After set.seed(2716057), jiggle(5)==5.005043
 
 #########################
 # Fun with data: vectors, matrices, data frames, and arrays
