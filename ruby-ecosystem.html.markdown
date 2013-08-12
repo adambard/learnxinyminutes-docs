@@ -3,7 +3,6 @@ category: tool
 tool: ruby ecosystem
 contributors:
     - ["Jon Smock", "http://github.com/jonsmock"]
-filename:
 
 ---
 

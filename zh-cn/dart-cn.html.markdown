@@ -1,5 +1,6 @@
 ---
 language: dart
+lang: zh-cn
 filename: learndart.dart
 contributors:
     - ["Joao Pedrosa", "https://github.com/jpedrosa/"]
