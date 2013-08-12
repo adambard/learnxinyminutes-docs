@@ -406,6 +406,8 @@ for(line <- Source.fromPath("myfile.txt").getLines())
 
 [Twitter Scala school](http://twitter.github.io/scala_school/)
 
-[The scala documentation](http://www.scala-lang.org/documentation/)
+[The Scala documentation](http://www.scala-lang.org/documentation/)
+
+[在浏览器尝试 Scala](http://scalatutorials.com/tour/)
 
 加入 [Scala 用户组](https://groups.google.com/forum/#!forum/scala-user)
