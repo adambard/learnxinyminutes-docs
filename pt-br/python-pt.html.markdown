@@ -5,7 +5,7 @@ contributors:
 translators:
     - ["Vilson Vieira", "http://automata.cc"]
 lang: pt-bf
-filename: learnpython.py
+filename: learnpython-pt.py
 ---
 
 Python foi criado por Guido Van Rossum no começo dos anos 90. Atualmente é uma

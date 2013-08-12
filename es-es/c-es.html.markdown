@@ -1,6 +1,6 @@
 ---
 language: c
-filename: learnc.c
+filename: learnc-es.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:

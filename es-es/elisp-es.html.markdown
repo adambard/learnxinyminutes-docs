@@ -5,7 +5,7 @@ contributors:
 translators:
     - ["Guillermo Vayá", "http://willyfrog.es"]
 lang: es-es
-filename: learn-emacs-lisp.el
+filename: learn-emacs-lisp-es.el
 ---
 
 ```scheme

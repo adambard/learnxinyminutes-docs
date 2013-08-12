@@ -1,6 +1,6 @@
 ---
 language: Scala
-filename: learnscala.scala
+filename: learnscala-zh.scala
 contributors:
     - ["George Petrov", "http://github.com/petrovg"]
     - ["Dominic Bou-Samra", "http://dbousamra.github.com"]

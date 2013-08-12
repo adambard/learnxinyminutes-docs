@@ -5,7 +5,7 @@ contributors:
     - ["Trismegiste", "https://github.com/Trismegiste"]
 translators:
     - ["Chenbo Li", "http://binarythink.net"]
-filename: learnphp.php
+filename: learnphp-zh.php
 lang: zh-cn
 ---
 

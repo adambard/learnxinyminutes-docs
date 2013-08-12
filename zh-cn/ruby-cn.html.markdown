@@ -1,6 +1,6 @@
 ---
 language: ruby
-filename: learnruby.rb
+filename: learnruby-zh.rb
 lang: zh-cn
 contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]

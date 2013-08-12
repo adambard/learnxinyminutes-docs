@@ -2,6 +2,7 @@
 language: javascript
 category: language
 name: javascript
+filename: javascript-zh.js
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
 translators:
