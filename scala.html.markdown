@@ -408,9 +408,9 @@ for(line <- Source.fromPath("myfile.txt").getLines())
 
 [Scala for the impatient](http://horstmann.com/scala/)
 
-[Twitter Scala school(http://twitter.github.io/scala_school/)
+[Twitter Scala school](http://twitter.github.io/scala_school/)
 
-[The scala documentation]
+[The scala documentation](http://www.scala-lang.org/documentation/)
 
 Join the [Scala user group](https://groups.google.com/forum/#!forum/scala-user)
 
