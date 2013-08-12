@@ -94,7 +94,7 @@ x = y = 10 #=> 10
 x #=> 10
 y #=> 10
 
-# 按照惯例，用snake_case 作为变量名
+# 按照惯例，用 snake_case 作为变量名
 snake_case = true
 
 # 使用具有描述性的运算符
@@ -102,7 +102,8 @@ path_to_project_root = '/good/name/'
 path = '/bad/name/'
 
 # 符号（Symbols，也是对象)
-# 符号是不可变的，内部用整数类型表示的可重用的值。通常用它代替字符串来有效地表达有意义的值
+# 符号是不可变的，内部用整数类型表示的可重用的值。
+# 通常用它代替字符串来有效地表示有意义的值。
 
 
 :pending.class #=> Symbol
