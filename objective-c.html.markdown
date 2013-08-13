@@ -28,9 +28,35 @@ int main (int argc, const char * argv[])
     // Create an autorelease pool to manage the memory into your program
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
  
-    // Print "Hello World!" to the console
-    NSLog(@"Hello World!");
+    // Use NSLog to print lines to the console
+    NSLog(@"Hello World!"); // Print "Hello World!"
  
+    // character literals
+    NSNumber *theLetterZ = @'Z';
+
+    // integral literals
+    NSNumber *fortyTwo = @42;
+    NSNumber *fortyTwoUnsigned = @42U;
+    NSNumber *fortyTwoLong = @42L;
+    NSNumber *fortyTwoLongLong = @42LL;
+
+    // floating point literals
+    NSNumber *piFloat = @3.141592654F;
+    NSNumber *piDouble = @3.1415926535;
+
+    // BOOL literals
+    NSNumber *yesNumber = @YES;           // equivalent to [NSNumber numberWithBool:YES]
+    NSNumber *noNumber = @NO;             // equivalent to [NSNumber numberWithBool:NO]
+
+    // strings
+    NSString *helloString = @"hello";
+
+    // array
+    NSArray *anArray = @[@1, @2];
+
+    // dictionary
+    NSDictionay *aDictionary = @{ @"key1" : @"value1", @"key2" : @"value2" };
+
     // Clean up the memory you used into your program
     [pool drain];
     
@@ -38,62 +64,44 @@ int main (int argc, const char * argv[])
     return 0;
 }
 
-// all the primitive variable types are the same as in C
-// char, int, long, double, float
-
-
-// Simple, common classes
-// number
-NSNumber *firstNumber = @1;
-NSNumber *secondNumber = @23.0;
-NSNumber *boolNumber = @YES; 
-
-// string
-NSString *aString = @"some string";
-
-// array
-NSArray *array = @[ @1, @2];
-
-// dictionary
-NSDictionay *dictionary = @{ @"aKey" : @"aValue", @"aKey2" : @"aValue2" };
-
-// Import headers with #import
-#import <UIKit/UIKit.h>
-#import "SomeAppDelegate.h"
-
-##Coding classes
+///////////////////////////////////////
+// Classes And Functions
+///////////////////////////////////////
 
 // Declare your class in a header(.h) file:
 
-@interface UserObject : NSObject{
-// instance variables
+@interface UserObject : NSObject
+{
+    // instance variables
 }
 
 // Class method
-	+ (NSString*) ClassMethod;
++ (NSString *)classMethod;
 
 // Instance method
-	- (NSString*) instanceMethodWithParmeter:(NSString*)string;
+- (NSString *)instanceMethodWithParmeter:(NSString *)string;
 
 @end
 
-// Add class methods in an implementation (.m) file:
+// Implement the methods in an implementation (.m) file:
 
 @implementation UserObject
 
-+ (NSString*) ClassMethod{
-	return @"SomeString";
++ (NSString *)classMethod
+{
+    return @"SomeString";
 }
 
-- (NSString*) instanceMethodWithParmeter:(NSString*)string;
+- (NSString *)instanceMethodWithParmeter:(NSString *)string
 {
-	return @"New string";
+    return @"New string";
 }
 
-- (NSString*) otherMethodWithString:(NSString*)string;
+- (NSNumber *)methodAParameterAsString:(NSString*)string andAParameterAsNumber:(NSNumber *)number
 {
-	return [NSString stringWithString:string];
+    return @42;
 }
+
 @end
 
 // Create an object instance by allocating memory and initializing it. An object is not fully functional until both steps have been completed.
