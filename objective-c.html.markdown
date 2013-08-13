@@ -11,7 +11,7 @@ filename: LearnObjectiveC.m
 Objective-C is the main programming language used by Apple for the OS X and iOS operating systems and their respective frameworks, Cocoa and Cocoa Touch.
 It is a general-purpose, object-oriented programming language that adds Smalltalk-style messaging to the C programming language. 
 
-```Objective-C
+```cpp
 // Single-line comments start with //
 
 /*
@@ -180,7 +180,8 @@ int main (int argc, const char * argv[])
     @try
     {
         // Your statements here
-        @throw [NSException exceptionWithName:@"FileNotFoundException" reason:@"File Not Found on System" userInfo:nil];
+        @throw [NSException exceptionWithName:@"FileNotFoundException"
+                            reason:@"File Not Found on System" userInfo:nil];
     } @catch (NSException * e)
     {
         NSLog(@"Exception: %@", e);
@@ -198,9 +199,10 @@ int main (int argc, const char * argv[])
     // An object is not fully functional until both steps have been completed.
     MyClass *myObject = [[MyClass alloc] init];
         
-    // The Objective-C model of object-oriented programming is based on message passing to object instances. 
+    // The Objective-C model of object-oriented programming is based on message
+    // passing to object instances. 
     // In Objective-C one does not simply call a method; one sends a message.
-    [myObject instanceMethodWithParmeter:@"Steve Jobs"];
+    [myObject instanceMethodWithParameter:@"Steve Jobs"];
 
     // Clean up the memory you used into your program
     [pool drain];
@@ -241,7 +243,7 @@ int main (int argc, const char * argv[])
 // - for instance method
 - (NSString *)instanceMethodWithParmeter:(NSString *)string;
 - (NSNumber *)methodAParameterAsString:(NSString*)string andAParameterAsNumber:(NSNumber *)number;
-- 
+
 @end
 
 // Implement the methods in an implementation (MyClass.m) file:
@@ -291,7 +293,7 @@ int main (int argc, const char * argv[])
  * A protocol declares methods that can be implemented by any class.
  * Protocols are not classes themselves. They simply define an interface
  * that other objects are responsible for implementing.
- * /
+ */
 @protocol MyProtocol
     - (void)myProtocolMethod;
 @end
