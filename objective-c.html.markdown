@@ -201,27 +201,56 @@ int main (int argc, const char * argv[])
 ///////////////////////////////////////
 
 // Declare your class in a header(.h) file:
-
-@interface UserObject : NSObject
+// Class Declaration Syntax:
+// @interface <class name> : <parent classname>
+// {
+//    Member variable declarations;
+// }
+// -/+ (type) Method declarations;
+// @end
+@interface MyClass : NSObject
 {
-    // instance variables
+    int count;
+    id data;
+    NSString *name;
 }
+// Create the public getter/setter for the variable count
+@property(assign) int count;
 
-// Class method
+// Methods
++/- (return type)methodSignature:(Parameter Type *)parameterName;
+
+// + for class method
 + (NSString *)classMethod;
 
-// Instance method
+// - for instance method
 - (NSString *)instanceMethodWithParmeter:(NSString *)string;
-
+- (NSNumber *)methodAParameterAsString:(NSString*)string andAParameterAsNumber:(NSNumber *)number;
+- 
 @end
 
 // Implement the methods in an implementation (.m) file:
 
 @implementation UserObject
 
+// Constructors are a way of creating classes
+// This is a default constructor
+- (id)init
+{
+    if ((self = [super init]))
+    {
+        self.count = 1;
+
+        // Create an object instance by allocating memory and initializing it.
+        // An object is not fully functional until both steps have been completed.
+        UserObject *someObject = [[UserObject alloc] init];
+    }
+    return self;
+}
+
 + (NSString *)classMethod
 {
-    return @"SomeString";
+    return [[self alloc] init];
 }
 
 - (NSString *)instanceMethodWithParmeter:(NSString *)string
@@ -235,9 +264,6 @@ int main (int argc, const char * argv[])
 }
 
 @end
-
-// Create an object instance by allocating memory and initializing it. An object is not fully functional until both steps have been completed.
-UserObject *someObject = [[UserObject alloc] init];
 
 ##Calling Methods
 
