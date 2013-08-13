@@ -4,7 +4,7 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
     - ["Vilson Vieira", "http://automata.cc"]
-lang: pt-bf
+lang: pt-br
 filename: learnpython-pt.py
 ---
 
