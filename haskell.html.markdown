@@ -84,7 +84,7 @@ not False -- True
 -- rest of the elements of this "infinite" list don't exist yet! Haskell won't
 -- actually evaluate them until it needs to.
 
-- joining two lists
+-- joining two lists
 [1..5] ++ [6..10]
 
 -- adding to the head of a list
