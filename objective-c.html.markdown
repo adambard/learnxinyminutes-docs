@@ -20,6 +20,7 @@ Multi-line comments look like this.
 
 // Imports the Foundation headers with #import
 #import <Foundation/Foundation.h>
+#import "MyClass.h"
 
 // Your program's entry point is a function called
 // main with an integer return type.
@@ -212,7 +213,7 @@ int main (int argc, const char * argv[])
 // Classes And Functions
 ///////////////////////////////////////
 
-// Declare your class in a header(.h) file:
+// Declare your class in a header(MyClass.h) file:
 // Class Declaration Syntax:
 // @interface <class name> : <parent classname>
 // {
@@ -241,7 +242,7 @@ int main (int argc, const char * argv[])
 - 
 @end
 
-// Implement the methods in an implementation (.m) file:
+// Implement the methods in an implementation (MyClass.m) file:
 
 @implementation UserObject
 
