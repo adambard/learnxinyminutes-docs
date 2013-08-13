@@ -14,10 +14,6 @@ Perl 5 runs on over 100 platforms from portables to mainframes and is suitable f
 ```perl
 # Single line comments start with a hash.
 
-/*
-Multi-line comments look like this.
-*/
-
 
 #### Perl variable types
 
