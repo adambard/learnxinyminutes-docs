@@ -215,20 +215,22 @@ int main (int argc, const char * argv[])
 
 // Declare your class in a header(MyClass.h) file:
 // Class Declaration Syntax:
-// @interface <class name> : <parent classname>
+// @interface ClassName : ParentClassName <ImplementedProtocols>
 // {
 //    Member variable declarations;
 // }
 // -/+ (type) Method declarations;
 // @end
-@interface MyClass : NSObject
+@interface MyClass : NSObject <MyCustomProtocol>
 {
     int count;
     id data;
     NSString *name;
 }
-// Create the public getter/setter for the variable count
-@property(assign) int count;
+// Convenience notation to auto generate public getter and setter
+@property int count;
+@property (copy) NSString *name; // Copy the object during assignment.
+@property (readonly) id data;    // Declare only a getter method.
 
 // Methods
 +/- (return type)methodSignature:(Parameter Type *)parameterName;
@@ -246,8 +248,13 @@ int main (int argc, const char * argv[])
 
 @implementation UserObject
 
+// Call when the object is releasing
+- (void)dealloc
+{
+}
+
 // Constructors are a way of creating classes
-// This is a default constructor
+// This is a default constructor which is call when the object is creating
 - (id)init
 {
     if ((self = [super init]))
@@ -272,7 +279,24 @@ int main (int argc, const char * argv[])
     return @42;
 }
 
+// Methods declared into MyProtocol
+- (void)myProtocolMethod
+{
+    // statements
+}
+
 @end
+
+/*
+ * A protocol declares methods that can be implemented by any class.
+ * Protocols are not classes themselves. They simply define an interface
+ * that other objects are responsible for implementing.
+ * /
+@protocol MyProtocol
+    - (void)myProtocolMethod;
+@end
+
+
 
 ```
 ## Further Reading
