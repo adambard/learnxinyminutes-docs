@@ -20,12 +20,10 @@ Multi-line comments look like this
 /// This is an XML documentation comment
 /// </summary>
 
-
+// Specify namespaces application will be using
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 // defines scope to organize code into "packages"
 namespace Learning
