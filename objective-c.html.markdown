@@ -99,6 +99,78 @@ int main (int argc, const char * argv[])
     ///////////////////////////////////////
     // Operators
     ///////////////////////////////////////
+    
+    // The operators works like in the C language
+    // For example:
+    3 == 2; // => 0 (NO)
+    3 != 2; // => 1 (YES)
+    1 && 1; // => 1 (Logical and)
+    0 || 1; // => 1 (Logical or)
+    ~0x0F; // => 0xF0 (bitwise negation)
+    0x0F & 0xF0; // => 0x00 (bitwise AND)
+    0x01 << 1; // => 0x02 (bitwise left shift (by 1))
+
+    ///////////////////////////////////////
+    // Control Structures
+    ///////////////////////////////////////
+
+    // If-Else statement
+    if (NO)
+    {
+        NSLog(@"I am never run");
+    } else if (0)
+    {
+        NSLog(@"I am also never run");
+    } else
+    {
+        NSLog(@"I print");
+    }
+
+    // Switch statement
+    switch (2) {
+        case 0:
+        {
+            NSLog(@"I am never run");
+        } break;
+        case 1:
+        {
+            NSLog(@"I am also never run");
+        } break;
+        default:
+        {
+            NSLog(@"I print");
+        } break;
+    }
+    
+    // While loops exist
+    int ii = 0;
+    while (ii < 4)
+    {
+        NSLog(@"%d,", ii++); // ii++ increments ii in-place, after using its value.
+    } // => prints "0, 
+                    1,
+                    2,
+                    3,"
+
+    // For loops too
+    int jj;
+    for (jj=0; jj < 4; jj++)
+    {
+        NSLog(@"%d,", ii++);
+    } // => prints "0, 
+                    1,
+                    2,
+                    3,"
+     
+    // Foreach               
+    NSArray *values = @[@0, @1, @2, @3];
+    for (NSNumber *value in values)
+    {
+        NSLog(@"%@,", value);
+    } // => prints "0, 
+                    1,
+                    2,
+                    3,"
 
     // Clean up the memory you used into your program
     [pool drain];
