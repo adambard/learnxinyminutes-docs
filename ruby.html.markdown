@@ -173,9 +173,9 @@ new_hash.keys #=> [:defcon, :action]
 if true
   "if statement"
 elsif false
- "else if, optional"
+  "else if, optional"
 else
- "else, also optional"
+  "else, also optional"
 end
 
 for counter in 1..5
@@ -190,7 +190,8 @@ end
 # HOWEVER, No-one uses for loops.
 # Instead you should use the "each" method and pass it a block.
 # A block is a bunch of code that you can pass to a method like "each".
-# It is analogous to lambdas, anonymous functions or closures in other programming languages.
+# It is analogous to lambdas, anonymous functions or closures in other
+# programming languages.
 #
 # The "each" method of a range runs the block once for each element of the range.
 # The block is passed a counter as a parameter.
