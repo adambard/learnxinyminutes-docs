@@ -189,6 +189,18 @@ int main (int argc, const char * argv[])
     } // => prints "Exception: File Not Found on System"
       //           "Finally"
  
+    ///////////////////////////////////////
+    // Objects
+    ///////////////////////////////////////
+    
+    // Create an object instance by allocating memory and initializing it.
+    // An object is not fully functional until both steps have been completed.
+    MyClass *myObject = [[MyClass alloc] init];
+        
+    // The Objective-C model of object-oriented programming is based on message passing to object instances. 
+    // In Objective-C one does not simply call a method; one sends a message.
+    [myObject instanceMethodWithParmeter:@"Steve Jobs"];
+
     // Clean up the memory you used into your program
     [pool drain];
     
@@ -240,10 +252,6 @@ int main (int argc, const char * argv[])
     if ((self = [super init]))
     {
         self.count = 1;
-
-        // Create an object instance by allocating memory and initializing it.
-        // An object is not fully functional until both steps have been completed.
-        UserObject *someObject = [[UserObject alloc] init];
     }
     return self;
 }
@@ -264,18 +272,6 @@ int main (int argc, const char * argv[])
 }
 
 @end
-
-##Calling Methods
-
-// The Objective-C model of object-oriented programming is based on message passing to object instances. 
-// In Objective-C one does not simply call a method; one sends a message.
-
-[someObject instanceMethodWithParmeter:@"Steve Jobs"];
-
-##Nested Messages
-// nested messages look like this:
-
-[someObject instanceMethodWithParmeter:[someObject otherMethodWithString:@"Jony Ive"]];
 
 ```
 ## Further Reading
