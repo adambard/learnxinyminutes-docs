@@ -18,7 +18,26 @@ It is a general-purpose, object-oriented programming language that adds Smalltal
 Multi-line comments look like this.
 */
 
-##Basic types
+// Imports the Foundation headers with #import
+#import <Foundation/Foundation.h>
+
+// Your program's entry point is a function called
+// main with an integer return type.
+int main (int argc, const char * argv[])
+{
+    // Create an autorelease pool to manage the memory into your program
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+ 
+    // Print "Hello World!" to the console
+    NSLog(@"Hello World!");
+ 
+    // Clean up the memory you used into your program
+    [pool drain];
+    
+    // End your program
+    return 0;
+}
+
 // all the primitive variable types are the same as in C
 // char, int, long, double, float
 
