@@ -1,4 +1,4 @@
----
+﻿---
 language: lua
 category: language
 contributors:
@@ -395,6 +395,7 @@ g()  -- 343이 출력됩니다. 그전까지는 아무것도 출력되지 않습
 --]]
 
 ```
+
 ## 참고자료
 
 루아를 배우는 일이 흥미진진했던 이유는 <a href="http://love2d.org/">Love 2D 게임 엔진</a>을 이용해 
