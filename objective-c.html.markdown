@@ -151,9 +151,9 @@ int main (int argc, const char * argv[])
     {
         NSLog(@"%d,", ii++); // ii++ increments ii in-place, after using its value.
     } // => prints "0," 
-                   "1,"
-                   "2,"
-                   "3,"
+      //           "1,"
+      //           "2,"
+      //           "3,"
 
     // For loops statements
     int jj;
@@ -161,9 +161,9 @@ int main (int argc, const char * argv[])
     {
         NSLog(@"%d,", ii++);
     } // => prints "0," 
-                   "1,"
-                   "2,"
-                   "3,"
+      //           "1,"
+      //           "2,"
+      //           "3,"
      
     // Foreach statements             
     NSArray *values = @[@0, @1, @2, @3];
@@ -171,9 +171,9 @@ int main (int argc, const char * argv[])
     {
         NSLog(@"%@,", value);
     } // => prints "0," 
-                   "1,"
-                   "2,"
-                   "3,"
+      //           "1,"
+      //           "2,"
+      //           "3,"
 
     // Try-Catch-Finally statements
     @try
@@ -187,7 +187,7 @@ int main (int argc, const char * argv[])
     {
         NSLog(@"Finally");
     } // => prints "Exception: File Not Found on System"
-                   "Finally"
+      //           "Finally"
  
     // Clean up the memory you used into your program
     [pool drain];
