@@ -37,29 +37,30 @@ int main (int argc, const char * argv[])
     NSLog(@"Hello %@!", worldString); // Print "Hello World!"
     
     // Character literals
-    NSNumber *theLetterZ = @'Z';
-    NSLog(@"%c", [theLetterZ charValue]);
+    NSNumber *theLetterZNumber = @'Z';
+    char theLetterZ            = [theLetterZNumber charValue];
+    NSLog(@"%c", theLetterZ);
 
     // Integral literals
     NSNumber *fortyTwoNumber = @42;
-    int fortyTwo             = [fortyTwo intValue];
+    int fortyTwo             = [fortyTwoNumber intValue];
     NSLog(@"%i", fortyTwo);
     
     NSNumber *fortyTwoUnsignedNumber = @42U;
-    unsigned int fortyTwoUnsigned    = [fortyTwoUnsigned unsignedIntValue];
+    unsigned int fortyTwoUnsigned    = [fortyTwoUnsignedNumber unsignedIntValue];
     NSLog(@"%u", fortyTwoUnsigned);
     
     NSNumber *fortyTwoLongNumber = @42L;
-    long fortyTwoLong            = [aLong longValue];
+    long fortyTwoLong            = [fortyTwoLongNumber longValue];
     NSLog(@"%li", fortyTwoLong);
 
     // Floating point literals
     NSNumber *piFloatNumber = @3.141592654F;
-    float piFloat           = [piFloat floatValue];
+    float piFloat           = [piFloatNumber floatValue];
     NSLog(@"%f", piFloat);
     
     NSNumber *piDoubleNumber = @3.1415926535;
-    piDouble                 = [piDouble doubleValue];
+    piDouble                 = [piDoubleNumber doubleValue];
     NSLog(@"%f", piDouble);
 
     // BOOL literals
