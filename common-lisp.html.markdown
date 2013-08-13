@@ -17,7 +17,7 @@ Another popular and recent book is
 
 
 
-```commonlisp
+```scheme
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 0. Syntax
@@ -589,6 +589,7 @@ nil                  ; for false - and the empty list
 ;; regular code.
 
 ;; See Practical Common Lisp for more information on macros.
+```
 
 
 ## Further Reading
