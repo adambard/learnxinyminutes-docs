@@ -102,6 +102,8 @@ int main (int argc, const char * argv[])
     
     // The operators works like in the C language
     // For example:
+    2 + 5; // => 7
+    4.2f + 5.1f; // => 9.3f
     3 == 2; // => 0 (NO)
     3 != 2; // => 1 (YES)
     1 && 1; // => 1 (Logical and)
@@ -127,7 +129,8 @@ int main (int argc, const char * argv[])
     }
 
     // Switch statement
-    switch (2) {
+    switch (2)
+    {
         case 0:
         {
             NSLog(@"I am never run");
@@ -142,36 +145,50 @@ int main (int argc, const char * argv[])
         } break;
     }
     
-    // While loops exist
+    // While loops statements
     int ii = 0;
     while (ii < 4)
     {
         NSLog(@"%d,", ii++); // ii++ increments ii in-place, after using its value.
-    } // => prints "0, 
-                    1,
-                    2,
-                    3,"
+    } // => prints "0," 
+                   "1,"
+                   "2,"
+                   "3,"
 
-    // For loops too
+    // For loops statements
     int jj;
     for (jj=0; jj < 4; jj++)
     {
         NSLog(@"%d,", ii++);
-    } // => prints "0, 
-                    1,
-                    2,
-                    3,"
+    } // => prints "0," 
+                   "1,"
+                   "2,"
+                   "3,"
      
-    // Foreach               
+    // Foreach statements             
     NSArray *values = @[@0, @1, @2, @3];
     for (NSNumber *value in values)
     {
         NSLog(@"%@,", value);
-    } // => prints "0, 
-                    1,
-                    2,
-                    3,"
+    } // => prints "0," 
+                   "1,"
+                   "2,"
+                   "3,"
 
+    // Try-Catch-Finally statements
+    @try
+    {
+        // Your statements here
+        @throw [NSException exceptionWithName:@"FileNotFoundException" reason:@"File Not Found on System" userInfo:nil];
+    } @catch (NSException * e)
+    {
+        NSLog(@"Exception: %@", e);
+    } @finally
+    {
+        NSLog(@"Finally");
+    } // => prints "Exception: File Not Found on System"
+                   "Finally"
+ 
     // Clean up the memory you used into your program
     [pool drain];
     
