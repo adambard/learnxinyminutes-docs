@@ -36,13 +36,13 @@ int main (int argc, const char * argv[])
     ///////////////////////////////////////
     
     // Primitive declarations
-    int myPrimitive1;
-    long myPrimitive2;
+    int myPrimitive1  = 1;
+    long myPrimitive2 = 234554664565;
     
     // Object declarations
     // Put the * in front of the variable names for strongly-typed object declarations
-    MyClass *myObject1;  // Strong typing
-    id       myObject2;  // Weak typing
+    MyClass *myObject1 = nil;  // Strong typing
+    id       myObject2 = nil;  // Weak typing
     // %@ is an object
     // 'description' is a convention to display the value of the Objects
     NSLog(@"%@ and %@", myObject1, [myObject2 description]); // Print "(null) and (null)"
