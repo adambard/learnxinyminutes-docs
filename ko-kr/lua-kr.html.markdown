@@ -9,85 +9,85 @@ lang: ko-kr
 ---
 
 ```lua
--- ´ë½Ã µÎ °³´Â ÇÑ ÁÙÂ¥¸® ÁÖ¼®À» ÀÇ¹ÌÇÕ´Ï´Ù.
+-- ëŒ€ì‹œ ë‘ ê°œëŠ” í•œ ì¤„ì§œë¦¬ ì£¼ì„ì„ ì˜ë¯¸í•©ë‹ˆë‹¤.
 
 --[[
-     [¿Í ]¸¦ µÎ °³¾¿ Ãß°¡ÇÏ¸é ¿©·¯ ÁÙ ÁÖ¼®ÀÌ µË´Ï´Ù.
+     [ì™€ ]ë¥¼ ë‘ ê°œì”© ì¶”ê°€í•˜ë©´ ì—¬ëŸ¬ ì¤„ ì£¼ì„ì´ ë©ë‹ˆë‹¤.
 --]]
 
 ----------------------------------------------------
--- 1. º¯¼ö¿Í Èå¸§ Á¦¾î
+-- 1. ë³€ìˆ˜ì™€ íë¦„ ì œì–´
 ----------------------------------------------------
 
-num = 42  -- ¸ðµç ¼ýÀÚ´Â doubleÀÔ´Ï´Ù.
--- ³î¶ö ÇÊ¿ä´Â ¾ø½À´Ï´Ù. 64ºñÆ® doubleÀº 
--- Á¤È®ÇÑ int °ªÀ» ÀúÀåÇÏ±â À§ÇØ 52ºñÆ®·Î ±¸¼ºµÅ 
--- ÀÖ½À´Ï´Ù. 52ºñÆ® ÀÌÇÏÀÇ int °ª¿¡ ´ëÇØ¼­´Â 
--- Àåºñ Á¤¹Ðµµ¿Í °ü·ÃµÈ ¹®Á¦°¡ »ý±âÁö ¾Ê½À´Ï´Ù.
+num = 42  -- ëª¨ë“  ìˆ«ìžëŠ” doubleìž…ë‹ˆë‹¤.
+-- ë†€ëž„ í•„ìš”ëŠ” ì—†ìŠµë‹ˆë‹¤. 64ë¹„íŠ¸ doubleì€ 
+-- ì •í™•í•œ int ê°’ì„ ì €ìž¥í•˜ê¸° ìœ„í•´ 52ë¹„íŠ¸ë¡œ êµ¬ì„±ë¼ 
+-- ìžˆìŠµë‹ˆë‹¤. 52ë¹„íŠ¸ ì´í•˜ì˜ int ê°’ì— ëŒ€í•´ì„œëŠ” 
+-- ìž¥ë¹„ ì •ë°€ë„ì™€ ê´€ë ¨ëœ ë¬¸ì œê°€ ìƒê¸°ì§€ ì•ŠìŠµë‹ˆë‹¤.
 
-s = 'walternate'  -- ÆÄÀÌ½ã°ú °°Àº ºÒº¯ ¹®ÀÚ¿­
-t = "Å«µû¿ÈÇ¥¸¦ ½áµµ µË´Ï´Ù"
-u = [[ ÀÌÁß ´ë°ýÈ£´Â
-       ¿©·¯ ÁÙ ¹®ÀÚ¿­À»
-       ³ªÅ¸³À´Ï´Ù.]]
-t = nil  -- ¹ÌÁ¤ÀÇ t. ·ç¾Æ´Â °¡ºñÁö ÄÃ·º¼ÇÀ» Áö¿øÇÕ´Ï´Ù.
+s = 'walternate'  -- íŒŒì´ì¬ê³¼ ê°™ì€ ë¶ˆë³€ ë¬¸ìžì—´
+t = "í°ë”°ì˜´í‘œë¥¼ ì¨ë„ ë©ë‹ˆë‹¤"
+u = [[ ì´ì¤‘ ëŒ€ê´„í˜¸ëŠ”
+       ì—¬ëŸ¬ ì¤„ ë¬¸ìžì—´ì„
+       ë‚˜íƒ€ëƒ…ë‹ˆë‹¤.]]
+t = nil  -- ë¯¸ì •ì˜ t. ë£¨ì•„ëŠ” ê°€ë¹„ì§€ ì»¬ë ‰ì…˜ì„ ì§€ì›í•©ë‹ˆë‹¤.
 
--- ºí·ÏÀº do/end¿Í °°Àº Å°¿öµå·Î ³ªÅ¸³À´Ï´Ù:
+-- ë¸”ë¡ì€ do/endì™€ ê°™ì€ í‚¤ì›Œë“œë¡œ ë‚˜íƒ€ëƒ…ë‹ˆë‹¤:
 while num < 50 do
-  num = num + 1  --  ++³ª += À¯ÇüÀÇ ¿¬»êÀÚ´Â ¾µ ¼ö ¾ø½À´Ï´Ù.
+  num = num + 1  --  ++ë‚˜ += ìœ í˜•ì˜ ì—°ì‚°ìžëŠ” ì“¸ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
 end
 
--- If Àý:
+-- If ì ˆ:
 if num > 40 then
-  print('40 ÀÌ»ó')
-elseif s ~= 'walternate' then  -- ~=Àº '°°Áö ¾Ê´Ù'ÀÔ´Ï´Ù.
-  -- µ¿ÀÏ¼º °Ë»ç´Â ÆÄÀÌ½ã°ú ¸¶Âù°¡Áö·Î ==ÀÔ´Ï´Ù. 
-  -- ¹®ÀÚ¿­¿¡µµ ¾µ ¼ö ÀÖ½À´Ï´Ù.
-  io.write('not over 40\n')  -- ±âº»ÀûÀ¸·Î stdout¿¡ ¾¹´Ï´Ù.
+  print('40 ì´ìƒ')
+elseif s ~= 'walternate' then  -- ~=ì€ 'ê°™ì§€ ì•Šë‹¤'ìž…ë‹ˆë‹¤.
+  -- ë™ì¼ì„± ê²€ì‚¬ëŠ” íŒŒì´ì¬ê³¼ ë§ˆì°¬ê°€ì§€ë¡œ ==ìž…ë‹ˆë‹¤. 
+  -- ë¬¸ìžì—´ì—ë„ ì“¸ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+  io.write('not over 40\n')  -- ê¸°ë³¸ì ìœ¼ë¡œ stdoutì— ì”ë‹ˆë‹¤.
 else
-  -- º¯¼ö´Â ±âº»ÀûÀ¸·Î Àü¿ª º¯¼öÀÔ´Ï´Ù.
-  thisIsGlobal = 5  -- ³«Å¸ Ç¥±â¹ýÀÌ ÀÏ¹ÝÀûÀÔ´Ï´Ù.
+  -- ë³€ìˆ˜ëŠ” ê¸°ë³¸ì ìœ¼ë¡œ ì „ì—­ ë³€ìˆ˜ìž…ë‹ˆë‹¤.
+  thisIsGlobal = 5  -- ë‚™íƒ€ í‘œê¸°ë²•ì´ ì¼ë°˜ì ìž…ë‹ˆë‹¤.
 
-  -- º¯¼ö¸¦ Áö¿ª º¯¼ö·Î ¸¸µå´Â ¹æ¹ýÀº ´ÙÀ½°ú °°½À´Ï´Ù:
-  local line = io.read()  -- ´ÙÀ½ stdin ÁÙÀ» ÀÐ½À´Ï´Ù
+  -- ë³€ìˆ˜ë¥¼ ì§€ì—­ ë³€ìˆ˜ë¡œ ë§Œë“œëŠ” ë°©ë²•ì€ ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤:
+  local line = io.read()  -- ë‹¤ìŒ stdin ì¤„ì„ ì½ìŠµë‹ˆë‹¤
 
-  -- ¹®ÀÚ¿­ ¿¬°á¿¡´Â .. ¿¬»êÀÚ¸¦ ¾¹´Ï´Ù:
-  print('°Ü¿ïÀÌ ¿À°í ÀÖ½À´Ï´Ù, ' .. line)
+  -- ë¬¸ìžì—´ ì—°ê²°ì—ëŠ” .. ì—°ì‚°ìžë¥¼ ì”ë‹ˆë‹¤:
+  print('ê²¨ìš¸ì´ ì˜¤ê³  ìžˆìŠµë‹ˆë‹¤, ' .. line)
 end
 
--- ¹ÌÁ¤ÀÇ º¯¼ö´Â nilÀ» ¹ÝÈ¯ÇÕ´Ï´Ù.
--- ´ÙÀ½ ÄÚµå¸¦ ½ÇÇàÇØµµ ¿À·ù°¡ ³ªÁö ¾Ê½À´Ï´Ù:
-foo = anUnknownVariable  -- ÀÌÁ¦ foo´Â nilÀÔ´Ï´Ù.
+-- ë¯¸ì •ì˜ ë³€ìˆ˜ëŠ” nilì„ ë°˜í™˜í•©ë‹ˆë‹¤.
+-- ë‹¤ìŒ ì½”ë“œë¥¼ ì‹¤í–‰í•´ë„ ì˜¤ë¥˜ê°€ ë‚˜ì§€ ì•ŠìŠµë‹ˆë‹¤:
+foo = anUnknownVariable  -- ì´ì œ fooëŠ” nilìž…ë‹ˆë‹¤.
 
 aBoolValue = false
 
--- nil°ú false¸¸ÀÌ °ÅÁþ°ªÀÔ´Ï´Ù; 0°ú ''Àº ÂüÀÔ´Ï´Ù!
+-- nilê³¼ falseë§Œì´ ê±°ì§“ê°’ìž…ë‹ˆë‹¤; 0ê³¼ ''ì€ ì°¸ìž…ë‹ˆë‹¤!
 if not aBoolValue then print('twas false') end
 
--- 'or'¿Í 'and'´Â ´ÜÃà Æò°¡(short-circuit)µË´Ï´Ù.
--- ´ÙÀ½ ÄÚµå´Â C/ÀÚ¹Ù½ºÅ©¸³Æ®ÀÇ a?b:c ¿¬»êÀÚ¿Í ºñ½ÁÇÕ´Ï´Ù:
+-- 'or'ì™€ 'and'ëŠ” ë‹¨ì¶• í‰ê°€(short-circuit)ë©ë‹ˆë‹¤.
+-- ë‹¤ìŒ ì½”ë“œëŠ” C/ìžë°”ìŠ¤í¬ë¦½íŠ¸ì˜ a?b:c ì—°ì‚°ìžì™€ ë¹„ìŠ·í•©ë‹ˆë‹¤:
 ans = aBoolValue and 'yes' or 'no'  --> 'no'
 
 karlSum = 0
-for i = 1, 100 do  -- ¹üÀ§¿¡´Â ¸¶Áö¸· ¿ä¼Òµµ Æ÷ÇÔµË´Ï´Ù.
+for i = 1, 100 do  -- ë²”ìœ„ì—ëŠ” ë§ˆì§€ë§‰ ìš”ì†Œë„ í¬í•¨ë©ë‹ˆë‹¤.
   karlSum = karlSum + i
 end
 
--- Ä«¿îÆ® ´Ù¿îÀ» ÇÒ ¶§´Â "100, 1, -1"À» ¹üÀ§·Î ¾¹´Ï´Ù.
+-- ì¹´ìš´íŠ¸ ë‹¤ìš´ì„ í•  ë•ŒëŠ” "100, 1, -1"ì„ ë²”ìœ„ë¡œ ì”ë‹ˆë‹¤.
 fredSum = 0
 for j = 100, 1, -1 do fredSum = fredSum + j end
 
--- ÀÏ¹ÝÀûÀ¸·Î ¹üÀ§´Â begin, end[, step]ÀÔ´Ï´Ù.
+-- ì¼ë°˜ì ìœ¼ë¡œ ë²”ìœ„ëŠ” begin, end[, step]ìž…ë‹ˆë‹¤.
 
--- ¶Ç ´Ù¸¥ ¹Ýº¹¹® ±¸¹®Àº ´ÙÀ½°ú °°½À´Ï´Ù:
+-- ë˜ ë‹¤ë¥¸ ë°˜ë³µë¬¸ êµ¬ë¬¸ì€ ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤:
 repeat
-  print('¹Ì·¡ÀÇ ¹æ½Ä')
+  print('ë¯¸ëž˜ì˜ ë°©ì‹')
   num = num - 1
 until num == 0
 
 
 ----------------------------------------------------
--- 2. ÇÔ¼ö
+-- 2. í•¨ìˆ˜
 ----------------------------------------------------
 
 function fib(n)
@@ -95,10 +95,10 @@ function fib(n)
   return fib(n - 2) + fib(n - 1)
 end
 
--- Å¬·ÎÀú¿Í ÀÍ¸í ÇÔ¼öµµ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù:
+-- í´ë¡œì €ì™€ ìµëª… í•¨ìˆ˜ë„ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤:
 function adder(x)
-  -- ¹ÝÈ¯µÈ ÇÔ¼ö´Â adder°¡ È£ÃâµÉ ¶§ »ý¼ºµÇ°í xÀÇ
-  -- °ªÀÌ À¯ÁöµË´Ï´Ù:
+  -- ë°˜í™˜ëœ í•¨ìˆ˜ëŠ” adderê°€ í˜¸ì¶œë  ë•Œ ìƒì„±ë˜ê³  xì˜
+  -- ê°’ì´ ìœ ì§€ë©ë‹ˆë‹¤:
   return function (y) return x + y end
 end
 a1 = adder(9)
@@ -106,104 +106,104 @@ a2 = adder(36)
 print(a1(16))  --> 25
 print(a2(64))  --> 100
 
--- ¹ÝÈ¯¹®, ÇÔ¼ö È£Ãâ, ÇÒ´ç¹®Àº ±æÀÌ°¡ ´Ù¸¥
--- °ªÀÇ ¸®½ºÆ®¿¡ ´ëÇØ¼­µµ ¸ðµÎ µ¿ÀÛÇÕ´Ï´Ù.
--- ¸®½ºÆ®¿¡ °ªÀÌ ´õ ÀûÀ» ¶§´Â nilÀÌ ÇÒ´ç/¹ÝÈ¯µÇ°í
--- ¸®½ºÆ®¿¡ °ªÀÌ ´õ ¸¹À» ¶§´Â ³ª¸ÓÁö °ªÀº ¹ö·ÁÁý´Ï´Ù.
+-- ë°˜í™˜ë¬¸, í•¨ìˆ˜ í˜¸ì¶œ, í• ë‹¹ë¬¸ì€ ê¸¸ì´ê°€ ë‹¤ë¥¸
+-- ê°’ì˜ ë¦¬ìŠ¤íŠ¸ì— ëŒ€í•´ì„œë„ ëª¨ë‘ ë™ìž‘í•©ë‹ˆë‹¤.
+-- ë¦¬ìŠ¤íŠ¸ì— ê°’ì´ ë” ì ì„ ë•ŒëŠ” nilì´ í• ë‹¹/ë°˜í™˜ë˜ê³ 
+-- ë¦¬ìŠ¤íŠ¸ì— ê°’ì´ ë” ë§Žì„ ë•ŒëŠ” ë‚˜ë¨¸ì§€ ê°’ì€ ë²„ë ¤ì§‘ë‹ˆë‹¤.
 
 x, y, z = 1, 2, 3, 4
--- ÀÌÁ¦ x = 1, y = 2, z = 3ÀÌ°í 4´Â ¹ö·ÁÁý´Ï´Ù.
+-- ì´ì œ x = 1, y = 2, z = 3ì´ê³  4ëŠ” ë²„ë ¤ì§‘ë‹ˆë‹¤.
 
 function bar(a, b, c)
   print(a, b, c)
   return 4, 8, 15, 16, 23, 42
 end
 
-x, y = bar('zaphod')  --> "zaphod  nil nil"°¡ Ãâ·Â
--- ÀÌÁ¦ x = 4, y = 8ÀÌ°í 15~42ÀÇ °ªÀº ¹ö·ÁÁý´Ï´Ù.
+x, y = bar('zaphod')  --> "zaphod  nil nil"ê°€ ì¶œë ¥
+-- ì´ì œ x = 4, y = 8ì´ê³  15~42ì˜ ê°’ì€ ë²„ë ¤ì§‘ë‹ˆë‹¤.
 
--- ÇÔ¼ö´Â ÀÏ±Þ °´Ã¼ÀÌ°í, Áö¿ª/Àü¿ª À¯È¿¹üÀ§¸¦ °¡Áú
--- ¼ö ÀÖ½À´Ï´Ù. ¾Æ·¡ÀÇ µÎ ÇÔ¼ö´Â °°½À´Ï´Ù:
+-- í•¨ìˆ˜ëŠ” ì¼ê¸‰ ê°ì²´ì´ê³ , ì§€ì—­/ì „ì—­ ìœ íš¨ë²”ìœ„ë¥¼ ê°€ì§ˆ
+-- ìˆ˜ ìžˆìŠµë‹ˆë‹¤. ì•„ëž˜ì˜ ë‘ í•¨ìˆ˜ëŠ” ê°™ìŠµë‹ˆë‹¤:
 function f(x) return x * x end
 f = function (x) return x * x end
 
--- ±×¸®°í ¾Æ·¡ÀÇ µÎ ÇÔ¼öµµ ¸¶Âù°¡ÁöÀÔ´Ï´Ù:
+-- ê·¸ë¦¬ê³  ì•„ëž˜ì˜ ë‘ í•¨ìˆ˜ë„ ë§ˆì°¬ê°€ì§€ìž…ë‹ˆë‹¤:
 local function g(x) return math.sin(x) end
 local g; g  = function (x) return math.sin(x) end
--- 'local g'¶ó°í ¼±¾ðÇÏ¸é g¸¦ Áö¿ª ÇÔ¼ö·Î ¸¸µì´Ï´Ù.
+-- 'local g'ë¼ê³  ì„ ì–¸í•˜ë©´ gë¥¼ ì§€ì—­ í•¨ìˆ˜ë¡œ ë§Œë“­ë‹ˆë‹¤.
 
--- ±×³ªÀú³ª »ï°¢ ÇÔ¼ö´Â ¶óµð¾È ´ÜÀ§·Î µ¿ÀÛÇÕ´Ï´Ù.
+-- ê·¸ë‚˜ì €ë‚˜ ì‚¼ê° í•¨ìˆ˜ëŠ” ë¼ë””ì•ˆ ë‹¨ìœ„ë¡œ ë™ìž‘í•©ë‹ˆë‹¤.
 
--- ÇÔ¼ö¸¦ È£ÃâÇÒ ¶§ ¹®ÀÚ¿­ ¸Å°³º¯¼ö¸¦ ÇÏ³ª¸¸ Àü´ÞÇÑ´Ù¸é
--- °ýÈ£¸¦ ¾²Áö ¾Ê¾Æµµ µË´Ï´Ù:
-print 'hello'  -- Àß µ¿ÀÛÇÕ´Ï´Ù.
+-- í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•  ë•Œ ë¬¸ìžì—´ ë§¤ê°œë³€ìˆ˜ë¥¼ í•˜ë‚˜ë§Œ ì „ë‹¬í•œë‹¤ë©´
+-- ê´„í˜¸ë¥¼ ì“°ì§€ ì•Šì•„ë„ ë©ë‹ˆë‹¤:
+print 'hello'  -- ìž˜ ë™ìž‘í•©ë‹ˆë‹¤.
 
 
 ----------------------------------------------------
--- 3. Å×ÀÌºí
+-- 3. í…Œì´ë¸”
 ----------------------------------------------------
 
--- Å×ÀÌºí = ·ç¾ÆÀÇ À¯ÀÏÇÑ º¹ÇÕ ÀÚ·á±¸Á¶·Î¼­, ¿¬°ü ¹è¿­ÀÔ´Ï´Ù.
--- PHPÀÇ ¹è¿­ÀÌ³ª ÀÚ¹Ù½ºÅ©¸³Æ®ÀÇ °´Ã¼¿Í ºñ½ÁÇÏ¸ç,
--- ¸®½ºÆ®·Îµµ »ç¿ëÇÒ ¼ö ÀÖ´Â ÇØ½Ã ±â¹ÝÀÇ µñ¼Å³Ê¸®ÀÔ´Ï´Ù.
+-- í…Œì´ë¸” = ë£¨ì•„ì˜ ìœ ì¼í•œ ë³µí•© ìžë£Œêµ¬ì¡°ë¡œì„œ, ì—°ê´€ ë°°ì—´ìž…ë‹ˆë‹¤.
+-- PHPì˜ ë°°ì—´ì´ë‚˜ ìžë°”ìŠ¤í¬ë¦½íŠ¸ì˜ ê°ì²´ì™€ ë¹„ìŠ·í•˜ë©°,
+-- ë¦¬ìŠ¤íŠ¸ë¡œë„ ì‚¬ìš©í•  ìˆ˜ ìžˆëŠ” í•´ì‹œ ê¸°ë°˜ì˜ ë”•ì…”ë„ˆë¦¬ìž…ë‹ˆë‹¤.
 
--- Å×ÀÌºíÀ» µñ¼Å³Ê¸®/¸ÊÀ¸·Î »ç¿ëÇÏ±â:
+-- í…Œì´ë¸”ì„ ë”•ì…”ë„ˆë¦¬/ë§µìœ¼ë¡œ ì‚¬ìš©í•˜ê¸°:
 
--- µñ¼Å³Ê¸® ¸®ÅÍ·²Àº ±âº»ÀûÀ¸·Î ¹®ÀÚ¿­ Å°¸¦ °¡Áý´Ï´Ù:
+-- ë”•ì…”ë„ˆë¦¬ ë¦¬í„°ëŸ´ì€ ê¸°ë³¸ì ìœ¼ë¡œ ë¬¸ìžì—´ í‚¤ë¥¼ ê°€ì§‘ë‹ˆë‹¤:
 t = {key1 = 'value1', key2 = false}
 
--- ¹®ÀÚ¿­ Å°¿¡´Â ÀÚ¹Ù½ºÅ©¸³Æ®¿Í À¯»çÇÑ Á¡ Ç¥±â¹ýÀ» ¾µ ¼ö ÀÖ½À´Ï´Ù:
-print(t.key1)  -- 'value1'À» Ãâ·Â.
-t.newKey = {}  -- »õ Å°/°ª ½ÖÀ» Ãß°¡.
-t.key2 = nil   -- Å×ÀÌºí¿¡¼­ key2¸¦ Á¦°Å.
+-- ë¬¸ìžì—´ í‚¤ì—ëŠ” ìžë°”ìŠ¤í¬ë¦½íŠ¸ì™€ ìœ ì‚¬í•œ ì  í‘œê¸°ë²•ì„ ì“¸ ìˆ˜ ìžˆìŠµë‹ˆë‹¤:
+print(t.key1)  -- 'value1'ì„ ì¶œë ¥.
+t.newKey = {}  -- ìƒˆ í‚¤/ê°’ ìŒì„ ì¶”ê°€.
+t.key2 = nil   -- í…Œì´ë¸”ì—ì„œ key2ë¥¼ ì œê±°.
 
--- (nilÀÌ ¾Æ´Ñ) °ªÀ» Å°·Î »ç¿ëÇÏ´Â ¸®ÅÍ·² Ç¥±â¹ý:
+-- (nilì´ ì•„ë‹Œ) ê°’ì„ í‚¤ë¡œ ì‚¬ìš©í•˜ëŠ” ë¦¬í„°ëŸ´ í‘œê¸°ë²•:
 u = {['@!#'] = 'qbert', [{}] = 1729, [6.28] = 'tau'}
-print(u[6.28])  -- "tau"°¡ Ãâ·Â
+print(u[6.28])  -- "tau"ê°€ ì¶œë ¥
 
--- Å° ¸ÅÄªÀº ±âº»ÀûÀ¸·Î ¼ýÀÚ¿Í ¹®ÀÚ¿­¿¡ ´ëÇØ¼­´Â °ªÀ¸·Î ÇÏÁö¸¸
--- Å×ÀÌºí¿¡ ´ëÇØ¼­´Â ½Äº°ÀÚ·Î ÇÕ´Ï´Ù.
+-- í‚¤ ë§¤ì¹­ì€ ê¸°ë³¸ì ìœ¼ë¡œ ìˆ«ìžì™€ ë¬¸ìžì—´ì— ëŒ€í•´ì„œëŠ” ê°’ìœ¼ë¡œ í•˜ì§€ë§Œ
+-- í…Œì´ë¸”ì— ëŒ€í•´ì„œëŠ” ì‹ë³„ìžë¡œ í•©ë‹ˆë‹¤.
 a = u['@!#']  -- Now a = 'qbert'.
 b = u[{}]     -- We might expect 1729, but it's nil:
-a = u['@!#']  -- ÀÌÁ¦ a´Â 'qbert'ÀÔ´Ï´Ù.
-b = u[{}]     -- 1729¸¦ ¿¹»óÇß°ÚÁö¸¸ nilÀÔ´Ï´Ù:
--- Å½»öÀÌ ½ÇÆÐÇÏ±â ¶§¹®¿¡ b´Â nilÀÔ´Ï´Ù. Å½»öÀÌ ½ÇÆÐÇÏ´Â ÀÌÀ¯´Â
--- »ç¿ëµÈ Å°°¡ ¿øº» °ªÀ» ÀúÀåÇÒ ¶§ »ç¿ëÇÑ Å°¿Í µ¿ÀÏÇÑ °´Ã¼°¡ ¾Æ´Ï±â
--- ¶§¹®ÀÔ´Ï´Ù. µû¶ó¼­ ¹®ÀÚ¿­ ¹× ¼ýÀÚ°¡ Á» ´õ ÀÌ½Ä¼º ÀÖ´Â Å°ÀÔ´Ï´Ù.
+a = u['@!#']  -- ì´ì œ aëŠ” 'qbert'ìž…ë‹ˆë‹¤.
+b = u[{}]     -- 1729ë¥¼ ì˜ˆìƒí–ˆê² ì§€ë§Œ nilìž…ë‹ˆë‹¤:
+-- íƒìƒ‰ì´ ì‹¤íŒ¨í•˜ê¸° ë•Œë¬¸ì— bëŠ” nilìž…ë‹ˆë‹¤. íƒìƒ‰ì´ ì‹¤íŒ¨í•˜ëŠ” ì´ìœ ëŠ”
+-- ì‚¬ìš©ëœ í‚¤ê°€ ì›ë³¸ ê°’ì„ ì €ìž¥í•  ë•Œ ì‚¬ìš©í•œ í‚¤ì™€ ë™ì¼í•œ ê°ì²´ê°€ ì•„ë‹ˆê¸°
+-- ë•Œë¬¸ìž…ë‹ˆë‹¤. ë”°ë¼ì„œ ë¬¸ìžì—´ ë° ìˆ«ìžê°€ ì¢€ ë” ì´ì‹ì„± ìžˆëŠ” í‚¤ìž…ë‹ˆë‹¤.
 
--- Å×ÀÌºí ÇÏ³ª¸¦ ¸Å°³º¯¼ö·Î ÃëÇÏ´Â ÇÔ¼ö¸¦ È£ÃâÇÒ ¶§´Â °ýÈ£°¡ ÇÊ¿äÇÏÁö ¾Ê½À´Ï´Ù:
+-- í…Œì´ë¸” í•˜ë‚˜ë¥¼ ë§¤ê°œë³€ìˆ˜ë¡œ ì·¨í•˜ëŠ” í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•  ë•ŒëŠ” ê´„í˜¸ê°€ í•„ìš”í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤:
 function h(x) print(x.key1) end
-h{key1 = 'Sonmi~451'}  -- 'Sonmi~451'¸¦ Ãâ·Â.
+h{key1 = 'Sonmi~451'}  -- 'Sonmi~451'ë¥¼ ì¶œë ¥.
 
-for key, val in pairs(u) do  -- Å×ÀÌºí ¼øÈ¸
+for key, val in pairs(u) do  -- í…Œì´ë¸” ìˆœíšŒ
   print(key, val)
 end
 
--- _G´Â ¸ðµç Àü¿ª ¸â¹ö¿¡ ´ëÇÑ Æ¯º°ÇÑ Å×ÀÌºíÀÔ´Ï´Ù.
-print(_G['_G'] == _G)  -- 'true'°¡ Ãâ·Â
+-- _GëŠ” ëª¨ë“  ì „ì—­ ë©¤ë²„ì— ëŒ€í•œ íŠ¹ë³„í•œ í…Œì´ë¸”ìž…ë‹ˆë‹¤.
+print(_G['_G'] == _G)  -- 'true'ê°€ ì¶œë ¥
 
--- Å×ÀÌºíÀ» ¸®½ºÆ®/¹è¿­·Î »ç¿ëÇÏ±â:
+-- í…Œì´ë¸”ì„ ë¦¬ìŠ¤íŠ¸/ë°°ì—´ë¡œ ì‚¬ìš©í•˜ê¸°:
 
--- ¸®½ºÆ® ¸®ÅÍ·²Àº ¾Ï¹¬ÀûÀ¸·Î int Å°·Î ¼³Á¤µË´Ï´Ù:
+-- ë¦¬ìŠ¤íŠ¸ ë¦¬í„°ëŸ´ì€ ì•”ë¬µì ìœ¼ë¡œ int í‚¤ë¡œ ì„¤ì •ë©ë‹ˆë‹¤:
 v = {'value1', 'value2', 1.21, 'gigawatts'}
-for i = 1, #v do  -- #v´Â ¸®½ºÆ® vÀÇ Å©±âÀÔ´Ï´Ù.
-  print(v[i])  -- ÀÎµ¦½º°¡ 1¿¡¼­ ½ÃÀÛÇÕ´Ï´Ù!! Á¦Á¤½ÅÀÌ ¾Æ´Õ´Ï´Ù!
+for i = 1, #v do  -- #vëŠ” ë¦¬ìŠ¤íŠ¸ vì˜ í¬ê¸°ìž…ë‹ˆë‹¤.
+  print(v[i])  -- ì¸ë±ìŠ¤ê°€ 1ì—ì„œ ì‹œìž‘í•©ë‹ˆë‹¤!! ì œì •ì‹ ì´ ì•„ë‹™ë‹ˆë‹¤!
 end
--- 'list'´Â ½ÇÁ¦ Å¸ÀÔÀÌ ¾Æ´Õ´Ï´Ù. v´Â ¿¬¼ÓµÈ Á¤¼öÇü Å°°¡ Æ÷ÇÔµÈ
--- Å×ÀÌºíÀÌ°í ¸®½ºÆ®·Î Ãë±ÞµÉ »ÓÀÔ´Ï´Ù.
+-- 'list'ëŠ” ì‹¤ì œ íƒ€ìž…ì´ ì•„ë‹™ë‹ˆë‹¤. vëŠ” ì—°ì†ëœ ì •ìˆ˜í˜• í‚¤ê°€ í¬í•¨ëœ
+-- í…Œì´ë¸”ì´ê³  ë¦¬ìŠ¤íŠ¸ë¡œ ì·¨ê¸‰ë  ë¿ìž…ë‹ˆë‹¤.
 
 ----------------------------------------------------
--- 3.1 ¸ÞÅ¸Å×ÀÌºí°ú ¸ÞÅ¸¸Þ¼­µå
+-- 3.1 ë©”íƒ€í…Œì´ë¸”ê³¼ ë©”íƒ€ë©”ì„œë“œ
 ----------------------------------------------------
 
--- Å×ÀÌºíÀº Å×ÀÌºí¿¡ ¿¬»êÀÚ ¿À¹ö·ÎµùÀ» °¡´ÉÇÏ°Ô ÇÏ´Â ¸ÞÅ¸Å×ÀÌºíÀ»
--- °¡Áú ¼ö ÀÖ½À´Ï´Ù. ³ªÁß¿¡ ¸ÞÅ¸Å×ÀÌºíÀÌ ¾î¶»°Ô ÀÚ¹Ù½ºÅ©¸³Æ® 
--- ÇÁ·ÎÅäÅ¸ÀÔ°ú °°Àº ÇàÀ§¸¦ Áö¿øÇÏ´ÂÁö »ìÆìº¸°Ú½À´Ï´Ù.
+-- í…Œì´ë¸”ì€ í…Œì´ë¸”ì— ì—°ì‚°ìž ì˜¤ë²„ë¡œë”©ì„ ê°€ëŠ¥í•˜ê²Œ í•˜ëŠ” ë©”íƒ€í…Œì´ë¸”ì„
+-- ê°€ì§ˆ ìˆ˜ ìžˆìŠµë‹ˆë‹¤. ë‚˜ì¤‘ì— ë©”íƒ€í…Œì´ë¸”ì´ ì–´ë–»ê²Œ ìžë°”ìŠ¤í¬ë¦½íŠ¸ 
+-- í”„ë¡œí† íƒ€ìž…ê³¼ ê°™ì€ í–‰ìœ„ë¥¼ ì§€ì›í•˜ëŠ”ì§€ ì‚´íŽ´ë³´ê² ìŠµë‹ˆë‹¤.
 
-f1 = {a = 1, b = 2}  -- ºÐ¼ö a/b¸¦ Ç¥Çö
+f1 = {a = 1, b = 2}  -- ë¶„ìˆ˜ a/bë¥¼ í‘œí˜„
 f2 = {a = 2, b = 3}
 
--- ´ÙÀ½ ÄÚµå´Â ½ÇÆÐÇÕ´Ï´Ù:
+-- ë‹¤ìŒ ì½”ë“œëŠ” ì‹¤íŒ¨í•©ë‹ˆë‹¤:
 -- s = f1 + f2
 
 metafraction = {}
@@ -217,30 +217,30 @@ end
 setmetatable(f1, metafraction)
 setmetatable(f2, metafraction)
 
-s = f1 + f2  -- f1ÀÇ ¸ÞÅ¸Å×ÀÌºíÀ» ´ë»óÀ¸·Î __add(f1, f2)¸¦ È£Ãâ
+s = f1 + f2  -- f1ì˜ ë©”íƒ€í…Œì´ë¸”ì„ ëŒ€ìƒìœ¼ë¡œ __add(f1, f2)ë¥¼ í˜¸ì¶œ
 
--- f1°ú f2´Â ÀÚ¹Ù½ºÅ©¸³Æ®ÀÇ ÇÁ·ÎÅäÅ¸ÀÔ°ú ´Þ¸® °¢ ¸ÞÅ¸Å×ÀÌºí¿¡ ´ëÇÑ 
--- Å°°¡ ¾ø¾î¼­ getmetatable(f1)°ú °°ÀÌ ¹Þ¾Æ¿Í¾ß ÇÕ´Ï´Ù.
--- ¸ÞÅ¸Å×ÀÌºíÀº __add °°Àº ·ç¾Æ°¡ ¾Ë°í ÀÖ´Â Å°°¡ ÁöÁ¤µÈ ÀÏ¹Ý Å×ÀÌºíÀÔ´Ï´Ù.
+-- f1ê³¼ f2ëŠ” ìžë°”ìŠ¤í¬ë¦½íŠ¸ì˜ í”„ë¡œí† íƒ€ìž…ê³¼ ë‹¬ë¦¬ ê° ë©”íƒ€í…Œì´ë¸”ì— ëŒ€í•œ 
+-- í‚¤ê°€ ì—†ì–´ì„œ getmetatable(f1)ê³¼ ê°™ì´ ë°›ì•„ì™€ì•¼ í•©ë‹ˆë‹¤.
+-- ë©”íƒ€í…Œì´ë¸”ì€ __add ê°™ì€ ë£¨ì•„ê°€ ì•Œê³  ìžˆëŠ” í‚¤ê°€ ì§€ì •ëœ ì¼ë°˜ í…Œì´ë¸”ìž…ë‹ˆë‹¤.
 
--- ±×·¸Áö¸¸ ´ÙÀ½ ÁÙÀº s°¡ ¸ÞÅ¸Å×ÀÌºíÀ» °¡Áö°í ÀÖÁö ¾Ê±â ¶§¹®¿¡ ½ÇÆÐÇÕ´Ï´Ù.
+-- ê·¸ë ‡ì§€ë§Œ ë‹¤ìŒ ì¤„ì€ sê°€ ë©”íƒ€í…Œì´ë¸”ì„ ê°€ì§€ê³  ìžˆì§€ ì•Šê¸° ë•Œë¬¸ì— ì‹¤íŒ¨í•©ë‹ˆë‹¤.
 -- t = s + s
--- ¾Æ·¡¿Í °°ÀÌ Å¬·¡½º¿Í À¯»çÇÑ ÆÐÅÏÀº ÀÌ·¯ÇÑ ¹®Á¦°¡ ¹ß»ýÇÏÁö ¾Ê½À´Ï´Ù.
+-- ì•„ëž˜ì™€ ê°™ì´ í´ëž˜ìŠ¤ì™€ ìœ ì‚¬í•œ íŒ¨í„´ì€ ì´ëŸ¬í•œ ë¬¸ì œê°€ ë°œìƒí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
 
--- ¸ÞÅ¸Å×ÀÌºí¿¡ ´ëÇÑ __index´Â Á¡À» ÀÌ¿ëÇÑ Å½»öÀ» ¿À¹ö·ÎµåÇÕ´Ï´Ù:
+-- ë©”íƒ€í…Œì´ë¸”ì— ëŒ€í•œ __indexëŠ” ì ì„ ì´ìš©í•œ íƒìƒ‰ì„ ì˜¤ë²„ë¡œë“œí•©ë‹ˆë‹¤:
 defaultFavs = {animal = 'gru', food = 'donuts'}
 myFavs = {food = 'pizza'}
 setmetatable(myFavs, {__index = defaultFavs})
-eatenBy = myFavs.animal  -- µ¿ÀÛÇÕ´Ï´Ù! °í¸¶¿ö¿ä, ¸ÞÅ¸Å×ÀÌºí!
+eatenBy = myFavs.animal  -- ë™ìž‘í•©ë‹ˆë‹¤! ê³ ë§ˆì›Œìš”, ë©”íƒ€í…Œì´ë¸”!
 
--- Á÷Á¢ÀûÀÎ ¸ÞÅ¸Å×ÀÌºí Å½»öÀÌ ½ÇÆÐÇÒ °æ¿ì ¸ÞÅ¸Å×ÀÌºíÀÇ __index °ªÀ» ÀÌ¿ëÇØ
--- Àç½ÃµµÇÏ°í, ÀÌ·± °úÁ¤ÀÌ ¹Ýº¹µË´Ï´Ù.
+-- ì§ì ‘ì ì¸ ë©”íƒ€í…Œì´ë¸” íƒìƒ‰ì´ ì‹¤íŒ¨í•  ê²½ìš° ë©”íƒ€í…Œì´ë¸”ì˜ __index ê°’ì„ ì´ìš©í•´
+-- ìž¬ì‹œë„í•˜ê³ , ì´ëŸ° ê³¼ì •ì´ ë°˜ë³µë©ë‹ˆë‹¤.
 
--- __index °ªÀº Á» ´õ ¼¼ºÐÈ­µÈ Å½»öÀ» À§ÇØ function(tbl, key)°¡
--- µÉ ¼öµµ ÀÖ½À´Ï´Ù.
+-- __index ê°’ì€ ì¢€ ë” ì„¸ë¶„í™”ëœ íƒìƒ‰ì„ ìœ„í•´ function(tbl, key)ê°€
+-- ë  ìˆ˜ë„ ìžˆìŠµë‹ˆë‹¤.
 
--- __index, __add, ...ÀÇ °ªÀ» ¸ÞÅ¸¸Þ¼­µå¶ó°í ÇÕ´Ï´Ù.
--- ´ÙÀ½Àº ¸ÞÅ¸¸Þ¼­µå¸¦ °¡Áø Å×ÀÌºíÀÇ ÀüÃ¼ ¸ñ·ÏÀÔ´Ï´Ù.
+-- __index, __add, ...ì˜ ê°’ì„ ë©”íƒ€ë©”ì„œë“œë¼ê³  í•©ë‹ˆë‹¤.
+-- ë‹¤ìŒì€ ë©”íƒ€ë©”ì„œë“œë¥¼ ê°€ì§„ í…Œì´ë¸”ì˜ ì „ì²´ ëª©ë¡ìž…ë‹ˆë‹¤.
 
 -- __add(a, b)                     for a + b
 -- __sub(a, b)                     for a - b
@@ -254,18 +254,18 @@ eatenBy = myFavs.animal  -- µ¿ÀÛÇÕ´Ï´Ù! °í¸¶¿ö¿ä, ¸ÞÅ¸Å×ÀÌºí!
 -- __eq(a, b)                      for a == b
 -- __lt(a, b)                      for a < b
 -- __le(a, b)                      for a <= b
--- __index(a, b)  <fnÀÌ³ª Å×ÀÌºí>  for a.b
+-- __index(a, b)  <fnì´ë‚˜ í…Œì´ë¸”>  for a.b
 -- __newindex(a, b, c)             for a.b = c
 -- __call(a, ...)                  for a(...)
 
 ----------------------------------------------------
--- 3.2 Å¬·¡½º ÇüÅÂÀÇ Å×ÀÌºí°ú »ó¼Ó
+-- 3.2 í´ëž˜ìŠ¤ í˜•íƒœì˜ í…Œì´ë¸”ê³¼ ìƒì†
 ----------------------------------------------------
 
--- ·ç¾Æ¿¡´Â Å¬·¡½º°¡ ³»ÀåµÅ ÀÖÁö ¾ÊÀ¸¸ç, Å×ÀÌºí°ú ¸ÞÅ¸Å×ÀÌºíÀ»
--- ÀÌ¿ëÇØ Å¬·¡½º¸¦ ¸¸µå´Â ´Ù¾çÇÑ ¹æ¹ýÀÌ ÀÖ½À´Ï´Ù.
+-- ë£¨ì•„ì—ëŠ” í´ëž˜ìŠ¤ê°€ ë‚´ìž¥ë¼ ìžˆì§€ ì•Šìœ¼ë©°, í…Œì´ë¸”ê³¼ ë©”íƒ€í…Œì´ë¸”ì„
+-- ì´ìš©í•´ í´ëž˜ìŠ¤ë¥¼ ë§Œë“œëŠ” ë‹¤ì–‘í•œ ë°©ë²•ì´ ìžˆìŠµë‹ˆë‹¤.
 
--- ´ÙÀ½ ¿¹Á¦¿¡ ´ëÇÑ ¼³¸íÀº ÇÏ´ÜÀ» ÂüÁ¶ÇÕ´Ï´Ù.
+-- ë‹¤ìŒ ì˜ˆì œì— ëŒ€í•œ ì„¤ëª…ì€ í•˜ë‹¨ì„ ì°¸ì¡°í•©ë‹ˆë‹¤.
 
 Dog = {}                                   -- 1.
 
@@ -282,25 +282,25 @@ end
 mrDog = Dog:new()                          -- 7.
 mrDog:makeSound()  -- 'I say woof'         -- 8.
 
--- 1. Dog´Â Å¬·¡½ºÃ³·³ µ¿ÀÛÇÕ´Ï´Ù. ½ÇÁ¦·Î´Â Å×ÀÌºíÀÔ´Ï´Ù.
--- 2. function Å×ÀÌºí¸í:fn(...)Àº
---    function Å×ÀÌºí¸í.fn(self, ...)°ú °°½À´Ï´Ù.
---    :´Â self¶ó´Â Ã¹ ¹øÂ° ÀÎÀÚ¸¦ Ãß°¡ÇÒ »ÓÀÔ´Ï´Ù.
---    self°¡ °ªÀ» ¾î¶»°Ô ¾ò´ÂÁö ±Ã±ÝÇÏ´Ù¸é ¾Æ·¡ÀÇ 7°ú 8À» ÀÐ¾îº¸¼¼¿ä.
--- 3. newObj´Â Dog Å¬·¡½ºÀÇ ÀÎ½ºÅÏ½º°¡ µË´Ï´Ù.
--- 4. self = ÀÎ½ºÅÏ½ºÈ­µÇ´Â Å¬·¡½º.
---    ÁÖ·Î self = DogÀÌÁö¸¸ »ó¼ÓÀ» ÀÌ¿ëÇÏ¸é ÀÌ°ÍÀ» ¹Ù²Ü ¼ö ÀÖ½À´Ï´Ù. 
---    newObjÀÇ ¸ÞÅ¸Å×ÀÌºí°ú selfÀÇ __index¸¦ ¸ðµÎ self¿¡ ¼³Á¤ÇÏ¸é
---    newObj°¡ selfÀÇ ÇÔ¼ö¸¦ °®°Ô µË´Ï´Ù.
--- 5. Âü°í: setmetatableÀº Ã¹ ¹øÂ° ÀÎÀÚ¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
--- 6. :´Â 2¿¡¼­ ¼³¸íÇÑ °Í°ú °°ÀÌ µ¿ÀÛÇÏÁö¸¸ ÀÌ¹ø¿¡´Â self°¡ 
---    Å¬·¡½º°¡ ¾Æ´Ñ ÀÎ½ºÅÏ½º¶ó°í ¿¹»óÇÒ ¼ö ÀÖ½À´Ï´Ù.
--- 7. Dog.new(Dog)°ú °°À¸¹Ç·Î new()¿¡¼­´Â self = DogÀÔ´Ï´Ù.
--- 8. mrDog.makeSound(mrDog)°ú °°À¸¹Ç·Î self = mrDogÀÔ´Ï´Ù.
+-- 1. DogëŠ” í´ëž˜ìŠ¤ì²˜ëŸ¼ ë™ìž‘í•©ë‹ˆë‹¤. ì‹¤ì œë¡œëŠ” í…Œì´ë¸”ìž…ë‹ˆë‹¤.
+-- 2. function í…Œì´ë¸”ëª…:fn(...)ì€
+--    function í…Œì´ë¸”ëª….fn(self, ...)ê³¼ ê°™ìŠµë‹ˆë‹¤.
+--    :ëŠ” selfë¼ëŠ” ì²« ë²ˆì§¸ ì¸ìžë¥¼ ì¶”ê°€í•  ë¿ìž…ë‹ˆë‹¤.
+--    selfê°€ ê°’ì„ ì–´ë–»ê²Œ ì–»ëŠ”ì§€ ê¶ê¸ˆí•˜ë‹¤ë©´ ì•„ëž˜ì˜ 7ê³¼ 8ì„ ì½ì–´ë³´ì„¸ìš”.
+-- 3. newObjëŠ” Dog í´ëž˜ìŠ¤ì˜ ì¸ìŠ¤í„´ìŠ¤ê°€ ë©ë‹ˆë‹¤.
+-- 4. self = ì¸ìŠ¤í„´ìŠ¤í™”ë˜ëŠ” í´ëž˜ìŠ¤.
+--    ì£¼ë¡œ self = Dogì´ì§€ë§Œ ìƒì†ì„ ì´ìš©í•˜ë©´ ì´ê²ƒì„ ë°”ê¿€ ìˆ˜ ìžˆìŠµë‹ˆë‹¤. 
+--    newObjì˜ ë©”íƒ€í…Œì´ë¸”ê³¼ selfì˜ __indexë¥¼ ëª¨ë‘ selfì— ì„¤ì •í•˜ë©´
+--    newObjê°€ selfì˜ í•¨ìˆ˜ë¥¼ ê°–ê²Œ ë©ë‹ˆë‹¤.
+-- 5. ì°¸ê³ : setmetatableì€ ì²« ë²ˆì§¸ ì¸ìžë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
+-- 6. :ëŠ” 2ì—ì„œ ì„¤ëª…í•œ ê²ƒê³¼ ê°™ì´ ë™ìž‘í•˜ì§€ë§Œ ì´ë²ˆì—ëŠ” selfê°€ 
+--    í´ëž˜ìŠ¤ê°€ ì•„ë‹Œ ì¸ìŠ¤í„´ìŠ¤ë¼ê³  ì˜ˆìƒí•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+-- 7. Dog.new(Dog)ê³¼ ê°™ìœ¼ë¯€ë¡œ new()ì—ì„œëŠ” self = Dogìž…ë‹ˆë‹¤.
+-- 8. mrDog.makeSound(mrDog)ê³¼ ê°™ìœ¼ë¯€ë¡œ self = mrDogìž…ë‹ˆë‹¤.
 
 ----------------------------------------------------
 
--- »ó¼Ó ¿¹Á¦:
+-- ìƒì† ì˜ˆì œ:
 
 LoudDog = Dog:new()                           -- 1.
 
@@ -312,19 +312,19 @@ end
 seymour = LoudDog:new()                       -- 3.
 seymour:makeSound()  -- 'woof woof woof'      -- 4.
 
--- 1. LoudDogÀº DogÀÇ ¸Þ¼­µå¿Í º¯¼ö¸¦ °®°Ô µË´Ï´Ù.
--- 2. self´Â new()¿¡¼­ 'sound' Å°¸¦ °¡Áý´Ï´Ù. 3À» Âü°íÇÏ¼¼¿ä.
--- 3. LoudDog.new(LoudDog)°ú °°°í, LoudDogÀº 'new' Å°°¡ ¾øÁö¸¸
---    ¸ÞÅ¸Å×ÀÌºí¿¡¼­ __index = DogÀÌ±â ¶§¹®¿¡ Dog.new(LoudDog)À¸·Î
---    º¯È¯µË´Ï´Ù.
---    °á°ú: seymourÀÇ ¸ÞÅ¸Å×ÀÌºíÀº LoudDogÀÌ°í LoudDog.__index´Â
---    LoudDogÀÔ´Ï´Ù. µû¶ó¼­ seymour.key´Â seymour.key, 
---    LoudDog.key, Dog.key¿Í °°À» °ÍÀÌ¸ç, ÁöÁ¤ÇÑ Å°¿¡ ¾î¶² Å×ÀÌºíÀÌ
---    ¿Àµç »ó°ü¾øÀ» °ÍÀÔ´Ï´Ù.
--- 4. 'makeSound' Å°´Â LoudDog¿¡¼­ ¹ß°ßÇÒ ¼ö ÀÖ½À´Ï´Ù. 
---    ÀÌ°ÍÀº LoudDog.makeSound(seymour)¿Í °°½À´Ï´Ù.
+-- 1. LoudDogì€ Dogì˜ ë©”ì„œë“œì™€ ë³€ìˆ˜ë¥¼ ê°–ê²Œ ë©ë‹ˆë‹¤.
+-- 2. selfëŠ” new()ì—ì„œ 'sound' í‚¤ë¥¼ ê°€ì§‘ë‹ˆë‹¤. 3ì„ ì°¸ê³ í•˜ì„¸ìš”.
+-- 3. LoudDog.new(LoudDog)ê³¼ ê°™ê³ , LoudDogì€ 'new' í‚¤ê°€ ì—†ì§€ë§Œ
+--    ë©”íƒ€í…Œì´ë¸”ì—ì„œ __index = Dogì´ê¸° ë•Œë¬¸ì— Dog.new(LoudDog)ìœ¼ë¡œ
+--    ë³€í™˜ë©ë‹ˆë‹¤.
+--    ê²°ê³¼: seymourì˜ ë©”íƒ€í…Œì´ë¸”ì€ LoudDogì´ê³  LoudDog.__indexëŠ”
+--    LoudDogìž…ë‹ˆë‹¤. ë”°ë¼ì„œ seymour.keyëŠ” seymour.key, 
+--    LoudDog.key, Dog.keyì™€ ê°™ì„ ê²ƒì´ë©°, ì§€ì •í•œ í‚¤ì— ì–´ë–¤ í…Œì´ë¸”ì´
+--    ì˜¤ë“  ìƒê´€ì—†ì„ ê²ƒìž…ë‹ˆë‹¤.
+-- 4. 'makeSound' í‚¤ëŠ” LoudDogì—ì„œ ë°œê²¬í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤. 
+--    ì´ê²ƒì€ LoudDog.makeSound(seymour)ì™€ ê°™ìŠµë‹ˆë‹¤.
 
--- ÇÊ¿äÇÒ °æ¿ì, ÇÏÀ§ Å¬·¡½ºÀÇ new()´Â ±â¹Ý Å¬·¡½ºÀÇ new()¿Í À¯»çÇÕ´Ï´Ù.
+-- í•„ìš”í•  ê²½ìš°, í•˜ìœ„ í´ëž˜ìŠ¤ì˜ new()ëŠ” ê¸°ë°˜ í´ëž˜ìŠ¤ì˜ new()ì™€ ìœ ì‚¬í•©ë‹ˆë‹¤.
 function LoudDog:new()
   newObj = {}
   -- set up newObj
@@ -333,91 +333,91 @@ function LoudDog:new()
 end
 
 ----------------------------------------------------
--- 4. ¸ðµâ
+-- 4. ëª¨ë“ˆ
 ----------------------------------------------------
 
 
---[[ ¿©±â¼­ ÁÖ¼®À» Á¦°ÅÇÏ¸é ÀÌ ½ºÅ©¸³Æ®ÀÇ ³ª¸ÓÁö ºÎºÐÀº 
---   ½ÇÇà °¡´ÉÇÑ »óÅÂ°¡ µË´Ï´Ù.
+--[[ ì—¬ê¸°ì„œ ì£¼ì„ì„ ì œê±°í•˜ë©´ ì´ ìŠ¤í¬ë¦½íŠ¸ì˜ ë‚˜ë¨¸ì§€ ë¶€ë¶„ì€ 
+--   ì‹¤í–‰ ê°€ëŠ¥í•œ ìƒíƒœê°€ ë©ë‹ˆë‹¤.
 ```
 
 ```lua
--- mod.lua ÆÄÀÏÀÇ ³»¿ëÀÌ ´ÙÀ½°ú °°´Ù°í °¡Á¤ÇØ º¾½Ã´Ù.
+-- mod.lua íŒŒì¼ì˜ ë‚´ìš©ì´ ë‹¤ìŒê³¼ ê°™ë‹¤ê³  ê°€ì •í•´ ë´…ì‹œë‹¤.
 local M = {}
 
 local function sayMyName()
-  print('ÀÌ¼Ò·æ')
+  print('ì´ì†Œë£¡')
 end
 
 function M.sayHello()
-  print('¾È³çÇÏ¼¼¿ä')
+  print('ì•ˆë…•í•˜ì„¸ìš”')
   sayMyName()
 end
 
 return M
 
--- ¶Ç ´Ù¸¥ ÆÄÀÏ¿¡¼­´Â mod.luaÀÇ ±â´ÉÀ» ÀÌ¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
-local mod = require('mod')  -- mod.lua ÆÄÀÏÀ» ½ÇÇà
+-- ë˜ ë‹¤ë¥¸ íŒŒì¼ì—ì„œëŠ” mod.luaì˜ ê¸°ëŠ¥ì„ ì´ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+local mod = require('mod')  -- mod.lua íŒŒì¼ì„ ì‹¤í–‰
 
--- require´Â ¸ðµâÀ» Æ÷ÇÔ½ÃÅ°´Â Ç¥ÁØÈ­µÈ ¹æ¹ýÀÔ´Ï´Ù.
--- require´Â ´ÙÀ½°ú °°ÀÌ µ¿ÀÛÇÕ´Ï´Ù:     (Ä³½ÌµÅ ÀÖÁö ¾ÊÀ» °æ¿ì. ÇÏ´Ü ÂüÁ¶)
+-- requireëŠ” ëª¨ë“ˆì„ í¬í•¨ì‹œí‚¤ëŠ” í‘œì¤€í™”ëœ ë°©ë²•ìž…ë‹ˆë‹¤.
+-- requireëŠ” ë‹¤ìŒê³¼ ê°™ì´ ë™ìž‘í•©ë‹ˆë‹¤:     (ìºì‹±ë¼ ìžˆì§€ ì•Šì„ ê²½ìš°. í•˜ë‹¨ ì°¸ì¡°)
 local mod = (function ()
-  <mod.luaÀÇ ³»¿ë>
+  <mod.luaì˜ ë‚´ìš©>
 end)()
--- mod.lua°¡ ÇÔ¼öÀÇ º»¹®Ã³·³ µÇ¹Ç·Î mod.lua ¾ÈÀÇ Áö¿ª ¸â¹ö´Â
--- ¹Û¿¡¼­ º¼ ¼ö ¾ø½À´Ï´Ù.
+-- mod.luaê°€ í•¨ìˆ˜ì˜ ë³¸ë¬¸ì²˜ëŸ¼ ë˜ë¯€ë¡œ mod.lua ì•ˆì˜ ì§€ì—­ ë©¤ë²„ëŠ”
+-- ë°–ì—ì„œ ë³¼ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
 
--- ´ÙÀ½ ÄÚµå°¡ µ¿ÀÛÇÏ´Â °ÍÀº mod°¡ mod.luaÀÇ M°ú °°±â ¶§¹®ÀÔ´Ï´Ù.
-mod.sayHello()  -- ÀÌ¼Ò·æ ¾¾¿¡°Ô ÀÎ»ç¸¦ °Ç³Ü´Ï´Ù.
+-- ë‹¤ìŒ ì½”ë“œê°€ ë™ìž‘í•˜ëŠ” ê²ƒì€ modê°€ mod.luaì˜ Mê³¼ ê°™ê¸° ë•Œë¬¸ìž…ë‹ˆë‹¤.
+mod.sayHello()  -- ì´ì†Œë£¡ ì”¨ì—ê²Œ ì¸ì‚¬ë¥¼ ê±´ë„µë‹ˆë‹¤.
 
--- ´ÙÀ½ ÄÚµå¸¦ ½ÇÇàÇÏ¸é ¿À·ù°¡ ¹ß»ýÇÕ´Ï´Ù.
--- sayMyName´Â mod.lua ¾È¿¡¼­¸¸ Á¸ÀçÇÏ±â ¶§¹®ÀÔ´Ï´Ù:
-mod.sayMyName()  -- ¿À·ù
+-- ë‹¤ìŒ ì½”ë“œë¥¼ ì‹¤í–‰í•˜ë©´ ì˜¤ë¥˜ê°€ ë°œìƒí•©ë‹ˆë‹¤.
+-- sayMyNameëŠ” mod.lua ì•ˆì—ì„œë§Œ ì¡´ìž¬í•˜ê¸° ë•Œë¬¸ìž…ë‹ˆë‹¤:
+mod.sayMyName()  -- ì˜¤ë¥˜
 
--- requireÀÇ ¹ÝÈ¯°ªÀº Ä³½ÌµÇ¹Ç·Î require¸¦ ¿©·¯ ¹ø ½ÇÇàÇØµµ
--- ÆÄÀÏÀº ÃÖ´ë ÇÑ ¹ø¸¸ ½ÇÇàµË´Ï´Ù.
+-- requireì˜ ë°˜í™˜ê°’ì€ ìºì‹±ë˜ë¯€ë¡œ requireë¥¼ ì—¬ëŸ¬ ë²ˆ ì‹¤í–‰í•´ë„
+-- íŒŒì¼ì€ ìµœëŒ€ í•œ ë²ˆë§Œ ì‹¤í–‰ë©ë‹ˆë‹¤.
 
--- mod2.lua¿¡ "print('Hi')"°¡ µé¾î ÀÖ´Ù°í °¡Á¤ÇØ º¾½Ã´Ù.
-local a = require('mod2')  -- Hi!¸¦ Ãâ·Â
-local b = require('mod2')  -- print¸¦ ½ÇÇàÇÏÁö ¾ÊÀ½. a=b
+-- mod2.luaì— "print('Hi')"ê°€ ë“¤ì–´ ìžˆë‹¤ê³  ê°€ì •í•´ ë´…ì‹œë‹¤.
+local a = require('mod2')  -- Hi!ë¥¼ ì¶œë ¥
+local b = require('mod2')  -- printë¥¼ ì‹¤í–‰í•˜ì§€ ì•ŠìŒ. a=b
 
--- dofileÀº require¿Í ºñ½ÁÇÏÁö¸¸ Ä³½ÌÀ» ÇÏÁö ¾Ê½À´Ï´Ù:
+-- dofileì€ requireì™€ ë¹„ìŠ·í•˜ì§€ë§Œ ìºì‹±ì„ í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤:
 dofile('mod2')  --> Hi!
-dofile('mod2')  --> Hi! (require¿Í ´Þ¸® ´Ù½Ã ÇÑ¹ø ½ÇÇàµÊ)
+dofile('mod2')  --> Hi! (requireì™€ ë‹¬ë¦¬ ë‹¤ì‹œ í•œë²ˆ ì‹¤í–‰ë¨)
 
--- loadfileÀº ·ç¾Æ ÆÄÀÏÀ» ÀÐ¾îµéÀÌÁö¸¸ ½ÇÇàÇÏÁö´Â ¾Ê½À´Ï´Ù
-f = loadfile('mod2')  -- f()¸¦ È£ÃâÇØ¾ß mod2.lua°¡ ½ÇÇàµË´Ï´Ù.
+-- loadfileì€ ë£¨ì•„ íŒŒì¼ì„ ì½ì–´ë“¤ì´ì§€ë§Œ ì‹¤í–‰í•˜ì§€ëŠ” ì•ŠìŠµë‹ˆë‹¤
+f = loadfile('mod2')  -- f()ë¥¼ í˜¸ì¶œí•´ì•¼ mod2.luaê°€ ì‹¤í–‰ë©ë‹ˆë‹¤.
 
--- loadstringÀº ¹®ÀÚ¿­¿¡ ´ëÇÑ loadfileÀÔ´Ï´Ù.
-g = loadstring('print(343)')  -- ÇÔ¼ö¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
-g()  -- 343ÀÌ Ãâ·ÂµË´Ï´Ù. ±×Àü±îÁö´Â ¾Æ¹«°Íµµ Ãâ·ÂµÇÁö ¾Ê½À´Ï´Ù.
+-- loadstringì€ ë¬¸ìžì—´ì— ëŒ€í•œ loadfileìž…ë‹ˆë‹¤.
+g = loadstring('print(343)')  -- í•¨ìˆ˜ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
+g()  -- 343ì´ ì¶œë ¥ë©ë‹ˆë‹¤. ê·¸ì „ê¹Œì§€ëŠ” ì•„ë¬´ê²ƒë„ ì¶œë ¥ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
 
 --]]
 
 ```
-## Âü°íÀÚ·á
+## ì°¸ê³ ìžë£Œ
 
-·ç¾Æ¸¦ ¹è¿ì´Â ÀÏÀÌ Èï¹ÌÁøÁøÇß´ø ÀÌÀ¯´Â <a href="http://love2d.org/">Love 2D °ÔÀÓ ¿£Áø</a>À» ÀÌ¿ëÇØ 
-°ÔÀÓÀ» ¸¸µé ¼ö ÀÖ¾ú±â ¶§¹®ÀÔ´Ï´Ù. ÀÌ°ÍÀÌ Á¦°¡ ·ç¾Æ¸¦ ¹è¿î ÀÌÀ¯ÀÔ´Ï´Ù.
+ë£¨ì•„ë¥¼ ë°°ìš°ëŠ” ì¼ì´ í¥ë¯¸ì§„ì§„í–ˆë˜ ì´ìœ ëŠ” <a href="http://love2d.org/">Love 2D ê²Œìž„ ì—”ì§„</a>ì„ ì´ìš©í•´ 
+ê²Œìž„ì„ ë§Œë“¤ ìˆ˜ ìžˆì—ˆê¸° ë•Œë¬¸ìž…ë‹ˆë‹¤. ì´ê²ƒì´ ì œê°€ ë£¨ì•„ë¥¼ ë°°ìš´ ì´ìœ ìž…ë‹ˆë‹¤.
 
-Àú´Â <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">BlackBulletIVÀÇ "ÇÁ·Î±×·¡¸Ó¸¦ À§ÇÑ ·ç¾Æ"</a>·Î
-½ÃÀÛÇß½À´Ï´Ù. ±×´ÙÀ½À¸·Î °ø½Ä <a href="http://www.lua.org/pil/contents.html">"ÇÁ·Î±×·¡¹Ö ·ç¾Æ"</a> Ã¥À» ÀÐ¾ú½À´Ï´Ù.
-±×·¸°Ô ·ç¾Æ¸¦ ¹è¿ü½À´Ï´Ù.
+ì €ëŠ” <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">BlackBulletIVì˜ "í”„ë¡œê·¸ëž˜ë¨¸ë¥¼ ìœ„í•œ ë£¨ì•„"</a>ë¡œ
+ì‹œìž‘í–ˆìŠµë‹ˆë‹¤. ê·¸ë‹¤ìŒìœ¼ë¡œ ê³µì‹ <a href="http://www.lua.org/pil/contents.html">"í”„ë¡œê·¸ëž˜ë° ë£¨ì•„"</a> ì±…ì„ ì½ì—ˆìŠµë‹ˆë‹¤.
+ê·¸ë ‡ê²Œ ë£¨ì•„ë¥¼ ë°°ì› ìŠµë‹ˆë‹¤.
 
-lua-users.org¿¡ ÀÖ´Â <a href="http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">ÂªÀº ·ç¾Æ ·¹ÆÛ·±½º</a>¸¦
-ÀÐ¾îµÎ¸é µµ¿òµÉÁöµµ ¸ð¸£°Ú½À´Ï´Ù.
+lua-users.orgì— ìžˆëŠ” <a href="http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">ì§§ì€ ë£¨ì•„ ë ˆí¼ëŸ°ìŠ¤</a>ë¥¼
+ì½ì–´ë‘ë©´ ë„ì›€ë ì§€ë„ ëª¨ë¥´ê² ìŠµë‹ˆë‹¤.
 
-¿©±â¼­´Â Ç¥ÁØ ¶óÀÌºê·¯¸®¿¡ °üÇØ¼­´Â ´Ù·çÁö ¾Ê¾Ò½À´Ï´Ù.
+ì—¬ê¸°ì„œëŠ” í‘œì¤€ ë¼ì´ë¸ŒëŸ¬ë¦¬ì— ê´€í•´ì„œëŠ” ë‹¤ë£¨ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.
 
-* <a href="http://lua-users.org/wiki/StringLibraryTutorial">string ¶óÀÌºê·¯¸®</a>
-* <a href="http://lua-users.org/wiki/TableLibraryTutorial">table ¶óÀÌºê·¯¸®</a>
-* <a href="http://lua-users.org/wiki/MathLibraryTutorial">math ¶óÀÌºê·¯¸®</a>
-* <a href="http://lua-users.org/wiki/IoLibraryTutorial">io ¶óÀÌºê·¯¸®</a>
-* <a href="http://lua-users.org/wiki/OsLibraryTutorial">os ¶óÀÌºê·¯¸®</a>
+* <a href="http://lua-users.org/wiki/StringLibraryTutorial">string ë¼ì´ë¸ŒëŸ¬ë¦¬</a>
+* <a href="http://lua-users.org/wiki/TableLibraryTutorial">table ë¼ì´ë¸ŒëŸ¬ë¦¬</a>
+* <a href="http://lua-users.org/wiki/MathLibraryTutorial">math ë¼ì´ë¸ŒëŸ¬ë¦¬</a>
+* <a href="http://lua-users.org/wiki/IoLibraryTutorial">io ë¼ì´ë¸ŒëŸ¬ë¦¬</a>
+* <a href="http://lua-users.org/wiki/OsLibraryTutorial">os ë¼ì´ë¸ŒëŸ¬ë¦¬</a>
 
-±×³ªÀú³ª ÀÌ ÆÄÀÏ ÀüÃ¼´Â À¯È¿ÇÑ ·ç¾Æ ÇÁ·Î±×·¥ÀÔ´Ï´Ù. ÀÌ ÆÄÀÏÀ»
-learn.lua·Î ÀúÀåÇÑ ÈÄ "lua learn.lua"¸¦ ½ÇÇàÇØ º¸¼¼¿ä!
+ê·¸ë‚˜ì €ë‚˜ ì´ íŒŒì¼ ì „ì²´ëŠ” ìœ íš¨í•œ ë£¨ì•„ í”„ë¡œê·¸ëž¨ìž…ë‹ˆë‹¤. ì´ íŒŒì¼ì„
+learn.luaë¡œ ì €ìž¥í•œ í›„ "lua learn.lua"ë¥¼ ì‹¤í–‰í•´ ë³´ì„¸ìš”!
 
-ÀÌ ±ÛÀº tylerneylon.com¿¡ Ã³À½À¸·Î ½áº» ±ÛÀÌ¸ç, 
-<a href="https://gist.github.com/tylerneylon/5853042">GithubÀÇ Gist</a>¿¡¼­µµ È®ÀÎÇÒ ¼ö ÀÖ½À´Ï´Ù.
-·ç¾Æ·Î Áñ°Å¿î ½Ã°£À» º¸³»¼¼¿ä!
+ì´ ê¸€ì€ tylerneylon.comì— ì²˜ìŒìœ¼ë¡œ ì¨ë³¸ ê¸€ì´ë©°, 
+<a href="https://gist.github.com/tylerneylon/5853042">Githubì˜ Gist</a>ì—ì„œë„ í™•ì¸í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+ë£¨ì•„ë¡œ ì¦ê±°ìš´ ì‹œê°„ì„ ë³´ë‚´ì„¸ìš”!
