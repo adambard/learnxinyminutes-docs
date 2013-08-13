@@ -25,15 +25,28 @@ Multi-line comments look like this.
 // main with an integer return type.
 int main (int argc, const char * argv[])
 {
-    // Create an autorelease pool to manage the memory into your program
+    // Create an autorelease pool to manage the memory into the program
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
  
     // Use NSLog to print lines to the console
     NSLog(@"Hello World!"); // Print the string "Hello World!"
  
-    // String object
-    NSString *worldString = @"World";
+    ///////////////////////////////////////
+    // Types & Variables
+    ///////////////////////////////////////
+    
+    // Primitive declarations
+    int myPrimitive;
+    
+    // Object declarations
+    // Put the * in front of the variable names for strongly-typed object declarations
+    MyClass *myObject1;  // Strong typing
+    id       myObject2;  // Weak typing
     // %@ is an object
+    NSLog(@"%@ and %@", myObject1, myObject2); // Print "(null) and (null)"
+    
+    // String
+    NSString *worldString = @"World";
     NSLog(@"Hello %@!", worldString); // Print "Hello World!"
     
     // Character literals
@@ -49,6 +62,10 @@ int main (int argc, const char * argv[])
     NSNumber *fortyTwoUnsignedNumber = @42U;
     unsigned int fortyTwoUnsigned    = [fortyTwoUnsignedNumber unsignedIntValue];
     NSLog(@"%u", fortyTwoUnsigned);
+    
+    NSNumber *fortyTwoShortNumber = [NSNumber numberWithShort:42];
+    short fortyTwoShort           = [fortyTwoShortNumber shortValue];
+    NSLog(@"%hi", fortyTwoShort);
     
     NSNumber *fortyTwoLongNumber = @42L;
     long fortyTwoLong            = [fortyTwoLongNumber longValue];
@@ -77,10 +94,14 @@ int main (int argc, const char * argv[])
     NSObject *valueObject     = aDictionary[@"A Key"];
     NSLog(@"Object = %@", valueObject); // Print "Object = (null)"
 
+    ///////////////////////////////////////
+    // Operators
+    ///////////////////////////////////////
+
     // Clean up the memory you used into your program
     [pool drain];
     
-    // End your program
+    // End the program
     return 0;
 }
 
