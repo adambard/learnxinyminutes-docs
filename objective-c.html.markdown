@@ -8,8 +8,8 @@ filename: LearnObjectiveC.m
 
 ---
 
-Objective-C is the main programming language used by Apple for the OS X and iOS operating systems and their respective APIs, Cocoa and Cocoa Touch.
-It's is a general-purpose, object-oriented programming language that adds Smalltalk-style messaging to the C programming language. 
+Objective-C is the main programming language used by Apple for the OS X and iOS operating systems and their respective frameworks, Cocoa and Cocoa Touch.
+It is a general-purpose, object-oriented programming language that adds Smalltalk-style messaging to the C programming language. 
 
 ```Objective-C
 // Single-line comments start with //
@@ -97,6 +97,6 @@ UserObject *someObject = [[UserObject alloc] init];
 
 [Wikipedia Objective-C](http://en.wikipedia.org/wiki/Objective-C)
 
-[Objectively Speaking: A Crash Course in Objective-C](http://www.raywenderlich.com/12444/objectively-speaking-a-crash-course-in-objective-c)
+[Learning Objective-C](http://developer.apple.com/library/ios/referencelibrary/GettingStarted/Learning_Objective-C_A_Primer/)
 
 [iOS For High School Students: Getting Started](http://www.raywenderlich.com/5600/ios-for-high-school-students-getting-started)
