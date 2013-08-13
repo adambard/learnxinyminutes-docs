@@ -117,11 +117,11 @@ status == :approved #=> false
 # Arrays
 
 # This is an array
-[1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
+array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 
 # Arrays can contain different types of items
 
-array = [1, "hello", false] #=> => [1, "hello", false]
+[1, "hello", false] #=> [1, "hello", false]
 
 # Arrays can be indexed
 # From the front
