@@ -93,13 +93,13 @@ which MRI version to target.
 
 ## RubySpec
 
-Most ruby implementations rely heavily on (RubySpec)[http://rubyspec.org/]. Ruby
+Most ruby implementations rely heavily on [RubySpec](http://rubyspec.org/). Ruby
 has no official specification, so the community has written executable specs in
 ruby to test their implementations' compatability with MRI.
 
 ## RubyGems
 
-(RubyGems)[http://rubygems.org/] is a community-run package manager for ruby.
+[RubyGems](http://rubygems.org/) is a community-run package manager for ruby.
 RubyGems ships with ruby, so there is no need to download it separately.
 
 Ruby packages are called "gems," and they can be hosted by the community at
@@ -108,7 +108,7 @@ things like version, dependencies, author(s), and license(s).
 
 ## Bundler
 
-(Bundler)[http://bundler.io/] is a gem dependency resolver. It uses a project's
+[Bundler](http://bundler.io/) is a gem dependency resolver. It uses a project's
 Gemfile to find dependencies, and then fetches those dependencies' dependencies
 recursively. It does this until all dependencies are resolved and downloaded, or
 it will stop if a conflict has been found.
