@@ -1,8 +1,11 @@
 ---
-language: Objectiv-C
-author: Eugene Yagrushkin
-author_url: www.about.me/yagrushkin
-filename: learnc.Objectiv-C
+
+language: Objective-C
+contributors:
+    - ["Eugene Yagrushkin", "www.about.me/yagrushkin"]
+    - ["Yannick Loriot", "https://github.com/YannickL"]
+filename: LearnObjectiveC.m
+
 ---
 
 Objective-C is the main programming language used by Apple for the OS X and iOS operating systems and their respective APIs, Cocoa and Cocoa Touch.
