@@ -6,6 +6,7 @@ contributors:
   - ["Joel Walden", "http://joelwalden.net"]
   - ["Luke Holder", "http://twitter.com/lukeholder"]
   - ["Tristan Hume", "http://thume.ca/"]
+  - ["Nick LaMuro", "https://github.com/NickLaMuro"]
 ---
 
 ```ruby
