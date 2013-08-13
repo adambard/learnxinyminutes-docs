@@ -29,33 +29,52 @@ int main (int argc, const char * argv[])
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
  
     // Use NSLog to print lines to the console
-    NSLog(@"Hello World!"); // Print "Hello World!"
+    NSLog(@"Hello World!"); // Print the string "Hello World!"
  
-    // character literals
+    // String object
+    NSString *worldString = @"World";
+    // %@ is an object
+    NSLog(@"Hello %@!", worldString); // Print "Hello World!"
+    
+    // Character literals
     NSNumber *theLetterZ = @'Z';
+    NSLog(@"%c", [theLetterZ charValue]);
 
-    // integral literals
-    NSNumber *fortyTwo = @42;
-    NSNumber *fortyTwoUnsigned = @42U;
-    NSNumber *fortyTwoLong = @42L;
-    NSNumber *fortyTwoLongLong = @42LL;
+    // Integral literals
+    NSNumber *fortyTwoNumber = @42;
+    int fortyTwo             = [fortyTwo intValue];
+    NSLog(@"%i", fortyTwo);
+    
+    NSNumber *fortyTwoUnsignedNumber = @42U;
+    unsigned int fortyTwoUnsigned    = [fortyTwoUnsigned unsignedIntValue];
+    NSLog(@"%u", fortyTwoUnsigned);
+    
+    NSNumber *fortyTwoLongNumber = @42L;
+    long fortyTwoLong            = [aLong longValue];
+    NSLog(@"%li", fortyTwoLong);
 
-    // floating point literals
-    NSNumber *piFloat = @3.141592654F;
-    NSNumber *piDouble = @3.1415926535;
+    // Floating point literals
+    NSNumber *piFloatNumber = @3.141592654F;
+    float piFloat           = [piFloat floatValue];
+    NSLog(@"%f", piFloat);
+    
+    NSNumber *piDoubleNumber = @3.1415926535;
+    piDouble                 = [piDouble doubleValue];
+    NSLog(@"%f", piDouble);
 
     // BOOL literals
-    NSNumber *yesNumber = @YES;           // equivalent to [NSNumber numberWithBool:YES]
-    NSNumber *noNumber = @NO;             // equivalent to [NSNumber numberWithBool:NO]
+    NSNumber *yesNumber = @YES;
+    NSNumber *noNumber  = @NO;
 
-    // strings
-    NSString *helloString = @"hello";
+    // Array object
+    NSArray *anArray      = @[@1, @2, @3, @4];
+    NSNumber *thirdNumber = anArray[2];
+    NSLog(@"Third number = %@", thirdObject); // Print "Third number = 3"
 
-    // array
-    NSArray *anArray = @[@1, @2];
-
-    // dictionary
-    NSDictionay *aDictionary = @{ @"key1" : @"value1", @"key2" : @"value2" };
+    // Dictionary object
+    NSDictionary *aDictionary = @{ @"key1" : @"value1", @"key2" : @"value2" };
+    NSObject *valueObject     = aDictionary[@"A Key"];
+    NSLog(@"Object = %@", valueObject); // Print "Object = (null)"
 
     // Clean up the memory you used into your program
     [pool drain];
