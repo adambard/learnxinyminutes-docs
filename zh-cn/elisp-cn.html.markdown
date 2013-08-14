@@ -4,7 +4,7 @@ contributors:
     - ["Bastien Guerry", "http://bzg.fr"]
 translators:
     - ["Chenbo Li", "http://binarythink.net"]
-filename: learn-emacs-lisp-zh.el
+filename: learn-emacs-lisp.el
 lang: zh-cn
 ---
 

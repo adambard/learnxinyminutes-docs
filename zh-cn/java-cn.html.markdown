@@ -3,7 +3,7 @@ name: java
 category: language
 language: java
 lang: zh-cn
-filename: LearnJava-zh.java
+filename: LearnJava.java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:

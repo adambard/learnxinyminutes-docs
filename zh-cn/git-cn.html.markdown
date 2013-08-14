@@ -5,6 +5,7 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:
     - ["Chenbo Li", "http://binarythink.net"]
+filename: LearnGit.txt
 lang: zh-cn
 ---
 

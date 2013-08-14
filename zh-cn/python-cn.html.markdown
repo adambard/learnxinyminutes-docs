@@ -4,7 +4,7 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
     - ["Chenbo Li", "http://binarythink.net"]
-filename: learnpython-zh.py
+filename: learnpython.py
 lang: zh-cn
 ---
 
