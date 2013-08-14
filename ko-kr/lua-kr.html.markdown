@@ -327,7 +327,7 @@ seymour:makeSound()  -- 'woof woof woof'      -- 4.
 -- 필요할 경우, 하위 클래스의 new()는 기반 클래스의 new()와 유사합니다.
 function LoudDog:new()
   newObj = {}
-  -- set up newObj
+  -- newObj를 구성
   self.__index = self
   return setmetatable(newObj, self)
 end
