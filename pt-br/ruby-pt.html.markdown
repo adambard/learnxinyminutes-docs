@@ -3,7 +3,7 @@ language: ruby
 filename: learnruby.rb
 contributors:
   - ["Bruno Henrique - Garu", "http://garulab.com"]
-  - ["Katyanna Moura"]
+  - ["Katyanna Moura", "https://twitter.com/amelie_kn"]
 ---
 
 ```ruby
@@ -34,7 +34,7 @@ Você não deve usar também
 # Aritimética é apenas açúcar sintático
 # para chamar um método de um objeto
 1.+(3) #=> 4
-10.* 5 #=> 50 
+10.* 5 #=> 50
 
 # Valores especiais são objetos
 nil # Nada para ver aqui
@@ -135,7 +135,7 @@ array.[] 12 #=> nil
 # a partir do final
 array[-1] #=> 5
 
-# Com um índice de começo e fim 
+# Com um índice de começo e fim
 array[2, 4] #=> [3, 4, 5]
 
 # Ou com um intervalo de valores
@@ -231,7 +231,7 @@ when 'D'
   puts "Scraping through"
 when 'F'
   puts "Você falhou"
-else 
+else
   puts "Alternative grading system, eh?"
 end
 
@@ -259,7 +259,7 @@ somar 3, 4 #=> 7
 somar somar(3,4), 5 #=> 12
 
 # yield
-# Todos os métodos possuem implicitamente um paramêntro opcional que é um bloco 
+# Todos os métodos possuem implicitamente um paramêntro opcional que é um bloco
 # ele pode ser chamado com a palavra chave 'yield'
 
 def ao_redor
