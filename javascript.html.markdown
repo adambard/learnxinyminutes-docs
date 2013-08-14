@@ -211,16 +211,6 @@ function myFunction(thing){
 }
 myFunction("foo") // = "FOO"
 
-// Functions can also be defined "anonymously" - without a name:
-(function(thing){
-    return thing.toLowerCase()
-})
-// Note: Stand-alone function declarations require an identifier name.
-// Anonymous functions are values, not declarations, so they must be
-// treated as a value. We wrap ours here in ( ) to do so, or you could assign
-// it to a variable, or pass it as a parameter to another function.
-// (we can't call our function, since we don't have a name to refer to it with)
-
 // JavaScript functions are first class objects, so they can be reassigned to
 // different variable names and passed to other functions as arguments - for
 // example, when supplying an event handler:
@@ -229,9 +219,16 @@ function myFunction(){
 }
 setTimeout(myFunction, 5000)
 
+// Functions can also be defined "anonymously" - without a name:
+var lowerFunction = function(thing){
+    return thing.toLowerCase()
+}
+lowerFunction("Foo") // = "foo"
+// (note: we've assigned our anonymous function to a variable - if we didn't, we
+// wouldn't be able to access it)
+
 // You can even write the function statement directly in the call to the other
 // function.
-
 setTimeout(function myFunction(){
     // this code will be called in 5 seconds' time
 }, 5000)
