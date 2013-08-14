@@ -11,7 +11,7 @@ filename: coffeescript-es.coffee
 ``` coffeescript
 # CoffeeScript es un lenguaje hipster.
 # Tiene convenciones de muchos lenguajes modernos.
-# Los comentarios son como en Ruby y Python, usan almohadilla.
+# Los comentarios son como en Ruby y Python, usan almohadillas.
 
 ###
 Los comentarios en bloque son como estos, y se traducen directamente a '/*' y '*/' para el código JavaScript resultante.
