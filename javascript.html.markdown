@@ -185,7 +185,7 @@ do {
     input = getInput()
 } while (!isValid(input))
 
-// the for loop is the same as C and Java: 
+// the for loop is the same as C and Java:
 // initialisation; continue condition; iteration.
 for (var i = 0; i < 5; i++){
     // will run 5 times
@@ -255,24 +255,19 @@ permanent // = 10
 
 // One of JavaScript's most powerful features is closures. If a function is
 // defined inside another function, the inner function has access to all the
-// outer function's variables.
+// outer function's variables, even after the outer function exits.
 function sayHelloInFiveSeconds(name){
     var prompt = "Hello, " + name + "!"
     function inner(){
         alert(prompt)
     }
     setTimeout(inner, 5000)
-    // setTimeout is asynchronous, so this function will finish without waiting
-    // 5 seconds. However, once the 5 seconds is up, inner will still have
-    // access to the value of prompt.
+    // setTimeout is asynchronous, so the sayHelloInFiveSeconds function will
+    // exit immediately, and setTimeout will call inner afterwards. However,
+    // because inner is "closed over" sayHelloInFiveSeconds, inner still has
+    // access to the 'prompt' variable when it is finally called.
 }
 sayHelloInFiveSeconds("Adam") // will open a popup with "Hello, Adam!" in 5s
-// inner() has access to the variable "prompt" strictly because of lexical scope.
-// A closure is being demonstrated because the inner() function is being executed
-// at a later time, and in fact being executed "outside" the scope where it was
-// declared (inside of the implementation of setTimeout()), but yet inner() STILL
-// has access to the variable "prompt". It is said that inner() has a "closure"
-// over the variables of sayHelloInFiveSeconds().
 
 ///////////////////////////////////
 // 5. More about Objects; Constructors and Prototypes
