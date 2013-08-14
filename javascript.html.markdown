@@ -252,15 +252,9 @@ i // = 5 - not undefined as you'd expect in a block-scoped language
     // in a web browser is always 'window'. The global object may have a
     // different name in non-browser environments such as Node.js.
     window.permanent = 10
-    // Or, as previously mentioned, if you leave the var keyword off, a
-    // global variable will be created when you assign it a value. However,
-    // this behavior is frowned upon, and in fact is disallowed in "strict
-    // mode".
-    permanent2 = 15
 })()
 temporary // raises ReferenceError
 permanent // = 10
-permanent2 // = 15 <-- the accidental global variable
 
 // One of JavaScript's most powerful features is closures. If a function is
 // defined inside another function, the inner function has access to all the
