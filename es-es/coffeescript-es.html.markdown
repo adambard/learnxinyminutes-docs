@@ -14,7 +14,8 @@ filename: coffeescript-es.coffee
 # Los comentarios son como en Ruby y Python, usan almohadillas.
 
 ###
-Los comentarios en bloque son como estos, y se traducen directamente a '/*' y '*/' para el código JavaScript resultante.
+Los comentarios en bloque son como estos, y se traducen directamente a '/*' y '*/'
+para el código JavaScript resultante.
 
 Deberías entender la mayor parte de la semántica de JavaScript antes de continuar.
 ###
