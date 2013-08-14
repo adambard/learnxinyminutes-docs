@@ -268,7 +268,7 @@ function sayHelloInFiveSeconds(name){
     // 기다리지 않고 실행을 마칩니다. 하지만 5초가 지나면 inner에서도
     // prompt의 값에 접근할 수 있습니다.
 }
-sayHelloInFiveSeconds("Adam") // will open a popup with "Hello, Adam!" in 5s
+sayHelloInFiveSeconds("Adam") // 5초 내로 "Hello, Adam!"이라고 적힌 팝업이 표시됨
 
 ///////////////////////////////////
 // 5. 객체 심화; 생성자와 프로토타입
@@ -403,7 +403,7 @@ String.prototype.firstCharacter = function(){
 
 // 예를 들어, Object.create가 모든 구현체에서 사용 가능한 것은 아니라고 
 // 했지만 아래의 폴리필을 이용해 Object.create를 여전히 사용할 수 있습니다.
-if (Object.create === undefined){ // don't overwrite it if it exists
+if (Object.create === undefined){ // 이미 존재하면 덮어쓰지 않음
     Object.create = function(proto){
         // 올바른 프로토타입을 가지고 임시 생성자를 만듬
         var Constructor = function(){}
