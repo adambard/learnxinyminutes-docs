@@ -365,7 +365,7 @@ my-atom  ;=> Atom<#...> (Returns the Atom object)
 
 ### Further Reading
 
-This is far from exhaustive, but hopefully it's enought o get you on your feet.
+This is far from exhaustive, but hopefully it's enough to get you on your feet.
 
 Clojure.org has lots of articles:
 [http://clojure.org/](http://clojure.org/)
