@@ -3,6 +3,7 @@ language: ruby
 filename: learnruby.rb
 contributors:
   - ["Bruno Henrique - Garu", "http://garulab.com"]
+  - ["Katyanna Moura"]
 ---
 
 ```ruby
@@ -30,14 +31,12 @@ Você não deve usar também
 10 * 2 #=> 20
 35 / 5 #=> 7
 
-# Arithmetic is just syntactic sugar
-# for calling a method on an object
-# Arithmetic é apenas açúcar semântico 
-# para chamar um métoddo de um objeto
+# Aritimética é apenas açúcar sintático
+# para chamar um método de um objeto
 1.+(3) #=> 4
 10.* 5 #=> 50 
 
-# Valores especiais são obejetos
+# Valores especiais são objetos
 nil # Nothing to see here 
 nil # Nada para ver aqui
 true # truth
@@ -71,7 +70,7 @@ false.class #=> FalseClass
 2 <= 2 #=> true
 2 >= 2 #=> true
 
-# Strings are objects
+# Strings são objects
 
 'I am a string'.class #=> String
 'Eu sou uma string'.class #=> String
@@ -102,14 +101,14 @@ y #=> 10
 # Por convenção, use snake_case para nomes de variáveis
 snake_case = true
 
-# Use nomes de variáveis descrivos
+# Use nomes de variáveis descritivos
 path_to_project_root = '/good/name/'
 caminho_para_a_raiz_do_projeto = '/bom/nome/'
 path = '/bad/name/'
 caminho = '/nome/ruim/'
 
-# Simbolos (são objetos)
-# Simbolos são imultáveis, são constantes reutilizáveis representadadas internamente por um
+# Símbolos (são objetos)
+# Símbolos são imutáveis, são constantes reutilizáveis representadadas internamente por um
 # valor inteiro. Eles são frequentemente usados no lugar de strings para transmitir com eficiência os valores
 # específicos e significativos
 
@@ -143,7 +142,7 @@ array = [1, "Oi", false] #=> => [1, "Oi", false]
 array[0] #=> 1
 array[12] #=> nil
 
-# Como aritimetica, o acesso via [var]
+# Como aritimética, o acesso via [var]
 # é apenas açúcar sintático
 # para chamar o método [] de um objeto
 array.[] 0 #=> 1
@@ -168,7 +167,7 @@ hash = {'cor' => 'verde', 'numero' => 5}
 
 hash.keys #=> ['cor', 'numero']
 
-# Hashes podem ser rapidamente pesquisado pela chave (key)
+# Hashes podem ser rapidamente pesquisados pela chave (key)
 hash['cor'] #=> 'verde'
 hash['numero'] #=> 5
 
@@ -185,7 +184,7 @@ hash.each do |k, v|
   puts "#{k} é #{v}"
 end
 
-# Desde o Ruby 1.9, temos uma sintaxe especial quando usamos simbolos como chaves (keys)
+# Desde o Ruby 1.9, temos uma sintaxe especial quando usamos símbolos como chaves (keys)
 
 new_hash = { defcon: 3, action: true}
 novo_hash = { defcon: 3, acao: true}
@@ -193,7 +192,7 @@ novo_hash = { defcon: 3, acao: true}
 new_hash.keys #=> [:defcon, :action]
 novo_hash.keys #=> [:defcon, :acao]
 
-# Dica: Tanto Arrays quanto Hashes são Enumerable
+# Dica: Tanto Arrays quanto Hashes são Enumerable.
 # Eles compartilham um monte de métodos úteis como each, map, count e mais
 
 # Estruturas de controle
@@ -320,7 +319,7 @@ def somar(x,y)
   x + y
 end
 
-# Argumentos de métodos são separados por uma virgula
+# Argumentos de métodos são separados por uma vírgula
 sum 3, 4 #=> 7
 somar 3, 4 #=> 7
 
@@ -425,7 +424,7 @@ class Humano
 end
 
 
-# Instaciando uma classe
+# Instanciando uma classe
 jim = Human.new("Jim Halpert")
 jim = Humano.new("Jim Halpert")
 
