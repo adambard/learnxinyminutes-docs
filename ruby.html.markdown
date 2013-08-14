@@ -6,6 +6,7 @@ contributors:
   - ["Joel Walden", "http://joelwalden.net"]
   - ["Luke Holder", "http://twitter.com/lukeholder"]
   - ["Tristan Hume", "http://thume.ca/"]
+  - ["Nick LaMuro", "https://github.com/NickLaMuro"]
 ---
 
 ```ruby
@@ -117,11 +118,11 @@ status == :approved #=> false
 # Arrays
 
 # This is an array
-[1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
+array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 
 # Arrays can contain different types of items
 
-array = [1, "hello", false] #=> => [1, "hello", false]
+[1, "hello", false] #=> [1, "hello", false]
 
 # Arrays can be indexed
 # From the front
@@ -173,9 +174,9 @@ new_hash.keys #=> [:defcon, :action]
 if true
   "if statement"
 elsif false
- "else if, optional"
+  "else if, optional"
 else
- "else, also optional"
+  "else, also optional"
 end
 
 for counter in 1..5
@@ -190,7 +191,8 @@ end
 # HOWEVER, No-one uses for loops.
 # Instead you should use the "each" method and pass it a block.
 # A block is a bunch of code that you can pass to a method like "each".
-# It is analogous to lambdas, anonymous functions or closures in other programming languages.
+# It is analogous to lambdas, anonymous functions or closures in other
+# programming languages.
 #
 # The "each" method of a range runs the block once for each element of the range.
 # The block is passed a counter as a parameter.
