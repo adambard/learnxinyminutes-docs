@@ -230,10 +230,13 @@ printf("%p\n", &x); // Use & to retrieve the address of a variable
 // (%p formats a pointer)
 // => Prints some address in memory;
 
-// Pointer types end with * in their declaration
-int* px; // px is a pointer to an int
+
+// Pointers start with * in their declaration
+int *px, not_a_pointer; // px is a pointer to an int
 px = &x; // Stores the address of x in px
 printf("%p\n", px); // => Prints some address in memory
+printf("%d, %d\n", (int)sizeof(px), (int)sizeof(not_a_pointer));
+// => Prints "8, 4" on 64-bit system
 
 // To retreive the value at the address a pointer is pointing to,
 // put * in front to de-reference it.
