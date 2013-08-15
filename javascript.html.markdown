@@ -219,17 +219,9 @@ function myFunction(){
 }
 setTimeout(myFunction, 5000)
 
-// Functions can also be defined "anonymously" - without a name:
-var lowerFunction = function(thing){
-    return thing.toLowerCase()
-}
-lowerFunction("Foo") // = "foo"
-// (note: we've assigned our anonymous function to a variable - if we didn't, we
-// wouldn't be able to access it)
-
-// You can even write the function statement directly in the call to the other
-// function.
-setTimeout(function myFunction(){
+// Function objects don't even have to be declared with a name - you can write
+// an anonymous function definition directly into the arguments of another.
+setTimeout(function(){
     // this code will be called in 5 seconds' time
 }, 5000)
 
