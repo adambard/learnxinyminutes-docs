@@ -104,9 +104,10 @@ false
 
 // There's also null and undefined
 null // used to indicate a deliberate non-value
-undefined // used to indicate a value that hasn't been set yet
+undefined // used to indicate a value is not currently present (although undefined
+          // is actually a value itself)
 
-// null, undefined, NaN, 0 and "" are falsy, and everything else is truthy.
+// false, null, undefined, NaN, 0 and "" are falsy, and everything else is truthy.
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
 ///////////////////////////////////
@@ -142,7 +143,7 @@ myArray[1] // = 45
 
 // JavaScript's objects are equivalent to 'dictionaries' or 'maps' in other
 // languages: an unordered collection of key-value pairs.
-{key1: "Hello", key2: "World"}
+var myObj = {key1: "Hello", key2: "World"}
 
 // Keys are strings, but quotes aren't required if they're a valid
 // JavaScript identifier. Values can be any type.
@@ -211,9 +212,13 @@ function myFunction(thing){
 myFunction("foo") // = "FOO"
 
 // Functions can also be defined "anonymously" - without a name:
-function(thing){
+(function(thing){
     return thing.toLowerCase()
-}
+})
+// Note: Stand-alone function declarations require an identifier name.
+// Anonymous functions are values, not declarations, so they must be
+// treated as a value. We wrap ours here in ( ) to do so, or you could assign
+// it to a variable, or pass it as a parameter to another function.
 // (we can't call our function, since we don't have a name to refer to it with)
 
 // JavaScript functions are first class objects, so they can be reassigned to
@@ -247,12 +252,15 @@ i // = 5 - not undefined as you'd expect in a block-scoped language
     // in a web browser is always 'window'. The global object may have a
     // different name in non-browser environments such as Node.js.
     window.permanent = 10
-    // Or, as previously mentioned, we can just leave the var keyword off.
+    // Or, as previously mentioned, if you leave the var keyword off, a
+    // global variable will be created when you assign it a value. However,
+    // this behavior is frowned upon, and in fact is disallowed in "strict
+    // mode".
     permanent2 = 15
 })()
 temporary // raises ReferenceError
 permanent // = 10
-permanent2 // = 15
+permanent2 // = 15 <-- the accidental global variable
 
 // One of JavaScript's most powerful features is closures. If a function is
 // defined inside another function, the inner function has access to all the
@@ -268,6 +276,12 @@ function sayHelloInFiveSeconds(name){
     // access to the value of prompt.
 }
 sayHelloInFiveSeconds("Adam") // will open a popup with "Hello, Adam!" in 5s
+// inner() has access to the variable "prompt" strictly because of lexical scope.
+// A closure is being demonstrated because the inner() function is being executed
+// at a later time, and in fact being executed "outside" the scope where it was
+// declared (inside of the implementation of setTimeout()), but yet inner() STILL
+// has access to the variable "prompt". It is said that inner() has a "closure"
+// over the variables of sayHelloInFiveSeconds().
 
 ///////////////////////////////////
 // 5. More about Objects; Constructors and Prototypes
