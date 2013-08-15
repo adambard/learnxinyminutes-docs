@@ -243,7 +243,7 @@ case grade
 when 'A'
   puts "Excellent"
 when 'B'
-  puts "Plus de chance la première fois"
+  puts "Plus de chance la prochaine fois"
 when 'C'
   puts "Vous pouvez faire mieux"
 when 'D'
