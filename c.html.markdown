@@ -373,7 +373,7 @@ int area(rect r){
 ///////////////////////////////////////
 /*
 At runtime, functions are located at known memory addresses. Function pointers are
-much likely any other pointer (they just store a memory address), but can be used 
+much like any other pointer (they just store a memory address), but can be used 
 to invoke functions directly, and to pass handlers (or callback functions) around.
 However, definition syntax may be initially confusing.
 
@@ -394,7 +394,7 @@ Function pointers are usually typedef'd for simplicity and readability, as follo
 
 typedef void (*my_fnp_type)(char *);
 
-// The used when declaring the actual pointer variable:
+// Then used when declaring the actual pointer variable:
 // ...
 // my_fnp_type f; 
 
