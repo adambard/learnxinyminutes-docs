@@ -1,10 +1,12 @@
 ---
-name: c
-category: language
-language: c
-filename: learnc.c
-contributors:
-    - ["Adam Bard", "http://adambard.com/"]
+- name: c
+- category: language
+- language: c
+- filename: learnc.c
+- contributors:
+ - [Adam Bard](http://adambard.com/)
+ - [Árpád Goretity](http://twitter.com/H2CO3_iOS)
+
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
@@ -152,7 +154,7 @@ int main() {
     
     // So string literals are strings enclosed within double quotes, but if we have characters
     // between single quotes, that's a character literal.
-    // It's of type `int`, and *not* `char` (for hystorical reasons).
+    // It's of type `int`, and *not* `char` (for historical reasons).
     int cha = 'a'; // fine
     char chb = 'a'; // fine too (implicit conversion from int to char - truncation)
     
@@ -176,6 +178,7 @@ int main() {
     
     // Comparison operators are probably familiar, but
     // there is no boolean type in c. We use ints instead.
+    // (Or _Bool or bool in C99.)
     // 0 is false, anything else is true. (The comparison 
     // operators always yield 0 or 1.)
     3 == 2; // => 0 (false)
@@ -184,6 +187,13 @@ int main() {
     3 < 2; // => 0
     2 <= 2; // => 1
     2 >= 2; // => 1
+    
+    // C is not Python - comparisons don't chain.
+    int a = 1;
+    // WRONG:
+    int between_0_and_2 = 0 < a < 2;
+    // Correct:
+    int between_0_and_2 = 0 < a && a < 2;
     
     // Logic works on ints
     !3; // => 0 (Logical not)
@@ -200,6 +210,12 @@ int main() {
     0x04 ^ 0x0F; // => 0x0B (bitwise XOR)
     0x01 << 1; // => 0x02 (bitwise left shift (by 1))
     0x02 >> 1; // => 0x01 (bitwise right shift (by 1))
+    
+    // Be careful when shifting signed integers - the following are all undefined behavior:
+    // - shifting into the sign bit of a signed integer (int a = 1 << 32)
+    // - left-shifting a negative number (int a = -1 << 2)
+    // - shifting by an offset which is more than or equal to the width of the type of the LHS:
+    //   int a = 1 << 32; // UB if int is 32 bits wide
     
     ///////////////////////////////////////
     // Control Structures
@@ -236,6 +252,22 @@ int main() {
     } // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
     
     printf("\n");
+    
+    // branching with multiple choices: switch()
+    switch (some_integral_expression) {
+    case 0: // labels need to be integral *constant* epxressions
+        do_stuff();
+        break; // if you don't break, control flow falls over labels - you usually don't want that.
+    case 1:
+        do_something_else();
+        break;
+    default:
+        // if `some_integral_expression` didn't match any of the labels
+        fputs("error!\n", stderr);
+        exit(-1);
+        break;
+    }
+        
     
     ///////////////////////////////////////
     // Typecasting
