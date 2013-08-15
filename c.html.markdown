@@ -5,7 +5,6 @@ language: c
 filename: learnc.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
-    - ["Árpád Goretity", "http://twitter.com/h2co3_ios"]
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
@@ -29,7 +28,13 @@ Multi-line comments look like this. They work in C89 as well.
 // file names between <angle brackets> are headers from the C standard library.
 // They are searched for by the preprocessor in the system include paths
 // (usually /usr/lib on Unices, can be controlled with the -I<dir> option if you are using GCC or clang.)
-// For your
+// For your own headers, use double quotes instead of angle brackets:
+#include "my_header.h"
+
+// The C preprocessor introduces an almost fully-featured macro language. It's useful, but
+// it can be confusing (and what's even worse, it can be misused). Read the
+// Wikipedia article on the C preprocessor for further information:
+// http://en.wikipedia.org/wiki/C_preprocessor
 
 // Declare function signatures in advance in a .h file, or at the top of
 // your .c file.
