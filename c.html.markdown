@@ -271,7 +271,7 @@ printf("%d\n", x_array[1]); // => Prints 19
 // You can also dynamically allocate contiguous blocks of memory with the
 // standard library function malloc, which takes one integer argument 
 // representing the number of bytes to allocate from the heap.
-int* my_ptr = (int*) malloc(sizeof(int) * 20);
+int* my_ptr = malloc(sizeof(int) * 20);
 for (xx=0; xx<20; xx++) {
     *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx would also work here
 } // Initialize memory to 20, 19, 18, 17... 2, 1 (as ints)
