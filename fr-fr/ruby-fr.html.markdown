@@ -9,6 +9,7 @@ contributors:
   - ["Nick LaMuro", "https://github.com/NickLaMuro"]
 translators:
   - ["Geoffrey Roguelon", "https://github.com/GRoguelon"]
+  - ["Nami-Doc", "https://github.com/Nami-Doc"]
 lang: fr-fr
 ---
 
@@ -29,21 +30,21 @@ Vous devriez en faire de même
 
 3.to_s #=> "3"
 
-# Arithmétique de base
+# Les opérateurs de base
 1 + 1 #=> 2
 8 - 1 #=> 7
 10 * 2 #=> 20
 35 / 5 #=> 7
 
-# L'arithmétique est juste un raccourci
-# pour appeler la méthode d'un objet
+# Les opérateurs sont juste des raccourcis
+# pour appeler une méthode sur un objet
 1.+(3) #=> 4
 10.* 5 #=> 50
 
 # Les valeurs spéciales sont des objets
-nil # Nothing to see here
-true # truth
-false # falsehood
+nil # Nul
+true # Vrai
+false # Faux
 
 nil.class #=> NilClass
 true.class #=> TrueClass
@@ -80,7 +81,7 @@ placeholder = "utiliser l'interpolation de chaîne de caractères"
 "Je peux #{placeholder} quand j'utilise les guillemets"
 #=> "Je peux utiliser l'interpolation de chaîne de caractères quand j'utilise les guillemets"
 
-# Afficher sur la sortie standard
+# Affichez un message
 puts "J'affiche à l'écran!"
 
 # Variables
@@ -94,15 +95,15 @@ x = y = 10 #=> 10
 x #=> 10
 y #=> 10
 
-# Par convention, utiliser snake_case (à base d'underscore)
-# comme nom de variable
+# Par convention, utilisez la notation underscore
+# pour nommer les variables
 snake_case = true
 
-# Utiliser des noms de variable explicites
+# Utilisez des noms de variable explicites
 path_to_project_root = '/nom/correct/'
 path = '/mauvais/nom/'
 
-# Symboles (sont des objets)
+# Symboles (aussi des objets)
 # Les symboles sont immuables, constants,
 # réutilisables et représentés en interne
 # par une valeur entière. Ils sont souvent
@@ -129,40 +130,40 @@ array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 
 [1, "hello", false] #=> [1, "hello", false]
 
-# Les tableaux peuvent être indéxés
+# Les tableaux peuvent être indexés
 # Du début
 array[0] #=> 1
 array[12] #=> nil
 
-# Comme l'arithmétique, la syntaxe [var] est juste un raccourci
+# Comme les opérateurs, la syntaxe [var] est juste un raccourci
 # pour appeler la méthode [] d'un objet
 array.[] 0 #=> 1
 array.[] 12 #=> nil
 
-# À la fin
+# Depuis la fin
 array[-1] #=> 5
 
 # Avec un index de début et de fin
 array[2, 4] #=> [3, 4, 5]
 
-# Ou avec un interval
+# Ou avec un intervalle
 array[1..3] #=> [2, 3, 4]
 
-# Ajouter un élément au tableau comme ceci
+# Ajoutez un élément au tableau comme ceci
 array << 6 #=> [1, 2, 3, 4, 5, 6]
 
-# Les Hashes sont des dictionnaires Ruby contenant des paires de clé/valeur.
-# Les Hashes sont délimitées par des accolades :
+# Les Hash sont des dictionnaires Ruby contenant des paires de clé/valeur.
+# Les Hash sont délimitées par des accolades :
 hash = {'color' => 'green', 'number' => 5}
 
 hash.keys #=> ['color', 'number']
 
-# Les Hashes peuvent retourner rapidement
-# la valeur en utilisant la clé :
+# Les Hash retournent la valeur
+# en utilisant la clé associée à la valeur :
 hash['color'] #=> 'green'
 hash['number'] #=> 5
 
-# Rechercher une clé inexistante dans une Hash retourne nil:
+# Recherchez une clé inexistante dans une Hash retourne nil :
 hash['nothing here'] #=> nil
 
 # Depuis Ruby 1.9, Une syntaxe spécifique est apparue en utilisant les symboles comme clés :
@@ -171,7 +172,7 @@ new_hash = { defcon: 3, action: true}
 
 new_hash.keys #=> [:defcon, :action]
 
-# Astuce : Les tableaux et les Hashes sont dénombrables
+# Astuce : Les tableaux et les Hash sont dénombrables
 # Ils partagent un certain nombre de méthodes pratiques
 # telle que each, map, count, etc...
 
@@ -194,15 +195,15 @@ end
 #=> itération 4
 #=> itération 5
 
-# CEPENDANT, Personne n'utilise la boucle for.
-# À la place, vous devrez utiliser la méthode "each"
-# et lui passer un bloc de code.
+# CEPENDANT, l'usage de la boucle for est très rare.
+# À la place, utilisez la méthode "each"
+# et passez lui un bloc de code.
 # Un bloc de code est un ensemble d'instructions que vous pouvez passer à une methode comme "each".
 # Les blocs sont similaires aux lambdas, les fonctions anonymes ou les closures dans d'autres langages.
 #
-# La méthode "each" exécute le bloc de code pour chaque élément de l'interval d'éléments.
+# La méthode "each" exécute le bloc de code pour chaque élément de l'intervalle d'éléments.
 # Le bloc de code passe un paramètre compteur.
-# Appeler la méthode "each" avec un bloc de code comme ceci :
+# Appelez la méthode "each" avec un bloc de code comme ceci :
 
 (1..5).each do |compteur|
   puts "itération #{compteur}"
@@ -240,7 +241,7 @@ grade = 'B'
 
 case grade
 when 'A'
-  puts "Excellence"
+  puts "Excellent"
 when 'B'
   puts "Plus de chance la première fois"
 when 'C'
@@ -264,7 +265,7 @@ end
 double(2) #=> 4
 
 # Les paranthèses sont facultative
-# où il n'y a pas d'ambiguïté sur le résultat
+# lorsqu'il n'y a pas d'ambiguïté sur le résultat
 double 3 #=> 6
 
 double double 3 #=> 12
@@ -279,8 +280,8 @@ sum 3, 4 #=> 7
 sum sum(3,4), 5 #=> 12
 
 # yield
-# Toutes les méthodes ont un argument de type bloc de code
-# facultatif et implicite
+# Toutes les méthodes ont un argument facultatif et implicite
+# de type bloc de code
 # il peut être appelé avec le mot clé 'yield'
 
 def surround
@@ -296,16 +297,16 @@ surround { puts 'Bonjour tout le monde' }
 # }
 
 
-# Définir une classe avec le mot clé 'class'
+# Définissez une classe avec le mot clé 'class'
 class Humain
 
-  # Une variable de classe,
-  # elle est partagée par toutes les instances de cette classe.
+  # Une variable de classe
+  # est partagée par toutes les instances de cette classe.
   @@espece = "H. sapiens"
 
   # Constructeur de classe
   def initialize(nom, age = 0)
-    # Affecter l'argument à la variable d'instance 'nom'
+    # Affectez l'argument à la variable d'instance 'nom'
     # pour la durée de vie de l'instance de cette classe
     @nom = nom
     # Si le paramètre 'age' est absent,
@@ -338,12 +339,12 @@ class Humain
 end
 
 
-# Instancier une classe
+# Instanciez une classe
 jim = Humain.new("Jim Halpert")
 
 dwight = Humain.new("Dwight K. Schrute")
 
-# Appelons quelques méthodes
+# Appelez quelques méthodes
 jim.espece #=> "H. sapiens"
 jim.nom #=> "Jim Halpert"
 jim.nom = "Jim Halpert II" #=> "Jim Halpert II"
@@ -351,7 +352,7 @@ jim.nom #=> "Jim Halpert II"
 dwight.espece #=> "H. sapiens"
 dwight.nom #=> "Dwight K. Schrute"
 
-# Appelons la méthode de classe
+# Appelez la méthode de classe
 Humain.say("Hi") #=> "Hi"
 
 # Les classes sont également des objets en Ruby.
@@ -359,7 +360,7 @@ Humain.say("Hi") #=> "Hi"
 # Les variables de classe sont partagées parmi
 # la classe et ses descendants.
 
-# Classe de base
+# Classe parente
 class Humain
   @@foo = 0
 
@@ -372,7 +373,7 @@ class Humain
   end
 end
 
-# Héritage de classe
+# Classe fille
 class Travailleur < Humain
 end
 
