@@ -4,6 +4,7 @@ filename: learnclojure-ru.clj
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
     - ["Alexey Pirogov", "http://twitter.com/alex_pir"]
+
 ---
 
 Clojure, это представитель семейства Lisp-подобных языков, разработанный
@@ -374,7 +375,7 @@ keymap ; => {:a 1, :b 2, :c 3} - оригинал не был затронут
 ; Структуры STM представлены тремя типами:
 ; - атомы (atoms)
 ; - агенты (agents)
-: - ссылки (references)
+; - ссылки (references)
 
 ; Самые простые хранители состояния - атомы:
 (def my-atom (atom {})) ; {} - начальное состояние атома
