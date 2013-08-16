@@ -1,5 +1,6 @@
 ---
 language: ruby
+lang: br-pt
 filename: learnruby.rb
 contributors:
   - ["Bruno Henrique - Garu", "http://garulab.com"]
@@ -98,9 +99,10 @@ caminho_para_a_raiz_do_projeto = '/bom/nome/'
 caminho = '/nome/ruim/'
 
 # Símbolos (são objetos)
-# Símbolos são imutáveis, são constantes reutilizáveis representadadas internamente por um
-# valor inteiro. Eles são frequentemente usados no lugar de strings para transmitir com eficiência os valores
-# específicos e significativos
+# Símbolos são imutáveis, são constantes reutilizáveis representadadas
+# internamente por um valor inteiro. Eles são frequentemente usados no
+# lugar de strings para transmitir com eficiência os valores específicos
+# e significativos
 
 :pendente.class #=> Symbol
 

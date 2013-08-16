@@ -4,7 +4,7 @@ filename: learnclojure-ru.clj
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
     - ["Alexey Pirogov", "http://twitter.com/alex_pir"]
-
+lang: ru-ru
 ---
 
 Clojure, это представитель семейства Lisp-подобных языков, разработанный

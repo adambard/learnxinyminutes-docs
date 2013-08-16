@@ -1,5 +1,6 @@
 ---
 language: python
+lang: ru-ru
 contributors:
     - ["Yury Timofeev", "http://twitter.com/gagar1n"]
 filename: learnpython-ru.py
@@ -219,7 +220,8 @@ filled_dict["four"] # KeyError
 # Чтобы избежать этого, используйте метод get
 filled_dict.get("one") #=> 1
 filled_dict.get("four") #=> None
-# Метод get также принимает аргумент default, значение которого будет возвращено при отсутствии указанного ключа
+# Метод get также принимает аргумент default, значение которого будет
+# возвращено при отсутствии указанного ключа
 filled_dict.get("one", 4) #=> 1
 filled_dict.get("four", 4) #=> 4
 
@@ -314,7 +316,9 @@ try:
     # Для выбора ошибки используется raise
     raise IndexError("Это IndexError")
 except IndexError as e:
-    pass    # pass это просто отсутствие оператора. Обычно здесь происходит восстановление от ошибки.
+    # pass это просто отсутствие оператора. Обычно здесь происходит
+    # восстановление от ошибки.
+    pass
 
 
 ####################################################
