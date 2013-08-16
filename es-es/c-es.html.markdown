@@ -284,7 +284,7 @@ for (xx=0; xx<20; xx++) {
 // impredecibles
 printf("%d\n", *(my_ptr + 21)); // => Prints who-knows-what?
 
-// Cuando hallas acabado con el bloque de memoría malloc, necesitas 
+// Cuando hayas acabado con el bloque de memoría malloc, necesitas 
 // liberarlo o sino nadie más podrá usarlo hasta que tu programa se cierre
 free(my_ptr);
 
