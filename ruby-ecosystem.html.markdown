@@ -81,7 +81,7 @@ development.
 Less mature/compatible:
 
 * Topaz - Written in RPython (using the PyPy toolchain), Topaz is fairly young
-  and not yet compatable. It shows promise to be a high-performance ruby
+  and not yet compatible. It shows promise to be a high-performance ruby
 implementation.
 * IronRuby - Written in C# targeting the .NET platform, work on IronRuby seems
   to have stopped since Microsoft pulled their support.

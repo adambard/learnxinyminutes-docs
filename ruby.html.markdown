@@ -36,7 +36,7 @@ You shouldn't either
 # Arithmetic is just syntactic sugar
 # for calling a method on an object
 1.+(3) #=> 4
-10.* 5 #=> 50 
+10.* 5 #=> 50
 
 # Special values are objects
 nil # Nothing to see here
@@ -242,7 +242,7 @@ when 'D'
   puts "Scraping through"
 when 'F'
   puts "You failed!"
-else 
+else
   puts "Alternative grading system, eh?"
 end
 
@@ -252,7 +252,7 @@ def double(x)
   x * 2
 end
 
-# Functions (and all blocks) implcitly return the value of the last statement
+# Functions (and all blocks) implicitly return the value of the last statement
 double(2) #=> 4
 
 # Parentheses are optional where the result is unambiguous
