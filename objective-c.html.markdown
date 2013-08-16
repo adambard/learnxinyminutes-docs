@@ -160,7 +160,7 @@ int main (int argc, const char * argv[])
     int jj;
     for (jj=0; jj < 4; jj++)
     {
-        NSLog(@"%d,", ii++);
+        NSLog(@"%d,", jj++);
     } // => prints "0," 
       //           "1,"
       //           "2,"
@@ -256,7 +256,7 @@ int main (int argc, const char * argv[])
 }
 
 // Constructors are a way of creating classes
-// This is a default constructor which is call when the object is creating
+// This is a default constructor which is called when the object is creating
 - (id)init
 {
     if ((self = [super init]))
