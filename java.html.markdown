@@ -405,3 +405,7 @@ Other Topics To Research:
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
 
 * [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+
+Books:
+
+* [Head First Java] (http://www.headfirstlabs.com/books/hfjava/)
