@@ -549,6 +549,13 @@ namespace Learning
         {
             gear = 0;
         }
+
+        public override string ToString()
+        {
+            string result = "PennyFarthing bicycle ";
+            result += base.ToString(); // Calling the base version of the method
+            return reuslt;
+        }
     }
 } // End Namespace
 
