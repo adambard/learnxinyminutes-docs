@@ -144,6 +144,10 @@ namespace Learning
             int? nullable = null;
             Console.WriteLine("Nullable variable: " + nullable);
 
+            // In order to use nullable's value, you have to use Value property or to explicitly cast it
+            string? nullableString = "not null";
+            Console.WriteLine("Nullable value is: " + nullableString.Value + " or: " + (string) nullableString );
+
             // ?? is syntactic sugar for specifying default value
             // in case variable is null
             int notNullable = nullable ?? 0;
