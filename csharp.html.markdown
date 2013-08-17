@@ -557,6 +557,36 @@ namespace Learning
             return reuslt;
         }
     }
+
+    // Interfaces only contain signatures of the members, without the implementation.
+    interface IJumpable
+    {
+        void Jump(int meters); // all interface members are implicitly public
+    }
+
+    interface IBreakable
+    {
+        bool Broken { get; } // interfaces can contain properties as well as methods, fields & events
+    }
+
+    // Class can inherit only one other class, but can implement any amount of interfaces
+    class MountainBike : Bicycle, IJumpable, IBreakable
+    {
+        int damage = 0;
+
+        public void Jump(int meters)
+        {
+            damage += meters;
+        }
+
+        public void Broken
+        {
+            get
+            {
+                return damage > 100;
+            }
+        }
+    }
 } // End Namespace
 
 ```
@@ -567,7 +597,7 @@ namespace Learning
  * Attributes
  * Generics (T), Delegates, Func, Actions, lambda expressions
  * Static properties
- * Exceptions, Interfaces, Abstraction
+ * Exceptions, Abstraction
  * LINQ
  * ASP.NET (Web Forms/MVC/WebMatrix)
  * Winforms
