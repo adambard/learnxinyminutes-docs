@@ -201,8 +201,8 @@ end
 # et passez lui un bloc de code.
 # Un bloc de code est un ensemble d'instructions
 # que vous pouvez passer à une methode comme "each".
-# Les blocs sont similaires aux lambdas, les fonctions anonymes
-# ou les closures dans d'autres langages.
+# Les blocs sont similaires aux lambdas, aux fonctions anonymes
+# ou encore aux closures dans d'autres langages.
 #
 # La méthode "each" exécute le bloc de code
 # pour chaque élément de l'intervalle d'éléments.
