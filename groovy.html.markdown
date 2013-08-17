@@ -229,7 +229,7 @@ clos( "hi" )
             http://roshandawrani.wordpress.com/2010/10/18/groovy-new-feature-closures-can-now-memorize-their-results/
             http://www.solutionsiq.com/resources/agileiq-blog/bid/72880/Programming-with-Groovy-Trampoline-and-Memoize
             http://mrhaki.blogspot.mx/2011/05/groovy-goodness-cache-closure-results.html
-/*
+*/
 def cl = {a, b ->
     sleep(3000) // simulate some time consuming processing
     a + b
