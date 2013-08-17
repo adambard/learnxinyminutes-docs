@@ -480,13 +480,13 @@ namespace Learning
             set { _hasTassles = value; }
         }
 
-        private int _frameSize;
+        // Properties can be auto-implemented
         public int FrameSize
         {
-            get { return _frameSize; }
+            get;
             // you are able to specify access modifiers for either get or set
             // this means only Bicycle class can call set on Framesize
-            private set { _frameSize = value; }
+            private set;
         }
 
         //Method to display the attribute values of this Object.
