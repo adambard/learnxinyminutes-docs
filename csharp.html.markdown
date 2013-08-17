@@ -144,6 +144,10 @@ namespace Learning
             int? nullable = null;
             Console.WriteLine("Nullable variable: " + nullable);
 
+            // In order to use nullable's value, you have to use Value property or to explicitly cast it
+            string? nullableString = "not null";
+            Console.WriteLine("Nullable value is: " + nullableString.Value + " or: " + (string) nullableString );
+
             // ?? is syntactic sugar for specifying default value
             // in case variable is null
             int notNullable = nullable ?? 0;
@@ -418,10 +422,10 @@ namespace Learning
         public Bicycle(int startCadence, int startSpeed, int startGear,
                        string name, bool hasCardsInSpokes)
         {
-            this.gear = startGear;
+            this.gear = startGear; // "this" keyword denotes the current object
             this.cadence = startCadence;
             this._speed = startSpeed;
-            this.name = name;
+            this.name = name; // it can be useful when there's a name conflict
             this.hasCardsInSpokes = hasCardsInSpokes;
         }
 
@@ -470,19 +474,19 @@ namespace Learning
         // when only data needs to be accessed, consider using properties.
         // properties may have either get or set, or both
         private bool _hasTassles; // private variable
-        public bool hasTassles // public accessor
+        public bool HasTassles // public accessor
         {
             get { return _hasTassles; }
             set { _hasTassles = value; }
         }
 
-        private int _frameSize;
+        // Properties can be auto-implemented
         public int FrameSize
         {
-            get { return _frameSize; }
+            get;
             // you are able to specify access modifiers for either get or set
             // this means only Bicycle class can call set on Framesize
-            private set { _frameSize = value; }
+            private set;
         }
 
         //Method to display the attribute values of this Object.
