@@ -523,6 +523,14 @@ namespace Learning
                     "\n------------------------------\n"
                     ;
         }
+
+        // Methods can also be static. It can be useful for helper methods
+        public static bool DidWeCreateEnoughBycles()
+        {
+            // Within a static method, we only can reference static class memebers
+            return bicyclesCreated > 9000;
+        } // If your class only needs static members, consider marking the class itself as static.
+
     } // end class Bicycle
 
     // PennyFarthing is a subclass of Bicycle
@@ -551,7 +559,7 @@ namespace Learning
  * Flags
  * Attributes
  * Generics (T), Delegates, Func, Actions, lambda expressions
- * Static properties, methods and classes
+ * Static properties
  * Exceptions, Interfaces, Abstraction
  * LINQ
  * ASP.NET (Web Forms/MVC/WebMatrix)
