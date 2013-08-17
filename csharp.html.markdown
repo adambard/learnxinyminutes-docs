@@ -405,6 +405,19 @@ namespace Learning
         internal int wheels; // Internal: Accessible from within the assembly
         string name; // Everything is private by default: Only accessible from within this class
 
+        // Enum is a value type that consists of a set of named constants
+        public enum Brand
+        {
+            AIST,
+            BMC,
+            Electra,
+            Gitane
+        }
+        // We defined this type inside a Bicycle class, so it is a nested type
+        // Code outside of this class should reference this type as Bicycle.Brand
+
+        public Brand brand; // After declaing an enum type, we can declare the field of this type
+
         // Static members belong to the type itself rather then specific object.
         static public int bicyclesCreated = 0;
         // You can access them without a reference to any object:
@@ -416,28 +429,30 @@ namespace Learning
 
         // Constructors are a way of creating classes
         // This is a default constructor
-        public Bicycle()
+        private Bicycle()
         {
             gear = 1;
             cadence = 50;
             _speed = 5;
             name = "Bontrager";
+            brand = Brand.AIST;
             bicyclesCreated++;
         }
 
         // This is a specified constructor (it contains arguments)
         public Bicycle(int startCadence, int startSpeed, int startGear,
-                       string name, bool hasCardsInSpokes)
+                       string name, bool hasCardsInSpokes, Brand brand)
         {
             this.gear = startGear; // "this" keyword denotes the current object
             this.cadence = startCadence;
             this._speed = startSpeed;
             this.name = name; // it can be useful when there's a name conflict
             this.hasCardsInSpokes = hasCardsInSpokes;
+            this.brand = brand;
         }
 
         // Constructors can be chained
-        public Bicycle(int startCadence, int startSpeed) :
+        public Bicycle(int startCadence, int startSpeed, Brand brand) :
             this(startCadence, startSpeed, 0, "big wheels", true)
         {
         }
@@ -532,7 +547,7 @@ namespace Learning
 
 ## Topics Not Covered
 
- * Enums, Flags
+ * Flags
  * Attributes
  * Generics (T), Delegates, Func, Actions, lambda expressions
  * Static properties, methods and classes
