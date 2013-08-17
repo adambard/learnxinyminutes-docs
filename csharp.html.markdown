@@ -474,7 +474,7 @@ namespace Learning
         // when only data needs to be accessed, consider using properties.
         // properties may have either get or set, or both
         private bool _hasTassles; // private variable
-        public bool hasTassles // public accessor
+        public bool HasTassles // public accessor
         {
             get { return _hasTassles; }
             set { _hasTassles = value; }
