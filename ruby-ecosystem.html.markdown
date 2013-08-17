@@ -63,7 +63,7 @@ Very mature/compatible:
 
 * MRI - Written in C, this is the reference implementation of ruby. By
   definition it is 100% compatible (with itself). All other rubies
-maintain capatability with MRI (see RubySpec below).
+maintain compatibility with MRI (see [RubySpec](#rubyspec) below).
 * JRuby - Written in Java and ruby, this robust implementation is quite fast.
   Most importantly, JRuby's strength is JVM/Java interop, leveraging existing
 JVM tools, projects, and languages.
