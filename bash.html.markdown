@@ -18,7 +18,7 @@ Nearly all examples below can be a part of a shell script or executed directly i
 # As you already figured, comments start with #. Shebang is also a comment.
 
 # Simple hello world example:
-echo 'Hello, world!'
+echo Hello, world!
 
 # Each command starts on a new line, or after semicolon:
 echo 'This is the first line'; echo 'This is the second line'
@@ -32,6 +32,12 @@ VARIABLE = "Some string" # Bash will decide that VARIABLE is a command he must e
 # Using the variable:
 echo $VARIABLE
 echo "$VARIABLE"
+# When you use the variable itself — assign it, export it, or else — you write it's name without $. If you want to use variable's value, you should use $.
+
+# Reading a value from input:
+echo "What's your name?"
+read NAME # Note that we didn't need to declare new variable
+echo Hello, $NAME!
 
 # We have the usual if structure:
 if true
@@ -40,5 +46,8 @@ then
 else
 	echo "And is was not"
 fi
+
+# Expressions are denoted with the following format:
+echo $(( 10 + 5 ))
 
 ```
