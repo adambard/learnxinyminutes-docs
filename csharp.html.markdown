@@ -450,29 +450,29 @@ namespace Learning
 
         // Method declaration syntax:
         // <scope> <return type> <method name>(<args>)
-        public int getCadence()
+        public int GetCadence()
         {
             return cadence;
         }
 
         // void methods require no return statement
-        public void setCadence(int newValue)
+        public void SetCadence(int newValue)
         {
             cadence = newValue;
         }
 
         // virtual keyword indicates this method can be overridden
-        public virtual void setGear(int newValue)
+        public virtual void SetGear(int newValue)
         {
             gear = newValue;
         }
 
-        public void speedUp(int increment)
+        public void SpeedUp(int increment)
         {
             _speed += increment;
         }
 
-        public void slowDown(int decrement)
+        public void SlowDown(int decrement)
         {
             _speed -= decrement;
         }
@@ -521,7 +521,7 @@ namespace Learning
         {
         }
 
-        public override void setGear(int gear)
+        public override void SetGear(int gear)
         {
             gear = 0;
         }
