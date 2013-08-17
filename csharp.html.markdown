@@ -535,6 +535,7 @@ namespace Learning
  * Enums, Flags
  * Attributes
  * Generics (T), Delegates, Func, Actions, lambda expressions
+ * Static properties, methods and classes
  * Exceptions, Interfaces, Abstraction
  * LINQ
  * ASP.NET (Web Forms/MVC/WebMatrix)
