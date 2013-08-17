@@ -6,8 +6,8 @@ contributors:
 filename: learnpython.py
 ---
 
-Anmerkungen des ursprünglichen Autors:
-Python wurde in den frühen Neunzigern von Guido van Rossum entworfen. Es ist heute eine der beliebtesten Sprachen. Ich habe mich in Python wegen seiner syntaktischen Übersichtlichkeit verliebt. Eigentlich ist es ausführbarer Pseudocode.
+Anmerkungen des ursprÃ¼nglichen Autors:
+Python wurde in den frÃ¼hen Neunzigern von Guido van Rossum entworfen. Es ist heute eine der beliebtesten Sprachen. Ich habe mich in Python wegen seiner syntaktischen Ãœbersichtlichkeit verliebt. Eigentlich ist es ausfÃ¼hrbarer Pseudocode.
 
 Feedback ist herzlich willkommen! Ihr erreicht mich unter [@louiedinh](http://twitter.com/louiedinh) oder louiedinh [at] [google's email service]
 
@@ -37,14 +37,14 @@ Hinweis: Dieser Beitrag bezieht sich besonders auf Python 2.7, er sollte aber au
 # und rundet automatisch ab.
 5 / 2 #=> 2
 
-# Um das zu ändern, müssen wir Gleitkommazahlen kennenlernen.
+# Um das zu Ã¤ndern, mÃ¼ssen wir Gleitkommazahlen kennenlernen.
 2.0     # Das ist eine Gleitkommazahl
 11.0 / 4.0 #=> 2.75 Ahhh...schon besser
 
 # Rangfolge wird mit Klammern erzwungen
 (1 + 3) * 2 #=> 8
 
-# Boolesche Ausdrücke sind primitive Datentypen
+# Boolesche AusdrÃ¼cke sind primitive Datentypen
 True
 False
 
@@ -66,7 +66,7 @@ not False #=> True
 2 <= 2 #=> True
 2 >= 2 #=> True
 
-# Vergleiche können verknüpft werden!
+# Vergleiche kÃ¶nnen verknÃ¼pft werden!
 1 < 2 < 3 #=> True
 2 < 3 < 2 #=> False
 
@@ -74,32 +74,32 @@ not False #=> True
 "Das ist ein String."
 'Das ist auch ein String.'
 
-# Strings können addiert werden!
+# Strings kÃ¶nnen addiert werden!
 "Hello " + "world!" #=> "Hello world!"
 
 # Ein String kann wie eine Liste von Zeichen verwendet werden
 "Das ist ein String"[0] #=> 'D'
 
-# Mit % können Strings formatiert werden, etwa so:
-"%s können %s werden" % ("Strings", "interpoliert")
+# Mit % kÃ¶nnen Strings formatiert werden, etwa so:
+"%s kÃ¶nnen %s werden" % ("Strings", "interpoliert")
 
 # Ein neuerer Weg, um Strings zu formatieren, ist die format-Methode.
 # Diese Methode wird bevorzugt
-"{0} können {1} werden".format("Strings", "formatiert")
-# Wir können Schlüsselwörter verwenden, wenn wir nicht abzählen wollen.
+"{0} kÃ¶nnen {1} werden".format("Strings", "formatiert")
+# Wir kÃ¶nnen SchlÃ¼sselwÃ¶rter verwenden, wenn wir nicht abzÃ¤hlen wollen.
 "{name} will {food} essen".format(name="Bob", food="Lasagne")
 
 # None ist ein Objekt
 None #=> None
 
-# Verwendet nicht das Symbol für Gleichheit `==`, um Objekte mit None zu vergleichen
+# Verwendet nicht das Symbol fÃ¼r Gleichheit `==`, um Objekte mit None zu vergleichen
 # Benutzt stattdessen `is`
 "etc" is None #=> False
 None is None  #=> True
 
-# Der 'is'-Operator testet Objektidentität. Das ist nicht
-# sehr nützlich, wenn wir mit primitiven Datentypen arbeiten, aber
-# sehr nützlich bei Objekten.
+# Der 'is'-Operator testet ObjektidentitÃ¤t. Das ist nicht
+# sehr nÃ¼tzlich, wenn wir mit primitiven Datentypen arbeiten, aber
+# sehr nÃ¼tzlich bei Objekten.
 
 # None, 0, und leere Strings/Listen werden alle als False bewertet.
 # Alle anderen Werte sind True
@@ -112,33 +112,33 @@ None is None  #=> True
 ####################################################
 
 # Ausgabe ist sehr einfach
-print "Ich bin Python. Schön, dich kennenzulernen!"
+print "Ich bin Python. SchÃ¶n, dich kennenzulernen!"
 
 
 # Es gibt keinen Grund, Variablen vor der Zuweisung zu deklarieren.
 some_var = 5    # kleinschreibung_mit_unterstrichen entspricht der Norm
 some_var #=> 5
 
-# Eine noch nicht deklarierte Variable anzusprechen, löst eine Exception aus.
-# Siehe Kontrollstruktur, um mehr über Ausnahmebehandlung zu lernen.
-some_other_var  # Löst einen NameError aus
+# Eine noch nicht deklarierte Variable anzusprechen, lÃ¶st eine Exception aus.
+# Siehe Kontrollstruktur, um mehr Ã¼ber Ausnahmebehandlung zu lernen.
+some_other_var  # LÃ¶st einen NameError aus
 
 # if kann als Ausdruck verwendet werden
 "yahoo!" if 3 > 2 else 2 #=> "yahoo!"
 
 # Listen speichern Sequenzen
 li = []
-# Wir können mit einer bereits gefüllten Liste anfangen
+# Wir kÃ¶nnen mit einer bereits gefÃ¼llten Liste anfangen
 other_li = [4, 5, 6]
 
-# append fügt Daten am Ende der Liste ein
+# append fÃ¼gt Daten am Ende der Liste ein
 li.append(1)    #li ist jetzt [1]
 li.append(2)    #li ist jetzt [1, 2]
 li.append(4)    #li ist jetzt [1, 2, 4]
 li.append(3)    #li ist jetzt [1, 2, 4, 3]
 # Vom Ende der Liste mit pop entfernen
 li.pop()        #=> 3 und li ist jetzt [1, 2, 4]
-# Fügen wir es wieder hinzu
+# FÃ¼gen wir es wieder hinzu
 li.append(3)    # li ist jetzt wieder [1, 2, 4, 3].
 
 # Greife auf Listen wie auf Arrays zu
@@ -146,10 +146,10 @@ li[0] #=> 1
 # Das letzte Element ansehen
 li[-1] #=> 3
 
-# Außerhalb der Liste ist es ein IndexError
+# AuÃŸerhalb der Liste ist es ein IndexError
 li[4] # Raises an IndexError
 
-# Wir können uns Ranges mit Slice-Syntax ansehen
+# Wir kÃ¶nnen uns Ranges mit Slice-Syntax ansehen
 li[1:3] #=> [2, 4]
 # Den Anfang auslassen
 li[2:] #=> [4, 3]
@@ -159,70 +159,70 @@ li[:3] #=> [1, 2, 4]
 # Ein bestimmtes Element mit del aus der Liste entfernen
 del li[2] # li ist jetzt [1, 2, 3]
 
-# Listen können addiert werden
+# Listen kÃ¶nnen addiert werden
 li + other_li #=> [1, 2, 3, 4, 5, 6] - Hinweis: li und other_li werden in Ruhe gelassen
 
-# Listen mit extend verknüpfen
+# Listen mit extend verknÃ¼pfen
 li.extend(other_li) # Jetzt ist li [1, 2, 3, 4, 5, 6]
 
-# Mit in auf Existenz eines Elements prüfen
+# Mit in auf Existenz eines Elements prÃ¼fen
 1 in li #=> True
 
-# Die Länge der Liste mit len ermitteln
+# Die LÃ¤nge der Liste mit len ermitteln
 len(li) #=> 6
 
 
-# Tupel sind wie Listen, nur unveränderlich.
+# Tupel sind wie Listen, nur unverÃ¤nderlich.
 tup = (1, 2, 3)
 tup[0] #=> 1
-tup[0] = 3  # Löst einen TypeError aus
+tup[0] = 3  # LÃ¶st einen TypeError aus
 
-# Wir können all diese Listen-Dinge auch mit Tupeln anstellen
+# Wir kÃ¶nnen all diese Listen-Dinge auch mit Tupeln anstellen
 len(tup) #=> 3
 tup + (4, 5, 6) #=> (1, 2, 3, 4, 5, 6)
 tup[:2] #=> (1, 2)
 2 in tup #=> True
 
-# Wir können Tupel (oder Listen) in Variablen entpacken
+# Wir kÃ¶nnen Tupel (oder Listen) in Variablen entpacken
 a, b, c = (1, 2, 3)     # a ist jetzt 1, b ist jetzt 2 und c ist jetzt 3
-# Tuple werden standardmäßig erstellt, wenn wir uns die Klammern sparen
+# Tuple werden standardmÃ¤ÃŸig erstellt, wenn wir uns die Klammern sparen
 d, e, f = 4, 5, 6
 # Es ist kinderleicht zwei Werte zu tauschen
 e, d = d, e     # d is now 5 and e is now 4
 
 
-# Dictionarys (Wörterbucher) speichern Key-Value-Paare
+# Dictionarys (WÃ¶rterbucher) speichern Key-Value-Paare
 empty_dict = {}
-# Hier ein gefülltes Wörterbuch
+# Hier ein gefÃ¼lltes WÃ¶rterbuch
 filled_dict = {"one": 1, "two": 2, "three": 3}
 
-# Wir können Einträge mit [] nachschlagen
+# Wir kÃ¶nnen EintrÃ¤ge mit [] nachschlagen
 filled_dict["one"] #=> 1
 
-# So holen wir alle Keys (Schlüssel) als Liste
+# So holen wir alle Keys (SchlÃ¼ssel) als Liste
 filled_dict.keys() #=> ["three", "two", "one"]
-# Hinweis - Die Reihenfolge von Schlüsseln in der Liste ist nicht garantiert.
-# Einzelne Resultate können anders angeordnet sein.
+# Hinweis - Die Reihenfolge von SchlÃ¼sseln in der Liste ist nicht garantiert.
+# Einzelne Resultate kÃ¶nnen anders angeordnet sein.
 
 # Alle Values (Werte) als Liste
 filled_dict.values() #=> [3, 2, 1]
-# Hinweis - Hier gelten dieselben Einschränkungen für die Reihenfolge wie bei Schlüsseln.
+# Hinweis - Hier gelten dieselben EinschrÃ¤nkungen fÃ¼r die Reihenfolge wie bei SchlÃ¼sseln.
 
-# Das Vorhandensein eines Schlüssels im Wörterbuch mit in prüfen
+# Das Vorhandensein eines SchlÃ¼ssels im WÃ¶rterbuch mit in prÃ¼fen
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
 
-# Einen nicht vorhandenenen Schlüssel zu suchen, löst einen KeyError aus
+# Einen nicht vorhandenenen SchlÃ¼ssel zu suchen, lÃ¶st einen KeyError aus
 filled_dict["four"] # KeyError
 
 # Mit der get-Methode verhindern wir das
 filled_dict.get("one") #=> 1
 filled_dict.get("four") #=> None
-# Die get-Methode unterstützt auch ein Standardargument, falls der Wert fehlt
+# Die get-Methode unterstÃ¼tzt auch ein Standardargument, falls der Wert fehlt
 filled_dict.get("one", 4) #=> 1
 filled_dict.get("four", 4) #=> 4
 
-# Die setdefault-Methode ist ein sicherer Weg, ein neues Schlüssel-Wert-Paar anzulegen
+# Die setdefault-Methode ist ein sicherer Weg, ein neues SchlÃ¼ssel-Wert-Paar anzulegen
 filled_dict.setdefault("five", 5) #filled_dict["five"] wird auf 5 gesetzt
 filled_dict.setdefault("five", 6) #filled_dict["five"] ist noch immer 5
 
@@ -235,7 +235,7 @@ some_set = set([1,2,2,3,4]) # some_set ist jetzt set([1, 2, 3, 4])
 # Seit Python 2.7 kann {} benutzt werden, um ein Set zu erstellen
 filled_set = {1, 2, 2, 3, 4} # => {1 2 3 4}
 
-# Mehr Elemente hinzufügen
+# Mehr Elemente hinzufÃ¼gen
 filled_set.add(5) # filled_set is now {1, 2, 3, 4, 5}
 
 # Schnittmengen werden mit & gebildet
@@ -248,7 +248,7 @@ filled_set | other_set #=> {1, 2, 3, 4, 5, 6}
 # Die Differenz einer Menge mit - bilden
 {1,2,3,4} - {2,3,5} #=> {1, 4}
 
-# Auf Vorhandensein mit in prüfen
+# Auf Vorhandensein mit in prÃ¼fen
 2 in filled_set #=> True
 10 in filled_set #=> False
 
@@ -260,26 +260,26 @@ filled_set | other_set #=> {1, 2, 3, 4, 5, 6}
 # Erstellen wir mal eine Variable
 some_var = 5
 
-# Hier eine if-Anweisung. Die Einrückung ist in Python wichtig!
+# Hier eine if-Anweisung. Die EinrÃ¼ckung ist in Python wichtig!
 # gibt "some_var ist kleiner als 10" aus
 if some_var > 10:
-    print "some_var ist viel größer als 10."
+    print "some_var ist viel grÃ¶ÃŸer als 10."
 elif some_var < 10:    # Dieser elif-Absatz ist optional.
     print "some_var ist kleiner als 10."
 else:           # Das hier ist auch optional.
-    print "some_var ist tatsächlich 10."
+    print "some_var ist tatsÃ¤chlich 10."
 
 
 """
-For-Schleifen iterieren über Listen
+For-Schleifen iterieren Ã¼ber Listen
 Ausgabe:
-    hund ist ein Säugetier
-    katze ist ein Säugetier
-    maus ist ein Säugetier
+    hund ist ein SÃ¤ugetier
+    katze ist ein SÃ¤ugetier
+    maus ist ein SÃ¤ugetier
 """
 for animal in ["hund", "katze", "maus"]:
-    # Wir können Strings mit % formatieren
-    print "%s  ist ein Säugetier" % animal
+    # Wir kÃ¶nnen Strings mit % formatieren
+    print "%s  ist ein SÃ¤ugetier" % animal
     
 """
 `range(Zahl)` gibt eine null-basierte Liste bis zur angegebenen Zahl wieder
@@ -293,7 +293,7 @@ for i in range(4):
     print i
 
 """
-While-Schleifen laufen, bis eine Bedingung erfüllt ist.
+While-Schleifen laufen, bis eine Bedingung erfÃ¼llt ist.
 Ausgabe:
     0
     1
@@ -303,16 +303,16 @@ Ausgabe:
 x = 0
 while x < 4:
     print x
-    x += 1  # Kurzform für x = x + 1
+    x += 1  # Kurzform fÃ¼r x = x + 1
 
 # Ausnahmebehandlung mit einem try/except-Block
 
-# Funktioniert in Python 2.6 und höher:
+# Funktioniert in Python 2.6 und hÃ¶her:
 try:
     # Mit raise wird ein Fehler ausgegeben
     raise IndexError("Das hier ist ein Index-Fehler")
 except IndexError as e:
-    pass    # Pass ist nur eine no-op. Normalerweise würden wir hier den Fehler klären.
+    pass    # Pass ist nur eine no-op. Normalerweise wÃ¼rden wir hier den Fehler klÃ¤ren.
 
 
 ####################################################
@@ -322,30 +322,30 @@ except IndexError as e:
 # Mit def neue Funktionen erstellen
 def add(x, y):
     print "x ist %s und y ist %s" % (x, y)
-    return x + y    # Werte werden mit return zurückgegeben
+    return x + y    # Werte werden mit return zurÃ¼ckgegeben
 
 # Funktionen mit Parametern aufrufen
-add(5, 6) #=> Ausgabe ist "x ist 5 und y ist 6" und gibt 11 zurück
+add(5, 6) #=> Ausgabe ist "x ist 5 und y ist 6" und gibt 11 zurÃ¼ck
 
-# Ein anderer Weg des Funktionsaufrufs sind Schlüsselwort-Argumente
-add(y=6, x=5)   # Schlüsselwörter können in beliebiger Reihenfolge übergeben werden.
+# Ein anderer Weg des Funktionsaufrufs sind SchlÃ¼sselwort-Argumente
+add(y=6, x=5)   # SchlÃ¼sselwÃ¶rter kÃ¶nnen in beliebiger Reihenfolge Ã¼bergeben werden.
 
-# Wir können Funktionen mit beliebiger Anzahl von # Positionsargumenten definieren
+# Wir kÃ¶nnen Funktionen mit beliebiger Anzahl von # Positionsargumenten definieren
 def varargs(*args):
     return args
 
 varargs(1, 2, 3) #=> (1,2,3)
 
 
-# Wir können auch Funktionen mit beliebiger Anzahl
-# Schlüsselwort-Argumenten definieren
+# Wir kÃ¶nnen auch Funktionen mit beliebiger Anzahl
+# SchlÃ¼sselwort-Argumenten definieren
 def keyword_args(**kwargs):
     return kwargs
 
 # Rufen wir es mal auf, um zu sehen, was passiert
 keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
 
-# Wir können beides gleichzeitig machem, wenn wir wollen
+# Wir kÃ¶nnen beides gleichzeitig machem, wenn wir wollen
 def all_the_args(*args, **kwargs):
     print args
     print kwargs
@@ -355,13 +355,13 @@ all_the_args(1, 2, a=3, b=4) Ausgabe:
     {"a": 3, "b": 4}
 """
 
-# Beim Aufruf von Funktionen können wir das Gegenteil von varargs/kwargs machen!
-# Wir benutzen dann *, um Tupel auszuweiten, und ** für kwargs.
+# Beim Aufruf von Funktionen kÃ¶nnen wir das Gegenteil von varargs/kwargs machen!
+# Wir benutzen dann *, um Tupel auszuweiten, und ** fÃ¼r kwargs.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args) # äquivalent zu foo(1, 2, 3, 4)
-all_the_args(**kwargs) # äquivalent zu foo(a=3, b=4)
-all_the_args(*args, **kwargs) # äquivalent zu  foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args) # Ã¤quivalent zu foo(1, 2, 3, 4)
+all_the_args(**kwargs) # Ã¤quivalent zu foo(a=3, b=4)
+all_the_args(*args, **kwargs) # Ã¤quivalent zu  foo(1, 2, 3, 4, a=3, b=4)
 
 # Python hat First-Class-Funktionen
 def create_adder(x):
@@ -375,11 +375,11 @@ add_10(3) #=> 13
 # Es gibt auch anonyme Funktionen
 (lambda x: x > 2)(3) #=> True
 
-# Es gibt auch Funktionen höherer Ordnung als Built-Ins
+# Es gibt auch Funktionen hÃ¶herer Ordnung als Built-Ins
 map(add_10, [1,2,3]) #=> [11, 12, 13]
 filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 
-# Wir können bei map- und filter-Funktionen auch List Comprehensions einsetzen
+# Wir kÃ¶nnen bei map- und filter-Funktionen auch List Comprehensions einsetzen
 [add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
 
@@ -424,7 +424,7 @@ print j.say("hello")  #gibt "Joel: hello" aus
 # Rufen wir mal unsere Klassenmethode auf
 i.get_species() #=> "H. sapiens"
 
-# Ändern wir mal das gemeinsame Attribut
+# Ã„ndern wir mal das gemeinsame Attribut
 Human.species = "H. neanderthalensis"
 i.get_species() #=> "H. neanderthalensis"
 j.get_species() #=> "H. neanderthalensis"
@@ -437,28 +437,28 @@ Human.grunt() #=> "*grunt*"
 ## 6. Module
 ####################################################
 
-# Wir können Module importieren
+# Wir kÃ¶nnen Module importieren
 import math
 print math.sqrt(16) #=> 4
 
-# Wir können auch nur spezielle Funktionen eines Moduls importieren
+# Wir kÃ¶nnen auch nur spezielle Funktionen eines Moduls importieren
 from math import ceil, floor
 print ceil(3.7)  #=> 4.0
 print floor(3.7) #=> 3.0
 
-# Wir können auch alle Funktionen eines Moduls importieren
+# Wir kÃ¶nnen auch alle Funktionen eines Moduls importieren
 # Warnung: Dies wird nicht empfohlen
 from math import *
 
-# Wir können Modulnamen abkürzen
+# Wir kÃ¶nnen Modulnamen abkÃ¼rzen
 import math as m
 math.sqrt(16) == m.sqrt(16) #=> True
 
-# Module sind in Python nur gewöhnliche Dateien. Wir
-# können unsere eigenen schreiben und importieren. Der Name des 
+# Module sind in Python nur gewÃ¶hnliche Dateien. Wir
+# kÃ¶nnen unsere eigenen schreiben und importieren. Der Name des 
 # Moduls ist der Dateiname.
 
-# Wir können auch die Funktionen und Attribute eines
+# Wir kÃ¶nnen auch die Funktionen und Attribute eines
 # Moduls herausfinden.
 import math
 dir(math)
