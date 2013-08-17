@@ -403,7 +403,12 @@ namespace Learning
         private int _speed;  // Private: Only accessible from within the class
         protected int gear; // Protected: Accessible from the class and subclasses
         internal int wheels; // Internal: Accessible from within the assembly
-        string name; // default: Only accessible from within this class
+        string name; // Everything is private by default: Only accessible from within this class
+
+        // Static members belong to the type itself rather then specific object.
+        static public int bicyclesCreated = 0;
+        // You can access them without a reference to any object:
+        // Console.WriteLine("Bicycles created: " + Bicycle.bicyclesCreated);
 
         // readonly values are set at run time
         // they can only be assigned upon declaration or in a constructor
@@ -417,6 +422,7 @@ namespace Learning
             cadence = 50;
             _speed = 5;
             name = "Bontrager";
+            bicyclesCreated++;
         }
 
         // This is a specified constructor (it contains arguments)
