@@ -422,10 +422,10 @@ namespace Learning
         public Bicycle(int startCadence, int startSpeed, int startGear,
                        string name, bool hasCardsInSpokes)
         {
-            this.gear = startGear;
+            this.gear = startGear; // "this" keyword denotes the current object
             this.cadence = startCadence;
             this._speed = startSpeed;
-            this.name = name;
+            this.name = name; // it can be useful when there's a name conflict
             this.hasCardsInSpokes = hasCardsInSpokes;
         }
 
