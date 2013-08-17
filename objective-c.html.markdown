@@ -90,7 +90,7 @@ int main (int argc, const char * argv[])
     // Array object
     NSArray *anArray      = @[@1, @2, @3, @4];
     NSNumber *thirdNumber = anArray[2];
-    NSLog(@"Third number = %@", thirdObject); // Print "Third number = 3"
+    NSLog(@"Third number = %@", thirdNumber); // Print "Third number = 3"
 
     // Dictionary object
     NSDictionary *aDictionary = @{ @"key1" : @"value1", @"key2" : @"value2" };
