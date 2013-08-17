@@ -482,12 +482,13 @@ namespace Learning
             gear = newValue;
         }
 
-        public void SpeedUp(int increment)
+        // Method parameters can have defaut values. In this case, methods can be called with these parameters omitted
+        public void SpeedUp(int increment = 1)
         {
             _speed += increment;
         }
 
-        public void SlowDown(int decrement)
+        public void SlowDown(int decrement = 1)
         {
             _speed -= decrement;
         }
