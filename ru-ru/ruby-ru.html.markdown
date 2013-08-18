@@ -1,8 +1,13 @@
 ---
 language: ruby
-filename: learnruby.rb
+filename: learnruby-ru.rb
 contributors:
-  - ["Alexey Makarov", "https://github.com/Anakros"]
+	- ["David Underwood", "http://theflyingdeveloper.com"]
+	- ["Joel Walden", "http://joelwalden.net"]
+	- ["Luke Holder", "http://twitter.com/lukeholder"]
+	- ["Tristan Hume", "http://thume.ca/"]
+	- ["Nick LaMuro", "https://github.com/NickLaMuro"] 
+	- ["Alexey Makarov", "https://github.com/Anakros"]
 ---
 
 ```ruby
