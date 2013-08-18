@@ -2,7 +2,7 @@
 
 language: bash
 contributors:
-    - ["Max Yankov", "https://github.com/golergka"]
+    - ["Max Yankov", "https://github.com/golergka" - "Darren Lin", "https://github.com/CogBear"]
 filename: LearnBash.sh
 
 ---
@@ -49,5 +49,25 @@ fi
 
 # Expressions are denoted with the following format:
 echo $(( 10 + 5 ))
+
+# Commands can be substitued within other commands using $( ):
+# The following command displays the number of files and directories in the current directory.
+echo "There are $(ls | wc -l) items here."
+
+#Bash uses a case statement that works similarily to switch in Java and C++:
+case "$VARIABLE"
+in
+	#List patterns for the conditions you want to meet
+	0) echo "There is a zero."
+	1) echo "There is a one."
+	*) echo "It is not null."
+esac
+
+#For loops iterate for as many arguments given:
+#The contents of var $VARIABLE is printed three times.
+for $VARIABLE in x y z
+do
+	echo "$VARIABLE"
+done
 
 ```
