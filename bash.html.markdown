@@ -44,11 +44,22 @@ if true
 then
 	echo "This is expected"
 else
-	echo "And is was not"
+	echo "And this is not"
 fi
 
 # Expressions are denoted with the following format:
 echo $(( 10 + 5 ))
+
+# Unlike other programming languages, bash is a shell — so it works in a context of current directory.
+# You can list files and directories in the current directories with ls command:
+ls
+
+# These commands have options that control their execution:
+ls -l # Lists every file and directory on a separate line
+
+# Results of the previous command can be passed to the next command as input.
+# grep command filters the input with provided patterns. That's how we can list txt files in the current directory:
+ls -l | grep "\.txt"
 
 # Commands can be substitued within other commands using $( ):
 # The following command displays the number of files and directories in the current directory.
