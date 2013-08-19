@@ -391,7 +391,7 @@ class FooClass extends BaseFooClass implements BaseFooInterface{
     public var public_any:Int; // public variables are accessible anywhere
     public var public_read (default,null): Int; // use this style to only enable public read 
     public var public_write (null, default): Int; // or public write
-    public var getter_setter (getValue, setValue): Int; // use this style to enable getters/setters
+    public var property (get, set): Int; // use this style to enable getters/setters
 
     // private variables are not available outside the class.
     // see @:allow for ways around this. 
@@ -407,12 +407,12 @@ class FooClass extends BaseFooClass implements BaseFooInterface{
     }
 
     // getter for _private
-    function getValue() : Int {
+    function get_property() : Int {
         return _private;
     }
 
     // setter for _private
-    function setValue(val:Int) : Void{
+    function set_property(val:Int) : Void{
         _private = val;
     }
     
