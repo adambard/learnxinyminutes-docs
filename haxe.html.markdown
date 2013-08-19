@@ -15,7 +15,7 @@ references.
 // Welcome to Learn Haxe 3 in 15 minutes.  http://www.haxe.org
 // This is an executable tutorial.  You can compile and run it using the haxe
 // compiler, while in the same directory as LearnHaxe.hx:
-// haxe -main LearnHaxe3 -x
+// haxe -main LearnHaxe3 -x out
 
 // Let's start with comments... this is a single line comment
 
