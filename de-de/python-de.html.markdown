@@ -28,17 +28,17 @@ Hinweis: Dieser Beitrag bezieht sich besonders auf Python 2.7, er sollte aber au
 # Die Zahlen
 3 #=> 3
 
-# Mathematik ist das, was man erwartet
+# Mathematik funktioniert so, wie man das erwartet
 1 + 1 #=> 2
 8 - 1 #=> 7
 10 * 2 #=> 20
 35 / 5 #=> 7
 
-# Division ist ein wenig kniffliger. Es ist ganzzahlige Division
-# und rundet automatisch ab.
+# Division ist ein wenig kniffliger. Ganze Zahlen werden ohne Rest dividiert
+# und das Ergebnis wird automatisch abgerundet.
 5 / 2 #=> 2
 
-# Um das zu ändern, müssen wir Gleitkommazahlen kennenlernen.
+# Um das zu ändern, müssen wir Gleitkommazahlen einführen und benutzen
 2.0     # Das ist eine Gleitkommazahl
 11.0 / 4.0 #=> 2.75 Ahhh...schon besser
 
@@ -57,7 +57,7 @@ not False #=> True
 1 == 1 #=> True
 2 == 1 #=> False
 
-# Ungleichheit is !=
+# Ungleichheit ist !=
 1 != 1 #=> False
 2 != 1 #=> True
 
@@ -84,7 +84,7 @@ not False #=> True
 # Mit % können Strings formatiert werden, etwa so:
 "%s können %s werden" % ("Strings", "interpoliert")
 
-# Ein neuerer Weg, um Strings zu formatieren, ist die format-Methode.
+# Ein modernerer Weg, um Strings zu formatieren, ist die format-Methode.
 # Diese Methode wird bevorzugt
 "{0} können {1} werden".format("Strings", "formatiert")
 # Wir können Schlüsselwörter verwenden, wenn wir nicht abzählen wollen.
@@ -112,7 +112,7 @@ None is None  #=> True
 ## 2. Variablen und Collections
 ####################################################
 
-# Ausgabe ist sehr einfach
+# Textausgabe ist sehr einfach
 print "Ich bin Python. Schön, dich kennenzulernen!"
 
 
@@ -120,8 +120,9 @@ print "Ich bin Python. Schön, dich kennenzulernen!"
 some_var = 5    # kleinschreibung_mit_unterstrichen entspricht der Norm
 some_var #=> 5
 
-# Eine noch nicht deklarierte Variable anzusprechen, löst eine Exception aus.
-# Siehe Kontrollstruktur, um mehr über Ausnahmebehandlung zu lernen.
+# Das Ansprechen einer noch nicht deklarierte Variable löst eine Exception aus.
+# Unter "Kontrollstruktur" kann noch mehr über
+# Ausnahmebehandlung erfahren werden.
 some_other_var  # Löst einen NameError aus
 
 # if kann als Ausdruck verwendet werden
@@ -139,7 +140,7 @@ li.append(4)    #li ist jetzt [1, 2, 4]
 li.append(3)    #li ist jetzt [1, 2, 4, 3]
 # Vom Ende der Liste mit pop entfernen
 li.pop()        #=> 3 und li ist jetzt [1, 2, 4]
-# Fügen wir es wieder hinzu
+# und dann wieder hinzufügen
 li.append(3)    # li ist jetzt wieder [1, 2, 4, 3].
 
 # Greife auf Listen wie auf Arrays zu
@@ -147,7 +148,7 @@ li[0] #=> 1
 # Das letzte Element ansehen
 li[-1] #=> 3
 
-# Außerhalb der Liste ist es ein IndexError
+# Bei Zugriffen außerhal der Liste kommt es jedoch zu einem IndexError
 li[4] # Raises an IndexError
 
 # Wir können uns Ranges mit Slice-Syntax ansehen
@@ -249,7 +250,7 @@ filled_set | other_set #=> {1, 2, 3, 4, 5, 6}
 # Die Differenz einer Menge mit - bilden
 {1,2,3,4} - {2,3,5} #=> {1, 4}
 
-# Auf Vorhandensein mit in prüfen
+# Auf Vorhandensein von Elementen mit in prüfen
 2 in filled_set #=> True
 10 in filled_set #=> False
 
@@ -417,7 +418,7 @@ class Human(object):
 
 # Eine Instanz einer Klasse erstellen
 i = Human(name="Ian")
-print i.say("hi")     # gitbt "Ian: hi" aus
+print i.say("hi")     # gibt "Ian: hi" aus
 
 j = Human("Joel")
 print j.say("hello")  #gibt "Joel: hello" aus
