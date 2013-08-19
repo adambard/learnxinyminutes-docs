@@ -199,12 +199,12 @@ class LearnHaxe3{
 
 
         //basic comparison
-        trace(3 == 2 + " is the value for 3 == 2");
-        trace(3 != 2 + " is the value for 3 != 2");
-        trace(3 > 2 + " is the value for 3 > 2");
-        trace(3 < 2 + " is the value for 3 < 2");
-        trace(3 >= 2 + " is the value for 3 >= 2");
-        trace(3 <= 2 + " is the value for 3 <= 2");
+        trace((3 == 2) + " is the value for 3 == 2");
+        trace((3 != 2) + " is the value for 3 != 2");
+        trace((3 >  2) + " is the value for 3 > 2");
+        trace((3 <  2) + " is the value for 3 < 2");
+        trace((3 >= 2) + " is the value for 3 >= 2");
+        trace((3 <= 2) + " is the value for 3 <= 2");
 
         //bitwise operators
         /*
@@ -246,7 +246,7 @@ class LearnHaxe3{
         var k = 0;
         while(k < 100){
             // trace(counter); // will print out numbers 0-99
-            counter++;
+            k++;
         }
 
         // do-while loop
@@ -278,11 +278,11 @@ class LearnHaxe3{
 
         // Array comprehensions give you the ability to iterate over arrays
         // while also creating filters and modifications.
-        var filtered_n = [for (val in n) if (n != "foo")];
+        var filtered_n = [for (val in n) if (val != "foo") val];
         trace(filtered_n + " is the value for filtered_n");
-        var modified_n = [for (val in n) n += '!'];
+        var modified_n = [for (val in n) val += '!'];
         trace(modified_n + " is the value for modified_n");
-        var filtered_and_modified_n [for (val in n) if (n != "foo") n += "!"];
+        var filtered_and_modified_n = [for (val in n) if (val != "foo") val += "!"];
         trace(filtered_and_modified_n + " is the value for filtered_and_modified_n");
         
         //////////////////////////////////////////////////////////////////
@@ -352,7 +352,7 @@ class LearnHaxe3{
         Std.parseFloat("0.4"); // returns 0.4;
 
         // integer to string
-        Std.toString(0); // returns "0";
+        Std.string(0); // returns "0";
         // concatenation with strings will auto-convert to string.
         0 + "";  // returns "0";
         true + ""; // returns "true";
@@ -412,8 +412,9 @@ class FooClass extends BaseFooClass implements BaseFooInterface{
     }
 
     // setter for _private
-    function set_property(val:Int) : Void{
+    function set_property(val:Int) : Int {
         _private = val;
+        return val;
     }
     
     // special function that is called whenever an instance is cast to a string.
@@ -442,7 +443,6 @@ class BaseFooClass {
 interface BaseFooInterface{
     public function baseFunction(x:Int):String;
 }
-
 
 ```
 
