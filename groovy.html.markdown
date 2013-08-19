@@ -112,14 +112,31 @@ println devMap.values()
 
   When Groovy is compiled to bytecode, the following rules are used.
 
-    * If the name is declared with an access modifier (public, private or protected) then a field is generated.
-    * A name declared with no access modifier generates a private field with public getter and setter (i.e. a property).
-    * If a property is declared final the private field is created final and no setter is generated.
+    * If the name is declared with an access modifier (public, private or
+      protected) then a field is generated.
+
+    * A name declared with no access modifier generates a private field with
+      public getter and setter (i.e. a property).
+
+    * If a property is declared final the private field is created final and no
+      setter is generated.
+
     * You can declare a property and also declare your own getter or setter.
-    * You can declare a property and a field of the same name, the property will use that field then.
-    * If you want a private or protected property you have to provide your own getter and setter which must be declared private or protected.
-    * If you access a property from within the class the property is defined in at compile time with implicit or explicit this (for example this.foo, or simply foo), Groovy will access the field directly instead of going though the getter and setter.
-    * If you access a property that does not exist using the explicit or implicit foo, then Groovy will access the property through the meta class, which may fail at runtime.
+
+    * You can declare a property and a field of the same name, the property will
+      use that field then.
+
+    * If you want a private or protected property you have to provide your own
+      getter and setter which must be declared private or protected.
+
+    * If you access a property from within the class the property is defined in
+      at compile time with implicit or explicit this (for example this.foo, or
+      simply foo), Groovy will access the field directly instead of going though
+      the getter and setter.
+
+    * If you access a property that does not exist using the explicit or
+      implicit foo, then Groovy will access the property through the meta class,
+      which may fail at runtime.
 
 */
 
@@ -185,13 +202,14 @@ for ( e in map ) {
 /*
   Operators
 
-  Operator Overloading for a list of the common operators that Groovy supports: http://groovy.codehaus.org/Operator+Overloading
+  Operator Overloading for a list of the common operators that Groovy supports:
+  http://groovy.codehaus.org/Operator+Overloading
 
   Helpful groovy operators
 */
 //Spread operator:  invoke an action on all items of an aggregate object.
 def technologies = ['Groovy','Grails','Gradle']
-technologies*.toUpperCase() //equivalent to: technologies.collect { it?.toUpperCase() }
+technologies*.toUpperCase() // = to technologies.collect { it?.toUpperCase() }
 
 //Safe navigation operator: used to avoid a NullPointerException.
 def user = User.get(1)
@@ -200,7 +218,8 @@ def username = user?.username
 
 /*
   Closures
-  A Groovy Closure is like a "code block" or a method pointer. It is a piece of code that is defined and then executed at a later point.
+  A Groovy Closure is like a "code block" or a method pointer. It is a piece of
+  code that is defined and then executed at a later point.
 
   More info at: http://groovy.codehaus.org/Closures+-+Formal+Definition
 */
@@ -219,16 +238,13 @@ def x = 5
 def multiplyBy = { num -> num * x }
 println multiplyBy(10)
 
-//If you have a Closure that takes a single argument, you may omit the parameter definition of the Closure
+// If you have a Closure that takes a single argument, you may omit the
+// parameter definition of the Closure
 def clos = { print it }
 clos( "hi" )
 
 /*
-  Groovy can memorize closure results:
-  More info at:
-            http://roshandawrani.wordpress.com/2010/10/18/groovy-new-feature-closures-can-now-memorize-their-results/
-            http://www.solutionsiq.com/resources/agileiq-blog/bid/72880/Programming-with-Groovy-Trampoline-and-Memoize
-            http://mrhaki.blogspot.mx/2011/05/groovy-goodness-cache-closure-results.html
+  Groovy can memorize closure results [1][2][3]
 */
 def cl = {a, b ->
     sleep(3000) // simulate some time consuming processing
@@ -256,9 +272,10 @@ callClosure(3, 4)
 /*
   Expando
 
-  The Expando class is a dynamic bean so we can add properties and we can add closures as methods to an instance of this class
+  The Expando class is a dynamic bean so we can add properties and we can add
+  closures as methods to an instance of this class
 
-  Reference: http://mrhaki.blogspot.mx/2009/10/groovy-goodness-expando-as-dynamic-bean.html
+  http://mrhaki.blogspot.mx/2009/10/groovy-goodness-expando-as-dynamic-bean.html
 */
   def user = new Expando(name:"Roberto")
   assert 'Roberto' == user.name
@@ -310,7 +327,8 @@ assertEquals "boo", f.boo
 
 /*
   TypeChecked and CompileStatic
-  Groovy, by nature, is and will always be a dynamic language but it supports typechecked and compilestatic
+  Groovy, by nature, is and will always be a dynamic language but it supports
+  typechecked and compilestatic
 
   More info: http://www.infoq.com/articles/new-groovy-20
 */
@@ -373,7 +391,9 @@ Join a [Groovy user group](http://groovy.codehaus.org/User+Groups)
 
 * [Programming Groovy 2: Dynamic Productivity for the Java Developer] (http://shop.oreilly.com/product/9781937785307.do)
 
-
+[1] http://roshandawrani.wordpress.com/2010/10/18/groovy-new-feature-closures-can-now-memorize-their-results/
+[2] http://www.solutionsiq.com/resources/agileiq-blog/bid/72880/Programming-with-Groovy-Trampoline-and-Memoize
+[3] http://mrhaki.blogspot.mx/2011/05/groovy-goodness-cache-closure-results.html
 
 
 

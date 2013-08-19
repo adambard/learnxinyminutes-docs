@@ -1,8 +1,10 @@
 ---
 
-language: bash
+category: tool
+tool: bash
 contributors:
-    - ["Max Yankov", "https://github.com/golergka" - "Darren Lin", "https://github.com/CogBear"]
+    - ["Max Yankov", "https://github.com/golergka"]
+    - ["Darren Lin", "https://github.com/CogBear"]
 filename: LearnBash.sh
 
 ---
@@ -14,7 +16,8 @@ Nearly all examples below can be a part of a shell script or executed directly i
 
 ```bash
 #!/bin/sh
-# First line of the script is shebang which tells the system how to execute the script: http://en.wikipedia.org/wiki/Shebang_(Unix)
+# First line of the script is shebang which tells the system how to execute
+# the script: http://en.wikipedia.org/wiki/Shebang_(Unix)
 # As you already figured, comments start with #. Shebang is also a comment.
 
 # Simple hello world example:
@@ -27,12 +30,15 @@ echo 'This is the first line'; echo 'This is the second line'
 VARIABLE="Some string"
 
 # But not like this:
-VARIABLE = "Some string" # Bash will decide that VARIABLE is a command he must execute and give an error because it couldn't be found.
+VARIABLE = "Some string"
+# Bash will decide that VARIABLE is a command it must execute and give an error
+# because it couldn't be found.
 
 # Using the variable:
 echo $VARIABLE
 echo "$VARIABLE"
-# When you use the variable itself — assign it, export it, or else — you write it's name without $. If you want to use variable's value, you should use $.
+# When you use the variable itself — assign it, export it, or else — you write
+# its name without $. If you want to use variable's value, you should use $.
 
 # Reading a value from input:
 echo "What's your name?"
@@ -42,43 +48,46 @@ echo Hello, $NAME!
 # We have the usual if structure:
 if true
 then
-	echo "This is expected"
+    echo "This is expected"
 else
-	echo "And this is not"
+    echo "And this is not"
 fi
 
 # Expressions are denoted with the following format:
 echo $(( 10 + 5 ))
 
-# Unlike other programming languages, bash is a shell — so it works in a context of current directory.
-# You can list files and directories in the current directories with ls command:
+# Unlike other programming languages, bash is a shell — so it works in a context
+# of current directory. You can list files and directories in the current
+# directories with ls command:
 ls
 
 # These commands have options that control their execution:
 ls -l # Lists every file and directory on a separate line
 
 # Results of the previous command can be passed to the next command as input.
-# grep command filters the input with provided patterns. That's how we can list txt files in the current directory:
+# grep command filters the input with provided patterns. That's how we can list
+# txt files in the current directory:
 ls -l | grep "\.txt"
 
 # Commands can be substitued within other commands using $( ):
-# The following command displays the number of files and directories in the current directory.
+# The following command displays the number of files and directories in the
+# current directory.
 echo "There are $(ls | wc -l) items here."
 
-#Bash uses a case statement that works similarily to switch in Java and C++:
+# Bash uses a case statement that works similarily to switch in Java and C++:
 case "$VARIABLE"
 in
-	#List patterns for the conditions you want to meet
-	0) echo "There is a zero."
-	1) echo "There is a one."
-	*) echo "It is not null."
+    #List patterns for the conditions you want to meet
+    0) echo "There is a zero."
+    1) echo "There is a one."
+    *) echo "It is not null."
 esac
 
 #For loops iterate for as many arguments given:
 #The contents of var $VARIABLE is printed three times.
 for $VARIABLE in x y z
 do
-	echo "$VARIABLE"
+    echo "$VARIABLE"
 done
 
 ```
