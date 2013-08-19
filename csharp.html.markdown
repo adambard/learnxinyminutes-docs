@@ -3,6 +3,7 @@
 language: c#
 contributors:
     - ["Irfan Charania", "https://github.com/irfancharania"]
+    - ["Max Yankov", "https://github.com/golergka"]
 filename: LearnCSharp.cs
 
 ---
@@ -402,7 +403,25 @@ namespace Learning
         private int _speed;  // Private: Only accessible from within the class
         protected int gear; // Protected: Accessible from the class and subclasses
         internal int wheels; // Internal: Accessible from within the assembly
-        string name; // default: Only accessible from within this class
+        string name; // Everything is private by default: Only accessible from within this class
+
+        // Enum is a value type that consists of a set of named constants
+        public enum Brand
+        {
+            AIST,
+            BMC,
+            Electra,
+            Gitane
+        }
+        // We defined this type inside a Bicycle class, so it is a nested type
+        // Code outside of this class should reference this type as Bicycle.Brand
+
+        public Brand brand; // After declaing an enum type, we can declare the field of this type
+
+        // Static members belong to the type itself rather then specific object.
+        static public int bicyclesCreated = 0;
+        // You can access them without a reference to any object:
+        // Console.WriteLine("Bicycles created: " + Bicycle.bicyclesCreated);
 
         // readonly values are set at run time
         // they can only be assigned upon declaration or in a constructor
@@ -410,27 +429,30 @@ namespace Learning
 
         // Constructors are a way of creating classes
         // This is a default constructor
-        public Bicycle()
+        private Bicycle()
         {
             gear = 1;
             cadence = 50;
             _speed = 5;
             name = "Bontrager";
+            brand = Brand.AIST;
+            bicyclesCreated++;
         }
 
         // This is a specified constructor (it contains arguments)
         public Bicycle(int startCadence, int startSpeed, int startGear,
-                       string name, bool hasCardsInSpokes)
+                       string name, bool hasCardsInSpokes, Brand brand)
         {
             this.gear = startGear; // "this" keyword denotes the current object
             this.cadence = startCadence;
             this._speed = startSpeed;
             this.name = name; // it can be useful when there's a name conflict
             this.hasCardsInSpokes = hasCardsInSpokes;
+            this.brand = brand;
         }
 
         // Constructors can be chained
-        public Bicycle(int startCadence, int startSpeed) :
+        public Bicycle(int startCadence, int startSpeed, Brand brand) :
             this(startCadence, startSpeed, 0, "big wheels", true)
         {
         }
@@ -443,29 +465,30 @@ namespace Learning
 
         // Method declaration syntax:
         // <scope> <return type> <method name>(<args>)
-        public int getCadence()
+        public int GetCadence()
         {
             return cadence;
         }
 
         // void methods require no return statement
-        public void setCadence(int newValue)
+        public void SetCadence(int newValue)
         {
             cadence = newValue;
         }
 
         // virtual keyword indicates this method can be overridden
-        public virtual void setGear(int newValue)
+        public virtual void SetGear(int newValue)
         {
             gear = newValue;
         }
 
-        public void speedUp(int increment)
+        // Method parameters can have defaut values. In this case, methods can be called with these parameters omitted
+        public void SpeedUp(int increment = 1)
         {
             _speed += increment;
         }
 
-        public void slowDown(int decrement)
+        public void SlowDown(int decrement = 1)
         {
             _speed -= decrement;
         }
@@ -500,6 +523,14 @@ namespace Learning
                     "\n------------------------------\n"
                     ;
         }
+
+        // Methods can also be static. It can be useful for helper methods
+        public static bool DidWeCreateEnoughBycles()
+        {
+            // Within a static method, we only can reference static class memebers
+            return bicyclesCreated > 9000;
+        } // If your class only needs static members, consider marking the class itself as static.
+
     } // end class Bicycle
 
     // PennyFarthing is a subclass of Bicycle
@@ -514,9 +545,46 @@ namespace Learning
         {
         }
 
-        public override void setGear(int gear)
+        public override void SetGear(int gear)
         {
             gear = 0;
+        }
+
+        public override string ToString()
+        {
+            string result = "PennyFarthing bicycle ";
+            result += base.ToString(); // Calling the base version of the method
+            return reuslt;
+        }
+    }
+
+    // Interfaces only contain signatures of the members, without the implementation.
+    interface IJumpable
+    {
+        void Jump(int meters); // all interface members are implicitly public
+    }
+
+    interface IBreakable
+    {
+        bool Broken { get; } // interfaces can contain properties as well as methods, fields & events
+    }
+
+    // Class can inherit only one other class, but can implement any amount of interfaces
+    class MountainBike : Bicycle, IJumpable, IBreakable
+    {
+        int damage = 0;
+
+        public void Jump(int meters)
+        {
+            damage += meters;
+        }
+
+        public void Broken
+        {
+            get
+            {
+                return damage > 100;
+            }
         }
     }
 } // End Namespace
@@ -525,10 +593,11 @@ namespace Learning
 
 ## Topics Not Covered
 
- * Enums, Flags
+ * Flags
  * Attributes
  * Generics (T), Delegates, Func, Actions, lambda expressions
- * Exceptions, Interfaces, Abstraction
+ * Static properties
+ * Exceptions, Abstraction
  * LINQ
  * ASP.NET (Web Forms/MVC/WebMatrix)
  * Winforms
