@@ -175,7 +175,7 @@ class LearnHaxe3{
            argument that sets a type parameter.
          */
         var m3 = new Map();
-        m3.set(6, 'baz'); // m2 is now a Map<Int,String>
+        m3.set(6, 'baz'); // m3 is now a Map<Int,String>
         trace(m3 + " is the value for m3");
 
         /*
