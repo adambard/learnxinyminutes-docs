@@ -109,18 +109,18 @@ undefined ; user to indicate a value that hasn't been set
 
 ; Dictionaries are Whip's equivalent to JavaScript 'objects' or Python 'dicts'
 ; or Ruby 'hashes': an unordered collection of key-value pairs.
-{"key1":"value1" "key2":2 3:3}
+{"key1" "value1" "key2" 2 3 3}
 
 ; Keys are just values, either identifier, number, or string.
-(def my_dict {my_key:"my_value" "my other key":4})
-; But in Whip, dictionaries get parsed like: value, colon, value;
-; with whitespace between each. So that means
-{"key": "value"
+(def my_dict {my_key "my_value" "my other key" 4})
+; But in Whip, dictionaries get parsed like: value, whitespace, value;
+; with more whitespace between each. So that means
+{"key" "value"
 "another key"
-: 1234
+1234
 }
 ; is evaluated to the same as
-{"key":"value" "another key":1234}
+{"key" "value" "another key" 1234}
 
 ; Dictionary definitions can be accessed used the `at` function
 ; (like strings and lists.)
@@ -220,8 +220,8 @@ undefined ; user to indicate a value that hasn't been set
 (max (1 2 3 4)) ; 4
 ; If value is in list or object
 (elem 1 (1 2 3)) ; true
-(elem "foo" {"foo":"bar"}) ; true
-(elem "bar" {"foo":"bar"}) ; false
+(elem "foo" {"foo" "bar"}) ; true
+(elem "bar" {"foo" "bar"}) ; false
 ; Reverse list order
 (reverse (1 2 3 4)) ; => (4 3 2 1)
 ; If value is even or odd
