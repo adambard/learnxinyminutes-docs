@@ -284,8 +284,7 @@ class LearnHaxe3{
         trace(modified_n + " is the value for modified_n");
         var filtered_and_modified_n [for (val in n) if (n != "foo") n += "!"];
         trace(filtered_and_modified_n + " is the value for filtered_and_modified_n");
-
-
+        
         //////////////////////////////////////////////////////////////////
         // Switch Statements (Value Type)
         //////////////////////////////////////////////////////////////////
@@ -311,7 +310,37 @@ class LearnHaxe3{
         trace("My dog's name is" + my_dog_name
                 + ", and his favorite thing is a: "
                 + favorite_thing);
-
+        
+        //////////////////////////////////////////////////////////////////
+        // Expression Statements
+        //////////////////////////////////////////////////////////////////
+        trace("***EXPRESSION STATEMENTS***");
+    
+        /*
+           Haxe control statements are very powerful because every statement
+           is also an expression, consider:
+        */
+        
+        // if statements
+        var k = if (true){
+            10;
+        } else {
+            20;
+        }
+        
+        trace("K equals ", k); // outputs 10
+        
+        var other_favorite_thing = switch(my_dog_name) {
+            case "fido" : 'teddy';
+            case "rex" :  'stick';
+            case "spot" : 'football';
+            case _ : 'some unknown treat'; 
+        }
+        
+        trace("My dog's name is" + my_dog_name
+                + ", and his other favorite thing is a: "
+                + other_favorite_thing);
+        
         //////////////////////////////////////////////////////////////////
         // Converting Value Types
         //////////////////////////////////////////////////////////////////
