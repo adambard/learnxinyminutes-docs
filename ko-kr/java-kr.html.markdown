@@ -169,7 +169,7 @@ public class LearnJava {
         System.out.println(--i); //i = 0. 전치 감소 연산
 
         ///////////////////////////////////////
-        // 에저 구조
+        // 제어 구조
         ///////////////////////////////////////
         System.out.println("\n->Control Structures");
 
