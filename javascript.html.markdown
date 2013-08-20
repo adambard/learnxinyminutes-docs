@@ -30,83 +30,84 @@ doStuff();
 // wherever there's a newline, except in certain cases.
 doStuff()
 
-// We'll leave semicolons off here; whether you do or not will depend on your
-// personal preference or your project's style guide.
+// So that we don't have to worry about those certain cases (for now), we'll
+// leave them on.
 
 ///////////////////////////////////
 // 1. Numbers, Strings and Operators
 
 // Javascript has one number type (which is a 64-bit IEEE 754 double).
-3 // = 3
-1.5 // = 1.5
+3; // = 3
+1.5; // = 1.5
 
 // All the basic arithmetic works as you'd expect.
-1 + 1 // = 2
-8 - 1 // = 7
-10 * 2 // = 20
-35 / 5 // = 7
+1 + 1; // = 2
+8 - 1; // = 7
+10 * 2; // = 20
+35 / 5; // = 7
 
 // Including uneven division.
-5 / 2 // = 2.5
+5 / 2; // = 2.5
 
 // Bitwise operations also work; when you perform a bitwise operation your float
 // is converted to a signed int *up to* 32 bits.
-1 << 2 // = 4
+1 << 2; // = 4
 
 // Precedence is enforced with parentheses.
-(1 + 3) * 2 // = 8
+(1 + 3) * 2; // = 8
 
 // There are three special not-a-real-number values:
-Infinity // result of e.g. 1/0
--Infinity // result of e.g. -1/0
-NaN // result of e.g. 0/0
+Infinity; // result of e.g. 1/0
+-Infinity; // result of e.g. -1/0
+NaN; // result of e.g. 0/0
 
 // There's also a boolean type.
-true
-false
+true;
+false;
 
 // Strings are created with ' or ".
-'abc'
-"Hello, world"
+'abc';
+"Hello, world";
 
 // Negation uses the ! symbol
-!true // = false
-!false // = true
+!true; // = false
+!false; // = true
 
 // Equality is ==
-1 == 1 // = true
-2 == 1 // = false
+1 == 1; // = true
+2 == 1; // = false
 
 // Inequality is !=
-1 != 1 // = false
-2 != 1 // = true
+1 != 1; // = false
+2 != 1; // = true
 
 // More comparisons
-1 < 10 // = true
-1 > 10 // = false
-2 <= 2 // = true
-2 >= 2 // = true
+1 < 10; // = true
+1 > 10; // = false
+2 <= 2; // = true
+2 >= 2; // = true
 
 // Strings are concatenated with +
-"Hello " + "world!" // = "Hello world!"
+"Hello " + "world!"; // = "Hello world!"
 
 // and are compared with < and >
-"a" < "b" // = true
+"a" < "b"; // = true
 
 // Type coercion is performed for comparisons...
-"5" == 5 // = true
+"5" == 5; // = true
 
 // ...unless you use ===
-"5" === 5 // = false
+"5" === 5; // = false
 
 // You can access characters in a string with charAt
-"This is a string".charAt(0)
+"This is a string".charAt(0);
 
 // There's also null and undefined
-null // used to indicate a deliberate non-value
-undefined // used to indicate a value that hasn't been set yet
+null; // used to indicate a deliberate non-value
+undefined; // used to indicate a value is not currently present (although undefined
+           // is actually a value itself)
 
-// null, undefined, NaN, 0 and "" are falsy, and everything else is truthy.
+// false, null, undefined, NaN, 0 and "" are falsy, and everything else is truthy.
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
 ///////////////////////////////////
@@ -114,57 +115,57 @@ undefined // used to indicate a value that hasn't been set yet
 
 // Variables are declared with the var keyword. Javascript is dynamically typed,
 // so you don't need to specify type. Assignment uses a single = character.
-var someVar = 5
+var someVar = 5;
 
 // if you leave the var keyword off, you won't get an error...
-someOtherVar = 10
+someOtherVar = 10;
 
 // ...but your variable will be created in the global scope, not in the scope
 // you defined it in.
 
 // Variables declared without being assigned to are set to undefined.
-var someThirdVar // = undefined
+var someThirdVar; // = undefined
 
 // There's shorthand for performing math operations on variables:
-someVar += 5 // equivalent to someVar = someVar + 5; someVar is 10 now
-someVar *= 10 // now someVar is 100
+someVar += 5; // equivalent to someVar = someVar + 5; someVar is 10 now
+someVar *= 10; // now someVar is 100
 
 // and an even-shorter-hand for adding or subtracting 1
-someVar++ // now someVar is 101
-someVar-- // back to 100
+someVar++; // now someVar is 101
+someVar--; // back to 100
 
 // Arrays are ordered lists of values, of any type.
-var myArray = ["Hello", 45, true]
+var myArray = ["Hello", 45, true];
 
 // Their members can be accessed using the square-brackets subscript syntax.
 // Array indices start at zero.
-myArray[1] // = 45
+myArray[1]; // = 45
 
 // JavaScript's objects are equivalent to 'dictionaries' or 'maps' in other
 // languages: an unordered collection of key-value pairs.
-{key1: "Hello", key2: "World"}
+var myObj = {key1: "Hello", key2: "World"};
 
 // Keys are strings, but quotes aren't required if they're a valid
 // JavaScript identifier. Values can be any type.
-var myObj = {myKey: "myValue", "my other key": 4}
+var myObj = {myKey: "myValue", "my other key": 4};
 
 // Object attributes can also be accessed using the subscript syntax,
-myObj["my other key"] // = 4
+myObj["my other key"]; // = 4
 
 // ... or using the dot syntax, provided the key is a valid identifier.
-myObj.myKey // = "myValue"
+myObj.myKey; // = "myValue"
 
 // Objects are mutable; values can be changed and new keys added.
-myObj.myThirdKey = true
+myObj.myThirdKey = true;
 
 // If you try to access a value that's not yet set, you'll get undefined.
-myObj.myFourthKey // = undefined
+myObj.myFourthKey; // = undefined
 
 ///////////////////////////////////
 // 3. Logic and Control Structures
 
 // The if structure works as you'd expect.
-var count = 1
+var count = 1;
 if (count == 3){
     // evaluated if count is 3
 } else if (count == 4) {
@@ -181,10 +182,10 @@ while (true) {
 // Do-while loops are like while loops, except they always run at least once.
 var input
 do {
-    input = getInput()
+    input = getInput();
 } while (!isValid(input))
 
-// the for loop is the same as C and Java: 
+// the for loop is the same as C and Java:
 // initialisation; continue condition; iteration.
 for (var i = 0; i < 5; i++){
     // will run 5 times
@@ -192,29 +193,23 @@ for (var i = 0; i < 5; i++){
 
 // && is logical and, || is logical or
 if (house.size == "big" && house.colour == "blue"){
-    house.contains = "bear"
+    house.contains = "bear";
 }
 if (colour == "red" || colour == "blue"){
     // colour is either red or blue
 }
 
 // && and || "short circuit", which is useful for setting default values.
-var name = otherName || "default"
+var name = otherName || "default";
 
 ///////////////////////////////////
 // 4. Functions, Scope and Closures
 
 // JavaScript functions are declared with the function keyword.
 function myFunction(thing){
-    return thing.toUpperCase()
+    return thing.toUpperCase();
 }
-myFunction("foo") // = "FOO"
-
-// Functions can also be defined "anonymously" - without a name:
-function(thing){
-    return thing.toLowerCase()
-}
-// (we can't call our function, since we don't have a name to refer to it with)
+myFunction("foo"); // = "FOO"
 
 // JavaScript functions are first class objects, so they can be reassigned to
 // different variable names and passed to other functions as arguments - for
@@ -222,52 +217,49 @@ function(thing){
 function myFunction(){
     // this code will be called in 5 seconds' time
 }
-setTimeout(myFunction, 5000)
+setTimeout(myFunction, 5000);
 
-// You can even write the function statement directly in the call to the other
-// function.
-
-setTimeout(function myFunction(){
+// Function objects don't even have to be declared with a name - you can write
+// an anonymous function definition directly into the arguments of another.
+setTimeout(function(){
     // this code will be called in 5 seconds' time
-}, 5000)
+}, 5000);
 
 // JavaScript has function scope; functions get their own scope but other blocks
 // do not.
 if (true){
-    var i = 5
+    var i = 5;
 }
-i // = 5 - not undefined as you'd expect in a block-scoped language
+i; // = 5 - not undefined as you'd expect in a block-scoped language
 
 // This has led to a common pattern of "immediately-executing anonymous
 // functions", which prevent temporary variables from leaking into the global
 // scope.
 (function(){
-    var temporary = 5
+    var temporary = 5;
     // We can access the global scope by assiging to the 'global object', which
     // in a web browser is always 'window'. The global object may have a
     // different name in non-browser environments such as Node.js.
-    window.permanent = 10
-    // Or, as previously mentioned, we can just leave the var keyword off.
-    permanent2 = 15
-})()
-temporary // raises ReferenceError
-permanent // = 10
-permanent2 // = 15
+    window.permanent = 10;
+})();
+temporary; // raises ReferenceError
+permanent; // = 10
 
 // One of JavaScript's most powerful features is closures. If a function is
 // defined inside another function, the inner function has access to all the
-// outer function's variables.
+// outer function's variables, even after the outer function exits.
 function sayHelloInFiveSeconds(name){
-    var prompt = "Hello, " + name + "!"
+    var prompt = "Hello, " + name + "!";
     function inner(){
-        alert(prompt)
+        alert(prompt);
     }
-    setTimeout(inner, 5000)
-    // setTimeout is asynchronous, so this function will finish without waiting
-    // 5 seconds. However, once the 5 seconds is up, inner will still have
-    // access to the value of prompt.
+    setTimeout(inner, 5000);
+    // setTimeout is asynchronous, so the sayHelloInFiveSeconds function will
+    // exit immediately, and setTimeout will call inner afterwards. However,
+    // because inner is "closed over" sayHelloInFiveSeconds, inner still has
+    // access to the 'prompt' variable when it is finally called.
 }
-sayHelloInFiveSeconds("Adam") // will open a popup with "Hello, Adam!" in 5s
+sayHelloInFiveSeconds("Adam"); // will open a popup with "Hello, Adam!" in 5s
 
 ///////////////////////////////////
 // 5. More about Objects; Constructors and Prototypes
@@ -275,44 +267,44 @@ sayHelloInFiveSeconds("Adam") // will open a popup with "Hello, Adam!" in 5s
 // Objects can contain functions.
 var myObj = {
     myFunc: function(){
-        return "Hello world!"
+        return "Hello world!";
     }
-}
-myObj.myFunc() // = "Hello world!"
+};
+myObj.myFunc(); // = "Hello world!"
 
 // When functions attached to an object are called, they can access the object
 // they're attached to using the this keyword.
 myObj = {
     myString: "Hello world!",
     myFunc: function(){
-        return this.myString
+        return this.myString;
     }
-}
-myObj.myFunc() // = "Hello world!"
+};
+myObj.myFunc(); // = "Hello world!"
 
 // What this is set to has to do with how the function is called, not where
 // it's defined. So, our function doesn't work if it isn't called in the
 // context of the object.
-var myFunc = myObj.myFunc
-myFunc() // = undefined
+var myFunc = myObj.myFunc;
+myFunc(); // = undefined
 
 // Inversely, a function can be assigned to the object and gain access to it
 // through this, even if it wasn't attached when it was defined.
 var myOtherFunc = function(){
-    return this.myString.toUpperCase()
+    return this.myString.toUpperCase();
 }
-myObj.myOtherFunc = myOtherFunc
-myObj.myOtherFunc() // = "HELLO WORLD!"
+myObj.myOtherFunc = myOtherFunc;
+myObj.myOtherFunc(); // = "HELLO WORLD!"
 
 // When you call a function with the new keyword, a new object is created, and
 // made available to the function via this. Functions designed to be called
 // like this are called constructors.
 
 var MyConstructor = function(){
-    this.myNumber = 5
+    this.myNumber = 5;
 }
-myNewObj = new MyConstructor() // = {myNumber: 5}
-myNewObj.myNumber // = 5
+myNewObj = new MyConstructor(); // = {myNumber: 5}
+myNewObj.myNumber; // = 5
 
 // Every JavaScript object has a 'prototype'. When you go to access a property
 // on an object that doesn't exist on the actual object, the interpreter will
@@ -323,31 +315,31 @@ myNewObj.myNumber // = 5
 // part of the standard; we'll get to standard ways of using prototypes later.
 var myObj = {
     myString: "Hello world!",
-}
+};
 var myPrototype = {
     meaningOfLife: 42,
     myFunc: function(){
         return this.myString.toLowerCase()
     }
-}
-myObj.__proto__ = myPrototype
-myObj.meaningOfLife // = 42
+};
+myObj.__proto__ = myPrototype;
+myObj.meaningOfLife; // = 42
 
 // This works for functions, too.
-myObj.myFunc() // = "hello world!"
+myObj.myFunc(); // = "hello world!"
 
 // Of course, if your property isn't on your prototype, the prototype's
 // prototype is searched, and so on.
 myPrototype.__proto__ = {
     myBoolean: true
-}
-myObj.myBoolean // = true
+};
+myObj.myBoolean; // = true
 
 // There's no copying involved here; each object stores a reference to its
 // prototype. This means we can alter the prototype and our changes will be
 // reflected everywhere.
-myPrototype.meaningOfLife = 43
-myObj.meaningOfLife // = 43
+myPrototype.meaningOfLife = 43;
+myObj.meaningOfLife; // = 43
 
 // We mentioned that __proto__ was non-standard, and there's no standard way to
 // change the prototype of an existing object. However, there's two ways to
@@ -355,8 +347,8 @@ myObj.meaningOfLife // = 43
 
 // The first is Object.create, which is a recent addition to JS, and therefore
 // not available in all implementations yet.
-var myObj = Object.create(myPrototype)
-myObj.meaningOfLife // = 43
+var myObj = Object.create(myPrototype);
+myObj.meaningOfLife; // = 43
 
 // The second way, which works anywhere, has to do with constructors.
 // Constructors have a property called prototype. This is *not* the prototype of
@@ -366,20 +358,20 @@ myConstructor.prototype = {
     getMyNumber: function(){
         return this.myNumber
     }
-}
-var myNewObj2 = new myConstructor()
-myNewObj2.getMyNumber() // = 5
+};
+var myNewObj2 = new myConstructor();
+myNewObj2.getMyNumber(); // = 5
 
 // Built-in types like strings and numbers also have constructors that create
 // equivalent wrapper objects.
-var myNumber = 12
-var myNumberObj = new Number(12)
-myNumber == myNumberObj // = true
+var myNumber = 12;
+var myNumberObj = new Number(12);
+myNumber == myNumberObj; // = true
 
 // Except, they aren't exactly equivalent.
-typeof(myNumber) // = 'number'
-typeof(myNumberObj) // = 'object'
-myNumber === myNumberObj // = false
+typeof(myNumber); // = 'number'
+typeof(myNumberObj); // = 'object'
+myNumber === myNumberObj; // = false
 if (0){
     // This code won't execute, because 0 is falsy.
 }
@@ -390,9 +382,9 @@ if (Number(0)){
 // However, the wrapper objects and the regular builtins share a prototype, so
 // you can actually add functionality to a string, for instance.
 String.prototype.firstCharacter = function(){
-    return this.charAt(0)
+    return this.charAt(0);
 }
-"abc".firstCharacter() // = "a"
+"abc".firstCharacter(); // = "a"
 
 // This fact is often used in "polyfilling", which is implementing newer
 // features of JavaScript in an older subset of JavaScript, so that they can be
@@ -403,10 +395,10 @@ String.prototype.firstCharacter = function(){
 if (Object.create === undefined){ // don't overwrite it if it exists
     Object.create = function(proto){
         // make a temporary constructor with the right prototype
-        var Constructor = function(){}
-        Constructor.prototype = proto
+        var Constructor = function(){};
+        Constructor.prototype = proto;
         // then use it to create a new, appropriately-prototyped object
-        return new Constructor()
+        return new Constructor();
     }
 }
 ```

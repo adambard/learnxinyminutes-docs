@@ -9,18 +9,47 @@ commented code and explained as they go.
 ... to write more inline code tutorials. Just grab an existing file from
 this repo and copy the formatting (don't worry, it's all very simple).
 Make a new file, send a pull request, and if it passes muster I'll get it up pronto.
-Remember to fill in the author and author\_url fields so you get credited
+Remember to fill in the "contributors" fields so you get credited
 properly!
 
 ### Requests
 
-The most requested languages are:
+We've had a ton of interest, b
 
-* Go
-* ~~Scala~~
-* ~~Javascript~~
+### Contributing
 
-... but there are many more requests to do "every language", so don't let that stop you.
+All contributions welcome, from the tiniest typo to a brand new article. Translations
+in all languages are welcome (or, for that matter, original articles in any language).
+
+#### Style Guidelines
+
+* Try to keep **line length in code blocks to 80 characters or fewer**, or they'll overflow
+  and look odd.
+
+* Try to use as few words as possible. Code examples are preferred over exposition in all cases.
+
+* We welcome newcomers, but the target audience for this site is programmers with some experience.
+  So, try to avoid explaining basic concepts except for those specific to the language in question,
+  to keep articles succinct and scannable. We all know how to use google here.
+
+* For translations (or english articles with non-ASCII characters), please make sure your file is
+  utf-8 encoded.
+
+#### Header configuration
+
+The actual site uses Middleman to generate HTML files from these markdown ones. Middleman, or at least
+the custom scripts underpinning the site, required that some key information be defined in the header.
+
+The following fields are necessary for english articles about programming languages:
+
+* **language** The *programming language* in question
+* **contributors** A list of [author, url] lists to credit
+
+Other fields:
+
+* **filename**: The filename for this article's code. It will be fetched, mashed together, and made downloadable.
+  For non-english articles, *filename* should have a language-specific suffix.
+* **lang**: For translations, the human language this article is in. For categorization, mostly.
 
 ## License
 

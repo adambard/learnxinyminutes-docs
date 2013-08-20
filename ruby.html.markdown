@@ -5,6 +5,8 @@ contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]
   - ["Joel Walden", "http://joelwalden.net"]
   - ["Luke Holder", "http://twitter.com/lukeholder"]
+  - ["Tristan Hume", "http://thume.ca/"]
+  - ["Nick LaMuro", "https://github.com/NickLaMuro"]
 ---
 
 ```ruby
@@ -34,7 +36,7 @@ You shouldn't either
 # Arithmetic is just syntactic sugar
 # for calling a method on an object
 1.+(3) #=> 4
-10.* 5 #=> 50 
+10.* 5 #=> 50
 
 # Special values are objects
 nil # Nothing to see here
@@ -116,11 +118,11 @@ status == :approved #=> false
 # Arrays
 
 # This is an array
-[1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
+array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 
 # Arrays can contain different types of items
 
-array = [1, "hello", false] #=> => [1, "hello", false]
+[1, "hello", false] #=> [1, "hello", false]
 
 # Arrays can be indexed
 # From the front
@@ -158,11 +160,6 @@ hash['number'] #=> 5
 # Asking a hash for a key that doesn't exist returns nil:
 hash['nothing here'] #=> nil
 
-# Iterate over hashes with the #each method:
-hash.each do |k, v|
-  puts "#{k} is #{v}"
-end
-
 # Since Ruby 1.9, there's a special syntax when using symbols as keys:
 
 new_hash = { defcon: 3, action: true}
@@ -177,9 +174,9 @@ new_hash.keys #=> [:defcon, :action]
 if true
   "if statement"
 elsif false
- "else if, optional"
+  "else if, optional"
 else
- "else, also optional"
+  "else, also optional"
 end
 
 for counter in 1..5
@@ -191,9 +188,15 @@ end
 #=> iteration 4
 #=> iteration 5
 
-# HOWEVER
-# No-one uses for loops
-# Use `each` instead, like this:
+# HOWEVER, No-one uses for loops.
+# Instead you should use the "each" method and pass it a block.
+# A block is a bunch of code that you can pass to a method like "each".
+# It is analogous to lambdas, anonymous functions or closures in other
+# programming languages.
+#
+# The "each" method of a range runs the block once for each element of the range.
+# The block is passed a counter as a parameter.
+# Calling the "each" method with a block looks like this:
 
 (1..5).each do |counter|
   puts "iteration #{counter}"
@@ -203,6 +206,17 @@ end
 #=> iteration 3
 #=> iteration 4
 #=> iteration 5
+
+# You can also surround blocks in curly brackets:
+(1..5).each {|counter| puts "iteration #{counter}"}
+
+# The contents of data structures can also be iterated using each.
+array.each do |element|
+  puts "#{element} is part of the array"
+end
+hash.each do |key, value|
+  puts "#{key} is #{value}"
+end
 
 counter = 1
 while counter <= 5 do
@@ -228,7 +242,7 @@ when 'D'
   puts "Scraping through"
 when 'F'
   puts "You failed!"
-else 
+else
   puts "Alternative grading system, eh?"
 end
 
@@ -238,7 +252,7 @@ def double(x)
   x * 2
 end
 
-# Functions (and all blocks) implcitly return the value of the last statement
+# Functions (and all blocks) implicitly return the value of the last statement
 double(2) #=> 4
 
 # Parentheses are optional where the result is unambiguous

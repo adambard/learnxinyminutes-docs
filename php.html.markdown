@@ -440,6 +440,11 @@ class MyClass
 
     static $staticVar   = 'static';
 
+    // Static variables and their visibility
+    public static $publicStaticVar = 'publicStatic';
+    private static $privateStaticVar = 'privateStatic'; // Accessible within the class only
+    protected static $protectedStaticVar = 'protectedStatic'; // Accessible from the class and subclasses
+
     // Properties must declare their visibility
     public $property    = 'public';
     public $instanceProp;
