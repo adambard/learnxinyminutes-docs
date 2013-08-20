@@ -1,4 +1,14 @@
-﻿#!/bin/sh
+﻿---
+language: bash
+contributors:
+    - ["Jake Prather", "http:#github.com/JakeHP"]
+    - ["kultprok", "http://www.kulturproktologie.de"]
+filename: LearnBash-de.bash
+lang: de-de
+---
+
+```bash
+#!/bin/sh
 # Die erste Zeile des Scripts nennt sich Shebang in gibt dem System an, wie
 # wie das Script ausgeführt werden soll: http://de.wikipedia.org/wiki/Shebang
 # Du hast es bestimmt schon mitgekriegt, Kommentare fangen mit # an. Das Shebang ist auch ein Kommentar
@@ -71,3 +81,4 @@ for $VARIABLE in x y z
 do
     echo "$VARIABLE"
 done
+```

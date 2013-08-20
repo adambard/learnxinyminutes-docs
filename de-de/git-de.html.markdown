@@ -4,7 +4,7 @@ tool: git
 contributors:
     - ["Jake Prather", "http:#github.com/JakeHP"]
     - ["kultprok", "http://www.kulturproktologie.de"]
-filename: LearnGit.txt
+filename: LearnGit-de.txt
 lang: de-de
 ---
 
