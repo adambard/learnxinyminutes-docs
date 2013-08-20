@@ -12,10 +12,6 @@ Make a new file, send a pull request, and if it passes muster I'll get it up pro
 Remember to fill in the "contributors" fields so you get credited
 properly!
 
-### Requests
-
-We've had a ton of interest, b
-
 ### Contributing
 
 All contributions welcome, from the tiniest typo to a brand new article. Translations
