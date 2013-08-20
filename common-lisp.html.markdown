@@ -219,7 +219,7 @@ nil                  ; for false - and the empty list
 
 ;;; Vectors
 
-;; Vectors are fixed-length arrays
+;; Vector's literals are fixed-length arrays
 #(1 2 3) ; => #(1 2 3)
 
 ;; Use concatenate to add vectors together
@@ -252,6 +252,23 @@ nil                  ; for false - and the empty list
 (aref (make-array (list 2 2 2)) 1 1 1)
 
 ; => 0
+
+;;; Adjustable vectors
+
+;; Adjustable vectors have the same printed representation
+;; as fixed-length vector's literals.
+
+(defparameter *adjvec* (make-array '(3) :initial-contents '(1 2 3)
+      :adjustable t :fill-pointer t))
+      
+*adjvec* ; => #(1 2 3)
+
+;; Adding new element:
+(vector-push-extend 4 *adjvec*) ; => 3
+
+*adjvec* ; => #(1 2 3 4)
+
+
 
 ;;; Naively, sets are just lists:
 
