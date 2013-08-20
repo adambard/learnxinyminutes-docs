@@ -205,7 +205,7 @@ nil                  ; for false - and the empty list
 
 ;; Or use concatenate -
 
-(concatenate
+(concatenate 'list '(1 2) '(3 4))
 
 ;; Lists are a very central type, so there is a wide variety of functionality for
 ;; them, a few examples:
@@ -279,10 +279,10 @@ nil                  ; for false - and the empty list
 ;; not.
 
 ;; Retrieving a non-present value returns nil
- (gethash *m* 'd) ;=> nil, nil
+ (gethash 'd *m*) ;=> nil, nil
 
 ;; You can provide a default value for missing keys
-(gethash *m* 'd :not-found) ; => :NOT-FOUND
+(gethash 'd *m* :not-found) ; => :NOT-FOUND
 
 ;; Let's handle the multiple return values here in code.
 
@@ -457,8 +457,8 @@ nil                  ; for false - and the empty list
     :accessor velocity
     :initarg :velocity)
    (average-efficiency
-    :accessor average-efficiency)
-   :initarg :average-efficiency)
+    :accessor average-efficiency
+   :initarg :average-efficiency))
   (:documentation "A human powered conveyance"))
 
 ;; defclass, followed by name, followed by the superclass list,
@@ -506,7 +506,7 @@ nil                  ; for false - and the empty list
 ;  Direct superclasses: STANDARD-OBJECT
 ;  Direct subclasses: UNICYCLE, BICYCLE, CANOE
 ;  Not yet finalized.
-(defparameter *foo#\u03BBooo* nil) ;  Direct slots:
+;  Direct slots:
 ;    VELOCITY
 ;      Readers: VELOCITY
 ;      Writers: (SETF VELOCITY)
