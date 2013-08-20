@@ -15,7 +15,7 @@ praktikus megoldást nyújt a valós, üzleti problémákra.
 
 C-szerű szintaktikával és statikus típuskezeléssel rendelkezik.
 A fordító szempillantás alatt végez és egy gyorsan futó,statikus futtatható állományt hoz létre.
-A nyelv könnyen érthető, üzenet-alapú konkurenciát tesz lehetővé, így könnyen ki lehet használni
+A nyelv könnyen érthető, a folyamatok közötti csatornákon áthaladó üzenetekkel kommunikáló konkurens programozást tesz lehetővé, így könnyen ki lehet használni
 a mai számítógépek több magos processzorait, ez nagy rendszerek építéséhez ideális.
 
 A Go alap könyvtára mindenre területre kiterjed, ennek köszönhetően a nyelvnek egyre növekvő tábora van.
@@ -72,7 +72,7 @@ func learnMultiple(x, y int) (sum, prod int) {
 
 // Beépített típusok
 func learnTypes() {
-	// Rövid deklarás az esetek többségében elég lesz a változókhoz
+	// Rövid deklarálás az esetek többségében elég lesz a változókhoz
 	s := "Tanulj Go-t!" // string típus
 
 	s2 := `A "nyers" stringekben lehetnek
@@ -82,7 +82,7 @@ func learnTypes() {
 	g := 'Σ' // rúna(rune) típus, megegyezik az uint32-vel, egy UTF-8 karaktert tárol
 
 	f := 3.14195 // float64, az IEEE-754 szabványnak megfelelő 64-bites lebegőpontos szám
-	c := 3 + 4i  // complex128, belsőleg két float64-el tárolva
+	c := 3 + 4i  // complex128, belsőleg két float64-gyel tárolva
 
 	// Var szintaxis változó típus definiálással
 	var u uint = 7 // unsigned, az implementáció dönti el mekkora, akárcsak az int-nél
@@ -97,7 +97,7 @@ func learnTypes() {
 
 	// Szeleteknek dinamikus a méretük. A szeleteknek és a tömböknek is meg vannak az előnyeik
 	// de a szeleteket sokkal gyakrabban használjuk.
-	s3 := []int{4, 5, 9}    // vesd össze a3-al, nincsenek pontok.
+	s3 := []int{4, 5, 9}    // vesd össze a3-mal, nincsenek pontok.
 	s4 := make([]int, 4)    // allokál 4 int-et, mind 0-ra inicializálva
 	var d2 [][]float64      // ez csak deklaráció, semmi sincs még allokálva
 	bs := []byte("a slice") // típus konverzió szintaxisa
@@ -166,8 +166,9 @@ func learnFlowControl() {
 		break    // csak vicceltem
 		continue // soha nem fut le
 	}
-	// Akárcsak a for-nál, az if-ben is lehet rövid deklarással egy lokális változót létrehozni
-	// ami az blokk összes if/else-n keresztül érvényes marad.
+
+  //Akárcsak a for-nál, az if-nél is lehet rövid deklarálással egy lokális változót létrehozni,
+  //ami a blokk összes if/else szerkezetén keresztül érvényes marad.
 	if y := expensiveComputation(); y > x {
 		x = y
 	}
@@ -196,7 +197,7 @@ type pair struct {
 	x, y int
 }
 
-// Definiáljunk egy metódust a pair struktúrának, ezzel teljesítve a Stringer interf
+// Definiáljunk egy metódust a pair struktúrának, ezzel teljesítve a Stringer interfészt.
 func (p pair) String() string { // p lesz a "vevő"
 	// Sprintf az fmt csomag egy publikus függvénye, műkődése megegyezik a C-s megfelelőjével.
 	// A pontokkal érjük el a mindenkori p struktúra elemeit
@@ -283,12 +284,12 @@ func learnWebProgramming() {
 	// A ListenAndServe első paramétre egy TCP port, amin kiszolgálunk majd.
 	// Második paramétere egy interfész, pontosabban a http.Handler interfész.
 	err := http.ListenAndServe(":8080", pair{})
-	fmt.Println(err) // nem felejtük el kiírni az esetleges hibákat!
+	fmt.Println(err) // nem felejtjük el kiírni az esetleges hibákat!
 }
 
 // Csináljunk a pair-ból egy http.Handler-t úgy, hogy implementáljuk az egyetlen metódusát a ServeHTTP-t.
 func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	// Minden kapcsolatra elküldjük ezt a http.ResponseWriter-el
+	// Minden kapcsolatra elküldjük ezt a http.ResponseWriter-rel
 	w.Write([]byte("Megtanultad a Go-t Y perc alatt!"))
 }
 ```
@@ -302,4 +303,6 @@ A nyelv specifikációját kifejezetten érdemes olvasni, viszonylag rövid és 
 
 Ha pedig jobban bele akarod vetni magad a Go-ba, akkor a standard könyvtárban a legjobb praktikákat kilesheted.
 TIPP: a dokumentációban kattints egy funkció nevére és rögtön megmutatja a hozzá tartozó kódot!
+
+Ha pedig a nyelvnek egy bizonyos részéről szeretnél hasonló leírást találni, akkor a [gobyexample.com](https://gobyexample.com/)-on megtalálod, amit keresel.
 
