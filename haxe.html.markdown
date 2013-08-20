@@ -12,21 +12,28 @@ may be applicable to older versions, but it is recommended to use other
 references.
 
 ```haxe
-// Welcome to Learn Haxe 3 in 15 minutes.  http://www.haxe.org
-// This is an executable tutorial.  You can compile and run it using the haxe
-// compiler, while in the same directory as LearnHaxe.hx:
-// haxe -main LearnHaxe3 -x out
+/*
+   Welcome to Learn Haxe 3 in 15 minutes.  http://www.haxe.org
+   This is an executable tutorial.  You can compile and run it using the haxe
+   compiler, while in the same directory as LearnHaxe.hx:
+   haxe -main LearnHaxe3 -x out
+ */
 
 // Let's start with comments... this is a single line comment
 
 /*
-   And this is multiline
-*/
+   And this is multiline. Multiline comments are also used to generate
+   javadoc-style documentation for haxedoc.  They will be used if they precede
+   a class, class function, or class variable.
+ */
 
-// A package declaration isn't necessary, but it's useful if you want to
-// organize your code into modules later on.  Also worth mentioning, all
-// expressions in Haxe must end in a semicolon:
+/*
+   A package declaration isn't necessary, but it's useful if you want to
+   organize your code into modules later on.  Also worth mentioning, all
+   expressions in Haxe must end in a semicolon:
+ */
 package; // empty package, no namespace.
+
 
 // if you import code from other files, it must be declared before the rest of
 // the code.
@@ -66,12 +73,14 @@ class LearnHaxe3{
 
         /*
            Trace can handle any type of value or object.  It will try to print
-           a representation of the expression as best it can:
+           a representation of the expression as best it can.  You can also
+           concatenate strings with the "+" operator:
          */
         trace(
             " Integer: " + 10 +
             " Float: " + 3.14 +
-            " Boolean: " + true);
+            " Boolean: " + true
+            );
 
 
         /*
@@ -113,9 +122,9 @@ class LearnHaxe3{
         var hex_integer = 0xffffff;
 
         /*
-           Haxe uses platform precision for Int and Float sizes.  It also 
-           uses the platform behavior for overflow.           
-           (Other numeric types and behavior are possible using special 
+           Haxe uses platform precision for Int and Float sizes.  It also
+           uses the platform behavior for overflow.
+           (Other numeric types and behavior are possible using special
            libraries)
          */
 
@@ -125,8 +134,11 @@ class LearnHaxe3{
            structures like strings, arrays, lists, and maps:
          */
 
-        var a_string = "some_string";  // strings can have double or single quotes
+        var a_string = "some" + 'string';  // strings can have double or single quotes
         trace(a_string + " is the value for a_string");
+
+        var x = 1;
+        var an_interpolated_string = 'the value of x is $x';
 
         /*
            Strings are immutable, instance methods will return a copy of
@@ -280,11 +292,13 @@ class LearnHaxe3{
         // while also creating filters and modifications.
         var filtered_n = [for (val in n) if (val != "foo") val];
         trace(filtered_n + " is the value for filtered_n");
+
         var modified_n = [for (val in n) val += '!'];
         trace(modified_n + " is the value for modified_n");
+
         var filtered_and_modified_n = [for (val in n) if (val != "foo") val += "!"];
         trace(filtered_and_modified_n + " is the value for filtered_and_modified_n");
-        
+
         //////////////////////////////////////////////////////////////////
         // Switch Statements (Value Type)
         //////////////////////////////////////////////////////////////////
@@ -310,41 +324,41 @@ class LearnHaxe3{
         trace("My dog's name is" + my_dog_name
                 + ", and his favorite thing is a: "
                 + favorite_thing);
-        
+
         //////////////////////////////////////////////////////////////////
         // Expression Statements
         //////////////////////////////////////////////////////////////////
         trace("***EXPRESSION STATEMENTS***");
-    
+
         /*
            Haxe control statements are very powerful because every statement
            is also an expression, consider:
         */
-        
+
         // if statements
         var k = if (true){
             10;
         } else {
             20;
         }
-        
+
         trace("K equals ", k); // outputs 10
-        
+
         var other_favorite_thing = switch(my_dog_name) {
             case "fido" : 'teddy';
             case "rex" :  'stick';
             case "spot" : 'football';
-            case _ : 'some unknown treat'; 
+            case _ : 'some unknown treat';
         }
-        
+
         trace("My dog's name is" + my_dog_name
                 + ", and his other favorite thing is a: "
                 + other_favorite_thing);
-        
+
         //////////////////////////////////////////////////////////////////
         // Converting Value Types
         //////////////////////////////////////////////////////////////////
-        
+
         // You can convert strings to ints fairly easily.
 
         // string to integer
@@ -359,26 +373,31 @@ class LearnHaxe3{
         // See documentation for parsing in Std for more details.
 
         //////////////////////////////////////////////////////////////////
-        // Basic Object Oriented Design 
+        // Basic Object Oriented Programming
         //////////////////////////////////////////////////////////////////
-        trace("***BASIC OBJECT ORIENTED DESIGN***");
+        trace("***BASIC OBJECT ORIENTED PROGRAMMING***");
 
 
+        // create an instance of FooClass.  The classes for this are at the
+        // end of the file.
         var instance = new FooClass(3);
+
         // read the public variable normally
         trace(instance.public_any + " is the value for instance.public_any");
 
         // we can read this variable
         trace(instance.public_read + " is the value for instance.public_read");
-        // but not write it, this will throw an error if uncommented:
-        //trace(instance.public_write + " is the value for instance.public_write");
-        // trace(instance.public_write); // vice-versa for public write, etc.
+        // but not write it
+        // instance.public_write = 4; // this will throw an error if uncommented:
+        // trace(instance.public_write); // as will this.
 
         trace(instance + " is the value for instance"); // calls the toString method
+        trace(instance.toString() + " is the value for instance.toString()"); // same thing
 
 
-        // we can successfully pass the FooInstance to the BaseFooClass method,
-        // since it was extended from that.
+        // instance has the "FooClass" type, while acceptBaseFoo has the
+        // BaseFooClass type.  However, since FooClass extends BaseFooClass,
+        // it is accepted.
         BaseFooClass.acceptBaseFoo(instance);
     }
 
@@ -389,12 +408,12 @@ class LearnHaxe3{
  */
 class FooClass extends BaseFooClass implements BaseFooInterface{
     public var public_any:Int; // public variables are accessible anywhere
-    public var public_read (default,null): Int; // use this style to only enable public read 
+    public var public_read (default,null): Int; // use this style to only enable public read
     public var public_write (null, default): Int; // or public write
     public var property (get, set): Int; // use this style to enable getters/setters
 
     // private variables are not available outside the class.
-    // see @:allow for ways around this. 
+    // see @:allow for ways around this.
     var _private:Int; // variables are private if they are not marked public
 
     // a public constructor
@@ -416,13 +435,13 @@ class FooClass extends BaseFooClass implements BaseFooInterface{
         _private = val;
         return val;
     }
-    
+
     // special function that is called whenever an instance is cast to a string.
     public function toString(){
         return _private + " with toString() method!";
     }
 
-    // this class needs to have this function defined, since it implements 
+    // this class needs to have this function defined, since it implements
     // the BaseFooInterface interface.
     public function baseFunction(x: Int) : String{
         // convert the int to string automatically
@@ -430,6 +449,9 @@ class FooClass extends BaseFooClass implements BaseFooInterface{
     }
 }
 
+/*
+    A simple class to extend
+*/
 class BaseFooClass {
     var base_variable:Int;
     public function new(){
@@ -437,9 +459,11 @@ class BaseFooClass {
     }
     public static function acceptBaseFoo(b:BaseFooClass){
     }
-    
 }
 
+/*
+    A simple interface to implement
+*/
 interface BaseFooInterface{
     public function baseFunction(x:Int):String;
 }
