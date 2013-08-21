@@ -29,8 +29,8 @@ references.
 
 /*
    A package declaration isn't necessary, but it's useful if you want to
-   organize your code into modules later on.  Also worth mentioning, all
-   expressions in Haxe must end in a semicolon:
+   organize your code into modules later on.  Also worth mentioning, if you use
+   more than one expression in a code block, it must end in a semicolon:
  */
 package; // empty package, no namespace.
 
@@ -252,6 +252,9 @@ class LearnHaxe3{
             trace("also not printed.");
         }
 
+        // there is also a "ternary" if:
+        (j == 10) ?  trace("equals 10") : trace("not equals 10");
+
         trace("Looping and Iteration");
 
         // while loop
@@ -310,13 +313,14 @@ class LearnHaxe3{
            generalized algebraic data types in enums (more on enums later).
            Here's some basic value examples for now:
          */
-        var my_dog_name = 'fido';
-        var favorite_thing  = '';
+        var my_dog_name = "fido";
+        var favorite_thing  = "";
         switch(my_dog_name){
-            case "fido" : favorite_thing = 'bone';
-            case "rex" :  favorite_thing = 'shoe';
-            case "spot" : favorite_thing = 'tennis ball';
-            case _ : favorite_thing = 'some unknown treat';
+            case "fido" : favorite_thing = "bone";
+            case "rex"  : favorite_thing = "shoe";
+            case "spot" : favorite_thing = "tennis ball";
+            default     : favorite_thing = "some unknown treat";
+            // case _   : "some unknown treat"; // same as default
         }
         // The "_" case above is a "wildcard" value
         // that will match anything.
@@ -345,10 +349,10 @@ class LearnHaxe3{
         trace("K equals ", k); // outputs 10
 
         var other_favorite_thing = switch(my_dog_name) {
-            case "fido" : 'teddy';
-            case "rex" :  'stick';
-            case "spot" : 'football';
-            case _ : 'some unknown treat';
+            case "fido" : "teddy";
+            case "rex"  : "stick";
+            case "spot" : "football";
+            default     : "some unknown treat";
         }
 
         trace("My dog's name is" + my_dog_name
