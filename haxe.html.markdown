@@ -489,6 +489,7 @@ class LearnHaxe3{
         SimpleEnumTest.example();
         ComplexEnumTest.example();
         TypedefsAndStructuralTypes.example();
+        UsingExample.example();
 
     }
 
