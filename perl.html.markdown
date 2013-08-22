@@ -104,6 +104,35 @@ $a =~ s/foo/bar/;         # replaces foo with bar in $a
 $a =~ s/foo/bar/g;        # replaces ALL INSTANCES of foo with bar in $a
 
 
+#### Files and I/O
+
+# You can open a file for input or output using the "open()" function.
+
+open(my $in,  "<",  "input.txt")  or die "Can't open input.txt: $!";
+open(my $out, ">",  "output.txt") or die "Can't open output.txt: $!";
+open(my $log, ">>", "my.log")     or die "Can't open my.log: $!";
+
+# You can read from an open filehandle using the "<>" operator.  In scalar context it reads a single line from
+# the filehandle, and in list context it reads the whole file in, assigning each line to an element of the list:
+
+my $line  = <$in>;
+my @lines = <$in>;
+
+#### Writing subroutines
+
+# Writing subroutines is easy:
+
+sub logger {
+    my $logmessage = shift;
+    open my $logfile, ">>", "my.log" or die "Could not open my.log: $!";
+    print $logfile $logmessage;
+}
+
+# Now we can use the subroutine just as any other built-in function:
+
+logger("We have a logger subroutine!");
+
+
 ```
 
 #### Using Perl modules
