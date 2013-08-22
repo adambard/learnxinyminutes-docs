@@ -387,6 +387,7 @@ class LearnHaxe3{
         //////////////////////////////////////////////////////////////////
         // Converting Value Types
         //////////////////////////////////////////////////////////////////
+        trace("***CONVERTING VALUE TYPES***");
 
         // You can convert strings to ints fairly easily.
 
@@ -402,7 +403,51 @@ class LearnHaxe3{
         // See documentation for parsing in Std for more details.
 
 
+        //////////////////////////////////////////////////////////////////
+        // Dealing with Types
+        //////////////////////////////////////////////////////////////////
 
+        /*
+
+           As mentioned before, Haxe is a statically typed language.  All in
+           all, static typing is a wonderful thing.  It enables
+           autocompletions, and can be used to check the correctness of a
+           program in very thorough ways.  Plus, the Haxe compiler is super fast.
+           You probably won't be waiting on it very much.
+
+           *HOWEVER*, there are times when you just wish the compiler would let
+           something slide, and not throw a type error in a limited case.
+
+           To do this, Haxe has two separate keywords.  The first is the 
+           "Dynamic" type:
+         */
+        var dyn: Dynamic = "any type of variable, such as this string";
+
+        /*
+           All that you know for certain with a Dynamic variable is that the 
+           compiler will no longer worry about what type it is. It is like a 
+           wildcard variable:  You can pass it instead of any variable type,
+           and you can assign any variable type you want. 
+
+           The other more extreme option is the "untyped" keyword
+         */
+
+            untyped {
+                var x:Int = 'foo';
+                var y:String = 4;
+            }
+
+        /*
+           The untyped keyword operates on entire *blocks* of code, skipping 
+           any type checks that might be otherwise required. This keyword should
+           be used very sparingly, such as in limited conditionally-compiled
+           situations where type checking is a hinderance.
+
+           In general, skipping type checks is *not* recommended.  Use the 
+           enum, inheritance, or structural type models in order to verify the
+           correctness of your program.  Only when you're certain that none of
+           the type models work should you resort to "Dynamic" or "untyped".
+         */
 
         //////////////////////////////////////////////////////////////////
         // Basic Object Oriented Programming
