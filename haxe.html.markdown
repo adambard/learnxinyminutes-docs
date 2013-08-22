@@ -621,7 +621,9 @@ class TypedefsAndStructuralTypes {
            a "FooObject" is expected.
          */
 
-        var f = function(fo:FooObj){ trace('$fo was passed in to this function')};
+        var f = function(fo:FooObject){
+            trace('$fo was passed in to this function');
+        }
         f(fooObj); // call the FooObject signature function with fooObj.
 
         /*
