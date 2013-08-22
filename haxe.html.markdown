@@ -199,7 +199,6 @@ class LearnHaxe3{
         //////////////////////////////////////////////////////////////////
         // Operators
         //////////////////////////////////////////////////////////////////
-
         trace("***OPERATORS***");
 
         // basic arithmetic
@@ -376,14 +375,20 @@ class LearnHaxe3{
         true + ""; // returns "true";
         // See documentation for parsing in Std for more details.
 
+
+
+
         //////////////////////////////////////////////////////////////////
         // Basic Object Oriented Programming
         //////////////////////////////////////////////////////////////////
         trace("***BASIC OBJECT ORIENTED PROGRAMMING***");
 
 
-        // create an instance of FooClass.  The classes for this are at the
-        // end of the file.
+        /*
+           Create an instance of FooClass.  The classes for this are at the
+           end of the file.
+         */
+
         var instance = new FooClass(3);
 
         // read the public variable normally
@@ -399,9 +404,11 @@ class LearnHaxe3{
         trace(instance.toString() + " is the value for instance.toString()"); // same thing
 
 
-        // instance has the "FooClass" type, while acceptBaseFoo has the
-        // BaseFooClass type.  However, since FooClass extends BaseFooClass,
-        // it is accepted.
+        /*
+           Instance has the "FooClass" type, while acceptBaseFoo has the
+           BaseFooClass type.  However, since FooClass extends BaseFooClass,
+           it is accepted.
+         */
         BaseFooClass.acceptBaseFoo(instance);
     }
 
@@ -470,6 +477,96 @@ class BaseFooClass {
 */
 interface BaseFooInterface{
     public function baseFunction(x:Int):String;
+}
+
+//////////////////////////////////////////////////////////////////
+// Enums and Switch Statements
+//////////////////////////////////////////////////////////////////
+
+/*
+   Enums in Haxe are very powerful.  In their simplest form, enums
+   are a type with a limited number of states:
+ */
+
+enum SimpleEnum {
+    Foo;
+    Bar;
+    Baz;
+}
+
+//   Here's a class that uses it:
+
+class SimpleEnumTest{
+    public static function example(){
+        var e_explicit:SimpleEnum = SimpleEnum.Foo; // you can specify the "full" name
+        var e = Foo; // but inference will work as well.
+        switch(e){
+            case Foo: trace("e was Foo");
+            case Bar: trace("e was Bar");
+            case Baz: trace("e was Baz"); // comment this line to throw an error.
+        }
+
+        /*
+           This doesn't seem so different from simple value switches on strings.
+           However, if we don't include *all* of the states, the compiler will
+           complain.  You can try it by commenting out a line above.
+
+           You can also specify a default for enum switches as well:
+         */
+        switch(e){
+            case Foo: trace("e was Foo again");
+            default : trace("default works here too");
+        }
+    }
+}
+
+/*
+    Enums go much further than simple states, we can also enumerate
+    *constructors*, but we'll need a more complex enum example
+ */
+enum ComplexEnum{
+    IntEnum(i:Int);
+    MultiEnum(i:Int, j:String, k:Float);
+    SimpleEnumEnum(s:SimpleEnum);
+    ComplexEnumEnum(c:ComplexEnum);
+}
+
+/*
+   Note: The enum above can include *other* enums as well.
+ */
+
+
+class ComplexEnumTest{
+    public static function example(){
+        var e1:ComplexEnum = IntEnum(4); // specifying the enum parameter
+        /*
+           Now we can switch on the enum, as well as extract any parameters
+           it might of had.
+         */
+        switch(e1){
+            case IntEnum(x) : trace("x was the parameter passed to e1");
+            default: trace("Shouldn't be printed");
+        }
+
+        var e2 = SimpleEnumEnum(Foo); // another parameter here that is itself an enum... an enum enum?
+        switch(e2){
+            case SimpleEnumEnum(s): trace('$s was the parameter passed to e2');
+            default: trace("Shouldn't be printed");
+        }
+
+        var e3 = ComplexEnumEnum(ComplexEnumEnum(MultiEnum(4, 'hi', 4.3))); // enums all the way down
+        switch(e3){
+            // You can look for certain nested enums by specifying them explicitly:
+            case ComplexEnumEnum(ComplexEnumEnum(MultiEnum(i,j,k)) : {
+                trace('$i, $j, and $k were passed into this nested monster');
+            }
+            default: trace("Shouldn't be printed");
+        }
+        /* 
+           Check out generalized algebraic data types (GADT) for more details
+           on why these are so great.
+         */
+    }
 }
 
 ```
