@@ -418,16 +418,16 @@ class LearnHaxe3{
            *HOWEVER*, there are times when you just wish the compiler would let
            something slide, and not throw a type error in a limited case.
 
-           To do this, Haxe has two separate keywords.  The first is the 
+           To do this, Haxe has two separate keywords.  The first is the
            "Dynamic" type:
          */
         var dyn: Dynamic = "any type of variable, such as this string";
 
         /*
-           All that you know for certain with a Dynamic variable is that the 
-           compiler will no longer worry about what type it is. It is like a 
+           All that you know for certain with a Dynamic variable is that the
+           compiler will no longer worry about what type it is. It is like a
            wildcard variable:  You can pass it instead of any variable type,
-           and you can assign any variable type you want. 
+           and you can assign any variable type you want.
 
            The other more extreme option is the "untyped" keyword
          */
@@ -438,12 +438,12 @@ class LearnHaxe3{
             }
 
         /*
-           The untyped keyword operates on entire *blocks* of code, skipping 
+           The untyped keyword operates on entire *blocks* of code, skipping
            any type checks that might be otherwise required. This keyword should
            be used very sparingly, such as in limited conditionally-compiled
            situations where type checking is a hinderance.
 
-           In general, skipping type checks is *not* recommended.  Use the 
+           In general, skipping type checks is *not* recommended.  Use the
            enum, inheritance, or structural type models in order to verify the
            correctness of your program.  Only when you're certain that none of
            the type models work should you resort to "Dynamic" or "untyped".
@@ -650,27 +650,32 @@ class ComplexEnumTest{
 
 class TypedefsAndStructuralTypes {
     public static function example(){
-        // Here we're going to use typedef types, instead of base types.
+        /*
+           Here we're going to use typedef types, instead of base types.
+           At the top we've declared the type "FooString" to mean a "String" type.
+         */
         var t1:FooString = "some string";
 
         /*
-           We can use typedefs for "structural types".  These types are defined
-           by their field structure, not by class inheritance.  Here's an
-           anonymous object with a String field named "foo":
+           We can use typedefs for "structural types" as well.  These types are
+           defined by their field structure, not by class inheritance.  Here's
+           an anonymous object with a String field named "foo":
          */
 
-        var fooObj = { foo: 'hi' };
+        var anon_obj = { foo: 'hi' };
 
         /*
-           Remember back at the top where we declared the FooObj typedef?
-           Since fooObj matches that structure, we can use it anywhere that
-           a "FooObject" is expected.
+           The anon_obj variable doesn't have a type declared, and is an
+           anonymous object according to the compiler.  However, remember back at
+           the top where we declared the FooObj typedef?  Since anon_obj matches
+           that structure, we can use it anywhere that a "FooObject" type is
+           expected.
          */
 
         var f = function(fo:FooObject){
             trace('$fo was passed in to this function');
         }
-        f(fooObj); // call the FooObject signature function with fooObj.
+        f(anon_obj); // call the FooObject signature function with anon_obj.
 
         /*
            Note that typedefs can have optional fields as well, marked with "?"
