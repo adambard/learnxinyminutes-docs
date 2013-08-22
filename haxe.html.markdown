@@ -16,27 +16,37 @@ references.
    Welcome to Learn Haxe 3 in 15 minutes.  http://www.haxe.org
    This is an executable tutorial.  You can compile and run it using the haxe
    compiler, while in the same directory as LearnHaxe.hx:
-   haxe -main LearnHaxe3 -x out
+   $> haxe -main LearnHaxe3 -x out
+
+   Look for the slash-star marks surrounding these paragraphs.  We are inside
+   a "Multiline comment".  We can leave some notes here that will get ignored
+   by the compiler.
+
+   Multiline comments are also used to generate javadoc-style documentation for
+   haxedoc.  They will be used for haxedoc if they immediately precede a class,
+   class function, or class variable.
+
  */
 
-// Let's start with comments... this is a single line comment
+// Double slashes like this will give a single-line comment
+
 
 /*
-   And this is multiline. Multiline comments are also used to generate
-   javadoc-style documentation for haxedoc.  They will be used if they precede
-   a class, class function, or class variable.
- */
-
-/*
-   This is your first actual haxe code, it's declaring an empty package.  A
-   package isn't necessary, but it's useful if you want to create a namespace
-   for your code (e.g. org.module.ClassName).
+   This is your first actual haxe code coming up, it's declaring an empty
+   package.  A package isn't necessary, but it's useful if you want to create a
+   namespace for your code (e.g. org.module.ClassName).
  */
 package; // empty package, no namespace.
 
 /*
-   if you import code from other files, it must be declared before the rest of
-   the code.
+   Packages define modules for your code. Each module (e.g. org.module) must
+   be lower case, and should exist as a folder structure containing the class.
+   Class (and type) names must be capitalized. E.g, the class "org.module.Foo"
+   should have the folder structure org/module/Foo.hx, as accessible from the
+   compiler's working directory or class path.
+
+   If you import code from other files, it must be declared before the rest of
+   the code.  Haxe provides a lot of common default classes to get you started:
  */
 import haxe.ds.ArraySort;
 
@@ -44,8 +54,8 @@ import haxe.ds.ArraySort;
 import haxe.ds.*;
 
 /*
-   you can also import classes in a special way, enabling them to extend the
-   functionality of other classes.  More on 'using' later.
+   You can also import classes in a special way, enabling them to extend the
+   functionality of other classes like a "mixin".  More on 'using' later.
  */
 using StringTools;
 
@@ -55,9 +65,13 @@ using StringTools;
  */
 typedef FooString = String;
 
-// Typedefs can also use "structural" types, more on that later as well!
+// Typedefs can also reference "structural" types, more on that later as well.
 typedef FooObject = { foo: String };
 
+/*
+   Here's the class definition.  It's the main class for the file, since it has
+   the same name (LearnHaxe3).
+ */
 class LearnHaxe3{
     /*
        If you want certain code to run automatically, you need to put it in
@@ -66,6 +80,7 @@ class LearnHaxe3{
        arguments above.
      */
     static function main(){
+
         /*
            Trace is the default method of printing haxe expressions to the
            screen.  Different targets will have different methods of
@@ -75,8 +90,6 @@ class LearnHaxe3{
            Finally, It's possible to prevent traces from showing by using the
            "--no-traces" argument on the compiler.
          */
-
-
         trace("Hello World, with trace()!");
 
         /*
@@ -84,16 +97,11 @@ class LearnHaxe3{
            a representation of the expression as best it can.  You can also
            concatenate strings with the "+" operator:
          */
-        trace(
-            " Integer: " + 10 +
-            " Float: " + 3.14 +
-            " Boolean: " + true
-            );
-
+        trace( " Integer: " + 10 + " Float: " + 3.14 + " Boolean: " + true);
 
         /*
-           Remember what I said about expressions needing semicolons? You
-           can put more than one expression on a line if you want.
+           In Haxe, it's required to separate expressions in the same block with
+           semicolons.  But, you can put two expressions on one line:
          */
         trace('two expressions..'); trace('one line');
 
@@ -107,7 +115,6 @@ class LearnHaxe3{
            You can save values and references to data structures using the
            "var" keyword:
          */
-
         var an_integer:Int = 1;
         trace(an_integer + " is the value for an_integer");
 
@@ -119,7 +126,6 @@ class LearnHaxe3{
            the haxe compiler is inferring that the type of another_integer
            should be "Int".
          */
-
         var another_integer = 2;
         trace(another_integer + " is the value for another_integer");
 
@@ -155,6 +161,12 @@ class LearnHaxe3{
          */
         var a_sub_string = a_string.substr(0,4);
         trace(a_sub_string + " is the value for a_sub_string");
+
+        /*
+           Regexes are also supported, but there's not enough space to go into
+           much detail.
+         */
+        trace((~/foobar/.match('foo')) + " is the value for (~/foobar/.match('foo')))");
 
         /*
            Arrays are zero-indexed, dynamic, and mutable.  Missing values are
@@ -199,7 +211,7 @@ class LearnHaxe3{
         trace(m3 + " is the value for m3");
 
         /*
-           Haxe has many more common datastructures in the haxe.ds module, such as
+           Haxe has some more common datastructures in the haxe.ds module, such as
            List, Stack, and BalancedTree
          */
 
@@ -225,7 +237,7 @@ class LearnHaxe3{
         trace((3 >= 2) + " is the value for 3 >= 2");
         trace((3 <= 2) + " is the value for 3 <= 2");
 
-        //bitwise operators
+        // standard bitwise operators
         /*
         ~       Unary bitwise complement
         <<      Signed left shift
@@ -411,12 +423,11 @@ class LearnHaxe3{
 
            As mentioned before, Haxe is a statically typed language.  All in
            all, static typing is a wonderful thing.  It enables
-           autocompletions, and can be used to check the correctness of a
-           program in very thorough ways.  Plus, the Haxe compiler is super fast.
-           You probably won't be waiting on it very much.
+           precise autocompletions, and can be used to thoroughly check the
+           correctness of a program.  Plus, the Haxe compiler is super fast.
 
            *HOWEVER*, there are times when you just wish the compiler would let
-           something slide, and not throw a type error in a limited case.
+           something slide, and not throw a type error in a given case.
 
            To do this, Haxe has two separate keywords.  The first is the
            "Dynamic" type:
@@ -429,12 +440,12 @@ class LearnHaxe3{
            wildcard variable:  You can pass it instead of any variable type,
            and you can assign any variable type you want.
 
-           The other more extreme option is the "untyped" keyword
+           The other more extreme option is the "untyped" keyword:
          */
 
             untyped {
-                var x:Int = 'foo';
-                var y:String = 4;
+                var x:Int = 'foo'; // this can't be right!
+                var y:String = 4; // madness!
             }
 
         /*
@@ -444,9 +455,9 @@ class LearnHaxe3{
            situations where type checking is a hinderance.
 
            In general, skipping type checks is *not* recommended.  Use the
-           enum, inheritance, or structural type models in order to verify the
-           correctness of your program.  Only when you're certain that none of
-           the type models work should you resort to "Dynamic" or "untyped".
+           enum, inheritance, or structural type models in order to help ensure
+           the correctness of your program.  Only when you're certain that none
+           of the type models work should you resort to "Dynamic" or "untyped".
          */
 
         //////////////////////////////////////////////////////////////////
@@ -459,7 +470,6 @@ class LearnHaxe3{
            Create an instance of FooClass.  The classes for this are at the
            end of the file.
          */
-
         var instance = new FooClass(3);
 
         // read the public variable normally
