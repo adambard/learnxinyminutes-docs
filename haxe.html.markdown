@@ -557,7 +557,7 @@ class ComplexEnumTest{
         var e3 = ComplexEnumEnum(ComplexEnumEnum(MultiEnum(4, 'hi', 4.3))); // enums all the way down
         switch(e3){
             // You can look for certain nested enums by specifying them explicitly:
-            case ComplexEnumEnum(ComplexEnumEnum(MultiEnum(i,j,k)) : {
+            case ComplexEnumEnum(ComplexEnumEnum(MultiEnum(i,j,k))) : {
                 trace('$i, $j, and $k were passed into this nested monster');
             }
             default: trace("Shouldn't be printed");
