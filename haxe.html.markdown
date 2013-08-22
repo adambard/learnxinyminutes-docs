@@ -748,8 +748,7 @@ For more advanced topics, consider checking out:
 * [Tips and Tricks](http://haxe.org/manual/tips_and_tricks)
 
 
-Finally, please join us on [the mailing
-list](http://haxe.org/manual/tips_and_tricks), on IRC [#haxe on
+Finally, please join us on [the mailing list](https://groups.google.com/forum/#!forum/haxelang), on IRC [#haxe on
 freenode](http://webchat.freenode.net/), or on
 [Google+](https://plus.google.com/communities/103302587329918132234).
 
