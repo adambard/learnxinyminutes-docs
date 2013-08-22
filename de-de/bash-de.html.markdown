@@ -7,6 +7,11 @@ filename: LearnBash-de.bash
 lang: de-de
 ---
 
+Bash ist der Name der Unix-Shell, die als Shell des GNU-Betriebssystems und auch als Standard-Shell von Linux und Mac OS X ausgeliefert wurde.
+Beinahe alle der folgenden Beispiele können als Teile eines Shell-Skripts oder direkt in der Shell ausgeführt werden.
+
+[Weitere Informationen \(Englisch\)](http://www.gnu.org/software/bash/manual/bashref.html)
+
 ```bash
 #!/bin/sh
 # Die erste Zeile des Scripts nennt sich Shebang in gibt dem System an, wie
