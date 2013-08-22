@@ -28,27 +28,35 @@ references.
  */
 
 /*
-   A package declaration isn't necessary, but it's useful if you want to
-   organize your code into modules later on.  Also worth mentioning, if you use
-   more than one expression in a code block, it must end in a semicolon:
+   This is your first actual haxe code, it's declaring an empty package.  A
+   package isn't necessary, but it's useful if you want to create a namespace
+   for your code (e.g. org.module.ClassName).
  */
 package; // empty package, no namespace.
 
-
-// if you import code from other files, it must be declared before the rest of
-// the code.
+/*
+   if you import code from other files, it must be declared before the rest of
+   the code.
+ */
 import haxe.ds.ArraySort;
 
 // you can import many classes/modules at once with "*"
 import haxe.ds.*;
 
-// you can also import classes in a special way, enabling them to extend the
-// functionality of other classes.  More on this later.
+/*
+   you can also import classes in a special way, enabling them to extend the
+   functionality of other classes.  More on 'using' later.
+ */
 using StringTools;
 
-// Haxe files typically define classes, although they can also define other
-// types of code... more on that later.
+/*
+   Typedefs are like variables... for types.  They must be declared before any
+   code.  More on this later.
+ */
+typedef FooString = String;
 
+// Typedefs can also use "structural" types, more on that later as well!
+typedef FooObject = { foo: String };
 
 class LearnHaxe3{
     /*
@@ -254,6 +262,24 @@ class LearnHaxe3{
         // there is also a "ternary" if:
         (j == 10) ?  trace("equals 10") : trace("not equals 10");
 
+        /*
+           Finally, there is another form of control structures that operates
+           at compile time:  conditional compilation.
+         */
+#if neko
+        trace('hello from neko');
+#elseif js
+        trace('hello from js');
+#else
+        trace('hello from another platform!');
+#end
+        /*
+           The compiled code will change depending on the platform target.
+           Since we're compiling for neko (-x or -neko), we only get the neko
+           greeting.
+         */
+
+
         trace("Looping and Iteration");
 
         // while loop
@@ -410,6 +436,15 @@ class LearnHaxe3{
            it is accepted.
          */
         BaseFooClass.acceptBaseFoo(instance);
+
+        /*
+           The classes below have some more advanced examples, the "example()"
+           method will just run them here.
+         */
+        SimpleEnumTest.example();
+        ComplexEnumTest.example();
+        TypedefsAndStructuralTypes.example();
+
     }
 
 }
@@ -530,11 +565,7 @@ enum ComplexEnum{
     SimpleEnumEnum(s:SimpleEnum);
     ComplexEnumEnum(c:ComplexEnum);
 }
-
-/*
-   Note: The enum above can include *other* enums as well.
- */
-
+// Note: The enum above can include *other* enums as well, including itself!
 
 class ComplexEnumTest{
     public static function example(){
@@ -544,17 +575,19 @@ class ComplexEnumTest{
            it might of had.
          */
         switch(e1){
-            case IntEnum(x) : trace("x was the parameter passed to e1");
+            case IntEnum(x) : trace('$x was the parameter passed to e1');
             default: trace("Shouldn't be printed");
         }
 
-        var e2 = SimpleEnumEnum(Foo); // another parameter here that is itself an enum... an enum enum?
+        // another parameter here that is itself an enum... an enum enum?
+        var e2 = SimpleEnumEnum(Foo);
         switch(e2){
             case SimpleEnumEnum(s): trace('$s was the parameter passed to e2');
             default: trace("Shouldn't be printed");
         }
 
-        var e3 = ComplexEnumEnum(ComplexEnumEnum(MultiEnum(4, 'hi', 4.3))); // enums all the way down
+        // enums all the way down
+        var e3 = ComplexEnumEnum(ComplexEnumEnum(MultiEnum(4, 'hi', 4.3)));
         switch(e3){
             // You can look for certain nested enums by specifying them explicitly:
             case ComplexEnumEnum(ComplexEnumEnum(MultiEnum(i,j,k))) : {
@@ -562,12 +595,114 @@ class ComplexEnumTest{
             }
             default: trace("Shouldn't be printed");
         }
-        /* 
-           Check out generalized algebraic data types (GADT) for more details
+        /*
+           Check out "generalized algebraic data types" (GADT) for more details
            on why these are so great.
          */
     }
 }
 
+class TypedefsAndStructuralTypes {
+    public static function example(){
+        // Here we're going to use typedef types, instead of base types.
+        var t1:FooString = "some string";
+
+        /*
+           We can use typedefs for "structural types".  These types are defined
+           by their field structure, not by class inheritance.  Here's an
+           anonymous object with a String field named "foo":
+         */
+
+        var fooObj = { foo: 'hi' };
+
+        /*
+           Remember back at the top where we declared the FooObj typedef?
+           Since fooObj matches that structure, we can use it anywhere that
+           a "FooObject" is expected.
+         */
+
+        var f = function(fo:FooObj){ trace('$fo was passed in to this function')};
+        f(fooObj); // call the FooObject signature function with fooObj.
+
+        /*
+           Note that typedefs can have optional fields as well, marked with "?"
+
+           typedef OptionalFooObj = {
+                ?optionalString: String,
+                requiredInt: Int
+           }
+         */
+
+        /*
+           Typedefs work well with conditional compilation.  For instance,
+           we could have included this at the top of the file:
+
+#if( js )
+        typedef Surface = js.html.CanvasRenderingContext2D;
+#elseif( nme )
+        typedef Surface = nme.display.Graphics;
+#elseif( !flash9 )
+        typedef Surface = flash8.MovieClip;
+#elseif( java )
+        typedef Surface = java.awt.geom.GeneralPath;
+#end
+
+        That would give us a single "Surface" type to work with across
+        all of those platforms.
+        */
+    }
+}
+
+class UsingExample {
+    public static function example() {
+
+        /*
+           The "using" import keyword is a special type of class import that
+           alters the behavior of any static methods in the class.
+
+           In this file, we've applied "using" to "StringTools", which contains
+           a number of static methods for dealing with String types.
+         */
+        trace(StringTools.endsWith("foobar", "bar") + " should be true!");
+
+        /*
+           With a "using" import, the first argument type is extended with the
+           method.  What does that mean?  Well, since "endsWith" has a first
+           argument type of "String", that means all String types now have the
+           "endsWith" method:
+         */
+        trace("foobar".endsWith("bar") + " should be true!");
+
+        /*
+           This technique enables a good deal of expression for certain types,
+           while limiting the scope of modifications to a single file.
+
+           Note that the String instance is *not* modified in the run time.
+           The newly attached method is not really part of the attached
+           instance, and the compiler still generates code equivalent to a
+           static method.
+         */
+      }
+
+}
+
 ```
+
+We're still only scratching the surface here of what Haxe can do.  For a formal
+overiew of all Haxe features, checkout the [online
+manual](http://haxe.org/manual), the [online api](http://api.haxe.org/), and
+"haxelib", the [haxe library repo] (http://lib.haxe.org/).
+
+For more advanced topics, consider checking out:
+
+* [Abstract types](http://haxe.org/manual/abstracts)
+* [Macros](http://haxe.org/manual/macros), and [Compiler Macros](http://haxe.org/manual/macros_compiler)
+* [Tips and Tricks](http://haxe.org/manual/tips_and_tricks)
+
+
+Finally, please join us on [the mailing
+list](http://haxe.org/manual/tips_and_tricks), on IRC [#haxe on
+freenode](http://webchat.freenode.net/), or on
+[Google+](https://plus.google.com/communities/103302587329918132234).
+
 
