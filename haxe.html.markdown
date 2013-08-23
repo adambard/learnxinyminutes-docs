@@ -151,8 +151,14 @@ class LearnHaxe3{
         var a_string = "some" + 'string';  // strings can have double or single quotes
         trace(a_string + " is the value for a_string");
 
+        /*
+           Strings can be "interpolated" by inserting variables into specific
+           positions.  The string must be single quoted, and the variable must
+           be preceded with "$".  Expressions can be enclosed in ${...}.
+         */
         var x = 1;
         var an_interpolated_string = 'the value of x is $x';
+        var another_interpolated_string = 'the value of x + 1 is ${x + 1}';
 
         /*
            Strings are immutable, instance methods will return a copy of
@@ -470,27 +476,27 @@ class LearnHaxe3{
            Create an instance of FooClass.  The classes for this are at the
            end of the file.
          */
-        var instance = new FooClass(3);
+        var foo_instance = new FooClass(3);
 
         // read the public variable normally
-        trace(instance.public_any + " is the value for instance.public_any");
+        trace(foo_instance.public_any + " is the value for foo_instance.public_any");
 
         // we can read this variable
-        trace(instance.public_read + " is the value for instance.public_read");
+        trace(foo_instance.public_read + " is the value for foo_instance.public_read");
         // but not write it
-        // instance.public_write = 4; // this will throw an error if uncommented:
-        // trace(instance.public_write); // as will this.
+        // foo_instance.public_write = 4; // this will throw an error if uncommented:
+        // trace(foo_instance.public_write); // as will this.
 
-        trace(instance + " is the value for instance"); // calls the toString method
-        trace(instance.toString() + " is the value for instance.toString()"); // same thing
+        trace(foo_instance + " is the value for foo_instance"); // calls the toString method
+        trace(foo_instance.toString() + " is the value for foo_instance.toString()"); // same thing
 
 
         /*
-           Instance has the "FooClass" type, while acceptBaseFoo has the
-           BaseFooClass type.  However, since FooClass extends BaseFooClass,
-           it is accepted.
+           The foo_instance has the "FooClass" type, while acceptBarInstance
+           has the BarClass type.  However, since FooClass extends BarClass, it
+           is accepted.
          */
-        BaseFooClass.acceptBaseFoo(instance);
+        BarClass.acceptBarInstance(foo_instance);
 
         /*
            The classes below have some more advanced examples, the "example()"
@@ -508,7 +514,7 @@ class LearnHaxe3{
 /*
    This is the "child class" of the main LearnHaxe3 Class
  */
-class FooClass extends BaseFooClass implements BaseFooInterface{
+class FooClass extends BarClass implements BarInterface{
     public var public_any:Int; // public variables are accessible anywhere
     public var public_read (default,null): Int; // use this style to only enable public read
     public var public_write (null, default): Int; // or public write
@@ -520,7 +526,7 @@ class FooClass extends BaseFooClass implements BaseFooInterface{
 
     // a public constructor
     public function new(arg:Int){
-        super(); // call the constructor of the parent object, since we extended BaseFooClass
+        super(); // call the constructor of the parent object, since we extended BarClass
 
         this.public_any= 0;
         this._private = arg;
@@ -544,7 +550,7 @@ class FooClass extends BaseFooClass implements BaseFooInterface{
     }
 
     // this class needs to have this function defined, since it implements
-    // the BaseFooInterface interface.
+    // the BarInterface interface.
     public function baseFunction(x: Int) : String{
         // convert the int to string automatically
         return x + " was passed into baseFunction!";
@@ -554,19 +560,19 @@ class FooClass extends BaseFooClass implements BaseFooInterface{
 /*
     A simple class to extend
 */
-class BaseFooClass {
+class BarClass {
     var base_variable:Int;
     public function new(){
         base_variable = 4;
     }
-    public static function acceptBaseFoo(b:BaseFooClass){
+    public static function acceptBarInstance(b:BarClass){
     }
 }
 
 /*
     A simple interface to implement
 */
-interface BaseFooInterface{
+interface BarInterface{
     public function baseFunction(x:Int):String;
 }
 
