@@ -103,8 +103,8 @@ not False #=> True
 # None bir objedir
 None #=> None
 
-# `==` eşitliğini non objesi ile karşılaştırmak için kullanmayın.
-# Onun yerine `is` kullanın.
+# "==" eşitliğini non objesi ile karşılaştırmak için kullanmayın.
+# Onun yerine "is" kullanın.
 "etc" is None #=> False
 None is None  #=> True
 
@@ -135,7 +135,7 @@ some_var #=> 5
 # bilgi için kontrol akışı kısmına göz atınız.
 some_other_var  # isim hatası fırlatılır
 
-# isterseniz `if`i bir ifade gibi kullanabilirsiniz.
+# isterseniz "if"i bir ifade gibi kullanabilirsiniz.
 "yahoo!" if 3 > 2 else 2 #=> "yahoo!"
 
 # Listeler
@@ -158,7 +158,7 @@ li[0] #=> 1
 # Son elemanın değerine ulaşmak
 li[-1] #=> 3
 
-# Listede bulunmayan bir index'teki elemana erişirken `IndexError` hatası 
+# Listede bulunmayan bir index'teki elemana erişirken "IndexError" hatası 
 # fırlatılır 
 li[4] # IndexError fırlatılır
 
@@ -170,7 +170,7 @@ li[2:] #=> [4, 3]
 # Sonu ihmal etme
 li[:3] #=> [1, 2, 4]
 
-# `del` ile istenilen bir elemanı listeden silmek
+# "del" ile istenilen bir elemanı listeden silmek
 del li[2] # li is now [1, 2, 3]
 
 # Listeleri birbiri ile birleştirebilirsiniz.
@@ -179,7 +179,7 @@ li + other_li #=> [1, 2, 3, 4, 5, 6] - Not: li ve other_li yanlız bırakılır
 # extend ile listeleri birleştirmek
 li.extend(other_li) # Now li is [1, 2, 3, 4, 5, 6]
 
-# bir değerin liste içerisinde varlığını `in` ile kontrol etmek
+# bir değerin liste içerisinde varlığını "in" ile kontrol etmek
 1 in li #=> True
 
 # "len" ile listenin uzunluğunu bulmak
@@ -213,23 +213,23 @@ filled_dict = {"one": 1, "two": 2, "three": 3}
 # Değere ulaşmak için [] kullanılır
 filled_dict["one"] #=> 1
 
-# Tüm anahtarlara(key) `keys()` metodu ile ulaşılır
+# Tüm anahtarlara(key) "keys()" metodu ile ulaşılır
 filled_dict.keys() #=> ["three", "two", "one"]
 # Not - Sözlüklerin anahtarlarının sıralı geleceği garanti değildir
 # Sonuçlarınız değer listesini aldığınızda tamamen eşleşmeyebilir 
 
-# Tüm değerleri almak için `values()` kullanabilirsiniz.
+# Tüm değerleri almak için "values()" kullanabilirsiniz.
 filled_dict.values() #=> [3, 2, 1]
 # Not - Sıralama ile ilgili anahtarlar ile aynı durum geçerlidir.
 
-# Bir anahtarın sözlükte oluş olmadığını `in` ile kontrol edilebilir
+# Bir anahtarın sözlükte oluş olmadığını "in" ile kontrol edilebilir
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
 
 # Olmayan bir anahtar çağrıldığında KeyError fırlatılır.
 filled_dict["four"] # KeyError
 
-# `get()` metodu KeyError fırlatılmasını önler
+# "get()" metodu KeyError fırlatılmasını önler
 filled_dict.get("one") #=> 1
 filled_dict.get("four") #=> None
 # get() metodu eğer anahtar mevcut değilse varsayılan bir değer atama
@@ -237,7 +237,7 @@ filled_dict.get("four") #=> None
 filled_dict.get("one", 4) #=> 1
 filled_dict.get("four", 4) #=> 4
 
-# `setdefault()` metodu sözlüğe yeni bir key-value eşleşmesi eklemenin 
+# "setdefault()" metodu sözlüğe yeni bir key-value eşleşmesi eklemenin 
 # güvenli bir yoludur.
 filled_dict.setdefault("five", 5) #filled_dict["five"] is set to 5
 filled_dict.setdefault("five", 6) #filled_dict["five"] is still 5
@@ -298,7 +298,7 @@ for animal in ["dog", "cat", "mouse"]:
     print "%s is a mammal" % animal
     
 """
-`range(number)` ifadesi sıfırdan verilen sayıya kadar bir sayı listesi döner
+"range(number)" ifadesi sıfırdan verilen sayıya kadar bir sayı listesi döner
 Ekrana yazdırılan:
     0
     1
@@ -336,7 +336,7 @@ except IndexError as e:
 ####################################################
 
 
-# Yeni bir fonksiyon oluşturmak için `def` kullanılır
+# Yeni bir fonksiyon oluşturmak için "def" kullanılır
 def add(x, y):
     print "x is %s and y is %s" % (x, y)
     return x + y    # Return values with a return statement
@@ -407,27 +407,27 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 # We subclass from object to get a class.
 class Human(object):
     
-    # Bir sınıf özelliği. Bu sınıfın tüm `instance`larına paylaşılmıştır.
+    # Bir sınıf özelliği. Bu sınıfın tüm "instance"larına paylaşılmıştır.
     species = "H. sapiens"
 
     # Basic initializer
     def __init__(self, name):
-        # Metoda gelen argümanın değerini sınıfın elemanı olan `name` 
+        # Metoda gelen argümanın değerini sınıfın elemanı olan "name" 
         # değişkenine atama
         self.name = name
 
-    # Bir instance metodu. Tüm metodlar ilk argüman olarak `self` 
+    # Bir instance metodu. Tüm metodlar ilk argüman olarak "self" 
     # parametresini alır
     def say(self, msg):
        return "%s: %s" % (self.name, msg)
 
-    # Bir sınıf metodu tüm `instance`lar arasında paylaşılır
+    # Bir sınıf metodu tüm "instance"lar arasında paylaşılır
     # İlk argüman olarak sınıfı çağırarak çağrılırlar
     @classmethod
     def get_species(cls):
         return cls.species
 
-    # bBir statik metod bir sınıf ya da instance referansı olmadan çağrılır
+    # Bir statik metod bir sınıf ya da instance referansı olmadan çağrılır
     @staticmethod
     def grunt():
         return "*grunt*"
