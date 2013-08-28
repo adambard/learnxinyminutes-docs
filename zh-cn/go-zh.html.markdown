@@ -1,8 +1,8 @@
 ---
-名字：Go
-分类：编程语言
-文件名：learngo.go
-贡献者：
+language: Go
+lang: zh-cn
+filename: learngo.go
+contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["pantaovay", "https://github.com/pantaovay"]
 ---

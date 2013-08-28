@@ -2,9 +2,8 @@
 category: tool
 tool: git
 contributors:
-    - ["Jake Prather", "http:#github.com/JakeHP"]
+    - ["Jake Prather", "http://github.com/JakeHP"]
 filename: LearnGit.txt
-
 ---
 
 Git is a distributed version control and source code management system. 

@@ -1,12 +1,10 @@
 ---
-
 category: tool
 tool: bash
 contributors:
     - ["Max Yankov", "https://github.com/golergka"]
     - ["Darren Lin", "https://github.com/CogBear"]
 filename: LearnBash.sh
-
 ---
 
 Bash is a name of the unix shell, which was also distributed as the shell for the GNU operating system and as default shell on Linux and Mac OS X.

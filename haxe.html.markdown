@@ -11,7 +11,7 @@ Haxe author).  Note that this guide is for Haxe version 3.  Some of the guide
 may be applicable to older versions, but it is recommended to use other
 references.
 
-```haxe
+```csharp
 /*
    Welcome to Learn Haxe 3 in 15 minutes.  http://www.haxe.org
    This is an executable tutorial.  You can compile and run it using the haxe
