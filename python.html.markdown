@@ -93,8 +93,8 @@ not False #=> True
 # None is an object
 None #=> None
 
-# Don't use the equality `==` symbol to compare objects to None
-# Use `is` instead
+# Don't use the equality "==" symbol to compare objects to None
+# Use "is" instead
 "etc" is None #=> False
 None is None  #=> True
 
@@ -158,19 +158,19 @@ li[2:] #=> [4, 3]
 # Omit the end
 li[:3] #=> [1, 2, 4]
 
-# Remove arbitrary elements from a list with del
+# Remove arbitrary elements from a list with "del"
 del li[2] # li is now [1, 2, 3]
 
 # You can add lists
 li + other_li #=> [1, 2, 3, 4, 5, 6] - Note: li and other_li is left alone
 
-# Concatenate lists with extend
+# Concatenate lists with "extend()"
 li.extend(other_li) # Now li is [1, 2, 3, 4, 5, 6]
 
-# Check for existence in a list with in
+# Check for existence in a list with "in"
 1 in li #=> True
 
-# Examine the length with len
+# Examine the length with "len()"
 len(li) #=> 6
 
 
@@ -201,37 +201,37 @@ filled_dict = {"one": 1, "two": 2, "three": 3}
 # Look up values with []
 filled_dict["one"] #=> 1
 
-# Get all keys as a list
+# Get all keys as a list with "keys()"
 filled_dict.keys() #=> ["three", "two", "one"]
 # Note - Dictionary key ordering is not guaranteed.
 # Your results might not match this exactly.
 
-# Get all values as a list
+# Get all values as a list with "values()"
 filled_dict.values() #=> [3, 2, 1]
 # Note - Same as above regarding key ordering.
 
-# Check for existence of keys in a dictionary with in
+# Check for existence of keys in a dictionary with "in"
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
 
 # Looking up a non-existing key is a KeyError
 filled_dict["four"] # KeyError
 
-# Use get method to avoid the KeyError
+# Use "get()" method to avoid the KeyError
 filled_dict.get("one") #=> 1
 filled_dict.get("four") #=> None
 # The get method supports a default argument when the value is missing
 filled_dict.get("one", 4) #=> 1
 filled_dict.get("four", 4) #=> 4
 
-# Setdefault method is a safe way to add new key-value pair into dictionary
+# "setdefault()" method is a safe way to add new key-value pair into dictionary
 filled_dict.setdefault("five", 5) #filled_dict["five"] is set to 5
 filled_dict.setdefault("five", 6) #filled_dict["five"] is still 5
 
 
 # Sets store ... well sets
 empty_set = set()
-# Initialize a set with a bunch of values
+# Initialize a "set()" with a bunch of values
 some_set = set([1,2,2,3,4]) # some_set is now set([1, 2, 3, 4])
 
 # Since Python 2.7, {} can be used to declare a set
@@ -284,7 +284,7 @@ for animal in ["dog", "cat", "mouse"]:
     print "%s is a mammal" % animal
     
 """
-`range(number)` returns a list of numbers 
+"range(number)" returns a list of numbers 
 from zero to the given number
 prints:
     0
@@ -312,7 +312,7 @@ while x < 4:
 
 # Works on Python 2.6 and up:
 try:
-    # Use raise to raise an error
+    # Use "raise" to raise an error
     raise IndexError("This is an index error")
 except IndexError as e:
     pass    # Pass is just a no-op. Usually you would do recovery here.
@@ -322,7 +322,7 @@ except IndexError as e:
 ## 4. Functions
 ####################################################
 
-# Use def to create new functions
+# Use "def" to create new functions
 def add(x, y):
     print "x is %s and y is %s" % (x, y)
     return x + y    # Return values with a return statement
@@ -359,7 +359,7 @@ all_the_args(1, 2, a=3, b=4) prints:
     {"a": 3, "b": 4}
 """
 
-# When calling functions, you can do the opposite of varargs/kwargs!
+# When calling functions, you can do the opposite of args/kwargs!
 # Use * to expand tuples and use ** to expand kwargs.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
@@ -402,7 +402,7 @@ class Human(object):
         # Assign the argument to the instance's name attribute
         self.name = name
 
-    # An instance method. All methods take self as the first argument
+    # An instance method. All methods take "self" as the first argument
     def say(self, msg):
        return "%s: %s" % (self.name, msg)
 
