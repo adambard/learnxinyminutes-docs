@@ -1,4 +1,4 @@
-﻿---
+---
 language: lua
 category: language
 contributors:
