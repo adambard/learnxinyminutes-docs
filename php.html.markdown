@@ -468,9 +468,15 @@ class MyClass
         print 'MyClass';
     }
 
+    //final keyword would make a function unoverridable 
     final function youCannotOverrideMe()
     {
     }
+
+/*
+Declaring class properties or methods as static makes them accessible without needing an instantiation of the class.
+A property declared as static can not be accessed with an instantiated class object (though a static method can).
+*/
 
     public static function myStaticMethod()
     {
