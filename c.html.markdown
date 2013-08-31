@@ -22,7 +22,7 @@ Multi-line comments look like this. They work in C89 as well.
 
 //Special characters:
 '\n' // newline character
-'\t' // tab character
+'\t' // tab character (left justifies text)
 '\v' // vertical tab
 '\f' // new page
 '\r' // carriage return
@@ -38,6 +38,12 @@ Multi-line comments look like this. They work in C89 as well.
 "%7.4s" // (can do with strings too)
 "%c"    // char
 "%p"    // pointer
+"%x"    // hexidecimal
+"%o"    // octal
+"%%"    // prints % 
+
+// Constants: use #define keyword, no semicolon at end. 
+#define DAYS_IN_YEAR = 365
 
 // Import headers with #include
 #include <stdlib.h>
