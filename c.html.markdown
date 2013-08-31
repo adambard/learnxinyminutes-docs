@@ -425,13 +425,16 @@ int add_two_ints(int x1, int x2)
 
 // Must declare a 'funtion prototype' before main() when creating functions
 // in file. 
-int getInt(char c); // function prototype
+void getInt(char c); // function prototype
 int main() {
     return 0;
 }
-int getInt(char w) { //parameter name does not need to match function prototype
-    return 1;
+void getInt(char w) { //parameter name does not need to match function prototype
+    ;
 }
+//if function takes no parameters, do: int getInt(void); for function prototype
+//  and for the function declaration: int getInt(void) {}
+//  this is to keep compatibility with older versions of C. 
 
 /*
 Functions are call by value. So when a function is called, the arguments passed
