@@ -166,6 +166,10 @@ int main() {
     int i1 = 1, i2 = 2; // Shorthand for multiple declaration
     float f1 = 1.0, f2 = 2.0;
 
+    //more shorthands:
+    int a, b, c;
+    a = b = c = 0;
+
     // Arithmetic is straightforward
     i1 + i2; // => 3
     i2 - i1; // => 1
@@ -339,7 +343,7 @@ int main() {
     printf("%d\n", x); // => Prints 1
 
     // Arrays are a good way to allocate a contiguous block of memory
-    int x_array[20];
+    int x_array[20]; //declares array of size 20 (cannot change size)
     int xx;
     for (xx = 0; xx < 20; xx++) {
         x_array[xx] = 20 - xx;
