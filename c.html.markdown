@@ -27,7 +27,8 @@ Multi-line comments look like this. They work in C89 as well.
 '\f' // new page
 '\r' // carriage return
 '\b' // backspace character
-'\0' // null character
+'\0' // null character. Usually put at end of strings in C lang. 
+     //   hello\n\0. \0 used by convention to mark end of string. 
 
 //print formatting:
 "%d"    // integer
