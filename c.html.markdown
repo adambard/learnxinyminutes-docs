@@ -231,6 +231,12 @@ int main() {
       printf("I print\n");
     }
 
+    // Notes:
+    // Loops MUST always have a body. If no body is needed, do this:
+    for (i = 0; i <= 5; i++) {
+        ; // use semicolon to act as the body (null statement)
+    }
+
     // While loops exist
     int ii = 0;
     while (ii < 10) {
