@@ -433,8 +433,12 @@ int getInt(char w) { //parameter name does not need to match function prototype
 }
 
 /*
-Functions are pass-by-value, but you can make your own references
-with pointers so functions can mutate their values.
+Functions are call by value. So when a function is called, the arguments passed
+to the function are copies of original arguments (except arrays). Anything you  
+do to your arguments do not change the value of the actual argument where the
+function was called. 
+
+You can use pointers if you need to edit the original argument values. 
 
 Example: in-place string reversal
 */
