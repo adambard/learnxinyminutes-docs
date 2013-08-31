@@ -23,8 +23,21 @@ Multi-line comments look like this. They work in C89 as well.
 //Special characters:
 '\n' // newline character
 '\t' // tab character
+'\v' // vertical tab
+'\f' // new page
+'\r' // carriage return
 '\b' // backspace character
 '\0' // null character
+
+//print formatting:
+"%d"    // integer
+"%3d"   // minimum length of 3 digits for integer (right justifies text)
+"%s"    // string
+"%f"    // float
+"%3.2f" // minimum 3 digits left and 2 digits right decimal float 
+"%7.4s" // (can do with strings too)
+"%c"    // char
+"%p"    // pointer
 
 // Import headers with #include
 #include <stdlib.h>
