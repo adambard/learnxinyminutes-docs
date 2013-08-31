@@ -427,6 +427,16 @@ void str_reverse(char *str_in)
     }
 }
 
+// Built in functions:
+// from stdio.h:
+int c = getchar(); //reads character from user. If user types hello, only h is read.
+// getchar() can be stored into int or char. I am using int because char is not large
+//   enough to store EOF used below. 
+while (c != EOF) { // EOF is value for "end of file". Linux: CTRL+D, Windows: CTRL+X
+    putchar(c); //prints character (without newline at end)
+    char c = getchar(); 
+}
+
 /*
 char c[] = "This is a test.";
 str_reverse(c);
