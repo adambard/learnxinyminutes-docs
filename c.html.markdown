@@ -34,6 +34,7 @@ Multi-line comments look like this. They work in C89 as well.
 "%3d"   // minimum length of 3 digits for integer (right justifies text)
 "%s"    // string
 "%f"    // float
+"%ld"   // long
 "%3.2f" // minimum 3 digits left and 2 digits right decimal float 
 "%7.4s" // (can do with strings too)
 "%c"    // char
@@ -429,10 +430,12 @@ void str_reverse(char *str_in)
 
 // Built in functions:
 // from stdio.h:
-int c = getchar(); //reads character from user. If user types hello, only h is read.
-// getchar() can be stored into int or char. I am using int because char is not large
-//   enough to store EOF used below. 
-while (c != EOF) { // EOF is value for "end of file". Linux: CTRL+D, Windows: CTRL+X
+int c = getchar(); //reads character from input. If input = hi, only h is read.
+// getchar() can be stored into int or char. I am using int because 
+//   char is not large enough to store EOF used below. 
+while ((c = getchar()) != EOF) { // EOF constant "end of file". 
+                                 //   Linux: CTRL+D, Windows: CTRL+X
+    // must have () around getchar() as != is run before =. 
     putchar(c); //prints character (without newline at end)
     char c = getchar(); 
 }
