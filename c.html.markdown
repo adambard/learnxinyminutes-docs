@@ -422,6 +422,16 @@ int add_two_ints(int x1, int x2)
     return x1 + x2; // Use return to return a value
 }
 
+// Must declare a 'funtion prototype' before main() when creating functions
+// in file. 
+int getInt(char c); // function prototype
+int main() {
+    return 0;
+}
+int getInt(char w) { //parameter name does not need to match function prototype
+    return 1;
+}
+
 /*
 Functions are pass-by-value, but you can make your own references
 with pointers so functions can mutate their values.
