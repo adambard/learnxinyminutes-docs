@@ -20,6 +20,12 @@ memory management and C will take you as far as you need to go.
 Multi-line comments look like this. They work in C89 as well.
 */
 
+//Special characters:
+'\n' // newline character
+'\t' // tab character
+'\b' // backspace character
+'\0' // null character
+
 // Import headers with #include
 #include <stdlib.h>
 #include <stdio.h>
