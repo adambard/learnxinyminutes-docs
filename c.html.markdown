@@ -21,14 +21,21 @@ Multi-line comments look like this. They work in C89 as well.
 */
 
 //Special characters:
+'\a' // alert (bell) character
 '\n' // newline character
 '\t' // tab character (left justifies text)
 '\v' // vertical tab
-'\f' // new page
+'\f' // new page (formfeed)
 '\r' // carriage return
 '\b' // backspace character
 '\0' // null character. Usually put at end of strings in C lang. 
      //   hello\n\0. \0 used by convention to mark end of string. 
+'\\' // backspace
+'\?' // question mark
+'\'' // single quote
+'\"' // double quote
+'\xhh' // hexadecimal number. Example: '\xb' = vertical tab character
+'\ooo' // octal number. Example: '\013' = vertical tab character
 
 //print formatting:
 "%d"    // integer
