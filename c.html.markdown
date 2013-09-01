@@ -110,9 +110,9 @@ int main() {
     unsigned int ux_int;
     unsigned long long ux_long_long;
 
-    // chars inside single quotes '*' are character constants. 
-    '0' //==> 48 on the ASCII table. 
-    'A' //==> 65 on the ASCII table. 
+    // chars inside single quotes '*' are integers in your character set. 
+    '0' //==> 48 on the ASCII character set. 
+    'A' //==> 65 on the ASCII character set. 
 
     // sizeof(T) gives you the size of a variable with type T in bytes
     // sizeof(obj) yields the size of the expression (variable, literal, etc.).
