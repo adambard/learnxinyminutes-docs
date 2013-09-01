@@ -73,12 +73,11 @@ ls -l | grep "\.txt"
 echo "There are $(ls | wc -l) items here."
 
 # Bash uses a case statement that works similarily to switch in Java and C++:
-case "$VARIABLE"
-in
+case "$VARIABLE" in 
     #List patterns for the conditions you want to meet
-    0) echo "There is a zero."
-    1) echo "There is a one."
-    *) echo "It is not null."
+    0) echo "There is a zero.";;
+    1) echo "There is a one.";;
+    *) echo "It is not null.";;
 esac
 
 #For loops iterate for as many arguments given:
