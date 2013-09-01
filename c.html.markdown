@@ -261,8 +261,7 @@ int main() {
     // While loops exist
     int ii = 0;
     while (ii < 10) { //ANY value not zero is true. 
-        printf("%d, ", ii++); // ii++ increments ii in-place
-                              // after yielding its value ("postincrement").
+        printf("%d, ", ii++); // ii++ increments ii AFTER using it's current value.
     } // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
     printf("\n");
@@ -270,8 +269,7 @@ int main() {
     int kk = 0;
     do {
         printf("%d, ", kk);
-    } while (++kk < 10); // ++kk increments kk in-place, and yields
-                         // the already incremented value ("preincrement")
+    } while (++kk < 10); // ++kk increments kk BEFORE using it's current value.
     // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
     printf("\n");
