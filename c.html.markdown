@@ -62,6 +62,7 @@ enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 // (File names between <angle brackets> are headers from the C standard library.)
 // For your own headers, use double quotes instead of angle brackets:
