@@ -99,7 +99,7 @@ int main() {
     unsigned int ux_int;
     unsigned long long ux_long_long;
 
-    // chars inside single quotes '*' are ASCII versions of  
+    // chars inside single quotes '*' are character constants. 
     '0' //==> 48 on the ASCII table. 
     'A' //==> 65 on the ASCII table. 
 
@@ -470,6 +470,12 @@ while ((c = getchar()) != EOF) { // EOF constant "end of file".
     // must have () around getchar() as != is run before =. 
     putchar(c); //prints character (without newline at end)
     char c = getchar(); 
+}
+
+//if referring to external variables outside function, must use extern keyword.
+int i = 0;
+void testFunc() {
+    extern int i; //i here is now using external variable i
 }
 
 /*
