@@ -177,7 +177,7 @@ echo $x; // => 2
 echo $z; // => 0
 
 // Dumps type and value of variable to stdout
-var_dumb($z); // prints int(0)
+var_dump($z); // prints int(0)
 
 // Prints variable to stdout in human-readable format
 print_r($array); // prints: Array ( [0] => One [1] => Two [2] => Three )
