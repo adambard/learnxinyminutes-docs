@@ -59,6 +59,9 @@ $float = 1.234;
 $float = 1.2e3;
 $float = 7E-10;
 
+// Delete variable
+unset($int1)
+
 // Arithmetic
 $sum        = 1 + 1; // 2
 $difference = 2 - 1; // 1
@@ -136,6 +139,11 @@ echo $associative['One']; // prints 1
 $array = ['One', 'Two', 'Three'];
 echo $array[0]; // => "One"
 
+// Add an element to the end of an array
+$array[] = 'Four';
+
+// Remove element from array
+unset($array[3]); 
 
 /********************************
  * Output
