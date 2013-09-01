@@ -593,6 +593,31 @@ typedef void (*my_fnp_type)(char *);
 // ...
 // my_fnp_type f; 
 
+
+///////////////////////////////////////
+// Order of Evaluation
+///////////////////////////////////////
+
+//---------------------------------------------------//
+//        Operators                  | Associativity //
+//---------------------------------------------------//
+// () [] -> .                        | left to right //
+// ! ~ ++ -- + = *(type)sizeof       | right to left //
+// * / %                             | left to right //
+// + -                               | left to right //
+// << >>                             | left to right //
+// < <= > >=                         | left to right //
+// == !=                             | left to right //
+// &                                 | left to right //
+// ^                                 | left to right //
+// |                                 | left to right //
+// &&                                | left to right //
+// ||                                | left to right //
+// ?:                                | right to left //
+// = += -= *= /= %= &= ^= |= <<= >>= | right to left //
+// ,                                 | left to right //
+//---------------------------------------------------//
+
 ```
 
 ## Further Reading
