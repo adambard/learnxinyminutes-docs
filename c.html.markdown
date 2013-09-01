@@ -54,6 +54,10 @@ Multi-line comments look like this. They work in C89 as well.
 // Constants: use #define keyword, no semicolon at end. 
 #define DAYS_IN_YEAR = 365
 
+//enumeration constants are also ways to declare constants. 
+enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
+// MON gets 2 automatically, TUE gets 3, etc. 
+
 // Import headers with #include
 #include <stdlib.h>
 #include <stdio.h>
