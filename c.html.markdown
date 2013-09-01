@@ -226,6 +226,17 @@ int main() {
     0 || 1; // => 1 (Logical or)
     0 || 0; // => 0
 
+    //Increment and decrement operators:
+    int j = 0;
+    char s[];
+    int w = 0;
+    j++; //difference between postfix and prefix explained below
+    ++j; //  in string example. 
+    j--;
+    --j;
+    s[j++]; //returns value of j to s THEN increments value of j. 
+    s[++j]; //increments value of j THEN returns value of j to s. 
+
     // Bitwise operators!
     ~0x0F; // => 0xF0 (bitwise negation, "1's complement")
     0x0F & 0xF0; // => 0x00 (bitwise AND)
