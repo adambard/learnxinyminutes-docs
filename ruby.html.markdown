@@ -7,6 +7,7 @@ contributors:
   - ["Luke Holder", "http://twitter.com/lukeholder"]
   - ["Tristan Hume", "http://thume.ca/"]
   - ["Nick LaMuro", "https://github.com/NickLaMuro"]
+  - ["Marcos Brizeno", "http://www.about.me/marcosbrizeno"]
 ---
 
 ```ruby
@@ -338,6 +339,23 @@ dwight.name #=> "Dwight K. Schrute"
 
 # Call the class method
 Human.say("Hi") #=> "Hi"
+
+# Variable's scopes are defined by the way we name them.
+# Variables that start with $ have global scope
+$var = "I'm a global var"
+defined? $var #=> "global-variable"
+
+# Variables that start with @ have instance scope
+@var = "I'm an instance var"
+defined? @var #=> "instance-variable"
+
+# Variables that start with @@ have class scope
+@@var = "I'm a class var"
+defined? @@var #=> "class variable"
+
+# Variables that start with a capital letter are constants
+Var = "I'm a constant"
+defined? Var #=> "constant"
 
 # Class also is object in ruby. So class can have instance variables.
 # Class variable is shared among the class and all of its descendants.
