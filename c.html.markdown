@@ -226,6 +226,10 @@ int main() {
     0 || 1; // => 1 (Logical or)
     0 || 0; // => 0
 
+    //Conditional expression ( ?: )
+    int a, b, z;
+    z = (a > b) ? a : b; // z = max(a, b);
+
     //Increment and decrement operators:
     int j = 0;
     char s[];
