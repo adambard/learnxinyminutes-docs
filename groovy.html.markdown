@@ -8,7 +8,7 @@ filename: learngroovy.groovy
 
 Groovy - A dynamic language for the Java platform [Read more here.](http://groovy.codehaus.org)
 
-```cpp
+```groovy
 
 /*
   Set yourself up:
