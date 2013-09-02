@@ -74,19 +74,32 @@ technologies.remove("Griffon")
 // Subtraction works also
 technologies = technologies - 'Grails'
 
+/*** Iterating Lists ***/
+
 // Iterate over elements of a list
 technologies.each { println "Technology: $it"}
 technologies.eachWithIndex { it, i -> println "$i: $it"}
 
+/*** Checking List contents ***/
+
 //Evaluate if a list contains element(s) (boolean)
-technologies.contains('Groovy')
+contained = technologies.contains( 'Groovy' )
+
+// Or
+contained = 'Groovy' in technologies
+
+// Check for multiple contents
 technologies.containsAll(['Groovy','Grails'])
+
+/*** Sorting Lists ***/
 
 // Sort a list (mutates original list)
 technologies.sort()
 
 // To sort without mutating original, you can do:
 sortedTechnologies = technologies.sort( false )
+
+/*** Manipulating Lists ***/
 
 //Replace all elements in the list
 Collections.replaceAll(technologies, 'Gradle', 'gradle')
