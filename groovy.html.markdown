@@ -54,15 +54,26 @@ println x
 //Creating an empty list
 def technologies = []
 
-//Add an element to the list
-technologies << "Groovy"
+/*** Adding a elements to the list ***/
+
+// As with Java
 technologies.add("Grails")
+
+// Left shift adds, and returns the list
+technologies << "Groovy"
+
+// Add multiple elements
 technologies.addAll(["Gradle","Griffon"])
 
-//Remove an element from the list
+/*** Removing elements from the list ***/
+
+// As with Java
 technologies.remove("Griffon")
 
-//Iterate over elements of a list
+// Subtraction works also
+technologies = technologies - 'Grails'
+
+// Iterate over elements of a list
 technologies.each { println "Technology: $it"}
 technologies.eachWithIndex { it, i -> println "$i: $it"}
 
