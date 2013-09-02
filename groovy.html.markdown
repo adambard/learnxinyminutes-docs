@@ -51,6 +51,7 @@ println x
 /*
   Collections and maps
 */
+
 //Creating an empty list
 def technologies = []
 
@@ -81,8 +82,11 @@ technologies.eachWithIndex { it, i -> println "$i: $it"}
 technologies.contains('Groovy')
 technologies.containsAll(['Groovy','Grails'])
 
-//Sort a list
+// Sort a list (mutates original list)
 technologies.sort()
+
+// To sort without mutating original, you can do:
+sortedTechnologies = technologies.sort( false )
 
 //Replace all elements in the list
 Collections.replaceAll(technologies, 'Gradle', 'gradle')
