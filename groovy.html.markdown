@@ -8,7 +8,7 @@ filename: learngroovy.groovy
 
 Groovy - A dynamic language for the Java platform [Read more here.](http://groovy.codehaus.org)
 
-```cpp
+```groovy
 
 /*
   Set yourself up:
@@ -51,27 +51,55 @@ println x
 /*
   Collections and maps
 */
+
 //Creating an empty list
 def technologies = []
 
-//Add an element to the list
-technologies << "Groovy"
+/*** Adding a elements to the list ***/
+
+// As with Java
 technologies.add("Grails")
+
+// Left shift adds, and returns the list
+technologies << "Groovy"
+
+// Add multiple elements
 technologies.addAll(["Gradle","Griffon"])
 
-//Remove an element from the list
+/*** Removing elements from the list ***/
+
+// As with Java
 technologies.remove("Griffon")
 
-//Iterate over elements of a list
+// Subtraction works also
+technologies = technologies - 'Grails'
+
+/*** Iterating Lists ***/
+
+// Iterate over elements of a list
 technologies.each { println "Technology: $it"}
 technologies.eachWithIndex { it, i -> println "$i: $it"}
 
+/*** Checking List contents ***/
+
 //Evaluate if a list contains element(s) (boolean)
-technologies.contains('Groovy')
+contained = technologies.contains( 'Groovy' )
+
+// Or
+contained = 'Groovy' in technologies
+
+// Check for multiple contents
 technologies.containsAll(['Groovy','Grails'])
 
-//Sort a list
+/*** Sorting Lists ***/
+
+// Sort a list (mutates original list)
 technologies.sort()
+
+// To sort without mutating original, you can do:
+sortedTechnologies = technologies.sort( false )
+
+/*** Manipulating Lists ***/
 
 //Replace all elements in the list
 Collections.replaceAll(technologies, 'Gradle', 'gradle')
