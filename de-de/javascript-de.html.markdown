@@ -1,9 +1,9 @@
 ﻿---
-language: JavaScript
+language: javascript
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
     - ["ggb", "http://www.ideen-und-soehne.de"]
-filename: learnjavascript.js
+filename: learnjavascript-de.js
 lang: de-de
 ---
 
@@ -104,8 +104,8 @@ false;
 // Es gibt außerdem die Werte 'null' und 'undefined'
 null; // wird verwendet um einen vorsätzlich gewählten 'Nicht'-Wert anzuzeigen
 undefined; // wird verwendet um anzuzeigen, dass der Wert (aktuell) nicht 
-		   // verfügbar ist (obwohl genau genommen undefined selbst einen Wert 
-		   // darstellt)
+           // verfügbar ist (obwohl genau genommen undefined selbst einen Wert 
+           // darstellt)
 
 // false, null, undefined, NaN, 0 und "" sind 'falsy', d. h. alles andere ist 
 // wahr. Man beachte, dass 0 falsch und "0" wahr ist, obwohl 0 == "0".
@@ -255,9 +255,9 @@ i; // = 5 - nicht undefined, wie man es von einer Sprache erwarten würde, die
 (function(){
     var temporary = 5;
     // Auf eine Variable im globalen Geltungsbereich kann zugegriffen werden, 
-	// sofern sie im globalen Objekt definiert ist (in einem Webbrowser ist 
-	// dies immer das 'window'-Objekt, in anderen Umgebungen, bspw. Node.js, 
-	// kann das anders aussehen). 
+    // sofern sie im globalen Objekt definiert ist (in einem Webbrowser ist 
+    // dies immer das 'window'-Objekt, in anderen Umgebungen, bspw. Node.js, 
+    // kann das anders aussehen). 
     window.permanent = 10;
 })();
 temporary; // wirft einen ReferenceError
@@ -274,13 +274,13 @@ function sayHelloInFiveSeconds(name){
     }
     setTimeout(inner, 5000);
     // setTimeout wird asynchron ausgeführt. Also wird sayHelloInFiveSeconds 
-	// sofort verlassen und setTimeout wird die innere Funktion 'im nachhinein'	
-	// aufrufen. Dennoch: Weil sayHelloInFiveSeconds eine Hülle um die innere 
-	// Funktion bildet, hat die innere Funktion immer noch Zugriff auf die 
-	// Variable prompt.
+    // sofort verlassen und setTimeout wird die innere Funktion 'im nachhinein'    
+    // aufrufen. Dennoch: Weil sayHelloInFiveSeconds eine Hülle um die innere 
+    // Funktion bildet, hat die innere Funktion immer noch Zugriff auf die 
+    // Variable prompt.
 }
 sayHelloInFiveSeconds("Adam");  // wird nach 5 Sekunden ein Popup mit der 
-								// Nachricht "Hello, Adam!" öffnen.
+                                // Nachricht "Hello, Adam!" öffnen.
 
 ///////////////////////////////////
 // 5. Mehr über Objekte, Konstruktoren und Prototypen
@@ -423,14 +423,14 @@ String.prototype.firstCharacter = function(){
 // allen Umgebungen verfügbar ist - wir können sie dennoch verwenden, mit einem
 // 'polyfill':
 if (Object.create === undefined){ // überschreib nichts, was eventuell bereits
-								  // existiert
+                                  // existiert
     Object.create = function(proto){
         // erstelle einen vorübergehenden Konstruktor mit dem richtigen
-		// Prototypen
+        // Prototypen
         var Constructor = function(){};
         Constructor.prototype = proto;
         // verwende es dann, um ein neues Objekt mit einem passenden 
-		// Prototypen zurückzugeben
+        // Prototypen zurückzugeben
         return new Constructor();
     }
 }
