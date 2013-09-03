@@ -5,39 +5,40 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Antonio Hernández Blas", "https://twitter.com/nihilipster"]
+    - ["Guillermo Vayá Pérez", "http://willyfrog.es"]
 lang: es-es
 ---
 
-Clojure es un lenguaje de la familia Lisp desarrollado para la Máquina Virtual
-de Java. Tiene un énfasis más fuerte en la [programación funcional](https://es.wikipedia.org/wiki/Programación_funcional) pura
-que Common Lisp, pero incluye varias facilidades de [SMT](https://es.wikipedia.org/wiki/Memoria_transacional) para manipular
+Clojure es un lenguaje de la familia Lisp desarrollado sobre la Máquina Virtual
+de Java. Tiene un énfasis mayor en la [programación funcional](https://es.wikipedia.org/wiki/Programación_funcional) pura
+que Common Lisp, pero incluyendo la posibilidad de usar [SMT](https://es.wikipedia.org/wiki/Memoria_transacional) para manipular
 el estado según se presente.
 
-Esta combinación le permite manejar el procesamiento concurrente muy simple,
+Esta combinación le permite gestionar la concurrencia de manera muy sencilla
 y a menudo automáticamente.
 
-(Necesitas la versión de Clojure 1.2 o nueva)
+(Necesitas la versión de Clojure 1.2 o posterior)
 
 
 ```clojure
-; Los comentatios inician con punto y coma.
+; Los comentatios comienzan con punto y coma.
 
-; Clojure es escrito en "forms" (patrones), los cuales son solo
-; listas de objectos dentro de paréntesis, separados por espacios en blanco.
+; Clojure se escribe mediante "forms" (patrones), los cuales son
+; listas de objectos entre paréntesis, separados por espacios en blanco.
 
-; El reader (lector) de Clojure asume que el primer objeto es una
-; función o una macro a llamar, y que el resto son argumentos.
+; El "reader" (lector) de Clojure asume que el primer objeto es una
+; función o una macro que se va a llamar, y que el resto son argumentos.
 
-; La primera llamada en un archivo debe ser ns, para establecer el espacio de
-; nombre
+; El primer form en un archivo debe ser ns, para establecer el namespace (espacio de
+; nombres)
 (ns learnclojure)
 
-; Más ejemplos básicos:
+; Algunos ejemplos básicos:
 
-; str creará una cadena de caracteres a partir de sus argumentos
+; str crea una cadena de caracteres a partir de sus argumentos
 (str "Hello" " " "World") ; => "Hello World"
 
-; Las matemáticas son sencillas
+; Las operaciones matemáticas son sencillas
 (+ 1 1) ; => 2
 (- 2 1) ; => 1
 (* 1 2) ; => 2
@@ -47,44 +48,44 @@ y a menudo automáticamente.
 (= 1 1) ; => true
 (= 2 1) ; => false
 
-; Necesitas de la negación para la lógica, también
+; También es necesaria la negación para las operaciones lógicas
 (not true) ; => false
 
-; Los patrones anidados funcionan como lo esperas
+; Cuando se anidan Los patrones, estos funcionan de la manera esperada
 (+ 1 (- 3 2)) ; = 1 + (3 - 2) => 2
 
 ; Tipos
 ;;;;;;;;;;;;;
 
-; Clojure usa los tipos de objetos de Java para booleanos,cadenas de
-; caracteres y números.
-; Usa class para inspeccionarlos.
-(class 1); Los enteros literales son java.lang.Long por default
-(class 1.); Los flotantes literales son java.lang.Double
-(class ""); Las cadenas de caracteres van entre comillas dobles, y son
+; Clojure usa los tipos de objetos de Java para booleanos, strings (cadenas de
+; caracteres) y números.
+; Usa class para saber de qué tipo es.
+(class 1); Los enteros son java.lang.Long por defecto
+(class 1.); Los numeros en coma flotante son java.lang.Double
+(class ""); Los strings van entre comillas dobles, y son
 ; son java.lang.String
 (class false); Los Booleanos son java.lang.Boolean
-(class nil); El valor "null" es llamado nil
+(class nil); El valor "null" se escribe nil
 
-; Si quieres crear una lista literal de datos, precede la con una comilla
+; Si quieres crear una lista de datos, precedela con una comilla
 ; simple para evitar su evaluación
 '(+ 1 2) ; => (+ 1 2)
-; (abreviatura de (quote (+ 1 2))
+; (que es una abreviatura de (quote (+ 1 2))
 
-; Puedes evaluar una lista precedida por comilla simple con eval
+; Puedes evaluar una lista precedida por comilla  con eval
 (eval '(+ 1 2)) ; => 3
 
 ; Colecciones & Secuencias
 ;;;;;;;;;;;;;;;;;;;
 
-; Las Listas están basadas en listas enlazadas, mientras que los Vectores en
-; arreglos.
-; ¡Los Vectores y las Listas son clases de Java también!
+; Las Listas están basadas en las listas enlazadas, mientras que los Vectores en
+; arrays.
+; ¡Los Vectores y las Listas también son clases de Java!
 (class [1 2 3]); => clojure.lang.PersistentVector
 (class '(1 2 3)); => clojure.lang.PersistentList
 
-; Una lista podría ser escrita como (1 2 3), pero debemos precidirla con
-; comilla simple para evitar que el lector piense que es una función.
+; Una lista podría ser escrita como (1 2 3), pero debemos ponerle una
+; comilla simple delante para evitar que el reader piense que es una función.
 ; Además, (list 1 2 3) es lo mismo que '(1 2 3)
 
 ; Las "Colecciones" son solo grupos de datos
@@ -108,23 +109,23 @@ y a menudo automáticamente.
 (cons 4 '(1 2 3)) ; => (4 1 2 3)
 
 ; conj agregará un elemento a una colección en la forma más eficiente.
-; Para listas, se agrega al inicio. Para vectores, al final.
+; Para listas, se añade al inicio. Para vectores, al final.
 (conj [1 2 3] 4) ; => [1 2 3 4]
 (conj '(1 2 3) 4) ; => (4 1 2 3)
 
 ; Usa concat para concatenar listas o vectores
 (concat [1 2] '(3 4)) ; => (1 2 3 4)
 
-; Usa filter, map para actuar sobre colecciones
+; Usa filter y map para actuar sobre colecciones
 (map inc [1 2 3]) ; => (2 3 4)
 (filter even? [1 2 3]) ; => (2)
 
-; Usa reduce para reducirlos
+; Usa reduce para combinar sus elementos
 (reduce + [1 2 3 4])
 ; = (+ (+ (+ 1 2) 3) 4)
 ; => 10
 
-; reduce puede tomar un argumento como valor inicial también
+; reduce puede tener un argumento indicando su valor inicial.
 (reduce conj [] '(3 2 1))
 ; = (conj (conj (conj [] 3) 2) 1)
 ; => [3 2 1]
@@ -132,14 +133,14 @@ y a menudo automáticamente.
 ; Funciones
 ;;;;;;;;;;;;;;;;;;;;;
 
-; Usa fn para crear nuevas funciones. Una función siempre regresa
+; Usa fn para crear nuevas funciones. Una función siempre devuelve
 ; su última expresión
 (fn [] "Hello World") ; => fn
 
-; (Necesitas encerrarlo en paréntesis para llamarlo)
+; (Necesitas rodearlo con paréntesis para invocarla)
 ((fn [] "Hello World")) ; => "Hello World"
 
-; Puedes crear una var (variable) usando def
+; Puedes crear una var (variable) mediante def
 (def x 1)
 x ; => 1
 
@@ -147,32 +148,32 @@ x ; => 1
 (def hello-world (fn [] "Hello World"))
 (hello-world) ; => "Hello World"
 
-; Puedes acortar este proceso al usar defn
+; Puedes defn como atajo para lo anterior
 (defn hello-world [] "Hello World")
 
-; El [] es el vector de argumentos para la función.
+; El [] es el vector de argumentos de la función.
 (defn hello [name]
   (str "Hello " name))
 (hello "Steve") ; => "Hello Steve"
 
-; Puedes usar también esta abreviatura para crear funciones:
+; Otra abreviatura para crear funciones es:
 (def hello2 #(str "Hello " %1))
 (hello2 "Fanny") ; => "Hello Fanny"
 
-; Puedes tener funciones multi-variadic (múltiple numero variable de
-; argumentos), también
+; Puedes tener funciones multi-variadic: funciones con un numero variable de
+; argumentos
 (defn hello3
   ([] "Hello World")
   ([name] (str "Hello " name)))
 (hello3 "Jake") ; => "Hello Jake"
 (hello3) ; => "Hello World"
 
-; Las funciones pueden colocar argumentos extras dentro de una seq por ti
+; Las funciones pueden usar argumentos extras dentro de un seq utilizable en la función
 (defn count-args [& args]
   (str "You passed " (count args) " args: " args))
 (count-args 1 2 3) ; => "You passed 3 args: (1 2 3)"
 
-; Puedes mezclar argumentos regulares y dentro de una seq
+; Y puedes mezclarlos con el resto de argumentos declarados de la función.
 (defn hello-count [name & args]
   (str "Hello " name ", you passed " (count args) " extra args"))
 (hello-count "Finn" 1 2 3)
@@ -182,17 +183,17 @@ x ; => 1
 ; Mapas
 ;;;;;;;;;;
 
-; Mapas de Hash y mapas de Arreglos comparten una interfaz. Los mapas de Hash
-; tienen búsquedas más rápidas pero no mantienen el orden de las llaves.
+; Mapas de Hash y mapas de arrays comparten una misma interfaz. Los mapas de Hash
+; tienen búsquedas más rápidas pero no mantienen el orden de las claves.
 (class {:a 1 :b 2 :c 3}) ; => clojure.lang.PersistentArrayMap
 (class (hash-map :a 1 :b 2 :c 3)) ; => clojure.lang.PersistentHashMap
 
-; Los mapas de Arreglos serán convertidos en mapas de Hash en la mayoría de
-; operaciones si crecen lo suficiente, así que no necesitas preocuparte.
+; Los mapas de arrays se convertidos en mapas de Hash en la mayoría de
+; operaciones si crecen mucho, por lo que no debes preocuparte.
 
-; Los mapas pueden usar cualquier tipo para sus llaves, pero usualmente las
-; keywords (llaves) son mejor.
-; Las keywords son como cadenas de caracteres con algunas ventajas en eficiencia
+; Los mapas pueden usar cualquier tipo para sus claves, pero generalmente las
+; keywords (palabras clave) son lo habitual.
+; Las keywords son parecidas a cadenas de caracteres con algunas ventajas de eficiencia
 (class :a) ; => clojure.lang.Keyword
 
 (def stringmap {"a" 1, "b" 2, "c" 3})
@@ -201,31 +202,31 @@ stringmap  ; => {"a" 1, "b" 2, "c" 3}
 (def keymap {:a 1, :b 2, :c 3})
 keymap ; => {:a 1, :c 3, :b 2}
 
-; Por cierto, las comas son siempre tratadas como espacios en blanco y no hacen
+; Por cierto, las comas son equivalentes a espacios en blanco y no hacen
 ; nada.
 
-; Recupera un valor de un mapa tratando la como una función
+; Recupera un valor de un mapa tratandolo como una función
 (stringmap "a") ; => 1
 (keymap :a) ; => 1
 
 ; ¡Las keywords pueden ser usadas para recuperar su valor del mapa, también!
 (:b keymap) ; => 2
 
-; No intentes ésto con cadenas de caracteres.
+; No lo intentes con strings.
 ;("a" stringmap)
 ; => Exception: java.lang.String cannot be cast to clojure.lang.IFn
 
-; Recuperando un valor no presente regresa nil
+; Si preguntamos por una clave que no existe nos devuelve nil
 (stringmap "d") ; => nil
 
-; Usa assoc para agregar nuevas llaves a los mapas de Hash
+; Usa assoc para añadir nuevas claves a los mapas de Hash
 (def newkeymap (assoc keymap :d 4))
 newkeymap ; => {:a 1, :b 2, :c 3, :d 4}
 
-; Pero recuerda, ¡los tipos de clojure son inmutables!
+; Pero recuerda, ¡los tipos de Clojure son inmutables!
 keymap ; => {:a 1, :b 2, :c 3}
 
-; Usa dissoc para remover llaves
+; Usa dissoc para eliminar llaves
 (dissoc keymap :a :b) ; => {:c 3}
 
 ; Conjuntos
@@ -234,70 +235,70 @@ keymap ; => {:a 1, :b 2, :c 3}
 (class #{1 2 3}) ; => clojure.lang.PersistentHashSet
 (set [1 2 3 1 2 3 3 2 1 3 2 1]) ; => #{1 2 3}
 
-; Agrega un miembro con conj
+; Añade un elemento con conj
 (conj #{1 2 3} 4) ; => #{1 2 3 4}
 
-; Remueve uno con disj
+; Elimina elementos con disj
 (disj #{1 2 3} 1) ; => #{2 3}
 
-; Comprueba la existencia tratando al conjunto como una función:
+; Comprueba su existencia usando el conjunto como una función:
 (#{1 2 3} 1) ; => 1
 (#{1 2 3} 4) ; => nil
 
-; Hay más funciones en el espacio de nombre clojure.sets
+; Hay más funciones en el namespace clojure.sets
 
 ; Patrones útiles
 ;;;;;;;;;;;;;;;;;
 
-; Las construcciones lógicas en clojure son macros, y tienen el mismo aspecto
-; que todo lo demás
+; Las construcciones lógicas en clojure son macros, y presentan el mismo aspecto
+; que el resto de forms.
 (if false "a" "b") ; => "b"
 (if false "a") ; => nil
 
-; Usa let para crear una binding (asociación) temporal
+; Usa let para crear un binding (asociación) temporal
 (let [a 1 b 2]
   (> a b)) ; => false
 
-; Agrupa expresiones con do
+; Agrupa expresiones mediante do
 (do
   (print "Hello")
   "World") ; => "World" (prints "Hello")
 
-; Las funciones tienen un do implicito
+; Las funciones tienen implicita la llamada a do
 (defn print-and-say-hello [name]
   (print "Saying hello to " name)
   (str "Hello " name))
 (print-and-say-hello "Jeff") ;=> "Hello Jeff" (prints "Saying hello to Jeff")
 
-; De igual forma let
+; Y el let también
 (let [name "Urkel"]
   (print "Saying hello to " name)
   (str "Hello " name)) ; => "Hello Urkel" (prints "Saying hello to Urkel")
 
-; Modulos
+; Módulos
 ;;;;;;;;;;;;;;;
 
-; Usa use para obtener todas las funciones del modulo
+; Usa use para obtener todas las funciones del módulo
 (use 'clojure.set)
 
-; Ahora podemos usar operaciones de conjuntos
+; Ahora podemos usar más operaciones de conjuntos
 (intersection #{1 2 3} #{2 3 4}) ; => #{2 3}
 (difference #{1 2 3} #{2 3 4}) ; => #{1}
 
 ; Puedes escoger un subgrupo de funciones a importar, también
 (use '[clojure.set :only [intersection]])
 
-; Usa require para importar un modulo
+; Usa require para importar un módulo
 (require 'clojure.string)
 
-; Usa / para llamar funciones de un modulo
-; Aquí, el modulo es clojure.string y la función es blank?
+; Usa / para llamar a las funciones de un módulo
+; Aquí, el módulo es clojure.string y la función es blank?
 (clojure.string/blank? "") ; => true
 
 ; Puedes asignarle una abreviatura a un modulo al importarlo
 (require '[clojure.string :as str])
 (str/replace "This is a test." #"[a-o]" str/upper-case) ; => "THIs Is A tEst."
-; (#"" es una expresión regular literal)
+; (#"" es una expresión regular)
 
 ; Puedes usar require (y use, pero no lo hagas) desde un espacio de nombre
 ; usando :require,
@@ -311,10 +312,10 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; Java
 ;;;;;;;;;;;;;;;;;
 
-; Java tiene una enorme y útil librería estándar, así que
-; querrás aprender como llegar a ella.
+; Java tiene una enorme librería estándar, por lo que resulta util
+; aprender como interactuar con ella.
 
-; Usa import para cargar un modulo de java
+; Usa import para cargar un módulo de java
 (import java.util.Date)
 
 ; Puedes importar desde un ns también.
@@ -325,7 +326,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; Usa el nombre de la clase con un "." al final para crear una nueva instancia
 (Date.) ; <un objeto Date>
 
-; Usa "." para llamar a métodos. O, usa el atajo ".método"
+; Usa "." para llamar a métodos o usa el atajo ".método"
 (. (Date.) getTime) ; <un timestamp>
 (.getTime (Date.)) ; exactamente la misma cosa
 
@@ -341,11 +342,11 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; STM
 ;;;;;;;;;;;;;;;;;
 
-; Software Transactional Memory es un mecanismo que clojure usa para manejar
-; el estado persistente. Hay algunas cuantas construcciones en clojure que
-; usan esto.
+; Software Transactional Memory es un mecanismo que usa clojure para gestionar
+; el estado persistente. Hay unas cuantas construcciones en clojure que
+; hacen uso de este mecanismo.
 
-; Un atom es el más simple. Dale una valor inicial
+; Un atom es el más sencillo. Se le da un valor inicial
 (def my-atom (atom {}))
 
 ; Actualiza un atom con swap!
@@ -354,11 +355,11 @@ keymap ; => {:a 1, :b 2, :c 3}
 (swap! my-atom assoc :a 1) ; Establece my-atom al resultado de (assoc {} :a 1)
 (swap! my-atom assoc :b 2) ; Establece my-atom al resultado de (assoc {:a 1} :b 2)
 
-; Usa '@' para no referenciar al atom y obtener su valor
+; Usa '@' para no referenciar al atom sino para obtener su valor
 my-atom  ;=> Atom<#...> (Regresa el objeto Atom)
 @my-atom ; => {:a 1 :b 2}
 
-; Aquí está un simple contador usando un atom
+; Un sencillo contador usando un atom sería
 (def counter (atom 0))
 (defn inc-counter []
   (swap! counter inc))
@@ -371,25 +372,22 @@ my-atom  ;=> Atom<#...> (Regresa el objeto Atom)
 
 @counter ; => 5
 
-; Otros constructores STM son refs y agents.
+; Otros forms que utilizan STM son refs y agents.
 ; Refs: http://clojure.org/refs
 ; Agents: http://clojure.org/agents
-```
-
 ### Lectura adicional
 
-Ésto queda lejos de ser exhaustivo, pero espero que sea suficiente para
-encaminarte.
+Ésto queda lejos de ser exhaustivo, pero espero que sea suficiente para que puedas empezar tu camino.
 
 Clojure.org tiene muchos artículos:
 [http://clojure.org/](http://clojure.org/)
 
-Clojuredocs.org tiene documentación con ejemplos para la mayoría de
-funciones core:
+Clojuredocs.org contiene documentación con ejemplos para la mayoría de
+funciones principales (pertenecientes al core):
 [http://clojuredocs.org/quickref/Clojure%20Core](http://clojuredocs.org/quickref/Clojure%20Core)
 
-4Clojure es una grandiosa forma de fortalecer tus habilidades con clojure/FP:
+4Clojure es una genial forma de mejorar tus habilidades con clojure/FP:
 [http://www.4clojure.com/](http://www.4clojure.com/)
 
-Clojure-doc.org (sí, de verdad) tiene un número de artículos para empezar:
+Clojure-doc.org (sí, de verdad) tiene un buen número de artículos con los que iniciarse en Clojure:
 [http://clojure-doc.org/](http://clojure-doc.org/)
