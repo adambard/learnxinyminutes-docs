@@ -1,7 +1,8 @@
 ---
 language: javascript
-author: Adam Brenecki
-author_url: http://adam.brenecki.id.au
+contributors:
+    - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+filename: javascript.js
 ---
 
 Javascript was created by Netscape's Brendan Eich in 1995. It was originally
