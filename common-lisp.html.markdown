@@ -619,4 +619,4 @@ nil                  ; for false - and the empty list
 Lots of thanks to the Scheme people for rolling up a great starting
 point which could be easily moved to Common Lisp.
 
-- [Paul Khoung](https://github.com/pkhuong) for some great reviewing.
+- [Paul Khuong](https://github.com/pkhuong) for some great reviewing.
