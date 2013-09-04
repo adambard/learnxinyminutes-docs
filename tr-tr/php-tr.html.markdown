@@ -67,6 +67,9 @@ $float = 1.234;
 $float = 1.2e3;
 $float = 7E-10;
 
+// Değişken Silmek
+unset($int1)
+
 // Aritmetik
 $sum        = 1 + 1; // 2
 $difference = 2 - 1; // 1
@@ -182,6 +185,13 @@ echo $z; // => 2
 $y = 0;
 echo $x; // => 2
 echo $z; // => 0
+
+// Dump'lar değişkenin tipi ve değerini yazdırır
+var_dump($z); // int(0) yazdırılacaktır
+
+// Print'ler ise değişkeni okunabilir bir formatta yazdıracaktır. 
+print_r($array); // Çıktı: Array ( [0] => One [1] => Two [2] => Three )
+
 
 /********************************
  * Mantık
@@ -478,9 +488,17 @@ class MyClass
         print 'MyClass';
     }
 
+    //final anahtar kelimesi bu metodu override edilemez yapacaktır.
     final function youCannotOverrideMe()
     {
     }
+
+/*
+Bir sınıfın özelliğini ya da metodunu statik yaptığınız takdirde sınıfın bir 
+objesini oluşturmadan bu elemana erişebilirsiniz. Bir özellik statik tanımlanmış 
+ise obje üzerinden bu elemana erişilemez. (Statik metodlar öyle değildir.)
+*/
+
 
     public static function myStaticMethod()
     {
