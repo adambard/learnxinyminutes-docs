@@ -1,4 +1,4 @@
----
+﻿---
 name: Go
 category: language
 language: Go
@@ -259,7 +259,7 @@ func learnConcurrency() {
     // that are ready to communicate.
     select {
     case i := <-c: // the value received can be assigned to a variable
-        fmt.Println("it's a", i)
+        fmt.Printf("it's a %T", i)
     case <-cs: // or the value received can be discarded
         fmt.Println("it's a string")
     case <-cc: // empty channel, not ready for communication.
