@@ -136,6 +136,10 @@ local g; g  = function (x) return math.sin(x) end
 -- Calls with one string param don't need parens:
 print 'hello'  -- Works fine.
 
+-- Calls with one table param don't need parens
+-- either (more on tables below):
+print {} -- Works fine too.
+
 
 ----------------------------------------------------
 -- 3. Tables.
