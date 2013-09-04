@@ -210,7 +210,19 @@ public class LearnJava {
             //Iterated 10 times, fooFor 0->9
         }
         System.out.println("fooFor Value: " + fooFor);
-
+        
+        // For Each Loop
+        // An automatic iteration through an array or list of objects.
+        int[] fooList = {1,2,3,4,5,6,7,8,9};
+        //for each loop structure => for(<object> : <array_object>)
+        //reads as: for each object in the array
+        //note: the object type must match the array.
+        
+        for( int bar : fooList ){
+            //System.out.println(bar);
+            //Iterates 9 times and prints 1-9 on new lines
+        }
+        
         // Switch Case
         // A switch works with the byte, short, char, and int data types.
         // It also works with enumerated types (discussed in Enum Types),
