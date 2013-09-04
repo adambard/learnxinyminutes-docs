@@ -4,7 +4,7 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
     - ["Ovidiu Ciule", "https://github.com/ociule"] lang: ro-ro filename: python-ro.html.markdown
-filename: learnpython.py
+filename: learnpython-ro.py
 ---
 
 Python a fost creat de Guido Van Rossum la începutul anilor '90. Python a devenit astăzi unul din
