@@ -110,7 +110,7 @@ namespace Learning
             Console.WriteLine(fooString);
 
             // formatting
-            string fooFs = string.Format("Check Check, {0} {1}, {0} {1:0.0}", 1, 2);
+            string fooFormattedString = string.Format("Check Check, {0} {1}, {0} {1:0.0}", 1, 2);
             Console.WriteLine(fooFormattedString);
 
             // formatting dates
