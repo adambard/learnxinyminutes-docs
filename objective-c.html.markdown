@@ -223,7 +223,7 @@ int main (int argc, const char * argv[])
 // }
 // -/+ (type) Method declarations;
 // @end
-@interface MyClass : NSObject <MyCustomProtocol>
+@interface MyClass : NSObject <MyProtocol>
 {
     int count;
     id data;
@@ -248,7 +248,7 @@ int main (int argc, const char * argv[])
 
 // Implement the methods in an implementation (MyClass.m) file:
 
-@implementation UserObject
+@implementation MyClass
 
 // Call when the object is releasing
 - (void)dealloc
