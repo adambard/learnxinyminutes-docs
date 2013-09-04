@@ -241,7 +241,7 @@ int main (int argc, const char * argv[])
 + (NSString *)classMethod;
 
 // - for instance method
-- (NSString *)instanceMethodWithParmeter:(NSString *)string;
+- (NSString *)instanceMethodWithParameter:(NSString *)string;
 - (NSNumber *)methodAParameterAsString:(NSString*)string andAParameterAsNumber:(NSNumber *)number;
 
 @end
@@ -271,7 +271,7 @@ int main (int argc, const char * argv[])
     return [[self alloc] init];
 }
 
-- (NSString *)instanceMethodWithParmeter:(NSString *)string
+- (NSString *)instanceMethodWithParameter:(NSString *)string
 {
     return @"New string";
 }
