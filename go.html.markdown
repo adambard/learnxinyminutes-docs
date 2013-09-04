@@ -46,7 +46,7 @@ func main() {
 }
 
 // Functions have parameters in parentheses.
-// If there are no parameters, empty parens are still required.
+// If there are no parameters, empty parentheses are still required.
 func beyondHello() {
     var x int // Variable declaration.  Variables must be declared before use.
     x = 3     // Variable assignment.
