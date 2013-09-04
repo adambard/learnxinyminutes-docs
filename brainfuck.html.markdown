@@ -1,11 +1,12 @@
 ---
 language: brainfuck
 contributors:
-    - ["Prajit Ramachandran", "http://prajitr.github.io"]
+    - ["Prajit Ramachandran", "http://prajitr.github.io/"]
+    - ["Mathias Bynens", "http://mathiasbynens.be/"]
 ---
 
-Brainfuck is an extremely minimal programming language (just 8 commands) and 
-is Turing complete.
+Brainfuck (not capitalized except at the start of a sentence) is an extremely
+minimal Turing-complete programming language with just 8 commands.
 
 ```
 Any character not "><+-.,[]" (excluding quotation marks) is ignored.
@@ -27,7 +28,7 @@ There are eight commands:
 
 [ and ] form a while loop. Obviously, they must be balanced.
 
-Let's look at some basic Brainfuck programs.
+Let's look at some basic brainfuck programs.
 
 ++++++ [ > ++++++++++ < - ] > +++++ .
 
@@ -45,20 +46,17 @@ print cell #2's value. 65 is 'A' in ASCII, so 'A' is printed to the terminal.
 
 , [ > + < - ] > .
 
-This program reads a character from the user input, copies the character into
-another cell, and prints out the same character.
-
-, reads in a character from the user into cell #1. Then we start a loop. Move
-to cell #2, increment the value at cell #2, move back to cell #1, and decrement
-the value at cell #1. This continues on until cell #1 is 0, and cell #2 holds
-cell #1's old value. Because we're on cell #1 at the end of the loop, move to
-cell #2, and then print out the value in ASCII.
+This program reads a character from the user input and copies the character into
+cell #1. Then we start a loop. Move to cell #2, increment the value at cell #2,
+move back to cell #1, and decrement the value at cell #1. This continues on
+until cell #1 is 0, and cell #2 holds cell #1's old value. Because we're on
+cell #1 at the end of the loop, move to cell #2, and then print out the value
+in ASCII.
 
 Also keep in mind that the spaces are purely for readibility purposes. You 
-could just as easily write it as
+could just as easily write it as:
 
 ,[>+<-]>.
-
 
 Try and figure out what this program does:
 
@@ -73,7 +71,7 @@ problem: at the end of the inner loop, cell #2 is zero. To solve this problem,
 we also increment cell #4, and then recopy cell #4 into cell #2.
 ```
 
-And that's Brainfuck. Not that hard, eh? For fun, you can write your own 
-Brainfuck programs, or you can write a Brainfuck interpreter in another 
+And that's brainfuck. Not that hard, eh? For fun, you can write your own 
+brainfuck programs, or you can write a brainfuck interpreter in another 
 language. The interpreter is fairly simple to implement, but if you're a
-masochist, trying writing a Brainfuck interpreter... in Brainfuck.
+masochist, try writing a brainfuck interpreter… in brainfuck.
