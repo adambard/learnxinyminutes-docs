@@ -160,7 +160,7 @@ int main (int argc, const char * argv[])
     int jj;
     for (jj=0; jj < 4; jj++)
     {
-        NSLog(@"%d,", jj++);
+        NSLog(@"%d,", jj);
     } // => prints "0," 
       //           "1,"
       //           "2,"
@@ -223,7 +223,7 @@ int main (int argc, const char * argv[])
 // }
 // -/+ (type) Method declarations;
 // @end
-@interface MyClass : NSObject <MyCustomProtocol>
+@interface MyClass : NSObject <MyProtocol>
 {
     int count;
     id data;
@@ -241,14 +241,14 @@ int main (int argc, const char * argv[])
 + (NSString *)classMethod;
 
 // - for instance method
-- (NSString *)instanceMethodWithParmeter:(NSString *)string;
+- (NSString *)instanceMethodWithParameter:(NSString *)string;
 - (NSNumber *)methodAParameterAsString:(NSString*)string andAParameterAsNumber:(NSNumber *)number;
 
 @end
 
 // Implement the methods in an implementation (MyClass.m) file:
 
-@implementation UserObject
+@implementation MyClass
 
 // Call when the object is releasing
 - (void)dealloc
@@ -271,7 +271,7 @@ int main (int argc, const char * argv[])
     return [[self alloc] init];
 }
 
-- (NSString *)instanceMethodWithParmeter:(NSString *)string
+- (NSString *)instanceMethodWithParameter:(NSString *)string
 {
     return @"New string";
 }
