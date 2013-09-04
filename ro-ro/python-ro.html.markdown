@@ -12,7 +12,6 @@ cele mai populare limbaje de programare. M-am indrăgostit de Python pentru clar
 Python este aproape pseudocod executabil.
 
 Opinia dumneavoastră este binevenită! Puteţi sa imi scrieţi la [@ociule](http://twitter.com/ociule) sau ociule [at] [google's email service]
-Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
 
 Notă: Acest articol descrie Python 2.7, dar este util şi pentru Python 2.x. O versiune Python 3 va apărea
 în curând, în limba engleză mai întâi.
@@ -474,7 +473,7 @@ dir(math)
 
 ## Doriţi mai mult?
 
-### Gratis online, in limba engleză
+### Gratis online, în limba engleză
 
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
@@ -482,7 +481,7 @@ dir(math)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
 * [Python Module of the Week](http://pymotw.com/2/)
 
-### Cărţi
+### Cărţi, în limba engleză
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
