@@ -251,7 +251,7 @@ func learnConcurrency() {
     fmt.Println(<-c, <-c, <-c) // channel on right, <- is "receive" operator.
 
     cs := make(chan string)       // another channel, this one handles strings.
-    cc := make(chan chan string)  // a channel of channels.
+    cc := make(chan chan string)  // a channel of string channels.
     go func() { c <- 84 }()       // start a new goroutine just to send a value
     go func() { cs <- "wordy" }() // again, for cs this time
     // Select has syntax like a switch statement but each case involves
