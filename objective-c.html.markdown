@@ -160,7 +160,7 @@ int main (int argc, const char * argv[])
     int jj;
     for (jj=0; jj < 4; jj++)
     {
-        NSLog(@"%d,", jj++);
+        NSLog(@"%d,", jj);
     } // => prints "0," 
       //           "1,"
       //           "2,"
