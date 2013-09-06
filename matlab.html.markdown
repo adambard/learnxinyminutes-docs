@@ -250,7 +250,11 @@ eig(A) %Eigenvalues and eigenvectors of A
 isempty(A) % Tests if array is empty
 isequal(A, B) %Tests equality of two arrays
 numel(A) %Number of elements in matrix
-
+triu(x) % Returns the upper triangular part of x
+tril(x) % Returns the lower triangular part of x
+cross(A,B) %  Returns the cross product of the vectors A and B
+dot(A,B) % Returns the scalar product of the vectors A and B.  A and B must be vectors of the same length.
+transpose(A) % Returns the transpose of A
 
 
 ```
