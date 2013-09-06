@@ -256,6 +256,17 @@ cross(A,B) %  Returns the cross product of the vectors A and B
 dot(A,B) % Returns the scalar product of the vectors A and B.  A and B must be vectors of the same length.
 transpose(A) % Returns the transpose of A
 
+% Common vector functions
+max     %largest component 
+min     %smallest component 
+length  %length of a vector
+sort    %sort in ascending order 
+sum     %sum of elements 
+prod    %product of elements 
+median  %median value 
+mean    %mean value 
+std     %standard deviation
+
 
 ```
 
