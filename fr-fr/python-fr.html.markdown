@@ -11,8 +11,8 @@ fichier: learnpython.py
 
 ---
 
-Python a été créé par Guido Van Rossum au début des années 90. C'est maintenant un des langages de promgrammation les plus populaires.
-Je suis tombé amoureux de Python de par la clarité de sa syntaxe. C'est pratiquement du pseudo-code exécutable.
+Python a été créé par Guido Van Rossum au début des années 90. C'est maintenant un des langages de programmation les plus populaires.
+Je suis tombé amoureux de Python de par la clarté de sa syntaxe. C'est pratiquement du pseudo-code exécutable.
 
 Vos retours sont grandement appréciés. Vous pouvez me contacter sur Twitter [@louiedinh](http://twitter.com/louiedinh) ou par e-mail: louiedinh [at] [google's email service]
 
@@ -21,9 +21,9 @@ Vous pourrez bientôt trouver un article pour Python 3!
 
 ```python
 # Une ligne simple de commentaire commence par un dièse
-""" Les lignes de commenatires multipes peut être écrite
-    en utilisant 3 '"', et sont souvent utilisées
-    pour commenter
+""" Les lignes de commenatires multipes peuvent être écrites
+    en utilisant 3 guillemets ("), et sont souvent utilisées
+    pour les commentaires
 """
 
 ####################################################
@@ -39,12 +39,12 @@ Vous pourrez bientôt trouver un article pour Python 3!
 10 * 2 #=> 20
 35 / 5 #=> 7
 
-# La division est un peu spéciale. C'est une division d' "int", et Python arrondi le résultat par défaut automatiquement.
+# La division est un peu spéciale. C'est une division d'entiers, et Python arrondi le résultat par défaut automatiquement.
 5 / 2 #=> 2
 
 # Pour corriger ce problème, on utilise les float.
 2.0     # Voici un float
-11.0 / 4.0 #=> 2.75 ahhh...beaucoup mieux
+11.0 / 4.0 #=> 2.75 ahhh... beaucoup mieux
 
 # Forcer la priorité avec les parenthèses
 (1 + 3) * 2 #=> 8
@@ -82,7 +82,7 @@ not False #=> True
 # On peut aussi les "additioner" !
 "Hello " + "world!" #=> "Hello world!"
 
-# Une chaîne peut être traiter comme une liste de caractères
+# Une chaîne peut être traitée comme une liste de caractères
 "C'est une chaîne"[0] #=> 'C'
 
 # % peut être utilisé pour formatter des chaîne, comme ceci:
