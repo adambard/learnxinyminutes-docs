@@ -11,8 +11,8 @@ fichier: learnpython.py
 
 ---
 
-Python a été créé par Guido Van Rossum au début des années 90. C'est maintenant un des langages de promgrammation les plus populaires.
-Je suis tombé amoureux de Python de par la clarité de sa syntaxe. C'est pratiquement du pseudo-code exécutable.
+Python a été créé par Guido Van Rossum au début des années 90. C'est maintenant un des langages de programmation les plus populaires.
+Je suis tombé amoureux de Python de par la clarté de sa syntaxe. C'est pratiquement du pseudo-code exécutable.
 
 Vos retours sont grandement appréciés. Vous pouvez me contacter sur Twitter [@louiedinh](http://twitter.com/louiedinh) ou par e-mail: louiedinh [at] [google's email service]
 
@@ -21,9 +21,9 @@ Vous pourrez bientôt trouver un article pour Python 3!
 
 ```python
 # Une ligne simple de commentaire commence par un dièse
-""" Les lignes de commenatires multipes peut être écrite
-    en utilisant 3 '"', et sont souvent utilisées
-    pour commenter
+""" Les lignes de commenatires multipes peuvent être écrites
+    en utilisant 3 guillemets ("), et sont souvent utilisées
+    pour les commentaires
 """
 
 ####################################################
@@ -39,12 +39,12 @@ Vous pourrez bientôt trouver un article pour Python 3!
 10 * 2 #=> 20
 35 / 5 #=> 7
 
-# La division est un peu spéciale. C'est une division d' "int", et Python arrondi le résultat par défaut automatiquement.
+# La division est un peu spéciale. C'est une division d'entiers, et Python arrondi le résultat par défaut automatiquement.
 5 / 2 #=> 2
 
 # Pour corriger ce problème, on utilise les float.
 2.0     # Voici un float
-11.0 / 4.0 #=> 2.75 ahhh...beaucoup mieux
+11.0 / 4.0 #=> 2.75 ahhh... beaucoup mieux
 
 # Forcer la priorité avec les parenthèses
 (1 + 3) * 2 #=> 8
@@ -82,13 +82,13 @@ not False #=> True
 # On peut aussi les "additioner" !
 "Hello " + "world!" #=> "Hello world!"
 
-# Une chaîne peut être traiter comme une liste de caractères
+# Une chaîne peut être traitée comme une liste de caractères
 "C'est une chaîne"[0] #=> 'C'
 
 # % peut être utilisé pour formatter des chaîne, comme ceci:
 "%s can be %s" % ("strings", "interpolated")
 
-# Une nouvelle manière de formatter les chaînes de caractères est d'utiliser la méthode 'format'
+# Une autre manière de formatter les chaînes de caractères est d'utiliser la méthode 'format'
 # C'est la méthode à privilégier
 "{0} peut être {1}".format("La chaîne", "formattée")
 # On peut utiliser des mot-clés au lieu des chiffres.
@@ -102,8 +102,8 @@ None #=> None
 "etc" is None #=> False
 None is None  #=> True
 
-# L'opérateur 'is' test l'identité de l'objet.
-# Ce n'est pas très utilse avec les types primitifs, mais cela peut être très util
+# L'opérateur 'is' teste l'identité de l'objet.
+# Ce n'est pas très utilisé avec les types primitifs, mais cela peut être très utile
 # lorsque l'on utilise des objets.
 
 # None, 0, et les chaînes de caractères vides valent False.
@@ -116,7 +116,7 @@ None is None  #=> True
 ## 2. Variables et Collections
 ####################################################
 
-# Afficher, c'est facile
+# Afficher du texte, c'est facile
 print "Je suis Python. Enchanté!"
 
 
@@ -133,7 +133,7 @@ some_other_var  # Lève une exception
 
 # Listes
 li = []
-# On peut utiliser une liste pré-remplie.
+# On peut remplir liste dès l'instanciation
 other_li = [4, 5, 6]
 
 # On ajoute des éléments avec 'append'
@@ -147,29 +147,29 @@ li.pop()        #=> 3 et li contient [1, 2, 4]
 # Remettons-le dans la liste
 li.append(3)    # li contient [1, 2, 4, 3] de nouveau.
 
-# On accède aux éléments d'une liste comme pour un tableau.
+# On accède aux éléments d'une liste comme à ceux un tableau.
 li[0] #=> 1
 # Le dernier élément
 li[-1] #=> 3
 
-# Accèder aux indes hors limite lève une exception
+# Accèder aux indices hors limite lève une exception
 li[4] # Lève un 'IndexError'
 
 # On peut accèder à des rangs de valeurs avec la syntaxe "slice"
 # (C'est un rang de type 'fermé/ouvert' pour les plus matheux)
 li[1:3] #=> [2, 4]
-# Ne pas spécifier de début de rang
+# Sans spécifier de début de rang
 li[2:] #=> [4, 3]
-# Ne pas spécifier de fin de rang
+# Sans spécifier de fin de rang
 li[:3] #=> [1, 2, 4]
 
-# Retirer un élément spécifique dee la lsite avec "del"
+# Retirer un élément spécifique dee la liste avec "del"
 del li[2] # li contient [1, 2, 3]
 
 # On peut additionner des listes entre elles
 li + other_li #=> [1, 2, 3, 4, 5, 6] - Note: li et other_li existent toujours à part entière
 
-# Concatener des listes avec "extend()"
+# Concaténer des listes avec "extend()"
 li.extend(other_li) # li vaut maintenant [1, 2, 3, 4, 5, 6]
 
 # Vérifier l'existence d'un élément dans une liste avec "in"
@@ -179,7 +179,7 @@ li.extend(other_li) # li vaut maintenant [1, 2, 3, 4, 5, 6]
 len(li) #=> 6
 
 
-# Les "tuples", sont comme des listes, mais sont immuables.
+# Les "tuples" sont comme des listes, mais sont immuables.
 tup = (1, 2, 3)
 tup[0] #=> 1
 tup[0] = 3  # Lève un 'TypeError'
@@ -190,15 +190,15 @@ tup + (4, 5, 6) #=> (1, 2, 3, 4, 5, 6)
 tup[:2] #=> (1, 2)
 2 in tup #=> True
 
-# Vous pouvez "dé-packager" les tupels (ou les listes) dans des variables
+# Vous pouvez "dé-packager" les tuples (ou les listes) dans des variables
 a, b, c = (1, 2, 3)     # a vaut maintenant 1, b vaut maintenant 2 and c vaut maintenant 3
 # Sans parenthèses, un tuple est créé par défaut
 d, e, f = 4, 5, 6
-# Voyez maintenant comme il est facile d'inverse 2 valeurs
+# Voyez maintenant comme il est facile d'inverser 2 valeurs
 e, d = d, e     # d is now 5 and e is now 4
 
 
-# Dictionaires
+# Dictionnaires
 empty_dict = {}
 # Un dictionnaire pré-rempli
 filled_dict = {"one": 1, "two": 2, "three": 3}
@@ -208,8 +208,8 @@ filled_dict["one"] #=> 1
 
 # Récupérer toutes les clés sous forme de liste avec "keys()"
 filled_dict.keys() #=> ["three", "two", "one"]
-# Note - l'odre des clés du dictionnaire n'est pas garanti.
-# Vos résultats peuvent différer de ceux ci-dessous.
+# Note - l'ordre des clés du dictionnaire n'est pas garanti.
+# Vos résultats peuvent différer de ceux ci-dessus.
 
 # Récupérer toutes les valeurs sous forme de liste avec "values()"
 filled_dict.values() #=> [3, 2, 1]
@@ -219,7 +219,7 @@ filled_dict.values() #=> [3, 2, 1]
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
 
-# Chercher une clé non existence lève une 'KeyError'
+# Chercher une clé non existante lève une 'KeyError'
 filled_dict["four"] # KeyError
 
 # Utiliser la méthode "get()" pour éviter 'KeyError'
@@ -255,7 +255,7 @@ filled_set | other_set #=> {1, 2, 3, 4, 5, 6}
 # Différence de sets avec -
 {1,2,3,4} - {2,3,5} #=> {1, 4}
 
-# Vérifier l'existene d'une valeur dans un set avec "in"
+# Vérifier l'existence d'une valeur dans un set avec "in"
 2 in filled_set #=> True
 10 in filled_set #=> False
 
@@ -273,12 +273,12 @@ if some_var > 10:
     print "some_var est supérieur à 10."
 elif some_var < 10:    # La clause elif est optionnelle
     print "some_var iinférieur à 10."
-else:           # Optionnel également
+else:           # La clause else également
     print "some_var vaut 10."
 
 
 """
-Les boucles "for" font des itérations sur les listes
+Les boucles "for" permettent d'itérer sur les listes
 Affiche:
     chien : mammifère
     chat : mammifère
@@ -301,7 +301,7 @@ for i in range(4):
     print i
 
 """
-Les boucles "while" boucle jusqu'à ce qu'une condition ne soit plus vraie
+Les boucles "while" boucle jusqu'à ce que leur condition ne soit plus vraie
 Affiche:
     0
     1
@@ -345,7 +345,7 @@ def varargs(*args):
 varargs(1, 2, 3) #=> (1,2,3)
 
 
-# Ont peut également définir une fonction qui prend un nombrenumber of
+# On peut également définir une fonction qui prend un nombre
 # variable d'arguments
 def keyword_args(**kwargs):
     return kwargs
@@ -395,10 +395,10 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 ## 5. Classes
 ####################################################
 
-# Une classe hérite d'un objet
+# Une classe est un objet
 class Human(object):
 
-    # L'attribut d'une classe. Il est partagé par toutes les instances de cette classe.
+    # Un attribut de classe. Il est partagé par toutes les instances de cette classe.
     species = "H. sapiens"
 
     # Initialiseur basique
