@@ -223,7 +223,7 @@ void main(string[] args) {
     void writeS() { writeln "$s"; }
   }
   C cc = new C;
-  // c is a *reference* to C. Classes are always references.
+  // cc is a *reference* to C. Classes are always references.
   cc.a = 5; // Always used for property access.
   auto ccp = &cc;
   (*ccp).a = 6;
