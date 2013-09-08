@@ -22,7 +22,7 @@ Neat is basically a smaller version of D1 with some experimental syntax and a fo
 +/
 
 // Module name. This has to match the filename/directory.
-module neat;
+module LearnNeat;
 
 // Make names from another module visible in this one.
 import std.file;
