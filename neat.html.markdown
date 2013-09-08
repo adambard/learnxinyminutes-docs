@@ -141,6 +141,30 @@ void main(string[] args) {
   assert !(hewo is s);
   // same as
   assert  (hewo !is s);
+  
+  // Allocate arrays using "new array length"
+  int[] integers = new int[] 10;
+  assert(integers.length == 10);
+  assert(integers[0] == 0); // zero is default initializer
+  integers = integers ~ 5; // This allocates a new array!
+  assert(integers.length == 11);
+  
+  // This is an appender array.
+  // Instead of (length, pointer), it tracks (capacity, length, pointer).
+  // When you append to it, it will use the free capacity if it can.
+  // If it runs out of space, it reallocates - but it will free the old array automatically.
+  // This makes it convenient for building arrays.
+  int[auto~] appender;
+  appender ~= 2;
+  appender ~= 3;
+  appender.free(); // same as {mem.free(appender.ptr); appender = null;}
+  
+  // Scope variables are automatically freed at the end of the current scope.
+  scope int[auto~] someOtherAppender;
+  // This is the same as:
+  int[auto~] someOtherAppender2;
+  onExit { someOtherAppender2.free; }
+  
   // You can do a C for loop too
   // - but why would you want to?
   for (int i = 0; i < 5; ++i) { }
