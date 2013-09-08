@@ -83,7 +83,7 @@ void main(string[] args) {
   // (implicit casts)
   float f = float:5;
   float f2 = 5; // would also work
-  // casts that require throwing away information -
+  // casts that require throwing away information or complicated computation -
   // those must always be done explicitly
   // (conversion casts)
   int i = int:f;
