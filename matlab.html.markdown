@@ -1,7 +1,7 @@
 ---
 language: Matlab
 contributors:
-    - ["mendozao", "http://github.com/mendozao"]
+    - ["mendozao", "http://github.com/mendozao "]
 ---
 
 Matlab stands for Matrix Laboratory. It is a powerful numerical computing language commonly used in engineering and mathematics.  
