@@ -48,7 +48,8 @@ func main() {
 // Las funciones llevan parámetros entre paréntesis.
 // Si no hay parámetros, los paréntesis siguen siendo obligatorios.
 func beyondHello() {
-    var x int // Declaración de una variable. Las variables se deben declarar antes de 			  // utilizarlas.
+    var x int // Declaración de una variable. Las variables se deben declarar antes de 
+    // utilizarlas.
     x = 3     // Asignación de variables.
     // Declaración "corta" con := para inferir el tipo, declarar y asignar.
     y := 4
@@ -92,33 +93,33 @@ saltos de línea.` // mismo tipo cadena
     var d2 [][]float64      // solo declaración, sin asignación
     bs := []byte("a slice") // sintaxis de conversión de tipo
 
-    p, q := learnMemory() // declares p, q to be type pointer to int.
-    fmt.Println(*p, *q)   // * follows a pointer.  This prints two ints.
+    p, q := learnMemory() // declara p, q para ser un tipo puntero a int.
+    fmt.Println(*p, *q)   // * sigue un puntero. Esto imprime dos ints.
 
-    // Maps are a dynamically growable associative array type, like the
-    // hash or dictionary types of some other languages.
+    // Los Maps son arrays asociativos dinámicos, como los hash o diccionarios
+    // de otros lenguajes
     m := map[string]int{"three": 3, "four": 4}
     m["one"] = 1
 
-    // Unused variables are an error in Go.
-    // The underbar lets you "use" a variable but discard its value.
+    // Las variables no utilizadas en Go producen error.
+    // El guión bajo permite "utilizar" una variable, pero descartar su valor.
     _, _, _, _, _, _, _, _, _ = s2, g, f, u, pi, n, a3, s4, bs
-    // Output of course counts as using a variable.
+    // Esto cuenta como utilización de variables.
     fmt.Println(s, c, a4, s3, d2, m)
 
-    learnFlowControl() // back in the flow
+    learnFlowControl() // vuelta al flujo
 }
 
-// Go is fully garbage collected.  It has pointers but no pointer arithmetic.
-// You can make a mistake with a nil pointer, but not by incrementing a pointer.
+// Go posee recolector de basura. Tiene puntero pero no aritmética de punteros.
+// Puedes cometer un errores con un puntero nil, pero no incrementando un puntero.
 func learnMemory() (p, q *int) {
-    // Named return values p and q have type pointer to int.
-    p = new(int) // built-in function new allocates memory.
-    // The allocated int is initialized to 0, p is no longer nil.
-    s := make([]int, 20) // allocate 20 ints as a single block of memory
-    s[3] = 7             // assign one of them
-    r := -2              // declare another local variable
-    return &s[3], &r     // & takes the address of an object.
+    // q y p tienen un tipo puntero a int.
+    p = new(int) // función incorporada que asigna memoria.
+    // La asignación de int se inicializa a 0, p ya no es nil.
+    s := make([]int, 20) // asigna 20 ints a un solo bloque de memoria.
+    s[3] = 7             // asignar uno de ellos
+    r := -2              // declarar otra variable local
+    return &s[3], &r     // & toma la dirección de un objeto.
 }
 
 func expensiveComputation() int {
@@ -126,69 +127,69 @@ func expensiveComputation() int {
 }
 
 func learnFlowControl() {
-    // If statements require brace brackets, and do not require parens.
+    // La declaración If requiere llaves, pero no paréntesis.
     if true {
         fmt.Println("told ya")
     }
-    // Formatting is standardized by the command line command "go fmt."
+    // El formato está estandarizado por el comando "go fmt."
     if false {
         // pout
     } else {
         // gloat
     }
-    // Use switch in preference to chained if statements.
+    // Utiliza switch preferiblemente para if encadenados.
     x := 1
     switch x {
     case 0:
     case 1:
-        // cases don't "fall through"
+        // los cases no se mezclan, no requieren de "break"
     case 2:
-        // unreached
+        // no llega
     }
-    // Like if, for doesn't use parens either.
-    for x := 0; x < 3; x++ { // ++ is a statement
+    // Como if, for no utiliza paréntesis tampoco.
+    for x := 0; x < 3; x++ { // ++ es una sentencia
         fmt.Println("iteration", x)
     }
-    // x == 1 here.
+    // x == 1 aqui.
 
-    // For is the only loop statement in Go, but it has alternate forms.
-    for { // infinite loop
-        break    // just kidding
-        continue // unreached
+    // For es la única sentencia de bucle en Go, pero tiene formas alternativas.
+    for { // bucle infinito
+        break    // solo bromeaba!
+        continue // no llega
     }
-    // As with for, := in an if statement means to declare and assign y first,
-    // then test y > x.
+    // Como en for, := en una sentencia if significa declarar y asignar primero,
+    // luego comprobar y > x.
     if y := expensiveComputation(); y > x {
         x = y
     }
-    // Function literals are closures.
+    // Los literales de funciones son "closures".
     xBig := func() bool {
-        return x > 100 // references x declared above switch statement.
+        return x > 100 // referencia a x declarada encima de la sentencia switch.
     }
-    fmt.Println("xBig:", xBig()) // true (we last assigned 1e6 to x)
-    x /= 1e5                     // this makes it == 10
-    fmt.Println("xBig:", xBig()) // false now
+    fmt.Println("xBig:", xBig()) // verdadero (la última vez asignamos 1e6 a x)
+    x /= 1e5                     // esto lo hace  == 10
+    fmt.Println("xBig:", xBig()) // ahora es falso
 
-    // When you need it, you'll love it.
+    // Cuando lo necesites, te encantará.
     goto love
 love:
 
-    learnInterfaces() // Good stuff coming up!
+    learnInterfaces() // Buen material dentro de poco!
 }
 
-// Define Stringer as an interface type with one method, String.
+// Define Stringer como un tipo interfaz con un método, String.
 type Stringer interface {
     String() string
 }
 
-// Define pair as a struct with two fields, ints named x and y.
+// Define pair como un struct con dos campos int, x e y.
 type pair struct {
     x, y int
 }
 
-// Define a method on type pair.  Pair now implements Stringer.
-func (p pair) String() string { // p is called the "receiver"
-    // Sprintf is another public function in package fmt.
+// Define un método del tipo pair. Pair ahora implementa Stringer.
+func (p pair) String() string { // p se llama "recibidor"
+    // Sprintf es otra función pública del paquete fmt.
     // Dot syntax references fields of p.
     return fmt.Sprintf("(%d, %d)", p.x, p.y)
 }
