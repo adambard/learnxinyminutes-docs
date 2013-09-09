@@ -8,11 +8,11 @@ contributors:
 
 translators:
 	- ["Adrian Espinosa", "http://www.adrianespinosa.com"]
-
+lang: es-es
 ---
 
 Go fue creado por la necesidad de hacer el trabajo rápidamente.  No es la última
-tendencia en informática, pero es la forma nueva y más rápida de resolver probemas reales.
+tendencia en informática, pero es la forma nueva y más rápida de resolver problemas reales.
 
 Tiene conceptos familiares de lenguajes imperativos con tipado estático.
 Es rápido compilando y rápido al ejecutar, añade una concurrencia fácil de entender para las CPUs de varios núcleos de hoy en día, y tiene características que ayudan con la programación a gran escala.
@@ -190,111 +190,111 @@ type pair struct {
 // Define un método del tipo pair. Pair ahora implementa Stringer.
 func (p pair) String() string { // p se llama "recibidor"
     // Sprintf es otra función pública del paquete fmt.
-    // Dot syntax references fields of p.
+    // La sintaxis con punto referencia campos de p.
     return fmt.Sprintf("(%d, %d)", p.x, p.y)
 }
 
 func learnInterfaces() {
-    // Brace syntax is a "struct literal."  It evaluates to an initialized
-    // struct.  The := syntax declares and initializes p to this struct.
+    // La sintaxis de llaves es un "literal struct". Evalúa a un struct
+    // inicializado.  La sintaxis := declara e inicializa p a este struct.
     p := pair{3, 4}
-    fmt.Println(p.String()) // call String method of p, of type pair.
-    var i Stringer          // declare i of interface type Stringer.
-    i = p                   // valid because pair implements Stringer
-    // Call String method of i, of type Stringer.  Output same as above.
+    fmt.Println(p.String()) // llamar al método String de p, de tipo pair.
+    var i Stringer          // declarar i como interfaz tipo Stringer.
+    i = p                   // válido porque pair implementa Stringer
+    // Llamar al metodo String de i, de tipo Stringer. Misma salida que arriba
     fmt.Println(i.String())
 
-    // Functions in the fmt package call the String method to ask an object
-    // for a printable representation of itself.
-    fmt.Println(p) // output same as above. Println calls String method.
-    fmt.Println(i) // output same as above
+    // Las funciones en el paquete fmt llaman al método String para preguntar a un objeto
+    // por una versión imprimible de si mismo
+    fmt.Println(p) // salida igual que arriba. Println llama al método String.
+    fmt.Println(i) // salida igual que arriba.
 
     learnErrorHandling()
 }
 
 func learnErrorHandling() {
-    // ", ok" idiom used to tell if something worked or not.
+    // ", ok" forma utilizada para saber si algo funcionó o no.
     m := map[int]string{3: "three", 4: "four"}
-    if x, ok := m[1]; !ok { // ok will be false because 1 is not in the map.
+    if x, ok := m[1]; !ok { // ok será falso porque 1 no está en el map.
         fmt.Println("no one there")
     } else {
-        fmt.Print(x) // x would be the value, if it were in the map.
+        fmt.Print(x) // x sería el valor, si estuviera en el map.
     }
-    // An error value communicates not just "ok" but more about the problem.
-    if _, err := strconv.Atoi("non-int"); err != nil { // _ discards value
-        // prints "strconv.ParseInt: parsing "non-int": invalid syntax"
+    // Un valor de error comunica más información sobre el problema aparte de "ok".
+    if _, err := strconv.Atoi("non-int"); err != nil { // _ descarta el valor
+        // imprime "strconv.ParseInt: parsing "non-int": invalid syntax"
         fmt.Println(err)
     }
-    // We'll revisit interfaces a little later.  Meanwhile,
+    // Revisarmeos las interfaces más tarde. Mientras tanto,
     learnConcurrency()
 }
 
-// c is a channel, a concurrency-safe communication object.
+// c es un canal,  un objeto de comunicación de concurrencia segura.
 func inc(i int, c chan int) {
-    c <- i + 1 // <- is the "send" operator when a channel appears on the left.
+    c <- i + 1 // <- es el operador "enviar" cuando un canal aparece a la izquierda.
 }
 
-// We'll use inc to increment some numbers concurrently.
+// Utilizaremos inc para incrementar algunos números concurrentemente.
 func learnConcurrency() {
-    // Same make function used earlier to make a slice.  Make allocates and
-    // initializes slices, maps, and channels.
+    // Misma función make utilizada antes para crear un slice. Make asigna e
+    // inicializa slices, maps, y channels.
     c := make(chan int)
-    // Start three concurrent goroutines.  Numbers will be incremented
-    // concurrently, perhaps in parallel if the machine is capable and
-    // properly configured.  All three send to the same channel.
-    go inc(0, c) // go is a statement that starts a new goroutine.
+    // Iniciar tres goroutines concurrentes. Los números serán incrementados
+    // concurrentemente, quizás en paralelo si la máquina es capaz y
+    // está correctamente configurada. Las tres envían al mismo channel.
+    go inc(0, c) // go es una sentencia que inicia una nueva goroutine.
     go inc(10, c)
     go inc(-805, c)
-    // Read three results from the channel and print them out.
-    // There is no telling in what order the results will arrive!
-    fmt.Println(<-c, <-c, <-c) // channel on right, <- is "receive" operator.
+    // Leer los tres resultados del channel e imprimirlos.
+    // No se puede saber en que orden llegarán los resultados!
+    fmt.Println(<-c, <-c, <-c) // channel a la derecha, <- es el operador "recibir".
 
-    cs := make(chan string)       // another channel, this one handles strings.
-    cc := make(chan chan string)  // a channel of string channels.
-    go func() { c <- 84 }()       // start a new goroutine just to send a value
-    go func() { cs <- "wordy" }() // again, for cs this time
-    // Select has syntax like a switch statement but each case involves
-    // a channel operation.  It selects a case at random out of the cases
-    // that are ready to communicate.
+    cs := make(chan string)       // otro channel, este gestiona cadenas.
+    cc := make(chan chan string)  // un channel de cadenas de channels.
+    go func() { c <- 84 }()       // iniciar una nueva goroutine solo para enviar un valor.
+    go func() { cs <- "wordy" }() // otra vez, para cs en esta ocasión
+    // Select tiene una sintáxis parecida a la sentencia switch pero cada caso involucra
+    // una operacion de channels. Selecciona un caso de forma aleatoria de los casos
+    // que están listos para comunicarse.
     select {
-    case i := <-c: // the value received can be assigned to a variable
+    case i := <-c: // el valor recibido puede ser asignado a una variable
         fmt.Printf("it's a %T", i)
-    case <-cs: // or the value received can be discarded
+    case <-cs: // o el valor puede ser descartado
         fmt.Println("it's a string")
-    case <-cc: // empty channel, not ready for communication.
+    case <-cc: // channel vacío, no está listo para la comunicación.
         fmt.Println("didn't happen.")
     }
-    // At this point a value was taken from either c or cs.  One of the two
-    // goroutines started above has completed, the other will remain blocked.
+    // En este punto un valor fue devuelvto de c o cs. Uno de las dos
+    // goroutines que se iniciaron se ha completado, la otrá permancerá bloqueada.
 
-    learnWebProgramming() // Go does it.  You want to do it too.
+    learnWebProgramming() // Go lo hace. Tu también quieres hacerlo.
 }
 
-// A single function from package http starts a web server.
+// Una simple función del paquete http inicia un servidor web.
 func learnWebProgramming() {
-    // ListenAndServe first parameter is TCP address to listen at.
-    // Second parameter is an interface, specifically http.Handler.
+    // El primer parámetro de la direccinón TCP a la que escuchar.
+    // El segundo parámetro es una interfaz, concretamente http.Handler.
     err := http.ListenAndServe(":8080", pair{})
-    fmt.Println(err) // don't ignore errors
+    fmt.Println(err) // no ignorar errores
 }
 
-// Make pair an http.Handler by implementing its only method, ServeHTTP.
+// Haz pair un http.Handler implementando su único método, ServeHTTP.
 func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-    // Serve data with a method of http.ResponseWriter
+    // Servir datos con un método de http.ResponseWriter
     w.Write([]byte("You learned Go in Y minutes!"))
 }
 ```
 
-## Further Reading
+## Para leer más 
 
-The root of all things Go is the [official Go web site](http://golang.org/).
-There you can follow the tutorial, play interactively, and read lots.
+La raíz de todas las cosas de Go es la [web oficial de Go](http://golang.org/).
+Ahí puedes seguir el tutorial, jugar interactivamente y leer mucho.
 
-The language definition itself is highly recommended.  It's easy to read
-and amazingly short (as language definitions go these days.)
+La propia definición del lenguaje también está altamente recomendada. Es fácil de leer
+e increíblemente corta (como otras definiciones de lenguajes hoy en día)
 
-On the reading list for students of Go is the source code to the standard
-library.  Comprehensively documented, it demonstrates the best of readable
-and understandable Go, Go style, and Go idioms.  Click on a function name
-in the documentation and the source code comes up!
+En la lista de lectura de estudiantes de Go está el código fuente de la
+librería estándar. Muy bien documentada, demuestra lo mejor de Go leíble, comprendible,
+estilo Go y formas Go. Pincha en el nombre de una función en la documentación
+y te aparecerá el código fuente!
 
