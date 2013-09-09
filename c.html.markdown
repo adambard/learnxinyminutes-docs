@@ -294,7 +294,7 @@ int main() {
     printf("%zu, %zu\n", sizeof(px), sizeof(not_a_pointer));
     // => Prints "8, 4" on a typical 64-bit system
 
-    // To retreive the value at the address a pointer is pointing to,
+    // To retrieve the value at the address a pointer is pointing to,
     // put * in front to de-reference it.
     // Note: yes, it may be confusing that '*' is used for _both_ declaring a
     // pointer and dereferencing it.
