@@ -121,9 +121,9 @@ dependency graph to resolve.
 
 # Testing
 
-Testing is a large of ruby culture. Ruby comes with its own Unit-style testing
-framework called minitest (Or TestUnit for ruby version 1.8.x). There are many
-testing libraries with different goals.
+Testing is a large part of ruby culture. Ruby comes with its own Unit-style
+testing framework called minitest (Or TestUnit for ruby version 1.8.x). There
+are many testing libraries with different goals.
 
 * TestUnit - Ruby 1.8's built-in "Unit-style" testing framework
 * minitest - Ruby 1.9/2.0's built-in testing framework
