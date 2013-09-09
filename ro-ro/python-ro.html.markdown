@@ -3,8 +3,9 @@ language: python
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
-    - ["Ovidiu Ciule", "https://github.com/ociule"] lang: ro-ro filename: python-ro.html.markdown
+    - ["Ovidiu Ciule", "https://github.com/ociule"]
 filename: learnpython-ro.py
+lang: ro-ro
 ---
 
 Python a fost creat de Guido Van Rossum la începutul anilor '90. Python a devenit astăzi unul din

@@ -9,7 +9,7 @@ Neat is basically a smaller version of D1 with some experimental syntax and a fo
 
 [Read more here.](https://github.com/FeepingCreature/fcc/wiki)
 
-```D
+```c
 // single line comments start with //
 /*
   multiline comments look like this

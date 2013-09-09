@@ -1,4 +1,4 @@
-﻿---
+---
 language: elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]

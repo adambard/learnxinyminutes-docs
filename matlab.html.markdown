@@ -10,10 +10,7 @@ If you have any feedback please feel free to reach me at
 [@the_ozzinator](https://twitter.com/the_ozzinator), or
 [osvaldo.t.mendoza@gmail.com](mailto:osvaldo.t.mendoza@gmail.com).
 
-```Matlab
-
-
-
+```matlab
 % Comments start with a percent sign.
 
 %{ Multi line comments look 
