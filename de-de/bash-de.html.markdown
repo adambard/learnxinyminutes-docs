@@ -1,4 +1,4 @@
-﻿---
+---
 category: tool
 tool: bash
 lang: de-de

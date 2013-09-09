@@ -1,4 +1,4 @@
-﻿---
+---
 language: javascript
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
