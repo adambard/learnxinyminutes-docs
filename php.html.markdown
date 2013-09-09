@@ -107,7 +107,7 @@ echo 'This string ' . 'is concatenated';
 /********************************
  * Constants
  */
- 
+
 // A constant is defined by using define()
 // and can never be changed during runtime!
 
@@ -143,7 +143,7 @@ echo $array[0]; // => "One"
 $array[] = 'Four';
 
 // Remove element from array
-unset($array[3]); 
+unset($array[3]);
 
 /********************************
  * Output
@@ -455,8 +455,10 @@ class MyClass
 
     // Static variables and their visibility
     public static $publicStaticVar = 'publicStatic';
-    private static $privateStaticVar = 'privateStatic'; // Accessible within the class only
-    protected static $protectedStaticVar = 'protectedStatic'; // Accessible from the class and subclasses
+    // Accessible within the class only
+    private static $privateStaticVar = 'privateStatic';
+    // Accessible from the class and subclasses
+    protected static $protectedStaticVar = 'protectedStatic';
 
     // Properties must declare their visibility
     public $property    = 'public';
@@ -476,14 +478,15 @@ class MyClass
         print 'MyClass';
     }
 
-    //final keyword would make a function unoverridable 
+    //final keyword would make a function unoverridable
     final function youCannotOverrideMe()
     {
     }
 
 /*
-Declaring class properties or methods as static makes them accessible without needing an instantiation of the class.
-A property declared as static can not be accessed with an instantiated class object (though a static method can).
+ * Declaring class properties or methods as static makes them accessible without
+ * needing an instantiation of the class. A property declared as static can not
+ * be accessed with an instantiated class object (though a static method can).
 */
 
     public static function myStaticMethod()
@@ -674,10 +677,14 @@ $cls = new SomeOtherNamespace\MyClass();
 
 ## More Information
 
-Visit the [official PHP documentation](http://www.php.net/manual/) for reference and community input.
+Visit the [official PHP documentation](http://www.php.net/manual/) for reference
+and community input.
 
-If you're interested in up-to-date best practices, visit [PHP The Right Way](http://www.phptherightway.com/).
+If you're interested in up-to-date best practices, visit
+[PHP The Right Way](http://www.phptherightway.com/).
 
-If you're coming from a language with good package management, check out [Composer](http://getcomposer.org/).
+If you're coming from a language with good package management, check out
+[Composer](http://getcomposer.org/).
 
-For common standards, visit the PHP Framework Interoperability Group's [PSR standards](https://github.com/php-fig/fig-standards).
+For common standards, visit the PHP Framework Interoperability Group's
+[PSR standards](https://github.com/php-fig/fig-standards).
