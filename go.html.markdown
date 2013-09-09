@@ -294,8 +294,9 @@ There you can follow the tutorial, play interactively, and read lots.
 The language definition itself is highly recommended.  It's easy to read
 and amazingly short (as language definitions go these days.)
 
-On the reading list for students of Go is the source code to the standard
-library.  Comprehensively documented, it demonstrates the best of readable
-and understandable Go, Go style, and Go idioms.  Click on a function name
-in the documentation and the source code comes up!
+On the reading list for students of Go is the [source code to the standard
+library](http://golang.org/src/pkg/).  Comprehensively documented, it
+demonstrates the best of readable and understandable Go, Go style, and Go
+idioms.  Or you can click on a function name in [the
+documentation](http://golang.org/pkg/) and the source code comes up!
 
