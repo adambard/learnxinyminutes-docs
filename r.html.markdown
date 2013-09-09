@@ -298,7 +298,7 @@ if (4 > 3) {
 
 # Defined like so:
 jiggle <- function(x) {
-	x+ rnorm(x, sd=.1)	#add in a bit of (controlled) noise
+	x = x + rnorm(1, sd=.1)	#add in a bit of (controlled) noise
 	return(x)
 }
 
