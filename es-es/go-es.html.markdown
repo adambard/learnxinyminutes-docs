@@ -5,10 +5,11 @@ language: Go
 filename: learngo.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
-
 translators:
 	- ["Adrian Espinosa", "http://www.adrianespinosa.com"]
 lang: es-es
+
+
 ---
 
 Go fue creado por la necesidad de hacer el trabajo rápidamente.  No es la última
