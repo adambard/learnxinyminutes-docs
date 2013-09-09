@@ -80,7 +80,7 @@ int main (int argc, const char * argv[])
     NSLog(@"%f", piFloat);
     
     NSNumber *piDoubleNumber = @3.1415926535;
-    piDouble                 = [piDoubleNumber doubleValue];
+    double piDouble                 = [piDoubleNumber doubleValue];
     NSLog(@"%f", piDouble);
 
     // BOOL literals
