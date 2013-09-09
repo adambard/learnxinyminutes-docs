@@ -1,14 +1,10 @@
 ---
 langage: python
-
-contributeurs:
+contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
-    
-traducteurs:
+translators:
   - ["Sylvain Zyssman", "https://github.com/sylzys"]
-
-fichier: learnpython.py
-
+filename: learnpython-fr.py
 ---
 
 Python a été créé par Guido Van Rossum au début des années 90. C'est maintenant un des langages de programmation les plus populaires.

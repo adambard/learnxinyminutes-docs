@@ -2,11 +2,12 @@
 name: perl
 category: language
 language: perl
-filename: learnperl.pl
+filename: learnperl-cn.pl
 contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]
 translators:
     - ["Yadong Wen", "https://github.com/yadongwen"]
+lang: zh-cn
 ---
 
 Perl 5是一个功能强大、特性齐全的编程语言，有25年的历史。

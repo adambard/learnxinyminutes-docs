@@ -3,7 +3,7 @@ name: Go
 category: language
 language: Go
 filename: learngo-pt.go
-lang: pt-pt
+lang: pt-br
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
 translators:

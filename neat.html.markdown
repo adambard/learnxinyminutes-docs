@@ -1,10 +1,8 @@
 ---
-
 language: neat
 contributors:
     - ["Feep", "https://github.com/FeepingCreature"]
 filename: LearnNeat.nt
-
 ---
 
 Neat is basically a smaller version of D1 with some experimental syntax and a focus on terseness without losing the basic C-like syntax.

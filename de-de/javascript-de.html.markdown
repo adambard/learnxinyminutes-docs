@@ -2,6 +2,7 @@
 language: javascript
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+translators:
     - ["ggb", "http://www.ideen-und-soehne.de"]
 filename: learnjavascript-de.js
 lang: de-de

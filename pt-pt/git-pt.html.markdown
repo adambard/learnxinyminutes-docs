@@ -4,6 +4,8 @@ tool: git
 lang: pt-pt
 filename: LearnGit.txt
 contributors:
+    - ["Jake Prather", "http://github.com/JakeHP"]
+translators:
   - ["Rafael Jegundo", "http://rafaeljegundo.github.io/"]
 ---
 

@@ -3,6 +3,7 @@ language: erlang
 filename: learnerlang-pt.erl
 contributors:
     - ["Giovanni Cappellotto", "http://www.focustheweb.com/"]
+translators:
     - ["Guilherme Heuser Prestes", "http://twitter.com/gprestes"]
 lang: pt-br
 ---
