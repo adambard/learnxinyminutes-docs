@@ -1,7 +1,7 @@
 ---
 language: python
 contributors:
-    - ["Louie Dinh", "http://ldinh.ca"]
+    - ["Louie Dinh", "http://ldinh.ca "]
 filename: learnpython.py
 ---
 
