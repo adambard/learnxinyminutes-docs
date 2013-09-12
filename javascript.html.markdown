@@ -219,6 +219,13 @@ function myFunction(){
     // this code will be called in 5 seconds' time
 }
 setTimeout(myFunction, 5000);
+// ASIDE: 
+// setTimeout is actually part of the DOM (Document Object Model) in browsers,
+// and is a property of the window object (window.setTimeout).
+// In that respect setTimeout and setInterval are not officially part of Javascript.
+// Other runtimes which don't have a DOM might have this implementation.
+// The Google V8 powered Node.js does have this implementation.
+
 
 // Function objects don't even have to be declared with a name - you can write
 // an anonymous function definition directly into the arguments of another.
