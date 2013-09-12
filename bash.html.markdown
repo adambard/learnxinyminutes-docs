@@ -82,7 +82,7 @@ esac
 
 #For loops iterate for as many arguments given:
 #The contents of var $VARIABLE is printed three times.
-for $VARIABLE in x y z
+for VARIABLE in x y z
 do
     echo "$VARIABLE"
 done
