@@ -2,6 +2,8 @@
 language: python
 lang: ru-ru
 contributors:
+    - ["Louie Dinh", "http://ldinh.ca"]
+translators:
     - ["Yury Timofeev", "http://twitter.com/gagar1n"]
 filename: learnpython-ru.py
 ---

@@ -5,6 +5,7 @@ language: Go
 filename: learngo-ru.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
+translators:
     - ["Artem Medeusheyev", "https://github.com/armed"]
 lang: ru-ru
 ---

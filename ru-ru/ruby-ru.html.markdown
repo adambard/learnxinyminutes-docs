@@ -8,6 +8,7 @@ contributors:
   - ["Luke Holder", "http://twitter.com/lukeholder"]
   - ["Tristan Hume", "http://thume.ca/"]
   - ["Nick LaMuro", "https://github.com/NickLaMuro"]
+translators:
   - ["Alexey Makarov", "https://github.com/Anakros"]
 ---
 

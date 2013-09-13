@@ -6,7 +6,7 @@ filename: learngo.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
 translators:
-	- ["Adrian Espinosa", "http://www.adrianespinosa.com"]
+    - ["Adrian Espinosa", "http://www.adrianespinosa.com"]
 lang: es-es
 
 
