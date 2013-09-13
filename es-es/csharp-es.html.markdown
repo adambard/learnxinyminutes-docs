@@ -6,6 +6,7 @@ contributors:
 translators:
     - ["Olfran Jiménez", "https://twitter.com/neslux"]	
 filename: LearnCSharp-es.cs
+lang: es-es
 ---
 
 C# es un lenguaje orientado a objetos elegante y de tipado seguro que
