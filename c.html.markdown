@@ -81,7 +81,8 @@ int main() {
     // is not evaluated (except VLAs (see below)).
     // The value it yields in this case is a compile-time constant.
     int a = 1;
-    // size_t is an unsiged integer type of at least 2 bytes used to represent the size of an object.
+    // size_t is an unsiged integer type of at least 2 bytes used to represent 
+    // the size of an object.
     size_t size = sizeof(a++); // a++ is not evaluated
     printf("sizeof(a++) = %zu where a = %d\n", size, a);
     // prints "sizeof(a++) = 4 where a = 1" (on a 32-bit architecture)
