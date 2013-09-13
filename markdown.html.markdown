@@ -652,8 +652,8 @@ User: <a href="https://github.com/mojombo">mojombo</a>
 Markdown syntax:
 
 ```markdown
-![GitHub logo](/path/to/github_logo.png)
-![Google logo](/path/to/google_logo.png "This is Google logo")
+!%5BGitHub logo%5D(/path/to/github_logo.png)
+!%5BGoogle logo%5D(/path/to/google_logo.png "This is Google logo")
 ```
 
 HTML equivalent:
