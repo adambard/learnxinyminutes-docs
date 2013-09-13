@@ -3,6 +3,7 @@
 language: java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
+    - ["Madison Dickson", "http://github.com/mix3d"]
 filename: LearnJava.java
 
 ---
@@ -245,6 +246,13 @@ public class LearnJava {
                     break;
         }
         System.out.println("Switch Case Result: " + monthString);
+        
+        // Conditional Shorthand
+        // You can use the '?' operator for quick assignments or logic forks.
+        // Reads as "If (statement) is true, use <first value>, otherwise, use <second value>"
+        int foo = 5
+        String bar = (foo < 10) ? "A" : "B";
+        System.out.println(bar); // Prints A, because the statement is true
 
 
         ///////////////////////////////////////
