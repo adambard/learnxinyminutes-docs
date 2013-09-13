@@ -219,7 +219,8 @@ function myFunction(){
     // this code will be called in 5 seconds' time
 }
 setTimeout(myFunction, 5000);
-// Note: setTimeout isn't part of the JS language, but is provided by browsers and Node.js.
+// Note: setTimeout isn't part of the JS language, but is provided by browsers
+// and Node.js.
 
 // Function objects don't even have to be declared with a name - you can write
 // an anonymous function definition directly into the arguments of another.
