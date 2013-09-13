@@ -41,7 +41,7 @@ HTML equivalent:
 ```
 
 ### Line breaks
-Classic Markdown does not follow "every line break is a <br />" rule.
+Classic Markdown does not follow "every line break is a &lt;br /&gt;" rule.
 To insert line break it is required to type at least two spaces and then return.
 Only to emphase the example spaces are marked as [SPACE] and return as [RETURN].
 
@@ -411,7 +411,7 @@ HTML equivalent:
 Markdown syntax:
 
 ```markdown
-\` Lorem ipsum dolor sit amet, consectetur adipiscing `print ('elit.')`\`
+` Lorem ipsum dolor sit amet, consectetur adipiscing `print ('elit.')`
 ```
 
 HTML equivalent:
@@ -432,9 +432,9 @@ GitHub Flavored Markdown syntax:
 
 ```markdown
 [RETURN]
-\`\`\`
+```
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-\`\`\`
+```
 ```
 
 HTML equivalent:
@@ -450,15 +450,15 @@ HTML equivalent:
 ### Syntax highligting
 [LANGUAGE] is one of the languages that GitHub detects. Valid keywords
 are to be found in
-[https://github.com/github/linguist/blob/master/lib/linguist/languages.yml](HERE)
+https://github.com/github/linguist/blob/master/lib/linguist/languages.yml
 
 GitHub Flavored Markdown syntax:
 
 ```markdown
 [RETURN]
-\`\`\`[LANGUAGE]
+```[LANGUAGE]
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-\`\`\`
+```
 ```
 
 HTML equivalent:
@@ -566,9 +566,9 @@ HTML equvialent:
 Markdown syntax:
 
 ```markdown
-[github]: http://www.github.com "GitHub"
-[github]: http://www.github.com 'GitHub'
-[github]: http://www.github.com (GitHub)
+\[github\]: http://www.github.com "GitHub"
+\[github\]: http://www.github.com 'GitHub'
+\[github\]: http://www.github.com (GitHub)
 ```
 
 HTML equivalent:
@@ -586,8 +586,8 @@ Markdown syntax:
 ```markdown
 Lorem ipsum [github][] dolor sit amet [google][].
 
-[github]: http://www.github.com/ (GitHub)
-[google]: http://www.google.com/ (Google)
+\[github\]: http://www.github.com/ (GitHub)
+\[google\]: http://www.google.com/ (Google)
 ```
 
 HTML equivalent:
@@ -645,6 +645,7 @@ HTML equivalent:
 ```html
 SHA: <a href="https://github.com/mojombo/github-flavored-markdown/commit/16c999e8c71134401a78d4d46435517b2271d6ac">16c999e</a>
 User: <a href="https://github.com/mojombo">mojombo</a>
+```
 
 # IMAGES
 
