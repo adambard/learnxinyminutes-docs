@@ -2,9 +2,11 @@
 language: Matlab
 contributors:
     - ["mendozao", "http://github.com/mendozao"]
+    - ["jamesscottbrown", "http://jamesscottbrown.com"]
+
 ---
 
-Matlab stands for Matrix Laboratory. It is a powerful numerical computing language commonly used in engineering and mathematics.  
+MATLAB stands for MATrix LABoratory. It is a powerful numerical computing language commonly used in engineering and mathematics.  
 
 If you have any feedback please feel free to reach me at
 [@the_ozzinator](https://twitter.com/the_ozzinator), or
@@ -18,13 +20,23 @@ something
 like
 this %}
 
-clear % Erases all your variables from memory
-clc % Erases the writing on your Command Window
 who % Displays all variables in memory
-diary % History of session
+whos % Displays all variables in memory, with their types
+clear % Erases all your variables from memory
+clear('A') % Erases a aprticualr variable
+openvar('A') % Open variable in variable editor
+
+clc % Erases the writing on your Command Window
+diary % Toggle writing Command Window text to file
 ctrl-c % Abort current computation
 
+edit('myfunction.m') % Open function in editor
+type('myfunction.m') % Print the source of function to Command Window
+
+profile viewer % Open profiler
+
 help command % Displays documentation for command in Command Window
+doc command % Displays documentation for command in Help Window
 lookfor command % Searches for a given command
 
 
@@ -38,6 +50,7 @@ myVariable = 4 % Notice Workspace pane shows newly created variable
 myVariable = 4; % Semi colon suppresses output to the Command Window
 4 + 6  % ans = 10 
 8 * myVariable % ans = 32 
+2 ^ 3 % ans = 8 
 a = 2; b = 3; 
 c = exp(a)*sin(pi/2) % c = 7.3891
 
@@ -49,6 +62,12 @@ c = exp(a)*sin(pi/2) % c = 7.3891
 3 > 1 && 4 > 1 % AND -> ans = 1
 3 > 1 || 4 > 1 % OR -> ans = 1
 ~1 % NOT -> ans = 0
+
+% Logicals can be applied to matricies:
+A > 5
+% for each element, if condition is true, that element is 1 in returned matrix
+A[ A > 5 ] 
+% returns a vector containing the elements in A for which condition is true
 
 % Strings
 a = 'MyString'
@@ -75,7 +94,7 @@ x = [1:10] % x = 1 2 3 4 5 6 7 8 9 10
 
 % Matrices
 A = [1 2 3; 4 5 6; 7 8 9] 
-% Rows are seperated with a semi colon, each element is seperated with space or comma
+% Rows are separated by a semicolon; elements are separated with space or comma
 % A =
 
 %     1     2     3
@@ -83,6 +102,10 @@ A = [1 2 3; 4 5 6; 7 8 9]
 %     7     8     9
 
 A(2,3) % ans = 6, A(row, column)
+A(6) % ans = 8 
+% (implicitly concatenates columns into vector, then indexes into that)
+
+
 A(2,3) = 42 % Update row 2 col 3 with 42
 % A =
 
@@ -108,77 +131,125 @@ A(1,:) % All columns in row 1
 
 %     1     2     3
 
-A(:, [3 1 2]) %Rearrange the columns of original matrix
+[A ; A] % Concatenation of matrices (vertically)
+%ans =
+
+%     1     2     3
+%     4     5    42
+%     7     8     9
+%     1     2     3
+%     4     5    42
+%     7     8     9
+
+[A , A] % Concatenation of matrices (horizontally)
+
+%ans =
+
+%     1     2     3     1     2     3
+%     4     5    42     4     5    42
+%     7     8     9     7     8     9
+
+
+
+A(:, [3 1 2]) % Rearrange the columns of original matrix
 %ans =
 
 %     3     1     2
 %    42     4     5
 %     9     7     8
 
-A(1, :) =[] %Delete the first row of the matrix
-
 size(A) % ans = 3 3
 
-A' % Transpose the matrix
+A(1, :) =[] % Delete the first row of the matrix
 
-[A ; A] % Concatenation of matrices
-%ans =
-
-%     1     2     3
-%     4     5    42
-%     7     8     9
-%     1     2     3
-%     4     5    42
-%     7     8     9
+A' % Hermitian transpose the matrix 
+% (the transpose, followed by taking complex conjugate of each element)
+transpose(A) % Transpose the matrix, without taking complex conjugate
 
 
-%Element by Element Arithmetic VS Matrix Arithmetic 
+
+% Element by Element Arithmetic vs. Matrix Arithmetic 
 A * B % Matrix multiplication
 A .* B % Multiple each element in A by its corresponding element in B
 
 
-%Plotting
-x = 0:.10:2*pi % Creates a vector that starts at 0 and ends at 2*pi with increments of .1
-y = sin(x)
+% Plotting
+x = 0:.10:2*pi; % Creates a vector that starts at 0 and ends at 2*pi with increments of .1
+y = sin(x);
 plot(x,y)
 xlabel('x axis')
 ylabel('y axis')
 title('Plot of y = sin(x)')
 axis([0 2*pi -1 1]) % x range from 0 to 2*pi, y range from -1 to 1
-plot(x,y1,’-’,x,y2,’--’,x,y3,’:’) % For multiple functions on one plot
+plot(x,y1,'-',x,y2,'--',x,y3,':'') % For multiple functions on one plot
+grid on % Show grid; turn off with 'grid off'
+
+axis square % Makes the current axes region square
+axis equal % Set aspect ratio so data units are the same in every direction
+
+scatter(x, y); % Scatter-plot
+hist(x); % Histogram
+
+z = sin(x);
+plot3(x,y,z); % 3D line plot
+
+pcolor(A) % Heat-map of matrix: plot as grid of rectangles, coloured by value
+contour(A) % Contour plot of matrix
+mesh(A) % Plot as a mesh surface
+
+h = figure	%C reate new figure object, with handle f
+figure(h) %M akes the figure corresponding to handle h the current figure
+
+% Properties can be set and changed through a figure handle
+h = plot(x, y);
+set(h, 'Color', 'r') 
+% 'y' yellow; 'm' magenta, 'c' cyan, 'r' red, 'g' green, 'b' blue, 'w' white, 'k' black
+set(h, 'LineStyle', '--')
+ % '--' is solid line, '---' dashed, ':' dotted, '-.' dash-dot, 'none' is no line
+get(h, 'LineStyle')
 
 
-% .mat files
-% Save the variables in your Workspace 
-
-%M-file Scripts
-%A script file is an external file that contains a sequence of statements.
-%Better than typing your code in the Command Window
-%Have .m extensions
+% Variables can be saved to .mat files
+save('myFileName.mat') % Save the variables in your Workspace 
+load('myFileName.mat') % Load saved variables into Workspace 
 
 
-%M-file Functions
-%Programs that accept inputs and return an output
-%Have .m extensions
-% double_input.m - naming your ,m file the same as you call it in the file is required
+% M-file Scripts
+% A script file is an external file that contains a sequence of statements.
+% They let you avoid repeatedly typing the same code in the Command Window
+% Have .m extensions
+
+
+% M-file Functions
+% Like scripts, and have the same .m extension
+% But can accept input arguments and return an output
+% Also, they have their own workspace (ie. different variable scope)
+% double_input.m - .m file name must be same as function name in file
 function output = double_input(x) 
 	%double_input(x) returns twice the value of x
 	output = 2*x;
 end
 double_input(6) % ans = 12 
 
-%User input
+
+% You can also have subfunctions and nested functions.
+% Subfunctions are in the same file as the primary function, and can only be
+% called from within that function. Nested functions are defined within another
+% functions, and have access to both its workspace and their own workspace.
+
+
+% User input
 a = input('Enter the value: ')
 
-%Reading in data
+% Reading in data
 fopen(filename) 
 
-%Output
+% Output
 disp(a) % Print out the value of variable a
 disp('Hello World') % Print out a string
-fprintf % More control display to Command Window 
+fprintf % Print to Command Window with more control
 
-%Conditional statements
+% Conditional statements
 if a > 15
 	disp('Greater than 15')
 elseif a == 23
@@ -187,7 +258,9 @@ else
 	disp('neither condition met')
 end
 
-%Looping
+% Looping
+% NB. looping over elements of a vector/matrix is slow!
+% Where possible, use functions that act on whole vector/matrix at once
 for k = 1:5
 	disp(k)
 end
@@ -197,8 +270,13 @@ while (k < 5)
 	k = k + 1;
 end
 
+% Timing code execution: 'toc' prints the time since 'tic' was called
+tic
+A = rand(1000);
+A*A*A*A*A*A*A;
+toc
 
-%Connecting to a MySQL Database
+% Connecting to a MySQL Database
 dbname = 'database_name';
 username = 'root';
 password = 'root';
@@ -206,7 +284,7 @@ driver = 'com.mysql.jdbc.Driver';
 dburl = ['jdbc:mysql://localhost:8889/' dbname];
 javaclasspath('mysql-connector-java-5.1.xx-bin.jar'); %xx depends on version, download available at http://dev.mysql.com/downloads/connector/j/
 conn = database(dbname, username, password, driver, dburl); 
-sql = ['SELECT * from table_name where id = 22'] %Example sql statement
+sql = ['SELECT * from table_name where id = 22'] % Example sql statement
 a = fetch(conn, sql) %a will contain your data
 
 
@@ -228,13 +306,18 @@ ceil(x)
 floor(x)
 round(x)
 rem(x)
-rand
-randi
+rand % Uniformly distributed pseudorandom numbers
+randi % Uniformly distributed pseudorandom integers
+randn % Normally distributed pseudorandom numbers
 
 % Common constants
 pi
 NaN
 inf
+
+% Solving matrix equations (if no solution, returns a least squares solution)
+x=A\b % Solves Ax=b
+x=B/a % Solves xa=B
 
 % Common matrix functions
 zeros(m,n) % m x n matrix of 0's
@@ -243,30 +326,37 @@ diag(A) % Extracts the diagonal elements of a matrix
 eye(m,n) % Indentity matrix
 inv(A) % Inverse of matrix A
 det(A) % Determinant of A
-eig(A) %Eigenvalues and eigenvectors of A
+eig(A) % Eigenvalues and eigenvectors of A
+trace(A) % Trace of matrix - equivalent to sum(diag(A))
 isempty(A) % Tests if array is empty
+all(A) % Tests if all elements are nonzero or true
+any(A) % Tests if any elements are nonzero or true
 isequal(A, B) %Tests equality of two arrays
-numel(A) %Number of elements in matrix
+numel(A) % Number of elements in matrix
 triu(x) % Returns the upper triangular part of x
 tril(x) % Returns the lower triangular part of x
 cross(A,B) %  Returns the cross product of the vectors A and B
-dot(A,B) % Returns the scalar product of the vectors A and B.  A and B must be vectors of the same length.
+dot(A,B) % Returns scalar product of two vectors (must have the same length)
 transpose(A) % Returns the transpose of A
+flipl(A) % Flip matrix left to right
 
 % Common vector functions
-max     %largest component 
-min     %smallest component 
-length  %length of a vector
-sort    %sort in ascending order 
-sum     %sum of elements 
-prod    %product of elements 
-median  %median value 
-mean    %mean value 
-std     %standard deviation
-
+max     % largest component 
+min     % smallest component 
+length  % length of a vector
+sort    % sort in ascending order 
+sum     % sum of elements 
+prod    % product of elements 
+mode	% modal value
+median  % median value 
+mean    % mean value 
+std     % standard deviation
+perms(x) % list all permutations of elements of x
 
 ```
 
 ## More on Matlab
 
 * The official website [http://http://www.mathworks.com/products/matlab/](http://www.mathworks.com/products/matlab/)
+* The official MATLAB Answers forum: [http://www.mathworks.com/matlabcentral/answers/](http://www.mathworks.com/matlabcentral/answers/)
+
