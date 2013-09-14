@@ -19,7 +19,6 @@ versionar y administrar nuestro código fuente.
 ## Versionamiento, conceptos.
 
 ### Que es el control de versiones?
-
 El control de versiones es un sistema que guarda todos los cambios realizados a
 uno o varios archivos, a lo largo del tiempo.
 
@@ -36,22 +35,23 @@ uno o varios archivos, a lo largo del tiempo.
 
 ### Por que usar Git?
 
-* Can work offline.
-* Collaborating with others is easy!
-* Branching is easy!
-* Merging is easy!
-* Git is fast.
-* Git is flexible.
+* Se puede trabajar sin conexion.
+* Colaborar con otros es sencillo!.
+* Derivar, Crear ramas del proyecto (aka: Branching) es facil!.
+* Combinar (aka: Marging)
+* Git es rapido.
+* Git es flexible.
 
-## Git Architecture
+## Arquitectura de Git.
 
+### Repositorio
 
-### Repository
+Un repositorio es un conjunto de archivos, directorios, registros, cambios (aka:
+comits), y encabezados (aka: headss). Imagina que un repositorio es una clase,
+y que sus atributos otorgan  acceso al historial del elemento, ademas de otras
+cosas.
 
-A set of files, directories, historical records, commits, and heads. Imagine it as a source code datastructure,
-with the attribute that each source code "element" gives you access to its revision history, among other things.
-
-A git repository is comprised of the .git directory & working tree.
+Un repositorio esta compuesto por la carpeta .git y un "arbol de trabajo".
 
 ### .git Directory (component of repository)
 
