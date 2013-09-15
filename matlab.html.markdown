@@ -413,7 +413,7 @@ transpose(A) % Returns the transpose of A
 flipl(A) % Flip matrix left to right
 
 % Matrix Factorisations
-[L, U, P] = lu(A) % LU decomposition: PA = LU
+[L, U, P] = lu(A) % LU decomposition: PA = LU,L is lower triangular, U is upper triangular, P is permutation matrix
 [P, D] = eig(A) % eigen-decomposition: AP = PD, P's columns are eigenvectors and D's diagonals are eigenvalues
 [U,S,V] = svd(X) % SVD: XV = US, U and V are unitary matrices, S has non-negative diagonal elements in decreasing order
 
