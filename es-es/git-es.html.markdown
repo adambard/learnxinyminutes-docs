@@ -31,7 +31,7 @@ uno o varios archivos, a lo largo del tiempo.
 + El versionamiento distribuido no tiene una estructura definida, incluso se
   puede mantener el estilo de los repositorios SVN con git.
 
-[Additional Information](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
+[Informacion adicional](http://git-scm.com/book/es/Empezando-Acerca-del-control-de-versiones)
 
 ### Por que usar Git?
 
@@ -53,51 +53,57 @@ cosas.
 
 Un repositorio esta compuesto por la carpeta .git y un "arbol de trabajo".
 
-### .git Directory (component of repository)
+### Directorio .git (componentes del repositorio)
 
-The .git directory contains all the configurations, logs, branches, HEAD, and more.
-[Detailed List.](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+El directorio .git contiene todas las configuraciones, registros, branches, HEAD
+y mas.
 
-### Working Tree (component of repository)
+[Lista detallada.](http://es.gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
-This is basically the directories and files in your repository. It is often referred to
-as your working directory.
+### Directorio de trabajo (componentes del repositorio)
 
-### Index (component of .git dir)
+Es basicamente los directorios y archivos dentro del repositorio. La mayorioa de
+las veces se le llama "directorio de trabajo".
 
-The Index is the staging area in git. It's basically a layer that separates your working tree
-from the Git repository. This gives developers more power over what gets sent to the Git
-repository.
+### Inidice (componentes del directorio .git)
 
-### Commit
+El inidice es la area de inicio en git. Es basicamente la capa que separa el
+directorio de trabajo, del repositorio en git. Esto otorga a los desarrolladores
+mas poder sobre lo que envia y recibe en el repositorio.
 
-A git commit is a snapshot of a set of changes, or manipulations to your Working Tree.
-For example, if you added 5 files, and removed 2 others, these changes will be contained
-in a commit (or snapshot). This commit can then be pushed to other repositories, or not!
+### Commit (aka: cambios)
 
-### Branch
+Un commit es una captura de un conjunto de cambios, o modificaciones hechas en
+el directorio de trabajo. Por ejemplo, si se añaden 5 archivos, se remueven 2,
+estos cambios se almacenaran en un commit (aka: captura). Este commit puede ser o
+no ser enviado (aka: "pusheado") hacia un repositorio.
 
-A branch is essentially a pointer that points to the last commit you made. As you commit,
-this pointer will automatically update and point to the latest commit.
+### Branch (rama)
 
-### HEAD and head (component of .git dir)
+Un "brach", es escencialmente un apuntador hacia el ultimo commit (cambio
+registrado) que se ha realizado. A medida que se realizan mas commits, este
+apuntador se actualizara automaticamente hacia el ultimo commit.
 
-HEAD is a pointer that points to the current branch. A repository only has 1 *active* HEAD.
-head is a pointer that points to any commit. A repository can have any number of heads.
+### "HEAD" y "head" (component of .git dir)
 
-### Conceptual Resources
+"HEAD" es un apuntador hacia la rama (branch) que se esta utilizando. Un
+repositorio solo puede tener un HEAD activo. En cambio "head", es un apuntador a
+cualquier commit realizado, un repositorio puede tener cualquier numero de
+"heads".
 
-* [Git For Computer Scientists](http://eagain.net/articles/git-for-computer-scientists/)
-* [Git For Designers](http://hoth.entp.com/output/git_for_designers.html)
+### conceptos - recursos.
+
+* [Git para informaticos](http://eagain.net/articles/git-for-computer-scientists/)
+* [Git para diseñadores](http://hoth.entp.com/output/git_for_designers.html)
 
 
-## Commands
+## Comandos.
 
 
 ### init
 
-Create an empty Git repository. The Git repository's settings, stored information,
-and more is stored in a directory (a folder) named ".git".
+Crear un repositorio de git vacio. Las configuraciones, informacion almacenada y
+demas son almacenadas en el directorio ".git".
 
 ```bash
 $ git init
@@ -105,35 +111,34 @@ $ git init
 
 ### config
 
-To configure settings. Whether it be for the repository, the system itself, or global
-configurations.
-
+Se utiliza para configurar las opciones ya sea globalmente, o solamente en el
+repositorio.
 
 ```bash
-# Print & Set Some Basic Config Variables (Global)
+# Imprime y guarda algunas variables de configuracion basicas. (Globalmente)
 $ git config --global user.email
 $ git config --global user.name
 
-$ git config --global user.email "MyEmail@Zoho.com"
-$ git config --global user.name "My Name"
+$ git config --global user.email "corre@gmail.com"
+$ git config --global user.name "nombre"
 ```
 
-[Learn More About git config.](http://git-scm.com/docs/git-config)
+[Mas sobre git config.](http://git-scm.com/book/es/Personalizando-Git-Configuración-de-Git)
 
 ### help
 
-To give you quick access to an extremely detailed guide of each command. Or to
-just give you a quick reminder of some semantics.
+Otorga un accceso rapido a una guia extremadamente detallada de cada comando en
+git. O puede ser usada simplemente como un recordatorio de estos.
 
 ```bash
-# Quickly check available commands
+# Una vista rapido de los comandos disponibles.
 $ git help
 
-# Check all available commands
+# Chequear todos los comandos disponibles
 $ git help -a
 
-# Command specific help - user manual
-# git help <command_here>
+# Obtener ayuda especifica de un comando - manual de usuario
+# git help <comando>
 $ git help add
 $ git help commit
 $ git help init
@@ -141,182 +146,189 @@ $ git help init
 
 ### status
 
-To show differences between the index file (basically your working copy/repo) and the current
-HEAD commit.
+Muestra las diferencias entre el archivo indice y el commit al cual apunta el
+HEAD actualmente.
 
 
 ```bash
-# Will display the branch, untracked files, changes and other differences
+# Mostrara el "branch", archivos sin añadir a la repo, cambios y otras
+# diferencias
 $ git status
 
-# To learn other "tid bits" about git status
+# Devuelve ayuda sobre el comando status.
 $ git help status
 ```
 
 ### add
 
-To add files to the current working tree/directory/repo. If you do not `git add` new files to the
-working tree/directory, they will not be included in commits!
+Para añadir archivos al arbol (directorio, repositorio) de trabajo. Si no se
+utiliza `git add`, los nuevos archivos no se añadiran al arbol de trabajo, por
+lo que no se incluiran en los commits (cambios).
 
 ```bash
-# add a file in your current working directory
-$ git add HelloWorld.java
+# Añade un archivo en el directorio de trabajo actual.
+$ git add FooBar.java
 
-# add a file in a nested dir
-$ git add /path/to/file/HelloWorld.c
+# Añade un archivo que se encuentra bajo un directorio.
+$ git add /directorio/del/archivo/Foo.c
 
-# Regular Expression support!
-$ git add ./*.java
+# Soporte para expresiones regulares!
+$ git add ./*.py
 ```
 
 ### branch
 
-Manage your branches. You can view, edit, create, delete branches using this command.
+Administra las ramas del repositorios ("branches"). Puedes ver, editar, crear y
+borrar ramas ("branches"), usando este comando.
 
 ```bash
-# list existing branches & remotes
+# lista todas las ramas (remotas y locales)
 $ git branch -a
 
-# create a new branch
-$ git branch myNewBranch
+# Añada una nueva rama ("branch").
+$ git branch branchNueva
 
-# delete a branch
-$ git branch -d myBranch
+# Eliminar una rama.
+$ git branch -d branchFoo
 
-# rename a branch
-# git branch -m <oldname> <newname>
-$ git branch -m myBranchName myNewBranchName
+# Renombra una rama.
+# git branch -m <anterior> <nuevo>
+$ git branch -m youngling padawan
 
-# edit a branch's description
-$ git branch myBranchName --edit-description
+# Edita la descripcion de la rama.
+$ git branch master --edit-description
 ```
 
 ### checkout
 
-Updates all files in the working tree to match the version in the index, or specified tree.
+Actualiza todos los archivos en el directorio de trabajo para que sean igual que
+las versiones almacenadas en el indice, o en un arbol de trabajo especificado.
 
 ```bash
-# Checkout a repo - defaults to master branch
+# Despachar un repositorio. - Por defecto la master branch. (la rama principal llamada 'master')
 $ git checkout
-# Checkout a specified branch
-$ git checkout branchName
-# Create a new branch & switch to it, like: "git branch <name>; git checkout <name>"
-$ git checkout -b newBranch
+# Despacha una rama especifica.
+$ git checkout padawan
+# Crea una nueva rama y cambia hacia ella, es igual a utilizar: "git brach jedi; git checkout jedi"
+$ git checkout -b jdei
 ```
 
 ### clone
 
-Clones, or copies, an existing repository into a new directory. It also adds
-remote-tracking branches for each branch in the cloned repo, which allows you to push
-to a remote branch.
+Clona, o copia, una repo existente en un nuevo directorio. Tambien añada el
+seguimiento hacia las ramas existentes del repo que ha sido clonada, lo que
+permite subir (push) los archivos hacia una rama remota.
 
 ```bash
-# Clone learnxinyminutes-docs
-$ git clone https://github.com/adambard/learnxinyminutes-docs.git
+# Clonar la repo de jquery.
+$ git clone https://github.com/jquery/jquery.git
 ```
 
 ### commit
 
-Stores the current contents of the index in a new "commit." This commit contains
-the changes made and a message created by the user.
+Almacena los cambios que almacenados en el indice en un nuevo "commit". Este
+commit contiene los cambios hechos mas un resumen hecho por el desarrollador.
 
 ```bash
 # commit with a message
-$ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
+# realizar un commit y añadirle un mensaje.
+$ git commit -m "jedi anakin wil be - jedis.list"
 ```
 
 ### diff
 
-Shows differences between a file in the working directory, index and commits.
+Muestra las diferencias entre un archivo en el directorio de trabajo, el indice
+y commits.
 
 ```bash
-# Show difference between your working dir and the index
+# Muestra la diferencia entre un directorio de trabajo y el indice.
 $ git diff
 
-# Show differences between the index and the most recent commit.
+# Muestra la diferencia entre el indice y los commits mas recientes.
 $ git diff --cached
 
-# Show differences between your working dir and the most recent commit
+# Muestra la diferencia entre el directorio de trabajo y el commit mas reciente.
 $ git diff HEAD
 ```
 
 ### grep
 
-Allows you to quickly search a repository.
+Permite realizar una busqueda rapida en un repositorio.
 
-Optional Configurations:
+Configuracion opcionales:
 
 ```bash
-# Thanks to Travis Jeffery for these
-# Set line numbers to be shown in grep search results
+# Gracias a Travis Jeffery por compartir lo siguiente.
+# Permite mostrar numeros de lineas en la salida de grep.
 $ git config --global grep.lineNumber true
 
-# Make search results more readable, including grouping
+# Realiza una busqueda mas lejible, incluyendo agrupacion.
 $ git config --global alias.g "grep --break --heading --line-number"
 ```
 
 ```bash
-# Search for "variableName" in all java files
-$ git grep 'variableName' -- '*.java'
+# Busca por "unaVariable" en todos los archivos ,java
+$ git grep 'unaVariable' -- '*.java'
 
-# Search for a line that contains "arrayListName" and, "add" or "remove"
-$ git grep -e 'arrayListName' --and \( -e add -e remove \)
+# Busca por una linea que contenga "nombreArreglo" y , "agregar" o "remover"
+$ git grep -e 'nombreArreglo' --and \( -e agregar -e remover \)
 ```
 
-Google is your friend; for more examples
+Mas ejemplos:
 [Git Grep Ninja](http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
 
 ### log
 
-Display commits to the repository.
+Muestra los commits (cambios) registrados en el repositotrio.
 
 ```bash
-# Show all commits
+# Muestra todos los commits.
 $ git log
 
-# Show X number of commits
+# Muestra un numero x de commits.
 $ git log -n 10
 
-# Show merge commits only
+# Muestra solo los commits que se han combinado en el hisotrial
 $ git log --merges
 ```
 
 ### merge
 
-"Merge" in changes from external commits into the current branch.
+Combina los cambios de commits realizados externamente dentro de la rama en la
+que se trabaja.
 
 ```bash
-# Merge the specified branch into the current.
-$ git merge branchName
+# Combina la rama especificada en la rama actual.
+$ git merge jediMaster
 
-# Always generate a merge commit when merging
-$ git merge --no-ff branchName
+# Siempre genere un solo merge commit cuando se utilizar merge.
+$ git merge --no-ff jediMaster
 ```
 
 ### mv
 
-Rename or move a file
+Renombra o mueve un archivo
 
 ```bash
-# Renaming a file
-$ git mv HelloWorld.c HelloNewWorld.c
+# Renombrando un archivo
+$ git mv HolaMundo.c AdiosMundo.c
 
-# Moving a file
-$ git mv HelloWorld.c ./new/path/HelloWorld.c
+# Moviendo un archivo.
+$ git mv HolaOtraVezMundo.c ./nuevo/directorio/NuevoArchivo.c
 
-# Force rename or move
-# "existingFile" already exists in the directory, will be overwritten
-$ git mv -f myFile existingFile
+# Sustituye un archivo.
+$ git mv -f archivoA archivoB
 ```
 
 ### pull
 
-Pulls from a repository and merges it with another branch.
+Sube (Empuja) de un repositorio y lo combina en otro en una rama diferente.
 
 ```bash
-# Update your local repo, by merging in new changes
+# Actualiza el repositorio local, combinando los nuevos cambios.
+# de las ramas remotas "origin" y "master".
 # from the remote "origin" and "master" branch.
-# git pull <remote> <branch>
+# git pull <remota> <rama>
 $ git pull origin master
 ```
 
@@ -326,69 +338,74 @@ Push and merge changes from a branch to a remote & branch.
 
 ```bash
 # Push and merge changes from a local repo to a
-# remote named "origin" and "master" branch.
-# git push <remote> <branch>
-# git push => implicitly defaults to => git push origin master
+# Empuja y combina cambios de un repositorio local hacian un repositorio remoto
+# llamados "origin" y "master", respectivamente.
+# git push <remota> <rama>
+# git push => por defecto es lo mismo que poner =>  git push origin master
 $ git push origin master
 ```
 
 
-Take all changes that were committed on one branch, and replay them onto another branch.
-*Do not rebase commits that you have pushed to a public repo*.
+Toma todos los cambios que fueron registrados en una rama, y los repite dentro
+de otra rama.
+*No reescribe los commits que se han empujado antes a un repositorio publico*
 
 ```bash
-# Rebase experimentBranch onto master
+# Integrar ramaExperimento dentro de la rama "master"
 # git rebase <basebranch> <topicbranch>
 $ git rebase master experimentBranch
 ```
 
-[Additional Reading.](http://git-scm.com/book/en/Git-Branching-Rebasing)
+[Informacion adicional.](http://git-scm.com/book/es/Ramificaciones-en-Git-Procedimientos-básicos-para-ramificar-y-fusionar)
 
-### reset (caution)
+### reset (precaucion)
 
-Reset the current HEAD to the specified state. This allows you to undo merges,
-pulls, commits, adds, and more. It's a great command but also dangerous if you don't
-know what you are doing.
+Reinicia el cabezal actual hacia un estado especificado. Esto permite desacer
+combinaciones (merges), pulls, commits, adds y mas. Es un comando util, pero
+tambien peligrosa si no se sabe lo que se hace.
 
 ```bash
-# Reset the staging area, to match the latest commit (leaves dir unchanged)
+# Reinica el area principal, con el ultimo cambio registrado. (deja los
+# directorios sin cambios)
 $ git reset
 
-# Reset the staging area, to match the latest commit, and overwrite working dir
+# Reinica el area principal, con el ultimo cambio registrado, y reescribe el
+# directorio de trabajo.
 $ git reset --hard
 
-# Moves the current branch tip to the specified commit (leaves dir unchanged)
-# all changes still exist in the directory.
+# Mueve la rama actual hacia el commit especificado (no realiza cambios a los
+# directorios), todos los cambios aun existen el directorio.
 $ git reset 31f2bb1
 
-# Moves the current branch tip backward to the specified commit
-# and makes the working dir match (deletes uncommited changes and all commits
-# after the specified commit).
+# Mueve la rama actual devuelta a un commit especificado asi como el
+# directorios (borra todos los cambios que no fueron registros y todos los
+# cambios realizados despues del commit especificado).
 $ git reset --hard 31f2bb1
 ```
 
 ### rm
 
-The opposite of git add, git rm removes files from the current working tree.
+Lo contrario de git add, git rm remueve los archivos del directorio de trabajo
+actual.
 
 ```bash
-# remove HelloWorld.c
-$ git rm HelloWorld.c
+# Remueve FooBar.c
+$ git rm FooBar.c
 
-# Remove a file from a nested dir
-$ git rm /pather/to/the/file/HelloWorld.c
+# Remueve un archivo de un directorio.
+$ git rm /directorio/del/archivo/FooBar.c
 ```
 
-## Further Information
+## Informacion Adicional
 
-* [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
+* [tryGit - Una forma entretenida y rapida de aprender Git.](http://try.github.io/levels/1/challenges/1)
 
-* [git-scm - Video Tutorials](http://git-scm.com/videos)
+* [git-scm - Video-tutoriales](http://git-scm.com/videos)
 
-* [git-scm - Documentation](http://git-scm.com/docs)
+* [git-scm - Documentacion](http://git-scm.com/book/es)
 
-* [Atlassian Git - Tutorials & Workflows](https://www.atlassian.com/git/)
+* [Atlassian Git - Tutoriales y Flujos de trabajo](https://www.atlassian.com/git/)
 
-* [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+* [SalesForce Chuleta](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
 
 * [GitGuys](http://www.gitguys.com/)
