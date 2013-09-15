@@ -249,10 +249,10 @@ set(h, 'LineStyle', '--')
 get(h, 'LineStyle')
 
 
-% The function gcs returns a handle to the axes for the current figure
+% The function gca returns a handle to the axes for the current figure
 set(gca, 'XDir', 'reverse'); % reverse the direction of the x-axis
 
-% To creatw a figure that contains several axes in tiled positions, use subplot
+% To create a figure that contains several axes in tiled positions, use subplot
 subplot(2,3,1); % select the first position in a 2-by-3 grid of subplots
 plot(x1); title('First Plot') % plot something in this position
 subplot(2,3,2); % select second position in the grid
@@ -394,7 +394,7 @@ zeros(m,n) % m x n matrix of 0's
 ones(m,n) % m x n matrix of 1's
 diag(A) % Extracts the diagonal elements of a matrix A
 diag(x) % Construct a matrix with diagonal elements listed in x, and zeroes elsewhere 
-eye(m,n) % Indentity matrix
+eye(m,n) % Identity matrix
 linspace(x1, x2, n) % Return n equally spaced points, with min x1 and max x2
 inv(A) % Inverse of matrix A
 det(A) % Determinant of A
