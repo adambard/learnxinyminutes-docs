@@ -199,7 +199,7 @@ ylabel('y axis')
 title('Plot of y = sin(x)')
 axis([0 2*pi -1 1]) % x range from 0 to 2*pi, y range from -1 to 1
 
-plot(x,y1,'-',x,y2,'--',x,y3,':'') % For multiple functions on one plot
+plot(x,y1,'-',x,y2,'--',x,y3,':') % For multiple functions on one plot
 legend('Line 1 label', 'Line 2 label') % Label curves with a legend
 
 % Alternative method to plot multiple functions in one plot. 
@@ -403,7 +403,7 @@ trace(A) % Trace of matrix - equivalent to sum(diag(A))
 isempty(A) % Tests if array is empty
 all(A) % Tests if all elements are nonzero or true
 any(A) % Tests if any elements are nonzero or true
-isequal(A, B) %Tests equality of two arrays
+isequal(A, B) % Tests equality of two arrays
 numel(A) % Number of elements in matrix
 triu(x) % Returns the upper triangular part of x
 tril(x) % Returns the lower triangular part of x
