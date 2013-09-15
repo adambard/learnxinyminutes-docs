@@ -72,7 +72,7 @@ $quotient   = 2 / 1; // 2
 $number = 0;
 $number += 1;      // Increment $number by 1
 echo $number++;    // Prints 1 (increments after evaluation)
-echo ++$number;    // Prints 3 (increments before evalutation)
+echo ++$number;    // Prints 3 (increments before evaluation)
 $number /= $float; // Divide and assign the quotient to $number
 
 // Strings should be enclosed in single quotes;
