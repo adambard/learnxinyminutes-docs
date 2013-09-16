@@ -41,7 +41,7 @@ HTML equivalent:
 ```
 
 ### Line breaks
-Classic Markdown does not follow "every line break is a &lt;br /&gt;" rule.
+Classic Markdown does not follow "every line break is a `<br />`" rule.
 To insert line break it is required to type at least two spaces and then return.
 Only to emphase the example spaces are marked as [SPACE] and return as [RETURN].
 
