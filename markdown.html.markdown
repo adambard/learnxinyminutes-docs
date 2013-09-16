@@ -41,7 +41,7 @@ HTML equivalent:
 ```
 
 ### Line breaks
-Classic Markdown does not follow "every line break is a `<br />`" rule.
+Classic Markdown does not follow "every line break is a &lt;br /&gt;" rule.
 To insert line break it is required to type at least two spaces and then return.
 Only to emphase the example spaces are marked as [SPACE] and return as [RETURN].
 
@@ -543,3 +543,174 @@ HTML equivalent:
 ```html
 <del>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</del>
 ```
+
+# LINKS
+
+## Markdown
+
+### Automatic links
+
+Markdown syntax:
+
+```markdown
+<http://www.github.com>
+```
+
+HTML equvialent:
+
+```html
+<a href="http://www.github.com">http://www.github.com</a>
+```
+
+### Classic links
+
+Markdown syntax:
+
+```markdown
+[github]: http://www.github.com "GitHub"
+[github]: http://www.github.com 'GitHub'
+[github]: http://www.github.com (GitHub)
+```
+
+HTML equivalent:
+
+```html
+<a href="http://www.github.com">GitHub</a>
+<a href="http://www.github.com">GitHub</a>
+<a href="http://www.github.com">GitHub</a>
+```
+
+### Reference links
+
+Markdown syntax:
+
+```markdown
+Lorem ipsum [github][] dolor sit amet [google][].
+
+[github]: http://www.github.com/ (GitHub)
+[google]: http://www.google.com/ (Google)
+```
+
+HTML equivalent:
+
+```html
+<p>
+    Lorem ipsum <a href="http://www.github.com/">GitHub</a> dolor sit amet <a href="http://www.google.com/">Google</a>.
+</p>
+```
+
+### Emails
+
+Markdown syntax:
+
+```markdown
+<address@example.com>
+```
+
+HTML equivalent:
+
+```html
+<a href="&#x6D;&#x61;i&#x6C;&#x74;&#x6F;:&#x61;&#x64;&#x64;&#x72;&#x65;
+&#115;&#115;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;
+&#109;">&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;
+&#109;&#x70;&#x6C;&#x2E;&#99;&#111;&#109;</a>
+```
+
+## GitHub Flavored Markup
+
+### Automatic links
+
+GitHub Flavored Markup syntax:
+
+```markdown
+http://www.github.com/
+```
+
+HTML equivalent:
+
+```html
+<a href="http://www.github.com/">http://www.github.com/</a>
+```
+
+### Automatic references
+
+GitHub Flavored Markup syntax:
+
+```markdown
+SHA: 16c999e8c71134401a78d4d46435517b2271d6ac
+User: @mojombo
+```
+
+HTML equivalent:
+
+```html
+SHA: <a href="https://github.com/mojombo/github-flavored-markdown/commit/16c999e8c71134401a78d4d46435517b2271d6ac">16c999e</a>
+User: <a href="https://github.com/mojombo">mojombo</a>
+```
+
+# IMAGES
+
+Markdown syntax:
+
+```markdown
+![GitHub logo](/path/to/github_logo.png)
+![Google logo](/path/to/google_logo.png "This is Google logo")
+```
+
+HTML equivalent:
+
+```html
+<img src="/path/to/github_logo.png" alt="GitHub logo" />
+<img src="/path/to/google_logo.png" alt="Google logo" />This is Google logo
+```
+
+# MISCELLANEOUS
+
+## Markdown
+
+### Backslash escaping
+
+Markdown syntax:
+
+```markdown
+\\
+\`
+\*
+\_
+\#
+\+
+\-
+\.
+\!
+\{
+\}
+\[
+\]
+\(
+\)
+```
+
+HTML equivalent:
+
+```html
+<p>
+    \`*_#+-.!{}[]()
+</p>
+```
+
+## GitHub Flavored Markdown
+
+### Multiple underscores
+
+GitHub Flavored Markdown syntax:
+
+```markdown
+_Lorem_ipsum_dolor_sit_amet,_consectetur_adipiscing_elit._
+```
+
+HTML equivalent:
+
+```html
+<p>
+    _Lorem_ipsum_dolor_sit_amet,_consectetur_adipiscing_elit._
+</p>
