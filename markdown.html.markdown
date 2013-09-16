@@ -407,11 +407,12 @@ HTML equivalent:
 ```
 
 ### Inline code
+Only to emphase in examples grave (`) is marked as [GRAVE].
 
 Markdown syntax:
 
 ```markdown
-` Lorem ipsum dolor sit amet, consectetur adipiscing `print ('elit.')`
+Lorem ipsum dolor sit amet, consectetur adipiscing [GRAVE]print ('elit.')[GRAVE]
 ```
 
 HTML equivalent:
@@ -432,9 +433,9 @@ GitHub Flavored Markdown syntax:
 
 ```markdown
 [RETURN]
-```
+[GRAVE][GRAVE][GRAVE]
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-```
+[GRAVE][GRAVE][GRAVE]
 ```
 
 HTML equivalent:
@@ -456,9 +457,9 @@ GitHub Flavored Markdown syntax:
 
 ```markdown
 [RETURN]
-```[LANGUAGE]
+[GRAVE][GRAVE][GRAVE][LANGUAGE]
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-```
+[GRAVE][GRAVE][GRAVE]
 ```
 
 HTML equivalent:
