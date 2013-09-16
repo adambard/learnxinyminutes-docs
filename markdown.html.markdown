@@ -560,37 +560,3 @@ HTML equvialent:
 ```html
 <a href="http://www.github.com">http://www.github.com</a>
 ```
-
-# MISCELLANEOUS
-
-## Markdown
-
-### Backslash escaping
-
-Markdown syntax:
-
-```markdown
-\\
-\`
-\*
-\_
-\#
-\+
-\-
-\.
-\!
-\{
-\}
-\[
-\]
-\(
-\)
-```
-
-HTML equivalent:
-
-```html
-<p>
-    \`*_#+-.!{}[]()
-</p>
-```
