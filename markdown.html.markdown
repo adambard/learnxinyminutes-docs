@@ -579,25 +579,6 @@ HTML equivalent:
 <a href="http://www.github.com">GitHub</a>
 ```
 
-### Reference links
-
-Markdown syntax:
-
-```markdown
-Lorem ipsum [github][] dolor sit amet [google][].
-
-[github]: http://www.github.com/ (GitHub)
-[google]: http://www.google.com/ (Google)
-```
-
-HTML equivalent:
-
-```html
-<p>
-    Lorem ipsum <a href="http://www.github.com/">GitHub</a> dolor sit amet <a href="http://www.google.com/">Google</a>.
-</p>
-```
-
 # MISCELLANEOUS
 
 ## Markdown
