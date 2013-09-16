@@ -542,21 +542,3 @@ HTML equivalent:
 ```html
 <del>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</del>
 ```
-
-# LINKS
-
-## Markdown
-
-### Automatic links
-
-Markdown syntax:
-
-```markdown
-<http://www.github.com>
-```
-
-HTML equvialent:
-
-```html
-<a href="http://www.github.com">http://www.github.com</a>
-```
