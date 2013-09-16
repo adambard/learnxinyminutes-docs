@@ -566,9 +566,9 @@ HTML equvialent:
 Markdown syntax:
 
 ```markdown
-%5Bgithub%5D: http://www.github.com "GitHub"
-%5Bgithub%5D: http://www.github.com 'GitHub'
-%5Bgithub%5D: http://www.github.com (GitHub)
+[github]: http://www.github.com "GitHub"
+[github]: http://www.github.com 'GitHub'
+[github]: http://www.github.com (GitHub)
 ```
 
 HTML equivalent:
@@ -584,10 +584,10 @@ HTML equivalent:
 Markdown syntax:
 
 ```markdown
-Lorem ipsum %5Bgithub%5D%5B%5D dolor sit amet %5Bgoogle%5D%5B%5D.
+Lorem ipsum [github][] dolor sit amet [google][].
 
-%5Bgithub%5D: http://www.github.com/ (GitHub)
-%5Bgoogle%5D: http://www.google.com/ (Google)
+[github]: http://www.github.com/ (GitHub)
+[google]: http://www.google.com/ (Google)
 ```
 
 HTML equivalent:
@@ -652,8 +652,8 @@ User: <a href="https://github.com/mojombo">mojombo</a>
 Markdown syntax:
 
 ```markdown
-!%5BGitHub logo%5D(/path/to/github_logo.png)
-!%5BGoogle logo%5D(/path/to/google_logo.png "This is Google logo")
+![GitHub logo](/path/to/github_logo.png)
+![Google logo](/path/to/google_logo.png "This is Google logo")
 ```
 
 HTML equivalent:
