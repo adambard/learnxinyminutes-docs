@@ -584,7 +584,7 @@ HTML equivalent:
 Markdown syntax:
 
 ```markdown
-Lorem ipsum [github][] dolor sit amet [google][].
+Lorem ipsum %5Bgithub%5D%5B%5D dolor sit amet %5Bgoogle%5D%5B%5D.
 
 %5Bgithub%5D: http://www.github.com/ (GitHub)
 %5Bgoogle%5D: http://www.google.com/ (Google)
@@ -681,9 +681,12 @@ Markdown syntax:
 \-
 \.
 \!
-\{}
-\[]
-\()
+\{
+\}
+\[
+\]
+\(
+\)
 ```
 
 HTML equivalent:
