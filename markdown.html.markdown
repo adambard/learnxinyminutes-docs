@@ -631,22 +631,6 @@ HTML equivalent:
 <a href="http://www.github.com/">http://www.github.com/</a>
 ```
 
-### Automatic references
-
-GitHub Flavored Markup syntax:
-
-```markdown
-SHA: 16c999e8c71134401a78d4d46435517b2271d6ac
-User: @mojombo
-```
-
-HTML equivalent:
-
-```html
-SHA: <a href="https://github.com/mojombo/github-flavored-markdown/commit/16c999e8c71134401a78d4d46435517b2271d6ac">16c999e</a>
-User: <a href="https://github.com/mojombo">mojombo</a>
-```
-
 # MISCELLANEOUS
 
 ## Markdown
