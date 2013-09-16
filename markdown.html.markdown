@@ -563,13 +563,15 @@ HTML equvialent:
 ```
 
 ### Classic links
+In following examples backslash is used only to properly show links and
+should be omitted when writing actual documentation.
 
 Markdown syntax:
 
 ```markdown
-\[github\]: http://www.github.com "GitHub"
-\[github\]: http://www.github.com 'GitHub'
-\[github\]: http://www.github.com (GitHub)
+\[github]: http://www.github.com "GitHub"
+\[github]: http://www.github.com 'GitHub'
+\[github]: http://www.github.com (GitHub)
 ```
 
 HTML equivalent:
@@ -587,8 +589,8 @@ Markdown syntax:
 ```markdown
 Lorem ipsum [github][] dolor sit amet [google][].
 
-\[github\]: http://www.github.com/ (GitHub)
-\[google\]: http://www.google.com/ (Google)
+\[github]: http://www.github.com/ (GitHub)
+\[google]: http://www.google.com/ (Google)
 ```
 
 HTML equivalent:
