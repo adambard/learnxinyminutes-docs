@@ -647,22 +647,6 @@ SHA: <a href="https://github.com/mojombo/github-flavored-markdown/commit/16c999e
 User: <a href="https://github.com/mojombo">mojombo</a>
 ```
 
-# IMAGES
-
-Markdown syntax:
-
-```markdown
-![GitHub logo](/path/to/github_logo.png)
-![Google logo](/path/to/google_logo.png "This is Google logo")
-```
-
-HTML equivalent:
-
-```html
-<img src="/path/to/github_logo.png" alt="GitHub logo" />
-<img src="/path/to/google_logo.png" alt="Google logo" />This is Google logo
-```
-
 # MISCELLANEOUS
 
 ## Markdown
