@@ -561,24 +561,6 @@ HTML equvialent:
 <a href="http://www.github.com">http://www.github.com</a>
 ```
 
-### Classic links
-
-Markdown syntax:
-
-```markdown
-[github]: http://www.github.com "GitHub"
-[github]: http://www.github.com 'GitHub'
-[github]: http://www.github.com (GitHub)
-```
-
-HTML equivalent:
-
-```html
-<a href="http://www.github.com">GitHub</a>
-<a href="http://www.github.com">GitHub</a>
-<a href="http://www.github.com">GitHub</a>
-```
-
 # MISCELLANEOUS
 
 ## Markdown
