@@ -615,22 +615,6 @@ HTML equivalent:
 &#109;&#x70;&#x6C;&#x2E;&#99;&#111;&#109;</a>
 ```
 
-## GitHub Flavored Markup
-
-### Automatic links
-
-GitHub Flavored Markup syntax:
-
-```markdown
-http://www.github.com/
-```
-
-HTML equivalent:
-
-```html
-<a href="http://www.github.com/">http://www.github.com/</a>
-```
-
 # MISCELLANEOUS
 
 ## Markdown
