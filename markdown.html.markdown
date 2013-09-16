@@ -594,21 +594,3 @@ HTML equivalent:
     \`*_#+-.!{}[]()
 </p>
 ```
-
-## GitHub Flavored Markdown
-
-### Multiple underscores
-
-GitHub Flavored Markdown syntax:
-
-```markdown
-_Lorem_ipsum_dolor_sit_amet,_consectetur_adipiscing_elit._
-```
-
-HTML equivalent:
-
-```html
-<p>
-    _Lorem_ipsum_dolor_sit_amet,_consectetur_adipiscing_elit._
-</p>
-```
