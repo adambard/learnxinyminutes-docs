@@ -68,7 +68,7 @@ load('myFile.mat', 'y')
 % Command syntax:
 load myFile.mat y % no parentheses, and spaces instead of commas
 % Note the lack of quote marks in command form: inputs are always passed as 
-% literal text - cannot pass variable values. Also, can't reveive output:
+% literal text - cannot pass variable values. Also, can't receive output:
 [V,D] = eig(A)  % this has no equivalent in command form
 
 
