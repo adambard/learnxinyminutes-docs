@@ -18,8 +18,8 @@ head(rivers)	# 撇一眼数据集
 length(rivers)	# 我们测量了多少条河流？
 # 141
 summary(rivers)
-#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-#  135.0   310.0   425.0   591.2   680.0  3710.0 
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+#  135.0   310.0   425.0   591.2   680.0  3710.0
 stem(rivers)	# 茎叶图（一种类似于直方图的展现形式）
 #
 #  The decimal point is 2 digit(s) to the right of the |
@@ -34,14 +34,14 @@ stem(rivers)	# 茎叶图（一种类似于直方图的展现形式）
 #  14 | 56
 #  16 | 7
 #  18 | 9
-#  20 | 
+#  20 |
 #  22 | 25
 #  24 | 3
-#  26 | 
-#  28 | 
-#  30 | 
-#  32 | 
-#  34 | 
+#  26 |
+#  28 |
+#  30 |
+#  32 |
+#  34 |
 #  36 | 1
 
 
@@ -50,7 +50,7 @@ stem(log(rivers))	# 查看数据集的方式既不是标准形式，也不是取
 #  The decimal point is 1 digit(s) to the left of the |
 #
 #  48 | 1
-#  50 | 
+#  50 |
 #  52 | 15578
 #  54 | 44571222466689
 #  56 | 023334677000124455789
@@ -65,7 +65,7 @@ stem(log(rivers))	# 查看数据集的方式既不是标准形式，也不是取
 #  74 | 84
 #  76 | 56
 #  78 | 4
-#  80 | 
+#  80 |
 #  82 | 2
 
 
@@ -101,15 +101,15 @@ stem(discoveries, scale=2) # 译者注：茎叶图（数据，放大系数）
 #   8 | 0
 #   9 | 0
 #  10 | 0
-#  11 | 
+#  11 |
 #  12 | 0
 
 max(discoveries)
 # 12
 
 summary(discoveries)
-#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-#    0.0     2.0     3.0     3.1     4.0    12.0 
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+#    0.0     2.0     3.0     3.1     4.0    12.0
 
 
 
@@ -151,7 +151,7 @@ class(5)	# "numeric"
 1.6e-35	# 布朗克长度
 
 # 长整数并用 L 结尾
-5L	# 5  
+5L	# 5
 #输出5L
 class(5L)	# "integer"
 
@@ -178,7 +178,7 @@ class(NULL)	# NULL
 
 # 简单列表
 c(6, 8, 7, 5, 3, 0, 9)	# 6 8 7 5 3 0 9
-c('alef', 'bet', 'gimmel', 'dalet', 'he')	
+c('alef', 'bet', 'gimmel', 'dalet', 'he')
 c('Z', 'o', 'r', 'o') == "Zoro"	# FALSE FALSE FALSE FALSE
 
 # 一些优雅的内置功能
@@ -200,119 +200,80 @@ month.abb	# "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "D
 letters[18]	# "r"
 LETTERS[13]	# "M"
 month.name[9]	# "September"
-c(6, 8, 7, 5, 3, 0, 9)[3]	# 7 
+c(6, 8, 7, 5, 3, 0, 9)[3]	# 7
 
 
 
-# CHARACTERS
-#特性
-# There's no difference between strings and characters in R
-# 字符串和字符在R语言中没有区别
+# 字符串
+
+# 字符串和字符在 R 语言中没有区别
 "Horatio"	# "Horatio"
-#字符输出"Horatio"
 class("Horatio") # "character"
-#字符串输出("Horatio") # "character"
 substr("Fortuna multis dat nimis, nulli satis.", 9, 15)	# "multis "
-#提取字符串("Fortuna multis dat nimis, nulli satis.", 第9个到15个之前并输出)	
 gsub('u', 'ø', "Fortuna multis dat nimis, nulli satis.")	# "Fortøna møltis dat nimis, nølli satis."
-#替换字符春，用ø替换u
 
 
 
-# LOGICALS
-#逻辑值
+# 逻辑值
 
-# booleans
-#布尔运算
+# 布尔值
 class(TRUE)	# "logical"
-#定义为真，逻辑型
 class(FALSE)	# "logical"
-#定义为假，逻辑型
-# Behavior is normal
-#表现的标准形式
+# 和我们预想的一样
 TRUE == TRUE	# TRUE
 TRUE == FALSE	# FALSE
 FALSE != FALSE	# FALSE
 FALSE != TRUE	# TRUE
-# Missing data (NA) is logical, too
-#缺失数据也是逻辑型的
+# 缺失数据（NA）也是逻辑值
 class(NA)	# "logical"
 #定义NA为逻辑型
 
 
 
-# FACTORS
-#因子
-# The factor class is for categorical data
-#因子是分类数据的定义函数
-# which can be ordered (like childrens' grade levels)
-#可以使有序的（就像儿童的等级水平）
-# or unordered (like gender)
-#也可以是无序的(就像性别）
-levels(factor(c("female", "male", "male", "female", "NA", "female")))	# "female" "male"   "NA" 
-#c("female", "male", "male", "female", "NA", "female")向量，变量是字符型，levels factor（）因子的等级水平
+# 因子
+# 因子是为数据分类排序设计的（像是排序小朋友们的年级或性别）
+levels(factor(c("female", "male", "male", "female", "NA", "female")))	# "female" "male"   "NA"
 
-factor(c("female", "female", "male", "NA", "female"))    
+factor(c("female", "female", "male", "NA", "female"))
 #  female female male   NA     female
 # Levels: female male NA
 
-data(infert)	#Infertility after Spontaneous and Induced Abortion
-#数据集（感染） 自然以及引产导致的不育症
+data(infert)	# 自然以及引产导致的不育症
 levels(infert$education)	# "0-5yrs"  "6-11yrs" "12+ yrs"
-#等级（感染与教育程度） 输出
 
 
 
-# VARIABLES
-#变量
+# 变量
 
-# Lots of way to assign stuff
-#许多种方式用来分配素材
-x = 5 # this is possible
-#x = 5可能的
-y <- "1" # this is preferred
-#y <- "1" 优先级的
-TRUE -> z # this works but is weird
-#输出真实的，存在一个超自然数满足条件
+# 有许多种方式用来赋值
+x = 5 # 这样可以
+y <- "1" # 更推荐这样
+TRUE -> z # 这样可行，但是很怪
 
-# We can use coerce variables to different classes
-#我们还可以使用枪支变量去进行不同的定义
+#我们还可以使用强制转型
 as.numeric(y)	# 1
-#定义数值型
 as.character(x)	# "5"
-#字符型
 
+# 循环
 
-# LOOPS
-#循环
-
-# We've got for loops
-#循环语句
+# for 循环语句
 for (i in 1:4) {
   print(i)
 }
-#定义一个i，从1-4输出
 
-# We've got while loops
-#我们可以获取循环结构
+# while 循环
 a <- 10
 while (a > 4) {
 	cat(a, "...", sep = "")
 	a <- a - 1
 }
-#把10负值为a，a＜4，输出文件（a,"...",sep="" ),跳出继续下一个循环取a=a-1,如此循环，直到a=10终止
-# Keep in mind that for and while loops run slowly in R
-#在R语言中牢记 for和它的循环结构
-# Operations on entire vectors (i.e. a whole row, a whole column)
-#牢记矢量中附带的操作（例如，整行和整列）
-# or apply()-type functions (we'll discuss later) are preferred
-#或者优先使用()-函数,稍后会进行讨论
+
+# 记住，在 R 语言中 for / while 循环都很慢
+# 建议使用 apply()（我们一会介绍）来错做一串数据（比如一列或者一行数据）
 
 # IF/ELSE
-#判断分支
 
-# Again, pretty standard
-#再一次，看这些优雅的标准
+# 再来看这些优雅的标准
 if (4 > 3) {
 	print("Huzzah! It worked!")
 } else {
@@ -322,30 +283,25 @@ if (4 > 3) {
 # =>
 # [1] "Huzzah! It worked!"
 
-# FUNCTIONS
-#功能函数
+# 函数
 
-# Defined like so:
-#定义如下
+# 定义如下
 jiggle <- function(x) {
-	x+ rnorm(x, sd=.1)	#add in a bit of (controlled) noise
+	x + rnorm(x, sd=.1)	#add in a bit of (controlled) noise
 	return(x)
 }
-#把功能函数x负值给jiggle，
 
-# Called like any other R function:
-jiggle(5)	# 5±ε. After set.seed(2716057), jiggle(5)==5.005043
+# 和其他 R 语言函数一样调用
+jiggle(5)	# 5±ε. 使用 set.seed(2716057) 后， jiggle(5)==5.005043
 
 #########################
-# Fun with data: vectors, matrices, data frames, and arrays
-# 数据参数：向量，矩阵，数据框，数组，
+# 数据容器：vectors, matrices, data frames, and arrays
 #########################
 
-# ONE-DIMENSIONAL
-#单维度
+# 单维度
 # You can vectorize anything, so long as all components have the same type
 #你可以将任何东西矢量化，因此所有的组分都有相同的类型
-vec <- c(8, 9, 10, 11) 
+vec <- c(8, 9, 10, 11)
 vec	#  8  9 10 11
 # The class of a vector is the class of its components
 #矢量class表示这一组分的类型
@@ -423,10 +379,10 @@ t(mat)
 mat2 <- cbind(1:4, c("dog", "cat", "bird", "dog"))
 mat2
 # =>
-#      [,1] [,2]   
-# [1,] "1"  "dog"  
-# [2,] "2"  "cat"  
-# [3,] "3"  "bird" 
+#      [,1] [,2]
+# [1,] "1"  "dog"
+# [2,] "2"  "cat"
+# [3,] "3"  "bird"
 # [4,] "4"  "dog"
 class(mat2)	# matrix
 #定义mat2矩阵
@@ -451,7 +407,7 @@ mat3
 # TWO-DIMENSIONAL (DIFFERENT CLASSES)
 ##二维函数(不同的变量类型)
 
-# For columns of different classes, use the data frame 
+# For columns of different classes, use the data frame
 利用数组可以将不同类型放在一起
 dat <- data.frame(c(5,2,1,4), c("dog", "cat", "bird", "dog"))
 #dat<-数据集(c(5,2,1,4), c("dog", "cat", "bird", "dog"))
@@ -484,7 +440,7 @@ dat[,"number"]	# 5 2 1 4
 # You can make a two-dimensional table (sort of like a matrix)
 #你可以建立一个2维表格（类型和矩阵相似）
 array(c(c(1,2,4,5),c(8,9,3,6)), dim=c(2,4))
-#数组(c(c(1,2,4,5),c(8,9,3,6)),有前两个向量组成，2行4列 
+#数组(c(c(1,2,4,5),c(8,9,3,6)),有前两个向量组成，2行4列
 # =>
 #      [,1] [,2] [,3] [,4]
 # [1,]    1    4    8    3
@@ -540,7 +496,7 @@ mat
 #使用(X, MARGIN, FUN)将一个function功能函数根据其特征应用到矩阵x中
 # over rows (MAR = 1) or columns (MAR = 2)
 #规定行列，其边界分别为1,2
-# That is, R does FUN to each row (or column) of X, much faster than a 
+# That is, R does FUN to each row (or column) of X, much faster than a
 #即就是，R定义一个function使每一行/列的x快于一个for或者while循环
 # for or while loop would do
 apply(mat, MAR = 2, myFunc)
