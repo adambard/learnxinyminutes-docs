@@ -299,42 +299,32 @@ jiggle(5)	# 5±ε. 使用 set.seed(2716057) 后， jiggle(5)==5.005043
 #########################
 
 # 单维度
-# You can vectorize anything, so long as all components have the same type
-#你可以将任何东西矢量化，因此所有的组分都有相同的类型
+# 你可以将目前我们学习到的任何类型矢量化，只要它们拥有相同的类型
 vec <- c(8, 9, 10, 11)
 vec	#  8  9 10 11
-# The class of a vector is the class of its components
-#矢量class表示这一组分的类型
+# 矢量的类型是这一组数据元素的类型
 class(vec)	# "numeric"
 # If you vectorize items of different classes, weird coercions happen
-#如果你强制的将不同类型的classes矢量化，会发生超自然形式的函数，例如都转变成数值型、字符型
+#如果你强制的将不同类型数值矢量化，会出现特殊值
 c(TRUE, 4)	# 1 4
 c("dog", TRUE, 4)	# "dog"  "TRUE" "4"
 
-# We ask for specific components like so (R starts counting from 1)
-#我们可以找寻特定的组分，例如这个例子（R从1算起）
+#我们这样来取内部数据，（R 的下标索引顺序 1 开始）
 vec[1]	# 8
-# We can also search for the indices of specific components,
-#我们也可以从这些特定组分中找寻这些指标
+# 我们可以根据条件查找特定数据
 which(vec %% 2 == 0)	# 1 3
-# or grab just the first or last entry in the vector
-#抓取矢量中第1个和最后一个字符
+# 抓取矢量中第一个和最后一个字符
 head(vec, 1)	# 8
 tail(vec, 1)	# 11
-#如果指数结束或不存在即"goes over" 可以获得NA
-# If an index "goes over" you'll get NA:
+#如果下标溢出或不存会得到 NA
 vec[6]	# NA
-# You can find the length of your vector with length()
-#你也可以找到矢量的长度
+# 你可以使用 length() 获取矢量的长度
 length(vec)	# 4
 
-# You can perform operations on entire vectors or subsets of vectors
-#你可以将整个矢量或者子矢量集进行展示
+# 你可以直接操作矢量或者矢量的子集
 vec * 4	# 16 20 24 28
-#
 vec[2:3] * 5	# 25 30
-# and there are many built-in functions to summarize vectors
-#这里有许多内置的功能函数，并且可对矢量特征进行总结
+# 这里有许多内置的函数，来表现向量
 mean(vec)	# 9.5
 var(vec)	# 1.666667
 sd(vec)	# 1.290994
@@ -342,40 +332,32 @@ max(vec)	# 11
 min(vec)	# 8
 sum(vec)	# 38
 
-# TWO-DIMENSIONAL (ALL ONE CLASS)
-#二维函数
+# 二维（相同元素类型）
 
-# You can make a matrix out of entries all of the same type like so:
-#你可以建立矩阵，保证所有的变量形式相同
+#你可以为同样类型的变量建立矩阵
 mat <- matrix(nrow = 3, ncol = 2, c(1,2,3,4,5,6))
-#建立mat矩阵，3行2列，从1到6排列，默认按列排布
 mat
 # =>
 #      [,1] [,2]
 # [1,]    1    4
 # [2,]    2    5
 # [3,]    3    6
-# Unlike a vector, the class of a matrix is "matrix", no matter what's in it
+# 和 vector 不一样的是，一个矩阵的类型真的是 「matrix」，而不是内部元素的类型
 class(mat) # => "matrix"
-# Ask for the first row
-#访问第一行的字符
+# 访问第一行的字符
 mat[1,]	# 1 4
-# Perform operation on the first column
-#优先输入第一列，分别×3输出
+# 操作第一行数据
 3 * mat[,1]	# 3 6 9
-# Ask for a specific cell
-#访问特殊的单元，第3行第二列
+# 访问一个特定数据
 mat[3,2]	# 6
-# Transpose the whole matrix
-#转置整个矩阵，变成2行3列
+# 转置整个矩阵（译者注：变成 2 行 3 列）
 t(mat)
 # =>
 #      [,1] [,2] [,3]
 # [1,]    1    2    3
 # [2,]    4    5    6
 
-# cbind() sticks vectors together column-wise to make a matrix
-把两个矩阵按列合并，形成新的矩阵
+# 使用 cbind() 函数把两个矩阵按列合并，形成新的矩阵
 mat2 <- cbind(1:4, c("dog", "cat", "bird", "dog"))
 mat2
 # =>
@@ -385,36 +367,27 @@ mat2
 # [3,] "3"  "bird"
 # [4,] "4"  "dog"
 class(mat2)	# matrix
-#定义mat2矩阵
 # Again, note what happened!
-#同样的注释
-# Because matrices must contain entries all of the same class,
-#矩阵必须包含同样的形式
-# everything got converted to the character class
-#每一个变量都可以转化成字符串形式
+# 注意
+# 因为矩阵内部元素必须包含同样的类型
+# 所以现在每一个元素都转化成字符串
 c(class(mat2[,1]), class(mat2[,2]))
 
-# rbind() sticks vectors together row-wise to make a matrix
-#按行合并两个向量，建立新的矩阵
+# 按行合并两个向量，建立新的矩阵
 mat3 <- rbind(c(1,2,4,5), c(6,7,0,4))
 mat3
 # =>
 #      [,1] [,2] [,3] [,4]
 # [1,]    1    2    4    5
 # [2,]    6    7    0    4
-# Aah, everything of the same class. No coercions. Much better.
+# 哈哈，数据类型都一样的，没有发生强制转换，生活真美好
 
-# TWO-DIMENSIONAL (DIFFERENT CLASSES)
-##二维函数(不同的变量类型)
+# 二维(不同的元素类型)
 
-# For columns of different classes, use the data frame
-利用数组可以将不同类型放在一起
+# 利用 data frame 可以将不同类型数据放在一起
 dat <- data.frame(c(5,2,1,4), c("dog", "cat", "bird", "dog"))
-#dat<-数据集(c(5,2,1,4), c("dog", "cat", "bird", "dog"))
-names(dat) <- c("number", "species") # name the columns
-#给每一个向量命名
+names(dat) <- c("number", "species") # 给数据列命名
 class(dat)	# "data.frame"
-#建立数据集dat
 dat
 # =>
 #   number species
@@ -425,18 +398,16 @@ dat
 class(dat$number)	# "numeric"
 class(dat[,2])	# "factor"
 # The data.frame() function converts character vectors to factor vectors
-#数据集，将字符特征转化为因子矢量
+# data.frame() 会将字符向量转换为 factor 向量
 
-# There are many twisty ways to subset data frames, all subtly unalike
-#这里有许多种生成数据集的方法，所有的都很巧妙但又不相似
+# 有很多精妙的方法来获取 data frame 的子数据集
 dat$number	# 5 2 1 4
 dat[,1]	# 5 2 1 4
 dat[,"number"]	# 5 2 1 4
 
-# MULTI-DIMENSIONAL (ALL OF ONE CLASS)
-#多维函数
-# Arrays creates n-dimensional tables
-#利用数组创造一个n维的表格
+# 多维（相同元素类型）
+
+# 利用数组创造一个 n 维的表格
 # You can make a two-dimensional table (sort of like a matrix)
 #你可以建立一个2维表格（类型和矩阵相似）
 array(c(c(1,2,4,5),c(8,9,3,6)), dim=c(2,4))
