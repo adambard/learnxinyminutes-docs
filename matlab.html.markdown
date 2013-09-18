@@ -37,8 +37,8 @@ clc % Erases the writing on your Command Window
 diary % Toggle writing Command Window text to file
 ctrl-c % Abort current computation
 
-edit('myfunction.m') % Open function in editor
-type('myfunction.m') % Print the source of function to Command Window
+edit('myfunction.m') % Open function/script in editor
+type('myfunction.m') % Print the source of function/script to Command Window
 
 profile viewer % Open profiler
 
@@ -61,6 +61,17 @@ myVariable = 4; % Semi colon suppresses output to the Command Window
 2 ^ 3 % ans = 8 
 a = 2; b = 3; 
 c = exp(a)*sin(pi/2) % c = 7.3891
+
+% Calling functions can be done in either of two ways:
+% Standard function syntax:
+load('myFile.mat', 'y')
+% Command syntax:
+load myFile.mat y % no parentheses, and spaces instead of commas
+% Note the lack of quote marks in command form: inputs are always passed as 
+% literal text - cannot pass variable values. Also, can't reveive output:
+[V,D] = eig(A)  % this has no equivalent in command form
+
+
 
 % Logicals
 1 > 5 % ans = 0
@@ -384,8 +395,10 @@ NaN
 inf
 
 % Solving matrix equations (if no solution, returns a least squares solution)
+% The \ and / operators are equivalent to the functions mldivide and mrdivide
 x=A\b % Solves Ax=b. Faster and more numerically accurate than using inv(A)*b.
 x=b/A % Solves xA=b
+
 inv(A) % calculate the inverse matrix
 pinv(A) % calculate the pseudo-inverse
 
