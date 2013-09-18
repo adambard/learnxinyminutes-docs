@@ -1,46 +1,28 @@
-
-# Comments start with hashtags.
 # 评论以 # 开始
 
-# You can't make a multi-line comment per se,
-# but you can stack multiple comments like so.
-# 你不能在每一个se下执行多个注释,
-# 但是你可以像这样把命注释内容堆叠起来.
-# in Windows, hit COMMAND-ENTER to execute a line
-# 在windows下,点击回车键来执行一条命令
+# R 语言原生不支持 多行注释
+# 但是你可以像这样来多行注释
+
+# 在窗口里按回车键可以执行一条命令
 
 
 ###################################################################
-# Stuff you can do without understanding anything about programming
-# 素材可以使那些不懂编程的人同样得心用手
+# 不用懂编程就可以开始动手了
 ###################################################################
 
-data()	# Browse pre-loaded data sets
-data()	# 浏览预加载的数据集
-data(rivers)	# Lengths of Major North American Rivers
+data()	# 浏览内建的数据集
 data(rivers)	# 北美主要河流的长度（数据集）
-ls()	# Notice that "rivers" appears in the workspace
-ls()	# 在工作站中查看”河流“文件夹是否出现
-head(rivers)	# peek at the dataset
-head(rivers)	# 浏览数据集
+ls()	# 在工作空间中查看「河流」是否出现
+head(rivers)	# 撇一眼数据集
 # 735 320 325 392 524 450
-length(rivers)	# how many rivers were measured?
+length(rivers)	# 我们测量了多少条河流？
 # 141
-length(rivers)	# 测量了多少条河流
 summary(rivers)
 #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 #  135.0   310.0   425.0   591.2   680.0  3710.0 
-#查看”河流“数据集的特征
-#  最小值. 1st Qu.  中位数    平均值     最大值 
-#  135.0   310.0   425.0   591.2   680.0  3710.0 
-stem(rivers)	#stem-and-leaf plot (like a histogram)
-stem(rivers)	#茎叶图（一种类似于直方图的展现形式）
-
-
-
-
+stem(rivers)	# 茎叶图（一种类似于直方图的展现形式）
+#
 #  The decimal point is 2 digit(s) to the right of the |
-#  小数点向|右边保留两位数字 
 #
 #   0 | 4
 #   2 | 011223334555566667778888899900001111223333344455555666688888999
@@ -62,11 +44,10 @@ stem(rivers)	#茎叶图（一种类似于直方图的展现形式）
 #  34 | 
 #  36 | 1
 
-stem(log(rivers))	#Notice that the data are neither normal nor log-normal! Take that, Bell Curve fundamentalists.
-stem(log(rivers))	#查看数据集的方式既不是标准形式，也不是取log后的结果! 看起来，是钟形曲线形式的基本数据集
+
+stem(log(rivers))	# 查看数据集的方式既不是标准形式，也不是取log后的结果! 看起来，是钟形曲线形式的基本数据集
 
 #  The decimal point is 1 digit(s) to the left of the |
-#  小数点向|左边保留一位数字 
 #
 #  48 | 1
 #  50 | 
@@ -88,35 +69,26 @@ stem(log(rivers))	#查看数据集的方式既不是标准形式，也不是取l
 #  82 | 2
 
 
-hist(rivers, col="#333333", border="white", breaks=25)	#play around with these parameters
-hist(rivers, col="#333333", border="white", breaks=25)	#给river做统计频数直方图，包含了这些参数（名称，颜色，边界，空白）
-hist(log(rivers), col="#333333", border="white", breaks=25)	#you'll do more plotting later
-hist(log(rivers), col="#333333", border="white", breaks=25)	#稍后你还可以做更多的绘图，统计频数直方图，包含了这些参数（river数据集的log值，颜色，边界，空白）
-hist(rivers, col="#333333", border="white", breaks=25)	#play around with these parameters
-hist(rivers, col="#333333", border="white", breaks=25)	#运行同济频数直方图的这些参数
+hist(rivers, col="#333333", border="white", breaks=25)	# 试试用这些参数画画 （译者注：给 river 做统计频数直方图，包含了这些参数：数据源，颜色，边框，空格）
+hist(log(rivers), col="#333333", border="white", breaks=25)	#你还可以做更多式样的绘图
 
-#Here's another neat data set that comes pre-loaded. R has tons of these. data()
-#这里还有其他一些简洁的数据集可以被提前加载。R语言包括大量这种类型的数据集
+# 还有其他一些简单的数据集可以被用来加载。R 语言包括了大量这种 data()
 data(discoveries)
-#数据集（发现）
 plot(discoveries, col="#333333", lwd=3, xlab="Year", main="Number of important discoveries per year")
-#绘图（发现，颜色负值，宽度负值，X轴名称，主题：Number of important discoveries per year）
+# 译者注：参数为（数据源，颜色，线条宽度，X 轴名称，标题）
+plot(discoveries, col="#333333", lwd=3, type = "h", xlab="Year", main="Number of important discoveries per year")
 
 
-
-#rather than leaving the default ordering (by year) we could also sort to see what's typical
-#宁可舍弃也不执行排序（按照年份完成）我们可以分类来查看这是那些类型
-sort(discoveries)  #给（发现）分类
+# 除了按照默认的年份排序，我们还可以排序来发现特征
+sort(discoveries)
 #  [1]  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  1  1  1  1  2  2  2  2
 # [26]  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  3  3  3
 # [51]  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  4  4  4  4  4  4  4  4
 # [76]  4  4  4  4  5  5  5  5  5  5  5  6  6  6  6  6  6  7  7  7  7  8  9 10 12
 
-stem(discoveries, scale=2)
-#茎叶图（发现，在原来的基础上降尺度扩大两倍）
-# 
+stem(discoveries, scale=2) # 译者注：茎叶图（数据，放大系数）
+#
 #  The decimal point is at the |
-#  小数点在|
 #
 #   0 | 000000000
 #   1 | 000000000000
@@ -133,32 +105,26 @@ stem(discoveries, scale=2)
 #  12 | 0
 
 max(discoveries)
-#最大值(发现)
 # 12
 
 summary(discoveries)
-#数据集特征(发现)
 #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 #    0.0     2.0     3.0     3.1     4.0    12.0 
 
 
 
 
-#Basic statistical operations don't require any programming knowledge either
 #基本的统计学操作也不需要任何编程知识
 
-#roll a die a few times
-#随机输出数据
+#随机生成数据
 round(runif(7, min=.5, max=6.5))
-#round(产生均匀分布的随机数，进行四舍五入(7个, 最小值为0.5, max=6.5))
+# 译者注：runif 产生随机数，round 四舍五入
 # 1 4 6 1 4 6 4
 
-#your numbers will differ from mine unless we set the same random.seed(31337)
-#你输出的结果将会与我们给出的不同，除非我们设置了同样的随机种子 random.seed(31337)
+# 你输出的结果会和我们给出的不同，除非我们设置了相同的随机种子 random.seed(31337)
 
 
-#draw from a standard Gaussian 9 times
-#从标准高斯函数中随机的提取9次结果
+#从标准高斯函数中随机生成 9 次
 rnorm(9)
 # [1]  0.07528471  1.03499859  1.34809556 -0.82356087  0.61638975 -1.88757271
 # [7] -0.59975593  0.57629164  1.08455362
@@ -172,100 +138,69 @@ rnorm(9)
 
 
 #########################
-# Basic programming stuff
-# 基本的编程素材
+# 基础编程
 #########################
 
-# NUMBERS
+# 数值
 
-# "numeric" means double-precision floating-point numbers
 #“数值”指的是双精度的浮点数
 5	# 5
 class(5)	# "numeric"
-#定义(5)为数值型变量	# "numeric"
-5e4	# 50000				#handy when dealing with large,small,or variable orders of magnitude
-#5×104次方    可以手写输入改变数量级的大小将变量扩大
-6.02e23	# Avogadro's number
-#阿伏伽德罗常数
-1.6e-35	# Planck length
-#布朗克长度
+5e4	# 50000				# 用科学技术法方便的处理极大值、极小值或者可变的量级
+6.02e23	# 阿伏伽德罗常数#
+1.6e-35	# 布朗克长度
 
-# long-storage integers are written with L
-#长存储整数并用L书写
+# 长整数并用 L 结尾
 5L	# 5  
 #输出5L
 class(5L)	# "integer"
-#（5L）的类型， 整数型
 
-# Try ?class for more information on the class() function
-#可以自己试一试？用class()功能函数定义更多的信息
-# In fact, you can look up the documentation on `xyz` with ?xyz
-#事实上，你可以找一些文件查阅“xyz”以及xyz的差别
-# or see the source for `xyz` by evaluating xyz
-#或者通过评估xyz来查看“xyz”的来源
+# 可以自己试一试？用 class() 函数获取更多信息
+# 事实上，你可以找一些文件查阅 `xyz` 以及xyz的差别
+# `xyz` 用来查看源码实现，?xyz 用来看帮助
 
-# Arithmetic
-#算法
+# 算法
 10 + 66	# 76
 53.2 - 4	# 49.2
 2 * 2.0	# 4
 3L / 4	# 0.75
 3 %% 2	# 1
 
-# Weird number types
-#超自然数的类型
+# 特殊数值类型
 class(NaN)	# "numeric"
 class(Inf)	# "numeric"
-class(-Inf)	# "numeric"		#used in for example integrate( dnorm(x), 3, Inf ) -- which obviates Z-score tables
-#定义以上括号内的数均为数值型变量，利用实例中的整数（正态分布函数（X）,3,Inf ）消除Z轴列表
+class(-Inf)	# "numeric"		# 在以下场景中会用到 integrate( dnorm(x), 3, Inf ) -- 消除 Z 轴数据
 
-# but beware, NaN isn't the only weird type...
-# 但要注意，NaN并不是仅有的超自然类型。。。
-class(NA)	# see below
-#定义（NA）下面的部分会理解
+# 但要注意，NaN 并不是唯一的特殊数值类型……
+class(NA)	# 看上面
 class(NULL)	# NULL
-#定义（NULL）无效的
 
 
-# SIMPLE LISTS
-#简单的数据集 
+# 简单列表
 c(6, 8, 7, 5, 3, 0, 9)	# 6 8 7 5 3 0 9
-#输出数值型向量（6 8 7 5 3 0 9）
 c('alef', 'bet', 'gimmel', 'dalet', 'he')	
-#输出字符型变量# "alef"   "bet"    "gimmel" "dalet"  "he"
 c('Z', 'o', 'r', 'o') == "Zoro"	# FALSE FALSE FALSE FALSE
-#输出逻辑型变量FALSE FALSE FALSE FALSE
 
-#some more nice built-ins
-#一些优雅的内置功能
+# 一些优雅的内置功能
 5:15	# 5  6  7  8  9 10 11 12 13 14 15
-#从5-15输出，以进度为1递增
 
 seq(from=0, to=31337, by=1337)
-#输出序列（从0到31337，以1337递增）
 #  [1]     0  1337  2674  4011  5348  6685  8022  9359 10696 12033 13370 14707
 # [13] 16044 17381 18718 20055 21392 22729 24066 25403 26740 28077 29414 30751
 
 letters
-#字符型变量，26个
 #  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"
 # [20] "t" "u" "v" "w" "x" "y" "z"
 
 month.abb	# "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"
-#表示月份的变量
 
 
 # Access the n'th element of a list with list.name[n] or sometimes list.name[[n]]
-#访问数据集名字为[n]的第n个元素
-
+# 使用 list.name[n] 来访问第 n 个列表元素，有时候需要使用 list.name[[n]]
 letters[18]	# "r"
-#访问其中的第18个变量
 LETTERS[13]	# "M"
-#用大写访问其中的第13个变量
 month.name[9]	# "September"
-#访问名字文件中第9个变量
 c(6, 8, 7, 5, 3, 0, 9)[3]	# 7 
-#访问向量中的第三个变量
 
 
 
