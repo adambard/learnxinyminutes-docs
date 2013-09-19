@@ -53,10 +53,10 @@ else
     echo "And this is not"
 fi
 
-# And the usual while loop:
+# while loop:
 while [true]
 do
-	echo "put loop content here..."
+	echo "loop body here..."
 	break
 done
 
