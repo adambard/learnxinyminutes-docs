@@ -39,7 +39,7 @@ Multi-line comments look like this. They work in C89 as well.
 
 //print formatting:
 "%d"    // integer
-"%3d"   // minimum length of 3 digits for integer (right justifies text)
+"%3d"   // integer with minimum of length 3 digits (right justifies text)
 "%s"    // string
 "%f"    // float
 "%ld"   // long
@@ -51,7 +51,7 @@ Multi-line comments look like this. They work in C89 as well.
 "%o"    // octal
 "%%"    // prints % 
 
-// Constants: use #define keyword, no semicolon at end. 
+// Constants: #define <keyword> (no semicolon at end) 
 #define DAYS_IN_YEAR = 365
 
 //enumeration constants are also ways to declare constants. 
@@ -62,7 +62,6 @@ enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
 // (File names between <angle brackets> are headers from the C standard library.)
 // For your own headers, use double quotes instead of angle brackets:
@@ -111,7 +110,7 @@ int main() {
     unsigned int ux_int;
     unsigned long long ux_long_long;
 
-    // chars inside single quotes '*' are integers in your character set. 
+    // chars inside single quotes are integers in machine's character set. 
     '0' //==> 48 on the ASCII character set. 
     'A' //==> 65 on the ASCII character set. 
 
@@ -226,20 +225,14 @@ int main() {
     0 || 1; // => 1 (Logical or)
     0 || 0; // => 0
 
-    //Conditional expression ( ?: )
+    //Conditional expression ( ? : )
     int a, b, z;
-    z = (a > b) ? a : b; // z = max(a, b);
+    z = (a > b) ? a : b; // "if a > b return a, else return b." 
 
     //Increment and decrement operators:
-    int j = 0;
-    char s[];
-    int w = 0;
-    j++; //difference between postfix and prefix explained below
-    ++j; //  in string example. 
-    j--;
-    --j;
     s[j++]; //returns value of j to s THEN increments value of j. 
     s[++j]; //increments value of j THEN returns value of j to s. 
+    // same with j-- and --j
 
     // Bitwise operators!
     ~0x0F; // => 0xF0 (bitwise negation, "1's complement")
@@ -267,12 +260,6 @@ int main() {
       printf("I print\n");
     }
 
-    // Notes:
-    // Loops MUST always have a body. If no body is needed, do this:
-    for (i = 0; i <= 5; i++) {
-        ; // use semicolon to act as the body (null statement)
-    }
-
     // While loops exist
     int ii = 0;
     while (ii < 10) { //ANY value not zero is true. 
@@ -296,6 +283,12 @@ int main() {
     } // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
     printf("\n");
+
+    // *****NOTES*****:
+    // Loops MUST always have a body. If no body is needed, do:
+    for (i = 0; i <= 5; i++) {
+        ; // use semicolon to act as the body (null statement)
+    }
 
     // branching with multiple choices: switch()
     switch (some_integral_expression) {
@@ -448,18 +441,20 @@ int add_two_ints(int x1, int x2)
     return x1 + x2; // Use return to return a value
 }
 
-// Must declare a 'funtion prototype' before main() when creating functions
-// in file. 
+// Must declare a 'funtion prototype' when creating functions before main()
 void getInt(char c); // function prototype
-int main() {
+int main() {         // main function
     return 0;
 }
 void getInt(char w) { //parameter name does not need to match function prototype
     ;
 }
-//if function takes no parameters, do: int getInt(void); for function prototype
-//  and for the function declaration: int getInt(void) {}
-//  this is to keep compatibility with older versions of C. 
+
+//if function takes no parameters, do: 
+int getInt(void); for function prototype
+//  and for the function declaration: 
+int getInt(void) {}
+//  (this is to keep compatibility with older versions of C). 
 
 /*
 Functions are call by value. So when a function is called, the arguments passed
@@ -485,11 +480,13 @@ void str_reverse(char *str_in)
     }
 }
 
+/////////////////////////////////////
 // Built in functions:
+/////////////////////////////////////
 // from stdio.h:
-int c = getchar(); //reads character from input. If input = hi, only h is read.
-// getchar() can be stored into int or char. I am using int because 
-//   char is not large enough to store EOF used below. 
+// getchar()
+int c = getchar(); //reads character from input. 
+// If input = hi, 'h' is returned then next call, 'i' returned. 
 while ((c = getchar()) != EOF) { // EOF constant "end of file". 
                                  //   Linux: CTRL+D, Windows: CTRL+X
     // must have () around getchar() as != is run before =. 
