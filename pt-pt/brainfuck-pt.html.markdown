@@ -3,7 +3,9 @@ language: brainfuck
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
+translators:
     - ["Joao Marques", "http://github.com/mrshankly"]
+lang: pt-pt
 ---
 
 Brainfuck (não capitalizado excepto no início de uma frase) é uma linguagem de
