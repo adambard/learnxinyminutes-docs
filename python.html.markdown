@@ -224,7 +224,7 @@ filled_dict.get("four") #=> None
 filled_dict.get("one", 4) #=> 1
 filled_dict.get("four", 4) #=> 4
 
-# "setdefault()" method is a safe way to add new key-value pair into dictionary
+# "setdefault()" inserts into a dictionary only if the given key isn't present
 filled_dict.setdefault("five", 5) #filled_dict["five"] is set to 5
 filled_dict.setdefault("five", 6) #filled_dict["five"] is still 5
 
@@ -282,9 +282,9 @@ prints:
 for animal in ["dog", "cat", "mouse"]:
     # You can use % to interpolate formatted strings
     print "%s is a mammal" % animal
-    
+
 """
-"range(number)" returns a list of numbers 
+"range(number)" returns a list of numbers
 from zero to the given number
 prints:
     0
@@ -459,7 +459,7 @@ import math as m
 math.sqrt(16) == m.sqrt(16) #=> True
 
 # Python modules are just ordinary python files. You
-# can write your own, and import them. The name of the 
+# can write your own, and import them. The name of the
 # module is the same as the name of the file.
 
 # You can find out which functions and attributes
