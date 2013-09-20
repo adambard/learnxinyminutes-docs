@@ -358,12 +358,15 @@ myObj.meaningOfLife; // = 43
 // the constructor function itself; instead, it's the prototype that new objects
 // are given when they're created with that constructor and the new keyword.
 myConstructor.prototype = {
+    myNumber: 5,
     getMyNumber: function(){
         return this.myNumber;
     }
 };
 var myNewObj2 = new myConstructor();
 myNewObj2.getMyNumber(); // = 5
+myNewObj2.myNumber = 6
+myNewObj2.getMyNumber(); // = 6
 
 // Built-in types like strings and numbers also have constructors that create
 // equivalent wrapper objects.
