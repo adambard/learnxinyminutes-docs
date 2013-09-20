@@ -112,8 +112,10 @@ None is None  #=> True
 ## 2. Variables and Collections
 ####################################################
 
-# Printing is pretty easy
-print "I'm Python. Nice to meet you!"
+# Python has a print function, available in versions 2.7 and 3...
+print("I'm Python. Nice to meet you!")
+# and an older print statement, in all 2.x versions but removed from 3.
+print "I'm also Python!"
 
 
 # No need to declare variables before assigning to them.
@@ -265,11 +267,11 @@ some_var = 5
 # Here is an if statement. Indentation is significant in python!
 # prints "some_var is smaller than 10"
 if some_var > 10:
-    print "some_var is totally bigger than 10."
+    print("some_var is totally bigger than 10.")
 elif some_var < 10:    # This elif clause is optional.
-    print "some_var is smaller than 10."
+    print("some_var is smaller than 10.")
 else:           # This is optional too.
-    print "some_var is indeed 10."
+    print("some_var is indeed 10.")
 
 
 """
@@ -281,7 +283,7 @@ prints:
 """
 for animal in ["dog", "cat", "mouse"]:
     # You can use % to interpolate formatted strings
-    print "%s is a mammal" % animal
+    print("%s is a mammal" % animal)
 
 """
 "range(number)" returns a list of numbers
@@ -293,7 +295,7 @@ prints:
     3
 """
 for i in range(4):
-    print i
+    print(i)
 
 """
 While loops go until a condition is no longer met.
@@ -305,7 +307,7 @@ prints:
 """
 x = 0
 while x < 4:
-    print x
+    print(x)
     x += 1  # Shorthand for x = x + 1
 
 # Handle exceptions with a try/except block
@@ -324,7 +326,7 @@ except IndexError as e:
 
 # Use "def" to create new functions
 def add(x, y):
-    print "x is %s and y is %s" % (x, y)
+    print("x is %s and y is %s" % (x, y))
     return x + y    # Return values with a return statement
 
 # Calling functions with parameters
@@ -351,8 +353,8 @@ keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
 
 # You can do both at once, if you like
 def all_the_args(*args, **kwargs):
-    print args
-    print kwargs
+    print(args)
+    print(kwargs)
 """
 all_the_args(1, 2, a=3, b=4) prints:
     (1, 2)
@@ -420,10 +422,10 @@ class Human(object):
 
 # Instantiate a class
 i = Human(name="Ian")
-print i.say("hi")     # prints out "Ian: hi"
+print(i.say("hi"))     # prints out "Ian: hi"
 
 j = Human("Joel")
-print j.say("hello")  #prints out "Joel: hello"
+print(j.say("hello"))  #prints out "Joel: hello"
 
 # Call our class method
 i.get_species() #=> "H. sapiens"
@@ -443,12 +445,12 @@ Human.grunt() #=> "*grunt*"
 
 # You can import modules
 import math
-print math.sqrt(16) #=> 4
+print(math.sqrt(16) )#=> 4
 
 # You can get specific functions from a module
 from math import ceil, floor
-print ceil(3.7)  #=> 4.0
-print floor(3.7) #=> 3.0
+print(ceil(3.7))  #=> 4.0
+print(floor(3.7)) #=> 3.0
 
 # You can import all functions from a module.
 # Warning: this is not recommended
