@@ -4,7 +4,10 @@ category: language
 language: perl
 filename: learnperl-es.pl
 contributors:
+    - ["Korjavin Ivan", "http://github.com/korjavin"]
+translators:
     - ["Francisco Gomez", "http://github.com/frncscgmz"]
+lang: es-es
 ---
 
 Perl 5 es un lenguaje de programación altamente capaz, rico en características con mas de 25 años de desarrollo.
