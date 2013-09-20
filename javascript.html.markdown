@@ -359,7 +359,7 @@ myObj.meaningOfLife; // = 43
 // are given when they're created with that constructor and the new keyword.
 myConstructor.prototype = {
     getMyNumber: function(){
-        return this.myNumber
+        return this.myNumber;
     }
 };
 var myNewObj2 = new myConstructor();
