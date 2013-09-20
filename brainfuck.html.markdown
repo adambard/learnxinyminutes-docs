@@ -67,8 +67,10 @@ This program takes two numbers for input, and multiplies them.
 The gist is it first reads in two inputs. Then it starts the outer loop,
 conditioned on cell #1. Then it moves to cell #2, and starts the inner
 loop conditioned on cell #2, incrementing cell #3. However, there comes a
-problem: at the end of the inner loop, cell #2 is zero. To solve this problem,
+problem: At the end of the inner loop, cell #2 is zero. In that case,
+inner loop won't work anymore since next time. To solve this problem,
 we also increment cell #4, and then recopy cell #4 into cell #2.
+Then cell #3 is the result.
 ```
 
 And that's brainfuck. Not that hard, eh? For fun, you can write your own
