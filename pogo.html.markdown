@@ -7,7 +7,7 @@ filename: learnPogo.pogo
 
 Pogoscript is a little language that emphasises readability, DSLs and provides excellent asynchronous primitives for writing connected JavaScript applications for the browser or server.
 
-```
+``` javascript
 // defining a variable
 water temperature = 24
 
