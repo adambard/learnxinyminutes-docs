@@ -7,48 +7,27 @@ filename: learnPogo.pogo
 
 Pogoscript is a little language that emphasises readability, DSLs and provides excellent asynchronous primitives for writing connected JavaScript applications for the browser or server.
 
-# variables
-
-defining a variable
-
 ```
+// defining a variable
 water temperature = 24
-```
 
-re-assigning a variable after its definition
-
-```
+// re-assigning a variable after its definition
 water temperature := 26
-```
 
-## functions
+// functions allow their parameters to be placed anywhere
+temperature at (a) altitude = 32 - a / 100
 
-functions allow their parameters to be placed anywhere
-
-```
-temperature at (altitude) altitude = 32 - altitude / 100
-```
-
-longer functions are just indented
-
-```
-temperature at (altitude) altitude :=
-    if (altitude < 0)
+// longer functions are just indented
+temperature at (a) altitude :=
+    if (a < 0)
         water temperature
     else
-        32 - altitude / 100
-```
+        32 - a / 100
 
-calling a function
-
-```
+// calling a function
 current temperature = temperature at 3200 altitude
-```
 
-## objects and methods
-this function constructs a new object
-
-```
+// this function constructs a new object with methods
 position (x, y) = {
     x = x
     y = y
@@ -58,42 +37,32 @@ position (x, y) = {
         dy = self.y - p.y
         Math.sqrt (dx * dx + dy * dy)
 }
-```
 
-calling methods
+// `self` is similar to `this` in JavaScript with the
+// exception that `self` isn't redefined in each new
+// function definition
+// `self` just does what you expect
 
-```
+// calling methods
 position (7, 2).distance from position (position (5, 1))
-```
 
-as in JavaScript, objects are hashes too
-
-```
+// as in JavaScript, objects are hashes too
 position.'x' == position.x == position.('x')
-```
 
-## arrays
-
-```
+// arrays
 positions = [
     position (1, 1)
     position (1, 2)
     position (1, 3)
 ]
-```
 
-indexing an array
-
-```
+// indexing an array
 positions.0.y
 
 n = 2
 positions.(n).y
-```
 
-## strings
-
-```
+// strings
 poem = 'Tail turned to red sunset on a juniper crown a lone magpie cawks.
         Mad at Oryoki in the shrine-room -- Thistles blossomed late afternoon.
         Put on my shirt and took it off in the sun walking the path to lunch.
@@ -103,25 +72,17 @@ poem = 'Tail turned to red sunset on a juniper crown a lone magpie cawks.
         Sky reddens behind fir trees, larks twitter, sparrows cheep cheep cheep
         cheep cheep.'
 
-// Allen Ginsburg
-```
+// that's Allen Ginsburg
 
-interpolation
-
-```
+// interpolation
 outlook = 'amazing!'
 console.log "the weather tomorrow is going to be #(outlook)"
-```
 
-## regular expressions
+// regular expressions
+r/(\d+)m/i
+r/(\d+) degrees/mg
 
-```
-r/(\d+)m/
-```
-
-## operators
-
-```
+// operators
 true @and true
 false @or true
 @not false
@@ -130,44 +91,23 @@ false @or true
 2 > 1
 
 // plus all the javascript ones
-```
 
-to define your own
-
-```
+// to define your own
 (p1) plus (p2) =
     position (p1.x + p2.x, p1.y + p2.y)
-```
 
-can be called as an operator
-
-```
+// `plus` can be called as an operator
 position (1, 1) @plus position (0, 2)
-```
-
-or as a function
-
-```
+// or as a function
 (position (1, 1)) plus (position (0, 2))
-```
 
-explicit return
-
-```
+// explicit return
 (x) times (y) = return (x * y)
-```
 
-new
-
-```
+// new
 now = @new Date ()
-```
 
-# more on functions
-
-functions can take named optional arguments
-
-```
+// functions can take named optional arguments
 spark (position, color: 'black', velocity: {x = 0, y = 0}) = {
     color = color
     position = position
@@ -176,21 +116,16 @@ spark (position, color: 'black', velocity: {x = 0, y = 0}) = {
 
 red = spark (position 1 1, color: 'red')
 fast black = spark (position 1 1, velocity: {x = 10, y = 0})
-```
 
-functions can unsplat arguments too
-
-```
+// functions can unsplat arguments too
 log (messages, ...) =
     console.log (messages, ...)
-```
 
-## blocks
+// blocks are functions passed to other functions.
+// This block takes two parameters, `spark` and `c`,
+// the body of the block is the indented code after the
+// function call
 
-blocks are functions passed to other functions. This block takes two parameters, `spark` and `c`,
-the body of the block is the indented code after the function call
-
-```
 render each @(spark) into canvas context @(c)
     ctx.begin path ()
     ctx.stroke style = spark.color
@@ -202,53 +137,62 @@ render each @(spark) into canvas context @(c)
         Math.PI * 2
     )
     ctx.stroke ()
-```
 
-## asynchronous calls
+// asynchronous calls
 
-Node.js includes the `fs` module for accessing the file system.
-Let's list the contents of a directory
+// JavaScript both in the browser and on the server (with Node.js)
+// makes heavy use of asynchronous IO with callbacks. Async IO is
+// amazing for performance and making concurrency simple but it
+// quickly gets complicated.
+// Pogoscript has a few things to make async IO much much easier
 
-```
+// Node.js includes the `fs` module for accessing the file system.
+// Let's list the contents of a directory
+
 fs = require 'fs'
 directory listing = fs.readdir! '.'
-```
 
-`fs.readdir()` is an asynchronous function, so we can call it using the `!` operator.
-The `!` operator allows you to call async functions with the same syntax and largely
-the same semantics as normal synchronous functions.
-Pogoscript rewrites it so that all subsequent code is placed in the callback function
-to `fs.readdir()`.
+// `fs.readdir()` is an asynchronous function, so we can call it
+// using the `!` operator. The `!` operator allows you to call
+// async functions with the same syntax and largely the same
+// semantics as normal synchronous functions. Pogoscript rewrites
+// it so that all subsequent code is placed in the callback function
+// to `fs.readdir()`.
 
-to catch asynchronous errors while calling asynchronous functions
+// to catch asynchronous errors while calling asynchronous functions
 
-```
 try
     another directory listing = fs.readdir! 'a-missing-dir'
 catch (ex)
     console.log (ex)
-```
 
-in fact, if you don't use `try catch`, it will raise the error up the
-stack to the outer-most `try catch` or to the event loop, as you'd expect
-with non-async exceptions
+// in fact, if you don't use `try catch`, it will raise the error up the
+// stack to the outer-most `try catch` or to the event loop, as you'd expect
+// with non-async exceptions
 
-to run two asynchronous calls concurrently, use the `?` operator.
-The `?` operator returns a *future* which can be executed to
-wait for and obtain the result, again using the `!` operator
+// all the other control structures work with asynchronous calls too
+// here's `if else`
+config =
+    if (fs.stat! 'config.json'.is file ())
+        JSON.parse (fs.read file! 'config.json' 'utf-8')
+    else
+        {
+            color: 'red'
+        }
 
-we don't wait for either of these calls to finish
+// to run two asynchronous calls concurrently, use the `?` operator.
+// The `?` operator returns a *future* which can be executed to
+// wait for and obtain the result, again using the `!` operator
 
-```
+// we don't wait for either of these calls to finish
 a = fs.stat? 'a.txt'
 b = fs.stat? 'b.txt'
-```
 
-now we wait for the calls to finish and print the results
-
-```
+// now we wait for the calls to finish and print the results
 console.log "size of a.txt is #(a!.size)"
 console.log "size of b.txt is #(b!.size)"
+
+// futures in Pogoscript are analogous to Promises
 ```
 
 That's it.
