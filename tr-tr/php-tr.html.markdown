@@ -146,6 +146,11 @@ echo $associative['One']; // 1 yazdıracaktır.
 $array = ['One', 'Two', 'Three'];
 echo $array[0]; // => "One"
 
+// Dizinin sonuna bir eleman ekleme
+$array[] = 'Four';
+
+// Diziden eleman silme
+unset($array[3]);
 
 /********************************
  * Çıktı
@@ -692,7 +697,7 @@ $cls = new SomeOtherNamespace\MyClass();
 
 Referans ve topluluk yazıları için [official PHP documentation](http://www.php.net/manual/) adresini ziyaret edin.
 
-Gncel en yi örnekler için [PHP Usulüne Uygun](http://kulekci.net/php-the-right-way/) adresini ziyaret edin.
+Güncel en yi örnekler için [PHP Usulüne Uygun](http://kulekci.net/php-the-right-way/) adresini ziyaret edin.
 
 Eğer bir paket yöneticisi olan dil kullandıysanız, [Composer](http://getcomposer.org/)'a bir göz atın.
 
