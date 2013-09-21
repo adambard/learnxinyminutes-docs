@@ -218,7 +218,7 @@ namespace Learning
             // Others data structures to check out:
             //
             // Stack/Queue
-            // Dictionary
+            // Dictionary (an implementation of a hash map)
             // Read-only Collections
             // Tuple (.Net 4+)
 
@@ -252,7 +252,6 @@ namespace Learning
             ~       Unary bitwise complement
             <<      Signed left shift
             >>      Signed right shift
-            >>>     Unsigned right shift
             &       Bitwise AND
             ^       Bitwise exclusive OR
             |       Bitwise inclusive OR
