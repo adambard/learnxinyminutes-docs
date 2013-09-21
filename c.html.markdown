@@ -199,8 +199,10 @@ int main() {
     0 || 0; // => 0
 
     //Conditional expression ( ? : )
-    int a, b, z;
-    z = (a > b) ? a : b; // "if a > b return a, else return b." 
+    int a = 5;
+    int b = 10;
+    int z;
+    z = (a > b) ? a : b; // => 10 "if a > b return a, else return b." 
 
     //Increment and decrement operators:
     s[j++]; //returns value of j to s THEN increments value of j. 
