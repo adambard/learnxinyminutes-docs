@@ -328,7 +328,8 @@ namespace Learning
 			// For Each Loop
             // foreach loop structure => foreach(<iteratorType> <iteratorName> in <enumerable>)
 			// The foreach loop loops over any object implementing IEnumerable or IEnumerable<T>
-			// All the collection types (Array, List, Dictionary...) in the .Net framework implement one or both of these interfaces
+			// All the collection types (Array, List, Dictionary...) in the .Net framework
+			// implement one or both of these interfaces.
 			// (The ToCharArray() could be removed, because a string also implements IEnumerable)
             foreach (char character in "Hello World".ToCharArray())
             {
@@ -518,7 +519,8 @@ namespace Learning
             gear = newValue;
         }
 
-        // Method parameters can have default values. In this case, methods can be called with these parameters omitted
+        // Method parameters can have default values.
+		// In this case, methods can be called with these parameters omitted
         public void SpeedUp(int increment = 1)
         {
             _speed += increment;
@@ -541,7 +543,8 @@ namespace Learning
 		
 		// You can also define an automatic property in one line
 		// this syntax will create a backing field automatically.
-		// You can set an access modifier on either the getter or the setter (or both) to restrict its access:
+		// You can set an access modifier on either the getter or the setter (or both)
+		// to restrict its access:
 		public bool IsBroken { get; private set; }
 
         // Properties can be auto-implemented
