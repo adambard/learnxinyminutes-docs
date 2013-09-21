@@ -168,7 +168,7 @@ namespace Learning
             Console.WriteLine("Not nullable variable: " + notNullable);
 
             // Var - compiler will choose the most appropriate type based on value
-			// Please not that this does not remove type safety.
+			// Please note that this does not remove type safety.
 			// In this case, the type of fooImplicit is known to be a bool at compile time
             var fooImplicit = true;
 
