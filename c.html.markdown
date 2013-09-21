@@ -264,6 +264,7 @@ int main() {
 
     // *****NOTES*****:
     // Loops MUST always have a body. If no body is needed, do:
+    int i;
     for (i = 0; i <= 5; i++) {
         ; // use semicolon to act as the body (null statement)
     }
