@@ -441,7 +441,12 @@ int add_two_ints(int x1, int x2)
     return x1 + x2; // Use return to return a value
 }
 
+<<<<<<< HEAD
 // Must declare a 'function prototype' before main() when creating functions
+// in file. 
+=======
+// Must declare a 'funtion prototype' when creating functions before main()
+>>>>>>> f28d33fb187bc834e6e2956117039f9abe3b6d9b
 void getInt(char c); // function prototype
 int main() {         // main function
     return 0;
