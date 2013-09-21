@@ -359,7 +359,7 @@ namespace Learning
 
 
             ///////////////////////////////////////
-            // Converting Data Types And Typcasting
+            // Converting Data Types And Typecasting
             ///////////////////////////////////////
 
             // Converting data
@@ -413,7 +413,7 @@ namespace Learning
 
 
     // Class Declaration Syntax:
-    // <public/private/protected> class <class name>{
+    // <public/private/protected/internal> class <class name>{
     //    //data fields, constructors, functions all inside.
     //    //functions are called as methods in Java.
     // }
@@ -428,11 +428,14 @@ namespace Learning
         string name; // Everything is private by default: Only accessible from within this class
 
         // Enum is a value type that consists of a set of named constants
+		// It is really just mapping a name to a value (an int, unless specified otherwise).
+		// The approved types for an enum are byte, sbyte, short, ushort, int, uint, long, or ulong.
+		// An enum can't contain the same value twice.
         public enum Brand
         {
             AIST,
             BMC,
-            Electra,
+            Electra=42, //you can explicitly set a value to a name
             Gitane
         }
         // We defined this type inside a Bicycle class, so it is a nested type
