@@ -453,15 +453,14 @@ void str_reverse(char *str_in)
 /////////////////////////////////////
 // Built in functions:
 /////////////////////////////////////
-// from stdio.h:
-// getchar()
-int c = getchar(); //reads character from input. 
+// from: #include <stdio.h>
+// ** getchar() **
+// int c = getchar(); //reads character from input. 
 // If input = hi, 'h' is returned then next call, 'i' returned. 
 while ((c = getchar()) != EOF) { // EOF constant "end of file". 
                                  //   Linux: CTRL+D, Windows: CTRL+X
     // must have () around getchar() as != is run before =. 
     putchar(c); //prints character (without newline at end)
-    char c = getchar(); 
 }
 
 //if referring to external variables outside function, must use extern keyword.
