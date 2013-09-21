@@ -41,6 +41,10 @@ enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 void function_1();
 void function_2();
 
+// Must declare a 'function prototype' before main() when functions occur after
+// your main() function.
+int add_two_ints(int x1, int x2); // function prototype 
+
 // Your program's entry point is a function called
 // main with an integer return type.
 int main() {
@@ -408,15 +412,6 @@ int main() {
 int add_two_ints(int x1, int x2)
 {
     return x1 + x2; // Use return to return a value
-}
-
-// Must declare a 'function prototype' before main() when creating functions
-void getInt(char c); // function prototype
-int main() {         // main function
-    return 0;
-}
-void getInt(char w) { //parameter name does not need to match function prototype
-    ;
 }
 
 //if function takes no parameters, do: 
