@@ -441,7 +441,7 @@ namespace Learning
         // We defined this type inside a Bicycle class, so it is a nested type
         // Code outside of this class should reference this type as Bicycle.Brand
 
-        public Brand brand; // After declaing an enum type, we can declare the field of this type
+        public Brand brand; // After declaring an enum type, we can declare the field of this type
 
         // Static members belong to the type itself rather then specific object.
         static public int bicyclesCreated = 0;
@@ -486,7 +486,7 @@ namespace Learning
         // <public/private/protected> <return type> <function name>(<args>)
 
         // classes can implement getters and setters for their fields
-        // or they can implement properties
+        // or they can implement properties (this is the preferred way in C#)
 
         // Method declaration syntax:
         // <scope> <return type> <method name>(<args>)
@@ -501,13 +501,13 @@ namespace Learning
             cadence = newValue;
         }
 
-        // virtual keyword indicates this method can be overridden
+        // virtual keyword indicates this method can be overridden in a derived class
         public virtual void SetGear(int newValue)
         {
             gear = newValue;
         }
 
-        // Method parameters can have defaut values. In this case, methods can be called with these parameters omitted
+        // Method parameters can have default values. In this case, methods can be called with these parameters omitted
         public void SpeedUp(int increment = 1)
         {
             _speed += increment;
@@ -527,6 +527,11 @@ namespace Learning
             get { return _hasTassles; }
             set { _hasTassles = value; }
         }
+		
+		// You can also define an automatic property in one line
+		// this syntax will create a backing field automatically.
+		// You can set an access modifier on either the getter or the setter (or both) to restrict its access:
+		public bool IsBroken { get; private set; }
 
         // Properties can be auto-implemented
         public int FrameSize
@@ -552,7 +557,7 @@ namespace Learning
         // Methods can also be static. It can be useful for helper methods
         public static bool DidWeCreateEnoughBycles()
         {
-            // Within a static method, we only can reference static class memebers
+            // Within a static method, we only can reference static class members
             return bicyclesCreated > 9000;
         } // If your class only needs static members, consider marking the class itself as static.
 
@@ -591,7 +596,7 @@ namespace Learning
 
     interface IBreakable
     {
-        bool Broken { get; } // interfaces can contain properties as well as methods, fields & events
+        bool Broken { get; } // interfaces can contain properties as well as methods & events
     }
 
     // Class can inherit only one other class, but can implement any amount of interfaces
