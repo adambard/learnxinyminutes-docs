@@ -205,8 +205,11 @@ int main() {
     z = (a > b) ? a : b; // => 10 "if a > b return a, else return b." 
 
     //Increment and decrement operators:
-    s[j++]; //returns value of j to s THEN increments value of j. 
-    s[++j]; //increments value of j THEN returns value of j to s. 
+    char *s = "iLoveC"
+    int j = 0;
+    s[j++]; // => "i" Returns value of j to s THEN increments value of j.
+    j = 0; 
+    s[++j]; // => "L" Increments value of j THEN returns value of j to s. 
     // same with j-- and --j
 
     // Bitwise operators!
