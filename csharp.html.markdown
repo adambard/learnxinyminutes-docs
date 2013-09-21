@@ -3,6 +3,7 @@ language: c#
 contributors:
     - ["Irfan Charania", "https://github.com/irfancharania"]
     - ["Max Yankov", "https://github.com/golergka"]
+	- ["Melvyn Laïly", "http://x2a.yt"]
 filename: LearnCSharp.cs
 ---
 
