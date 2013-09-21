@@ -111,6 +111,9 @@ namespace Learning
 			// a string is a reference type. That is, you can set it to null
             string fooString = "My string is here!";
             Console.WriteLine(fooString);
+			// You can access each character of the string with an indexer:
+			char charFromString = fooString[1]; // 'y'
+			// Strings are immutable: you can't do fooString[1] = 'X';
 
             // formatting
             string fooFs = string.Format("Check Check, {0} {1}, {0} {1:0.0}", 1, 2);
@@ -165,6 +168,8 @@ namespace Learning
             Console.WriteLine("Not nullable variable: " + notNullable);
 
             // Var - compiler will choose the most appropriate type based on value
+			// Please not that this does not remove type safety.
+			// In this case, the type of fooImplicit is known to be a bool at compile time
             var fooImplicit = true;
 
             ///////////////////////////////////////////////////
