@@ -95,8 +95,12 @@ namespace Learning
             // Double - Double-precision 64-bit IEEE 754 Floating Point
             // Precision: 15-16 digits
             double fooDouble = 123.4;
+			
+			// Decimal - a 128-bits data type, with more precision than other floating-point types,
+			// suited for financial and monetary calculations
+			decimal fooDecimal = 150.3m;
 
-            // Bool - true & false
+            // Boolean - true & false
             bool fooBoolean = true;
             bool barBoolean = false;
 
