@@ -51,6 +51,13 @@ else
     echo "And this is not"
 fi
 
+# while loop:
+while [true]
+do
+	echo "loop body here..."
+	break
+done
+
 # Expressions are denoted with the following format:
 echo $(( 10 + 5 ))
 

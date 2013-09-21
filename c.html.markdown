@@ -20,6 +20,13 @@ memory management and C will take you as far as you need to go.
 Multi-line comments look like this. They work in C89 as well.
 */
 
+// Constants: #define <keyword> (no semicolon at end) 
+#define DAYS_IN_YEAR = 365
+
+//enumeration constants are also ways to declare constants. 
+enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
+// MON gets 2 automatically, TUE gets 3, etc. 
+
 // Import headers with #include
 #include <stdlib.h>
 #include <stdio.h>
@@ -33,6 +40,10 @@ Multi-line comments look like this. They work in C89 as well.
 // your .c file.
 void function_1();
 void function_2();
+
+// Must declare a 'function prototype' before main() when functions occur after
+// your main() function.
+int add_two_ints(int x1, int x2); // function prototype 
 
 // Your program's entry point is a function called
 // main with an integer return type.
@@ -71,6 +82,10 @@ int main() {
     unsigned short ux_short;
     unsigned int ux_int;
     unsigned long long ux_long_long;
+
+    // chars inside single quotes are integers in machine's character set. 
+    '0' //==> 48 on the ASCII character set. 
+    'A' //==> 65 on the ASCII character set. 
 
     // sizeof(T) gives you the size of a variable with type T in bytes
     // sizeof(obj) yields the size of the expression (variable, literal, etc.).
@@ -142,6 +157,10 @@ int main() {
     int i1 = 1, i2 = 2; // Shorthand for multiple declaration
     float f1 = 1.0, f2 = 2.0;
 
+    //more shorthands:
+    int a, b, c;
+    a = b = c = 0;
+
     // Arithmetic is straightforward
     i1 + i2; // => 3
     i2 - i1; // => 1
@@ -181,6 +200,20 @@ int main() {
     0 || 1; // => 1 (Logical or)
     0 || 0; // => 0
 
+    //Conditional expression ( ? : )
+    int a = 5;
+    int b = 10;
+    int z;
+    z = (a > b) ? a : b; // => 10 "if a > b return a, else return b." 
+
+    //Increment and decrement operators:
+    char *s = "iLoveC"
+    int j = 0;
+    s[j++]; // => "i" Returns value of j to s THEN increments value of j.
+    j = 0; 
+    s[++j]; // => "L" Increments value of j THEN returns value of j to s. 
+    // same with j-- and --j
+
     // Bitwise operators!
     ~0x0F; // => 0xF0 (bitwise negation, "1's complement")
     0x0F & 0xF0; // => 0x00 (bitwise AND)
@@ -209,9 +242,8 @@ int main() {
 
     // While loops exist
     int ii = 0;
-    while (ii < 10) {
-        printf("%d, ", ii++); // ii++ increments ii in-place
-                              // after yielding its value ("postincrement").
+    while (ii < 10) { //ANY value not zero is true. 
+        printf("%d, ", ii++); // ii++ increments ii AFTER using it's current value.
     } // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
     printf("\n");
@@ -219,8 +251,7 @@ int main() {
     int kk = 0;
     do {
         printf("%d, ", kk);
-    } while (++kk < 10); // ++kk increments kk in-place, and yields
-                         // the already incremented value ("preincrement")
+    } while (++kk < 10); // ++kk increments kk BEFORE using it's current value.
     // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
     printf("\n");
@@ -232,6 +263,13 @@ int main() {
     } // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
     printf("\n");
+
+    // *****NOTES*****:
+    // Loops MUST always have a body. If no body is needed, do:
+    int i;
+    for (i = 0; i <= 5; i++) {
+        ; // use semicolon to act as the body (null statement)
+    }
 
     // branching with multiple choices: switch()
     switch (some_integral_expression) {
@@ -309,7 +347,7 @@ int main() {
     printf("%d\n", x); // => Prints 1
 
     // Arrays are a good way to allocate a contiguous block of memory
-    int x_array[20];
+    int x_array[20]; //declares array of size 20 (cannot change size)
     int xx;
     for (xx = 0; xx < 20; xx++) {
         x_array[xx] = 20 - xx;
@@ -384,9 +422,19 @@ int add_two_ints(int x1, int x2)
     return x1 + x2; // Use return to return a value
 }
 
+//if function takes no parameters, do: 
+int getInt(void); for function prototype
+//  and for the function declaration: 
+int getInt(void) {}
+//  (this is to keep compatibility with older versions of C). 
+
 /*
-Functions are pass-by-value, but you can make your own references
-with pointers so functions can mutate their values.
+Functions are call by value. So when a function is called, the arguments passed
+to the function are copies of original arguments (except arrays). Anything you  
+do to your arguments do not change the value of the actual argument where the
+function was called. 
+
+You can use pointers if you need to edit the original argument values. 
 
 Example: in-place string reversal
 */
@@ -402,6 +450,25 @@ void str_reverse(char *str_in)
         str_in[ii] = str_in[len - ii - 1]; // ii-th char from end
         str_in[len - ii - 1] = tmp;
     }
+}
+
+/////////////////////////////////////
+// Built in functions:
+/////////////////////////////////////
+// from: #include <stdio.h>
+// ** getchar() **
+// int c = getchar(); //reads character from input. 
+// If input = hi, 'h' is returned then next call, 'i' returned. 
+while ((c = getchar()) != EOF) { // EOF constant "end of file". 
+                                 //   Linux: CTRL+D, Windows: CTRL+X
+    // must have () around getchar() as != is run before =. 
+    putchar(c); //prints character (without newline at end)
+}
+
+//if referring to external variables outside function, must use extern keyword.
+int i = 0;
+void testFunc() {
+    extern int i; //i here is now using external variable i
 }
 
 /*
@@ -493,6 +560,61 @@ typedef void (*my_fnp_type)(char *);
 // Then used when declaring the actual pointer variable:
 // ...
 // my_fnp_type f; 
+
+//Special characters:
+'\a' // alert (bell) character
+'\n' // newline character
+'\t' // tab character (left justifies text)
+'\v' // vertical tab
+'\f' // new page (formfeed)
+'\r' // carriage return
+'\b' // backspace character
+'\0' // null character. Usually put at end of strings in C lang. 
+     //   hello\n\0. \0 used by convention to mark end of string. 
+'\\' // backspace
+'\?' // question mark
+'\'' // single quote
+'\"' // double quote
+'\xhh' // hexadecimal number. Example: '\xb' = vertical tab character
+'\ooo' // octal number. Example: '\013' = vertical tab character
+
+//print formatting:
+"%d"    // integer
+"%3d"   // integer with minimum of length 3 digits (right justifies text)
+"%s"    // string
+"%f"    // float
+"%ld"   // long
+"%3.2f" // minimum 3 digits left and 2 digits right decimal float 
+"%7.4s" // (can do with strings too)
+"%c"    // char
+"%p"    // pointer
+"%x"    // hexidecimal
+"%o"    // octal
+"%%"    // prints % 
+
+///////////////////////////////////////
+// Order of Evaluation
+///////////////////////////////////////
+
+//---------------------------------------------------//
+//        Operators                  | Associativity //
+//---------------------------------------------------//
+// () [] -> .                        | left to right //
+// ! ~ ++ -- + = *(type)sizeof       | right to left //
+// * / %                             | left to right //
+// + -                               | left to right //
+// << >>                             | left to right //
+// < <= > >=                         | left to right //
+// == !=                             | left to right //
+// &                                 | left to right //
+// ^                                 | left to right //
+// |                                 | left to right //
+// &&                                | left to right //
+// ||                                | left to right //
+// ?:                                | right to left //
+// = += -= *= /= %= &= ^= |= <<= >>= | right to left //
+// ,                                 | left to right //
+//---------------------------------------------------//
 
 ```
 
