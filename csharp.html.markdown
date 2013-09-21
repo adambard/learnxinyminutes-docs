@@ -107,7 +107,8 @@ namespace Learning
             // Char - A single 16-bit Unicode character
             char fooChar = 'A';
 
-            // Strings
+            // Strings -- unlike the previous base types which are all value types,
+			// a string is a reference type. That is, you can set it to null
             string fooString = "My string is here!";
             Console.WriteLine(fooString);
 
@@ -142,14 +143,21 @@ namespace Learning
             const int HOURS_I_WORK_PER_WEEK = 9001;
 
             // Nullable types
-            // any type can be made nullable by suffixing a ?
+            // any value type (i.e. not a class) can be made nullable by suffixing a ?
             // <type>? <var name> = <value>
             int? nullable = null;
             Console.WriteLine("Nullable variable: " + nullable);
 
-            // In order to use nullable's value, you have to use Value property or to explicitly cast it
-            string? nullableString = "not null";
-            Console.WriteLine("Nullable value is: " + nullableString.Value + " or: " + (string) nullableString );
+            // In order to use nullable's value, you have to use Value property
+			// or to explicitly cast it
+            DateTime? nullableDate = null; 
+			// The previous line would not have compiled without the '?'
+			// because DateTime is a value type
+			// <type>? is equivalent to writing Nullable<type>
+			Nullable<DateTime> otherNullableDate = nullableDate;
+			
+			nullableDate = DateTime.Now;
+            Console.WriteLine("Nullable value is: " + nullableDate.Value + " or: " + (DateTime) nullableDate );
 
             // ?? is syntactic sugar for specifying default value
             // in case variable is null
