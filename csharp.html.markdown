@@ -324,6 +324,17 @@ namespace Learning
                 //Iterated 10 times, fooFor 0->9
             }
             Console.WriteLine("fooFor Value: " + fooFor);
+			
+			// For Each Loop
+            // foreach loop structure => foreach(<iteratorType> <iteratorName> in <enumerable>)
+			// The foreach loop loops over any object implementing IEnumerable or IEnumerable<T>
+			// All the collection types (Array, List, Dictionary...) in the .Net framework implement one or both of these interfaces
+			// (The ToCharArray() could be removed, because a string also implements IEnumerable)
+            foreach (char character in "Hello World".ToCharArray())
+            {
+                //Console.WriteLine(character);
+                //Iterated over all the characters in the string
+            }
 
             // Switch Case
             // A switch works with the byte, short, char, and int data types.
