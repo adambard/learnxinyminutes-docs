@@ -20,37 +20,6 @@ memory management and C will take you as far as you need to go.
 Multi-line comments look like this. They work in C89 as well.
 */
 
-//Special characters:
-'\a' // alert (bell) character
-'\n' // newline character
-'\t' // tab character (left justifies text)
-'\v' // vertical tab
-'\f' // new page (formfeed)
-'\r' // carriage return
-'\b' // backspace character
-'\0' // null character. Usually put at end of strings in C lang. 
-     //   hello\n\0. \0 used by convention to mark end of string. 
-'\\' // backspace
-'\?' // question mark
-'\'' // single quote
-'\"' // double quote
-'\xhh' // hexadecimal number. Example: '\xb' = vertical tab character
-'\ooo' // octal number. Example: '\013' = vertical tab character
-
-//print formatting:
-"%d"    // integer
-"%3d"   // integer with minimum of length 3 digits (right justifies text)
-"%s"    // string
-"%f"    // float
-"%ld"   // long
-"%3.2f" // minimum 3 digits left and 2 digits right decimal float 
-"%7.4s" // (can do with strings too)
-"%c"    // char
-"%p"    // pointer
-"%x"    // hexidecimal
-"%o"    // octal
-"%%"    // prints % 
-
 // Constants: #define <keyword> (no semicolon at end) 
 #define DAYS_IN_YEAR = 365
 
@@ -590,6 +559,36 @@ typedef void (*my_fnp_type)(char *);
 // ...
 // my_fnp_type f; 
 
+//Special characters:
+'\a' // alert (bell) character
+'\n' // newline character
+'\t' // tab character (left justifies text)
+'\v' // vertical tab
+'\f' // new page (formfeed)
+'\r' // carriage return
+'\b' // backspace character
+'\0' // null character. Usually put at end of strings in C lang. 
+     //   hello\n\0. \0 used by convention to mark end of string. 
+'\\' // backspace
+'\?' // question mark
+'\'' // single quote
+'\"' // double quote
+'\xhh' // hexadecimal number. Example: '\xb' = vertical tab character
+'\ooo' // octal number. Example: '\013' = vertical tab character
+
+//print formatting:
+"%d"    // integer
+"%3d"   // integer with minimum of length 3 digits (right justifies text)
+"%s"    // string
+"%f"    // float
+"%ld"   // long
+"%3.2f" // minimum 3 digits left and 2 digits right decimal float 
+"%7.4s" // (can do with strings too)
+"%c"    // char
+"%p"    // pointer
+"%x"    // hexidecimal
+"%o"    // octal
+"%%"    // prints % 
 
 ///////////////////////////////////////
 // Order of Evaluation
