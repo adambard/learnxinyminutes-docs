@@ -4,6 +4,7 @@ tool: bash
 contributors:
     - ["Max Yankov", "https://github.com/golergka"]
     - ["Darren Lin", "https://github.com/CogBear"]
+    - ["Alexandre Medeiros", "http://alemedeiros.sdf.org"]
 filename: LearnBash.sh
 ---
 
@@ -50,6 +51,10 @@ then
 else
     echo "And this is not"
 fi
+
+# There is also conditional execution
+echo "Always executed" || echo "Only executed if first command fail"
+echo "Always executed" && echo "Only executed if first command does NOT fail"
 
 # Expressions are denoted with the following format:
 echo $(( 10 + 5 ))
