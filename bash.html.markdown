@@ -106,9 +106,10 @@ case "$VARIABLE" in
     *) echo "It is not null.";;
 esac
 
-#For loops iterate for as many arguments given:
-#The contents of var $VARIABLE is printed three times.
-for VARIABLE in x y z
+# For loops iterate for as many arguments given:
+# The contents of var $VARIABLE is printed three times.
+# Note that ` ` is equivalent to $( ) and that seq returns a sequence of size 3.
+for VARIABLE in `seq 3`
 do
     echo "$VARIABLE"
 done
