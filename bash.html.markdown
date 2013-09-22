@@ -36,8 +36,22 @@ VARIABLE = "Some string"
 # Using the variable:
 echo $VARIABLE
 echo "$VARIABLE"
+echo '$VARIABLE'
 # When you use the variable itself — assign it, export it, or else — you write
 # its name without $. If you want to use variable's value, you should use $.
+# Note that ' (single quote) won't expand the variables!
+
+# String substitution in variables
+echo ${VARIABLE/Some/A}
+# This will substitute the first occurance of "Some" with "A"
+
+# Bultin variables:
+# There are some useful builtin variables, like
+echo "Last program return value: $?"
+echo "Script's PID: $$"
+echo "Number of arguments: $#"
+echo "Scripts arguments: $@"
+echo "Scripts arguments separeted in different variables: $1 $2..."
 
 # Reading a value from input:
 echo "What's your name?"
