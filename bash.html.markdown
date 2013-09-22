@@ -86,6 +86,13 @@ ls -l # Lists every file and directory on a separate line
 # txt files in the current directory:
 ls -l | grep "\.txt"
 
+# You can also redirect a command output, input and error output.
+python2 hello.py < "input.in"
+python2 hello.py > "output.out"
+python2 hello.py 2> "error.err"
+# The output error will overwrite the file if it exists, if you want to
+# concatenate them, use ">>" instead.
+
 # Commands can be substitued within other commands using $( ):
 # The following command displays the number of files and directories in the
 # current directory.
