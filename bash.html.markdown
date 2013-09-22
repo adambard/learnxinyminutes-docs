@@ -115,4 +115,16 @@ do
     echo "$VARIABLE"
 done
 
+# You can also define functions
+# Definition:
+foo ()
+{
+    echo "Arguments work just like script arguments: $@"
+    echo "And: $1 $2..."
+    echo "This is a function"
+    return 0
+}
+
+# Calling your function
+foo "My name is" $NAME
 ```
