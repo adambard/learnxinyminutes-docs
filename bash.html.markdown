@@ -59,11 +59,12 @@ read NAME # Note that we didn't need to declare new variable
 echo Hello, $NAME!
 
 # We have the usual if structure:
-if true
+# use 'man test' for more info about conditionals
+if [ $NAME -ne $USER ]
 then
-    echo "This is expected"
+    echo "Your name is you username"
 else
-    echo "And this is not"
+    echo "Your name isn't you username"
 fi
 
 # There is also conditional execution
