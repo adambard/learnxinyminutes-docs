@@ -127,4 +127,16 @@ foo ()
 
 # Calling your function
 foo "My name is" $NAME
+
+# There are a lot of useful commands you should learn:
+tail -n 10 file.txt
+# prints last 10 lines of file.txt
+head -n 10 file.txt
+# prints first 10 lines of file.txt
+sort file.txt
+# sort file.txt's lines
+uniq -d file.txt
+# report or omit repeated lines, with -d it reports them
+cut -d ',' -f 1 file.txt
+# prints only the first column before the ',' character
 ```
