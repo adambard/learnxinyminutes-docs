@@ -20,20 +20,20 @@ This is based on the current development version of Julia, as of June 29th, 2013
 
 # Everything in Julia is a expression.
 
-# You have numbers
+# There are several basic types of numbers.
 3 #=> 3 (Int64)
 3.2 #=> 3.2 (Float64)
 2 + 1im #=> 2 + 1im (Complex{Int64})
 2//3 #=> 2//3 (Rational{Int64})
 
-# Math is what you would expect
+# All of the normal infix operators are available.
 1 + 1 #=> 2
 8 - 1 #=> 7
 10 * 2 #=> 20
 35 / 5 #=> 7.0
+5 / 2 #=> 2.5 # dividing an Int by an Int always results in a Float
+div(5, 2) #=> 2 # for a truncated result, use div
 5 \ 35 #=> 7.0
-5 / 2 #=> 2.5
-div(5, 2) #=> 2
 2 ^ 2 #=> 4 # power, not bitwise xor
 12 % 10 #=> 2
 
@@ -77,11 +77,13 @@ false
 # Strings are created with "
 "This is a string."
 
-# Character literals written with '
+# Character literals are written with '
 'a'
 
-# A string can be treated like a list of characters
+# A string can be indexed like an array of characters
 "This is a string"[1] #=> 'T' # Julia indexes from 1
+# However, this is will not work well for UTF8 strings,
+# so iterating over strings is reccommended (map, for loops, etc).
 
 # $ can be used for string interpolation:
 "2 + 2 = $(2 + 2)" #=> "2 + 2 = 4"
@@ -94,10 +96,10 @@ false
 ## 2. Variables and Collections
 ####################################################
 
-# Printing is pretty easy
+# Printing is easy
 println("I'm Julia. Nice to meet you!")
 
-# No need to declare variables before assigning to them.
+# You don't declare variables before assigning to them.
 some_var = 5 #=> 5 
 some_var #=> 5
 
@@ -108,12 +110,14 @@ catch e
     println(e)
 end
 
-# Variable name start with a letter. You can use uppercase letters, digits,
-# and exclamation points as well after the initial alphabetic character.
+# Variable names start with a letter.
+# After that, you can use letters, digits, underscores, and exclamation points.
 SomeOtherVar123! = 6 #=> 6
 
 # You can also use unicode characters
 ☃ = 8 #=> 8
+# These are especially handy for mathematical notation
+2 * π #=> 6.283185307179586
 
 # A note on naming conventions in Julia:
 #
@@ -158,6 +162,10 @@ a[1] #=> 1 # remember that Julia indexes from 1, not 0!
 # indexing expression
 a[end] #=> 6
 
+# we also have shift and unshift
+shift!(a) #=> 1 and a is now [2,4,3,4,5,6]
+unshift!(a,7) #=> [7,2,4,3,4,5,6]
+
 # Function names that end in exclamations points indicate that they modify
 # their argument.
 arr = [5,4,6] #=> 3-element Int64 Array: [5,4,6]
@@ -182,23 +190,24 @@ a = [1:5] #=> 5-element Int64 Array: [1,2,3,4,5]
 # You can look at ranges with slice syntax.
 a[1:3] #=> [1, 2, 3]
 a[2:] #=> [2, 3, 4, 5]
+a[2:end] #=> [2, 3, 4, 5]
 
-# Remove arbitrary elements from a list with splice!
+# Remove elements from an array by index with splice!
 arr = [3,4,5]
 splice!(arr,2) #=> 4 ; arr is now [3,5]
 
 # Concatenate lists with append!
 b = [1,2,3]
-append!(a,b) # Now a is [1, 3, 4, 5, 1, 2, 3]
+append!(a,b) # Now a is [1, 2, 3, 4, 5, 1, 2, 3]
 
 # Check for existence in a list with contains
 contains(a,1) #=> true
 
 # Examine the length with length
-length(a) #=> 7
+length(a) #=> 8
 
 # Tuples are immutable.
-tup = (1, 2, 3) #=>(1,2,3) # an (Int64,Int64,Int64) tuple.
+tup = (1, 2, 3) #=> (1,2,3) # an (Int64,Int64,Int64) tuple.
 tup[1] #=> 1
 try:
     tup[0] = 3 #=> ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
@@ -214,17 +223,21 @@ contains(tup,2) #=> true
 # You can unpack tuples into variables
 a, b, c = (1, 2, 3) #=> (1,2,3)  # a is now 1, b is now 2 and c is now 3
 
-# Tuples are created by default if you leave out the parentheses
+# Tuples are created even if you leave out the parentheses
 d, e, f = 4, 5, 6 #=> (4,5,6)
 
-# Now look how easy it is to swap two values
+# A 1-element tuple is distinct from the value it contains
+(1,) == 1 #=> false
+(1) == 1 #=> true
+
+# Look how easy it is to swap two values
 e, d = d, e  #=> (5,4) # d is now 5 and e is now 4
 
 
 # Dictionaries store mappings
 empty_dict = Dict() #=> Dict{Any,Any}()
 
-# Here is a prefilled dictionary
+# You can create a dictionary using a literal
 filled_dict = ["one"=> 1, "two"=> 2, "three"=> 3]
 # => Dict{ASCIIString,Int64}
 
@@ -247,19 +260,19 @@ contains(filled_dict, ("two", 3)) #=> false
 haskey(filled_dict, "one") #=> true
 haskey(filled_dict, 1) #=> false
 
-# Trying to look up a non-existing key will raise an error
+# Trying to look up a non-existant key will raise an error
 try
     filled_dict["four"] #=> ERROR: key not found: four in getindex at dict.jl:489
 catch e
     println(e)
 end
 
-# Use get method to avoid the error
+# Use the get method to avoid that error by providing a default value
 # get(dictionary,key,default_value)
 get(filled_dict,"one",4) #=> 1
 get(filled_dict,"four",4) #=> 4
 
-# Sets store sets
+# Use Sets to represent collections of unordered, unique values
 empty_set = Set() #=> Set{Any}()
 # Initialize a set with a bunch of values
 filled_set = Set(1,2,2,3,4) #=> Set{Int64}(1,2,3,4)
