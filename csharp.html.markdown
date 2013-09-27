@@ -3,6 +3,7 @@ language: c#
 contributors:
     - ["Irfan Charania", "https://github.com/irfancharania"]
     - ["Max Yankov", "https://github.com/golergka"]
+	- ["Melvyn Laïly", "http://x2a.yt"]
 filename: LearnCSharp.cs
 ---
 
@@ -95,17 +96,25 @@ namespace Learning
             // Double - Double-precision 64-bit IEEE 754 Floating Point
             // Precision: 15-16 digits
             double fooDouble = 123.4;
+			
+			// Decimal - a 128-bits data type, with more precision than other floating-point types,
+			// suited for financial and monetary calculations
+			decimal fooDecimal = 150.3m;
 
-            // Bool - true & false
+            // Boolean - true & false
             bool fooBoolean = true;
             bool barBoolean = false;
 
             // Char - A single 16-bit Unicode character
             char fooChar = 'A';
 
-            // Strings
+            // Strings -- unlike the previous base types which are all value types,
+			// a string is a reference type. That is, you can set it to null
             string fooString = "My string is here!";
             Console.WriteLine(fooString);
+			// You can access each character of the string with an indexer:
+			char charFromString = fooString[1]; // 'y'
+			// Strings are immutable: you can't do fooString[1] = 'X';
 
             // formatting
             string fooFs = string.Format("Check Check, {0} {1}, {0} {1:0.0}", 1, 2);
@@ -138,14 +147,21 @@ namespace Learning
             const int HOURS_I_WORK_PER_WEEK = 9001;
 
             // Nullable types
-            // any type can be made nullable by suffixing a ?
+            // any value type (i.e. not a class) can be made nullable by suffixing a ?
             // <type>? <var name> = <value>
             int? nullable = null;
             Console.WriteLine("Nullable variable: " + nullable);
 
-            // In order to use nullable's value, you have to use Value property or to explicitly cast it
-            string? nullableString = "not null";
-            Console.WriteLine("Nullable value is: " + nullableString.Value + " or: " + (string) nullableString );
+            // In order to use nullable's value, you have to use Value property
+			// or to explicitly cast it
+            DateTime? nullableDate = null; 
+			// The previous line would not have compiled without the '?'
+			// because DateTime is a value type
+			// <type>? is equivalent to writing Nullable<type>
+			Nullable<DateTime> otherNullableDate = nullableDate;
+			
+			nullableDate = DateTime.Now;
+            Console.WriteLine("Nullable value is: " + nullableDate.Value + " or: " + (DateTime) nullableDate );
 
             // ?? is syntactic sugar for specifying default value
             // in case variable is null
@@ -153,6 +169,8 @@ namespace Learning
             Console.WriteLine("Not nullable variable: " + notNullable);
 
             // Var - compiler will choose the most appropriate type based on value
+			// Please note that this does not remove type safety.
+			// In this case, the type of fooImplicit is known to be a bool at compile time
             var fooImplicit = true;
 
             ///////////////////////////////////////////////////
@@ -201,7 +219,7 @@ namespace Learning
             // Others data structures to check out:
             //
             // Stack/Queue
-            // Dictionary
+            // Dictionary (an implementation of a hash map)
             // Read-only Collections
             // Tuple (.Net 4+)
 
@@ -235,7 +253,6 @@ namespace Learning
             ~       Unary bitwise complement
             <<      Signed left shift
             >>      Signed right shift
-            >>>     Unsigned right shift
             &       Bitwise AND
             ^       Bitwise exclusive OR
             |       Bitwise inclusive OR
@@ -308,6 +325,18 @@ namespace Learning
                 //Iterated 10 times, fooFor 0->9
             }
             Console.WriteLine("fooFor Value: " + fooFor);
+			
+			// For Each Loop
+            // foreach loop structure => foreach(<iteratorType> <iteratorName> in <enumerable>)
+			// The foreach loop loops over any object implementing IEnumerable or IEnumerable<T>
+			// All the collection types (Array, List, Dictionary...) in the .Net framework
+			// implement one or both of these interfaces.
+			// (The ToCharArray() could be removed, because a string also implements IEnumerable)
+            foreach (char character in "Hello World".ToCharArray())
+            {
+                //Console.WriteLine(character);
+                //Iterated over all the characters in the string
+            }
 
             // Switch Case
             // A switch works with the byte, short, char, and int data types.
@@ -327,6 +356,14 @@ namespace Learning
                 case 3:
                     monthString = "March";
                     break;
+				// You can assign more than one case to an action
+				// But you can't add an action without a break before another case
+				// (if you want to do this, you would have to explicitly add a goto case x
+				case 6:
+				case 7:
+				case 8:
+					monthString = "Summer time!!";
+					break;
                 default:
                     monthString = "Some other month";
                     break;
@@ -335,7 +372,7 @@ namespace Learning
 
 
             ///////////////////////////////////////
-            // Converting Data Types And Typcasting
+            // Converting Data Types And Typecasting
             ///////////////////////////////////////
 
             // Converting data
@@ -389,7 +426,7 @@ namespace Learning
 
 
     // Class Declaration Syntax:
-    // <public/private/protected> class <class name>{
+    // <public/private/protected/internal> class <class name>{
     //    //data fields, constructors, functions all inside.
     //    //functions are called as methods in Java.
     // }
@@ -404,17 +441,20 @@ namespace Learning
         string name; // Everything is private by default: Only accessible from within this class
 
         // Enum is a value type that consists of a set of named constants
+		// It is really just mapping a name to a value (an int, unless specified otherwise).
+		// The approved types for an enum are byte, sbyte, short, ushort, int, uint, long, or ulong.
+		// An enum can't contain the same value twice.
         public enum Brand
         {
             AIST,
             BMC,
-            Electra,
+            Electra=42, //you can explicitly set a value to a name
             Gitane
         }
         // We defined this type inside a Bicycle class, so it is a nested type
         // Code outside of this class should reference this type as Bicycle.Brand
 
-        public Brand brand; // After declaing an enum type, we can declare the field of this type
+        public Brand brand; // After declaring an enum type, we can declare the field of this type
 
         // Static members belong to the type itself rather then specific object.
         static public int bicyclesCreated = 0;
@@ -459,7 +499,7 @@ namespace Learning
         // <public/private/protected> <return type> <function name>(<args>)
 
         // classes can implement getters and setters for their fields
-        // or they can implement properties
+        // or they can implement properties (this is the preferred way in C#)
 
         // Method declaration syntax:
         // <scope> <return type> <method name>(<args>)
@@ -474,13 +514,14 @@ namespace Learning
             cadence = newValue;
         }
 
-        // virtual keyword indicates this method can be overridden
+        // virtual keyword indicates this method can be overridden in a derived class
         public virtual void SetGear(int newValue)
         {
             gear = newValue;
         }
 
-        // Method parameters can have defaut values. In this case, methods can be called with these parameters omitted
+        // Method parameters can have default values.
+		// In this case, methods can be called with these parameters omitted
         public void SpeedUp(int increment = 1)
         {
             _speed += increment;
@@ -500,6 +541,12 @@ namespace Learning
             get { return _hasTassles; }
             set { _hasTassles = value; }
         }
+		
+		// You can also define an automatic property in one line
+		// this syntax will create a backing field automatically.
+		// You can set an access modifier on either the getter or the setter (or both)
+		// to restrict its access:
+		public bool IsBroken { get; private set; }
 
         // Properties can be auto-implemented
         public int FrameSize
@@ -525,7 +572,7 @@ namespace Learning
         // Methods can also be static. It can be useful for helper methods
         public static bool DidWeCreateEnoughBycles()
         {
-            // Within a static method, we only can reference static class memebers
+            // Within a static method, we only can reference static class members
             return bicyclesCreated > 9000;
         } // If your class only needs static members, consider marking the class itself as static.
 
@@ -564,7 +611,7 @@ namespace Learning
 
     interface IBreakable
     {
-        bool Broken { get; } // interfaces can contain properties as well as methods, fields & events
+        bool Broken { get; } // interfaces can contain properties as well as methods & events
     }
 
     // Class can inherit only one other class, but can implement any amount of interfaces
