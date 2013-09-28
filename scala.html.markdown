@@ -374,7 +374,7 @@ import scala.collection.immutable._
 import scala.collection.immutable.{List, Map}
 
 // Rename an import using '=>'
-import scala.collection.immutable{ List => ImmutableList }
+import scala.collection.immutable.{ List => ImmutableList }
 
 // Import all classes, except some. The following excludes Map and Set:
 import scala.collection.immutable.{Map => _, Set => _, _}
