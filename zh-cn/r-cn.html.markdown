@@ -1,3 +1,18 @@
+---
+language: R
+contributors:
+    - ["e99n09", "http://github.com/e99n09"]
+    - ["isomorphismes", "http://twitter.com/isomorphisms"]
+translators:
+    - ["小柒", "http://weibo.com/u/2328126220"]
+    - ["alswl", "https://github.com/alswl"]
+filename: learnr.r
+---
+
+R 是一门统计语言。它有很多数据分析和挖掘程序包。可以用来统计、分析和制图。
+你也可以在 LaTeX 文档中运行 `R` 命令。
+
+```python
 # 评论以 # 开始
 
 # R 语言原生不支持 多行注释
@@ -397,7 +412,6 @@ dat
 # 4      4     dog
 class(dat$number)	# "numeric"
 class(dat[,2])	# "factor"
-# The data.frame() function converts character vectors to factor vectors
 # data.frame() 会将字符向量转换为 factor 向量
 
 # 有很多精妙的方法来获取 data frame 的子数据集
@@ -407,16 +421,14 @@ dat[,"number"]	# 5 2 1 4
 
 # 多维（相同元素类型）
 
-# 利用数组创造一个 n 维的表格
+# 使用 arry 创造一个 n 维的表格
 # You can make a two-dimensional table (sort of like a matrix)
-#你可以建立一个2维表格（类型和矩阵相似）
+# 你可以建立一个 2 维表格（有点像矩阵）
 array(c(c(1,2,4,5),c(8,9,3,6)), dim=c(2,4))
-#数组(c(c(1,2,4,5),c(8,9,3,6)),有前两个向量组成，2行4列
 # =>
 #      [,1] [,2] [,3] [,4]
 # [1,]    1    4    8    3
 # [2,]    2    5    9    6
-# You can use array to make three-dimensional matrices too
 #你也可以利用数组建立一个三维的矩阵
 array(c(c(c(2,300,4),c(8,9,0)),c(c(5,60,0),c(66,7,847))), dim=c(3,2,2))
 # =>
@@ -434,29 +446,25 @@ array(c(c(c(2,300,4),c(8,9,0)),c(c(5,60,0),c(66,7,847))), dim=c(3,2,2))
 # [2,]   60    7
 # [3,]    0  847
 
-# LISTS (MULTI-DIMENSIONAL, POSSIBLY RAGGED, OF DIFFERENT TYPES)
 #列表（多维的，不同类型的）
 
-# Finally, R has lists (of vectors)
-#R语言有列表的形式
+# R语言有列表的形式
 list1 <- list(time = 1:40)
-list1$price = c(rnorm(40,.5*list1$time,4)) # random
+list1$price = c(rnorm(40,.5*list1$time,4)) # 随机
 list1
 
 # You can get items in the list like so
-#你可以获得像上面列表的形式
+# 你可以这样获得列表的元素
 list1$time
 # You can subset list items like vectors
-#你也可以获取他们的子集，一种类似于矢量的形式
+# 你也可以和矢量一样获取他们的子集
 list1$price[4]
 
 #########################
-# The apply() family of functions
-#apply()函数家族的应用
+# apply()函数家族
 #########################
 
-# Remember mat?
-#输出mat矩阵
+# 还记得 mat 么？
 mat
 # =>
 #      [,1] [,2]
@@ -464,90 +472,69 @@ mat
 # [2,]    2    5
 # [3,]    3    6
 # Use apply(X, MARGIN, FUN) to apply function FUN to a matrix X
-#使用(X, MARGIN, FUN)将一个function功能函数根据其特征应用到矩阵x中
-# over rows (MAR = 1) or columns (MAR = 2)
-#规定行列，其边界分别为1,2
+# 使用(X, MARGIN, FUN)将函数 FUN 应用到矩阵 X 的行 (MAR = 1) 或者 列 (MAR = 2)
 # That is, R does FUN to each row (or column) of X, much faster than a
-#即就是，R定义一个function使每一行/列的x快于一个for或者while循环
-# for or while loop would do
+# R 在 X 的每一行/列使用 FUN，比循环要快很多
 apply(mat, MAR = 2, myFunc)
 # =>
 #      [,1] [,2]
 # [1,]    3   15
 # [2,]    7   19
 # [3,]   11   23
-# Other functions: ?lapply, ?sapply
-其他的功能函数，
+# 还有其他家族函数 ?lapply, ?sapply
 
-# Don't feel too intimidated; everyone agrees they are rather confusing
-#不要被这些吓到，许多人在此都会容易混淆
-# The plyr package aims to replace (and improve upon!) the *apply() family.
-#plyr程序包的作用是用来改进family函数家族
+# 不要被吓到，虽然许多人在此都被搞混
+# plyr 程序包的作用是用来改进 apply() 函数家族
 
 install.packages("plyr")
 require(plyr)
 ?plyr
 
 #########################
-# Loading data
+# 载入数据
 #########################
 
-# "pets.csv" is a file on the internet
-#"pets.csv" 是网上的一个文本
+# "pets.csv" 是网上的一个文本
 pets <- read.csv("http://learnxinyminutes.com/docs/pets.csv")
-#首先读取这个文本
 pets
-head(pets, 2) # first two rows
-#显示前两行
-tail(pets, 1) # last row
-#显示最后一行
+head(pets, 2) # 前两行
+tail(pets, 1) # 最后一行
 
-# To save a data frame or matrix as a .csv file
-#以.csv格式来保存数据集或者矩阵
-write.csv(pets, "pets2.csv") # to make a new .csv file
-#输出新的文本pets2.csv
+# 以 .csv 格式来保存数据集或者矩阵
+write.csv(pets, "pets2.csv") # 保存到新的文件 pets2.csv
 # set working directory with setwd(), look it up with getwd()
-#改变工作路径setwd()，查找工作路径getwd()
+# 使用 setwd() 改变工作目录，使用 getwd() 查看当前工作目录
 
-# Try ?read.csv and ?write.csv for more information
-#试着做一做以上学到的，或者运行更多的信息
+# 尝试使用 ?read.csv 和 ?write.csv 来查看更多信息
 
 #########################
-# Plots
-#画图
+# 画图
 #########################
 
-# Scatterplots!
-#散点图
-plot(list1$time, list1$price, main = "fake data")
-#作图，横轴list1$time，纵轴list1$price，主题fake data
-# Regressions!
-#退回
-linearModel <- lm(price  ~ time, data = list1)
-# 线性模型，数据集为list1，以价格对时间做相关分析模型
-linearModel # outputs result of regression
-#输出拟合结果，并退出
-# Plot regression line on existing plot
-#将拟合结果展示在图上，颜色设为红色
+# 散点图
+plot(list1$time, list1$price, main = "fake data") # 译者注：横轴 list1$time，纵轴 wlist1$price，标题 fake data
+# 回归图
+linearModel <- lm(price  ~ time, data = list1) # 译者注：线性模型，数据集为list1，以价格对时间做相关分析模型
+linearModel # 拟合结果
+# 将拟合结果展示在图上，颜色设为红色
 abline(linearModel, col = "red")
-# Get a variety of nice diagnostics
-#也可以获取各种各样漂亮的分析图
+# 也可以获取各种各样漂亮的分析图
 plot(linearModel)
 
-# Histograms!
-#直方图
-hist(rpois(n = 10000, lambda = 5), col = "thistle")
-#统计频数直方图（）
+# 直方图
+hist(rpois(n = 10000, lambda = 5), col = "thistle") # 译者注：统计频数直方图
 
-# Barplots!
-#柱状图
+# 柱状图
 barplot(c(1,4,5,1,2), names.arg = c("red","blue","purple","green","yellow"))
-#作图，柱的高度负值c(1,4,5,1,2），各个柱子的名称"red","blue","purple","green","yellow"
 
-# Try the ggplot2 package for more and better graphics
-#可以尝试着使用ggplot2程序包来美化图片
+# 可以尝试着使用 ggplot2 程序包来美化图片
 install.packages("ggplot2")
 require(ggplot2)
 ?ggplot2
 
+```
 
+## 获得 R
+
+* 从 [http://www.r-project.org/](http://www.r-project.org/) 获得安装包和图形化界面
+* [RStudio](http://www.rstudio.com/ide/) 是另一个图形化界面
