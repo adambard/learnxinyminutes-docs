@@ -63,7 +63,7 @@ and often automatically.
 ; If you want to create a literal list of data, use ' to stop it from
 ; being evaluated
 '(+ 1 2) ; => (+ 1 2)
-; (shorthand for (quote (+ 1 2))
+; (shorthand for (quote (+ 1 2)))
 
 ; You can eval a quoted list
 (eval '(+ 1 2)) ; => 3
