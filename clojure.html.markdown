@@ -205,7 +205,7 @@ keymap ; => {:a 1, :c 3, :b 2}
 ;("a" stringmap)
 ; => Exception: java.lang.String cannot be cast to clojure.lang.IFn
 
-; Retrieving a non-present value returns nil
+; Retrieving a non-present key returns nil
 (stringmap "d") ; => nil
 
 ; Use assoc to add new keys to hash-maps
