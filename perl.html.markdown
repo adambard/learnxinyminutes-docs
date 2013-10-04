@@ -141,7 +141,7 @@ perlfaq contains questions and answers related to many common tasks, and often p
 
 #### Further Reading
 
-    - [perl-tutorial](http://perl-tutorial.org/)
-    - [Learn at www.perl.com](http://www.perl.org/learn.html)
-    - [perldoc](http://perldoc.perl.org/)
-    - and perl built-in : `perldoc perlintro`
+ - [perl-tutorial](http://perl-tutorial.org/)
+ - [Learn at www.perl.com](http://www.perl.org/learn.html)
+ - [perldoc](http://perldoc.perl.org/)
+ - and perl built-in : `perldoc perlintro`
