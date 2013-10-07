@@ -125,7 +125,7 @@ f = function (x) return x * x end
 
 -- And so are these:
 local function g(x) return math.sin(x) end
-local g = function(x) return math.xin(x) end
+local g = function(x) return math.sin(x) end
 -- Equivalent to local function g(x)..., except referring
 -- to g in the function body won't work as expected.
 local g; g  = function (x) return math.sin(x) end
