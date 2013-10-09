@@ -70,7 +70,7 @@ y a menudo automáticamente.
 ; Si quieres crear una lista de datos, precedela con una comilla
 ; simple para evitar su evaluación
 '(+ 1 2) ; => (+ 1 2)
-; (que es una abreviatura de (quote (+ 1 2))
+; (que es una abreviatura de (quote (+ 1 2)) )
 
 ; Puedes evaluar una lista precedida por comilla  con eval
 (eval '(+ 1 2)) ; => 3
