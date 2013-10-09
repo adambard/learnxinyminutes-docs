@@ -142,6 +142,10 @@ var myArray = ["Hello", 45, true];
 // Array indices start at zero.
 myArray[1]; // = 45
 
+// Arrays are mutable and of variable length.
+myArray.push("World");
+myArray.length; // = 4
+
 // JavaScript's objects are equivalent to 'dictionaries' or 'maps' in other
 // languages: an unordered collection of key-value pairs.
 var myObj = {key1: "Hello", key2: "World"};
