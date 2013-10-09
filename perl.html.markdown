@@ -131,19 +131,17 @@ sub logger {
 # Now we can use the subroutine just as any other built-in function:
 
 logger("We have a logger subroutine!");
-
-
 ```
 
 #### Using Perl modules
 
-Perl modules provide a range of features to help you avoid reinventing the wheel, and can be downloaded from CPAN ( http://www.cpan.org/ ).  A number of popular modules are included with the Perl distribution itself.
+Perl modules provide a range of features to help you avoid reinventing the wheel, and can be downloaded from CPAN (http://www.cpan.org/).  A number of popular modules are included with the Perl distribution itself.
 
 perlfaq contains questions and answers related to many common tasks, and often provides suggestions for good CPAN modules to use.
 
 #### Further Reading
 
-    - [perl-tutorial](http://perl-tutorial.org/)
-    - [Learn at www.perl.com](http://www.perl.org/learn.html)
-    - [perldoc](http://perldoc.perl.org/)
-    - and perl built-in : `perldoc perlintro`
+ - [perl-tutorial](http://perl-tutorial.org/)
+ - [Learn at www.perl.com](http://www.perl.org/learn.html)
+ - [perldoc](http://perldoc.perl.org/)
+ - and perl built-in : `perldoc perlintro`

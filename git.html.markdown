@@ -40,7 +40,7 @@ Version control is a system that records changes to a file, or set of files, ove
 
 ### Repository
 
-A set of files, directories, historical records, commits, and heads. Imagine it as a source code datastructure, 
+A set of files, directories, historical records, commits, and heads. Imagine it as a source code data structure,
 with the attribute that each source code "element" gives you access to its revision history, among other things.
 
 A git repository is comprised of the .git directory & working tree.

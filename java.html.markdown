@@ -250,7 +250,7 @@ public class LearnJava {
         // Conditional Shorthand
         // You can use the '?' operator for quick assignments or logic forks.
         // Reads as "If (statement) is true, use <first value>, otherwise, use <second value>"
-        int foo = 5
+        int foo = 5;
         String bar = (foo < 10) ? "A" : "B";
         System.out.println(bar); // Prints A, because the statement is true
 
