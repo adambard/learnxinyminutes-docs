@@ -63,7 +63,7 @@ and often automatically.
 ; If you want to create a literal list of data, use ' to stop it from
 ; being evaluated
 '(+ 1 2) ; => (+ 1 2)
-; (shorthand for (quote (+ 1 2))
+; (shorthand for (quote (+ 1 2)))
 
 ; You can eval a quoted list
 (eval '(+ 1 2)) ; => 3
@@ -341,7 +341,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 (swap! my-atom assoc :a 1) ; Sets my-atom to the result of (assoc {} :a 1)
 (swap! my-atom assoc :b 2) ; Sets my-atom to the result of (assoc {:a 1} :b 2)
 
- ; Use '@' to dereference the atom and get the value 
+; Use '@' to dereference the atom and get the value
 my-atom  ;=> Atom<#...> (Returns the Atom object)
 @my-atom ; => {:a 1 :b 2}
 

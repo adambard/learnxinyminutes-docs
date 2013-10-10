@@ -287,6 +287,18 @@ surround { puts 'hello world' }
 # }
 
 
+# You can pass a block to a function
+# "&" marks a reference to a passed block 
+def guests(&block)
+ block.call "some_argument" 
+end
+ 
+# You can pass a list of arguments, which will be converted into an array
+# That's what splat operator ("*") is for 
+def guests(*array)
+ array.each { |guest| puts "#{guest}" }
+end
+
 # Define a class with the class keyword
 class Human
 

@@ -377,7 +377,7 @@ nil                  ; for false - and the empty list
 ;; 4. Equality
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Common Lisp has a sophisticated equality system. A couple are covered yere.
+;; Common Lisp has a sophisticated equality system. A couple are covered here.
 
 ;; for numbers use `='
 (= 3 3.0) ; => t

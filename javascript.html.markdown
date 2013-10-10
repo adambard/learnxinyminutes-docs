@@ -38,6 +38,8 @@ doStuff()
 // 1. Numbers, Strings and Operators
 
 // Javascript has one number type (which is a 64-bit IEEE 754 double).
+// As with Lua, don't freak out about the lack of ints: doubles have a 52-bit
+// mantissa, which is enough to store integers up to about 9✕10¹⁵ precisely.
 3; // = 3
 1.5; // = 1.5
 
@@ -141,6 +143,10 @@ var myArray = ["Hello", 45, true];
 // Their members can be accessed using the square-brackets subscript syntax.
 // Array indices start at zero.
 myArray[1]; // = 45
+
+// Arrays are mutable and of variable length.
+myArray.push("World");
+myArray.length; // = 4
 
 // JavaScript's objects are equivalent to 'dictionaries' or 'maps' in other
 // languages: an unordered collection of key-value pairs.
@@ -357,13 +363,13 @@ myObj.meaningOfLife; // = 43
 // Constructors have a property called prototype. This is *not* the prototype of
 // the constructor function itself; instead, it's the prototype that new objects
 // are given when they're created with that constructor and the new keyword.
-myConstructor.prototype = {
+MyConstructor.prototype = {
     myNumber: 5,
     getMyNumber: function(){
         return this.myNumber;
     }
 };
-var myNewObj2 = new myConstructor();
+var myNewObj2 = new MyConstructor();
 myNewObj2.getMyNumber(); // = 5
 myNewObj2.myNumber = 6
 myNewObj2.getMyNumber(); // = 6
