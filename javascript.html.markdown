@@ -38,6 +38,8 @@ doStuff()
 // 1. Numbers, Strings and Operators
 
 // Javascript has one number type (which is a 64-bit IEEE 754 double).
+// As with Lua, don't freak out about the lack of ints: doubles have a 52-bit
+// mantissa, which is enough to store integers up to about 9✕10¹⁵ precisely.
 3; // = 3
 1.5; // = 1.5
 
