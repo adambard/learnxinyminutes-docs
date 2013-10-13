@@ -117,11 +117,18 @@ done
 
 # You can also define functions
 # Definition:
-foo ()
+function foo ()
 {
     echo "Arguments work just like script arguments: $@"
     echo "And: $1 $2..."
     echo "This is a function"
+    return 0
+}
+
+# or simply
+bar ()
+{
+    echo "Another way to declare functions!"
     return 0
 }
 
