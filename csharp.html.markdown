@@ -117,7 +117,7 @@ namespace Learning
 			// Strings are immutable: you can't do fooString[1] = 'X';
 
             // formatting
-            string fooFs = string.Format("Check Check, {0} {1}, {0} {1:0.0}", 1, 2);
+            string fooFormattedString = string.Format("Check Check, {0} {1}, {0} {1:0.0}", 1, 2);
             Console.WriteLine(fooFormattedString);
 
             // formatting dates
