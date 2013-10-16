@@ -2,7 +2,9 @@
 language: haskell
 contributors:
     - ["Adit Bhargava", "http://adit.io"]
-    - ["David Baumgartner", "http://davidbaumgartner.ch"]
+translators:
+    - ["David Baumgartner", "http://davidbaumgartner.ch"]    
+lang: fr-fr
 ---
 
 Haskell a été conçu pour être un langage fonctionnel pur et maniable. Il est connu pour ses monades et son système de types, mais je n'ai cesse d'y revenir pour son élégance. Pour moi, Haskell fait de la programmation une joie.
@@ -20,7 +22,7 @@ un bloc de cette façon.
 -- Vous avez les nombres
 3 -- 3
 
--- Les maths sont telles que vous vous y attendez
+-- Les maths sont comme vous vous y attendez
 1 + 1 -- 2
 8 - 1 -- 7
 10 * 2 -- 20
@@ -46,14 +48,14 @@ not False -- True
 -- Dans les exemples plus hauts, `not` est une fonction qui prend une valeur.
 -- Haskell n'a pas besoin de parenthèses pour appeler une fonction... tous
 -- les arguments sont juste listés après la fonction. Le schéma général est
--- donc:
+-- donc :
 -- func arg1 arg2 arg3...
 -- Voyez la section sur les fonctions pour savoir comment écrire les vôtres.
 
 -- Caractères et chaînes de caractère
 "Ceci est une chaîne de caractère."
 'a' -- caractère
-'Vous pouvez utiliser des apostrophes pour les chaînes de caractère.' -- erreur !
+'Vous ne pouvez pas utiliser des apostrophes pour les chaînes de caractère.' -- erreur !
 
 -- Les chaînes peuvent être concaténées
 "Hello " ++ "world!" -- "Hello world!"
@@ -63,27 +65,26 @@ not False -- True
 
 
 ----------------------------------------------------
--- Lists and Tuples
+-- Listes et tuples
 ----------------------------------------------------
 
--- Chaque élément d'une liste doit avoir le même type.
+-- Tous les éléments d'une liste doit avoir le même type.
 -- les deux lignes suivantes sont semblables
 [1, 2, 3, 4, 5]
 [1..5]
 
--- Il y a aussi des listes infinies en Haskell!
+-- Il y a aussi des listes infinies en Haskell !
 [1..] -- une liste de tous les nombres naturels
 
--- Les listes infinies fonctionnent parce que Haskell a « l'évaluation 
--- paresseuse ». Ça veut dire qu'il n'évalue que ce qui a besoin
--- de l'être. Vous pouvez donc vous demander le 1000e élément de votre liste
--- et il vous le donnera:
+-- Les listes infinies fonctionnent parce que Haskell est « paresseux »:
+-- ça veut dire qu'il n'évalue que ce qui a besoin de l'être. Vous pouvez
+-- donc vous demander le 1000e élément de votre liste et il vous le donnera :
 
 [1..] !! 999 -- 1000
 
 -- Et là, Haskell a évalué les éléments 1 à 1000 de la liste... mais le reste
--- de cette liste « infinie » n'existe pas encore! En fait, Haskell ne va jamais 
--- le faire à moins qu'il le doive.
+-- de cette liste « infinie » n'existe pas encore ! En fait, Haskell ne va jamais 
+-- le faire à moins qu'il ne le doive.
 
 -- Adjoindre deux listes 
 [1..5] ++ [6..10]
@@ -108,7 +109,7 @@ last [1..5] -- 5
 
 -- Chaque élément d'un tuple peut être d'un type différent, mais un
 -- tuple a une longueur fixée.
--- Un tuple:
+-- Un tuple :
 ("haskell", 1)
 
 -- accéder aux éléments d'un tuple
@@ -122,30 +123,30 @@ snd ("haskell", 1) -- 1
 add a b = a + b
 
 -- Notez que si vous utilisez ghci (l'interpréteur Haskell)
--- vous devrez utiliser `let`. Par exemple:
+-- vous devrez utiliser `let`. Par exemple :
 -- let add a b = a + b
 
 -- Utiliser une fonction
 add 1 2 -- 3
 
 -- Vous pouvez également mettre le nom de la fonction entre les
--- deux arguments avec des accents graves:
+-- deux arguments avec des accents graves :
 1 `add` 2 -- 3
 
 -- Vous pouvez également définir des fonctions qui n'ont pas de
--- lettres! Ça vous laisse créer vos propres opérateurs! Voilà 
--- un opérateur qui fait une division entière:
+-- lettres ! Ça vous laisse créer vos propres opérateurs ! Voilà 
+-- un opérateur qui fait une division entière :
 (//) a b = a `div` b
 35 // 4 -- 8
 
--- Gardes: une façon pour créer des bifurcations de fonction
+-- Gardes : Une façon de gérer la valeur de vos arguments en amont
 fib x
   | x < 2 = x
   | otherwise = fib (x - 1) + fib (x - 2)
 
--- Le filtrage par motif est similaire. Là on a donné trois 
+-- Le filtrage par motif est similaire. Là, on a donné trois 
 -- définitions différentes de `fib`. Haskell appellera automatiquement
--- la première fonction qui correspondra au motif de la valeur.
+-- la première fonction qui correspond au motif de la valeur.
 fib 1 = 1
 fib 2 = 2
 fib x = fib (x - 1) + fib (x - 2)
@@ -155,7 +156,7 @@ foo (x, y) = (x + 1, y + 2)
 
 -- Filtrage par motif sur des listes. Ici, `x` est le premier
 -- élément de la liste, et `xs` le reste. On peut écrire notre
--- propre fonction `map`:
+-- propre fonction `map` :
 myMap func [] = []
 myMap func (x:xs) = func x:(myMap func xs)
 
@@ -173,7 +174,7 @@ foldl1 (\acc x -> acc + x) [1..5] -- 15
 -- 4. Plus de fonctions
 ----------------------------------------------------
 
--- curryfaction: si vous n'appliquez pas tous les arguments à une
+-- curryfication : si vous n'appliquez pas tous les arguments à une
 -- fonction, elle devient « curryfiée ». Ça veut dire qu'elle retourne
 -- une fonction qui prend le reste des arguments.
 
@@ -198,7 +199,7 @@ foo 5 -- 75
 -- Haskell a une autre fonction appelée `$`. Elle peut changer la priorité
 -- de sorte que tout ce qu'il y a à sa gauche est calculé d'abord et ensuite 
 -- appliqué à tout ce qu'il y a à droite. Vous pouvez utiliser `.` et `$` 
--- pour vous débarrasser de beaucoup de parenthèses:
+-- pour vous débarrasser de beaucoup de parenthèses :
 
 -- avant
 (even (fib 7)) -- False
@@ -210,22 +211,22 @@ even . fib $ 7 -- False
 -- 5. Signature de type
 ----------------------------------------------------
 
--- Haskell a un système de types très strict; et en Haskell, tout a un type.
+-- Haskell a un système de types très strict : par exemple, tout a un type.
 
--- Quelques types simples:
+-- Quelques types simples :
 5 :: Integer
 "hello" :: String
 True :: Bool
 
--- Les fonctions ont des types également.
+-- Les fonctions ont également des types.
 -- `not` prend un booléen et retourne un booléen.
 -- not :: Bool -> Bool
 
 -- Voilà une fonction qui prend deux paramètres.
 -- add :: Integer -> Integer -> Integer
 
--- Quand vous définissez une valeur, une bonne pratique est d'écrire 
--- son type explicitement
+-- Quand vous définissez une valeur (souvenez-vous, tout est valeur en
+-- Haskell), une bonne pratique est d'écrire son type explicitement
 double :: Integer -> Integer
 double x = x * 2
 
@@ -241,7 +242,7 @@ haskell = if 1 == 1
             then "awesome"
             else "awful"
 
--- les structures case: voilà comment vous pouvez analyser les arguments de 
+-- les structures case : voilà comment vous pourriez analyser les arguments de 
 -- ligne de commande
 case args of
   "help" -> printHelp
@@ -290,9 +291,9 @@ data Couleur = Rouge | Bleu | Vert
 
 
 say :: Couleur -> String
-say Rouge = "Vous êtes Rouge!"
-say Bleu = "Vous êtes Bleu!"
-say Vert =  "Vous êtes Vert!"
+say Rouge = "Vous êtes Rouge !"
+say Bleu = "Vous êtes Bleu !"
+say Vert =  "Vous êtes Vert !"
 
 -- Vos types peuvent également avoir des paramètres
 
@@ -313,10 +314,10 @@ Nothing         -- of type `Maybe a` for any `a`
 
 -- Quand un programme en Haskell est exécuté, la fonction `main`
 -- est appelée. Il doit retourner une valeur de type `IO ()`.
--- Par exemple:
+-- Par exemple :
 
 main :: IO ()
-main = putStrLn $ "Bonjour, le ciel! " ++ (say Blue) 
+main = putStrLn $ "Bonjour, le ciel ! " ++ (say Blue) 
 -- putStrLn a comme type String -> IO ()
 
 -- La façon la plus simple pour faire de l'IO est de faire un programme 
@@ -332,7 +333,7 @@ main' = interact countLines
 -- Vous pouvez considérer qu'une valeur de type `IO ()` représente
 -- une séquence d'actions que l'ordinateur exécute, un peu comme 
 -- dans un langage impératif. On peut utiliser la structure `do` 
--- pour enchaîner des actions. Par exemple:
+-- pour enchaîner des actions. Par exemple :
 
 sayHello :: IO ()
 sayHello = do 
@@ -340,23 +341,23 @@ sayHello = do
    name <- getLine -- prend une ligne et assigne sa valeur à `name`
    putStrLn $ "Salut, " ++ name
    
--- Exercice: écrire votre propre version d'`interact` qui ne fait 
+-- Exercice : écrire votre propre version d'`interact` qui ne fait 
 --           que de lire une ligne d'entrée.
    
 -- Le code de `sayHello` ne sera jamais exécuté, cependant. La seule
 -- action qui sera exécutée est la valeur de `main`.
 -- Pour lancer `sayHello`, commentez l'ancienne définition de `main`
--- et remplacez-le par:
+-- et remplacez-le par :
 --   main = sayHello
 
 -- Essaions de mieux comprendre comment la fonction `getLine` que 
--- nous venons d'utiliser. Son type est:
+-- nous venons d'utiliser. Son type est :
 --    getLine :: IO String
 -- vous pouvez considérer le type `IO a` comme un programme que
 -- le programme va générer comme une valeur de type `a` quand
 -- il sera exécuté. On peut l'enregistrer et la réutiliser en
 -- utilisant `<-`. On peut aussi faire nos propres actions
--- de type `IO String`:
+-- de type `IO String` :
 
 action :: IO String
 action = do
@@ -371,10 +372,10 @@ action = do
 -- tout à l'heure
 
 main'' = do
-    putStrLn "Je vais afficher deux lignes!"
+    putStrLn "Je vais afficher deux lignes !"
     result <- action 
     putStrLn result
-    putStrLn "C'était tout!"
+    putStrLn "C'était tout !"
 
 -- Le type `IO` est un exemple de « monade ». La façon dont Haskell utilise
 -- une monade pour faire de l'IO lui permet d'être purement fonctionnel. N'importe
@@ -395,25 +396,25 @@ main'' = do
 -- Lancer le REPL en tapant `ghci`.
 -- Vous pouvez maintenant taper du code Haskell.
 -- Toutes les nouvelles valeurs peuvent être crées 
--- avec `let`:
+-- avec `let` :
 
 let foo = 5
 
--- Vous pouvez voir le type de n'importe quelle valeur avec `:t`:
+-- Vous pouvez voir le type de n'importe quelle valeur avec `:t` :
 
 >:t foo
 foo :: Integer
 
--- Vous pouvez également des actions de type `IO ()`
+-- Vous pouvez également lancer des actions de type `IO ()`
 
 > sayHello
 Quel est ton nom ?
-Ami!
-Salut, Ami!
+Ami
+Salut, Ami !
 
 ```
 
-Et Haskell ne se limite pas à ça, on trouve encore par exemple les classes de types et les monades. Il y a beaucoup de raisons qui font que coder en Haskell est si *fun*. Je vous laisse avec un dernier exemple: une implémentation de quicksort:
+Et Haskell ne se limite pas à ça, on trouve encore par exemple les classes de types et les monades. Il y a beaucoup de raisons qui font que coder en Haskell est si *fun*. Je vous laisse avec un dernier exemple : une implémentation de quicksort :
 
 ```haskell
 qsort [] = []
