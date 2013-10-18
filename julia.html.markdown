@@ -274,21 +274,21 @@ get(filled_dict,"four",4) #=> 4
 
 # Use Sets to represent collections of unordered, unique values
 empty_set = Set() #=> Set{Any}()
-# Initialize a set with a bunch of values
+# Initialize a set with values
 filled_set = Set(1,2,2,3,4) #=> Set{Int64}(1,2,3,4)
 
-# Add more items to a set
+# Add more values to a set
 add!(filled_set,5) #=> Set{Int64}(5,4,2,3,1)
+
+# Check if the values are in the set
+contains(filled_set,2) #=> true
+contains(filled_set,10) #=> false
 
 # There are functions for set intersection, union, and difference.
 other_set = Set(3, 4, 5, 6) #=> Set{Int64}(6,4,5,3)
 intersect(filled_set, other_set) #=> Set{Int64}(3,4,5)
 union(filled_set, other_set) #=> Set{Int64}(1,2,3,4,5,6)
 setdiff(Set(1,2,3,4),Set(2,3,5)) #=> Set{Int64}(1,4)
-
-# Check for existence in a set with contains 
-contains(filled_set,2) #=> true
-contains(filled_set,10) #=> false
 
 
 ####################################################
@@ -298,8 +298,7 @@ contains(filled_set,10) #=> false
 # Let's make a variable
 some_var = 5
 
-# Here is an if statement. Indentation is NOT meaningful in Julia.
-# prints "some var is smaller than 10"
+# Here is an if statement. Indentation is not meaningful in Julia.
 if some_var > 10
     println("some_var is totally bigger than 10.")
 elseif some_var < 10    # This elseif clause is optional.
@@ -307,12 +306,22 @@ elseif some_var < 10    # This elseif clause is optional.
 else                    # The else clause is optional too.
     println("some_var is indeed 10.")
 end
+#=> prints "some var is smaller than 10"
 
 
-# For loops iterate over iterables, such as ranges, lists, sets, dicts, strings.
-
+# For loops iterate over iterables.
+# Iterable types include Range, Array, Set, Dict, and String.
 for animal=["dog", "cat", "mouse"]
-    # You can use $ to interpolate into strings
+    println("$animal is a mammal")
+    # You can use $ to interpolate variables or expression into strings
+end
+# prints:
+#    dog is a mammal
+#    cat is a mammal
+#    mouse is a mammal
+
+# You can use 'in' instead of '='.
+for animal in ["dog", "cat", "mouse"]
     println("$animal is a mammal")
 end
 # prints:
@@ -320,31 +329,33 @@ end
 #    cat is a mammal
 #    mouse is a mammal
 
-# You can use in instead of =, if you want.
-for animal in ["dog", "cat", "mouse"]
-    println("$animal is a mammal")
-end
-
 for a in ["dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal"]
-    println("$(a[1]) is $(a[2])")
+    println("$(a[1]) is a $(a[2])")
 end
+# prints:
+#    dog is a mammal
+#    cat is a mammal
+#    mouse is a mammal
 
 for (k,v) in ["dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal"]
-    println("$k is $v")
+    println("$k is a $v")
 end
-
-
-# While loops go until a condition is no longer met.
 # prints:
-#   0
-#   1
-#   2
-#   3
+#    dog is a mammal
+#    cat is a mammal
+#    mouse is a mammal
+
+# While loops loop while a condition is true
 x = 0
 while x < 4
     println(x)
     x += 1  # Shorthand for x = x + 1
 end
+# prints:
+#   0
+#   1
+#   2
+#   3
 
 # Handle exceptions with a try/except block
 try
@@ -359,11 +370,14 @@ end
 ## 4. Functions
 ####################################################
 
-# Use the keyword function to create new functions
+# The keyword 'function' creates new functions
+#function name(arglist)
+#  body...
+#end
 function add(x, y)
     println("x is $x and y is $y")
 
-    # Functions implicitly return the value of their last statement
+    # Functions return the value of their last statement
     x + y
 end
 
@@ -373,13 +387,16 @@ add(5, 6) #=> 11 after printing out "x is 5 and y is 6"
 # positional arguments
 function varargs(args...)
     return args
+    # use the keyword return to return anywhere in the function
 end
+#=> varargs (generic function with 1 method)
 
 varargs(1,2,3) #=> (1,2,3)
 
 # The ... is called a splat.
-# It can also be used in a fuction call
-# to splat a list or tuple out to be the arguments
+# We just used it in a function definition.
+# It can also be used in a fuction call,
+# where it will splat an Array or Tuple's contents into the argument list. 
 Set([1,2,3])    #=> Set{Array{Int64,1}}([1,2,3]) # produces a Set of Arrays
 Set([1,2,3]...) #=> Set{Int64}(1,2,3) # this is equivalent to Set(1,2,3)
 
@@ -412,7 +429,7 @@ keyword_args(name2="ness") #=> ["name2"=>"ness","k1"=>4]
 keyword_args(k1="mine") #=> ["k1"=>"mine","name2"=>"hello"]
 keyword_args() #=> ["name2"=>"hello","k2"=>4]
 
-# You can also do both at once
+# You can combine all kinds of arguments in the same function
 function all_the_args(normal_arg, optional_positional_arg=2; keyword_arg="foo")
     println("normal arg: $normal_arg")
     println("optional arg: $optional_positional_arg")
@@ -433,12 +450,15 @@ function create_adder(x)
     return adder
 end
 
-# or equivalently
+# This is "stabby lambda syntax" for creating anonymous functions
+(x -> x > 2)(3) #=> true
+
+# This function is identical to create_adder implementation above.
 function create_adder(x)
     y -> x + y
 end
 
-# you can also name the internal function, if you want
+# You can also name the internal function, if you want
 function create_adder(x)
     function adder(y)
         x + y
@@ -449,14 +469,12 @@ end
 add_10 = create_adder(10)
 add_10(3) #=> 13
 
-# The first two inner functions above are anonymous functions
-(x -> x > 2)(3) #=> true
 
 # There are built-in higher order functions
 map(add_10, [1,2,3]) #=> [11, 12, 13]
 filter(x -> x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 
-# We can use list comprehensions for nice maps and filters
+# We can use list comprehensions for nicer maps
 [add_10(i) for i=[1, 2, 3]] #=> [11, 12, 13]
 [add_10(i) for i in [1, 2, 3]] #=> [11, 12, 13]
 
