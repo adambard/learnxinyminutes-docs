@@ -201,7 +201,7 @@ b = [1,2,3]
 append!(a,b) # Now a is [1, 2, 3, 4, 5, 1, 2, 3]
 
 # Check for existence in a list with contains
-contains(a,1) #=> true
+in(a,1) #=> true
 
 # Examine the length with length
 length(a) #=> 8
@@ -218,7 +218,7 @@ end
 # Many list functions also work on tuples
 length(tup) #=> 3
 tup[1:2] #=> (1,2)
-contains(tup,2) #=> true
+in(tup,2) #=> true
 
 # You can unpack tuples into variables
 a, b, c = (1, 2, 3) #=> (1,2,3)  # a is now 1, b is now 2 and c is now 3
@@ -255,8 +255,8 @@ values(filled_dict)
 # Note - Same as above regarding key ordering.
 
 # Check for existence of keys in a dictionary with contains, haskey
-contains(filled_dict, ("one", 1)) #=> true
-contains(filled_dict, ("two", 3)) #=> false
+in(filled_dict, ("one", 1)) #=> true
+in(filled_dict, ("two", 3)) #=> false
 haskey(filled_dict, "one") #=> true
 haskey(filled_dict, 1) #=> false
 
@@ -278,11 +278,11 @@ empty_set = Set() #=> Set{Any}()
 filled_set = Set(1,2,2,3,4) #=> Set{Int64}(1,2,3,4)
 
 # Add more values to a set
-add!(filled_set,5) #=> Set{Int64}(5,4,2,3,1)
+push!(filled_set,5) #=> Set{Int64}(5,4,2,3,1)
 
 # Check if the values are in the set
-contains(filled_set,2) #=> true
-contains(filled_set,10) #=> false
+in(filled_set,2) #=> true
+in(filled_set,10) #=> false
 
 # There are functions for set intersection, union, and difference.
 other_set = Set(3, 4, 5, 6) #=> Set{Int64}(6,4,5,3)
