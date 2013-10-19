@@ -631,7 +631,6 @@ fight(tigger,Lion("ROAR")) #=> prints The green-maned lion wins!
 
 # We don't need a Tiger in order to fight
 fight(l::Lion,c::Cat) = println("The victorious cat says $(meow(c))")
-end
 #=> fight (generic function with 3 methods)
 
 fight(Lion("balooga!"),Panther()) #=> prints The victorious cat says grrr
