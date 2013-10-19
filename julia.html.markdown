@@ -479,49 +479,104 @@ filter(x -> x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 [add_10(i) for i in [1, 2, 3]] #=> [11, 12, 13]
 
 ####################################################
-## 5. Types and Multiple-Dispatch 
+## 5. Types
 ####################################################
 
-# Type definition
+# Julia has a type system.
+# Every value has a type; variables do not have types themselves.
+# You can use the `typeof` function to get the type of a value.
+typeof(5) #=> Int64
+
+# Types are first-class values
+typeof(Int64) #=> DataType
+typeof(DataType) #=> DataType
+# DataType is the type that represents types, including itself.
+
+# Types are used for documentation, optimizations, and dispatch.
+# They are not statically checked.
+
+# Users can define types
+# They are like records or structs in other languages.
+# New types are defined used the `type` keyword.
+
+# type Name
+#   field::OptionalType
+#   ...
+# end
 type Tiger
   taillength::Float64
-  coatcolor # no type annotation is implicitly Any
+  coatcolor # not including a type annotation is the same as `::Any`
 end
-# default constructor is the properties in order
-# so, Tiger(taillength,coatcolor)
 
-# Type instantiation
-tigger = Tiger(3.5,"orange") # the type doubles as the constructor function
+# The default constructor's arguments are the properties
+# of the tyep, in order the order they are listed in the definition
+tigger = Tiger(3.5,"orange") #=> Tiger(3.5,"orange")
+ 
+# The type doubles as the constructor function for values of that type
+sherekhan = typeof(tigger)(5.6,"fire") #=> Tiger(5.6,"fire")
 
-# Abtract Types
+# These struct-style types are called concrete types
+# They can be instantiated, but cannot have subtypes.
+# The other kind of types is abstract types.
+
+# abstract Name
 abstract Cat # just a name and point in the type hierarchy
 
-# * types defined with the type keyword are concrete types; they can be
-#   instantiated
-#
-# * types defined with the abstract keyword are abstract types; they can
-#   have subtypes.
-#
-# * each type has one supertype; a supertype can have zero or more subtypes.
+# Abstract types cannot be instantiated, but can have subtypes.
+# For example, Number is an abstract type
+subtypes(Number) #=> 6-element Array{Any,1}:
+                 #     Complex{Float16}
+                 #     Complex{Float32}
+                 #     Complex{Float64}
+                 #     Complex{T<:Real}
+                 #     ImaginaryUnit   
+                 #     Real 
+subtypes(Cat) #=> 0-element Array{Any,1}
 
+# Every type has a super type; use the `super` function to get it.
+typeof(5) #=> Int64
+super(Int64) #=> Signed
+super(Signed) #=> Real
+super(Real) #=> Number
+super(Number) #=> Any
+super(super(Signed)) #=> Number
+super(Any) #=> Any
+# All of these type, except for Int64, are abstract.
+
+# <: is the subtyping operator
 type Lion <: Cat # Lion is a subtype of Cat
   mane_color
   roar::String
 end
+
+# You can define more constructors for your type
+# Just define a function of the same name as the type
+# and call an existing constructor to get a value of the correct type
+Lion(roar::String) = Lion("green",roar)
+# This is an outer constructor because it's outside the type definition
 
 type Panther <: Cat # Panther is also a subtype of Cat
   eye_color
   Panther() = new("green")
   # Panthers will only have this constructor, and no default constructor.
 end
+# Using inner constructors, like Panter does, gives you control
+# over how values of the type can be created.
+# When possible, you should use outer constructors rather than inner ones.
 
-# Multiple Dispatch
+####################################################
+## 6. Multiple-Dispatch 
+####################################################
 
 # In Julia, all named functions are generic functions
 # This means that they are built up from many small methods
-# For example, let's make a function meow:
+# Each constructor for Lion is a method of the generic function Lion.
+
+# For a non-constructor example, let's make a function meow:
+
+# Definitions for Lion, Panther, Tiger
 function meow(cat::Lion)
-  cat.roar # access properties using dot notation
+  cat.roar # access type properties using dot notation
 end
 
 function meow(cat::Panther)
@@ -532,21 +587,76 @@ function meow(cat::Tiger)
   "rawwwr"
 end
 
+# Testing the meow function
 meow(tigger) #=> "rawwr"
 meow(Lion("brown","ROAAR")) #=> "ROAAR"
 meow(Panther()) #=> "grrr"
 
+# Review the local type hierarchy
+issubtype(Tiger,Cat) #=> false
+issubtype(Lion,Cat) #=> true
+issubtype(Panther,Cat) #=> true
+
+# Defining a function that takes Cats
 function pet_cat(cat::Cat)
   println("The cat says $(meow(cat))")
 end
 
+pet_cat(Lion("42")) #=> prints "The cat says 42"
 try
     pet_cat(tigger) #=> ERROR: no method pet_cat(Tiger,)
 catch e
     println(e)
 end
 
-pet_cat(Lion(Panther(),"42")) #=> prints "The cat says 42"
+# In OO languages, single dispatch is common;
+# this means that the method is picked based on the type of the first argument.
+# In Julia, all of the argument types contribute to selecting the best method.
+
+# Let's define a function with more arguments, so we can see the difference
+function fight(t::Tiger,c::Cat)
+  println("The $(t.coatcolor) tiger wins!")
+end
+#=> fight (generic function with 1 method)
+
+fight(tigger,Panther()) #=> prints The orange tiger wins!
+fight(tigger,Lion("ROAR")) #=> prints The orange tiger wins!
+
+# Let's change the behavior when the Cat is specifically a Lion
+fight(t::Tiger,l::Lion) = println("The $(l.mane_color)-maned lion wins!")
+#=> fight (generic function with 2 methods)
+
+fight(tigger,Panther()) #=> prints The orange tiger wins!
+fight(tigger,Lion("ROAR")) #=> prints The green-maned lion wins!
+
+# We don't need a Tiger in order to fight
+fight(l::Lion,c::Cat) = println("The victorious cat says $(meow(c))")
+end
+#=> fight (generic function with 3 methods)
+
+fight(Lion("balooga!"),Panther()) #=> prints The victorious cat says grrr
+try
+  fight(Panther(),Lion("RAWR")) #=> ERROR: no method fight(Panther,Lion)
+catch
+end
+
+# Also let the cat go first
+fight(c::Cat,l::Lion) = println("The cat beats the Lion")
+#=> Warning: New definition 
+#    fight(Cat,Lion) at none:1
+# is ambiguous with 
+#    fight(Lion,Cat) at none:2.
+# Make sure 
+#    fight(Lion,Lion)
+# is defined first.
+#fight (generic function with 4 methods)
+
+# This warning is because it's unclear which fight will be called in:
+fight(Lion("RAR"),Lion("brown","rarrr")) #=> prints The victorious cat says rarrr
+# The result may be different in other versions of Julia
+
+fight(l::Lion,l2::Lion) = println("The lions come to a tie")
+fight(Lion("RAR"),Lion("brown","rarrr")) #=> prints The lions come to a tie
 
 ```
 
@@ -554,3 +664,4 @@ pet_cat(Lion(Panther(),"42")) #=> prints "The cat says 42"
 
 You can get a lot more detail from [The Julia Manual](http://docs.julialang.org/en/latest/manual/)
 
+The best place to get help with Julia is the (very friendly) [mailing list](https://groups.google.com/forum/#!forum/julia-users).
