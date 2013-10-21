@@ -8,7 +8,7 @@ filename: learnjulia.jl
 Julia is a new homoiconic functional language focused on technical computing.
 While having the full power of homoiconic macros, first-class functions, and low-level control, Julia is as easy to learn and use as Python.
 
-This is based on the current development version of Julia, as of June 29th, 2013.
+This is based on the current development version of Julia, as of October 18th, 2013.
 
 ```ruby
 
@@ -20,20 +20,20 @@ This is based on the current development version of Julia, as of June 29th, 2013
 
 # Everything in Julia is a expression.
 
-# You have numbers
+# There are several basic types of numbers.
 3 #=> 3 (Int64)
 3.2 #=> 3.2 (Float64)
 2 + 1im #=> 2 + 1im (Complex{Int64})
 2//3 #=> 2//3 (Rational{Int64})
 
-# Math is what you would expect
+# All of the normal infix operators are available.
 1 + 1 #=> 2
 8 - 1 #=> 7
 10 * 2 #=> 20
 35 / 5 #=> 7.0
+5 / 2 #=> 2.5 # dividing an Int by an Int always results in a Float
+div(5, 2) #=> 2 # for a truncated result, use div
 5 \ 35 #=> 7.0
-5 / 2 #=> 2.5
-div(5, 2) #=> 2
 2 ^ 2 #=> 4 # power, not bitwise xor
 12 % 10 #=> 2
 
@@ -77,11 +77,13 @@ false
 # Strings are created with "
 "This is a string."
 
-# Character literals written with '
+# Character literals are written with '
 'a'
 
-# A string can be treated like a list of characters
+# A string can be indexed like an array of characters
 "This is a string"[1] #=> 'T' # Julia indexes from 1
+# However, this is will not work well for UTF8 strings,
+# so iterating over strings is reccommended (map, for loops, etc).
 
 # $ can be used for string interpolation:
 "2 + 2 = $(2 + 2)" #=> "2 + 2 = 4"
@@ -94,10 +96,10 @@ false
 ## 2. Variables and Collections
 ####################################################
 
-# Printing is pretty easy
+# Printing is easy
 println("I'm Julia. Nice to meet you!")
 
-# No need to declare variables before assigning to them.
+# You don't declare variables before assigning to them.
 some_var = 5 #=> 5 
 some_var #=> 5
 
@@ -108,12 +110,14 @@ catch e
     println(e)
 end
 
-# Variable name start with a letter. You can use uppercase letters, digits,
-# and exclamation points as well after the initial alphabetic character.
+# Variable names start with a letter.
+# After that, you can use letters, digits, underscores, and exclamation points.
 SomeOtherVar123! = 6 #=> 6
 
 # You can also use unicode characters
 ☃ = 8 #=> 8
+# These are especially handy for mathematical notation
+2 * π #=> 6.283185307179586
 
 # A note on naming conventions in Julia:
 #
@@ -158,6 +162,10 @@ a[1] #=> 1 # remember that Julia indexes from 1, not 0!
 # indexing expression
 a[end] #=> 6
 
+# we also have shift and unshift
+shift!(a) #=> 1 and a is now [2,4,3,4,5,6]
+unshift!(a,7) #=> [7,2,4,3,4,5,6]
+
 # Function names that end in exclamations points indicate that they modify
 # their argument.
 arr = [5,4,6] #=> 3-element Int64 Array: [5,4,6]
@@ -182,23 +190,24 @@ a = [1:5] #=> 5-element Int64 Array: [1,2,3,4,5]
 # You can look at ranges with slice syntax.
 a[1:3] #=> [1, 2, 3]
 a[2:] #=> [2, 3, 4, 5]
+a[2:end] #=> [2, 3, 4, 5]
 
-# Remove arbitrary elements from a list with splice!
+# Remove elements from an array by index with splice!
 arr = [3,4,5]
 splice!(arr,2) #=> 4 ; arr is now [3,5]
 
 # Concatenate lists with append!
 b = [1,2,3]
-append!(a,b) # Now a is [1, 3, 4, 5, 1, 2, 3]
+append!(a,b) # Now a is [1, 2, 3, 4, 5, 1, 2, 3]
 
-# Check for existence in a list with contains
-contains(a,1) #=> true
+# Check for existence in a list with in
+in(a,1) #=> true
 
 # Examine the length with length
-length(a) #=> 7
+length(a) #=> 8
 
 # Tuples are immutable.
-tup = (1, 2, 3) #=>(1,2,3) # an (Int64,Int64,Int64) tuple.
+tup = (1, 2, 3) #=> (1,2,3) # an (Int64,Int64,Int64) tuple.
 tup[1] #=> 1
 try:
     tup[0] = 3 #=> ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
@@ -209,22 +218,26 @@ end
 # Many list functions also work on tuples
 length(tup) #=> 3
 tup[1:2] #=> (1,2)
-contains(tup,2) #=> true
+in(tup,2) #=> true
 
 # You can unpack tuples into variables
 a, b, c = (1, 2, 3) #=> (1,2,3)  # a is now 1, b is now 2 and c is now 3
 
-# Tuples are created by default if you leave out the parentheses
+# Tuples are created even if you leave out the parentheses
 d, e, f = 4, 5, 6 #=> (4,5,6)
 
-# Now look how easy it is to swap two values
+# A 1-element tuple is distinct from the value it contains
+(1,) == 1 #=> false
+(1) == 1 #=> true
+
+# Look how easy it is to swap two values
 e, d = d, e  #=> (5,4) # d is now 5 and e is now 4
 
 
 # Dictionaries store mappings
 empty_dict = Dict() #=> Dict{Any,Any}()
 
-# Here is a prefilled dictionary
+# You can create a dictionary using a literal
 filled_dict = ["one"=> 1, "two"=> 2, "three"=> 3]
 # => Dict{ASCIIString,Int64}
 
@@ -241,41 +254,41 @@ values(filled_dict)
 #=> ValueIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
 # Note - Same as above regarding key ordering.
 
-# Check for existence of keys in a dictionary with contains, haskey
-contains(filled_dict, ("one", 1)) #=> true
-contains(filled_dict, ("two", 3)) #=> false
+# Check for existence of keys in a dictionary with in, haskey
+in(filled_dict, ("one", 1)) #=> true
+in(filled_dict, ("two", 3)) #=> false
 haskey(filled_dict, "one") #=> true
 haskey(filled_dict, 1) #=> false
 
-# Trying to look up a non-existing key will raise an error
+# Trying to look up a non-existant key will raise an error
 try
     filled_dict["four"] #=> ERROR: key not found: four in getindex at dict.jl:489
 catch e
     println(e)
 end
 
-# Use get method to avoid the error
+# Use the get method to avoid that error by providing a default value
 # get(dictionary,key,default_value)
 get(filled_dict,"one",4) #=> 1
 get(filled_dict,"four",4) #=> 4
 
-# Sets store sets
+# Use Sets to represent collections of unordered, unique values
 empty_set = Set() #=> Set{Any}()
-# Initialize a set with a bunch of values
+# Initialize a set with values
 filled_set = Set(1,2,2,3,4) #=> Set{Int64}(1,2,3,4)
 
-# Add more items to a set
-add!(filled_set,5) #=> Set{Int64}(5,4,2,3,1)
+# Add more values to a set
+push!(filled_set,5) #=> Set{Int64}(5,4,2,3,1)
+
+# Check if the values are in the set
+in(filled_set,2) #=> true
+in(filled_set,10) #=> false
 
 # There are functions for set intersection, union, and difference.
 other_set = Set(3, 4, 5, 6) #=> Set{Int64}(6,4,5,3)
 intersect(filled_set, other_set) #=> Set{Int64}(3,4,5)
 union(filled_set, other_set) #=> Set{Int64}(1,2,3,4,5,6)
 setdiff(Set(1,2,3,4),Set(2,3,5)) #=> Set{Int64}(1,4)
-
-# Check for existence in a set with contains 
-contains(filled_set,2) #=> true
-contains(filled_set,10) #=> false
 
 
 ####################################################
@@ -285,8 +298,7 @@ contains(filled_set,10) #=> false
 # Let's make a variable
 some_var = 5
 
-# Here is an if statement. Indentation is NOT meaningful in Julia.
-# prints "some var is smaller than 10"
+# Here is an if statement. Indentation is not meaningful in Julia.
 if some_var > 10
     println("some_var is totally bigger than 10.")
 elseif some_var < 10    # This elseif clause is optional.
@@ -294,12 +306,22 @@ elseif some_var < 10    # This elseif clause is optional.
 else                    # The else clause is optional too.
     println("some_var is indeed 10.")
 end
+#=> prints "some var is smaller than 10"
 
 
-# For loops iterate over iterables, such as ranges, lists, sets, dicts, strings.
-
+# For loops iterate over iterables.
+# Iterable types include Range, Array, Set, Dict, and String.
 for animal=["dog", "cat", "mouse"]
-    # You can use $ to interpolate into strings
+    println("$animal is a mammal")
+    # You can use $ to interpolate variables or expression into strings
+end
+# prints:
+#    dog is a mammal
+#    cat is a mammal
+#    mouse is a mammal
+
+# You can use 'in' instead of '='.
+for animal in ["dog", "cat", "mouse"]
     println("$animal is a mammal")
 end
 # prints:
@@ -307,31 +329,33 @@ end
 #    cat is a mammal
 #    mouse is a mammal
 
-# You can use in instead of =, if you want.
-for animal in ["dog", "cat", "mouse"]
-    println("$animal is a mammal")
-end
-
 for a in ["dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal"]
-    println("$(a[1]) is $(a[2])")
+    println("$(a[1]) is a $(a[2])")
 end
+# prints:
+#    dog is a mammal
+#    cat is a mammal
+#    mouse is a mammal
 
 for (k,v) in ["dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal"]
-    println("$k is $v")
+    println("$k is a $v")
 end
-
-
-# While loops go until a condition is no longer met.
 # prints:
-#   0
-#   1
-#   2
-#   3
+#    dog is a mammal
+#    cat is a mammal
+#    mouse is a mammal
+
+# While loops loop while a condition is true
 x = 0
 while x < 4
     println(x)
     x += 1  # Shorthand for x = x + 1
 end
+# prints:
+#   0
+#   1
+#   2
+#   3
 
 # Handle exceptions with a try/except block
 try
@@ -346,11 +370,14 @@ end
 ## 4. Functions
 ####################################################
 
-# Use the keyword function to create new functions
+# The keyword 'function' creates new functions
+#function name(arglist)
+#  body...
+#end
 function add(x, y)
     println("x is $x and y is $y")
 
-    # Functions implicitly return the value of their last statement
+    # Functions return the value of their last statement
     x + y
 end
 
@@ -360,13 +387,16 @@ add(5, 6) #=> 11 after printing out "x is 5 and y is 6"
 # positional arguments
 function varargs(args...)
     return args
+    # use the keyword return to return anywhere in the function
 end
+#=> varargs (generic function with 1 method)
 
 varargs(1,2,3) #=> (1,2,3)
 
 # The ... is called a splat.
-# It can also be used in a fuction call
-# to splat a list or tuple out to be the arguments
+# We just used it in a function definition.
+# It can also be used in a fuction call,
+# where it will splat an Array or Tuple's contents into the argument list. 
 Set([1,2,3])    #=> Set{Array{Int64,1}}([1,2,3]) # produces a Set of Arrays
 Set([1,2,3]...) #=> Set{Int64}(1,2,3) # this is equivalent to Set(1,2,3)
 
@@ -399,7 +429,7 @@ keyword_args(name2="ness") #=> ["name2"=>"ness","k1"=>4]
 keyword_args(k1="mine") #=> ["k1"=>"mine","name2"=>"hello"]
 keyword_args() #=> ["name2"=>"hello","k2"=>4]
 
-# You can also do both at once
+# You can combine all kinds of arguments in the same function
 function all_the_args(normal_arg, optional_positional_arg=2; keyword_arg="foo")
     println("normal arg: $normal_arg")
     println("optional arg: $optional_positional_arg")
@@ -420,12 +450,15 @@ function create_adder(x)
     return adder
 end
 
-# or equivalently
+# This is "stabby lambda syntax" for creating anonymous functions
+(x -> x > 2)(3) #=> true
+
+# This function is identical to create_adder implementation above.
 function create_adder(x)
     y -> x + y
 end
 
-# you can also name the internal function, if you want
+# You can also name the internal function, if you want
 function create_adder(x)
     function adder(y)
         x + y
@@ -436,61 +469,114 @@ end
 add_10 = create_adder(10)
 add_10(3) #=> 13
 
-# The first two inner functions above are anonymous functions
-(x -> x > 2)(3) #=> true
 
 # There are built-in higher order functions
 map(add_10, [1,2,3]) #=> [11, 12, 13]
 filter(x -> x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 
-# We can use list comprehensions for nice maps and filters
+# We can use list comprehensions for nicer maps
 [add_10(i) for i=[1, 2, 3]] #=> [11, 12, 13]
 [add_10(i) for i in [1, 2, 3]] #=> [11, 12, 13]
 
 ####################################################
-## 5. Types and Multiple-Dispatch 
+## 5. Types
 ####################################################
 
-# Type definition
+# Julia has a type system.
+# Every value has a type; variables do not have types themselves.
+# You can use the `typeof` function to get the type of a value.
+typeof(5) #=> Int64
+
+# Types are first-class values
+typeof(Int64) #=> DataType
+typeof(DataType) #=> DataType
+# DataType is the type that represents types, including itself.
+
+# Types are used for documentation, optimizations, and dispatch.
+# They are not statically checked.
+
+# Users can define types
+# They are like records or structs in other languages.
+# New types are defined used the `type` keyword.
+
+# type Name
+#   field::OptionalType
+#   ...
+# end
 type Tiger
   taillength::Float64
-  coatcolor # no type annotation is implicitly Any
+  coatcolor # not including a type annotation is the same as `::Any`
 end
-# default constructor is the properties in order
-# so, Tiger(taillength,coatcolor)
 
-# Type instantiation
-tigger = Tiger(3.5,"orange") # the type doubles as the constructor function
+# The default constructor's arguments are the properties
+# of the tyep, in order the order they are listed in the definition
+tigger = Tiger(3.5,"orange") #=> Tiger(3.5,"orange")
+ 
+# The type doubles as the constructor function for values of that type
+sherekhan = typeof(tigger)(5.6,"fire") #=> Tiger(5.6,"fire")
 
-# Abtract Types
+# These struct-style types are called concrete types
+# They can be instantiated, but cannot have subtypes.
+# The other kind of types is abstract types.
+
+# abstract Name
 abstract Cat # just a name and point in the type hierarchy
 
-# * types defined with the type keyword are concrete types; they can be
-#   instantiated
-#
-# * types defined with the abstract keyword are abstract types; they can
-#   have subtypes.
-#
-# * each type has one supertype; a supertype can have zero or more subtypes.
+# Abstract types cannot be instantiated, but can have subtypes.
+# For example, Number is an abstract type
+subtypes(Number) #=> 6-element Array{Any,1}:
+                 #     Complex{Float16}
+                 #     Complex{Float32}
+                 #     Complex{Float64}
+                 #     Complex{T<:Real}
+                 #     ImaginaryUnit   
+                 #     Real 
+subtypes(Cat) #=> 0-element Array{Any,1}
 
+# Every type has a super type; use the `super` function to get it.
+typeof(5) #=> Int64
+super(Int64) #=> Signed
+super(Signed) #=> Real
+super(Real) #=> Number
+super(Number) #=> Any
+super(super(Signed)) #=> Number
+super(Any) #=> Any
+# All of these type, except for Int64, are abstract.
+
+# <: is the subtyping operator
 type Lion <: Cat # Lion is a subtype of Cat
   mane_color
   roar::String
 end
+
+# You can define more constructors for your type
+# Just define a function of the same name as the type
+# and call an existing constructor to get a value of the correct type
+Lion(roar::String) = Lion("green",roar)
+# This is an outer constructor because it's outside the type definition
 
 type Panther <: Cat # Panther is also a subtype of Cat
   eye_color
   Panther() = new("green")
   # Panthers will only have this constructor, and no default constructor.
 end
+# Using inner constructors, like Panter does, gives you control
+# over how values of the type can be created.
+# When possible, you should use outer constructors rather than inner ones.
 
-# Multiple Dispatch
+####################################################
+## 6. Multiple-Dispatch 
+####################################################
 
 # In Julia, all named functions are generic functions
 # This means that they are built up from many small methods
-# For example, let's make a function meow:
+# Each constructor for Lion is a method of the generic function Lion.
+
+# For a non-constructor example, let's make a function meow:
+
+# Definitions for Lion, Panther, Tiger
 function meow(cat::Lion)
-  cat.roar # access properties using dot notation
+  cat.roar # access type properties using dot notation
 end
 
 function meow(cat::Panther)
@@ -501,21 +587,75 @@ function meow(cat::Tiger)
   "rawwwr"
 end
 
+# Testing the meow function
 meow(tigger) #=> "rawwr"
 meow(Lion("brown","ROAAR")) #=> "ROAAR"
 meow(Panther()) #=> "grrr"
 
+# Review the local type hierarchy
+issubtype(Tiger,Cat) #=> false
+issubtype(Lion,Cat) #=> true
+issubtype(Panther,Cat) #=> true
+
+# Defining a function that takes Cats
 function pet_cat(cat::Cat)
   println("The cat says $(meow(cat))")
 end
 
+pet_cat(Lion("42")) #=> prints "The cat says 42"
 try
     pet_cat(tigger) #=> ERROR: no method pet_cat(Tiger,)
 catch e
     println(e)
 end
 
-pet_cat(Lion(Panther(),"42")) #=> prints "The cat says 42"
+# In OO languages, single dispatch is common;
+# this means that the method is picked based on the type of the first argument.
+# In Julia, all of the argument types contribute to selecting the best method.
+
+# Let's define a function with more arguments, so we can see the difference
+function fight(t::Tiger,c::Cat)
+  println("The $(t.coatcolor) tiger wins!")
+end
+#=> fight (generic function with 1 method)
+
+fight(tigger,Panther()) #=> prints The orange tiger wins!
+fight(tigger,Lion("ROAR")) #=> prints The orange tiger wins!
+
+# Let's change the behavior when the Cat is specifically a Lion
+fight(t::Tiger,l::Lion) = println("The $(l.mane_color)-maned lion wins!")
+#=> fight (generic function with 2 methods)
+
+fight(tigger,Panther()) #=> prints The orange tiger wins!
+fight(tigger,Lion("ROAR")) #=> prints The green-maned lion wins!
+
+# We don't need a Tiger in order to fight
+fight(l::Lion,c::Cat) = println("The victorious cat says $(meow(c))")
+#=> fight (generic function with 3 methods)
+
+fight(Lion("balooga!"),Panther()) #=> prints The victorious cat says grrr
+try
+  fight(Panther(),Lion("RAWR")) #=> ERROR: no method fight(Panther,Lion)
+catch
+end
+
+# Also let the cat go first
+fight(c::Cat,l::Lion) = println("The cat beats the Lion")
+#=> Warning: New definition 
+#    fight(Cat,Lion) at none:1
+# is ambiguous with 
+#    fight(Lion,Cat) at none:2.
+# Make sure 
+#    fight(Lion,Lion)
+# is defined first.
+#fight (generic function with 4 methods)
+
+# This warning is because it's unclear which fight will be called in:
+fight(Lion("RAR"),Lion("brown","rarrr")) #=> prints The victorious cat says rarrr
+# The result may be different in other versions of Julia
+
+fight(l::Lion,l2::Lion) = println("The lions come to a tie")
+fight(Lion("RAR"),Lion("brown","rarrr")) #=> prints The lions come to a tie
 
 ```
 
@@ -523,3 +663,4 @@ pet_cat(Lion(Panther(),"42")) #=> prints "The cat says 42"
 
 You can get a lot more detail from [The Julia Manual](http://docs.julialang.org/en/latest/manual/)
 
+The best place to get help with Julia is the (very friendly) [mailing list](https://groups.google.com/forum/#!forum/julia-users).
