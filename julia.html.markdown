@@ -200,7 +200,7 @@ splice!(arr,2) #=> 4 ; arr is now [3,5]
 b = [1,2,3]
 append!(a,b) # Now a is [1, 2, 3, 4, 5, 1, 2, 3]
 
-# Check for existence in a list with contains
+# Check for existence in a list with in
 in(a,1) #=> true
 
 # Examine the length with length
@@ -254,7 +254,7 @@ values(filled_dict)
 #=> ValueIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
 # Note - Same as above regarding key ordering.
 
-# Check for existence of keys in a dictionary with contains, haskey
+# Check for existence of keys in a dictionary with in, haskey
 in(filled_dict, ("one", 1)) #=> true
 in(filled_dict, ("two", 3)) #=> false
 haskey(filled_dict, "one") #=> true
