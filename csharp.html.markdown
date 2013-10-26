@@ -150,7 +150,7 @@ on a new line! ""Wow!"", the masses cried";
             List<int> intList = new List<int>();
             List<string> stringList = new List<string>();
             List<int> z = new List<int> { 9000, 1000, 1337 }; // intialize
-            // The <> are for templates - Check out the cool stuff section
+            // The <> are for generics - Check out the cool stuff section
 
             // Lists don't default to a value;
             // A value must be added before accessing the index
@@ -369,7 +369,7 @@ on a new line! ""Wow!"", the masses cried";
         {
         }
 
-        // TEMPLATES
+        // GENERICS
         // The classes for TKey and TValue is specified by the user calling this function.
         // This method emulates the SetDefault of Python
         public static TValue SetDefault<TKey, TValue>(
@@ -417,12 +417,13 @@ on a new line! ""Wow!"", the masses cried";
             var magic = "magic is a string, at compile time, so you still get type safety";
             // magic = 9; will not work as magic is a string, not an int
 
-            // TEMPLATES
+            // GENERICS
+            //
             var phonebook = new Dictionary<string, string>() { 
                 {"Sarah", "212 555 5555"} // Add some entries to the phone book
             };
 
-            // Calling SETDEFAULT defined as a template above
+            // Calling SETDEFAULT defined as a generic above
             Console.WriteLine(SetDefault<string,string>(phonebook, "Shaun", "No Phone")); // No Phone
             // nb, you don't need to specify the TKey and TValue since they can be 
             // derived implicitly
