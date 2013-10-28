@@ -11,7 +11,7 @@ makes coding a real joy for me.
 ```haskell
 -- Single line comments start with two dashes.
 {- Multiline comments can be enclosed
-en a block like this.
+in a block like this.
 -}
 
 ----------------------------------------------------
