@@ -156,9 +156,9 @@ li[4] # Lève un 'IndexError'
 # On peut accèder à des rangs de valeurs avec la syntaxe "slice"
 # (C'est un rang de type 'fermé/ouvert' pour les plus matheux)
 li[1:3] #=> [2, 4]
-# Sans spécifier de début de rang
+# Sans spécifier de fin de rang, on "saute" le début de la liste
 li[2:] #=> [4, 3]
-# Sans spécifier de fin de rang
+# Sans spécifier de début de rang, on "saute" la fin de la liste
 li[:3] #=> [1, 2, 4]
 
 # Retirer un élément spécifique dee la liste avec "del"
