@@ -4,6 +4,7 @@ tool: git
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 filename: LearnGit-vi.txt
+lang: vi-vn
 ---
 
 Git là một hệ quản lý mã nguồn và phiên bản phân tán (distributed version control and source code management system).
