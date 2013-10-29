@@ -3,6 +3,7 @@ language: javascript
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
 filename: javascript.js
+lang: fa-ir
 ---
 
 <p dir='rtl'>
