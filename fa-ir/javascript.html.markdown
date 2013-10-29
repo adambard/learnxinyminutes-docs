@@ -2,6 +2,8 @@
 language: javascript
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+translators:
+    - ["Mohammad Valipour", "https://github.com/mvalipour"]
 filename: javascript.js
 lang: fa-ir
 ---
