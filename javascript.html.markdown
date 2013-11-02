@@ -306,8 +306,8 @@ myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "HELLO WORLD!"
 
 // When you call a function with the new keyword, a new object is created, and
-// made available to the function via this. Functions designed to be called
-// like this are called constructors.
+// made available to the function via the this keyword. Functions designed to be called
+// like that are called constructors.
 
 var MyConstructor = function(){
     this.myNumber = 5;
@@ -323,14 +323,14 @@ myNewObj.myNumber; // = 5
 // property __proto__. While this is useful for explaining prototypes it's not
 // part of the standard; we'll get to standard ways of using prototypes later.
 var myObj = {
-    myString: "Hello world!",
+    myString: "Hello world!"
 };
 var myPrototype = {
     meaningOfLife: 42,
     myFunc: function(){
         return this.myString.toLowerCase()
     }
-};
+
 myObj.__proto__ = myPrototype;
 myObj.meaningOfLife; // = 42
 
