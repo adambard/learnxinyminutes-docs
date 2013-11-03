@@ -330,6 +330,7 @@ var myPrototype = {
     myFunc: function(){
         return this.myString.toLowerCase()
     }
+};
 
 myObj.__proto__ = myPrototype;
 myObj.meaningOfLife; // = 42
