@@ -100,7 +100,7 @@ false
 println("I'm Julia. Nice to meet you!")
 
 # You don't declare variables before assigning to them.
-some_var = 5 #=> 5 
+some_var = 5 #=> 5
 some_var #=> 5
 
 # Accessing a previously unassigned variable is an error
@@ -201,7 +201,7 @@ b = [1,2,3]
 append!(a,b) # Now a is [1, 2, 3, 4, 5, 1, 2, 3]
 
 # Check for existence in a list with in
-in(a,1) #=> true
+in(1, a) #=> true
 
 # Examine the length with length
 length(a) #=> 8
@@ -218,7 +218,7 @@ end
 # Many list functions also work on tuples
 length(tup) #=> 3
 tup[1:2] #=> (1,2)
-in(tup,2) #=> true
+in(2, tup) #=> true
 
 # You can unpack tuples into variables
 a, b, c = (1, 2, 3) #=> (1,2,3)  # a is now 1, b is now 2 and c is now 3
@@ -249,14 +249,14 @@ keys(filled_dict)
 #=> KeyIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
 # Note - dictionary keys are not sorted or in the order you inserted them.
 
-# Get all values 
+# Get all values
 values(filled_dict)
 #=> ValueIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
 # Note - Same as above regarding key ordering.
 
 # Check for existence of keys in a dictionary with in, haskey
-in(filled_dict, ("one", 1)) #=> true
-in(filled_dict, ("two", 3)) #=> false
+in(("one", 1), filled_dict) #=> true
+in(("two", 3), filled_dict) #=> false
 haskey(filled_dict, "one") #=> true
 haskey(filled_dict, 1) #=> false
 
@@ -281,8 +281,8 @@ filled_set = Set(1,2,2,3,4) #=> Set{Int64}(1,2,3,4)
 push!(filled_set,5) #=> Set{Int64}(5,4,2,3,1)
 
 # Check if the values are in the set
-in(filled_set,2) #=> true
-in(filled_set,10) #=> false
+in(2, filled_set) #=> true
+in(10, filled_set) #=> false
 
 # There are functions for set intersection, union, and difference.
 other_set = Set(3, 4, 5, 6) #=> Set{Int64}(6,4,5,3)
@@ -396,7 +396,7 @@ varargs(1,2,3) #=> (1,2,3)
 # The ... is called a splat.
 # We just used it in a function definition.
 # It can also be used in a fuction call,
-# where it will splat an Array or Tuple's contents into the argument list. 
+# where it will splat an Array or Tuple's contents into the argument list.
 Set([1,2,3])    #=> Set{Array{Int64,1}}([1,2,3]) # produces a Set of Arrays
 Set([1,2,3]...) #=> Set{Int64}(1,2,3) # this is equivalent to Set(1,2,3)
 
@@ -423,7 +423,7 @@ end
 # You can define functions that take keyword arguments
 function keyword_args(;k1=4,name2="hello") # note the ;
     return ["k1"=>k1,"name2"=>name2]
-end 
+end
 
 keyword_args(name2="ness") #=> ["name2"=>"ness","k1"=>4]
 keyword_args(k1="mine") #=> ["k1"=>"mine","name2"=>"hello"]
@@ -511,7 +511,7 @@ end
 # The default constructor's arguments are the properties
 # of the tyep, in order the order they are listed in the definition
 tigger = Tiger(3.5,"orange") #=> Tiger(3.5,"orange")
- 
+
 # The type doubles as the constructor function for values of that type
 sherekhan = typeof(tigger)(5.6,"fire") #=> Tiger(5.6,"fire")
 
@@ -529,8 +529,8 @@ subtypes(Number) #=> 6-element Array{Any,1}:
                  #     Complex{Float32}
                  #     Complex{Float64}
                  #     Complex{T<:Real}
-                 #     ImaginaryUnit   
-                 #     Real 
+                 #     ImaginaryUnit
+                 #     Real
 subtypes(Cat) #=> 0-element Array{Any,1}
 
 # Every type has a super type; use the `super` function to get it.
@@ -565,7 +565,7 @@ end
 # When possible, you should use outer constructors rather than inner ones.
 
 ####################################################
-## 6. Multiple-Dispatch 
+## 6. Multiple-Dispatch
 ####################################################
 
 # In Julia, all named functions are generic functions
@@ -641,11 +641,11 @@ end
 
 # Also let the cat go first
 fight(c::Cat,l::Lion) = println("The cat beats the Lion")
-#=> Warning: New definition 
+#=> Warning: New definition
 #    fight(Cat,Lion) at none:1
-# is ambiguous with 
+# is ambiguous with
 #    fight(Lion,Cat) at none:2.
-# Make sure 
+# Make sure
 #    fight(Lion,Lion)
 # is defined first.
 #fight (generic function with 4 methods)
