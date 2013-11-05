@@ -107,10 +107,10 @@ false;
 
 // There's also null and undefined
 null; // used to indicate a deliberate non-value
-undefined; // used to indicate a value is not currently present (although undefined
-           // is actually a value itself)
+undefined; // used to indicate a value is not currently present (although
+           // undefined is actually a value itself)
 
-// false, null, undefined, NaN, 0 and "" are falsy, and everything else is truthy.
+// false, null, undefined, NaN, 0 and "" are falsy; everything else is truthy.
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
 ///////////////////////////////////
@@ -306,8 +306,8 @@ myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "HELLO WORLD!"
 
 // When you call a function with the new keyword, a new object is created, and
-// made available to the function via the this keyword. Functions designed to be called
-// like that are called constructors.
+// made available to the function via the this keyword. Functions designed to be
+// called like that are called constructors.
 
 var MyConstructor = function(){
     this.myNumber = 5;
