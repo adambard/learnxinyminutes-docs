@@ -4,11 +4,16 @@ contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
 ---
 
-In early days of web there was no visual elements, just pure text. But with the further development of browser fully visual web pages also became common. CSS is the standard language that exists to keep the separation between the content (HTML) and the look-and-feel of web pages.
+In early days of web there was no visual elements, just pure text. But with the  
+further development of browser fully visual web pages also became common.   
+CSS is the standard language that exists to keep the separation between   
+the content (HTML) and the look-and-feel of web pages.
 
-In short, what CSS does is to provide a syntax that enables you to target different elements on an HTML page and assign different visual properties to them.
+In short, what CSS does is to provide a syntax that enables you to target   
+different elements on an HTML page and assign different visual properties to them.
 
-Like any other language, CSS has many versions. Here we focus on CSS2.0 which is not the most recent but the most widely supported and compatible version.
+Like any other language, CSS has many versions. Here we focus on CSS2.0   
+which is not the most recent but the most widely supported and compatible version.
 
 ## Selectors
 
@@ -57,7 +62,9 @@ div { }
 [attr~='lu'] { font-size:smaller; }
 
 
-/* and more importantly you can combine these together -- there shouldn't be any space between different parts because that makes it to have another meaning.*/
+/* and more importantly you can combine these together -- there shouldn't be  
+any space between different parts because that makes it to have another  
+meaning.*/
 div.some-class[attr$='ue'] { }
 
 /* you can also select an element based on how it's parent is.*/
@@ -66,19 +73,23 @@ div.some-class[attr$='ue'] { }
 div.some-parent > .class-name {}
 
 /* or any of it's parents in the tree */
-/* the following basically means any element that has class "class-name" and is child of a div with class name "some-parent" IN ANY DEPTH */
+/* the following basically means any element that has class "class-name"  
+and is child of a div with class name "some-parent" IN ANY DEPTH */
 div.some-parent .class-name {}
 
-/* warning: the same selector wihout space has another meaning. can you say what? */
+/* warning: the same selector wihout space has another meaning.  
+can you say what? */
 div.some-parent.class-name {}
 
-/* you also might choose to select an element based on it's direct previous sibling */
+/* you also might choose to select an element based on it's direct  
+previous sibling */
 .i-am-before + .this-element { }
 
 /*or any sibling before this */
 .i-am-any-before ~ .this-element {}
 
-/* There are some pseudo classes that allows you to select an element based on it's page behaviour (rather than page structure) */
+/* There are some pseudo classes that allows you to select an element  
+based on it's page behaviour (rather than page structure) */
 
 /* for example for when an element is hovered */
 :hover {}
@@ -184,10 +195,10 @@ selector {
     margin-left:10px;
     margin-right:10px;
     
-    border-top:10px;
-    border-bottom:10px;
-    border-left:10px;
-    border-right:10px;
+    border-top:10px solid red;
+    border-bottom:10px solid red;
+    border-left:10px solid red;
+    border-right:10px solid red;
 }
 
 /* again you can use shorthands 
@@ -213,6 +224,19 @@ selector {
     /* same for margin and border*/
 }
 
+/* border has three components that can be specified separately */
+selector {
+    border-left-style: solid; /* or dotted or dashed*/
+	border-left-color: red;
+	border-left-width: 1px;
+}
+
+/* this breakdown can also be done when the shorthand is used. */
+selector {
+    border-style: solid;
+	/* ... */
+}
+
 /*## Positioning
 
 elements are normally following the page flow based on where in the markup they are.
@@ -224,7 +248,8 @@ selelctor {
     display: inline; /* inline-block, block, table-cell, et.*/
 }
 
-/* elements can be absolutely positioned -- which means they won't follow the page flow and will be independently positioned on the screen. */
+/* elements can be absolutely positioned -- which means they won't follow  
+the page flow and will be independently positioned on the screen. */
 selector { position:absolute; left: 200px; top:10px; /* or right:10px; bottom:10px; */ }
 
 /* in this case the elements top left will be alighned with the page body.
@@ -235,12 +260,14 @@ parent-selector { position:relative; }
 /* if you want to have the same thing but moving with scroll: */
 selector { position:fixed; left: 200px; top:10px; /* or right:10px; bottom:10px; */ }
 
-/* when elements appear on the same absolute position. the latest one in the markup appears on top.
+/* when elements appear on the same absolute position.  
+the latest one in the markup appears on top.
 
 unless...*/
 selector { z-index: 2; /* or any number higher than others' */ }
 
-/* if you wish your element to follow the markup layout (not absolutely positioned) but floated to a side in it's parent:*/
+/* if you wish your element to follow the markup layout (not absolutely positioned)  
+but floated to a side in it's parent:*/
 selector { float: left; /* or right */ }
 
 /*## Lists
@@ -268,12 +295,14 @@ Save any CSS you want in a file with extension `.css`.
 <!-- you need to include the css file in your page's <head>: -->
 <link rel='stylesheet' type='text/css' href='filepath/filename.css' />
 
-<!-- you can also include some CSS inline in your markup. However it is highly recommended to avoid this. -->
+<!-- you can also include some CSS inline in your markup. However it is highly  
+recommended to avoid this. -->
 <style>
    selector { property:value; }
 </style>
 
-<!-- or directly set CSS properties on the element. This has to be avoided as much as you can. -->
+<!-- or directly set CSS properties on the element. 
+This has to be avoided as much as you can. -->
 <div style='property:value;'>
 </div>
 
@@ -281,7 +310,9 @@ Save any CSS you want in a file with extension `.css`.
 
 ## Precedence
 
-As you noticed an element may be targetted by more than one selector. and may have a property set on it in more than one. In these cases, one of the rules takes precedence over others.
+As you noticed an element may be targetted by more than one selector. 
+and may have a property set on it in more than one.  
+In these cases, one of the rules takes precedence over others.
 
 Given the following CSS:
 ```css
@@ -309,18 +340,25 @@ and the following markdown:
 ```
 
 The precedence of style is as followed:  
-Note that the precedence is for each **property** in the style and not for the entire block.
+Note that the precedence is for each **property** in the style and  
+not for the entire block.
 
-* `E` has the highest precedence because of the keyword `!important`. It is recommended to avoid this unless it is strictly necessary to use.
+* `E` has the highest precedence because of the keyword `!important`.  
+	It is recommended to avoid this unless it is strictly necessary to use.
 * `F` is the next because it is inline style.
-* `A` is the next because is more "specific" that anything else. more specific = more specifiers. here 3 specifiers: 1 tagname `p` +  class name `class1` + 1 attribute `attr='value'`
-* `C` is the next. although it has the same specificness as `B` but it appears after that.
+* `A` is the next because is more "specific" that anything else.  
+	more specific = more specifiers. here 3 specifiers: 1 tagname `p` +   
+	class name `class1` + 1 attribute `attr='value'`
+* `C` is the next. although it has the same specificness as `B`  
+	but it appears after that.
 * Then is `B`
 * and lastly is `D`.
 
 ## Compatibility
 
-Most of the features in CSS2 (and gradually in CSS3) are compatible across all browsers and devices. But it's always vital to have in mind the compatiblity of what you use in CSS with your target browsers.
+Most of the features in CSS2 (and gradually in CSS3) are compatible across  
+all browsers and devices. But it's always vital to have in mind the compatiblity  
+of what you use in CSS with your target browsers.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) is one of the best sources for this.
 
