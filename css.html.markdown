@@ -48,7 +48,7 @@ div { }
 [attr='value'] { font-size:smaller; }
 
 /* start with a value*/
-[attr^'val'] { font-size:smaller; }
+[attr^='val'] { font-size:smaller; }
 
 /* or ends with */
 [attr$='ue'] { font-size:smaller; }
@@ -164,10 +164,10 @@ that consists of the following components.
                                 margin
                              ---------------
 
-of these components all except margin add to the dimention of the element.
+of these components all except margin add to the dimension of the element.
 
-e.g. border-left: 10px; width: 100px; border-left: 2px; padding-left:5px;
-    => effective width of the element 117px (given all right components are zero)
+e.g. padding-left: 10px; width: 100px; border-left: 2px;
+    => effective width of the element 112px (given all -right components are zero)
 
 */
 selector {
