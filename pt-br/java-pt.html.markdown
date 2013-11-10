@@ -4,9 +4,9 @@ language: java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Madison Dickson", "http://github.com/mix3d"]
-    translators:
+translators:
     - ["Victor Kléber Santos L. Melo", "http://victormelo.com.br/blog"]
-    - ["Renê Douglas N. de Morais", "rene.douglas.bsi@gmail.com"]
+    - ["Renê Douglas N. de Morais", "mailto:rene.douglas.bsi@gmail.com"]
 lang: pt-br
 filename: LearnJava.java
 
