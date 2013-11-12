@@ -2,6 +2,7 @@
 language: python
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
+    - ["Amin Bandali", "http://aminbandali.com"]
 filename: learnpython.py
 ---
 
@@ -159,6 +160,8 @@ li[1:3] #=> [2, 4]
 li[2:] #=> [4, 3]
 # Omit the end
 li[:3] #=> [1, 2, 4]
+# Revert the list
+li[::-1] #=> [3, 4, 2, 1]
 
 # Remove arbitrary elements from a list with "del"
 del li[2] # li is now [1, 2, 3]
