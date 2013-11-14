@@ -5,10 +5,11 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["JongChan Choi", "http://0xABCDEF.com/"]
+    - ["Peter Lee", "http://peterjlee.com/"]
 lang: ko-kr
 ---
 
-Brainfuck(f는 대문자로 적지 않습니다)은
+Brainfuck(문장을 시작하는 단어가 아닌이상 첫글자는 대문자를 사용하지 않습니다)은
 여덟가지 명령어만으로 튜링-완전한 최소주의 프로그래밍 언어입니다.
 
 ```
