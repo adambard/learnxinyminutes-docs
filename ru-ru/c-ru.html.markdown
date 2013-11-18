@@ -410,7 +410,7 @@ struct rectangle {
 };
 
 // sizeof(struct rectangle) == sizeof(int) + sizeof(int) – не всегда верно
-// из-за особенностей компиляции ([необычное поведение при отступах][1]).
+// из-за особенностей компиляции (необычное поведение при отступах)[1].
 
 void function_1() {
     struct rectangle my_rec;
@@ -480,4 +480,4 @@ void str_reverse_through_pointer(char *str_in) {
 
 Также не забывайте, что [Google](http://google.com) и [Яндекс](http://yandex.ru) – ваши хорошие друзья.
 
-[1]: http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member
+[1] http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member
