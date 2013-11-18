@@ -15,10 +15,18 @@ different elements on an HTML page and assign different visual properties to the
 Like any other language, CSS has many versions. Here we focus on CSS2.0   
 which is not the most recent but the most widely supported and compatible version.
 
-## Selectors
+**NOTE:** Because the outcome of CSS is some visual effects, in order to 
+learn it, you need try all different things in a 
+CSS playground like [dabblet](http://dabblet.com/).
+The main focus of this article is on the syntax and some general tips.
+
 
 ```css
-/* let's stick to the tradition and show how comments are made first! */
+/* comments appear inside slash-asterisk, just like this line! */
+
+/* ####################
+   ## SELECTORS
+   ####################*/
 
 /* Generally, the primary statement in CSS is very simple */
 selector { property: value; /* more properties...*/ }
@@ -103,187 +111,39 @@ based on it's page behaviour (rather than page structure) */
 /* or an input element which is focused */
 :focus {}
 
-```
 
-## Properties
+/* ####################
+   ## PROPERTIES
+   ####################*/
 
-```css
-/*## Units
-can be like :
-
-- 50%: in percent
-- 2em: two times the current font-size
-- 20px: in pixels
-- 20pt: in point
-- 2cm: centimeter
-- 20mm: millimeter
-- 2in: inches
-
-*/
-
-/* ## Colors 
-
-#F6E  -- can be in short hex
-#F262E2 -- or in long hex format
-red or tomato -- can be a named color
-rgb(255, 255, 255) -- in rgb
-rgb(10%, 20%, 50%) -- in rgb percent
-
-*/
-
-/* ## Font */
 selector {
-    font-style: italic; /* or normal */
-    font-weight: bold; /* or normal, lighter or a number between 100 and 900*/
-    font-size: 2em; /* see units */
-    font-family: Verdana, Arial; /* if the first one is not supported the second one is taken.*/
-}
-
-/* you can set all in one declaration. */
-selector { font: bold italic 12px Consolas; }
-
-/*## Background */
-selector {
-    background-color: red; /* see colors */
-    background-image: url(/path/cat.jpg);
-    background-repeat: no-repaet; /* or repeat or repeat-x or repeat-y */
-    background-attachment: scroll; /* or fixed */
-    background-position: 10px 20px; /* or center, top, bottom, left, right */
-}
-
-/* again you can set all in one declaratio */
-selector { background: red url(image.jpg) no-repeat center top fixed; }
-
-/*## Box model 
-
-All elements (other than inline elements like span) follow a box model
-that consists of the following components.
-
-                             ---------------
-                                margin
-                             ---------------
-                                border
-                             ---------------
-                                padding
-                             ---------------
-| margin | border | padding | [width/height] | padding | border | margin
-                             ---------------
-                                padding
-                             ---------------
-                                border
-                             ---------------
-                                margin
-                             ---------------
-
-of these components all except margin add to the dimension of the element.
-
-e.g. padding-left: 10px; width: 100px; border-left: 2px;
-    => effective width of the element 112px (given all -right components are zero)
-
-*/
-selector {
-    width: 100px;
-    height: 100px;
-
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-left:10px;
-    padding-right:10px;
-
-    margin-top:10px;
-    margin-bottom:10px;
-    margin-left:10px;
-    margin-right:10px;
     
-    border-top:10px solid red;
-    border-bottom:10px solid red;
-    border-left:10px solid red;
-    border-right:10px solid red;
+    /* Units */
+    width: 50%; /* in percent */
+    font-size: 2em; /* times current font-size */
+    width: 200px; /* in pixels */
+    font-size: 20pt; /* in points */
+    width: 5cm; /* in centimeters */
+    width: 50mm; /* in millimeters */
+    width: 5in; /* in inches */
+    
+    /* Colors */
+    background-color: #F6E  /* in short hex */
+    background-color: #F262E2 /* in long hex format */
+    background-color: tomato /* can be a named color */
+    background-color: rgb(255, 255, 255) /* in rgb */
+    background-color: rgb(10%, 20%, 50%) /* in rgb percent */
+    background-color: rgba(255, 0, 0, 0.3); /* in semi-transparent rgb */
+    
+    /* Images */
+    background-image: url(/path-to-image/image.jpg);
+    
+    /* Fonts */
+    font-family: Arial;
+    font-family: "Courier New"; /* if name has space it appears in double-quote */
+    font-family: "Courier New", Trebuchet, Arial; /* if first one was not found
+    						 browser uses the second font, and so forth */
 }
-
-/* again you can use shorthands 
-
-for padding, margin and border the order is:
-[top] [right] [bottom] [left]*/
-selector {
-    padding: 10px 8px 6px 5px;
-    /* same for margin and border*/
-}
-
-/* a shorter one!
-[top and bottom] [left and right] */
-selector {
-    padding: 6px 5px;
-    /* same for margin and border*/
-}
-
-/* and even shorter!
-[all sides] */
-selector {
-    padding: 6px;
-    /* same for margin and border*/
-}
-
-/* border has three components that can be specified separately */
-selector {
-    border-left-style: solid; /* or dotted or dashed*/
-	border-left-color: red;
-	border-left-width: 1px;
-}
-
-/* this breakdown can also be done when the shorthand is used. */
-selector {
-    border-style: solid;
-	/* ... */
-}
-
-/*## Positioning
-
-elements are normally following the page flow based on where in the markup they are.
-
-some tags like `div` or `p` are full-width and the rest are inline by default.
-
-but all elements can have their layout changed*/
-selelctor {
-    display: inline; /* inline-block, block, table-cell, et.*/
-}
-
-/* elements can be absolutely positioned -- which means they won't follow  
-the page flow and will be independently positioned on the screen. */
-selector { position:absolute; left: 200px; top:10px; /* or right:10px; bottom:10px; */ }
-
-/* in this case the elements top left will be alighned with the page body.
-
-but if you want it to be relative to an earlier parent.*/
-parent-selector { position:relative; }
-
-/* if you want to have the same thing but moving with scroll: */
-selector { position:fixed; left: 200px; top:10px; /* or right:10px; bottom:10px; */ }
-
-/* when elements appear on the same absolute position.  
-the latest one in the markup appears on top.
-
-unless...*/
-selector { z-index: 2; /* or any number higher than others' */ }
-
-/* if you wish your element to follow the markup layout (not absolutely positioned)  
-but floated to a side in it's parent:*/
-selector { float: left; /* or right */ }
-
-/*## Lists
-
-you can also control how the lists appear on the screen:*/
-
-selector {
-    list-style-type: circle; /* disc | square | decimal | etc... */
-    list-style-position: inside; /* or outside */
-    list-style-image: url(path/image.jpg);
-}
-
-/*as always this can be shorthanded */
-
-selector { list-tyle: disc inside url(...); }
-
 
 ```
 
@@ -291,7 +151,7 @@ selector { list-tyle: disc inside url(...); }
 
 Save any CSS you want in a file with extension `.css`.
 
-```markup
+```xml
 <!-- you need to include the css file in your page's <head>: -->
 <link rel='stylesheet' type='text/css' href='filepath/filename.css' />
 
@@ -332,25 +192,23 @@ p {}
 p { property: value !important; }
 
 ```
-
-and the following markdown:
-```markdown
+and the following markup:
+```xml
 <p style='/*F*/ property:value;' class='class1 class2' attr='value'>
 </p>
 ```
 
 The precedence of style is as followed:  
-Note that the precedence is for each **property** in the style and  
-not for the entire block.
+Remember, the precedence is for each **property**, not for the entire block.
 
 * `E` has the highest precedence because of the keyword `!important`.  
 	It is recommended to avoid this unless it is strictly necessary to use.
-* `F` is the next because it is inline style.
-* `A` is the next because is more "specific" that anything else.  
+* `F` is next, because it is inline style.
+* `A` is next, because it is more "specific" than anything else.  
 	more specific = more specifiers. here 3 specifiers: 1 tagname `p` +   
 	class name `class1` + 1 attribute `attr='value'`
-* `C` is the next. although it has the same specificness as `B`  
-	but it appears after that.
+* `C` is next. although it has the same specificness as `B`  
+	but it appears last.
 * Then is `B`
 * and lastly is `D`.
 
