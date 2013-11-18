@@ -16,7 +16,7 @@ lang: ru-ru
 Держите это руководство в памяти и вы сможете использовать Си максимально эффективно.
 
 ```c
-// Однострочный комментарий начинается с // - доступно только после С99.
+// Однострочный комментарий начинается с // - доступен только после С99.
 
 /*
 Многострочный комментарий выглядит так. Работает начиная с С89.
@@ -108,11 +108,9 @@ int main() {
     size_t size = strtoul(buf, NULL, 10); // strtoul парсит строку в беззнаковое целое
     int var_length_array[size]; // объявление динамического массива
     printf("sizeof array = %zu\n", sizeof var_length_array);
-
     // Вывод программы (в зависимости от архитектуры) будет таким:
     // > Enter the array size: 10
     // > sizeof array = 40
-
 
     // Строка – это просто массив символов, оканчивающийся нулевым (NUL (0x00)) байтом
     // представляемым в строке специальным символом '\0'.
@@ -187,7 +185,6 @@ int main() {
     // - сдвиг в знаковый бит у целого числа (int a = 1 << 32)
     // - сдвиг влево отрицательных чисел (int a = -1 << 2)
 
-
     ///////////////////////////////////////
     // Структуры ветвления
     ///////////////////////////////////////
@@ -243,7 +240,6 @@ int main() {
         break;
     }
     
-
     ///////////////////////////////////////
     // Форматирование вывода
     ///////////////////////////////////////
@@ -281,7 +277,6 @@ int main() {
     int x = 0;
     printf("%p\n", (void *)&x); // => Напечатает адрес в памяти, где лежит переменная x
     // (%p выводит указатель на void *)
-
 
     // Для объявления указателя нужно поставить * перед именем.
     int *px, not_a_pointer; // px это указатель на int
@@ -372,8 +367,7 @@ int main() {
 // Синтаксис объявления функции:
 // <возвращаемый тип> <имя функции>(аргументы)
 
-int add_two_ints(int x1, int x2)
-{
+int add_two_ints(int x1, int x2) {
     return x1 + x2; // Используйте return для возврата значения
 }
 
@@ -385,8 +379,7 @@ int add_two_ints(int x1, int x2)
 */
 
 // void означает, что функция ничего не возвращает
-void str_reverse(char *str_in)
-{
+void str_reverse(char *str_in) {
     char tmp;
     int ii = 0;
     size_t len = strlen(str_in); // `strlen()` является частью стандартной библиотеки
@@ -417,10 +410,9 @@ struct rectangle {
 };
 
 // sizeof(struct rectangle) == sizeof(int) + sizeof(int) – не всегда верно
-// из-за особенностей компиляции (необычное поведение при отступах)[1].
+// из-за особенностей компиляции ([необычное поведение при отступах][1]).
 
-void function_1()
-{
+void function_1() {
     struct rectangle my_rec;
 
     // Доступ к структурам через точку
@@ -440,15 +432,13 @@ void function_1()
 // Вы можете применить typedef к структуре, для удобства.
 typedef struct rectangle rect;
 
-int area(rect r)
-{
+int area(rect r) {
     return r.width * r.height;
 }
 
 // Если вы имеете большую структуру, можно доступаться к ней "по указателю",
 // чтобы избежать копирования всей структуры.
-int area(const rect *r)
-{
+int area(const rect *r) {
     return r->width * r->height;
 }
 
@@ -490,4 +480,4 @@ void str_reverse_through_pointer(char *str_in) {
 
 Также не забывайте, что [Google](http://google.com) и [Яндекс](http://yandex.ru) – ваши хорошие друзья.
 
-[1] http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member
+[1]: http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member
