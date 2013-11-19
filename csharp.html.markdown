@@ -233,7 +233,7 @@ on a new line! ""Wow!"", the masses cried";
             int fooWhile = 0;
             while (fooWhile < 100)
             {
-                //Iterated 99 times, fooWhile 0->99
+                //Iterated 100 times, fooWhile 0->99
                 fooWhile++;
             }
 
