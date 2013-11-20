@@ -139,8 +139,8 @@ array.[] 12 #=> nil
 # From the end
 array[-1] #=> 5
 
-# With a start and end index
-array[2, 4] #=> [3, 4, 5]
+# With a start index and length
+array[2, 3] #=> [3, 4, 5]
 
 # Or with a range
 array[1..3] #=> [2, 3, 4]
