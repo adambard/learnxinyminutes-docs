@@ -11,8 +11,8 @@ filename: LearnBash-cn.sh
 lang: zh-cn
 ---
 
-Bash 是一个为GNU计划编写的Unix shell，是 Linux 和 Mac OS X 下的默认shell。
-以下绝大多数例子可以作为脚本的一部分也可直接在 shell 下执行。
+Bash 是一个为 GNU 计划编写的 Unix shell，是 Linux 和 Mac OS X 下的默认 shell。
+以下大多数例子可以作为脚本的一部分运行也可直接在 shell 下交互执行。
 
 [更多信息](http://www.gnu.org/software/bash/manual/bashref.html)
 
@@ -20,7 +20,7 @@ Bash 是一个为GNU计划编写的Unix shell，是 Linux 和 Mac OS X 下的默
 #!/bin/sh
 # 脚本的第一行叫 shebang，用来告知系统如何执行该脚本:
 # 参见： http://en.wikipedia.org/wiki/Shebang_(Unix)
-# 相信你已经明白了，注释以 # 开头，shebang 也是注释。
+# 如你所见，注释以 # 开头，shebang 也是注释。
 
 # 显示 “Hello world!”
 echo Hello, world!
@@ -57,13 +57,13 @@ echo "Number of arguments: $#"
 echo "Scripts arguments: $@"
 echo "Scripts arguments separeted in different variables: $1 $2..."
 
-# 获取输入：
+# 读取输入：
 echo "What's your name?"
-read NAME # Note that we didn't need to declare new variable
+read NAME # 这里不需要声明新变量
 echo Hello, $NAME!
 
-# 一般的 if 结构看起来像这样：
-# 'man test' 查看更多的信息
+# 通常的 if 结构看起来像这样：
+# 'man test' 可查看更多的信息
 if [ $NAME -ne $USER ]
 then
     echo "Your name is you username"
@@ -82,10 +82,10 @@ echo $(( 10 + 5 ))
 ls
 
 # 指令可以带有选项：
-ls -l # Lists every file and directory on a separate line
+ls -l # 列出文件和目录的详细信息
 
-# 前一个指令的输出可以当作后一个指令的输入。grep 可以查找字符串。
-# 下面的指令可以，列出当前目录下所有的 txt 文件：
+# 前一个指令的输出可以当作后一个指令的输入。grep 用来匹配字符串。
+# 用下面的指令列出当前目录下所有的 txt 文件：
 ls -l | grep "\.txt"
 
 # 重定向可以到输出，输入和错误输出。
@@ -94,13 +94,13 @@ python2 hello.py > "output.out"
 python2 hello.py 2> "error.err"
 # > 会覆盖已存在的文件， >> 会以累加的方式输出文件中。
 
-# 指令被 $( ) 嵌套在另一个指令内部：
+# 一个指令可用 $( ) 嵌套在另一个指令内部：
 # 以下的指令会打印当前目录下的目录和文件总数
 echo "There are $(ls | wc -l) items here."
 
 # Bash 的 case 语句与 Java 和 C++ 中的 switch 语句类似:
 case "$VARIABLE" in
-    #List patterns for the conditions you want to meet
+    # 列出需要匹配的字符串
     0) echo "There is a zero.";;
     1) echo "There is a one.";;
     *) echo "It is not null.";;
@@ -144,5 +144,5 @@ sort file.txt
 uniq -d file.txt
 # 报告或忽略重复的行，用选项 -d 打印重复的行
 cut -d ',' -f 1 file.txt
-# 仅打印字符 ',' 之前内容（以行为单位）
+# 打印每行中 ',' 之前内容
 ```
