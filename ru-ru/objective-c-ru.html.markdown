@@ -13,7 +13,6 @@ Objective-C — компилируемый объектно-ориентиров
 В частности, объектная модель построена в стиле Smalltalk — то есть объектам посылаются сообщения.
 
 ```cpp
-
 // Однострочный комментарий
 
 /*
@@ -303,8 +302,6 @@ int main (int argc, const char * argv[])
 @protocol MyProtocol
     - (void)myProtocolMethod;
 @end
-
-
 ```
 ## На почитать
 
