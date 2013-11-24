@@ -469,12 +469,12 @@ void testFunc() {
     extern int i; //i here is now using external variable i
 }
 
-//if external variable should only be visible to functions in the source file
-//  they are declared in, use static:
-static int i = 0; //other source files using testFunc() cannot access variable i
+//make external variables private to source file with static:
+static int i = 0; //other files using testFunc() cannot access variable i
 void testFunc() {
     extern int i;
 }
+//**You may also declare functions as static to make them private**
 
 /*
 char c[] = "This is a test.";
