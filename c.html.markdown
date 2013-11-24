@@ -469,6 +469,13 @@ void testFunc() {
     extern int i; //i here is now using external variable i
 }
 
+//if external variable should only be visible to functions in the source file
+//  they are declared in, use static:
+static int i = 0; //other source files using testFunc() cannot access variable i
+void testFunc() {
+    extern int i;
+}
+
 /*
 char c[] = "This is a test.";
 str_reverse(c);
