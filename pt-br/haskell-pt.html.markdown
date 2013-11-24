@@ -79,6 +79,10 @@ not False -- Nega uma falácia
 -- Concatenação de Strings
 "StringA" ++ "StringB" -- "StringAStringB"
 
+-- Concatenação de Caracteres
+"haskell" == ['h','a','s','k','e','l','l'] -- True
+"haskell" == 'h':'a':'s':'k':'e':'l':'l':[] -- True
+
 -- Você pode listar uma string pelos seus caractéres
 "AbBbbcAbbcbBbcbcb" !! 0 -- 'A'
 "AbBbbcAbbcbBbcbcb" !! 1 -- 'b'
@@ -96,7 +100,7 @@ not False -- Nega uma falácia
 [1..5]
 
 {- Haskell usa avaliação preguiçosa o que
-   Permite você ter listas "infinitas"
+   permite você ter listas "infinitas".
 -}
 
 -- Uma lista "infinita" cuja razão é 1
@@ -121,81 +125,174 @@ tail ['a'..'e'] -- Qual a cauda da lista ?
 init ['a'..'e'] -- Qual a lista menos o último elemento ?
 last ['a'..'e'] -- Qual o último elemento ?
 
--- list comprehensions
-[x*2 | x <- [1..5]] -- [2, 4, 6, 8, 10]
+-- Compreensão de Lista (List Comprehension)
 
--- with a conditional
+{- Uma lista pode ser especificada
+   pela definição de eus elementos.
+   A compreensão de listas é feita
+   com um construtor de listas que
+   utiliza conceitos  e notações
+   da teoria dos conjuntos.
+
+   Exemplo:
+
+   A = { x**2 | X pertence aos Naturais && x é par}
+-}
+
+let par x = mod x 2 == 0
+let constroi_lista = [x * x | x <- [9 ..39], par x]
+-- [100,144,196,256,324,400,484,576,676,784,900,1024,1156,1296,1444]
+
+par 4 -- True
+par 3 -- False
+
+
+-- Listas com regras
+{- Para todo x se x é elemento da lista
+   faça 2 vezes x mas componha a lista
+   com apenas aqueles elementos cujo
+   2*x é maior que 4
+-}
 [x*2 | x <- [1..5], x*2 > 4] -- [6, 8, 10]
 
--- Every element in a tuple can be a different type, but a tuple has a
--- fixed length.
--- A tuple:
-("haskell", 1)
+-- Tuplas
+("Q", "Gamma", "b", "Sigma", "delta", "q0", "F") -- 7-Tuple Turing Machine
 
--- accessing elements of a tuple
-fst ("haskell", 1) -- "haskell"
-snd ("haskell", 1) -- 1
+-- Retirando da tupla
+
+{- Com as funções fst (primeiro) e snd (segundo)
+   você só pode enviar por parâmetro uma tupla
+   bi-dimensional ou seja, 2 dimensões == (x,y)
+-}
+
+fst ((2,3), [2,3]) -- (2,3)
+snd ((2,3), [4,3]) -- [4,3]
+
 
 ----------------------------------------------------
--- 3. Functions
+-- 3. Funções em Haskell
 ----------------------------------------------------
--- A simple function that takes two variables
-add a b = a + b
 
--- Note that if you are using ghci (the Haskell interpreter)
--- You'll need to use `let`, i.e.
--- let add a b = a + b
+-- Uma função simples que toma duas variáveis
+{- Haskell trabalha em cima de recursão
+   Portanto certifique-se que você
+   Entende como recurssão funciona.
+-}
 
--- Using the function
-add 1 2 -- 3
+soma a b = a + b -- Função que vai em um programa.hs
 
--- You can also put the function name between the two arguments
--- with backticks:
-1 `add` 2 -- 3
+{- Dentro do GHCi (Interpretador Haskell)
+   Você terá que fazer da seguinte maneira-- Podemos criar nos
 
--- You can also define functions that have no letters! This lets
--- you define your own operators! Here's an operator that does
--- integer division
-(//) a b = a `div` b
-35 // 4 -- 8
+   Prelude> let soma a b = a + b
+   Prelude> soma 7 7 -- 14
+-}
 
--- Guards: an easy way to do branching in functions
-fib x
-  | x < 2 = x
-  | otherwise = fib (x - 1) + fib (x - 2)
+let constroi_lista = [x * x | x <- [9 ..39], par x]
 
--- Pattern matching is similar. Here we have given three different
--- definitions for fib. Haskell will automatically call the first
--- function that matches the pattern of the value. 
-fib 1 = 1
-fib 2 = 2
-fib x = fib (x - 1) + fib (x - 2)
+{- Você pode usar crases para chamar
+   Funcões de maneira diferente
+-}
 
--- Pattern matching on tuples:
-foo (x, y) = (x + 1, y + 2)
+7 `soma` 7 -- 14
 
--- Pattern matching on lists. Here `x` is the first element
--- in the list, and `xs` is the rest of the list. We can write
--- our own map function:
-myMap func [] = []
-myMap func (x:xs) = func x:(myMap func xs)
+{- Haskell permite que você crie os
+   seus próprios operadores baseados
+   nos já existendes
+-}
 
--- Anonymous functions are created with a backslash followed by
--- all the arguments.
-myMap (\x -> x + 2) [1..5] -- [3, 4, 5, 6, 7]
+let (~/\) a b = a `mod` b
+15^13 ~/\ 432 -- 759375
 
--- using fold (called `inject` in some languages) with an anonymous
--- function. foldl1 means fold left, and use the first value in the
--- list as the initial value for the accumulator.
+-- Casamento de Padrões em Tuplas
+coordenadas (x, y) = (x + 13, y - 31)
+
+{- Haskell trabalha com casamento de padrões onde dada
+   um conjunto de funções definidas de diferentes maneiras
+   Haskell vai procurar por aquela que trabalha o seu tipo
+   de entrada.
+-}
+
+-- Guardas "|" É um jeito simples de representar funções recursivas
+
+let fatorial n | n == 0 = 1 | otherwise = fatorial (n - 1) * n -- Teste: fatorial 5
+
+-- Ainda podemos fazer:
+
+let fatorial 0 = 1
+let fatorial n = fatorial (n - 1) * n
+
+{- Podemos criar nossos próprios Mapeadores
+   Onde `primeiro` é o primeiro elemento de
+   uma lista é `resto`  é o resto da lista.
+-}
+
+mapa mapeador [] = []
+mapa mapeador (primeiro : resto) = mapeador primeiro : (mapa mapeador resto)
+
+{- Funções Anônimas são criadas com um `\` (barra invertida)
+   seguido por seus argumentos!
+-}
+mapa (\primeiro -> primeiro + 2) [1..5] -- [3, 4, 5, 6, 7]
+
+{- Usar "fold" (chamado `inject` em algumas outras línguagens) com
+   uma função anônima.
+
+   <foldl1> significa <fold left> E mapeia o primeiro valor
+   da lista para ser o acumulador.
+-}
 foldl1 (\acc x -> acc + x) [1..5] -- 15
+foldl1 (\x y -> (x+y)/5) [7..55] -- 13.6875
+
+----------------------------------------------------
+-- 4. Mais Funções
+----------------------------------------------------
+
+{- Currying: Se você não passar todos os argumentos
+   para uma função, ela irá ser "currificada". O que
+   significa que irá retornar a função que pega o resto
+   dos elementos.
+-}
+
+soma a b = a + b
+foo = soma 10 -- foo ganha a propriedade "currying"
+foo 5 -- 15
+
+-- Outra maneira
+foo = (+10)
+foo 5 -- 15
+
+{- Composição de Funções
+   O (.) encadeia funções! Por exemplo,
+   aqui foo é uma função que recebe um valor.
+   Ela soma 10 a ela, multiplica o resultado por 5
+   e então retorna o resultado final.
+-}
+foo = (*5) . (+10)
+
+-- (5 + 10) * 5 = 75
+foo 5 -- 75
+
+{- Concertando precedência:
+   Haskell tem outra função chamada `$`. Isso altera a precedência
+   de computação. Ou seja Haskell computa o que está sendo sinalizado com $
+   da esquerda para a direita . You can use `.` and `$` to get rid of a lot
+   of parentheses:
+-}
+
+-- Antes
+(even (fatorial 3)) -- true
+
+-- Depois
+even . fatorial $ 3 -- true
 
 ----------------------------------------------------
 -- 4. More functions
 ----------------------------------------------------
 
--- currying: if you don't pass in all the arguments to a function,
--- it gets "curried". That means it returns a function that takes the 
--- rest of the arguments.
+{- Mais Sobre Funções Currificadas: se você não passar
+   todos os argumentos para uma função.
+-}
 
 add a b = a + b
 foo = add 10 -- foo is now a function that takes a number and adds 10 to it
@@ -329,13 +426,13 @@ Nothing         -- of type `Maybe a` for any `a`
 -- called. It must return a value of type `IO ()`. For example:
 
 main :: IO ()
-main = putStrLn $ "Hello, sky! " ++ (say Blue) 
+main = putStrLn $ "Hello, sky! " ++ (say Blue)
 -- putStrLn has type String -> IO ()
 
--- It is easiest to do IO if you can implement your program as 
--- a function from String to String. The function 
+-- It is easiest to do IO if you can implement your program as
+-- a function from String to String. The function
 --    interact :: (String -> String) -> IO ()
--- inputs some text, runs a function on it, and prints out the 
+-- inputs some text, runs a function on it, and prints out the
 -- output.
 
 countLines :: String -> String
@@ -349,43 +446,43 @@ main' = interact countLines
 -- the `do` notation to chain actions together. For example:
 
 sayHello :: IO ()
-sayHello = do 
+sayHello = do
    putStrLn "What is your name?"
    name <- getLine -- this gets a line and gives it the name "name"
    putStrLn $ "Hello, " ++ name
-   
+
 -- Exercise: write your own version of `interact` that only reads
 --           one line of input.
-   
+
 -- The code in `sayHello` will never be executed, however. The only
--- action that ever gets executed is the value of `main`. 
--- To run `sayHello` comment out the above definition of `main` 
+-- action that ever gets executed is the value of `main`.
+-- To run `sayHello` comment out the above definition of `main`
 -- and replace it with:
 --   main = sayHello
 
--- Let's understand better how the function `getLine` we just 
+-- Let's understand better how the function `getLine` we just
 -- used works. Its type is:
 --    getLine :: IO String
 -- You can think of a value of type `IO a` as representing a
--- computer program that will generate a value of type `a` 
+-- computer program that will generate a value of type `a`
 -- when executed (in addition to anything else it does). We can
--- store and reuse this value using `<-`. We can also 
+-- store and reuse this value using `<-`. We can also
 -- make our own action of type `IO String`:
 
 action :: IO String
 action = do
    putStrLn "This is a line. Duh"
-   input1 <- getLine 
+   input1 <- getLine
    input2 <- getLine
    -- The type of the `do` statement is that of its last line.
-   -- `return` is not a keyword, but merely a function 
+   -- `return` is not a keyword, but merely a function
    return (input1 ++ "\n" ++ input2) -- return :: String -> IO String
 
 -- We can use this just like we used `getLine`:
 
 main'' = do
     putStrLn "I will echo two lines!"
-    result <- action 
+    result <- action
     putStrLn result
     putStrLn "This was all, folks!"
 
@@ -400,40 +497,60 @@ main'' = do
 
 
 ----------------------------------------------------
--- 9. The Haskell REPL
+-- 9. O Haskell REPL (Read Eval Print Loop)
 ----------------------------------------------------
 
--- Start the repl by typing `ghci`.
--- Now you can type in Haskell code. Any new values
--- need to be created with `let`:
+{- Digite dhci no seu terminal
+   para começar o interpretador
+   lembre-se que para definir
+   funções e variáveis em haskell
+   pelo interpretador você precisar
+   iniciar com `let`
+-}
 
-let foo = 5
+Prelude> let foo = 1.4
 
--- You can see the type of any value with `:t`:
+-- Você pode ver o tipo de algo usando `:t`:
 
->:t foo
-foo :: Integer
-
--- You can also run any action of type `IO ()`
-
-> sayHello
-What is your name?
-Friend!
-Hello, Friend!
-
+Prelude> :t foo
+foo :: Double
 ```
 
-There's a lot more to Haskell, including typeclasses and monads. These are the big ideas that make Haskell such fun to code in. I'll leave you with one final Haskell example: an implementation of quicksort in Haskell:
+----------------------------------------------------
+-- 9. Mônadas
+----------------------------------------------------
 
-```haskell
-qsort [] = []
-qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
-    where lesser  = filter (< p) xs
-          greater = filter (>= p) xs
-```
 
-Haskell is easy to install. Get it [here](http://www.haskell.org/platform/).
 
-You can find a much gentler introduction from the excellent
-[Learn you a Haskell](http://learnyouahaskell.com/) or
-[Real World Haskell](http://book.realworldhaskell.org/).
+
+----------------------------------------------------
+-- 10. Extra
+----------------------------------------------------
+
+Compilador e Interpretador Haskell
+
+* [GHC](http://www.haskell.org/ghc/docs/latest/html/users_guide/index.html)
+* [GHC/GHCi](http://www.haskell.org/haskellwiki/GHC)
+
+Instale Haskell [Aqui!](http://www.haskell.org/platform/).
+
+Aplicações Haskell Muito Interessantes:
+
+* [Música e Som](http://www.haskell.org/haskellwiki/Applications_and_libraries/Music_and_sound)
+* [Haskell SuperCollider Servidor](https://github.com/kaoskorobase/hsc3-server)
+* [Haskell SuperCollider Cliente](http://hackage.haskell.org/package/hsc3)
+* [Física e Matemática](http://www.haskell.org/haskellwiki/Applications_and_libraries/Mathematics)
+* [Jogos](http://www.haskell.org/haskellwiki/Applications_and_libraries/Games)
+* [Bio Informática](http://www.haskell.org/haskellwiki/Applications_and_libraries/Bioinformatics)
+* [Muitos Outras Aplicações](http://www.haskell.org/haskellwiki/Libraries_and_tools)
+
+Tutoriais:
+
+* [Mapeadores](http://www.haskell.org/ghc/docs/6.12.2/html/libraries/containers-0.3.0.0/Data-Map.html)
+* [Aprenda Haskell!](http://haskell.tailorfontela.com.br/chapters)
+
+Obtenha Também Haskell Wiki Book [Aqui!](https://en.wikibooks.org/wiki/Haskell)
+
+Leia Sobre As Mônadas [Aqui!](http://www.haskell.org/haskellwiki/Monads)
+
+Livro: Haskell Uma Abordagem Prática - Claudio Cesar de Sá e Márcio Ferreira da Silva
