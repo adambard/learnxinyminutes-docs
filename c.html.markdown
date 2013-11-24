@@ -21,7 +21,7 @@ Multi-line comments look like this. They work in C89 as well.
 */
 
 // Constants: #define <keyword> (no semicolon at end) 
-#define DAYS_IN_YEAR = 365
+#define DAYS_IN_YEAR 365
 
 //enumeration constants are also ways to declare constants. 
 enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
