@@ -420,12 +420,6 @@ int add_two_ints(int x1, int x2)
     return x1 + x2; // Use return to return a value
 }
 
-//if function takes no parameters, do: 
-int getInt(void); for function prototype
-//  and for the function declaration: 
-int getInt(void) {}
-//  (this is to keep compatibility with older versions of C). 
-
 /*
 Functions are call by value. So when a function is called, the arguments passed
 to the function are copies of original arguments (except arrays). Anything you  
