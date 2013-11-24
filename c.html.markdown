@@ -38,8 +38,8 @@ enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 
 // Declare function signatures in advance in a .h file, or at the top of
 // your .c file.
-void function_1();
-void function_2();
+void function_1(char s[]);
+int function_2(void);
 
 // Must declare a 'function prototype' before main() when functions occur after
 // your main() function.
