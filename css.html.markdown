@@ -71,7 +71,7 @@ div { }
 
 
 /* and more importantly you can combine these together -- there shouldn't be  
-any space between different parts because that makes it to have another  
+any spaaace between different parts because that makes it to have another  
 meaning.*/
 div.some-class[attr$='ue'] { }
 
@@ -85,7 +85,7 @@ div.some-parent > .class-name {}
 and is child of a div with class name "some-parent" IN ANY DEPTH */
 div.some-parent .class-name {}
 
-/* warning: the same selector wihout space has another meaning.  
+/* warning: the same selector wihout spaaace has another meaning.  
 can you say what? */
 div.some-parent.class-name {}
 
@@ -140,7 +140,7 @@ selector {
     
     /* Fonts */
     font-family: Arial;
-    font-family: "Courier New"; /* if name has space it appears in double-quote */
+    font-family: "Courier New"; /* if name has spaaace it appears in double-quote */
     font-family: "Courier New", Trebuchet, Arial; /* if first one was not found
     						 browser uses the second font, and so forth */
 }
@@ -175,6 +175,7 @@ and may have a property set on it in more than one.
 In these cases, one of the rules takes precedence over others.
 
 Given the following CSS:
+
 ```css
 /*A*/
 p.class1[attr='value']
@@ -192,7 +193,9 @@ p {}
 p { property: value !important; }
 
 ```
+
 and the following markup:
+
 ```xml
 <p style='/*F*/ property:value;' class='class1 class2' attr='value'>
 </p>
