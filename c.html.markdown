@@ -20,7 +20,7 @@ memory management and C will take you as far as you need to go.
 Multi-line comments look like this. They work in C89 as well.
 */
 
-// Constants: #define <keyword> (no semicolon at end) 
+// Constants: #define <keyword>
 #define DAYS_IN_YEAR 365
 
 //enumeration constants are also ways to declare constants. 
@@ -38,7 +38,7 @@ enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 
 // Declare function signatures in advance in a .h file, or at the top of
 // your .c file.
-void function_1(char s[]);
+void function_1(char c);
 int function_2(void);
 
 // Must declare a 'function prototype' before main() when functions occur after
@@ -84,8 +84,8 @@ int main() {
     unsigned long long ux_long_long;
 
     // chars inside single quotes are integers in machine's character set. 
-    '0' //==> 48 on the ASCII character set. 
-    'A' //==> 65 on the ASCII character set. 
+    '0' // => 48 in the ASCII character set. 
+    'A' // => 65 in the ASCII character set. 
 
     // sizeof(T) gives you the size of a variable with type T in bytes
     // sizeof(obj) yields the size of the expression (variable, literal, etc.).
@@ -154,16 +154,16 @@ int main() {
         {6, 7, 8, 9, 0}
     }
     //access elements:
-    int array_int = multi_array[0][2]; //=> 3
+    int array_int = multi_array[0][2]; // => 3
 
     ///////////////////////////////////////
     // Operators
     ///////////////////////////////////////
 
-    int i1 = 1, i2 = 2; // Shorthand for multiple declaration
+    // Shorthands for multiple declarations:
+    int i1 = 1, i2 = 2; 
     float f1 = 1.0, f2 = 2.0;
 
-    //more shorthands:
     int a, b, c;
     a = b = c = 0;
 
@@ -215,9 +215,9 @@ int main() {
     //Increment and decrement operators:
     char *s = "iLoveC"
     int j = 0;
-    s[j++]; // => "i" Returns value of j to s THEN increments value of j.
+    s[j++]; // => "i". Returns the j-th item of s THEN increments value of j.
     j = 0; 
-    s[++j]; // => "L" Increments value of j THEN returns value of j to s. 
+    s[++j]; // => "L". Increments value of j THEN returns j-th value of s. 
     // same with j-- and --j
 
     // Bitwise operators!
@@ -271,7 +271,7 @@ int main() {
     printf("\n");
 
     // *****NOTES*****:
-    // Loops MUST always have a body. If no body is needed, do:
+    // Loops and Functions MUST have a body. If no body is needed:
     int i;
     for (i = 0; i <= 5; i++) {
         ; // use semicolon to act as the body (null statement)
@@ -429,12 +429,12 @@ int add_two_ints(int x1, int x2)
 }
 
 /*
-Functions are call by value. So when a function is called, the arguments passed
-to the function are copies of original arguments (except arrays). Anything you  
-do to your arguments do not change the value of the actual argument where the
-function was called. 
+Functions are call by value. When a function is called, the arguments passed to 
+the function are copies of the original arguments (except arrays). Anything you  
+do to the arguments in the function do not change the value of the original 
+argument where the function was called. 
 
-You can use pointers if you need to edit the original argument values. 
+Use pointers if you need to edit the original argument values. 
 
 Example: in-place string reversal
 */
@@ -450,19 +450,6 @@ void str_reverse(char *str_in)
         str_in[ii] = str_in[len - ii - 1]; // ii-th char from end
         str_in[len - ii - 1] = tmp;
     }
-}
-
-/////////////////////////////////////
-// Built in functions:
-/////////////////////////////////////
-// from: #include <stdio.h>
-// ** getchar() **
-// int c = getchar(); //reads character from input. 
-// If input = hi, 'h' is returned then next call, 'i' returned. 
-while ((c = getchar()) != EOF) { // EOF constant "end of file". 
-                                 //   Linux: CTRL+D, Windows: CTRL+X
-    // must have () around getchar() as != is run before =. 
-    putchar(c); //prints character (without newline at end)
 }
 
 //if referring to external variables outside function, must use extern keyword.
