@@ -2,9 +2,9 @@
 category: tool
 tool: git
 contributors:
-    - ["Jake Prather", "http:#github.com/JakeHP"]
+    - ["Jake Prather", "http://github.com/JakeHP"]
 translator:
-    - ["Raúl Ascencio", "http:#rscnt.github.io"]
+    - ["Raúl Ascencio", "http://rscnt.github.io"]
 filename: LearnGit.txt
 language: es-es
 
