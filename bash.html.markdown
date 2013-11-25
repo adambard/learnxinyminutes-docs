@@ -115,6 +115,13 @@ do
     echo "$VARIABLE"
 done
 
+# while loop:
+while [true]
+do
+    echo "loop body here..."
+    break
+done
+
 # You can also define functions
 # Definition:
 function foo ()
