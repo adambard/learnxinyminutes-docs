@@ -1,6 +1,6 @@
 ---
-linguagem: haskell
-tradutor/contribuidor:
+language: haskell
+translators/contributors:
     - ["Lucas Tonussi", "http://www.inf.ufsc.br/~tonussi/"]
 ---
 
