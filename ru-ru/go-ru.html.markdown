@@ -1,6 +1,4 @@
 ---
-name: Go
-category: language
 language: Go
 filename: learngo-ru.go
 contributors:
