@@ -47,7 +47,7 @@ uno o varios archivos, a lo largo del tiempo.
 ### Repositorio
 
 Un repositorio es un conjunto de archivos, directorios, registros, cambios (aka:
-comits), y encabezados (aka: headss). Imagina que un repositorio es una clase,
+comits), y encabezados (aka: heads). Imagina que un repositorio es una clase,
 y que sus atributos otorgan  acceso al historial del elemento, ademas de otras
 cosas.
 
@@ -80,7 +80,7 @@ no ser enviado (aka: "pusheado") hacia un repositorio.
 
 ### Branch (rama)
 
-Un "brach", es escencialmente un apuntador hacia el ultimo commit (cambio
+Un "branch", es escencialmente un apuntador hacia el ultimo commit (cambio
 registrado) que se ha realizado. A medida que se realizan mas commits, este
 apuntador se actualizara automaticamente hacia el ultimo commit.
 
