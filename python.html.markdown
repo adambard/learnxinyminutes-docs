@@ -2,6 +2,7 @@
 language: python
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
+    - ["Amin Bandali", "http://aminbandali.com"]
 filename: learnpython.py
 ---
 
@@ -93,8 +94,8 @@ not False #=> True
 # None is an object
 None #=> None
 
-# Don't use the equality `==` symbol to compare objects to None
-# Use `is` instead
+# Don't use the equality "==" symbol to compare objects to None
+# Use "is" instead
 "etc" is None #=> False
 None is None  #=> True
 
@@ -112,8 +113,10 @@ None is None  #=> True
 ## 2. Variables and Collections
 ####################################################
 
-# Printing is pretty easy
-print "I'm Python. Nice to meet you!"
+# Python has a print function, available in versions 2.7 and 3...
+print("I'm Python. Nice to meet you!")
+# and an older print statement, in all 2.x versions but removed from 3.
+print "I'm also Python!"
 
 
 # No need to declare variables before assigning to them.
@@ -157,20 +160,22 @@ li[1:3] #=> [2, 4]
 li[2:] #=> [4, 3]
 # Omit the end
 li[:3] #=> [1, 2, 4]
+# Revert the list
+li[::-1] #=> [3, 4, 2, 1]
 
-# Remove arbitrary elements from a list with del
+# Remove arbitrary elements from a list with "del"
 del li[2] # li is now [1, 2, 3]
 
 # You can add lists
 li + other_li #=> [1, 2, 3, 4, 5, 6] - Note: li and other_li is left alone
 
-# Concatenate lists with extend
+# Concatenate lists with "extend()"
 li.extend(other_li) # Now li is [1, 2, 3, 4, 5, 6]
 
-# Check for existence in a list with in
+# Check for existence in a list with "in"
 1 in li #=> True
 
-# Examine the length with len
+# Examine the length with "len()"
 len(li) #=> 6
 
 
@@ -201,41 +206,41 @@ filled_dict = {"one": 1, "two": 2, "three": 3}
 # Look up values with []
 filled_dict["one"] #=> 1
 
-# Get all keys as a list
+# Get all keys as a list with "keys()"
 filled_dict.keys() #=> ["three", "two", "one"]
 # Note - Dictionary key ordering is not guaranteed.
 # Your results might not match this exactly.
 
-# Get all values as a list
+# Get all values as a list with "values()"
 filled_dict.values() #=> [3, 2, 1]
 # Note - Same as above regarding key ordering.
 
-# Check for existence of keys in a dictionary with in
+# Check for existence of keys in a dictionary with "in"
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
 
 # Looking up a non-existing key is a KeyError
 filled_dict["four"] # KeyError
 
-# Use get method to avoid the KeyError
+# Use "get()" method to avoid the KeyError
 filled_dict.get("one") #=> 1
 filled_dict.get("four") #=> None
 # The get method supports a default argument when the value is missing
 filled_dict.get("one", 4) #=> 1
 filled_dict.get("four", 4) #=> 4
 
-# Setdefault method is a safe way to add new key-value pair into dictionary
+# "setdefault()" inserts into a dictionary only if the given key isn't present
 filled_dict.setdefault("five", 5) #filled_dict["five"] is set to 5
 filled_dict.setdefault("five", 6) #filled_dict["five"] is still 5
 
 
 # Sets store ... well sets
 empty_set = set()
-# Initialize a set with a bunch of values
+# Initialize a "set()" with a bunch of values
 some_set = set([1,2,2,3,4]) # some_set is now set([1, 2, 3, 4])
 
 # Since Python 2.7, {} can be used to declare a set
-filled_set = {1, 2, 2, 3, 4} # => {1 2 3 4}
+filled_set = {1, 2, 2, 3, 4} # => {1, 2, 3, 4}
 
 # Add more items to a set
 filled_set.add(5) # filled_set is now {1, 2, 3, 4, 5}
@@ -265,11 +270,11 @@ some_var = 5
 # Here is an if statement. Indentation is significant in python!
 # prints "some_var is smaller than 10"
 if some_var > 10:
-    print "some_var is totally bigger than 10."
+    print("some_var is totally bigger than 10.")
 elif some_var < 10:    # This elif clause is optional.
-    print "some_var is smaller than 10."
+    print("some_var is smaller than 10.")
 else:           # This is optional too.
-    print "some_var is indeed 10."
+    print("some_var is indeed 10.")
 
 
 """
@@ -281,10 +286,10 @@ prints:
 """
 for animal in ["dog", "cat", "mouse"]:
     # You can use % to interpolate formatted strings
-    print "%s is a mammal" % animal
-    
+    print("%s is a mammal" % animal)
+
 """
-`range(number)` returns a list of numbers 
+"range(number)" returns a list of numbers
 from zero to the given number
 prints:
     0
@@ -293,7 +298,7 @@ prints:
     3
 """
 for i in range(4):
-    print i
+    print(i)
 
 """
 While loops go until a condition is no longer met.
@@ -305,14 +310,14 @@ prints:
 """
 x = 0
 while x < 4:
-    print x
+    print(x)
     x += 1  # Shorthand for x = x + 1
 
 # Handle exceptions with a try/except block
 
 # Works on Python 2.6 and up:
 try:
-    # Use raise to raise an error
+    # Use "raise" to raise an error
     raise IndexError("This is an index error")
 except IndexError as e:
     pass    # Pass is just a no-op. Usually you would do recovery here.
@@ -322,9 +327,9 @@ except IndexError as e:
 ## 4. Functions
 ####################################################
 
-# Use def to create new functions
+# Use "def" to create new functions
 def add(x, y):
-    print "x is %s and y is %s" % (x, y)
+    print("x is %s and y is %s" % (x, y))
     return x + y    # Return values with a return statement
 
 # Calling functions with parameters
@@ -351,15 +356,15 @@ keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
 
 # You can do both at once, if you like
 def all_the_args(*args, **kwargs):
-    print args
-    print kwargs
+    print(args)
+    print(kwargs)
 """
 all_the_args(1, 2, a=3, b=4) prints:
     (1, 2)
     {"a": 3, "b": 4}
 """
 
-# When calling functions, you can do the opposite of varargs/kwargs!
+# When calling functions, you can do the opposite of args/kwargs!
 # Use * to expand tuples and use ** to expand kwargs.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
@@ -402,7 +407,7 @@ class Human(object):
         # Assign the argument to the instance's name attribute
         self.name = name
 
-    # An instance method. All methods take self as the first argument
+    # An instance method. All methods take "self" as the first argument
     def say(self, msg):
        return "%s: %s" % (self.name, msg)
 
@@ -420,10 +425,10 @@ class Human(object):
 
 # Instantiate a class
 i = Human(name="Ian")
-print i.say("hi")     # prints out "Ian: hi"
+print(i.say("hi"))     # prints out "Ian: hi"
 
 j = Human("Joel")
-print j.say("hello")  #prints out "Joel: hello"
+print(j.say("hello"))  #prints out "Joel: hello"
 
 # Call our class method
 i.get_species() #=> "H. sapiens"
@@ -443,12 +448,12 @@ Human.grunt() #=> "*grunt*"
 
 # You can import modules
 import math
-print math.sqrt(16) #=> 4
+print(math.sqrt(16) )#=> 4
 
 # You can get specific functions from a module
 from math import ceil, floor
-print ceil(3.7)  #=> 4.0
-print floor(3.7) #=> 3.0
+print(ceil(3.7))  #=> 4.0
+print(floor(3.7)) #=> 3.0
 
 # You can import all functions from a module.
 # Warning: this is not recommended
@@ -459,7 +464,7 @@ import math as m
 math.sqrt(16) == m.sqrt(16) #=> True
 
 # Python modules are just ordinary python files. You
-# can write your own, and import them. The name of the 
+# can write your own, and import them. The name of the
 # module is the same as the name of the file.
 
 # You can find out which functions and attributes
@@ -479,6 +484,7 @@ dir(math)
 * [The Official Docs](http://docs.python.org/2.6/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
 * [Python Module of the Week](http://pymotw.com/2/)
+* [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 
 ### Dead Tree
 

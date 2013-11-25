@@ -4,6 +4,7 @@ lang: br-pt
 filename: learnruby.rb
 contributors:
   - ["Bruno Henrique - Garu", "http://garulab.com"]
+translators:
   - ["Katyanna Moura", "https://twitter.com/amelie_kn"]
 ---
 

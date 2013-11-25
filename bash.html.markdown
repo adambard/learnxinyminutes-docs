@@ -1,12 +1,11 @@
 ---
-
 category: tool
 tool: bash
 contributors:
     - ["Max Yankov", "https://github.com/golergka"]
     - ["Darren Lin", "https://github.com/CogBear"]
+    - ["Alexandre Medeiros", "http://alemedeiros.sdf.org"]
 filename: LearnBash.sh
-
 ---
 
 Bash is a name of the unix shell, which was also distributed as the shell for the GNU operating system and as default shell on Linux and Mac OS X.
@@ -37,8 +36,22 @@ VARIABLE = "Some string"
 # Using the variable:
 echo $VARIABLE
 echo "$VARIABLE"
+echo '$VARIABLE'
 # When you use the variable itself — assign it, export it, or else — you write
 # its name without $. If you want to use variable's value, you should use $.
+# Note that ' (single quote) won't expand the variables!
+
+# String substitution in variables
+echo ${VARIABLE/Some/A}
+# This will substitute the first occurance of "Some" with "A"
+
+# Bultin variables:
+# There are some useful builtin variables, like
+echo "Last program return value: $?"
+echo "Script's PID: $$"
+echo "Number of arguments: $#"
+echo "Scripts arguments: $@"
+echo "Scripts arguments separeted in different variables: $1 $2..."
 
 # Reading a value from input:
 echo "What's your name?"
@@ -46,19 +59,17 @@ read NAME # Note that we didn't need to declare new variable
 echo Hello, $NAME!
 
 # We have the usual if structure:
-if true
+# use 'man test' for more info about conditionals
+if [ $NAME -ne $USER ]
 then
-    echo "This is expected"
+    echo "Your name is you username"
 else
-    echo "And this is not"
+    echo "Your name isn't you username"
 fi
 
-# while loop:
-while [true]
-do
-	echo "loop body here..."
-	break
-done
+# There is also conditional execution
+echo "Always executed" || echo "Only executed if first command fail"
+echo "Always executed" && echo "Only executed if first command does NOT fail"
 
 # Expressions are denoted with the following format:
 echo $(( 10 + 5 ))
@@ -76,25 +87,70 @@ ls -l # Lists every file and directory on a separate line
 # txt files in the current directory:
 ls -l | grep "\.txt"
 
-# Commands can be substitued within other commands using $( ):
+# You can also redirect a command output, input and error output.
+python2 hello.py < "input.in"
+python2 hello.py > "output.out"
+python2 hello.py 2> "error.err"
+# The output error will overwrite the file if it exists, if you want to
+# concatenate them, use ">>" instead.
+
+# Commands can be substituted within other commands using $( ):
 # The following command displays the number of files and directories in the
 # current directory.
 echo "There are $(ls | wc -l) items here."
 
-# Bash uses a case statement that works similarily to switch in Java and C++:
-case "$VARIABLE"
-in
+# Bash uses a case statement that works similarly to switch in Java and C++:
+case "$VARIABLE" in 
     #List patterns for the conditions you want to meet
-    0) echo "There is a zero."
-    1) echo "There is a one."
-    *) echo "It is not null."
+    0) echo "There is a zero.";;
+    1) echo "There is a one.";;
+    *) echo "It is not null.";;
 esac
 
-#For loops iterate for as many arguments given:
-#The contents of var $VARIABLE is printed three times.
-for $VARIABLE in x y z
+# For loops iterate for as many arguments given:
+# The contents of var $VARIABLE is printed three times.
+# Note that ` ` is equivalent to $( ) and that seq returns a sequence of size 3.
+for VARIABLE in `seq 3`
 do
     echo "$VARIABLE"
 done
 
+# while loop:
+while [true]
+do
+    echo "loop body here..."
+    break
+done
+
+# You can also define functions
+# Definition:
+function foo ()
+{
+    echo "Arguments work just like script arguments: $@"
+    echo "And: $1 $2..."
+    echo "This is a function"
+    return 0
+}
+
+# or simply
+bar ()
+{
+    echo "Another way to declare functions!"
+    return 0
+}
+
+# Calling your function
+foo "My name is" $NAME
+
+# There are a lot of useful commands you should learn:
+tail -n 10 file.txt
+# prints last 10 lines of file.txt
+head -n 10 file.txt
+# prints first 10 lines of file.txt
+sort file.txt
+# sort file.txt's lines
+uniq -d file.txt
+# report or omit repeated lines, with -d it reports them
+cut -d ',' -f 1 file.txt
+# prints only the first column before the ',' character
 ```

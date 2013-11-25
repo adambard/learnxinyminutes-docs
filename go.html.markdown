@@ -46,7 +46,7 @@ func main() {
 }
 
 // Functions have parameters in parentheses.
-// If there are no parameters, empty parens are still required.
+// If there are no parameters, empty parentheses are still required.
 func beyondHello() {
     var x int // Variable declaration.  Variables must be declared before use.
     x = 3     // Variable assignment.
@@ -71,7 +71,7 @@ func learnTypes() {
 can include line breaks.` // same string type
 
     // non-ASCII literal.  Go source is UTF-8.
-    g := 'Σ' // rune type, an alias for uint32, holds a UTF-8 code point
+    g := 'Σ' // rune type, an alias for uint32, holds a unicode code point
 
     f := 3.14195 // float64, an IEEE-754 64-bit floating point number
     c := 3 + 4i  // complex128, represented internally with two float64s
@@ -251,7 +251,7 @@ func learnConcurrency() {
     fmt.Println(<-c, <-c, <-c) // channel on right, <- is "receive" operator.
 
     cs := make(chan string)       // another channel, this one handles strings.
-    cc := make(chan chan string)  // a channel of channels.
+    cc := make(chan chan string)  // a channel of string channels.
     go func() { c <- 84 }()       // start a new goroutine just to send a value
     go func() { cs <- "wordy" }() // again, for cs this time
     // Select has syntax like a switch statement but each case involves
@@ -259,7 +259,7 @@ func learnConcurrency() {
     // that are ready to communicate.
     select {
     case i := <-c: // the value received can be assigned to a variable
-        fmt.Println("it's a", i)
+        fmt.Printf("it's a %T", i)
     case <-cs: // or the value received can be discarded
         fmt.Println("it's a string")
     case <-cc: // empty channel, not ready for communication.
@@ -294,8 +294,9 @@ There you can follow the tutorial, play interactively, and read lots.
 The language definition itself is highly recommended.  It's easy to read
 and amazingly short (as language definitions go these days.)
 
-On the reading list for students of Go is the source code to the standard
-library.  Comprehensively documented, it demonstrates the best of readable
-and understandable Go, Go style, and Go idioms.  Click on a function name
-in the documentation and the source code comes up!
+On the reading list for students of Go is the [source code to the standard
+library](http://golang.org/src/pkg/).  Comprehensively documented, it
+demonstrates the best of readable and understandable Go, Go style, and Go
+idioms.  Or you can click on a function name in [the
+documentation](http://golang.org/pkg/) and the source code comes up!
 

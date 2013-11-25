@@ -3,6 +3,7 @@ language: php
 contributors:
     - ["Malcolm Fell", "http://emarref.net/"]
     - ["Trismegiste", "https://github.com/Trismegiste"]
+translators:
     - ["SlaF", "https://github.com/SlaF"]
 lang: ru-ru
 filename: learnphp-ru.php

@@ -38,7 +38,7 @@ import (
     "strconv"  // Stringek átalakítására szolgáló csomag
 )
 
-// Funkció deklarás, a main nevű funkció a program kezdőpontja.
+// Funkció deklarálás, a main nevű funkció a program kezdőpontja.
 func main() {
     // Println kiírja a beadott paramétereket a standard kimenetre.
     // Ha más csomagot funkcióját akarjuk használni, akkor azt jelezni kell a

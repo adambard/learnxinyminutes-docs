@@ -1,7 +1,8 @@
 ---
 language: javascript
-author: Adam Brenecki
-author_url: http://adam.brenecki.id.au
+contributors:
+    - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+filename: javascript.js
 ---
 
 Javascript was created by Netscape's Brendan Eich in 1995. It was originally
@@ -37,6 +38,8 @@ doStuff()
 // 1. Numbers, Strings and Operators
 
 // Javascript has one number type (which is a 64-bit IEEE 754 double).
+// As with Lua, don't freak out about the lack of ints: doubles have a 52-bit
+// mantissa, which is enough to store integers up to about 9✕10¹⁵ precisely.
 3; // = 3
 1.5; // = 1.5
 
@@ -104,10 +107,10 @@ false;
 
 // There's also null and undefined
 null; // used to indicate a deliberate non-value
-undefined; // used to indicate a value is not currently present (although undefined
-           // is actually a value itself)
+undefined; // used to indicate a value is not currently present (although
+           // undefined is actually a value itself)
 
-// false, null, undefined, NaN, 0 and "" are falsy, and everything else is truthy.
+// false, null, undefined, NaN, 0 and "" are falsy; everything else is truthy.
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
 ///////////////////////////////////
@@ -140,6 +143,10 @@ var myArray = ["Hello", 45, true];
 // Their members can be accessed using the square-brackets subscript syntax.
 // Array indices start at zero.
 myArray[1]; // = 45
+
+// Arrays are mutable and of variable length.
+myArray.push("World");
+myArray.length; // = 4
 
 // JavaScript's objects are equivalent to 'dictionaries' or 'maps' in other
 // languages: an unordered collection of key-value pairs.
@@ -218,6 +225,8 @@ function myFunction(){
     // this code will be called in 5 seconds' time
 }
 setTimeout(myFunction, 5000);
+// Note: setTimeout isn't part of the JS language, but is provided by browsers
+// and Node.js.
 
 // Function objects don't even have to be declared with a name - you can write
 // an anonymous function definition directly into the arguments of another.
@@ -297,8 +306,8 @@ myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "HELLO WORLD!"
 
 // When you call a function with the new keyword, a new object is created, and
-// made available to the function via this. Functions designed to be called
-// like this are called constructors.
+// made available to the function via the this keyword. Functions designed to be
+// called like that are called constructors.
 
 var MyConstructor = function(){
     this.myNumber = 5;
@@ -314,7 +323,7 @@ myNewObj.myNumber; // = 5
 // property __proto__. While this is useful for explaining prototypes it's not
 // part of the standard; we'll get to standard ways of using prototypes later.
 var myObj = {
-    myString: "Hello world!",
+    myString: "Hello world!"
 };
 var myPrototype = {
     meaningOfLife: 42,
@@ -322,6 +331,7 @@ var myPrototype = {
         return this.myString.toLowerCase()
     }
 };
+
 myObj.__proto__ = myPrototype;
 myObj.meaningOfLife; // = 42
 
@@ -354,13 +364,16 @@ myObj.meaningOfLife; // = 43
 // Constructors have a property called prototype. This is *not* the prototype of
 // the constructor function itself; instead, it's the prototype that new objects
 // are given when they're created with that constructor and the new keyword.
-myConstructor.prototype = {
+MyConstructor.prototype = {
+    myNumber: 5,
     getMyNumber: function(){
-        return this.myNumber
+        return this.myNumber;
     }
 };
-var myNewObj2 = new myConstructor();
+var myNewObj2 = new MyConstructor();
 myNewObj2.getMyNumber(); // = 5
+myNewObj2.myNumber = 6
+myNewObj2.getMyNumber(); // = 6
 
 // Built-in types like strings and numbers also have constructors that create
 // equivalent wrapper objects.

@@ -11,7 +11,7 @@ makes coding a real joy for me.
 ```haskell
 -- Single line comments start with two dashes.
 {- Multiline comments can be enclosed
-en a block like this.
+in a block like this.
 -}
 
 ----------------------------------------------------
@@ -329,7 +329,7 @@ main' = interact countLines
 sayHello :: IO ()
 sayHello = do 
    putStrLn "What is your name?"
-   name <- getLine -- this gets a line and gives it the name "input"
+   name <- getLine -- this gets a line and gives it the name "name"
    putStrLn $ "Hello, " ++ name
    
 -- Exercise: write your own version of `interact` that only reads

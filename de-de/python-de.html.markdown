@@ -2,6 +2,7 @@
 language: python
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
+translators:
     - ["kultprok", "http:/www.kulturproktologie.de"]
 filename: learnpython-de.py
 lang: de-de

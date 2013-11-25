@@ -169,7 +169,7 @@ public class LearnJava {
         System.out.println(--i); //i = 0. 전치 감소 연산
 
         ///////////////////////////////////////
-        // 에저 구조
+        // 제어 구조
         ///////////////////////////////////////
         System.out.println("\n->Control Structures");
 
@@ -255,7 +255,7 @@ public class LearnJava {
         // String
 
         // 형변환
-        // 자바 객채 또한 형변환할 수 있으며, 이와 관련해서 알아야 할 세부사항이
+        // 자바 객체 또한 형변환할 수 있으며, 이와 관련해서 알아야 할 세부사항이
         // 많을뿐더러 다소 중급 수준에 해당하는 개념들도 다뤄야 합니다.
         // 이와 관련된 사항은 아래 링크를 참고하세요.
         // http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html

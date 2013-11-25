@@ -3,6 +3,7 @@
 language: java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
+    - ["Madison Dickson", "http://github.com/mix3d"]
 filename: LearnJava.java
 
 ---
@@ -25,7 +26,8 @@ import java.util.ArrayList;
 // Import all classes inside of java.security package
 import java.security.*;
 
-// Each .java file contains one public class, with the same name as the file.
+// Each .java file contains one outer-level public class, with the same name as
+// the file.
 public class LearnJava {
 
     // A program must have a main method as an entry point
@@ -83,7 +85,7 @@ public class LearnJava {
         // Char - A single 16-bit Unicode character
         char fooChar = 'A';
 
-        // Use final to make a variable immutable
+        // final variables can't be reassigned to another object
         final int HOURS_I_WORK_PER_WEEK = 9001;
 
         // Strings
@@ -98,7 +100,7 @@ public class LearnJava {
         System.out.println(bazString);
 
         // Arrays
-        //The array size must be decided upon declaration
+        //The array size must be decided upon instantiation
         //The format for declaring an array is follows:
         //<datatype> [] <var name> = new <datatype>[<array size>];
         int [] intArray = new int[10];
@@ -160,10 +162,13 @@ public class LearnJava {
         // Incrementations
         int i = 0;
         System.out.println("\n->Inc/Dec-rementation");
-        System.out.println(i++); //i = 1. Post-Incrementation
-        System.out.println(++i); //i = 2. Pre-Incrementation
-        System.out.println(i--); //i = 1. Post-Decrementation
-        System.out.println(--i); //i = 0. Pre-Decrementation
+        // The ++ and -- operators increment and decrement by 1 respectively.
+        // If they are placed before the variable, they increment then return;
+        // after the variable they return then increment.
+        System.out.println(i++); //i = 1, prints 0 (post-increment)
+        System.out.println(++i); //i = 2, prints 2 (pre-increment)
+        System.out.println(i--); //i = 1, prints 2 (post-decrement)
+        System.out.println(--i); //i = 0, prints 0 (pre-decrement)
 
         ///////////////////////////////////////
         // Control Structures
@@ -211,6 +216,18 @@ public class LearnJava {
         }
         System.out.println("fooFor Value: " + fooFor);
 
+        // For Each Loop
+        // An automatic iteration through an array or list of objects.
+        int[] fooList = {1,2,3,4,5,6,7,8,9};
+        //for each loop structure => for(<object> : <array_object>)
+        //reads as: for each object in the array
+        //note: the object type must match the array.
+
+        for( int bar : fooList ){
+            //System.out.println(bar);
+            //Iterates 9 times and prints 1-9 on new lines
+        }
+
         // Switch Case
         // A switch works with the byte, short, char, and int data types.
         // It also works with enumerated types (discussed in Enum Types),
@@ -233,6 +250,13 @@ public class LearnJava {
                     break;
         }
         System.out.println("Switch Case Result: " + monthString);
+
+        // Conditional Shorthand
+        // You can use the '?' operator for quick assignments or logic forks.
+        // Reads as "If (statement) is true, use <first value>, otherwise, use <second value>"
+        int foo = 5;
+        String bar = (foo < 10) ? "A" : "B";
+        System.out.println(bar); // Prints A, because the statement is true
 
 
         ///////////////////////////////////////
@@ -274,14 +298,14 @@ public class LearnJava {
         trek.speedUp(3); // You should always use setter and getter methods
         trek.setCadence(100);
 
-        // toString is a convention to display the value of this Object.
+        // toString returns this Object's string representation.
         System.out.println("trek info: " + trek.toString());
 
     } // End main method
 } // End LearnJava class
 
 
-// You can include other, non-public classes in a .java file
+// You can include other, non-public outer-level classes in a .java file
 
 
 // Class Declaration Syntax:
@@ -299,7 +323,7 @@ class Bicycle {
     String name; // default: Only accessible from within this package
 
     // Constructors are a way of creating classes
-    // This is a default constructor
+    // This is a constructor
     public Bicycle() {
         gear = 1;
         cadence = 50;
@@ -307,7 +331,7 @@ class Bicycle {
         name = "Bontrager";
     }
 
-    // This is a specified constructor (it contains arguments)
+    // This is a constructor that takes arguments
     public Bicycle(int startCadence, int startSpeed, int startGear, String name) {
         this.gear = startGear;
         this.cadence = startCadence;

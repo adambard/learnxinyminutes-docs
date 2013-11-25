@@ -1,8 +1,8 @@
 ---
-名字：Go
-分类：编程语言
-文件名：learngo.go
-贡献者：
+language: Go
+lang: zh-cn
+filename: learngo-cn.go
+contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["pantaovay", "https://github.com/pantaovay"]
 ---
@@ -13,7 +13,7 @@ Go拥有命令式语言的静态类型，编译很快，执行也很快，同时
 
 Go语言有非常棒的标准库，还有一个充满热情的社区。
 
-```Go
+```go
 // 单行注释
 /* 多行
     注释 */

@@ -205,7 +205,7 @@ nil                  ; for false - and the empty list
 
 ;; Or use concatenate -
 
-(concatenate
+(concatenate 'list '(1 2) '(3 4))
 
 ;; Lists are a very central type, so there is a wide variety of functionality for
 ;; them, a few examples:
@@ -219,7 +219,7 @@ nil                  ; for false - and the empty list
 
 ;;; Vectors
 
-;; Vectors are fixed-length arrays
+;; Vector's literals are fixed-length arrays
 #(1 2 3) ; => #(1 2 3)
 
 ;; Use concatenate to add vectors together
@@ -253,6 +253,23 @@ nil                  ; for false - and the empty list
 
 ; => 0
 
+;;; Adjustable vectors
+
+;; Adjustable vectors have the same printed representation
+;; as fixed-length vector's literals.
+
+(defparameter *adjvec* (make-array '(3) :initial-contents '(1 2 3)
+      :adjustable t :fill-pointer t))
+      
+*adjvec* ; => #(1 2 3)
+
+;; Adding new element:
+(vector-push-extend 4 *adjvec*) ; => 3
+
+*adjvec* ; => #(1 2 3 4)
+
+
+
 ;;; Naively, sets are just lists:
 
 (set-difference '(1 2 3 4) '(4 5 6 7)) ; => (3 2 1)
@@ -279,10 +296,10 @@ nil                  ; for false - and the empty list
 ;; not.
 
 ;; Retrieving a non-present value returns nil
- (gethash *m* 'd) ;=> nil, nil
+ (gethash 'd *m*) ;=> nil, nil
 
 ;; You can provide a default value for missing keys
-(gethash *m* 'd :not-found) ; => :NOT-FOUND
+(gethash 'd *m* :not-found) ; => :NOT-FOUND
 
 ;; Let's handle the multiple return values here in code.
 
@@ -360,7 +377,7 @@ nil                  ; for false - and the empty list
 ;; 4. Equality
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Common Lisp has a sophisticated equality system. A couple are covered yere.
+;; Common Lisp has a sophisticated equality system. A couple are covered here.
 
 ;; for numbers use `='
 (= 3 3.0) ; => t
@@ -457,8 +474,8 @@ nil                  ; for false - and the empty list
     :accessor velocity
     :initarg :velocity)
    (average-efficiency
-    :accessor average-efficiency)
-   :initarg :average-efficiency)
+    :accessor average-efficiency
+   :initarg :average-efficiency))
   (:documentation "A human powered conveyance"))
 
 ;; defclass, followed by name, followed by the superclass list,
@@ -506,7 +523,7 @@ nil                  ; for false - and the empty list
 ;  Direct superclasses: STANDARD-OBJECT
 ;  Direct subclasses: UNICYCLE, BICYCLE, CANOE
 ;  Not yet finalized.
-(defparameter *foo#\u03BBooo* nil) ;  Direct slots:
+;  Direct slots:
 ;    VELOCITY
 ;      Readers: VELOCITY
 ;      Writers: (SETF VELOCITY)
@@ -602,4 +619,4 @@ nil                  ; for false - and the empty list
 Lots of thanks to the Scheme people for rolling up a great starting
 point which could be easily moved to Common Lisp.
 
-- [Paul Khoung](https://github.com/pkhuong) for some great reviewing.
+- [Paul Khuong](https://github.com/pkhuong) for some great reviewing.

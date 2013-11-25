@@ -1,10 +1,10 @@
-﻿---
+---
 category: tool
 tool: git
 contributors:
-    - ["Jake Prather", "http:#github.com/JakeHP"]
+    - ["Jake Prather", "http://github.com/JakeHP"]
+translators:
     - ["kultprok", "http://www.kulturproktologie.de"]
-filename: LearnGit-de.txt
 lang: de-de
 ---
 

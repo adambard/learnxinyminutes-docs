@@ -96,6 +96,8 @@ int main() {
     // is not evaluated (except VLAs (see below)).
     // The value it yields in this case is a compile-time constant.
     int a = 1;
+    // size_t is an unsiged integer type of at least 2 bytes used to represent 
+    // the size of an object.
     size_t size = sizeof(a++); // a++ is not evaluated
     printf("sizeof(a++) = %zu where a = %d\n", size, a);
     // prints "sizeof(a++) = 4 where a = 1" (on a 32-bit architecture)
@@ -339,7 +341,7 @@ int main() {
     printf("%zu, %zu\n", sizeof(px), sizeof(not_a_pointer));
     // => Prints "8, 4" on a typical 64-bit system
 
-    // To retreive the value at the address a pointer is pointing to,
+    // To retrieve the value at the address a pointer is pointing to,
     // put * in front to de-reference it.
     // Note: yes, it may be confusing that '*' is used for _both_ declaring a
     // pointer and dereferencing it.
