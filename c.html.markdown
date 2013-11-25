@@ -148,6 +148,14 @@ int main() {
     int cha = 'a'; // fine
     char chb = 'a'; // fine too (implicit conversion from int to char)
 
+    //Multi-dimensional arrays:
+    int multi_array[2][5] = {
+        {1, 2, 3, 4, 5},
+        {6, 7, 8, 9, 0}
+    }
+    //access elements:
+    int array_int = multi_array[0][2]; //=> 3
+
     ///////////////////////////////////////
     // Operators
     ///////////////////////////////////////
