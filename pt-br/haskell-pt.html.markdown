@@ -227,22 +227,38 @@ let fatorial n = fatorial (n - 1) * n
    uma lista é `resto`  é o resto da lista.
 -}
 
-mapa mapeador [] = []
+mapa mapeador _ [] = []
 mapa mapeador (primeiro : resto) = mapeador primeiro : (mapa mapeador resto)
 
-{- Funções Anônimas são criadas com um `\` (barra invertida)
-   seguido por seus argumentos!
--}
-mapa (\primeiro -> primeiro + 2) [1..5] -- [3, 4, 5, 6, 7]
+{- Uma função anônima é uma função sem um nome.
+   É uma abstração do cálculo lambda:
 
-{- Usar "fold" (chamado `inject` em algumas outras línguagens) com
-   uma função anônima.
+   \x -> x + 1
+   λ.x (x + 1)
 
-   <foldl1> significa <fold left> E mapeia o primeiro valor
-   da lista para ser o acumulador.
+   Em Haskell Barra Invertida é um jeito para
+   se escrever Lambda (λ). Uma ótima pedida
+   Para entender Haskell e outras linguagens como Lisp
+   É estudar Cálculo Lambda, é um entendimento matemático
+   mais apurado. E do ponto de vista computacional é
+   bastante interessante. Em EXTRAS você encontrará
+   Links para aprender Cálculo Lambda.
 -}
-foldl1 (\acc x -> acc + x) [1..5] -- 15
-foldl1 (\x y -> (x+y)/5) [7..55] -- 13.6875
+
+(\x -> x + 1) 4 -- 5
+
+
+{- Algumas vezes é mais conveniente usar expressões lambda
+   do que definir um nome para uma função. Na matemática
+   Nomes são muito simbólicos. Isso acontece bastante
+   quando você estiver trabalhando `map` ou `foldl` / `foldr`
+-}
+
+-- Sem usar expressões anônimas !
+listaSomaUm lst = map somaUm' lst where somaUm' x = x + 1
+
+-- Usando expressões anônimas !
+listaSomaUm' lst = map (\x -> x + 1) lst
 
 ----------------------------------------------------
 -- 4. Mais Funções
@@ -276,144 +292,142 @@ foo 5 -- 75
 {- Concertando precedência:
    Haskell tem outra função chamada `$`. Isso altera a precedência
    de computação. Ou seja Haskell computa o que está sendo sinalizado com $
-   da esquerda para a direita . You can use `.` and `$` to get rid of a lot
-   of parentheses:
+   da esquerda para a direita . Você pode usar `.` e `$` para se livrar
+   de parentízação desnecessária.
 -}
 
--- Antes
 (even (fatorial 3)) -- true
 
--- Depois
+-- Usando `.` e `$`
 even . fatorial $ 3 -- true
 
 ----------------------------------------------------
--- 4. More functions
+-- 5. Tipos
 ----------------------------------------------------
 
-{- Mais Sobre Funções Currificadas: se você não passar
-   todos os argumentos para uma função.
--}
+-- Haskell é fortemente tipado e tudo tem uma assinatura típica.
 
-add a b = a + b
-foo = add 10 -- foo is now a function that takes a number and adds 10 to it
-foo 5 -- 15
-
--- Another way to write the same thing
-foo = (+10)
-foo 5 -- 15
-
--- function composition
--- the (.) function chains functions together.
--- For example, here foo is a function that takes a value. It adds 10 to it,
--- multiplies the result of that by 5, and then returns the final value.
-foo = (*5) . (+10)
-
--- (5 + 10) * 5 = 75
-foo 5 -- 75
-
--- fixing precedence
--- Haskell has another function called `$`. This changes the precedence
--- so that everything to the left of it gets computed first and then applied
--- to everything on the right. You can use `.` and `$` to get rid of a lot
--- of parentheses:
-
--- before
-(even (fib 7)) -- true
-
--- after
-even . fib $ 7 -- true
-
-----------------------------------------------------
--- 5. Type signatures
-----------------------------------------------------
-
--- Haskell has a very strong type system, and everything has a type signature.
-
--- Some basic types:
-5 :: Integer
-"hello" :: String
+-- Tipos Básicos:
+460 :: Integer
+"music" :: String
 True :: Bool
 
--- Functions have types too.
--- `not` takes a boolean and returns a boolean:
--- not :: Bool -> Bool
+{- Funções também tem tipos.
+   `not` recebe um booleano e retorna um booleano:
+   not :: Bool -> Bool
+-}
 
--- Here's a function that takes two arguments:
--- add :: Integer -> Integer -> Integer
+{- Aqui temos uma função que recebe dois argumentos
+   soma :: Integer -> Integer -> Integer
+-}
 
--- When you define a value, it's good practice to write its type above it:
+{- Quando você define um valor em Haskell
+   uma boa prática de programação é escrever
+   o TIPO acima dessa mesma. Como segue:
+-}
+
 double :: Integer -> Integer
 double x = x * 2
 
 ----------------------------------------------------
--- 6. Control Flow and If Statements
+-- 6. Controle de Fluxo e IF-THEN-ELSE
 ----------------------------------------------------
 
--- if statements
-haskell = if 1 == 1 then "awesome" else "awful" -- haskell = "awesome"
+-- Blocos IF-THEN-ELSE
+let valor_alternado = if 144 `mod` 6 == 4 then "acertou" else "errou" -- errou
 
--- if statements can be on multiple lines too, indentation is important
-haskell = if 1 == 1
-            then "awesome"
-            else "awful"
+-- É legal identar quando você tem múltiplos branchs para acontecer
 
--- case statements: Here's how you could parse command line arguments
+let valor_alternado = if 144 `mod` 6 == 4
+                      then "acertou"
+                      else "errou"
+
+-- Blocos CASE
+
+{- caso <argumento> seja :
+        <ajuda>  -> mostra_ajuda
+        <inicia> -> inicia_programa
+        <_>      -> putStrLn "ExArgumentoInvalido"
+
+    Onde `_` Significa Qualquer Outra Coisa.
+-}
+
+
 case args of
-  "help" -> printHelp
-  "start" -> startProgram
-  _ -> putStrLn "bad args"
+     "ajuda"  -> mostra_ajuda
+     "inicia" -> inicia_programa
+     _        -> putStrLn "ExArgumentoInvalido"
 
--- Haskell doesn't have loops because it uses recursion instead.
--- map applies a function over every element in an array
+{- Haskell não funciona na base de loops pois ele é
+   fortemente baseado em funcões recursivas e cálculo lambda
 
+   Use `map` uma função build-in do interpretador
+   para, por exemplo, mapear uma lista:
+-}
 map (*2) [1..5] -- [2, 4, 6, 8, 10]
 
--- you can make a for function using map
-for array func = map func array
-
--- and then use it
+-- Você pode criar um FOR-LOOP usando map
+let for array funcao = map funcao array
 for [0..5] $ \i -> show i
 
--- we could've written that like this too:
+-- Ou ainda (Pesquise sobre show em Haskell):
 for [0..5] show
 
--- You can use foldl or foldr to reduce a list
--- foldl <fn> <initial value> <list>
+
+{- foldl computação é feita esquerda para direita
+   foldr computação é feita  direita para esquerda
+
+   Você pode usar foldl or foldr a fim de reduzir uma lista
+   fold(l||r) <funcao> <valor inicial> <lista>
+-}
+
+-- Fold Left
 foldl (\x y -> 2*x + y) 4 [1,2,3] -- 43
 
--- This is the same as
-(2 * (2 * (2 * 4 + 1) + 2) + 3)
+-- Pensando Recursivamente Esquerda-Direita
+(2 * (2 * (2 * 4 + 1) + 2) + 3) -- 43
 
--- foldl is left-handed, foldr is right-
+-- Fold Right
 foldr (\x y -> 2*x + y) 4 [1,2,3] -- 16
 
--- This is now the same as
+-- Pensando Recursivamente Direita-Esquerda
 (2 * 3 + (2 * 2 + (2 * 1 + 4)))
 
 ----------------------------------------------------
--- 7. Data Types
+-- 7. Declaração de Dados
 ----------------------------------------------------
 
--- Here's how you make your own data type in Haskell
+{- Vamos começar definindo um tipo de
+   dado que é uma cor rgb então ela
+   tem valores para vermelho azul e verde
+   ela é composta desses 3 comprimentos
+   Vamos usar `data` e `say` que são built-in:
+   
+   Haskell pede que você user letra
+   maiuscula para tipos (types) ou classes (Class)
+   
+   Por favor, visite: http://www.haskell.org/haskellwiki/Type
+   E de uma olhada na fórmula genérica de declaração de dados.
+-}
 
-data Color = Red | Blue | Green
+data Cor = Vermelho | Azul | Verde
 
--- Now you can use it in a function:
+-- say :: Color -> String
 
+let say Vermelho = "Vermelho"
+let say Azul = "Azul"
+let say Verde = "Verde"
 
-say :: Color -> String
-say Red = "You are Red!"
-say Blue = "You are Blue!"
-say Green =  "You are Green!"
-
--- Your data types can have parameters too:
+{- O seu tipo de dados por receber parâmetros também
+   vamos com um exemplo usando `data` e a Classe `Maybe`.
+-}
 
 data Maybe a = Nothing | Just a
 
--- These are all of type Maybe
-Just "hello"    -- of type `Maybe String`
-Just 1          -- of type `Maybe Int`
-Nothing         -- of type `Maybe a` for any `a`
+-- Just e Nothing são todos derivadas de Maybe
+Just "hello" -- tipo `Maybe String`
+Just 1       -- tipo `Maybe Int`
+Nothing      -- tipo `Maybe a` para algum `a`
 
 ----------------------------------------------------
 -- 8. Haskell IO
@@ -514,18 +528,15 @@ Prelude> let foo = 1.4
 
 Prelude> :t foo
 foo :: Double
-```
 
 ----------------------------------------------------
 -- 9. Mônadas
 ----------------------------------------------------
 
+```
 
 
-
-----------------------------------------------------
--- 10. Extra
-----------------------------------------------------
+# Extra
 
 Compilador e Interpretador Haskell
 
@@ -544,10 +555,16 @@ Aplicações Haskell Muito Interessantes:
 * [Bio Informática](http://www.haskell.org/haskellwiki/Applications_and_libraries/Bioinformatics)
 * [Muitos Outras Aplicações](http://www.haskell.org/haskellwiki/Libraries_and_tools)
 
+Comunidade Haskell
+* [Musica das Mônadas](http://www.haskell.org/haskellwiki/Music_of_monads)
+
 Tutoriais:
 
 * [Mapeadores](http://www.haskell.org/ghc/docs/6.12.2/html/libraries/containers-0.3.0.0/Data-Map.html)
 * [Aprenda Haskell!](http://haskell.tailorfontela.com.br/chapters)
+* [Fundação Teórica da Linguagem Haskell](http://www.haskell.org/haskellwiki/Lambda_calculus)
+* [Classe Maybe](http://www.haskell.org/haskellwiki/Maybe)
+* [Zvon Referência Haskell](http://www.zvon.org/other/haskell/)
 
 Obtenha Também Haskell Wiki Book [Aqui!](https://en.wikibooks.org/wiki/Haskell)
 
