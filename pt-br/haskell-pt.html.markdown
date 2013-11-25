@@ -402,10 +402,10 @@ foldr (\x y -> 2*x + y) 4 [1,2,3] -- 16
    tem valores para vermelho azul e verde
    ela é composta desses 3 comprimentos
    Vamos usar `data` e `say` que são built-in:
-   
+
    Haskell pede que você user letra
    maiuscula para tipos (types) ou classes (Class)
-   
+
    Por favor, visite: http://www.haskell.org/haskellwiki/Type
    E de uma olhada na fórmula genérica de declaração de dados.
 -}
@@ -429,86 +429,132 @@ Just "hello" -- tipo `Maybe String`
 Just 1       -- tipo `Maybe Int`
 Nothing      -- tipo `Maybe a` para algum `a`
 
+
 ----------------------------------------------------
--- 8. Haskell IO
+-- 8. Mônadas
 ----------------------------------------------------
 
--- While IO can't be explained fully without explaining monads,
--- it is not hard to explain enough to get going.
+{- As mônadas permitem que o programador construa computações
+   sando os blocos de comando sequenciais, os quais, por sua vez,
+   podem ter outras sequencias de computações. Para entender melhor
+   a classe Monads você precisa ler um pouco mais sobre Classes em
+   Haskell e o polímofirmo ad hoc do Haskell.
 
--- When a Haskell program is executed, the function `main` is
--- called. It must return a value of type `IO ()`. For example:
+   A Classe Mônada padrão em Haskell é a seguinte:
+-}
 
-main :: IO ()
-main = putStrLn $ "Hello, sky! " ++ (say Blue)
--- putStrLn has type String -> IO ()
+class Monad m where
+  (>>=)  :: m a -> (a -> m b) -> m b
+  (>>)   :: m a -> m b -> m b
+  return :: m -> m a
+  fail   :: String -> m a
 
--- It is easiest to do IO if you can implement your program as
--- a function from String to String. The function
---    interact :: (String -> String) -> IO ()
--- inputs some text, runs a function on it, and prints out the
--- output.
+  -- Definição completa mínima:
+  -- (>>=), return
 
-countLines :: String -> String
-countLines = show . length . lines
+  m >> k = m >>= \_ -> k
+  fail s = error s
 
-main' = interact countLines
+{- Como exemplo, a função le_imprime opera com a função ">=" da
+   classe mônada, a qual repassa o retorno obtido com a função
+   getLine para uma função lambda \e qualquer.
 
--- You can think of a value of type `IO ()` as representing a
--- sequence of actions for the computer to do, much like a
--- computer program written in an imperative language. We can use
--- the `do` notation to chain actions together. For example:
+   GHC-BASICS
+   Cria um arquivo chamado le_imprime.hs
+   compile: ghc --make -c -O Programa_Haskell_Principal.hs
+   execute: ./Programa_Haskell_Principal
+-}
 
-sayHello :: IO ()
-sayHello = do
-   putStrLn "What is your name?"
-   name <- getLine -- this gets a line and gives it the name "name"
-   putStrLn $ "Hello, " ++ name
+le_imprime :: IO ()
+le_imprime = getLine >>= \e -> putStrLn e -- le_imprime = getLine >>= putStrLn
 
--- Exercise: write your own version of `interact` that only reads
---           one line of input.
+{- Mônadas abrem a possibilidade de criar computações
+   no estilo imperativo dentro de um grande programa funcional
 
--- The code in `sayHello` will never be executed, however. The only
--- action that ever gets executed is the value of `main`.
--- To run `sayHello` comment out the above definition of `main`
--- and replace it with:
---   main = sayHello
+   Leis das Mônadas:
 
--- Let's understand better how the function `getLine` we just
--- used works. Its type is:
---    getLine :: IO String
--- You can think of a value of type `IO a` as representing a
--- computer program that will generate a value of type `a`
--- when executed (in addition to anything else it does). We can
--- store and reuse this value using `<-`. We can also
--- make our own action of type `IO String`:
+   1. return a >>= k  =  k a
+   2. m >>= return  =  m
+   3. m >>= (\x -> k x >>= h)  =  (m >>= k) >>= h
+-}
 
-action :: IO String
-action = do
-   putStrLn "This is a line. Duh"
-   input1 <- getLine
-   input2 <- getLine
-   -- The type of the `do` statement is that of its last line.
-   -- `return` is not a keyword, but merely a function
-   return (input1 ++ "\n" ++ input2) -- return :: String -> IO String
+-- O operador >> é chamada então (p -> q, p então q)
+let m >> n = m >>= \_ -> n
 
--- We can use this just like we used `getLine`:
+
+----------------------------------------------------
+-- 9. Haskell Entrada/Saída
+----------------------------------------------------
+
+{- Quando um programa Haskell é executado a função `main` é
+   chamada. E ela precisa retornar um valor do tipo IO().
+-}
+
+module Main where
+  main :: IO ()
+  main = putStrLn $ "Oi Glasgow!"
+
+-- Ou simplesmente:
+
+main = putStrLn $ "Oi Glasgow!"
+
+{- putStrLn é do tipo String -> IO()
+
+   É o jeito mais fácil de conseguir E/S se você implementar
+   o seu programa como uma função de String para String.
+
+   A função:
+      interact :: (String -> String) -> IO ()
+   Joga texto, roda a função nela mesma, e imprime a saída
+-}
+
+module Main where
+  contadorLinhas = show . length . lines
+  main = interact contadorLinhas
+
+-- Use a notação `do` para encadear ações. Por exemplo:
+
+diga_oi :: IO ()
+
+diga_oi = do
+
+  putStrLn "Qual eh o seu nome?"
+  name <- getLine
+  putStrLn $ "Oi, " ++ name
+
+main = diga_oi
+
+{- Exercício! Escreva sua própria versão
+   onde irá ler apenas uma linhas de input.
+
+   Vamos entender melhor como `getLine` funciona?
+      getLine :: IO String
+   Pense que o valor do tipo `IO a` representando um
+   programa de computador que irá gerar um valor do tipo `a`
+   quando for ele executado.
+   
+   Nós podemos guardar e reusar isso apenas apontando `<-`.
+   Nós podemos também cria nossas próprias ações do tipo `IO String`
+-}
+
+nova_acao :: IO String
+
+nova_acao = do
+  putStrLn "Uma string curta o bastante."
+  entra1 <- getLine
+  entra2 <- getLine
+  -- return :: String -> IO String
+  return (entra1 ++ "\n" ++ entra2)
+
+{- Nós podemos usar da seguinte maneira
+   como acabamos de usar `getLine`, exemplo:
+-}
 
 main'' = do
-    putStrLn "I will echo two lines!"
-    result <- action
-    putStrLn result
-    putStrLn "This was all, folks!"
-
--- The type `IO` is an example of a "monad". The way Haskell uses a monad to
--- do IO allows it to be a purely functional language. Any function that
--- interacts with the outside world (i.e. does IO) gets marked as `IO` in its
--- type signature. This lets us reason about what functions are "pure" (don't
--- interact with the outside world or modify state) and what functions aren't.
-
--- This is a powerful feature, because it's easy to run pure functions
--- concurrently; so, concurrency in Haskell is very easy.
-
+  putStrLn "String A"
+  result <- action
+  putStrLn result
+  putStrLn "String B"
 
 ----------------------------------------------------
 -- 9. O Haskell REPL (Read Eval Print Loop)
@@ -528,11 +574,6 @@ Prelude> let foo = 1.4
 
 Prelude> :t foo
 foo :: Double
-
-----------------------------------------------------
--- 9. Mônadas
-----------------------------------------------------
-
 ```
 
 
@@ -542,6 +583,7 @@ Compilador e Interpretador Haskell
 
 * [GHC](http://www.haskell.org/ghc/docs/latest/html/users_guide/index.html)
 * [GHC/GHCi](http://www.haskell.org/haskellwiki/GHC)
+* [Haskell em 5 Passos !!!](http://www.haskell.org/haskellwiki/Haskell_in_5_steps)
 
 Instale Haskell [Aqui!](http://www.haskell.org/platform/).
 
@@ -557,6 +599,7 @@ Aplicações Haskell Muito Interessantes:
 
 Comunidade Haskell
 * [Musica das Mônadas](http://www.haskell.org/haskellwiki/Music_of_monads)
+* [Entendendo Mônadas](https://en.wikibooks.org/wiki/Haskell/Understanding_monads)
 
 Tutoriais:
 
