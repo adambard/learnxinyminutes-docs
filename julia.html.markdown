@@ -402,7 +402,7 @@ Set([1,2,3]...) #=> Set{Int64}(1,2,3) # this is equivalent to Set(1,2,3)
 
 x = (1,2,3)     #=> (1,2,3)
 Set(x)          #=> Set{(Int64,Int64,Int64)}((1,2,3)) # a Set of Tuples
-Set(x...)       #=> Set{Int64}(2,3,1)
+Set(x...)       #=> Set{Int64}(1,2,3)
 
 
 # You can define functions with optional positional arguments
