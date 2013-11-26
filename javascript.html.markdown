@@ -31,8 +31,8 @@ doStuff();
 // wherever there's a newline, except in certain cases.
 doStuff()
 
-// So that we don't have to worry about those certain cases (for now), we'll
-// leave them on.
+// Because those cases can cause unexpected results, we'll keep on using
+// semicolons in this guide.
 
 ///////////////////////////////////
 // 1. Numbers, Strings and Operators
@@ -217,6 +217,18 @@ function myFunction(thing){
     return thing.toUpperCase();
 }
 myFunction("foo"); // = "FOO"
+
+// Note that the value to be returned must start on the same line as the
+// 'return' keyword, otherwise you'll always return 'undefined' due to
+// automatic semicolon insertion. Watch out for this when using Allman style.
+function myFunction()
+{
+    return // <- semicolon automatically inserted here
+    {
+        thisIsAn: 'object literal'
+    }
+}
+myFunction(); // = undefined
 
 // JavaScript functions are first class objects, so they can be reassigned to
 // different variable names and passed to other functions as arguments - for
