@@ -4,9 +4,9 @@ contributors:
     - ["Adit Bhargava", "http://adit.io"]
 ---
 
-Haskell was designed as a practical, purely functional programming language. It's famous for
-its monads and its type system, but I keep coming back to it because of its elegance. Haskell
-makes coding a real joy for me.
+Haskell was designed as a practical, purely functional programming
+language. It's famous for its monads and its type system, but I keep coming back
+to it because of its elegance. Haskell makes coding a real joy for me.
 
 ```haskell
 -- Single line comments start with two dashes.
@@ -401,7 +401,9 @@ Hello, Friend!
 
 ```
 
-There's a lot more to Haskell, including typeclasses and monads. These are the big ideas that make Haskell such fun to code in. I'll leave you with one final Haskell example: an implementation of quicksort in Haskell:
+There's a lot more to Haskell, including typeclasses and monads. These are the
+big ideas that make Haskell such fun to code in. I'll leave you with one final
+Haskell example: an implementation of quicksort in Haskell:
 
 ```haskell
 qsort [] = []
