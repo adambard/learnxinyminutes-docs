@@ -11,7 +11,7 @@ pattern matching, type inference (guessing the right types but never allowing
 implicit type conversion).  If you have an imperative background, not being able
 to update variables can feel severely inhibiting.
 
-```
+```sml
 (* Comments in Standard ML begin with (* and end with *).  Comments can be
    nested which means that all (* tags must end with a *) tag.  This comment
    contains two nested comments. *)
