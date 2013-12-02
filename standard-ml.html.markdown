@@ -326,9 +326,9 @@ val test_poem = readPoem "roses.txt"  (* gives [ "Roses are red,",
 ## Further learning
 
 * Install an interactive compiler (REPL), for example
-  [http://www.polyml.org/](Poly/ML),
-  [http://mosml.org](Moscow ML) or
-  [http://smlnj.org/](SML/NJ).
+  [Poly/ML](http://www.polyml.org/),
+  [Moscow ML](http://mosml.org)
+  [SML/NJ](http://smlnj.org/).
 * Follow the Coursera course [Programming Languages](https://www.coursera.org/course/proglang).
 * Get the book *ML for the Working Programmer* by Larry C. Paulson.
 
