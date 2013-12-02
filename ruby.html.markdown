@@ -323,6 +323,13 @@ class Human
     @name
   end
 
+  # The above functionality can be encapsulated using the attr_accessor method as follows
+  attr_accessor :name
+
+  # Getter/setter methods can also be created individually like this
+  attr_reader :name
+  attr_writer :name
+
   # A class method uses self to distinguish from instance methods.
   # It can only be called on the class, not an instance.
   def self.say(msg)
