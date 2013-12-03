@@ -199,17 +199,17 @@ val hmm = answer "What is the meaning of life, the universe and everything?"
 
 (* Functions can take several arguments by taking one tuples as argument: *)
 fun solve2 (a : real, b : real, c : real) =
-    ( Math.sqrt (~b + Math.sqrt(b * b - 4.0*a*c) / (2.0 * a),
-      Math.sqrt (~b - Math.sqrt(b * b - 4.0*a*c) / (2.0 * a) )
+    ( (~b + Math.sqrt(b * b - 4.0*a*c)) / (2.0 * a),
+      (~b - Math.sqrt(b * b - 4.0*a*c)) / (2.0 * a) )
 
 (* Sometimes, the same computation is carried out several times. It makes sense
    to save and re-use the result the first time. We can use "let-bindings": *)
 fun solve2 (a : real, b : real, c : real) =
     let val discr  = b * b - 4.0*a*c
-        val sqr = Math.sqrt d
+        val sqr = Math.sqrt discr
         val denom = 2.0 * a
-    in (~b + sq / denom,
-        ~b - sq / denom) end
+    in ((~b + sqr) / denom,
+        (~b - sqr) / denom) end
 
 
 (* Pattern matching is a funky part of functional programming.  It is an
@@ -273,10 +273,10 @@ fun say(col) =
     raise Fail "Unknown color"
 
 (* Datatypes are very often used in combination with pattern matching *)
-fun say Red = "You are red!"
+fun say Red   = "You are red!"
   | say Green = "You are green!"
-  | say Blue = "You are blue!"
-  | _ = raise Fail "Unknown color"
+  | say Blue  = "You are blue!"
+  | say _     = raise Fail "Unknown color"
 
 
 (* Here is a binary tree datatype *)
@@ -321,7 +321,7 @@ val test_poem = readPoem "roses.txt"  (* gives [ "Roses are red,",
                                                  "Violets are blue.",
                                                  "I have a gun.",
                                                  "Get in the van." ] *)
-~~~~
+```
 
 ## Further learning
 
