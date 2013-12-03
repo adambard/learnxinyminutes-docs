@@ -357,7 +357,7 @@ end
 #   2
 #   3
 
-# Handle exceptions with a try/except block
+# Handle exceptions with a try/catch block
 try
    error("help")
 catch e
@@ -402,7 +402,7 @@ Set([1,2,3]...) #=> Set{Int64}(1,2,3) # this is equivalent to Set(1,2,3)
 
 x = (1,2,3)     #=> (1,2,3)
 Set(x)          #=> Set{(Int64,Int64,Int64)}((1,2,3)) # a Set of Tuples
-Set(x...)       #=> Set{Int64}(1,2,3)
+Set(x...)       #=> Set{Int64}(2,3,1)
 
 
 # You can define functions with optional positional arguments
