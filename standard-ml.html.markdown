@@ -302,6 +302,28 @@ fun count (Leaf n) = n
   | count (Node (leftTree, n, rightTree)) = count leftTree + n + count rightTree
 
 
+(* Exceptions! *)
+(* Exceptions can be raised using "raise" *)
+fun raiseException msg = raise Fail msg
+
+(* This raises exception `Fail "hello from exception"` *)
+(* val _ = raiseException "hello from exception" *)
+
+(* Exceptions can be caught using "handle" *)
+val x = raiseException "hello" handle Fail msg => msg
+(* x now has the value "hello" *)
+
+(* We can pattern match in "handle" to make sure
+   a specfic exception was raised, or grab the message *)
+val y = raiseException "..." handle Fail _ => "Fail was raised"
+                                | Domain => "Domain was raised"
+(* y now has the value "Fail was raised" *)
+
+(* We can define our own exceptions like this *)
+exception MyException
+exception MyExceptionWithMessage of string
+
+
 (* File I/O! *)
 (* Write a nice poem to a file *)
 fun writePoem(filename) =
