@@ -186,7 +186,7 @@ fun fibonacci n =
    temporarily shadow them with new variables that have the same names.  In this
    sense, variables are really constants and only behave like variables when
    dealing with recursion.  For this reason, variables are also called value
-   bindings.  An example of this: *)
+   bindings. An example of this: *)
 
 val x = 42
 fun answer(question) =
