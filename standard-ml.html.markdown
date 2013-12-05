@@ -316,7 +316,7 @@ val x = raiseException "hello" handle Fail msg => msg
 (* We can pattern match in "handle" to make sure
    a specfic exception was raised, or grab the message *)
 val y = raiseException "..." handle Fail _ => "Fail was raised"
-                                | Domain => "Domain was raised"
+                                  | Domain => "Domain was raised"
 (* y now has the value "Fail was raised" *)
 
 (* We can define our own exceptions like this *)
