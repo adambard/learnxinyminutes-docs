@@ -264,6 +264,24 @@ fun map f [] = []
 (* map has type ('a -> 'b) -> 'a list -> 'b list and is called polymorphic. *)
 (* 'a is called a type variable. *)
 
+
+(* We can define functions as infix *)
+fun plus (x, y) = x + y
+infix plus
+(* We can now call plus like "2 plus 5" *)
+
+(* Functions can also be made infix before they are defined *)
+infix minus
+fun x minus y = x - y
+
+(* An infix function/operator can be made prefix with "op" *)
+val n = op + (5, 5)
+(* n is now 10 *)
+
+(* op is useful when combined with high order functions *)
+val listSum = foldl op + 0 [1,2,3,4,5]
+
+
 (* Datatypes are useful for creating both simple and complex structures *)
 datatype color = Red | Green | Blue
 
