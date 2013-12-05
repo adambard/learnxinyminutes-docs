@@ -104,7 +104,7 @@ val more_groups  = ["Batman","Superman"] :: groups
 (* Lists of the same kind can be appended using the @ ("append") operator *)
 val guest_list = [ "Mom", "Dad" ] @ [ "Aunt", "Uncle" ]
 
-(* This could have been done with the :: operator (pronounced "cons") *)
+(* This could have been done with the "cons" operator *)
 val guest_list = "Mom" :: "Dad" :: [ "Aunt", "Uncle" ]
 
 (* If you have many lists of the same kind, you can concatenate them all *)
