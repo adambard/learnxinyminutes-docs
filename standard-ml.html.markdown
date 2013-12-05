@@ -95,7 +95,8 @@ val groups = [ [ "Alice", "Bob" ],
 
 val number_count = List.length numbers     (* gives 7 *)
 
-(* You can put single values in front of lists of the same kind *)
+(* You can put single values in front of lists of the same kind
+   using the :: ("cons") operator *)
 val more_numbers = 13 :: numbers  (* gives [13, 1, 3, 3, 7, ...] *)
 val more_groups  = ["Batman","Superman"] :: groups
 
