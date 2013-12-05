@@ -2,6 +2,7 @@
 language: Standard ML
 contributors:
     - ["Simon Shine", "http://shine.eu.org/"]
+    - ["David Pedersen", "http://lonelyproton.com/"]
 lang: en-en
 ---
 
@@ -95,14 +96,15 @@ val groups = [ [ "Alice", "Bob" ],
 
 val number_count = List.length numbers     (* gives 7 *)
 
-(* You can put single values in front of lists of the same kind *)
+(* You can put single values in front of lists of the same kind
+   using the :: ("cons") operator *)
 val more_numbers = 13 :: numbers  (* gives [13, 1, 3, 3, 7, ...] *)
 val more_groups  = ["Batman","Superman"] :: groups
 
 (* Lists of the same kind can be appended using the @ ("append") operator *)
 val guest_list = [ "Mom", "Dad" ] @ [ "Aunt", "Uncle" ]
 
-(* This could have been done with the :: operator (pronounced "cons") *)
+(* This could have been done with the "cons" operator *)
 val guest_list = "Mom" :: "Dad" :: [ "Aunt", "Uncle" ]
 
 (* If you have many lists of the same kind, you can concatenate them all *)
@@ -184,7 +186,7 @@ fun fibonacci n =
    temporarily shadow them with new variables that have the same names.  In this
    sense, variables are really constants and only behave like variables when
    dealing with recursion.  For this reason, variables are also called value
-   bindings.  An example of this: *)
+   bindings. An example of this: *)
 
 val x = 42
 fun answer(question) =
@@ -262,6 +264,24 @@ fun map f [] = []
 (* map has type ('a -> 'b) -> 'a list -> 'b list and is called polymorphic. *)
 (* 'a is called a type variable. *)
 
+
+(* We can define functions as infix *)
+fun plus (x, y) = x + y
+infix plus
+(* We can now call plus like "2 plus 5" *)
+
+(* Functions can also be made infix before they are defined *)
+infix minus
+fun x minus y = x - y
+
+(* An infix function/operator can be made prefix with "op" *)
+val n = op + (5, 5)
+(* n is now 10 *)
+
+(* op is useful when combined with high order functions *)
+val listSum = foldl op + 0 [1,2,3,4,5]
+
+
 (* Datatypes are useful for creating both simple and complex structures *)
 datatype color = Red | Green | Blue
 
@@ -300,6 +320,28 @@ fun count (Leaf n) = n
   | count (Node (leftTree, n, rightTree)) = count leftTree + n + count rightTree
 
 
+(* Exceptions! *)
+(* Exceptions can be raised using "raise" *)
+fun raiseException msg = raise Fail msg
+
+(* This raises exception `Fail "hello from exception"` *)
+(* val _ = raiseException "hello from exception" *)
+
+(* Exceptions can be caught using "handle" *)
+val x = raiseException "hello" handle Fail msg => msg
+(* x now has the value "hello" *)
+
+(* We can pattern match in "handle" to make sure
+   a specfic exception was raised, or grab the message *)
+val y = raiseException "..." handle Fail _ => "Fail was raised"
+                                  | Domain => "Domain was raised"
+(* y now has the value "Fail was raised" *)
+
+(* We can define our own exceptions like this *)
+exception MyException
+exception MyExceptionWithMessage of string
+
+
 (* File I/O! *)
 (* Write a nice poem to a file *)
 fun writePoem(filename) =
@@ -327,7 +369,7 @@ val test_poem = readPoem "roses.txt"  (* gives [ "Roses are red,",
 
 * Install an interactive compiler (REPL), for example
   [Poly/ML](http://www.polyml.org/),
-  [Moscow ML](http://mosml.org)
+  [Moscow ML](http://mosml.org),
   [SML/NJ](http://smlnj.org/).
 * Follow the Coursera course [Programming Languages](https://www.coursera.org/course/proglang).
 * Get the book *ML for the Working Programmer* by Larry C. Paulson.
