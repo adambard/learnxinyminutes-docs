@@ -47,9 +47,9 @@ service]. Vous pouvez joindre le traducteur de ce document ici :
 1/2                    ; rationnel
 1+2i                   ; complexe
 
-;; Une fonction s'écrit (f x y z ...)
+;; Un appel de fonction s'écrit (f x y z ...)
 ;; où f est une fonction et x, y, z, ... sont des arguments.
-;; Si vous voulez créer une liste de données litérales, utilisez ' pour
+;; Si vous voulez créer une liste littérales, utilisez ' pour
 ;; empécher l'évaluation de la liste.
 '(+ 1 2) ; => (+ 1 2)
 ;; Et maintenant, un peu d'arithmétique
@@ -65,8 +65,8 @@ service]. Vous pouvez joindre le traducteur de ce document ici :
 (+ 1+2i  2-3i) ; => 3-1i
 
 ;;; Booléens
-#t ; for true
-#f ; for false -- any value other than #f is true
+#t ; pour vrai
+#f ; pour faux -- Toute autre valeur que #f est vraie
 (not #t) ; => #f
 (and 0 #f (error "doesn't get here")) ; => #f
 (or #f 0 (error "doesn't get here"))  ; => 0
@@ -79,8 +79,8 @@ service]. Vous pouvez joindre le traducteur de ce document ici :
 ;;; Une chaîne de caractères est un tableau de caractères de longueur
 ;;; fixe.
 "Hello, world!"
-"Benjamin \"Bugsy\" Siegel"   ; le backslash est le caractère d'échappement
-"Foo\tbar\41\x21\u0021\a\r\n" ; sont inclus les échappements de type C
+"Benjamin \"Bugsy\" Siegel"   ; Le backslash est le caractère d'échappement
+"Foo\tbar\41\x21\u0021\a\r\n" ; Sont inclus les échappements de type C
                               ; et unicode
 "λx:(μα.α→α).xx"              ; une chaîne peut inclure de l'unicode
 
@@ -100,7 +100,6 @@ service]. Vous pouvez joindre le traducteur de ce document ici :
 ;; 2. Variables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Vous pouvez créer une variable à l'aide de define
-;; a variable name can use any character except: ()[]{}",'`;#|\
 ;; Une variable peut contenir n'importe quel caractères, à l'exception
 ;; de : ()[]{}",'`;#|\
 (define some-var 5)
@@ -113,7 +112,7 @@ some-var ; => 5
 ;; Accéder à une variable non-initialisée provoque une exception
 ; x ; => x: indéfini ...
 
-;; Attachement local : `me` est attaché à "Bob" seulement à l'intérieur
+;; Déclaration locale : `me` est attaché à "Bob" seulement à l'intérieur
 ;; de (let ...)
 (let ([me "Bob"])
   "Alice"
@@ -131,9 +130,9 @@ my-pet ; => #<dog>
 (dog? my-pet) ; => #t
 (dog-name my-pet) ; => "lassie"
 
-;;; Paires (non-mutable)
-;; `cons` construit une paire, `car` et `cdr` extraient respectivement les
-;; premiers et seconds éléments.
+;;; Paires (non mutable)
+;; `cons` construit une paire, `car` et `cdr` extraient respectivement le
+;; premier et le second élément.
 (cons 1 2) ; => '(1 . 2)
 (car (cons 1 2)) ; => 1
 (cdr (cons 1 2)) ; => 2
@@ -141,22 +140,22 @@ my-pet ; => #<dog>
 ;;; Listes
 
 ;; Les listes en Racket sont des structures de données de type *linked-list*,
-;; produites avec des paires assemblées avec `cons` et terminée avec `null`
+;; produites avec des paires assemblées avec `cons` et terminée par `null`
 ;; (ou '()).
 (cons 1 (cons 2 (cons 3 null))) ; => '(1 2 3)
 ;; `list` est un constructeur variadique plus commode à utiliser
 (list 1 2 3) ; => '(1 2 3)
-;; et un guillemet simple peut aussi être utilisé pour une liste litérale
+;; et un guillemet simple peut aussi être utilisé pour une liste littérale
 '(1 2 3) ; => '(1 2 3)
 
 ;; On peut toujours utiliser `cons` pour ajouter un élément au début
 ;; d'une liste
 (cons 4 '(1 2 3)) ; => '(4 1 2 3)
 
-;; Utilisez `append` pour additionner des listes entre elles
+;; Utilisez `append` pour ajouter une liste à une autre
 (append '(1 2) '(3 4)) ; => '(1 2 3 4)
 
-;; Les listes sont un type très basique, il y a donc *beaucoup* de
+;; Une liste est un type très basique, il y a donc *beaucoup* de
 ;; fonctionnalités qui leur sont dédiées, quelques exemples :
 (map add1 '(1 2 3))          ; => '(2 3 4)
 (map + '(1 2 3) '(10 20 30)) ; => '(11 22 33)
@@ -175,17 +174,17 @@ my-pet ; => #<dog>
 
 ;;; Sets
 
-;; Créew un set à partir d'une liste
+;; Créez un set à partir d'une liste
 (list->set '(1 2 3 1 2 3 3 2 1 3 2 1)) ; => (set 1 2 3)
 
 ;; Ajoutez un membre avec `set-add`
 ;; (Fonctionnel: renvoit le set étendu, plutôt que de muter le set en entrée)
 (set-add (set 1 2 3) 4) ; => (set 1 2 3 4)
 
-;; Retirer un membre avec `set-remove`
+;; Retirez un membre avec `set-remove`
 (set-remove (set 1 2 3) 1) ; => (set 2 3)
 
-;; Tester l'existence d'un membre avec `set-member?`
+;; Testez l'existence d'un membre avec `set-member?`
 (set-member? (set 1 2 3) 1) ; => #t
 (set-member? (set 1 2 3) 4) ; => #f
 
@@ -219,9 +218,8 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Utilisez `lambda` pour créer des fonctions.
-;; Une fonction renvoit toujours la valeur de sa dernière expression.
+;; Une fonction renvoie toujours la valeur de sa dernière expression.
 (lambda () "Hello World") ; => #<procedure>
-;; Can also use a unicode `λ'
 ;; On peut aussi utiliser le caractère unicode `λ'
 (λ () "Hello World")     ; => même fonction
 
@@ -235,10 +233,11 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 (hello-world) ; => "Hello World"
 
 ;; Vous pouvez raccourcir ceci en utilisant le sucre syntaxique pour la
-;; définition des fonctions :
+;; définition de fonction :
 (define (hello-world2) "Hello World")
 
-;; Entre les () après lambda, vous avez la liste des arguments de la fonction
+;; Entre les () après lambda, vous déclarez la liste des arguments de la
+;; fonction
 (define hello
   (lambda (name)
     (string-append "Hello " name)))
@@ -306,7 +305,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 (equal? (list 'a 'b) (list 'b 'a)) ; => #f
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 5. Contrôle du flot
+;; 5. Structures de contrôle
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; Conditions
@@ -448,7 +447,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 ;; 6. Mutabilité
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Util `set!` pour réassigner une valeur à une variable existante
+;; Utilisez `set!` pour réassigner une valeur à une variable existante
 (define n 5)
 (set! n (add1 n))
 n ; => 6
@@ -503,7 +502,7 @@ vec ; => #(1 2 3 4)
     (printf fmt (make-string n ch))
     (newline)))
 
-;; Utilisez `require` pour importer les fonctions fournies par le
+;; Utilisez `require` pour importer les fonctions fournies par un
 ;; module (provide)
 (require 'cake) ; le ' est pour un sous-module local
 (print-cake 3)
@@ -537,9 +536,8 @@ vec ; => #(1 2 3 4)
 (send charlie grow 6)
 (send charlie get-size) ; => 16
 
-;; `fish%' is a plain "first class" value, which can get us mixins
 ;; `fish%` est une simple valeur de «première classe», ce qui va permettre
-;; les mélanges (*mixins*)
+;; la composition (*mixins*)
 (define (add-color c%)
   (class c%
     (init color)
