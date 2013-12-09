@@ -10,7 +10,7 @@ Translator:
 ANSI Common Lisp 是一个广泛通用于各个工业领域的、支持多种范式的编程语言。
 这门语言也经常被引用作“可编程的编程语言”（可以写代码的代码）。
 
-经典的入门点为[已经完全免费提供的实用Common Lisp编程](http://www.gigamonkeys.com/book/)
+经典的入门点为[已经完全免费提供的《实用 Common Lisp 编程》](http://www.gigamonkeys.com/book/)
 
 另外还有一本近期内比较热门的
 [Land of Lisp](http://landoflisp.com/).
