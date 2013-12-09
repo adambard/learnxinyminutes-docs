@@ -99,6 +99,10 @@ python2 hello.py 2> "error.err"
 # current directory.
 echo "There are $(ls | wc -l) items here."
 
+# The same can be done using backticks `` but they can't be nested - the preferred way
+# is to use $( ).
+echo "There are `ls | wc -l` items here."
+
 # Bash uses a case statement that works similarly to switch in Java and C++:
 case "$VARIABLE" in 
     #List patterns for the conditions you want to meet
@@ -109,8 +113,7 @@ esac
 
 # For loops iterate for as many arguments given:
 # The contents of var $VARIABLE is printed three times.
-# Note that ` ` is equivalent to $( ) and that seq returns a sequence of size 3.
-for VARIABLE in `seq 3`
+for VARIABLE in {1..3}
 do
     echo "$VARIABLE"
 done
