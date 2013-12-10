@@ -40,7 +40,7 @@ VARIABLE = "Some string"
 echo $VARIABLE
 echo "$VARIABLE"
 echo '$VARIABLE'
-# 当你分配 (assign) 、导出 (export)，或者以其他方式使用变量时，变量名前不加 $。
+# 当你赋值 (assign) 、导出 (export)，或者以其他方式使用变量时，变量名前不加 $。
 # 如果要使用变量的值， 则要加 $。
 # 注意： ' (单引号) 不会展开变量（即会屏蔽掉变量）。
 
