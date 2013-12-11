@@ -322,7 +322,7 @@ class Bicycle {
     // 方法声明的语法:
     // <作用域> <返回值类型> <方法名>(<参数列表>)
     public int getCadence() {
-        retur450635425n cadence;
+        return cadence;
     }
 
     // void返450635425回值函数没有返回值
