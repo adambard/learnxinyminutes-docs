@@ -1,10 +1,11 @@
 ---
-Language: "Common Lisp"
-Filename: commonlisp.lisp
-Contributor:
+language: "Common Lisp"
+filename: commonlisp-cn.lisp
+contributors:
   - ["Paul Nathan", "https://github.com/pnathan"]
-Translator:
+translators:
   - ["Mac David", "http://macdavid313.com"]
+lang: zh-cn
 ---
 
 ANSI Common Lisp 是一个广泛通用于各个工业领域的、支持多种范式的编程语言。
