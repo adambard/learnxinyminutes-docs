@@ -271,6 +271,8 @@ permanent; // = 10
 // outer function's variables, even after the outer function exits.
 function sayHelloInFiveSeconds(name){
     var prompt = "Hello, " + name + "!";
+    // Inner functions are put in the local scope by default, as if they were
+    // declared with 'var'.
     function inner(){
         alert(prompt);
     }
