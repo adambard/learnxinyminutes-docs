@@ -13,21 +13,21 @@ to update variables can feel severely inhibiting.
 
 ```ocaml
 (* Comments in Standard ML begin with (* and end with *).  Comments can be
-   nested which means that all (* tags must end with a *) tag.  This comment
-   contains two nested comments. *)
+   nested which means that all (* tags must end with a *) tag.  This comment,
+   for example, contains two nested comments. *)
 
 (* A Standard ML program consists of declarations, e.g. value declarations: *)
 val rent = 1200
 val phone_no = 5551337
 val pi = 3.14159
-val negative_number = ~15  (* Yeah, unary minus is a so-called 'tilde' *)
+val negative_number = ~15  (* Yeah, unary minus uses the 'tilde' symbol *)
 
 (* And just as importantly, functions: *)
 fun is_large(x : int) = if x > 37 then true else false
 
 (* Floating-point numbers are called "reals". *)
-val tau = 2.0 * pi         (* You can multiply reals *)
-val twice_rent = 2 * rent  (* You can multiply ints *)
+val tau = 2.0 * pi         (* You can multiply two reals *)
+val twice_rent = 2 * rent  (* You can multiply two ints *)
 (* val meh = 1.25 * 10 *)  (* But you can't multiply an int and a real *)
 
 (* +, - and * are overloaded so they work for both int and real. *)
@@ -42,16 +42,16 @@ val negative_rent = ~(rent)  (* Would also have worked if rent were a "real" *)
 (* There are also booleans and boolean operators *)
 val got_milk = true
 val got_bread = false
-val has_breakfast = got_milk andalso got_bread  (* Yes, it's called andalso *)
-val has_something = got_milk orelse got_bread   (* Yes, it's called orelse *)
+val has_breakfast = got_milk andalso got_bread  (* 'andalso' is the operator *)
+val has_something = got_milk orelse got_bread   (* 'orelse' is the operator *)
 val is_sad = not(has_something)                 (* not is a function *)
 
 (* Many values can be compared using equality operators: = and <> *)
 val pays_same_rent = (rent = 1300)  (* false *)
 val is_wrong_phone_no = (phone_no <> 5551337)  (* false *)
 
-(* The operator <> is what most other languages call != *)
-
+(* The operator <> is what most other languages call !=. *)
+(* 'andalso' and 'orelse' are called && and || in many other languages. *)
 
 (* Actually, most of the parentheses above are unnecessary.  Here are some
    different ways to say some of the things mentioned above: *)
@@ -61,7 +61,7 @@ val pays_same_rent = rent = 1300  (* Looks confusing, but works *)
 val is_wrong_phone_no = phone_no <> 5551337
 val negative_rent = ~rent  (* ~ rent (notice the space) would also work *)
 
-(* Parens are mostly necessary when grouping things: *)
+(* Parentheses are mostly necessary when grouping things: *)
 val some_answer = is_large (5 + 5)      (* Without parens, this would break! *)
 (* val some_answer = is_large 5 + 5 *)  (* Read as: (is_large 5) + 5. Bad! *)
 
@@ -84,32 +84,37 @@ val bar = [ #"H", #"e", #"l", #"l", #"o" ]  (* SML also has lists! *)
    are functions available in that library that take strings as argument. *)
 val bob = String.implode bar          (* gives "Hello" *)
 val bob_char_count = String.size bob  (* gives 5 *)
-val _ = print (bob ^ "\n")  (* For good measure, add a linebreak *)
+val _ = print (bob ^ "\n")            (* For good measure, add a linebreak *)
 
 (* You can have lists of any kind *)
 val numbers = [1, 3, 3, 7, 229, 230, 248]  (* : int list *)
 val names = [ "Fred", "Jane", "Alice" ]    (* : string list *)
+
+(* Even lists of lists of things *)
 val groups = [ [ "Alice", "Bob" ],
                [ "Huey", "Dewey", "Louie" ],
                [ "Bonnie", "Clyde" ] ]     (* : string list list *)
 
 val number_count = List.length numbers     (* gives 7 *)
 
-(* You can put single values in front of lists of the same kind
-   using the :: ("cons") operator *)
+(* You can put single values in front of lists of the same kind using
+   the :: operator, called "the cons operator" (known from Lisp). *)
 val more_numbers = 13 :: numbers  (* gives [13, 1, 3, 3, 7, ...] *)
 val more_groups  = ["Batman","Superman"] :: groups
 
 (* Lists of the same kind can be appended using the @ ("append") operator *)
 val guest_list = [ "Mom", "Dad" ] @ [ "Aunt", "Uncle" ]
 
-(* This could have been done with the "cons" operator *)
+(* This could have been done with the "cons" operator.  It is tricky because the
+   left-hand-side must be an element whereas the right-hand-side must be a list
+   of those elements. *)
 val guest_list = "Mom" :: "Dad" :: [ "Aunt", "Uncle" ]
+val guest_list = "Mom" :: ("Dad" :: ("Aunt" :: ("Uncle" :: [])))
 
 (* If you have many lists of the same kind, you can concatenate them all *)
 val everyone = List.concat groups  (* [ "Alice", "Bob", "Huey", ... ] *)
 
-(* A list can contain any (finite) amount of values *)
+(* A list can contain any (finite) number of values *)
 val lots = [ 5, 5, 5, 6, 4, 5, 6, 5, 4, 5, 7, 3 ]  (* still just an int list *)
 
 (* Lists can only contain one kind of thing... *)
@@ -264,21 +269,23 @@ fun map f [] = []
 (* 'a is called a type variable. *)
 
 
-(* We can define functions as infix *)
-fun plus (x, y) = x + y
-infix plus
-(* We can now call plus like "2 plus 5" *)
+(* We can declare functions as infix *)
+val plus = add_them   (* plus is now equal to the same function as add_them *)
+infix plus            (* plus is now an infix operator *)
+val seven = 2 plus 5  (* seven is now bound to 7 *)
 
-(* Functions can also be made infix before they are defined *)
+(* Functions can also be made infix before they are declared *)
 infix minus
-fun x minus y = x - y
+fun x minus y = x - y (* It becomes a little hard to see what's the argument *)
+val four = 8 minus 4  (* four is now bound to 4 *)
 
-(* An infix function/operator can be made prefix with "op" *)
-val n = op + (5, 5)
-(* n is now 10 *)
+(* An infix function/operator can be made prefix with 'op' *)
+val n = op + (5, 5)   (* n is now 10 *)
 
-(* op is useful when combined with high order functions *)
-val listSum = foldl op + 0 [1,2,3,4,5]
+(* 'op' is useful when combined with high order functions because they expect
+   functions and not operators as arguments. Most operators are really just
+   infix functions. *)
+val sum_of_numbers = foldl op+ 0 [1,2,3,4,5]
 
 
 (* Datatypes are useful for creating both simple and complex structures *)
@@ -290,6 +297,8 @@ fun say(col) =
     if col = Green then "You are green!" else
     if col = Blue then "You are blue!" else
     raise Fail "Unknown color"
+
+val _ = print (say(Red) ^ "\n")
 
 (* Datatypes are very often used in combination with pattern matching *)
 fun say Red   = "You are red!"
@@ -318,28 +327,40 @@ val myTree = Node (Leaf 9, 8, Node (Leaf 3, 5, Leaf 7))
 fun count (Leaf n) = n
   | count (Node (leftTree, n, rightTree)) = count leftTree + n + count rightTree
 
+val myTreeCount = count myTree  (* myTreeCount is now bound to 32 *)
+
 
 (* Exceptions! *)
-(* Exceptions can be raised using "raise" *)
-fun raiseException msg = raise Fail msg
-
-(* This raises exception `Fail "hello from exception"` *)
-(* val _ = raiseException "hello from exception" *)
+(* Exceptions can be raised/thrown using the reserved word 'raise' *)
+fun calculate_interest(n) = if n < 0.0
+                            then raise Domain
+                            else n * 1.04
 
 (* Exceptions can be caught using "handle" *)
-val x = raiseException "hello" handle Fail msg => msg
-(* x now has the value "hello" *)
+val balance = calculate_interest ~180.0
+              handle Domain => ~180.0    (* x now has the value ~180.0 *)
 
-(* We can pattern match in "handle" to make sure
+(* Some exceptions carry extra information with them *)
+(* Here are some examples of built-in exceptions *)
+fun failing_function []    = raise Empty  (* used for empty lists *)
+  | failing_function [x]   = raise Fail "This list is too short!"
+  | failing_function [x,y] = raise Overflow  (* used for arithmetic *)
+  | failing_function xs    = raise Fail "This list is too long!"
+
+(* We can pattern match in 'handle' to make sure
    a specfic exception was raised, or grab the message *)
-val y = raiseException "..." handle Fail _ => "Fail was raised"
-                                  | Domain => "Domain was raised"
-(* y now has the value "Fail was raised" *)
+val err_msg = failing_function [1,2] handle Fail _ => "Fail was raised"
+                                          | Domain => "Domain was raised"
+                                          | Empty  => "Empty was raised"
+                                          | _      => "Unknown exception"
+
+(* err_msg now has the value "Unknown exception" because Overflow isn't
+   listed as one of the patterns -- thus, the catch-all pattern _ is used. *)
 
 (* We can define our own exceptions like this *)
 exception MyException
 exception MyExceptionWithMessage of string
-
+exception SyntaxError of string * (int * int)
 
 (* File I/O! *)
 (* Write a nice poem to a file *)
@@ -372,4 +393,4 @@ val test_poem = readPoem "roses.txt"  (* gives [ "Roses are red,",
   [SML/NJ](http://smlnj.org/).
 * Follow the Coursera course [Programming Languages](https://www.coursera.org/course/proglang).
 * Get the book *ML for the Working Programmer* by Larry C. Paulson.
-
+* Use [StackOverflow's sml tag](http://stackoverflow.com/questions/tagged/sml).
