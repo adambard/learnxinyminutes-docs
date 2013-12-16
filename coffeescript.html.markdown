@@ -1,55 +1,95 @@
 ---
 language: coffeescript
 contributors:
-  - ["Tenor Biel", "http://github.com/L8D"]
+  - ["Adam Brenecki", "https://adam.brenecki.id.au/"]
 filename: coffeescript.coffee
 ---
 
+As the Web has grown more interactive, JavaScript has been used more not only as
+a programming language in its own right, but also as a compilation target for
+other languages. One of the more popular of these is CoffeeScript.
+
+Of those languages, CoffeeScript is also one of the ones which stays closest to
+its JavaScript roots, providing mostly syntactic sugar over JavaScript. Indeed,
+the project website calls it "an attempt to expose the good parts of
+JavaScript in a simple way" and says that "It's just JavaScript".
+
+For that reason, if you don't already know JavaScript, it's probably worthwhile
+skimming through the JavaScript tour first.
+
 ``` coffeescript
-# CoffeeScript is a hipster language.
-# It goes with the trends of many modern languages.
-# So comments are like Ruby and Python, they use hashes.
+#################
+# 1. Basic Syntax
 
+# This is a single-line comment.
 ###
-Block comments are like these, and they translate directly to '/ *'s and '* /'s
-for the resulting JavaScript code.
-
-You should understand most of JavaScript semantices
-before continuing.
+This is a multi-line comment.
+While single-line comments are suppressed by the CoffeeScript compiler,
+multiline comments are preserved in the output, so they're a good choice for
+things like copyright notices.
 ###
 
-# Assignment:
-number   = 42 #=> var number = 42;
-opposite = true #=> var opposite = true;
+# The first thing you'll notice about CS code is that semicolons aren't
+# neccesary, and are in fact discouraged.
+console.log("Hello, World", 52)
 
-# Conditions:
-number = -42 if opposite #=> if(opposite) { number = -42; }
+# Assignments and object literals are otherwise the same as JS, except you don't
+# need to use 'var'.
+myBoolean = true
+myNumber = 42
+myString = 'example string'
+myList = [1, 2, 3, 4, 5]
+myObject = {answer: 42, answerTo: ['life', 'universe', 'everything']}
 
-# Functions:
-square = (x) -> x * x #=> var square = function(x) { return x * x; }
+# Lists can be wrapped across lines without trailing commas
+bitlist = [
+  1, 0, 1
+  1, 1, 0
+]
+bitlist[2] # = 1
 
-# Ranges:
-list = [1..5] #=> var list = [1, 2, 3, 4, 5];
+# Multiline objects are indented instead of curly-bracketed:
+people =
+  john:
+    gender: 'm'
+    age: 20
+  jane:
+    gender: 'f'
+    age: 22
 
-# Objects:
-math =
-  root:   Math.sqrt
-  square: square
-  cube:   (x) -> x * square x
-#=> var math = {
-#  "root": Math.sqrt,
-#  "square": square,
-#  "cube": function(x) { return x * square(x); }
-#}
+people.john.age # 20
 
-# Splats:
-race = (winner, runners...) ->
-  print winner, runners
+# Functions have an unusual syntax. Here's an anonymous adder function:
+(a, b) -> a + b
 
-# Existence:
-alert "I knew it!" if elvis?
-#=> if(typeof elvis !== "undefined" && elvis !== null) { alert("I knew it!"); }
+# To give functions names, simply assign them:
+adder = (a, b) -> a + b
+adder(2, 3) # = 5
 
-# Array comprehensions:
-cubes = (math.cube num for num in list) #=> ...
+# The brackets can be omitted for functions that take no arguments:
+alwaysReturnsThree = -> 3 # '() -> 3' would also work
+
+# When calling a function, the brackets are optional...
+adder 2, 3 # = 5
+
+# ...unless there's no arguments, in which case you'll get the function object.
+alwaysReturnsThree() # = 3
+alwaysReturnsThree # = [Function]
+
+# Functions declared over multiple lines are also indented.
+factorial = (n) ->
+  if n == 0
+    1
+  else
+    n * factorial(n-1)
+
+factorial 5 # = 120
+
+
 ```
+
+## Learn More
+
+[CoffeeScript's homepage](http://coffeescript.org/) features a very in-depth
+guide through the language, explaining all its features in detail and showing
+exactly how they compile down to plain JavaScript.
