@@ -5,6 +5,7 @@ contributors:
     - ["Max Yankov", "https://github.com/golergka"]
     - ["Darren Lin", "https://github.com/CogBear"]
     - ["Alexandre Medeiros", "http://alemedeiros.sdf.org"]
+    - ["Denis Arh", "https://github.com/darh"]
 filename: LearnBash.sh
 ---
 
@@ -44,6 +45,10 @@ echo '$VARIABLE'
 # String substitution in variables
 echo ${VARIABLE/Some/A}
 # This will substitute the first occurance of "Some" with "A"
+
+# Default value for variable
+echo ${FOO:-"DefaultValueIfFOOIsMissingOrEmpty"}
+# This works for null (FOO=), empty string (FOO=""), zero (FOO=0) returns 0
 
 # Bultin variables:
 # There are some useful builtin variables, like
