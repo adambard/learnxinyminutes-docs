@@ -83,7 +83,7 @@ false
 # A string can be indexed like an array of characters
 "This is a string"[1] #=> 'T' # Julia indexes from 1
 # However, this is will not work well for UTF8 strings,
-# so iterating over strings is reccommended (map, for loops, etc).
+# so iterating over strings is recommended (map, for loops, etc).
 
 # $ can be used for string interpolation:
 "2 + 2 = $(2 + 2)" #=> "2 + 2 = 4"
