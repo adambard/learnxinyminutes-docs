@@ -575,15 +575,15 @@ end
 # For a non-constructor example, let's make a function meow:
 
 # Definitions for Lion, Panther, Tiger
-function meow(cat::Lion)
-  cat.roar # access type properties using dot notation
+function meow(animal::Lion)
+  animal.roar # access type properties using dot notation
 end
 
-function meow(cat::Panther)
+function meow(animal::Panther)
   "grrr"
 end
 
-function meow(cat::Tiger)
+function meow(animal::Tiger)
   "rawwwr"
 end
 
