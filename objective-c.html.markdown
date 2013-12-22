@@ -90,6 +90,10 @@ int main (int argc, const char * argv[])
     // BOOL literals
     NSNumber *yesNumber = @YES;
     NSNumber *noNumber  = @NO;
+    // or
+    BOOL yesBool = YES;
+    BOOL noBool = NO;
+    NSLog(@"%i", yesBool); // prints => 1
 
     // Array object
     NSArray *anArray      = @[@1, @2, @3, @4];
