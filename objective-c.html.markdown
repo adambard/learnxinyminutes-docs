@@ -233,9 +233,13 @@ int main (int argc, const char * argv[])
 @property int count;
 @property (copy) NSString *name; // Copy the object during assignment.
 @property (readonly) id data;    // Declare only a getter method.
-// To access variable in implementation file, use '_' followed by variable name:
+// To access public variable in implementation file, use '_' followed by variable name:
 _count = 5;
-NSLog(@"%d", _count); // => prints 5 to console
+NSLog(@"%d", _count); // prints => 5
+// To access public variable outside implementation file, @property generates setter method
+// automatically. Method name is 'set' followed by @property variable name:
+[objInitVar setCount:10]; // objInitVar = variable of object instance @property resides in.
+NSLog(@"%@", [objInitVar count]); // prints => 10
 
 // Methods
 +/- (return type)methodSignature:(Parameter Type *)parameterName;
