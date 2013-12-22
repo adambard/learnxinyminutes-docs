@@ -74,6 +74,10 @@ int main (int argc, const char * argv[])
     long fortyTwoLong            = [fortyTwoLongNumber longValue];
     NSLog(@"%li", fortyTwoLong);
 
+    NSNumber *fortyTwoLongNumber = @53L;
+    unsigned long fiftyThreeUnsigned = [fortyTwoLongNumber unsignedLongValue];
+    NSLog(@"%lu", fiftyThreeUnsigned);
+
     // Floating point literals
     NSNumber *piFloatNumber = @3.141592654F;
     float piFloat           = [piFloatNumber floatValue];
