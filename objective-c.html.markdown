@@ -54,42 +54,44 @@ int main (int argc, const char * argv[])
     
     // Character literals
     NSNumber *theLetterZNumber = @'Z';
-    char theLetterZ            = [theLetterZNumber charValue];
+    char theLetterZ            = [theLetterZNumber charValue]; // or 'Z'
     NSLog(@"%c", theLetterZ);
 
     // Integral literals
     NSNumber *fortyTwoNumber = @42;
-    int fortyTwo             = [fortyTwoNumber intValue];
+    int fortyTwo             = [fortyTwoNumber intValue]; // or 42
     NSLog(@"%i", fortyTwo);
     
     NSNumber *fortyTwoUnsignedNumber = @42U;
-    unsigned int fortyTwoUnsigned    = [fortyTwoUnsignedNumber unsignedIntValue];
+    unsigned int fortyTwoUnsigned    = [fortyTwoUnsignedNumber unsignedIntValue]; // or 42
     NSLog(@"%u", fortyTwoUnsigned);
     
     NSNumber *fortyTwoShortNumber = [NSNumber numberWithShort:42];
-    short fortyTwoShort           = [fortyTwoShortNumber shortValue];
+    short fortyTwoShort           = [fortyTwoShortNumber shortValue]; // or 42
     NSLog(@"%hi", fortyTwoShort);
 
     NSNumber *fortyTwoShortNumber = [NSNumber numberWithShort:41];
-    unsigned short fortyTwoUnsigned = [fortyTwoShortNumber unsignedShortValue];
+    unsigned short fortyTwoUnsigned = [fortyTwoShortNumber unsignedShortValue]; // or 41
     NSLog(@"%hu", fortyTwoUnsigned);
     
     NSNumber *fortyTwoLongNumber = @42L;
-    long fortyTwoLong            = [fortyTwoLongNumber longValue];
+    long fortyTwoLong            = [fortyTwoLongNumber longValue]; // or 42
     NSLog(@"%li", fortyTwoLong);
 
     NSNumber *fortyTwoLongNumber = @53L;
-    unsigned long fiftyThreeUnsigned = [fortyTwoLongNumber unsignedLongValue];
+    unsigned long fiftyThreeUnsigned = [fortyTwoLongNumber unsignedLongValue]; // or 53
     NSLog(@"%lu", fiftyThreeUnsigned);
 
     // Floating point literals
     NSNumber *piFloatNumber = @3.141592654F;
-    float piFloat           = [piFloatNumber floatValue];
-    NSLog(@"%f", piFloat);
+    float piFloat           = [piFloatNumber floatValue]; // or 3.141592654f
+    NSLog(@"%f", piFloat); // prints => 3.141592654
+    NSLog(@"%5.2f", piFloat); // prints => " 3.14"
     
     NSNumber *piDoubleNumber = @3.1415926535;
-    double piDouble                 = [piDoubleNumber doubleValue];
+    double piDouble                 = [piDoubleNumber doubleValue]; // or 3.1415926535
     NSLog(@"%f", piDouble);
+    NSLog(@"%4.2f", piDouble); // prints => "3.14"
 
     // BOOL literals
     NSNumber *yesNumber = @YES;
