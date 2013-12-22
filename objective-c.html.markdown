@@ -71,7 +71,7 @@ int main (int argc, const char * argv[])
     NSLog(@"%hi", fortyTwoShort);
 
     NSNumber *fortyTwoShortNumber = [NSNumber numberWithShort:41];
-    unsigned short int fortyTwoUnsigned = [fortyTwoShortNumber unsignedShortValue];
+    unsigned short fortyTwoUnsigned = [fortyTwoShortNumber unsignedShortValue];
     NSLog(@"%hu", fortyTwoUnsigned);
     
     NSNumber *fortyTwoLongNumber = @42L;
