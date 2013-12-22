@@ -235,7 +235,7 @@ int main (int argc, const char * argv[])
 @property (readonly) id data;    // Declare only a getter method.
 // To access variable in implementation file, use '_' followed by variable name:
 _count = 5;
-NSLog("%@", _count); // => prints 5 to console
+NSLog("%d", _count); // => prints 5 to console
 
 // Methods
 +/- (return type)methodSignature:(Parameter Type *)parameterName;
