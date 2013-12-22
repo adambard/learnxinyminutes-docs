@@ -93,6 +93,12 @@ int main (int argc, const char * argv[])
     NSLog(@"%f", piDouble);
     NSLog(@"%4.2f", piDouble); // prints => "3.14"
 
+    // NSDecimalNumber is Objective-C's fixed-point class more precise then float or double
+    NSDecimalNumber *precise = [NSDecimalNumber decimalNumberWithString:@"10.99"];
+    // NSDecimal is not able to use standard +, -, *, / operators. NSDecimalNumber has its own:
+    [precise decimalNumberByAdding:[NSDecimalNumber decimalNumberWithString:@"5.002"]];
+    NSLog(@"%@", precise); // prints => 10.99 as NSDecimalNumber is immutable. 
+
     // BOOL literals
     NSNumber *yesNumber = @YES;
     NSNumber *noNumber  = @NO;
