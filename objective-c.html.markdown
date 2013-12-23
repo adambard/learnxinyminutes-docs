@@ -138,7 +138,7 @@ int main (int argc, const char * argv[])
     NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
     for (id item in set) { 
         NSLog(@"%@", item); // prints => "Hello"
-    }                       //           "World"
+    }                       //           "World" (may print in different order)
     // NSMutableSet also available as mutable set object. 
 
     ///////////////////////////////////////
