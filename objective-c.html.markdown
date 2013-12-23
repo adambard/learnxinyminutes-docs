@@ -50,7 +50,12 @@ int main (int argc, const char * argv[])
     
     // String
     NSString *worldString = @"World";
-    NSLog(@"Hello %@!", worldString); // Print "Hello World!"
+    NSLog(@"Hello %@!", worldString); // prints => "Hello World!"
+    // The mutable version of NSString is NSMutableString that allows to edit 
+    // individual characters or append strings together. 
+    NSMutableString *mutableString = [NSMutableString stringWithString:@"Hello"];
+    [mutableString appendString:@" World!"];
+    NSLog(@"%@", mutableString); // prints => "Hello World!"
     
     // Character literals
     NSNumber *theLetterZNumber = @'Z';
