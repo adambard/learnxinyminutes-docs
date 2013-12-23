@@ -132,10 +132,14 @@ int main (int argc, const char * argv[])
     NSDictionary *aDictionary = @{ @"key1" : @"value1", @"key2" : @"value2" };
     NSObject *valueObject     = aDictionary[@"A Key"];
     NSLog(@"Object = %@", valueObject); // Print "Object = (null)"
+    // NSMutableDictionary also available as mutable dictionary object.
 
     // Set object
     NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
-    NSLog(@"%@", set); // prints => {(Hello, World)}
+    for (id item in set) { 
+        NSLog(@"%@", item); // prints => "Hello"
+    }                       //           "World"
+    // NSMutableSet also available as mutable set object. 
 
     ///////////////////////////////////////
     // Operators
