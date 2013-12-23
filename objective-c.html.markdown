@@ -136,9 +136,7 @@ int main (int argc, const char * argv[])
 
     // Set object
     NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
-    for (id item in set) { 
-        NSLog(@"%@", item); // prints => "Hello"
-    }                       //           "World" (may print in different order)
+    NSLog(@"%@", set); // prints => {(Hello, World)} (may be in different order)
     // NSMutableSet also available as mutable set object. 
 
     ///////////////////////////////////////
@@ -215,6 +213,14 @@ int main (int argc, const char * argv[])
     for (NSNumber *value in values)
     {
         NSLog(@"%@,", value);
+    } // => prints "0," 
+      //           "1,"
+      //           "2,"
+      //           "3,"
+
+    // Object for statement. Can be used with any Objective-C object type.
+    for (id item in values) { 
+        NSLog(@"%@", item); 
     } // => prints "0," 
       //           "1,"
       //           "2,"
