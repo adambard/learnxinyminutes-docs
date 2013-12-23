@@ -133,6 +133,10 @@ int main (int argc, const char * argv[])
     NSObject *valueObject     = aDictionary[@"A Key"];
     NSLog(@"Object = %@", valueObject); // Print "Object = (null)"
 
+    // Set object
+    NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
+    NSLog(@"%@", set); // prints => {(Hello, World)}
+
     ///////////////////////////////////////
     // Operators
     ///////////////////////////////////////
