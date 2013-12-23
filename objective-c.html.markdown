@@ -146,6 +146,10 @@ int main (int argc, const char * argv[])
     [mutableSet addObject:@"Hello"];
     NSLog(@"%@", mutableSet); // prints => {(Hello)}
 
+    // Set object
+    NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
+    NSLog(@"%@", set); // prints => {(Hello, World)}
+
     ///////////////////////////////////////
     // Operators
     ///////////////////////////////////////
