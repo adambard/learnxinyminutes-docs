@@ -120,6 +120,13 @@ int main (int argc, const char * argv[])
     NSArray *anArray      = @[@1, @2, @3, @4];
     NSNumber *thirdNumber = anArray[2];
     NSLog(@"Third number = %@", thirdNumber); // Print "Third number = 3"
+    // NSMutableArray is mutable version of NSArray allowing to change items in array
+    // and extend or shrink array object. Convenient, but not as efficient as NSArray.
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:2];
+    [mutableArray addObject:@"Hello"];
+    [mutableArray addObject:@"World"];
+    [mutableArray removeObjectAtIndex:0];
+    NSLog(@"%@", [mutableArray objectAtIndex:0]); // prints => "World"
 
     // Dictionary object
     NSDictionary *aDictionary = @{ @"key1" : @"value1", @"key2" : @"value2" };
