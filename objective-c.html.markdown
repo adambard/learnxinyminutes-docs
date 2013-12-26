@@ -141,6 +141,9 @@ int main (int argc, const char * argv[])
     NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
     NSLog(@"%@", set); // prints => {(Hello, World)} (may be in different order)
     // NSMutableSet also available as a mutable set object. 
+    NSMutableSet *mutableSet = [NSMutableSet setWithCapacity:2];
+    [mutableSet addObject:@"Hello"];
+    [mutableSet addObject:@"Hello"];
 
     ///////////////////////////////////////
     // Operators
