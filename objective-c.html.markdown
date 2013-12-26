@@ -131,12 +131,16 @@ int main (int argc, const char * argv[])
     NSDictionary *aDictionary = @{ @"key1" : @"value1", @"key2" : @"value2" };
     NSObject *valueObject     = aDictionary[@"A Key"];
     NSLog(@"Object = %@", valueObject); // Print "Object = (null)"
-    // NSMutableDictionary also available as mutable dictionary object.
+    // NSMutableDictionary also available as a mutable dictionary object.
+    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
+    [mutableDictionary setObject:@"value1" forKey:@"key1"];
+    [mutableDictionary setObject:@"value2" forKey:@"key2"];
+    [mutableDictionary removeObjectForKey:@"key1"];
 
     // Set object
     NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
     NSLog(@"%@", set); // prints => {(Hello, World)} (may be in different order)
-    // NSMutableSet also available as mutable set object. 
+    // NSMutableSet also available as a mutable set object. 
 
     ///////////////////////////////////////
     // Operators
