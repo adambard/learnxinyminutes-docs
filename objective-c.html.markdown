@@ -50,9 +50,8 @@ int main (int argc, const char * argv[])
     
     // String
     NSString *worldString = @"World";
-    NSLog(@"Hello %@!", worldString); // prints => "Hello World!"
-    // The mutable version of NSString is NSMutableString that allows to edit 
-    // individual characters or append strings together. 
+    NSLog(@"Hello %@!", worldString); // prints => "Hello World!" 
+    // NSMutableString is a mutable version of the NSString object.
     NSMutableString *mutableString = [NSMutableString stringWithString:@"Hello"];
     [mutableString appendString:@" World!"];
     NSLog(@"%@", mutableString); // prints => "Hello World!"
@@ -98,11 +97,11 @@ int main (int argc, const char * argv[])
     NSLog(@"%f", piDouble);
     NSLog(@"%4.2f", piDouble); // prints => "3.14"
 
-    // NSDecimalNumber is Objective-C's fixed-point class more precise then float or double
+    // NSDecimalNumber is a fixed-point class that's more precise then float or double
     NSDecimalNumber *oneDecNum = [NSDecimalNumber decimalNumberWithString:@"10.99"];
     NSDecimalNumber *twoDecNum = [NSDecimalNumber decimalNumberWithString:@"5.002"];
     // NSDecimal isn't able to use standard +, -, *, / operators. NSDecimalNumber has its own:
-    [oneDecNum decimalNumberByAdding:twoDecNum]; // add
+    [oneDecNum decimalNumberByAdding:twoDecNum]; 
     [oneDecNum decimalNumberBySubtracting:twoDecNum];
     [oneDecNum decimalNumberByMultiplyingBy:twoDecNum];
     [oneDecNum decimalNumberByDividingBy:twoDecNum];
@@ -218,9 +217,9 @@ int main (int argc, const char * argv[])
       //           "2,"
       //           "3,"
 
-    // Object for statement. Can be used with any Objective-C object type.
+    // Object for loop statement. Can be used with any Objective-C object type.
     for (id item in values) { 
-        NSLog(@"%@", item); 
+        NSLog(@"%@,", item); 
     } // => prints "0," 
       //           "1,"
       //           "2,"
@@ -288,7 +287,7 @@ _count = 5;
 NSLog(@"%d", _count); // prints => 5
 // To access public variable outside implementation file, @property generates setter method
 // automatically. Method name is 'set' followed by @property variable name:
-[objInitVar setCount:10]; // objInitVar = variable of object instance @property resides in.
+[objInitVar setCount:10]; // objInitVar = random object instance @property resides in.
 NSLog(@"%@", [objInitVar count]); // prints => 10
 
 // Methods
