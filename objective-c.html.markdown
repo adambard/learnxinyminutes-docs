@@ -100,7 +100,7 @@ int main (int argc, const char * argv[])
     // NSDecimalNumber is a fixed-point class that's more precise then float or double
     NSDecimalNumber *oneDecNum = [NSDecimalNumber decimalNumberWithString:@"10.99"];
     NSDecimalNumber *twoDecNum = [NSDecimalNumber decimalNumberWithString:@"5.002"];
-    // NSDecimal isn't able to use standard +, -, *, / operators. NSDecimalNumber has its own:
+    // NSDecimalNumber isn't able to use standard +, -, *, / operators so it provides its own:
     [oneDecNum decimalNumberByAdding:twoDecNum]; 
     [oneDecNum decimalNumberBySubtracting:twoDecNum];
     [oneDecNum decimalNumberByMultiplyingBy:twoDecNum];
