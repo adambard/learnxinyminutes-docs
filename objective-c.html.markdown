@@ -74,7 +74,7 @@ int main (int argc, const char * argv[])
     short fortyTwoShort           = [fortyTwoShortNumber shortValue]; // or 42
     NSLog(@"%hi", fortyTwoShort);
 
-    NSNumber *fortyTwoShortNumber = [NSNumber numberWithShort:41];
+    NSNumber *fortyTwoShortNumber   = [NSNumber numberWithShort:41];
     unsigned short fortyTwoUnsigned = [fortyTwoShortNumber unsignedShortValue]; // or 41
     NSLog(@"%hu", fortyTwoUnsigned);
     
@@ -82,7 +82,7 @@ int main (int argc, const char * argv[])
     long fortyTwoLong            = [fortyTwoLongNumber longValue]; // or 42
     NSLog(@"%li", fortyTwoLong);
 
-    NSNumber *fortyTwoLongNumber = @53L;
+    NSNumber *fortyTwoLongNumber     = @53L;
     unsigned long fiftyThreeUnsigned = [fortyTwoLongNumber unsignedLongValue]; // or 53
     NSLog(@"%lu", fiftyThreeUnsigned);
 
@@ -93,7 +93,7 @@ int main (int argc, const char * argv[])
     NSLog(@"%5.2f", piFloat); // prints => " 3.14"
     
     NSNumber *piDoubleNumber = @3.1415926535;
-    double piDouble                 = [piDoubleNumber doubleValue]; // or 3.1415926535
+    double piDouble          = [piDoubleNumber doubleValue]; // or 3.1415926535
     NSLog(@"%f", piDouble);
     NSLog(@"%4.2f", piDouble); // prints => "3.14"
 
@@ -112,7 +112,7 @@ int main (int argc, const char * argv[])
     NSNumber *noNumber  = @NO;
     // or
     BOOL yesBool = YES;
-    BOOL noBool = NO;
+    BOOL noBool  = NO;
     NSLog(@"%i", yesBool); // prints => 1
 
     // Array object
@@ -144,6 +144,7 @@ int main (int argc, const char * argv[])
     NSMutableSet *mutableSet = [NSMutableSet setWithCapacity:2];
     [mutableSet addObject:@"Hello"];
     [mutableSet addObject:@"Hello"];
+    NSLog(@"%@", mutableSet); // prints => {(Hello)}
 
     ///////////////////////////////////////
     // Operators
@@ -281,11 +282,12 @@ int main (int argc, const char * argv[])
 // @end
 @interface MyClass : NSObject <MyProtocol>
 {
-    int count;
-    id data;
-    NSString *name;
+    // Instance variable declarations (can exist in either interface or implementation file)
+    int count; // Protected access by default. 
+    @private id data; // Private access. (More convenient to declare in implementation file)
+    NSString *name; 
 }
-// Convenience notation to auto generate public getter and setter
+// Convenient notation to auto generate public access getter and setter
 @property int count;
 @property (copy) NSString *name; // Copy the object during assignment.
 @property (readonly) id data;    // Declare only a getter method.
@@ -294,8 +296,16 @@ _count = 5;
 NSLog(@"%d", _count); // prints => 5
 // To access public variable outside implementation file, @property generates setter method
 // automatically. Method name is 'set' followed by @property variable name:
-[objInitVar setCount:10]; // objInitVar = random object instance @property resides in.
-NSLog(@"%@", [objInitVar count]); // prints => 10
+MyClass *myClass = [[MyClass alloc] init]; // create MyClass object instance.
+[myClass setCount:10]; 
+NSLog(@"%@", [myClass count]); // prints => 10
+// You can customize the getter and setter names instead of using default 'set' name:
+@property (getter=countGet, setter=countSet:) int count; 
+[myClass countSet:32];
+NSLog(@"%i", [myClass countGet]); // prints => 32
+// For convenience, you may use dot notation to set object instance variables:
+myClass.count = 45;
+NSLog(@"%i", myClass.count); // prints => 45
 
 // Methods
 +/- (return type)methodSignature:(Parameter Type *)parameterName;
@@ -310,8 +320,9 @@ NSLog(@"%@", [objInitVar count]); // prints => 10
 @end
 
 // Implement the methods in an implementation (MyClass.m) file:
-
-@implementation MyClass
+@implementation MyClass {
+    long count; // Private access instance variable.
+}
 
 // Call when the object is releasing
 - (void)dealloc
