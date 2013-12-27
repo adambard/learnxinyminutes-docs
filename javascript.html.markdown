@@ -319,6 +319,37 @@ var myOtherFunc = function(){
 myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "HELLO WORLD!"
 
+// We can also specify a context for a function to execute in when we invoke it
+// using 'call' or 'apply'.
+
+var anotherFunc = function(s){
+    return this.myString + s;
+}
+anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
+
+// The 'apply' function is nearly identical, but takes an array for an argument list. 
+
+anotherFunc.apply(myObj, [" And Hello Sun!"]); // = "Hello World! And Hello Sun!"
+
+// This is useful when working with a function that accepts a sequence of arguments
+// and you want to pass an array.
+
+Math.min(42, 6, 27); // = 6
+Math.min([42, 6, 27]); // = NaN (uh-oh!)
+Math.min.apply(Math, [42, 6, 27]); // = 6
+
+// But, 'call' and 'apply' are only temporary. When we want it to stick, we can use
+// bind.
+
+var boundFunc = anotherFunc.bind(myObj);
+boundFunc(" And Hello Saturn!"); // = "Hello World! And Hello Saturn!"
+
+// Bind can also be used to partially apply (curry) a function.
+
+var product = function(a, b){ return a * b; }
+var doubler = product.bind(this, 2);
+doubler(8); // = 16
+
 // When you call a function with the new keyword, a new object is created, and
 // made available to the function via the this keyword. Functions designed to be
 // called like that are called constructors.
