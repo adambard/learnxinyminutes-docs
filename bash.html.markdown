@@ -21,7 +21,7 @@ Nearly all examples below can be a part of a shell script or executed directly i
 # As you already figured, comments start with #. Shebang is also a comment.
 
 # Simple hello world example:
-echo Hello, world!
+echo Hello world!
 
 # Each command starts on a new line, or after semicolon:
 echo 'This is the first line'; echo 'This is the second line'
@@ -56,24 +56,24 @@ echo "Last program return value: $?"
 echo "Script's PID: $$"
 echo "Number of arguments: $#"
 echo "Scripts arguments: $@"
-echo "Scripts arguments separeted in different variables: $1 $2..."
+echo "Scripts arguments seperated in different variables: $1 $2..."
 
 # Reading a value from input:
 echo "What's your name?"
-read NAME # Note that we didn't need to declare new variable
+read NAME # Note that we didn't need to declare a new variable
 echo Hello, $NAME!
 
 # We have the usual if structure:
 # use 'man test' for more info about conditionals
 if [ $NAME -ne $USER ]
 then
-    echo "Your name is you username"
+    echo "Your name is your username"
 else
-    echo "Your name isn't you username"
+    echo "Your name isn't your username"
 fi
 
 # There is also conditional execution
-echo "Always executed" || echo "Only executed if first command fail"
+echo "Always executed" || echo "Only executed if first command fails"
 echo "Always executed" && echo "Only executed if first command does NOT fail"
 
 # Expressions are denoted with the following format:
@@ -81,7 +81,7 @@ echo $(( 10 + 5 ))
 
 # Unlike other programming languages, bash is a shell — so it works in a context
 # of current directory. You can list files and directories in the current
-# directories with ls command:
+# directory with the ls command:
 ls
 
 # These commands have options that control their execution:
@@ -89,10 +89,10 @@ ls -l # Lists every file and directory on a separate line
 
 # Results of the previous command can be passed to the next command as input.
 # grep command filters the input with provided patterns. That's how we can list
-# txt files in the current directory:
+# .txt files in the current directory:
 ls -l | grep "\.txt"
 
-# You can also redirect a command output, input and error output.
+# You can also redirect a command, input and error output.
 python2 hello.py < "input.in"
 python2 hello.py > "output.out"
 python2 hello.py 2> "error.err"
@@ -116,7 +116,7 @@ case "$VARIABLE" in
     *) echo "It is not null.";;
 esac
 
-# For loops iterate for as many arguments given:
+# for loops iterate for as many arguments given:
 # The contents of var $VARIABLE is printed three times.
 for VARIABLE in {1..3}
 do
