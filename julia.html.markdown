@@ -105,7 +105,7 @@ some_var #=> 5
 
 # Accessing a previously unassigned variable is an error
 try
-  some_other_var #=> ERROR: some_other_var not defined
+    some_other_var #=> ERROR: some_other_var not defined
 catch e
     println(e)
 end
@@ -417,7 +417,7 @@ try
     defaults('h') #=> ERROR: no method defaults(Char,)
     defaults() #=> ERROR: no methods defaults()
 catch e
-println(e)
+    println(e)
 end
 
 # You can define functions that take keyword arguments
@@ -509,7 +509,7 @@ type Tiger
 end
 
 # The default constructor's arguments are the properties
-# of the tyep, in order the order they are listed in the definition
+# of the type, in the order they are listed in the definition
 tigger = Tiger(3.5,"orange") #=> Tiger(3.5,"orange")
 
 # The type doubles as the constructor function for values of that type
