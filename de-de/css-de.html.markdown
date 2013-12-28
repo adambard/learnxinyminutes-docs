@@ -67,7 +67,9 @@ div { }
 [attr~='er'] { font-size:smaller; }
 
 
-/* was aber nich wichtiger ist, ist dass man alle diese kombinieren kann - man sollte nur mit der leerzeichensetzung vorsichtig sein, da es mit einem leerzeichen zwei verschiedene selektoren wären*/
+/* was aber noch wichtiger ist, ist dass man alle diese kombinieren
+kann - man sollte nur mit der leerzeichensetzung vorsichtig sein, 
+da es mit einem leerzeichen zwei verschiedene selektoren wären*/
 div.eine-klasse[attr$='rt'] { } /* so ist es richtig */
 
 /* man kann auch ein element daran festmachen, wie sich die übergeordneten elemente verhalten!*/
