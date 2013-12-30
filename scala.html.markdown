@@ -396,7 +396,7 @@ object Application {
 
 // To read a file line by line
 import scala.io.Source
-for(line <- Source.fromPath("myfile.txt").getLines())
+for(line <- Source.fromFile("myfile.txt").getLines())
   println(line)
 
 // To write a file use Java's PrintWriter
