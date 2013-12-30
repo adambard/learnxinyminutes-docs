@@ -12,9 +12,8 @@ lang: fr-fr
 -- Les commentaires unilignes commencent par un double-tiret.
 
 --[[
-     Les doubles crochets ouverts ([[) et fermés (]]) à la suite
-     du double-tiret permettent d'avoir des commentaires
-     multilignes.
+     Les doubles crochets à la suite du double-tiret 
+     permettent d'insérer des commentaires multilignes.
 --]]
 
 ----------------------------------------------------
@@ -427,11 +426,11 @@ g()  -- Affiche 343; Rien n'est affiché avant cet appel.
 Les sujets non abordés dans ce tutoriel sont couverts en intégralité par 
 les librairies standard:
 
-* <a href="http://lua-users.org/wiki/StringLibraryTutorial">la librairie string</a>
-* <a href="http://lua-users.org/wiki/TableLibraryTutorial">la librairie table</a>
-* <a href="http://lua-users.org/wiki/MathLibraryTutorial">la librairie math</a>
-* <a href="http://lua-users.org/wiki/IoLibraryTutorial">la librairie io</a>
-* <a href="http://lua-users.org/wiki/OsLibraryTutorial">la librairie os</a>
+* La librairie <a href="http://lua-users.org/wiki/StringLibraryTutorial">string</a>
+* La librairie <a href="http://lua-users.org/wiki/TableLibraryTutorial">table</a>
+* La librairie <a href="http://lua-users.org/wiki/MathLibraryTutorial">math</a>
+* La librairie <a href="http://lua-users.org/wiki/IoLibraryTutorial">io</a>
+* La librairie <a href="http://lua-users.org/wiki/OsLibraryTutorial">os</a>
 
 Autres références complémentaires:
 
@@ -440,8 +439,8 @@ Autres références complémentaires:
 * <a href="http://www.lua.org/pil/contents.html">Programming In Lua</a>
 * <a href="http://www.lua.org/manual/">Les manuels de référence Lua</a>
 
-A propos, ce fichier est exécutable. Sauvegardez-le sous le nom learn.lua et
-exécutez-le avec la commande "lua learn.lua" !
+A propos, ce fichier est exécutable. Sauvegardez-le sous le nom *learn.lua* et
+exécutez-le avec la commande `lua learn.lua` !
 
 Ce tutoriel a été originalement écrit pour <a href="tylerneylon.com">tylerneylon.com</a> et est aussi 
 disponible en tant que <a href="https://gist.github.com/tylerneylon/5853042">gist</a>.
