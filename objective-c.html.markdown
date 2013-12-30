@@ -50,52 +50,100 @@ int main (int argc, const char * argv[])
     
     // String
     NSString *worldString = @"World";
-    NSLog(@"Hello %@!", worldString); // Print "Hello World!"
+    NSLog(@"Hello %@!", worldString); // prints => "Hello World!" 
+    // NSMutableString is a mutable version of the NSString object.
+    NSMutableString *mutableString = [NSMutableString stringWithString:@"Hello"];
+    [mutableString appendString:@" World!"];
+    NSLog(@"%@", mutableString); // prints => "Hello World!"
     
     // Character literals
     NSNumber *theLetterZNumber = @'Z';
-    char theLetterZ            = [theLetterZNumber charValue];
+    char theLetterZ            = [theLetterZNumber charValue]; // or 'Z'
     NSLog(@"%c", theLetterZ);
 
     // Integral literals
     NSNumber *fortyTwoNumber = @42;
-    int fortyTwo             = [fortyTwoNumber intValue];
+    int fortyTwo             = [fortyTwoNumber intValue]; // or 42
     NSLog(@"%i", fortyTwo);
     
     NSNumber *fortyTwoUnsignedNumber = @42U;
-    unsigned int fortyTwoUnsigned    = [fortyTwoUnsignedNumber unsignedIntValue];
+    unsigned int fortyTwoUnsigned    = [fortyTwoUnsignedNumber unsignedIntValue]; // or 42
     NSLog(@"%u", fortyTwoUnsigned);
     
     NSNumber *fortyTwoShortNumber = [NSNumber numberWithShort:42];
-    short fortyTwoShort           = [fortyTwoShortNumber shortValue];
+    short fortyTwoShort           = [fortyTwoShortNumber shortValue]; // or 42
     NSLog(@"%hi", fortyTwoShort);
+
+    NSNumber *fortyTwoShortNumber = [NSNumber numberWithShort:41];
+    unsigned short fortyTwoUnsigned = [fortyTwoShortNumber unsignedShortValue]; // or 41
+    NSLog(@"%hu", fortyTwoUnsigned);
     
     NSNumber *fortyTwoLongNumber = @42L;
-    long fortyTwoLong            = [fortyTwoLongNumber longValue];
+    long fortyTwoLong            = [fortyTwoLongNumber longValue]; // or 42
     NSLog(@"%li", fortyTwoLong);
+
+    NSNumber *fortyTwoLongNumber = @53L;
+    unsigned long fiftyThreeUnsigned = [fortyTwoLongNumber unsignedLongValue]; // or 53
+    NSLog(@"%lu", fiftyThreeUnsigned);
 
     // Floating point literals
     NSNumber *piFloatNumber = @3.141592654F;
-    float piFloat           = [piFloatNumber floatValue];
-    NSLog(@"%f", piFloat);
+    float piFloat           = [piFloatNumber floatValue]; // or 3.141592654f
+    NSLog(@"%f", piFloat); // prints => 3.141592654
+    NSLog(@"%5.2f", piFloat); // prints => " 3.14"
     
     NSNumber *piDoubleNumber = @3.1415926535;
-    double piDouble                 = [piDoubleNumber doubleValue];
+    double piDouble                 = [piDoubleNumber doubleValue]; // or 3.1415926535
     NSLog(@"%f", piDouble);
+    NSLog(@"%4.2f", piDouble); // prints => "3.14"
+
+    // NSDecimalNumber is a fixed-point class that's more precise then float or double
+    NSDecimalNumber *oneDecNum = [NSDecimalNumber decimalNumberWithString:@"10.99"];
+    NSDecimalNumber *twoDecNum = [NSDecimalNumber decimalNumberWithString:@"5.002"];
+    // NSDecimalNumber isn't able to use standard +, -, *, / operators so it provides its own:
+    [oneDecNum decimalNumberByAdding:twoDecNum]; 
+    [oneDecNum decimalNumberBySubtracting:twoDecNum];
+    [oneDecNum decimalNumberByMultiplyingBy:twoDecNum];
+    [oneDecNum decimalNumberByDividingBy:twoDecNum];
+    NSLog(@"%@", oneDecNum); // prints => 10.99 as NSDecimalNumber is immutable. 
 
     // BOOL literals
     NSNumber *yesNumber = @YES;
     NSNumber *noNumber  = @NO;
+    // or
+    BOOL yesBool = YES;
+    BOOL noBool = NO;
+    NSLog(@"%i", yesBool); // prints => 1
 
     // Array object
     NSArray *anArray      = @[@1, @2, @3, @4];
     NSNumber *thirdNumber = anArray[2];
     NSLog(@"Third number = %@", thirdNumber); // Print "Third number = 3"
+    // NSMutableArray is mutable version of NSArray allowing to change items in array
+    // and extend or shrink array object. Convenient, but not as efficient as NSArray.
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:2];
+    [mutableArray addObject:@"Hello"];
+    [mutableArray addObject:@"World"];
+    [mutableArray removeObjectAtIndex:0];
+    NSLog(@"%@", [mutableArray objectAtIndex:0]); // prints => "World"
 
     // Dictionary object
     NSDictionary *aDictionary = @{ @"key1" : @"value1", @"key2" : @"value2" };
     NSObject *valueObject     = aDictionary[@"A Key"];
     NSLog(@"Object = %@", valueObject); // Print "Object = (null)"
+    // NSMutableDictionary also available as a mutable dictionary object.
+    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
+    [mutableDictionary setObject:@"value1" forKey:@"key1"];
+    [mutableDictionary setObject:@"value2" forKey:@"key2"];
+    [mutableDictionary removeObjectForKey:@"key1"];
+
+    // Set object
+    NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
+    NSLog(@"%@", set); // prints => {(Hello, World)} (may be in different order)
+    // NSMutableSet also available as a mutable set object. 
+    NSMutableSet *mutableSet = [NSMutableSet setWithCapacity:2];
+    [mutableSet addObject:@"Hello"];
+    [mutableSet addObject:@"Hello"];
 
     ///////////////////////////////////////
     // Operators
@@ -176,6 +224,14 @@ int main (int argc, const char * argv[])
       //           "2,"
       //           "3,"
 
+    // Object for loop statement. Can be used with any Objective-C object type.
+    for (id item in values) { 
+        NSLog(@"%@,", item); 
+    } // => prints "0," 
+      //           "1,"
+      //           "2,"
+      //           "3,"
+
     // Try-Catch-Finally statements
     @try
     {
@@ -233,6 +289,13 @@ int main (int argc, const char * argv[])
 @property int count;
 @property (copy) NSString *name; // Copy the object during assignment.
 @property (readonly) id data;    // Declare only a getter method.
+// To access public variable in implementation file, use '_' followed by variable name:
+_count = 5;
+NSLog(@"%d", _count); // prints => 5
+// To access public variable outside implementation file, @property generates setter method
+// automatically. Method name is 'set' followed by @property variable name:
+[objInitVar setCount:10]; // objInitVar = random object instance @property resides in.
+NSLog(@"%@", [objInitVar count]); // prints => 10
 
 // Methods
 +/- (return type)methodSignature:(Parameter Type *)parameterName;
