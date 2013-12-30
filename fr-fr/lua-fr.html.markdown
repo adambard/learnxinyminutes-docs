@@ -234,7 +234,7 @@ setmetatable(f2, metafraction)
 
 s = f1 + f2  -- appèle __add(f1, f2) de la métatable de f1
 
--- f1, f2 ne possède pas de clé qui pointent vers leur métatable, comme
+-- f1, f2 ne possèdent pas de clé qui pointent vers leur métatable, comme
 -- avec les prototypes en JS. Mais l'on peut utiliser getmetatable(f1).
 -- La métatable est une table normale avec des clés prédéfinies, comme __add.
 
