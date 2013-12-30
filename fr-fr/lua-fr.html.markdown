@@ -9,10 +9,10 @@ lang: fr-fr
 ---
 
 ```lua
--- Les commentaires unilignes commencent par un double-tiret.
+-- Les commentaires unilignes commencent par un double tiret.
 
 --[[
-     Les doubles crochets à la suite du double-tiret 
+     Les doubles crochets à la suite du double tiret 
      permettent d'insérer des commentaires multilignes.
 --]]
 
@@ -43,7 +43,7 @@ if num > 40 then
   print('supérieur à 40')
 elseif s ~= 'walternate' then  -- ~= : est différent de.
   -- Le test d'égalité se fait avec == comme en Python.
-  io.write('inférieur à 40\n')  -- Ecrit par defaut sur la sortie stdout.
+  io.write('inférieur à 40\n')  -- Écrit par defaut sur la sortie stdout.
 else
   -- Les variables sont globales par défaut.
   thisIsGlobal = 5  -- le style camelCase est courant.
@@ -64,8 +64,8 @@ aBoolValue = false
 -- Mais 0 et '' sont des valeurs vraies!
 if not aBoolValue then print('etait faux') end
 
--- L'évaluation du 'or' et du 'and' est court-circuitée.
--- Comme avec les ternaires du C et de JS: a?b:c
+-- L'évaluation du 'or' et du 'and' est court-circuité.
+-- Comme avec les ternaires du C et du JS: a?b:c
 ans = aBoolValue and 'oui' or 'non'  --> 'non'
 
 karlSum = 0
@@ -108,7 +108,7 @@ print(a2(64))  --> 100
 
 -- Les valeurs de retour, les appels de fonction, les assignations
 -- supportent tous les listes qui peuvent ne pas correspondre en longueur.
--- Dans ce cas, les variables à assigner en supplément recoivent nil
+-- Dans ce cas, les variables à assigner en supplément reçoivent nil
 -- tandis que les valeurs à attribuer en supplément sont ignorées
 
 x, y = 1, 2 -- x = 1 et y = 2
@@ -120,7 +120,7 @@ function bar(a, b, c)
   return 4, 8, 15, 16, 23, 42
 end
 
-x, y = bar('zaphod')  --> affiche "zaphod  nil nil"
+x, y = bar('zaphod')  --> affiche "zaphod nil nil"
 -- x = 4, y = 8, les valeurs 15 à 42 sont ignorées.
 
 -- Les fonctions sont des valeurs de première classe 
@@ -136,19 +136,19 @@ local g = function(x) return math.sin(x) end
 -- est équivalent à local function g(x), il n'est pas possible
 -- de faire appel à g à l'intérieur du corps de la fonction (récursion)
 
--- A moins de déclarer la fonction auparavant:
+-- À moins de déclarer la fonction auparavant:
 local g; g  = function (x) return math.sin(x) end
 
--- A propos, les fonctions trigonométriques interprètent 
+-- À propos, les fonctions trigonométriques interprètent 
 -- leurs arguments en radians.
 print(math.cos(math.pi)) -- affiche "-1"
 print(math.sin(math.pi)) -- affiche "0"
 
--- Lorsqu'une fonction est appellée avec un seul argument qui est une chaine,
+-- Lorsqu'une fonction est appelée avec un seul argument qui est une chaine,
 -- les parenthèses peuvent être omises:
 print 'hello'  -- équivalent à print('hello').
 
--- Lorsqu'une fonction est appellée avec un seul argument qui est une table,
+-- Lorsqu'une fonction est appelée avec un seul argument qui est une table,
 -- les parenthèses peuvent aussi être omises.
 print {} -- équivalent à print({}).
 
@@ -200,8 +200,8 @@ print(_G['_G'] == _G)  -- Affiche 'true'.
 
 -- De manière implicite, les clés sont des nombres entiers:
 v = {'value1', 'value2', 1.21, 'gigawatts'}
-for i = 1, #v do  -- #v retourne la taille d'une table si elle est une liste.
-  print(v[i])  -- Attention, en Lua, les index commencent à 1!
+for i = 1, #v do  -- #v retourne la taille de la table v si elle est une liste.
+  print(v[i])  -- Attention, en Lua, les indices commencent à 1!
 end
 -- Il n'existe pas vraiment de type 'liste' en Lua, v est juste
 -- une table avec des clés qui sont des nombres entiers consécutifs
@@ -213,7 +213,7 @@ end
 
 -- Une table peut avoir une métatable qui confère à la table
 -- un patron/prototype de conception (surcharge d'opération). Nous verrons
--- dans la suite comment les métatables imitent le prototypage de JS.
+-- dans la suite comment les métatables imitent le prototypage du JS.
 
 f1 = {a = 1, b = 2}  -- Représente la fraction a/b.
 f2 = {a = 2, b = 3}
@@ -236,11 +236,11 @@ s = f1 + f2  -- appèle __add(f1, f2) de la métatable de f1
 
 -- f1, f2 ne possède pas de clé qui pointent vers leur métatable, comme
 -- avec les prototypes en JS. Mais l'on peut utiliser getmetatable(f1).
--- La métatable est une table normale avec des clés prédéfinie, comme __add.
+-- La métatable est une table normale avec des clés prédéfinies, comme __add.
 
 -- Mais la ligne suivante génère une erreur puisque s n'a pas de métatable:
 -- t = s + s
--- En implémentant de l'orienté-objet, comme nous le verrons dans la suite,
+-- En implémentant de l'orienté objet, comme nous le verrons par la suite,
 -- le problème est résolu.
 
 -- Une clé __index dans une métatable mt surcharge l'indexation dans sa table t
@@ -305,7 +305,7 @@ mrDog:makeSound()  -- 'Je dis: woof!       -- 8.
 -- 2. L'expression tbl:fn(...) est identique à 
 --    tbl.fn(self, ...)
 --    La notation : permet de passer par défaut un premier 
---    argument appellé "self" à la fonction tbl.fn
+--    argument appelé "self" à la fonction tbl.fn
 --    Voir 7 & 8 ci-après pour comprendre comment self prend
 --    sa valeur.
 -- 3. newObj sera une instance de la classe Dog.
@@ -383,12 +383,12 @@ return M
 local mod = require('mod')  -- Exécute le fichier mod.lua.
 
 -- require est le moyen par défaut d'inclure des modules.
--- require  agit comme:     (si non trouvé en cache; voir ci-après)
+-- require agit comme:     (si non trouvé en cache; voir ci-après)
 local mod = (function ()
   <contenu de mod.lua>
 end)()
--- Comme si le contenu de mod.lua est enveloppé dans le corps d'une fonction,
--- si bien que les variables locales contenues dans mod.lua deviennent 
+-- Comme si le contenu de mod.lua était enveloppé dans le corps d'une fonction,
+-- si bien que les variables locales contenues dans mod.lua sont 
 -- inaccessibles en dehors de ce module.
 
 -- Le code suivant fonctionne car mod = M (dans mod.lua):
