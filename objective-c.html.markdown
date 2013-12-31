@@ -405,6 +405,21 @@ MyClass *newVar = [classVar retain]; // If classVar is released, object is still
 @property (retain) MyClass *instance; // Release old value and retain a new one (strong reference).
 @property (assign) NSSet *set; // Pointer to new value without retaining/releasing old (weak reference).
 
+// Because memory management can be a pain, Xcode 4.2 and iOS 4 introduced Automatic Reference Counting (ARC).
+// ARC is a compiler feature that inserts retain, release, and autorelease automatically for you, so when using ARC, 
+// you must not use retain, relase, or autorelease.
+MyClass *arcMyClass = [[MyClass alloc] init]; // Without ARC, you will need to call: [arcMyClass release] after
+// you're done using arcMyClass. But with ARC, there is no need. It will insert this release statement for you. 
+
+// As for the "assign" and "retain" @property attributes, with ARC you use "weak" and "strong". 
+@property (weak) MyClass *weakVar; // weak does not take ownership of object. If original instance's reference count
+// is set to zero, weakVar will automatically receive value of nil to avoid application crashing.
+@property (strong) MyClass *strongVar; // strong takes ownership of object. Ensures object will stay in memory to use.
+
+// For regular variables (not @property declared variables), use the following:
+__strong NSString *strongString; // Default. Variable is retained in memory until it leaves it's scope. 
+__weak NSSet *weakSet; // Weak reference to existing object. When existing object is released, weakSet is set to nil.
+__unsafe_unretained NSArray *unsafeArray; // Like __weak but unsafeArray not set to nil when existing object is released.
 
 ```
 ## Further Reading
