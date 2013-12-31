@@ -146,6 +146,10 @@ int main (int argc, const char * argv[])
     [mutableSet addObject:@"Hello"];
     NSLog(@"%@", mutableSet); // prints => {(Hello)}
 
+    // Set object
+    NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
+    NSLog(@"%@", set); // prints => {(Hello, World)}
+
     ///////////////////////////////////////
     // Operators
     ///////////////////////////////////////
@@ -373,6 +377,49 @@ NSLog(@"%i", myClass.count); // prints => 45
 @end
 
 
+///////////////////////////////////////
+// Memory Management
+///////////////////////////////////////
+/* 
+For each object used in an application, memory must be allocated for that object. When the application
+is done using that object, memory must be deallocated to ensure application efficiency. 
+Objective-C does not use garbage collection and instead uses reference counting. As long as 
+there is at least one reference to an object (also called "owning" an object), then the object
+will be available to use (known as "ownership"). 
+
+When an instance owns an object, its reference counter is increments by one. When the
+object is released, the reference counter decrements by one. When reference count is zero,
+the object is removed from memory. 
+
+With all object interactions, follow the pattern of: 
+(1) create the object, (2) use the object, (3) then free the object from memory. 
+*/
+
+MyClass *classVar = [MyClass alloc]; // alloc sets classVar's reference count to one. Returns pointer to object.
+[classVar release]; // Decrements classVar's reference count.  
+// retain claims ownership of existing object instance and increments reference count. Returns pointer to object.
+MyClass *newVar = [classVar retain]; // If classVar is released, object is still in memory because newVar is owner.
+[classVar autorelease]; // Removes ownership of object at end of @autoreleasepool block. Returns pointer to object.
+
+// @property can use retain or assign as well for small convenient definitions. 
+@property (retain) MyClass *instance; // Release old value and retain a new one (strong reference).
+@property (assign) NSSet *set; // Pointer to new value without retaining/releasing old (weak reference).
+
+// Because memory management can be a pain, Xcode 4.2 and iOS 4 introduced Automatic Reference Counting (ARC).
+// ARC is a compiler feature that inserts retain, release, and autorelease automatically for you, so when using ARC, 
+// you must not use retain, relase, or autorelease.
+MyClass *arcMyClass = [[MyClass alloc] init]; // Without ARC, you will need to call: [arcMyClass release] after
+// you're done using arcMyClass. But with ARC, there is no need. It will insert this release statement for you. 
+
+// As for the "assign" and "retain" @property attributes, with ARC you use "weak" and "strong". 
+@property (weak) MyClass *weakVar; // weak does not take ownership of object. If original instance's reference count
+// is set to zero, weakVar will automatically receive value of nil to avoid application crashing.
+@property (strong) MyClass *strongVar; // strong takes ownership of object. Ensures object will stay in memory to use.
+
+// For regular variables (not @property declared variables), use the following:
+__strong NSString *strongString; // Default. Variable is retained in memory until it leaves it's scope. 
+__weak NSSet *weakSet; // Weak reference to existing object. When existing object is released, weakSet is set to nil.
+__unsafe_unretained NSArray *unsafeArray; // Like __weak but unsafeArray not set to nil when existing object is released.
 
 ```
 ## Further Reading
