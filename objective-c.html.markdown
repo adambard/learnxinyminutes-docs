@@ -377,6 +377,34 @@ NSLog(@"%i", myClass.count); // prints => 45
 @end
 
 
+///////////////////////////////////////
+// Memory Management
+///////////////////////////////////////
+/* 
+For each object used in an application, memory must be allocated for that object. When the application
+is done using that object, memory must be deallocated to ensure application efficiency. 
+Objective-C does not use garbage collection and instead uses reference counting. As long as 
+there is at least one reference to an object (also called "owning" an object), then the object
+will be available to use (known as "ownership"). 
+
+When an instance owns an object, its reference counter is increments by one. When the
+object is released, the reference counter decrements by one. When reference count is zero,
+the object is removed from memory. 
+
+With all object interactions, follow the pattern of: 
+(1) create the object, (2) use the object, (3) then free the object from memory. 
+*/
+
+MyClass *classVar = [MyClass alloc]; // alloc sets classVar's reference count to one. Returns pointer to object.
+[classVar release]; // Decrements classVar's reference count.  
+// retain claims ownership of existing object instance and increments reference count. Returns pointer to object.
+MyClass *newVar = [classVar retain]; // If classVar is released, object is still in memory because newVar is owner.
+[classVar autorelease]; // Removes ownership of object at end of @autoreleasepool block. Returns pointer to object.
+
+// @property can use retain or assign as well for small convenient definitions. 
+@property (retain) MyClass *instance; // Release old value and retain a new one (strong reference).
+@property (assign) NSSet *set; // Pointer to new value without retaining/releasing old (weak reference).
+
 
 ```
 ## Further Reading
