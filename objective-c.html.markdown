@@ -306,10 +306,11 @@ int main (int argc, const char * argv[])
 // Methods
 +/- (return type)methodSignature:(Parameter Type *)parameterName;
 
-// + for class method
+// + for class method.
 + (NSString *)classMethod;
++ (MyClass *)myClassFromName:(NSString *)name;
 
-// - for instance method
+// - for instance methods.
 - (NSString *)instanceMethodWithParameter:(NSString *)string;
 - (NSNumber *)methodAParameterAsString:(NSString*)string andAParameterAsNumber:(NSNumber *)number;
 
@@ -328,6 +329,14 @@ NSLog(@"%i", [myClass lengthGet]); // prints => 32
 myClass.count = 45;
 NSLog(@"%i", myClass.count); // prints => 45
 
+
+// Call class methods:
+NSString *classMethodString = [MyClass classMethod];
+MyClass *classFromName = [MyClass myClassFromName:@"Hello"];
+
+// Call instance methods:
+MyClass *myClass = [[MyClass alloc] init]; // Create MyClass object instance.
+NSString *stringFromInstanceMethod = [myClass instanceMethodWithParameter:@"Hello"];
 
 // Implement the methods in an implementation (MyClass.m) file:
 @implementation MyClass {
