@@ -14,7 +14,7 @@ Kurzgefasst, CSS ermöglicht es, verschiedene HTML-Elemente anzuvisieren und ihn
 
 CSS hat wie jede andere Sprache viele Versionen. Hier fokussieren wir uns auf CSS2.0, welche nicht die neueste, aber die am weitesten verbreitete und unterstützte Version ist.
 
-**NOTE:** Weil die Ausgabe von CSS visuelle Eigenschaften sind, wirst du wahrscheinlich einen CSS-Playground wie [dabblet](http://dabblet.com/) benutzen müssen, um die Sprache richtig zu lernen.
+**NOTE:** Weil die Ausgabe von CSS visuelle Eigenschaften sind, wirst du wahrscheinlich eine CSS-Sandbox wie [dabblet](http://dabblet.com/) benutzen müssen, um die Sprache richtig zu lernen.
 In diesem Artikel wird am meisten auf generelle Hinweise und die Syntax geachtet.
 
 
@@ -79,11 +79,11 @@ elemente verhalten!*/
 div.ein-elternteil > .klassen-name {}
 
 /* oder jeder seiner eltern in der struktur */
-/* das folgende heißt also dass jedes element mit der klasse 'klassen-name' und dem
-elternteil IN JEDER TIEFE ausgewählt wird */
+/* das folgende heißt also, dass jedes element mit der klasse 'klassen-name'
+und dem elternteil IN JEDER TIEFE ausgewählt wird */
 div.ein-elternteil .klassen-name {}
 
-/* achtung: dasselbe ohne das leerzeichen hat eine andere bedeutung
+/* achtung: dasselbe ohne das leerzeichen hat eine andere bedeutung,
 kannst du mir sagen, was? */
 div.ein-elternteil.klassen-name {}
 
@@ -91,7 +91,7 @@ div.ein-elternteil.klassen-name {}
 auswählen */
 .ich-bin-vorher + .dieses-element { }
 
-/*oder jeden zwilling davor */
+/* oder jeden zwilling davor */
 .ich-kann-jeder-davor-sein ~ .dieses-element {}
 
 /* es gibt ein paar pseudoklassen, die sich basierend auf dem
@@ -101,7 +101,7 @@ lassen können */
 /* zum beispiel, wenn über ein element mit dem mauszeiger gefahren wird */
 :hover {}
 
-/* oder eine bereits besuchten link*/
+/* oder einen bereits besuchten link*/
 :visited {}
 
 /* oder einen noch nicht besuchten link*/
@@ -135,14 +135,14 @@ selector {
     background-color: rgba(255, 0, 0, 0.3); /* in semi-transparentem rgb */
     
     /* bilder */
-    background-image: url(/path-to-image/image.jpg);
+    background-image: url(/pfad-zum-bild/image.jpg);
     
     /* schriften */
     font-family: Arial;
     font-family: "Courier New"; /* wenn der name ein leerzeichen beinhält, kommt er in
-    gänsefüßchen */
+    apostrophe */
     font-family: "Courier New", Trebuchet, Arial; /* wenn der erste nicht gefunden wird, wird
-    der zweite benutzt und so weiter */
+    der zweite benutzt, und so weiter */
 }
 
 ```
@@ -171,7 +171,7 @@ empfohlen ist -->
 
 ein element kann von mehr als einem selektoren angezielt werden. 
 und kann auch eine eigenschaft mehr als einmal zugewiesen bekommen.  
-in diesen fällen gibt es regeln, die wichtigkeit von selektoren einführen.
+in diesen fällen gibt es regeln, die die wichtigkeit von selektoren einführen.
 
 wie haben dieses CSS:
 
