@@ -28,7 +28,9 @@ int main (int argc, const char * argv[])
 {
     // Create an autorelease pool to manage the memory into the program
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
- 
+    // If using automatic reference counting (ARC), use @autoreleasepool instead:
+    @autoreleasepool {
+
     // Use NSLog to print lines to the console
     NSLog(@"Hello World!"); // Print the string "Hello World!"
  
@@ -267,6 +269,9 @@ int main (int argc, const char * argv[])
 
     // Clean up the memory you used into your program
     [pool drain];
+
+    // End of @autoreleasepool.
+    }
     
     // End the program
     return 0;
