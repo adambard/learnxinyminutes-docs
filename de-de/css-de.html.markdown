@@ -72,155 +72,157 @@ kann - man sollte nur mit der leerzeichensetzung vorsichtig sein,
 da es mit einem leerzeichen zwei verschiedene selektoren wären*/
 div.eine-klasse[attr$='rt'] { } /* so ist es richtig */
 
-/* man kann auch ein element daran festmachen, wie sich die übergeordneten elemente verhalten!*/
+/* man kann auch ein element daran festmachen, wie sich die übergeordneten
+elemente verhalten!*/
 
 /*es muss allerdings ein direktes kind sein */
-div.some-parent > .class-name {}
+div.ein-elternteil > .klassen-name {}
 
-/* or any of it's parents in the tree */
-/* the following basically means any element that has class "class-name"  
-and is child of a div with class name "some-parent" IN ANY DEPTH */
-div.some-parent .class-name {}
+/* oder jeder seiner eltern in der struktur */
+/* das folgende heißt also dass jedes element mit der klasse 'klassen-name' und dem
+elternteil IN JEDER TIEFE ausgewählt wird */
+div.ein-elternteil .klassen-name {}
 
-/* warning: the same selector wihout spaaace has another meaning.  
-can you say what? */
-div.some-parent.class-name {}
+/* achtung: dasselbe ohne das leerzeichen hat eine andere bedeutung
+kannst du mir sagen, was? */
+div.ein-elternteil.klassen-name {}
 
-/* you also might choose to select an element based on it's direct  
-previous sibling */
-.i-am-before + .this-element { }
+/* man kann auch ein element nach seinem direkten vorherigen zwilling
+auswählen */
+.ich-bin-vorher + .dieses-element { }
 
-/*or any sibling before this */
-.i-am-any-before ~ .this-element {}
+/*oder jeden zwilling davor */
+.ich-kann-jeder-davor-sein ~ .dieses-element {}
 
-/* There are some pseudo classes that allows you to select an element  
-based on it's page behaviour (rather than page structure) */
+/* es gibt ein paar pseudoklassen, die sich basierend auf dem
+seitenverhalten, nämlich nicht auf der seitenstruktur auswählen
+lassen können */
 
-/* for example for when an element is hovered */
+/* zum beispiel, wenn über ein element mit dem mauszeiger gefahren wird */
 :hover {}
 
-/* or a visited link*/
+/* oder eine bereits besuchten link*/
 :visited {}
 
-/* or not visited link*/
+/* oder einen noch nicht besuchten link*/
 :link {}
 
-/* or an input element which is focused */
+/* oder ein eingabeelement, das zurzeit im fokus steht */
 :focus {}
 
 
 /* ####################
-   ## PROPERTIES
+   ## EIGENSCHAFTEN
    ####################*/
 
 selector {
     
-    /* Units */
-    width: 50%; /* in percent */
-    font-size: 2em; /* times current font-size */
-    width: 200px; /* in pixels */
-    font-size: 20pt; /* in points */
-    width: 5cm; /* in centimeters */
-    width: 50mm; /* in millimeters */
-    width: 5in; /* in inches */
+    /* einheiten */
+    width: 50%; /* in prozent */
+    font-size: 2em; /* mal der derzeitigen schriftgröße */
+    width: 200px; /* in pixeln */
+    font-size: 20pt; /* in punkten */
+    width: 5cm; /* in zentimetern */
+    width: 50mm; /* in millimetern */
+    width: 5in; /* in zoll */
     
-    /* Colors */
-    background-color: #F6E  /* in short hex */
-    background-color: #F262E2 /* in long hex format */
-    background-color: tomato /* can be a named color */
+    /* farben */
+    background-color: #F6E  /* in kurzem hex */
+    background-color: #F262E2 /* in langem hex */
+    background-color: tomato /* kann auch eine genannte farbe sein */
     background-color: rgb(255, 255, 255) /* in rgb */
-    background-color: rgb(10%, 20%, 50%) /* in rgb percent */
-    background-color: rgba(255, 0, 0, 0.3); /* in semi-transparent rgb */
+    background-color: rgb(10%, 20%, 50%) /* in rgb prozent */
+    background-color: rgba(255, 0, 0, 0.3); /* in semi-transparentem rgb */
     
-    /* Images */
+    /* bilder */
     background-image: url(/path-to-image/image.jpg);
     
-    /* Fonts */
+    /* schriften */
     font-family: Arial;
-    font-family: "Courier New"; /* if name has spaaace it appears in double-quote */
-    font-family: "Courier New", Trebuchet, Arial; /* if first one was not found
-    						 browser uses the second font, and so forth */
+    font-family: "Courier New"; /* wenn der name ein leerzeichen beinhält, kommt er in
+    gänsefüßchen */
+    font-family: "Courier New", Trebuchet, Arial; /* wenn der erste nicht gefunden wird, wird
+    der zweite benutzt und so weiter */
 }
 
 ```
 
-## Usage
+## Benutzung
 
-Save any CSS you want in a file with extension `.css`.
+speichere das css, das du benutzen willst mit der endung '.css'.
 
 ```xml
-<!-- you need to include the css file in your page's <head>: -->
+<!-- du musst die css-datei im <head>-bereich der seite erwähnen -->
 <link rel='stylesheet' type='text/css' href='filepath/filename.css' />
 
-<!-- you can also include some CSS inline in your markup. However it is highly  
-recommended to avoid this. -->
+<!-- es geht allerdings auch direkt, wobei diese methode nicht
+empfohlen ist -->
 <style>
    selector { property:value; }
 </style>
 
-<!-- or directly set CSS properties on the element. 
-This has to be avoided as much as you can. -->
+<!-- oder direkt am element (sollte aber gelassen werden) -->
 <div style='property:value;'>
 </div>
 
 ```
 
-## Precedence
+## Wichtigkeit
 
-As you noticed an element may be targetted by more than one selector. 
-and may have a property set on it in more than one.  
-In these cases, one of the rules takes precedence over others.
+ein element kann von mehr als einem selektoren angezielt werden. 
+und kann auch eine eigenschaft mehr als einmal zugewiesen bekommen.  
+in diesen fällen gibt es regeln, die wichtigkeit von selektoren einführen.
 
-Given the following CSS:
+wie haben dieses CSS:
 
 ```css
 /*A*/
-p.class1[attr='value']
+p.klasse1[attr='wert']
 
 /*B*/
-p.class1 {}
+p.klasse1 {}
 
 /*C*/
-p.class2 {}
+p.klasse2 {}
 
 /*D*/
 p {}
 
 /*E*/
-p { property: value !important; }
+p { property: wert !important; }
 
 ```
 
-and the following markup:
+und das folgende markup:
 
 ```xml
 <p style='/*F*/ property:value;' class='class1 class2' attr='value'>
 </p>
 ```
 
-The precedence of style is as followed:  
-Remember, the precedence is for each **property**, not for the entire block.
+die wichtigkeit der stile ist wie folgt:  
+(die wichtigkeit gilt nur für **eigenschaften**, nicht für ganze blöcke)
 
-* `E` has the highest precedence because of the keyword `!important`.  
-	It is recommended to avoid this unless it is strictly necessary to use.
-* `F` is next, because it is inline style.
-* `A` is next, because it is more "specific" than anything else.  
-	more specific = more specifiers. here 3 specifiers: 1 tagname `p` +   
-	class name `class1` + 1 attribute `attr='value'`
-* `C` is next. although it has the same specificness as `B`  
-	but it appears last.
-* Then is `B`
-* and lastly is `D`.
+* `E` hat die größte wichtigkeit wegen dem schlüsselwort `!important`.  
+	man sollte diese form aber vermeiden.
+* `F` ist als nächstes, da es direkt an dem element definiert ist.
+* `A` ist als nächstes, da es "spezifischer" als alle anderen ist.  
+	spezifischer = mehr zuweisungen: 1 tagname `p` +   
+	klassenname `klasse1` + 1 attribut `attr='value'`
+* `C` ist als nächstes obwohl es genau so ist wie `B`  
+	aber es erscheint als letztes.
+* dann ist `B`
+* und als letztes `D`.
 
-## Compatibility
+## Kompabilität
 
-Most of the features in CSS2 (and gradually in CSS3) are compatible across  
-all browsers and devices. But it's always vital to have in mind the compatiblity  
-of what you use in CSS with your target browsers.
+die meisten features von CSS sind in allen browsern verfügbar.
+man sollte jedoch immer darauf achten, wenn man etwas mit CSS
+programmiert.
 
-[QuirksMode CSS](http://www.quirksmode.org/css/) is one of the best sources for this.
+[QuirksMode CSS](http://www.quirksmode.org/css/) ist eine der besten quellen dafür.
 
-## Further Reading
+## Weiterlesen
 
 * [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
 * [QuirksMode CSS](http://www.quirksmode.org/css/)
