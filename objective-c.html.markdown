@@ -281,41 +281,30 @@ int main (int argc, const char * argv[])
 // Classes And Functions
 ///////////////////////////////////////
 
-// Declare your class in a header(MyClass.h) file:
-// Class Declaration Syntax:
+// Declare your class in a header file (MyClass.h):
+// Class declaration syntax:
 // @interface ClassName : ParentClassName <ImplementedProtocols>
 // {
-//    Member variable declarations;
+//    type name; <= variable declarations;
 // }
-// -/+ (type) Method declarations;
+// @property type name; <= property declarations.
+// -/+ (type) Method declarations; <= Method declarations. 
 // @end
-@interface MyClass : NSObject <MyProtocol>
+@interface MyClass : NSObject <MyProtocol> // NSObject is Objective-C base object class.
 {
-    // Instance variable declarations (can exist in either interface or implementation file)
+    // Instance variable declarations (can exist in either interface or implementation file).
     int count; // Protected access by default. 
-    @private id data; // Private access. (More convenient to declare in implementation file)
+    @private id data; // Private access. (More convenient to declare in implementation file).
     NSString *name; 
 }
-// Convenient notation to auto generate public access getter and setter
-@property int count;
-@property (copy) NSString *name; // Copy the object during assignment.
-@property (readonly) id data;    // Declare only a getter method.
-// To access public variable in implementation file, use '_' followed by variable name:
-_count = 5;
-NSLog(@"%d", _count); // prints => 5
-// To access public variable outside implementation file, @property generates setter method
-// automatically. Method name is 'set' followed by @property variable name:
-MyClass *myClass = [[MyClass alloc] init]; // create MyClass object instance.
-[myClass setCount:10]; 
-NSLog(@"%@", [myClass count]); // prints => 10
+// Convenient notation for public access variables to auto generate a setter method. 
+// By default, setter method name is 'set' followed by @property variable name.
+@property int count; // Setter name = 'setCount'
+@property (copy) NSString *name; // (copy) => Copy the object during assignment.
+@property (readonly) id data;    // (readonly) => Declare only a getter method.
 // You can customize the getter and setter names instead of using default 'set' name:
-@property (getter=countGet, setter=countSet:) int count; 
-[myClass countSet:32];
-NSLog(@"%i", [myClass countGet]); // prints => 32
-// For convenience, you may use dot notation to set object instance variables:
-myClass.count = 45;
-NSLog(@"%i", myClass.count); // prints => 45
-
+@property (getter=lengthGet, setter=lengthSet:) int length;
+ 
 // Methods
 +/- (return type)methodSignature:(Parameter Type *)parameterName;
 
@@ -326,12 +315,33 @@ NSLog(@"%i", myClass.count); // prints => 45
 - (NSString *)instanceMethodWithParameter:(NSString *)string;
 - (NSNumber *)methodAParameterAsString:(NSString*)string andAParameterAsNumber:(NSNumber *)number;
 
-@end
+@end // States the end of the interface. 
+
+
+// To access public variables from the implementation file, @property generates a setter method
+// automatically. Method name is 'set' followed by @property variable name:
+MyClass *myClass = [[MyClass alloc] init]; // create MyClass object instance.
+[myClass setCount:10]; 
+NSLog(@"%@", [myClass count]); // prints => 10
+// Or using the custom getter and setter method defined in @interface:
+[myClass lengthSet:32];
+NSLog(@"%i", [myClass lengthGet]); // prints => 32
+// For convenience, you may use dot notation to set and access object instance variables:
+myClass.count = 45;
+NSLog(@"%i", myClass.count); // prints => 45
+
 
 // Implement the methods in an implementation (MyClass.m) file:
 @implementation MyClass {
-    long count; // Private access instance variable.
+    long distance; // Private access instance variable.
 }
+
+// To access public variable from the interface file, use '_' followed by variable name:
+_count = 5; // References "int count" from MyClass interface. 
+NSLog(@"%d", _count); // prints => 5
+// Access variables defined in implementation file:
+distance = 18; // References "long distance" from MyClass implementation.
+NSLog(@"%li", distance); // prints => 18
 
 // Call when the object is releasing
 - (void)dealloc
@@ -370,7 +380,7 @@ NSLog(@"%i", myClass.count); // prints => 45
     // statements
 }
 
-@end
+@end // States the end of the implementation. 
 
 /*
  * A protocol declares methods that can be implemented by any class.
