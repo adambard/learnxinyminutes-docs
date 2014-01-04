@@ -5,6 +5,8 @@ filename: learngo-cn.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["pantaovay", "https://github.com/pantaovay"]
+    - ["lidashuang", "https://github.com/lidashuang"]
+    
 ---
 
 发明Go语言是出于更好地完成工作的需要。Go不是计算机科学的最新发展潮流，但它却提供了解决现实问题的最新最快的方法。
@@ -30,7 +32,7 @@ import (
 )
 
 // 函数声明：Main是程序执行的入口。
-// 不管你喜欢还是不喜欢，反正G就用了花括号来包住函数体。
+// 不管你喜欢还是不喜欢，反正Go就用了花括号来包住函数体。
 func main() {
     // 往标准输出打印一行。
     // 用包名fmt限制打印函数。
@@ -47,7 +49,7 @@ func beyondHello() {
     x = 3       // 变量赋值。
     // 可以用:=来偷懒，它自动把变量类型、声明和赋值都搞定了。
     y := 4
-    sum, prod := learnMultiple(x, y)        // 多个返回变量的函数
+    sum, prod := learnMultiple(x, y)        // 返回多个变量的函数
     fmt.Println("sum:", sum, "prod:", prod) // 简单输出
     learnTypes()                            // 少于y分钟，学的更多！
 }
@@ -82,7 +84,7 @@ can include line breaks.` // 同样是String类型
     var a4 [4] int              // 有4个int变量的数组，初始为0
     a3 := [...]int{3, 1, 5}     // 有3个int变量的数组，同时进行了初始化
 
-    // Slice 有动态大小。Array和Slice各有千秋，但是使用slice的地方更多些。
+    // Slice 可以动态的增删。Array和Slice各有千秋，但是使用slice的地方更多些。
     s3 := []int{4, 5, 9}        // 和a3相比，这里没有省略号
     s4 := make([]int, 4)        // 分配一个有4个int型变量的slice，全部被初始化为0
 
@@ -114,7 +116,7 @@ func learnMemory() (p, q *int) {
     s := make([]int, 20)    // 给20个int变量分配一块内存
     s[3] = 7                // 赋值
     r := -2                 // 声明另一个局部变量
-    return &s[3], &r        // & 取址
+    return &s[3], &r        // & 取地址
 }
 
 func expensiveComputation() int {
@@ -149,7 +151,7 @@ func learnFlowControl() {
     // x在这里还是1。为什么？
 
     // for 是go里唯一的循环关键字，不过它有很多变种
-    for { // 无限循环
+    for { // 死循环
         break    // 骗你的 
         continue // 不会运行的
     }
@@ -239,7 +241,7 @@ func learnConcurrency() {
     go inc(-805, c)
     // 从channel中独处结果并打印。
     // 打印出什么东西是不可预知的。
-    fmt.Println(<-c, <-c, <-c) // channel在右边的时候，<-是接收操作。
+    fmt.Println(<-c, <-c, <-c) // channel在右边的时候，<-是读操作。
 
     cs := make(chan string)       // 操作string的channel
     cc := make(chan chan string)  // 操作channel的channel
@@ -255,7 +257,7 @@ func learnConcurrency() {
     case <-cc: // 空的，还没作好通讯的准备 
         fmt.Println("didn't happen.")
     }
-    // 上面c或者cs的值被取到，其中一个goroutine结束，另外一个保持阻塞。
+    // 上面c或者cs的值被取到，其中一个goroutine结束，另外一个一直阻塞。
 
     learnWebProgramming() // Go很适合web编程，我知道你也想学！
 }
