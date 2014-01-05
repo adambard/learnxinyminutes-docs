@@ -617,7 +617,7 @@ vec ; => #(1 2 3 4)
 
 ;; Append to "/tmp/tmp.txt"
 (define out-port (open-output-file "/tmp/tmp.txt"
-                                     #:exists 'append))
+                                   #:exists 'append))
 (displayln "Hola mundo" out-port)
 (close-output-port out-port)
 
