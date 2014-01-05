@@ -606,8 +606,8 @@ vec ; => #(1 2 3 4)
 ;; 11. Input & output
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Racket has this concept of "port", which is very similar to file descriptor
-;; in other languages
+;; Racket has this concept of "port", which is very similar to file
+;; descriptors in other languages
 
 ;; Open "/tmp/tmp.txt" and write "Hello World"
 ;; This would trigger an error if the file's already existed
