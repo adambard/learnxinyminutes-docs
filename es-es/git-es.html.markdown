@@ -6,7 +6,7 @@ contributors:
 translator:
     - ["Raúl Ascencio", "http://rscnt.github.io"]
 filename: LearnGit.txt
-language: es-es
+lang: es-es
 
 ---
 
