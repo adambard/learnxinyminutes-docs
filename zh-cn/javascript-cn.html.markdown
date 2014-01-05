@@ -401,8 +401,6 @@ if (Object.create === undefined){ // 如果存在则不覆盖
 [Mozilla 开发者
 网络](https://developer.mozilla.org/en-US/docs/Web/JavaScript) 提供了很好的
 Javascript文档，并且由于是wiki，所以你也可以自行编辑来分享你的知识。
-wiki, so as you learn more you can help others out by sharing your own
-knowledge.
 
 MDN的 [A re-introduction to
 JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
