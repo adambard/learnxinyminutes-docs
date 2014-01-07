@@ -4,7 +4,6 @@ language: Objective-C
 contributors:
     - ["Eugene Yagrushkin", "www.about.me/yagrushkin"]
     - ["Yannick Loriot", "https://github.com/YannickL"]
-    - ["Levi Bostian", "https://github.com/levibostian"]
 filename: LearnObjectiveC.m
 
 ---
@@ -77,16 +76,16 @@ int main (int argc, const char * argv[])
     short fortyTwoShort           = [fortyTwoShortNumber shortValue]; // or 42
     NSLog(@"%hi", fortyTwoShort);
 
-    NSNumber *fortyOneShortNumber   = [NSNumber numberWithShort:41];
-    unsigned short fortyOneUnsigned = [fortyOneShortNumber unsignedShortValue]; // or 41
-    NSLog(@"%u", fortyOneUnsigned);
+    NSNumber *fortyTwoShortNumber   = [NSNumber numberWithShort:41];
+    unsigned short fortyTwoUnsigned = [fortyTwoShortNumber unsignedShortValue]; // or 41
+    NSLog(@"%hu", fortyTwoUnsigned);
     
     NSNumber *fortyTwoLongNumber = @42L;
     long fortyTwoLong            = [fortyTwoLongNumber longValue]; // or 42
     NSLog(@"%li", fortyTwoLong);
 
-    NSNumber *fiftyThreeLongNumber   = @53L;
-    unsigned long fiftyThreeUnsigned = [fiftyThreeLongNumber unsignedLongValue]; // or 53
+    NSNumber *fortyTwoLongNumber     = @53L;
+    unsigned long fiftyThreeUnsigned = [fortyTwoLongNumber unsignedLongValue]; // or 53
     NSLog(@"%lu", fiftyThreeUnsigned);
 
     // Floating point literals
@@ -119,7 +118,6 @@ int main (int argc, const char * argv[])
     NSLog(@"%i", yesBool); // prints => 1
 
     // Array object
-    // May contain different data types, but must be an Objective-C object.
     NSArray *anArray      = @[@1, @2, @3, @4];
     NSNumber *thirdNumber = anArray[2];
     NSLog(@"Third number = %@", thirdNumber); // Print "Third number = 3"
@@ -149,6 +147,10 @@ int main (int argc, const char * argv[])
     [mutableSet addObject:@"Hello"];
     [mutableSet addObject:@"Hello"];
     NSLog(@"%@", mutableSet); // prints => {(Hello)}
+
+    // Set object
+    NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
+    NSLog(@"%@", set); // prints => {(Hello, World)}
 
     ///////////////////////////////////////
     // Operators
@@ -297,9 +299,9 @@ int main (int argc, const char * argv[])
 }
 // Convenient notation for public access variables to auto generate a setter method. 
 // By default, setter method name is 'set' followed by @property variable name.
-@property int count; // Setter method name = 'setCount'
+@property int count; // Setter name = 'setCount'
 @property (copy) NSString *name; // (copy) => Copy the object during assignment.
-@property (readonly) id data;    // (readonly) => Cannot set value outside interface.
+@property (readonly) id data;    // (readonly) => Declare only a getter method.
 // You can customize the getter and setter names instead of using default 'set' name:
 @property (getter=lengthGet, setter=lengthSet:) int length;
  
@@ -320,7 +322,7 @@ int main (int argc, const char * argv[])
 // automatically. Method name is 'set' followed by @property variable name:
 MyClass *myClass = [[MyClass alloc] init]; // create MyClass object instance.
 [myClass setCount:10]; 
-NSLog(@"%d", [myClass count]); // prints => 10
+NSLog(@"%@", [myClass count]); // prints => 10
 // Or using the custom getter and setter method defined in @interface:
 [myClass lengthSet:32];
 NSLog(@"%i", [myClass lengthGet]); // prints => 32
@@ -334,10 +336,12 @@ NSLog(@"%i", myClass.count); // prints => 45
     long distance; // Private access instance variable.
 }
 
-// To access a public variable from the interface file, use '_' followed by variable name:
+// To access public variable from the interface file, use '_' followed by variable name:
 _count = 5; // References "int count" from MyClass interface. 
+NSLog(@"%d", _count); // prints => 5
 // Access variables defined in implementation file:
 distance = 18; // References "long distance" from MyClass implementation.
+NSLog(@"%li", distance); // prints => 18
 
 // Call when the object is releasing
 - (void)dealloc
@@ -345,7 +349,7 @@ distance = 18; // References "long distance" from MyClass implementation.
 }
 
 // Constructors are a way of creating classes
-// This is a default constructor which is called when the object is initialized. 
+// This is a default constructor which is called when the object is creating
 - (id)init
 {
     if ((self = [super init]))
@@ -406,34 +410,31 @@ With all object interactions, follow the pattern of:
 (1) create the object, (2) use the object, (3) then free the object from memory. 
 */
 
-MyClass *classVar = [MyClass alloc]; // 'alloc' sets classVar's reference count to one. Returns pointer to object.
+MyClass *classVar = [MyClass alloc]; // alloc sets classVar's reference count to one. Returns pointer to object.
 [classVar release]; // Decrements classVar's reference count.  
-// 'retain' claims ownership of existing object instance and increments reference count. Returns pointer to object.
+// retain claims ownership of existing object instance and increments reference count. Returns pointer to object.
 MyClass *newVar = [classVar retain]; // If classVar is released, object is still in memory because newVar is owner.
 [classVar autorelease]; // Removes ownership of object at end of @autoreleasepool block. Returns pointer to object.
 
-// @property can use 'retain' and 'assign' as well for small convenient definitions. 
+// @property can use retain or assign as well for small convenient definitions. 
 @property (retain) MyClass *instance; // Release old value and retain a new one (strong reference).
 @property (assign) NSSet *set; // Pointer to new value without retaining/releasing old (weak reference).
 
-// Automatic Reference Counting (ARC)
 // Because memory management can be a pain, Xcode 4.2 and iOS 4 introduced Automatic Reference Counting (ARC).
 // ARC is a compiler feature that inserts retain, release, and autorelease automatically for you, so when using ARC, 
 // you must not use retain, relase, or autorelease.
-MyClass *arcMyClass = [[MyClass alloc] init]; 
-// ... code using arcMyClass
-// Without ARC, you will need to call: [arcMyClass release] after you're done using arcMyClass. But with ARC, 
-// there is no need. It will insert this release statement for you. 
+MyClass *arcMyClass = [[MyClass alloc] init]; // Without ARC, you will need to call: [arcMyClass release] after
+// you're done using arcMyClass. But with ARC, there is no need. It will insert this release statement for you. 
 
-// As for the 'assign' and 'retain' @property attributes, with ARC you use 'weak' and 'strong'. 
-@property (weak) MyClass *weakVar; // 'weak' does not take ownership of object. If original instance's reference count
+// As for the "assign" and "retain" @property attributes, with ARC you use "weak" and "strong". 
+@property (weak) MyClass *weakVar; // weak does not take ownership of object. If original instance's reference count
 // is set to zero, weakVar will automatically receive value of nil to avoid application crashing.
-@property (strong) MyClass *strongVar; // 'strong' takes ownership of object. Ensures object will stay in memory to use.
+@property (strong) MyClass *strongVar; // strong takes ownership of object. Ensures object will stay in memory to use.
 
 // For regular variables (not @property declared variables), use the following:
 __strong NSString *strongString; // Default. Variable is retained in memory until it leaves it's scope. 
 __weak NSSet *weakSet; // Weak reference to existing object. When existing object is released, weakSet is set to nil.
-__unsafe_unretained NSArray *unsafeArray; // Like __weak, but unsafeArray not set to nil when existing object is released.
+__unsafe_unretained NSArray *unsafeArray; // Like __weak but unsafeArray not set to nil when existing object is released.
 
 ```
 ## Further Reading
