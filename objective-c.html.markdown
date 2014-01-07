@@ -336,10 +336,8 @@ NSLog(@"%i", myClass.count); // prints => 45
 
 // To access public variable from the interface file, use '_' followed by variable name:
 _count = 5; // References "int count" from MyClass interface. 
-NSLog(@"%d", _count); // prints => 5
 // Access variables defined in implementation file:
 distance = 18; // References "long distance" from MyClass implementation.
-NSLog(@"%li", distance); // prints => 18
 
 // Call when the object is releasing
 - (void)dealloc
