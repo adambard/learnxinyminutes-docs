@@ -333,6 +333,20 @@ NSLog(@"%i", [myClass lengthGet]); // prints => 32
 myClass.count = 45;
 NSLog(@"%i", myClass.count); // prints => 45
 
+// Selectors. 
+// Way of dynamically represent methods. Used to call methods of a class, pass methods
+// through functions to tell other classes they should call it, and save to methods
+// as a variable.
+// SEL is data type. @selector() returns a selector from method name provided.
+// methodAParameterAsString:andAParameterAsNumber: is method name for method in MyClass
+SEL selectorVar = @selector(methodAParameterAsString:andAParameterAsNumber:); 
+if ([myClass respondsToSelector:selectorVar]) { // Checks if class contains method.
+    // Must put method arguments into one object to send to performSelector. 
+    NSArray *arguments = [NSArray arrayWithObjects:@"Hello", @4, nil];
+    [myClass performSelector:selectorVar withObject:arguments]; // Calls the method
+} else {
+    NSLog(@"MyClass does not have method: %@", NSStringFromSelector(selectedVar));
+}
 
 // Call class methods:
 NSString *classMethodString = [MyClass classMethod];
@@ -352,6 +366,8 @@ NSString *stringFromInstanceMethod = [myClass instanceMethodWithParameter:@"Hell
 _count = 5; // References "int count" from MyClass interface. 
 // Access variables defined in implementation file:
 distance = 18; // References "long distance" from MyClass implementation.
+// To use @property variable in implementation, use @synthesize to create accessor variable:
+@synthesize roString = _roString; // _roString available now in @implementation.
 
 // Called before calling any class methods or instantiating any objects.
 + (void)initialize 
