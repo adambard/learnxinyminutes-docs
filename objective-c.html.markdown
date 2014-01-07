@@ -4,6 +4,7 @@ language: Objective-C
 contributors:
     - ["Eugene Yagrushkin", "www.about.me/yagrushkin"]
     - ["Yannick Loriot", "https://github.com/YannickL"]
+    - ["Levi Bostian", "https://github.com/levibostian"]
 filename: LearnObjectiveC.m
 
 ---
