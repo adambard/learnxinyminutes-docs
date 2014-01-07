@@ -297,9 +297,10 @@ int main (int argc, const char * argv[])
 }
 // Convenient notation for public access variables to auto generate a setter method. 
 // By default, setter method name is 'set' followed by @property variable name.
-@property int count; // Setter method name = 'setCount'
-@property (copy) NSString *name; // (copy) => Copy the object during assignment.
-@property (readonly) id data;    // (readonly) => Cannot set value outside interface.
+@property int propInt; // Setter method name = 'setCount'
+@property (copy) id copyId; // (copy) => Copy the object during assignment.
+// (readonly) => Cannot set value outside interface.
+@property (readonly) NSString *roString; // Use @synthesize in @implementation to create accessor.
 // You can customize the getter and setter names instead of using default 'set' name:
 @property (getter=lengthGet, setter=lengthSet:) int length;
  
@@ -308,11 +309,14 @@ int main (int argc, const char * argv[])
 
 // + for class method.
 + (NSString *)classMethod;
-+ (MyClass *)myClassFromName:(NSString *)name;
++ (MyClass *)myClassFromHeight:(NSNumber *)defaultHeight;
 
 // - for instance methods.
 - (NSString *)instanceMethodWithParameter:(NSString *)string;
 - (NSNumber *)methodAParameterAsString:(NSString*)string andAParameterAsNumber:(NSNumber *)number;
+
+// Constructor methods with arguments:
+- (id)initWithDistance:(int)defaultDistance;
 
 @end // States the end of the interface. 
 
@@ -341,6 +345,7 @@ NSString *stringFromInstanceMethod = [myClass instanceMethodWithParameter:@"Hell
 // Implement the methods in an implementation (MyClass.m) file:
 @implementation MyClass {
     long distance; // Private access instance variable.
+    NSNumber height;
 }
 
 // To access a public variable from the interface file, use '_' followed by variable name:
@@ -348,24 +353,46 @@ _count = 5; // References "int count" from MyClass interface.
 // Access variables defined in implementation file:
 distance = 18; // References "long distance" from MyClass implementation.
 
-// Call when the object is releasing
-- (void)dealloc
+// Called before calling any class methods or instantiating any objects.
++ (void)initialize 
 {
+    if (self == [MyClass class]) {
+        distance = 0;
+    }
 }
 
-// Constructors are a way of creating classes
+// Counterpart to initialize method. Called when an object's reference count is zero.
+- (void)dealloc
+{
+    [height release]; // If not using ARC, make sure to release class variable objects 
+    [super dealloc];  // and call parent class dealloc. 
+}
+
+// Constructors are a way of creating instances of classes.
 // This is a default constructor which is called when the object is initialized. 
 - (id)init
 {
-    if ((self = [super init]))
+    if ((self = [super init])) // 'super' used to access methods from parent class.
     {
-        self.count = 1;
+        self.count = 1; // 'self' used for object to send messages to itself.
     }
+    return self;
+}
+// Can create constructors that contain arguments:
+- (id)initWithDistance:(int)defaultDistance 
+{
+    distance = defaultDistance;
     return self;
 }
 
 + (NSString *)classMethod
 {
+    return [[self alloc] init];
+}
+
++ (MyClass *)myClassFromHeight:(NSNumber *)defaultHeight 
+{
+    height = defaultHeight;
     return [[self alloc] init];
 }
 
@@ -378,6 +405,12 @@ distance = 18; // References "long distance" from MyClass implementation.
 {
     return @42;
 }
+
+// If you create a method in @implementation but do not include in @interface, it is private.
+- (NSNumber *)secretPrivateMethod {
+    return @72;
+}
+[self secretPrivateMethod]; // Calls private method.
 
 // Methods declared into MyProtocol
 - (void)myProtocolMethod
