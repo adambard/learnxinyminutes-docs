@@ -553,6 +553,42 @@ int main (int argc, const char * argv[]) {
 
 @end
 
+// Extensions
+// Extensions allow you to override public access property attributes and methods of an @interface.
+// @interface filename: Shape.h
+@interface Shape : NSObject // Base Shape class extension overrides below.
+
+@property (readonly) NSNumber *numOfSides;
+
+- (int)getNumOfSides;
+
+@end
+// You can override numOfSides variable or getNumOfSides method to edit them with an extension:
+// @implementation filename: Shape.m
+#import "Shape.h"
+// Extensions live in the same file as the class @implementation. 
+@interface Shape () // () after base class name declares an extension.  
+
+@property (copy) NSNumber *numOfSides; // Make numOfSides copy instead of readonly.
+-(NSNumber)getNumOfSides; // Make getNumOfSides return a NSNumber instead of an int.
+-(void)privateMethod; // You can also create new private methods inside of extensions.
+
+@end
+// The main @implementation:
+@implementation Shape 
+
+@synthesize numOfSides = _numOfSides;
+
+-(NSNumber)getNumOfSides { // All statements inside of extension must be in the @implementation.
+    return _numOfSides;
+}
+-(void)privateMethod {
+    NSLog(@"Private method created by extension. Shape instances cannot call me.");
+}
+
+@end
+
+
 // Protocols
 // A protocol declares methods that can be implemented by any class.
 // Protocols are not classes themselves. They simply define an interface
