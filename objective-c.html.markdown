@@ -444,11 +444,96 @@ distance = 18; // References "long distance" from MyClass implementation
 
 @end // States the end of the implementation
 
-/*
- * A protocol declares methods that can be implemented by any class.
- * Protocols are not classes themselves. They simply define an interface
- * that other objects are responsible for implementing.
- */
+// Categories
+// A category is a group of methods designed to extend a class. They allow you to add new methods
+// to an existing class for organizational purposes. This is not to be mistaken with subclasses. 
+// Subclasses are meant to CHANGE functionality of an object while categories instead ADD 
+// functionality to an object.
+// Categories allow you to:
+// -- Add methods to an existing class for organizational purposes.
+// -- Allow you to extend Objective-C object classes (ex: NSString) to add your own methods.
+// -- Add ability to create protected and private methods to classes. 
+// NOTE: Do not override methods of the base class in a category even though you have the ability 
+// to. Overriding methods may cause compiler errors later between different categories and it 
+// ruins the purpose of categories to only ADD functionality. Subclass instead to override methods.
+
+// Here is a simple Car base class.
+@interface Car : NSObject
+
+@property NSString *make;
+@property NSString *color;
+
+- (void)turnOn;
+- (void)accelerate;
+
+@end
+
+// And the simple Car base class implementation:
+#import "Car.h"
+
+@implementation Car
+
+@synthesize make = _make;
+@synthesize color = _color;
+
+- (void)turnOn {
+    NSLog(@"Car is on.");
+}
+- (void)accelerate {
+    NSLog(@"Accelerating.");
+}
+
+@end
+
+// Now, if we wanted to create a Truck object, we would create a subclass of Car instead as it would
+// be changing the functionality of the Car to behave like a truck. But lets say we want to just add 
+// functionality to this existing Car. A good example would be to clean the car. So we would create 
+// a category to add these cleaning methods:
+// @interface filename: Car+Clean.h
+#import "Car.h" // Make sure to import base class to extend.
+
+@interface Car (Clean) // The category name is inside () following the name of the base class.
+
+- (void)washWindows; // Names of the new methods we are adding to our Car object.
+- (void)wax;
+
+@end
+
+// @implementation filename: Car+Clean.m
+#import "Car+Clean.h"
+
+@implementation Car (Clean)
+
+- (void)washWindows {
+    NSLog(@"Windows washed.");
+}
+- (void)wax {
+    NSLog(@"Waxed.");
+}
+
+@end
+
+// Any Car object instance has the ability to use a category. All they need to do is import it:
+#import "Car+Clean.h" // Import as many different categories as you want to use.
+#import "Car.h" // Also need to import base class to use it's original functionality.
+
+int main(int argc, const char *argv[]) {
+    @autoreleasepool {
+        Car *mustang = [[Car alloc] init];
+        mustang.color = @"Red";
+        mustang.make = @"Ford";
+
+        [mustang turnOn]; // Use methods from base Car class.
+        [mustang washWindows]; // Use methods from Car's Clean category.
+    }
+    return 0; 
+}
+
+
+// Protocols
+// A protocol declares methods that can be implemented by any class.
+// Protocols are not classes themselves. They simply define an interface
+// that other objects are responsible for implementing.
 @protocol MyProtocol
     - (void)myProtocolMethod;
 @end
