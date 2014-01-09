@@ -297,21 +297,27 @@ int main (int argc, const char * argv[])
 }
 // Convenient notation for public access variables to auto generate a setter method. 
 // By default, setter method name is 'set' followed by @property variable name.
-@property int count; // Setter method name = 'setCount'
-@property (copy) NSString *name; // (copy) => Copy the object during assignment.
-@property (readonly) id data;    // (readonly) => Cannot set value outside interface.
+@property int propInt; // Setter method name = 'setPropInt'
+@property (copy) id copyId; // (copy) => Copy the object during assignment.
+// (readonly) => Cannot set value outside @interface.
+@property (readonly) NSString *roString; // Use @synthesize in @implementation to create accessor.
 // You can customize the getter and setter names instead of using default 'set' name:
 @property (getter=lengthGet, setter=lengthSet:) int length;
  
 // Methods
 +/- (return type)methodSignature:(Parameter Type *)parameterName;
 
-// + for class method
+// + for class methods:
 + (NSString *)classMethod;
++ (MyClass *)myClassFromHeight:(NSNumber *)defaultHeight;
 
-// - for instance method
+// - for instance methods:
 - (NSString *)instanceMethodWithParameter:(NSString *)string;
 - (NSNumber *)methodAParameterAsString:(NSString*)string andAParameterAsNumber:(NSNumber *)number;
+
+// Constructor methods with arguments:
+- (id)initWithDistance:(int)defaultDistance;
+// Objective-C method names are very descriptive. Always name methods according to their arguments.
 
 @end // States the end of the interface. 
 
@@ -328,35 +334,83 @@ NSLog(@"%i", [myClass lengthGet]); // prints => 32
 myClass.count = 45;
 NSLog(@"%i", myClass.count); // prints => 45
 
+// Call class methods:
+NSString *classMethodString = [MyClass classMethod];
+MyClass *classFromName = [MyClass myClassFromName:@"Hello"];
+
+// Call instance methods:
+MyClass *myClass = [[MyClass alloc] init]; // Create MyClass object instance.
+NSString *stringFromInstanceMethod = [myClass instanceMethodWithParameter:@"Hello"];
+
+// Selectors. 
+// Way to dynamically represent methods. Used to call methods of a class, pass methods
+// through functions to tell other classes they should call it, and to save methods
+// as a variable.
+// SEL is the data type. @selector() returns a selector from method name provided.
+// methodAParameterAsString:andAParameterAsNumber: is method name for method in MyClass
+SEL selectorVar = @selector(methodAParameterAsString:andAParameterAsNumber:); 
+if ([myClass respondsToSelector:selectorVar]) { // Checks if class contains method.
+    // Must put all method arguments into one object to send to performSelector function. 
+    NSArray *arguments = [NSArray arrayWithObjects:@"Hello", @4, nil];
+    [myClass performSelector:selectorVar withObject:arguments]; // Calls the method.
+} else {
+    // NSStringFromSelector() returns a NSString of the method name of a given selector.
+    NSLog(@"MyClass does not have method: %@", NSStringFromSelector(selectedVar));
+}
 
 // Implement the methods in an implementation (MyClass.m) file:
 @implementation MyClass {
     long distance; // Private access instance variable.
+    NSNumber height;
 }
 
 // To access a public variable from the interface file, use '_' followed by variable name:
 _count = 5; // References "int count" from MyClass interface. 
 // Access variables defined in implementation file:
 distance = 18; // References "long distance" from MyClass implementation.
+// To use @property variable in implementation, use @synthesize to create accessor variable:
+@synthesize roString = _roString; // _roString available now in @implementation.
 
-// Call when the object is releasing
-- (void)dealloc
+// Called before calling any class methods or instantiating any objects.
++ (void)initialize 
 {
+    if (self == [MyClass class]) {
+        distance = 0;
+    }
 }
 
-// Constructors are a way of creating classes
+// Counterpart to initialize method. Called when an object's reference count is zero.
+- (void)dealloc
+{
+    [height release]; // If not using ARC, make sure to release class variable objects 
+    [super dealloc];  // and call parent class dealloc. 
+}
+
+// Constructors are a way of creating instances of a class.
 // This is a default constructor which is called when the object is initialized. 
 - (id)init
 {
-    if ((self = [super init]))
+    if ((self = [super init])) // 'super' used to access methods from parent class.
     {
-        self.count = 1;
+        self.count = 1; // 'self' used for object to call itself.
     }
+    return self;
+}
+// Can create constructors that contain arguments:
+- (id)initWithDistance:(int)defaultDistance 
+{
+    distance = defaultDistance;
     return self;
 }
 
 + (NSString *)classMethod
 {
+    return [[self alloc] init];
+}
+
++ (MyClass *)myClassFromHeight:(NSNumber *)defaultHeight 
+{
+    height = defaultHeight;
     return [[self alloc] init];
 }
 
@@ -369,6 +423,12 @@ distance = 18; // References "long distance" from MyClass implementation.
 {
     return @42;
 }
+
+// To create a private method, create the method in the @implementation but not in the @interface.
+- (NSNumber *)secretPrivateMethod {
+    return @72;
+}
+[self secretPrivateMethod]; // Calls private method.
 
 // Methods declared into MyProtocol
 - (void)myProtocolMethod
