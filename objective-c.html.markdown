@@ -430,7 +430,12 @@ distance = 18; // References "long distance" from MyClass implementation
     return @42;
 }
 
+<<<<<<< HEAD
 // To create a private method, create the method in the @implementation but not in the @interface
+=======
+// Objective-C does not have private method declarations, but you can simulate them. 
+// To simulate a private method, create the method in the @implementation but not in the @interface.
+>>>>>>> 421f48c... Add description and example of how to simulate protected methods.
 - (NSNumber *)secretPrivateMethod {
     return @72;
 }
@@ -485,11 +490,11 @@ distance = 18; // References "long distance" from MyClass implementation
 
 @end
 
-// Now, if we wanted to create a Truck object, we would create a subclass of Car instead as it would
+// Now, if we wanted to create a Truck object, we would instead create a subclass of Car as it would
 // be changing the functionality of the Car to behave like a truck. But lets say we want to just add 
 // functionality to this existing Car. A good example would be to clean the car. So we would create 
 // a category to add these cleaning methods:
-// @interface filename: Car+Clean.h
+// @interface filename: Car+Clean.h (BaseClassName+CategoryName.h)
 #import "Car.h" // Make sure to import base class to extend.
 
 @interface Car (Clean) // The category name is inside () following the name of the base class.
@@ -499,8 +504,8 @@ distance = 18; // References "long distance" from MyClass implementation
 
 @end
 
-// @implementation filename: Car+Clean.m
-#import "Car+Clean.h"
+// @implementation filename: Car+Clean.m (BaseClassName+CategoryName.m)
+#import "Car+Clean.h" // Import the Clean category's @interface file.
 
 @implementation Car (Clean)
 
@@ -511,13 +516,13 @@ distance = 18; // References "long distance" from MyClass implementation
     NSLog(@"Waxed.");
 }
 
-@end
+@end 
 
 // Any Car object instance has the ability to use a category. All they need to do is import it:
 #import "Car+Clean.h" // Import as many different categories as you want to use.
 #import "Car.h" // Also need to import base class to use it's original functionality.
 
-int main(int argc, const char *argv[]) {
+int main (int argc, const char * argv[]) {
     @autoreleasepool {
         Car *mustang = [[Car alloc] init];
         mustang.color = @"Red";
@@ -529,6 +534,24 @@ int main(int argc, const char *argv[]) {
     return 0; 
 }
 
+// Objective-C does not have protected method declarations but you can simulate them.
+// Create a category containing all of the protected methods, then import it ONLY into the
+// @implementation file of a class belonging to the Car class:
+@interface Car (Protected) // Naming category 'Protected' to remember methods are protected.
+
+- (void)lockCar; // Methods listed here may only be created by Car objects.
+
+@end
+//To use protected methods, import the category, then implement the methods:
+#import "Car+Protected.h" // Remember, import in the @implementation file only.
+
+@implementation Car 
+
+- (void)lockCar {
+    NSLog(@"Car locked."); // Instances of Car can't use lockCar because it's not in the @interface.
+}
+
+@end
 
 // Protocols
 // A protocol declares methods that can be implemented by any class.
