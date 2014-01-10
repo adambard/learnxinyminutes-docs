@@ -92,7 +92,7 @@ int main() {
     printf("%zu\n", sizeof(int)); // => 4 (on most machines with 4-byte words)
 
 
-    // If the argument of the `sizeof` operator an expression, then its argument
+    // If the argument of the `sizeof` operator is an expression, then its argument
     // is not evaluated (except VLAs (see below)).
     // The value it yields in this case is a compile-time constant.
     int a = 1;
