@@ -430,12 +430,8 @@ distance = 18; // References "long distance" from MyClass implementation
     return @42;
 }
 
-<<<<<<< HEAD
-// To create a private method, create the method in the @implementation but not in the @interface
-=======
 // Objective-C does not have private method declarations, but you can simulate them. 
 // To simulate a private method, create the method in the @implementation but not in the @interface.
->>>>>>> 421f48c... Add description and example of how to simulate protected methods.
 - (NSNumber *)secretPrivateMethod {
     return @72;
 }
@@ -449,7 +445,9 @@ distance = 18; // References "long distance" from MyClass implementation
 
 @end // States the end of the implementation
 
+///////////////////////////////////////
 // Categories
+///////////////////////////////////////
 // A category is a group of methods designed to extend a class. They allow you to add new methods
 // to an existing class for organizational purposes. This is not to be mistaken with subclasses. 
 // Subclasses are meant to CHANGE functionality of an object while categories instead ADD 
@@ -553,7 +551,9 @@ int main (int argc, const char * argv[]) {
 
 @end
 
+///////////////////////////////////////
 // Extensions
+///////////////////////////////////////
 // Extensions allow you to override public access property attributes and methods of an @interface.
 // @interface filename: Shape.h
 @interface Shape : NSObject // Base Shape class extension overrides below.
@@ -588,15 +588,75 @@ int main (int argc, const char * argv[]) {
 
 @end
 
-
+///////////////////////////////////////
 // Protocols
+///////////////////////////////////////
 // A protocol declares methods that can be implemented by any class.
 // Protocols are not classes themselves. They simply define an interface
 // that other objects are responsible for implementing.
-@protocol MyProtocol
-    - (void)myProtocolMethod;
+ // @protocol filename: "CarUtilities.h"
+@protocol CarUtilities <NSObject> // <NSObject> => Name of another protocol this protocol includes.
+    @property BOOL engineOn; // Adopting class must @synthesize all defined @properties and
+    - (void)turnOnEngine; // all defined methods.
 @end
+// Below is an example class implementing the protocol. 
+#import "CarUtilities.h" // Import the @protocol file.
 
+@interface Car : NSObject <CarUtilities> // Name of protocol goes inside <>
+    // You don't need the @property or method names here for CarUtilities. Only @implementation does.
+- (void)turnOnEngineWithUtilities:(id <CarUtilities>)car; // You can use protocols as data too.
+@end
+// The @implementation needs to implement the @properties and methods for the protocol. 
+@implementation Car : NSObject <CarUtilities>
+
+@synthesize engineOn = _engineOn; // Create a @synthesize statement for the engineOn @property.
+
+- (void)turnOnEngine { // Implement turnOnEngine however you would like. Protocols do not define
+    _engineOn = YES; // how you implement a method, it just requires that you do implement it.
+}
+// You may use a protocol as data as you know what methods and variables it has implemented.
+- (void)turnOnEngineWithCarUtilities:(id <CarUtilities>)objectOfSomeKind { 
+    [objectOfSomeKind engineOn]; // You have access to object variables
+    [objectOfSomeKind turnOnEngine]; // and the methods inside. 
+    [objectOfSomeKind engineOn]; // May or may not be YES. Class implements it however it wants.
+}
+
+@end
+// Instances of Car now have access to the protocol. 
+Car *carInstance = [[Car alloc] init];
+[[carInstance setEngineOn:NO];
+[carInstance turnOnEngine];
+if ([carInstance engineOn]) {
+    NSLog(@"Car engine is on."); // prints => "Car engine is on."
+}
+// Make sure to check if an object of type 'id' implements a protocol before calling protocol methods:
+if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
+    NSLog(@"This does not run as the MyClass class does not implement the CarUtilities protocol.");
+} else if ([carInstance conformsToProtocol:@protocol(CarUtilities)]) {
+    NSLog(@"This does run as the Car class implements the CarUtilities protocol.");
+}
+// Categories may implement protocols as well: @interface Car (CarCategory) <CarUtilities>
+// You may implement many protocols: @interface Car : NSObject <CarUtilities, CarCleaning>
+// NOTE: If two or more protocols rely on each other, make sure to forward-declare them:
+#import "Brother.h"
+
+@protocol Brother; // Forward-declare statement. Without it, compiler would through error.
+
+@protocol Sister <NSObject>
+
+- (void)beNiceToBrother:(id <Brother>)brother;
+
+@end
+// See the problem is that Sister relies on Brother, and Brother relies on Sister.
+#import "Sister.h"
+
+@protocol Sister; // These lines stop the recursion, resolving the issue. 
+
+@protocol Brother <NSObject>
+ 
+- (void)beNiceToSister:(id <Sister>)sister;
+
+@end
 
 ///////////////////////////////////////
 // Memory Management
