@@ -376,7 +376,7 @@ int main() {
     // or when it's the argument of the `sizeof` or `alignof` operator:
     int arr[10];
     int *ptr = arr; // equivalent with int *ptr = &arr[0];
-    printf("%zu %zu\n", sizeof arr, sizeof ptr); // probably prints "40, 4" or "40, 8"
+    printf("%zu, %zu\n", sizeof arr, sizeof ptr); // probably prints "40, 4" or "40, 8"
 
 
     // Pointers are incremented and decremented based on their type
