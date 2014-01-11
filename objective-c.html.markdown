@@ -718,7 +718,6 @@ int main (int argc, const char * argv[]) {
 @interface Car : NSObject <CarUtilities> // Name of protocol goes inside <>
     // You don't need the @property or method names here for CarUtilities. Only @implementation does.
 - (void)turnOnEngineWithUtilities:(id <CarUtilities>)car; // You can use protocols as data too.
-<<<<<<< HEAD
 @end
 // The @implementation needs to implement the @properties and methods for the protocol. 
 @implementation Car : NSObject <CarUtilities>
@@ -760,7 +759,6 @@ if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
 
 - (void)beNiceToBrother:(id <Brother>)brother;
 
-=======
 @end
 // The @implementation needs to implement the @properties and methods for the protocol. 
 @implementation Car : NSObject <CarUtilities>
@@ -802,7 +800,6 @@ if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
 
 - (void)beNiceToBrother:(id <Brother>)brother;
 
->>>>>>> 8c6f583... Add much more to the protocols section.
 @end
 // See the problem is that Sister relies on Brother, and Brother relies on Sister.
 #import "Sister.h"
