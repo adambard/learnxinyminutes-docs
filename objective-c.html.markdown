@@ -12,7 +12,7 @@ filename: LearnObjectiveC.m
 Objective-C is the main programming language used by Apple for the OS X and iOS operating systems and their respective frameworks, Cocoa and Cocoa Touch.
 It is a general-purpose, object-oriented programming language that adds Smalltalk-style messaging to the C programming language. 
 
-```cpp
+```objective-c
 // Single-line comments start with //
 
 /*
@@ -20,8 +20,14 @@ Multi-line comments look like this.
 */
 
 // Imports the Foundation headers with #import
+// Use <> to import global files (in general frameworks)
+// Use "" to import local files (from project)
 #import <Foundation/Foundation.h>
 #import "MyClass.h"
+
+// If you enable modules for iOS >= 7.0 or Mac OSX >= 10.9 projects in
+// Xcode 5 you can import frameworks like that:
+@import Foundation;
 
 // Your program's entry point is a function called
 // main with an integer return type.
