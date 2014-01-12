@@ -375,80 +375,79 @@ distance = 18;
 // accésseurs :
 @synthesize roString = _roString; // _roString est disponible dans l'@implementation
 
-// Première méthode appelé
-+ (void)initialize 
-{
-    if (self == [MaClasse class]) {
-        distance = 0;
-    }
-}
-
-// Counterpart to initialize method. Called when an object's reference count is zero.
+// En contre-partie de l'initialisation, la fonction dealloc est appelé quand l'objet est n'est plus
+// utilisé
 - (void)dealloc
 {
-    [height release]; // If not using ARC, make sure to release class variable objects 
-    [super dealloc];  // and call parent class dealloc. 
+    [hauteur release]; // Si vous n'utilisez par l'ARC, pensez bien à supprimer l'objet 
+    [super dealloc];  // et à appeler la méthode de la classe parent 
 }
 
-// Constructors are a way of creating instances of a class.
-// This is a default constructor which is called when the object is initialized. 
+// Les constructeurs sont une manière de créer des instances de classes
+// Ceci est le constructeur par défaut; il est appelé quand l'objet est créé
 - (id)init
 {
-    if ((self = [super init])) // 'super' used to access methods from parent class.
+    if ((self = [super init])) // 'super' est utilisé pour appeler la méthode de la classe parent
     {
-        self.count = 1; // 'self' used for object to call itself.
+        self.count = 1; // 'self' est utilisé pour appeler la méthodes de l'objet courrant
     }
     return self;
 }
-// Can create constructors that contain arguments:
-- (id)initWithDistance:(int)defaultDistance 
+
+// Vous pouvez créer des constructeurs qui possèdent des arguments :
+- (id)initAvecUneDistance:(int)distanceParDefault 
 {
-    distance = defaultDistance;
-    return self;
+    if ((self = [super init]))
+    {
+        distance = distanceParDefault;
+        return self;
+    }
 }
 
-+ (NSString *)classMethod
++ (NSString *)methodDeClasse
 {
     return [[self alloc] init];
 }
 
-+ (MyClass *)myClassFromHeight:(NSNumber *)defaultHeight 
++ (MaClasse *)maClasseDepuisUneHauteur:(NSNumber *)hauteurParDefaut
 {
-    height = defaultHeight;
+    hauteur = hauteurParDefaut;
     return [[self alloc] init];
 }
 
-- (NSString *)instanceMethodWithParameter:(NSString *)string
+- (NSString *)methodeInstanceAvecUnParametre:(NSString *)string
 {
-    return @"New string";
+    return @"Ma chaine de charactère";
 }
 
-- (NSNumber *)methodAParameterAsString:(NSString*)string andAParameterAsNumber:(NSNumber *)number
+- (NSNumber *)methodeInstanceAvecUnParametre:(NSString*)string puisUnDeuxieme:(NSNumber *)number
 {
     return @42;
 }
 
-// To create a private method, create the method in the @implementation but not in the @interface.
-- (NSNumber *)secretPrivateMethod {
+// Pour créer une méthode privée, il faut la définir dans l'@implementation et non pas dans 
+// l'@interface
+- (NSNumber *)methodePrivee
+{
     return @72;
 }
-[self secretPrivateMethod]; // Calls private method.
 
-// Methods declared into MyProtocol
-- (void)myProtocolMethod
+[self methodePrivee]; // Appel de la méthode privée
+
+// Méthode déclarée dans MonProtocole
+- (void)methodeDuProtocole
 {
-    // statements
+    // expressions
 }
 
-@end // States the end of the implementation. 
+@end // Fin de l'implémentation
 
 /*
- * A protocol declares methods that can be implemented by any class.
- * Protocols are not classes themselves. They simply define an interface
- * that other objects are responsible for implementing.
+ * Un protocole déclare les méthodes qu'ils doivent implémenter afin de se conformer celui-ci
+ * Un protocole n'est pas une classe, c'est juste une interface
  */
-@protocol MyProtocol
-    - (void)myProtocolMethod;
+@protocol MonProtocole
+    - (void)methodeDuProtocole;
 @end
 
 
