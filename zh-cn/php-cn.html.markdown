@@ -333,7 +333,7 @@ function my_function () {
 echo my_function(); // => "Hello"
 
 // 函数名需要以字母或者下划线开头, 
-// 后面可以跟着任意的字幕、下划线、数字.
+// 后面可以跟着任意的字母、下划线、数字.
 
 function add ($x, $y = 1) { // $y 是可选参数，默认值为 1
   $result = $x + $y;
