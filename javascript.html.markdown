@@ -2,6 +2,7 @@
 language: javascript
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+    - ["Jack Hooper", "https://www.github.com/jackhooper"]
 filename: javascript.js
 ---
 
@@ -173,7 +174,7 @@ myObj.myFourthKey; // = undefined
 
 // The if structure works as you'd expect.
 var count = 1;
-if (count == 3){
+if (count == 3) {
     // evaluated if count is 3
 } else if (count == 4) {
     // evaluated if count is 4
@@ -194,15 +195,15 @@ do {
 
 // the for loop is the same as C and Java:
 // initialisation; continue condition; iteration.
-for (var i = 0; i < 5; i++){
+for (var i = 0; i < 5; i++) {
     // will run 5 times
 }
 
 // && is logical and, || is logical or
-if (house.size == "big" && house.colour == "blue"){
+if (house.size == "big" && house.colour == "blue") {
     house.contains = "bear";
 }
-if (colour == "red" || colour == "blue"){
+if (colour == "red" || colour == "blue") {
     // colour is either red or blue
 }
 
@@ -213,7 +214,7 @@ var name = otherName || "default";
 // 4. Functions, Scope and Closures
 
 // JavaScript functions are declared with the function keyword.
-function myFunction(thing){
+function myFunction(thing) {
     return thing.toUpperCase();
 }
 myFunction("foo"); // = "FOO"
@@ -233,7 +234,7 @@ myFunction(); // = undefined
 // JavaScript functions are first class objects, so they can be reassigned to
 // different variable names and passed to other functions as arguments - for
 // example, when supplying an event handler:
-function myFunction(){
+function myFunction() {
     // this code will be called in 5 seconds' time
 }
 setTimeout(myFunction, 5000);
@@ -242,13 +243,13 @@ setTimeout(myFunction, 5000);
 
 // Function objects don't even have to be declared with a name - you can write
 // an anonymous function definition directly into the arguments of another.
-setTimeout(function(){
+setTimeout(function() {
     // this code will be called in 5 seconds' time
 }, 5000);
 
 // JavaScript has function scope; functions get their own scope but other blocks
 // do not.
-if (true){
+if (true) {
     var i = 5;
 }
 i; // = 5 - not undefined as you'd expect in a block-scoped language
@@ -256,7 +257,7 @@ i; // = 5 - not undefined as you'd expect in a block-scoped language
 // This has led to a common pattern of "immediately-executing anonymous
 // functions", which prevent temporary variables from leaking into the global
 // scope.
-(function(){
+(function() {
     var temporary = 5;
     // We can access the global scope by assiging to the 'global object', which
     // in a web browser is always 'window'. The global object may have a
@@ -269,11 +270,11 @@ permanent; // = 10
 // One of JavaScript's most powerful features is closures. If a function is
 // defined inside another function, the inner function has access to all the
 // outer function's variables, even after the outer function exits.
-function sayHelloInFiveSeconds(name){
+function sayHelloInFiveSeconds(name) {
     var prompt = "Hello, " + name + "!";
     // Inner functions are put in the local scope by default, as if they were
     // declared with 'var'.
-    function inner(){
+    function inner() {
         alert(prompt);
     }
     setTimeout(inner, 5000);
@@ -289,7 +290,7 @@ sayHelloInFiveSeconds("Adam"); // will open a popup with "Hello, Adam!" in 5s
 
 // Objects can contain functions.
 var myObj = {
-    myFunc: function(){
+    myFunc: function() {
         return "Hello world!";
     }
 };
@@ -299,7 +300,7 @@ myObj.myFunc(); // = "Hello world!"
 // they're attached to using the this keyword.
 myObj = {
     myString: "Hello world!",
-    myFunc: function(){
+    myFunc: function() {
         return this.myString;
     }
 };
@@ -313,7 +314,7 @@ myFunc(); // = undefined
 
 // Inversely, a function can be assigned to the object and gain access to it
 // through this, even if it wasn't attached when it was defined.
-var myOtherFunc = function(){
+var myOtherFunc = function() {
     return this.myString.toUpperCase();
 }
 myObj.myOtherFunc = myOtherFunc;
@@ -322,7 +323,7 @@ myObj.myOtherFunc(); // = "HELLO WORLD!"
 // We can also specify a context for a function to execute in when we invoke it
 // using 'call' or 'apply'.
 
-var anotherFunc = function(s){
+var anotherFunc = function(s) {
     return this.myString + s;
 }
 anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
@@ -346,7 +347,7 @@ boundFunc(" And Hello Saturn!"); // = "Hello World! And Hello Saturn!"
 
 // Bind can also be used to partially apply (curry) a function.
 
-var product = function(a, b){ return a * b; }
+var product = function(a, b) { return a * b; }
 var doubler = product.bind(this, 2);
 doubler(8); // = 16
 
@@ -354,7 +355,7 @@ doubler(8); // = 16
 // made available to the function via the this keyword. Functions designed to be
 // called like that are called constructors.
 
-var MyConstructor = function(){
+var MyConstructor = function() {
     this.myNumber = 5;
 }
 myNewObj = new MyConstructor(); // = {myNumber: 5}
@@ -372,7 +373,7 @@ var myObj = {
 };
 var myPrototype = {
     meaningOfLife: 42,
-    myFunc: function(){
+    myFunc: function() {
         return this.myString.toLowerCase()
     }
 };
@@ -411,7 +412,7 @@ myObj.meaningOfLife; // = 43
 // are given when they're created with that constructor and the new keyword.
 MyConstructor.prototype = {
     myNumber: 5,
-    getMyNumber: function(){
+    getMyNumber: function() {
         return this.myNumber;
     }
 };
@@ -433,13 +434,13 @@ myNumber === myNumberObj; // = false
 if (0){
     // This code won't execute, because 0 is falsy.
 }
-if (Number(0)){
+if (Number(0)) {
     // This code *will* execute, because Number(0) is truthy.
 }
 
 // However, the wrapper objects and the regular builtins share a prototype, so
 // you can actually add functionality to a string, for instance.
-String.prototype.firstCharacter = function(){
+String.prototype.firstCharacter = function() {
     return this.charAt(0);
 }
 "abc".firstCharacter(); // = "a"
@@ -450,10 +451,10 @@ String.prototype.firstCharacter = function(){
 
 // For instance, we mentioned that Object.create isn't yet available in all
 // implementations, but we can still use it with this polyfill:
-if (Object.create === undefined){ // don't overwrite it if it exists
-    Object.create = function(proto){
+if (Object.create === undefined) { // don't overwrite it if it exists
+    Object.create = function(proto) {
         // make a temporary constructor with the right prototype
-        var Constructor = function(){};
+        var Constructor = function() {};
         Constructor.prototype = proto;
         // then use it to create a new, appropriately-prototyped object
         return new Constructor();
