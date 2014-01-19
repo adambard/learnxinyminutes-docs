@@ -175,14 +175,14 @@ myObj.myFourthKey; // = undefined
 var count = 1;
 if (count == 3){
     // evaluated if count is 3
-} else if (count == 4) {
+} else if (count == 4){
     // evaluated if count is 4
 } else {
     // evaluated if it's not either 3 or 4
 }
 
 // As does while.
-while (true) {
+while (true){
     // An infinite loop!
 }
 
@@ -327,7 +327,7 @@ var anotherFunc = function(s){
 }
 anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
 
-// The 'apply' function is nearly identical, but takes an array for an argument list. 
+// The 'apply' function is nearly identical, but takes an array for an argument list.
 
 anotherFunc.apply(myObj, [" And Hello Sun!"]); // = "Hello World! And Hello Sun!"
 
