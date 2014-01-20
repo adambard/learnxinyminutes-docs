@@ -452,32 +452,32 @@ distance = 18;
 
 
 ///////////////////////////////////////
-// Memory Management
+// Gestion de la mémoire
 ///////////////////////////////////////
 /* 
-For each object used in an application, memory must be allocated for that object. When the application
-is done using that object, memory must be deallocated to ensure application efficiency. 
-Objective-C does not use garbage collection and instead uses reference counting. As long as 
-there is at least one reference to an object (also called "owning" an object), then the object
-will be available to use (known as "ownership"). 
+Pour chaque objet utilisé dans une application, la mémoire doit être alloué pour chacun d'entre eux.
+Quand l'application en a fini avec cet objet, la mémoire doit être libéré pour assurer la performane.
+Il n'y a pas de ramasse-miettes en Objective-C, il utilise à la place le comptage de référence à la
+place. Tant que le compteur de référence est supérieur à 1 sur un objet, l'objet ne sera pas supprimé.
 
-When an instance owns an object, its reference counter is increments by one. When the
-object is released, the reference counter decrements by one. When reference count is zero,
-the object is removed from memory. 
+Quand une instance détient un objet, le compteur de référence est incrémenté de un. Quand l'objet est
+libéré, le compteur est décrémenté de un. Quand le compteur est égale à zéro, l'objet est supprimé de
+la mémoire.
 
-With all object interactions, follow the pattern of: 
-(1) create the object, (2) use the object, (3) then free the object from memory. 
+Une bonne pratique à suivre quand on travaille avec des objets est la suivante :
+(1) créer un objet, (2) utiliser l'objet, (3) supprimer l'objet de la mémoire.
 */
 
-MyClass *classVar = [MyClass alloc]; // 'alloc' sets classVar's reference count to one. Returns pointer to object.
-[classVar release]; // Decrements classVar's reference count.  
-// 'retain' claims ownership of existing object instance and increments reference count. Returns pointer to object.
-MyClass *newVar = [classVar retain]; // If classVar is released, object is still in memory because newVar is owner.
-[classVar autorelease]; // Removes ownership of object at end of @autoreleasepool block. Returns pointer to object.
+MaClasse *classeVar = [MyClass alloc]; // 'alloc' incrémente le compteur de référence
+[classeVar release]; // Décrémente le compteur de rérence
+// 'retain' incrémente le compteur de référence
+// Si 'classeVar' est libéré, l'objet reste en mémoire car le compteur de référence est non nulle
+MaClasse *nouvelleVar = [classVar retain];
+[classeVar autorelease]; // Supprime l'appartenance de l'objet à la fin du block
 
-// @property can use 'retain' and 'assign' as well for small convenient definitions. 
-@property (retain) MyClass *instance; // Release old value and retain a new one (strong reference).
-@property (assign) NSSet *set; // Pointer to new value without retaining/releasing old (weak reference).
+// @property peuvent utiliser 'retain' et 'assign' 
+@property (retain) MaClasse *instance; // Libère l'ancienne valeur et retient la nouvelle
+@property (assign) NSSet *set; // Pointeur vers la valeur sans retenir/libérer l'ancienne valeur
 
 // Automatic Reference Counting (ARC)
 // Because memory management can be a pain, Xcode 4.2 and iOS 4 introduced Automatic Reference Counting (ARC).
@@ -499,7 +499,7 @@ __weak NSSet *weakSet; // Weak reference to existing object. When existing objec
 __unsafe_unretained NSArray *unsafeArray; // Like __weak, but unsafeArray not set to nil when existing object is released.
 
 ```
-## Further Reading
+##  Lectures Complémentaires
 
 [La Page Wikipedia de l'Objective-C](http://fr.wikipedia.org/wiki/Objective-C)
 
