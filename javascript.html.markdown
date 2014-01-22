@@ -37,7 +37,7 @@ doStuff()
 ///////////////////////////////////
 // 1. Numbers, Strings and Operators
 
-// Javascript has one number type (which is a 64-bit IEEE 754 double).
+// JavaScript has one number type (which is a 64-bit IEEE 754 double).
 // As with Lua, don't freak out about the lack of ints: doubles have a 52-bit
 // mantissa, which is enough to store integers up to about 9✕10¹⁵ precisely.
 3; // = 3
@@ -116,7 +116,7 @@ undefined; // used to indicate a value is not currently present (although
 ///////////////////////////////////
 // 2. Variables, Arrays and Objects
 
-// Variables are declared with the var keyword. Javascript is dynamically typed,
+// Variables are declared with the var keyword. JavaScript is dynamically typed,
 // so you don't need to specify type. Assignment uses a single = character.
 var someVar = 5;
 
@@ -477,7 +477,7 @@ more about how to use JavaScript in web pages, start by learning about the
 [Document Object
 Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 
-[Javascript Garden](http://bonsaiden.github.io/JavaScript-Garden/) is an in-depth
+[JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) is an in-depth
 guide of all the counter-intuitive parts of the language.
 
 In addition to direct contributors to this article, some content is adapted
