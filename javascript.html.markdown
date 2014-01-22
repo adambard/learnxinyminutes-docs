@@ -5,7 +5,7 @@ contributors:
 filename: javascript.js
 ---
 
-Javascript was created by Netscape's Brendan Eich in 1995. It was originally
+JavaScript was created by Netscape's Brendan Eich in 1995. It was originally
 intended as a simpler scripting language for websites, complimenting the use of
 Java for more complex web applications, but its tight integration with Web pages
 and built-in support in browsers has caused it to become far more common than
