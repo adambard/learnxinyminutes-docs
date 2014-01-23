@@ -12,19 +12,25 @@ filename: LearnObjectiveC.m
 Objective-C is the main programming language used by Apple for the OS X and iOS operating systems and their respective frameworks, Cocoa and Cocoa Touch.
 It is a general-purpose, object-oriented programming language that adds Smalltalk-style messaging to the C programming language. 
 
-```cpp
+```objective-c
 // Single-line comments start with //
 
 /*
-Multi-line comments look like this.
+Multi-line comments look like this
 */
 
 // Imports the Foundation headers with #import
+// Use <> to import global files (in general frameworks)
+// Use "" to import local files (from project)
 #import <Foundation/Foundation.h>
 #import "MyClass.h"
 
+// If you enable modules for iOS >= 7.0 or OS X >= 10.9 projects in
+// Xcode 5 you can import frameworks like that:
+@import Foundation;
+
 // Your program's entry point is a function called
-// main with an integer return type.
+// main with an integer return type
 int main (int argc, const char * argv[])
 {
     // Create an autorelease pool to manage the memory into the program
@@ -54,7 +60,7 @@ int main (int argc, const char * argv[])
     // String
     NSString *worldString = @"World";
     NSLog(@"Hello %@!", worldString); // prints => "Hello World!" 
-    // NSMutableString is a mutable version of the NSString object.
+    // NSMutableString is a mutable version of the NSString object
     NSMutableString *mutableString = [NSMutableString stringWithString:@"Hello"];
     [mutableString appendString:@" World!"];
     NSLog(@"%@", mutableString); // prints => "Hello World!"
@@ -108,7 +114,7 @@ int main (int argc, const char * argv[])
     [oneDecNum decimalNumberBySubtracting:twoDecNum];
     [oneDecNum decimalNumberByMultiplyingBy:twoDecNum];
     [oneDecNum decimalNumberByDividingBy:twoDecNum];
-    NSLog(@"%@", oneDecNum); // prints => 10.99 as NSDecimalNumber is immutable. 
+    NSLog(@"%@", oneDecNum); // prints => 10.99 as NSDecimalNumber is immutable
 
     // BOOL literals
     NSNumber *yesNumber = @YES;
@@ -119,12 +125,12 @@ int main (int argc, const char * argv[])
     NSLog(@"%i", yesBool); // prints => 1
 
     // Array object
-    // May contain different data types, but must be an Objective-C object.
+    // May contain different data types, but must be an Objective-C object
     NSArray *anArray      = @[@1, @2, @3, @4];
     NSNumber *thirdNumber = anArray[2];
     NSLog(@"Third number = %@", thirdNumber); // Print "Third number = 3"
     // NSMutableArray is mutable version of NSArray allowing to change items in array
-    // and extend or shrink array object. Convenient, but not as efficient as NSArray.
+    // and extend or shrink array object. Convenient, but not as efficient as NSArray
     NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:2];
     [mutableArray addObject:@"Hello"];
     [mutableArray addObject:@"World"];
@@ -135,7 +141,7 @@ int main (int argc, const char * argv[])
     NSDictionary *aDictionary = @{ @"key1" : @"value1", @"key2" : @"value2" };
     NSObject *valueObject     = aDictionary[@"A Key"];
     NSLog(@"Object = %@", valueObject); // Print "Object = (null)"
-    // NSMutableDictionary also available as a mutable dictionary object.
+    // NSMutableDictionary also available as a mutable dictionary object
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
     [mutableDictionary setObject:@"value1" forKey:@"key1"];
     [mutableDictionary setObject:@"value2" forKey:@"key2"];
@@ -144,7 +150,7 @@ int main (int argc, const char * argv[])
     // Set object
     NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
     NSLog(@"%@", set); // prints => {(Hello, World)} (may be in different order)
-    // NSMutableSet also available as a mutable set object. 
+    // NSMutableSet also available as a mutable set object
     NSMutableSet *mutableSet = [NSMutableSet setWithCapacity:2];
     [mutableSet addObject:@"Hello"];
     [mutableSet addObject:@"Hello"];
@@ -203,7 +209,7 @@ int main (int argc, const char * argv[])
     int ii = 0;
     while (ii < 4)
     {
-        NSLog(@"%d,", ii++); // ii++ increments ii in-place, after using its value.
+        NSLog(@"%d,", ii++); // ii++ increments ii in-place, after using its value
     } // => prints "0," 
       //           "1,"
       //           "2,"
@@ -229,7 +235,7 @@ int main (int argc, const char * argv[])
       //           "2,"
       //           "3,"
 
-    // Object for loop statement. Can be used with any Objective-C object type.
+    // Object for loop statement. Can be used with any Objective-C object type
     for (id item in values) { 
         NSLog(@"%@,", item); 
     } // => prints "0," 
@@ -256,19 +262,19 @@ int main (int argc, const char * argv[])
     // Objects
     ///////////////////////////////////////
     
-    // Create an object instance by allocating memory and initializing it.
-    // An object is not fully functional until both steps have been completed.
+    // Create an object instance by allocating memory and initializing it
+    // An object is not fully functional until both steps have been completed
     MyClass *myObject = [[MyClass alloc] init];
         
     // The Objective-C model of object-oriented programming is based on message
-    // passing to object instances. 
-    // In Objective-C one does not simply call a method; one sends a message.
+    // passing to object instances
+    // In Objective-C one does not simply call a method; one sends a message
     [myObject instanceMethodWithParameter:@"Steve Jobs"];
 
     // Clean up the memory you used into your program
     [pool drain];
 
-    // End of @autoreleasepool.
+    // End of @autoreleasepool
     }
     
     // End the program
@@ -285,22 +291,22 @@ int main (int argc, const char * argv[])
 // {
 //    type name; <= variable declarations;
 // }
-// @property type name; <= property declarations.
-// -/+ (type) Method declarations; <= Method declarations. 
+// @property type name; <= property declarations
+// -/+ (type) Method declarations; <= Method declarations
 // @end
 @interface MyClass : NSObject <MyProtocol> // NSObject is Objective-C's base object class.
 {
-    // Instance variable declarations (can exist in either interface or implementation file).
+    // Instance variable declarations (can exist in either interface or implementation file)
     int count; // Protected access by default. 
-    @private id data; // Private access. (More convenient to declare in implementation file).
+    @private id data; // Private access (More convenient to declare in implementation file)
     NSString *name; 
 }
-// Convenient notation for public access variables to auto generate a setter method. 
-// By default, setter method name is 'set' followed by @property variable name.
+// Convenient notation for public access variables to auto generate a setter method
+// By default, setter method name is 'set' followed by @property variable name
 @property int propInt; // Setter method name = 'setPropInt'
-@property (copy) id copyId; // (copy) => Copy the object during assignment.
-// (readonly) => Cannot set value outside @interface.
-@property (readonly) NSString *roString; // Use @synthesize in @implementation to create accessor.
+@property (copy) id copyId; // (copy) => Copy the object during assignment
+// (readonly) => Cannot set value outside @interface
+@property (readonly) NSString *roString; // Use @synthesize in @implementation to create accessor
 // You can customize the getter and setter names instead of using default 'set' name:
 @property (getter=lengthGet, setter=lengthSet:) int length;
  
@@ -317,14 +323,14 @@ int main (int argc, const char * argv[])
 
 // Constructor methods with arguments:
 - (id)initWithDistance:(int)defaultDistance;
-// Objective-C method names are very descriptive. Always name methods according to their arguments.
+// Objective-C method names are very descriptive. Always name methods according to their arguments
 
-@end // States the end of the interface. 
+@end // States the end of the interface
 
 
 // To access public variables from the implementation file, @property generates a setter method
 // automatically. Method name is 'set' followed by @property variable name:
-MyClass *myClass = [[MyClass alloc] init]; // create MyClass object instance.
+MyClass *myClass = [[MyClass alloc] init]; // create MyClass object instance
 [myClass setCount:10]; 
 NSLog(@"%d", [myClass count]); // prints => 10
 // Or using the custom getter and setter method defined in @interface:
@@ -339,39 +345,39 @@ NSString *classMethodString = [MyClass classMethod];
 MyClass *classFromName = [MyClass myClassFromName:@"Hello"];
 
 // Call instance methods:
-MyClass *myClass = [[MyClass alloc] init]; // Create MyClass object instance.
+MyClass *myClass = [[MyClass alloc] init]; // Create MyClass object instance
 NSString *stringFromInstanceMethod = [myClass instanceMethodWithParameter:@"Hello"];
 
-// Selectors. 
+// Selectors
 // Way to dynamically represent methods. Used to call methods of a class, pass methods
 // through functions to tell other classes they should call it, and to save methods
-// as a variable.
-// SEL is the data type. @selector() returns a selector from method name provided.
+// as a variable
+// SEL is the data type. @selector() returns a selector from method name provided
 // methodAParameterAsString:andAParameterAsNumber: is method name for method in MyClass
 SEL selectorVar = @selector(methodAParameterAsString:andAParameterAsNumber:); 
-if ([myClass respondsToSelector:selectorVar]) { // Checks if class contains method.
-    // Must put all method arguments into one object to send to performSelector function. 
+if ([myClass respondsToSelector:selectorVar]) { // Checks if class contains method
+    // Must put all method arguments into one object to send to performSelector function
     NSArray *arguments = [NSArray arrayWithObjects:@"Hello", @4, nil];
-    [myClass performSelector:selectorVar withObject:arguments]; // Calls the method.
+    [myClass performSelector:selectorVar withObject:arguments]; // Calls the method
 } else {
-    // NSStringFromSelector() returns a NSString of the method name of a given selector.
+    // NSStringFromSelector() returns a NSString of the method name of a given selector
     NSLog(@"MyClass does not have method: %@", NSStringFromSelector(selectedVar));
 }
 
 // Implement the methods in an implementation (MyClass.m) file:
 @implementation MyClass {
-    long distance; // Private access instance variable.
+    long distance; // Private access instance variable
     NSNumber height;
 }
 
 // To access a public variable from the interface file, use '_' followed by variable name:
-_count = 5; // References "int count" from MyClass interface. 
+_count = 5; // References "int count" from MyClass interface
 // Access variables defined in implementation file:
-distance = 18; // References "long distance" from MyClass implementation.
+distance = 18; // References "long distance" from MyClass implementation
 // To use @property variable in implementation, use @synthesize to create accessor variable:
-@synthesize roString = _roString; // _roString available now in @implementation.
+@synthesize roString = _roString; // _roString available now in @implementation
 
-// Called before calling any class methods or instantiating any objects.
+// Called before calling any class methods or instantiating any objects
 + (void)initialize 
 {
     if (self == [MyClass class]) {
@@ -379,20 +385,20 @@ distance = 18; // References "long distance" from MyClass implementation.
     }
 }
 
-// Counterpart to initialize method. Called when an object's reference count is zero.
+// Counterpart to initialize method. Called when an object's reference count is zero
 - (void)dealloc
 {
     [height release]; // If not using ARC, make sure to release class variable objects 
-    [super dealloc];  // and call parent class dealloc. 
+    [super dealloc];  // and call parent class dealloc
 }
 
-// Constructors are a way of creating instances of a class.
-// This is a default constructor which is called when the object is initialized. 
+// Constructors are a way of creating instances of a class
+// This is a default constructor which is called when the object is initialized.
 - (id)init
 {
-    if ((self = [super init])) // 'super' used to access methods from parent class.
+    if ((self = [super init])) // 'super' used to access methods from parent class
     {
-        self.count = 1; // 'self' used for object to call itself.
+        self.count = 1; // 'self' used for object to call itself
     }
     return self;
 }
@@ -424,11 +430,11 @@ distance = 18; // References "long distance" from MyClass implementation.
     return @42;
 }
 
-// To create a private method, create the method in the @implementation but not in the @interface.
+// To create a private method, create the method in the @implementation but not in the @interface
 - (NSNumber *)secretPrivateMethod {
     return @72;
 }
-[self secretPrivateMethod]; // Calls private method.
+[self secretPrivateMethod]; // Calls private method
 
 // Methods declared into MyProtocol
 - (void)myProtocolMethod
@@ -436,7 +442,7 @@ distance = 18; // References "long distance" from MyClass implementation.
     // statements
 }
 
-@end // States the end of the implementation. 
+@end // States the end of the implementation
 
 /*
  * A protocol declares methods that can be implemented by any class.
@@ -466,34 +472,34 @@ With all object interactions, follow the pattern of:
 (1) create the object, (2) use the object, (3) then free the object from memory. 
 */
 
-MyClass *classVar = [MyClass alloc]; // 'alloc' sets classVar's reference count to one. Returns pointer to object.
-[classVar release]; // Decrements classVar's reference count.  
-// 'retain' claims ownership of existing object instance and increments reference count. Returns pointer to object.
-MyClass *newVar = [classVar retain]; // If classVar is released, object is still in memory because newVar is owner.
-[classVar autorelease]; // Removes ownership of object at end of @autoreleasepool block. Returns pointer to object.
+MyClass *classVar = [MyClass alloc]; // 'alloc' sets classVar's reference count to one. Returns pointer to object
+[classVar release]; // Decrements classVar's reference count
+// 'retain' claims ownership of existing object instance and increments reference count. Returns pointer to object
+MyClass *newVar = [classVar retain]; // If classVar is released, object is still in memory because newVar is owner
+[classVar autorelease]; // Removes ownership of object at end of @autoreleasepool block. Returns pointer to object
 
-// @property can use 'retain' and 'assign' as well for small convenient definitions. 
-@property (retain) MyClass *instance; // Release old value and retain a new one (strong reference).
-@property (assign) NSSet *set; // Pointer to new value without retaining/releasing old (weak reference).
+// @property can use 'retain' and 'assign' as well for small convenient definitions
+@property (retain) MyClass *instance; // Release old value and retain a new one (strong reference)
+@property (assign) NSSet *set; // Pointer to new value without retaining/releasing old (weak reference)
 
 // Automatic Reference Counting (ARC)
 // Because memory management can be a pain, Xcode 4.2 and iOS 4 introduced Automatic Reference Counting (ARC).
 // ARC is a compiler feature that inserts retain, release, and autorelease automatically for you, so when using ARC, 
-// you must not use retain, relase, or autorelease.
+// you must not use retain, relase, or autorelease
 MyClass *arcMyClass = [[MyClass alloc] init]; 
 // ... code using arcMyClass
 // Without ARC, you will need to call: [arcMyClass release] after you're done using arcMyClass. But with ARC, 
-// there is no need. It will insert this release statement for you. 
+// there is no need. It will insert this release statement for you
 
-// As for the 'assign' and 'retain' @property attributes, with ARC you use 'weak' and 'strong'. 
+// As for the 'assign' and 'retain' @property attributes, with ARC you use 'weak' and 'strong'
 @property (weak) MyClass *weakVar; // 'weak' does not take ownership of object. If original instance's reference count
-// is set to zero, weakVar will automatically receive value of nil to avoid application crashing.
-@property (strong) MyClass *strongVar; // 'strong' takes ownership of object. Ensures object will stay in memory to use.
+// is set to zero, weakVar will automatically receive value of nil to avoid application crashing
+@property (strong) MyClass *strongVar; // 'strong' takes ownership of object. Ensures object will stay in memory to use
 
 // For regular variables (not @property declared variables), use the following:
-__strong NSString *strongString; // Default. Variable is retained in memory until it leaves it's scope. 
-__weak NSSet *weakSet; // Weak reference to existing object. When existing object is released, weakSet is set to nil.
-__unsafe_unretained NSArray *unsafeArray; // Like __weak, but unsafeArray not set to nil when existing object is released.
+__strong NSString *strongString; // Default. Variable is retained in memory until it leaves it's scope
+__weak NSSet *weakSet; // Weak reference to existing object. When existing object is released, weakSet is set to nil
+__unsafe_unretained NSArray *unsafeArray; // Like __weak, but unsafeArray not set to nil when existing object is released
 
 ```
 ## Further Reading
