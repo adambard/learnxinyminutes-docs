@@ -427,7 +427,7 @@ end
 
 keyword_args(name2="ness") #=> ["name2"=>"ness","k1"=>4]
 keyword_args(k1="mine") #=> ["k1"=>"mine","name2"=>"hello"]
-keyword_args() #=> ["name2"=>"hello","k2"=>4]
+keyword_args() #=> ["name2"=>"hello","k1"=>4]
 
 # You can combine all kinds of arguments in the same function
 function all_the_args(normal_arg, optional_positional_arg=2; keyword_arg="foo")
@@ -560,7 +560,7 @@ type Panther <: Cat # Panther is also a subtype of Cat
   Panther() = new("green")
   # Panthers will only have this constructor, and no default constructor.
 end
-# Using inner constructors, like Panter does, gives you control
+# Using inner constructors, like Panther does, gives you control
 # over how values of the type can be created.
 # When possible, you should use outer constructors rather than inner ones.
 
@@ -657,6 +657,83 @@ fight(Lion("RAR"),Lion("brown","rarrr")) #=> prints The victorious cat says rarr
 fight(l::Lion,l2::Lion) = println("The lions come to a tie")
 fight(Lion("RAR"),Lion("brown","rarrr")) #=> prints The lions come to a tie
 
+
+# Under the hood
+# You can take a look at the llvm  and the assembly code generated.
+
+square_area(l) = l * l      # square_area (generic function with 1 method)
+
+square_area(5) #25
+
+# What happens when we feed square_area an integer?
+code_native(square_area, (Int32,))  
+	#	    .section    __TEXT,__text,regular,pure_instructions
+	#	Filename: none
+	#	Source line: 1              # Prologue
+	#	    push    RBP
+	#	    mov RBP, RSP
+	#	Source line: 1
+	#	    movsxd  RAX, EDI        # Fetch l from memory?
+	#	    imul    RAX, RAX        # Square l and store the result in RAX
+	#	    pop RBP                 # Restore old base pointer
+	#	    ret                     # Result will still be in RAX
+
+code_native(square_area, (Float32,))
+	#	    .section    __TEXT,__text,regular,pure_instructions
+	#	Filename: none
+	#	Source line: 1
+	#	    push    RBP
+	#	    mov RBP, RSP
+	#	Source line: 1
+	#	    vmulss  XMM0, XMM0, XMM0  # Scalar single precision multiply (AVX)
+	#	    pop RBP
+	#	    ret
+
+code_native(square_area, (Float64,))
+	#	    .section    __TEXT,__text,regular,pure_instructions
+	#	Filename: none
+	#	Source line: 1
+	#	    push    RBP
+	#	    mov RBP, RSP
+	#	Source line: 1
+	#	    vmulsd  XMM0, XMM0, XMM0 # Scalar double precision multiply (AVX)
+	#	    pop RBP
+	#	    ret
+	#	
+# Note that julia will use floating point instructions if any of the
+# arguements are floats.
+# Let's calculate the area of a circle 
+circle_area(r) = pi * r * r     # circle_area (generic function with 1 method)
+circle_area(5)                  # 78.53981633974483
+
+code_native(circle_area, (Int32,))
+	#	    .section    __TEXT,__text,regular,pure_instructions
+	#	Filename: none
+	#	Source line: 1
+	#	    push    RBP
+	#	    mov RBP, RSP
+	#	Source line: 1
+	#	    vcvtsi2sd   XMM0, XMM0, EDI          # Load integer (r) from memory
+	#	    movabs  RAX, 4593140240              # Load pi
+	#	    vmulsd  XMM1, XMM0, QWORD PTR [RAX]  # pi * r
+	#	    vmulsd  XMM0, XMM0, XMM1             # (pi * r) * r
+	#	    pop RBP
+	#	    ret
+	#
+
+code_native(circle_area, (Float64,))
+	#	    .section    __TEXT,__text,regular,pure_instructions
+	#	Filename: none
+	#	Source line: 1
+	#	    push    RBP
+	#	    mov RBP, RSP
+	#	    movabs  RAX, 4593140496
+	#	Source line: 1
+	#	    vmulsd  XMM1, XMM0, QWORD PTR [RAX]
+	#	    vmulsd  XMM0, XMM1, XMM0
+	#	    pop RBP
+	#	    ret
+	#	
 ```
 
 ## Further Reading
