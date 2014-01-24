@@ -659,23 +659,24 @@ fight(Lion("RAR"),Lion("brown","rarrr")) #=> prints The lions come to a tie
 
 
 # Under the hood
-# You can take a look at the llvm intermediate code and the assembly code generated.
+# You can take a look at the llvm  and the assembly code generated.
 
 square_area(l) = l * l      # square_area (generic function with 1 method)
 
 square_area(5) #25
 
-code_native(square_area, (Int32,))  # What happens when we feed square_area an integer?
+# What happens when we feed square_area an integer?
+code_native(square_area, (Int32,))  
 	#	    .section    __TEXT,__text,regular,pure_instructions
 	#	Filename: none
-	#	Source line: 1                      # Prologue
+	#	Source line: 1              # Prologue
 	#	    push    RBP
 	#	    mov RBP, RSP
 	#	Source line: 1
-	#	    movsxd  RAX, EDI                # Fetch l from memory?
-	#	    imul    RAX, RAX                # 32bit square of l and store the result in RAX
-	#	    pop RBP                         # Restore old base pointer
-	#	    ret                             # Result will still be in RAX
+	#	    movsxd  RAX, EDI        # Fetch l from memory?
+	#	    imul    RAX, RAX        # Square l and store the result in RAX
+	#	    pop RBP                 # Restore old base pointer
+	#	    ret                     # Result will still be in RAX
 
 code_native(square_area, (Float32,))
 	#	    .section    __TEXT,__text,regular,pure_instructions
@@ -684,7 +685,7 @@ code_native(square_area, (Float32,))
 	#	    push    RBP
 	#	    mov RBP, RSP
 	#	Source line: 1
-	#	    vmulss  XMM0, XMM0, XMM0       # Scalar single precision multiplication (AVX) (in this case square the number)
+	#	    vmulss  XMM0, XMM0, XMM0  # Scalar single precision multiply (AVX)
 	#	    pop RBP
 	#	    ret
 
@@ -695,11 +696,12 @@ code_native(square_area, (Float64,))
 	#	    push    RBP
 	#	    mov RBP, RSP
 	#	Source line: 1
-	#	    vmulsd  XMM0, XMM0, XMM0        # Scalar double precision multiplacation (AVX)
+	#	    vmulsd  XMM0, XMM0, XMM0 # Scalar double precision multiply (AVX)
 	#	    pop RBP
 	#	    ret
 	#	
-# Note that julia will use floating point instructions if any of the arguements are floats.
+# Note that julia will use floating point instructions if any of the
+# arguements are floats.
 # Let's calculate the area of a circle 
 circle_area(r) = pi * r * r     # circle_area (generic function with 1 method)
 circle_area(5)                  # 78.53981633974483
@@ -711,10 +713,10 @@ code_native(circle_area, (Int32,))
 	#	    push    RBP
 	#	    mov RBP, RSP
 	#	Source line: 1
-	#	    vcvtsi2sd   XMM0, XMM0, EDI             # Load integer (r) from memory
-	#	    movabs  RAX, 4593140240                 # Load pi
-	#	    vmulsd  XMM1, XMM0, QWORD PTR [RAX]     # pi * r
-	#	    vmulsd  XMM0, XMM0, XMM1                # (pi * r) * r
+	#	    vcvtsi2sd   XMM0, XMM0, EDI          # Load integer (r) from memory
+	#	    movabs  RAX, 4593140240              # Load pi
+	#	    vmulsd  XMM1, XMM0, QWORD PTR [RAX]  # pi * r
+	#	    vmulsd  XMM0, XMM0, XMM1             # (pi * r) * r
 	#	    pop RBP
 	#	    ret
 	#
