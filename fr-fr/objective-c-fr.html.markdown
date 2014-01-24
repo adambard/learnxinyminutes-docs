@@ -11,27 +11,32 @@ filename: LearnObjectiveC.m
 
 ---
 
-L'Objective-C est un langage de programmation orienté objet réflexif principalement utilisé par Apple pour les systèmes d'exploitations Mac OS X et iOS et leurs framworks respectifs, Cocoa et Cocoa Touch.
+L'Objective-C est un langage de programmation orienté objet réflexif principalement utilisé par Apple pour les systèmes d'exploitations Mac OS X et iOS et leurs frameworks respectifs, Cocoa et Cocoa Touch.
 
 ```objective-c
-// Les commentaires unilignes commencent par //
+// Les commentaires sur une seule ligne commencent par //
 
 /*
-Les commentaires multilignes ressemblent à ça
+Les
+commentaires
+multi-lignes
+ressemblent
+à
+ceci
 */
 
-// Importe les en-têtes en utilisant #import
+// #import permet d'importer les en-têtes d'autres fichiers
 // Utilisez <> pour importer des fichiers globaux (en général des frameworks)
 // Utilisez "" pour importer des fichiers locaux (du projet)
 #import <Foundation/Foundation.h>
 #import "MaClasse.h"
 
-// Si vous activez les modules pour les projects iOS >= 7 ou Mac OS X >= 10.9
-// dans Xcode 5 vous pouvez importer les frameworks comme cela :
+// Si vous activez les modules dans les projets iOS >= 7 ou Mac OS X >= 10.9
+// dans Xcode 5, vous pouvez importer les frameworks comme cela :
 @import Foundation;
 
 // Le point d'entrée de votre programme est une fonction qui s'appelle main
-// et qui return un entier comme type
+// et qui retourne un entier comme type
 int main (int argc, const char * argv[])
 {
     // Créer un groupe de libération automatique de la mémoire pour l'ensemble
@@ -41,7 +46,7 @@ int main (int argc, const char * argv[])
     // @autoreleasepool à la place :
     @autoreleasepool {
 
-    // Utilisez NSLog pour afficher les lignes sur la console
+    // NSLog() permet d'afficher une chaine de caractères dans la console
     // Affiche la chaine de caractères "Bonjour Tous Le Monde !"
     NSLog(@"Bonjour tous le Monde !"); 
  
@@ -49,19 +54,19 @@ int main (int argc, const char * argv[])
     // Les Types & Les Variables
     ///////////////////////////////////////
     
-    // Déclarations de primitive
+    // La déclaration de primitive
     int maPrimitive1  = 1;
     long maPrimitive2 = 234554664565;
     
-    // Declarations d'objets
-    // Il faut mettre l'* devant la déclaration d'objets fortement typés
+    // La déclaration d'objet
+    // Il faut mettre un astérisque devant la déclaration d'objet fortement typé
     MaClasse *monObject1 = nil;  // Typage fort
     id       monObject2  = nil;  // Typage faible
-    // %@ est un objet
-    // 'description' est une convention pour afficher la valeur des objets
+    // 'description' est une méthode qui permet d'afficher un aperçut de l'objet
+    // La méthode 'description' est appelée par défaut quand on utilise le paramètre '%@'
     NSLog(@"%@ and %@", monObject1, [monObject2 description]); // Affiche "(null) et (null)"
     
-    // Chaines de caractères
+    // Les chaines de caractères
     NSString *chaineMonde = @"Monde";
     NSLog(@"Bonjour tous le %@ !", chaineMonde); // affiche => "Bonjour Tous Le Monde !" 
     // NSMutableString est une chaine mutable
@@ -69,12 +74,12 @@ int main (int argc, const char * argv[])
     [chaineMutable appendString:@" Monde !"];
     NSLog(@"%@", chaineMutable); // affiche => "Bonjour Tous Le Monde !"
     
-    // Les littéraux pour les caratères
+    // Les caractères
     NSNumber *laLettreZSousFormeDeNombre = @'Z';
     char laLettreZ                       = [laLettreZSousFormeDeNombre charValue]; // ou 'Z'
     NSLog(@"%c", laLettreZ);
 
-    // Les littéraux pour les nombres
+    // Les nombres
     NSNumber *nombreQuaranteDeux = @42;
     int quaranteDeux             = [nombreQuaranteDeux intValue]; // ou 42
     NSLog(@"%i", quaranteDeux);
@@ -91,7 +96,7 @@ int main (int argc, const char * argv[])
     long quaranteDeuxLong            = [nombreQuaranteDeuxLong longValue]; // ou 42
     NSLog(@"%li", fortyTwoLong);
 
-    // Les littéraux pour les flottans
+    // Les nombres flottans
     NSNumber *nombrePiFlottan = @3.141592654F;
     float piFlottan           = [nombrePiFlottan floatValue]; // ou 3.141592654f
     NSLog(@"%f", piFlottan); // affiche => 3.141592654
@@ -102,19 +107,19 @@ int main (int argc, const char * argv[])
     NSLog(@"%f", piDouble);
     NSLog(@"%4.2f", piDouble); // affiche => "3.14"
 
-    // NSDecimalNumber est une classe pour avoir plus de précision sur les flottans
-    // et les doubles
+    // NSDecimalNumber est une classe pour avoir plus de précision sur les nombres
+    // flottans et les doubles
     NSDecimalNumber *decNumUn   = [NSDecimalNumber decimalNumberWithString:@"10.99"];
     NSDecimalNumber *decNumDeux = [NSDecimalNumber decimalNumberWithString:@"5.002"];
-    // NSDecimalNumber n'est pas capable d'utiliser les opérations standards : 
-    // +, -, *, /, il utilise donc ses propres fonctions :
+    // NSDecimalNumber n'est pas capable d'utiliser les opérations standards (+, -, *, /)
+    // Il faut utiliser les méthodes suivantes :
     [decNumUn decimalNumberByAdding:decNumDeux]; 
     [decNumUn decimalNumberBySubtracting:decNumDeux];
     [decNumUn decimalNumberByMultiplyingBy:decNumDeux];
     [decNumUn decimalNumberByDividingBy:decNumDeux];
-    NSLog(@"%@", decNumUn); // affiche => 10.99 comme NSDecimalNumber is immuable
+    NSLog(@"%@", decNumUn); // affiche => 10.99 comme NSDecimalNumber est immuable
 
-    // Les littéraux pour les booléens
+    // Les booléens
     NSNumber *ouiNumber = @YES;
     NSNumber *nonNumber = @NO;
     // ou
@@ -123,15 +128,13 @@ int main (int argc, const char * argv[])
     NSLog(@"%i", ouiBool); // affiche => 1
 
     // Les listes
-    // Ils peuvent contenir différents types de données, mais ils doivent absolument 
-    // être des objets
+    // Une liste peut contenir uniquement des objets
     NSArray *uneListe         = @[@1, @2, @3, @4];
     NSNumber *troisiemeNombre = uneListe[2];
     NSLog(@"Troisième nombre = %@", troisiemeNombre); // affiche "Troisième nombre = 3"
-    // NSMutableArray est une version mutable de NSArray qui permet de changer les
-    // objets dans la liste et l'étendre ou  la réduire
-    // C'est très pratique, mais pas aussi performant que l'utilsation de la classe
-    // NSArray
+    // NSMutableArray est une version mutable de NSArray
+    // Cela permet de modifier la liste en ajoutant/supprimant/modifiant des objets
+    // C'est très pratique, mais pas aussi performant que l'utilisation de la classe NSArray
     NSMutableArray *listeMutable = [NSMutableArray arrayWithCapacity:2];
     [listeMutable addObject:@"Bonjour tous le"];
     [listeMutable addObject:@"Monde"];
@@ -139,18 +142,20 @@ int main (int argc, const char * argv[])
     NSLog(@"%@", [listeMutable objectAtIndex:0]); // affiche => "Monde"
 
     // Les dictionnaires
+    // Un dictionnaire est un ensemble de { clé: valeur }
     NSDictionary *unDictionnaire = @{ @"cle1" : @"valeur1", @"cle2" : @"valeur2" };
     NSObject *valeur             = unDictionnaire[@"Une clé"];
     NSLog(@"Objet = %@", valeur); // affiche "Objet = (null)"
-    // NSMutableDictionary est un dictionnaire mutable
+    // NSMutableDictionary est un dictionnaire mutable, c-à-d que l'on peut modifier
     NSMutableDictionary *dictionnaireMutable = [NSMutableDictionary dictionaryWithCapacity:2];
     [dictionnaireMutable setObject:@"valeur1" forKey:@"cle1"];
     [dictionnaireMutable setObject:@"valeur2" forKey:@"cle2"];
     [dictionnaireMutable removeObjectForKey:@"cle1"];
 
     // Les ensembles
+    // Un ensemble peut ne peut contenir que des objets uniques contrairement aux NSArray
     NSSet *ensemble = [NSSet setWithObjects:@"Salut", @"Salut", @"Monde", nil];
-    NSLog(@"%@", ensemble); // affiche => {(Salut, Monde)} (peut être dans un ordre différente)
+    NSLog(@"%@", ensemble); // affiche => {(Salut, Monde)} (Pas forcément dans le même ordre)
     // NSMutableSet est un ensemble mutable 
     NSMutableSet *ensembleMutable = [NSMutableSet setWithCapacity:2];
     [ensembleMutable addObject:@"Salut"];
@@ -158,7 +163,7 @@ int main (int argc, const char * argv[])
     NSLog(@"%@", ensembleMutable); // affiche => {(Salut)}
 
     ///////////////////////////////////////
-    // Operateurs
+    // Les Operateurs
     ///////////////////////////////////////
     
     // Les opérateurs sont les mêmes que ceux du langage C
@@ -174,10 +179,10 @@ int main (int argc, const char * argv[])
     0x01 << 1; // => 0x02 (décale à gauche (par 1))
 
     ///////////////////////////////////////
-    // Structures de controle
+    // Les Structures de Controle
     ///////////////////////////////////////
 
-    // Expression If-Else 
+    // Expression "Si-Sinon" (If-Else) 
     if (NO)
     {
         NSLog(@"Je ne suis jamais affiché");
@@ -189,7 +194,7 @@ int main (int argc, const char * argv[])
         NSLog(@"Je suis affiché");
     }
 
-    // Expression Switch
+    // Expression "Selon" (Switch)
     switch (2)
     {
         case 0:
@@ -206,17 +211,17 @@ int main (int argc, const char * argv[])
         } break;
     }
     
-    // Expression de boucle While
+    // Expression de boucle "Tant Que" (While)
     int ii = 0;
     while (ii < 4)
     {
-        NSLog(@"%d,", ii++); // ii++ incrémente ii après avoir utilisé sa valeure
+        NSLog(@"%d,", ii++); // ii++ incrémente ii après avoir utilisé sa valeur
     } // => affiche "0," 
       //            "1,"
       //            "2,"
       //            "3,"
 
-    // Expression de boucle For loops
+    // Expression de boucle "Pour" (For)
     int jj;
     for (jj=0; jj < 4; jj++)
     {
@@ -226,7 +231,7 @@ int main (int argc, const char * argv[])
       //            "2,"
       //            "3,"
      
-    // Expression de boucle Foreach
+    // Expression de boucle "Pour Chaque" (Foreach)
     NSArray *valeurs = @[@0, @1, @2, @3];
     for (NSNumber *valeur in valeurs)
     {
@@ -236,37 +241,37 @@ int main (int argc, const char * argv[])
       //            "2,"
       //            "3,"
 
-    // Expressions Try-Catch-Finally
+    // Expression "Essayer-Attraper-Finalement" (Try-Catch-Finally)
     @try
     {
         @throw [NSException exceptionWithName:@"FileNotFoundException"
                             reason:@"Fichier non trouvé" userInfo:nil];
     } @catch (NSException * e)
     {
-        NSLog(@"Exception : %@", e);
+        NSLog(@"Une exception est survenue : %@", e);
     } @finally
     {
         NSLog(@"Finalement");
-    } // => affiche "Exceptio : Fichier non trouvé"
+    } // => affiche "Une exception est survenue : Fichier non trouvé"
       //            "Finalement"
  
     ///////////////////////////////////////
-    // Objets
+    // Les Objets
     ///////////////////////////////////////
     
-    // Créez une instance d'objet en allouant un espace mémoire puis en l'initialisant
-    // Un objet n'est pas complétement fonctionnel jusqu'à ce que les deux étapes précédente
-    // ne sont pas fini
+    // Définis et créé une instance d'objet en allouant un espace mémoire puis en
+    // l'initialisant. Un objet n'est pas complétement fonctionnel tant que les deux
+    // étapes précédentes ne sont pas terminées
     MaClass *monObjet = [[MaClass alloc] init];
         
-    // Le modèle Objective-C est basé sur l'envoie de message et non sur les appels de
-    // méthodes comme la plupart des autres langage de programmation
+    // L'Objective-C est basé sur le principe d'envoie de message et non sur celui
+    // d'appel de méthode comme la plupart des autres langages de programmation
     [myObject instanceMethodWithParameter:@"Steve Jobs"];
 
-    // Nettoie la mémoire que vous avez utilisé dans votre programme
+    // Nettoie la mémoire qui a été utilisée dans le programme
     [pool drain];
 
-    // Fin the l'@autoreleasepool
+    // Fin de l'@autoreleasepool
     }
     
     // Fin du programme
@@ -274,58 +279,54 @@ int main (int argc, const char * argv[])
 }
 
 ///////////////////////////////////////
-// Classes et Fonctions
+// Les Classes et Les Fonctions
 ///////////////////////////////////////
 
-// Déclarez votre classe dans une en-tête de fichier (MaClasse.h) :
-// La syntaxe de déclaration :
-// @interface NomDeLaClasse : NomDeLaClasseParent <ProtocolesImplemente>
+// Déclaration d'une classe dans un en-tête de fichier (MaClasse.h) :
+// La déclaration d'une classe en Objective-C commence par la déclaration de son interface :
+// @interface NomDeLaClasse : NomDeLaClasseParent <ListeDesProtocoles>
 // {
-//    type nom; <= declarations de variable;
+//    type nom; // declaration d'une variable;
 // }
-// @property type nom; <= declarations de propriété.
-// -/+ (type) Methode declarations; <= Declarations de methodes. 
-// @end
-// NSObject est la classe de base de l'Objective-C
+// @property type nom; // declaration d'une propriété
+// -/+ (type)nomDeLaMethode; // Declaration d'une methode
+// @end // Termine la déclaration
+// NSObject est la classe de base (super classe) en Objective-C
 @interface MaClasse : NSObject <MonProtocole>
 {
-    // Déclaration des variables d'instances (peut existé soit dans l'interface soir dans 
-    // l'implémentation)
-    int nombre; // Accès protégé par défaut
+    int nombre; // Accès protégé par défaut (équivalent à '@protected int nombre;')
     @private id donnee; // Accès privé (il est plus pratique de le faire dans l'implémentation)
     NSString *nom; 
 }
-// Notation pratique pour l'accès aux variable public et pour générrer les 
-// accésseurs/affecteurs
-// Par défaut, le nom de l'affecteur vaut 'set' suivi par le nom de la @property
-@property int propInt; // Nom du setter = 'setPropInt'
+// Les propriétés permettent de générrer les accésseurs/affecteurs publiques à la compilation
+// Par défaut, le nom de l'affecteur est la chaine 'set' suivi par le nom de la @property
+@property int propInt; // Nom de l'affecteur = 'setPropInt'
 @property (copy) id copyId; // (copy) => Copie l'objet pendant l'affectation
 // (readonly) => Ne peut pas affecté la variable en dehors de l'@interface
-// Utilisez @synthesize dans l'@implementation pour créer l'accésseur
+// Il faut utiliser le mot clé '@synthesize' dans l'@implementation pour créer l'accésseur
 @property (readonly) NSString *roString;
-// Vous pouvez personnaliser les noms des accésseurs et des affecteurs au lieu d'utiliser les
-// noms par défauts
+// Vous pouvez aussi personnaliser les noms des accésseurs ou des affecteurs
 @property (getter=longeurGet, setter=longeurSet:) int longeur;
  
 // Methodes
-+/- (type de retour)signatureDeLaMethode:(Type Du Parametre *)nomDuParametre;
++/- (TypeDeRetour)signatureDeLaMethode:(TypeDuParametre *)nomDuParametre;
 
-// + pour les méthodes de classe :
+// '+' signifie que c'est une méthode de classe (statique) :
 + (NSString *)methodeDeClasse;
 + (MaClasse *)maClasseDepuisLaHauteur:(NSNumber *)hauteurParDefaut;
 
-// - pour les méthodes d'instances :
+// '-' pour les méthodes d'instances (classe) :
 - (NSString *)methodeInstanceAvecUnParametre:(NSString *)string;
 - (NSNumber *)methodeInstanceAvecUnParametre:(NSString*)string puisUnDeuxieme:(NSNumber *)number;
 
 // Contructeur avec des arguments :
 - (id)initAvecDistance:(int)distanceParDefault;
-// Les méthodes en Objective-C sont très descriptive
+// Les méthodes en Objective-C sont très descriptives
 
-@end // Définit la fin de l'interface
+@end // Fin de l'interface
 
 
-// Exemple d'utilisation de MaClasse
+// Voici un exemple d'utilisation de MaClasse
 MaClasse *maClasse = [[MaClasse alloc] init]; // créer une instance de MaClasse
 [maClasse setNombre:10]; 
 NSLog(@"%d", [maClasse nombre]); // affiche => 10
@@ -336,27 +337,26 @@ NSLog(@"%i", [maClasse longeurGet]); // affiche => 32
 maClasse.nombre = 45;
 NSLog(@"%i", maClasse.nombre); // maClasse => 45
 
-// Appeler un méthode de classe :
+// Pour appeler une méthode de classe :
 NSString *s1 = [MaClasse methodeDeClasse];
 MaClasse *m2 = [MaClasse maClasseDepuisLaHauteur:38];
 
-// Appeler un méthode d'instance :
+// Pour appeler une méthode d'instance :
 MaClasse *maClasse = [[MaClasse alloc] init]; // Créer une instance de MaClasse
 NSString *stringDepuisUneInstanceDeMethode = [maClasse methodeInstanceAvecUnParametre:@"Salut"];
 
-// Sélecteurs sont un moyen de représenté les méthodes dynamiquement
-// Ils sont utilisé pour appeller des méthodes de classe, passer des methodes au travers de fonctions
-// pour notifier les autres classes qu'elle peuvent les appellé, et pour sauvegarder les méthodes en
-// tant que variables
-// SEL est un type de donnée. @selected retourne un selecteur à partir d'un nom de methode
+// les sélecteurs sont un moyen de décrire les méthodes dynamiquement
+// Ils sont utilisés pour appeler des méthodes de classe et avoir des pointeurs de fonctions
+// facilement manipulable
+// SEL est un type de donnée et @selector retourne un selecteur à partir d'un nom de methode
 SEL selecteur = @selector(methodeInstanceAvecUnParametre:puisUnDeuxieme:); 
-if ([maClasse respondsToSelector:selecteur]) { // Vérifie si la classe contient la méthode
-    // Doit mettre tous les arguments de la méthode dans un seul objet pour l'envoyer via la fonction
+if ([maClasse respondsToSelector:selecteur]) { // Vérifie si la classe possède la méthode
+    // Met les arguments de la méthode dans un seul objet pour l'envoyer via la fonction
     // performSelector:withObject: 
     NSArray *arguments = [NSArray arrayWithObjects:@"Hello", @4, nil];
-    [myClass performSelector:selectorVar withObject:arguments]; // Appele la méthode
+    [myClass performSelector:selectorVar withObject:arguments]; // Appele la méthode via le sélecteur
 } else {
-    // NSStringFromSelector() retourne une chaine de charactères à partir d'un sélecteur
+    // NSStringFromSelector() retourne une chaine de caractères à partir d'un sélecteur
     NSLog(@"MaClasse ne possède pas de méthode : %@", NSStringFromSelector(selecteur));
 }
 
@@ -417,7 +417,7 @@ distance = 18;
 
 - (NSString *)methodeInstanceAvecUnParametre:(NSString *)string
 {
-    return @"Ma chaine de charactère";
+    return @"Ma chaine de caractère";
 }
 
 - (NSNumber *)methodeInstanceAvecUnParametre:(NSString*)string puisUnDeuxieme:(NSNumber *)number
