@@ -458,14 +458,14 @@ distance = 18;
 Pour chaque objet utilisé dans une application, la mémoire doit être alloué pour chacun d'entre eux.
 Quand l'application en a fini avec cet objet, la mémoire doit être libéré pour assurer la performane.
 Il n'y a pas de ramasse-miettes en Objective-C, il utilise à la place le comptage de référence à la
-place. Tant que le compteur de référence est supérieur à 1 sur un objet, l'objet ne sera pas supprimé.
+place. Tant que le compteur de référence est supérieur à 1 sur un objet, l'objet ne sera pas supprimé
 
 Quand une instance détient un objet, le compteur de référence est incrémenté de un. Quand l'objet est
 libéré, le compteur est décrémenté de un. Quand le compteur est égale à zéro, l'objet est supprimé de
-la mémoire.
+la mémoire
 
 Une bonne pratique à suivre quand on travaille avec des objets est la suivante :
-(1) créer un objet, (2) utiliser l'objet, (3) supprimer l'objet de la mémoire.
+(1) créer un objet, (2) utiliser l'objet, (3) supprimer l'objet de la mémoire
 */
 
 MaClasse *classeVar = [MyClass alloc]; // 'alloc' incrémente le compteur de référence
@@ -480,29 +480,31 @@ MaClasse *nouvelleVar = [classVar retain];
 @property (assign) NSSet *set; // Pointeur vers la valeur sans retenir/libérer l'ancienne valeur
 
 // Automatic Reference Counting (ARC)
-// Because memory management can be a pain, Xcode 4.2 and iOS 4 introduced Automatic Reference Counting (ARC).
-// ARC is a compiler feature that inserts retain, release, and autorelease automatically for you, so when using ARC, 
-// you must not use retain, relase, or autorelease.
-MyClass *arcMyClass = [[MyClass alloc] init]; 
-// ... code using arcMyClass
-// Without ARC, you will need to call: [arcMyClass release] after you're done using arcMyClass. But with ARC, 
-// there is no need. It will insert this release statement for you. 
+// La gestion de la mémoire étant pénible, depuis iOS 4 et Xcode 4.2, Apple a introduit le comptage de référence
+// automatique (Automatic Reference Counting en anglais).
+// ARC est une fonctionnalité du compilateur qui lui permet d'ajouter les 'retain', 'release' et 'autorelease'
+// automatiquement. Donc quand utilisez ARC vous de devez plus utiliser ces mots clés
+MaClasse *arcMaClasse = [[MaClasse alloc] init]; 
+// ... code utilisant arcMaClasse
+// Sans ARC, vous auriez dû appeler [arcMaClasse release] après avoir utilisé l'objet. Mais avec ARC il n'y a plus
+// besoin car le compilateur ajoutera l'expréssion automatiquement pour vous
 
-// As for the 'assign' and 'retain' @property attributes, with ARC you use 'weak' and 'strong'. 
-@property (weak) MyClass *weakVar; // 'weak' does not take ownership of object. If original instance's reference count
-// is set to zero, weakVar will automatically receive value of nil to avoid application crashing.
-@property (strong) MyClass *strongVar; // 'strong' takes ownership of object. Ensures object will stay in memory to use.
+// Les mots clés 'assign' et 'retain', avec ARC sont respectivement remplacé par 'weak' et 'strong'
+@property (weak) MaClasse *weakVar; // 'weak' ne retient pas l'objet. Si l'instance original descend à zero, weakVar
+// sera automatiquement mis à nil
+@property (strong) MaClasse *strongVar; // 'strong' prend posséssion de l'objet comme le ferai le mot clé 'retain'
 
-// For regular variables (not @property declared variables), use the following:
-__strong NSString *strongString; // Default. Variable is retained in memory until it leaves it's scope. 
-__weak NSSet *weakSet; // Weak reference to existing object. When existing object is released, weakSet is set to nil.
-__unsafe_unretained NSArray *unsafeArray; // Like __weak, but unsafeArray not set to nil when existing object is released.
+// Pour l'instanciation des variables (en dehors de @property), vous pouvez utiliser les instructions suivantes :
+__strong NSString *strongString; // Par defaut. La variable est retenu en mémoire jusqu'à la fin de sa portée
+__weak NSSet *weakSet; // Réfère la variable en utilisant le mot clé '__weak'
+__unsafe_unretained NSArray *unsafeArray; // Comme __weak, mais quand la variable n'est pas mis à nil quand l'objet
+// est supprimé ailleurs
 
 ```
 ##  Lectures Complémentaires
 
 [La Page Wikipedia de l'Objective-C](http://fr.wikipedia.org/wiki/Objective-C)
 
-[Programming with Objective-C. Apple PDF book](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/ProgrammingWithObjectiveC.pdf)
+[iOS pour les écoliers : Votre première app iOS](http://www.raywenderlich.com/fr/39272/ios-pour-les-ecoliers-votre-premiere-app-ios-partie-12)
 
-[iOS For High School Students: Getting Started](http://www.raywenderlich.com/5600/ios-for-high-school-students-getting-started)
+[Programming with Objective-C. Apple PDF book](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/ProgrammingWithObjectiveC.pdf)
