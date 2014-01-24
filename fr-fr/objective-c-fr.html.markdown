@@ -315,7 +315,7 @@ int main (int argc, const char * argv[])
 + (NSString *)methodeDeClasse;
 + (MaClasse *)maClasseDepuisLaHauteur:(NSNumber *)hauteurParDefaut;
 
-// '-' pour les méthodes d'instances (classe) :
+// '-' pour les méthodes d'instances :
 - (NSString *)methodeInstanceAvecUnParametre:(NSString *)string;
 - (NSNumber *)methodeInstanceAvecUnParametre:(NSString*)string puisUnDeuxieme:(NSNumber *)number;
 
@@ -355,46 +355,48 @@ if ([maClasse respondsToSelector:selecteur]) { // Vérifie si la classe possède
     // performSelector:withObject: 
     NSArray *arguments = [NSArray arrayWithObjects:@"Hello", @4, nil];
     [myClass performSelector:selectorVar withObject:arguments]; // Appele la méthode via le sélecteur
-} else {
+}
+else {
     // NSStringFromSelector() retourne une chaine de caractères à partir d'un sélecteur
     NSLog(@"MaClasse ne possède pas de méthode : %@", NSStringFromSelector(selecteur));
 }
 
-// Implement la méthode dans le fichier d'impémentation (MaClasse.m)
+// Le fichier d'implémentation de la classe MaClasse (MaClasse.m) doit commencer comme ceci :
 @implementation MaClasse {
-    long distance; // Variable d'instance privé
+    long distance; // Variable d'instance privé (équivalent à @private dans l'interface)
     NSNumber hauteur;
 }
 
-// Pour accéder à une variable depuis le fichier d'implémentation on peut utiliser le _ devant le nom
+// Pour accéder à une variable depuis l'implémentation on peut utiliser le _ (tiret bas) devant le nom
 // de la variable :
 _nombre = 5;
-// Accès d'une variable définit dans le fichier d'implémentation :
+// Accès d'une variable défini dans le fichier d'implémentation :
 distance = 18;
-// Pour utiliser la varible @property dans l'implémentation, utiliser @synthesize qui créer les 
-// accésseurs :
-@synthesize roString = _roString; // _roString est disponible dans l'@implementation
+// Pour utiliser la variable défini par l'intermédiaire de @property, il faut utiliser @synthesize 
+// qui permet de créer les affecteurs et les accésseurs :
+@synthesize roString = _roString; // _roString est maintenant disponible dans l'implementation
 
-// En contre-partie de l'initialisation, la fonction dealloc est appelé quand l'objet est n'est plus
-// utilisé
+// En contre-partie de l'appel de la fonction 'init' lors de la création d'un objet, la fonction 
+// 'dealloc' est appelée quand l'objet est supprimé
 - (void)dealloc
 {
-    [hauteur release]; // Si vous n'utilisez par l'ARC, pensez bien à supprimer l'objet 
-    [super dealloc];  // et à appeler la méthode de la classe parent 
+    [hauteur release]; // Si vous n'utilisez pas ARC, pensez bien à supprimer l'objet 
+    [super dealloc];   // et à appeler la méthode 'dealloc' de la classe parent 
 }
 
 // Les constructeurs sont une manière de créer des instances de classes
-// Ceci est le constructeur par défaut; il est appelé quand l'objet est créé
+// 'init' est le constructeur par défaut; il est appelé quand l'objet est créé
 - (id)init
 {
     if ((self = [super init])) // 'super' est utilisé pour appeler la méthode de la classe parent
     {
-        self.count = 1; // 'self' est utilisé pour appeler la méthodes de l'objet courrant
+        self.count = 1; // 'self' est utilisé pour appeler la méthodes de l'instance courante
     }
     return self;
 }
 
-// Vous pouvez créer des constructeurs qui possèdent des arguments :
+// Vous pouvez aussi créer des constructeurs qui possèdent des arguments
+// Attention : chaque nom de constructeur doit absolument commencer par 'init'
 - (id)initAvecUneDistance:(int)distanceParDefault 
 {
     if ((self = [super init]))
@@ -404,6 +406,7 @@ distance = 18;
     }
 }
 
+// Implémentation d'une méthode de classe
 + (NSString *)methodDeClasse
 {
     return [[self alloc] init];
@@ -415,6 +418,7 @@ distance = 18;
     return [[self alloc] init];
 }
 
+// Implémentation d'une méthode d'instance
 - (NSString *)methodeInstanceAvecUnParametre:(NSString *)string
 {
     return @"Ma chaine de caractère";
@@ -425,8 +429,8 @@ distance = 18;
     return @42;
 }
 
-// Pour créer une méthode privée, il faut la définir dans l'@implementation et non pas dans 
-// l'@interface
+// Pour créer une méthode privée, il faut la définir dans l'implementation et non pas dans 
+// l'interface
 - (NSNumber *)methodePrivee
 {
     return @72;
@@ -434,7 +438,7 @@ distance = 18;
 
 [self methodePrivee]; // Appel de la méthode privée
 
-// Méthode déclarée dans MonProtocole
+// Implémentation d'une méthode qui est déclarée dans <MonProtocole>
 - (void)methodeDuProtocole
 {
     // expressions
@@ -443,7 +447,8 @@ distance = 18;
 @end // Fin de l'implémentation
 
 /*
- * Un protocole déclare les méthodes qu'ils doivent implémenter afin de se conformer celui-ci
+ * Un protocole déclare des méthodes que chaque objet respectant celui-ci doit implémenter
+ * afin de se conformer celui-ci
  * Un protocole n'est pas une classe, c'est juste une interface
  */
 @protocol MonProtocole
@@ -455,14 +460,16 @@ distance = 18;
 // Gestion de la mémoire
 ///////////////////////////////////////
 /* 
-Pour chaque objet utilisé dans une application, la mémoire doit être alloué pour chacun d'entre eux.
-Quand l'application en a fini avec cet objet, la mémoire doit être libéré pour assurer la performane.
-Il n'y a pas de ramasse-miettes en Objective-C, il utilise à la place le comptage de référence à la
-place. Tant que le compteur de référence est supérieur à 1 sur un objet, l'objet ne sera pas supprimé
+A chaque fois qu'un objet est créé dans l'application, un bloque mémoire doit être alloué.
+Quand l'application en a fini avec cet objet, la mémoire doit être libéré pour assurer la bonne 
+réactivité du programme (éviter les fuites mémoires)
+Il n'y a pas de ramasse-miettes en Objective-C contrairement à Java par example. L'Objective-C repose
+sur le comptage de référence. A chaque objet est assigné un compteur qui permet de connaitre son état.
 
-Quand une instance détient un objet, le compteur de référence est incrémenté de un. Quand l'objet est
-libéré, le compteur est décrémenté de un. Quand le compteur est égale à zéro, l'objet est supprimé de
-la mémoire
+Le principe est le suivant :
+Lorsque l'objet est créé, le compteur est initialisé à 1. Quand une instance détient un objet, le
+compteur est incrémenté de un. Quand l'objet est libéré, le compteur est décrémenté de un. Enfin 
+quand le compteur arrive à zéro, l'objet est supprimé de la mémoire
 
 Une bonne pratique à suivre quand on travaille avec des objets est la suivante :
 (1) créer un objet, (2) utiliser l'objet, (3) supprimer l'objet de la mémoire
