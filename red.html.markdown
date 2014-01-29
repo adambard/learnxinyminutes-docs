@@ -103,12 +103,12 @@ i1 / i2 ; result 0 (0.5, but truncated towards 0)
 ; There is a boolean like type in Red. It has values true and false, but also the 
 ; values on/off or yes/no can be used
 
-3 = 2 ; => false
-3 != 2 ; => true
-3 > 2 ; => true
-3 < 2 ; => false
-2 <= 2 ; => true
-2 >= 2 ; => true
+3 = 2 ; result false
+3 != 2 ; result true
+3 > 2 ; result true
+3 < 2 ; result false
+2 <= 2 ; result true
+2 >= 2 ; result true
 
 ;
 ; Control Structures
@@ -153,7 +153,7 @@ c: 5
 until [
    prin "o"
    c: c - 1
-   c = 0
+   c = 0    ; the condition to end the until loop
 ]
 ;   will output:
 ooooo
@@ -173,10 +173,7 @@ ooooo
 ;
 ; Functions
 ;
-; In Red almost everything can be seen as a function. Even the IF returns a value.
-
-; Function declaration syntax:
-; function-name: function [][]
+; function example
 twice: function [a [integer!] /one return: [integer!]][
         c: 2
         a: a * c
