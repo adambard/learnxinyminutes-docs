@@ -5,6 +5,7 @@ language: Go
 filename: learngo.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
+    - ["Christopher Bess", "https://github.com/cbess"]
 ---
 
 Go was created out of the need to get work done.  It's not the latest trend
@@ -175,7 +176,20 @@ func learnFlowControl() {
     goto love
 love:
 
-    learnInterfaces() // Good stuff coming up!
+    // Good stuff coming up!
+    learnVariadicParams("great", "learning", "here!")
+    learnInterfaces()
+}
+
+// Functions can have variadic parameters
+func learnVariadicParams(myStrings ...string) {
+	// iterate each value of the variadic
+    for _, param := range myStrings {
+        fmt.Println("param:", param)
+    }
+    
+    // pass variadic value as a variadic parameter
+    fmt.Println("params:", fmt.Sprintln(myStrings...))
 }
 
 // Define Stringer as an interface type with one method, String.
