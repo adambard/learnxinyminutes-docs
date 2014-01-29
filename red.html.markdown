@@ -44,11 +44,15 @@ comment {
 
 ; assign a value to a variable using a colon ":"
 my-name: "Red"
-reason-for-using-the-colon: {Assigning values using the colon makes the equality sign "=" exclusively usable for comparisons purposes, exactly what "=" was intended for in the first place! Remember this y = x + 1 and x = 1 => y = 2 stuff from school?
+reason-for-using-the-colon: {Assigning values using the colon makes 
+ the equality sign "=" exclusively usable for comparisons purposes, 
+ exactly what "=" was intended for in the first place! 
+ Remember this y = x + 1 and x = 1 => y = 2 stuff from school?
 }
 is-this-name-valid?: true
 
-; print output using print, or prin for printing without a newline or linefeed at the ; end of the printed text.
+; print output using print, or prin for printing without a newline or linefeed at the 
+; end of the printed text.
 
 prin " My name is " print my-name
 My name is Red
