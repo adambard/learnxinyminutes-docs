@@ -22,18 +22,17 @@ from any platform to any other platform. And it will do this all from a binary e
 
 Ready to learn your first Red?
 
-```
-Red
+```Red
 
-; Single-line comments start with a semicolon ';'
+;this is a commented line
+
+print "hello world"    ; this is another comment
 
 comment {
-  Multi-line comments 
-  look like this.
+    This is a
+    multiline
+    comment
 }
-
-; Import files with #include and filenames start with a % sign
-#include %includefile.red
 
 ; Your program's entry point is the first executable code that is found
 ; no need to restrict this to a 'main' function.
@@ -85,10 +84,6 @@ my-integer: 0
 type? my-integer
 integer!
 
-; chars are guaranteed to be 1 byte
-; A string can be cast to a character 
-empty-string: ""
-a-string: to-string #"a"
 
 i2: 1 + i1: 1
 
@@ -112,7 +107,63 @@ i1 / i2 ; result 0 (0.5, but truncated towards 0)
 
 ;
 ; Control Structures
-; @TBD
+; 
+; if
+; Execute a block of code if a given condition is true. IF does not return any value, 
+; so cannot be used in an expression.
+if a < 0 [print "a is negative"]
+
+; either
+; Execute a block of code if a given condition is true, else execute an alternative block of code. 
+; If last expressions in both blocks have the same type, EITHER can be used inside an expression.
+either a < 0 [
+   either a = 0 [
+       msg: "zero"
+   ][
+       msg: "negative"
+   ]
+][
+   msg: "positive"
+]
+
+print ["a is " msg lf]
+
+; An alternative way to write it (allowed because all code paths return a value of the same type):
+
+msg: either a < 0 [
+   either a = 0 [
+       "zero"
+   ][
+       "negative"
+   ]
+ ][
+   "positive"
+]
+print ["a is " msg lf]
+
+; until
+; Loop over a block of code until the condition at end of block, is met. UNTIL does not return any value, 
+; so cannot be used in an expression.
+c: 5
+until [
+   prin "o"
+   c: c - 1
+   c = 0
+]
+;   will output:
+ooooo
+; Note that the loop will always be executed at least once, even if the condition is not met from the beginning.
+
+; while
+; While a given condition is met, execute a block of code. WHILE does not return any value, 
+; so cannot be used in an expression.
+c: 5
+while [c > 0][
+   prin "o"
+   c: c - 1
+]
+; will output:
+ooooo
 
 ;
 ; Functions
@@ -128,6 +179,9 @@ twice: function [a [integer!] /one return: [integer!]][
 ]
 
 
+; Import external files with #include and filenames start with a % sign
+#include %includefile.red
+
 
 ```
 
@@ -135,9 +189,11 @@ twice: function [a [integer!] /one return: [integer!]][
 
 The main source for information about Red is [the Red language homepage](http://www.red-lang.org).  
 
+The Red/System language specification can be found [here](http://static.red-lang.org/red-system-specs-light.html).
+
 To learn more about Rebol and Red join the [chat on StackOverflow](http://chat.stackoverflow.com/rooms/291/rebol-and-red). 
 (You will need 20 points to chat but if you ask questions about Red or Rebol we will help you get those points).
 
 Maybe you want to try Red right away? That is possible on the [try Rebol and Red site](http://tryrebol.esperconsultancy.nl).
 
-You can also learn Red by learning [Rebol](http://www.rebol.com/docs.html). 
+You can also learn Red by learning some [Rebol](http://www.rebol.com/docs.html). 
