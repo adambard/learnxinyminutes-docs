@@ -198,10 +198,11 @@ print twice b   ; will output 6.
 
 The main source for information about Red is the [Red language homepage](http://www.red-lang.org).  
 
+The source can be found on [github](https://github.com/red/red).
+
 The Red/System language specification can be found [here](http://static.red-lang.org/red-system-specs-light.html).
 
-To learn more about Rebol and Red join the [chat on StackOverflow](http://chat.stackoverflow.com/rooms/291/rebol-and-red). 
-(You will need 20 points to chat but if you ask questions about Red or Rebol we will help you get those points).
+To learn more about Rebol and Red join the [chat on StackOverflow](http://chat.stackoverflow.com/rooms/291/rebol-and-red). You will need 20 points to chat but if you ask or answer questions about Red or Rebol we will help you get those points. And if that is not working for you drop a mail to us on the [Red mailing list](mailto: red-langNO_SPAM@googlegroups.com) (remove NO_SPAM).
 
 Maybe you want to try Red right away? That is possible on the [try Rebol and Red site](http://tryrebol.esperconsultancy.nl).
 
