@@ -2,7 +2,7 @@
 name: Go
 category: language
 language: Go
-filename: learngo.go
+filename: learngo-es.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
 translators:
