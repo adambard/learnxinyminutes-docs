@@ -8,6 +8,7 @@ contributors:
 translators:
     - ["Yannick Loriot", "https://github.com/YannickL"]
 filename: LearnObjectiveC.m
+lang: fr-fr
 
 ---
 
