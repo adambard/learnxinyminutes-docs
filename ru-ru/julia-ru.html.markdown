@@ -4,7 +4,7 @@ contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
 translators:
     - ["Sergey Skovorodkin", "https://github.com/skovorodkin"]
-filename: learnjulia.jl
+filename: learnjulia-ru.jl
 lang: ru-ru
 ---
 
