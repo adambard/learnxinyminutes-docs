@@ -5,6 +5,8 @@ contributors:
 filename: coffeescript.coffee
 ---
 
+See also [the CoffeeScript website](http://coffeescript.org/), which has a complete tutorial on CoffeeScript.
+
 ``` coffeescript
 # CoffeeScript is a hipster language.
 # It goes with the trends of many modern languages.
