@@ -185,17 +185,18 @@ twice: function [a [integer!] /one return: [integer!]][
         a: a * c
         either one [a + 1][a]
 ]
-
+b: 3
+print twice b   ; will output 6.
 
 ; Import external files with #include and filenames start with a % sign
 #include %includefile.red
-
+; Now the functions in the included file can be used too.
 
 ```
 
 ## Further Reading
 
-The main source for information about Red is [the Red language homepage](http://www.red-lang.org).  
+The main source for information about Red is the [Red language homepage](http://www.red-lang.org).  
 
 The Red/System language specification can be found [here](http://static.red-lang.org/red-system-specs-light.html).
 
