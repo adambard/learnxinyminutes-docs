@@ -23,15 +23,22 @@ from any platform to any other platform. And it will do this all from a binary e
 Ready to learn your first Red?
 
 ```Red
+All text before the Red header will be treated as comment
+The Red header is the word "Red" followed by a whitespace character followed by a block of square brackets [].
+The block of brackets can be filled in with useful information about the script or program, the author, the version, the license, what the program does or needs.
+The Red/System header is just like the Red header, only saying "Red/System" and not "Red". 
+
+Red []
 
 ;this is a commented line
 
-print "hello world"    ; this is another comment
+print "Hello Red World"    ; this is another comment
 
 comment {
     This is a
     multiline
-    comment
+    comment.
+    You just saw the Red version of the "Hello World" program.
 }
 
 ; Your program's entry point is the first executable code that is found
