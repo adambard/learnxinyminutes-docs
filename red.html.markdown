@@ -23,11 +23,11 @@ from any platform to any other platform. And it will do this all from a binary e
 Ready to learn your first Red?
 
 ```Red
-All text before the Red header will be treated as comment.
-The Red header is the word "Red" followed by a whitespace character followed by a block of square brackets [].
-The block of brackets can be filled in with useful information about the script or program, the author, 
+All text before the header will be treated as comment, as long as you avoid using the word "red" starting with a capital "R" in this pre-header text. Most of the time you start your script with the header itself. 
+The header of a redscript is the capitalized word "red" followed by a whitespace character followed by a block of square brackets [].
+The block of brackets can be filled with useful information about the script or program, the author, 
 the filename, the version, the license, what the program does or needs.
-The Red/System header is just like the Red header, only saying "Red/System" and not "Red". 
+The red/System header is just like the red header, only saying "red/System" and not "red".
 
 Red []
 
