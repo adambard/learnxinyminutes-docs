@@ -5,6 +5,7 @@ contributors:
 translators:
     - ["David Baumgartner", "http://davidbaumgartner.ch"]    
 lang: fr-fr
+filename: learnhaskell-fr.hs
 ---
 
 Haskell a été conçu pour être un langage fonctionnel pur et maniable. Il est connu pour ses monades et son système de types, mais je n'ai cesse d'y revenir pour son élégance. Pour moi, Haskell fait de la programmation une joie.

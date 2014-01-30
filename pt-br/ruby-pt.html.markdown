@@ -1,7 +1,7 @@
 ---
 language: ruby
-lang: br-pt
-filename: learnruby.rb
+lang: pt-br
+filename: learnruby-pt.rb
 contributors:
   - ["Bruno Henrique - Garu", "http://garulab.com"]
 translators:

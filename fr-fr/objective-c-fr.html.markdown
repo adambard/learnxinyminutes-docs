@@ -7,7 +7,7 @@ contributors:
     - ["Levi Bostian", "https://github.com/levibostian"]
 translators:
     - ["Yannick Loriot", "https://github.com/YannickL"]
-filename: LearnObjectiveC.m
+filename: LearnObjectiveC-fr.m
 lang: fr-fr
 
 ---

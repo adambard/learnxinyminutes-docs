@@ -6,7 +6,7 @@ contributors:
 translators:
     - ["小柒", "http://weibo.com/u/2328126220"]
     - ["alswl", "https://github.com/alswl"]
-filename: learnr.r
+filename: learnr-zh.r
 lang: zh-cn
 ---
 

@@ -6,6 +6,7 @@ contributors:
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
 lang: ko-kr
+filename: learnlua-kr.lua
 ---
 
 ```lua

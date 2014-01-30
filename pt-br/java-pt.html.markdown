@@ -8,7 +8,7 @@ translators:
     - ["Victor Kléber Santos L. Melo", "http://victormelo.com.br/blog"]
     - ["Renê Douglas N. de Morais", "mailto:rene.douglas.bsi@gmail.com"]
 lang: pt-br
-filename: LearnJava.java
+filename: LearnJava-pt.java
 
 ---
 
