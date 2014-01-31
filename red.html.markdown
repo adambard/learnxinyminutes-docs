@@ -24,8 +24,9 @@ Ready to learn your first Red?
 
 ```Red
 All text before the header will be treated as comment, as long as you avoid using the word "red" 
-starting with a capital "R" in this pre-header text. Most of the time you start your script or program with 
-the header itself. The header of a red script is the capitalized word "red" followed by a 
+starting with a capital "R" in this pre-header text. This is a temporary shortcoming of the used lexer but
+most of the time you start your script or program with the header itself. 
+The header of a red script is the capitalized word "red" followed by a 
 whitespace character followed by a block of square brackets [].
 The block of brackets can be filled with useful information about the script or program: the author, 
 the filename, the version, the license, what the program does or needs.
@@ -122,12 +123,12 @@ i1 / i2 ; result 0 (0.5, but truncated towards 0)
 ; Control Structures
 ; 
 ; if
-; Execute a block of code if a given condition is true. IF does not return any value, 
+; Evaluate a block of code if a given condition is true. IF does not return any value, 
 ; so cannot be used in an expression.
 if a < 0 [print "a is negative"]
 
 ; either
-; Execute a block of code if a given condition is true, else execute an alternative block of code. 
+; Evaluate a block of code if a given condition is true, else evaluate an alternative block of code. 
 ; If last expressions in both blocks have the same type, EITHER can be used inside an expression.
 either a < 0 [
    either a = 0 [
@@ -165,10 +166,10 @@ until [
 ]
 ;   will output:
 ooooo
-; Note that the loop will always be executed at least once, even if the condition is not met from the beginning.
+; Note that the loop will always be evaluated at least once, even if the condition is not met from the beginning.
 
 ; while
-; While a given condition is met, execute a block of code. WHILE does not return any value, 
+; While a given condition is met, evaluate a block of code. WHILE does not return any value, 
 ; so cannot be used in an expression.
 c: 5
 while [c > 0][
