@@ -15,7 +15,7 @@ Red, together with its C-level dialect Red/System, provides a language that cove
 Red is a language heavily based on the language of REBOL. Where Red itself reproduces the flexibility of the REBOL language, the underlying language Red will be built upon, 
 Red/System, covers the more basic needs of programming like C can, being closer to the metal. 
 
-Red will be the worlds first Full Stack Programming Language. This means that it will be an effective tool to do (almost) any programming task on every level 
+Red will be the world's first Full Stack Programming Language. This means that it will be an effective tool to do (almost) any programming task on every level 
 from the metal to the meta without the aid of other stack tools. 
 Furthermore Red will be able to cross-compile Red source code without using any GCC like toolchain 
 from any platform to any other platform. And it will do this all from a binary executable that is supposed to stay under 1 MB.
@@ -24,10 +24,10 @@ Ready to learn your first Red?
 
 ```Red
 All text before the header will be treated as comment, as long as you avoid using the word "red" 
-starting with a capital "R" in this pre-header text. Most of the time you start your script with 
-the header itself. The header of a redscript is the capitalized word "red" followed by a 
+starting with a capital "R" in this pre-header text. Most of the time you start your script or program with 
+the header itself. The header of a red script is the capitalized word "red" followed by a 
 whitespace character followed by a block of square brackets [].
-The block of brackets can be filled with useful information about the script or program, the author, 
+The block of brackets can be filled with useful information about the script or program: the author, 
 the filename, the version, the license, what the program does or needs.
 The red/System header is just like the red header, only saying "red/System" and not "red".
 
@@ -97,7 +97,7 @@ my-integer: 0
 type? my-integer
 integer!
 
-
+; A variable can be initialized using another variable that gets initialized at the same time.
 i2: 1 + i1: 1
 
 ; Arithmetic is straightforward
