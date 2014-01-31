@@ -7,16 +7,20 @@ contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
 translators:
     - ["Adrian Espinosa", "http://www.adrianespinosa.com"]
+    - ["Jesse Johnson, "https://github.com/holocronweaver"]
 lang: es-es
-
-
 ---
 
-Go fue creado por la necesidad de hacer el trabajo rápidamente.  No es la última
-tendencia en informática, pero es la forma nueva y más rápida de resolver problemas reales.
+Go fue creado por la necesidad de hacer el trabajo rápidamente.  No es
+la última tendencia en informática, pero es la forma nueva y más
+rápida de resolver problemas reales.
 
-Tiene conceptos familiares de lenguajes imperativos con tipado estático.
-Es rápido compilando y rápido al ejecutar, añade una concurrencia fácil de entender para las CPUs de varios núcleos de hoy en día, y tiene características que ayudan con la programación a gran escala.
+Tiene conceptos familiares de lenguajes imperativos con tipado
+estático.  Es rápido compilando y rápido al ejecutar, añade una
+concurrencia fácil de entender para las CPUs de varios núcleos de hoy
+en día, y tiene características que ayudan con la programación a gran
+escala.
+
 Go viene con una librería estándar muy buena y una comunidad entusiasta.
 
 ```go
@@ -28,15 +32,17 @@ Go viene con una librería estándar muy buena y una comunidad entusiasta.
 // Main es un nombre especial que declara un ejecutable en vez de una librería.
 package main
 
-// La declaración Import declara los paquetes de librerías referenciados en este archivo.
+// La declaración Import declara los paquetes de librerías
+// referenciados en este archivo.
 import (
-    "fmt"      // Un paquete en la librería estándar de Go
+    "fmt"      // Un paquete en la librería estándar de Go.
     "net/http" // Sí, un servidor web!
-    "strconv"  // Conversiones de cadenas
+    "strconv"  // Conversiones de cadenas.
+    m "math"   // Librería matemáticas con alias local m.
 )
 
-// Definición de una función. Main es especial. Es el punto de entrada para el ejecutable.
-// Te guste o no, Go utiliza llaves.
+// Definición de una función. Main es especial.  Es el punto de
+// entrada para el ejecutable.  Te guste o no, Go utiliza llaves.
 func main() {
     // Println imprime una línea a stdout.
     // Cualificalo con el nombre del paquete, fmt.
@@ -49,19 +55,19 @@ func main() {
 // Las funciones llevan parámetros entre paréntesis.
 // Si no hay parámetros, los paréntesis siguen siendo obligatorios.
 func beyondHello() {
-    var x int // Declaración de una variable. Las variables se deben declarar antes de 
-    // utilizarlas.
+    var x int // Declaración de una variable.
+              // Las variables se deben declarar antes de utilizarlas.
     x = 3     // Asignación de variables.
     // Declaración "corta" con := para inferir el tipo, declarar y asignar.
     y := 4
-    sum, prod := learnMultiple(x, y)        // función devuelve dos valores
-    fmt.Println("sum:", sum, "prod:", prod) // simple salida
+    sum, prod := learnMultiple(x, y)        // Función devuelve dos valores.
+    fmt.Println("sum:", sum, "prod:", prod) // Simple salida.
     learnTypes()                            // < y minutes, learn more!
 }
 
 // Las funciones pueden tener parámetros y (múltiples!) valores de retorno.
 func learnMultiple(x, y int) (sum, prod int) {
-    return x + y, x * y // devolver dos valores
+    return x + y, x * y // Devolver dos valores.
 }
 
 // Algunos tipos incorporados y literales.
@@ -73,32 +79,33 @@ func learnTypes() {
 saltos de línea.` // mismo tipo cadena
 
     // Literal no ASCII. Los fuentes de Go son UTF-8.
-    g := 'Σ' // tipo rune, un alias de uint32, alberga un punto unicode.
-    f := 3.14195 // float64, el estándar IEEE-754 de coma flotante 64-bit
-    c := 3 + 4i  // complex128, representado internamente por dos float64
+    g := 'Σ' // Tipo rune, un alias de uint32, alberga un punto unicode.
+    f := 3.14195 // float64, el estándar IEEE-754 de coma flotante 64-bit.
+    c := 3 + 4i  // complex128, representado internamente por dos float64.
     // Sintaxis Var con inicializadores.
-    var u uint = 7 // sin signo, pero la implementación depende del tamaño como en int
+    var u uint = 7 // Sin signo, pero la implementación depende del
+                   // tamaño como en int.
     var pi float32 = 22. / 7
 
     // Sintáxis de conversión con una declaración corta.
-    n := byte('\n') // byte es un alias de uint8
+    n := byte('\n') // byte es un alias de uint8.
 
     // Los Arrays tienen un tamaño fijo a la hora de compilar.
-    var a4 [4]int           // un array de 4 ints, inicializados a 0
-    a3 := [...]int{3, 1, 5} // un array de 3 ints, inicializados como se indica
+    var a4 [4]int           // Un array de 4 ints, inicializados a 0.
+    a3 := [...]int{3, 1, 5} // Un array de 3 ints, inicializados como se indica.
 
     // Los Slices tienen tamaño dinámico. Los arrays y slices tienen sus ventajas
     // y desventajas pero los casos de uso para los slices son más comunes.
-    s3 := []int{4, 5, 9}    // Comparar con a3. No hay puntos suspensivos
-    s4 := make([]int, 4)    // Asigna slices de 4 ints, inicializados a 0
-    var d2 [][]float64      // solo declaración, sin asignación
-    bs := []byte("a slice") // sintaxis de conversión de tipo
+    s3 := []int{4, 5, 9}    // Comparar con a3. No hay puntos suspensivos.
+    s4 := make([]int, 4)    // Asigna slices de 4 ints, inicializados a 0.
+    var d2 [][]float64      // Solo declaración, sin asignación.
+    bs := []byte("a slice") // Sintaxis de conversión de tipo.
 
-    p, q := learnMemory() // declara p, q para ser un tipo puntero a int.
+    p, q := learnMemory() // Declara p, q para ser un tipo puntero a int.
     fmt.Println(*p, *q)   // * sigue un puntero. Esto imprime dos ints.
 
-    // Los Maps son arrays asociativos dinámicos, como los hash o diccionarios
-    // de otros lenguajes
+    // Los Maps son arrays asociativos dinámicos, como los hash o
+    // diccionarios de otros lenguajes.
     m := map[string]int{"three": 3, "four": 4}
     m["one"] = 1
 
@@ -108,23 +115,24 @@ saltos de línea.` // mismo tipo cadena
     // Esto cuenta como utilización de variables.
     fmt.Println(s, c, a4, s3, d2, m)
 
-    learnFlowControl() // vuelta al flujo
+    learnFlowControl() // Vuelta al flujo.
 }
 
-// Go posee recolector de basura. Tiene puntero pero no aritmética de punteros.
-// Puedes cometer un errores con un puntero nil, pero no incrementando un puntero.
+// Go posee recolector de basura. Tiene puntero pero no aritmética de
+// punteros.  Puedes cometer un errores con un puntero nil, pero no
+// incrementando un puntero.
 func learnMemory() (p, q *int) {
     // q y p tienen un tipo puntero a int.
-    p = new(int) // función incorporada que asigna memoria.
+    p = new(int) // Función incorporada que asigna memoria.
     // La asignación de int se inicializa a 0, p ya no es nil.
-    s := make([]int, 20) // asigna 20 ints a un solo bloque de memoria.
-    s[3] = 7             // asignar uno de ellos
-    r := -2              // declarar otra variable local
+    s := make([]int, 20) // Asigna 20 ints a un solo bloque de memoria.
+    s[3] = 7             // Asignar uno de ellos.
+    r := -2              // Declarar otra variable local.
     return &s[3], &r     // & toma la dirección de un objeto.
 }
 
-func expensiveComputation() int {
-    return 1e6
+func expensiveComputation() float64 {
+    return m.Exp(10)
 }
 
 func learnFlowControl() {
@@ -134,29 +142,31 @@ func learnFlowControl() {
     }
     // El formato está estandarizado por el comando "go fmt."
     if false {
-        // pout
+        // Pout.
     } else {
-        // gloat
+        // Gloat.
     }
     // Utiliza switch preferiblemente para if encadenados.
-    x := 1
+    x := 42.0
     switch x {
     case 0:
     case 1:
-        // los cases no se mezclan, no requieren de "break"
-    case 2:
-        // no llega
+    case 42:
+        // Los cases no se mezclan, no requieren de "break".
+    case 43:
+        // No llega.
     }
     // Como if, for no utiliza paréntesis tampoco.
-    for x := 0; x < 3; x++ { // ++ es una sentencia
+    // Variables declaradas en for y if son locales de su ámbito local.
+    for x := 0; x < 3; x++ { // ++ es una sentencia.
         fmt.Println("iteration", x)
     }
-    // x == 1 aqui.
+    // x == 42 aqui.
 
     // For es la única sentencia de bucle en Go, pero tiene formas alternativas.
-    for { // bucle infinito
-        break    // solo bromeaba!
-        continue // no llega
+    for { // Bucle infinito.
+        break    // Solo bromeaba!
+        continue // No llega.
     }
     // Como en for, := en una sentencia if significa declarar y asignar primero,
     // luego comprobar y > x.
@@ -165,11 +175,11 @@ func learnFlowControl() {
     }
     // Los literales de funciones son "closures".
     xBig := func() bool {
-        return x > 100 // referencia a x declarada encima de la sentencia switch.
+        return x > 100 // Referencia a x declarada encima de la sentencia switch.
     }
-    fmt.Println("xBig:", xBig()) // verdadero (la última vez asignamos 1e6 a x)
-    x /= 1e5                     // esto lo hace  == 10
-    fmt.Println("xBig:", xBig()) // ahora es falso
+    fmt.Println("xBig:", xBig()) // verdadero (la última vez asignamos 1e6 a x).
+    x /= m.Exp(9)                // Esto lo hace x == e.
+    fmt.Println("xBig:", xBig()) // Ahora es falso.
 
     // Cuando lo necesites, te encantará.
     goto love
@@ -199,16 +209,29 @@ func learnInterfaces() {
     // La sintaxis de llaves es un "literal struct". Evalúa a un struct
     // inicializado.  La sintaxis := declara e inicializa p a este struct.
     p := pair{3, 4}
-    fmt.Println(p.String()) // llamar al método String de p, de tipo pair.
-    var i Stringer          // declarar i como interfaz tipo Stringer.
-    i = p                   // válido porque pair implementa Stringer
-    // Llamar al metodo String de i, de tipo Stringer. Misma salida que arriba
+    fmt.Println(p.String()) // Llamar al método String de p, de tipo pair.
+    var i Stringer          // Declarar i como interfaz tipo Stringer.
+    i = p                   // Válido porque pair implementa Stringer.
+    // Llamar al metodo String de i, de tipo Stringer. Misma salida que arriba.
     fmt.Println(i.String())
 
-    // Las funciones en el paquete fmt llaman al método String para preguntar a un objeto
-    // por una versión imprimible de si mismo
-    fmt.Println(p) // salida igual que arriba. Println llama al método String.
-    fmt.Println(i) // salida igual que arriba.
+    // Las funciones en el paquete fmt llaman al método String para
+    // preguntar a un objeto por una versión imprimible de si mismo.
+    fmt.Println(p) // Salida igual que arriba. Println llama al método String.
+    fmt.Println(i) // Salida igual que arriba.
+
+    learnVariadicParams("great", "learning", "here!")
+}
+
+// Las funciones pueden tener número variable de argumentos.
+func learnVariadicParams(myStrings ...interface{}) {
+    // Iterar cada valor de la variadic.
+    for _, param := range myStrings {
+        fmt.Println("param:", param)
+    }
+    
+    // Pasar valor variadic como parámetro variadic.
+    fmt.Println("params:", fmt.Sprintln(myStrings...))
 
     learnErrorHandling()
 }
@@ -223,7 +246,7 @@ func learnErrorHandling() {
     }
     // Un valor de error comunica más información sobre el problema aparte de "ok".
     if _, err := strconv.Atoi("non-int"); err != nil { // _ descarta el valor
-        // imprime "strconv.ParseInt: parsing "non-int": invalid syntax"
+        // Imprime "strconv.ParseInt: parsing "non-int": invalid syntax".
         fmt.Println(err)
     }
     // Revisarmeos las interfaces más tarde. Mientras tanto,
@@ -248,25 +271,28 @@ func learnConcurrency() {
     go inc(-805, c)
     // Leer los tres resultados del channel e imprimirlos.
     // No se puede saber en que orden llegarán los resultados!
-    fmt.Println(<-c, <-c, <-c) // channel a la derecha, <- es el operador "recibir".
+    fmt.Println(<-c, <-c, <-c) // Channel a la derecha, <- es el operador "recibir".
 
-    cs := make(chan string)       // otro channel, este gestiona cadenas.
-    cc := make(chan chan string)  // un channel de cadenas de channels.
-    go func() { c <- 84 }()       // iniciar una nueva goroutine solo para enviar un valor.
-    go func() { cs <- "wordy" }() // otra vez, para cs en esta ocasión
-    // Select tiene una sintáxis parecida a la sentencia switch pero cada caso involucra
-    // una operacion de channels. Selecciona un caso de forma aleatoria de los casos
-    // que están listos para comunicarse.
+    cs := make(chan string)       // Otro channel, este gestiona cadenas.
+    ccs := make(chan chan string) // Un channel de cadenas de channels.
+    go func() { c <- 84 }()       // Iniciar una nueva goroutine solo para
+                                  // enviar un valor.
+    go func() { cs <- "wordy" }() // Otra vez, para cs en esta ocasión.
+    // Select tiene una sintáxis parecida a la sentencia switch pero
+    // cada caso involucra una operacion de channels. Selecciona un caso
+    // de forma aleatoria de los casos que están listos para comunicarse.
     select {
-    case i := <-c: // el valor recibido puede ser asignado a una variable
+    case i := <-c: // El valor recibido puede ser asignado a una variable,
         fmt.Printf("it's a %T", i)
-    case <-cs: // o el valor puede ser descartado
+    case <-cs:     // o el valor puede ser descartado.
         fmt.Println("it's a string")
-    case <-cc: // channel vacío, no está listo para la comunicación.
+    case <-ccs:    // Channel vacío, no está listo para la comunicación.
         fmt.Println("didn't happen.")
     }
+
     // En este punto un valor fue devuelvto de c o cs. Uno de las dos
-    // goroutines que se iniciaron se ha completado, la otrá permancerá bloqueada.
+    // goroutines que se iniciaron se ha completado, la otrá permancerá
+    // bloqueada.
 
     learnWebProgramming() // Go lo hace. Tu también quieres hacerlo.
 }
@@ -281,7 +307,7 @@ func learnWebProgramming() {
 
 // Haz pair un http.Handler implementando su único método, ServeHTTP.
 func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-    // Servir datos con un método de http.ResponseWriter
+    // Servir datos con un método de http.ResponseWriter.
     w.Write([]byte("You learned Go in Y minutes!"))
 }
 ```
@@ -291,11 +317,12 @@ func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 La raíz de todas las cosas de Go es la [web oficial de Go](http://golang.org/).
 Ahí puedes seguir el tutorial, jugar interactivamente y leer mucho.
 
-La propia definición del lenguaje también está altamente recomendada. Es fácil de leer
-e increíblemente corta (como otras definiciones de lenguajes hoy en día)
+La propia definición del lenguaje también está altamente
+recomendada. Es fácil de leer e increíblemente corta (como otras
+definiciones de lenguajes hoy en día)
 
-En la lista de lectura de estudiantes de Go está el código fuente de la
-librería estándar. Muy bien documentada, demuestra lo mejor de Go leíble, comprendible,
-estilo Go y formas Go. Pincha en el nombre de una función en la documentación
-y te aparecerá el código fuente!
+En la lista de lectura de estudiantes de Go está el código fuente de
+la librería estándar. Muy bien documentada, demuestra lo mejor de Go
+leíble, comprendible, estilo Go y formas Go. Pincha en el nombre de
+una función en la documentación y te aparecerá el código fuente!
 
