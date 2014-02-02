@@ -1,14 +1,12 @@
 ---
-name: Go
-category: language
 language: Go
+lang: es-es
 filename: learngo-es.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
 translators:
     - ["Adrian Espinosa", "http://www.adrianespinosa.com"]
-    - ["Jesse Johnson, "https://github.com/holocronweaver"]
-lang: es-es
+    - ["Jesse Johnson", "https://github.com/holocronweaver"]
 ---
 
 Go fue creado por la necesidad de hacer el trabajo rápidamente.  No es
