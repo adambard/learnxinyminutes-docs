@@ -22,7 +22,7 @@ from any platform to any other platform. And it will do this all from a binary e
 
 Ready to learn your first Red?
 
-```Red
+```
 All text before the header will be treated as comment, as long as you avoid using the word "red" 
 starting with a capital "R" in this pre-header text. This is a temporary shortcoming of the used lexer but
 most of the time you start your script or program with the header itself. 
