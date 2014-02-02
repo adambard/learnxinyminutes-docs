@@ -7,6 +7,7 @@ contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["Christopher Bess", "https://github.com/cbess"]
     - ["Jesse Johnson", "https://github.com/holocronweaver"]
+    - ["Quint Guvernator", "https://github.com/qguv"]
 ---
 
 Go was created out of the need to get work done.  It's not the latest trend
@@ -180,7 +181,19 @@ func learnFlowControl() {
     goto love
 love:
 
+    learnDefer() // A quick detour to an important keyword.
     learnInterfaces() // Good stuff coming up!
+}
+
+
+
+func learnDefer() (ok bool) {
+    // deferred statements are executed just before the function returns.
+    defer fmt.Println("deferred statements execute in reverse (LIFO) order.")
+    defer fmt.Println("\nThis line is being printed first because")
+    // defer is commonly used to close a file, so the function closing the file
+    // stays close to the function opening the file
+    return true
 }
 
 // Define Stringer as an interface type with one method, String.
