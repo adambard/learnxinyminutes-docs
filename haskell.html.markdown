@@ -303,7 +303,7 @@ Nothing         -- of type `Maybe a` for any `a`
 -- While IO can't be explained fully without explaining monads,
 -- it is not hard to explain enough to get going.
 
--- When a Haskell program is executed, the function `main` is
+-- When a Haskell program is executed, `main` is
 -- called. It must return a value of type `IO ()`. For example:
 
 main :: IO ()
