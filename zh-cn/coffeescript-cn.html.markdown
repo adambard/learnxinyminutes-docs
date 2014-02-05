@@ -3,35 +3,39 @@ language: coffeescript
 contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
   - ["Xavier Yao"], "http://github.com/xavieryao"]
-filename: coffeescript.coffee
+translators:
+  - ["Xavier Yao"], "http://github.com/xavieryao"]
+filename: coffeescript-cn.coffee
+lang: zh-cn
 ---
 
-CoffeeScript is a little language that compiles one-to-one into the equivalent JavaScript, and there is no interpretation at runtime. 
-As one of the succeeders of JavaScript, CoffeeScript tries its best to output readable, pretty-printed and smooth-running JavaScript codes working well in every JavaScript runtime.
+CoffeeScript是逐句编译为JavaScript的一种小型语言，且没有运行时的解释器。
+作为JavaScript的替代品之一，CoffeeScript旨在编译人类可读、美观优雅且速度不输原生的代码，
+且编译后的代码可以在任何JavaScript运行时正确运行。
 
-See also [the CoffeeScript website](http://coffeescript.org/), which has a complete tutorial on CoffeeScript.
+参阅 [CoffeeScript官方网站](http://coffeescript.org/)以获取CoffeeScript的完整教程。
 
 ``` coffeescript
-# CoffeeScript is a hipster language.
-# It goes with the trends of many modern languages.
-# So comments are like Ruby and Python, they use hashes.
+# CoffeeScript是一种很潮的编程语言，
+# 它紧随众多现代编程语言的趋势。
+# 因此正如Ruby和Python，CoffeeScript使用井号标记注释。
 
 ###
-Block comments are like these, and they translate directly to '/ *'s and '* /'s
-for the resulting JavaScript code.
+大段落注释以此为例，可以被直接编译为 '/ *' 和 '* /' 包裹的JavaScript代码。
 
-You should understand most of JavaScript semantices
-before continuing.
+在继续之前你需要了解JavaScript的基本概念。
+
+示例中 => 后为编译后的JavaScript代码
 ###
 
-# Assignment:
+# 赋值:
 number   = 42 #=> var number = 42;
 opposite = true #=> var opposite = true;
 
-# Conditions:
+# 条件:
 number = -42 if opposite #=> if(opposite) { number = -42; }
 
-# Functions:
+# 函数:
 square = (x) -> x * x #=> var square = function(x) { return x * x; }
 
 fill = (container, liquid = "coffee") ->
@@ -45,10 +49,10 @@ fill = (container, liquid = "coffee") ->
 #  return "Filling the " + container + " with " + liquid + "...";
 #};
 
-# Ranges:
+# 区间:
 list = [1..5] #=> var list = [1, 2, 3, 4, 5];
 
-# Objects:
+# 对象:
 math =
   root:   Math.sqrt
   square: square
@@ -68,11 +72,11 @@ race = (winner, runners...) ->
 #  return print(winner, runners);
 #};
 
-# Existence:
+# 存在判断:
 alert "I knew it!" if elvis?
 #=> if(typeof elvis !== "undefined" && elvis !== null) { alert("I knew it!"); }
 
-# Array comprehensions:
+# 数组推导:
 cubes = (math.cube num for num in list) 
 #=>cubes = (function() {
 #	var _i, _len, _results;
