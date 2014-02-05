@@ -321,7 +321,7 @@ seymour:makeSound()  -- 'woof woof woof'      -- 4.
 --    Dog.new(LoudDog) as LoudDog has no 'new' key,
 --    but does have __index = Dog on its metatable.
 --    Result: seymour's metatable is LoudDog, and
---    LoudDog.__index = LoudDog. So seymour.key will
+--    LoudDog.__index = Dog. So seymour.key will
 --    = seymour.key, LoudDog.key, Dog.key, whichever
 --    table is the first with the given key.
 -- 4. The 'makeSound' key is found in LoudDog; this
