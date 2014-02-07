@@ -23,14 +23,17 @@ from any platform to any other platform. And it will do this all from a binary e
 Ready to learn your first Red?
 
 ```
-All text before the header will be treated as comment, as long as you avoid using the word "red" 
-starting with a capital "R" in this pre-header text. This is a temporary shortcoming of the used lexer but
-most of the time you start your script or program with the header itself. 
+All text before the header will be treated as comment, as long as you avoid using the 
+word "red" starting with a capital "R" in this pre-header text. This is a temporary 
+shortcoming of the used lexer but most of the time you start your script or program 
+with the header itself. 
 The header of a red script is the capitalized word "red" followed by a 
 whitespace character followed by a block of square brackets [].
-The block of brackets can be filled with useful information about the script or program: the author, 
-the filename, the version, the license, what the program does or needs.
-The red/System header is just like the red header, only saying "red/System" and not "red".
+The block of brackets can be filled with useful information about this script or 
+program: the author's name, the filename, the version, the license, a summary of
+what the program does or any other files it needs.
+The red/System header is just like the red header, only saying "red/System" and 
+not "red".
 
 Red []
 
@@ -98,7 +101,8 @@ my-integer: 0
 type? my-integer
 integer!
 
-; A variable can be initialized using another variable that gets initialized at the same time.
+; A variable can be initialized using another variable that gets initialized 
+; at the same time.
 i2: 1 + i1: 1
 
 ; Arithmetic is straightforward
@@ -128,8 +132,9 @@ i1 / i2 ; result 0 (0.5, but truncated towards 0)
 if a < 0 [print "a is negative"]
 
 ; either
-; Evaluate a block of code if a given condition is true, else evaluate an alternative block of code. 
-; If last expressions in both blocks have the same type, EITHER can be used inside an expression.
+; Evaluate a block of code if a given condition is true, else evaluate an alternative 
+; block of code. If the last expressions in both blocks have the same type, EITHER can 
+; be used inside an expression.
 either a < 0 [
    either a = 0 [
        msg: "zero"
@@ -142,7 +147,8 @@ either a < 0 [
 
 print ["a is " msg lf]
 
-; An alternative way to write it (allowed because all code paths return a value of the same type):
+; There is an alternative way to write this 
+; (Which is allowed because all code paths return a value of the same type):
 
 msg: either a < 0 [
    either a = 0 [
@@ -156,8 +162,8 @@ msg: either a < 0 [
 print ["a is " msg lf]
 
 ; until
-; Loop over a block of code until the condition at end of block, is met. UNTIL does not return any value, 
-; so cannot be used in an expression.
+; Loop over a block of code until the condition at end of block, is met. 
+; UNTIL does not return any value, so it cannot be used in an expression.
 c: 5
 until [
    prin "o"
@@ -166,11 +172,12 @@ until [
 ]
 ;   will output:
 ooooo
-; Note that the loop will always be evaluated at least once, even if the condition is not met from the beginning.
+; Note that the loop will always be evaluated at least once, even if the condition is 
+; not met from the beginning.
 
 ; while
-; While a given condition is met, evaluate a block of code. WHILE does not return any value, 
-; so cannot be used in an expression.
+; While a given condition is met, evaluate a block of code. 
+; WHILE does not return any value, so it cannot be used in an expression.
 c: 5
 while [c > 0][
    prin "o"
