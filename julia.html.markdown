@@ -92,12 +92,12 @@ false
 # Another way to format strings is the printf macro.
 @printf "%d is less than %f" 4.5 5.3 # 5 is less than 5.300000
 
+# Printing is easy
+println("I'm Julia. Nice to meet you!")
+
 ####################################################
 ## 2. Variables and Collections
 ####################################################
-
-# Printing is easy
-println("I'm Julia. Nice to meet you!")
 
 # You don't declare variables before assigning to them.
 some_var = 5 #=> 5
