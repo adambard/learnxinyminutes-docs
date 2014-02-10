@@ -101,14 +101,17 @@ public class LearnJava {
 
         // Arrays
         //The array size must be decided upon instantiation
-        //The format for declaring an array is follows:
+        //The following formats work for declaring an arrow
         //<datatype> [] <var name> = new <datatype>[<array size>];
+        //<datetype> <var name>[] = new <datatype>[<array size>];
         int [] intArray = new int[10];
         String [] stringArray = new String[1];
-        boolean [] booleanArray = new boolean[100];
+        boolean boolArray [] = new boolean[100];
 
         // Another way to declare & initialize an array
         int [] y = {9000, 1000, 1337};
+        String names [] = {"Bob", "John", "Fred", "Juan Pedro"};
+        boolean bools[] = new boolean[] {true, false, false};
 
         // Indexing an array - Accessing an element
         System.out.println("intArray @ 0: " + intArray[0]);
@@ -403,6 +406,46 @@ class PennyFarthing extends Bicycle {
         gear = 0;
     }
 
+}
+
+//Interfaces
+//Interface declaration syntax
+//<access-level> interface <interface-name> extends <super-interfaces> {
+//		//Constants
+//		//Method declarations
+//}
+
+//Example - Food:
+public interface Edible {
+	public void eat(); //Any class that implements this interface, must implement this method
+}
+
+public interface Digestible {
+	public void digest();
+}
+
+
+//We can now create a class that implements both of these interfaces
+public class Fruit implements Edible, Digestible {
+	public void eat() {
+		//...
+	}
+
+	public void digest() {
+		//... 
+	}
+}
+
+//In java, you can extend only one class, but you can implement many interfaces.
+//For example:
+public class ExampleClass extends ExampleClassParent implements InterfaceOne, InterfaceTwo {
+	public void InterfaceOneMethod() {
+
+	}
+
+	public void InterfaceTwoMethod() {
+
+	}
 }
 
 ```
