@@ -17,7 +17,7 @@ Bash 是一个为 GNU 计划编写的 Unix shell，是 Linux 和 Mac OS X 下的
 [更多信息](http://www.gnu.org/software/bash/manual/bashref.html)
 
 ```bash
-#!/bin/sh
+#!/bin/bash
 # 脚本的第一行叫 shebang，用来告知系统如何执行该脚本:
 # 参见： http://en.wikipedia.org/wiki/Shebang_(Unix)
 # 如你所见，注释以 # 开头，shebang 也是注释。
