@@ -16,7 +16,7 @@ Beinahe alle der folgenden Beispiele können als Teile eines Shell-Skripts oder 
 [Weitere Informationen \(Englisch\)](http://www.gnu.org/software/bash/manual/bashref.html)
 
 ```bash
-#!/bin/sh
+#!/bin/bash
 # Die erste Zeile des Scripts nennt sich Shebang in gibt dem System an, wie
 # wie das Script ausgeführt werden soll: http://de.wikipedia.org/wiki/Shebang
 # Du hast es bestimmt schon mitgekriegt, Kommentare fangen mit # an. Das Shebang ist auch ein Kommentar
