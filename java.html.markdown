@@ -454,7 +454,7 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne, In
 
 The links provided here below are just to get an understanding of the topic, feel free to Google and find specific examples.
 
-Other Topics To Research:
+**Official Oracle Guides**:
 
 * [Java Tutorial Trail from Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
 
@@ -473,6 +473,19 @@ Other Topics To Research:
 
 * [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
 
-Books:
+**Online Practice and Tutorials**
 
-* [Head First Java] (http://www.headfirstlabs.com/books/hfjava/)
+* [Learneroo.com - Learn Java](http://www.learneroo.com)
+
+* [Codingbat.com](http://codingbat.com/java)
+
+
+**Books**:
+
+* [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
+
+* [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
+
+* [Java The Complete Reference](http://www.amazon.com/gp/product/0071606300)
+
+
