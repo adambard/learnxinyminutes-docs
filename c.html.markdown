@@ -569,7 +569,7 @@ typedef void (*my_fnp_type)(char *);
 '\b' // backspace character
 '\0' // null character. Usually put at end of strings in C lang. 
      //   hello\n\0. \0 used by convention to mark end of string. 
-'\\' // backspace
+'\\' // backslash
 '\?' // question mark
 '\'' // single quote
 '\"' // double quote
