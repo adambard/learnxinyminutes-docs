@@ -454,6 +454,12 @@ void str_reverse(char *str_in)
     }
 }
 
+/*
+char c[] = "This is a test.";
+str_reverse(c);
+printf("%s\n", c); // => ".tset a si sihT"
+*/
+
 //if referring to external variables outside function, must use extern keyword.
 int i = 0;
 void testFunc() {
@@ -467,11 +473,7 @@ void testFunc() {
 }
 //**You may also declare functions as static to make them private**
 
-/*
-char c[] = "This is a test.";
-str_reverse(c);
-printf("%s\n", c); // => ".tset a si sihT"
-*/
+
 
 ///////////////////////////////////////
 // User-defined types and structs
