@@ -109,7 +109,7 @@ namespace Learning
             // Char - Un unique caractère Unicode sur 16 bits
             char fooChar = 'A';
 
-            // String -- contrairement au types précédents qui sont des types valeurs,
+            // String -- contrairement aux types précédents qui sont des types valeurs,
             // string est un type référence. Il peut donc avoir la valeur null
             string fooString = "\"échappement\" de guillemets et ajout de \n (nouvelle ligne) et  de \t (tabulation)";
             Console.WriteLine(fooString);
@@ -152,7 +152,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
 
             // Indexer un tableau - Accéder à un élément
             Console.WriteLine("intArray à 0: " + intArray[0]);
-            // Les tableaux sont muable.
+            // Les tableaux sont muables.
             intArray[1] = 1;
 
             // Listes
@@ -268,7 +268,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             // Structure : foreach(<type_iterateur> <nom_iterateur> in <enumerable>)
             // Cette boucle est utilisable sur des objets implémentant IEnumerable ou IEnumerable<T>
             // Toutes les collections du framework .NET (Tableaux, Listes, ...) implémentent ces interfaces.
-            // (Notez que dans l'exemple suivant .ToCharArray() peut être omit car
+            // (Notez que dans l'exemple suivant .ToCharArray() peut être omit car,
             //  string implémente IEnumerable)
             foreach (char character in "Hello World".ToCharArray())
             {
@@ -276,9 +276,9 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             }
 
             // La structure Switch Case
-            // Un switch fonctionne avec les types : byte, short, char, et int.
+            // Un switch fonctionne avec les types : byte, short, char et int.
             // Les enums sont aussi supportés ainsi que les strings et quelques
-            // classes spéciales basées sur les types primitifs : Character, Byte, Short, et Integer.
+            // classes spéciales basées sur les types primitifs : Character, Byte, Short et Integer.
             int mois = 3;
             string moisString;
             switch (mois)
@@ -293,7 +293,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
                     moisString = "Mars";
                     break;
 
-                // Vous pouvez assigné plus d'un 'case' à une action
+                // Vous pouvez assigner plus d'un 'case' à une action
                 // Mais vous ne pouvez pas ajouter une action sans 'break' avant un 'case'
                 // (pour ce faire, il faudrait ajouter explicitement un 'goto case x')
                 case 6:
@@ -307,10 +307,10 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             }
 
             ///////////////////////////////////////
-            // Convertion de type de donnée et transtypage
+            // conversion de type de donnée et transtypage
             ///////////////////////////////////////
 
-            // Convertion de string vers int
+            // conversion de string vers int
             // lève une exception en cas d'erreur
             int.Parse("123"); //retourne la valeur entière de "123"
 
@@ -320,8 +320,8 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             if (int.TryParse("123", out tryInt)) // La fonction retourne un booléen
                 Console.WriteLine(tryInt);       // => 123
 
-            // Convertion d'un entier vers une string
-            // La classe Convert possède plusieur méthodes pour faciliter la convertion
+            // conversion d'un entier vers une string
+            // La classe Convert possède plusieurs méthodes pour faciliter la conversion
             Convert.ToString(123);
             // ou
             tryInt.ToString();
@@ -399,7 +399,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
         // Vous pouvez limiter les types autorisés
         public static void IterateAndPrint<T>(T toPrint) where T: IEnumerable<int>
         {
-            // Nous somme sûr de pouvoir itérer, car T implémente IEnumerable<int>
+            // Nous sommes sûrs de pouvoir itérer, car T implémente IEnumerable<int>
             foreach (var item in toPrint)
                 // Item sera de type int
                 Console.WriteLine(item.ToString());
@@ -417,14 +417,14 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             i.Print(); // Défini plus bas
 
             // TYPES NULLABLE - idéal pour les interactions avec une base de données ou pour les valeurs de retour
-            // Tous les types valeurs peuvent être rendu nullable en les suffixant par '?'
+            // Tous les types valeurs peuvent être rendus nullable en les suffixant par '?'
             // <type>? <nom> = <value>
             int? nullable = null; // raccourci pour Nullable<int>
             Console.WriteLine("Nullable variable: " + nullable);
             bool hasValue = nullable.HasValue; // retourne vrai si la valeur n'est pas null
 
             // ?? est un sucre de syntaxe pour spécifier une valeur par défaut
-            // au cas ou une autre valleur serait nulle
+            // au cas ou une autre valeur serait nulle
             int notNullable = nullable ?? 0; // 0
 
             // VARIABLES IMPLICITEMENT TYPÉE - vous pouvez laisser le compilateur deviner le type d'une variable
@@ -445,7 +445,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             Func<int, int> square = (x) => x * x; // Le dernier élément est la valeur de retour
             Console.WriteLine(square(3)); // => 9
 
-            // BIBLIOTHÈQUE DE TÂCHES PARALLÈLE (TPL)
+            // BIBLIOTHÈQUE DE TÂCHES PARALLÈLES (TPL)
             // http://msdn.microsoft.com/fr-fr/library/dd460717.aspx
             var websites = new string[] { 
                 "http://www.google.com", "http://www.reddit.com", 
@@ -453,8 +453,8 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             };
             var responses = new Dictionary<string, string>();
             
-            // L'exemple suivant executera chaque requête dans un thread séparé,
-            // et attendera la fin de chacun d'entre eux avant de continuer
+            // L'exemple suivant exécutera chaque requête dans un thread séparé,
+            // et attendra la fin de chacun d'entre eux avant de continuer
             Parallel.ForEach(websites, 
                 new ParallelOptions() {MaxDegreeOfParallelism = 3}, // maximum de 3 threads
                 website =>
@@ -494,7 +494,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
 
             // Creation d'une liste d'objet anonymes basés sur des paramètres de la classe Bike
             var bikeSummaries = bikes.Select(b=>new { Name = b.Name, IsAwesome = !b.IsBroken && b.HasTassles });
-            // Le compilateur peut inférer le type de ces objets annonymes, permettant à certain IDE d'effectuer 
+            // Le compilateur peut inférer le type de ces objets anonymes, permettant à certain IDE d'effectuer 
             // des autos-complétion.
             foreach (var bikeSummary in bikeSummaries.Where(b => b.IsAwesome))
                 Console.WriteLine(bikeSummary.Name);
@@ -509,12 +509,12 @@ sur une nouvelle ligne! ""Wow!"", quel style";
 
 
             // LINQ - lie une source de donnée à des objets IQueryable<T>
-            // ex: LindToSql => liaison avec une base de donnée, LinqToXml => liaison avec un document xml
+            // ex: LindToSql => liaison avec une base de données, LinqToXml => liaison avec un document xml
             var db = new BikeRespository();
 
-            // l'execution est décalée, ce qui est préférable quand on  travail sur une base données
+            // l'exécution est décalée, ce qui est préférable quand on travaille sur une base données
             var fitler = db.Bikes.Where(b => b.HasTassles); // pas de requête exécutée
-            if (42 > 6) //  Vous pouvez continuez à affiner la recherche
+            if (42 > 6) //  Vous pouvez continuer à affiner la recherche
                 fitler = fitler.Where(b => b.IsBroken); // pas de requête exécutée
 
             var query = fitler
@@ -530,7 +530,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
 
     } // Fin de la classe LearnCSharp
 
-    // Il est possible d'inclure plusieur classes dans un fichier .cs
+    // Il est possible d'inclure plusieurs classes dans un fichier .cs
 
     public static class Extensions
     {
@@ -556,7 +556,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             {
                 return _cadence;
             }
-            set // set - définit une méthode pour affecté une valeur à la propriété
+            set // set - définit une méthode pour affecter une valeur à la propriété
             {
                 _cadence = value; // 'value' est la valeur passée en argument au setteur
             }
@@ -583,7 +583,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
 
         // Enum est un type valeur formé par un ensemble de constantes nommées
         // C'est simplement une manière de mettre un nom sur une valeur (int par défaut).
-        // Les types compatibles pour un enum sont : byte, sbyte, short, ushort, int, uint, long, et ulong.
+        // Les types compatibles pour un enum sont : byte, sbyte, short, ushort, int, uint, long et ulong.
         // Un enum ne peut pas contenir deux fois la même valeur
         public enum BikeBrand
         {
@@ -606,7 +606,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
         // Elles ne peuvent être assignées que lors de leur déclaration ou dans un constructeur
         readonly bool _hasCardsInSpokes = false; // variable en lecture et privée
 
-        // Les contructeurs sont un moyen de créer des objets
+        // Les constructeurs sont un moyen de créer des objets
         // Voici un constructeur par défaut (pas d'arguments)
         public Bicycle() 
         {
@@ -618,7 +618,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             BicyclesCreated++;
         }
 
-        // Voici un constructeur spécifique (qui prends des arguments)
+        // Voici un constructeur spécifique (qui prend des arguments)
         public Bicycle(int startCadence, int startSpeed, int startGear,
                        string name, bool hasCardsInSpokes, BikeBrand brand) 
             : base() // possibilité d'appeler le constructeur de la classe mère (ici Object)
@@ -631,7 +631,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             Brand = brand;
         }
 
-        // Les constructeur peuvent s'enchaîner
+        // Les constructeurs peuvent s'enchaîner
         public Bicycle(int startCadence, int startSpeed, BikeBrand brand) :
             this(startCadence, startSpeed, 0, "big wheels", true, brand)
         {
@@ -640,10 +640,10 @@ sur une nouvelle ligne! ""Wow!"", quel style";
         // Syntaxe de méthode:
         // <public/private/protected> <type de retour> <nom de methode>(<args>)
 
-        // Les classes peuvent implémenter des accesseurs pour leur champs
+        // Les classes peuvent implémenter des accesseurs pour leurs champs
         // ou implémenter des propriétés (c'est la méthode dominante en C#)
 
-        // Les paramètres de méthodes peuvent avoir des valeur par défaut
+        // Les paramètres de méthodes peuvent avoir des valeurs par défaut
         // Dans ce cas, la méthode peut être appelée sans arguments
         public void SpeedUp(int increment = 1)
         {
@@ -689,7 +689,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
                     ;
         }
 
-        // Les méthodes peuvent aussi être statiques. Utile pour les méthode d'aide.
+        // Les méthodes peuvent aussi être statiques. Utile pour les méthodes d'aide.
         public static bool DidWeCreateEnoughBycles()
         {
             // A l'intérieur d'une méthode statique on ne peut que référencer des membres statiques !
@@ -731,7 +731,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
     // Les interfaces contiennent uniquement la signature de leurs membres, sans implémentation.
     interface IJumpable
     {
-        void Jump(int meters); // Tout les membres d'interface sont publique par défaut
+        void Jump(int meters); // Tous les membres d'interface sont publics par défaut
     }
 
     interface IBreakable
@@ -740,7 +740,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
                              // des méthodes et des évènements
     }
 
-    // Une classe ne peut hériter que d'une seule autre classe, mais peut implémenter plusieur interfaces
+    // Une classe ne peut hériter que d'une seule autre classe, mais peut implémenter plusieurs interfaces
     class MountainBike : Bicycle, IJumpable, IBreakable
     {
         int damage = 0;
