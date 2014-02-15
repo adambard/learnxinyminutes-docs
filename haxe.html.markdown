@@ -231,7 +231,7 @@ class LearnHaxe3{
         trace((4 + 3) + " is the value for (4 + 3)");
         trace((5 - 1) + " is the value for (5 - 1)");
         trace((2 * 4) + " is the value for (2 * 4)");
-        trace((8 / 4) + " is the value for (8 / 3) (division always produces Floats)");
+        trace((8 / 3) + " is the value for (8 / 3) (division always produces Floats)");
         trace((12 % 4) + " is the value for (12 % 4)");
 
 
