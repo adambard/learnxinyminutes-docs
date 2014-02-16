@@ -30,6 +30,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
 using System.Threading.Tasks;
+using System.IO;
 
 // defines scope to organize code into "packages"
 namespace Learning
@@ -433,6 +434,17 @@ on a new line! ""Wow!"", the masses cried";
             // LAMBDA EXPRESSIONS - allow you to write code in line
             Func<int, int> square = (x) => x * x; // Last T item is the return value
             Console.WriteLine(square(3)); // 9
+
+            // DISPOSABLE RESSOURCES MANAGEMENT - let you handle unmanaged resources easily
+            // Most of objects that access unmanaged resources (file handle, device contexts, etc.)
+            // implement the IDisposable interface. The using statement takes care of 
+            // cleaning those IDisposable objects for you.
+            using (StreamWriter writer = new StreamWriter("log.txt"))
+            {
+                writer.WriteLine("Nothing suspicious here");
+                // At the end of scope, ressources will be released.
+                // Even if an exception is thrown.
+            } 
 
             // PARALLEL FRAMEWORK
             // http://blogs.msdn.com/b/csharpfaq/archive/2010/06/01/parallel-programming-in-net-framework-4-getting-started.aspx
