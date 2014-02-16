@@ -473,6 +473,54 @@ import math
 dir(math)
 
 
+####################################################
+## 6. Advanced
+####################################################
+
+# Generators help you make lazy code
+def double_numbers(iterable):
+    for i in iterable:
+        yield i + i
+
+# generator creates the value on the fly
+# instead of generating and returning all values at once it creates one in each iteration
+# this means values bigger than 15 wont be processed in double_numbers
+# note range is a generator too, creating a list 1-900000000 would take lot of time to be made
+_range = range(1, 900000000)
+# will double all numbers until a result >=30 found
+for i in double_numbers(_range):
+    print(i)
+    if i >= 30:
+        break
+
+
+# Decorators
+# in this example beg wraps say
+# Beg will call say. If say_please is True then it will change the returned message
+from functools import wraps
+
+
+def beg(_say):
+    @wraps(_say)
+    def wrapper(*args, **kwargs):
+        msg, say_please = _say(*args, **kwargs)
+        if say_please:
+            return "{} {}".format(msg, "Please! I am poor :(")
+        return msg
+
+    return wrapper
+
+
+@beg
+def say(say_please=False):
+    msg = "Can you buy me a beer?"
+    return msg, say_please
+
+
+print(say())  # Can you buy me a beer?
+print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
+
+
 ```
 
 ## Ready For More?
