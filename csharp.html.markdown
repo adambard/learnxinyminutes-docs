@@ -105,7 +105,7 @@ namespace Learning
             Console.WriteLine(fooString);
 
             // You can access each character of the string with an indexer:
-            char charFromString = fooString[1]; // 'y'
+            char charFromString = fooString[1]; // => 'e'
             // Strings are immutable: you can't do fooString[1] = 'X';
 
             // Compare strings with current culture, ignoring case
@@ -173,7 +173,7 @@ on a new line! ""Wow!"", the masses cried";
             int i1 = 1, i2 = 2; // Shorthand for multiple declarations
 
             // Arithmetic is straightforward
-            Console.WriteLine(i1 + i2 - i1 * 3 / 7); //
+            Console.WriteLine(i1 + i2 - i1 * 3 / 7); // => 3
 
             // Modulo
             Console.WriteLine("11%3 = " + (11 % 3)); // => 2
@@ -241,7 +241,7 @@ on a new line! ""Wow!"", the masses cried";
             int fooDoWhile = 0;
             do
             {
-                //Iterated 99 times, fooDoWhile 0->99
+                //Iterated 100 times, fooDoWhile 0->99
                 fooDoWhile++;
             } while (fooDoWhile < 100);
 
@@ -576,7 +576,7 @@ on a new line! ""Wow!"", the masses cried";
             AIST,
             BMC,
             Electra = 42, //you can explicitly set a value to a name
-            Gitane
+            Gitane // 43
         }
         // We defined this type inside a Bicycle class, so it is a nested type
         // Code outside of this class should reference this type as Bicycle.Brand
