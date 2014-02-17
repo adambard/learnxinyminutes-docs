@@ -435,14 +435,14 @@ on a new line! ""Wow!"", the masses cried";
             Func<int, int> square = (x) => x * x; // Last T item is the return value
             Console.WriteLine(square(3)); // 9
 
-            // DISPOSABLE RESSOURCES MANAGEMENT - let you handle unmanaged resources easily
+            // DISPOSABLE RESSOURCES MANAGEMENT - let you handle unmanaged resources easily.
             // Most of objects that access unmanaged resources (file handle, device contexts, etc.)
             // implement the IDisposable interface. The using statement takes care of 
             // cleaning those IDisposable objects for you.
             using (StreamWriter writer = new StreamWriter("log.txt"))
             {
                 writer.WriteLine("Nothing suspicious here");
-                // At the end of scope, ressources will be released.
+                // At the end of scope, resources will be released.
                 // Even if an exception is thrown.
             } 
 
