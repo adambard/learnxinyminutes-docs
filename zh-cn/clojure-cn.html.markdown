@@ -2,6 +2,8 @@
 language: clojure
 filename: learnclojure-cn.clj
 contributors:
+    - ["Adam Bard", "http://adambard.com/"]
+translators:
     - ["Bill Zhang", "http://jingege.github.io/"]
 lang: zh-cn
 ---
