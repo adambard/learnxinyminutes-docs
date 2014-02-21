@@ -50,7 +50,7 @@ echo ${VARIABLE/Some/A}
 echo ${FOO:-"DefaultValueIfFOOIsMissingOrEmpty"}
 # This works for null (FOO=), empty string (FOO=""), zero (FOO=0) returns 0
 
-# Bultin variables:
+# Builtin variables:
 # There are some useful builtin variables, like
 echo "Last program return value: $?"
 echo "Script's PID: $$"
