@@ -511,11 +511,11 @@ on a new line! ""Wow!"", the masses cried";
             var db = new BikeRespository();
 
             // execution is delayed, which is great when querying a database
-            var fitler = db.Bikes.Where(b => b.HasTassles); // no query run
+            var filter = db.Bikes.Where(b => b.HasTassles); // no query run
             if (42 > 6) // You can keep adding filters, even conditionally - great for "advanced search" functionality
-                fitler = fitler.Where(b => b.IsBroken); // no query run
+                filter = filter.Where(b => b.IsBroken); // no query run
 
-            var query = fitler
+            var query = filter
                 .OrderBy(b => b.Wheels)
                 .ThenBy(b => b.Name)
                 .Select(b => b.Name); // still no query run

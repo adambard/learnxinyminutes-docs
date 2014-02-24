@@ -29,7 +29,7 @@ ceci
 /// Ceci est un commentaire de documentation XML
 /// </summary>
 
-// Utilisez des namespaces avec l'instruction 'using'
+// Importez des namespaces avec l'instruction 'using'
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -46,8 +46,8 @@ namespace Learning
     // que celui du fichier. Ce n'est pas une obligation mais c'est mieux ! 
     public class LearnCSharp
     {
-        // LES BASES - si vous avez déjà une expérience en Java ou C++
-        // passez directement à la partie FONCTIONNALITÉS INTERESSANTES 
+        // LES BASES - si vous avez déjà de l'expérience en Java ou C++
+        // passez directement à la partie FONCTIONNALITÉS INTERÉSSANTES 
         public static void Syntax() 
         {
             // Utilisez Console.WriteLine pour écrire sur la sortie
@@ -91,10 +91,10 @@ namespace Learning
             // on ajoute 'L' pour spécifier la création d'un long
 
             // Double - Réel sur 64 bits en virgule flottante (norme IEEE 754) 
-            double fooDouble = 123.4; // Precision: 15-16 chiffres
+            double fooDouble = 123.4; // Precision : 15-16 chiffres
 
             // Float - Réel sur 32 bits en virgule flottante (norme IEEE 754) 
-            float fooFloat = 234.5f; // Precision: 7 chiffres
+            float fooFloat = 234.5f; // Precision : 7 chiffres
             // Par défaut le type d'un littéral réel est double
             // on ajoute 'f' pour spécifier la création d'un float
 
@@ -114,9 +114,9 @@ namespace Learning
             string fooString = "\"échappement\" de guillemets et ajout de \n (nouvelle ligne) et  de \t (tabulation)";
             Console.WriteLine(fooString);
 
-            // Il est possible d'accéder à chaque caractère d'une chaîne de caractères via un indexeur
+            // Il est possible d'accéder à chaque caractère d'une chaîne de caractères via son index
             char charFromString = fooString[1]; // 'é'
-            // une chaîne de caractères est immuable: impossible de faire fooString[1] = 'X';
+            // une chaîne de caractères est immuable : impossible de faire fooString[1] = 'X';
 
             // Comparaison de chaînes de caractères avec la culture courrante en ignorant la casse
             string.Compare(fooString, "x", StringComparison.CurrentCultureIgnoreCase);
@@ -163,14 +163,14 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             List<string> stringList = new List<string>();
             List<int> z = new List<int> { 9000, 1000, 1337 }; // intialisation
             // Les <> indiquent un type générique 
-            // Pus d'info dans la partie FONCTIONNALITÉS INTERESSANTES
+            // Pus d'info dans la partie FONCTIONNALITÉS INTERÉSSANTES
 
             // Les éléments d'une liste ne sont pas null par défaut
             // Il faut ajouter une valeur avant d'y accéder par index
             intList.Add(1);
             Console.WriteLine("intList à 0: " + intList[0]);
 
-            // Autres structures de données à étudier:
+            // Autres structures de données à étudier :
             // Stack/Queue (Pile/File)
             // Dictionary (une implémentation de hash map)
             // HashSet (représente un ensemble)
@@ -217,11 +217,11 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             Console.WriteLine(--i); //i = 0. Pre-Decrémentation
 
             ///////////////////////////////////////
-            // Structure de contrôle
+            // Structures de contrôle
             ///////////////////////////////////////
-            Console.WriteLine("\n->Structure de contrôle");
+            Console.WriteLine("\n->Structures de contrôle");
 
-            // Clause 'if' à la C
+            // Structure conditionnelle
             int j = 10;
             if (j == 10)
             {
@@ -268,7 +268,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             // Structure : foreach(<type_iterateur> <nom_iterateur> in <enumerable>)
             // Cette boucle est utilisable sur des objets implémentant IEnumerable ou IEnumerable<T>
             // Toutes les collections du framework .NET (Tableaux, Listes, ...) implémentent ces interfaces.
-            // (Notez que dans l'exemple suivant .ToCharArray() peut être omit car,
+            // (Notez que dans l'exemple suivant .ToCharArray() peut être omit car
             //  string implémente IEnumerable)
             foreach (char character in "Hello World".ToCharArray())
             {
@@ -352,14 +352,14 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             Console.Read();
         }
 
-        // POINT D'ENTREE Une application console doit avoir une méthode main comme point d'entrée
+        // POINT D'ENTRÉE - Une application console doit avoir une méthode main comme point d'entrée
         public static void Main(string[] args)
         {
             OtherInterestingFeatures();
         }
 
         //
-        // FONCTIONNALITÉS INTERESSANTES
+        // FONCTIONNALITÉS INTÉRÉSSANTES
         //
         
         // SIGNATURE DE METHODE
@@ -381,7 +381,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
         {
         }
 
-        // TYPE GENERIQUE
+        // TYPE GÉNÉRIQUE
         
         // Les types TKey et TValue sont spécifiés par l'utilisateur lors de l'appel de la fonction
         // Cette méthode émule SetDefaut de Python
@@ -414,7 +414,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
 
             // MÉTHODE D'EXTENSION
             int i = 3;
-            i.Print(); // Défini plus bas
+            i.Print(); // Définit plus bas
 
             // TYPES NULLABLE - idéal pour les interactions avec une base de données ou pour les valeurs de retour
             // Tous les types valeurs peuvent être rendus nullable en les suffixant par '?'
@@ -427,7 +427,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             // au cas ou une autre valeur serait nulle
             int notNullable = nullable ?? 0; // 0
 
-            // VARIABLES IMPLICITEMENT TYPÉE - vous pouvez laisser le compilateur deviner le type d'une variable
+            // VARIABLES IMPLICITEMENT TYPÉES - vous pouvez laisser le compilateur deviner le type d'une variable
             var magic = "magic est de type string à la compilation. On a toujours un typage fort !";
             // magic = 9; // ne fonctionnera pas car magic est désormais une chaîne de caractères
 
@@ -436,23 +436,23 @@ sur une nouvelle ligne! ""Wow!"", quel style";
                 {"Sarah", "212 555 5555"} // Ajout d'une entrée à notre agenda
             };
 
-            // Appel de la fonction SetDefault (défini plus haut)
+            // Appel de la fonction SetDefault (définie plus haut)
             Console.WriteLine(SetDefault<string,string>(agenda, "Shaun", "Pas de numéro")); // => Pas de numéro
             // Notez que vous n'avez pas à spécifier TKey et TValue car le compilateur saura les inférer.
             Console.WriteLine(SetDefault(agenda, "Sarah", "No Phone")); // => 212 555 5555
 
             // EXPRESSION LAMBDA - permet d'écrire une fonction en tant qu'expression
-            Func<int, int> square = (x) => x * x; // Le dernier élément est la valeur de retour
+            Func<int, int> square = (x) => x * x; // La dernière expression est la valeur de retour
             Console.WriteLine(square(3)); // => 9
 
             // GESTION AUTOMATIQUE DES RESSOURCES - vous permet de manipuler facilement des resources non-managées
             // La plus part des objets qui accèdent à des ressources non-managées (handle de fichier, périphérique, etc.)
-            // implémentent l'interface IDisposable. L'instruction using prends soin
-            // de libérer ses objets IDisposable proprement à votre place.
+            // implémentent l'interface IDisposable. L'instruction using prend soin
+            // de libérer les objets IDisposable proprement à votre place.
             using (StreamWriter writer = new StreamWriter("log.txt"))
             {
                 writer.WriteLine("Rien à signaler");
-                // À la fin de cette portée, les ressources seront libérées.
+                // À la fin de cette portée les ressources seront libérées.
                 // Même si une exception est levée.
             } 
 
@@ -485,7 +485,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             dynamic student = new ExpandoObject();
             student.FirstName = "Mon prénom"; // Pas besoin de définir l'objet
 
-            // Vous pouvez même ajouter des méthodes (dans cet exemple: la méthode prend une chaîne de caractères et retourne une chaîne de caractères)
+            // Vous pouvez même ajouter des méthodes (dans cet exemple : la méthode prend une chaîne de caractères et retourne une chaîne de caractères)
             student.Introduce = new Func<string, string>(
                 (introduceTo) => string.Format("Hey {0}, c'est {1}", student.FirstName, introduceTo));
             Console.WriteLine(student.Introduce("Beth"));
@@ -505,7 +505,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
 
             // Creation d'une liste d'objet anonymes basés sur des paramètres de la classe Bike
             var bikeSummaries = bikes.Select(b=>new { Name = b.Name, IsAwesome = !b.IsBroken && b.HasTassles });
-            // Le compilateur peut inférer le type de ces objets anonymes, permettant à certain IDE d'effectuer 
+            // Le compilateur peut inférer le type de ces objets anonymes, permettant à certains IDE d'effectuer 
             // des autos-complétion.
             foreach (var bikeSummary in bikeSummaries.Where(b => b.IsAwesome))
                 Console.WriteLine(bikeSummary.Name);
@@ -519,16 +519,16 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             // machine dispose de plusieurs coeurs)
 
 
-            // LINQ - lie une source de donnée à des objets IQueryable<T>
-            // ex: LindToSql => liaison avec une base de données, LinqToXml => liaison avec un document xml
+            // LINQ - lie une source de données à des objets IQueryable<T>
+            // ex : LindToSql => liaison avec une base de données, LinqToXml => liaison avec un document xml
             var db = new BikeRespository();
 
             // l'exécution est décalée, ce qui est préférable quand on travaille sur une base données
-            var fitler = db.Bikes.Where(b => b.HasTassles); // pas de requête exécutée
+            var filter = db.Bikes.Where(b => b.HasTassles); // pas de requête exécutée
             if (42 > 6) //  Vous pouvez continuer à affiner la recherche
-                fitler = fitler.Where(b => b.IsBroken); // pas de requête exécutée
+                filter = filter.Where(b => b.IsBroken); // pas de requête exécutée
 
-            var query = fitler
+            var query = filter
                 .OrderBy(b => b.Wheels)
                 .ThenBy(b => b.Name)
                 .Select(b => b.Name); // toujours pas de requête exécutée
@@ -561,7 +561,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
     public class Bicycle
     {
         // Propriétés et variable de la classe
-        public int Cadence // Public: peut être accédé de partout
+        public int Cadence // Public : peut être accédé de partout
         {
             get // get - définit une méthode pour lire la propriété
             {
@@ -574,13 +574,13 @@ sur une nouvelle ligne! ""Wow!"", quel style";
         }
         private int _cadence;
 
-        protected virtual int Gear // Protected: accessible depuis la classe et ses classes filles
+        protected virtual int Gear // Protected : accessible depuis la classe et ses classes filles
         {
             get; // crée une propriété automatique, pas besoin de créer une variable de stockage
             set;
         }
 
-        internal int Wheels // Internal: accessible depuis l'assembly
+        internal int Wheels // Internal : accessible depuis l'assembly
         {
             get;
             private set; // Il est possible de choisir la portée d'un accesseur
@@ -609,8 +609,8 @@ sur une nouvelle ligne! ""Wow!"", quel style";
         public BikeBrand Brand; // Après avoir déclaré notre type enum, on peut créer un champ de ce type
 
         // Les membres statiques appartiennent à une classe plutôt qu'à une instance particulière
-        // Il est possible d'y accéder sans passer par un objet:
-        // ex: Console.WriteLine("Bicycles créés: " + Bicycle.bicyclesCreated);
+        // Il est possible d'y accéder sans passer par un objet :
+        // ex : Console.WriteLine("Bicycles créés : " + Bicycle.bicyclesCreated);
         static public int BicyclesCreated = 0;
 
         // Les valeurs en lecture seule sont affectées lors de l'exécution
@@ -648,7 +648,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
         {
         }
 
-        // Syntaxe de méthode:
+        // Syntaxe de méthode :
         // <public/private/protected> <type de retour> <nom de methode>(<args>)
 
         // Les classes peuvent implémenter des accesseurs pour leurs champs
@@ -688,7 +688,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             private set;
         }
 
-        // Méthode qui affiche les valeurs des champs de cet objet
+        // Méthode qui affiche la valeur des champs de cet objet
         public virtual string Info()
         {
             return "Gear: " + Gear +
@@ -703,7 +703,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
         // Les méthodes peuvent aussi être statiques. Utile pour les méthodes d'aide.
         public static bool DidWeCreateEnoughBycles()
         {
-            // A l'intérieur d'une méthode statique on ne peut que référencer des membres statiques !
+            // À l'intérieur d'une méthode statique on ne peut que référencer des membres statiques !
             return BicyclesCreated > 9000;
         } // Si votre classe n'a que des membres statiques, marquez la comme statique 
 
