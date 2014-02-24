@@ -99,8 +99,8 @@ namespace Learning
             // on ajoute 'f' pour spécifier la création d'un float
 
             // Decimal - Type de donnée numérique sur 128 bits, fournit une plus 
-            // grande précision et une plage de valeurs réduite
-            // approprié aux calculs financiers et monétaires
+            // grande précision et une plage de valeurs réduite.
+            // Approprié aux calculs financiers et monétaires
             decimal fooDecimal = 150.3m;
 
             // Booléen - vrai / faux
@@ -114,11 +114,11 @@ namespace Learning
             string fooString = "\"échappement\" de guillemets et ajout de \n (nouvelle ligne) et  de \t (tabulation)";
             Console.WriteLine(fooString);
 
-            // Il est possible d'accéder à chaque caractère d'une string via un indexeur
+            // Il est possible d'accéder à chaque caractère d'une chaîne de caractères via un indexeur
             char charFromString = fooString[1]; // 'é'
-            // Une string est immuable: impossible de faire fooString[1] = 'X';
+            // une chaîne de caractères est immuable: impossible de faire fooString[1] = 'X';
 
-            // Comparaison de strings avec la culture courrante en ignorant la casse
+            // Comparaison de chaînes de caractères avec la culture courrante en ignorant la casse
             string.Compare(fooString, "x", StringComparison.CurrentCultureIgnoreCase);
 
             // Formatage
@@ -128,14 +128,14 @@ namespace Learning
             DateTime fooDate = DateTime.Now;
             Console.WriteLine(fooDate.ToString("hh:mm, dd MMM yyyy"));
 
-            // Il est possible d'étaler une string sur plusieurs lignes avec le symbole @.
+            // Il est possible d'étaler une chaîne de caractères sur plusieurs lignes avec le symbole @.
             // Pour échapper " utilisez ""
             string bazString = @"Voici quelques trucs
 sur une nouvelle ligne! ""Wow!"", quel style";
 
-            // Utilisez const ou read-only pour rendre une variable immuable
-            // les valeurs constantes sont calculées au moment de la compilation
-            const int HEURES_PAR_SEMAINE = 9001;
+            // Utilisez const ou read-only pour rendre une variable immuable.
+            // Les valeurs constantes sont calculées au moment de la compilation
+            const int HOURS_I_WORK_PER_WEEK = 9001;
 
             ///////////////////////////////////////////////////
             // Structures de données
@@ -225,7 +225,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             int j = 10;
             if (j == 10)
             {
-                Console.WriteLine("Je serais affiché");
+                Console.WriteLine("Je serai affiché");
             }
             else if (j > 10)
             {
@@ -277,7 +277,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
 
             // La structure Switch Case
             // Un switch fonctionne avec les types : byte, short, char et int.
-            // Les enums sont aussi supportés ainsi que les strings et quelques
+            // Les enums sont aussi supportés ainsi que les chaînes de caractères et quelques
             // classes spéciales basées sur les types primitifs : Character, Byte, Short et Integer.
             int mois = 3;
             string moisString;
@@ -320,7 +320,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             if (int.TryParse("123", out tryInt)) // La fonction retourne un booléen
                 Console.WriteLine(tryInt);       // => 123
 
-            // conversion d'un entier vers une string
+            // conversion d'un entier vers une chaîne de caractères
             // La classe Convert possède plusieurs méthodes pour faciliter la conversion
             Convert.ToString(123);
             // ou
@@ -423,13 +423,13 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             Console.WriteLine("Nullable variable: " + nullable);
             bool hasValue = nullable.HasValue; // retourne vrai si la valeur n'est pas null
 
-            // ?? est un sucre de syntaxe pour spécifier une valeur par défaut
+            // ?? est un sucre syntaxique pour spécifier une valeur par défaut
             // au cas ou une autre valeur serait nulle
             int notNullable = nullable ?? 0; // 0
 
             // VARIABLES IMPLICITEMENT TYPÉE - vous pouvez laisser le compilateur deviner le type d'une variable
-            var magic = "magic est de type string à la compilation, on a toujours un typage fort !";
-            // magic = 9; // ne fonctionnera pas car magic est désormais une string
+            var magic = "magic est de type string à la compilation. On a toujours un typage fort !";
+            // magic = 9; // ne fonctionnera pas car magic est désormais une chaîne de caractères
 
             // TYPES GÉNÉRIQUES
             var agenda = new Dictionary<string, string>() { 
@@ -445,6 +445,17 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             Func<int, int> square = (x) => x * x; // Le dernier élément est la valeur de retour
             Console.WriteLine(square(3)); // => 9
 
+            // GESTION AUTOMATIQUE DES RESSOURCES - vous permet de manipuler facilement des resources non-managées
+            // La plus part des objets qui accèdent à des ressources non-managées (handle de fichier, périphérique, etc.)
+            // implémentent l'interface IDisposable. L'instruction using prends soin
+            // de libérer ses objets IDisposable proprement à votre place.
+            using (StreamWriter writer = new StreamWriter("log.txt"))
+            {
+                writer.WriteLine("Rien à signaler");
+                // À la fin de cette portée, les ressources seront libérées.
+                // Même si une exception est levée.
+            } 
+
             // BIBLIOTHÈQUE DE TÂCHES PARALLÈLES (TPL)
             // http://msdn.microsoft.com/fr-fr/library/dd460717.aspx
             var websites = new string[] { 
@@ -459,7 +470,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
                 new ParallelOptions() {MaxDegreeOfParallelism = 3}, // maximum de 3 threads
                 website =>
             {
-                // Faire quelque chose de long sur le fichier
+                // Fait quelque chose de long
                 using (var r = WebRequest.Create(new Uri(website)).GetResponse())
                 {
                     responses[website] = r.ContentType;
@@ -474,13 +485,13 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             dynamic student = new ExpandoObject();
             student.FirstName = "Mon prénom"; // Pas besoin de définir l'objet
 
-            // Vous pouvez même ajouter des méthodes (dans ce cas: qui prend une string et retourne une string)
+            // Vous pouvez même ajouter des méthodes (dans cet exemple: la méthode prend une chaîne de caractères et retourne une chaîne de caractères)
             student.Introduce = new Func<string, string>(
                 (introduceTo) => string.Format("Hey {0}, c'est {1}", student.FirstName, introduceTo));
             Console.WriteLine(student.Introduce("Beth"));
 
             // IQUERYABLE<T> - quasiment toutes les collections implémentent cette interface
-            // ce qui permet d'utiliser des méthodes de style Filter / Map / Reduce 
+            // ce qui permet d'utiliser des méthodes de style 'Filter' / 'Map' / 'Reduce' 
             var bikes = new List<Bicycle>();
             bikes.Sort(); // Trie le tableau sur place
             bikes.Sort((b1, b2) => b1.Wheels.CompareTo(b2.Wheels)); // Trie en se basant sur la propriété Wheels
