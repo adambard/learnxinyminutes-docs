@@ -2,7 +2,7 @@
 language: Visual Basic
 contributors:
     - ["Brian Martin", "http://brianmartin.biz"]
-    translators:
+translators:
     - ["Abner Chou", "http://github.com/NoahDragon"]
 lang: zh-cn
 filename: learnvisualbasic.vb-cn
@@ -74,7 +74,7 @@ Module Module1
 
     ' 一、对应程序目录1，下同
 
-    ' 使用 private subs 来区分程序块. 
+    ' 使用 private subs 声明函数。 
     Private Sub HelloWorldOutput()
         ' 程序名
         Console.Title = "Hello World Ouput | Learn X in Y Minutes"
