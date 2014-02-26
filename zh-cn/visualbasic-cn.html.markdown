@@ -13,10 +13,10 @@ Module Module1
 
     Sub Main()
         ' 让我们先从简单的终端程序学起。
-        ' 单引号用来生成注释（注意是半角单引号，非全角单引好’）
+        ' 单引号用来生成注释（注意是半角单引号，非全角单引号’）
         ' 为了方便运行此示例代码，我写了个目录索引。
-        ' 可能你还不了解以下代码的意义，但随着教程的深入，你会
-        ' 渐渐理解其用法。
+        ' 可能你还不了解以下代码的意义，但随着教程的深入，
+        ' 你会渐渐理解其用法。
         Console.Title = ("Learn X in Y Minutes")
         Console.WriteLine("NAVIGATION") ' 显示目录
         Console.WriteLine("")
@@ -26,10 +26,10 @@ Module Module1
         Console.WriteLine("3. Calculating Whole Numbers") ' 求整数之和
         Console.WriteLine("4. Calculating Decimal Numbers") ' 求小数之和
         Console.WriteLine("5. Working Calculator") ' 计算器
-        Console.WriteLine("6. Using Do While Loops") ' 使用 do while 循环
-        Console.WriteLine("7. Using For While Loops") ' 使用 for while 循环
+        Console.WriteLine("6. Using Do While Loops") ' 使用 Do While 循环
+        Console.WriteLine("7. Using For While Loops") ' 使用 For While 循环
         Console.WriteLine("8. Conditional Statements") ' 条件语句
-        Console.WriteLine("9. Select A Drink") ' 买饮料
+        Console.WriteLine("9. Select A Drink") ' 选饮料
         Console.WriteLine("50. About") ' 关于
         Console.WriteLine("Please Choose A Number From The Above List")
         Dim selection As String = Console.ReadLine
@@ -61,7 +61,7 @@ Module Module1
             Case "9" ' If/Else 条件语句
                 Console.Clear()
                 IfElseStatement() ' 选饮料
-            Case "50" ' 关于
+            Case "50" ' 关于本程序和作者
                 Console.Clear()
                 Console.Title = ("Learn X in Y Minutes :: About")
                 MsgBox("This tutorial is by Brian Martin (@BrianMartinn")
@@ -81,7 +81,9 @@ Module Module1
         ' 使用 Console.Write("") 或者 Console.WriteLine("") 来输出文本到屏幕上
         ' 对应的 Console.Read() 或 Console.Readline() 用来读取键盘输入
         Console.WriteLine("Hello World")
-        Console.ReadLine()
+        Console.ReadLine() 
+        ' Console.WriteLine()后加Console.ReadLine()是为了防止屏幕输出信息一闪而过
+        ' 类似平时常见的“单击任意键继续”的意思。
     End Sub
 
     ' 二
@@ -93,11 +95,11 @@ Module Module1
 
         ' 此教程中，我们希望知道你的姓名，并让程序记录并输出。
         Dim username As String
-        ' 我们使用字符串类型（String）来记录文本信息。
+        ' 我们定义username使用字符串类型（String）来记录用户姓名。
         Console.WriteLine("Hello, What is your name? ") ' 询问用户输入姓名
-        username = Console.ReadLine() 'Stores the users name.
-        Console.WriteLine("Hello " + username) ' 输出将是 Hello '姓名'
-        Console.ReadLine() 'Outsputs the above.
+        username = Console.ReadLine() ' 存储用户名到变量 username
+        Console.WriteLine("Hello " + username) ' 输出将是 Hello + username
+        Console.ReadLine() ' 暂停屏幕并显示以上输出
         ' 以上程序将询问你的姓名，并和你打招呼。
         ' 其它变量如整型（Integer）我们用整型来处理整数。
     End Sub
@@ -166,7 +168,7 @@ Module Module1
         ' 这次我们将询问用户是否继续 （Yes or No?)
         ' 我们将使用Do While循环，因为我们不知到用户是否需要使用一次以上。
         Console.Title = "UsingDoWhileLoops | Learn X in Y Minutes"
-        Dim answer As String 'We use the variable "String" as the answer is text
+        Dim answer As String ' 我们使用字符串变量来存储answer（答案）
         Do ' 循环开始
             Console.Write("First number: ")
             Dim a As Double = Console.ReadLine
@@ -201,7 +203,7 @@ Module Module1
         ' 这个程序我们将实现从10倒数计数.
 
         Console.Title = "Using For Loops | Learn X in Y Minutes"
-        ' 声明变量和步长（即递减的速度，如-1，-2，-3等）。 
+        ' 声明变量和Step (步长,即递减的速度，如-1，-2，-3等）。 
         For i As Integer = 10 To 0 Step -1 
             Console.WriteLine(i.ToString) ' 将计数结果输出的屏幕
         Next i ' 计算新的i值
@@ -230,11 +232,11 @@ Module Module1
     Private Sub IfElseStatement()
     Console.Title = "If / Else Statement | Learn X in Y Minutes"
         ' 有时候我们需要考虑多于两种情况。
-        ' 这时我们就需要使用If条件语句。
+        ' 这时我们就需要使用If/ElesIf条件语句。
         ' If语句就好似个自动售货机，当用户输入A1，A2，A3，等去选择物品时，
         ' 所有的选择可以合并到一个If语句中
 
-        Dim selection As String = Console.ReadLine 'Value for selection
+        Dim selection As String = Console.ReadLine() ' 读入用户选择
             Console.WriteLine("A1. for 7Up") ' A1 七喜
             Console.WriteLine("A2. for Fanta") ' A2 芬达
             Console.WriteLine("A3. for Dr. Pepper") ' A3 胡椒医生
