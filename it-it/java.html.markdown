@@ -93,7 +93,7 @@ public class LearnJava {
         // final - Costanti, non possono essere riassegnate ad un altro oggetto
         final int HOURS_I_WORK_PER_WEEK = 9001;
 
-        // Stringhe [String]
+        // String - Stringhe, array di caratteri (char)
         String fooString = "Ecco una stringa!";
 
         // \n è un carattere speciale che permette di andare a capo.
@@ -300,15 +300,15 @@ public class LearnJava {
         // (Di seguito la definizione della classe Bicicletta)
 
         // Instanziare una nuova classe
-        Bicycle trek = new Bicycle();
+        Bicicletta perocorso = new Bicicletta();
 
         // Chiamare metodi
-        trek.speedUp(3); // Si usano sempre metodi set... get...
-        trek.setCadence(100);
+        perorso.velocità(3); // Si usano sempre metodi set... get...
+        percorso.setCadenza(100);
 
         // toString riporta la rappresenzazione dell'oggetto 
         // come se fosse una stringa
-        System.out.println("trek info: " + trek.toString());
+        System.out.println("percorso info: " + percorso.toString());
 
     } // Fine metodo main
 } // Fine classe LearnJava
@@ -326,136 +326,137 @@ public class LearnJava {
 class Bicicletta {
 
     // Variabili della bicicletta
-    public int cadence; 
+    public int cadenza; 
       // Public: Può essere richiamato da qualsiasi classe
-    private int speed; 
+    private int velocità; 
       // Private: è accessibile solo dalla classe dove è stato inizializzato
-    protected int gear; 
+    protected int ingranaggi; 
       // Protected: è visto sia dalla classe che dalle sottoclassi
-    String name; 
+    String nome; 
       // default: è accessibile sono all'interno dello stesso package
 
     // I costruttori vengono usati per creare variabili
     // Questo è un costruttore
     public Bicicletta() {
         ingranaggi = 1;
-        ritmo = 50;
+        cadenza = 50;
         velocità = 5;
         nome = "Bontrager";
     }
 
     // Questo è un costruttore che richiede parametri
-    public Bicycle(int startCadence, int startSpeed, int startGear, String name) {
-        this.gear = startGear;
-        this.cadence = startCadence;
-        this.speed = startSpeed;
-        this.name = name;
+    public Bicicletta(int cadenzaIniziale, int velocitàIniziale, int ingranaggiIniziali, String nome) {
+        this.ingranaggi = ingranaggiIniziali;
+        this.cadenza = CadenzaIniziale;
+        this.velocità = VelocitàIniziale;
+        this.nome = nome;
     }
 
     // Sintassi delle funzioni:
-    // <public/private/protected> <return type> <function name>(<args>)
+    // <public/private/protected> <tipo di ritorino> <nome della funzione>(<parametri>)
 
     // Le classi in java spesso implementano delle funzioni o metodo
     // 'get...' o 'set...' 
 
     // Dichiarazione di un metodo
-    // <scope> <return type> <method name>(<args>)
-    public int getCadence() {
-        return cadence;
+    // <scope> <tipo di ritorno> <nome del metodo>(<parametri>)
+    public int getCandenza() {
+        return cadenza;
     }
 
     // i medodi (void) non necessitano di riportare un valore
-    public void setCadence(int newValue) {
-        cadence = newValue;
+    public void setCadenza(int nuovoValore) {
+        cadenza = nuovoValore;
     }
 
-    public void setGear(int newValue) {
-        gear = newValue;
+    public void setIngranaggi(int nuovoValore) {
+        ingranaggi = nuovoValore;
     }
 
-    public void speedUp(int increment) {
-        speed += increment;
+    public void accellera(int incrementa) {
+        velocità += incrementa;
     }
 
-    public void slowDown(int decrement) {
-        speed -= decrement;
+    public void decellera(int decrementa) {
+        velocità -= decrementa;
     }
 
-    public void setName(String newName) {
-        name = newName;
+    public void setNome(String nuovoNome) {
+        nome = nuovoNome;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
     //Medoto per visualizzare gli attributi dell'oggetto
     @Override
     public String toString() {
-        return "gear: " + gear +
-                " cadence: " + cadence +
-                " speed: " + speed +
-                " name: " + name;
+        return "Ingranaggi: " + ingranaggi +
+                " Cadenza: " + cadenza +
+                " Velocità: " + velocità +
+                " Nome: " + nome;
     }
 } // Fine classe bicicletta
 
 // PennyFarthing è una sottoclasse della bicicletta
-class PennyFarthing extends Bicycle {
+class PennyFarthing extends Bicicletta {
     // (Sono quelle biciclette con un unica ruota enorme
     // Non hanno ingranaggi.)
 
-    public PennyFarthing(int startCadence, int startSpeed){
+    public PennyFarthing(int cadenzaIniziale, int velocitàIniziale){
         // Richiamo il costruttore del padre con super
-        super(startCadence, startSpeed, 0, "PennyFarthing");
+        super(cadenzaIniziale, velocitàIniziale, 0, "PennyFarthing");
     }
 
-    // You should mark a method you're overriding with an @annotation
     // Bisogna contrassegnre un medodo che si sta riscrivendo 
     // con una @annotazione
     // Per saperne di più sulle annotazioni
     // Vedi la guida: http://docs.oracle.com/javase/tutorial/java/annotations/
     @Override
-    public void setGear(int gear) {
-        gear = 0;
+    public void setIngranaggi(int ingranaggi) {
+        ingranaggi = 0;
     }
 
 }
 
-//Interfaccie
+//Interfacce
 //Sintassi per dichiarare una interfaccia
-//<access-level> interface <interface-name> extends <super-interfaces> {
-//		//Constants
-//		//Method declarations
+//<livello di accesso> interface <nome dell'interfaccia> extends <super-interfaccia> {
+//		//Costanti
+//		//Dichiarazioni dei metodi
 //}
 
-//Example - Food:
-public interface Edible {
-	public void eat(); //Any class that implements this interface, must implement this method
-}
+//Esempi- Cibo:
+public interface Commestribile {
+	public void mangia(); 
+        //Ogni classe che implementa questa interfaccia
+        //deve implementare questo metodo.
+        }
 
-public interface Digestible {
-	public void digest();
+public interface Digestibile {
+	public void digerisci();
 }
 
 //Possiamo quindi creare una classe che implementa entrambe le interfaccie
-public class Fruit implements Edible, Digestible {
-	public void eat() {
+public class Frutta implements Edible, Digestible {
+	public void mangia() {
 		//...
 	}
 
-	public void digest() {
+	public void digerisci() {
 		//... 
 	}
 }
 
 //In Java si può estendere solo una classe, ma si possono implementare 
 //più interfaccie, per esempio:
-public class ExampleClass extends ExampleClassParent implements InterfaceOne, InterfaceTwo {
-	public void InterfaceOneMethod() {
+public class ClasseEsempio extends AltraClasse implements PrimaInterfaccia, SecondaInterfaccia {
+	public void MetodoPrimaInterfaccia() {
 
 	}
 
-	public void InterfaceTwoMethod() {
+	public void MetodoSecondaInterfaccia() {
 
 	}
 }
