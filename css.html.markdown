@@ -2,6 +2,7 @@
 language: css
 contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
+    - ["Marco Scannadinari", "https://github.com/marcoms"]
 filename: learncss.css
 ---
 
@@ -129,11 +130,11 @@ selector {
     width: 5in; /* in inches */
     
     /* Colors */
-    background-color: #F6E  /* in short hex */
-    background-color: #F262E2 /* in long hex format */
-    background-color: tomato /* can be a named color */
-    background-color: rgb(255, 255, 255) /* in rgb */
-    background-color: rgb(10%, 20%, 50%) /* in rgb percent */
+    background-color: #F6E;  /* in short hex */
+    background-color: #F262E2; /* in long hex format */
+    background-color: tomato; /* can be a named color */
+    background-color: rgb(255, 255, 255); /* in rgb */
+    background-color: rgb(10%, 20%, 50%); /* in rgb percent */
     background-color: rgba(255, 0, 0, 0.3); /* in semi-transparent rgb */
     
     /* Images */
