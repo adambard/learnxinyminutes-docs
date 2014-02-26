@@ -10,6 +10,7 @@ translators:
 lang: it-it
 
 ---
+
 Java è un linguaggio di programmazione orientato ad oggetti,
 concorrente, basato su classi e adatto a svariati scopi. 
 [Per saperne di più](http://docs.oracle.com/javase/tutorial/java/index.html)
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 // Per importare tutte le classi contenute nel package java.security
 import java.security.*;
 
-// Ogni filce .java contiene una classe pubblica, con lo stesso nome del file
+// Ogni file .java contiene una classe pubblica, con lo stesso nome del file
 public class LearnJava {
 
     // Un programma deve avere un metodo main come punto di partenza
@@ -38,59 +39,62 @@ public class LearnJava {
         // Per stampare a schermo si usa System.out.println
         System.out.println("Hello World!");
         System.out.println(
-            "Integer: " + 10 +
-            " Double: " + 3.14 +
-            " Boolean: " + true);
+            "Intero [integer]: " + 10 +
+            " Reale [double]: " + 3.14 +
+            " Booleano [boolean]: " + true);
 
         // Se non si vuole andare a capo, si può usare System.out.print
-        System.out.print("Hello ");
-        System.out.print("World");
+        System.out.print("Ciao ");
+        System.out.print("Mondo");
 
 
         ///////////////////////////////////////
         // Tipi e Variabili
         ///////////////////////////////////////
         // Si dichiara una variabile usando <tipo> <nome>
-        // Byte - 8-bit signed two's complement integer
+        // Byte - variabile intera da 8 bit con segno
         // (-128 <= byte <= 127)
         byte fooByte = 100;
 
-        // Short - 16-bit signed two's complement integer
+        // Short - variabile intera da 18 bit con segno
         // (-32,768 <= short <= 32,767)
         short fooShort = 10000;
 
-        // Integer - 32-bit signed two's complement integer
+        // Integer - variabile intera da 32 bit con segno
         // (-2,147,483,648 <= int <= 2,147,483,647)
         int fooInt = 1;
 
-        // Long - 64-bit signed two's complement integer
+        // Long - variabile da 64 bit intera con segno
         // (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
         long fooLong = 100000L;
-        // L is used to denote that this variable value is of type Long;
-        // anything without is treated as integer by default.
+        // L viene usato per specificare che il valore dalla variabile
+        // è di tipo "Long", qualsiasi variabile che non viene contrassegnata
+        // è trattata di base come un intero.
 
         // Nota: Java non dispone di variabili senza segno
 
-        // Float - Single-precision 32-bit IEEE 754 Floating Point
+        // Float - variabile più precisa, con virgola [numeri reali]
+        // di grandezza 32 bit
         float fooFloat = 234.5f;
-        // f is used to denote that this variable value is of type float;
-        // otherwise it is treated as double.
+        // f è usato per specificare che la variabile è di tipo "float"
+        // altrimenti da default viene trattata come "dobule"
 
-        // Double - Double-precision 64-bit IEEE 754 Floating Point
+        // Double - ancora più precisione la si può ottenere con una variabile
+        // Double, con granzezza di 64 bit.
         double fooDouble = 123.4;
 
-        // Boolean - true & false
+        // Boolean - vero & falso
         boolean fooBoolean = true;
         boolean barBoolean = false;
 
-        // Char - A single 16-bit Unicode character
+        // Char - un singolo carattere con grandezza 16 bit
         char fooChar = 'A';
 
         // final - Costanti, non possono essere riassegnate ad un altro oggetto
         final int HOURS_I_WORK_PER_WEEK = 9001;
 
-        // Stringhe
-        String fooString = "My String Is Here!";
+        // Stringhe [String]
+        String fooString = "Ecco una stringa!";
 
         // \n è un carattere speciale che permette di andare a capo.
         String barString = "Printing on a new line?\nNo Problem!";
@@ -100,7 +104,7 @@ public class LearnJava {
         System.out.println(barString);
         System.out.println(bazString);
 
-        // Vettori
+        // Vettori [array]
         //La lunghezza del vettore deve essere decisa quando viene istanziato
         //Si può dichiarare come segue:
         //<tipodato> [] <nomevariabile> = new <tipodato>[<grandezza vettore>];
@@ -111,22 +115,21 @@ public class LearnJava {
 
         // Un altro modo per dichiarare & inizializzare un vettore
         int [] y = {9000, 1000, 1337};
-        String names [] = {"Bob", "John", "Fred", "Juan Pedro"};
+        String nomi [] = {"Andrea", "Bob", "Pippo", "Susan"};
         boolean bools[] = new boolean[] {true, false, false};
 
         // Accesso diretto ad un elemento
         System.out.println("intArray @ 0: " + intArray[0]);
 
-        // I vettori vengono indicizzati a parire dallo 0, ma sono mutabili
+        // I vettori vengono indicizzati a parire dallo 0
+        // Ma questo indice può essere cambiato.
         intArray[1] = 1;
         System.out.println("intArray @ 1: " + intArray[1]); // => 1
 
-        // Altro da aggiungere:
-        // Liste di array - come i vettori ma vi sono più funzioni 
-        // e la grandezza può variare in corso di esecuzione
-        // Liste concatenate
-        // Maps
-        // HashMaps
+        // Altro da vedere:
+        // Liste di array - come i vettori ma più funzionali
+        // e la loro grandezza può variare in corso di esecuzione
+        // Liste concatenate di memoria
 
         ///////////////////////////////////////
         // Operatori
@@ -153,22 +156,22 @@ public class LearnJava {
         System.out.println("2 <= 2? " + (2 <= 2)); // => vero
         System.out.println("2 >= 2? " + (2 >= 2)); // => vero
 
-        // Bitwise operators! 
-        // Operatori binari
+        // Operatori binari orientati ai bit
+        // effettuano le operazioni logiche confrontando, i bit degli operandi:
         /*
-        ~       Unary bitwise complement
-        <<      Signed left shift
-        >>      Signed right shift
-        >>>     Unsigned right shift
+        ~       complemento 
+        <<      shift sinistro con segno
+        >>      shift destro con segno
+        >>>     shift destro senza segno
         &       AND Binario Bitwise AND
         ^       OR Esclusivo
         |       OR Incusivo
         */
 
-        // Incrementare
+        // Incrementare e Decrementare
         int i = 0;
         System.out.println("\n->Incrementare/Decrementare");
-        // Gli operatori ++ e -- incrementano e decrementano ripettivamente di 1.
+        // Gli operatori ++ e -- incrementano e decrementano rispettivamente di 1.
         // Se posizionati prima della variabile, incrementano, quindi riportano.
         // Se si trovano dopo la variabile, riporano, e quindi incrementano. 
         System.out.println(i++); //i = 1, Stampa 0 (post-incremento)
@@ -308,7 +311,7 @@ public class LearnJava {
         System.out.println("trek info: " + trek.toString());
 
     } // Fine metodo main
-} // Fine classe ImparareJavas
+} // Fine classe LearnJava
 
 
 // Si possono inculdere altre anche delle classi non pubbliche (private)
@@ -463,7 +466,8 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne, In
 
 I link di seguito sono solo per capire l'argomento, cerca pure su Google degli esempi specifici
 
-**Guida ufficiale di Oracle**:
+
+**Guida ufficiale di Oracle [solo in inglese]**:
 
 * [Java Tutorial Trail from Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
 
@@ -482,19 +486,20 @@ I link di seguito sono solo per capire l'argomento, cerca pure su Google degli e
 
 * [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
 
-**Tutorial Online**
+
+**Tutorial Online [in inglese]**
 
 * [Learneroo.com - Learn Java](http://www.learneroo.com)
 
 * [Codingbat.com](http://codingbat.com/java)
 
 
-**Libri**:
+**Libri [in italiano] **:
 
-* [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
+* [Java la guida completa](http://www.amazon.it/Java-guida-completa-Herbert-Schildt/dp/8838667667/ref=sr_1_1?ie=UTF8&qid=1393422296&sr=8-1&keywords=java)
 
-* [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
+* [Thinking in java](http://www.amazon.it/Thinking-Java-1-Bruce-Eckel/dp/8871923030/ref=sr_1_8?ie=UTF8&qid=1393422296&sr=8-8&keywords=java)
 
-* [Java The Complete Reference](http://www.amazon.com/gp/product/0071606300)
+* [Manuale di Java 7](http://www.amazon.com/gp/product/0071606300)
 
 
