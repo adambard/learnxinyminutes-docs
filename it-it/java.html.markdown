@@ -15,13 +15,13 @@ Java è un linguaggio di programmazione orientato ad oggetti,
 concorrente, basato su classi e adatto a svariati scopi. 
 [Per saperne di più](http://docs.oracle.com/javase/tutorial/java/index.html)
 
-```java
+```Java
 // I commenti su singola linea incominciano con //
 /*
-I commenti su più linee invece sono così
+I commenti su piu' linee invece sono cosi'
 */
 /**
-I commenti per la documentazione JavaDoc si fanno così.
+I commenti per la documentazione JavaDoc si fanno cosi'.
 Vengono usati per descrivere una classe o alcuni suoi attributi.
 */
 
@@ -34,6 +34,8 @@ import java.security.*;
 public class LearnJava {
 
     // Un programma deve avere un metodo main come punto di partenza
+    // Ma si possono creare anche file senza main, che però per essere usati
+    // devono essere richiamati da altri file.
     public static void main (String[] args) {
 
         // Per stampare a schermo si usa System.out.println
@@ -43,9 +45,9 @@ public class LearnJava {
             " Reale [double]: " + 3.14 +
             " Booleano [boolean]: " + true);
 
-        // Se non si vuole andare a capo, si può usare System.out.print
+        // Se non si vuole andare a capo, si puo' usare System.out.print
         System.out.print("Ciao ");
-        System.out.print("Mondo");
+        System.out.print("Mondo ");
 
 
         ///////////////////////////////////////
@@ -68,18 +70,18 @@ public class LearnJava {
         // (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
         long fooLong = 100000L;
         // L viene usato per specificare che il valore dalla variabile
-        // è di tipo "Long", qualsiasi variabile che non viene contrassegnata
-        // è trattata di base come un intero.
+        // e' di tipo "Long", qualsiasi variabile che non viene contrassegnata
+        // e' trattata di base come un intero.
 
         // Nota: Java non dispone di variabili senza segno
 
-        // Float - variabile più precisa, con virgola [numeri reali]
+        // Float - variabile piu' precisa, con virgola [numeri reali]
         // di grandezza 32 bit
         float fooFloat = 234.5f;
-        // f è usato per specificare che la variabile è di tipo "float"
-        // altrimenti da default viene trattata come "dobule"
+        // f e' usato per specificare che la variabile e'' di tipo "float"
+        // altrimenti di default viene trattata come un "dobule"
 
-        // Double - ancora più precisione la si può ottenere con una variabile
+        // Double - ancora piu' precisione la si puo' ottenere con una variabile
         // Double, con granzezza di 64 bit.
         double fooDouble = 123.4;
 
@@ -93,12 +95,12 @@ public class LearnJava {
         // final - Costanti, non possono essere riassegnate ad un altro oggetto
         final int HOURS_I_WORK_PER_WEEK = 9001;
 
-        // String - Stringhe, array di caratteri (char)
+        // String - Stringhe, array di caratteri
         String fooString = "Ecco una stringa!";
 
-        // \n è un carattere speciale che permette di andare a capo.
+        // \n e' un carattere speciale che permette di andare a capo.
         String barString = "Printing on a new line?\nNo Problem!";
-        // \t è un carattere speciale che permette di aggiungere un 'Tab'
+        // \t e' un carattere speciale che permette di aggiungere un 'Tab'
         String bazString = "Do you want to add a tab?\tNo Problem!";
         System.out.println(fooString);
         System.out.println(barString);
@@ -106,7 +108,7 @@ public class LearnJava {
 
         // Vettori [array]
         //La lunghezza del vettore deve essere decisa quando viene istanziato
-        //Si può dichiarare come segue:
+        //Si puo' dichiarare come segue:
         //<tipodato> [] <nomevariabile> = new <tipodato>[<grandezza vettore>];
         //<tipodato> <nomevariabile>[] = new <tipodato>[<grandezza vettore>];
         int [] intArray = new int[10];
@@ -117,18 +119,17 @@ public class LearnJava {
         int [] y = {9000, 1000, 1337};
         String nomi [] = {"Andrea", "Bob", "Pippo", "Susan"};
         boolean bools[] = new boolean[] {true, false, false};
-
-        // Accesso diretto ad un elemento
+	
+	// I vettori vengono indicizzati a parire dallo 0
         System.out.println("intArray @ 0: " + intArray[0]);
 
-        // I vettori vengono indicizzati a parire dallo 0
-        // Ma questo indice può essere cambiato.
+        // e' possibile un accesso diretto ad un elemento
         intArray[1] = 1;
         System.out.println("intArray @ 1: " + intArray[1]); // => 1
 
         // Altro da vedere:
-        // Liste di array - come i vettori ma più funzionali
-        // e la loro grandezza può variare in corso di esecuzione
+        // Liste di array - come i vettori ma piu' funzionali
+        // e la loro grandezza puo' variare in corso di esecuzione
         // Liste concatenate di memoria
 
         ///////////////////////////////////////
@@ -138,7 +139,7 @@ public class LearnJava {
 
         int i1 = 1, i2 = 2; // Dichiarazone multipla in contemporanea
 
-        // L'aritmetica è lineare.
+        // L'aritmetica e' lineare.
         System.out.println("1+2 = " + (i1 + i2)); // => 3
         System.out.println("2-1 = " + (i2 - i1)); // => 1
         System.out.println("2*1 = " + (i2 * i1)); // => 2
@@ -184,7 +185,7 @@ public class LearnJava {
         ///////////////////////////////////////
         System.out.println("\n->Strutture di controllo");
 
-        // La dichiarazione dell'If è C-like.
+        // La dichiarazione dell'If e'' C-like.
         int j = 10;
         if (j == 10){
             System.out.println("Io vengo stampato");
@@ -239,7 +240,7 @@ public class LearnJava {
 
         // Struttura Switch Case
         // La struttura switch lavora con byte, short, char e int.
-        // Se funziona con i char funzionerà ovviamente anche con le stringhe.
+        // Se funziona con i char funzionera ovviamente anche con le stringhe.
         int mese = 3;
         String stringaMese;
         switch (mese){
@@ -247,7 +248,7 @@ public class LearnJava {
                     stringaMese = "Genneio";
                     break;
             case 2:
-                    strigaMese = "Febbraio";
+                    stringaMese = "Febbraio";
                     break;
             case 3:
                     stringaMese = "Marzo";
@@ -256,16 +257,17 @@ public class LearnJava {
                     stringaMese = "Altri mesi";
                     break;
         }
-        System.out.println("Risultato del costrutto switch:: " + stringaMese);
+        System.out.println("Risultato del costrutto switch: " + stringaMese);
 
         // Condizioni brevi
-        // Si può usare l'operatore '?' per un rapido assegnamento
+        // Si puo' usare l'operatore '?' per un rapido assegnamento
         // o per operazioni logiche.
         // Si legge: 
-        // Se (condizione) è vera, usa <primo valore>, altrimenti usa <secondo valore>
+        // Se (condizione) e' vera, usa <primo valore>, altrimenti usa <secondo valore>
         int foo = 5;
         String bar = (foo < 10) ? "A" : "B";
-        System.out.println(bar); // Stampa A, perchè la condizione è vera.
+        System.out.println("Se la condizione e' vera stampa A: "+bar); 
+        // Stampa A, perche' la condizione e' vera.
 
 
         /////////////////////////////////////////
@@ -300,10 +302,10 @@ public class LearnJava {
         // (Di seguito la definizione della classe Bicicletta)
 
         // Instanziare una nuova classe
-        Bicicletta perocorso = new Bicicletta();
+        Bicicletta percorso = new Bicicletta();
 
         // Chiamare metodi
-        perorso.velocità(3); // Si usano sempre metodi set... get...
+        percorso.accellera(3); // Si usano sempre metodi set... get...
         percorso.setCadenza(100);
 
         // toString riporta la rappresenzazione dell'oggetto 
@@ -327,28 +329,28 @@ class Bicicletta {
 
     // Variabili della bicicletta
     public int cadenza; 
-      // Public: Può essere richiamato da qualsiasi classe
-    private int velocità; 
-      // Private: è accessibile solo dalla classe dove è stato inizializzato
+      // Public: Puo' essere richiamato da qualsiasi classe
+    private int velocita; 
+      // Private: e'' accessibile solo dalla classe dove e'' stato inizializzato
     protected int ingranaggi; 
-      // Protected: è visto sia dalla classe che dalle sottoclassi
+      // Protected: e'' visto sia dalla classe che dalle sottoclassi
     String nome; 
-      // default: è accessibile sono all'interno dello stesso package
+      // default: e'' accessibile sono all'interno dello stesso package
 
     // I costruttori vengono usati per creare variabili
-    // Questo è un costruttore
+    // Questo e'' un costruttore
     public Bicicletta() {
         ingranaggi = 1;
         cadenza = 50;
-        velocità = 5;
+        velocita = 5;
         nome = "Bontrager";
     }
 
-    // Questo è un costruttore che richiede parametri
-    public Bicicletta(int cadenzaIniziale, int velocitàIniziale, int ingranaggiIniziali, String nome) {
-        this.ingranaggi = ingranaggiIniziali;
-        this.cadenza = CadenzaIniziale;
-        this.velocità = VelocitàIniziale;
+    // Questo e'' un costruttore che richiede parametri
+    public Bicicletta(int cadenza, int velocita, int ingranaggi, String nome) {
+        this.ingranaggi = ingranaggi;
+        this.cadenza = cadenza;
+        this.velocita = velocita;
         this.nome = nome;
     }
 
@@ -374,11 +376,11 @@ class Bicicletta {
     }
 
     public void accellera(int incrementa) {
-        velocità += incrementa;
+        velocita += incrementa;
     }
 
     public void decellera(int decrementa) {
-        velocità -= decrementa;
+        velocita -= decrementa;
     }
 
     public void setNome(String nuovoNome) {
@@ -394,24 +396,24 @@ class Bicicletta {
     public String toString() {
         return "Ingranaggi: " + ingranaggi +
                 " Cadenza: " + cadenza +
-                " Velocità: " + velocità +
+                " Velocita: " + velocita +
                 " Nome: " + nome;
     }
 } // Fine classe bicicletta
 
-// PennyFarthing è una sottoclasse della bicicletta
+// PennyFarthing e'' una sottoclasse della bicicletta
 class PennyFarthing extends Bicicletta {
     // (Sono quelle biciclette con un unica ruota enorme
     // Non hanno ingranaggi.)
 
-    public PennyFarthing(int cadenzaIniziale, int velocitàIniziale){
+    public PennyFarthing(int cadenzaIniziale, int velocitaIniziale){
         // Richiamo il costruttore del padre con super
-        super(cadenzaIniziale, velocitàIniziale, 0, "PennyFarthing");
+        super(cadenzaIniziale, velocitaIniziale, 0, "PennyFarthing");
     }
 
     // Bisogna contrassegnre un medodo che si sta riscrivendo 
     // con una @annotazione
-    // Per saperne di più sulle annotazioni
+    // Per saperne di piu' sulle annotazioni
     // Vedi la guida: http://docs.oracle.com/javase/tutorial/java/annotations/
     @Override
     public void setIngranaggi(int ingranaggi) {
@@ -419,27 +421,26 @@ class PennyFarthing extends Bicicletta {
     }
 
 }
-
+/*
 //Interfacce
 //Sintassi per dichiarare una interfaccia
 //<livello di accesso> interface <nome dell'interfaccia> extends <super-interfaccia> {
-//		//Costanti
+//    	//Costanti
 //		//Dichiarazioni dei metodi
 //}
 
 //Esempi- Cibo:
-public interface Commestribile {
+interface Commestibile {
 	public void mangia(); 
         //Ogni classe che implementa questa interfaccia
         //deve implementare questo metodo.
         }
-
-public interface Digestibile {
+interface Digeribile {
 	public void digerisci();
 }
 
 //Possiamo quindi creare una classe che implementa entrambe le interfaccie
-public class Frutta implements Edible, Digestible {
+class Frutta implements Commestibile, Digestibile {
 	public void mangia() {
 		//...
 	}
@@ -449,9 +450,9 @@ public class Frutta implements Edible, Digestible {
 	}
 }
 
-//In Java si può estendere solo una classe, ma si possono implementare 
-//più interfaccie, per esempio:
-public class ClasseEsempio extends AltraClasse implements PrimaInterfaccia, SecondaInterfaccia {
+//In Java si puo' estendere solo una classe, ma si possono implementare 
+//piu' interfaccie, per esempio:
+class ClasseEsempio extends AltraClasse implements PrimaInterfaccia, SecondaInterfaccia {
 	public void MetodoPrimaInterfaccia() {
 
 	}
@@ -460,9 +461,8 @@ public class ClasseEsempio extends AltraClasse implements PrimaInterfaccia, Seco
 
 	}
 }
-
+*/
 ```
-
 ## Letture future
 
 I link di seguito sono solo per capire l'argomento, cerca pure su Google degli esempi specifici
@@ -502,5 +502,3 @@ I link di seguito sono solo per capire l'argomento, cerca pure su Google degli e
 * [Thinking in java](http://www.amazon.it/Thinking-Java-1-Bruce-Eckel/dp/8871923030/ref=sr_1_8?ie=UTF8&qid=1393422296&sr=8-8&keywords=java)
 
 * [Manuale di Java 7](http://www.amazon.com/gp/product/0071606300)
-
-
