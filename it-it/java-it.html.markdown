@@ -13,7 +13,7 @@ Java è un linguaggio di programmazione orientato ad oggetti,
 concorrente, basato su classi e adatto a svariati scopi. 
 [Per saperne di più](http://docs.oracle.com/javase/tutorial/java/index.html)
 
-```Java
+```java
 // I commenti su singola linea incominciano con //
 /*
 I commenti su piu' linee invece sono cosi'
