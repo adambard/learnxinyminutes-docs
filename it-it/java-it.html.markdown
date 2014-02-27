@@ -1,5 +1,4 @@
 ---
-
 language: java
 filename: LearnJava-it.java
 contributors:
@@ -8,7 +7,6 @@ contributors:
 translators:
     - ["Ivan Sala","http://github.com/dev-sala"]
 lang: it-it
-
 ---
 
 Java è un linguaggio di programmazione orientato ad oggetti,
