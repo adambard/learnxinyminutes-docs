@@ -39,7 +39,7 @@ public class LearnJava {
     public static void main (String[] args) {
 
         // Per stampare a schermo si usa System.out.println
-        System.out.println("Hello World!");
+        System.out.println("Ciao Mondo!");
         System.out.println(
             "Intero [integer]: " + 10 +
             " Reale [double]: " + 3.14 +
@@ -93,15 +93,15 @@ public class LearnJava {
         char fooChar = 'A';
 
         // final - Costanti, non possono essere riassegnate ad un altro oggetto
-        final int HOURS_I_WORK_PER_WEEK = 9001;
+        final int ORE_LAVORATIVE_DI_UNA_SETTIMANA = 9001;
 
         // String - Stringhe, array di caratteri
         String fooString = "Ecco una stringa!";
 
         // \n e' un carattere speciale che permette di andare a capo.
-        String barString = "Printing on a new line?\nNo Problem!";
+        String barString = "Andare a capo?\nNessun problema!";
         // \t e' un carattere speciale che permette di aggiungere un 'Tab'
-        String bazString = "Do you want to add a tab?\tNo Problem!";
+        String bazString = "Vuoi inserire tab?\tNessun problema";
         System.out.println(fooString);
         System.out.println(barString);
         System.out.println(bazString);
@@ -495,7 +495,7 @@ I link di seguito sono solo per capire l'argomento, cerca pure su Google degli e
 * [Codingbat.com](http://codingbat.com/java)
 
 
-**Libri [in italiano] **:
+**Libri [in italiano]** :
 
 * [Java la guida completa](http://www.amazon.it/Java-guida-completa-Herbert-Schildt/dp/8838667667/ref=sr_1_1?ie=UTF8&qid=1393422296&sr=8-1&keywords=java)
 
