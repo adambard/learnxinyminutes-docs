@@ -1,7 +1,7 @@
 ---
 
 language: java
-filename: LearnJava.java
+filename: LearnJava-it.java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Madison Dickson", "http://github.com/mix3d"]
