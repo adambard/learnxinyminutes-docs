@@ -5,18 +5,17 @@ contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
 ---
 
-                                                                                0
 As JSON is an extremely simple data-interchange format, this is most likely going
 to be the simplest Learn X in Y Minutes ever.
 
 JSON in its purest form has no actual comments, but most parsers will accept
-C-style (//, /\* \*/) comments. For the purposes of this, everything is going to
-be 100% valid JSON. Luckily, it kind of speaks for itself.
+C-style (//, /\* \*/) comments. For the purposes of this, however,  everything is
+going to be 100% valid JSON. Luckily, it kind of speaks for itself.
 
 ```json
 {
   "numbers": 0,
-  "strings": "Hellø, wørld. All unicode is allowed.",
+  "strings": "Hellø, wørld. All unicode is allowed, along with \"escaping\".",
   "has bools?": true,
   "nothingness": null,
 
@@ -25,7 +24,7 @@ be 100% valid JSON. Luckily, it kind of speaks for itself.
   "objects": {
     "comment": "Most of your structure will come from objects.",
 
-    "array": [0, 1, 2, 3, "banana", 5],
+    "array": [0, 1, 2, 3, "Arrays can have anything in them.", 5],
 
     "another object": {
       "comment": "These things can be nested, very useful."
