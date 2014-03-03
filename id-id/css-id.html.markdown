@@ -7,182 +7,191 @@ lang: id-id
 filename: learncss-id.css
 ---
 
-Pada mulanya, web tidak memiliki elemen visual, murni teks saja. Tapi seiring   
-perkembangan peramban, laman web dengan elemen visual menjadi umum.   
-CSS adalah bahasa standar yang ada untuk menjaga keterpisahan antara   
+Pada mulanya, web tidak memiliki elemen visual, murni teks saja.
+Tapi seiring perkembangan peramban, laman web dengan elemen visual menjadi umum.
+CSS adalah bahasa standar yang ada untuk menjaga keterpisahan antara
 konten (HTML) serta tampilan-dan-kesan laman web.
 
-Singkatnya, fungsi CSS ialah menyajikan sintaks yang memampukan kita untuk   
-menyasar elemen tertentu dalam sebuah laman HTML dan menerapkan   
-berbagai properti visual bagi elemen tersebut.
+Singkatnya, fungsi CSS ialah menyajikan sintaks yang memampukan kita
+untuk memilih elemen tertentu dalam sebuah laman HTML
+dan menerapkan berbagai properti visual bagi elemen tersebut.
 
-Seperti bahasa lainnya, CSS memiliki banyak versi. Di artikel ini, kita fokus   
-pada CSS2.0 yang meskipun bukan versi termutakhir namun paling kompatibel   
-dan didukung secara luas.
+Seperti bahasa lainnya, CSS memiliki banyak versi.
+Di artikel ini, kita fokus pada CSS2.0 - yang meskipun bukan versi termutakhir
+namun paling kompatibel dan didukung secara luas.
 
-**CATATAN:** Lantaran keluaran dari CSS berwujud efek-efek visual, maka untuk   
-mempelajarinya, kita perlu mencoba berbagai hal dalam dunia olah CSS semisal   
-[dabblet](http://dabblet.com/). Fokus utama artikel ini ialah pada sintaks dan sejumlah tips umum.
+**CATATAN:** Lantaran keluaran dari CSS berwujud efek-efek visual,
+maka untuk mempelajarinya, kita perlu mencoba berbagai hal dalam dunia olah CSS
+semisal [dabblet](http://dabblet.com/).
+Fokus utama artikel ini ialah pada sintaks dan sejumlah tips umum.
 
 
 ```css
-/* comments appear inside slash-asterisk, just like this line! */
+/* komentar terletak diantara sepasang tanda garis miring dan bintang,
+persis seperti larik ini! */
 
 /* ####################
-   ## SELECTORS
+   ## SELEKTOR
    ####################*/
 
-/* Generally, the primary statement in CSS is very simple */
-selector { property: value; /* more properties...*/ }
+/* Secara garis besar, statemen utama dalam CSS sangat sederhana */
+selektor { properti: nilai; /* properti lainnya */ }
 
-/* the selector is used to target an element on page.
+/* selektor berfungsi untuk memilih suatu elemen dalam sebuah laman.
 
-You can target all elments on the page! */
+Kita juga bisa memilih semua elemen di sebuah halaman! */
 * { color:red; }
 
 /*
-Given an element like this on the page:
+Dengan menentukan sebuah elemen seperti ini pada sebuah laman:
 
-<div class='some-class class2' id='someId' attr='value' />
+<div class='suatu-class class2' id='suatuId' attr='nilai' />
 */
 
-/* you can target it by it's class name */
-.some-class { }
+/* kita bisa memilih elemen berdasarkan nama class-nya */
+.suatu-class { }
 
-/*or by both classes! */
-.some-class.class2 { }
+/*atau dengan dua class sekaligus! */
+.suatu-class.class2 { }
 
-/* or by it's tag name */
+/* atau dengan nama tag-nya */
 div { }
 
-/* or it's id */
-#someId { }
+/* atau id-nya */
+#suatuId { }
 
-/* or by the fact that it has an attribute! */
+/* atau - jika ada - dengan attribute-nya! */
 [attr] { font-size:smaller; }
 
-/* or that the attribute has a specific value */
-[attr='value'] { font-size:smaller; }
+/* atau jika attribute tersebut memiliki nilai spesifik */
+[attr='nilai'] { font-size:smaller; }
 
-/* start with a value*/
-[attr^='val'] { font-size:smaller; }
+/* dibuka dengan sebuah nilai*/
+[attr^='nil'] { font-size:smaller; }
 
-/* or ends with */
-[attr$='ue'] { font-size:smaller; }
+/* atau ditutup dengan nilai */
+[attr$='ai'] { font-size:smaller; }
 
-/* or even contains a value */
-[attr~='lu'] { font-size:smaller; }
+/* atau bahkan disisipi nilai */
+[attr~='la'] { font-size:smaller; }
 
 
-/* and more importantly you can combine these together -- there shouldn't be  
-any spaaace between different parts because that makes it to have another  
-meaning.*/
-div.some-class[attr$='ue'] { }
+/* dan yang lebih penting lagi, kita bisa mengombinasikannya sekaligus
+dengan syarat tidak ada spasi diantara selektor-selektor. sebab adanya spasi
+akan membuat selektor itu memiliki makna yang berbeda.*/
+div.suatu-class[attr$='ai'] { }
 
-/* you can also select an element based on how it's parent is.*/
+/* kita juga bisa memilih sebuah elemen berdasarkan posisi elemen induknya.*/
 
-/*an element which is direct child of an element (selected the same way) */
-div.some-parent > .class-name {}
+/*sebuah elemen yang merupakan anak langsung dari elemen induk (diseleksi dng
+cara yang sama) */
+div.suatu-induk > .-suatu-class {}
 
-/* or any of it's parents in the tree */
-/* the following basically means any element that has class "class-name"  
-and is child of a div with class name "some-parent" IN ANY DEPTH */
-div.some-parent .class-name {}
+/* atau salah satu induk elemennya dalam hirarki elemen */
+/* berikut ini dimaksudkan pada elemen manapun dengan class "class-entah" dan
+merupakan anak elemen dari suatu div dengan class "induk-entah" PADA LEVEL
+HIRARKI MANAPUN */
+div.suatu-induk .suatu-class {}
 
-/* warning: the same selector wihout spaaace has another meaning.  
-can you say what? */
-div.some-parent.class-name {}
+/* peringatan: selektor yang sama jika tanpa ada spasi akan bermakna lain.
+misalnya? */
+div.suatu-induk.suatu-class {}
 
-/* you also might choose to select an element based on it's direct  
-previous sibling */
-.i-am-before + .this-element { }
+/* kita juga bisa memilih sebuah elemen berdasarkan saudara elemen yang muncul
+tepat sebelumnya */
+.aku-muncul-tepat-sebelum + .elemen-ini { }
 
-/*or any sibling before this */
-.i-am-any-before ~ .this-element {}
+/*atau saudara elemen manapun yang pernah muncul selang beberapa elemen
+sebelumnya */
+.aku-pernah-muncul-sebelum ~ .elemen-ini {}
 
-/* There are some pseudo classes that allows you to select an element  
-based on it's page behaviour (rather than page structure) */
+/* Ada beberapa pseudo-class yang memampukan kita memilih suatu elemen
+berdasarkan perilaku lamannya (bukan struktur lamannya) */
 
-/* for example for when an element is hovered */
+/* semisal ketika sebuah elemen ditimpa hover (pointer mouse) */
 :hover {}
 
-/* or a visited link*/
+/* atau link yang sudah pernah diklik*/
 :visited {}
 
-/* or not visited link*/
+/* atau link yang belum pernah diklik*/
 :link {}
 
-/* or an input element which is focused */
+/* atau elemen input yang menjadi fokus */
 :focus {}
 
 
 /* ####################
-   ## PROPERTIES
+   ## PROPERTI
    ####################*/
 
-selector {
+selektor {
     
-    /* Units */
-    width: 50%; /* in percent */
-    font-size: 2em; /* times current font-size */
-    width: 200px; /* in pixels */
-    font-size: 20pt; /* in points */
-    width: 5cm; /* in centimeters */
-    width: 50mm; /* in millimeters */
-    width: 5in; /* in inches */
+    /* Unit */
+    width: 50%; /* dalam persen */
+    font-size: 2em; /* angka kali jumlah font-size saat ini */
+    width: 200px; /* dalam pixel */
+    font-size: 20pt; /* dalam point */
+    width: 5cm; /* dalam centimeter */
+    width: 50mm; /* dalam milimeter */
+    width: 5in; /* dalam inci */
     
-    /* Colors */
-    background-color: #F6E;  /* in short hex */
-    background-color: #F262E2; /* in long hex format */
-    background-color: tomato; /* can be a named color */
-    background-color: rgb(255, 255, 255); /* in rgb */
-    background-color: rgb(10%, 20%, 50%); /* in rgb percent */
-    background-color: rgba(255, 0, 0, 0.3); /* in semi-transparent rgb */
+    /* Warna */
+    background-color: #F6E;  /* dalam short hex */
+    background-color: #F262E2; /* dalam format long hex */
+    background-color: tomato; /* warna yang sudah punya konvensi nama */
+    background-color: rgb(255, 255, 255); /* dalam rgb */
+    background-color: rgb(10%, 20%, 50%); /* dalam persen rgb */
+    background-color: rgba(255, 0, 0, 0.3); /* dalam rgb semi-transparan*/
     
-    /* Images */
-    background-image: url(/path-to-image/image.jpg);
+    /* Gambar */
+    background-image: url(/folder-gambar/image.jpg);
     
-    /* Fonts */
+    /* Font */
     font-family: Arial;
-    font-family: "Courier New"; /* if name has spaaace it appears in double-quote */
-    font-family: "Courier New", Trebuchet, Arial; /* if first one was not found
-    						 browser uses the second font, and so forth */
+    font-family: "Courier New"; /* jika nama font memiliki spasi,
+    							ia diketik dalam tanda petik ganda */
+    font-family: "Courier New", Trebuchet, Arial; /* jika font pertama tidak
+    							ditemukan, peramban menggunakan font berikutnya,
+    							demikian secara berturut-turut */
 }
 
 ```
 
-## Usage
+## Penggunaan
 
-Save any CSS you want in a file with extension `.css`.
+Simpan semua CSS yang hendak kita pakai dengan ekstensi `.css`.
 
 ```xml
-<!-- you need to include the css file in your page's <head>: -->
-<link rel='stylesheet' type='text/css' href='filepath/filename.css' />
+<!-- kita harus menautkan file css itu ke laman di bagian <head>: -->
+<link rel='stylesheet' type='text/css' href='folder/namafile.css' />
 
-<!-- you can also include some CSS inline in your markup. However it is highly  
-recommended to avoid this. -->
+<!-- kita juga bisa mengetik CSS secara inline di dalam markup.
+Namun, sebisa mungkin metode ini dihindari. -->
 <style>
-   selector { property:value; }
+   selektor { properti:nilai; }
 </style>
 
-<!-- or directly set CSS properties on the element. 
-This has to be avoided as much as you can. -->
-<div style='property:value;'>
+<!-- atau langsung mengetik properti CSS pada sebuah elemen. 
+Metode ini harus dihindari sebisa mungkin. -->
+<div style='properti:nilai;'>
 </div>
 
 ```
 
-## Precedence
+## Prioritas
 
-As you noticed an element may be targetted by more than one selector. 
-and may have a property set on it in more than one.  
-In these cases, one of the rules takes precedence over others.
+Kita tahu bahwa sebuah elemen bisa dipilih dengan lebih dari satu selektor, 
+serta bisa diberi lebih dari satu properti.
+Dalam kasus seperti ini, hanya salah satu properti saja yang akan diterapkan
+pada elemen dengan prioritas tertentu.
 
-Given the following CSS:
+Dengan susunan CSS:
 
 ```css
+
 /*A*/
-p.class1[attr='value']
+p.class1[attr='nilai']
 
 /*B*/
 p.class1 {}
@@ -194,40 +203,41 @@ p.class2 {}
 p {}
 
 /*E*/
-p { property: value !important; }
+p { properti: nilai !important; }
 
 ```
 
-and the following markup:
+dan susunan markup:
 
 ```xml
-<p style='/*F*/ property:value;' class='class1 class2' attr='value'>
+<p style='/*F*/ properti:nilai;' class='class1 class2' attr='nilai'>
 </p>
 ```
 
-The precedence of style is as followed:  
-Remember, the precedence is for each **property**, not for the entire block.
+Maka prioritas penerapan style-nya ialah sbb.:  
+Ingat, penerapan ini untuk masing-masing properti **property**,
+bukan keseluruhan larik.
 
-* `E` has the highest precedence because of the keyword `!important`.  
-	It is recommended to avoid this unless it is strictly necessary to use.
-* `F` is next, because it is inline style.
-* `A` is next, because it is more "specific" than anything else.  
-	more specific = more specifiers. here 3 specifiers: 1 tagname `p` +   
-	class name `class1` + 1 attribute `attr='value'`
-* `C` is next. although it has the same specificness as `B`  
-	but it appears last.
-* Then is `B`
-* and lastly is `D`.
+* `E` prioritas pertama sebab ada kata `!important`.  
+	Dianjurkan untuk menghindari kata ini jika tidak benar-benar perlu.
+* `F` prioritas kedua sebab ia diketik secara inline.
+* `A` prioritas ketiga sebab selektor ini lebih spesifik dibanding yang lain.  
+	lebih spesifik = lebih banyak unsur selektor. contoh ini punya 3 unsur:
+	1 tagname `p` + 1 nama class `class1` + 1 attribute `attr='nilai'`
+* `C` prioritas berikutnya sebab meski sama spesifik dengan `B` namun
+	ia muncul lebih akhir.
+* Lalu `B`
+* dan terakhir baru `D`.
 
-## Compatibility
+## Kompatibilitas
 
-Most of the features in CSS2 (and gradually in CSS3) are compatible across  
-all browsers and devices. But it's always vital to have in mind the compatiblity  
-of what you use in CSS with your target browsers.
+Sebagian besar fitur dalam CSS2 (dan lambat laun juga CSS3) kompatibel dengan
+semua peramban dan perangkat. Namun selalu vital untuk memastikan kompatibilitas
+unsur dan nilai yang kita ketikkan dalam CSS dengan peramban yang ditargetkan.
 
-[QuirksMode CSS](http://www.quirksmode.org/css/) is one of the best sources for this.
+[QuirksMode CSS](http://www.quirksmode.org/css/) ialah salah satu sumber terbaik untuk memeriksa kompatibilitas CSS dan peramban.
 
-## Further Reading
+## Referensi Lanjut
 
 * [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
 * [QuirksMode CSS](http://www.quirksmode.org/css/)
