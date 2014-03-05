@@ -5,7 +5,7 @@ contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
-    - ["Ivan Sala", "http://slavni.github.io/"]
+    - ["Ivan Sala", "http://slavni96.github.io/"]
 lang: it-it
 
 ---
