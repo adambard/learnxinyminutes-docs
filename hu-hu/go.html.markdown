@@ -6,6 +6,7 @@ contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
 translators:
     - ["Szabó Krisztián", "https://github.com/thenonameguy/"]
+    - ["Árpád Goretity", "https://github.com/H2CO3"]
 ---
 
 A Go programozási nyelv az életszerű feladatok könnyebb elvégzése miatt született.
@@ -38,14 +39,14 @@ import (
     "strconv"  // Stringek átalakítására szolgáló csomag
 )
 
-// Funkció deklarálás, a main nevű funkció a program kezdőpontja.
+// Függvénydeklarálás, a main nevű függvény a program kezdőpontja.
 func main() {
     // Println kiírja a beadott paramétereket a standard kimenetre.
-    // Ha más csomagot funkcióját akarjuk használni, akkor azt jelezni kell a
+    // Ha más csomagot függvényeit akarjuk használni, akkor azt jelezni kell a
     // csomag nevével
     fmt.Println("Hello world!")
 
-    // Meghívunk egy másik funkciót ebből a csomagból
+    // Meghívunk egy másik függvényt ebből a csomagból
     beyondHello()
 }
 
@@ -92,7 +93,7 @@ func learnTypes() {
                  // lebegőpontos szám
     c := 3 + 4i  // complex128, belsőleg két float64-gyel tárolva
 
-    // Var szintaxis változó típus definiálással
+    // Var szintaxis változótípus-definiálással
     var u uint = 7 // unsigned, az implementáció dönti el mekkora, akárcsak az
                    // int-nél
     var pi float32 = 22. / 7
@@ -105,8 +106,8 @@ func learnTypes() {
     a3 := [...]int{3, 1, 5} // egy tömb 3 int-tel, láthatóan inicalizálva egyedi
                             // értékekre
 
-    // Szeleteknek dinamikus a méretük. A szeleteknek és a tömböknek is meg
-    // vannak az előnyeik de a szeleteket sokkal gyakrabban használjuk.
+    // A "szeleteknek" (slices) dinamikus a méretük. A szeleteknek és a tömböknek is
+    // megvannak az előnyeik de a szeleteket sokkal gyakrabban használjuk.
     s3 := []int{4, 5, 9}    // vesd össze a3-mal, nincsenek pontok.
     s4 := make([]int, 4)    // allokál 4 int-et, mind 0-ra inicializálva
     var d2 [][]float64      // ez csak deklaráció, semmi sincs még allokálva
@@ -129,8 +130,8 @@ func learnTypes() {
     learnFlowControl()
 }
 
-// A Go nyelv teljesen szemétgyűjtött (garbage-collected). Megtalálhatók benne
-// mutatók, de nincs mutató aritmetika. Ez azt jelenti, hogy üres mutatóval még
+// A Go nyelvben szemétgyűjtés (garbage collection) működik. Megtalálhatók benne
+// mutatók, de nincs pointeraritmetika. Ez azt jelenti, hogy üres (null) mutatóval még
 // mindig hibázhatsz, de hozzáadni/műveleteket végezni már nem lehet.
 func learnMemory() (p, q *int) {
     // Elnevezett visszatérési változóknak int-re mutató a típusa
@@ -213,7 +214,7 @@ type pair struct {
 }
 
 // Definiáljunk egy metódust a pair struktúrának, ezzel teljesítve a Stringer interfészt.
-func (p pair) String() string { // p lesz a "vevő"
+func (p pair) String() string { // p lesz a "fogadó" (receiver)
     // Sprintf az fmt csomag egy publikus függvénye, műkődése megegyezik a C-s
     // megfelelőjével. A pontokkal érjük el a mindenkori p struktúra elemeit
     return fmt.Sprintf("(%d, %d)", p.x, p.y)
@@ -230,7 +231,7 @@ func learnInterfaces() {
     // Meghívjuk i String metódusát, az eredmény ugyanaz, mint az előbb.
     fmt.Println(i.String())
 
-    // Az fmt csomag funckciói  automatikusan meghívják a String funkciót
+    // Az fmt csomag függvényei automatikusan meghívják a String függvényt
     // hogy megtudják egy objektum szöveges reprezentációját.
     fmt.Println(p) // ugyan az az eredmény mint az előbb, a Println meghívja
                    // a String metódust.
@@ -267,8 +268,8 @@ func inc(i int, c chan int) {
 
 // Az inc-et fogjuk arra használni, hogy konkurensen megnöveljünk számokat
 func learnConcurrency() {
-    // Ugyan az a make funkció amivel korábban szeleteket hoztunk létre.
-    // Make allokál mapokat, szeleteket és csatornákat.
+    // Ugyanaz a make függvény, amivel korábban szeleteket hoztunk létre.
+    // A make allokál map-eket, szeleteket és csatornákat.
     c := make(chan int)
     // Indítsunk három konkurens goroutine-t.  A számok konkurensen lesznek 
     // megnövelve, ha a számítógép képes rá és jól be van állítva, akkor pedig
@@ -299,14 +300,14 @@ func learnConcurrency() {
     case <-cc: // üres csatorna, soha nem fog rajta semmi se érkezni
         fmt.Println("sose futok le :'( ")
     }
-    // Ezen a ponton vagy c vagy a cs goroutineja lefutott.
+    // Ezen a ponton vagy c vagy a cs goroutine-ja lefutott.
     // Amelyik hamarabb végzett, annak a megfelelő case-e lefutott, a másik
     // blokkolva vár.
 
-    learnWebProgramming() // Go képes rá. Te is képes akarsz rá lenni.
+    learnWebProgramming() // a Go képes rá. Te is képes akarsz rá lenni.
 }
 
-// Egy funkció a http csomagból elindít egy webszervert.
+// Egy függvény a http csomagból elindít egy webszervert.
 func learnWebProgramming() {
     // A ListenAndServe első paramétre egy TCP port, amin kiszolgálunk majd.
     // Második paramétere egy interfész, pontosabban a http.Handler interfész.
@@ -315,7 +316,7 @@ func learnWebProgramming() {
 }
 
 // Csináljunk a pair-ból egy http.Handler-t úgy, hogy implementáljuk az
-// egyetlen metódusát a ServeHTTP-t.
+// egyetlen metódusát, a ServeHTTP-t.
 func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
     // Minden kapcsolatra elküldjük ezt a http.ResponseWriter-rel
     w.Write([]byte("Megtanultad a Go-t Y perc alatt!"))
@@ -325,11 +326,12 @@ func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 ## További olvasmányok
 
 Minden Go-val kapcsolatos megtaláható a [hivatalos Go weboldalon](http://golang.org/).
-Ott követhetsz egy tutorialt, játszhatsz a nyelvvel az interneten és sok érdekességet olvashatsz.
+Ott követhetsz egy tutorialt, játszhatsz a nyelvvel az interneten, és sok érdekességet olvashatsz.
 
 A nyelv specifikációját kifejezetten érdemes olvasni, viszonylag rövid és sokat tanul belőle az ember.
 
-Ha pedig jobban bele akarod vetni magad a Go-ba, akkor a standard könyvtárban a legjobb praktikákat kilesheted.
-TIPP: a dokumentációban kattints egy funkció nevére és rögtön megmutatja a hozzá tartozó kódot!
+Ha pedig jobban bele akarod vetni magad a Go-ba, akkor a legjobb praktikákat kilesheted a standard könyvtárból.
+TIPP: a dokumentációban kattints egy függvény nevére és rögtön megmutatja a hozzá tartozó kódot!
 
-Ha pedig a nyelvnek egy bizonyos részéről szeretnél hasonló leírást találni, akkor a [gobyexample.com](https://gobyexample.com/)-on megtalálod, amit keresel. 
+Ha pedig a nyelvnek egy bizonyos részéről szeretnél hasonló leírást találni, akkor a
+[gobyexample.com](https://gobyexample.com/)-on megtalálod, amit keresel.
