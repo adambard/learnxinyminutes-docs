@@ -215,7 +215,7 @@ dan susunan markup:
 ```
 
 Maka prioritas penerapan style-nya ialah sbb.:  
-Ingat, penerapan ini untuk masing-masing properti **property**,
+Ingat, penerapan ini untuk masing-masing **properti**,
 bukan keseluruhan larik.
 
 * `E` prioritas pertama sebab ada kata `!important`.  
