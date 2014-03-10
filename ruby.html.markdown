@@ -8,6 +8,8 @@ contributors:
   - ["Tristan Hume", "http://thume.ca/"]
   - ["Nick LaMuro", "https://github.com/NickLaMuro"]
   - ["Marcos Brizeno", "http://www.about.me/marcosbrizeno"]
+  - ["Ariel Krakowski", "http://www.learneroo.com"]
+
 ---
 
 ```ruby
@@ -33,6 +35,7 @@ You shouldn't either
 8 - 1 #=> 7
 10 * 2 #=> 20
 35 / 5 #=> 7
+2 ** 5 #=> 32
 
 # Arithmetic is just syntactic sugar
 # for calling a method on an object
@@ -79,6 +82,10 @@ placeholder = "use string interpolation"
 "I can #{placeholder} when using double quoted strings"
 #=> "I can use string interpolation when using double quoted strings"
 
+#Combine strings but not with numbers
+"hello " + "world"  #=> "hello world"
+"hello " + 3 #=> TypeError: can't convert Fixnum into String
+"hello " +3.to_s #=> "hello 3"
 
 # print to the output
 puts "I'm printing!"
@@ -246,6 +253,22 @@ when 'F'
 else
   puts "Alternative grading system, eh?"
 end
+
+#=> "Better luck next time"
+
+# cases can also use ranges
+grade = 82
+case grade
+    when 90..100
+      puts "Hooray!"
+    when 80...90
+      puts "OK job" 
+    else
+      puts "You failed!"
+end
+
+#=> "OK job"
+
 
 # Functions
 
@@ -474,3 +497,12 @@ Something.qux     # => NoMethodError: undefined method `qux'
 Something.new.bar # => NoMethodError: undefined method `bar'
 Something.new.qux # => 'qux'
 ```
+
+## Additional resources
+
+- [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - A variant of this reference with in-browser challenges. 
+- [Official Documentation](http://www.ruby-doc.org/core-2.1.1/)
+- [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
+- [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - An older [free addition](http://ruby-doc.com/docs/ProgrammingRuby/) is available online. 
+
+
