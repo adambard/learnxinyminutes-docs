@@ -106,7 +106,7 @@ false;
 // You can access characters in a string with charAt
 "This is a string".charAt(0);  // = 'T'
 
-//...or use substring to get larger pieces
+// ...or use substring to get larger pieces
 "Hello world".substring(0, 5); // = "Hello"
 
 // length is a property, so don't use ()
