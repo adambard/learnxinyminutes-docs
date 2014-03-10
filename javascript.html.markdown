@@ -2,6 +2,7 @@
 language: javascript
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+    - ["Ariel Krakowski", "http://www.learneroo.com"]
 filename: javascript.js
 ---
 
@@ -103,7 +104,13 @@ false;
 "5" === 5; // = false
 
 // You can access characters in a string with charAt
-"This is a string".charAt(0);
+"This is a string".charAt(0);  // = 'T'
+
+//...or use substring to get larger pieces
+"Hello world".substring(0, 5); // = "Hello"
+
+// length is a property, so don't use ()
+"Hello".length; // = 5
 
 // There's also null and undefined
 null; // used to indicate a deliberate non-value
@@ -148,6 +155,9 @@ myArray[1]; // = 45
 myArray.push("World");
 myArray.length; // = 4
 
+// Add/Modify at specific index
+myArray[3] = "Hello";
+
 // JavaScript's objects are equivalent to 'dictionaries' or 'maps' in other
 // languages: an unordered collection of key-value pairs.
 var myObj = {key1: "Hello", key2: "World"};
@@ -170,6 +180,8 @@ myObj.myFourthKey; // = undefined
 
 ///////////////////////////////////
 // 3. Logic and Control Structures
+
+// The syntax for this section is almost identical to Java's. 
 
 // The if structure works as you'd expect.
 var count = 1;
@@ -208,6 +220,27 @@ if (colour == "red" || colour == "blue"){
 
 // && and || "short circuit", which is useful for setting default values.
 var name = otherName || "default";
+
+
+// switch statement checks for equality with ===
+// use 'break' after each case 
+// or the cases after the correct one will be executed too. 
+grade = 'B';
+switch (grade) {
+  case 'A':
+    console.log("Great job");
+    break;
+  case 'B':
+    console.log("OK job");
+    break;
+  case 'C':
+    console.log("You can do better");
+    break;
+  default:
+    console.log("Oy vey");
+    break;
+}
+
 
 ///////////////////////////////////
 // 4. Functions, Scope and Closures
@@ -477,8 +510,12 @@ more about how to use JavaScript in web pages, start by learning about the
 [Document Object
 Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 
+[Learn Javascript by Example and with Challenges](http://www.learneroo.com/modules/64/nodes/350) is a variant of this reference with built-in challenges. 
+
 [JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) is an in-depth
 guide of all the counter-intuitive parts of the language.
+
+[JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) is a classic guide / reference book. 
 
 In addition to direct contributors to this article, some content is adapted
 from Louie Dinh's Python tutorial on this site, and the [JS
