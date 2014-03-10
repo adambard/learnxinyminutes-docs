@@ -82,10 +82,10 @@ placeholder = "use string interpolation"
 "I can #{placeholder} when using double quoted strings"
 #=> "I can use string interpolation when using double quoted strings"
 
-#Combine strings but not with numbers
+# Combine strings, but not with numbers
 "hello " + "world"  #=> "hello world"
 "hello " + 3 #=> TypeError: can't convert Fixnum into String
-"hello " +3.to_s #=> "hello 3"
+"hello " + 3.to_s #=> "hello 3"
 
 # print to the output
 puts "I'm printing!"
