@@ -6,7 +6,7 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Madison Dickson", "http://github.com/mix3d"]
 translators:
-    - ["Ivan Sala","http://github.com/dev-sala"]
+    - ["Ivan Sala","http://github.com/slavni96"]
 lang: it-it
 
 ---
