@@ -17,8 +17,10 @@ e sfrutta solo 8 caratteri.
 
 ```
 
-Qualsiasi carattere che non sia "><+-.,[]" (escludendo gli apici) viene ignorato.
-Branfuck è caratterizzato da un array (vettore) di 30,000 celle inizializzare a zero, e un puntatore che punta alla cella corrente.
+Qualsiasi carattere che non sia "><+-.,[]" (escludendo gli apici) 
+viene ignorato.
+Branfuck è caratterizzato da un array (vettore) di 30,000 celle 
+inizializzare a zero, e un puntatore che punta alla cella corrente.
 
 Vi sono solo otto comando:
 + : Incrementa il valore della cella attuale di uno.
@@ -56,31 +58,39 @@ per 5 volte, e otteniamo il valore 65, quindi stampaimo il valore della cella
 
 , [ > + < - ] > .
 
-This program reads a character from the user input and copies the character into
-cell #1. Then we start a loop. Move to cell #2, increment the value at cell #2,
-move back to cell #1, and decrement the value at cell #1. This continues on
-until cell #1 is 0, and cell #2 holds cell #1's old value. Because we're on
-cell #1 at the end of the loop, move to cell #2, and then print out the value
-in ASCII.
+Questo programma legge un carattere come input dall'utente, 
+quindi salva il carattere dentro la cella #1.
+In seguito, incominca a ciclare.
+Si sposta alla cella #², e increementa il valore della cella (#2).
+Quindi torna alla cella #1, e decrementa il valore della cella (#1).
+Questo continua fino a quando la cella #²1 diventa 0, e quindi la cella #2
+avrà il valore iniziale della cella #1.
+Infine, visto che ci troviamo sulla cella #1 alla fine del ciclo, si sposta
+sulla cella #2 e stampa il valore in ASCII.
 
-Also keep in mind that the spaces are purely for readability purposes. You
-could just as easily write it as:
+Gli spazi nel codice sovrastante, sono presenti solo a scopo di ottenere
+una maggiore leggibilità, si poteva anche scrivere senza:
 
 ,[>+<-]>.
 
-Try and figure out what this program does:
+Proviamo, adesso, a capire cosa fa invece questo programma:
 
 ,>,< [ > [ >+ >+ << -] >> [- << + >>] <<< -] >>
 
-This program takes two numbers for input, and multiplies them.
+Prende due numeri in input e quindi li moltiplica.
 
-The gist is it first reads in two inputs. Then it starts the outer loop,
-conditioned on cell #1. Then it moves to cell #2, and starts the inner
-loop conditioned on cell #2, incrementing cell #3. However, there comes a
-problem: At the end of the inner loop, cell #2 is zero. In that case,
-inner loop won't work anymore since next time. To solve this problem,
-we also increment cell #4, and then recopy cell #4 into cell #2.
-Then cell #3 is the result.
+Prima prende in input i due numeri (,>,<), quindi inizia un cilclo
+basandosi sulla cella #1.
+Quindi si sposta sulla cella #2, e inizia un altro ciclo condizionato
+dal valore della cella #2, incrementando la cella #3.
+Arrivati a questo punto abbiamo un problema: alla fine del ciclo interno
+la cella #2 ha valore 0. In questo caso, quando il ciclo esterno rifarà
+partire il ciclo interno, non funzionerà più perchè la cella #2 ha valore 0.
+Per ovviare a questo problema, oltre alla cella 3, incrementiamo anche la cella
+#4, e alla fine di ogni ciclo interno copiala il valore della cella #4 
+nella cella #2, in modo che il ciclo interno 
+possa essere eseguito una altra volta.
+Alla fine la cella #3 contiene il risultato.
 ```
 
 E questo è brainfuck...Non è difficele, vero? 
