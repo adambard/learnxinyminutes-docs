@@ -2,7 +2,7 @@
 language: coffeescript
 contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
-  - ["Xavier Yao"], "http://github.com/xavieryao"]
+  - ["Xavier Yao", "http://github.com/xavieryao"]
 filename: coffeescript.coffee
 ---
 
