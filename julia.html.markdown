@@ -13,6 +13,10 @@ This is based on the current development version of Julia, as of October 18th, 2
 ```ruby
 
 # Single line comments start with a hash.
+#= Multiline comments can be written
+   by putting '#=' before the text  and '=#' 
+   after the text
+=#
 
 ####################################################
 ## 1. Primitive Datatypes and Operators
