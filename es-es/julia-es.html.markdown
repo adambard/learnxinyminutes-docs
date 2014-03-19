@@ -2,7 +2,9 @@
 language: julia
 contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
-filename: learnjulia.jl
+    - ["Guillermo Garza" ]
+filename: learnjulia-es.jl
+lang: es-es
 ---
 
 Julia es un nuevo lenguaje funcional homoiconic enfocado en computación técnica.
