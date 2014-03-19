@@ -5,13 +5,13 @@ contributors:
 filename: learnjulia.jl
 ---
 
-Julia is a new homoiconic functional language focused on technical computing.
-While having the full power of homoiconic macros, first-class functions, and low-level control, Julia is as easy to learn and use as Python.
+Julia es un nuevo lenguaje funcional homoiconic enfocado en computación técnica.
+Mientras que tiene todo el poder de macros homoiconic, funciones de primera clase, y control de bajo nivel, Julia es tan fácil de aprender y utilizar como Python.
 
-This is based on the current development version of Julia, as of October 18th, 2013.
+Esto se basa en la versión de desarrollo actual de Julia, del 18 de octubre de 2013.
 
 ```ruby
-
+j
 # Comentarios de una línea comienzan con una almohadilla (o signo gato)
 #= Commentarios multilinea pueden escribirse
    usando '#=' antes de que el texto  and '=#' 
