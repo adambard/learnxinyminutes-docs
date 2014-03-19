@@ -6,9 +6,12 @@ filename: learnjulia.jl
 ---
 
 Julia es un nuevo lenguaje funcional homoiconic enfocado en computación técnica.
-Mientras que tiene todo el poder de macros homoiconic, funciones de primera clase, y control de bajo nivel, Julia es tan fácil de aprender y utilizar como Python.
+Mientras que tiene todo el poder de macros homoiconic, funciones de primera
+clase, y control de bajo nivel, Julia es tan fácil de aprender y utilizar como
+Python.
 
-Esto se basa en la versión de desarrollo actual de Julia, del 18 de octubre de 2013.
+Esto se basa en la versión de desarrollo actual de Julia, del 18 de octubre de
+2013.
 
 ```ruby
 j
@@ -53,7 +56,8 @@ div (5, 2) # => 2 # para un resultado truncado, usa div
 2 >> 1  # => 1 # arithmetic shift right
 2 << 1  # => 4 # logical/arithmetic shift left
 
-# Se puede utilizar la función bits para ver la representación binaria de un número.
+# Se puede utilizar la función bits para ver la representación binaria de un
+# número.
 bits(12345)
 # => "0000000000000000000000000000000000000000000000000011000000111001"
 bits(12345.0)
@@ -117,7 +121,8 @@ catch e
 end
 
 # Los nombres de variables comienzan con una letra.
-# Después de eso, usted puede utilizar letras, dígitos, guiones y signos de exclamación.
+# Después de eso, usted puede utilizar letras, dígitos, guiones y signos de
+# exclamación.
 OtraVariable123! = 6 # => 6
 
 # También puede utilizar caracteres unicode
@@ -142,12 +147,14 @@ OtraVariable123! = 6 # => 6
 # Los Arrays almacenan una secuencia de valores indexados entre 1 hasta n
 a = Int64[] # => 0-element Int64 Array
 
-# Literales de arrays 1-dimensionales se pueden escribir con valores separados por comas.
+# Literales de arrays 1-dimensionales se pueden escribir con valores separados
+# por comas.
 b = [4, 5, 6] # => 3-element Int64 Array: [4, 5, 6]
 b[1] # => 4
 b[end] # => 6
 
-# Los arrays 2-dimensionales usan valores separados por espacios y filas separados por punto y coma.
+# Los arrays 2-dimensionales usan valores separados por espacios y filas
+# separados por punto y coma.
 matrix = [1 2; 3 4] # => 2x2 Int64 Array: [1 2; 3 4]
 
 # Añadir cosas a la final de una lista con push! y append!
@@ -253,7 +260,8 @@ dict_lleno["one"] # => 1
 # Obtén todas las claves
 keys(dict_lleno)
 # => KeyIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
-# Nota - claves del dictionary no están ordenados ni en el orden en que se insertan.
+# Nota - claves del dictionary no están ordenados ni en el orden en que se
+# insertan.
 
 # Obtén todas las claves
 values(dict_lleno)
@@ -261,24 +269,26 @@ values(dict_lleno)
 # Nota - Igual que el anterior en cuanto a ordenamiento de claves.
 
 # Compruebe si hay existencia de claves en un dictionary con in y haskey
-in(("one", 1), dict_lleno) # => true
-in(("two", 3), dict_lleno) # => false
+in(("uno", 1), dict_lleno) # => true
+in(("tres", 3), dict_lleno) # => false
 haskey(dict_lleno, "one") # => true
 haskey(dict_lleno, 1) # => false
 
 # Tratando de buscar una clave inexistente producirá un error
 try
-    dict_lleno["four"] # => ERROR: key not found: four in getindex at dict.jl:489
+    dict_lleno["dos"] # => ERROR: key not found: dos in getindex at dict.jl:489
 catch e
     println(e)
 end
 
-# Utilice el método get para evitar ese error proporcionando un valor predeterminado
+# Utilice el método get para evitar ese error proporcionando un valor
+# predeterminado
 # get(dictionary,key,default_value)
 get(dict_lleno,"one",4) # => 1
 get(dict_lleno,"four",4) # => 4
 
-# Usa Sets para representar colecciones (conjuntos) de valores únicos, no ordenadas
+# Usa Sets para representar colecciones (conjuntos) de valores únicos, no
+# ordenadas
 conjunto_vacio = Set() # => Set{Any}()
 # Iniciar una set de valores
 conjunto_lleno = Set(1,2,2,3,4) # => Set{Int64}(1,2,3,4)
@@ -627,11 +637,11 @@ pelear(tigger,Pantera()) # => imprime ¡El tigre anaranjado gana!
 pelear(tigger,Leon("ROAR")) # => ¡El tigre anaranjado gana!
 
 # Vamos a cambiar el comportamiento cuando el Gato es específicamente un Leon
-pelear(t::Tigre,l::Leon) = println("!El león con melena $(l.color_de_crin) gana!")
+pelear(t::Tigre,l::Leon) = println("El león con melena $(l.color_de_crin) gana")
 # => pelear (generic function with 2 methods)
 
 pelear(tigger,Pantera()) # => imprime ¡El tigre anaranjado gana!
-pelear(tigger,Leon("ROAR")) # => imprime ¡El león con melena verde gana!
+pelear(tigger,Leon("ROAR")) # => imprime El león con melena verde gana
 
 # No necesitamos un tigre para poder luchar
 pelear(l::Leon,c::Gato) = println("El gato victorioso dice $(maullar(c))")
@@ -656,11 +666,11 @@ pelear(c::Gato,l::Leon) = println("El gato le gana al León")
 
 # Esta advertencia se debe a que no está claro que metodo de pelear será llamado
 # en:
-pelear(Leon("RAR"),Leon("brown","rarrr")) # => imprime El gato victorioso dice rarrr
+pelear(Leon("RAR"),Leon("cafe","rar")) # => imprime El gato victorioso dice rar
 # El resultado puede ser diferente en otras versiones de Julia
 
 pelear(l::Leon,l2::Leon) = println("Los leones llegan a un empate")
-pelear(Leon("RAR"),Leon("brown","rarrr")) # => imprime Los leones llegan a un empate
+pelear(Leon("GR"),Leon("cafe","rar")) # => imprime Los leones llegan a un empate
 
 
 # Bajo el capó
