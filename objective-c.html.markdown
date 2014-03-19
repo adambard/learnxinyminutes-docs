@@ -552,116 +552,6 @@ int main (int argc, const char * argv[]) {
     NSLog(@"Car locked."); // Instances of Car can't use lockCar because it's not in the @interface.
 }
 
-// Categories
-// A category is a group of methods designed to extend a class. They allow you to add new methods
-// to an existing class for organizational purposes. This is not to be mistaken with subclasses. 
-// Subclasses are meant to CHANGE functionality of an object while categories instead ADD 
-// functionality to an object.
-// Categories allow you to:
-// -- Add methods to an existing class for organizational purposes.
-// -- Allow you to extend Objective-C object classes (ex: NSString) to add your own methods.
-// -- Add ability to create protected and private methods to classes. 
-// NOTE: Do not override methods of the base class in a category even though you have the ability 
-// to. Overriding methods may cause compiler errors later between different categories and it 
-// ruins the purpose of categories to only ADD functionality. Subclass instead to override methods.
-
-// Here is a simple Car base class.
-@interface Car : NSObject
-
-@property NSString *make;
-@property NSString *color;
-
-- (void)turnOn;
-- (void)accelerate;
-
-@end
-
-// And the simple Car base class implementation:
-#import "Car.h"
-
-@implementation Car
-
-@synthesize make = _make;
-@synthesize color = _color;
-
-- (void)turnOn {
-    NSLog(@"Car is on.");
-}
-- (void)accelerate {
-    NSLog(@"Accelerating.");
-}
-
-@end
-
-// Now, if we wanted to create a Truck object, we would instead create a subclass of Car as it would
-// be changing the functionality of the Car to behave like a truck. But lets say we want to just add 
-// functionality to this existing Car. A good example would be to clean the car. So we would create 
-// a category to add these cleaning methods:
-// @interface filename: Car+Clean.h (BaseClassName+CategoryName.h)
-#import "Car.h" // Make sure to import base class to extend.
-
-@interface Car (Clean) // The category name is inside () following the name of the base class.
-
-- (void)washWindows; // Names of the new methods we are adding to our Car object.
-- (void)wax;
-
-@end
-
-// @implementation filename: Car+Clean.m (BaseClassName+CategoryName.m)
-#import "Car+Clean.h" // Import the Clean category's @interface file.
-
-@implementation Car (Clean)
-
-- (void)washWindows {
-    NSLog(@"Windows washed.");
-}
-- (void)wax {
-    NSLog(@"Waxed.");
-}
-
-@end 
-
-// Any Car object instance has the ability to use a category. All they need to do is import it:
-#import "Car+Clean.h" // Import as many different categories as you want to use.
-#import "Car.h" // Also need to import base class to use it's original functionality.
-
-int main (int argc, const char * argv[]) {
-    @autoreleasepool {
-        Car *mustang = [[Car alloc] init];
-        mustang.color = @"Red";
-        mustang.make = @"Ford";
-
-        [mustang turnOn]; // Use methods from base Car class.
-        [mustang washWindows]; // Use methods from Car's Clean category.
-    }
-    return 0; 
-}
-
-// Objective-C does not have protected method declarations but you can simulate them.
-// Create a category containing all of the protected methods, then import it ONLY into the
-// @implementation file of a class belonging to the Car class:
-@interface Car (Protected) // Naming category 'Protected' to remember methods are protected.
-
-- (void)lockCar; // Methods listed here may only be created by Car objects.
-
-@end
-//To use protected methods, import the category, then implement the methods:
-#import "Car+Protected.h" // Remember, import in the @implementation file only.
-
-@implementation Car 
-
-- (void)lockCar {
-    NSLog(@"Car locked."); // Instances of Car can't use lockCar because it's not in the @interface.
-}
-
-@end
-
-// Protocols
-// A protocol declares methods that can be implemented by any class.
-// Protocols are not classes themselves. They simply define an interface
-// that other objects are responsible for implementing.
-@protocol MyProtocol
-    - (void)myProtocolMethod;
 @end
 
 ///////////////////////////////////////
@@ -760,47 +650,7 @@ if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
 - (void)beNiceToBrother:(id <Brother>)brother;
 
 @end
-// The @implementation needs to implement the @properties and methods for the protocol. 
-@implementation Car : NSObject <CarUtilities>
 
-@synthesize engineOn = _engineOn; // Create a @synthesize statement for the engineOn @property.
-
-- (void)turnOnEngine { // Implement turnOnEngine however you would like. Protocols do not define
-    _engineOn = YES; // how you implement a method, it just requires that you do implement it.
-}
-// You may use a protocol as data as you know what methods and variables it has implemented.
-- (void)turnOnEngineWithCarUtilities:(id <CarUtilities>)objectOfSomeKind { 
-    [objectOfSomeKind engineOn]; // You have access to object variables
-    [objectOfSomeKind turnOnEngine]; // and the methods inside. 
-    [objectOfSomeKind engineOn]; // May or may not be YES. Class implements it however it wants.
-}
-
-@end
-// Instances of Car now have access to the protocol. 
-Car *carInstance = [[Car alloc] init];
-[[carInstance setEngineOn:NO];
-[carInstance turnOnEngine];
-if ([carInstance engineOn]) {
-    NSLog(@"Car engine is on."); // prints => "Car engine is on."
-}
-// Make sure to check if an object of type 'id' implements a protocol before calling protocol methods:
-if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
-    NSLog(@"This does not run as the MyClass class does not implement the CarUtilities protocol.");
-} else if ([carInstance conformsToProtocol:@protocol(CarUtilities)]) {
-    NSLog(@"This does run as the Car class implements the CarUtilities protocol.");
-}
-// Categories may implement protocols as well: @interface Car (CarCategory) <CarUtilities>
-// You may implement many protocols: @interface Car : NSObject <CarUtilities, CarCleaning>
-// NOTE: If two or more protocols rely on each other, make sure to forward-declare them:
-#import "Brother.h"
-
-@protocol Brother; // Forward-declare statement. Without it, compiler would through error.
-
-@protocol Sister <NSObject>
-
-- (void)beNiceToBrother:(id <Brother>)brother;
-
-@end
 // See the problem is that Sister relies on Brother, and Brother relies on Sister.
 #import "Sister.h"
 
@@ -816,7 +666,7 @@ if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
 ///////////////////////////////////////
 // Blocks
 ///////////////////////////////////////
-// Blocks are statements of code, just like a function, that is able to be used as data. 
+// Blocks are statements of code, just like a function, that are able to be used as data. 
 // Below is a simple block with an integer argument that returns the argument plus 4.
 int (^addUp)(int n); // Declare a variable to store the block. 
 void (^noParameterBlockVar)(void); // Example variable declaration of block with no arguments. 
