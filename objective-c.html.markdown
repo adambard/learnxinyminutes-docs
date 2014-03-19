@@ -249,14 +249,17 @@ int main (int argc, const char * argv[])
         // Your statements here
         @throw [NSException exceptionWithName:@"FileNotFoundException"
                             reason:@"File Not Found on System" userInfo:nil];
-    } @catch (NSException * e)
+    } @catch (NSException * e) // use: @catch (id exceptionName) to catch all objects. 
     {
         NSLog(@"Exception: %@", e);
     } @finally
     {
-        NSLog(@"Finally");
+        NSLog(@"Finally. Time to clean up.");
     } // => prints "Exception: File Not Found on System"
-      //           "Finally"
+      //           "Finally. Time to clean up."
+
+    // NSError objects are useful for function arguments to populate on user mistakes. 
+    NSError *error = [NSError errorWithDomain:@"Invalid email." code:4 userInfo:nil];
  
     ///////////////////////////////////////
     // Objects
@@ -594,7 +597,7 @@ int main (int argc, const char * argv[]) {
 // A protocol declares methods that can be implemented by any class.
 // Protocols are not classes themselves. They simply define an interface
 // that other objects are responsible for implementing.
- // @protocol filename: "CarUtilities.h"
+// @protocol filename: "CarUtilities.h"
 @protocol CarUtilities <NSObject> // <NSObject> => Name of another protocol this protocol includes.
     @property BOOL engineOn; // Adopting class must @synthesize all defined @properties and
     - (void)turnOnEngine; // all defined methods.
@@ -647,6 +650,7 @@ if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
 - (void)beNiceToBrother:(id <Brother>)brother;
 
 @end
+
 // See the problem is that Sister relies on Brother, and Brother relies on Sister.
 #import "Sister.h"
 
@@ -657,6 +661,36 @@ if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
 - (void)beNiceToSister:(id <Sister>)sister;
 
 @end
+
+
+///////////////////////////////////////
+// Blocks
+///////////////////////////////////////
+// Blocks are statements of code, just like a function, that are able to be used as data. 
+// Below is a simple block with an integer argument that returns the argument plus 4.
+int (^addUp)(int n); // Declare a variable to store the block. 
+void (^noParameterBlockVar)(void); // Example variable declaration of block with no arguments. 
+// Blocks have access to variables in the same scope. But the variables are readonly and the
+// value passed to the block is the value of the variable when the block is created. 
+int outsideVar = 17; // If we edit outsideVar after declaring addUp, outsideVar is STILL 17.
+__block long mutableVar = 3; // __block makes variables writable to blocks, unlike outsideVar.
+addUp = ^(int n) { // Remove (int n) to have a block that doesn't take in any parameters. 
+    NSLog(@"You may have as many lines in a block as you would like.");
+    NSSet *blockSet; // Also, you can declare local variables.
+    mutableVar = 32; // Assigning new value to __block variable.
+    return n + outsideVar; // Return statements are optional. 
+}
+int addUp = add(10 + 16); // Calls block code with arguments. 
+// Blocks are often used as arguments to functions to be called later, or for callbacks.
+@implementation BlockExample : NSObject 
+ 
+ - (void)runBlock:(void (^)(NSString))block {
+    NSLog(@"Block argument returns nothing and takes in a NSString object.");
+    block(@"Argument given to block to execute."); // Calling block.
+ }
+
+ @end
+
 
 ///////////////////////////////////////
 // Memory Management
