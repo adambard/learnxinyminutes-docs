@@ -193,7 +193,6 @@ a = [1:5] # => 5-element Int64 Array: [1,2,3,4,5]
 
 # You can look at ranges with slice syntax.
 a[1:3] # => [1, 2, 3]
-a[2:] # => [2, 3, 4, 5]
 a[2:end] # => [2, 3, 4, 5]
 
 # Remove elements from an array by index with splice!
