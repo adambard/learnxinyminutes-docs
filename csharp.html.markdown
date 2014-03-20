@@ -608,7 +608,7 @@ on a new line! ""Wow!"", the masses cried";
         // This is a default constructor
         public Bicycle() 
         {
-            this.Gear = 1; // you can access mmebers of the object with the keyword this
+            this.Gear = 1; // you can access members of the object with the keyword this
             Cadence = 50;  // but you don't always need it
             _speed = 5;
             Name = "Bontrager";
