@@ -196,7 +196,7 @@ my-pet ; => #<dog>
 (hash-ref m 'd 0) ; => 0
 
 ;; Use `hash-set' to extend an immutable hash table
-;; (Returns the extended hash instdead of mutating it)
+;; (Returns the extended hash instead of mutating it)
 (define m2 (hash-set m 'd 4))
 m2 ; => '#hash((b . 2) (a . 1) (d . 4) (c . 3))
 
@@ -224,7 +224,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 (define hello-world (lambda () "Hello World"))
 (hello-world) ; => "Hello World"
 
-;; You can shorten this using the function definition syntatcic sugae:
+;; You can shorten this using the function definition syntactic sugar:
 (define (hello-world2) "Hello World")
 
 ;; The () in the above is the list of arguments for the function
@@ -496,7 +496,7 @@ vec ; => #(1 2 3 4)
 ;; 8. Classes and Objects
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Create a class fish% (-% is idomatic for class bindings)
+;; Create a class fish% (-% is idiomatic for class bindings)
 (define fish%
   (class object%
     (init size) ; initialization argument
@@ -552,7 +552,7 @@ vec ; => #(1 2 3 4)
     (set! i (add1 i))))
 
 ;; Macros are hygienic, you cannot clobber existing variables!
-(define-syntax-rule (swap! x y) ; -! is idomatic for mutation
+(define-syntax-rule (swap! x y) ; -! is idiomatic for mutation
   (let ([tmp x])
     (set! x y)
     (set! y tmp)))
