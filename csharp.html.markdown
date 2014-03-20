@@ -558,7 +558,7 @@ on a new line! ""Wow!"", the masses cried";
             }
             set // set - define a method to set a proprety
             {
-                _cadence = value; // Value is the value passed in to to the setter
+                _cadence = value; // Value is the value passed in to the setter
             }
         }
         private int _cadence;
