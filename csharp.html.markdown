@@ -576,7 +576,7 @@ on a new line! ""Wow!"", the masses cried";
         }
 
         int _speed; // Everything is private by default: Only accessible from within this class. 
-                    // can also use keyword privatee
+                    // can also use keyword private
         public string Name { get; set; }
 
         // Enum is a value type that consists of a set of named constants
