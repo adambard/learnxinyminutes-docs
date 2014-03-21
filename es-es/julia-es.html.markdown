@@ -15,7 +15,7 @@ Python.
 Esto se basa en la versión de desarrollo actual de Julia, del 18 de octubre de
 2013.
 
-```julia
+```ruby
 
 # Comentarios de una línea comienzan con una almohadilla (o signo gato)
 
