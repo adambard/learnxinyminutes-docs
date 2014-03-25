@@ -10,7 +10,7 @@ While having the full power of homoiconic macros, first-class functions, and low
 
 This is based on the current development version of Julia, as of October 18th, 2013.
 
-```ruby
+```jl
 
 # Single line comments start with a hash.
 #= Multiline comments can be written
