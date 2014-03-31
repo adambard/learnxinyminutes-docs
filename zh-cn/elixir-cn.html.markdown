@@ -2,88 +2,88 @@
 language: elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
+    - ["lidashuang", "http://github.com/lidashuang"]
 filename: learnelixir.ex
 ---
 
-Elixir is a modern functional language built on top of the Erlang VM.
-It's fully compatible with Erlang, but features a more standard syntax
-and many more features.
+Elixir 是一门构建在Elang VM 之上的函数式编程语言。Elixir 完全兼容 Eralng, 
+另外还提供了更标准的语法，特性。
 
-```ruby
+```elixir
 
-# Single line comments start with a hashtag.
+# 这是单行注释, 注释以井号开头
 
-# There's no multi-line comment,
-# but you can stack multiple comments.
+# 没有多行注释
+# 但你可以堆叠多个注释。
 
-# To use the elixir shell use the `iex` command.
-# Compile your modules with the `elixirc` command.
+# elixir shell 使用命令 `iex` 进入。
+# 编译模块使用 `elixirc` 命令。
 
-# Both should be in your path if you installed elixir correctly.
+# 如果安装正确，这些命令都会在环境变量里
 
 ## ---------------------------
-## -- Basic types
+## -- 基本类型
 ## ---------------------------
 
-# There are numbers
-3    # integer
-0x1F # integer
-3.0  # float
+# 数字
+3    # 整型
+0x1F # 整型
+3.0  # 浮点类型
 
-# Atoms, that are literals, a constant with name. They start with `:`.
+# 原子(Atoms)，以 `:`开头
 :hello # atom
 
 # Tuples that are stored contiguously in memory.
 {1,2,3} # tuple
 
-# We can access a tuple element with the `elem` function:
+# 使用`elem`函数访问元组(tuple)里的元素:
 elem({1, 2, 3}, 0) #=> 1
 
-# Lists that are implemented as linked lists.
+# 列表(list)
 [1,2,3] # list
 
-# We can access the head and tail of a list as follows:
+# 可以用下面的方法访问列表的头尾元素:
 [head | tail] = [1,2,3]
 head #=> 1
 tail #=> [2,3]
 
-# In elixir, just like in Erlang, the `=` denotes pattern matching and
-# not an assignment.
+# 在elixir,就像在Erlang, `=` 表示模式匹配 (pattern matching) 
+# 不是赋值。
 #
 # This means that the left-hand side (pattern) is matched against a
 # right-hand side.
 #
 # This is how the above example of accessing the head and tail of a list works.
 
-# A pattern match will error when the sides don't match, in this example
-# the tuples have different sizes.
+# 当左右两边不匹配时，会返回error, 在这个
+# 例子中，元组大小不一样。
 # {a, b, c} = {1, 2} #=> ** (MatchError) no match of right hand side value: {1,2}
 
-# There's also binaries
+# 还有二进制类型 (binaries)
 <<1,2,3>> # binary
 
-# Strings and char lists
+# 字符串(Strings) 和 字符列表(char lists)
 "hello" # string
 'hello' # char list
 
-# Multi-line strings
+# 多行字符串
 """
 I'm a multi-line
 string.
 """
 #=> "I'm a multi-line\nstring.\n"
 
-# Strings are all encoded in UTF-8:
+# 所有的字符串(Strings)以UTF-8编码：
 "héllò" #=> "héllò"
 
-# Strings are really just binaries, and char lists are just lists.
+# 字符串(Strings)本质就是二进制类型(binaries), 字符列表(char lists)本质是列表(lists)
 <<?a, ?b, ?c>> #=> "abc"
 [?a, ?b, ?c]   #=> 'abc'
 
-# `?a` in elixir returns the ASCII integer for the letter `a`
+# 在 elixir中，`?a`返回 `a` 的 ASCII 整型值  
 ?a #=> 97
 
-# To concatenate lists use `++`, for binaries use `<>`
+# 合并列表使用 `++`, 对于二进制类型则使用 `<>`
 [1,2,3] ++ [4,5]     #=> [1,2,3,4,5]
 'hello ' ++ 'world'  #=> 'hello world'
 
@@ -91,67 +91,67 @@ string.
 "hello " <> "world"  #=> "hello world"
 
 ## ---------------------------
-## -- Operators
+## -- 操作符(Operators)
 ## ---------------------------
 
-# Some math
+#  一些数学运算
 1 + 1  #=> 2
 10 - 5 #=> 5
 5 * 2  #=> 10
 10 / 2 #=> 5.0
 
-# In elixir the operator `/` always returns a float.
+# 在 elixir 操作符 `/` 返回值总是浮点数。
 
-# To do integer division use `div`
+# 做整数除法使用 `div`
 div(10, 2) #=> 5
 
-# To get the division remainder use `rem`
+# 为了得到余数使用 `rem`
 rem(10, 3) #=> 1
 
-# There's also boolean operators: `or`, `and` and `not`.
-# These operators expect a boolean as their first argument.
+# 还有 boolean 操作符: `or`, `and` and `not`.
+# 第一个参数必须是boolean 类型
 true and true #=> true
 false or true #=> true
 # 1 and true    #=> ** (ArgumentError) argument error
 
-# Elixir also provides `||`, `&&` and `!` which accept arguments of any type.
-# All values except `false` and `nil` will evaluate to true.
+# Elixir 也提供了 `||`, `&&` 和  `!` 可以接受任意的类型
+# 除了`false` 和 `nil` 其它都会被当作true.
 1 || true  #=> 1
 false && 1 #=> false
 nil && 20  #=> nil
 
 !true #=> false
 
-# For comparisons we have: `==`, `!=`, `===`, `!==`, `<=`, `>=`, `<` and `>`
+# 比较有: `==`, `!=`, `===`, `!==`, `<=`, `>=`, `<` 和 `>`
 1 == 1 #=> true
 1 != 1 #=> false
 1 < 2  #=> true
 
-# `===` and `!==` are more strict when comparing integers and floats:
+# `===` 和 `!==` 在比较整型和浮点类型时更为严格:
 1 == 1.0  #=> true
 1 === 1.0 #=> false
 
-# We can also compare two different data types:
+# 我们也可以比较两种不同的类型:
 1 < :hello #=> true
 
-# The overall sorting order is defined below:
+# 总的排序顺序定义如下:
 # number < atom < reference < functions < port < pid < tuple < list < bit string
 
 # To quote Joe Armstrong on this: "The actual order is not important,
 # but that a total ordering is well defined is important."
 
 ## ---------------------------
-## -- Control Flow
+## -- 控制结构(Control Flow)
 ## ---------------------------
 
-# `if` expression
+# `if` 表达式
 if false do
   "This will never be seen"
 else
   "This will"
 end
 
-# There's also `unless`
+# 还有 `unless`
 unless true do
   "This will never be seen"
 else
@@ -170,12 +170,12 @@ case {:one, :two} do
     "This will match any value"
 end
 
-# It's common practice to assign a value to `_` if we don't need it.
-# For example, if only the head of a list matters to us:
+# 模式匹配时，如果不需要某个值，通用的做法是把值 匹配到 `_` 
+# 例如，我们只需要要列表的头元素:
 [head | _] = [1,2,3]
 head #=> 1
 
-# For better readability we can do the following:
+# 下面的方式效果一样，但可读性更好
 [head | _tail] = [:a, :b, :c]
 head #=> :a
 
@@ -213,10 +213,10 @@ end
 # "Got :hello"
 
 ## ---------------------------
-## -- Modules and Functions
+## -- 模块和函数(Modules and Functions)
 ## ---------------------------
 
-# Anonymous functions (notice the dot)
+# 匿名函数 (注意点)
 square = fn(x) -> x * x end
 square.(5) #=> 25
 
@@ -231,14 +231,13 @@ end
 f.(1, 3)  #=> 4
 f.(-1, 3) #=> -3
 
-# Elixir also provides many built-in functions.
-# These are available in the current scope.
+# Elixir 提供了很多内建函数
+# 在默认作用域都是可用的
 is_number(10)    #=> true
 is_list("hello") #=> false
 elem({1,2,3}, 0) #=> 1
 
-# You can group several functions into a module. Inside a module use `def`
-# to define your functions.
+# 你可以在一个模块里定义多个函数，定义函数使用 `def`
 defmodule Math do
   def sum(a, b) do
     a + b
@@ -252,12 +251,12 @@ end
 Math.sum(1, 2)  #=> 3
 Math.square(3) #=> 9
 
-# To compile our simple Math module save it as `math.ex` and use `elixirc`
-# in your terminal: elixirc math.ex
+# 保存到 `math.ex`，使用 `elixirc` 编译你的 Math 模块
+# 在终端里: elixirc math.ex
 
-# Inside a module we can define functions with `def` and private functions with `defp`.
-# A function defined with `def` is available to be invoked from other modules,
-# a private function can only be invoked locally.
+# 在模块中可以使用`def`定义函数，使用 `defp` 定义私有函数
+# 使用`def` 定义的函数可以被其它模块调用
+# 私有函数只能在本模块内调用
 defmodule PrivateMath do
   def sum(a, b) do
     do_sum(a, b)
@@ -287,7 +286,7 @@ Geometry.area({:circle, 3})       #=> 28.25999999999999801048
 # Geometry.area({:circle, "not_a_number"})
 #=> ** (FunctionClauseError) no function clause matching in Geometry.area/1
 
-# Due to immutability, recursion is a big part of elixir
+#由于不变性，递归是Elixir的重要组成部分
 defmodule Recursion do
   def sum_list([head | tail], acc) do
     sum_list(tail, acc + head)
@@ -322,7 +321,7 @@ defrecord Person, name: nil, age: 0, height: 0
 joe_info = Person.new(name: "Joe", age: 30, height: 180)
 #=> Person[name: "Joe", age: 30, height: 180]
 
-# Access the value of name
+# 访问name的值
 joe_info.name #=> "Joe"
 
 # Update the value of age
@@ -345,7 +344,7 @@ rescue
 end
 
 ## ---------------------------
-## -- Concurrency
+## -- 并发(Concurrency)
 ## ---------------------------
 
 # Elixir relies on the actor model for concurrency. All we need to write
@@ -386,7 +385,7 @@ pid <- {:circle, 2}
 #=> Area = 12.56000000000000049738
 #   {:circle,2}
 
-# The shell is also a process, you can use `self` to get the current pid
+# shell也是一个进程(process), 你可以使用`self`获取当前 pid 
 self() #=> #PID<0.27.0>
 ```
 
