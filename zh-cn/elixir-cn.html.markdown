@@ -299,14 +299,13 @@ end
 
 Recursion.sum_list([1,2,3], 0) #=> 6
 
-# Elixir modules support attributes, there are built-in attributes and you
-# may also add custom attributes.
+# Elixir 模块支持属性，模块内建了一些属性，你也可以自定义属性
 defmodule MyMod do
   @moduledoc """
-  This is a built-in attribute on a example module.
+  内置的属性，模块文档
   """
 
-  @my_data 100 # This is a custom attribute.
+  @my_data 100 # 自定义属性
   IO.inspect(@my_data) #=> 100
 end
 
@@ -327,7 +326,7 @@ joe_info.name #=> "Joe"
 # 更新age的值
 joe_info = joe_info.age(31) #=> Person[name: "Joe", age: 31, height: 180]
 
-# The `try` block with the `rescue` keyword is used to handle exceptions
+# 使用 `try` `rescue` 进行异常处理
 try do
   raise "some error"
 rescue
@@ -335,7 +334,7 @@ rescue
   _error -> "this will rescue any error"
 end
 
-# All exceptions have a message
+# 所有的异常都有一个message
 try do
   raise "some error"
 rescue
@@ -347,18 +346,19 @@ end
 ## -- 并发(Concurrency)
 ## ---------------------------
 
-# Elixir relies on the actor model for concurrency. All we need to write
-# concurrent programs in elixir are three primitives: spawning processes,
-# sending messages and receiving messages.
+# Elixir 依赖与actor并发模型。在Elixir编写并发程序的三要素：
+# 创建进程，发送消息，接收消息
 
 # 启动一个新的进程使用`spawn`函数，接收一个函数作为参数
+
 f = fn -> 2 * 2 end #=> #Function<erl_eval.20.80484245>
 spawn(f) #=> #PID<0.40.0>
 
-# `spawn` returns a pid (process identifier), you can use this pid to send
-# messages to the process. To do message passing we use the `<-` operator.
-# For all of this to be useful we need to be able to receive messages. This is
-# achived with the `receive` mechanism:
+
+# `spawn` 函数返回一个pid(进程标识符)，你可以使用pid向进程发送消息。
+# 使用 `<-` 操作符发送消息。
+#  我们需要在进程内接收消息，要用到 `receive` 机制。
+
 defmodule Geometry do
   def area_loop do
     receive do
