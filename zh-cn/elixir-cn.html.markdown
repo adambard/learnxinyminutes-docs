@@ -33,7 +33,7 @@ Elixir 是一门构建在Elang VM 之上的函数式编程语言。Elixir 完全
 # 原子(Atoms)，以 `:`开头
 :hello # atom
 
-# Tuples that are stored contiguously in memory.
+# 元组(Tuple) 在内存中的存储是连续的
 {1,2,3} # tuple
 
 # 使用`elem`函数访问元组(tuple)里的元素:
@@ -50,10 +50,9 @@ tail #=> [2,3]
 # 在elixir,就像在Erlang, `=` 表示模式匹配 (pattern matching) 
 # 不是赋值。
 #
-# This means that the left-hand side (pattern) is matched against a
-# right-hand side.
-#
-# This is how the above example of accessing the head and tail of a list works.
+# 这表示会用左边的模式(pattern)匹配右侧
+# 
+# 这是上面的例子中访问列列表的头部和尾部的就是这样工作的。
 
 # 当左右两边不匹配时，会返回error, 在这个
 # 例子中，元组大小不一样。
@@ -137,8 +136,8 @@ nil && 20  #=> nil
 # 总的排序顺序定义如下:
 # number < atom < reference < functions < port < pid < tuple < list < bit string
 
-# To quote Joe Armstrong on this: "The actual order is not important,
-# but that a total ordering is well defined is important."
+# 引用Joe Armstrong ：”实际的顺序并不重要，
+# 但是，一个整体排序是否经明确界定是非常重要的“。
 
 ## ---------------------------
 ## -- 控制结构(Control Flow)
@@ -158,9 +157,9 @@ else
   "This will"
 end
 
-# Remember pattern matching? Many control-flow structures in elixir rely on it.
+# 在Elixir中，很多控制结构都依赖于模式匹配
 
-# `case` allows us to compare a value against many patterns:
+# `case` 允许我们把一个值与多种模式进行比较:
 case {:one, :two} do
   {:four, :five} ->
     "This won't match"
@@ -179,8 +178,8 @@ head #=> 1
 [head | _tail] = [:a, :b, :c]
 head #=> :a
 
-# `cond` lets us check for many conditions at the same time.
-# Use `cond` instead of nesting many `if` expressions.
+# `cond` 可以检测多种不同的分支
+# 使用 `cond` 代替多个`if` 表达式嵌套
 cond do
   1 + 1 == 3 ->
     "I will never be seen"
@@ -190,7 +189,7 @@ cond do
     "But I will"
 end
 
-# It is common to see a last condition equal to `true`, which will always match.
+# 经常可以看到最后一个条件等于'true'，这将总是匹配。
 cond do
   1 + 1 == 3 ->
     "I will never be seen"
@@ -200,8 +199,9 @@ cond do
     "But I will (this is essentially an else)"
 end
 
-# `try/catch` is used to catch values that are thrown, it also supports an
-# `after` clause that is invoked whether or not a value is catched.
+# `try/catch` 用于捕获被抛出的值, 它也支持 `after` 子句，
+# 无论是否值被捕获，after 子句都会被调用
+# `try/catch` 
 try do
   throw(:hello)
 catch
@@ -220,9 +220,10 @@ end
 square = fn(x) -> x * x end
 square.(5) #=> 25
 
-# They also accept many clauses and guards.
-# Guards let you fine tune pattern matching,
-# they are indicated by the `when` keyword:
+
+# 也支持接收多个子句和卫士(guards).
+# Guards可以进行模式匹配
+# Guards只有`when` 关键字指明:
 f = fn
   x, y when x > 0 -> x + y
   x, y -> x * y
@@ -313,8 +314,7 @@ end
 ## -- 记录和异常(Records and Exceptions)
 ## ---------------------------
 
-# Records are basically structures that allow you to associate a name with
-# a particular value.
+# 记录就是把特定值关联到某个名字的结构体
 defrecord Person, name: nil, age: 0, height: 0
 
 joe_info = Person.new(name: "Joe", age: 30, height: 180)
