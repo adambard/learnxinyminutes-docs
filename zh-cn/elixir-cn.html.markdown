@@ -311,7 +311,7 @@ defmodule MyMod do
 end
 
 ## ---------------------------
-## -- Records and Exceptions
+## -- 记录和异常(Records and Exceptions)
 ## ---------------------------
 
 # Records are basically structures that allow you to associate a name with
@@ -324,7 +324,7 @@ joe_info = Person.new(name: "Joe", age: 30, height: 180)
 # 访问name的值
 joe_info.name #=> "Joe"
 
-# Update the value of age
+# 更新age的值
 joe_info = joe_info.age(31) #=> Person[name: "Joe", age: 31, height: 180]
 
 # The `try` block with the `rescue` keyword is used to handle exceptions
@@ -351,8 +351,7 @@ end
 # concurrent programs in elixir are three primitives: spawning processes,
 # sending messages and receiving messages.
 
-# To start a new process we use the `spawn` function, which takes a function
-# as argument.
+# 启动一个新的进程使用`spawn`函数，接收一个函数作为参数
 f = fn -> 2 * 2 end #=> #Function<erl_eval.20.80484245>
 spawn(f) #=> #PID<0.40.0>
 
@@ -373,10 +372,10 @@ defmodule Geometry do
   end
 end
 
-# Compile the module and create a process that evaluates `area_loop` in the shell
+# 编译这个模块，在shell中创建一个进程，并执行 `area_looop` 函数。
 pid = spawn(fn -> Geometry.area_loop() end) #=> #PID<0.40.0>
 
-# Send a message to `pid` that will match a pattern in the receive statement
+# 发送一个消息给 `pid`， 会在receive语句进行模式匹配
 pid <- {:rectangle, 2, 3}
 #=> Area = 6
 #   {:rectangle,2,3}
@@ -389,7 +388,7 @@ pid <- {:circle, 2}
 self() #=> #PID<0.27.0>
 ```
 
-## References
+## 参考文献
 
 * [Getting started guide](http://elixir-lang.org/getting_started/1.html) from [elixir webpage](http://elixir-lang.org)
 * [Elixir Documentation](http://elixir-lang.org/docs/master/)
