@@ -8,7 +8,7 @@ contributors:
 
 ANSI Common Lisp is a general purpose, multi-paradigm programming
 language suited for a wide variety of industry applications. It is
-frequently referred to a programmable programming language.
+frequently referred to as a programmable programming language.
 
 The classic starting point is [Practical Common Lisp and freely available.](http://www.gigamonkeys.com/book/)
 
