@@ -140,7 +140,7 @@ nil                  ; for false - and the empty list
 ;; 2. Variables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; You can create a global (dynamically scoped) using defparameter
-;; a variable name can use any character except: ()[]{}",'`;#|\
+;; a variable name can use any character except: ()",'`;#|\
 
 ;; Dynamically scoped variables should have earmuffs in their name!
 
