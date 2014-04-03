@@ -158,7 +158,7 @@ b[end] # => 6
 # separados por punto y coma.
 matrix = [1 2; 3 4] # => 2x2 Int64 Array: [1 2; 3 4]
 
-# Añadir cosas al final de una lista con push! y append!
+# Añadir cosas a la final de una lista con push! y append!
 push!(a,1)     # => [1]
 push!(a,2)     # => [1,2]
 push!(a,4)     # => [1,2,4]
@@ -214,7 +214,7 @@ splice!(arr,2) # => 4 ; arr es ahora [3,5]
 b = [1,2,3]
 append!(a,b) # ahroa a es [1, 2, 3, 4, 5, 1, 2, 3]
 
-# Comprobamos la existencia en una lista con in
+# Comprueba la existencia en una lista con in
 in(1, a) # => true
 
 # Examina la longitud con length
