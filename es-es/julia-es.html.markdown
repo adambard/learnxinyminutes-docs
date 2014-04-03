@@ -8,7 +8,7 @@ lang: es-es
 ---
 
 Julia es un nuevo lenguaje funcional homoiconic enfocado en computación técnica.
-Mientras que tiene todo el poder de macros homoiconic, funciones de primera
+Aunque que tiene todo el poder de macros homoiconic, funciones de primera
 clase, y control de bajo nivel, Julia es tan fácil de aprender y utilizar como
 Python.
 
@@ -16,11 +16,12 @@ Esto se basa en la versión de desarrollo actual de Julia, del 18 de octubre de
 2013.
 
 ```ruby
-j
+
 # Comentarios de una línea comienzan con una almohadilla (o signo gato)
+
 #= Commentarios multilinea pueden escribirse
-   usando '#=' antes de que el texto  and '=#' 
-  después del texto. También se pueden anidar.
+   usando '#=' antes de el texto  y '=#' 
+   después del texto. También se pueden anidar.
 =#
 
 ####################################################
@@ -40,10 +41,10 @@ j
 8 - 1 # => 7
 10 * 2 # => 20
 35 / 5 # => 7.0
-5/2 # => 2.5 # dividir un Int por un Int siempre resulta en un Fload
+5/2 # => 2.5 # dividir un Int por un Int siempre resulta en un Float
 div (5, 2) # => 2 # para un resultado truncado, usa div
 5 \ 35 # => 7.0
-2 ^ 2 # => 4 # exponente, no exclusivo bit a bit
+2 ^ 2 # => 4 # exponente, no es xor
 12 % 10 # => 2
 
 # Refuerza la precedencia con paréntesis
@@ -91,17 +92,15 @@ false
 'a'
 
 # Una string puede ser indexado como una array de caracteres
-"Esto es un string."[1] # => 'E' # Julia indexes from 1
-# However, this is will not work well for UTF8 strings,
-# so iterating over strings is recommended (map, for loops, etc).
+"Esto es un string."[1] # => 'E' # Índices en Julia empiezen del 1
 # Sin embargo, esto no va a funcionar bien para strings UTF8, 
 # Lo que se recomienda es la iteración (map, for, etc).
 
-# Puede ser utilizado para la interpolación de strings:
+# $ puede ser utilizado para la interpolación de strings:
 "2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
 # Se puede poner cualquier expresión de Julia dentro los paréntesis.
 
-# Otro forma de formatear strings es el printf macro
+# Otro forma de formatear strings es el macro printf
 @printf "%d es menor de %f" 4.5 5.3 # 5 es menor de 5.300000
 
 # Imprimir es muy fácil
@@ -123,7 +122,7 @@ catch e
 end
 
 # Los nombres de variables comienzan con una letra.
-# Después de eso, usted puede utilizar letras, dígitos, guiones y signos de
+# Después de eso, puedes utilizar letras, dígitos, guiones y signos de
 # exclamación.
 OtraVariable123! = 6 # => 6
 
@@ -138,13 +137,13 @@ OtraVariable123! = 6 # => 6
 #   palabra indicado por underscore ('\ _'). 
 #
 # * Los nombres de los tipos comienzan con una letra mayúscula y separación de
-#   palabras se muestra Con CamelCase en vez de underscore.
+#   palabras se muestra con CamelCase en vez de underscore.
 #
-# * Los nombres de las funciones y las macros están en minúsculas, sin
+# * Los nombres de las funciones y los macros están en minúsculas, sin
 #   underscore.
 #
 # * Funciones que modifican sus inputs tienen nombres que terminan en!. Estos 
-#   funciones a veces se llaman mutating functions or in-place functions.
+#   funciones a veces se llaman mutating functions o in-place functions.
 
 # Los Arrays almacenan una secuencia de valores indexados entre 1 hasta n
 a = Int64[] # => 0-element Int64 Array
@@ -178,11 +177,11 @@ a[1] # => 1 # recuerdan que los índices de Julia empiezan desde 1, no desde 0!
 # expresión  de indexación
 a[end] # => 6
 
-# tambien hay shift and unshift
+# tambien hay shift y unshift
 shift!(a) # => 1 y a es ahora [2,4,3,4,5,6]
 unshift!(a,7) # => [7,2,4,3,4,5,6]
 
-# Nombres de función que terminan en exclamaciones indican que modifican 
+# Nombres de funciónes que terminan en exclamaciones indican que modifican 
 # su argumento.
 arr = [5,4,6] # => 3-element Int64 Array: [5,4,6]
 sort(arr) # => [4,5,6]; arr es todavía [5,4,6]
@@ -197,13 +196,13 @@ catch e
 end
 
 # Errors dan la línea y el archivo de su procedencia, aunque sea en el standard
-# library. Si construyes Julia de source, puedes buscar en la source para
+# library. Si construyes Julia de source, puedes buscar en el source para
 # encontrar estos archivos.
 
 # Se puede inicializar arrays de un range
 a = [1:5] # => 5-element Int64 Array: [1,2,3,4,5]
 
-# Usted puede mirar en ranges con sintaxis slice.
+# Puedes mirar en ranges con sintaxis slice.
 a[1:3] # => [1, 2, 3]
 a[2:end] # => [2, 3, 4, 5]
 
@@ -215,10 +214,10 @@ splice!(arr,2) # => 4 ; arr es ahora [3,5]
 b = [1,2,3]
 append!(a,b) # ahroa a es [1, 2, 3, 4, 5, 1, 2, 3]
 
-# Salida por la existencia de una lista con in
+# Comprueba la existencia en una lista con in
 in(1, a) # => true
 
-# Examinar la longitud con length
+# Examina la longitud con length
 length(a) # => 8
 
 # Tuples son immutable.
@@ -235,7 +234,7 @@ length(tup) # => 3
 tup[1:2] # => (1,2)
 in(2, tup) # => true
 
-# Se puede desempaquetar tuples en variables
+# Se puede desempacar tuples en variables
 a, b, c = (1, 2, 3) # => (1,2,3)  # a is now 1, b is now 2 and c is now 3
 
 # Los tuples se crean, incluso si se omite el paréntesis
@@ -259,13 +258,13 @@ dict_lleno = ["one"=> 1, "two"=> 2, "three"=> 3]
 # Busca valores con []
 dict_lleno["one"] # => 1
 
-# Obtén todas las claves
+# Obtén todas las claves 
 keys(dict_lleno)
 # => KeyIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
 # Nota - claves del dictionary no están ordenados ni en el orden en que se
 # insertan.
 
-# Obtén todas las claves
+# Obtén todos los valores
 values(dict_lleno)
 # => ValueIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
 # Nota - Igual que el anterior en cuanto a ordenamiento de claves.
@@ -276,7 +275,7 @@ in(("tres", 3), dict_lleno) # => false
 haskey(dict_lleno, "one") # => true
 haskey(dict_lleno, 1) # => false
 
-# Tratando de buscar una clave inexistente producirá un error
+# Tratando de buscar una clave que no existe producirá un error
 try
     dict_lleno["dos"] # => ERROR: key not found: dos in getindex at dict.jl:489
 catch e
@@ -347,7 +346,7 @@ end
 #    gato es un mamifero
 #    raton es un mamifero
 
-for (k,v) in ["perro"=>"mamifero","gato"=>"mamifero","raton"=>"mamifero"]
+for (k,v) in ["perro"=>"mamifero", "gato"=>"mamifero", "raton"=>"mamifero"]
     println("$k es un $v")
 end
 # imprime:
@@ -367,7 +366,7 @@ end
 #   2
 #   3
 
-# Maneja excepciones con un bloque try/except
+# Maneja excepciones con un bloque try/catch
 try
    error("ayuda")
 catch e
@@ -431,7 +430,7 @@ catch e
     println(e)
 end
 
-# Puede definir funciones que toman argumentos de palabra clave
+# Puedes definir funciones que toman argumentos de palabra clave
 function args_clave(;k1=4,nombre2="hola") # note the ;
     return ["k1"=>k1,"nombre2"=>nombre2]
 end
@@ -440,14 +439,14 @@ args_clave(nombre2="ness") # => ["nombre2"=>"ness","k1"=>4]
 args_clave(k1="mine") # => ["k1"=>"mine","nombre2"=>"hola"]
 args_clave() # => ["nombre2"=>"hola","k1"=>4]
 
-# Se puede combinar todo tipo de argumentos en la misma función
+# Puedes combinar todo tipo de argumentos en la misma función
 function todos_los_args(arg_normal, arg_posicional_opcional=2; arg_clave="foo")
     println("argumento normal: $arg_normal")
     println("argumento optional: $arg_posicional_opcional")
     println("argumento de clave: $arg_clave")
 end
 
-# todos_los_args(1, 3, arg_clave=4)
+todos_los_args(1, 3, arg_clave=4)
 # imprime:
 #   argumento normal: 1
 #   argumento optional: 3
@@ -469,7 +468,7 @@ function crear_suma(x)
     y -> x + y
 end
 
-# También se puede nombrar la función interna, si quieres
+# También puedes nombrar la función interna, si quieres
 function crear_suma(x)
     function suma(y)
         x + y
@@ -526,9 +525,7 @@ tigger = Tigre(3.5,"anaranjado") # => Tiger(3.5,"anaranjado")
 # El tipo funciona como la función constructora de valores de ese tipo
 sherekhan = typeof(tigger)(5.6,"fuego") # => Tiger(5.6,"fuego")
 
-# These struct-style types are called concrete types
-# They can be instantiated, but cannot have subtypes.
-# The other kind of types is abstract types.
+
 # Este estilo de tipos son llamados tipos concrete 
 # Se pueden crear instancias, pero no pueden tener subtipos. 
 # La otra clase de tipos es tipos abstractos (abstract types).
@@ -574,8 +571,8 @@ type Pantera <: Gato # Pantera tambien es un a subtipo de Cat
     # Panteras sólo tendrán este constructor, y ningún constructor
     # predeterminado.
 end
-# Utilizar constructores internos, como Panther hace, le da control sobre cómo
-# se pueden crear valores del tipo.  Cuando sea posible, debe utilizar
+# Utilizar constructores internos, como Panther hace, te da control sobre cómo
+# se pueden crear valores del tipo.  Cuando sea posible, debes utilizar
 # constructores exteriores en lugar de los internos.
 
 ####################################################
@@ -584,9 +581,9 @@ end
 
 # En Julia, todas las funciones nombradas son funciones genéricas.
 # Esto significa que se construyen a partir de muchos métodos pequeños 
-# Cada constructor de León es un método de la función genérica León.
+# Cada constructor de Leon es un método de la función genérica Leon.
 
-# Por ejemplo no constructor, vamos a hacer un maullar función:
+# Por ejemplo, vamos a hacer un maullar función:
 
 # Definiciones para Leon, Pantera, y Tigre
 function maullar(animal::Leon)
@@ -655,7 +652,7 @@ try
 catch
 end
 
-# Permítanos dejar que el gato vaya primero
+# Un metodo con el gato primero
 pelear(c::Gato,l::Leon) = println("El gato le gana al León")
 # Warning: New definition
 #     pelear(Gato,Leon) at none:1
@@ -675,14 +672,14 @@ pelear(l::Leon,l2::Leon) = println("Los leones llegan a un empate")
 pelear(Leon("GR"),Leon("cafe","rar")) # => imprime Los leones llegan a un empate
 
 
-# Bajo el capó
+# Un vistazo al nivel bajo
 # Se puede echar un vistazo a la LLVM y el código ensamblador generado.
 
 area_cuadrada(l) = l * l      # area_cuadrada (generic function with 1 method)
 
-area_cuadrada(5) #25
+area_cuadrada(5) # => 25
 
-# ¿Qué sucede cuando damos square_area diferentes argumentos?
+# ¿Qué sucede cuando damos area_cuadrada diferentes argumentos?
 code_native(area_cuadrada, (Int32,))  
 	#	    .section    __TEXT,__text,regular,pure_instructions
 	#	Filename: none
@@ -717,7 +714,8 @@ code_native(area_cuadrada, (Float64,))
 	#	    pop RBP
 	#	    ret
 	#	
-# Tenga en cuenta que Julia usará instrucciones de "floating point" si alguno de
+
+# Ten en cuenta que Julia usará instrucciones de "floating point" si alguno de
 # los argumentos son "floats"
 # Vamos a calcular el área de un círculo
 area_circulo(r) = pi * r * r     # circle_area (generic function with 1 method)
@@ -753,7 +751,7 @@ code_native(area_circulo, (Float64,))
 	#	
 ```
 
-# # Lectura adicional
+## ¿Listo para más?
 
 Puedes obtener muchos más detalles en [The Julia Manual](http://docs.julialang.org/en/latest/manual/)
 
