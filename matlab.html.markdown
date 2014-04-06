@@ -181,7 +181,7 @@ size(A) % ans = 3 3
 
 A(1, :) =[] % Delete the first row of the matrix
 
-A' % Hermitian transpose the matrix 
+% Hermitian transpose the matrix 
 % (the transpose, followed by taking complex conjugate of each element)
 transpose(A) % Transpose the matrix, without taking complex conjugate
 
