@@ -5,9 +5,10 @@ contributors:
     - ["Max Yankov", "https://github.com/golergka"]
     - ["Melvyn Laïly", "http://x2a.yt"]
     - ["Shaun McCarthy", "http://www.shaunmccarthy.com"]
-translathors:
+translators:
     - ["Jakukyo Friel", "http://weakish.github.io"]
 filename: LearnCSharp-cn.cs
+lang: zh-cn
 ---
 
 
