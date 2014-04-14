@@ -23,7 +23,7 @@ Feedback is always welcome, so feel free to reach me over at
 
 
 ```coffeescript
-# Just like its CoffeeScript cousin, LiveScript uses hash symbols for
+# Just like its CoffeeScript cousin, LiveScript uses number symbols for
 # single-line comments.
 
 /*

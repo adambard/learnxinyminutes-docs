@@ -10,7 +10,7 @@ R is a statistical computing language. It has lots of libraries for uploading an
 
 ```python
 
-# Comments start with hashtags.
+# Comments start with number symbols.
 
 # You can't make a multi-line comment per se,
 # but you can stack multiple comments like so.

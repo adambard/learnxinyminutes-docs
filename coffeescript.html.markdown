@@ -14,7 +14,7 @@ See also [the CoffeeScript website](http://coffeescript.org/), which has a compl
 ``` coffeescript
 # CoffeeScript is a hipster language.
 # It goes with the trends of many modern languages.
-# So comments are like Ruby and Python, they use hashes.
+# So comments are like Ruby and Python, they use number symbols.
 
 ###
 Block comments are like these, and they translate directly to '/ *'s and '* /'s
