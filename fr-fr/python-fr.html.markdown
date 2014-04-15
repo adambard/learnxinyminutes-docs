@@ -75,7 +75,7 @@ not False #=> True
 
 # Les chaînes de caractères sont créées avec " ou '
 "C'est une chaîne."
-'C'est aussi une chaîne.'
+'C\'est aussi une chaîne.'
 
 # On peut aussi les "additioner" !
 "Hello " + "world!" #=> "Hello world!"
