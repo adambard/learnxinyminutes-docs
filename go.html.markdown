@@ -171,10 +171,10 @@ func learnFlowControl() {
     }
     // Function literals are closures.
     xBig := func() bool {
-        return x > 100 // References x declared above switch statement.
+        return x > 10000 // References x declared above switch statement.
     }
-    fmt.Println("xBig:", xBig()) // true (we last assigned 1e6 to x).
-    x /= m.Exp(9)                // This makes x == e.
+    fmt.Println("xBig:", xBig()) // true (we last assigned e^10 to x).
+    x = 1.3e3                    // This makes x == 1300
     fmt.Println("xBig:", xBig()) // false now.
 
     // When you need it, you'll love it.
@@ -185,13 +185,11 @@ love:
     learnInterfaces() // Good stuff coming up!
 }
 
-
-
 func learnDefer() (ok bool) {
-    // deferred statements are executed just before the function returns.
+    // Deferred statements are executed just before the function returns.
     defer fmt.Println("deferred statements execute in reverse (LIFO) order.")
     defer fmt.Println("\nThis line is being printed first because")
-    // defer is commonly used to close a file, so the function closing the file
+    // Defer is commonly used to close a file, so the function closing the file
     // stays close to the function opening the file
     return true
 }
@@ -237,7 +235,7 @@ func learnVariadicParams(myStrings ...interface{}) {
     for _, param := range myStrings {
         fmt.Println("param:", param)
     }
-    
+
     // Pass variadic value as a variadic parameter.
     fmt.Println("params:", fmt.Sprintln(myStrings...))
 
@@ -299,7 +297,7 @@ func learnConcurrency() {
     // At this point a value was taken from either c or cs.  One of the two
     // goroutines started above has completed, the other will remain blocked.
 
-    learnWebProgramming() // Go does it.  You want to do it too.
+    learnWebProgramming() // Go does it. You want to do it too.
 }
 
 // A single function from package http starts a web server.
