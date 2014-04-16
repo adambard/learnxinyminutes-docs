@@ -4,6 +4,7 @@ filename: learnc.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
     - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
+    - ["Jakub Trzebiatowski", "http://cbs.stgn.pl"]
 
 ---
 
