@@ -54,7 +54,7 @@ tail #=> [2,3]
 #
 # 这表示会用左边的模式(pattern)匹配右侧
 # 
-# 这是上面的例子中访问列列表的头部和尾部的就是这样工作的。
+# 上面的例子中访问列表的头部和尾部就是这样工作的。
 
 # 当左右两边不匹配时，会返回error, 在这个
 # 例子中，元组大小不一样。
@@ -101,7 +101,7 @@ string.
 5 * 2  #=> 10
 10 / 2 #=> 5.0
 
-# 在 elixir 操作符 `/` 返回值总是浮点数。
+# 在 elixir 中，操作符 `/` 返回值总是浮点数。
 
 # 做整数除法使用 `div`
 div(10, 2) #=> 5
@@ -138,8 +138,8 @@ nil && 20  #=> nil
 # 总的排序顺序定义如下:
 # number < atom < reference < functions < port < pid < tuple < list < bit string
 
-# 引用Joe Armstrong ：”实际的顺序并不重要，
-# 但是，一个整体排序是否经明确界定是非常重要的“。
+# 引用Joe Armstrong ：“实际的顺序并不重要，
+# 但是，一个整体排序是否经明确界定是非常重要的。”
 
 ## ---------------------------
 ## -- 控制结构(Control Flow)
@@ -224,8 +224,8 @@ square.(5) #=> 25
 
 
 # 也支持接收多个子句和卫士(guards).
-# Guards可以进行模式匹配
-# Guards只有`when` 关键字指明:
+# Guards 可以进行模式匹配
+# Guards 使用 `when` 关键字指明:
 f = fn
   x, y when x > 0 -> x + y
   x, y -> x * y
@@ -273,7 +273,8 @@ end
 PrivateMath.sum(1, 2)    #=> 3
 # PrivateMath.do_sum(1, 2) #=> ** (UndefinedFunctionError)
 
-# Function declarations also support guards and multiple clauses:
+
+# 函数定义同样支持 guards 和 多重子句：
 defmodule Geometry do
   def area({:rectangle, w, h}) do
     w * h
@@ -348,7 +349,7 @@ end
 ## -- 并发(Concurrency)
 ## ---------------------------
 
-# Elixir 依赖与actor并发模型。在Elixir编写并发程序的三要素：
+# Elixir 依赖于 actor并发模型。在Elixir编写并发程序的三要素：
 # 创建进程，发送消息，接收消息
 
 # 启动一个新的进程使用`spawn`函数，接收一个函数作为参数
