@@ -44,16 +44,16 @@ Given an element like this on the page:
 <div class='some-class class2' id='someId' attr='value' />
 */
 
-/* you can target it by it's class name */
+/* you can target it by its name */
 .some-class { }
 
 /*or by both classes! */
 .some-class.class2 { }
 
-/* or by it's tag name */
+/* or by its element name */
 div { }
 
-/* or it's id */
+/* or its id */
 #someId { }
 
 /* or by the fact that it has an attribute! */
@@ -77,12 +77,12 @@ any spaaace between different parts because that makes it to have another
 meaning.*/
 div.some-class[attr$='ue'] { }
 
-/* you can also select an element based on how it's parent is.*/
+/* you can also select an element based on its parent.*/
 
 /*an element which is direct child of an element (selected the same way) */
 div.some-parent > .class-name {}
 
-/* or any of it's parents in the tree */
+/* or any of its parents in the tree */
 /* the following basically means any element that has class "class-name"  
 and is child of a div with class name "some-parent" IN ANY DEPTH */
 div.some-parent .class-name {}
@@ -91,7 +91,7 @@ div.some-parent .class-name {}
 can you say what? */
 div.some-parent.class-name {}
 
-/* you also might choose to select an element based on it's direct  
+/* you also might choose to select an element based on its direct  
 previous sibling */
 .i-am-before + .this-element { }
 
@@ -99,7 +99,7 @@ previous sibling */
 .i-am-any-before ~ .this-element {}
 
 /* There are some pseudo classes that allows you to select an element  
-based on it's page behaviour (rather than page structure) */
+based on its page behaviour (rather than page structure) */
 
 /* for example for when an element is hovered */
 :hover {}
