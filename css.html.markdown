@@ -44,7 +44,7 @@ Given an element like this on the page:
 <div class='some-class class2' id='someId' attr='value' />
 */
 
-/* you can target it by it's class name */
+/* you can target it by a class name */
 .some-class { }
 
 /*or by both classes! */
