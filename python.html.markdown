@@ -173,7 +173,7 @@ li[::-1]   # => [3, 4, 2, 1]
 del li[2]   # li is now [1, 2, 3]
 
 # You can add lists
-li + other_li   # => [1, 2, 3, 4, 5, 6] - Note: li and other_li is left alone
+li + other_li   # => [1, 2, 3, 4, 5, 6] - Note: values for li and for other_li are not modified.
 
 # Concatenate lists with "extend()"
 li.extend(other_li)   # Now li is [1, 2, 3, 4, 5, 6]
