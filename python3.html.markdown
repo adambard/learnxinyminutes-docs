@@ -1,8 +1,8 @@
 ---
-language: python
+language: python3
 contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
-filename: learnpython.py
+filename: learnpython3.py
 ---
 
 Python was created by Guido Van Rossum in the early 90's. It is now one of the most popular
