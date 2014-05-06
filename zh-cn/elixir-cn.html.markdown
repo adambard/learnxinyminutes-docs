@@ -8,7 +8,7 @@ filename: learnelixir-cn.ex
 lang: zh-cn
 ---
 
-Elixir 是一门构建在Elang VM 之上的函数式编程语言。Elixir 完全兼容 Eralng, 
+Elixir 是一门构建在Erlang VM 之上的函数式编程语言。Elixir 完全兼容 Erlang, 
 另外还提供了更标准的语法，特性。
 
 ```elixir
