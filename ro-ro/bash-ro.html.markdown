@@ -12,16 +12,18 @@ lang: ro-ro
 filename: LearnBash-ro.sh
 ---
 
-Bash este numele shell-ului unix, care a fost de asemenea distribuit drept shell pentru pentru sistemul de operare GNU si ca shell implicit pentru Linux si Mac OS X.
+Bash este numele shell-ului unix, care a fost de asemenea distribuit drept shell pentru sistemul de operare GNU si ca shell implicit pentru Linux si Mac OS X.
 Aproape toate exemplele de mai jos pot fi parte dintr-un script sau pot fi executate direct in linia de comanda.
 
 [Citeste mai multe:](http://www.gnu.org/software/bash/manual/bashref.html)
 
 ```bash
 #!/bin/bash
-# Prima linie din script se numeste "shebang" care spune systemului cum sa execute scriptul
+# Prima linie din script se numeste "shebang" 
+# care spune systemului cum sa execute scriptul
 # http://en.wikipedia.org/wiki/Shebang_(Unix)
-# Dupa cum te-ai prins deja, comentariile incep cu #. Shebang este de asemenea un comentariu.
+# Dupa cum te-ai prins deja, comentariile incep cu #. 
+# Shebang este de asemenea un comentariu.
 
 # Exemplu simplu de hello world:
 echo Hello world!
@@ -41,7 +43,8 @@ VARIABLE = "Niste text"
 echo $VARIABLE
 echo "$VARIABLE"
 echo '$VARIABLE'
-# Atunci cand folosesti variabila, o atribui, o exporti sau altfel, numele ei se scrie fara $.
+# Atunci cand folosesti variabila, o atribui, o exporti sau altfel, 
+# numele ei se scrie fara $.
 # Daca vrei sa folosesti valoarea variabilei, atunci trebuie sa folosesti $.
 # Atentie la faptul ca ' (apostrof) nu va inlocui variabla cu valoarea ei.
 
@@ -55,7 +58,8 @@ echo ${VARIABLE:0:7}
 
 # Valoarea implicita a unei variabile:
 echo ${FOO:-"ValoareaImplicitaDacaFOOLipsesteSauEGoala"}
-# Asta functioneaza pentru null (FOO=), sir de caractere gol (FOO=""), zero (FOO=0) returneaza 0
+# Asta functioneaza pentru null (FOO=),
+# sir de caractere gol (FOO=""), zero (FOO=0) returneaza 0
 
 # Variabile pre-existente
 echo "Ulima valoare returnata de ultimul program rulat: $?"
@@ -70,7 +74,8 @@ read NAME # Observa faptul ca nu a trebuit sa declaram o variabila noua
 echo Salut, $NAME!
 
 # Avem obisnuita instructiune "if"
-# Foloseste "man test" pentru mai multe informatii despre instructinea conditionala
+# Foloseste "man test" pentru mai multe informatii 
+# despre instructinea conditionala
 if [ $NAME -ne $USER ]
 then
     echo "Numele tau este username-ul tau"
@@ -79,8 +84,8 @@ else
 fi
 
 # Este de asemenea si executarea conditionala de comenzi
-echo "Intotdeauna executat" || echo "Executat numai daca prima instructiune esueaza"
-echo "Intotdeauna executat" && echo "Executat numai daca prima instructiune NU esueaza"
+echo "Intotdeauna executat" || echo "Executat daca prima instructiune esueaza"
+echo "Intotdeauna executat" && echo "Executat daca prima instructiune NU esueaza"
 
 # Expresiile apar in urmatorul format
 echo $(( 10 + 5 ))
@@ -93,9 +98,10 @@ ls
 # Aceste comenzi au optiuni care la controleaza executia
 ls -l # Listeaza fiecare fisier si director pe o linie separata
 
-# Rezultatele comenzii precedente poate fi trimis urmatoarei comenzi drept argument
-# Comanda grep filtreaza argumentele trimise cu sabloane. Astfel putem vedea fiserele
-# .txt din directorul curent.
+# Rezultatele comenzii anterioare pot fi 
+# trimise urmatoarei comenzi drept argument
+# Comanda grep filtreaza argumentele trimise cu sabloane. 
+# Astfel putem vedea fiserele .txt din directorul curent.
 ls -l | grep "\.txt"
 
 # De asemenea poti redirectiona o comanda, input si error output
@@ -106,17 +112,17 @@ python2 hello.py 2> "error.err"
 # Daca vrei sa fie concatenate poti folosi ">>" 
 
 # Comenzile pot fi inlocuite in interiorul altor comenzi folosind $( ):
-# Urmatoarea comanda afiseaza numarul de fisiere si directoare din directorul curent
+# Urmatoarea comanda afiseaza numarul de fisiere 
+# si directoare din directorul curent
 echo "Sunt $(ls | wc -l) fisiere aici."
 
-# The same can be done using backticks `` but they can't be nested - the preferred way
-# is to use $( ).
-# Acelasi lucru se poate obtine folosind apostrf-ul inversat ``, dar nu pot fi folosite
-# unele in interiorul celorlalte asa ca modalitatea preferata este de a folosi $( )
+# Acelasi lucru se poate obtine folosind apostrf-ul inversat ``,
+# dar nu pot fi folosite unele in interiorul celorlalte asa ca modalitatea 
+# preferata este de a folosi $( )
 echo "Sunt `ls | wc -l` fisiere aici."
 
-# Bash foloseste o instructiune 'case' care functioneaza in mod similar cu instructiunea
-# switch din Java si C++
+# Bash foloseste o instructiune 'case' care functioneaza 
+# in mod similar cu instructiunea switch din Java si C++
 case "$VARIABLE" in 
     0) echo "Este un zero.";;
     1) echo "Este un unu.";;

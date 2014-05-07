@@ -78,9 +78,9 @@ false.class #=> FalseClass
 'Sunt un sir de caractere'.class #=> String
 "Si eu sunt un sir de caractere".class #=> String
 
-fi_inlocuit = "inlocui o valoare in string"
+fi_inlocuit = "fi inlocuit"
 "Pot #{fi_inlocuit} atunci cand folosesc dublu apostrof"
-#=> "Pot inlocui o valoare intr-un sir de caractere atunci cand folosesc dublu apostrof"
+#=> "Pot fi inlocuit atunci cand folosesc dublu apostrof"
 
 
 # Printeaza 
@@ -106,7 +106,8 @@ adresa = '/nume/nu atat de bun/'
 
 # Simbolurile (sunt obiecte)
 # Simbolurile sunt constante imutabile, reutilizabile, reprezentate intern 
-# de o valoare numerica. Sunt deseori folosite in locul sirurilor de caractere pentru a da un nume reprezentativ unei valori
+# de o valoare numerica. Sunt deseori folosite in locul sirurilor de caractere 
+# pentru a da un nume reprezentativ unei valori
 
 :exemplu_simbol.class #=> Symbol
 
@@ -160,10 +161,12 @@ hash.keys #=> ['culoare', 'numar']
 hash['culoare'] #=> 'verde'
 hash['numar'] #=> 5
 
-# Incercand sa accesezi un element dintr-un hash printr-o cheie care nu exista va returna "nil".
+# Incercand sa accesezi un element dintr-un hash 
+# printr-o cheie care nu exista va returna "nil".
 hash['nimic_aici'] #=> nil
 
-# Incepand cu Ruby 1.9, este o sintaxa speciala pentru atunci cand se folosesc simboluri drept chei:
+# Incepand cu Ruby 1.9, este o sintaxa speciala 
+# pentru atunci cand se folosesc simboluri drept chei:
 
 hash_nou = { defcon: 3, actiune: true}
 
@@ -195,10 +198,11 @@ end
 # TOTUSI, Nici una nu foloseste instructiunea for
 # In locul acesteia ar trebui sa folosesti metoda "each" si sa ii trimiti un block
 # Un bloc este o bucata de cod pe care o poti trimite unei metode precum "each".
-# Este analog pentru "lambda", functii anonime, sau closures in alte limbaje de programare.
+# Este analog pentru "lambda", functii anonime,
+# sau closures in alte limbaje de programare.
 #
-# The "each" method of a range runs the block once for each element of the range.
-# Metoda "each" a unui interval, ruleaza block-ul o data pentru fiecare element din interval.
+# Metoda "each" a unui interval, ruleaza block-ul o data
+# pentru fiecare element din interval.
 # Block-ul primeste ca si parametru un index
 # Invocand metoda "each" cu un block, arata in urmatorul fel:
 
@@ -256,7 +260,8 @@ def dublu(x)
   x * 2
 end
 
-# Functille (si toate block-urile) returneaza implicit valoarea ultimei instructiuni
+# Functille (si toate block-urile) 
+# returneaza implicit valoarea ultimei instructiuni
 dublu(2) #=> 4
 
 # Parantezele sunt optionale cand rezultatul nu este ambiguu
@@ -312,7 +317,8 @@ class Om
   def initialize(nume, varsta=0)
     # Atribuie argumentul, variabilei "nume", care apartine doar unei instante
     @nume = nume
-    # Daca varsta nu este data, o sa ii atribuim valoarea implicita din lista de argumente (0, in cazul nostru)
+    # Daca varsta nu este data, o sa ii atribuim valoarea implicita
+    # din lista de argumente (0, in cazul nostru)
     @varsta = varsta
   end
 
@@ -326,14 +332,17 @@ class Om
     @nume
   end
 
-  # Functionalitatea de mai sus poate fi obtinuta folosing metoda "attr_accessor" dupa cum urmeaza:
+  # Functionalitatea de mai sus poate fi obtinuta 
+  # folosing metoda "attr_accessor" dupa cum urmeaza:
   attr_accessor :nume
 
-  # Metodele pentru a lua si a seta valoarea unei variabile pot fi de asemenea obtinute individial:
+  # Metodele pentru a lua si a seta valoarea unei variabile 
+  # pot fi de asemenea obtinute individial:
   attr_reader :nume
   attr_writer :nume
 
-  # O metoda apartinand unei clase foloseste "self" pentru a se diferentia de metodele unei instante ale clasei respective
+  # O metoda apartinand unei clase foloseste "self" pentru a se diferentia 
+  # de metodele unei instante ale clasei respective
   # Poate fi invocata doar pe clasa, si nu pe o instanta a acesteia
   def self.spune(msg)
     puts "#{msg}"
@@ -380,8 +389,10 @@ defined? @@var #=> "class variable"
 Var = "Sunt o constanta"
 defined? Var #=> "constant"
 
-# Clasele sunt de asemenea obiecte in ruby. Astfel incat clasele pot avea variabile care apartin unei instante
-# O variabila care apartine unei clase poate fi accesata de toate instantele acesteia si de clasele care o extind
+# Clasele sunt de asemenea obiecte in ruby. Astfel incat clasele 
+# pot avea variabile care apartin unei instante
+# O variabila care apartine unei clase poate fi accesata de toate 
+# instantele acesteia si de clasele care o extind
 
 # clasa parinte
 class Om
@@ -406,7 +417,8 @@ Muncitor.foo # 0
 Om.foo = 2 # 2
 Muncitor.foo # 2
 
-# Variabilele care apartin unei instante ale unei clase, nu sunt impartite de (copii acesteia) clasele care o extind
+# Variabilele care apartin unei instante ale unei clase, 
+# nu sunt impartite de (copii acesteia) clasele care o extind
 class Om
   @bar = 0
 
