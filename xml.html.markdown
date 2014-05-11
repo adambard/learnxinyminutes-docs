@@ -11,7 +11,7 @@ Unlike HTML, XML does not specifies how to display or to format data, just carry
 
 * XML Syntax
 
-```XML
+```xml
 <!-- Comments in XML are like this -->
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -72,7 +72,7 @@ regarding that document.
 
 With this tool, you can check the XML data outside the application logic.
 
-```XML
+```xml
 
 <!-- Below, you can see an simplified version of bookstore document, 
   with the addition of DTD definition.-->
