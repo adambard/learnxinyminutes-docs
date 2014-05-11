@@ -8,6 +8,7 @@ contributors:
     - ["Christopher Bess", "https://github.com/cbess"]
     - ["Jesse Johnson", "https://github.com/holocronweaver"]
     - ["Quint Guvernator", "https://github.com/qguv"]
+    - ["Jose Donizetti", "https://github.com/josedonizetti"]
 ---
 
 Go was created out of the need to get work done.  It's not the latest trend
@@ -232,6 +233,7 @@ func learnInterfaces() {
 // Functions can have variadic parameters.
 func learnVariadicParams(myStrings ...interface{}) {
     // Iterate each value of the variadic.
+    // The underbar here is ignoring the index argument of the array.
     for _, param := range myStrings {
         fmt.Println("param:", param)
     }
@@ -329,3 +331,4 @@ demonstrates the best of readable and understandable Go, Go style, and Go
 idioms.  Or you can click on a function name in [the
 documentation](http://golang.org/pkg/) and the source code comes up!
 
+Another great resource to learn Go is [Go by example](https://gobyexample.com/).
