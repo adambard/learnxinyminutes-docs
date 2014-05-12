@@ -6,6 +6,7 @@ filename: learngo-pt.go
 lang: pt-br
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
+    - ["Jose Donizetti", "https://github.com/josedonizetti"]
 translators:
     - ["Nuno Antunes", "https://github.com/ntns"]
 ---
@@ -306,3 +307,6 @@ a melhor demonstração de código fácil de ler e de perceber, do estilo Go, e 
 sua escrita idiomática. Ou então clique no nome de uma função na [documentação]
 (http://golang.org/pkg/) e veja o código fonte aparecer!
 
+Outra ótima fonte para aprender Go é o [Go by example](https://gobyexample.com/).
+Apesar de ser em inglês, é possível recodificar os exemplos para aprender sobre
+a linguagem.
