@@ -5,18 +5,25 @@ contributors:
 filename: markdown.md
 ---
 
-Markdown was created by JohnGruber in 2004. It's meant to be an easy to read and write syntax which converts easily to HTML (and now many other formats as well).
+Markdown was created by John Gruber in 2004. It's meant to be an easy to read and write syntax which converts easily to HTML (and now many other formats as well).
 
 Give me as much feedback as you want! / Feel free to fork and pull request!
 
 
-```markdown
-<!-- Markdown is a superset of HTML, so any HTML file is valid Markdown, that means we can use HTML elements in Markdown, such as the comment element, and they won't be affected by a markdown parser. However, if you create an HTML element in your markdown file, you cannot use markdown syntax within that element's contents. -->
+```
+<!-- Markdown is a superset of HTML, so any HTML file is valid Markdown, that
+means we can use HTML elements in Markdown, such as the comment element, and
+they won't be affected by a markdown parser. However, if you create an HTML
+element in your markdown file, you cannot use markdown syntax within that
+element's contents. -->
 
-<!-- Markdown also varies in implementation from one parser to a next. This guide will attempt to clarify when features are universal or when they are specific to a certain parser. -->
+<!-- Markdown also varies in implementation from one parser to a next. This
+guide will attempt to clarify when features are universal or when they are
+specific to a certain parser. -->
 
 <!-- Headers -->
-<!-- You can create HTML elements <h1> through <h6> easily by prepending the text you want to be in that element by a number of hashes (#) -->
+<!-- You can create HTML elements <h1> through <h6> easily by prepending the
+text you want to be in that element by a number of hashes (#) -->
 # This is an <h1>
 ## This is an <h2>
 ### This is an <h3>
@@ -30,7 +37,7 @@ This is an h1
 
 This is an h2
 -------------
- 
+
 <!-- Simple text styles -->
 <!-- Text can be easily styled as italic, bold, or strikethrough using markdown -->
 
@@ -44,11 +51,13 @@ __And so is this text.__
 **_As is this!_**
 *__And this!__*
 
-<!-- In Github Flavored Markdown, which is used to render markdown files on Github, we also have: -->
+<!-- In Github Flavored Markdown, which is used to render markdown files on
+Github, we also have: -->
 
 ~~This text is rendered with strikethrough.~~
 
-<!-- Paragraphs are a one or multiple adjacent lines of text separated by one or multiple blank lines. -->
+<!-- Paragraphs are a one or multiple adjacent lines of text separated by one or
+multiple blank lines. -->
 
 This is a paragraph. I'm tryping in a paragraph isn't this fun?
 
@@ -58,7 +67,8 @@ I'm still in paragraph 2 too!
 
 I'm in paragraph three!
 
-<!-- Should you ever want to insert an HTML <br /> tag, you can end a paragraph with two or more spaces and then begin a new paragraph. -->
+<!-- Should you ever want to insert an HTML <br /> tag, you can end a paragraph
+with two or more spaces and then begin a new paragraph. -->
 
 I end with two spaces (highlight me to see them).  
 
@@ -67,7 +77,8 @@ There's a <br /> above me!
 <!-- Block quotes are easy and done with the > character. -->
 
 > This is a block quote. You can either
-> manually wrap your lines and put a `>` before every line or you can let your lines get really long and wrapp on their own and it doesn't make a difference so long as they start with a `>`.
+> manually wrap your lines and put a `>` before every line or you can let your lines get really long and wrap on their own.
+> It doesn't make a difference so long as they start with a `>`.
 
 > You can also use more than one level
 >> of indentation?
@@ -98,7 +109,8 @@ or
 2. Item two
 3. Item three
 
-<!-- You don't even have to label the items correctly and markdown will still render the numbers in order, but this may not be a good idea --> 
+<!-- You don't even have to label the items correctly and markdown will still
+render the numbers in order, but this may not be a good idea -->
 
 1. Item one
 1. Item two
@@ -115,12 +127,14 @@ or
 4. Item four
 
 <!-- Code blocks -->
-<!-- You can indicate a code block (which uses the <code> element) by indenting a line with four spaces or a tab -->
+<!-- You can indicate a code block (which uses the <code> element) by indenting
+a line with four spaces or a tab -->
 
     This is code
     So is this
 
-<!-- You can also re-tab (or add an additional four spaces) for indentation inside your code -->
+<!-- You can also re-tab (or add an additional four spaces) for indentation
+inside your code -->
 
     my_array.each do |item|
         puts item
@@ -138,10 +152,12 @@ def foobar
 end
 \`\`\` <!-- here too, no backslashes, just ``` -->
 
-<-- The above text doesn't require indenting, plus Github will use syntax highlighting of the language you specify after the ``` -->
+<-- The above text doesn't require indenting, plus Github will use syntax
+highlighting of the language you specify after the ``` -->
 
 <!-- Horizontal rule (<hr />) -->
-<!-- Horizontal rules are easily added with three or more asterisks or hyphens, with or without spaces. -->
+<!-- Horizontal rules are easily added with three or more asterisks or hyphens,
+with or without spaces. -->
 
 ***
 ---
@@ -149,8 +165,8 @@ end
 ****************
 
 <!-- Links -->
-<!-- One of the best things about markdown is how easy it is to make links -->
-<!-- Put the text to display in hard brackets [] followed by the url in parentheses () -->
+<!-- One of the best things about markdown is how easy it is to make links. Put
+the text to display in hard brackets [] followed by the url in parentheses () -->
 
 [Click me!](http://test.com/)
 
@@ -164,12 +180,15 @@ end
 
 <!-- Markdown also supports reference style links -->
 
-[Click this link][link1] for more info about it! [Also check out this link][foobar] if you want to.
+[Click this link][link1] for more info about it!
+[Also check out this link][foobar] if you want to.
 
 [link1]: http://test.com/ "Cool!"
 [foobar]: http://foobar.biz/ "Alright!"
 
-<!-- The title can also be in single quotes or in parentheses, or omitted entirely. The references can be anywhere in your document and the reference IDs can be anything so long as they are unique. -->
+<!-- The title can also be in single quotes or in parentheses, or omitted
+entirely. The references can be anywhere in your document and the reference IDs
+can be anything so long as they are unique. -->
 
 <!-- There is also "implicit naming" which lets you use the link text as the id -->
 
@@ -193,7 +212,8 @@ end
 <!-- Miscellany -->
 <!-- Auto-links -->
 
-<http://testwebsite.com/> is equivalent to [http://testwebsite.com/](http://testwebsite.com/)
+<http://testwebsite.com/> is equivalent to
+[http://testwebsite.com/](http://testwebsite.com/)
 
 <!-- Auto-links for emails -->
 
@@ -201,17 +221,19 @@ end
 
 <!-- Escaping characters -->
 
-I want to type *this text surrounded by asterisks* but I don't want it to be in italics, so I do this: \*this text surrounded by asterisks\*.
+I want to type *this text surrounded by asterisks* but I don't want it to be
+in italics, so I do this: \*this text surrounded by asterisks\*.
 
 <!-- Tables -->
-<!-- Tables are only available in Github Flavored Markdown and are slightly cumbersome, but if you really want it: -->
+<!-- Tables are only available in Github Flavored Markdown and are slightly
+cumbersome, but if you really want it: -->
 
 | Col1         | Col2     | Col3          |
 | :----------- | :------: | ------------: |
 | Left-aligned | Centered | Right-aligned |
 | blah         | blah     | blah          |
 
-or, for the same results
+<!-- or, for the same results -->
 
 Col 1 | Col2 | Col3
 :-- | :-: | --:
