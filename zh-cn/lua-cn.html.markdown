@@ -9,6 +9,7 @@ contributors:
     - ["Amr Tamimi", "https://amrtamimi.com"]
 translators:
     - ["Jakukyo Friel", "http://weakish.github.io"]
+filename: learnlua-cn.lua
 ---
 
 ```lua
