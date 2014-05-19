@@ -141,13 +141,11 @@ is_dog(A) when is_atom(A), A =:= dog -> true;
 is_dog(A) -> false.
 
 % guard 序列 `G1; G2; ...; Gn` 为真，当且仅当其中任意一个 guard 表达式为真。
-% one of the guards `G1, G2, ...` evaluates to true.
 is_pet(A) when is_dog(A); is_cat(A) -> true;
 is_pet(A) -> false.
 
-% Record 使得可以将元组中的元素绑定到特定的名称。
-% Record 定义可以包含在 Erlang 源代码中，也可以放在后缀为`.hrl`的文件中。
-% Erlang 源代码可以包含这些文件。
+% Record 可以将元组中的元素绑定到特定的名称。
+% Record 定义可以包含在 Erlang 源代码中，也可以放在后缀为`.hrl`的文件中（Erlang 源代码中 include 这些文件）。
 -record(todo, {
   status = reminder,  % Default value
   who = joe,
@@ -192,7 +190,7 @@ max(X, Y) ->
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % 当遇到内部错误或显式调用时，会触发异常。
-% 显式调用包括 `throw(Exception)`, `exit(Exception)` 或
+% 显式调用包括 `throw(Exception)`, `exit(Exception)` 和
 % `erlang:error(Exception)`.
 generate_exception(1) -> a;
 generate_exception(2) -> throw(a);
