@@ -318,7 +318,7 @@ except IndexError as e:
 
 
 # Python's offers a fundamental abstraction called the Iterable.
-# An iterable is an object that can be treated as a sequence. 
+# An iterable is an object that can be treated as a sequence.
 # The object returned the range function, is an iterable.
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
@@ -336,7 +336,7 @@ our_iterable[1]  # Raises a TypeError
 our_iterator = iter(our_iterable)
 
 # Our iterator is an object that can remember the state as we traverse through it.
-# We get the next object by calling the __next__ function. 
+# We get the next object by calling the __next__ function.
 our_iterator.__next__()  #=> "one"
 
 # It maintains state as we call __next__.
@@ -357,7 +357,7 @@ list(filled_dict.keys())  #=> Returns ["one", "two", "three"]
 
 # Use "def" to create new functions
 def add(x, y):
-    print("x is %s and y is %s" % (x, y))
+    print("x is {} and y is {}".format(x, y))
     return x + y    # Return values with a return statement
 
 # Calling functions with parameters
@@ -565,9 +565,9 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [Dive Into Python](http://www.diveintopython.net/)
 * [Ideas for Python Projects](http://pythonpracticeprojects.com)
 
-* [The Official Docs](http://docs.python.org/2.6/)
+* [The Official Docs](http://docs.python.org/3/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
-* [Python Module of the Week](http://pymotw.com/2/)
+* [Python Module of the Week](http://pymotw.com/3/)
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 
 ### Dead Tree
