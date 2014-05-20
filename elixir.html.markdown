@@ -358,7 +358,7 @@ f = fn -> 2 * 2 end #=> #Function<erl_eval.20.80484245>
 spawn(f) #=> #PID<0.40.0>
 
 # `spawn` returns a pid (process identifier), you can use this pid to send
-# messages to the process. To do message passing we use the `<-` operator.
+# messages to the process. To do message passing we use the `send` operator.
 # For all of this to be useful we need to be able to receive messages. This is
 # achived with the `receive` mechanism:
 defmodule Geometry do
@@ -378,11 +378,11 @@ end
 pid = spawn(fn -> Geometry.area_loop() end) #=> #PID<0.40.0>
 
 # Send a message to `pid` that will match a pattern in the receive statement
-pid <- {:rectangle, 2, 3}
+send pid, {:rectangle, 2, 3}
 #=> Area = 6
 #   {:rectangle,2,3}
 
-pid <- {:circle, 2}
+send pid, {:circle, 2}
 #=> Area = 12.56000000000000049738
 #   {:circle,2}
 
