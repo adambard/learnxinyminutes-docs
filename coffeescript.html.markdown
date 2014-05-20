@@ -95,3 +95,8 @@ eat food for food in foods when food isnt 'chocolate'
 #  }
 #}
 ```
+
+## Additional resources
+
+- [Smooth CoffeeScript](http://autotelicum.github.io/Smooth-CoffeeScript/)
+- [CoffeeScript Ristretto](https://leanpub.com/coffeescript-ristretto/read)
