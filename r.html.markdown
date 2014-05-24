@@ -188,7 +188,7 @@ class(-Inf)	# "numeric"
 10L + 66L # 76      # integer plus integer gives integer
 53.2 - 4  # 49.2    # numeric minus numeric gives numeric
 2.0 * 2L  # 4       # numeric times integer gives numeric
-3L / 4    # 0.75    # integer over integer gives numeric
+3L / 4    # 0.75    # integer over numeric gives numeric
 3 %% 2	  # 1       # the remainder of two numerics is another numeric
 # Illegal arithmetic yeilds you a "not-a-number":
 0 / 0 # NaN
@@ -241,27 +241,29 @@ factor(c("female", "female", "male", "NA", "female"))
 # Levels: female male NA
 # The "levels" are the values the categorical data can take
 levels(factor(c("male", "male", "female", "NA", "female"))) # "female" "male"   "NA" 
-# If a factor has length 1, its levels will have length 1, too
+# If a factor vector has length 1, its levels will have length 1, too
 length(factor("male")) # 1
 length(levels(factor("male"))) # 1
 # Factors are commonly seen in data frames, a data structure we will cover later
-# in this tutorial:
 data(infert) # "Infertility after Spontaneous and Induced Abortion"
 levels(infert$education) # "0-5yrs"  "6-11yrs" "12+ yrs"
 
-# WEIRD TYPES
-# A quick summary of some of the weirder types in R
-class(Inf)	# "numeric"
-class(-Inf)	# "numeric"
-class(NaN)	# "numeric"
-class(NA)	# "logical"
+# NULL
+# "NULL" is a weird one; use it to "blank out" a vector
 class(NULL)	# NULL
+parakeet
+# =>
+# [1] "beak"     "feathers" "wings"    "eyes"    
+parakeet <- NULL
+parakeet
+# =>
+# NULL
 
 # TYPE COERCION
 # Type-coercion is when you force a value to take on a different type
 as.character(c(6, 8)) # "6" "8"
 as.logical(c(1,0,1,1)) # TRUE FALSE  TRUE  TRUE
-# If you put elements of different classes into a vector, weird coercions happen:
+# If you put elements of different types into a vector, weird coercions happen:
 c(TRUE, 4) # 1 4
 c("dog", TRUE, 4) # "dog"  "TRUE" "4"
 as.numeric("Bilbo")
@@ -332,8 +334,6 @@ jiggle(5)	# 5±ε. After set.seed(2716057), jiggle(5)==5.005043
 # ONE-DIMENSIONAL
 
 # Let's start from the very beginning, and with something you already know: vectors.
-# As explained above, every single element in R is already a vector
-# Make sure the elements of long vectors all have the same type
 vec <- c(8, 9, 10, 11)
 vec	#  8  9 10 11
 # We ask for specific elements by subsetting with square brackets
@@ -345,9 +345,9 @@ month.name[9]	# "September"
 c(6, 8, 7, 5, 3, 0, 9)[3]	# 7
 # We can also search for the indices of specific components,
 which(vec %% 2 == 0)	# 1 3
-# grab just the first or last entry in the vector,
+# grab just the first or last few entries in the vector,
 head(vec, 1)	# 8
-tail(vec, 1)	# 11
+tail(vec, w)	# 10 11
 # or figure out if a certain value is in the vector
 any(vec == 10) # TRUE
 # If an index "goes over" you'll get NA:
@@ -358,7 +358,7 @@ length(vec)	# 4
 vec * 4	# 16 20 24 28
 vec[2:3] * 5	# 25 30
 any(vec[2:3] == 8) # FALSE
-# and there are many built-in functions to summarize vectors
+# and R has many built-in functions to summarize vectors
 mean(vec)	# 9.5
 var(vec)	# 1.666667
 sd(vec)		# 1.290994
@@ -368,6 +368,7 @@ sum(vec)	# 38
 # Some more nice built-ins:
 5:15	# 5  6  7  8  9 10 11 12 13 14 15
 seq(from=0, to=31337, by=1337)
+# =>
 #  [1]     0  1337  2674  4011  5348  6685  8022  9359 10696 12033 13370 14707
 # [13] 16044 17381 18718 20055 21392 22729 24066 25403 26740 28077 29414 30751
 
@@ -427,11 +428,11 @@ mat3
 #      [,1] [,2] [,3] [,4]
 # [1,]    1    2    4    5
 # [2,]    6    7    0    4
-# Aah, everything of the same class. No coercions. Much better.
+# Ah, everything of the same class. No coercions. Much better.
 
 # TWO-DIMENSIONAL (DIFFERENT CLASSES)
 
-# For columns of different classes, use the data frame
+# For columns of different types, use a data frame
 # This data structure is so useful for statistical programming,
 # a version of it was added to Python in the package "pandas".
 
@@ -465,11 +466,11 @@ students$year	# 3  2  2  1  0 -1
 students[,2]	# 3  2  2  1  0 -1
 students[,"year"]	# 3  2  2  1  0 -1
 
-# A popular replacement for the data.frame structure is the data.table
+# An augmented version of the data.frame structure is the data.table
 # If you're working with huge or panel data, or need to merge a few data
 # sets, data.table can be a good choice. Here's a whirlwind tour:
-install.packages("data.table")
-require(data.table)
+install.packages("data.table") # download the package from CRAN
+require(data.table) # load it
 students <- as.data.table(students)
 students # note the slightly different print-out
 # =>
@@ -480,15 +481,17 @@ students # note the slightly different print-out
 # 4:    Cho    1     R
 # 5:  Draco    0     S
 # 6:  Ginny   -1     G
-students[name=="Ginny"]
+students[name=="Ginny"] # get rows with name == "Ginny"
 # =>
 #     name year house
 # 1: Ginny   -1     G
-students[year==2]
+students[year==2] # get rows with year == 2
 # =>
 #      name year house
 # 1:   Fred    2     G
 # 2: George    2     G
+# data.table makes merging two data sets easy
+# let's make another data.table to merge with students
 founders <- data.table(house=c("G","H","R","S"),
                        founder=c("Godric","Helga","Rowena","Salazar"))
 founders
@@ -500,7 +503,7 @@ founders
 # 4:     S Salazar
 setkey(students, house)
 setkey(founders, house)
-students <- founders[students] # merge the two data sets
+students <- founders[students] # merge the two data sets by matching "house"
 setnames(students, c("house","houseFounderName","studentName","year"))
 students[,order(c("name","year","house","houseFounderName")), with=F]
 # =>
@@ -512,9 +515,51 @@ students[,order(c("name","year","house","houseFounderName")), with=F]
 # 5:         Cho    1     R           Rowena
 # 6:       Draco    0     S          Salazar
 
-# MULTI-DIMENSIONAL (ALL OF ONE CLASS)
+# data.table makes summary tables easy
+# =>
+# students[,sum(year),by=house]
+#    house V1
+# 1:     G  3
+# 2:     H  3
+# 3:     R  1
+# 4:     S  0
+
+# To drop a column from a data.frame or data.table,
+# assign it the NULL value
+students$houseFounderName <- NULL
+students
+# =>
+#    studentName year house
+# 1:        Fred    2     G
+# 2:      George    2     G
+# 3:       Ginny   -1     G
+# 4:      Cedric    3     H
+# 5:         Cho    1     R
+# 6:       Draco    0     S
+
+# Drop a row by subsetting
+# Using data.table:
+students[studentName != "Draco"]
+# =>
+#    house studentName year
+# 1:     G        Fred    2
+# 2:     G      George    2
+# 3:     G       Ginny   -1
+# 4:     H      Cedric    3
+# 5:     R         Cho    1
+# Using data.frame:
+students <- as.data.frame(students)
+students[students$house != "G",]
+# =>
+#   house houseFounderName studentName year
+# 4     H            Helga      Cedric    3
+# 5     R           Rowena         Cho    1
+# 6     S          Salazar       Draco    0
+
+# MULTI-DIMENSIONAL (ALL ELEMENTS OF ONE TYPE)
 
 # Arrays creates n-dimensional tables
+# All elements must be of the same type
 # You can make a two-dimensional table (sort of like a matrix)
 array(c(c(1,2,4,5),c(8,9,3,6)), dim=c(2,4))
 # =>
