@@ -516,8 +516,8 @@ students[,order(c("name","year","house","houseFounderName")), with=F]
 # 6:       Draco    0     S          Salazar
 
 # data.table makes summary tables easy
+students[,sum(year),by=house]
 # =>
-# students[,sum(year),by=house]
 #    house V1
 # 1:     G  3
 # 2:     H  3
