@@ -307,7 +307,7 @@ on a new line! ""Wow!"", the masses cried";
             // try parse will default to type default on failure
             // in this case: 0
             int tryInt;
-            if (int.TryParse("123", out tryInt)) // Funciton is boolean
+            if (int.TryParse("123", out tryInt)) // Function is boolean
                 Console.WriteLine(tryInt);       // 123
 
             // Convert Integer To String
