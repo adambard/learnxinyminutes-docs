@@ -10,7 +10,7 @@ contributors:
 
 Some examples are from http://learnxinyminutes.com/docs/racket/ .
 
-```lisp
+```scheme
 ;;; Comments
 # comments
 
