@@ -154,7 +154,7 @@ int main() {
     int multi_array[2][5] = {
         {1, 2, 3, 4, 5},
         {6, 7, 8, 9, 0}
-    }
+    };
     //access elements:
     int array_int = multi_array[0][2]; // => 3
 
@@ -215,7 +215,7 @@ int main() {
     z = (a > b) ? a : b; // => 10 "if a > b return a, else return b." 
 
     //Increment and decrement operators:
-    char *s = "iLoveC"
+    char *s = "iLoveC";
     int j = 0;
     s[j++]; // => "i". Returns the j-th item of s THEN increments value of j.
     j = 0; 
@@ -251,7 +251,7 @@ int main() {
     // While loops exist
     int ii = 0;
     while (ii < 10) { //ANY value not zero is true. 
-        printf("%d, ", ii++); // ii++ increments ii AFTER using it's current value.
+        printf("%d, ", ii++); // ii++ increments ii AFTER using its current value.
     } // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
     printf("\n");
@@ -259,7 +259,7 @@ int main() {
     int kk = 0;
     do {
         printf("%d, ", kk);
-    } while (++kk < 10); // ++kk increments kk BEFORE using it's current value.
+    } while (++kk < 10); // ++kk increments kk BEFORE using its current value.
     // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
     printf("\n");
@@ -367,7 +367,7 @@ int main() {
     // This works because arrays often decay into pointers to their first element.
     // For example, when an array is passed to a function or is assigned to a pointer,
     // it decays into (implicitly converted to) a pointer.
-    // Exceptions: when the array is the argument of the `&` (address-od) operator:
+    // Exceptions: when the array is the argument of the `&` (address-of) operator:
     int arr[10];
     int (*ptr_to_arr)[10] = &arr; // &arr is NOT of type `int *`!
                                   // It's of type "pointer to array" (of ten `int`s).
@@ -387,7 +387,7 @@ int main() {
     // You can also dynamically allocate contiguous blocks of memory with the
     // standard library function malloc, which takes one argument of type size_t
     // representing the number of bytes to allocate (usually from the heap, although this
-    // may not be true on e. g. embedded systems - the C standard says nothing about it).
+    // may not be true on e.g. embedded systems - the C standard says nothing about it).
     int *my_ptr = malloc(sizeof(*my_ptr) * 20);
     for (xx = 0; xx < 20; xx++) {
         *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx
@@ -405,7 +405,7 @@ int main() {
     // Strings are arrays of char, but they are usually represented as a
     // pointer-to-char (which is a pointer to the first element of the array).
     // It's good practice to use `const char *' when referring to a string literal,
-    // since string literals shall not be modified (i. e. "foo"[0] = 'a' is ILLEGAL.)
+    // since string literals shall not be modified (i.e. "foo"[0] = 'a' is ILLEGAL.)
     const char *my_str = "This is my very own string literal";
     printf("%c\n", *my_str); // => 'T'
 
