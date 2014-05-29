@@ -347,7 +347,7 @@ c(6, 8, 7, 5, 3, 0, 9)[3]	# 7
 which(vec %% 2 == 0)	# 1 3
 # grab just the first or last few entries in the vector,
 head(vec, 1)	# 8
-tail(vec, w)	# 10 11
+tail(vec, 2)	# 10 11
 # or figure out if a certain value is in the vector
 any(vec == 10) # TRUE
 # If an index "goes over" you'll get NA:
