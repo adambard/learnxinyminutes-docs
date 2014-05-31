@@ -123,9 +123,4 @@ With this tool, you can check the XML data outside the application logic.
     <price>30.00</price>
   </book>
 </bookstore>
-
-
 ```
-      
-      
-      
