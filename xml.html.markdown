@@ -37,7 +37,7 @@ Unlike HTML, XML does not specifies how to display or to format data, just carry
 </bookstore>
 
 <!-- Above is a typical XML file.
-  It starts with a declaration, informing some metadata (optional)
+  It starts with a declaration, informing some metadata (optional).
   
   XML uses a tree structure. Above, the root node is 'bookstore', which has
   three child nodes, all 'books'. Those nodes has more child nodes, and so on... 
@@ -51,8 +51,8 @@ Unlike HTML, XML does not specifies how to display or to format data, just carry
       Usually, the XML parser uses this information to store the data properly.
       It is characterized by appearing in parenthesis within the opening tag
   2 - Elements -> That's pure data.
-      That's what the parser will retrive from the XML file.
-      Elements appear between the open and close tags, without paranthesis. -->
+      That's what the parser will retrieve from the XML file.
+      Elements appear between the open and close tags, without parenthesis. -->
       
   
 <!-- Below, an element with two attributes -->
@@ -64,7 +64,7 @@ Unlike HTML, XML does not specifies how to display or to format data, just carry
 * Well-Formated Document x Validation
 
 A XML document is well-formated if it is syntactically correct.
-However, is possible to inject more constraints in the document,
+However, it is possible to inject more constraints in the document,
 using document definitions, such as DTD and  XML Schema.
 
 A XML document which follows a document definition is called valid, 
@@ -100,7 +100,7 @@ With this tool, you can check the XML data outside the application logic.
 
 <!-- The DTD starts with a declaration.
   Following, the root node is declared, requiring 1 or more child nodes 'book'.
-  Eeach 'book' should contain exactly one 'title' and 'price' and an attribute
+  Each 'book' should contain exactly one 'title' and 'price' and an attribute
   called 'category', with "Literature" as its default value.
   The 'title' and 'price' nodes contain a parsed character data.-->
 
@@ -123,9 +123,4 @@ With this tool, you can check the XML data outside the application logic.
     <price>30.00</price>
   </book>
 </bookstore>
-
-
 ```
-      
-      
-      
