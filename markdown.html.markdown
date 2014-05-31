@@ -77,7 +77,8 @@ There's a <br /> above me!
 <!-- Block quotes are easy and done with the > character. -->
 
 > This is a block quote. You can either
-> manually wrap your lines and put a `>` before every line or you can let your lines get really long and wrap on their own.
+> manually wrap your lines and put a `>` before every line or you can let your lines
+> get really long and wrap on their own.
 > It doesn't make a difference so long as they start with a `>`.
 
 > You can also use more than one level
