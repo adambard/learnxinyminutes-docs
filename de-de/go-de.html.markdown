@@ -190,37 +190,37 @@ love:
     learnInterfaces() // Jetzt zum interessanten Teil!
 }
 
-// Define Stringer as an interface type with one method, String.
+// Definiere "Stringer" als ein Interface mit einer Methode: String
 type Stringer interface {
     String() string
 }
 
-// Define pair as a struct with two fields, ints named x and y.
+// Definiere ein Paar als struct mit zwei Feldern, Integers mit Namen x & y.
 type pair struct {
     x, y int
 }
 
-// Define a method on type pair.  Pair now implements Stringer.
-func (p pair) String() string { // p is called the "receiver"
-    // Sprintf is another public function in package fmt.
-    // Dot syntax references fields of p.
+// Definiere eine Methode von "pair". Dieser Typ erfüllt jetzt das Stringer interface.
+func (p pair) String() string { // p ist der Empfänger
+    // Sprintf ist eine weitere öffentliche Funktion von fmt.
+    // Der Syntax mit Punkt greift auf die Felder zu.
     return fmt.Sprintf("(%d, %d)", p.x, p.y)
 }
 
 func learnInterfaces() {
-    // Brace syntax is a "struct literal."  It evaluates to an initialized
-    // struct.  The := syntax declares and initializes p to this struct.
+    // Der Klammer-Syntax ist ein "struct literal". Es ist ein vollkommen
+    // initialisiertes struct. Der := Syntax deklariert und initialisiert p.
     p := pair{3, 4}
-    fmt.Println(p.String()) // call String method of p, of type pair.
-    var i Stringer          // declare i of interface type Stringer.
-    i = p                   // valid because pair implements Stringer
-    // Call String method of i, of type Stringer.  Output same as above.
+    fmt.Println(p.String()) // Aufruf der String() Methode von p.
+    var i Stringer          // Deklariere i vom Typ: Stringer
+    i = p                   // Ok, weil p auch vom Typ Stringer ist.
+    // Aufruf der String Methode von i, gleiche Ausgabe wie zuvor.
     fmt.Println(i.String())
 
-    // Functions in the fmt package call the String method to ask an object
-    // for a printable representation of itself.
-    fmt.Println(p) // output same as above. Println calls String method.
-    fmt.Println(i) // output same as above
+    // Funktionen des fmt-Packets rufen die String() Methode auf um eine
+    // druckbare variante des Empfängers zu erhalten.
+    fmt.Println(p) // gleiche Ausgabe wie zuvor
+    fmt.Println(i) // und wieder die gleiche Ausgabe wie zuvor
 
     learnErrorHandling()
 }
