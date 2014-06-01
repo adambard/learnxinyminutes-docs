@@ -39,7 +39,7 @@ import (
 
 // Es folgt die Definition einer Funktions, in diesem Fall von "main". Auch hier
 // ist der Name wieder besonders. "main" markiert den Eintrittspunkt des
-// Programms. Vergessen sie nicht die geschweiften Klammern!
+// Programms. Vergessen Sie nicht die geschweiften Klammern!
 func main() {
     // Println gibt eine Zeile zu stdout aus.
     // Der Prefix "fmt" bestimmt das Packet aus welchem die Funktion stammt.
@@ -49,14 +49,17 @@ func main() {
     beyondHello()
 }
 
-// Functions have parameters in parentheses.
-// If there are no parameters, empty parentheses are still required.
+// Funktionen können Parameter akzeptieren, diese werden in Klammern deklariert,
+// die aber auch bei keinen Parametern erforderlich sind.
 func beyondHello() {
-    var x int // Variable declaration.  Variables must be declared before use.
-    x = 3     // Variable assignment.
-    // "Short" declarations use := to infer the type, declare, and assign.
+    var x int // Deklaration einer Variable, muss vor Gebrauch geschehen.
+    x = 3     // Zuweisung eines Werts.
+    // Kurze Deklaration: Benutzen Sie ":=" um die Typisierung automatisch zu
+    // folgern, die Variable zu deklarieren und ihr einen Wert zu zuweisen.
     y := 4
-    sum, prod := learnMultiple(x, y)        // function returns two values
+
+    // Eine Funktion mit mehreren Rückgabewerten.
+    sum, prod := learnMultiple(x, y)
     fmt.Println("sum:", sum, "prod:", prod) // simple output
     learnTypes()                            // < y minutes, learn more!
 }
