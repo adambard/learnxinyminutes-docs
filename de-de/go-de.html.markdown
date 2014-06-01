@@ -137,54 +137,57 @@ func expensiveComputation() int {
 }
 
 func learnFlowControl() {
-    // If statements require brace brackets, and do not require parens.
+    // Bedingte Anweisungen verlangen nach geschweiften Klammern, normale
+    // Klammern um die Bedingung werden aber nicht gebraucht.
     if true {
-        fmt.Println("told ya")
+        fmt.Println("hab's dir ja gesagt!")
     }
-    // Formatting is standardized by the command line command "go fmt."
+    // Die Formattierung ist durch den Befehl "go fmt" standardisiert
     if false {
-        // pout
+        // nicht hier
     } else {
-        // gloat
+        // sonder hier! spielt die Musik
     }
-    // Use switch in preference to chained if statements.
+
+    // Benutzen Sie ein "switch" Statement anstatt eine Anreihung von if-s
     x := 1
     switch x {
     case 0:
     case 1:
-        // cases don't "fall through"
+        // Einzelne Fälle fallen nicht zum nächsten durch!
     case 2:
-        // unreached
+        // wird nicht ausgeführt
     }
-    // Like if, for doesn't use parens either.
-    for x := 0; x < 3; x++ { // ++ is a statement
-        fmt.Println("iteration", x)
+    // Wie bei "if", braucht "for" auch keine Klammern um die Bedingung
+    for x := 0; x < 3; x++ { // ++ ist ein Statement
+        fmt.Println(x, "-te Iteration")
     }
-    // x == 1 here.
+    // Ab hier gilt wieder: x == 1
 
-    // For is the only loop statement in Go, but it has alternate forms.
-    for { // infinite loop
-        break    // just kidding
-        continue // unreached
+    // For ist die einzige Schleifenform in Go, sie hat aber mehrere Formen:
+    for { // Endloschleife
+        break    // nur ein Spaß
+        continue // wird nie ausgeführt
     }
-    // As with for, := in an if statement means to declare and assign y first,
-    // then test y > x.
+
+    // Wie bei for, bedeutet := in einer Bedingten Anweisung zunächst die
+    // Zuweisung und erst dann die Überprüfung der Bedingung.
     if y := expensiveComputation(); y > x {
         x = y
     }
-    // Function literals are closures.
+    // Funktionsliterale sind "closures"
     xBig := func() bool {
-        return x > 100 // references x declared above switch statement.
+        return x > 100 // Verweist auf x, deklariert vor dem switch
     }
-    fmt.Println("xBig:", xBig()) // true (we last assigned 1e6 to x)
-    x /= 1e5                     // this makes it == 10
-    fmt.Println("xBig:", xBig()) // false now
+    fmt.Println("xBig:", xBig()) // true (im moment gilt: x == 1e6)
+    x /= 1e5                     // dies macht x == 10
+    fmt.Println("xBig:", xBig()) // jetzt: false
 
-    // When you need it, you'll love it.
+    // Wenn Sie's brauchen, werden Sie's lieben!
     goto love
 love:
 
-    learnInterfaces() // Good stuff coming up!
+    learnInterfaces() // Jetzt zum interessanten Teil!
 }
 
 // Define Stringer as an interface type with one method, String.
