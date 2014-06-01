@@ -60,62 +60,63 @@ func beyondHello() {
 
     // Eine Funktion mit mehreren Rückgabewerten.
     sum, prod := learnMultiple(x, y)
-    fmt.Println("sum:", sum, "prod:", prod) // simple output
-    learnTypes()                            // < y minutes, learn more!
+
+    fmt.Println("sum:", sum, "prod:", prod) // Simple Ausgabe
+    learnTypes()                            // In < y Minuten lernen Sie mehr!
 }
 
-// Functions can have parameters and (multiple!) return values.
+// Funktionen können mehrere Parameter und (mehrere!) Rückgabewerte haben.
 func learnMultiple(x, y int) (sum, prod int) {
-    return x + y, x * y // return two values
+    return x + y, x * y // Wiedergabe zweier Werte
 }
 
-// Some built-in types and literals.
+// Überblick ueber einige eingebaute Typen und Literale.
 func learnTypes() {
-    // Short declaration usually gives you what you want.
-    s := "Learn Go!" // string type
+    // Kurze Deklarationen sind die Norm.
+    s := "Lernen Sie Go!" // Zeichenketten-Typ
 
-    s2 := `A "raw" string literal
-can include line breaks.` // same string type
+    s2 := `Eine "raw" Zeichenkette kann
+Zeilenumbrüche beinhalten.` // Selber Zeichenketten-Typ
 
-    // non-ASCII literal.  Go source is UTF-8.
-    g := 'Σ' // rune type, an alias for uint32, holds a unicode code point
+    // nicht-ASCII Literal.  Go Quelltext ist UTF-8 kompatibel.
+    g := 'Σ' // Ein Runen-Typ, alias uint32, gebraucht für unicode code points.
 
-    f := 3.14195 // float64, an IEEE-754 64-bit floating point number
-    c := 3 + 4i  // complex128, represented internally with two float64s
+    f := 3.14195 // float64, eine IEEE-754 64-bit Dezimalzahl
+    c := 3 + 4i  // complex128, besteht intern aus zwei float64-er
 
-    // Var syntax with an initializers.
-    var u uint = 7 // unsigned, but implementation dependent size as with int
+    // "var"-Syntax mit Initalwert
+    var u uint = 7 // Vorzeichenlos, aber die Größe ist implementationsabhängig
     var pi float32 = 22. / 7
 
-    // Conversion syntax with a short declaration.
-    n := byte('\n') // byte is an alias for uint8
+    // Umwandlungs-Syntax mit kurzer Deklaration
+    n := byte('\n') // byte ist ein Alias für uint8
 
-    // Arrays have size fixed at compile time.
-    var a4 [4]int           // an array of 4 ints, initialized to all 0
-    a3 := [...]int{3, 1, 5} // an array of 3 ints, initialized as shown
+    // Arrays haben bei Kompile-Zeit festgelegte Größen
+    var a4 [4]int           // Ein Array mit 4 ints, alle mit Initialwert 0
+    a3 := [...]int{3, 1, 5} // Ein Array mit 4 ints, Initialwerte wie angezeigt
 
-    // Slices have dynamic size.  Arrays and slices each have advantages
-    // but use cases for slices are much more common.
-    s3 := []int{4, 5, 9}    // compare to a3.  no ellipsis here
-    s4 := make([]int, 4)    // allocates slice of 4 ints, initialized to all 0
-    var d2 [][]float64      // declaration only, nothing allocated here
-    bs := []byte("a slice") // type conversion syntax
+    // "slices" haben eine dynamische Größe. Arrays und Slices haben beide ihre
+    // Vorzüge, aber slices werden viel häufiger verwendet
+    s3 := []int{4, 5, 9}       // Vergleichen Sie mit a3, hier: keine Ellipse
+    s4 := make([]int, 4)       // Weist Speicher für 4 ints zu, alle mit Initialwert 0
+    var d2 [][]float64         // Nur eine Deklaration, keine Speicherzuweisung
+    bs := []byte("eine slice") // Umwandlungs-Syntax
 
-    p, q := learnMemory() // declares p, q to be type pointer to int.
-    fmt.Println(*p, *q)   // * follows a pointer.  This prints two ints.
+    p, q := learnMemory() // Deklariert p & q als Zeiger zu einer int.
+    fmt.Println(*p, *q)   // Die gibt die zwei Werte aus. "*" für den Zugriff
 
-    // Maps are a dynamically growable associative array type, like the
-    // hash or dictionary types of some other languages.
-    m := map[string]int{"three": 3, "four": 4}
-    m["one"] = 1
+    // "Maps" sind dynamische Datenstrukturen mit variabler Größe. Sie sind wie
+    // "hashs" oder "dictionaries" aus anderen Sprachen.
+    m := map[string]int{"drei": 3, "vier": 4}
+    m["eins"] = 1
 
-    // Unused variables are an error in Go.
-    // The underbar lets you "use" a variable but discard its value.
+    // Ungebrauchte Variablen sind Fehler in Go
+    // Der Unterstrich wird verwendet um einen Wert zu verwerfen.
     _, _, _, _, _, _, _, _, _ = s2, g, f, u, pi, n, a3, s4, bs
-    // Output of course counts as using a variable.
+    // Die Ausgabe zählt natürlich auch als Gebrauch
     fmt.Println(s, c, a4, s3, d2, m)
 
-    learnFlowControl() // back in the flow
+    learnFlowControl() // Auf zum Kontrollfluss!
 }
 
 // Go is fully garbage collected.  It has pointers but no pointer arithmetic.
