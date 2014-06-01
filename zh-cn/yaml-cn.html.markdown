@@ -1,26 +1,28 @@
 ---
 language: yaml
-filename: learnyaml.yaml
 contributors:
   - ["Adam Brenecki", "https://github.com/adambrenecki"]
+translators:
+  - ["Zach Zhang", "https://github.com/checkcheckzz"]
+filename: learnyaml-cn.yaml
+lang: zh-cn
 ---
 
-YAML is a data serialisation language designed to be directly writable and
-readable by humans.
+YAML是一个数据序列化语言，被设计成人类直接可写可读的。
 
-It's a strict superset of JSON, with the addition of syntactically
-significant newlines and indentation, like Python. Unlike Python, however,
-YAML doesn't allow literal tab characters at all.
+它是JSON的严格超集，增加了语法显著换行符和缩进，就像Python。但和Python不一样，
+YAML根本不容许文字制表符。
+
 
 ```yaml
-# Comments in YAML look like this.
+# YAML中的注解看起来像这样。
 
 ################
-# SCALAR TYPES #
+# 标量类型 #
 ################
 
-# Our root object (which continues for the entire document) will be a map,
-# which is equivalent to a dictionary, hash or object in other languages.
+# 我们的根对象 (它们在整个文件里延续) 将会是一个地图，
+# 它等价于在别的语言里的一个字典，哈西表或对象。
 key: value
 another_key: Another value goes here.
 a_number_value: 100
@@ -28,12 +30,11 @@ scientific_notation: 1e+12
 boolean: true
 null_value: null
 key with spaces: value
-# Notice that strings don't need to be quoted. However, they can be.
-however: "A string, enclosed in quotes."
+# 注意到字符串不需要被引用。但是，它们可以被引用。
 "Keys can be quoted too.": "Useful if you want to put a ':' in your key."
 
-# Multiple-line strings can be written either as a 'literal block' (using |),
-# or a 'folded block' (using '>').
+# 多行字符串既可以写成像一个'文字块'(使用 |)，
+# 或像一个'折叠块'(使用 '>')。
 literal_block: |
     This entire block of text will be the value of the 'literal_block' key,
     with line breaks being preserved.
@@ -53,29 +54,28 @@ folded_style: >
         this text will appear over two lines.
 
 ####################
-# COLLECTION TYPES #
+# 集合类型 #
 ####################
 
-# Nesting is achieved by indentation.
+# 嵌套是通过缩进完成的。
 a_nested_map:
     key: value
     another_key: Another Value
     another_nested_map:
         hello: hello
 
-# Maps don't have to have string keys.
+# 图不用有字符串键值。
 0.25: a float key
 
-# Keys can also be multi-line objects, using ? to indicate the start of a key.
+# 键值也可以是多行对象，用?表明键值的开始。
 ? |
     This is a key
     that has multiple lines
 : and this is its value
 
-# YAML also allows collection types in keys, but many programming languages
-# will complain.
+# YAML也容许键值是集合类型，但是很多语言将会抱怨。
 
-# Sequences (equivalent to lists or arrays) look like this:
+# 序列 (等价于表或数组) 看起来像这样：
 a_sequence:
     - Item 1
     - Item 2
@@ -87,51 +87,48 @@ a_sequence:
         - This is a sequence
         - inside another sequence
 
-# Since YAML is a superset of JSON, you can also write JSON-style maps and
-# sequences:
+# 因为YAML是JSON的超集，你也可以写JSON风格的地图和序列：
 json_map: {"key": "value"}
 json_seq: [3, 2, 1, "takeoff"]
 
 #######################
-# EXTRA YAML FEATURES #
+# 其余的YAML特点 #
 #######################
 
-# YAML also has a handy feature called 'anchors', which let you easily duplicate
-# content across your document. Both of these keys will have the same value:
+# YAML还有一个方便的特点叫'锚'，它让你简单地在整个文件里重复内容。
+# 两个键值将会有相同的值：
 anchored_content: &anchor_name This string will appear as the value of two keys.
 other_anchor: *anchor_name
 
-# YAML also has tags, which you can use to explicitly declare types.
+# YAML还有标签，你可以用它显示地声明类型。
 explicit_string: !!str 0.5
-# Some parsers implement language specific tags, like this one for Python's
-# complex number type.
+# 一些解析器实现特定语言的标签，就像这个为了Python的复数类型。
 python_complex_number: !!python/complex 1+2j
 
 ####################
-# EXTRA YAML TYPES #
+# 其余的YAML类型 #
 ####################
 
-# Strings and numbers aren't the only scalars that YAML can understand.
-# ISO-formatted date and datetime literals are also parsed.
+# 字符串和数字不是仅有的YAML可以理解的标量。
+# ISO 格式的日期和日期时间文字也是可以被解析的。
 datetime: 2001-12-15T02:59:43.1Z
 datetime_with_spaces: 2001-12-14 21:59:43.10 -5
 date: 2002-12-14
 
-# The !!binary tag indicates that a string is actually a base64-encoded
-# representation of a binary blob.
+# 这个!!binary标签表明一个字符串实际上是一个二进制blob的base64编码表示。
 gif_file: !!binary |
     R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
     OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
     +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
     AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
 
-# YAML also has a set type, which looks like this:
+# YAML还有一个集合类型，它看起来像这样：
 set:
     ? item1
     ? item2
     ? item3
 
-# Like Python, sets are just maps with null values; the above is equivalent to:
+# 像Python一样，集合仅是有null数值的地图；上面的集合等价于：
 set2:
     item1: null
     item2: null
