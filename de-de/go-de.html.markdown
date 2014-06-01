@@ -287,32 +287,32 @@ func learnConcurrency() {
     learnWebProgramming() // Go kann es und Sie hoffentlich auch bald.
 }
 
-// A single function from package http starts a web server.
+// Eine einzige Funktion aus dem http-Packet kann einen Webserver starten.
 func learnWebProgramming() {
-    // ListenAndServe first parameter is TCP address to listen at.
-    // Second parameter is an interface, specifically http.Handler.
+    // Der erste Parameter von "ListenAndServe" ist eine TCP Addresse an die
+    // sich angeschlossen werden soll.
+    // Der zweite Parameter ist ein Interface, speziell: ein http.Handler
     err := http.ListenAndServe(":8080", pair{})
-    fmt.Println(err) // don't ignore errors
+    fmt.Println(err) // Fehler sollte man nicht ignorieren!
 }
 
-// Make pair an http.Handler by implementing its only method, ServeHTTP.
+// Wir lassen "pair" das http.Handler Interface erfüllen indem wir seine einzige
+// Methode implementieren: ServeHTTP
 func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-    // Serve data with a method of http.ResponseWriter
-    w.Write([]byte("You learned Go in Y minutes!"))
+    // Senden von Daten mit einer Methode des http.ResponseWriter
+    w.Write([]byte("Sie habe Go in Y Minuten gelernt!"))
 }
 ```
 
-## Further Reading
+## Weitere Resourcen
+Alles zu Go finden Sie auf der [offiziellen Go Webseite](http://golang.org/).
+Dort können sie der Tutorial folgen, interaktiv Quelltext ausprobieren und viel
+Dokumentation lesen.
 
-The root of all things Go is the [official Go web site](http://golang.org/).
-There you can follow the tutorial, play interactively, and read lots.
-
-The language definition itself is highly recommended.  It's easy to read
-and amazingly short (as language definitions go these days.)
-
-On the reading list for students of Go is the [source code to the standard
-library](http://golang.org/src/pkg/).  Comprehensively documented, it
-demonstrates the best of readable and understandable Go, Go style, and Go
-idioms.  Or you can click on a function name in [the
-documentation](http://golang.org/pkg/) and the source code comes up!
+Auch zu empfehlen ist die Spezifikation von Go, die nach heutigen Standards sehr
+kurz und auch gut verständlich formuliert ist. Auf der Leseliste von Go-Neulingen
+ist außerdem der Quelltext der [Go standard Bibliothek](http://golang.org/src/pkg/).
+Gut documentiert, demonstriert sie leicht zu verstehendes und im idiomatischen Stil
+verfasstes Go. Erreichbar ist der Quelltext auch durch das Klicken der Funktions-
+Namen in der [offiziellen Dokumentation von Go](http://golang.org/pkg/).
 
