@@ -244,45 +244,47 @@ func learnErrorHandling() {
     learnConcurrency()
 }
 
-// c is a channel, a concurrency-safe communication object.
+// c ist ein Kannal, ein sicheres Kommunikationsmedium.
 func inc(i int, c chan int) {
-    c <- i + 1 // <- is the "send" operator when a channel appears on the left.
+    c <- i + 1 // <- ist der "send" Operator, wenn ein Kannal auf der Linken ist
 }
 
-// We'll use inc to increment some numbers concurrently.
+// Wir verwenden "inc" um Zahlen parallel zu erhöhen.
 func learnConcurrency() {
-    // Same make function used earlier to make a slice.  Make allocates and
-    // initializes slices, maps, and channels.
+    // Die selbe "make"-Funktion wie vorhin. Sie initialisiert Speicher für
+    // maps, slices und Kannäle.
     c := make(chan int)
-    // Start three concurrent goroutines.  Numbers will be incremented
-    // concurrently, perhaps in parallel if the machine is capable and
-    // properly configured.  All three send to the same channel.
-    go inc(0, c) // go is a statement that starts a new goroutine.
+    // Starte drei parallele "Goroutines". Die Zahlen werden parallel (concurrently)
+    // erhöht. Alle drei senden ihr Ergebnis in den gleichen Kannal.
+    go inc(0, c) // "go" ist das Statement zum Start einer neuen Goroutine
     go inc(10, c)
     go inc(-805, c)
-    // Read three results from the channel and print them out.
-    // There is no telling in what order the results will arrive!
-    fmt.Println(<-c, <-c, <-c) // channel on right, <- is "receive" operator.
+    // Auslesen und dann Ausgeben der drei berechneten Werte.
+    // Man kann nicht im voraus feststellen in welcher Reihenfolge die Werte
+    // ankommen.
+    fmt.Println(<-c, <-c, <-c) // mit dem Kannal rechts ist <- der Empfangs-Operator
 
-    cs := make(chan string)       // another channel, this one handles strings.
-    cc := make(chan chan string)  // a channel of string channels.
-    go func() { c <- 84 }()       // start a new goroutine just to send a value
-    go func() { cs <- "wordy" }() // again, for cs this time
-    // Select has syntax like a switch statement but each case involves
-    // a channel operation.  It selects a case at random out of the cases
-    // that are ready to communicate.
+    cs := make(chan string)       // ein weiterer Kannal, diesmal für strings
+    cc := make(chan chan string)  // ein Kannal für string Kannäle
+
+    // Start einer neuen Goroutine, nur um einen Wert zu senden
+    go func() { c <- 84 }()
+    go func() { cs <- "wortreich" }() // schon wider, diesmal für
+    // "select" hat eine Syntax wie ein switch Statement, aber jeder Fall ist
+    // eine Kannaloperation. Es wählt eine Fall zufällig aus allen die
+    // kommunikationsbereit sind aus.
     select {
-    case i := <-c: // the value received can be assigned to a variable
-        fmt.Printf("it's a %T", i)
-    case <-cs: // or the value received can be discarded
-        fmt.Println("it's a string")
-    case <-cc: // empty channel, not ready for communication.
-        fmt.Println("didn't happen.")
+    case i := <-c: // der empfangene Wert kann einer Variable zugewiesen werden
+        fmt.Printf("es ist ein: %T", i)
+    case <-cs: // oder der Wert kann verworfen werden
+        fmt.Println("es ist eine Zeichenkette!")
+    case <-cc: // leerer Kannal, nicht bereit für den Empfang
+        fmt.Println("wird nicht passieren.")
     }
-    // At this point a value was taken from either c or cs.  One of the two
-    // goroutines started above has completed, the other will remain blocked.
+    // Hier wird eine der beiden Goroutines fertig sein, die andere nicht.
+    // Sie wird warten bis der Wert den sie sendet von dem Kannal gelesen wird.
 
-    learnWebProgramming() // Go does it.  You want to do it too.
+    learnWebProgramming() // Go kann es und Sie hoffentlich auch bald.
 }
 
 // A single function from package http starts a web server.
