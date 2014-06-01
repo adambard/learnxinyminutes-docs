@@ -119,16 +119,17 @@ Zeilenumbrüche beinhalten.` // Selber Zeichenketten-Typ
     learnFlowControl() // Auf zum Kontrollfluss!
 }
 
-// Go is fully garbage collected.  It has pointers but no pointer arithmetic.
-// You can make a mistake with a nil pointer, but not by incrementing a pointer.
+// Go ist komplett "garbage collected". Sie unterstützt Zeiger (pointers) aber
+// keine Zeiger-Rechnungen. Fehler können sich durch "nil" einschleichen, jedoch
+// nicht durch erhöhen eines Zeigers.
 func learnMemory() (p, q *int) {
-    // Named return values p and q have type pointer to int.
-    p = new(int) // built-in function new allocates memory.
-    // The allocated int is initialized to 0, p is no longer nil.
-    s := make([]int, 20) // allocate 20 ints as a single block of memory
-    s[3] = 7             // assign one of them
-    r := -2              // declare another local variable
-    return &s[3], &r     // & takes the address of an object.
+    // Die bennanten Rückgabewerte p & q sind vom Typ *int
+    p = new(int) // Eingebaute Funktion "new" weist neuen Speicherplatz zu
+    // Der zugewiesene Speicher ist mit 0 initialisiert, p ist nicht länger nil
+    s := make([]int, 20) // So weist man 20 ints nebeneinander (im Speicher) zu
+    s[3] = 7             // Einer von ihnen wird ein Wert zugewiesen
+    r := -2              // Deklaration einer weiteren lokalen Variable
+    return &s[3], &r     // & gibt die Addresse einer Variable
 }
 
 func expensiveComputation() int {
