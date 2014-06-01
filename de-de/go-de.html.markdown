@@ -226,19 +226,21 @@ func learnInterfaces() {
 }
 
 func learnErrorHandling() {
-    // ", ok" idiom used to tell if something worked or not.
-    m := map[int]string{3: "three", 4: "four"}
-    if x, ok := m[1]; !ok { // ok will be false because 1 is not in the map.
-        fmt.Println("no one there")
+    // Das ", ok" Idiom wird häufig verwendet um zu überprüfen ob etwas schief
+    // gegangen ist.
+    m := map[int]string{3: "drei", 4: "vier"}
+    if x, ok := m[1]; !ok { // ok wird false sein, da 1 nicht in der map ist.
+        fmt.Println("keine eins gefunden")
     } else {
-        fmt.Print(x) // x would be the value, if it were in the map.
+        fmt.Print(x) // x wäre der Wert, wenn er in der map wäre.
     }
-    // An error value communicates not just "ok" but more about the problem.
-    if _, err := strconv.Atoi("non-int"); err != nil { // _ discards value
-        // prints "strconv.ParseInt: parsing "non-int": invalid syntax"
+    // Ein Fehler-Wert (error value) gibt mehr Informationen über den Grund für
+    // das Problem an.
+    if _, err := strconv.Atoi("nicht-int"); err != nil { // _ verwirft den Wert
+        // Gibt: "strconv.ParseInt: parsing "nicht-int": invalid syntax" aus
         fmt.Println(err)
     }
-    // We'll revisit interfaces a little later.  Meanwhile,
+    // Wir kommen bald nochmal auf Interfaces zurück. Aber inzwischen:
     learnConcurrency()
 }
 
