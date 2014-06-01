@@ -79,7 +79,7 @@ a_nested_map:
 a_sequence:
     - Item 1
     - Item 2
-    - 0.5 # sequences can contain disparate types
+    - 0.5 # 序列可以包含不同类型。
     - Item 4
     - key: value
       another_key: another_value
