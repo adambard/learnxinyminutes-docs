@@ -8,21 +8,21 @@ filename: learnyaml-cn.yaml
 lang: zh-cn
 ---
 
-YAMLÊÇÒ»¸öÊý¾ÝÐòÁÐ»¯ÓïÑÔ£¬±»Éè¼Æ³ÉÈËÀàÖ±½Ó¿ÉÐ´¿É¶ÁµÄ¡£
+YAMLæ˜¯ä¸€ä¸ªæ•°æ®åºåˆ—åŒ–è¯­è¨€ï¼Œè¢«è®¾è®¡æˆäººç±»ç›´æŽ¥å¯å†™å¯è¯»çš„ã€‚
 
-ËüÊÇJSONµÄÑÏ¸ñ³¬¼¯£¬Ôö¼ÓÁËÓï·¨ÏÔÖø»»ÐÐ·ûºÍËõ½ø£¬¾ÍÏñPython¡£µ«ºÍPython²»Ò»Ñù£¬
-YAML¸ù±¾²»ÈÝÐíÎÄ×ÖÖÆ±í·û¡£
+å®ƒæ˜¯JSONçš„ä¸¥æ ¼è¶…é›†ï¼Œå¢žåŠ äº†è¯­æ³•æ˜¾è‘—æ¢è¡Œç¬¦å’Œç¼©è¿›ï¼Œå°±åƒPythonã€‚ä½†å’ŒPythonä¸ä¸€æ ·ï¼Œ
+YAMLæ ¹æœ¬ä¸å®¹è®¸æ–‡å­—åˆ¶è¡¨ç¬¦ã€‚
 
 
 ```yaml
-# YAMLÖÐµÄ×¢½â¿´ÆðÀ´ÏñÕâÑù¡£
+# YAMLä¸­çš„æ³¨è§£çœ‹èµ·æ¥åƒè¿™æ ·ã€‚
 
 ################
-# ±êÁ¿ÀàÐÍ #
+# æ ‡é‡ç±»åž‹ #
 ################
 
-# ÎÒÃÇµÄ¸ù¶ÔÏó (ËüÃÇÔÚÕû¸öÎÄ¼þÀïÑÓÐø) ½«»áÊÇÒ»¸öµØÍ¼£¬
-# ËüµÈ¼ÛÓÚÔÚ±ðµÄÓïÑÔÀïµÄÒ»¸ö×Öµä£¬¹þÎ÷±í»ò¶ÔÏó¡£
+# æˆ‘ä»¬çš„æ ¹å¯¹è±¡ (å®ƒä»¬åœ¨æ•´ä¸ªæ–‡ä»¶é‡Œå»¶ç»­) å°†ä¼šæ˜¯ä¸€ä¸ªåœ°å›¾ï¼Œ
+# å®ƒç­‰ä»·äºŽåœ¨åˆ«çš„è¯­è¨€é‡Œçš„ä¸€ä¸ªå­—å…¸ï¼Œå“ˆè¥¿è¡¨æˆ–å¯¹è±¡ã€‚
 key: value
 another_key: Another value goes here.
 a_number_value: 100
@@ -30,11 +30,11 @@ scientific_notation: 1e+12
 boolean: true
 null_value: null
 key with spaces: value
-# ×¢Òâµ½×Ö·û´®²»ÐèÒª±»ÒýÓÃ¡£µ«ÊÇ£¬ËüÃÇ¿ÉÒÔ±»ÒýÓÃ¡£
+# æ³¨æ„åˆ°å­—ç¬¦ä¸²ä¸éœ€è¦è¢«å¼•ç”¨ã€‚ä½†æ˜¯ï¼Œå®ƒä»¬å¯ä»¥è¢«å¼•ç”¨ã€‚
 "Keys can be quoted too.": "Useful if you want to put a ':' in your key."
 
-# ¶àÐÐ×Ö·û´®¼È¿ÉÒÔÐ´³ÉÏñÒ»¸ö'ÎÄ×Ö¿é'(Ê¹ÓÃ |)£¬
-# »òÏñÒ»¸ö'ÕÛµþ¿é'(Ê¹ÓÃ '>')¡£
+# å¤šè¡Œå­—ç¬¦ä¸²æ—¢å¯ä»¥å†™æˆåƒä¸€ä¸ª'æ–‡å­—å—'(ä½¿ç”¨ |)ï¼Œ
+# æˆ–åƒä¸€ä¸ª'æŠ˜å å—'(ä½¿ç”¨ '>')ã€‚
 literal_block: |
     This entire block of text will be the value of the 'literal_block' key,
     with line breaks being preserved.
@@ -54,28 +54,28 @@ folded_style: >
         this text will appear over two lines.
 
 ####################
-# ¼¯ºÏÀàÐÍ #
+# é›†åˆç±»åž‹ #
 ####################
 
-# Ç¶Ì×ÊÇÍ¨¹ýËõ½øÍê³ÉµÄ¡£
+# åµŒå¥—æ˜¯é€šè¿‡ç¼©è¿›å®Œæˆçš„ã€‚
 a_nested_map:
     key: value
     another_key: Another Value
     another_nested_map:
         hello: hello
 
-# Í¼²»ÓÃÓÐ×Ö·û´®¼üÖµ¡£
+# åœ°å›¾ä¸ç”¨æœ‰å­—ç¬¦ä¸²é”®å€¼ã€‚
 0.25: a float key
 
-# ¼üÖµÒ²¿ÉÒÔÊÇ¶àÐÐ¶ÔÏó£¬ÓÃ?±íÃ÷¼üÖµµÄ¿ªÊ¼¡£
+# é”®å€¼ä¹Ÿå¯ä»¥æ˜¯å¤šè¡Œå¯¹è±¡ï¼Œç”¨?è¡¨æ˜Žé”®å€¼çš„å¼€å§‹ã€‚
 ? |
     This is a key
     that has multiple lines
 : and this is its value
 
-# YAMLÒ²ÈÝÐí¼üÖµÊÇ¼¯ºÏÀàÐÍ£¬µ«ÊÇºÜ¶àÓïÑÔ½«»á±§Ô¹¡£
+# YAMLä¹Ÿå®¹è®¸é”®å€¼æ˜¯é›†åˆç±»åž‹ï¼Œä½†æ˜¯å¾ˆå¤šè¯­è¨€å°†ä¼šæŠ±æ€¨ã€‚
 
-# ÐòÁÐ (µÈ¼ÛÓÚ±í»òÊý×é) ¿´ÆðÀ´ÏñÕâÑù£º
+# åºåˆ— (ç­‰ä»·äºŽè¡¨æˆ–æ•°ç»„) çœ‹èµ·æ¥åƒè¿™æ ·ï¼š
 a_sequence:
     - Item 1
     - Item 2
@@ -87,48 +87,48 @@ a_sequence:
         - This is a sequence
         - inside another sequence
 
-# ÒòÎªYAMLÊÇJSONµÄ³¬¼¯£¬ÄãÒ²¿ÉÒÔÐ´JSON·ç¸ñµÄµØÍ¼ºÍÐòÁÐ£º
+# å› ä¸ºYAMLæ˜¯JSONçš„è¶…é›†ï¼Œä½ ä¹Ÿå¯ä»¥å†™JSONé£Žæ ¼çš„åœ°å›¾å’Œåºåˆ—ï¼š
 json_map: {"key": "value"}
 json_seq: [3, 2, 1, "takeoff"]
 
 #######################
-# ÆäÓàµÄYAMLÌØµã #
+# å…¶ä½™çš„YAMLç‰¹ç‚¹ #
 #######################
 
-# YAML»¹ÓÐÒ»¸ö·½±ãµÄÌØµã½Ð'Ãª'£¬ËüÈÃÄã¼òµ¥µØÔÚÕû¸öÎÄ¼þÀïÖØ¸´ÄÚÈÝ¡£
-# Á½¸ö¼üÖµ½«»áÓÐÏàÍ¬µÄÖµ£º
+# YAMLè¿˜æœ‰ä¸€ä¸ªæ–¹ä¾¿çš„ç‰¹ç‚¹å«'é”š'ï¼Œå®ƒè®©ä½ ç®€å•åœ°åœ¨æ•´ä¸ªæ–‡ä»¶é‡Œé‡å¤å†…å®¹ã€‚
+# ä¸¤ä¸ªé”®å€¼å°†ä¼šæœ‰ç›¸åŒçš„å€¼ï¼š
 anchored_content: &anchor_name This string will appear as the value of two keys.
 other_anchor: *anchor_name
 
-# YAML»¹ÓÐ±êÇ©£¬Äã¿ÉÒÔÓÃËüÏÔÊ¾µØÉùÃ÷ÀàÐÍ¡£
+# YAMLè¿˜æœ‰æ ‡ç­¾ï¼Œä½ å¯ä»¥ç”¨å®ƒæ˜¾ç¤ºåœ°å£°æ˜Žç±»åž‹ã€‚
 explicit_string: !!str 0.5
-# Ò»Ð©½âÎöÆ÷ÊµÏÖÌØ¶¨ÓïÑÔµÄ±êÇ©£¬¾ÍÏñÕâ¸öÎªÁËPythonµÄ¸´ÊýÀàÐÍ¡£
+# ä¸€äº›è§£æžå™¨å®žçŽ°ç‰¹å®šè¯­è¨€çš„æ ‡ç­¾ï¼Œå°±åƒè¿™ä¸ªä¸ºäº†Pythonçš„å¤æ•°ç±»åž‹ã€‚
 python_complex_number: !!python/complex 1+2j
 
 ####################
-# ÆäÓàµÄYAMLÀàÐÍ #
+# å…¶ä½™çš„YAMLç±»åž‹ #
 ####################
 
-# ×Ö·û´®ºÍÊý×Ö²»ÊÇ½öÓÐµÄYAML¿ÉÒÔÀí½âµÄ±êÁ¿¡£
-# ISO ¸ñÊ½µÄÈÕÆÚºÍÈÕÆÚÊ±¼äÎÄ×ÖÒ²ÊÇ¿ÉÒÔ±»½âÎöµÄ¡£
+# å­—ç¬¦ä¸²å’Œæ•°å­—ä¸æ˜¯ä»…æœ‰çš„YAMLå¯ä»¥ç†è§£çš„æ ‡é‡ã€‚
+# ISO æ ¼å¼çš„æ—¥æœŸå’Œæ—¥æœŸæ—¶é—´æ–‡å­—ä¹Ÿæ˜¯å¯ä»¥è¢«è§£æžçš„ã€‚
 datetime: 2001-12-15T02:59:43.1Z
 datetime_with_spaces: 2001-12-14 21:59:43.10 -5
 date: 2002-12-14
 
-# Õâ¸ö!!binary±êÇ©±íÃ÷Ò»¸ö×Ö·û´®Êµ¼ÊÉÏÊÇÒ»¸ö¶þ½øÖÆblobµÄbase64±àÂë±íÊ¾¡£
+# è¿™ä¸ª!!binaryæ ‡ç­¾è¡¨æ˜Žä¸€ä¸ªå­—ç¬¦ä¸²å®žé™…ä¸Šæ˜¯ä¸€ä¸ªäºŒè¿›åˆ¶blobçš„base64ç¼–ç è¡¨ç¤ºã€‚
 gif_file: !!binary |
     R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
     OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
     +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
     AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
 
-# YAML»¹ÓÐÒ»¸ö¼¯ºÏÀàÐÍ£¬Ëü¿´ÆðÀ´ÏñÕâÑù£º
+# YAMLè¿˜æœ‰ä¸€ä¸ªé›†åˆç±»åž‹ï¼Œå®ƒçœ‹èµ·æ¥åƒè¿™æ ·ï¼š
 set:
     ? item1
     ? item2
     ? item3
 
-# ÏñPythonÒ»Ñù£¬¼¯ºÏ½öÊÇÓÐnullÊýÖµµÄµØÍ¼£»ÉÏÃæµÄ¼¯ºÏµÈ¼ÛÓÚ£º
+# åƒPythonä¸€æ ·ï¼Œé›†åˆä»…æ˜¯æœ‰nullæ•°å€¼çš„åœ°å›¾ï¼›ä¸Šé¢çš„é›†åˆç­‰ä»·äºŽï¼š
 set2:
     item1: null
     item2: null
