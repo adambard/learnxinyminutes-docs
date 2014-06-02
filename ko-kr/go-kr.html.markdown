@@ -5,8 +5,12 @@ language: Go
 filename: learngo-kr.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
+    - ["Christopher Bess", "https://github.com/cbess"]
+    - ["Jesse Johnson", "https://github.com/holocronweaver"]
+    - ["Quint Guvernator", "https://github.com/qguv"]
 translators:
     - ["Jongmin Kim", "http://github.com/atomaths"]
+    - ["Peter Lee", "http://github.com/ins429"]
 lang: ko-kr
 ---
 
@@ -184,7 +188,18 @@ func learnFlowControl() {
     goto love
 love:
 
+    learnDefer()      // defer에 대해
     learnInterfaces() // 곧이어서 좋은 기능에 대한 설명이 나올 거다.
+}
+
+func learnDefer() (ok bool) {
+    // deferred statements are executed just before the function returns.
+    // 연기된(deferred) 구문은 함수가 리턴하기 직전에 실행된다.
+    defer fmt.Println("deferred statements execute in reverse (LIFO) order.") // 연기된 구문은 LIFO순으로 실행된다.
+    defer fmt.Println("\nThis line is being printed first because")           // 이 줄이 먼저 실행된다.
+    // defer는 주로 파일을 닫는데 사용된다. 
+    // 파일을 닫는함수를 파일을 여는함수에 가까이 둘수 있다.
+    return true
 }
 
 // String 이라는 메서드 하나를 가진 Stringer 라는 인터페이스 타입을 정의하자.
@@ -219,6 +234,21 @@ func learnInterfaces() {
     // fmt 패키지 내에서는 그 객체가 가진 String 메서드를 호출하도록 되어 있다.
     fmt.Println(p) // 결과는 위와 같다. Println은 String 메서드를 호출한다.
     fmt.Println(i) // 결과는 위와 같다.
+
+    learnVariadicParams("great", "learning", "here!")
+}
+
+// 함수는 가변 인수(variadic) 파라미터를 가질수 있다.
+func learnVariadicParams(myStrings ...interface{}) {
+    // 가변 인수를 차례로 반복한다.
+    // 여기서 언더바(언더스코어, `_`)는 배열의 인덱스 인수를 무시한다.
+    // The underbar here is ignoring the index argument of the array.
+    for _, param := range myStrings {
+          fmt.Println("param:", param)
+    }
+
+    // 가변 인수 값을 가변인수 파라미터로 보내기.
+    fmt.Println("params:", fmt.Sprintln(myStrings...))
 
     learnErrorHandling()
 }
@@ -312,3 +342,5 @@ Go 소스코드에 대해 좀더 알아보고 싶다면 [Go 표준 라이브러�
 분석해보기 바란다. 이해하기 쉽게 문서화되어 있고, Go 스타일 그리고 Go에서의
 관례 배우기에 가장 좋은 방법일 것이다. 또는 [문서](http://golang.org/pkg/) 안에서
 함수 이름 하나를 클릭해보면 소스코드를 브라우저에서 살펴볼 수도 있다.
+
+Go를 배울수 있는 또하나의 좋은 방법은 [Go by example](https://gobyexample.com/).
