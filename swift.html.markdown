@@ -47,4 +47,16 @@ let lengthMeasurement = "This apple tree is " + String(length) + " meters high" 
 // Although in case of strings, there exists more convenient syntax:
 
 let appleTreeSurvey = "This apple tree has \(apples) apples and is \(length) meters high"
+
+// There are built-in arrays and dictionaries:
+
+var fishes = ["starfish", "swordfish", "shark"]
+fishes[3] = "whale"
+
+let captains = [
+    "Kirk": "Enterprise",
+    "Picard": "Enterprise",
+    "Solo" : "Falcon",
+]
+captains["Morgan"] = "rum bottle"
 ```
