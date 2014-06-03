@@ -4,7 +4,7 @@ contributors:
     - ["Bastien Guerry", "http://bzg.fr"]
 translators:
     - ["Lucas Tadeu Teixeira", "http://ltt.me"]
-lang: pt-br    
+lang: pt-br
 filename: learn-emacs-lisp-pt.el
 ---
 
@@ -30,9 +30,9 @@ filename: learn-emacs-lisp-pt.el
 ;; Realizar este tutorial não danificará seu computador, a menos
 ;; que você fique tão irritado a ponto de jogá-lo no chão. Neste caso,
 ;; me abstenho de qualquer responsabilidade. Divirta-se!
- 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;; Abra o Emacs.
 ;;
 ;; Aperte a tecla `q' para ocultar a mensagem de boas vindas.
@@ -45,11 +45,11 @@ filename: learn-emacs-lisp-pt.el
 ;; O buffer de rascunho (i.e., "scratch") é o buffer padrão quando
 ;; o Emacs é aberto. Você nunca está editando arquivos: você está
 ;; editando buffers que você pode salvar em um arquivo.
-;; 
+;;
 ;; "Lisp interaction" refere-se a um conjunto de comandos disponíveis aqui.
-;; 
-;; O Emacs possui um conjunto de comandos embutidos (disponíveis em 
-;; qualquer buffer) e vários subconjuntos de comandos disponíveis 
+;;
+;; O Emacs possui um conjunto de comandos embutidos (disponíveis em
+;; qualquer buffer) e vários subconjuntos de comandos disponíveis
 ;; quando você ativa um modo específico. Aqui nós utilizamos
 ;; `lisp-interaction-mode', que possui comandos para interpretar e navegar
 ;; em código Elisp.
@@ -137,7 +137,7 @@ filename: learn-emacs-lisp-pt.el
 ;; => [a tela exibirá duas janelas e o cursor estará no buffer *test*]
 
 ;; Posicione o mouse sobre a janela superior e clique com o botão
-;; esquerdo para voltar. Ou você pode utilizar `C-xo' (i.e. segure 
+;; esquerdo para voltar. Ou você pode utilizar `C-xo' (i.e. segure
 ;; ctrl-x e aperte o) para voltar para a outra janela, de forma interativa.
 
 ;; Você pode combinar várias "sexps" com `progn':

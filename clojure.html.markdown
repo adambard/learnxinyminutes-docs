@@ -63,7 +63,7 @@ and often automatically.
 ; If you want to create a literal list of data, use ' to stop it from
 ; being evaluated
 '(+ 1 2) ; => (+ 1 2)
-; (shorthand for (quote (+ 1 2))
+; (shorthand for (quote (+ 1 2)))
 
 ; You can eval a quoted list
 (eval '(+ 1 2)) ; => 3
@@ -205,7 +205,7 @@ keymap ; => {:a 1, :c 3, :b 2}
 ;("a" stringmap)
 ; => Exception: java.lang.String cannot be cast to clojure.lang.IFn
 
-; Retrieving a non-present value returns nil
+; Retrieving a non-present key returns nil
 (stringmap "d") ; => nil
 
 ; Use assoc to add new keys to hash-maps
@@ -341,7 +341,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 (swap! my-atom assoc :a 1) ; Sets my-atom to the result of (assoc {} :a 1)
 (swap! my-atom assoc :b 2) ; Sets my-atom to the result of (assoc {:a 1} :b 2)
 
- ; Use '@' to dereference the atom and get the value 
+; Use '@' to dereference the atom and get the value
 my-atom  ;=> Atom<#...> (Returns the Atom object)
 @my-atom ; => {:a 1 :b 2}
 
@@ -376,5 +376,5 @@ Clojuredocs.org has documentation with examples for most core functions:
 4Clojure is a great way to build your clojure/FP skills:
 [http://www.4clojure.com/](http://www.4clojure.com/)
 
-Clojure-doc.org (yeah, really) has a number of getting started articles:
+Clojure-doc.org (yes, really) has a number of getting started articles:
 [http://clojure-doc.org/](http://clojure-doc.org/)

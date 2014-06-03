@@ -6,7 +6,6 @@ contributors:
     - ["Dominic Bou-Samra", "http://dbousamra.github.com"]
 translators:
     - ["Peiyong Lin", ""]
-filename: learn.scala
 lang: zh-cn
 ---
 

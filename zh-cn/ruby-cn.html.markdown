@@ -6,6 +6,7 @@ contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]
   - ["Joel Walden", "http://joelwalden.net"]
   - ["Luke Holder", "http://twitter.com/lukeholder"]
+  - ["lidashuang", "https://github.com/lidashuang"]
 translators:
   - ["Lin Xiangyu", "https://github.com/oa414"]
 ---
@@ -173,7 +174,7 @@ new_hash = { defcon: 3, action: true}
 new_hash.keys #=> [:defcon, :action]
 
 # 小贴士：数组和哈希表都是可枚举的
-# 它们可以共享一些有用的方法，比如each, map, count, 和more
+# 它们可以共享一些有用的方法，比如each, map, count 等等
 
 # 控制流
 

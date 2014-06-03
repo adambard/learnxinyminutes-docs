@@ -7,6 +7,9 @@ contributors:
   - ["Luke Holder", "http://twitter.com/lukeholder"]
   - ["Tristan Hume", "http://thume.ca/"]
   - ["Nick LaMuro", "https://github.com/NickLaMuro"]
+  - ["Marcos Brizeno", "http://www.about.me/marcosbrizeno"]
+  - ["Ariel Krakowski", "http://www.learneroo.com"]
+
 ---
 
 ```ruby
@@ -32,6 +35,7 @@ You shouldn't either
 8 - 1 #=> 7
 10 * 2 #=> 20
 35 / 5 #=> 7
+2 ** 5 #=> 32
 
 # Arithmetic is just syntactic sugar
 # for calling a method on an object
@@ -78,6 +82,10 @@ placeholder = "use string interpolation"
 "I can #{placeholder} when using double quoted strings"
 #=> "I can use string interpolation when using double quoted strings"
 
+# Combine strings, but not with numbers
+"hello " + "world"  #=> "hello world"
+"hello " + 3 #=> TypeError: can't convert Fixnum into String
+"hello " + 3.to_s #=> "hello 3"
 
 # print to the output
 puts "I'm printing!"
@@ -138,8 +146,8 @@ array.[] 12 #=> nil
 # From the end
 array[-1] #=> 5
 
-# With a start and end index
-array[2, 4] #=> [3, 4, 5]
+# With a start index and length
+array[2, 3] #=> [3, 4, 5]
 
 # Or with a range
 array[1..3] #=> [2, 3, 4]
@@ -246,6 +254,22 @@ else
   puts "Alternative grading system, eh?"
 end
 
+#=> "Better luck next time"
+
+# cases can also use ranges
+grade = 82
+case grade
+    when 90..100
+      puts "Hooray!"
+    when 80...90
+      puts "OK job" 
+    else
+      puts "You failed!"
+end
+
+#=> "OK job"
+
+
 # Functions
 
 def double(x)
@@ -286,6 +310,18 @@ surround { puts 'hello world' }
 # }
 
 
+# You can pass a block to a function
+# "&" marks a reference to a passed block 
+def guests(&block)
+ block.call "some_argument" 
+end
+ 
+# You can pass a list of arguments, which will be converted into an array
+# That's what splat operator ("*") is for 
+def guests(*array)
+ array.each { |guest| puts "#{guest}" }
+end
+
 # Define a class with the class keyword
 class Human
 
@@ -309,6 +345,13 @@ class Human
   def name
     @name
   end
+
+  # The above functionality can be encapsulated using the attr_accessor method as follows
+  attr_accessor :name
+
+  # Getter/setter methods can also be created individually like this
+  attr_reader :name
+  attr_writer :name
 
   # A class method uses self to distinguish from instance methods.
   # It can only be called on the class, not an instance.
@@ -338,6 +381,23 @@ dwight.name #=> "Dwight K. Schrute"
 
 # Call the class method
 Human.say("Hi") #=> "Hi"
+
+# Variable's scopes are defined by the way we name them.
+# Variables that start with $ have global scope
+$var = "I'm a global var"
+defined? $var #=> "global-variable"
+
+# Variables that start with @ have instance scope
+@var = "I'm an instance var"
+defined? @var #=> "instance-variable"
+
+# Variables that start with @@ have class scope
+@@var = "I'm a class var"
+defined? @@var #=> "class variable"
+
+# Variables that start with a capital letter are constants
+Var = "I'm a constant"
+defined? Var #=> "constant"
 
 # Class also is object in ruby. So class can have instance variables.
 # Class variable is shared among the class and all of its descendants.
@@ -385,4 +445,64 @@ end
 Human.bar # 0
 Doctor.bar # nil
 
+module ModuleExample
+  def foo
+    'foo'
+  end
+end
+
+# Including modules binds the methods to the object instance
+# Extending modules binds the methods to the class instance
+
+class Person
+  include ModuleExample
+end
+
+class Book
+  extend ModuleExample
+end
+
+Person.foo     # => NoMethodError: undefined method `foo' for Person:Class
+Person.new.foo # => 'foo'
+Book.foo       # => 'foo'
+Book.new.foo   # => NoMethodError: undefined method `foo'
+
+# Callbacks when including and extending a module are executed
+
+module ConcernExample
+  def self.included(base)
+    base.extend(ClassMethods)
+    base.send(:include, InstanceMethods)
+  end
+
+  module ClassMethods
+    def bar
+      'bar'
+    end
+  end
+
+  module InstanceMethods
+    def qux
+      'qux'
+    end
+  end
+end
+
+class Something
+  include ConcernExample
+end
+
+Something.bar     # => 'bar'
+Something.qux     # => NoMethodError: undefined method `qux'
+Something.new.bar # => NoMethodError: undefined method `bar'
+Something.new.qux # => 'qux'
 ```
+
+## Additional resources
+
+- [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - A variant of this reference with in-browser challenges. 
+- [Official Documentation](http://www.ruby-doc.org/core-2.1.1/)
+- [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
+- [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - An older [free addition](http://ruby-doc.com/docs/ProgrammingRuby/) is available online. 
+
+

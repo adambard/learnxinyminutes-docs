@@ -1,4 +1,4 @@
-﻿---
+---
 language: lua
 category: language
 contributors:
@@ -6,6 +6,7 @@ contributors:
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
 lang: ko-kr
+filename: learnlua-kr.lua
 ---
 
 ```lua
@@ -361,9 +362,6 @@ local mod = require('mod')  -- mod.lua 파일을 실행
 
 -- require는 모듈을 포함시키는 표준화된 방법입니다.
 -- require는 다음과 같이 동작합니다:     (캐싱돼 있지 않을 경우. 하단 참조)
-local mod = (function ()
-  <mod.lua의 내용>
-end)()
 -- mod.lua가 함수의 본문처럼 되므로 mod.lua 안의 지역 멤버는
 -- 밖에서 볼 수 없습니다.
 

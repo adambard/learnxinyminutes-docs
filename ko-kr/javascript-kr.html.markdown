@@ -5,6 +5,7 @@ contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
+filename: javascript-kr.js
 lang: ko-kr
 ---
 

@@ -4,14 +4,14 @@ contributors:
     - ["Adit Bhargava", "http://adit.io"]
 ---
 
-Haskell was designed as a practical, purely functional programming language. It's famous for
-its monads and its type system, but I keep coming back to it because of its elegance. Haskell
-makes coding a real joy for me.
+Haskell was designed as a practical, purely functional programming
+language. It's famous for its monads and its type system, but I keep coming back
+to it because of its elegance. Haskell makes coding a real joy for me.
 
 ```haskell
 -- Single line comments start with two dashes.
 {- Multiline comments can be enclosed
-en a block like this.
+in a block like this.
 -}
 
 ----------------------------------------------------
@@ -303,7 +303,7 @@ Nothing         -- of type `Maybe a` for any `a`
 -- While IO can't be explained fully without explaining monads,
 -- it is not hard to explain enough to get going.
 
--- When a Haskell program is executed, the function `main` is
+-- When a Haskell program is executed, `main` is
 -- called. It must return a value of type `IO ()`. For example:
 
 main :: IO ()
@@ -329,7 +329,7 @@ main' = interact countLines
 sayHello :: IO ()
 sayHello = do 
    putStrLn "What is your name?"
-   name <- getLine -- this gets a line and gives it the name "input"
+   name <- getLine -- this gets a line and gives it the name "name"
    putStrLn $ "Hello, " ++ name
    
 -- Exercise: write your own version of `interact` that only reads
@@ -401,7 +401,9 @@ Hello, Friend!
 
 ```
 
-There's a lot more to Haskell, including typeclasses and monads. These are the big ideas that make Haskell such fun to code in. I'll leave you with one final Haskell example: an implementation of quicksort in Haskell:
+There's a lot more to Haskell, including typeclasses and monads. These are the
+big ideas that make Haskell such fun to code in. I'll leave you with one final
+Haskell example: an implementation of quicksort in Haskell:
 
 ```haskell
 qsort [] = []

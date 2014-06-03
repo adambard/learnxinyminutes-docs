@@ -104,10 +104,13 @@ val sq = (x:Int) => x * x
 
 sq(10)   // Gives you this: res33: Int = 100.
 
+// The colon explicitly defines the type of a value, in this case a function
+// taking an Int and returning an Int. 
+val add10: Int => Int = _ + 10 
+
 // Scala allows methods and functions to return, or take as parameters, other
 // functions or methods.
 
-val add10: Int => Int = _ + 10 // A function taking an Int and returning an Int
 List(1, 2, 3) map add10 // List(11, 12, 13) - add10 is applied to each element
 
 // Anonymous functions can be used instead of named functions:
@@ -374,7 +377,7 @@ import scala.collection.immutable._
 import scala.collection.immutable.{List, Map}
 
 // Rename an import using '=>'
-import scala.collection.immutable{ List => ImmutableList }
+import scala.collection.immutable.{ List => ImmutableList }
 
 // Import all classes, except some. The following excludes Map and Set:
 import scala.collection.immutable.{Map => _, Set => _, _}
@@ -396,7 +399,7 @@ object Application {
 
 // To read a file line by line
 import scala.io.Source
-for(line <- Source.fromPath("myfile.txt").getLines())
+for(line <- Source.fromFile("myfile.txt").getLines())
   println(line)
 
 // To write a file use Java's PrintWriter

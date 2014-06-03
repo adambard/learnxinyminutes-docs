@@ -6,6 +6,7 @@ contributors:
   - ["th3rac25", "https://github.com/voila"]
   - ["Eli Barzilay", "https://github.com/elibarzilay"]
   - ["Gustavo Schmidt", "https://github.com/gustavoschmidt"]
+  - ["Duong H. Nguyen", "https://github.com/cmpitg"]
 ---
 
 Racket is a general purpose, multi-paradigm programming language in the Lisp/Scheme family.
@@ -195,7 +196,7 @@ my-pet ; => #<dog>
 (hash-ref m 'd 0) ; => 0
 
 ;; Use `hash-set' to extend an immutable hash table
-;; (Returns the extended hash instdead of mutating it)
+;; (Returns the extended hash instead of mutating it)
 (define m2 (hash-set m 'd 4))
 m2 ; => '#hash((b . 2) (a . 1) (d . 4) (c . 3))
 
@@ -223,7 +224,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 (define hello-world (lambda () "Hello World"))
 (hello-world) ; => "Hello World"
 
-;; You can shorten this using the function definition syntatcic sugae:
+;; You can shorten this using the function definition syntactic sugar:
 (define (hello-world2) "Hello World")
 
 ;; The () in the above is the list of arguments for the function
@@ -495,7 +496,7 @@ vec ; => #(1 2 3 4)
 ;; 8. Classes and Objects
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Create a class fish% (-% is idomatic for class bindings)
+;; Create a class fish% (-% is idiomatic for class bindings)
 (define fish%
   (class object%
     (init size) ; initialization argument
@@ -551,7 +552,7 @@ vec ; => #(1 2 3 4)
     (set! i (add1 i))))
 
 ;; Macros are hygienic, you cannot clobber existing variables!
-(define-syntax-rule (swap! x y) ; -! is idomatic for mutation
+(define-syntax-rule (swap! x y) ; -! is idiomatic for mutation
   (let ([tmp x])
     (set! x y)
     (set! y tmp)))
@@ -600,6 +601,45 @@ vec ; => #(1 2 3 4)
 ;; expected: positive?
 ;; given: -5
 ;; more details....
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 11. Input & output
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Racket has this concept of "port", which is very similar to file
+;; descriptors in other languages
+
+;; Open "/tmp/tmp.txt" and write "Hello World"
+;; This would trigger an error if the file's already existed
+(define out-port (open-output-file "/tmp/tmp.txt"))
+(displayln "Hello World" out-port)
+(close-output-port out-port)
+
+;; Append to "/tmp/tmp.txt"
+(define out-port (open-output-file "/tmp/tmp.txt"
+                                   #:exists 'append))
+(displayln "Hola mundo" out-port)
+(close-output-port out-port)
+
+;; Read from the file again
+(define in-port (open-input-file "/tmp/tmp.txt"))
+(displayln (read-line in-port))
+; => "Hello World"
+(displayln (read-line in-port))
+; => "Hola mundo"
+(close-input-port in-port)
+
+;; Alternatively, with call-with-output-file you don't need to explicitly
+;; close the file
+(call-with-output-file "/tmp/tmp.txt"
+  #:exists 'update ; Rewrite the content
+  (λ (out-port)
+    (displayln "World Hello!" out-port)))
+
+;; And call-with-input-file does the same thing for input
+(call-with-input-file "/tmp/tmp.txt"
+  (λ (in-port)
+    (displayln (read-line in-port))))
 ```
 
 ## Further Reading

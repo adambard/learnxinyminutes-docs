@@ -44,7 +44,7 @@ math =
 #  "cube": function(x) { return x * square(x); }
 #}
 
-# Símbolos:
+# Número de argumentos variable:
 race = (winner, runners...) ->
   print winner, runners
 
@@ -52,6 +52,6 @@ race = (winner, runners...) ->
 alert "I knew it!" if elvis?
 #=> if(typeof elvis !== "undefined" && elvis !== null) { alert("I knew it!"); }
 
-# Colecciones por comprensión:
+# Listas:
 cubes = (math.cube num for num in list) #=> ...
 ```

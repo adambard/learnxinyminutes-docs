@@ -63,7 +63,7 @@ Very mature/compatible:
 
 * MRI - Written in C, this is the reference implementation of ruby. By
   definition it is 100% compatible (with itself). All other rubies
-maintain capatability with MRI (see RubySpec below).
+maintain compatibility with MRI (see [RubySpec](#rubyspec) below).
 * JRuby - Written in Java and ruby, this robust implementation is quite fast.
   Most importantly, JRuby's strength is JVM/Java interop, leveraging existing
 JVM tools, projects, and languages.
@@ -121,9 +121,9 @@ dependency graph to resolve.
 
 # Testing
 
-Testing is a large of ruby culture. Ruby comes with its own Unit-style testing
-framework called minitest (Or TestUnit for ruby version 1.8.x). There are many
-testing libraries with different goals.
+Testing is a large part of ruby culture. Ruby comes with its own Unit-style
+testing framework called minitest (Or TestUnit for ruby version 1.8.x). There
+are many testing libraries with different goals.
 
 * TestUnit - Ruby 1.8's built-in "Unit-style" testing framework
 * minitest - Ruby 1.9/2.0's built-in testing framework

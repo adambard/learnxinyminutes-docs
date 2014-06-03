@@ -1,10 +1,12 @@
 ---
 language: javascript
-author: Adam Brenecki
-author_url: http://adam.brenecki.id.au
+contributors:
+    - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+    - ["Ariel Krakowski", "http://www.learneroo.com"]
+filename: javascript.js
 ---
 
-Javascript was created by Netscape's Brendan Eich in 1995. It was originally
+JavaScript was created by Netscape's Brendan Eich in 1995. It was originally
 intended as a simpler scripting language for websites, complimenting the use of
 Java for more complex web applications, but its tight integration with Web pages
 and built-in support in browsers has caused it to become far more common than
@@ -30,13 +32,15 @@ doStuff();
 // wherever there's a newline, except in certain cases.
 doStuff()
 
-// So that we don't have to worry about those certain cases (for now), we'll
-// leave them on.
+// Because those cases can cause unexpected results, we'll keep on using
+// semicolons in this guide.
 
 ///////////////////////////////////
 // 1. Numbers, Strings and Operators
 
-// Javascript has one number type (which is a 64-bit IEEE 754 double).
+// JavaScript has one number type (which is a 64-bit IEEE 754 double).
+// As with Lua, don't freak out about the lack of ints: doubles have a 52-bit
+// mantissa, which is enough to store integers up to about 9✕10¹⁵ precisely.
 3; // = 3
 1.5; // = 1.5
 
@@ -100,20 +104,26 @@ false;
 "5" === 5; // = false
 
 // You can access characters in a string with charAt
-"This is a string".charAt(0);
+"This is a string".charAt(0);  // = 'T'
+
+// ...or use substring to get larger pieces
+"Hello world".substring(0, 5); // = "Hello"
+
+// length is a property, so don't use ()
+"Hello".length; // = 5
 
 // There's also null and undefined
 null; // used to indicate a deliberate non-value
-undefined; // used to indicate a value is not currently present (although undefined
-           // is actually a value itself)
+undefined; // used to indicate a value is not currently present (although
+           // undefined is actually a value itself)
 
-// false, null, undefined, NaN, 0 and "" are falsy, and everything else is truthy.
+// false, null, undefined, NaN, 0 and "" are falsy; everything else is truthy.
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
 ///////////////////////////////////
 // 2. Variables, Arrays and Objects
 
-// Variables are declared with the var keyword. Javascript is dynamically typed,
+// Variables are declared with the var keyword. JavaScript is dynamically typed,
 // so you don't need to specify type. Assignment uses a single = character.
 var someVar = 5;
 
@@ -141,6 +151,13 @@ var myArray = ["Hello", 45, true];
 // Array indices start at zero.
 myArray[1]; // = 45
 
+// Arrays are mutable and of variable length.
+myArray.push("World");
+myArray.length; // = 4
+
+// Add/Modify at specific index
+myArray[3] = "Hello";
+
 // JavaScript's objects are equivalent to 'dictionaries' or 'maps' in other
 // languages: an unordered collection of key-value pairs.
 var myObj = {key1: "Hello", key2: "World"};
@@ -164,18 +181,20 @@ myObj.myFourthKey; // = undefined
 ///////////////////////////////////
 // 3. Logic and Control Structures
 
+// The syntax for this section is almost identical to Java's. 
+
 // The if structure works as you'd expect.
 var count = 1;
 if (count == 3){
     // evaluated if count is 3
-} else if (count == 4) {
+} else if (count == 4){
     // evaluated if count is 4
 } else {
     // evaluated if it's not either 3 or 4
 }
 
 // As does while.
-while (true) {
+while (true){
     // An infinite loop!
 }
 
@@ -202,6 +221,27 @@ if (colour == "red" || colour == "blue"){
 // && and || "short circuit", which is useful for setting default values.
 var name = otherName || "default";
 
+
+// switch statement checks for equality with ===
+// use 'break' after each case 
+// or the cases after the correct one will be executed too. 
+grade = 'B';
+switch (grade) {
+  case 'A':
+    console.log("Great job");
+    break;
+  case 'B':
+    console.log("OK job");
+    break;
+  case 'C':
+    console.log("You can do better");
+    break;
+  default:
+    console.log("Oy vey");
+    break;
+}
+
+
 ///////////////////////////////////
 // 4. Functions, Scope and Closures
 
@@ -211,6 +251,18 @@ function myFunction(thing){
 }
 myFunction("foo"); // = "FOO"
 
+// Note that the value to be returned must start on the same line as the
+// 'return' keyword, otherwise you'll always return 'undefined' due to
+// automatic semicolon insertion. Watch out for this when using Allman style.
+function myFunction()
+{
+    return // <- semicolon automatically inserted here
+    {
+        thisIsAn: 'object literal'
+    }
+}
+myFunction(); // = undefined
+
 // JavaScript functions are first class objects, so they can be reassigned to
 // different variable names and passed to other functions as arguments - for
 // example, when supplying an event handler:
@@ -218,6 +270,8 @@ function myFunction(){
     // this code will be called in 5 seconds' time
 }
 setTimeout(myFunction, 5000);
+// Note: setTimeout isn't part of the JS language, but is provided by browsers
+// and Node.js.
 
 // Function objects don't even have to be declared with a name - you can write
 // an anonymous function definition directly into the arguments of another.
@@ -250,6 +304,8 @@ permanent; // = 10
 // outer function's variables, even after the outer function exits.
 function sayHelloInFiveSeconds(name){
     var prompt = "Hello, " + name + "!";
+    // Inner functions are put in the local scope by default, as if they were
+    // declared with 'var'.
     function inner(){
         alert(prompt);
     }
@@ -296,9 +352,40 @@ var myOtherFunc = function(){
 myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "HELLO WORLD!"
 
+// We can also specify a context for a function to execute in when we invoke it
+// using 'call' or 'apply'.
+
+var anotherFunc = function(s){
+    return this.myString + s;
+}
+anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
+
+// The 'apply' function is nearly identical, but takes an array for an argument list.
+
+anotherFunc.apply(myObj, [" And Hello Sun!"]); // = "Hello World! And Hello Sun!"
+
+// This is useful when working with a function that accepts a sequence of arguments
+// and you want to pass an array.
+
+Math.min(42, 6, 27); // = 6
+Math.min([42, 6, 27]); // = NaN (uh-oh!)
+Math.min.apply(Math, [42, 6, 27]); // = 6
+
+// But, 'call' and 'apply' are only temporary. When we want it to stick, we can use
+// bind.
+
+var boundFunc = anotherFunc.bind(myObj);
+boundFunc(" And Hello Saturn!"); // = "Hello World! And Hello Saturn!"
+
+// Bind can also be used to partially apply (curry) a function.
+
+var product = function(a, b){ return a * b; }
+var doubler = product.bind(this, 2);
+doubler(8); // = 16
+
 // When you call a function with the new keyword, a new object is created, and
-// made available to the function via this. Functions designed to be called
-// like this are called constructors.
+// made available to the function via the this keyword. Functions designed to be
+// called like that are called constructors.
 
 var MyConstructor = function(){
     this.myNumber = 5;
@@ -314,7 +401,7 @@ myNewObj.myNumber; // = 5
 // property __proto__. While this is useful for explaining prototypes it's not
 // part of the standard; we'll get to standard ways of using prototypes later.
 var myObj = {
-    myString: "Hello world!",
+    myString: "Hello world!"
 };
 var myPrototype = {
     meaningOfLife: 42,
@@ -322,6 +409,7 @@ var myPrototype = {
         return this.myString.toLowerCase()
     }
 };
+
 myObj.__proto__ = myPrototype;
 myObj.meaningOfLife; // = 42
 
@@ -342,7 +430,7 @@ myPrototype.meaningOfLife = 43;
 myObj.meaningOfLife; // = 43
 
 // We mentioned that __proto__ was non-standard, and there's no standard way to
-// change the prototype of an existing object. However, there's two ways to
+// change the prototype of an existing object. However, there are two ways to
 // create a new object with a given prototype.
 
 // The first is Object.create, which is a recent addition to JS, and therefore
@@ -354,13 +442,16 @@ myObj.meaningOfLife; // = 43
 // Constructors have a property called prototype. This is *not* the prototype of
 // the constructor function itself; instead, it's the prototype that new objects
 // are given when they're created with that constructor and the new keyword.
-myConstructor.prototype = {
+MyConstructor.prototype = {
+    myNumber: 5,
     getMyNumber: function(){
-        return this.myNumber
+        return this.myNumber;
     }
 };
-var myNewObj2 = new myConstructor();
+var myNewObj2 = new MyConstructor();
 myNewObj2.getMyNumber(); // = 5
+myNewObj2.myNumber = 6
+myNewObj2.getMyNumber(); // = 6
 
 // Built-in types like strings and numbers also have constructors that create
 // equivalent wrapper objects.
@@ -419,8 +510,12 @@ more about how to use JavaScript in web pages, start by learning about the
 [Document Object
 Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 
-[Javascript Garden](http://bonsaiden.github.io/JavaScript-Garden/) is an in-depth
+[Learn Javascript by Example and with Challenges](http://www.learneroo.com/modules/64/nodes/350) is a variant of this reference with built-in challenges. 
+
+[JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) is an in-depth
 guide of all the counter-intuitive parts of the language.
+
+[JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) is a classic guide / reference book. 
 
 In addition to direct contributors to this article, some content is adapted
 from Louie Dinh's Python tutorial on this site, and the [JS

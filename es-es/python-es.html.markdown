@@ -130,7 +130,7 @@ otra_variable  # Levanta un error de nombre
 # 'if' puede ser usado como una expresión
 "yahoo!" if 3 > 2 else 2 #=> "yahoo!"
 
-# Listas sobre secuencias
+# Listas almacenan secuencias
 lista = []
 # Puedes empezar con una lista prellenada
 otra_lista = [4, 5, 6]
@@ -254,7 +254,7 @@ conjunto_lleno | otro_conjunto #=> {1, 2, 3, 4, 5, 6}
 # Haz diferencia de conjuntos con -
 {1,2,3,4} - {2,3,5} #=> {1, 4}
 
-# CHequea la existencia en un conjunto con 'in'
+# Chequea la existencia en un conjunto con 'in'
 2 in conjunto_lleno #=> True
 10 in conjunto_lleno #=> False
 

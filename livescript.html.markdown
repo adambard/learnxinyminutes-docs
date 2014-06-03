@@ -23,7 +23,7 @@ Feedback is always welcome, so feel free to reach me over at
 
 
 ```coffeescript
-# Just like its CoffeeScript cousin, LiveScript uses hash symbols for
+# Just like its CoffeeScript cousin, LiveScript uses number symbols for
 # single-line comments.
 
 /*
@@ -135,11 +135,19 @@ funRE = //
 3 % 2   # => 1
 
 
-# Comparisons are mostly the same too, except that `==` and `===` are
-# inverted.
+# Comparisons are mostly the same too, except that `==` is the same as
+# JS's `===`, where JS's `==` in LiveScript is `~=`, and `===` enables
+# object and array comparisons, and also stricter comparisons:
 2 == 2          # => true
 2 == "2"        # => false
-2 === "2"       # => true
+2 ~= "2"        # => true
+2 === "2"       # => false
+
+[1,2,3] == [1,2,3]        # => false
+[1,2,3] === [1,2,3]       # => true
+
++0 == -0     # => true
++0 === -0    # => false
 
 # Other relational operators include <, <=, > and >=
 

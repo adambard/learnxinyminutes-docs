@@ -3,7 +3,7 @@ language: python
 category: language
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
-filename: learnpython.py
+filename: learnpython-ko.py
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
 lang: ko-kr
