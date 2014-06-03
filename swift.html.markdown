@@ -10,4 +10,33 @@ lot more of modern language features to the table.
 
 
 ```swift
+
+// Comments look just like in C
+
+/*
+    Multiline comments too,
+    /* but unlike C, they should be closed recursively */
+*/
+
+// You can declare variables:
+
+var canChange = "Hello world!"
+
+// And constants:
+
+let cannotChange = canChange + " And hi, mom!"
+
+// Types are inferred automatically:
+
+let apples = 5 // Int
+let length = 5.4 // Double
+
+// But never converted automatically:
+
+let appleCertificate = "This person has " + apples + " apples"                  // Compile-time error!
+let lengthMeasurement = "This apple tree is " + String(length) + " meters high" // This works
+
+// Although in case of strings, there exists more convenient syntax:
+
+let appleTreeSurvey = "This apple tree has \(apples) apples and is \(length) meters high"
 ```
