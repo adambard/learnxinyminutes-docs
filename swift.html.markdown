@@ -24,7 +24,15 @@ var canChange = "Hello world!"
 
 // And constants:
 
-let cannotChange = canChange + " And hi, mom!"
+let cannotChange = "Hi, mom!"
+
+// You can edit variables:
+
+canChange += " Good to see you."
+
+// But constants can't be changed after assignment:
+
+cannotChange += " Come visit!" // Compile-time error
 
 // Types are inferred automatically:
 
