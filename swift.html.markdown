@@ -8,6 +8,8 @@ Swift is an OOP language that was created by Apple for iOS and OS X development 
 released to the word at 2014 WWDC. Like Objective-C, it uses ARC, but also brings a
 lot more of modern language features to the table.
 
+*This page is work in work in progress! You can contribute yourself on github*
+
 
 ```swift
 
