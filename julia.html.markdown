@@ -500,7 +500,7 @@ typeof(DataType) # => DataType
 
 # Users can define types
 # They are like records or structs in other languages.
-# New types are defined used the `type` keyword.
+# New types are defined using the `type` keyword.
 
 # type Name
 #   field::OptionalType
