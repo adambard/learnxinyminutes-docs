@@ -327,6 +327,11 @@ Push and merge changes from a branch to a remote & branch.
 # git push <remote> <branch>
 # git push => implicitly defaults to => git push origin master
 $ git push origin master
+
+# To link up current local branch with a remote branch, add -u flag:
+$ git push -u origin master
+# Now, anytime you want to push from that same local branch, use shortcut:
+$ git push 
 ```
 
 ### rebase (caution) 
