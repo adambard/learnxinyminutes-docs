@@ -153,7 +153,7 @@ print(numbers) // [3, 6, 18]
 // If you just need to store data in a
 // structured object, you should use a `struct`
 
-// A simple class `Square` extends `Shape
+// A simple class `Square` extends `Shape`
 class Rect: Shape {
   var sideLength: Int = 1
 
@@ -188,7 +188,7 @@ mySquare.shrink()
 print(mySquare.sideLength) // 4
 
 // If you don't need a custom getter and setter,
-// but still want to run code before an after getting or setting
+// but still want to run code before and after getting or setting
 // a property, you can use `willSet` and `didSet`
 
 
