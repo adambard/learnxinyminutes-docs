@@ -2,16 +2,18 @@
 language: swift
 contributors:
   - ["Grant Timmerman", "http://github.com/grant"]
-filename: learnswift.swift
+translators:
+  - ["Xavier Yao", "http://github.com/xavieryao"]
+filename: learnswift-cn.swift
 ---
 
-Swift is a programming language for iOS and OS X development created by Apple. Designed to coexist with Objective-C and to be more resilient against erroneous code, Swift was introduced in 2014 at Apple's developer conference WWDC. It is built with the LLVM compiler included in Xcode 6 beta.
+Swift 是Apple 开发的用于iOS 和OS X 开发的编程语言。Swift 于2014年Apple WWDC （全球开发者大会）中被引入，用以与Objective-C 共存，同时对错误代码更具弹性。Swift 由Xcode 6 beta 中包含的LLVM编译器编译。
 
-See also Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/LandingPage/index.html), which has a complete tutorial on Swift.
+参阅：Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/LandingPage/index.html) ——一个完整的Swift 教程
 
 ```js
 //
-// Basics
+// 基础
 //
 
 println("Hello, world")
@@ -25,15 +27,15 @@ optionalString = nil
 
 
 //
-// Arrays and Dictionaries
+// 数组与字典（关联数组）
 //
 
-// Array
+// 数组
 var shoppingList = ["catfish", "water", "lemons"]
 shoppingList[1] = "bottle of water"
 let emptyArray = String[]()
 
-// Dictionary
+// 字典
 var occupations = [
   "Malcolm": "Captain",
   "kaylee": "Mechanic"
@@ -43,10 +45,10 @@ let emptyDictionary = Dictionary<String, Float>()
 
 
 //
-// Control Flow
+// 控制流
 //
 
-// for loop (array)
+// 用于数组的for 循环
 let myArray = [1, 1, 2, 3, 5]
 for value in myArray {
   if value == 1 {
@@ -56,24 +58,24 @@ for value in myArray {
   }
 }
 
-// for loop (dictionary)
+// 用于字典的for 循环
 for (key, value) in dict {
   println("\(key): \(value)")
 }
 
-// for loop (range)
+// 用于区间的for 循环
 for i in -1...1 { // [-1, 0, 1]
   println(i)
 }
-// use .. to exclude the last number
+// 使用 .. 表示的区间不包含最后一个元素 [-1,0,1)
 
-// while loop
+// while 循环
 var i = 1
 while i < 1000 {
   i *= 2
 }
 
-// do-while loop
+// do-while 循环
 do {
   println("hello")
 } while 1 == 2
@@ -87,33 +89,33 @@ case "cucumber", "watercress":
   let vegetableComment = "That would make a good tea sandwich."
 case let x where x.hasSuffix("pepper"):
   let vegetableComment = "Is it a spicy \(x)?"
-default: // required (in order to cover all possible input)
+default: // 必须 (为了覆盖所有可能的输入)
   let vegetableComment = "Everything tastes good in soup."
 }
 
 
 //
-// Functions
+// 函数
 //
 
-// Functions are a first-class type, meaning they can be nested
-// in functions and can be passed around
+// 函数是一等类型，这意味着可以在函数中构建函数
+// 并且可以被传递
 
-// Function
+// 函数
 func greet(name: String, day: String) -> String {
   return "Hello \(name), today is \(day)."
 }
 greet("Bob", "Tuesday")
 
-// Function that returns multiple items in a tuple
+// 使用多元数组返回多返回值的函数
 func getGasPrices() -> (Double, Double, Double) {
   return (3.59, 3.69, 3.79)
 }
 
-// Args
+// 不定参数
 func setup(numbers: Int...) {}
 
-// Passing and returning functions
+// 传递、返回函数
 func makeIncrementer() -> (Int -> Int) {
   func addOne(number: Int) -> Int {
     return 1 + number
@@ -125,35 +127,35 @@ increment(7)
 
 
 //
-// Closures
+// 闭包
 //
 
-// Functions are special case closures ({})
+// 函数是特殊的闭包({})
 
-// Closure example.
-// `->` separates the arguments and return type
-// `in` separates the closure header from the closure body
+// 闭包示例.
+// `->` 分隔参数和返回类型
+// `in` 分隔闭包头和闭包体
 numbers.map({
   (number: Int) -> Int in
   let result = 3 * number
   return result
   })
 
-// When the type is known, like above, we can do this
+// 当类型已知时，可以这样做：
 var numbers = [1, 2, 6]
 numbers = numbers.map({ number in 3 * number })
 print(numbers) // [3, 6, 18]
 
 
 //
-// Classes
+// 类
 //
 
-// All methods and properties of a class are public.
-// If you just need to store data in a
-// structured object, you should use a `struct`
+// 类的全部方法和属性都是public 的
+// 如果你在一个数据结构中只需储存数据，
+// 应使用 `struct`
 
-// A simple class `Square` extends `Shape`
+// 集成自`Shape` 类的简单的类`Square
 class Rect: Shape {
   var sideLength: Int = 1
 
@@ -187,17 +189,17 @@ print(mySquare.getArea()) // 25
 mySquare.shrink()
 print(mySquare.sideLength) // 4
 
-// If you don't need a custom getter and setter,
-// but still want to run code before and after getting or setting
-// a property, you can use `willSet` and `didSet`
+// 如果你不需要自定义getter 和setter,
+// 但仍希望在获取或设置一个属性之前或之后运行
+// 一些代码，你可以使用`willSet` 和 `didSet`
 
 
 //
-// Enums
+// 枚举类型
 //
 
-// Enums can optionally be of a specific type or on their own.
-// They can contain methods like classes.
+// 枚举类型可以是某种指定的类型，抑或自成一种类型
+// 像类一样，枚举类型可以包含方法
 
 enum Suit {
   case Spades, Hearts, Diamonds, Clubs
@@ -213,12 +215,12 @@ enum Suit {
 
 
 //
-// Other
+// 其它
 //
 
-// `protocol`: Similar to Java interfaces.
-// `extension`s: Add extra functionality to an already created type
-// Generics: Similar to Java. Use the `where` keyword to specify the
-//   requirements of the generics.
+// `协议(protocol)`: 与Java 的接口(Interface) 类似.
+// `扩展(extension)`: 为现有类型添加额外特性
+// 泛型: 与Java 相似。使用`where` 关键字指定
+//   泛型的要求.
 
 ```
