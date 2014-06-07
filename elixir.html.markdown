@@ -201,7 +201,7 @@ cond do
 end
 
 # `try/catch` is used to catch values that are thrown, it also supports an
-# `after` clause that is invoked whether or not a value is catched.
+# `after` clause that is invoked whether or not a value is caught.
 try do
   throw(:hello)
 catch
