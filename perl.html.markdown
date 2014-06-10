@@ -28,7 +28,8 @@ Perl 5 runs on over 100 platforms from portables to mainframes and is suitable f
 my $animal = "camel";
 my $answer = 42;
 
-# Scalar values can be strings, integers or floating point numbers, and Perl will automatically convert between them as required.
+# Scalar values can be strings, integers or floating point numbers, and
+# Perl will automatically convert between them as required.
 
 ## Arrays
 #  An array represents a list of values:
@@ -49,9 +50,11 @@ my %fruit_color = (
         apple  => "red",
         banana => "yellow",
         );
-# Scalars, arrays and hashes are documented more fully in perldata. (perldoc perldata).
+# Scalars, arrays and hashes are documented more fully in perldata.
+# (perldoc perldata).
 
-# More complex data types can be constructed using references, which allow you to build lists and hashes within lists and hashes.
+# More complex data types can be constructed using references, which allow you
+# to build lists and hashes within lists and hashes.
 
 #### Conditional and looping constructs
 
@@ -92,7 +95,9 @@ foreach (@array) {
 
 #### Regular expressions
 
-# Perl's regular expression support is both broad and deep, and is the subject of lengthy documentation in perlrequick, perlretut, and elsewhere.  However, in short:
+# Perl's regular expression support is both broad and deep, and is the subject
+# of lengthy documentation in perlrequick, perlretut, and elsewhere.
+# However, in short:
 
 # Simple matching
 if (/foo/)       { ... }  # true if $_ contains "foo"
@@ -112,8 +117,9 @@ open(my $in,  "<",  "input.txt")  or die "Can't open input.txt: $!";
 open(my $out, ">",  "output.txt") or die "Can't open output.txt: $!";
 open(my $log, ">>", "my.log")     or die "Can't open my.log: $!";
 
-# You can read from an open filehandle using the "<>" operator.  In scalar context it reads a single line from
-# the filehandle, and in list context it reads the whole file in, assigning each line to an element of the list:
+# You can read from an open filehandle using the "<>" operator.  In scalar
+# context it reads a single line from the filehandle, and in list context it
+# reads the whole file in, assigning each line to an element of the list:
 
 my $line  = <$in>;
 my @lines = <$in>;
