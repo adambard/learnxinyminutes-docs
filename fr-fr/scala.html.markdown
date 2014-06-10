@@ -148,12 +148,12 @@ List("Dom", "Bob", "Natalia") foreach println
 val a = Array(1, 2, 3, 5, 8, 13)
 a(0)
 a(3)
-a(21)    // Jette une exception
+a(21)    // Lance une exception
 
 val m = Map("fork" -> "tenedor", "spoon" -> "cuchara", "knife" -> "cuchillo")
 m("fork")
 m("spoon")
-m("bottle")       // Jette une exception
+m("bottle")       // Lance une exception
 
 val safeM = m.withDefaultValue("no lo se")
 safeM("bottle")
@@ -183,7 +183,7 @@ val divideInts = (x:Int, y:Int) => (x / y, x % y)
 
 divideInts(10,3) // La fonction divideInts donne le résultat et le reste de la division
 
-// Pour accéder à un élément d'un tuple, utilisez _._n 
+// Pour accéder à un élément d'un tuple, utilisez _._n
 // où n est l'index de base 1 de l'élément
 val d = divideInts(10,3)
 
@@ -233,7 +233,7 @@ for { n <- nSquared2 if n < 10 } yield n
 
 for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
 
- 
+
 
 /* Ci-dessus ce ne sont pas des boucles for. La sémantique des boucles for est "répète",
    alors qu'une for-compréhension définit une relation entre deux ensembles de données. */
@@ -265,9 +265,9 @@ while (i < 10) {  println("i " + i); i+=1  }  // Oui, encore. Qu'est-ce qui s'es
 
 
 i    // Montre la valeur de i. Notez que while est une boucle au sens classique.
-     // Il exécute séquentiellement pendant que la variable de boucle change. 
-     // While est très rapide, plus rapide que les boucles Java, 
-     // mais utiliser des combinateurs et des compréhensions comme ci-dessus est plus 
+     // Il exécute séquentiellement pendant que la variable de boucle change.
+     // While est très rapide, plus rapide que les boucles Java,
+     // mais utiliser des combinateurs et des compréhensions comme ci-dessus est plus
      // facile pour comprendre et faire le parallèle
 
 // La boucle do while
@@ -278,8 +278,8 @@ do {
 
 
 // La récursivité est un moyen idiomatique de faire une chose récurrente en Scala.
-// Les fonctions récursives ont besoin d'un type de retour explicite, 
-// le compilateur ne peut pas le déduire. 
+// Les fonctions récursives ont besoin d'un type de retour explicite,
+// le compilateur ne peut pas le déduire.
 // Ici c'est Unit.
 def showNumbersInRange(a:Int, b:Int):Unit = {
   print(a)
@@ -355,7 +355,7 @@ kate match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy"
 
 // Expressions régulières
 
-val email = "(.*)@(.*)".r  // On fait un Regex en invoquant r sur la chaîne de caractère 
+val email = "(.*)@(.*)".r  // On fait un Regex en invoquant r sur la chaîne de caractère
 
 val email(user, domain) = "henry@zkpr.com"
 
@@ -370,8 +370,8 @@ val email(user, domain) = "henry@zkpr.com"
 "Les chaînes de caractères Scala sont entourées de doubles guillements" //
 'a' // Un caractère de Scala
 'Les simples guillemets n'existent pas en Scala // Erreur
-"Les chaînes de caractères possèdent les méthodes usuelles de Java".length 
-"Il y a aussi quelques méthodes extra de Scala.".reverse 
+"Les chaînes de caractères possèdent les méthodes usuelles de Java".length
+"Il y a aussi quelques méthodes extra de Scala.".reverse
 
 // Voir également :  scala.collection.immutable.StringOps
 
@@ -385,7 +385,7 @@ println(s"We have $n apples")
 val a = Array(11, 9, 6)
 println(s"My second daughter is ${a(2-1)} years old")
 
-// Certains caractères ont besoin d'être "échappés", 
+// Certains caractères ont besoin d'être "échappés",
 // ex un double guillement à l'intérieur d'une chaîne de caractère :
 val a = "They stood outside the \"Rose and Crown\""
 
@@ -410,14 +410,14 @@ import scala.collection.immutable._
 // Importer des classes multiples en une seule instruction
 import scala.collection.immutable.{List, Map}
 
-// Renommer un import en utilisant '=>' 
+// Renommer un import en utilisant '=>'
 import scala.collection.immutable.{ List => ImmutableList }
 
-// Importer toutes les classes, à l'exception de quelques unes. 
+// Importer toutes les classes, à l'exception de quelques unes.
 // Les suivantes excluant Map et Set :
 import scala.collection.immutable.{Map => _, Set => _, _}
 
-// Le point d'entrée du programme est défini dans un fichier scala 
+// Le point d'entrée du programme est défini dans un fichier scala
 // utilisant un objet, avec une simple méthode, main :
 object Application {
   def main(args: Array[String]): Unit = {
@@ -425,7 +425,7 @@ object Application {
   }
 }
 
-// Les fichiers peuvent contenir des classes multiples et des objets. 
+// Les fichiers peuvent contenir des classes multiples et des objets.
 // On les compile avec scalac
 
 
