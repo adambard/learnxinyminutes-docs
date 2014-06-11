@@ -17,7 +17,7 @@ going to be 100% valid JSON. Luckily, it kind of speaks for itself.
 {
   "key": "value",
   
-  "keys": "must always be enclosed in quotes (' or \")"
+  "keys": "must always be enclosed in quotes (' or \")",
   "numbers": 0,
   "strings": "Hellø, wørld. All unicode is allowed, along with \"escaping\".",
   "has bools?": true,
@@ -51,6 +51,7 @@ going to be 100% valid JSON. Luckily, it kind of speaks for itself.
     "comment": "check this out!"
   , "comma position": "doesn't matter - as long as its before the value, then its valid"
   , "see for rationale": "https://gist.github.com/isaacs/357981"
+  },
 
   "that was short": "And, you're done. You know know everything JSON has to offer."
 }
