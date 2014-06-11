@@ -59,7 +59,7 @@ Github, we also have: -->
 <!-- Paragraphs are a one or multiple adjacent lines of text separated by one or
 multiple blank lines. -->
 
-This is a paragraph. I'm tryping in a paragraph isn't this fun?
+This is a paragraph. I'm typing in a paragraph isn't this fun?
 
 Now I'm in paragraph 2.
 I'm still in paragraph 2 too!
