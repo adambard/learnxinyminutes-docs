@@ -369,7 +369,7 @@ import scala.collection.immutable._
 import scala.collection.immutable.{List, Map}
 
 // 使用 '=>' 来重命名一个 import
-import scala.collection.immutable{ List => ImmutableList }
+import scala.collection.immutable.{ List => ImmutableList }
 
 // import 除了一些类的其它所有的类。下面的例子除去了 Map 类和 Set 类：
 import scala.collection.immutable.{Map => _, Set => _, _}
