@@ -17,14 +17,14 @@ lang: fr-fr
 /*
   Pour vous préparer :
 
-  1) Téléchargez Scala - http://www.scala-lang.org/downloads
+  1) (Téléchargez Scala)[http://www.scala-lang.org/downloads]
   2) Dézippez/décompressez dans votre endroit préféré
   et ajoutez le chemin du sous-répertoire bin au chemin du système
   3) Commencez un REPL de Scala en tapant juste scala. Vous devriez voir le prompteur :
 
   scala>
 
-  C'est ce qu'on appelle un REPL (Read-Eval-Print-Loop), c'est une interface de programmation interactive. 
+  C'est ce qu'on appelle un REPL (Read-Eval-Print-Loop), c'est une interface de programmation interactive.
   Vous pouvez y exécuter des commandes.
   Allons-y :
 */
@@ -237,7 +237,7 @@ for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
 
 
 /* Les exemples précédents ne sont pas des boucles for. La sémantique des boucles for
-   est "répète", alors qu'une for-compréhension définit une relation 
+   est "répète", alors qu'une for-compréhension définit une relation
    entre deux ensembles de données. */
 
 
@@ -249,7 +249,7 @@ val r = 1 to 5
 r.foreach( println )
 
 r foreach println
-// NB: Scala est vraiment tolérant par rapport aux points et aux parenthèses en étudiant les roles séparément. 
+// NB: Scala est vraiment tolérant par rapport aux points et aux parenthèses en étudiant les roles séparément.
 // Ça aide pour écrire des DSL ou des API qui se lisent comme en anglais.
 
 
@@ -270,7 +270,7 @@ i    // Montre la valeur de i. Notez que while est une boucle au sens classique.
      // Il exécute séquentiellement pendant que la variable de boucle change.
      // While est très rapide, plus rapide que les boucles Java,
      // mais utiliser des combinateurs et des compréhensions comme ci-dessus est plus
-     // facile pour comprendre et faire le parallèle
+     // facile pour comprendre et faire la parallélisation
 
 // La boucle do while
 do {
