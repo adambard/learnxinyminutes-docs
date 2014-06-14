@@ -18,19 +18,20 @@ lang: fr-fr
   Pour vous préparer :
 
   1) Téléchargez Scala - http://www.scala-lang.org/downloads
-  2) dézippez/décompressez dans votre endroit préféré
+  2) Dézippez/décompressez dans votre endroit préféré
   et ajoutez le chemin du sous-répertoire bin au chemin du système
   3) Commencez un REPL de Scala en tapant juste scala. Vous devriez voir le prompteur :
 
   scala>
 
-  C'est ce qu'on appelle un REPL. Vous pouvez y exécuter des commandes.
+  C'est ce qu'on appelle un REPL (Read-Eval-Print-Loop), c'est une interface de programmation interactive. 
+  Vous pouvez y exécuter des commandes.
   Allons-y :
 */
 
-println(10) // imprime l'integer 10
+println(10) // affiche l'integer 10
 
-println("Boo!") // imprime avec retour à la ligne la chaîne de caractère Boo!
+println("Boo!") // affiche avec retour à la ligne la chaîne de caractère Boo!
 
 
 // Quelques basiques
@@ -40,14 +41,14 @@ println("Hello world!")
 // Imprimer sans forcer une nouvelle ligne à la prochaine impression
 print("Hello world")
 
-// Pour déclarer des valeurs on utile var ou val
+// Pour déclarer des valeurs on utilise var ou val
 // Les déclarations val sont immuables, tandis que les var sont muables.
 // L'immuabilité est une bonne chose.
 
 val x = 10 // x vaut maintenant 10
-x = 20 // erreur: réaffectation à val
+x = 20 // erreur : réaffectation à val
 var x = 10
-x = 20  // x vaut maintenant 20
+x = 20 // x vaut maintenant 20
 
 // Les commentaires d'une ligne commencent par deux slashs
 
@@ -65,18 +66,18 @@ false
 true == false // false
 10 > 5 // true
 
-// Les maths sont comme d'habitude
+// Les opérateurs mathématiques sont habituels
 1 + 1 // 2
 2 - 1 // 1
 5 * 3 // 15
 6 / 2 // 3
 
 
-// REPL donne le type et la valeur du résultat quand vous évaluez une commande
+// Le REPL donne le type et la valeur du résultat quand vous évaluez une commande
 
 1 + 7
 
-/* Les lignes ci-dessous donne les résultats :
+/* Les lignes ci-dessous donnent les résultats :
 
   scala> 1 + 7
   res29: Int = 8
@@ -90,7 +91,7 @@ true == false // false
 
 // Tout est un objet, même une fonction. Tapez ceci dans le REPL :
 
-7 // donne res30: Int = 7 (res30 est seulement un nom de var généré pour le résultat)
+7 // donne res30: Int = 7 (res30 est seulement un nom de variable généré pour le résultat)
 
 
 // La ligne suivante est une fonction qui prend un Int et retourne son carré
@@ -104,22 +105,22 @@ val sq = (x:Int) => x * x
 
    sq: Int => Int = <function1>
 
-   Ce qui signifie que cette fois-ci nous avons donné un nom explicite à la valeur
+   Ce qui signifie que cette fois-ci nous avons donné un nom explicite à la valeur.
    sq est une fonction qui prend un Int et retourne un Int.
 
 
-   sq peut-être exécuté comme ci-dessous :
+   sq peut être exécutée comme ci-dessous :
 */
 
-sq(10)   // donne comme résultat : res33: Int = 100.
+sq(10) // donne comme résultat : res33: Int = 100.
 
 
-// les deux-points définissent explicitement le type de valeur,
+// les deux-points définissent explicitement le type de la valeur,
 // dans ce cas une fonction qui prend un Int et retourne un Int.
 val add10: Int => Int = _ + 10
 
-// Scala autorise des méthodes et des fonctions pour retourner,
-// ou prendre comme paramètres, des autres fonctions ou méthodes
+// Scala autorise des méthodes et des fonctions à retourner
+// ou prendre comme paramètres des autres fonctions ou méthodes
 
 
 List(1, 2, 3) map add10 // List(11, 12, 13) - add10 est appliqué à chaque éléments
@@ -131,8 +132,8 @@ List(1, 2, 3) map (x => x + 10)
 
 
 
-// Le tiret du bas peut être utilisé si il n'y a qu'un paramètre à la fonction anonyme.
-// Il se borne à une variable
+// Le tiret du bas peut être utilisé si la fonction anonyme ne prend qu'un paramètre.
+// Il se comporte comme une variable
 List(1, 2, 3) map (_ + 10)
 
 
@@ -177,7 +178,7 @@ s(1)
 
 (a, 2, "three")
 
-// Pourquoi avoir ça ?
+// Exemple d'utilisation
 val divideInts = (x:Int, y:Int) => (x / y, x % y)
 
 
@@ -205,7 +206,7 @@ sSquared.reduce (_+_)
 
 
 
-// La fonction filter prends un prédicat (une fonction de A -> Booléen) et
+// La fonction filter prend un prédicat (une fonction de type A -> Booléen) et
 // sélectionne tous les éléments qui satisfont ce prédicat
 List(1, 2, 3) filter (_ > 2) // List(3)
 List(
@@ -216,14 +217,14 @@ List(
 
 
 // Scala a une méthode foreach définie pour certaines collections
-// qui prend un type d'argument retournant Unit (une méthode void)
+// qui prend en argument une fonction renvoyant Unit (une méthode void)
 aListOfNumbers foreach (x => println(x))
 aListOfNumbers foreach println
 
 
 
 
-// For compréhensions
+// Compréhensions de listes
 
 for { n <- s } yield sq(n)
 
@@ -235,8 +236,9 @@ for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
 
 
 
-/* Ci-dessus ce ne sont pas des boucles for. La sémantique des boucles for est "répète",
-   alors qu'une for-compréhension définit une relation entre deux ensembles de données. */
+/* Les exemples précédents ne sont pas des boucles for. La sémantique des boucles for
+   est "répète", alors qu'une for-compréhension définit une relation 
+   entre deux ensembles de données. */
 
 
 
@@ -247,8 +249,8 @@ val r = 1 to 5
 r.foreach( println )
 
 r foreach println
-// NB: Scala est vraiment tolérant par rapport aux points et aux parenthèses en étudiant
-// les roles séparément. Ça aide pour écrire des DSL ou des API qui se lisent comme en anglais
+// NB: Scala est vraiment tolérant par rapport aux points et aux parenthèses en étudiant les roles séparément. 
+// Ça aide pour écrire des DSL ou des API qui se lisent comme en anglais.
 
 
 (5 to 1 by -1) foreach ( println )
@@ -277,7 +279,7 @@ do {
 } while (x < 10)
 
 
-// La récursivité est un moyen idiomatique de faire une chose récurrente en Scala.
+// La récursivité est un moyen idiomatique de faire une chose répétitive en Scala.
 // Les fonctions récursives ont besoin d'un type de retour explicite,
 // le compilateur ne peut pas le déduire.
 // Ici c'est Unit.
@@ -289,7 +291,7 @@ def showNumbersInRange(a:Int, b:Int):Unit = {
 
 
 
-// Conditionnelles
+// Structures de contrôle
 
 val x = 10
 
@@ -306,9 +308,9 @@ while (i < 10) { println("i " + i); i+=1  }
 
 
 
-// Les caractéristiques orientées objets
+// Les caractéristiques "Orienté Objet"
 
-// Classname is Dog
+// Création d'une classe Dog
 class Dog {
   // Une méthode appelée bark qui retourne une chaîne de caractère
   def bark: String = {
@@ -318,7 +320,7 @@ class Dog {
 }
 
 
-// Les classes peuvent contenir presque n'importe quel autre constructeur, incluant d'autres classes,
+// Les classes peuvent contenir presque n'importe quelle autre construction, incluant d'autres classes,
 // des fonctions, des méthodes, des objets, des classes case, des traits, etc ...
 
 
@@ -355,7 +357,7 @@ kate match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy"
 
 // Expressions régulières
 
-val email = "(.*)@(.*)".r  // On fait un Regex en invoquant r sur la chaîne de caractère
+val email = "(.*)@(.*)".r  // On fait une Regex en invoquant r sur la chaîne de caractère
 
 val email(user, domain) = "henry@zkpr.com"
 
@@ -367,13 +369,13 @@ val email(user, domain) = "henry@zkpr.com"
 
 // Les chaînes de caractères
 
-"Les chaînes de caractères Scala sont entourées de doubles guillements" //
+"Les chaînes de caractères Scala sont entourées de doubles guillements"
 'a' // Un caractère de Scala
 'Les simples guillemets n'existent pas en Scala // Erreur
 "Les chaînes de caractères possèdent les méthodes usuelles de Java".length
 "Il y a aussi quelques méthodes extra de Scala.".reverse
 
-// Voir également :  scala.collection.immutable.StringOps
+// Voir également : scala.collection.immutable.StringOps
 
 println("ABCDEF".length)
 println("ABCDEF".substring(2, 6))
@@ -386,11 +388,11 @@ val a = Array(11, 9, 6)
 println(s"My second daughter is ${a(2-1)} years old")
 
 // Certains caractères ont besoin d'être "échappés",
-// ex un double guillement à l'intérieur d'une chaîne de caractère :
+// ex un guillemet à l'intérieur d'une chaîne de caractères :
 val a = "They stood outside the \"Rose and Crown\""
 
-// Les triples doubles guillemets permettent d'écrire des chaînes de caractères
-// sur plusieurs lignes et peuvent contenir des guillements
+// Les triples guillemets permettent d'écrire des chaînes de caractères
+// sur plusieurs lignes et peuvent contenir des guillemets
 
 val html = """<form id="daform">
                 <p>Press belo', Joe</p>
@@ -407,25 +409,25 @@ import scala.collection.immutable.List
 // Importer tous les sous-paquets
 import scala.collection.immutable._
 
-// Importer des classes multiples en une seule instruction
+// Importer plusieurs classes en une seule instruction
 import scala.collection.immutable.{List, Map}
 
 // Renommer un import en utilisant '=>'
 import scala.collection.immutable.{ List => ImmutableList }
 
-// Importer toutes les classes, à l'exception de quelques unes.
-// Les suivantes excluant Map et Set :
+// Importer toutes les classes, à l'exception de certaines.
+// La ligne suivante exclut Map et Set :
 import scala.collection.immutable.{Map => _, Set => _, _}
 
 // Le point d'entrée du programme est défini dans un fichier scala
-// utilisant un objet, avec une simple méthode, main :
+// utilisant un objet, avec une simple méthode main :
 object Application {
   def main(args: Array[String]): Unit = {
-    // stuff goes here.
+    // Votre code ici.
   }
 }
 
-// Les fichiers peuvent contenir des classes multiples et des objets.
+// Les fichiers peuvent contenir plusieurs classes et plusieurs objets.
 // On les compile avec scalac
 
 
@@ -433,12 +435,12 @@ object Application {
 
 // Entrée et Sortie
 
-// Pour lire un fichier lignes par lignes
+// Pour lire un fichier ligne par ligne
 import scala.io.Source
 for(line <- Source.fromFile("myfile.txt").getLines())
   println(line)
 
-// On utilise Java's PrintWriter pour écrire un fichier
+// On utilise le PrintWriter de Java pour écrire un fichier
 
 
 ```
@@ -453,4 +455,4 @@ for(line <- Source.fromFile("myfile.txt").getLines())
 
 [Try Scala in your browser](http://scalatutorials.com/tour/)
 
-Rejoindre le[Scala user group](https://groups.google.com/forum/#!forum/scala-user)
+Rejoindre le [Scala user group](https://groups.google.com/forum/#!forum/scala-user)
