@@ -268,9 +268,9 @@ while (i < 10) {  println("i " + i); i+=1  }  // Oui, encore. Qu'est-ce qui s'es
 
 i    // Montre la valeur de i. Notez que while est une boucle au sens classique.
      // Il exécute séquentiellement pendant que la variable de boucle change.
-     // While est très rapide, plus rapide que les boucles Java,
+     // While est très rapide,
      // mais utiliser des combinateurs et des compréhensions comme ci-dessus est plus
-     // facile pour comprendre et faire la parallélisation
+     // facile pour comprendre et pour faire la parallélisation
 
 // La boucle do while
 do {
