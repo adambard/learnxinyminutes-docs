@@ -2,6 +2,7 @@
 language: json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
+  - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
   - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
 lang: pt-br
@@ -18,6 +19,9 @@ tudo o que é vai ser 100% JSON válido. Felizmente, isso meio que fala por si.
 
 ```json
 {
+  "chave": "valor",
+  
+  "chaves": "deve ser sempre entre aspas (junto ou separado)",
   "números": 0,
   "strings": "Olá, mundo. Todo o padrão UNICODE é permitido, junto com \"escapando\".",
   "possui booleano?": true,
@@ -46,6 +50,12 @@ tudo o que é vai ser 100% JSON válido. Felizmente, isso meio que fala por si.
       [0, 0, 0, 1]
     ]
   ],
+
+  "estilo alternativo": {
+  "comentário": "verificar isso!"
+  , "posição da vírgula": "não importa - enquanto é antes do valor, então é válido"
+  , "outro comentário": "que bom"
+  },
 
   "que foi curto": "E, você está feito. Você já sabe tudo que JSON tem para oferecer.".
 }
