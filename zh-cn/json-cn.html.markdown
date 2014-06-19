@@ -46,6 +46,6 @@ lang: zh-cn
     ]
   ],
 
-  "that was short": "And, you're done. You know know everything JSON has to offer."
+  "that was short": "And, you're done. You now know everything JSON has to offer."
 }
 ```

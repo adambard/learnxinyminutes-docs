@@ -238,7 +238,10 @@ empty_set = set()
 # Initialize a set with a bunch of values. Yeah, it looks a bit like a dict. Sorry.
 some_set = {1, 1, 2, 2, 3, 4}   # some_set is now {1, 2, 3, 4}
 
-# Add more items to a set
+#Can set new variables to a set
+filled_set = some_set
+
+# Add one more item to the set 
 filled_set.add(5)   # filled_set is now {1, 2, 3, 4, 5}
 
 # Do set intersection with &
