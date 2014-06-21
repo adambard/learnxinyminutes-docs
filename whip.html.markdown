@@ -153,8 +153,8 @@ undefined ; user to indicate a value that hasn't been set
 
 ; Lambdas in Whip are declared with the `lambda` or `->` function.
 ; And functions are really just lambdas with names.
-(def my_function (-> (x y) (+ (x y) 10)))
-;         |       |    |         |
+(def my_function (-> (x y) (+ (+ x y) 10)))
+;         |       |    |          |
 ;         |       |    |    returned value(with scope containing argument vars)
 ;         |       | arguments
 ;         | lambda declaration function
