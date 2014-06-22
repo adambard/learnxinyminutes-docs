@@ -116,6 +116,16 @@ can include line breaks.` // Same string type.
     learnFlowControl() // Back in the flow.
 }
 
+// It is possible, unlike in many other languages for functions on go 
+// to have named return values.
+// We just have to assign a name to the type being returned in the function
+// declaration line. This allows us to easily return from multiple points
+// in a function as well as to only use the return keyword, without anything further.
+func learnNamedReturns(x, y int) (z int) {
+    z = x * y
+    return              // z is implicit here, because we named it earlier.
+}
+
 // Go is fully garbage collected.  It has pointers but no pointer arithmetic.
 // You can make a mistake with a nil pointer, but not by incrementing a pointer.
 func learnMemory() (p, q *int) {
