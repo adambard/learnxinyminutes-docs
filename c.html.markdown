@@ -23,7 +23,7 @@ Multi-line comments look like this. They work in C89 as well.
 // Constants: #define <keyword>
 #define DAYS_IN_YEAR 365
 
-//enumeration constants are also ways to declare constants. 
+// Enumeration constants are also ways to declare constants. 
 enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 // MON gets 2 automatically, TUE gets 3, etc. 
 
@@ -96,7 +96,7 @@ int main() {
     // is not evaluated (except VLAs (see below)).
     // The value it yields in this case is a compile-time constant.
     int a = 1;
-    // size_t is an unsiged integer type of at least 2 bytes used to represent 
+    // size_t is an unsigned integer type of at least 2 bytes used to represent 
     // the size of an object.
     size_t size = sizeof(a++); // a++ is not evaluated
     printf("sizeof(a++) = %zu where a = %d\n", size, a);
@@ -135,9 +135,9 @@ int main() {
     // > Enter the array size: 10
     // > sizeof array = 40
 
-    // Strings are just arrays of chars terminated by a NUL (0x00) byte,
+    // Strings are just arrays of chars terminated by a NULL (0x00) byte,
     // represented in strings as the special character '\0'.
-    // (We don't have to include the NUL byte in string literals; the compiler
+    // (We don't have to include the NULL byte in string literals; the compiler
     //  inserts it at the end of the array for us.)
     char a_string[20] = "This is a string";
     printf("%s\n", a_string); // %s formats a string
@@ -182,7 +182,7 @@ int main() {
     11 % 3; // => 2
 
     // Comparison operators are probably familiar, but
-    // there is no boolean type in c. We use ints instead.
+    // there is no Boolean type in c. We use ints instead.
     // (Or _Bool or bool in C99.)
     // 0 is false, anything else is true. (The comparison 
     // operators always yield 0 or 1.)
@@ -281,7 +281,7 @@ int main() {
 
     // branching with multiple choices: switch()
     switch (some_integral_expression) {
-    case 0: // labels need to be integral *constant* epxressions
+    case 0: // labels need to be integral *constant* expressions
         do_stuff();
         break; // if you don't break, control flow falls over labels
     case 1:
@@ -312,7 +312,7 @@ int main() {
     // Types will overflow without warning
     printf("%d\n", (unsigned char) 257); // => 1 (Max char = 255 if char is 8 bits long)
 
-    // For determining the max value of a `char`, a `signed char` and an `unisigned char`,
+    // For determining the max value of a `char`, a `signed char` and an `unsigned char`,
     // respectively, use the CHAR_MAX, SCHAR_MAX and UCHAR_MAX macros from <limits.h>
 
     // Integral types can be cast to floating-point types, and vice-versa.
@@ -342,13 +342,13 @@ int main() {
     // => Prints "8, 4" on a typical 64-bit system
 
     // To retrieve the value at the address a pointer is pointing to,
-    // put * in front to de-reference it.
+    // put * in front to dereference it.
     // Note: yes, it may be confusing that '*' is used for _both_ declaring a
     // pointer and dereferencing it.
     printf("%d\n", *px); // => Prints 0, the value of x
 
     // You can also change the value the pointer is pointing to.
-    // We'll have to wrap the de-reference in parenthesis because
+    // We'll have to wrap the dereference in parenthesis because
     // ++ has a higher precedence than *.
     (*px)++; // Increment the value px is pointing to by 1
     printf("%d\n", *px); // => Prints 1
@@ -532,7 +532,7 @@ int area(const rect *r)
 // Function pointers 
 ///////////////////////////////////////
 /*
-At runtime, functions are located at known memory addresses. Function pointers are
+At run time, functions are located at known memory addresses. Function pointers are
 much like any other pointer (they just store a memory address), but can be used 
 to invoke functions directly, and to pass handlers (or callback functions) around.
 However, definition syntax may be initially confusing.
@@ -542,7 +542,7 @@ Example: use str_reverse from a pointer
 void str_reverse_through_pointer(char *str_in) {
     // Define a function pointer variable, named f. 
     void (*f)(char *); // Signature should exactly match the target function.
-    f = &str_reverse; // Assign the address for the actual function (determined at runtime)
+    f = &str_reverse; // Assign the address for the actual function (determined at run time)
     // f = str_reverse; would work as well - functions decay into pointers, similar to arrays
     (*f)(str_in); // Just calling the function through the pointer
     // f(str_in); // That's an alternative but equally valid syntax for calling it.
@@ -564,10 +564,10 @@ typedef void (*my_fnp_type)(char *);
 '\n' // newline character
 '\t' // tab character (left justifies text)
 '\v' // vertical tab
-'\f' // new page (formfeed)
+'\f' // new page (form feed)
 '\r' // carriage return
 '\b' // backspace character
-'\0' // null character. Usually put at end of strings in C lang. 
+'\0' // NULL character. Usually put at end of strings in C. 
      //   hello\n\0. \0 used by convention to mark end of string. 
 '\\' // backslash
 '\?' // question mark
@@ -586,7 +586,7 @@ typedef void (*my_fnp_type)(char *);
 "%7.4s" // (can do with strings too)
 "%c"    // char
 "%p"    // pointer
-"%x"    // hexidecimal
+"%x"    // hexadecimal
 "%o"    // octal
 "%%"    // prints % 
 
@@ -628,7 +628,7 @@ If you have a question, read the [compl.lang.c Frequently Asked Questions](http:
 
 It's very important to use proper spacing, indentation and to be consistent with your coding style in general.
 Readable code is better than clever code and fast code. For a good, sane coding style to adopt, see the
-[Linux kernel coding stlye](https://www.kernel.org/doc/Documentation/CodingStyle).
+[Linux kernel coding style](https://www.kernel.org/doc/Documentation/CodingStyle).
 
 Other than that, Google is your friend.
 
