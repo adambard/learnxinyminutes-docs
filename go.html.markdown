@@ -116,10 +116,10 @@ can include line breaks.` // Same string type.
     learnFlowControl() // Back in the flow.
 }
 
-// It is possible, unlike in many other languages for functions in go 
+// It is possible, unlike in many other languages for functions in go
 // to have named return values.
 // Assigning a name to the type being returned in the function declaration line
-// allows us to easily return from multiple points in a function as well as to 
+// allows us to easily return from multiple points in a function as well as to
 // only use the return keyword, without anything further.
 func learnNamedReturns(x, y int) (z int) {
     z = x * y
@@ -195,6 +195,21 @@ love:
     learnDefer() // A quick detour to an important keyword.
     learnInterfaces() // Good stuff coming up!
 }
+
+// Decorators are common in other languages. Same can be done in Go
+// with function literals that accept arguments.
+func learnFunctionFactory(mystring string) func(before, after string) string {
+	return func(before, after string) string {
+		return fmt.Sprintf("%s %s %s", before, mystring, after) // new string
+	}
+}
+
+// Next two are equivalent, with second being more practical
+fmt.Println(learnFunctionFactory("summer")("A beautiful", "day!"))
+
+d := learnFunctionFactory("summer")
+fmt.Println(d("A beautiful", "day!"))
+fmt.Println(d("A lazy", "afternoon!"))
 
 func learnDefer() (ok bool) {
     // Deferred statements are executed just before the function returns.
