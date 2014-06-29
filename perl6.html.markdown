@@ -78,11 +78,12 @@ unless False {
   say "It's not false !";
 }
 
+
 # if (true) say; # Won't work
 
 # `given`-`when` looks like other languages `switch`, but it's much more powerful thanks to smart matching :
-given "foo bar" { # given just puts its argument into `$_`, and `when` uses it.
-  when /foo/ { # smart matching a string with a regex returns true if it matches
+given "foo bar" { # given just puts its argument into `$_`, and `when` uses it using the "smart matching" operator.
+  when /foo/ { # you'll read about the smart-matching operator below
     say "Yay !";
   }
   when $_.chars > 50 { # smart matching anything with True gives True, so you can also put "normal" conditionals
@@ -118,4 +119,85 @@ for array {
 if long-computation() -> $result {
   say "The result is $result";
 }
+
+
+
+# Operators
+
+## Since Perl languages are very much operator-based languages
+## Perl 6 operators are actually just funny-looking subroutines, in syntactic categories,
+##  like infix:<+> (addition) or prefix:<!> (bool not)
+
+## The categories are :
+### - "prefix" : before (like `!` in `!True`).
+### "postfix" : after (like `++` in `$a++`).
+### "infix" : in between (like `*` in `4 * 3`).
+### "circumfix" : around (like `[`-`]` in `[1, 2]`).
+### "post-circumfix" : around, after another term (like `{`-`}` in `%hash{'key'}`)
+
+## The precedence list can be found here : http://perlcabal.org/syn/S03.html#Operator_precedence
+## But first, we need a little explanation about associativity :
+
+### Binary operators:
+$a ! $b ! $c; # with a left-associative `!`, this is `($a ! $b) ! $c`
+$a ! $b ! $c; # with a right-associative `!`, this is `$a ! ($b ! $c)`
+$a ! $b ! $c; # with a non-associative `!`, this is illegal
+$a ! $b ! $c; # with a chain-associative `!`, this is `($a ! $b) and ($b ! $c)`
+$a ! $b ! $c; # with a list-associative `!`, this is `infix:<>`
+
+### Unary operators:
+!$a! # with left-associative `!`, this is `(!$a)!`
+!$a! # with right-associative `!`, this is `!($a!)`
+!$a! # with non-associative `!`, this is illegal
+
+## Alright, you're set to go !
+
+## * Equality Checking
+
+### - `==` is numeric comparison
+3 == 4; # False
+3 != 4; # True
+
+### - `eq` is string comparison
+'a' eq 'b';
+'a' ne 'b'; # not equal
+'a' !eq 'b'; # same as above
+
+### - `eqv` is canonical equivalence
+(1, 2) eqv (1, 3);
+
+### - `~~` is smart matching
+### for a complete combinations list, use this table : http://perlcabal.org/syn/S03.html#Smart_matching
+'a' ~~ /a/; # true if matches regexp
+'key' ~~ %hash; # true if key exists in hash
+$arg ~~ &bool-returning-function; # true if the function, passed `$arg` as an argument, returns True
+1 ~~ Int; # "is of type"
+
+### - `===` is value identity and uses `.WHICH` on the objects to compare them
+### - `=:=` is container identity and uses `VAR()` on the objects to compare them
+
+### You also, of course, have `<`, `<=`, `>`, `>=`.
+### Their string equivalent are also avaiable : `lt`, `le`, `gt`, `ge`.
+3 > 4;
+
+## * Sort comparison
+### They return one value of the `Order` enum : `Less`, `Same` and `More` (which numerify to -1, 0 or +1).
+1 <=> 4; # sort comparison for numerics
+'a' leg 'b'; # sort comparison for string
+$obj eqv $obj2; # sort comparison using eqv semantics
+
+## * Generic ordering
+3 before 4; # True
+'b' after 'a'; # True
+
+## * Range constructors
+3 .. 7; # 3 to 7, both included
+### `^` on either side them exclusive on that side :
+3 ^..^ 7; # 3 to 7, not included (basically `4 .. 6`)
+
+# * And, Or
+
+## Short-circuit (and tight)
+$a && $b && $c; # returns the first argument that evaluates to False, or the last argument
+$a || $b;
 ```
