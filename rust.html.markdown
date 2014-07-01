@@ -59,11 +59,31 @@ fn main() {
     // Printing
     println!("{} {}", f, x); // 1.3 hello world
 
-    // A `String`
+    // A `String` - a heap-allocated string
     let s: String = "hello world".to_string();
 
-    // A string slice - a view into another string
+    // A string slice - an immutable view into another string
+    // This is basically an immutable pointer to a string - it doesn’t
+    // actually contain the characters of a string, just a pointer to
+    // something that does (in this case, `s`)
     let s_slice: &str = s.as_slice();
+
+    println!("{} {}", s, s_slice); // hello world hello world
+
+    // Vectors/arrays //
+
+    // A fixed-size array
+    let four_ints: [int, ..4] = [1, 2, 3, 4];
+
+    // A dynamically-sized vector
+    let mut vector: Vec<int> = vec![1, 2, 3, 4];
+    vector.push(5);
+
+    // A slice - an immutable view into a vector or array
+    // This is much like a string slice, but for vectors
+    let slice: &[int] = vector.as_slice();
+
+    println!("{} {}", vector, slice); // [1, 2, 3, 4, 5] [1, 2, 3, 4, 5]
 
     //////////////
     // 2. Types //
@@ -188,7 +208,7 @@ fn main() {
     // `if` as expression
     let value = if true {
         "good"
-    else {
+    } else {
         "bad"
     };
 
