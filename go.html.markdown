@@ -329,16 +329,30 @@ func learnConcurrency() {
 
 // A single function from package http starts a web server.
 func learnWebProgramming() {
+
     // First parameter of ListenAndServe is TCP address to listen to.
     // Second parameter is an interface, specifically http.Handler.
-    err := http.ListenAndServe(":8080", pair{})
-    fmt.Println(err) // don't ignore errors
+    go func() {
+        err := http.ListenAndServe(":8080", pair{})
+        fmt.Println(err) // don't ignore errors
+    }()
+
+    requestServer();
 }
+
 
 // Make pair an http.Handler by implementing its only method, ServeHTTP.
 func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
     // Serve data with a method of http.ResponseWriter.
     w.Write([]byte("You learned Go in Y minutes!"))
+}
+
+func requestServer() {
+    resp, err := http.Get("http://localhost:8080")
+    fmt.Println(err)
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    fmt.Printf("\nWebserver said: `%s`", string(body))
 }
 ```
 
