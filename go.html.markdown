@@ -192,16 +192,26 @@ func learnFlowControl() {
     goto love
 love:
 
+    learnFunctionFactory() // func returning func is fun(3)(3)
     learnDefer() // A quick detour to an important keyword.
     learnInterfaces() // Good stuff coming up!
 }
 
+func learnFunctionFactory() {
+    // Next two are equivalent, with second being more practical
+    fmt.Println(sentenceFactory("summer")("A beautiful", "day!"))
+
+    d := sentenceFactory("summer")
+    fmt.Println(d("A beautiful", "day!"))
+    fmt.Println(d("A lazy", "afternoon!"))
+}
+
 // Decorators are common in other languages. Same can be done in Go
 // with function literals that accept arguments.
-func learnFunctionFactory(mystring string) func(before, after string) string {
-	return func(before, after string) string {
-		return fmt.Sprintf("%s %s %s", before, mystring, after) // new string
-	}
+func sentenceFactory(mystring string) func(before, after string) string {
+    return func(before, after string) string {
+        return fmt.Sprintf("%s %s %s", before, mystring, after) // new string
+    }
 }
 
 // Next two are equivalent, with second being more practical
