@@ -214,13 +214,6 @@ func sentenceFactory(mystring string) func(before, after string) string {
     }
 }
 
-// Next two are equivalent, with second being more practical
-fmt.Println(learnFunctionFactory("summer")("A beautiful", "day!"))
-
-d := learnFunctionFactory("summer")
-fmt.Println(d("A beautiful", "day!"))
-fmt.Println(d("A lazy", "afternoon!"))
-
 func learnDefer() (ok bool) {
     // Deferred statements are executed just before the function returns.
     defer fmt.Println("deferred statements execute in reverse (LIFO) order.")
