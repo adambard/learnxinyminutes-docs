@@ -37,7 +37,7 @@ println("Hello world!")
 print("Hello world")
 
 // Declaring values is done using either var or val
-// val declarations are immutable, whereas var's are mutable. Immutablility is 
+// val declarations are immutable, whereas var's are mutable. Immutability is 
 // a good thing.
 val x = 10 // x is now 10
 x = 20 // error: reassignment to val
