@@ -7,15 +7,15 @@ contributors:
 
 ---
 
-People using ruby generally have a way to install different ruby versions,
+People using Ruby generally have a way to install different Ruby versions,
 manage their packages (or gems), and manage their gem dependencies.
 
 ## Ruby Managers
 
-Some platforms have ruby pre-installed or available as a package. Most rubyists
+Some platforms have Ruby pre-installed or available as a package. Most rubyists
 do not use these, or if they do, they only use them to bootstrap another ruby
-installer or implementation. Instead rubyists tend to install a ruby manager to
-install and switch between many versions of ruby and their projects' ruby
+installer or implementation. Instead rubyists tend to install a Ruby manager to
+install and switch between many versions of Ruby and their projects' ruby
 environments.
 
 The following are the popular ruby/environment managers:
@@ -33,11 +33,11 @@ The following are the popular ruby/environment managers:
 
 Ruby was created by Yukihiro "Matz" Matsumoto, who remains somewhat of a
 [BDFL](https://en.wikipedia.org/wiki/Benevolent_Dictator_for_Life), although
-that is changing recently. As a result, the reference implementation of ruby is
-called MRI (Matz' Reference Implementation), and when you hear a ruby version,
+that is changing recently. As a result, the reference implementation of Ruby is
+called MRI (Matz' Reference Implementation), and when you hear a Ruby version,
 it is referring to the release version of MRI.
 
-The three major version of ruby in use are:
+The three major version of Ruby in use are:
 
 * 2.0.0 - Released in February 2013. Most major libraries and frameworks support
   2.0.0.
@@ -53,11 +53,11 @@ the community has moved to at least 1.9.2 or 1.9.3.
 
 ## Ruby Implementations
 
-The ruby ecosystem enjoys many different implementations of ruby, each with
+The Ruby ecosystem enjoys many different implementations of ruby, each with
 unique strengths and states of compatability. To be clear, the different
 implementations are written in different languages, but *they are all ruby*.
 Each implementation has special hooks and extra features, but they all run
-normal ruby files well. For instance, JRuby is written in Java, but you do
+normal Ruby files well. For instance, JRuby is written in Java, but you do
 not need to know Java to use it.
 
 Very mature/compatible:
@@ -68,8 +68,8 @@ maintain compatibility with MRI (see [RubySpec](#rubyspec) below).
 * [JRuby](http://jruby.org/) - Written in Java and ruby, this robust implementation is quite fast.
   Most importantly, JRuby's strength is JVM/Java interop, leveraging existing
 JVM tools, projects, and languages.
-* [Rubinius](http://rubini.us/) - Written primarily in ruby itself with a C++ bytecode VM. Also
-  mature and fast. Because it is implemented in ruby itself, it exposes many VM
+* [Rubinius](http://rubini.us/) - Written primarily in Ruby itself with a C++ bytecode VM. Also
+  mature and fast. Because it is implemented in Ruby itself, it exposes many VM
 features into rubyland.
 
 Medium mature/compatible:
@@ -77,7 +77,7 @@ Medium mature/compatible:
 * [Maglev](http://maglev.github.io/) - Built on top of Gemstone, a Smalltalk VM. Smalltalk has some
   impressive tooling, and this project tries to bring that into ruby
 development.
-* [RubyMotion](http://www.rubymotion.com/) - Brings ruby to iOS development.
+* [RubyMotion](http://www.rubymotion.com/) - Brings Ruby to iOS development.
 
 Less mature/compatible:
 
@@ -94,9 +94,9 @@ which MRI version to target.
 
 ## RubySpec
 
-Most ruby implementations rely heavily on [RubySpec](http://rubyspec.org/). Ruby
+Most Ruby implementations rely heavily on [RubySpec](http://rubyspec.org/). Ruby
 has no official specification, so the community has written executable specs in
-ruby to test their implementations' compatability with MRI.
+Ruby to test their implementations' compatibility with MRI.
 
 ## RubyGems
 
@@ -122,8 +122,8 @@ dependency graph to resolve.
 
 # Testing
 
-Testing is a large part of ruby culture. Ruby comes with its own Unit-style
-testing framework called minitest (Or TestUnit for ruby version 1.8.x). There
+Testing is a large part of Ruby culture. Ruby comes with its own Unit-style
+testing framework called minitest (Or TestUnit for Ruby version 1.8.x). There
 are many testing libraries with different goals.
 
 * [TestUnit](http://ruby-doc.org/stdlib-1.8.7/libdoc/test/unit/rdoc/Test/Unit.html) - Ruby 1.8's built-in "Unit-style" testing framework
@@ -133,6 +133,6 @@ are many testing libraries with different goals.
 
 ## Be Nice
 
-The ruby community takes pride in being an open, diverse, welcoming community.
+The Ruby community takes pride in being an open, diverse, welcoming community.
 Matz himself is extremely friendly, and the generosity of rubyists on the whole
 is amazing.
