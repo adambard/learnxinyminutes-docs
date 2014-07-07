@@ -13,12 +13,12 @@ manage their packages (or gems), and manage their gem dependencies.
 ## Ruby Managers
 
 Some platforms have Ruby pre-installed or available as a package. Most rubyists
-do not use these, or if they do, they only use them to bootstrap another ruby
+do not use these, or if they do, they only use them to bootstrap another Ruby
 installer or implementation. Instead rubyists tend to install a Ruby manager to
-install and switch between many versions of Ruby and their projects' ruby
+install and switch between many versions of Ruby and their projects' Ruby
 environments.
 
-The following are the popular ruby/environment managers:
+The following are the popular Ruby environment managers:
 
 * [RVM](https://rvm.io/) - Installs and switches between rubies. RVM also has
   the concept of gemsets to isolate projects' environments completely.
@@ -53,19 +53,19 @@ the community has moved to at least 1.9.2 or 1.9.3.
 
 ## Ruby Implementations
 
-The Ruby ecosystem enjoys many different implementations of ruby, each with
+The Ruby ecosystem enjoys many different implementations of Ruby, each with
 unique strengths and states of compatability. To be clear, the different
-implementations are written in different languages, but *they are all ruby*.
+implementations are written in different languages, but *they are all Ruby*.
 Each implementation has special hooks and extra features, but they all run
 normal Ruby files well. For instance, JRuby is written in Java, but you do
 not need to know Java to use it.
 
 Very mature/compatible:
 
-* [MRI](https://github.com/ruby/ruby) - Written in C, this is the reference implementation of ruby. By
+* [MRI](https://github.com/ruby/ruby) - Written in C, this is the reference implementation of Ruby. By
   definition it is 100% compatible (with itself). All other rubies
 maintain compatibility with MRI (see [RubySpec](#rubyspec) below).
-* [JRuby](http://jruby.org/) - Written in Java and ruby, this robust implementation is quite fast.
+* [JRuby](http://jruby.org/) - Written in Java and Ruby, this robust implementation is quite fast.
   Most importantly, JRuby's strength is JVM/Java interop, leveraging existing
 JVM tools, projects, and languages.
 * [Rubinius](http://rubini.us/) - Written primarily in Ruby itself with a C++ bytecode VM. Also
@@ -75,7 +75,7 @@ features into rubyland.
 Medium mature/compatible:
 
 * [Maglev](http://maglev.github.io/) - Built on top of Gemstone, a Smalltalk VM. Smalltalk has some
-  impressive tooling, and this project tries to bring that into ruby
+  impressive tooling, and this project tries to bring that into Ruby
 development.
 * [RubyMotion](http://www.rubymotion.com/) - Brings Ruby to iOS development.
 
