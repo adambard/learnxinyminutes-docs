@@ -367,7 +367,7 @@ on a new line! ""Wow!"", the masses cried";
         }
 
         // Methods can have the same name, as long as the signature is unique
-        public static void MethodSignature(string maxCount)
+        public static void MethodSignatures(string maxCount)
         {
         }
 
