@@ -1,25 +1,25 @@
 ---
-language: markdown
+language: Markdown
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Fangzhou Chen"]
-filename: markdown.md
+filename: Markdown.md
 lang: zh-cn
 ---
 
-Markdown 由 John Gruber 于 2004年创立. 它旨在成为一门容易读写的语法结构，并可以便利地转换成HTML（以及其他很多）格式。
+Markdown 由 John Gruber 于 2004年创立. 它旨在成为一门容易读写的语法结构，并可以便利地转换成 HTML（以及其他很多）格式。
 
 欢迎您多多反馈以及分支和请求合并。
 
 
 ```
-<!-- Markdown 是HTML的父集，所以任何HTML文件都是有效的Markdown。
-这意味着我们可以在Markdown里使用任何HTML元素，比如注释元素，
-并不会被Markdown解析器所影响。不过如果你在Markdown文件内创建了HTML元素，
-你将无法在HTML元素的内容中使用Markdown语法。-->
+<!-- Markdown 是 HTML 的父集，所以任何 HTML 文件都是有效的 Markdown。
+这意味着我们可以在 Markdown 里使用任何 HTML 元素，比如注释元素，
+且不会被 Markdown 解析器所影响。不过如果你在 Markdown 文件内创建了 HTML 元素，
+你将无法在 HTML 元素的内容中使用 Markdown 语法。-->
 
-<!-- 在不同的解析器中，Markdown的实现方法有所不同。
+<!-- 在不同的解析器中，Markdown 的实现方法有所不同。
 此教程会指出当某功能是否通用及是否只对某一解析器有效。 -->
 
 <!-- 标头 -->
@@ -41,7 +41,7 @@ Markdown 由 John Gruber 于 2004年创立. 它旨在成为一门容易读写的
 -------------
 
 <!-- 简易文本样式 -->
-<!-- 文本的斜体，粗体，和删除线在Markdown中可以轻易的被实现。-->
+<!-- 文本的斜体，粗体，和删除线在 Markdown 中可以轻易的被实现。-->
 
 *此文本为斜体。*
 _此文本也是。_
@@ -53,7 +53,7 @@ __此文本也是__
 **_或者这样。_**
 *__这个也是！__*
 
-<!-- 在Github采用的Markdown中 -->
+<!-- 在 Github 采用的 Markdown 中 -->
 
 ~~此文本为删除线效果。~~
 
@@ -66,7 +66,7 @@ __此文本也是__
 
 这句话在第三段落！
 
-<!-- 如果你插入一个HTML中的<br />标签，你可以在段末加入两个以上的空格，
+<!-- 如果你插入一个 HTML中的<br />标签，你可以在段末加入两个以上的空格，
 然后另起一段。-->
 
 此段落结尾有两个空格（选中以显示）。      
@@ -108,7 +108,7 @@ __此文本也是__
 2. 项目二
 3. 项目三
 
-<!-- 即使你的标签数字有误，Markdown依旧会呈现出正确的序号，
+<!-- 即使你的标签数字有误，Markdown 依旧会呈现出正确的序号，
 不过这并不是一个好主意-->
 
 1. 项目一
@@ -126,7 +126,7 @@ __此文本也是__
 4. 项目四
 
 <!-- 代码段落 -->
-<!-- 代码段落（HTML中<code>标签）可以由缩进四格（spaces）
+<!-- 代码段落（HTML中 <code>标签）可以由缩进四格（spaces）
 或者一个标签页（tab）实现-->
 
     This is code
@@ -150,7 +150,7 @@ def foobar
 end
 \`\`\` <!-- 这里也是，移除反斜线，仅留 ``` -->
 
-<!-- 以上代码不需要缩进，而且Github会根据```后表明的语言来进行语法高亮 -->
+<!-- 以上代码不需要缩进，而且 Github 会根据```后表明的语言来进行语法高亮 -->
 
 <!-- 水平线 （<hr />） -->
 <!-- 水平线可由三个或以上的星号或者减号创建，可带可不带空格。 -->
@@ -161,7 +161,7 @@ end
 ****************
 
 <!-- 链接 -->
-<!-- Markdown最棒的地方就是简易的链接制作。链接文字放在中括号[]内，
+<!-- Markdown 最棒的地方就是简易的链接制作。链接文字放在中括号[]内，
 在随后的括弧()内加入url。-->
 
 [点我点我!](http://test.com/)
@@ -220,10 +220,10 @@ end
 斜体化, 所以我就: \*这段置文字于星号之间\*。
 
 <!-- 表格 -->
-<!-- 表格只被Github的 Markdown支持，并且有一点笨重，但如果你真的要用的话: -->
+<!-- 表格只被 Github 的 Markdown 支持，并且有一点笨重，但如果你真的要用的话: -->
 
 | 第一列        | 第二列    | 第三列       |
-| :----------   | :------:  | ---------:  |
+| :----------   | :------:  | ----------:  |
 | 左对齐        | 居个中    | 右对齐       |
 | 某某某        | 某某某    | 某某某       |
 
@@ -237,4 +237,4 @@ end
 
 ```
 
-更多信息, 请见John Gruber 关于语法的官方帖子[此处](http://daringfireball.net/projects/markdown/syntax)以及 Adam Pritchard 的摘要笔记 [此处](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+更多信息, 请见John Gruber 关于语法的官方帖子[此处](http://daringfireball.net/projects/Markdown/syntax)以及 Adam Pritchard 的摘要笔记 [此处](https://github.com/adam-p/Markdown-here/wiki/Markdown-Cheatsheet).
