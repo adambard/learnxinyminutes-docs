@@ -82,7 +82,7 @@ development.
 Less mature/compatible:
 
 * [Topaz](http://topazruby.com/) - Written in RPython (using the PyPy toolchain), Topaz is fairly young
-  and not yet compatible. It shows promise to be a high-performance ruby
+  and not yet compatible. It shows promise to be a high-performance Ruby
 implementation.
 * [IronRuby](http://ironruby.net/) - Written in C# targeting the .NET platform, work on IronRuby seems
   to have stopped since Microsoft pulled their support.
@@ -100,8 +100,8 @@ Ruby to test their implementations' compatibility with MRI.
 
 ## RubyGems
 
-[RubyGems](http://rubygems.org/) is a community-run package manager for ruby.
-RubyGems ships with ruby, so there is no need to download it separately.
+[RubyGems](http://rubygems.org/) is a community-run package manager for Ruby.
+RubyGems ships with Ruby, so there is no need to download it separately.
 
 Ruby packages are called "gems," and they can be hosted by the community at
 RubyGems.org. Each gem contains its source code and some metadata, including
