@@ -2,7 +2,10 @@
 language: markdown
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
+translators:
+    - ["Fangzhou Chen", "http://binarythink.net"]
 filename: markdown.md
+lang: zh-cn
 ---
 
 Markdown was created by John Gruber in 2004. It's meant to be an easy to read and write syntax which converts easily to HTML (and now many other formats as well).
