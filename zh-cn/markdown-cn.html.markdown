@@ -19,10 +19,13 @@ Markdown 由 John Gruber 于 2004年创立. 它旨在成为一门容易读写的
 并不会被Markdown解析器所影响。不过如果你在Markdown文件内创建了HTML元素，
 你将无法在HTML元素的内容中使用Markdown语法。-->
 
-<!-- 在不同的解析器中，Markdown的实现方法有所不同。此教程会指出当某功能是否通用及是否只对某一解析器有效。 -->
+<!-- 在不同的解析器中，Markdown的实现方法有所不同。
+此教程会指出当某功能是否通用及是否只对某一解析器有效。 -->
 
 <!-- 标头 -->
-<!-- 通过在文本前加上不同数量的hash(#), 你可以创建相对应的 <h1> 到 <h6> HTML元素。 -->
+<!-- 通过在文本前加上不同数量的hash(#), 你可以创建相对应的 <h1> 
+到 <h6> HTML元素。-->
+
 # 这是一个 <h1>
 ## 这是一个 <h2>
 ### 这是一个 <h3>
@@ -54,7 +57,7 @@ __此文本也是__
 
 ~~此文本为删除线效果。~~
 
-<!-- 单个段落由一句或多句邻近的句子组成，这些句子由一个或多个空格分隔。 -->
+<!-- 单个段落由一句或多句邻近的句子组成，这些句子由一个或多个空格分隔。-->
 
 这是第一段落. 这句话在同一个段落里，好玩么？
 
@@ -70,7 +73,7 @@ __此文本也是__
 
 上文有一个 <br /> ！
 
-<!-- 段落引用可由 > 字符轻松实现。 -->
+<!-- 段落引用可由 > 字符轻松实现。-->
 
 > 这是一个段落引用. 你可以
 > 手动断开你的句子，然后在每句句子前面添加 “>” 字符。或者让你的句子变得很长，以至于他们自动得断开。
@@ -105,7 +108,8 @@ __此文本也是__
 2. 项目二
 3. 项目三
 
-<!-- 即使你的标签数字有误，Markdown依旧会呈现出正确的序号，不过这并不是一个好主意-->
+<!-- 即使你的标签数字有误，Markdown依旧会呈现出正确的序号，
+不过这并不是一个好主意-->
 
 1. 项目一
 1. 项目二
@@ -122,7 +126,8 @@ __此文本也是__
 4. 项目四
 
 <!-- 代码段落 -->
-<!-- 代码段落（HTML中<code>标签）可以由缩进四格（spaces）或者一个标签页（tab）实现-->
+<!-- 代码段落（HTML中<code>标签）可以由缩进四格（spaces）
+或者一个标签页（tab）实现-->
 
     This is code
     So is this
@@ -135,105 +140,101 @@ __此文本也是__
 
 <!-- 内联代码可由反引号 ` 实现 -->
 
-John didn't even know what the `go_to()` function did!
+John 甚至不知道 `go_to()` 方程是干嘛的!
 
-<!-- In Github Flavored Markdown, you can use a special syntax for code -->
+<!-- 在Github的 Markdown中，对于代码你可以使用特殊的语法 -->
 
-\`\`\`ruby <!-- except remove those backslashes when you do this, just ```ruby ! -->
+\`\`\`ruby <!-- 插入时记得移除反斜线， 仅留```ruby ！ -->
 def foobar
     puts "Hello world!"
 end
-\`\`\` <!-- here too, no backslashes, just ``` -->
+\`\`\` <!-- 这里也是，移除反斜线，仅留 ``` -->
 
-<-- The above text doesn't require indenting, plus Github will use syntax
-highlighting of the language you specify after the ``` -->
+<!-- 以上代码不需要缩进，而且Github会根据```后表明的语言来进行语法高亮 -->
 
-<!-- Horizontal rule (<hr />) -->
-<!-- Horizontal rules are easily added with three or more asterisks or hyphens,
-with or without spaces. -->
+<!-- 水平线 （<hr />） -->
+<!-- 水平线可由三个或以上的星号或者减号创建，可带可不带空格。 -->
 
 ***
 ---
 - - - 
 ****************
 
-<!-- Links -->
-<!-- One of the best things about markdown is how easy it is to make links. Put
-the text to display in hard brackets [] followed by the url in parentheses () -->
+<!-- 链接 -->
+<!-- Markdown最棒的地方就是简易的链接制作。链接文字放在中括号[]内，
+在随后的括弧()内加入url。-->
 
-[Click me!](http://test.com/)
+[点我点我!](http://test.com/)
 
-<!-- You can also add a link title using quotes inside the parentheses -->
+<!-- 你也可以为链接加入一个标题：在括弧内使用引号 -->
 
-[Click me!](http://test.com/ "Link to Test.com")
+[点我点我!](http://test.com/ "连接到Test.com")
 
-<!-- Relative paths work too. -->
+<!-- 相对路径也可以有 -->
 
-[Go to music](/music/).
+[去 music](/music/).
 
-<!-- Markdown also supports reference style links -->
+<!-- Markdown同样支持引用样式的链接 -->
 
-[Click this link][link1] for more info about it!
-[Also check out this link][foobar] if you want to.
+[点此链接][link1]以获取更多信息！
+[看一看这个链接][foobar] 如果你愿意的话.
 
 [link1]: http://test.com/ "Cool!"
 [foobar]: http://foobar.biz/ "Alright!"
 
-<!-- The title can also be in single quotes or in parentheses, or omitted
-entirely. The references can be anywhere in your document and the reference IDs
-can be anything so long as they are unique. -->
+<!-- 链接的标题可以处于单引号中，括弧中或是被忽略。引用名可以在文档的任意何处，
+并且可以随意命名，只要名称不重复。-->
 
-<!-- There is also "implicit naming" which lets you use the link text as the id -->
+<!-- “隐含式命名” 的功能可以让链接文字作为引用名 -->
 
 [This][] is a link.
 
 [this]: http://thisisalink.com/
 
-<!-- But it's not that commonly used. -->
+<!-- 但这并不常用 -->
 
-<!-- Images -->
-<!-- Images are done the same way as links but with an exclamation point in front! -->
+<!-- 图像 -->
+<!-- 图像与链接相似，只需在前添加一个感叹号 -->
 
-![This is hover-text (alt text) for my image](http://imgur.com/myimage.jpg "An optional title")
+![这是我图像的悬停文本(alt text)](http://imgur.com/myimage.jpg "可选命名")
 
-<!-- And reference style works as expected -->
+<!-- 引用样式也同样起作用 -->
 
-![This is the hover-text.][myimage]
+![这是我的悬停文本.][myimage]
 
-[myimage]: relative/urls/cool/image.jpg "if you need a title, it's here"
+[myimage]: relative/urls/cool/image.jpg "在此输入标题"
 
-<!-- Miscellany -->
-<!-- Auto-links -->
+<!-- 杂项 -->
+<!-- 自动链接 -->
 
-<http://testwebsite.com/> is equivalent to
-[http://testwebsite.com/](http://testwebsite.com/)
+<http://testwebsite.com/> 与
+[http://testwebsite.com/](http://testwebsite.com/) 等同
 
-<!-- Auto-links for emails -->
+<!-- 电子邮件的自动链接 -->
 
 <foo@bar.com>
 
-<!-- Escaping characters -->
+<!-- 转义字符 -->
 
-I want to type *this text surrounded by asterisks* but I don't want it to be
-in italics, so I do this: \*this text surrounded by asterisks\*.
+我希望 *将这段文字置于星号之间* 但是我不希望它被
+斜体化, 所以我就: \*这段置文字于星号之间\*。
 
-<!-- Tables -->
-<!-- Tables are only available in Github Flavored Markdown and are slightly
-cumbersome, but if you really want it: -->
+<!-- 表格 -->
+<!-- 表格只被Github的 Markdown支持，并且有一点笨重，但如果你真的要用的话: -->
 
-| Col1         | Col2     | Col3          |
-| :----------- | :------: | ------------: |
-| Left-aligned | Centered | Right-aligned |
-| blah         | blah     | blah          |
+| 第一列        | 第二列    | 第三列       |
+| :----------   | :------:  | ---------:  |
+| 左对齐        | 居个中    | 右对齐       |
+| 某某某        | 某某某    | 某某某       |
 
-<!-- or, for the same results -->
+<!-- 或者, 同样的 -->
 
-Col 1 | Col2 | Col3
+第一列 | 第二列 | 第三列
 :-- | :-: | --:
-Ugh this is so ugly | make it | stop
+这太丑了 | 药不能 | 停
 
-<!-- The end! -->
+<!-- 结束! -->
 
 ```
 
-For more info, check out John Gruber's official post of syntax [here](http://daringfireball.net/projects/markdown/syntax) and Adam Pritchard's great cheatsheet [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+更多信息, 请见John Gruber 关于语法的官方帖子[此处](http://daringfireball.net/projects/markdown/syntax)以及 Adam Pritchard 的摘要笔记 [此处](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
