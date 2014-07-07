@@ -8,17 +8,16 @@ filename: markdown.md
 lang: zh-cn
 ---
 
-Markdown was created by John Gruber in 2004. It's meant to be an easy to read and write syntax which converts easily to HTML (and now many other formats as well).
+Markdown 由 John Gruber 于 2004年创立. 它旨在成为一门容易读写的语法结构，并可以便利地转换成HTML（以及其他很多）格式。
 
-Give me as much feedback as you want! / Feel free to fork and pull request!
+欢迎您多多反馈以及分支和请求合并。
 
 
 ```
-<!-- Markdown is a superset of HTML, so any HTML file is valid Markdown, that
-means we can use HTML elements in Markdown, such as the comment element, and
-they won't be affected by a markdown parser. However, if you create an HTML
-element in your markdown file, you cannot use markdown syntax within that
-element's contents. -->
+<!-- Markdown 是HTML的父集，所以任何HTML文件都是有效的Markdown。
+这意味着我们可以在Markdown里使用任何HTML元素，比如注释元素，
+并不会被Markdown解析器所影响。不过如果你在Markdown文件内创建了HTML元素，
+你将无法在HTML元素的内容中使用Markdown语法。-->
 
 <!-- Markdown also varies in implementation from one parser to a next. This
 guide will attempt to clarify when features are universal or when they are
