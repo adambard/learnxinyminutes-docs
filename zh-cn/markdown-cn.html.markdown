@@ -237,4 +237,4 @@ end
 
 ```
 
-更多信息, 请见John Gruber 关于语法的官方帖子[此处](http://daringfireball.net/projects/Markdown/syntax)以及 Adam Pritchard 的摘要笔记 [此处](https://github.com/adam-p/Markdown-here/wiki/Markdown-Cheatsheet).
+更多信息, 请于[此处](http://daringfireball.net/projects/Markdown/syntax)参见 John Gruber 关于语法的官方帖子，及于[此处](https://github.com/adam-p/Markdown-here/wiki/Markdown-Cheatsheet)。 参见 Adam Pritchard 的摘要笔记。
