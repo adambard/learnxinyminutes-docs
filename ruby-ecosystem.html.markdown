@@ -3,6 +3,7 @@ category: tool
 tool: ruby ecosystem
 contributors:
     - ["Jon Smock", "http://github.com/jonsmock"]
+    - ["Rafal Chmiel", "http://github.com/rafalchmiel"]
 
 ---
 
@@ -61,29 +62,29 @@ not need to know Java to use it.
 
 Very mature/compatible:
 
-* MRI - Written in C, this is the reference implementation of ruby. By
+* [MRI](https://github.com/ruby/ruby) - Written in C, this is the reference implementation of ruby. By
   definition it is 100% compatible (with itself). All other rubies
 maintain compatibility with MRI (see [RubySpec](#rubyspec) below).
-* JRuby - Written in Java and ruby, this robust implementation is quite fast.
+* [JRuby](http://jruby.org/) - Written in Java and ruby, this robust implementation is quite fast.
   Most importantly, JRuby's strength is JVM/Java interop, leveraging existing
 JVM tools, projects, and languages.
-* Rubinius - Written primarily in ruby itself with a C++ bytecode VM. Also
+* [Rubinius](http://rubini.us/) - Written primarily in ruby itself with a C++ bytecode VM. Also
   mature and fast. Because it is implemented in ruby itself, it exposes many VM
 features into rubyland.
 
 Medium mature/compatible:
 
-* Maglev - Built on top of Gemstone, a Smalltalk VM. Smalltalk has some
+* [Maglev](http://maglev.github.io/) - Built on top of Gemstone, a Smalltalk VM. Smalltalk has some
   impressive tooling, and this project tries to bring that into ruby
 development.
-* RubyMotion - Brings ruby to iOS development.
+* [RubyMotion](http://www.rubymotion.com/) - Brings ruby to iOS development.
 
 Less mature/compatible:
 
-* Topaz - Written in RPython (using the PyPy toolchain), Topaz is fairly young
+* [Topaz](http://topazruby.com/) - Written in RPython (using the PyPy toolchain), Topaz is fairly young
   and not yet compatible. It shows promise to be a high-performance ruby
 implementation.
-* IronRuby - Written in C# targeting the .NET platform, work on IronRuby seems
+* [IronRuby](http://ironruby.net/) - Written in C# targeting the .NET platform, work on IronRuby seems
   to have stopped since Microsoft pulled their support.
 
 Ruby implementations may have their own release version numbers, but they always
@@ -125,10 +126,10 @@ Testing is a large part of ruby culture. Ruby comes with its own Unit-style
 testing framework called minitest (Or TestUnit for ruby version 1.8.x). There
 are many testing libraries with different goals.
 
-* TestUnit - Ruby 1.8's built-in "Unit-style" testing framework
-* minitest - Ruby 1.9/2.0's built-in testing framework
-* RSpec - A testing framework that focuses on expressivity
-* Cucumber - A BDD testing framework that parses Gherkin formatted tests
+* [TestUnit](http://ruby-doc.org/stdlib-1.8.7/libdoc/test/unit/rdoc/Test/Unit.html) - Ruby 1.8's built-in "Unit-style" testing framework
+* [minitest](http://ruby-doc.org/stdlib-2.0.0/libdoc/minitest/rdoc/MiniTest.html) - Ruby 1.9/2.0's built-in testing framework
+* [RSpec](http://rspec.info/) - A testing framework that focuses on expressivity
+* [Cucumber](http://cukes.info/) - A BDD testing framework that parses Gherkin formatted tests
 
 ## Be Nice
 
