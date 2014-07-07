@@ -3,7 +3,7 @@ language: markdown
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
-    - ["Fangzhou Chen", "http://binarythink.net"]
+    - ["Fangzhou Chen"]
 filename: markdown.md
 lang: zh-cn
 ---
