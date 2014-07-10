@@ -196,7 +196,7 @@ func learnFlowControl() {
         func(a, b int) int {
 	    return (a + b) * 2 
 	    }(10, 2)) // Called with args 10 and 2
-    // Add + double two numbers:  24
+    // => Add + double two numbers:  24
 	    
     // When you need it, you'll love it.
     goto love
