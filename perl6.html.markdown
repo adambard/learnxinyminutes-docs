@@ -130,25 +130,12 @@ if long-computation() -> $result {
 
 ## The categories are :
 ### - "prefix" : before (like `!` in `!True`).
-### "postfix" : after (like `++` in `$a++`).
-### "infix" : in between (like `*` in `4 * 3`).
-### "circumfix" : around (like `[`-`]` in `[1, 2]`).
-### "post-circumfix" : around, after another term (like `{`-`}` in `%hash{'key'}`)
+### - "postfix" : after (like `++` in `$a++`).
+### - "infix" : in between (like `*` in `4 * 3`).
+### - "circumfix" : around (like `[`-`]` in `[1, 2]`).
+### - "post-circumfix" : around, after another term (like `{`-`}` in `%hash{'key'}`)
 
-## The precedence list can be found here : http://perlcabal.org/syn/S03.html#Operator_precedence
-## But first, we need a little explanation about associativity :
-
-### Binary operators:
-$a ! $b ! $c; # with a left-associative `!`, this is `($a ! $b) ! $c`
-$a ! $b ! $c; # with a right-associative `!`, this is `$a ! ($b ! $c)`
-$a ! $b ! $c; # with a non-associative `!`, this is illegal
-$a ! $b ! $c; # with a chain-associative `!`, this is `($a ! $b) and ($b ! $c)`
-$a ! $b ! $c; # with a list-associative `!`, this is `infix:<>`
-
-### Unary operators:
-!$a! # with left-associative `!`, this is `(!$a)!`
-!$a! # with right-associative `!`, this is `!($a!)`
-!$a! # with non-associative `!`, this is illegal
+## The associativity and precedence list are explained below.
 
 ## Alright, you're set to go !
 
@@ -180,6 +167,40 @@ $arg ~~ &bool-returning-function; # true if the function, passed `$arg` as an ar
 ### Their string equivalent are also avaiable : `lt`, `le`, `gt`, `ge`.
 3 > 4;
 
+## * Range constructors
+3 .. 7; # 3 to 7, both included
+### `^` on either side them exclusive on that side :
+3 ^..^ 7; # 3 to 7, not included (basically `4 .. 6`)
+
+# * And, Or
+3 && 4; # True. Calls `.Bool` on `3`
+0 || False; # False. Calls `.Bool` on `0`
+
+## Short-circuit (and tight)
+$a && $b && $c; # returns the first argument that evaluates to False, or the last argument
+$a || $b;
+
+# More operators thingies !
+
+## Everybody loves operators ! Let's get more of them
+
+## The precedence list can be found here : http://perlcabal.org/syn/S03.html#Operator_precedence
+## But first, we need a little explanation about associativity :
+
+### Binary operators:
+$a ! $b ! $c; # with a left-associative `!`, this is `($a ! $b) ! $c`
+$a ! $b ! $c; # with a right-associative `!`, this is `$a ! ($b ! $c)`
+$a ! $b ! $c; # with a non-associative `!`, this is illegal
+$a ! $b ! $c; # with a chain-associative `!`, this is `($a ! $b) and ($b ! $c)`
+$a ! $b ! $c; # with a list-associative `!`, this is `infix:<>`
+
+### Unary operators:
+!$a! # with left-associative `!`, this is `(!$a)!`
+!$a! # with right-associative `!`, this is `!($a!)`
+!$a! # with non-associative `!`, this is illegal
+
+## And to end the list of operators ...
+
 ## * Sort comparison
 ### They return one value of the `Order` enum : `Less`, `Same` and `More` (which numerify to -1, 0 or +1).
 1 <=> 4; # sort comparison for numerics
@@ -190,14 +211,4 @@ $obj eqv $obj2; # sort comparison using eqv semantics
 3 before 4; # True
 'b' after 'a'; # True
 
-## * Range constructors
-3 .. 7; # 3 to 7, both included
-### `^` on either side them exclusive on that side :
-3 ^..^ 7; # 3 to 7, not included (basically `4 .. 6`)
-
-# * And, Or
-
-## Short-circuit (and tight)
-$a && $b && $c; # returns the first argument that evaluates to False, or the last argument
-$a || $b;
 ```
