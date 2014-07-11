@@ -188,6 +188,16 @@ func learnFlowControl() {
     x = 1.3e3                    // This makes x == 1300
     fmt.Println("xBig:", xBig()) // false now.
 
+    // What's more is function literals may be defined and called inline,
+    // acting as an argument to function, as long as:
+    // a) function literal is called immediately (),
+    // b) result type matches expected type of argument.
+    fmt.Println("Add + double two numbers: ",
+        func(a, b int) int {
+	    return (a + b) * 2 
+	    }(10, 2)) // Called with args 10 and 2
+    // => Add + double two numbers:  24
+	    
     // When you need it, you'll love it.
     goto love
 love:
