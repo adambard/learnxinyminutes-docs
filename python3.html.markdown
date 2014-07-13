@@ -426,7 +426,7 @@ def setGlobalX(num):
     global x
     print (x) # => 5
     x = num # global var x is now set to 6
-    print (x)
+    print (x) # => 6
 
 setX(43)
 setGlobalX(6)
