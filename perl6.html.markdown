@@ -38,7 +38,7 @@ my $weird'variable-name_ = 5;
 my @array = 1, 2, 3;
 my @array = 'a', 'b', 'c';
 # equivalent to :
-my @array = <a b c>; # similar to perl5's qw, or Ruby's %w
+my @array = <a b c>; # array of string, delimited by space. similar to perl5's qw, or Ruby's %w
 
 say @array[2]; # Arrays are 0-indexed
 
@@ -57,12 +57,37 @@ say %hash<key2>; # if it's a string, you can actually use <>
 ## - Subs (subroutines, or functions in most other languages). Stored in variable, they use `&`
 sub say-hello { say "Hello, world" }
 
+sub say-hello-to(Str $name) { # you can provide the type of an argument
+                              # and it'll be checked at compile-time
+
+    say "Hello, $name !";
+}
+
 # since you can omit parenthesis to call a function with no arguments, you need to use `&` also to capture `say-hello`
 my &s = &say-hello;
 my &other-s = sub { say "anonymous function !" }
 
 # `->`, lambda with arguments, and string interpolation
 my &lambda = -> $argument { "The argument passed to this lambda is $argument" }
+
+### Containers
+# In Perl 6, values are actually stored in "containers".
+# the assignment operator asks the container on the left to store the value on its right
+# When passed around, containers are marked as immutable. Which means that, in a function,
+#  you'll get an error if you try to mutate one of your argument.
+# If you really need to, you can ask for a mutable container using `is rw` :
+sub mutate($n is rw) {
+  $n++;
+  say "\$n is now $n !";
+}
+
+# If what you want is a copy instead, use `is copy`.
+
+# A sub itself returns a container, which means it can be marked as rw :
+my $x = 42;
+sub mod() is rw { $x }
+mod() = 52; # in this case, the parentheses are mandatory
+say $x; #=> 52
 
 ### Control Flow Structures
 
@@ -179,6 +204,37 @@ $arg ~~ &bool-returning-function; # true if the function, passed `$arg` as an ar
 ## Short-circuit (and tight)
 $a && $b && $c; # returns the first argument that evaluates to False, or the last argument
 $a || $b;
+
+# Perl 6 has a quite comprehensive class system
+## You declare a class with the keyword `class`, fields with `has`, methods with `method`
+## `$.` declares a public field, `$!` declares a private field
+## (a public field also has `$!`, which is its private interface)
+
+class A {
+  has $.field;
+  has Int $!private-field = 10;
+  
+  method get-value {
+    $.field + $!private-field + $n;
+  }
+  
+  method set-value($n) {
+    # $.field = $n; # This fails, because a public field is actually an immutable container
+                    # (even from inside the class)
+                    # You either need to use `is rw` on the `has`
+                    # (which will make it mutable, even from outside the class)
+                    # or you need to use the `$!` version :
+                    
+    $!field = $n;   # This works, because `$!` is always mutable
+  }
+};
+
+# Create a new instance of A with $.field set to 5 :
+# note : you can't set private-field from here (more later on)
+my $a = A.new(field => 5);
+$a.get-value; #=> 18
+#$a.field = 5; # This fails, because the `has $.field` is lacking the `is rw`
+
 
 # More operators thingies !
 
