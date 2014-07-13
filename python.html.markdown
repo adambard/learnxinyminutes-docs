@@ -47,7 +47,7 @@ to Python 2.x. Look for another tour of Python 3 soon!
 
 # Truncation or Integer division 
 5 // 3     # => 1
-5.0 // 3.0 # => 1.0
+5.0 // 3.0 # => 1.0 # works on floats too
 
 # Modulo operation
 7 % 3 # => 1
