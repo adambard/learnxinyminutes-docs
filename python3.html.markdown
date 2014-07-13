@@ -2,7 +2,7 @@
 language: python3
 contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
-    - ["Steven Basart", "http://sbasart.com"]
+    - ["Steven Basart", "http://github.com/xksteven"]
 filename: learnpython3.py
 ---
 
