@@ -2,6 +2,7 @@
 language: python3
 contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
+    - ["Steven Basart", "http://sbasart.com"]
 filename: learnpython3.py
 ---
 
@@ -37,8 +38,15 @@ Note: This article applies to Python 3 specifically. Check out the other tutoria
 # Except division which returns floats by default
 35 / 5  # => 7.0
 
+# Truncation or Integer division 
+5 // 3     # => 1
+5.0 // 3.0 # => 1.0
+
 # When you use a float, results are floats
 3 * 2.0 # => 6.0
+
+# Modulo operation
+7 % 3 # => 1
 
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
@@ -404,6 +412,24 @@ kwargs = {"a": 3, "b": 4}
 all_the_args(*args)   # equivalent to foo(1, 2, 3, 4)
 all_the_args(**kwargs)   # equivalent to foo(a=3, b=4)
 all_the_args(*args, **kwargs)   # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+
+
+# Function Scope                                                                
+x = 5
+
+def setX(num):
+    # Local var x not the same as global variable x
+    x = num # => 43
+    print (x) # => 43
+    
+def setGlobalX(num):
+    global x
+    print (x) # => 5
+    x = num # global var x is now set to 6
+    print (x)
+
+setX(43)
+setGlobalX(6)
 
 
 # Python has first class functions
