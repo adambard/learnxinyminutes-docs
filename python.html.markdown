@@ -45,6 +45,13 @@ to Python 2.x. Look for another tour of Python 3 soon!
 2.0     # This is a float
 11.0 / 4.0  # => 2.75 ahhh...much better
 
+# Truncation or Integer division 
+5 // 3     # => 1
+5.0 // 3.0 # => 1.0 # works on floats too
+
+# Modulo operation
+7 % 3 # => 1
+
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
 
@@ -380,6 +387,22 @@ all_the_args(*args)   # equivalent to foo(1, 2, 3, 4)
 all_the_args(**kwargs)   # equivalent to foo(a=3, b=4)
 all_the_args(*args, **kwargs)   # equivalent to foo(1, 2, 3, 4, a=3, b=4)
 
+# Function Scope                                                                
+x = 5
+
+def setX(num):
+    # Local var x not the same as global variable x
+    x = num # => 43
+    print (x) # => 43
+    
+def setGlobalX(num):
+    global x
+    print (x) # => 5
+    x = num # global var x is now set to 6
+    print (x) # => 6
+
+setX(43)
+setGlobalX(6)
 
 # Python has first class functions
 def create_adder(x):
