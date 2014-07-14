@@ -10,8 +10,6 @@ I am writing this to highlight the differences and
 additions that C++ has with respect to C. My 
 suggestion would be to follow the C tutorial first
 then look here for the additions and differences.
-For the most part you can think of C++ as a superset
-of C where C++ has Object Oriented programming tacked onto C. 
 
 ///////////////////////////////////////
 // C++ differences
