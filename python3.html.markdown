@@ -292,7 +292,7 @@ prints:
     mouse is a mammal
 """
 for animal in ["dog", "cat", "mouse"]:
-    # You can use % to interpolate formatted strings
+    # You can use format() to interpolate formatted strings
     print("{} is a mammal".format(animal))
 
 """
@@ -471,7 +471,7 @@ class Human(object):
 
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
-        return "{name}: {message}" % (name=self.name, message=msg)
+        return "{name}: {message}".format(name=self.name, message=msg)
 
     # A class method is shared among all instances
     # They are called with the calling class as the first argument
