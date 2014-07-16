@@ -4,6 +4,7 @@ filename: learnc.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
     - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
+    - ["Jakub Trzebiatowski", "http://cbs.stgn.pl"]
 
 ---
 
@@ -174,7 +175,9 @@ int main() {
     i2 - i1; // => 1
     i2 * i1; // => 2
     i1 / i2; // => 0 (0.5, but truncated towards 0)
-
+    // You need to cast at least one integer to float to get a floating-point result
+    (float)i1 / i2 // => 0.5f
+    i1 / (double)i2 // => 0.5 // Same with double
     f1 / f2; // => 0.5, plus or minus epsilon
     // Floating-point numbers and calculations are not exact
 
@@ -197,6 +200,10 @@ int main() {
     int a = 1;
     // WRONG:
     int between_0_and_2 = 0 < a < 2;
+    // Warning: The line above will compile, but it means `(0 < a) < 2`.
+    // This expression is always true, because (0 < a) could be either 1 or 0.
+    // In this case it's 1, because (0 < 1).
+    
     // Correct:
     int between_0_and_2 = 0 < a && a < 2;
 
