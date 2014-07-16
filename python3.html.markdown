@@ -98,6 +98,10 @@ not False  # => True
 # You can use keywords if you don't want to count.
 "{name} wants to eat {food}".format(name="Bob", food="lasagna") #=> "Bob wants to eat lasagna"
 
+# If your Python 3 code also needs to run on Python 2.5 and below, you can also
+# still use the old style of formatting:
+"%s can be %s the %s way" % ("strings", "interpolated", "old")
+
 
 # None is an object
 None  # => None
