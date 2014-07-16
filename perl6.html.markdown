@@ -11,8 +11,12 @@ Perl 6 is a highly capable, feature-rich programming language made for the upcom
 
 Perl 6 runs on [the Parrot VM](http://parrot.org/), the JVM and [the MoarVM](http://moarvm.com).
 
-```perl6
+```perl
 # Single line comment start with a pound
+
+#`(
+  Multiline comments use #` and a quoting construct. (), [], {}, 「」, etc, will work.
+)
 
 ### Variables
 
