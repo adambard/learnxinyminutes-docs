@@ -37,9 +37,9 @@ my $str2 = "String"; # double quotes allow for interpolation
 my @array = 1, 2, 3;
 my @array = 'a', 'b', 'c';
 # equivalent to :
-my @array = <a b c>; # array of string, delimited by space. similar to perl5's qw, or Ruby's %w
+my @array = <a b c>; # array of words, delimited by space. similar to perl5's qw, or Ruby's %w
 
-say @array[2]; # Arrays are 0-indexed
+say @array[2]; # Array indices start at 0 -- This is the third element
 
 ## - Hashes
 
@@ -68,57 +68,8 @@ my &other-s = sub { say "anonymous function !" }
 
 # `->`, lambda with arguments, and string interpolation
 my &lambda = -> $argument { "The argument passed to this lambda is $argument" }
-
-# add 3 to each value of an array using map :
-map({ $_ + 3 }, @array); # $_ is the implicit argument (the same as for `given` and `for`)
-
-# a sub (`sub {}`) has different semantics than a block (`{}` or `-> {}`) :
-# a block doesn't have a function context (though it can have arguments), which means that if you
-#  return from it, you're going to return from the parent function, compare:
-sub is-in(@array, $elem) {
-  map({ return True if $_ == $elem }, @array); # this will `return` out of `is-in`
-}
-sub truthy-array(@array) {
-  # this will produce an array of `True` and `False` :
-  # (you can also say `anon sub` for "anonymous subroutine")
-  map(sub { if $_ { return True } else { return False } }, @array);
-}
-
-# `-> {}` and `{}` are pretty much the same thing, except taht the former can take arguments,
-#  and that the latter can be mistaken as a hash by the compiler
-
-# You can also use the "whatever star" to create an anonymous function
-# (it'll stop at the furthest operator in the current expression)
-map(*+3, @array); # `*+3` is the same as `{ $_ + 3 }`
-map(*+*+3, @array); # also works. Same as `-> $a, $b { $a + $b + 3 }`
-say ((*+3)/5)(5); # immediatly execute the function Whatever created -- works even in parens !
-
-# but if you need to have more than one argument (`$_`) in a block (without wanting to resort to `-> {}`),
-#  you can also use the implicit argument syntax, `$^` :
-map({ $^a + $^b + 3 }, @array); # same as the above
-
-# Note : those are sorted lexicographically. `{ $^b / $^a }` is like `-> $a, b { $ b / $a }`
-
-## Multiple Dispatch
-# Perl 6 can decide which variant of a `sub` to call based on the type of the arguments,
-# or on arbitrary preconditions, using `where` :
-
-# with types
-multi sub sayit(Int $n) { # note the `multi` keyword here
-  say "Number: $n";
-}
-multi sayit(Str $s) } # the `sub` is implicit
-  say "String: $s";
-}
-sayit("foo"); # prints "String: foo"
-sayit(True); # fails at *compile time* with "calling 'sayit' will never work with arguments of types ..."
-
-# with arbitrary precondition :
-multi is-big(Int $n where * > 10) { True }
-multi is-big(Int $) { False }
-
-# you can also name these checks, by creating "subsets" :
-subset Even of Int where * %% 2;
+# We're going to see how powerful Perl 6 subs are just a little down below, after seeing the basics of operators
+# and control flow structures
 
 ### Containers
 # In Perl 6, values are actually stored in "containers".
@@ -154,7 +105,10 @@ unless False {
   say "It's not false !";
 }
 
-# if (true) say; # Won't work
+# You can also use their postfix versions, with the keyword after:
+say "Quite truthy" if True;
+
+# if (true) say; # This doesn't work !
 
 # - Ternary conditional
 my $a = $condition ?? $value-if-true !! $value-if-false; # `??` and `!!` are like `?` and `:` in other languages'
@@ -189,15 +143,14 @@ for @array -> $variable {
 }
 
 # default variable is $_
-for array {
+for @array {
   say "I've got $_";
 }
 
-# Note - the "lambda" `->` syntax isn't reserved to for :
+# Note - the "lambda" `->` syntax isn't reserved to `for` :
 if long-computation() -> $result {
   say "The result is $result";
 }
-
 
 ### Operators
 
@@ -248,6 +201,17 @@ $arg ~~ &bool-returning-function; # true if the function, passed `$arg` as an ar
 3 .. 7; # 3 to 7, both included
 # `^` on either side them exclusive on that side :
 3 ^..^ 7; # 3 to 7, not included (basically `4 .. 6`)
+# this also works as a shortcut for `0..^N`
+^10; # 0..^10
+
+# This also allows us to demonstrate that Perl 6 has lazy arrays :
+my @array = 1..*; # 1 to Infinite !
+say @array[^10]; # you can pass arrays as subscripts and it'll return an array of results
+                 # this will print "1 2 3 4 5 6 7 8 9 10" (and not run out of memory !)
+                 
+# Warning, though : if you try this example in the REPL and juste put `1..*`,
+# Perl 6 will be forced to try and evaluate the whole array (to print it),
+# so you'll end with an infinite loop
 
 ## * And, Or
 3 && 4; # True. Calls `.Bool` on `3`
@@ -256,6 +220,84 @@ $arg ~~ &bool-returning-function; # true if the function, passed `$arg` as an ar
 ## Short-circuit (and tight) versions of the above
 $a && $b && $c; # returns the first argument that evaluates to False, or the last argument
 $a || $b;
+
+## Sequence operator
+# !TODO!
+1, 2, 3 ... 10;
+
+## More on Subs !
+# Perl 6 likes functions. So, in Perl 6, functions are very powerful:
+
+## Multiple Dispatch
+# Perl 6 can decide which variant of a `sub` to call based on the type of the arguments,
+# or on arbitrary preconditions, using `where` :
+
+# with types
+multi sub sayit(Int $n) { # note the `multi` keyword here
+  say "Number: $n";
+}
+multi sayit(Str $s) } # the `sub` is implicit
+  say "String: $s";
+}
+sayit("foo"); # prints "String: foo"
+sayit(True); # fails at *compile time* with "calling 'sayit' will never work with arguments of types ..."
+
+# with arbitrary precondition:
+multi is-big(Int $n where * > 10) { True }
+multi is-big(Int $) { False }
+
+# you can also name these checks, by creating "subsets":
+subset Even of Int where * %% 2;
+
+
+# The last expression of a sub is returned automatically (though you may use the `return` keyword, of course):
+sub next-index($n) {
+  $n + 1;
+}
+my $new-n = next-index(3); # $new-n is now 4
+# This is true for everything, except for the looping constructs (due to performance reasons):
+#  there's no purpose in building a list if we're just going to discard all the results.
+# If you still want to build one, you can use the `do` prefix: (or the `gather` prefix, which we'll see later)
+sub list-of($n) {
+  do for ^$n { # note the use of the range-to prefix operator `^` (`0..^N`)
+    $_ # current loop iteration
+  }
+}
+my @list3 = list-of(3); #=> (0, 1, 2)
+
+# We can, for example, add 3 to each value of an array using map :
+my @arrayplus3 = map({ $_ + 3 }, @array); # $_ is the implicit argument (the same as for `given` and `for`)
+
+# a sub (`sub {}`) has different semantics than a block (`{}` or `-> {}`) :
+# a block doesn't have a function context (though it can have arguments), which means that if you
+#  return from it, you're going to return from the parent function, compare:
+sub is-in(@array, $elem) {
+  # this will `return` out of `is-in` sub
+  # once the condition evaluated to True, the loop won't be run anymore
+  map({ return True if $_ == $elem }, @array);
+}
+sub truthy-array(@array) {
+  # this will produce an array of `True` and `False` :
+  # (you can also say `anon sub` for "anonymous subroutine")
+  map(sub { if $_ { return True } else { return False } }, @array); # returns the correct value, even in a `if`
+}
+
+# `-> {}` and `{}` are pretty much the same thing, except that the former can take arguments,
+#  and that the latter can be mistaken as a hash by the compiler
+
+# You can also use the "whatever star" to create an anonymous function
+# (it'll stop at the furthest operator in the current expression)
+my @arrayplus3 = map(*+3, @array); # `*+3` is the same as `{ $_ + 3 }`
+my @arrayplus3 = map(*+*+3, @array); # also works. Same as `-> $a, $b { $a + $b + 3 }`
+say ((*+3)/5)(5); # immediatly execute the function Whatever created -- works even in parens !
+
+# but if you need to have more than one argument (`$_`) in a block (without wanting to resort to `-> {}`),
+#  you can also use the implicit argument syntax, `$^` :
+map({ $^a + $^b + 3 }, @array); # same as the above
+
+# Note : those are sorted lexicographically. `{ $^b / $^a }` is like `-> $a, b { $ b / $a }`
+
+
 
 ### Object Model
 
