@@ -221,26 +221,25 @@ class(-Inf)        # "numeric"
 # 不正な計算は "not-a-number"になる
 0 / 0 # NaN
 class(NaN) # "numeric"
-# You can do arithmetic on two vectors with length greater than 1,
-# so long as the larger vector's length is an integer multiple of the smaller
+# 長さが1より大きなベクター同士で計算ができます
+# どちらかが長い場合、短い方は何度も繰り返して使われます
 c(1,2,3) + c(1,2,3) # 2 4 6
 
-
-# CHARACTERS
-# There's no difference between strings and characters in R
+# 文字
+# Rでは、文字列と文字に区別がありません
 "Horatio" # "Horatio"
 class("Horatio") # "character"
 class('H') # "character"
-# Those were both character vectors of length 1
-# Here is a longer one:
+# 上記は両方とも、長さ1のベクターです
+# 以下は、より長いものです
 c('alef', 'bet', 'gimmel', 'dalet', 'he')
 # =>
 # "alef"   "bet"    "gimmel" "dalet"  "he"
 length(c("Call","me","Ishmael")) # 3
-# You can do regex operations on character vectors:
+# 正規表現処理を文字ベクターに使えます
 substr("Fortuna multis dat nimis, nulli satis.", 9, 15) # "multis "
 gsub('u', 'ø', "Fortuna multis dat nimis, nulli satis.") # "Fortøna møltis dat nimis, nølli satis."
-# R has several built-in character vectors:
+# Rはいくつかの文字ベクターを組み込みで持っています
 letters
 # =>
 #  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"
@@ -248,40 +247,40 @@ letters
 month.abb # "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"
 
 
-# LOGICALS
-# In R, a "logical" is a boolean
+# 論理
+# Rでは、Booleanは論理（logical）型です
 class(TRUE)        # "logical"
 class(FALSE)        # "logical"
-# Their behavior is normal
+# 以下は正しい動きです
 TRUE == TRUE        # TRUE
 TRUE == FALSE        # FALSE
 FALSE != FALSE        # FALSE
 FALSE != TRUE        # TRUE
-# Missing data (NA) is logical, too
+# 無いデータ (NA) も論理型です
 class(NA)        # "logical"
-# Here we get a logical vector with many elements:
+# 以下のようにすると、複数の要素を持つ、論理型ベクターが返ります
 c('Z', 'o', 'r', 'r', 'o') == "Zorro" # FALSE FALSE FALSE FALSE FALSE
 c('Z', 'o', 'r', 'r', 'o') == "Z" # TRUE FALSE FALSE FALSE FALSE
 
 
-# FACTORS
-# The factor class is for categorical data
-# Factors can be ordered (like childrens' grade levels) or unordered (like gender)
+# ファクター
+# ファクタークラスは、カテゴリカルデータようのクラスです
+# ファクターは、子供の学年のように順序がつけられるものか、性別のように順序がないものがあります
 factor(c("female", "female", "male", "NA", "female"))
 #  female female male   NA     female
 # Levels: female male NA
-# The "levels" are the values the categorical data can take
+# "levels" は、カテゴリカルデータがとりうる値を返します
 levels(factor(c("male", "male", "female", "NA", "female"))) # "female" "male"   "NA" 
-# If a factor vector has length 1, its levels will have length 1, too
+# ファクターベクターの長さが1ならば、そのlevelも1です
 length(factor("male")) # 1
 length(levels(factor("male"))) # 1
-# Factors are commonly seen in data frames, a data structure we will cover later
+# ファクターは、この後で紹介するデータフレーム（というデータ型）内で、よくみられます
 data(infert) # "Infertility after Spontaneous and Induced Abortion"
 levels(infert$education) # "0-5yrs"  "6-11yrs" "12+ yrs"
 
 
 # NULL
-# "NULL" is a weird one; use it to "blank out" a vector
+# "NULL" は変わった型です。ベクターを空にするときに使います
 class(NULL)        # NULL
 parakeet
 # =>
@@ -292,11 +291,11 @@ parakeet
 # NULL
 
 
-# TYPE COERCION
-# Type-coercion is when you force a value to take on a different type
+# 型の強制
+# 型の強制は、ある値を、強制的にある型として利用する事です
 as.character(c(6, 8)) # "6" "8"
 as.logical(c(1,0,1,1)) # TRUE FALSE  TRUE  TRUE
-# If you put elements of different types into a vector, weird coercions happen:
+# さまざまな要素が入っているベクターに対して型の強制を行うと、おかしなことになります
 c(TRUE, 4) # 1 4
 c("dog", TRUE, 4) # "dog"  "TRUE" "4"
 as.numeric("Bilbo")
@@ -306,8 +305,8 @@ as.numeric("Bilbo")
 # NAs introduced by coercion 
 
 
-# Also note: those were just the basic data types
-# There are many more data types, such as for dates, time series, etc.
+# 追記: ここで紹介したのは、基本的な型だけです
+# 実際には、日付（dates）や時系列（time series）など、いろいろな型があります
 
 
 
@@ -315,40 +314,40 @@ as.numeric("Bilbo")
 
 
 ##################################################
-# Variables, loops, if/else
+# 変数、ループ、もし/ほかに（if/else）
 ##################################################
 
 
-# A variable is like a box you store a value in for later use.
-# We call this "assigning" the value to the variable.
-# Having variables lets us write loops, functions, and if/else statements
+# 変数は、ある値を後で使うために入れておく、箱のようなものです
+# 箱に入れることを、変数に値を代入する、といいます
+# 変数を使うと、ループや関数、if/else 分岐を利用できます
 
 
-# VARIABLES
-# Lots of way to assign stuff:
-x = 5 # this is possible
-y <- "1" # this is preferred
-TRUE -> z # this works but is weird
+# 変数
+# 代入する方法はいろいろあります
+x = 5 # これはできます
+y <- "1" # これがおすすめです
+TRUE -> z # これも使えますが、変です
 
 
-# LOOPS
-# We've got for loops
+# ループ
+# forでループできます
 for (i in 1:4) {
   print(i)
 }
-# We've got while loops
+# whileでループできます
 a <- 10
 while (a > 4) {
         cat(a, "...", sep = "")
         a <- a - 1
 }
-# Keep in mind that for and while loops run slowly in R
-# Operations on entire vectors (i.e. a whole row, a whole column)
-# or apply()-type functions (we'll discuss later) are preferred
+# Rでは、forやwhileは遅いことを覚えておいてください
+# 処理を行う場合は、ベクター丸ごと処理する（つまり、行全体や、列全体）を指定して行うか、
+# 後述する、apply()系の関数を使うのがお勧めです
 
 
 # IF/ELSE
-# Again, pretty standard
+# ごく普通のif文です
 if (4 > 3) {
         print("4 is greater than 3")
 } else {
@@ -358,14 +357,14 @@ if (4 > 3) {
 # [1] "4 is greater than 3"
 
 
-# FUNCTIONS
-# Defined like so:
+# 関数
+# 以下のように定義します
 jiggle <- function(x) {
-        x = x + rnorm(1, sd=.1)        #add in a bit of (controlled) noise
+        x = x + rnorm(1, sd=.1)        #すこしだけ（制御された）ノイズを入れます
         return(x)
 }
-# Called like any other R function:
-jiggle(5)        # 5±ε. After set.seed(2716057), jiggle(5)==5.005043
+# 他のR関数と同じように呼びます
+jiggle(5)        # 5±ε.  set.seed(2716057)をすると、jiggle(5)==5.005043
 
 
 
@@ -373,26 +372,26 @@ jiggle(5)        # 5±ε. After set.seed(2716057), jiggle(5)==5.005043
 
 
 ###########################################################################
-# Data structures: Vectors, matrices, data frames, and arrays
+# データ構造: ベクター、行列、データフレーム、配列
 ###########################################################################
 
 
-# ONE-DIMENSIONAL
+# 1次元
 
 
-# Let's start from the very beginning, and with something you already know: vectors.
+# まずは基本からです。すでにご存じのベクターからです
 vec <- c(8, 9, 10, 11)
 vec        #  8  9 10 11
-# We ask for specific elements by subsetting with square brackets
-# (Note that R starts counting from 1)
+# 特定の要素を、[角括弧]による指定で取り出せます
+# (Rでは、最初の要素は1番目と数えます)
 vec[1]                # 8
 letters[18]        # "r"
 LETTERS[13]        # "M"
 month.name[9]        # "September"
 c(6, 8, 7, 5, 3, 0, 9)[3]        # 7
-# We can also search for the indices of specific components,
+# 特定のルールに当てはまる要素を見つけることもできます
 which(vec %% 2 == 0)        # 1 3
-# grab just the first or last few entries in the vector,
+# 最初か最後の数個を取り出すこともできます
 head(vec, 1)        # 8
 tail(vec, 2)        # 10 11
 # or figure out if a certain value is in the vector
