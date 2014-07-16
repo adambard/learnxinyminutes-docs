@@ -31,7 +31,7 @@ optionalString = nil
 // Array
 var shoppingList = ["catfish", "water", "lemons"]
 shoppingList[1] = "bottle of water"
-let emptyArray = String[]()
+let emptyArray = [String]()
 
 // Dictionary
 var occupations = [
@@ -65,7 +65,7 @@ for (key, value) in dict {
 for i in -1...1 { // [-1, 0, 1]
   println(i)
 }
-// use .. to exclude the last number
+// use ..< to exclude the last number
 
 // while loop
 var i = 1
@@ -127,6 +127,7 @@ increment(7)
 //
 // Closures
 //
+var numbers = [1, 2, 6]
 
 // Functions are special case closures ({})
 
@@ -140,8 +141,10 @@ numbers.map({
   })
 
 // When the type is known, like above, we can do this
-var numbers = [1, 2, 6]
 numbers = numbers.map({ number in 3 * number })
+//Or even this
+//numbers = numbers.map({ $0 * 3 })
+
 print(numbers) // [3, 6, 18]
 
 
