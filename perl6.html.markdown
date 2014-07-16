@@ -29,9 +29,8 @@ Perl 6 runs on [the Parrot VM](http://parrot.org/), the JVM and [the MoarVM](htt
 my $str = 'String';
 my $str2 = "String"; # double quotes allow for interpolation
 
-# variable names can contain but not end with simple quotes and dashes, and can contain (and end with) underscores
-
-my $weird'variable-name_ = 5;
+# variable names can contain but not end with simple quotes and dashes, and can contain (and end with) underscores :
+# my $weird'variable-name_ = 5; # works !
 
 ## - Arrays. They represent multiple values. They start with `@`
 
