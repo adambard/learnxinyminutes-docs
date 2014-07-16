@@ -98,6 +98,10 @@ not False  # => True
 # You can use keywords if you don't want to count.
 "{name} wants to eat {food}".format(name="Bob", food="lasagna") #=> "Bob wants to eat lasagna"
 
+# If your Python 3 code also needs to run on Python 2.5 and below, you can also
+# still use the old style of formatting:
+"%s can be %s the %s way" % ("strings", "interpolated", "old")
+
 
 # None is an object
 None  # => None
@@ -292,7 +296,7 @@ prints:
     mouse is a mammal
 """
 for animal in ["dog", "cat", "mouse"]:
-    # You can use % to interpolate formatted strings
+    # You can use format() to interpolate formatted strings
     print("{} is a mammal".format(animal))
 
 """
@@ -471,7 +475,7 @@ class Human(object):
 
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
-        return "{name}: {message}" % (name=self.name, message=msg)
+        return "{name}: {message}".format(name=self.name, message=msg)
 
     # A class method is shared among all instances
     # They are called with the calling class as the first argument
