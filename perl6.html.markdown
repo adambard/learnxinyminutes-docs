@@ -14,10 +14,6 @@ Perl 6 runs on [the Parrot VM](http://parrot.org/), the JVM and [the MoarVM](htt
 ```perl6
 # Single line comment start with a pound
 
-#`(
-  Multiline comments use #` and a quoting construct. (), [], {}, 「」, etc, will work.
-)
-
 ### Variables
 
 # In Perl 6, you declare a lexical variable using `my`
@@ -88,9 +84,11 @@ sub truthy-array(@array) {
 # `-> {}` and `{}` are pretty much the same thing, except taht the former can take arguments,
 #  and that the latter can be mistaken as a hash by the compiler
 
-# You can also use the "whatever star" to create an anonymous function :
+# You can also use the "whatever star" to create an anonymous function
+# (it'll stop at the furthest operator in the current expression)
 map(*+3, @array); # `*+3` is the same as `{ $_ + 3 }`
-map(*+*+3, @array); # also works. Same as `-> $a, $b -> { $a + $b + 3 }`
+map(*+*+3, @array); # also works. Same as `-> $a, $b { $a + $b + 3 }`
+say ((*+3)/5)(5); # immediatly execute the function Whatever created -- works even in parens !
 
 # but if you need to have more than one argument (`$_`) in a block (without wanting to resort to `-> {}`),
 #  you can also use the implicit argument syntax, `$^` :
@@ -115,6 +113,9 @@ sayit(True); # fails at *compile time* with "calling 'sayit' will never work wit
 # with arbitrary precondition :
 multi is-big(Int $n where * > 10) { True }
 multi is-big(Int $) { False }
+
+# you can also name these checks, by creating "subsets" :
+subset Even of Int where * %% 2;
 
 ### Containers
 # In Perl 6, values are actually stored in "containers".
@@ -193,7 +194,6 @@ for array {
 if long-computation() -> $result {
   say "The result is $result";
 }
-
 
 
 ### Operators
