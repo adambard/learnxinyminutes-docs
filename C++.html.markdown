@@ -11,6 +11,7 @@ additions that C++ has with respect to C. My
 suggestion would be to follow the C tutorial first
 then look here for the additions and differences.
 
+```
 ///////////////////////////////////////   
 // C++ differences   
 ///////////////////////////////////////  
@@ -341,7 +342,7 @@ int main () {
     return 0;   
 }
 
-
+```
 Futher Reading   
 
 for more resources see: http://www.icce.rug.nl/documents/cplusplus/   
