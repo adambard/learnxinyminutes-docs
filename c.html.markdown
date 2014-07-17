@@ -281,10 +281,10 @@ int main() {
   // branching with multiple choices: switch()
   switch (a) {
   case 0: // labels need to be integral *constant* expressions
-    do_stuff();
+    //do_stuff();
     break; // if you don't break, control flow falls over labels
   case 1:
-    do_something_else();
+    //do_something_else();
     break;
   default:
     // if `some_integral_expression` didn't match any of the labels
