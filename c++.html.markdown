@@ -105,7 +105,7 @@ int value = nullptr;    // error: value is no pointer
 // std is for standard library    
 using namespace std;   
 
-\#include<\stdio.h>    
+#include <stdio.h>    
 
 int counter = 50;                // global variable    
 
@@ -173,7 +173,7 @@ myString.append(" Dog"); // => "Hello Dog"
 
 //C++ input and output streams   
 //cin, cout, cerr, << is insertion and >> is extraction operator   
-\#include <\iostream>   
+#include <iostream>   
 
 using namespace std;   
 
@@ -201,7 +201,7 @@ int main()
 
 
 //First example of classes   
-\#include <\iostream>   
+#include <iostream>   
 
 //define a class    
 class Doggie   
@@ -303,7 +303,7 @@ try {
 
 // In C++ you can overload operators such as +, -, new, etc.   
 
-\#include <\iostream>   
+#include <iostream>   
 using namespace std;   
 
 class Vector {   
