@@ -211,21 +211,22 @@ class Doggie
    // These are only the declarations   
    //Can also have private and protected   
    public:     
-        //The public methods (can also include variables)   
+       //The public methods (can also include variables)   
 
-	// Default constructor   
-	Doggie();   
+   // Default constructor   
+   Doggie();   
 
-	void setName(std::string dogsName);   
-	void setWeight(int dogsWeight);    
-	void printDog();   
+   void setName(std::string dogsName);   
+   void setWeight(int dogsWeight);    
+   void printDog();   
 
-	//Can define functions within class declaration too   
-	void dogBark() {std::cout << "Bark Bark\n"}   
+   //Can define functions within class declaration too   
+   void dogBark() {std::cout << "Bark Bark\n"}   
 
-	//Destructors are methods that free the allocated space   
-	~doggieDestructor();   
-	//if no destructor compiler defines the trivial destructor   
+   //Destructors are methods that free the allocated space   
+   ~doggieDestructor();   
+   //if no destructor compiler defines the trivial destructor   
+
 //Classes are similar to structs and must close the } with ;    
 };   
 
