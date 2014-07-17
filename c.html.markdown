@@ -23,9 +23,9 @@ Multi-line comments look like this. They work in C89 as well.
   // Constants: #define <keyword>
 #define DAYS_IN_YEAR 365
 
-  // Enumeration constants are also ways to declare constants. 
+  // Enumeration constants are also ways to declare constants.
   enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
-// MON gets 2 automatically, TUE gets 3, etc. 
+// MON gets 2 automatically, TUE gets 3, etc.
 
 // Import headers with #include
 #include <stdlib.h>
@@ -43,7 +43,7 @@ int function_2(void);
 
 // Must declare a 'function prototype' before main() when functions occur after
 // your main() function.
-int add_two_ints(int x1, int x2); // function prototype 
+int add_two_ints(int x1, int x2); // function prototype
 
 // Your program's entry point is a function called
 // main with an integer return type.
@@ -57,7 +57,7 @@ int main() {
   // Types
   ///////////////////////////////////////
 
-  // ints are usually 4 bytes 
+  // ints are usually 4 bytes
   int x_int = 0;
 
   // shorts are usually 2 bytes
@@ -70,7 +70,7 @@ int main() {
   // longs are often 4 to 8 bytes; long longs are guaranteed to be at least
   // 64 bits
   long x_long = 0;
-  long long x_long_long = 0; 
+  long long x_long_long = 0;
 
   // floats are usually 32-bit floating point numbers
   float x_float = 0.0;
@@ -83,9 +83,9 @@ int main() {
   unsigned int ux_int;
   unsigned long long ux_long_long;
 
-  // chars inside single quotes are integers in machine's character set. 
-  '0'; // => 48 in the ASCII character set. 
-  'A'; // => 65 in the ASCII character set. 
+  // chars inside single quotes are integers in machine's character set.
+  '0'; // => 48 in the ASCII character set.
+  'A'; // => 65 in the ASCII character set.
 
   // sizeof(T) gives you the size of a variable with type T in bytes
   // sizeof(obj) yields the size of the expression (variable, literal, etc.).
@@ -96,7 +96,7 @@ int main() {
   // is not evaluated (except VLAs (see below)).
   // The value it yields in this case is a compile-time constant.
   int a = 1;
-  // size_t is an unsigned integer type of at least 2 bytes used to represent 
+  // size_t is an unsigned integer type of at least 2 bytes used to represent
   // the size of an object.
   size_t size = sizeof(a++); // a++ is not evaluated
   printf("sizeof(a++) = %zu where a = %d\n", size, a);
@@ -163,7 +163,7 @@ int main() {
   ///////////////////////////////////////
 
   // Shorthands for multiple declarations:
-  int i1 = 1, i2 = 2; 
+  int i1 = 1, i2 = 2;
   float f1 = 1.0, f2 = 2.0;
 
   int b, c;
@@ -184,7 +184,7 @@ int main() {
   // Comparison operators are probably familiar, but
   // there is no Boolean type in c. We use ints instead.
   // (Or _Bool or bool in C99.)
-  // 0 is false, anything else is true. (The comparison 
+  // 0 is false, anything else is true. (The comparison
   // operators always yield 0 or 1.)
   3 == 2; // => 0 (false)
   3 != 2; // => 1 (true)
@@ -211,14 +211,14 @@ int main() {
   int e = 5;
   int f = 10;
   int z;
-  z = (a > b) ? a : b; // => 10 "if a > b return a, else return b." 
+  z = (a > b) ? a : b; // => 10 "if a > b return a, else return b."
 
   //Increment and decrement operators:
   char *s = "iLoveC";
   int j = 0;
   s[j++]; // => "i". Returns the j-th item of s THEN increments value of j.
-  j = 0; 
-  s[++j]; // => "L". Increments value of j THEN returns j-th value of s. 
+  j = 0;
+  s[++j]; // => "L". Increments value of j THEN returns j-th value of s.
   // same with j-- and --j
 
   // Bitwise operators!
@@ -249,7 +249,7 @@ int main() {
 
   // While loops exist
   int ii = 0;
-  while (ii < 10) { //ANY value not zero is true. 
+  while (ii < 10) { //ANY value not zero is true.
     printf("%d, ", ii++); // ii++ increments ii AFTER using its current value.
   } // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
@@ -281,10 +281,10 @@ int main() {
   // branching with multiple choices: switch()
   switch (a) {
   case 0: // labels need to be integral *constant* expressions
-    do_stuff();
+    printf("Hey, 'a' equals 0!\n");
     break; // if you don't break, control flow falls over labels
   case 1:
-    do_something_else();
+    printf("Huh, 'a' equals 1!\n");
     break;
   default:
     // if `some_integral_expression` didn't match any of the labels
@@ -292,7 +292,6 @@ int main() {
     exit(-1);
     break;
   }
-    
 
   ///////////////////////////////////////
   // Typecasting
@@ -324,7 +323,7 @@ int main() {
   ///////////////////////////////////////
 
   // A pointer is a variable declared to store a memory address. Its declaration will
-  // also tell you the type of data it points to. You can retrieve the memory address 
+  // also tell you the type of data it points to. You can retrieve the memory address
   // of your variables, then mess with them.
 
   int x = 0;
@@ -362,7 +361,7 @@ int main() {
 
     // Declare a pointer of type int and initialize it to point to x_array
   int* x_ptr = x_array;
-  // x_ptr now points to the first element in the array (the integer 20). 
+  // x_ptr now points to the first element in the array (the integer 20).
   // This works because arrays often decay into pointers to their first element.
   // For example, when an array is passed to a function or is assigned to a pointer,
   // it decays into (implicitly converted to) a pointer.
@@ -396,7 +395,7 @@ int main() {
     // "unpredictable results" - the program is said to invoke "undefined behavior"
   printf("%d\n", *(my_ptr + 21)); // => Prints who-knows-what? It may even crash.
 
-  // When you're done with a malloc'd block of memory, you need to free it, 
+  // When you're done with a malloc'd block of memory, you need to free it,
   // or else no one else can use it until your program terminates
   // (this is called a "memory leak"):
   free(my_ptr);
@@ -430,12 +429,12 @@ int add_two_ints(int x1, int x2)
 }
 
 /*
-Functions are call by value. When a function is called, the arguments passed to 
-≈the function are copies of the original arguments (except arrays). Anything you  
-do to the arguments in the function do not change the value of the original 
-argument where the function was called. 
+Functions are call by value. When a function is called, the arguments passed to
+≈the function are copies of the original arguments (except arrays). Anything you
+do to the arguments in the function do not change the value of the original
+argument where the function was called.
 
-Use pointers if you need to edit the original argument values. 
+Use pointers if you need to edit the original argument values.
 
 Example: in-place string reversal
 */
@@ -528,18 +527,18 @@ int areaptr(const rect *r)
 }
 
 ///////////////////////////////////////
-// Function pointers 
+// Function pointers
 ///////////////////////////////////////
 /*
 At run time, functions are located at known memory addresses. Function pointers are
-much like any other pointer (they just store a memory address), but can be used 
+much like any other pointer (they just store a memory address), but can be used
 to invoke functions directly, and to pass handlers (or callback functions) around.
 However, definition syntax may be initially confusing.
 
 Example: use str_reverse from a pointer
 */
 void str_reverse_through_pointer(char *str_in) {
-  // Define a function pointer variable, named f. 
+  // Define a function pointer variable, named f.
   void (*f)(char *); // Signature should exactly match the target function.
   f = &str_reverse; // Assign the address for the actual function (determined at run time)
   // f = str_reverse; would work as well - functions decay into pointers, similar to arrays
@@ -556,7 +555,7 @@ typedef void (*my_fnp_type)(char *);
 
 // Then used when declaring the actual pointer variable:
 // ...
-// my_fnp_type f; 
+// my_fnp_type f;
 
 //Special characters:
 /*
@@ -567,8 +566,8 @@ typedef void (*my_fnp_type)(char *);
 '\f'; // new page (form feed)
 '\r'; // carriage return
 '\b'; // backspace character
-'\0'; // NULL character. Usually put at end of strings in C. 
-//   hello\n\0. \0 used by convention to mark end of string. 
+'\0'; // NULL character. Usually put at end of strings in C.
+//   hello\n\0. \0 used by convention to mark end of string.
 '\\'; // backslash
 '\?'; // question mark
 '\''; // single quote
@@ -582,13 +581,13 @@ typedef void (*my_fnp_type)(char *);
 "%s";    // string
 "%f";    // float
 "%ld";   // long
-"%3.2f"; // minimum 3 digits left and 2 digits right decimal float 
+"%3.2f"; // minimum 3 digits left and 2 digits right decimal float
 "%7.4s"; // (can do with strings too)
 "%c";    // char
 "%p";    // pointer
 "%x";    // hexadecimal
 "%o";    // octal
-"%%";    // prints % 
+"%%";    // prints %
 */
 ///////////////////////////////////////
 // Order of Evaluation
