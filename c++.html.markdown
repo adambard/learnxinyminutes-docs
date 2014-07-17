@@ -11,7 +11,7 @@ additions that C++ has with respect to C. My
 suggestion would be to follow the C tutorial first
 then look here for the additions and differences.
 
-```
+```c++
 ///////////////////////////////////////   
 // C++ differences   
 ///////////////////////////////////////  
