@@ -423,7 +423,8 @@ tril(x) % Returns the lower triangular part of x
 cross(A,B) %  Returns the cross product of the vectors A and B
 dot(A,B) % Returns scalar product of two vectors (must have the same length)
 transpose(A) % Returns the transpose of A
-flipl(A) % Flip matrix left to right
+fliplr(A) % Flip matrix left to right
+flipud(A) % Flip matrix up to down
 
 % Matrix Factorisations
 [L, U, P] = lu(A) % LU decomposition: PA = LU,L is lower triangular, U is upper triangular, P is permutation matrix
