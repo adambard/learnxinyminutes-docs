@@ -204,14 +204,16 @@ $arg ~~ &bool-returning-function; # true if the function, passed `$arg` as an ar
 # this also works as a shortcut for `0..^N`
 ^10; # 0..^10
 
-# This also allows us to demonstrate that Perl 6 has lazy arrays :
+# This also allows us to demonstrate that Perl 6 has lazy arrays, using the Whatever Star :
 my @array = 1..*; # 1 to Infinite !
 say @array[^10]; # you can pass arrays as subscripts and it'll return an array of results
                  # this will print "1 2 3 4 5 6 7 8 9 10" (and not run out of memory !)
+# Note : when reading an infinite list, Perl 6 will "reify" the elements it needs, then keep them in memory
+# They won't be calculated more than once.
                  
 # Warning, though : if you try this example in the REPL and juste put `1..*`,
 # Perl 6 will be forced to try and evaluate the whole array (to print it),
-# so you'll end with an infinite loop
+# so you'll end with an infinite loop.
 
 ## * And, Or
 3 && 4; # True. Calls `.Bool` on `3`
@@ -222,8 +224,19 @@ $a && $b && $c; # returns the first argument that evaluates to False, or the las
 $a || $b;
 
 ## Sequence operator
-# !TODO!
-1, 2, 3 ... 10;
+# The sequence operator is one of Perl 6's most powerful features :
+# it's composed of first, on the left, the list you want Perl 6 to deduce from (and might include a closure),
+# and on the right, a value or the predicate for when to stop, or even Whatever for a lazy infinite list
+my @list = 1, 2, 3 ... 10; # basic deducing
+#my @list = 1, 3, 6 ... 10; # this throws you into an infinite loop, because Perl 6 can't figure out the end
+my @list = 1, 2, 3 ...^ 10; # as with ranges, you can exclude the last element (when the predicate matches)
+my @list = 1, 3, 9 ... * > 30; # you can use a predicate (with the Whatever Star, here)
+my @list = 1, 3, 9 ... { $_ > 30 }; # (equivalent to the above)
+my @primes = 1, 1, *+* ... *; # lazy infinite list of prime numbers, computed using a closure !
+my @primes = 1, 1, -> $a, $b { $a + $b } ... *; # (equivalent to the above)
+say @primes[^10]; #=> 1 1 2 3 5 8 13 21 34 55
+# Note : as for ranges, once reified, elements aren't re-calculated.
+# That's why `@primes[^100]` will take a long time the first time you print it, then be instant
 
 ## More on Subs !
 # Perl 6 likes functions. So, in Perl 6, functions are very powerful:
@@ -415,7 +428,7 @@ $a ! $b ! $c; # with a list-associative `!`, this is `infix:<>`
 !$a! # with right-associative `!`, this is `!($a!)`
 !$a! # with non-associative `!`, this is illegal
 
-## And to end the list of operators ...
+## Last part of the operator list :
 
 ## * Sort comparison
 # They return one value of the `Order` enum : `Less`, `Same` and `More` (which numerify to -1, 0 or +1).
@@ -427,4 +440,25 @@ $obj eqv $obj2; # sort comparison using eqv semantics
 3 before 4; # True
 'b' after 'a'; # True
 
+## * Flip Flop
+# The flip flop operator (spelled `ff` in Perl 6 and sometimes `..` in other languages such as Perl 5 and Ruby),
+#  is an operator that takes two boolean values (like a predicate) and keep track of their change as internal state.
+# The flip-flop will return `false` until its left side return true, then return true until its right side return true.
+# You can also exclude either side (iteration when the left side became true, or the right side became true),
+#  using the `^` like with ranges.
+# Let's start with an example :
+for <well met young hero we shall meet later> {
+  if $_ eq 'met' ^ff $_ eq 'meet' { # excludes "met"
+    .say
+  }
+}
+# This will print "young hero we shall meet" (excluding "met"):
+#  the flip-flop will start returning `True` when it first encounters "met"
+#  (but will still return `False` for "met" itself, due to the leading `^` on `ff`),
+#  until it sees "meet", which is when it'll start returning `False`.
+# A flip-flop can change state as many times as needed:
+for <test start print this stop you stopped printing start printing again stop not anymore> {
+  .say if $_ eq 'start' ^ff^ $_ eq 'stop'; # exclude both "start" and "stop",
+                                           # this prints "print this printing again"
+}
 ```
