@@ -11,6 +11,9 @@ Perl 6 is a highly capable, feature-rich programming language made for the upcom
 
 Perl 6 runs on [the Parrot VM](http://parrot.org/), the JVM and [the MoarVM](http://moarvm.com).
 
+Meta-note : the triple pound signs are here to denote headlines, double paragraphs, single notes.
+`#=>` represents the output of a command.
+
 ```perl
 # Single line comment start with a pound
 
@@ -459,6 +462,19 @@ for <well met young hero we shall meet later> {
 # A flip-flop can change state as many times as needed:
 for <test start print this stop you stopped printing start printing again stop not anymore> {
   .say if $_ eq 'start' ^ff^ $_ eq 'stop'; # exclude both "start" and "stop",
-                                           # this prints "print this printing again"
+                                           #=> "print this printing again"
+}
+
+# you might also use a Whatever Star, which is equivalent to `True` for the left side or `False` for the right :
+for (1, 3, 60, 3, 40, 60) {
+ .say if $_ > 50 ff *; # Once the flip-flop reached a number greater than 50, it'll never go back to `False`
+                       #=> 60 3 40 60
+}
+
+# You can also use this property to create an `If` that'll not execute the first time :
+for <a b c> {
+  .say if * ^ff *; # the flip-flop is `True` and never goes back to `False`,
+                   #  but the `^` makes it *not run* on the first iteration
+                   #=> b c
 }
 ```
