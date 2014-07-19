@@ -116,13 +116,17 @@ say "Quite truthy" if True;
 # - Ternary conditional
 my $a = $condition ?? $value-if-true !! $value-if-false; # `??` and `!!` are like `?` and `:` in other languages'
 
-# - `given`-`when` looks like other languages `switch`, but it's much more powerful thanks to smart matching :
-given "foo bar" { # given just puts its argument into `$_`, and `when` uses it using the "smart matching" operator.
-  when /foo/ { # you'll read about the smart-matching operator below
+# - `given`-`when` looks like other languages `switch`, but it's much more powerful thanks to smart matching.
+# given just puts its argument into `$_`, and `when` uses it using the "smart matching" operator.
+given "foo bar" {
+  when /foo/ { # you'll read about the smart-matching operator below -- just know `when` uses it
     say "Yay !";
   }
   when $_.chars > 50 { # smart matching anything with True gives True, so you can also put "normal" conditionals
     say "Quite a long string !";
+  }
+  default { # same as `when *` (using the Whatever Star)
+    say "Something else"
   }
 }
 
@@ -148,6 +152,12 @@ for @array -> $variable {
 # default variable is $_
 for @array {
   say "I've got $_";
+}
+
+for @array {
+  next if $_ == 3; # you can skip to the next iteration (like `continue` in C-like languages)
+  redo if $_ == 4; # you can re-do the iteration, keeping the same topic variable (`$_`)
+  last if $_ == 5; # you can also break out of a loop (like `break` in C-like languages)
 }
 
 # Note - the "lambda" `->` syntax isn't reserved to `for` :
@@ -409,6 +419,74 @@ class Item does PrintableVal {
   
   # NOTE : You can use a role as a class (with `is ROLE`). In this case, methods will be shadowed,
   # since the compiler will consider `ROLE` to be a class
+}
+
+### Exceptions
+# Exceptions are built on top of classes, usually in the package `X` (like `X::IO`).
+# Unlike many other languages, in Perl 6, you put the `CATCH` block *within* the block to `try`.
+# By default, a `try` has a `CATCH` block that catches any exception (`CATCH { default {} }`).
+# You can redefine it using `when`s (and `default`) to handle the exceptions you want:
+try {
+  open 'foo';
+  CATCH {
+    when X::AdHoc { say "unable to open file !" }
+    # any other exception will be re-raised, since we don't have a `default`
+  }
+}
+
+# You can throw an exception using `die`:
+die X::AdHoc.new(payload => 'Error !');
+# TODO warn
+# TODO fail
+# TODO CONTROL
+
+### Phasers
+# Phasers in Perl 6 are blocks that happen at determined points of time in your program
+# When the program is compiled, when a for loop runs, when you leave a block, when
+#  an exception gets thrown ... (`CATCH` is actually a phaser !)
+# Some of them can be used for their return values, some of them can't
+#  (those that can have a "[*]" in the beginning of their explanation text).
+# Let's have a look !
+
+## * Compile-time phasers
+BEGIN { say "[*] Runs at compile time, as soon as possible, only once" }
+CHECK { say "[*] Runs at compile time, instead as late as possible, only once" }
+
+## * Run-time phasers
+INIT { say "[*] Runs at run time, as soon as possible, only once" }
+END { say "Runs at run time, as late as possible, only once" }
+
+## * Block phasers
+ENTER { say "[*] Runs everytime you enter a block, repeats on loop blocks" }
+LEAVE { say "Runs everytime you leave a block, even when an exception happened. Repeats on loop blocks." }
+
+PRE { say "Asserts a precondition at every block entry, before ENTER (especially useful for loops)" }
+POST { say "Asserts a postcondition at every block exit, after LEAVE (especially useful for loops)" }
+
+## * Block/exceptions phasers
+sub {
+    KEEP { say "Runs when you exit a block successfully (without throwing an exception)" }
+    UNDO { say "Runs when you exit a block unsuccessfully (by throwing an exception)" }
+}
+
+## * Loop phasers
+for ^5 {
+  FIRST { say "[*] The first time the loop is run, before ENTER" }
+  NEXT { say "At loop continuation time, before LEAVE" }
+  LAST { say "At loop termination time, after LEAVE" }
+}
+
+## * Role/class phasers
+COMPOSE { "When a role is composed into a class. /!\ NOT YET IMPLEMENTED /!\" }
+
+# They allow for cute trick or clever code ...:
+say "This code took " ~ (time - CHECK time) ~ "s to run";
+
+# ... or clever organization:
+sub do-db-stuff {
+  ENTER $db.start-transaction; # create a new transaction everytime we enter the sub
+  KEEP $db.commit; # commit the transaction if all went well
+  UNDO $db.rollback; # or rollback if all hell broke loose
 }
 
 
