@@ -113,7 +113,7 @@ say "Quite truthy" if True;
 
 # if (true) say; # This doesn't work !
 
-# - Ternary conditional
+# - Ternary conditional, "?? !!"
 my $a = $condition ?? $value-if-true !! $value-if-false; # `??` and `!!` are like `?` and `:` in other languages'
 
 # - `given`-`when` looks like other languages `switch`, but it's much more powerful thanks to smart matching.
@@ -202,6 +202,7 @@ if long-computation() -> $result {
 'key' ~~ %hash; # true if key exists in hash
 $arg ~~ &bool-returning-function; # true if the function, passed `$arg` as an argument, returns True
 1 ~~ Int; # "is of type"
+1 ~~ True; # smart-matching against a boolean always returns that boolean (and will warn).
 
 # - `===` is value identity and uses `.WHICH` on the objects to compare them
 # - `=:=` is container identity and uses `VAR()` on the objects to compare them
@@ -323,7 +324,38 @@ map({ $^a + $^b + 3 }, @array); # same as the above
 
 # Note : those are sorted lexicographically. `{ $^b / $^a }` is like `-> $a, b { $ b / $a }`
 
+### Scoping
+# In Perl 6, contrarily to many scripting languages (Python, Ruby, PHP, for example),
+#  you are to declare your variables before using them. You already saw it, with `my`.
+# (there are other declarator keywords, like `our`, `has` and `state`, but we'll talk about them later)
+# This is called "lexical scoping", where in inner blocks, you can access variables from outer blocks.
+my $foo = 'Foo';
+sub foo {
+  my $bar = 'Bar';
+  sub bar {
+    say "$foo $bar";
+  }
+  &bar; # return the function
+}
+foo()(); #=> 'Foo Bar'
 
+# As you can see, `$foo` and `$bar` were captured.
+# But if we were to try and use `$bar` outside of `foo`, the variable would be undefined.
+#  (and you'd get a compile time error)
+
+# Perl 6 has another kind of scope : dynamic scope.
+# They use the twigil (composed sigil) `*` to mark dynamically-scoped variables:
+my $*a = 1;
+# Dyamically-scoped variables depend on the current call stack, instead of the current block stack.
+sub foo {
+  my $*foo = 1;
+  bar(); # call `bar` in-place
+}
+sub bar {
+  say $*foo; # Perl 6 will look into the call stack instead, and find `foo`'s `$*a`,
+             # even though the blocks aren't nested (they're call-nested).
+             #=> 1
+}
 
 ### Object Model
 
@@ -440,6 +472,28 @@ die X::AdHoc.new(payload => 'Error !');
 # TODO fail
 # TODO CONTROL
 
+### Packages
+# Packages play a big part in a language, and Perl is well-known for CPAN,
+#  the Comprehensive Perl Archive Network.
+# You can declare a mdule using the `module` keyword, and they can be nested:
+module Hello::World { # bracketed form
+  # declarations here
+}
+module Parse::Text; # file-scoped form
+
+# You can use a module (bring its declarations into scope) with `use`
+use JSON::Tiny; # if you installed Rakudo* or Panda, you'll have this module
+say from-json('[1]').perl; #=> [1]
+
+# Any class, role, is also a module
+my $actions = JSON::Tiny::Actions.new;
+
+# We'll see how to export variables and subs in the next part:
+
+### Declarators
+TODO: my, our, state, constant.
+
+
 ### Phasers
 # Phasers in Perl 6 are blocks that happen at determined points of time in your program
 # When the program is compiled, when a for loop runs, when you leave a block, when
@@ -521,22 +575,47 @@ $obj eqv $obj2; # sort comparison using eqv semantics
 3 before 4; # True
 'b' after 'a'; # True
 
+## * Short-circuit default operator
+# Like `or` and `||`, but instead returns the first *defined* value :
+say Any // Nil // 0 // 5; #=> 5
+
+## * Short-circuit exclusive or (XOR)
+# Returns `True` if one (and only one) of its arguments is true
+say True ^^ False; #=> True
+
 ## * Flip Flop
-# The flip flop operator (spelled `ff` in Perl 6 and sometimes `..` in other languages such as Perl 5 and Ruby),
-#  is an operator that takes two boolean values (like a predicate) and keep track of their change as internal state.
-# The flip-flop will return `false` until its left side return true, then return true until its right side return true.
-# You can also exclude either side (iteration when the left side became true, or the right side became true),
-#  using the `^` like with ranges.
+# The flip flop operators (`ff` and `fff`, equivalent to Perl 5/Ruby's `..` and `...`).
+#  are operators that take two predicates to test:
+# They are `False` until their left side returns `True`, then are `True` until their right side returns `True`.
+# Like for ranges, you can exclude the iteration when it became `True`/`False` by using `^` on either side.
 # Let's start with an example :
 for <well met young hero we shall meet later> {
-  if $_ eq 'met' ^ff $_ eq 'meet' { # excludes "met"
+  # by default, `ff`/`fff` smart-match (`~~`) against `$_`:
+  if 'met' ^ff 'meet' { # won't enter the if for "met" (explained in details below).
     .say
+  }
+  
+  if rand == 0 ff rand == 1 { # compare variables other than `$_`
+    say "This ... probably will never run ...";
   }
 }
 # This will print "young hero we shall meet" (excluding "met"):
 #  the flip-flop will start returning `True` when it first encounters "met"
 #  (but will still return `False` for "met" itself, due to the leading `^` on `ff`),
 #  until it sees "meet", which is when it'll start returning `False`.
+
+# The difference between `ff` (flip-flop) and `fff` (flip-flop) is that
+#  `ff` will test its right side just as its left side changes to `True`,
+#  and can get back to `False` right away (*except* it'll be `True` for the iteration that matched)
+#  while `fff` will wait for the next iteration to try its right side, once its left side changed:
+.say if 'B' ff 'B' for <A B C B A>; #=> B B
+                                    # because the right-hand-side was tested directly (and returned `True`).
+                                    # "B"s are still printed since it matched that time
+                                    #  (it just went back to `False` right away)
+.say if 'B' fff 'B' for <A B C B A>; #=> B C B
+                                    # because the right-hand-side wasn't tested until `$_` became "C"
+                                    # (and thus did not match directly).
+
 # A flip-flop can change state as many times as needed:
 for <test start print this stop you stopped printing start printing again stop not anymore> {
   .say if $_ eq 'start' ^ff^ $_ eq 'stop'; # exclude both "start" and "stop",
