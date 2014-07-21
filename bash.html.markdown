@@ -6,6 +6,7 @@ contributors:
     - ["Darren Lin", "https://github.com/CogBear"]
     - ["Alexandre Medeiros", "http://alemedeiros.sdf.org"]
     - ["Denis Arh", "https://github.com/darh"]
+    - ["Rahil Momin", "https://github.com/iamrahil"]
 filename: LearnBash.sh
 ---
 
@@ -126,6 +127,13 @@ for VARIABLE in {1..3}
 do
     echo "$VARIABLE"
 done
+
+# Or do it C-Style
+for ((a=1; a <= 3; a++))
+do
+    echo $a
+done
+
 
 # while loop:
 while [true]
