@@ -4,7 +4,7 @@ contributors:
     - ["e99n09", "http://github.com/e99n09"]
     - ["isomorphismes", "http://twitter.com/isomorphisms"]
 translators:
-    - ["akirahirose", "https://www.facebook.com/akira.hirose"]
+    - ["akirahirose", "https://twitter.com/akirahirose"]
 filename: learnr-jp.r
 lang: ja-jp
 ---
@@ -180,10 +180,10 @@ rnorm(9)
 
 
 # 整数型
-# 整数型の長さは、Lで指定します
+# 整数型はLで指定します
 5L # 5
 class(5L) # "integer"
-# (?class を実行すると、class()関数についてさらなる情報が得られます)
+# (?class を実行すると、class()関数について、さらなる情報が得られます)
 # Rでは、この5Lのような単一の値は、長さ1のベクトルとして扱われます
 length(5L) # 1
 # 整数型のベクトルはこのようにつくります
@@ -196,7 +196,7 @@ class(c(4L, 5L, 8L, 3L)) # "integer"
 # 倍精度浮動小数点数です
 5 # 5
 class(5) # "numeric"
-# くどいですが、すべてはベクトルです
+# しつこいですが、すべてはベクトルです
 # 1つ以上の要素がある数字のベクトルも、作ることができます
 c(3,3,3,2,2,1) # 3 3 3 2 2 1
 # 指数表記もできます
@@ -218,7 +218,7 @@ class(-Inf)        # "numeric"
 2.0 * 2L  # 4       # 数字かける整数は数字
 3L / 4    # 0.75    # 整数割る数字は数字
 3 %% 2          # 1       # 二つの数字を割った余りは数字
-# 不正な計算は "not-a-number"になる
+# 不正な計算は "not-a-number"になります
 0 / 0 # NaN
 class(NaN) # "numeric"
 # 長さが1より大きなベクター同士で計算ができます
@@ -231,12 +231,12 @@ c(1,2,3) + c(1,2,3) # 2 4 6
 class("Horatio") # "character"
 class('H') # "character"
 # 上記は両方とも、長さ1のベクターです
-# 以下は、より長いものです
+# 以下は、より長い場合です
 c('alef', 'bet', 'gimmel', 'dalet', 'he')
 # =>
 # "alef"   "bet"    "gimmel" "dalet"  "he"
 length(c("Call","me","Ishmael")) # 3
-# 正規表現処理を文字ベクターに使えます
+# 正規表現処理を文字ベクターに適用できます
 substr("Fortuna multis dat nimis, nulli satis.", 9, 15) # "multis "
 gsub('u', 'ø', "Fortuna multis dat nimis, nulli satis.") # "Fortøna møltis dat nimis, nølli satis."
 # Rはいくつかの文字ベクターを組み込みで持っています
@@ -251,7 +251,7 @@ month.abb # "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "D
 # Rでは、Booleanは論理（logical）型です
 class(TRUE)        # "logical"
 class(FALSE)        # "logical"
-# 以下は正しい動きです
+# 以下は比較演算子の例です
 TRUE == TRUE        # TRUE
 TRUE == FALSE        # FALSE
 FALSE != FALSE        # FALSE
@@ -264,7 +264,7 @@ c('Z', 'o', 'r', 'r', 'o') == "Z" # TRUE FALSE FALSE FALSE FALSE
 
 
 # ファクター
-# ファクタークラスは、カテゴリカルデータようのクラスです
+# ファクタークラスは、カテゴリカルデータ用のクラスです
 # ファクターは、子供の学年のように順序がつけられるものか、性別のように順序がないものがあります
 factor(c("female", "female", "male", "NA", "female"))
 #  female female male   NA     female
@@ -280,7 +280,7 @@ levels(infert$education) # "0-5yrs"  "6-11yrs" "12+ yrs"
 
 
 # NULL
-# "NULL" は変わった型です。ベクターを空にするときに使います
+# "NULL" は特殊な型なのですが、ベクターを空にするときに使います
 class(NULL)        # NULL
 parakeet
 # =>
@@ -292,7 +292,7 @@ parakeet
 
 
 # 型の強制
-# 型の強制は、ある値を、強制的にある型として利用する事です
+# 型の強制とは、ある値を、強制的に別の型として利用する事です
 as.character(c(6, 8)) # "6" "8"
 as.logical(c(1,0,1,1)) # TRUE FALSE  TRUE  TRUE
 # さまざまな要素が入っているベクターに対して型の強制を行うと、おかしなことになります
@@ -327,7 +327,7 @@ as.numeric("Bilbo")
 # 代入する方法はいろいろあります
 x = 5 # これはできます
 y <- "1" # これがおすすめです
-TRUE -> z # これも使えますが、変です
+TRUE -> z # これも使えますが、ちょっとわかりにくいですね
 
 
 # ループ
@@ -342,8 +342,8 @@ while (a > 4) {
         a <- a - 1
 }
 # Rでは、forやwhileは遅いことを覚えておいてください
-# 処理を行う場合は、ベクター丸ごと処理する（つまり、行全体や、列全体）を指定して行うか、
-# 後述する、apply()系の関数を使うのがお勧めです
+# ベクターを丸ごと処理する（つまり、行全体や、列全体を指定して処理する）か、
+# 後述する、apply()系の関数を使うのが、速度的にはお勧めです
 
 
 # IF/ELSE
@@ -363,7 +363,7 @@ jiggle <- function(x) {
         x = x + rnorm(1, sd=.1)        #すこしだけ（制御された）ノイズを入れます
         return(x)
 }
-# 他のR関数と同じように呼びます
+# 他の関数と同じように、呼びます
 jiggle(5)        # 5±ε.  set.seed(2716057)をすると、jiggle(5)==5.005043
 
 
@@ -394,24 +394,24 @@ which(vec %% 2 == 0)        # 1 3
 # 最初か最後の数個を取り出すこともできます
 head(vec, 1)        # 8
 tail(vec, 2)        # 10 11
-# or figure out if a certain value is in the vector
+# ある値がベクターにあるかどうかをみることができます
 any(vec == 10) # TRUE
-# If an index "goes over" you'll get NA:
+# ベクターの数より大きなインデックスを指定すると、NAが返ります
 vec[6]        # NA
-# You can find the length of your vector with length()
+# ベクターの長さは、length()で取得できます
 length(vec)        # 4
-# You can perform operations on entire vectors or subsets of vectors
+# ベクター全体、または一部に対して、操作ができます
 vec * 4        # 16 20 24 28
 vec[2:3] * 5        # 25 30
 any(vec[2:3] == 8) # FALSE
-# and R has many built-in functions to summarize vectors
+# R には、ベクターにある値を要約するための様々な関数があります
 mean(vec)        # 9.5
 var(vec)        # 1.666667
 sd(vec)                # 1.290994
 max(vec)        # 11
 min(vec)        # 8
 sum(vec)        # 38
-# Some more nice built-ins:
+# 他にも、ベクター関連ではいろいろな関数があります
 5:15        # 5  6  7  8  9 10 11 12 13 14 15
 seq(from=0, to=31337, by=1337)
 # =>
@@ -419,10 +419,10 @@ seq(from=0, to=31337, by=1337)
 # [13] 16044 17381 18718 20055 21392 22729 24066 25403 26740 28077 29414 30751
 
 
-# TWO-DIMENSIONAL (ALL ONE CLASS)
+# 2次元配列 (すべての値が同じ型の場合)
 
 
-# You can make a matrix out of entries all of the same type like so:
+# 同じ型の値が含まれる配列は、このように作れます
 mat <- matrix(nrow = 3, ncol = 2, c(1,2,3,4,5,6))
 mat
 # =>
@@ -430,17 +430,17 @@ mat
 # [1,]    1    4
 # [2,]    2    5
 # [3,]    3    6
-# Unlike a vector, the class of a matrix is "matrix", no matter what's in it
+# ベクターとは違い、配列のクラス名は"matrix"です。
 class(mat) # => "matrix"
-# Ask for the first row
+# 最初の行
 mat[1,]        # 1 4
-# Perform operation on the first column
+# 最初の列に対する操作
 3 * mat[,1]        # 3 6 9
-# Ask for a specific cell
+# 特定のセルを取り出し
 mat[3,2]        # 6
 
 
-# Transpose the whole matrix
+# 配列全体を転置します
 t(mat)
 # =>
 #      [,1] [,2] [,3]
@@ -448,7 +448,7 @@ t(mat)
 # [2,]    4    5    6
 
 
-# Matrix multiplication
+# 配列の積
 mat %*% t(mat)
 # =>
 #      [,1] [,2] [,3]
@@ -457,7 +457,7 @@ mat %*% t(mat)
 # [3,]   27   36   45
 
 
-# cbind() sticks vectors together column-wise to make a matrix
+# cbind() は、複数のベクターを、別々の列に並べて配列を作ります
 mat2 <- cbind(1:4, c("dog", "cat", "bird", "dog"))
 mat2
 # =>
@@ -467,34 +467,33 @@ mat2
 # [3,] "3"  "bird" 
 # [4,] "4"  "dog"
 class(mat2)        # matrix
-# Again, note what happened!
-# Because matrices must contain entries all of the same class,
-# everything got converted to the character class
+# ここでいま一度、型について注意してください!
+# 配列にある値は、すべて同じ型にする必要があります。そのため、すべて文字型に変換されています
 c(class(mat2[,1]), class(mat2[,2]))
 
 
-# rbind() sticks vectors together row-wise to make a matrix
+# rbind() は、複数のベクターを、別々の行に並べて配列を作ります
 mat3 <- rbind(c(1,2,4,5), c(6,7,0,4))
 mat3
 # =>
 #      [,1] [,2] [,3] [,4]
 # [1,]    1    2    4    5
 # [2,]    6    7    0    4
-# Ah, everything of the same class. No coercions. Much better.
+# 全ての値は同じ型になります。この例の場合は、強制変換がされないのでよかったです
 
 
-# TWO-DIMENSIONAL (DIFFERENT CLASSES)
+# 2次元配列 (いろいろな型を含む場合)
 
 
-# For columns of different types, use a data frame
-# This data structure is so useful for statistical programming,
-# a version of it was added to Python in the package "pandas".
+# 異なる型の値を含む配列をつくりたい場合、データフレームを使ってください
+# データフレームは、統計処理を行うプログラムをする際にとても便利です
+# Pythonでも、 "pandas"というパッケージにて、似たものが利用可能です
 
 
 students <- data.frame(c("Cedric","Fred","George","Cho","Draco","Ginny"),
                        c(3,2,2,1,0,-1),
                        c("H", "G", "G", "R", "S", "G"))
-names(students) <- c("name", "year", "house") # name the columns
+names(students) <- c("name", "year", "house") #カラム名
 class(students)        # "data.frame"
 students
 # =>
@@ -507,29 +506,28 @@ students
 # 6  Ginny   -1     G
 class(students$year)        # "numeric"
 class(students[,3])        # "factor"
-# find the dimensions
+# 次元の数をみます
 nrow(students)        # 6
 ncol(students)        # 3
 dim(students)        # 6 3
-# The data.frame() function converts character vectors to factor vectors
-# by default; turn this off by setting stringsAsFactors = FALSE when
-# you create the data.frame
+# このdata.frame() 関数は、デフォルトでは文字列ベクターをファクターのベクターに変換します
+# stringsAsFactors = FALSE に設定してからデータフレームを作成すると、変換されません
 ?data.frame
 
 
-# There are many twisty ways to subset data frames, all subtly unalike
+# データフレームの一部を取り出すには、いろいろな（変な）、似たような方法があります
 students$year        # 3  2  2  1  0 -1
 students[,2]        # 3  2  2  1  0 -1
 students[,"year"]        # 3  2  2  1  0 -1
 
 
-# An augmented version of the data.frame structure is the data.table
-# If you're working with huge or panel data, or need to merge a few data
-# sets, data.table can be a good choice. Here's a whirlwind tour:
-install.packages("data.table") # download the package from CRAN
-require(data.table) # load it
+# データフレームの拡張版が、データテーブルです。
+# 大きなデータやパネルデータ、データセットの結合が必要な場合には、データテーブルを使うべきです。
+# 以下に駆け足で説明します
+install.packages("data.table") # CRANからパッケージをダウンロードします
+require(data.table) # ロードします
 students <- as.data.table(students)
-students # note the slightly different print-out
+students # 若干異なる出力がされることに注意
 # =>
 #      name year house
 # 1: Cedric    3     H
@@ -538,17 +536,17 @@ students # note the slightly different print-out
 # 4:    Cho    1     R
 # 5:  Draco    0     S
 # 6:  Ginny   -1     G
-students[name=="Ginny"] # get rows with name == "Ginny"
+students[name=="Ginny"] # name == "Ginny"の行を取り出します
 # =>
 #     name year house
 # 1: Ginny   -1     G
-students[year==2] # get rows with year == 2
+students[year==2] # year == 2の行を取り出します
 # =>
 #      name year house
 # 1:   Fred    2     G
 # 2: George    2     G
-# data.table makes merging two data sets easy
-# let's make another data.table to merge with students
+# データテーブルは、二つのデータセットを結合するのにも便利です
+# 結合用に、生徒データが入った別のデータテーブルをつくります
 founders <- data.table(house=c("G","H","R","S"),
                        founder=c("Godric","Helga","Rowena","Salazar"))
 founders
@@ -560,7 +558,7 @@ founders
 # 4:     S Salazar
 setkey(students, house)
 setkey(founders, house)
-students <- founders[students] # merge the two data sets by matching "house"
+students <- founders[students] # 二つのデータテーブルを、"house"をキーとして結合します
 setnames(students, c("house","houseFounderName","studentName","year"))
 students[,order(c("name","year","house","houseFounderName")), with=F]
 # =>
@@ -573,7 +571,7 @@ students[,order(c("name","year","house","houseFounderName")), with=F]
 # 6:       Draco    0     S          Salazar
 
 
-# data.table makes summary tables easy
+# データテーブルは、要約を作るのも簡単です
 students[,sum(year),by=house]
 # =>
 #    house V1
@@ -583,8 +581,7 @@ students[,sum(year),by=house]
 # 4:     S  0
 
 
-# To drop a column from a data.frame or data.table,
-# assign it the NULL value
+# データフレームやデータテーブルから列を消したい場合は、NULL値を代入します
 students$houseFounderName <- NULL
 students
 # =>
@@ -597,8 +594,7 @@ students
 # 6:       Draco    0     S
 
 
-# Drop a row by subsetting
-# Using data.table:
+# 行を消す場合は、データテーブルから、一部を除くことによってできます
 students[studentName != "Draco"]
 # =>
 #    house studentName year
@@ -607,7 +603,7 @@ students[studentName != "Draco"]
 # 3:     G       Ginny   -1
 # 4:     H      Cedric    3
 # 5:     R         Cho    1
-# Using data.frame:
+# データフレームの場合も同様
 students <- as.data.frame(students)
 students[students$house != "G",]
 # =>
@@ -617,18 +613,18 @@ students[students$house != "G",]
 # 6     S          Salazar       Draco    0
 
 
-# MULTI-DIMENSIONAL (ALL ELEMENTS OF ONE TYPE)
+# 多次元 (すべての値が同じ型の場合)
 
 
-# Arrays creates n-dimensional tables
-# All elements must be of the same type
-# You can make a two-dimensional table (sort of like a matrix)
+# 配列でN次元の表を作ります
+# すべての値は同じ型にする必要があります
+# この方法で、配列のような2次元表も作成可能です
 array(c(c(1,2,4,5),c(8,9,3,6)), dim=c(2,4))
 # =>
 #      [,1] [,2] [,3] [,4]
 # [1,]    1    4    8    3
 # [2,]    2    5    9    6
-# You can use array to make three-dimensional matrices too
+# 配列から3次元行列を作ることもできます
 array(c(c(c(2,300,4),c(8,9,0)),c(c(5,60,0),c(66,7,847))), dim=c(3,2,2))
 # =>
 # , , 1
@@ -646,58 +642,56 @@ array(c(c(c(2,300,4),c(8,9,0)),c(c(5,60,0),c(66,7,847))), dim=c(3,2,2))
 # [3,]    0  847
 
 
-# LISTS (MULTI-DIMENSIONAL, POSSIBLY RAGGED, OF DIFFERENT TYPES)
+# リスト（多次元、不完全なのか複数の型が使われているもの)
 
 
-# Finally, R has lists (of vectors)
+# ついにRのリストです
 list1 <- list(time = 1:40)
 list1$price = c(rnorm(40,.5*list1$time,4)) # random
 list1
-# You can get items in the list like so
-list1$time # one way
-list1[["time"]] # another way
-list1[[1]] # yet another way
+# リストの要素は以下のようにして取得できます
+list1$time # ある方法
+list1[["time"]] # 別の方法
+list1[[1]] # また別の方法
 # =>
 #  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33
 # [34] 34 35 36 37 38 39 40
-# You can subset list items like any other vector
+# 他のベクターと同じく、一部を取り出すことができます
 list1$price[4]
 
 
-# Lists are not the most efficient data structure to work with in R;
-# unless you have a very good reason, you should stick to data.frames
-# Lists are often returned by functions that perform linear regressions
+# リストは、Rで一番効率的なデータ型ではありません
+# なにか特別な理由がない限りは、データフレームを使い続けるべきです
+# リストは、線形回帰関数の返値として、しばしば使われます
 
 
 ##################################################
-# The apply() family of functions
+# apply() 系の関数
 ##################################################
 
 
-# Remember mat?
+# matは覚えていますよね？
 mat
 # =>
 #      [,1] [,2]
 # [1,]    1    4
 # [2,]    2    5
 # [3,]    3    6
-# Use apply(X, MARGIN, FUN) to apply function FUN to a matrix X
-# over rows (MAR = 1) or columns (MAR = 2)
-# That is, R does FUN to each row (or column) of X, much faster than a
-# for or while loop would do
+# apply(X, MARGIN, FUN) は、行列Xの行（MARGIN=1)または列（MARGIN=2)に対して、関数FUNを実行します
+# RでこのようにXの全行か全列に関数を実行すると、forやwhileループを使うより、遥かに速くできます
 apply(mat, MAR = 2, jiggle)
 # =>
 #      [,1] [,2]
 # [1,]    3   15
 # [2,]    7   19
 # [3,]   11   23
-# Other functions: ?lapply, ?sapply
+# 他にも関数があります。?lapply, ?sapply で確認してみてください
 
 
-# Don't feel too intimidated; everyone agrees they are rather confusing
+# このやり方がちょっとややこしいという事は、みんな同意です。なので、あまり怖がりすぎないでください
 
 
-# The plyr package aims to replace (and improve upon!) the *apply() family.
+# plyr パッケージは、*apply() 系の関数を置き換えて（さらに改善して）いこうとしています
 install.packages("plyr")
 require(plyr)
 ?plyr
@@ -708,24 +702,24 @@ require(plyr)
 
 
 #########################
-# Loading data
+# データロード
 #########################
 
 
-# "pets.csv" is a file on the internet
-# (but it could just as easily be be a file on your own computer)
+# "pets.csv"は、インターネット上に置いてあるファイルです
+# (しかし、自分のPCにあるのと同じぐらい簡単に扱う事ができます)
 pets <- read.csv("http://learnxinyminutes.com/docs/pets.csv")
 pets
-head(pets, 2) # first two rows
-tail(pets, 1) # last row
+head(pets, 2) # 最初の2行
+tail(pets, 1) # 最後の行
 
 
-# To save a data frame or matrix as a .csv file
-write.csv(pets, "pets2.csv") # to make a new .csv file
-# set working directory with setwd(), look it up with getwd()
+# データフレームか行列をcsvファイルとして保存します
+write.csv(pets, "pets2.csv") # 新しくcsvファイルを作ります
+# ワーキングディレクトリを、setwd()で設定します。　ワーキングディレクトリは getwd()で確認可能です
 
 
-# Try ?read.csv and ?write.csv for more information
+# ?read.csv や ?write.csv を入力すると、よりたくさんの情報を確認できます
 
 
 
@@ -733,29 +727,29 @@ write.csv(pets, "pets2.csv") # to make a new .csv file
 
 
 #########################
-# Plots
+# プロット
 #########################
 
 
-# BUILT-IN PLOTTING FUNCTIONS
-# Scatterplots!
+# 組み込みのプロット関数です
+# 散布図です!
 plot(list1$time, list1$price, main = "fake data")
-# Regressions!
+# 回帰図です!
 linearModel <- lm(price  ~ time, data = list1)
 linearModel # outputs result of regression
-# Plot regression line on existing plot
+# 回帰直線を既存の図上に引きます
 abline(linearModel, col = "red")
-# Get a variety of nice diagnostics
+# いろいろな診断方法を見ましょう
 plot(linearModel)
-# Histograms!
+# ヒストグラムです！
 hist(rpois(n = 10000, lambda = 5), col = "thistle")
-# Barplots!
+# 棒グラフです！
 barplot(c(1,4,5,1,2), names.arg = c("red","blue","purple","green","yellow"))
 
 
 # GGPLOT2
-# But these are not even the prettiest of R's plots
-# Try the ggplot2 package for more and better graphics
+# 上記よりも、もっときれいな図を描くこともできます
+# より多くよい図を描くために、ggplot2 パッケージを使ってみましょう
 install.packages("ggplot2")
 require(ggplot2)
 ?ggplot2
@@ -764,7 +758,7 @@ pp + geom_histogram()
 ll <- as.data.table(list1)
 pp <- ggplot(ll, aes(x=time,price))
 pp + geom_point()
-# ggplot2 has excellent documentation (available http://docs.ggplot2.org/current/)
+# ggplot2 には、素晴らしい関連ドキュメントがそろっています (http://docs.ggplot2.org/current/)
 
 
 
@@ -774,8 +768,8 @@ pp + geom_point()
 ```
 
 
-## How do I get R?
+## Rの入手方法
 
 
-* Get R and the R GUI from [http://www.r-project.org/](http://www.r-project.org/)
-* [RStudio](http://www.rstudio.com/ide/) is another GUI
+* RとR GUIはこちら [http://www.r-project.org/](http://www.r-project.org/)
+* [RStudio](http://www.rstudio.com/ide/) はまた別のGUIです
