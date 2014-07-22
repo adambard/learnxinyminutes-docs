@@ -360,29 +360,27 @@ sub bar {
 ### Object Model
 
 ## Perl 6 has a quite comprehensive object model
-## You declare a class with the keyword `class`, fields with `has`, methods with `method`
-## `$.` declares a public field, `$!` declares a private field
-## (a public field also has `$!`, which is its private interface)
+## You declare a class with the keyword `class`, fields with `has`, methods with `method`.
+## In Perl 6, every field is private, and named `$!attr`, but if you declare it with `$.`,
+##  you get a public (immutable) accessor along with it.
 
 # (Perl 6's object model ("P6Model") is very flexible, and allows you to dynamically add methods,
 #  change semantics, etc -- This will not be covered here, and you should refer to the Synopsis)
 
 class A {
-  has $.field;
+  has $.field; # `$.field` is immutable. Use `$!field` from inside the class to modify it.
+  has $.other-field is rw; # You can, however, mark a public field as being read/write.
   has Int $!private-field = 10;
-  
+
   method get-value {
     $.field + $!private-field + $n;
   }
   
   method set-value($n) {
-    # $.field = $n; # This fails, because a public field is actually an immutable container
-                    # (even from inside the class)
-                    # You either need to use `is rw` on the `has`
-                    # (which will make it mutable, even from outside the class)
-                    # or you need to use the `$!` version :
-                    
-    $!field = $n;   # This works, because `$!` is always mutable
+    # $.field = $n; # As stated before, you can't use the `$.` immutable version.
+    $!field = $n;   # This works, because `$!` is always mutable.
+    
+    $.other-field = 5; # This works, because `$.other-field` was declared `rw` (mutable).
   }
   
   method !private-method {
@@ -394,7 +392,8 @@ class A {
 # note : you can't set private-field from here (more later on)
 my $a = A.new(field => 5);
 $a.get-value; #=> 18
-#$a.field = 5; # This fails, because the `has $.field` is lacking the `is rw`
+#$a.field = 5; # This fails, because the `has $.field` is immutable
+$a.other-field = 10; # This, however, works, because the public field is mutable (`rw`).
 
 ## Perl 6 also has inheritance (along with multiple inheritance ... Considered a misfeature by many)
 
@@ -473,25 +472,89 @@ die X::AdHoc.new(payload => 'Error !');
 # TODO CONTROL
 
 ### Packages
-# Packages play a big part in a language, and Perl is well-known for CPAN,
+# Packages are a way to reuse code. Packages are like "namespaces", and any element of the six model
+#  (`module`, `role`, `class`, `grammar`, `subset` and `enum`) are actually packages.
+#  (you can say that packages are the lowest common denomitor between them)
+# Packages play a big part in a language, as Perl is well-known for CPAN,
 #  the Comprehensive Perl Archive Network.
-# You can declare a mdule using the `module` keyword, and they can be nested:
+# You usually don't use packages directly : you use `class Package::Name::Here;`, or if you
+#  only want to export variables/subs, you can use `module`:
 module Hello::World { # bracketed form
+                      # if `Hello` doesn't exist yet, it'll just be created as an "empty package stub"
+                      # that can be redeclared as something else later.
   # declarations here
 }
 module Parse::Text; # file-scoped form
+grammar Parse::Text::Grammar { # A grammar is a fine package, which you could `use`
+}
+
+# NOTE for Perl 5 users: even though the `package` keyword exists,
+#  the braceless form is invalid (to catch a "perl5ism"). This will error out:
+# package Foo; # because Perl 6 will think the entire file is Perl 5
+# Just use `module` or the brace version of `package`.
 
 # You can use a module (bring its declarations into scope) with `use`
 use JSON::Tiny; # if you installed Rakudo* or Panda, you'll have this module
 say from-json('[1]').perl; #=> [1]
 
-# Any class, role, is also a module
+# As said before, any part of the six model is also a package.
+# Since `JSON::Tiny` uses (its own) `JSON::Tiny::Actions` class, you can use it:
 my $actions = JSON::Tiny::Actions.new;
 
 # We'll see how to export variables and subs in the next part:
 
 ### Declarators
-TODO: my, our, state, constant.
+# In Perl 6, you get different behaviors based on how you declare a variable.
+# You've already seen `my` and `has`, we'll now explore the others.
+
+## * `our` (happens at `INIT` time -- see "Phasers" below)
+# Along with `my`, there are several others declarators you can use.
+# The first one you'll want for the previous part is `our`.
+# (All packagish things (`class`, `role`, etc) are `our` by default)
+# it's like `my`, but it also creates a package variable:
+module Foo::Bar {
+  our $n = 1; # note: you can't put a type constraint on an `our` variable
+  our sub inc {
+    our sub available { # if you try to make scoped `sub`s `our` ... Better know what you're doing (Don't !).
+      say "Don't do that. Seriously. You'd get burned.";
+    }
+    my sub unavailable { # `my sub` is the default
+      say "Can't access me from outside, I'm my !";
+    }
+  }
+  
+  say ++$n; # lexically-scoped variables are still available
+}
+say $Foo::Bar::n; #=> 1
+Foo::Bar::inc; #=> 2
+Foo::Bar::inc; #=> 3
+
+## * `constant` (happens at `BEGIN` time)
+# You can use the `constant` keyword to declare a compile-time variable/symbol:
+constant Pi = 3.14;
+constant $var = 1;
+
+## * `state` (happens at run time, but only once)
+# State variables are only executed one time
+# (they exist in other langages such as C as `static`)
+sub fixed-rand {
+  state $val = rand;
+  say $rand;
+}
+fixed-rand for ^10; # will print the same number 10 times
+
+# Note, however, that they exist separately in different enclosing contexts.
+# If you declare a function with a `state` within a loop, it'll re-create the variable
+# for each iteration of loop. See:
+for ^5 -> $a {
+  sub foo {
+    state $val = rand; # This will be a different value for every value of `$a`
+  }
+  for ^5 -> $b {
+    say foo; # This will print the same value 5 times, but only 5. Next iteration will re-run `rand`
+  }
+}
+
 
 
 ### Phasers
