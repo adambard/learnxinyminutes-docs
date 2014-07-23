@@ -6,6 +6,7 @@ contributors:
     - ["Darren Lin", "https://github.com/CogBear"]
     - ["Alexandre Medeiros", "http://alemedeiros.sdf.org"]
     - ["Denis Arh", "https://github.com/darh"]
+    - ["akirahirose", "https://twitter.com/akirahirose"]
 filename: LearnBash.sh
 ---
 
