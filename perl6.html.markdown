@@ -35,6 +35,10 @@ my $str2 = "String"; # double quotes allow for interpolation
 # variable names can contain but not end with simple quotes and dashes, and can contain (and end with) underscores :
 # my $weird'variable-name_ = 5; # works !
 
+my $bool = True; # `True` and `False` are Perl 6's boolean
+my $inverse = !$bool; # You can invert a bool with the prefix `!` operator
+my $forced-bool = so $str; # And you can use the prefix `so` operator which turns its operand into a Bool
+
 ## - Arrays. They represent multiple values. They start with `@`
 
 my @array = 1, 2, 3;
@@ -44,14 +48,26 @@ my @array = <a b c>; # array of words, delimited by space. similar to perl5's qw
 
 say @array[2]; # Array indices start at 0 -- This is the third element
 
-## - Hashes
+say "Interpolate an array using [] : @array[]"; #=> Interpolate an array using [] : a b c
+
+## - Hashes. Key-Value Pairs.
+# Hashes are actually arrays of Pairs (`Key => Value`), "flattened" to remove duplicated keys.
 
 my %hash = 1 => 2,
            3 => 4;
-my %hash = autoquoted => "key",
+my %hash = autoquoted => "key", # keys are auto-quoted
             "some other" => "value", # trailing commas are okay
             ;
-my %hash = <key1 value1 key2 value2> # you can also create a hash from an even-numbered array
+my %hash = <key1 value1 key2 value2>; # you can also create a hash from an even-numbered array
+my %hash = key1 => 'value1', key2 => 'value2'; # same as this
+
+# You can also use the "colon pair" syntax: (especially handy for named parameters that you'll see later)
+my %hash = :w(1), # equivalent to `w => 1`
+           # this is useful for the `True` shortcut:
+           :truey, # equivalent to `:truey(True)`, or `truey => True`
+           # and for the `False` one:
+           :!falsey, # equivalent to `:falsey(False)`, or `falsey => False`
+           ;
 
 say %hash{'key1'}; # You can use {} to get the value from a key
 say %hash<key2>; # if it's a string, you can actually use <>
@@ -68,6 +84,123 @@ sub say-hello-to(Str $name) { # you can provide the type of an argument
 # since you can omit parenthesis to call a function with no arguments, you need to use `&` also to capture `say-hello`
 my &s = &say-hello;
 my &other-s = sub { say "anonymous function !" }
+
+# A sub can have a "slurpy" parameter, or "doesn't-matter-how-many"
+sub as-many($head, *@rest) { # the `*@` slurpy will basically "take everything else".
+                             # Note: you can have parameters *before* (like here) a slurpy one, but not *after*.
+  say @rest.join(' / ') ~ " !";
+}
+say as-many('Happy', 'Happy', 'Birthday'); #=> Happy Birthday !
+                                           # Note that the splat did not consume the parameter before.
+
+## You can call a function with an array using the "argument list flattening" operator `|`
+#  (it's not actually the only feature of the operator, but it's one of them)
+sub concat3($a, $b, $c) {
+  say "$a, $b, $c";
+}
+concat3(|@array); #=> a, b, c
+                  # `@array` got "flattened" as a part of the argument list
+
+## It can also have optional arguments:
+sub with-optional($arg?) { # the "?" marks the argument optional
+  say "I might return `(Any)` if I don't have an argument passed, or I'll return my argument";
+  $arg;
+}
+with-optional; # returns Any
+with-optional(); # returns Any
+with-optional(1); # returns 1
+
+## You can also give them a default value when they're not passed:
+sub hello-to($name = "World") {
+  say "Hello, $name !";
+}
+hello-to; #=> Hello, World !
+hello-to(); #=> Hello, World !
+hello-to('You'); #=> Hello, You !
+
+## You can also, by using a syntax akin to the one of hashes (yay unification !),
+##  pass *named* arguments to a `sub`.
+sub with-named($normal-arg, :$named) {
+  say $normal-arg + $named;
+}
+with-named(1, named => 6); #=> 7
+with-named(2, :named(5)); #=> 7
+with-named(3, :4named); #=> 7
+                        # (special colon pair syntax for numbers)
+
+with-named(3); # warns, because we tried to use the undefined $named
+               # in a `+`: by default, named arguments are *optional*
+
+# To make a named argument mandatory, you can use `?`'s inverse, `!`
+sub with-mandatory-named(:$str!)  {
+  say "$named !";
+}
+with-mandatory-named(str => "My String"); #=> My String
+with-mandatory-named; # run time error: "Required named parameter not passed" 
+with-mandatory-named(3); # run time error: "Too many positional parameters passed"
+
+## If a sub takes a named boolean argument ...
+sub takes-a-bool($name, :$bool) {
+  say "$name takes $bool";
+}
+# ... you can use the same "short boolean" hash syntax:
+takes-a-bool('config', :bool); # config takes True
+takes-a-bool('config', :!bool); # config takes False
+# or you can use the "adverb" form:
+takes-a-bool('config'):bool; #=> config takes True
+takes-a-bool('config'):!bool; #=> config takes False
+# You'll learn to love (or maybe hate, eh) that syntax later.
+
+
+## You can also provide your named arguments with defaults:
+sub named-def(:$def = 5) {
+  say $def;
+}
+named-def; #=> 5
+named-def(:10def); #=> 10
+named-def(def => 15); #=> 15
+
+## There's more to come, but we're going to end this paragraph with a really powerful feature:
+## Unpacking ! It's the ability to "extract" arrays and keys. It'll work in `my`s and parameters.
+my ($a, $b) = 1, 2;
+say $a; #=> 1
+my ($, $, $c) = 1, 2, 3; # keep the non-interesting anonymous
+say $c; #=> 3
+
+my ($head, *@tail) = 1, 2, 3; # Yes, it's the same as with "slurpy subs"
+my (*@small) = 1;
+
+sub foo(@array [$fst, $snd]) {
+  say "My first is $fst, my second is $snd ! All in all, I'm @array[]."; # (remember the `[]` to interpolate the array)
+}
+foo(@tail); #=> My first is 2, my second is 3 ! All in all, I'm 1 2
+
+
+# If you're not using the array itself, you can also keep it anonymous, much like a scalar:
+sub first-of-array(@ [$fst]) { $fst }
+first-of-array(@small); #=> 1
+first-of-array(@tail); # errors with "Too many positional parameters passed" (the array is too big)
+
+# You can also use a slurp ...
+sub slurp-in-array(@ [$fst, *@rest]) { # you could decide to keep `*@rest` anonymous
+  say $fst + @rest.elems;
+}
+slurp-in-array(@tail); #=> 3
+
+# You could even extract on a slurpy (but it's pretty useless ;-).)
+sub fst(*@ [$fst]) { # or simply : `sub fst($fst) { ... }`
+  say $fst;
+}
+fst(1); #=> 1
+fst(1, 2); # errors with "Too many positional parameters passed"
+
+# Lou can also destructure hashes (and classes, which you'll learn about later !)
+sub key-of(% (:value($val), :qua($qua))) {
+  say "Got val $val, $qua times.";
+}
+# Then call it with a hash: (you need to keep the brackets for it to be a hash)
+key-of({value => 1});
+#key-of(%hash); # the same (for an equivalent `%hash`)
 
 # `->`, lambda with arguments, and string interpolation
 my &lambda = -> $argument { "The argument passed to this lambda is $argument" }
@@ -225,7 +358,7 @@ say @array[^10]; # you can pass arrays as subscripts and it'll return an array o
 # Note : when reading an infinite list, Perl 6 will "reify" the elements it needs, then keep them in memory
 # They won't be calculated more than once.
                  
-# Warning, though : if you try this example in the REPL and juste put `1..*`,
+# Warning, though: if you try this example in the REPL and juste put `1..*`,
 # Perl 6 will be forced to try and evaluate the whole array (to print it),
 # so you'll end with an infinite loop.
 
@@ -252,12 +385,12 @@ say @primes[^10]; #=> 1 1 2 3 5 8 13 21 34 55
 # Note : as for ranges, once reified, elements aren't re-calculated.
 # That's why `@primes[^100]` will take a long time the first time you print it, then be instant
 
-## More on Subs !
-# Perl 6 likes functions. So, in Perl 6, functions are very powerful:
+### More on Subs !
+# Perl 6 likes functions. So, in Perl 6, they are very powerful:
 
 ## Multiple Dispatch
 # Perl 6 can decide which variant of a `sub` to call based on the type of the arguments,
-# or on arbitrary preconditions, using `where` :
+# or on arbitrary preconditions, like with a type or a `where`:
 
 # with types
 multi sub sayit(Int $n) { # note the `multi` keyword here
@@ -270,13 +403,32 @@ sayit("foo"); # prints "String: foo"
 sayit(True); # fails at *compile time* with "calling 'sayit' will never work with arguments of types ..."
 
 # with arbitrary precondition:
-multi is-big(Int $n where * > 10) { True }
-multi is-big(Int $) { False }
+multi is-big(Int $n where * > 50) { "Yes !" } # using a closure
+multi is-big(Int $ where 10..50) { "Quite." } # this uses smart-matching (could use a regexp, etc)
+multi is-big(Int $) { "No" }
 
 # you can also name these checks, by creating "subsets":
 subset Even of Int where * %% 2;
 
+multi odd-or-even(Even) { "Even" } # the main case using the type. We don't name the argument
+multi odd-or-even($) { "Odd" } # "else"
 
+# You can even dispatch based on a positional's argument presence !
+multi with-or-without-you(:$with!) { # make it mandatory to be able to dispatch against it
+  say "I can live ! Actually, I can't.";
+}
+multi with-or-without-you {
+  say "Definitely can't live.";
+}
+# This is very, very useful for many purposes, like `MAIN` subs (covered later),
+#  and even the language itself is using it in several places.
+# `is`, for example, is actually a `multi sub` named `trait_mod:<is>`, and it works off that.
+# `is rw`, for example, is a dispatch to a function with this signature:
+# sub trait_mod:<is>(Routine $r, :$rw!) {}
+# (commented because running this would probably lead to some surprising side-effects !)
+
+
+# ----
 # The last expression of a sub is returned automatically (though you may use the `return` keyword, of course):
 sub next-index($n) {
   $n + 1;
@@ -626,7 +778,67 @@ $a ! $b ! $c; # with a list-associative `!`, this is `infix:<>`
 !$a! # with right-associative `!`, this is `!($a!)`
 !$a! # with non-associative `!`, this is illegal
 
-## Last part of the operator list :
+## Create your own operators !
+# Okay, you've been reading all of that, so I guess I should try to show you something exciting.
+# I'll tell you a little secret (actually not): In Perl 6, all operators are actually just funny-looking subroutines.
+# You can declare an operator just like you declare a sub:
+sub prefix:<win>($winner) { # refer to the operator categories
+                            # (yes, it's the "words operator" `<>`)
+  say "$winner Won !";
+}
+win "The King"; #=> The King Won !
+                # (prefix is before)
+
+# you can still call the sub with its "full name"
+say prefix:<!>(True); #=> False
+
+sub postfix:<!>(Int $n) {
+  [*] 2..$n; # using the reduce meta-operator ... See below ;-) !
+}
+say 5!; #=> 120
+        # (postfix is after)
+
+
+sub infix:<times>(Int $n, Block $r) { # infix in the middle
+  for ^$n {
+    $r(); # needs the parentheses because it's a scalar
+  }
+}
+3 times -> { say "hello" }; #=> hello
+                            #=> hello
+                            #=> hello
+
+# For circumfix and post-circumfix ones
+sub circumfix:<[ ]>(Int $n) {
+  $n ** $n
+}
+say [5]; #=> 3125
+         # circumfix is around
+
+sub postcircumfix:<{ }>(Str $s, Int $idx) { # post-circumfix is "after a term, around something"
+  $s.substr($idx, 1);
+}
+say "abc"{1}; #=> b
+              # after the term `"abc"`, and around the index (1)
+
+# This really means a lot -- because everything in Perl 6 uses this.
+# For example, to delete a key from a hash, you use the `:delete` adverb (named argument)
+%h{$key}:delete;
+# equivalent to:
+postcircumfix:<{ }>(%h, $key, :delete);
+# It's *all* using the same building blocks! Syntactic categories (prefix infix ...),
+#  named arguments (adverbs), ..., used to build the language are available to you.
+
+# (you are, obviously, recommended against making an operator out of *everything* --
+#  with great power comes great responsibility)
+
+## Meta operators !
+# Oh boy, get ready. Get ready, because we're dwelving deep into the rabbit's hole, and you probably won't want
+#  to go back to other languages after reading that (I'm sure you don't want to already at that point).
+
+# - Reduce meta-operator
+
+## End of the operator list:
 
 ## * Sort comparison
 # They return one value of the `Order` enum : `Less`, `Same` and `More` (which numerify to -1, 0 or +1).
