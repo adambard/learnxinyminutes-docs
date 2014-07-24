@@ -746,7 +746,7 @@ for ^5 {
 }
 
 ## * Role/class phasers
-COMPOSE { "When a role is composed into a class. /!\ NOT YET IMPLEMENTED /!\" }
+COMPOSE { "When a role is composed into a class. /!\ NOT YET IMPLEMENTED" }
 
 # They allow for cute trick or clever code ...:
 say "This code took " ~ (time - CHECK time) ~ "s to run";
