@@ -1,234 +1,231 @@
-<!-- Markdown is a superset of HTML, so any HTML file is valid Markdown, that
-means we can use HTML elements in Markdown, such as the comment element, and
-they won't be affected by a markdown parser. However, if you create an HTML
-element in your markdown file, you cannot use markdown syntax within that
-element's contents. -->
-
 <!-- Markdown está basado en HTML, así que cualquier archivo HTML es Markdown
-válido, eso significa que 
+válido, eso significa que podemos usar elementos HTML en Markdown como, por
+ejemplo, el comentario y no serán afectados por un parseador Markdown. Aún 
+así si creas un elemento HTML en tu archivo Markdown no podrás usar sintaxis
+Markdown dentro de él. -->
 
--->
-
-<!-- Markdown also varies in implementation from one parser to a next. This
-guide will attempt to clarify when features are universal or when they are
-specific to a certain parser. -->
+<!-- La implementación de Markdown cambia de acuerdo al parseador. Esta
+guía servirá para clarificar cuales características son universales y
+cuales son específicas de cada parseador-->
 
 <!-- Headers -->
-<!-- You can create HTML elements <h1> through <h6> easily by prepending the
-text you want to be in that element by a number of hashes (#) -->
-# This is an <h1>
-## This is an <h2>
-### This is an <h3>
-#### This is an <h4>
-##### This is an <h5>
-###### This is an <h6>
+<!-- Puedes crear headers HTML fácilmente precediendo al texto con una serie
+de símbolos de números (#)-->
 
-<!-- Markdown also provides us with two alternative ways of indicating h1 and h2 -->
-This is an h1
+# Esto es un <h1>
+## Esto es un <h2>
+### Esto es un <h3>
+#### Esto es un <h4>
+##### Esto es un <h5>
+###### Esto es un <h6>
+
+<!-- Markdown también nos proveé con dos alternativas para indicar h1 y h2 -->
+Esto es un h1
 =============
 
-This is an h2
+Esto es un h2
 -------------
 
-<!-- Simple text styles -->
-<!-- Text can be easily styled as italic, bold, or strikethrough using markdown -->
+<!-- Estilos para texto plano -->
+<!-- El texto puede ser fácilmente estilizaedo con italicas, negritas o tachado 
+usando markdown -->
 
-*This text is in italics.*
-_And so is this text._
+*Este texto está en itálicas.*
+_Al igual que este texto._
 
-**This text is in bold.**
-__And so is this text.__
+**Este texto está en negritas.**
+__Al igual que este texto.__
 
-***This text is in both.***
-**_As is this!_**
-*__And this!__*
+***Este texto tiene ambos estilos.***
+**_Al igual que este!_**
+*__¡Y este!__*
 
-<!-- In Github Flavored Markdown, which is used to render markdown files on
-Github, we also have: -->
+<!-- En Github Flavored Markdown, el cual es usado para mostrar archivos 
+Markdown en Github, también tenemos: -->
 
-~~This text is rendered with strikethrough.~~
+~~Este texto está tachado.~~
 
-<!-- Paragraphs are a one or multiple adjacent lines of text separated by one or
-multiple blank lines. -->
+<!-- Los párrafos son una o múltuples líneas de texto adyacentes separadas por 
+una o múltiples líneas en blanco-->
 
-This is a paragraph. I'm typing in a paragraph isn't this fun?
+Este es un párrafo. Estoy escribiendo un párrafo, ¿No es divertido?
 
-Now I'm in paragraph 2.
-I'm still in paragraph 2 too!
+Ahora estoy en el párrafo dos.
+¡Sigo en el párrafo dos!
 
+¡Estoy en el párrafo tres!
 
-I'm in paragraph three!
+<!-- Si en algún momento quieres insertar un break HTML <br />, puedes terminar
+un párrafo con dos o más espacios y luego empieza un párrafo nuevo-->
 
-<!-- Should you ever want to insert an HTML <br /> tag, you can end a paragraph
-with two or more spaces and then begin a new paragraph. -->
+Termino con dos espacios (selecciona esta línea completa para que los veas).  
 
-I end with two spaces (highlight me to see them).  
+¡Hay un <br /> arriba de mí!
 
-There's a <br /> above me!
+<!-- Las citas de bloque son fáciles y se pueden hacer con el caracter >. -->
 
-<!-- Block quotes are easy and done with the > character. -->
+> Esta es una cita de bloque. Puedes
+> envolver tus líneas manualmente y poner un `>` antes de cada línea o puedes dejar que tus líneas sean muy largas y que se envuelvan solas.
+> No hay diferencia, siempre y cuando empiecen con `>`.
 
-> This is a block quote. You can either
-> manually wrap your lines and put a `>` before every line or you can let your lines get really long and wrap on their own.
-> It doesn't make a difference so long as they start with a `>`.
+> ¿También puedes usar más de un nivel
+>> de indentación?
+> Esto es muy útil ¿No?
 
-> You can also use more than one level
->> of indentation?
-> How neat is that?
-
-<!-- Lists -->
-<!-- Unordered lists can be made using asterisks, pluses, or hyphens -->
+<!-- Listas -->
+<!-- Las listas desordenadas se hacen usando asteriscos, símbolos de más,
+ o guiones -->
 
 * Item
 * Item
-* Another item
+* Otro item
 
-or
+o
 
 + Item
 + Item
-+ One more item
++ Un item más
 
-or 
+o
 
 - Item
 - Item
-- One last item
+- El último item
 
-<!-- Ordered lists are done with a number followed by a period -->
+<!-- Las listas ordenadas se logran con un número seguido de un punto -->
 
-1. Item one
-2. Item two
-3. Item three
+1. Item uno
+2. Item dos
+3. Item tres
 
-<!-- You don't even have to label the items correctly and markdown will still
-render the numbers in order, but this may not be a good idea -->
+<!-- Aunque Markdown mostrará los items correctamente en orden, esto no
+es una buena idea -->
 
-1. Item one
-1. Item two
-1. Item three
-<!-- (This renders the same as the above example) -->
+1. Item uno
+1. Item dos
+1. Item tres
+<!-- (Esto muestra lo mismo que el ejemplo de arriba) -->
 
-<!-- You can also use sublists -->
+<!-- También puedes usar sub-listas -->
 
-1. Item one
-2. Item two
-3. Item three
+1. Item uno
+2. Item dos
+3. Item tres
     * Sub-item
     * Sub-item
-4. Item four
+4. Item cuatro
 
-<!-- Code blocks -->
-<!-- You can indicate a code block (which uses the <code> element) by indenting
-a line with four spaces or a tab -->
+<!-- Bloques de código -->
+<!-- Puedes indicar un bloque de código (usan los elementos <code>) indentando 
+una línea con cuatro espacios o un tab-->
 
-    This is code
-    So is this
+    Esto es código
+    Esto también
 
-<!-- You can also re-tab (or add an additional four spaces) for indentation
-inside your code -->
+<!-- También puedes insertar dos tabs (o cuatro espacios adicionales)
+para indentar dentro del código -->
 
     my_array.each do |item|
         puts item
     end
 
-<!-- Inline code can be created using the backtick character ` -->
+<!-- Código dentro de la línea puede ser escrito usando la comilla ` -->
 
-John didn't even know what the `go_to()` function did!
+¡John no sabía lo que la función `go_to()` hacía!
 
-<!-- In Github Flavored Markdown, you can use a special syntax for code -->
+<!-- Con Github Flavored Markdown, puedes usar una sintaxis especial para código -->
 
-\`\`\`ruby <!-- except remove those backslashes when you do this, just ```ruby ! -->
+\`\`\`ruby <!-- quita esas comillas cuando lo hagas, deja sólo ```ruby ! -->
 def foobar
     puts "Hello world!"
 end
-\`\`\` <!-- here too, no backslashes, just ``` -->
+\`\`\` <!-- aquí también, sin comillas, sólo ``` -->
 
-<-- The above text doesn't require indenting, plus Github will use syntax
-highlighting of the language you specify after the ``` -->
+<!-- El texto de arriba no necesita indentación, aparte Github usará
+resaltará la sintaxis del lenguaje que especifiques después de ``` -->
 
-<!-- Horizontal rule (<hr />) -->
-<!-- Horizontal rules are easily added with three or more asterisks or hyphens,
-with or without spaces. -->
+<!-- Regla horizontal (<hr />) -->
+<!-- Las reglas horizontales se agregan fácilmente con tres o más asteriscos o guiones,
+con o sin espacios. -->
 
 ***
 ---
 - - - 
 ****************
 
-<!-- Links -->
-<!-- One of the best things about markdown is how easy it is to make links. Put
-the text to display in hard brackets [] followed by the url in parentheses () -->
+<!-- Ligas -->
+<!-- Una de las mejores cosas de Markdown es la facilidad para hacer ligas. Pon
+el texto a mostrar en corchetes [] seguidos por la URL en paréntesis () -->
 
-[Click me!](http://test.com/)
+[¡Haz click!](http://test.com/)
 
-<!-- You can also add a link title using quotes inside the parentheses -->
+<!-- También puedes agregar el titulo de la liga usando comillas dentro de los paréntesis -->
 
-[Click me!](http://test.com/ "Link to Test.com")
+[¡Haz click!](http://test.com/ "Liga al test.com")
 
-<!-- Relative paths work too. -->
+<!-- También funcionan las rutas relativas. -->
 
-[Go to music](/music/).
+[Ir a la música](/music/).
 
-<!-- Markdown also supports reference style links -->
+<!-- Markdown también soporta ligas con estilo de referencia -->
 
-[Click this link][link1] for more info about it!
-[Also check out this link][foobar] if you want to.
-
-
-
-
-<!-- The title can also be in single quotes or in parentheses, or omitted
-entirely. The references can be anywhere in your document and the reference IDs
-can be anything so long as they are unique. -->
-
-<!-- There is also "implicit naming" which lets you use the link text as the id -->
-
-[This][] is a link.
+¡[Has click a esta liga][liga1] para más información!
+[También mira esta liag][foobar] si quieres.
 
 
 
-<!-- But it's not that commonly used. -->
 
-<!-- Images -->
-<!-- Images are done the same way as links but with an exclamation point in front! -->
+<!-- El título también puede estar en comillas simples o dentro de paréntesis,
+también se pueden omitir completamente. Las referencias pueden estar en cualquier
+lugar en tu documento y los IDs de referencia pueden ser lo que sea mientras sean únicos. -->
 
-![This is hover-text (alt text) for my image](http://imgur.com/myimage.jpg "An optional title")
+<!-- También hay "nombramiento implicito" el cual te permite usar el texto de la liga como id -->
 
-<!-- And reference style works as expected -->
-
-![This is the hover-text.][myimage]
+[Esta][] es una liga.
 
 
 
-<!-- Miscellany -->
-<!-- Auto-links -->
+<!-- Pero no se usa comúnmente. -->
 
-<http://testwebsite.com/> is equivalent to
+<!-- Imagenes -->
+<!-- Las imagenes se hacen de la misma forma que las ligas pero con un símbolo de exclamaciónal frente! -->
+
+![Esta es una etiqueta (texto alternativo) para mi imagen](http://imgur.com/myimage.jpg "Un titulo opcional")
+
+<!-- Y el estilo de referencia funciona como se espera -->
+
+![Esta es una etiqueta.][myimage]
+
+
+
+<!-- Misceláneos -->
+<!-- Auto-ligas -->
+
+<http://testwebsite.com/> equivale a
 [http://testwebsite.com/](http://testwebsite.com/)
 
-<!-- Auto-links for emails -->
+<!-- Auto-ligas para correos electrónicos -->
 
 <foo@bar.com>
 
-<!-- Escaping characters -->
+<!-- Escapando caracteres -->
 
-I want to type *this text surrounded by asterisks* but I don't want it to be
-in italics, so I do this: \*this text surrounded by asterisks\*.
+Quiero escribir *este texto rodeado por asteriscos* pero no quiero que esté en itálicas,
+así que hago esto: \*Este texto está rodeado de asteriscos\*.
 
-<!-- Tables -->
-<!-- Tables are only available in Github Flavored Markdown and are slightly
-cumbersome, but if you really want it: -->
+<!-- Tablas -->
+<!-- Las tablas sólo están disponibles en Github Flavored Markdown y son un poco pesadas,
+pero si de verdad las quieres: -->
 
 | Col1         | Col2     | Col3          |
 | :----------- | :------: | ------------: |
-| Left-aligned | Centered | Right-aligned |
+| Izquierda | Centrado | Derecha |
 | blah         | blah     | blah          |
 
-<!-- or, for the same results -->
+<!-- o, para los mismos resultados -->
 
 Col 1 | Col2 | Col3
 :-- | :-: | --:
-Ugh this is so ugly | make it | stop
+Ugh esto es feo | has que | pare.
 
-<!-- The end! -->
+<!-- ¡El fin! -->
