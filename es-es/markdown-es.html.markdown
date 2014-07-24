@@ -1,10 +1,11 @@
 ---
 language: markdown
+filename: markdown-es.md
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Daniel Zendejas", "https://github.com/DanielZendejas"]
--filename: es-markdown.md
+lang: es-es
 ---
 
 Markdown was created by John Gruber in 2004. It's meant to be an easy to read and write syntax which converts easily to HTML (and now many other formats as well).
