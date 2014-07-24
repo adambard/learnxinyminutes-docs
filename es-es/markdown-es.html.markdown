@@ -1,3 +1,18 @@
+---
+language: markdown
+contributors:
+    - ["Dan Turkel", "http://danturkel.com/"]
+translators:
+    - ["Daniel Zendejas", "https://github.com/DanielZendejas"]
+-filename: es-markdown.md
+---
+
+Markdown was created by John Gruber in 2004. It's meant to be an easy to read and write syntax which converts easily to HTML (and now many other formats as well).
+
+Give me as much feedback as you want! / Feel free to fork and pull request!
+
+
+```
 <!-- Markdown está basado en HTML, así que cualquier archivo HTML es Markdown
 válido, eso significa que podemos usar elementos HTML en Markdown como, por
 ejemplo, el comentario y no serán afectados por un parseador Markdown. Aún 
@@ -229,3 +244,7 @@ Col 1 | Col2 | Col3
 Ugh esto es feo | has que | pare.
 
 <!-- ¡El fin! -->
+
+```
+
+For more info, check out John Gruber's official post of syntax [here](http://daringfireball.net/projects/markdown/syntax) and Adam Pritchard's great cheatsheet [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
