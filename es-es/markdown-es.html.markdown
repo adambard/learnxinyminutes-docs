@@ -8,8 +8,6 @@ translators:
 lang: es-es
 ---
 
-Markdown was created by John Gruber in 2004. It's meant to be an easy to read and write syntax which converts easily to HTML (and now many other formats as well).
-
 Markdown fue creado por John Gruber en 2004. Su propósito es ser una sintaxis fácil de leer y escribir que se convierta
 fácilmente a HTML (y, actualmente, otros formatos también).
 
