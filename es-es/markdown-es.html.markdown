@@ -10,7 +10,10 @@ lang: es-es
 
 Markdown was created by John Gruber in 2004. It's meant to be an easy to read and write syntax which converts easily to HTML (and now many other formats as well).
 
-Give me as much feedback as you want! / Feel free to fork and pull request!
+Markdown fue creado por John Gruber en 2004. Su propósito es ser una sintaxis fácil de leer y escribir que se convierta
+fácilmente a HTML (y, actualmente, otros formatos también).
+
+¡Denme todo la retroalimentación que quieran! / ¡Sientanse en la libertad de hacer forks o pull requests!
 
 
 ```
@@ -248,4 +251,4 @@ Ugh esto es feo | has que | pare.
 
 ```
 
-For more info, check out John Gruber's official post of syntax [here](http://daringfireball.net/projects/markdown/syntax) and Adam Pritchard's great cheatsheet [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+Para más información, mira el post oficial de John Gruber's [aquí](http://daringfireball.net/projects/markdown/syntax) y la gran referencia de Adam Pritchard's [aquí](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
