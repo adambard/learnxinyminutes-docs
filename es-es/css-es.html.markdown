@@ -6,6 +6,7 @@ contributors:
     - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
     - ["Daniel Zendejas","https://github.com/DanielZendejas"]
+lang: es-es
 ---
 
 Tutorial de CSS en español
