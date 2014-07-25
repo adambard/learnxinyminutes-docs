@@ -24,7 +24,7 @@ Meta-note : the triple pound signs are here to denote headlines, double paragrap
 ### Variables
 
 # In Perl 6, you declare a lexical variable using `my`
-
+a
 # Perl 6 has 4 variable types :
 
 ## - Scalars. They represent a single value. They start with a `$`
@@ -39,7 +39,7 @@ my $bool = True; # `True` and `False` are Perl 6's boolean
 my $inverse = !$bool; # You can invert a bool with the prefix `!` operator
 my $forced-bool = so $str; # And you can use the prefix `so` operator which turns its operand into a Bool
 
-## - Arrays. They represent multiple values. They start with `@`
+## - Arrays. They represent multiple values. Their name start with `@`.
 
 my @array = 1, 2, 3;
 my @array = 'a', 'b', 'c';
@@ -51,11 +51,11 @@ say @array[2]; # Array indices start at 0 -- This is the third element
 say "Interpolate an array using [] : @array[]"; #=> Interpolate an array using [] : a b c
 
 ## - Hashes. Key-Value Pairs.
-# Hashes are actually arrays of Pairs (`Key => Value`), "flattened" to remove duplicated keys.
-
+# Hashes are actually arrays of Pairs (`Key => Value`),
+#  except they get "flattened", removing duplicated keys.
 my %hash = 1 => 2,
            3 => 4;
-my %hash = autoquoted => "key", # keys are auto-quoted
+my %hash = autoquoted => "key", # keys *can* get auto-quoted
             "some other" => "value", # trailing commas are okay
             ;
 my %hash = <key1 value1 key2 value2>; # you can also create a hash from an even-numbered array
@@ -81,13 +81,15 @@ sub say-hello-to(Str $name) { # you can provide the type of an argument
     say "Hello, $name !";
 }
 
-# since you can omit parenthesis to call a function with no arguments, you need to use `&` also to capture `say-hello`
+# since you can omit parenthesis to call a function with no arguments,
+#  you need "&" in the name to capture `say-hello`
 my &s = &say-hello;
 my &other-s = sub { say "anonymous function !" }
 
 # A sub can have a "slurpy" parameter, or "doesn't-matter-how-many"
 sub as-many($head, *@rest) { # the `*@` slurpy will basically "take everything else".
-                             # Note: you can have parameters *before* (like here) a slurpy one, but not *after*.
+                             # Note: you can have parameters *before* (like here) a slurpy one,
+                             # but not *after*.
   say @rest.join(' / ') ~ " !";
 }
 say as-many('Happy', 'Happy', 'Birthday'); #=> Happy Birthday !
@@ -124,18 +126,22 @@ sub with-named($normal-arg, :$named) {
   say $normal-arg + $named;
 }
 with-named(1, named => 6); #=> 7
+# There's one gotcha to be aware of, here:
+# If you quote your key, Perl 6 won't be able to see it as compile time,
+#  and you'll have a single Pair object as a positional paramater.
+
 with-named(2, :named(5)); #=> 7
 with-named(3, :4named); #=> 7
                         # (special colon pair syntax for numbers, mainly useful for `:2nd` etc)
 
-with-named(3); # warns, because we tried to use the undefined $named
-               # in a `+`: by default, named arguments are *optional*
+with-named(3); # warns, because we tried to use the undefined $named in a `+`:
+               # by default, named arguments are *optional*
 
 # To make a named argument mandatory, you can use `?`'s inverse, `!`
 sub with-mandatory-named(:$str!)  {
   say "$named !";
 }
-with-mandatory-named(str => "My String"); #=> My String
+with-mandatory-named(str => "My String"); #=> My String !
 with-mandatory-named; # run time error: "Required named parameter not passed" 
 with-mandatory-named(3); # run time error: "Too many positional parameters passed"
 
@@ -160,6 +166,9 @@ named-def; #=> 5
 named-def(:10def); #=> 10
 named-def(def => 15); #=> 15
 
+# -- Note: we're going to learn *more* on subs really soon,
+#  but we need to grasp a few more things to understand their real power. Ready?
+
 ### Containers
 # In Perl 6, values are actually stored in "containers".
 # the assignment operator asks the container on the left to store the value on its right
@@ -176,13 +185,14 @@ sub mutate($n is rw) {
 # A sub itself returns a container, which means it can be marked as rw :
 my $x = 42;
 sub mod() is rw { $x }
-mod() = 52; # in this case, the parentheses are mandatory
+mod() = 52; # in this case, the parentheses are mandatory (else Perl 6 thinks it's a "term")
 say $x; #=> 52
 
 
 ### Control Flow Structures
 
-# You don't need to put parenthesis around the condition, but that also means you always have to use brackets (`{ }`) for their body :
+# You don't need to put parenthesis around the condition,
+# but that also means you always have to use brackets (`{ }`) for their body :
 
 ## Conditionals
 
@@ -204,12 +214,14 @@ say "Quite truthy" if True;
 my $a = $condition ?? $value-if-true !! $value-if-false;
 
 # - `given`-`when` looks like other languages `switch`, but it's much more powerful thanks to smart matching.
-# given just puts its argument into `$_` (like a block), and `when` uses it using the "smart matching" operator.
+# given just puts its argument into `$_` (like a block),
+#  and `when` uses it using the "smart matching" operator.
 given "foo bar" {
   when /foo/ { # you'll read about the smart-matching operator below -- just know `when` uses it
     say "Yay !";
   }
-  when $_.chars > 50 { # smart matching anything with True gives True, so you can also put "normal" conditionals
+  when $_.chars > 50 { # smart matching anything with True (`$a ~~ True`) is True,
+                       # so you can also put "normal" conditionals.
     say "Quite a long string !";
   }
   default { # same as `when *` (using the Whatever Star)
@@ -325,8 +337,9 @@ $a && $b && $c; # returns the first argument that evaluates to False, or the las
 $a || $b;
 
 ### More on subs !
+# As we said before, Perl 6 has *really* powerful subs.
+# We're going to see a few more key concepts that make them better than in any other language :-).
 
-## There's more to come, but we're going to end this paragraph with a really powerful feature:
 ## Unpacking ! It's the ability to "extract" arrays and keys. It'll work in `my`s and parameters.
 my ($a, $b) = 1, 2;
 say $a; #=> 1
@@ -337,7 +350,8 @@ my ($head, *@tail) = 1, 2, 3; # Yes, it's the same as with "slurpy subs"
 my (*@small) = 1;
 
 sub foo(@array [$fst, $snd]) {
-  say "My first is $fst, my second is $snd ! All in all, I'm @array[]."; # (remember the `[]` to interpolate the array)
+  say "My first is $fst, my second is $snd ! All in all, I'm @array[].";
+  # (^ remember the `[]` to interpolate the array)
 }
 foo(@tail); #=> My first is 2, my second is 3 ! All in all, I'm 1 2
 
@@ -361,6 +375,8 @@ fst(1); #=> 1
 fst(1, 2); # errors with "Too many positional parameters passed"
 
 # You can also destructure hashes (and classes, which you'll learn about later !)
+# The syntax is basically `%hash-name (:key($variable-to-store-value-in))`.
+# The hash can stay anonymous if you only need the values you extracted.
 sub key-of(% (:value($val), :qua($qua))) {
   say "Got val $val, $qua times.";
 }
@@ -392,18 +408,19 @@ my &lambda = -> $argument { "The argument passed to this lambda is $argument" }
 # We can, for example, add 3 to each value of an array using map:
 my @arrayplus3 = map({ $_ + 3 }, @array); # $_ is the implicit argument
 
-# a sub (`sub {}`) has different semantics than a block (`{}` or `-> {}`) :
-# a block doesn't have a function context (though it can have arguments), which means that if you
+# a sub (`sub {}`) has different semantics than a block (`{}` or `-> {}`):
+# a block doesn't have a "function context" (though it can have arguments), which means that if you
 #  return from it, you're going to return from the parent function, compare:
 sub is-in(@array, $elem) {
-  # this will `return` out of `is-in` sub
+  # this will `return` out of the `is-in` sub
   # once the condition evaluated to True, the loop won't be run anymore
   map({ return True if $_ == $elem }, @array);
 }
 sub truthy-array(@array) {
-  # this will produce an array of `True` and `False` :
+  # this will produce an array of `True` and `False`:
   # (you can also say `anon sub` for "anonymous subroutine")
-  map(sub { if $_ { return True } else { return False } }, @array); # returns the correct value, even in a `if`
+  map(sub { if $_ { return True } else { return False } }, @array);
+  # ^ the `return` only returns from the anonymous `sub`
 }
 
 # You can also use the "whatever star" to create an anonymous function
@@ -419,7 +436,7 @@ say ((*+3)/5)(5); #=> 1.6
 #  you can also use the implicit argument syntax, `$^` :
 map({ $^a + $^b + 3 }, @array); # same as the above
 
-# Note : those are sorted lexicographically. `{ $^b / $^a }` is like `-> $a, b { $ b / $a }`
+# Note : those are sorted lexicographically. `{ $^b / $^a }` is like `-> $a, b { $b / $a }`
 
 ## Multiple Dispatch
 # Perl 6 can decide which variant of a `sub` to call based on the type of the arguments,
@@ -501,7 +518,7 @@ sub bar {
 ## In Perl 6, every field is private, and named `$!attr`, but if you declare it with `$.`,
 ##  you get a public (immutable) accessor along with it.
 
-# (Perl 6's object model ("P6Model") is very flexible, and allows you to dynamically add methods,
+# (Perl 6's object model ("SixModel") is very flexible, and allows you to dynamically add methods,
 #  change semantics, etc -- This will not be covered here, and you should refer to the Synopsis)
 
 class A {
@@ -552,9 +569,10 @@ class B is A { # inheritance uses `is`
   method bar { $.val * 10 } # this shadows A's `bar`
 }
 
-my B $b .= new(val => 5); # When you use `my T $var`, `$var` starts off with `T` itself in it, so you can call `new` on it
-                # (`.=` is just the compound operator composed of the dot-call and of the assignment operator)
-                #
+my B $b .= new(val => 5); # When you use `my T $var`, `$var` starts off with `T` itself in it,
+                # so you can call `new` on it.
+                # (`.=` is just the compound operator composed of the dot-call and of the assignment operator
+                #  `$a .= b` is the same as `$a = $a.b`)
                 # Also note that `BUILD` (the method called inside `new`)  will set parent properties too,
                 # so you can pass `val => 5` 
 # $b.not-inherited; # This won't work, for reasons explained above
@@ -765,7 +783,9 @@ $a ! $b ! $c; # with a list-associative `!`, this is `infix:<>`
 
 ## Create your own operators !
 # Okay, you've been reading all of that, so I guess I should try to show you something exciting.
-# I'll tell you a little secret (actually not): In Perl 6, all operators are actually just funny-looking subroutines.
+# I'll tell you a little secret (actually not):
+# In Perl 6, all operators are actually just funny-looking subroutines.
+
 # You can declare an operator just like you declare a sub:
 sub prefix:<win>($winner) { # refer to the operator categories
                             # (yes, it's the "words operator" `<>`)
@@ -818,8 +838,9 @@ postcircumfix:<{ }>(%h, $key, :delete);
 #  with great power comes great responsibility)
 
 ## Meta operators !
-# Oh boy, get ready. Get ready, because we're dwelving deep into the rabbit's hole, and you probably won't want
-#  to go back to other languages after reading that (I'm sure you don't want to already at that point).
+# Oh boy, get ready. Get ready, because we're dwelving deep into the rabbit's hole,
+#  and you probably won't want to go back to other languages after reading that.
+#  (I'm guessing you don't want to already at that point).
 
 # - Reduce meta-operator
 
@@ -900,7 +921,8 @@ for <test start print this stop you stopped printing start printing again stop n
                                            #=> "print this printing again"
 }
 
-# you might also use a Whatever Star, which is equivalent to `True` for the left side or `False` for the right :
+# you might also use a Whatever Star,
+# which is equivalent to `True` for the left side or `False` for the right:
 for (1, 3, 60, 3, 40, 60) {
  .say if $_ > 50 ff *; # Once the flip-flop reached a number greater than 50, it'll never go back to `False`
                        #=> 60 3 40 60
