@@ -6,7 +6,6 @@ contributors:
     - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
     - ["Daniel Zendejas","https://github.com/DanielZendejas"]
-lang: es-es
 ---
 
 Tutorial de CSS en español
@@ -20,12 +19,12 @@ CSS es el lenguaje estándar que existe para separar el contenido
 Lo que CSS hace es proveer con una sintaxis que te permite apuntar a distintos 
 elementos HTML y asignarles diferentes propiedades visuales.
 
-CSS ,como cualquier otro lenguaje, tiene múltiples versiones. Aquí nos enfocamos
-en CSS 2.0. No es la más reciente pero sí la más soportada y compatible.
+CSS, como cualquier otro lenguaje, tiene múltiples versiones. Aquí nos enfocamos
+en CSS 2.0. No es la versión más reciente pero sí la más soportada y compatible.
 
 **NOTA:** Como los resultados de CSS son efectos visuales, para aprenderlo, 
 necesitarás probar todo tipo de cosas en ambientes como 
-[dabblet](http://dabblet.com/). El principal enfoque de este artículo es en
+[dabblet](http://dabblet.com/). Este artículo se enfoca, principalmente, en
 la sintaxis y consejos generales.
 
 ```css
@@ -35,12 +34,12 @@ la sintaxis y consejos generales.
    ## SELECTORES
    ####################*/
 
-/* Generalmente, la sentencia principal en CSS es muy simple */
-selector { propiedad: valor; /* más propiedades...*/ }
+/* Generalmente, la sentencia principal en CSS es muy simple. */
+selector { propiedad: valor; /* más propiedades separados por punto y coma...*/ }
 
-/* El selector es usado para apuntar a un elemento en la página.
+/* El selector es usado para apuntar a (seleccionar) un elemento en la página.
 
-¡Puedes apuntar a todos los elementos en la página! */
+¡Puedes apuntar a todos los elementos en la página con el asterisco! */
 * { color:red; }
 
 /*
@@ -49,7 +48,7 @@ Dado un elemento como este en la página:
 <div class='una-clase clase2' id='unaId' attr='valor' />
 */
 
-/* puedes seleccionarlo por el nombre de su clase */
+/* puedes seleccionar el <div> por el nombre de su clase */
 .una-clase { }
 
 /*¡O por sus dos clases! */
@@ -76,21 +75,21 @@ div { }
 /* O incluso contiene un valor ('lo' en este caso) */
 [attr~='lo'] { font-size:smaller; }
 
-/*y, más importante, puedes combinar estos criterios de búsqueda entre sí.
-No debe existir ningún espacio entre estas partes porque hace que tenga otro
-significado.*/
+/*Más importante, puedes combinar estos criterios de búsqueda entre sí.
+No debe existir ningún espacio entre estas partes porque hace que el 
+significado cambie.*/
 div.una-clase[attr$='or'] { }
 
-/* También puedes seleccionar un elemento HTML basado en sus padres*/
+/* También puedes seleccionar un elemento HTML basándote en sus padres*/
 
 /* Un elemento que es hijo directo de otro elemento (Seleccionado de la forma que
 vimos anteriormente) */
 
 div.un-padre > .nombre-clase {}
 
-/* O cualquiera de sus padres en un árbol*/
-/* Lo siguiente básicamente significa que cualquier elemento que tenga una clase
-"nombre-clase" y es hijo de un div con clase "un-padre" EN CUALQUIER PROFUNDIDAD*/
+/* O cualquiera de sus ancestros en la jerarquía*/
+/* La siguiente sentencia selecciona a cualquier elemento que tenga una clase
+"nombre-clase" y sea hijo de un div con clase "un-padre" EN CUALQUIER PROFUNDIDAD*/
 div.un-padre .nombre-clase {}
 
 /* advertencia: el mismo selector sin espacio tiene otro significado. ¿Puedes
