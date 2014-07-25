@@ -226,6 +226,58 @@ sub mod() is rw { $x }
 mod() = 52; # in this case, the parentheses are mandatory
 say $x; #=> 52
 
+# The last expression of a sub is returned automatically (though you may use the `return` keyword, of course):
+sub next-index($n) {
+  $n + 1;
+}
+my $new-n = next-index(3); # $new-n is now 4
+# This is true for everything, except for the looping constructs (due to performance reasons):
+#  there's no purpose in building a list if we're just going to discard all the results.
+# If you still want to build one, you can use the `do` prefix: (or the `gather` prefix, which we'll see later)
+sub list-of($n) {
+  do for ^$n { # note the use of the range-to prefix operator `^` (`0..^N`)
+    $_ # current loop iteration
+  }
+}
+my @list3 = list-of(3); #=> (0, 1, 2)
+
+# We can, for example, add 3 to each value of an array using map :
+my @arrayplus3 = map({ $_ + 3 }, @array); # $_ is the implicit argument (the same as for `given` and `for`)
+
+# a sub (`sub {}`) has different semantics than a block (`{}` or `-> {}`) :
+# a block doesn't have a function context (though it can have arguments), which means that if you
+#  return from it, you're going to return from the parent function, compare:
+sub is-in(@array, $elem) {
+  # this will `return` out of `is-in` sub
+  # once the condition evaluated to True, the loop won't be run anymore
+  map({ return True if $_ == $elem }, @array);
+}
+sub truthy-array(@array) {
+  # this will produce an array of `True` and `False` :
+  # (you can also say `anon sub` for "anonymous subroutine")
+  map(sub { if $_ { return True } else { return False } }, @array); # returns the correct value, even in a `if`
+}
+
+# `-> {}` and `{}` are pretty much the same thing, except that the former can take arguments,
+#  and that the latter can be mistaken as a hash by the compiler
+
+# You can also use the "whatever star" to create an anonymous function
+# (it'll stop at the furthest operator in the current expression)
+my @arrayplus3 = map(*+3, @array); # `*+3` is the same as `{ $_ + 3 }`
+my @arrayplus3 = map(*+*+3, @array); # also works. Same as `-> $a, $b { $a + $b + 3 }`
+say (*/2)(4); #=> 2
+              # Immediatly execute the function Whatever created.
+say ((*+3)/5)(5); #=> 1.6
+                  # works even in parens !
+
+# but if you need to have more than one argument (`$_`) in a block (without wanting to resort to `-> {}`),
+#  you can also use the implicit argument syntax, `$^` :
+map({ $^a + $^b + 3 }, @array); # same as the above
+
+# Note : those are sorted lexicographically. `{ $^b / $^a }` is like `-> $a, b { $ b / $a }`
+
+
+
 ### Control Flow Structures
 
 # You don't need to put parenthesis around the condition, but that also means you always have to use brackets (`{ }`) for their body :
@@ -427,54 +479,6 @@ multi with-or-without-you {
 # sub trait_mod:<is>(Routine $r, :$rw!) {}
 # (commented because running this would probably lead to some surprising side-effects !)
 
-
-# ----
-# The last expression of a sub is returned automatically (though you may use the `return` keyword, of course):
-sub next-index($n) {
-  $n + 1;
-}
-my $new-n = next-index(3); # $new-n is now 4
-# This is true for everything, except for the looping constructs (due to performance reasons):
-#  there's no purpose in building a list if we're just going to discard all the results.
-# If you still want to build one, you can use the `do` prefix: (or the `gather` prefix, which we'll see later)
-sub list-of($n) {
-  do for ^$n { # note the use of the range-to prefix operator `^` (`0..^N`)
-    $_ # current loop iteration
-  }
-}
-my @list3 = list-of(3); #=> (0, 1, 2)
-
-# We can, for example, add 3 to each value of an array using map :
-my @arrayplus3 = map({ $_ + 3 }, @array); # $_ is the implicit argument (the same as for `given` and `for`)
-
-# a sub (`sub {}`) has different semantics than a block (`{}` or `-> {}`) :
-# a block doesn't have a function context (though it can have arguments), which means that if you
-#  return from it, you're going to return from the parent function, compare:
-sub is-in(@array, $elem) {
-  # this will `return` out of `is-in` sub
-  # once the condition evaluated to True, the loop won't be run anymore
-  map({ return True if $_ == $elem }, @array);
-}
-sub truthy-array(@array) {
-  # this will produce an array of `True` and `False` :
-  # (you can also say `anon sub` for "anonymous subroutine")
-  map(sub { if $_ { return True } else { return False } }, @array); # returns the correct value, even in a `if`
-}
-
-# `-> {}` and `{}` are pretty much the same thing, except that the former can take arguments,
-#  and that the latter can be mistaken as a hash by the compiler
-
-# You can also use the "whatever star" to create an anonymous function
-# (it'll stop at the furthest operator in the current expression)
-my @arrayplus3 = map(*+3, @array); # `*+3` is the same as `{ $_ + 3 }`
-my @arrayplus3 = map(*+*+3, @array); # also works. Same as `-> $a, $b { $a + $b + 3 }`
-say ((*+3)/5)(5); # immediatly execute the function Whatever created -- works even in parens !
-
-# but if you need to have more than one argument (`$_`) in a block (without wanting to resort to `-> {}`),
-#  you can also use the implicit argument syntax, `$^` :
-map({ $^a + $^b + 3 }, @array); # same as the above
-
-# Note : those are sorted lexicographically. `{ $^b / $^a }` is like `-> $a, b { $ b / $a }`
 
 ### Scoping
 # In Perl 6, contrarily to many scripting languages (Python, Ruby, PHP, for example),
