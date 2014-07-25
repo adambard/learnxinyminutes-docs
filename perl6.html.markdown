@@ -213,11 +213,18 @@ say "Quite truthy" if True;
 # - Ternary conditional, "?? !!" (like `x ? y : z` in some other languages)
 my $a = $condition ?? $value-if-true !! $value-if-false;
 
-# - `given`-`when` looks like other languages `switch`, but it's much more powerful thanks to smart matching.
-# given just puts its argument into `$_` (like a block),
+# - `given`-`when` looks like other languages `switch`, but it's much more powerful thanks to smart matching,
+# and thanks to Perl 6's "topic variable", $_.
+# This variable contains the default argument of a block,
+#  a loop's current iteration (unless explicitly named), etc.
+# Given simply puts its argument into `$_` (like a block would do),
 #  and `when` uses it using the "smart matching" operator.
+# Since other Perl 6 constructs use this variable (as said before, like `for`, blocks, etc),
+#  this means the powerful `when` is not only applicable along with a `given`,
+#  but instead anywhere a `$_` exists.
 given "foo bar" {
   when /foo/ { # you'll read about the smart-matching operator below -- just know `when` uses it
+               # this is equivalent to `if $_ ~~ /foo/`
     say "Yay !";
   }
   when $_.chars > 50 { # smart matching anything with True (`$a ~~ True`) is True,
@@ -248,9 +255,14 @@ for @array -> $variable {
   say "I've found $variable !";
 }
 
-# default variable is $_ (like a block)
+# As we saw with given, for's default "current iteration" variable is `$_`.
+# That means you can use `when` in a `for` just like you were in a when.
 for @array {
   say "I've got $_";
+  
+  .say; # This is also allowed.
+        # A dot call with no "topic" (receiver) is sent to `$_` by default
+  $_.say; # the above and this are equivalent.
 }
 
 for @array {
