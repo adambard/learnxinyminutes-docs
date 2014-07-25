@@ -197,6 +197,10 @@ say $x; #=> 52
 ## Conditionals
 
 # - `if`
+# Before talking about `if`, we need to know which values are "Truthy" (represent True),
+#  and which are "Falsey" (or "Falsy") -- meaning they represent False.
+# Only these values are Falsey: (), 0, "0", Nil, A type, and of course False itself.
+# Every other value is Truthy.
 if True {
   say "It's true !";
 }
@@ -341,7 +345,7 @@ say @array[^10]; # you can pass arrays as subscripts and it'll return an array o
 # so you'll end with an infinite loop.
 
 ## * And, Or
-3 && 4; # True. Calls `.Bool` on `3`
+3 && 4; # 4, which is Truthy. Calls `.Bool` on `4` and gets `True`.
 0 || False; # False. Calls `.Bool` on `0`
 
 ## Short-circuit (and tight) versions of the above
@@ -448,7 +452,7 @@ say ((*+3)/5)(5); #=> 1.6
 #  you can also use the implicit argument syntax, `$^` :
 map({ $^a + $^b + 3 }, @array); # same as the above
 
-# Note : those are sorted lexicographically. `{ $^b / $^a }` is like `-> $a, b { $b / $a }`
+# Note : those are sorted lexicographically. `{ $^b / $^a }` is like `-> $a, $b { $b / $a }`
 
 ## Multiple Dispatch
 # Perl 6 can decide which variant of a `sub` to call based on the type of the arguments,
@@ -813,24 +817,28 @@ sub postfix:<!>(Int $n) {
   [*] 2..$n; # using the reduce meta-operator ... See below ;-) !
 }
 say 5!; #=> 120
-        # (postfix is after)
+        # Postfix operators (after) have to come *directly* after the term.
+        # No whitespace. You can use parentheses to disambiguate, i.e. `(5!)!`
 
 
 sub infix:<times>(Int $n, Block $r) { # infix in the middle
   for ^$n {
-    $r(); # needs the parentheses because it's a scalar
+    $r(); # You need the explicit parentheses to call the function in `$r`,
+          #  else you'd be referring at the variable itself, kind of like with `&r`.
   }
 }
 3 times -> { say "hello" }; #=> hello
                             #=> hello
                             #=> hello
+                            # You're very recommended to put spaces
+                            # around your infix operator calls.
 
 # For circumfix and post-circumfix ones
 sub circumfix:<[ ]>(Int $n) {
   $n ** $n
 }
 say [5]; #=> 3125
-         # circumfix is around
+         # circumfix is around. Again, not whitespace.
 
 sub postcircumfix:<{ }>(Str $s, Int $idx) { # post-circumfix is "after a term, around something"
   $s.substr($idx, 1);
@@ -915,7 +923,7 @@ for <well met young hero we shall meet later> {
 #  (but will still return `False` for "met" itself, due to the leading `^` on `ff`),
 #  until it sees "meet", which is when it'll start returning `False`.
 
-# The difference between `ff` (flip-flop) and `fff` (flip-flop) is that
+# The difference between `ff` (awk-style) and `fff` (sed-style) is that
 #  `ff` will test its right side just as its left side changes to `True`,
 #  and can get back to `False` right away (*except* it'll be `True` for the iteration that matched)
 #  while `fff` will wait for the next iteration to try its right side, once its left side changed:
@@ -935,8 +943,8 @@ for <test start print this stop you stopped printing start printing again stop n
 
 # you might also use a Whatever Star,
 # which is equivalent to `True` for the left side or `False` for the right:
-for (1, 3, 60, 3, 40, 60) {
- .say if $_ > 50 ff *; # Once the flip-flop reached a number greater than 50, it'll never go back to `False`
+for (1, 3, 60, 3, 40, 60) { # Note: the parenthesis are superfluous here -- sometimes called "superstitious"
+ .say if $_ > 50 ff *; # Once the flip-flop reaches a number greater than 50, it'll never go back to `False`
                        #=> 60 3 40 60
 }
 
