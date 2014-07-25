@@ -126,7 +126,7 @@ sub with-named($normal-arg, :$named) {
 with-named(1, named => 6); #=> 7
 with-named(2, :named(5)); #=> 7
 with-named(3, :4named); #=> 7
-                        # (special colon pair syntax for numbers)
+                        # (special colon pair syntax for numbers, mainly useful for `:2nd` etc)
 
 with-named(3); # warns, because we tried to use the undefined $named
                # in a `+`: by default, named arguments are *optional*
@@ -160,53 +160,6 @@ named-def; #=> 5
 named-def(:10def); #=> 10
 named-def(def => 15); #=> 15
 
-## There's more to come, but we're going to end this paragraph with a really powerful feature:
-## Unpacking ! It's the ability to "extract" arrays and keys. It'll work in `my`s and parameters.
-my ($a, $b) = 1, 2;
-say $a; #=> 1
-my ($, $, $c) = 1, 2, 3; # keep the non-interesting anonymous
-say $c; #=> 3
-
-my ($head, *@tail) = 1, 2, 3; # Yes, it's the same as with "slurpy subs"
-my (*@small) = 1;
-
-sub foo(@array [$fst, $snd]) {
-  say "My first is $fst, my second is $snd ! All in all, I'm @array[]."; # (remember the `[]` to interpolate the array)
-}
-foo(@tail); #=> My first is 2, my second is 3 ! All in all, I'm 1 2
-
-
-# If you're not using the array itself, you can also keep it anonymous, much like a scalar:
-sub first-of-array(@ [$fst]) { $fst }
-first-of-array(@small); #=> 1
-first-of-array(@tail); # errors with "Too many positional parameters passed" (the array is too big)
-
-# You can also use a slurp ...
-sub slurp-in-array(@ [$fst, *@rest]) { # you could decide to keep `*@rest` anonymous
-  say $fst + @rest.elems;
-}
-slurp-in-array(@tail); #=> 3
-
-# You could even extract on a slurpy (but it's pretty useless ;-).)
-sub fst(*@ [$fst]) { # or simply : `sub fst($fst) { ... }`
-  say $fst;
-}
-fst(1); #=> 1
-fst(1, 2); # errors with "Too many positional parameters passed"
-
-# Lou can also destructure hashes (and classes, which you'll learn about later !)
-sub key-of(% (:value($val), :qua($qua))) {
-  say "Got val $val, $qua times.";
-}
-# Then call it with a hash: (you need to keep the brackets for it to be a hash)
-key-of({value => 1});
-#key-of(%hash); # the same (for an equivalent `%hash`)
-
-# `->`, lambda with arguments, and string interpolation
-my &lambda = -> $argument { "The argument passed to this lambda is $argument" }
-# We're going to see how powerful Perl 6 subs are just a little down below, after seeing the basics of operators
-# and control flow structures
-
 ### Containers
 # In Perl 6, values are actually stored in "containers".
 # the assignment operator asks the container on the left to store the value on its right
@@ -225,57 +178,6 @@ my $x = 42;
 sub mod() is rw { $x }
 mod() = 52; # in this case, the parentheses are mandatory
 say $x; #=> 52
-
-# The last expression of a sub is returned automatically (though you may use the `return` keyword, of course):
-sub next-index($n) {
-  $n + 1;
-}
-my $new-n = next-index(3); # $new-n is now 4
-# This is true for everything, except for the looping constructs (due to performance reasons):
-#  there's no purpose in building a list if we're just going to discard all the results.
-# If you still want to build one, you can use the `do` prefix: (or the `gather` prefix, which we'll see later)
-sub list-of($n) {
-  do for ^$n { # note the use of the range-to prefix operator `^` (`0..^N`)
-    $_ # current loop iteration
-  }
-}
-my @list3 = list-of(3); #=> (0, 1, 2)
-
-# We can, for example, add 3 to each value of an array using map :
-my @arrayplus3 = map({ $_ + 3 }, @array); # $_ is the implicit argument (the same as for `given` and `for`)
-
-# a sub (`sub {}`) has different semantics than a block (`{}` or `-> {}`) :
-# a block doesn't have a function context (though it can have arguments), which means that if you
-#  return from it, you're going to return from the parent function, compare:
-sub is-in(@array, $elem) {
-  # this will `return` out of `is-in` sub
-  # once the condition evaluated to True, the loop won't be run anymore
-  map({ return True if $_ == $elem }, @array);
-}
-sub truthy-array(@array) {
-  # this will produce an array of `True` and `False` :
-  # (you can also say `anon sub` for "anonymous subroutine")
-  map(sub { if $_ { return True } else { return False } }, @array); # returns the correct value, even in a `if`
-}
-
-# `-> {}` and `{}` are pretty much the same thing, except that the former can take arguments,
-#  and that the latter can be mistaken as a hash by the compiler
-
-# You can also use the "whatever star" to create an anonymous function
-# (it'll stop at the furthest operator in the current expression)
-my @arrayplus3 = map(*+3, @array); # `*+3` is the same as `{ $_ + 3 }`
-my @arrayplus3 = map(*+*+3, @array); # also works. Same as `-> $a, $b { $a + $b + 3 }`
-say (*/2)(4); #=> 2
-              # Immediatly execute the function Whatever created.
-say ((*+3)/5)(5); #=> 1.6
-                  # works even in parens !
-
-# but if you need to have more than one argument (`$_`) in a block (without wanting to resort to `-> {}`),
-#  you can also use the implicit argument syntax, `$^` :
-map({ $^a + $^b + 3 }, @array); # same as the above
-
-# Note : those are sorted lexicographically. `{ $^b / $^a }` is like `-> $a, b { $ b / $a }`
-
 
 
 ### Control Flow Structures
@@ -298,11 +200,11 @@ say "Quite truthy" if True;
 
 # if (true) say; # This doesn't work !
 
-# - Ternary conditional, "?? !!"
-my $a = $condition ?? $value-if-true !! $value-if-false; # `??` and `!!` are like `?` and `:` in other languages'
+# - Ternary conditional, "?? !!" (like `x ? y : z` in some other languages)
+my $a = $condition ?? $value-if-true !! $value-if-false;
 
 # - `given`-`when` looks like other languages `switch`, but it's much more powerful thanks to smart matching.
-# given just puts its argument into `$_`, and `when` uses it using the "smart matching" operator.
+# given just puts its argument into `$_` (like a block), and `when` uses it using the "smart matching" operator.
 given "foo bar" {
   when /foo/ { # you'll read about the smart-matching operator below -- just know `when` uses it
     say "Yay !";
@@ -329,12 +231,12 @@ loop (my $i = 0; $i < 5; $i++) {
   say "This is a C-style for loop !";
 }
 
-# - `for` - Foreaches an array
+# - `for` - Passes through an array
 for @array -> $variable {
   say "I've found $variable !";
 }
 
-# default variable is $_
+# default variable is $_ (like a block)
 for @array {
   say "I've got $_";
 }
@@ -378,7 +280,7 @@ if long-computation() -> $result {
 'a' ne 'b'; # not equal
 'a' !eq 'b'; # same as above
 
-# - `eqv` is canonical equivalence
+# - `eqv` is canonical equivalence (or "deep equality")
 (1, 2) eqv (1, 3);
 
 # - `~~` is smart matching
@@ -401,7 +303,7 @@ $arg ~~ &bool-returning-function; # true if the function, passed `$arg` as an ar
 # `^` on either side them exclusive on that side :
 3 ^..^ 7; # 3 to 7, not included (basically `4 .. 6`)
 # this also works as a shortcut for `0..^N`
-^10; # 0..^10
+^10; # means 0..^10
 
 # This also allows us to demonstrate that Perl 6 has lazy arrays, using the Whatever Star :
 my @array = 1..*; # 1 to Infinite !
@@ -422,23 +324,102 @@ say @array[^10]; # you can pass arrays as subscripts and it'll return an array o
 $a && $b && $c; # returns the first argument that evaluates to False, or the last argument
 $a || $b;
 
-## Sequence operator
-# The sequence operator is one of Perl 6's most powerful features :
-# it's composed of first, on the left, the list you want Perl 6 to deduce from (and might include a closure),
-# and on the right, a value or the predicate for when to stop, or even Whatever for a lazy infinite list
-my @list = 1, 2, 3 ... 10; # basic deducing
-#my @list = 1, 3, 6 ... 10; # this throws you into an infinite loop, because Perl 6 can't figure out the end
-my @list = 1, 2, 3 ...^ 10; # as with ranges, you can exclude the last element (when the predicate matches)
-my @list = 1, 3, 9 ... * > 30; # you can use a predicate (with the Whatever Star, here)
-my @list = 1, 3, 9 ... { $_ > 30 }; # (equivalent to the above)
-my @primes = 1, 1, *+* ... *; # lazy infinite list of prime numbers, computed using a closure !
-my @primes = 1, 1, -> $a, $b { $a + $b } ... *; # (equivalent to the above)
-say @primes[^10]; #=> 1 1 2 3 5 8 13 21 34 55
-# Note : as for ranges, once reified, elements aren't re-calculated.
-# That's why `@primes[^100]` will take a long time the first time you print it, then be instant
+### More on subs !
 
-### More on Subs !
-# Perl 6 likes functions. So, in Perl 6, they are very powerful:
+## There's more to come, but we're going to end this paragraph with a really powerful feature:
+## Unpacking ! It's the ability to "extract" arrays and keys. It'll work in `my`s and parameters.
+my ($a, $b) = 1, 2;
+say $a; #=> 1
+my ($, $, $c) = 1, 2, 3; # keep the non-interesting anonymous
+say $c; #=> 3
+
+my ($head, *@tail) = 1, 2, 3; # Yes, it's the same as with "slurpy subs"
+my (*@small) = 1;
+
+sub foo(@array [$fst, $snd]) {
+  say "My first is $fst, my second is $snd ! All in all, I'm @array[]."; # (remember the `[]` to interpolate the array)
+}
+foo(@tail); #=> My first is 2, my second is 3 ! All in all, I'm 1 2
+
+
+# If you're not using the array itself, you can also keep it anonymous, much like a scalar:
+sub first-of-array(@ [$fst]) { $fst }
+first-of-array(@small); #=> 1
+first-of-array(@tail); # errors with "Too many positional parameters passed" (the array is too big)
+
+# You can also use a slurp ...
+sub slurp-in-array(@ [$fst, *@rest]) { # you could decide to keep `*@rest` anonymous
+  say $fst + @rest.elems;
+}
+slurp-in-array(@tail); #=> 3
+
+# You could even extract on a slurpy (but it's pretty useless ;-).)
+sub fst(*@ [$fst]) { # or simply : `sub fst($fst) { ... }`
+  say $fst;
+}
+fst(1); #=> 1
+fst(1, 2); # errors with "Too many positional parameters passed"
+
+# You can also destructure hashes (and classes, which you'll learn about later !)
+sub key-of(% (:value($val), :qua($qua))) {
+  say "Got val $val, $qua times.";
+}
+
+# Then call it with a hash: (you need to keep the brackets for it to be a hash)
+key-of({value => 1});
+#key-of(%hash); # the same (for an equivalent `%hash`)
+
+## The last expression of a sub is returned automatically (though you may use the `return` keyword, of course):
+sub next-index($n) {
+  $n + 1;
+}
+my $new-n = next-index(3); # $new-n is now 4
+# This is true for everything, except for the looping constructs (due to performance reasons):
+#  there's no purpose in building a list if we're just going to discard all the results.
+# If you still want to build one, you can use the `do` prefix: (or the `gather` prefix, which we'll see later)
+sub list-of($n) {
+  do for ^$n { # note the use of the range-to prefix operator `^` (`0..^N`)
+    $_ # current loop iteration
+  }
+}
+my @list3 = list-of(3); #=> (0, 1, 2)
+
+## You can create a lambda with `-> {}` ("pointy block") or `{}` ("block")
+my &lambda = -> $argument { "The argument passed to this lambda is $argument" }
+# `-> {}` and `{}` are pretty much the same thing, except that the former can take arguments,
+#  and that the latter can be mistaken as a hash by the parser.
+
+# We can, for example, add 3 to each value of an array using map:
+my @arrayplus3 = map({ $_ + 3 }, @array); # $_ is the implicit argument
+
+# a sub (`sub {}`) has different semantics than a block (`{}` or `-> {}`) :
+# a block doesn't have a function context (though it can have arguments), which means that if you
+#  return from it, you're going to return from the parent function, compare:
+sub is-in(@array, $elem) {
+  # this will `return` out of `is-in` sub
+  # once the condition evaluated to True, the loop won't be run anymore
+  map({ return True if $_ == $elem }, @array);
+}
+sub truthy-array(@array) {
+  # this will produce an array of `True` and `False` :
+  # (you can also say `anon sub` for "anonymous subroutine")
+  map(sub { if $_ { return True } else { return False } }, @array); # returns the correct value, even in a `if`
+}
+
+# You can also use the "whatever star" to create an anonymous function
+# (it'll stop at the furthest operator in the current expression)
+my @arrayplus3 = map(*+3, @array); # `*+3` is the same as `{ $_ + 3 }`
+my @arrayplus3 = map(*+*+3, @array); # also works. Same as `-> $a, $b { $a + $b + 3 }`
+say (*/2)(4); #=> 2
+              # Immediatly execute the function Whatever created.
+say ((*+3)/5)(5); #=> 1.6
+                  # works even in parens !
+
+# but if you need to have more than one argument (`$_`) in a block (without wanting to resort to `-> {}`),
+#  you can also use the implicit argument syntax, `$^` :
+map({ $^a + $^b + 3 }, @array); # same as the above
+
+# Note : those are sorted lexicographically. `{ $^b / $^a }` is like `-> $a, b { $ b / $a }`
 
 ## Multiple Dispatch
 # Perl 6 can decide which variant of a `sub` to call based on the type of the arguments,
@@ -448,7 +429,7 @@ say @primes[^10]; #=> 1 1 2 3 5 8 13 21 34 55
 multi sub sayit(Int $n) { # note the `multi` keyword here
   say "Number: $n";
 }
-multi sayit(Str $s) } # the `sub` is implicit
+multi sayit(Str $s) } # the `sub` is the default
   say "String: $s";
 }
 sayit("foo"); # prints "String: foo"
@@ -477,7 +458,7 @@ multi with-or-without-you {
 # `is`, for example, is actually a `multi sub` named `trait_mod:<is>`, and it works off that.
 # `is rw`, for example, is a dispatch to a function with this signature:
 # sub trait_mod:<is>(Routine $r, :$rw!) {}
-# (commented because running this would probably lead to some surprising side-effects !)
+# (commented because running this would probably lead to some very surprising side-effects !)
 
 
 ### Scoping
@@ -843,6 +824,24 @@ postcircumfix:<{ }>(%h, $key, :delete);
 # - Reduce meta-operator
 
 ## End of the operator list:
+
+
+## Sequence operator
+# The sequence operator is one of Perl 6's most powerful features:
+# it's composed of first, on the left, the list you want Perl 6 to deduce from (and might include a closure),
+# and on the right, a value or the predicate for when to stop, or even Whatever for a lazy infinite list.
+my @list = 1, 2, 3 ... 10; # basic deducing
+#my @list = 1, 3, 6 ... 10; # this throws you into an infinite loop, because Perl 6 can't figure out the end
+my @list = 1, 2, 3 ...^ 10; # as with ranges, you can exclude the last element (when the predicate matches)
+my @list = 1, 3, 9 ... * > 30; # you can use a predicate (with the Whatever Star, here)
+my @list = 1, 3, 9 ... { $_ > 30 }; # (equivalent to the above)
+my @fib = 1, 1, *+* ... *; # lazy infinite list of prime numbers, computed using a closure !
+my @fib = 1, 1, -> $a, $b { $a + $b } ... *; # (equivalent to the above)
+say @fib[^10]; #=> 1 1 2 3 5 8 13 21 34 55
+               # (using a range as the index)
+# Note : as for ranges, once reified, elements aren't re-calculated.
+# That's why `@primes[^100]` will take a long time the first time you print it, then be instant
+
 
 ## * Sort comparison
 # They return one value of the `Order` enum : `Less`, `Same` and `More` (which numerify to -1, 0 or +1).
