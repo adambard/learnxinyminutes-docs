@@ -4,7 +4,7 @@ filename: learn-julia-zh.jl
 contributors:
     - ["Jichao Ouyang", "http://oyanglul.us"]
 translators:
-    - ["Jichao Ouyang"]
+    - ["Jichao Ouyang", "http://oyanglul.us"]
 lang: zh-cn
 ---
 
