@@ -27,7 +27,7 @@ Meta-note : the triple pound signs are here to denote headlines, double paragrap
 a
 # Perl 6 has 4 variable types :
 
-## - Scalars. They represent a single value. They start with a `$`
+## * Scalars. They represent a single value. They start with a `$`
 
 my $str = 'String';
 my $str2 = "String"; # double quotes allow for interpolation
@@ -39,7 +39,7 @@ my $bool = True; # `True` and `False` are Perl 6's boolean
 my $inverse = !$bool; # You can invert a bool with the prefix `!` operator
 my $forced-bool = so $str; # And you can use the prefix `so` operator which turns its operand into a Bool
 
-## - Arrays. They represent multiple values. Their name start with `@`.
+## * Arrays. They represent multiple values. Their name start with `@`.
 
 my @array = 1, 2, 3;
 my @array = 'a', 'b', 'c';
@@ -50,7 +50,7 @@ say @array[2]; # Array indices start at 0 -- This is the third element
 
 say "Interpolate an array using [] : @array[]"; #=> Interpolate an array using [] : a b c
 
-## - Hashes. Key-Value Pairs.
+## * Hashes. Key-Value Pairs.
 # Hashes are actually arrays of Pairs (`Key => Value`),
 #  except they get "flattened", removing duplicated keys.
 my %hash = 1 => 2,
@@ -72,7 +72,7 @@ my %hash = :w(1), # equivalent to `w => 1`
 say %hash{'key1'}; # You can use {} to get the value from a key
 say %hash<key2>; # if it's a string, you can actually use <>
 
-## - Subs (subroutines, or functions in most other languages). Stored in variable, they use `&`
+## * Subs (subroutines, or functions in most other languages). Stored in variable, they use `&`
 sub say-hello { say "Hello, world" }
 
 sub say-hello-to(Str $name) { # you can provide the type of an argument
@@ -348,9 +348,14 @@ say @array[^10]; # you can pass arrays as subscripts and it'll return an array o
 3 && 4; # 4, which is Truthy. Calls `.Bool` on `4` and gets `True`.
 0 || False; # False. Calls `.Bool` on `0`
 
-## Short-circuit (and tight) versions of the above
+## * Short-circuit (and tight) versions of the above
 $a && $b && $c; # returns the first argument that evaluates to False, or the last argument
 $a || $b;
+
+# And because you're going to want them, you also have composed assignment operators:
+$a *= 2; # multiply and assignment
+$b %%= 5; # divisible by and assignment
+$c .= say; # method call and assignment
 
 ### More on subs !
 # As we said before, Perl 6 has *really* powerful subs.
@@ -619,7 +624,7 @@ class Item does PrintableVal {
   # is an error, since the compiler wouldn't know which `print` to use :
   # contrarily to inheritance, methods mixed in can't be shadowed - they're put at the same "level"
   
-  # NOTE : You can use a role as a class (with `is ROLE`). In this case, methods will be shadowed,
+  # NOTE: You can use a role as a class (with `is ROLE`). In this case, methods will be shadowed,
   # since the compiler will consider `ROLE` to be a class
 }
 
@@ -785,14 +790,14 @@ sub do-db-stuff {
 ## The precedence list can be found here : http://perlcabal.org/syn/S03.html#Operator_precedence
 ## But first, we need a little explanation about associativity :
 
-# - Binary operators:
+# * Binary operators:
 $a ! $b ! $c; # with a left-associative `!`, this is `($a ! $b) ! $c`
 $a ! $b ! $c; # with a right-associative `!`, this is `$a ! ($b ! $c)`
 $a ! $b ! $c; # with a non-associative `!`, this is illegal
 $a ! $b ! $c; # with a chain-associative `!`, this is `($a ! $b) and ($b ! $c)`
 $a ! $b ! $c; # with a list-associative `!`, this is `infix:<>`
 
-# - Unary operators:
+# * Unary operators:
 !$a! # with left-associative `!`, this is `(!$a)!`
 !$a! # with right-associative `!`, this is `!($a!)`
 !$a! # with non-associative `!`, this is illegal
@@ -861,13 +866,58 @@ postcircumfix:<{ }>(%h, $key, :delete);
 # Oh boy, get ready. Get ready, because we're dwelving deep into the rabbit's hole,
 #  and you probably won't want to go back to other languages after reading that.
 #  (I'm guessing you don't want to already at that point).
+# Meta-operators, as their name suggests, are *composed* operators.
+# Basically, they're operators that apply another operator.
 
-# - Reduce meta-operator
+## * Reduce meta-operator
+# It's a prefix meta-operator that takes a binary functions and one or many lists.
+# If it doesn't get passed any argument, it either return a "default value" for this operator
+#  (a value that'd be non-meaningful if contained in a list) or `Any` if there's none.
+# Otherwise, it pops an element from the list(s) one at a time, and applies the binary function
+#  to the last result (or the list's first element) and the popped element.
+# To sum a list, you could use the reduce meta-operator with `+`, i.e.:
+say [+] 1, 2, 3; #=> 6
+# equivalent to `(1+2)+3`
+say [*] 1..5; #=> 120
+# equivalent to `((((1*2)*3)*4)*5)`.
 
-## End of the operator list:
+# You can reduce with any operator, not just with mathematical ones.
+# For example, you could reduce with `//` to get the first defined element of a list:
+say [//] Nil, Any, False, 1, 5; #=> False
+                                # (Falsey, but still defined)
 
 
-## Sequence operator
+# Default value examples:
+say [*] (); #=> 1
+say [+] (); #=> 0
+            # In both cases, they're results that, if they were contained in the lists,
+            # wouldn't have any impact on the final value (since N*1=N and N+0=N).
+say [//];   #=> (Any)
+            # There's no "default value" for `//`
+
+# You can also call it with a function you made up, using double brackets:
+sub add($a, $b) { $a + $b }
+say [[&add]] 1, 2, 3; #=> 6
+
+## * Zip meta-operator
+# This one is an infix meta-operator than also can be used as a "normal" operator.
+# It takes an optional binary function (by default, it just creates a pair),
+#  and will pop one value off of each array and call its binary function on these
+#  until it runs out of elements. It runs the an array with all these new elements.
+(1, 2) Z (3, 4); # ((1, 3), (2, 4)), since by default, the function makes an array
+1..3 Z+ 4..6; # (5, 7, 9), using the custom infix:<+> function
+
+# Since `Z` is list-associative (see the list above),
+#  you can use it on more than one list
+(True, False) Z|| (False, False) Z|| (False, False); # (True, False)
+
+# And, as it turns out, you can also use the reduce meta-operator with it:
+[Z||] (True, False), (False, False), (False, False); # (True, False)
+
+
+## And to end the operator list:
+
+## * Sequence operator
 # The sequence operator is one of Perl 6's most powerful features:
 # it's composed of first, on the left, the list you want Perl 6 to deduce from (and might include a closure),
 # and on the right, a value or the predicate for when to stop, or even Whatever for a lazy infinite list.
