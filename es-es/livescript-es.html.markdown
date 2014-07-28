@@ -5,6 +5,7 @@ contributors:
     - ["Christina Whyte", "http://github.com/kurisuwhyte/"]
 translators:
     - ["Daniel Zendejas", "http://github.com/DanielZendejas/"]
+lang: es-es
 ---
 
 LiveScript es un lenguaje funcional compilado sobre Javascript. Comparte
