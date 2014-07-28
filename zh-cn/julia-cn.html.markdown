@@ -8,7 +8,7 @@ translators:
 lang: zh-cn
 ---
 
-```julia
+```ruby
 # 单行注释只需要一个井号
 #= 多行注释
    只需要以 '#=' 开始 '=#' 结束
