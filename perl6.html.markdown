@@ -411,6 +411,7 @@ sub next-index($n) {
   $n + 1;
 }
 my $new-n = next-index(3); # $new-n is now 4
+
 # This is true for everything, except for the looping constructs (due to performance reasons):
 #  there's no purpose in building a list if we're just going to discard all the results.
 # If you still want to build one, you can use the `do` prefix: (or the `gather` prefix, which we'll see later)
@@ -710,6 +711,10 @@ Foo::Bar::inc; #=> 3
 constant Pi = 3.14;
 constant $var = 1;
 
+# And if you're wondering, yes, it can also contain infinite lists.
+constant why-not = 5, 15 ... *;
+say why-not[^5]; #=> 5 15 25 35 45
+
 ## * `state` (happens at run time, but only once)
 # State variables are only executed one time
 # (they exist in other langages such as C as `static`)
@@ -782,6 +787,62 @@ sub do-db-stuff {
   UNDO $db.rollback; # or rollback if all hell broke loose
 }
 
+### Statement prefixes
+# Those act a bit like phasers: they affect the behavior of the following code.
+# Though, they run in-line with the executable code, so they're in lowercase.
+# (`try` and `start` are theoretically in that list, but explained somewhere else)
+# Note: all of these (except start) don't need explicit brackets (`{` and `}`) for their block.
+
+# - `do` (that you already saw) - runs a block or a statement as a term
+# You can't normally use a statement as a value (or "term"):
+#
+#    my $value = if True { 1 } # `if` is a statement - parse error
+#
+# This works:
+my $a = do if True { 5 } # with `do`, `if` is now a term.
+
+# - `once` - Makes sure a piece of code only runs once
+for ^5 { once say 1 }; #=> 1
+                       # Only prints ... once.
+# Like `state`, they're cloned per-scope
+for ^5 { sub { once say 1 }() } #=> 1 1 1 1 1
+                                # Prints once per lexical scope
+
+# - `gather` - Co-routine thread
+# Gather allows you to `take` several values in an array,
+#  much like `do`, but allows you to take any expression.
+say gather for ^5 {
+  take $_ * 3 - 1;
+  take $_ * 3 + 1;
+} #=> -1 1 2 4 5 7 8 10 11 13
+say join ',', gather if False {
+  take 1;
+  take 2;
+  take 3;
+} # Doesn't print anything.
+
+# - `eager` - Evaluate statement eagerly (forces eager context)
+# Don't try this at home:
+#
+#    eager 1..*; # this will probably hang for a while (and might crash ...).
+#
+# But consider:
+constant thrice = gather for ^3 { say take $_ }; # Doesn't print anything
+# versus:
+constant thrice = eager gather for ^3 { say take $_ }; #=> 0 1 2 3 4
+
+# - `lazy` - Defer actual evaluation until value is fetched (forces lazy context)
+# Not yet implemented !!
+
+# - `sink` - An `eager` that discards the results (forces sink context)
+constant nilthingie = sink for ^3 { .say } #=> 0 1 2
+say nilthingie.perl; #=> Nil
+
+# - `quietly` - Supresses warnings
+# Not yet implemented !
+
+# - `contend` - Attempts side effects under STM
+# Not yet implemented !
 
 ### More operators thingies !
 
@@ -1004,4 +1065,37 @@ for <a b c> {
                    #  but the `^` makes it *not run* on the first iteration
                    #=> b c
 }
+
+### Extra: the MAIN subroutime
+# The `MAIN` subroutine is called when you run a Perl 6 file directly.
+# It's very powerful, because Perl 6 actually parses the argument
+#  and pass them as such to the sub. It also handles named argument (`--foo`)
+#  and will even go as far as to autogenerate a `--help`
+sub MAIN($name) { say "Hello, you !" }
+# This produces:
+#    $ perl6 cli.pl
+#    Usage:
+#      t.pl <name> 
+
+# And since it's a regular Perl 6 sub, you can haz multi-dispatch:
+# (using a "Bool" for the named argument so that we get `--replace` instead of `--replace=`)
+subset File of Str where *.IO.d; # convert to IO object, then check the file exists
+
+multi MAIN('add', $key, $value, Bool :$replace) { ... }
+multi MAIN('remove', $key) { ... }
+multi MAIN('import', File, Str :$as) { ... } # omitting parameter name
+# This produces:
+#    $ perl 6 cli.pl
+#    Usage:
+#      t.pl [--replace] add <key> <value> 
+#      t.pl remove <key>
+#      t.pl [--as=<Str>] import (File)
+# As you can see, this is *very* powerful. It even went as far as to show inline the constants.
+# (the type is only displayed if 1. there's no argument name 2. it's a named argument)
 ```
+
+If you want to go further, you can:
+ - Read the [Perl 6 Advent Calendar](http://perl6advent.wordpress.com/). This is probably the greatest source of Perl 6 information, snippets and such.
+ - Come along on `#perl6` at `irc.freenode.net`. The folks here are always helpful.
+ - Check the [source of Perl 6's functions and classes](https://github.com/rakudo/rakudo/tree/nom/src/core). Rakudo is mainly written in Perl 6 (with a lot of NQP, "Not Quite Perl", a Perl 6 subset easier to implement and optimize).
+ - Read the [Synopses](perlcabal.org/syn). They explain it from an implementor point-of-view, but it's still very interesting.
