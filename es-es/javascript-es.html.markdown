@@ -4,7 +4,7 @@ contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
 translators:
-	-["Daniel Zendejas","https://github.com/DanielZendejas"]
+    - ["Daniel Zendejas","https://github.com/DanielZendejas"]
 filename: javascript-es.js
 lang: es-es
 ---
