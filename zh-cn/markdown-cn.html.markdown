@@ -4,7 +4,7 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Fangzhou Chen"]
-filename: Markdown-cn.md
+filename: learnmarkdown-cn.md
 lang: zh-cn
 ---
 
