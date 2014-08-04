@@ -523,11 +523,13 @@ def double_numbers(iterable):
 # Instead of generating and returning all values at once it creates one in each
 # iteration.  This means values bigger than 15 wont be processed in
 # double_numbers.
-# Note range is a generator too. Creating a list 1-900000000 would take lot of
-# time to be made
-_range = range(1, 900000000)
+# Note xrange is a generator that does the same thing range does.
+# Creating a list 1-900000000 would take lot of time and space to be made.
+# xrange creates an xrange generator object instead of creating the entire list like range does.
+_xrange = xrange(1, 900000000)
+
 # will double all numbers until a result >=30 found
-for i in double_numbers(_range):
+for i in double_numbers(_xrange):
     print(i)
     if i >= 30:
         break
