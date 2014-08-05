@@ -329,9 +329,12 @@ try:
     raise IndexError("This is an index error")
 except IndexError as e:
     pass    # Pass is just a no-op. Usually you would do recovery here.
+except (TypeError, NameError):
+    pass    # Multiple exceptions can be handled together, if required.
+else:   # Optional clause to the try/except block. Must follow all except blocks
+    print("All good!")   # Runs only if the code in try raises no exceptions
 
-
-# Python's offers a fundamental abstraction called the Iterable.
+# Python offers a fundamental abstraction called the Iterable.
 # An iterable is an object that can be treated as a sequence.
 # The object returned the range function, is an iterable.
 
@@ -339,7 +342,7 @@ filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
 print(our_iterable) #=> range(1,10). This is an object that implements our Iterable interface
 
-i We can loop over it.
+# We can loop over it.
 for i in our_iterable:
     print(i)    # Prints one, two, three
 

@@ -334,6 +334,10 @@ try:
     raise IndexError("This is an index error")
 except IndexError as e:
     pass    # Pass is just a no-op. Usually you would do recovery here.
+except (TypeError, NameError):
+    pass    # Multiple exceptions can be handled together, if required.
+else:   # Optional clause to the try/except block. Must follow all except blocks
+    print "All good!"   # Runs only if the code in try raises no exceptions
 
 
 ####################################################
@@ -519,11 +523,13 @@ def double_numbers(iterable):
 # Instead of generating and returning all values at once it creates one in each
 # iteration.  This means values bigger than 15 wont be processed in
 # double_numbers.
-# Note range is a generator too. Creating a list 1-900000000 would take lot of
-# time to be made
-_range = range(1, 900000000)
+# Note xrange is a generator that does the same thing range does.
+# Creating a list 1-900000000 would take lot of time and space to be made.
+# xrange creates an xrange generator object instead of creating the entire list like range does.
+_xrange = xrange(1, 900000000)
+
 # will double all numbers until a result >=30 found
-for i in double_numbers(_range):
+for i in double_numbers(_xrange):
     print(i)
     if i >= 30:
         break

@@ -1066,6 +1066,134 @@ for <a b c> {
                    #=> b c
 }
 
+
+### Regular Expressions
+# I'm sure a lot of you have been waiting for this one.
+# Well, now that you know a good deal of Perl 6 already, we can get started.
+# First off, you'll have to forget about "PCRE regexps" (perl-compatible regexps).
+#
+# IMPORTANT: You may feel like you already know these because you know PCRE. You'd be wrong.
+# Some things are the same (like `?`, `+`, and `*`), but sometimes the semantics change (`|`).
+# Make sure you read carefully, because you might trip over a new behavior.
+#
+# Perl 6 has a looot of features related to RegExps. After all, Rakudo parses itself.
+# We're first going to look at the syntax itself, then talk about grammars (PEG-like),
+#  differences between the `token`, `regex` and `rule` keywords, and some more.
+# Side note: you still have access to PCRE regexps using the `:P5` modifier.
+#  (we won't be discussing this in this tutorial, however)
+#
+# In essence, Perl 6 natively implements PEG ("Parsing Expression Grammars").
+# The pecking order for ambiguous parses is determined by a multi-level tie-breaking test:
+#  - Longest token matching. `foo\s+` beats `foo` (by 2 or more positions)
+#  - Longest literal prefix. `food\w*` beats `foo\w*` (by 1)
+#  - Declaration from most-derived to less derived grammars (grammars are actually classes)
+#  - Earliest declaration wins
+say so 'a' ~~ /a/; #=> True
+say so 'a' ~~ / a /; # More readable with some spaces!
+
+# In all our examples, we're going to use the smart-matching operator against a regexp.
+# We're converting the result using `so`, but in fact, it's returning a `Match` object.
+# They know how to respond to list indexing, hash indexing (and return the matched string).
+# The results of the match are also available as `$/` (implicitly lexically-scoped).
+# You can also use the capture variables (`$0`, `$1`, ... - starting at 0, not 1 !).
+#
+# You can also note that `~~` does not perform start/end checking
+#  (meaning the regexp can be matched with just one char of the string),
+#  we're going to explain later how you can do it.
+
+# In Perl 6, you can have any alphanumeric as a literal, everything else has to be escaped,
+#  using a backslash or quotes.
+say so 'a|b' ~~ / a '|' b /; # `True`. Wouln't mean the same if `|` wasn't escaped
+say so 'a|b' ~~ / a \| b /; # `True`. Another way to escape it.
+
+# The whitespace in a regexp is actually not significant,
+#  unless you use the `:s` (`:sigspace`, significant space) modifier.
+say so 'a b c' ~~ / a b c /; # `False`. Space is not significant here
+say so 'a b c' ~~ /:s a b c /; # `True`. We added the modifier `:s` here.
+
+# It is, however, important as for how modifiers (that you're gonna see just below)
+#  are applied ...
+
+## Quantifying - `?`, `+`, `*` and `**`.
+# - `?` - 0 or 1
+so 'ac' ~~ / a b c /; # `False`
+so 'ac' ~~ / a b? c /; # `True`, the "b" matched 0 times.
+so 'abc' ~~ / a b? c /; # `True`, the "b" matched 1 time.
+
+# ... As you read just before, whitespace is important because it determines
+#  which part of the regexp is the target of the modifier:
+so 'def' ~~ / a b c? /; # `False`. Only the `c` is optional
+so 'def' ~~ / ab?c /; # `False`. Whitespace is not significant
+so 'def' ~~ / 'abc'? /; # `True`. The whole "abc" group is optional.
+
+# Here (and below) the quantifier applies only to the `b`
+
+# - `+` - 1 or more
+so 'ac' ~~ / a b+ c /; # `False`; `+` wants at least one matching
+so 'abc' ~~ / a b+ c /; # `True`; one is enough
+so 'abbbbc' ~~ / a b+ c /; # `True`, matched 4 "b"s
+
+# - `*` - 0 or more
+so 'ac' ~~ / a b* c /; # `True`, they're all optional.
+so 'abc' ~~ / a b* c /; # `True`
+so 'abbbbc' ~~ / a b* c /; # `True`
+so 'aec' ~~ / a b* c /; # `False`. "b"(s) are optional, but can't be something else.
+
+# - `**` - "Quantify It Yourself".
+# If you squint hard enough, you might understand the why exponentation means quantity.
+so 'abc' ~~ / a b ** 1 c /; # `True` (exactly one time)
+so 'abc' ~~ / a b ** 1..3 c /; # `True` (one to three times)
+so 'abbbc' ~~ / a b ** 1..3 c /; # `True`
+so 'abbbbbbc' ~~ / a b ** 1..3 c /; # `False` (too much)
+so 'abbbbbbc' ~~ / a b ** 3..* c /; # `True` (infinite ranges are okay)
+
+## Grouping and capturing
+# Group: you can group parts of your regexp with `[]`.
+# These groups are *not* captured (like PCRE's `(?:)`).
+so 'abc' ~~ / a [ b ] c /; # `True`. The grouping does pretty much nothing
+so 'fooABCABCbar' ~~ / foo [ A B C ] + bar /; # `True`.
+                                              # We match the "abc" 1 or more time.
+                                              # (the `+` was applied to the group)
+
+# But this does not go far enough, because we can't actually get back what we matched.
+# Capture: We can actually *capture* the results of the regexp, using parentheses.
+so 'fooABCABCbar' ~~ / foo ( A B C ) + bar /; # `True`. (we keep `so` here and use `$/` below)
+
+# So, starting with the grouping explanations.
+# As we said before, our `Match` object is available as `$/`:
+say $/; # Will print some weird stuff (we'll explain) (or "Nil" if nothing matched).
+
+# As we also said before, it has array indexing:
+say $/[0]; #=> ｢ABC｣ ｢ABC｣
+           # These weird brackets are `Match` objects. So here, we have an array of that.
+say $0; # the same as above.
+
+# Our capture is `$0` because it's the first and only one capture in the regexp.
+# You might be wondering why it's an array, and the answer is simple:
+# Some capture (indexed using `$0`, `$/[0]` or a named one) will be an array
+#  IF it can have more than one element (so, with `*`, `+` and any `**`, but not with `?`).
+# Let's use examples to see that:
+so 'fooABCbar' ~~ / foo ( A B C )? bar /; # `True`
+say $/[0]; #=> ｢ABC｣
+say $0.WHAT; #=> (Match)
+             # It can't be more than one, so it's only a single match object.
+so 'foobar' ~~ / foo ( A B C )? bar /; #=> True
+say $0.WHAT; #=> (Any)
+             # This capture did not match, so it's empty
+so 'foobar' ~~ / foo ( A B C ) ** 0..1 bar /; # `True`
+say $0.WHAT; #=> (Array)
+             # A specific quantifier will always capture an Array,
+             #  may it be a range or a specific value (even 1).
+
+# If you're wondering how the captures are numbered, here's an explanation:
+TODO use graphs from s05
+
+
+## Alternatives - the `or` of regexps
+# WARNING: They are DIFFERENT from PCRE regexps.
+so 'abc' ~~ / a [ b | y ] c /; # `True`. Either "b" or "y".
+so 'ayc' ~~ / a [ b | y ] c /; # `True`. Obviously enough ...
+
 ### Extra: the MAIN subroutime
 # The `MAIN` subroutine is called when you run a Perl 6 file directly.
 # It's very powerful, because Perl 6 actually parses the argument
