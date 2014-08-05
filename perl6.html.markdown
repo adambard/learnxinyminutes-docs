@@ -92,7 +92,7 @@ sub as-many($head, *@rest) { # the `*@` slurpy will basically "take everything e
                              # but not *after*.
   say @rest.join(' / ') ~ " !";
 }
-say as-many('Happy', 'Happy', 'Birthday'); #=> Happy Birthday !
+say as-many('Happy', 'Happy', 'Birthday'); #=> Happy / Birthday !
                                            # Note that the splat did not consume the parameter before.
 
 ## You can call a function with an array using the "argument list flattening" operator `|`
@@ -127,7 +127,7 @@ sub with-named($normal-arg, :$named) {
 }
 with-named(1, named => 6); #=> 7
 # There's one gotcha to be aware of, here:
-# If you quote your key, Perl 6 won't be able to see it as compile time,
+# If you quote your key, Perl 6 won't be able to see it at compile time,
 #  and you'll have a single Pair object as a positional paramater.
 
 with-named(2, :named(5)); #=> 7
@@ -171,9 +171,9 @@ named-def(def => 15); #=> 15
 
 ### Containers
 # In Perl 6, values are actually stored in "containers".
-# the assignment operator asks the container on the left to store the value on its right
+# The assignment operator asks the container on the left to store the value on its right.
 # When passed around, containers are marked as immutable. Which means that, in a function,
-#  you'll get an error if you try to mutate one of your argument.
+#  you'll get an error if you try to mutate one of your arguments.
 # If you really need to, you can ask for a mutable container using `is rw` :
 sub mutate($n is rw) {
   $n++;
@@ -374,7 +374,7 @@ sub foo(@array [$fst, $snd]) {
   say "My first is $fst, my second is $snd ! All in all, I'm @array[].";
   # (^ remember the `[]` to interpolate the array)
 }
-foo(@tail); #=> My first is 2, my second is 3 ! All in all, I'm 1 2
+foo(@tail); #=> My first is 2, my second is 3 ! All in all, I'm 2 3
 
 
 # If you're not using the array itself, you can also keep it anonymous, much like a scalar:
