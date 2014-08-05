@@ -38,9 +38,11 @@ Note: This article applies to Python 3 specifically. Check out the other tutoria
 # Except division which returns floats by default
 35 / 5  # => 7.0
 
-# Truncation or Integer division 
+# Result of integer division truncated down both for positive and negative. 
 5 // 3     # => 1
 5.0 // 3.0 # => 1.0
+-5 // 3  # => -2
+-5.0 // 3.0 # => -2.0
 
 # When you use a float, results are floats
 3 * 2.0 # => 6.0
@@ -51,7 +53,6 @@ Note: This article applies to Python 3 specifically. Check out the other tutoria
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
 
-
 # Boolean values are primitives
 True
 False
@@ -59,7 +60,6 @@ False
 # negate with not
 not True  # => False
 not False  # => True
-
 
 # Equality is ==
 1 == 1  # => True
@@ -78,7 +78,6 @@ not False  # => True
 # Comparisons can be chained!
 1 < 2 < 3  # => True
 2 < 3 < 2  # => False
-
 
 # Strings are created with " or '
 "This is a string."
