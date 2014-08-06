@@ -56,10 +56,15 @@ Note: This article applies to Python 3 specifically. Check out the other tutoria
 True
 False
 
+#Boolean Operators
 # negate with not
 not True  # => False
 not False  # => True
 
+# "and", "or" Note: case sensitive
+1 and 2 # => 1
+2 and 0 # => 0
+True or False # => True
 
 # Equality is ==
 1 == 1  # => True
