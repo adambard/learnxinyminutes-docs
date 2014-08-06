@@ -471,7 +471,10 @@ class Human(object):
     # A class attribute. It is shared by all instances of this class
     species = "H. sapiens"
 
-    # Basic initializer
+    # Basic initializer, this is called when this class is instantiated.
+    # Note that the double leading and trailing underscores denote objects
+    # or attributes that are used by python but that live in user-controlled
+    # namespaces. You should not invent such names on your own.
     def __init__(self, name):
         # Assign the argument to the instance's name attribute
         self.name = name
@@ -557,9 +560,11 @@ def double_numbers(iterable):
 # double_numbers.
 # Note range is a generator too. Creating a list 1-900000000 would take lot of
 # time to be made
-_range = range(1, 900000000)
+# We use a trailing underscore in variable names when we want to use a name that 
+# would normally collide with a python keyword
+range_ = range(1, 900000000)
 # will double all numbers until a result >=30 found
-for i in double_numbers(_range):
+for i in double_numbers(range_):
     print(i)
     if i >= 30:
         break
@@ -572,10 +577,10 @@ for i in double_numbers(_range):
 from functools import wraps
 
 
-def beg(_say):
-    @wraps(_say)
+def beg(target_function):
+    @wraps(target_function)
     def wrapper(*args, **kwargs):
-        msg, say_please = _say(*args, **kwargs)
+        msg, say_please = target_function(*args, **kwargs)
         if say_please:
             return "{} {}".format(msg, "Please! I am poor :(")
         return msg
