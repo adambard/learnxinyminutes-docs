@@ -7,6 +7,7 @@ contributors:
     - ["Alexandre Medeiros", "http://alemedeiros.sdf.org"]
     - ["Denis Arh", "https://github.com/darh"]
     - ["akirahirose", "https://twitter.com/akirahirose"]
+    - ["Anton Strömkvist", "http://lutic.org/"]
 filename: LearnBash.sh
 ---
 
@@ -80,6 +81,17 @@ fi
 # There is also conditional execution
 echo "Always executed" || echo "Only executed if first command fails"
 echo "Always executed" && echo "Only executed if first command does NOT fail"
+
+# To use && and || with if statements, you need multiple pairs of square brackets:
+if [ $NAME == "Steve" ] && [ $AGE -eq 15 ]
+then
+    echo "This will run if $NAME is Steve AND $AGE is 15."
+fi
+
+if [ $NAME == "Daniya" ] || [ $NAME == "Zach" ]
+then
+    echo "This will run if $NAME is Daniya OR Zach."
+fi
 
 # Expressions are denoted with the following format:
 echo $(( 10 + 5 ))
