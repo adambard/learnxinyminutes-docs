@@ -45,9 +45,11 @@ to Python 2.x. Look for another tour of Python 3 soon!
 2.0     # This is a float
 11.0 / 4.0  # => 2.75 ahhh...much better
 
-# Truncation or Integer division 
+# Result of integer division truncated down both for positive and negative. 
 5 // 3     # => 1
 5.0 // 3.0 # => 1.0 # works on floats too
+-5 // 3  # => -2
+-5.0 // 3.0 # => -2.0
 
 # Modulo operation
 7 % 3 # => 1
