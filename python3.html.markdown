@@ -40,7 +40,7 @@ Note: This article applies to Python 3 specifically. Check out the other tutoria
 
 # Result of integer division truncated down both for positive and negative. 
 5 // 3     # => 1
-5.0 // 3.0 # => 1.0
+5.0 // 3.0 # => 1.0 # works on floats too
 -5 // 3  # => -2
 -5.0 // 3.0 # => -2.0
 
