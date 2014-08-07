@@ -103,7 +103,7 @@ public class LearnJava {
         //The array size must be decided upon instantiation
         //The following formats work for declaring an arrow
         //<datatype> [] <var name> = new <datatype>[<array size>];
-        //<datetype> <var name>[] = new <datatype>[<array size>];
+        //<datatype> <var name>[] = new <datatype>[<array size>];
         int [] intArray = new int[10];
         String [] stringArray = new String[1];
         boolean boolArray [] = new boolean[100];
