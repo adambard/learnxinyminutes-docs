@@ -1,65 +1,76 @@
 ---
 language: lua
+filename: learnlua-ru.lua
 contributors:
     - ["Tyler Neylon", "http://tylerneylon.com/"]
-filename: learnlua.lua
+translators:
+    - ["Max Solomonov", "https://vk.com/solomonovmaksim"]
+lang: ru-ru
 ---
 
 ```lua
--- Two dashes start a one-line comment.
+-- Два дефиса начинают однострочный комментарий.
 
 --[[
-     Adding two ['s and ]'s makes it a
-     multi-line comment.
+    Добавление двух квадратных скобок
+    делает комментарий многострочным.
 --]]
 --------------------------------------------------------------------------------
--- 1. Variables and flow control.
+-- 1. Переменные, циклы и условия.
 --------------------------------------------------------------------------------
 
-num = 42  -- All numbers are doubles.
--- Don't freak out, 64-bit doubles have 52 bits for storing exact int
--- values; machine precision is not a problem for ints that need < 52 bits.
+num = 42  -- Все числа являются типом double.
+--[[ 
+    Не волнуйся, 64-битные double имеют 52 бита
+    для хранения именно целочисленных значений;
+    точность не является проблемой для
+    целочисленных значений, занимающих меньше
+    52 бит.
+--]]
 
-s = 'walternate'  -- Immutable strings like Python.
-t = "double-quotes are also fine"
-u = [[ Double brackets
-       start and end
-       multi-line strings.]]
-t = nil  -- Undefines t; Lua has garbage collection.
+s = 'walternate'  -- Неизменные строки как в Python.
+t = "Двойные кавычки также приветствуются"
+u = [[ Двойные квадратные скобки
+       начинают и заканчивают
+       многострочные значения.]]
+t = nil  -- Удаляет определение переменной t; Lua имеет мусорку.
 
--- Blocks are denoted with keywords like do/end:
+-- Циклы и условия имеют ключевые слова, такие как do/end:
 while num < 50 do
-  num = num + 1  -- No ++ or += type operators.
+  num = num + 1  -- Здесь нет ++ или += операторов.
 end
 
--- If clauses:
+-- Условие "если":
 if num > 40 then
-  print('over 40')
-elseif s ~= 'walternate' then  -- ~= is not equals.
-  -- Equality check is == like Python; ok for strs.
-  io.write('not over 40\n')  -- Defaults to stdout.
+  print('больше 40')
+elseif s ~= 'walternate' then  -- ~= обозначает "не равно".
+  -- Проверка равенства это == как в Python; ok для строк.
+  io.write('не больше 40\n')  -- По умолчанию стандартный вывод.
 else
-  -- Variables are global by default.
-  thisIsGlobal = 5  -- Camel case is common.
+  -- По умолчанию переменные являются глобальными.
+  thisIsGlobal = 5  -- Стиль CamelСase является общим.
 
-  -- How to make a variable local:
-  local line = io.read()  -- Reads next stdin line.
+  -- Как сделать локальную переменную:
+  local line = io.read()  -- Считывает введённую строку.
 
-  -- String concatenation uses the .. operator:
-  print('Winter is coming, ' .. line)
+  -- Конкатенация строк использует .. оператор:
+  print('Зима пришла, ' .. line)
 end
 
--- Undefined variables return nil.
--- This is not an error:
-foo = anUnknownVariable  -- Now foo = nil.
+-- Неопределённые переменные возвращают nil.
+-- Этот пример не является ошибочным:
+foo = anUnknownVariable  -- Теперь foo = nil.
 
 aBoolValue = false
 
--- Only nil and false are falsy; 0 and '' are true!
-if not aBoolValue then print('twas false') end
+-- Только значения nil и false являются ложными; 0 и '' являются истинными!
+if not aBoolValue then print('это значение ложно') end
 
--- 'or' and 'and' are short-circuited. This is similar to the a?b:c operator
--- in C/js:
+--[[
+     Для 'or' и 'and' действует принцип "какой оператор дальше, 
+     тот и применается". Это действует аналогично a?b:c 
+     операторам в C/js:
+--]]
 ans = aBoolValue and 'yes' or 'no'  --> 'no'
 
 karlSum = 0
