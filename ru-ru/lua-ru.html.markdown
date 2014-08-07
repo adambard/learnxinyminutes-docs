@@ -74,24 +74,24 @@ if not aBoolValue then print('это значение ложно') end
 ans = aBoolValue and 'yes' or 'no'  --> 'no'
 
 karlSum = 0
-for i = 1, 100 do  -- The range includes both ends.
+for i = 1, 100 do  -- Здесь указан диапазон, ограниченный с двух сторон.
   karlSum = karlSum + i
 end
 
--- Use "100, 1, -1" as the range to count down:
+-- Используйте "100, 1, -1" как нисходящий диапазон:
 fredSum = 0
 for j = 100, 1, -1 do fredSum = fredSum + j end
 
--- In general, the range is begin, end[, step].
+-- В основном, диапазон устроен так: начало, конец[, шаг].
 
--- Another loop construct:
+-- Другая конструкция цикла:
 repeat
-  print('the way of the future')
+  print('путь будущего')
   num = num - 1
 until num == 0
 
 --------------------------------------------------------------------------------
--- 2. Functions.
+-- 2. Функции.
 --------------------------------------------------------------------------------
 
 function fib(n)
@@ -99,10 +99,10 @@ function fib(n)
   return fib(n - 2) + fib(n - 1)
 end
 
--- Closures and anonymous functions are ok:
+-- Вложенные и анонимные функции являются нормой:
 function adder(x)
-  -- The returned function is created when adder is called, and remembers the
-  -- value of x:
+  -- Возращаемая функция создаётся когда adder вызывается, тот в свою очередь
+  -- запоминает значение переменной x:
   return function (y) return x + y end
 end
 a1 = adder(9)
