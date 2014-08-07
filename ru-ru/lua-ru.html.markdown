@@ -5,6 +5,7 @@ contributors:
     - ["Tyler Neylon", "http://tylerneylon.com/"]
 translators:
     - ["Max Solomonov", "https://vk.com/solomonovmaksim"]
+    - ["Max Truhonin", "https://vk.com/maximmax42"]	
 lang: ru-ru
 ---
 
@@ -110,20 +111,20 @@ a2 = adder(36)
 print(a1(16))  --> 25
 print(a2(64))  --> 100
 
--- Returns, func calls, and assignments all work with lists that may be
--- mismatched in length. Unmatched receivers are nil; unmatched senders are
--- discarded.
+-- Возвраты, вызовы функций и присвоения, вся работа с перечисленным может иметь 
+-- неодинаковое кол-во аргументов/элементов. Неиспользуемые аргументы являются nil и 
+-- отбрасываются на приёме.
 
 x, y, z = 1, 2, 3, 4
--- Now x = 1, y = 2, z = 3, and 4 is thrown away.
+-- Теперь x = 1, y = 2, z = 3, и 4 просто отбрасывается.
 
 function bar(a, b, c)
   print(a, b, c)
   return 4, 8, 15, 16, 23, 42
 end
 
-x, y = bar('zaphod')  --> prints "zaphod  nil nil"
--- Now x = 4, y = 8, values 15..42 are discarded.
+x, y = bar('zaphod')  --> выводит "zaphod  nil nil"
+-- Теперь x = 4, y = 8, а значения 15..42 отбрасываются.
 
 -- Functions are first-class, may be local/global. These are the same:
 function f(x) return x * x end
