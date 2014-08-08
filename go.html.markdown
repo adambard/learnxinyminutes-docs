@@ -386,6 +386,8 @@ There you can follow the tutorial, play interactively, and read lots.
 The language definition itself is highly recommended.  It's easy to read
 and amazingly short (as language definitions go these days.)
 
+You can play around with the code on [Go playground](https://play.golang.org/p/tnWMjr16Mm). Try to change it and run it from your browser! Note that you can use [https://play.golang.org](https://play.golang.org) as a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) to test things and code in your browser, without even installing Go.
+
 On the reading list for students of Go is the [source code to the standard
 library](http://golang.org/src/pkg/).  Comprehensively documented, it
 demonstrates the best of readable and understandable Go, Go style, and Go
