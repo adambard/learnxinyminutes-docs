@@ -299,7 +299,6 @@ Person("George", "1234") == Person("Kate", "1236")
 
 
 
-
 // Pattern matching
 
 val me = Person("George", "1234")
@@ -322,14 +321,21 @@ kate match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy"
 
 
 // Regular expressions
-
 val email = "(.*)@(.*)".r  // Invoking r on String makes it a Regex
+val serialKey = """(\d{5})-(\d{5})-(\d{5})-(\d{5})""".r // Using multiline string syntax
 
-val email(user, domain) = "henry@zkpr.com"
-
-"mrbean@pyahoo.com" match {
-  case email(name, domain) => "I know your name, " + name
+val matcher = (value: String) => {
+  println(value match {
+	case email(name, domain) => s"It was an email: $name"
+	case serialKey(p1, p2, p3, p4) => s"Serial key: $p1, $p2, $p3, $p4"
+	case _ => s"No match on '$value'" // default if no match found
+  })
 }
+
+matcher("mrbean@pyahoo.com")
+matcher("nope..")
+matcher("52917")
+matcher("52752-16432-22178-47917")
 
 
 
@@ -347,17 +353,27 @@ println("ABCDEF".length)
 println("ABCDEF".substring(2, 6))
 println("ABCDEF".replace("C", "3"))
 
+// String interpolation
 val n = 45
 println(s"We have $n apples")
 
+// Expressions inside interpolated strings are also possible
 val a = Array(11, 9, 6)
-println(s"My second daughter is ${a(2-1)} years old")
+println(s"My second daughter is ${a(0) - a(2)} years old")
+println(s"We have double the amount of ${n / 2.0} in apples.")
+println(s"Power of 2: ${math.pow(2, 2)}") // Power of 2: 4.0
+
+// Formatting with interpolated strings (note the prefixed f)
+println(f"Power of 5: ${math.pow(5, 2)}%1.0f") // Power of 5: 25
+println(f"Square root of 122: ${math.sqrt(122)}%1.4f") // Square root of 122
+
+// Ignoring special characters.
+println(raw"New line feed: \n. Carriage return: \r.")
 
 // Some characters need to be 'escaped', e.g. a double quote inside a string:
 val a = "They stood outside the \"Rose and Crown\""
 
 // Triple double-quotes let strings span multiple rows and contain quotes
-
 val html = """<form id="daform">
                 <p>Press belo', Joe</p>
              |  <input type="submit">
@@ -403,7 +419,10 @@ for(line <- Source.fromFile("myfile.txt").getLines())
   println(line)
 
 // To write a file use Java's PrintWriter
-
+val writer = new PrintWriter("myfile.txt")
+writer.write("Writing line for line" + util.Properties.lineSeparator)
+writer.write("Another line here" + util.Properties.lineSeparator)
+writer.close()
 
 ```
 
