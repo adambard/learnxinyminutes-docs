@@ -177,6 +177,14 @@ func learnFlowControl() {
 		break    // Just kidding.
 		continue // Unreached.
 	}
+
+	// You can use range to iterate over an array, a slice, a string, a map, or a channel.
+	// range returns one (channel) or two values (array, slice, string and map).
+	for key, value := range map[string]int{"one": 1, "two": 2, "three": 3} {
+		// for each pair in the map, print key and value
+		fmt.Printf("key=%s, value=%d\n", key, value)
+	}
+
 	// As with for, := in an if statement means to declare and assign
 	// y first, then test y > x.
 	if y := expensiveComputation(); y > x {
