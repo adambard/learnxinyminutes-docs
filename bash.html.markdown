@@ -140,6 +140,20 @@ do
     echo "$VARIABLE"
 done
 
+# They can also be used to act on files..
+# This will run the command 'cat' on file1 and file2
+for VARIABLE in file1 file2
+do
+    cat "$VARIABLE"
+done
+
+# ..or the output from a command
+# This will cat the output from ls.
+for OUTPUT in $(ls)
+do
+    cat "$OUTPUT"
+done
+
 # while loop:
 while [ true ]
 do
