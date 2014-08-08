@@ -322,7 +322,7 @@ kate match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy"
 
 // Regular expressions
 val email = "(.*)@(.*)".r  // Invoking r on String makes it a Regex
-val serialKey = """(\d{5})-(\d{5})-(\d{5})-(\d{5})""".r // Using multiline string syntax
+val serialKey = """(\d{5})-(\d{5})-(\d{5})-(\d{5})""".r // Using verbatim (multiline) syntax
 
 val matcher = (value: String) => {
   println(value match {
