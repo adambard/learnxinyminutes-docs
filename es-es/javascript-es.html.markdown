@@ -471,8 +471,8 @@ var miNumeroObjeto = new Number(12);
 miNumero == miNumeroObjeto; // = true
 
 // No son exactamente iguales.
-typeof(miNumero); // = 'number'
-typeof(miNumeroObjeto); // = 'object'
+typeof miNumero; // = 'number'
+typeof miNumeroObjeto; // = 'object'
 miNumero === miNumeroObjeyo; // = false
 if (0){
     // Este código no se ejecutara porque 0 es false.

@@ -397,8 +397,8 @@ var myNumberObj = new Number(12);
 myNumber == myNumberObj; // = true
 
 // Genau genommen: Sie sind nicht exakt äquivalent.
-typeof(myNumber); // = 'number'
-typeof(myNumberObj); // = 'object'
+typeof myNumber; // = 'number'
+typeof myNumberObj; // = 'object'
 myNumber === myNumberObj; // = false
 if (0){
     // Dieser Teil wird nicht ausgeführt, weil 0 'falsy' ist.
