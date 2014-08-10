@@ -126,11 +126,11 @@ end
 x, y = bar('zaphod')  --> выводит "zaphod  nil nil"
 -- Теперь x = 4, y = 8, а значения 15..42 отбрасываются.
 
--- Functions are first-class, may be local/global. These are the same:
+-- Функции могут быть локальными и глобальными. Эти строки делают одно и то же:
 function f(x) return x * x end
 f = function (x) return x * x end
 
--- And so are these:
+-- Эти тоже:
 local function g(x) return math.sin(x) end
 local g = function(x) return math.sin(x) end
 -- Equivalent to local function g(x)..., except referring to g in the function
@@ -140,17 +140,17 @@ local g; g  = function (x) return math.sin(x) end
 
 -- Trig funcs work in radians, by the way.
 
--- Calls with one string param don't need parens:
-print 'hello'  -- Works fine.
+-- Вызов функции с одним текстовым параметром не требует круглых скобок:
+print 'hello'  -- Работает без ошибок.
 
--- Calls with one table param don't need parens either (more on tables below):
+-- Вызов функции с одним табличным параметром так же не требуют круглых скобок (про таблицы в след.части):
 print {} -- Works fine too.
 
 --------------------------------------------------------------------------------
--- 3. Tables.
+-- 3. Таблицы.
 --------------------------------------------------------------------------------
 
--- Tables = Lua's only compound data structure; they are associative arrays.
+-- Таблицы = структура данных, свойственная только для Lua; это ассоциативные массивы.
 -- Similar to php arrays or js objects, they are hash-lookup dicts that can
 -- also be used as lists.
 
@@ -160,9 +160,9 @@ print {} -- Works fine too.
 t = {key1 = 'value1', key2 = false}
 
 -- String keys can use js-like dot notation:
-print(t.key1)  -- Prints 'value1'.
-t.newKey = {}  -- Adds a new key/value pair.
-t.key2 = nil   -- Removes key2 from the table.
+print(t.key1)  -- Печатает 'value1'.
+t.newKey = {}  -- Добавляет новую пару ключ-значение.
+t.key2 = nil   -- Удаляет key2 из таблицы.
 
 -- Literal notation for any (non-nil) value as key:
 u = {['@!#'] = 'qbert', [{}] = 1729, [6.28] = 'tau'}
@@ -170,7 +170,7 @@ print(u[6.28])  -- prints "tau"
 
 -- Key matching is basically by value for numbers and strings, but by identity
 -- for tables.
-a = u['@!#']  -- Now a = 'qbert'.
+a = u['@!#']  -- Теперь a = 'qbert'.
 b = u[{}]     -- We might expect 1729, but it's nil:
 -- b = nil since the lookup fails. It fails because the key we used is not the
 -- same object as the one used to store the original value. So strings &
@@ -180,7 +180,7 @@ b = u[{}]     -- We might expect 1729, but it's nil:
 function h(x) print(x.key1) end
 h{key1 = 'Sonmi~451'}  -- Prints 'Sonmi~451'.
 
-for key, val in pairs(u) do  -- Table iteration.
+for key, val in pairs(u) do  -- Итерация цикла с таблицей.
   print(key, val)
 end
 
