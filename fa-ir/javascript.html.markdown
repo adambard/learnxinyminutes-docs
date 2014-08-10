@@ -493,8 +493,8 @@ myNumber == myNumberObj; // = true
 
 <p dir='rtl'>به جز این که این سازنده ها دقیقا مانند سازنده های دیگر نیستند.</p>
 ```js
-typeof(myNumber); // = 'number'
-typeof(myNumberObj); // = 'object'
+typeof myNumber; // = 'number'
+typeof myNumberObj; // = 'object'
 myNumber === myNumberObj; // = false
 if (0){
     // This code won't execute, because 0 is falsy.
