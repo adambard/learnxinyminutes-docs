@@ -107,13 +107,13 @@ can include line breaks.` // Same string type.
 	// the array variable is updated in place, as in example below.
 	s := []int{1, 2, 3}		// Result is a slice of length 3.
 	s = append(s, 4, 5, 6)	// Added 3 elements. Slice now has length of 6.
-    fmt.Println(s) // Updated slice is now [1 2 3 4 5 6]
-    // To append another slice, instead of list of atomic elements we can
+	fmt.Println(s) // Updated slice is now [1 2 3 4 5 6]
+	// To append another slice, instead of list of atomic elements we can
 	// pass a reference to a slice or a slice literal like this, with a
 	// trailing elipsis, meaning take an array and unpack its elements,
 	// appending them to the slice.
 	s = append(s, []int{7, 8, 9}...) // Second argument is an array literal.
-    fmt.Println(s)	// Updated slice is now [1 2 3 4 5 6 7 8 9]
+	fmt.Println(s)	// Updated slice is now [1 2 3 4 5 6 7 8 9]
 
 	p, q := learnMemory() // Declares p, q to be type pointer to int.
 	fmt.Println(*p, *q)   // * follows a pointer.  This prints two ints.
