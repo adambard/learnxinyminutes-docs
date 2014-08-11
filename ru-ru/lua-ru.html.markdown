@@ -144,7 +144,7 @@ local g; g  = function (x) return math.sin(x) end
 print 'hello'  -- Работает без ошибок.
 
 -- Вызов функции с одним табличным параметром так же не требуют круглых скобок (про таблицы в след.части):
-print {} -- Works fine too.
+print {} -- Тоже сработает.
 
 --------------------------------------------------------------------------------
 -- 3. Таблицы.
@@ -166,7 +166,7 @@ t.key2 = nil   -- Удаляет key2 из таблицы.
 
 -- Literal notation for any (non-nil) value as key:
 u = {['@!#'] = 'qbert', [{}] = 1729, [6.28] = 'tau'}
-print(u[6.28])  -- prints "tau"
+print(u[6.28])  -- пишет "tau"
 
 -- Key matching is basically by value for numbers and strings, but by identity
 -- for tables.
@@ -178,14 +178,14 @@ b = u[{}]     -- We might expect 1729, but it's nil:
 
 -- A one-table-param function call needs no parens:
 function h(x) print(x.key1) end
-h{key1 = 'Sonmi~451'}  -- Prints 'Sonmi~451'.
+h{key1 = 'Sonmi~451'}  -- Печатает 'Sonmi~451'.
 
 for key, val in pairs(u) do  -- Итерация цикла с таблицей.
   print(key, val)
 end
 
--- _G is a special table of all globals.
-print(_G['_G'] == _G)  -- Prints 'true'.
+-- _G - это таблица со всеми глобалями.
+print(_G['_G'] == _G)  -- Печатает 'true'.
 
 -- Using tables as lists / arrays:
 
@@ -198,7 +198,7 @@ end
 -- keys, treated as a list.
 
 --------------------------------------------------------------------------------
--- 3.1 Metatables and metamethods.
+-- 3.1 Мета-таблицы и мета-методы.
 --------------------------------------------------------------------------------
 
 -- A table can have a metatable that gives the table operator-overloadish
@@ -207,7 +207,7 @@ end
 f1 = {a = 1, b = 2}  -- Represents the fraction a/b.
 f2 = {a = 2, b = 3}
 
--- This would fail:
+-- Это не сработает:
 -- s = f1 + f2
 
 metafraction = {}
@@ -221,7 +221,7 @@ end
 setmetatable(f1, metafraction)
 setmetatable(f2, metafraction)
 
-s = f1 + f2  -- call __add(f1, f2) on f1's metatable
+s = f1 + f2  -- вызывает __add(f1, f2) на мета-таблице f1
 
 -- f1, f2 have no key for their metatable, unlike prototypes in js, so you must
 -- retrieve it as in getmetatable(f1). The metatable is a normal table with
@@ -235,7 +235,7 @@ s = f1 + f2  -- call __add(f1, f2) on f1's metatable
 defaultFavs = {animal = 'gru', food = 'donuts'}
 myFavs = {food = 'pizza'}
 setmetatable(myFavs, {__index = defaultFavs})
-eatenBy = myFavs.animal  -- works! thanks, metatable
+eatenBy = myFavs.animal  -- работает! спасибо, мета-таблица.
 
 --------------------------------------------------------------------------------
 -- Direct table lookups that fail will retry using the metatable's __index
@@ -247,21 +247,21 @@ eatenBy = myFavs.animal  -- works! thanks, metatable
 -- Values of __index,add, .. are called metamethods.
 -- Full list. Here a is a table with the metamethod.
 
--- __add(a, b)                     for a + b
--- __sub(a, b)                     for a - b
--- __mul(a, b)                     for a * b
--- __div(a, b)                     for a / b
--- __mod(a, b)                     for a % b
--- __pow(a, b)                     for a ^ b
--- __unm(a)                        for -a
--- __concat(a, b)                  for a .. b
--- __len(a)                        for #a
--- __eq(a, b)                      for a == b
--- __lt(a, b)                      for a < b
--- __le(a, b)                      for a <= b
--- __index(a, b)  <fn or a table>  for a.b
--- __newindex(a, b, c)             for a.b = c
--- __call(a, ...)                  for a(...)
+-- __add(a, b)                     для a + b
+-- __sub(a, b)                     для a - b
+-- __mul(a, b)                     для a * b
+-- __div(a, b)                     для a / b
+-- __mod(a, b)                     для a % b
+-- __pow(a, b)                     для a ^ b
+-- __unm(a)                        для -a
+-- __concat(a, b)                  для a .. b
+-- __len(a)                        для #a
+-- __eq(a, b)                      для a == b
+-- __lt(a, b)                      для a < b
+-- __le(a, b)                      для a <= b
+-- __index(a, b)  <fn or a table>  для a.b
+-- __newindex(a, b, c)             для a.b = c
+-- __call(a, ...)                  для a(...)
 
 --------------------------------------------------------------------------------
 -- 3.2 Class-like tables and inheritance.
@@ -335,7 +335,7 @@ function LoudDog:new()
 end
 
 --------------------------------------------------------------------------------
--- 4. Modules.
+-- 4. Модули.
 --------------------------------------------------------------------------------
 
 
