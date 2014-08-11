@@ -20,7 +20,8 @@ Auf [der CoffeeScript Website](http://coffeescript.org/) gibt es ein ausführlic
 # Kommentare werden daher wie in Ruby und Python mit Hashes gekennzeichnet
 
 ###
-Kommentarblöcke sehen aus wie diese und werden direkt nach '/ *s und '* /s im erzeugten JavaScript transpiliert.
+Kommentarblöcke sehen aus wie diese und werden direkt nach '/ *s und '* /s
+im erzeugten JavaScript transpiliert.
 
 Vorweg: bevor du mit CoffeeScript anfängst solltest du einen guten Überblick
 über die Eigenheiten von JavaScript an sich haben.
