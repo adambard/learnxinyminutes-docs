@@ -252,4 +252,4 @@ undefined; usado para indicar un valor que aún no está definido.
 (succ 20) ; => 21
 ```
 
-Para más información, revisa [repo](http://github.com/L8D/whip)
+Para más información, revisa el [repositorio](http://github.com/L8D/whip)
