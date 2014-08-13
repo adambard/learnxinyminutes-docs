@@ -134,14 +134,28 @@ case "$VARIABLE" in
 esac
 
 # for loops iterate for as many arguments given:
-# The contents of var $VARIABLE is printed three times.
+# The contents of $VARIABLE is printed three times.
 for VARIABLE in {1..3}
 do
     echo "$VARIABLE"
 done
 
+# They can also be used to act on files..
+# This will run the command 'cat' on file1 and file2
+for VARIABLE in file1 file2
+do
+    cat "$VARIABLE"
+done
+
+# ..or the output from a command
+# This will cat the output from ls.
+for OUTPUT in $(ls)
+do
+    cat "$OUTPUT"
+done
+
 # while loop:
-while [true]
+while [ true ]
 do
     echo "loop body here..."
     break
