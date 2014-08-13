@@ -31,7 +31,7 @@ not_in_form
 (called_function args)
 
 ; Majority of operations are done with functions
-; All the basic arihmetic is pretty straight forward
+; All the basic arithmetic is pretty straight forward
 (+ 1 1) ; => 2
 (- 2 1) ; => 1
 (* 1 2) ; => 2
@@ -48,7 +48,7 @@ not_in_form
 true
 false
 
-; String are created with ".
+; Strings are created with ".
 "Hello, world"
 
 ; Single chars are created with '.
@@ -66,7 +66,7 @@ false
 (= 1 1) ; => true
 (equal 2 1) ; => false
 
-; For example, inequality would be combinding the not and equal functions.
+; For example, inequality would be combining the not and equal functions.
 (! (= 2 1)) ; => true
 
 ; More comparisons
@@ -96,10 +96,10 @@ undefined ; user to indicate a value that hasn't been set
 ; 2. Vairbles, Lists, and Dicts
 
 ; Variables are declared with the `def` or `let` functions.
-; Variab;es that haven't been set will be `undefined`.
+; Variables that haven't been set will be `undefined`.
 (def some_var 5)
 ; `def` will keep the variable in the global context.
-; `let` will only have the variable inside it's context, and has a wierder syntax.
+; `let` will only have the variable inside its context, and has a wierder syntax.
 (let ((a_var 5)) (+ a_var 5)) ; => 10
 (+ a_var 5) ; = undefined + 5 => undefined
 
@@ -129,7 +129,7 @@ undefined ; user to indicate a value that hasn't been set
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; 3. Logic and Control sequences
 
-; The `if` function is pretty simple, though different than most imperitave langs.
+; The `if` function is pretty simple, though different than most imperative langs.
 (if true "returned if first arg is true" "returned if first arg is false")
 ; => "returned if first arg is true"
 
@@ -159,12 +159,12 @@ undefined ; user to indicate a value that hasn't been set
 ;         |       | arguments
 ;         | lambda declaration function
 ;         |
-;   name of the to-be-decalred lambda
+;   name of the to-be-declared lambda
 
 (my_function 10 10) ; = (+ (+ 10 10) 10) => 30
 
 ; Obiously, all lambdas by definition are anonymous and
-; technically always used anonymouesly. Redundancy.
+; technically always used anonymously. Redundancy.
 ((lambda (x) x) 10) ; => 10
 
 ;;;;;;;;;;;;;;;;
