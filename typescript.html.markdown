@@ -37,8 +37,8 @@ function bigHorribleAlert(): void {
   alert("I'm a little annoying box!");
 }
 
-//Functions are first class citizens, have a shortened definition and can leverage the strong type inference
-//All examples are equivalent, the same signature will be infered by the compiler and the same JavaScript will be emitted
+//Functions are first class citizens, support the lambda "fat arrow" syntax and use type inference
+//All examples are equivalent, the same signature will be infered by the compiler, and same JavaScript will be emitted
 var f1 = function(i: number) : number { return i * i; }
 var f2 = function(i: number) { return i * i; } //Return type infered #TODO bug!
 var f3 = (i : number) : number => { return i * i; }
@@ -106,7 +106,7 @@ class Point3D extends Point {
 		super(x, y); //Explicit call to the super class constructor is mandatory
 	}
 	
-	/Overwrite
+	//Overwrite
 	dist() {
 		var d = super.dist();
 		return Math.sqrt(d * d + this.z * this.z);
@@ -117,7 +117,7 @@ class Point3D extends Point {
 
 //Generics
 
-//Including references to a definition file
+//Including references to a definition file:
 /// <reference path="jquery.d.ts" />
 
 ```
