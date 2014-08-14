@@ -6,18 +6,19 @@ contributors:
 
 TypeScript is a language that aims at easing development of large scale applications written in JavaScript.
 TypeScript adds common concepts such as classes, modules, interfaces, generics and (optional) static typing to JavaScript.
-It is a superset of JavaScript: any JavaScript code is valid TypeScript code so it can be added seamlessly to any project.
-TypeScript code compiles down to JavaScript.
+It is a superset of JavaScript: all JavaScript code is valid TypeScript code so it can be added seamlessly to any project. In turn, the TypeScript compiler transform the code to JavaScript.
 
 This article will focus only on TypeScript added syntax, everything else is plain [JavaScript] (../javascript/).
 
+To test TypeScript's compiler, head to the [Playground] (http://www.typescriptlang.org/Playground) where you will be able to type code, have auto completion and directly see the resulting JavaScript.
+
 ```ts
-//There are 4 basic types in TypeScript
+//There are 3 basic types in TypeScript
 var isDone: boolean = false;
 var lines: number = 42;
 var name: string = "Anders";
 
-//However, when it's impossible to know, there is the "Any" type
+//When it's impossible to know, there is the "Any" type
 var notSure: any = 4;
 notSure = "maybe a string instead";
 notSure = false; // okay, definitely a boolean
@@ -67,7 +68,7 @@ mySearch = function(src: string, sub: string) {
 
 ```
 
-To test TypeScript's compiler, head to the [Playground] (http://www.typescriptlang.org/Playground).
+
 
 ## Further Reading
  * [TypeScript Official website] (http://www.typescriptlang.org/)
