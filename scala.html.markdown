@@ -332,11 +332,10 @@ val matcher = (value: String) => {
   })
 }
 
-matcher("mrbean@pyahoo.com")
-matcher("nope..")
-matcher("52917")
-matcher("52752-16432-22178-47917")
-
+matcher("mrbean@pyahoo.com") // => "It was an email: mrbean"
+matcher("nope..") // => "No match on 'nope..'"
+matcher("52917") // => "No match on '52917'"
+matcher("52752-16432-22178-47917") // => "Serial key: 52752, 16432, 22178, 47917"
 
 
 // Strings
@@ -359,13 +358,13 @@ println(s"We have $n apples")
 
 // Expressions inside interpolated strings are also possible
 val a = Array(11, 9, 6)
-println(s"My second daughter is ${a(0) - a(2)} years old")
-println(s"We have double the amount of ${n / 2.0} in apples.")
-println(s"Power of 2: ${math.pow(2, 2)}") // Power of 2: 4.0
+println(s"My second daughter is ${a(0) - a(2)} years old") // => "My second daughter is 5 years old"
+println(s"We have double the amount of ${n / 2.0} in apples.") // => "We have double the amount of 22.5 in apples."
+println(s"Power of 2: ${math.pow(2, 2)}") // => "Power of 2: 4"
 
 // Formatting with interpolated strings (note the prefixed f)
-println(f"Power of 5: ${math.pow(5, 2)}%1.0f") // Power of 5: 25
-println(f"Square root of 122: ${math.sqrt(122)}%1.4f") // Square root of 122
+println(f"Power of 5: ${math.pow(5, 2)}%1.0f") // "Power of 5: 25"
+println(f"Square root of 122: ${math.sqrt(122)}%1.4f") // "Square root of 122"
 
 // Ignoring special characters.
 println(raw"New line feed: \n. Carriage return: \r.")
