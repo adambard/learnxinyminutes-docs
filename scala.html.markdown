@@ -354,11 +354,11 @@ println("ABCDEF".replace("C", "3"))
 
 // String interpolation
 val n = 45
-println(s"We have $n apples")
+println(s"We have $n apples") // => "We have 45 apples"
 
 // Expressions inside interpolated strings are also possible
 val a = Array(11, 9, 6)
-println(s"My second daughter is ${a(0) - a(2)} years old") // => "My second daughter is 5 years old"
+println(s"My second daughter is ${a(0) - a(2)} years old.") // => "My second daughter is 5 years old."
 println(s"We have double the amount of ${n / 2.0} in apples.") // => "We have double the amount of 22.5 in apples."
 println(s"Power of 2: ${math.pow(2, 2)}") // => "Power of 2: 4"
 
@@ -367,10 +367,10 @@ println(f"Power of 5: ${math.pow(5, 2)}%1.0f") // "Power of 5: 25"
 println(f"Square root of 122: ${math.sqrt(122)}%1.4f") // "Square root of 122"
 
 // Ignoring special characters.
-println(raw"New line feed: \n. Carriage return: \r.")
+println(raw"New line feed: \n. Carriage return: \r.") // => "New line feed: \n. Carriage return: \r."
 
 // Some characters need to be 'escaped', e.g. a double quote inside a string:
-val a = "They stood outside the \"Rose and Crown\""
+val a = "They stood outside the \"Rose and Crown\"" // => "They stood outside the "Rose and Crown""
 
 // Triple double-quotes let strings span multiple rows and contain quotes
 val html = """<form id="daform">
