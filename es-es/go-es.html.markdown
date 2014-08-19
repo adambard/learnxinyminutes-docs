@@ -77,7 +77,7 @@ func learnTypes() {
 saltos de línea.` // mismo tipo cadena
 
     // Literal no ASCII. Los fuentes de Go son UTF-8.
-    g := 'Σ' // Tipo rune, un alias de uint32, alberga un punto unicode.
+    g := 'Σ' // Tipo rune, un alias de int32, alberga un punto unicode.
     f := 3.14195 // float64, el estándar IEEE-754 de coma flotante 64-bit.
     c := 3 + 4i  // complex128, representado internamente por dos float64.
     // Sintaxis Var con inicializadores.
