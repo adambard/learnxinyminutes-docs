@@ -30,7 +30,7 @@ double paragraphs, and single notes.
 
 # In Perl 6, you declare a lexical variable using `my`
 my $variable;
-# Perl 6 has 4 variable types :
+# Perl 6 has 4 kinds of variables:
 
 ## * Scalars. They represent a single value. They start with a `$`
 
@@ -56,7 +56,8 @@ my @array = <a b c>; # array of words, delimited by space.
 
 say @array[2]; # Array indices start at 0 -- This is the third element
 
-say "Interpolate an array using [] : @array[]"; #=> Interpolate an array using [] : a b c
+say "Interpolate an array using [] : @array[]";
+#=> Interpolate an array using [] : a b c
 
 ## * Hashes. Key-Value Pairs.
 # Hashes are actually arrays of Pairs (`Key => Value`),
@@ -99,7 +100,7 @@ my &s = &say-hello;
 my &other-s = sub { say "Anonymous function !" }
 
 # A sub can have a "slurpy" parameter, or "doesn't-matter-how-many"
-sub as-many($head, *@rest) { # The `*@` slurpy will basically "take everything else".
+sub as-many($head, *@rest) { # `*@` (slurpy) will basically "take everything else".
                              # Note: you can have parameters *before* (like here)
                              # a slurpy one, but not *after*.
   say @rest.join(' / ') ~ " !";
@@ -191,7 +192,7 @@ named-def(def => 15); #=> 15
 #  its right. When passed around, containers are marked as immutable.
 # Which means that, in a function, you'll get an error if you try to
 #  mutate one of your arguments.
-# If you really need to, you can ask for a mutable container using `is rw` :
+# If you really need to, you can ask for a mutable container using `is rw`:
 sub mutate($n is rw) {
   $n++;
   say "\$n is now $n !";
@@ -199,7 +200,7 @@ sub mutate($n is rw) {
 
 # If what you want is a copy instead, use `is copy`.
 
-# A sub itself returns a container, which means it can be marked as rw :
+# A sub itself returns a container, which means it can be marked as rw:
 my $x = 42;
 sub mod() is rw { $x }
 mod() = 52; # in this case, the parentheses are mandatory
@@ -210,7 +211,7 @@ say $x; #=> 52
 ### Control Flow Structures
 
 # You don't need to put parenthesis around the condition,
-# but that also means you always have to use brackets (`{ }`) for their body :
+# but that also means you always have to use brackets (`{ }`) for their body:
 
 ## Conditionals
 
@@ -246,7 +247,7 @@ my $a = $condition ?? $value-if-true !! $value-if-false;
 # blocks, etc), this means the powerful `when` is not only applicable along with
 # a `given`, but instead anywhere a `$_` exists.
 given "foo bar" {
-  when /foo/ { # You'll read about the smart-matching operator below -- just know `when` uses it.
+  when /foo/ { # Don't worry about smart matching -- just know `when` uses it.
                # This is equivalent to `if $_ ~~ /foo/`.
     say "Yay !";
   }
@@ -262,7 +263,7 @@ given "foo bar" {
 ## Looping constructs
 
 # - `loop` is an infinite loop if you don't pass it arguments,
-# but can also be a c-style `for` :
+# but can also be a c-style `for`:
 loop {
   say "This is an infinite loop !";
   last; # last breaks out of the loop, like the `break` keyword in other languages
@@ -270,8 +271,8 @@ loop {
 
 loop (my $i = 0; $i < 5; $i++) {
   next if $i == 3; # `next` skips to the next iteration, like `continue`
-                   # in other languages. Note that you can also use postfix conditionals,
-                   # loops, etc.
+                   # in other languages. Note that you can also use postfix
+                   # conditionals, loops, etc.
   say "This is a C-style for loop !";
 }
 
@@ -292,12 +293,12 @@ for @array {
 
 for @array {
   # You can...
-  next if $_ == 3; # Skip to the next iteration (like `continue` in C-like languages).
+  next if $_ == 3; # Skip to the next iteration (`continue` in C-like languages).
   redo if $_ == 4; # Re-do the iteration, keeping the same topic variable (`$_`).
   last if $_ == 5; # Or break out of a loop (like `break` in C-like languages).
 }
 
-# Note - the "lambda" `->` syntax isn't reserved to `for` :
+# Note - the "lambda" `->` syntax isn't reserved to `for`:
 if long-computation() -> $result {
   say "The result is $result";
 }
@@ -308,12 +309,12 @@ if long-computation() -> $result {
 ## Perl 6 operators are actually just funny-looking subroutines, in syntactic
 ##  categories, like infix:<+> (addition) or prefix:<!> (bool not).
 
-## The categories are :
-# - "prefix" : before (like `!` in `!True`).
-# - "postfix" : after (like `++` in `$a++`).
-# - "infix" : in between (like `*` in `4 * 3`).
-# - "circumfix" : around (like `[`-`]` in `[1, 2]`).
-# - "post-circumfix" : around, after another term (like `{`-`}` in `%hash{'key'}`)
+## The categories are:
+# - "prefix": before (like `!` in `!True`).
+# - "postfix": after (like `++` in `$a++`).
+# - "infix": in between (like `*` in `4 * 3`).
+# - "circumfix": around (like `[`-`]` in `[1, 2]`).
+# - "post-circumfix": around, after another term (like `{`-`}` in `%hash{'key'}`)
 
 ## The associativity and precedence list are explained below.
 
@@ -334,7 +335,8 @@ if long-computation() -> $result {
 (1, 2) eqv (1, 3);
 
 # - `~~` is smart matching
-# For a complete list of combinations, use this table : http://perlcabal.org/syn/S03.html#Smart_matching
+# For a complete list of combinations, use this table:
+# http://perlcabal.org/syn/S03.html#Smart_matching
 'a' ~~ /a/; # true if matches regexp
 'key' ~~ %hash; # true if key exists in hash
 $arg ~~ &bool-returning-function; # `True` if the function, passed `$arg`
@@ -415,7 +417,7 @@ first-of-array(@tail); # Throws an error "Too many positional parameters passed"
                        # (which means the array is too big).
 
 # You can also use a slurp ...
-sub slurp-in-array(@ [$fst, *@rest]) { # you could decide to keep `*@rest` anonymous
+sub slurp-in-array(@ [$fst, *@rest]) { # You could keep `*@rest` anonymous
   say $fst + @rest.elems; # `.elems` returns a list's length.
                           # Here, `@rest` is `(3,)`, since `$fst` holds the `2`.
 }
@@ -485,7 +487,7 @@ sub truthy-array(@array) {
 # You can also use the "whatever star" to create an anonymous function
 # (it'll stop at the furthest operator in the current expression)
 my @arrayplus3 = map(*+3, @array); # `*+3` is the same as `{ $_ + 3 }`
-my @arrayplus3 = map(*+*+3, @array); # also works. Same as `-> $a, $b { $a + $b + 3 }`
+my @arrayplus3 = map(*+*+3, @array); # Same as `-> $a, $b { $a + $b + 3 }`
 say (*/2)(4); #=> 2
               # Immediatly execute the function Whatever created.
 say ((*+3)/5)(5); #=> 1.6
@@ -576,7 +578,7 @@ sub foo {
   bar(); # call `bar` in-place
 }
 sub bar {
-  say $*foo; # Perl 6 will look into the call stack instead, and find `foo`'s `$*a`,
+  say $*foo; # `$*a` will be looked in the call stack, and find `foo`'s,
              #  even though the blocks aren't nested (they're call-nested).
              #=> 1
 }
@@ -589,8 +591,9 @@ sub bar {
 # but you have `$.` to get a public (immutable) accessor along with it.
 # (using `$.` is like using `$!` plus a `method` with the same name)
 
-# (Perl 6's object model ("SixModel") is very flexible, and allows you to dynamically add methods,
-#  change semantics, etc -- This will not be covered here, and you should refer to the Synopsis)
+# (Perl 6's object model ("SixModel") is very flexible,
+# and allows you to dynamically add methods, change semantics, etc ...
+# (this will not be covered here, and you should refer to the Synopsis).
 
 class A {
   has $.field; # `$.field` is immutable.
@@ -685,7 +688,7 @@ class Item does PrintableVal {
 }
 
 ### Exceptions
-# Exceptions are built on top of classes, usually in the package `X` (like `X::IO`).
+# Exceptions are built on top of classes, in the package `X` (like `X::IO`).
 # Unlike many other languages, in Perl 6, you put the `CATCH` block *within* the
 #  block to `try`. By default, a `try` has a `CATCH` block that catches
 #  any exception (`CATCH { default {} }`).
@@ -709,7 +712,7 @@ die X::AdHoc.new(payload => 'Error !');
 # Packages are a way to reuse code. Packages are like "namespaces", and any
 #  element of the six model (`module`, `role`, `class`, `grammar`, `subset`
 #  and `enum`) are actually packages. (Packages are the lowest common denomitor)
-# Packages play a big part in a language, especially as Perl is well-known for CPAN,
+# Packages are important - especially as Perl is well-known for CPAN,
 #  the Comprehensive Perl Archive Network.
 # You usually don't use packages directly: you use `class Package::Name::Here;`,
 # or if you only want to export variables/subs, you can use `module`:
@@ -719,7 +722,7 @@ module Hello::World { # Bracketed form
   # ... declarations here ...
 }
 module Parse::Text; # file-scoped form
-grammar Parse::Text::Grammar { # A grammar is a fine package, which you could `use`
+grammar Parse::Text::Grammar { # A grammar is a package, which you could `use`
 }
 
 # NOTE for Perl 5 users: even though the `package` keyword exists,
@@ -841,7 +844,7 @@ say "This code took " ~ (time - CHECK time) ~ "s to run";
 
 # ... or clever organization:
 sub do-db-stuff {
-  ENTER $db.start-transaction; # create a new transaction everytime we enter the sub
+  ENTER $db.start-transaction; # New transaction everytime we enter the sub
   KEEP $db.commit; # commit the transaction if all went well
   UNDO $db.rollback; # or rollback if all hell broke loose
 }
@@ -951,7 +954,7 @@ say 5!; #=> 120
 sub infix:<times>(Int $n, Block $r) { # infix in the middle
   for ^$n {
     $r(); # You need the explicit parentheses to call the function in `$r`,
-          #  else you'd be referring at the variable itself, kind of like with `&r`.
+          #  else you'd be referring at the variable itself, like with `&r`.
   }
 }
 3 times -> { say "hello" }; #=> hello
@@ -1004,8 +1007,9 @@ postcircumfix:<{ }>(%h, $key, :delete); # (you can call operators like that)
 #   of the element of the list to be passed to the operator),
 #  or `Any` if there's none (examples below).
 #
-# Otherwise, it pops an element from the list(s) one at a time, and applies the binary function
-#  to the last result (or the list's first element) and the popped element.
+# Otherwise, it pops an element from the list(s) one at a time, and applies
+#  the binary function to the last result (or the list's first element)
+#  and the popped element.
 #
 # To sum a list, you could use the reduce meta-operator with `+`, i.e.:
 say [+] 1, 2, 3; #=> 6
@@ -1127,15 +1131,15 @@ for <well met young hero we shall meet later> {
 .say if 'B' ff 'B' for <A B C B A>; #=> B B
                                     # because the right-hand-side was tested
                                     # directly (and returned `True`).
-                                    # "B"s are still printed since it matched that time
+                                    # "B"s are printed since it matched that time
                                     #  (it just went back to `False` right away).
 .say if 'B' fff 'B' for <A B C B A>; #=> B C B
-                                    # because the right-hand-side wasn't tested until
+                                    # The right-hand-side wasn't tested until
                                     #  `$_` became "C"
                                     # (and thus did not match instantly).
 
 # A flip-flop can change state as many times as needed:
-for <test start print this stop you stopped printing start printing again stop not anymore> {
+for <test start print it stop not printing start print again stop not anymore> {
   .say if $_ eq 'start' ^ff^ $_ eq 'stop'; # exclude both "start" and "stop",
                                            #=> "print this printing again"
 }
@@ -1190,8 +1194,8 @@ say so 'a' ~~ / a /; # More readable with some spaces!
 #  a regexp. We're converting the result using `so`, but in fact, it's
 #  returning a `Match` object. They know how to respond to list indexing,
 #  hash indexing, and return the matched string.
-# The results of the match are also available as `$/` (implicitly lexically-scoped).
-# You can also use the capture variables (`$0`, `$1`, ... - starting at 0, not 1 !).
+# The results of the match are available as `$/` (implicitly lexically-scoped).
+# You can also use the capture variables (`$0`, `$1`, ... starting at 0, not 1 !).
 #
 # You can also note that `~~` does not perform start/end checking
 #  (meaning the regexp can be matched with just one char of the string),
@@ -1233,7 +1237,7 @@ so 'abbbbc' ~~ / a b+ c /; # `True`, matched 4 "b"s
 so 'ac' ~~ / a b* c /; # `True`, they're all optional.
 so 'abc' ~~ / a b* c /; # `True`
 so 'abbbbc' ~~ / a b* c /; # `True`
-so 'aec' ~~ / a b* c /; # `False`. "b"(s) are optional, but can't be something else.
+so 'aec' ~~ / a b* c /; # `False`. "b"(s) are optional, not replaceable.
 
 # - `**` - "Quantify It Yourself".
 # If you squint hard enough, you might understand
@@ -1255,7 +1259,7 @@ so 'fooABCABCbar' ~~ / foo [ A B C ] + bar /;
 # But this does not go far enough, because we can't actually get back what
 #  we matched.
 # Capture: We can actually *capture* the results of the regexp, using parentheses.
-so 'fooABCABCbar' ~~ / foo ( A B C ) + bar /; # `True`. (we keep `so` here and use `$/` below)
+so 'fooABCABCbar' ~~ / foo ( A B C ) + bar /; # `True`. (using `so` here, `$/` below)
 
 # So, starting with the grouping explanations.
 # As we said before, our `Match` object is available as `$/`:
@@ -1308,7 +1312,7 @@ sub MAIN($name) { say "Hello, you !" }
 # And since it's a regular Perl 6 sub, you can haz multi-dispatch:
 # (using a "Bool" for the named argument so that we get `--replace`
 #  instead of `--replace=1`)
-subset File of Str where *.IO.d; # convert to IO object, then check the file exists
+subset File of Str where *.IO.d; # convert to IO object to check the file exists
 
 multi MAIN('add', $key, $value, Bool :$replace) { ... }
 multi MAIN('remove', $key) { ... }
@@ -1325,7 +1329,9 @@ multi MAIN('import', File, Str :$as) { ... } # omitting parameter name
 ```
 
 If you want to go further, you can:
+
  - Read the [Perl 6 Advent Calendar](http://perl6advent.wordpress.com/). This is probably the greatest source of Perl 6 information, snippets and such.
  - Come along on `#perl6` at `irc.freenode.net`. The folks here are always helpful.
  - Check the [source of Perl 6's functions and classes](https://github.com/rakudo/rakudo/tree/nom/src/core). Rakudo is mainly written in Perl 6 (with a lot of NQP, "Not Quite Perl", a Perl 6 subset easier to implement and optimize).
  - Read the [Synopses](perlcabal.org/syn). They explain it from an implementor point-of-view, but it's still very interesting.
+
