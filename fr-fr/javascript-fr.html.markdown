@@ -9,7 +9,7 @@ translators:
 lang: fr-fr
 ---
 
-JavaScript a été crée par Brendan Eich, travaillant alors a Netscape, en 1995.
+JavaScript a été créé par Brendan Eich, travaillant alors a Netscape, en 1995.
 Le langage avait à l'origine pour but d'être un langage de scripting simple
 pour les sites web, complétant le Java (à ne pas confondre avec JavaScript)
 pour des applications web complexes. Mais son intégration très proche et 
