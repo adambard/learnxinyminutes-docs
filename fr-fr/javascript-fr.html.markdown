@@ -479,6 +479,7 @@ if (Object.create === undefined){ // don't overwrite it if it exists
         return new Constructor();
     }
 }
+```
 
 ## Pour aller plus loin (en anglais)
 
