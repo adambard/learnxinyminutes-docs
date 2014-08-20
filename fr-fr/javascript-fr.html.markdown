@@ -37,6 +37,7 @@ doStuff()
 // Parce que ces cas peuvent produire des effets inattendus, nous utiliserons
 // des point-virgules dans ce guide.
 
+
 ///////////////////////////////////
 // 1. Nombres, Chaines de caractères et Opérateurs
 
@@ -182,6 +183,7 @@ myObj.myThirdKey = true;
 // Si vous essayez d'accéder à une valeur non-définie, vous obtiendrez undefined
 myObj.myFourthKey; // = undefined
 
+
 ///////////////////////////////////
 // 3. Logique et structures de contrôle
 
@@ -313,6 +315,7 @@ function sayHelloInFiveSeconds(name){
     // immédiatement, et setTimeout appelera inner après.
 }
 sayHelloInFiveSeconds('Adam'); // ouvre un popup avec 'Hello, Adam!' dans 5sec
+
 
 ///////////////////////////////////
 // 5. Encore plus à propos des Objets; Constructeurs and Prototypes
@@ -470,12 +473,12 @@ String.prototype.firstCharacter = function(){
 
 //Par exemple, Object.create est assez récent, mais peut être implémenté grâce à
 // ce polyfill
-if (Object.create === undefined){ // don't overwrite it if it exists
+if (Object.create === undefined){ // pour ne pas reécrire si la fonction existe déjà
     Object.create = function(proto){
-        // make a temporary constructor with the right prototype
+        // créer un constructeur temporaire avec le bon prototype
         var Constructor = function(){};
         Constructor.prototype = proto;
-        // then use it to create a new, appropriately-prototyped object
+        // puis on utilise "new" pour créer un object avec ce prototype
         return new Constructor();
     }
 }
