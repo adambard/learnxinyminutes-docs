@@ -11,10 +11,11 @@ lang: fr-fr
 
 JavaScript a été crée par Brendan Eich, travaillant alors a Netscape, en 1995.
 Le langage avait à l'origine pour but d'être un langage de scripting simple
-pour les sites web, complétant le Java pour des applications web complexes. Mais
-son intégration très proche et simple des pages web, ainsi que le support natif
-des navigateurs a rendu le JavaScript incontournable aujourd'hui tant bien dans 
-le front-end que dans le back-end.
+pour les sites web, complétant le Java (à ne pas confondre avec JavaScript)
+pour des applications web complexes. Mais son intégration très proche et 
+simple des pages web, ainsi que le support natif des navigateurs a rendu 
+le JavaScript incontournable aujourd'hui tant bien dans le front-end que 
+dans le back-end.
 
 En effet, le JavaScript n'est plus uniquement limité aux navigateurs, grâce à
 Node.JS, un projet qui offre un environnement indépendant dans lequel un 
@@ -23,7 +24,7 @@ peut être utilisé directement côté serveur pour exécuter des programmes éc
 en JavaScript.
 
 ```js
-// Les commentaires sont comme en C. Les commentaires en ligne commencent par 2 slashs,
+// Les commentaires sont comme en C. Les commentaires mono-ligne commencent par 2 slashs,
 /* et les commentaires sur plusieurs lignes commencent avec slash-étoile
    et finissent avec étoile-slash */
 
@@ -42,7 +43,7 @@ doStuff()
 // 1. Nombres, Chaines de caractères et Opérateurs
 
 // JavaScript a un seul type de nombre (qui est un 64-bit IEEE 754 double (décimaux))
-// Comme avec le Lua, ne paniquez pas à cause du manque d'int (entiers): les
+// Comme avec le Lua, ne paniquez pas à cause du manque d'int (entiers) : les
 // doubles ont un mantisse de 52 bits, ce qui est assez pour stocker des int jusqu'à
 // 9 x 10¹⁵ exactement.
 3; // = 3
@@ -58,7 +59,7 @@ doStuff()
 5 / 2; // = 2.5
 
 // Les opérations bits à bits fonctionnent aussi, quand vous effectuez une opération
-// bits à bits , votre nombre décimal est converti en entier *jusqu'à* 32 bits.
+// bits à bits, votre nombre décimal est converti en entier *jusqu'à* 32 bits.
 1 << 2; // = 4
 
 // Comme en mathématiques, la priorité est donnée aux parenthèses.
@@ -73,8 +74,8 @@ NaN; // le résultat de 0/0 par exemple
 true; // vrai
 false; // faux
 
-// Les chaines de caractères (strings) sont crées avec " ou ' indifféremment, la seule
-// raison de choisir l'un ou l'autre est la consistance dans votre code.
+// Les chaines de caractères (strings) sont créees avec " ou ' indifféremment, la seule
+// raison de choisir l'un ou l'autre est la cohérence dans votre code.
 "abc";
 'Hello, world';
 
@@ -85,7 +86,7 @@ false; // faux
 // L'égalité est === ou ==
 // === compare la valeur exacte 2 === '2' // = false
 // == convertit la valeur pour comparer 2 === '2' // = true
-// En général, il vaut mieux utiliser === pour ne pas faire d'erreurs.
+// En général, il vaut mieux utiliser === pour ne pas faire d'erreur.
 1 === 1; // = true
 2 === 1; // = false
 
@@ -93,7 +94,7 @@ false; // faux
 1 !== 1; // = false
 2 !== 1; // = true
 
-// Plus de comparaisons:
+// Plus de comparaisons :
 1 < 10; // = true
 1 > 10; // = false
 2 <= 2; // = true
@@ -108,7 +109,7 @@ false; // faux
 // Vous pouvez accéder les caractères dans une string avec charAt
 'This is a string'.charAt(0);  // = 'T'
 
-// .. ou utiliser substring pour avoir un plus gros morceau
+// ... ou utiliser substring pour avoir un plus gros morceau
 'Hello world'.substring(0, 5); // = 'Hello'
 
 // la longueur, length, est une propriété, donc n'utilisez pas de ()
@@ -164,7 +165,7 @@ myArray.length; // = 4
 myArray[3] = 'Hello';
 
 // Les objets JavaScript sont appelés 'dictionnaires' ou 'maps' dans certains autres
-// langages: ils sont une liste non-ordonnée de paires clé-valeur.
+// langages : ils sont une liste non-ordonnée de paires clé-valeur.
 var myObj = {key1: 'Hello', key2: 'World'};
 
 // Les clés sont des strings, mais les ' ou " sont optionels si elles sont des
@@ -186,8 +187,6 @@ myObj.myFourthKey; // = undefined
 
 ///////////////////////////////////
 // 3. Logique et structures de contrôle
-
-// La syntaxe de cette section est identique au Java.
 
 // Les si (if) fonctionnent comme vous vous y attendez.
 var count = 1;
@@ -287,12 +286,14 @@ if (true){
 }
 i; // = 5 - et non undefined comme vous pourriez vous y attendre
 
-// Cela a mené à un style comment de fonctions anonymes immédiatement exécutée;
+// Cela a mené à un style commun de fonctions anonymes immédiatement exécutée;
 // ou "immediately-executing anonymous functions"
 (function(){
     var temporary = 5;
     // Nous pouvons accéder au scope global en assignant à l'objet global,
-    // qui dans les navigateurs est "window". Il est différent dans Node.js.
+    // qui dans les navigateurs est "window". Il est différent dans Node.js,
+    // le scope global sera en fait local au module dans lequel vous 
+    // vous trouvez. http://nodejs.org/api/globals.html
     window.permanent = 10;
 })();
 // Cela permet de ne pas avoir de fuites de variables qui polluent
@@ -300,7 +301,7 @@ i; // = 5 - et non undefined comme vous pourriez vous y attendre
 temporary; // raises ReferenceError
 permanent; // = 10
 
-// Une des particularité les plus puissantes de Javascript est le système de 
+// Une des fonctionnalités les plus puissantes de Javascript est le système de 
 // closures. Si une fonction est définie dans une autre fonction, alors la 
 // fonction interne aura accès aux variables de la fonction parente, même si
 // celle-ci a déjà finie son exécution.
@@ -338,7 +339,7 @@ myObj = {
 };
 myObj.myFunc(); // = 'Hello world!'
 
-// LA valeur de "this" change de par l'endroit où la fonction est appelée, et 
+// La valeur de "this" change de par l'endroit où la fonction est appelée, et 
 // non de l'endroit où elle est définie. Donc elle ne fonctionnera pas si elle
 // est appelée hors du contexte l'objet.
 var myFunc = myObj.myFunc;
@@ -353,8 +354,9 @@ var myOtherFunc = function(){
 myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = 'HELLO WORLD!'
 
-// Nous pouvons aussi spécifier un contexte pour une fonction quand elle est 
-// appelée grâce à "call" ou "apply".
+// Le contexte correspond à la valeur de "this".
+// Nous pouvons aussi spécifier un contexte, forcer la valeur de "this, 
+// pour une fonction quand elle est appelée grâce à "call" ou "apply".
 var anotherFunc = function(s){
     return this.myString + s;
 }
@@ -368,8 +370,9 @@ Math.min(42, 6, 27); // = 6
 Math.min([42, 6, 27]); // = NaN (uh-oh!)
 Math.min.apply(Math, [42, 6, 27]); // = 6
 
-// Mais, "call" and "apply" sont temporaires. Pour lier le contexte de façon
-// permanente, nous pouvons utiliser "bind"
+// Mais, "call" and "apply" fonctionnenent uniquement au moment de l'appel de la 
+// fonction. Pour lier le contexte de façon permanente, nous pouvons utiliser 
+// "bind" pour garder une référence à la fonction avec ce "this".
 var boundFunc = anotherFunc.bind(myObj);
 boundFunc(' And Hello Saturn!'); // = 'Hello World! And Hello Saturn!'
 
@@ -389,11 +392,11 @@ myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
 
 // Chaque objet en Javascript a un "prototype". Quand vous essayez d'accéder à
-// une propriété que n'a pas l'objet, l'interpréteur regarder son prototype.
+// une propriété que l'objet n'a pas, l'interpréteur va regarder son prototype.
 
-// Quelque implémentations de JS vous laissent accéder au prototype avec la 
+// Quelques implémentations de JS vous laissent accéder au prototype avec la 
 // propriété "magique" __proto__. Ceci peut être utile, mais n'est pas standard 
-// et ne fonctionne pas dans les navigateurs actuels.
+// et ne fonctionne pas dans certains des navigateurs actuels.
 var myObj = {
     myString: 'Hello world!'
 };
@@ -413,11 +416,20 @@ myPrototype.__proto__ = {
 };
 myObj.myBoolean; // = true
 
+
+// Pour obtenir le prototype il existe également Object.getPrototypeOf
+Object.getPrototypeOf( myObj ) // = {meaningOfLife: 42, myFunc: function}
+
 // Il n'y a pas de copie ici. Chacun des objets stocke une référence à son
 // prototype. Cela veut dire que l'on peut le modifier et cela se répercutera
 // partout.
 myPrototype.meaningOfLife = 43;
 myObj.meaningOfLife; // = 43
+
+// L'inverse n'est cependant pas vrai. Changer la propriété d'un objet ne change
+// pas la chaine prototypale.
+myObj.lonelyProperty = true;
+myPrototype.lonelyProperty; // = undefined
 
 // Comme précédemment dit, __proto__ n'est pas standard et ne devrait pas être
 // utilisé. Il y a deux autres moyen de créer un nouvel objet avec un prototype
