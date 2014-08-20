@@ -4,7 +4,7 @@ contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
     - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
-		- ["@prrrnd", "https://github.com/prrrnd"]
+    - ["@prrrnd", "https://github.com/prrrnd"]
 lang: fr-fr
 ---
 
