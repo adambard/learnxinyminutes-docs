@@ -135,8 +135,9 @@ var someVar = 5;
 // si vous oubliez le mot clé var, vous n'aurez pas d'erreur (sauf en mode strict)
 someOtherVar = 10;
 
-// ... mais la variable sera crée dans l’environnement global, et non l’environnement
-// local dans lequel vous l'avez défini.
+// ... mais la variable aura une portée globale (plus communément trouvé en tant 
+// que "global scope" en anglais), et non pas une portée limitée à la fonction 
+// dans laquelle vous l'aviez définie.
 
 // Les variables déclarées et non assignées sont undefined par défaut
 var someThirdVar;
@@ -279,8 +280,8 @@ setTimeout(function(){
     // ce code s'exécutera dans 5 secondes
 }, 5000);
 
-// Le Javascript crée uniquement un scope dans les fonctions, pas dans les 
-// autres blocs.
+// Le Javascript crée uniquement un scope, une portée d'action limitée, pour 
+// les fonctions, et pas dans les autres blocs.
 if (true){
     var i = 5;
 }
