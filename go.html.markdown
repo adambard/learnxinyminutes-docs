@@ -110,9 +110,9 @@ can include line breaks.` // Same string type.
 	fmt.Println(s) // Updated slice is now [1 2 3 4 5 6]
 	// To append another slice, instead of list of atomic elements we can
 	// pass a reference to a slice or a slice literal like this, with a
-	// trailing elipsis, meaning take an array and unpack its elements,
-	// appending them to the slice.
-	s = append(s, []int{7, 8, 9}...) // Second argument is an array literal.
+	// trailing elipsis, meaning take a slice and unpack its elements,
+	// appending them to slice s.
+	s = append(s, []int{7, 8, 9}...) // Second argument is a slice literal.
 	fmt.Println(s)	// Updated slice is now [1 2 3 4 5 6 7 8 9]
 
 	p, q := learnMemory() // Declares p, q to be type pointer to int.
