@@ -428,8 +428,8 @@ myObj.meaningOfLife; // = 43
 
 // L'inverse n'est cependant pas vrai. Changer la propriété d'un objet ne change
 // pas la chaine prototypale.
-myObj.lonelyProperty = true;
-myPrototype.lonelyProperty; // = undefined
+myObj.meaningOfLife = 42;
+myPrototype.meaningOfLife; // = 43
 
 // Comme précédemment dit, __proto__ n'est pas standard et ne devrait pas être
 // utilisé. Il y a deux autres moyen de créer un nouvel objet avec un prototype
