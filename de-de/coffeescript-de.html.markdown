@@ -9,8 +9,8 @@ filename: coffeescript-de.coffee
 lang: de-de
 ---
 
-CoffeeScript ist eine kleine Sprache die eins zu eins nach JavaScript transpiliert wird, es gibt keinen Laufzeitinterpreter für sie.
-Als Nachfolger von JavaScript konzipiert, gibt CoffeeScript sein Bestes lesbaren, gut formatierten und effizienten JavaScript-Code zu erzeugen der in allen Laufzeiten einwandfrei funktioniert.
+CoffeeScript ist eine kleine Sprache, die eins zu eins nach JavaScript übersetzt wird - es findet keine Interpretation zur Laufzeit statt.
+Als Nachfolger von JavaScript konzipiert, gibt CoffeeScript sein Bestes, lesbaren, gut formatierten und sauber laufenden JavaScript-Code zu erzeugen, der in jeder JavaScript-Laufzeit einwandfrei funktioniert.
 
 Auf [der CoffeeScript Website](http://coffeescript.org/) gibt es ein ausführliches Tutorial.
 
@@ -20,11 +20,11 @@ Auf [der CoffeeScript Website](http://coffeescript.org/) gibt es ein ausführlic
 # Kommentare werden daher wie in Ruby und Python mit Hashes gekennzeichnet
 
 ###
-Kommentarblöcke sehen aus wie diese und werden direkt nach '/ *s und '* /s
-im erzeugten JavaScript transpiliert.
+Kommentarblöcke sehen aus wie diese und werden direkt nach '/ *'s und '* /'s
+im erzeugten JavaScript umgewandelt.
 
-Vorweg: bevor du mit CoffeeScript anfängst solltest du einen guten Überblick
-über die Eigenheiten von JavaScript an sich haben.
+Vorweg: bevor du mit CoffeeScript anfängst, solltest du bereits einen guten
+Überblick über die Sprache JavaScript haben.
 ###
 
 # Zuweisung:
@@ -75,8 +75,8 @@ race = (winner, runners...) ->
 alert "Hab ich's nicht gesagt?" if elvis?
 #=> if(typeof elvis !== "undefined" && elvis !== null) { alert("Hab ich's nicht gesagt?"); }
 
-# Collection-Mapping:
-cubes = (math.cube num for num in list) 
+# Zuordnungen:
+cubes = (math.cube num for num in list)
 #=>cubes = (function() {
 #	var _i, _len, _results;
 #	_results = [];
