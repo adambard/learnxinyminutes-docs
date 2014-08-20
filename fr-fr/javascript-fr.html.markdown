@@ -73,9 +73,9 @@ NaN; // le résultat de 0/0 par exemple
 true; // vrai
 false; // faux
 
-// Les chaines de caractères (strings) sont crées avec ' ou ' indifféremment, la seule
+// Les chaines de caractères (strings) sont crées avec " ou ' indifféremment, la seule
 // raison de choisir l'un ou l'autre est la consistance dans votre code.
-'abc';
+"abc";
 'Hello, world';
 
 // La négation utilise le symbole !
@@ -99,10 +99,10 @@ false; // faux
 2 <= 2; // = true
 2 >= 2; // = true
 
-// Les strings se concatènent avec +
+// Les chaines de caractères se concatènent avec +
 'Hello ' + 'world!'; // = 'Hello world!'
 
-// et peuvent être comparées avec < et >
+// et peuvent être comparées alphabétiquement avec < et >
 'a' < 'b'; // = true
 
 // Vous pouvez accéder les caractères dans une string avec charAt
@@ -475,10 +475,10 @@ String.prototype.firstCharacter = function(){
 // ce polyfill
 if (Object.create === undefined){ // pour ne pas reécrire si la fonction existe déjà
     Object.create = function(proto){
-        // créer un constructeur temporaire avec le bon prototype
+        // on crée un constructeur temporaire avec le bon prototype
         var Constructor = function(){};
         Constructor.prototype = proto;
-        // puis on utilise "new" pour créer un object avec ce prototype
+        // puis on utilise "new" pour créer un object avec ce même prototype
         return new Constructor();
     }
 }
