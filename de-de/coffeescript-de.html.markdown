@@ -5,6 +5,7 @@ contributors:
   - ["Xavier Yao", "http://github.com/xavieryao"]
 translators:
   - ["Frederik Ring", "https://github.com/m90"]
+  - ["Philipp Fischbeck", "https://github.com/PFischbeck"]
 filename: coffeescript-de.coffee
 lang: de-de
 ---
@@ -75,7 +76,7 @@ race = (winner, runners...) ->
 alert "Hab ich's nicht gesagt?" if elvis?
 #=> if(typeof elvis !== "undefined" && elvis !== null) { alert("Hab ich's nicht gesagt?"); }
 
-# Zuordnungen:
+# Listen-Abstraktion:
 cubes = (math.cube num for num in list)
 #=>cubes = (function() {
 #	var _i, _len, _results;
