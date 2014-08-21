@@ -93,7 +93,9 @@ not False  # => True
 "{} can be {}".format("strings", "interpolated")
 
 # You can repeat the formatting arguments to save some typing.
-"{0} be nimble, {0} be quick, {0} jump over the {1}".format("Jack", "candle stick") #=> "Jack be nimble, Jack be quick, Jack jump over the candle stick"
+"{0} be nimble, {0} be quick, {0} jump over the {1}".format("Jack", "candle stick")
+#=> "Jack be nimble, Jack be quick, Jack jump over the candle stick"
+
 # You can use keywords if you don't want to count.
 "{name} wants to eat {food}".format(name="Bob", food="lasagna") #=> "Bob wants to eat lasagna"
 
