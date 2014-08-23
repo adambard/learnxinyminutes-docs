@@ -73,9 +73,9 @@ echo Hello, $NAME!
 # use 'man test' for more info about conditionals
 if [ $NAME -ne $USER ]
 then
-    echo "Your name is your username"
-else
     echo "Your name isn't your username"
+else
+    echo "Your name is your username"
 fi
 
 # There is also conditional execution
