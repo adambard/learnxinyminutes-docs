@@ -15,6 +15,11 @@ See also Apple's [getting started guide](https://developer.apple.com/library/pre
 // MARK: Basics
 //
 
+// Xcode supports landmarks to annotate your code and lists them in the jump bar
+// MARK: Section mark
+// TODO: Do something soon
+// FIXME Fix this code
+
 println("Hello, world")
 
 var myVariable = 42
@@ -114,7 +119,7 @@ default: // required (in order to cover all possible input)
 // Functions are a first-class type, meaning they can be nested
 // in functions and can be passed around
 
-// Function with Swift docs
+// Function with Swift function docs
 /**
     A greet operation
 
