@@ -36,19 +36,19 @@ my $respuesta = 42;
 
 ## Arreglos
 # Un arreglo representa una lista de valores:
-my @animales = {"camello","llama","buho"};
-my @numeros  = {23,42,69};
-my @mixto    = {"camello",42,1.23};
+my @animales = ("camello","llama","buho"};
+my @numeros  = (23, 42, 69);
+my @mixto    = ("camello", 42, 1.23);
 
 ## Hashes
 # Un hash representa un conjunto de pares llave/valor:
-my %color_fruta = {"manzana","rojo","banana","amarillo"};
+my %color_fruta = ("manzana","rojo","banana","amarillo");
 
 # Puede usar un espacio en blanco y el operador "=>" para asignarlos más fácilmente
 my %color_fruta = (
    manzana => "rojo",
    banana  => "amarillo",
-   );
+);
 
 # Los escalares, arreglos y hashes están más documentados en perldata (perldoc perldata)
 
@@ -84,6 +84,10 @@ while ( condicion ) {
 
 # for y foreach
 for ($i = 0; $i <= $max; $i++) {
+    ...;
+}
+
+for $i (0 .. $max) {
     ...;
 }
 
