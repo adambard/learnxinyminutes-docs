@@ -8,6 +8,8 @@ filename: learnswift.swift
 
 Swift is a programming language for iOS and OS X development created by Apple. Designed to coexist with Objective-C and to be more resilient against erroneous code, Swift was introduced in 2014 at Apple's developer conference WWDC. It is built with the LLVM compiler included in Xcode 6 beta.
 
+The official [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) book from Apple is now available via iBooks.
+
 See also Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/LandingPage/index.html), which has a complete tutorial on Swift.
 
 ```js
@@ -23,7 +25,7 @@ See also Apple's [getting started guide](https://developer.apple.com/library/pre
 println("Hello, world")
 
 var myVariable = 42
-//let fƒ∆ = "value" // unicode in variable names
+let øπΩ = "value" // unicode variable names
 let myConstant = 3.1415926
 let convenience = "keyword" // contextual variable name
 let weak = "keyword"; let override = "another keyword" // statements can be separated by a semi-colon
@@ -39,7 +41,7 @@ optionalString = nil
 /*
 Comment here
     /*
-        Nested comment here
+        Nested comments are also supported
     */
 */
 
@@ -119,7 +121,7 @@ default: // required (in order to cover all possible input)
 // Functions are a first-class type, meaning they can be nested
 // in functions and can be passed around
 
-// Function with Swift function docs
+// Function with Swift header docs (format as reStructedText)
 /**
     A greet operation
 
@@ -189,11 +191,33 @@ numbers = sorted(numbers, < )
 print(numbers) // [3, 6, 18]
 
 //
+// MARK: Structures
+//
+
+// Structures and classes have very similar capabilites
+struct NamesTable {
+    let names: [String]
+
+    // Custom subscript
+    subscript(index: Int) -> String {
+        return names[index]
+    }
+}
+
+// Structures have an auto-generated (implicit) designated initializer
+let namesTable = NamesTable(names: ["Me", "Them"])
+//let name = namesTable[2]
+//println("Name is \(name)") // Name is Them
+
+//
 // MARK: Classes
 //
 
-class Shape {
-    func getArea() -> Int {
+// Classes, structures and its members have three levels of access control
+// They are: internal (default), public, private
+
+public class Shape {
+    public func getArea() -> Int {
         return 0;
     }
 }
@@ -203,23 +227,29 @@ class Shape {
 // structured object, you should use a `struct`
 
 // A simple class `Square` extends `Shape`
-class Rect: Shape {
+internal class Rect: Shape {
     var sideLength: Int = 1
     
     // Custom getter and setter property
-    var perimeter: Int {
+    private var perimeter: Int {
         get {
             return 4 * sideLength
         }
         set {
+            // `newValue` is an implicit variable available to setters
             sideLength = newValue / 4
         }
     }
+
+    // Lazily load a property
+    // subShape remains nil (uninitialized) until getter called
+    lazy var subShape = Rect(sideLength: 4)
     
     // If you don't need a custom getter and setter,
     // but still want to run code before and after getting or setting
     // a property, you can use `willSet` and `didSet`
     var identifier: String = "defaultID" {
+        // the `willSet` arg will be the variable name for the new value
         willSet(someIdentifier) {
             print(someIdentifier)
         }
@@ -254,7 +284,7 @@ print(mySquare.sideLength) // 4
 
 // compare instances, not the same as == which compares objects (equal to)
 if mySquare === mySquare {
-    println("Yep its mySquare")
+    println("Yep, it's mySquare")
 }
 
 
@@ -279,15 +309,47 @@ enum Suit {
 
 
 //
-// MARK: Other
+// MARK: Protocols
 //
 
-// `protocol`: Similar to Java interfaces.
+// `protocol`s can require that conforming types have specific
+// instance properties, instance methods, type methods, 
+// operators, and subscripts.
+
 protocol ShapeGenerator {
+    var enabled: Bool { get set }
     func buildShape() -> Shape
 }
 
+/*
+// Protocols declared with @objc allow optional functions,
+// which allow you to check for conformance
+@objc protocol TransformShape {
+    optional func reshaped()
+    optional func canReshape() -> Bool
+}
+
+class MyShape: Rect {
+    var delegate: TransformShape?
+
+    func grow() {
+        sideLength += 2
+
+        if let allow = self.delegate?.canReshape?() {
+            // test for delegate then for method
+            self.delegate?.reshaped?()
+        }
+    }
+}
+*/
+
+//
+// MARK: Other
+//
+
 // `extension`s: Add extra functionality to an already existing type
+
+// Square now "conforms" to the `Printable` protocol
 extension Square: Printable {
     var description: String {
         return "Area: \(self.getArea()) - ID: \(self.identifier)"
@@ -321,7 +383,8 @@ func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
     }
     return nil
 }
-
+let foundAtIndex = findIndex([1, 2, 3, 4], 3)
+println(foundAtIndex == 2) // true
 
 // Operators:
 // Custom operators can start with the characters:
@@ -330,13 +393,17 @@ func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
 // Unicode math, symbol, arrow, dingbat, and line/box drawing characters.
 prefix operator !!! {}
 
-// An operator that triples the side length when used
+// A prefix operator that triples the side length when used
 prefix func !!! (inout shape: Square) -> Square {
     shape.sideLength *= 3
     return shape
 }
 
-let bigSquare = !!!mySquare
-println(bigSquare.sideLength)
+// current value
+println(mySquare.sideLength) // 4
+
+// change side length using custom !!! operator, increases size by 3
+!!!mySquare
+println(mySquare.sideLength) // 12
 
 ```
