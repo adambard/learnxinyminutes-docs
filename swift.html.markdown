@@ -26,9 +26,9 @@ let `class` = "keyword" // backticks allow keywords to be used as variable names
 let explicitDouble: Double = 70
 let intValue = 0007 // 7
 let largeIntValue = 77_000 // 77000
-let label = "some text " + String(myVariable)     // Casting
-let piText = "Pi = \(myConstant)"                 // String interpolation
-var optionalString: String? = "optional"          // Can be nil
+let label = "some text " + String(myVariable) // Casting
+let piText = "Pi = \(myConstant), Pi 2 = \(myConstant * 2)" // String interpolation
+var optionalString: String? = "optional" // Can be nil
 optionalString = nil
 
 /*
@@ -114,7 +114,17 @@ default: // required (in order to cover all possible input)
 // Functions are a first-class type, meaning they can be nested
 // in functions and can be passed around
 
-// Function
+// Function with Swift docs
+/**
+    A greet operation
+
+    - A bullet in docs
+    - Another bullet in the docs
+
+    :param: name A name
+    :param: day A day
+    :returns: A string containing the name and day value.
+*/
 func greet(name: String, day: String) -> String {
     return "Hello \(name), today is \(day)."
 }
@@ -237,6 +247,11 @@ print(mySquare.getArea()) // 25
 mySquare.shrink()
 print(mySquare.sideLength) // 4
 
+// compare instances, not the same as == which compares objects (equal to)
+if mySquare === mySquare {
+    println("Yep its mySquare")
+}
+
 
 //
 // MARK: Enums
@@ -276,6 +291,20 @@ extension Square: Printable {
 
 println("Square: \(mySquare)")
 
+// You can also extend built-in types
+extension Int {
+    var customProperty: String {
+        return "This is \(self)"
+    }
+
+    func multiplyBy(num: Int) -> Int {
+        return num * self
+    }
+}
+
+println(7.customProperty) // "This is 7"
+println(14.multiplyBy(2)) // 42
+
 // Generics: Similar to Java. Use the `where` keyword to specify the
 //   requirements of the generics.
 
@@ -287,5 +316,22 @@ func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
     }
     return nil
 }
+
+
+// Operators:
+// Custom operators can start with the characters:
+//      / = - + * % < > ! & | ^ . ~
+// or
+// Unicode math, symbol, arrow, dingbat, and line/box drawing characters.
+prefix operator !!! {}
+
+// An operator that triples the side length when used
+prefix func !!! (inout shape: Square) -> Square {
+    shape.sideLength *= 3
+    return shape
+}
+
+let bigSquare = !!!mySquare
+println(bigSquare.sideLength)
 
 ```
