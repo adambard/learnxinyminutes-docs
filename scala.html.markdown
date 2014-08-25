@@ -243,7 +243,7 @@ i    // Show the value of i. Note that while is a loop in the classical sense -
 
 // A do while loop
 do {
-  println("x is still less then 10"); 
+  println("x is still less than 10"); 
   x += 1
 } while (x < 10)
 
