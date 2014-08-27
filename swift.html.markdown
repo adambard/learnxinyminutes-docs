@@ -39,7 +39,7 @@ var occupations = [
   "kaylee": "Mechanic"
 ]
 occupations["Jayne"] = "Public Relations"
-let emptyDictionary = Dictionary<String, Float>()
+let emptyDictionary = [String: Float]()
 
 
 //

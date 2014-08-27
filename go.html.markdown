@@ -78,7 +78,7 @@ func learnTypes() {
 can include line breaks.` // Same string type.
 
 	// Non-ASCII literal.  Go source is UTF-8.
-	g := 'Σ' // rune type, an alias for uint32, holds a unicode code point.
+	g := 'Σ' // rune type, an alias for int32, holds a unicode code point.
 
 	f := 3.14195 // float64, an IEEE-754 64-bit floating point number.
 	c := 3 + 4i  // complex128, represented internally with two float64's.
@@ -100,6 +100,20 @@ can include line breaks.` // Same string type.
 	s4 := make([]int, 4)    // Allocates slice of 4 ints, initialized to all 0.
 	var d2 [][]float64      // Declaration only, nothing allocated here.
 	bs := []byte("a slice") // Type conversion syntax.
+
+	// Because they are dynamic, slices can be appended to on-demand.
+	// To append elements to a slice, built-in append() function is used.
+	// First argument is a slice to which we are appending. Commonly,
+	// the array variable is updated in place, as in example below.
+	s := []int{1, 2, 3}		// Result is a slice of length 3.
+	s = append(s, 4, 5, 6)	// Added 3 elements. Slice now has length of 6.
+	fmt.Println(s) // Updated slice is now [1 2 3 4 5 6]
+	// To append another slice, instead of list of atomic elements we can
+	// pass a reference to a slice or a slice literal like this, with a
+	// trailing elipsis, meaning take a slice and unpack its elements,
+	// appending them to slice s.
+	s = append(s, []int{7, 8, 9}...) // Second argument is a slice literal.
+	fmt.Println(s)	// Updated slice is now [1 2 3 4 5 6 7 8 9]
 
 	p, q := learnMemory() // Declares p, q to be type pointer to int.
 	fmt.Println(*p, *q)   // * follows a pointer.  This prints two ints.

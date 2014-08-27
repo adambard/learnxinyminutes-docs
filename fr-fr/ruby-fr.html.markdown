@@ -336,8 +336,8 @@ class Humain
     puts "#{msg}"
   end
 
-  def species
-    @@species
+  def espece
+    @@espece
   end
 
 end

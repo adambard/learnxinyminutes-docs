@@ -75,7 +75,7 @@ func learnTypes() {
 pode incluir quebras de linha.` // mesmo tipo string
 
     // literal não-ASCII. A linguagem Go utiliza de raiz a codificação UTF-8.
-    g := 'Σ' // tipo rune, um alias para uint32, que contém um código unicode
+    g := 'Σ' // tipo rune, um alias para int32, que contém um código unicode
 
     f := 3.14195 // float64, número de vírgula flutuante de 64bit (IEEE-754)
     c := 3 + 4i  // complex128, representado internamente com dois float64s
