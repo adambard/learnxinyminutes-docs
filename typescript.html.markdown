@@ -2,6 +2,7 @@
 language: TypeScript
 contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]]
+filename: learntypescript.ts
 ---
 
 TypeScript is a language that aims at easing development of large scale applications written in JavaScript.
