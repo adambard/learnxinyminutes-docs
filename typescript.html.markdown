@@ -18,7 +18,7 @@ var isDone: boolean = false;
 var lines: number = 42;
 var name: string = "Anders";
 
-//When it's impossible to know, there is the "Any" type
+//..When it's impossible to know, there is the "Any" type
 var notSure: any = 4;
 notSure = "maybe a string instead";
 notSure = false; // okay, definitely a boolean
@@ -50,40 +50,32 @@ interface Person {
   name: string;
   //Optional properties, marked with a "?"
   age?: number;
+  //And of course functions
+  move(): void;
 }
-//Object that implements the "Person" interface
-var p : Person = { name: "Bobby" }; //Can be treated as a Person since it has the name and age properties
-//Objects that have the optional property:
-var validPerson : Person = { name: "Bobby", age: 42 };
+
+//..Object that implements the "Person" interface
+var p : Person = { name: "Bobby", move : () => {} }; //Can be treated as a Person since it has the name and age properties
+//..Objects that have the optional property:
+var validPerson : Person = { name: "Bobby", age: 42, move: () => {} };
 var invalidPerson : Person = { name: "Bobby", age: true }; //Is not a person because age is not a number
 
-//Interfaces can also define method signatures:
-interface PersonWhoCanTalk {
-  sayHello(otherPersonsName: string): void;
-}
-
-//And also indexers, both with number and string
-interface PersonWhoCanBeIndexed {
-  [index: number]: string;
-}
-//TODO
-
-//Interfaces can also describe a function type
+//..Interfaces can also describe a function type
 interface SearchFunc {
   (source: string, subString: string): boolean;
 }
-//Only the parameters' types are important, names are not important.
+//..Only the parameters' types are important, names are not important.
 var mySearch: SearchFunc;
 mySearch = function(src: string, sub: string) {
   return src.search(sub) != -1;
 }
 
-//Classes
+//Classes - members are public by default
 class Point {
   //Properties
 	x: number;
 	
-	//Constructor - the public/private keywords are shortcuts to generate the code for a property and its initialization
+	//Constructor - the public/private keywords in this context are shortcuts to generate the code for a property
 	//Equivalent to "x" in this case
 	//Default values are also supported
 	constructor(x: number, public y: number = 0) {
@@ -113,7 +105,23 @@ class Point3D extends Point {
 	}
 }
 
-//Modules
+//Modules, "." can be used as separators for sub modules
+module Geometry {
+  export class Square {
+    constructor(public sideLength: number = 0) {
+    }
+    area() {
+      return Math.pow(this.sideLength, 2);
+    }
+  }
+}
+
+var s1 = new Geometry.Square(5);
+
+//..Local alias for rreferencing a module
+import G = Geometry;
+
+var s2 = new G.Square(10);
 
 //Generics
 
