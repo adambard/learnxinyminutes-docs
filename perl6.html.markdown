@@ -488,6 +488,7 @@ sub truthy-array(@array) {
 # (it'll stop at the furthest operator in the current expression)
 my @arrayplus3 = map(*+3, @array); # `*+3` is the same as `{ $_ + 3 }`
 my @arrayplus3 = map(*+*+3, @array); # Same as `-> $a, $b { $a + $b + 3 }`
+                                     # also `sub ($a, $b) { $a + $b + 3 }`
 say (*/2)(4); #=> 2
               # Immediatly execute the function Whatever created.
 say ((*+3)/5)(5); #=> 1.6
@@ -496,7 +497,8 @@ say ((*+3)/5)(5); #=> 1.6
 # But if you need to have more than one argument (`$_`)
 #  in a block (without wanting to resort to `-> {}`),
 #  you can also use the implicit argument syntax, `$^` :
-map({ $^a + $^b + 3 }, @array); # same as the above
+map({ $^a + $^b + 3 }, @array); # equivalent to following:
+map(sub ($a, $b) { $a + $b + 3 }, @array); # (here with `sub`)
 
 # Note : those are sorted lexicographically.
 # `{ $^b / $^a }` is like `-> $a, $b { $b / $a }`
@@ -1072,6 +1074,11 @@ my @list = 1, 3, 9 ... { $_ > 30 }; # (equivalent to the above)
 my @fib = 1, 1, *+* ... *; # lazy infinite list of prime numbers,
                            #  computed using a closure!
 my @fib = 1, 1, -> $a, $b { $a + $b } ... *; # (equivalent to the above)
+my @fib = 1, 1, { $^a + $^b } ... *; #(... also equivalent to the above)
+# $a and $b will always take the previous values, meaning here
+#  they'll start with $a = 1 and $b = 1 (values we set by hand).
+#  then $a = 1 and $b = 2 (result from previous $a+$b), and so on.
+
 say @fib[^10]; #=> 1 1 2 3 5 8 13 21 34 55
                # (using a range as the index)
 # Note : as for ranges, once reified, elements aren't re-calculated.
