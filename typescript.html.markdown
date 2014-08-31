@@ -41,7 +41,7 @@ function bigHorribleAlert(): void {
 //Functions are first class citizens, support the lambda "fat arrow" syntax and use type inference
 //All examples are equivalent, the same signature will be infered by the compiler, and same JavaScript will be emitted
 var f1 = function(i: number) : number { return i * i; }
-var f2 = function(i: number) { return i * i; } //Return type infered #TODO bug!
+var f2 = function(i: number) { return i * i; } //Return type infered
 var f3 = (i : number) : number => { return i * i; }
 var f4 = (i: number) => { return i * i; } //Return type infered
 var f5 = (i: number) =>  i * i; //Return type infered, one-liner means no return keyword needed
@@ -119,12 +119,30 @@ module Geometry {
 
 var s1 = new Geometry.Square(5);
 
-//..Local alias for rreferencing a module
+//..Local alias for referencing a module
 import G = Geometry;
 
 var s2 = new G.Square(10);
 
 //Generics
+//..Classes
+class Tuple<T1, T2> {
+    constructor(public item1: T1, public item2: T2) {
+    }
+}
+
+//..Interfaces
+interface Pair<T> {
+	item1: T;
+	item2: T;
+}
+
+//..And functions
+var pairToTuple = function<T>(p: Pair<T>) {
+	return new Tuple(p.item1, p.item2);
+};
+
+var tuple = pairToTuple({ item1:"hello", item2:"world"});
 
 //Including references to a definition file:
 /// <reference path="jquery.d.ts" />
