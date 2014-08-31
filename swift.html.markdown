@@ -157,7 +157,7 @@ print(numbers) // [3, 6, 18]
 // structured object, you should use a `struct`
 
 // A simple class `Square` extends `Shape`
-class Rect: Shape {
+class Square: Shape {
   var sideLength: Int = 1
 
   // Custom getter and setter property
