@@ -1,13 +1,13 @@
 ---
 language: TypeScript
 contributors:
-    - ["Philippe Vlérick", "https://github.com/pvlerick"]]
+    - ["Philippe Vlérick", "https://github.com/pvlerick"]
 filename: learntypescript.ts
 ---
 
 TypeScript is a language that aims at easing development of large scale applications written in JavaScript.
 TypeScript adds common concepts such as classes, modules, interfaces, generics and (optional) static typing to JavaScript.
-It is a superset of JavaScript: all JavaScript code is valid TypeScript code so it can be added seamlessly to any project. The TypeScript compiler emitts JavaScript.
+It is a superset of JavaScript: all JavaScript code is valid TypeScript code so it can be added seamlessly to any project. The TypeScript compiler emits JavaScript.
 
 This article will focus only on TypeScript extra syntax, as oposed to [JavaScript] (../javascript/).
 
@@ -46,7 +46,7 @@ var f3 = (i : number) : number => { return i * i; }
 var f4 = (i: number) => { return i * i; } //Return type infered
 var f5 = (i: number) =>  i * i; //Return type infered, one-liner means no return keyword needed
 
-//Interfaces are structural, anything that has the properties is compliant with the interface (duck typing)
+//Interfaces are structural, anything that has the properties is compliant with the interface
 interface Person {
   name: string;
   //Optional properties, marked with a "?"
@@ -76,8 +76,9 @@ class Point {
   //Properties
 	x: number;
 	
-	//Constructor - the public/private keywords in this context are shortcuts to generate the code for a property
-	//Equivalent to "x" in this case
+	//Constructor - the public/private keywords in this context will generate the boiler plate code
+	// for the property and the initialization in the constructor.
+	// In this example, "y" will be defined just like "x" is, but with less code
 	//Default values are also supported
 	constructor(x: number, public y: number = 0) {
 		this.x = x;
@@ -106,7 +107,7 @@ class Point3D extends Point {
 	}
 }
 
-//Modules, "." can be used as separators for sub modules
+//Modules, "." can be used as separator for sub modules
 module Geometry {
   export class Square {
     constructor(public sideLength: number = 0) {
