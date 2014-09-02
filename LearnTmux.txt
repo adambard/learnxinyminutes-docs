@@ -15,47 +15,55 @@ for users to get acclimated quickly. Once you feel comfortable manipulating
 tmux to suit your needs, I strongly suggest you read the man pages.
 
 
-### Session Management
-```bash
-  tmux new       Create new session
-  -s "Session"   Create named session
-  -n "Window"    Create named Window
-  -c "/dir"      Start in target directory
 
-  ex: tmux new -c "~/Documents" -s "" -n ""
-  -----------------------------------------------------------------------------
-      C^b d          Detach current session
-      C^b D          Select session to detach
-  -----------------------------------------------------------------------------
-      tmux attach    Attach last/available session
-      -t "#"         Attach target session
-      -d             Detach the session from other instances
-  -----------------------------------------------------------------------------
-      tmux ls        List open sessions
-      C^b s          Select new session for attached client interactively
-  -----------------------------------------------------------------------------
-      kill-session   Kill current session
-      -t "#"         Kill target session
-      -a             Kill all sessions
-      -a -t "#"      Kill all sessions but the target
-  -----------------------------------------------------------------------------
 ```
+# Session Management
+    
+    tmux new         Create new session
+    -s "Session"     Create named session
+    -n "Window"      Create named Window
+    -c "/dir"        Start in target directory
+    ex: $ tmux new -c "~/" -s "Name" -n "Name"
+    
+    C^b $            Rename current session
+    
+    C^b d            Detach current session
+    C^b D            Select session to detach
+    
+    tmux attach      Attach last/available session
+    -t "#"           Attach target session
+    -d               Detach the session from other instances
+    tmux ls          List open sessions
+    C^b s            Select new session for attached client interactively
+    
+    kill-session     Kill current session
+    -t "#"           Kill target session
+    -a               Kill all sessions
+    -a -t "#"        Kill all sessions but the target   
 
-### Window Management
-```bash
-  -----------------------------------------------------------------------------
-      C^b c          Create another window
-      C^b "          Split Horizontally
-      C^b %          Split Vertically
-  -----------------------------------------------------------------------------
-      C^b q        Briefly display pane indexes
-      C^b w        Choose current window interactively
-  -----------------------------------------------------------------------------
 
-    Detaching Windows
+# Window Management
 
-  -----------------------------------------------------------------------------
-  
-    Killing Windows
+    C^b c            Create another window
+    C^b "            Split Horizontally
+    C^b %            Split Vertically
+    
+    exit or C^b x    Kill the current pane
+    
+    C^b q            Briefly display pane indexes
+    C^#              Choose current window by #
+    C^b w            Choose current window interactively
+    C^b n            Change to next window
+    C^b p            Change to previous window
+    C^b Up, Right    Change to pane in selected direction 
+        Down, left  
 
+    C^b {            Swap current/previous pane 
+    C^b }            Swap current/next pane
+    
+    C^b C-Up, Right  Resize in steps of one cell
+         Down, left  
+
+    C^b M-Up, Right  resize in steps of five cells
+         Down, left  
 ```
