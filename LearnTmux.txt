@@ -1,0 +1,61 @@
+---
+category: tool
+tool: tmux
+contributors:
+    - ["kaernyk", "http://github.com/kaernyk"]
+filename: LearnTmux.txt
+---
+
+  tmux is a terminal multiplexer: it enables a number of terminals to be
+created, accessed, and controlled from a single screen. tmux may be detached
+from a screen and continue running in the background, then later reattached.
+
+  This will be a quick walkthough detailing the basic method of controlling tmux
+for users to get acclimated quickly. Once you feel comfortable manipulating
+tmux to suit your needs, I strongly suggest you read the man pages.
+
+
+### Session Management
+```bash
+  tmux new       Create new session
+  -s "Session"   Create named session
+  -n "Window"    Create named Window
+  -c "/dir"      Start in target directory
+
+  ex: tmux new -c "~/Documents" -s "" -n ""
+  -----------------------------------------------------------------------------
+      C^b d          Detach current session
+      C^b D          Select session to detach
+  -----------------------------------------------------------------------------
+      tmux attach    Attach last/available session
+      -t "#"         Attach target session
+      -d             Detach the session from other instances
+  -----------------------------------------------------------------------------
+      tmux ls        List open sessions
+      C^b s          Select new session for attached client interactively
+  -----------------------------------------------------------------------------
+      kill-session   Kill current session
+      -t "#"         Kill target session
+      -a             Kill all sessions
+      -a -t "#"      Kill all sessions but the target
+  -----------------------------------------------------------------------------
+```
+
+### Window Management
+```bash
+  -----------------------------------------------------------------------------
+      C^b c          Create another window
+      C^b "          Split Horizontally
+      C^b %          Split Vertically
+  -----------------------------------------------------------------------------
+      C^b q        Briefly display pane indexes
+      C^b w        Choose current window interactively
+  -----------------------------------------------------------------------------
+
+    Detaching Windows
+
+  -----------------------------------------------------------------------------
+  
+    Killing Windows
+
+```
