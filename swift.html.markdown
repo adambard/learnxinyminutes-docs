@@ -60,7 +60,7 @@ var occupations = [
     "kaylee": "Mechanic"
 ]
 occupations["Jayne"] = "Public Relations"
-let emptyDictionary = Dictionary<String, Float>()
+let emptyDictionary = [String: Float]()
 
 
 //
@@ -226,7 +226,6 @@ public class Shape {
 // If you just need to store data in a
 // structured object, you should use a `struct`
 
-// A simple class `Square` extends `Shape`
 internal class Rect: Shape {
     var sideLength: Int = 1
     
@@ -271,6 +270,7 @@ internal class Rect: Shape {
     }
 }
 
+// A simple class `Square` extends `Rect`
 class Square: Rect {
     convenience init() {
         self.init(sideLength: 5)
