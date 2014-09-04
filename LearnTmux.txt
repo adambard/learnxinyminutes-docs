@@ -6,13 +6,13 @@ contributors:
 filename: LearnTmux.txt
 ---
 
+
   tmux is a terminal multiplexer: it enables a number of terminals to be
 created, accessed, and controlled from a single screen. tmux may be detached
 from a screen and continue running in the background, then later reattached.
 
-  This will be a quick walkthough detailing the basic method of controlling tmux
-for users to get acclimated quickly. Once you feel comfortable manipulating
-tmux to suit your needs, I strongly suggest you read the man pages.
+  Once you feel comfortable manipulating tmux to suit your needs, I strongly 
+suggest you read the man pages.
 
 
 
@@ -46,26 +46,26 @@ tmux to suit your needs, I strongly suggest you read the man pages.
     C^b c            Create another window
     C^b "            Split Horizontally
     C^b %            Split Vertically
-    
+    C^b M-(1-5)      1) Tile vertically
+                     2) Tile horizontally
+                     3) Tile Vertically /w large horizontal
+                     4) Tile horizontally /w large vertical 
+                     5) Tile all windows evenly
+
     C^b q            Briefly display pane indexes
     C^#              Choose current window by #
     C^b w            Choose current window interactively
     C^b n            Change to next window
     C^b p            Change to previous window
     C^b Up, Right    Change to pane in selected direction 
-        Down, left  
+        Down, left
     C^b {            Swap current/previous window
     C^b }            Swap current/next window
+
     C^b C-Up, Right  Resize in steps of one cell
          Down, left  
     C^b M-Up, Right  resize in steps of five cells
          Down, left  
-    C^b M-(1-5)      1 - Tile vertically
-                     2 - Tile horizontally
-                     3 - Tile Vertically /w large horizontal
-                     4 - Tile horizontally /w large vertical 
-                     5 - Tile all windows evenly
-
+    
     exit or C^b x    Kill the current window
-
 ```
