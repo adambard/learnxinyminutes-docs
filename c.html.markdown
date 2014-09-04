@@ -573,7 +573,7 @@ typedef void (*my_fnp_type)(char *);
 '\''; // single quote
 '\"'; // double quote
 '\xhh'; // hexadecimal number. Example: '\xb' = vertical tab character
-'\ooo'; // octal number. Example: '\013' = vertical tab character
+'\0oo'; // octal number. Example: '\013' = vertical tab character
 
 //print formatting:
 "%d";    // integer
