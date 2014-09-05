@@ -12,7 +12,7 @@ contributors:
     - ["Alexej Friesen", "https://github.com/heyalexej"]
 ---
 
-Go was created out of the need to get work done.  It's not the latest trend
+Go was created out of the need to get work done. It's not the latest trend
 in computer science, but it is the newest fastest way to solve real-world
 problems.
 
@@ -26,7 +26,7 @@ Go comes with a great standard library and an enthusiastic community.
 ```go
 // Single line comment
 /* Multi-
-   line comment */
+ line comment */
 
 // A package clause starts every source file.
 // Main is a special name declaring an executable rather than a library.
@@ -41,8 +41,8 @@ import (
 	"strconv"   // String conversions.
 )
 
-// A function definition.  Main is special.  It is the entry point for the
-// executable program.  Love it or hate it, Go uses brace brackets.
+// A function definition. Main is special. It is the entry point for the
+// executable program. Love it or hate it, Go uses brace brackets.
 func main() {
 	// Println outputs a line to stdout.
 	// Qualify it with the package name, fmt.
@@ -77,7 +77,7 @@ func learnTypes() {
 	s2 := `A "raw" string literal
 can include line breaks.` // Same string type.
 
-	// Non-ASCII literal.  Go source is UTF-8.
+	// Non-ASCII literal. Go source is UTF-8.
 	g := 'Σ' // rune type, an alias for int32, holds a unicode code point.
 
 	f := 3.14195 // float64, an IEEE-754 64-bit floating point number.
@@ -94,9 +94,9 @@ can include line breaks.` // Same string type.
 	var a4 [4]int           // An array of 4 ints, initialized to all 0.
 	a3 := [...]int{3, 1, 5} // An array of 3 ints, initialized as shown.
 
-	// Slices have dynamic size.  Arrays and slices each have advantages
+	// Slices have dynamic size. Arrays and slices each have advantages
 	// but use cases for slices are much more common.
-	s3 := []int{4, 5, 9}    // Compare to a3.  No ellipsis here.
+	s3 := []int{4, 5, 9}    // Compare to a3. No ellipsis here.
 	s4 := make([]int, 4)    // Allocates slice of 4 ints, initialized to all 0.
 	var d2 [][]float64      // Declaration only, nothing allocated here.
 	bs := []byte("a slice") // Type conversion syntax.
@@ -116,7 +116,7 @@ can include line breaks.` // Same string type.
 	fmt.Println(s)	// Updated slice is now [1 2 3 4 5 6 7 8 9]
 
 	p, q := learnMemory() // Declares p, q to be type pointer to int.
-	fmt.Println(*p, *q)   // * follows a pointer.  This prints two ints.
+	fmt.Println(*p, *q)   // * follows a pointer. This prints two ints.
 
 	// Maps are a dynamically growable associative array type, like the
 	// hash or dictionary types of some other languages.
@@ -142,7 +142,7 @@ func learnNamedReturns(x, y int) (z int) {
 	return // z is implicit here, because we named it earlier.
 }
 
-// Go is fully garbage collected.  It has pointers but no pointer arithmetic.
+// Go is fully garbage collected. It has pointers but no pointer arithmetic.
 // You can make a mistake with a nil pointer, but not by incrementing a pointer.
 func learnMemory() (p, q *int) {
 	// Named return values p and q have type pointer to int.
@@ -220,7 +220,7 @@ func learnFlowControl() {
 		func(a, b int) int {
 			return (a + b) * 2
 		}(10, 2)) // Called with args 10 and 2
-	// => Add + double two numbers:  24
+	// => Add + double two numbers: 24
 
 	// When you need it, you'll love it.
 	goto love
@@ -267,7 +267,7 @@ type pair struct {
 	x, y int
 }
 
-// Define a method on type pair.  Pair now implements Stringer.
+// Define a method on type pair. Pair now implements Stringer.
 func (p pair) String() string { // p is called the "receiver"
 	// Sprintf is another public function in package fmt.
 	// Dot syntax references fields of p.
@@ -275,13 +275,13 @@ func (p pair) String() string { // p is called the "receiver"
 }
 
 func learnInterfaces() {
-	// Brace syntax is a "struct literal."  It evaluates to an initialized
-	// struct.  The := syntax declares and initializes p to this struct.
+	// Brace syntax is a "struct literal". It evaluates to an initialized
+	// struct. The := syntax declares and initializes p to this struct.
 	p := pair{3, 4}
 	fmt.Println(p.String()) // Call String method of p, of type pair.
 	var i Stringer          // Declare i of interface type Stringer.
 	i = p                   // Valid because pair implements Stringer
-	// Call String method of i, of type Stringer.  Output same as above.
+	// Call String method of i, of type Stringer. Output same as above.
 	fmt.Println(i.String())
 
 	// Functions in the fmt package call the String method to ask an object
@@ -319,7 +319,7 @@ func learnErrorHandling() {
 		// prints 'strconv.ParseInt: parsing "non-int": invalid syntax'
 		fmt.Println(err)
 	}
-	// We'll revisit interfaces a little later.  Meanwhile,
+	// We'll revisit interfaces a little later. Meanwhile,
 	learnConcurrency()
 }
 
@@ -330,12 +330,12 @@ func inc(i int, c chan int) {
 
 // We'll use inc to increment some numbers concurrently.
 func learnConcurrency() {
-	// Same make function used earlier to make a slice.  Make allocates and
+	// Same make function used earlier to make a slice. Make allocates and
 	// initializes slices, maps, and channels.
 	c := make(chan int)
-	// Start three concurrent goroutines.  Numbers will be incremented
+	// Start three concurrent goroutines. Numbers will be incremented
 	// concurrently, perhaps in parallel if the machine is capable and
-	// properly configured.  All three send to the same channel.
+	// properly configured. All three send to the same channel.
 	go inc(0, c) // go is a statement that starts a new goroutine.
 	go inc(10, c)
 	go inc(-805, c)
@@ -348,7 +348,7 @@ func learnConcurrency() {
 	go func() { c <- 84 }()       // Start a new goroutine just to send a value.
 	go func() { cs <- "wordy" }() // Again, for cs this time.
 	// Select has syntax like a switch statement but each case involves
-	// a channel operation.  It selects a case at random out of the cases
+	// a channel operation. It selects a case at random out of the cases
 	// that are ready to communicate.
 	select {
 	case i := <-c: // The value received can be assigned to a variable,
@@ -358,7 +358,7 @@ func learnConcurrency() {
 	case <-ccs: // Empty channel, not ready for communication.
 		fmt.Println("didn't happen.")
 	}
-	// At this point a value was taken from either c or cs.  One of the two
+	// At this point a value was taken from either c or cs. One of the two
 	// goroutines started above has completed, the other will remain blocked.
 
 	learnWebProgramming() // Go does it. You want to do it too.
@@ -397,15 +397,15 @@ func requestServer() {
 The root of all things Go is the [official Go web site](http://golang.org/).
 There you can follow the tutorial, play interactively, and read lots.
 
-The language definition itself is highly recommended.  It's easy to read
+The language definition itself is highly recommended. It's easy to read
 and amazingly short (as language definitions go these days.)
 
 You can play around with the code on [Go playground](https://play.golang.org/p/tnWMjr16Mm). Try to change it and run it from your browser! Note that you can use [https://play.golang.org](https://play.golang.org) as a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) to test things and code in your browser, without even installing Go.
 
 On the reading list for students of Go is the [source code to the standard
-library](http://golang.org/src/pkg/).  Comprehensively documented, it
+library](http://golang.org/src/pkg/). Comprehensively documented, it
 demonstrates the best of readable and understandable Go, Go style, and Go
-idioms.  Or you can click on a function name in [the
+idioms. Or you can click on a function name in [the
 documentation](http://golang.org/pkg/) and the source code comes up!
 
 Another great resource to learn Go is [Go by example](https://gobyexample.com/).
