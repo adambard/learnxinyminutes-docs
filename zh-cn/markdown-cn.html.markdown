@@ -3,7 +3,7 @@ language: Markdown
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
-    - ["Fangzhou Chen"]
+    - ["Fangzhou Chen","https://github.com/FZSS"]
 filename: learnmarkdown-cn.md
 lang: zh-cn
 ---
