@@ -105,13 +105,9 @@ example7() {
   new Example7Class().sayItFromInstance();
 }
 
-// Literals are great, but there's a restriction for what literals can be
-// outside of function/method bodies. Literals on the outer scope of class
-// or outside of class have to be constant. Strings and numbers are constant
-// by default. But arrays and maps are not. They can be made constant by
-// declaring them "const".
-var example8A = const ["Example8 const array"],
-  example8M = const {"someKey": "Example8 const map"}; 
+// Literals are great.
+var example8A = ["Example8 array"],
+  example8M = {"someKey": "Example8 map"}; 
 example8() {
   print(example8A[0]);
   print(example8M["someKey"]);
@@ -120,7 +116,7 @@ example8() {
 // Loops in Dart take the form of standard for () {} or while () {} loops,
 // slightly more modern for (.. in ..) {}, or functional callbacks with many
 // supported features, starting with forEach.
-var example9A = const ["a", "b"];
+var example9A = ["a", "b"];
 example9() {
   for (var i = 0; i < example9A.length; i++) {
     print("Example9 for loop '${example9A[i]}'");
