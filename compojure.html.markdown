@@ -23,20 +23,22 @@ in Clojure with minimal effort:
   (run-server myapp {:port 5000}))
 ```
 
-Create a project with [Leiningen](http://leiningen.org/):
+**Step 1:** Create a project with [Leiningen](http://leiningen.org/):
 
 ```
 lein new myapp
 ```
 
-Add your dependencies:
+**Step 2:** Put the above code in `src/myapp/core.clj`
+
+**Step 3:** Add some dependencies to `project.clj`:
 
 ```
 [compojure "1.1.8"]
 [http-kit "2.1.16"]
 ```
 
-And run:
+**Step 4:** Run:
 
 ```
 lein run -m myapp.core
