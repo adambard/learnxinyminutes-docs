@@ -62,7 +62,7 @@ to Python 2.x. Look for another tour of Python 3 soon!
 +True and False #=> False
 +False or True #=> True
 +
-+# Note with ints
++# Note using Bool operators with ints
 +0 and 2 #=> 0
 +-5 or 0 #=> -5
 +0 == False #=> True 
