@@ -66,11 +66,12 @@ not False  # => True
 True and False #=> False
 False or True #=> True
 
-# Note with ints
+# Note using Bool operators with ints
 0 and 2 #=> 0
 -5 or 0 #=> -5
 0 == False #=> True 
-2 == True #=> False #only 1 == True #=> True
+2 == True #=> False 
+1 == True #=> True
 
 # Equality is ==
 1 == 1  # => True
