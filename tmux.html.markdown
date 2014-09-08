@@ -13,7 +13,7 @@ created, accessed, and controlled from a single screen. tmux may be detached
 from a screen and continue running in the background, then later reattached.
 
 
-```bash
+```
 
   tmux [command]      # Run a command 
                       # 'tmux' with no commands will create a new session
