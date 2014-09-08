@@ -14,40 +14,40 @@ from a screen and continue running in the background, then later reattached.
 
 
 ```bash
-# We’ll start off with managing tmux from a terminal:
 
-  tmux
+  tmux [command]      # Run a command 
+                      # 'tmux' with no commands will create a new session
 
-  new               # Create a new session
-   -s "Session"     # Create named session
-   -n "Window"      # Create named Window
-   -c "/dir"        # Start in target directory
-    
-  attach            # Attach last/available session
-   -t "#"           # Attach target session
-   -d               # Detach the session from other instances
-
-  ls                # List open sessions
-   -a		    # List all open sessions
-
-  lsw               # List windows
-   -a		    # List all windows
-   -s		    # List all windows in session
-
-  lsp               # List panes
-   -a		    # List all panes
-   -s		    # List all panes in session
-   -t 		    # List app panes in target
-
-  kill-window       # Kill current window
-   -t "#"           # Kill target window
-   -a               # Kill all windows
-   -a -t "#"        # Kill all windows but the target   
-        
-  kill-session      # Kill current session
-   -t "#"           # Kill target session
-   -a               # Kill all sessions
-   -a -t "#"        # Kill all sessions but the target   
+    new               # Create a new session
+     -s "Session"     # Create named session
+     -n "Window"      # Create named Window
+     -c "/dir"        # Start in target directory
+	    
+    attach            # Attach last/available session
+     -t "#"           # Attach target session
+     -d               # Detach the session from other instances
+	
+    ls                # List open sessions
+     -a               # List all open sessions
+	
+    lsw               # List windows
+     -a               # List all windows
+     -s               # List all windows in session
+	
+    lsp               # List panes
+     -a               # List all panes
+     -s               # List all panes in session
+     -t               # List app panes in target
+	
+    kill-window       # Kill current window
+     -t "#"           # Kill target window
+     -a               # Kill all windows
+     -a -t "#"        # Kill all windows but the target   
+	        
+    kill-session      # Kill current session
+     -t "#"           # Kill target session
+     -a               # Kill all sessions
+     -a -t "#"        # Kill all sessions but the target   
 
 
 
