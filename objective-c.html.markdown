@@ -12,7 +12,7 @@ filename: LearnObjectiveC.m
 Objective-C is the main programming language used by Apple for the OS X and iOS operating systems and their respective frameworks, Cocoa and Cocoa Touch.
 It is a general-purpose, object-oriented programming language that adds Smalltalk-style messaging to the C programming language. 
 
-```cpp
+```objective_c
 // Single-line comments start with //
 
 /*

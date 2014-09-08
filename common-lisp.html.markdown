@@ -17,7 +17,7 @@ Another popular and recent book is
 
 
 
-```scheme
+```common_lisp
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 0. Syntax

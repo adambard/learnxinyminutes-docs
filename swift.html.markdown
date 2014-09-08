@@ -12,7 +12,7 @@ The official [Swift Programming Language](https://itunes.apple.com/us/book/swift
 
 See also Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/LandingPage/index.html), which has a complete tutorial on Swift.
 
-```js
+```swift
 //
 // MARK: Basics
 //
