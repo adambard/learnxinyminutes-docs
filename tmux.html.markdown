@@ -16,16 +16,33 @@ from a screen and continue running in the background, then later reattached.
 ```bash
 # We’ll start off with managing tmux from a terminal:
 
-  tmux new          # Create a new session
+  tmux
+
+  new               # Create a new session
    -s "Session"     # Create named session
    -n "Window"      # Create named Window
    -c "/dir"        # Start in target directory
     
-  tmux attach       # Attach last/available session
+  attach            # Attach last/available session
    -t "#"           # Attach target session
    -d               # Detach the session from other instances
 
-  tmux ls           # List open sessions
+  ls                # List open sessions
+   -a		    # List all open sessions
+
+  lsw               # List windows
+   -a		    # List all windows
+   -s		    # List all windows in session
+
+  lsp               # List panes
+   -a		    # List all panes
+   -s		    # List all panes in session
+   -t 		    # List app panes in target
+
+  kill-window       # Kill current window
+   -t "#"           # Kill target window
+   -a               # Kill all windows
+   -a -t "#"        # Kill all windows but the target   
         
   kill-session      # Kill current session
    -t "#"           # Kill target session
@@ -104,58 +121,75 @@ from a screen and continue running in the background, then later reattached.
 like how .vimrc or init.el are used.
 
 
-# Example tmux.conf
-# 2014.9
-
-## Prefix Adjustment   
-
-# Unbind C-b as the default prefix 
-unbind-key C-b
-
-# Set ` as the default prefix
-set-option -g prefix `
-
-# Set C-a as the default prefix
-#set option -g prefix C-a
-
-# Return to previous window when prefix is pressed twice
+# Example tmux.conf  
+# 2014.9  
+  
+  
+### Keybinds  
+###########################################################################  
+  
+# Unbind C-b as the default prefix   
+unbind-key C-b  
+  
+# Set new default prefix  
+set-option -g prefix `  
+#set-option -g prefix C-a  
+  
+# Return to previous window when prefix is pressed twice  
 bind-key C-a last-window  
-bind-key ` last-window 
-
-# Allow swapping C-a and ` using F11/F12 
+bind-key ` last-window  
+  
+# Allow swapping C-a and ` using F11/F12   
 bind-key F11 set-option -g prefix C-a  
 bind-key F12 set-option -g prefix `  
-bind-key C-a send-prefix
   
-## Index Start  
+# Activate inner-most session (when nesting tmux)  
+# to send commands  
+bind-key a send-prefix  
+  
+# Index Start  
 set -g base-index 1  
   
-## Window Cycle/Swap  
+# Window Cycle/Swap    
 bind e previous-window  
 bind f next-window  
 bind E swap-window -t -1  
 bind F swap-window -t +1  
-
-## Statusbar Color Palatte
+  
+# easy-to-remember split pane commands  
+bind | split-window -h  
+bind - split-window -v  
+unbind '"'  
+unbind %  
+  
+# moving between panes with vim movement keys  
+bind h select-pane -L  
+bind j select-pane -D  
+bind k select-pane -U  
+bind l select-pane -R  
+  
+  
+### Theme  
+###########################################################################  
+  
+# Statusbar Color Palatte  
 set-option -g status-justify left  
 set-option -g status-bg black  
 set-option -g status-fg white  
 set-option -g status-left-length 40  
 set-option -g status-right-length 80  
   
-## Pane Border Color Palette  
+# Pane Border Color Palette    
 set-option -g pane-active-border-fg green  
 set-option -g pane-active-border-bg black  
 set-option -g pane-border-fg white  
 set-option -g pane-border-bg black  
   
-## Message Color Palette  
+# Message Color Palette    
 set-option -g message-fg black  
 set-option -g message-bg green  
   
-#setw -g mode-bg black      
-  
-## Window Status Color Palette  
+# Window Status Color Palette    
 setw -g window-status-bg black  
 setw -g window-status-current-fg green  
 setw -g window-status-bell-attr default  
@@ -164,34 +198,52 @@ setw -g window-status-content-attr default
 setw -g window-status-content-fg yellow  
 setw -g window-status-activity-attr default  
 setw -g window-status-activity-fg yellow  
-
-## Window Interface Adjustments  
-set-option -g status-utf8 on  
-setw -g mode-keys vi  
-setw -g mode-mouse on  
-setw -g monitor-activity on  
   
-set-option -g mouse-select-pane on  
+  
+### UI  
+###########################################################################  
+  
+# Statusbar  
+set-option -g status-utf8 on  
+  
+# Keybind preference
+setw -g mode-keys vi  
 set-option -g status-keys vi  
+
+# Notification  
+setw -g monitor-activity on  
+set -g visual-activity on  
 set-option -g bell-action any  
+set-option -g visual-bell off  
+  
+# Mouse  
+setw -g mode-mouse on  
+set-option -g mouse-select-pane on  
+set -g mouse-resize-pane on  
+set -g mouse-select-window on  
+  
+# Automatically set window titles  
 set-option -g set-titles on  
 set-option -g set-titles-string '#H:#S.#I.#P #W #T' # window number,program name,active (or not)  
-set-option -g visual-bell off  
-
-## Statusbar Adjustments  
-set -g status-left ' #[fg=red]#H#[fg=green]:#[fg=white]#S #[fg=green]][#[default] '  
-set -g status-interval 5  
-
-# Statusbar with right-aligned Date / Time
-set -g status-right ' #[fg=green]][#[fg=white] #T #[fg=green]][ #[fg=blue]%Y-%m-%d #[fg=white]%H:%M#[default] '  
-
-## Show performance counters in statusbar
-# Requires https://github.com/thewtex/tmux-mem-cpu-load/
+  
+# Statusbar Adjustments  
+set -g status-left '#[fg=red]#H#[fg=green]:#[fg=white]#S #[fg=green]][#[default] '  
+set -g status-interval 3  
+  
+# Statusbar with right-aligned Date / Time  
+#set -g status-right ' #[fg=green]][#[fg=white] #T #[fg=green]][ #[fg=blue]%Y-%m-%d #[fg=white]%H:%M#[default] '  
+  
+# Show performance counters in statusbar  
+# Requires https://github.com/thewtex/tmux-mem-cpu-load/  
 #set -g status-right ' #[fg=green]][#[fg=white] #(tmux-mem-cpu-load 5 4) #[fg=green]][ #[fg=yellow]%H:%M#[default] '  
-
-## Scrollback/History limit
-set -g history-limit 4096
-
+ 
+  
+### Misc                                                                                                                          
+###########################################################################  
+  
+# Scrollback/History limit  
+set -g history-limit 4096  
+  
 bind r source-file ~/.tmux.conf
 ```
 
