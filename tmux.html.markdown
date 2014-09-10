@@ -8,14 +8,16 @@ filename: LearnTmux.txt
 
 
 <a href="http://tmux.sourceforge.net/">
-tmux</a> is a terminal multiplexer: it enables a number of terminals to be
-created, accessed, and controlled from a single screen. tmux may be detached
-from a screen and continue running in the background, then later reattached.
+tmux</a> is a terminal multiplexer: it enables a number of terminals 
+to be created, accessed, and controlled from a single screen. tmux 
+may be detached from a screen and continue running in the background
+then later reattached.
 
 
 ```
   tmux [command]     # Run a command
-                     # 'tmux' with no commands will create a new session
+                     # 'tmux' with no commands will create a new 
+                        session
 
     new              # Create a new session
      -s "Session"    # Create named session
@@ -52,42 +54,41 @@ from a screen and continue running in the background, then later reattached.
 
 ## Key Bindings
 
-#   The method of controlling an attached tmux session is via key combinations
-# called 'Prefix' keys.
+#   The method of controlling an attached tmux session is via key 
+# combinations called 'Prefix' keys.
 
-------------------------------------------------------------------------------
-
+----------------------------------------------------------------------
   (C-b) = Ctrl + b    # 'Prefix' combination required to use keybinds
 
   (M-1) = Meta + 1 -or- Alt + 1
+----------------------------------------------------------------------
 
-------------------------------------------------------------------------------
-
-   ?               # List all key bindings.
-   :               # Enter the tmux command prompt.
-   r               # Force redraw of the attached client.
-   c               # Create a new window.
+   ?               # List all key bindings
+   :               # Enter the tmux command prompt
+   r               # Force redraw of the attached client
+   c               # Create a new window
 
    !               # Break the current pane out of the window.
-   %               # Split the current pane into two, left and right.
-   "               # Split the current pane into two, top and bottom.
+   %               # Split the current pane into two, left and right
+   "               # Split the current pane into two, top and bottom
 
-   n               # Change to the next window.
-   p               # Change to the previous window.
-   {               # Swap the current pane with the previous pane.
-   }               # Swap the current pane with the next pane.
+   n               # Change to the next window
+   p               # Change to the previous window
+   {               # Swap the current pane with the previous pane
+   }               # Swap the current pane with the next pane
 
-   s               # Select a new session for the attached client interactively.
-   w               # Choose the current window interactively.
-   0 to 9          # Select windows 0 to 9.
+   s               # Select a new session for the attached client 
+                     interactively
+   w               # Choose the current window interactively
+   0 to 9          # Select windows 0 to 9
 
-   d               # Detach the current client.
-   D               # Choose a client to detach.
+   d               # Detach the current client
+   D               # Choose a client to detach
 
-   &               # Kill the current window.
-   x               # Kill the current pane.
+   &               # Kill the current window
+   x               # Kill the current pane
 
-   Up, Down        # Change to the pane above, below, left, or right.
+   Up, Down        # Change to the pane above, below, left, or right
    Left, Right
 
    M-1 to M-5      # Arrange panes:
@@ -95,12 +96,12 @@ from a screen and continue running in the background, then later reattached.
                    #    2) even-vertical
                    #    3) main-horizontal
                    #    4) main-vertical
-                   #    5) tiled.
+                   #    5) tiled
 
-   C-Up, C-Down    # Resize the current pane in steps of one cell.
+   C-Up, C-Down    # Resize the current pane in steps of one cell
    C-Left, C-Right
 
-   M-Up, M-Down    # Resize the current pane in steps of five cells.
+   M-Up, M-Down    # Resize the current pane in steps of five cells
    M-Left, M-Right
 
 
@@ -115,7 +116,7 @@ like how .vimrc or init.el are used.
 
 
 ### Keybinds
-###########################################################################
+######################################################################
 
 # Unbind C-b as the default prefix
 unbind-key C-befix C-a
@@ -155,7 +156,7 @@ bind l select-pane -R
 
 
 ### Theme
-###########################################################################
+#####################################################################
 
 # Statusbar Color Palette
 set-option -g status-justify left
@@ -186,7 +187,7 @@ setw -g window-status-activity-fg yellow
 
 
 ### UI
-###########################################################################
+######################################################################
 
 # Statusbar
 set-option -g status-utf8 on
@@ -209,22 +210,24 @@ set -g mouse-select-window on
 
 # Automatically set window titles
 set-option -g set-titles on
-set-option -g set-titles-string '#H:#S.#I.#P #W #T' # window number,program name,active (or not)
+
+# window number,program name,active (or not)
+set-option -g set-titles-string '#H:#S.#I.#P #W #T' 
 
 # Statusbar Adjustments
-set -g status-left '#[fg=red]#H#[fg=green]:#[fg=white]#S #[fg=green]][#[default] '
+set -g status-left '#[fg=red]#H#[fg=green]:#[fg=white]#S #[fg=green]][#[default]'
 set -g status-interval 3
 
 # Statusbar with right-aligned Date / Time
-#set -g status-right ' #[fg=green]][#[fg=white] #T #[fg=green]][ #[fg=blue]%Y-%m-%d #[fg=white]%H:%M#[default] '
+#set -g status-right '#[fg=green]][#[fg=white] #T #[fg=green]][ #[fg=blue]%Y-%m-%d #[fg=white]%H:%M#[default]'
 
 # Show performance counters in statusbar
 # Requires https://github.com/thewtex/tmux-mem-cpu-load/
-#set -g status-right ' #[fg=green]][#[fg=white] #(tmux-mem-cpu-load 5 4) #[fg=green]][ #[fg=yellow]%H:%M#[default] '
+#set -g status-right '#[fg=green]][#[fg=white] #(tmux-mem-cpu-load 5 4) #[fg=green]][ #[fg=yellow]%H:%M#[default]'
 
 
 ### Misc
-###########################################################################
+######################################################################
 
 # Scrollback/History limit
 set -g history-limit 4096
