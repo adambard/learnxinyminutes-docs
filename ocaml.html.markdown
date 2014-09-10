@@ -306,6 +306,6 @@ sum_int_list t ;;
 
 ## Further reading
 
-* Visit the official website to get the compiler and read the docs: http://ocaml.org/
-* Try interactive tutorials and a web-based interpreter by OCaml Pro: http://try.ocamlpro.com/
-* Read "OCaml for the skeptical" course: http://www2.lib.uchicago.edu/keith/ocaml-class/home.html
+* Visit the official website to get the compiler and read the docs: <http://ocaml.org/>
+* Try interactive tutorials and a web-based interpreter by OCaml Pro: <http://try.ocamlpro.com/>
+* Read "OCaml for the skeptical" course: <http://www2.lib.uchicago.edu/keith/ocaml-class/home.html>
