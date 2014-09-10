@@ -23,20 +23,22 @@ in Clojure with minimal effort:
   (run-server myapp {:port 5000}))
 ```
 
-Create a project with [Leiningen](http://leiningen.org/):
+**Step 1:** Create a project with [Leiningen](http://leiningen.org/):
 
 ```
 lein new myapp
 ```
 
-Add your dependencies:
+**Step 2:** Put the above code in `src/myapp/core.clj`
+
+**Step 3:** Add some dependencies to `project.clj`:
 
 ```
 [compojure "1.1.8"]
 [http-kit "2.1.16"]
 ```
 
-And run:
+**Step 4:** Run:
 
 ```
 lein run -m myapp.core
@@ -81,18 +83,26 @@ The body may be a function, which must accept the request as a parameter:
   (GET "/" [] (fn [req] "Do something with req")))
 ```
 
-Route patterns may include named parameters,
+Or, you can just use the request directly:
+
+```clojure
+(defroutes myapp
+  (GET "/" req "Do something with req"))
+```
+
+Route patterns may include named parameters:
 
 ```clojure
 (defroutes myapp
   (GET "/hello/:name" [name] (str "Hello " name)))
 ```
 
-You can match entire paths with *
+You can adjust what each parameter matches by supplying a regex:
 
 ```clojure
 (defroutes myapp
-  (GET "/file/*.*" [*] (str *)))
+  (GET ["/file/:name.:ext" :name #".*", :ext #".*"] [name ext]
+    (str "File: " name ext)) 
 ```
 
 Handlers may utilize query parameters:
@@ -100,10 +110,10 @@ Handlers may utilize query parameters:
 ```clojure
 (defroutes myapp
   (GET "/posts" []
-       (fn [req]
-         (let [title (get (:params req) "title")
-               author (get (:params req) "title")]
-           " Do something with title and author"))))
+    (fn [req]
+      (let [title (get (:params req) "title")
+            author (get (:params req) "title")]
+        " Do something with title and author"))))
 ```
 
 Or, for POST and PUT requests, form parameters
@@ -111,10 +121,10 @@ Or, for POST and PUT requests, form parameters
 ```clojure
 (defroutes myapp
   (POST "/posts" []
-       (fn [req]
-         (let [title (get (:params req) "title")
-               author (get (:params req) "title")]
-           "Do something with title and author"))))
+    (fn [req]
+      (let [title (get (:params req) "title")
+            author (get (:params req) "title")]
+        "Do something with title and author"))))
 ```
 
 
@@ -123,16 +133,16 @@ Or, for POST and PUT requests, form parameters
 The return value of a route block determines at least the response body
 passed on to the HTTP client, or at least the next middleware in the
 ring stack. Most commonly, this is a string, as in the above examples.
-But, you may also return a [response body](https://github.com/mmcgrana/ring/blob/master/SPEC):
+But, you may also return a [response map](https://github.com/mmcgrana/ring/blob/master/SPEC):
 
 ```clojure
 (defroutes myapp
   (GET "/" []
-       {:status 200 :body "Hello World"})
+    {:status 200 :body "Hello World"})
   (GET "/is-403" []
-       {:status 403 :body ""})
+    {:status 403 :body ""})
   (GET "/is-json" []
-       {:status 200 :headers {"Content-Type" "application/json"} :body "{}"}))
+    {:status 200 :headers {"Content-Type" "application/json"} :body "{}"}))
 ```
 
 ### Static Files
@@ -164,7 +174,7 @@ To use templating with Compojure, you'll need a template library. Here are a few
 
 (defroutes myapp
   (GET "/hello/:name" [name]
-       (render-string "Hello {{name}}" {:name name})))
+    (render-string "Hello {{name}}" {:name name})))
 ```
 
 You can easily read in templates from your resources directory. Here's a helper function
@@ -177,7 +187,7 @@ You can easily read in templates from your resources directory. Here's a helper 
 
 (defroutes myapp
   (GET "/hello/:name" [name]
-       (render-string (read-template "templates/hello.html") {:name name})))
+    (render-string (read-template "templates/hello.html") {:name name})))
 ```
 
 #### [Selmer](https://github.com/yogthos/Selmer)
@@ -189,7 +199,7 @@ You can easily read in templates from your resources directory. Here's a helper 
 
 (defroutes myapp
   (GET "/hello/:name" [name]
-       (render-file "templates/hello.html" {:name name})))
+    (render-file "templates/hello.html" {:name name})))
 ```
 
 #### [Hiccup](https://github.com/weavejester/hiccup)
@@ -201,11 +211,11 @@ You can easily read in templates from your resources directory. Here's a helper 
 
 (defroutes myapp
   (GET "/hello/:name" [name]
-       (hiccup/html
-         [:html
-           [:body
-             [:h1 {:class "title"}
-                  (str "Hello " name)]]])))
+    (hiccup/html
+      [:html
+        [:body
+          [:h1 {:class "title"}
+            (str "Hello " name)]]])))
 ```
 
 #### [Markdown](https://github.com/yogthos/markdown-clj)
@@ -217,9 +227,11 @@ You can easily read in templates from your resources directory. Here's a helper 
 
 (defroutes myapp
   (GET "/hello/:name" [name]
-       (md-to-html-string "## Hello, world")))
+    (md-to-html-string "## Hello, world")))
 ```
 
 Further reading:
 
-[Clojure for the Brave and True](http://www.braveclojure.com/)
+* [Official Compojure Documentation](https://github.com/weavejester/compojure/wiki)
+
+* [Clojure for the Brave and True](http://www.braveclojure.com/)

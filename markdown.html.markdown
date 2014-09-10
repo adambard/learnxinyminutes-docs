@@ -10,7 +10,7 @@ Markdown was created by John Gruber in 2004. It's meant to be an easy to read an
 Give me as much feedback as you want! / Feel free to fork and pull request!
 
 
-```
+```markdown
 <!-- Markdown is a superset of HTML, so any HTML file is valid Markdown, that
 means we can use HTML elements in Markdown, such as the comment element, and
 they won't be affected by a markdown parser. However, if you create an HTML

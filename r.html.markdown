@@ -8,7 +8,7 @@ filename: learnr.r
 
 R is a statistical computing language. It has lots of libraries for uploading and cleaning data sets, running statistical procedures, and making graphs. You can also run `R` commands within a LaTeX document.
 
-```python
+```r
 
 # Comments start with number symbols.
 

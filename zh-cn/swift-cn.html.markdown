@@ -12,7 +12,7 @@ Swift 是Apple 开发的用于iOS 和OS X 开发的编程语言。Swift 于2014�
 
 参阅：Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/LandingPage/index.html) ——一个完整的Swift 教程
 
-```js
+```swift
 //
 // 基础
 //
