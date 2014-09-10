@@ -217,7 +217,7 @@ type number = Int of int | Float of float ;;
 type point2d = Point of float * float ;;
 let my_point = Point (2.0, 3.0) ;;
 
-(* Types can be parametrized, like in this type for "list of lists
+(* Types can be parameterized, like in this type for "list of lists
    of anything". 'a can be substituted with any type. *)
 type 'a list_of_lists = 'a list list ;;
 type int_list_list = int list_of_lists ;;
