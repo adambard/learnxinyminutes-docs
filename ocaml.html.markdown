@@ -1,0 +1,309 @@
+---
+language: "OCaml"
+contributors:
+    - ["Daniil Baturin", "http://baturin.org/"]
+---
+
+OCaml is a strictly evaluated functional language with some imperative
+features.
+
+Along with StandardML and its dialects it belongs to ML language family.
+Just like StandardML, there are both a compiler and an interpreter
+for OCaml. The interpreter binary is normally called "ocaml" and
+the compiler is "ocamlc.opt". There is also a bytecode compiler, "ocamlc",
+but there are few reasons to use it.
+
+It is strongly and statically typed, but instead of using manually written
+type annotations it infers types of expressions using Hindley-Milner algorithm.
+It makes type annotations unnecessary in most cases, but can be a major
+source of confusion for beginners.
+
+When you are in the top level loop, OCaml will print the inferred type
+after you enter an expression.
+```
+# let inc x = x	+ 1 ;;
+val inc : int -> int = <fun>
+# let a = 99 ;;
+val a : int = 99
+```
+
+For a source file you can use "ocamlc -i /path/to/file.ml" command
+to print all names and signatures.
+
+```
+$ cat sigtest.ml 
+let inc x = x + 1
+let add x y = x + y
+
+let a = 1 
+
+$ ocamlc -i ./sigtest.ml 
+val inc : int -> int
+val add : int -> int -> int
+val a : int
+```
+Note that type signatures of functions of multiple arguments are
+written in curried form.
+
+```ocaml
+(* Comments are enclosed in (* and *). It's fine to nest comments. *)
+
+(* There are no single-line comments *)
+
+
+(** Variables and functions *)
+
+(* Statements can be separated by double
+   semicolon symbol, ";;".
+   In many cases it's redundant, but in this tutorial we use it after
+   every expression for easy pasting into the interpreter shell. *)
+
+(* Variable and function declarations use "let" keyword. *)
+let x = 10 ;;
+
+(* Since OCaml uses type inference, you normally don't need to
+   specify argument types explicitly. However, you can do it
+   if you want or need to. *)
+let inc_int (x: int) = x + 1 ;;
+
+(* You need to mark recursive function definitions as such with "rec" keyword. *)
+let rec factorial n =
+    if n = 0 then 1
+    else factorial n * factorial (n-1)
+;;
+
+(* Function application usually doesn't need parantheses around arguments *)
+let fact_5 = factorial 5 ;;
+
+(* ...unless the argument is an expression *)
+let fact_4 = factorial (5-1) ;;
+let sqr2 = sqr (-2) ;;
+
+(* You can use multiple statements separated by semicolon in function body,
+   but the last expression becomes its return value. This is useful when
+   writing in imperative style. The simplest form of it is inserting a 
+   debug print. *)
+let print_and_return x = 
+    print_endline (string_of_int x);
+    x
+;;
+
+(* Every function must have at least one argument.
+   Since some funcions naturally don't take any arguments, there's 
+   "unit" type for it that has the only one value written as "()" *)
+let print_hello () = print_endline "hello world" ;;
+
+(* Note that you must specify "()" as argument when calling it. *)
+print_hello () ;;
+
+(* Calling a function with insufficient number of arguments
+   does not cause an error, it produces a new function. *)
+let make_inc x y = x + y ;; (* make_inc is int -> int -> int *)
+let inc_2 = make_inc 2 ;;   (* inc_2 is int -> int *)
+inc_2 3 ;; (* Evaluates to 5 *)
+
+
+(* Since OCaml is a functional language, it lacks "procedures".
+   Every function must return something. So functions that
+   do not really return anything and are called solely for their
+   side effects, like print_endline, return value of "unit" type. *)
+
+
+(* Definitions can be chained with "let ... in" construct.
+   This is roughly the same to assigning values to multiple
+   variables before using them in expressions in imperative
+   languages. *)
+let x = 10 in
+let y = 20 in
+x + y ;;
+
+(* Alternatively you can use "let ... in and ..." construct.
+   This is especially useful for mutually recursive functions,
+   with ordinary "let .. in" the compiler will complain about
+   unbound values.
+   It's hard to come up with a meaningful but self-contained
+   example of mutually recursive functions, but that syntax
+   works for non-recursive definitions too. *)
+let a = 3 and b = 4 in a * b ;;
+
+
+(** Operators **)
+
+(* There is little distintion between operators and functions.
+   Every operator can be called as a function. *)
+
+(+) 3 4  (* Same as 3 + 4 *)
+
+(* There's a number of built-in operators. One of unusual features is
+   that OCaml doesn't just refrain from any implicit conversions
+   between integers and floats, it also uses different operators
+   for floats. *)
+12 + 3 ;; (* Integer addition *)
+12.0 +. 3.0 ;; (* Floating point addition *)
+
+12 / 3 ;; (* Integer division *)
+12.0 /. 3.0 ;; (* Floating point division *)
+5 mod 2 ;; (* Remainder *)
+
+(* Unary minus is a notable exception, it's polymorphic.
+   However, it also has "pure" integer and float forms. *)
+- 3 ;; (* Polymorphic, integer *)
+- 4.5 ;; (* Polymorphicm float *)
+~- 3 (* Integer only *)
+~- 3.4 (* Type error *)
+~-. 3.4 (* Float only *)
+
+(* You can define your own operators or redefine existing ones.
+   Unlike SML or Haskell, only selected symbols can be used
+   for operator names and first symbol defines associativity
+   and precedence rules.  *)
+let (+) a b = a - b ;; (* Surprise maintenance programmers *)
+
+(* More useful: a reciprocal operator for floats.
+   Unary operators must start with "~" *)
+let (~/) x = 1.0 /. x ;;
+~/4.0 (* = 0.25 *)
+
+
+(** Built-in datastructures *)
+
+(* Lists are enclosed in square brackets, items are separated by
+   semicolons. *)
+let my_list = [1; 2; 3] ;;
+
+(* Tuples are (optionally) enclosed in parantheses, items are separated
+   by commas *)
+let first_tuple = 3, 4 ;;
+let second_tuple = (4, 5) ;;
+
+(* Corollary: if you try to separate list items by commas, you get a list
+   with a tuple inside, probably not what you want. *)
+let bad_list = [1, 2] ;; (* Becomes [(1, 2)] *)
+
+(* You can access individual list items with List.nth function *)
+List.nth my_list 1 ;;
+
+(* You can add an item to the beginning of a list with "::" constructor
+   often referred to as "cons". *)
+1 :: [2; 3] ;; (* Gives [1; 2; 3] *)
+
+(* Arrays are enclosed in [| |] *)
+let my_array = [| 1; 2; 3 |] ;;
+
+(* You can access array items like this: *)
+my_array.(0) ;;
+
+
+
+(** Data types *)
+
+(* You can define types with "type some_type =" construct. Like in this
+   useless type alias: *)
+type my_int = int ;;
+
+(* More interesting types include so called type constructors.
+   Constructors must start with a capital letter. *)
+type ml = OCaml | StandardML ;;
+let lang = OCaml ;;  (* Has type "ml" *)
+
+(* Type constructors don't need to be empty. *)
+type my_number = PlusInfinity | MinusInfinity | Real of float ;;
+let r0 = Real -3.4 ;; (* Has type "my_number" *)
+
+(* Can be used to implement polymorphic arithmetics. *)
+type number = Int of int | Float of float ;;
+
+(* Point on a plane, essentially a type-constrained tuple *)
+type point2d = Point of float * float ;;
+let my_point = Point (2.0, 3.0) ;;
+
+(* Types can be parametrized, like in this type for "list of lists
+   of anything". 'a can be substituted with any type. *)
+type 'a list_of_lists = 'a list list ;;
+type int_list_list = int list_of_lists ;;
+
+(* Types also can be recursive. Like in this type analogous to
+   built-in list of integers. *)
+type my_int_list = EmptyList | IntList of int * my_int_list ;;
+let l = Cons (1, EmptyList) ;;
+
+
+(** Pattern matching *)
+
+(* Pattern matching is somewhat similar to switch statement in imperative
+   languages, but offers a lot more expressive power.
+
+   Even though it may look complicated, it really boils down to matching 
+   an argument against an exact value, a predicate, or a type constructor. The type system
+   is what makes it so powerful. *)
+
+(* Matching exact values. "_" means "anything" *)
+let is_zero x =
+    match x with
+    | 0 -> true
+    | _ -> false
+;;
+
+(* Alternatively, you can use "function" keyword *)
+let is_one x = function
+| 1 -> true
+| _ -> false
+;;
+
+(* Matching predicates, aka "guarded pattern matching" *)
+let abs x = 
+    match x with
+    | x when x < 0 -> -x
+    | _ -> x
+;;
+
+abs 5 ;; (* 5 *)
+abs (-5) (* 5 again *)
+
+(* Matching type constructors *)
+
+type animal = Dog of string | Cat of string ;;
+
+let say x =
+    match x with
+    | Dog x -> x ^ " says woof"
+    | Cat x -> x ^ " says meow"
+;;
+
+say (Cat "Fluffy") ;; (* "Fluffy says meow" *)
+
+(* Traversing data structures *)
+
+(* Recursive types can be traversed with pattern matching easily.
+   The cons thing ("::") that is used with built-in lists is actually a
+   type constructor, except it can be used in infix form, unlike 
+   user-defined constructors. So you can use it like this: *)
+
+let rec sum_list l =
+    match l with
+    | [] -> 0
+    | head :: tail -> head + (sum_list tail)
+;;
+
+sum_list [1; 2; 3] ;;
+
+(* Built-int syntax for cons obscures the structure a bit, so we'll make
+   our own list for demonstration. *)
+
+type int_list = Nil | Cons of int * int_list ;;
+let rec sum_int_list l =
+  match l with
+      | Nil -> 0
+      | Cons (head, tail) -> head + (sum_int_list tail)
+;;
+
+let t = Cons (1, Cons (2, Cons (3, Nil))) ;;
+sum_int_list t ;;
+
+```
+
+## Further reading
+
+* Visit the official website to get the compiler and read the docs: http://ocaml.org/
+* Try interactive tutorials and a web-based interpreter by OCaml Pro: http://try.ocamlpro.com/
+* Read "OCaml for the skeptical" course: http://www2.lib.uchicago.edu/keith/ocaml-class/home.html
