@@ -1,5 +1,5 @@
 ---
-language: "OCaml"
+language: OCaml
 contributors:
     - ["Daniil Baturin", "http://baturin.org/"]
 ---
@@ -20,6 +20,7 @@ source of confusion for beginners.
 
 When you are in the top level loop, OCaml will print the inferred type
 after you enter an expression.
+
 ```
 # let inc x = x	+ 1 ;;
 val inc : int -> int = <fun>
@@ -42,6 +43,7 @@ val inc : int -> int
 val add : int -> int -> int
 val a : int
 ```
+
 Note that type signatures of functions of multiple arguments are
 written in curried form.
 
