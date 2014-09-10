@@ -85,7 +85,7 @@ load myFile.mat y % no parentheses, and spaces instead of commas
 % Logicals can be applied to matrices:
 A > 5
 % for each element, if condition is true, that element is 1 in returned matrix
-A[ A > 5 ] 
+A( A > 5 )
 % returns a vector containing the elements in A for which condition is true
 
 % Strings

@@ -9,7 +9,7 @@ filename: learn.scala
 
 Scala - the scalable language
 
-```cpp
+```scala
 
 /*
   Set yourself up:
