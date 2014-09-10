@@ -39,7 +39,7 @@ This is an h2
 -------------
 
 <!-- Simple text styles -->
-<!-- Text can be easily styled as italic, bold, or strikethrough using markdown -->
+<!-- Text can be easily styled as italic or bold using markdown -->
 
 *This text is in italics.*
 _And so is this text._
@@ -52,7 +52,7 @@ __And so is this text.__
 *__And this!__*
 
 <!-- In Github Flavored Markdown, which is used to render markdown files on
-Github, we also have: -->
+Github, we also have strikethrough: -->
 
 ~~This text is rendered with strikethrough.~~
 
@@ -201,11 +201,11 @@ can be anything so long as they are unique. -->
 <!-- Images -->
 <!-- Images are done the same way as links but with an exclamation point in front! -->
 
-![This is hover-text (alt text) for my image](http://imgur.com/myimage.jpg "An optional title")
+![This is the alt-attribute for my image](http://imgur.com/myimage.jpg "An optional title")
 
 <!-- And reference style works as expected -->
 
-![This is the hover-text.][myimage]
+![This is the alt-attribute.][myimage]
 
 [myimage]: relative/urls/cool/image.jpg "if you need a title, it's here"
 
