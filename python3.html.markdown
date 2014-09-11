@@ -61,6 +61,18 @@ False
 not True  # => False
 not False  # => True
 
+# Boolean Operators
+# Note "and" and "or" are case-sensitive
+True and False #=> False
+False or True #=> True
+
+# Note using Bool operators with ints
+0 and 2 #=> 0
+-5 or 0 #=> -5
+0 == False #=> True 
+2 == True #=> False 
+1 == True #=> True
+
 # Equality is ==
 1 == 1  # => True
 2 == 1  # => False
@@ -127,7 +139,8 @@ bool({}) #=> False
 # Python has a print function
 print("I'm Python. Nice to meet you!")
 
-# No need to declare variables before assigning to them. Convention is to use lower_case_with_underscores
+# No need to declare variables before assigning to them. 
+# Convention is to use lower_case_with_underscores
 some_var = 5
 some_var  # => 5
 
@@ -176,7 +189,8 @@ li[::-1]   # => [3, 4, 2, 1]
 del li[2]   # li is now [1, 2, 3]
 
 # You can add lists
-li + other_li   # => [1, 2, 3, 4, 5, 6] - Note: values for li and for other_li are not modified.
+# Note: values for li and for other_li are not modified.
+li + other_li   # => [1, 2, 3, 4, 5, 6] 
 
 # Concatenate lists with "extend()"
 li.extend(other_li)   # Now li is [1, 2, 3, 4, 5, 6]
@@ -215,14 +229,17 @@ filled_dict = {"one": 1, "two": 2, "three": 3}
 # Look up values with []
 filled_dict["one"]   # => 1
 
-# Get all keys as a list with "keys()". We need to wrap the call in list() because we are getting back an iterable. We'll talk about those later.
-list(filled_dict.keys())   # => ["three", "two", "one"]
+# Get all keys as a list with "keys()". 
+# We need to wrap the call in list() because we are getting back an iterable. We'll talk about those later.
 # Note - Dictionary key ordering is not guaranteed.
 # Your results might not match this exactly.
+list(filled_dict.keys())   # => ["three", "two", "one"]
+
 
 # Get all values as a list with "values()". Once again we need to wrap it in list() to get it out of the iterable.
-list(filled_dict.values())   # => [3, 2, 1]
 # Note - Same as above regarding key ordering.
+list(filled_dict.values())   # => [3, 2, 1]
+
 
 # Check for existence of keys in a dictionary with "in"
 "one" in filled_dict   # => True
@@ -241,6 +258,10 @@ filled_dict.get("four", 4)   # => 4
 # "setdefault()" inserts into a dictionary only if the given key isn't present
 filled_dict.setdefault("five", 5)  # filled_dict["five"] is set to 5
 filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5
+
+# Adding to a dictionary
+filled_dict.update({"four":4}) #=> {"one": 1, "two": 2, "three": 3, "four": 4}
+#filled_dict["four"] = 4  #another way to add to dict
 
 # Remove keys from a dictionary with del
 del filled_dict["one"]  # Removes the key "one" from filled dict
@@ -458,6 +479,7 @@ map(add_10, [1, 2, 3])   # => [11, 12, 13]
 filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 
 # We can use list comprehensions for nice maps and filters
+# List comprehension stores the output as a list which can itself be a nested list
 [add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]   # => [6, 7]
 

@@ -8,6 +8,7 @@ contributors:
     - ["Denis Arh", "https://github.com/darh"]
     - ["akirahirose", "https://twitter.com/akirahirose"]
     - ["Anton Strömkvist", "http://lutic.org/"]
+    - ["Rahil Momin", "https://github.com/iamrahil"]
 filename: LearnBash.sh
 ---
 
@@ -138,6 +139,12 @@ esac
 for VARIABLE in {1..3}
 do
     echo "$VARIABLE"
+done
+
+# Or write it the "traditional for loop" way:
+for ((a=1; a <= 3; a++))
+do
+    echo $a
 done
 
 # They can also be used to act on files..
