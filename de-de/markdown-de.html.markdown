@@ -8,9 +8,10 @@ filename: markdown-de.md
 lang: de-de
 ---
 
-Markdown wurde im Jahr 2004 von John Gruber kreiert. Ziel ist und war eine leicht
-zu lesende und zu schreibende Syntax für jegliche Dokumente, die möglichst
-reibungslos  nach HTML (und anderen Formaten) konvertiert werden kann.
+Markdown wurde im Jahr 2004 von John Gruber kreiert. Ziel ist und war eine
+Syntax, in der sich Dokumente leicht schreiben *und* lesen lassen. Ausserdem
+sollte Markdown sich leicht nach HTML (und in andere Formate) konvertieren
+lassen.
 
 ```markdown
 <!-- Markdown ist eine Obermenge von HTML - jede valide HTML-Datei ist also
