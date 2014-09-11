@@ -102,29 +102,72 @@ You can adjust what each parameter matches by supplying a regex:
 ```clojure
 (defroutes myapp
   (GET ["/file/:name.:ext" :name #".*", :ext #".*"] [name ext]
-    (str "File: " name ext)) 
+    (str "File: " name ext)))
 ```
 
-Handlers may utilize query parameters:
+### Middleware
+
+Clojure uses [Ring](https://github.com/ring-clojure/ring) for routing.
+Handlers are just functions that accept a request map and return a
+response map (Compojure will turn strings into 200 responses for you).
+
+You can easily write middleware that wraps all or part of your
+application to modify requests or responses:
 
 ```clojure
 (defroutes myapp
-  (GET "/posts" []
-    (fn [req]
-      (let [title (get (:params req) "title")
-            author (get (:params req) "title")]
-        " Do something with title and author"))))
+  (GET "/" req (str "Hello World v" (:app-version req))))
+
+(defn wrap-version [handler]
+  (fn [request]
+    (handler (assoc request :app-version "1.0.1"))))
+
+(defn -main []
+  (run-server (wrap-version myapp) {:port 5000}))
 ```
 
-Or, for POST and PUT requests, form parameters
+[Ring-Defaults](https://github.com/ring-clojure/ring-defaults) provides some handy
+middlewares for sites and apis, so add it to your dependencies:
+
+```
+[ring/ring-defaults "0.1.1"]
+```
+
+Then, you can import it in your ns:
+
+```
+(ns myapp.core
+  (:require [compojure.core :refer :all]
+            [ring.middleware.defaults :refer :all]
+            [org.httpkit.server :refer [run-server]]))
+```
+
+And use `wrap-defaults` to add the `site-defaults` middleware to your
+app:
+
+```
+(defn -main []
+  (run-server (wrap-defaults myapp site-defaults) {:port 5000}))
+```
+
+Now, your handlers may utilize query parameters:
 
 ```clojure
 (defroutes myapp
-  (POST "/posts" []
-    (fn [req]
-      (let [title (get (:params req) "title")
-            author (get (:params req) "title")]
-        "Do something with title and author"))))
+  (GET "/posts" req
+    (let [title (get (:params req) "title")
+          author (get (:params req) "title")]
+      (str "Title: " title ", Author: " author))))
+```
+
+Or, for POST and PUT requests, form parameters as well
+
+```clojure
+(defroutes myapp
+  (POST "/posts" req
+    (let [title (get (:params req) "title")
+          author (get (:params req) "title")]
+      (str "Title: " title ", Author: " author))))
 ```
 
 
