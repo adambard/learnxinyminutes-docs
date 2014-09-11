@@ -274,7 +274,7 @@ calculateArea() ->
     
 % Compile the module and create a process that evaluates `calculateArea` in the shell
 c(calculateGeometry).
-CalculateArea = spawn(calculateGeometry, calculateAera, []).
+CalculateArea = spawn(calculateGeometry, calculateArea, []).
 CalculateArea ! {circle, 2}. % 12.56000000000000049738
 
 % The shell is also a process, you can use `self` to get the current pid
