@@ -10,7 +10,7 @@ features.
 Along with StandardML and its dialects it belongs to ML language family.
 Just like StandardML, there are both a compiler and an interpreter
 for OCaml. The interpreter binary is normally called "ocaml" and
-the compiler is "ocamlc.opt". There is also a bytecode compiler, "ocamlc",
+the compiler is "ocamlopt". There is also a bytecode compiler, "ocamlc",
 but there are few reasons to use it.
 
 It is strongly and statically typed, but instead of using manually written
@@ -59,10 +59,18 @@ written in curried form.
 
 (* Expressions can be separated by a double semicolon symbol, ";;".
    In many cases it's redundant, but in this tutorial we use it after
-   every expression for easy pasting into the interpreter shell. *)
+   every expression for easy pasting into the interpreter shell.
+   Unnecessary use of expression separators in source code files
+   is often considered to be a bad style. *)
 
 (* Variable and function declarations use "let" keyword. *)
 let x = 10 ;;
+
+(* OCaml allows single quote characters in identifiers.
+   Single quote doesn't have a special meaning in this case, it's often used
+   in cases when in other languages one would use names like "foo_tmp". *)
+let foo = 1 ;;
+let foo' = foo * 2 ;;
 
 (* Since OCaml compiler infers types automatically, you normally don't need to
    specify argument types explicitly. However, you can do it if you want or need to. *)
@@ -195,6 +203,39 @@ let my_array = [| 1; 2; 3 |] ;;
 (* You can access array items like this: *)
 my_array.(0) ;;
 
+
+(*** Strings and characters ***)
+
+(* Use double quotes for string literals. *)
+let my_str = "Hello world" ;;
+
+(* Use single quotes for character literals. *)
+let my_char = 'a' ;;
+
+(* Single and double quotes are not interchangeable. *)
+let bad_str = 'syntax error' ;; (* Syntax error. *)
+
+(* This will give you a single character string, not a character. *)
+let single_char_str = "w" ;;
+
+(* Strings can be concatenated with the "^" operator. *)
+let some_str = "hello" ^ "world" ;;
+
+(* Strings are not arrays of characters.
+   You can't mix characters and strings in expressions.
+   You can convert a character to a string with "String.make 1 my_char".
+   There are more convenient functions for this purpose in additional
+   libraries such as Core.Std that may not be installed and/or loaded
+   by default. *)
+let ocaml = (String.make 1 'O') ^ "Caml" ;;
+
+(* There is a printf function. *)
+Printf.printf "%d %s" 99 "bottles of beer" ;;
+
+(* Unformatted read and write functions are there too. *)
+print_string "hello world\n" ;;
+print_endline "hello world" ;;
+let line = read_line () ;;
 
 
 (*** User-defined data types ***)
