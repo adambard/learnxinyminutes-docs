@@ -10,7 +10,7 @@ features.
 Along with StandardML and its dialects it belongs to ML language family.
 Just like StandardML, there are both a compiler and an interpreter
 for OCaml. The interpreter binary is normally called "ocaml" and
-the compiler is "ocamlc.opt". There is also a bytecode compiler, "ocamlc",
+the compiler is "ocamlopt". There is also a bytecode compiler, "ocamlc",
 but there are few reasons to use it.
 
 It is strongly and statically typed, but instead of using manually written
