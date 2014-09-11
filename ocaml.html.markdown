@@ -196,6 +196,39 @@ let my_array = [| 1; 2; 3 |] ;;
 my_array.(0) ;;
 
 
+(*** Strings and characters ***)
+
+(* Use double quotes for string literals. *)
+let my_str = "Hello world" ;;
+
+(* Use single quotes for character literals. *)
+let my_char = 'a' ;;
+
+(* Single and double quotes are not interchangeable. *)
+let bad_str = 'syntax error' ;; (* Syntax error. *)
+
+(* This will give you a single character string, not a character. *)
+let single_char_str = "w" ;;
+
+(* Strings can be concatenated with the "^" operator. *)
+let some_str = "hello" ^ "world" ;;
+
+(* Strings are not arrays of characters.
+   You can't mix characters and strings in expressions.
+   You can convert a character to a string with "String.make 1 my_char".
+   There are more convenient functions for this purpose in additional
+   libraries such as Core.Std that may not be installed and/or loaded
+   by default. *)
+let ocaml = (String.make 1 'O') ^ "Caml" ;;
+
+(* There is a printf function. *)
+Printf.printf "%d %s" 99 "bottles of beer" ;;
+
+(* Unformatted read and write functions are there too. *)
+print_string "hello world\n" ;;
+print_endline "hello world" ;;
+let line = read_line () ;;
+
 
 (*** User-defined data types ***)
 
