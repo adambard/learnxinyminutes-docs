@@ -260,22 +260,22 @@ spawn(F). % <0.44.0>
 % For all of this to be useful we need to be able to receive messages. This is
 % achieved with the `receive` mechanism:
 
--module(caculateGeometry).
+-module(calculateGeometry).
 -compile(export_all).
-caculateAera() ->
+calculateArea() ->
     receive
       {rectangle, W, H} ->
         W * H;
       {circle, R} ->
         3.14 * R * R;
       _ ->
-        io:format("We can only caculate area of rectangles or circles.")
+        io:format("We can only calculate area of rectangles or circles.")
     end.
     
-% Compile the module and create a process that evaluates `caculateAera` in the shell
-c(caculateGeometry).
-CaculateAera = spawn(caculateGeometry, caculateAera, []).
-CaculateAera ! {circle, 2}. % 12.56000000000000049738
+% Compile the module and create a process that evaluates `calculateArea` in the shell
+c(calculateGeometry).
+CalculateArea = spawn(calculateGeometry, calculateArea, []).
+CalculateArea ! {circle, 2}. % 12.56000000000000049738
 
 % The shell is also a process, you can use `self` to get the current pid
 self(). % <0.41.0>
