@@ -59,10 +59,18 @@ written in curried form.
 
 (* Expressions can be separated by a double semicolon symbol, ";;".
    In many cases it's redundant, but in this tutorial we use it after
-   every expression for easy pasting into the interpreter shell. *)
+   every expression for easy pasting into the interpreter shell.
+   Unnecessary use of expression separators in source code files
+   is often considered to be a bad style. *)
 
 (* Variable and function declarations use "let" keyword. *)
 let x = 10 ;;
+
+(* OCaml allows single quote characters in identifiers.
+   Single quote doesn't have a special meaning in this case, it's often used
+   in cases when in other languages one would use names like "foo_tmp". *)
+let foo = 1 ;;
+let foo' = foo * 2 ;;
 
 (* Since OCaml compiler infers types automatically, you normally don't need to
    specify argument types explicitly. However, you can do it if you want or need to. *)
