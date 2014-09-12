@@ -297,7 +297,7 @@ let is_zero x =
 ;;
 
 (* Alternatively, you can use the "function" keyword. *)
-let is_one x = function
+let is_one = function
 | 1 -> true
 | _ -> false
 ;;
