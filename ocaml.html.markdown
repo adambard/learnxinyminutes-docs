@@ -82,7 +82,13 @@ let foo' = foo * 2 ;;
 (* Since OCaml compiler infers types automatically, you normally don't need to
    specify argument types explicitly. However, you can do it if
    you want or need to. *)
-let inc_int (x: int) = x + 1 ;;
+let inc_int (x: int) : int = x + 1 ;;
+
+(* One of the cases when explicit type annotations may be needed is
+   resolving ambiguity between two record types that have fields with
+   the same name. The alternative is to encapsulate those types in
+   modules, but both topics are a bit out of scope of this
+   tutorial. *)
 
 (* You need to mark recursive function definitions as such with "rec" keyword. *)
 let rec factorial n =
