@@ -10,10 +10,10 @@ features.
 Along with StandardML and its dialects it belongs to ML language family.
 F# is also heavily influenced by OCaml.
 
-Just like StandardML, OCaml features both an interpreter that can be
-used interactively and a compiler. The interpreter binary is normally called "ocaml" and
-the compiler is "ocamlopt". There is also a bytecode compiler, "ocamlc",
-but there are few reasons to use it.
+Just like StandardML, OCaml features both an interpreter, that can be
+used interactively, and a compiler.
+The interpreter binary is normally called "ocaml" and the compiler is "ocamlopt".
+There is also a bytecode compiler, "ocamlc", but there are few reasons to use it.
 
 It is strongly and statically typed, but instead of using manually written
 type annotations, it infers types of expressions using Hindley-Milner algorithm.
