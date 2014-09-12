@@ -81,7 +81,8 @@ let foo = 1 ;;
 let foo' = foo * 2 ;;
 
 (* Since OCaml compiler infers types automatically, you normally don't need to
-   specify argument types explicitly. However, you can do it if you want or need to. *)
+   specify argument types explicitly. However, you can do it if
+   you want or need to. *)
 let inc_int (x: int) = x + 1 ;;
 
 (* You need to mark recursive function definitions as such with "rec" keyword. *)
@@ -285,8 +286,8 @@ let l = Cons (1, EmptyList) ;;
    languages, but offers a lot more expressive power.
 
    Even though it may look complicated, it really boils down to matching 
-   an argument against an exact value, a predicate, or a type constructor. The type system
-   is what makes it so powerful. *)
+   an argument against an exact value, a predicate, or a type constructor.
+   The type system is what makes it so powerful. *)
 
 (** Matching exact values.  **)
 
@@ -328,8 +329,8 @@ say (Cat "Fluffy") ;; (* "Fluffy says meow". *)
 
 (* Recursive types can be traversed with pattern matching easily.
    Let's see how we can traverse a datastructure of the built-in list type.
-   Even though the built-in cons ("::") looks like an infix operator, it's actually
-   a type constructor and can be matched like any other. *)
+   Even though the built-in cons ("::") looks like an infix operator,
+   it's actually a type constructor and can be matched like any other. *)
 let rec sum_list l =
     match l with
     | [] -> 0
