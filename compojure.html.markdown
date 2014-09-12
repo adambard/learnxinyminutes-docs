@@ -173,7 +173,7 @@ Or, for POST and PUT requests, form parameters as well
 
 ### Return values
 
-The return value of a route block determines at least the response body
+The return value of a route block determines the response body
 passed on to the HTTP client, or at least the next middleware in the
 ring stack. Most commonly, this is a string, as in the above examples.
 But, you may also return a [response map](https://github.com/mmcgrana/ring/blob/master/SPEC):
