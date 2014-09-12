@@ -51,8 +51,7 @@ written in curried form. A function that takes multiple arguments can be
 represented as a composition of functions that take only one argument.
 The "f(x,y) = x + y" function from the example above applied to
 arguments 2 and 3 is equivalent to the "f0(y) = 2 + y" function applied to 3.
-Hence the "int -> int -> int" signature, which can be read as
-"(int -> int) -> int".
+Hence the "int -> int -> int" signature.
 
 
 ```ocaml
