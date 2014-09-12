@@ -31,7 +31,7 @@ val a : int = 99
 ```
 
 For a source file you can use "ocamlc -i /path/to/file.ml" command
-to print all names and signatures.
+to print all names and type signatures.
 
 ```
 $ cat sigtest.ml 
@@ -47,7 +47,13 @@ val a : int
 ```
 
 Note that type signatures of functions of multiple arguments are
-written in curried form.
+written in curried form. A function that takes multiple arguments can be
+represented as a composition of functions that take only one argument.
+The "f(x,y) = x + y" function from the example above applied to
+arguments 2 and 3 is equivalent to the "f0(y) = 2 + y" function applied to 3.
+Hence the "int -> int -> int" signature, which can be read as
+"(int -> int) -> int".
+
 
 ```ocaml
 (*** Comments ***)
