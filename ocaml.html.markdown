@@ -8,10 +8,12 @@ OCaml is a strictly evaluated functional language with some imperative
 features.
 
 Along with StandardML and its dialects it belongs to ML language family.
-Just like StandardML, there are both a compiler and an interpreter
-for OCaml. The interpreter binary is normally called "ocaml" and
-the compiler is "ocamlopt". There is also a bytecode compiler, "ocamlc",
-but there are few reasons to use it.
+F# is also heavily influenced by OCaml.
+
+Just like StandardML, OCaml features both an interpreter, that can be
+used interactively, and a compiler.
+The interpreter binary is normally called "ocaml" and the compiler is "ocamlopt".
+There is also a bytecode compiler, "ocamlc", but there are few reasons to use it.
 
 It is strongly and statically typed, but instead of using manually written
 type annotations, it infers types of expressions using Hindley-Milner algorithm.
@@ -29,7 +31,7 @@ val a : int = 99
 ```
 
 For a source file you can use "ocamlc -i /path/to/file.ml" command
-to print all names and signatures.
+to print all names and type signatures.
 
 ```
 $ cat sigtest.ml 
@@ -45,7 +47,12 @@ val a : int
 ```
 
 Note that type signatures of functions of multiple arguments are
-written in curried form.
+written in curried form. A function that takes multiple arguments can be
+represented as a composition of functions that take only one argument.
+The "f(x,y) = x + y" function from the example above applied to
+arguments 2 and 3 is equivalent to the "f0(y) = 2 + y" function applied to 3.
+Hence the "int -> int -> int" signature.
+
 
 ```ocaml
 (*** Comments ***)
@@ -73,8 +80,15 @@ let foo = 1 ;;
 let foo' = foo * 2 ;;
 
 (* Since OCaml compiler infers types automatically, you normally don't need to
-   specify argument types explicitly. However, you can do it if you want or need to. *)
-let inc_int (x: int) = x + 1 ;;
+   specify argument types explicitly. However, you can do it if
+   you want or need to. *)
+let inc_int (x: int) : int = x + 1 ;;
+
+(* One of the cases when explicit type annotations may be needed is
+   resolving ambiguity between two record types that have fields with
+   the same name. The alternative is to encapsulate those types in
+   modules, but both topics are a bit out of scope of this
+   tutorial. *)
 
 (* You need to mark recursive function definitions as such with "rec" keyword. *)
 let rec factorial n =
@@ -136,6 +150,8 @@ x + y ;;
    works for non-recursive definitions too. *)
 let a = 3 and b = 4 in a * b ;;
 
+(* Anonymous functions use the following syntax: *)
+let my_lambda = fun x -> x * x ;;
 
 (*** Operators ***)
 
@@ -192,6 +208,10 @@ let bad_list = [1, 2] ;; (* Becomes [(1, 2)] *)
 
 (* You can access individual list items with the List.nth function. *)
 List.nth my_list 1 ;;
+
+(* There are higher-order functions for lists such as map and filter. *)
+List.map (fun x -> x * 2) [1; 2; 3] ;;
+List.filter (fun x -> if x mod 2 = 0 then true else false) [1; 2; 3; 4] ;;
 
 (* You can add an item to the beginning of a list with the "::" constructor
    often referred to as "cons". *)
@@ -277,8 +297,8 @@ let l = Cons (1, EmptyList) ;;
    languages, but offers a lot more expressive power.
 
    Even though it may look complicated, it really boils down to matching 
-   an argument against an exact value, a predicate, or a type constructor. The type system
-   is what makes it so powerful. *)
+   an argument against an exact value, a predicate, or a type constructor.
+   The type system is what makes it so powerful. *)
 
 (** Matching exact values.  **)
 
@@ -289,7 +309,7 @@ let is_zero x =
 ;;
 
 (* Alternatively, you can use the "function" keyword. *)
-let is_one x = function
+let is_one = function
 | 1 -> true
 | _ -> false
 ;;
@@ -320,8 +340,8 @@ say (Cat "Fluffy") ;; (* "Fluffy says meow". *)
 
 (* Recursive types can be traversed with pattern matching easily.
    Let's see how we can traverse a datastructure of the built-in list type.
-   Even though the built-in cons ("::") looks like an infix operator, it's actually
-   a type constructor and can be matched like any other. *)
+   Even though the built-in cons ("::") looks like an infix operator,
+   it's actually a type constructor and can be matched like any other. *)
 let rec sum_list l =
     match l with
     | [] -> 0
