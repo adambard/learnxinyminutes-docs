@@ -4,6 +4,7 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators :
     - ["Frederik Ring", "https://github.com/m90"]
+    - ["Philipp Fischbeck", "https://github.com/PFischbeck"]
 filename: markdown-de.md
 lang: de-de
 ---
