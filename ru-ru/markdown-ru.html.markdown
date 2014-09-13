@@ -3,7 +3,8 @@ language: markdown
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
     - ["Pirogov Alexey", "http://twitter.com/alex_pir"]
-filename: markdown.md
+filename: markdown-ru.md
+lang: ru-ru
 ---
 
 Язык разметки Markdown создан Джоном Грубером (англ. John Gruber) и Аароном Шварцем (англ. Aaron H. Swartz) в 2004 году. Авторы задавались целью создать максимально удобочитаемый и удобный в публикации облегчённый язык разметки, пригодный для последующего преобразования в HTML (а также и в другие форматы).
