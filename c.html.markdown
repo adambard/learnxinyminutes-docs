@@ -4,6 +4,7 @@ filename: learnc.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
     - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
+    - ["Marco Scannadinari", "https://marcoms.github.io"]
 
 ---
 
@@ -19,6 +20,10 @@ memory management and C will take you as far as you need to go.
 /*
 Multi-line comments look like this. They work in C89 as well.
 */
+
+/*
+Multi-line comments don't nest /* Be careful */  // comment ends on this line...
+*/  // ...not this one!
 
 // Constants: #define <keyword>
 #define DAYS_IN_YEAR 365
