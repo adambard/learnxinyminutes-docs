@@ -183,15 +183,15 @@ int main()
    int myInt;   
     
    //Prints to stdout (or terminal/screen)   
-   cout << "Enter your fav number:\n"   
+   cout << "Enter your fav number:\n";   
    //Takes in input   
    cin >> myInt;   
 
    //cout can also be formatted   
-   cout << "Your fav number is " << myInt << "\n"   
+   cout << "Your fav number is " << myInt << "\n";   
    //Your fav number is ##  
 
-   cerr << "Used for error messages"   
+   cerr << "Used for error messages";   
 }   
 
 
