@@ -78,15 +78,15 @@ int main() {
     long long x_long_long = 0; 
 
     // floats are usually 32-bit floating point numbers
-    float x_float = 0.0;
+    float x_float = 0.0f;  // 'f' suffix here denotes floating point literal
 
     // doubles are usually 64-bit floating-point numbers
-    double x_double = 0.0;
+    double x_double = 0.0;  // real numbers without any suffix are doubles
 
     // Integral types may be unsigned.
     unsigned short ux_short;
     unsigned int ux_int;
-    unsigned long long ux_long_long;
+    unsigned long long ux_long_long;
 
     // chars inside single quotes are integers in machine's character set. 
     '0' // => 48 in the ASCII character set. 
