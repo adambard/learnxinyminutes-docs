@@ -1246,7 +1246,7 @@ so 'abc' ~~ / a b* c /; # `True`
 so 'abbbbc' ~~ / a b* c /; # `True`
 so 'aec' ~~ / a b* c /; # `False`. "b"(s) are optional, not replaceable.
 
-# - `**` - "Quantify It Yourself".
+# - `**` - (Unbound) Quantifier
 # If you squint hard enough, you might understand
 #  why exponentation is used for quantity.
 so 'abc' ~~ / a b ** 1 c /; # `True` (exactly one time)
@@ -1254,6 +1254,27 @@ so 'abc' ~~ / a b ** 1..3 c /; # `True` (one to three times)
 so 'abbbc' ~~ / a b ** 1..3 c /; # `True`
 so 'abbbbbbc' ~~ / a b ** 1..3 c /; # `False` (too much)
 so 'abbbbbbc' ~~ / a b ** 3..* c /; # `True` (infinite ranges are okay)
+
+# - `<[]>` - Character classes
+# Character classes are the equivalent of PCRE's `[]` classes, but
+#  they use a more perl6-ish syntax:
+say 'fooa' ~~ / f <[ o a ]>+ /; #=> 'fooa'
+# You can use ranges:
+say 'aeiou' ~~ / a <[ e..w ]> /; #=> 'aeiou'
+# Just like in normal regexes, if you want to use a special character, escape it
+#  (the last one is escaping a space)
+say 'he-he !' ~~ / 'he-' <[ a..z \! \  ]> + /; #=> 'he-he !'
+# You'll get a warning if you put duplicate names
+#  (which has the nice effect of catching the wrote quoting:)
+'he he' ~~ / <[ h e ' ' ]> /; # Warns "Repeated characters found in characters class"
+
+# You can also negate them ... (equivalent to `[^]` in PCRE)
+so 'foo' ~~ / <-[ f o ]> + /; # False
+
+# ... and compose them: :
+so 'foo' ~~ / <[ a..z ] - [ f o ]> + /; # False (any letter except f and o)
+so 'foo' ~~ / <-[ a..z ] + [ f o ]> + /; # True (no letter except f and o)
+so 'foo!' ~~ / <-[ a..z ] + [ f o ]> + /; # True (the + doesn't replace the left part)
 
 ## Grouping and capturing
 # Group: you can group parts of your regexp with `[]`.
@@ -1297,13 +1318,38 @@ say $0.WHAT; #=> (Array)
              #  may it be a range or a specific value (even 1).
 
 # If you're wondering how the captures are numbered, here's an explanation:
-TODO use graphs from s05
+# (TODO use graphs from s05)
 
 
 ## Alternatives - the `or` of regexps
 # WARNING: They are DIFFERENT from PCRE regexps.
 so 'abc' ~~ / a [ b | y ] c /; # `True`. Either "b" or "y".
 so 'ayc' ~~ / a [ b | y ] c /; # `True`. Obviously enough ...
+
+# The difference between this `|` and the one you're probably used to is LTM.
+# LTM means "Longest Token Matching". This means that the engine will always
+#  try to match as much as possible in the strng
+'foo' ~~ / fo | foo /; # `foo`, because it's longer.
+# To decide which part is the "longest", it first splits the regex in two parts:
+# The "declarative prefix" (the part that can be statically analyzed)
+#  and the procedural parts.
+# Declarative prefixes include alternations (`|`), conjuctions (`&`),
+#  sub-rule calls (not yet introduced), literals, characters classes and quantifiers.
+# The latter include everything else: back-references, code assertions,
+#  and other things that can't traditionnaly be represented by normal regexps.
+#
+# Then, all the alternatives are tried at once, and the longest wins.
+# Exemples:
+# DECLARATIVE | PROCEDURAL
+/ 'foo' \d+     [ <subrule1> || <subrule2> ] /;
+# DECLARATIVE (nested groups are not a problem)
+/ \s* [ \w & b ] [ c | d ] /;
+# However, closures and recursion (of named regexps) are procedural.
+# ... There are also more complicated rules, like specificity
+#  (literals win over character classes)
+
+# Note: the first-matching `or` still exists, but is now spelled `||`
+'foo' ~~ / fo || foo /; # `fo` now.
 
 ### Extra: the MAIN subroutime
 # The `MAIN` subroutine is called when you run a Perl 6 file directly.
@@ -1317,7 +1363,7 @@ sub MAIN($name) { say "Hello, you !" }
 #      t.pl <name> 
 
 # And since it's a regular Perl 6 sub, you can haz multi-dispatch:
-# (using a "Bool" for the named argument so that we get `--replace`
+# (using a "Bool" for the named argument so that we can do `--replace`
 #  instead of `--replace=1`)
 subset File of Str where *.IO.d; # convert to IO object to check the file exists
 
