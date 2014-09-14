@@ -20,7 +20,7 @@ See also [the CoffeeScript website](http://coffeescript.org/), which has a compl
 Block comments are like these, and they translate directly to '/ *'s and '* /'s
 for the resulting JavaScript code.
 
-You should understand most of JavaScript semantices
+You should understand most of JavaScript semantics
 before continuing.
 ###
 
