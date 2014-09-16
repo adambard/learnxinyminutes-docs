@@ -77,7 +77,9 @@ $.ajax("https://api.example.com/query.php", {
         password: "password (i know this is a bad password)",
         type: "popcorn"
     },
-    success: displayPopcorn
+    success: displayPopcorn,
+    error: popcornFail,
+    timeout: 100000
 });
 
 function displayPopcorn(result) {
@@ -85,124 +87,35 @@ function displayPopcorn(result) {
     console.log(result);
 }
 
-// Variables are declared with the var keyword. JavaScript is dynamically typed,
-// so you don't need to specify type. Assignment uses a single = character.
-var someVar = 5;
+function popcornFail(xhr, textStatus, errorType) {
+    alert( "Oh no! Popcorn failed to pop because " + textStatus );
+}
 
-// if you leave the var keyword off, you won't get an error...
-someOtherVar = 10;
 
-// ...but your variable will be created in the global scope, not in the scope
-// you defined it in.
 
-// Variables declared without being assigned to are set to undefined.
-var someThirdVar; // = undefined
-
-// There's shorthand for performing math operations on variables:
-someVar += 5; // equivalent to someVar = someVar + 5; someVar is 10 now
-someVar *= 10; // now someVar is 100
-
-// and an even-shorter-hand for adding or subtracting 1
-someVar++; // now someVar is 101
-someVar--; // back to 100
-
-// Arrays are ordered lists of values, of any type.
+// Arrays in jQuery are exactly the same as in JS (surprise!)
 var myArray = ["Hello", 45, true];
-
-// Their members can be accessed using the square-brackets subscript syntax.
-// Array indices start at zero.
 myArray[1]; // = 45
-
-// Arrays are mutable and of variable length.
 myArray.push("World");
 myArray.length; // = 4
+myArray[3] = "Hello"; // set 3rd index to "Hello"
 
-// Add/Modify at specific index
-myArray[3] = "Hello";
+// However, jQuery provides some nice utilities to arrays.
+$.inArray( 45, myArray ); // true
+$.inArray( 45, myArray, 2 ); // false, because no value of 45 exists after index 2
+$.isArray( myArray ); // true
 
-// JavaScript's objects are equivalent to 'dictionaries' or 'maps' in other
-// languages: an unordered collection of key-value pairs.
+// Arrays can also be made from non-array objects
+var elems = document.getElementsByTagName( "div" );
+var arr = jQuery.makeArray( elems );
+arr.reverse(); // works!
+
+// jQuery's objects - also the same as JavaScript.
 var myObj = {key1: "Hello", key2: "World"};
-
-// Keys are strings, but quotes aren't required if they're a valid
-// JavaScript identifier. Values can be any type.
-var myObj = {myKey: "myValue", "my other key": 4};
-
-// Object attributes can also be accessed using the subscript syntax,
 myObj["my other key"]; // = 4
-
-// ... or using the dot syntax, provided the key is a valid identifier.
 myObj.myKey; // = "myValue"
-
-// Objects are mutable; values can be changed and new keys added.
 myObj.myThirdKey = true;
-
-// If you try to access a value that's not yet set, you'll get undefined.
 myObj.myFourthKey; // = undefined
-
-///////////////////////////////////
-// 3. Logic and Control Structures
-
-// The syntax for this section is almost identical to Java's. 
-
-// The if structure works as you'd expect.
-var count = 1;
-if (count == 3){
-    // evaluated if count is 3
-} else if (count == 4){
-    // evaluated if count is 4
-} else {
-    // evaluated if it's not either 3 or 4
-}
-
-// As does while.
-while (true){
-    // An infinite loop!
-}
-
-// Do-while loops are like while loops, except they always run at least once.
-var input
-do {
-    input = getInput();
-} while (!isValid(input))
-
-// the for loop is the same as C and Java:
-// initialisation; continue condition; iteration.
-for (var i = 0; i < 5; i++){
-    // will run 5 times
-}
-
-// && is logical and, || is logical or
-if (house.size == "big" && house.colour == "blue"){
-    house.contains = "bear";
-}
-if (colour == "red" || colour == "blue"){
-    // colour is either red or blue
-}
-
-// && and || "short circuit", which is useful for setting default values.
-var name = otherName || "default";
-
-
-// switch statement checks for equality with ===
-// use 'break' after each case 
-// or the cases after the correct one will be executed too. 
-grade = 'B';
-switch (grade) {
-  case 'A':
-    console.log("Great job");
-    break;
-  case 'B':
-    console.log("OK job");
-    break;
-  case 'C':
-    console.log("You can do better");
-    break;
-  default:
-    console.log("Oy vey");
-    break;
-}
-
 
 ///////////////////////////////////
 // 4. Functions, Scope and Closures
