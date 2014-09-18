@@ -1,6 +1,6 @@
 ---
 language: nim
-filename: learnNim.c
+filename: learnNim.nim
 contributors:
     - ["Jason J. Ayala P.", "http://JasonAyala.com"]
 ---
