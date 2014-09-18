@@ -360,7 +360,7 @@ spawn(f) #=> #PID<0.40.0>
 # `spawn` returns a pid (process identifier), you can use this pid to send
 # messages to the process. To do message passing we use the `send` operator.
 # For all of this to be useful we need to be able to receive messages. This is
-# achived with the `receive` mechanism:
+# achieved with the `receive` mechanism:
 defmodule Geometry do
   def area_loop do
     receive do
