@@ -8,7 +8,7 @@ translators:
 lang: fr-fr
 ---
 
-Au début du web, il n'y avait pas d'élements visuels, simplement du texte pure. Mais avec le developemnt des navigateurs,
+Au début du web, il n'y avait pas d'élements visuels, simplement du texte pure. Mais avec le dévelopement des navigateurs,
 des pages avec du contenu visuel sont arrivées.
 CSS est le langage standard qui existe et permet de garder une séparation entre
 le contenu (HTML) et le style d'une page web.
