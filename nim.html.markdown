@@ -18,15 +18,15 @@ var x: int    # Declare a variable and its type
 x = 1         # Assign it a value
 var z = "Yep" # Declare and assign, with or without type annotations
 
-var                       # Several, with or without type annotations
-  letter: char = 'n'      # One byte character
-  name         = "Nimrod" # string
-  truth: bool  = false    # Common boolean operators: `and` `not` `or`
+var                      # Several, with or without type annotations
+  letter: char = 'n'     # One byte character
+  lang = "Nimrod"        # string
+  truth: bool = false    # Common boolean operators: `and` `not` `or`
   seconds: int = 42
-  thoughts     = """
+  thoughts = """
 A great programming language
 that everyone can enjoy!
-"""                       # Multiline raw strings
+"""                      # Multiline raw strings
   boat: float
 
 let            # Use let to declare and bind an variable *once*.
@@ -54,8 +54,9 @@ multiline comment
 # Common Operations on Basic Types
 #
 
-var nim = "Nimrod is a progamming language"
-name = nim[0..5]
+let
+  phrase = "Nim is a progamming language"
+  nim = phrase[0..5]
 
 # TODO More common operations?
 
@@ -91,6 +92,9 @@ type
   Name = string # A type alias gives you a new type that is interchangable
   Age  = int    # with the old type but is more descriptive.
   Person = tuple[name: Name, age: Age] # Define data structures too.
+  LongTuple = tuple
+    fieldOne: string
+    secondField: int
 
 var
   john: Person = ("John B.", 17)
@@ -104,11 +108,11 @@ type
 
 var
   money: Cash = 100.Cash           # `.Cash` converts the int to our type
-  desc: Desc  = "Interesting".Desc
+  description: Desc  = "Interesting".Desc
 
 when compileBadCode:
-  john.age  = money # Error! age is of type int and money is Cash
-  john.name = desc  # Compiler says: "No way!"
+  john.age  = money        # Error! age is of type int and money is Cash
+  john.name = description  # Compiler says: "No way!"
 
 #
 # More Types and Data Structures
@@ -117,13 +121,17 @@ when compileBadCode:
 # Enumerations allow a type to be one of a limited number of values
 
 type
-  Directions = enum north, west, east, south
-  Colors     = enum red, blue, green
+  Color     = enum cRed, cBlue, cGreen
+  Direction = enum # Alternative formating
+    dNorth
+    dWest
+    dEast
+    dSouth
 var
-  orient = north # `orient` is of type Directions, with the value `north`
-  pixel  = green # `pixel` is of type Colors, with the value `green`
+  orient = dNorth # `orient` is of type Direction, with the value `dNorth`
+  pixel  = cGreen # `pixel` is of type Color, with the value `cGreen`
 
-discard north > east # Enums are usually an "ordinal" type
+discard dNorth > dEast # Enums are usually an "ordinal" type
 
 # Subranges specify a limited valid range
 
@@ -138,23 +146,23 @@ when compileBadCode:
 # Arrays
 
 type
-  RollCounter = array[DieFaces, int]      # Array's are fixed length and
-  DirNames    = array[Directions, string] # indexed by any ordinal type.
-  Truths      = array[42..44, bool]
+  RollCounter = array[DieFaces, int]  # Array's are fixed length and
+  DirNames = array[Direction, string] # indexed by any ordinal type.
+  Truths = array[42..44, bool]
 var
-  rollCounter: RollCounter
+  counter: RollCounter
   directions: DirNames
-  truths: Truths
+  possible: Truths
 
-truths = [false, false, false] # Literal arrays are created with [V1,..,Vn]
-truths[42] = true
+possible = [false, false, false] # Literal arrays are created with [V1,..,Vn]
+possible[42] = true
 
-directions[north] = "Ahh. The Great White North!"
-directions[west] = "No, don't go there."
+directions[dNorth] = "Ahh. The Great White North!"
+directions[dWest] = "No, don't go there."
 
 my_roll = 13
-rollCounter[my_roll] += 1
-rollCounter[my_roll] += 1
+counter[my_roll] += 1
+counter[my_roll] += 1
 
 var anotherArray = ["Default index", "starts at", "0"]
 
@@ -180,10 +188,10 @@ else:
 import strutils as str
 echo "I'm thinking of a number between 41 and 43. Guess which!"
 var
-  answer: int = 42
+  number: int = 42
   raw_guess: string
   guess: int
-while guess != answer:
+while guess != number:
   raw_guess = readLine(stdin)
   if raw_guess == "":
     continue # `continue` restarts loop/block
@@ -191,9 +199,9 @@ while guess != answer:
   if guess == 1001:
     echo("AAAAAAGGG!")
     break
-  elif guess > answer:
+  elif guess > number:
     echo("Too high.")
-  elif guess < answer:
+  elif guess < number:
     echo("Too low")
   else:
     echo("Yeeeeeehaw!")
@@ -223,16 +231,16 @@ for line in splitLines(myString):
 # Procedures
 #
 
-type Answer = enum yes, no
+type Answer = enum aYes, aNo
 
 proc ask(question: string): Answer =
   echo(question, " (y/n)")
   while true:
     case readLine(stdin)
     of "y", "Y", "yes", "Yes":
-      return Answer.yes  # Enums can be qualified
+      return Answer.aYes  # Enums can be qualified
     of "n", "N", "no", "No":
-      return Answer.no
+      return Answer.aNo
     else: echo("Please be clear: yes or no")
 
 proc addSugar(amount: int = 2) = # Default amount is 2, returns nothing
@@ -240,9 +248,9 @@ proc addSugar(amount: int = 2) = # Default amount is 2, returns nothing
     echo a, " sugar..."
 
 case ask("Would you like sugar in your tea?")
-of yes:
+of aYes:
   addSugar(3)
-of no:
+of aNo:
   echo "Oh do take a little!"
   addSugar()
 # No need for an `else` here. only `yes` and `no` are possible.
