@@ -97,7 +97,7 @@ when compileBadCode:
 # More Types and Data Structures
 #
 
-# Enumerations allow a type to be one of a limited number of values
+# Enumerations allow a type to have one of a limited number of values
 
 type
   Color = enum cRed, cBlue, cGreen
