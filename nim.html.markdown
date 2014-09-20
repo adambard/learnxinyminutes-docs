@@ -240,10 +240,6 @@ of aNo:
   addSugar()
 # No need for an `else` here. Only `yes` and `no` are possible.
 
-proc pluralize(a: int): string =
-  if a > 1 or a == 0: return "s"
-  else: return ""
-
 #
 # FFI
 #
