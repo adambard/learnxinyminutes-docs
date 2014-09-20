@@ -14,7 +14,7 @@ Nim is efficient, expressive, and elegant.
 var                     # Declare (and assign) variables,
   letter: char = 'n'    # with or without type annotations
   lang = "N" & "im"
-  n_length : int = len(lang)
+  nLength : int = len(lang)
   boat: float
   truth: bool = false
 
@@ -247,7 +247,7 @@ of aNo:
 
 proc strcmp(a, b: cstring): cint {.importc: "strcmp", nodecl.}
 
-var cmp = strcmp("C?", "Easy!")
+let cmp = strcmp("C?", "Easy!")
 ```
 
 Additionally, Nim separates itself from its peers with metaprogramming,
