@@ -12,28 +12,27 @@ efficiency.
 Nim is efficient, expressive, and elegant.
 
 ```nimrod
-
 var                     # Declare and assign several variables,
   letter: char = 'n'    # with or without type annotations
-  lang = "Nimrod"
+  lang = "N" & "im"
+  n_let : int = len(lang)
   boat: float
   truth: bool = false
-  seconds: int = 42
 
 let            # Use let to declare and bind an variable *once*.
   legs = 400   # legs is immutable.
   arms = 2_000 # _ are ignored and are useful for long numbers.
+  aboutPi = 3.15
 
 const            # Constants are computed at compile time. This provides
   debug = true   # performance and is useful in compile time expressions.
-  aboutPi = 3.15
   compileBadCode = false
 
 when compileBadCode:            # `when` is a compile time `if`
   legs = legs + 1               # This error will never be compiled.
-  const input = readline(stdin) # const values must be known at compile time.
+  const input = readline(stdin) # Const values must be known at compile time.
 
-discard 1 > 2 # The compiler will complain if the result of an expression
+discard 1 > 2 # Note: The compiler will complain if the result of an expression
               # is unused. `discard` bypasses this.
 
 discard """
@@ -63,7 +62,7 @@ var
 drinks = @["Water", "Juice", "Chocolate"] # @[V1,..,Vn] is the sequence literal
 
 #
-# Defining Your Own Types
+# Defining Types
 #
 
 # Defining your own types puts the compiler to work for you. It's what makes
@@ -73,13 +72,13 @@ type
   Name = string # A type alias gives you a new type that is interchangable
   Age = int     # with the old type but is more descriptive.
   Person = tuple[name: Name, age: Age] # Define data structures too.
-  LongTuple = tuple
+  AnotherSyntax = tuple
     fieldOne: string
     secondField: int
 
 var
-  john: Person = ("John B.", 17)
-  newage: int  = 18 # It would be better to use Age than int
+  john: Person = (name: "John B.", age: 17)
+  newage: int = 18 # It would be better to use Age than int
 
 john.age = newage # But still works because int and Age are synonyms
 
@@ -166,7 +165,7 @@ of "yes", "Yes":
 else:
   echo "That's great; I assume."
 
-# `while`, `if`, `break`
+# `while`, `if`, `continue`, `break`
 
 import strutils as str # http://nimrod-lang.org/strutils.html
 echo "I'm thinking of a number between 41 and 43. Guess which!"
@@ -176,6 +175,7 @@ var
   guess: int
 while guess != number:
   raw_guess = readLine(stdin)
+  if raw_guess = "": continue # Skip this iteration
   guess = str.parseInt(raw_guess)
   if guess == 1001:
     echo("AAAAAAGGG!")
@@ -207,8 +207,8 @@ for line in splitLines(myString):
   echo(line)
 
 for i, c in myString:       # Index and letter. Or `for j in` for just letter
-  if i mod 2 == 0: continue # Skip rest of iteration
-  elif c == 'X': break      # Compact `if` form
+  if i mod 2 == 0: continue # Compact `if` form
+  elif c == 'X': break
   else: echo(c)
 
 #
@@ -240,6 +240,10 @@ of aNo:
   addSugar()
 # No need for an `else` here. Only `yes` and `no` are possible.
 
+proc pluralize(a: int): string =
+  if a > 1 or a == 0: return "s"
+  else: return ""
+
 #
 # FFI
 #
@@ -249,7 +253,6 @@ of aNo:
 proc strcmp(a, b: cstring): cint {.importc: "strcmp", nodecl.}
 
 var cmp = strcmp("C?", "Easy!")
-
 ```
 
 Additionally, Nim separates itself from its peers with metaprogramming,
