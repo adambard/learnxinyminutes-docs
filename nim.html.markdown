@@ -12,14 +12,14 @@ efficiency.
 Nim is efficient, expressive, and elegant.
 
 ```nimrod
-var                     # Declare and assign several variables,
+var                     # Declare (and assign) variables,
   letter: char = 'n'    # with or without type annotations
   lang = "N" & "im"
   n_let : int = len(lang)
   boat: float
   truth: bool = false
 
-let            # Use let to declare and bind an variable *once*.
+let            # Use let to declare and bind variables *once*.
   legs = 400   # legs is immutable.
   arms = 2_000 # _ are ignored and are useful for long numbers.
   aboutPi = 3.15
