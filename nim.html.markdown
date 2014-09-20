@@ -6,8 +6,7 @@ contributors:
 ---
 
 Nim (formally Nimrod) is a statically typed, imperative programming language
-that tries to give the programmer ultimate power without compromises on runtime
-efficiency.
+that gives the programmer power without compromises on runtime efficiency.
 
 Nim is efficient, expressive, and elegant.
 
