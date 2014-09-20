@@ -1,5 +1,5 @@
 ---
-language: nim
+language: Nim
 filename: learnNim.nim
 contributors:
     - ["Jason J. Ayala P.", "http://JasonAyala.com"]
@@ -14,20 +14,12 @@ Nim is efficient, expressive, and elegant.
 
 ```nimrod
 
-var x: int    # Declare a variable and its type
-x = 1         # Assign it a value
-var z = "Yep" # Declare and assign, with or without type annotations
-
-var                      # Several, with or without type annotations
-  letter: char = 'n'     # One byte character
-  lang = "Nimrod"        # string
-  truth: bool = false    # Common boolean operators: `and` `not` `or`
-  seconds: int = 42
-  thoughts = """
-A great programming language
-that everyone can enjoy!
-"""                      # Multiline raw strings
+var                     # Declare and assign several variables,
+  letter: char = 'n'    # with or without type annotations
+  lang = "Nimrod"
   boat: float
+  truth: bool = false
+  seconds: int = 42
 
 let            # Use let to declare and bind an variable *once*.
   legs = 400   # legs is immutable.
@@ -46,19 +38,20 @@ discard 1 > 2 # The compiler will complain if the result of an expression
               # is unused. `discard` bypasses this.
 
 discard """
-This can work as a
-multiline comment
+This can work as a multiline comment.
+Or for unparsable, broken code
 """
 
 #
 # Common Operations on Basic Types
 #
 
+# Strings
 let
-  phrase = "Nim is a progamming language"
+  phrase = "Nim is a"
   nim = phrase[0..5]
-
-# TODO More common operations?
+  fullPhrase = phrase & "programming language."
+  length = len(fullPhrase) # Or: fullPhrase.len
 
 #
 # Data Structures
@@ -90,7 +83,7 @@ drinks = @["Water", "Juice", "Chocolate"] # @[V1,..,Vn] is the sequence literal
 
 type
   Name = string # A type alias gives you a new type that is interchangable
-  Age  = int    # with the old type but is more descriptive.
+  Age = int     # with the old type but is more descriptive.
   Person = tuple[name: Name, age: Age] # Define data structures too.
   LongTuple = tuple
     fieldOne: string
@@ -103,11 +96,11 @@ var
 john.age = newage # But still works because int and Age are synonyms
 
 type
-  Cash = distinct int    # `distinct` makes a new type incompatible with it's
+  Cash = distinct int    # `distinct` makes a new type incompatible with its
   Desc = distinct string # base type.
 
 var
-  money: Cash = 100.Cash           # `.Cash` converts the int to our type
+  money: Cash = 100.Cash # `.Cash` converts the int to our type
   description: Desc  = "Interesting".Desc
 
 when compileBadCode:
@@ -121,7 +114,7 @@ when compileBadCode:
 # Enumerations allow a type to be one of a limited number of values
 
 type
-  Color     = enum cRed, cBlue, cGreen
+  Color = enum cRed, cBlue, cGreen
   Direction = enum # Alternative formating
     dNorth
     dWest
@@ -129,7 +122,7 @@ type
     dSouth
 var
   orient = dNorth # `orient` is of type Direction, with the value `dNorth`
-  pixel  = cGreen # `pixel` is of type Color, with the value `cGreen`
+  pixel = cGreen # `pixel` is of type Color, with the value `cGreen`
 
 discard dNorth > dEast # Enums are usually an "ordinal" type
 
@@ -166,7 +159,9 @@ counter[my_roll] += 1
 
 var anotherArray = ["Default index", "starts at", "0"]
 
-# TODO common operations
+# More data structures are available, including tables, sets, lists, queues,
+# and crit bit trees.
+# http://nimrod-lang.org/lib.html#collections-and-algorithms
 
 #
 # IO and Control Flow
@@ -183,26 +178,24 @@ of "yes", "Yes":
 else:
   echo "That's great; I assume."
 
-# `while`, `if`, `continue`, `break`
+# `while`, `if`, `break`
 
-import strutils as str
+import strutils as str # http://nimrod-lang.org/strutils.html
 echo "I'm thinking of a number between 41 and 43. Guess which!"
+let number: int = 42
 var
-  number: int = 42
   raw_guess: string
   guess: int
 while guess != number:
   raw_guess = readLine(stdin)
-  if raw_guess == "":
-    continue # `continue` restarts loop/block
   guess = str.parseInt(raw_guess)
   if guess == 1001:
     echo("AAAAAAGGG!")
     break
   elif guess > number:
-    echo("Too high.")
+    echo("Nope. Too high.")
   elif guess < number:
-    echo("Too low")
+    echo(guess, " is too low")
   else:
     echo("Yeeeeeehaw!")
 
@@ -210,23 +203,25 @@ while guess != number:
 # Iteration
 #
 
-# Iterate with the `for` keyword
-# TODO `for` examples for strings, arrays, etc
+for i, elem in ["Yes", "No", "Maybe so"]: # Or just `for elem in`
+  echo(elem, " is at index: ", i)
 
-for elem in ["Yes", "No", "Maybe so"]:
-  echo elem
-
-# string iterators
+for k, v in items(@[(person: "You", power: 100), (person: "Me", power: 9000)]):
+  echo v
 
 let myString = """
-an example
-string to
+an <example>
+`string` to
 play with
-"""
+""" # Multiline raw string
 
 for line in splitLines(myString):
   echo(line)
 
+for i, c in myString:       # Index and letter. Or `for j in` for just letter
+  if i mod 2 == 0: continue # Compact `if` form
+  elif c == 'X': break
+  else: echo(c)
 #
 # Procedures
 #
@@ -244,8 +239,9 @@ proc ask(question: string): Answer =
     else: echo("Please be clear: yes or no")
 
 proc addSugar(amount: int = 2) = # Default amount is 2, returns nothing
+  assert(amount > 0 or amount < 9000, "Crazy Sugar")
   for a in 1..amount:
-    echo a, " sugar..."
+    echo(a, " sugar...")
 
 case ask("Would you like sugar in your tea?")
 of aYes:
@@ -255,7 +251,24 @@ of aNo:
   addSugar()
 # No need for an `else` here. only `yes` and `no` are possible.
 
+proc pluralize(a: int): string =
+  if a > 1 or a == 0: return "s"
+  else: return ""
+
+#
+# FFI
+#
+
+# Because Nim compiles to C, FFI is easy:
+
+proc strcmp(a, b: cstring): cint {.importc: "strcmp", nodecl.}
+
+var cmp = strcmp("C?", "Easy!")
+
 ```
+
+Additionally, Nim separates itself from its peers with metaprogramming,
+performance, and compile-time features.
 
 ## Further Reading
 
@@ -266,3 +279,4 @@ of aNo:
 * [Documentation](http://nimrod-lang.org/documentation.html)
 * [Manual](http://nimrod-lang.org/manual.html)
 * [Standard Libray](http://nimrod-lang.org/lib.html)
+* [Rosetta Code](http://rosettacode.org/wiki/Category:Nimrod)
