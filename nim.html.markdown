@@ -210,6 +210,7 @@ for i, c in myString:       # Index and letter. Or `for j in` for just letter
   if i mod 2 == 0: continue # Skip rest of iteration
   elif c == 'X': break      # Compact `if` form
   else: echo(c)
+
 #
 # Procedures
 #
@@ -237,7 +238,7 @@ of aYes:
 of aNo:
   echo "Oh do take a little!"
   addSugar()
-# No need for an `else` here. only `yes` and `no` are possible.
+# No need for an `else` here. Only `yes` and `no` are possible.
 
 proc pluralize(a: int): string =
   if a > 1 or a == 0: return "s"
@@ -248,7 +249,7 @@ proc pluralize(a: int): string =
 #
 
 # Because Nim compiles to C, FFI is easy:
-#
+
 proc strcmp(a, b: cstring): cint {.importc: "strcmp", nodecl.}
 
 var cmp = strcmp("C?", "Easy!")
