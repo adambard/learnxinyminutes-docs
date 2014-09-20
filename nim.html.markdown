@@ -15,7 +15,7 @@ Nim is efficient, expressive, and elegant.
 var                     # Declare (and assign) variables,
   letter: char = 'n'    # with or without type annotations
   lang = "N" & "im"
-  n_let : int = len(lang)
+  n_length : int = len(lang)
   boat: float
   truth: bool = false
 
