@@ -174,7 +174,7 @@ var
   guess: int
 while guess != number:
   raw_guess = readLine(stdin)
-  if raw_guess = "": continue # Skip this iteration
+  if raw_guess == "": continue # Skip this iteration
   guess = str.parseInt(raw_guess)
   if guess == 1001:
     echo("AAAAAAGGG!")
