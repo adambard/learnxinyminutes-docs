@@ -11,7 +11,7 @@ lang: zh-cn
 
 Scala - 一门可拓展性的语言
 
-```cpp
+```scala
 
 /*
   自行设置:

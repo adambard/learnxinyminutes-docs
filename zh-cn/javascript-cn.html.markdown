@@ -363,8 +363,8 @@ var myNumberObj = new Number(12)
 myNumber == myNumberObj // = true
 
 // 但是它们并非严格等价
-typeof(myNumber) // = 'number'
-typeof(myNumberObj) // = 'object'
+typeof myNumber // = 'number'
+typeof myNumberObj // = 'object'
 myNumber === myNumberObj // = false
 if (0){
     // 这段代码不会执行，因为0代表假

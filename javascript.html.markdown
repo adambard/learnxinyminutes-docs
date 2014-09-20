@@ -460,8 +460,8 @@ var myNumberObj = new Number(12);
 myNumber == myNumberObj; // = true
 
 // Except, they aren't exactly equivalent.
-typeof(myNumber); // = 'number'
-typeof(myNumberObj); // = 'object'
+typeof myNumber; // = 'number'
+typeof myNumberObj; // = 'object'
 myNumber === myNumberObj; // = false
 if (0){
     // This code won't execute, because 0 is falsy.

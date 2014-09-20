@@ -6,6 +6,9 @@ contributors:
     - ["Darren Lin", "https://github.com/CogBear"]
     - ["Alexandre Medeiros", "http://alemedeiros.sdf.org"]
     - ["Denis Arh", "https://github.com/darh"]
+    - ["akirahirose", "https://twitter.com/akirahirose"]
+    - ["Anton Strömkvist", "http://lutic.org/"]
+    - ["Rahil Momin", "https://github.com/iamrahil"]
 filename: LearnBash.sh
 ---
 
@@ -71,14 +74,25 @@ echo Hello, $NAME!
 # use 'man test' for more info about conditionals
 if [ $NAME -ne $USER ]
 then
-    echo "Your name is your username"
-else
     echo "Your name isn't your username"
+else
+    echo "Your name is your username"
 fi
 
 # There is also conditional execution
 echo "Always executed" || echo "Only executed if first command fails"
 echo "Always executed" && echo "Only executed if first command does NOT fail"
+
+# To use && and || with if statements, you need multiple pairs of square brackets:
+if [ $NAME == "Steve" ] && [ $AGE -eq 15 ]
+then
+    echo "This will run if $NAME is Steve AND $AGE is 15."
+fi
+
+if [ $NAME == "Daniya" ] || [ $NAME == "Zach" ]
+then
+    echo "This will run if $NAME is Daniya OR Zach."
+fi
 
 # Expressions are denoted with the following format:
 echo $(( 10 + 5 ))
@@ -121,14 +135,34 @@ case "$VARIABLE" in
 esac
 
 # for loops iterate for as many arguments given:
-# The contents of var $VARIABLE is printed three times.
+# The contents of $VARIABLE is printed three times.
 for VARIABLE in {1..3}
 do
     echo "$VARIABLE"
 done
 
+# Or write it the "traditional for loop" way:
+for ((a=1; a <= 3; a++))
+do
+    echo $a
+done
+
+# They can also be used to act on files..
+# This will run the command 'cat' on file1 and file2
+for VARIABLE in file1 file2
+do
+    cat "$VARIABLE"
+done
+
+# ..or the output from a command
+# This will cat the output from ls.
+for OUTPUT in $(ls)
+do
+    cat "$OUTPUT"
+done
+
 # while loop:
-while [true]
+while [ true ]
 do
     echo "loop body here..."
     break
@@ -155,14 +189,14 @@ bar ()
 foo "My name is" $NAME
 
 # There are a lot of useful commands you should learn:
-tail -n 10 file.txt
 # prints last 10 lines of file.txt
-head -n 10 file.txt
+tail -n 10 file.txt
 # prints first 10 lines of file.txt
-sort file.txt
+head -n 10 file.txt
 # sort file.txt's lines
-uniq -d file.txt
+sort file.txt
 # report or omit repeated lines, with -d it reports them
-cut -d ',' -f 1 file.txt
+uniq -d file.txt
 # prints only the first column before the ',' character
+cut -d ',' -f 1 file.txt
 ```

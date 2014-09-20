@@ -45,12 +45,29 @@ to Python 2.x. Look for another tour of Python 3 soon!
 2.0     # This is a float
 11.0 / 4.0  # => 2.75 ahhh...much better
 
+# Result of integer division truncated down both for positive and negative. 
+5 // 3     # => 1
+5.0 // 3.0 # => 1.0 # works on floats too
+-5 // 3  # => -2
+-5.0 // 3.0 # => -2.0
+
+# Modulo operation
+7 % 3 # => 1
+
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
 
-# Boolean values are primitives
-True
-False
+# Boolean Operators
++# Note "and" and "or" are case-sensitive
++True and False #=> False
++False or True #=> True
++
++# Note using Bool operators with ints
++0 and 2 #=> 0
++-5 or 0 #=> -5
++0 == False #=> True 
++2 == True #=> False 
+1 == True #=> True
 
 # negate with not
 not True  # => False
@@ -327,6 +344,10 @@ try:
     raise IndexError("This is an index error")
 except IndexError as e:
     pass    # Pass is just a no-op. Usually you would do recovery here.
+except (TypeError, NameError):
+    pass    # Multiple exceptions can be handled together, if required.
+else:   # Optional clause to the try/except block. Must follow all except blocks
+    print "All good!"   # Runs only if the code in try raises no exceptions
 
 
 ####################################################
@@ -380,6 +401,22 @@ all_the_args(*args)   # equivalent to foo(1, 2, 3, 4)
 all_the_args(**kwargs)   # equivalent to foo(a=3, b=4)
 all_the_args(*args, **kwargs)   # equivalent to foo(1, 2, 3, 4, a=3, b=4)
 
+# Function Scope                                                                
+x = 5
+
+def setX(num):
+    # Local var x not the same as global variable x
+    x = num # => 43
+    print (x) # => 43
+    
+def setGlobalX(num):
+    global x
+    print (x) # => 5
+    x = num # global var x is now set to 6
+    print (x) # => 6
+
+setX(43)
+setGlobalX(6)
 
 # Python has first class functions
 def create_adder(x):
@@ -412,7 +449,10 @@ class Human(object):
     # A class attribute. It is shared by all instances of this class
     species = "H. sapiens"
 
-    # Basic initializer
+    # Basic initializer, this is called when this class is instantiated.
+    # Note that the double leading and trailing underscores denote objects
+    # or attributes that are used by python but that live in user-controlled
+    # namespaces. You should not invent such names on your own.
     def __init__(self, name):
         # Assign the argument to the instance's name attribute
         self.name = name
@@ -496,11 +536,15 @@ def double_numbers(iterable):
 # Instead of generating and returning all values at once it creates one in each
 # iteration.  This means values bigger than 15 wont be processed in
 # double_numbers.
-# Note range is a generator too. Creating a list 1-900000000 would take lot of
-# time to be made
-_range = range(1, 900000000)
+# Note xrange is a generator that does the same thing range does.
+# Creating a list 1-900000000 would take lot of time and space to be made.
+# xrange creates an xrange generator object instead of creating the entire list like range does.
+# We use a trailing underscore in variable names when we want to use a name that 
+# would normally collide with a python keyword
+xrange_ = xrange(1, 900000000)
+
 # will double all numbers until a result >=30 found
-for i in double_numbers(_range):
+for i in double_numbers(xrange_):
     print(i)
     if i >= 30:
         break
@@ -513,10 +557,10 @@ for i in double_numbers(_range):
 from functools import wraps
 
 
-def beg(_say):
-    @wraps(_say)
+def beg(target_function):
+    @wraps(target_function)
     def wrapper(*args, **kwargs):
-        msg, say_please = _say(*args, **kwargs)
+        msg, say_please = target_function(*args, **kwargs)
         if say_please:
             return "{} {}".format(msg, "Please! I am poor :(")
         return msg

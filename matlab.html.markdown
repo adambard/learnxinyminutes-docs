@@ -85,7 +85,7 @@ load myFile.mat y % no parentheses, and spaces instead of commas
 % Logicals can be applied to matrices:
 A > 5
 % for each element, if condition is true, that element is 1 in returned matrix
-A[ A > 5 ] 
+A( A > 5 )
 % returns a vector containing the elements in A for which condition is true
 
 % Strings
@@ -423,7 +423,8 @@ tril(x) % Returns the lower triangular part of x
 cross(A,B) %  Returns the cross product of the vectors A and B
 dot(A,B) % Returns scalar product of two vectors (must have the same length)
 transpose(A) % Returns the transpose of A
-flipl(A) % Flip matrix left to right
+fliplr(A) % Flip matrix left to right
+flipud(A) % Flip matrix up to down
 
 % Matrix Factorisations
 [L, U, P] = lu(A) % LU decomposition: PA = LU,L is lower triangular, U is upper triangular, P is permutation matrix

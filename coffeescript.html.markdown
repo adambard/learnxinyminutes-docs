@@ -11,7 +11,7 @@ As one of the succeeders of JavaScript, CoffeeScript tries its best to output re
 
 See also [the CoffeeScript website](http://coffeescript.org/), which has a complete tutorial on CoffeeScript.
 
-``` coffeescript
+```coffeescript
 # CoffeeScript is a hipster language.
 # It goes with the trends of many modern languages.
 # So comments are like Ruby and Python, they use number symbols.
@@ -20,7 +20,7 @@ See also [the CoffeeScript website](http://coffeescript.org/), which has a compl
 Block comments are like these, and they translate directly to '/ *'s and '* /'s
 for the resulting JavaScript code.
 
-You should understand most of JavaScript semantices
+You should understand most of JavaScript semantics
 before continuing.
 ###
 

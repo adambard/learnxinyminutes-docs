@@ -7,7 +7,7 @@ contributors:
     - ["Shaun McCarthy", "http://www.shaunmccarthy.com"]
 translators:
     - ["Olivier Hoarau", "https://github.com/Olwaro"]
-filename: LearnCSharp.cs
+filename: LearnCSharp-fr.cs
 lang: fr-fr
 ---
 

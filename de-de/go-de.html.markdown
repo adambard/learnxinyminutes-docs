@@ -79,7 +79,7 @@ func learnTypes() {
 Zeilenumbrüche beinhalten.` // Selber Zeichenketten-Typ
 
     // nicht-ASCII Literal.  Go Quelltext ist UTF-8 kompatibel.
-    g := 'Σ' // Ein Runen-Typ, alias uint32, gebraucht für unicode code points.
+    g := 'Σ' // Ein Runen-Typ, alias int32, gebraucht für unicode code points.
 
     f := 3.14195 // float64, eine IEEE-754 64-bit Dezimalzahl
     c := 3 + 4i  // complex128, besteht intern aus zwei float64-er

@@ -2,6 +2,7 @@
 language: python3
 contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
+    - ["Steven Basart", "http://github.com/xksteven"]
 filename: learnpython3.py
 ---
 
@@ -37,12 +38,20 @@ Note: This article applies to Python 3 specifically. Check out the other tutoria
 # Except division which returns floats by default
 35 / 5  # => 7.0
 
+# Result of integer division truncated down both for positive and negative. 
+5 // 3     # => 1
+5.0 // 3.0 # => 1.0 # works on floats too
+-5 // 3  # => -2
+-5.0 // 3.0 # => -2.0
+
 # When you use a float, results are floats
 3 * 2.0 # => 6.0
 
+# Modulo operation
+7 % 3 # => 1
+
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
-
 
 # Boolean values are primitives
 True
@@ -52,6 +61,17 @@ False
 not True  # => False
 not False  # => True
 
+# Boolean Operators
+# Note "and" and "or" are case-sensitive
+True and False #=> False
+False or True #=> True
+
+# Note using Bool operators with ints
+0 and 2 #=> 0
+-5 or 0 #=> -5
+0 == False #=> True 
+2 == True #=> False 
+1 == True #=> True
 
 # Equality is ==
 1 == 1  # => True
@@ -71,7 +91,6 @@ not False  # => True
 1 < 2 < 3  # => True
 2 < 3 < 2  # => False
 
-
 # Strings are created with " or '
 "This is a string."
 'This is also a string.'
@@ -86,9 +105,15 @@ not False  # => True
 "{} can be {}".format("strings", "interpolated")
 
 # You can repeat the formatting arguments to save some typing.
-"{0} be nimble, {0} be quick, {0} jump over the {1}".format("Jack", "candle stick") #=> "Jack be nimble, Jack be quick, Jack jump over the candle stick"
+"{0} be nimble, {0} be quick, {0} jump over the {1}".format("Jack", "candle stick")
+#=> "Jack be nimble, Jack be quick, Jack jump over the candle stick"
+
 # You can use keywords if you don't want to count.
 "{name} wants to eat {food}".format(name="Bob", food="lasagna") #=> "Bob wants to eat lasagna"
+
+# If your Python 3 code also needs to run on Python 2.5 and below, you can also
+# still use the old style of formatting:
+"%s can be %s the %s way" % ("strings", "interpolated", "old")
 
 
 # None is an object
@@ -114,7 +139,8 @@ bool({}) #=> False
 # Python has a print function
 print("I'm Python. Nice to meet you!")
 
-# No need to declare variables before assigning to them. Convention is to use lower_case_with_underscores
+# No need to declare variables before assigning to them. 
+# Convention is to use lower_case_with_underscores
 some_var = 5
 some_var  # => 5
 
@@ -163,7 +189,8 @@ li[::-1]   # => [3, 4, 2, 1]
 del li[2]   # li is now [1, 2, 3]
 
 # You can add lists
-li + other_li   # => [1, 2, 3, 4, 5, 6] - Note: values for li and for other_li are not modified.
+# Note: values for li and for other_li are not modified.
+li + other_li   # => [1, 2, 3, 4, 5, 6] 
 
 # Concatenate lists with "extend()"
 li.extend(other_li)   # Now li is [1, 2, 3, 4, 5, 6]
@@ -202,14 +229,17 @@ filled_dict = {"one": 1, "two": 2, "three": 3}
 # Look up values with []
 filled_dict["one"]   # => 1
 
-# Get all keys as a list with "keys()". We need to wrap the call in list() because we are getting back an iterable. We'll talk about those later.
-list(filled_dict.keys())   # => ["three", "two", "one"]
+# Get all keys as a list with "keys()". 
+# We need to wrap the call in list() because we are getting back an iterable. We'll talk about those later.
 # Note - Dictionary key ordering is not guaranteed.
 # Your results might not match this exactly.
+list(filled_dict.keys())   # => ["three", "two", "one"]
+
 
 # Get all values as a list with "values()". Once again we need to wrap it in list() to get it out of the iterable.
-list(filled_dict.values())   # => [3, 2, 1]
 # Note - Same as above regarding key ordering.
+list(filled_dict.values())   # => [3, 2, 1]
+
 
 # Check for existence of keys in a dictionary with "in"
 "one" in filled_dict   # => True
@@ -228,6 +258,10 @@ filled_dict.get("four", 4)   # => 4
 # "setdefault()" inserts into a dictionary only if the given key isn't present
 filled_dict.setdefault("five", 5)  # filled_dict["five"] is set to 5
 filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5
+
+# Adding to a dictionary
+filled_dict.update({"four":4}) #=> {"one": 1, "two": 2, "three": 3, "four": 4}
+#filled_dict["four"] = 4  #another way to add to dict
 
 # Remove keys from a dictionary with del
 del filled_dict["one"]  # Removes the key "one" from filled dict
@@ -284,7 +318,7 @@ prints:
     mouse is a mammal
 """
 for animal in ["dog", "cat", "mouse"]:
-    # You can use % to interpolate formatted strings
+    # You can use format() to interpolate formatted strings
     print("{} is a mammal".format(animal))
 
 """
@@ -318,9 +352,12 @@ try:
     raise IndexError("This is an index error")
 except IndexError as e:
     pass    # Pass is just a no-op. Usually you would do recovery here.
+except (TypeError, NameError):
+    pass    # Multiple exceptions can be handled together, if required.
+else:   # Optional clause to the try/except block. Must follow all except blocks
+    print("All good!")   # Runs only if the code in try raises no exceptions
 
-
-# Python's offers a fundamental abstraction called the Iterable.
+# Python offers a fundamental abstraction called the Iterable.
 # An iterable is an object that can be treated as a sequence.
 # The object returned the range function, is an iterable.
 
@@ -328,7 +365,7 @@ filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
 print(our_iterable) #=> range(1,10). This is an object that implements our Iterable interface
 
-i We can loop over it.
+# We can loop over it.
 for i in our_iterable:
     print(i)    # Prints one, two, three
 
@@ -406,6 +443,24 @@ all_the_args(**kwargs)   # equivalent to foo(a=3, b=4)
 all_the_args(*args, **kwargs)   # equivalent to foo(1, 2, 3, 4, a=3, b=4)
 
 
+# Function Scope                                                                
+x = 5
+
+def setX(num):
+    # Local var x not the same as global variable x
+    x = num # => 43
+    print (x) # => 43
+    
+def setGlobalX(num):
+    global x
+    print (x) # => 5
+    x = num # global var x is now set to 6
+    print (x) # => 6
+
+setX(43)
+setGlobalX(6)
+
+
 # Python has first class functions
 def create_adder(x):
     def adder(y):
@@ -424,6 +479,7 @@ map(add_10, [1, 2, 3])   # => [11, 12, 13]
 filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 
 # We can use list comprehensions for nice maps and filters
+# List comprehension stores the output as a list which can itself be a nested list
 [add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]   # => [6, 7]
 
@@ -438,14 +494,17 @@ class Human(object):
     # A class attribute. It is shared by all instances of this class
     species = "H. sapiens"
 
-    # Basic initializer
+    # Basic initializer, this is called when this class is instantiated.
+    # Note that the double leading and trailing underscores denote objects
+    # or attributes that are used by python but that live in user-controlled
+    # namespaces. You should not invent such names on your own.
     def __init__(self, name):
         # Assign the argument to the instance's name attribute
         self.name = name
 
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
-        return "{name}: {message}" % (name=self.name, message=msg)
+        return "{name}: {message}".format(name=self.name, message=msg)
 
     # A class method is shared among all instances
     # They are called with the calling class as the first argument
@@ -524,9 +583,11 @@ def double_numbers(iterable):
 # double_numbers.
 # Note range is a generator too. Creating a list 1-900000000 would take lot of
 # time to be made
-_range = range(1, 900000000)
+# We use a trailing underscore in variable names when we want to use a name that 
+# would normally collide with a python keyword
+range_ = range(1, 900000000)
 # will double all numbers until a result >=30 found
-for i in double_numbers(_range):
+for i in double_numbers(range_):
     print(i)
     if i >= 30:
         break
@@ -539,10 +600,10 @@ for i in double_numbers(_range):
 from functools import wraps
 
 
-def beg(_say):
-    @wraps(_say)
+def beg(target_function):
+    @wraps(target_function)
     def wrapper(*args, **kwargs):
-        msg, say_please = _say(*args, **kwargs)
+        msg, say_please = target_function(*args, **kwargs)
         if say_please:
             return "{} {}".format(msg, "Please! I am poor :(")
         return msg
