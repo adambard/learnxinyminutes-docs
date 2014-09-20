@@ -42,17 +42,6 @@ Or for unparsable, broken code
 """
 
 #
-# Common Operations on Basic Types
-#
-
-# Strings
-let
-  phrase = "Nim is a"
-  nim = phrase[0..5]
-  fullPhrase = phrase & "programming language."
-  length = len(fullPhrase) # Or: fullPhrase.len
-
-#
 # Data Structures
 #
 
@@ -218,8 +207,8 @@ for line in splitLines(myString):
   echo(line)
 
 for i, c in myString:       # Index and letter. Or `for j in` for just letter
-  if i mod 2 == 0: continue # Compact `if` form
-  elif c == 'X': break
+  if i mod 2 == 0: continue # Skip rest of iteration
+  elif c == 'X': break      # Compact `if` form
   else: echo(c)
 #
 # Procedures
@@ -259,7 +248,7 @@ proc pluralize(a: int): string =
 #
 
 # Because Nim compiles to C, FFI is easy:
-
+#
 proc strcmp(a, b: cstring): cint {.importc: "strcmp", nodecl.}
 
 var cmp = strcmp("C?", "Easy!")
