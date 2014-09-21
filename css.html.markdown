@@ -24,7 +24,8 @@ The main focus of this article is on the syntax and some general tips.
 
 
 ```css
-/* comments appear inside slash-asterisk, just like this line! */
+/* comments appear inside slash-asterisk, just like this line!
+   there are no "one-line comments; this is the only comment style" */
 
 /* ####################
    ## SELECTORS
@@ -35,7 +36,7 @@ selector { property: value; /* more properties...*/ }
 
 /* the selector is used to target an element on page.
 
-You can target all elments on the page! */
+You can target all elments on the page using asterisk! */
 * { color:red; }
 
 /*
@@ -62,56 +63,56 @@ div { }
 /* or that the attribute has a specific value */
 [attr='value'] { font-size:smaller; }
 
-/* start with a value*/
+/* start with a value (CSS3) */
 [attr^='val'] { font-size:smaller; }
 
-/* or ends with */
+/* or ends with (CSS3) */
 [attr$='ue'] { font-size:smaller; }
 
-/* or even contains a value */
+/* or even contains a value (CSS3) */
 [attr~='lu'] { font-size:smaller; }
 
 
 /* and more importantly you can combine these together -- there shouldn't be  
-any spaaace between different parts because that makes it to have another  
-meaning.*/
+any space between different parts because that makes it to have another  
+meaning. */
 div.some-class[attr$='ue'] { }
 
-/* you can also select an element based on its parent.*/
+/* you can also select an element based on its parent. */
 
-/*an element which is direct child of an element (selected the same way) */
+/* an element which is direct child of an element (selected the same way) */
 div.some-parent > .class-name {}
 
-/* or any of its parents in the tree */
-/* the following basically means any element that has class "class-name"  
-and is child of a div with class name "some-parent" IN ANY DEPTH */
+/* or any of its parents in the tree
+   the following basically means any element that has class "class-name"  
+   and is child of a div with class name "some-parent" IN ANY DEPTH */
 div.some-parent .class-name {}
 
 /* warning: the same selector wihout spaaace has another meaning.  
-can you say what? */
+   can you say what? */
 div.some-parent.class-name {}
 
 /* you also might choose to select an element based on its direct  
-previous sibling */
+   previous sibling */
 .i-am-before + .this-element { }
 
-/*or any sibling before this */
+/* or any sibling before this */
 .i-am-any-before ~ .this-element {}
 
 /* There are some pseudo classes that allows you to select an element  
-based on its page behaviour (rather than page structure) */
+   based on its page behaviour (rather than page structure) */
 
 /* for example for when an element is hovered */
-:hover {}
+selector:hover {}
 
-/* or a visited link*/
-:visited {}
+/* or a visited link */
+selected:visited {}
 
-/* or not visited link*/
-:link {}
+/* or not visited link */
+selected:link {}
 
 /* or an input element which is focused */
-:focus {}
+selected:focus {}
 
 
 /* ####################
@@ -126,8 +127,12 @@ selector {
     width: 200px; /* in pixels */
     font-size: 20pt; /* in points */
     width: 5cm; /* in centimeters */
-    width: 50mm; /* in millimeters */
-    width: 5in; /* in inches */
+    min-width: 50mm; /* in millimeters */
+    max-width: 5in; /* in inches. max-(width|height) */
+    height: 0.2vh; /* times vertical height of browser viewport (CSS3) */
+    width: 0.4vw; /* times horizontal width of browser viewport (CSS3) */
+    min-height: 0.1vmin; /* the lesser of vertical, horizontal dimensions of browser viewport (CSS3) */
+    max-width: 0.3vmax; /* same as above, except the greater of the dimensions (CSS3) */
     
     /* Colors */
     background-color: #F6E;  /* in short hex */
@@ -135,15 +140,19 @@ selector {
     background-color: tomato; /* can be a named color */
     background-color: rgb(255, 255, 255); /* in rgb */
     background-color: rgb(10%, 20%, 50%); /* in rgb percent */
-    background-color: rgba(255, 0, 0, 0.3); /* in semi-transparent rgb */
+    background-color: rgba(255, 0, 0, 0.3); /* in semi-transparent rgb (CSS3) */
+    background-color: transparent; /* see thru */
+    background-color: hsl(0, 100%, 50%); /* hsl format (CSS3). */
+    background-color: hsla(0, 100%, 50%, 0.3); /* Similar to RGBA, specify opacity at end (CSS3) */
+
     
     /* Images */
-    background-image: url(/path-to-image/image.jpg);
+    background-image: url(/path-to-image/image.jpg); /* quotes inside url() optional */
     
     /* Fonts */
     font-family: Arial;
-    font-family: "Courier New"; /* if name has spaaace it appears in double-quote */
-    font-family: "Courier New", Trebuchet, Arial; /* if first one was not found
+    font-family: "Courier New"; /* if name has spaaace it appears in single or double quotes */
+    font-family: "Courier New", Trebuchet, Arial, sans-serif; /* if first one was not found
     						 browser uses the second font, and so forth */
 }
 
@@ -155,17 +164,17 @@ Save any CSS you want in a file with extension `.css`.
 
 ```xml
 <!-- you need to include the css file in your page's <head>: -->
-<link rel='stylesheet' type='text/css' href='filepath/filename.css' />
+<link rel='stylesheet' type='text/css' href='path/to/style.css' />
 
 <!-- you can also include some CSS inline in your markup. However it is highly  
 recommended to avoid this. -->
 <style>
-   selector { property:value; }
+   a { color: purple; }
 </style>
 
 <!-- or directly set CSS properties on the element. 
 This has to be avoided as much as you can. -->
-<div style='property:value;'>
+<div style="border: 1px solid red;">
 </div>
 
 ```
@@ -220,10 +229,12 @@ Remember, the precedence is for each **property**, not for the entire block.
 ## Compatibility
 
 Most of the features in CSS2 (and gradually in CSS3) are compatible across  
-all browsers and devices. But it's always vital to have in mind the compatiblity  
+all browsers and devices. But it's always vital to have in mind the compatiblity
 of what you use in CSS with your target browsers.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) is one of the best sources for this.
+
+To run a quick compatibility check, [CanIUse](http://caniuse.com) is a great resource.
 
 ## Further Reading
 
