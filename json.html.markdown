@@ -17,7 +17,7 @@ going to be 100% valid JSON. Luckily, it kind of speaks for itself.
 {
   "key": "value",
   
-  "keys": "must always be enclosed in quotes (either double or single)",
+  "keys": "must always be enclosed in double quotes",
   "numbers": 0,
   "strings": "Hellø, wørld. All unicode is allowed, along with \"escaping\".",
   "has bools?": true,
