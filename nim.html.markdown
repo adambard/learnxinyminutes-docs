@@ -10,7 +10,7 @@ that gives the programmer power without compromises on runtime efficiency.
 
 Nim is efficient, expressive, and elegant.
 
-```nimrod
+```ruby
 var                     # Declare (and assign) variables,
   letter: char = 'n'    # with or without type annotations
   lang = "N" & "im"
