@@ -8,107 +8,106 @@ lang: de-de
 filename: learncss-de.css
 ---
 
-In den frühen Tagen des Internets gab es keine visuellen Elemente, alles war nur reiner Text. Aber mit der Weiterentwickliung von Browsern wurden auch vollständig visuelle Webseiten zu einem Standard.   
-CSS ist die allgemeine Sprache, die dazu da ist, damit man den HTML-Code und die Designelemente von Webseiten (strikt) unterscheiden kann.
+In den frühen Tagen des Internets gab es keine visuellen Elemente, alles war nur reiner Text. Aber mit der Weiterentwicklung von Browsern wurden auch vollständig visuelle Webseiten zu einem Standard.
+Durch Verwendung von CSS lässt sich eine strikte Trennung zwischen HTML-Code und Designelementen erreichen.
 
-Kurzgefasst, CSS ermöglicht es, verschiedene HTML-Elemente anzuvisieren und ihnen stilistische Eigenschaften zu geben.
+Kurzgefasst, CSS ermöglicht es, verschiedene HTML-Elemente innerhalb eines Dokuments auszuwählen und ihnen visuelle Eigenschaften zu geben.
 
 CSS hat wie jede andere Sprache viele Versionen. Hier fokussieren wir uns auf CSS2.0, welche nicht die neueste, aber die am weitesten verbreitete und unterstützte Version ist.
 
-**NOTE:** Weil die Ausgabe von CSS visuelle Eigenschaften sind, wirst du wahrscheinlich eine CSS-Sandbox wie [dabblet](http://dabblet.com/) benutzen müssen, um die Sprache richtig zu lernen.
+**HINWEIS:** Weil die Ausgabe von CSS visuelle Eigenschaften sind, wirst du wahrscheinlich eine CSS-Sandbox wie [dabblet](http://dabblet.com/) benutzen müssen, um die Sprache richtig zu lernen.
 In diesem Artikel wird am meisten auf generelle Hinweise und die Syntax geachtet.
 
 
 ```css
-/* kommentare werden in sternchen-schrägstrichkombinationen gepackt (genauso wie hier!) */
+/* Kommentare werden in Sternchen-Schrägstrichkombinationen gepackt (genauso wie hier!) */
 
 /* ####################
    ## SELEKTOREN
    ####################*/
 
-/* Eigentlich ist die häufigste Anwendungsweise von CSS sehr simpel */
+/* Eigentlich ist das grundlegende CSS-Statement sehr simpel */
 selektor { eigenschaft: wert; /* mehr eigenschaften...*/ }
 
-/* der selektor wird dazu benutzt, ein element auf der seite anzuvisieren
+/* Der Selektor wird dazu benutzt, ein Element auf der Seite auszuwählen.
 
-Aber man kann auch alle Elemente auf einer Seite anvisieren! */
+Man kann aber auch alle Elemente auf einer Seite auswählen! */
 * { color:red; } /* farbe:rot */
 
 /*
-Wenn wir so ein Element auf einer Seite haben:
+Angenommen wir haben folgendes Element auf einer Seite:
 
 <div class='eine-klasse klasse2' id='eineId' attr='wert' />
 */
 
-/* kann man es so bei seiner klasse anvisieren */
+/* kann man es so über seine Klasse auswählen */
 .eine-klasse { }
 
-/*oder bei beiden klassen! */
+/* oder über beide Klassen! */
 .eine-klasse.klasse2 { }
 
-/* oder beim namen des tags */
+/* oder über den Namen des Tags */
 div { }
 
-/* oder bei seiner id */
+/* oder über seine Id */
 #eineId { }
 
-/* oder daran, dass es ein Attribut hat! */
+/* oder darüber, dass es ein Attribut hat! */
 [attr] { font-size:smaller; }
 
-/* oder daran, dass das attribut einen bestimmten wert hat*/
+/* oder auch darüber, dass das Attribut einen bestimmten Wert hat */
 [attr='wert'] { font-size:smaller; }
 
-/* beginnt mit einem wert*/
-[attr^='wert'] { font-size:smaller; }
+/* beginnt mit dem übergebenen Wert */
+[attr^='we'] { font-size:smaller; }
 
-/* oder endet mit */
+/* endet damit */
 [attr$='rt'] { font-size:smaller; }
 
-/* oder sogar nur beinhaltet */
+/* oder beinhaltet einen Teil davon */
 [attr~='er'] { font-size:smaller; }
 
 
-/* was aber noch wichtiger ist, ist dass man alle diese kombinieren
-kann - man sollte nur mit der leerzeichensetzung vorsichtig sein, 
-da es mit einem leerzeichen zwei verschiedene selektoren wären*/
+/* Noch wichtiger ist aber die Möglichkeit, all das miteinander kombinieren
+zu können - man sollte hierbei nur mit der Leerzeichensetzung vorsichtig sein,
+ein Leerzeichen macht es zu zwei verschiedenen Selektoren */
+
 div.eine-klasse[attr$='rt'] { } /* so ist es richtig */
 
-/* man kann auch ein element daran festmachen, wie sich die übergeordneten
-elemente verhalten!*/
+/* Man kann auch ein Element über seine Elternelemente auswählen */
 
-/*es muss allerdings ein direktes kind sein */
+/* > wählt ein direktes Kind aus */
 div.ein-elternteil > .klassen-name {}
 
-/* oder jeder seiner eltern in der struktur */
-/* das folgende heißt also, dass jedes element mit der klasse 'klassen-name'
-und dem elternteil IN JEDER TIEFE ausgewählt wird */
+/* Mit einem Leerzeichen getrennt kann man alle Elternelemente ansprechen */
+/* Das folgende heißt also, dass jedes Element mit der Klasse 'klassen-name'
+und dem Elternteil IN JEDER TIEFE ausgewählt wird */
 div.ein-elternteil .klassen-name {}
 
-/* achtung: dasselbe ohne das leerzeichen hat eine andere bedeutung,
+/* Achtung: das selbe ohne das Leerzeichen hat eine andere Bedeutung,
 kannst du mir sagen, was? */
 div.ein-elternteil.klassen-name {}
 
-/* man kann auch ein element nach seinem direkten vorherigen zwilling
+/* Man kann ein Element auch nach seinem direkten Nachbarelement
 auswählen */
 .ich-bin-vorher + .dieses-element { }
 
-/* oder jeden zwilling davor */
+/* Oder über jedes Geschwisterelement davor */
 .ich-kann-jeder-davor-sein ~ .dieses-element {}
 
-/* es gibt ein paar pseudoklassen, die sich basierend auf dem
-seitenverhalten, nämlich nicht auf der seitenstruktur auswählen
-lassen können */
+/* Mit Pseudoklassen lassen sich Elemente anhand ihres momentanen Zustands
+auf der Seite auswählen (anstatt über die Seitenstruktur) */
 
-/* zum beispiel, wenn über ein element mit dem mauszeiger gefahren wird */
+/* Zum Beispiel, wenn über ein Element mit dem Mauszeiger gefahren wird */
 :hover {}
 
-/* oder einen bereits besuchten link*/
+/* Oder einen bereits besuchten Link*/
 :visited {}
 
-/* oder einen noch nicht besuchten link*/
+/* Oder einen noch nicht besuchten Link*/
 :link {}
 
-/* oder ein eingabeelement, das zurzeit im fokus steht */
+/* Oder ein Eingabeelement, das zurzeit im Fokus steht */
 :focus {}
 
 
@@ -117,64 +116,64 @@ lassen können */
    ####################*/
 
 selector {
-    
-    /* einheiten */
-    width: 50%; /* in prozent */
-    font-size: 2em; /* mal der derzeitigen schriftgröße */
-    width: 200px; /* in pixeln */
-    font-size: 20pt; /* in punkten */
-    width: 5cm; /* in zentimetern */
-    width: 50mm; /* in millimetern */
-    width: 5in; /* in zoll */
-    
-    /* farben */
-    background-color: #F6E  /* in kurzem hex */
-    background-color: #F262E2 /* in langem hex */
-    background-color: tomato /* kann auch eine genannte farbe sein */
-    background-color: rgb(255, 255, 255) /* in rgb */
-    background-color: rgb(10%, 20%, 50%) /* in rgb prozent */
-    background-color: rgba(255, 0, 0, 0.3); /* in semi-transparentem rgb */
-    
-    /* bilder */
+
+    /* Einheiten */
+    width: 50%; /* in Prozent */
+    font-size: 2em; /* mal der derzeitigen Schriftgröße */
+    width: 200px; /* in Pixeln */
+    font-size: 20pt; /* in Punkten */
+    width: 5cm; /* in Zentimetern */
+    width: 50mm; /* in Millimetern */
+    width: 5in; /* in Zoll */
+
+    /* Farben */
+    background-color: #F6E  /* in kurzem Hex */
+    background-color: #F262E2 /* in langem Hex */
+    background-color: tomato /* kann auch eine benannte Farbe sein */
+    background-color: rgb(255, 255, 255) /* in RGB */
+    background-color: rgb(10%, 20%, 50%) /* in RGB Prozent */
+    background-color: rgba(255, 0, 0, 0.3); /* in semi-transparentem RGB */
+
+    /* Bilder */
     background-image: url(/pfad-zum-bild/image.jpg);
-    
-    /* schriften */
+
+    /* Schriften */
     font-family: Arial;
-    font-family: "Courier New"; /* wenn der name ein leerzeichen beinhält, kommt er in
-    apostrophe */
-    font-family: "Courier New", Trebuchet, Arial; /* wenn der erste nicht gefunden wird, wird
-    der zweite benutzt, und so weiter */
+    font-family: "Courier New"; /* wenn der Name ein Leerzeichen beinhält, kommt er in
+    Anführungszeichen */
+    font-family: "Courier New", Trebuchet, Arial; /* wird die erste Schriftart 
+    nicht gefunden, wird die zweite benutzt, usw. */
 }
 
 ```
 
 ## Benutzung
 
-speichere das css, das du benutzen willst mit der endung '.css'.
+Speichere das CSS, das du benutzen willst mit der endung '.css'.
 
 ```xml
-<!-- du musst die css-datei im <head>-bereich der seite erwähnen -->
+<!-- du musst die CSS-Datei im <head>-bereich der seite einbinden -->
 <link rel='stylesheet' type='text/css' href='filepath/filename.css' />
 
-<!-- es geht allerdings auch direkt, wobei diese methode nicht
+<!-- Einbindung funktioniert auch inline, wobei diese Methode nicht
 empfohlen ist -->
 <style>
    selector { property:value; }
 </style>
 
-<!-- oder direkt am element (sollte aber gelassen werden) -->
+<!-- Oder direkt auf einem Element (sollte aber vermieden werden) -->
 <div style='property:value;'>
 </div>
 
 ```
 
-## Wichtigkeit
+## Spezifität
 
-ein element kann von mehr als einem selektoren angezielt werden. 
-und kann auch eine eigenschaft mehr als einmal zugewiesen bekommen.  
-in diesen fällen gibt es regeln, die die wichtigkeit von selektoren einführen.
+Ein Element kann natürlich auch von mehr als einer Regel in einem Stylesheet
+angesprochen werdenm und kann eine Eigenschaft auch öfters als einmal zugewiesen
+bekommen. In diesen Fällen gibt es Regeln, die die Spezifität von Selektoren regeln.
 
-wie haben dieses CSS:
+Wir haben dieses CSS:
 
 ```css
 /*A*/
@@ -194,34 +193,34 @@ p { property: wert !important; }
 
 ```
 
-und das folgende markup:
+und das folgende Markup:
 
 ```xml
 <p style='/*F*/ property:value;' class='class1 class2' attr='value'>
 </p>
 ```
 
-die wichtigkeit der stile ist wie folgt:  
-(die wichtigkeit gilt nur für **eigenschaften**, nicht für ganze blöcke)
+Die Spezifität der Stile ist wie folgt:
+(die Spezifität gilt nur für **einzelne Eigenschaften**, nicht für ganze Blöcke)
 
-* `E` hat die größte wichtigkeit wegen dem schlüsselwort `!important`.  
-	man sollte diese form aber vermeiden.
-* `F` ist als nächstes, da es direkt an dem element definiert ist.
-* `A` ist als nächstes, da es "spezifischer" als alle anderen ist.  
-	spezifischer = mehr zuweisungen: 1 tagname `p` +   
-	klassenname `klasse1` + 1 attribut `attr='value'`
-* `C` ist als nächstes obwohl es genau so ist wie `B`  
-	aber es erscheint als letztes.
-* dann ist `B`
+* `E` hat die größte Spezifität wegen dem Schlüsselwort `!important`.
+	man sollte diese Form aber vermeiden.
+* `F` ist als nächstes dran, da es direkt an dem element definiert ist.
+* Dann folgt `A`, da es "spezifischer" als alle anderen ist.
+	spezifischer = mehr Zuweisungen: 1 Tagname `p` +
+	Klassenname `klasse1` + 1 Attribut `attr='value'`
+* `C` kommt als nächstes, obwohl es genau so ist wie `B`,
+	es erscheint aber später im Stylesheet.
+* dann kommt `B`
 * und als letztes `D`.
 
-## Kompabilität
+## Kompatibilität
 
-die meisten features von CSS sind in allen browsern verfügbar.
-man sollte jedoch immer darauf achten, wenn man etwas mit CSS
-programmiert.
+Die meisten Features von CSS sind in allen Browsern verfügbar. Man sollte
+jedoch immer darauf achten die benutzten Features auf Verfügbarkeit in den
+vom Projekt unterstützten Browser zu überprüfen.
 
-[QuirksMode CSS](http://www.quirksmode.org/css/) ist eine der besten quellen dafür.
+[QuirksMode CSS](http://www.quirksmode.org/css/) oder [Can I Use](http://caniuse.com/) sind zwei der besten Quellen dafür.
 
 ## Weiterlesen
 
