@@ -3,10 +3,10 @@ language: php
 contributors:
     - ["Malcolm Fell", "http://emarref.net/"]
     - ["Trismegiste", "https://github.com/Trismegiste"]
+    - ["Geoffrey Liu", "https://github.com/g-liu"]
 filename: learnphp.php
 ---
 
-This document describes PHP 5+.
 Ce document décrit PHP 5+.
 
 ```php
@@ -27,7 +27,7 @@ Ce document décrit PHP 5+.
 print('Bonjour '); // Rend "Bonjour " sans un saut de ligne
 
 // () sont en option au lieu de print ou echo
-echo "tout le monde\n"; // Prints "tout le monde" sans un saut de ligne
+echo "tout le monde\n"; // Rend "tout le monde" sans un saut de ligne
 // (tous les déclarations doivent terminer avec un point-virgule)
 
 // Rien de l'éxterieur des balises <?php est rendu automatiquement
@@ -51,8 +51,8 @@ $boolean = false; // ou FALSE ou False
 // nombres entiers
 $int1 = 12;   // => 12
 $int2 = -12;  // => -12
-$int3 = 012;  // => 10 (a leading 0 denotes an octal number) (un 0 au début signifie un nombre octal)
-$int4 = 0x0F; // => 15 (a leading 0x denotes a hex literal) (un 0 au début signifie un nombre héxidecimal)
+$int3 = 012;  // => 10 (un 0 au début signifie un nombre octal)
+$int4 = 0x0F; // => 15 (un 0 au début signifie un nombre héxidecimal)
 
 // Nombres à virgule flottante
 $float = 1.234;
@@ -68,7 +68,7 @@ $différence = 2 - 1; // 1
 $produit    = 2 * 2; // 4
 $quotient   = 2 / 1; // 2
 
-// Shorthand arithmetic
+// L'arithmétique raccourci
 $nombre = 0;
 $nombre += 1;      // Incrémente $nombre par 1
 echo $nombre++;    // Rend 1 (incrémente après l'évaluation)
@@ -123,7 +123,6 @@ echo 'Ce rend ' . FOO;
  * Tableaux
  */
 
-// All arrays in PHP are associative arrays (hashmaps),
 // Tous les tableaux en PHP sont associatifs (cartes hashages)
 
 // Fonctionne avec tous les versions PHP
@@ -224,20 +223,20 @@ $string = '1';
 echo $string + $string; // => 2 (strings sont contraints à des nombres entiers)
 
 $string = 'un';
-echo $string + $string; // => 0 (parce-que l'opératur + ne peut pas contraindre le string 'un' à un certain nombre)
+echo $string + $string; // => 0 (parce-que l'opérateur + ne peut pas contraindre le string 'un' à un certain nombre)
 
-// Type casting can be used to treat a variable as another type
+// Le cataloguage (type casting) peut être utiliser pour traiter une variable comme s'il était une autre type.
 
 $boolean = (boolean) 1; // => true
 
 $zero = 0;
 $boolean = (boolean) $zero; // => false
 
-// There are also dedicated functions for casting most types
+// Il y a aussi les fonctionnes dédiées pour cataloguer la plupart de types
 $integer = 5;
 $string = strval($integer);
 
-$var = null; // Null value
+$var = null; // Valeur nul
 
 
 /********************************
@@ -328,7 +327,6 @@ foreach ($roues as $compte) {
 
 echo "\n";
 
-// You can iterate over the keys as well as the values
 // Vous pouvez itérer sur les clés aussi bien que les valeurs
 foreach ($roues as $vehicule => $compte) {
     echo "Un $vehicule possède $compte wheels";
@@ -363,22 +361,19 @@ function ma_fonctionne () {
 
 echo my_function(); // => "Allô"
 
-// A valid function name starts with a letter or underscore, followed by any
-// number of letters, numbers, or underscores.
-
 // Un nom de fonctionne valide commence avec une lettre ou une souligné, suivit par n'importe quel
 // lettres, chiffres ou soulignés.
 
 function ajouter ($x, $y = 1) { // $y est en option et fait défaut à 1
-  $result = $x + $y;
-  return $result;
+  $resultat = $x + $y;
+  return $resultat;
 }
 
 echo ajouter(4); // => 5
 echo ajouter(4, 2); // => 6
 
-// On ne peut pas accéder $result à l'éxterieur de la fonctionne
-print $result; // Rend un avertissement
+// On ne peut pas accéder $resultat à l'éxterieur de la fonctionne
+print $resultat; // Rend un avertissement
 
 // Depuis PHP 5.3, vous pouvez déclarer les fonctionnes anonymes
 $inc = function ($x) {
@@ -438,174 +433,172 @@ return 'Tout ce que vous voulez.';
 // Includes et requires peut retourner aussi une valeur.
 $value = include 'my-include.php';
 
-// Files are included based on the file path given or, if none is given,
-// the include_path configuration directive. If the file isn't found in
-// the include_path, include will finally check in the calling script's
-// own directory and the current working directory before failing.
-/* */
+// Les fichiers sont inclus selon le chemin du fichier ou, si aucun n'est donné,
+// la directive de configuration include_path. Si le fichier n'est pas trouvé dans
+// l'include_path, include va examiner enfin dans la propre dossier du script d'appel
+// et le dossier de travail courant avant d'échouer
 
 /********************************
- * Classes
+ * Les classes
  */
 
-// Classes are defined with the class keyword
+// Les classes sont définis avec le mot-clé "class"
 
-class MyClass
+class MaClasse
 {
-    const MY_CONST      = 'value'; // A constant
+    const MA_CONST      = 'valeur'; // Une constante
 
-    static $staticVar   = 'static';
+    static $varStatique   = 'statique'; // Une variable statique
 
-    // Static variables and their visibility
-    public static $publicStaticVar = 'publicStatic';
-    // Accessible within the class only
-    private static $privateStaticVar = 'privateStatic';
+    // La visibilité des variables statiques
+    public static $varStatiquePublique = 'publiqueStatique';
+    // Accessible seulement dans la classe
+    private static $varStatiquePrive = 'privéStatique';
     // Accessible from the class and subclasses
-    protected static $protectedStaticVar = 'protectedStatic';
+    protected static $varStatiqueProtege = 'protégéStatique';
 
-    // Properties must declare their visibility
-    public $property    = 'public';
-    public $instanceProp;
-    protected $prot = 'protected'; // Accessible from the class and subclasses
-    private $priv   = 'private';   // Accessible within the class only
+    // Les propriétés doivent déclarer leur visibilité
+    public $propriete    = 'publique';
+    public $propInstance;
+    protected $prot  = 'protégé'; // Accessible dans la classe et les sous-classes
+    private $prive   = 'privé';   // Accessible seulement dans la classe
 
-    // Create a constructor with __construct
-    public function __construct($instanceProp) {
-        // Access instance variables with $this
-        $this->instanceProp = $instanceProp;
+    // Créez un constructeur avec __construct
+    public function __construct($propInstance) {
+        // Accédez les variables instances avec $this
+        $this->propInstance = $propInstance;
     }
 
-    // Methods are declared as functions inside a class
-    public function myMethod()
+    // On déclare les méthodes comme les fonctionnes dans une classe
+    public function maMethode()
     {
-        print 'MyClass';
+        print 'MaClasse';
     }
 
-    //final keyword would make a function unoverridable
-    final function youCannotOverrideMe()
+    // le mot-clé "final" rend une fonctionne inoutrepassable
+    final function vousNePouvezPasMOutrepasser()
     {
     }
 
 /*
- * Declaring class properties or methods as static makes them accessible without
- * needing an instantiation of the class. A property declared as static can not
- * be accessed with an instantiated class object (though a static method can).
-*/
+ * La déclaration de "static" aux propriétés ou méthodes des classes leur rend accessible sans
+ * le besoin d'instancier la classe. Une propriété déclaré comme "static" ne peut pas
+ * être accédé avec un objet de classe instancié (bien qu'une méthode statique le peut).
+ */
 
-    public static function myStaticMethod()
+    public static function maMethodeStatique()
     {
-        print 'I am static';
+        print 'Je suis statique';
     }
 }
 
-echo MyClass::MY_CONST;    // Outputs 'value';
-echo MyClass::$staticVar;  // Outputs 'static';
-MyClass::myStaticMethod(); // Outputs 'I am static';
+echo MaClasse::MA_CONST;    // Rend 'valeur';
+echo MaClasse::$varStatique;  // Rend 'statique';
+MaClasse::maMethodeStatique(); // Rend 'Je suis statique';
 
-// Instantiate classes using new
-$my_class = new MyClass('An instance property');
-// The parentheses are optional if not passing in an argument.
+// Instancier les nouveaux classes avec le mot-clé "new"
+$ma_classe = new MaClasse('Une propriété instance');
+// Les parenthèses sont en option si il n'y a un argument
 
-// Access class members using ->
-echo $my_class->property;     // => "public"
-echo $my_class->instanceProp; // => "An instance property"
-$my_class->myMethod();        // => "MyClass"
+// Accédez les membres de classe avec "->"
+echo $ma_classe->propriete;     // => "publique"
+echo $ma_classe->propInstance; // => "Une propriété instance"
+$ma_classe->maMethode();        // => "MyClasse"
 
-
-// Extend classes using "extends"
-class MyOtherClass extends MyClass
+// Étendez les classes avec "extends"
+class MonAutreClasse extends MaClasse
 {
-    function printProtectedProperty()
+    function rendreProprieteProtege()
     {
         echo $this->prot;
     }
 
     // Override a method
-    function myMethod()
+    function maMethode()
     {
-        parent::myMethod();
-        print ' > MyOtherClass';
+        parent::maMethode();
+        print ' > MonAutreClasse';
     }
 }
 
-$my_other_class = new MyOtherClass('Instance prop');
-$my_other_class->printProtectedProperty(); // => Prints "protected"
-$my_other_class->myMethod();               // Prints "MyClass > MyOtherClass"
+$mon_autre_classe = new MonAutreClasse('Instance prop');
+$mon_autre_classe->rendreProprieteProtege(); // => Prints "protégé"
+$mon_autre_classe->maMethode();               // Prints "MaClasse > MonAutreClasse"
 
-final class YouCannotExtendMe
+final class VouzNePouvezPasMEtendre
 {
 }
 
-// You can use "magic methods" to create getters and setters
-class MyMapClass
+// Vous pouvez utiliser les "methodes magiques" pour créer les getters et les setters
+class MaClasseCarte
 {
-    private $property;
+    private $propriete;
 
-    public function __get($key)
+    public function __get($cle)
     {
-        return $this->$key;
+        return $this->$cle;
     }
 
-    public function __set($key, $value)
+    public function __set($cle, $valeur)
     {
-        $this->$key = $value;
+        $this->$cle = $valeur;
     }
 }
 
-$x = new MyMapClass();
-echo $x->property; // Will use the __get() method
-$x->property = 'Something'; // Will use the __set() method
+$x = new MaClasseCarte();
+echo $x->propriete; // Utilisera la methode __get()
+$x->propriete = 'quelque chose'; // Utilisera la methode __set()
 
-// Classes can be abstract (using the abstract keyword) or
-// implement interfaces (using the implements keyword).
-// An interface is declared with the interface keyword.
+// Les classes peut être abstraits (avec le mot-clé "abstract") ou
+// réaliser les interfaces (avec le mot-clé "implements").
+// On déclare un interface avec le mot-clé "interface".
 
-interface InterfaceOne
+interface PremierInterface
 {
-    public function doSomething();
+    public function faireQuelqueChose();
 }
 
-interface InterfaceTwo
+interface DeuxiemeInterface
 {
-    public function doSomethingElse();
+    public function faireAutreChose();
 }
 
-// interfaces can be extended
-interface InterfaceThree extends InterfaceTwo
+// les interfaces peut être étendu
+interface TrosiemeInterface extends DeuxiemeInterface
 {
-    public function doAnotherContract();
+    public function faireAutreContrat();
 }
 
-abstract class MyAbstractClass implements InterfaceOne
+abstract class MaClasseAbstrait implements PremierInterface
 {
-    public $x = 'doSomething';
+    public $x = 'faireQuelqueChose';
 }
 
-class MyConcreteClass extends MyAbstractClass implements InterfaceTwo
+class MaClasseConcret extends MaClasseAbstrait implements DeuxiemeInterface
 {
-    public function doSomething()
+    public function faireQuelqueChose()
     {
         echo $x;
     }
 
-    public function doSomethingElse()
+    public function faireAutreChose()
     {
-        echo 'doSomethingElse';
+        echo 'faireAutreChose';
     }
 }
 
 
-// Classes can implement more than one interface
-class SomeOtherClass implements InterfaceOne, InterfaceTwo
+// Les classes peut réaliser plus d'une interface
+class AutreClasse implements PremierInterface, DeuxiemeInterface
 {
-    public function doSomething()
+    public function faireQuelqueChose()
     {
-        echo 'doSomething';
+        echo 'faireQuelqueChose';
     }
 
-    public function doSomethingElse()
+    public function faireAutreChose()
     {
-        echo 'doSomethingElse';
+        echo 'faireAutreChose';
     }
 }
 
@@ -637,42 +630,43 @@ $cls->myTraitMethod(); // Rend "I have MyTrait"
  * Les espaces de noms
  */
 
-// This section is separate, because a namespace declaration
-// must be the first statement in a file. Let's pretend that is not the case
+// Cette section est séparée, parce qu'un déclaration d'espace de nom
+// doit être la première déclaration dans un fichier.
+// Imaginons que ce n'est pas le cas
 
 <?php
 
-// By default, classes exist in the global namespace, and can
-// be explicitly called with a backslash.
+// Par défault, les classes existent dans l'espace de nom globale, et peut
+// être appellé explicitement avec une barre oblique inverse.
 
-$cls = new \MyClass();
+$cls = new \MaClasse();
 
 
 
-// Set the namespace for a file
-namespace My\Namespace;
+// Fixer l'espace de nom pour un fichier
+namespace Mon\EspaceDeNom;
 
-class MyClass
+class MaClasse
 {
 }
 
-// (from another file)
-$cls = new My\Namespace\MyClass;
+// (d'un autre fichier)
+$cls = new Mon\EspaceDeNom\MaClasse;
 
-//Or from within another namespace.
-namespace My\Other\Namespace;
+// Or from within another namespace.
+// Ou à partir d'un autre espace de nom.
+namespace Mon\Autre\EspaceDeNom;
 
-use My\Namespace\MyClass;
+use Mon\EspaceDeNom\MaClasse;
 
-$cls = new MyClass();
+$cls = new MaClass();
 
-// Or you can alias the namespace;
+// Ou vous pouvez faire un pseudonyme a l'espace de nom
+namespace Mon\Autre\EspaceDeNom;
 
-namespace My\Other\Namespace;
+use Mon\EspaceDeNom as UneAutreEspaceDeNom;
 
-use My\Namespace as SomeOtherNamespace;
-
-$cls = new SomeOtherNamespace\MyClass();
+$cls = new UneAutreEspaceDeNom\MaClasse();
 
 */
 
