@@ -38,7 +38,7 @@ Contrairement à HTML, XML ne spécifie pas comment afficher ou de formater les 
 </librarie>
 
 <!-- Ce qui précède est un fichier XML typique.
-  Il commence par une déclaration, informer certaines métadonées (en option).
+  Il commence par une déclaration, qui informe certaines métadonées (en option).
 
 XML utilise une structure arborescente. Ci-dessus, le nœud racine est «librairie», qui a 
    trois nœuds enfants, qui sont appelés «livres». Ces nœuds a plus de nœuds enfants, et ainsi de suite ...
@@ -48,9 +48,9 @@ Les noeuds sont créés avec des balises d'ouverture / fermeture, et enfants son
 
 
 <!-- XML porte deux types d'informations:
-  1 - Attributs -> Les metadonnées sur un nœud.
+  1 - Les attributs -> les metadonnées sur un nœud.
       Habituellement, l'analyseur XML utilise cette information pour stocker les informations
-  2 - Éléments -> l'informations pures.
+  2 - Les éléments -> l'informations pures.
       C'est ce que l'analyseur de récupérer le fichier XML.
       Éléments apparaissent entre les balises d'ouverture et de fermeture, sans parenthèses. -->
       
@@ -92,7 +92,7 @@ Avec cet outil, vous pouvez vérifier les données XML en dehors de la logique d
 [
 <!ELEMENT librarie (livre+)>
 <!ELEMENT livre (titre,prix)>
-<!ATTLIST livre categorie CDATA "Litterature">
+<!ATTLIST livre categorie CDATA "Littérature">
 <!ELEMENT titre (#PCDATA)>
 <!ELEMENT prix (#PCDATA)>
 ]>
@@ -102,7 +102,7 @@ Avec cet outil, vous pouvez vérifier les données XML en dehors de la logique d
    Chaque «livre» doit contenir exactement un «titre» et «prix» et un attribut 
    appelée «catégorie», de «littérature» comme sa valeur par défaut. 
    Le «titre» et nœuds de «prix» contiennent d'informations de caractère analysées
-   anglais: «parsed character data» -->
+   (anglais: «parsed character data») -->
 
 <!-- La DTD pourrait être déclaré dans le fichier XML lui-même -->
 
@@ -112,7 +112,7 @@ Avec cet outil, vous pouvez vérifier les données XML en dehors de la logique d
 [
 <!ELEMENT librarie (livre+)>
 <!ELEMENT livre (titre,prix)>
-<!ATTLIST livre categorie CDATA "Litterature">
+<!ATTLIST livre categorie CDATA "Littérature">
 <!ELEMENT titre (#PCDATA)>
 <!ELEMENT prix (#PCDATA)>
 ]>
