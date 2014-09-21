@@ -12,12 +12,6 @@ Donnez-moi autant de réactions que vous voulez! / N'hésitez pas à débourser 
 
 
 ```markdown
-<!-- Markdown is a superset of HTML, so any HTML file is valid Markdown, that
-means we can use HTML elements in Markdown, such as the comment element, and
-they won't be affected by a markdown parser. However, if you create an HTML
-element in your markdown file, you cannot use markdown syntax within that
-element's contents. -->
-
 <!--
 	Markdown (MD) est un sur-ensemble de HTML, de sorte que tout fichier HTML est de MD valide, que 
 	signifie que nous pouvons utiliser des éléments HTML dans MD, comme l'élément de commentaire, et 
@@ -41,7 +35,6 @@ texte par un certain nombre de symboles hachages (#) -->
 ##### C'est un <h5>
 ###### C'est un <h6>
 
-<!-- Markdown also provides us with two alternative ways of indicating h1 and h2 -->
 <!-- Le MD nous fournit deux chemins alternatives d'indiquer h1 et h2 -->
 C'est un h1
 =============
@@ -62,7 +55,7 @@ __Et si ce texte.__
 **_Comme ça!_**
 *__Et ça!__*
 
-<!-- En «Github Flavored Markdown», qui Github utilise pour rendre les fichiers MD,
+<!-- En «Github Flavored Markdown», où Github utilise pour rendre les fichiers MD,
 on a aussi le barré: -->
 ~~Ce texte est rendu avec le barré.~~
 
@@ -220,7 +213,7 @@ peut être n'importe quoi, tant qu'ils sont uniques. -->
 <!-- Recueil -->
 <!-- Auto-liens -->
 
-<http://testwebsite.com/> is égal à
+<http://testwebsite.com/> est égal à
 [http://testwebsite.com/](http://testwebsite.com/)
 
 <!-- Auto-liens pour les emails -->
