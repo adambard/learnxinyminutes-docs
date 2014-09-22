@@ -72,7 +72,7 @@ func learnMultiple(x, y int) (sum, prod int) {
 // Some built-in types and literals.
 func learnTypes() {
 	// Short declaration usually gives you what you want.
-	s := "Learn Go!" // string type.
+	str := "Learn Go!" // string type.
 
 	s2 := `A "raw" string literal
 can include line breaks.` // Same string type.
@@ -126,7 +126,7 @@ can include line breaks.` // Same string type.
 
 	// Unused variables are an error in Go.
 	// The underbar lets you "use" a variable but discard its value.
-	_, _, _, _, _, _, _, _, _ = s2, g, f, u, pi, n, a3, s4, bs
+	_, _, _, _, _, _, _, _, _, _ = str, s2, g, f, u, pi, n, a3, s4, bs
 	// Output of course counts as using a variable.
 	fmt.Println(s, c, a4, s3, d2, m)
 
