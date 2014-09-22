@@ -125,8 +125,9 @@ SomeOtherVar123! = 6 # => 6
 
 # A note on naming conventions in Julia:
 #
-# * Names of variables are in lower case, with word separation indicated by
-#   underscores ('\_').
+# * Word separation can be indicated by underscores ('_'), but use of
+#   underscores is discouraged unless the name would be hard to read
+#   otherwise.
 #
 # * Names of Types begin with a capital letter and word separation is shown
 #   with CamelCase instead of underscores.
