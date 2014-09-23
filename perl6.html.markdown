@@ -700,15 +700,37 @@ try {
   open 'foo';
   CATCH {
     when X::AdHoc { say "unable to open file !" }
-    # any other exception will be re-raised, since we don't have a `default`
+    # Any other exception will be re-raised, since we don't have a `default`
+    # Basically, if a `when` matches (or there's a `default`) marks the exception as
+    #  "handled" so that it doesn't get re-thrown from the `CATCH`.
+    # You still can re-throw the exception (see below) by hand.
   }
 }
 
 # You can throw an exception using `die`:
 die X::AdHoc.new(payload => 'Error !');
-# TODO warn
-# TODO fail
-# TODO CONTROL
+
+# You can access the last exception with `$!` (usually used in a `CATCH` block)
+
+# There are also some subtelties to exceptions. Some Perl 6 subs return a `Failure`,
+#  which is a kind of "unthrown exception". They're not thrown until you tried to look
+#  at their content, unless you call `.Bool`/`.defined` on them - then they're handled.
+#  (the `.handled` method is `rw`, so you can mark it as `False` back yourself)
+#
+# You can throw a `Failure` using `fail`. Note that if the pragma `use fatal` is on,
+#  `fail` will throw an exception (like `die`).
+fail "foo"; # We're not trying to access the value, so no problem.
+try {
+  fail "foo";
+  CATCH {
+    default { say "It threw because we try to get the fail's value!" }
+  }
+}
+
+# There is also another kind of exception: Control exceptions.
+# Those are "good" exceptions, which happen when you change your program's flow,
+#  using operators like `return`, `next` or `last`.
+# You can "catch" those with `CONTROL` (not 100% working in Rakudo yet).
 
 ### Packages
 # Packages are a way to reuse code. Packages are like "namespaces", and any
@@ -1350,6 +1372,9 @@ so 'ayc' ~~ / a [ b | y ] c /; # `True`. Obviously enough ...
 
 # Note: the first-matching `or` still exists, but is now spelled `||`
 'foo' ~~ / fo || foo /; # `fo` now.
+
+
+
 
 ### Extra: the MAIN subroutime
 # The `MAIN` subroutine is called when you run a Perl 6 file directly.
