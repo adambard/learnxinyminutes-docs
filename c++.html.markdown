@@ -132,7 +132,7 @@ namespace myFirstNameSpace
         cos(int x)   
         {   
             printf("My inner soul was made to program.");   
-	}   
+        }   
     }   
 }   
 
@@ -266,10 +266,9 @@ int main () {
 
 //C++ Class inheritance   
 
-class German_Sheperd   
+class German_Sheperd : public Doggie  
 {
-   //This class now inherits everything public and protected from Doggie class   
-   Doggie      d_dog;   
+   //This class now inherits everything public and protected from Doggie class
 
    //Good practice to put d_ in front of datatypes in classes   
    std::string d_type;   
