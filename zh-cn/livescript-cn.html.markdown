@@ -3,6 +3,9 @@ language: LiveScript
 filename: learnLivescript.ls
 contributors:
     - ["Christina Whyte", "http://github.com/kurisuwhyte/"]
+translators:
+    - ["ShengDa Lyu", "http://github.com/SDLyu/"]
+lang: zh-cn    
 ---
 
 LiveScript 是一种具有函数式特性且编译成 JavaScript 的语言，能对应 JavaScript 的基本语法。
