@@ -217,7 +217,7 @@ int main() {
   int e = 5;
   int f = 10;
   int z;
-  z = (a > b) ? a : b; // => 10 "if a > b return a, else return b."
+  z = (e > f) ? e : f; // => 10 "if e > f return e, else return f."
 
   //Increment and decrement operators:
   char *s = "iLoveC";
