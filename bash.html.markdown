@@ -9,6 +9,7 @@ contributors:
     - ["akirahirose", "https://twitter.com/akirahirose"]
     - ["Anton Strömkvist", "http://lutic.org/"]
     - ["Rahil Momin", "https://github.com/iamrahil"]
+    - ["Gregrory Kielian", "https://github.com/gskielian"]
 filename: LearnBash.sh
 ---
 
@@ -199,4 +200,8 @@ sort file.txt
 uniq -d file.txt
 # prints only the first column before the ',' character
 cut -d ',' -f 1 file.txt
+# replaces every occurance of 'apples' with 'oranges' in file.txt
+sed -i 's/apples/oranges/g' file.txt
+# prints the number of occurances of "foo" in file.txt
+grep -c "foo" file.txt
 ```
