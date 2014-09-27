@@ -46,18 +46,36 @@ my $inverse = !$bool; # You can invert a bool with the prefix `!` operator
 my $forced-bool = so $str; # And you can use the prefix `so` operator
                            # which turns its operand into a Bool
 
-## * Arrays. They represent multiple values. Their name start with `@`.
+## * Lists. They represent multiple values. Their name start with `@`.
 
-my @array = 1, 2, 3;
 my @array = 'a', 'b', 'c';
 # equivalent to :
-my @array = <a b c>; # array of words, delimited by space.
+my @letters = <a b c>; # array of words, delimited by space.
                      # Similar to perl5's qw, or Ruby's %w.
+my @array = 1, 2, 3;
 
 say @array[2]; # Array indices start at 0 -- This is the third element
 
 say "Interpolate an array using [] : @array[]";
-#=> Interpolate an array using [] : a b c
+#=> Interpolate an array using [] : 1 2 3
+
+@array[0] = -1; # Assign a new value to an array index
+@array[0, 1] = 5, 6; # Assign multiple values
+
+my @keys = 0, 2;
+@array[@keys] = @letters; # Assign using an array
+say @array; #=> a 2 b
+
+# There are two more kinds of lists: Parcel and Arrays.
+# Parcels are immutable lists (you can't modify a list that's not assigned).
+# This is a parcel:
+(1, 2, 3); # Not assigned to anything. Changing an element would provoke an error
+# This is a list:
+my @a = (1, 2, 3); # Assigned to `@a`. Changing elements is okay!
+
+# Lists flatten (in list context). You'll see below how to apply item context
+#  or use arrays to have real nested lists.
+
 
 ## * Hashes. Key-Value Pairs.
 # Hashes are actually arrays of Pairs (`Key => Value`),
@@ -303,6 +321,37 @@ if long-computation() -> $result {
   say "The result is $result";
 }
 
+## Loops can also have a label, and be jumped to through these.
+OUTER: while 1 {
+  say "hey";
+  while 1 {
+    OUTER.last; # All the control keywords must be called on the label itself
+  }
+}
+
+# Now that you've seen how to traverse a list, you need to be aware of something:
+# List context (@) flattens. If you traverse nested lists, you'll actually be traversing a
+#  shallow list (except if some sub-list were put in item context ($)).
+for 1, 2, (3, (4, ((5)))) {
+  say "Got $_.";
+} #=> Got 1. Got 2. Got 3. Got 4. Got 5.
+
+# ... However: (forcing item context with `$`)
+for 1, 2, $(3, 4) {
+  say "Got $_.";
+} #=> Got 1. Got 2. Got 3 4.
+
+# Note that the last one actually joined 3 and 4.
+# While `$(...)` will apply item to context to just about anything, you can also create
+#  an array using `[]`:
+for [1, 2, 3, 4] {
+  say "Got $_.";
+} #=> Got 1 2 3 4.
+
+# The other difference between `$()` and `[]` is that `[]` always returns a mutable Array
+#  whereas `$()` will return a Parcel when given a Parcel.
+
+
 ### Operators
 
 ## Since Perl languages are very much operator-based languages
@@ -359,9 +408,9 @@ $arg ~~ &bool-returning-function; # `True` if the function, passed `$arg`
 # This also works as a shortcut for `0..^N`:
 ^10; # means 0..^10
 
-# This also allows us to demonstrate that Perl 6 has lazy arrays,
+# This also allows us to demonstrate that Perl 6 has lazy/infinite arrays,
 #  using the Whatever Star:
-my @array = 1..*; # 1 to Infinite !
+my @array = 1..*; # 1 to Infinite ! `1..Inf` is the same.
 say @array[^10]; # you can pass arrays as subscripts and it'll return
                  #  an array of results. This will print
                  # "1 2 3 4 5 6 7 8 9 10" (and not run out of memory !)
@@ -371,6 +420,13 @@ say @array[^10]; # you can pass arrays as subscripts and it'll return
 # Warning, though: if you try this example in the REPL and just put `1..*`,
 #  Perl 6 will be forced to try and evaluate the whole array (to print it),
 #  so you'll end with an infinite loop.
+
+# You can use that in most places you'd expect, even assigning to an array
+my @numbers = ^20;
+@numbers[5..*] = 3, 9 ... * > 90; # The right hand side could be infinite as well.
+                                  # (but not both, as this would be an infinite loop)
+say @numbers; #=> 3 9 15 21 27 [...] 81 87
+
 
 ## * And, Or
 3 && 4; # 4, which is Truthy. Calls `.Bool` on `4` and gets `True`.
@@ -1325,7 +1381,7 @@ say $0; # The same as above.
 # You might be wondering why it's an array, and the answer is simple:
 # Some capture (indexed using `$0`, `$/[0]` or a named one) will be an array
 #  IFF it can have more than one element
-#  (so, with `*`, `+` and any `**`, but not with `?`).
+#  (so, with `*`, `+` and `**` (whatever the operands), but not with `?`).
 # Let's use examples to see that:
 so 'fooABCbar' ~~ / foo ( A B C )? bar /; # `True`
 say $/[0]; #=> ｢ABC｣
@@ -1339,16 +1395,26 @@ say $0.WHAT; #=> (Array)
              # A specific quantifier will always capture an Array,
              #  may it be a range or a specific value (even 1).
 
-# If you're wondering how the captures are numbered, here's an explanation:
-# (TODO use graphs from s05)
+# The captures are indexed per nesting. This means a group in a group will be nested
+#  under its parent group: `$/[0][0]`, for this code:
+'hello-~-world' ~~ / ( 'hello' ( <[ \- \~ ]> + ) ) 'world' /;
+say $/[0].Str; #=> hello~
+say $/[0][0].Str; #=> ~
 
+# This stems from a very simple fact: `$/` does not contain strings, integers or arrays,
+#  it only contains match objects. These contain the `.list`, `.hash` and `.Str` methods.
+#  (but you can also just use `match<key>` for hash access and `match[idx]` for array access)
+say $/[0].list.perl; #=> (Match.new(...),).list
+                     # We can see it's a list of Match objects. Those contain a bunch of infos:
+                     # where the match started/ended, the "ast" (see actions later), etc.
+                     # You'll see named capture below with grammars.
 
 ## Alternatives - the `or` of regexps
 # WARNING: They are DIFFERENT from PCRE regexps.
 so 'abc' ~~ / a [ b | y ] c /; # `True`. Either "b" or "y".
 so 'ayc' ~~ / a [ b | y ] c /; # `True`. Obviously enough ...
 
-# The difference between this `|` and the one you're probably used to is LTM.
+# The difference between this `|` and the one you're used to is LTM.
 # LTM means "Longest Token Matching". This means that the engine will always
 #  try to match as much as possible in the strng
 'foo' ~~ / fo | foo /; # `foo`, because it's longer.
