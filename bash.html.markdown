@@ -200,8 +200,8 @@ sort file.txt
 uniq -d file.txt
 # prints only the first column before the ',' character
 cut -d ',' -f 1 file.txt
-# replaces every occurance of 'apples' with 'oranges' in file.txt
+# replaces every occurrence of 'apples' with 'oranges' in file.txt
 sed -i 's/apples/oranges/g' file.txt
-# prints the number of lines with the string "foo" in file.txt
+# prints the number of lines containing the string "foo" in file.txt
 grep -c "foo" file.txt
 ```
