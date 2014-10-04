@@ -13,6 +13,9 @@ The official [Swift Programming Language](https://itunes.apple.com/us/book/swift
 See also Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/LandingPage/index.html), which has a complete tutorial on Swift.
 
 ```swift
+// import a module
+import UIKit
+
 //
 // MARK: Basics
 //
@@ -26,7 +29,7 @@ println("Hello, world")
 
 var myVariable = 42
 let øπΩ = "value" // unicode variable names
-let myConstant = 3.1415926
+let π = 3.1415926
 let convenience = "keyword" // contextual variable name
 let weak = "keyword"; let override = "another keyword" // statements can be separated by a semi-colon
 let `class` = "keyword" // backticks allow keywords to be used as variable names
@@ -34,9 +37,24 @@ let explicitDouble: Double = 70
 let intValue = 0007 // 7
 let largeIntValue = 77_000 // 77000
 let label = "some text " + String(myVariable) // Casting
-let piText = "Pi = \(myConstant), Pi 2 = \(myConstant * 2)" // String interpolation
-var optionalString: String? = "optional" // Can be nil
-optionalString = nil
+let piText = "Pi = \(π), Pi 2 = \(π * 2)" // String interpolation
+var someOptionalString: String? = "optional" // Can be nil
+
+if someOptionalString != nil {
+    // I am not nil
+    if someOptionalString!.hasPrefix("opt") {
+        println("has the prefix")
+    }
+    
+    let empty = someOptionalString?.isEmpty
+}
+someOptionalString = nil
+
+if let someStringConstant = someOptionalString {
+    // has Some value
+}
+
+// AnyObject == id
 
 /*
 Comment here
@@ -84,9 +102,10 @@ for (key, value) in dict {
 }
 
 // for loop (range)
-for i in -1...1 { // [-1, 0, 1]
+for i in -1...shoppingList.count {
     println(i)
 }
+shoppingList[1...2] = ["steak", "peacons"]
 // use ..< to exclude the last number
 
 // while loop
@@ -123,14 +142,14 @@ default: // required (in order to cover all possible input)
 
 // Function with Swift header docs (format as reStructedText)
 /**
-    A greet operation
+A greet operation
 
-    - A bullet in docs
-    - Another bullet in the docs
+- A bullet in docs
+- Another bullet in the docs
 
-    :param: name A name
-    :param: day A day
-    :returns: A string containing the name and day value.
+:param: name A name
+:param: day A day
+:returns: A string containing the name and day value.
 */
 func greet(name: String, day: String) -> String {
     return "Hello \(name), today is \(day)."
@@ -141,9 +160,16 @@ greet("Bob", "Tuesday")
 func getGasPrices() -> (Double, Double, Double) {
     return (3.59, 3.69, 3.79)
 }
+let pricesTuple = getGasPrices()
+let price = pricesTuple.2 // 3.79
+println("Gas price: \(price)")
 
 // Variadic Args
-func setup(numbers: Int...) {}
+func setup(numbers: Int...) {
+    // its an array
+    let number = numbers[0]
+    let argCount = numbers.count
+}
 
 // Passing and returning functions
 func makeIncrementer() -> (Int -> Int) {
@@ -154,6 +180,17 @@ func makeIncrementer() -> (Int -> Int) {
 }
 var increment = makeIncrementer()
 increment(7)
+
+// pass by ref
+func swapTwoInts(inout a: Int, inout b: Int) {
+    let tempA = a
+    a = b
+    b = tempA
+}
+var someIntA = 7
+var someIntB = 3
+swapTwoInts(&someIntA, &someIntB)
+println(someIntB) // 7
 
 
 //
@@ -197,7 +234,7 @@ print(numbers) // [3, 6, 18]
 // Structures and classes have very similar capabilites
 struct NamesTable {
     let names: [String]
-
+    
     // Custom subscript
     subscript(index: Int) -> String {
         return names[index]
@@ -239,7 +276,7 @@ internal class Rect: Shape {
             sideLength = newValue / 4
         }
     }
-
+    
     // Lazily load a property
     // subShape remains nil (uninitialized) until getter called
     lazy var subShape = Rect(sideLength: 4)
@@ -255,8 +292,9 @@ internal class Rect: Shape {
     }
     
     init(sideLength: Int) {
-        super.init()
         self.sideLength = sideLength
+         // always super.init last when init custom properties
+        super.init()
     }
     
     func shrink() {
@@ -313,7 +351,7 @@ enum Suit {
 //
 
 // `protocol`s can require that conforming types have specific
-// instance properties, instance methods, type methods, 
+// instance properties, instance methods, type methods,
 // operators, and subscripts.
 
 protocol ShapeGenerator {
@@ -321,7 +359,6 @@ protocol ShapeGenerator {
     func buildShape() -> Shape
 }
 
-/*
 // Protocols declared with @objc allow optional functions,
 // which allow you to check for conformance
 @objc protocol TransformShape {
@@ -331,17 +368,17 @@ protocol ShapeGenerator {
 
 class MyShape: Rect {
     var delegate: TransformShape?
-
+    
     func grow() {
         sideLength += 2
-
+        
         if let allow = self.delegate?.canReshape?() {
             // test for delegate then for method
             self.delegate?.reshaped?()
         }
     }
 }
-*/
+
 
 //
 // MARK: Other
@@ -363,7 +400,7 @@ extension Int {
     var customProperty: String {
         return "This is \(self)"
     }
-
+    
     func multiplyBy(num: Int) -> Int {
         return num * self
     }
@@ -372,7 +409,7 @@ extension Int {
 println(7.customProperty) // "This is 7"
 println(14.multiplyBy(2)) // 42
 
-// Generics: Similar to Java. Use the `where` keyword to specify the
+// Generics: Similar to Java and C#. Use the `where` keyword to specify the
 //   requirements of the generics.
 
 func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
