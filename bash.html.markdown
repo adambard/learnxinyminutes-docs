@@ -200,8 +200,12 @@ sort file.txt
 uniq -d file.txt
 # prints only the first column before the ',' character
 cut -d ',' -f 1 file.txt
-# replaces every occurrence of 'apples' with 'oranges' in file.txt
-sed -i 's/apples/oranges/g' file.txt
-# prints the number of lines containing the string "foo" in file.txt
-grep -c "foo" file.txt
+# replaces every occurrence of 'okay' with 'great' in file.txt, (regex compatible)
+sed -i 's/okay/great/g' file.txt
+# print to stdout all lines of file.txt which match some regex, the example prints lines which beginning with "foo" and end in "bar"
+grep "^foo.*bar$" file.txt
+# pass the option "-c" to instead print the number of lines matching the regex
+grep -c "^foo.*bar$" file.txt
+# if you literally want to search for the string, and not the regex, use fgrep (or grep -F)
+fgrep "^foo.*bar$" file.txt 
 ```
