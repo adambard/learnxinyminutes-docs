@@ -3,7 +3,7 @@ category: tool
 tool: tmux
 contributors:
     - ["kaernyk", "https://github.com/kaernyk"]
-    - ["jmaud". "https://github.com/jmaud"]
+    - ["jmaud", "https://github.com/jmaud"]
 filename: LearnTmux.txt
 ---
 
@@ -113,6 +113,7 @@ then later reattached.
   tmux.conf can be used to set options automatically on start up, much
 like how .vimrc or init.el are used.
 
+
 ```
 # Example tmux.conf
 # 2014.10
@@ -176,7 +177,6 @@ unbind %
 
 # Activate inner-most session (when nesting tmux) to send commands
 bind-key a send-prefix
-
 
 
 ### Theme
