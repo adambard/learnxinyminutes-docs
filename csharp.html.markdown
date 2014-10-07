@@ -508,7 +508,7 @@ on a new line! ""Wow!"", the masses cried";
 
             // LINQ - maps a store to IQueryable<T> objects, with delayed execution
             // e.g. LinqToSql - maps to a database, LinqToXml maps to an xml document
-            var db = new BikeRespository();
+            var db = new BikeRepository();
 
             // execution is delayed, which is great when querying a database
             var filter = db.Bikes.Where(b => b.HasTassles); // no query run
@@ -767,9 +767,9 @@ on a new line! ""Wow!"", the masses cried";
     /// EntityFramework Code First is awesome (similar to Ruby's ActiveRecord, but bidirectional)
     /// http://msdn.microsoft.com/en-us/data/jj193542.aspx
     /// </summary>
-    public class BikeRespository : DbSet
+    public class BikeRepository : DbSet
     {
-        public BikeRespository()
+        public BikeRepository()
             : base()
         {
         }
