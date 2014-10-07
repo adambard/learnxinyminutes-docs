@@ -1447,7 +1447,7 @@ so 'ayc' ~~ / a [ b | y ] c /; # `True`. Obviously enough ...
 # It's very powerful, because Perl 6 actually parses the argument
 #  and pass them as such to the sub. It also handles named argument (`--foo`)
 #  and will even go as far as to autogenerate a `--help`
-sub MAIN($name) { say "Hello, you !" }
+sub MAIN($name) { say "Hello, $name !" }
 # This produces:
 #    $ perl6 cli.pl
 #    Usage:
