@@ -1,13 +1,17 @@
 ---
 language: haml
-filename: learnhaml.haml
+filename: learnhaml.html.haml
 contributors:
   - ["Simon Neveu", "https://github.com/sneveu"]
 ---
 
-Haml is a markup language predominantly used with Ruby that’s used to cleanly and simply describe the HTML of any web document without the use of inline code. It encourages well-written markup.
+Haml is a markup language predominantly used with Ruby that cleanly 
+and simply describes the HTML of any web document without the use of
+inline code.
 
-Haml aims to reduce repetition in your markup by closing tags for you based on the structure of the indents in your code. The result is markup that is well-structured, DRY, logical, and easier to read.
+It aims to reduce repetition in your markup by closing tags for you
+based on the structure of the indents in your code. The result is
+markup that is well-structured, DRY, logical, and easier to read.
 
 ```haml
 / -------------------------------------------
