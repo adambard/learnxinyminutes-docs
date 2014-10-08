@@ -13,6 +13,7 @@ It aims to reduce repetition in your markup by closing tags for you
 based on the structure of the indents in your code. The result is
 markup that is well-structured, DRY, logical, and easier to read.
 
+
 ```haml
 / -------------------------------------------
 / Comments
