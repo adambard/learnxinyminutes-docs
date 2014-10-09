@@ -3,6 +3,7 @@ language: python3
 contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
     - ["Steven Basart", "http://github.com/xksteven"]
+    - ["Andre Polykanine", "https://github.com/Oire"]
 filename: learnpython3.py
 ---
 
@@ -49,6 +50,9 @@ Note: This article applies to Python 3 specifically. Check out the other tutoria
 
 # Modulo operation
 7 % 3 # => 1
+
+# Exponentiation (x to the y'th power)
+2 ** 4 # => 16
 
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8

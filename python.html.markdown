@@ -3,6 +3,7 @@ language: python
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "http://aminbandali.com"]
+    - "Andre Polykanine", "https://github.com/Oire"]
 filename: learnpython.py
 ---
 
@@ -53,6 +54,9 @@ to Python 2.x. Look for another tour of Python 3 soon!
 
 # Modulo operation
 7 % 3 # => 1
+
+# Exponentiation (x to the y'th power)
+2 ** 4 # => 16
 
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
