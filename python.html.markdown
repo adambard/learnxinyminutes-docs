@@ -3,7 +3,7 @@ language: python
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "http://aminbandali.com"]
-    - "Andre Polykanine", "https://github.com/Oire"]
+    - ["Andre Polykanine", "https://github.com/Oire"]
 filename: learnpython.py
 ---
 
