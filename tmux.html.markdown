@@ -135,23 +135,27 @@ set -g base-index 1
 # Mouse
 set-option -g mouse-select-pane on
 
+# Force reload of config file
+unbind r
+bind r source-file ~/.tmux.conf
+
 
 ### Keybinds
 ###########################################################################
 
 # Unbind C-b as the default prefix
-unbind-key C-b
+unbind C-b
 
 # Set new default prefix
 set-option -g prefix `
 
 # Return to previous window when prefix is pressed twice
-bind-key C-a last-window
-bind-key ` last-window
+bind C-a last-window
+bind ` last-window
 
 # Allow swapping C-a and ` using F11/F12
-bind-key F11 set-option -g prefix C-a
-bind-key F12 set-option -g prefix `
+bind F11 set-option -g prefix C-a
+bind F12 set-option -g prefix `
 
 # Keybind preference
 setw -g mode-keys vi
@@ -176,7 +180,7 @@ unbind '"'
 unbind %
 
 # Activate inner-most session (when nesting tmux) to send commands
-bind-key a send-prefix
+bind a send-prefix
 
 
 ### Theme
@@ -224,9 +228,17 @@ set-option -g set-titles on
 set-option -g set-titles-string '#H:#S.#I.#P #W #T' # window number,program name,active (or not)
 
 # Statusbar Adjustments
-set -g status-left "#[fg=red] #H#[fg=green]:#[fg=white]#S #[fg=green]][#[default]"
+set -g status-left "#[fg=red] #H#[fg=green]:#[fg=white]#S#[fg=green] |#[default]"
 
 # Show performance counters in statusbar
 # Requires https://github.com/thewtex/tmux-mem-cpu-load/
-#set -g status-interval 4
-#set -g status-right "#[fg=green]][ #[fg=white]#(tmux-mem-cpu-load) #[fg=green]][ #[fg=yellow]%H:%M #[default]"
+set -g status-interval 4
+set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | #[fg=cyan]%H:%M #[default]"
+
+```
+
+<a href="http://tmux.sourceforge.net/">Tmux | Home</a><br>
+<a href="http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/tmux.1?query=tmux">Tmux Manual page</a><br>
+<a href="http://wiki.gentoo.org/wiki/Tmux">Archlinux Wiki</a><br>
+<a href="https://wiki.archlinux.org/index.php/Tmux">Gentoo Wiki</a><br>
+<a href="https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux">Display CPU/MEM % in statusbar</a><br>
