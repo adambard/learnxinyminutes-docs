@@ -56,7 +56,7 @@ to Python 2.x. Look for another tour of Python 3 soon!
 7 % 3 # => 1
 
 # Exponentiation (x to the y'th power)
-2 ** 4 # => 16
+2**4 # => 16
 
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
