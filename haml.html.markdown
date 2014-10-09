@@ -138,4 +138,4 @@ markup that is well-structured, DRY, logical, and easier to read.
 ## Additional resources
 
 - [What is HAML?](http://haml.info/) - A good introduction that does a much better job of explaining the benefits of using HAML.
-- [Official Docs](http://www.ruby-doc.org/core-2.1.1/) - If you'd like to go a little deeper.
+- [Official Docs](http://haml.info/docs/yardoc/file.REFERENCE.html) - If you'd like to go a little deeper.
