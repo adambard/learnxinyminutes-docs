@@ -100,7 +100,7 @@ markup that is well-structured, DRY, logical, and easier to read.
 
 
 / To run some ruby code without rendering it to the html, use a hyphen instead
-- books = ['book one', 'book 2', 'book 3']
+- books = ['book 1', 'book 2', 'book 3']
 
 / Allowing you to do all sorts of awesome, like ruby blocks
 - books.shuffle.each_with_index do |book, index|
@@ -130,12 +130,12 @@ markup that is well-structured, DRY, logical, and easier to read.
   Use the colon to define haml filters, one example of a filter you can 
   use is :javascript, which can be used for writing inline js
 
-  :javascript
-    console.log('This is inline <script>');
+:javascript
+  console.log('This is inline <script>');
 
 ```
 
 ## Additional resources
 
-- [What is HAML?](http://haml.info/) - A good introduction that does a much better job of explaining how beneficial HAML can be.
+- [What is HAML?](http://haml.info/) - A good introduction that does a much better job of explaining the benefits of using HAML.
 - [Official Docs](http://www.ruby-doc.org/core-2.1.1/) - If you'd like to go a little deeper.
