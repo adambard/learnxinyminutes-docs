@@ -3,6 +3,7 @@ language: c++
 filename: learncpp.cpp
 contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
+    - ["Matt Kline", "https://github.com/mrkline"]
 lang: en
 ---
 
