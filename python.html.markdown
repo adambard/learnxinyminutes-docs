@@ -62,15 +62,15 @@ to Python 2.x. Look for another tour of Python 3 soon!
 (1 + 3) * 2  # => 8
 
 # Boolean Operators
-+# Note "and" and "or" are case-sensitive
-+True and False #=> False
-+False or True #=> True
-+
-+# Note using Bool operators with ints
-+0 and 2 #=> 0
-+-5 or 0 #=> -5
-+0 == False #=> True 
-+2 == True #=> False 
+# Note "and" and "or" are case-sensitive
+True and False #=> False
+False or True #=> True
+
+# Note using Bool operators with ints
+0 and 2 #=> 0
+-5 or 0 #=> -5
+0 == False #=> True
+2 == True #=> False
 1 == True #=> True
 
 # negate with not
