@@ -4,7 +4,7 @@ contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
   - ["Xavier Yao", "http://github.com/xavieryao"]
   - ["asaskevich", "http://github.com/asaskevich"]
-filename: coffeescript.coffee
+filename: learncoffee-ru.coffee
 lang: ru-ru
 ---
 
