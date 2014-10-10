@@ -3,6 +3,7 @@ language: coffeescript
 contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
   - ["Xavier Yao", "http://github.com/xavieryao"]
+translators:
   - ["asaskevich", "http://github.com/asaskevich"]
 filename: learncoffee-ru.coffee
 lang: ru-ru
