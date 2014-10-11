@@ -877,4 +877,4 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
  * [ASP.NET Web Forms Tutorials](http://www.asp.net/web-forms/tutorials)
  * [Windows Forms Programming in C#](http://www.amazon.com/Windows-Forms-Programming-Chris-Sells/dp/0321116208)
 
-[C# Coding Conventions](http://msdn.microsoft.com/de-des/library/vstudio/ff926074.aspx)
+[C# Coding Conventions](http://msdn.microsoft.com/de-de/library/vstudio/ff926074.aspx)
