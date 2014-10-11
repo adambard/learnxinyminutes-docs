@@ -763,7 +763,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
 
         // Auch Methoden können als static gekennzeichnet werden, nützlich
         // beispielsweise für Helper-Methoden
-        public static bool DidWeCreateEnoughBycles()
+        public static bool DidWeCreateEnoughBicycles()
         {
             // In einer statischen Methode können wir natürlich auch nur
             // statische Member der Klasse referenzieren
