@@ -458,7 +458,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
 
             // Generics
             var phonebook = new Dictionary<string, string>() {
-                {"Sarah", "212 555 5555"} // Fügt einen Eintrag zum Telefonbuch hinzu
+                {"Resi", "212 555 5555"} // Fügt einen Eintrag zum Telefonbuch hinzu
             };
 
             // Hier könnte man auch unser generisches SetDefault von
