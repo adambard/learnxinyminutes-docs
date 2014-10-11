@@ -59,9 +59,9 @@ namespace Learning
 
             ///////////////////////////////////////////////////
             // Typen & Variablen
-            //
-            // Deklariere eine Variable mit <Typ> <Name>
             ///////////////////////////////////////////////////
+
+            // Deklariere eine Variable mit <Typ> <Name>
 
             // Sbyte - Vorzeichenbehaftete 8-Bit Ganzzahl
             // (-128 <= sbyte <= 127)
@@ -97,7 +97,7 @@ namespace Learning
             // float handelt
 
             // Decimal - ein 128-Bit-Datentyp mit mehr Genauigkeit als andere
-            // Fließkommatypen, und somit bestens geeignet für Berechnung von 
+            // Fließkommatypen, und somit bestens geeignet für Berechnung von
             // Geld- und Finanzwerten
             decimal fooDecimal = 150.3m;
 
@@ -108,7 +108,7 @@ namespace Learning
             char fooChar = 'A';
 
             // Strings - im Gegensatz zu allen vorhergehenden Basistypen, die
-            // alle Werttypen sind ist String ein Referenztyp. Er ist somit
+            // alle Werttypen sind, ist String ein Referenztyp. Er ist somit
             // nullable, Werttypen sind dies nicht.
             string fooString = "\"maskiere\" Anführungszeichen, und füge \n (Umbrüche) und \t (Tabs) hinzu";
             Console.WriteLine(fooString);
@@ -135,7 +135,7 @@ namespace Learning
             // Durch ein vorangestelltes @ lässt sich ein mehrzeiliger String
             // schreiben. Um " zu maskieren benutzt man ""
             string bazString = @"Hier geht es
-zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
+zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
 
             // Die Keywords const oder readonly kennzeichnen eine unveränderliche
             // Variable/Konstante. Die Werte von Konstanten werden übrigens
@@ -167,7 +167,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
             // List<datatype> <var name> = new List<datatype>();
             List<int> intList = new List<int>();
             List<string> stringList = new List<string>();
-            List<int> z = new List<int> { 9000, 1000, 1337 }; // intialize
+            List<int> z = new List<int> { 9000, 1000, 1337 };
             // Die <> kennzeichnen "Generics", mehr dazu unter "Coole Sachen"
 
             // Listen haben keinen Default-Wert.
@@ -217,7 +217,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
 
             // Inkremente
             int i = 0;
-            Console.WriteLine("\n->Inc/Dec-rementation");
+            Console.WriteLine("\n->Inkrement / Dekrement");
             Console.WriteLine(i++); //i = 1. Post-Inkrement
             Console.WriteLine(++i); //i = 2. Pre-Inkrement
             Console.WriteLine(i--); //i = 1. Post-Dekrement
@@ -240,7 +240,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
             }
             else
             {
-                Console.WriteLine("Ich auch nicht");
+                Console.WriteLine("Ich leider auch nicht");
             }
 
             // Ternärer Operator
@@ -286,9 +286,9 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
             // da String IEnumerable bereits implementiert)
 
             // Switch Struktur
-            // Ein Switch funktioniert mit byte, short, char und int Datentypen
+            // Ein Switch funktioniert mit byte, short, char und int Datentypen.
             // Auch Aufzählungstypen können verwendet werden, genau wie
-            // die Klasse String, und ein paar Sonderklassen die Wrapper für
+            // die Klasse String, und ein paar Sonderklassen, die Wrapper für
             // Primitives sind: Character, Byte, Short und Integer
             int month = 3;
             string monthString;
@@ -304,7 +304,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
                     monthString = "März";
                     break;
                 // Man kann für mehrere Fälle auch das selbe Verhalten
-                // definierern. Jeder Block muss aber mit einem break-Statement
+                // definieren. Jeder Block muss aber mit einem break-Statement
                 // abgeschlossen werden. Einzelne Fälle können über
                 // `goto case x` erreicht werden
                 case 6:
@@ -336,7 +336,8 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
             }
 
             // von Integer nach String
-            // Die Klasse Convert stellt Methoden zur Kovertierung von unterschiedlichsten Daten zur Verfügung
+            // Die Klasse Convert stellt Methoden zur Konvertierung von
+            // unterschiedlichsten Daten zur Verfügung:
             Convert.ToString(123); // "123"
             // oder
             tryInt.ToString(); // "123"
@@ -355,7 +356,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
             trek.SpeedUp(3); // Es empfiehlt sich immer Getter und Setter zu benutzen
             trek.Cadence = 100;
 
-            // ToString ist eine Konvention über die man überlicherweiser
+            // ToString ist eine Konvention über die man üblicherweiser
             // Informationen über eine Instanz erhält
             Console.WriteLine("Infos zu trek: " + trek.Info());
 
@@ -395,8 +396,8 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
             return -1;
         }
 
-        // Methoden können überladen werden solange sie eine eindeutige
-        // Signatur haben
+        // Methoden können überladen werden, solange sie eindeutige
+        // Signaturen haben
         public static void MethodSignatures(string maxCount)
         {
         }
@@ -417,7 +418,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
             return result;
         }
 
-        // Über ihr Interface lassen sich die möglichen Typen auch beschränken
+        // Möglichen Typen lassen sich auch über ihr Interface beschränken:
         public static void IterateAndPrint<T>(T toPrint) where T: IEnumerable<int>
         {
             // Da T ein IEnumerable ist können wir foreach benutzen
@@ -441,7 +442,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
 
             // Nullables - perfekt für die Interaktion mit
             // Datenbanken / Rückgabewerten
-            // Jeder Wert (d.h. keine Klassen) kann durch das Nachstellen eines ?s
+            // Jeder Wert (d.h. keine Klassen) kann durch das Nachstellen eines ?
             // nullable gemacht werden: <type>? <var name> = <value>
             int? nullable = null; // Die explizite Langform wäre Nullable<int>
             Console.WriteLine("Mein Nullable: " + nullable);
@@ -451,8 +452,9 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
             // dass die Variable null ist festzulegen.
             int notNullable = nullable ?? 0; // 0
 
-            // Implizit typisierte (dynamische) Variablen
-            // Man kann auch den Compiler den Typ einer Variable bestimmen lassen:
+            // Implizit typisierte Variablen
+            // Man kann auch den Typ einer Variable auch vom Compiler
+            // bestimmen lassen:
             var magic = "magic ist zur Compile-Zeit ein String, folglich geht keine Typsicherheit verloren";
             magic = 9; // funktioniert nicht da magic vom Typ String ist
 
@@ -464,8 +466,8 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
             // Hier könnte man auch unser generisches SetDefault von
             // weiter oben benutzen:
             Console.WriteLine(SetDefault<string,string>(phonebook, "Xaver", "kein Telefon")); // kein Telefon
-            // TKey und TValue müssen nicht angegeben werden, da sie auch implizit
-            // vom Compiler ermittelt werden können
+            // TKey und TValue müssen nicht zwingend angegeben werden, da sie
+            // auch implizit vom Compiler ermittelt werden können
             Console.WriteLine(SetDefault(phonebook, "Resi", "kein Telefon")); // 08822 / 43 67
 
             // Lambdas - konzise Syntax für Inline-Funktionen
@@ -473,11 +475,11 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
             Console.WriteLine(square(3)); // 9
 
             // Disposables - einfaches Management von nicht verwalteten Ressourcen
-            // So gut wie alle Objekte über die auf nicht verwaltete Ressourcen
-            // (Dateien, Geräte, ...) zugreifen implementieren das Interface
+            // So gut wie alle Objekte die auf nicht verwaltete Ressourcen
+            // (Dateien, Geräte, ...) zugreifen, implementieren das Interface
             // IDisposable. Das using Statement stellt sicher dass die vom
             // IDisposable benutzten Ressourcen nach der Benutzung wieder
-            // freigegeben werden
+            // freigegeben werden:
             using (StreamWriter writer = new StreamWriter("log.txt"))
             {
                 writer.WriteLine("Alles bestens!");
@@ -494,7 +496,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
             var responses = new Dictionary<string, string>();
 
             // Für jeden Request wird ein neuer Thread erzeugt, der nächste
-            // Schritt wird erst nach Beendigung aller Requests ausgeführt
+            // Schritt wird erst nach Beendigung aller Tasks ausgeführt
             Parallel.ForEach(websites,
                 // maximal 3 Threads gleichzeitig
                 new ParallelOptions() {MaxDegreeOfParallelism = 3},
@@ -515,7 +517,8 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
 
             // Dynamische Objekte (gut um mit anderen Sprachen zu arbeiten)
             dynamic student = new ExpandoObject();
-            student.FirstName = "Christian"; // hier muss keine Klasse angegeben werden
+            // hier muss keine Klasse angegeben werden
+            student.FirstName = "Christian";
 
             // Einem solchen Objekt kann man sogar Methoden zuordnen.
             // Das Beispiel gibt einen String zurück und erwartet einen String
@@ -567,12 +570,14 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
             // LINQ-Operationen werden "lazy" ausgeführt.
             var db = new BikeRepository();
 
-            // Die verzögerte Ausführung ist super für Datenbankabfragen
+            // Die verzögerte Ausführung ist optimal für Datenbankabfragen
             var filter = db.Bikes.Where(b => b.HasTassles); // noch keine Abfrage
             // Es können noch mehr Filter hinzugefügt werden (auch mit
             // Bedingungen) - ideal für z.B. "erweiterte Suchen"
             if (42 > 6)
+            {
                 filter = filter.Where(b => b.IsBroken); // immer noch keine Abfrage
+            }
 
             var query = filter
                 .OrderBy(b => b.Wheels)
@@ -601,7 +606,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
         }
     }
 
-    // Syntax zur Deklaration einer Klasse
+    // Syntax zur Deklaration einer Klasse:
     // <public/private/protected/internal> class <class name>{
     //    // Datenfelder, Konstruktoren und Methoden leben alle
     //    // innerhalb dieser Deklaration
@@ -644,7 +649,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
                     // Man kann aber natürlich auch das Keyword private benutzen.
         private string Name { get; set; }
 
-        // Ein Enum ist ein klar definierter Satz an benannten Konstanten
+        // Ein Enum ist ein klar definierter Satz an benannten Konstanten.
         // Eigentlich ordnet es diese Konstanten nur bestimmten Werten zu
         // (einer int-Zahl, solange nicht anders angegeben). Mögliche Typen für
         // die Werte eines Enums sind byte, sbyte, short, ushort, int, uint,
@@ -656,8 +661,8 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
             Bianchi = 42, // so kann man den Wert explizit setzen
             Kynast // 43
         }
-        // Nachdem dieser Typ in der Klasse "Bicycle" definiert ist
-        // sollte Code ausserhalb der Klasse den Typen als Bicycle referenzieren
+        // Nachdem dieser Typ in der Klasse "Bicycle" definiert ist,
+        // sollte Code ausserhalb der Klasse den Typen als Bicycle.Brand referenzieren
 
         // Nachdem das Enum deklariert ist, können wir den Typen verwenden:
         public BikeBrand Brand;
@@ -665,7 +670,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
         // Als static gekennzeichnete Member gehören dem Typ selbst,
         // nicht seinen Instanzen. Man kann sie also ohne Referenz zu einem
         // Objekt benutzen
-        Console.WriteLine("Schon " + Bicycle.bicyclesCreated + " Fahrräder, nur für dieses Tutorial!");
+        Console.WriteLine("Schon " + Bicycle.BicyclesCreated + " Fahrräder, nur für dieses Tutorial!");
         static public int BicyclesCreated = 0;
 
         // readonly-Werte werden zur Laufzeit gesetzt
@@ -673,7 +678,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
         // festgelegt werden
         readonly bool _hasCardsInSpokes = false; // readonly und private
 
-        // Konstruktoren bestimmen was bei einer Instantiierung passiert
+        // Konstruktoren bestimmen was bei einer Instantiierung passiert.
         // Das ist ein Default-Konstruktor:
         public Bicycle()
         {
@@ -727,8 +732,8 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
 
         // Eigenschaften mit get/set
         // wenn es nur um den Zugriff auf Daten geht ist eine Eigenschaft zu
-        // empfehlen. Diese können Getter und Setter haben, oder auch nur Getter
-        // bzw. Setter
+        // empfehlen. Diese können Getter und Setter haben, oder auch nur 
+        // einen Getter bzw. einen Setter
         private bool _hasTassles; // private Variable
         public bool HasTassles // öffentliches Interface
         {
@@ -738,7 +743,8 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
 
         // Das kann man auch kürzer schreiben:
         // Dieser Syntax erzeugt automatisch einen hinterlegten Wert,
-        // der gesetzt bzw. zurückgegeben wird:
+        // (entsprechend `private bool _isBroken`) der gesetzt
+        // bzw. zurückgegeben wird:
         public bool IsBroken { get; private set; }
         public int FrameSize
         {
@@ -763,7 +769,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
 
         // Auch Methoden können als static gekennzeichnet werden, nützlich
         // beispielsweise für Helper-Methoden
-        public static bool DidWeCreateEnoughBicycles()
+        public static bool DidWeCreateEnoughBicyclesYet()
         {
             // In einer statischen Methode können wir natürlich auch nur
             // statische Member der Klasse referenzieren
@@ -807,7 +813,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
     }
 
     // Interfaces (auch Schnittstellen genant) definieren nur die Signaturen
-    // ihrer Member, enthalten aber auf keinen Fall ihre Implementierung.
+    // ihrer Member, enthalten aber auf keinen Fall ihre Implementierung:
     interface IJumpable
     {
         // Alle Member eines Interfaces sind implizit public
@@ -840,7 +846,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
         }
     }
 
-    // Stellt eine Datenbankverbindung für das LinqToSql-Beispiel her.
+    // Das hier stellt eine Datenbankverbindung für das LinqToSql-Beispiel her.
     // EntityFramework Code First ist großartig (ähnlich wie Ruby's ActiveRecord, aber bidirektional)
     // http://msdn.microsoft.com/de-de/data/jj193542.aspx
     public class BikeRepository : DbSet
