@@ -330,7 +330,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
             // TryParse gibt bei einem Fehler den Default-Wert zurück
             // (im Fall von int: 0)
             int tryInt;
-            if (int.TryParse("123", out tryInt)) // Function is boolean
+            if (int.TryParse("123", out tryInt)) // gibt true oder false zurück
             {
                 Console.WriteLine(tryInt);       // 123
             }
@@ -458,7 +458,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
 
             // Generics
             var phonebook = new Dictionary<string, string>() {
-                {"Resi", "212 555 5555"} // Fügt einen Eintrag zum Telefonbuch hinzu
+                {"Resi", "08822 / 43 67"} // Fügt einen Eintrag zum Telefonbuch hinzu
             };
 
             // Hier könnte man auch unser generisches SetDefault von
@@ -466,7 +466,7 @@ zur nächsten Zeile ""Wahnsinn!"", die Massen waren kaum zu halten";
             Console.WriteLine(SetDefault<string,string>(phonebook, "Xaver", "kein Telefon")); // kein Telefon
             // TKey und TValue müssen nicht angegeben werden, da sie auch implizit
             // vom Compiler ermittelt werden können
-            Console.WriteLine(SetDefault(phonebook, "Resi", "kein Telefon")); // 212 555 5555
+            Console.WriteLine(SetDefault(phonebook, "Resi", "kein Telefon")); // 08822 / 43 67
 
             // Lambdas - konzise Syntax für Inline-Funktionen
             Func<int, int> square = (x) => x * x; // Das letzte Element vom Typ T ist der Rückgabewert
