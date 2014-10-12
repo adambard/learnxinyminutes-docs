@@ -60,7 +60,7 @@ math =
 #  "cube": function(x) { return x * square(x); }
 #}
 
-# Функции:
+# Многоточия:
 race = (winner, runners...) ->
   print winner, runners
 #=>race = function() {
@@ -73,7 +73,7 @@ race = (winner, runners...) ->
 alert "Так и знал!" if elvis?
 #=> if(typeof elvis !== "undefined" && elvis !== null) { alert("Так и знал!"); }
 
-# Понимание массивов:
+# Итерации по массивам:
 cubes = (math.cube num for num in list) 
 #=>cubes = (function() {
 #	var _i, _len, _results;
