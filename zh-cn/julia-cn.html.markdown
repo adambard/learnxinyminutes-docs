@@ -1,5 +1,5 @@
 ---
-language: julia
+language: Julia
 filename: learn-julia-zh.jl
 contributors:
     - ["Jichao Ouyang", "http://oyanglul.us"]

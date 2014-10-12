@@ -1,5 +1,5 @@
 ---
-language: lua
+language: Lua
 category: language
 contributors:
     - ["Tyler Neylon", "http://tylerneylon.com/"]
