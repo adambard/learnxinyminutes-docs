@@ -1,12 +1,11 @@
 ---
 language: Scala
-filename: learnscala.scala
 contributors:
     - ["George Petrov", "http://github.com/petrovg"]
     - ["Dominic Bou-Samra", "http://dbousamra.github.com"]
 translators:
-	- ["Anne-Catherine Dehier", "https://github.com/spellart"]
-filename: learn.scala
+    - ["Anne-Catherine Dehier", "https://github.com/spellart"]
+filename: learnscala-fr.scala
 lang: fr-fr
 ---
 
