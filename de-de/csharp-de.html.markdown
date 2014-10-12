@@ -8,6 +8,7 @@ contributors:
 translators:
     - ["Frederik Ring", "https://github.com/m90"]
 filename: LearnCSharp-de.cs
+lang: de-de
 ---
 C# ist eine elegante, typsichere und objektorientierte Sprache, mit der Entwickler eine Vielzahl sicherer und robuster Anwendungen erstellen können, die im .NET Framework ausgeführt werden.
 
@@ -16,7 +17,7 @@ C# ist eine elegante, typsichere und objektorientierte Sprache, mit der Entwickl
 ```c#
 // Einzeilige Kommentare starten mit zwei Schrägstrichen: //
 /*
-Mehrzeile Kommentare wie in C mit /* */
+Mehrzeile Kommentare wie in C Schrägstrich / Stern
 */
 /// <summary>
 /// XML-Kommentare können zur automatisierten Dokumentation verwendet werden
@@ -41,21 +42,21 @@ namespace Learning
     // handhaben führt aber unweigerlich ins Chaos (wirklich)!
     public class LearnCSharp
     {
-        // Zuerst kommen hier Syntax-Grundlagen,
-        // wenn du bereits Java oder C++ programmieren kannst,
+        // Zuerst erklärt dieses Tutorial die Syntax-Grundlagen,
+        // wenn du bereits Java oder C++ programmieren kannst:
         // lies bei "Interessante Features" weiter!
         public static void Syntax()
         {
-            // Mit Console.WriteLine kannst du einfachen Text ausgeben
-            Console.WriteLine("Hello World");
+            // Mit Console.WriteLine kannst du einfachen Text ausgeben:
+            Console.WriteLine("Hallo Welt");
             Console.WriteLine(
                 "Integer: " + 10 +
                 " Double: " + 3.14 +
                 " Boolean: " + true);
 
             // Console.Write erzeugt keinen Zeilenumbruch
-            Console.Write("Hello ");
-            Console.Write("World");
+            Console.Write("Hallo ");
+            Console.Write("Welt");
 
             ///////////////////////////////////////////////////
             // Typen & Variablen
@@ -96,9 +97,9 @@ namespace Learning
             // Das nachgestellte f zeigt an dass es sich um einen Wert vom Typ
             // float handelt
 
-            // Decimal - ein 128-Bit-Datentyp mit mehr Genauigkeit als andere
-            // Fließkommatypen, und somit bestens geeignet für Berechnung von
-            // Geld- und Finanzwerten
+            // Decimal - ein 128-Bit-Datentyp mit größerer Genauigkeit als
+            // andere Fließkommatypen, und somit bestens geeignet für
+            // die Berechnung von Geld- und Finanzwerten
             decimal fooDecimal = 150.3m;
 
             // Boolean - true & false
@@ -108,20 +109,20 @@ namespace Learning
             char fooChar = 'A';
 
             // Strings - im Gegensatz zu allen vorhergehenden Basistypen, die
-            // alle Werttypen sind, ist String ein Referenztyp. Er ist somit
-            // nullable, Werttypen sind dies nicht.
+            // alle Werttypen sind, ist String ein Referenztyp. Strings sind
+            // somit nullable, Werttypen sind dies nicht.
             string fooString = "\"maskiere\" Anführungszeichen, und füge \n (Umbrüche) und \t (Tabs) hinzu";
             Console.WriteLine(fooString);
 
-            // Jeder Buchstabe eines Strings kann über seinen Index referenziert
-            // werden:
+            // Jeder Buchstabe eines Strings kann über seinen Index
+            // referenziert werden:
             char charFromString = fooString[1]; // => 'e'
             // Strings sind unveränderlich:
             // `fooString[1] = 'X';` funktioniert nicht
 
             // Ein Vergleich zweier Strings, unter Berücksichtigung der
-            // aktuellen sprachspezifischen Gegebenheiten (also z.B. a,ä,b,c in
-            // deutschsprachigen Umgebungen), und ohne Beachtung von
+            // aktuellen, sprachspezifischen Gegebenheiten (also z.B. a,ä,b,c
+            // in deutschsprachigen Umgebungen), und ohne Beachtung von
             // Groß- und Kleinschreibung:
             string.Compare(fooString, "x", StringComparison.CurrentCultureIgnoreCase);
 
@@ -137,9 +138,9 @@ namespace Learning
             string bazString = @"Hier geht es
 zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
 
-            // Die Keywords const oder readonly kennzeichnen eine unveränderliche
-            // Variable/Konstante. Die Werte von Konstanten werden übrigens
-            // bereits zur Compile-Zeit berechnet.
+            // Die Keywords const oder readonly kennzeichnen eine
+            // unveränderliche Variable/Konstante. Die Werte von Konstanten
+            // werden übrigens bereits zur Compile-Zeit berechnet.
             const int HOURS_I_WORK_PER_WEEK = 9001;
 
             ///////////////////////////////////////////////////
@@ -147,10 +148,10 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
             ///////////////////////////////////////////////////
 
             // Arrays - Index beginnt bei Null
-            // Die Größe des Arrays wird bei der Deklaration festgelegt
+            // Die Größe des Arrays wird bei der Deklaration festgelegt.
             // Die syntaktische Struktur um ein neues Array zu erzeugen sieht
             // folgendermaßen aus:
-            // <datatype>[] <var name> = new <datatype>[<array size>];
+            // <datatype>[] <varname> = new <datatype>[<array size>];
             int[] intArray = new int[10];
 
             // Arrays können auch über ein Array-Literal deklariert werden:
@@ -158,13 +159,13 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
 
             // Indizierung eines Arrays - Zugriff auf ein bestimmtes Element
             Console.WriteLine("intArray @ 0: " + intArray[0]);
-            // Arrays sind nicht veränderbar
+            // Arrays sind veränderbar
             intArray[1] = 1;
 
             // Listen
-            // Durch ihre größere Flexibilität kommen Listen weit häufiger
-            // zum Einsatz als Arrays. Eine Liste wird so deklariert:
-            // List<datatype> <var name> = new List<datatype>();
+            // Durch ihre größere Flexibilität kommen Listen in C# weit
+            // häufiger zum Einsatz als Arrays. Eine Liste wird so deklariert:
+            // List<datatype> <varname> = new List<datatype>();
             List<int> intList = new List<int>();
             List<string> stringList = new List<string>();
             List<int> z = new List<int> { 9000, 1000, 1337 };
@@ -189,6 +190,7 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
             Console.WriteLine("\n->Operatoren");
 
             // kurze Schreibweise um mehrere Deklarationen zusammenzufassen:
+            // (Benutzung vom C# Styleguide aber ausdrücklich abgeraten!)
             int i1 = 1, i2 = 2;
 
             // Arithmetik funktioniert wie erwartet:
@@ -246,13 +248,13 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
             // Ternärer Operator
             // Anstatt eines einfachen if/else lässt sich auch folgendes schreiben:
             // <condition> ? <true> : <false>
-            string isTrue = (true) ? "Ja" : "Nein";
+            string isTrue = true ? "Ja" : "Nein";
 
             // while-Schleife
             int fooWhile = 0;
             while (fooWhile < 100)
             {
-                //Wird 100mal wiederholt, fooWhile 0->99
+                // Wird 100mal wiederholt, fooWhile 0->99
                 fooWhile++;
             }
 
@@ -260,14 +262,14 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
             int fooDoWhile = 0;
             do
             {
-                //Wird 100mal wiederholt, fooDoWhile 0->99
+                // Wird 100mal wiederholt, fooDoWhile 0->99
                 fooDoWhile++;
             } while (fooDoWhile < 100);
 
             //for-Schleifen => for(<start_statement>; <conditional>; <step>)
             for (int fooFor = 0; fooFor < 10; fooFor++)
             {
-                //Wird 10mal wiederholt, fooFor 0->9
+                // Wird 10mal wiederholt, fooFor 0->9
             }
 
             // foreach-Schleife
@@ -358,11 +360,11 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
 
             // ToString ist eine Konvention über die man üblicherweiser
             // Informationen über eine Instanz erhält
-            Console.WriteLine("Infos zu trek: " + trek.Info());
+            Console.WriteLine("Infos zu trek: " + trek.ToString());
 
             // Wir instantiieren ein neues Hochrad
             PennyFarthing funbike = new PennyFarthing(1, 10);
-            Console.WriteLine("Infos zu funbike: " + funbike.Info());
+            Console.WriteLine("Infos zu funbike: " + funbike.ToString());
 
             Console.Read();
         } // Ende der Methode main
@@ -443,7 +445,7 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
             // Nullables - perfekt für die Interaktion mit
             // Datenbanken / Rückgabewerten
             // Jeder Wert (d.h. keine Klassen) kann durch das Nachstellen eines ?
-            // nullable gemacht werden: <type>? <var name> = <value>
+            // nullable gemacht werden: <type>? <varname> = <value>
             int? nullable = null; // Die explizite Langform wäre Nullable<int>
             Console.WriteLine("Mein Nullable: " + nullable);
             bool hasValue = nullable.HasValue; // true wenn nicht null
@@ -502,7 +504,7 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
                 new ParallelOptions() {MaxDegreeOfParallelism = 3},
                 website =>
             {
-                // Hier folgt eine sehr langwierige Operation
+                // Hier folgt eine langwierige, asynchrone Operation
                 using (var r = WebRequest.Create(new Uri(website)).GetResponse())
                 {
                     responses[website] = r.ContentType;
@@ -517,7 +519,7 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
 
             // Dynamische Objekte (gut um mit anderen Sprachen zu arbeiten)
             dynamic student = new ExpandoObject();
-            // hier muss keine Klasse angegeben werden
+            // hier muss keine Typ angegeben werden
             student.FirstName = "Christian";
 
             // Einem solchen Objekt kann man sogar Methoden zuordnen.
@@ -564,7 +566,7 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
             // Ein Traum für die Verarbeitung von großen Datenmengen
             // auf mehreren Cores!
 
-            // LINQ - bildet Auflistungstypen auf IQueryable<T> Objekte ab
+            // LINQ - bildet einen Datenspeicher auf IQueryable<T> Objekte ab
             // LinqToSql beispielsweise speichert und liest aus einer
             // SQL-Datenbank, LinqToXml aus einem XML-Dokument.
             // LINQ-Operationen werden "lazy" ausgeführt.
@@ -629,7 +631,7 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
         }
         private int _cadence;
 
-        // Das Keyword protected macht das Member nur für die Klasse selbst,
+        // Das Keyword protected macht das Member nur für die Klasse selbst
         // und ihre Subklassen zugänglich
         protected virtual int Gear
         {
@@ -670,7 +672,7 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
         // Als static gekennzeichnete Member gehören dem Typ selbst,
         // nicht seinen Instanzen. Man kann sie also ohne Referenz zu einem
         // Objekt benutzen
-        Console.WriteLine("Schon " + Bicycle.BicyclesCreated + " Fahrräder, nur für dieses Tutorial!");
+        // Console.WriteLine("Schon " + Bicycle.BicyclesCreated + " Fahrräder, nur für dieses Tutorial!");
         static public int BicyclesCreated = 0;
 
         // readonly-Werte werden zur Laufzeit gesetzt
@@ -731,8 +733,8 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
         }
 
         // Eigenschaften mit get/set
-        // wenn es nur um den Zugriff auf Daten geht ist eine Eigenschaft zu
-        // empfehlen. Diese können Getter und Setter haben, oder auch nur 
+        // wenn es nur um den Zugriff auf Daten geht, ist eine Eigenschaft zu
+        // empfehlen. Diese können Getter und Setter haben, oder auch nur
         // einen Getter bzw. einen Setter
         private bool _hasTassles; // private Variable
         public bool HasTassles // öffentliches Interface
@@ -756,7 +758,7 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
         }
 
         // Diese Methode gibt eine Reihe an Informationen über das Objekt aus:
-        public virtual string Info()
+        public virtual string ToString()
         {
             return "Gang: " + Gear +
                     " Kadenz: " + Cadence +
@@ -804,7 +806,7 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
             }
         }
 
-        public override string Info()
+        public override string ToString()
         {
             string result = "Hochrad ";
             result += base.ToString(); // ruft die "base"-Version der Methode auf
@@ -847,7 +849,8 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
     }
 
     // Das hier stellt eine Datenbankverbindung für das LinqToSql-Beispiel her.
-    // EntityFramework Code First ist großartig (ähnlich wie Ruby's ActiveRecord, aber bidirektional)
+    // EntityFramework Code First ist großartig
+    // (ähnlich zu Ruby's ActiveRecord, aber bidirektional)
     // http://msdn.microsoft.com/de-de/data/jj193542.aspx
     public class BikeRepository : DbSet
     {
@@ -865,7 +868,7 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
 
  * Flags
  * Attributes
- * Static properties
+ * Statische Eigenschaften
  * Exceptions, Abstraction
  * ASP.NET (Web Forms/MVC/WebMatrix)
  * Winforms
