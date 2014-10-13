@@ -150,7 +150,7 @@ int main()
 
 #include <iostream> // Include for I/O streams
 
-using namespace std;
+using namespace std; // Streams are in the std namespace (standard library)
 
 int main()
 {
@@ -175,7 +175,7 @@ int main()
 // Strings in C++ are objects and have many member functions
 #include <string>
 
-using namespace std; // Strings are in the namespace std (standard library)
+using namespace std; // Strings are also in the namespace std (standard library)
 
 string myString = "Hello";
 string myOtherString = " World";
@@ -210,7 +210,7 @@ string bar = "I am bar";
 
 string& fooRef = foo; // This creates a reference to foo.
 fooRef += ". Hi!"; // Modifies foo through the reference
-cout << foo; // Prints "I am foo. Hi!"
+cout << fooRef; // Prints "I am foo. Hi!"
 
 fooRef = bar; // Error: references cannot be reassigned.
 
@@ -373,6 +373,9 @@ public:
 
     // Overload the += operator
     Point& operator+=(const Point& rhs);
+
+    // It would also make sense to add the - and -= operators,
+    // but we will skip those for brevity.
 };
 
 Point Point::operator+(const Point& rhs) const
