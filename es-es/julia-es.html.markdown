@@ -1,8 +1,9 @@
 ---
-language: julia
+language: Julia
 contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
-    - ["Guillermo Garza" ]
+translators:
+    - ["Guillermo Garza", "http://github.com/ggarza"]
 filename: learnjulia-es.jl
 lang: es-es
 ---

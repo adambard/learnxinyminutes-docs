@@ -1,5 +1,5 @@
 ---
-language: lua
+language: Lua
 lang: zh-cn
 contributors: 
     - ["Tyler Neylon", "http://tylerneylon.com/"]
