@@ -1,5 +1,5 @@
 ---
-language: php
+language: PHP
 filename: learnphp-tr.php
 contributors:
     - ["Malcolm Fell", "http://emarref.net/"]

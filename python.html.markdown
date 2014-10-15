@@ -3,6 +3,7 @@ language: python
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "http://aminbandali.com"]
+    - ["Andre Polykanine", "https://github.com/Oire"]
 filename: learnpython.py
 ---
 
@@ -54,19 +55,22 @@ to Python 2.x. Look for another tour of Python 3 soon!
 # Modulo operation
 7 % 3 # => 1
 
+# Exponentiation (x to the y'th power)
+2**4 # => 16
+
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
 
 # Boolean Operators
-+# Note "and" and "or" are case-sensitive
-+True and False #=> False
-+False or True #=> True
-+
-+# Note using Bool operators with ints
-+0 and 2 #=> 0
-+-5 or 0 #=> -5
-+0 == False #=> True 
-+2 == True #=> False 
+# Note "and" and "or" are case-sensitive
+True and False #=> False
+False or True #=> True
+
+# Note using Bool operators with ints
+0 and 2 #=> 0
+-5 or 0 #=> -5
+0 == False #=> True
+2 == True #=> False
 1 == True #=> True
 
 # negate with not

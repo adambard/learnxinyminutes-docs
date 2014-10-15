@@ -255,8 +255,8 @@ fn main() {
 ## Further reading
 
 There’s a lot more to Rust—this is just the basics of Rust so you can
-understand the most important things. To learn more about Rust, read the
-[Rust tutorial](http://doc.rust-lang.org/tutorial.html) and check out the
+understand the most important things. To learn more about Rust, read [The Rust
+Guide](http://doc.rust-lang.org/guide.html) and check out the
 [/r/rust](http://reddit.com/r/rust) subreddit. The folks on the #rust channel
 on irc.mozilla.org are also always keen to help newcomers.
 

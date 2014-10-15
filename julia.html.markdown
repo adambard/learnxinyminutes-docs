@@ -1,5 +1,5 @@
 ---
-language: julia
+language: Julia
 contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
 filename: learnjulia.jl

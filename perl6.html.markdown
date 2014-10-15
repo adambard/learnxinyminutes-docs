@@ -64,7 +64,7 @@ say "Interpolate an array using [] : @array[]";
 
 my @keys = 0, 2;
 @array[@keys] = @letters; # Assign using an array
-say @array; #=> a 2 b
+say @array; #=> a 6 b
 
 # There are two more kinds of lists: Parcel and Arrays.
 # Parcels are immutable lists (you can't modify a list that's not assigned).
