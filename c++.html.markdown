@@ -263,7 +263,7 @@ public:
     // Along with constructors, C++ provides destructors.
     // These are called when an object is deleted or falls out of scope.
     // This enables powerful paradigms such as RAII
-    // (http://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization)
+    // (see below)
     // Destructors must be virtual to allow classes to be derived from this one.
     virtual ~Dog();
 
@@ -427,6 +427,134 @@ catch (const std::exception& ex)
     std::cout << "Unknown exception caught";
     throw; // Re-throws the exception
 }
+
+///////
+// RAII
+///////
+
+// RAII stands for Resource Allocation Is Initialization.
+// It is often considered the most powerful paradigm in C++,
+// and is the simple concept that a constructor for an object
+// acquires that object's resources and the destructor releases them.
+
+// To understand how this is useful,
+// consider a function that uses a C file handle:
+void doSomethingWithAFile(const char* filename)
+{
+    // To begin with, assume nothing can fail.
+
+    FILE* fh = fopen(filename, "r"); // Open the file in read mode.
+
+    doSomethingWithTheFile(fh);
+    doSomethingElseWithIt(fh);
+
+    fclose(fh); // Close the file handle.
+}
+
+// Unfortunately, things are quickly complicated by error handling.
+// Suppose fopen can fail, and that doSomethingWithTheFile and
+// doSomethingElseWithIt return error codes if they fail.
+// (Exceptions are the preferred way of handling failure,
+//  but some programmers, especially those with a C background,
+//  disagree on the utility of exceptions).
+// We now have to check each call for failure and close the file handle
+// if a problem occurred.
+bool doSomethingWithAFile(const char* filename)
+{
+    FILE* fh = fopen(filename, "r"); // Open the file in read mode
+    if (fh == nullptr) // The returned pointer is null on failure.
+        reuturn false; // Report that failure to the caller.
+
+    // Assume each function returns false if it failed
+    if (!doSomethingWithTheFile(fh)) {
+        fclose(fh); // Close the file handle so it doesn't leak.
+        return false; // Propagate the error.
+    }
+    if (!doSomethingElseWithIt(fh)) {
+        fclose(fh); // Close the file handle so it doesn't leak.
+        return false; // Propagate the error.
+    }
+
+    fclose(fh); // Close the file handle so it doesn't leak.
+    return true; // Indicate success
+}
+
+// C programmers often clean this up a little bit using goto:
+bool doSomethingWithAFile(const char* filename)
+{
+    FILE* fh = fopen(filename, "r");
+    if (fh == nullptr)
+        reuturn false;
+
+    if (!doSomethingWithTheFile(fh))
+        goto failure;
+
+    if (!doSomethingElseWithIt(fh))
+        goto failure;
+
+    fclose(fh); // Close the file
+    return true; // Indicate success
+
+failure:
+    fclose(fh);
+    return false; // Propagate the error
+}
+
+// If the functions indicate errors using exceptions,
+// things are a little cleaner, but still sub-optimal.
+void doSomethingWithAFile(const char* filename)
+{
+    FILE* fh = fopen(filename, "r"); // Open the file in read mode
+    if (fh == nullptr)
+        throw std::exception("Could not open the file.");
+
+    try {
+        doSomethingWithTheFile(fh);
+        doSomethingElseWithIt(fh);
+    }
+    catch (...) {
+        fclose(fh); // Be sure to close the file if an error occurs.
+        throw; // Then re-throw the exception.
+    }
+
+    fclose(fh); // Close the file
+    // Everything succeeded
+}
+
+// Compare this to the use of C++'s file stream class (fstream)
+// fstream uses its destructor to close the file.
+// Recall from above that destructors are automatically called
+// whenver an object falls out of scope.
+void doSomethingWithAFile(const std::string& filename)
+{
+    // ifstream is short for input file stream
+    std::ifstream fh(filename); // Open the file
+
+    // Do things with the file
+    doSomethingWithTheFile(fh);
+    doSomethingElseWithIt(fh);
+
+} // The file is automatically closed here by the destructor
+
+// This has _massive_ advantages:
+// 1. No matter what happens,
+//    the resource (in this case the file handle) will be cleaned up.
+//    Once you write the destructor correctly,
+//    It is _impossible_ to forget to close the handle and leak the resource.
+// 2. Note that the code is much cleaner.
+//    The destructor handles closing the file behind the scenes
+//    without you having to worry about it.
+// 3. The code is exception safe.
+//    An exception can be thrown anywhere in the function and cleanup
+//    will still occur.
+
+// All idiomatic C++ code uses RAII extensively for all resources.
+// Additional examples include
+// - Memory using unique_ptr and shared_ptr
+// - Containers - the standard library linked list,
+//   vector (i.e. self-resizing array), hash maps, and so on
+//   all automatically destroy their contents when they fall out of scope.
+// - Mutexes using lock_guard and unique_lock
 ```
 Futher Reading:
 
