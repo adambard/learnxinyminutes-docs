@@ -157,13 +157,13 @@ int main()
    int myInt;
 
    // Prints to stdout (or terminal/screen)
-   cout << "Enter your fav number:\n";
+   cout << "Enter your favorite number:\n";
    // Takes in input
    cin >> myInt;
 
    // cout can also be formatted
-   cout << "Your fav number is " << myInt << "\n";
-   // Your fav number is ##
+   cout << "Your favorite number is " << myInt << "\n";
+   // prints "Your favorite number is <myInt>"
 
     cerr << "Used for error messages";
 }
