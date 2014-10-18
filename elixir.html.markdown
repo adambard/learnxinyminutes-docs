@@ -2,6 +2,7 @@
 language: elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
+    - ["Dzianis Dashkevich", "https://github.com/dskecse"]
 filename: learnelixir.ex
 ---
 
@@ -59,7 +60,7 @@ tail #=> [2,3]
 # the tuples have different sizes.
 # {a, b, c} = {1, 2} #=> ** (MatchError) no match of right hand side value: {1,2}
 
-# There's also binaries
+# There are also binaries
 <<1,2,3>> # binary
 
 # Strings and char lists
@@ -108,7 +109,7 @@ div(10, 2) #=> 5
 # To get the division remainder use `rem`
 rem(10, 3) #=> 1
 
-# There's also boolean operators: `or`, `and` and `not`.
+# There are also boolean operators: `or`, `and` and `not`.
 # These operators expect a boolean as their first argument.
 true and true #=> true
 false or true #=> true
@@ -119,7 +120,6 @@ false or true #=> true
 1 || true  #=> 1
 false && 1 #=> false
 nil && 20  #=> nil
-
 !true #=> false
 
 # For comparisons we have: `==`, `!=`, `===`, `!==`, `<=`, `>=`, `<` and `>`
@@ -165,12 +165,12 @@ case {:one, :two} do
   {:four, :five} ->
     "This won't match"
   {:one, x} ->
-    "This will match and assign `x` to `:two`"
+    "This will match and bind `x` to `:two`"
   _ ->
     "This will match any value"
 end
 
-# It's common practice to assign a value to `_` if we don't need it.
+# It's common to bind the value to `_` if we don't need it.
 # For example, if only the head of a list matters to us:
 [head | _] = [1,2,3]
 head #=> 1
@@ -190,7 +190,7 @@ cond do
     "But I will"
 end
 
-# It is common to see a last condition equal to `true`, which will always match.
+# It is common to see the last condition equal to `true`, which will always match.
 cond do
   1 + 1 == 3 ->
     "I will never be seen"
@@ -301,7 +301,7 @@ end
 Recursion.sum_list([1,2,3], 0) #=> 6
 
 # Elixir modules support attributes, there are built-in attributes and you
-# may also add custom attributes.
+# may also add custom ones.
 defmodule MyMod do
   @moduledoc """
   This is a built-in attribute on a example module.
@@ -312,21 +312,24 @@ defmodule MyMod do
 end
 
 ## ---------------------------
-## -- Records and Exceptions
+## -- Structs and Exceptions
 ## ---------------------------
 
-# Records are basically structures that allow you to associate a name with
-# a particular value.
-defrecord Person, name: nil, age: 0, height: 0
+# Structs are extensions on top of maps that bring default values,
+# compile-time guarantees and polymorphism into Elixir.
+defmodule Person do
+  defstruct name: nil, age: 0, height: 0
+end
 
-joe_info = Person.new(name: "Joe", age: 30, height: 180)
-#=> Person[name: "Joe", age: 30, height: 180]
+joe_info = %Person{ name: "Joe", age: 30, height: 180 }
+#=> %Person{age: 30, height: 180, name: "Joe"}
 
 # Access the value of name
 joe_info.name #=> "Joe"
 
 # Update the value of age
-joe_info = joe_info.age(31) #=> Person[name: "Joe", age: 31, height: 180]
+older_joe_info = %{ joe_info | age: 31 }
+#=> %Person{age: 31, height: 180, name: "Joe"}
 
 # The `try` block with the `rescue` keyword is used to handle exceptions
 try do
@@ -394,5 +397,7 @@ self() #=> #PID<0.27.0>
 
 * [Getting started guide](http://elixir-lang.org/getting_started/1.html) from [elixir webpage](http://elixir-lang.org)
 * [Elixir Documentation](http://elixir-lang.org/docs/master/)
+* ["Programming Elixir"](https://pragprog.com/book/elixir/programming-elixir) by Dave Thomas
+* [Elixir Cheat Sheet](http://media.pragprog.com/titles/elixir/ElixirCheat.pdf)
 * ["Learn You Some Erlang for Great Good!"](http://learnyousomeerlang.com/) by Fred Hebert
-* "Programming Erlang: Software for a Concurrent World" by Joe Armstrong
+* ["Programming Erlang: Software for a Concurrent World"](https://pragprog.com/book/jaerlang2/programming-erlang) by Joe Armstrong
