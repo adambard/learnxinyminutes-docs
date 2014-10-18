@@ -1,26 +1,36 @@
 ---
 language: haml
-filename: learnhaml.html.haml
+filename: learnhaml.haml
 contributors:
   - ["Simon Neveu", "https://github.com/sneveu"]
 ---
 
-Haml is a markup language predominantly used with Ruby that cleanly 
-and simply describes the HTML of any web document without the use of
-inline code. It is a popular alternative to using rails templating 
-language (.erb) and allows you to embed ruby code into your markup.
+Haml is a markup language predominantly used with Ruby that cleanly and simply describes the HTML of any web document without the use of inline code. It is a popular alternative to using Rails templating language (.erb) and allows you to embed Ruby code into your markup.
 
-It aims to reduce repetition in your markup by closing tags for you
-based on the structure of the indents in your code. The result is
-markup that is well-structured, DRY, logical, and easier to read.
+It aims to reduce repetition in your markup by closing tags for you based on the structure of the indents in your code. The result is markup that is well-structured, DRY, logical, and easier to read.
+
+You can also use Haml on a project independent of Ruby, by installing the Haml gem on your machine and using the command line to convert it to html.
+
+$ haml input_file.haml output_file.html
 
 
 ```haml
 / -------------------------------------------
+/ Indenting
+/ -------------------------------------------
+
+/
+  Because of the importance indentation has on how your code is rendered, the
+  indents should be consistent throughout the document. Any differences in
+  indentation will throw an error. It's common-practice to use two spaces,
+  but it's really up to you, as long as they're constant.
+
+
+/ -------------------------------------------
 / Comments
 / -------------------------------------------
 
-/ This is what a comment looks like haml.
+/ This is what a comment looks like in Haml.
 
 /
   To write a multi line comment, indent your commented code to be
@@ -45,7 +55,7 @@ markup that is well-structured, DRY, logical, and easier to read.
     </header>
   </body>
 
-/ Divs are the default elements so they can be written simply like this
+/ The div tag is the default element, so they can be written simply like this
 .foo
 
 / To add content to a tag, add the text directly after the declaration
@@ -56,11 +66,15 @@ markup that is well-structured, DRY, logical, and easier to read.
   This is a lot of content that we could probably split onto two
   separate lines.
 
-/ You can escape html by using the ampersand and equals sign ( &= )
+/ 
+  You can escape html by using the ampersand and equals sign ( &= ). This
+  converts html-sensitive characters (&, /, :) into their html encoded
+  equivalents. For example
+
 %p
   &= "Yes & yes"
 
-/ which would output 'Yes &amp; yes'
+/ would output 'Yes &amp; yes'
 
 / You can unescape html by using the bang and equals sign ( != )
 %p
@@ -68,10 +82,10 @@ markup that is well-structured, DRY, logical, and easier to read.
 
 / which would output 'This is how you write a paragraph tag <p></p>'
 
-/ Classes can be added to your tags either by chaining .classnames to the tag
+/ CSS classes can be added to your tags either by chaining .classnames to the tag
 %div.foo.bar
 
-/ or as part of a ruby hash
+/ or as part of a Ruby hash
 %div{:class => 'foo bar'}
 
 / Attributes for any tag can be added in the hash
@@ -80,7 +94,7 @@ markup that is well-structured, DRY, logical, and easier to read.
 / For boolean attributes assign the value 'true'
 %input{:selected => true}
 
-/ To write data-attributes, use the :data key with it's value as another hash
+/ To write data-attributes, use the :data key with its value as another hash
 %div{:data => {:attribute => 'foo'}}
 
 
@@ -89,8 +103,8 @@ markup that is well-structured, DRY, logical, and easier to read.
 / -------------------------------------------
 
 / 
-  To output a ruby value as the contents of a tag, use an equals sign followed
-  by the ruby code
+  To output a Ruby value as the contents of a tag, use an equals sign followed
+  by the Ruby code
 
 %h1= book.name
 
@@ -99,10 +113,10 @@ markup that is well-structured, DRY, logical, and easier to read.
   = book.publisher
 
 
-/ To run some ruby code without rendering it to the html, use a hyphen instead
+/ To run some Ruby code without rendering it to the html, use a hyphen instead
 - books = ['book 1', 'book 2', 'book 3']
 
-/ Allowing you to do all sorts of awesome, like ruby blocks
+/ Allowing you to do all sorts of awesome, like Ruby blocks
 - books.shuffle.each_with_index do |book, index|
   %h1= book
 
@@ -110,7 +124,7 @@ markup that is well-structured, DRY, logical, and easier to read.
     %p This is a book
 
 /
-  Again, no need to add the closing tags to the block, even for the ruby.
+  Again, no need to add the closing tags to the block, even for the Ruby.
   Indentation will take care of that for you.
 
 
@@ -118,7 +132,7 @@ markup that is well-structured, DRY, logical, and easier to read.
 / Inline Ruby / Ruby interpolation
 / -------------------------------------------
 
-/ Include a ruby variable in a line of plain text using #{}
+/ Include a Ruby variable in a line of plain text using #{}
 %p Your highest scoring game is #{best_game}
 
 
@@ -127,7 +141,7 @@ markup that is well-structured, DRY, logical, and easier to read.
 / -------------------------------------------
 
 /
-  Use the colon to define haml filters, one example of a filter you can 
+  Use the colon to define Haml filters, one example of a filter you can 
   use is :javascript, which can be used for writing inline js
 
 :javascript
