@@ -93,7 +93,7 @@ let inc_int (x: int) : int = x + 1 ;;
 (* You need to mark recursive function definitions as such with "rec" keyword. *)
 let rec factorial n =
     if n = 0 then 1
-    else factorial n * factorial (n-1)
+    else n * factorial (n-1)
 ;;
 
 (* Function application usually doesn't need parentheses around arguments *)
