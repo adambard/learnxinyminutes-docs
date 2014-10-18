@@ -27,6 +27,9 @@ import UIKit
 
 println("Hello, world")
 
+// variables (var) value can change after being set
+// constants (let) value can NOT be changed after being set
+
 var myVariable = 42
 let øπΩ = "value" // unicode variable names
 let π = 3.1415926
@@ -38,7 +41,29 @@ let intValue = 0007 // 7
 let largeIntValue = 77_000 // 77000
 let label = "some text " + String(myVariable) // Casting
 let piText = "Pi = \(π), Pi 2 = \(π * 2)" // String interpolation
+
+// Build Specific values
+// uses -D build configuration
+#if false
+    println("Not printed")
+    let buildValue = 3
+#else
+    let buildValue = 7
+#endif
+println("Build value: \(buildValue)") // Build value: 7
+
+/*
+    Optionals are a Swift language feature that allows you to store a `Some` or
+    `None` value.
+    
+    Because Swift requires every property to have a value, even nil must be 
+    explicitly stored as an Optional value.
+
+    Optional<T> is an enum.
+*/
 var someOptionalString: String? = "optional" // Can be nil
+// same as above, but ? is a postfix operator (syntax candy)
+var someOptionalString2: Optional<String> = "optional"
 
 if someOptionalString != nil {
     // I am not nil
@@ -50,11 +75,23 @@ if someOptionalString != nil {
 }
 someOptionalString = nil
 
-if let someStringConstant = someOptionalString {
-    // has Some value
+// implicitly unwrapped optional
+var unwrappedString: String! = "Value is expected."
+// same as above, but ! is a postfix operator (more syntax candy)
+var unwrappedString2: ImplicitlyUnwrappedOptional<String> = "Value is expected."
+
+if let someOptionalStringConstant = someOptionalString {
+    // has `Some` value, non-nil
+    if !someOptionalStringConstant.hasPrefix("ok") {
+        // does not have the prefix
+    }
 }
 
+// Swift has support for storing a value of any type.
 // AnyObject == id
+// Unlike Objective-C `id`, AnyObject works with any value (Class, Int, struct, etc)
+var anyObjectVar: AnyObject = 7
+anyObjectVar = "Changed value to a string, not good practice, but possible."
 
 /*
 Comment here
@@ -67,10 +104,17 @@ Comment here
 // MARK: Collections
 //
 
+/*
+    Array and Dictionary types are structs. So `let` and `var` also indicate
+    that they are mutable (var) or immutable (let) when declaring these types.
+*/
+
 // Array
 var shoppingList = ["catfish", "water", "lemons"]
 shoppingList[1] = "bottle of water"
-let emptyArray = [String]()
+let emptyArray = [String]() // immutable
+var emptyMutableArray = [String]() // mutable
+
 
 // Dictionary
 var occupations = [
@@ -78,7 +122,8 @@ var occupations = [
     "kaylee": "Mechanic"
 ]
 occupations["Jayne"] = "Public Relations"
-let emptyDictionary = [String: Float]()
+let emptyDictionary = [String: Float]() // immutable
+var emptyMutableDictionary = [String: Float]() // mutable
 
 
 //
@@ -162,6 +207,9 @@ func getGasPrices() -> (Double, Double, Double) {
 }
 let pricesTuple = getGasPrices()
 let price = pricesTuple.2 // 3.79
+// Ignore Tuple (or other) values by using _ (underscore)
+let (_, price1, _) = pricesTuple // price1 == 3.69
+println(price1 == pricesTuple.1) // true
 println("Gas price: \(price)")
 
 // Variadic Args
