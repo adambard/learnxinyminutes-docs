@@ -7,12 +7,14 @@ contributors:
 lang: en
 ---
 
-C++ was designed as a systems programming language that
+C++ is a systems programming language that,
+[according to its inventor Bjarne Stroustrup](http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2014/Keynote),
+was designed to
 
-- is a "better C"
-- supports data abstraction
-- supports object-oriented programming
-- supports generic programming
+- be a "better C"
+- support data abstraction
+- support object-oriented programming
+- support generic programming
 
 Though its syntax can be more difficult or complex than newer languages,
 it is widely used because it compiles to native instructions that can be
@@ -32,9 +34,21 @@ one of the most widely-used programming languages.
 
 // A main() function in C++ should return an int,
 // though void main() is accepted by most compilers (gcc, clang, etc.)
-int main() // or int main(int argc, char** argv)
+// This value serves as the program's exit status.
+// See http://en.wikipedia.org/wiki/Exit_status for more information.
+int main(int argc, char** argv)
 {
-    return 0; // Can also end without return statement
+    // Command line arguments are passed in by argc and argv in the same way
+    // they are in C.
+    // argc indicates the number of arguments,
+    // and argv is an array of C-style strings (char*)
+    // representing the arguments.
+    // The first argument is the name by which the program was called.
+    // argc and argv can be omitted if you do not care about arguments,
+    // giving the function signature of int main()
+
+    // An exit status of 0 indicates success.
+    return 0;
 }
 
 // In C++, character literals are one byte.
@@ -82,21 +96,33 @@ void print(int myInt)
 
 int main()
 {
-    printing("Hello"); // Resolves to void print(const char*)
-    printing(15); // Resolves to void print(int)
+    print("Hello"); // Resolves to void print(const char*)
+    print(15); // Resolves to void print(int)
 }
 
 /////////////////////////////
 // Default function arguments
 /////////////////////////////
 
-void two_ints(int a = 1, int b = 4);
+// You can provide default arguments for a function
+// if they are not provided by the caller.
+
+void doSomethingWithInts(int a = 1, int b = 4)
+{
+    // Do something with the ints here
+}
 
 int main()
 {
-    two_ints();      // a = 1,  b = 4
-    two_ints(20);    // a = 20, b = 4
-    two_ints(20, 5); // a = 20, b = 5
+    doSomethingWithInts();      // a = 1,  b = 4
+    doSomethingWithInts(20);    // a = 20, b = 4
+    doSomethingWithInts(20, 5); // a = 20, b = 5
+}
+
+// Default arguments must be at the end of the arguments list.
+
+void invalidDeclaration(int a = 1, int b) // Error!
+{
 }
 
 
@@ -106,7 +132,7 @@ int main()
 
 // Namespaces provide separate scopes for variable, function,
 // and other declarations.
-// Namespaces can be nested
+// Namespaces can be nested.
 
 namespace First {
     namespace Nested {
@@ -362,7 +388,7 @@ public:
     Point() { };
 
     // The following syntax is known as an initialization list
-    // and is the proper way to initialize class member values 
+    // and is the proper way to initialize class member values
     Point (double a, double b) :
         x(a),
         y(b)
