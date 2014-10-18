@@ -126,6 +126,14 @@ render the numbers in order, but this may not be a good idea -->
     * Sub-item
 4. Item four
 
+<!-- There are even task lists. This creates HTML checkboxes. -->
+
+Boxes below without the 'x' are unchecked HTML checkboxes.
+- [ ] First task to complete. 
+- [ ] Second task that needs done
+This checkbox below will be a checked HTML checkbox.
+- [x] This task has been completed
+
 <!-- Code blocks -->
 <!-- You can indicate a code block (which uses the <code> element) by indenting
 a line with four spaces or a tab -->

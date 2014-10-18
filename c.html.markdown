@@ -5,6 +5,7 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
     - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
     - ["Jakub Trzebiatowski", "http://cbs.stgn.pl"]
+    - ["Marco Scannadinari", "https://marcoms.github.io"]
 
 ---
 
@@ -20,6 +21,10 @@ memory management and C will take you as far as you need to go.
   /*
 Multi-line comments look like this. They work in C89 as well.
   */
+
+/*
+Multi-line comments don't nest /* Be careful */  // comment ends on this line...
+*/ // ...not this one!
 
   // Constants: #define <keyword>
 #define DAYS_IN_YEAR 365
@@ -74,10 +79,10 @@ int main() {
   long long x_long_long = 0;
 
   // floats are usually 32-bit floating point numbers
-  float x_float = 0.0;
+  float x_float = 0.0f; // 'f' suffix here denotes floating point literal
 
   // doubles are usually 64-bit floating-point numbers
-  double x_double = 0.0;
+  double x_double = 0.0; // real numbers without any suffix are doubles
 
   // Integral types may be unsigned.
   unsigned short ux_short;

@@ -202,7 +202,7 @@ uniq -d file.txt
 cut -d ',' -f 1 file.txt
 # replaces every occurrence of 'okay' with 'great' in file.txt, (regex compatible)
 sed -i 's/okay/great/g' file.txt
-# print to stdout all lines of file.txt which match some regex, the example prints lines which beginning with "foo" and end in "bar"
+# print to stdout all lines of file.txt which match some regex, the example prints lines which begin with "foo" and end in "bar"
 grep "^foo.*bar$" file.txt
 # pass the option "-c" to instead print the number of lines matching the regex
 grep -c "^foo.*bar$" file.txt
