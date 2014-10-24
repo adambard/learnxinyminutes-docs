@@ -51,7 +51,7 @@ Note: This article applies to Python 3 specifically. Check out the other tutoria
 # 浮点数的运算结果也是浮点数
 3 * 2.0 # => 6.0
 
-# Modulo operation
+# 模除
 7 % 3 # => 1
 
 # x的y次方
@@ -72,7 +72,7 @@ not False  # => True
 True and False #=> False
 False or True #=> True
 
-# 整数也可以是布尔值
+# 整数也可以当作布尔值
 0 and 2 #=> 0
 -5 or 0 #=> -5
 0 == False #=> True
@@ -101,10 +101,10 @@ False or True #=> True
 "这是个字符串"
 '这也是个字符串'
 
-# 用加好连接字符串
+# 用加号连接字符串
 "Hello " + "world!"  # => "Hello world!"
 
-# A string can be treated like a list of characters
+# 字符串可以被当作字符列表
 "This is a string"[0]  # => 'T'
 
 # .format can be used to format strings, like this:
@@ -139,7 +139,7 @@ bool({}) #=> False
 
 
 ####################################################
-## 2. Variables and Collections
+## 2. 变量和集合
 ####################################################
 
 # Python has a print function
@@ -300,7 +300,7 @@ filled_set | other_set   # => {1, 2, 3, 4, 5, 6}
 
 
 ####################################################
-## 3. Control Flow and Iterables
+## 3. 流程控制和迭代器
 ####################################################
 
 # Let's just make a variable
@@ -398,7 +398,7 @@ list(filled_dict.keys())  #=> Returns ["one", "two", "three"]
 
 
 ####################################################
-## 4. Functions
+## 4. 函数
 ####################################################
 
 # Use "def" to create new functions
@@ -490,7 +490,7 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 [x for x in [3, 4, 5, 6, 7] if x > 5]   # => [6, 7]
 
 ####################################################
-## 5. Classes
+## 5. 类
 ####################################################
 
 
@@ -544,7 +544,7 @@ Human.grunt()   # => "*grunt*"
 
 
 ####################################################
-## 6. Modules
+## 6. 模块
 ####################################################
 
 # You can import modules
@@ -575,7 +575,7 @@ dir(math)
 
 
 ####################################################
-## 7. Advanced
+## 7. 高级用法
 ####################################################
 
 # Generators help you make lazy code
