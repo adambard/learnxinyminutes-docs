@@ -42,9 +42,9 @@ Note: This article applies to Python 3 specifically. Check out the other tutoria
 35 / 5  # => 7.0
 5 / 3  # => 1.6666666666666667
 
-# Result of integer division truncated down both for positive and negative.
+# 整数除法的结果都是向下取整
 5 // 3     # => 1
-5.0 // 3.0 # => 1.0 # works on floats too
+5.0 // 3.0 # => 1.0 # 浮点数也可以
 -5 // 3  # => -2
 -5.0 // 3.0 # => -2.0
 
@@ -107,22 +107,20 @@ False or True #=> True
 # 字符串可以被当作字符列表
 "This is a string"[0]  # => 'T'
 
-# .format can be used to format strings, like this:
+# 用.format来格式化字符串
 "{} can be {}".format("strings", "interpolated")
 
-# You can repeat the formatting arguments to save some typing.
+# 可以重复参数以节省时间
 "{0} be nimble, {0} be quick, {0} jump over the {1}".format("Jack", "candle stick")
 #=> "Jack be nimble, Jack be quick, Jack jump over the candle stick"
 
-# You can use keywords if you don't want to count.
+# 如果不想数参数，可以用关键字
 "{name} wants to eat {food}".format(name="Bob", food="lasagna") #=> "Bob wants to eat lasagna"
 
-# If your Python 3 code also needs to run on Python 2.5 and below, you can also
-# still use the old style of formatting:
+# 如果你的Python3程序也要在Python2.5以下环境运行，也可以用老式的格式化语法
 "%s can be %s the %s way" % ("strings", "interpolated", "old")
 
-
-# None is an object
+# None是一个对象
 None  # => None
 
 # Don't use the equality "==" symbol to compare objects to None
@@ -130,8 +128,8 @@ None  # => None
 "etc" is None  # => False
 None is None  # => True
 
-# None, 0, and empty strings/lists/dicts all evaluate to False.
-# All other values are True
+# None，0，空字符串，空列表，空关联数组都算是False
+# 所有其他值都是True
 bool(0)  # => False
 bool("")  # => False
 bool([]) #=> False
