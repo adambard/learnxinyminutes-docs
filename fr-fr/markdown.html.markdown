@@ -1,30 +1,27 @@
 ---
 language: markdown
 contributors:
-    - ["Andrei Curelaru", "http://infinidad.fr/"]
+- ["Andrei Curelaru", "http://www.infinidad.fr"]
 filename: markdown.md
 ---
 
-Markdown a été crée par Jhon Gruber en 2004. Ceci se veut être une syntaxe facile à lire et à écrire, aisément convertible en HTML(et beaucoup d'autres formats aussi à present).
+Markdown a été crée par Jhon Gruber en 2004. Ceci se veut être d'une syntaxe facile à lire et à écrire,
+aisément convertible en HTML(et beaucoup d'autres formats aussi à présent).
 
-Donnez moi autant de retours que vous voulez! 
-Sentez vous libre de forker et envoyer des pull request!
+Faites moi autant de retours que vous voulez! Sentez vous libre de "forker" et envoyer des pull request!
 
 
 ```markdown
-<!-- Markdown is a superset of HTML, so any HTML file is valid Markdown, that
-means we can use HTML elements in Markdown, such as the comment element, and
-they won't be affected by a markdown parser. However, if you create an HTML
-element in your markdown file, you cannot use markdown syntax within that
-element's contents. -->
-
-<!-- Markdown also varies in implementation from one parser to a next. This
-guide will attempt to clarify when features are universal or when they are
-specific to a certain parser. -->
+<!-- Markdown est une sorte de cousin du HTML, si bien que tout document HTML est un document Markdown valide.
+Autrement dit, nous pouvons utiliser des balises HTML dans un fichier Markdown, comme la balise commentaire dans laquelle
+nous sommes à présent, car celle-ci ne sera pas affectée par le parser Markdown.
+Toutefois, si l'on peut créer un élément HTML dans un fichier Markdown, on ne peut utiliser du Markdown à l'intérieur de ce dernier. -->
+<!--  Le Markdown est implémenté de différentes manières, selon le parser(analyseur syntaxique). Ce guide va alors tenter de trier
+les fonctionnalités universelles de celles spécifiques à un parser.  -->
 
 <!-- Headers -->
-<!-- You can create HTML elements <h1> through <h6> easily by prepending the
-text you want to be in that element by a number of hashes (#) -->
+<!-- Vous pouvez facilement créer des éléments HTML <h1> à <h6> en précédant le texte de votre futur titre par un ou plusieurs dièses (#),
+de un à six, selon le niveau de titre souhaité. -->
 # Ceci est un <h1>
 ## Ceci est un <h2>
 ### Ceci est un <h3>
@@ -32,122 +29,125 @@ text you want to be in that element by a number of hashes (#) -->
 ##### Ceci est un <h5>
 ###### Ceci est un <h6>
 
-<!-- Markdown also provides us with two alternative ways of indicating h1 and h2 -->
+<!-- Markdown fournit également une façon alternative de marquer les h1 et h2 -->
 Ceci est un h1
 =============
 
 Ceci est un h2
 -------------
 
-<!-- Simple text styles -->
-<!-- Text can be easily styled as italic or bold using markdown -->
+<!-- Styles basiques pour du texte -->
+<!-- On peut facilement rendre un texte "gras" ou "italique" en Markdown -->
 
-*This text is in italics.*
-_And so is this text._
+*Ce texte est en italique.*
+_Celui-ci aussi._
 
-**This text is in bold.**
-__And so is this text.__
+**CE texte est en gras.**
+__Celui-là aussi.__
 
-***This text is in both.***
-**_As is this!_**
-*__And this!__*
+***Ce texte a les deux styles.***
+**_Pareil ici_**
+*__Et là!__*
 
-<!-- In Github Flavored Markdown, which is used to render markdown files on
-Github, we also have strikethrough: -->
+<!--Dans le  "Github Flavored Markdown", utilisé pour interpréter le Markdown sur Github
+,on a également le strikethrough(texte barré) : -->
 
-~~This text is rendered with strikethrough.~~
+~~Ce texte est barré avec strikethrough.~~
+<!--  Les Paragraphes sont représentés par une ou plusieurs lignes de texte
+séparées par une ou plusieurs lignes vides.   -->
 
-<!-- Paragraphs are a one or multiple adjacent lines of text separated by one or
-multiple blank lines. -->
+Ceci est un paragraphe. J'écris dans un paragraphe, marrant non?
 
-This is a paragraph. I'm typing in a paragraph isn't this fun?
-
-Now I'm in paragraph 2.
-I'm still in paragraph 2 too!
+Maintenant je suis dans le paragraphe 2.
+Je suis toujours dans le paragraphe 2 ici aussi!
 
 
-I'm in paragraph three!
+Puis là, eh oui, le paragraphe3!
 
 <!-- Should you ever want to insert an HTML <br /> tag, you can end a paragraph
 with two or more spaces and then begin a new paragraph. -->
+<!--  
+Si jamais vous souhaitez insérer une balise HTML <br />, vous pouvez ajouter un ou plusieurs espaces
+à la fin de votre paragraphe, et en commencer un nouveau.
+-->
 
-I end with two spaces (highlight me to see them).  
+J'ai deux espaces vides à la fin (sélectionnez moi pour les voir). 
 
-There's a <br /> above me!
+Bigre, il y a un <br /> au dessus de moi!
 
-<!-- Block quotes are easy and done with the > character. -->
+<!-- Les 'Blocs de Citations' sont générés simplement aussi, grâce au caractère >. -->
 
-> This is a block quote. You can either
-> manually wrap your lines and put a `>` before every line or you can let your lines get really long and wrap on their own.
-> It doesn't make a difference so long as they start with a `>`.
+> Ceci est une superbe citation. Vous pouvez même
+> revenir à la ligne quand ça vous chante, et placer un  `>` devant chaque bout de ligne faisant partie
+> de la citation.
+> La taille ne compte pas^^ tant que chaque ligne commence par un `>`.
 
-> You can also use more than one level
->> of indentation?
-> How neat is that?
+> Vous pouvez aussi utiliser plus d'un niveau
+>> d'imbrication!
+> Class et facile, pas vrai?
 
-<!-- Lists -->
-<!-- Unordered lists can be made using asterisks, pluses, or hyphens -->
+<!-- les Listes -->
+<!-- Les listes non ordonnées sont marquées par des asterix (heuu astérisques), signes plus ou signes moins. -->
 
 * Item
 * Item
-* Another item
+* Un autre item
 
 or
 
 + Item
 + Item
-+ One more item
++ Encore un item
 
-or 
+or
 
 - Item
 - Item
-- One last item
+- Un dernier item
 
-<!-- Ordered lists are done with a number followed by a period -->
+<!-- les listes Ordonnées sont générées via un nombre suivi d'un point -->
 
-1. Item one
-2. Item two
-3. Item three
+1. Item un
+2. Item deux
+3. Item trois
 
-<!-- You don't even have to label the items correctly and markdown will still
-render the numbers in order, but this may not be a good idea -->
+<!-- Vous pouvez même vous passer de tout numéroter, et Markdown générera les bons chiffres.
+Ceci dit, cette variante perds en clarté lors de la rédaction.-->
 
-1. Item one
-1. Item two
-1. Item three
-<!-- (This renders the same as the above example) -->
+1. Item un
+1. Item deux
+1. Item trois
+<!-- (Cette liste sera interprétée de la même façon que celle juste au dessus.) -->
 
-<!-- You can also use sublists -->
+<!-- Vous pouvez également utiliser des sous-listes -->
 
-1. Item one
-2. Item two
-3. Item three
-    * Sub-item
-    * Sub-item
-4. Item four
+1. Item un
+2. Item deux
+3. Item trois
+* Sub-item
+* Sub-item
+4. Item quatre
 
-<!-- There are even task lists. This creates HTML checkboxes. -->
+<!-- Il y a même des "listes de Taches". Elles génèrent des champs HTML de type checkbox. -->
 
-Boxes below without the 'x' are unchecked HTML checkboxes.
-- [ ] First task to complete. 
-- [ ] Second task that needs done
-This checkbox below will be a checked HTML checkbox.
-- [x] This task has been completed
+Les [ ] ci dessous, n'ayant pas de [ x ], deviendront des cases à cocher HTML non-cochées.
+- [ ] Première tache à réaliser.
+- [ ] Une autre chose à faire.
+La case suivante sera une case à cocher HTML cochée.
+- [x] Ca ... c'est fait!
 
-<!-- Code blocks -->
-<!-- You can indicate a code block (which uses the <code> element) by indenting
-a line with four spaces or a tab -->
+<!-- les Blocs de Code -->
+<!-- Pour marquer du texte comme étant du code, il suffit de -->
 
-    This is code
-    So is this
+This is code
+So is this
 
 <!-- You can also re-tab (or add an additional four spaces) for indentation
 inside your code -->
 
-    my_array.each do |item|
-        puts item
-    end
+my_array.each do |item|
+puts item
+end
 
 <!-- Inline code can be created using the backtick character ` -->
 
@@ -157,7 +157,7 @@ John didn't even know what the `go_to()` function did!
 
 \`\`\`ruby <!-- except remove those backslashes when you do this, just ```ruby ! -->
 def foobar
-    puts "Hello world!"
+puts "Hello world!"
 end
 \`\`\` <!-- here too, no backslashes, just ``` -->
 
@@ -170,7 +170,7 @@ with or without spaces. -->
 
 ***
 ---
-- - - 
+- - -
 ****************
 
 <!-- Links -->
@@ -237,10 +237,10 @@ in italics, so I do this: \*this text surrounded by asterisks\*.
 <!-- Tables are only available in Github Flavored Markdown and are slightly
 cumbersome, but if you really want it: -->
 
-| Col1         | Col2     | Col3          |
+| Col1 | Col2 | Col3 |
 | :----------- | :------: | ------------: |
 | Left-aligned | Centered | Right-aligned |
-| blah         | blah     | blah          |
+| blah | blah | blah |
 
 <!-- or, for the same results -->
 
@@ -248,7 +248,7 @@ Col 1 | Col2 | Col3
 :-- | :-: | --:
 Ugh this is so ugly | make it | stop
 
-<!-- The end! -->
+<!-- Fin! -->
 
 ```
 
