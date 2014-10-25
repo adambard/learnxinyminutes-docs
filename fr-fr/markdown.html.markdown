@@ -5,9 +5,9 @@ contributors:
 filename: markdown.md
 ---
 
-Markdown a été crée par Jhon Gruber en 2004. Ceci se veut être d'une syntaxe
-facile à lire et à écrire, aisément convertible en HTML,
-(et beaucoup d'autres formats aussi à présent).
+Markdown a été créé par Jhon Gruber en 2004. Il se veut être d'une syntaxe
+facile à lire et à écrire, aisément convertible en HTML
+ (et beaucoup d'autres formats aussi à présent).
 
 Faites moi autant de retours que vous voulez! Sentez vous libre de "forker" 
 et envoyer des pull request!
@@ -18,18 +18,18 @@ et envoyer des pull request!
 est un document Markdown valide. Autrement dit, vous pouvez utiliser des 
 balises HTML dans un fichier Markdown, comme la balise commentaire dans 
 laquelle nous sommes à présent, car celle-ci ne sera pas affectée par 
-le parser(analyseur syntaxique) Markdown. -->
+le parser( analyseur syntaxique ) Markdown. -->
 
-<!-- Toutefois, si vous pouvez créer un élément HTML dans un fichier Markdown,
- vous ne pouvez pas utiliser du Markdown à l'intérieur de ce dernier. -->
+<!-- Toutefois, si vous voulez créer un élément HTML dans un fichier Markdown,
+ vous ne pourrez pas utiliser du Markdown à l'intérieur de ce dernier. -->
 
 <!--  Le Markdown est implémenté de différentes manières, selon le parser. 
 Ce guide va alors tenter de trier les fonctionnalités universelles de celles
 spécifiques à un parser.  -->
 
-<!-- Headers -->
+<!-- Headers ( En-têtes ) -->
 <!-- Vous pouvez facilement créer des éléments HTML <h1> à <h6> en précédant
- le texte de votre futur titre par un ou plusieurs dièses (#), de un à six,
+ le texte de votre futur titre par un ou plusieurs dièses ( # ), de un à six,
   selon le niveau de titre souhaité. -->
 # Ceci est un <h1>
 ## Ceci est un <h2>
@@ -61,8 +61,8 @@ __Celui-là aussi.__
 **_Pareil ici_**
 *__Et là!__*
 
-<!-- Dans le  "Github Flavored Markdown", utilisé pour interpréter le Markdown 
-sur Github ,on a également le strikethrough(texte barré) : -->
+<!-- Dans le "Github Flavored Markdown", utilisé pour interpréter le Markdown 
+sur Github, on a également le strikethrough ( texte barré ) : -->
 
 ~~Ce texte est barré avec strikethrough.~~
 
@@ -72,7 +72,7 @@ séparées par une ou plusieurs lignes vides. -->
 Ceci est un paragraphe. Là, je suis dans un paragraphe, facile non?
 
 Maintenant je suis dans le paragraphe 2.
-Je suis toujours dans le paragraphe 2 ici aussi!
+Je suis toujours dans le paragraphe 2!
 
 
 Puis là, eh oui, le paragraphe 3!
@@ -87,18 +87,17 @@ J'ai deux espaces vides à la fin (sélectionnez moi pour les voir).
 
 Bigre, il y a un <br /> au dessus de moi!
 
-<!-- Les 'Blocs de Citations' sont générés simplement aussi, 
-grâce au caractère > -->
+<!-- Les 'Blocs de Citations' sont générés aisément, grâce au caractère > -->
 
 > Ceci est une superbe citation. Vous pouvez même
-> revenir à la ligne quand ça vous chante, et placer un  `>` 
+> revenir à la ligne quand ça vous chante, et placer un `>` 
 > devant chaque bout de ligne faisant partie
 > de la citation.
 > La taille ne compte pas^^ tant que chaque ligne commence par un `>`.
 
 > Vous pouvez aussi utiliser plus d'un niveau
 >> d'imbrication!
-> Class et facile, pas vrai?
+> Classe et facile, pas vrai?
 
 <!-- les Listes -->
 <!-- les Listes non ordonnées sont marquées par des asterix 
@@ -127,12 +126,12 @@ ou
 3. Item trois
 
 <!-- Vous pouvez même vous passer de tout numéroter, et Markdown générera 
-les bons chiffres. Ceci dit, cette variante perds en clarté.-->
+les bons chiffres. Ceci dit, cette variante perd en clarté.-->
 
 1. Item un
 1. Item deux
 1. Item trois
-<!-- (Cette liste sera interprétée de la même façon que celle au dessus.) -->
+<!-- ( cette liste sera interprétée de la même façon que celle au dessus ) -->
 
 <!-- Vous pouvez également utiliser des sous-listes -->
 
@@ -152,16 +151,16 @@ deviendront des cases à cocher HTML non-cochées.
 - [ ] Première tache à réaliser.
 - [ ] Une autre chose à faire.
 La case suivante sera une case à cocher HTML cochée.
-- [x] Ca ... c'est fait!
+- [x] Ça ... c'est fait!
 
 <!-- les Blocs de Code -->
 <!-- Pour marquer du texte comme étant du code, il suffit de commencer 
 chaque ligne en tapant 4 espaces (ou un Tab) -->
 
-    echo "Ca, c'est du Code!";
-    var Ca = "aussi !";
+    echo "Ça, c'est du Code!";
+    var Ça = "aussi !";
 
-<!-- L'indentation par tab ou séries de quatre espaces 
+<!-- L'indentation par tab ou série de quatre espaces 
 fonctionne aussi à l'intérieur du bloc de code -->
 
     my_array.each do |item|
@@ -170,7 +169,7 @@ fonctionne aussi à l'intérieur du bloc de code -->
 
 <!-- Des bouts de code en mode 'inline' s'ajoutent en les entourant de ` -->
 
-La fonction `run()` ne vous oblige pas d'aller courir!
+La fonction `run()` ne vous oblige pas à aller courir!
 
 <!-- Via Github Flavored Markdown, vous pouvez utiliser 
 des syntaxes spécifiques -->
