@@ -5,23 +5,20 @@ contributors:
 filename: markdown.md
 ---
 
-Markdown a été crée par Jhon Gruber en 2004. Ceci se veut être d'une syntaxe facile à lire et à écrire,
-aisément convertible en HTML(et beaucoup d'autres formats aussi à présent).
+Markdown a été crée par Jhon Gruber en 2004. Ceci se veut être d'une syntaxe facile à lire et à écrire, aisément convertible en HTML (et beaucoup d'autres formats aussi à présent).
 
 Faites moi autant de retours que vous voulez! Sentez vous libre de "forker" et envoyer des pull request!
 
 
 ```markdown
-<!-- Markdown est une sorte de cousin du HTML, si bien que tout document HTML est un document Markdown valide.
-Autrement dit, nous pouvons utiliser des balises HTML dans un fichier Markdown, comme la balise commentaire dans laquelle
-nous sommes à présent, car celle-ci ne sera pas affectée par le parser Markdown.
-Toutefois, si l'on peut créer un élément HTML dans un fichier Markdown, on ne peut utiliser du Markdown à l'intérieur de ce dernier. -->
-<!--  Le Markdown est implémenté de différentes manières, selon le parser(analyseur syntaxique). Ce guide va alors tenter de trier
-les fonctionnalités universelles de celles spécifiques à un parser.  -->
+<!-- Markdown est une sorte de cousin du HTML, si bien que tout document HTML est un document Markdown valide. Autrement dit, vous pouvez utiliser des balises HTML dans un fichier Markdown, comme la balise commentaire dans laquelle nous sommes à présent, car celle-ci ne sera pas affectée par le parser(analyseur syntaxique) Markdown. -->
+
+<!-- Toutefois, si vous pouvez créer un élément HTML dans un fichier Markdown, vous ne pouvez pas utiliser du Markdown à l'intérieur de ce dernier. -->
+
+<!--  Le Markdown est implémenté de différentes manières, selon le parser. Ce guide va alors tenter de trier les fonctionnalités universelles de celles spécifiques à un parser.  -->
 
 <!-- Headers -->
-<!-- Vous pouvez facilement créer des éléments HTML <h1> à <h6> en précédant le texte de votre futur titre par un ou plusieurs dièses (#),
-de un à six, selon le niveau de titre souhaité. -->
+<!-- Vous pouvez facilement créer des éléments HTML <h1> à <h6> en précédant le texte de votre futur titre par un ou plusieurs dièses (#), de un à six, selon le niveau de titre souhaité. -->
 # Ceci est un <h1>
 ## Ceci est un <h2>
 ### Ceci est un <h3>
@@ -42,40 +39,37 @@ Ceci est un h2
 *Ce texte est en italique.*
 _Celui-ci aussi._
 
-**CE texte est en gras.**
+**Ce texte est en gras.**
 __Celui-là aussi.__
 
 ***Ce texte a les deux styles.***
 **_Pareil ici_**
 *__Et là!__*
 
-<!--Dans le  "Github Flavored Markdown", utilisé pour interpréter le Markdown sur Github
-,on a également le strikethrough(texte barré) : -->
+<!-- Dans le  "Github Flavored Markdown", utilisé pour interpréter le Markdown sur Github ,on a également le strikethrough(texte barré) : -->
 
 ~~Ce texte est barré avec strikethrough.~~
-<!--  Les Paragraphes sont représentés par une ou plusieurs lignes de texte
-séparées par une ou plusieurs lignes vides.   -->
 
-Ceci est un paragraphe. J'écris dans un paragraphe, marrant non?
+<!--  Les Paragraphes sont représentés par une ou plusieurs lignes de texte
+séparées par une ou plusieurs lignes vides. -->
+
+Ceci est un paragraphe. Là, je suis dans un paragraphe, facile non?
 
 Maintenant je suis dans le paragraphe 2.
 Je suis toujours dans le paragraphe 2 ici aussi!
 
 
-Puis là, eh oui, le paragraphe3!
+Puis là, eh oui, le paragraphe 3!
 
-<!-- Should you ever want to insert an HTML <br /> tag, you can end a paragraph
-with two or more spaces and then begin a new paragraph. -->
 <!--  
-Si jamais vous souhaitez insérer une balise HTML <br />, vous pouvez ajouter un ou plusieurs espaces
-à la fin de votre paragraphe, et en commencer un nouveau.
+Si jamais vous souhaitez insérer une balise HTML <br />, vous pouvez ajouter un ou plusieurs espaces à la fin de votre paragraphe, et en commencer un nouveau.
 -->
 
 J'ai deux espaces vides à la fin (sélectionnez moi pour les voir). 
 
 Bigre, il y a un <br /> au dessus de moi!
 
-<!-- Les 'Blocs de Citations' sont générés simplement aussi, grâce au caractère >. -->
+<!-- Les 'Blocs de Citations' sont générés simplement aussi, grâce au caractère > -->
 
 > Ceci est une superbe citation. Vous pouvez même
 > revenir à la ligne quand ça vous chante, et placer un  `>` devant chaque bout de ligne faisant partie
@@ -87,32 +81,31 @@ Bigre, il y a un <br /> au dessus de moi!
 > Class et facile, pas vrai?
 
 <!-- les Listes -->
-<!-- Les listes non ordonnées sont marquées par des asterix (heuu astérisques), signes plus ou signes moins. -->
+<!-- les Listes non ordonnées sont marquées par des asterix (heuu astérisques), signes plus ou signes moins. -->
 
 * Item
 * Item
 * Un autre item
 
-or
+ou
 
 + Item
 + Item
 + Encore un item
 
-or
+ou
 
 - Item
 - Item
 - Un dernier item
 
-<!-- les listes Ordonnées sont générées via un nombre suivi d'un point -->
+<!-- les Listes Ordonnées sont générées via un nombre suivi d'un point -->
 
 1. Item un
 2. Item deux
 3. Item trois
 
-<!-- Vous pouvez même vous passer de tout numéroter, et Markdown générera les bons chiffres.
-Ceci dit, cette variante perds en clarté lors de la rédaction.-->
+<!-- Vous pouvez même vous passer de tout numéroter, et Markdown générera les bons chiffres. Ceci dit, cette variante perds en clarté lors de la rédaction.-->
 
 1. Item un
 1. Item deux
@@ -137,119 +130,115 @@ La case suivante sera une case à cocher HTML cochée.
 - [x] Ca ... c'est fait!
 
 <!-- les Blocs de Code -->
-<!-- Pour marquer du texte comme étant du code, il suffit de -->
+<!-- Pour marquer du texte comme étant du code, il suffit de commencer chaque ligne en tapant 4 espaces (ou un Tab) -->
 
-This is code
-So is this
+    echo "Ca, c'est du Code!";
+    var Ca = "aussi !";
 
-<!-- You can also re-tab (or add an additional four spaces) for indentation
-inside your code -->
+<!-- L'indentation par tab ou séries de quatre espaces 
+fonctionne aussi à l'intérieur du bloc de code -->
 
-my_array.each do |item|
-puts item
-end
+    my_array.each do |item|
+       puts item
+    end
 
-<!-- Inline code can be created using the backtick character ` -->
+<!-- Des bouts de code en mode 'inline' s'ajoutent en les entourant de ` -->
 
-John didn't even know what the `go_to()` function did!
+La fonction `run()` ne vous oblige pas d'aller courir!
 
-<!-- In Github Flavored Markdown, you can use a special syntax for code -->
+<!-- Via Github Flavored Markdown, vous pouvez utiliser des syntaxes spécifiques -->
 
-\`\`\`ruby <!-- except remove those backslashes when you do this, just ```ruby ! -->
+\`\`\`ruby <!-- mais enlevez les backslashes quand vous faites ça, juste ```ruby ! -->
 def foobar
 puts "Hello world!"
 end
-\`\`\` <!-- here too, no backslashes, just ``` -->
+\`\`\` <!-- pareil, no backslashes, juste ``` -->
 
-<-- The above text doesn't require indenting, plus Github will use syntax
-highlighting of the language you specify after the ``` -->
+<-- Pas besoin d'indentation pour le code juste au dessus, de plus, Github va utiliser une coloration syntaxique pour le langage indiqué après les ``` -->
 
-<!-- Horizontal rule (<hr />) -->
-<!-- Horizontal rules are easily added with three or more asterisks or hyphens,
-with or without spaces. -->
+<!-- Ligne Horizontale (<hr />) -->
+<!-- Pour en insérer une, utilisez trois ou plusieurs astérisques ou tirets,
+avec ou sans espaces entre chaque un. -->
 
 ***
 ---
 - - -
 ****************
 
-<!-- Links -->
-<!-- One of the best things about markdown is how easy it is to make links. Put
-the text to display in hard brackets [] followed by the url in parentheses () -->
+<!-- Liens -->
+<!-- Une des fonctionnalités sympathiques du Markdown est la facilité d'ajouter des liens. Le texte du lien entre [ ], l'url entre ( ), et voilà l'travail.
+-->
 
-[Click me!](http://test.com/)
+[Clic moi!](http://test.com/)
 
-<!-- You can also add a link title using quotes inside the parentheses -->
+<!-- Pour ajouter un attribut Title, collez le entre guillemets, avec le lien. -->
 
-[Click me!](http://test.com/ "Link to Test.com")
+[Clic moi!](http://test.com/ "Lien vers Test.com")
 
-<!-- Relative paths work too. -->
+<!-- les Liens Relatifs marchent aussi -->
 
-[Go to music](/music/).
+[En avant la musique](/music/).
 
-<!-- Markdown also supports reference style links -->
+<!-- Les liens façon "références" sont eux aussi disponibles en Markdown -->
 
-[Click this link][link1] for more info about it!
-[Also check out this link][foobar] if you want to.
+[Cliquez ici][link1] pour plus d'information!
+[Regardez aussi par ici][foobar] si vous voulez.
 
 [link1]: http://test.com/ "Cool!"
 [foobar]: http://foobar.biz/ "Alright!"
 
-<!-- The title can also be in single quotes or in parentheses, or omitted
-entirely. The references can be anywhere in your document and the reference IDs
-can be anything so long as they are unique. -->
+<!--  Le titre peut aussi être entouré de guillemets simples, entre parenthèses ou absent. Les références peuvent être placées un peu où vous voulez dans le document, et les identifiants (link1, foobar, ...) quoi que ce soit tant qu'ils sont uniques -->
 
-<!-- There is also "implicit naming" which lets you use the link text as the id -->
+<!-- Il y a également le "nommage implicite" qui transforme le texte du lien en identifiant -->
 
-[This][] is a link.
+[Ceci][] est un lien.
 
-[this]: http://thisisalink.com/
+[ceci]: http://ceciestunlien.com/
 
-<!-- But it's not that commonly used. -->
+<!-- mais ce n'est pas beaucoup utilisé. -->
 
 <!-- Images -->
-<!-- Images are done the same way as links but with an exclamation point in front! -->
+<!-- Pour les images, la syntaxe est identique aux liens, sauf que précédée d'un point d'exclamation! -->
 
-![This is the alt-attribute for my image](http://imgur.com/myimage.jpg "An optional title")
+![Ceci est l'attribut ALT de l'image](http://imgur.com/monimage.jpg "Titre optionnel")
 
-<!-- And reference style works as expected -->
+<!-- Là aussi, on peut utiliser le mode "références" -->
 
-![This is the alt-attribute.][myimage]
+![Ceci est l'attribut ALT de l'image][monimage]
 
-[myimage]: relative/urls/cool/image.jpg "if you need a title, it's here"
+[monimage]: relative/urls/cool/image.jpg "si vous voulez un titre, c'est ici."
 
-<!-- Miscellany -->
-<!-- Auto-links -->
+<!-- Divers -->
+<!-- Liens Automatiques -->
 
-<http://testwebsite.com/> is equivalent to
+<http://testwebsite.com/> est équivalent à :
 [http://testwebsite.com/](http://testwebsite.com/)
 
-<!-- Auto-links for emails -->
+<!-- Liens Automatiques pour emails -->
 
 <foo@bar.com>
 
-<!-- Escaping characters -->
+<!-- Escaping -->
+Il suffit de précéder les caractères spécifiques à ignorer par des backslash \
 
-I want to type *this text surrounded by asterisks* but I don't want it to be
-in italics, so I do this: \*this text surrounded by asterisks\*.
+Pour taper *ce texte* entouré d'astérisques mais pas en italique : Tapez \*ce texte\*.
 
-<!-- Tables -->
-<!-- Tables are only available in Github Flavored Markdown and are slightly
-cumbersome, but if you really want it: -->
+<!-- Tableaux -->
+<!-- les Tableaux ne sont disponibles que dans le Github Flavored Markdown et c'est ce n'est pas super agréable d'utilisation. Mais si vous en avez besoin : -->
 
 | Col1 | Col2 | Col3 |
 | :----------- | :------: | ------------: |
-| Left-aligned | Centered | Right-aligned |
-| blah | blah | blah |
+| Alignement Gauche | Centé | Alignement Droite |
+| bla | bla | bla |
 
-<!-- or, for the same results -->
+<!-- ou bien, pour un résultat équivalent : -->
 
 Col 1 | Col2 | Col3
 :-- | :-: | --:
-Ugh this is so ugly | make it | stop
+Ough que c'est moche | svp | arrêtez
 
 <!-- Fin! -->
 
 ```
 
-For more info, check out John Gruber's official post of syntax [here](http://daringfireball.net/projects/markdown/syntax) and Adam Pritchard's great cheatsheet [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+Pour plus d'information, consultez [ici](http://daringfireball.net/projects/markdown/syntax) le post officiel de Jhon Gruber à propos de la syntaxe, et [là](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)  la superbe cheatsheet de Adam Pritchard.
