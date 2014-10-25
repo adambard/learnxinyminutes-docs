@@ -175,11 +175,12 @@ La fonction `run()` ne vous oblige pas à aller courir!
 des syntaxes spécifiques -->
 
 \`\`\`ruby 
-<!-- mais enlevez les backslashes quand vous faites ça, juste ```ruby ! -->
+<!-- mais enlevez les backslashes quand vous faites ça, 
+gardez juste ```ruby ( ou nom de la synatxe correspondant à votre code )-->
 def foobar
 puts "Hello world!"
 end
-\`\`\` <!-- pareil, no backslashes, juste ``` -->
+\`\`\` <!-- pareil, pas de backslashes, juste ``` en guise de fin -->
 
 <-- Pas besoin d'indentation pour le code juste au dessus, de plus, Github 
 va utiliser une coloration syntaxique pour le langage indiqué après les ``` -->
