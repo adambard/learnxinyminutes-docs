@@ -100,8 +100,8 @@ Bigre, il y a un <br /> au dessus de moi!
 > Classe et facile, pas vrai?
 
 <!-- les Listes -->
-<!-- les Listes non ordonnées sont marquées par des asterix 
-(heuu astérisques), signes plus ou signes moins. -->
+<!-- les Listes non ordonnées sont marquées par des asterisques, 
+signes plus ou signes moins. -->
 
 * Item
 * Item
