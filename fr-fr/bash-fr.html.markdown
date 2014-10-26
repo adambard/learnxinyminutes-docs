@@ -10,6 +10,7 @@ contributors:
     - ["Anton Strömkvist", "http://lutic.org/"]
     - ["Rahil Momin", "https://github.com/iamrahil"]
     - ["Gregrory Kielian", "https://github.com/gskielian"]
+translators:
     - ["Baptiste Fontaine", "http://bfontaine.net"]
 filename: LearnBash-fr.sh
 lang: fr-fr
