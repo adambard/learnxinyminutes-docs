@@ -46,7 +46,8 @@ bloc_littéral: |
 
     Le littéral continue jusqu'à ce que l'indentation soit annulée.
 
-        Toutes lignes qui serait "d'avantage indentées" conservent leur indentation, constituée de 4 espaces.
+        Toutes lignes qui serait "d'avantage indentées" conservent leur 
+        indentation, constituée de 4 espaces.
 bloc_replié: >
     Tout ce bloc de texte sera la valeur de la clé 'bloc_replié', mais 
     cette fois ci, toutes les nouvelles lignes deviendront un simple espace.
@@ -148,9 +149,8 @@ set2:
 
 ```
 
-  \//||\/||
-  // ||  ||__ Références Externes et outils :
+Quelques références et outils :
 
-[Specs YAML 1.2](http://www.yaml.org/spec/1.2/spec.html) *anglais*
-[Introduction à YAML](http://sweetohm.net/html/introduction-yaml.html)
-[Online YAML parser](http://yaml-online-parser.appspot.com/)
+- Doc officielle [YAML 1.2](http://www.yaml.org/spec/1.2/spec.html) *anglais*,
+- Une [Introduction à YAML](http://sweetohm.net/html/introduction-yaml.html) très bien construite et claire,
+- Un outil pour tester [live](http://yaml-online-parser.appspot.com/) la syntaxe YAML, avec des exemples.
