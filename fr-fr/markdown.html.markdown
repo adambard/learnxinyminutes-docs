@@ -5,7 +5,7 @@ contributors:
 filename: markdown.md
 ---
 
-Markdown a été créé par Jhon Gruber en 2004. Il se veut être d'une syntaxe
+Markdown a été créé par John Gruber en 2004. Il se veut être d'une syntaxe
 facile à lire et à écrire, aisément convertible en HTML
  (et beaucoup d'autres formats aussi à présent).
 
