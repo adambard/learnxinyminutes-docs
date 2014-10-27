@@ -54,12 +54,12 @@ En ASCII, 65 correspond à 'A' donc le programme affiche 'A' dans le terminal.
 Ce programme lit un caractère sur l’entrée standard et le copie dans la
 première cellule. Il commence ensuite une boucle : il bouge sur la seconde
 cellule, incrémente sa valeur, retourne sur la première et décrémente sa
-valeur. Il continue jusqu’à ce que cette valeur soit à 0, et que la seconde
-cellule contienne l’ancienne valeur de la première. Comme nous sommes sur la
-première cellule à la fin de la boucle, il bouge sur la seconde et affiche sa
-valeur en ASCII.
+valeur. Il continue jusqu’à ce que la valeur de la première cellule soit à 0,
+et que la seconde cellule contienne l’ancienne valeur de la première. Comme
+nous sommes sur la première cellule à la fin de la boucle, il bouge sur la
+seconde et affiche sa valeur en ASCII.
 
-Souvenez-vous que les espaces sont uniquement pour favoriser la lisibilité,
+Souvenez-vous que les espaces sont uniquement là pour favoriser la lisibilité,
 vous pourriez tout aussi aisément écrire le programme comme ceci :
 
 ,[>+<-]>.
