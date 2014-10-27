@@ -83,29 +83,32 @@ Self defines flow control like Smalltalk and Ruby by way of blocks. Blocks are d
 Examples of the use of a block:
 
 ```
-'hello' copyMutable mapBy: [|:c| c capitalize] "returns 'HELLO'"
+"returns 'HELLO'"
+'hello' copyMutable mapBy: [|:c| c capitalize] 
 
-'hello' size > 5 ifTrue: ['Yay'] False: ['Nah'] "returns 'Nah'"
+"returns 'Nah'"
+'hello' size > 5 ifTrue: ['Yay'] False: ['Nah'] 
 
+"returns 'HaLLO'"
 'hello' copyMutable mapBy: [|:c| 
    c = 'e' ifTrue: [c capitalize]
             False: ['a']]
-"returns 'HaLLO'"
 ```
 
 Multiple expressions are separated by a period. ^ returns immediately.
 
 ```
+"returns An 'E'! How icky!"
 'hello' copyMutable mapBy: [|:c. tmp <- ''| 
    tmp: c capitalize.
    tmp = 'E' ifTrue: [^ 'An \'E\'! How icky!'].
    c capitalize
    ]
-"returns An 'E'! How icky!"
 ```
 
 Blocks are performed by sending them the message 'value' and inherit (delegate to) their contexts:
 ```
+"returns 0"
 [|x|
     x: 15.
     "Repeatedly sends 'value' to the first block while the result of sending 'value' to the
@@ -113,7 +116,6 @@ Blocks are performed by sending them the message 'value' and inherit (delegate t
     [x > 0] whileTrue: [x: x - 1]. 
     x
 ] value
-"returns 0"
 ```
 
 # Methods
@@ -121,14 +123,16 @@ Blocks are performed by sending them the message 'value' and inherit (delegate t
 Methods are like blocks but are not within a context but are the values of slots. Unlike Smalltalk, methods by default return their final value not 'self'.
 
 ```
-"Here is an object with one assignable slot 'x' and a method 'reduceXTo: y'"
+"Here is an object with one assignable slot 'x' and a method 'reduceXTo: y'.
+Sending the message 'reduceXTo: 10' to this object will put 
+the object '10' in the 'x' slot and return the original object"
 (| 
     x <- 50.
     reduceXTo: y = (
         [x > y] whileTrue: [x: x - 1]. 
         self)
 |)
-"Sending the message 'reduceXTo: 10' to this object will put the object '10' in the 'x' slot and return the original object"
+.
 ```
 
 # Prototypes
