@@ -77,13 +77,13 @@ false;
 !true; // = false
 !false; // = true
 
-// Equality is ==
-1 == 1; // = true
-2 == 1; // = false
+// Equality is ===
+1 === 1; // = true
+2 === 1; // = false
 
-// Inequality is !=
-1 != 1; // = false
-2 != 1; // = true
+// Inequality is !==
+1 !== 1; // = false
+2 !== 1; // = true
 
 // More comparisons
 1 < 10; // = true
@@ -97,11 +97,13 @@ false;
 // and are compared with < and >
 "a" < "b"; // = true
 
-// Type coercion is performed for comparisons...
+// Type coercion is performed for comparisons with double equals...
 "5" == 5; // = true
+null == undefined; // = true
 
 // ...unless you use ===
 "5" === 5; // = false
+null === undefined; // = false 
 
 // You can access characters in a string with charAt
 "This is a string".charAt(0);  // = 'T'
