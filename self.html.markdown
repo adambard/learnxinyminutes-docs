@@ -57,11 +57,19 @@ The inbuild Self parser can construct objects, including method objects.
 Messages can either be unary, binary or keyword. Precedence is in that order. Unlike Smalltalk, the precedence of binary messages must be specified, and all keywords after the first must start with a capital letter. Messages are separeated from their destination by whitespace.
 
 ```
-23 printLine → unary message, sends 'printLine' to the object '23' 
-               which prints the string '23' to stdout and returns the receiving object (ie 23)
-(23 + 7) * 8 → sends the message '+' with '7' to '23', then the message '*' with '8' to the result
-2 power: 8 → sends 'power:' to '2' with '8' returns 256
-'hello' keyOf: 'e' IfAbsent: -1 → sends 'keyOf:IfAbsent:' to 'hello' with arguments 'e' and '-1'. Returns 1, the index of 'e' in 'hello'.
+"unary message, sends 'printLine' to the object '23' 
+which prints the string '23' to stdout and returns the receiving object (ie 23)"
+23 printLine
+
+"sends the message '+' with '7' to '23', then the message '*' with '8' to the result"
+(23 + 7) * 8 
+
+"sends 'power:' to '2' with '8' returns 256"
+2 power: 8 
+
+"sends 'keyOf:IfAbsent:' to 'hello' with arguments 'e' and '-1'. 
+Returns 1, the index of 'e' in 'hello'."
+'hello' keyOf: 'e' IfAbsent: -1 
 ```
 
 # Blocks
@@ -75,14 +83,14 @@ Self defines flow control like Smalltalk and Ruby by way of blocks. Blocks are d
 Examples of the use of a block:
 
 ```
-'hello' copyMutable mapBy: [|:c| c capitalize] → 'HELLO'
+'hello' copyMutable mapBy: [|:c| c capitalize] "returns 'HELLO'"
 
-'hello' size > 5 ifTrue: ['Yay'] False: ['Nah'] → 'Nah'
+'hello' size > 5 ifTrue: ['Yay'] False: ['Nah'] "returns 'Nah'"
 
 'hello' copyMutable mapBy: [|:c| 
    c = 'e' ifTrue: [c capitalize]
             False: ['a']]
- → 'HaLLO'
+"returns 'HaLLO'"
 ```
 
 Multiple expressions are separated by a period. ^ returns immediately.
@@ -93,7 +101,7 @@ Multiple expressions are separated by a period. ^ returns immediately.
    tmp = 'E' ifTrue: [^ 'An \'E\'! How icky!'].
    c capitalize
    ]
- → An 'E'! How icky!
+"returns An 'E'! How icky!"
 ```
 
 Blocks are performed by sending them the message 'value' and inherit (delegate to) their contexts:
@@ -104,7 +112,8 @@ Blocks are performed by sending them the message 'value' and inherit (delegate t
      second block is the 'true' object"
     [x > 0] whileTrue: [x: x - 1]. 
     x
-] value → 0
+] value
+"returns 0"
 ```
 
 # Methods
