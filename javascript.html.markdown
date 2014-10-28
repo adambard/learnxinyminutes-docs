@@ -39,13 +39,14 @@ doStuff()
 // 1. Numbers, Strings and Operators
 
 // JavaScript has one number type (which is a 64-bit IEEE 754 double).
-// As with Lua, don't freak out about the lack of ints: doubles have a 52-bit
-// mantissa, which is enough to store integers up to about 9✕10¹⁵ precisely.
+// Doubles have a 52-bit mantissa, which is enough to store integers
+//    up to about 9✕10¹⁵ precisely.
 3; // = 3
 1.5; // = 1.5
 
-// All the basic arithmetic works as you'd expect.
+// Some basic arithmetic works as you'd expect.
 1 + 1; // = 2
+.1 + .2; // = 0.30000000000000004
 8 - 1; // = 7
 10 * 2; // = 20
 35 / 5; // = 7
