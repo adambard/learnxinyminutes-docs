@@ -50,6 +50,11 @@ doStuff()
 10 * 2; // = 20
 35 / 5; // = 7
 
+// ...but "basic arithmetic" does not include powers.
+6 ^ 2; // = 4, not 36
+3 ^ 2; // = 1, not 9
+// (and don't even try 6**2 .. it won't be parsed as correct syntax.)
+
 // Including uneven division.
 5 / 2; // = 2.5
 
