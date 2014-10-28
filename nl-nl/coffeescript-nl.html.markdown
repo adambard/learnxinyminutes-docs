@@ -5,23 +5,24 @@ contributors:
   - ["Xavier Yao", "http://github.com/xavieryao"]
 translators:
   - ["Jelle Besseling", "https://github.com/Jell-E"]
+  - ["D.A.W. de Waal", "http://github.com/diodewaal"]
 filename: coffeescript-nl.coffee
 lang: nl-nl
 ---
 
-CoffeeScript is een kleine programmeertaal die compileerd naar JavaScript,
-er is geen interpretatie tijdens het uitvoeren.
-Als een van de nakomelingen van JavaScript probeert CoffeeScript om leesbare, 
-goed geformatteerdeen goed draaiende JavaScript code te genereren, 
-die in elke JavaScript runtime werkt.
+CoffeeScript is een kleine programmeertaal die direct compileert naar
+JavaScript en er is geen interpretatie tijdens het uitvoeren.
+CoffeeScript probeert om leesbare, goed geformatteerde en goed draaiende
+JavaScript code te genereren, die in elke JavaScript runtime werkt, als een
+opvolger van JavaScript.
 
-Op [de CoffeeScript website](http://coffeescript.org/), staat een 
-vollediger tutorial voor CoffeeScript.
+Op [de CoffeeScript website](http://coffeescript.org/), staat een
+volledigere tutorial voor CoffeeScript.
 
 ``` coffeescript
 # CoffeeScript is een taal voor hipsters.
 # Het gaat mee met alle trends van moderne talen.
-# Dus commentaar begint met een hekje, net zoals bij Python en Ruby.
+# Commentaar begint dus met een hekje, net zoals bij Python en Ruby.
 
 ###
 Blokken commentaar maak je zo, ze vertalen naar JavaScripts */ en /*
@@ -47,7 +48,7 @@ vul = (houder, vloeistof = "koffie") ->
 #
 #vul = function(houder, vloeistof) {
 #  if (vloeistof == null) {
-#    vloeistof = "coffee";
+#    vloeistof = "koffie";
 #  }
 #  return "Nu de " + houder + " met " + vloeistof + " aan het vullen...";
 #};
@@ -75,12 +76,12 @@ wedstrijd = (winnaar, lopers...) ->
 #  return print(winnaar, lopers);
 #};
 
-# Bestaan:
+# Aanwezigheid:
 alert "Ik wist het!" if elvis?
 #=> if(typeof elvis !== "undefined" && elvis !== null) { alert("I knew it!"); }
 
 # Lijst abstractie:
-derdemachten = (wiskunde.derdemacht num for num in lijst) 
+derdemachten = (wiskunde.derdemacht num for num in lijst)
 #=>derdemachten = (function() {
 #	var _i, _len, _results;
 #	_results = [];
