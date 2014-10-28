@@ -46,7 +46,8 @@ profile viewer 	% Open profiler
 
 help command 	% Displays documentation for command in Command Window
 doc command 	% Displays documentation for command in Help Window
-lookfor command % Searches for a command in all other commands
+lookfor command % Searches for command in the first commented line of all functions
+lookfor command -all % searches for command in all functions
 
 
 % Output formatting
