@@ -1,6 +1,6 @@
 ---
 language: self
-contributors:r
+contributors:
     - ["Russell Allen", "http://github.com/russellallen"]
 filename: self.html.markdown
 ---
@@ -38,13 +38,19 @@ The inbuild Self parser can construct objects, including method objects.
   x <- 20.
 |)
 
-"An object which understands the method 'doubleX' which doubles the value of x and then returns the object"
+"An object which understands the method 'doubleX' which 
+doubles the value of x and then returns the object"
 (|
   x <- 20.
   doubleX = (x: x * 2. self)
 |)
 
-"An object which understands all the messages that 'traits point' understands". The parser looks up 'traits point' by sending the messages 'traits' then 'point' to a known object called the 'lobby'. It looks up the 'true' object by also sending the message 'true' to the lobby."
+"An object which understands all the messages 
+that 'traits point' understands". The parser 
+looks up 'traits point' by sending the messages 
+'traits' then 'point' to a known object called 
+the 'lobby'. It looks up the 'true' object by 
+also sending the message 'true' to the lobby."
 (|     parent* = traits point.
        x = 7.
        y <- 5.
@@ -77,7 +83,7 @@ Returns 1, the index of 'e' in 'hello'."
 Self defines flow control like Smalltalk and Ruby by way of blocks. Blocks are delayed computations of the form:
 
 ```
-[|:x. localVar| x doSomthing With: localVar]
+[|:x. localVar| x doSomething with: localVar]
 ```
 
 Examples of the use of a block:
@@ -120,7 +126,7 @@ Blocks are performed by sending them the message 'value' and inherit (delegate t
 
 # Methods
 
-Methods are like blocks but are not within a context but are the values of slots. Unlike Smalltalk, methods by default return their final value not 'self'.
+Methods are like blocks but they are not within a context but instead are stored as values of slots. Unlike Smalltalk, methods by default return their final value not 'self'.
 
 ```
 "Here is an object with one assignable slot 'x' and a method 'reduceXTo: y'.
