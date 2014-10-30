@@ -46,7 +46,7 @@ doStuff()
 
 // Some basic arithmetic works as you'd expect.
 1 + 1; // = 2
-.1 + .2; // = 0.30000000000000004
+.1 + .3; // = 0.4
 8 - 1; // = 7
 10 * 2; // = 20
 35 / 5; // = 7
