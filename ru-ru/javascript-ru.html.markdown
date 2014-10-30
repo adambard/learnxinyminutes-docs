@@ -9,16 +9,28 @@ filename: javascript-ru.js
 lang: ru-ru
 ---
 
+Javascript был разработан Бренданом Айком из Netcape в 1995. Изначально 
+предполагалось, что он станет простым вариантом скриптового языка для сайтов, 
+дополняющий к Java, который в свою очередь использовался бы для более сложных 
+web-приложений. Но тонкая интегрированность javascript с web-страницей и 
+встроенная поддержка в браузерах привели к тому, чтобы он стал более 
+распространен в web-разработке, чем Java.
 JavaScript was created by Netscape's Brendan Eich in 1995. It was originally
 intended as a simpler scripting language for websites, complementing the use of
 Java for more complex web applications, but its tight integration with Web pages
 and built-in support in browsers has caused it to become far more common than
 Java in web frontends.
 
+Использование Javascript не ограничивается браузерами. Проект Node.js, 
+предоставляющий независимую среду выполнения на движке Google Chrome V8 
+JavaScript, становится все более популярным.
 JavaScript isn't just limited to web browsers, though: Node.js, a project that
 provides a standalone runtime for Google Chrome's V8 JavaScript engine, is
 becoming more and more popular.
 
+Обратная связь важна и нужна! Вы можете написаться мне
+на [@_remedy]() или
+[mymail]().
 Feedback would be highly appreciated! You can reach me at
 [@adambrenecki](https://twitter.com/adambrenecki), or
 [adam@brenecki.id.au](mailto:adam@brenecki.id.au).
