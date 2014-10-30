@@ -36,29 +36,43 @@ Feedback would be highly appreciated! You can reach me at
 [adam@brenecki.id.au](mailto:adam@brenecki.id.au).
 
 ```js
+// Комментарии оформляются как в C.
+// Обнострочнные комментарии начинаются с двух слешей,
 // Comments are like C. Single-line comments start with two slashes,
+/* а многострочные с слеша и звездочки
+   и заканчиваются звездочеий и слешом */
 /* and multiline comments start with slash-star
    and end with star-slash */
 
+// Выражения разделяются с помощью ;
 // Statements can be terminated by ;
 doStuff();
 
+// ... но этого можно и делать, разделители подставляются автоматически
+// после перехода на новую строку за исключением особых случаев
 // ... but they don't have to be, as semicolons are automatically inserted
 // wherever there's a newline, except in certain cases.
 doStuff()
 
+// Это может приводить к непредсказуемому результату и поэтому мы будем 
+// использовать разделители в этом туре.
 // Because those cases can cause unexpected results, we'll keep on using
 // semicolons in this guide.
 
 ///////////////////////////////////
+// 1. Числа, Строки и Операторы
 // 1. Numbers, Strings and Operators
 
+// В Javasript всего 1 числовой тип - 64-битное число с плавающей точкой стандарта
+// IEEE 754)
+// todo: сформулировать
 // JavaScript has one number type (which is a 64-bit IEEE 754 double).
 // Doubles have a 52-bit mantissa, which is enough to store integers
 //    up to about 9✕10¹⁵ precisely.
 3; // = 3
 1.5; // = 1.5
 
+// В основном базовая арифметика работает предсказуемо
 // Some basic arithmetic works as you'd expect.
 1 + 1; // = 2
 .1 + .2; // = 0.30000000000000004
@@ -66,76 +80,92 @@ doStuff()
 10 * 2; // = 20
 35 / 5; // = 7
 
+// Включая нецелочисленное деление (todo:уточнить!)
 // Including uneven division.
 5 / 2; // = 2.5
 
+// Двоичные операции тоже есть. Если применить двоичную операцию к float-числу,
+// оно будет приведено к 32-битному целому со знаком.
 // Bitwise operations also work; when you perform a bitwise operation your float
 // is converted to a signed int *up to* 32 bits.
 1 << 2; // = 4
 
+// (todo:перевести)
 // Precedence is enforced with parentheses.
 (1 + 3) * 2; // = 8
 
+// Есть три особых не реальных числовых значения:
 // There are three special not-a-real-number values:
-Infinity; // result of e.g. 1/0
--Infinity; // result of e.g. -1/0
-NaN; // result of e.g. 0/0
+Infinity; // допустим, результат операции 1/0
+-Infinity; //  допустим, результат операции -1/0
+NaN; //  допустим, результат операции 0/0
 
+// Так же есть тип булевых данных.
 // There's also a boolean type.
 true;
 false;
 
+// Строки создаются с помощью ' или ". 
 // Strings are created with ' or ".
 'abc';
 "Hello, world";
 
-// Negation uses the ! symbol
+// Оператор ! означает отрицание
 !true; // = false
 !false; // = true
 
-// Equality is ===
+// Равество это ===
 1 === 1; // = true
 2 === 1; // = false
 
-// Inequality is !==
+// Неравенство это !==
 1 !== 1; // = false
 2 !== 1; // = true
 
-// More comparisons
+// Еще сравнения
 1 < 10; // = true
 1 > 10; // = false
 2 <= 2; // = true
 2 >= 2; // = true
 
-// Strings are concatenated with +
+// Строки складываются с помощью +
 "Hello " + "world!"; // = "Hello world!"
 
-// and are compared with < and >
+// и сравниваются с помощью < и >
 "a" < "b"; // = true
 
+// Приведение типов выполняется при сравнении с ==...
 // Type coercion is performed for comparisons with double equals...
 "5" == 5; // = true
 null == undefined; // = true
 
-// ...unless you use ===
+// ...в отличие от ===
 "5" === 5; // = false
 null === undefined; // = false 
 
+// Для доступа к конкретному символу строки используйте charAt
 // You can access characters in a string with charAt
 "This is a string".charAt(0);  // = 'T'
 
+// ... или используйте substring  для получения подстроки
 // ...or use substring to get larger pieces
 "Hello world".substring(0, 5); // = "Hello"
 
+// length(длина) - свойство, не используйте ()
 // length is a property, so don't use ()
 "Hello".length; // = 5
 
+// Есть null и undefined
 // There's also null and undefined
-null; // used to indicate a deliberate non-value
-undefined; // used to indicate a value is not currently present (although
-           // undefined is actually a value itself)
+null; // используется что бы указать явно, что значения нет
+undefined; // испрользуется чтобы показать, что значения не было установлено 
+           // собственно, undefined так и переводится
 
+// false, null, undefined, NaN, 0 и "" являются falsy-значениями(при приведении 
+// в булеву типу становятся false)
 // false, null, undefined, NaN, 0 and "" are falsy; everything else is truthy.
+// Обратите внимание что 0 приводится к false, а "0" к true, не смотря на то, 
+// что "0"==0
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
 ///////////////////////////////////
