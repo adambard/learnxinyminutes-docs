@@ -9,6 +9,8 @@ filename: javascript-ru.js
 lang: ru-ru
 ---
 
+todo: привести все названия языка к коректному написанию
+
 Javascript был разработан Бренданом Айком из Netcape в 1995. Изначально 
 предполагалось, что он станет простым вариантом скриптового языка для сайтов, 
 дополняющий к Java, который в свою очередь использовался бы для более сложных 
@@ -169,60 +171,83 @@ undefined; // испрользуется чтобы показать, что з�
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
 ///////////////////////////////////
-// 2. Variables, Arrays and Objects
+// 2. Переменные, массивы и объекты
 
+// Переменные объявляются ключевым словом var. Javascript динамически 
+// типизируемый, так что указывать тип не нужно. 
+// Присвоение значения описывается с помощью оператора =
 // Variables are declared with the var keyword. JavaScript is dynamically typed,
 // so you don't need to specify type. Assignment uses a single = character.
 var someVar = 5;
 
+// если не указать ключевого слова var, ошибки не будет...
 // if you leave the var keyword off, you won't get an error...
 someOtherVar = 10;
 
+// ...но переменная будет создана в глобальном контексте, в не области 
+// видимости, в которой она была объявлена.
 // ...but your variable will be created in the global scope, not in the scope
 // you defined it in.
 
+// Переменные объявленные без присвоения значения, содержать undefined
 // Variables declared without being assigned to are set to undefined.
 var someThirdVar; // = undefined
 
+// Для математических операций над числами есть короткая запись:
 // There's shorthand for performing math operations on variables:
-someVar += 5; // equivalent to someVar = someVar + 5; someVar is 10 now
-someVar *= 10; // now someVar is 100
+someVar += 5; // тоже что someVar = someVar + 5; someVar равно 10 теперь
+someVar *= 10; // а теперь -- 100
 
-// and an even-shorter-hand for adding or subtracting 1
-someVar++; // now someVar is 101
-someVar--; // back to 100
+// еще более короткая запись для добавления и вычитания 1
+someVar++; // теперь someVar равно 101
+someVar--; // обратно к 100
 
+// Массивы -- упорядоченные списки значений любых типов.
 // Arrays are ordered lists of values, of any type.
 var myArray = ["Hello", 45, true];
 
+// Для доступу к элементам массивов используйте квадратные скобки.
+// Индексы массивов начинаются с 0
 // Their members can be accessed using the square-brackets subscript syntax.
 // Array indices start at zero.
 myArray[1]; // = 45
 
+// Массивы мутабельны(изменяемы) и имеют переменную длину. 
 // Arrays are mutable and of variable length.
-myArray.push("World");
+myArray.push("World"); // добавить элемент
 myArray.length; // = 4
 
-// Add/Modify at specific index
+// Добавить или изменить значение по конкретному индексу
 myArray[3] = "Hello";
 
+// Объёкты javascript похожи на dictionary или map из других языков 
+// программирования. Это неупорядочнные коллекции пар ключ-значение.
 // JavaScript's objects are equivalent to 'dictionaries' or 'maps' in other
 // languages: an unordered collection of key-value pairs.
 var myObj = {key1: "Hello", key2: "World"};
 
+// Ключи -- это строки, но кавычки не требуются если названия явлюятся
+// корректными javascript идентификаторами. Значения могут быть любого типа.
 // Keys are strings, but quotes aren't required if they're a valid
 // JavaScript identifier. Values can be any type.
 var myObj = {myKey: "myValue", "my other key": 4};
 
+// Доступ к атрибту объекта можно получить с помощью квадратных скобок
 // Object attributes can also be accessed using the subscript syntax,
 myObj["my other key"]; // = 4
 
+// ... или используя точечную нотацию, при условии что ключ является 
+// корректным идентификатором
 // ... or using the dot syntax, provided the key is a valid identifier.
 myObj.myKey; // = "myValue"
 
+// Объекты мутабельны. В существуюещем объекте можно изменить значние 
+// или добавить новый атрибут
 // Objects are mutable; values can be changed and new keys added.
 myObj.myThirdKey = true;
 
+// При попытке доступа к атрибуту, который до этого не был создан, будет
+// возвращен undefined
 // If you try to access a value that's not yet set, you'll get undefined.
 myObj.myFourthKey; // = undefined
 
