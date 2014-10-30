@@ -3,13 +3,14 @@ category: tool
 tool: git
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
+    - ["Vinh Nguyen", "https://twitter.com/vinhnx"]
 filename: LearnGit-vi.txt
 lang: vi-vn
 ---
 
 Git là một hệ quản lý mã nguồn và phiên bản phân tán (distributed version control and source code management system).
 
-Nó làm được điều này là do một loạt các snapshot từ đề án của bạn, and nó hoạt động
+Nó làm được điều này là do một loạt các snapshot từ đề án của bạn, và nó hoạt động
 với các snapshot đó để cung cấp cho bạn với chức năng đến phiên bản và
 quản lý mã nguồn của bạn.
 
@@ -19,7 +20,7 @@ quản lý mã nguồn của bạn.
 
 Version Control là một hệ thống ghi lại những thay đổi ở một tập tin, hay một nhóm các tập tin, theo thời gian.
 
-### Centralized Versioning VS Distributed Versioning
+### So sánh giữa Centralized Versioning và Distributed Versioning
 
 * Quản lý phiên bản tập trung (Centralized Versioning) tập trung vào việc đồng bộ hóa, theo dõi, và lưu trữ tập tin.
 * Quản lý phiên bản phân tán (Distributed Versioning) tập trung vào việc chia sẻ các thay đổi. Mỗi sự thay đổi có một mã định dạng (id) duy nhất.
@@ -75,7 +76,7 @@ con trỏ này sẽ cập nhật tự động và trỏ đến commit mới nh�
 
 ### HEAD và head (thành phần của thư mục .git)
 
-HEAD là một con trỏ đến nhánh hiện tại. Một repo chỉ có một HEAD *đang hoạt động*.
+HEAD là một con trỏ đến branch hiện tại. Một repo chỉ có một HEAD *đang hoạt động*.
 head là một con trỏ đến bất kỳ commit nào. Một repo có thể có nhiều head.
 
 ### Các Tài Nguyên Mang Tính Khái Niệm
@@ -165,29 +166,29 @@ $ git add ./*.java
 
 ### branch
 
-Quản lý nhánh. Bạn có thể xem, sửa, tạo, xóa các nhánh bằng cách dùng lệnh này.
+Quản lý nhánh (branch). Bạn có thể xem, sửa, tạo, xóa các nhánh bằng cách dùng lệnh này.
 
 ```bash
-# liệt kê các nhanh đang có và ở remote
+# liệt kê các branch đang có và ở remote
 $ git branch -a
 
-# tạo nhánh mới
+# tạo branch mới
 $ git branch myNewBranch
 
-# xóa một nhánh
+# xóa một branch
 $ git branch -d myBranch
 
-# đặt tên lại một nhánh
+# đặt tên lại một branch
 # git branch -m <oldname> <newname>
 $ git branch -m myBranchName myNewBranchName
 
-# chỉnh sủa diễn giải của một nhánh
+# chỉnh sửa diễn giải của một branch
 $ git branch myBranchName --edit-description
 ```
 
 ### checkout
 
-Cập nhật tất cả các file torng tree hiện tại để cho trùng khớp với phiên bản của index, hoặc tree cụ thể.
+Cập nhật tất cả các file trong tree hiện tại để cho trùng khớp với phiên bản của index, hoặc tree cụ thể.
 
 ```bash
 # Checkout (chuyển) một repo - mặc định là nhánh master
@@ -201,8 +202,8 @@ $ git checkout -b newBranch
 ### clone
 
 Nhân bản, hoặc sao chép, một repo hiện có thành một thư mục mới. Nó cũng thêm
-các nhánh có remote-tracking cho mỗi nhánh trong một repo được nhân bản, mà
-cho phép bạn push đến một nhánh remote.
+các branch có remote-tracking cho mỗi branch trong một repo được nhân bản, mà
+cho phép bạn push đến một remote branch.
 
 ```bash
 # Nhân bản learnxinyminutes-docs
@@ -211,7 +212,7 @@ $ git clone https://github.com/adambard/learnxinyminutes-docs.git
 
 ### commit
 
-Lưu trữ nội dung hiện tại của index trong một "commit" mới. Điều này cho phép tạo ra thay đổi và một lời nhắn (ghi chú) tạo ra bởi người dùng.
+Lưu trữ nội dung hiện tại của index trong một "commit" mới. Điều này cho phép tạo ra thay đổi và một ghi chú tạo ra bởi người dùng.
 
 ```bash
 # commit với một ghi chú
@@ -279,7 +280,7 @@ $ git log --merges
 "Trộn" các thay đổi từ commit bên ngoài vào trong nhánh hiện tại.
 
 ```bash
-# Merge nhánh cụ thể vào nhánh hiện tại.
+# Merge branch cụ thể vào branch hiện tại.
 $ git merge branchName
 
 # Luôn khởi tạo một merge commit khi trộn (merge)
@@ -304,30 +305,35 @@ $ git mv -f myFile existingFile
 
 ### pull
 
-Kéo (tải) về từ một repo và merge nó vào nhánh khác.
+Pull về từ một repo và merge nó vào branch khác.
 
 ```bash
-# Cập nhật repo cục bộ của bạn, bằng cách merge các thay đổi mới
+# Cập nhật repo local của bạn, bằng cách merge các thay đổi mới
 # từ remote "origin" và nhánh "master".
 # git pull <remote> <branch>
 # git pull => hoàn toàn mặc định như => git pull origin master
 $ git pull origin master
 
-# Merge các thay đổi từ nhánh remote và rebase
-# các commit nhánh lên trên thư mục cục bộ, như: "git pull <remote> <branch>, git rebase <branch>"
+# Merge các thay đổi từ remote branch và rebase
+# các commit trong branch lên trên local repo, như sau: "git pull <remote> <branch>, git rebase <branch>"
 $ git pull origin master --rebase
 ```
 
 ### push
 
-Đẩy và trộn (mege) các tay đổi từ một nhánh đế một remote & nhánh.
+push và merge các thay đổi từ một branch đến một remote & branch.
 
 ```bash
-# Push và merge các thay đổi từ repo cục bộ đến một
-# remote tên là "origin" và nhánh "master".
+# Push và merge các thay đổi từ một repo local đến một
+# remote có tên là "origin" và nhánh "master".
 # git push <remote> <branch>
-# git push => hoàn toàn defaults to => git push origin master
+# git push => mặc định ẩn đến => git push origin master
 $ git push origin master
+
+# Để liên kết đến một branch local với một branch remote, thêm vào cờ -u:
+$ git push -u origin master
+# Từ lúc này, bất cứ khi nào bạn muốn push từ cùng một nhánh local đó, sử dụng lối tắt:
+$ git push 
 ```
 
 ### rebase (thận trọng)
@@ -391,3 +397,7 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
 
 * [GitGuys](http://www.gitguys.com/)
+
+* [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
+
+

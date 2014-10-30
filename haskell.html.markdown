@@ -171,8 +171,8 @@ foldl1 (\acc x -> acc + x) [1..5] -- 15
 -- 4. More functions
 ----------------------------------------------------
 
--- currying: if you don't pass in all the arguments to a function,
--- it gets "curried". That means it returns a function that takes the 
+-- partial application: if you don't pass in all the arguments to a function,
+-- it gets "partially applied". That means it returns a function that takes the 
 -- rest of the arguments.
 
 add a b = a + b
