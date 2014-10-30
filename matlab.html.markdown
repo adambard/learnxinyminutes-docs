@@ -15,10 +15,12 @@ If you have any feedback please feel free to reach me at
 ```matlab
 % Comments start with a percent sign.
 
-%{ Multi line comments look 
+%{
+Multi line comments look 
 something
 like
-this %}
+this
+%}
 
 % commands can span multiple lines, using '...':
  a = 1 + 2 + ...
