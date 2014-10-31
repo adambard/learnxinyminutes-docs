@@ -9,13 +9,13 @@ translators:
 filename: learnpython3.py
 ---
 
-Python was created by Guido Van Rossum in the early 90's. It is now one of the most popular
-languages in existence. I fell in love with Python for its syntactic clarity. It's basically
-executable pseudocode.
+Python是由吉多·范罗苏姆(Guido Van Rossum)在90年代早期设计。它是如今最常用的编程
+语言之一。它的语法简洁且优美，几乎就是可执行的伪代码。
 
-Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
+欢迎大家斧正。英文版原作Louie Dinh [@louiedinh](http://twitter.com/louiedinh)
+或着Email louiedinh [at] [谷歌的信箱服务]。中文翻译Geoff Liu。
 
-Note: This article applies to Python 3 specifically. Check out the other tutorial if you want to learn the old Python 2.7
+注意：这篇教程是特别为Python3写的。如果你想学旧版Python2，我们特别有另一篇教程。
 
 ```python
 
@@ -128,7 +128,7 @@ None  # => None
 "etc" is None  # => False
 None is None  # => True
 
-# None，0，空字符串，空列表，空关联数组都算是False
+# None，0，空字符串，空列表，空字典都算是False
 # 所有其他值都是True
 bool(0)  # => False
 bool("")  # => False
@@ -176,7 +176,6 @@ li[-1]  # => 3
 li[4]  # 抛出IndexError
 
 # 列表有切割语法
-# (It's a closed/open range for you mathy types.)
 li[1:3]  # => [2, 4]
 # 取尾
 li[2:]  # => [4, 3]
@@ -196,103 +195,101 @@ del li[2]   # li is now [1, 2, 3]
 # 注意：li和other_li的值都不变
 li + other_li   # => [1, 2, 3, 4, 5, 6]
 
-# Concatenate lists with "extend()"
-li.extend(other_li)   # Now li is [1, 2, 3, 4, 5, 6]
+# 用extend拼接列表
+li.extend(other_li)   # li现在是[1, 2, 3, 4, 5, 6]
 
-# Check for existence in a list with "in"
+# 用in测试列表是否包含值
 1 in li   # => True
 
-# Examine the length with "len()"
+# 用len取列表长度
 len(li)   # => 6
 
 
-# Tuples are like lists but are immutable.
+# 元组是不可改变的序列
 tup = (1, 2, 3)
 tup[0]   # => 1
-tup[0] = 3  # Raises a TypeError
+tup[0] = 3  # 抛出TypeError
 
-# 列表允许的操作元组也可以
+# 列表允许的操作元组大都可以
 len(tup)   # => 3
 tup + (4, 5, 6)   # => (1, 2, 3, 4, 5, 6)
 tup[:2]   # => (1, 2)
 2 in tup   # => True
 
-# You can unpack tuples (or lists) into variables
-a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
-# Tuples are created by default if you leave out the parentheses
+# 可以把元组合列表解包，赋值给变量
+a, b, c = (1, 2, 3)     # 现在a是1，b是2，c是3
+# 元组周围的括号是可以省略的
 d, e, f = 4, 5, 6
-# Now look how easy it is to swap two values
-e, d = d, e     # d is now 5 and e is now 4
+# 交换两个变量的值就这么简单
+e, d = d, e     # 现在d是5，e是4
 
 
-# Dictionaries store mappings
+# 用字典表达映射关系
 empty_dict = {}
-# Here is a prefilled dictionary
+# 初始化的字典
 filled_dict = {"one": 1, "two": 2, "three": 3}
 
-# Look up values with []
+# 用[]取值
 filled_dict["one"]   # => 1
 
-# Get all keys as a list with "keys()".
-# We need to wrap the call in list() because we are getting back an iterable. We'll talk about those later.
-# Note - Dictionary key ordering is not guaranteed.
-# Your results might not match this exactly.
+
+# 用keys获得所有的键。因为keys返回一个可迭代对象，所以在这里把结果包在list里。我们下面会详细介绍可迭代。
+# 注意：字典键的顺序是不定的，你得到的结果可能和以下不同。
 list(filled_dict.keys())   # => ["three", "two", "one"]
 
 
-# Get all values as a list with "values()". Once again we need to wrap it in list() to get it out of the iterable.
-# Note - Same as above regarding key ordering.
+# 用values获得所有的值。跟keys一样，要用list包起来，顺序也可能不同。
 list(filled_dict.values())   # => [3, 2, 1]
 
 
-# Check for existence of keys in a dictionary with "in"
+# 用in测试一个字典是否包含一个键
 "one" in filled_dict   # => True
 1 in filled_dict   # => False
 
-# Looking up a non-existing key is a KeyError
+# 访问不存在的键会导致KeyError
 filled_dict["four"]   # KeyError
 
-# Use "get()" method to avoid the KeyError
+# 用get来避免KeyError
 filled_dict.get("one")   # => 1
 filled_dict.get("four")   # => None
-# The get method supports a default argument when the value is missing
+# 当键不存在的时候get方法可以返回默认值
 filled_dict.get("one", 4)   # => 1
 filled_dict.get("four", 4)   # => 4
 
-# "setdefault()" inserts into a dictionary only if the given key isn't present
-filled_dict.setdefault("five", 5)  # filled_dict["five"] is set to 5
-filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5
+# setdefault方法只有当键不存在的时候插入新值
+filled_dict.setdefault("five", 5)  # filled_dict["five"]设为5
+filled_dict.setdefault("five", 6)  # filled_dict["five"]还是5
 
-# Adding to a dictionary
+# 字典赋值
 filled_dict.update({"four":4}) #=> {"one": 1, "two": 2, "three": 3, "four": 4}
-#filled_dict["four"] = 4  #another way to add to dict
+filled_dict["four"] = 4  # 另一种赋值方法
 
-# Remove keys from a dictionary with del
-del filled_dict["one"]  # Removes the key "one" from filled dict
+# 用del删除
+del filled_dict["one"]  # 从filled_dict中把one删除
 
 
-# Sets store ... well sets
+# 用set表达集合
 empty_set = set()
-# Initialize a set with a bunch of values. Yeah, it looks a bit like a dict. Sorry.
-some_set = {1, 1, 2, 2, 3, 4}   # some_set is now {1, 2, 3, 4}
+# 初始化一个集合，语法跟字典相似。
+some_set = {1, 1, 2, 2, 3, 4}   # some_set现在是{1, 2, 3, 4}
 
-#Can set new variables to a set
+# 可以把集合赋值于变量
 filled_set = some_set
 
-# Add one more item to the set
-filled_set.add(5)   # filled_set is now {1, 2, 3, 4, 5}
+# 为集合添加元素
+filled_set.add(5)   # filled_set现在是{1, 2, 3, 4, 5}
 
-# Do set intersection with &
+# & 取交集
 other_set = {3, 4, 5, 6}
 filled_set & other_set   # => {3, 4, 5}
 
-# Do set union with |
+# | 取并集
 filled_set | other_set   # => {1, 2, 3, 4, 5, 6}
 
-# Do set difference with -
+# - 取补集
 {1, 2, 3, 4} - {2, 3, 5}   # => {1, 4}
 
-# Check for existence in a set with in
+# in 测试集合是否包含元素
 2 in filled_set   # => True
 10 in filled_set   # => False
 
@@ -315,20 +312,18 @@ else:                  # else也是可选的
 
 
 """
-For loops iterate over lists
-prints:
+用for循环语句遍历列表
+打印:
     dog is a mammal
     cat is a mammal
     mouse is a mammal
 """
 for animal in ["dog", "cat", "mouse"]:
-    # You can use format() to interpolate formatted strings
     print("{} is a mammal".format(animal))
 
 """
-"range(number)" returns a list of numbers
-from zero to the given number
-prints:
+"range(number)"返回数字列表从0到给的数字
+打印:
     0
     1
     2
@@ -338,8 +333,8 @@ for i in range(4):
     print(i)
 
 """
-While loops go until a condition is no longer met.
-prints:
+while循环直到条件不满足
+打印:
     0
     1
     2
@@ -348,49 +343,49 @@ prints:
 x = 0
 while x < 4:
     print(x)
-    x += 1  # Shorthand for x = x + 1
+    x += 1  # x = x + 1 的简写
 
-# Handle exceptions with a try/except block
+# try/except块处理异常状况
 try:
-    # Use "raise" to raise an error
+    # 用raise来抛出异常
     raise IndexError("This is an index error")
 except IndexError as e:
-    pass    # Pass is just a no-op. Usually you would do recovery here.
+    pass    # pass是无操作，但是应该在这里处理错误
 except (TypeError, NameError):
-    pass    # Multiple exceptions can be handled together, if required.
-else:   # Optional clause to the try/except block. Must follow all except blocks
-    print("All good!")   # Runs only if the code in try raises no exceptions
+    pass    # 可以同时处理不同类的错误
+else:   # else语句是可选的，必须在所有的except之后
+    print("All good!")   # 只有当try运行完没有错误的时候这句才会运行
 
-# Python offers a fundamental abstraction called the Iterable.
-# An iterable is an object that can be treated as a sequence.
-# The object returned the range function, is an iterable.
+
+# Python提供一个叫做可迭代(iterable)的基本抽象。一个可迭代对象是可以被当作序列
+# 的对象。比如说上面range返回的对象就是可迭代的。
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
-print(our_iterable) #=> range(1,10). This is an object that implements our Iterable interface
+print(our_iterable) # => range(1,10) 是一个实现可迭代接口的对象
 
-# We can loop over it.
+# 可迭代对象可以遍历
 for i in our_iterable:
-    print(i)    # Prints one, two, three
+    print(i)    # 打印 one, two, three
 
-# However we cannot address elements by index.
-our_iterable[1]  # Raises a TypeError
+# 但是不可以随机访问
+our_iterable[1]  # 抛出TypeError
 
-# An iterable is an object that knows how to create an iterator.
+# 可迭代对象知道怎么生成迭代器
 our_iterator = iter(our_iterable)
 
-# Our iterator is an object that can remember the state as we traverse through it.
-# We get the next object by calling the __next__ function.
+# 迭代器是一个可以记住遍历的位置的对象
+# 用__next__可以取得下一个元素
 our_iterator.__next__()  #=> "one"
 
-# It maintains state as we call __next__.
+# 再一次调取__next__时会记得位置
 our_iterator.__next__()  #=> "two"
 our_iterator.__next__()  #=> "three"
 
-# After the iterator has returned all of its data, it gives you a StopIterator Exception
-our_iterator.__next__() # Raises StopIteration
+# 当迭代器所有元素都取出后，会抛出StopIteration
+our_iterator.__next__() # 抛出StopIteration
 
-# You can grab all the elements of an iterator by calling list() on it.
+# 可以用list一次取出迭代器所有的元素
 list(filled_dict.keys())  #=> Returns ["one", "two", "three"]
 
 
