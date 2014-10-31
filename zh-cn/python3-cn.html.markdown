@@ -545,29 +545,27 @@ Human.grunt()   # => "*grunt*"
 ## 6. 模块
 ####################################################
 
-# You can import modules
+# 用import导入模块
 import math
 print(math.sqrt(16))  # => 4
 
-# You can get specific functions from a module
+# 也可以从模块中导入个别值
 from math import ceil, floor
 print(ceil(3.7))  # => 4.0
 print(floor(3.7))   # => 3.0
 
-# You can import all functions from a module.
-# Warning: this is not recommended
+# 可以导入一个模块中所有值
+# 警告：不建议这么做
 from math import *
 
-# You can shorten module names
+# 如此缩写模块名字
 import math as m
 math.sqrt(16) == m.sqrt(16)   # => True
 
-# Python modules are just ordinary python files. You
-# can write your own, and import them. The name of the
-# module is the same as the name of the file.
+# Python模块其实就是普通的Python文件。你可以自己写，然后导入，
+# 模块的名字就是文件的名字。
 
-# You can find out which functions and attributes
-# defines a module.
+# 你可以这样列出一个模块里所有的值
 import math
 dir(math)
 
