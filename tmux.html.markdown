@@ -2,8 +2,7 @@
 category: tool
 tool: tmux
 contributors:
-    - ["kaernyk", "https://github.com/kaernyk"]
-    - ["jmaud", "https://github.com/jmaud"]
+    - ["wzsk", "https://github.com/wzsk"]
 filename: LearnTmux.txt
 ---
 
