@@ -208,4 +208,30 @@ grep "^foo.*bar$" file.txt
 grep -c "^foo.*bar$" file.txt
 # if you literally want to search for the string, and not the regex, use fgrep (or grep -F)
 fgrep "^foo.*bar$" file.txt 
+
+
+# Read Bash shell builtins documentation with the bash 'help' builtin:
+help
+help help
+help for
+help return
+help source
+help .
+
+# Read Bash manpage documentation with man
+apropos bash
+man 1 bash
+man bash
+
+# Read info documentation with info (? for help)
+apropos info | grep '^info.*('
+man info
+info info
+info 5 info
+
+# Read bash info documentation:
+info bash
+info bash 'Bash Features'
+info bash 6
+info --apropos bash
 ```
