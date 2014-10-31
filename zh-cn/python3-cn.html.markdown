@@ -148,8 +148,8 @@ print("I'm Python. Nice to meet you!")
 some_var = 5
 some_var  # => 5
 
-# 存取未赋值的变量会抛出异常
-# 下面流程控制一段更深入讲解异常处理
+# 访问未赋值的变量会抛出异常
+# 参考流程控制一段来学习异常处理
 some_unknown_var  # 抛出NameError
 
 # 用列表(list)储存序列
@@ -167,22 +167,22 @@ li.pop()        # => 3 且li现在是[1, 2, 4]
 # 把3再放回去
 li.append(3)    # li变回[1, 2, 4, 3]
 
-# 列表取值跟数组一样
+# 列表存取跟数组一样
 li[0]  # => 1
 # 取出最后一个元素
 li[-1]  # => 3
 
-# 越界读取会造成IndexError
+# 越界存取会造成IndexError
 li[4]  # 抛出IndexError
 
-# 列表的切割语法
+# 列表有切割语法
 # (It's a closed/open range for you mathy types.)
 li[1:3]  # => [2, 4]
 # 取尾
 li[2:]  # => [4, 3]
 # 取头
 li[:3]  # => [1, 2, 4]
-# 每两个取一个
+# 隔一个取一个
 li[::2]   # =>[1, 4]
 # 倒排列表
 li[::-1]   # => [3, 4, 2, 1]
