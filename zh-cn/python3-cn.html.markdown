@@ -140,60 +140,60 @@ bool({}) #=> False
 ## 2. 变量和集合
 ####################################################
 
-# Python has a print function
+# print是内置的打印函数
 print("I'm Python. Nice to meet you!")
 
-# No need to declare variables before assigning to them.
-# Convention is to use lower_case_with_underscores
+# 在给变量赋值前不用提前声明
+# 传统的变量命名是小写，用下划线分隔单词
 some_var = 5
 some_var  # => 5
 
-# Accessing a previously unassigned variable is an exception.
-# See Control Flow to learn more about exception handling.
-some_unknown_var  # Raises a NameError
+# 存取未赋值的变量会抛出异常
+# 下面流程控制一段更深入讲解异常处理
+some_unknown_var  # 抛出NameError
 
-# Lists store sequences
+# 用列表(list)储存序列
 li = []
-# You can start with a prefilled list
+# 创建列表时也可以同时赋给元素
 other_li = [4, 5, 6]
 
-# Add stuff to the end of a list with append
-li.append(1)    # li is now [1]
-li.append(2)    # li is now [1, 2]
-li.append(4)    # li is now [1, 2, 4]
-li.append(3)    # li is now [1, 2, 4, 3]
-# Remove from the end with pop
-li.pop()        # => 3 and li is now [1, 2, 4]
-# Let's put it back
-li.append(3)    # li is now [1, 2, 4, 3] again.
+# 用append在列表最后追加元素
+li.append(1)    # li现在是[1]
+li.append(2)    # li现在是[1, 2]
+li.append(4)    # li现在是[1, 2, 4]
+li.append(3)    # li现在是[1, 2, 4, 3]
+# 用pop从列表尾部删除
+li.pop()        # => 3 且li现在是[1, 2, 4]
+# 把3再放回去
+li.append(3)    # li变回[1, 2, 4, 3]
 
-# Access a list like you would any array
+# 列表取值跟数组一样
 li[0]  # => 1
-# Look at the last element
+# 取出最后一个元素
 li[-1]  # => 3
 
-# Looking out of bounds is an IndexError
-li[4]  # Raises an IndexError
+# 越界读取会造成IndexError
+li[4]  # 抛出IndexError
 
-# You can look at ranges with slice syntax.
+# 列表的切割语法
 # (It's a closed/open range for you mathy types.)
 li[1:3]  # => [2, 4]
-# Omit the beginning
+# 取尾
 li[2:]  # => [4, 3]
-# Omit the end
+# 取头
 li[:3]  # => [1, 2, 4]
-# Select every second entry
+# 每两个取一个
 li[::2]   # =>[1, 4]
-# Revert the list
+# 倒排列表
 li[::-1]   # => [3, 4, 2, 1]
 # Use any combination of these to make advanced slices
 # li[start:end:step]
 
-# Remove arbitrary elements from a list with "del"
+# 用del删除任何一个元素
 del li[2]   # li is now [1, 2, 3]
 
-# You can add lists
-# Note: values for li and for other_li are not modified.
+# 列表可以相加
+# 注意：li和other_li的值都不变
 li + other_li   # => [1, 2, 3, 4, 5, 6]
 
 # Concatenate lists with "extend()"
@@ -211,7 +211,7 @@ tup = (1, 2, 3)
 tup[0]   # => 1
 tup[0] = 3  # Raises a TypeError
 
-# You can do all those list thingies on tuples too
+# 列表允许的操作元组也可以
 len(tup)   # => 3
 tup + (4, 5, 6)   # => (1, 2, 3, 4, 5, 6)
 tup[:2]   # => (1, 2)
@@ -301,17 +301,17 @@ filled_set | other_set   # => {1, 2, 3, 4, 5, 6}
 ## 3. 流程控制和迭代器
 ####################################################
 
-# Let's just make a variable
+# 先随便定义一个变量
 some_var = 5
 
-# Here is an if statement. Indentation is significant in python!
-# prints "some_var is smaller than 10"
+# 这是个if语句。注意缩进在Python里是有意义的
+# 印出"some_var比10小"
 if some_var > 10:
-    print("some_var is totally bigger than 10.")
-elif some_var < 10:    # This elif clause is optional.
-    print("some_var is smaller than 10.")
-else:                  # This is optional too.
-    print("some_var is indeed 10.")
+    print("some_var比10大")
+elif some_var < 10:    # elif句是可选的
+    print("some_var比10小")
+else:                  # else也是可选的
+    print("some_var就是10")
 
 
 """
@@ -399,16 +399,16 @@ list(filled_dict.keys())  #=> Returns ["one", "two", "three"]
 ## 4. 函数
 ####################################################
 
-# Use "def" to create new functions
+# 用def定义新函数
 def add(x, y):
     print("x is {} and y is {}".format(x, y))
-    return x + y    # Return values with a return statement
+    return x + y    # 用return语句返回
 
-# Calling functions with parameters
-add(5, 6)   # => prints out "x is 5 and y is 6" and returns 11
+# 调用函数
+add(5, 6)   # => 印出"x is 5 and y is 6"并且返回11
 
-# Another way to call functions is with keyword arguments
-add(y=6, x=5)   # Keyword arguments can arrive in any order.
+# 也可以用关键字参数来调用函数
+add(y=6, x=5)   # 关键字参数可以用任何顺序
 
 
 # You can define functions that take a variable number of
