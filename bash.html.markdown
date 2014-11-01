@@ -111,12 +111,45 @@ ls -l # Lists every file and directory on a separate line
 # .txt files in the current directory:
 ls -l | grep "\.txt"
 
-# You can also redirect a command, input and error output.
-python2 hello.py < "input.in"
-python2 hello.py > "output.out"
-python2 hello.py 2> "error.err"
-# The output error will overwrite the file if it exists, if you want to
-# concatenate them, use ">>" instead.
+# You can redirect command input and output (stdin, stdout, and stderr).
+# Read from stdin until ^EOF$ and overwrite hello.py with the lines
+# between "EOF":
+cat > hello.py << EOF
+#!/usr/bin/env python
+from __future__ import print_function
+import sys
+print("#stdout", file=sys.stdout)
+print("#stderr", file=sys.stderr)
+for line in sys.stdin:
+    print(line, file=sys.stdout)
+EOF
+
+# Run hello.py with various stdin, stdout, and stderr redirections:
+python hello.py < "input.in"
+python hello.py > "output.out"
+python hello.py 2> "error.err"
+python hello.py > "output-and-error.log" 2>&1
+python hello.py > /dev/null 2>&1
+# The output error will overwrite the file if it exists,
+# if you want to append instead, use ">>":
+python hello.py >> "output.out" 2>> "error.err"
+
+# Overwrite output.txt, append to error.err, and count lines:
+info bash 'Basic Shell Features' 'Redirections' > output.out 2>> error.err
+wc -l output.out error.err
+
+# Run a command and print its file descriptor (e.g. /dev/fd/123)
+# see: man fd
+echo <(echo "#helloworld")
+
+# Overwrite output.txt with "#helloworld":
+cat > output.out <(echo "#helloworld")
+echo "#helloworld" > output.out
+echo "#helloworld" | cat > output.out
+echo "#helloworld" | tee output.out >/dev/null
+
+# Cleanup temporary files verbosely (add '-i' for interactive)
+rm -v output.out error.err output-and-error.log
 
 # Commands can be substituted within other commands using $( ):
 # The following command displays the number of files and directories in the
