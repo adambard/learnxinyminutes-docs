@@ -179,7 +179,7 @@ c(3,3,3,2,2,1) # 3 3 3 2 2 1
 # You can also have infinitely large or small numbers
 class(Inf)	# "numeric"
 class(-Inf)	# "numeric"
-# You might use "Inf", for example, in integrate( dnorm(x), 3, Inf);
+# You might use "Inf", for example, in integrate(dnorm, 3, Inf);
 # this obviates Z-score tables.
 
 # BASIC ARITHMETIC
@@ -236,11 +236,12 @@ c('Z', 'o', 'r', 'r', 'o') == "Z" # TRUE FALSE FALSE FALSE FALSE
 # FACTORS
 # The factor class is for categorical data
 # Factors can be ordered (like childrens' grade levels) or unordered (like gender)
-factor(c("female", "female", "male", "NA", "female"))
-#  female female male   NA     female
-# Levels: female male NA
+factor(c("female", "female", "male", NA, "female"))
+#  female female male   <NA>   female
+# Levels: female male
 # The "levels" are the values the categorical data can take
-levels(factor(c("male", "male", "female", "NA", "female"))) # "female" "male"   "NA" 
+# Note that missing data does not enter the levels
+levels(factor(c("male", "male", "female", NA, "female"))) # "female" "male"
 # If a factor vector has length 1, its levels will have length 1, too
 length(factor("male")) # 1
 length(levels(factor("male"))) # 1
