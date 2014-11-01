@@ -330,79 +330,117 @@ switch (grade) {
 
 
 ///////////////////////////////////
+// 4. Функции, Область видимости и Замыкания
 // 4. Functions, Scope and Closures
 
+// Функции в JavaScript объявляются с помощью ключевого слова function.
 // JavaScript functions are declared with the function keyword.
 function myFunction(thing){
-    return thing.toUpperCase();
+    return thing.toUpperCase(); // приведение к верхнему регистру
 }
 myFunction("foo"); // = "FOO"
 
+// Помните, что значение, которое должно быть возкращено должно начинаться
+// на той же строке, где расположено ключевое слово 'return'. В противном случае
+// будет возвращено undefined. Такое поведения объясняется автоматической 
+// вставкой разделителей ';'. Оглядывйтесь на этот факт, если используете
+// BSD стиль оформления кода.
 // Note that the value to be returned must start on the same line as the
 // 'return' keyword, otherwise you'll always return 'undefined' due to
 // automatic semicolon insertion. Watch out for this when using Allman style.
 function myFunction()
 {
-    return // <- semicolon automatically inserted here
+    return // <- разделитель автоматически будет вставлен здесь
     {
         thisIsAn: 'object literal'
     }
 }
 myFunction(); // = undefined
 
+// Функции в JavaScript являются объектами, поэтому их можно назначить в 
+// переменные с разными названиями и передавать в другие функции, как аргументы,
+// на пример, при указании обработчика события.
 // JavaScript functions are first class objects, so they can be reassigned to
 // different variable names and passed to other functions as arguments - for
 // example, when supplying an event handler:
 function myFunction(){
+    // этот фрагмент кода будет вызван через 5 секунд
     // this code will be called in 5 seconds' time
 }
 setTimeout(myFunction, 5000);
+// Обратите внимание, что setTimeout не является частью языка, однако он 
+// доступен в API браузеров и Node.js.
 // Note: setTimeout isn't part of the JS language, but is provided by browsers
 // and Node.js.
 
+// Объект функции на самом деле не обязательно объявлять с именем - можно  
+// создать анонимную функцию прямо в аргументах другой функции.
 // Function objects don't even have to be declared with a name - you can write
 // an anonymous function definition directly into the arguments of another.
 setTimeout(function(){
+    // этот фрагмент кода будет вызван через 5 секунд
     // this code will be called in 5 seconds' time
 }, 5000);
 
+// В JavaScript есть области видимости. У функций есть собственные области 
+// видимости, у других блоков их нет.
 // JavaScript has function scope; functions get their own scope but other blocks
 // do not.
 if (true){
     var i = 5;
 }
-i; // = 5 - not undefined as you'd expect in a block-scoped language
+i; // = 5, а не undefined, как это было бы ожидаемо(todo: поправить)
+   // в языке, создающем области видисти для блоков "
 
+// Это привело к появлению паттерна общего назначения "immediately-executing
+// anonymous functions" (сразу выполняющиеся анонимные функции), который
+// позволяет предотвратить запись временных переменных в общую облать видимости.
 // This has led to a common pattern of "immediately-executing anonymous
 // functions", which prevent temporary variables from leaking into the global
 // scope.
 (function(){
     var temporary = 5;
+    // Для доступа к глобальной области видимости можно использовать запись в 
+    // некоторый 'глобальный объект', для браузеров это 'window'. Глобальный 
+    // объект может называться по-разному в небраузерных средах, таких Node.js.
     // We can access the global scope by assiging to the 'global object', which
     // in a web browser is always 'window'. The global object may have a
     // different name in non-browser environments such as Node.js.
     window.permanent = 10;
 })();
-temporary; // raises ReferenceError
+temporary; // вызывает исключение ReferenceError
 permanent; // = 10
 
+// Одной из сильных сторон JavaScript являются замыкания. Если функция 
+// объявлена в вниутри другой функции, внутренняя функция имеет доступ ко всем 
+// переменным внешней функции, даже после того, как внешняя функции завершила 
+// свое выполнение
 // One of JavaScript's most powerful features is closures. If a function is
 // defined inside another function, the inner function has access to all the
 // outer function's variables, even after the outer function exits.
 function sayHelloInFiveSeconds(name){
-    var prompt = "Hello, " + name + "!";
+    var prompt = "Привет, " + name + "!";
+    // Внутренние фунции помещаются в локальную область видимости, как-будто они
+    // объявлены с ключевым словом 'var'.
     // Inner functions are put in the local scope by default, as if they were
     // declared with 'var'.
     function inner(){
         alert(prompt);
     }
     setTimeout(inner, 5000);
+    // setTimeout является асинхроннной, и поэтому функция sayHelloInFiveSeconds
+    // завершит свое выполнение сразу и setTimeout вызовет inner позже.
+    // Однако, так как inner "замкнута"(todo: уточнить "закрыта внутри") 
+    // sayHelloInFiveSeconds, inner все еще будет иметь доступ к переменной 
+    // prompt, когда будет вызвана.
     // setTimeout is asynchronous, so the sayHelloInFiveSeconds function will
     // exit immediately, and setTimeout will call inner afterwards. However,
     // because inner is "closed over" sayHelloInFiveSeconds, inner still has
     // access to the 'prompt' variable when it is finally called.
 }
-sayHelloInFiveSeconds("Adam"); // will open a popup with "Hello, Adam!" in 5s
+sayHelloInFiveSeconds("Вася"); // откроет модальное окно с сообщением
+                               // "Привет, Вася" по истечении 5 секунд.
+
 
 ///////////////////////////////////
 // 5. More about Objects; Constructors and Prototypes
