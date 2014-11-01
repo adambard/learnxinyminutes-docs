@@ -252,65 +252,79 @@ myObj.myThirdKey = true;
 myObj.myFourthKey; // = undefined
 
 ///////////////////////////////////
+// 3. Логика и управляющие структуры
 // 3. Logic and Control Structures
 
+// 
+// Синтаксис управляющих структур очень похож на его реализацию в Java.
 // The syntax for this section is almost identical to Java's. 
 
+// if работает так как вы ожидаете.
 // The if structure works as you'd expect.
 var count = 1;
 if (count == 3){
-    // evaluated if count is 3
+    // выполнится, если значение count равно 3
 } else if (count == 4){
-    // evaluated if count is 4
+    // выполнится, если значение count равно 4
 } else {
-    // evaluated if it's not either 3 or 4
+    // выполнится, если значение countне будет равно ни 3 ни 4
 }
 
-// As does while.
+// Поведение while тоже вполне предсказуемо
 while (true){
-    // An infinite loop!
+    // Бесконечный цикл
 }
 
+// Циклы do-while похожи на while, но они всегда выполняются хотябы 1 раз.
 // Do-while loops are like while loops, except they always run at least once.
 var input
 do {
     input = getInput();
 } while (!isValid(input))
 
+// Цикл for такой же как в C b Java:
+// инициализация; условие продолжения; итерация
 // the for loop is the same as C and Java:
 // initialisation; continue condition; iteration.
 for (var i = 0; i < 5; i++){
+    // выполнится 5 раз
     // will run 5 times
 }
 
+// && - логическое и, || - логическое или
 // && is logical and, || is logical or
-if (house.size == "big" && house.colour == "blue"){
+if (house.size == "big" && house.color == "blue"){
     house.contains = "bear";
 }
-if (colour == "red" || colour == "blue"){
+if (color == "red" || color == "blue"){
+    // если цвет или красный или синий
     // colour is either red or blue
 }
 
+// && и || удобны для установки значений по умолчанию.
 // && and || "short circuit", which is useful for setting default values.
 var name = otherName || "default";
 
 
+// выражение switch проверяет  равество с помощью ===
+// используйте 'break' после каждого case 
+// иначе помимо правильного case выполнятся и все последующие.
 // switch statement checks for equality with ===
 // use 'break' after each case 
 // or the cases after the correct one will be executed too. 
-grade = 'B';
+grade = '4';    // оценка
 switch (grade) {
-  case 'A':
-    console.log("Great job");
+  case '5':
+    console.log("Великолепно");
     break;
-  case 'B':
-    console.log("OK job");
+  case '4':
+    console.log("Неплохо");
     break;
-  case 'C':
-    console.log("You can do better");
+  case '3':
+    console.log("Можно и лучше");
     break;
   default:
-    console.log("Oy vey");
+    console.log("Да уж.");
     break;
 }
 
