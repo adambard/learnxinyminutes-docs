@@ -463,7 +463,7 @@ MyConstructor.prototype = {
         return this.myNumber
     }
 };
-var myNewObj2 = new myConstructor();
+var myNewObj2 = new MyConstructor();
 myNewObj2.getMyNumber(); // = 5
 
 // Alle primitiven Typen, also strings und numbers, haben auch Konstruktoren, 
