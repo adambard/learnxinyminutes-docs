@@ -443,8 +443,10 @@ sayHelloInFiveSeconds("Вася"); // откроет модальное окно
 
 
 ///////////////////////////////////
+// 5. Немного об Объектах. Конструкторы и Прототипы
 // 5. More about Objects; Constructors and Prototypes
 
+// Объекты погут содержать функции
 // Objects can contain functions.
 var myObj = {
     myFunc: function(){
@@ -453,6 +455,8 @@ var myObj = {
 };
 myObj.myFunc(); // = "Hello world!"
 
+// Когда функции прикрепленные к объекту вызываются, они могут получить доступ 
+// к данным объекта, ипользую ключевое слово this.
 // When functions attached to an object are called, they can access the object
 // they're attached to using the this keyword.
 myObj = {
@@ -463,12 +467,17 @@ myObj = {
 };
 myObj.myFunc(); // = "Hello world!"
 
+// Содержание this определяется исходя из того, как была вызвана функция, а 
+// не места её определения. По этой причине наша функция не будет работать вне
+// контекста объекта.
 // What this is set to has to do with how the function is called, not where
 // it's defined. So, our function doesn't work if it isn't called in the
 // context of the object.
 var myFunc = myObj.myFunc;
 myFunc(); // = undefined
 
+// И напротив, функция может быть присвоена объекту и получить доступ к нему
+// через this, даже если она не была прикреплена к объекту в момент её создания.
 // Inversely, a function can be assigned to the object and gain access to it
 // through this, even if it wasn't attached when it was defined.
 var myOtherFunc = function(){
@@ -477,6 +486,7 @@ var myOtherFunc = function(){
 myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "HELLO WORLD!"
 
+// Также можно указать контекс выполнения фунции с помощью 'call' или 'apply'.
 // We can also specify a context for a function to execute in when we invoke it
 // using 'call' or 'apply'.
 
@@ -485,10 +495,13 @@ var anotherFunc = function(s){
 }
 anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
 
+// Функция 'apply' очень похожа, но принимает массив со списком аргументов.
 // The 'apply' function is nearly identical, but takes an array for an argument list.
 
 anotherFunc.apply(myObj, [" And Hello Sun!"]); // = "Hello World! And Hello Sun!"
 
+// Это может быть удобно, когда работаешь с фунцией принимающей на вход 
+// последовательность аргументов и нужно передать их в виде массива.
 // This is useful when working with a function that accepts a sequence of arguments
 // and you want to pass an array.
 
@@ -496,18 +509,25 @@ Math.min(42, 6, 27); // = 6
 Math.min([42, 6, 27]); // = NaN (uh-oh!)
 Math.min.apply(Math, [42, 6, 27]); // = 6
 
+// Однако, 'call' и 'apply' не имеют постоянного эффекта. Если вы хотите 
+// зафиксировать контекст для функции, используйте bind.
 // But, 'call' and 'apply' are only temporary. When we want it to stick, we can use
 // bind.
 
 var boundFunc = anotherFunc.bind(myObj);
 boundFunc(" And Hello Saturn!"); // = "Hello World! And Hello Saturn!"
 
+// bind можно использовать чтобы частично передать аргументы в 
+// функцию (каррировать).
 // Bind can also be used to partially apply (curry) a function.
 
 var product = function(a, b){ return a * b; }
 var doubler = product.bind(this, 2);
 doubler(8); // = 16
 
+// Когда функция вызывается с ключевым словом new, создается новый объект.
+// Данный объект становится доступным функции через ключевое слово this. 
+// Функции спроектированные вызываться таким способом называются конструкторами.
 // When you call a function with the new keyword, a new object is created, and
 // made available to the function via the this keyword. Functions designed to be
 // called like that are called constructors.
@@ -518,10 +538,17 @@ var MyConstructor = function(){
 myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
 
+// Любой объект в JavaScript имеет 'прототип'. Когда выпытаетесь получить доступ
+// к свойству не объявленному в данном объекте, интерпретатор будет искать его 
+// в прототипе.
 // Every JavaScript object has a 'prototype'. When you go to access a property
 // on an object that doesn't exist on the actual object, the interpreter will
 // look at its prototype.
 
+// Некоторые реализации JS позволяют получить доступ к прототипу с помощью 
+// волшебного свойства __proto__. До момента пока оно не являются стандартным, 
+// __proto__ полезно лишь для изучения прототипов в JavaScript. Мы разберемся 
+// со стандартными способами работы с прототипом несколько позже.
 // Some JS implementations let you access an object's prototype on the magic
 // property __proto__. While this is useful for explaining prototypes it's not
 // part of the standard; we'll get to standard ways of using prototypes later.
@@ -537,10 +564,10 @@ var myPrototype = {
 
 myObj.__proto__ = myPrototype;
 myObj.meaningOfLife; // = 42
-
-// This works for functions, too.
 myObj.myFunc(); // = "hello world!"
 
+// Естествно, если в свойства нет в прототипе, поиск будет продолжен в прототипе
+// прототипа и так далее.
 // Of course, if your property isn't on your prototype, the prototype's
 // prototype is searched, and so on.
 myPrototype.__proto__ = {
@@ -548,21 +575,32 @@ myPrototype.__proto__ = {
 };
 myObj.myBoolean; // = true
 
+// Ничего не копируется, каждый объект хранит ссылку на свой прототип. Если 
+// изменить прототип, все изменения отразятся во всех его потомках.
 // There's no copying involved here; each object stores a reference to its
 // prototype. This means we can alter the prototype and our changes will be
 // reflected everywhere.
 myPrototype.meaningOfLife = 43;
 myObj.meaningOfLife; // = 43
 
+// Как было сказано выше, __proto__ не является стандартом, и нет стандартного
+// способа изменить прототип у созданного объекта. Однако, есть два способа 
+// создать объект с заданным прототипом.
 // We mentioned that __proto__ was non-standard, and there's no standard way to
 // change the prototype of an existing object. However, there are two ways to
 // create a new object with a given prototype.
 
+// Первый способ - Object.create, был добавлен в JS относительно недавно, и 
+// потому не доступен в более ранних реализациях языка.
 // The first is Object.create, which is a recent addition to JS, and therefore
 // not available in all implementations yet.
 var myObj = Object.create(myPrototype);
 myObj.meaningOfLife; // = 43
 
+// Второй вариан доступен везде и связан с конструкторами. Конструкторы имеют 
+// свойство prototype. Это воовсе не прототип функции конструктора, напротив, 
+// это прототип, который присваевается новым объектам, созданным с этим 
+// конструктором с помощью ключевого слова new.
 // The second way, which works anywhere, has to do with constructors.
 // Constructors have a property called prototype. This is *not* the prototype of
 // the constructor function itself; instead, it's the prototype that new objects
@@ -578,23 +616,30 @@ myNewObj2.getMyNumber(); // = 5
 myNewObj2.myNumber = 6
 myNewObj2.getMyNumber(); // = 6
 
+// У встроенных типов таких, как строки и числа, тоже есть конструкторы, 
+// создающие эквивалентные объекты-обертки.
 // Built-in types like strings and numbers also have constructors that create
 // equivalent wrapper objects.
 var myNumber = 12;
 var myNumberObj = new Number(12);
 myNumber == myNumberObj; // = true
 
+// Правда, они не совсем эквивалентны.
 // Except, they aren't exactly equivalent.
 typeof myNumber; // = 'number'
 typeof myNumberObj; // = 'object'
 myNumber === myNumberObj; // = false
 if (0){
+    // Этот фрагмент кода не будет выпонен, так как 0 приводится к false
     // This code won't execute, because 0 is falsy.
 }
 if (Number(0)){
+    // Этот фрагмент кода *будет* выпонен, так как Number(0) приводится к true.
     // This code *will* execute, because Number(0) is truthy.
 }
 
+// Однако, оберточные объекты и обычные встроенные типы имеют общие прототипы, 
+// следовательно вы можете расширить функциональность строки, например.
 // However, the wrapper objects and the regular builtins share a prototype, so
 // you can actually add functionality to a string, for instance.
 String.prototype.firstCharacter = function(){
@@ -602,17 +647,23 @@ String.prototype.firstCharacter = function(){
 }
 "abc".firstCharacter(); // = "a"
 
+// Этот факт часто используется для создания полифилов(polyfill) - реализации 
+// новых возможностей JS в его болле старых версиях для того чтобы их можно было 
+// использовать в устаревших браузерах.
 // This fact is often used in "polyfilling", which is implementing newer
 // features of JavaScript in an older subset of JavaScript, so that they can be
 // used in older environments such as outdated browsers.
 
+// Например, мы упомянули, что Object.create не доступен во всех версиях 
+// JavaScript, но мы може создать полифилл.
 // For instance, we mentioned that Object.create isn't yet available in all
 // implementations, but we can still use it with this polyfill:
-if (Object.create === undefined){ // don't overwrite it if it exists
+if (Object.create === undefined){ // не переопределяем если есть
     Object.create = function(proto){
-        // make a temporary constructor with the right prototype
+        // создаем временный конструктор с заданным прототипом
         var Constructor = function(){};
         Constructor.prototype = proto;
+        // создаём новый объект с правильным прототипом
         // then use it to create a new, appropriately-prototyped object
         return new Constructor();
     }
