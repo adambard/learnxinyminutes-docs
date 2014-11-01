@@ -38,7 +38,7 @@ machWas()
 3; // = 3
 1.5; // = 1.5
 
-// Alle grundlegenden arithmetischen Operationen arbeiten wie erwartet.
+// Beinahe alle grundlegenden arithmetischen Operationen arbeiten wie erwartet.
 1 + 1; // = 2
 0.1 + 0.2; // = 0.30000000000000004
 10 * 2; // = 20
