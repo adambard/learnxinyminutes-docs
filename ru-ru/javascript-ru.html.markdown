@@ -237,12 +237,12 @@ var myObj = {myKey: "myValue", "my other key": 4};
 myObj["my other key"]; // = 4
 
 // ... или используя точечную нотацию, при условии что ключ является 
-// корректным идентификатором
+// корректным идентификатором.
 // ... or using the dot syntax, provided the key is a valid identifier.
 myObj.myKey; // = "myValue"
 
 // Объекты мутабельны. В существуюещем объекте можно изменить значние 
-// или добавить новый атрибут
+// или добавить новый атрибут.
 // Objects are mutable; values can be changed and new keys added.
 myObj.myThirdKey = true;
 
