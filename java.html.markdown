@@ -126,7 +126,7 @@ public class LearnJava {
         // LinkedLists - Implementation of doubly-linked list. All of the
         //             operations perform as could be expected for
         //             a doubly-linked list.
-        // Maps - An objects that maps keys to values. A map cannot contain
+        // Maps - A set of objects that maps keys to values. A map cannot contain
         //             duplicate keys; each key can map to at most one value.
         // HashMaps - This class uses a hashtable to implement the Map interface.
         //             This allows the execution time of basic operations,
