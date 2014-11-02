@@ -431,7 +431,7 @@ nil                  ; for false - and the empty list
       :walked
       (walker (1- n))))
 
-(walker) ; => :walked
+(walker 5) ; => :walked
 
 ;; Most of the time, we use DOLIST or LOOP
 

@@ -39,13 +39,14 @@ doStuff()
 // 1. Numbers, Strings and Operators
 
 // JavaScript has one number type (which is a 64-bit IEEE 754 double).
-// As with Lua, don't freak out about the lack of ints: doubles have a 52-bit
-// mantissa, which is enough to store integers up to about 9✕10¹⁵ precisely.
+// Doubles have a 52-bit mantissa, which is enough to store integers
+//    up to about 9✕10¹⁵ precisely.
 3; // = 3
 1.5; // = 1.5
 
-// All the basic arithmetic works as you'd expect.
+// Some basic arithmetic works as you'd expect.
 1 + 1; // = 2
+0.1 + 0.2; // = 0.30000000000000004
 8 - 1; // = 7
 10 * 2; // = 20
 35 / 5; // = 7
@@ -77,13 +78,13 @@ false;
 !true; // = false
 !false; // = true
 
-// Equality is ==
-1 == 1; // = true
-2 == 1; // = false
+// Equality is ===
+1 === 1; // = true
+2 === 1; // = false
 
-// Inequality is !=
-1 != 1; // = false
-2 != 1; // = true
+// Inequality is !==
+1 !== 1; // = false
+2 !== 1; // = true
 
 // More comparisons
 1 < 10; // = true
@@ -97,11 +98,13 @@ false;
 // and are compared with < and >
 "a" < "b"; // = true
 
-// Type coercion is performed for comparisons...
+// Type coercion is performed for comparisons with double equals...
 "5" == 5; // = true
+null == undefined; // = true
 
 // ...unless you use ===
 "5" === 5; // = false
+null === undefined; // = false 
 
 // You can access characters in a string with charAt
 "This is a string".charAt(0);  // = 'T'

@@ -305,7 +305,7 @@ void Dog::Dog()
 // if you are modifying them or const reference if you are not.
 void Dog::setName(const std::string& dogsName)
 {
-    name = doggie_name;
+    name = dogsName;
 }
 
 void Dog::setWeight(int dogsWeight)

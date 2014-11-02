@@ -15,10 +15,12 @@ If you have any feedback please feel free to reach me at
 ```matlab
 % Comments start with a percent sign.
 
-%{ Multi line comments look 
+%{
+Multi line comments look 
 something
 like
-this %}
+this
+%}
 
 % commands can span multiple lines, using '...':
  a = 1 + 2 + ...
@@ -40,36 +42,41 @@ ctrl-c % Abort current computation
 edit('myfunction.m') % Open function/script in editor
 type('myfunction.m') % Print the source of function/script to Command Window
 
-profile viewer % Open profiler
+profile on 	% turns on the code profiler
+profile of 	% turns off the code profiler
+profile viewer 	% Open profiler
 
-help command % Displays documentation for command in Command Window
-doc command % Displays documentation for command in Help Window
-lookfor command % Searches for a given command
+help command 	% Displays documentation for command in Command Window
+doc command 	% Displays documentation for command in Help Window
+lookfor command % Searches for command in the first commented line of all functions
+lookfor command -all % searches for command in all functions
 
 
 % Output formatting
-format short % 4 decimals in a floating number
-format long % 15 decimals
-format bank % only two digits after decimal point - for financial calculations
-fprintf 
+format short 	% 4 decimals in a floating number
+format long 	% 15 decimals
+format bank 	% only two digits after decimal point - for financial calculations
+fprintf('text') % print "text" to the screen
+disp('text') 	% print "text" to the screen
 
 % Variables & Expressions
-myVariable = 4 % Notice Workspace pane shows newly created variable
+myVariable = 4 	% Notice Workspace pane shows newly created variable
 myVariable = 4; % Semi colon suppresses output to the Command Window
-4 + 6  % ans = 10 
-8 * myVariable % ans = 32 
-2 ^ 3 % ans = 8 
+4 + 6  		% ans = 10 
+8 * myVariable 	% ans = 32 
+2 ^ 3 		% ans = 8 
 a = 2; b = 3; 
 c = exp(a)*sin(pi/2) % c = 7.3891
 
 % Calling functions can be done in either of two ways:
 % Standard function syntax:
-load('myFile.mat', 'y')
+load('myFile.mat', 'y') % arguments within parantheses, spererated by commas
 % Command syntax:
-load myFile.mat y % no parentheses, and spaces instead of commas
+load myFile.mat y 	% no parentheses, and spaces instead of commas
 % Note the lack of quote marks in command form: inputs are always passed as 
 % literal text - cannot pass variable values. Also, can't receive output:
-[V,D] = eig(A)  % this has no equivalent in command form
+[V,D] = eig(A);  % this has no equivalent in command form
+[~,D] = eig(A);  % if you only want D and not V
 
 
 
@@ -100,6 +107,10 @@ a = {'one', 'two', 'three'}
 a(1) % ans = 'one' - returns a cell
 char(a(1)) % ans = one - returns a string
 
+% Structures
+A.b = {'one','two'};
+A.c = [1 2];
+A.d.e = false;
 
 % Vectors
 x = [4 32 53 7 1] 
@@ -160,6 +171,10 @@ A(1,:) % All columns in row 1
 %     4     5    42
 %     7     8     9
 
+% this is the same as 
+vertcat(A,A);
+
+
 [A , A] % Concatenation of matrices (horizontally)
 
 %ans =
@@ -168,6 +183,8 @@ A(1,:) % All columns in row 1
 %     4     5    42     4     5    42
 %     7     8     9     7     8     9
 
+% this is the same as 
+horzcat(A,A);
 
 
 A(:, [3 1 2]) % Rearrange the columns of original matrix
@@ -180,10 +197,13 @@ A(:, [3 1 2]) % Rearrange the columns of original matrix
 size(A) % ans = 3 3
 
 A(1, :) =[] % Delete the first row of the matrix
+A(:, 1) =[] % Delete the first column of the matrix
 
+transpose(A) % Transpose the matrix, which is the same as:
+A'
 ctranspose(A) % Hermitian transpose the matrix 
 % (the transpose, followed by taking complex conjugate of each element)
-transpose(A) % Transpose the matrix, without taking complex conjugate
+
 
 
 

@@ -2,8 +2,7 @@
 category: tool
 tool: tmux
 contributors:
-    - ["kaernyk", "https://github.com/kaernyk"]
-    - ["jmaud", "https://github.com/jmaud"]
+    - ["wzsk", "https://github.com/wzsk"]
 filename: LearnTmux.txt
 ---
 
@@ -239,6 +238,6 @@ set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | 
 
 <a href="http://tmux.sourceforge.net/">Tmux | Home</a><br>
 <a href="http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/tmux.1?query=tmux">Tmux Manual page</a><br>
-<a href="http://wiki.gentoo.org/wiki/Tmux">Archlinux Wiki</a><br>
-<a href="https://wiki.archlinux.org/index.php/Tmux">Gentoo Wiki</a><br>
+<a href="http://wiki.gentoo.org/wiki/Tmux">Gentoo Wiki</a><br>
+<a href="https://wiki.archlinux.org/index.php/Tmux">Archlinux Wiki</a><br>
 <a href="https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux">Display CPU/MEM % in statusbar</a><br>
