@@ -84,7 +84,7 @@ int main() {
   // doubles are usually 64-bit floating-point numbers
   double x_double = 0.0; // real numbers without any suffix are doubles
 
-  // Integral types may be unsigned.
+  // integer types may be unsigned (only positive)
   unsigned short ux_short;
   unsigned int ux_int;
   unsigned long long ux_long_long;
