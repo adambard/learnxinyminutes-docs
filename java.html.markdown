@@ -123,9 +123,15 @@ public class LearnJava {
         // Others to check out
         // ArrayLists - Like arrays except more functionality is offered,
         //             and the size is mutable
-        // LinkedLists
-        // Maps
-        // HashMaps
+        // LinkedLists - Implementation of doubly-linked list. All of the
+        //             operations perform as could be expected for
+        //             a doubly-linked list.
+        // Maps - A set of objects that maps keys to values. A map cannot contain
+        //             duplicate keys; each key can map to at most one value.
+        // HashMaps - This class uses a hashtable to implement the Map interface.
+        //             This allows the execution time of basic operations,
+        //             such as get and insert element, to remain constant even
+        //             for large sets. 
 
         ///////////////////////////////////////
         // Operators
