@@ -634,6 +634,8 @@ inaccuracies (well, ideas that are not considered good anymore) or now-changed p
 
 Another good resource is [Learn C the hard way](http://c.learncodethehardway.org/book/).
 
+[Secure Coding in C and C++ (2nd Edition)](http://www.cert.org/books/secure-coding) is a useful reference for learning about good patterns.
+
 If you have a question, read the [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 
 It's very important to use proper spacing, indentation and to be consistent with your coding style in general.
