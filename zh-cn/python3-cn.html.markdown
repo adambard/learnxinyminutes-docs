@@ -406,24 +406,22 @@ add(5, 6)   # => 印出"x is 5 and y is 6"并且返回11
 add(y=6, x=5)   # 关键字参数可以用任何顺序
 
 
-# You can define functions that take a variable number of
-# positional arguments
+# 我们可以定义一个可变参数函数
 def varargs(*args):
     return args
 
 varargs(1, 2, 3)   # => (1, 2, 3)
 
 
-# You can define functions that take a variable number of
-# keyword arguments, as well
+# 我们也可以定义一个关键字可变参数函数
 def keyword_args(**kwargs):
     return kwargs
 
-# Let's call it to see what happens
+# 我们来看看结果是什么：
 keyword_args(big="foot", loch="ness")   # => {"big": "foot", "loch": "ness"}
 
 
-# You can do both at once, if you like
+# 这两种可变参数可以混着用
 def all_the_args(*args, **kwargs):
     print(args)
     print(kwargs)
@@ -433,8 +431,7 @@ all_the_args(1, 2, a=3, b=4) prints:
     {"a": 3, "b": 4}
 """
 
-# When calling functions, you can do the opposite of args/kwargs!
-# Use * to expand tuples and use ** to expand kwargs.
+# 调用可变参数函数时可以做跟上面相反的，用*展开序列，用**展开字典。
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
 all_the_args(*args)   # equivalent to foo(1, 2, 3, 4)
@@ -442,25 +439,25 @@ all_the_args(**kwargs)   # equivalent to foo(a=3, b=4)
 all_the_args(*args, **kwargs)   # equivalent to foo(1, 2, 3, 4, a=3, b=4)
 
 
-# Function Scope
+# 函数作用域
 x = 5
 
 def setX(num):
-    # Local var x not the same as global variable x
+    # 局部作用域的x和全局域的x是不同的
     x = num # => 43
     print (x) # => 43
 
 def setGlobalX(num):
     global x
     print (x) # => 5
-    x = num # global var x is now set to 6
+    x = num # 现在全局域的x被赋值
     print (x) # => 6
 
 setX(43)
 setGlobalX(6)
 
 
-# Python has first class functions
+# 函数在Python是一等公民
 def create_adder(x):
     def adder(y):
         return x + y
@@ -469,16 +466,14 @@ def create_adder(x):
 add_10 = create_adder(10)
 add_10(3)   # => 13
 
-# There are also anonymous functions
+# 也有匿名函数
 (lambda x: x > 2)(3)   # => True
 
-# TODO - Fix for iterables
-# There are built-in higher order functions
+# 内置的高阶函数
 map(add_10, [1, 2, 3])   # => [11, 12, 13]
 filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 
-# We can use list comprehensions for nice maps and filters
-# List comprehension stores the output as a list which can itself be a nested list
+# 用列表推导式可以简化映射和过滤。列表推导式的返回值是另一个列表。
 [add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]   # => [6, 7]
 
