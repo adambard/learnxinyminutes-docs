@@ -10,7 +10,8 @@ filename: LearnJava.java
 
 ---
 
-Java - это объектно ориентированный язык общего назначения.
+Java - это объектно ориентированный язык программирования общего назначения,
+основанный на классах и поддерживающий параллельное программирование.
 [Подробнее читайте здесь.](http://docs.oracle.com/javase/tutorial/java/index.html)
 
 ```java
@@ -171,7 +172,7 @@ public class LearnJava {
         >>>     Беззнаковый сдвиг вправо.
         &       Побитовое И.
         ^       Побитовое исключающее ИЛИ.
-        |       Побитовое И.
+        |       Побитовое ИЛИ.
         */
 
         // Операторы инкремента.
@@ -289,7 +290,7 @@ public class LearnJava {
         // Преобразование числа в строку
         Integer.toString(123); // Вернет строковое представление 123.
 
-        // Для других преобразований, смотрите следующие классы:
+        // Для других преобразований смотрите следующие классы:
         // Double
         // Long
         // String
@@ -405,15 +406,15 @@ class Bicycle {
 // PennyFarthing - это класс, наследованный от Bicycle
 class PennyFarthing extends Bicycle {
     // (Penny Farthings - это такие велосипеды с большим передним колесом,
-    // у низ нет передач.)
+    // у них нет передач.)
 
     public PennyFarthing(int startCadence, int startSpeed){
         // Вызов конструктора родительского класса.
         super(startCadence, startSpeed, 0, "PennyFarthing");
     }
 
-    // Вы должны пометить метод, который переопределяете при помощи @аннотации
-    // Чтобы узнать о том, что такое аннотации и зачем они нужны, почитайте?
+    // Вы должны пометить метод, который переопределяете, при помощи @аннотации
+    // Чтобы узнать о том, что такое аннотации и зачем они нужны, почитайте:
     // http://docs.oracle.com/javase/tutorial/java/annotations/
     @Override
     public void setGear(int gear) {
@@ -425,42 +426,42 @@ class PennyFarthing extends Bicycle {
 // Интерфейсы
 // Синтаксис определения интерфейса: 
 // <модификатор доступа> interface <имя> extends <базовый интерфейс> {
-//		// Константы
-//		// Определение методов.
+//      // Константы
+//      // Определение методов.
 //}
 
 // Пример - Еда:
 public interface Edible {
     // Любой класс, реализующий этот интерфейс, должен реализовать этот метод.
-	public void eat();
+    public void eat();
 }
 
 public interface Digestible {
-	public void digest();
+    public void digest();
 }
 
 
-//We can now create a class that implements both of these interfaces
+// Сейчас мы можем создать класс, реализующий оба эти интерфейса.
 public class Fruit implements Edible, Digestible {
-	public void eat() {
-		//...
-	}
+    public void eat() {
+        //...
+    }
 
-	public void digest() {
-		//... 
-	}
+    public void digest() {
+        //... 
+    }
 }
 
-// В Java Вы можете наследоватьтолько один класс, однако, можете реализовывать
+// В Java Вы можете наследоватьтолько один класс, однако можете реализовывать
 // несколько интерфейсов. Например:
 public class ExampleClass extends ExampleClassParent implements InterfaceOne, InterfaceTwo {
-	public void InterfaceOneMethod() {
+    public void InterfaceOneMethod() {
 
-	}
+    }
 
-	public void InterfaceTwoMethod() {
+    public void InterfaceTwoMethod() {
 
-	}
+    }
 }
 
 ```
