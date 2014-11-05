@@ -345,9 +345,9 @@ while x < 4:
     print(x)
     x += 1  # x = x + 1 的简写
 
-# try/except块处理异常状况
+# 用try/except块处理异常状况
 try:
-    # 用raise来抛出异常
+    # 用raise抛出异常
     raise IndexError("This is an index error")
 except IndexError as e:
     pass    # pass是无操作，但是应该在这里处理错误
@@ -564,31 +564,28 @@ dir(math)
 ## 7. 高级用法
 ####################################################
 
-# Generators help you make lazy code
+# 用生成器(generators)方便地写惰性运算
 def double_numbers(iterable):
     for i in iterable:
         yield i + i
 
-# A generator creates values on the fly.
-# Instead of generating and returning all values at once it creates one in each
-# iteration.  This means values bigger than 15 wont be processed in
-# double_numbers.
-# Note range is a generator too. Creating a list 1-900000000 would take lot of
-# time to be made
-# We use a trailing underscore in variable names when we want to use a name that
-# would normally collide with a python keyword
+# 生成器只有在需要时才计算下一个值。它们每一次循环只生成一个值，而不是把所有的
+# 值全部算好。这意味着double_numbers不会生成大于15的数字。
+#
+# range的返回值也是一个生成器，不然一个1到900000000的列表会花很多时间和内存。
+#
+# 如果你想用一个Python的关键字当作变量名，可以加一个下划线来区分。
 range_ = range(1, 900000000)
-# will double all numbers until a result >=30 found
+# 当找到一个 >=30 的结果就会停
 for i in double_numbers(range_):
     print(i)
     if i >= 30:
         break
 
 
-# Decorators
-# in this example beg wraps say
-# Beg will call say. If say_please is True then it will change the returned
-# message
+# 装饰器(decorators)
+# 这个例子中，beg装饰say
+# beg会先调用say。如果返回的say_please为真，beg会改变返回的字符串。
 from functools import wraps
 
 
@@ -613,9 +610,9 @@ print(say())  # Can you buy me a beer?
 print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 ```
 
-## Ready For More?
+## 想继续学吗？
 
-### Free Online
+### 线上免费材料（英文）
 
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
@@ -626,7 +623,7 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [Python Module of the Week](http://pymotw.com/3/)
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 
-### Dead Tree
+### 书籍（也是英文）
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
