@@ -189,6 +189,8 @@ sSquared.reduce (_+_)
 // The filter function takes a predicate (a function from A -> Boolean) and
 // selects all elements which satisfy the predicate
 List(1, 2, 3) filter (_ > 2) // List(3)
+
+case class Person(name: String, age: Int)
 List(
   Person(name = "Dom", age = 23), 
   Person(name = "Bob", age = 30)
@@ -197,6 +199,7 @@ List(
 
 // Scala a foreach method defined on certain collections that takes a type
 // returning Unit (a void method)
+val aListOfNumbers = Set(1,2,3,45,234)
 aListOfNumbers foreach (x => println(x))
 aListOfNumbers foreach println
 
@@ -255,6 +258,7 @@ def showNumbersInRange(a:Int, b:Int):Unit = {
   if (a < b)
     showNumbersInRange(a + 1, b)
 }
+showNumbersInRange(1,14)
 
 
 
@@ -270,21 +274,24 @@ if (x == 11) println ("yeah") else println("nay")
 println(if (x == 10) "yeah" else "nope")
 val text = if (x == 10) "yeah" else "nope"
 
-var i = 0
-while (i < 10) { println("i " + i); i+=1  }
-
 
 
 // Object oriented features
 
 // Classname is Dog
-class Dog {
+class Dog (br: String) {
+  var breed: String = br
   //A method called bark, returning a String
   def bark: String = {
     // the body of the method
     "Woof, woof!"
   }
 }
+
+val mydog = new Dog("greyhound")
+println(mydog.breed) // => "greyhound"
+println(mydog.bark) // => "Woof, woof!"
+
 
 // Classes can contain nearly any other construct, including other classes,
 // functions, methods, objects, case classes, traits etc.
