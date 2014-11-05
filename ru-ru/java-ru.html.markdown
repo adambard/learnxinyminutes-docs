@@ -1,5 +1,6 @@
 ---
 language: java
+lang: ru-ru
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Madison Dickson", "http://github.com/mix3d"]
