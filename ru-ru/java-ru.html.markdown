@@ -425,42 +425,42 @@ class PennyFarthing extends Bicycle {
 // Интерфейсы
 // Синтаксис определения интерфейса: 
 // <модификатор доступа> interface <имя> extends <базовый интерфейс> {
-//		// Константы
-//		// Определение методов.
+//        // Константы
+//        // Определение методов.
 //}
 
 // Пример - Еда:
 public interface Edible {
     // Любой класс, реализующий этот интерфейс, должен реализовать этот метод.
-	public void eat();
+    public void eat();
 }
 
 public interface Digestible {
-	public void digest();
+    public void digest();
 }
 
 
 // Сейчас мы можем создать класс, реализующий оба эти интерфейса.
 public class Fruit implements Edible, Digestible {
-	public void eat() {
-		//...
-	}
+    public void eat() {
+        //...
+    }
 
-	public void digest() {
-		//... 
-	}
+    public void digest() {
+        //... 
+    }
 }
 
 // В Java Вы можете наследоватьтолько один класс, однако можете реализовывать
 // несколько интерфейсов. Например:
 public class ExampleClass extends ExampleClassParent implements InterfaceOne, InterfaceTwo {
-	public void InterfaceOneMethod() {
+    public void InterfaceOneMethod() {
 
-	}
+    }
 
-	public void InterfaceTwoMethod() {
+    public void InterfaceTwoMethod() {
 
-	}
+    }
 }
 
 ```
