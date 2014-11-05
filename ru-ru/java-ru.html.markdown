@@ -1,13 +1,12 @@
 ---
-
 language: java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Madison Dickson", "http://github.com/mix3d"]
 translators:
     - ["Sergey Gaykov", "https://github.com/gaykov"]
-filename: LearnJava.java
-
+filename: LearnJavaRu.java
+lang: ru-ru
 ---
 
 Java - это объектно ориентированный язык программирования общего назначения,
@@ -32,7 +31,7 @@ import java.security.*;
 
 // Каждый .java файл содержит один публичный класс, имя которого совпадает с
 // именем файла. 
-public class LearnJava {
+public class LearnJavaRu {
 
     // Программа должна содержать метод main, который является точкой входа.
     public static void main (String[] args) {
