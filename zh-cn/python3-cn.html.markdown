@@ -184,8 +184,8 @@ li[:3]  # => [1, 2, 4]
 li[::2]   # =>[1, 4]
 # 倒排列表
 li[::-1]   # => [3, 4, 2, 1]
-# Use any combination of these to make advanced slices
-# li[start:end:step]
+# 可以用三个参数的任何组合来构建切割
+# li[始:终:步伐]
 
 # 用del删除任何一个元素
 del li[2]   # li is now [1, 2, 3]
@@ -433,9 +433,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # 调用可变参数函数时可以做跟上面相反的，用*展开序列，用**展开字典。
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args)   # equivalent to foo(1, 2, 3, 4)
-all_the_args(**kwargs)   # equivalent to foo(a=3, b=4)
-all_the_args(*args, **kwargs)   # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args)   # 相当于 foo(1, 2, 3, 4)
+all_the_args(**kwargs)   # 相当于 foo(a=3, b=4)
+all_the_args(*args, **kwargs)   # 相当于 foo(1, 2, 3, 4, a=3, b=4)
 
 
 # 函数作用域
