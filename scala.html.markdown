@@ -279,7 +279,7 @@ val text = if (x == 10) "yeah" else "nope"
 // Object oriented features
 
 // Classname is Dog
-class Dog (br: String) {
+class Dog(br: String) {
   var breed: String = br
   //A method called bark, returning a String
   def bark: String = {
