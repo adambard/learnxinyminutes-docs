@@ -14,12 +14,12 @@ properly!
 
 ## Contributing
 
-All contributions welcome, from the tiniest typo to a brand new article. Translations
+All contributions are welcome, from the tiniest typo to a brand new article. Translations
 in all languages are welcome (or, for that matter, original articles in any language).
 Send a pull request or open an issue any time of day or night.
 
 **Please tag your issues pull requests with [language/lang-code] at the beginning**
-**(e.g. [python/en] for english python).** This will help everyone pick out things they
+**(e.g. [python/en] for English Python).** This will help everyone pick out things they
 care about.
 
 ### Style Guidelines
@@ -27,7 +27,7 @@ care about.
 * **Keep lines under 80 chars**
 * **Prefer example to exposition**
 * **Eschew surplusage**
-* **Use utf-8**
+* **Use UTF-8**
 
 Long version:
 
@@ -38,28 +38,28 @@ Long version:
 
 * We welcome newcomers, but the target audience for this site is programmers with some experience.
   So, try to avoid explaining basic concepts except for those specific to the language in question,
-  to keep articles succinct and scannable. We all know how to use google here.
+  to keep articles succinct and scannable. We all know how to use Google here.
 
-* For translations (or english articles with non-ASCII characters), please make sure your file is
-  utf-8 encoded, and try to leave out the byte-order-mark at the start of the file. (`:set nobomb` in vim)
+* For translations (or English articles with non-ASCII characters), please make sure your file is
+  UTF-8 encoded, and try to leave out the byte-order-mark at the start of the file. (`:set nobomb` in Vim)
 
 ### Header configuration
 
-The actual site uses Middleman to generate HTML files from these markdown ones. Middleman, or at least
+The actual site uses Middleman to generate HTML files from these Markdown ones. Middleman, or at least
 the custom scripts underpinning the site, required that some key information be defined in the header.
 
-The following fields are necessary for english articles about programming languages:
+The following fields are necessary for English articles about programming languages:
 
 * **language** The *programming language* in question
-* **contributors** A list of [author, url] lists to credit
+* **contributors** A list of [author, URL] lists to credit
 
 Other fields:
 
 * **filename**: The filename for this article's code. It will be fetched, mashed together, and made downloadable.
-  For non-english articles, *filename* should have a language-specific suffix.
+  For non-English articles, *filename* should have a language-specific suffix.
 * **lang**: For translations, the human language this article is in. For categorization, mostly.
 
-Here's an example header for an esperanto translation of Ruby:
+Here's an example header for an Esperanto translation of Ruby:
 
 ```yaml
 ---
