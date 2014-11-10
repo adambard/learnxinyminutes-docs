@@ -1149,7 +1149,7 @@ my @list = 1, 3, 9 ... * > 30; # you can use a predicate
                                # (with the Whatever Star, here).
 my @list = 1, 3, 9 ... { $_ > 30 }; # (equivalent to the above)
 
-my @fib = 1, 1, *+* ... *; # lazy infinite list of prime numbers,
+my @fib = 1, 1, *+* ... *; # lazy infinite list of fibonacci series,
                            #  computed using a closure!
 my @fib = 1, 1, -> $a, $b { $a + $b } ... *; # (equivalent to the above)
 my @fib = 1, 1, { $^a + $^b } ... *; #(... also equivalent to the above)
