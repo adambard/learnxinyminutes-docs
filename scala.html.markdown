@@ -122,7 +122,7 @@ s"Power of 2: ${math.pow(2, 2)}" // => "Power of 2: 4"
 
 // Formatting with interpolated strings with the prefix "f"
 f"Power of 5: ${math.pow(5, 2)}%1.0f" // "Power of 5: 25"
-f"Square root of 122: ${math.sqrt(122)}%1.4f" // "Square root of 122"
+f"Square root of 122: ${math.sqrt(122)}%1.4f" // "Square root of 122: 11.0454"
 
 // Raw strings, ignoring special characters.
 raw"New line feed: \n. Carriage return: \r." // => "New line feed: \n. Carriage return: \r."
