@@ -272,7 +272,7 @@ else
 end
 #=> "OK job"
 
-# exception handling
+# exception handling:
 begin
   # code here that might raise an exception
   raise NoMemoryError, 'You ran out of memory.'
