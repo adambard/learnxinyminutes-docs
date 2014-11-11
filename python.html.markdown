@@ -21,7 +21,7 @@ to Python 2.x. For Python 3.x, take a look at the Python 3 tutorial.
 # Single line comments start with a number symbol.
 
 """ Multiline strings can be written
-    using three "'s, and are often used
+    using three "s, and are often used
     as comments
 """
 
@@ -55,7 +55,7 @@ to Python 2.x. For Python 3.x, take a look at the Python 3 tutorial.
 # Modulo operation
 7 % 3 # => 1
 
-# Exponentiation (x to the y'th power)
+# Exponentiation (x to the yth power)
 2**4 # => 16
 
 # Enforce precedence with parentheses
