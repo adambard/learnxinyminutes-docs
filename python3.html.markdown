@@ -7,7 +7,7 @@ contributors:
 filename: learnpython3.py
 ---
 
-Python was created by Guido Van Rossum in the early 90's. It is now one of the most popular
+Python was created by Guido Van Rossum in the early 90s. It is now one of the most popular
 languages in existence. I fell in love with Python for its syntactic clarity. It's basically
 executable pseudocode.
 
@@ -20,7 +20,7 @@ Note: This article applies to Python 3 specifically. Check out the other tutoria
 # Single line comments start with a number symbol.
 
 """ Multiline strings can be written
-    using three "'s, and are often used
+    using three "s, and are often used
     as comments
 """
 
@@ -51,7 +51,7 @@ Note: This article applies to Python 3 specifically. Check out the other tutoria
 # Modulo operation
 7 % 3 # => 1
 
-# Exponentiation (x to the y'th power)
+# Exponentiation (x to the yth power)
 2**4 # => 16
 
 # Enforce precedence with parentheses
