@@ -104,11 +104,12 @@ true == false // false
 
 // Strings have the usual Java methods defined on them
 "hello world".length
-"ABCDEF".substring(2, 6)
-"ABCDEF".replace("C", "3")
+"hello world".substring(2, 6)
+"hello world".replace("C", "3")
 
 // They also have some extra Scala methods. See also: scala.collection.immutable.StringOps
 "hello world".take(5)
+"hello world".drop(5)
 
 // String interpolation: notice the prefix "s"
 val n = 45
