@@ -81,7 +81,7 @@ une_map_imbriquée:
 # YAML autorise aussi l'usage des collections à l'intérieur des clés,
 # mais certains langages de programmation ne le tolère pas si bien.
 
-# les Séquences( équivalent des listes ou tableaux )ressemblent à cela:
+# les Séquences (équivalent des listes ou tableaux) ressemblent à cela:
 une_séquence:
     - Item 1
     - Item 2
