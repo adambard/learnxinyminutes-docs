@@ -61,7 +61,7 @@ of what is written here should work elsewhere.
 
 \ And so on.
 
-\ ------------------------------ More Advanced Stack Maniulation ------------------------------
+\ ------------------------------ Stack Maniulation ------------------------------
 
 \ Naturally, as we do so much work with the stack, we'll want some useful methods.
 
@@ -77,7 +77,7 @@ dup *            \ square the top item
 6 4 5 rot * -    \ sometimes we just want to reorganize
 4 0 drop 2 /     \ add 4 and 0, remove 0 and divide the top by 2 
 
-\ ------------------------------ Extra Stack Manipulation ------------------------------
+\ ------------------------------ More Advanced Stack Manipulation ------------------------------
 
 tuck   \ acts like dup, except it duplicates the top item into the 3rd* position in the stack
 over   \ duplicate the second item to the top of the stack
@@ -107,7 +107,28 @@ see square     \ dup * ; ok
 
 \ ------------------------------ Conditionals ------------------------------
 
-\ TODO
+\ Booleans:
+\ In forth, -1 is used to represent truth, and 0 is used to represent false.
+\ The idea behind this is that -1 is 11111111 in binary, whereas 0 is obviously 0 in binary.
+\ However, any non-zero value is usually treated as being true.
+
+42 42 =    / -1 ok
+12 53 =    / 0 ok
+
+\ `if` is a compile-only word. This means that it can *only* be used when we're compiling a word.
+\ when creating conditionals, the format is <boolean> `if` <stuff to do> `then` <rest of program>.
+
+: ?>64 ( n -- n ) DUP 64 > if ." Greater than 64!" then ; \ ok
+100 ?>64                                                  \ Greater than 64! ok
+
+\ This unimaginative example displays "Greater than 64!" when the number on the stack is greater
+\ than 64. However, it does nothing when the test is false. Let's fix that with the `else` word!
+
+: ?>64 ( n -- n ) DUP 64 > if ." Greater than 64!" else ." Less than 64!" then ; \ ok
+100 ?>64                                                                         \ Greater than 64! ok
+20 ?>64                                                                          \ Less than 64! ok
+
+\ As you can see, conditionals behave more or less like they do in most programming languages.
 
 \ ------------------------------ Loops ------------------------------
 
