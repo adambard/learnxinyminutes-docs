@@ -168,17 +168,64 @@ threes                                \ 0 3 6 9 12 ok
 \ of `begin` <stuff to do> <flag> `until`. The loop will run until flag is a
 \ truthy value (not 0).
 
-\ ------------------------------ The Return Stack ------------------------------
-
-\ TODO
-
 \ ------------------------------ Variables and Memory ------------------------------
+
+\ Sometimes we'll be in a situation where we want more permanent variables:
+\ First, we use `variable` to declare `age` to be a variable.
+variable age
+
+\ Then we write 21 to age with the word `!`.
+21 age !
+
+\ Finally we can print our variable using the "read" word '@', which adds the value
+\ to the stack, or use a handy word called `?` that reads and prints it in one go.
+age @ . \ 12 ok
+age ?   \ 12 ok
+
+\ What's happening here is that `age` stores the memory address, and we use `!`
+\ and `@` to manipulate it.
+
+\ Constants are quite simiar, except we don't bother with memory addresses:
+100 constant WATER-BOILING-POINT \ ok
+WATER-BOILING-POINT .            \ 100 ok
+
+\ Arrays!
+
+\ Set up an array of length 3:
+variable mynumbers 2 cells allot
+
+\ Initialize all the values to 0
+mynumbers 3 cells erase
+\ (alternatively we could do `0 fill` instead of `erase`, but as we're setting
+\ them to 0 we just use `erase`).
+
+\ or we can just skip all the above and initialize with specific values:
+
+create mynumbers 64 , 9001 , 1337 , \ the last `,` is important!
+
+\ ...which is equivalent to:
+
+\ [64, 9001, 1337]
+64 mynumbers 0 cells + !
+9001 mynumbers 1 cells + !
+1337 mynumbers 2 cells + !
+
+\ Reading values at certain array indexes:
+0 cells mynumbers + ? \ 64 ok
+1 cells mynumbers + ? \ 9001 ok
+2 cells mynumbers + ? \ 1337 ok
+
+\ Of course, you'll probably want to define your own words to manipulate arrays:
+: ?mynumbers ( n -- n ) cells mynumbers + ; \ ok
+64 mynumbers 2 cells + !                    \ ok
+2 ?mynumbers ?                              \ 64 ok
+
+\ ------------------------------ The Return Stack ------------------------------
 
 \ TODO
 
 \ ------------------------------ Final Notes ------------------------------
 
-\ Booleans
 \ Floats
 \ Commenting (types)
 \ bye
