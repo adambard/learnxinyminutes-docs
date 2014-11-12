@@ -45,18 +45,19 @@ VARIABLE = "Du texte"
 # Bash va penser que VARIABLE est une commande qu’il doit exécuter et va
 # afficher une erreur parce qu’elle est introuvable.
 
-# Utiliser la variable :
+# Utiliser une variable :
 echo $VARIABLE
 echo "$VARIABLE"
 echo '$VARIABLE'
 # Quand vous utilisez la variable en elle-même – en lui assignant une valeur,
 # en l’exportant ou autre – vous écrivez son nom sans $. Si vous voulez
 # utiliser sa valeur, vous devez utiliser $.
-# Notez que ' (guillemet droit simple) empêche l’expansion des variables !
+# Notez qu’entourer une variable de deux guillemets simples (') empêche
+# l’expansion des variables !
 
-# Substitution de chaîne de caractères dans les variables
+# Substitution de chaîne de caractères dans une variable
 echo ${VARIABLE/Some/A}
-# Ceci va remplacer la première occurrence de « Some »  par « A »
+# Ceci va remplacer la première occurrence de « Some » par « A »
 
 # Sous-chaîne d’une variable
 echo ${VARIABLE:0:7}
@@ -77,7 +78,7 @@ echo "Arguments du script séparés en plusieurs variables : $1 $2..."
 
 # Lire une valeur depuis l’entrée standard :
 echo "Quel est votre nom ?"
-read NAME # Notez que l’on a pas eu à déclarer une nouvelle variable
+read NAME # Notez que l’on n’a pas eu à déclarer une nouvelle variable
 echo Bonjour, $NAME!
 
 # Nous avons l’habituelle structure « if » :
@@ -128,7 +129,7 @@ python2 hello.py < "entrée.in"
 python2 hello.py > "sortie.out"
 python2 hello.py 2> "erreur.err"
 # Ceci va écraser le fichier s'il existe; si vous préférez écrire à la fin de
-celui-ci, utilisez >> à la place.
+# celui-ci, utilisez >> à la place.
 
 # Les commandes peuvent se substituer à l’intérieur d’autres commandes en
 # utilisant $( ) :
