@@ -106,6 +106,10 @@ null == undefined; // = true
 "5" === 5; // = false
 null === undefined; // = false 
 
+// ...which can result in some weird behaviour...
+13 + !0; // 14
+"13" + !0; // '13true'
+
 // You can access characters in a string with charAt
 "This is a string".charAt(0);  // = 'T'
 
