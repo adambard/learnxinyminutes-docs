@@ -110,12 +110,12 @@ see square     \ dup * ; ok
 \ Booleans:
 \ In forth, -1 is used to represent truth, and 0 is used to represent false.
 \ The idea behind this is that -1 is 11111111 in binary, whereas 0 is obviously 0 in binary.
-\ However, any non-zero value is usually treated as being true.
+\ However, any non-zero value is usually treated as being true:
 
 42 42 =    / -1 ok
 12 53 =    / 0 ok
 
-\ `if` is a compile-only word. This means that it can *only* be used when we're compiling a word.
+\ `if` is a *compile-only word*. This means that it can *only* be used when we're compiling a word.
 \ when creating conditionals, the format is <boolean> `if` <stuff to do> `then` <rest of program>.
 
 : ?>64 ( n -- n ) DUP 64 > if ." Greater than 64!" then ; \ ok
@@ -132,7 +132,41 @@ see square     \ dup * ; ok
 
 \ ------------------------------ Loops ------------------------------
 
-\ TODO
+\ `do` is like `if` in that it is also a compile-only word, though it uses `loop` as its
+\ terminator.
+
+: myloop ( -- ) 5 0 do cr ." Hello!" loop ; \ ok
+test
+\ Hello!
+\ Hello!
+\ Hello!
+\ Hello!
+\ Hello! ok
+
+\ `do` expects two numbers before it: the end number and the index number, respectively.
+\ (cr means carraige-return, essentially it a newline). This is equivalent to a for-loop
+\ in other languages, with a definite number of times to loop.
+
+\ So what if we want to get the value of the index as we loop? We use `i`.
+
+: one-to-15 ( -- ) 15 0 do i . loop ;     \ ok
+one-to-15                                 \ 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ok
+: squares ( -- ) 10 0 do i DUP * . loop ; \ ok
+squares                                   \ 0 1 4 9 16 25 36 49 64 81 ok
+
+\ Thidly, we can also change how large the step is between each loop iteration with `+loop`.
+\ `+loop` reads the number on the top of the stack for how far to move each iteration.
+
+: threes ( -- ) 15 0 do i . 3 +loop ; \ ok
+threes                                \ 0 3 6 9 12 ok
+
+\ Finally, while loops:
+
+: death ( -- ) begin ." Are we there yet?" 0 until ;
+
+\ Will print "Are we there yet?" forever. While loops are constructed in the format
+\ of `begin` <stuff to do> <flag> `until`. The loop will run until flag is a
+\ truthy value (not 0).
 
 \ ------------------------------ The Return Stack ------------------------------
 
