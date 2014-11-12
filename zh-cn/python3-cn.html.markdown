@@ -6,7 +6,8 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
 translators:
     - ["Geoff Liu", "http://geoffliu.me"]
-filename: learnpython3.py
+filename: learnpython3-cn.py
+lang: zh-cn
 ---
 
 Python是由吉多·范罗苏姆(Guido Van Rossum)在90年代早期设计。它是如今最常用的编程
