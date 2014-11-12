@@ -81,7 +81,7 @@ une_map_imbriquée:
 # YAML autorise aussi l'usage des collections à l'intérieur des clés,
 # mais certains langages de programmation ne le tolère pas si bien.
 
-# les Séquences ( équivalent des listes ou tableaux ) ressemblent à cela:
+# les Séquences( équivalent des listes ou tableaux )ressemblent à cela:
 une_séquence:
     - Item 1
     - Item 2
@@ -99,7 +99,7 @@ json_map: {"clé": "valeur"}
 json_seq: [1, 2, 3, "soleil"]
 
 #################################
-# AUTRES FONCTIONNALITEES YAML #
+# AUTRES FONCTIONNALITÉES YAML #
 #################################
 
 # YAML possède une fonctionnalité fort utile nommée 'ancres'. Celle-ci 
@@ -120,14 +120,14 @@ python_complex_number: !!python/complex 1+2j
 # AUTRES TYPES YAML #
 #####################
 
-# YAML comprends aussi les données formatées ISO de type date et datetime,
+# YAML interprète également les données formatées ISO de type date et datetime,
 # pas seulement les chaînes et nombres. 
 datetime: 2001-12-15T02:59:43.1Z
 datetime_avec_espaces: 2001-12-14 21:59:43.10 -5
 date: 2002-12-14
 
 # Le tag !!binary indique que la chaîne à suivre est la représentation binaire
-# d'un blob encodé en base64. En clair ? Une image!
+# d'un blob encodé en base64. En clair ? Une image !
 fichier_gif: !!binary |
     R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
     OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
@@ -140,7 +140,7 @@ set:
     ? item2
     ? item3
 
-# Comme dans Python, les sets ne sont que des maps contenant des valeurs null;
+# Comme dans Python, les sets ne sont que des maps contenant des valeurs null ;
 # le set précédent est l'équivalent du suivant:
 set2:
     item1: null
