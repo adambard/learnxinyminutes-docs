@@ -9,11 +9,11 @@ lang: de-de
 ---
 
 (Anmerkungen des Original-Autors:)
-JavaScript wurde im Jahr 1995 von Brendan Eich bei Netscape entwickelt. Ursprünglich war es als einfachere Skriptsprache für Websites gedacht, ergänzent zu Java, das für komplexere Webanwendungen verwendet wird. Die enge Integration in Websites und der in Browser eingebaute Support der Sprache haben dafür gesorgt, dass JavaScript weit häufiger für Web-Frontends verwendet wird als Java.
+JavaScript wurde im Jahr 1995 von Brendan Eich bei Netscape entwickelt. Ursprünglich war es als einfachere Skriptsprache für Websites gedacht, ergänzend zu Java, das für komplexere Webanwendungen verwendet wird. Die enge Integration in Websites und der in Browser eingebaute Support der Sprache haben dafür gesorgt, dass JavaScript weit häufiger für Web-Frontends verwendet wird als Java.
 
-Dabei ist JavaScript inzwischen nicht mehr auf Browser beschränkt: Node.js, ein Projekt, dass eine eigene Laufzeitumgebung auf Grundlage von Google Chromes V8 mitbringt, wird derzeit immer populärer.
+Dabei ist JavaScript inzwischen nicht mehr auf Browser beschränkt: Node.js, ein Projekt, das eine eigene Laufzeitumgebung auf Grundlage von Google Chromes V8 mitbringt, wird derzeit immer populärer.
 
-Feedback ist herzlich Willkommen! Der ursprüngliche Autor ist unter [@adambrenecki](https://twitter.com/adambrenecki) oder [adam@brenecki.id.au](mailto:adam@brenecki.id.au) zu erreichen. Der Übersetzer unter [gregorbg@web.de](mailto:gregorbg@web.id.au).
+Feedback ist herzlich Willkommen! Der ursprüngliche Autor ist unter [@adambrenecki](https://twitter.com/adambrenecki) oder [adam@brenecki.id.au](mailto:adam@brenecki.id.au) zu erreichen. Der Übersetzer unter [gregorbg@web.de](mailto:gregorbg@web.de).
 
 ```js
 // Kommentare werden wie in C gesetzt: Einzeilige Kommentare starten mit zwei 
@@ -38,9 +38,9 @@ machWas()
 3; // = 3
 1.5; // = 1.5
 
-// Alle grundlegenden arithmetischen Operationen arbeiten wie erwartet.
+// Beinahe alle grundlegenden arithmetischen Operationen arbeiten wie erwartet.
 1 + 1; // = 2
-8 - 1; // = 7
+0.1 + 0.2; // = 0.30000000000000004
 10 * 2; // = 20
 35 / 5; // = 7
 
@@ -72,13 +72,13 @@ false;
 !true; // = false
 !false; // = true
 
-// Gleichheit wird mit == geprüft.
-1 == 1; // = true
-2 == 1; // = false
+// Gleichheit wird mit === geprüft.
+1 === 1; // = true
+2 === 1; // = false
 
-// Ungleichheit wird mit != überprüft.
-1 != 1; // = false
-2 != 1; // = true
+// Ungleichheit wird mit !== überprüft.
+1 !== 1; // = false
+2 !== 1; // = true
 
 // Andere Vergleichsoperatoren sind
 1 < 10; // = true
@@ -92,15 +92,21 @@ false;
 // und mit < und > verglichen werden.
 "a" < "b"; // = true
 
-// Für den Vergleich von Werten wird eine Typumwandlung erzwungen...
+// Für den Vergleich von Werten mit "==" wird eine Typumwandlung erzwungen...
 "5" == 5; // = true
 
 // ...solange man nicht === verwendet.
 "5" === 5; // = false
 
 // Auf einzelne Buchstaben innerhalb eines Strings kann mit der Methode 
-// charAt zugegriffen werden
+// 'charAt' zugegriffen werden
 "This is a string".charAt(0);  // = "T"
+
+// Die Methode 'substring' gibt Teilbereiche eines Strings zurück
+"Hello world".substring(0, 5); // = "Hello"
+
+// 'length' ist eine Eigenschaft und wird folglich ohne '()' benutzt
+"Hello".length; // = 5
 
 // Es gibt außerdem die Werte 'null' und 'undefined'
 null; // wird verwendet um einen vorsätzlich gewählten 'Nicht'-Wert anzuzeigen
@@ -146,6 +152,13 @@ var myArray = ["Hello", 45, true];
 // in eckigen Klammern hinter das Array geschrieben werden. Die Indexierung 
 // beginnt bei 0.
 myArray[1]; // = 45
+
+// Arrays haben keine feste Länge
+myArray.push("World");
+myArray.length; // = 4
+
+// und sind veränderlich
+myArray[3] = "Hello";
 
 // Die Objekte in JavaScript entsprechen 'dictionaries' oder 'maps' in anderen 
 // Sprachen: es handelt sich um ungeordnete Schlüssel-Wert-Paare.
@@ -218,14 +231,46 @@ if (colour == "red" || colour == "blue"){
 // nützlich, um einen Default-Wert zu setzen.
 var name = otherName || "default";
 
+// Ein 'switch' Statement prüft Gleichheit mit ===
+// ohne ein 'break' nach jedem Fall
+// werden auch die Fälle nach dem korrekten aufgerufen
+grade = 'B';
+switch (grade) {
+  case 'A':
+    console.log("Great job");
+    break;
+  case 'B':
+    console.log("OK job");
+    break;
+  case 'C':
+    console.log("You can do better");
+    break;
+  default:
+    console.log("Oy vey");
+    break;
+}
+
 ///////////////////////////////////
 // 4. Funktionen, Geltungsbereich und Closures
 
-// In JavaScript werden Funktionen mit dem Schlüsselwort 'function' deklariert. 
+// In JavaScript werden Funktionen mit dem Schlüsselwort 'function' deklariert.
 function myFunction(thing){
     return thing.toUpperCase();
 }
 myFunction("foo"); // = "FOO"
+
+// Vorsicht: der Ausdruck der den Rückgabewert einer Funktion bildet muss
+// auf der selben Zeile beginnen auf der auch das 'return' Keyword steht
+// Sonst wird hier ein automatisches Semikolon eingefügt und die Funktion
+// gibt 'undefined' zurück
+function myFunction()
+{
+    return // <- Hier wird automatisch ein Semikolon eingefügt
+    {
+        thisIsAn: 'object literal'
+    }
+}
+myFunction(); // = undefined
 
 // In JavaScript sind Funktionen 'Bürger erster Klasse', also können sie wie 
 // Variablen verwendet und als Parameter anderen Funktionen übergeben werden 
@@ -236,9 +281,9 @@ function myFunction() {
 setTimeout(myFunction, 5000);
 
 // Funktionen können auch deklariert werden, ohne ihnen einen Namen zuzuweisen.
-//  Es ist möglich diese anonymen Funktionen direkt als (oder im) Argument 
+// Es ist möglich diese anonymen Funktionen direkt als (oder im) Argument 
 // einer anderen Funktion zu definieren.
-setTimeout(function() {
+setTimeout(function(){
     // wird ausgeführt, nachdem 5 Sekunden vergangen sind
 }, 5000);
 
@@ -275,7 +320,7 @@ function sayHelloInFiveSeconds(name){
     }
     setTimeout(inner, 5000);
     // setTimeout wird asynchron ausgeführt. Also wird sayHelloInFiveSeconds 
-    // sofort verlassen und setTimeout wird die innere Funktion 'im nachhinein'    
+    // sofort verlassen und setTimeout wird die innere Funktion 'im nachhinein' 
     // aufrufen. Dennoch: Weil sayHelloInFiveSeconds eine Hülle um die innere 
     // Funktion bildet, hat die innere Funktion immer noch Zugriff auf die 
     // Variable prompt.
@@ -319,6 +364,37 @@ var myOtherFunc = function(){
 }
 myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "HELLO WORLD!"
+
+// Mit den Methoden 'call' und 'apply' kann der Kontext eines Funktionsaufrufs
+// verändert werden
+
+var anotherFunc = function(s){
+    return this.myString + s;
+}
+anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
+
+// 'apply' funktioniert beiahe identisch, erwartet die übergebenen Argumente
+// aber in einem Array
+
+anotherFunc.apply(myObj, [" And Hello Sun!"]); // = "Hello World! And Hello Sun!"
+
+// Das ist hilfreich wenn man einer Funktion eine beliebige Zahl Argumente
+// übergeben kann
+
+Math.min(42, 6, 27); // = 6
+Math.min([42, 6, 27]); // = NaN (uh-oh!)
+Math.min.apply(Math, [42, 6, 27]); // = 6
+
+// 'call' und 'apply' beeinflussen aber nur den spezifischen Aufruf.
+// Um den Kontext einer Funktion dauerhaft zu ändern wird 'bind' benutzt.
+
+var boundFunc = anotherFunc.bind(myObj);
+boundFunc(" And Hello Saturn!"); // = "Hello World! And Hello Saturn!"
+
+// Mit 'bind' lassen sich Funktionen auch teilweise anwenden / "curryen".
+var product = function(a, b){ return a * b; }
+var doubler = product.bind(this, 2);
+doubler(8); // = 16
 
 // Wenn eine Funktion mit dem Schlüsselwort 'new' aufgerufen wird, dann wird 
 // ein neues Objekt erzeugt. Funktionen, die darauf ausgelegt sind in dieser 
@@ -382,15 +458,15 @@ myObj.meaningOfLife; // = 43
 // sich *nicht* um den Prototypen der Konstruktor-Funktion; stattdessen handelt
 // es sich um den Prototypen, der einem neuen Objekt mitgegeben wird, wenn es 
 // mit dem Konstruktor und dem Schlüsselwort 'new' erzeugt wird.
-myConstructor.prototype = {
+MyConstructor.prototype = {
     getMyNumber: function(){
         return this.myNumber
     }
 };
-var myNewObj2 = new myConstructor();
+var myNewObj2 = new MyConstructor();
 myNewObj2.getMyNumber(); // = 5
 
-// Die eingebauten Typen, also strings und numbers, haben auch Konstruktoren, 
+// Alle primitiven Typen, also strings und numbers, haben auch Konstruktoren, 
 // die zu dem Typ äquivalente Wrapper-Objekte erzeugen. 
 var myNumber = 12;
 var myNumberObj = new Number(12);
@@ -446,5 +522,7 @@ MDN's [A re-introduction to JavaScript](https://developer.mozilla.org/en-US/docs
 Dieses Tutorial hat nur die Sprache JavaScript vorgestellt; um mehr über den  Einsatz in Websites zu lernen, ist es ein guter Start etwas über das [Document Object Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core) zu lernen.
 
 [JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) ist eine tiefgehende Einführung in die kontra-intuitiven Parts der Sprache.
+
+[JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) ist ein Klassiker unter den Referenzen.
 
 Zusätzlich zu direkten Beiträgen zu diesem Artikel ist der Inhalt in Anlehnung an Louie Dinh's Python-Tutorial auf dieser Seite und das [JS Tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) des Mozilla Developer Network entstanden.

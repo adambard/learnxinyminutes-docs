@@ -10,6 +10,7 @@ contributors:
   - ["Marcos Brizeno", "http://www.about.me/marcosbrizeno"]
   - ["Ariel Krakowski", "http://www.learneroo.com"]
   - ["Dzianis Dashkevich", "https://github.com/dskecse"]
+  - ["Levi Bostian", "https://github.com/levibostian"]
 
 ---
 
@@ -271,6 +272,19 @@ else
 end
 #=> "OK job"
 
+# exception handling:
+begin
+  # code here that might raise an exception
+  raise NoMemoryError, 'You ran out of memory.'
+rescue NoMemoryError => exception_variable
+  puts 'NoMemoryError was raised', exception_variable
+rescue RuntimeError => other_exception_variable
+  puts 'RuntimeError was raised now'
+else 
+  puts 'This runs if no exceptions were thrown at all'
+ensure 
+  puts 'This code always runs no matter what'
+end
 
 # Functions
 
