@@ -18,7 +18,7 @@ Forth, but most of what is written here should work elsewhere.
 \ *words*. These are Forth subroutines which are executed once you press
 \ <Cr>, from left to right.
 
-\ --------------------------------- Precursor ---------------------------------
+\ --------------------------------- Precursor ----------------------------------
 
 \ It's important to know how forth processes instructions. All
 \ programming in Forth is done by manipulating what's known as the parameter
@@ -142,7 +142,7 @@ age ?   \ 12 ok
 100 constant WATER-BOILING-POINT \ ok
 WATER-BOILING-POINT .            \ 100 ok
 
-\ Arrays!
+\ ----------------------------------- Arrays -----------------------------------
 
 \ Set up an array of length 3:
 variable mynumbers 2 cells allot
@@ -188,7 +188,7 @@ create mynumbers 64 , 9001 , 1337 , \ the last `,` is important!
 \ that you set the return stack back to how it was at the end of your
 \ definition. `>r` should always be followed by `r>`.
 
-\ ------------------------- Floating Point Operations -------------------------
+\ ------------------------- Floating Point Operations --------------------------
 
 \ Most forths tend to dislike the use of floating point operations. We write
 \ floating point operations with scientific notation.
@@ -196,9 +196,9 @@ create mynumbers 64 , 9001 , 1337 , \ the last `,` is important!
 
 \ Usually we can just prepend arithmetic words with 'f' to use floating point
 \ arithmetic:
-variable myfloatingvar
-4.4e myfloatingvar f!
-myfloatingvar f@ f.
+variable myfloatingvar \ ok
+4.4e myfloatingvar f!  \ ok
+myfloatingvar f@ f.    \ 4.4 ok
 
 \ --------------------------------- Final Notes --------------------------------
 
