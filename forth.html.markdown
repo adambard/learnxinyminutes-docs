@@ -20,7 +20,7 @@ Forth, but most of what is written here should work elsewhere.
 
 \ --------------------------------- Precursor ----------------------------------
 
-\ It's important to know how forth processes instructions. All
+\ It's important to know how Forth processes instructions. All
 \ programming in Forth is done by manipulating what's known as the parameter
 \ stack (more commonly just referred to as "the stack"). Typing:
 5 2 3 56 76 23 65
@@ -69,8 +69,8 @@ Forth, but most of what is written here should work elsewhere.
 \ Quite often one will want to write their own words.
 : square ( n -- n ) dup * ;    \ ok
 
-\ The `:` word sets forth into compile mode. `(` and `)` are both words which
-\ tell forth to ignore between them. Up until the `;` word is what our word
+\ The `:` word sets Forth into compile mode. `(` and `)` are both words which
+\ tell Forth to ignore between them. Up until the `;` word is what our word
 \ does.
 
 \ We can check the definition of a word with the `see` word:
@@ -78,7 +78,7 @@ see square     \ dup * ; ok
 
 \ -------------------------------- Conditionals --------------------------------
 
-\ In forth, -1 is used to represent truth, and 0 is used to represent false.
+\ In Forth, -1 is used to represent truth, and 0 is used to represent false.
 \ The idea is that -1 is 11111111 in binary, whereas 0 is obviously 0 in binary.
 \ However, any non-zero value is usually treated as being true:
 42 42 =    / -1 ok
@@ -184,13 +184,13 @@ create mynumbers 64 , 9001 , 1337 , \ the last `,` is important!
 \ As well as reading, we can add to the return stack and remove from it:
 5 6 4 >r swap r> .s    \ 6 5 4
 
-\ NOTE: Because forth uses the return stack for word pointers, it's essential
+\ NOTE: Because Forth uses the return stack for word pointers, it's essential
 \ that you set the return stack back to how it was at the end of your
 \ definition. `>r` should always be followed by `r>`.
 
 \ ------------------------- Floating Point Operations --------------------------
 
-\ Most forths tend to dislike the use of floating point operations. We write
+\ Most Forths tend to dislike the use of floating point operations. We write
 \ floating point operations with scientific notation.
 8.3e 0.8e f+ f.    \ 9.1 ok
 
