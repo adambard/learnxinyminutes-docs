@@ -52,7 +52,7 @@ of what is written here should work elsewhere.
 
 \ And so on.
 
-\ ------------------------------ Stack Maniulation ------------------------------
+\ ------------------------------ Stack Manipulation ------------------------------
 
 \ Naturally, as we do so much work with the stack, we'll want some useful methods.
 
@@ -63,10 +63,10 @@ of what is written here should work elsewhere.
 
 \ ------------------------------ More Advanced Stack Manipulation ------------------------------
 
-tuck   \ acts like dup, except it duplicates the top item into the 3rd* position in the stack
-over   \ duplicate the second item to the top of the stack
-n roll \ where n is a number, *move* the stack item at that position to the top of the stack
-n pick \ where n is a number, *duplicate* the item at that position to the top of the stack
+1 2 3 4 tuck   \ duplicate the top item into the second slot:      1 2 4 3 4 ok
+1 2 3 4 over   \ duplicate the second item to the top:             1 2 3 4 3 ok
+1 2 3 4 2 roll \ *move* the item at that position to the top:      1 3 4 2 ok
+1 2 3 4 2 pick \ *duplicate* the item at that position to the top: 1 2 3 4 2 ok
 
 \ When referring to stack indexes, they are zero-based.
 
