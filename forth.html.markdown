@@ -7,28 +7,29 @@ filename: learnforth.fs
 
 Forth was created by Charles H. Moore in the 70s.
 
-Note: This article focuses predominantly on the Gforth implementation of Forth, but most
-of what is written here should work elsewhere. 
+Note: This article focuses predominantly on the Gforth implementation of
+Forth, but most of what is written here should work elsewhere.
 
-> If Lisp is the ultimate high level language, Forth is the ultimate low level language.
+> If Lisp is the ultimate high level lang, Forth is the ultimate low level lang.
 
 ```forth
 
-\ Forth is an interactive programming language which is comprised of *words*. These are
-\ Forth subroutines which are executed once you press <Cr>, from left to right.
+\ Forth is an interactive programming language which is comprised of
+\ *words*. These are Forth subroutines which are executed once you press
+<Cr>, from left to right.
 
 \ ------------------------------ Precursor ------------------------------
 
-\ It's important to know how forth processes instructions. All programming in Forth is
-\ done by manipulating what's known as the parameter stack (more commonly just referred
-\ to as "the stack"). Typing:
+\ It's important to know how forth processes instructions. All
+\ programming in Forth is done by manipulating what's known as the parameter
+\ stack (more commonly just referred to as "the stack"). Typing:
 5 2 3 56 76 23 65
 
 \ Makes those numbers get added to the stack, from left to right.
 .s    \ <7> 5 2 3 56 76 23 65 ok
 
-\ Forth's interpreter interprets what you type in one of two ways: as *words* (i.e. the
-\ name of subroutines) or as *numbers*. Words are essentially "symbols that do things".
+\ Forth's interpreter interprets what you type in one of two ways: as *words*
+\ (i.e. the name of subroutines) or as *numbers*.
 
 \ ------------------------------ Basic Arithmetic ------------------------------
 
@@ -47,16 +48,16 @@ of what is written here should work elsewhere.
 
 \ And so on.
 
-\ ------------------------------ Stack Manipulation ------------------------------
+\ ----------------------------- Stack Manipulation -----------------------------
 
-\ Naturally, as we do so much work with the stack, we'll want some useful methods.
+\ Naturally, as we work with the stack, we'll want some useful methods:
 
 3 dup -          \ duplicate the top item (1st now equals 2nd): 3 - 3
 2 5 swap /       \ swap the top with the second element:        5 / 2
 6 4 5 rot .s     \ rotate the top 3 elements:                   4 5 6 ok
 4 0 drop 2 /     \ remove the top item (dont print to screen):  4 / 2
 
-\ ------------------------------ More Advanced Stack Manipulation ------------------------------
+\ ---------------------- More Advanced Stack Manipulation ----------------------
 
 1 2 3 4 tuck   \ duplicate the top item into the second slot:      1 2 4 3 4 ok
 1 2 3 4 over   \ duplicate the second item to the top:             1 2 3 4 3 ok
@@ -65,7 +66,7 @@ of what is written here should work elsewhere.
 
 \ When referring to stack indexes, they are zero-based.
 
-\ ------------------------------ Creating Words ------------------------------
+\ ------------------------------ Creating Words --------------------------------
 
 \ Quite often one will want to write their own words.
 : square ( n -- n ) dup * ;    \ ok
@@ -77,7 +78,7 @@ of what is written here should work elsewhere.
 \ We can check the definition of a word with the `see` word:
 see square     \ dup * ; ok
 
-\ ------------------------------ Conditionals ------------------------------
+\ -------------------------------- Conditionals --------------------------------
 
 \ In forth, -1 is used to represent truth, and 0 is used to represent false.
 \ The idea is that -1 is 11111111 in binary, whereas 0 is obviously 0 in binary.
@@ -86,22 +87,22 @@ see square     \ dup * ; ok
 42 42 =    / -1 ok
 12 53 =    / 0 ok
 
-\ `if` is a *compile-only word*. This means that it can only be used when we're compiling a word.
-\ when creating conditionals, the format is `if` <stuff to do> `then` <rest of program>.
+\ `if` is a *compile-only word*. This means that it can only be used when we're
+\ compiling a word. The format is `if` <stuff to do> `then` <rest of program>.
 
 : ?>64 ( n -- n ) DUP 64 > if ." Greater than 64!" then ; \ ok
 100 ?>64                                                  \ Greater than 64! ok
 
 \ Else:
 
-: ?>64 ( n -- n ) DUP 64 > if ." Greater than 64!" else ." Less than 64!" then ; \ ok
-100 ?>64                                                                         \ Greater than 64! ok
-20 ?>64                                                                          \ Less than 64! ok
+: ?>64 ( n -- n ) DUP 64 > if ." Greater than 64!" else ." Less than 64!" then ;
+100 ?>64    \ Greater than 64! ok
+20 ?>64     \ Less than 64! ok
 
-\ ------------------------------ Loops ------------------------------
+\ ------------------------------------ Loops -----------------------------------
 
-\ `do` is like `if` in that it is also a compile-only word, though it uses `loop` as its
-\ terminator:
+\ `do` is like `if` in that it is also a compile-only word, though it uses
+\ `loop` as its terminator:
 : myloop ( -- ) 5 0 do cr ." Hello!" loop ; \ ok
 test
 \ Hello!
@@ -110,11 +111,11 @@ test
 \ Hello!
 \ Hello! ok
 
-\ `do` expects two numbers on the stack: the end number and the index number, respectively.
+\ `do` expects two numbers on the stack: the end number and the index number:
 
 \ Get the value of the index as we loop with `i`:
-: one-to-15 ( -- ) 15 0 do i . loop ;     \ ok
-one-to-15                                 \ 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ok
+: one-to-12 ( -- ) 12 0 do i . loop ;     \ ok
+one-to-12                                 \ 0 1 2 3 4 5 6 7 8 9 10 11 12 ok
 : squares ( -- ) 10 0 do i DUP * . loop ; \ ok
 squares                                   \ 0 1 4 9 16 25 36 49 64 81 ok
 
@@ -125,7 +126,7 @@ threes                                \ 0 3 6 9 12 ok
 \ Finally, while loops with `begin` <stuff to do> <flag> `unil`:
 : death ( -- ) begin ." Are we there yet?" 0 until ;
 
-\ ------------------------------ Variables and Memory ------------------------------
+\ ---------------------------- Variables and Memory ----------------------------
 
 \ Sometimes we'll be in a situation where we want more permanent variables:
 \ First, we use `variable` to declare `age` to be a variable.
@@ -134,8 +135,8 @@ variable age
 \ Then we write 21 to age with the word `!`.
 21 age !
 
-\ Finally we can print our variable using the "read" word '@', which adds the value
-\ to the stack, or use a handy word called `?` that reads and prints it in one go.
+\ Finally we can print our variable using the "read" word '@', which adds the
+\ value to the stack, or use `?` that reads and prints it in one go.
 age @ . \ 12 ok
 age ?   \ 12 ok
 
@@ -180,7 +181,7 @@ create mynumbers 64 , 9001 , 1337 , \ the last `,` is important!
 
 \ TODO
 
-\ ------------------------------ Final Notes ------------------------------
+\ --------------------------------- Final Notes --------------------------------
 
 \ Floats
 \ Commenting (types)
