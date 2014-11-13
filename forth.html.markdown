@@ -16,7 +16,7 @@ Forth, but most of what is written here should work elsewhere.
 
 \ Forth is an interactive programming language which is comprised of
 \ *words*. These are Forth subroutines which are executed once you press
-<Cr>, from left to right.
+\ <Cr>, from left to right.
 
 \ ------------------------------ Precursor ------------------------------
 
@@ -45,8 +45,6 @@ Forth, but most of what is written here should work elsewhere.
 6 7 * .     \ 42 ok
 1360 23 - . \ 1337 ok
 12 12 / .   \ 1 ok
-
-\ And so on.
 
 \ ----------------------------- Stack Manipulation -----------------------------
 
@@ -83,18 +81,15 @@ see square     \ dup * ; ok
 \ In forth, -1 is used to represent truth, and 0 is used to represent false.
 \ The idea is that -1 is 11111111 in binary, whereas 0 is obviously 0 in binary.
 \ However, any non-zero value is usually treated as being true:
-
 42 42 =    / -1 ok
 12 53 =    / 0 ok
 
 \ `if` is a *compile-only word*. This means that it can only be used when we're
 \ compiling a word. The format is `if` <stuff to do> `then` <rest of program>.
-
 : ?>64 ( n -- n ) DUP 64 > if ." Greater than 64!" then ; \ ok
 100 ?>64                                                  \ Greater than 64! ok
 
 \ Else:
-
 : ?>64 ( n -- n ) DUP 64 > if ." Greater than 64!" else ." Less than 64!" then ;
 100 ?>64    \ Greater than 64! ok
 20 ?>64     \ Less than 64! ok
