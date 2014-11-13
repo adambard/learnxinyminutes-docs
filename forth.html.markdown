@@ -202,11 +202,18 @@ myfloatingvar f@ f.    \ 4.4 ok
 
 \ --------------------------------- Final Notes --------------------------------
 
-\ bye
+\ Loading Forth files:
+s" forthfile.fs" included
+
+\ If you find yourself wanting to clear the stack, typing something that's not
+\ a defined word or a number will work.
+
+\ `bye` closes gforth.
 
 ```
 
 ##Ready For More?
 
 * [Starting Forth](http://www.forth.com/starting-forth/)
+* [Simple Forth](http://www.murphywong.net/hello/simple.htm)
 * [Thinking Forth](http://thinking-forth.sourceforge.net/)
