@@ -18,7 +18,7 @@ Forth, but most of what is written here should work elsewhere.
 \ *words*. These are Forth subroutines which are executed once you press
 \ <Cr>, from left to right.
 
-\ ------------------------------ Precursor ------------------------------
+\ --------------------------------- Precursor ---------------------------------
 
 \ It's important to know how forth processes instructions. All
 \ programming in Forth is done by manipulating what's known as the parameter
@@ -174,12 +174,34 @@ create mynumbers 64 , 9001 , 1337 , \ the last `,` is important!
 
 \ ------------------------------ The Return Stack ------------------------------
 
-\ TODO
+\ The return stack is used by Forth to the hold pointers to things when
+\ words are executing other words, e.g. loops.
+
+\ We've already seen one use of it: `i`, which duplicates the top of the return
+\ stack. `i` is equivalent to `r@`.
+: myloop ( -- ) 5 0 do r@ . loop ;
+
+\ As well as reading, we can add to the return stack and remove from it:
+5 6 4 >r swap r> .s    \ 6 5 4
+
+\ NOTE: Because forth uses the return stack for word pointers, it's essential
+\ that you set the return stack back to how it was at the end of your
+\ definition. `>r` should always be followed by `r>`.
+
+\ ------------------------- Floating Point Operations -------------------------
+
+\ Most forths tend to dislike the use of floating point operations. We write
+\ floating point operations with scientific notation.
+8.3e 0.8e f+ f.    \ 9.1 ok
+
+\ Usually we can just prepend arithmetic words with 'f' to use floating point
+\ arithmetic:
+variable myfloatingvar
+4.4e myfloatingvar f!
+myfloatingvar f@ f.
 
 \ --------------------------------- Final Notes --------------------------------
 
-\ Floats
-\ Commenting (types)
 \ bye
 
 ```
