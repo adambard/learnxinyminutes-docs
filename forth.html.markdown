@@ -50,7 +50,7 @@ Forth, but most of what is written here should work elsewhere.
 
 3 dup -          \ duplicate the top item (1st now equals 2nd): 3 - 3
 2 5 swap /       \ swap the top with the second element:        5 / 2
-6 4 5 rot .s     \ rotate the top 3 elements:                   4 5 6 ok
+6 4 5 rot .s     \ rotate the top 3 elements:                   4 5 6
 4 0 drop 2 /     \ remove the top item (dont print to screen):  4 / 2
 
 \ ---------------------- More Advanced Stack Manipulation ----------------------
@@ -103,9 +103,9 @@ myloop
 \ Hello!
 \ Hello! ok
 
-\ `do` expects two numbers on the stack: the end number and the index number:
+\ `do` expects two numbers on the stack: the end number and the index number.
 
-\ Get the value of the index as we loop with `i`:
+\ We can get the value of the index as we loop with `i`:
 : one-to-12 ( -- ) 12 0 do i . loop ;     \ ok
 one-to-12                                 \ 0 1 2 3 4 5 6 7 8 9 10 11 12 ok
 : squares ( -- ) 10 0 do i DUP * . loop ; \ ok
@@ -116,49 +116,49 @@ squares                                   \ 0 1 4 9 16 25 36 49 64 81 ok
 threes                                \ 0 3 6 9 12 ok
 
 \ Finally, while loops with `begin` <stuff to do> <flag> `unil`:
-: death ( -- ) begin ." Are we there yet?" 0 until ;
+: death ( -- ) begin ." Are we there yet?" 0 until ;    \ ok
 
 \ ---------------------------- Variables and Memory ----------------------------
 
 \ Use `variable` to declare `age` to be a variable.
-variable age
+variable age    \ ok
 
 \ Then we write 21 to age with the word `!`.
-21 age !
+21 age !    \ ok
 
 \ Finally we can print our variable using the "read" word `@`, which adds the
 \ value to the stack, or use `?` that reads and prints it in one go.
-age @ . \ 12 ok
-age ?   \ 12 ok
+age @ .    \ 12 ok
+age ?      \ 12 ok
 
 \ Constants are quite simiar, except we don't bother with memory addresses:
-100 constant WATER-BOILING-POINT \ ok
-WATER-BOILING-POINT .            \ 100 ok
+100 constant WATER-BOILING-POINT    \ ok
+WATER-BOILING-POINT .               \ 100 ok
 
 \ ----------------------------------- Arrays -----------------------------------
 
 \ Set up an array of length 3:
-variable mynumbers 2 cells allot
+variable mynumbers 2 cells allot    \ ok
 
 \ Initialize all the values to 0
-mynumbers 3 cells erase
+mynumbers 3 cells erase    \ ok
 \ (alternatively we could do `0 fill` instead of `erase`, but as we're setting
 \ them to 0 we just use `erase`).
 
 \ or we can just skip all the above and initialize with specific values:
-create mynumbers 64 , 9001 , 1337 , \ the last `,` is important!
+create mynumbers 64 , 9001 , 1337 , \ ok (the last `,` is important!)
 
 \ ...which is equivalent to:
 
 \ [64, 9001, 1337]
-64 mynumbers 0 cells + !
-9001 mynumbers 1 cells + !
-1337 mynumbers 2 cells + !
+64 mynumbers 0 cells + !      \ ok
+9001 mynumbers 1 cells + !    \ ok
+1337 mynumbers 2 cells + !    \ ok
 
 \ Reading values at certain array indexes:
-0 cells mynumbers + ? \ 64 ok
-1 cells mynumbers + ? \ 9001 ok
-2 cells mynumbers + ? \ 1337 ok
+0 cells mynumbers + ?    \ 64 ok
+1 cells mynumbers + ?    \ 9001 ok
+2 cells mynumbers + ?    \ 1337 ok
 
 \ Of course, you'll probably want to define your own words to manipulate arrays:
 : ?mynumbers ( n -- n ) cells mynumbers + ; \ ok
@@ -172,10 +172,10 @@ create mynumbers 64 , 9001 , 1337 , \ the last `,` is important!
 
 \ We've already seen one use of it: `i`, which duplicates the top of the return
 \ stack. `i` is equivalent to `r@`.
-: myloop ( -- ) 5 0 do r@ . loop ;
+: myloop ( -- ) 5 0 do r@ . loop ;    \ ok
 
 \ As well as reading, we can add to the return stack and remove from it:
-5 6 4 >r swap r> .s    \ 6 5 4
+5 6 4 >r swap r> .s    \ 6 5 4 ok
 
 \ NOTE: Because Forth uses the return stack for word pointers, it's essential
 \ that you set the return stack back to how it was at the end of your
@@ -188,9 +188,9 @@ create mynumbers 64 , 9001 , 1337 , \ the last `,` is important!
 8.3e 0.8e f+ f.    \ 9.1 ok
 
 \ Usually we simply prepend words with 'f' when dealing with floats:
-variable myfloatingvar \ ok
-4.4e myfloatingvar f!  \ ok
-myfloatingvar f@ f.    \ 4.4 ok
+variable myfloatingvar    \ ok
+4.4e myfloatingvar f!     \ ok
+myfloatingvar f@ f.       \ 4.4 ok
 
 \ --------------------------------- Final Notes --------------------------------
 
