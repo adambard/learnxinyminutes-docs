@@ -21,31 +21,26 @@ of what is written here should work elsewhere.
 
 \ It's important to know how forth processes instructions. All programming in Forth is
 \ done by manipulating what's known as the parameter stack (more commonly just referred
-\ to as "the stack"). The stack is a typical last-in-first-out (LIFO) stack. Typing:
+\ to as "the stack"). Typing:
 5 2 3 56 76 23 65
 
-\ Means 5 gets put on the stack first, then 2, then 3, etc all the way to 65, which
-\ is now at the top of the stack. We can see the length and contents of the stack by
-\ passing forth the word `.s`:
-.s <7> 5 2 3 56 76 23 65    \ ok
+\ Makes those numbers get added to the stack, from left to right.
+.s    \ <7> 5 2 3 56 76 23 65 ok
 
 \ Forth's interpreter interprets what you type in one of two ways: as *words* (i.e. the
 \ name of subroutines) or as *numbers*. Words are essentially "symbols that do things".
 
-\ Finally, as the stack is LIFO, we obviously must use postfix notation to manipulate
-\ the stack. This should become clear shortly.
-
 \ ------------------------------ Basic Arithmetic ------------------------------
 
-\ Lets do a simple equation: adding 5 and 4. In infix notation this would be 5 + 4,
-\ but as forth works in postfix (see above about stack manipulation) we input it like so:
+\ Arithmetic (in fact most words requiring data) works by manipulating data on
+\ the stack.
 5 4 +    \ ok
 
-\ However, this alone yields "ok", yet no answer. Typing the word `.` will yield
-\ the result.
+\ This adds 5 and 4 to the stack and then `+` is called, which removes them and
+\ adds the result to the stack. We can see it with `.`:
 .    \ 9 ok
 
-\ This should illustrate how Forth's stack works. Lets do a few more arithmetic tests:
+\ A few more examples of arithmetic
 6 7 * .     \ 42 ok
 1360 23 - . \ 1337 ok
 12 12 / .   \ 1 ok
@@ -75,19 +70,15 @@ of what is written here should work elsewhere.
 \ Quite often one will want to write their own words.
 : square ( n -- n ) dup * ;    \ ok
 
-\ Lets break this down. The `:` word says to Forth to enter "compile" mode. After that,
-\ we tell Forth what our word is called - "square". Between the parentheses we have a
-\ comment depicting what this word does to the stack - it takes a number and adds a
-\ number. Finally, we have what the word does, until we reach the `;` word which
-\ says that you've finished your definition, Forth will add this to the dictionary and
-\ switch back into interpret mode.
+\ The `:` word sets forth into compile mode. `(` and `)` are both words which
+\ tell forth to ignore between them. Up until the `;` word is what our word
+\ does.
 
 \ We can check the definition of a word with the `see` word:
 see square     \ dup * ; ok
 
 \ ------------------------------ Conditionals ------------------------------
 
-\ Booleans:
 \ In forth, -1 is used to represent truth, and 0 is used to represent false.
 \ The idea is that -1 is 11111111 in binary, whereas 0 is obviously 0 in binary.
 \ However, any non-zero value is usually treated as being true:
