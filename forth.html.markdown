@@ -5,13 +5,14 @@ contributors:
 filename: learnforth.fs
 ---
 
-Forth was created by Charles H. Moore in the 70s.
+Forth was created by Charles H. Moore in the 70s. It is an imperative,
+stack-based language and programming environment, being used in projects
+such as Open Firmware. It's also used by NASA.
 
 Note: This article focuses predominantly on the Gforth implementation of
 Forth, but most of what is written here should work elsewhere.
 
 ```forth
-
 \ Forth is a low level interactive programming language which is comprised of
 \ *words*. These are Forth subroutines which are executed once you press
 \ <Cr>, from left to right.
@@ -39,9 +40,9 @@ Forth, but most of what is written here should work elsewhere.
 .    \ 9 ok
 
 \ A few more examples of arithmetic
-6 7 * .     \ 42 ok
-1360 23 - . \ 1337 ok
-12 12 / .   \ 1 ok
+6 7 * .        \ 42 ok
+1360 23 - .    \ 1337 ok
+12 12 / .      \ 1 ok
 
 \ ----------------------------- Stack Manipulation -----------------------------
 
