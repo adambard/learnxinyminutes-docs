@@ -21,7 +21,7 @@ Forth, but most of what is written here should work elsewhere.
 
 \ All programming in Forth is done by manipulating what's known as the parameter
 \ stack (more commonly just referred to as "the stack"). Typing:
-5 2 3 56 76 23 65
+5 2 3 56 76 23 65    \ ok
 
 \ Makes those numbers get added to the stack, from left to right.
 .s    \ <7> 5 2 3 56 76 23 65 ok
