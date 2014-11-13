@@ -655,7 +655,7 @@ String.prototype.firstCharacter = function(){
 // used in older environments such as outdated browsers.
 
 // Например, мы упомянули, что Object.create не доступен во всех версиях 
-// JavaScript, но мы може создать полифилл.
+// JavaScript, но мы можем создать полифилл.
 // For instance, we mentioned that Object.create isn't yet available in all
 // implementations, but we can still use it with this polyfill:
 if (Object.create === undefined){ // не переопределяем если есть
@@ -670,30 +670,23 @@ if (Object.create === undefined){ // не переопределяем если 
 }
 ```
 
-## Further Reading
+## Что еще почитать
 
-The [Mozilla Developer
-Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) provides
-excellent documentation for JavaScript as it's used in browsers. Plus, it's a
-wiki, so as you learn more you can help others out by sharing your own
-knowledge.
+[Современный учебник JavaScript](http://learn.javascript.ru/) от Ильи Кантора 
+является довольно качественным и глубоким учебным материалом, освещающим все 
+особенности современного языка. Помимо учебника на том же домене можно найти 
+[перевод спецификации ECMAScript 5.1](http://es5.javascript.ru/) и справочник по 
+возможностям языка.
 
-MDN's [A re-introduction to
-JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
-covers much of the concepts covered here in more detail. This guide has quite
-deliberately only covered the JavaScript language itself; if you want to learn
-more about how to use JavaScript in web pages, start by learning about the
-[Document Object
-Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
+[JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/ru/) позволяет 
+довольно быстро изучить основные тонкие места в работе с JS, но фокусируется 
+только на таких моментах
 
-[Learn Javascript by Example and with Challenges](http://www.learneroo.com/modules/64/nodes/350) is a variant of this reference with built-in challenges. 
+[Справочник](https://developer.mozilla.org/ru/docs/JavaScript) от MDN 
+(Mozilla Development Network) содержит информацию о возможностях языка на 
+английском.
 
-[JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) is an in-depth
-guide of all the counter-intuitive parts of the language.
+Название проекта ["Принципы написания консистентного, идиоматического кода на 
+JavaScript"](https://github.com/rwaldron/idiomatic.js/tree/master/translations/ru_RU)
+говорит само за себя.
 
-[JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) is a classic guide / reference book. 
-
-In addition to direct contributors to this article, some content is adapted
-from Louie Dinh's Python tutorial on this site, and the [JS
-Tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
-on the Mozilla Developer Network.
