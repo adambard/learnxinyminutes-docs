@@ -195,10 +195,11 @@ myfloatingvar f@ f.       \ 4.4 ok
 \ --------------------------------- Final Notes --------------------------------
 
 \ Loading Forth files:
-s" forthfile.fs" included
+\ s" forthfile.fs" included
 
-\ If you find yourself wanting to clear the stack, typing something that's not
-\ a defined word or a number will work.
+\ Typing a non-existent word will empty the stack. However, there's also a word
+\ specifically for that:
+clearstack
 
 \ `bye` closes gforth.
 
