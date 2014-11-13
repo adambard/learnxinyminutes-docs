@@ -81,8 +81,8 @@ see square     \ dup * ; ok
 \ In Forth, -1 is used to represent truth, and 0 is used to represent false.
 \ The idea is that -1 is 11111111 in binary, whereas 0 is obviously 0 in binary.
 \ However, any non-zero value is usually treated as being true:
-42 42 =    / -1 ok
-12 53 =    / 0 ok
+42 42 =    \ -1 ok
+12 53 =    \ 0 ok
 
 \ `if` is a *compile-only word*. This means that it can only be used when we're
 \ compiling a word. The format is `if` <stuff to do> `then` <rest of program>.
@@ -99,7 +99,7 @@ see square     \ dup * ; ok
 \ `do` is like `if` in that it is also a compile-only word, though it uses
 \ `loop` as its terminator:
 : myloop ( -- ) 5 0 do cr ." Hello!" loop ; \ ok
-test
+myloop
 \ Hello!
 \ Hello!
 \ Hello!
