@@ -10,18 +10,15 @@ Forth was created by Charles H. Moore in the 70s.
 Note: This article focuses predominantly on the Gforth implementation of
 Forth, but most of what is written here should work elsewhere.
 
-> If Lisp is the ultimate high level lang, Forth is the ultimate low level lang.
-
 ```forth
 
-\ Forth is an interactive programming language which is comprised of
+\ Forth is a low level interactive programming language which is comprised of
 \ *words*. These are Forth subroutines which are executed once you press
 \ <Cr>, from left to right.
 
 \ --------------------------------- Precursor ----------------------------------
 
-\ It's important to know how Forth processes instructions. All
-\ programming in Forth is done by manipulating what's known as the parameter
+\ All programming in Forth is done by manipulating what's known as the parameter
 \ stack (more commonly just referred to as "the stack"). Typing:
 5 2 3 56 76 23 65
 
@@ -78,9 +75,8 @@ see square     \ dup * ; ok
 
 \ -------------------------------- Conditionals --------------------------------
 
-\ In Forth, -1 is used to represent truth, and 0 is used to represent false.
-\ The idea is that -1 is 11111111 in binary, whereas 0 is obviously 0 in binary.
-\ However, any non-zero value is usually treated as being true:
+\ -1 == true, 0 == false. However, any non-zero value is usually treated as
+\ being true:
 42 42 =    \ -1 ok
 12 53 =    \ 0 ok
 
@@ -123,20 +119,16 @@ threes                                \ 0 3 6 9 12 ok
 
 \ ---------------------------- Variables and Memory ----------------------------
 
-\ Sometimes we'll be in a situation where we want more permanent variables:
-\ First, we use `variable` to declare `age` to be a variable.
+\ Use `variable` to declare `age` to be a variable.
 variable age
 
 \ Then we write 21 to age with the word `!`.
 21 age !
 
-\ Finally we can print our variable using the "read" word '@', which adds the
+\ Finally we can print our variable using the "read" word `@`, which adds the
 \ value to the stack, or use `?` that reads and prints it in one go.
 age @ . \ 12 ok
 age ?   \ 12 ok
-
-\ What's happening here is that `age` stores the memory address, and we use `!`
-\ and `@` to manipulate it.
 
 \ Constants are quite simiar, except we don't bother with memory addresses:
 100 constant WATER-BOILING-POINT \ ok
@@ -174,8 +166,8 @@ create mynumbers 64 , 9001 , 1337 , \ the last `,` is important!
 
 \ ------------------------------ The Return Stack ------------------------------
 
-\ The return stack is used by Forth to the hold pointers to things when
-\ words are executing other words, e.g. loops.
+\ The return stack is used to the hold pointers to things when words are
+\ executing other words, e.g. loops.
 
 \ We've already seen one use of it: `i`, which duplicates the top of the return
 \ stack. `i` is equivalent to `r@`.
@@ -190,12 +182,11 @@ create mynumbers 64 , 9001 , 1337 , \ the last `,` is important!
 
 \ ------------------------- Floating Point Operations --------------------------
 
-\ Most Forths tend to dislike the use of floating point operations. We write
+\ Most Forths tend to eschew the use of floating point operations. We write
 \ floating point operations with scientific notation.
 8.3e 0.8e f+ f.    \ 9.1 ok
 
-\ Usually we can just prepend arithmetic words with 'f' to use floating point
-\ arithmetic:
+\ Usually we simply prepend words with 'f' when dealing with floats:
 variable myfloatingvar \ ok
 4.4e myfloatingvar f!  \ ok
 myfloatingvar f@ f.    \ 4.4 ok
