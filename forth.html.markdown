@@ -194,14 +194,15 @@ myfloatingvar f@ f.       \ 4.4 ok
 
 \ --------------------------------- Final Notes --------------------------------
 
-\ Loading Forth files:
-\ s" forthfile.fs" included
-
 \ Typing a non-existent word will empty the stack. However, there's also a word
 \ specifically for that:
 clearstack
 
-\ `bye` closes gforth.
+\ Loading Forth files:
+\ s" forthfile.fs" included
+
+\ Exiting Gforth:
+\ bye
 
 ```
 
