@@ -56,17 +56,10 @@ of what is written here should work elsewhere.
 
 \ Naturally, as we do so much work with the stack, we'll want some useful methods.
 
-drop \ drop (remove) the item at the top of the stack (note the difference between this and `.`)
-dup  \ duplicate the item on top the stack
-rot  \ rotate the top three items (third -> first, first -> second, second -> third)
-swap \ swaps the top item with the second item
-
-\ Examples:
-
-dup *            \ square the top item
-2 5 dup * swap / \ half the top item squared
-6 4 5 rot * -    \ sometimes we just want to reorganize
-4 0 drop 2 /     \ add 4 and 0, remove 0 and divide the top by 2 
+3 dup -          \ duplicate the top item (1st now equals 2nd): 3 - 3
+2 5 swap /       \ swap the top with the second element:        5 / 2
+6 4 5 rot .s     \ rotate the top 3 elements:                   4 5 6 ok
+4 0 drop 2 /     \ remove the top item (dont print to screen):  4 / 2
 
 \ ------------------------------ More Advanced Stack Manipulation ------------------------------
 
@@ -173,7 +166,6 @@ mynumbers 3 cells erase
 \ them to 0 we just use `erase`).
 
 \ or we can just skip all the above and initialize with specific values:
-
 create mynumbers 64 , 9001 , 1337 , \ the last `,` is important!
 
 \ ...which is equivalent to:
