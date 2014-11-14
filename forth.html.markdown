@@ -110,8 +110,8 @@ one-to-12                                 \ 0 1 2 3 4 5 6 7 8 9 10 11 12 ok
 
 \ `?do` works similarly, except it will skip the loop if the end and start
 \ numbers are equal.
-: squares ( n -- ) 0 ?do i square . loop ;  \ ok
-10 squares                                 \ 0 1 4 9 16 25 36 49 64 81 ok
+: squares ( n -- ) 0 ?do i square . loop ;   \ ok
+10 squares                                   \ 0 1 4 9 16 25 36 49 64 81 ok
 
 \ Change the "step" with `+loop`:
 : threes ( n n -- ) ?do i . 3 +loop ;    \ ok
