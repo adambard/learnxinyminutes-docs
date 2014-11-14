@@ -83,11 +83,11 @@ see square     \ dup * ; ok
 
 \ `if` is a *compile-only word*. This means that it can only be used when we're
 \ compiling a word. The format is `if` <stuff to do> `then` <rest of program>.
-: ?>64 ( n -- n ) DUP 64 > if ." Greater than 64!" then ; \ ok
+: ?>64 ( n -- n ) dup 64 > if ." Greater than 64!" then ; \ ok
 100 ?>64                                                  \ Greater than 64! ok
 
 \ Else:
-: ?>64 ( n -- n ) DUP 64 > if ." Greater than 64!" else ." Less than 64!" then ;
+: ?>64 ( n -- n ) dup 64 > if ." Greater than 64!" else ." Less than 64!" then ;
 100 ?>64    \ Greater than 64! ok
 20 ?>64     \ Less than 64! ok
 
@@ -108,7 +108,7 @@ myloop
 \ We can get the value of the index as we loop with `i`:
 : one-to-12 ( -- ) 12 0 do i . loop ;     \ ok
 one-to-12                                 \ 0 1 2 3 4 5 6 7 8 9 10 11 12 ok
-: squares ( -- ) 10 0 do i DUP * . loop ; \ ok
+: squares ( -- ) 10 0 do i dup * . loop ; \ ok
 squares                                   \ 0 1 4 9 16 25 36 49 64 81 ok
 
 \ Change the "step" with `+loop`:
