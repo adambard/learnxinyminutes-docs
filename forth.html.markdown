@@ -161,13 +161,13 @@ create mynumbers 64 , 9001 , 1337 , \ ok (the last `,` is important!)
 0 cells mynumbers + ?    \ 64 ok
 1 cells mynumbers + ?    \ 9001 ok
 
-\ We can simplify it by making a helper word for manipulating arrays:
-: arr ( n n -- n ) cells swap + ;
-mynumbers 2 arr ?    \ 1337 ok
+\ We can simplify it a little by making a helper word for manipulating arrays:
+: of-arr ( n n -- n ) cells + ;    \ ok
+mynumbers 2 of-arr ?               \ 1337 ok
 
 \ Which we can use for writing too:
-20 mynumbers 1 arr !    \ ok
-mynumbers 1 arr ?       \ 20 ok
+20 mynumbers 1 of-arr !    \ ok
+mynumbers 1 of-arr ?       \ 20 ok
 
 \ ------------------------------ The Return Stack ------------------------------
 
