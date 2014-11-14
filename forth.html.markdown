@@ -13,21 +13,19 @@ Note: This article focuses predominantly on the Gforth implementation of
 Forth, but most of what is written here should work elsewhere.
 
 ```forth
-\ Forth is a low level interactive programming language which is comprised of
-\ *words*. These are Forth subroutines which are executed once you press
-\ <Cr>, from left to right.
+\ This is a comment
+( This is also a comment but it's only used when defining words )
 
 \ --------------------------------- Precursor ----------------------------------
 
-\ All programming in Forth is done by manipulating what's known as the parameter
-\ stack (more commonly just referred to as "the stack"). Typing:
+\ All programming in Forth is done by manipulating the parameter stack (more
+\ commonly just referred to as "the stack").
 5 2 3 56 76 23 65    \ ok
 
-\ Makes those numbers get added to the stack, from left to right.
+\ Those numbers get added to the stack, from left to right.
 .s    \ <7> 5 2 3 56 76 23 65 ok
 
-\ Forth's interpreter interprets what you type in one of two ways: as *words*
-\ (i.e. the name of subroutines) or as *numbers*.
+\ In Forth, everything is either a word or a number.
 
 \ ------------------------------ Basic Arithmetic ------------------------------
 
@@ -35,14 +33,19 @@ Forth, but most of what is written here should work elsewhere.
 \ the stack.
 5 4 +    \ ok
 
-\ This adds 5 and 4 to the stack and then `+` is called, which removes them and
-\ adds the result to the stack. We can see it with `.`:
+\ `.` pops the top result from the stack:
 .    \ 9 ok
 
-\ A few more examples of arithmetic
+\ More examples of arithmetic:
 6 7 * .        \ 42 ok
 1360 23 - .    \ 1337 ok
 12 12 / .      \ 1 ok
+13 2 mod .     \ 1 ok
+
+99 negate .    \ -99 ok
+-99 abs .      \ 99 ok
+52 23 max .    \ 52 ok
+52 23 min .    \ 23 ok
 
 \ ----------------------------- Stack Manipulation -----------------------------
 
@@ -67,11 +70,8 @@ Forth, but most of what is written here should work elsewhere.
 \ Quite often one will want to write their own words.
 : square ( n -- n ) dup * ;    \ ok
 
-\ The `:` word sets Forth into compile mode. `(` and `)` are both words which
-\ tell Forth to ignore between them. Up until the `;` word is what our word
-\ does.
+\ The `:` word sets Forth into compile mode until it sees the `;` word.
 
-\ We can check the definition of a word with the `see` word:
 see square     \ dup * ; ok
 
 \ -------------------------------- Conditionals --------------------------------
@@ -81,8 +81,7 @@ see square     \ dup * ; ok
 42 42 =    \ -1 ok
 12 53 =    \ 0 ok
 
-\ `if` is a *compile-only word*. This means that it can only be used when we're
-\ compiling a word. The format is `if` <stuff to do> `then` <rest of program>.
+\ `if` is a compile-only word. `if` <stuff to do> `then` <rest of program>.
 : ?>64 ( n -- n ) dup 64 > if ." Greater than 64!" then ; \ ok
 100 ?>64                                                  \ Greater than 64! ok
 
@@ -93,8 +92,7 @@ see square     \ dup * ; ok
 
 \ ------------------------------------ Loops -----------------------------------
 
-\ `do` is like `if` in that it is also a compile-only word, though it uses
-\ `loop` as its terminator:
+\ `do` is also a compile-only word.
 : myloop ( -- ) 5 0 do cr ." Hello!" loop ; \ ok
 myloop
 \ Hello!
@@ -108,12 +106,12 @@ myloop
 \ We can get the value of the index as we loop with `i`:
 : one-to-12 ( -- ) 12 0 do i . loop ;     \ ok
 one-to-12                                 \ 0 1 2 3 4 5 6 7 8 9 10 11 12 ok
-: squares ( -- ) 0 do i dup * . loop ;    \ ok
+: squares ( n -- ) 0 do i dup * . loop ;  \ ok
 10 squares                                \ 0 1 4 9 16 25 36 49 64 81 ok
 
 \ Change the "step" with `+loop`:
-: threes ( -- ) do i . 3 +loop ;    \ ok
-15 0 threes                         \ 0 3 6 9 12 ok
+: threes ( n n -- ) do i . 3 +loop ;    \ ok
+15 0 threes                             \ 0 3 6 9 12 ok
 
 \ Finally, while loops with `begin` <stuff to do> <flag> `unil`:
 : death ( -- ) begin ." Are we there yet?" 0 until ;    \ ok
@@ -142,8 +140,9 @@ variable mynumbers 2 cells allot    \ ok
 
 \ Initialize all the values to 0
 mynumbers 3 cells erase    \ ok
-\ (alternatively we could do `0 fill` instead of `erase`, but as we're setting
-\ them to 0 we just use `erase`).
+
+\ Alternatively we could use `fill`:
+mynumbers 3 cells 0 fill
 
 \ or we can just skip all the above and initialize with specific values:
 create mynumbers 64 , 9001 , 1337 , \ ok (the last `,` is important!)
@@ -177,14 +176,12 @@ create mynumbers 64 , 9001 , 1337 , \ ok (the last `,` is important!)
 \ As well as reading, we can add to the return stack and remove from it:
 5 6 4 >r swap r> .s    \ 6 5 4 ok
 
-\ NOTE: Because Forth uses the return stack for word pointers, it's essential
-\ that you set the return stack back to how it was at the end of your
-\ definition. `>r` should always be followed by `r>`.
+\ NOTE: Because Forth uses the return stack for word pointers,  `>r` should
+\ always be followed by `r>`.
 
 \ ------------------------- Floating Point Operations --------------------------
 
-\ Most Forths tend to eschew the use of floating point operations. We write
-\ floating point operations with scientific notation.
+\ Most Forths tend to eschew the use of floating point operations.
 8.3e 0.8e f+ f.    \ 9.1 ok
 
 \ Usually we simply prepend words with 'f' when dealing with floats:
