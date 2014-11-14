@@ -55,6 +55,7 @@ Forth, but most of what is written here should work elsewhere.
 2 5 swap /       \ swap the top with the second element:        5 / 2
 6 4 5 rot .s     \ rotate the top 3 elements:                   4 5 6
 4 0 drop 2 /     \ remove the top item (dont print to screen):  4 / 2
+1 2 3 nip .s     \ remove the second item (similar to drop):    1 3
 
 \ ---------------------- More Advanced Stack Manipulation ----------------------
 
@@ -151,7 +152,7 @@ create mynumbers 64 , 9001 , 1337 , \ ok (the last `,` is important!)
 
 \ ...which is equivalent to:
 
-\ [64, 9001, 1337]
+\ Manually writing values to each index:
 64 mynumbers 0 cells + !      \ ok
 9001 mynumbers 1 cells + !    \ ok
 1337 mynumbers 2 cells + !    \ ok
@@ -159,12 +160,14 @@ create mynumbers 64 , 9001 , 1337 , \ ok (the last `,` is important!)
 \ Reading values at certain array indexes:
 0 cells mynumbers + ?    \ 64 ok
 1 cells mynumbers + ?    \ 9001 ok
-2 cells mynumbers + ?    \ 1337 ok
 
-\ Of course, you'll probably want to define your own words to manipulate arrays:
-: ?mynumbers ( n -- n ) cells mynumbers + ; \ ok
-64 mynumbers 2 cells + !                    \ ok
-2 ?mynumbers ?                              \ 64 ok
+\ We can simplify it by making a helper word for manipulating arrays:
+: arr ( n n -- n ) cells swap + ;
+mynumbers 2 arr ?    \ 1337 ok
+
+\ Which we can use for writing too:
+20 mynumbers 1 arr !    \ ok
+mynumbers 1 arr ?       \ 20 ok
 
 \ ------------------------------ The Return Stack ------------------------------
 
