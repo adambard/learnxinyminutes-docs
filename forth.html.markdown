@@ -108,12 +108,12 @@ myloop
 \ We can get the value of the index as we loop with `i`:
 : one-to-12 ( -- ) 12 0 do i . loop ;     \ ok
 one-to-12                                 \ 0 1 2 3 4 5 6 7 8 9 10 11 12 ok
-: squares ( -- ) 10 0 do i dup * . loop ; \ ok
-squares                                   \ 0 1 4 9 16 25 36 49 64 81 ok
+: squares ( -- ) 0 do i dup * . loop ;    \ ok
+10 squares                                \ 0 1 4 9 16 25 36 49 64 81 ok
 
 \ Change the "step" with `+loop`:
-: threes ( -- ) 15 0 do i . 3 +loop ; \ ok
-threes                                \ 0 3 6 9 12 ok
+: threes ( -- ) do i . 3 +loop ;    \ ok
+15 0 threes                         \ 0 3 6 9 12 ok
 
 \ Finally, while loops with `begin` <stuff to do> <flag> `unil`:
 : death ( -- ) begin ." Are we there yet?" 0 until ;    \ ok
