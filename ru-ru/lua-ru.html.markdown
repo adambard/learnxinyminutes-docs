@@ -45,7 +45,7 @@ end
 if num > 40 then
   print('больше 40')
 elseif s ~= 'walternate' then  -- ~= обозначает "не равно".
-  -- Проверка равенства это == как в Python; ok для строк.
+  -- Проверка равенства это == как в Python; работает для строк.
   io.write('не больше 40\n')  -- По умолчанию стандартный вывод.
 else
   -- По умолчанию переменные являются глобальными.
@@ -54,7 +54,7 @@ else
   -- Как сделать локальную переменную:
   local line = io.read()  -- Считывает введённую строку.
 
-  -- Конкатенация строк использует .. оператор:
+  -- Для конкатенации строк используется оператор .. :
   print('Зима пришла, ' .. line)
 end
 
@@ -133,10 +133,10 @@ f = function (x) return x * x end
 -- Эти тоже:
 local function g(x) return math.sin(x) end
 local g = function(x) return math.sin(x) end
--- Equivalent to local function g(x)..., except referring to g in the function
--- body won't work as expected.
+-- Эквивалентно для local function g(x)..., кроме ссылки на g в теле функции
+-- не будет работать как ожидалось.
 local g; g  = function (x) return math.sin(x) end
--- the 'local g' decl makes g-self-references ok.
+-- 'local g' будет прототипом функции.
 
 -- Trig funcs work in radians, by the way.
 
@@ -151,32 +151,34 @@ print {} -- Тоже сработает.
 --------------------------------------------------------------------------------
 
 -- Таблицы = структура данных, свойственная только для Lua; это ассоциативные массивы.
--- Similar to php arrays or js objects, they are hash-lookup dicts that can
--- also be used as lists.
+-- Похоже на массивы в PHP или объекты в JS
+-- Так же может использоваться как список.
 
--- Using tables as dictionaries / maps:
 
--- Dict literals have string keys by default:
+-- Использование словарей:
+
+-- Литералы имеют ключ по умолчанию:
 t = {key1 = 'value1', key2 = false}
 
--- String keys can use js-like dot notation:
+-- Строковые ключи выглядят как точечная нотация в JS:
 print(t.key1)  -- Печатает 'value1'.
 t.newKey = {}  -- Добавляет новую пару ключ-значение.
 t.key2 = nil   -- Удаляет key2 из таблицы.
 
--- Literal notation for any (non-nil) value as key:
+-- Литеральная нотация для любого (не пустой) значения ключа:
 u = {['@!#'] = 'qbert', [{}] = 1729, [6.28] = 'tau'}
 print(u[6.28])  -- пишет "tau"
 
--- Key matching is basically by value for numbers and strings, but by identity
--- for tables.
+-- Ключ соответствует нужен не только для значения чисел и строк, но и для
+-- идентификации таблиц.
 a = u['@!#']  -- Теперь a = 'qbert'.
-b = u[{}]     -- We might expect 1729, but it's nil:
--- b = nil since the lookup fails. It fails because the key we used is not the
--- same object as the one used to store the original value. So strings &
--- numbers are more portable keys.
+b = u[{}]     -- Мы ожидали 1729, но получили nil:
+-- b = nil вышла неудача. Потому что за ключ мы использовали
+-- не тот же объект, который использовали в оригинальном значении.
+-- Поэтому строки и числа больше подходят под ключ.
 
--- A one-table-param function call needs no parens:
+-- Вызов фукцнии с одной таблицей в качестве аргумента
+-- не нуждается в кавычках:
 function h(x) print(x.key1) end
 h{key1 = 'Sonmi~451'}  -- Печатает 'Sonmi~451'.
 
@@ -187,15 +189,16 @@ end
 -- _G - это таблица со всеми глобалями.
 print(_G['_G'] == _G)  -- Печатает 'true'.
 
--- Using tables as lists / arrays:
+-- Использование таблиц как списков / массивов:
 
--- List literals implicitly set up int keys:
+-- Список значений с неявно заданными целочисленными ключами:
 v = {'value1', 'value2', 1.21, 'gigawatts'}
-for i = 1, #v do  -- #v is the size of v for lists.
-  print(v[i])  -- Indices start at 1 !! SO CRAZY!
+for i = 1, #v do  -- #v это размер списка v.
+  print(v[i])  -- Начинается с ОДНОГО!
 end
--- A 'list' is not a real type. v is just a table with consecutive integer
--- keys, treated as a list.
+
+-- Список это таблица. v Это таблица с последовательными целочисленными
+-- ключами, созданными в списке.
 
 --------------------------------------------------------------------------------
 -- 3.1 Мета-таблицы и мета-методы.
