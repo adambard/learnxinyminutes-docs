@@ -1,5 +1,5 @@
 ---
-language: Markdown
+language: markdown
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
