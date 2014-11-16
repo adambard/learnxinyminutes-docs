@@ -405,7 +405,7 @@ g()  -- Напишет 343.
 Я начинал с <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
 Затем я прочитал официальную <a href="http://www.lua.org/pil/contents.html">Документацию по Lua</a>.
 
-Так же может быть полезным<a href="http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">Lua short
+Так же может быть полезным <a href="http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">Lua short
 reference</a> на lua-users.org.
 
 Основные темы не охваченные стандартной библиотекой:
