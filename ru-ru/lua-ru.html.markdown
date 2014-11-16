@@ -138,7 +138,7 @@ local g = function(x) return math.sin(x) end
 local g; g  = function (x) return math.sin(x) end
 -- 'local g' будет прототипом функции.
 
--- Trig funcs work in radians, by the way.
+-- Так же тригонометрические функции работсют с радианами.
 
 -- Вызов функции с одним текстовым параметром не требует круглых скобок:
 print 'hello'  -- Работает без ошибок.
@@ -204,10 +204,10 @@ end
 -- 3.1 Мета-таблицы и мета-методы.
 --------------------------------------------------------------------------------
 
--- A table can have a metatable that gives the table operator-overloadish
--- behavior. Later we'll see how metatables support js-prototypey behavior.
-
-f1 = {a = 1, b = 2}  -- Represents the fraction a/b.
+-- Таблицы могут быть метатаблицами, что дает им поведение
+-- перегрузки-оператора. Позже мы увидим, что метатаблицы поддерживают поведение
+-- js-прототипов.
+f1 = {a = 1, b = 2}  -- Представляет фракцию a/b.
 f2 = {a = 2, b = 3}
 
 -- Это не сработает:
@@ -226,29 +226,29 @@ setmetatable(f2, metafraction)
 
 s = f1 + f2  -- вызывает __add(f1, f2) на мета-таблице f1
 
--- f1, f2 have no key for their metatable, unlike prototypes in js, so you must
--- retrieve it as in getmetatable(f1). The metatable is a normal table with
--- keys that Lua knows about, like __add.
+-- f1, f2 не имеют ключей для своих метатаблиц в отличии от прототипов в js, поэтому
+-- ты можешь извлечь данные через getmetatable(f1). Метатаблицы это обычные таблицы с 
+-- ключем, который в Lua известен как __add.
 
--- But the next line fails since s has no metatable:
+-- Но следущая строка будет ошибочной т.к s не мета-таблица:
 -- t = s + s
--- Class-like patterns given below would fix this.
+-- Шаблоны классов приведенные ниже смогут это исправить.
 
--- An __index on a metatable overloads dot lookups:
+-- __index перегружет в мета-таблице просмотр через точку:
 defaultFavs = {animal = 'gru', food = 'donuts'}
 myFavs = {food = 'pizza'}
 setmetatable(myFavs, {__index = defaultFavs})
 eatenBy = myFavs.animal  -- работает! спасибо, мета-таблица.
 
 --------------------------------------------------------------------------------
--- Direct table lookups that fail will retry using the metatable's __index
--- value, and this recurses.
+-- Прямой табличный поиск не будет пытаться передавать с помощью __index
+-- значения, и её рекурсии.
 
--- An __index value can also be a function(tbl, key) for more customized
--- lookups.
+-- __index значения так же могут быть function(tbl, key) для настроенного
+-- просмотра.
 
--- Values of __index,add, .. are called metamethods.
--- Full list. Here a is a table with the metamethod.
+-- Значения типа __index,add, ... называются метаметодами.
+-- Полный список. Здесь таблицы с метаметодами.
 
 -- __add(a, b)                     для a + b
 -- __sub(a, b)                     для a - b
