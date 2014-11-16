@@ -1177,7 +1177,7 @@ $obj eqv $obj2; # sort comparison using eqv semantics
 
 ## * Short-circuit default operator
 # Like `or` and `||`, but instead returns the first *defined* value :
-say Any // Nil // 0 // 5; #=> 5
+say Any // Nil // 0 // 5; #=> 0
 
 ## * Short-circuit exclusive or (XOR)
 # Returns `True` if one (and only one) of its arguments is true
