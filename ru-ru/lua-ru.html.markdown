@@ -6,6 +6,7 @@ contributors:
 translators:
     - ["Max Solomonov", "https://vk.com/solomonovmaksim"]
     - ["Max Truhonin", "https://vk.com/maximmax42"]	
+    - ["Konstantin Gromyko", "https://vk.com/id0x1765d79"]
 lang: ru-ru
 ---
 
