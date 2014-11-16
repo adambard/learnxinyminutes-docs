@@ -267,13 +267,14 @@ eatenBy = myFavs.animal  -- работает! спасибо, мета-табл�
 -- __call(a, ...)                  для a(...)
 
 --------------------------------------------------------------------------------
--- 3.2 Class-like tables and inheritance.
+-- 3.2 Классы и наследования.
 --------------------------------------------------------------------------------
 
--- Classes aren't built in; there are different ways to make them using
--- tables and metatables.
+-- В Lua нет поддержки классов на уровне языка;
+-- Однако существуют разные способы их создания с помощью
+-- таблиц и метатаблиц.
 
--- Explanation for this example is below it.
+-- Пример классам находится ниже.
 
 Dog = {}                                   -- 1.
 
@@ -290,23 +291,22 @@ end
 mrDog = Dog:new()                          -- 7.
 mrDog:makeSound()  -- 'I say woof'         -- 8.
 
--- 1. Dog acts like a class; it's really a table.
--- 2. "function tablename:fn(...)" is the same as
---    "function tablename.fn(self, ...)", The : just adds a first arg called
---    self. Read 7 & 8 below for how self gets its value.
--- 3. newObj will be an instance of class Dog.
--- 4. "self" is the class being instantiated. Often self = Dog, but inheritance
---    can change it. newObj gets self's functions when we set both newObj's
---    metatable and self's __index to self.
--- 5. Reminder: setmetatable returns its first arg.
--- 6. The : works as in 2, but this time we expect self to be an instance
---    instead of a class.
--- 7. Same as Dog.new(Dog), so self = Dog in new().
--- 8. Same as mrDog.makeSound(mrDog); self = mrDog.
-
+-- 1. Dog похоже на класс; но это таблица.
+-- 2. "function tablename:fn(...)" как и 
+--    "function tablename.fn(self, ...)", Просто : добавляет первый аргумент
+--    перед собой. Читай 7 и 8 чтоб понять как self получает значение.
+-- 3. newObj это экземпляр класса Dog.
+-- 4. "self" есть класс являющийся экземпляром. Зачастую self = Dog, но экземляр
+--    может поменять это. newObj получит свои функции, когда мы установим newObj как
+--    метатаблицу и __index на себя.
+-- 5. Помни: setmetatable возвращает первый аргумент.
+-- 6. ":" Работает в 2 стороны, но в этот раз мы ожидмаем, что self будет экземпляром
+--    а не классом.
+-- 7. Dog.new(Dog), тоже самое что self = Dog in new().
+-- 8. mrDog.makeSound(mrDog) будет self = mrDog.
 --------------------------------------------------------------------------------
 
--- Inheritance example:
+-- Пример наследования:
 
 LoudDog = Dog:new()                           -- 1.
 
@@ -319,17 +319,16 @@ seymour = LoudDog:new()                       -- 3.
 seymour:makeSound()  -- 'woof woof woof'      -- 4.
 
 --------------------------------------------------------------------------------
--- 1. LoudDog gets Dog's methods and variables.
--- 2. self has a 'sound' key from new(), see 3.
--- 3. Same as "LoudDog.new(LoudDog)", and converted to "Dog.new(LoudDog)" as
---    LoudDog has no 'new' key, but does have "__index = Dog" on its metatable.
---    Result: seymour's metatable is LoudDog, and "LoudDog.__index = Dog". So
---    seymour.key will equal seymour.key, LoudDog.key, Dog.key, whichever
---    table is the first with the given key.
--- 4. The 'makeSound' key is found in LoudDog; this is the same as
---    "LoudDog.makeSound(seymour)".
+-- 1. LoudDog получит методы и переменные класса Dog.
+-- 2. self будет 'sound' ключ для new(), смотри 3й пункт.
+-- 3. Так же как "LoudDog.new(LoudDog)" и переделанный в "Dog.new(LoudDog)"
+--    LoudDog не имеет ключ 'new', но может выполнить "__index = Dog" в этой метатаблице
+--    Результат: Метатаблица seymour стала LoudDog и "LoudDog.__index = Dog"
+--    Так же seymour.key будет равна seymour.key, LoudDog.key, Dog.key, 
+--    в зависимости от того какая таблица будет с первым ключем.
+-- 4. 'makeSound' ключ найден в LoudDog; и выглдяит как "LoudDog.makeSound(seymour)".
 
--- If needed, a subclass's new() is like the base's:
+-- При необходимости, подкласс new() будет базовым.
 function LoudDog:new()
   local newObj = {}
   -- set up newObj
@@ -342,12 +341,12 @@ end
 --------------------------------------------------------------------------------
 
 
---[[ I'm commenting out this section so the rest of this script remains
---   runnable.
+--[[ Я закомментировал этот раздел так как часть скрипта остается 
+--   работоспособной.
 ```
 
 ```lua
--- Suppose the file mod.lua looks like this:
+-- Предположим файл mod.lua будет выглядеть так:
 local M = {}
 
 local function sayMyName()
@@ -361,57 +360,55 @@ end
 
 return M
 
--- Another file can use mod.lua's functionality:
-local mod = require('mod')  -- Run the file mod.lua.
+-- Иные файлы могут использовать функционал mod.lua:
+local mod = require('mod')  -- Запустим файл mod.lua.
 
--- require is the standard way to include modules.
--- require acts like:     (if not cached; see below)
+-- require - подключает модули.
+-- require выглядит так:     (если не кешируется; смотри ниже)
 local mod = (function ()
   <contents of mod.lua>
 end)()
--- It's like mod.lua is a function body, so that locals inside mod.lua are
--- invisible outside it.
+-- Тело функции mod.lua является локальным, поэтому
+-- содержимое не видимо за телом функции.
 
--- This works because mod here = M in mod.lua:
-mod.sayHello()  -- Says hello to Hrunkner.
+-- Это работает так как mod здесь = M в mod.lua:
+mod.sayHello()  -- Скажет слово Hrunkner.
 
--- This is wrong; sayMyName only exists in mod.lua:
-mod.sayMyName()  -- error
+-- Это будет ошибочным; sayMyName доступен только в mod.lua:
+mod.sayMyName()  -- ошибка
 
--- require's return values are cached so a file is run at most once, even when
--- require'd many times.
+-- require возвращает значения кеша файла вызванного не более одного раза, даже когда
+-- требуется много раз.
 
--- Suppose mod2.lua contains "print('Hi!')".
-local a = require('mod2')  -- Prints Hi!
-local b = require('mod2')  -- Doesn't print; a=b.
+-- Предположим mod2.lua содержит "print('Hi!')".
+local a = require('mod2')  -- Напишет Hi!
+local b = require('mod2')  -- Не напишет; a=b.
 
--- dofile is like require without caching:
+-- dofile работает без кэша:
 dofile('mod2')  --> Hi!
-dofile('mod2')  --> Hi! (runs again, unlike require)
+dofile('mod2')  --> Hi! (напишет снова)
 
--- loadfile loads a lua file but doesn't run it yet.
-f = loadfile('mod2')  -- Calling f() runs mod2.lua.
+-- loadfile загружает lua файл, но не запускает его.
+f = loadfile('mod2')  -- Вызовет f() запустит mod2.lua.
 
--- loadstring is loadfile for strings.
-g = loadstring('print(343)')  -- Returns a function.
-g()  -- Prints out 343; nothing printed before now.
+-- loadstring это loadfile для строк.
+g = loadstring('print(343)')  -- Вернет функцию.
+g()  -- Напишет 343.
 
 --]]
 
 ```
-## References
+## Примечание (от автора)
 
-I was excited to learn Lua so I could make games
-with the <a href="http://love2d.org/">Love 2D game engine</a>. That's the why.
+Я был взволнован, когда узнал что с Lua я могу делать игры при помощи <a href="http://love2d.org/">Love 2D game engine</a>. Вот почему.
 
-I started with <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
-Next I read the official <a href="http://www.lua.org/pil/contents.html">Programming in Lua</a> book.
-That's the how.
+Я начинал с <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
+Затем я прочитал официальную <a href="http://www.lua.org/pil/contents.html">Документацию по Lua</a>.
 
-It might be helpful to check out the <a href="http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">Lua short
-reference</a> on lua-users.org.
+Так же может быть полезным<a href="http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">Lua short
+reference</a> на lua-users.org.
 
-The main topics not covered are standard libraries:
+Основные темы не охваченные стандартной библиотекой:
 
 * <a href="http://lua-users.org/wiki/StringLibraryTutorial">string library</a>
 * <a href="http://lua-users.org/wiki/TableLibraryTutorial">table library</a>
@@ -419,8 +416,9 @@ The main topics not covered are standard libraries:
 * <a href="http://lua-users.org/wiki/IoLibraryTutorial">io library</a>
 * <a href="http://lua-users.org/wiki/OsLibraryTutorial">os library</a>
 
-By the way, the entire file is valid Lua; save it
-as learn.lua and run it with "lua learn.lua" !
+Весь файл написан на Lua; сохрани его как learn.lua и запусти при помощи "lua learn.lua" !
 
-This was first written for tylerneylon.com, and is
-also available as a <a href="https://gist.github.com/tylerneylon/5853042">github gist</a>. Have fun with Lua!
+Это была моя первая статья для tylerneylon.com, которая так же доступна тут <a href="https://gist.github.com/tylerneylon/5853042">github gist</a>.
+
+Удачи с Lua!
+
