@@ -102,6 +102,9 @@ not False  # => True
 # Strings can be added too!
 "Hello " + "world!"  # => "Hello world!"
 
+# ... or multiplied
+"Hello" * 3  # => "HelloHelloHello"
+
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
 
@@ -136,11 +139,12 @@ bool("")  # => False
 ## 2. Variables and Collections
 ####################################################
 
-# Python has a print function, available in versions 2.7 and 3...
-print("I'm Python. Nice to meet you!")
-# and an older print statement, in all 2.x versions but removed from 3.
-print "I'm also Python!"
-
+# Python has a print statement, in all 2.x versions but removed from 3.
+print "I'm Python. Nice to meet you!"
+# Python also has a print function, available in versions 2.7 and 3...
+# but for 2.7 you need to add the import (uncommented):
+# from __future__ import print_function
+print("I'm also Python! ")
 
 # No need to declare variables before assigning to them.
 some_var = 5    # Convention is to use lower_case_with_underscores
@@ -170,6 +174,10 @@ li.append(3)    # li is now [1, 2, 4, 3] again.
 
 # Access a list like you would any array
 li[0]  # => 1
+# Assign new values to indexes that have already been initialized with =
+li[0] = 42
+li[0]  # => 42
+li[0] = 1  # Note: setting it back to the original value
 # Look at the last element
 li[-1]  # => 3
 
@@ -194,7 +202,8 @@ li[::-1]   # => [3, 4, 2, 1]
 del li[2]   # li is now [1, 2, 3]
 
 # You can add lists
-li + other_li   # => [1, 2, 3, 4, 5, 6] - Note: values for li and for other_li are not modified.
+li + other_li   # => [1, 2, 3, 4, 5, 6]
+# Note: values for li and for other_li are not modified.
 
 # Concatenate lists with "extend()"
 li.extend(other_li)   # Now li is [1, 2, 3, 4, 5, 6]
@@ -255,16 +264,24 @@ filled_dict.get("four")   # => None
 # The get method supports a default argument when the value is missing
 filled_dict.get("one", 4)   # => 1
 filled_dict.get("four", 4)   # => 4
+# note that filled_dict.get("four") is still => 4
+# (get doesn't set the value in the dictionary)
+
+# set the value of a key with a syntax similar to lists
+filled_dict["four"] = 4  # now, filled_dict["four"] => 4
 
 # "setdefault()" inserts into a dictionary only if the given key isn't present
 filled_dict.setdefault("five", 5)  # filled_dict["five"] is set to 5
 filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5
 
 
-# Sets store ... well sets
+# Sets store ... well sets (which are like lists but can contain no duplicates)
 empty_set = set()
 # Initialize a "set()" with a bunch of values
 some_set = set([1, 2, 2, 3, 4])   # some_set is now set([1, 2, 3, 4])
+
+# order is not guaranteed, even though it may sometimes look sorted
+another_set = set([4, 3, 2, 2, 1])  # another_set is now set([1, 2, 3, 4])
 
 # Since Python 2.7, {} can be used to declare a set
 filled_set = {1, 2, 2, 3, 4}   # => {1, 2, 3, 4}
@@ -371,7 +388,7 @@ add(y=6, x=5)   # Keyword arguments can arrive in any order.
 
 
 # You can define functions that take a variable number of
-# positional arguments
+# positional args, which will be interpreted as a tuple if you do not use the *
 def varargs(*args):
     return args
 
@@ -379,7 +396,7 @@ varargs(1, 2, 3)   # => (1, 2, 3)
 
 
 # You can define functions that take a variable number of
-# keyword arguments, as well
+# keyword args, as well, which will be interpreted as a map if you do not use **
 def keyword_args(**kwargs):
     return kwargs
 
@@ -398,12 +415,19 @@ all_the_args(1, 2, a=3, b=4) prints:
 """
 
 # When calling functions, you can do the opposite of args/kwargs!
-# Use * to expand tuples and use ** to expand kwargs.
+# Use * to expand positional args and use ** to expand keyword args.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
 all_the_args(*args)   # equivalent to foo(1, 2, 3, 4)
 all_the_args(**kwargs)   # equivalent to foo(a=3, b=4)
 all_the_args(*args, **kwargs)   # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+
+# you can pass args and kwargs along to other functions that take args/kwargs
+# by expanding them with * and ** respectively
+def pass_all_the_args(*args, **kwargs):
+    all_the_args(*args, **kwargs)
+    print varargs(*args)
+    print keyword_args(**kwargs)
 
 # Function Scope                                                                
 x = 5
@@ -411,13 +435,13 @@ x = 5
 def setX(num):
     # Local var x not the same as global variable x
     x = num # => 43
-    print (x) # => 43
+    print x # => 43
     
 def setGlobalX(num):
     global x
-    print (x) # => 5
+    print x # => 5
     x = num # global var x is now set to 6
-    print (x) # => 6
+    print x # => 6
 
 setX(43)
 setGlobalX(6)
@@ -442,10 +466,10 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 [add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]   # => [6, 7]
 
+
 ####################################################
 ## 5. Classes
 ####################################################
-
 
 # We subclass from object to get a class.
 class Human(object):
@@ -516,6 +540,9 @@ from math import *
 # You can shorten module names
 import math as m
 math.sqrt(16) == m.sqrt(16)   # => True
+# you can also test that the functions are equivalent
+from math import sqrt
+math.sqrt == m.sqrt == sqrt  # => True
 
 # Python modules are just ordinary python files. You
 # can write your own, and import them. The name of the
@@ -542,8 +569,9 @@ def double_numbers(iterable):
 # double_numbers.
 # Note xrange is a generator that does the same thing range does.
 # Creating a list 1-900000000 would take lot of time and space to be made.
-# xrange creates an xrange generator object instead of creating the entire list like range does.
-# We use a trailing underscore in variable names when we want to use a name that 
+# xrange creates an xrange generator object instead of creating the entire list
+# like range does.
+# We use a trailing underscore in variable names when we want to use a name that
 # would normally collide with a python keyword
 xrange_ = xrange(1, 900000000)
 
