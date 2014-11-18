@@ -130,8 +130,8 @@ variable age    \ ok
 
 \ Finally we can print our variable using the "read" word `@`, which adds the
 \ value to the stack, or use `?` that reads and prints it in one go.
-age @ .    \ 12 ok
-age ?      \ 12 ok
+age @ .    \ 21 ok
+age ?      \ 21 ok
 
 \ Constants are quite simiar, except we don't bother with memory addresses:
 100 constant WATER-BOILING-POINT    \ ok
