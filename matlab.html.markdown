@@ -200,7 +200,7 @@ A(1, :) =[] % Delete the first row of the matrix
 A(:, 1) =[] % Delete the first column of the matrix
 
 transpose(A) % Transpose the matrix, which is the same as:
-A'
+A one
 ctranspose(A) % Hermitian transpose the matrix 
 % (the transpose, followed by taking complex conjugate of each element)
 
