@@ -139,7 +139,10 @@ WATER-BOILING-POINT .               \ 100 ok
 
 \ ----------------------------------- Arrays -----------------------------------
 
-\ Set up an array of length 3:
+\ Creating arrays is similar to variables, except we need to allocate more
+\ memory to them.
+
+\ You can use `2 cells allot` to create an array that's 3 cells long:
 variable mynumbers 2 cells allot    \ ok
 
 \ Initialize all the values to 0
