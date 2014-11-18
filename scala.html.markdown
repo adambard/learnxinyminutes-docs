@@ -54,14 +54,17 @@ var y = 10
 y = 20  // y is now 20
 
 /*
-  Scala is a statically typed language, yet note that in the above declarations, we did not specify
-  a type. This is due to a language feature called type inference. In most cases, Scala compiler can
-  guess what the type of a variable is, so you don't have to type it every time. We can explicitly
-  declare the type of a variable like so:
+  Scala is a statically typed language, yet note that in the above declarations,
+  we did not specify a type. This is due to a language feature called type
+  inference. In most cases, Scala compiler can guess what the type of a variable
+  is, so you don't have to type it every time. We can explicitly declare the
+  type of a variable like so:
 */
 val z: Int = 10
 val a: Double = 1.0
-val b: Double = 10  // Notice automatic conversion from Int to Double, result is 10.0, not 10
+
+// Notice automatic conversion from Int to Double, result is 10.0, not 10
+val b: Double = 10
 
 // Boolean values
 true
@@ -94,8 +97,8 @@ true == false // false
   This means the result of evaluating 1 + 7 is an object of type Int with a
   value of 8
 
-  Note that "res29" is a sequentially generated variable name to store the results of the
-  expressions you typed, your output may differ.
+  Note that "res29" is a sequentially generated variable name to store the
+  results of the expressions you typed, your output may differ.
 */
 
 "Scala strings are surrounded by double quotes"
@@ -142,27 +145,69 @@ val html = """<form id="daform">
 // 2. Functions
 /////////////////////////////////////////////////
 
-// The next line gives you a function that takes an Int and returns it squared
+// Functions are defined like so:
+//
+//   def functionName(args...): ReturnType = { body... }
+//
+// If you come from more traditional languages, notice the omission of the
+// return keyword. In Scala, the last expression in the function block is the
+// return value.
+def sumOfSquares(x: Int, y: Int): Int = {
+  val x2 = x * x
+  val y2 = y * y
+  x2 + y2
+}
+
+// The { } can be omitted if the function body is a single expression:
+def sumOfSquaresShort(x: Int, y: Int): Int = x * x + y * y
+
+// Syntax for calling functions is familiar:
+sumOfSquares(3, 4)  // => 25
+
+// In most cases (with recursive functions the most notable exception), function
+// return type can be omitted, and the same type inference we saw with variables
+// will work with function return values:
+def sq(x: Int) = x * x  // Compiler can guess return type is Int
+
+// Functions can have default parameters:
+def addWithDefault(x: Int, y: Int = 5) = x + y
+addWithDefault(1, 2)  // => 3
+addWithDefault(1)  // => 6
+
+
+// Anonymous functions look like this:
 (x:Int) => x * x
 
-// You can assign this function to an identifier, like this:
-val sq = (x:Int) => x * x
+// Unlike defs, even the input type of anonymous functions can be omitted if the
+// context makes it clear. Notice the type "Int => Int" which means a function
+// that takes Int and returns Int.
+val sq: Int => Int = x => x * x
 
-/* The above says this
+// Anonymous functions can be called as usual:
+sq(10)   // => 100
 
-   sq: Int => Int = <function1>
+// If your anonymous function has one or two arguments, and each argument is
+// used only once, Scala gives you an even shorter way to define them. These
+// anonymous functions turn out to be extremely common, as will be obvious in
+// the data structure section.
+val addOne: Int => Int = _ + 1
+val weirdSum: (Int, Int) => Int = (_ * 2 + _ * 3)
 
-   Which means that this time we gave an explicit name to the value - sq is a
-   function that take an Int and returns Int.
+addOne(5)  // => 6
+weirdSum(2, 4)  // => 16
 
-   sq can be executed as follows:
-*/
 
-sq(10)   // Gives you this: res33: Int = 100.
-
-// The colon explicitly defines the type of a value, in this case a function
-// taking an Int and returning an Int.
-val add10: Int => Int = _ + 10
+// The return keyword exists in Scala, but it only returns from the inner-most
+// def that surrounds it. It has no effect on anonymous functions. For example:
+def foo(x: Int) = {
+  val anonFunc: Int => Int = { z =>
+    if (z > 5)
+      return z  // This line makes z the return value of foo!
+    else
+      z + 2  // This line is the return value of anonFunc
+  }
+  anonFunc(x)  // This line is the return value of foo
+}
 
 
 /////////////////////////////////////////////////
@@ -187,7 +232,7 @@ while (i < 10) {  println("i " + i); i+=1  }   // Yes, again. What happened? Why
 
 i    // Show the value of i. Note that while is a loop in the classical sense -
      // it executes sequentially while changing the loop variable. while is very
-     // fast, faster that Java // loops, but using the combinators and
+     // fast, faster that Java loops, but using the combinators and
      // comprehensions above is easier to understand and parallelize
 
 // A do while loop
@@ -290,13 +335,24 @@ d._2
   And now we will explain what these are.
 */
 
+// classes are similar to classes in other languages. Constructor arguments are
+// declared after the class name, and initialization is done in the class body.
 class Dog(br: String) {
+  // Constructor code here
   var breed: String = br
-  //A method called bark, returning a String
-  def bark: String = {
-    // the body of the method
-    "Woof, woof!"
-  }
+
+  // Define a method called bark, returning a String
+  def bark = "Woof, woof!"
+
+  // Values and methods are assumed public. "protected" and "private" keywords
+  // are also available.
+  private def sleep(hours: Int) =
+    println(s"I'm sleeping for $hours hours")
+
+  // Abstract methods are simply methods with no body. If we uncomment the next
+  // line, class Dog would need to be declared abstract
+  //   abstract class Dog(...) { ... }
+  // def chaseAfter(what: String): String
 }
 
 val mydog = new Dog("greyhound")
@@ -304,17 +360,45 @@ println(mydog.breed) // => "greyhound"
 println(mydog.bark) // => "Woof, woof!"
 
 
-// Classes can contain nearly any other construct, including other classes,
-// functions, methods, objects, case classes, traits etc.
+// The "object" keyword creates a type AND a singleton instance of it. It is
+// common for Scala classes to have a "companion object", where the per-instance
+// behavior is captured in the classes themselves, but behavior related to all
+// instance of that class go in objects. The difference is similar to class
+// methods vs static methods in other languages. Note that objects and classes
+// can have the same name.
+object Dog {
+  def allKnownBreeds = List("pitbull", "shepherd", "retriever")
+  def createDog(breed: String) = new Dog(breed)
+}
 
-// Case classes
 
-case class Person(name:String, phoneNumber:String)
+// Case classes are classes that have extra functionality built in. A common
+// question for Scala beginners is when to use classes and when to use case
+// classes. The line is quite fuzzy, but in general, classes tend to focus on
+// encapsulation, polymorphism, and behavior. The values in these classes tend
+// to be private, and only methods are exposed. The primary purpose of case
+// classes is to hold immutable data. They often have few methods, and the
+// methods rarely have side-effects.
+case class Person(name: String, phoneNumber: String)
 
-Person("George", "1234") == Person("Kate", "1236")
+// Create a new instance. Note cases classes don't need "new"
+val george = Person("George", "1234")
+val kate = Person("Kate", "4567")
+
+// With case classes, you get a few perks for free, like getters:
+george.phoneNumber  // => "1234"
+
+// Per field equality (no need to override .equals)
+Person("George", "1234") == Person("Kate", "1236")  // => false
+
+// Easy way to copy
+// otherGeorge == Person("george", "9876")
+val otherGeorge = george.copy(phoneNumber = "9876")
+
+// And many others. Case classes also get pattern matching for free, see below.
 
 
-// Objects and traits coming soon!
+// Traits coming soon!
 
 
 /////////////////////////////////////////////////
@@ -423,7 +507,7 @@ for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
 // 8. Implicits
 /////////////////////////////////////////////////
 
-Coming soon!
+// Coming soon!
 
 
 /////////////////////////////////////////////////
