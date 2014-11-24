@@ -629,7 +629,7 @@ typedef void (*my_fnp_type)(char *);
 ## Further Reading
 
 Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language)
-It is *the* book about C, written by the creators of C. Be careful, though - it's ancient and it contains some
+It is *the* book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some
 inaccuracies (well, ideas that are not considered good anymore) or now-changed practices.
 
 Another good resource is [Learn C the hard way](http://c.learncodethehardway.org/book/).
