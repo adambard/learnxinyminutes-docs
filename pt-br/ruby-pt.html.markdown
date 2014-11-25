@@ -33,7 +33,7 @@ Você não deve usar também
 10 * 2 #=> 20
 35 / 5 #=> 7
 
-# Aritimética é apenas açúcar sintático
+# Aritmética é apenas açúcar sintático
 # para chamar um método de um objeto
 1.+(3) #=> 4
 10.* 5 #=> 50
@@ -129,7 +129,7 @@ array = [1, "Oi", false] #=> => [1, "Oi", false]
 array[0] #=> 1
 array[12] #=> nil
 
-# Como aritimética, o acesso via [var]
+# Como aritmética, o acesso via [var]
 # é apenas açúcar sintático
 # para chamar o método [] de um objeto
 array.[] 0 #=> 1
@@ -171,7 +171,7 @@ end
 
 # Desde o Ruby 1.9, temos uma sintaxe especial quando usamos símbolos como chaves (keys)
 
-novo_hash = { defcon: 3, acao: true}
+novo_hash = {defcon: 3, acao: true}
 
 novo_hash.keys #=> [:defcon, :acao]
 
@@ -183,9 +183,9 @@ novo_hash.keys #=> [:defcon, :acao]
 if true
   "Se verdadeiro"
 elsif false
- "else if, opicional"
+ "else if, opcional"
 else
- "else, também é opicional"
+ "else, também é opcional"
 end
 
 for contador in 1..5
@@ -259,7 +259,7 @@ end
 # Argumentos de métodos são separados por uma vírgula
 somar 3, 4 #=> 7
 
-somar somar(3,4), 5 #=> 12
+somar(3,4), 5 #=> 12
 
 # yield
 # Todos os métodos possuem implicitamente um paramêntro opcional que é um bloco
