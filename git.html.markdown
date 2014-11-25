@@ -3,6 +3,8 @@ category: tool
 tool: git
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
+    - ["Leo Rudberg" , "http://github.com/LOZORD"]
+    - ["Betsy Lorton" , "http://github.com/schbetsy"]
 filename: LearnGit.txt
 ---
 
@@ -333,6 +335,62 @@ $ git push -u origin master
 # Now, anytime you want to push from that same local branch, use shortcut:
 $ git push 
 ```
+
+### stash
+
+Stashing takes the dirty state of your working directory and saves it on a stack of unfinished changes that you can reapply at any time.
+
+Let's say you've been doing some work in your git repo, but you want to pull from the remote.
+Since you have dirty (uncommited) changes to some files, you are not able to run 'git pull'.
+Instead, you can run 'git stash' to save your changes onto a stack!
+
+```bash
+$ git stash
+Saved working directory and index state \
+  "WIP on master: 049d078 added the index file"
+  HEAD is now at 049d078 added the index file
+  (To restore them type "git stash apply") 
+```
+
+Now you can pull!
+```bash
+git pull
+```
+...changes apply...
+
+Now check that everything is OK
+
+```bash
+$ git status
+# On branch master
+nothing to commit, working directory clean
+```
+
+You can see what 'hunks' you've stashed so far:
+Since the 'hunks' are stored in a Last-In-First-Out stack our most recent change will be at top
+```bash
+$ git stash list
+stash@{0}: WIP on master: 049d078 added the index file
+stash@{1}: WIP on master: c264051 Revert "added file_size"
+stash@{2}: WIP on master: 21d80a5 added number to log
+```
+
+Now let's apply our dirty changes back by popping them off the stack
+```bash
+$ git stash pop
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#
+#      modified:   index.html
+#      modified:   lib/simplegit.rb
+#
+```
+`git stash apply` does the same thing
+
+Now you're ready to get back to work on your stuff!
+
+[Additional Reading.](http://git-scm.com/book/en/v1/Git-Tools-Stashing)
 
 ### rebase (caution) 
 
