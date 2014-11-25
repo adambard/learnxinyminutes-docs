@@ -384,9 +384,10 @@ $ git stash pop
 #      modified:   lib/simplegit.rb
 #
 ```
-'git stash apply' also works too
+`git stash apply` does the same thing
 
 Now you're ready to get back to work on your stuff!
+
 [Additional Reading.](http://git-scm.com/book/en/v1/Git-Tools-Stashing)
 
 ### rebase (caution) 
