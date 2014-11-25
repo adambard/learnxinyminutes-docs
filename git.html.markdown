@@ -3,6 +3,8 @@ category: tool
 tool: git
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
+    - ["Leo Rudberg" , "http://github.com/LOZORD"]
+    - ["Betsy Lorton" , "http://github.com/schbetsy"]
 filename: LearnGit.txt
 ---
 
