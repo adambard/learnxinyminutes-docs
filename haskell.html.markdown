@@ -110,7 +110,7 @@ last [1..5] -- 5
 -- A tuple:
 ("haskell", 1)
 
--- accessing elements of a tuple
+-- accessing elements of a pair (i.e. a tuple of length 2)
 fst ("haskell", 1) -- "haskell"
 snd ("haskell", 1) -- 1
 
@@ -195,14 +195,17 @@ foo 5 -- 75
 -- fixing precedence
 -- Haskell has another function called `$`. This changes the precedence
 -- so that everything to the left of it gets computed first and then applied
--- to everything on the right. You can use `.` and `$` to get rid of a lot
--- of parentheses:
+-- to everything on the right. You can use `$` (often in combination with `.`)
+-- to get rid of a lot of parentheses:
 
 -- before
 (even (fib 7)) -- true
 
 -- after
 even . fib $ 7 -- true
+
+-- equivalently
+even $ fib 7 -- true
 
 ----------------------------------------------------
 -- 5. Type signatures
@@ -227,24 +230,24 @@ double :: Integer -> Integer
 double x = x * 2
 
 ----------------------------------------------------
--- 6. Control Flow and If Statements
+-- 6. Control Flow and If Expressions
 ----------------------------------------------------
 
--- if statements
+-- if expressions
 haskell = if 1 == 1 then "awesome" else "awful" -- haskell = "awesome"
 
--- if statements can be on multiple lines too, indentation is important
+-- if expressions can be on multiple lines too, indentation is important
 haskell = if 1 == 1
             then "awesome"
             else "awful"
 
--- case statements: Here's how you could parse command line arguments
+-- case expressions: Here's how you could parse command line arguments
 case args of
   "help" -> printHelp
   "start" -> startProgram
   _ -> putStrLn "bad args"
 
--- Haskell doesn't have loops because it uses recursion instead.
+-- Haskell doesn't have loops; it uses recursion instead.
 -- map applies a function over every element in an array
 
 map (*2) [1..5] -- [2, 4, 6, 8, 10]
