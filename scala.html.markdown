@@ -527,7 +527,7 @@ implicit def myImplicitFunction(breed: String) = new Dog("Golden " + breed)
 myImplicitInt + 2  // => 102
 myImplicitFunction("Pitbull").breed  // => "Golden Pitbull"
 
-// The difference is that these values are now elligible to be used when another
+// The difference is that these values are now eligible to be used when another
 // piece of code "needs" an implicit value. One such situation is implicit
 // function arguments:
 def sendGreetings(toWhom: String)(implicit howMany: Int) =
