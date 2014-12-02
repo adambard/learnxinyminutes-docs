@@ -238,7 +238,10 @@ string& fooRef = foo; // This creates a reference to foo.
 fooRef += ". Hi!"; // Modifies foo through the reference
 cout << fooRef; // Prints "I am foo. Hi!"
 
-fooRef = bar; // Error: references cannot be reassigned.
+// Doesn't reassign "fooRef". This is the same as "foo = bar", and
+//   foo == "I am bar"
+// after this line.
+fooRef = bar;
 
 const string& barRef = bar; // Create a const reference to bar.
 // Like C, const values (and pointers and references) cannot be modified.
