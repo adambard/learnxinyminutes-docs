@@ -13,7 +13,7 @@ Brainfuck (sans majuscule à part au début d’une phrase) est un langage
 Turing-complet extrêmement simple avec seulement 8 commandes.
 
 ```
-Tout caractère en dehors de "><+-.,[]" (en dehors des guillements) est ignoré.
+Tout caractère en dehors de "><+-.,[]" (en dehors des guillemets) est ignoré.
 
 Brainfuck est représenté par un tableau de 30 000 cellules initialisées à 0 et
 un pointeur de données pointant sur la cellule courante.
