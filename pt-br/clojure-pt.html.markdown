@@ -10,7 +10,7 @@ lang: pt-br
 
 Clojure é uma linguagem da família do Lisp desenvolvida para a JVM (máquina virtual Java). Possui uma ênfase muito mais forte em [programação funcional] (https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_funcional) pura do que Common Lisp, mas inclui diversas utilidades [STM](https://en.wikipedia.org/wiki/Software_transactional_memory) para lidar com estado a medida que isso se torna necessário.
 
-Essa combinação permite gerenciar processamento concorrente de maneira muito simples e frequentemente de maneira automática.
+Essa combinação permite gerenciar processamento concorrente de maneira muito simples, e frequentemente de maneira automática.
 
 (Sua versão de clojure precisa ser pelo menos 1.2)
 
@@ -18,10 +18,10 @@ Essa combinação permite gerenciar processamento concorrente de maneira muito s
 ```clojure
 ; Comentários começam por ponto e vírgula
 
-; Clojure é escrito em "forms" (padrões), os quais são simplesmente 
+; Clojure é escrito em "forms", os quais são simplesmente 
 ; listas de coisas dentro de parênteses, separados por espaços em branco.
 
-; O "reader" (leitor) de clojure presume que o primeiro elemento de 
+; O "reader" (leitor) de Clojure presume que o primeiro elemento de 
 ; uma par de parênteses é uma função ou macro, e que os resto são argumentos.
 
 : A primeira chamada de um arquivo deve ser ns, para configurar o namespace (espaço de nomes)
@@ -32,20 +32,20 @@ Essa combinação permite gerenciar processamento concorrente de maneira muito s
 ; str cria uma string concatenando seus argumentos
 (str "Hello" " " "World") ; => "Hello World"
 
-; Math é direta e intuitiva
+; Cálculos são feitos de forma direta e intuitiva
 (+ 1 1) ; => 2
 (- 2 1) ; => 1
 (* 1 2) ; => 2
 (/ 2 1) ; => 2
 
-; Igualdade é =
+; Você pode comparar igualdade utilizando =
 (= 1 1) ; => true
 (= 2 1) ; => false
 
 ; Negação para operações lógicas
 (not true) ; => false
 
-; Aninhar forms (padrões) funciona como esperado
+; Aninhar "forms" funciona como esperado
 (+ 1 (- 3 2)) ; = 1 + (3 - 2) => 2
 
 ; Tipos
@@ -131,7 +131,7 @@ Essa combinação permite gerenciar processamento concorrente de maneira muito s
 ; (É necessário colocar parênteses para chamá-los)
 ((fn [] "Hello World")) ; => "Hello World"
 
-; Você pode criar variáveis (var) usando def
+; Você pode atribuir valores a variáveis utilizando def
 (def x 1)
 x ; => 1
 
@@ -182,8 +182,11 @@ x ; => 1
 ; operações se eles ficarem grandes o suficiente, portanto não há necessida de 
 ; se preocupar com isso.
 
-; Maps podem usar qualquer tipo "hasheavel" como chave, mas normalmente
-; keywords (palavras chave) são melhores.
+;Mapas podem usar qualquer valor que se pode derivar um hash como chave
+
+
+; Mapas podem usar qualquer valor em que se pode derivar um hash como chave, 
+; mas normalmente palavras-chave (keywords) são melhores.
 ; Keywords são como strings mas com algumas vantagens.
 (class :a) ; => clojure.lang.Keyword
 
@@ -199,7 +202,7 @@ keymap ; => {:a 1, :c 3, :b 2}
 (stringmap "a") ; => 1
 (keymap :a) ; => 1
 
-; Uma palavra chave pode ser usada pra recuperar os valores de um mapa
+; Uma palavra-chave pode ser usada pra recuperar os valores de um mapa
 (:b keymap) ; => 2
 
 ; Não tente isso com strings
@@ -213,7 +216,7 @@ keymap ; => {:a 1, :c 3, :b 2}
 (def newkeymap (assoc keymap :d 4))
 newkeymap ; => {:a 1, :b 2, :c 3, :d 4}
 
-; Mas lembre-se, tipos em clojure são sempre imutáveis!
+; Mas lembre-se, tipos em Clojure são sempre imutáveis!
 keymap ; => {:a 1, :b 2, :c 3}
 
 ; Use dissoc para remover chaves
@@ -228,7 +231,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; Adicione um membro com conj
 (conj #{1 2 3} 4) ; => #{1 2 3 4}
 
-; Remove um com disj
+; Remova um membro com disj
 (disj #{1 2 3} 1) ; => #{2 3}
 
 ; Test por existência usando set como função:
@@ -237,19 +240,19 @@ keymap ; => {:a 1, :b 2, :c 3}
 
 ; Existem muitas outras funções no namespace clojure.sets
 
-; Forms (padrões) úteis
+; Forms úteis
 ;;;;;;;;;;;;;;;;;
 
-; Construções lógicas em clojure são como macros, e 
+; Construções lógicas em Clojure são como macros, e 
 ; se parecem com as demais
 (if false "a" "b") ; => "b"
 (if false "a") ; => nil
 
-; Use let para criar amarramentos (bindings) temporários
+; Use let para criar um novo escopo associando sîmbolos a valores (bindings)
 (let [a 1 b 2]
   (> a b)) ; => false
 
-; Agrupe comandos juntos com do
+; Agrupe comandos juntos com "do"
 (do
   (print "Hello")
   "World") ; => "World" (prints "Hello")
@@ -281,7 +284,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; Use require para importar um módulo
 (require 'clojure.string)
 
-; USe / para chamar funções de um módulo
+; Use / para chamar funções de um módulo
 ; Aqui, o módulo é clojure.string e a função é blank?
 (clojure.string/blank? "") ; => true
 
@@ -316,10 +319,10 @@ keymap ; => {:a 1, :b 2, :c 3}
 
 ; Use . para chamar métodos. Ou, use o atalho ".method"
 (. (Date.) getTime) ; <a timestamp>
-(.getTime (Date.)) ; exactly the same thing.
+(.getTime (Date.)) ; exatamente a mesma coisa.
 
 ; Use / para chamar métodos estáticos
-(System/currentTimeMillis) ; <a timestamp> (system is always present)
+(System/currentTimeMillis) ; <a timestamp> (o módulo System está sempre presente)
 
 ; Use doto para pode lidar com classe (mutáveis) de forma mais tolerável
 (import java.util.Calendar)
@@ -330,8 +333,8 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; STM
 ;;;;;;;;;;;;;;;;;
 
-; Software Transactional Memory é o mecanismo que clojure usa para gerenciar
-; estado persistente. Tem algumas construções em clojure que o utilizam.
+; Software Transactional Memory é o mecanismo que Clojure usa para gerenciar
+; estado persistente. Tem algumas construções em Clojure que o utilizam.
 
 ; O atom é o mais simples. Passe pra ele um valor inicial
 (def my-atom (atom {}))
@@ -339,8 +342,8 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; Atualize o atom com um swap!.
 ; swap! pega uma funçnao and chama ela com o valor atual do atom
 ; como primeiro argumento, e qualquer argumento restante como o segundo
-(swap! my-atom assoc :a 1) ; Sets my-atom to the result of (assoc {} :a 1)
-(swap! my-atom assoc :b 2) ; Sets my-atom to the result of (assoc {:a 1} :b 2)
+(swap! my-atom assoc :a 1) ; Coloca o valor do átomo my-atom como o resultado de  (assoc {} :a 1)
+(swap! my-atom assoc :b 2) ; Coloca o valor do átomo my-atom como o resultado de (assoc {:a 1} :b 2)
 
 ; Use '@' para desreferenciar um atom e acessar seu valor
 my-atom  ;=> Atom<#...> (Retorna o objeto do Atom)
