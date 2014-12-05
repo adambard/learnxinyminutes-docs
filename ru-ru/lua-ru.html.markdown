@@ -419,7 +419,7 @@ g()  -- Напишет 343.
 * <a href="http://lua-users.org/wiki/IoLibraryTutorial">библиотека io</a>
 * <a href="http://lua-users.org/wiki/OsLibraryTutorial">библиотека os</a>
 
-Кстати, весь файл написан на Lua; сохраните его, как learn.lua, и запустите при помощи "lua learn.lua" !
+Кстати, весь файл написан на Lua; сохраните его как learn.lua и запустите при помощи "lua learn.lua" !
 
 Изначально эта статья была написана для tylerneylon.com.
 Также она доступна как <a href="https://gist.github.com/tylerneylon/5853042">github gist</a>. Удачи с Lua!
