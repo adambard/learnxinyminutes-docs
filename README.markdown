@@ -22,6 +22,11 @@ Send a pull request or open an issue any time of day or night.
 **(e.g. [python/en] for English Python).** This will help everyone pick out things they
 care about.
 
+We're happy for any contribution in any form, but if you're making more than one major change
+(i.e. translations for two different languages) it would be super cool of you to make a
+separate pull request for each one so that someone can review them more effectively and/or
+individually.
+
 ### Style Guidelines
 
 * **Keep lines under 80 chars**
