@@ -6,7 +6,7 @@ contributors:
 filename: learnswift.swift
 ---
 
-Swift is a programming language for iOS and OS X development created by Apple. Designed to coexist with Objective-C and to be more resilient against erroneous code, Swift was introduced in 2014 at Apple's developer conference WWDC. It is built with the LLVM compiler included in Xcode 6 beta.
+Swift is a programming language for iOS and OS X development created by Apple. Designed to coexist with Objective-C and to be more resilient against erroneous code, Swift was introduced in 2014 at Apple's developer conference WWDC. It is built with the LLVM compiler included in Xcode 6+.
 
 The official [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) book from Apple is now available via iBooks.
 
@@ -23,7 +23,7 @@ import UIKit
 // Xcode supports landmarks to annotate your code and lists them in the jump bar
 // MARK: Section mark
 // TODO: Do something soon
-// FIXME Fix this code
+// FIXME: Fix this code
 
 println("Hello, world")
 
@@ -55,8 +55,8 @@ println("Build value: \(buildValue)") // Build value: 7
 /*
     Optionals are a Swift language feature that allows you to store a `Some` or
     `None` value.
-    
-    Because Swift requires every property to have a value, even nil must be 
+
+    Because Swift requires every property to have a value, even nil must be
     explicitly stored as an Optional value.
 
     Optional<T> is an enum.
@@ -94,7 +94,8 @@ var anyObjectVar: AnyObject = 7
 anyObjectVar = "Changed value to a string, not good practice, but possible."
 
 /*
-Comment here
+    Comment here
+    
     /*
         Nested comments are also supported
     */
@@ -112,8 +113,9 @@ Comment here
 // Array
 var shoppingList = ["catfish", "water", "lemons"]
 shoppingList[1] = "bottle of water"
-let emptyArray = [String]() // immutable
-var emptyMutableArray = [String]() // mutable
+let emptyArray = [String]() // let == immutable
+let emptyArray2 = Array<String>() // same as above
+var emptyMutableArray = [String]() // var == mutable
 
 
 // Dictionary
@@ -122,8 +124,9 @@ var occupations = [
     "kaylee": "Mechanic"
 ]
 occupations["Jayne"] = "Public Relations"
-let emptyDictionary = [String: Float]() // immutable
-var emptyMutableDictionary = [String: Float]() // mutable
+let emptyDictionary = [String: Float]() // let == immutable
+let emptyDictionary2 = Dictionary<String, Float>() // same as above
+var emptyMutableDictionary = [String: Float]() // var == mutable
 
 
 //
@@ -165,14 +168,16 @@ do {
 } while 1 == 2
 
 // Switch
+// Very powerful, think `if` statements with syntax candy
+// They support String, object instances, and primitives (Int, Double, etc)
 let vegetable = "red pepper"
 switch vegetable {
 case "celery":
     let vegetableComment = "Add some raisins and make ants on a log."
 case "cucumber", "watercress":
     let vegetableComment = "That would make a good tea sandwich."
-case let x where x.hasSuffix("pepper"):
-    let vegetableComment = "Is it a spicy \(x)?"
+case let localScopeValue where localScopeValue.hasSuffix("pepper"):
+    let vegetableComment = "Is it a spicy \(localScopeValue)?"
 default: // required (in order to cover all possible input)
     let vegetableComment = "Everything tastes good in soup."
 }
@@ -186,20 +191,27 @@ default: // required (in order to cover all possible input)
 // in functions and can be passed around
 
 // Function with Swift header docs (format as reStructedText)
+
 /**
-A greet operation
+    A greet operation
 
-- A bullet in docs
-- Another bullet in the docs
+    - A bullet in docs
+    - Another bullet in the docs
 
-:param: name A name
-:param: day A day
-:returns: A string containing the name and day value.
+    :param: name A name
+    :param: day A day
+    :returns: A string containing the name and day value.
 */
 func greet(name: String, day: String) -> String {
     return "Hello \(name), today is \(day)."
 }
 greet("Bob", "Tuesday")
+
+// similar to above except for the function parameter behaviors
+func greet2(#requiredName: String, externalParamName localParamName: String) -> String {
+    return "Hello \(requiredName), the day is \(localParamName)"
+}
+greet2(requiredName:"John", externalParamName: "Sunday")
 
 // Function that returns multiple items in a tuple
 func getGasPrices() -> (Double, Double, Double) {
@@ -281,7 +293,7 @@ print(numbers) // [3, 6, 18]
 
 // Structures and classes have very similar capabilites
 struct NamesTable {
-    let names: [String]
+    let names = [String]()
     
     // Custom subscript
     subscript(index: Int) -> String {
@@ -291,8 +303,8 @@ struct NamesTable {
 
 // Structures have an auto-generated (implicit) designated initializer
 let namesTable = NamesTable(names: ["Me", "Them"])
-//let name = namesTable[2]
-//println("Name is \(name)") // Name is Them
+let name = namesTable[1]
+println("Name is \(name)") // Name is Them
 
 //
 // MARK: Classes
@@ -341,7 +353,7 @@ internal class Rect: Shape {
     
     init(sideLength: Int) {
         self.sideLength = sideLength
-         // always super.init last when init custom properties
+        // always super.init last when init custom properties
         super.init()
     }
     
@@ -368,6 +380,9 @@ print(mySquare.getArea()) // 25
 mySquare.shrink()
 print(mySquare.sideLength) // 4
 
+// cast instance
+let aShape = mySquare as Shape
+
 // compare instances, not the same as == which compares objects (equal to)
 if mySquare === mySquare {
     println("Yep, it's mySquare")
@@ -392,6 +407,17 @@ enum Suit {
         }
     }
 }
+
+// Enum values allow short hand syntax, no need to type the enum type
+// when the variable is explicitly declared
+var suitValue: Suit = .Hearts
+
+// Non-Integer enums require direct raw value assignments
+enum BookName: String {
+    case John = "John"
+    case Luke = "Luke"
+}
+println("Name: \(BookName.John.rawValue)")
 
 
 //
@@ -490,5 +516,4 @@ println(mySquare.sideLength) // 4
 // change side length using custom !!! operator, increases size by 3
 !!!mySquare
 println(mySquare.sideLength) // 12
-
 ```
