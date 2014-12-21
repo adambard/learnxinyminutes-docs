@@ -476,7 +476,7 @@ sSquared.reduce (_+_)
 // The filter function takes a predicate (a function from A -> Boolean) and
 // selects all elements which satisfy the predicate
 List(1, 2, 3) filter (_ > 2) // List(3)
-case class Person(name:String, phoneNumber:String)
+case class Person(name:String, age:Int)
 List(
   Person(name = "Dom", age = 23),
   Person(name = "Bob", age = 30)
