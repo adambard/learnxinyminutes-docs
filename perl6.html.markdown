@@ -35,7 +35,8 @@ my $variable;
 ## * Scalars. They represent a single value. They start with a `$`
 
 my $str = 'String';
-my $str2 = "String"; # double quotes allow for interpolation
+# double quotes allow for interpolation (which we'll see later):
+my $str2 = "String";
 
 # variable names can contain but not end with simple quotes and dashes,
 #  and can contain (and end with) underscores :
@@ -66,23 +67,13 @@ my @keys = 0, 2;
 @array[@keys] = @letters; # Assign using an array
 say @array; #=> a 6 b
 
-# There are two more kinds of lists: Parcel and Arrays.
-# Parcels are immutable lists (you can't modify a list that's not assigned).
-# This is a parcel:
-(1, 2, 3); # Not assigned to anything. Changing an element would provoke an error
-# This is a list:
-my @a = (1, 2, 3); # Assigned to `@a`. Changing elements is okay!
-
-# Lists flatten (in list context). You'll see below how to apply item context
-#  or use arrays to have real nested lists.
-
-
-## * Hashes. Key-Value Pairs.
-# Hashes are actually arrays of Pairs (`Key => Value`),
-#  except they get "flattened", removing duplicated keys.
+## * Hashes, or key-value Pairs.
+# Hashes are actually arrays of Pairs
+# (you can construct a Pair object using the syntax `Key => Value`),
+#  except they get "flattened" (hash context), removing duplicated keys.
 my %hash = 1 => 2,
            3 => 4;
-my %hash = autoquoted => "key", # keys *can* get auto-quoted
+my %hash = autoquoted => "key", # keys get auto-quoted
             "some other" => "value", # trailing commas are okay
             ;
 my %hash = <key1 value1 key2 value2>; # you can also create a hash
@@ -112,6 +103,63 @@ sub say-hello-to(Str $name) { # You can provide the type of an argument
     say "Hello, $name !";
 }
 
+## It can also have optional arguments:
+sub with-optional($arg?) { # the "?" marks the argument optional
+  say "I might return `(Any)` if I don't have an argument passed,
+      or I'll return my argument";
+  $arg;
+}
+with-optional; # returns Any
+with-optional(); # returns Any
+with-optional(1); # returns 1
+
+## You can also give them a default value when they're not passed:
+sub hello-to($name = "World") {
+  say "Hello, $name !";
+}
+hello-to; #=> Hello, World !
+hello-to(); #=> Hello, World !
+hello-to('You'); #=> Hello, You !
+
+## You can also, by using a syntax akin to the one of hashes (yay unified syntax !),
+##  pass *named* arguments to a `sub`.
+# They're optional, and will default to "Any" (Perl's "null"-like value).
+sub with-named($normal-arg, :$named) {
+  say $normal-arg + $named;
+}
+with-named(1, named => 6); #=> 7
+# There's one gotcha to be aware of, here:
+# If you quote your key, Perl 6 won't be able to see it at compile time,
+#  and you'll have a single Pair object as a positional paramater,
+#  which means this fails:
+with-named(1, 'named' => 6);
+
+with-named(2, :named(5)); #=> 7
+
+# To make a named argument mandatory, you can use `?`'s inverse, `!`
+sub with-mandatory-named(:$str!)  {
+  say "$str !";
+}
+with-mandatory-named(str => "My String"); #=> My String !
+with-mandatory-named; # run time error: "Required named parameter not passed" 
+with-mandatory-named(3); # run time error: "Too many positional parameters passed"
+
+## If a sub takes a named boolean argument ...
+sub takes-a-bool($name, :$bool) {
+  say "$name takes $bool";
+}
+# ... you can use the same "short boolean" hash syntax:
+takes-a-bool('config', :bool); # config takes True
+takes-a-bool('config', :!bool); # config takes False
+
+## You can also provide your named arguments with defaults:
+sub named-def(:$def = 5) {
+  say $def;
+}
+named-def; #=> 5
+named-def(:10def); #=> 10
+named-def(def => 15); #=> 15
+
 # Since you can omit parenthesis to call a function with no arguments,
 #  you need "&" in the name to capture `say-hello`.
 my &s = &say-hello;
@@ -136,74 +184,6 @@ sub concat3($a, $b, $c) {
 concat3(|@array); #=> a, b, c
                   # `@array` got "flattened" as a part of the argument list
 
-## It can also have optional arguments:
-sub with-optional($arg?) { # the "?" marks the argument optional
-  say "I might return `(Any)` if I don't have an argument passed,
-      or I'll return my argument";
-  $arg;
-}
-with-optional; # returns Any
-with-optional(); # returns Any
-with-optional(1); # returns 1
-
-## You can also give them a default value when they're not passed:
-sub hello-to($name = "World") {
-  say "Hello, $name !";
-}
-hello-to; #=> Hello, World !
-hello-to(); #=> Hello, World !
-hello-to('You'); #=> Hello, You !
-
-## You can also, by using a syntax akin to the one of hashes (yay unification !),
-##  pass *named* arguments to a `sub`.
-sub with-named($normal-arg, :$named) {
-  say $normal-arg + $named;
-}
-with-named(1, named => 6); #=> 7
-# There's one gotcha to be aware of, here:
-# If you quote your key, Perl 6 won't be able to see it at compile time,
-#  and you'll have a single Pair object as a positional paramater.
-
-with-named(2, :named(5)); #=> 7
-with-named(3, :4named); #=> 7
-                        # (special colon pair syntax for numbers,
-                        # to be used with s// and such, see later)
-
-with-named(3); # warns, because we tried to use the undefined $named in a `+`:
-               # by default, named arguments are *optional*
-
-# To make a named argument mandatory, you can use `?`'s inverse, `!`
-sub with-mandatory-named(:$str!)  {
-  say "$str !";
-}
-with-mandatory-named(str => "My String"); #=> My String !
-with-mandatory-named; # run time error: "Required named parameter not passed" 
-with-mandatory-named(3); # run time error: "Too many positional parameters passed"
-
-## If a sub takes a named boolean argument ...
-sub takes-a-bool($name, :$bool) {
-  say "$name takes $bool";
-}
-# ... you can use the same "short boolean" hash syntax:
-takes-a-bool('config', :bool); # config takes True
-takes-a-bool('config', :!bool); # config takes False
-# or you can use the "adverb" form:
-takes-a-bool('config'):bool; #=> config takes True
-takes-a-bool('config'):!bool; #=> config takes False
-# You'll learn to love (or maybe hate, eh) that syntax later.
-
-
-## You can also provide your named arguments with defaults:
-sub named-def(:$def = 5) {
-  say $def;
-}
-named-def; #=> 5
-named-def(:10def); #=> 10
-named-def(def => 15); #=> 15
-
-# -- Note: we're going to learn *more* on subs really soon,
-#  but we need to grasp a few more things to understand their real power. Ready?
-
 ### Containers
 # In Perl 6, values are actually stored in "containers".
 # The assignment operator asks the container on the left to store the value on
@@ -220,17 +200,13 @@ sub mutate($n is rw) {
 
 # A sub itself returns a container, which means it can be marked as rw:
 my $x = 42;
-sub mod() is rw { $x }
-mod() = 52; # in this case, the parentheses are mandatory
-            # (else Perl 6 thinks `mod` is a "term")
+sub x-store() is rw { $x }
+x-store() = 52; # in this case, the parentheses are mandatory
+                # (else Perl 6 thinks `mod` is an identifier)
 say $x; #=> 52
 
 
 ### Control Flow Structures
-
-# You don't need to put parenthesis around the condition,
-# but that also means you always have to use brackets (`{ }`) for their body:
-
 ## Conditionals
 
 # - `if`
@@ -247,30 +223,38 @@ unless False {
   say "It's not false !";
 }
 
+# As you can see, you don't need parentheses around conditions.
+# However, you do need the brackets around the "body" block:
+# if (true) say; # This doesn't work !
+
 # You can also use their postfix versions, with the keyword after:
 say "Quite truthy" if True;
-
-# if (true) say; # This doesn't work !
 
 # - Ternary conditional, "?? !!" (like `x ? y : z` in some other languages)
 my $a = $condition ?? $value-if-true !! $value-if-false;
 
 # - `given`-`when` looks like other languages `switch`, but much more
 # powerful thanks to smart matching and thanks to Perl 6's "topic variable", $_.
+#
 # This variable contains the default argument of a block,
 #  a loop's current iteration (unless explicitly named), etc.
+#
 # `given` simply puts its argument into `$_` (like a block would do),
 #  and `when` compares it using the "smart matching" (`~~`) operator.
+#
 # Since other Perl 6 constructs use this variable (as said before, like `for`,
 # blocks, etc), this means the powerful `when` is not only applicable along with
 # a `given`, but instead anywhere a `$_` exists.
 given "foo bar" {
-  when /foo/ { # Don't worry about smart matching -- just know `when` uses it.
+  say $_; #=> foo bar
+  when /foo/ { # Don't worry about smart matching yet – just know `when` uses it.
                # This is equivalent to `if $_ ~~ /foo/`.
     say "Yay !";
   }
   when $_.chars > 50 { # smart matching anything with True (`$a ~~ True`) is True,
                        # so you can also put "normal" conditionals.
+                       # This when is equivalent to this `if`:
+                       #  if ($_.chars > 50) ~~ True {...}
     say "Quite a long string !";
   }
   default { # same as `when *` (using the Whatever Star)
@@ -281,7 +265,7 @@ given "foo bar" {
 ## Looping constructs
 
 # - `loop` is an infinite loop if you don't pass it arguments,
-# but can also be a c-style `for`:
+# but can also be a C-style `for` loop:
 loop {
   say "This is an infinite loop !";
   last; # last breaks out of the loop, like the `break` keyword in other languages
@@ -296,7 +280,7 @@ loop (my $i = 0; $i < 5; $i++) {
 
 # - `for` - Passes through an array
 for @array -> $variable {
-  say "I've found $variable !";
+  say "I've got $variable !";
 }
 
 # As we saw with given, for's default "current iteration" variable is `$_`.
@@ -316,22 +300,15 @@ for @array {
   last if $_ == 5; # Or break out of a loop (like `break` in C-like languages).
 }
 
-# Note - the "lambda" `->` syntax isn't reserved to `for`:
+# The "pointy block" syntax isn't specific to for.
+# It's just a way to express a block in Perl6.
 if long-computation() -> $result {
   say "The result is $result";
 }
 
-## Loops can also have a label, and be jumped to through these.
-OUTER: while 1 {
-  say "hey";
-  while 1 {
-    OUTER.last; # All the control keywords must be called on the label itself
-  }
-}
-
 # Now that you've seen how to traverse a list, you need to be aware of something:
 # List context (@) flattens. If you traverse nested lists, you'll actually be traversing a
-#  shallow list (except if some sub-list were put in item context ($)).
+#  shallow list.
 for 1, 2, (3, (4, ((5)))) {
   say "Got $_.";
 } #=> Got 1. Got 2. Got 3. Got 4. Got 5.
@@ -348,9 +325,14 @@ for [1, 2, 3, 4] {
   say "Got $_.";
 } #=> Got 1 2 3 4.
 
-# The other difference between `$()` and `[]` is that `[]` always returns a mutable Array
-#  whereas `$()` will return a Parcel when given a Parcel.
+# You need to be aware of when flattening happens exactly.
+# The general guideline is that argument lists flatten, but not method calls.
+# Also note that `.list` and array assignment flatten (`@ary = ...`) flatten.
+((1,2), 3, (4,5)).map({...}); # iterates over three elements (method call)
+map {...}, ((1,2),3,(4,5));   # iterates over five elements (argument list is flattened)
 
+(@a, @b, @c).pick(1);         # picks one of three arrays (method call)
+pick 1, @a, @b, @c;           # flattens argument list and pick one element
 
 ### Operators
 
@@ -393,9 +375,6 @@ $arg ~~ &bool-returning-function; # `True` if the function, passed `$arg`
 1 ~~ Int; # "has type" (check superclasses and roles)
 1 ~~ True; # smart-matching against a boolean always returns that boolean
            # (and will warn).
-
-# - `===` is value identity and uses `.WHICH` on the objects to compare them
-# - `=:=` is container identity and uses `VAR()` on the objects to compare them
 
 # You also, of course, have `<`, `<=`, `>`, `>=`.
 # Their string equivalent are also avaiable : `lt`, `le`, `gt`, `ge`.
@@ -559,6 +538,21 @@ map(sub ($a, $b) { $a + $b + 3 }, @array); # (here with `sub`)
 # Note : those are sorted lexicographically.
 # `{ $^b / $^a }` is like `-> $a, $b { $b / $a }`
 
+## About types...
+# Perl6 is gradually typed. This means you can specify the type
+#  of your variables/arguments/return types, or you can omit them
+#  and they'll default to "Any".
+# You obviously get access to a few base types, like Int and Str.
+# The constructs for declaring types are "class", "role",
+#  which you'll see later.
+
+# For now, let us examinate "subset":
+# a "subset" is a "sub-type" with additional checks.
+# For example: "a very big integer is an Int that's greater than 500"
+# You can specify the type you're subtyping (by default, Any),
+#  and add additional checks with the "where" keyword:
+subset VeryBigInteger of Int where * > 500;
+
 ## Multiple Dispatch
 # Perl 6 can decide which variant of a `sub` to call based on the type of the
 # arguments, or on arbitrary preconditions, like with a type or a `where`:
@@ -567,20 +561,19 @@ map(sub ($a, $b) { $a + $b + 3 }, @array); # (here with `sub`)
 multi sub sayit(Int $n) { # note the `multi` keyword here
   say "Number: $n";
 }
-multi sayit(Str $s) } # the `sub` is the default
+multi sayit(Str $s) } # a multi is a `sub` by default
   say "String: $s";
 }
 sayit("foo"); # prints "String: foo"
 sayit(True); # fails at *compile time* with
              # "calling 'sayit' will never work with arguments of types ..."
 
-# with arbitrary precondition:
+# with arbitrary precondition (remember subsets?):
 multi is-big(Int $n where * > 50) { "Yes !" } # using a closure
 multi is-big(Int $ where 10..50) { "Quite." } # Using smart-matching
                                               # (could use a regexp, etc)
 multi is-big(Int $) { "No" }
 
-# You can also name these checks, by creating "subsets":
 subset Even of Int where * %% 2;
 
 multi odd-or-even(Even) { "Even" } # The main case using the type.
@@ -724,7 +717,7 @@ role PrintableVal {
   }
 }
 
-# you "use" a mixin with "does" :
+# you "import" a mixin (a "role") with "does":
 class Item does PrintableVal {
   has $.val;
   
@@ -1083,9 +1076,7 @@ postcircumfix:<{ }>(%h, $key, :delete); # (you can call operators like that)
 # It's a prefix meta-operator that takes a binary functions and
 #  one or many lists. If it doesn't get passed any argument,
 #  it either return a "default value" for this operator
-#  (a value that wouldn't change the result if passed as one
-#   of the element of the list to be passed to the operator),
-#  or `Any` if there's none (examples below).
+#  (a meaningless value) or `Any` if there's none (examples below).
 #
 # Otherwise, it pops an element from the list(s) one at a time, and applies
 #  the binary function to the last result (or the list's first element)
@@ -1107,9 +1098,7 @@ say [//] Nil, Any, False, 1, 5; #=> False
 # Default value examples:
 say [*] (); #=> 1 
 say [+] (); #=> 0 
-            # In both cases, they're results that, were they in the lists,
-            #  wouldn't have any impact on the final value
-            #  (since N*1=N and N+0=N).
+            # meaningless values, since N*1=N and N+0=N.
 say [//];   #=> (Any)
             # There's no "default value" for `//`.
 
@@ -1162,90 +1151,6 @@ say @fib[^10]; #=> 1 1 2 3 5 8 13 21 34 55
 # Note : as for ranges, once reified, elements aren't re-calculated.
 # That's why `@primes[^100]` will take a long time the first time you print
 #  it, then be instant.
-
-
-## * Sort comparison
-# They return one value of the `Order` enum : `Less`, `Same` and `More`
-#  (which numerify to -1, 0 or +1).
-1 <=> 4; # sort comparison for numerics
-'a' leg 'b'; # sort comparison for string
-$obj eqv $obj2; # sort comparison using eqv semantics
-
-## * Generic ordering
-3 before 4; # True
-'b' after 'a'; # True
-
-## * Short-circuit default operator
-# Like `or` and `||`, but instead returns the first *defined* value :
-say Any // Nil // 0 // 5; #=> 0
-
-## * Short-circuit exclusive or (XOR)
-# Returns `True` if one (and only one) of its arguments is true
-say True ^^ False; #=> True
-
-## * Flip Flop
-# The flip flop operators (`ff` and `fff`, equivalent to P5's `..`/`...`).
-#  are operators that take two predicates to test:
-# They are `False` until their left side returns `True`, then are `True` until
-#  their right side returns `True`.
-# Like for ranges, you can exclude the iteration when it became `True`/`False`
-#  by using `^` on either side.
-# Let's start with an example :
-for <well met young hero we shall meet later> {
-  # by default, `ff`/`fff` smart-match (`~~`) against `$_`:
-  if 'met' ^ff 'meet' { # Won't enter the if for "met"
-                        #  (explained in details below).
-    .say
-  }
-  
-  if rand == 0 ff rand == 1 { # compare variables other than `$_`
-    say "This ... probably will never run ...";
-  }
-}
-# This will print "young hero we shall meet" (excluding "met"):
-#  the flip-flop will start returning `True` when it first encounters "met"
-#  (but will still return `False` for "met" itself, due to the leading `^`
-#   on `ff`), until it sees "meet", which is when it'll start returning `False`.
-
-# The difference between `ff` (awk-style) and `fff` (sed-style) is that
-#  `ff` will test its right side right when its left side changes to `True`,
-#  and can get back to `False` right away
-#  (*except* it'll be `True` for the iteration that matched) -
-# While `fff` will wait for the next iteration to
-#  try its right side, once its left side changed:
-.say if 'B' ff 'B' for <A B C B A>; #=> B B
-                                    # because the right-hand-side was tested
-                                    # directly (and returned `True`).
-                                    # "B"s are printed since it matched that time
-                                    #  (it just went back to `False` right away).
-.say if 'B' fff 'B' for <A B C B A>; #=> B C B
-                                    # The right-hand-side wasn't tested until
-                                    #  `$_` became "C"
-                                    # (and thus did not match instantly).
-
-# A flip-flop can change state as many times as needed:
-for <test start print it stop not printing start print again stop not anymore> {
-  .say if $_ eq 'start' ^ff^ $_ eq 'stop'; # exclude both "start" and "stop",
-                                           #=> "print this printing again"
-}
-
-# you might also use a Whatever Star,
-# which is equivalent to `True` for the left side or `False` for the right:
-for (1, 3, 60, 3, 40, 60) { # Note: the parenthesis are superfluous here
-                            # (sometimes called "superstitious parentheses")
- .say if $_ > 50 ff *; # Once the flip-flop reaches a number greater than 50,
-                       #  it'll never go back to `False`
-                       #=> 60 3 40 60
-}
-
-# You can also use this property to create an `If`
-#  that'll not go through the first time :
-for <a b c> {
-  .say if * ^ff *; # the flip-flop is `True` and never goes back to `False`,
-                   #  but the `^` makes it *not run* on the first iteration
-                   #=> b c
-}
-
 
 ### Regular Expressions
 # I'm sure a lot of you have been waiting for this one.
@@ -1470,6 +1375,105 @@ multi MAIN('import', File, Str :$as) { ... } # omitting parameter name
 # As you can see, this is *very* powerful.
 # It even went as far as to show inline the constants.
 # (the type is only displayed if the argument is `$`/is named)
+
+###
+### APPENDIX A:
+###
+### List of things
+###
+
+# It's considered by now you know the Perl6 basics.
+# This section is just here to list some common operations,
+#  but which are not in the "main part" of the tutorial to bloat it up
+
+## Operators
+
+
+## * Sort comparison
+# They return one value of the `Order` enum : `Less`, `Same` and `More`
+#  (which numerify to -1, 0 or +1).
+1 <=> 4; # sort comparison for numerics
+'a' leg 'b'; # sort comparison for string
+$obj eqv $obj2; # sort comparison using eqv semantics
+
+## * Generic ordering
+3 before 4; # True
+'b' after 'a'; # True
+
+## * Short-circuit default operator
+# Like `or` and `||`, but instead returns the first *defined* value :
+say Any // Nil // 0 // 5; #=> 0
+
+## * Short-circuit exclusive or (XOR)
+# Returns `True` if one (and only one) of its arguments is true
+say True ^^ False; #=> True
+## * Flip Flop
+# The flip flop operators (`ff` and `fff`, equivalent to P5's `..`/`...`).
+#  are operators that take two predicates to test:
+# They are `False` until their left side returns `True`, then are `True` until
+#  their right side returns `True`.
+# Like for ranges, you can exclude the iteration when it became `True`/`False`
+#  by using `^` on either side.
+# Let's start with an example :
+for <well met young hero we shall meet later> {
+  # by default, `ff`/`fff` smart-match (`~~`) against `$_`:
+  if 'met' ^ff 'meet' { # Won't enter the if for "met"
+                        #  (explained in details below).
+    .say
+  }
+  
+  if rand == 0 ff rand == 1 { # compare variables other than `$_`
+    say "This ... probably will never run ...";
+  }
+}
+# This will print "young hero we shall meet" (excluding "met"):
+#  the flip-flop will start returning `True` when it first encounters "met"
+#  (but will still return `False` for "met" itself, due to the leading `^`
+#   on `ff`), until it sees "meet", which is when it'll start returning `False`.
+
+# The difference between `ff` (awk-style) and `fff` (sed-style) is that
+#  `ff` will test its right side right when its left side changes to `True`,
+#  and can get back to `False` right away
+#  (*except* it'll be `True` for the iteration that matched) -
+# While `fff` will wait for the next iteration to
+#  try its right side, once its left side changed:
+.say if 'B' ff 'B' for <A B C B A>; #=> B B
+                                    # because the right-hand-side was tested
+                                    # directly (and returned `True`).
+                                    # "B"s are printed since it matched that time
+                                    #  (it just went back to `False` right away).
+.say if 'B' fff 'B' for <A B C B A>; #=> B C B
+                                    # The right-hand-side wasn't tested until
+                                    #  `$_` became "C"
+                                    # (and thus did not match instantly).
+
+# A flip-flop can change state as many times as needed:
+for <test start print it stop not printing start print again stop not anymore> {
+  .say if $_ eq 'start' ^ff^ $_ eq 'stop'; # exclude both "start" and "stop",
+                                           #=> "print this printing again"
+}
+
+# you might also use a Whatever Star,
+# which is equivalent to `True` for the left side or `False` for the right:
+for (1, 3, 60, 3, 40, 60) { # Note: the parenthesis are superfluous here
+                            # (sometimes called "superstitious parentheses")
+ .say if $_ > 50 ff *; # Once the flip-flop reaches a number greater than 50,
+                       #  it'll never go back to `False`
+                       #=> 60 3 40 60
+}
+
+# You can also use this property to create an `If`
+#  that'll not go through the first time :
+for <a b c> {
+  .say if * ^ff *; # the flip-flop is `True` and never goes back to `False`,
+                   #  but the `^` makes it *not run* on the first iteration
+                   #=> b c
+}
+
+
+# - `===` is value identity and uses `.WHICH` on the objects to compare them
+# - `=:=` is container identity and uses `VAR()` on the objects to compare them
+
 ```
 
 If you want to go further, you can:
