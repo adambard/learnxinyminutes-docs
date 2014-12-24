@@ -49,7 +49,7 @@ public class LearnJava {
         // Types & Variables
         ///////////////////////////////////////
 
-        // Declare a variable using <type> <name> [
+        // Declare a variable using <type> <name>
         // Byte - 8-bit signed two's complement integer
         // (-128 <= byte <= 127)
         byte fooByte = 100;
@@ -268,9 +268,9 @@ public class LearnJava {
         System.out.println(bar); // Prints A, because the statement is true
 
 
-        ///////////////////////////////////////
-        // Converting Data Types And Typcasting
-        ///////////////////////////////////////
+        ////////////////////////////////////////
+        // Converting Data Types And Typecasting
+        ////////////////////////////////////////
 
         // Converting data
 
