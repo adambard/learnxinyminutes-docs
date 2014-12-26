@@ -1,26 +1,18 @@
 ---
-
 language: "Common Lisp"
-filename: commonlisp.lisp
+filename: commonlisp-pt.lisp
 contributors:
   - ["Paul Nathan", "https://github.com/pnathan"]
+translators:
+  - ["Édipo Luis Féderle", "https://github.com/edipofederle"]
 ---
-
-<!-- ANSI Common Lisp is a general purpose, multi-paradigm programming -->
-<!-- language suited for a wide variety of industry applications. It is -->
-<!-- frequently referred to as a programmable programming language. -->
 
 ANSI Common Lisp é uma linguagem de uso geral, multi-paradigma, designada
 para uma variedade de aplicações na indústria. É frequentemente citada
 como uma linguagem de programação programável.
 
 
-<!-- The classic starting point is [Practical Common Lisp and freely available.](http://www.gigamonkeys.com/book/) -->
-
 O ponto inicial clássico é [Practical Common Lisp and freely available.](http://www.gigamonkeys.com/book/)
-
-<!-- Another popular and recent book is -->
-<!-- [Land of Lisp](http://landoflisp.com/). -->
 
 Outro livro recente e popular é o
 [Land of Lisp](http://landoflisp.com/).
@@ -34,24 +26,16 @@ Outro livro recente e popular é o
 
 ;;; "Form" Geral
 
-<!-- ;; Lisp has two fundamental pieces of syntax: the ATOM and the -->
-<!-- ;; S-expression. Typically, grouped S-expressions are called `forms`. -->
 
 ;; Lisp tem dois pedaços fundamentais de sintaxe: o ATOM e S-expression.
 ;; Tipicamente, S-expressions agrupadas são chamadas de `forms`.
 
-<!-- 10  ; an atom; it evaluates to itself -->
-10  ; um atom; é avaliado para ele mesmo
 
-<!-- :THING ;Another atom; evaluating to the symbol :thing. -->
+10  ; um atom; é avaliado para ele mesmo
 
 :THING ;Outro atom; avaliado para o símbolo :thing.
 
-<!-- t  ; another atom, denoting true. -->
-
 t ; outro atom, denotado true.
-
-<!-- (+ 1 2 3 4) ; an s-expression -->
 
 (+ 1 2 3 4) ; uma s-expression
 
