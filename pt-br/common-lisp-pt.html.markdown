@@ -12,7 +12,7 @@ para uma variedade de aplicações na indústria. É frequentemente citada
 como uma linguagem de programação programável.
 
 
-O ponto inicial clássico é [Practical Common Lisp and freely available.](http://www.gigamonkeys.com/book/)
+O ponto inicial clássico é [Practical Common Lisp e livremente disponível](http://www.gigamonkeys.com/book/)
 
 Outro livro recente e popular é o
 [Land of Lisp](http://landoflisp.com/).
@@ -60,7 +60,7 @@ t ; outro atom, denotado true.
 ;; Existe uma variedade de implementações; a maioria segue o padrão.
 ;; CLISP é um bom ponto de partida.
 
-;; Bibliotecas são gerenciadas através do Quicklisp.org's Quicklisp systemm.
+;; Bibliotecas são gerenciadas através do Quicklisp.org's Quicklisp sistema.
 
 ;; Common Lisp é normalmente desenvolvido com um editor de texto e um REPL
 ;; (Read Evaluate Print Loop) rodando ao mesmo tempo. O REPL permite exploração
@@ -73,7 +73,7 @@ t ; outro atom, denotado true.
 
 ;;; Símbolos
 
-'foo ; => FOO Perceba que um símbolo é automáticamente convertido para maíusculo.
+'foo ; => FOO Perceba que um símbolo é automáticamente convertido para maiúscula.
 
 ;; Intern manualmente cria um símbolo a partir de uma string.
 
@@ -413,7 +413,8 @@ nil                  ; para false - e para lista vazia
       ((< 2 2) (error "wrong again!"))
       (t 'ok)) ; => 'OK
 
-;; Typecase é um condicional que escolhe uma de seus cláusulas com base do tipo do valor
+;; Typecase é um condicional que escolhe uma de seus cláusulas com base do tipo
+;; do seu valor
 
 (typecase 1
   (string :string)
@@ -542,8 +543,8 @@ nil                  ; para false - e para lista vazia
 ;; pi já é definido para a gente em Lisp!
 
 ;; Vamos supor que nós descobrimos que o valor da eficiência do número
-;; de remadores em uma canoa é aproximadamente logarítmica. Isso provavelmente deve ser definido
-;; no construtor / inicializador.
+;; de remadores em uma canoa é aproximadamente logarítmica. Isso provavelmente
+;; deve ser definido no construtor / inicializador.
 
 ;; Veja como initializar sua instância após Common Lisp ter construído isso:
 
@@ -564,7 +565,7 @@ nil                  ; para false - e para lista vazia
 
 ;; Macros permitem que você estenda a sintaxe da lingaugem
 
-;; Common Lisp nãov vem com um loop WHILE- vamos adicionar um.
+;; Common Lisp não vem com um loop WHILE - vamos adicionar um.
 ;; Se obedecermos nossos instintos 'assembler', acabamos com:
 
 (defmacro while (condition &body body)
