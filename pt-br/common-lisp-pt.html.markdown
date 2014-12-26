@@ -178,7 +178,7 @@ nil                  ; para false - e para lista vazia
 (dog-p *rover*) ; => t  ;; ewww)
 (dog-name *rover*) ; => "rover"
 
-;; Dog-p, make-dog, and dog-name foram todas criadas por defstruct!
+;; Dog-p, make-dog, e dog-name foram todas criadas por defstruct!
 
 ;;; Pares
 ;; `cons' constroi pares, `car' and `cdr' extrai o primeiro
@@ -615,7 +615,7 @@ nil                  ; para false - e para lista vazia
 
 ## Créditos
 
-Muitos  agradecimentos ao pessoal de Schema fornecer um grande ponto de partida
+Muitos  agradecimentos ao pessoal de Schema por fornecer um grande ponto de partida
 o que facilitou muito a migração para Common Lisp.
 
 - [Paul Khuong](https://github.com/pkhuong) pelas grandes revisiões.
