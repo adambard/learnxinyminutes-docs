@@ -618,4 +618,4 @@ nil                  ; para false - e para lista vazia
 Muitos  agradecimentos ao pessoal de Schema por fornecer um grande ponto de partida
 o que facilitou muito a migração para Common Lisp.
 
-- [Paul Khuong](https://github.com/pkhuong) pelas grandes revisiões.
+- [Paul Khuong](https://github.com/pkhuong) pelas grandes revisões.
