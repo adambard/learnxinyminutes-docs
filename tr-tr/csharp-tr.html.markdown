@@ -789,7 +789,7 @@ on a new line! ""Wow!"", the masses cried";
 
         public DbSet<Bicycle> Bikes { get; set; }
     }
-} // Namespace sonu
+} // namespace sonu
 ```
 
 ## İşlenmeyen Konular
