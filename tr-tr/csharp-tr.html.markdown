@@ -82,63 +82,63 @@ namespace Learning
             long fooLong = 100000L; // (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
             ulong fooUlong = 100000L; // (0 <= ulong <= 18,446,744,073,709,551,615)
             // Sayılar boyutlarına göre ön tanımlı olarak int ya da uint olabilir.
-            // L, bir değerin long ya da ulong tipinde olduğunu belirtmek için kullanılır.
+            // L, değişken değerinin long ya da ulong tipinde olduğunu belirtmek için kullanılır.
 
-            // Double - Double-precision 64-bit IEEE 754 Floating Point
-            double fooDouble = 123.4; // Precision: 15-16 digits
+            // Double - Çift hassasiyetli 64-bit IEEE 754 kayan sayı
+            double fooDouble = 123.4; // Hassasiyet: 15-16 basamak
 
-            // Float - Single-precision 32-bit IEEE 754 Floating Point
-            float fooFloat = 234.5f; // Precision: 7 digits
-            // f is used to denote that this variable value is of type float
+            // Float - Tek hassasiyetli 32-bit IEEE 754 kayan sayı
+            float fooFloat = 234.5f; // Hassasiyet: 7 basamak
+            // f, değişken değerinin float tipinde olduğunu belirtmek için kullanılır.
 
-            // Decimal - a 128-bits data type, with more precision than other floating-point types,
-            // suited for financial and monetary calculations
+            // Decimal - 128-bit veri tiğinde ve diğer kayan sayı veri tiplerinden daha hassastır,
+            // finansal ve mali hesaplamalar için uygundur.
             decimal fooDecimal = 150.3m;
 
             // Boolean - true & false
-            bool fooBoolean = true; // or false
+            bool fooBoolean = true; // veya false
 
-            // Char - A single 16-bit Unicode character
+            // Char - 16-bitlik tek bir unicode karakter
             char fooChar = 'A';
 
-            // Strings -- unlike the previous base types which are all value types,
-            // a string is a reference type. That is, you can set it to null
+            // Strings -- Önceki baz tiplerinin hepsi değer tipiyken,
+            // string bir referans tipidir. Null değer atayabilirsiniz
             string fooString = "\"escape\" quotes and add \n (new lines) and \t (tabs)";
             Console.WriteLine(fooString);
 
-            // You can access each character of the string with an indexer:
+            // İndeks numarası kullanarak bir string'in bütün karakterlerine erişilebilirsiniz: 
             char charFromString = fooString[1]; // => 'e'
-            // Strings are immutable: you can't do fooString[1] = 'X';
+            // String'ler değiştirilemez: fooString[1] = 'X' işlemini yapamazsınız;
 
-            // Compare strings with current culture, ignoring case
+            // String'leri geçerli kültür değeri ve büyük küçük harf duyarlılığı olmadan karşılaştırma
             string.Compare(fooString, "x", StringComparison.CurrentCultureIgnoreCase);
 
-            // Formatting, based on sprintf
+            // sprintf baz alınarak formatlama
             string fooFs = string.Format("Check Check, {0} {1}, {0} {1:0.0}", 1, 2);
 
-            // Dates & Formatting
+            // Tarihler & Formatlama
             DateTime fooDate = DateTime.Now;
             Console.WriteLine(fooDate.ToString("hh:mm, dd MMM yyyy"));
 
-            // You can split a string over two lines with the @ symbol. To escape " use ""
+            // Bir string'i iki satıra bölmek için @ sembolü kullanabilirsiniz. " işaretinden kaçmak için "" kullanın
             string bazString = @"Here's some stuff
 on a new line! ""Wow!"", the masses cried";
 
-            // Use const or read-only to make a variable immutable
-            // const values are calculated at compile time
+            // Bir değişkeni değiştirilemez yapmak için const ya da read-only kullanın. 
+            // const değerleri derleme sırasında hesaplanır
             const int HOURS_I_WORK_PER_WEEK = 9001;
 
             ///////////////////////////////////////////////////
-            // Data Structures
+            // Veri Yapıları
             ///////////////////////////////////////////////////
 
-            // Arrays - zero indexed
-            // The array size must be decided upon declaration
-            // The format for declaring an array is follows:
-            // <datatype>[] <var name> = new <datatype>[<array size>];
+            // Diziler - Sıfır indeksli
+            // Dizi boyutuna tanımlama sırasında karar verilmelidir.
+            // Dizi tanımlama formatı şöyledir:
+            // <veri tipi>[] <değişken ismi> = new <veri tipi>[<dizi boyutu>];
             int[] intArray = new int[10];
 
-            // Another way to declare & initialize an array
+            // Bir diğer dizi tanımlama formatı şöyledir:
             int[] y = { 9000, 1000, 1337 };
 
             // Indexing an array - Accessing an element
