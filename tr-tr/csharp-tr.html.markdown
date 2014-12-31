@@ -153,7 +153,7 @@ on a new line! ""Wow!"", the masses cried";
             List<int> intList = new List<int>();
             List<string> stringList = new List<string>();
             List<int> z = new List<int> { 9000, 1000, 1337 }; // tanımlama
-            // <> işareti genelleme içindir - Güzel özellikler sekmesini inceleyin
+            // <> işareti generic ifadeler içindir - Güzel özellikler sekmesini inceleyin
 
             // Listelerin varsayılan bir değeri yoktur;
             // İndekse erişmeden önce değer eklenmiş olmalıdır
@@ -342,39 +342,39 @@ on a new line! ""Wow!"", the masses cried";
             Console.Read();
         } // Ana metodun sonu
 
-        // CONSOLE ENTRY A console application must have a main method as an entry point
+        // KONSOLE BAŞLANGICI Bir konsol uygulaması başlangıç olarak mutlaka ana metod'a sahip olmalı
         public static void Main(string[] args)
         {
             OtherInterestingFeatures();
         }
 
         //
-        // INTERESTING FEATURES
+        // İLGİNÇ ÖZELLİKLER
         //
         
-        // DEFAULT METHOD SIGNATURES
+        // VARSAYILAN METOD TANIMLAMALARI
 
-        public // Visibility
-        static // Allows for direct call on class without object 
-        int // Return Type,
+        public // Görünebilir
+        static // Sınıf üzerinden obje türetmeden çağırılabilir
+        int // Dönüş Tipi,
         MethodSignatures(
-            int maxCount, // First variable, expects an int
-            int count = 0, // will default the value to 0 if not passed in
+            int maxCount, // İlk değişken, int değer bekler
+            int count = 0, // Eğer değer gönderilmezse varsayılan olarak 0 değerini alır
             int another = 3,
-            params string[] otherParams // captures all other parameters passed to method
+            params string[] otherParams // Metoda gönderilen diğer bütün parametreleri alır
         )
         { 
             return -1;
         }
 
-        // Methods can have the same name, as long as the signature is unique
+        // Metodlar tanımlamalar benzersiz ise aynı isimleri alabilirler
         public static void MethodSignatures(string maxCount)
         {
         }
 
-        // GENERICS
-        // The classes for TKey and TValue is specified by the user calling this function.
-        // This method emulates the SetDefault of Python
+        // GENERIC'LER
+        // TKey ve TValue değerleri kullanıcı tarafından bu fonksiyon çağırılırken belirtilir.
+        // Bu metod Python'daki SetDefault'a benzer
         public static TValue SetDefault<TKey, TValue>(
             IDictionary<TKey, TValue> dictionary, 
             TKey key, 
@@ -386,68 +386,66 @@ on a new line! ""Wow!"", the masses cried";
             return result;
         }
 
-        // You can narrow down the objects that are passed in 
+        // Gönderilen objeleri daraltabilirsiniz
         public static void IterateAndPrint<T>(T toPrint) where T: IEnumerable<int>
         {
-            // We can iterate, since T is a IEnumerable
+            // Eğer T IEnumerable ise tekrarlayabiliriz
             foreach (var item in toPrint)
-                // Item is an int
+                // Item bir int
                 Console.WriteLine(item.ToString());
         }
 
         public static void OtherInterestingFeatures()
         {
-            // OPTIONAL PARAMETERS
+            // İSTEĞE BAĞLI PARAMETRELER
             MethodSignatures(3, 1, 3, "Some", "Extra", "Strings");
-            MethodSignatures(3, another: 3); // explicity set a parameter, skipping optional ones
+            MethodSignatures(3, another: 3); // isteğe bağlı olanlar gönderilmedi
 
-            // EXTENSION METHODS
+            // UZANTI METODLARI
             int i = 3;
-            i.Print(); // Defined below
+            i.Print(); // Aşağıda tanımlandı
 
-            // NULLABLE TYPES - great for database interaction / return values
-            // any value type (i.e. not a class) can be made nullable by suffixing a ?
-            // <type>? <var name> = <value>
-            int? nullable = null; // short hand for Nullable<int>
+            // NULLABLE TYPES - veri tabanı işlemleri için uygun / return values
+            // Herhangi bir değer tipi sonuna ? eklenerek nullable yapılabilir (sınıflar hariç)
+            // <tip>? <değiken ismi> = <değer>
+            int? nullable = null; // Nullable<int> için kısa yol
             Console.WriteLine("Nullable variable: " + nullable);
-            bool hasValue = nullable.HasValue; // true if not null
+            bool hasValue = nullable.HasValue; // eğer null değilse true döner
 
-            // ?? is syntactic sugar for specifying default value (coalesce)
-            // in case variable is null
+            // ?? varsayılan değer belirlemek için söz dizimsel güzel bir özellik
+            // bu durumda değişken null'dır
             int notNullable = nullable ?? 0; // 0
 
-            // IMPLICITLY TYPED VARIABLES - you can let the compiler work out what the type is:
+            // TİPİ BELİRTİLMEMİŞ DEĞİŞKENLER - compiler değişkenin tipini bilmeden çalışabilir:
             var magic = "magic is a string, at compile time, so you still get type safety";
-            // magic = 9; will not work as magic is a string, not an int
+            // magic = 9; string gibi çalışmayacaktır, bu bir int değil
 
-            // GENERICS
+            // GENERIC'LER
             //
             var phonebook = new Dictionary<string, string>() { 
-                {"Sarah", "212 555 5555"} // Add some entries to the phone book
+                {"Sarah", "212 555 5555"} // Telefon rehberine bir kaç numara ekleyelim.
             };
 
-            // Calling SETDEFAULT defined as a generic above
-            Console.WriteLine(SetDefault<string,string>(phonebook, "Shaun", "No Phone")); // No Phone
-            // nb, you don't need to specify the TKey and TValue since they can be 
-            // derived implicitly
+            // Yukarıda generic olarak tanımlanan SETDEFAULT'u çağırma
+            Console.WriteLine(SetDefault<string,string>(phonebook, "Shaun", "No Phone")); // Telefonu yok
+            // TKey ve TValue tipini belirtmek zorunda değilsiniz
             Console.WriteLine(SetDefault(phonebook, "Sarah", "No Phone")); // 212 555 5555
 
-            // LAMBDA EXPRESSIONS - allow you to write code in line
-            Func<int, int> square = (x) => x * x; // Last T item is the return value
+            // LAMBDA IFADELERİ - satır içinde kod yazmanıza olanak sağlar
+            Func<int, int> square = (x) => x * x; // Son T nesnesi dönüş değeridir
             Console.WriteLine(square(3)); // 9
 
-            // DISPOSABLE RESOURCES MANAGEMENT - let you handle unmanaged resources easily.
-            // Most of objects that access unmanaged resources (file handle, device contexts, etc.)
-            // implement the IDisposable interface. The using statement takes care of 
-            // cleaning those IDisposable objects for you.
+            // TEK KULLANIMLIK KAYNAK YÖNETİMİ -  Yönetilemeyen kaynakların üstesinden kolayca gelebilirsiniz.
+            // Bir çok obje yönetilemeyen kaynaklara (dosya yakalama, cihaz içeriği, vb.)
+            // IDisposable arabirimi ile erişebilir. Using ifadesi sizin için IDisposable objeleri temizler.
             using (StreamWriter writer = new StreamWriter("log.txt"))
             {
                 writer.WriteLine("Nothing suspicious here");
-                // At the end of scope, resources will be released.
-                // Even if an exception is thrown.
+                // Bu bölümün sonunda kaynaklar temilenir.
+                // Hata fırlatılmış olsa bile.
             } 
 
-            // PARALLEL FRAMEWORK
+            // PARALEL FRAMEWORK
             // http://blogs.msdn.com/b/csharpfaq/archive/2010/06/01/parallel-programming-in-net-framework-4-getting-started.aspx
             var websites = new string[] { 
                 "http://www.google.com", "http://www.reddit.com", 
@@ -455,73 +453,71 @@ on a new line! ""Wow!"", the masses cried";
             };
             var responses = new Dictionary<string, string>();
             
-            // Will spin up separate threads for each request, and join on them
-            // before going to the next step!
+            // Her istek farklı bir thread de işlem görecek 
+            // bir sonraki işleme geçmeden birleştirilecek.
             Parallel.ForEach(websites, 
-                new ParallelOptions() {MaxDegreeOfParallelism = 3}, // max of 3 threads
+                new ParallelOptions() {MaxDegreeOfParallelism = 3}, // en fazla 3 thread kullanmak için
                 website =>
             {
-                // Do something that takes a long time on the file
+                // Uzun sürecek bir işlem yapın
                 using (var r = WebRequest.Create(new Uri(website)).GetResponse())
                 {
                     responses[website] = r.ContentType;
                 }
             });
 
-            // This won't happen till after all requests have been completed
+            // Bütün istekler tamamlanmadan bu döndü çalışmayacaktır.
             foreach (var key in responses.Keys)
                 Console.WriteLine("{0}:{1}", key, responses[key]);
 
-            // DYNAMIC OBJECTS (great for working with other languages)
+            // DİNAMİK OBJELER (diğer dillerle çalışırken kullanmak için uygun)
             dynamic student = new ExpandoObject();
-            student.FirstName = "First Name"; // No need to define class first!
+            student.FirstName = "First Name"; // Önce yeni bir sınıf tanımlamanız gerekmez!
 
-            // You can even add methods (returns a string, and takes in a string)
+            // Hatta metod bile ekleyebilirsiniz (bir string döner, ve bir string alır)
             student.Introduce = new Func<string, string>(
                 (introduceTo) => string.Format("Hey {0}, this is {1}", student.FirstName, introduceTo));
             Console.WriteLine(student.Introduce("Beth"));
 
-            // IQUERYABLE<T> - almost all collections implement this, which gives you a lot of 
-            // very useful Map / Filter / Reduce style methods
+            // IQUERYABLE<T> - neredeyse bütün koleksiyonlar bundan türer, bu size bir çok
+            // kullanışlı Map / Filter / Reduce stili metod sağlar.
             var bikes = new List<Bicycle>();
-            bikes.Sort(); // Sorts the array
-            bikes.Sort((b1, b2) => b1.Wheels.CompareTo(b2.Wheels)); // Sorts based on wheels
+            bikes.Sort(); // Dizi sıralama
+            bikes.Sort((b1, b2) => b1.Wheels.CompareTo(b2.Wheels)); // Wheels baz alınarak sıralama
             var result = bikes
-                .Where(b => b.Wheels > 3) // Filters - chainable (returns IQueryable of previous type)
+                .Where(b => b.Wheels > 3) // Filters- chainable (bir önceki tipin IQueryable'ını döner)
                 .Where(b => b.IsBroken && b.HasTassles)
-                .Select(b => b.ToString()); // Map - we only this selects, so result is a IQueryable<string>
+                .Select(b => b.ToString()); // Map - sadece bunu seçiyoruz, yani sonuç bir IQueryable<string> olacak
 
-            var sum = bikes.Sum(b => b.Wheels); // Reduce - sums all the wheels in the collection
+            var sum = bikes.Sum(b => b.Wheels); // Reduce - koleksiyonda bulunan bütün wheel değerlerinin toplamı
 
-            // Create a list of IMPLICIT objects based on some parameters of the bike
+            // Bike içindeki bazı parametreleri baz alarak bir liste oluşturmak
             var bikeSummaries = bikes.Select(b=>new { Name = b.Name, IsAwesome = !b.IsBroken && b.HasTassles });
-            // Hard to show here, but you get type ahead completion since the compiler can implicitly work
-            // out the types above!
+            // Burada göstermek zor ama, compiler yukaridaki tipleri çözümleyebilirse derlenmeden önce tipi verebilir.
             foreach (var bikeSummary in bikeSummaries.Where(b => b.IsAwesome))
                 Console.WriteLine(bikeSummary.Name);
 
             // ASPARALLEL
-            // And this is where things get wicked - combines linq and parallel operations
+            // Linq ve paralel işlemlerini birleştirme
             var threeWheelers = bikes.AsParallel().Where(b => b.Wheels == 3).Select(b => b.Name);
-            // this will happen in parallel! Threads will automagically be spun up and the 
-            // results divvied amongst them! Amazing for large datasets when you have lots of 
-            // cores
+            // bu paralel bir şekilde gerçekleşecek! Threadler otomatik ve sihirli bir şekilde işleri paylaşacak! 
+            // Birden fazla çekirdeğiniz varsa büyük veri setleri ile kullanmak için oldukça uygun bir yapı.
 
-            // LINQ - maps a store to IQueryable<T> objects, with delayed execution
-            // e.g. LinqToSql - maps to a database, LinqToXml maps to an xml document
+            // LINQ - IQueryable<T> objelerini mapler ve saklar, gecikmeli bir işlemdir
+            // e.g. LinqToSql - veri tabanını mapler, LinqToXml xml dökümanlarını mapler.
             var db = new BikeRepository();
 
-            // execution is delayed, which is great when querying a database
-            var filter = db.Bikes.Where(b => b.HasTassles); // no query run
-            if (42 > 6) // You can keep adding filters, even conditionally - great for "advanced search" functionality
-                filter = filter.Where(b => b.IsBroken); // no query run
+            // işlem gecikmelidir, bir veri tabanı üzerinde sorgulama yaparken harikadır.
+            var filter = db.Bikes.Where(b => b.HasTassles); // sorgu henüz çalışmadı
+            if (42 > 6) // Filtreler eklemeye devam edebilirsiniz - ileri düzey arama fonksiyonları için harikadır
+                filter = filter.Where(b => b.IsBroken); // sorgu henüz çalışmadı
 
             var query = filter
                 .OrderBy(b => b.Wheels)
                 .ThenBy(b => b.Name)
-                .Select(b => b.Name); // still no query run
+                .Select(b => b.Name); // hala sorgu çalışmadı
 
-            // Now the query runs, but opens a reader, so only populates are you iterate through
+            // Şimdi sorgu çalışıyor, reader'ı açar ama sadece sizin sorgunuza uyanlar foreach döngüsüne girer.
             foreach (string bike in query) 
                 Console.WriteLine(result);
             
@@ -529,98 +525,98 @@ on a new line! ""Wow!"", the masses cried";
 
         }
 
-    } // End LearnCSharp class
+    } // LearnCSharp sınıfının sonu
 
-    // You can include other classes in a .cs file
+    // Bir .cs dosyasına diğer sınıflarıda dahil edebilirsiniz
 
     public static class Extensions
     {
-        // EXTENSION FUNCTIONS
+        // UZANTI FONKSİYONLARI
         public static void Print(this object obj)
         {
             Console.WriteLine(obj.ToString());
         }
     }
 
-    // Class Declaration Syntax:
-    // <public/private/protected/internal> class <class name>{
-    //    //data fields, constructors, functions all inside.
-    //    //functions are called as methods in Java.
+    // Sınıf Tanımlama Sözdizimi:
+    // <public/private/protected/internal> class <sınıf ismi>{
+    //    //veri alanları, kurucular , fonksiyonlar hepsi içindedir.
+    //    //Fonksiyonlar Java'daki gibi metod olarak çağırılır.
     // }
 
     public class Bicycle
     {
-        // Bicycle's Fields/Variables
-        public int Cadence // Public: Can be accessed from anywhere
+        // Bicycle'ın Alanları/Değişkenleri
+        public int Cadence // Public: herhangi bir yerden erişilebilir
         {
-            get // get - define a method to retrieve the property
+            get // get - değeri almak için tanımlanan metod
             {
                 return _cadence;
             }
-            set // set - define a method to set a proprety
+            set // set - değer atamak için tanımlanan metod
             {
-                _cadence = value; // Value is the value passed in to the setter
+                _cadence = value; // Değer setter'a gönderilen value değeridir
             }
         }
         private int _cadence;
 
-        protected virtual int Gear // Protected: Accessible from the class and subclasses
+        protected virtual int Gear // Protected: Sınıf ve alt sınıflar tarafından erişilebilir
         {
-            get; // creates an auto property so you don't need a member field
+            get; // bir üye alanına ihtiyacınız yok, bu otomatik olarak bir değer oluşturacaktır
             set;
         }
 
-        internal int Wheels // Internal: Accessible from within the assembly
+        internal int Wheels // Internal: Assembly tarafından erişilebilir
         {
             get;
-            private set; // You can set modifiers on the get/set methods
+            private set; // Nitelik belirleyicileri get/set metodlarında atayabilirsiniz
         }
 
-        int _speed; // Everything is private by default: Only accessible from within this class. 
-                    // can also use keyword private
+        int _speed; // Her şey varsayılan olarak private'dır : Sadece sınıf içinden erişilebilir.
+                    // İsterseniz yinede private kelimesini kullanabilirsiniz.
         public string Name { get; set; }
 
-        // Enum is a value type that consists of a set of named constants
-        // It is really just mapping a name to a value (an int, unless specified otherwise).
-        // The approved types for an enum are byte, sbyte, short, ushort, int, uint, long, or ulong.
-        // An enum can't contain the same value twice.
+        // Enum sabitler kümesinden oluşan bir değer tipidir.
+        // Gerçekten sadece bir isim ile bir değeri tutmak için kullanılır. (aksi belirtilmedikçe bir int'dir).
+        // İzin verilen enum tipleri şunlardır byte, sbyte, short, ushort, int, uint, long, veya ulong.
+        // Bir enum aynı değeri birden fazla sayıda barındıramaz.
         public enum BikeBrand
         {
             AIST,
             BMC,
-            Electra = 42, //you can explicitly set a value to a name
+            Electra = 42, // bir isme tam bir değer verebilirsiniz
             Gitane // 43
         }
-        // We defined this type inside a Bicycle class, so it is a nested type
-        // Code outside of this class should reference this type as Bicycle.Brand
+        // Bu tipi Bicycle sınıfı içinde tanımladığımız için bu bir bağımlı tipdir.
+        // Bu sınıf dışında kullanmak için tipi Bicycle.Brand olarak kullanmamız gerekir
 
-        public BikeBrand Brand; // After declaring an enum type, we can declare the field of this type
+        public BikeBrand Brand; // Enum tipini tanımladıktan sonra alan tipini tanımlayabiliriz
 
-        // Static members belong to the type itself rather then specific object.
-        // You can access them without a reference to any object:
+        // Static üyeler belirli bir obje yerine kendi tipine aittir
+        // Onlara bir obje referans göstermeden erişebilirsiniz:
         // Console.WriteLine("Bicycles created: " + Bicycle.bicyclesCreated);
         static public int BicyclesCreated = 0;
 
-        // readonly values are set at run time
-        // they can only be assigned upon declaration or in a constructor
+        // readonly değerleri çalışma zamanında atanır
+        // onlara sadece tanımlama yapılarak ya da kurucular içinden atama yapılabilir
         readonly bool _hasCardsInSpokes = false; // read-only private
 
-        // Constructors are a way of creating classes
-        // This is a default constructor
+        // Kurucular sınıf oluşturmanın bir yoludur
+        // Bu bir varsayılan kurucudur.
         public Bicycle() 
         {
-            this.Gear = 1; // you can access members of the object with the keyword this
-            Cadence = 50;  // but you don't always need it
+            this.Gear = 1; // bu objenin üyelerine this anahtar kelimesi ile ulaşılır
+            Cadence = 50;  // ama her zaman buna ihtiyaç duyulmaz
             _speed = 5;
             Name = "Bontrager";
             Brand = BikeBrand.AIST;
             BicyclesCreated++;
         }
 
-        // This is a specified constructor (it contains arguments)
+        // Bu belirlenmiş bir kurucudur. (argümanlar içerir)
         public Bicycle(int startCadence, int startSpeed, int startGear,
                        string name, bool hasCardsInSpokes, BikeBrand brand) 
-            : base() // calls base first
+            : base() // önce base'i çağırın
         {
             Gear = startGear; 
             Cadence = startCadence;
@@ -630,20 +626,20 @@ on a new line! ""Wow!"", the masses cried";
             Brand = brand;
         }
 
-        // Constructors can be chained
+        // Kurucular zincirleme olabilir
         public Bicycle(int startCadence, int startSpeed, BikeBrand brand) :
             this(startCadence, startSpeed, 0, "big wheels", true, brand)
         {
         }
 
-        // Function Syntax:
-        // <public/private/protected> <return type> <function name>(<args>)
+        // Fonksiyon Sözdizimi:
+        // <public/private/protected> <dönüş tipi> <fonksiyon ismi>(<argümanlar>)
 
-        // classes can implement getters and setters for their fields
-        // or they can implement properties (this is the preferred way in C#)
+        // sınıflar getter ve setter'ları alanları için kendisi uygular
+        // veya kendisi özellikleri uygulayabilir (C# da tercih edilen yol budur)
 
-        // Method parameters can have default values.
-        // In this case, methods can be called with these parameters omitted
+        // Metod parametreleri varsayılan değerlere sahip olabilir.
+        // Bu durumda, metodlar bu parametreler olmadan çağırılabilir.
         public void SpeedUp(int increment = 1)
         {
             _speed += increment;
