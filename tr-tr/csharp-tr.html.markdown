@@ -11,6 +11,8 @@ filename: LearnCSharp.cs
 
 C# zarif ve tip güvenli nesne yönelimli bir dil olup geliştiricilerin .NET framework üzerinde çalışan güçlü ve güvenli uygulamalar geliştirmesini sağlar.
 
+[Yazım yanlışları ve öneriler için bana ulaşabilirsiniz](mailto:melihmucuk@gmail.com)
+
 [Daha fazlasını okuyun.](http://msdn.microsoft.com/en-us/library/vstudio/z1zx9t92.aspx)
 
 ```c#
