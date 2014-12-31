@@ -266,9 +266,9 @@ on a new line! ""Wow!"", the masses cried";
 
             // Switch Case
             // Bir switch byte, short, char ve int veri tipleri ile çalışır.
-            // Aynı zamanda sıralı tipler ilede çalışabilir.(Enum Tipleri bölümünde tartışıldı),
-            // the String class, and a few special classes that wrap
-            // primitive types: Character, Byte, Short, and Integer.
+            // Aynı zamanda sıralı tipler ile de çalışabilir.(Enum Tipleri bölümünde tartışıldı),
+            // String sınıfı, ve bir kaç özel sınıf kaydırılır
+            // basit tipler: Character, Byte, Short, and Integer.
             int month = 3;
             string monthString;
             switch (month)
@@ -282,9 +282,9 @@ on a new line! ""Wow!"", the masses cried";
                 case 3:
                     monthString = "March";
                     break;
-                // You can assign more than one case to an action
-                // But you can't add an action without a break before another case
-                // (if you want to do this, you would have to explicitly add a goto case x
+                // Bir aksiyon için birden fazla durum atayabilirsiniz
+                // Ancak, break olmadan yeni bir durum ekleyemezsiniz
+                // (Eğer bunu yapmak istiyorsanız, goto komutu eklemek zorundasınız)
                 case 6:
                 case 7:
                 case 8:
@@ -296,51 +296,51 @@ on a new line! ""Wow!"", the masses cried";
             }
 
             ///////////////////////////////////////
-            // Converting Data Types And Typecasting
+            // Veri Tipleri Dönüştürme ve Typecasting
             ///////////////////////////////////////
 
-            // Converting data
+            // Veri Dönüştürme
 
-            // Convert String To Integer
-            // this will throw an Exception on failure
-            int.Parse("123");//returns an integer version of "123"
+            // String'i Integer'a Dönüştürme
+            // bu başarısız olursa hata fırlatacaktır
+            int.Parse("123");// "123" 'in Integer değerini döndürür
 
-            // try parse will default to type default on failure
-            // in this case: 0
+            // try parse hata durumunda değişkene varsayılan bir değer atamak için kullanılır
+            // bu durumda: 0
             int tryInt;
-            if (int.TryParse("123", out tryInt)) // Function is boolean
+            if (int.TryParse("123", out tryInt)) // Fonksiyon boolean'dır
                 Console.WriteLine(tryInt);       // 123
 
-            // Convert Integer To String
-            // Convert class has a number of methods to facilitate conversions
+            // Integer'ı String'e Dönüştürme
+            // Convert sınıfı dönüştürme işlemini kolaylaştırmak için bir dizi metoda sahiptir
             Convert.ToString(123);
-            // or
+            // veya
             tryInt.ToString();
         }
 
         ///////////////////////////////////////
-        // CLASSES - see definitions at end of file
+        // SINIFLAR - dosyanın sonunda tanımları görebilirsiniz
         ///////////////////////////////////////
         public static void Classes()
         {
-            // See Declaration of objects at end of file
+            // Obje tanımlamalarını dosyanın sonunda görebilirsiniz
 
-            // Use new to instantiate a class
+            // Bir sınıfı türetmek için new kullanın
             Bicycle trek = new Bicycle();
 
-            // Call object methods
-            trek.SpeedUp(3); // You should always use setter and getter methods
+            // Obje metodlarını çağırma
+            trek.SpeedUp(3); // Her zaman setter ve getter metodları kullanmalısınız
             trek.Cadence = 100;
 
-            // ToString is a convention to display the value of this Object.
+            // ToString objenin değerini göstermek için kullanılır.
             Console.WriteLine("trek info: " + trek.Info());
 
-            // Instantiate a new Penny Farthing
+            // Yeni bir Penny Farthing sınıfı türetmek
             PennyFarthing funbike = new PennyFarthing(1, 10);
             Console.WriteLine("funbike info: " + funbike.Info());
 
             Console.Read();
-        } // End main method
+        } // Ana metodun sonu
 
         // CONSOLE ENTRY A console application must have a main method as an entry point
         public static void Main(string[] args)
