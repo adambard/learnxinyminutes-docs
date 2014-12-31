@@ -636,7 +636,7 @@ on a new line! ""Wow!"", the masses cried";
         // <public/private/protected> <dönüş tipi> <fonksiyon ismi>(<argümanlar>)
 
         // sınıflar getter ve setter'ları alanları için kendisi uygular
-        // veya kendisi özellikleri uygulayabilir (C# da tercih edilen yol budur)
+        // veya property'ler eklenebilir (C# da tercih edilen yol budur)
 
         // Metod parametreleri varsayılan değerlere sahip olabilir.
         // Bu durumda, metodlar bu parametreler olmadan çağırılabilir.
@@ -650,35 +650,34 @@ on a new line! ""Wow!"", the masses cried";
             _speed -= decrement;
         }
 
-        // properties get/set values
-        // when only data needs to be accessed, consider using properties.
-        // properties may have either get or set, or both
-        private bool _hasTassles; // private variable
+        // property'lerin get/set değerleri
+        // sadece veri gerektiği zaman erişilebilir, kullanmak için bunu göz önünde bulundurun.
+        // property'ler sadece get ya da set'e sahip olabilir veya ikisine birden
+        private bool _hasTassles; // private değişken
         public bool HasTassles // public accessor
         {
             get { return _hasTassles; }
             set { _hasTassles = value; }
         }
 
-        // You can also define an automatic property in one line
-        // this syntax will create a backing field automatically.
-        // You can set an access modifier on either the getter or the setter (or both)
-        // to restrict its access:
+        // Ayrıca tek bir satırda otomatik property tanımlayabilirsiniz. 
+        // bu söz dizimi otomatik olarak alan oluşturacaktır.
+        // Erişimi kısıtlamak için nitelik belirleyiciler getter veya setter'a ya da ikisine birden atanabilir:
         public bool IsBroken { get; private set; }
 
-        // Properties can be auto-implemented
+        // Property'ler otomatik eklenmiş olabilir
         public int FrameSize
         {
             get;
-            // you are able to specify access modifiers for either get or set
-            // this means only Bicycle class can call set on Framesize
+            // nitelik beliryecileri get veya set için tanımlayabilirsiniz
+            // bu sadece Bicycle sınıfı Framesize değerine atama yapabilir demektir
             private set;
         }
 
-        // It's also possible to define custom Indexers on objects.
-        // All though this is not entirely useful in this example, you
-        // could do bicycle[0] which yields "chris" to get the first passenger or
-        // bicycle[1] = "lisa" to set the passenger. (of this apparent quattrocycle)
+        // Ayrıca obje üzerinde özel indeksleyici belirlemek mümkündür.
+        // Tüm bunlar bu örnek için çok kullanışlı değil,
+        // bicycle[0] ile ilk yolcu olan "chris" i almak mümkün veya
+        // bicycle[1] = "lisa" ile yolcuyu atayabilirsiniz. (bariz quattrocycle)
         private string[] passengers = { "chris", "phil", "darren", "regina" }
 
         public string this[int i]
@@ -692,7 +691,7 @@ on a new line! ""Wow!"", the masses cried";
             }
         }
 
-        //Method to display the attribute values of this Object.
+        //Bu objenin nitelik değerlerini göstermek için bir metod.
         public virtual string Info()
         {
             return "Gear: " + Gear +
@@ -704,23 +703,23 @@ on a new line! ""Wow!"", the masses cried";
                     ;
         }
 
-        // Methods can also be static. It can be useful for helper methods
+        // Metodlar static olabilir. Yardımcı metodlar için kullanışlı olabilir.
         public static bool DidWeCreateEnoughBycles()
         {
-            // Within a static method, we only can reference static class members
+            // Bir static metod içinde sadece static sınıf üyeleri referans gösterilebilir
             return BicyclesCreated > 9000;
-        } // If your class only needs static members, consider marking the class itself as static.
+        } // Eğer sınıfınızın sadece static üyelere ihtiyacı varsa, sınıfın kendisini static yapmayı düşünebilirsiniz.
 
 
-    } // end class Bicycle
+    } // Bicycle sınıfı sonu
 
-    // PennyFarthing is a subclass of Bicycle
+    // PennyFarthing , Bicycle sınıfının alt sınıfıdır.
     class PennyFarthing : Bicycle
     {
-        // (Penny Farthings are those bicycles with the big front wheel.
-        // They have no gears.)
+        // (Penny Farthing'ler ön jantı büyük bisikletlerdir.
+        // Vitesleri yoktur.)
 
-        // calling parent constructor
+        // Ana kurucuyu çağırmak
         public PennyFarthing(int startCadence, int startSpeed) :
             base(startCadence, startSpeed, 0, "PennyFarthing", true, BikeBrand.Electra)
         {
@@ -741,23 +740,23 @@ on a new line! ""Wow!"", the masses cried";
         public override string Info()
         {
             string result = "PennyFarthing bicycle ";
-            result += base.ToString(); // Calling the base version of the method
+            result += base.ToString(); // Metodun temel versiyonunu çağırmak
             return result;
         }
     }
 
-    // Interfaces only contain signatures of the members, without the implementation.
+    // Arabirimler sadece üyelerin izlerini içerir, değerlerini değil.
     interface IJumpable
     {
-        void Jump(int meters); // all interface members are implicitly public
+        void Jump(int meters); // bütün arbirim üyeleri public'tir
     }
 
     interface IBreakable
     {
-        bool Broken { get; } // interfaces can contain properties as well as methods & events
+        bool Broken { get; } // arabirimler property'leri, metodları ve olayları içerebilir
     }
 
-    // Class can inherit only one other class, but can implement any amount of interfaces
+    // Sınıflar sadece tek bir sınıftan miras alabilir ama sınırsız sayıda arabirime sahip olabilir
     class MountainBike : Bicycle, IJumpable, IBreakable
     {
         int damage = 0;
@@ -777,8 +776,8 @@ on a new line! ""Wow!"", the masses cried";
     }
 
     /// <summary>
-    /// Used to connect to DB for LinqToSql example. 
-    /// EntityFramework Code First is awesome (similar to Ruby's ActiveRecord, but bidirectional)
+    /// LinqToSql örneği veri tabanına bağlanmak için kullanılır.
+    /// EntityFramework Code First harika! (Ruby'deki ActiveRecord'a benzer, ama iki yönlü)
     /// http://msdn.microsoft.com/en-us/data/jj193542.aspx
     /// </summary>
     public class BikeRepository : DbSet
@@ -790,10 +789,10 @@ on a new line! ""Wow!"", the masses cried";
 
         public DbSet<Bicycle> Bikes { get; set; }
     }
-} // End Namespace
+} // Namespace sonu
 ```
 
-## Topics Not Covered
+## İşlenmeyen Konular
 
  * Flags
  * Attributes
@@ -803,7 +802,7 @@ on a new line! ""Wow!"", the masses cried";
  * Winforms
  * Windows Presentation Foundation (WPF)
 
-## Further Reading
+## Daha Fazlasını Okuyun
 
  * [DotNetPerls](http://www.dotnetperls.com)
  * [C# in Depth](http://manning.com/skeet2)
@@ -817,4 +816,4 @@ on a new line! ""Wow!"", the masses cried";
 
 
 
-[C# Coding Conventions](http://msdn.microsoft.com/en-us/library/vstudio/ff926074.aspx)
+[C# Kodlama Adetleri](http://msdn.microsoft.com/en-us/library/vstudio/ff926074.aspx)
