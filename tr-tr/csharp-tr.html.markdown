@@ -5,8 +5,11 @@ contributors:
     - ["Max Yankov", "https://github.com/golergka"]
     - ["Melvyn Laïly", "http://x2a.yt"]
     - ["Shaun McCarthy", "http://www.shaunmccarthy.com"]
+translators:
     - ["Melih Mucuk", "http://melihmucuk.com"]
+lang: tr-tr
 filename: LearnCSharp.cs
+
 ---
 
 C# zarif ve tip güvenli nesne yönelimli bir dil olup geliştiricilerin .NET framework üzerinde çalışan güçlü ve güvenli uygulamalar geliştirmesini sağlar.
