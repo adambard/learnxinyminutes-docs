@@ -141,46 +141,46 @@ on a new line! ""Wow!"", the masses cried";
             // Bir diğer dizi tanımlama formatı şöyledir:
             int[] y = { 9000, 1000, 1337 };
 
-            // Indexing an array - Accessing an element
+            // Bir diziyi indeksleme - Bir elemente erişme
             Console.WriteLine("intArray @ 0: " + intArray[0]);
-            // Arrays are mutable.
+            // Diziler değiştirilebilir.
             intArray[1] = 1;
 
-            // Lists
-            // Lists are used more frequently than arrays as they are more flexible
-            // The format for declaring a list is follows:
-            // List<datatype> <var name> = new List<datatype>();
+            // Listeler
+            // Listeler daha esnek oldukları için dizilerden daha sık kullanılırlar.
+            // Bir liste tanımlama formatı şöyledir:
+            // List<veri tipi> <değişken ismi> = new List<veri tipi>();
             List<int> intList = new List<int>();
             List<string> stringList = new List<string>();
-            List<int> z = new List<int> { 9000, 1000, 1337 }; // intialize
-            // The <> are for generics - Check out the cool stuff section
+            List<int> z = new List<int> { 9000, 1000, 1337 }; // tanımlama
+            // <> işareti genelleme içindir - Güzel özellikler sekmesini inceleyin
 
-            // Lists don't default to a value;
-            // A value must be added before accessing the index
+            // Listelerin varsayılan bir değeri yoktur;
+            // İndekse erişmeden önce değer eklenmiş olmalıdır
             intList.Add(1);
             Console.WriteLine("intList @ 0: " + intList[0]);
 
-            // Others data structures to check out:
-            // Stack/Queue
-            // Dictionary (an implementation of a hash map)
-            // HashSet
-            // Read-only Collections
-            // Tuple (.Net 4+)
+            // Diğer veri yapıları için şunlara bakın:
+            // Stack/Queue (Yığın/Kuyruk)
+            // Dictionary (hash map'in uygulanması) (Sözlük)
+            // HashSet (karma seti)
+            // Read-only Collections (Değiştirilemez koleksiyonlar)
+            // Tuple (.Net 4+) (tüp)
 
             ///////////////////////////////////////
-            // Operators
+            // Operatörler
             ///////////////////////////////////////
             Console.WriteLine("\n->Operators");
 
-            int i1 = 1, i2 = 2; // Shorthand for multiple declarations
+            int i1 = 1, i2 = 2; // Birden çok tanımlamanın kısa yolu
 
-            // Arithmetic is straightforward
+            // Aritmetik basittir
             Console.WriteLine(i1 + i2 - i1 * 3 / 7); // => 3
 
-            // Modulo
+            // Mod
             Console.WriteLine("11%3 = " + (11 % 3)); // => 2
 
-            // Comparison operators
+            // Karşılaştırma operatörleri
             Console.WriteLine("3 == 2? " + (3 == 2)); // => false
             Console.WriteLine("3 != 2? " + (3 != 2)); // => true
             Console.WriteLine("3 > 2? " + (3 > 2)); // => true
@@ -188,17 +188,17 @@ on a new line! ""Wow!"", the masses cried";
             Console.WriteLine("2 <= 2? " + (2 <= 2)); // => true
             Console.WriteLine("2 >= 2? " + (2 >= 2)); // => true
 
-            // Bitwise operators!
+            // Bit düzeyi operatörleri!
             /*
-            ~       Unary bitwise complement
-            <<      Signed left shift
-            >>      Signed right shift
-            &       Bitwise AND
-            ^       Bitwise exclusive OR
-            |       Bitwise inclusive OR
+            ~       Tekli bit tamamlayıcısı
+            <<      Sola kaydırma Signed left shift
+            >>      Sağa kaydırma Signed right shift
+            &       Bit düzeyi AND
+            ^       Bit düzeyi harici OR
+            |       Bit düzeyi kapsayan OR
             */
 
-            // Incrementations
+            // Arttırma
             int i = 0;
             Console.WriteLine("\n->Inc/Dec-rementation");
             Console.WriteLine(i++); //i = 1. Post-Incrementation
@@ -207,11 +207,11 @@ on a new line! ""Wow!"", the masses cried";
             Console.WriteLine(--i); //i = 0. Pre-Decrementation
 
             ///////////////////////////////////////
-            // Control Structures
+            // Kontrol Yapıları
             ///////////////////////////////////////
             Console.WriteLine("\n->Control Structures");
 
-            // If statements are c-like
+            // If ifadesi c benzeridir
             int j = 10;
             if (j == 10)
             {
@@ -226,47 +226,47 @@ on a new line! ""Wow!"", the masses cried";
                 Console.WriteLine("I also don't");
             }
 
-            // Ternary operators
-            // A simple if/else can be written as follows
-            // <condition> ? <true> : <false>
+            // Üçlü operatörler
+            // Basit bir if/else ifadesi şöyle yazılabilir
+            // <koşul> ? <true> : <false>
             string isTrue = (true) ? "True" : "False";
 
-            // While loop
+            // While döngüsü
             int fooWhile = 0;
             while (fooWhile < 100)
             {
-                //Iterated 100 times, fooWhile 0->99
+                //100 kere tekrarlanır, fooWhile 0->99
                 fooWhile++;
             }
 
-            // Do While Loop
+            // Do While Döngüsü
             int fooDoWhile = 0;
             do
             {
-                //Iterated 100 times, fooDoWhile 0->99
+                //100 kere tekrarlanır, fooDoWhile 0->99
                 fooDoWhile++;
             } while (fooDoWhile < 100);
 
-            //for loop structure => for(<start_statement>; <conditional>; <step>)
+            //for döngüsü yapısı => for(<başlangıç ifadesi>; <koşul>; <adım>)
             for (int fooFor = 0; fooFor < 10; fooFor++)
             {
-                //Iterated 10 times, fooFor 0->9
+                //10 kere tekrarlanır, fooFor 0->9
             }
 
-            // For Each Loop
-            // foreach loop structure => foreach(<iteratorType> <iteratorName> in <enumerable>)
-            // The foreach loop loops over any object implementing IEnumerable or IEnumerable<T>
-            // All the collection types (Array, List, Dictionary...) in the .Net framework
-            // implement one or both of these interfaces.
-            // (The ToCharArray() could be removed, because a string also implements IEnumerable)
+            // For Each Döngüsü
+            // foreach döngüsü yapısı => foreach(<yineleyici tipi> <yineleyici ismi> in <enumerable>)
+            // foreach döngüsü, IEnumerable ya da IEnumerable<T> e dönüştürülmüş herhangi bir obje üzerinde döngü yapabilir
+            // .Net framework üzerindeki bütün koleksiyon tiplerinden (Dizi, Liste, Sözlük...)
+            // biri ya da hepsi uygulanarak gerçekleştirilebilir.
+            // (ToCharArray() silindi, çünkü string'ler aynı zamanda IEnumerable'dır.)
             foreach (char character in "Hello World".ToCharArray())
             {
-                //Iterated over all the characters in the string
+                //String içindeki bütün karakterler üzerinde döner
             }
 
             // Switch Case
-            // A switch works with the byte, short, char, and int data types.
-            // It also works with enumerated types (discussed in Enum Types),
+            // Bir switch byte, short, char ve int veri tipleri ile çalışır.
+            // Aynı zamanda sıralı tipler ilede çalışabilir.(Enum Tipleri bölümünde tartışıldı),
             // the String class, and a few special classes that wrap
             // primitive types: Character, Byte, Short, and Integer.
             int month = 3;
