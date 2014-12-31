@@ -81,8 +81,8 @@ namespace Learning
             // Long - 64-bit integer
             long fooLong = 100000L; // (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
             ulong fooUlong = 100000L; // (0 <= ulong <= 18,446,744,073,709,551,615)
-            // Numbers default to being int or uint depending on size.
-            // L is used to denote that this variable value is of type long or ulong
+            // Sayılar boyutlarına göre ön tanımlı olarak int ya da uint olabilir.
+            // L, bir değerin long ya da ulong tipinde olduğunu belirtmek için kullanılır.
 
             // Double - Double-precision 64-bit IEEE 754 Floating Point
             double fooDouble = 123.4; // Precision: 15-16 digits
