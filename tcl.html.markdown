@@ -2,7 +2,6 @@
 language: Tcl
 contributors:
     - ["Poor Yorick", "http://pooryorick.com/"]
-filename: learntcl
 ---
 
 Tcl was created by [John Ousterhout](http://wiki.tcl.tk/John Ousterout) as a
@@ -369,4 +368,10 @@ proc while {condition script} {
 }
 ```
 
+## Reference
 
+[Official Tcl Documentation](http://www.tcl.tk/man/tcl/)
+
+[Tcl Wiki](http://wiki.tcl.tk)
+
+[Tcl Subreddit](http://www.reddit.com/r/Tcl)
