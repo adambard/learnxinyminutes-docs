@@ -1,0 +1,372 @@
+---
+language: Tcl
+contributors:
+    - ["Poor Yorick", "http://pooryorick.com/"]
+filename: learntcl
+---
+
+Tcl was created by [John Ousterhout](http://wiki.tcl.tk/John Ousterout) as a
+reusable scripting language for chip design tools he was creating.  In 1997 he
+was awarded the [ACM Software System
+Award](http://en.wikipedia.org/wiki/ACM_Software_System_Award) for Tcl.  Tcl
+can be used both as an embeddable scripting language and as a general
+programming language.  It can also be used as a portable C library, even in
+cases where no scripting capability is needed, as it provides data structures
+such as dynamic strings, lists, and hash tables.  The C library also provides
+portable functionality for loading dynamic libraries, string formatting and
+code conversion, filesystem operations, network operations, and more.
+
+Tcl is a pleasure to program in.  Its discipline of exposing all programmatic
+functionality as commands, including things like loops and mathematical
+operations that are usually baked into the syntax of other languages, allows it
+to fade into the background of whatever domain-specific functionality a project
+needs.  Its design of exposing all values as strings, while internally caching
+a structured representation, bridges the world of scripting and systems
+programming in the best way.  Even Lisp is more syntactically heavy than Tcl.
+
+
+
+```tcl
+#! /bin/env tclsh
+
+################################################################################
+## 1. Guidelines 
+################################################################################
+
+# Tcl is not Bash or C!  This needs to be said because standard shell quoting
+# habits almost work in Tcl and it is common for people to pick up Tcl and try
+# to get by with syntax they know from another language.  It works at first,
+# but soon leads to frustration with more complex scripts.
+ 
+# Braces are just a quoting mechanism, not a code block constructor or a list
+# constructor.  Tcl doesn't have either of those things.  Braces are used,
+# though, to escape special characters in procedure bodies and in strings that
+# are formatted as lists.
+
+
+################################################################################
+## 2. Syntax 
+################################################################################
+
+# Every line is a command.  The first word is the name of the command, and
+# subsequent words are arguments to the command. Words are delimited by
+# whitespace.  Since every word is a string, no escaping is necessary in the
+# simple case.
+
+set greeting1 Sal 
+set greeting2 ut
+set greeting3 ations
+
+
+#semicolon also delimits commands
+
+set greeting1 Sal; set greeting2 ut; set greeting3 ations 
+
+
+# Dollar sign introduces variable substitution
+
+set greeting $greeting1$greeting2
+
+
+# Bracket introduces command substitution
+
+set greeting $greeting[set greeting3]
+
+
+# backslash suppresses the special meaning of characters
+
+set amount \$16.42
+
+
+# backslash adds special meaning to certain characters
+
+puts lots\nof\n\n\n\n\n\nnewlines
+
+
+# A word enclosed in braces is not subject to any special interpretation or
+# substitutions, except that a backslash before a brace is not counted when look#ing for the closing brace
+set somevar {
+    This is a literal $ sign, and this \} escaped
+    brace remains uninterpreted
+} 
+
+# In a word enclosed in double quotes, whitespace characters lose their special
+# meaning 
+
+set name Neo
+set greeting "Hello, $name"
+
+
+#variable names can be any string
+
+set {first name} New
+
+
+# The brace form of variable substitution handles more complex variable names
+
+set greeting "Hello, ${first name}"
+
+
+# The "set" command can always be used instead of variable substitution
+
+set greeting "Hello, [set {first name}]"
+
+
+# To promote the words within a word to individual words of the current
+# command, use the expansion operator, "{*}".
+
+set {*}{name Neo}
+
+# is equivalent to
+
+set name Neo
+
+
+# An array is a special variable that is a container for other variables.
+
+set person(name) Neo
+set person(gender) male
+
+set greeting "Hello, $person(name)"
+
+# A namespace holds commands and variables
+
+namespace eval people {
+    namespace eval person1 {
+        set name Neo
+    }
+}
+
+#The full name of a variable includes its enclosing namespace(s), delimited by two colons:
+
+set greeting "Hello $people::person::name"
+
+
+
+################################################################################
+## 3. A Few Notes 
+################################################################################
+
+# From this point on, there is no new syntax.  Everything else there is to
+# learn about Tcl is about the behaviour of individual commands, and what
+# meaning they assign to their arguments.
+
+
+# All other functionality is implemented via commands.  To end up with an
+# interpreter that can do nothing, delete the global namespace.  It's not very
+# useful to do such a thing, but it illustrates the nature of Tcl.
+
+namespace delete ::
+
+
+# Because of name resolution behaviour, its safer to use the "variable" command to declare or to assign a value to a namespace.
+
+namespace eval people {
+    namespace eval person1 {
+        variable name Neo
+    }
+}
+
+
+# The full name of a variable can always be used, if desired.
+
+set people::person1::name Neo
+
+
+
+################################################################################
+## 4. Commands 
+################################################################################
+
+# Math can be done with the "expr" command.
+
+set a 3
+set b 4
+set c [expr {$a + $b}]
+
+# Since "expr" performs variable substitution on its own, brace the expression
+# to prevent Tcl from performing variable substitution first.  See
+# "http://wiki.tcl.tk/Brace%20your%20#%20expr-essions" for details.
+
+
+# The "expr" command understands variable and command substitution
+
+set c [expr {$a + [set b]}]
+
+
+# The "expr" command provides a set of mathematical functions
+
+set c [expr {pow($a,$b)}]
+
+
+# Mathematical operators are available as commands in the ::tcl::mathop
+# namespace
+
+::tcl::mathop::+ 5 3
+
+# Commands can be imported from other namespaces
+
+namespace import ::tcl::mathop::+
+set result [+ 5 3]
+
+
+# New commands can be created via the "proc" command.
+
+proc greet name {
+    return "Hello, $name!"
+}
+
+
+# As noted earlier, braces do not construct a code block.  Every value, even
+# the third argument of the "proc" command, is a string.  The previous command
+# could be defined without using braces at all:
+
+proc greet name return\ \"Hello,\ \$name!
+
+
+# When the last parameter is the literal value, "args", it collects all extra
+# arguments when the command is invoked
+
+proc fold {cmd args} {
+    set res 0
+    foreach arg $args {
+        set res [cmd $res $arg]
+    }
+}
+
+fold ::tcl::mathop::* 5 3 3 ;# ->  45
+
+
+
+# Conditional execution is implemented as a command
+
+if {3 > 4} {
+    puts {This will never happen}
+} elseif {4 > 4} {
+    puts {This will also never happen}
+} else {
+    puts {This will always happen}
+}
+
+
+# Loops are implemented as commands.  The first, second, and third
+# arguments of the "for" command are treated as mathematical expressions
+
+for {set i 0} {$i < 10} {incr i} {
+    set res [expr {$res + $i}]
+}
+
+
+# The first argument of the "while" command is also treated as a mathematical
+# expression
+
+set i 0
+while {$i < 10} {
+    incr i 2
+}
+
+
+# A list is a specially-formatted string.  In the simple case, whitespace is sufficient to delimit values
+
+set amounts 10\ 33\ 18 
+set amount [lindex $amounts 1]
+
+
+# Braces and backslash can be used to format more complex values in a list.
+# There are three items in the following 
+
+set values {
+
+    one\ two
+
+    {three four}
+
+    five\{six
+
+}
+
+
+# Since a list is a string, string operations could be performed on it, at the
+# risk of corrupting the list.
+
+set values {one two three four}
+set values [string map {two \{} $values] ;# $values is no-longer a \
+    properly-formatted listwell-formed list
+
+
+# The sure-fire way to get a properly-formmated list is to use "list" commands
+set values [list one \{ three four]
+
+lappend values { } ;# add a single space as an item in the list
+
+
+# Use "eval" to evaluate a value as a script
+
+eval {
+    set name Neo
+    set greeting "Hello, $name"
+}
+
+
+# A list can always be passed to "eval" as a script composed of a single
+# command.
+
+eval {set name Neo}
+eval [list set greeting "Hello, $name"]
+
+
+# Therefore, when using "eval", use [list] to build up a desired command 
+
+set command {set name}
+lappend command {Archibald Sorbisol}
+eval $command
+
+
+# A common mistake is not to use list functions
+
+set command {set name}
+append command { Archibald Sorbisol}
+eval $command ;# There is an error here, because there are too many arguments \
+    to "set" in {set name Archibald Sorbisol}
+
+
+# This mistake can easily occur with the "subst" command.
+
+set replacement {Archibald Sorbisol}
+set command {set name $replacement}
+set command [subst $command] 
+eval $command ;# The same error as before:  to many arguments to "set" in \
+    {set name Archibald Sorbisol}
+
+
+# The proper way is to format the substituted value using use the "list"
+# command.
+
+set replacement [list {Archibald Sorbisol}]
+set command {set name $replacement}
+set command [subst $command] 
+eval $command
+
+
+# It is extremely common to see the "list" command being used to properly
+# format values that are substituted into Tcl script templates.  There is an
+# example of this in the following replacement "while" implementation.
+
+
+#get rid of the built-in "while" command.
+
+rename ::while {}
+
+
+# Define a new while command with the "proc" command.  More sophisticated error
+# handling is left as an exercise.
+
+proc while {condition script} {
+    if {[uplevel 1 [list expr $condition]]} {
+        uplevel 1 $script
+        tailcall [namespace which while] $condition $script
+    }
+}
+```
+
+
