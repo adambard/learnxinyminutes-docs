@@ -13,15 +13,43 @@ programming language.  It can also be used as a portable C library, even in
 cases where no scripting capability is needed, as it provides data structures
 such as dynamic strings, lists, and hash tables.  The C library also provides
 portable functionality for loading dynamic libraries, string formatting and
-code conversion, filesystem operations, network operations, and more.
+code conversion, filesystem operations, network operations, and more.  
+Various features of Tcl stand out:
 
-Tcl is a pleasure to program in.  Its discipline of exposing all programmatic
-functionality as commands, including things like loops and mathematical
-operations that are usually baked into the syntax of other languages, allows it
-to fade into the background of whatever domain-specific functionality a project
-needs.  Its design of exposing all values as strings, while internally caching
-a structured representation, bridges the world of scripting and systems
-programming in the best way.  Even Lisp is more syntactically heavy than Tcl.
+* Convenient cross-platform networking API
+
+* Fully virtualized filesystem
+
+* Stackable I/O channels
+
+* Asynchronous to the core
+
+* Full coroutines
+
+* A threading model recognized as robust and easy to use
+
+
+If Lisp is a list processor, then Tcl is a string processor.  All values are
+strings.  A list is a string format.  A procedure definition is a string
+format.  To achieve performance, Tcl internally caches structured
+representations of these values.  The list commands, for example, operate on
+the internal cached representation, and Tcl takes care of updating the string
+representation if it is ever actually needed in the script.  The copy-on-write
+design of Tcl allows script authors can pass around large data values without
+actually incurring additional memory overhead.  Procedures are automatically
+byte-compiled unless they use the more dynamic commands such as "uplevel",
+"upvar", and "trace".
+
+Tcl is a pleasure to program in.  It will appeal to hacker types who find Lisp,
+Forth, or Smalltalk interesting, as well as to engineers and scientists who
+just want to get down to business with a tool that bends to their will.  Its
+discipline of exposing all programmatic functionality as commands, including
+things like loops and mathematical operations that are usually baked into the
+syntax of other languages, allows it to fade into the background of whatever
+domain-specific functionality a project needs. It's syntax, which is even
+lighter that that of Lisp, just gets out of the way.
+
+
 
 
 
