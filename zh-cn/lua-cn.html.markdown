@@ -63,8 +63,8 @@ foo = anUnknownVariable  -- 现在 foo = nil.
 
 aBoolValue = false 
 
---只有nil和false为假; 0和 ''都均为真！ 
-if not aBoolValue then print('twas false') end 
+--只有nil和false为假; 0和 ''均为真！ 
+if not aBoolValue then print('false') end 
 
 -- 'or'和 'and'短路 
 -- 类似于C/js里的 a?b:c 操作符： 
@@ -149,7 +149,7 @@ print {} -- 一样可以工作。
 -- Table = Lua唯一的组合数据结构; 
 --         它们是关联数组。 
 -- 类似于PHP的数组或者js的对象， 
--- 它们是哈希表或者字典，也可以当初列表使用。 
+-- 它们是哈希表或者字典，也可以当列表使用。 
 
 -- 按字典/map的方式使用Table： 
 

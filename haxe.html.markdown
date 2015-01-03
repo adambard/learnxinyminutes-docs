@@ -484,7 +484,7 @@ class LearnHaxe3{
         // we can read this variable
         trace(foo_instance.public_read + " is the value for foo_instance.public_read");
         // but not write it
-        // foo_instance.public_write = 4; // this will throw an error if uncommented:
+        // foo_instance.public_read = 4; // this will throw an error if uncommented:
         // trace(foo_instance.public_write); // as will this.
 
         trace(foo_instance + " is the value for foo_instance"); // calls the toString method
