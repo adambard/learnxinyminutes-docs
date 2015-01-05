@@ -2,6 +2,7 @@
 language: Tcl
 contributors:
     - ["Poor Yorick", "http://pooryorick.com/"]
+filename: learntcl.tcl
 ---
 
 Tcl was created by [John Ousterhout](http://wiki.tcl.tk/John Ousterout) as a
