@@ -4,6 +4,7 @@ language: java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Madison Dickson", "http://github.com/mix3d"]
+    - ["Jakukyo Friel", "http://weakish.github.io"]
 filename: LearnJava.java
 
 ---
@@ -433,10 +434,12 @@ public interface Digestible {
 
 //We can now create a class that implements both of these interfaces
 public class Fruit implements Edible, Digestible {
+    @Override
 	public void eat() {
 		//...
 	}
 
+    @Override
 	public void digest() {
 		//... 
 	}
@@ -445,10 +448,12 @@ public class Fruit implements Edible, Digestible {
 //In java, you can extend only one class, but you can implement many interfaces.
 //For example:
 public class ExampleClass extends ExampleClassParent implements InterfaceOne, InterfaceTwo {
+    @Override
 	public void InterfaceOneMethod() {
 
 	}
 
+    @Override
 	public void InterfaceTwoMethod() {
 
 	}
