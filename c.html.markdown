@@ -386,7 +386,8 @@ int main() {
   // or when it's the argument of the `sizeof` or `alignof` operator:
   int arraythethird[10];
   int *ptr = arraythethird; // equivalent with int *ptr = &arr[0];
-  printf("%zu, %zu\n", sizeof arraythethird, sizeof ptr); // probably prints "40, 4" or "40, 8"
+  printf("%zu, %zu\n", sizeof arraythethird, sizeof ptr);
+  // probably prints "40, 4" or "40, 8"
 
 
   // Pointers are incremented and decremented based on their type
@@ -477,7 +478,7 @@ void testFunc() {
 }
 
 //make external variables private to source file with static:
-static int j = 0; //other files using testFunc() cannot access variable i
+static int j = 0; //other files using testFunc2() cannot access variable j
 void testFunc2() {
   extern int j;
 }

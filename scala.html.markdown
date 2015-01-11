@@ -198,8 +198,10 @@ weirdSum(2, 4)  // => 16
 
 
 // The return keyword exists in Scala, but it only returns from the inner-most
-// def that surrounds it. It has no effect on anonymous functions. For example:
-def foo(x: Int) = {
+// def that surrounds it. 
+// WARNING: Using return in Scala is error-prone and should be avoided. 
+// It has no effect on anonymous functions. For example:
+def foo(x: Int): Int = {
   val anonFunc: Int => Int = { z =>
     if (z > 5)
       return z  // This line makes z the return value of foo!
