@@ -17,7 +17,7 @@ Beinahe alle der folgenden Beispiele können als Teile eines Shell-Skripts oder 
 
 ```bash
 #!/bin/bash
-# Die erste Zeile des Scripts nennt sich Shebang in gibt dem System an, wie
+# Die erste Zeile des Scripts nennt sich Shebang, dies gibt dem System an, 
 # wie das Script ausgeführt werden soll: http://de.wikipedia.org/wiki/Shebang
 # Du hast es bestimmt schon mitgekriegt, Kommentare fangen mit # an. Das Shebang ist auch ein Kommentar
 
