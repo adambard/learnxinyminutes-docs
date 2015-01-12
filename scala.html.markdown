@@ -409,7 +409,7 @@ val otherGeorge = george.copy(phoneNumber = "9876")
 
 // Pattern matching is a powerful and commonly used feature in Scala. Here's how
 // you pattern match a case class. NB: Unlike other languages, Scala cases do
-// not have breaks.
+// not need breaks, fall-through does not happen.
 
 def matchPerson(person: Person): String = person match {
   // Then you specify the patterns:
