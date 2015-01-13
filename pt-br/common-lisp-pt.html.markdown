@@ -5,6 +5,7 @@ contributors:
   - ["Paul Nathan", "https://github.com/pnathan"]
 translators:
   - ["Édipo Luis Féderle", "https://github.com/edipofederle"]
+lang: pt-br
 ---
 
 ANSI Common Lisp é uma linguagem de uso geral, multi-paradigma, designada
