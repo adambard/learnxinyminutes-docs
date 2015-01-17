@@ -9,8 +9,7 @@ translators:
 lang: pt-br
 ---
 
-C++ é uma linguagem de programação de sistemas que, 
-C++ is a systems programming language that,
+C++ é uma linguagem de programação de sistemas que,
 [de acordo com seu inventor Bjarne Stroustrup](http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2014/Keynote),
 foi concebida para
 
