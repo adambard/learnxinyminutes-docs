@@ -4,6 +4,7 @@ language: java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Madison Dickson", "http://github.com/mix3d"]
+    - ["Jakukyo Friel", "http://weakish.github.io"]
 filename: LearnJava.java
 
 ---
@@ -49,7 +50,7 @@ public class LearnJava {
         // Types & Variables
         ///////////////////////////////////////
 
-        // Declare a variable using <type> <name> [
+        // Declare a variable using <type> <name>
         // Byte - 8-bit signed two's complement integer
         // (-128 <= byte <= 127)
         byte fooByte = 100;
@@ -268,9 +269,9 @@ public class LearnJava {
         System.out.println(bar); // Prints A, because the statement is true
 
 
-        ///////////////////////////////////////
-        // Converting Data Types And Typcasting
-        ///////////////////////////////////////
+        ////////////////////////////////////////
+        // Converting Data Types And Typecasting
+        ////////////////////////////////////////
 
         // Converting data
 
@@ -433,10 +434,12 @@ public interface Digestible {
 
 //We can now create a class that implements both of these interfaces
 public class Fruit implements Edible, Digestible {
+    @Override
 	public void eat() {
 		//...
 	}
 
+    @Override
 	public void digest() {
 		//... 
 	}
@@ -445,10 +448,12 @@ public class Fruit implements Edible, Digestible {
 //In java, you can extend only one class, but you can implement many interfaces.
 //For example:
 public class ExampleClass extends ExampleClassParent implements InterfaceOne, InterfaceTwo {
+    @Override
 	public void InterfaceOneMethod() {
 
 	}
 
+    @Override
 	public void InterfaceTwoMethod() {
 
 	}

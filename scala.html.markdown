@@ -198,8 +198,10 @@ weirdSum(2, 4)  // => 16
 
 
 // The return keyword exists in Scala, but it only returns from the inner-most
-// def that surrounds it. It has no effect on anonymous functions. For example:
-def foo(x: Int) = {
+// def that surrounds it.
+// WARNING: Using return in Scala is error-prone and should be avoided.
+// It has no effect on anonymous functions. For example:
+def foo(x: Int): Int = {
   val anonFunc: Int => Int = { z =>
     if (z > 5)
       return z  // This line makes z the return value of foo!
@@ -405,41 +407,55 @@ val otherGeorge = george.copy(phoneNumber = "9876")
 // 6. Pattern Matching
 /////////////////////////////////////////////////
 
-val me = Person("George", "1234")
+// Pattern matching is a powerful and commonly used feature in Scala. Here's how
+// you pattern match a case class. NB: Unlike other languages, Scala cases do
+// not need breaks, fall-through does not happen.
 
-me match { case Person(name, number) => {
-            "We matched someone : " + name + ", phone : " + number }}
-
-me match { case Person(name, number) => "Match : " + name; case _ => "Hm..." }
-
-me match { case Person("George", number) => "Match"; case _ => "Hm..." }
-
-me match { case Person("Kate", number) => "Match"; case _ => "Hm..." }
-
-me match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy" }
-
-val kate = Person("Kate", "1234")
-
-kate match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy" }
-
-
-
-// Regular expressions
-val email = "(.*)@(.*)".r  // Invoking r on String makes it a Regex
-val serialKey = """(\d{5})-(\d{5})-(\d{5})-(\d{5})""".r // Using verbatim (multiline) syntax
-
-val matcher = (value: String) => {
-  println(value match {
-	case email(name, domain) => s"It was an email: $name"
-	case serialKey(p1, p2, p3, p4) => s"Serial key: $p1, $p2, $p3, $p4"
-	case _ => s"No match on '$value'" // default if no match found
-  })
+def matchPerson(person: Person): String = person match {
+  // Then you specify the patterns:
+  case Person("George", number) => "We found George! His number is " + number
+  case Person("Kate", number) => "We found Kate! Her number is " + number
+  case Person(name, number) => "We matched someone : " + name + ", phone : " + number
 }
 
-matcher("mrbean@pyahoo.com") // => "It was an email: mrbean"
-matcher("nope..") // => "No match on 'nope..'"
-matcher("52917") // => "No match on '52917'"
-matcher("52752-16432-22178-47917") // => "Serial key: 52752, 16432, 22178, 47917"
+val email = "(.*)@(.*)".r  // Define a regex for the next example.
+
+// Pattern matching might look familiar to the switch statements in the C family
+// of languages, but this is much more powerful. In Scala, you can match much
+// more:
+def matchEverything(obj: Any): String = obj match {
+  // You can match values:
+  case "Hello world" => "Got the string Hello world"
+
+  // You can match by type:
+  case x: Double => "Got a Double: " + x
+
+  // You can specify conditions:
+  case x: Int if x > 10000 => "Got a pretty big number!"
+
+  // You can match case classes as before:
+  case Person(name, number) => s"Got contact info for $name!"
+
+  // You can match regular expressions:
+  case email(name, domain) => s"Got email address $name@$domain"
+
+  // You can match tuples:
+  case (a: Int, b: Double, c: String) => s"Got a tuple: $a, $b, $c"
+
+  // You can match data structures:
+  case List(1, b, c) => s"Got a list with three elements and starts with 1: 1, $b, $c"
+
+  // You can nest patterns:
+  case List(List((1, 2,"YAY"))) => "Got a list of list of tuple"
+}
+
+// In fact, you can pattern match any object with an "unapply" method. This
+// feature is so powerful that Scala lets you define whole functions as
+// patterns:
+val patternFunc: Person => String = {
+  case Person("George", number") => s"George's number: $number"
+  case Person(name, number) => s"Random person's number: $number"
+}
 
 
 /////////////////////////////////////////////////
@@ -476,7 +492,7 @@ sSquared.reduce (_+_)
 // The filter function takes a predicate (a function from A -> Boolean) and
 // selects all elements which satisfy the predicate
 List(1, 2, 3) filter (_ > 2) // List(3)
-case class Person(name:String, phoneNumber:String)
+case class Person(name:String, age:Int)
 List(
   Person(name = "Dom", age = 23),
   Person(name = "Bob", age = 30)

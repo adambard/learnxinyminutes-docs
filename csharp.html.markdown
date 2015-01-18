@@ -678,6 +678,23 @@ on a new line! ""Wow!"", the masses cried";
             private set;
         }
 
+        // It's also possible to define custom Indexers on objects.
+        // All though this is not entirely useful in this example, you
+        // could do bicycle[0] which yields "chris" to get the first passenger or
+        // bicycle[1] = "lisa" to set the passenger. (of this apparent quattrocycle)
+        private string[] passengers = { "chris", "phil", "darren", "regina" }
+
+        public string this[int i]
+        {
+            get {
+                return passengers[i];
+            }
+
+            set {
+                return passengers[i] = value;
+            }
+        }
+
         //Method to display the attribute values of this Object.
         public virtual string Info()
         {

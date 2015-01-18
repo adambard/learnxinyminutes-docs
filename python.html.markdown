@@ -264,7 +264,7 @@ filled_dict.get("four")   # => None
 # The get method supports a default argument when the value is missing
 filled_dict.get("one", 4)   # => 1
 filled_dict.get("four", 4)   # => 4
-# note that filled_dict.get("four") is still => 4
+# note that filled_dict.get("four") is still => None
 # (get doesn't set the value in the dictionary)
 
 # set the value of a key with a syntax similar to lists
