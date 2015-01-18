@@ -481,7 +481,7 @@ extension Int {
 }
 
 println(7.customProperty) // "This is 7"
-println(14.multiplyBy(2)) // 42
+println(14.multiplyBy(3)) // 42
 
 // Generics: Similar to Java and C#. Use the `where` keyword to specify the
 //   requirements of the generics.
