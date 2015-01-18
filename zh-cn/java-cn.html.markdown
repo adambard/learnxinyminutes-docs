@@ -162,9 +162,9 @@ public class LearnJava {
         int i = 0;
         System.out.println("\n->Inc/Dec-rementation");
         System.out.println(i++); //i = 1 后自增
-        System.out.println(++i); //i = 2 前自增
-        System.out.println(i--); //i = 1 后自减
-        System.out.println(--i); //i = 0 前自减
+        System.out.println(++i); //i = 3 前自增
+        System.out.println(i--); //i = 3 后自减
+        System.out.println(--i); //i = 1 前自减
 
         ///////////////////////////////////////
         // 控制结构
