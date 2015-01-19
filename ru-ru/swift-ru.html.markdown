@@ -3,7 +3,7 @@ language: swift
 contributors:
   - ["Grant Timmerman", "http://github.com/grant"]
   - ["Christopher Bess", "http://github.com/cbess"]
-filename: learnswift.swift
+filename: learnswift-ru.swift
 translators:
   - ["Dmitry Bessonov", "https://github.com/TheDmitry"]
 lang: ru-ru
