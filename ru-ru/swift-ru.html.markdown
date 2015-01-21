@@ -186,7 +186,7 @@ do {
 let vegetable = "красный перец"
 switch vegetable {
 case "сельдерей":
-    let vegetableComment = "Добавьте немного изюма и make ants on a log."
+    let vegetableComment = "Добавьте немного изюма, имитируя муравьев на бревнышке."
 case "огурец", "жеруха":
     let vegetableComment = "Было бы неплохо сделать бутерброд с чаем."
 case let localScopeValue where localScopeValue.hasSuffix("перец"):
