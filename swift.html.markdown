@@ -445,7 +445,10 @@ class MyShape: Rect {
     
     func grow() {
         sideLength += 2
-        
+
+        // Place a question mark after an optional property, method, or
+        // subscript to gracefully ignore a nil value and return nil
+        // instead of throwing a runtime error ("optional chaining").
         if let allow = self.delegate?.canReshape?() {
             // test for delegate then for method
             self.delegate?.reshaped?()
