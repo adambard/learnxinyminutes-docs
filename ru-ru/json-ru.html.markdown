@@ -1,9 +1,12 @@
 ---
 language: json
-filename: learnjson.json
+filename: learnjson-ru.json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]
+translators:
+  - ["Dmitry Bessonov", "https://github.com/TheDmitry"]
+lang: ru-ru
 ---
 
 As JSON is an extremely simple data-interchange format, this is most likely going
@@ -15,23 +18,23 @@ going to be 100% valid JSON. Luckily, it kind of speaks for itself.
 
 ```json
 {
-  "key": "value",
+  "ключ": "значение",
   
-  "keys": "must always be enclosed in double quotes",
-  "numbers": 0,
-  "strings": "Hellø, wørld. All unicode is allowed, along with \"escaping\".",
+  "ключи": "must always be enclosed in double quotes",
+  "числа": 0,
+  "строки": "Hellø, wørld. All unicode is allowed, along with \"escaping\".",
   "has bools?": true,
   "nothingness": null,
 
-  "big number": 1.2e+100,
+  "большое число": 1.2e+100,
 
-  "objects": {
-    "comment": "Most of your structure will come from objects.",
+  "объекта": {
+    "комментарий": "Most of your structure will come from objects.",
 
-    "array": [0, 1, 2, 3, "Arrays can have anything in them.", 5],
+    "массив": [0, 1, 2, 3, "Arrays can have anything in them.", 5],
 
-    "another object": {
-      "comment": "These things can be nested, very useful."
+    "другой объект": {
+      "комментарий": "These things can be nested, very useful."
     }
   },
 
