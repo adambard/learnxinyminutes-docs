@@ -2,7 +2,7 @@
 category: tool
 tool: tmux
 contributors:
-    - ["wzsk", "https://github.com/wzsk"]
+    - ["mdln", "https://github.com/mdln"]
 filename: LearnTmux.txt
 ---
 
