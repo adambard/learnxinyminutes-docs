@@ -9,53 +9,53 @@ translators:
 lang: ru-ru
 ---
 
-As JSON is an extremely simple data-interchange format, this is most likely going
-to be the simplest Learn X in Y Minutes ever.
+JSON - это весьма простой формат обмена данными, и скорее всего это будет самый
+легкий "Learn X in Y Minutes" когда-либо представленный.
 
-JSON in its purest form has no actual comments, but most parsers will accept
-C-style (//, /\* \*/) comments. For the purposes of this, however,  everything is
-going to be 100% valid JSON. Luckily, it kind of speaks for itself.
+В чистом виде JSON не имеет комментарии, но большинство парсеров будут принимать
+комментарии в Си-стиле (//, /\* \*/). Для наших целей, конечно, все правильно
+будет на 100% с точни зрения JSON. К счастью, данные скажут сами за себя.
 
 ```json
 {
   "ключ": "значение",
   
-  "ключи": "must always be enclosed in double quotes",
+  "ключи": "должны всегда заключаться в двойные кавычки",
   "числа": 0,
-  "строки": "Hellø, wørld. All unicode is allowed, along with \"escaping\".",
-  "has bools?": true,
-  "nothingness": null,
+  "строки": "Привεт, μир. Допускаются все unicode-символы, вместе с \"экранированием\".",
+  "имеет булевый тип?": true,
+  "ничего": null,
 
   "большое число": 1.2e+100,
 
-  "объекта": {
-    "комментарий": "Most of your structure will come from objects.",
+  "объекты": {
+    "комментарий": "Большинство ваших структур будут представлять из себя объекты.",
 
-    "массив": [0, 1, 2, 3, "Arrays can have anything in them.", 5],
+    "массив": [0, 1, 2, 3, "Массивы могут содержать любой тип в себе.", 5],
 
     "другой объект": {
-      "комментарий": "These things can be nested, very useful."
+      "комментарий": "Они могут быть вложеными, это очень полезно."
     }
   },
 
-  "silliness": [
+  "глупость": [
     {
-      "sources of potassium": ["bananas"]
+      "источники калия": ["бананы"]
     },
     [
       [1, 0, 0, 0],
       [0, 1, 0, 0],
-      [0, 0, 1, "neo"],
+      [0, 0, 1, "нео"],
       [0, 0, 0, 1]
     ]
   ],
   
-  "alternative style": {
-    "comment": "check this out!"
-  , "comma position": "doesn't matter - as long as its before the value, then its valid"
-  , "another comment": "how nice"
+  "альтернативный стиль": {
+    "комментарий": "проверьте это!"
+  , "позиция запятой": "неважно - поскольку она перед значением, все равно правильно"
+  , "еще один комментарий": "как хорошо"
   },
 
-  "that was short": "And, you're done. You now know everything JSON has to offer."
+  "это было не долго": "И, вы сделали это. Вы теперь знаете все о JSON."
 }
 ```
