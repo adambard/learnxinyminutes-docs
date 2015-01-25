@@ -229,7 +229,7 @@ FALSE != FALSE	# FALSE
 FALSE != TRUE	# TRUE
 # Missing data (NA) is logical, too
 class(NA)	# "logical"
-# Use for | and & for logic operations.
+# Use | and & for logic operations.
 # OR
 TRUE | FALSE	# TRUE
 # AND
