@@ -157,7 +157,6 @@ sub named-def(:$def = 5) {
   say $def;
 }
 named-def; #=> 5
-named-def(:10def); #=> 10
 named-def(def => 15); #=> 15
 
 # Since you can omit parenthesis to call a function with no arguments,
@@ -653,7 +652,7 @@ class A {
   has Int $!private-field = 10;
 
   method get-value {
-    $.field + $!private-field + $n;
+    $.field + $!private-field;
   }
   
   method set-value($n) {
@@ -671,7 +670,7 @@ class A {
 # Create a new instance of A with $.field set to 5 :
 # Note: you can't set private-field from here (more later on).
 my $a = A.new(field => 5);
-$a.get-value; #=> 18
+$a.get-value; #=> 15
 #$a.field = 5; # This fails, because the `has $.field` is immutable
 $a.other-field = 10; # This, however, works, because the public field
                      #  is mutable (`rw`).
