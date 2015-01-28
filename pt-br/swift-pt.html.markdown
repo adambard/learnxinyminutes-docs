@@ -16,7 +16,7 @@ developer conference WWDC. Foi construída com o compilador LLVM já incluído n
 O livro oficial [Swift Programming Language] (https://itunes.apple.com/us/book/swift-programming-language/id881256329) da
 Apple já está disponível via IBooks (apenas em inglês).
 
-Confira também o tutorial completo de Swift da Apple [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/LandingPage/index.html), também disponível apenas em inglês.
+Confira também o tutorial completo de Swift da Apple [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html), também disponível apenas em inglês.
 
 ```swift
 // importa um módulo
