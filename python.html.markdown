@@ -614,12 +614,14 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 
 ### Free Online
 
+* [CodeCademy interactive Course for Beginners](http://www.codecademy.com/en/tracks/python)
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
 * [The Official Docs](http://docs.python.org/2.6/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
 * [Python Module of the Week](http://pymotw.com/2/)
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
+* [Coding Game for Python developers](https://www.checkio.org/)
 
 ### Dead Tree
 
