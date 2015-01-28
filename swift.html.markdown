@@ -10,7 +10,7 @@ Swift is a programming language for iOS and OS X development created by Apple. D
 
 The official [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) book from Apple is now available via iBooks.
 
-See also Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/LandingPage/index.html), which has a complete tutorial on Swift.
+See also Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html), which has a complete tutorial on Swift.
 
 ```swift
 // import a module
