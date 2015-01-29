@@ -259,6 +259,7 @@ levels(infert$education) # "0-5yrs"  "6-11yrs" "12+ yrs"
 # NULL
 # "NULL" is a weird one; use it to "blank out" a vector
 class(NULL)	# NULL
+parakeet = c("beak", "feathers", "wings", "eyes")
 parakeet
 # =>
 # [1] "beak"     "feathers" "wings"    "eyes"    
