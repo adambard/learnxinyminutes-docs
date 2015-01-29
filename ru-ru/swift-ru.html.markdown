@@ -17,7 +17,7 @@ Swift - это язык программирования, созданный к�
 
 Официальная книга по [языку программирования Swift](https://itunes.apple.com/us/book/swift-programming-language/id881256329) от Apple доступна в iBooks.
 
-Смотрите еще [начальное руководство](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/LandingPage/index.html) Apple, которое содержит полное учебное пособие по Swift.
+Смотрите еще [начальное руководство](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html) Apple, которое содержит полное учебное пособие по Swift.
 
 ```swift
 // импорт модуля
