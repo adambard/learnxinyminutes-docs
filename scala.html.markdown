@@ -453,7 +453,7 @@ def matchEverything(obj: Any): String = obj match {
 // feature is so powerful that Scala lets you define whole functions as
 // patterns:
 val patternFunc: Person => String = {
-  case Person("George", number") => s"George's number: $number"
+  case Person("George", number) => s"George's number: $number"
   case Person(name, number) => s"Random person's number: $number"
 }
 
