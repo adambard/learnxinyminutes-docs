@@ -381,6 +381,15 @@ on a new line! ""Wow!"", the masses cried";
         }
 
         // Methods can have the same name, as long as the signature is unique
+        // A method that differs only in return type is not unique
+        public static void MethodSignatures(
+            ref int maxCount, // Pass by reference
+            out int count)
+        {
+            count = 15; // out param must be assigned before control leaves the method
+        }
+
+        // Methods can have the same name, as long as the signature is unique
         public static void MethodSignatures(string maxCount)
         {
         }
@@ -413,6 +422,10 @@ on a new line! ""Wow!"", the masses cried";
             // OPTIONAL PARAMETERS
             MethodSignatures(3, 1, 3, "Some", "Extra", "Strings");
             MethodSignatures(3, another: 3); // explicity set a parameter, skipping optional ones
+
+            // BY REF AND OUT PARAMETERS
+            int maxCount = 0, count; // ref params must have value
+            MethodSignatures(ref maxCount, out count);
 
             // EXTENSION METHODS
             int i = 3;
