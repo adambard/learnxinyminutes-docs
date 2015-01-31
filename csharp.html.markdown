@@ -462,6 +462,31 @@ on a new line! ""Wow!"", the masses cried";
             Func<int, int> square = (x) => x * x; // Last T item is the return value
             Console.WriteLine(square(3)); // 9
 
+            // ERROR HANDLING - coping with an uncertain world
+            try
+            {
+                var funBike = PennyFarthing.CreateWithGears(6);
+
+                // will no longer execute because CreateWithGears throws an exception
+                string some = "";
+                if (true) some = null;
+                some.ToLower(); // throws a NullReferenceException
+            }
+            catch (NotSupportedException)
+            {
+                Console.WriteLine("Not so much fun now!");
+            }
+            catch (Exception ex) // catch all other exceptions
+            {
+                throw new ApplicationException("It hit the fan", ex);
+                // throw; // A rethrow that preserves the callstack
+            }
+            // catch { } // catch-all without capturing the Exception
+            finally
+            {
+                // executes after try or catch
+            }
+
             // DISPOSABLE RESOURCES MANAGEMENT - let you handle unmanaged resources easily.
             // Most of objects that access unmanaged resources (file handle, device contexts, etc.)
             // implement the IDisposable interface. The using statement takes care of 
@@ -780,8 +805,15 @@ on a new line! ""Wow!"", the masses cried";
             }
             set
             {
-                throw new ArgumentException("You can't change gears on a PennyFarthing");
+                throw new InvalidOperationException("You can't change gears on a PennyFarthing");
             }
+        }
+
+        public static PennyFarthing CreateWithGears(int gears)
+        {
+            var penny = new PennyFarthing(1, 1);
+            penny.Gear = gears; // Oops, can't do this!
+            return penny;
         }
 
         public override string Info()
@@ -842,7 +874,7 @@ on a new line! ""Wow!"", the masses cried";
 ## Topics Not Covered
 
  * Attributes
- * Exceptions, Abstraction
+ * Abstraction
  * ASP.NET (Web Forms/MVC/WebMatrix)
  * Winforms
  * Windows Presentation Foundation (WPF)
