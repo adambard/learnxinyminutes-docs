@@ -625,7 +625,7 @@ on a new line! ""Wow!"", the masses cried";
         // Static members belong to the type itself rather then specific object.
         // You can access them without a reference to any object:
         // Console.WriteLine("Bicycles created: " + Bicycle.bicyclesCreated);
-        static public int BicyclesCreated = 0;
+        public static int BicyclesCreated { get; set; }
 
         // readonly values are set at run time
         // they can only be assigned upon declaration or in a constructor
@@ -827,7 +827,6 @@ on a new line! ""Wow!"", the masses cried";
 
  * Flags
  * Attributes
- * Static properties
  * Exceptions, Abstraction
  * ASP.NET (Web Forms/MVC/WebMatrix)
  * Winforms
