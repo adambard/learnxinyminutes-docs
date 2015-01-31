@@ -622,6 +622,22 @@ on a new line! ""Wow!"", the masses cried";
 
         public BikeBrand Brand; // After declaring an enum type, we can declare the field of this type
 
+        // Decorate an enum with the FlagsAttribute to indicate that multiple values can be switched on
+        [Flags] // Any class derived from Attribute can be used to decorate types, methods, parameters etc
+        public enum BikeAccessories
+        {
+            None = 0,
+            Bell = 1,
+            MudGuards = 2, // need to set the values manually!
+            Racks = 4,
+            Lights = 8,
+            Full = Bell | MudGuards | Racks | Lights
+        }
+
+        // Usage: aBike.Accessories.HasFlag(Bicycle.BikeAccessories.Bell)
+        // Before .NET 4: (aBike.Accessories & Bicycle.BikeAccessories.Bell) == Bicycle.BikeAccessories.Bell
+        public BikeAccessories Accessories { get; set; }
+
         // Static members belong to the type itself rather then specific object.
         // You can access them without a reference to any object:
         // Console.WriteLine("Bicycles created: " + Bicycle.bicyclesCreated);
@@ -825,7 +841,6 @@ on a new line! ""Wow!"", the masses cried";
 
 ## Topics Not Covered
 
- * Flags
  * Attributes
  * Exceptions, Abstraction
  * ASP.NET (Web Forms/MVC/WebMatrix)
