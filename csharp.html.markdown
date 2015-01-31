@@ -18,8 +18,10 @@ C# is an elegant and type-safe object-oriented language that enables developers 
 Multi-line comments look like this
 */
 /// <summary>
-/// This is an XML documentation comment
+/// This is an XML documentation comment which can be used to generate external
+/// documentation or provide context help within an IDE
 /// </summary>
+//public void MethodOrClassOrOtherWithParsableHelp() {}
 
 // Specify namespaces application will be using
 using System;
