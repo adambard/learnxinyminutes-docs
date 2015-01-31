@@ -35,7 +35,7 @@ using System.Threading.Tasks;
 using System.IO;
 
 // defines scope to organize code into "packages"
-namespace Learning
+namespace LearningXInYMinutes.CSharp
 {
     // Each .cs file should at least contain a class with the same name as the file
     // you're allowed to do otherwise, but shouldn't for sanity.
