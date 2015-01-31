@@ -310,7 +310,7 @@ on a new line! ""Wow!"", the masses cried";
             // Converting data
 
             // Convert String To Integer
-            // this will throw a Exception on failure
+            // this will throw a FormatException on failure
             int.Parse("123");//returns an integer version of "123"
 
             // try parse will default to type default on failure
@@ -324,6 +324,11 @@ on a new line! ""Wow!"", the masses cried";
             Convert.ToString(123);
             // or
             tryInt.ToString();
+
+			// Casting
+            // Cast decimal 15 to a int
+            // and then implicitly cast to long
+            long x = (int) 15M;
         }
 
         ///////////////////////////////////////
