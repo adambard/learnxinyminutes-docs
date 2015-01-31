@@ -5,6 +5,7 @@ contributors:
     - ["Max Yankov", "https://github.com/golergka"]
     - ["Melvyn Laïly", "http://x2a.yt"]
     - ["Shaun McCarthy", "http://www.shaunmccarthy.com"]
+    - ["Wouter Van Schandevijl", "http://github.com/laoujin"]
 filename: LearnCSharp.cs
 ---
 
@@ -874,10 +875,14 @@ on a new line! ""Wow!"", the masses cried";
 ## Topics Not Covered
 
  * Attributes
- * Abstraction
- * ASP.NET (Web Forms/MVC/WebMatrix)
- * Winforms
- * Windows Presentation Foundation (WPF)
+ * async/await, yield, pragma directives
+ * Web Development
+ 	* ASP.NET MVC & WebApi (new)
+ 	* ASP.NET Web Forms (old)
+ 	* WebMatrix (tool)
+ * Desktop Development
+ 	* Windows Presentation Foundation (WPF) (new) 
+ 	* Winforms (old)
 
 ## Further Reading
 
@@ -890,7 +895,4 @@ on a new line! ""Wow!"", the masses cried";
  * [ASP.NET Web Matrix Tutorials](http://www.asp.net/web-pages/tutorials)
  * [ASP.NET Web Forms Tutorials](http://www.asp.net/web-forms/tutorials)
  * [Windows Forms Programming in C#](http://www.amazon.com/Windows-Forms-Programming-Chris-Sells/dp/0321116208)
-
-
-
-[C# Coding Conventions](http://msdn.microsoft.com/en-us/library/vstudio/ff926074.aspx)
+ * [C# Coding Conventions](http://msdn.microsoft.com/en-us/library/vstudio/ff926074.aspx)
