@@ -326,7 +326,7 @@ on a new line! ""Wow!"", the masses cried";
             // or
             tryInt.ToString();
 
-			// Casting
+            // Casting
             // Cast decimal 15 to a int
             // and then implicitly cast to long
             long x = (int) 15M;
@@ -388,11 +388,6 @@ on a new line! ""Wow!"", the masses cried";
             out int count)
         {
             count = 15; // out param must be assigned before control leaves the method
-        }
-
-        // Methods can have the same name, as long as the signature is unique
-        public static void MethodSignatures(string maxCount)
-        {
         }
 
         // GENERICS
@@ -657,7 +652,7 @@ on a new line! ""Wow!"", the masses cried";
             MudGuards = 2, // need to set the values manually!
             Racks = 4,
             Lights = 8,
-            Full = Bell | MudGuards | Racks | Lights
+            FullPackage = Bell | MudGuards | Racks | Lights
         }
 
         // Usage: aBike.Accessories.HasFlag(Bicycle.BikeAccessories.Bell)
