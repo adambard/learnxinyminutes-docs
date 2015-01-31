@@ -244,8 +244,15 @@ on a new line! ""Wow!"", the masses cried";
             int fooDoWhile = 0;
             do
             {
-                //Iterated 100 times, fooDoWhile 0->99
+                // Start iteration 100 times, fooDoWhile 0->99
+                if (false)
+                    continue; // skip the current iteration
+
                 fooDoWhile++;
+
+                if (fooDoWhile == 50)
+                    break; // breaks from the loop completely
+
             } while (fooDoWhile < 100);
 
             //for loop structure => for(<start_statement>; <conditional>; <step>)
@@ -303,7 +310,7 @@ on a new line! ""Wow!"", the masses cried";
             // Converting data
 
             // Convert String To Integer
-            // this will throw an Exception on failure
+            // this will throw a Exception on failure
             int.Parse("123");//returns an integer version of "123"
 
             // try parse will default to type default on failure
