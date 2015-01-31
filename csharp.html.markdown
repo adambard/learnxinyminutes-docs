@@ -127,7 +127,7 @@ on a new line! ""Wow!"", the masses cried";
 
             // Use const or read-only to make a variable immutable
             // const values are calculated at compile time
-            const int HOURS_I_WORK_PER_WEEK = 9001;
+            const int HoursWorkPerWeek = 9001;
 
             ///////////////////////////////////////////////////
             // Data Structures
