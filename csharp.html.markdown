@@ -26,7 +26,7 @@ Multi-line comments look like this
 // Specify namespaces application will be using
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using System.Data.Entity; // Add dll reference with NuGet: Install-Package EntityFramework
 using System.Dynamic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -684,7 +684,7 @@ on a new line! ""Wow!"", the masses cried";
         // All though this is not entirely useful in this example, you
         // could do bicycle[0] which yields "chris" to get the first passenger or
         // bicycle[1] = "lisa" to set the passenger. (of this apparent quattrocycle)
-        private string[] passengers = { "chris", "phil", "darren", "regina" }
+        private string[] passengers = { "chris", "phil", "darren", "regina" };
 
         public string this[int i]
         {
@@ -786,7 +786,7 @@ on a new line! ""Wow!"", the masses cried";
     /// EntityFramework Code First is awesome (similar to Ruby's ActiveRecord, but bidirectional)
     /// http://msdn.microsoft.com/en-us/data/jj193542.aspx
     /// </summary>
-    public class BikeRepository : DbSet
+    public class BikeRepository : DbContext
     {
         public BikeRepository()
             : base()
