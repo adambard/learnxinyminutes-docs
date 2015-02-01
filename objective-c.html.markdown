@@ -55,7 +55,7 @@ int main (int argc, const char * argv[])
     id       myObject2 = nil;  // Weak typing
     // %@ is an object
     // 'description' is a convention to display the value of the Objects
-    NSLog(@"%@ and %@", myObject1, [myObject2 description]); // Print "(null) and (null)"
+    NSLog(@"%@ and %@", myObject1, [myObject2 description]); // prints "(null) and (null)"
     
     // String
     NSString *worldString = @"World";
@@ -70,7 +70,7 @@ int main (int argc, const char * argv[])
     char theLetterZ            = [theLetterZNumber charValue]; // or 'Z'
     NSLog(@"%c", theLetterZ);
 
-    // Integral literals
+    // Integer literals
     NSNumber *fortyTwoNumber = @42;
     int fortyTwo             = [fortyTwoNumber intValue]; // or 42
     NSLog(@"%i", fortyTwo);
@@ -128,9 +128,10 @@ int main (int argc, const char * argv[])
     // May contain different data types, but must be an Objective-C object
     NSArray *anArray      = @[@1, @2, @3, @4];
     NSNumber *thirdNumber = anArray[2];
-    NSLog(@"Third number = %@", thirdNumber); // Print "Third number = 3"
-    // NSMutableArray is mutable version of NSArray allowing to change items in array
-    // and extend or shrink array object. Convenient, but not as efficient as NSArray
+    NSLog(@"Third number = %@", thirdNumber); // prints "Third number = 3"
+    // NSMutableArray is a mutable version of NSArray allowing you to change 
+    // items in array and extend or shrink array object. Convenient, but not
+    // as efficient as NSArray
     NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:2];
     [mutableArray addObject:@"Hello"];
     [mutableArray addObject:@"World"];
@@ -140,7 +141,7 @@ int main (int argc, const char * argv[])
     // Dictionary object
     NSDictionary *aDictionary = @{ @"key1" : @"value1", @"key2" : @"value2" };
     NSObject *valueObject     = aDictionary[@"A Key"];
-    NSLog(@"Object = %@", valueObject); // Print "Object = (null)"
+    NSLog(@"Object = %@", valueObject); // prints "Object = (null)"
     // NSMutableDictionary also available as a mutable dictionary object
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
     [mutableDictionary setObject:@"value1" forKey:@"key1"];
@@ -627,7 +628,7 @@ int main (int argc, const char * argv[]) {
 @end
 // Instances of Car now have access to the protocol. 
 Car *carInstance = [[Car alloc] init];
-[[carInstance setEngineOn:NO];
+[carInstance setEngineOn:NO];
 [carInstance turnOnEngine];
 if ([carInstance engineOn]) {
     NSLog(@"Car engine is on."); // prints => "Car engine is on."
