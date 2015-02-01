@@ -55,7 +55,7 @@ int main (int argc, const char * argv[])
     id       myObject2 = nil;  // Weak typing
     // %@ is an object
     // 'description' is a convention to display the value of the Objects
-    NSLog(@"%@ and %@", myObject1, [myObject2 description]); // prints "(null) and (null)"
+    NSLog(@"%@ and %@", myObject1, [myObject2 description]); // prints => "(null) and (null)"
     
     // String
     NSString *worldString = @"World";
@@ -70,7 +70,7 @@ int main (int argc, const char * argv[])
     char theLetterZ            = [theLetterZNumber charValue]; // or 'Z'
     NSLog(@"%c", theLetterZ);
 
-    // Integer literals
+    // Integral literals
     NSNumber *fortyTwoNumber = @42;
     int fortyTwo             = [fortyTwoNumber intValue]; // or 42
     NSLog(@"%i", fortyTwo);
@@ -128,10 +128,10 @@ int main (int argc, const char * argv[])
     // May contain different data types, but must be an Objective-C object
     NSArray *anArray      = @[@1, @2, @3, @4];
     NSNumber *thirdNumber = anArray[2];
-    NSLog(@"Third number = %@", thirdNumber); // prints "Third number = 3"
-    // NSMutableArray is a mutable version of NSArray allowing you to change 
-    // items in array and extend or shrink array object. Convenient, but not
-    // as efficient as NSArray
+    NSLog(@"Third number = %@", thirdNumber); // prints => "Third number = 3"
+    // NSMutableArray is a mutable version of NSArray, allowing you to change 
+    // the items in the array and to extend or shrink the array object. 
+    // Convenient, but not as efficient as NSArray.
     NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:2];
     [mutableArray addObject:@"Hello"];
     [mutableArray addObject:@"World"];
@@ -141,7 +141,7 @@ int main (int argc, const char * argv[])
     // Dictionary object
     NSDictionary *aDictionary = @{ @"key1" : @"value1", @"key2" : @"value2" };
     NSObject *valueObject     = aDictionary[@"A Key"];
-    NSLog(@"Object = %@", valueObject); // prints "Object = (null)"
+    NSLog(@"Object = %@", valueObject); // prints => "Object = (null)"
     // NSMutableDictionary also available as a mutable dictionary object
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
     [mutableDictionary setObject:@"value1" forKey:@"key1"];
@@ -211,7 +211,7 @@ int main (int argc, const char * argv[])
     while (ii < 4)
     {
         NSLog(@"%d,", ii++); // ii++ increments ii in-place, after using its value
-    } // => prints "0," 
+    } // prints => "0," 
       //           "1,"
       //           "2,"
       //           "3,"
@@ -221,7 +221,7 @@ int main (int argc, const char * argv[])
     for (jj=0; jj < 4; jj++)
     {
         NSLog(@"%d,", jj);
-    } // => prints "0," 
+    } // prints => "0," 
       //           "1,"
       //           "2,"
       //           "3,"
@@ -231,7 +231,7 @@ int main (int argc, const char * argv[])
     for (NSNumber *value in values)
     {
         NSLog(@"%@,", value);
-    } // => prints "0," 
+    } // prints => "0," 
       //           "1,"
       //           "2,"
       //           "3,"
@@ -239,7 +239,7 @@ int main (int argc, const char * argv[])
     // Object for loop statement. Can be used with any Objective-C object type
     for (id item in values) { 
         NSLog(@"%@,", item); 
-    } // => prints "0," 
+    } // prints => "0," 
       //           "1,"
       //           "2,"
       //           "3,"
@@ -256,7 +256,7 @@ int main (int argc, const char * argv[])
     } @finally
     {
         NSLog(@"Finally. Time to clean up.");
-    } // => prints "Exception: File Not Found on System"
+    } // prints => "Exception: File Not Found on System"
       //           "Finally. Time to clean up."
 
     // NSError objects are useful for function arguments to populate on user mistakes. 
