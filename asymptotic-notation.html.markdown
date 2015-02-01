@@ -76,27 +76,31 @@ for a given function. Say f(n) is your algorithm runtime, and g(n) is an arbitra
 you are trying to relate to your algorithm. f(n) is O(g(n)), if for any real constant c (c>0),
 f(n) <= c g(n) for every input size n (n>0).
 
-Example 1
-f(n) = 3log n + 100
+*Example 1*  
+```
+f(n) = 3log n + 100  
 g(n) = log n
+```
 
-is f(n) O(g(n))?
-is 3 log n + 100 O(log n)?
-Let's look to the definition of Big-Oh.
-3log n + 100 <= c * log n
-Is there some constant c that satisfies this for all n?
-3log n + 100 <= 150 * log n, n > 2 (undefined at n = 1)
+is f(n) O(g(n))?  
+is 3 log n + 100 O(log n)?  
+Let's look to the definition of Big-Oh.  
+3log n + 100 <= c * log n  
+Is there some constant c that satisfies this for all n?  
+3log n + 100 <= 150 * log n, n > 2 (undefined at n = 1)  
 Yes! The definition of Big-Oh has been met therefore f(n) is O(g(n)).
 
-Example 2
-f(n) = 3*n^2
+*Example 2*  
+```
+f(n) = 3*n^2  
 g(n) = n
+```
 
-is f(n) O(g(n))?
-is 3*n^2 O(n)?
-Let's look at the definition of Big-Oh.
-3*n^2 <= c * n
-Is there some constant c that satisfies this for all n?
+is f(n) O(g(n))?  
+is 3*n^2 O(n)?  
+Let's look at the definition of Big-Oh.  
+3*n^2 <= c * n  
+Is there some constant c that satisfies this for all n?  
 No there isn't, f(n) is NOT O(g(n)).
 
 ### Big-Omega
