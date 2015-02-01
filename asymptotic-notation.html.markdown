@@ -97,9 +97,9 @@ g(n) = n
 ```
 
 is f(n) O(g(n))?  
-is 3*n^2 O(n)?  
+is 3 * n^2 O(n)?  
 Let's look at the definition of Big-Oh.  
-3*n^2 <= c * n  
+3 * n^2 <= c * n  
 Is there some constant c that satisfies this for all n?  
 No there isn't, f(n) is NOT O(g(n)).
 
