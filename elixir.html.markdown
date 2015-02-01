@@ -91,6 +91,11 @@ string.
 <<1,2,3>> <> <<4,5>> #=> <<1,2,3,4,5>>
 "hello " <> "world"  #=> "hello world"
 
+# Ranges are represented as `start..end` (both inclusive)
+1..10 #=> 1..10
+lower..upper = 1..10 # Can use pattern matching on ranges as well
+[lower, upper] #=> [1, 10]
+
 ## ---------------------------
 ## -- Operators
 ## ---------------------------
