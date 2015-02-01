@@ -38,8 +38,9 @@ You can label a function, or algorithm, with an Asymptotic Notation in many diff
 Some examples are, you can describe an algorithm by it's best case, worse case, or equivalent case.
 The most common is to analyze an algorithm by it's worst case. This is because if you determine an
 algorithm's run time or time complexity, by it's best case, what if it's best case is only obtained
-given at a low, unrealistic, input size? It is equivalent to having a 5 meter sprinting race.
-That isn't the best measurement.
+given at a low, unrealistic, input size? It is equivalent to having a 5 meter sprinting race to find
+the fastest sprinter on earth. Or testing the 40 to 50MPH time of a car to determine the fastest car
+in the world. The measurement loses meaning because it doesn't represent the problem well.
 
 ### Types of functions, limits, and simplification
 ```
@@ -85,9 +86,13 @@ g(n) = log n
 is f(n) O(g(n))?  
 is 3 log n + 100 O(log n)?  
 Let's look to the definition of Big-Oh.  
+```
 3log n + 100 <= c * log n  
+```
 Is there some constant c that satisfies this for all n?  
+```
 3log n + 100 <= 150 * log n, n > 2 (undefined at n = 1)  
+```
 Yes! The definition of Big-Oh has been met therefore f(n) is O(g(n)).
 
 *Example 2*  
@@ -99,7 +104,9 @@ g(n) = n
 is f(n) O(g(n))?  
 is 3 * n^2 O(n)?  
 Let's look at the definition of Big-Oh.  
+```
 3 * n^2 <= c * n  
+```
 Is there some constant c that satisfies this for all n?  
 No there isn't, f(n) is NOT O(g(n)).
 
