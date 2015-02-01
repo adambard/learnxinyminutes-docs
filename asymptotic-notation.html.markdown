@@ -8,7 +8,7 @@ contributors:
 
 ## What are they?
 
-Asymptotic Notations is a language that allows us to analyze an algorithm's running time by
+Asymptotic Notations are languages that allows us to analyze an algorithm's running time by
 identifying its behavior as the input size for the algorithm increases. This is also known as
 an algorithm's growth rate. Does the algorithm suddenly become incredibly slow when the input
 size grows? Does the algorithm mostly maintain it's quick run time as the input size increases?
@@ -42,11 +42,13 @@ given at a low, unrealistic, input size? It is equivalent to having a 5 meter sp
 That isn't the best measurement.
 
 ### Types of functions, limits, and simplification
+```
 Logarithmic Function - log n
 Linear Function - an + b
 Quadratic Function - an^2 + bn + c
 Polynomial Function - an^z + . . . + an^2 + a*n^1 + a*n^0, where z is some constant
 Exponential Function - a^n, where a is some constant
+```
 
 These are some basic function growth classifications used in various notations. The list starts at the least
 fast growing function (logarithmic) and goes on to the fastest growing (exponential). Notice that as 'n', or the input,
@@ -60,11 +62,13 @@ to no importance. That being said, if you have constants that are 2^9001, or som
 unimaginable amount, realize that simplifying will skew your notation accuracy.
 
 Since we want simplest form, lets modify our table a bit...
+```
 Logarithmic - log n
 Linear - n
 Quadratic - n^2
 Polynomial - n^z, where z is some constant
 Exponential - a^n, where a is some constant
+```
 
 ### Big-Oh
 Big-Oh, commonly written as O, is an Asymptotic Notation for the worst case, or ceiling of growth
@@ -104,8 +108,8 @@ f(n) is Ω(g(n)), if for any real constant c (c>0), f(n) is >= c g(n) for every 
 Feel free to head over to additional resources for examples on this. Big-Oh is the primary notation used
 for general algorithm time complexity.
 
-### Ending Note
-It's hard to keep this kind of topic short and you should definitely go through the books and online
+### Ending Notes
+It's hard to keep this kind of topic short, and you should definitely go through the books and online
 resources listed. They go into much greater depth with definitions and examples.
 More where x='Algorithms & Data Structures' is on it's way; we'll have a doc up on analyzing actual
 code examples soon.
