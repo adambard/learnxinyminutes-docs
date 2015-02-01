@@ -75,8 +75,8 @@ f(n) = 3log n + 100
 g(n) = log n
 ```
 
-Is `f(n)` O(g(n))?
-Is `3 log n + 100` O(log n)?
+Is `f(n)` O(g(n))?  
+Is `3 log n + 100` O(log n)?  
 Let's look to the definition of Big-Oh.
 ```
 3log n + 100 <= c * log n  
