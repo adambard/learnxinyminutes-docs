@@ -59,6 +59,7 @@ not False -- True
 "Hello " ++ "world!" -- "Hello world!"
 
 -- A string is a list of characters
+['H', 'e', 'l', 'l', 'o'] -- "Hello"
 "This is a string" !! 0 -- 'T'
 
 
@@ -67,7 +68,7 @@ not False -- True
 ----------------------------------------------------
 
 -- Every element in a list must have the same type.
--- These two lists are the same
+-- These two lists are the same:
 [1, 2, 3, 4, 5]
 [1..5]
 
