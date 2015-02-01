@@ -11,7 +11,7 @@ contributors:
 Asymptotic Notations are languages that allows us to analyze an algorithm's running time by
 identifying its behavior as the input size for the algorithm increases. This is also known as
 an algorithm's growth rate. Does the algorithm suddenly become incredibly slow when the input
-size grows? Does the algorithm mostly maintain it's quick run time as the input size increases?
+size grows? Does it mostly maintain it's quick run time as the input size increases?
 Asymptotic Notation gives us the ability to answer these questions.
 
 ## Are there alternatives to answering these questions?
@@ -20,7 +20,7 @@ One way would be to count the number of primitive operations at different input 
 Though this is a valid solution, the amount of work this takes for even simple algorithms
 does not justify its use.
 
-Another way is to physically measure the amount of time the algorithm takes to complete
+Another way is to physically measure the amount of time an algorithm takes to complete
 given different input sizes. However, the accuracy and relativity (times obtained would
 only be relative to the machine they were computed on) of this method is bound to
 environmental variables such as computer hardware specifications, processing power, etc.
@@ -28,15 +28,15 @@ environmental variables such as computer hardware specifications, processing pow
 ## Types of Asymptotic Notation
 
 In the first section of this doc we described how an Asymptotic Notation identifies the
-behavior of an algorithm as the input size changes. Let us imagine our algorithm as a function
+behavior of an algorithm as the input size changes. Let us imagine an algorithm as a function
 f, n as the input size, and f(n) being the running time. So for a given algorithm f, with input
 size n you get some resultant run time f(n). This results in a graph where the Y axis is the
 runtime, X axis is the input size, and plot points are the resultants of the amount of time
 for a given input size.
 
 You can label a function, or algorithm, with an Asymptotic Notation in many different ways.
-Some examples are, you can describe your algorithm by it's best case, worse case, or equivalent case.
-The most common is to analyze your algorithm by it's worst case. This is because if you determine an
+Some examples are, you can describe an algorithm by it's best case, worse case, or equivalent case.
+The most common is to analyze an algorithm by it's worst case. This is because if you determine an
 algorithm's run time or time complexity, by it's best case, what if it's best case is only obtained
 given at a low, unrealistic, input size? It is equivalent to having a 5 meter sprinting race.
 That isn't the best measurement.
