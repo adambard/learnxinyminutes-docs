@@ -34,7 +34,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.IO;
 
-// But this is one is not:
+// But this one is not:
 using System.Data.Entity;
 // In order to be able to use it, you need to add a dll reference
 // This can be done with the NuGet package manager: `Install-Package EntityFramework`
