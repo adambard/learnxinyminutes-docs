@@ -59,6 +59,7 @@ not False -- True
 "Hello " ++ "world!" -- "Hello world!"
 
 -- A string is a list of characters
+['H', 'e', 'l', 'l', 'o'] -- "Hello"
 "This is a string" !! 0 -- 'T'
 
 
@@ -67,9 +68,17 @@ not False -- True
 ----------------------------------------------------
 
 -- Every element in a list must have the same type.
--- Two lists that are the same
+-- These two lists are the same:
 [1, 2, 3, 4, 5]
 [1..5]
+
+-- Ranges are versatile.
+['A'..'F'] -- "ABCDEF"
+
+-- You can create a step in a range.
+[0,2..10] -- [0, 2, 4, 6, 8, 10]
+[5..1] -- This doesn't work because Haskell defaults to incrementing.
+[5,4..1] -- [5, 4, 3, 2, 1]
 
 -- You can also have infinite lists in Haskell!
 [1..] -- a list of all the natural numbers
