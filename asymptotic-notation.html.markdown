@@ -40,6 +40,7 @@ Some examples are, you can describe an algorithm by its best case, worse case, o
 The most common is to analyze an algorithm by its worst case. You typically don't evaluate by best case because those conditions aren't what you're planning for. A very good example of this is sorting algorithms; specifically, adding elements to a tree structure. Best case for most algorithms could be as low as a single operation. However, in most cases, the element you're adding will need to be sorted appropriately through the tree, which could mean examining an entire branch. This is the worst case, and this is what we plan for.
 
 ### Types of functions, limits, and simplification
+
 ```
 Logarithmic Function - log n
 Linear Function - an + b
@@ -56,6 +57,7 @@ to no importance. That being said, if you have constants that are 2^9001, or som
 unimaginable amount, realize that simplifying will skew your notation accuracy.
 
 Since we want simplest form, lets modify our table a bit...
+
 ```
 Logarithmic - log n
 Linear - n
@@ -71,6 +73,7 @@ you are trying to relate to your algorithm. `f(n)` is O(g(n)), if for any real c
 `f(n)` <= `c g(n)` for every input size n (n > 0).
 
 *Example 1*  
+
 ```
 f(n) = 3log n + 100  
 g(n) = log n
@@ -79,16 +82,21 @@ g(n) = log n
 Is `f(n)` O(g(n))?  
 Is `3 log n + 100` O(log n)?  
 Let's look to the definition of Big-Oh.
+
 ```
 3log n + 100 <= c * log n  
 ```
+
 Is there some constant c that satisfies this for all n?  
+
 ```
 3log n + 100 <= 150 * log n, n > 2 (undefined at n = 1)  
 ```
+
 Yes! The definition of Big-Oh has been met therefore `f(n)` is O(g(n)).
 
 *Example 2*  
+
 ```
 f(n) = 3*n^2  
 g(n) = n
@@ -97,9 +105,11 @@ g(n) = n
 Is `f(n)` O(g(n))?  
 Is `3 * n^2` O(n)?  
 Let's look at the definition of Big-Oh.  
+
 ```
 3 * n^2 <= c * n  
 ```
+
 Is there some constant c that satisfies this for all n?  
 No, there isn't. `f(n)` is NOT O(g(n)).
 
