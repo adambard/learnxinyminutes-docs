@@ -49,7 +49,7 @@ Given an element like this on the page:
 /* you can target it by its name */
 .some-class { }
 
-/*or by both classes! */
+/* or by both classes! */
 .some-class.class2 { }
 
 /* or by its element name */
@@ -89,7 +89,7 @@ div.some-parent > .class-name {}
    and is child of a div with class name "some-parent" IN ANY DEPTH */
 div.some-parent .class-name {}
 
-/* warning: the same selector wihout spaaace has another meaning.  
+/* warning: the same selector without spaaace has another meaning.  
    can you say what? */
 div.some-parent.class-name {}
 
