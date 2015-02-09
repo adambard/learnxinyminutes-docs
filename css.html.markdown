@@ -230,7 +230,7 @@ Remember, the precedence is for each **property**, not for the entire block.
 ## Compatibility
 
 Most of the features in CSS2 (and gradually in CSS3) are compatible across  
-all browsers and devices. But it's always vital to have in mind the compatiblity
+all browsers and devices. But it's always vital to have in mind the compatibility 
 of what you use in CSS with your target browsers.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) is one of the best sources for this.
