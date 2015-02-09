@@ -152,7 +152,7 @@ selector {
     
     /* Fonts */
     font-family: Arial;
-    font-family: "Courier New"; /* if name has spaaace it appears in single or double quotes */
+    font-family: "Courier New"; /* if name has space it appears in single or double quotes */
     font-family: "Courier New", Trebuchet, Arial, sans-serif; /* if first one was not found
                              browser uses the second font, and so forth */
 }
