@@ -37,7 +37,7 @@ selector { property: value; /* more properties...*/ }
 
 /* the selector is used to target an element on page.
 
-You can target all elments on the page using asterisk! */
+You can target all elements on the page using asterisk! */
 * { color:red; }
 
 /*
