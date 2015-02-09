@@ -15,25 +15,25 @@ XML - это язык разметки, предназначеный для хр
 * XML Синтаксис
 
 ```xml
-<!-- Comments in XML are like this -->
+<!-- Комментраии в XML выглядят так -->
 
 <?xml version="1.0" encoding="UTF-8"?>
 <bookstore>
-  <book category="COOKING">
+  <book category="КУЛИНАРИЯ">
     <title lang="en">Everyday Italian</title>
     <author>Giada De Laurentiis</author>
     <year>2005</year>
     <price>30.00</price>
   </book>
-  <book category="CHILDREN">
-    <title lang="en">Harry Potter</title>
-    <author>J K. Rowling</author>
+  <book category="ДЕТИ">
+    <title lang="ru">Гарри Поттер</title>
+    <author>Дж. К. Роулинг</author>
     <year>2005</year>
     <price>29.99</price>
   </book>
-  <book category="WEB">
-    <title lang="en">Learning XML</title>
-    <author>Erik T. Ray</author>
+  <book category="ВСЕМИРНАЯ ПАУТИНА">
+    <title lang="ru">Изучаем XML</title>
+    <author>Эрик Рэй</author>
     <year>2003</year>
     <price>39.95</price>
   </book>
