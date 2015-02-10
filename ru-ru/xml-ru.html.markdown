@@ -39,14 +39,14 @@ XML - это язык разметки, предназначеный для хр
   </book>
 </bookstore>
 
-<!-- Above is a typical XML file.
-  It starts with a declaration, informing some metadata (optional).
+<!-- Вышеописанный документ - типичный XML-файл.
+  Он начинается с определения, информирующее о некоторых метаданных (необязательно).
   
-  XML uses a tree structure. Above, the root node is 'bookstore', which has
-  three child nodes, all 'books'. Those nodes has more child nodes, and so on... 
+  XML использует древовидную структуру. У вишеописанного документа корневой узел - 'bookstore', который содержит
+  три дочерних узла - все 'books'. Такие узлы содержат много дочерних узлов и т.д. 
   
-  Nodes are created using open/close tags, and childs are just nodes between
-  the open and close tags.-->
+  Узлы создаются с помощью открывающего/закрывающего тегов, а дочерние - это узлы между
+  открывающимися и закрывающимися тегами.-->
 
 
 <!-- XML carries two kind of data:
