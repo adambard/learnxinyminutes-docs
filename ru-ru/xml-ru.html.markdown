@@ -49,17 +49,17 @@ XML - это язык разметки, предназначеный для хр
   открывающимися и закрывающимися тегами.-->
 
 
-<!-- XML carries two kind of data:
-  1 - Attributes -> That's metadata about a node.
-      Usually, the XML parser uses this information to store the data properly.
-      It is characterized by appearing in parenthesis within the opening tag
-  2 - Elements -> That's pure data.
-      That's what the parser will retrieve from the XML file.
-      Elements appear between the open and close tags, without parenthesis. -->
+<!-- XML содержит в себе два типа данных:
+  1 - Атрибуты -> Это метаданные узлов.
+      Обычно, XML-парсер использует эту информацию, чтобы хранить свойства данных.
+      Атрибут изображается путем вписывания его в скобки в пределах открывающегося тега
+  2 - Элементы -> Это чистые данные.
+      Это то, что парсер извлечет из XML-файла.
+      Элементы идут между открывающим и закрывающим тегами без скобок. -->
       
   
-<!-- Below, an element with two attributes -->
-<file type="gif" id="4293">computer.gif</file>
+<!-- Внизу элемент с двумя атрибутами -->
+<file type="gif" id="4293">компьютер.gif</file>
 
 
 ```
