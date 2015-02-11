@@ -64,16 +64,16 @@ XML - это язык разметки, предназначеный для хр
 
 ```
 
-* Well-Formated Document x Validation
+* Хорошо отформатированный документ x Проверка достоверности
 
-A XML document is well-formated if it is syntactically correct.
-However, it is possible to inject more constraints in the document,
-using document definitions, such as DTD and  XML Schema.
+XML-документ хорошо отформатирован, если он синтаксически верный.
+Впрочем, в документ возможно ввести больше ограничений,
+используя определения документа, вроде DTD и  XML-схемы.
 
-A XML document which follows a document definition is called valid, 
-regarding that document. 
+XML-документ, который следует описанию документа называется действительным, 
+относительно этого документа. 
 
-With this tool, you can check the XML data outside the application logic.
+С таким инструментом, вы можете проверить XML-данные вне логики приложения.
 
 ```xml
 
