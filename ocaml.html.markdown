@@ -293,7 +293,7 @@ type int_list_list = int list_of_lists ;;
 (* Types can also be recursive. Like in this type analogous to
    built-in list of integers. *)
 type my_int_list = EmptyList | IntList of int * my_int_list ;;
-let l = Cons (1, EmptyList) ;;
+let l = IntList (1, EmptyList) ;;
 
 
 (*** Pattern matching ***)
