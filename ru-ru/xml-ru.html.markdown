@@ -77,25 +77,25 @@ XML-документ, который следует описанию докум�
 
 ```xml
 
-<!-- Below, you can see an simplified version of bookstore document, 
-  with the addition of DTD definition.-->
+<!-- Ниже вы можете увидеть упрощенную версию документа книжного магазина, 
+  с дополнением DTD-определения.-->
 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE note SYSTEM "Bookstore.dtd">
 <bookstore>
-  <book category="COOKING">
+  <book category="КУЛИНАРИЯ">
     <title >Everyday Italian</title>
     <price>30.00</price>
   </book>
 </bookstore>
 
-<!-- This DTD could be something like:-->
+<!-- Этот DTD может быть что-то вроде:-->
 
 <!DOCTYPE note
 [
 <!ELEMENT bookstore (book+)>
 <!ELEMENT book (title,price)>
-<!ATTLIST book category CDATA "Literature">
+<!ATTLIST book category CDATA "Литература">
 <!ELEMENT title (#PCDATA)>
 <!ELEMENT price (#PCDATA)>
 ]>
