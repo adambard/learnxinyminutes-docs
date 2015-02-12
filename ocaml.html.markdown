@@ -144,11 +144,16 @@ x + y ;;
 (* Alternatively you can use "let ... and ... in" construct.
    This is especially useful for mutually recursive functions,
    with ordinary "let .. in" the compiler will complain about
-   unbound values.
-   It's hard to come up with a meaningful but self-contained
-   example of mutually recursive functions, but that syntax
-   works for non-recursive definitions too. *)
-let a = 3 and b = 4 in a * b ;;
+   unbound values. *)
+let rec
+  is_even = function
+  | 0 -> true
+  | n -> is_odd (n-1)
+and
+  is_odd = function
+  | 0 -> false
+  | n -> is_even (n-1)
+;;
 
 (* Anonymous functions use the following syntax: *)
 let my_lambda = fun x -> x * x ;;
@@ -288,7 +293,7 @@ type int_list_list = int list_of_lists ;;
 (* Types can also be recursive. Like in this type analogous to
    built-in list of integers. *)
 type my_int_list = EmptyList | IntList of int * my_int_list ;;
-let l = Cons (1, EmptyList) ;;
+let l = IntList (1, EmptyList) ;;
 
 
 (*** Pattern matching ***)
