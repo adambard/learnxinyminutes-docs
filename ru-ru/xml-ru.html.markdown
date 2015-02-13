@@ -101,13 +101,13 @@ XML-документ, который следует описанию докум�
 ]>
 
 
-<!-- The DTD starts with a declaration.
-  Following, the root node is declared, requiring 1 or more child nodes 'book'.
-  Each 'book' should contain exactly one 'title' and 'price' and an attribute
-  called 'category', with "Literature" as its default value.
-  The 'title' and 'price' nodes contain a parsed character data.-->
+<!-- DTD начинается с объявления.
+  Затем, объявляется корневой узел, требующий 1 или более дочерних узлов 'book'.
+  Каждый 'book' должен содержать точно один 'title' и 'price', а атрибут
+  называющиеся 'category', с "Literature" как значение по улолчанию.
+  'title' и 'price' узлы содержат проанализированные символьные данные.-->
 
-<!-- The DTD could be declared inside the XML file itself.-->
+<!-- DTD может быть объявлен внутри самого XML-файла.-->
 
 <?xml version="1.0" encoding="UTF-8"?>
 
@@ -115,14 +115,14 @@ XML-документ, который следует описанию докум�
 [
 <!ELEMENT bookstore (book+)>
 <!ELEMENT book (title,price)>
-<!ATTLIST book category CDATA "Literature">
+<!ATTLIST book category CDATA "Литература">
 <!ELEMENT title (#PCDATA)>
 <!ELEMENT price (#PCDATA)>
 ]>
 
 <bookstore>
-  <book category="COOKING">
-    <title >Everyday Italian</title>
+  <book category="КУЛИНАРИЯ">
+    <title >Итальянская еда на каждый день</title>
     <price>30.00</price>
   </book>
 </bookstore>
