@@ -5,34 +5,34 @@ contributors:
     - ["Joseph Adams", "https://github.com/jcla1"]
 lang: de-de
 ---
-Go wurde entwickelt um probleme zu lösen. Sie ist zwar nicht der neuste Trend in
-der Informatik, aber sie ist eine der neusten und schnellsten Wege um Aufgabe in
+Go wurde entwickelt, um Probleme zu lösen. Sie ist zwar nicht der neueste Trend in
+der Informatik, aber sie ist einer der neuesten und schnellsten Wege, um Aufgabe in
 der realen Welt zu lösen.
 
-Sie hat vertraute Elemente von imperativen Sprachen mit statisher Typisierung
+Sie hat vertraute Elemente von imperativen Sprachen mit statischer Typisierung
 und kann schnell kompiliert und ausgeführt werden. Verbunden mit leicht zu
 verstehenden Parallelitäts-Konstrukten, um die heute üblichen mehrkern
 Prozessoren optimal nutzen zu können, eignet sich Go äußerst gut für große
 Programmierprojekte.
 
-Außerdem beinhaltet Go eine gut ausgestattete standard bibliothek und hat eine
-aktive community.
+Außerdem beinhaltet Go eine gut ausgestattete Standardbibliothek und hat eine
+aktive Community.
 
 ```go
 // Einzeiliger Kommentar
 /* Mehr-
    zeiliger Kommentar */
 
-// Eine jede Quelldatei beginnt mit einer Packet-Klausel.
-// "main" ist ein besonderer Packetname, da er ein ausführbares Programm
+// Eine jede Quelldatei beginnt mit einer Paket-Klausel.
+// "main" ist ein besonderer Pkaetname, da er ein ausführbares Programm
 // einleitet, im Gegensatz zu jedem anderen Namen, der eine Bibliothek
 // deklariert.
 package main
 
-// Ein "import" wird verwendet um Packte zu deklarieren, die in dieser
+// Ein "import" wird verwendet, um Pakete zu deklarieren, die in dieser
 // Quelldatei Anwendung finden.
 import (
-    "fmt"      // Ein Packet in der Go standard Bibliothek
+    "fmt"      // Ein Paket in der Go Standardbibliothek
     "net/http" // Ja, ein Webserver.
     "strconv"  // Zeichenkettenmanipulation
 )
@@ -42,10 +42,10 @@ import (
 // Programms. Vergessen Sie nicht die geschweiften Klammern!
 func main() {
     // Println gibt eine Zeile zu stdout aus.
-    // Der Prefix "fmt" bestimmt das Packet aus welchem die Funktion stammt.
+    // Der Prefix "fmt" bestimmt das Paket aus welchem die Funktion stammt.
     fmt.Println("Hello world!")
 
-    // Aufruf einer weiteren Funktion definiert innerhalb dieses Packets.
+    // Aufruf einer weiteren Funktion definiert innerhalb dieses Pakets.
     beyondHello()
 }
 
@@ -217,7 +217,7 @@ func learnInterfaces() {
     // Aufruf der String Methode von i, gleiche Ausgabe wie zuvor.
     fmt.Println(i.String())
 
-    // Funktionen des fmt-Packets rufen die String() Methode auf um eine
+    // Funktionen des fmt-Pakets rufen die String() Methode auf um eine
     // druckbare variante des Empfängers zu erhalten.
     fmt.Println(p) // gleiche Ausgabe wie zuvor
     fmt.Println(i) // und wieder die gleiche Ausgabe wie zuvor
@@ -287,7 +287,7 @@ func learnConcurrency() {
     learnWebProgramming() // Go kann es und Sie hoffentlich auch bald.
 }
 
-// Eine einzige Funktion aus dem http-Packet kann einen Webserver starten.
+// Eine einzige Funktion aus dem http-Paket kann einen Webserver starten.
 func learnWebProgramming() {
     // Der erste Parameter von "ListenAndServe" ist eine TCP Addresse an die
     // sich angeschlossen werden soll.
