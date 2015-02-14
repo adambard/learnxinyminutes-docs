@@ -54,7 +54,7 @@ func main() {
 func beyondHello() {
     var x int // Deklaration einer Variable, muss vor Gebrauch geschehen.
     x = 3     // Zuweisung eines Werts.
-    // Kurze Deklaration: Benutzen Sie ":=" um die Typisierung automatisch zu
+    // Kurze Deklaration: Benutzen Sie ":=", um die Typisierung automatisch zu
     // folgern, die Variable zu deklarieren und ihr einen Wert zu zuweisen.
     y := 4
 
@@ -70,7 +70,7 @@ func learnMultiple(x, y int) (sum, prod int) {
     return x + y, x * y // Wiedergabe zweier Werte
 }
 
-// Überblick ueber einige eingebaute Typen und Literale.
+// Überblick über einige eingebaute Typen und Literale.
 func learnTypes() {
     // Kurze Deklarationen sind die Norm.
     s := "Lernen Sie Go!" // Zeichenketten-Typ
@@ -111,7 +111,7 @@ Zeilenumbrüche beinhalten.` // Selber Zeichenketten-Typ
     m["eins"] = 1
 
     // Ungebrauchte Variablen sind Fehler in Go
-    // Der Unterstrich wird verwendet um einen Wert zu verwerfen.
+    // Der Unterstrich wird verwendet, um einen Wert zu verwerfen.
     _, _, _, _, _, _, _, _, _ = s2, g, f, u, pi, n, a3, s4, bs
     // Die Ausgabe zählt natürlich auch als Gebrauch
     fmt.Println(s, c, a4, s3, d2, m)
@@ -142,7 +142,7 @@ func learnFlowControl() {
     if true {
         fmt.Println("hab's dir ja gesagt!")
     }
-    // Die Formattierung ist durch den Befehl "go fmt" standardisiert
+    // Die Formatierung ist durch den Befehl "go fmt" standardisiert
     if false {
         // nicht hier
     } else {
@@ -170,7 +170,7 @@ func learnFlowControl() {
         continue // wird nie ausgeführt
     }
 
-    // Wie bei for, bedeutet := in einer Bedingten Anweisung zunächst die
+    // Wie bei for, bedeutet := in einer bedingten Anweisung zunächst die
     // Zuweisung und erst dann die Überprüfung der Bedingung.
     if y := expensiveComputation(); y > x {
         x = y
@@ -218,7 +218,7 @@ func learnInterfaces() {
     fmt.Println(i.String())
 
     // Funktionen des fmt-Pakets rufen die String() Methode auf um eine
-    // druckbare variante des Empfängers zu erhalten.
+    // druckbare Variante des Empfängers zu erhalten.
     fmt.Println(p) // gleiche Ausgabe wie zuvor
     fmt.Println(i) // und wieder die gleiche Ausgabe wie zuvor
 
@@ -244,18 +244,18 @@ func learnErrorHandling() {
     learnConcurrency()
 }
 
-// c ist ein Kannal, ein sicheres Kommunikationsmedium.
+// c ist ein Kanal, ein sicheres Kommunikationsmedium.
 func inc(i int, c chan int) {
-    c <- i + 1 // <- ist der "send" Operator, wenn ein Kannal auf der Linken ist
+    c <- i + 1 // <- ist der "send" Operator, wenn ein Kanal auf der Linken ist
 }
 
 // Wir verwenden "inc" um Zahlen parallel zu erhöhen.
 func learnConcurrency() {
     // Die selbe "make"-Funktion wie vorhin. Sie initialisiert Speicher für
-    // maps, slices und Kannäle.
+    // maps, slices und Kanäle.
     c := make(chan int)
     // Starte drei parallele "Goroutines". Die Zahlen werden parallel (concurrently)
-    // erhöht. Alle drei senden ihr Ergebnis in den gleichen Kannal.
+    // erhöht. Alle drei senden ihr Ergebnis in den gleichen Kanal.
     go inc(0, c) // "go" ist das Statement zum Start einer neuen Goroutine
     go inc(10, c)
     go inc(-805, c)
@@ -269,16 +269,16 @@ func learnConcurrency() {
 
     // Start einer neuen Goroutine, nur um einen Wert zu senden
     go func() { c <- 84 }()
-    go func() { cs <- "wortreich" }() // schon wider, diesmal für
+    go func() { cs <- "wortreich" }() // schon wieder, diesmal für
     // "select" hat eine Syntax wie ein switch Statement, aber jeder Fall ist
-    // eine Kannaloperation. Es wählt eine Fall zufällig aus allen die
-    // kommunikationsbereit sind aus.
+    // eine Kanaloperation. Es wählt einen Fall zufällig aus allen, die
+    // kommunikationsbereit sind, aus.
     select {
     case i := <-c: // der empfangene Wert kann einer Variable zugewiesen werden
         fmt.Printf("es ist ein: %T", i)
     case <-cs: // oder der Wert kann verworfen werden
         fmt.Println("es ist eine Zeichenkette!")
-    case <-cc: // leerer Kannal, nicht bereit für den Empfang
+    case <-cc: // leerer Kanal, nicht bereit für den Empfang
         fmt.Println("wird nicht passieren.")
     }
     // Hier wird eine der beiden Goroutines fertig sein, die andere nicht.
@@ -289,14 +289,14 @@ func learnConcurrency() {
 
 // Eine einzige Funktion aus dem http-Paket kann einen Webserver starten.
 func learnWebProgramming() {
-    // Der erste Parameter von "ListenAndServe" ist eine TCP Addresse an die
+    // Der erste Parameter von "ListenAndServe" ist eine TCP Addresse, an die
     // sich angeschlossen werden soll.
     // Der zweite Parameter ist ein Interface, speziell: ein http.Handler
     err := http.ListenAndServe(":8080", pair{})
     fmt.Println(err) // Fehler sollte man nicht ignorieren!
 }
 
-// Wir lassen "pair" das http.Handler Interface erfüllen indem wir seine einzige
+// Wir lassen "pair" das http.Handler Interface erfüllen, indem wir seine einzige
 // Methode implementieren: ServeHTTP
 func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
     // Senden von Daten mit einer Methode des http.ResponseWriter
@@ -313,6 +313,6 @@ Auch zu empfehlen ist die Spezifikation von Go, die nach heutigen Standards sehr
 kurz und auch gut verständlich formuliert ist. Auf der Leseliste von Go-Neulingen
 ist außerdem der Quelltext der [Go standard Bibliothek](http://golang.org/src/pkg/).
 Gut documentiert, demonstriert sie leicht zu verstehendes und im idiomatischen Stil
-verfasstes Go. Erreichbar ist der Quelltext auch durch das Klicken der Funktions-
-Namen in der [offiziellen Dokumentation von Go](http://golang.org/pkg/).
+verfasstes Go. Erreichbar ist der Quelltext auch durch das Klicken der Funktionsnamen
+in der [offiziellen Dokumentation von Go](http://golang.org/pkg/).
 
