@@ -11,7 +11,7 @@ useful features from statically typed languages.
 
 
 Only Hack-specific features are covered here. Details about PHP's syntax are
-available in the [PHP article](php.html.markdown).
+available in the [PHP article](http://learnxinyminutes.com/docs/php/) on this site.
 
 ```php
 <?hh
@@ -303,5 +303,5 @@ for more general information.
 
 Visit the [official HHVM website](http://hhvm.com/) for HHVM installation instructions.
 
-Visit [Hack's unsupported PHP features article](http://docs.hhvm.com/manual/en/hack.unsupported.php).]
+Visit [Hack's unsupported PHP features article](http://docs.hhvm.com/manual/en/hack.unsupported.php)
 for details on the backwards incompatibility between Hack and PHP.
