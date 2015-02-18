@@ -43,7 +43,7 @@ You can target all elements on the page using asterisk! */
 /*
 Given an element like this on the page:
 
-<div class='some-class class2' id='someId' attr='value' />
+<div class='some-class class2' id='someId' attr='value' otherAttr='en-us foo bar' />
 */
 
 /* you can target it by its name */
@@ -70,8 +70,11 @@ div { }
 /* or ends with (CSS3) */
 [attr$='ue'] { font-size:smaller; }
 
-/* or even contains a value (CSS3) */
-[attr~='lu'] { font-size:smaller; }
+/* or select by one of the values from the whitespace separated list (CSS3) */
+[otherAttr~='foo'] { font-size:smaller; }
+
+/* or value can be exactly “value” or can begin with “value” immediately followed by “-” (U+002D) */
+[otherAttr|='en'] { font-size:smaller; }
 
 
 /* and more importantly you can combine these together -- there shouldn't be  
