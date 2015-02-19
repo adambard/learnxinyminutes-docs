@@ -33,13 +33,13 @@ Go viene con una biblioteca estándar muy buena y una entusiasta comunidad.
 /* Comentario
    multilínea */
 
-// La cláusula `package` aparece al comienzo de cada archivo fuente.
+// La cláusula `package` aparece al comienzo de cada fichero fuente.
 // `main` es un nombre especial que declara un ejecutable en vez de una
 // biblioteca.
 package main
 
 // La instrucción `import` declara los paquetes de bibliotecas referidos
-// en este archivo.
+// en este fichero.
 import (
 	"fmt"      // Un paquete en la biblioteca estándar de Go.
 	"io/ioutil" // Implementa algunas útiles funciones de E/S.
@@ -70,7 +70,7 @@ func másAlláDelHola() {
 	suma, producto := aprendeMúltiple(x, y) // La función devuelve dos
 											// valores.
 	fmt.Println("suma:", suma, "producto:", producto) // Simple salida.
-	aprendeTipos()                        // < y minutes, ¡aprende más!
+	aprendeTipos()                        // < y minutos, ¡aprende más!
 }
 
 // Las funciones pueden tener parámetros y (¡múltiples!) valores de
@@ -211,7 +211,7 @@ func aprendeControlDeFlujo() {
 
 	// Puedes usar `range` para iterar en un arreglo, un sector, una
 	// cadena, un mapa o un canal.
-	// `range` devuelve o bien, un canal o de uno a dos values (arreglo,
+	// `range` devuelve o bien, un canal o de uno a dos valores (arreglo,
 	// sector, cadena y mapa).
 	for clave, valor := range map[string]int{"uno": 1, "dos": 2, "tres": 3} {
 		// por cada par en el mapa, imprime la clave y el valor
