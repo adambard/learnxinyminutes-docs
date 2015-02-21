@@ -342,7 +342,7 @@ myObj.meaningOfLife // = 43
 // 但是，我们有两种方式可以为新的对象指定原型。
 
 // 第一种方式是 Object.create，这个方法是在最近才被添加到Js中的
-// 也因此并不是所有的JS实现都有这个放啊
+// 也因此并不是所有的JS实现都有这个方法
 var myObj = Object.create(myPrototype)
 myObj.meaningOfLife // = 43
 
@@ -384,7 +384,7 @@ String.prototype.firstCharacter = function(){
 // 这样就可以在老的浏览器中使用新功能了。
 
 // 比如，我们知道Object.create并没有在所有的版本中都实现
-// 但是我们仍然可以通过这个技巧来使用
+// 但是我们仍然可以通过以下兼容代码来实现：
 if (Object.create === undefined){ // 如果存在则不覆盖
     Object.create = function(proto){
         // 用正确的原型来创建一个临时构造函数
