@@ -4,6 +4,8 @@ Whirlwind tours of (several, hopefully many someday) popular and
 ought-to-be-more-popular programming languages, presented as valid,
 commented code and explained as they go.
 
+You can generate a PDF or HTML copy of these guides using [Transmuter](https://github.com/eMxyzptlk/transmuter).
+
 ## We need YOU!...
 
 ... to write more inline code tutorials. Just grab an existing file from
