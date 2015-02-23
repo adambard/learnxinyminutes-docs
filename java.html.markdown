@@ -495,6 +495,8 @@ The links provided here below are just to get an understanding of the topic, fee
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
 
+* [Thinking in Java](http://www.mindview.net/Books/TIJ/)
+
 * [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
 
 * [Java The Complete Reference](http://www.amazon.com/gp/product/0071606300)
