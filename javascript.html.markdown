@@ -207,7 +207,7 @@ while (true){
 }
 
 // Do-while loops are like while loops, except they always run at least once.
-var input
+var input;
 do {
     input = getInput();
 } while (!isValid(input))
