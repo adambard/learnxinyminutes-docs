@@ -201,7 +201,7 @@ sub mutate($n is rw) {
 my $x = 42;
 sub x-store() is rw { $x }
 x-store() = 52; # in this case, the parentheses are mandatory
-                # (else Perl 6 thinks `mod` is an identifier)
+                # (else Perl 6 thinks `x-store` is an identifier)
 say $x; #=> 52
 
 
