@@ -3,6 +3,7 @@ language: swift
 contributors:
   - ["Grant Timmerman", "http://github.com/grant"]
   - ["Christopher Bess", "http://github.com/cbess"]
+  - ["Joey Huang", "http://github.com/kamidox"]  
 filename: learnswift.swift
 ---
 
@@ -388,6 +389,35 @@ if mySquare === mySquare {
     println("Yep, it's mySquare")
 }
 
+// Optional init
+class Circle: Shape {
+    var radius: Int
+    override func getArea() -> Int {
+        return 3 * radius * radius
+    }
+    
+    // Place a question mark postfix after `init` is an optional init
+    // which can return nil
+    init?(radius: Int) {
+        self.radius = radius
+        super.init()
+        
+        if radius <= 0 {
+            return nil
+        }
+    }
+}
+
+var myCircle = Circle(radius: 1)
+println(myCircle?.getArea())    // Optional(3)
+println(myCircle!.getArea())    // 3
+var myEmptyCircle = Circle(radius: -1)
+println(myEmptyCircle?.getArea())    // "nil"
+if let circle = myEmptyCircle {
+    // will not execute since myEmptyCircle is nil
+    println("circle is not nil")
+}
+
 
 //
 // MARK: Enums
@@ -418,6 +448,28 @@ enum BookName: String {
     case Luke = "Luke"
 }
 println("Name: \(BookName.John.rawValue)")
+
+// Enum with associated Values
+enum Furniture {
+    // Associate with Int
+    case Desk(height: Int)
+    // Associate with String and Int
+    case Chair(String, Int)
+    
+    func description() -> String {
+        switch self {
+        case .Desk(let height):
+            return "Desk with \(height) cm"
+        case .Chair(let brand, let height):
+            return "Chair of \(brand) with \(height) cm"
+        }
+    }
+}
+
+var desk: Furniture = .Desk(height: 80)
+println(desk.description())     // "Desk with 80 cm"
+var chair = Furniture.Chair("Foo", 40)
+println(chair.description())    // "Chair of Foo with 40 cm"
 
 
 //
