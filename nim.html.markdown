@@ -3,14 +3,15 @@ language: Nim
 filename: learnNim.nim
 contributors:
     - ["Jason J. Ayala P.", "http://JasonAyala.com"]
+    - ["Dennis Felsing", "http://felsin9.de/nnis/"]
 ---
 
-Nim (formally Nimrod) is a statically typed, imperative programming language
+Nim (formerly Nimrod) is a statically typed, imperative programming language
 that gives the programmer power without compromises on runtime efficiency.
 
 Nim is efficient, expressive, and elegant.
 
-```ruby
+```nimrod
 var                     # Declare (and assign) variables,
   letter: char = 'n'    # with or without type annotations
   lang = "N" & "im"
@@ -59,6 +60,13 @@ var
   drinks: seq[string]
 
 drinks = @["Water", "Juice", "Chocolate"] # @[V1,..,Vn] is the sequence literal
+
+drinks.add("Milk")
+
+if "Milk" in drinks:
+  echo "We have Milk and ", drinks.len - 1, " other drinks"
+
+let myDrink = drinks[2]
 
 #
 # Defining Types
