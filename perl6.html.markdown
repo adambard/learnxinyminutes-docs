@@ -283,7 +283,7 @@ for @array -> $variable {
 }
 
 # As we saw with given, for's default "current iteration" variable is `$_`.
-# That means you can use `when` in a `for` just like you were in a when.
+# That means you can use `when` in a `for` just like you were in a `given`.
 for @array {
   say "I've got $_";
   
