@@ -80,6 +80,9 @@ not False -- True
 [5..1] -- This doesn't work because Haskell defaults to incrementing.
 [5,4..1] -- [5, 4, 3, 2, 1]
 
+-- indexing into a list
+[0..] !! 5 -- 5
+
 -- You can also have infinite lists in Haskell!
 [1..] -- a list of all the natural numbers
 
@@ -98,9 +101,6 @@ not False -- True
 
 -- adding to the head of a list
 0:[1..5] -- [0, 1, 2, 3, 4, 5]
-
--- indexing into a list
-[0..] !! 5 -- 5
 
 -- more list operations
 head [1..5] -- 1
