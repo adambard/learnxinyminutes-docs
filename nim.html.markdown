@@ -269,5 +269,5 @@ performance, and compile-time features.
 * [FAQ](http://nimrod-lang.org/question.html)
 * [Documentation](http://nimrod-lang.org/documentation.html)
 * [Manual](http://nimrod-lang.org/manual.html)
-* [Standard Libray](http://nimrod-lang.org/lib.html)
+* [Standard Library](http://nimrod-lang.org/lib.html)
 * [Rosetta Code](http://rosettacode.org/wiki/Category:Nimrod)
