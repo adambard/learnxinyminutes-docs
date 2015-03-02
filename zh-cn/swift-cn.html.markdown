@@ -574,7 +574,7 @@ println(foundAtIndex == 2) // true
 // 甚至是 Unicode 的数学运算符等
 prefix operator !!! {}
 
-// 定义一个前缀运算符，使矩形的边长放大三位
+// 定义一个前缀运算符，使矩形的边长放大倍
 prefix func !!! (inout shape: Square) -> Square {
     shape.sideLength *= 3
     return shape
