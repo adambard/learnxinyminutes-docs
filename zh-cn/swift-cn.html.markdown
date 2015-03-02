@@ -9,7 +9,7 @@ translators:
 lang: zh-cn
 ---
 
-Swift 是Apple 开发的用于iOS 和OS X 开发的编程语言。Swift 于2014年Apple WWDC （全球开发者大会）中被引入，用以与Objective-C 共存，同时对错误代码更具弹性。Swift 由Xcode 6 beta 中包含的LLVM编译器编译。
+Swift 是 Apple 开发的用于 iOS 和 OS X 开发的编程语言。Swift 于2014年 Apple WWDC （全球开发者大会）中被引入，用以与 Objective-C 共存，同时对错误代码更具弹性。Swift 由 Xcode 6 beta 中包含的 LLVM 编译器编译。
 
 Swift 的官方语言教程 [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) 可以从 iBooks 免费下载.
 
@@ -26,7 +26,7 @@ import UIKit
 // XCODE 支持给注释代码作标记，这些标记会列在 XCODE 的跳转栏里，支持的标记为
 // MARK: 普通标记
 // TODO: TODO 标记
-// FIXME: FIXME 票房
+// FIXME: FIXME 标记
 
 println("Hello, world")
 
@@ -61,7 +61,7 @@ println("Build value: \(buildValue)") // Build value: 7
     Optional<T> 是个枚举类型
 */
 var someOptionalString: String? = "optional" // 可以是 nil
-// 下面的语句和上面完全等价，上面的写法更推荐，因为它更简洁，它是 Swift 提供的语法糖
+// 下面的语句和上面完全等价，上面的写法更推荐，因为它更简洁，问号 (?) 是 Swift 提供的语法糖
 var someOptionalString2: Optional<String> = "optional"
 
 if someOptionalString != nil {
@@ -76,7 +76,7 @@ someOptionalString = nil
 
 // 显式解包 optional 变量
 var unwrappedString: String! = "Value is expected."
-// 下面语句和上面完全等价，! 是个前缀运算符，这也是个语法糖
+// 下面语句和上面完全等价，感叹号 (!) 是个后缀运算符，这也是个语法糖
 var unwrappedString2: ImplicitlyUnwrappedOptional<String> = "Value is expected."
 
 if let someOptionalStringConstant = someOptionalString {
@@ -88,7 +88,7 @@ if let someOptionalStringConstant = someOptionalString {
 
 // Swift 支持可保存任何数据类型的变量
 // AnyObject == id
-// 和 Objective-C `id` 不一样, AnyObject 可以保存任何类型的亦是(Class, Int, struct, 等)
+// 和 Objective-C `id` 不一样, AnyObject 可以保存任何类型的值 (Class, Int, struct, 等)
 var anyObjectVar: AnyObject = 7
 anyObjectVar = "Changed value to a string, not good practice, but possible."
 
@@ -106,7 +106,8 @@ anyObjectVar = "Changed value to a string, not good practice, but possible."
 //
 
 /*
-    Array 和 Dictionary 是结构体，不是类，即他们作为函数参数时，是用值传递而不是指针传递. 一样可以用 `var` 和 `let` 来定义变量和常量。
+    Array 和 Dictionary 是结构体，不是类，他们作为函数参数时，是用值传递而不是指针传递。
+    可以用 `var` 和 `let` 来定义变量和常量。
 */
 
 // Array
@@ -121,9 +122,9 @@ var occupations = [
     "Malcolm": "Captain",
     "kaylee": "Mechanic"
 ]
-occupations["Jayne"] = "Public Relations"   // 个性字典，如果 key 不存在，自动添加一个字典元素
-let emptyDictionary = [String: Float]() // 使用 let 定义字典常量，字典常量不能个性里面的值
-let emptyDictionary2 = Dictionary<String, Float>() // 与上一语句类型，上一语句更常用
+occupations["Jayne"] = "Public Relations"   // 修改字典，如果 key 不存在，自动添加一个字典元素
+let emptyDictionary = [String: Float]() // 使用 let 定义字典常量，字典常量不能修改里面的值
+let emptyDictionary2 = Dictionary<String, Float>() // 与上一语句类型等价，上一语句更常用
 var emptyMutableDictionary = [String: Float]() // 使用 var 定义字典变量
 
 
@@ -203,7 +204,8 @@ func greet(name: String, day: String) -> String {
 }
 greet("Bob", "Tuesday")
 
-// 函数参数前带 `#` 号表示外部参数包和内部参数名使用同一个。第二个参数表示外部参数名使用 `externalParamName` ，内部参数名使用 `localParamName`
+// 函数参数前带 `#` 表示外部参数名和内部参数名使用同一个名称。
+// 第二个参数表示外部参数名使用 `externalParamName` ，内部参数名使用 `localParamName`
 func greet2(#requiredName: String, externalParamName localParamName: String) -> String {
     return "Hello \(requiredName), the day is \(localParamName)"
 }
@@ -227,7 +229,7 @@ func setup(numbers: Int...) {
     let argCount = numbers.count
 }
 
-// 函数作为参数传递以及函数作为返回值返回
+// 函数变量以及函数作为返回值返回
 func makeIncrementer() -> (Int -> Int) {
     func addOne(number: Int) -> Int {
         return 1 + number
@@ -268,13 +270,15 @@ numbers.map({
 
 // 当闭包的参数类型和返回值都是己知的情况下，且只有一个语句作为其返回值时，我们可以简化闭包的写法
 numbers = numbers.map({ number in 3 * number })
-// 我们也可以使用 $0, $1 ... 来指代第1个，第2个 ... 参数
+// 我们也可以使用 $0, $1 来指代第 1 个，第 2 个参数，上面的语句最终可简写为如下形式
 // numbers = numbers.map({ $0 * 3 })
 
 print(numbers) // [3, 6, 18]
 
 // 简洁的闭包
 numbers = sorted(numbers) { $0 > $1 }
+// 函数的最后一个参数可以放在括号之外，上面的语句是这个语句的简写形式
+// numbers = sorted(numbers, { $0 > $1 })
 
 print(numbers) // [18, 6, 3]
 
@@ -320,7 +324,7 @@ public class Shape {
 }
 
 // 类的所有方法和属性都是 public 的
-// 如果你只是需要把数据保存在一个结构化的实例里面，你应该用结构体
+// 如果你只是需要把数据保存在一个结构化的实例里面，应该用结构体
 
 internal class Rect: Shape {
     // 值属性 (Stored properties)
@@ -332,7 +336,7 @@ internal class Rect: Shape {
             return 4 * sideLength
         }
         set {
-            // `newValue` 是个隐含的变量，它代表设置进来的值
+            // `newValue` 是个隐含的变量，它表示将要设置进来的新值
             sideLength = newValue / 4
         }
     }
@@ -341,8 +345,8 @@ internal class Rect: Shape {
     // subShape 值为 nil ，直到 subShape 第一次被引用时才初始化为一个 Rect 实例
     lazy var subShape = Rect(sideLength: 4)
     
-    // 监控属性值的变化。当我们需要在属性值改变时做一些事情
-    // 可以使用 `willSet` 和 `didSet` 来设置监控函数
+    // 监控属性值的变化。
+    // 当我们需要在属性值改变时做一些事情，可以使用 `willSet` 和 `didSet` 来设置监控函数
     // `willSet`: 值改变之前被调用
     // `didSet`: 值改变之后被调用
     var identifier: String = "defaultID" {
@@ -357,7 +361,7 @@ internal class Rect: Shape {
     }
     
     // 命名构造函数 (designated inits)，它必须初始化所有的成员变量，
-    // 然后调用父类的全名构造函数继续初始化父类的所有变量。
+    // 然后调用父类的命名构造函数继续初始化父类的所有变量。
     init(sideLength: Int) {
         self.sideLength = sideLength
         // 必须显式地在构造函数最后调用父类的构造函数 super.init
@@ -370,7 +374,7 @@ internal class Rect: Shape {
         }
     }
     
-    // 函数重载
+    // 函数重载使用 override 关键字
     override func getArea() -> Int {
         return sideLength * sideLength
     }
@@ -419,7 +423,7 @@ class Circle: Shape {
     }
 }
 
-// 根据 Swift 类型推断，myCircle是 Optional<Circle> 类型的变量
+// 根据 Swift 类型推断，myCircle 是 Optional<Circle> 类型的变量
 var myCircle = Circle(radius: 1)
 println(myCircle?.getArea())    // Optional(3)
 println(myCircle!.getArea())    // 3
@@ -515,7 +519,7 @@ class MyShape: Rect {
         // 在 optional 属性，方法或下标运算符后面加一个问号，可以优雅地忽略 nil 值，返回 nil。
         // 这样就不会引起运行时错误 (runtime error)
         if let allow = self.delegate?.canReshape?() {
-            // test for delegate then for method
+            // 注意语句中的问号
             self.delegate?.reshaped?()
         }
     }
@@ -535,7 +539,7 @@ extension Square: Printable {
     }
 }
 
-println("Square: \(mySquare)")
+println("Square: \(mySquare)")  // Area: 16 - ID: defaultID
 
 // 也可以给系统内置类型添加功能支持
 extension Int {
@@ -570,7 +574,7 @@ println(foundAtIndex == 2) // true
 // 甚至是 Unicode 的数学运算符等
 prefix operator !!! {}
 
-// 定义一个前缀运算符，使矩形的连长放大三位
+// 定义一个前缀运算符，使矩形的边长放大三位
 prefix func !!! (inout shape: Square) -> Square {
     shape.sideLength *= 3
     return shape
