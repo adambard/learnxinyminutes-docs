@@ -34,6 +34,7 @@ println("Hello, world")
 // 常量 (let) 的值设置后不能改变
 var myVariable = 42
 let øπΩ = "value" // 可以支持 unicode 变量名 
+let π = 3.1415926
 let myConstant = 3.1415926
 let explicitDouble: Double = 70   // 明确指定变量类型为 Double ，否则编译器将自动推断变量类型
 let weak = "keyword"; let override = "another keyword" // 语句之间可以用分号隔开，语句未尾不需要分号
@@ -336,8 +337,8 @@ internal class Rect: Shape {
         }
     }
     
-    // 延时加载的属性，只有这个属性第一次被引用时才进行加载，而不是定义时就加载
-    // subShape值为 nil ，走到 suShape 第一次被引用时才初始化
+    // 延时加载的属性，只有这个属性第一次被引用时才进行初始化，而不是定义时就初始化
+    // subShape 值为 nil ，直到 subShape 第一次被引用时才初始化为一个 Rect 实例
     lazy var subShape = Rect(sideLength: 4)
     
     // 监控属性值的变化。当我们需要在属性值改变时做一些事情
@@ -486,8 +487,8 @@ println(chair.description())    // "Chair of Foo with 40 cm"
 // 与 Java 的 interface 类似
 //
 
-// 协议可以让遵循同一协议的类型实例拥有相同的属性，方法，类方法，操作符或下标运算符
-// 定义一个协议，这个协议饮食 enabled 计算属性且包含 buildShape 方法
+// 协议可以让遵循同一协议的类型实例拥有相同的属性，方法，类方法，操作符或下标运算符等
+// 下面代码定义一个协议，这个协议包含一个名为 enabled 的计算属性且包含 buildShape 方法
 protocol ShapeGenerator {
     var enabled: Bool { get set }
     func buildShape() -> Shape
