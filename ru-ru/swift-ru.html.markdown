@@ -402,6 +402,35 @@ if mySquare === mySquare {
     println("Ага, это mySquare")
 }
 
+// Опциональная инициализация (init)
+class Circle: Shape {
+    var radius: Int
+    override func getArea() -> Int {
+        return 3 * radius * radius
+    }
+    
+    // Поместите постфиксный знак вопроса после `init` - это и будет опциональная инициализация,
+    // которая может вернуть nil
+    init?(radius: Int) {
+        self.radius = radius
+        super.init()
+        
+        if radius <= 0 {
+            return nil
+        }
+    }
+}
+
+var myCircle = Circle(radius: 1)
+println(myCircle?.getArea())    // Optional(3)
+println(myCircle!.getArea())    // 3
+var myEmptyCircle = Circle(radius: -1)
+println(myEmptyCircle?.getArea())    // "nil"
+if let circle = myEmptyCircle {
+    // не будет выполняться поскольку myEmptyCircle равен nil
+    println("circle не nil")
+}
+
 
 //
 // MARK: Перечисления
@@ -432,6 +461,28 @@ enum BookName: String {
     case Luke = "Лука"
 }
 println("Имя: \(BookName.John.rawValue)")
+
+// Перечисление (enum) со связанными значениями
+enum Furniture {
+    // Связать с типом Int
+    case Desk(height: Int)
+    // Связать с типами String и Int
+    case Chair(String, Int)
+    
+    func description() -> String {
+        switch self {
+        case .Desk(let height):
+            return "Письменный стол высотой \(height) см."
+        case .Chair(let brand, let height):
+            return "Стул бренда \(brand) высотой \(height) см."
+        }
+    }
+}
+
+var desk: Furniture = .Desk(height: 80)
+println(desk.description())     // "Письменный стол высотой 80 см."
+var chair = Furniture.Chair("Foo", 40)
+println(chair.description())    // "Стул бренда Foo высотой 40 см."
 
 
 //
