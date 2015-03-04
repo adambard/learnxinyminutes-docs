@@ -66,8 +66,8 @@ Polynomial - n^z, where z is some constant
 Exponential - a^n, where a is some constant
 ```
 
-### Big-Oh
-Big-Oh, commonly written as O, is an Asymptotic Notation for the worst case, or ceiling of growth
+### Big-O
+Big-O, commonly written as O, is an Asymptotic Notation for the worst case, or ceiling of growth
 for a given function. Say `f(n)` is your algorithm runtime, and `g(n)` is an arbitrary time complexity
 you are trying to relate to your algorithm. `f(n)` is O(g(n)), if for any real constant c (c > 0),
 `f(n)` <= `c g(n)` for every input size n (n > 0).
@@ -81,7 +81,7 @@ g(n) = log n
 
 Is `f(n)` O(g(n))?  
 Is `3 log n + 100` O(log n)?  
-Let's look to the definition of Big-Oh.
+Let's look to the definition of Big-O.
 
 ```
 3log n + 100 <= c * log n  
@@ -93,7 +93,7 @@ Is there some constant c that satisfies this for all n?
 3log n + 100 <= 150 * log n, n > 2 (undefined at n = 1)  
 ```
 
-Yes! The definition of Big-Oh has been met therefore `f(n)` is O(g(n)).
+Yes! The definition of Big-O has been met therefore `f(n)` is O(g(n)).
 
 *Example 2*  
 
@@ -104,7 +104,7 @@ g(n) = n
 
 Is `f(n)` O(g(n))?  
 Is `3 * n^2` O(n)?  
-Let's look at the definition of Big-Oh.  
+Let's look at the definition of Big-O.
 
 ```
 3 * n^2 <= c * n  
@@ -119,7 +119,7 @@ for a given function.
 
 `f(n)` is Ω(g(n)), if for any real constant c (c > 0), `f(n)` is >= `c g(n)` for every input size n (n > 0).
 
-Feel free to head over to additional resources for examples on this. Big-Oh is the primary notation used
+Feel free to head over to additional resources for examples on this. Big-O is the primary notation used
 for general algorithm time complexity.
 
 ### Ending Notes
