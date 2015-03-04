@@ -60,8 +60,6 @@ false.class #=> FalseClass
 # Inequality
 1 != 1 #=> false
 2 != 1 #=> true
-!true  #=> false
-!false #=> true
 
 # apart from false itself, nil is the only other 'falsey' value
 
@@ -74,6 +72,17 @@ false.class #=> FalseClass
 1 > 10 #=> false
 2 <= 2 #=> true
 2 >= 2 #=> true
+
+# Logical operators
+true && false #=> false
+true || false #=> true
+!true #=> false
+
+# Alternate spellings of logical operators
+true and false #=> false
+true or false #=> true
+not true #=> false
+
 
 # Strings are objects
 
@@ -280,9 +289,9 @@ rescue NoMemoryError => exception_variable
   puts 'NoMemoryError was raised', exception_variable
 rescue RuntimeError => other_exception_variable
   puts 'RuntimeError was raised now'
-else 
+else
   puts 'This runs if no exceptions were thrown at all'
-ensure 
+ensure
   puts 'This code always runs no matter what'
 end
 
