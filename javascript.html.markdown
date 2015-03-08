@@ -407,7 +407,7 @@ myNewObj.myNumber; // = 5
 // look at its prototype.
 
 // Some JS implementations let you access an object's prototype on the magic
-// property __proto__. While this is useful for explaining prototypes it's not
+// property `__proto__`. While this is useful for explaining prototypes it's not
 // part of the standard; we'll get to standard ways of using prototypes later.
 var myObj = {
     myString: "Hello world!"
@@ -438,7 +438,7 @@ myObj.myBoolean; // = true
 myPrototype.meaningOfLife = 43;
 myObj.meaningOfLife; // = 43
 
-// We mentioned that __proto__ was non-standard, and there's no standard way to
+// We mentioned that `__proto__` was non-standard, and there's no standard way to
 // change the prototype of an existing object. However, there are two ways to
 // create a new object with a given prototype.
 
