@@ -169,7 +169,7 @@ namespace eval people {
 
 
 #The full name of a variable includes its enclosing namespace(s), delimited by two colons:
-set greeting "Hello $people::person::name"
+set greeting "Hello $people::person1::name"
 
 
 
@@ -189,7 +189,7 @@ set greeting "Hello $people::person::name"
 namespace delete ::
 
 
-# Because of name resolution behaviour, its safer to use the "variable" command to declare or to assign a value to a namespace.
+# Because of name resolution behaviour, it's safer to use the "variable" command to declare or to assign a value to a namespace.
 namespace eval people {
     namespace eval person1 {
         variable name Neo
