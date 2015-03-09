@@ -1,4 +1,3 @@
-
 ---
 name: python
 category: language
@@ -12,6 +11,7 @@ translators:
     - ["Dominik Krzemiński", "https://github.com/dokato"]
 lang: pl-pl
 ---
+
 Python został opracowany przez Guido Van Rossuma na początku lat 90-tych.
 Obecnie jest jednym z najbardziej popularnych języków programowania.
 Zakochałem się w Pythonie dzięki porządkowi, jaki utrzymywany jest w kodzie.
@@ -23,12 +23,13 @@ Uwaga: Ten artykuł odnosi się do wersji Pythona 2.7, ale powinien
 działać w wersjach 2.x. Dla wersji 3.x znajdziesz odpowiedni artykuł na stronie głównej.
 
 ```python
+# -*- coding: utf-8 -*-
 
 # Pojedyncze komentarze oznaczamy takim symbolem.
 
 """ Wielolinijkowe napisy zapisywane są przy użyciu
     trzech znaków cudzysłowiu i często
-    wykorzystywane są jako komentarze
+    wykorzystywane są jako komentarze.
 """
 
 ####################################################
@@ -302,7 +303,7 @@ pelen_zbior & other_set   # => {3, 4, 5}
 # Suma zbiorów |  
 pelen_zbior | other_set   # => {1, 2, 3, 4, 5, 6}
 
-# Różnicę zbiorów da -
+# Różnicę zbiorów da znak -
 {1, 2, 3, 4} - {2, 3, 5}   # => {1, 4}
 
 # Sprawdzanie obecności w zbiorze: "in".
@@ -317,7 +318,7 @@ pelen_zbior | other_set   # => {1, 2, 3, 4, 5, 6}
 # Tworzymy zmienną some_var
 some_var = 5
 
-# Tutaj widzisz wyrażenie warunkowe "if". Wcięcia są ważne Pythonie!
+# Tutaj widzisz wyrażenie warunkowe "if". Wcięcia są ważne Pythonie! 
 # wypisze "some_var jest mniejsza niż 10"
 if some_var > 10:
     print("some_var jest wieksza niż 10")
@@ -611,8 +612,13 @@ print(say(say_please=True))  # Kupisz mi piwo? Proszę! Jestem spłukany :(
 ```
 
 ## Gotowy na więcej?
+### Polskie
 
-### Darmowe źródła online
+* [Zanurkuj w Pythonie](http://pl.wikibooks.org/wiki/Zanurkuj_w_Pythonie)
+* [LearnPythonPl](http://www.learnpython.org/pl/)
+
+### Angielskie:
+#### Darmowe źródła online
 
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
@@ -621,7 +627,7 @@ print(say(say_please=True))  # Kupisz mi piwo? Proszę! Jestem spłukany :(
 * [Python Module of the Week](http://pymotw.com/2/)
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 
-### Inne
+#### Inne
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
