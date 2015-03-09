@@ -128,7 +128,7 @@ not False  # => True
 # None jest obiektem
 None  # => None
 
-# Nie używaj "==" żeby porównywać obiekty do None
+# Nie używaj "==" w celu porównania obiektów z None
 # Zamiast tego użyj "is"
 "etc" is None  # => False
 None is None  # => True
@@ -204,7 +204,7 @@ li[::2]   # =>[1, 4]
 # Odwróć listę
 li[::-1]   # => [3, 4, 2, 1]
 # Użyj kombinacji powyższych aby tworzyć bardziej skomplikowane wycinki
-# li[paczatek:koniec:krok]
+# li[poczatek:koniec:krok]
 
 # Usuń element używając "del"
 del li[2]   # li to teraz [1, 2, 3]
@@ -235,7 +235,7 @@ tup[:2]   # => (1, 2)
 2 in tup   # => True
 
 # Można rozpakować krotki i listy do poszczególych zmiennych
-a, b, c = (1, 2, 3)     # a to teraz 1, b jest 2 a c to 3
+a, b, c = (1, 2, 3)     # a to teraz 1, b jest 2, a c to 3
 # Jeżeli zapomnisz nawiasów automatycznie tworzone są krotki
 d, e, f = 4, 5, 6
 # Popatrz jak prosto zamienić wartości
