@@ -43,14 +43,14 @@ function bigHorribleAlert(): void {
 
 // The following are equivalent, the same signature will be infered by the
 // compiler, and same JavaScript will be emitted
-var f1 = function(i: number) : number { return i * i; }
+var f1 = function(i: number): number { return i * i; }
 // Return type inferred
 var f2 = function(i: number) { return i * i; }
-var f3 = (i: number) : number => { return i * i; }
+var f3 = (i: number): number => { return i * i; }
 // Return type inferred
 var f4 = (i: number) => { return i * i; }
 // Return type inferred, one-liner means no return keyword needed
-var f5 = (i: number) =>  i * i; 
+var f5 = (i: number) =>  i * i;
 
 // Interfaces are structural, anything that has the properties is compliant with
 // the interface
@@ -64,11 +64,11 @@ interface Person {
 
 // Object that implements the "Person" interface
 // Can be treated as a Person since it has the name and move properties
-var p : Person = { name: "Bobby", move : () => {} };
+var p: Person = { name: "Bobby", move: () => {} };
 // Objects that have the optional property:
-var validPerson : Person = { name: "Bobby", age: 42, move: () => {} };
+var validPerson: Person = { name: "Bobby", age: 42, move: () => {} };
 // Is not a person because age is not a number
-var invalidPerson : Person = { name: "Bobby", age: true };
+var invalidPerson: Person = { name: "Bobby", age: true };
 
 // Interfaces can also describe a function type
 interface SearchFunc {
@@ -84,7 +84,7 @@ mySearch = function(src: string, sub: string) {
 class Point {
   // Properties
     x: number;
-    
+
     // Constructor - the public/private keywords in this context will generate
     // the boiler plate code for the property and the initialization in the
     // constructor.
@@ -94,10 +94,10 @@ class Point {
     constructor(x: number, public y: number = 0) {
         this.x = x;
     }
-    
+
     // Functions
     dist() { return Math.sqrt(this.x * this.x + this.y * this.y); }
-    
+
     // Static members
     static origin = new Point(0, 0);
 }
@@ -110,7 +110,7 @@ class Point3D extends Point {
     constructor(x: number, y: number, public z: number = 0) {
         super(x, y); // Explicit call to the super class constructor is mandatory
     }
-    
+
     // Overwrite
     dist() {
         var d = super.dist();
