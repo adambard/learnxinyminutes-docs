@@ -46,7 +46,7 @@ function bigHorribleAlert(): void {
 var f1 = function(i: number) : number { return i * i; }
 // Return type inferred
 var f2 = function(i: number) { return i * i; }
-var f3 = (i : number) : number => { return i * i; }
+var f3 = (i: number) : number => { return i * i; }
 // Return type inferred
 var f4 = (i: number) => { return i * i; }
 // Return type inferred, one-liner means no return keyword needed
