@@ -1,0 +1,15 @@
+default:
+  title: Learn X in Y minutes
+  where: Where
+  codeLink: "Get the code:"
+  shareText: Share this page
+  suggestionsText: "Got a suggestion? A correction, perhaps? <a href=\"%s\">Open an Issue</a> on the Github Repo, or make a pull request yourself!"
+  contributorText: "Originally contributed by %s, and updated by <a href=\"%s\">%d contributors</a>"
+
+zh_CN:
+  title: Y分钟速成X
+  where: 当
+  codeLink: 源代码下载：
+  shareText: 分享此页
+  suggestionsText: "有建议？或者发现什么错误？在Github上<a href=\"%s\">开一个issue</a>，或者你自己也可以写一个pull request！"
+  contributorText: "原著%s，并由<a href=\"%s\">%d个好心人</a>修改。"
