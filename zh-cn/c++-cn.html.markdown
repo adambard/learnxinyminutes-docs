@@ -39,7 +39,7 @@ int main(int argc, char** argv)
 {
     // 和C語言一樣，命令行參數通過argc和argv傳遞。
     // argc代表命令行參數的數量，
-    // 而argv是一個包含“C語言風格字符串”（char *）的數組，
+    // 而argv是一個包含「C語言風格字符串」（char *）的數組，
     // 其中每個字符串代表一個命令行參數的內容，
     // 首個命令行參數是調用該程序時所使用的名稱。
     // 如果你不關心命令行參數的值，argc和argv可以被忽略。
@@ -68,7 +68,7 @@ void func(); // 這個函數能接受任意數量的參數
 int* ip = nullptr;
 
 // C++也可以使用C語言的標準頭文件，
-// 但是需要加上前綴“c”並去掉末尾的“.h”。
+// 但是需要加上前綴「c」並去掉末尾的「.h」。
 #include <cstdio>
 
 int main()
@@ -81,7 +81,7 @@ int main()
 // 函數重載
 ///////////
 
-// C++支持函數重載，provided each function takes different parameters.
+// C++支持函數重載，【provided each function takes different parameters.】
 
 void print(char const* myString)
 {
@@ -138,8 +138,8 @@ namespace First {
         {
             printf("This is First::Nested::foo\n");
         }
-    } // end namespace Nested
-} // end namespace First
+    } // 結束嵌套的命名空間Nested
+} // 結束命名空間First
 
 namespace Second {
     void foo()
@@ -155,23 +155,23 @@ void foo()
 
 int main()
 {
-    // 如果沒有特別指定，所有【對象】都使用【取自】"Second"中的【聲明】。
+    // 如果沒有特別指定，就從「Second」中取得所需的內容。
     using namespace Second;
 
-    foo(); // 顯示 "This is Second::foo"
-    First::Nested::foo(); // 顯示 "This is First::Nested::foo"
-    ::foo(); // 顯示 "This is global foo"
+    foo(); // 顯示「This is Second::foo」
+    First::Nested::foo(); // 顯示「This is First::Nested::foo」
+    ::foo(); // 顯示「This is global foo」
 }
 
 ////////////
 // 輸入/輸出
 ////////////
 
-// C++使用“流”來輸入輸出。
+// C++使用「流」來輸入輸出。
 // cin、cout、和cerr分別代表stdin（標準輸入）、stdout（標準輸出）和stderr（標準錯誤）。
 // <<是流的插入運算符，>>是流提取運算符。
 
-#include <iostream> // Include for I/O streams
+#include <iostream> // 引入包含輸入/輸出流的頭文件
 
 using namespace std; // 輸入輸出流在std命名空間（也就是標準庫）中。
 
@@ -184,9 +184,9 @@ int main()
    // 從標準輸入（鍵盤）獲得一個值
    cin >> myInt;
 
-   // cout can also be formatted
+   // cout也提供了格式化功能
    cout << "Your favorite number is " << myInt << "\n";
-   // 顯示 "Your favorite number is <myInt>"
+   // 顯示「Your favorite number is <myInt>」
 
     cerr << "Used for error messages";
 }
@@ -208,7 +208,7 @@ cout << myString + myOtherString; // "Hello World"
 
 cout << myString + " You"; // "Hello You"
 
-// C++中的字符串是可變的，具有“值語義”。
+// C++中的字符串是可變的，具有「值語義」。
 myString.append(" Dog");
 cout << myString; // "Hello Dog"
 
@@ -218,7 +218,7 @@ cout << myString; // "Hello Dog"
 /////////////
 
 // 除了支持C語言中的指針類型以外，C++還提供了_引用_。
-// 引用是一種特殊的指針類型，一旦被定義就不能重新賦值，並且引用不能被設置爲空值。
+// 引用是一種特殊的指針類型，一旦被定義就不能重新賦值，並且不能被設置爲空值。
 // 使用引用時的語法與原變量相同：
 // 也就是說，對引用類型進行解引用時，不需要使用*；
 // 賦值時也不需要用&來取地址。
@@ -233,7 +233,7 @@ string& fooRef = foo; // 建立了一個對foo的引用。
 fooRef += ". Hi!"; // 通過引用來修改foo的值
 cout << fooRef; // "I am foo. Hi!"
 
-// 這句話的並不會改變fooRef的指向，其效果與“foo = bar”相同。
+// 這句話的並不會改變fooRef的指向，其效果與「foo = bar」相同。
 // 也就是說，在執行這條語句之後，foo == "I am bar"。
 fooRef = bar;
 
@@ -256,13 +256,13 @@ class Dog {
     int weight;
 
 // 在這個標籤之後，所有聲明都是公有（public）的，
-// 直到重新指定“private:”（私有繼承）或“protected:”（保護繼承）爲止
+// 直到重新指定「private:」（私有繼承）或「protected:」（保護繼承）爲止
 public:
 
     // 默認的構造器
     Dog();
 
-    // Member function declarations (implementations to follow)
+    // 【Member function declarations (implementations to follow)
     // Note that we use std::string here instead of placing
     // using namespace std;
     // above.
@@ -271,7 +271,7 @@ public:
 
     void setWeight(int dogsWeight);
 
-    // Functions that do not modify the state of the object
+    // 【Functions that do not modify the state of the object
     // should be marked as const.
     // This allows you to call them if given a const reference to the object.
     // Also note the functions must be explicitly declared as _virtual_
@@ -284,12 +284,12 @@ public:
     void bark() const { std::cout << name << " barks!\n" }
 
     // 除了構造器以外，C++還提供了析構器。
-    // These are called when an object is deleted or falls out of scope.
-    // 這使得如同下文中的RAII這樣的強大範式成爲可能。
-    // Destructors must be virtual to allow classes to be derived from this one.
+    // 當一個對象被刪除或者【falls out of scope】時，它的析構器會被調用。
+    // 這使得RAII這樣的強大範式（參見下文）成爲可能。
+    // 析構器【must be virtual to allow classes to be derived from this one.
     virtual ~Dog();
 
-}; // 在類的定義後必須加一個分號
+}; // 在類的定義之後，要加一個分號
 
 // 類的成員函數通常在.cpp文件中實現。
 void Dog::Dog()
@@ -309,7 +309,7 @@ void Dog::setWeight(int dogsWeight)
     weight = dogsWeight;
 }
 
-// Notice that "virtual" is only needed in the declaration, not the definition.
+// 【Notice that "virtual" is only needed in the declaration, not the definition.
 void Dog::print() const
 {
     std::cout << "Dog is " << name << " and weighs " << weight << "kg\n";
@@ -321,12 +321,12 @@ void Dog::~Dog()
 }
 
 int main() {
-    Dog myDog; // 此時顯示“A dog has been constructed”
+    Dog myDog; // 此時顯示「A dog has been constructed」
     myDog.setName("Barkley");
     myDog.setWeight(10);
-    myDog.printDog(); // 顯示“Dog is Barkley and weighs 10 kg”
+    myDog.printDog(); // 顯示「Dog is Barkley and weighs 10 kg」
     return 0;
-} // 顯示“Goodbye Barkley”
+} // 顯示「Goodbye Barkley」
 
 // 繼承：
 
@@ -367,7 +367,7 @@ void OwnedDog::print() const
 /////////////////////
 
 // 在C++中，你可以重載+、-、*、/等運算符的行爲。
-// This is done by defining a function
+// 【This is done by defining a function
 // which is called whenever the operator is used.
 
 #include <iostream>
@@ -379,16 +379,16 @@ public:
     double x = 0;
     double y = 0;
 
-    // Define a default constructor which does nothing
+    // 【Define a default constructor which does nothing
     // but initialize the Point to the default value (0, 0)
     Point() { };
 
-    // The following syntax is known as an initialization list
+    // 【The following syntax is known as an initialization list
     // and is the proper way to initialize class member values
     Point (double a, double b) :
         x(a),
         y(b)
-    { /* Do nothing except initialize the values */ }
+    { /* 【Do nothing except initialize the values */ }
 
     // 重載 + 運算符
     Point operator+(const Point& rhs) const;
@@ -401,7 +401,7 @@ public:
 
 Point Point::operator+(const Point& rhs) const
 {
-    // Create a new point that is the sum of this one and rhs.
+    // 【Create a new point that is the sum of this one and rhs.
     return Point(x + rhs.x, y + rhs.y);
 }
 
@@ -415,10 +415,10 @@ Point& Point::operator+=(const Point& rhs)
 int main () {
     Point up (0,1);
     Point right (1,0);
-    // 這裏調用了Point類型的運算符“+”
-    // 調用up（Point類型）的“+”方法，並以right作爲函數的參數
+    // 這裏調用了Point類型的運算符「+」
+    // 調用up（Point類型）的「+」方法，並以right作爲函數的參數
     Point result = up + right;
-    // 顯示“Result is upright (1,1)”
+    // 顯示「Result is upright (1,1)」
     cout << "Result is upright (" << result.x << ',' << result.y << ")\n";
     return 0;
 }
@@ -429,32 +429,31 @@ int main () {
 
 // 標準庫中提供了a few exception types
 // （參見http://en.cppreference.com/w/cpp/error/exception）
-// but any type can be thrown an as exception
+// 【but any type can be thrown an as exception
 #include <exception>
 
-// All exceptions thrown inside the _try_ block can be caught by subsequent
-// _catch_ handlers.
+// 在_try_代碼塊中拋出的異常可以被隨後的_catch_捕獲。
 try {
-    // Do not allocate exceptions on the heap using _new_.
+    // 【Do not allocate exceptions on the heap using _new_.
     throw std::exception("A problem occurred");
 }
-// Catch exceptions by const reference if they are objects
+// 【Catch exceptions by const reference if they are objects
 catch (const std::exception& ex)
 {
   std::cout << ex.what();
-// Catches any exception not caught by previous _catch_ blocks
+// 捕獲尚未被_catch_處理的所有錯誤
 } catch (...)
 {
     std::cout << "Unknown exception caught";
-    throw; // Re-throws the exception
+    throw; // 重新拋出異常
 }
 
 ///////
 // RAII
 ///////
 
-// RAII指的是“资源获取就是初始化”（Resource Allocation Is Initialization）。
-// It is often considered the most powerful paradigm in C++,
+// RAII指的是「资源获取就是初始化」（Resource Allocation Is Initialization）。
+// 【It is often considered the most powerful paradigm in C++,
 // and is the simple concept that a constructor for an object
 // acquires that object's resources and the destructor releases them.
 
@@ -472,10 +471,10 @@ void doSomethingWithAFile(const char* filename)
 }
 
 // 不幸的是，隨着錯誤處理機制的引入，事情會變得複雜。
-// 假設fopen有可能執行失敗，
+// 假設fopen函數有可能執行失敗，
 // 而doSomethingWithTheFile和doSomethingElseWithIt會在失敗時返回錯誤代碼。
-// （雖然【Exceptions】是處理錯誤的推薦方式，
-// 但是某些程序員，尤其是有C語言背景的，並不認可【exceptions】的效用）。
+// （雖然異常是C++中處理錯誤的推薦方式，
+// 但是某些程序員，尤其是有C語言背景的，並不認可異常捕獲機制的作用）。
 // 現在，我們必須檢查每個函數調用是否成功執行，並在問題發生的時候關閉文件句柄。
 bool doSomethingWithAFile(const char* filename)
 {
@@ -518,7 +517,7 @@ failure:
     return false; // 反饋錯誤
 }
 
-// If the functions indicate errors using exceptions,
+// 【If the functions indicate errors using exceptions,
 // things are a little cleaner, but still sub-optimal.
 void doSomethingWithAFile(const char* filename)
 {
@@ -539,13 +538,13 @@ void doSomethingWithAFile(const char* filename)
     // 所有工作順利完成
 }
 
-// Compare this to the use of C++'s file stream class (fstream)
+// 【Compare this to the use of C++'s file stream class (fstream)
 // fstream利用自己的析構器來關閉文件句柄。
-// Recall from above that destructors are automatically called
+// 【Recall from above that destructors are automatically called
 // whenver an object falls out of scope.
 void doSomethingWithAFile(const std::string& filename)
 {
-    // ifstream is short for input file stream
+    // ifstream是輸入文件流（input file stream）的簡稱
     std::ifstream fh(filename); // Open the file
 
     // 對文件進行一些操作
@@ -557,20 +556,18 @@ void doSomethingWithAFile(const std::string& filename)
 // 與上面幾種方式相比，這種方式有着_明顯_的優勢：
 // 1. 無論發生了什麼情況，資源（此例當中是文件句柄）都會被正確關閉。
 //    只要你正確使用了析構器，就_不會_因爲忘記關閉句柄，造成資源的泄漏。
-// 2. Note that the code is much cleaner.
+// 2. 【Note that the code is much cleaner.
 //    The destructor handles closing the file behind the scenes
 //    without you having to worry about it.
-// 3. The code is exception safe.
+// 3. 【The code is exception safe.
 //    An exception can be thrown anywhere in the function and cleanup
 //    will still occur.
 
-// All idiomatic C++ code uses RAII extensively for all resources.
-// Additional examples include
-// - Memory using unique_ptr and shared_ptr
-// - Containers - the standard library linked list,
-//   vector (i.e. self-resizing array), hash maps, and so on
-//   all automatically destroy their contents when they fall out of scope.
-// - Mutexes using lock_guard and unique_lock
+// 地道的C++代碼應當把RAII的使用擴展到所有類型的資源上，包括：
+// - 用unique_ptr和shared_ptr管理的內存
+// - 容器，例如標準庫中的鏈表、向量（容量自動擴展的數組）、散列表等；
+//   【all automatically destroy their contents when they fall out of scope.
+// - 用lock_guard和unique_lock實現的互斥
 ```
 擴展閱讀：
 
