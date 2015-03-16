@@ -30,10 +30,10 @@ one of the most widely-used programming languages.
 
 // C++ is _almost_ a superset of C and shares its basic syntax for
 // variable declarations, primitive types, and functions.
-// However, C++ varies in some of the following ways:
 
-// A main() function in C++ should return an int,
-// though void main() is accepted by most compilers (gcc, clang, etc.)
+// Just like in C, your program's entry point is a function called
+// main with an integer return type,
+// though void main() is also accepted by most compilers (gcc, clang, etc.)
 // This value serves as the program's exit status.
 // See http://en.wikipedia.org/wiki/Exit_status for more information.
 int main(int argc, char** argv)
@@ -50,6 +50,8 @@ int main(int argc, char** argv)
     // An exit status of 0 indicates success.
     return 0;
 }
+
+// However, C++ varies in some of the following ways:
 
 // In C++, character literals are one byte.
 sizeof('c') == 1
