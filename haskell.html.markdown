@@ -148,12 +148,12 @@ add 1 2 -- 3
 
 -- Guards: an easy way to do branching in functions
 fib x
-  | x < 2 = x
+  | x < 2 = 1
   | otherwise = fib (x - 1) + fib (x - 2)
 
 -- Pattern matching is similar. Here we have given three different
 -- definitions for fib. Haskell will automatically call the first
--- function that matches the pattern of the value. 
+-- function that matches the pattern of the value.
 fib 1 = 1
 fib 2 = 2
 fib x = fib (x - 1) + fib (x - 2)
@@ -181,7 +181,7 @@ foldl1 (\acc x -> acc + x) [1..5] -- 15
 ----------------------------------------------------
 
 -- partial application: if you don't pass in all the arguments to a function,
--- it gets "partially applied". That means it returns a function that takes the 
+-- it gets "partially applied". That means it returns a function that takes the
 -- rest of the arguments.
 
 add a b = a + b
@@ -319,13 +319,13 @@ Nothing         -- of type `Maybe a` for any `a`
 -- called. It must return a value of type `IO ()`. For example:
 
 main :: IO ()
-main = putStrLn $ "Hello, sky! " ++ (say Blue) 
+main = putStrLn $ "Hello, sky! " ++ (say Blue)
 -- putStrLn has type String -> IO ()
 
--- It is easiest to do IO if you can implement your program as 
--- a function from String to String. The function 
+-- It is easiest to do IO if you can implement your program as
+-- a function from String to String. The function
 --    interact :: (String -> String) -> IO ()
--- inputs some text, runs a function on it, and prints out the 
+-- inputs some text, runs a function on it, and prints out the
 -- output.
 
 countLines :: String -> String
@@ -339,43 +339,43 @@ main' = interact countLines
 -- the `do` notation to chain actions together. For example:
 
 sayHello :: IO ()
-sayHello = do 
+sayHello = do
    putStrLn "What is your name?"
    name <- getLine -- this gets a line and gives it the name "name"
    putStrLn $ "Hello, " ++ name
-   
+
 -- Exercise: write your own version of `interact` that only reads
 --           one line of input.
-   
+
 -- The code in `sayHello` will never be executed, however. The only
--- action that ever gets executed is the value of `main`. 
--- To run `sayHello` comment out the above definition of `main` 
+-- action that ever gets executed is the value of `main`.
+-- To run `sayHello` comment out the above definition of `main`
 -- and replace it with:
 --   main = sayHello
 
--- Let's understand better how the function `getLine` we just 
+-- Let's understand better how the function `getLine` we just
 -- used works. Its type is:
 --    getLine :: IO String
 -- You can think of a value of type `IO a` as representing a
--- computer program that will generate a value of type `a` 
+-- computer program that will generate a value of type `a`
 -- when executed (in addition to anything else it does). We can
--- store and reuse this value using `<-`. We can also 
+-- store and reuse this value using `<-`. We can also
 -- make our own action of type `IO String`:
 
 action :: IO String
 action = do
    putStrLn "This is a line. Duh"
-   input1 <- getLine 
+   input1 <- getLine
    input2 <- getLine
    -- The type of the `do` statement is that of its last line.
-   -- `return` is not a keyword, but merely a function 
+   -- `return` is not a keyword, but merely a function
    return (input1 ++ "\n" ++ input2) -- return :: String -> IO String
 
 -- We can use this just like we used `getLine`:
 
 main'' = do
     putStrLn "I will echo two lines!"
-    result <- action 
+    result <- action
     putStrLn result
     putStrLn "This was all, folks!"
 
