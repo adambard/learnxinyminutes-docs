@@ -208,13 +208,13 @@ foo 5 -- 75
 -- to get rid of a lot of parentheses:
 
 -- before
-(even (fib 7)) -- true
+(even (fib 7)) -- false
 
 -- after
-even . fib $ 7 -- true
+even . fib $ 7 -- false
 
 -- equivalently
-even $ fib 7 -- true
+even $ fib 7 -- false
 
 ----------------------------------------------------
 -- 5. Type signatures
