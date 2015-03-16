@@ -202,9 +202,9 @@ foo = (*5) . (+10)
 foo 5 -- 75
 
 -- fixing precedence
--- Haskell has another function called `$`. This changes the precedence
--- so that everything to the left of it gets computed first and then applied
--- to everything on the right. You can use `$` (often in combination with `.`)
+-- Haskell has another function called `$`. Anything appearing after it will 
+-- take precedence over anything that comes before.
+-- You can use `$` (often in combination with `.`)
 -- to get rid of a lot of parentheses:
 
 -- before
