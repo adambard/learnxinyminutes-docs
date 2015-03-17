@@ -2,7 +2,7 @@
 name: Go
 category: language
 language: Go
-filename: learngo-fr.go
+filename: learngo.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["Christopher Bess", "https://github.com/cbess"]
@@ -10,21 +10,19 @@ contributors:
     - ["Quint Guvernator", "https://github.com/qguv"]
     - ["Jose Donizetti", "https://github.com/josedonizetti"]
     - ["Alexej Friesen", "https://github.com/heyalexej"]
-translators:
     - ["Jean-Philippe Monette", "http://blogue.jpmonette.net/"]
-lang: fr-fr
 ---
 
-Go a été créé dans l'optique de déveloper de façcon efficace. Ce n'est pas la
-dernière tendance en ce qui au développement, mais c'est la nouvelle façon de
-régler des défis réels de façcon rapide.
+Go a été créé dans l'optique de développer de façon efficace. Ce n'est pas la
+dernière tendance en ce qui est au développement, mais c'est la nouvelle façon
+de régler des défis réels de façon rapide.
 
 Le langage possède des concepts familiers à la programmation impérative avec
 typage. Il est rapide à compiler et exécuter, ajoute une concurrence facile à
-comprendre pour les processeurs multi coeurs d'aujourd'hui et apporte des
+comprendre, pour les processeurs multi coeurs d'aujourd'hui et apporte des
 fonctionnalités facilitant le développement à grande échelle.
 
-Développer avec Go, c'est bénéficier d'une riche librairie standard et d'une
+Développer avec Go, c'est bénéficier d'une riche bibliothèque standard et d'une
 communauté active.
 
 ```go
@@ -34,22 +32,22 @@ communauté active.
 
 // Un paquet débute avec une clause "package"
 // "Main" est un nom spécial déclarant un paquet de type exécutable plutôt
-// qu'une librairie
+// qu'une bibliothèque
 package main
 
 // "Import" déclare les paquets référencés dans ce fichier.
 import (
-  "fmt"       // Un paquet dans la librairie standard.
+  "fmt"       // Un paquet dans la bibliothèque standard.
   "io/ioutil" // Implémente des fonctions utilitaires I/O.
-  m "math"    // Librairie mathématique utilisant un alias local "m".
+  m "math"    // Bibliothèque mathématique utilisant un alias local "m".
   "net/http"  // Un serveur Web!
-  "strconv"   // Librairie pour convertir les chaînes de caractères.
+  "strconv"   // Bibliothèque pour convertir les chaînes de caractères.
 )
 
 // Une définition de fonction. La fonction "main" est spéciale - c'est le point
-// d'entrée du binaire. Celle-ci est encapsulée par des accolades.
+// d'entrée du binaire.
 func main() {
-  // Println retourne une ligne à stdout.
+  // Println retournera la valeur à la console.
   // Associez la fonction avec son paquet respectif, fmt.
   fmt.Println("Hello world!")
 
@@ -78,7 +76,7 @@ func learnMultiple(x, y int) (sum, prod int) {
 
 // Quelques types inclus et littéraux.
 func learnTypes() {
-  // Déclaration courte produit généralement le type désiré.
+  // Une déclaration courte infère généralement le type désiré.
   str := "Learn Go!" // Type string.
 
   s2 := `Une chaîne de caractères peut contenir des
@@ -89,7 +87,7 @@ sauts de ligne.` // Chaîne de caractère.
            // unicode.
 
   f := 3.14195 // float64, un nombre flottant IEEE-754 de 64-bit.
-  c := 3 + 4i  // complex128, représenté à l'interne par deux float64.
+  c := 3 + 4i  // complex128, considéré comme deux float64 par le compilateur.
 
   // Syntaxe "var" avec une valeur d'initialisation.
   var u uint = 7 // Non signé, mais la taille dépend selon l'entier.
@@ -98,13 +96,13 @@ sauts de ligne.` // Chaîne de caractère.
   // Conversion avec syntaxe courte.
   n := byte('\n') // byte est un alias du type uint8.
 
-  // Les tableaux ont des tailles fixes à la compilation.
+  // Les tableaux ont une taille fixe déclarée à la compilation.
   var a4 [4]int           // Un tableau de 4 ints, tous initialisés à 0.
   a3 := [...]int{3, 1, 5} // Un tableau initialisé avec une taille fixe de 3
   // éléments, contenant les valeurs 3, 1 et 5.
 
   // Les slices ont des tailles dynamiques. Les tableaux et slices ont chacun
-  // des avantages, mais les usages des slices sont plus communs.
+  // des avantages, mais les cas d'utilisation des slices sont plus fréquents.
   s3 := []int{4, 5, 9}    // Comparable à a3.
   s4 := make([]int, 4)    // Alloue un slice de 4 ints, initialisés à 0.
   var d2 [][]float64      // Déclaration seulement, sans allocation de mémoire.
@@ -114,13 +112,13 @@ sauts de ligne.` // Chaîne de caractère.
   // demande. Pour joindre un élément à une slice, la fonction standard append()
   // est utilisée. Le premier argument est la slice à utiliser. Habituellement,
   // la variable tableau est mise à jour sur place, voir ci-bas.
-  s := []int{1, 2, 3}   // Le résultat est une slice de taille 3.
+  s := []int{1, 2, 3}     // Le résultat est une slice de taille 3.
   s = append(s, 4, 5, 6)  // Ajout de 3 valeurs. La taille est de 6.
-  fmt.Println(s) // La valeur est maintenant de [1 2 3 4 5 6]
-  // Pour ajouter une autre slice, au lieu d'utiliser une liste de valeurs
+  fmt.Println(s)          // La valeur est de [1 2 3 4 5 6]
+
+  // Pour ajouter une slice à une autre, au lieu d'utiliser une liste de valeurs
   // atomiques, il est possible de mettre en argument une référence de
-  // slice littérale de cette façon, avec des points de suspension, signifiant
-  // qu'il faut prendre les éléments de la slice et les ajouter à la slice s.
+  // slice littérale grâce aux points de suspension.
   s = append(s, []int{7, 8, 9}...) // Le deuxième argument est une slice
                                    // littérale.
   fmt.Println(s)  // La slice contient [1 2 3 4 5 6 7 8 9]
@@ -133,17 +131,19 @@ sauts de ligne.` // Chaîne de caractère.
   m := map[string]int{"trois": 3, "quatre": 4}
   m["un"] = 1
 
-  // Les valeurs inutilisées sont des erreurs en Go.
-  // Un tiret bas permet d'utiliser une variable, mais d'en jeter la valeur.
+  // Les valeurs inutilisées sont considérées comme des erreurs en Go.
+  // Un tiret bas permet d'ignorer une valeur inutilisée, évitant une erreur.
   _, _, _, _, _, _, _, _, _, _ = str, s2, g, f, u, pi, n, a3, s4, bs
-  // L'affichage est considéré comme une utilisation de la variable.
+
+  // Cependant, son affichage en console est considéré comme une utilisation,
+  // ce qui ne sera pas considéré comme une erreur à la compilation.
   fmt.Println(s, c, a4, s3, d2, m)
 
   learnFlowControl() // De retour dans le flux.
 }
 
-// Il est possible, à l'opposée de plusieurs autres langages, à des fonctions
-// en go d'avoir des valeurs retournées avec nom.
+// Il est possible, à l'opposé de plusieurs autres langages, de retourner des
+// variables par leur nom à partir de fonctions.
 // Assigner un nom à un type retourné par une fonction permet de retrouver sa
 // valeur ainsi que d'utiliser le mot-clé "return" uniquement, sans plus.
 func learnNamedReturns(x, y int) (z int) {
@@ -152,10 +152,11 @@ func learnNamedReturns(x, y int) (z int) {
 }
 
 // La récupération de la mémoire est automatique en Go. Le langage possède des
-// pointeurs, mais aucun pointeur arithmétique. Vous pouvez faire une erreur
-// avec un pointeur nil, mais pas en incrémentant un pointeur.
+// pointeurs, mais aucune arithmétique des pointeurs (*(a + b) en C). Vous
+// pouvez produire une erreur avec un pointeur nil, mais pas en incrémentant un
+// pointeur.
 func learnMemory() (p, q *int) {
-  // Les valeurs retournées définies p et q ont le type pointeur int.
+  // Les valeurs retournées p et q auront le type pointeur int.
   p = new(int) // Fonction standard "new" alloue la mémoire.
   // Le int alloué est initialisé à 0, p n'est plus nil.
   s := make([]int, 20) // Alloue 20 ints en un seul bloc de mémoire.
@@ -169,11 +170,12 @@ func expensiveComputation() float64 {
 }
 
 func learnFlowControl() {
-  // Bien que les "if" requiert des accolades, les parenthèses ne le sont pas.
+  // Bien que les "if" requièrent des accolades, les parenthèses ne sont pas
+  // nécessaires pour contenir le test booléen.
   if true {
     fmt.Println("voilà!")
   }
-  // Le formate est standardisé par la commande shell "go fmt."
+  // Le formatage du code est standardisé par la commande shell "go fmt."
   if false {
     // bing.
   } else {
@@ -189,8 +191,9 @@ func learnFlowControl() {
   case 43:
     // Non-exécuté.
   }
-  // Comme les "if", "for" n'utilise pas de parenthèses.
-  // Les variables déclarées dans "for" et "if" sont locales à leur portée.
+  // Comme les "if", les "for" n'utilisent pas de parenthèses.
+  // Les variables déclarées dans les "for" et les "if" sont locales à leur
+  // portée.
   for x := 0; x < 3; x++ { // ++ est une incrémentation.
     fmt.Println("itération ", x)
   }
@@ -202,8 +205,8 @@ func learnFlowControl() {
     continue // Non atteint.
   }
 
-  // Vous pouvez utiliser un "range" pour itérer dans un tableau, une slice, une
-  // chaîne, une map ou un channel. Les "range" retournent un canal ou deux
+  // Vous pouvez utiliser une "range" pour itérer dans un tableau, une slice, une
+  // chaîne, une map ou un canal. Les "range" retournent un canal ou deux
   // valeurs (tableau, slice, chaîne et map).
   for key, value := range map[string]int{"une": 1, "deux": 2, "trois": 3} {
     // pour chaque pair dans une map, affichage de la valeur et clé
@@ -215,35 +218,35 @@ func learnFlowControl() {
   if y := expensiveComputation(); y > x {
     x = y
   }
-  // Les fonctions littérales est une fermeture (closure).
+  // Les fonctions littérales sont des fermetures.
   xBig := func() bool {
-    return x > 10000 // Réfère à la variable x déclarée en haut du "switch".
+    return x > 10000
   }
   fmt.Println("xBig:", xBig()) // true (la valeur e^10 a été assignée à x).
   x = 1.3e3                    // Ceci fait x == 1300
   fmt.Println("xBig:", xBig()) // Maintenant false.
 
-  // De plus, les fonctions littérales peuvent être définies et appelée
-  // sur la même ligne, agissant comme argument de fonctions, tant que:
+  // De plus, les fonctions littérales peuvent être définies et appelées
+  // sur la même ligne, agissant comme argument à cette fonction, tant que:
   // a) la fonction littérale est appelée suite à (),
   // b) le résultat correspond au type de l'argument.
-  fmt.Println("Ajoute + multiplie deux nombres: ",
+  fmt.Println("Ajoute + multiplie deux nombres : ",
     func(a, b int) int {
       return (a + b) * 2
-    }(10, 2)) // Appelé avec les arguments 10 et 2
-  // => Ajoute + double deux nombres: 24
+    }(10, 2)) // Appelle la fonction avec les arguments 10 et 2
+  // => Ajoute + double deux nombres : 24
 
   // Quand vous en aurez besoin, vous allez l'adorer.
   goto love
 love:
 
-  learnFunctionFactory() // func retournant func correspond à fun(3)(3).
-  learnDefer()      // Un survol de cette instruction important.
-  learnInterfaces() // Incontournable!
+  learnFunctionFactory() // func retournant func correspondant à fun(3)(3).
+  learnDefer()           // Un survol de cette instruction importante.
+  learnInterfaces()      // Incontournable !
 }
 
 func learnFunctionFactory() {
-  // Les deux syntaxes sont identiques, bien que la seconde est plus pratique.
+  // Les deux syntaxes sont identiques, bien que la seconde soit plus pratique.
   fmt.Println(sentenceFactory("été")("Une matinée d'", "agréable!"))
 
   d := sentenceFactory("été")
@@ -287,12 +290,12 @@ func (p pair) String() string { // p s'appelle le "destinataire"
 }
 
 func learnInterfaces() {
-  // La syntaxe avec accolade défini une "structure littérale". Ceci s'évalue
-  // comme étant une strucutre. La syntaxe := déclare et initialise p comme
-  // étant cette structure.
+  // La syntaxe avec accolade défini une "structure littérale". Celle-ci
+  // s'évalue comme étant une structure. La syntaxe := déclare et initialise p
+  // comme étant une instance.
   p := pair{3, 4}
   fmt.Println(p.String()) // Appelle la méthode String de p, de type pair.
-  var i Stringer          // Déclare i de l'interface de type Stringer.
+  var i Stringer          // Déclare i instance de l'interface Stringer.
   i = p                   // Valide, car pair implémente Stringer.
   // Appelle la méthode String de i, de type Stringer. Retourne la même valeur
   // que ci-haut.
@@ -307,9 +310,11 @@ func learnInterfaces() {
   learnVariadicParams("apprentissage", "génial", "ici!")
 }
 
-// Les fonctions peuvent avoir des paramètres variables.
+// Les fonctions peuvent être définie de façon à accepter un ou plusieurs
+// paramètres grâce aux points de suspension, offrant une flexibilité lors de
+// son appel.
 func learnVariadicParams(myStrings ...interface{}) {
-  // Itère chaque valeur du paramètre variable.
+  // Itère chaque paramètre dans la range.
   // Le tiret bas sert à ignorer l'index retourné du tableau.
   for _, param := range myStrings {
     fmt.Println("paramètre:", param)
@@ -322,8 +327,8 @@ func learnVariadicParams(myStrings ...interface{}) {
 }
 
 func learnErrorHandling() {
-  // ", ok" expression utilisée pour définir si quelque chose a fonctionné ou
-  // non.
+  // ", ok" idiome utilisée pour définir si l'opération s'est déroulée avec
+  // succès ou non
   m := map[int]string{3: "trois", 4: "quatre"}
   if x, ok := m[1]; !ok { // ok sera faux, car 1 n'est pas dans la map.
     fmt.Println("inexistant")
@@ -336,14 +341,14 @@ func learnErrorHandling() {
     // retourne: 'strconv.ParseInt: parsing "non-int": invalid syntax'
     fmt.Println(err)
   }
-  // Nous réviserons les interfaces un peu plus tard. Maintenant,
+  // Nous réviserons les interfaces un peu plus tard. Pour l'instant,
   learnConcurrency()
 }
 
 // c est un canal, un objet permettant de communiquer en simultané de façon
-// sécuritaire.
+// sécurisée.
 func inc(i int, c chan int) {
-  c <- i + 1 // <- est l'opérateur "destination" quand un canal apparaît à
+  c <- i + 1 // <- est l'opérateur "envoi" quand un canal apparaît à
              // gauche.
 }
 
@@ -355,11 +360,11 @@ func learnConcurrency() {
   // Démarrage de trois goroutines simultanées. Les nombres seront incrémentés
   // simultanément, peut-être en paralèle si la machine le permet et configurée
   // correctement. Les trois utilisent le même canal.
-  go inc(0, c) // go est une déclaration démarrant une nouvelle goroutine.
+  go inc(0, c) // go est une instruction démarrant une nouvelle goroutine.
   go inc(10, c)
   go inc(-805, c)
   // Lis et affiche trois résultats du canal - impossible de savoir dans quel
-  // ordre!
+  // ordre !
   fmt.Println(<-c, <-c, <-c) // Canal à droite, <- est l'opérateur de
                              // "réception".
 
@@ -374,13 +379,13 @@ func learnConcurrency() {
   select {
   case i := <-c: // La valeur reçue peut être assignée à une variable,
     fmt.Printf("c'est un %T", i)
-  case <-cs: // ou la valeur reçue peut être discartée.
+  case <-cs: // ou la valeur reçue peut être ignorée.
     fmt.Println("c'est une chaîne")
   case <-ccs: // Un canal vide, indisponible à la communication.
     fmt.Println("ne surviendra pas.")
   }
   // À ce point, une valeur a été prise de c ou cs. L'une des deux goroutines
-  // démarrée plus haut a complété, la seconde restera bloquée.
+  // démarrée plus haut a complétée, la seconde restera bloquée.
 
   learnWebProgramming() // Go permet la programmation Web.
 }
@@ -388,17 +393,18 @@ func learnConcurrency() {
 // Une seule fonction du paquet http démarre un serveur Web.
 func learnWebProgramming() {
 
-  // Le premier paramètre de ListenAndServe is une adresse TCP à écouter.
+  // Le premier paramètre de ListenAndServe est une adresse TCP à écouter.
   // Le second est une interface, de type http.Handler.
   go func() {
     err := http.ListenAndServe(":8080", pair{})
-    fmt.Println(err) // n'ignorez pas les erreurs!
+    fmt.Println(err) // n'ignorez pas les erreurs !
   }()
 
   requestServer()
 }
 
-// Fait de pair un http.Handler en implémentant sa seule méthode: ServeHTTP.
+// Implémente la méthode ServeHTTP de http.Handler à pair, la rendant compatible
+// avec les opérations utilisant l'interface http.Handler.
 func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
   // Répondez à une requête à l'aide de la méthode http.ResponseWriter.
   w.Write([]byte("Vous avez appris Go en Y minutes!"))
@@ -421,7 +427,7 @@ Vous pourrez y suivre le tutoriel interactif et en apprendre beaucoup plus.
 Une lecture de la documentation du langage est grandement conseillée. C'est
 facile à lire et très court (comparé aux autres langages).
 
-Vous pouvez exécuter modifier le code sur [Go playground](https://play.golang.org/p/tnWMjr16Mm). Essayez de le modifier et de l'exécuter à partir de votre navigateur! Prennez en note que vous pouvez utiliser [https://play.golang.org](https://play.golang.org) comme un [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) pour tester et coder dans votre navigateur, sans même avoir à installer Go.
+Vous pouvez exécuter et modifier le code sur [Go playground](https://play.golang.org/p/tnWMjr16Mm). Essayez de le modifier et de l'exécuter à partir de votre navigateur! Prennez en note que vous pouvez utiliser [https://play.golang.org](https://play.golang.org) comme un [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) pour tester et coder dans votre navigateur, sans même avoir à installer Go.
 
 Sur la liste de lecteur des étudiants de Go se trouve le [code source de la
 librairie standard](http://golang.org/src/pkg/). Bien documentée, elle démontre
