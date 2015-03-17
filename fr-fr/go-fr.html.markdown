@@ -2,7 +2,7 @@
 name: Go
 category: language
 language: Go
-filename: learngo.go
+filename: learngo-fr.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["Christopher Bess", "https://github.com/cbess"]
@@ -10,7 +10,9 @@ contributors:
     - ["Quint Guvernator", "https://github.com/qguv"]
     - ["Jose Donizetti", "https://github.com/josedonizetti"]
     - ["Alexej Friesen", "https://github.com/heyalexej"]
+translators:
     - ["Jean-Philippe Monette", "http://blogue.jpmonette.net/"]
+lang: fr-fr
 ---
 
 Go a été créé dans l'optique de déveloper de façcon efficace. Ce n'est pas la
