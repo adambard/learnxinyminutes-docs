@@ -167,9 +167,9 @@ int main()
 // 輸入/輸出
 ////////////
 
-// C++使用「流」來輸入輸出。
-// cin、cout、和cerr分別代表stdin（標準輸入）、stdout（標準輸出）和stderr（標準錯誤）。
-// <<是流的插入運算符，>>是流提取運算符。
+// C++使用「流」來輸入輸出。<<是流的插入運算符，>>是流提取運算符。
+// cin、cout、和cerr分別代表
+// stdin（標準輸入）、stdout（標準輸出）和stderr（標準錯誤）。
 
 #include <iostream> // 引入包含輸入/輸出流的頭文件
 
@@ -237,9 +237,9 @@ cout << fooRef; // "I am foo. Hi!"
 // 也就是說，在執行這條語句之後，foo == "I am bar"。
 fooRef = bar;
 
-const string& barRef = bar; // 建立指向bar的【const ref】。
-// 和C語言中一樣，聲明爲常數的值（包括指針和引用）不能被修改。
-barRef += ". Hi!"; // 這是錯誤的，【const ref】不能被修改。
+const string& barRef = bar; // 建立指向bar的常量引用。
+// 和C語言中一樣，（指針和引用）聲明爲常量時，對應的值不能被修改。
+barRef += ". Hi!"; // 這是錯誤的，不能修改一個常量引用的值。
 
 ///////////////////
 // 類與面向對象編程
@@ -262,21 +262,19 @@ public:
     // 默認的構造器
     Dog();
 
-    // 【Member function declarations (implementations to follow)
-    // Note that we use std::string here instead of placing
-    // using namespace std;
-    // above.
-    // Never put a "using namespace" statement in a header.
+    // 這裏是成員函數聲明的一個例子。
+    // 可以注意到，我們在此處使用了std::string，而不是using namespace std
+    // 語句using namespace絕不應當出現在頭文件當中。
     void setName(const std::string& dogsName);
 
     void setWeight(int dogsWeight);
 
-    // 【Functions that do not modify the state of the object
-    // should be marked as const.
-    // This allows you to call them if given a const reference to the object.
-    // Also note the functions must be explicitly declared as _virtual_
-    // in order to be overridden in derived classes.
-    // Functions are not virtual by default for performance reasons.
+    // 如果一個函數不對對象的狀態進行修改，
+    // 應當在聲明中加上const。
+    // 這樣，你就可以對一個以常量方式引用的對象執行該操作。
+    // 同時可以注意到，當父類的成員函數需要被子類重寫時，
+    // 父類中的函數必須被顯式聲明爲_虛函數（virtual）_。
+    // 考慮到性能方面的因素，函數默認情況下不會被聲明爲虛函數。
     virtual void print() const;
 
     // 函數也可以在class body內部定義。
@@ -284,12 +282,14 @@ public:
     void bark() const { std::cout << name << " barks!\n" }
 
     // 除了構造器以外，C++還提供了析構器。
-    // 當一個對象被刪除或者【falls out of scope】時，它的析構器會被調用。
+    // 當一個對象被刪除或者脫離其定義域時時，它的析構函數會被調用。
     // 這使得RAII這樣的強大範式（參見下文）成爲可能。
-    // 析構器【must be virtual to allow classes to be derived from this one.
+    // 爲了衍生出子類來，基類的析構函數必須定義爲虛函數。
     virtual ~Dog();
 
 }; // 在類的定義之後，要加一個分號
+
+}; // 記住，在類的定義之後，要加一個分號！
 
 // 類的成員函數通常在.cpp文件中實現。
 void Dog::Dog()
@@ -298,7 +298,7 @@ void Dog::Dog()
 }
 
 // 對象（例如字符串）應當以引用的形式傳遞，
-// 不需要修改的對象則應當作爲【const ref】。
+// 對於不需要修改的對象，最好使用常量引用。
 void Dog::setName(const std::string& dogsName)
 {
     name = dogsName;
@@ -309,7 +309,23 @@ void Dog::setWeight(int dogsWeight)
     weight = dogsWeight;
 }
 
-// 【Notice that "virtual" is only needed in the declaration, not the definition.
+// 虛函數的virtual關鍵字只需要在聲明時使用，不需要在定義時出現
+void Dog::print() const
+{
+    std::cout << "Dog is " << name << " and weighs " << weight << "kg\n";
+}
+
+void Dog::~Dog()
+{
+    cout << "Goodbye " << name << "\n";
+}
+
+void Dog::setWeight(int dogsWeight)
+{
+    weight = dogsWeight;
+}
+
+// 虛函數的virtual關鍵字只需要在聲明時使用，不需要在定義時重複
 void Dog::print() const
 {
     std::cout << "Dog is " << name << " and weighs " << weight << "kg\n";
@@ -427,17 +443,17 @@ int main () {
 // 異常處理
 ///////////
 
-// 標準庫中提供了a few exception types
+// 標準庫中提供了一些基本的異常類型
 // （參見http://en.cppreference.com/w/cpp/error/exception）
-// 【but any type can be thrown an as exception
+// 但是，其他任何類型也可以作爲一個異常被拋出
 #include <exception>
 
 // 在_try_代碼塊中拋出的異常可以被隨後的_catch_捕獲。
 try {
-    // 【Do not allocate exceptions on the heap using _new_.
+    // 不要用 _new_關鍵字在堆上爲異常分配空間。
     throw std::exception("A problem occurred");
 }
-// 【Catch exceptions by const reference if they are objects
+// 如果拋出的異常是一個對象，可以用常量引用來捕獲它
 catch (const std::exception& ex)
 {
   std::cout << ex.what();
@@ -452,10 +468,10 @@ catch (const std::exception& ex)
 // RAII
 ///////
 
-// RAII指的是「资源获取就是初始化」（Resource Allocation Is Initialization）。
-// 【It is often considered the most powerful paradigm in C++,
-// and is the simple concept that a constructor for an object
-// acquires that object's resources and the destructor releases them.
+// RAII指的是「资源获取就是初始化」（Resource Allocation Is Initialization），
+// 它被視作C++中最強大的編程範式之一。
+// 簡單說來，它指的是，用構造函數來獲取一個對象的資源，
+// 相應的，借助析構函數來釋放對象的資源。
 
 // 爲了理解這一範式的用處，讓我們考慮某個函數使用文件句柄時的情況：
 void doSomethingWithAFile(const char* filename)
@@ -517,8 +533,8 @@ failure:
     return false; // 反饋錯誤
 }
 
-// 【If the functions indicate errors using exceptions,
-// things are a little cleaner, but still sub-optimal.
+// 如果用異常捕獲機制來指示錯誤的話，
+// 代碼會變得清晰一些，但是仍然有優化的餘地。
 void doSomethingWithAFile(const char* filename)
 {
     FILE* fh = fopen(filename, "r"); // 以只讀模式打開文件
@@ -556,17 +572,15 @@ void doSomethingWithAFile(const std::string& filename)
 // 與上面幾種方式相比，這種方式有着_明顯_的優勢：
 // 1. 無論發生了什麼情況，資源（此例當中是文件句柄）都會被正確關閉。
 //    只要你正確使用了析構器，就_不會_因爲忘記關閉句柄，造成資源的泄漏。
-// 2. 【Note that the code is much cleaner.
-//    The destructor handles closing the file behind the scenes
-//    without you having to worry about it.
+// 2. 可以注意到，通過這種方式寫出來的代碼十分簡潔。
+//    析構器會在後臺關閉文件句柄，不再需要你來操心這些瑣事。
 // 3. 【The code is exception safe.
-//    An exception can be thrown anywhere in the function and cleanup
-//    will still occur.
+//    無論在函數中的何處拋出異常，都不會阻礙對文件資源的釋放。
 
-// 地道的C++代碼應當把RAII的使用擴展到所有類型的資源上，包括：
+// 地道的C++代碼應當把RAII的使用擴展到各種類型的資源上，包括：
 // - 用unique_ptr和shared_ptr管理的內存
-// - 容器，例如標準庫中的鏈表、向量（容量自動擴展的數組）、散列表等；
-//   【all automatically destroy their contents when they fall out of scope.
+// - 各種數據容器，例如標準庫中的鏈表、向量（容量自動擴展的數組）、散列表等；
+//   當它們脫離作用域時，析構器會自動釋放其中儲存的內容。
 // - 用lock_guard和unique_lock實現的互斥
 ```
 擴展閱讀：
