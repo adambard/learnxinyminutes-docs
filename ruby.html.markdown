@@ -11,6 +11,7 @@ contributors:
   - ["Ariel Krakowski", "http://www.learneroo.com"]
   - ["Dzianis Dashkevich", "https://github.com/dskecse"]
   - ["Levi Bostian", "https://github.com/levibostian"]
+  - ["Rahil Momin", "https://github.com/iamrahil"]
 
 ---
 
