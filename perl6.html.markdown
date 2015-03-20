@@ -963,7 +963,7 @@ say join ',', gather if False {
 # But consider:
 constant thrice = gather for ^3 { say take $_ }; # Doesn't print anything
 # versus:
-constant thrice = eager gather for ^3 { say take $_ }; #=> 0 1 2 3 4
+constant thrice = eager gather for ^3 { say take $_ }; #=> 0 1 2
 
 # - `lazy` - Defer actual evaluation until value is fetched (forces lazy context)
 # Not yet implemented !!
