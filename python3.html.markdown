@@ -13,7 +13,7 @@ executable pseudocode.
 
 Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
 
-Note: This article applies to Python 3 specifically. Check out the other tutorial if you want to learn the old Python 2.7
+Note: This article applies to Python 3 specifically. Check out [here](http://learnxinyminutes.com/docs/python/) if you want to learn the old Python 2.7
 
 ```python
 
