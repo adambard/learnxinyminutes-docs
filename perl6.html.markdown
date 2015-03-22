@@ -49,26 +49,26 @@ my $forced-bool = so $str; # And you can use the prefix `so` operator
 
 ## * Lists. They represent multiple values. Their name start with `@`.
 
-my @array = 'a', 'b', 'c';
+my @list = 'a', 'b', 'c';
 # equivalent to :
-my @letters = <a b c>; # array of words, delimited by space.
+my @letters = <a b c>; # list of words, delimited by space.
                      # Similar to perl5's qw, or Ruby's %w.
-my @array = 1, 2, 3;
+my @list = 1, 2, 3;
 
-say @array[2]; # Array indices start at 0 -- This is the third element
+say @list[2]; # List indices start at 0 -- This is the third element
 
-say "Interpolate an array using [] : @array[]";
-#=> Interpolate an array using [] : 1 2 3
+say "Interpolate a list using [] : @list[]";
+#=> Interpolate a list using [] : 1 2 3
 
-@array[0] = -1; # Assign a new value to an array index
-@array[0, 1] = 5, 6; # Assign multiple values
+@list[0] = -1; # Assign a new value to a list index
+@list[0, 1] = 5, 6; # Assign multiple values
 
 my @keys = 0, 2;
-@array[@keys] = @letters; # Assign using an array
-say @array; #=> a 6 b
+@list[@keys] = @letters; # Assign using a list
+say @list; #=> a 6 b
 
 ## * Hashes, or key-value Pairs.
-# Hashes are actually arrays of Pairs
+# Hashes are actually lists of Pairs
 # (you can construct a Pair object using the syntax `Key => Value`),
 #  except they get "flattened" (hash context), removing duplicated keys.
 my %hash = 1 => 2,
@@ -77,7 +77,7 @@ my %hash = autoquoted => "key", # keys get auto-quoted
             "some other" => "value", # trailing commas are okay
             ;
 my %hash = <key1 value1 key2 value2>; # you can also create a hash
-                                      # from an even-numbered array
+                                      # from an even-numbered list
 my %hash = key1 => 'value1', key2 => 'value2'; # same as this
 
 # You can also use the "colon pair" syntax:
@@ -174,14 +174,14 @@ say as-many('Happy', 'Happy', 'Birthday'); #=> Happy / Birthday !
                                            # Note that the splat did not consume
                                            #  the parameter before.
 
-## You can call a function with an array using the
+## You can call a function with a list using the
 # "argument list flattening" operator `|`
 # (it's not actually the only role of this operator, but it's one of them)
 sub concat3($a, $b, $c) {
   say "$a, $b, $c";
 }
-concat3(|@array); #=> a, b, c
-                  # `@array` got "flattened" as a part of the argument list
+concat3(|@list); #=> a, b, c
+                  # `@list` got "flattened" as a part of the argument list
 
 ### Containers
 # In Perl 6, values are actually stored in "containers".
@@ -277,14 +277,14 @@ loop (my $i = 0; $i < 5; $i++) {
   say "This is a C-style for loop !";
 }
 
-# - `for` - Passes through an array
-for @array -> $variable {
+# - `for` - Passes through a list
+for @list -> $variable {
   say "I've got $variable !";
 }
 
 # As we saw with given, for's default "current iteration" variable is `$_`.
 # That means you can use `when` in a `for` just like you were in a `given`.
-for @array {
+for @list {
   say "I've got $_";
   
   .say; # This is also allowed.
@@ -292,7 +292,7 @@ for @array {
   $_.say; # the above and this are equivalent.
 }
 
-for @array {
+for @list {
   # You can...
   next if $_ == 3; # Skip to the next iteration (`continue` in C-like languages).
   redo if $_ == 4; # Re-do the iteration, keeping the same topic variable (`$_`).
@@ -319,18 +319,18 @@ for 1, 2, $(3, 4) {
 
 # Note that the last one actually joined 3 and 4.
 # While `$(...)` will apply item to context to just about anything, you can also create
-#  an array using `[]`:
+#  a list using `[]`:
 for [1, 2, 3, 4] {
   say "Got $_.";
 } #=> Got 1 2 3 4.
 
 # You need to be aware of when flattening happens exactly.
 # The general guideline is that argument lists flatten, but not method calls.
-# Also note that `.list` and array assignment flatten (`@ary = ...`) flatten.
+# Also note that `.list` and list assignment flatten (`@ary = ...`) flatten.
 ((1,2), 3, (4,5)).map({...}); # iterates over three elements (method call)
 map {...}, ((1,2),3,(4,5));   # iterates over five elements (argument list is flattened)
 
-(@a, @b, @c).pick(1);         # picks one of three arrays (method call)
+(@a, @b, @c).pick(1);         # picks one of three lists (method call)
 pick 1, @a, @b, @c;           # flattens argument list and pick one element
 
 ### Operators
@@ -386,20 +386,20 @@ $arg ~~ &bool-returning-function; # `True` if the function, passed `$arg`
 # This also works as a shortcut for `0..^N`:
 ^10; # means 0..^10
 
-# This also allows us to demonstrate that Perl 6 has lazy/infinite arrays,
+# This also allows us to demonstrate that Perl 6 has lazy/infinite lists,
 #  using the Whatever Star:
-my @array = 1..*; # 1 to Infinite ! `1..Inf` is the same.
-say @array[^10]; # you can pass arrays as subscripts and it'll return
-                 #  an array of results. This will print
+my @list = 1..*; # 1 to Infinite ! `1..Inf` is the same.
+say @list[^10]; # you can pass lists as subscripts and it'll return
+                 #  a list of results. This will print
                  # "1 2 3 4 5 6 7 8 9 10" (and not run out of memory !)
 # Note : when reading an infinite list, Perl 6 will "reify" the elements
 # it needs, then keep them in memory. They won't be calculated more than once.
                  
 # Warning, though: if you try this example in the REPL and just put `1..*`,
-#  Perl 6 will be forced to try and evaluate the whole array (to print it),
+#  Perl 6 will be forced to try and evaluate the whole list (to print it),
 #  so you'll end with an infinite loop.
 
-# You can use that in most places you'd expect, even assigning to an array
+# You can use that in most places you'd expect, even assigning to a list
 my @numbers = ^20;
 @numbers[5..*] = 3, 9 ... * > 90; # The right hand side could be infinite as well.
                                   # (but not both, as this would be an infinite loop)
@@ -419,14 +419,14 @@ $a || $b;
 #  you also have composed assignment operators:
 $a *= 2; # multiply and assignment
 $b %%= 5; # divisible by and assignment
-@array .= sort; # calls the `sort` method and assigns the result back
+@list .= sort; # calls the `sort` method and assigns the result back
 
 ### More on subs !
 # As we said before, Perl 6 has *really* powerful subs. We're going to see
 # a few more key concepts that make them better than in any other language :-).
 
 ## Unpacking !
-# It's the ability to "extract" arrays and keys.
+# It's the ability to "extract" lists and keys.
 # It'll work in `my`s and in parameter lists.
 my ($a, $b) = 1, 2;
 say $a; #=> 1
@@ -436,26 +436,26 @@ say $c; #=> 3
 my ($head, *@tail) = 1, 2, 3; # Yes, it's the same as with "slurpy subs"
 my (*@small) = 1;
 
-sub foo(@array [$fst, $snd]) {
-  say "My first is $fst, my second is $snd ! All in all, I'm @array[].";
-  # (^ remember the `[]` to interpolate the array)
+sub foo(@list [$fst, $snd]) {
+  say "My first is $fst, my second is $snd ! All in all, I'm @list[].";
+  # (^ remember the `[]` to interpolate the list)
 }
 foo(@tail); #=> My first is 2, my second is 3 ! All in all, I'm 2 3
 
 
-# If you're not using the array itself, you can also keep it anonymous,
+# If you're not using the list itself, you can also keep it anonymous,
 #  much like a scalar:
-sub first-of-array(@ [$fst]) { $fst }
-first-of-array(@small); #=> 1
-first-of-array(@tail); # Throws an error "Too many positional parameters passed"
-                       # (which means the array is too big).
+sub first-of-list(@ [$fst]) { $fst }
+first-of-list(@small); #=> 1
+first-of-list(@tail); # Throws an error "Too many positional parameters passed"
+                       # (which means the list is too big).
 
 # You can also use a slurp ...
-sub slurp-in-array(@ [$fst, *@rest]) { # You could keep `*@rest` anonymous
+sub slurp-in-list(@ [$fst, *@rest]) { # You could keep `*@rest` anonymous
   say $fst + @rest.elems; # `.elems` returns a list's length.
                           # Here, `@rest` is `(3,)`, since `$fst` holds the `2`.
 }
-slurp-in-array(@tail); #=> 3
+slurp-in-list(@tail); #=> 3
 
 # You could even extract on a slurpy (but it's pretty useless ;-).)
 sub fst(*@ [$fst]) { # or simply : `sub fst($fst) { ... }`
@@ -499,29 +499,29 @@ my &lambda = -> $argument { "The argument passed to this lambda is $argument" }
 # `-> {}` and `{}` are pretty much the same thing, except that the former can
 # take arguments, and that the latter can be mistaken as a hash by the parser.
 
-# We can, for example, add 3 to each value of an array using map:
-my @arrayplus3 = map({ $_ + 3 }, @array); # $_ is the implicit argument
+# We can, for example, add 3 to each value of a list using map:
+my @listplus3 = map({ $_ + 3 }, @list); # $_ is the implicit argument
 
 # A sub (`sub {}`) has different semantics than a block (`{}` or `-> {}`):
 # A block doesn't have a "function context" (though it can have arguments),
 #  which means that if you return from it,
 #  you're going to return from the parent function. Compare:
-sub is-in(@array, $elem) {
+sub is-in(@list, $elem) {
   # this will `return` out of the `is-in` sub
   # once the condition evaluated to True, the loop won't be run anymore
-  map({ return True if $_ == $elem }, @array);
+  map({ return True if $_ == $elem }, @list);
 }
-sub truthy-array(@array) {
-  # this will produce an array of `True` and `False`:
+sub truthy-list(@list) {
+  # this will produce a list of `True` and `False`:
   # (you can also say `anon sub` for "anonymous subroutine")
-  map(sub ($i) { if $i { return True } else { return False } }, @array);
+  map(sub ($i) { if $i { return True } else { return False } }, @list);
   # ^ the `return` only returns from the anonymous `sub`
 }
 
 # You can also use the "whatever star" to create an anonymous function
 # (it'll stop at the furthest operator in the current expression)
-my @arrayplus3 = map(*+3, @array); # `*+3` is the same as `{ $_ + 3 }`
-my @arrayplus3 = map(*+*+3, @array); # Same as `-> $a, $b { $a + $b + 3 }`
+my @listplus3 = map(*+3, @list); # `*+3` is the same as `{ $_ + 3 }`
+my @listplus3 = map(*+*+3, @list); # Same as `-> $a, $b { $a + $b + 3 }`
                                      # also `sub ($a, $b) { $a + $b + 3 }`
 say (*/2)(4); #=> 2
               # Immediatly execute the function Whatever created.
@@ -531,8 +531,8 @@ say ((*+3)/5)(5); #=> 1.6
 # But if you need to have more than one argument (`$_`)
 #  in a block (without wanting to resort to `-> {}`),
 #  you can also use the implicit argument syntax, `$^` :
-map({ $^a + $^b + 3 }, @array); # equivalent to following:
-map(sub ($a, $b) { $a + $b + 3 }, @array); # (here with `sub`)
+map({ $^a + $^b + 3 }, @list); # equivalent to following:
+map(sub ($a, $b) { $a + $b + 3 }, @list); # (here with `sub`)
 
 # Note : those are sorted lexicographically.
 # `{ $^b / $^a }` is like `-> $a, $b { $b / $a }`
@@ -943,7 +943,7 @@ for ^5 { sub { once say 1 }() } #=> 1 1 1 1 1
                                 # Prints once per lexical scope
 
 # - `gather` - Co-routine thread
-# Gather allows you to `take` several values in an array,
+# Gather allows you to `take` several values in a list,
 #  much like `do`, but allows you to take any expression.
 say gather for ^5 {
   take $_ * 3 - 1;
@@ -1107,11 +1107,11 @@ say [[&add]] 1, 2, 3; #=> 6
 
 ## * Zip meta-operator
 # This one is an infix meta-operator than also can be used as a "normal" operator.
-# It takes an optional binary function (by default, it just creates a pair),
-#  and will pop one value off of each array and call its binary function on these
-#  until it runs out of elements. It runs the an array with all these new elements.
-(1, 2) Z (3, 4); # ((1, 3), (2, 4)), since by default, the function makes an array
-1..3 Z+ 4..6; # (5, 7, 9), using the custom infix:<+> function
+# It takes an optional binary function (by default, it uses the comma),
+#  and will pop one value off of each list and call its binary function on these
+#  until it runs out of elements.
+(1, 2) Z (3, 4); # ((1, 3), (2, 4)), like `Z,`
+1..3 Z+ 4..6; # (5, 7, 9), using the infix:<+> sub
 
 # Since `Z` is list-associative (see the list above),
 #  you can use it on more than one list
@@ -1275,18 +1275,18 @@ so 'fooABCABCbar' ~~ / foo ( A B C ) + bar /; # `True`. (using `so` here, `$/` b
 # As we said before, our `Match` object is available as `$/`:
 say $/; # Will print some weird stuff (we'll explain) (or "Nil" if nothing matched).
 
-# As we also said before, it has array indexing:
+# As we also said before, it has list indexing:
 say $/[0]; #=> ｢ABC｣ ｢ABC｣
            # These weird brackets are `Match` objects.
-           # Here, we have an array of these.
+           # Here, we have a list of these.
 say $0; # The same as above.
 
 # Our capture is `$0` because it's the first and only one capture in the regexp.
-# You might be wondering why it's an array, and the answer is simple:
-# Some capture (indexed using `$0`, `$/[0]` or a named one) will be an array
-#  IFF it can have more than one element
+# You might be wondering why it's a list, and the answer is simple:
+# Captures (indexed using `$0`, `$/[0]` or a named one) will be a list
+#  IFF they might contain more than one element
 #  (so, with `*`, `+` and `**` (whatever the operands), but not with `?`).
-# Let's use examples to see that:
+# Let's use examples to demonstrate it:
 so 'fooABCbar' ~~ / foo ( A B C )? bar /; # `True`
 say $/[0]; #=> ｢ABC｣
 say $0.WHAT; #=> (Match)
@@ -1305,9 +1305,9 @@ say $0.WHAT; #=> (Array)
 say $/[0].Str; #=> hello~
 say $/[0][0].Str; #=> ~
 
-# This stems from a very simple fact: `$/` does not contain strings, integers or arrays,
+# This stems from a very simple fact: `$/` does not contain strings, integers or lists,
 #  it only contains match objects. These contain the `.list`, `.hash` and `.Str` methods.
-#  (but you can also just use `match<key>` for hash access and `match[idx]` for array access)
+#  (but you can also just use `match<key>` for hash access and `match[idx]` for list access)
 say $/[0].list.perl; #=> (Match.new(...),).list
                      # We can see it's a list of Match objects. Those contain a bunch of infos:
                      # where the match started/ended, the "ast" (see actions later), etc.
