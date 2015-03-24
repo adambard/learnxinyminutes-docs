@@ -12,7 +12,7 @@ Haxe author).  Note that this guide is for Haxe version 3.  Some of the guide
 may be applicable to older versions, but it is recommended to use other
 references.
 
-```haxe
+```csharp
 /*
    Welcome to Learn Haxe 3 in 15 minutes.  http://www.haxe.org
    This is an executable tutorial.  You can compile and run it using the haxe
@@ -37,7 +37,7 @@ references.
    package.  A package isn't necessary, but it's useful if you want to create a
    namespace for your code (e.g. org.yourapp.ClassName).
 
-   Omitting package declaration is the same as declaring empty package.
+   Omitting package declaration is the same as declaring an empty package.
  */
 package; // empty package, no namespace.
 
@@ -636,7 +636,7 @@ enum ComplexEnum{
     ComplexEnumEnum(c:ComplexEnum);
 }
 // Note: The enum above can include *other* enums as well, including itself!
-// Note: This is what called *Algebraic data type* in some other languages.
+// Note: This is what's called *Algebraic data type* in some other languages.
 
 class ComplexEnumTest{
     public static function example(){
