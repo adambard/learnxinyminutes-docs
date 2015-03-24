@@ -3,6 +3,7 @@ language: haxe
 filename: LearnHaxe3.hx
 contributors:
     - ["Justin Donaldson", "https://github.com/jdonaldson/"]
+    - ["Dan Korostelev", "https://github.com/nadako/"]
 ---
 
 Haxe is a web-oriented language that provides platform support for C++, C#,
@@ -34,16 +35,20 @@ references.
 /*
    This is your first actual haxe code coming up, it's declaring an empty
    package.  A package isn't necessary, but it's useful if you want to create a
-   namespace for your code (e.g. org.module.ClassName).
+   namespace for your code (e.g. org.yourapp.ClassName).
+
+   Omitting package declaration is the same as declaring an empty package.
  */
 package; // empty package, no namespace.
 
 /*
-   Packages define modules for your code. Each module (e.g. org.module) must
-   be lower case, and should exist as a folder structure containing the class.
-   Class (and type) names must be capitalized. E.g, the class "org.module.Foo"
-   should have the folder structure org/module/Foo.hx, as accessible from the
-   compiler's working directory or class path.
+   Packages are directories that contain modules. Each module is a .hx file
+   that contains types defined in a package. Package names (e.g. org.yourapp)
+   must be lower case while module names are capitalized. A module contain one
+   or more types whose names are also capitalized.
+
+   E.g, the class "org.yourapp.Foo" should have the folder structure org/module/Foo.hx,
+   as accessible from the compiler's working directory or class path.
 
    If you import code from other files, it must be declared before the rest of
    the code.  Haxe provides a lot of common default classes to get you started:
@@ -52,6 +57,12 @@ import haxe.ds.ArraySort;
 
 // you can import many classes/modules at once with "*"
 import haxe.ds.*;
+
+// you can import static fields
+import Lambda.array;
+
+// you can also use "*" to import all static fields
+import Math.*;
 
 /*
    You can also import classes in a special way, enabling them to extend the
@@ -172,7 +183,8 @@ class LearnHaxe3{
            Regexes are also supported, but there's not enough space to go into
            much detail.
          */
-        trace((~/foobar/.match('foo')) + " is the value for (~/foobar/.match('foo')))");
+        var re = ~/foobar/;
+        trace(re.match('foo') + " is the value for (~/foobar/.match('foo')))");
 
         /*
            Arrays are zero-indexed, dynamic, and mutable.  Missing values are
@@ -383,11 +395,7 @@ class LearnHaxe3{
         */
 
         // if statements
-        var k = if (true){
-            10;
-        } else {
-            20;
-        }
+        var k = if (true) 10 else 20;
 
         trace("K equals ", k); // outputs 10
 
@@ -628,6 +636,7 @@ enum ComplexEnum{
     ComplexEnumEnum(c:ComplexEnum);
 }
 // Note: The enum above can include *other* enums as well, including itself!
+// Note: This is what's called *Algebraic data type* in some other languages.
 
 class ComplexEnumTest{
     public static function example(){
