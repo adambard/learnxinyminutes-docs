@@ -8,6 +8,8 @@ contributors:
 Brainfuck (not capitalized except at the start of a sentence) is an extremely
 minimal Turing-complete programming language with just 8 commands.
 
+You can try brainfuck on your browser with <a href="http://fatiherikli.github.io/brainfuck-visualizer/">brainfuck-visualizer</a>.
+
 ```
 Any character not "><+-.,[]" (excluding quotation marks) is ignored.
 
