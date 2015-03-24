@@ -498,7 +498,9 @@ class Human(object):
     # Basic initializer, this is called when this class is instantiated.
     # Note that the double leading and trailing underscores denote objects
     # or attributes that are used by python but that live in user-controlled
-    # namespaces. You should not invent such names on your own.
+    # namespaces. Methods(or objects or attributes) like: __init__, __str__, 
+    # __repr__ etc. are called magic methods (or sometimes called dunder methods)  
+    # You should not invent such names on your own.
     def __init__(self, name):
         # Assign the argument to the instance's name attribute
         self.name = name
