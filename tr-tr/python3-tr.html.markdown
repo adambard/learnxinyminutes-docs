@@ -393,93 +393,89 @@ list(dolu_sozl.keys())  #=> Returns ["bir", "iki", "uc"]
 
 
 ####################################################
-## 4. Functions
+## 4. Fonksiyonlar
 ####################################################
 
-# Use "def" to create new functions
-def add(x, y):
-    print("x is {} and y is {}".format(x, y))
-    return x + y    # Return values with a return statement
+# "def" ile yeni fonksiyonlar oluşturabilirsiniz
+def topla(x, y):
+    print("x = {} ve y = {}".format(x, y))
+    return x + y    # Değer döndürmek için 'return' kullanmalısınız
 
-# Calling functions with parameters
-add(5, 6)   # => prints out "x is 5 and y is 6" and returns 11
+# Fonksiyonu parametleri ile çağırıyoruz
+topla(5, 6)   # => çıktı "x = 5 ve y = 6" ve değer olarak 11 döndürür
 
-# Another way to call functions is with keyword arguments
-add(y=6, x=5)   # Keyword arguments can arrive in any order.
+# Bir diğer fonksiyon çağırma yöntemi de anahtar değerleri ile belirtmek
+topla(y=6, x=5)   # Anahtar değeri belirttiğiniz için parametre sıralaması önemsiz.
 
-# You can define functions that take a variable number of
-# positional arguments
-def varargs(*args):
-    return args
+# Sınırsız sayıda argüman da alabilirsiniz
+def argumanlar(*argumanlar):
+    return argumanlar
 
-varargs(1, 2, 3)   # => (1, 2, 3)
+argumanlar(1, 2, 3)   # => (1, 2, 3)
 
-# You can define functions that take a variable number of
-# keyword arguments, as well
-def keyword_args(**kwargs):
-    return kwargs
+# Parametrelerin anahtar değerlerini almak isterseniz
+def anahtar_par(**anahtarlar):
+    return anahtar
 
-# Let's call it to see what happens
-keyword_args(big="foot", loch="ness")   # => {"big": "foot", "loch": "ness"}
+# Çalıştırdığımızda
+anahtar_par(anah1="deg1", anah2="deg2")   # => {"anah1": "deg1", "anah2": "deg2"}
 
 
-# You can do both at once, if you like
-def all_the_args(*args, **kwargs):
-    print(args)
-    print(kwargs)
+# İsterseniz, bu ikisini birden kullanabilirsiniz
+def tum_argumanlar(*argumanlar, **anahtarla):
+    print(argumanlar)
+    print(anahtarla)
 """
-all_the_args(1, 2, a=3, b=4) prints:
+tum_argumanlar(1, 2, a=3, b=4) çıktı:
     (1, 2)
     {"a": 3, "b": 4}
 """
 
-# When calling functions, you can do the opposite of args/kwargs!
-# Use * to expand tuples and use ** to expand kwargs.
-args = (1, 2, 3, 4)
-kwargs = {"a": 3, "b": 4}
-all_the_args(*args)   # equivalent to foo(1, 2, 3, 4)
-all_the_args(**kwargs)   # equivalent to foo(a=3, b=4)
-all_the_args(*args, **kwargs)   # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+# Fonksiyonu çağırırken de aynısını kullanabilirsiniz
+argumanlar = (1, 2, 3, 4)
+anahtarla = {"a": 3, "b": 4}
+tum_argumanlar(*argumanlar)   # = foo(1, 2, 3, 4)
+tum_argumanlar(**anahtarla)   # = foo(a=3, b=4)
+tum_argumanlar(*argumanlar, **anahtarla)   # = foo(1, 2, 3, 4, a=3, b=4)
 
 
-# Function Scope                                                                
+# Fonksiyonlarda kullanacağımız bir değişken oluşturalım                                  
 x = 5
 
-def setX(num):
-    # Local var x not the same as global variable x
-    x = num # => 43
+def belirleX(sayi):
+    # Fonksiyon içerisindeki x ile global tanımladığımız x aynı değil
+    x = sayi # => 43
     print (x) # => 43
     
-def setGlobalX(num):
+def globalBelirleX(sayi):
     global x
     print (x) # => 5
-    x = num # global var x is now set to 6
+    x = sayi # global olan x değişkeni artık 6
     print (x) # => 6
 
-setX(43)
-setGlobalX(6)
+belirleX(43)
+globalBelirleX(6)
 
 
-# Python has first class functions
-def create_adder(x):
-    def adder(y):
+# Sınıf fonksiyonları oluşturma
+def toplama_olustur(x):
+    def topla(y):
         return x + y
-    return adder
+    return topla
 
-add_10 = create_adder(10)
-add_10(3)   # => 13
+ekle_10 = toplama_olustur(10)
+ekle_10(3)   # => 13
 
-# There are also anonymous functions
+# Bilinmeyen fonksiyon
 (lambda x: x > 2)(3)   # => True
 
 # TODO - Fix for iterables
-# There are built-in higher order functions
-map(add_10, [1, 2, 3])   # => [11, 12, 13]
+# Belirli sayıdan yükseğini alma fonksiyonu
+map(ekle_10, [1, 2, 3])   # => [11, 12, 13]
 filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 
-# We can use list comprehensions for nice maps and filters
-# List comprehension stores the output as a list which can itself be a nested list
-[add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
+# Filtreleme işlemi için liste comprehensions da kullanabiliriz
+[ekle_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]   # => [6, 7]
 
 ####################################################
