@@ -560,7 +560,7 @@ subset VeryBigInteger of Int where * > 500;
 multi sub sayit(Int $n) { # note the `multi` keyword here
   say "Number: $n";
 }
-multi sayit(Str $s) } # a multi is a `sub` by default
+multi sayit(Str $s) { # a multi is a `sub` by default
   say "String: $s";
 }
 sayit("foo"); # prints "String: foo"
