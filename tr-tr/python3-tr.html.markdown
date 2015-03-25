@@ -17,119 +17,119 @@ Not: Bu makale Python 3 içindir. Eğer Python 2.7 öğrenmek istiyorsanız [bur
 
 ```python
 
-# Single line comments start with a number symbol.
+# Tek satırlık yorum satırı kare(#) işareti ile başlamaktadır.
 
-""" Multiline strings can be written
-    using three "s, and are often used
-    as comments
+""" Çok satırlı olmasını istediğiniz yorumlar
+    üç adet tırnak(") işareti ile
+    yapılmaktadır
 """
 
 ####################################################
-## 1. Primitive Datatypes and Operators
+## 1. Temel Veri Türleri ve Operatörler
 ####################################################
 
-# You have numbers
+# Sayılar
 3  # => 3
 
-# Math is what you would expect
+# Tahmin edebileceğiniz gibi matematik
 1 + 1  # => 2
 8 - 1  # => 7
 10 * 2  # => 20
 
-# Except division which returns floats by default
+# Bölme işlemi varsayılan olarak onluk döndürür
 35 / 5  # => 7.0
 
-# Result of integer division truncated down both for positive and negative. 
+# Tam sayı bölmeleri, pozitif ve negatif sayılar için aşağıya yuvarlar
 5 // 3     # => 1
-5.0 // 3.0 # => 1.0 # works on floats too
+5.0 // 3.0 # => 1.0 # onluklar için de bu böyledir
 -5 // 3  # => -2
 -5.0 // 3.0 # => -2.0
 
-# When you use a float, results are floats
+# Onluk kullanırsanız, sonuç da onluk olur
 3 * 2.0 # => 6.0
 
-# Modulo operation
+# Kalan operatörü
 7 % 3 # => 1
 
-# Exponentiation (x to the yth power)
+# Üs (2 üzeri 4)
 2**4 # => 16
 
-# Enforce precedence with parentheses
+# Parantez ile önceliği değiştirebilirsiniz
 (1 + 3) * 2  # => 8
 
-# Boolean values are primitives
+# Boolean(Doğru-Yanlış) değerleri standart
 True
 False
 
-# negate with not
+# 'değil' ile terse çevirme
 not True  # => False
 not False  # => True
 
-# Boolean Operators
-# Note "and" and "or" are case-sensitive
+# Boolean Operatörleri
+# "and" ve "or" büyük küçük harf duyarlıdır
 True and False #=> False
 False or True #=> True
 
-# Note using Bool operators with ints
+# Bool operatörleri ile sayı kullanımı
 0 and 2 #=> 0
 -5 or 0 #=> -5
 0 == False #=> True 
 2 == True #=> False 
 1 == True #=> True
 
-# Equality is ==
+# Eşitlik kontrolü ==
 1 == 1  # => True
 2 == 1  # => False
 
-# Inequality is !=
+# Eşitsizlik Kontrolü !=
 1 != 1  # => False
 2 != 1  # => True
 
-# More comparisons
+# Diğer karşılaştırmalar
 1 < 10  # => True
 1 > 10  # => False
 2 <= 2  # => True
 2 >= 2  # => True
 
-# Comparisons can be chained!
+# Zincirleme şeklinde karşılaştırma da yapabilirsiniz!
 1 < 2 < 3  # => True
 2 < 3 < 2  # => False
 
-# Strings are created with " or '
-"This is a string."
-'This is also a string.'
+# Yazı(Strings) " veya ' işaretleri ile oluşturulabilir
+"Bu bir yazı."
+'Bu da bir yazı.'
 
-# Strings can be added too! But try not to do this.
-"Hello " + "world!"  # => "Hello world!"
+# Yazılar da eklenebilir! Fakat bunu yapmanızı önermem.
+"Merhaba " + "dünya!"  # => "Merhaba dünya!"
 
-# A string can be treated like a list of characters
-"This is a string"[0]  # => 'T'
+# Bir yazı(string) karakter listesi gibi işlenebilir
+"Bu bir yazı"[0]  # => 'B'
 
-# .format can be used to format strings, like this:
-"{} can be {}".format("strings", "interpolated")
+# .format ile yazıyı biçimlendirebilirsiniz, şu şekilde:
+"{} da ayrıca {}".format("yazılar", "işlenebilir")
 
-# You can repeat the formatting arguments to save some typing.
-"{0} be nimble, {0} be quick, {0} jump over the {1}".format("Jack", "candle stick")
-#=> "Jack be nimble, Jack be quick, Jack jump over the candle stick"
+# Biçimlendirme işleminde aynı argümanı da birden fazla kullanabilirsiniz.
+"{0} çeviktir, {0} hızlıdır, {0} , {1} üzerinden atlayabilir".format("Ahmet", "şeker çubuğu")
+#=> "Ahmet çeviktir, Ahmet hızlıdır, Ahmet , şeker çubuğu üzerinden atlayabilir"
 
-# You can use keywords if you don't want to count.
-"{name} wants to eat {food}".format(name="Bob", food="lasagna") #=> "Bob wants to eat lasagna"
+# Argümanın sırasını saymak istemiyorsanız, anahtar kelime kullanabilirsiniz.
+"{isim} yemek olarak {yemek} istiyor".format(isim="Ahmet", yemek="patates") #=> "Ahmet yemek olarak patates istiyor"
 
-# If your Python 3 code also needs to run on Python 2.5 and below, you can also
-# still use the old style of formatting:
-"%s can be %s the %s way" % ("strings", "interpolated", "old")
+# Eğer Python 3 kodunuz ayrıca Python 2.5 ve üstünde çalışmasını istiyorsanız, 
+# eski stil formatlamayı kullanabilirsiniz:
+"%s bu %s yolla da %s" % ("yazılar", "eski", "biçimlendirilebilir")
 
 
-# None is an object
+# Hiçbir şey(none) da bir objedir
 None  # => None
 
-# Don't use the equality "==" symbol to compare objects to None
-# Use "is" instead. This checks for equality of object identity.
-"etc" is None  # => False
+# Bir değerin none ile eşitlik kontrolü için "==" sembolünü kullanmayın
+# Bunun yerine "is" kullanın. Obje türünün eşitliğini kontrol edecektir.
+"vb" is None  # => False
 None is None  # => True
 
-# None, 0, and empty strings/lists/dicts all evaluate to False.
-# All other values are True
+# None, 0, ve boş yazılar/listeler/sözlükler hepsi False değeri döndürü.
+# Diğer veriler ise True değeri döndürür
 bool(0)  # => False
 bool("")  # => False
 bool([]) #=> False
@@ -137,164 +137,163 @@ bool({}) #=> False
 
 
 ####################################################
-## 2. Variables and Collections
+## 2. Değişkenler ve Koleksiyonlar
 ####################################################
 
-# Python has a print function
-print("I'm Python. Nice to meet you!")
+# Python bir yazdırma fonksiyonuna sahip
+print("Ben Python. Tanıştığıma memnun oldum!")
 
-# No need to declare variables before assigning to them. 
-# Convention is to use lower_case_with_underscores
-some_var = 5
-some_var  # => 5
+# Değişkenlere veri atamak için önce değişkeni oluşturmanıza gerek yok. 
+# Düzenli bir değişken için hepsi_kucuk_ve_alt_cizgi_ile_ayirin
+bir_degisken = 5
+bir_degisken  # => 5
 
-# Accessing a previously unassigned variable is an exception.
-# See Control Flow to learn more about exception handling.
-some_unknown_var  # Raises a NameError
+# Önceden tanımlanmamış değişkene erişmek hata oluşturacaktır.
+# Kontrol akışları başlığından hata kontrolünü öğrenebilirsiniz.
+bir_bilinmeyen_degisken  # NameError hatası oluşturur
 
-# Lists store sequences
+# Listeler ile sıralamaları tutabilirsiniz
 li = []
-# You can start with a prefilled list
-other_li = [4, 5, 6]
+# Önceden doldurulmuş listeler ile başlayabilirsiniz
+diger_li = [4, 5, 6]
 
-# Add stuff to the end of a list with append
-li.append(1)    # li is now [1]
-li.append(2)    # li is now [1, 2]
-li.append(4)    # li is now [1, 2, 4]
-li.append(3)    # li is now [1, 2, 4, 3]
-# Remove from the end with pop
-li.pop()        # => 3 and li is now [1, 2, 4]
-# Let's put it back
-li.append(3)    # li is now [1, 2, 4, 3] again.
+# 'append' ile listenin sonuna ekleme yapabilirsiniz
+li.append(1)    # li artık [1] oldu
+li.append(2)    # li artık [1, 2] oldu
+li.append(4)    # li artık [1, 2, 4] oldu
+li.append(3)    # li artık [1, 2, 4, 3] oldu
+# 'pop' ile listenin son elementini kaldırabilirsiniz
+li.pop()        # => 3 ve li artık [1, 2, 4]
+# Çıkarttığımız tekrardan ekleyelim
+li.append(3)    # li yeniden [1, 2, 4, 3] oldu.
 
-# Access a list like you would any array
+# Dizi gibi listeye erişim sağlayın
 li[0]  # => 1
-# Look at the last element
+# Son elemente bakın
 li[-1]  # => 3
 
-# Looking out of bounds is an IndexError
-li[4]  # Raises an IndexError
+# Listede olmayan bir elemente erişim sağlamaya çalışmak IndexError hatası oluşturur
+li[4]  # IndexError hatası oluşturur
 
-# You can look at ranges with slice syntax.
-# (It's a closed/open range for you mathy types.)
+# Bir kısmını almak isterseniz.
 li[1:3]  # => [2, 4]
-# Omit the beginning
+# Başlangıç belirtmezseniz
 li[2:]  # => [4, 3]
-# Omit the end
+# Sonu belirtmesseniz
 li[:3]  # => [1, 2, 4]
-# Select every second entry
+# Her ikişer objeyi seçme
 li[::2]   # =>[1, 4]
-# Revert the list
+# Listeyi tersten almak
 li[::-1]   # => [3, 4, 2, 1]
-# Use any combination of these to make advanced slices
-# li[start:end:step]
+# Kombinasyonları kullanarak gelişmiş bir şekilde listenin bir kısmını alabilirsiniz
+# li[baslangic:son:adim]
 
-# Remove arbitrary elements from a list with "del"
-del li[2]   # li is now [1, 2, 3]
+# "del" ile isteğe bağlı, elementleri listeden kaldırabilirsiniz
+del li[2]   # li artık [1, 2, 3] oldu
 
-# You can add lists
-# Note: values for li and for other_li are not modified.
-li + other_li   # => [1, 2, 3, 4, 5, 6] 
+# Listelerde de ekleme yapabilirsiniz
+# Not: değerler üzerinde değişiklik yapılmaz.
+li + diger_li   # => [1, 2, 3, 4, 5, 6] 
 
-# Concatenate lists with "extend()"
-li.extend(other_li)   # Now li is [1, 2, 3, 4, 5, 6]
+# Listeleri birbirine bağlamak için "extend()" kullanılabilir
+li.extend(diger_li)   #  li artık [1, 2, 3, 4, 5, 6] oldu
 
-# Check for existence in a list with "in"
+# Listedeki bir elementin olup olmadığı kontrolü "in" ile yapılabilir
 1 in li   # => True
 
-# Examine the length with "len()"
+# Uzunluğu öğrenmek için "len()" kullanılabilir
 len(li)   # => 6
 
 
-# Tuples are like lists but are immutable.
+# Tüpler listeler gibidir fakat değiştirilemez.
 tup = (1, 2, 3)
 tup[0]   # => 1
-tup[0] = 3  # Raises a TypeError
+tup[0] = 3  # TypeError hatası oluşturur
 
-# You can do all those list thingies on tuples too
+# Diğer liste işlemlerini tüplerde de uygulayabilirsiniz
 len(tup)   # => 3
 tup + (4, 5, 6)   # => (1, 2, 3, 4, 5, 6)
 tup[:2]   # => (1, 2)
 2 in tup   # => True
 
-# You can unpack tuples (or lists) into variables
-a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
-# Tuples are created by default if you leave out the parentheses
+# Tüpleri(veya listeleri) değişkenlere açabilirsiniz
+a, b, c = (1, 2, 3)     # 'a' artık 1, 'b' artık 2 ve 'c' artık 3
+# Eğer parantez kullanmazsanız varsayılan oalrak tüpler oluşturulur
 d, e, f = 4, 5, 6
-# Now look how easy it is to swap two values
-e, d = d, e     # d is now 5 and e is now 4
+# 2 değeri birbirine değiştirmek bu kadar kolay
+e, d = d, e     # 'd' artık 5 ve 'e' artık 4
 
 
-# Dictionaries store mappings
-empty_dict = {}
-# Here is a prefilled dictionary
-filled_dict = {"one": 1, "two": 2, "three": 3}
+# Sözlükler anahtar kodlarla verileri tutar
+bos_sozl = {}
+# Önceden doldurulmuş sözlük oluşturma
+dolu_sozl = {"bir": 1, "iki": 2, "uc": 3}
 
-# Look up values with []
-filled_dict["one"]   # => 1
+# Değere bakmak için [] kullanalım
+dolu_sozl["bir"]   # => 1
 
-# Get all keys as a list with "keys()". 
-# We need to wrap the call in list() because we are getting back an iterable. We'll talk about those later.
-# Note - Dictionary key ordering is not guaranteed.
-# Your results might not match this exactly.
-list(filled_dict.keys())   # => ["three", "two", "one"]
-
-
-# Get all values as a list with "values()". Once again we need to wrap it in list() to get it out of the iterable.
-# Note - Same as above regarding key ordering.
-list(filled_dict.values())   # => [3, 2, 1]
+# Bütün anahtarları almak için  "keys()" kullanılabilir. 
+# Listelemek için list() kullanacağınız çünkü dönen değerin işlenmesi gerekiyor. Bu konuya daha sonra değineceğiz.
+# Not - Sözlük anahtarlarının sıralaması kesin değildir.
+# Beklediğiniz çıktı sizinkiyle tam uyuşmuyor olabilir.
+list(dolu_sozl.keys())   # => ["uc", "iki", "bir"]
 
 
-# Check for existence of keys in a dictionary with "in"
-"one" in filled_dict   # => True
-1 in filled_dict   # => False
-
-# Looking up a non-existing key is a KeyError
-filled_dict["four"]   # KeyError
-
-# Use "get()" method to avoid the KeyError
-filled_dict.get("one")   # => 1
-filled_dict.get("four")   # => None
-# The get method supports a default argument when the value is missing
-filled_dict.get("one", 4)   # => 1
-filled_dict.get("four", 4)   # => 4
-
-# "setdefault()" inserts into a dictionary only if the given key isn't present
-filled_dict.setdefault("five", 5)  # filled_dict["five"] is set to 5
-filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5
-
-# Adding to a dictionary
-filled_dict.update({"four":4}) #=> {"one": 1, "two": 2, "three": 3, "four": 4}
-#filled_dict["four"] = 4  #another way to add to dict
-
-# Remove keys from a dictionary with del
-del filled_dict["one"]  # Removes the key "one" from filled dict
+# Tüm değerleri almak için "values()" kullanacağız. Dönen değeri biçimlendirmek için de list() kullanmamız gerekiyor
+# Not - Sıralama değişebilir.
+list(dolu_sozl.values())   # => [3, 2, 1]
 
 
-# Sets store ... well sets
-empty_set = set()
-# Initialize a set with a bunch of values. Yeah, it looks a bit like a dict. Sorry.
-some_set = {1, 1, 2, 2, 3, 4}   # some_set is now {1, 2, 3, 4}
+# Bir anahtarın sözlükte olup olmadığını "in" ile kontrol edebilirsiniz
+"bir" in dolu_sozl   # => True
+1 in dolu_sozl   # => False
 
-# Can set new variables to a set
-filled_set = some_set
+# Olmayan bir anahtardan değer elde etmek isterseniz KeyError sorunu oluşacaktır.
+dolu_sozl["dort"]   # KeyError hatası oluşturur
 
-# Add one more item to the set 
-filled_set.add(5)   # filled_set is now {1, 2, 3, 4, 5}
+# "get()" metodu ile değeri almaya çalışırsanız KeyError sorunundan kurtulursunuz
+dolu_sozl.get("bir")   # => 1
+dolu_sozl.get("dort")   # => None
+# "get" metoduna parametre belirterek değerin olmaması durumunda varsayılan bir değer döndürebilirsiniz.
+dolu_sozl.get("bir", 4)   # => 1
+dolu_sozl.get("dort", 4)   # => 4
 
-# Do set intersection with &
-other_set = {3, 4, 5, 6}
-filled_set & other_set   # => {3, 4, 5}
+# "setdefault()" metodu sözlükte, belirttiğiniz anahtarın [olmaması] durumunda varsayılan bir değer atayacaktır
+dolu_sozl.setdefault("bes", 5)  # dolu_sozl["bes"] artık 5 değerine sahip
+dolu_sozl.setdefault("bes", 6)  # dolu_sozl["bes"] değişmedi, hala 5 değerine sahip
 
-# Do set union with |
-filled_set | other_set   # => {1, 2, 3, 4, 5, 6}
+# Sözlüğe ekleme
+dolu_sozl.update({"dort":4}) #=> {"bir": 1, "iki": 2, "uc": 3, "dort": 4}
+#dolu_sozl["dort"] = 4  #sözlüğe eklemenin bir diğer yolu
 
-# Do set difference with -
+# Sözlükten anahtar silmek için 'del' kullanılabilir
+del dolu_sozl["bir"]  # "bir" anahtarını dolu sözlükten silecektir
+
+
+# Setler ... set işte :D 
+bos_set = set()
+# Seti bir veri listesi ile de oluşturabilirsiniz. Evet, biraz sözlük gibi duruyor. Üzgünüm.
+bir_set = {1, 1, 2, 2, 3, 4}   # bir_set artık {1, 2, 3, 4}
+
+# Sete yeni setler ekleyebilirsiniz
+dolu_set = bir_set
+
+# Sete bir diğer öğe ekleme 
+dolu_set.add(5)   # dolu_set artık {1, 2, 3, 4, 5} oldu
+
+# Setlerin çakışan kısımlarını almak için '&' kullanabilirsiniz
+diger_set = {3, 4, 5, 6}
+dolu_set & diger_set   # => {3, 4, 5}
+
+# '|' ile aynı olan elementleri almayacak şekilde setleri birleştirebilirsiniz
+dolu_set | diger_set   # => {1, 2, 3, 4, 5, 6}
+
+# Farklılıkları almak için "-" kullanabilirsiniz
 {1, 2, 3, 4} - {2, 3, 5}   # => {1, 4}
 
-# Check for existence in a set with in
-2 in filled_set   # => True
-10 in filled_set   # => False
+# Bir değerin olup olmadığının kontrolü için "in" kullanılabilir
+2 in dolu_set   # => True
+10 in dolu_set   # => False
 
 
 ####################################################
