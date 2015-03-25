@@ -479,59 +479,57 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 [x for x in [3, 4, 5, 6, 7] if x > 5]   # => [6, 7]
 
 ####################################################
-## 5. Classes
+## 5. Sınıflar
 ####################################################
 
 
-# We subclass from object to get a class.
-class Human(object):
+# Sınıf oluşturmak için objeden alt sınıf oluşturacağız.
+class Insan(obje):
 
-    # A class attribute. It is shared by all instances of this class
-    species = "H. sapiens"
+    # Sınıf değeri. Sınıfın tüm nesneleri tarafından kullanılabilir
+    tur = "H. sapiens"
 
-    # Basic initializer, this is called when this class is instantiated.
-    # Note that the double leading and trailing underscores denote objects
-    # or attributes that are used by python but that live in user-controlled
-    # namespaces. Methods(or objects or attributes) like: __init__, __str__, 
-    # __repr__ etc. are called magic methods (or sometimes called dunder methods)  
-    # You should not invent such names on your own.
-    def __init__(self, name):
-        # Assign the argument to the instance's name attribute
-        self.name = name
+    # Basit başlatıcı, Sınıf çağrıldığında tetiklenecektir.
+    # Dikkat edin, iki adet alt çizgi(_) bulunmakta. Bunlar
+    # python tarafından tanımlanan isimlerdir. 
+    # Kendinize ait bir fonksiyon oluştururken __fonksiyon__ kullanmayınız!
+    def __init__(self, isim):
+        # Parametreyi sınıfın değerine atayalım
+        self.isim = isim
 
-    # An instance method. All methods take "self" as the first argument
-    def say(self, msg):
-        return "{name}: {message}".format(name=self.name, message=msg)
+    # Bir metot. Bütün metotlar ilk parametre olarak "self "alır.
+    def soyle(self, mesaj):
+        return "{isim}: {mesaj}".format(isim=self.name, mesaj=mesaj)
 
-    # A class method is shared among all instances
-    # They are called with the calling class as the first argument
+    # Bir sınıf metotu bütün nesnelere paylaştırılır
+    # İlk parametre olarak sınıf alırlar
     @classmethod
-    def get_species(cls):
-        return cls.species
+    def getir_tur(snf):
+        return snf.tur
 
-    # A static method is called without a class or instance reference
+    # Bir statik metot, sınıf ve nesnesiz çağrılır
     @staticmethod
     def grunt():
         return "*grunt*"
 
 
-# Instantiate a class
-i = Human(name="Ian")
-print(i.say("hi"))     # prints out "Ian: hi"
+# Sınıfı çağıralım
+i = Insan(isim="Ahmet")
+print(i.soyle("merhaba"))     # çıktı "Ahmet: merhaba"
 
-j = Human("Joel")
-print(j.say("hello"))  # prints out "Joel: hello"
+j = Insan("Ali")
+print(j.soyle("selam"))  # çıktı "Ali: selam"
 
-# Call our class method
-i.get_species()   # => "H. sapiens"
+# Sınıf metodumuzu çağıraim
+i.getir_tur()   # => "H. sapiens"
 
-# Change the shared attribute
-Human.species = "H. neanderthalensis"
-i.get_species()   # => "H. neanderthalensis"
-j.get_species()   # => "H. neanderthalensis"
+# Paylaşılan değeri değiştirelim
+Insan.tur = "H. neanderthalensis"
+i.getir_tur()   # => "H. neanderthalensis"
+j.getir_tur()   # => "H. neanderthalensis"
 
-# Call the static method
-Human.grunt()   # => "*grunt*"
+# Statik metodumuzu çağıralım
+Insan.grunt()   # => "*grunt*"
 
 
 ####################################################
