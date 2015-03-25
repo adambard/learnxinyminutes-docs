@@ -297,37 +297,37 @@ dolu_set | diger_set   # => {1, 2, 3, 4, 5, 6}
 
 
 ####################################################
-## 3. Control Flow and Iterables
+## 3. Kontrol Akışları ve Temel Soyutlandırma
 ####################################################
 
-# Let's just make a variable
-some_var = 5
+# Bir değişken oluşturalım
+bir_degisken = 5
 
-# Here is an if statement. Indentation is significant in python!
-# prints "some_var is smaller than 10"
-if some_var > 10:
-    print("some_var is totally bigger than 10.")
-elif some_var < 10:    # This elif clause is optional.
-    print("some_var is smaller than 10.")
-else:                  # This is optional too.
-    print("some_var is indeed 10.")
+# Burada bir "if" ifadesi var. Girinti(boşluk,tab) python için önemlidir!
+# çıktı olarak "bir_degisken 10 dan küçük" yazar
+if bir_degisken > 10:
+    print("bir_degisken 10 dan büyük")
+elif bir_degisken < 10:    # Bu 'elif' ifadesi zorunlu değildir.
+    print("bir_degisken 10 dan küçük")
+else:                  # Bu ifade de zorunlu değil.
+    print("bir_degisken değeri 10")
 
-
-"""
-For loops iterate over lists
-prints:
-    dog is a mammal
-    cat is a mammal
-    mouse is a mammal
-"""
-for animal in ["dog", "cat", "mouse"]:
-    # You can use format() to interpolate formatted strings
-    print("{} is a mammal".format(animal))
 
 """
-"range(number)" returns a list of numbers
-from zero to the given number
-prints:
+Döngülerle lsiteleri döngüye alabilirsiniz
+çıktı:
+    köpek bir memeli hayvandır
+    kedi bir memeli hayvandır
+    fare bir memeli hayvandır
+"""
+for hayvan in ["köpek", "kedi, "fare"]:
+    # format ile kolayca yazıyı biçimlendirelim
+    print("{} bir memeli hayvandır".format(hayvan))
+
+"""
+"range(sayi)" bir sayı listesi döndür
+0'dan belirttiğiniz sayıyıa kadar
+çıktı:
     0
     1
     2
@@ -337,8 +337,8 @@ for i in range(4):
     print(i)
 
 """
-While loops go until a condition is no longer met.
-prints:
+'While' döngüleri koşul çalıştıkça işlemleri gerçekleştirir.
+çıktı:
     0
     1
     2
@@ -347,50 +347,49 @@ prints:
 x = 0
 while x < 4:
     print(x)
-    x += 1  # Shorthand for x = x + 1
+    x += 1  # Uzun hali x = x + 1
 
-# Handle exceptions with a try/except block
+# Hataları kontrol altına almak için try/except bloklarını kullanabilirsiniz
 try:
-    # Use "raise" to raise an error
-    raise IndexError("This is an index error")
+    # Bir hata oluşturmak için "raise" kullanabilirsiniz
+    raise IndexError("Bu bir index hatası")
 except IndexError as e:
-    pass    # Pass is just a no-op. Usually you would do recovery here.
+    pass    # Önemsiz, devam et.
 except (TypeError, NameError):
-    pass    # Multiple exceptions can be handled together, if required.
-else:   # Optional clause to the try/except block. Must follow all except blocks
-    print("All good!")   # Runs only if the code in try raises no exceptions
+    pass    # Çoklu bir şekilde hataları kontrol edebilirsiniz, tabi gerekirse.
+else:   # İsteğe bağlı bir kısım. Eğer hiçbir hata kontrol mekanizması desteklemiyorsa bu blok çalışacaktır
+    print("Her şey iyi!")   # IndexError, TypeError ve NameError harici bir hatada bu blok çalıştı
 
-# Python offers a fundamental abstraction called the Iterable.
-# An iterable is an object that can be treated as a sequence.
-# The object returned the range function, is an iterable.
+# Temel Soyutlandırma, bir objenin işlenmiş halidir.
+# Aşağıdaki örnekte; Obje, range fonksiyonuna temel soyutlandırma gönderdi.
 
-filled_dict = {"one": 1, "two": 2, "three": 3}
-our_iterable = filled_dict.keys()
-print(our_iterable) #=> range(1,10). This is an object that implements our Iterable interface
+dolu_sozl = {"bir": 1, "iki": 2, "uc": 3}
+temel_soyut = dolu_sozl.keys()
+print(temel_soyut) #=> range(1,10). Bu obje temel soyutlandırma arayüzü ile oluşturuldu
 
-# We can loop over it.
-for i in our_iterable:
-    print(i)    # Prints one, two, three
+# Temel Soyutlandırılmış objeyi döngüye sokabiliriz.
+for i in temel_soyut:
+    print(i)    # Çıktısı: bir, iki, uc
 
-# However we cannot address elements by index.
-our_iterable[1]  # Raises a TypeError
+# Fakat, elementin anahtarına değerine.
+temel_soyut[1]  # TypeError hatası!
 
-# An iterable is an object that knows how to create an iterator.
-our_iterator = iter(our_iterable)
+# 'iterable' bir objenin nasıl temel soyutlandırıldığıdır.
+iterator = iter(temel_soyut)
 
-# Our iterator is an object that can remember the state as we traverse through it.
-# We get the next object by calling the __next__ function.
-our_iterator.__next__()  #=> "one"
+# 'iterator' o obje üzerinde yaptığımız değişiklikleri hatırlayacaktır
+# Bir sonraki objeyi almak için __next__ fonksiyonunu kullanabilirsiniz.
+iterator.__next__()  #=> "bir"
 
-# It maintains state as we call __next__.
-our_iterator.__next__()  #=> "two"
-our_iterator.__next__()  #=> "three"
+# Bir önceki __next__ fonksiyonumuzu hatırlayıp bir sonraki kullanımda bu sefer ondan bir sonraki objeyi döndürecektir
+iterator.__next__()  #=> "iki"
+iterator.__next__()  #=> "uc"
 
-# After the iterator has returned all of its data, it gives you a StopIterator Exception
-our_iterator.__next__() # Raises StopIteration
+# Bütün nesneleri aldıktan sonra bir daha __next__ kullanımınızda, StopIterator hatası oluşturacaktır.
+iterator.__next__() # StopIteration hatası
 
-# You can grab all the elements of an iterator by calling list() on it.
-list(filled_dict.keys())  #=> Returns ["one", "two", "three"]
+# iterator'deki tüm nesneleri almak için list() kullanabilirsiniz.
+list(dolu_sozl.keys())  #=> Returns ["bir", "iki", "uc"]
 
 
 ####################################################
