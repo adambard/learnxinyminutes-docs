@@ -614,9 +614,9 @@ print(soyle())  # Bana soda alır mısın?
 print(soyle(lutfen_soyle=True))  # Ban soda alır mısın? Lutfen! Artık dayanamıyorum :(
 ```
 
-## Ready For More?
+## Daha Fazlasına Hazır Mısınız?
 
-### Free Online
+### Ücretsiz Online
 
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
@@ -627,7 +627,7 @@ print(soyle(lutfen_soyle=True))  # Ban soda alır mısın? Lutfen! Artık dayana
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 * [Python Course](http://www.python-course.eu/index.php)
 
-### Dead Tree
+### Kitaplar
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
