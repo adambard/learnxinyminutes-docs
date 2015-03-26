@@ -533,32 +533,32 @@ Insan.grunt()   # => "*grunt*"
 
 
 ####################################################
-## 6. Modules
+## 6. Moduller
 ####################################################
 
-# You can import modules
+# Modülleri içe aktarabilirsiniz
 import math
 print(math.sqrt(16))  # => 4
 
-# You can get specific functions from a module
+# Modülden belirli bir fonksiyonları alabilirsiniz
 from math import ceil, floor
 print(ceil(3.7))  # => 4.0
 print(floor(3.7))   # => 3.0
 
-# You can import all functions from a module.
-# Warning: this is not recommended
+# Modüldeki tüm fonksiyonları içe aktarabilirsiniz
+# Dikkat: bunu yapmanızı önermem.
 from math import *
 
-# You can shorten module names
+# Modül isimlerini değiştirebilirsiniz.
+# Not: Modül ismini kısaltmanız çok daha iyi olacaktır
 import math as m
 math.sqrt(16) == m.sqrt(16)   # => True
 
-# Python modules are just ordinary python files. You
-# can write your own, and import them. The name of the
-# module is the same as the name of the file.
+# Python modulleri aslında birer python dosyalarıdır.
+# İsterseniz siz de yazabilir ve içe aktarabilirsiniz Modulün
+# ismi ile dosyanın ismi aynı olacaktır.
 
-# You can find out which functions and attributes
-# defines a module.
+# Moduldeki fonksiyon ve değerleri öğrenebilirsiniz.
 import math
 dir(math)
 
