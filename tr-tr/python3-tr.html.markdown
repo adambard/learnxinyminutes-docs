@@ -564,56 +564,54 @@ dir(math)
 
 
 ####################################################
-## 7. Advanced
+## 7. Gelişmiş
 ####################################################
 
-# Generators help you make lazy code
-def double_numbers(iterable):
-    for i in iterable:
+# Oluşturucular uzun uzun kod yazmamanızı sağlayacak ve yardımcı olacaktır
+def kare_sayilar(nesne):
+    for i in nesne:
         yield i + i
 
-# A generator creates values on the fly.
-# Instead of generating and returning all values at once it creates one in each
-# iteration.  This means values bigger than 15 wont be processed in
-# double_numbers.
-# Note range is a generator too. Creating a list 1-900000000 would take lot of
-# time to be made
-# We use a trailing underscore in variable names when we want to use a name that 
-# would normally collide with a python keyword
+# Bir oluşturucu(generator) değerleri anında oluşturur.
+# Bir seferde tüm değerleri oluşturup göndermek yerine teker teker her oluşumdan
+# sonra geri döndürür.  Bu demektir ki, kare_sayilar fonksiyonumuzda 15'ten büyük
+# değerler işlenmeyecektir.
+# Not: range() da bir oluşturucu(generator)dur. 1-900000000 arası bir liste yapmaya çalıştığınızda
+# çok fazla vakit alacaktır.
+# Python tarafından belirlenen anahtar kelimelerden kaçınmak için basitçe alt çizgi(_) kullanılabilir. 
 range_ = range(1, 900000000)
-# will double all numbers until a result >=30 found
-for i in double_numbers(range_):
+# kare_sayilar'dan dönen değer 30'a ulaştığında durduralım
+for i in kare_sayilar(range_):
     print(i)
     if i >= 30:
         break
 
 
-# Decorators
-# in this example beg wraps say
-# Beg will call say. If say_please is True then it will change the returned
-# message
+# Dekoratörler
+# Bu örnekte,
+# Eğer lutfen_soyle True ise dönen değer değişecektir.
 from functools import wraps
 
 
-def beg(target_function):
-    @wraps(target_function)
-    def wrapper(*args, **kwargs):
-        msg, say_please = target_function(*args, **kwargs)
-        if say_please:
-            return "{} {}".format(msg, "Please! I am poor :(")
-        return msg
+def yalvar(hedef_fonksiyon):
+    @wraps(hedef_fonksiyon)
+    def metot(*args, **kwargs):
+        msj, lutfen_soyle = hedef_fonksiyon(*args, **kwargs)
+        if lutfen_soyle:
+            return "{} {}".format(msj, "Lütfen! Artık dayanamıyorum :(")
+        return msj
 
-    return wrapper
-
-
-@beg
-def say(say_please=False):
-    msg = "Can you buy me a beer?"
-    return msg, say_please
+    return metot
 
 
-print(say())  # Can you buy me a beer?
-print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
+@yalvar
+def soyle(lutfen_soyle=False):
+    msj = "Bana soda alır mısın?"
+    return msj, lutfen_soyle
+
+
+print(soyle())  # Bana soda alır mısın?
+print(soyle(lutfen_soyle=True))  # Ban soda alır mısın? Lutfen! Artık dayanamıyorum :(
 ```
 
 ## Ready For More?
