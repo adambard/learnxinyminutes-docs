@@ -205,9 +205,8 @@ foo 5 -- 75
 -- Haskell has another operator called `$`. This operator applies a function 
 -- to a given parameter. In contrast to standard function application, which 
 -- has highest possible priority of 10 and is left-associative, the `$` operator 
--- has priority of 0 and is right-associative. Such a low priority means that 
--- all other operators on both sides of `$` will be evaluated before applying 
--- the `$`.
+-- has priority of 0 and is right-associative. Such a low priority means that
+-- the expression on its right is applied as the parameter to the function on its left.
 
 -- before
 (even (fib 7)) -- false
