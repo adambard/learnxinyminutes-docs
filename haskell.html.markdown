@@ -202,19 +202,20 @@ foo = (*5) . (+10)
 foo 5 -- 75
 
 -- fixing precedence
--- Haskell has another function called `$`. This changes the precedence
--- so that everything to the left of it gets computed first and then applied
--- to everything on the right. You can use `$` (often in combination with `.`)
--- to get rid of a lot of parentheses:
+-- Haskell has another operator called `$`. This operator applies a function 
+-- to a given parameter. In contrast to standard function application, which 
+-- has highest possible priority of 10 and is left-associative, the `$` operator 
+-- has priority of 0 and is right-associative. Such a low priority means that
+-- the expression on its right is applied as the parameter to the function on its left.
 
 -- before
-(even (fib 7)) -- true
+(even (fib 7)) -- false
 
 -- after
-even . fib $ 7 -- true
+even . fib $ 7 -- false
 
 -- equivalently
-even $ fib 7 -- true
+even $ fib 7 -- false
 
 ----------------------------------------------------
 -- 5. Type signatures
