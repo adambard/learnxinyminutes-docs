@@ -8,7 +8,7 @@ default:
 
 zh_CN:
   title: X分钟速成Y
-  where: 当Y=
+  where: 其中 Y=
   getCode: 源代码下载：
   share: 分享此页
   suggestions: "有建议？或者发现什么错误？在Github上<a href=\"%s\">开一个issue</a>，或者你自己也可以写一个pull request！"
