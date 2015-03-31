@@ -2,6 +2,7 @@
 name: Go
 category: language
 language: Go
+lang: fr-fr
 filename: learngo.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
