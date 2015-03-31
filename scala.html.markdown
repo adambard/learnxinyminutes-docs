@@ -186,7 +186,7 @@ val sq: Int => Int = x => x * x
 // Anonymous functions can be called as usual:
 sq(10)   // => 100
 
-// If your anonymous function has one or two arguments, and each argument is
+// If each argument in your anonymous function is
 // used only once, Scala gives you an even shorter way to define them. These
 // anonymous functions turn out to be extremely common, as will be obvious in
 // the data structure section.
@@ -235,7 +235,7 @@ while (i < 10) {  println("i " + i); i+=1  }   // Yes, again. What happened? Why
 i    // Show the value of i. Note that while is a loop in the classical sense -
      // it executes sequentially while changing the loop variable. while is very
      // fast, faster that Java loops, but using the combinators and
-     // comprehensions above is easier to understand and parallelize
+     // comprehensions below is easier to understand and parallelize
 
 // A do while loop
 do {
