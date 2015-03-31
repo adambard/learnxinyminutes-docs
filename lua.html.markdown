@@ -55,7 +55,7 @@ foo = anUnknownVariable  -- Now foo = nil.
 
 aBoolValue = false
 
--- Only nil and false are falsy; 0 and '' are true!
+-- Only 'nil' and 'false' are considered false; 0 and '' are true!
 if not aBoolValue then print('twas false') end
 
 -- 'or' and 'and' are short-circuited. This is similar to the a?b:c operator
