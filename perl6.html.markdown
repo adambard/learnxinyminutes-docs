@@ -253,7 +253,9 @@ given "foo bar" {
   when $_.chars > 50 { # smart matching anything with True (`$a ~~ True`) is True,
                        # so you can also put "normal" conditionals.
                        # This when is equivalent to this `if`:
-                       #  if ($_.chars > 50) ~~ True {...}
+                       #  if $_ ~~ ($_.chars > 50) {...}
+                       # Which means:
+                       #  if $_.chars > 50 {...}
     say "Quite a long string !";
   }
   default { # same as `when *` (using the Whatever Star)
