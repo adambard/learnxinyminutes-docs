@@ -593,7 +593,7 @@ def double_numbers(iterable):
 range_ = range(1, 900000000)
 
 # Будет удваивать все числа, пока результат не превысит 30
-for i in double_numbers(xrange_):
+for i in double_numbers(range_):
     print(i)
     if i >= 30:
         break
