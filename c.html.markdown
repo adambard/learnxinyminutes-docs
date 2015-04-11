@@ -234,7 +234,7 @@ int main() {
   // same with j-- and --j
 
   // Bitwise operators!
-  ~0x0F; // => 0xF0 (bitwise negation, "1's complement")
+  ~0x0F; // => 0xFFFFFFF0 (bitwise negation, "1's complement", example result for 32-bit int)
   0x0F & 0xF0; // => 0x00 (bitwise AND)
   0x0F | 0xF0; // => 0xFF (bitwise OR)
   0x04 ^ 0x0F; // => 0x0B (bitwise XOR)
@@ -242,7 +242,7 @@ int main() {
   0x02 >> 1; // => 0x01 (bitwise right shift (by 1))
 
   // Be careful when shifting signed integers - the following are undefined:
-  // - shifting into the sign bit of a signed integer (int a = 1 << 32)
+  // - shifting into the sign bit of a signed integer (int a = 1 << 31)
   // - left-shifting a negative number (int a = -1 << 2)
   // - shifting by an offset which is >= the width of the type of the LHS:
   //   int a = 1 << 32; // UB if int is 32 bits wide

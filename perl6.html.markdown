@@ -253,7 +253,9 @@ given "foo bar" {
   when $_.chars > 50 { # smart matching anything with True (`$a ~~ True`) is True,
                        # so you can also put "normal" conditionals.
                        # This when is equivalent to this `if`:
-                       #  if ($_.chars > 50) ~~ True {...}
+                       #  if $_ ~~ ($_.chars > 50) {...}
+                       # Which means:
+                       #  if $_.chars > 50 {...}
     say "Quite a long string !";
   }
   default { # same as `when *` (using the Whatever Star)
@@ -560,7 +562,7 @@ subset VeryBigInteger of Int where * > 500;
 multi sub sayit(Int $n) { # note the `multi` keyword here
   say "Number: $n";
 }
-multi sayit(Str $s) } # a multi is a `sub` by default
+multi sayit(Str $s) { # a multi is a `sub` by default
   say "String: $s";
 }
 sayit("foo"); # prints "String: foo"
@@ -963,7 +965,7 @@ say join ',', gather if False {
 # But consider:
 constant thrice = gather for ^3 { say take $_ }; # Doesn't print anything
 # versus:
-constant thrice = eager gather for ^3 { say take $_ }; #=> 0 1 2 3 4
+constant thrice = eager gather for ^3 { say take $_ }; #=> 0 1 2
 
 # - `lazy` - Defer actual evaluation until value is fetched (forces lazy context)
 # Not yet implemented !!

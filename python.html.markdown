@@ -14,7 +14,7 @@ executable pseudocode.
 Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
 
 Note: This article applies to Python 2.7 specifically, but should be applicable
-to Python 2.x. For Python 3.x, take a look at the Python 3 tutorial.
+to Python 2.x. For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
 
 ```python
 
