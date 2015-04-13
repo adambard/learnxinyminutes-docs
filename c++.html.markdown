@@ -555,7 +555,7 @@ void doSomethingWithAFile(const char* filename)
 // Compare this to the use of C++'s file stream class (fstream)
 // fstream uses its destructor to close the file.
 // Recall from above that destructors are automatically called
-// whenver an object falls out of scope.
+// whenever an object falls out of scope.
 void doSomethingWithAFile(const std::string& filename)
 {
     // ifstream is short for input file stream
