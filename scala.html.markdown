@@ -186,7 +186,7 @@ val sq: Int => Int = x => x * x
 // Anonymous functions can be called as usual:
 sq(10)   // => 100
 
-// If your anonymous function has one or two arguments, and each argument is
+// If each argument in your anonymous function is
 // used only once, Scala gives you an even shorter way to define them. These
 // anonymous functions turn out to be extremely common, as will be obvious in
 // the data structure section.
@@ -235,7 +235,7 @@ while (i < 10) {  println("i " + i); i+=1  }   // Yes, again. What happened? Why
 i    // Show the value of i. Note that while is a loop in the classical sense -
      // it executes sequentially while changing the loop variable. while is very
      // fast, faster that Java loops, but using the combinators and
-     // comprehensions above is easier to understand and parallelize
+     // comprehensions below is easier to understand and parallelize
 
 // A do while loop
 do {
@@ -352,7 +352,7 @@ class Dog(br: String) {
     println(s"I'm sleeping for $hours hours")
 
   // Abstract methods are simply methods with no body. If we uncomment the next
-  // line, class Dog would need to be declared abstract
+  // line, class Dog would need to be declared abstract.
   //   abstract class Dog(...) { ... }
   // def chaseAfter(what: String): String
 }
@@ -366,7 +366,7 @@ println(mydog.bark) // => "Woof, woof!"
 // common for Scala classes to have a "companion object", where the per-instance
 // behavior is captured in the classes themselves, but behavior related to all
 // instance of that class go in objects. The difference is similar to class
-// methods vs static methods in other languages. Note that objects and classes
+// methods vs static methods in other languages (e.g. Java). Note that objects and classes
 // can have the same name.
 object Dog {
   def allKnownBreeds = List("pitbull", "shepherd", "retriever")
@@ -465,6 +465,7 @@ val patternFunc: Person => String = {
 // Scala allows methods and functions to return, or take as parameters, other
 // functions or methods.
 
+val add10: Int => Int = _ + 10 // A function taking an Int and returning an Int
 List(1, 2, 3) map add10 // List(11, 12, 13) - add10 is applied to each element
 
 // Anonymous functions can be used instead of named functions:
