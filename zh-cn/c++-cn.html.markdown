@@ -535,7 +535,7 @@ failure:
 }
 
 // 如果用异常捕获机制来指示错误的话，
-// 代码会变得清晰一些，但是仍然有优化的餘地。
+// 代码会变得清晰一些，但是仍然有优化的余地。
 void doSomethingWithAFile(const char* filename)
 {
     FILE* fh = fopen(filename, "r"); // 以只读模式打开文件
@@ -548,7 +548,7 @@ void doSomethingWithAFile(const char* filename)
     }
     catch (...) {
         fclose(fh); // 保证出错的时候文件被正确关闭
-        throw; // Then re-throw the exception.
+        throw; // 之后，重新抛出这个异常
     }
 
     fclose(fh); // 关闭文件
@@ -573,7 +573,7 @@ void doSomethingWithAFile(const std::string& filename)
 // 1. 无论发生了什么情况，资源（此例当中是文件句柄）都会被正确关闭。
 //    只要你正确使用了析构器，就_不会_因为忘记关闭句柄，造成资源的泄漏。
 // 2. 可以注意到，通过这种方式写出来的代码十分简洁。
-//    析构器会在后臺关闭文件句柄，不再需要你来操心这些琐事。
+//    析构器会在后台关闭文件句柄，不再需要你来操心这些琐事。
 // 3. 这种方式的代码具有异常安全性。
 //    无论在函数中的何处拋出异常，都不会阻碍对文件资源的释放。
 
