@@ -191,7 +191,7 @@ addOne(5)  // => 6
 weirdSum(2, 4)  // => 16
 
 
-// return 关键字是存在的，但它从最里面包裹了 return 的 def 函数中返回。
+// return 关键字是存在的，但它只从最里面包裹了 return 的 def 函数中返回。
 // 警告： 在 Scala 中使用 return 容易出错，应该避免使用。
 // 在匿名函数中没有效果，例如：
 def foo(x: Int): Int = {
@@ -304,13 +304,11 @@ s(1)
 (a, 2, "three")
 
 // 为什么有这个？
-
 val divideInts = (x:Int, y:Int) => (x / y, x % y)
 
 divideInts(10,3) // 函数 divideInts 返回您结果和余数
 
 // 要读取元组的元素，使用 _._n，n是从1开始的元素索引
-
 val d = divideInts(10,3)
 
 d._1
@@ -360,7 +358,7 @@ println(mydog.bark) // => "Woof, woof!"
 
 // "object" 关键字创造一种类型和该类型的单例。
 // Scala 的 class 常常也含有一个 “伴生对象”，class 中包含每个实例的行为，所有实例
-// 共用的行为则放入 object 中。两者的区别和其他语言中方法和静态方法类似。
+// 共用的行为则放入 object 中。两者的区别和其他语言中类方法和静态方法类似。
 // 请注意 object 和 class 可以同名。
 object Dog {
   def allKnownBreeds = List("pitbull", "shepherd", "retriever")
@@ -374,14 +372,14 @@ object Dog {
 // 数据。它们通常只有几个方法，且方法几乎没有副作用。
 case class Person(name: String, phoneNumber: String)
 
-// 创造新实例，注意 case 类不需要 "new" 关键字
+// 创造新实例，注意 case 类不需要使用 "new" 关键字
 val george = Person("George", "1234")
 val kate = Person("Kate", "4567")
 
 // 使用 case 类，您可以轻松得到一些功能，像 getters:
 george.phoneNumber  // => "1234"
 
-// 每个字段的相等性（无需覆盖 .equals）
+// 每个字段的相等性比较（无需覆盖 .equals）
 Person("George", "1234") == Person("Kate", "1236")  // => false
 
 // 简单的拷贝方式
@@ -412,7 +410,7 @@ def matchPerson(person: Person): String = person match {
 val email = "(.*)@(.*)".r  // 定义下一个例子会用到的正则
 
 // 模式匹配看起来和 C语言家族的 switch 语句相似，但更为强大。
-// Scala 中您可以很多东西：
+// Scala 中您可以匹配很多东西：
 def matchEverything(obj: Any): String = obj match {
   // 匹配值：
   case "Hello world" => "Got the string Hello world"
