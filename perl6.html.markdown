@@ -307,37 +307,9 @@ if long-computation() -> $result {
   say "The result is $result";
 }
 
-# Now that you've seen how to traverse a list, you need to be aware of something:
-# List context (@) flattens. If you traverse nested lists, you'll actually be traversing a
-#  shallow list.
-for 1, 2, (3, (4, ((5)))) {
-  say "Got $_.";
-} #=> Got 1. Got 2. Got 3. Got 4. Got 5.
-
-# ... However: (forcing item context with `$`)
-for 1, 2, $(3, 4) {
-  say "Got $_.";
-} #=> Got 1. Got 2. Got 3 4.
-
-# Note that the last one actually joined 3 and 4.
-# While `$(...)` will apply item to context to just about anything, you can also create
-#  an array using `[]`:
-for [1, 2, 3, 4] {
-  say "Got $_.";
-} #=> Got 1 2 3 4.
-
-# You need to be aware of when flattening happens exactly.
-# The general guideline is that argument lists flatten, but not method calls.
-# Also note that `.list` and array assignment flatten (`@ary = ...`) flatten.
-((1,2), 3, (4,5)).map({...}); # iterates over three elements (method call)
-map {...}, ((1,2),3,(4,5));   # iterates over five elements (argument list is flattened)
-
-(@a, @b, @c).pick(1);         # picks one of three arrays (method call)
-pick 1, @a, @b, @c;           # flattens argument list and pick one element
-
 ### Operators
 
-## Since Perl languages are very much operator-based languages
+## Since Perl languages are very much operator-based languages,
 ## Perl 6 operators are actually just funny-looking subroutines, in syntactic
 ##  categories, like infix:<+> (addition) or prefix:<!> (bool not).
 
@@ -396,17 +368,21 @@ say @array[^10]; # you can pass arrays as subscripts and it'll return
                  # "1 2 3 4 5 6 7 8 9 10" (and not run out of memory !)
 # Note : when reading an infinite list, Perl 6 will "reify" the elements
 # it needs, then keep them in memory. They won't be calculated more than once.
-                 
-# Warning, though: if you try this example in the REPL and just put `1..*`,
-#  Perl 6 will be forced to try and evaluate the whole array (to print it),
-#  so you'll end with an infinite loop.
+# It also will never calculate more elements that are needed.
 
-# You can use that in most places you'd expect, even assigning to an array
-my @numbers = ^20;
-@numbers[5..*] = 3, 9 ... * > 90; # The right hand side could be infinite as well.
-                                  # (but not both, as this would be an infinite loop)
-say @numbers; #=> 3 9 15 21 27 [...] 81 87
+# An array subscript can also be a closure.
+# It'll be called with the length as the argument
+say join(' ', @array[15..*]); #=> 15 16 17 18 19
+# which is equivalent to:
+say join(' ', @array[-> $n { 15..$n }]);
 
+# You can use that in most places you'd expect, even assigning to an array  
+my @numbers = ^20;  
+my @seq =  3, 9 ... * > 95; # 3 9 15 21 27 [...] 81 87 93 99
+@numbers[5..*] = 3, 9 ... *; # even though the sequence is infinite,
+                             # only the 15 needed values will be calculated.
+say @numbers; #=> 0 1 2 3 4 3 9 15 21 [...] 81 87
+              # (only 20 values)
 
 ## * And, Or
 3 && 4; # 4, which is Truthy. Calls `.Bool` on `4` and gets `True`.
@@ -418,7 +394,7 @@ $a && $b && $c; # Returns the first argument that evaluates to False,
 $a || $b;
 
 # And because you're going to want them,
-#  you also have composed assignment operators:
+#  you also have compound assignment operators:
 $a *= 2; # multiply and assignment
 $b %%= 5; # divisible by and assignment
 @array .= sort; # calls the `sort` method and assigns the result back
@@ -428,7 +404,7 @@ $b %%= 5; # divisible by and assignment
 # a few more key concepts that make them better than in any other language :-).
 
 ## Unpacking !
-# It's the ability to "extract" arrays and keys.
+# It's the ability to "extract" arrays and keys (AKA "destructuring").
 # It'll work in `my`s and in parameter lists.
 my ($a, $b) = 1, 2;
 say $a; #=> 1
