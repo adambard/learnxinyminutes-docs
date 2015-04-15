@@ -313,40 +313,37 @@ d._2
 
 
 /////////////////////////////////////////////////
-// 5. Object Oriented Programming
+// 5. 面向对象编程
 /////////////////////////////////////////////////
 
 /*
-  Aside: Everything we've done so far in this tutorial has been simple
-  expressions (values, functions, etc). These expressions are fine to type into
-  the command-line interpreter for quick tests, but they cannot exist by
-  themselves in a Scala file. For example, you cannot have just "val x = 5" in
-  a Scala file. Instead, the only top-level constructs allowed in Scala are:
+  旁白： 到目前为止我们在本教程中所做的一切不过是简单表达式 （值、 函数等）。
+  这些表达式都能很方便地键入到命令行解释器中进行快速测试，但他们不能独立存在于 Scala 文件中。
+  例如，你不能在一个 Scala 文件只写 "val x = 5"。
+  相反，只有顶级结构允许在 Scala 文件中，它们是：
 
-  - objects
-  - classes
-  - case classes
-  - traits
+  - 对象 (objects)
+  - 类 (classes)
+  - 样本类 (case classes)
+  - 特质 (traits)
 
-  And now we will explain what these are.
+  现在将解释它们分别是什么。
 */
 
-// classes are similar to classes in other languages. Constructor arguments are
-// declared after the class name, and initialization is done in the class body.
+// 类的概念与其他语言类似。构造函数的参数声明在类名后，并在类体中进行初始化。
 class Dog(br: String) {
-  // Constructor code here
+  // 从这里开始就是构造函数
   var breed: String = br
 
-  // Define a method called bark, returning a String
+  // 定义一个名为bark的方法，返回一个String
   def bark = "Woof, woof!"
 
-  // Values and methods are assumed public. "protected" and "private" keywords
-  // are also available.
+  // 字段和方法默认是 public 的。也可以使用"protected"和"private"关键字。
   private def sleep(hours: Int) =
     println(s"I'm sleeping for $hours hours")
 
-  // Abstract methods are simply methods with no body. If we uncomment the next
-  // line, class Dog would need to be declared abstract
+  // 抽象方法就是没有方法体的声明。 If we uncomment the next
+  // 如果我们去掉下面语句的注释，Dog类将必须声明为抽象(abstract)。 
   //   abstract class Dog(...) { ... }
   // def chaseAfter(what: String): String
 }
@@ -355,80 +352,103 @@ val mydog = new Dog("greyhound")
 println(mydog.breed) // => "greyhound"
 println(mydog.bark) // => "Woof, woof!"
 
-
-// The "object" keyword creates a type AND a singleton instance of it. It is
-// common for Scala classes to have a "companion object", where the per-instance
-// behavior is captured in the classes themselves, but behavior related to all
-// instance of that class go in objects. The difference is similar to class
-// methods vs static methods in other languages. Note that objects and classes
-// can have the same name.
+// "object"关键字创建一个类型和它的一个单例实例。
+// Scala 类经常具有一个"伴生对象"，在类本身中定义每个实例的行为，
+// 而与所有该类的实例有关的行为定义在对象中。
+// 其区别类似于其他语言（如Java）中的类方法 vs 静态方法。
+// 需要注意的是对象和类可以具有相同的名称。
 object Dog {
   def allKnownBreeds = List("pitbull", "shepherd", "retriever")
   def createDog(breed: String) = new Dog(breed)
 }
 
 
-// Case classes are classes that have extra functionality built in. A common
-// question for Scala beginners is when to use classes and when to use case
-// classes. The line is quite fuzzy, but in general, classes tend to focus on
-// encapsulation, polymorphism, and behavior. The values in these classes tend
-// to be private, and only methods are exposed. The primary purpose of case
-// classes is to hold immutable data. They often have few methods, and the
-// methods rarely have side-effects.
+// 样本类是内建了额外功能的类。
+// Scala 初学者的一个常见问题是何时使用类和何时使用样本类。
+// 这个界限是相当模糊的，但一般情况下，类往往聚焦于封装、 多态性和行为。
+// 这些类中的字段倾向是私有，并且只有方法是公开的。
+// 样本类的主要目的是持有不可变的数据。
+// 它们一般很少有方法，并且方法很少有副作用。
 case class Person(name: String, phoneNumber: String)
 
-// Create a new instance. Note cases classes don't need "new"
+// 创建一个实例。注意样本类不需要"new"
 val george = Person("George", "1234")
 val kate = Person("Kate", "4567")
 
-// With case classes, you get a few perks for free, like getters:
+// 样本类可以给你一些方便的方法，如获取器：
 george.phoneNumber  // => "1234"
 
-// Per field equality (no need to override .equals)
+// 字段比较 (不需要重写 ".equals")
 Person("George", "1234") == Person("Kate", "1236")  // => false
 
-// Easy way to copy
+// 方便地复制方法
 // otherGeorge == Person("george", "9876")
 val otherGeorge = george.copy(phoneNumber = "9876")
 
-// And many others. Case classes also get pattern matching for free, see below.
+// 以及其他许多。样本类也能免费具有模式匹配能力，见下文。
 
 
-// Traits coming soon!
+// 特质 敬请期待!
 
 
+/////////////////////////////////////////////////
+// 6. 模式匹配
+/////////////////////////////////////////////////
+
+// 模式匹配是 Scala 中一种强大而常用的功能。
+// 这里介绍如何模式匹配一个样本类。
+// 注： 与其他语言不同，Scala的case不需要break，错误的case串联不会发生。
+
+def matchPerson(person: Person): String = person match {
+  // Then you specify the patterns:
+  case Person("George", number) => "We found George! His number is " + number
+  case Person("Kate", number) => "We found Kate! Her number is " + number
+  case Person(name, number) => "We matched someone : " + name + ", phone : " + number
+}
+
+val email = "(.*)@(.*)".r  // 为下一个例子定义一个正则表达式。
+
+// 模式匹配可能看起来很像 C 语言家族中的 switch 语句 ，但模式匹配要强大得多。
+// 在 Scala 中，您可以匹配更多：
+def matchEverything(obj: Any): String = obj match {
+  // 可以匹配值:
+  case "Hello world" => "Got the string Hello world"
+
+  // 可以通过类型匹配:
+  case x: Double => "Got a Double: " + x
+
+  // 可以指定条件:
+  case x: Int if x > 10000 => "Got a pretty big number!"
+
+  // 可以像之前那样匹配样本类:
+  case Person(name, number) => s"Got contact info for $name!"
+
+  // 可以匹配正则表达式:
+  case email(name, domain) => s"Got email address $name@$domain"
+
+  // 可以匹配元组:
+  case (a: Int, b: Double, c: String) => s"Got a tuple: $a, $b, $c"
+
+  // 可以匹配数据结构:
+  case List(1, b, c) => s"Got a list with three elements and starts with 1: 1, $b, $c"
+
+  // 可以嵌套模式:
+  case List(List((1, 2,"YAY"))) => "Got a list of list of tuple"
+}
+
+// 事实上，你可以模式匹配任何有"unapply"方法的对象。
+// 此功能是如此强大，以至于 Scala 允许你将整个函数定义为模式：
+val patternFunc: Person => String = {
+  case Person("George", number) => s"George's number: $number"
+  case Person(name, number) => s"Random person's number: $number"
+}
 
 
+/////////////////////////////////////////////////
+// 7. 函数式编程
+/////////////////////////////////////////////////
 
-
-
-
-
-
-
-
-// 包括函数在内，每一个事物都是对象。在 REPL 中输入：
-
-7 // 结果 res30: Int = 7 (res30 是一个生成的结果的 var 命名)
-
-// 下一行给你一个接收一个 Int 类型并返回该数的平方的函数
-(x:Int) => x * x    
-
-// 你可以分配给函数一个标识符，像这样：
-val sq = (x:Int) => x * x
-
-/* 上面的例子说明
-   
-   sq: Int => Int = <function1>	
-
-   意味着这次我们给予了 sq 这样一个显式的名字给一个接受一个 Int 类型值并返回 一个 Int 类型值的函数
-
-   sq 可以像下面那样被执行：
-*/
-
-sq(10)   // 返回给你：res33: Int = 100.
-
-// Scala 允许方法和函数返回或者接受其它的函数或者方法作为参数。
+// Scala 中方法和函数可以被其他方法或函数返回，或当做参数。
 
 val add10: Int => Int = _ + 10 // 一个接受一个 Int 类型参数并返回一个 Int 类型值的函数
 List(1, 2, 3) map add10 // List(11, 12, 13) - add10 被应用到每一个元素
@@ -436,17 +456,14 @@ List(1, 2, 3) map add10 // List(11, 12, 13) - add10 被应用到每一个元素
 // 匿名函数可以被使用来代替有命名的函数：
 List(1, 2, 3) map (x => x + 10)
 
-// 下划线标志，如果匿名函数只有一个参数可以被使用来表示该参数变量
+// 如果匿名函数只有一个参数，可以使用下划线来表示该参数变量
 List(1, 2, 3) map (_ + 10)
 
 // 如果你所应用的匿名块和匿名函数都接受一个参数，那么你甚至可以省略下划线
 List("Dom", "Bob", "Natalia") foreach println
 
 
-
-
-
-// 选择器
+// 组合子
 
 s.map(sq)
 
@@ -456,22 +473,20 @@ sSquared.filter(_ < 10)
 
 sSquared.reduce (_+_)
 
-// filter 函数接受一个预测(一个函数，形式为 A -> Boolean) 并选择出所有的元素满足这个预测
-
+// filter 函数接受一个预测函数(一个形式为 A -> Boolean的函数) 并选择出所有满足这个预测的元素
 List(1, 2, 3) filter (_ > 2) // List(3)
+case class Person(name:String, age:Int)
 List(
-  Person(name = "Dom", age = 23), 
+  Person(name = "Dom", age = 23),
   Person(name = "Bob", age = 30)
 ).filter(_.age > 25) // List(Person("Bob", 30))
 
 
-// Scala 的 foreach 方法定义在特定的接受一个类型的集合上
-// 返回 Unit(一个 void 方法)
+// Scala 的 foreach 方法定义在集合上
+// 接受一个特定类型的参数并返回 Unit(一个 void 方法)
+val aListOfNumbers = List(1, 2, 3, 4, 10, 20, 100)
 aListOfNumbers foreach (x => println(x))
 aListOfNumbers foreach println
-
-
-
 
 // For 包含
 
@@ -483,123 +498,81 @@ for { n <- nSquared2 if n < 10 } yield n
 
 for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
 
-/* 注意：这些不是 for 循环. 一个 for 循环的语义是 '重复'('repeat')，
-  然而，一个 for-包含 定义了一个两个数据结合间的关系 */
+/* 注意：这些不是 for 循环。 一个 for 循环的语义是 '重复'('repeat')，
+  而一个 for-包含 定义了两个数据集合之间的某种关系 */
 
 
+/////////////////////////////////////////////////
+// 8. 隐式转换
+/////////////////////////////////////////////////
+
+/* 警告：隐式转换是 Scala一套强大的特性，并因此很容易遭到滥用。
+ * Scala 初学者应该抵制使用他们的诱惑，直到他们不仅明白它们是如何工作的，而且知道其相关的最佳实践。
+ * 本教程中之所以包含这一节，是因为隐式转换在 Scala 库中应用如此广泛，以至于不用它已不可能做有意义的事情。
+ * 这意味着你需要理解和使用 implicts，而不是声明自己的。
+ */
+
+// 可以通过"implicit"关键字声明任何值(vals、函数、对象等)为隐式值。
+// 注意这些示例中用到了第5节的Dog类。
+implicit val myImplicitInt = 100
+implicit def myImplicitFunction(breed: String) = new Dog("Golden " + breed)
+
+// implicit 关键字本身并不会更改值的行为，因此上面的值可以像往常一样被使用。
+myImplicitInt + 2  // => 102
+myImplicitFunction("Pitbull").breed  // => "Golden Pitbull"
+
+// 差异是这些值现在有资格在另一段代码"需要"隐式值时被用到。
+// 一种场景是隐式函数参数：
+def sendGreetings(toWhom: String)(implicit howMany: Int) =
+  s"Hello $toWhom, $howMany blessings to you and yours!"
+
+// 如果我们提供"howMany"的值，函数的行为像往常一样
+sendGreetings("John")(1000)  // => "Hello John, 1000 blessings to you and yours!"
+
+// 但如果我们省略隐式参数，一个同类型的隐式值将被使用，在本例中是"myImplicitInt"：
+sendGreetings("Jane")  // => "Hello Jane, 100 blessings to you and yours!"
+
+// 隐式函数参数使我们可以模拟其他函数式语言中的类型类。
+// 由于经常这样使用，因而有自己的简写。
+// 以下两行意思是相同的：
+def foo[T](implicit c: C[T]) = ...
+def foo[T : C] = ...
+
+// 编译器寻找隐式转换的另一种场景是，如果你有
+//   obj.method(...)
+// 但是"obj"没有"method"这个方法。
+// 在这种情况下，如果存在 "A => B" 类型的隐式转换，其中 A 的类型是 obj，
+// 并且 B 有"method"方法，这种转换将被应用。
+// 所以如果作用域中有 myImplicitFunction ，则可以这样写：
+"Retriever".breed  // => "Golden Retriever"
+"Sheperd".bark  // => "Woof, woof!"
+
+// 这里字符串首先使用我们的函数被转换为Dog，然后调用适当的方法。
+// 这是一个非常强大的功能，但重申一次，它不能随意使用。
+// 事实上，当你定义上面的隐式函数，编译器应该会给你一个警告：
+// 你不应该这样做，除非你确实知道你在做什么。
 
 
+/////////////////////////////////////////////////
+// 9. 杂项
+/////////////////////////////////////////////////
 
-
-// 面向对象特性
-
-// 类名是 Dog
-class Dog {
-  //bark 方法，返回字符串
-  def bark: String = {
-    // the body of the method
-    "Woof, woof!"
-  }
-}
-
-// 类可以包含几乎其它的构造，包括其它的类，
-// 函数，方法，对象，case 类，特性等等。
-
-
-
-// Case 类
-
-case class Person(name:String, phoneNumber:String)
-
-Person("George", "1234") == Person("Kate", "1236")
-
-
-
-
-// 模式匹配
-
-val me = Person("George", "1234")
-
-me match { case Person(name, number) => {
-            "We matched someone : " + name + ", phone : " + number }}
-
-me match { case Person(name, number) => "Match : " + name; case _ => "Hm..." }
-
-me match { case Person("George", number) => "Match"; case _ => "Hm..." }
-
-me match { case Person("Kate", number) => "Match"; case _ => "Hm..." }
-
-me match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy" }
-
-val kate = Person("Kate", "1234")
-
-kate match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy" }
-
-
-
-// 正则表达式
-
-val email = "(.*)@(.*)".r  // 在字符串上调用 r 会使它变成一个正则表达式
-
-val email(user, domain) = "henry@zkpr.com"
-
-"mrbean@pyahoo.com" match {
-  case email(name, domain) => "I know your name, " + name
-}
-
-
-
-// 字符串
-
-"Scala 字符串被双引号包围" //
-'a' // Scala 字符
-'单引号的字符串不存在' // 错误
-"字符串拥有通常的 Java 方法定义在其上".length
-"字符串也有额外的 Scala 方法".reverse
-
-// 参见:  scala.collection.immutable.StringOps
-
-println("ABCDEF".length)
-println("ABCDEF".substring(2, 6))
-println("ABCDEF".replace("C", "3"))
-
-val n = 45
-println(s"We have $n apples")
-
-val a = Array(11, 9, 6)
-println(s"My second daughter is ${a(2-1)} years old")
-
-// 一些字符需要被转义，举例来说，字符串中的双引号：
-val a = "They stood outside the \"Rose and Crown\""
-
-// 三个双引号使得字符串可以跨行并且可以包含引号(无需转义)
-
-val html = """<form id="daform">
-                <p>Press belo', Joe</p>
-             |  <input type="submit">
-              </form>"""
-
-
-
-// 应用结果和组织
-
-// import
+// 引入类
 import scala.collection.immutable.List
 
-// Import 所有的子包
+// 引入所有子包
 import scala.collection.immutable._
 
-// 在一条语句中 Import 多个类
+// 在一条语句中引入多个类
 import scala.collection.immutable.{List, Map}
 
-// 使用 '=>' 来重命名一个 import
+// 使用 '=>' 重命名
 import scala.collection.immutable.{ List => ImmutableList }
 
-// import 除了一些类的其它所有的类。下面的例子除去了 Map 类和 Set 类：
+// 引入除了某些类外，其它所有的类。下面的例子排除了 Map 和 Set ：
 import scala.collection.immutable.{Map => _, Set => _, _}
 
-// 在 scala 源文件中，你的程序入口点使用一个拥有单一方法 main 的对象来定义：
-
+// 在 scala 源文件中，你的程序入口点使用一个拥有 main 方法的对象来定义：
 object Application {
   def main(args: Array[String]): Unit = {
     // stuff goes here.
@@ -613,19 +586,22 @@ object Application {
 
 // 输入和输出
 
-// 一行一行读取文件
+// 一行行读取文件
 import scala.io.Source
-for(line <- Source.fromPath("myfile.txt").getLines())
+for(line <- Source.fromFile("myfile.txt").getLines())
   println(line)
 
 // 使用 Java 的 PrintWriter 来写文件
-
+val writer = new PrintWriter("myfile.txt")
+writer.write("Writing line for line" + util.Properties.lineSeparator)
+writer.write("Another line here" + util.Properties.lineSeparator)
+writer.close()
 
 ```
 
 ## 更多的资源
 
-[为没耐心的人准备的 Scala](http://horstmann.com/scala/)
+[快学 Scala](http://horstmann.com/scala/)
 
 [Twitter Scala school](http://twitter.github.io/scala_school/)
 

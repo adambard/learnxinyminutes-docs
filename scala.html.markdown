@@ -352,7 +352,7 @@ class Dog(br: String) {
     println(s"I'm sleeping for $hours hours")
 
   // Abstract methods are simply methods with no body. If we uncomment the next
-  // line, class Dog would need to be declared abstract
+  // line, class Dog would need to be declared abstract.
   //   abstract class Dog(...) { ... }
   // def chaseAfter(what: String): String
 }
@@ -366,7 +366,7 @@ println(mydog.bark) // => "Woof, woof!"
 // common for Scala classes to have a "companion object", where the per-instance
 // behavior is captured in the classes themselves, but behavior related to all
 // instance of that class go in objects. The difference is similar to class
-// methods vs static methods in other languages. Note that objects and classes
+// methods vs static methods in other languages (e.g. Java). Note that objects and classes
 // can have the same name.
 object Dog {
   def allKnownBreeds = List("pitbull", "shepherd", "retriever")
@@ -465,6 +465,7 @@ val patternFunc: Person => String = {
 // Scala allows methods and functions to return, or take as parameters, other
 // functions or methods.
 
+val add10: Int => Int = _ + 10 // A function taking an Int and returning an Int
 List(1, 2, 3) map add10 // List(11, 12, 13) - add10 is applied to each element
 
 // Anonymous functions can be used instead of named functions:
