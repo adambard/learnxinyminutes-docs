@@ -8,10 +8,11 @@ contributors:
 translators:
     - ["Peiyong Lin", ""]
     - ["Jinchang Ye", "http://github.com/alwayswithme"]
+    - ["Guodong Qu", "https://github.com/jasonqu"]
 lang: zh-cn
 ---
 
-Scala - 一门可拓展性的语言
+Scala - 一门可拓展的语言
 
 ```scala
 
@@ -103,7 +104,7 @@ true == false // false
 'a' // Scala 的字符
 // '不存在单引号字符串' <= 这会导致错误
 
-// 字符串定义了常见的 Java 方法
+// String 有常见的 Java 字符串方法
 "hello world".length
 "hello world".substring(2, 6)
 "hello world".replace("C", "3")
@@ -174,14 +175,14 @@ addWithDefault(1)  // => 6
 // 匿名函数是这样的：
 (x:Int) => x * x
 
-// 和 def 不同，如果语义清晰，匿名函数的输入类型也可以省略。
+// 和 def 不同，如果语义清晰，匿名函数的参数类型也可以省略。
 // 类型 "Int => Int" 意味着这个函数接收一个 Int 并返回一个 Int。
 val sq: Int => Int = x => x * x
 
 // 匿名函数的调用也是类似的：
 sq(10)   // => 100
 
-// 如果您的匿名函数有一到两个参数，每一个参数仅使用一次，
+// 如果您的匿名函数中每个参数仅使用一次，
 // Scala 提供一个更简洁的方式来定义他们。这样的匿名函数极为常见，
 // 在数据结构部分会明显可见。
 val addOne: Int => Int = _ + 1
@@ -221,7 +222,7 @@ val r = 1 to 5
 r.foreach( println )
 
 r foreach println
-// 留意： Scala 对点和括号的要求比较宽松，对这些规则加以区分。
+// 附注： Scala 对点和括号的要求想当宽松，注意其规则是不同的。
 // 这有助于写出读起来像英语的 DSL(领域特定语言) 和 API(应用编程接口)。
 
 (5 to 1 by -1) foreach ( println )
@@ -306,7 +307,7 @@ s(1)
 // 为什么有这个？
 val divideInts = (x:Int, y:Int) => (x / y, x % y)
 
-divideInts(10,3) // 函数 divideInts 返回您结果和余数
+divideInts(10,3) // 函数 divideInts 同时返回结果和余数
 
 // 要读取元组的元素，使用 _._n，n是从1开始的元素索引
 val d = divideInts(10,3)
@@ -322,9 +323,9 @@ d._2
 
 /*
   旁白: 教程中到现在为止我们所做的一切只是简单的表达式（值，函数等）。
-  这些表达示可以输入到命令行解释器中作为快速测试，但它们无法单一的存在于 Scala 
-  文件。举个例子，您不能在 Scala 文件上简单的写上 "val x = 5"。而 Scala 允许存
-  在的顶级结构是：
+  这些表达式可以输入到命令行解释器中作为快速测试，但它们不能独立存在于 Scala 
+  文件。举个例子，您不能在 Scala 文件上简单的写上 "val x = 5"。相反 Scala 文件
+  允许的顶级结构是：
 
   - objects
   - classes
@@ -346,7 +347,7 @@ class Dog(br: String) {
   private def sleep(hours: Int) =
     println(s"I'm sleeping for $hours hours")
 
-  // 抽象方法是没有方法体的方法。如果取消下面那行注释，Dog 类需要被声明为 abstract
+  // 抽象方法是没有方法体的方法。如果取消下面那行注释，Dog 类必须被声明为 abstract
   //   abstract class Dog(...) { ... }
   // def chaseAfter(what: String): String
 }
@@ -397,7 +398,7 @@ val otherGeorge = george.copy(phoneNumber = "9876")
 /////////////////////////////////////////////////
 
 // 模式匹配是一个强大和常用的 Scala 特性。这是用模式匹配一个 case 类的例子。
-// 留意：不像其他语言， Scala 的 case 不需要 break， 其他语言中 switch 语句的
+// 附注：不像其他语言， Scala 的 case 不需要 break， 其他语言中 switch 语句的
 // fall-through 现象不会发生。
 
 def matchPerson(person: Person): String = person match {
@@ -457,7 +458,7 @@ List(1, 2, 3) map add10 // List(11, 12, 13) - add10 被应用到每一个元素
 // 匿名函数可以被使用来代替有命名的函数：
 List(1, 2, 3) map (x => x + 10)
 
-// 下划线标志，如果匿名函数只有一个参数可以被使用来表示该参数变量
+// 如果匿名函数只有一个参数可以用下划线作为变量
 List(1, 2, 3) map (_ + 10)
 
 // 如果您所应用的匿名块和匿名函数都接受一个参数，那么你甚至可以省略下划线
@@ -475,7 +476,7 @@ sSquared.filter(_ < 10)
 
 sSquared.reduce (_+_)
 
-// filter 函数接受一个 predicate （函数从 A -> Boolean）并选择
+// filter 函数接受一个 predicate （函数根据条件 A 返回 Boolean）并选择
 // 所有满足 predicate 的元素
 List(1, 2, 3) filter (_ > 2) // List(3)
 case class Person(name:String, age:Int)
@@ -514,8 +515,8 @@ for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
  * 就不可能做有意义的事情。这章节主要让你理解和使用隐式转换，而不是自己声明。
  */
 
-// 任何值（val, 函数，对象等）可以被声明为隐式的，你可以猜到的，通过加上 "implicit"
-// 关键字。请注意这些例子中，我们用到第5部分的 Dog 类。
+// 可以通过 "implicit" 声明任何值（val, 函数，对象等）为隐式值，
+// 请注意这些例子中，我们用到第5部分的 Dog 类。
 implicit val myImplicitInt = 100
 implicit def myImplicitFunction(breed: String) = new Dog("Golden " + breed)
 
@@ -542,13 +543,13 @@ def foo[T : C] = ...
 
 // 编译器寻找隐式值另一种情况是你调用方法时
 //   obj.method(...)
-// 但 "obj" 没有一个名为 "method" 的方法。这样的话，如果存在一个将类型 A 
-// 转变为 B 的隐式转换，A 是 obj 的类型，B有一个叫 "method" 的方法，这样
+// 但 "obj" 没有一个名为 "method" 的方法。这样的话，如果有一个参数类型为 A
+// 返回值类型为 B 的隐式转换，obj 的类型是 A，B 有一个方法叫 "method" ，这样
 // 转换就会被应用。所以作用域里有上面的 myImplicitFunction, 我们可以这样做：
 "Retriever".breed  // => "Golden Retriever"
 "Sheperd".bark  // => "Woof, woof!"
 
-// 这里字符串先被上面的函数转换为 Dog 对象，然后调用合适的方法。
+// 这里字符串先被上面的函数转换为 Dog 对象，然后调用相应的方法。
 // 这是相当强大的特性，但再次提醒，请勿轻率使用。
 // 事实上，当你定义上面的隐式函数时，编译器会作出警告，除非你真的了解
 // 你正在做什么否则不要使用。
@@ -585,7 +586,7 @@ object Application {
 
 
 
-// 输入输出
+// 输入和输出
 
 // 按行读文件
 import scala.io.Source
