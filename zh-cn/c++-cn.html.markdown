@@ -282,7 +282,7 @@ public:
     void bark() const { std::cout << name << " barks!\n" }
 
     // 除了构造器以外，C++还提供了析构器。
-    // 当一个对象被删除或者脱离其定义域时时，它的析构函数会被调用。
+    // 当一个对象被删除或者脱离其定义域时，它的析构函数会被调用。
     // 这使得RAII这样的强大范式（参见下文）成为可能。
     // 为了衍生出子类来，基类的析构函数必须定义为虚函数。
     virtual ~Dog();
@@ -353,7 +353,7 @@ class OwnedDog : public Dog {
 
     // 重写OwnedDogs类的print方法。
     // 如果你不熟悉子类多态的话，可以参考这个页面中的概述：
-    // http://en.wikipedia.org/wiki/Polymorphism_(computer_science)#Subtyping
+    // http://zh.wikipedia.org/wiki/%E5%AD%90%E7%B1%BB%E5%9E%8B
 
     // override关键字是可选的，它确保你所重写的是基类中的方法。
     void print() const override;
