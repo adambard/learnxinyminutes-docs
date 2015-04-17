@@ -289,8 +289,6 @@ public:
 
 }; // 在类的定义之后，要加一个分号
 
-}; // 记住，在类的定义之后，要加一个分号！
-
 // 类的成员函数通常在.cpp文件中实现。
 void Dog::Dog()
 {
@@ -302,22 +300,6 @@ void Dog::Dog()
 void Dog::setName(const std::string& dogsName)
 {
     name = dogsName;
-}
-
-void Dog::setWeight(int dogsWeight)
-{
-    weight = dogsWeight;
-}
-
-// 虚函数的virtual关键字只需要在声明时使用，不需要在定义时出现
-void Dog::print() const
-{
-    std::cout << "Dog is " << name << " and weighs " << weight << "kg\n";
-}
-
-void Dog::~Dog()
-{
-    cout << "Goodbye " << name << "\n";
 }
 
 void Dog::setWeight(int dogsWeight)
