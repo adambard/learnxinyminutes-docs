@@ -97,7 +97,7 @@ true == false // false
   这意味着计算 1 + 7 的结果是一个 Int 类型的对象，其值为 8
 
   注意 "res29" 是一个连续生成的变量名，用以存储您输入的表达式结果，
-  您看到的输入可能不一样。
+  您看到的输出可能不一样。
 */
 
 "Scala strings are surrounded by double quotes"
@@ -486,7 +486,9 @@ List(
 ).filter(_.age > 25) // List(Person("Bob", 30))
 
 
-// Scala 的 foreach 方法定义在特定集合中，接受一个类型并返回 Unit （void 方法）
+// Scala 的 foreach 方法定义在某些集合中，接受一个函数并返回 Unit （void 方法）
+// 另请参见：
+// http://www.scala-lang.org/api/current/index.html#scala.collection.IterableLike@foreach(f:A=>Unit):Unit
 val aListOfNumbers = List(1, 2, 3, 4, 10, 20, 100)
 aListOfNumbers foreach (x => println(x))
 aListOfNumbers foreach println
