@@ -13,7 +13,7 @@ executable pseudocode.
 
 Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
 
-Note: This article applies to Python 3 specifically. Check out the other tutorial if you want to learn the old Python 2.7
+Note: This article applies to Python 3 specifically. Check out [here](http://learnxinyminutes.com/docs/python/) if you want to learn the old Python 2.7
 
 ```python
 
@@ -276,7 +276,7 @@ empty_set = set()
 # Initialize a set with a bunch of values. Yeah, it looks a bit like a dict. Sorry.
 some_set = {1, 1, 2, 2, 3, 4}   # some_set is now {1, 2, 3, 4}
 
-#Can set new variables to a set
+# Can set new variables to a set
 filled_set = some_set
 
 # Add one more item to the set 
@@ -394,7 +394,6 @@ our_iterator.__next__() # Raises StopIteration
 list(filled_dict.keys())  #=> Returns ["one", "two", "three"]
 
 
-
 ####################################################
 ## 4. Functions
 ####################################################
@@ -410,14 +409,12 @@ add(5, 6)   # => prints out "x is 5 and y is 6" and returns 11
 # Another way to call functions is with keyword arguments
 add(y=6, x=5)   # Keyword arguments can arrive in any order.
 
-
 # You can define functions that take a variable number of
 # positional arguments
 def varargs(*args):
     return args
 
 varargs(1, 2, 3)   # => (1, 2, 3)
-
 
 # You can define functions that take a variable number of
 # keyword arguments, as well
@@ -501,7 +498,9 @@ class Human(object):
     # Basic initializer, this is called when this class is instantiated.
     # Note that the double leading and trailing underscores denote objects
     # or attributes that are used by python but that live in user-controlled
-    # namespaces. You should not invent such names on your own.
+    # namespaces. Methods(or objects or attributes) like: __init__, __str__, 
+    # __repr__ etc. are called magic methods (or sometimes called dunder methods)  
+    # You should not invent such names on your own.
     def __init__(self, name):
         # Assign the argument to the instance's name attribute
         self.name = name
@@ -636,6 +635,7 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [The Official Docs](http://docs.python.org/3/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
+* [Python Course](http://www.python-course.eu/index.php)
 
 ### Dead Tree
 

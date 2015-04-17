@@ -186,7 +186,7 @@ val sq: Int => Int = x => x * x
 // Anonymous functions can be called as usual:
 sq(10)   // => 100
 
-// If your anonymous function has one or two arguments, and each argument is
+// If each argument in your anonymous function is
 // used only once, Scala gives you an even shorter way to define them. These
 // anonymous functions turn out to be extremely common, as will be obvious in
 // the data structure section.
@@ -465,6 +465,7 @@ val patternFunc: Person => String = {
 // Scala allows methods and functions to return, or take as parameters, other
 // functions or methods.
 
+val add10: Int => Int = _ + 10 // A function taking an Int and returning an Int
 List(1, 2, 3) map add10 // List(11, 12, 13) - add10 is applied to each element
 
 // Anonymous functions can be used instead of named functions:

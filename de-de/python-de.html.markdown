@@ -149,7 +149,7 @@ li[0] #=> 1
 # Das letzte Element ansehen
 li[-1] #=> 3
 
-# Bei Zugriffen außerhal der Liste kommt es jedoch zu einem IndexError
+# Bei Zugriffen außerhalb der Liste kommt es jedoch zu einem IndexError
 li[4] # Raises an IndexError
 
 # Wir können uns Ranges mit Slice-Syntax ansehen
@@ -188,7 +188,7 @@ tup[:2] #=> (1, 2)
 
 # Wir können Tupel (oder Listen) in Variablen entpacken
 a, b, c = (1, 2, 3)     # a ist jetzt 1, b ist jetzt 2 und c ist jetzt 3
-# Tuple werden standardmäßig erstellt, wenn wir uns die Klammern sparen
+# Tupel werden standardmäßig erstellt, wenn wir uns die Klammern sparen
 d, e, f = 4, 5, 6
 # Es ist kinderleicht zwei Werte zu tauschen
 e, d = d, e     # d is now 5 and e is now 4

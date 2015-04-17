@@ -206,7 +206,7 @@ max(X, Y) ->
   if
     X > Y -> X;
     X < Y -> Y;
-    true -> nil;
+    true -> nil
   end.
 
 % Warning: at least one of the guards in the `if` expression must evaluate to true;
