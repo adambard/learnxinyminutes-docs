@@ -1,9 +1,12 @@
 ---
 category: tool
 tool: tmux
+filename: LearnTmux-cn.txt
 contributors:
     - ["mdln", "https://github.com/mdln"]
-filename: LearnTmux.txt
+translators:
+    - ["Arnie97", "https://github.com/Arnie97"]
+lang: zh-cn
 ---
 
 
@@ -16,194 +19,191 @@ then later reattached.
 
 ```
 
-  tmux [command]     # Run a command
-                     # 'tmux' with no commands will create a new session
+  tmux [command]     # 运行一条命令
+                     # 如果忽略 'tmux' 之后的命令，将会建立一个新的会话
 
-    new              # Create a new session
-     -s "Session"    # Create named session
-     -n "Window"     # Create named Window
-     -c "/dir"       # Start in target directory
+    new              # 创建一个新的会话
+     -s "Session"    # 创建一个named会话
+     -n "Window"     # 创建一个named窗口
+     -c "/dir"       # 在指定的工作目录中启动会话
 
-    attach           # Attach last/available session
-     -t "#"          # Attach target session
-     -d              # Detach the session from other instances
+    attach           # 连接到上一次的会话（如果可用）
+     -t "#"          # 连接到指定的会话
+     -d              # 断开其他客户端的会话
 
-    ls               # List open sessions
-     -a              # List all open sessions
+    ls               # 列出打开的会话
+     -a              # 列出所有打开的会话
 
-    lsw              # List windows
-     -a              # List all windows
-     -s              # List all windows in session
+    lsw              # 列出窗口
+     -a              # 列出所有窗口
+     -s              # 列出会话中的所有窗口
 
-    lsp              # List panes
-     -a              # List all panes
-     -s              # List all panes in session
+    lsp              # 列出窗格
+     -a              # 列出所有窗格
+     -s              # 列出会话中的所有窗格
      -t              # List app panes in target
 
-    kill-window      # Kill current window
-     -t "#"          # Kill target window
-     -a              # Kill all windows
-     -a -t "#"       # Kill all windows but the target
+    kill-window      # 关闭当前窗口
+     -t "#"          # 关闭指定的窗口
+     -a              # 关闭所有窗口
+     -a -t "#"       # 关闭除指定窗口以外的所有窗口
 
-    kill-session     # Kill current session
-     -t "#"          # Kill target session
-     -a              # Kill all sessions
-     -a -t "#"       # Kill all sessions but the target
+    kill-session     # 关闭当前会话
+     -t "#"          # 关闭指定的会话
+     -a              # 关闭所有会话
+     -a -t "#"       # 关闭除指定会话以外的所有会话
 
 ```
 
 
-### Key Bindings
+## 快捷键
 
-The method of controlling an attached tmux session is via key
-combinations called 'Prefix' keys.
+# 通过“前缀”快捷键，可以控制一个已经连入的tmux会话。
 
 ```
 ----------------------------------------------------------------------
-  (C-b) = Ctrl + b    # 'Prefix' combination required to use keybinds
+  (C-b) = Ctrl + b    # 在使用下列快捷键之前，需要按这个“前缀”快捷键
 
-  (M-1) = Meta + 1 -or- Alt + 1
+  (M-1) = Meta + 1 或 Alt + 1
 ----------------------------------------------------------------------
 
-  ?                  # List all key bindings
-  :                  # Enter the tmux command prompt
-  r                  # Force redraw of the attached client
-  c                  # Create a new window
+  ?                  # 列出所有快捷键
+  :                  # 进入tmux的命令提示符
+  r                  # 强制重绘 the attached client
+  c                  # 创建一个新窗口
 
   !                  # Break the current pane out of the window.
-  %                  # Split the current pane into two, left and right
-  "                  # Split the current pane into two, top and bottom
+  %                  # 将当前窗格分为左右两半
+  "                  # 将当前窗格分为上下两半
 
-  n                  # Change to the next window
-  p                  # Change to the previous window
-  {                  # Swap the current pane with the previous pane
-  }                  # Swap the current pane with the next pane
+  n                  # 切换到下一个窗口
+  p                  # 切换到上一个窗口
+  {                  # 将当前窗格与上一个窗格交换
+  }                  # 将当前窗格与下一个窗格交换
 
-  s                  # Select a new session for the attached client
-                     interactively
-  w                  # Choose the current window interactively
-  0 to 9             # Select windows 0 to 9
+  s                  # 在交互式界面中，选择并连接至另一个会话
+  w                  # 在交互式界面中，选择并激活一个窗口
+  0 至 9             # 选择 0 到 9 号窗口
 
-  d                  # Detach the current client
-  D                  # Choose a client to detach
+  d                  # 断开当前客户端
+  D                  # 选择并断开一个客户端
 
-  &                  # Kill the current window
-  x                  # Kill the current pane
+  &                  # 关闭当前窗口
+  x                  # 关闭当前窗格
 
-  Up, Down           # Change to the pane above, below, left, or right
+  Up, Down           # 将焦点移动至相邻的窗格
   Left, Right
 
-  M-1 to M-5         # Arrange panes:
+  M-1 到 M-5         # 排列窗格：
                        # 1) even-horizontal
                        # 2) even-vertical
                        # 3) main-horizontal
                        # 4) main-vertical
                        # 5) tiled
 
-  C-Up, C-Down       # Resize the current pane in steps of one cell
+  C-Up, C-Down       # 改变当前窗格的大小，每按一次增减一个单位
   C-Left, C-Right
 
-  M-Up, M-Down       # Resize the current pane in steps of five cells
+  M-Up, M-Down       # 改变当前窗格的大小，每按一次增减五个单位
   M-Left, M-Right
 
 ```
 
 
-### Configuring ~/.tmux.conf
+### 配置 ~/.tmux.conf
 
-tmux.conf can be used to set options automatically on start up, much
-like how .vimrc or init.el are used.
+tmux.conf 可以在 tmux 启动时自动设置选项，类似于 .vimrc 或 init.el 的用法。
 
 ```
-# Example tmux.conf
+# tmux.conf 示例
 # 2014.10
 
 
-### General
+### 通用设置
 ###########################################################################
 
-# Enable UTF-8
+# 启用 UTF-8 编码
 setw -g utf8 on
 set-option -g status-utf8 on
 
-# Scrollback/History limit
+# 命令回滚/历史数量限制
 set -g history-limit 2048
 
 # Index Start
 set -g base-index 1
 
-# Mouse
+# 启用鼠标
 set-option -g mouse-select-pane on
 
-# Force reload of config file
+# 重新加载配置文件
 unbind r
 bind r source-file ~/.tmux.conf
 
 
-### Keybinds
+### 快捷键设置
 ###########################################################################
 
-# Unbind C-b as the default prefix
+# 取消默认的前缀键 C-b
 unbind C-b
 
-# Set new default prefix
+# 设置新的前缀键
 set-option -g prefix `
 
-# Return to previous window when prefix is pressed twice
+# 再次按下前缀键时，回到之前的窗口
 bind C-a last-window
 bind ` last-window
 
-# Allow swapping C-a and ` using F11/F12
+# 按下F11/F12，可以选择不同的前缀键
 bind F11 set-option -g prefix C-a
 bind F12 set-option -g prefix `
 
-# Keybind preference
+# Vim 风格的快捷键绑定
 setw -g mode-keys vi
 set-option -g status-keys vi
 
-# Moving between panes with vim movement keys
+# 使用 vim 风格的按键在窗格间移动
 bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
-# Window Cycle/Swap
+# 循环切换不同的窗口
 bind e previous-window
 bind f next-window
 bind E swap-window -t -1
 bind F swap-window -t +1
 
-# Easy split pane commands
+# 较易于使用的窗格分割快捷键
 bind = split-window -h
 bind - split-window -v
 unbind '"'
 unbind %
 
-# Activate inner-most session (when nesting tmux) to send commands
+# 在嵌套使用 tmux 的情况下，激活最内层的会话，以便向其发送命令
 bind a send-prefix
 
 
-### Theme
+### 外观主题
 ###########################################################################
 
-# Statusbar Color Palatte
+# 状态栏颜色
 set-option -g status-justify left
 set-option -g status-bg black
 set-option -g status-fg white
 set-option -g status-left-length 40
 set-option -g status-right-length 80
 
-# Pane Border Color Palette
-set-option -g pane-active-border-fg green
-set-option -g pane-active-border-bg black
-set-option -g pane-border-fg white
-set-option -g pane-border-bg black
+# 窗格边框颜色
+set-option -g 窗格-active-border-fg green
+set-option -g 窗格-active-border-bg black
+set-option -g 窗格-border-fg white
+set-option -g 窗格-border-bg black
 
-# Message Color Palette
+# 消息框颜色
 set-option -g message-fg black
 set-option -g message-bg green
 
-# Window Status Color Palette
+# 窗口状态栏颜色
 setw -g window-status-bg black
 setw -g window-status-current-fg green
 setw -g window-status-bell-attr default
@@ -214,38 +214,38 @@ setw -g window-status-activity-attr default
 setw -g window-status-activity-fg yellow
 
 
-### UI
+### 用户界面
 ###########################################################################
 
-# Notification
+# 通知方式
 setw -g monitor-activity on
 set -g visual-activity on
 set-option -g bell-action any
 set-option -g visual-bell off
 
-# Automatically set window titles
+# 自动设置窗口标题
 set-option -g set-titles on
-set-option -g set-titles-string '#H:#S.#I.#P #W #T' # window number,program name,active (or not)
+set-option -g set-titles-string '#H:#S.#I.#P #W #T' # 窗口编号,程序名称,是否活动
 
-# Statusbar Adjustments
+# 调整状态栏
 set -g status-left "#[fg=red] #H#[fg=green]:#[fg=white]#S#[fg=green] |#[default]"
 
-# Show performance counters in statusbar
-# Requires https://github.com/thewtex/tmux-mem-cpu-load/
+# 在状态栏中显示性能计数器
+# 需要用到 https://github.com/thewtex/tmux-mem-cpu-load
 set -g status-interval 4
 set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | #[fg=cyan]%H:%M #[default]"
 
 ```
 
 
-### References
+### 参考资料
 
-[Tmux | Home](http://tmux.sourceforge.net)
+[Tmux 主页](http://tmux.sourceforge.net)
 
-[Tmux Manual page](http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/tmux.1?query=tmux)
+[Tmux 手册](http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/tmux.1?query=tmux)
 
 [Gentoo Wiki](http://wiki.gentoo.org/wiki/Tmux)
 
 [Archlinux Wiki](https://wiki.archlinux.org/index.php/Tmux)
 
-[Display CPU/MEM % in statusbar](https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux)
+[如何在 tmux 状态栏中显示 CPU / 内存占用百分比](https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux)
