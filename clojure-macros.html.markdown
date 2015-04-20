@@ -109,7 +109,7 @@ You'll want to be familiar with Clojure. Make sure you understand everything in
 (list x) ; -> (4)
 
 ;; It's typical to use helper functions with macros. Let's create a few to
-;; help us support a (dumb) inline arithmatic syntax
+;; help us support a (dumb) inline arithmetic syntax
 (declare inline-2-helper)
 (defn clean-arg [arg]
   (if (seq? arg)
