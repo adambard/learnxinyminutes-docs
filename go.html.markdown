@@ -179,6 +179,8 @@ func learnFlowControl() {
 		// Cases don't "fall through".
 	case 43:
 		// Unreached.
+	default:
+		// Default case is optional.
 	}
 	// Like if, for doesn't use parens either.
 	// Variables declared in for and if are local to their scope.
