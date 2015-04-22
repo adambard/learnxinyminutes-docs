@@ -181,6 +181,10 @@ func learnFlowControl() {
 	case 1:
 	case 42:
 		// Cases don't "fall through".
+		/*
+		There is a `fallthrough` keyword however, see:
+		  https://github.com/golang/go/wiki/Switch#fall-through
+		*/
 	case 43:
 		// Unreached.
 	default:
