@@ -101,6 +101,8 @@ False or True #=> True
 
 # Strings can be added too! But try not to do this.
 "Hello " + "world!"  # => "Hello world!"
+# Strings can be added without using '+'
+"Hello " "world!"  # => "Hello world!"
 
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
