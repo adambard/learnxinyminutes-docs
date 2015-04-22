@@ -101,6 +101,8 @@ not False  # => True
 
 # Strings can be added too!
 "Hello " + "world!"  # => "Hello world!"
+# Strings can be added without using '+'
+"Hello " "world!"  # => "Hello world!"
 
 # ... or multiplied
 "Hello" * 3  # => "HelloHelloHello"
