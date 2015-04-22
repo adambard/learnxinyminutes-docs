@@ -132,10 +132,16 @@ None is None  # => True
 
 # None, 0, and empty strings/lists/dicts all evaluate to False.
 # All other values are True
-bool(0)  # => False
+bool(0)   # => False
 bool("")  # => False
-bool([]) #=> False
-bool({}) #=> False
+bool([])  # => False
+bool({})  # => False
+# Don't use the equality symbol to check if an object is True False
+# Use "is" instead. This checks for equality of object identity.
+0 is True    # => False
+0 is False   # => True
+1 is True  # => True
+[] is False  # => True
 
 
 ####################################################
@@ -337,6 +343,18 @@ prints:
     3
 """
 for i in range(4):
+    print(i)
+
+"""
+"range(lower, upper)" returns a list of numbers
+from the lower number to the upper number
+prints:
+    4
+    5
+    6
+    7
+"""
+for i in range(4, 8):
     print(i)
 
 """
