@@ -573,13 +573,15 @@ nil                  ; for false - and the empty list
     "While `condition` is true, `body` is executed.
 
 `condition` is tested prior to each execution of `body`"
-    (let ((block-name (gensym)))
+    (let ((block-name (gensym)) (done (gensym)))
         `(tagbody
+           ,block-name
            (unless ,condition
-               (go ,block-name))
+               (go ,done))
            (progn
            ,@body)
-           ,block-name)))
+           (go ,block-name)
+           ,done)))
 
 ;; Let's look at the high-level version of this:
 
