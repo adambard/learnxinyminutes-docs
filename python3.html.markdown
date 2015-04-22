@@ -99,8 +99,10 @@ False or True #=> True
 "This is a string."
 'This is also a string.'
 
-# Strings can be added too! But try not to do this.
+# Strings can be added too!
 "Hello " + "world!"  # => "Hello world!"
+# Strings can be added without using '+'
+"Hello " "world!"  # => "Hello world!"
 
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
