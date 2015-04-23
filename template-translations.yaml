@@ -1,0 +1,15 @@
+default:
+  title: Learn X in Y minutes
+  where: Where X=
+  getCode: "Get the code:"
+  share: Share this page
+  suggestions: "Got a suggestion? A correction, perhaps? <a href=\"%s\">Open an Issue</a> on the Github Repo, or make a pull request yourself!"
+  contributor: "Originally contributed by %s, and updated by <a href=\"%s\">%d contributors</a>."
+
+zh_CN:
+  title: X分钟速成Y
+  where: 其中 Y=
+  getCode: 源代码下载：
+  share: 分享此页
+  suggestions: "有建议？或者发现什么错误？在Github上<a href=\"%s\">开一个issue</a>，或者你自己也可以写一个pull request！"
+  contributor: "原著%s，并由<a href=\"%s\">%d个好心人</a>修改。"
