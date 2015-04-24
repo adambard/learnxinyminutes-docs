@@ -141,14 +141,8 @@ bool("")  # => False
 ## 2. Variables and Collections
 ####################################################
 
-# Python has a print statement, in all 2.x versions but removed from 3.
+# Python has a print statement
 print "I'm Python. Nice to meet you!"
-# Python also has a print function, available in versions 2.7 and 3...
-# but for 2.7 you need to add the import (uncommented):
-from __future__ import print_function
-print("I'm also Python! ")
-# This is useful to maintain compatibility,
-# but for this doc, we'll use the python 2 print statement
 
 # No need to declare variables before assigning to them.
 some_var = 5    # Convention is to use lower_case_with_underscores
