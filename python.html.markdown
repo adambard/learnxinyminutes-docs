@@ -568,7 +568,7 @@ dir(math)
 ## 7. Advanced
 ####################################################
 
-# Generators help you make lazy code
+# Generators help you make efficient code
 def double_numbers(iterable):
     for i in iterable:
         yield i + i
@@ -577,6 +577,8 @@ def double_numbers(iterable):
 # Instead of generating and returning all values at once it creates one in each
 # iteration.  This means values bigger than 15 wont be processed in
 # double_numbers.
+# Also, it means that the entire list won't be stored in memory.
+# This is a major advantage for larger lists.
 # Note xrange is a generator that does the same thing range does.
 # Creating a list 1-900000000 would take lot of time and space to be made.
 # xrange creates an xrange generator object instead of creating the entire list
