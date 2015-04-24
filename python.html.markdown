@@ -347,6 +347,18 @@ for i in range(4):
     print(i)
 
 """
+"range(lower, upper)" returns a list of numbers
+from the lower number to the upper number
+prints:
+    4
+    5
+    6
+    7
+"""
+for i in range(4, 8):
+    print(i)
+
+"""
 While loops go until a condition is no longer met.
 prints:
     0
