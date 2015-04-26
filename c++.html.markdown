@@ -32,8 +32,7 @@ one of the most widely-used programming languages.
 // variable declarations, primitive types, and functions.
 
 // Just like in C, your program's entry point is a function called
-// main with an integer return type,
-// though void main() is also accepted by most compilers (gcc, clang, etc.)
+// main with an integer return type.
 // This value serves as the program's exit status.
 // See http://en.wikipedia.org/wiki/Exit_status for more information.
 int main(int argc, char** argv)
