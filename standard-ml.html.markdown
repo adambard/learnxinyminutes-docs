@@ -3,6 +3,7 @@ language: "Standard ML"
 contributors:
     - ["Simon Shine", "http://shine.eu.org/"]
     - ["David Pedersen", "http://lonelyproton.com/"]
+    - ["James Baker", "http://www.jbaker.io/"]
 ---
 
 Standard ML is a functional programming language with type inference and some
