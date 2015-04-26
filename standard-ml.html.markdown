@@ -383,6 +383,25 @@ val test_poem = readPoem "roses.txt"  (* gives [ "Roses are red,",
                                                  "Violets are blue.",
                                                  "I have a gun.",
                                                  "Get in the van." ] *)
+
+(* We can create references to data which can be updated *)
+val counter = ref 0 (* Produce a reference with the ref function *)
+
+(* Assign to a reference with the assignment operator *)
+fun set_five reference = reference := 5
+
+(* Read a reference with the dereference operator *)
+fun equals_five reference = !reference = 5
+
+(* We can use while loops for when recursion is messy *)
+fun decrement_to_zero r = if !r < 0
+                          then r := 0
+                          else while !r >= 0 do r := !r - 1
+
+(* This returns the unit value (in practical terms, nothing, a 0-tuple) *)
+
+(* To allow returning a value, we can use the semicolon to sequence evaluations *)
+fun decrement_ret x y = (x := !x - 1; y)
 ```
 
 ## Further learning
