@@ -8,8 +8,8 @@ contributors:
 Standard ML is a functional programming language with type inference and some
 side-effects.  Some of the hard parts of learning Standard ML are: Recursion,
 pattern matching, type inference (guessing the right types but never allowing
-implicit type conversion).  If you have an imperative background, not being able
-to update variables can feel severely inhibiting.
+implicit type conversion). Standard ML is distinguished from Haskell by including
+references, allowing variables to be updated.
 
 ```ocaml
 (* Comments in Standard ML begin with (* and end with *).  Comments can be
