@@ -10,6 +10,7 @@ contributors:
     - ["Anton Strömkvist", "http://lutic.org/"]
     - ["Rahil Momin", "https://github.com/iamrahil"]
     - ["Gregrory Kielian", "https://github.com/gskielian"]
+    - ["Etan Reisner", "https://github.com/deryni"]
 filename: LearnBash.sh
 ---
 
