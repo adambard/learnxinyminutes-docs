@@ -3,13 +3,14 @@ language: "Standard ML"
 contributors:
     - ["Simon Shine", "http://shine.eu.org/"]
     - ["David Pedersen", "http://lonelyproton.com/"]
+    - ["James Baker", "http://www.jbaker.io/"]
 ---
 
 Standard ML is a functional programming language with type inference and some
 side-effects.  Some of the hard parts of learning Standard ML are: Recursion,
 pattern matching, type inference (guessing the right types but never allowing
-implicit type conversion).  If you have an imperative background, not being able
-to update variables can feel severely inhibiting.
+implicit type conversion). Standard ML is distinguished from Haskell by including
+references, allowing variables to be updated.
 
 ```ocaml
 (* Comments in Standard ML begin with (* and end with *).  Comments can be
@@ -383,6 +384,25 @@ val test_poem = readPoem "roses.txt"  (* gives [ "Roses are red,",
                                                  "Violets are blue.",
                                                  "I have a gun.",
                                                  "Get in the van." ] *)
+
+(* We can create references to data which can be updated *)
+val counter = ref 0 (* Produce a reference with the ref function *)
+
+(* Assign to a reference with the assignment operator *)
+fun set_five reference = reference := 5
+
+(* Read a reference with the dereference operator *)
+fun equals_five reference = !reference = 5
+
+(* We can use while loops for when recursion is messy *)
+fun decrement_to_zero r = if !r < 0
+                          then r := 0
+                          else while !r >= 0 do r := !r - 1
+
+(* This returns the unit value (in practical terms, nothing, a 0-tuple) *)
+
+(* To allow returning a value, we can use the semicolon to sequence evaluations *)
+fun decrement_ret x y = (x := !x - 1; y)
 ```
 
 ## Further learning
