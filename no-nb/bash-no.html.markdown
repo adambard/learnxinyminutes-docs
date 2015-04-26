@@ -23,7 +23,7 @@ Mac OS X.
 
 ```bash
 #!/bin/bash
-# Den første linjen i et bash skript starter med `#!' (shebang) 
+# Den første linjen i et bash skript starter med '#!' (shebang) 
 # etterfulgt av stien til bash http://en.wikipedia.org/wiki/Shebang_(Unix)
 # Kommentarer starter med #.
 
@@ -45,15 +45,15 @@ VARIABLE = "En tekststreng"
 echo $VARIABLE
 echo "$VARIABLE"
 echo '$VARIABLE'
-# Når du bruker variabelen - setter verdien, eksporterer den, og linkende -
+# Når du bruker variabelen, for eksempel setter verdien eller eksporterer den, 
 # skriver du navnet dens uten $. Hvis du vil bruke variabelens verdi, 
 # skriver du $ før variabelnavnet.
 
 # Strenginnhold i en variabel kan erstattes på følgende måte:
 echo ${VARIABLE/tull/ball}
-# Dette vil erstatte første forekomst av `tull' med `ball'
+# Dette vil erstatte første forekomst av 'tull' med 'ball'
 
-# Substreng (delstreng) av en variabel:
+# Substreng av en variabel:
 echo ${VARIABLE:0:7}
 # Dette vil returnere de første 7 tegnene i en strengvariabel
 
@@ -70,7 +70,7 @@ echo "Argumenter til skriptet i egne variable: $1 $2..."
 
 # Lesing av input:
 echo "Hva heter du?"
-read NAME # variabelen NAME blir automatisk deklarert av `read' kommandoen
+read NAME # variabelen NAME blir automatisk deklarert av 'read' kommandoen
 echo Hei, $NAME!
 
 # if setninger ser slik ut:
@@ -114,12 +114,8 @@ ls -l # Skriv hver fil og mappe på sin egen linje
 # Ved å bruke grep kan vi skrive ut kun .txt filer på følgende måte:
 ls -l | grep "\.txt" # lær mer om grep ved å skrive 'man grep'
 
-# You can redirect command input and output (stdin, stdout, and stderr).
-# Read from stdin until ^EOF$ and overwrite hello.py with the lines
-# between "EOF":
-
 # Input og output fra filer kan dirigeres (stdin, stdout og stderr).
-# "cat" kommandoen uten argumenter skriver fra stdin til stdout.
+# 'cat' kommandoen uten argumenter skriver fra stdin til stdout.
 # I det følgende eksempelet overskrives filen hello.py med linjene mellom EOF.
 cat > hello.py << EOF
 #!/usr/bin/env python
@@ -131,128 +127,123 @@ for line in sys.stdin:
     print(line, file=sys.stdout)
 EOF
 
-# Kjør hello.py with ulike stdin, stdout, and stderr omdirigeringer:
+# Kjør hello.py (et python skript) 
+# med ulike stdin, stdout, and stderr omdirigeringer:
 python hello.py < "input.in"
 python hello.py > "output.out"
 python hello.py 2> "error.err"
 python hello.py > "output-and-error.log" 2>&1
 python hello.py > /dev/null 2>&1
-# ">" operatoren overskriver filen dersom den finnes.
-# Hvis du heller vil legge til på slutten av en eksisterende fil, bruk ">>"
+# '>' operatoren overskriver filen dersom den finnes.
+# Hvis du heller vil legge til på slutten av en eksisterende fil, bruk '>>'
 python hello.py >> "output.out" 2>> "error.err"
 
-# Overskriv output.txt, legg til error.err, og tell antall linjer med "wc":
+# Overskriv output.txt, legg til error.err, og tell antall linjer med 'wc':
 info bash 'Basic Shell Features' 'Redirections' > output.out 2>> error.err
 wc -l output.out error.err
 
 # Run a command and print its file descriptor (e.g. /dev/fd/123)
-# see: man fd
+# Kjør en kommando og print tilhørende 'file descriptor'
+# se 'man fd'
 echo <(echo "#helloworld")
 
-# Overwrite output.txt with "#helloworld":
+# Ulike måter å overskrive output.out med '#helloworld':
 cat > output.out <(echo "#helloworld")
 echo "#helloworld" > output.out
 echo "#helloworld" | cat > output.out
 echo "#helloworld" | tee output.out >/dev/null
 
-# Cleanup temporary files verbosely (add '-i' for interactive)
+# Slett noen filer med økt verbositet '-v', legg til '-i' for interaktiv modus
 rm -v output.out error.err output-and-error.log
 
-# Commands can be substituted within other commands using $( ):
-# The following command displays the number of files and directories in the
-# current directory.
+# Kommandoer kan kjøres i deklarasjonen av andre kommandoer ved å bruke $( ):
+# Følgende kommando skriver antall filer og mapper i nåværende mappe
 echo "There are $(ls | wc -l) items here."
 
-# The same can be done using backticks `` but they can't be nested - the preferred way
-# is to use $( ).
+# Det samme kan gjøres med backticks `` men de kan ikke være nøstede,
+# det anbefales å bruke $( ) slik som i forrige eksempel.
 echo "There are `ls | wc -l` items here."
 
-# Bash uses a case statement that works similarly to switch in Java and C++:
+# Bash har en 'case' setning som fungerer omtrent som en 'switch' i Java/C:
 case "$VARIABLE" in 
-    #List patterns for the conditions you want to meet
+    # Skriv ønskede match med tilhørende kommandoer
     0) echo "There is a zero.";;
     1) echo "There is a one.";;
     *) echo "It is not null.";;
 esac
 
-# for loops iterate for as many arguments given:
-# The contents of $VARIABLE is printed three times.
+# for løkker kan iterere over en mengde argumenter:
 for VARIABLE in {1..3}
 do
     echo "$VARIABLE"
 done
 
-# Or write it the "traditional for loop" way:
+# Eller vi kan skrive en for løkke omtrent slik det kan gjøres i Java/C:
 for ((a=1; a <= 3; a++))
 do
     echo $a
 done
 
-# They can also be used to act on files..
-# This will run the command 'cat' on file1 and file2
-for VARIABLE in file1 file2
-do
-    cat "$VARIABLE"
-done
-
-# ..or the output from a command
-# This will cat the output from ls.
+# Man kan også iterere over resultatet av en annen kommando.
 for OUTPUT in $(ls)
 do
     cat "$OUTPUT"
 done
 
-# while loop:
+# while løkke, se if setninger:
 while [ true ]
 do
     echo "loop body here..."
     break
 done
 
-# You can also define functions
-# Definition:
+# Man kan også definere funksjoner.
+# Definisjon:
 function foo ()
 {
-    echo "Arguments work just like script arguments: $@"
-    echo "And: $1 $2..."
-    echo "This is a function"
+    echo "Argumenter fungerer akkurat som skript argumenter: $@"
+    echo "Og: $1 $2..."
+    echo "Dette er en funksjon"
     return 0
 }
 
-# or simply
+# eller bare:
 bar ()
 {
-    echo "Another way to declare functions!"
+    echo "En annen måte å deklarere en funksjon."
     return 0
 }
 
-# Calling your function
-foo "My name is" $NAME
+# Å kalle en funksjon:
+foo "Mitt navn er" $NAME
 
 # There are a lot of useful commands you should learn:
 # prints last 10 lines of file.txt
+# Det er mange nyttige kommandoer du bør lære deg:
+# "tail" skriver ut slutten av en fil, i dette tilfellet de siste 10 linjene
 tail -n 10 file.txt
-# prints first 10 lines of file.txt
+# skriv ut de første 10 linjene av file.txt
 head -n 10 file.txt
-# sort file.txt's lines
+# sorter linjene i file.txt ("man sort")
 sort file.txt
-# report or omit repeated lines, with -d it reports them
+# skriv ut eller fjern repeterte linjer, med -d skrives de ut
 uniq -d file.txt
-# prints only the first column before the ',' character
+# skriver kun den første kolonnen før ',' tegnet
 cut -d ',' -f 1 file.txt
-# replaces every occurrence of 'okay' with 'great' in file.txt, (regex compatible)
-sed -i 's/okay/great/g' file.txt
-# print to stdout all lines of file.txt which match some regex
-# The example prints lines which begin with "foo" and end in "bar"
+# erstatter hvert tilfelle av 'bjarne' med 'alfa' i file.txt,
+# sed støtter regulære uttrykk ("man sed").
+sed -i 's/bjarne/alfa/g' file.txt
+# skriv til stdout alle linjer i file.txt som matches av et regulært uttrykk
+# eksempelet skriver ut alle linjer som begynner med "foo" og slutter med "bar"
 grep "^foo.*bar$" file.txt
-# pass the option "-c" to instead print the number of lines matching the regex
+# skriv "-c" hvis du heller vil vite antall linjer som matcher
 grep -c "^foo.*bar$" file.txt
-# if you literally want to search for the string,
-# and not the regex, use fgrep (or grep -F)
+# hvis du vil matche en bestemt streng, og ikke et regulært uttrykk
+# bruker du enten "fgrep" eller ekvivalenten "grep -f"
 fgrep "^foo.*bar$" file.txt 
 
 
-# Read Bash shell builtins documentation with the bash 'help' builtin:
+# Les Bash sin egen dokumentasjon om innebygde konstruksjoner:
 help
 help help
 help for
@@ -260,18 +251,18 @@ help return
 help source
 help .
 
-# Read Bash manpage documentation with man
+# Les Bash sin "manpage":
 apropos bash
 man 1 bash
 man bash
 
-# Read info documentation with info (? for help)
+# Les "info" dokumentasjon:
 apropos info | grep '^info.*('
 man info
 info info
 info 5 info
 
-# Read bash info documentation:
+# Les bash sin info dokumentasjon:
 info bash
 info bash 'Bash Features'
 info bash 6
