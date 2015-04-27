@@ -40,9 +40,9 @@ VARIABLE = "Some string"
 # because it can't be found.
 
 # Or like this:
-Variable= 'Some string'
+VARIABLE= 'Some string'
 # Bash will decide that 'Some string' is a command it must execute and give an
-# error because it can't be found. (In this case the 'Variable=' part is seen
+# error because it can't be found. (In this case the 'VARIABLE=' part is seen
 # as a variable assignment valid only for the scope of the 'Some string'
 # command.)
 
