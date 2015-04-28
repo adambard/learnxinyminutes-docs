@@ -10,6 +10,7 @@ contributors:
     - ["Anton Strömkvist", "http://lutic.org/"]
     - ["Rahil Momin", "https://github.com/iamrahil"]
     - ["Gregrory Kielian", "https://github.com/gskielian"]
+    - ["Etan Reisner", "https://github.com/deryni"]
 filename: LearnBash.sh
 ---
 
@@ -36,7 +37,14 @@ VARIABLE="Some string"
 # But not like this:
 VARIABLE = "Some string"
 # Bash will decide that VARIABLE is a command it must execute and give an error
-# because it couldn't be found.
+# because it can't be found.
+
+# Or like this:
+VARIABLE= 'Some string'
+# Bash will decide that 'Some string' is a command it must execute and give an
+# error because it can't be found. (In this case the 'VARIABLE=' part is seen
+# as a variable assignment valid only for the scope of the 'Some string'
+# command.)
 
 # Using the variable:
 echo $VARIABLE
