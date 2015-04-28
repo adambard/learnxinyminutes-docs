@@ -349,7 +349,7 @@ public class LearnKotlin(firstName: String) {
   
   // Secondary constructors are prefixed with *constructor*.
   // Calling other constructors with *this* keyword.
-  class constructor(val firstName: String, val lastName) this(firstName) {
+  constructor(val firstName: String, val lastName) this(firstName) {
     // ...
   }
 }
