@@ -20,12 +20,12 @@ Multi-line comments look like this.
 */
 
 // Package specification should be at the top of the source file, but need not
-// to match the directory structure.
+// match the directory structure.
 package my.demo
 
 // Importing packages from java
-import java.util.ArrayList;
-import java.security.*;
+import java.util.ArrayList
+import java.security.*
 
 // import foo.Bar // Bar is accessible
 // import bar.Bar as bBar // bBar stands for 'bar.Bar'
@@ -46,7 +46,7 @@ fun kotlinBasics(name: String) {
           + "\nFloat tagged with F 123.5f:\t" + 123.5f
   )
 
-  // String literal, denoted by double quote. String are iterable
+  // String literal, denoted by double quotes. Strings are iterable
   for (c in "Hello, world!\n")
       println(c)
 
@@ -85,7 +85,7 @@ fun kotlinBasics(name: String) {
 
   
   // Local read-only variable.
-  val a: Int = 1;
+  val a: Int = 1
   val b = 1
   val c: Int // Type required when no initializer is provided
   c = 1
@@ -93,7 +93,7 @@ fun kotlinBasics(name: String) {
   // The following line generates compiler error
   // a += 1
 
-  // Local mutable value, it's type is inferred.
+  // Local mutable value, its type is computed.
   var x = 5
   x += 1
 
@@ -115,7 +115,7 @@ fun kotlinBasics(name: String) {
 
 // A function with no args, and return type not specified.
 fun funDemo() {
-  return 42;
+  return 42
 }
 
 // Function with both parameter and return type Int.
@@ -123,8 +123,8 @@ fun funDemoSum(a: Int, b: Int): Int {
   return a + b
 }
 
-// Return type automatically inferred. But such fuction is not visible outside 
-// the module.
+// Return type automatically inferred. But such a fuction is not visible 
+// outside the module.
 fun funDemoMax(a: Int, b: Int) = if (a > b) a else b
 
 // Returning no meaningful value, Unit keyword can be omitted.
@@ -222,9 +222,9 @@ fun loopDemo(args: Array<String>) {
 fun breakWitLabels() {
   @loop for (i in 1..100) {
     for (j in 1..100) {
-      if (...)
+      if ((i % j) == 0)
         // jumps to the execution point right after the loop marked with the 
-        // label. A continue would instead proceeds to the next iteration of 
+        // label. A continue would instead proceed to the next iteration of 
         // the loop
         break@loop
     }
@@ -266,19 +266,19 @@ fun nullChecking2(obj: Any): Int? {
 }
 
 // *If not null* shorthand 
-fun nullChecking3(obj: Any): Int? {
-  println(object?.length)
+fun nullChecking3(obj: Any?): Int? {
+  println(obj?.length)
 }
 
 // *If not null* shorthand with else
-fun nullChecking4(obj: Any): Int? {
-  println(object?.size ?: "empty")
+fun nullChecking4(obj: Any?): Int? {
+  println(obj?.size ?: "empty")
 }
 
 // The block inside let is executed only of obj is not null. No casting.
 fun nullChecking5(obj: Any): Int? {
   object?.let {
-    return 42;
+    return 42
   }
 }
 
@@ -341,15 +341,15 @@ public class LearnKotlin(firstName: String) {
   // The code for primary constructor should be defined in init block. If it
   // has any parameters, they will be available.
   init {
-    logger.info("class initialized with value ${firstName}");
+    logger.info("class initialized with value ${firstName}")
   }
   
   // firstName from primary constructor available in initializer.
-  val myName = firstName.toUpperCase();
+  val myName = firstName.toUpperCase()
   
   // Secondary constructors are prefixed with *constructor*.
   // Calling other constructors with *this* keyword.
-  class Person(val firstName: String, val lastName) this(firstName) {
+  class constructor(val firstName: String, val lastName) this(firstName) {
     // ...
   }
 }
