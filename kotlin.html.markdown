@@ -1,32 +1,51 @@
 ---
 
 language: kotlin
-filename: LearnKotlin.kotlin
+contributors:
+
+filename: LearnKotlin.py
 
 ---
 
-Kotlin is a statically-typed programming language that runs on the Java Virtual 
+Kotlin is a staticaly-typed programming language that runs on the Java Virtual 
 Machine and also can be compiled to JavaScript source code.
 [Read more here.](http://kotlinlang.org/docs/reference/faq.html)
 
 ```java
+
 // Single-line comments start with //
+
 /*
-Multi-line comments look like this.
+  Multi-line comments look like this.
 */
 
 // Package specification should be at the top of the source file, but need not
 // to match the directory structure.
 package my.demo
 
-// Directly importing from java packages, a single class or all classes.
+// Importing packages from java
 import java.util.ArrayList;
 import java.security.*;
 
 
-// ____________________________________________________________________ BASICS
+// _____________________________________________________________________ BASICS
 
-fun basicsDemo(name: String) {
+fun kotlinBasics(name: String) {
+  // ---- Variables Definition ----
+  
+  // Local read-only variable.
+  val a: Int = 1;
+  val b = 1
+  val c: Int // Type required when no initializer is provided
+  c = 1
+  
+  // The following line generates compiler error
+  // a += 1
+
+  // Local mutable value, it's type is inferred.
+  var x = 5
+  x += 1
+  
   // String interpolation.
   println("Name $name")
 
@@ -37,56 +56,46 @@ fun basicsDemo(name: String) {
   
   // Read-only list.
   val list = listOf("a", "b", "c")
+  println(list[0])
 
   // Read-only map
   val map = mapOf("a" to 1, "b" to 2, "c" to 3)
   println(map["s"])
-
 }
 
 // _________________________________________________________________ FUNCTIONS
 
 // A function with no args, and return type not specified.
 fun funDemo() {
-
-  // Local read-only variable.
-  val a: Int = 1;
-  val b = 1
-  val c: Int // Type required when no initializer is provided
-  c = 1
-
-  // Local mutable value, it's type is inferred.
-  var x = 5
-  x += 1
-
-  return x + a;
+  return 42;
 }
 
 // Function with both parameter and return type Int.
-fun sum(a: Int, b: Int): Int {
+fun funDemoSum(a: Int, b: Int): Int {
   return a + b
 }
 
 // Return type automatically inferred. But such fuction is not visible outside 
 // the module.
-fun max(a: Int, b: Int) = if (a > b) a else b
+fun funDemoMax(a: Int, b: Int) = if (a > b) a else b
 
-// Returning no meaningfull value, Unit keyword can be ommited.
-fun printSum(a: Int, b: Int): Unit {
+// Returning no meaningful value, Unit keyword can be omitted.
+fun funDemoPrintSum0(a: Int, b: Int): Unit {
   print(a + b)
 }
-public fun printSum(a: Int, b: Int) {
+fun funDemoPrintSum1(a: Int, b: Int) {
   print(a + b)
 }
 
 // Default value
-fun foo(a: Int = 0, b: String = "") { 
-  // ... 
+fun funDemoDefaultVal(a: Int = 0, b: String = "") { 
+  println(a)
+  println(b)
 }
 
 // ______________________________________________________________ CONDITIONALS
-
-fun conditionalRange(x: Int) {
+// Testing if value is in range
+fun conditionalRange(x: Int, y: Int) {
   if (x in 1..y-1)
     print("OK")
 }
@@ -127,51 +136,62 @@ fun loopDemo(args: Array<String>) {
 
 // ____________________________________ NULL SAFETY AND AUTOMATIC TYPE CASTING
 
-// References are non-null by default and if otherwise, must be marked.
+// References are non-null by default. If otherwise, they must be marked.
+
 // Type checking and automatic casting. Notice the `Any` type.
-fun getStringLength(obj: Any): Int? { // Because of `?`, null may be returned.
+fun nullChecking0(obj: Any): Int? { // Because of `?`, null may be returned.
   if (obj is String) {
     // `obj` is automatically cast to `String` in this branch
     return obj.length
   }
   
-  return;
+  // else returns null
+}
 
-  // ---------  OR
-
+// Type checking and automatic casting, version2
+fun nullChecking1(obj: Any): Int? {
   if (obj !is String)
     return null
-
-  // Automatic cast to `String`!   
+    
+  // Automatic cast to `String`! we may use obj.length now.
   return obj.length
+}
 
-  // ---------  OR
-
-  // Automatic cast for right-hand side of `&&`
+// Automatic cast for right-hand side of `&&`
+fun nullChecking2(obj: Any): Int? {
   if (obj is String && obj.length > 0)
     return obj.length
+}
 
-  // If not null shorthand 
+// *If not null* shorthand 
+fun nullChecking3(obj: Any): Int? {
   println(object?.length)
-  // With else.
+}
+
+// *If not null* shorthand with else
+fun nullChecking4(obj: Any): Int? {
   println(object?.size ?: "empty")
+}
 
+// The block inside let is executed only of obj is not null. No casting.
+fun nullChecking5(obj: Any): Int? {
   object?.let {
-    ... // execute this block if not null
+    return 42;
   }
-
- 
-  return null
 }
 
 // _______________________________________________________________ COLLECTIONS
 
 fun collectionIter() {
-  // init names as collection.
+  names = listOf("foo", "bar", "baz")
+  
+  // Iterating over collection items.
   for (name in names)
     println(name)
 
-  if (text in names) // names.contains(text) is called
+  // Checking if collection contains an item.
+  // names.contains(text) is called automatically.
+  if (text in names) 
     print("Yes")
 
   // Function literals.
@@ -183,7 +203,7 @@ fun collectionIter() {
 
 // ___________________________________________________________________ CLASSES
 
-// An empty class, no curely braces needed.
+// An empty class, no curly braces needed.
 class Empty
 
 // A class with one primary constructors and more secondary constructors. A 
