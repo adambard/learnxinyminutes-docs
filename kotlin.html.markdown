@@ -2,8 +2,8 @@
 
 language: kotlin
 contributors:
-
-filename: LearnKotlin.py
+  - ["Koosha Hosseiny", "http://koosha.cc/"]
+filename: LearnKotlin.kt
 
 ---
 
@@ -11,10 +11,8 @@ Kotlin is a staticaly-typed programming language that runs on the Java Virtual
 Machine and also can be compiled to JavaScript source code.
 [Read more here.](http://kotlinlang.org/docs/reference/faq.html)
 
-```java
-
+```kotlin
 // Single-line comments start with //
-
 /*
 Multi-line comments look like this.
 */
@@ -32,10 +30,11 @@ import java.security.*
 
 // _____________________________________________________________________ BASICS
 
-fun kotlinBasics(name: String) {
+fun kotlinBasics() {
 
   // ---- Literals ----
-  
+ 
+  // println is available for printing lines. No additional imports required.
   println("Decimal:\t" + 1000
           + "\nHex 0x100:\t" + 0x100
           + "\nLong value, denoted with capital L 100L:\t" + 100L
@@ -43,105 +42,158 @@ fun kotlinBasics(name: String) {
           + "\nOctal literal not supported!"
           + "\nFloating-point, Double by default 123.5:\t" + 123.5
           + "\nFloating-point, Double by default 123.5e10:\t" + 123.5e10
-          + "\nFloat tagged with F 123.5f:\t" + 123.5f
+          + "\nFloating-point, as Float tagged with F 123.5f:\t" + 123.5f
   )
 
   // String literal, denoted by double quotes. Strings are iterable
-  for (c in "Hello, world!\n")
+  for (c in "Hello World!\n")
       println(c)
 
-  // Characters are not numbers, the following produces error:
-  // val c: Char = 'c'
-  // c == 1 // ERROR
-
-  // Boolean
-  val b0: Boolean = true
-  val b1: Boolean = false
-  println(
-          "Boolean And (true && false):\t" + (b0 && b1)
-          + "\nBoolean Or (true || false):\t" + (b0 || b1)
-  )
-
-  // Arrays
-  val x: IntArray = intArray(1, 2, 3)
-  // Translates to x.set(0, x.get(1) + x.get(2))
-  x[0] = x[1] + x[2]
-  // arrays have size(), get(), set(), iterator() by default.
-  // [more about array class](http://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)
-  println(
-          "array size():\t" + x.size()
-          + "\nget(0):\t" + x.get(0)
-  )
-
-  // Templates in strings. i.e. pieces of code that are evaluated and whose
-  // results are concatenated into the string.
-  val i = 10
-  val sDemo = "abc"
-  println("i = $i") // evaluates to "i = 10"
-  println("$sDemo.length is ${sDemo.length}") // "abc.length is 3"
-
-
-  // ---- Variables Definition ----
-
+  // \n is an escaped character that starts a new line, \t adds a tab.
+  println("Printing on a new line?\nNo Problem!"
+          + "\nDo you want to add a tab?\tNo  Problem!")
   
-  // Local read-only variable.
-  val a: Int = 1
-  val b = 1
-  val c: Int // Type required when no initializer is provided
-  c = 1
+  // Boolean
+  println("Boolean operation (true && false):\t" + (true && false))
+
+  // Ranges
+  for (i in 1..100)
+    println(i)
+  
+  
+  // ---- Variables Definition ----
+  
+  // Local read-only variable defined with `val` keyword. 
+  // General variable defination syntax is like:
+  // val ARBITRARY_NAME : <TYPE> = <INIT_VALUE>
+  // If INIT_VALUE is present, Type may be omitted.
+  val variA: Int = 1
+  val variB = 1
+  val variC: Int // Type required when no initializer is provided
+  variC = 1
   
   // The following line generates compiler error
-  // a += 1
+  // variA += 1
 
-  // Local mutable value, its type is computed.
+  // Use `var` keyword to define local mutable variables. 
+  // If its type is omitted, it will be computed for you.
   var x = 5
   x += 1
 
-  // Ranges
-  for (i in 1..100) { 
-    println(i)
-  }
   
+  // ---- Data Types ----
+  
+  val doubleValue: Double = 123.4   // 64 bits
+  val foatValue:   Float  = 123.4f  // 32 bits
+  val longValue:   Long   = 1234L   // 64 bits
+  val intValue:    Int    = 1234    // 32 bits
+  val shortValue:  Short  = 1234    // 16 bits
+  val byteValue:   Byte   = 123     // 08 bits
+  
+  
+  // ---- Numbers ----
+
+  // Smaller types are NOT implicitly widened.
+  val numberA: Byte = 1               // OK, literals are checked statically
+  // val numberB: Int = b             // ERROR!!!
+  val numberB: Int = numberA.toInt()  // OK: explicitly widened
+  
+  
+  // Bitwise operations are available as infix functions (for Int and Long only)
+  // shl(bits) – signed shift left (Java’s <<)
+  // shr(bits) – signed shift right (Java’s >>)
+  // ushr(bits) – unsigned shift right (Java’s >>>)
+  // and(bits) – bitwise and
+  // or(bits) – bitwise or
+  // xor(bits) – bitwise xor
+  // inv() – bitwise inversion
+  val x = 1 shl 2
+  
+  
+  // ---- Characters ----
+  
+  // Character literals go in single quotes.
+  val aChar: Char = 'c'
+ 
+  // Characters may not be treated as numbers 
+  // c == 1 // ERROR
+  val charArrayDemo = CharArray('1', '\n', '\uFF00')
+  val digit = '8'
+  
+  // Checking character range
+  if (digit in '0'..'9')
+    println("$digit is a valid digit.")
+   
+  // A char's numeric value is obtainedc with an explicit call to toInt()
+  println('a'.toInt())
+  
+  
+  // ---- Arrays ----
+
+  // Arrays are represented by the `Array` class
+  // [more about array class](http://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)
+  val sampleArray: IntArray = intArray(1, 2, 3)
+  
+  // arrays have size(), get(), set(), iterator() by default.
+  println(
+          "array size():\t" + sampleArray.size()
+          + "\nget(0):\t" + sampleArray.get(0)
+  )
+  
+  // The following translates to x.set(0, x.get(1) + x.get(2)) by kotlin
+  sampleArray[0] = sampleArray[1] + sampleArray[2]
+ 
+  // Built-in array utility functions for primitive types, without boxing 
+  // overhead.
+  val sampleInts = intArray(1, 2, 3)
+  val sampleChars = charArray('a', '\t', '\uFF00')
+  // and so on.
+  
+  
+  // ---- Various other stuff ----
+  
+  // Templates in strings. i.e. pieces of code that are evaluated and whose
+  // results are concatenated into the string.
+  val i = 10
+  val strDemo = "abc"
+  println("i = $i") // evaluates to "i = 10"
+  println("$strDemo.length is ${strDemo.length}") // "abc.length is 3"
+
   // Read-only list.
   val list = listOf("a", "b", "c")
-  println(list[0])
+  for (i in list)
+    println(i)
 
   // Read-only map
   val map = mapOf("a" to 1, "b" to 2, "c" to 3)
-  println(map["s"])
+  for (i in map.keySet())
+    println(map[i])
+  
 }
 
 // _________________________________________________________________ FUNCTIONS
 
-// A function with no args, and return type not specified.
+// A function with no args, and return type not specified. 
+// Return type is computed by kotlin, however such a function is not visible 
+// outside the module
 fun funDemo() {
   return 42
 }
 
-// Function with both parameter and return type Int.
-fun funDemoSum(a: Int, b: Int): Int {
+// Function with both parameter and return type `Int`. b has default value 42
+fun funDemoSum(a: Int, b: Int = 42): Int {
   return a + b
 }
 
-// Return type automatically inferred. But such a fuction is not visible 
-// outside the module.
 fun funDemoMax(a: Int, b: Int) = if (a > b) a else b
 
-// Returning no meaningful value, Unit keyword can be omitted.
+// Returning no meaningful value. Unit keyword can be omitted.
 fun funDemoPrintSum0(a: Int, b: Int): Unit {
   print(a + b)
 }
-fun funDemoPrintSum1(a: Int, b: Int) {
-  print(a + b)
-}
-
-// Default value
-fun funDemoDefaultVal(a: Int = 0, b: String = "") { 
-  println(a)
-  println(b)
-}
 
 // ______________________________________________________________ CONDITIONALS
+
 // Testing if value is in range
 fun conditionalRange(x: Int, y: Int) {
   if (x in 1..y-1)
@@ -149,7 +201,7 @@ fun conditionalRange(x: Int, y: Int) {
 }
 
 fun conditionalIf(x: Int) {
-  // if branches can be blocks, and the last expression is the value of a block:
+  // if branches can be blocks, and the last expression is the value of a block
   a = 9
   b = 2
   val max = if (a > b) { 
@@ -213,7 +265,7 @@ fun loopDemo(args: Array<String>) {
   
 }
 
-// _________________________________________________________ RETURNS AND jUMPS
+// _________________________________________________________ RETURNS AND JUMPS
 
 /**
  * Any expression in Kotlin may be marked with a label. Labels have the form 
