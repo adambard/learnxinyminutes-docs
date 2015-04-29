@@ -11,6 +11,18 @@ Kotlin is a staticaly-typed programming language that runs on the Java Virtual
 Machine and also can be compiled to JavaScript source code.
 [Read more here.](http://kotlinlang.org/docs/reference/faq.html)
 
+##TODO
+  - Traits, implementing them, states.
+  - Class properties, getters, setters, default values.
+  - Companion objects, factory method convention in kotlin
+  - Object Expressions
+  - Extension functions
+  - Generics
+  - Nested classes
+  - Enums
+  - Delegations
+
+
 ```kotlin
 // Single-line comments start with //
 /*
@@ -77,8 +89,8 @@ fun kotlinBasics() {
 
   // Use `var` keyword to define local mutable variables. 
   // If its type is omitted, it will be computed for you.
-  var x = 5
-  x += 1
+  var someVar = 5
+  someVar += 1
 
   
   // ---- Data Types ----
@@ -117,7 +129,7 @@ fun kotlinBasics() {
  
   // Characters may not be treated as numbers 
   // c == 1 // ERROR
-  val charArrayDemo = CharArray('1', '\n', '\uFF00')
+  val charArrayDemo = charArray('1', '\n', '\uFF00')
   val digit = '8'
   
   // Checking character range
@@ -173,10 +185,8 @@ fun kotlinBasics() {
 
 // _________________________________________________________________ FUNCTIONS
 
-// A function with no args, and return type not specified. 
-// Return type is computed by kotlin, however such a function is not visible 
-// outside the module
-fun funDemo() {
+// A function with no args,
+fun funDemo(): Int {
   return 42
 }
 
@@ -200,10 +210,10 @@ fun conditionalRange(x: Int, y: Int) {
     print("OK")
 }
 
-fun conditionalIf(x: Int) {
+fun conditionalIf(x: Int): Int {
   // if branches can be blocks, and the last expression is the value of a block
-  a = 9
-  b = 2
+  val a = 9
+  val b = 2
   val max = if (a > b) { 
     print("Choose a") 
     a 
@@ -296,7 +306,7 @@ fun breakWitLabels() {
 fun nullChecking0(obj: Any): Int? { // Because of `?`, null may be returned.
   if (obj is String) {
     // `obj` is automatically cast to `String` in this branch
-    return obj.length
+    return obj.length()
   }
   
   // else returns null
@@ -308,22 +318,22 @@ fun nullChecking1(obj: Any): Int? {
     return null
     
   // Automatic cast to `String`! we may use obj.length now.
-  return obj.length
+  return obj.length()
 }
 
 // Automatic cast for right-hand side of `&&`
 fun nullChecking2(obj: Any): Int? {
-  if (obj is String && obj.length > 0)
-    return obj.length
+  if (obj is String && obj.length() > 0)
+    return obj.length()
 }
 
 // *If not null* shorthand 
-fun nullChecking3(obj: Any?): Int? {
+fun nullChecking3(obj: Any?): Unit {
   println(obj?.length)
 }
 
 // *If not null* shorthand with else
-fun nullChecking4(obj: Any?): Int? {
+fun nullChecking4(obj: Any?): Unit {
   println(obj?.size ?: "empty")
 }
 
@@ -337,7 +347,7 @@ fun nullChecking5(obj: Any): Int? {
 // _______________________________________________________________ COLLECTIONS
 
 fun collectionIter() {
-  names = listOf("foo", "bar", "baz")
+  val names = listOf("foo", "bar", "baz")
   
   // Iterating over collection items.
   for (name in names)
@@ -345,14 +355,8 @@ fun collectionIter() {
 
   // Checking if collection contains an item.
   // names.contains(text) is called automatically.
-  if (text in names) 
+  if ("foo" in names) 
     print("Yes")
-
-  // Function literals.
-  names filter { it.startsWith("A") } 
-    sortBy { it } 
-    map { it.toUpperCase() } 
-    forEach { print(it) }
 }
 
 // ___________________________________________________________________ CLASSES
@@ -393,15 +397,17 @@ public class LearnKotlin(firstName: String) {
   // The code for primary constructor should be defined in init block. If it
   // has any parameters, they will be available.
   init {
-    logger.info("class initialized with value ${firstName}")
+    // logger.info("class initialized with value ${firstName}")
   }
   
   // firstName from primary constructor available in initializer.
   val myName = firstName.toUpperCase()
   
+  // @TODO more on properties, getters and setters, default values.
+  
   // Secondary constructors are prefixed with *constructor*.
   // Calling other constructors with *this* keyword.
-  constructor(val firstName: String, val lastName) this(firstName) {
+  constructor(firstName: String, lastName: String) : this(firstName) {
     // ...
   }
 }
@@ -420,7 +426,7 @@ object Resource {
 }
 
 // Private primary constructor
-class Customer private (name: String) { 
+class Seller private (name: String) { 
   //... 
 }
 
@@ -441,13 +447,43 @@ fun classInstantiationDemo() {
  * `open` keyword is the opposite of `final`, which allows inheritance.
  */
 open class Base(p: Int) {
-  open fun v()
+  open fun v() {}
   fun nv() {}
 }
 
-// Explicit super declared after colon. If super primary constructor has args, 
-// it must be called right here.
+// Explicit super type declared after colon. If super primary constructor has 
+// args, it must be called right here.
 class Derived(p: Int) : Base(p) {
   override fun v() {} // The override annotation is required!
+}
+
+// Multiple Inheritance is allowed, but if multiple implementations are 
+// available to inherit, sub-class must override that member and provide it's 
+// own implementation (and perhaps explicitly use one of the inherited ones).
+
+open class InheritanceDemoA {
+  open fun f() { print("Inheritance Demo A") }
+  fun a() { print("a") }
+}
+
+trait InheritanceDemoB {
+  fun f() { print("Inheritance Demo B") } // trait members are 'open' by default
+  fun b() { print("b") }
+}
+
+class InheritanceDemoC() : InheritanceDemoA(), InheritanceDemoB {
+  // The compiler requires f() to be overridden:
+  override fun f() {
+    super<A>.f() // call to A.f()
+    super<B>.f() // call to B.f()
+    super<A>.f() // call to A.f() again
+  }
+}
+
+// b is markes as abstract so if its name clashes while inheriting from 
+// multiple super types, there is no need to override it as it has no 
+// implementation of its own
+abstract class InheritanceDemoC {
+  abstract fun b()
 }
 
