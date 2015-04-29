@@ -304,45 +304,41 @@ fun breakWitLabels() {
 
 // Type checking and automatic casting. Notice the `Any` type.
 fun nullChecking0(obj: Any): Int? { // Because of `?`, null may be returned.
-  if (obj is String) {
-    // `obj` is automatically cast to `String` in this branch
-    return obj.length()
-  }
-  
-  // else returns null
+    if (obj is String) {
+        // `obj` is automatically cast to `String` in this branch
+        return obj.length()
+    }
 }
 
 // Type checking and automatic casting, version2
-fun nullChecking1(obj: Any): Int? {
-  if (obj !is String)
-    return null
-    
-  // Automatic cast to `String`! we may use obj.length now.
-  return obj.length()
+fun nullChecking1(obj: Any) {
+    if (obj !is String) {
+        println("Not an string,")
+    }
+    // Automatic cast to `String`! we may use obj.length now.
+    else
+        println(obj.length())
 }
 
 // Automatic cast for right-hand side of `&&`
-fun nullChecking2(obj: Any): Int? {
-  if (obj is String && obj.length() > 0)
-    return obj.length()
-}
-
-// *If not null* shorthand 
-fun nullChecking3(obj: Any?): Unit {
-  println(obj?.length)
+fun nullChecking2(obj: Any) {
+    if (obj is String && obj.length() > 0)
+        println(obj.length())
 }
 
 // *If not null* shorthand with else
-fun nullChecking4(obj: Any?): Unit {
-  println(obj?.size ?: "empty")
+fun nullChecking4(obj: Any?) {
+  // @TODO fix
+  //println(obj?.size ?: "empty")
 }
 
+// @TODO: fixit
 // The block inside let is executed only of obj is not null. No casting.
-fun nullChecking5(obj: Any): Int? {
+/*fun nullChecking5(obj: Any): Int? {
   object?.let {
     return 42
   }
-}
+}*/
 
 // _______________________________________________________________ COLLECTIONS
 
