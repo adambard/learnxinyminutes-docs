@@ -25,7 +25,7 @@ var name: string = "Anders";
 // Quand c'est impossible à déterminer, on utilise le type `Any`
 var notSure: any = 4;
 notSure = "maybe a string instead";
-notSure = false; // ok, définitvement un booléen
+notSure = false; // ok, définitivement un booléen
 
 // Pour les collections, il y a les tableaux typés et les tableaux génériques
 var list: number[] = [1, 2, 3]; // Un tableaux typé
@@ -35,16 +35,17 @@ var list: Array<number> = [1, 2, 3]; // un tableau générique
 enum Color { Red, Green, Blue };
 var c: Color = Color.Green;
 
-// Enfin, `void` est utilisé dans le cas spécifique d'une fonction ne retournant rien
+// Enfin, `void` est utilisé dans le cas spécifique
+// d'une fonction ne retournant rien
 function bigHorribleAlert(): void {
   alert("I'm a little annoying box!");
 }
 
-// Les fontions sont des entités de première classe. Elles supportent les expressions lambda et
-// utilisent l'inférence de types
+// Les fontions sont des entités de première classe. Elles supportent
+// les expressions lambda et utilisent l'inférence de types
 
-// Les fonctions ci-dessous sont équivalentes, une signature identique sera inférée par le compilateur,
-// et le même JavaScript sera généré
+// Les fonctions ci-dessous sont équivalentes, une signature identique
+// sera inférée par le compilateur, et le même JavaScript sera généré
 var f1 = function(i: number): number { return i * i; }
 // Retourne un type inféré
 var f2 = function(i: number) { return i * i; }
@@ -54,8 +55,8 @@ var f4 = (i: number) => { return i * i; }
 // Retourne un type inféré, ici le mot clé `return` n'est pas nécessaire
 var f5 = (i: number) =>  i * i;
 
-// Les interfaces sont structurés, tout ce qui a les propriétés est compatible avec
-// l'interface
+// Les interfaces sont structurés, tout ce qui a les propriétés est compatible
+// avec l'interface
 interface Person {
   name: string;
   // Les propriétés optionnelles sont identifiées avec un "?"
@@ -68,28 +69,30 @@ interface Person {
 // une Person car il a les propriétés "name" et "move"
 var p: Person = { name: "Bobby", move: () => {} };
 // Des objets implémentants la propriété optionnelle :
-var validPerson: Person = { name: "Bobby", age: 42, move: () => {} }; // valide car "age" est un nombre
-var invalidPerson: Person = { name: "Bobby", age: true }; // invalide car "age" n'est pas un nombre
+// valide car "age" est un nombre
+var validPerson: Person = { name: "Bobby", age: 42, move: () => {} };
+// invalide car "age" n'est pas un nombre
+var invalidPerson: Person = { name: "Bobby", age: true };
 
 // Les interfaces peuvent aussi décrire un type de fonction
 interface SearchFunc {
   (source: string, subString: string): boolean;
 }
-// Seul les types des paramètres sont importants, les noms ne le sont pas
+// Seul les types des paramètres sont importants, les noms ne le sont pas.
 var mySearch: SearchFunc;
 mySearch = function(src: string, sub: string) {
   return src.search(sub) != -1;
 }
 
-// Les membres des classes sont publiques par défaut
+// Les membres des classes sont publiques par défaut.
 class Point {
   // Propriétés
     x: number;
 
-    // Constructeur - Les mots clés "public" et "private" dans ce contexte génèrent
-    // le code de la propriété et son initialisation dans le constructeur.
-    // Dans cet exemple, "y" sera défini de la même façon que "x", mais avec moins de code
-    // Les valeurs par défaut sont supportées
+    // Constructeur - Les mots clés "public" et "private" dans ce contexte
+    //  génèrent le code de la propriété et son initialisation dans le
+    // constructeur. Ici, "y" sera défini de la même façon que "x",
+    // mais avec moins de code. Les valeurs par défaut sont supportées.
     constructor(x: number, public y: number = 0) {
         this.x = x;
     }
@@ -107,7 +110,9 @@ var p2 = new Point(25); //y will be 0
 // Héritage
 class Point3D extends Point {
     constructor(x: number, y: number, public z: number = 0) {
-        super(x, y); // Un appel explicite au constructeur de la super classe est obligatoire.
+        // Un appel explicite au constructeur de la super classe
+        // est obligatoire.
+        super(x, y);
     }
 
     // Redéfinition
