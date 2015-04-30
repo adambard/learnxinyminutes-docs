@@ -46,7 +46,7 @@ to Python 2.x. For Python 3.x, take a look at the [Python 3 tutorial](http://lea
 2.0     # This is a float
 11.0 / 4.0  # => 2.75 ahhh...much better
 
-# Result of integer division truncated down both for positive and negative. 
+# Result of integer division truncated down both for positive and negative.
 5 // 3     # => 1
 5.0 // 3.0 # => 1.0 # works on floats too
 -5 // 3  # => -2
@@ -191,7 +191,7 @@ li[2:]  # => [4, 3]
 li[:3]  # => [1, 2, 4]
 # Select every second entry
 li[::2]   # =>[1, 4]
-# Revert the list
+# Reverse the list
 li[::-1]   # => [3, 4, 2, 1]
 # Use any combination of these to make advanced slices
 # li[start:end:step]
@@ -439,14 +439,14 @@ def pass_all_the_args(*args, **kwargs):
     print varargs(*args)
     print keyword_args(**kwargs)
 
-# Function Scope                                                                
+# Function Scope
 x = 5
 
 def setX(num):
     # Local var x not the same as global variable x
     x = num # => 43
     print x # => 43
-    
+
 def setGlobalX(num):
     global x
     print x # => 5
