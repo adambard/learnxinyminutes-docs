@@ -32,7 +32,7 @@ var list: number[] = [1, 2, 3]; // Un tableaux typé
 var list: Array<number> = [1, 2, 3]; // un tableau générique
 
 // Pour les énumeration
-enum Color {Red, Green, Blue};
+enum Color { Red, Green, Blue };
 var c: Color = Color.Green;
 
 // Enfin, `void` est utilisé dans le cas spécifique d'une fonction ne retournant rien
@@ -54,73 +54,70 @@ var f4 = (i: number) => { return i * i; }
 // Retourne un type inféré, ici le mot clé `return` n'est pas nécessaire
 var f5 = (i: number) =>  i * i;
 
-// Interfaces are structural, anything that has the properties is compliant with
-// the interface
+// Les interfaces sont structurés, tout ce qui a les propriétés est compatible avec
+// l'interface
 interface Person {
   name: string;
-  // Optional properties, marked with a "?"
+  // Les propriétés optionnelles sont identifiées avec un "?"
   age?: number;
-  // And of course functions
+  // Et bien sûr, les fonctions
   move(): void;
 }
 
-// Object that implements the "Person" interface
-// Can be treated as a Person since it has the name and move properties
+// Un objet implémentant l'interface "Person" peut être traité comme 
+// une Person car il a les propriétés "name" et "move"
 var p: Person = { name: "Bobby", move: () => {} };
-// Objects that have the optional property:
-var validPerson: Person = { name: "Bobby", age: 42, move: () => {} };
-// Is not a person because age is not a number
-var invalidPerson: Person = { name: "Bobby", age: true };
+// Des objets implémentants la propriété optionnelle :
+var validPerson: Person = { name: "Bobby", age: 42, move: () => {} }; // valide car "age" est un nombre
+var invalidPerson: Person = { name: "Bobby", age: true }; // invalide car "age" n'est pas un nombre
 
-// Interfaces can also describe a function type
+// Les interfaces peuvent aussi décrire un type de fonction
 interface SearchFunc {
   (source: string, subString: string): boolean;
 }
-// Only the parameters' types are important, names are not important.
+// Seul les types des paramètres sont importants, les noms ne le sont pas
 var mySearch: SearchFunc;
 mySearch = function(src: string, sub: string) {
   return src.search(sub) != -1;
 }
 
-// Classes - members are public by default
+// Les membres des classes sont publiques par défaut
 class Point {
-  // Properties
+  // Propriétés
     x: number;
 
-    // Constructor - the public/private keywords in this context will generate
-    // the boiler plate code for the property and the initialization in the
-    // constructor.
-    // In this example, "y" will be defined just like "x" is, but with less code
-    // Default values are also supported
-
+    // Constructeur - Les mots clés "public" et "private" dans ce contexte génèrent
+    // le code de la propriété et son initialisation dans le constructeur.
+    // Dans cet exemple, "y" sera défini de la même façon que "x", mais avec moins de code
+    // Les valeurs par défaut sont supportées
     constructor(x: number, public y: number = 0) {
         this.x = x;
     }
 
-    // Functions
+    // Fonctions
     dist() { return Math.sqrt(this.x * this.x + this.y * this.y); }
 
-    // Static members
+    // Membres statiques
     static origin = new Point(0, 0);
 }
 
 var p1 = new Point(10 ,20);
 var p2 = new Point(25); //y will be 0
 
-// Inheritance
+// Héritage
 class Point3D extends Point {
     constructor(x: number, y: number, public z: number = 0) {
-        super(x, y); // Explicit call to the super class constructor is mandatory
+        super(x, y); // Un appel explicite au constructeur de la super classe est obligatoire.
     }
 
-    // Overwrite
+    // Redéfinition
     dist() {
         var d = super.dist();
         return Math.sqrt(d * d + this.z * this.z);
     }
 }
 
-// Modules, "." can be used as separator for sub modules
+// Modules, "." peut être utilisé comme un séparateur de sous modules.
 module Geometry {
   export class Square {
     constructor(public sideLength: number = 0) {
@@ -133,12 +130,12 @@ module Geometry {
 
 var s1 = new Geometry.Square(5);
 
-// Local alias for referencing a module
+// Alias local pour référencer un module
 import G = Geometry;
 
 var s2 = new G.Square(10);
 
-// Generics
+// Génériques
 // Classes
 class Tuple<T1, T2> {
     constructor(public item1: T1, public item2: T2) {
@@ -151,14 +148,14 @@ interface Pair<T> {
     item2: T;
 }
 
-// And functions
+// Et fonctions
 var pairToTuple = function<T>(p: Pair<T>) {
     return new Tuple(p.item1, p.item2);
 };
 
 var tuple = pairToTuple({ item1:"hello", item2:"world"});
 
-// Including references to a definition file:
+// Inclure des références à un fichier :
 /// <reference path="jquery.d.ts" />
 
 ```
