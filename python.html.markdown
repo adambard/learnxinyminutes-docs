@@ -191,14 +191,14 @@ li[2:]  # => [4, 3]
 li[:3]  # => [1, 2, 4]
 # Select every second entry
 li[::2]   # =>[1, 4]
-# Reverse the list
+# Reverse a copy of the list
 li[::-1]   # => [3, 4, 2, 1]
 # Use any combination of these to make advanced slices
 # li[start:end:step]
 
 # Remove arbitrary elements from a list with "del"
 del li[2]   # li is now [1, 2, 3]
-
+r
 # You can add lists
 li + other_li   # => [1, 2, 3, 4, 5, 6]
 # Note: values for li and for other_li are not modified.
