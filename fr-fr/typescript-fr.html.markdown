@@ -10,19 +10,19 @@ lang: fr-fr
 
 TypeScript est un langage visant à faciliter le developpement d'applications large  et scalable écrite en JavaScript.
 TypeScript ajoute des concepts classiques comme les classes, les modules, les interfaces, les génériques et le typage statique (optionel) à JavaScript.
-C'est une surcouche à JavaScript: tout le code JavaScript est valide en TypeScript ce qui permet de l'ajouter de façon transparente à n'importe quel projet. Le compilateur TypeScript émet du JavaScript. 
+C'est une surcouche de JavaScript : tout le code JavaScript est valide en TypeScript ce qui permet de l'ajouter de façon transparente à n'importe quel projet. Le code TypeScript est transcompilé en JavaScript par le compilateur. 
 
 Cet article se concentrera seulement sur la syntaxe supplémentaire de TypeScript, plutôt que celle de [JavaScript] (../javascript/).
 
 Pour tester le compilateur de TypeScript, rendez-vous au [Playground] (http://www.typescriptlang.org/Playground) où vous pourrez coder, profiter d'une autocomplétion et voir directement le rendu JavaScript.
 
 ```js
-// Il y a 3 types basiques en in TypeScript
+// Il y a 3 types basiques en TypeScript
 var isDone: boolean = false;
 var lines: number = 42;
 var name: string = "Anders";
 
-// Quand c'est impossible de savoir, il ya le type `Any`
+// Quand c'est impossible à déterminer, on utilise le type `Any`
 var notSure: any = 4;
 notSure = "maybe a string instead";
 notSure = false; // ok, définitvement un booléen
@@ -40,18 +40,18 @@ function bigHorribleAlert(): void {
   alert("I'm a little annoying box!");
 }
 
-// Functions are first class citizens, support the lambda "fat arrow" syntax and
-// use type inference
+// Les fontions sont des entités de première classe. Elles supportent les expressions lambda et
+// utilisent l'inférence de types
 
-// The following are equivalent, the same signature will be infered by the
-// compiler, and same JavaScript will be emitted
+// Les fonctions ci-dessous sont équivalentes, une signature identique sera inférée par le compilateur,
+// et le même JavaScript sera généré
 var f1 = function(i: number): number { return i * i; }
-// Return type inferred
+// Retourne un type inféré
 var f2 = function(i: number) { return i * i; }
 var f3 = (i: number): number => { return i * i; }
-// Return type inferred
+// Retourne un type inféré
 var f4 = (i: number) => { return i * i; }
-// Return type inferred, one-liner means no return keyword needed
+// Retourne un type inféré, ici le mot clé `return` n'est pas nécessaire
 var f5 = (i: number) =>  i * i;
 
 // Interfaces are structural, anything that has the properties is compliant with
