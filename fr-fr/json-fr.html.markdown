@@ -14,7 +14,7 @@ est susceptible d'être le plus simple jamais réalisé.
 
 JSON dans son état le plus pur n'a aucun commentaire, mais la majorité des parseurs accepterons
 les commentaires du langage C (//, /\* \*/). Pour les besoins de ce document, cependant,
-tout sera du JSON 100% valide. Heureusement, il s'explique lui-même.
+tout sera du JSON 100% valide. Heureusement, il s'explique par lui-même.
 
 
 ```json
@@ -23,7 +23,7 @@ tout sera du JSON 100% valide. Heureusement, il s'explique lui-même.
   
   "Clés": "devront toujours être entourées par des guillemets",
   "nombres": 0,
-  "chaînes de caractères": "Hellø, wørld. Tous les caractères unicode sont authorisés, accompagné d'un \"caractère d'échappement\".",
+  "chaînes de caractères": "Hellø, wørld. Tous les caractères Unicode sont autorisés, accompagné d'un \"caractère d'échappement\".",
   "a des booléens ?": true,
   "rien": null,
 
