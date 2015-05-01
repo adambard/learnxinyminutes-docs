@@ -26,7 +26,21 @@ Nearly all examples below can be a part of a shell script or executed directly i
 # As you already figured, comments start with #. Shebang is also a comment.
 
 # Simple hello world example:
-echo Hello world!
+echo "Hello world!"
+
+# Color output of echo command
+# This command will show green 'Hello world!' text
+echo -e "\033[0;32mHello world!\033[0m"
+
+# You can use these codes
+# Black        0;30     Dark Gray     1;30
+# Blue         0;34     Light Blue    1;34
+# Green        0;32     Light Green   1;32
+# Cyan         0;36     Light Cyan    1;36
+# Red          0;31     Light Red     1;31
+# Purple       0;35     Light Purple  1;35
+# Brown/Orange 0;33     Yellow        1;33
+# Light Gray   0;37     White         1;37
 
 # Each command starts on a new line, or after semicolon:
 echo 'This is the first line'; echo 'This is the second line'
@@ -55,16 +69,16 @@ echo '$VARIABLE'
 # Note that ' (single quote) won't expand the variables!
 
 # String substitution in variables
-echo ${VARIABLE/Some/A}
+echo "${VARIABLE/Some/A}"
 # This will substitute the first occurance of "Some" with "A"
 
 # Substring from a variable
-echo ${VARIABLE:0:7}
+echo "${VARIABLE:0:7}"
 # This will return only the first 7 characters of the value
 
 # Default value for variable
 echo ${FOO:-"DefaultValueIfFOOIsMissingOrEmpty"}
-# This works for null (FOO=), empty string (FOO=""), zero (FOO=0) returns 0
+# This works for null (FOO=), ${VARIABLE:0:7}empty string (FOO=""), zero (FOO=0) returns 0
 
 # Builtin variables:
 # There are some useful builtin variables, like
@@ -77,12 +91,11 @@ echo "Scripts arguments seperated in different variables: $1 $2..."
 # Reading a value from input:
 echo "What's your name?"
 read NAME # Note that we didn't need to declare a new variable
-echo Hello, $NAME!
+echo "Hello, $NAME!"
 
 # We have the usual if structure:
 # use 'man test' for more info about conditionals
-if [ $NAME -ne $USER ]
-then
+if [ "$NAME" -ne "$USER" ]; then
     echo "Your name isn't your username"
 else
     echo "Your name is your username"
@@ -93,12 +106,12 @@ echo "Always executed" || echo "Only executed if first command fails"
 echo "Always executed" && echo "Only executed if first command does NOT fail"
 
 # To use && and || with if statements, you need multiple pairs of square brackets:
-if [ $NAME == "Steve" ] && [ $AGE -eq 15 ]
+if [ "$NAME" == "Steve" ] && [ "$AGE" -eq 15 ]
 then
     echo "This will run if $NAME is Steve AND $AGE is 15."
 fi
 
-if [ $NAME == "Daniya" ] || [ $NAME == "Zach" ]
+if [ "$NAME" == "Daniya" ] || [ "$NAME" == "Zach" ]
 then
     echo "This will run if $NAME is Daniya OR Zach."
 fi
@@ -228,7 +241,7 @@ bar ()
 }
 
 # Calling your function
-foo "My name is" $NAME
+foo "My name is" "$NAME"
 
 # There are a lot of useful commands you should learn:
 # prints last 10 lines of file.txt
