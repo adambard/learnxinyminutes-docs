@@ -64,7 +64,8 @@ echo ${VARIABLE:0:7}
 
 # Default value for variable
 echo ${FOO:-"DefaultValueIfFOOIsMissingOrEmpty"}
-# This works for null (FOO=), empty string (FOO=""), zero (FOO=0) returns 0
+# This works for null (FOO=) and empty string (FOO=""); zero (FOO=0) returns 0.
+# Note that it only returns default value and doesn't change variable value.
 
 # Builtin variables:
 # There are some useful builtin variables, like
