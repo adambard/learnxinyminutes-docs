@@ -21,108 +21,110 @@ Bash это командная оболочка unix (unix shell), котора�
 
 ```bash
 #!/bin/bash
-# Первая строка скрипта - это shebang, который сообщает системе как испольнять
+# Первая строка скрипта - это shebang, который сообщает системе как исполнять
 # этот скрипт: http://en.wikipedia.org/wiki/Shebang_(Unix)
-# Как вы уже поняли, комментарии начинаются с #. Shebang - это тоже коммантарий.
+# Как вы уже поняли, комментарии начинаются с #. Shebang — тоже коммантарий.
 
 # Простой пример hello world:
 echo Hello world!
 
 # Отдельные команды начинаются с новой строки или разделяются точкой с запятой:
-echo 'This is the first line'; echo 'This is the second line'
+echo 'Это первая строка'; echo 'Это вторая строка'
 
 # Вот так объявляется пемеренная:
-VARIABLE="Some string"
+VARIABLE="Просто строка"
 
-# Но не так:
-VARIABLE = "Some string"
+# но не так:
+VARIABLE = "Просто строка"
 # Bash решит что VARIABLE - это команда, которую он должен исполнить,
 # и выдаст ошибку, потому что не сможет найти ее.
 
-# И не так:
-VARIABLE= 'Some string'
-# Тут Bash решит что 'Some string' - это команда, которую он должен исполнить,
-# и выдаст ошибку, потому что не сможет найти ее (здесь 'VARIABLE=' выглядит
-# как присвоение значения переменной, но только в контексте исполнения
-# команды 'Some string').
+# и не так:
+VARIABLE= 'Просто строка'
+# Тут Bash решит, что 'Просто строка' - это команда, которую он должен исполнить,
+# и выдаст ошибку, потому что не сможет найти такой команды
+# (здесь 'VARIABLE=' выглядит как присвоение значения переменной,
+# но только в контексте исполнения команды 'Просто строка').
 
 # Использование переменой:
 echo $VARIABLE
 echo "$VARIABLE"
 echo '$VARIABLE'
-# Когда вы используете переменную — присвоение, экспорт и т.д — вы пищете её
+# Когда вы используете переменную - присвоение, экспорт и т.д - пишите её
 # имя без $. А для получения значения переменной, используйте $.
 # Заметте что ' (одинарные кавычки) не раскрывают переменные в них.
 
-# Подстановка строк в переменных
-echo ${VARIABLE/Some/A}
-# Это выражение заменит первую встреченную подстроку "Some" на "A"
+# Подстановка строк в переменные
+echo ${VARIABLE/Просто/A}
+# Это выражение заменит первую встреченную подстроку "Просто" на "A"
 
 # Подстановка из переменной
 LENGTH=7
 echo ${VARIABLE:0:LENGTH}
-# This will return only the first 7 characters of the value
+# Это выражение вернет только первые 7 символов переменной VARIABLE
 
-# Default value for variable
+# Значение по умолчанию
 echo ${FOO:-"DefaultValueIfFOOIsMissingOrEmpty"}
-# This works for null (FOO=), empty string (FOO=""), zero (FOO=0) returns 0
+# Это сработает при отсутствующем значении (FOO=) и пустой строке (FOO="");
+# ноль (FOO=0) вернет 0.
+# Заметте, что в любом случае значение самой переменной FOO не изменится.
 
-# Builtin variables:
-# There are some useful builtin variables, like
-echo "Last program return value: $?"
-echo "Script's PID: $$"
-echo "Number of arguments: $#"
-echo "Scripts arguments: $@"
-echo "Scripts arguments seperated in different variables: $1 $2..."
+# Встроенные переменные:
+# В bash есть полезные встроенные переменные, например
+echo "Последее возвращенное значение: $?"
+echo "PID скрипта: $$"
+echo "Количество аргументов: $#"
+echo "Аргументы скрипта: $@"
+echo "Аргументы скрипта рапределенные по отдельным переменным: $1 $2..."
 
-# Reading a value from input:
-echo "What's your name?"
-read NAME # Note that we didn't need to declare a new variable
-echo Hello, $NAME!
+# Чтение аргументов из входа:
+echo "Как Вас зовут?"
+read NAME # Заметте, что нам не нужно определять новую переменную
+echo Привет, $NAME!
 
-# We have the usual if structure:
-# use 'man test' for more info about conditionals
+# У нас есть обычная структура if:
+# наберите 'man test' для подробностях о форматах условия
 if [ $NAME -ne $USER ]
 then
-    echo "Your name isn't your username"
+    echo "Имя не совпадает с именем пользователя"
 else
-    echo "Your name is your username"
+    echo "Имя совпадает с именем пользователя"
 fi
 
-# There is also conditional execution
-echo "Always executed" || echo "Only executed if first command fails"
-echo "Always executed" && echo "Only executed if first command does NOT fail"
+# Также есть условное исполнение
+echo "Исполнится всегда" || echo "Исполнится, если первая команда провалится"
+echo "Исполнится всегда" && echo "Исполнится, если первая команда выполнится удачно"
 
-# To use && and || with if statements, you need multiple pairs of square brackets:
+# Можно использовать && и || в выражениях if, когда нужно несколько пар скобок:
 if [ $NAME == "Steve" ] && [ $AGE -eq 15 ]
 then
-    echo "This will run if $NAME is Steve AND $AGE is 15."
+    echo "Исполнится, если $NAME равно Steve И $AGE равно 15."
 fi
 
 if [ $NAME == "Daniya" ] || [ $NAME == "Zach" ]
 then
-    echo "This will run if $NAME is Daniya OR Zach."
+    echo "Исполнится, если $NAME равно Daniya ИЛИ Zach."
 fi
 
-# Expressions are denoted with the following format:
+# Выражения обозначаются таким форматом:
 echo $(( 10 + 5 ))
 
-# Unlike other programming languages, bash is a shell — so it works in a context
-# of current directory. You can list files and directories in the current
-# directory with the ls command:
+# В отличае от других языков программирования, bash это командная оболочка -
+# значит он работает в контексте текущей директории.
+# Вы можете просматривать файлы и директории в текущей директории командой ls:
 ls
 
-# These commands have options that control their execution:
-ls -l # Lists every file and directory on a separate line
+# У этой команды есть опции:
+ls -l # Показать каждый файл и директорию на отдельной строке
 
-# Results of the previous command can be passed to the next command as input.
-# grep command filters the input with provided patterns. That's how we can list
-# .txt files in the current directory:
+# Результат предыдущей команды может быть направлен на вход следующей.
+# Команда grep фильтрует ввод по шаблону.
+# Так мы можем просмотреть только *.txt файлы в текущей директории:
 ls -l | grep "\.txt"
 
-# You can redirect command input and output (stdin, stdout, and stderr).
-# Read from stdin until ^EOF$ and overwrite hello.py with the lines
-# between "EOF":
+# Вы можете перенаправить ввод и вывод команды (stdin, stdout и stderr).
+# Следующая команда означает: читать из stdin пока не встретится ^EOF$ и
+# перезаписать hello.py следующим строками (до строки "EOF"):
 cat > hello.py << EOF
 #!/usr/bin/env python
 from __future__ import print_function
@@ -133,128 +135,126 @@ for line in sys.stdin:
     print(line, file=sys.stdout)
 EOF
 
-# Run hello.py with various stdin, stdout, and stderr redirections:
+# Запуск hello.py с разными вариантами перенаправления потоков
+# стандартных ввода, вывода и ошибок:
 python hello.py < "input.in"
 python hello.py > "output.out"
 python hello.py 2> "error.err"
 python hello.py > "output-and-error.log" 2>&1
 python hello.py > /dev/null 2>&1
-# The output error will overwrite the file if it exists,
-# if you want to append instead, use ">>":
+# Поток ошибок перезапишет файл, если этот файл существует,
+# поэтому если вы хотите дописывать файл используйте ">>":
 python hello.py >> "output.out" 2>> "error.err"
 
-# Overwrite output.txt, append to error.err, and count lines:
+# Переписать output.txt, дописать error.err и сосчитать строки:
 info bash 'Basic Shell Features' 'Redirections' > output.out 2>> error.err
 wc -l output.out error.err
 
-# Run a command and print its file descriptor (e.g. /dev/fd/123)
-# see: man fd
+# Запустить команду и вывести ее файловый дескриптор (смотрите: man fd)
 echo <(echo "#helloworld")
 
-# Overwrite output.txt with "#helloworld":
+# Перезаписать output.txt строкой "#helloworld":
 cat > output.out <(echo "#helloworld")
 echo "#helloworld" > output.out
 echo "#helloworld" | cat > output.out
 echo "#helloworld" | tee output.out >/dev/null
 
-# Cleanup temporary files verbosely (add '-i' for interactive)
+# Подчистить временные файлы с подробным выводом ('-i' - интерактивый режим)
 rm -v output.out error.err output-and-error.log
 
-# Commands can be substituted within other commands using $( ):
-# The following command displays the number of files and directories in the
-# current directory.
-echo "There are $(ls | wc -l) items here."
+# Команды могут быть подставлены в строку используя $( ):
+# следующие команды выводят число файлов и директорий в текущей директории.
+echo "Здесь $(ls | wc -l) элементов."
 
-# The same can be done using backticks `` but they can't be nested - the preferred way
-# is to use $( ).
-echo "There are `ls | wc -l` items here."
+# То же самое можно сделать использую обратные кавычки, но они не могут быть
+# вложенными - предпочтительно использовать $( ).
+echo "Здесь `ls | wc -l` элементов."
 
-# Bash uses a case statement that works similarly to switch in Java and C++:
+# В Bash есть структура case, которая похожа на switch в Java и C++:
 case "$VARIABLE" in 
-    #List patterns for the conditions you want to meet
-    0) echo "There is a zero.";;
-    1) echo "There is a one.";;
-    *) echo "It is not null.";;
+    # Перечислите шаблоны для условий, которые хотите отловить
+    0) echo "Тут ноль.";;
+    1) echo "Тут один.";;
+    *) echo "Это не пустое значение.";;
 esac
 
-# for loops iterate for as many arguments given:
-# The contents of $VARIABLE is printed three times.
+# Цикл for перебирает элементы переданные в аргументе:
+# Содержимое $VARIABLE будет напечатано три раза.
 for VARIABLE in {1..3}
 do
     echo "$VARIABLE"
 done
 
-# Or write it the "traditional for loop" way:
+# Или перепишем "традиционным" синтаксисом цикла for:
 for ((a=1; a <= 3; a++))
 do
     echo $a
 done
 
-# They can also be used to act on files..
-# This will run the command 'cat' on file1 and file2
+# Цикл for можно использовать для действий с файлами.
+# Запустим команду 'cat' для файлов file1 и file2
 for VARIABLE in file1 file2
 do
     cat "$VARIABLE"
 done
 
-# ..or the output from a command
-# This will cat the output from ls.
+# ..или выводом из команд
+# Запустим cat для вывода из ls.
 for OUTPUT in $(ls)
 do
     cat "$OUTPUT"
 done
 
-# while loop:
+# Цикл while:
 while [ true ]
 do
-    echo "loop body here..."
+    echo "тело цикла здесь..."
     break
 done
 
-# You can also define functions
-# Definition:
+# Вы можете определять функции
+# Определение:
 function foo ()
 {
-    echo "Arguments work just like script arguments: $@"
-    echo "And: $1 $2..."
-    echo "This is a function"
+    echo "Аргументы работают также как аругменты скрипта: $@"
+    echo "и: $1 $2..."
+    echo "Это функция"
     return 0
 }
 
-# or simply
+# или просто
 bar ()
 {
-    echo "Another way to declare functions!"
+    echo "Другой способ определить функцию!"
     return 0
 }
 
-# Calling your function
-foo "My name is" $NAME
+# Вызов функции
+foo "Мое имя" $NAME
 
-# There are a lot of useful commands you should learn:
-# prints last 10 lines of file.txt
+# Есть много полезных команд, которые нужно знать:
+# напечатать последние 10 строк файла file.txt
 tail -n 10 file.txt
-# prints first 10 lines of file.txt
+# напечатать первые 10 строк файла file.txt
 head -n 10 file.txt
-# sort file.txt's lines
+# отсортировать строки file.txt
 sort file.txt
-# report or omit repeated lines, with -d it reports them
+# отобрать или наоборот пропустить повторяющиеся строки (с опцией -d отбирает)
 uniq -d file.txt
-# prints only the first column before the ',' character
+# напечатать только первую колонку перед символом ','
 cut -d ',' -f 1 file.txt
-# replaces every occurrence of 'okay' with 'great' in file.txt, (regex compatible)
+# заменить каждое 'okay' на 'great' в файле file.txt (regex поддерживается)
 sed -i 's/okay/great/g' file.txt
-# print to stdout all lines of file.txt which match some regex
-# The example prints lines which begin with "foo" and end in "bar"
+# вывести в stdout все строки из file.txt, совпадающие с шаблоном regex;
+# этот пример выводит строки, которые начинаются на "foo" и оканчиваются "bar"
 grep "^foo.*bar$" file.txt
-# pass the option "-c" to instead print the number of lines matching the regex
+# передайте опцию -c чтобы вывести число строк, в которых совпал шаблон
 grep -c "^foo.*bar$" file.txt
-# if you literally want to search for the string,
-# and not the regex, use fgrep (or grep -F)
+# чтобы искать прямо строку, а не шаблон regex, используйте fgrep (или grep -F)
 fgrep "^foo.*bar$" file.txt 
 
 
-# Read Bash shell builtins documentation with the bash 'help' builtin:
+# Читайте встроенную документацию оболочки Bash командой 'help':
 help
 help help
 help for
@@ -262,18 +262,18 @@ help return
 help source
 help .
 
-# Read Bash manpage documentation with man
+# Читайте Bash man-документацию
 apropos bash
 man 1 bash
 man bash
 
-# Read info documentation with info (? for help)
+# Читайте документацию info (? для помощи)
 apropos info | grep '^info.*('
 man info
 info info
 info 5 info
 
-# Read bash info documentation:
+# Читайте bash info документацию:
 info bash
 info bash 'Bash Features'
 info bash 6
