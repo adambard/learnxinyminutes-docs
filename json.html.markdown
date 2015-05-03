@@ -10,7 +10,7 @@ As JSON is an extremely simple data-interchange format, this is most likely goin
 to be the simplest Learn X in Y Minutes ever.
 
 JSON in its purest form has no actual comments, but most parsers will accept
-C-style (//, /\* \*/) comments. For the purposes of this, however,  everything is
+C-style (`//`, `/* */`) comments. For the purposes of this, however,  everything is
 going to be 100% valid JSON. Luckily, it kind of speaks for itself.
 
 ```json
