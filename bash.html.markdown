@@ -59,7 +59,8 @@ echo ${VARIABLE/Some/A}
 # This will substitute the first occurance of "Some" with "A"
 
 # Substring from a variable
-echo ${VARIABLE:0:7}
+LENGTH=7
+echo ${VARIABLE:0:LENGTH}
 # This will return only the first 7 characters of the value
 
 # Default value for variable
