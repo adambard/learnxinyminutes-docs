@@ -8,9 +8,9 @@ filename: learntypescript-fr.ts
 lang: fr-fr
 ---
 
-TypeScript est un langage visant à faciliter le développement d'applications large et scalable écrite en JavaScript.
+TypeScript est un langage visant à faciliter le développement d'applications larges et scalables, écrites en JavaScript.
 TypeScript ajoute des concepts classiques comme les classes, les modules, les interfaces, les génériques et le typage statique (optionnel) à JavaScript.
-C'est une sur-couche de JavaScript : tout le code JavaScript est valide en TypeScript ce qui permet de l'ajouter de façon transparente à n'importe quel projet. Le code TypeScript est transcompilé en JavaScript par le compilateur
+C'est une surcouche de JavaScript : tout le code JavaScript est valide en TypeScript ce qui permet de l'ajouter de façon transparente à n'importe quel projet. Le code TypeScript est transcompilé en JavaScript par le compilateur.
 
 Cet article se concentrera seulement sur la syntaxe supplémentaire de TypeScript, plutôt que celle de [JavaScript] (../javascript/).
 
@@ -22,7 +22,7 @@ var isDone: boolean = false;
 var lines: number = 42;
 var name: string = "Anders";
 
-// Quand c'est impossible à déterminer, on utilise le type `Any`
+// Si nous ne pouvons pas déterminer le type, on utilise `Any`
 var notSure: any = 4;
 notSure = "maybe a string instead";
 notSure = false; // ok, définitivement un booléen
@@ -38,11 +38,11 @@ var c: Color = Color.Green;
 // Enfin, `void` est utilisé dans le cas spécifique
 // d'une fonction ne retournant rien
 function bigHorribleAlert(): void {
-  alert("I'm a little annoying box!");
+  alert("Je suis une petite boîte ennuyeuse !");
 }
 
-// Les fontions sont des entités de première classe. Elles supportent
-// les expressions lambda et utilisent l'inférence de types
+// Les fonctions sont des entités de première classe. Le langage supporte
+// les expressions lambda et utilise l'inférence de type
 
 // Les fonctions ci-dessous sont équivalentes, une signature identique
 // sera inférée par le compilateur, et le même JavaScript sera généré
@@ -55,8 +55,8 @@ var f4 = (i: number) => { return i * i; }
 // Retourne un type inféré, ici le mot clé `return` n'est pas nécessaire
 var f5 = (i: number) =>  i * i;
 
-// Les interfaces sont structurés, tout ce qui a les propriétés est compatible
-// avec l'interface
+// Les interfaces sont structurées, tout les objets qui ont ces propriétés
+// sont compatible avec l'interface
 interface Person {
   name: string;
   // Les propriétés optionnelles sont identifiées avec un "?"
@@ -78,7 +78,8 @@ var invalidPerson: Person = { name: "Bobby", age: true };
 interface SearchFunc {
   (source: string, subString: string): boolean;
 }
-// Seul les types des paramètres sont importants, les noms ne le sont pas.
+
+// Seul les types des paramètres sont importants. Les noms ne le sont pas.
 var mySearch: SearchFunc;
 mySearch = function(src: string, sub: string) {
   return src.search(sub) != -1;
@@ -86,7 +87,7 @@ mySearch = function(src: string, sub: string) {
 
 // Les membres des classes sont publiques par défaut.
 class Point {
-  // Propriétés
+    // Propriétés
     x: number;
 
     // Constructeur - Les mots clés "public" et "private" dans ce contexte
@@ -105,7 +106,7 @@ class Point {
 }
 
 var p1 = new Point(10 ,20);
-var p2 = new Point(25); //y will be 0
+var p2 = new Point(25); // y sera 0
 
 // Héritage
 class Point3D extends Point {
