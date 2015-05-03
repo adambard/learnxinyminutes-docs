@@ -55,7 +55,7 @@ echo ${VARIABILE/Una/A}
 
 # Sottostringa di una variabile
 echo ${VARIABILE:0:7}
-# Questo ritornera solamente i primi 7 caratteri
+# Questo ritornerà solamente i primi 7 caratteri
 
 # Valore di default per la variabile
 echo ${FOO:-"ValoreDiDefaultSeFOOMancaOÈ Vuoto"}
