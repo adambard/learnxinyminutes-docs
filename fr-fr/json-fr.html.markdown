@@ -4,9 +4,9 @@ filename: learnjson-fr.json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]
-  translators:
+translators:
   - ["Alois de Gouvello","https://github.com/aloisdg"]
-  lang: fr-fr
+lang: fr-fr
 ---
 
 Comme JSON est un format d'échange de données extrêmement simple, ce Apprendre X en Y minutes
