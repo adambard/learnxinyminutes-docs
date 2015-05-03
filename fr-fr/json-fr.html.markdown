@@ -9,11 +9,11 @@ contributors:
   lang: fr-fr
 ---
 
-Comme JSON est un format d'échange de données êxtremement simple, ce Apprendre X en Y minutes
+Comme JSON est un format d'échange de données extrêmement simple, ce Apprendre X en Y minutes
 est susceptible d'être le plus simple jamais réalisé.
 
 JSON dans son état le plus pur n'a aucun commentaire, mais la majorité des parseurs accepterons
-les commentaires du langage C (//, /\* \*/). Pour les besoins de ce document, cependant,
+les commentaires du langage C (`//`, `\* \*`). Pour les besoins de ce document, cependant,
 tout sera du JSON 100% valide. Heureusement, il s'explique par lui-même.
 
 
