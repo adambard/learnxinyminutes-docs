@@ -433,6 +433,81 @@ int main () {
 }
 
 /////////////////////
+// Templates
+/////////////////////
+
+// Templates in C++ are mostly used for generic programming, though they are
+// much more powerful than generics constructs in other languages. It also
+// supports explicit and partial specialization, functional-style type classes,
+// and also it's Turing-complete.
+
+// We start with the kind of generic programming you might be familiar with. To
+// define a class or function that takes a type parameter:
+template<class T>
+class Box {
+    // In this class, T can be used as any other type.
+    void insert(const T&) { ... }
+};
+
+// During compilation, the compiler actually generates copies of each template
+// with parameters substituted, and so the full definition of the class must be
+// present at each invocation. This is why you will see template classes defined
+// entirely in header files.
+
+// To instantiate a template class on the stack:
+Box<int> intBox;
+
+// and you can use it as you would expect:
+intBox.insert(123);
+
+// You can, of course, nest templates:
+Box<Box<int> > boxOfBox;
+boxOfBox.insert(intBox);
+
+// Up until C++11, you muse place a space between the two '>'s, otherwise '>>'
+// will be parsed as the right shift operator.
+
+// You will sometimes see
+//   template<typename T>
+// instead. The 'class' keyword and 'typename' keyword are _mostly_
+// interchangeable in this case. For full explanation, see
+//   http://en.wikipedia.org/wiki/Typename
+// (yes, that keyword has its own Wikipedia page).
+
+// Similarly, a template function:
+template<class T>
+void barkThreeTimes(const T& input)
+{
+    input.bark();
+    input.bark();
+    input.bark();
+}
+
+// Notice that nothing is specified about the type parameters here. The compiler
+// will generate and then type-check every invocation of the template, so the
+// above function works with any type 'T' that has a const 'bark' method!
+
+Dog fluffy;
+fluffy.setName("Fluffy")
+barkThreeTimes(fluffy); Prints "Fluffy barks" three times.
+
+// Template parameters don't have to be classes, though this is used very rarely:
+template<int Y>
+void printMessage() {
+  cout << "Learn C++ in " << Y << " minutes!" << endl;
+}
+
+// And you can explicitly specialize templates for more efficient code:
+template<>
+void printMessage<10>() {
+  cout << "Learn C++ faster in only 10 minutes!" << endl;
+}
+
+printMessage<20>();  // Prints "Learn C++ in 20 minutes!"
+printMessage<10>();  // Prints "Learn C++ faster in only 10 minutes!"
+
+
+/////////////////////
 // Exception Handling
 /////////////////////
 
@@ -585,6 +660,33 @@ void doSomethingWithAFile(const std::string& filename)
 //   vector (i.e. self-resizing array), hash maps, and so on
 //   all automatically destroy their contents when they fall out of scope.
 // - Mutexes using lock_guard and unique_lock
+
+
+/////////////////////
+// Fun stuff
+/////////////////////
+
+// Aspects of C++ that may be surprising to newcomers (and even some veterans):
+
+// You can override private methods!
+class Foo {
+  virtual void bar();
+};
+class FooSub : public Foo {
+  virtual void bar();  // overrides Foo::bar!
+};
+
+// 0, false, NULL are all the same thing!
+bool* pt = new bool;
+*pt = 0;  // Sets the value points by 'pt' to false.
+pt = 0;  // Sets 'pt' to the null pointer. Yes both lines compile without warning.
+
+// '=' != '='
+Foo f1 = f2;  // Calls Foo::Foo(const Foo&) or some variant copy constructor.
+
+Foo f1;
+f1 = f2;  // Calls Foo::operator=(Foo&) or variant.
+
 ```
 Futher Reading:
 
