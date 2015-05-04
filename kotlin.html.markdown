@@ -21,6 +21,7 @@ Machine and also can be compiled to JavaScript source code.
   - Nested classes
   - Enums
   - Delegations
+  - Lazy property
 
 
 ```kotlin
@@ -97,9 +98,9 @@ fun kotlinBasics() {
   
   val doubleValue: Double = 123.4   // 64 bits
   val foatValue:   Float  = 123.4f  // 32 bits
-  val longValue:   Long   = 1234L   // 64 bits
-  val intValue:    Int    = 1234    // 32 bits
-  val shortValue:  Short  = 1234    // 16 bits
+  val longValue:   Long   = 123L   // 64 bits
+  val intValue:    Int    = 123    // 32 bits
+  val shortValue:  Short  = 123    // 16 bits
   val byteValue:   Byte   = 123     // 08 bits
   
   
@@ -132,10 +133,6 @@ fun kotlinBasics() {
   val charArrayDemo = charArray('1', '\n', '\uFF00')
   val digit = '8'
   
-  // Checking character range
-  if (digit in '0'..'9')
-    println("$digit is a valid digit.")
-   
   // A char's numeric value is obtainedc with an explicit call to toInt()
   println('a'.toInt())
   
@@ -202,12 +199,52 @@ fun funDemoPrintSum0(a: Int, b: Int): Unit {
   print(a + b)
 }
 
+/**
+ * Prefixing a function name with a `receiver type`, will add the function as
+ * an extension to that type. the following declaration adds `swap` to the type
+ * `MutableList<T>` (a generic type) which otherwise does not exist.
+ * The this keyword inside an extension function corresponds to the receiver 
+ * object (the one that is passed before the dot). 
+ *
+ * @TODO
+ * [more about extensions](http://kotlinlang.org/docs/reference/extensions.html)
+ */
+ fun <T> MutableList<T>.swap(x: Int, y: Int) {
+   val tmp = this[x] // 'this' corresponds to the list
+   this[x] = this[y]
+   this[y] = tmp
+ }
+ 
+ extensionFunSwapDemo() {
+   val l0 = mutableListOf(1, 2, 3)
+   val l1 = mutableListOf("a", "bb", "ccc")
+   l0.swap(0, 2)
+   l1.swap(1, 2)
+ }
+
+ // Extensions are resolved statically
+ class C {
+     fun foo() { println("member") }
+ }
+ 
+ fun C.foo() { println("extension") }
+ fun extensionResolvingDemo() {
+   C().foo() // prints "member", not "extension"
+ }
 // ______________________________________________________________ CONDITIONALS
 
-// Testing if value is in range
+// Testing if value is in range, using `in` operator.
 fun conditionalRange(x: Int, y: Int) {
-  if (x in 1..y-1)
+  if (x in 1..y-1) // If number is in range
     print("OK")
+    
+  val digit = '8'
+  if (digit in '0'..'9') // If character is in range
+    println("$digit is a valid digit.")
+    
+  if (x !in 0..100) // `not in` operator, !in
+    println("x is not in range 0..100")
+   
 }
 
 fun conditionalIf(x: Int): Int {
@@ -222,6 +259,9 @@ fun conditionalIf(x: Int): Int {
     print("Choose b") 
     b 
   }
+  
+  // if as an expression 
+  val maxFromExpression = if (a > b) a else b
   
   if (x > 0)
     return x
@@ -239,26 +279,39 @@ fun conditionalWhen(obj: Any) {
   }
 }
 
+fun conditionalInstanceCheck(x: Any) {
+  when (x) {
+    is Char -> println("$x is a character")
+    is Int -> println($x is an integer")
+    else -> println("$x is neither integer nor a character")
+  }
+}
+
 // _____________________________________________________________________ LOOPS
 
 fun loopDemo(args: Array<String>) {
-  print("for-each")
+  println("for-each")
   for (arg in args)
     print(arg)
 
-  print("for i")
+  println("for i")
   for (i in args.indices)
     print(args[i])
+    
+  println("for i in range")
+  for (i in 1..10)
+    print(i)
+  
 
-  print("while")
+  println("while")
   var i = 0
   while (i < args.size())
     print(args[i++])
     
-  print("do while")
+  println("do while")
   i = args.size() - 1
   do {
-    println(args[i])
+    print(args[i])
   } while(i >= 0)
   
   // Break and continue are supported
@@ -342,17 +395,29 @@ fun nullChecking4(obj: Any?) {
 
 // _______________________________________________________________ COLLECTIONS
 
-fun collectionIter() {
+fun collections() {
   val names = listOf("foo", "bar", "baz")
   
   // Iterating over collection items.
   for (name in names)
     println(name)
 
-  // Checking if collection contains an item.
   // names.contains(text) is called automatically.
   if ("foo" in names) 
     print("Yes")
+   
+  // Traversing a map/list of pairs.
+  for ((k, v) in map) {
+     println("$k -> $v")
+  }
+}
+
+fun collectionFiltering() {
+  val list = listOf(1, 2, 55, 101, -101, -1098, 42)
+  
+  // Two methods to filter list with a condition.
+  val positives0 = list.filter { x -> x > 0 }
+  val positives1 = list.filter { it > 0 }
 }
 
 // ___________________________________________________________________ CLASSES
