@@ -489,15 +489,16 @@ void barkThreeTimes(const T& input)
 
 Dog fluffy;
 fluffy.setName("Fluffy")
-barkThreeTimes(fluffy); Prints "Fluffy barks" three times.
+barkThreeTimes(fluffy); // Prints "Fluffy barks" three times.
 
-// Template parameters don't have to be classes, though this is used very rarely:
+// Template parameters don't have to be classes:
 template<int Y>
 void printMessage() {
   cout << "Learn C++ in " << Y << " minutes!" << endl;
 }
 
-// And you can explicitly specialize templates for more efficient code:
+// And you can explicitly specialize templates for more efficient code (most
+// real-world uses of specialization are not as trivial as this):
 template<>
 void printMessage<10>() {
   cout << "Learn C++ faster in only 10 minutes!" << endl;
