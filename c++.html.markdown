@@ -497,8 +497,10 @@ void printMessage() {
   cout << "Learn C++ in " << Y << " minutes!" << endl;
 }
 
-// And you can explicitly specialize templates for more efficient code (most
-// real-world uses of specialization are not as trivial as this):
+// And you can explicitly specialize templates for more efficient code. Of
+// course, most real-world uses of specialization are not as trivial as this.
+// Note that you still need to declare the function (or class) as a template
+// even if you explicitly specified all parameters.
 template<>
 void printMessage<10>() {
   cout << "Learn C++ faster in only 10 minutes!" << endl;
@@ -667,7 +669,9 @@ void doSomethingWithAFile(const std::string& filename)
 // Fun stuff
 /////////////////////
 
-// Aspects of C++ that may be surprising to newcomers (and even some veterans):
+// Aspects of C++ that may be surprising to newcomers (and even some veterans).
+// This section is, unfortunately, wildly incomplete; C++ is one of the easiest
+// languages with which to shoot yourself in the foot.
 
 // You can override private methods!
 class Foo {
@@ -677,16 +681,35 @@ class FooSub : public Foo {
   virtual void bar();  // overrides Foo::bar!
 };
 
-// 0, false, NULL are all the same thing!
+
+// 0 == false == NULL (most of the time)!
 bool* pt = new bool;
 *pt = 0;  // Sets the value points by 'pt' to false.
-pt = 0;  // Sets 'pt' to the null pointer. Yes both lines compile without warning.
+pt = 0;  // Sets 'pt' to the null pointer. Both lines compile without warnings.
 
-// '=' != '='
-Foo f1 = f2;  // Calls Foo::Foo(const Foo&) or some variant copy constructor.
+// nullptr is supposed to fix some of that issue:
+int* pt2 = new int;
+*pt2 = nullptr;  // Doesn't compile
+pt2 = nullptr;  // Sets pt2 to null.
 
+// But somehow 'bool' type is an exception.
+*pt = nullptr;  // This still compiles, even though '*pt' is a bool!
+
+
+// '=' != '=' != '='!
+// Calls Foo::Foo(const Foo&) or some variant copy constructor.
+Foo f2;
+Foo f1 = f2;
+
+// Calls Foo::Foo(const Foo&) or variant, but only copies the 'Foo' part of
+// 'fooSub'. Any extra members of 'fooSub' are discarded. This lovely behavior
+// is called "object slicing."
+FooSub fooSub;
+Foo f1 = fooSub;
+
+// Calls Foo::operator=(Foo&) or variant.
 Foo f1;
-f1 = f2;  // Calls Foo::operator=(Foo&) or variant.
+f1 = f2;
 
 ```
 Futher Reading:
