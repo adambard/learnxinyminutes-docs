@@ -433,6 +433,84 @@ int main () {
 }
 
 /////////////////////
+// Templates
+/////////////////////
+
+// Templates in C++ are mostly used for generic programming, though they are
+// much more powerful than generics constructs in other languages. It also
+// supports explicit and partial specialization, functional-style type classes,
+// and also it's Turing-complete.
+
+// We start with the kind of generic programming you might be familiar with. To
+// define a class or function that takes a type parameter:
+template<class T>
+class Box {
+    // In this class, T can be used as any other type.
+    void insert(const T&) { ... }
+};
+
+// During compilation, the compiler actually generates copies of each template
+// with parameters substituted, and so the full definition of the class must be
+// present at each invocation. This is why you will see template classes defined
+// entirely in header files.
+
+// To instantiate a template class on the stack:
+Box<int> intBox;
+
+// and you can use it as you would expect:
+intBox.insert(123);
+
+// You can, of course, nest templates:
+Box<Box<int> > boxOfBox;
+boxOfBox.insert(intBox);
+
+// Up until C++11, you muse place a space between the two '>'s, otherwise '>>'
+// will be parsed as the right shift operator.
+
+// You will sometimes see
+//   template<typename T>
+// instead. The 'class' keyword and 'typename' keyword are _mostly_
+// interchangeable in this case. For full explanation, see
+//   http://en.wikipedia.org/wiki/Typename
+// (yes, that keyword has its own Wikipedia page).
+
+// Similarly, a template function:
+template<class T>
+void barkThreeTimes(const T& input)
+{
+    input.bark();
+    input.bark();
+    input.bark();
+}
+
+// Notice that nothing is specified about the type parameters here. The compiler
+// will generate and then type-check every invocation of the template, so the
+// above function works with any type 'T' that has a const 'bark' method!
+
+Dog fluffy;
+fluffy.setName("Fluffy")
+barkThreeTimes(fluffy); // Prints "Fluffy barks" three times.
+
+// Template parameters don't have to be classes:
+template<int Y>
+void printMessage() {
+  cout << "Learn C++ in " << Y << " minutes!" << endl;
+}
+
+// And you can explicitly specialize templates for more efficient code. Of
+// course, most real-world uses of specialization are not as trivial as this.
+// Note that you still need to declare the function (or class) as a template
+// even if you explicitly specified all parameters.
+template<>
+void printMessage<10>() {
+  cout << "Learn C++ faster in only 10 minutes!" << endl;
+}
+
+printMessage<20>();  // Prints "Learn C++ in 20 minutes!"
+printMessage<10>();  // Prints "Learn C++ faster in only 10 minutes!"
+
+
+/////////////////////
 // Exception Handling
 /////////////////////
 
@@ -585,6 +663,54 @@ void doSomethingWithAFile(const std::string& filename)
 //   vector (i.e. self-resizing array), hash maps, and so on
 //   all automatically destroy their contents when they fall out of scope.
 // - Mutexes using lock_guard and unique_lock
+
+
+/////////////////////
+// Fun stuff
+/////////////////////
+
+// Aspects of C++ that may be surprising to newcomers (and even some veterans).
+// This section is, unfortunately, wildly incomplete; C++ is one of the easiest
+// languages with which to shoot yourself in the foot.
+
+// You can override private methods!
+class Foo {
+  virtual void bar();
+};
+class FooSub : public Foo {
+  virtual void bar();  // overrides Foo::bar!
+};
+
+
+// 0 == false == NULL (most of the time)!
+bool* pt = new bool;
+*pt = 0;  // Sets the value points by 'pt' to false.
+pt = 0;  // Sets 'pt' to the null pointer. Both lines compile without warnings.
+
+// nullptr is supposed to fix some of that issue:
+int* pt2 = new int;
+*pt2 = nullptr;  // Doesn't compile
+pt2 = nullptr;  // Sets pt2 to null.
+
+// But somehow 'bool' type is an exception (this is to make `if (ptr)` compile).
+*pt = nullptr;  // This still compiles, even though '*pt' is a bool!
+
+
+// '=' != '=' != '='!
+// Calls Foo::Foo(const Foo&) or some variant copy constructor.
+Foo f2;
+Foo f1 = f2;
+
+// Calls Foo::Foo(const Foo&) or variant, but only copies the 'Foo' part of
+// 'fooSub'. Any extra members of 'fooSub' are discarded. This sometimes
+// horrifying behavior is called "object slicing."
+FooSub fooSub;
+Foo f1 = fooSub;
+
+// Calls Foo::operator=(Foo&) or variant.
+Foo f1;
+f1 = f2;
+
 ```
 Futher Reading:
 
