@@ -9,45 +9,45 @@ translators:
 lang: it-it
 ---
 
-Il C++ e' un linguaggio di programmazione il quale,
+Il C++ è un linguaggio di programmazione il quale,
 [secondo il suo inventore Bjarne Stroustrup](http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2014/Keynote),
-e' stato progettato per
+è stato progettato per
 
 - essere un "miglior C"
 - supportare l'astrazione dei dati
 - supportare la programmazione orientata agli oggetti
 - supportare la programmazione generica
 
-Nonostante la sintassi possa risultare piu' difficile o complessa di linguaggi piu' recenti,
-e' usato in maniera vasta poiche' viene compilato in istruzioni macchina che possono
+Nonostante la sintassi possa risultare più difficile o complessa di linguaggi più recenti,
+è usato in maniera vasta poichè viene compilato in istruzioni macchina che possono
 essere eseguite direttamente dal processore ed offre un controllo stretto sull'hardware (come il linguaggio C)
 ed allo stesso tempo offre caratteristiche ad alto livello come i generici, le eccezioni, e le classi.
-Questa combinazione di velocita' e funzionalita' rende il C++
-uno dei piu' utilizzati linguaggi di programmazione.
+Questa combinazione di velocità e funzionalità rende il C++
+uno dei più utilizzati linguaggi di programmazione.
 
 ```c++
 //////////////////
 // Confronto con il C
 //////////////////
 
-// Il C++ e' _quasi_ un superset del C e con esso condivide la sintassi di base per
+// Il C++ è _quasi_ un superset del C e con esso condivide la sintassi di base per
 // la dichiarazione di variabili, tipi primitivi, e funzioni.
 
-// Proprio come nel C, l'inizio del programma e' una funzione chiamata
+// Proprio come nel C, l'inizio del programma è una funzione chiamata
 // main con un intero come tipo di ritorno,
 // nonostante void main() sia anch'essa accettata dalla maggior parte dei compilatori(gcc, clang, ecc...)
 // Questo valore serve come stato d'uscita del programma.
 // Vedi http://it.wikipedia.org/wiki/Valore_di_uscita per maggiori informazioni.
 int main(int argc, char** argv)
 {
-    // Gli argomenti a linea di comando sono passati tramite argc e argv cosi' come
+    // Gli argomenti a linea di comando sono passati tramite argc e argv così come
     // avviene in C.
     // argc indica il numero di argomenti,
-    // e argv e' un array in stile-C di stringhe (char*)
+    // e argv è un array in stile-C di stringhe (char*)
     // che rappresenta gl iargomenti.
-    // Il primo argomento e' il nome che e' stato assegnato al programma.
+    // Il primo argomento è il nome che è stato assegnato al programma.
     // argc e argv possono essere omessi se non hai bisogno di argomenti,
-    // in questa maniera la funzione avra' int main() come firma.
+    // in questa maniera la funzione avrà int main() come firma.
 
     // Lo stato di uscita 0 indica successo.
     return 0;
@@ -66,7 +66,7 @@ sizeof('c') == sizeof(10)
 void func(); // funziona che non accetta argomenti
 
 // In C
-void func(); // funzione che puo' accettare un qualsiasi numero di argomenti
+void func(); // funzione che può accettare un qualsiasi numero di argomenti
 
 // Usa nullptr invece di NULL in C++
 int* ip = nullptr;
@@ -95,7 +95,7 @@ void print(char const* myString)
 
 void print(int myInt)
 {
-    printf("Il mio int e' %d", myInt);
+    printf("Il mio int è %d", myInt);
 }
 
 int main()
@@ -134,7 +134,7 @@ void dichiarazioneInvalida(int a = 1, int b) // Errore!
 // Namespaces
 /////////////
 
-// I namespaces forniscono visibilita' separata per dichiarazioni di variabili, funzioni,
+// I namespaces forniscono visibilità separata per dichiarazioni di variabili, funzioni,
 // ed altro.
 // I namespaces possono essere annidati.
 
@@ -142,7 +142,7 @@ namespace Primo {
     namespace Annidato {
         void foo()
         {
-            printf("Questa e' Primo::Annidato::foo\n");
+            printf("Questa è Primo::Annidato::foo\n");
         }
     } // fine di namespace Annidato
 } // fine di namespace Primo
@@ -150,13 +150,13 @@ namespace Primo {
 namespace Secondo {
     void foo()
     {
-        printf("Questa e' Secondo::foo\n")
+        printf("Questa è Secondo::foo\n")
     }
 }
 
 void foo()
 {
-    printf("Questa e' foo globale\n");
+    printf("Questa è foo globale\n");
 }
 
 int main()
@@ -165,9 +165,9 @@ int main()
     // a meno che non venga dichiarato altrimenti.
     using namespace Secondo;
 
-    foo(); // stampa "Questa e' Secondo::foo"
-    Primo::Annidato::foo(); // stampa "Questa e' Primo::Annidato::foo"
-    ::foo(); // stampa "Questa e' foo globale"
+    foo(); // stampa "Questa è Secondo::foo"
+    Primo::Annidato::foo(); // stampa "Questa è Primo::Annidato::foo"
+    ::foo(); // stampa "Questa è foo globale"
 }
 
 ///////////////
@@ -176,7 +176,7 @@ int main()
 
 // L'input e l'output in C++ utilizza gli streams
 // cin, cout, e cerr i quali rappresentano stdin, stdout, e stderr.
-// << e' l'operatore di inserzione >> e' l'operatore di estrazione.
+// << è l'operatore di inserzione >> è l'operatore di estrazione.
 
 #include <iostream> // Include for I/O streams
 
@@ -191,9 +191,9 @@ int main()
    // Prende l'input
    cin >> myInt;
 
-   // cout puo' anche essere formattato
-   cout << "Il tuo numero preferito e' " << myInt << "\n";
-   // stampa "Il tuo numero preferito e' <myInt>"
+   // cout può anche essere formattato
+   cout << "Il tuo numero preferito è " << myInt << "\n";
+   // stampa "Il tuo numero preferito è <myInt>"
 
     cerr << "Usato per messaggi di errore";
 }
@@ -210,7 +210,7 @@ using namespace std; // Anche le stringhe sono contenute nel namespace std (libr
 string myString = "Ciao";
 string myOtherString = " Mondo";
 
-// + e' usato per la concatenazione.
+// + è usato per la concatenazione.
 cout << myString + myOtherString; // "Ciao Mondo"
 
 cout << myString + " Bella"; // "Ciao Bella"
@@ -229,8 +229,8 @@ cout << myString; // "Ciao Mario"
 // Questi non sono tipi puntatori che non possono essere riassegnati una volta settati
 // e non possono essere null.
 // Inoltre, essi hanno la stessa sintassi della variabile stessa:
-// * non e' necessario per la dereferenziazione e
-// & ("indirizzo di") non e' usato per l'assegnamento.
+// * non è necessario per la dereferenziazione e
+// & ("indirizzo di") non è usato per l'assegnamento.
 
 using namespace std;
 
@@ -242,7 +242,7 @@ string& fooRef = foo; // Questo crea un riferimento a foo.
 fooRef += ". Ciao!"; // Modifica foo attraverso il riferimento
 cout << fooRef; // Stampa "Io sono foo. Ciao!"
 
-// Non riassegna "fooRef". Questo e' come scrivere "foo = bar", e
+// Non riassegna "fooRef". Questo è come scrivere "foo = bar", e
 //   foo == "Io sono bar"
 // dopo questa riga.
 fooRef = bar;
@@ -266,7 +266,7 @@ class Cane {
     int peso;
 
 // Tutti i membri dopo questo sono pubblici (public)
-// finche' "private:" o "protected:" non compaiono.
+// finchè "private:" o "protected:" non compaiono.
 public:
 
     // Costruttore di default
@@ -294,7 +294,7 @@ public:
     void abbaia() const { std::cout << nome << " abbaia!\n"; }
 
     // Assieme con i costruttori, il C++ fornisce i distruttori.
-    // Questi sono chiamati quando un oggetto e' rimosso o esce dalla visibilita'.
+    // Questi sono chiamati quando un oggetto è rimosso o esce dalla visibilità.
     // Questo permette paradigmi potenti come il RAII
     // (vedi sotto)
     // I distruttori devono essere virtual per permettere a classi di essere derivate da questa.
@@ -302,122 +302,122 @@ public:
 
 }; // Un punto e virgola deve seguire la definizione della funzione
 
-// Class member functions are usually implemented in .cpp files.
-void Dog::Dog()
+// Le funzioni membro di una classe sono generalmente implementate in files .cpp .
+void Cane::Cane()
 {
-    std::cout << "A dog has been constructed\n";
+    std::cout << "Un cane è stato costruito\n";
 }
 
-// Objects (such as strings) should be passed by reference
-// if you are modifying them or const reference if you are not.
-void Dog::setName(const std::string& dogsName)
+// Gli oggetti (ad esempio le stringhe) devono essere passati per riferimento
+// se li stai modificando o come riferimento const altrimenti.
+void Cane::impostaNome(const std::string& nomeCane)
 {
-    name = dogsName;
+    nome = nomeCane;
 }
 
-void Dog::setWeight(int dogsWeight)
+void Cane::impostaPeso(int pesoCane)
 {
-    weight = dogsWeight;
+    peso = pesoCane;
 }
 
-// Notice that "virtual" is only needed in the declaration, not the definition.
-void Dog::print() const
+// Notare che "virtual" è solamente necessario nelle dichiarazioni, non nelle definizioni.
+void Cane::print() const
 {
-    std::cout << "Dog is " << name << " and weighs " << weight << "kg\n";
+    std::cout << "Il cane è " << nome << " e pesa " << peso << "kg\n";
 }
 
-void Dog::~Dog()
+void Cane::~Cane()
 {
-    cout << "Goodbye " << name << "\n";
+    cout << "Ciao ciao " << nome << "\n";
 }
 
 int main() {
-    Dog myDog; // prints "A dog has been constructed"
-    myDog.setName("Barkley");
-    myDog.setWeight(10);
-    myDog.printDog(); // prints "Dog is Barkley and weighs 10 kg"
+    Cane myDog; // stampa "Un cane è stato costruito"
+    myDog.impostaNome("Barkley");
+    myDog.impostaPeso(10);
+    myDog.print(); // stampa "Il cane è Barkley e pesa 10 kg"
     return 0;
-} // prints "Goodbye Barkley"
+} // stampa "Ciao ciao Barkley"
 
-// Inheritance:
+// Ereditarietà:
 
-// This class inherits everything public and protected from the Dog class
-class OwnedDog : public Dog {
+// Questa classe eredita tutto ciò che è public e protected dalla classe Cane
+class MioCane : public Cane {
 
-    void setOwner(const std::string& dogsOwner)
+    void impostaProprietario(const std::string& proprietarioCane)
 
-    // Override the behavior of the print function for all OwnedDogs. See
-    // http://en.wikipedia.org/wiki/Polymorphism_(computer_science)#Subtyping
-    // for a more general introduction if you are unfamiliar with
-    // subtype polymorphism.
-    // The override keyword is optional but makes sure you are actually
-    // overriding the method in a base class.
+    // Sovrascrivi il comportamento della funzione print per tutti i MioCane. Vedi
+    // http://it.wikipedia.org/wiki/Polimorfismo_%28informatica%29
+    // per una introduzione più generale se non sei familiare con
+    // il polimorfismo.
+    // La parola chiave override è opzionale ma fa sì che tu stia effettivamente
+    // sovrascrivendo il metodo nella classe base.
     void print() const override;
 
 private:
-    std::string owner;
+    std::string proprietario;
 };
 
-// Meanwhile, in the corresponding .cpp file:
+// Nel frattempo, nel file .cpp corrispondente:
 
-void OwnedDog::setOwner(const std::string& dogsOwner)
+void MioCane::impostaProprietario(const std::string& proprietarioCane)
 {
-    owner = dogsOwner;
+    proprietario = proprietarioCane;
 }
 
-void OwnedDog::print() const
+void MioCane::print() const
 {
-    Dog::print(); // Call the print function in the base Dog class
-    std::cout << "Dog is owned by " << owner << "\n";
-    // Prints "Dog is <name> and weights <weight>"
-    //        "Dog is owned by <owner>"
+    Cane::print(); // Chiama la funzione print nella classe base Cane
+    std::cout << "Il cane è di " << proprietario << "\n";
+    // stampa "Il cane è <nome> e pesa <peso>"
+    //        "Il cane è di <proprietario>"
 }
 
-//////////////////////////////////////////
-// Initialization and Operator Overloading
-//////////////////////////////////////////
+///////////////////////////////////////////////////
+// Inizializzazione ed Overloading degli Operatori
+//////////////////////////////////////////////////
 
-// In C++ you can overload the behavior of operators such as +, -, *, /, etc.
-// This is done by defining a function which is called
-// whenever the operator is used.
+// In C++ puoi sovrascrivere il comportamento di operatori come +, -, *, /, ecc...
+// Questo è possibile definendo una funzioneche viene chiamata
+// ogniqualvolta l'operatore è usato.
 
 #include <iostream>
 using namespace std;
 
-class Point {
+class Punto {
 public:
-    // Member variables can be given default values in this manner.
+    // Così si assegna alle variabili membro un valore di default.
     double x = 0;
     double y = 0;
 
-    // Define a default constructor which does nothing
-    // but initialize the Point to the default value (0, 0)
-    Point() { };
+    // Definisce un costruttore di default che non fa nulla
+    // ma inizializza il Punto ai valori di default (0, 0)
+    Punto() { };
 
-    // The following syntax is known as an initialization list
-    // and is the proper way to initialize class member values
-    Point (double a, double b) :
+    // La sintassi seguente è nota come lista di inizializzazione
+    // ed è il modo appropriato di inizializzare i valori membro della classe
+    Punto (double a, double b) :
         x(a),
         y(b)
-    { /* Do nothing except initialize the values */ }
+    { /* Non fa nulla eccetto inizializzare i valori */ }
 
-    // Overload the + operator.
-    Point operator+(const Point& rhs) const;
+    // Sovrascrivi l'operatore +.
+    Punto operator+(const Punto& rhs) const;
 
-    // Overload the += operator
-    Point& operator+=(const Point& rhs);
+    // Sovrascrivi l'operatore +=
+    Punto& operator+=(const Punto& rhs);
 
-    // It would also make sense to add the - and -= operators,
-    // but we will skip those for brevity.
+    // Avrebbe senso aggiungere gli operatori - e -=,
+    // ma li saltiamo per rendere la guida più breve.
 };
 
-Point Point::operator+(const Point& rhs) const
+Punto Punto::operator+(const Punto& rhs) const
 {
-    // Create a new point that is the sum of this one and rhs.
-    return Point(x + rhs.x, y + rhs.y);
+    // Crea un nuovo punto come somma di questo e di rhs.
+    return Punto(x + rhs.x, y + rhs.y);
 }
 
-Point& Point::operator+=(const Point& rhs)
+Punto& Punto::operator+=(const Punto& rhs)
 {
     x += rhs.x;
     y += rhs.y;
@@ -425,13 +425,13 @@ Point& Point::operator+=(const Point& rhs)
 }
 
 int main () {
-    Point up (0,1);
-    Point right (1,0);
-    // This calls the Point + operator
-    // Point up calls the + (function) with right as its paramater
-    Point result = up + right;
-    // Prints "Result is upright (1,1)"
-    cout << "Result is upright (" << result.x << ',' << result.y << ")\n";
+    Punto su (0,1);
+    Punto destro (1,0);
+    // Questo chiama l'operatore + di Punto
+    // Il Punto su chiama la funzione + con destro come argomento
+    Punto risultato = su + destro;
+    // Stampa "Risultato è spostato in (1,1)"
+    cout << "Risultato è spostato (" << risultato.x << ',' << risultato.y << ")\n";
     return 0;
 }
 
@@ -441,14 +441,14 @@ int main () {
 
 // La libreria standard fornisce un paio di tipi d'eccezioni
 // (vedi http://en.cppreference.com/w/cpp/error/exception)
-// ma ogni tipo puo' essere lanciato come eccezione
+// ma ogni tipo può essere lanciato come eccezione
 #include <exception>
 
 // Tutte le eccezioni lanciate all'interno del blocco _try_ possono essere catturate dai successivi 
 // handlers _catch_.
 try {
     // Non allocare eccezioni nello heap usando _new_.
-    throw std::exception("E' avvenuto un problema");
+    throw std::exception("È avvenuto un problema");
 }
 // Cattura le eccezioni come riferimenti const se sono oggetti
 catch (const std::exception& ex)
@@ -466,8 +466,8 @@ catch (const std::exception& ex)
 ///////
 
 // RAII sta per Resource Allocation Is Initialization.
-// Spesso viene considerato come il piu' potente paradigma in C++.
-// E' un concetto semplice: un costruttore di un oggetto
+// Spesso viene considerato come il più potente paradigma in C++.
+// È un concetto semplice: un costruttore di un oggetto
 // acquisisce le risorse di tale oggetto ed il distruttore le rilascia.
 
 // Per comprendere come questo sia vantaggioso,
@@ -476,122 +476,122 @@ void faiQualcosaConUnFile(const char* nomefile)
 {
     // Per cominciare, assumiamo che niente possa fallire.
 
-    FILE* fh = fopen(nomefile, "r"); // Apri il file in modalita' lettura.
+    FILE* fh = fopen(nomefile, "r"); // Apri il file in modalità lettura.
 
-    faiQualcosaConUnFile(fh);
+    faiQualcosaConIlFile(fh);
     faiQualcosAltroConEsso(fh);
 
     fclose(fh); // Chiudi il gestore di file.
 }
 
-// Unfortunately, things are quickly complicated by error handling.
-// Suppose fopen can fail, and that doSomethingWithTheFile and
-// doSomethingElseWithIt return error codes if they fail.
-// (Exceptions are the preferred way of handling failure,
-//  but some programmers, especially those with a C background,
-//  disagree on the utility of exceptions).
-// We now have to check each call for failure and close the file handle
-// if a problem occurred.
-bool doSomethingWithAFile(const char* filename)
+// Sfortunatamente, le cose vengono complicate dalla gestione degli errori.
+// Supponiamo che fopen fallisca, e che faiQualcosaConUnFile e
+// faiQualcosAltroConEsso ritornano codici d'errore se falliscono.
+// (Le eccezioni sono la maniera preferita per gestire i fallimenti,
+//  ma alcuni programmatori, specialmente quelli con un passato in C,
+//  non sono d'accordo con l'utilità delle eccezioni).
+// Adesso dobbiamo verificare che ogni chiamata per eventuali fallimenti e chiudere il gestore di file
+// se un problema è avvenuto.
+bool faiQualcosaConUnFile(const char* nomefile)
 {
-    FILE* fh = fopen(filename, "r"); // Open the file in read mode
-    if (fh == nullptr) // The returned pointer is null on failure.
-        return false; // Report that failure to the caller.
+    FILE* fh = fopen(nomefile, "r"); // Apre il file in modalità lettura
+    if (fh == nullptr) // Il puntatore restituito è null in caso di fallimento.
+        return false; // Riporta il fallimento al chiamante.
 
-    // Assume each function returns false if it failed
-    if (!doSomethingWithTheFile(fh)) {
-        fclose(fh); // Close the file handle so it doesn't leak.
-        return false; // Propagate the error.
+    // Assumiamo che ogni funzione ritorni false se ha fallito
+    if (!faiQualcosaConIlFile(fh)) {
+        fclose(fh); // Chiude il gestore di file così che non sprechi memoria.
+        return false; // Propaga l'errore.
     }
-    if (!doSomethingElseWithIt(fh)) {
-        fclose(fh); // Close the file handle so it doesn't leak.
-        return false; // Propagate the error.
+    if (!faiQualcosAltroConEsso(fh)) {
+        fclose(fh); // Chiude il gestore di file così che non sprechi memoria.
+        return false; // Propaga l'errore.
     }
 
-    fclose(fh); // Close the file handle so it doesn't leak.
-    return true; // Indicate success
+    fclose(fh); // Chiudi il gestore di file così che non sprechi memoria.
+    return true; // Indica successo
 }
 
-// C programmers often clean this up a little bit using goto:
-bool doSomethingWithAFile(const char* filename)
+// I programmatori C in genere puliscono questa procedura usando goto:
+bool faiQualcosaConUnFile(const char* nomefile)
 {
-    FILE* fh = fopen(filename, "r");
+    FILE* fh = fopen(nomefile, "r");
     if (fh == nullptr)
         return false;
 
-    if (!doSomethingWithTheFile(fh))
-        goto failure;
+    if (!faiQualcosaConIlFile(fh))
+        goto fallimento;
 
-    if (!doSomethingElseWithIt(fh))
-        goto failure;
+    if (!faiQualcosAltroConEsso(fh))
+        goto fallimento;
 
-    fclose(fh); // Close the file
-    return true; // Indicate success
+    fclose(fh); // Chiude il file
+    return true; // Indica successo
 
-failure:
+fallimento:
     fclose(fh);
-    return false; // Propagate the error
+    return false; // Propaga l'errore
 }
 
-// If the functions indicate errors using exceptions,
-// things are a little cleaner, but still sub-optimal.
-void doSomethingWithAFile(const char* filename)
+// Se le funzioni indicano errori usando le eccezioni,
+// le cose sono un pò più pulite, ma sono sempre sub-ottimali.
+void faiQualcosaConUnFile(const char* nomefile)
 {
-    FILE* fh = fopen(filename, "r"); // Open the file in read mode
+    FILE* fh = fopen(nomefile, "r"); // Apre il file in modalità lettura
     if (fh == nullptr)
-        throw std::exception("Could not open the file.");
+        throw std::exception("Non è stato possibile aprire il file.").
 
     try {
-        doSomethingWithTheFile(fh);
-        doSomethingElseWithIt(fh);
+        faiQualcosaConIlFile(fh);
+        faiQualcosAltroConEsso(fh);
     }
     catch (...) {
-        fclose(fh); // Be sure to close the file if an error occurs.
-        throw; // Then re-throw the exception.
+        fclose(fh); // Fai sì che il file venga chiuso se si ha un errore.
+        throw; // Poi rilancia l'eccezione.
     }
 
-    fclose(fh); // Close the file
-    // Everything succeeded
+    fclose(fh); // Chiudi il file
+    // Tutto è andato bene
 }
 
-// Compare this to the use of C++'s file stream class (fstream)
-// fstream uses its destructor to close the file.
-// Recall from above that destructors are automatically called
-// whenever an object falls out of scope.
-void doSomethingWithAFile(const std::string& filename)
+// Confronta questo con l'utilizzo della classe C++ file stream (fstream)
+// fstream usa i distruttori per chiudere il file.
+// Come detto sopra, i distruttori sono automaticamente chiamati
+// ogniqualvolta un oggetto esce dalla visibilità.
+void faiQualcosaConUnFile(const std::string& nomefile)
 {
-    // ifstream is short for input file stream
-    std::ifstream fh(filename); // Open the file
+    // ifstream è l'abbreviazione di input file stream
+    std::ifstream fh(nomefile); // Apre il file
 
-    // Do things with the file
-    doSomethingWithTheFile(fh);
-    doSomethingElseWithIt(fh);
+    // Fai qualcosa con il file
+    faiQualcosaConIlFile(fh);
+    faiQualcosAltroConEsso(fh);
 
-} // The file is automatically closed here by the destructor
+} // Il file viene chiuso automaticamente chiuso qui dal distruttore
 
-// This has _massive_ advantages:
-// 1. No matter what happens,
-//    the resource (in this case the file handle) will be cleaned up.
-//    Once you write the destructor correctly,
-//    It is _impossible_ to forget to close the handle and leak the resource.
-// 2. Note that the code is much cleaner.
-//    The destructor handles closing the file behind the scenes
-//    without you having to worry about it.
-// 3. The code is exception safe.
-//    An exception can be thrown anywhere in the function and cleanup
-//    will still occur.
+// Questo ha vantaggi _enormi_:
+// 1. Può succedere di tutto ma
+//    la risorsa (in questo caso il file handler) verrà ripulito.
+//    Una volta che scrivi il distruttore correttamente,
+//    È _impossibile_ scordarsi di chiudere l'handler e sprecare memoria.
+// 2. Nota che il codice è molto più pulito.
+//    Il distruttore gestisce la chiusura del file dietro le scene
+//    senza che tu debba preoccupartene.
+// 3. Il codice è sicuro da eccezioni.
+//    Una eccezione può essere lanciata in qualunque punto nella funzione e la ripulitura
+//    avverrà lo stesso.
 
-// All idiomatic C++ code uses RAII extensively for all resources.
-// Additional examples include
-// - Memory using unique_ptr and shared_ptr
-// - Containers - the standard library linked list,
-//   vector (i.e. self-resizing array), hash maps, and so on
-//   all automatically destroy their contents when they fall out of scope.
-// - Mutexes using lock_guard and unique_lock
+// Tutto il codice C++ idiomatico usa RAII in maniera vasta su tutte le risorse.
+// Esempi aggiuntivi includono
+// - Utilizzo della memoria con unique_ptr e shared_ptr
+// - I contenitori - la lista della libreria standard,
+//   vettori (i.e. array auto-aggiustati), mappe hash, e così via
+//   sono tutti automaticamente distrutti con i loro contenuti quando escono dalla visibilità.
+// - I mutex usano lock_guard e unique_lock
 ```
 Letture consigliate:
 
-Un riferimento aggiornato del linguaggio puo' essere trovato qui
+Un riferimento aggiornato del linguaggio può essere trovato qui
 <http://cppreference.com/w/cpp>
 
 Risorse addizionali possono essere trovate qui <http://cplusplus.com>
