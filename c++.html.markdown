@@ -692,7 +692,7 @@ int* pt2 = new int;
 *pt2 = nullptr;  // Doesn't compile
 pt2 = nullptr;  // Sets pt2 to null.
 
-// But somehow 'bool' type is an exception.
+// But somehow 'bool' type is an exception (this is to make `if (ptr)` compile).
 *pt = nullptr;  // This still compiles, even though '*pt' is a bool!
 
 
@@ -702,8 +702,8 @@ Foo f2;
 Foo f1 = f2;
 
 // Calls Foo::Foo(const Foo&) or variant, but only copies the 'Foo' part of
-// 'fooSub'. Any extra members of 'fooSub' are discarded. This lovely behavior
-// is called "object slicing."
+// 'fooSub'. Any extra members of 'fooSub' are discarded. This sometimes
+// horrifying behavior is called "object slicing."
 FooSub fooSub;
 Foo f1 = fooSub;
 
