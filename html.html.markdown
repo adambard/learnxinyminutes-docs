@@ -5,7 +5,11 @@ contributors:
   - ["Alois de Gouvello", "https://github.com/aloisdg"]
 ---
 
-HTML is a language.
+HTML, for HyperText Markup Language, is a declarative language used for creating and visually representing a webpage. It is written in the form of HTML elements consisting of tags enclosed in angle brackets : <tag>.
+
+Web browsers can read HTML files and render them into visible or audible web pages.
+ 
+HTML is a subset of Standard Generalized Markup Language (SGML) and is specified by the World Wide Web Consortium (W3C).
 
 ```html
 
