@@ -5,7 +5,7 @@ contributors:
   - ["Alois de Gouvello", "https://github.com/aloisdg"]
 ---
 
-HTML, for HyperText Markup Language, is a declarative language used for creating and visually representing a webpage. It is written in the form of HTML elements consisting of tags enclosed in angle brackets : <tag>.
+HTML, for HyperText Markup Language, is a declarative language used for creating and visually representing a webpage. It is written in the form of HTML elements consisting of tags enclosed in angle brackets : `<tag>`.
 
 Web browsers can read HTML files and render them into visible or audible web pages.
  
