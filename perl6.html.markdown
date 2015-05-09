@@ -211,7 +211,7 @@ say $x; #=> 52
 # - `if`
 # Before talking about `if`, we need to know which values are "Truthy"
 #  (represent True), and which are "Falsey" (or "Falsy") -- represent False.
-# Only these values are Falsey: (), 0, "0", "", Nil, A type (like `Str` or `Int`),
+# Only these values are Falsey: (), 0, "", Nil, A type (like `Str` or `Int`),
 #  and of course False itself.
 # Every other value is Truthy.
 if True {
