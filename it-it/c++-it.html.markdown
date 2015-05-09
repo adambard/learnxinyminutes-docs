@@ -35,7 +35,6 @@ uno dei più utilizzati linguaggi di programmazione.
 
 // Proprio come nel C, l'inizio del programma è una funzione chiamata
 // main con un intero come tipo di ritorno,
-// nonostante void main() sia anch'essa accettata dalla maggior parte dei compilatori(gcc, clang, ecc...)
 // Questo valore serve come stato d'uscita del programma.
 // Vedi http://it.wikipedia.org/wiki/Valore_di_uscita per maggiori informazioni.
 int main(int argc, char** argv)
@@ -435,6 +434,83 @@ int main () {
     return 0;
 }
 
+/////////////////
+// Templates
+////////////////
+
+// Generalmente i templates in C++ sono utilizzati per programmazione generica, anche se
+// sono molto più potenti dei costrutti generici in altri linguaggi. Inoltre,
+// supportano specializzazione esplicita e parziale, classi in stile funzionale,
+// e sono anche complete per Turing.
+
+// Iniziamo con il tipo di programmazione generica con cui forse sei familiare. Per
+// definire una classe o una funzione che prende un parametro di un dato tipo:
+template<class T>
+class Box {
+    // In questa classe, T può essere usato come qualsiasi tipo.
+    void inserisci(const T&) { ... }
+};
+
+// Durante la compilazione, il compilatore in effetti genera copie di ogni template
+// con i parametri sostituiti, e così la definizione completa della classe deve essere
+// presente ad ogni invocazione. Questo è il motivo per cui vedrai le classi template definite
+// interamente in header files.
+
+// Per instanziare una classe template sullo stack:
+Box<int> intBox;
+
+// e puoi usarla come aspettato:
+intBox.inserisci(123);
+
+//Puoi, ovviamente, innestare i templates:
+Box<Box<int> > boxOfBox;
+boxOfBox.inserisci(intBox);
+
+// Fino al C++11, devi porre uno spazio tra le due '>', altrimenti '>>'
+// viene visto come l'operatore di shift destro.
+
+// Qualche volta vedrai
+// template<typename T>
+// invece. La parole chiavi 'class' e 'typename' sono _generalmente_
+// intercambiabili in questo caso. Per una spiegazione completa, vedi
+// http://en.wikipedia.org/wiki/Typename
+// (si, quella parola chiave ha una sua pagina di Wikipedia propria).
+
+// Similmente, una funzione template:
+template<class T>
+void abbaiaTreVolte(const T& input)
+{
+    input.abbaia();
+    input.abbaia();
+    input.abbaia();
+}
+
+// Nota che niente è specificato relativamente al tipo di parametri. Il compilatore
+// genererà  e poi verificherà il tipo di ogni invocazione del template, così che
+// la funzione di cui sopra funzione con ogni tipo 'T' che ha const 'abbaia' come metodo!
+
+Cane fluffy;
+fluffy.impostaNome("Fluffy")
+abbaiaTreVolte(fluffy); // Stampa "Fluffy abbaia tre volte.
+
+// I parametri template non devono essere classi:
+template<int Y>
+void stampaMessaggio() {
+  cout << "Impara il C++ in " << Y << " minuti!" << endl;
+}
+
+// E poi esplicitamente specializzare i template per avere codice più efficiente. Ovviamente,
+// la maggior parte delle casistiche reali non sono così triviali.
+// Notare che avrai comunque bisogna di dichiarare la funzione (o classe) come un template
+// anche se hai esplicitamente specificato tutti i parametri.
+template<>
+void stampaMessaggio<10>() {
+  cout << "Impara il C++ più velocemente in soli 10 minuti!" << endl;
+}
+
+printMessage<20>();  // Stampa "impara il C++ in 20 minuti!"
+printMessage<10>();  // Stampa "Impara il C++ più velocemente in soli 10 minuti!"                                   
+                                        
 ////////////////////////////
 // Gestione delle eccezioni
 ///////////////////////////
@@ -588,6 +664,53 @@ void faiQualcosaConUnFile(const std::string& nomefile)
 //   vettori (i.e. array auto-aggiustati), mappe hash, e così via
 //   sono tutti automaticamente distrutti con i loro contenuti quando escono dalla visibilità.
 // - I mutex usano lock_guard e unique_lock
+
+///////////////////////
+// Roba divertente
+//////////////////////
+
+// Aspetti del C++ che potrebbero sbalordire i nuovi arrivati (e anche qualche veterano).
+// Questa sezione è, fortunatamente, selvaggiamente incompleta; il C++ è uno dei linguaggi
+// più facili con cui puoi spararti da solo nel piede.
+
+// Puoi sovrascrivere metodi privati!
+class Foo {
+  virtual void bar();
+};
+class FooSub : public Foo {
+  virtual void bar();  // sovrascrive Foo::bar!
+};
+
+
+// 0 == false == NULL (la maggior parte delle volte)!
+bool* pt = new bool;
+*pt = 0;  // Setta il valore puntato da 'pt' come falso.
+pt = 0;  // Setta 'pt' al puntatore null. Entrambe le righe vengono compilate senza warnings.
+
+// nullptr dovrebbe risolvere alcune di quei problemi:
+int* pt2 = new int;
+*pt2 = nullptr;  // Non compila
+pt2 = nullptr;  // Setta pt2 a null.
+
+// Ma in qualche modo il tipo 'bool' è una eccezione (questo è per rendere compilabile `if (ptr)`.
+*pt = nullptr;  // Questo compila, anche se '*pt' è un bool! 
+
+
+// '=' != '=' != '='!
+// Chiama Foo::Foo(const Foo&) o qualche variante del costruttore di copia.
+Foo f2;
+Foo f1 = f2;
+
+// Chiama Foo::Foo(const Foo&) o qualche variante, ma solo copie di 'Foo' che fanno parte di
+// 'fooSub'. Ogni altro membro di 'fooSub' viene scartato. Questo comportamento
+// orribile viene chiamato "object slicing."
+FooSub fooSub;
+Foo f1 = fooSub;
+
+// Chiama Foo::operator=(Foo&) o una sua variante.
+Foo f1;
+f1 = f2;
+
 ```
 Letture consigliate:
 
