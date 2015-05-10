@@ -7,11 +7,11 @@ filename: LearnKotlin.kt
 
 ---
 
-Kotlin is a staticaly-typed programming language that runs on the Java Virtual 
+Kotlin is a staticaly-typed programming language that runs on the Java Virtual
 Machine and also can be compiled to JavaScript source code.
 [Read more here.](http://kotlinlang.org/docs/reference/faq.html)
 
-##TODO
+##TODO: to add
   - Traits, implementing them, states.
   - Class properties, getters, setters, default values.
   - Companion objects, factory method convention in kotlin
@@ -23,6 +23,9 @@ Machine and also can be compiled to JavaScript source code.
   - Delegations
   - Lazy property
 
+##TODO: making it better
+  - remove unnecessary parts, so the whole thing is not too long to read in x
+    minutes.
 
 ```kotlin
 
@@ -69,7 +72,7 @@ fun kotlinBasics() {
           + "\nFloating-point, as Float tagged with F 123.5f:\t" + 123.5f
   )
 
-  // String literal, denoted by double quotes. Strings are iterable. \n is an 
+  // String literal, denoted by double quotes. Strings are iterable. \n is an
   // escaped character
   for (c in "Hello World!\nHow are you?")
       println(c)
@@ -117,7 +120,7 @@ fun kotlinBasics() {
 
   // ---- Arrays ----
 
-  // Arrays are represented by the `Array` class, and have size(), get(), set() 
+  // Arrays are represented by the `Array` class, and have size(), get(), set()
   // and iterator() by default
   val sampleArray: IntArray = intArray(1, 2, 3)
   println(  "array size():\t" + sampleArray.size()
@@ -251,9 +254,9 @@ fun mLoopDemoWithLabel(args: Array<String>) {
     @loop for (i in 1..20)
         for (j in 1..20)
             if (i*j > 50) break@loop
-            
+
     println("i = $i, j = $j") // i == 3, j == 17
-    
+
     // @TODO qualified returns.
 }
 
@@ -432,29 +435,28 @@ fun collections() {
 }
 
 
-// ___________________________________________________________________ CLASSES
+// ___________________________________________________________________ Classes
 
 /**
  * General class declaration syntax
  *
- * Note that *EVERYTHING* except class keyword and class name is optional.
+ * Note that *EVERYTHING* except class keyword and class name is optional,
+ * including braces.
  *
  * // @TODO other than private?
  *
- * class <NAME> [private] (PrimaryConstructorArgs) : someSuperType(ArgsIfAny) {
- *   // init blocks, like so:
- *   // secondary constructors.
+ * class <NAME> [VISIBILITY] (PrimaryConstructorArgs) : SuperType(Args) {
+ *   // init blocks
+ *   // secondary constructors
  *   // functions
  *   // properties
  *   // Nested and Inner Classes
  *   // Object Declarations
  * }
- *
- * [More about classes](http://kotlinlang.org/docs/reference/classes.html)
  */
 
 // An empty class, no curly braces needed. Implicitly inherits from `Any`.
-// `Any` is not `java.lang.Object`;in particular, it does not have any members
+// `Any` is not `java.lang.Object`, in particular, it does not have any members
 // other than equals() , hashCode() and toString().
 class Empty
 
@@ -475,8 +477,25 @@ public class Customer(firstName: String) {
         println("Multple init blocks allowed.")
     }
 
+    // Mutable Property declaration full syntax (read-only is like mutable
+    // except that setter declaration is not allowed, and is declared with `val`)
+    // var <propertyName>: <PropertyType> [= <property_initializer>]
+    // <getter>
+    // <setter>
+
     // firstName from primary constructor arg available in property initializer
-    val myName = firstName.toUpperCase()
+    val myName = firstName.toUpperCase() // Read-only property
+
+    // Mutable property. Note: Type is *required* for public properties!
+    public var changeMe : Int = 42
+
+    // Custom getter and setter
+    var PrefixedAndUpercased: String
+    get() = this.toUpperCase()
+    set(value) { // Convention is to use `value` as arg name for setter.
+        @TODO
+    }
+
 
     // @TODO more on properties, getters and setters, default values.
 
@@ -486,6 +505,11 @@ public class Customer(firstName: String) {
         println("The constructor who takes a lastName called with"
             + "value $lastName was called.")
     }
+}
+
+fun ClassPropertyDemo() {
+   val cus = Customer("some one") // No new keyword.
+   val name = cus.firstName // Accessors are called.
 }
 
 /**
@@ -504,8 +528,7 @@ object Resource {
 }
 
 // Private primary constructor
-class DontCreateMe private (name: String) {
-}
+class DontCreateMe private (name: String) { }
 
 
 // To create an instance of a class, we call the constructor as if it were a
@@ -518,30 +541,35 @@ fun classInstantiationDemo() {
 // _________________________________________________________________INHERITANCE
 
 
-// By default classes are `final`, meaning they can not be inherited from.
-// `open` keyword is the opposite of `final`, which allows inheritance.
+// Unlike java, classes are `final` by default, meaning they can not be
+// inherited from. `open` keyword is the opposite of `final`.
 open class Base(p: Int) {
-    open fun v() {}
-    fun nv() {}
+    init {
+        println("$p was passed as p.")
+    }
+
+    open fun v() {} // like classes, methods are final by default.
+    fun nv() {} // can not be overridden.
 }
 
-// Explicit super type declared after colon. If super primary constructor has
-// args, it must be called right here.
+// Explicit super types are declared after colon. If super primary constructor
+// has args, it must be called right here.
 class Derived(p: Int) : Base(p) {
-    override fun v() {} // The override annotation is required!
-}
+    override fun v() {} // Unlike java, he override annotation is required!
 
-// If a derived class has no primary constructor, each secondary constructor
-// must call super() (directly or indirectly through other constructors)
-class DerivedWithNoPrimary : Base {
+    // If a derived class has no primary constructor, each secondary constructor
+    // must call super().
     constructor(p: Int, q: Int) : super(p) { }
 
+    // Call to super() is implicit (indirectly through other constructors).
     constructor(p: Int, q: Int, r: Int) : this(p, q) { }
 }
 
-// Multiple Inheritance is allowed, but if multiple implementations are
-// available to inherit, sub-class must override that member and provide it's
-// own implementation (and perhaps explicitly use one of the inherited ones).
+/**
+ * Multiple Inheritance is allowed, but if multiple implementations are
+ * available to inherit, sub-class must override that member and provide it's
+ * own implementation (and perhaps use one of the inherited ones, explicitly).
+ */
 
 open class InheritanceDemoA {
     open fun f() { print("Inheritance Demo A") }
@@ -549,33 +577,63 @@ open class InheritanceDemoA {
     fun a() { print("a") }
 }
 
+// trait members are 'open' by default
 trait InheritanceDemoB {
-    fun f() { print("Inheritance Demo B") } // trait members are 'open' by default
+    fun f() { print("Inheritance Demo B") }
     fun b() { print("b") }
 }
 
 class InheritanceDemoC() : InheritanceDemoA(), InheritanceDemoB {
-    // The `override` annotaion is mandatory.
     override fun f() {
         super<A>.f() // call to A.f()
         super<B>.f() // call to B.f()
         super<A>.f() // call to A.f() again
     }
 
-    // an overriden method is `open` by default, except if it is made final.
+    // An overridden method is `open` by default, except if it is made final.
     final override fun dummyA() { }
 }
 
+
+// ---- Abstract classes ----
+
+// An abstract member does not have an implementation. Thus, when some
+// class inherits an abstract member, it does not count as an implementation.
 // Abstract classes and abstract functions are open by default.
 abstract class InheritanceDemoAbstractClass {
-    // b is markes as abstract.
     abstract fun b()
 }
 
+// We can override a non-abstract open member with an abstract one.
+abstract class MakeAMethodAbstract : InheritanceDemoA {
+   override abstract fun f()
+}
+
+
+// ---- Companion Objects ----
+
+/**
+ * Kotlin has no static methods. Companion objects are used for cases like
+ * static factory method, so it has access to class members while not needing
+ * an available instance.
+ */
+
+class ClassWithCompanion {
+   companion object { } // will be called "Companion"
+}
+
+fun MyClass.Companion.foo() {
+   println("Hei I'm foo and I act like an static method.")
+}
+
+fun CompanionObjectDemo() {
+   // foo() can be called with class name only (no instance needed)
+   ClassWithCompanion.foo();
+}
+
+
 class derivedFromAbstract: InheritanceDemoAbstractClass, InheritanceDemoB {
-    // If name of some abstract function clashes while inheriting from multiple
-    // super types, there is no need to override it as it has no implementation
-    // of its own. So we are not required to override `b()`.
+    // We are not required to override b()
 }
 
 data class Customer(val name: String, val email: String)
