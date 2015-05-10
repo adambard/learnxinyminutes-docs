@@ -42,8 +42,8 @@ int main(int argc, char** argv)
     // Gli argomenti a linea di comando sono passati tramite argc e argv così come
     // avviene in C.
     // argc indica il numero di argomenti,
-    // e argv è un array in stile-C di stringhe (char*)
-    // che rappresenta gl iargomenti.
+    // e argv è un array di stringhe in stile-C (char*)
+    // che rappresenta gli argomenti.
     // Il primo argomento è il nome che è stato assegnato al programma.
     // argc e argv possono essere omessi se non hai bisogno di argomenti,
     // in questa maniera la funzione avrà int main() come firma.
@@ -177,7 +177,7 @@ int main()
 // cin, cout, e cerr i quali rappresentano stdin, stdout, e stderr.
 // << è l'operatore di inserzione >> è l'operatore di estrazione.
 
-#include <iostream> // Include for I/O streams
+#include <iostream> // Include gli streams di I/O
 
 using namespace std; // Gli streams sono nel namespace std (libreria standard)
 
@@ -377,7 +377,7 @@ void MioCane::print() const
 //////////////////////////////////////////////////
 
 // In C++ puoi sovrascrivere il comportamento di operatori come +, -, *, /, ecc...
-// Questo è possibile definendo una funzioneche viene chiamata
+// Questo è possibile definendo una funzione che viene chiamata
 // ogniqualvolta l'operatore è usato.
 
 #include <iostream>
@@ -491,7 +491,7 @@ void abbaiaTreVolte(const T& input)
 
 Cane fluffy;
 fluffy.impostaNome("Fluffy")
-abbaiaTreVolte(fluffy); // Stampa "Fluffy abbaia tre volte.
+abbaiaTreVolte(fluffy); // Stampa "Fluffy abbaia" tre volte.
 
 // I parametri template non devono essere classi:
 template<int Y>
@@ -670,7 +670,7 @@ void faiQualcosaConUnFile(const std::string& nomefile)
 //////////////////////
 
 // Aspetti del C++ che potrebbero sbalordire i nuovi arrivati (e anche qualche veterano).
-// Questa sezione è, fortunatamente, selvaggiamente incompleta; il C++ è uno dei linguaggi
+// Questa sezione è, sfortunatamente, selvaggiamente incompleta; il C++ è uno dei linguaggi
 // più facili con cui puoi spararti da solo nel piede.
 
 // Puoi sovrascrivere metodi privati!
