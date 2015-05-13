@@ -10,8 +10,7 @@ contributors:
 Perl 6 is a highly capable, feature-rich programming language made for the
 upcoming hundred years.
 
-Perl 6 runs on [the Parrot VM](http://parrot.org/), the JVM
-and [the MoarVM](http://moarvm.com).
+Perl 6 runs on [the MoarVM](http://moarvm.com) and the JVM.
 
 Meta-note : the triple pound signs are here to denote headlines,
 double paragraphs, and single notes.
