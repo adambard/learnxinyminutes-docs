@@ -19,12 +19,11 @@ HTML is a subset of Standard Generalized Markup Language (SGML) and is specified
 <!-- <!DOCTYPE> informs the browser which version of HTML you used. -->
 <!DOCTYPE html>
   
-<!--  Always start with the tag <html>. It represents the root of an HTML document. -->
+<!--  Always start with the tag <html>. It represents the root of your page. -->
 <html>
-<!--  An HTML page is divide in two parts.
-      The first one, <head>, provides general information about the document.
-      The second one, <body>, represents the content of an HTML document.
-      They are both single. -->
+<!--  An HTML page is divide in two singles parts.
+      <head> provides general information about the document.
+      <body>, represents the content of an HTML document. -->
   <head>
     <title>Here we write the Document title</title>
     <!-- A lot of metadata tags exist.  -->
@@ -35,6 +34,7 @@ HTML is a subset of Standard Generalized Markup Language (SGML) and is specified
   <!-- Never forget to close your tag! -->
 </html>
 
+<!--  Less than 2 minutes and you have already created your first page! -->
 
 ```
 
