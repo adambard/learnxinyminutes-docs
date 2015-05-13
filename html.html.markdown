@@ -14,7 +14,26 @@ HTML is a subset of Standard Generalized Markup Language (SGML) and is specified
 <!--  Comments are between arrows. -->
 
 <!--  HTML is written in the form of HTML elements consisting of
-      tags enclosed in angle brackets : `<tag>`. -->
+      tags enclosed in angle brackets : <tag>. -->
+  
+<!-- <!DOCTYPE> informs the browser which version of HTML you used. -->
+<!DOCTYPE html>
+  
+<!--  Always start with the tag <html>. It represents the root of an HTML document. -->
+<html>
+<!--  An HTML page is divide in two parts.
+      The first one, <head>, provides general information about the document.
+      The second one, <body>, represents the content of an HTML document.
+      They are both single. -->
+  <head>
+    <title>Here we write the Document title</title>
+    <!-- A lot of metadata tags exist.  -->
+  </head>
+  <body>
+    <!-- Here we write the Document content -->
+  </body>
+  <!-- Never forget to close your tag! -->
+</html>
 
 
 ```
