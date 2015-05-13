@@ -23,7 +23,7 @@ HTML is a subset of Standard Generalized Markup Language (SGML) and is specified
 <html>
 <!--  An HTML page is divide in two singles parts.
       <head> provides general information about the document.
-      <body>, represents the content of an HTML document. -->
+      <body> represents the content of an HTML document. -->
   <head>
     <title>Here we write the Document title</title>
     <!-- A lot of metadata tags exist.  -->
