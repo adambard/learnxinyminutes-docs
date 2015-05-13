@@ -13,7 +13,7 @@ HTML is a subset of Standard Generalized Markup Language (SGML) and is specified
 
 <!--  Comments are between arrows. -->
 
-<!--  HTML is written in the form of HTML elements consisting of
+<!--  HTML is written in the form of nested HTML elements consisting of
       tags enclosed in angle brackets : <tag>. -->
   
 <!-- <!DOCTYPE> informs the browser which version of HTML you used. -->
@@ -30,8 +30,26 @@ HTML is a subset of Standard Generalized Markup Language (SGML) and is specified
   </head>
   <body>
     <!-- Here we write the Document content -->
+    <!-- HTML is a semantic langage. Use the rightest possible element. -->
+
+    
+    <div id="main">
+    <!--  There are 6 levels of heading. <h1> is the largest
+          and h6 is the smallest) -->
+      <h1>Main heading in my document</h1>
+    
+      <p>This is a paragraph.</p>
+  
+      <p>
+        This is another paragraph. This is an <strong>important</strong> information.
+        To break the line, use <br />
+        
+      </p>
+  <abbr title="Hyper Text Markup Language">HTML</abbr>
+    
+    </div>
   </body>
-  <!-- Never forget to close your tag! -->
+  <!--  Never forget to close your tag! -->
 </html>
 
 <!--  Less than 2 minutes and you have already created your first page! -->
