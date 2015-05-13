@@ -21,7 +21,7 @@ HTML is a subset of Standard Generalized Markup Language (SGML) and is specified
 <!--  HTML is written in the form of nested HTML elements consisting of
       tags enclosed in angle brackets : <tag>. -->
 
-    <!-- A lot of tags exist. We cant describe all of them.  -->
+<!-- A lot of tags exist. We cant describe all of them.  -->
 
 <!--  Always start with the tag <html>. It represents the root of your page. -->
 <html>
