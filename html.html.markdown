@@ -37,16 +37,22 @@ HTML is a subset of Standard Generalized Markup Language (SGML) and is specified
     <!--  There are 6 levels of heading. <h1> is the largest
           and h6 is the smallest) -->
       <h1>Main heading in my document</h1>
-    
+      
       <p>This is a paragraph.</p>
+      
+      <p>
+        Paragraphs are a one or multiple adjacent lines of text
+        separated by one or multiple blank lines.
+      </p>
   
       <p>
-        This is another paragraph. This is an <strong>important</strong> information.
+        This is another paragraph. This is <strong>important</strong>.
         To break the line, use <br />
         
+        <span class="alertText">Congratulations!</span
       </p>
-  <abbr title="Hyper Text Markup Language">HTML</abbr>
-    
+      
+      <img src="example.jpg" alt="this is an example" />
     </div>
   </body>
   <!--  Never forget to close your tag! -->
