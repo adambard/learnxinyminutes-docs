@@ -6,14 +6,21 @@ filename: learnrust.rs
 ---
 
 Rust is an in-development programming language developed by Mozilla Research.
-It is relatively unique among systems languages in that it can assert memory
-safety *at compile time* without resorting to garbage collection. Rust’s first
-release, 0.1, occurred in January 2012, and development moves so quickly that at
-the moment the use of stable releases is discouraged, and instead one should use
-nightly builds. On January 9 2015, Rust 1.0 Alpha was released, and the rate of
-changes to the Rust compiler that break existing code has dropped significantly
-since. However, a complete guarantee of backward compatibility will not exist
-until the final 1.0 release.
+Rust combines low-level control over performance with high-level convenience and 
+safety guarantees. 
+
+It achieves these goals without requiring a garbage collector or runtime, making 
+it possible to use Rust libraries as a "drop-in replacement" for C.
+
+Rust’s first release, 0.1, occurred in January 2012, and for 3 years development 
+moved so quickly that until recently the use of stable releases was discouraged
+and instead the general advise was to use nightly builds. 
+
+On May 15th 2015, Rust 1.0 was released with a complete guarantee of backward 
+compatibility. Improvements to compile times and other aspects of the compiler are
+currently available in the nightly builds. Rust has adopted a train-based release
+model with regular releases every six weeks. Rust 1.1 beta was made available at 
+the same time of the release of Rust 1.0.
 
 Although Rust is a relatively low-level language, Rust has some functional
 concepts that are generally found in higher-level languages. This makes
