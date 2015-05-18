@@ -9,9 +9,9 @@ filename: learnr-fr.r
 ---
 
 R est un langage de programmation statistique. Il dispose de nombreuses
-librairies pour le téléchargement et le nettoyage d'ensembles de données,
+bibliothèques pour le téléchargement et le nettoyage d'ensembles de données,
 l'exécution de procédures statistiques, et la réalisation de graphiques.
-On peut également exécuter les commmandes `R` au sein d'un document LaTeX.
+On peut également exécuter des commmandes `R` au sein d'un document LaTeX.
 
 
 ```r
@@ -19,9 +19,11 @@ On peut également exécuter les commmandes `R` au sein d'un document LaTeX.
 # Les commentaires commencent avec des symboles numériques.
 
 # Il n'est pas possible de faire des commentaires multilignes,
-# mais on peut superposer plusieurs commentaires comme ceci.
+# mais on peut placer plusieurs commentaires les uns en dessous
+# des autres comme ceci.
 
-# Sur Windows ou Mac, taper COMMAND-ENTER pour exécuter une ligne
+# Sur Mac, taper COMMAND-ENTER pour exécuter une ligne
+# et sur Windows taper CTRL-ENTER
 
 
 
@@ -43,7 +45,7 @@ head(rivers)	# donne un aperçu des données
 
 length(rivers)	# Combien de rivers ont été mesurées ?
 # 141
-summary(rivers) # Quels sont les principales données statistiques ?
+summary(rivers) # Quelles sont les principales données statistiques ?
 #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
 #  135.0   310.0   425.0   591.2   680.0  3710.0
 
@@ -99,7 +101,7 @@ stem(log(rivers)) # Notez que les données ne sont ni normales
 #  80 |
 #  82 | 2
 
-# Fais un histogramme :
+# Fait un histogramme :
 hist(rivers, col="#333333", border="white", breaks=25) # amusez-vous avec ces paramètres
 hist(log(rivers), col="#333333", border="white", breaks=25) # vous ferez plus de tracés plus tard
 
@@ -110,7 +112,7 @@ plot(discoveries, col="#333333", lwd=3, xlab="Year",
 plot(discoveries, col="#333333", lwd=3, type = "h", xlab="Year",
      main="Number of important discoveries per year")
 
-# Plutôt que de laisser l'ordre par défaut (par années)
+# Plutôt que de laisser l'ordre par défaut (par année)
 # Nous pourrions aussi trier pour voir ce qu'il y a de typique
 sort(discoveries)
 #  [1]  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  1  1  1  1  2  2  2  2
@@ -142,7 +144,7 @@ summary(discoveries)
 #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
 #    0.0     2.0     3.0     3.1     4.0    12.0
 
-# Lance un dès plusieurs fois
+# Lance un dé plusieurs fois
 round(runif(7, min=.5, max=6.5))
 # 1 4 6 1 4 6 4
 # Vos numéros diffèreront des miens à moins que nous mettions
@@ -164,11 +166,11 @@ rnorm(9)
 # les entiers, les numériques, les caractères, les logiques, et les facteurs.
 
 # LES ENTIERS
-# Les entiers de mémoire longue sont écrit avec L
+# Les entiers de type long sont écrits avec L
 5L # 5
 class(5L) # "integer"
 # (Essayez ?class pour plus d'informations sur la fonction class().)
-# Avec R, chaque valeur seule, comme 5L, est considéré comme
+# Avec R, chaque valeur seule, comme 5L, est considérée comme
 # un vecteur de longueur 1
 length(5L) # 1
 # On peut avoir un vecteur d'entiers avec une longueur > 1 :
@@ -191,7 +193,7 @@ c(3,3,3,2,2,1) # 3 3 3 2 2 1
 class(Inf)	# "numeric"
 class(-Inf)	# "numeric"
 # Vous pouvez utiliser "Inf", par exemple, dans integrate(dnorm, 3, Inf);
-# Ça permet d'éviter des tableaux Z-scores.
+# Ça permet d'éviter de réaliser une table de la loi normale.
 
 # ARITHMÉTIQUES DE BASE
 # Vous pouvez faire de l'arithmétique avec des nombres
@@ -233,7 +235,7 @@ letters
 # [20] "t" "u" "v" "w" "x" "y" "z"
 month.abb # "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"
 
-# LES TYPES LOGIQUES
+# LES TYPES BOOLÉENS
 # En R, un "logical" est un booléen
 class(TRUE)	# "logical"
 class(FALSE)	# "logical"
@@ -256,15 +258,16 @@ c('Z', 'o', 'r', 'r', 'o') == "Zorro" # FALSE FALSE FALSE FALSE FALSE
 c('Z', 'o', 'r', 'r', 'o') == "Z" # TRUE FALSE FALSE FALSE FALSE
 
 # LES FACTEURS
-# La classe facteur sert pour les données catégorielles
-# les facteurs peuvent être ordonnés (comme les niveaux de
-# catégorie d'enfants)
-# ou non ordonnés (comme le sexe)
+# Les facteurs sont généralement utilisés pour y stocker des
+# variables qualitatives (catégorielles).
+# Les facteurs peuvent être ordonnés (comme le niveau scolaire
+# des enfants) ou non ordonnés (comme le sexe)
 factor(c("female", "female", "male", NA, "female"))
 #  female female male   <NA>   female
 # Les niveaux : female male
-# Les "levels" sont les valeurs que les données catégorielles
-# peuvent prendre
+# Les facteurs possèdent un attribut appelé niveau ("level").
+# Les niveaux sont des vecteurs contenant toutes les valeurs
+# que peuvent prendre les données catégorielles.
 # Notez que les données manquantes n'entrent pas dans le niveau
 levels(factor(c("male", "male", "female", NA, "female"))) # "female" "male"
 # Si le vecteur de facteurs a une longueur 1, ses niveaux seront
@@ -288,8 +291,8 @@ parakeet
 # =>
 # NULL
 
-# LES CONTRAINTES DE TYPES
-# Les contraintes de types servent à forcer une valeur à prendre
+# LES CONVERSIONS DE TYPES
+# Les conversions de types servent à forcer une valeur à prendre
 # un type différent
 as.character(c(6, 8)) # "6" "8"
 as.logical(c(1,0,1,1)) # TRUE FALSE  TRUE  TRUE
@@ -304,7 +307,7 @@ as.numeric("Bilbo")
 # NAs est introduit par coercition
 
 # Notez également : ce n'étaient que des types de données basiques
-# Il y a beaucoup d'autres types de données, comme pour les dates,
+# Il y a beaucoup d'autres types de données, comme les dates,
 # les séries temporelles, etc ...
 
 
@@ -321,7 +324,7 @@ as.numeric("Bilbo")
 
 # LES VARIABLES
 # Beaucoup de façons d'assigner des choses :
-x = 5 # c'est possible
+x = 5 # c'est correct
 y <- "1" # c'est préféré
 TRUE -> z # ça marche mais c'est bizarre
 
@@ -337,11 +340,11 @@ while (a > 4) {
     a <- a - 1
 }
 # Gardez à l'esprit que les boucles for et while s'exécutent lentement
-# en R
-# Des opérations sur des vecteurs entiers (ex une ligne entière,
+# en R.
+# Des opérations sur la totalité d'un vecteur (ex une ligne entière,
 # une colonne entière),
 # ou les fonctions de type apply() (nous en parlerons plus tard),
-# sont préférées
+# sont préférées.
 
 # IF/ELSE
 # Encore une fois assez standard
@@ -356,7 +359,7 @@ if (4 > 3) {
 # LES FONCTIONS
 # se définissent comme ceci :
 jiggle <- function(x) {
-    x = x + rnorm(1, sd=.1)	#add in a bit of (controlled) noise
+    x = x + rnorm(1, sd=.1)	# ajoute un peu de bruit (contrôlé)
     return(x)
 }
 # Appelées comme n'importe quelles autres fonction R :
@@ -366,7 +369,7 @@ jiggle(5)	# 5±ε. After set.seed(2716057), jiggle(5)==5.005043
 
 ##########################################################################
 # Les structures de données : les vecteurs, les matrices,
-# les data frame et les tableaux
+# les data frames et les tableaux
 ##########################################################################
 
 # À UNE DIMENSION
@@ -387,7 +390,7 @@ which(vec %% 2 == 0)	# 1 3
 # Récupèrer seulement les premières ou dernières entrées du vecteur,
 head(vec, 1)	# 8
 tail(vec, 2)	# 10 11
-# ou trouver si un certaine valeur est dans le vecteur
+# ou vérifier si un certaine valeur est dans le vecteur
 any(vec == 10) # TRUE
 # Si un index "dépasse" vous obtiendrez NA :
 vec[6]	# NA
@@ -398,7 +401,7 @@ length(vec)	# 4
 vec * 4	# 16 20 24 28
 vec[2:3] * 5	# 25 30
 any(vec[2:3] == 8) # FALSE
-# Et R a beaucoup de fonctions préconstruites pour résumer les vecteurs
+# Et R a beaucoup de méthodes statistiques pré-construites pour les vecteurs :
 mean(vec)	# 9.5
 var(vec)	# 1.666667
 sd(vec)		# 1.290994
@@ -425,7 +428,7 @@ mat
 # Différemment du vecteur, la classe d'une matrice est "matrix",
 # peut importe ce qu'elle contient
 class(mat) # => "matrix"
-# Demander la première ligne
+# Récupérer la première ligne
 mat[1,]	# 1 4
 # Réaliser une opération sur la première colonne
 3 * mat[,1]	# 3 6 9
@@ -502,13 +505,13 @@ dim(students)	# 6 3
 # stringsAsFactors = FALSE quand vous créer la data.frame
 ?data.frame
 
-# Il y a plusieurs façons de subdiviser les trames de données
+# Il y a plusieurs façons de subdiviser les data frames,
 # toutes subtilement différentes
 students$year	# 3  2  2  1  0 -1
 students[,2]	# 3  2  2  1  0 -1
 students[,"year"]	# 3  2  2  1  0 -1
 
-# Une version augmentée de la structure data.frame est data.table
+# Une version améliorée de la structure data.frame est data.table.
 # Si vous travaillez avec des données volumineuses ou des panels, ou avez
 # besoin de fusionner quelques ensembles de données, data.table peut être
 # un bon choix. Ici un tour éclair :
@@ -601,15 +604,15 @@ students[students$house != "G",]
 
 # MULTI-DIMENSIONNELLE (TOUS ÉLÉMENTS D'UN TYPE)
 
-# Les arrays créent des tableaux de n dimensions
-# Tous les éléments doivent être du même type
+# Les arrays créent des tableaux de n dimensions.
+# Tous les éléments doivent être du même type.
 # Vous pouvez faire un tableau à 2 dimensions (une sorte de matrice)
 array(c(c(1,2,4,5),c(8,9,3,6)), dim=c(2,4))
 # =>
 #      [,1] [,2] [,3] [,4]
 # [1,]    1    4    8    3
 # [2,]    2    5    9    6
-# Vous pouvez utiliser array pour faire des matrices à 3 dimensions aussi
+# Vous pouvez aussi utiliser array pour faire des matrices à 3 dimensions :
 array(c(c(c(2,300,4),c(8,9,0)),c(c(5,60,0),c(66,7,847))), dim=c(3,2,2))
 # =>
 # , , 1
@@ -629,7 +632,7 @@ array(c(c(c(2,300,4),c(8,9,0)),c(c(5,60,0),c(66,7,847))), dim=c(3,2,2))
 # LES LISTES (MULTI-DIMENSIONNELLES, ÉVENTUELLEMMENT DÉCHIRÉES,
 # DE DIFFÉRENTS TYPES)
 
-# Enfin R a des listes (de vecteurs)
+# Enfin, R a des listes (de vecteurs)
 list1 <- list(time = 1:40)
 list1$price = c(rnorm(40,.5*list1$time,4)) # random
 list1
@@ -644,10 +647,10 @@ list1[[1]] # encore une façon différente
 list1$price[4]
 
 # Les listes ne sont pas les structures de données les plus efficaces
-# à utiliser avec R;
+# à utiliser avec R ;
 # À moins d'avoir une très bonne raison, vous devriez utiliser data.frames
 # Les listes sont souvent retournées par des fonctions qui effectuent
-# des régressions linéaires
+# des régressions linéaires.
 
 ##########################################
 # La famille de fonction apply()
@@ -674,7 +677,7 @@ apply(mat, MAR = 2, jiggle)
 
 # Ne soyez pas trop intimidé ; tout le monde reconnaît que c'est un peu déroutant
 
-# Le paque plyr vise à remplacer (et améliorer !) la famille *apply().
+# Le paquet plyr vise à remplacer (et améliorer !) la famille *apply().
 install.packages("plyr")
 require(plyr)
 ?plyr
@@ -704,7 +707,7 @@ write.csv(pets, "pets2.csv") # to make a new .csv file
 # Les tracés
 ################
 
-# LES FONCTIONS DE TRACÉS PRÉCONSTRUITES
+# LES FONCTIONS DE TRACÉ PRÉCONSTRUITES
 # Les diagrammes de dispersion !
 plot(list1$time, list1$price, main = "fake data")
 # Les régressions !
@@ -737,7 +740,7 @@ pp + geom_point()
 
 ```
 
-## Comment j'obtiens R ?
+## Comment obtenir R ?
 
 * Obtiens R et R GUI depuis [http://www.r-project.org/](http://www.r-project.org/)
 * [RStudio](http://www.rstudio.com/ide/) est un autre GUI
