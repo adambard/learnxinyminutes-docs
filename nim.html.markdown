@@ -155,7 +155,7 @@ var anotherArray = ["Default index", "starts at", "0"]
 
 # More data structures are available, including tables, sets, lists, queues,
 # and crit bit trees.
-# http://http://nim-lang.org/docs/lib.html#collections-and-algorithms
+# http://nim-lang.org/docs/lib.html#collections-and-algorithms
 
 #
 # IO and Control Flow
