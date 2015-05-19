@@ -323,7 +323,7 @@ class LearnHaxe3{
         var  l = 0;
         do{
             trace("do statement always runs at least once");
-        } while (i > 0);
+        } while (l > 0);
 
         // for loop
         /*
