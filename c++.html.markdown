@@ -425,7 +425,7 @@ int main () {
     Point up (0,1);
     Point right (1,0);
     // This calls the Point + operator
-    // Point up calls the + (function) with right as its paramater
+    // Point up calls the + (function) with right as its parameter
     Point result = up + right;
     // Prints "Result is upright (1,1)"
     cout << "Result is upright (" << result.x << ',' << result.y << ")\n";
@@ -464,7 +464,7 @@ intBox.insert(123);
 Box<Box<int> > boxOfBox;
 boxOfBox.insert(intBox);
 
-// Up until C++11, you muse place a space between the two '>'s, otherwise '>>'
+// Up until C++11, you must place a space between the two '>'s, otherwise '>>'
 // will be parsed as the right shift operator.
 
 // You will sometimes see
@@ -712,7 +712,7 @@ Foo f1;
 f1 = f2;
 
 ```
-Futher Reading:
+Further Reading:
 
 An up-to-date language reference can be found at
 <http://cppreference.com/w/cpp>
