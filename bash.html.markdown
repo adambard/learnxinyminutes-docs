@@ -56,7 +56,7 @@ echo '$Variable'
 
 # String substitution in variables
 echo ${Variable/Some/A}
-# This will substitute the first occurance of "Some" with "A"
+# This will substitute the first occurence of "Some" with "A"
 
 # Substring from a variable
 Length=7
@@ -74,7 +74,7 @@ echo "Last program return value: $?"
 echo "Script's PID: $$"
 echo "Number of arguments: $#"
 echo "Scripts arguments: $@"
-echo "Scripts arguments seperated in different variables: $1 $2..."
+echo "Scripts arguments separated in different variables: $1 $2..."
 
 # Reading a value from input:
 echo "What's your name?"
