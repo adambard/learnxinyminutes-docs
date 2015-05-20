@@ -155,7 +155,7 @@ var anotherArray = ["Default index", "starts at", "0"]
 
 # More data structures are available, including tables, sets, lists, queues,
 # and crit bit trees.
-# http://nimrod-lang.org/lib.html#collections-and-algorithms
+# http://nim-lang.org/docs/lib.html#collections-and-algorithms
 
 #
 # IO and Control Flow
@@ -174,7 +174,7 @@ else:
 
 # `while`, `if`, `continue`, `break`
 
-import strutils as str # http://nimrod-lang.org/strutils.html
+import strutils as str # http://nim-lang.org/docs/strutils.html
 echo "I'm thinking of a number between 41 and 43. Guess which!"
 let number: int = 42
 var
@@ -263,11 +263,11 @@ performance, and compile-time features.
 
 ## Further Reading
 
-* [Home Page](http://nimrod-lang.org)
-* [Download](http://nimrod-lang.org/download.html)
-* [Community](http://nimrod-lang.org/community.html)
-* [FAQ](http://nimrod-lang.org/question.html)
-* [Documentation](http://nimrod-lang.org/documentation.html)
-* [Manual](http://nimrod-lang.org/manual.html)
-* [Standard Library](http://nimrod-lang.org/lib.html)
-* [Rosetta Code](http://rosettacode.org/wiki/Category:Nimrod)
+* [Home Page](http://nim-lang.org)
+* [Download](http://nim-lang.org/download.html)
+* [Community](http://nim-lang.org/community.html)
+* [FAQ](http://nim-lang.org/question.html)
+* [Documentation](http://nim-lang.org/documentation.html)
+* [Manual](http://nim-lang.org/docs/manual.html)
+* [Standard Library](http://nim-lang.org/docs/lib.html)
+* [Rosetta Code](http://rosettacode.org/wiki/Category:Nim)
