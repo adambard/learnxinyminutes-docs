@@ -495,9 +495,9 @@ class LearnHaxe3{
         // foo_instance.public_read = 4; // this will throw an error if uncommented:
         // trace(foo_instance.public_write); // as will this.
 
-         // calls the toString method
+        // calls the toString method:
         trace(foo_instance + " is the value for foo_instance");
-        // same thing
+        // same thing:
         trace(foo_instance.toString() + " is the value for foo_instance.toString()");
 
 
@@ -536,7 +536,7 @@ class FooClass extends BarClass implements BarInterface{
 
     // a public constructor
     public function new(arg:Int){
-        // call the constructor of the parent object, since we extended BarClass
+        // call the constructor of the parent object, since we extended BarClass:
         super();
 
         this.public_any = 0;
