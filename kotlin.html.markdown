@@ -69,7 +69,7 @@ fun kotlinBasics() {
           + "\nOctal literal not supported!\t"                   + "N/A"
           + "\nFloating-point, Double by default 123.5:\t"       + 123.5
           + "\nFloating-point, Double by default 123.5e10:\t"    + 123.5e10
-          + "\nFloating-point, as Float tagged with F 123.5f:\t" + 123.5f
+//          + "\nFloating-point, as Float tagged with F 123.5f:\t" + 123.5f
   )
 
   // String literal, denoted by double quotes. Strings are iterable. \n is an
@@ -175,7 +175,7 @@ fun printSum(a: Int, b: Int): Unit {
 }
 
 // Function body as an expression
-fun max(a: Int, b: Int) = if (a > b) a else b
+fun maxExpression(a: Int, b: Int) = if (a > b) a else b
 
 /**
  * Prefixing a function name with a `receiver type`, will add the function as
@@ -192,11 +192,12 @@ fun max(a: Int, b: Int) = if (a > b) a else b
    this[x] = this[y]
    this[y] = tmp
  }
- extensionFunSwapDemo() {
-   val l0 = mutableListOf(1, 2, 3)
-   val l1 = mutableListOf("a", "bb", "ccc")
-   l0.swap(0, 2)
-   l1.swap(1, 2)
+fun  extensionFunSwapDemo() {
+   // @TODO
+   // val l0 = mutableListOf(1, 2, 3)
+   // val l1 = mutableListOf("a", "bb", "ccc")
+   // l0.swap(0, 2)
+   // l1.swap(1, 2)
  }
 
  // Extensions are resolved statically
@@ -255,7 +256,7 @@ fun mLoopDemoWithLabel(args: Array<String>) {
         for (j in 1..20)
             if (i*j > 50) break@loop
 
-    println("i = $i, j = $j") // i == 3, j == 17
+    // println("i = $i, j = $j") // i == 3, j == 17
 
     // @TODO qualified returns.
 }
@@ -307,10 +308,11 @@ fun cases(obj: Any) {
 
     // Arbitrary expression as condition
     val s = "abc"
-    val s_encodes = when (s) {
-        parseInt(s) -> true
-        else -> false
-    }
+//   val s_encodes = when (s) {
+//        // @TODO fix
+//       // parseLong(s) -> true
+//       else -> false
+//   }
 
     // `when` without argument as a replacement for if-else if.
     val i = 10
@@ -354,8 +356,8 @@ fun parseLong(str: String): Long? {
 
 // Use a function returning nullable value, 1#2
 fun nullChecking_One(strX: String, strY: String) {
-  val x = parseInt(strX)
-  val y = parseInt(strY)
+  val x = parseLong(strX)
+  val y = parseLong(strY)
 
   // Using `x * y` yields error because they may hold nulls.
   if (x != null && y != null) {
@@ -366,8 +368,8 @@ fun nullChecking_One(strX: String, strY: String) {
 
 // Use a function returning nullable value, 2#2
 fun nullChecking_Two(strX: String, strY: String) {
-    val x = parseInt(strX)
-    val y = parseInt(strY)
+    val x = parseLong(strX)
+    val y = parseLong(strY)
 
     if (x == null || y == null)
         print("Wrong number format in x/y")
@@ -415,17 +417,16 @@ fun collections() {
         println(name)
 
     // Checking if collection contains item
-    for("foo" in names) // names.contains("foo") is called
+    if("foo" in names) // names.contains("foo") is called by kotlin
         print("foo in names")
 
     // Using function literals to filter and map collections
-    names filter { it.startsWith("b") } sortBy { it } map { it.toUpperCase() }
-        forEach {print(it) }
+    names filter { it.startsWith("b") } sortBy { it } map { it.toUpperCase() } forEach {print(it) }
 
     // Filtering a list with condition
     val list = listOf(1, 2, 55, 101, -101, -1098, 42)
     val positives0 = list.filter { x -> x > 0 }
-    val positives1 = list.filter { it > 0 }
+    val positives1 = list.filter { it > 0 } // or simply like this.
 
     // Traversing a map/list of pairs.
     val map = mapOf("a" to 1, "b" to 2, "c" to 3)
@@ -466,50 +467,63 @@ class Empty
  * Both primary and secondary constructors are optional, but secondaries must
  * directly or indirectly (through other constructors) call the primary.
  */
-public class Customer(firstName: String) {
+public class Address(street: String) {
 
-    // The code for primary constructor should be defined in init block. If it
-    // has any parameters, they will be available.
+    // The code for primary ctor should be defined in init block. If ctor has
+    // any parameters, they will be available.
     init {
-        println("${firstName} passed as primary constructor parameter.")
+        println("${street} passed as primary constructor parameter.")
     }
     init {
-        println("Multple init blocks allowed.")
+        println("Multiple init blocks allowed.")
     }
 
-    // Mutable Property declaration full syntax (read-only is like mutable
-    // except that setter declaration is not allowed, and is declared with `val`)
-    // var <propertyName>: <PropertyType> [= <property_initializer>]
+    // Property declaration full syntax.
+    // <var/val> <propertyName>: <PropertyType> [= <property_initializer>]
     // <getter>
-    // <setter>
+    // <setter> // Not allowed for val! (read-only property).
 
-    // firstName from primary constructor arg available in property initializer
-    val myName = firstName.toUpperCase() // Read-only property
+    // street from primary constructor arg available in property initializer.
+    // Read-only property. Setters are not allowed. (Default getter and setter
+    // are used).
+    var myStreet = street.toUpperCase()
 
-    // Mutable property. Note: Type is *required* for public properties!
+    // Mutable property (Default getter and setter are used).
     public var changeMe : Int = 42
 
     // Custom getter and setter
     var PrefixedAndUpercased: String
-    get() = this.toUpperCase()
+    get() = this.myStreet.toUpperCase()
     set(value) { // Convention is to use `value` as arg name for setter.
-        @TODO
+        this.myStreet = "Street: " + value
     }
 
+    // ERROR! Type is *required* for public properties.
+    // public var whatAmIReally = 1010
 
-    // @TODO more on properties, getters and setters, default values.
+    // ERROR! explicit initializer is required for var.
+    // var somwthingWithDefault = Int?
+
+    // Custom accessor
+    var y: Int = 1000;
+
+    val isBig: Boolean
+      get() = this.y > 100
+
+    var xAsStr: String
+      get() = this.y.toString()
+      set(value) {
+//         this.y =
+      }
+
 
     // Secondary constructors are prefixed with `constructor`
     // Calling other constructors with `this` keyword.
-    constructor(firstName: String, lastName: String) : this(firstName) {
-        println("The constructor who takes a lastName called with"
-            + "value $lastName was called.")
+    constructor(street: String, city: String) : this(street) {
+        println("The secondary constructor which takes two args was called, "
+            + "value '$street' passed to primary constructor, and '$city' used"
+            + " just right here.")
     }
-}
-
-fun ClassPropertyDemo() {
-   val cus = Customer("some one") // No new keyword.
-   val name = cus.firstName // Accessors are called.
 }
 
 /**
@@ -531,11 +545,15 @@ object Resource {
 class DontCreateMe private (name: String) { }
 
 
-// To create an instance of a class, we call the constructor as if it were a
-// regular function:
-fun classInstantiationDemo() {
+fun classDemo() {
+    // To create an instance of a class, we call the constructor as if it were
+    // a regular function:
     val cus = Customer("their name", "someone@somewhere.tld")
-    var learner = LearnKotlin("A nice person")
+    var where = Address("somewhere nice")
+
+    // Accessing properties as if they are a field in Java. getters and setters
+    // are called automatically for us.
+    val mail = cus.email
 }
 
 // _________________________________________________________________INHERITANCE
@@ -554,7 +572,7 @@ open class Base(p: Int) {
 
 // Explicit super types are declared after colon. If super primary constructor
 // has args, it must be called right here.
-class Derived(p: Int) : Base(p) {
+class Derived : Base {
     override fun v() {} // Unlike java, he override annotation is required!
 
     // If a derived class has no primary constructor, each secondary constructor
@@ -585,9 +603,9 @@ trait InheritanceDemoB {
 
 class InheritanceDemoC() : InheritanceDemoA(), InheritanceDemoB {
     override fun f() {
-        super<A>.f() // call to A.f()
-        super<B>.f() // call to B.f()
-        super<A>.f() // call to A.f() again
+        super<InheritanceDemoA>.f() // call to A.f()
+        super<InheritanceDemoB>.f() // call to B.f()
+        super<InheritanceDemoA>.f() // call to A.f() again
     }
 
     // An overridden method is `open` by default, except if it is made final.
@@ -605,7 +623,7 @@ abstract class InheritanceDemoAbstractClass {
 }
 
 // We can override a non-abstract open member with an abstract one.
-abstract class MakeAMethodAbstract : InheritanceDemoA {
+abstract class MakeAMethodAbstract : InheritanceDemoA() {
    override abstract fun f()
 }
 
@@ -617,12 +635,11 @@ abstract class MakeAMethodAbstract : InheritanceDemoA {
  * static factory method, so it has access to class members while not needing
  * an available instance.
  */
-
 class ClassWithCompanion {
    companion object { } // will be called "Companion"
 }
 
-fun MyClass.Companion.foo() {
+fun ClassWithCompanion.Companion.foo() {
    println("Hei I'm foo and I act like an static method.")
 }
 
@@ -631,13 +648,11 @@ fun CompanionObjectDemo() {
    ClassWithCompanion.foo();
 }
 
-
-class derivedFromAbstract: InheritanceDemoAbstractClass, InheritanceDemoB {
+class derivedFromAbstract: InheritanceDemoAbstractClass(), InheritanceDemoB {
     // We are not required to override b()
 }
 
 data class Customer(val name: String, val email: String)
-
 
 
 /**
