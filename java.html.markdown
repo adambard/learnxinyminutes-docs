@@ -31,17 +31,17 @@ import java.security.*;
 // the file.
 public class LearnJava {
 
-    // A program must have a main method as an entry point
+    // A program must have a main method as an entry point.
     public static void main (String[] args) {
 
-        // Use System.out.println to print lines
+        // Use System.out.println() to print lines.
         System.out.println("Hello World!");
         System.out.println(
             "Integer: " + 10 +
             " Double: " + 3.14 +
             " Boolean: " + true);
 
-        // To print without a newline, use System.out.print
+        // To print without a newline, use System.out.print().
         System.out.print("Hello ");
         System.out.print("World");
 
@@ -69,7 +69,7 @@ public class LearnJava {
         // L is used to denote that this variable value is of type Long;
         // anything without is treated as integer by default.
 
-        // Note: Java has no unsigned types
+        // Note: Java has no unsigned types.
 
         // Float - Single-precision 32-bit IEEE 754 Floating Point
         float fooFloat = 234.5f;
@@ -86,7 +86,7 @@ public class LearnJava {
         // Char - A single 16-bit Unicode character
         char fooChar = 'A';
 
-        // final variables can't be reassigned to another object
+        // final variables can't be reassigned to another object.
         final int HOURS_I_WORK_PER_WEEK = 9001;
 
         // Strings
@@ -123,7 +123,7 @@ public class LearnJava {
 
         // Others to check out
         // ArrayLists - Like arrays except more functionality is offered, and
-        //              the size is mutable
+        //              the size is mutable.
         // LinkedLists - Implementation of doubly-linked list. All of the
         //               operations perform as could be expected for a
         //               doubly-linked list.
@@ -160,13 +160,13 @@ public class LearnJava {
 
         // Bitwise operators!
         /*
-        ~       Unary bitwise complement
-        <<      Signed left shift
-        >>      Signed right shift
-        >>>     Unsigned right shift
-        &       Bitwise AND
-        ^       Bitwise exclusive OR
-        |       Bitwise inclusive OR
+        ~      Unary bitwise complement
+        <<     Signed left shift
+        >>     Signed right shift
+        >>>    Unsigned right shift
+        &      Bitwise AND
+        ^      Bitwise exclusive OR
+        |      Bitwise inclusive OR
         */
 
         // Incrementations
@@ -218,7 +218,7 @@ public class LearnJava {
         // For Loop
         int fooFor;
         // for loop structure => for(<start_statement>; <conditional>; <step>)
-        for(fooFor = 0; fooFor < 10; fooFor++){
+        for (fooFor = 0; fooFor < 10; fooFor++) {
             System.out.println(fooFor);
             // Iterated 10 times, fooFor 0->9
         }
@@ -226,12 +226,12 @@ public class LearnJava {
 
         // For Each Loop
         // An automatic iteration through an array or list of objects.
-        int[] fooList = {1,2,3,4,5,6,7,8,9};
-        // for each loop structure => for(<object> : <array_object>)
+        int[] fooList = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        // for each loop structure => for (<object> : <array_object>)
         // reads as: for each object in the array
         // note: the object type must match the array.
 
-        for (int bar : fooList){
+        for (int bar : fooList) {
             System.out.println(bar);
             //Iterates 9 times and prints 1-9 on new lines
         }
