@@ -11,10 +11,13 @@ contributors:
     - ["Rahil Momin", "https://github.com/iamrahil"]
     - ["Gregrory Kielian", "https://github.com/gskielian"]
     - ["Etan Reisner", "https://github.com/deryni"]
-filename: LearnBash.sh
+translators:
+    - ["Andrey Samsonov", "https://github.com/kryzhovnik"]
+filename: LearnBash-ru.sh
+lang: ru-ru
 ---
 
-Bash это командная оболочка unix (unix shell), которая распространяется как оболочка для операционной системы GNU и используется в качестве оболочки по умолчанию для Linux и Mac OS X.
+Bash - это командная оболочка unix (unix shell), которая распространяется как оболочка для операционной системы GNU и используется в качестве оболочки по умолчанию для Linux и Mac OS X.
 Почти все нижеприведенные примеры могут могут быть частью shell-скриптов или быть исполнены напрямую в shell.
 
 [Подробнее.](http://www.gnu.org/software/bash/manual/bashref.html)
