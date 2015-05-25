@@ -29,7 +29,7 @@ HTML is a subset of Standard Generalized Markup Language (SGML) and is specified
     		<head> provides general information about the document.
     		<body> represents the content of an HTML document. -->
   <head>
-      <!-- We write in utf-8.  -->
+      <!-- We write in utf-8. -->
     <meta charset="utf-8" />
 
     <title>Here we write the Document title</title>
@@ -40,16 +40,18 @@ HTML is a subset of Standard Generalized Markup Language (SGML) and is specified
 
 		<!-- <div> is a basic block element. -->
     <div>
-    <!--  There are 6 levels of heading. <h1> is the largest
-          and h6 is the smallest). A heading element briefly
-          describes the topic of the section it introduces.
-          It adds a newline character automatically at the end of each one. -->
-      <h1>Main heading in my document</h1>
+    	<!-- There are 6 levels of heading. <h1> is the largest
+           and <h6> is the smallest. A heading element briefly
+           describes the topic of the section it introduces.
+           It adds a newline character automatically at the end of each one. -->
+      <h1>Main heading in this document</h1>
   
       <p>This is a paragraph.</p>
   
 			<!-- HTML supports attributes. -->
-			<!-- id marks a single element. -->
+			<!-- The id global attribute defines a unique identifier which must be
+					 unique in the whole document. Its purpose is to identify the element
+					 when linking, scripting, or styling. -->
       <p id="information">
         Paragraphs are a one or multiple adjacent lines of text
         separated by one or multiple blank lines.
