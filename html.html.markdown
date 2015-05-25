@@ -41,7 +41,9 @@ HTML is a subset of Standard Generalized Markup Language (SGML) and is specified
 		<!-- <div> is a basic block element. -->
     <div>
     <!--  There are 6 levels of heading. <h1> is the largest
-          and h6 is the smallest). -->
+          and h6 is the smallest). A heading element briefly
+          describes the topic of the section it introduces.
+          It adds a newline character automatically at the end of each one. -->
       <h1>Main heading in my document</h1>
   
       <p>This is a paragraph.</p>
