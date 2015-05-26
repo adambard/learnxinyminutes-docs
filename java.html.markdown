@@ -225,12 +225,11 @@ public class LearnJava {
         System.out.println("fooFor Value: " + fooFor);
 
         // For Each Loop
-        // The for loop is also able to iterate over arrays as well as objects
-        // that implement the Iterable interface.
+        // An automatic iteration through an array or list of objects.
         int[] fooList = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        // for each loop structure => for (<object> : <collection>)
-        // reads as: for each element in the collection
-        // note: the object type must match the element type of the collection.
+        // for each loop structure => for (<object> : <array_object>)
+        // reads as: for each object in the array
+        // note: the object type must match the array.
 
         for (int bar : fooList) {
             System.out.println(bar);
