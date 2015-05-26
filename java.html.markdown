@@ -228,9 +228,9 @@ public class LearnJava {
         // The for loop is also able to iterate over arrays as well as objects
         // that implement the Iterable interface.
         int[] fooList = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        // for each loop structure => for (<object> : <collection>)
-        // reads as: for each element in the collection
-        // note: the object type must match the element type of the collection.
+        // for each loop structure => for (<object> : <iterable>)
+        // reads as: for each element in the iterable
+        // note: the object type must match the element type of the iterable.
 
         for (int bar : fooList) {
             System.out.println(bar);
