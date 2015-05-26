@@ -56,7 +56,7 @@ echo '$Variable'
 
 # String substitution in variables
 echo ${Variable/Some/A}
-# This will substitute the first occurence of "Some" with "A"
+# This will substitute the first occurrence of "Some" with "A"
 
 # Substring from a variable
 Length=7
