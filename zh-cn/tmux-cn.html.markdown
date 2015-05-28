@@ -10,21 +10,19 @@ lang: zh-cn
 ---
 
 
-[tmux](http://tmux.sourceforge.net)
-is a terminal multiplexer: it enables a number of terminals
-to be created, accessed, and controlled from a single screen. tmux
-may be detached from a screen and continue running in the background
-then later reattached.
-
+[tmux](http://tmux.sourceforge.net)是一款终端复用工具。
+在它的帮助下，你可以在同一个控制台上建立、访问并控制多个终端。
+你可以断开与一个tmux终端的连接，此时程序将在后台运行，
+当你需要时，可以随时重新连接到这个终端。
 
 ```
 
   tmux [command]     # 运行一条命令
-                     # 如果忽略 'tmux' 之后的命令，将会建立一个新的会话
+                     # 如果单独使用 'tmux' 而不指定某个命令，将会建立一个新的会话
 
     new              # 创建一个新的会话
-     -s "Session"    # 创建一个named会话
-     -n "Window"     # 创建一个named窗口
+     -s "Session"    # 创建一个会话，并命名为“Session”
+     -n "Window"     # 创建一个窗口，并命名为“Window”
      -c "/dir"       # 在指定的工作目录中启动会话
 
     attach           # 连接到上一次的会话（如果可用）
@@ -56,9 +54,9 @@ then later reattached.
 ```
 
 
-## 快捷键
+### 快捷键
 
-# 通过“前缀”快捷键，可以控制一个已经连入的tmux会话。
+通过“前缀”快捷键，可以控制一个已经连入的tmux会话。
 
 ```
 ----------------------------------------------------------------------
@@ -69,7 +67,7 @@ then later reattached.
 
   ?                  # 列出所有快捷键
   :                  # 进入tmux的命令提示符
-  r                  # 强制重绘 the attached client
+  r                  # 强制重绘当前客户端
   c                  # 创建一个新窗口
 
   !                  # Break the current pane out of the window.
@@ -194,10 +192,10 @@ set-option -g status-left-length 40
 set-option -g status-right-length 80
 
 # 窗格边框颜色
-set-option -g 窗格-active-border-fg green
-set-option -g 窗格-active-border-bg black
-set-option -g 窗格-border-fg white
-set-option -g 窗格-border-bg black
+set-option -g pane-active-border-fg green
+set-option -g pane-active-border-bg black
+set-option -g pane-border-fg white
+set-option -g pane-border-bg black
 
 # 消息框颜色
 set-option -g message-fg black
