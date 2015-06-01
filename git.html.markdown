@@ -172,7 +172,7 @@ $ git add /path/to/file/HelloWorld.c
 $ git add ./*.java
 ```
 
-This only addds a file to the staging area/index, it doesn't commit it to the working directory/repo.
+This only adds a file to the staging area/index, it doesn't commit it to the working directory/repo.
 
 ### branch
 
