@@ -79,6 +79,11 @@ this pointer will automatically update and point to the latest commit.
 HEAD is a pointer that points to the current branch. A repository only has 1 *active* HEAD.
 head is a pointer that points to any commit. A repository can have any number of heads.
 
+###Stages of Git
+* Committed - Files have been committed to the Git Database
+* Modified - Changes have been made to a file but file has not been committed to Git Database yet
+* Staged - Marks a modified file to go into your next commit snapshot
+
 ### Conceptual Resources
 
 * [Git For Computer Scientists](http://eagain.net/articles/git-for-computer-scientists/)
@@ -131,6 +136,10 @@ $ git help -a
 $ git help add
 $ git help commit
 $ git help init
+# or git <command_here> --help
+$ git add --help
+$ git commit --help
+$ git init --help
 ```
 
 ### status
@@ -149,8 +158,8 @@ $ git help status
 
 ### add
 
-To add files to the current working tree/directory/repo. If you do not `git add` new files to the
-working tree/directory, they will not be included in commits!
+To add files to the staging area/index. If you do not `git add` new files to the
+staging area/index, they will not be included in commits!
 
 ```bash
 # add a file in your current working directory
@@ -162,6 +171,8 @@ $ git add /path/to/file/HelloWorld.c
 # Regular Expression support!
 $ git add ./*.java
 ```
+
+This only addds a file to the staging area/index, it doesn't commit it to the working directory/repo.
 
 ### branch
 
@@ -462,3 +473,5 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [GitGuys](http://www.gitguys.com/)
 
 * [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
+
+* [Pro Git](http://www.git-scm.com/book/en/v2)
