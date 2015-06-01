@@ -300,7 +300,7 @@ public:
 }; // A semicolon must follow the class definition.
 
 // Class member functions are usually implemented in .cpp files.
-void Dog::Dog()
+Dog::Dog()
 {
     std::cout << "A dog has been constructed\n";
 }
@@ -323,7 +323,7 @@ void Dog::print() const
     std::cout << "Dog is " << name << " and weighs " << weight << "kg\n";
 }
 
-void Dog::~Dog()
+Dog::~Dog()
 {
     cout << "Goodbye " << name << "\n";
 }
@@ -332,7 +332,7 @@ int main() {
     Dog myDog; // prints "A dog has been constructed"
     myDog.setName("Barkley");
     myDog.setWeight(10);
-    myDog.printDog(); // prints "Dog is Barkley and weighs 10 kg"
+    myDog.print(); // prints "Dog is Barkley and weighs 10 kg"
     return 0;
 } // prints "Goodbye Barkley"
 
