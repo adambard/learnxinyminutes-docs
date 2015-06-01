@@ -288,7 +288,7 @@ public:
 
     // Functions can also be defined inside the class body.
     // Functions defined as such are automatically inlined.
-    void bark() const { std::cout << name << " barks!\n" }
+    void bark() const { std::cout << name << " barks!\n"; }
 
     // Along with constructors, C++ provides destructors.
     // These are called when an object is deleted or falls out of scope.
@@ -341,7 +341,7 @@ int main() {
 // This class inherits everything public and protected from the Dog class
 class OwnedDog : public Dog {
 
-    void setOwner(const std::string& dogsOwner)
+    void setOwner(const std::string& dogsOwner);
 
     // Override the behavior of the print function for all OwnedDogs. See
     // http://en.wikipedia.org/wiki/Polymorphism_(computer_science)#Subtyping
