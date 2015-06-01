@@ -288,7 +288,7 @@ public:
 
     // Functions can also be defined inside the class body.
     // Functions defined as such are automatically inlined.
-    void bark() const { std::cout << name << " barks!\n" }
+    void bark() const { std::cout << name << " barks!\n"; }
 
     // Along with constructors, C++ provides destructors.
     // These are called when an object is deleted or falls out of scope.
@@ -300,7 +300,7 @@ public:
 }; // A semicolon must follow the class definition.
 
 // Class member functions are usually implemented in .cpp files.
-void Dog::Dog()
+Dog::Dog()
 {
     std::cout << "A dog has been constructed\n";
 }
@@ -323,7 +323,7 @@ void Dog::print() const
     std::cout << "Dog is " << name << " and weighs " << weight << "kg\n";
 }
 
-void Dog::~Dog()
+Dog::~Dog()
 {
     cout << "Goodbye " << name << "\n";
 }
@@ -332,7 +332,7 @@ int main() {
     Dog myDog; // prints "A dog has been constructed"
     myDog.setName("Barkley");
     myDog.setWeight(10);
-    myDog.printDog(); // prints "Dog is Barkley and weighs 10 kg"
+    myDog.print(); // prints "Dog is Barkley and weighs 10 kg"
     return 0;
 } // prints "Goodbye Barkley"
 
@@ -341,7 +341,7 @@ int main() {
 // This class inherits everything public and protected from the Dog class
 class OwnedDog : public Dog {
 
-    void setOwner(const std::string& dogsOwner)
+    void setOwner(const std::string& dogsOwner);
 
     // Override the behavior of the print function for all OwnedDogs. See
     // http://en.wikipedia.org/wiki/Polymorphism_(computer_science)#Subtyping
