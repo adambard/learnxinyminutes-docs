@@ -45,7 +45,7 @@ VARIABLE = "Some string"
 # 也不可以这样：
 Variable= 'Some string'
 # Bash 会认为 'Some string' 是一条指令，由于找不到该指令，这里再次报错。
-# （这个例子中 'Variable=' 这部分的赋值仅对 'Some string' 指令起作用。）
+# （这个例子中 'Variable=' 这部分会被当作仅对 'Some string' 起作用的赋值。）
 
 # 使用变量：
 echo $VARIABLE
@@ -264,7 +264,7 @@ apropos bash
 man 1 bash
 man bash
 
-# 用 info 指令查阅命令的 info 文档 （info 中输入 ? 显示帮助信息）
+# 用 info 指令查阅命令的 info 文档 （info 中按 ? 显示帮助信息）
 apropos info | grep '^info.*('
 man info
 info info
