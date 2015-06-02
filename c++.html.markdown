@@ -445,6 +445,7 @@ int main () {
 // define a class or function that takes a type parameter:
 template<class T>
 class Box {
+public:
     // In this class, T can be used as any other type.
     void insert(const T&) { ... }
 };
