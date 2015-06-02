@@ -519,12 +519,13 @@ printMessage<10>();  // Prints "Learn C++ faster in only 10 minutes!"
 // (see http://en.cppreference.com/w/cpp/error/exception)
 // but any type can be thrown an as exception
 #include <exception>
+#include <stdexcept>
 
 // All exceptions thrown inside the _try_ block can be caught by subsequent
 // _catch_ handlers.
 try {
     // Do not allocate exceptions on the heap using _new_.
-    throw std::exception();
+    throw std::runtime_error("A problem occurred");
 }
 // Catch exceptions by const reference if they are objects
 catch (const std::exception& ex)
