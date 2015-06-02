@@ -36,11 +36,11 @@ echo Hello, world!
 echo 'This is the first line'; echo 'This is the second line'
 
 # 声明一个变量：
-VARIABLE="Some string"
+Variable="Some string"
 
 # 下面是错误的做法：
-VARIABLE = "Some string"
-# Bash 会把 VARIABLE 当做一个指令，由于找不到该指令，因此这里会报错。
+Variable = "Some string"
+# Bash 会把 Variable 当做一个指令，由于找不到该指令，因此这里会报错。
 
 # 也不可以这样：
 Variable= 'Some string'
@@ -48,17 +48,17 @@ Variable= 'Some string'
 # （这个例子中 'Variable=' 这部分会被当作仅对 'Some string' 起作用的赋值。）
 
 # 使用变量：
-echo $VARIABLE
-echo "$VARIABLE"
-echo '$VARIABLE'
+echo $Variable
+echo "$Variable"
+echo '$Variable'
 # 当你赋值 (assign) 、导出 (export)，或者以其他方式使用变量时，变量名前不加 $。
 # 如果要使用变量的值， 则要加 $。
 # 注意： ' (单引号) 不会展开变量（即会屏蔽掉变量）。
 
 
 # 在变量内部进行字符串代换
-echo ${VARIABLE/Some/A}
-# 会把 VARIABLE 中首次出现的 "some" 替换成 “A”。
+echo ${Variable/Some/A}
+# 会把 Variable 中首次出现的 "some" 替换成 “A”。
 
 # 变量的截取
 Length=7
@@ -80,12 +80,12 @@ echo "Scripts arguments separeted in different variables: $1 $2..."
 
 # 读取输入：
 echo "What's your name?"
-read NAME # 这里不需要声明新变量
-echo Hello, $NAME!
+read Name # 这里不需要声明新变量
+echo Hello, $Name!
 
 # 通常的 if 结构看起来像这样：
 # 'man test' 可查看更多的信息
-if [ $NAME -ne $USER ]
+if [ $Name -ne $USER ]
 then
     echo "Your name is you username"
 else
@@ -167,7 +167,7 @@ echo "There are $(ls | wc -l) items here."
 echo "There are `ls | wc -l` items here."
 
 # Bash 的 case 语句与 Java 和 C++ 中的 switch 语句类似:
-case "$VARIABLE" in
+case "$Variable" in
     # 列出需要匹配的字符串
     0) echo "There is a zero.";;
     1) echo "There is a one.";;
@@ -175,11 +175,11 @@ case "$VARIABLE" in
 esac
 
 # 循环遍历给定的参数序列:
-# 变量$VARIABLE 的值会被打印 3 次。
+# 变量$Variable 的值会被打印 3 次。
 # 注意 ` ` 和 $( ) 等价。seq 返回长度为 3 的数组。
-for VARIABLE in `seq 3`
+for Variable in `seq 3`
 do
-    echo "$VARIABLE"
+    echo "$Variable"
 done
 
 # 或传统的 “for循环” ：
@@ -227,7 +227,7 @@ bar ()
 }
 
 # 调用函数
-foo "My name is" $NAME
+foo "My name is" $Name
 
 # 有很多有用的指令需要学习:
 # 打印 file.txt 的最后 10 行
