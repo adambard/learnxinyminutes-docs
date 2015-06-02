@@ -523,7 +523,7 @@ printMessage<10>();  // Prints "Learn C++ faster in only 10 minutes!"
 // _catch_ handlers.
 try {
     // Do not allocate exceptions on the heap using _new_.
-    throw std::exception("A problem occurred");
+    throw std::exception();
 }
 // Catch exceptions by const reference if they are objects
 catch (const std::exception& ex)
@@ -614,7 +614,7 @@ void doSomethingWithAFile(const char* filename)
 {
     FILE* fh = fopen(filename, "r"); // Open the file in read mode
     if (fh == nullptr)
-        throw std::exception("Could not open the file.");
+        throw std::exception();
 
     try {
         doSomethingWithTheFile(fh);
