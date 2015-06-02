@@ -616,7 +616,7 @@ void doSomethingWithAFile(const char* filename)
 {
     FILE* fh = fopen(filename, "r"); // Open the file in read mode
     if (fh == nullptr)
-        throw std::exception();
+        throw std::runtime_error("Could not open the file.");
 
     try {
         doSomethingWithTheFile(fh);
