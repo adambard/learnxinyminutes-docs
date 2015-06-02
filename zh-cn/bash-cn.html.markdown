@@ -30,7 +30,7 @@ Bash 是一个为 GNU 计划编写的 Unix shell，是 Linux 和 Mac OS X 下的
 # 如你所见，注释以 # 开头，shebang 也是注释。
 
 # 显示 “Hello world!”
-echo Hello, world!
+echo Hello world!
 
 # 每一句指令以换行或分号隔开：
 echo 'This is the first line'; echo 'This is the second line'
@@ -76,7 +76,7 @@ echo "Last program return value: $?"
 echo "Script's PID: $$"
 echo "Number of arguments: $#"
 echo "Scripts arguments: $@"
-echo "Scripts arguments separeted in different variables: $1 $2..."
+echo "Scripts arguments separated in different variables: $1 $2..."
 
 # 读取输入：
 echo "What's your name?"
@@ -87,13 +87,13 @@ echo Hello, $Name!
 # 'man test' 可查看更多的信息
 if [ $Name -ne $USER ]
 then
-    echo "Your name is you username"
+    echo "Your name isn't your username"
 else
-    echo "Your name isn't you username"
+    echo "Your name is your username"
 fi
 
 # 根据上一个指令执行结果决定是否执行下一个指令
-echo "Always executed" || echo "Only executed if first command fail"
+echo "Always executed" || echo "Only executed if first command fails"
 echo "Always executed" && echo "Only executed if first command does NOT fail"
 
 # 在 if 语句中使用 && 和 || 需要多对方括号
@@ -176,8 +176,7 @@ esac
 
 # 循环遍历给定的参数序列:
 # 变量$Variable 的值会被打印 3 次。
-# 注意 ` ` 和 $( ) 等价。seq 返回长度为 3 的数组。
-for Variable in `seq 3`
+for Variable in {1..3}
 do
     echo "$Variable"
 done
@@ -275,5 +274,4 @@ info bash
 info bash 'Bash Features'
 info bash 6
 info --apropos bash
-
 ```
