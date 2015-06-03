@@ -445,6 +445,7 @@ int main () {
 // define a class or function that takes a type parameter:
 template<class T>
 class Box {
+public:
     // In this class, T can be used as any other type.
     void insert(const T&) { ... }
 };
@@ -518,12 +519,13 @@ printMessage<10>();  // Prints "Learn C++ faster in only 10 minutes!"
 // (see http://en.cppreference.com/w/cpp/error/exception)
 // but any type can be thrown an as exception
 #include <exception>
+#include <stdexcept>
 
 // All exceptions thrown inside the _try_ block can be caught by subsequent
 // _catch_ handlers.
 try {
     // Do not allocate exceptions on the heap using _new_.
-    throw std::exception("A problem occurred");
+    throw std::runtime_error("A problem occurred");
 }
 // Catch exceptions by const reference if they are objects
 catch (const std::exception& ex)
@@ -614,7 +616,7 @@ void doSomethingWithAFile(const char* filename)
 {
     FILE* fh = fopen(filename, "r"); // Open the file in read mode
     if (fh == nullptr)
-        throw std::exception("Could not open the file.");
+        throw std::runtime_error("Could not open the file.");
 
     try {
         doSomethingWithTheFile(fh);
