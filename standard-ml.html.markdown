@@ -4,6 +4,7 @@ contributors:
     - ["Simon Shine", "http://shine.eu.org/"]
     - ["David Pedersen", "http://lonelyproton.com/"]
     - ["James Baker", "http://www.jbaker.io/"]
+    - ["Leo Zovic", "http://langnostic.inaimathi.ca/"]
 ---
 
 Standard ML is a functional programming language with type inference and some
@@ -136,8 +137,28 @@ val mixup = [ ("Alice", 39),
 
 val good_bad_stuff =
   (["ice cream", "hot dogs", "chocolate"],
-   ["liver", "paying the rent" ])           (* string list * string list *)
+   ["liver", "paying the rent" ])           (* : string list * string list *)
 
+
+(* Records are tuples with named slots *)
+
+val rgb = { r=0.23, g=0.56, b=0.91 } (* : {b:real, g:real, r:real} *)
+
+(* You don't need to declare their slots ahead of time. Records with
+   different slot names are considered different types, even if their
+   slot value types match up. For instance... *)
+
+val Hsl = { H=310.3, s=0.51, l=0.23 } (* : {H:real, l:real, s:real} *)
+val Hsv = { H=310.3, s=0.51, v=0.23 } (* : {H:real, s:real, v:real} *)
+
+(* ...trying to evaluate `Hsv = Hsl` or `rgb = Hsl` would give a type
+   error. While they're all three-slot records composed only of `real`s,
+   they each have different names for at least some slots. *)
+
+(* You can use hash notation to get values out of tuples. *)
+
+val H = #H Hsv (* : real *)
+val s = #s Hsl (* : real *)
 
 (* Functions! *)
 fun add_them (a, b) = a + b    (* A simple function that adds two numbers *)
@@ -225,17 +246,26 @@ fun fibonacci 0 = 0  (* Base case *)
   | fibonacci 1 = 1  (* Base case *)
   | fibonacci n = fibonacci (n - 1) + fibonacci (n - 2)  (* Recursive case *)
 
-(* Pattern matching is also possible on composite types like tuples and lists.
-   Writing "fun solve2 (a, b, c) = ..." is in fact a pattern match on the one
-   three-tuple solve2 takes as argument. Similarly, but less intuitively, you
-   can match on a list consisting of elements in it (from the beginning of the
-   list only). *)
+(* Pattern matching is also possible on composite types like tuples, lists and
+   records. Writing "fun solve2 (a, b, c) = ..." is in fact a pattern match on
+   the one three-tuple solve2 takes as argument. Similarly, but less intuitively,
+   you can match on a list consisting of elements in it (from the beginning of
+   the list only). *)
 fun first_elem (x::xs) = x
 fun second_elem (x::y::xs) = y
 fun evenly_positioned_elems (odd::even::xs) = even::evenly_positioned_elems xs
   | evenly_positioned_elems [odd] = []  (* Base case: throw away *)
   | evenly_positioned_elems []    = []  (* Base case *)
 
+(* When matching on records, you must use their slot names, and you must bind
+   every slot in a record. The order of the slots doesn't matter though. *)
+
+fun rgbToTup {r, g, b} = (r, g, b)    (* fn : {b:'a, g:'b, r:'c} -> 'c * 'b * 'a *)
+fun mixRgbToTup {g, b, r} = (r, g, b) (* fn : {b:'a, g:'b, r:'c} -> 'c * 'b * 'a *)
+
+(* If called with {r=0.1, g=0.2, b=0.3}, either of the above functions
+   would return (0.1, 0.2, 0.3). But it would be a type error to call them
+   with {r=0.1, g=0.2, b=0.3, a=0.4} *)
 
 (* Higher order functions: Functions can take other functions as arguments.
    Functions are just other kinds of values, and functions don't need names
