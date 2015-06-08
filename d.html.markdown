@@ -63,7 +63,7 @@ We can define new types and functions with `struct`, `class`, `union`, and `enum
 are passed to functions by value (i.e. copied) and classes are passed by reference. Futhermore,
 we can use templates to parameterize all of these on both types and values!
 
-```
+```d
 // Here, T is a type parameter. Think <T> from C++/C#/Java
 struct(T) LinkedList {
     T data = null;
