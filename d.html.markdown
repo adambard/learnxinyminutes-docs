@@ -1,5 +1,5 @@
 ---
-language: d 
+language: D 
 filename: learnd.d 
 contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]
@@ -17,7 +17,7 @@ a pleasant syntax, and blazing fast performance!
 D is actively developed by Walter Bright and Andrei Alexandrescu, two super smart, really cool
 dudes. With all that out of the way, let's look at some examples!
 
-'''d
+```d
 // You know what's coming...
 import std.stdio;
 
@@ -58,4 +58,4 @@ void main() {
     }
 }
 
-'''
+```
