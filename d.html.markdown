@@ -50,12 +50,47 @@ void main() {
             writeln(i);
     }
 
-    foreach_reverse(i; short.max) {
+    foreach_reverse(i; 1..short.max) {
         if(n % 2 == 1)
             writeln(i);
         else
             writeln("No!");
     }
 }
+```
+
+We can define new types and functions with `struct`, `class`, `union`, and `enum`. Structs and unions
+are passed to functions by value (i.e. copied) and classes are passed by reference. Futhermore,
+we can use templates to parameterize all of these on both types and values!
+
+```
+// Here, T is a type parameter. Think <T> from C++/C#/Java
+struct(T) LinkedList {
+    T data = null;
+    LinkedList!(T)* next; // The ! is used to instaniate a parameterized type. Again, think <T> 
+}
+
+class BinTree(T) {
+    T data = null;
+
+    BinTree!T left;
+    BinTree!T right;
+}
+
+enum Day {
+    Sunday,
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+}
+
+// Use alias to create abbreviations for types
+
+alias IntList = LinkedList!int;
+
+alias NumTree = BinTree!double;
 
 ```
