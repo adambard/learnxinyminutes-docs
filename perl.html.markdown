@@ -83,13 +83,23 @@ while (condition) {
 }
 
 
-# for and foreach
-for ($i = 0; $i <= $max; $i++) {
-  ...
+# for loops and iteration
+for (my $i = 0; $i < $max; $i++) {
+  print "index is $i";
 }
 
-foreach (@array) {
-  print "This element is $_\n";
+for (my $i = 0; $i < @elements; $i++) {
+  print "Current element is " . $elements[$i];
+}
+
+for my $element (@elements) {
+  print $element;
+}
+
+# implicitly
+
+for (@elements) {
+  print;
 }
 
 
