@@ -159,7 +159,7 @@ Module Module1
         Console.Write(a.ToString() + " - " + b.ToString())
         Console.WriteLine(" = " + e.ToString.PadLeft(3))
         Console.Write(a.ToString() + " / " + b.ToString())
-        Console.WriteLine(" = " + e.ToString.PadLeft(3))
+        Console.WriteLine(" = " + f.ToString.PadLeft(3))
         Console.ReadLine()
 
     End Sub
