@@ -110,19 +110,19 @@ null === undefined; // = false
 13 + !0; // 14
 "13" + !0; // '13true'
 
-// You can access characters in a string with charAt
+// You can access characters in a string with `charAt`
 "This is a string".charAt(0);  // = 'T'
 
-// ...or use substring to get larger pieces
+// ...or use `substring` to get larger pieces.
 "Hello world".substring(0, 5); // = "Hello"
 
-// length is a property, so don't use ()
+// `length` is a property, so don't use ().
 "Hello".length; // = 5
 
-// There's also null and undefined
-null; // used to indicate a deliberate non-value
+// There's also `null` and `undefined`.
+null;      // used to indicate a deliberate non-value
 undefined; // used to indicate a value is not currently present (although
-           // undefined is actually a value itself)
+           // `undefined` is actually a value itself)
 
 // false, null, undefined, NaN, 0 and "" are falsy; everything else is truthy.
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
@@ -130,8 +130,9 @@ undefined; // used to indicate a value is not currently present (although
 ///////////////////////////////////
 // 2. Variables, Arrays and Objects
 
-// Variables are declared with the var keyword. JavaScript is dynamically typed,
-// so you don't need to specify type. Assignment uses a single = character.
+// Variables are declared with the `var` keyword. JavaScript is dynamically
+// typed, so you don't need to specify type. Assignment uses a single `=`
+// character.
 var someVar = 5;
 
 // if you leave the var keyword off, you won't get an error...
@@ -165,7 +166,7 @@ myArray.length; // = 4
 // Add/Modify at specific index
 myArray[3] = "Hello";
 
-// JavaScript's objects are equivalent to 'dictionaries' or 'maps' in other
+// JavaScript's objects are equivalent to "dictionaries" or "maps" in other
 // languages: an unordered collection of key-value pairs.
 var myObj = {key1: "Hello", key2: "World"};
 
@@ -190,7 +191,7 @@ myObj.myFourthKey; // = undefined
 
 // The syntax for this section is almost identical to Java's. 
 
-// The if structure works as you'd expect.
+// The `if` structure works as you'd expect.
 var count = 1;
 if (count == 3){
     // evaluated if count is 3
@@ -200,18 +201,18 @@ if (count == 3){
     // evaluated if it's not either 3 or 4
 }
 
-// As does while.
+// As does `while`.
 while (true){
     // An infinite loop!
 }
 
 // Do-while loops are like while loops, except they always run at least once.
-var input
+var input;
 do {
     input = getInput();
 } while (!isValid(input))
 
-// the for loop is the same as C and Java:
+// The `for` loop is the same as C and Java:
 // initialisation; continue condition; iteration.
 for (var i = 0; i < 5; i++){
     // will run 5 times
@@ -229,7 +230,7 @@ if (colour == "red" || colour == "blue"){
 var name = otherName || "default";
 
 
-// switch statement checks for equality with ===
+// The `switch` statement checks for equality with `===`.
 // use 'break' after each case 
 // or the cases after the correct one will be executed too. 
 grade = 'B';
@@ -252,14 +253,14 @@ switch (grade) {
 ///////////////////////////////////
 // 4. Functions, Scope and Closures
 
-// JavaScript functions are declared with the function keyword.
+// JavaScript functions are declared with the `function` keyword.
 function myFunction(thing){
     return thing.toUpperCase();
 }
 myFunction("foo"); // = "FOO"
 
 // Note that the value to be returned must start on the same line as the
-// 'return' keyword, otherwise you'll always return 'undefined' due to
+// `return` keyword, otherwise you'll always return `undefined` due to
 // automatic semicolon insertion. Watch out for this when using Allman style.
 function myFunction()
 {
@@ -298,8 +299,8 @@ i; // = 5 - not undefined as you'd expect in a block-scoped language
 // scope.
 (function(){
     var temporary = 5;
-    // We can access the global scope by assiging to the 'global object', which
-    // in a web browser is always 'window'. The global object may have a
+    // We can access the global scope by assiging to the "global object", which
+    // in a web browser is always `window`. The global object may have a
     // different name in non-browser environments such as Node.js.
     window.permanent = 10;
 })();
@@ -312,7 +313,7 @@ permanent; // = 10
 function sayHelloInFiveSeconds(name){
     var prompt = "Hello, " + name + "!";
     // Inner functions are put in the local scope by default, as if they were
-    // declared with 'var'.
+    // declared with `var`.
     function inner(){
         alert(prompt);
     }
@@ -320,7 +321,7 @@ function sayHelloInFiveSeconds(name){
     // setTimeout is asynchronous, so the sayHelloInFiveSeconds function will
     // exit immediately, and setTimeout will call inner afterwards. However,
     // because inner is "closed over" sayHelloInFiveSeconds, inner still has
-    // access to the 'prompt' variable when it is finally called.
+    // access to the `prompt` variable when it is finally called.
 }
 sayHelloInFiveSeconds("Adam"); // will open a popup with "Hello, Adam!" in 5s
 
@@ -336,7 +337,7 @@ var myObj = {
 myObj.myFunc(); // = "Hello world!"
 
 // When functions attached to an object are called, they can access the object
-// they're attached to using the this keyword.
+// they're attached to using the `this` keyword.
 myObj = {
     myString: "Hello world!",
     myFunc: function(){
@@ -352,7 +353,7 @@ var myFunc = myObj.myFunc;
 myFunc(); // = undefined
 
 // Inversely, a function can be assigned to the object and gain access to it
-// through this, even if it wasn't attached when it was defined.
+// through `this`, even if it wasn't attached when it was defined.
 var myOtherFunc = function(){
     return this.myString.toUpperCase();
 }
@@ -360,37 +361,38 @@ myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "HELLO WORLD!"
 
 // We can also specify a context for a function to execute in when we invoke it
-// using 'call' or 'apply'.
+// using `call` or `apply`.
 
 var anotherFunc = function(s){
     return this.myString + s;
 }
 anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
 
-// The 'apply' function is nearly identical, but takes an array for an argument list.
+// The `apply` function is nearly identical, but takes an array for an argument
+// list.
 
 anotherFunc.apply(myObj, [" And Hello Sun!"]); // = "Hello World! And Hello Sun!"
 
-// This is useful when working with a function that accepts a sequence of arguments
-// and you want to pass an array.
+// This is useful when working with a function that accepts a sequence of
+// arguments and you want to pass an array.
 
 Math.min(42, 6, 27); // = 6
 Math.min([42, 6, 27]); // = NaN (uh-oh!)
 Math.min.apply(Math, [42, 6, 27]); // = 6
 
-// But, 'call' and 'apply' are only temporary. When we want it to stick, we can use
-// bind.
+// But, `call` and `apply` are only temporary. When we want it to stick, we can
+// use `bind`.
 
 var boundFunc = anotherFunc.bind(myObj);
 boundFunc(" And Hello Saturn!"); // = "Hello World! And Hello Saturn!"
 
-// Bind can also be used to partially apply (curry) a function.
+// `bind` can also be used to partially apply (curry) a function.
 
 var product = function(a, b){ return a * b; }
 var doubler = product.bind(this, 2);
 doubler(8); // = 16
 
-// When you call a function with the new keyword, a new object is created, and
+// When you call a function with the `new` keyword, a new object is created, and
 // made available to the function via the this keyword. Functions designed to be
 // called like that are called constructors.
 
@@ -405,7 +407,7 @@ myNewObj.myNumber; // = 5
 // look at its prototype.
 
 // Some JS implementations let you access an object's prototype on the magic
-// property __proto__. While this is useful for explaining prototypes it's not
+// property `__proto__`. While this is useful for explaining prototypes it's not
 // part of the standard; we'll get to standard ways of using prototypes later.
 var myObj = {
     myString: "Hello world!"
@@ -436,7 +438,7 @@ myObj.myBoolean; // = true
 myPrototype.meaningOfLife = 43;
 myObj.meaningOfLife; // = 43
 
-// We mentioned that __proto__ was non-standard, and there's no standard way to
+// We mentioned that `__proto__` was non-standard, and there's no standard way to
 // change the prototype of an existing object. However, there are two ways to
 // create a new object with a given prototype.
 

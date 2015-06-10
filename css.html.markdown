@@ -37,19 +37,19 @@ selector { property: value; /* more properties...*/ }
 
 /* the selector is used to target an element on page.
 
-You can target all elments on the page using asterisk! */
+You can target all elements on the page using asterisk! */
 * { color:red; }
 
 /*
 Given an element like this on the page:
 
-<div class='some-class class2' id='someId' attr='value' />
+<div class='some-class class2' id='someId' attr='value' otherAttr='en-us foo bar' />
 */
 
 /* you can target it by its name */
 .some-class { }
 
-/*or by both classes! */
+/* or by both classes! */
 .some-class.class2 { }
 
 /* or by its element name */
@@ -70,8 +70,11 @@ div { }
 /* or ends with (CSS3) */
 [attr$='ue'] { font-size:smaller; }
 
-/* or even contains a value (CSS3) */
-[attr~='lu'] { font-size:smaller; }
+/* or select by one of the values from the whitespace separated list (CSS3) */
+[otherAttr~='foo'] { font-size:smaller; }
+
+/* or value can be exactly “value” or can begin with “value” immediately followed by “-” (U+002D) */
+[otherAttr|='en'] { font-size:smaller; }
 
 
 /* and more importantly you can combine these together -- there shouldn't be  
@@ -89,7 +92,7 @@ div.some-parent > .class-name {}
    and is child of a div with class name "some-parent" IN ANY DEPTH */
 div.some-parent .class-name {}
 
-/* warning: the same selector wihout spaaace has another meaning.  
+/* warning: the same selector without space has another meaning.  
    can you say what? */
 div.some-parent.class-name {}
 
@@ -152,7 +155,7 @@ selector {
     
     /* Fonts */
     font-family: Arial;
-    font-family: "Courier New"; /* if name has spaaace it appears in single or double quotes */
+    font-family: "Courier New"; /* if name has space it appears in single or double quotes */
     font-family: "Courier New", Trebuchet, Arial, sans-serif; /* if first one was not found
                              browser uses the second font, and so forth */
 }
@@ -230,7 +233,7 @@ Remember, the precedence is for each **property**, not for the entire block.
 ## Compatibility
 
 Most of the features in CSS2 (and gradually in CSS3) are compatible across  
-all browsers and devices. But it's always vital to have in mind the compatiblity
+all browsers and devices. But it's always vital to have in mind the compatibility 
 of what you use in CSS with your target browsers.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) is one of the best sources for this.

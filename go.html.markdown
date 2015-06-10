@@ -64,7 +64,11 @@ func beyondHello() {
 	learnTypes()                            // < y minutes, learn more!
 }
 
-// Functions can have parameters and (multiple!) return values.
+/* <- multiline comment
+Functions can have parameters and (multiple!) return values.
+Here `x`, `y` are the arguments and `sum`, `prod` is the signature (what's returned).
+Note that `x` and `sum` receive the type `int`.
+*/
 func learnMultiple(x, y int) (sum, prod int) {
 	return x + y, x * y // Return two values.
 }
@@ -83,7 +87,7 @@ can include line breaks.` // Same string type.
 	f := 3.14195 // float64, an IEEE-754 64-bit floating point number.
 	c := 3 + 4i  // complex128, represented internally with two float64's.
 
-	// Var syntax with an initializers.
+	// var syntax with initializers.
 	var u uint = 7 // Unsigned, but implementation dependent size as with int.
 	var pi float32 = 22. / 7
 
@@ -177,8 +181,14 @@ func learnFlowControl() {
 	case 1:
 	case 42:
 		// Cases don't "fall through".
+		/*
+		There is a `fallthrough` keyword however, see:
+		  https://github.com/golang/go/wiki/Switch#fall-through
+		*/
 	case 43:
 		// Unreached.
+	default:
+		// Default case is optional.
 	}
 	// Like if, for doesn't use parens either.
 	// Variables declared in for and if are local to their scope.

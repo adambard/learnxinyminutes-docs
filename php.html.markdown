@@ -60,7 +60,7 @@ $float = 1.2e3;
 $float = 7E-10;
 
 // Delete variable
-unset($int1)
+unset($int1);
 
 // Arithmetic
 $sum        = 1 + 1; // 2

@@ -229,6 +229,13 @@ FALSE != FALSE	# FALSE
 FALSE != TRUE	# TRUE
 # Missing data (NA) is logical, too
 class(NA)	# "logical"
+# Use | and & for logic operations.
+# OR
+TRUE | FALSE	# TRUE
+# AND
+TRUE & FALSE	# FALSE
+# You can test if x is TRUE
+isTRUE(TRUE)	# TRUE
 # Here we get a logical vector with many elements:
 c('Z', 'o', 'r', 'r', 'o') == "Zorro" # FALSE FALSE FALSE FALSE FALSE
 c('Z', 'o', 'r', 'r', 'o') == "Z" # TRUE FALSE FALSE FALSE FALSE
@@ -252,6 +259,7 @@ levels(infert$education) # "0-5yrs"  "6-11yrs" "12+ yrs"
 # NULL
 # "NULL" is a weird one; use it to "blank out" a vector
 class(NULL)	# NULL
+parakeet = c("beak", "feathers", "wings", "eyes")
 parakeet
 # =>
 # [1] "beak"     "feathers" "wings"    "eyes"    

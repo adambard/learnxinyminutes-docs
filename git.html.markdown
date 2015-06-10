@@ -217,6 +217,9 @@ the changes made and a message created by the user.
 ```bash
 # commit with a message
 $ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
+
+# automatically stage modified or deleted files, except new files, and then commit
+$ git commit -a -m "Modified foo.php and removed bar.php"
 ```
 
 ### diff

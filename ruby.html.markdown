@@ -11,6 +11,7 @@ contributors:
   - ["Ariel Krakowski", "http://www.learneroo.com"]
   - ["Dzianis Dashkevich", "https://github.com/dskecse"]
   - ["Levi Bostian", "https://github.com/levibostian"]
+  - ["Rahil Momin", "https://github.com/iamrahil"]
 
 ---
 
@@ -60,8 +61,6 @@ false.class #=> FalseClass
 # Inequality
 1 != 1 #=> false
 2 != 1 #=> true
-!true  #=> false
-!false #=> true
 
 # apart from false itself, nil is the only other 'falsey' value
 
@@ -74,6 +73,17 @@ false.class #=> FalseClass
 1 > 10 #=> false
 2 <= 2 #=> true
 2 >= 2 #=> true
+
+# Logical operators
+true && false #=> false
+true || false #=> true
+!true #=> false
+
+# Alternate spellings of logical operators
+true and false #=> false
+true or false #=> true
+not true #=> false
+
 
 # Strings are objects
 
@@ -160,6 +170,9 @@ array[1..3] #=> [2, 3, 4]
 # Add to an array like this
 array << 6 #=> [1, 2, 3, 4, 5, 6]
 
+# Check if an item exists in an array
+array.include?(1) #=> true
+
 # Hashes are Ruby's primary dictionary with keys/value pairs.
 # Hashes are denoted with curly braces:
 hash = { 'color' => 'green', 'number' => 5 }
@@ -178,6 +191,10 @@ hash['nothing here'] #=> nil
 new_hash = { defcon: 3, action: true }
 
 new_hash.keys #=> [:defcon, :action]
+
+# Check existence of keys and values in hash
+new_hash.has_key?(:defcon) #=> true
+new_hash.has_value?(3) #=> true
 
 # Tip: Both Arrays and Hashes are Enumerable
 # They share a lot of useful methods such as each, map, count, and more
@@ -280,9 +297,9 @@ rescue NoMemoryError => exception_variable
   puts 'NoMemoryError was raised', exception_variable
 rescue RuntimeError => other_exception_variable
   puts 'RuntimeError was raised now'
-else 
+else
   puts 'This runs if no exceptions were thrown at all'
-ensure 
+ensure
   puts 'This code always runs no matter what'
 end
 

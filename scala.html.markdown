@@ -186,7 +186,7 @@ val sq: Int => Int = x => x * x
 // Anonymous functions can be called as usual:
 sq(10)   // => 100
 
-// If your anonymous function has one or two arguments, and each argument is
+// If each argument in your anonymous function is
 // used only once, Scala gives you an even shorter way to define them. These
 // anonymous functions turn out to be extremely common, as will be obvious in
 // the data structure section.
@@ -198,8 +198,10 @@ weirdSum(2, 4)  // => 16
 
 
 // The return keyword exists in Scala, but it only returns from the inner-most
-// def that surrounds it. It has no effect on anonymous functions. For example:
-def foo(x: Int) = {
+// def that surrounds it.
+// WARNING: Using return in Scala is error-prone and should be avoided.
+// It has no effect on anonymous functions. For example:
+def foo(x: Int): Int = {
   val anonFunc: Int => Int = { z =>
     if (z > 5)
       return z  // This line makes z the return value of foo!
@@ -405,41 +407,55 @@ val otherGeorge = george.copy(phoneNumber = "9876")
 // 6. Pattern Matching
 /////////////////////////////////////////////////
 
-val me = Person("George", "1234")
+// Pattern matching is a powerful and commonly used feature in Scala. Here's how
+// you pattern match a case class. NB: Unlike other languages, Scala cases do
+// not need breaks, fall-through does not happen.
 
-me match { case Person(name, number) => {
-            "We matched someone : " + name + ", phone : " + number }}
-
-me match { case Person(name, number) => "Match : " + name; case _ => "Hm..." }
-
-me match { case Person("George", number) => "Match"; case _ => "Hm..." }
-
-me match { case Person("Kate", number) => "Match"; case _ => "Hm..." }
-
-me match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy" }
-
-val kate = Person("Kate", "1234")
-
-kate match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy" }
-
-
-
-// Regular expressions
-val email = "(.*)@(.*)".r  // Invoking r on String makes it a Regex
-val serialKey = """(\d{5})-(\d{5})-(\d{5})-(\d{5})""".r // Using verbatim (multiline) syntax
-
-val matcher = (value: String) => {
-  println(value match {
-	case email(name, domain) => s"It was an email: $name"
-	case serialKey(p1, p2, p3, p4) => s"Serial key: $p1, $p2, $p3, $p4"
-	case _ => s"No match on '$value'" // default if no match found
-  })
+def matchPerson(person: Person): String = person match {
+  // Then you specify the patterns:
+  case Person("George", number) => "We found George! His number is " + number
+  case Person("Kate", number) => "We found Kate! Her number is " + number
+  case Person(name, number) => "We matched someone : " + name + ", phone : " + number
 }
 
-matcher("mrbean@pyahoo.com") // => "It was an email: mrbean"
-matcher("nope..") // => "No match on 'nope..'"
-matcher("52917") // => "No match on '52917'"
-matcher("52752-16432-22178-47917") // => "Serial key: 52752, 16432, 22178, 47917"
+val email = "(.*)@(.*)".r  // Define a regex for the next example.
+
+// Pattern matching might look familiar to the switch statements in the C family
+// of languages, but this is much more powerful. In Scala, you can match much
+// more:
+def matchEverything(obj: Any): String = obj match {
+  // You can match values:
+  case "Hello world" => "Got the string Hello world"
+
+  // You can match by type:
+  case x: Double => "Got a Double: " + x
+
+  // You can specify conditions:
+  case x: Int if x > 10000 => "Got a pretty big number!"
+
+  // You can match case classes as before:
+  case Person(name, number) => s"Got contact info for $name!"
+
+  // You can match regular expressions:
+  case email(name, domain) => s"Got email address $name@$domain"
+
+  // You can match tuples:
+  case (a: Int, b: Double, c: String) => s"Got a tuple: $a, $b, $c"
+
+  // You can match data structures:
+  case List(1, b, c) => s"Got a list with three elements and starts with 1: 1, $b, $c"
+
+  // You can nest patterns:
+  case List(List((1, 2,"YAY"))) => "Got a list of list of tuple"
+}
+
+// In fact, you can pattern match any object with an "unapply" method. This
+// feature is so powerful that Scala lets you define whole functions as
+// patterns:
+val patternFunc: Person => String = {
+  case Person("George", number) => s"George's number: $number"
+  case Person(name, number) => s"Random person's number: $number"
+}
 
 
 /////////////////////////////////////////////////
@@ -449,6 +465,7 @@ matcher("52752-16432-22178-47917") // => "Serial key: 52752, 16432, 22178, 47917
 // Scala allows methods and functions to return, or take as parameters, other
 // functions or methods.
 
+val add10: Int => Int = _ + 10 // A function taking an Int and returning an Int
 List(1, 2, 3) map add10 // List(11, 12, 13) - add10 is applied to each element
 
 // Anonymous functions can be used instead of named functions:
@@ -476,7 +493,7 @@ sSquared.reduce (_+_)
 // The filter function takes a predicate (a function from A -> Boolean) and
 // selects all elements which satisfy the predicate
 List(1, 2, 3) filter (_ > 2) // List(3)
-case class Person(name:String, phoneNumber:String)
+case class Person(name:String, age:Int)
 List(
   Person(name = "Dom", age = 23),
   Person(name = "Bob", age = 30)
@@ -507,7 +524,60 @@ for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
 // 8. Implicits
 /////////////////////////////////////////////////
 
-// Coming soon!
+/* WARNING WARNING: Implicits are a set of powerful features of Scala, and
+ * therefore it is easy to abuse them. Beginners to Scala should resist the
+ * temptation to use them until they understand not only how they work, but also
+ * best practices around them. We only include this section in the tutorial
+ * because they are so commonplace in Scala libraries that it is impossible to
+ * do anything meaningful without using a library that has implicits. This is
+ * meant for you to understand and work with implicts, not declare your own.
+ */
+
+// Any value (vals, functions, objects, etc) can be declared to be implicit by
+// using the, you guessed it, "implicit" keyword. Note we are using the Dog
+// class from section 5 in these examples.
+implicit val myImplicitInt = 100
+implicit def myImplicitFunction(breed: String) = new Dog("Golden " + breed)
+
+// By itself, implicit keyword doesn't change the behavior of the value, so
+// above values can be used as usual.
+myImplicitInt + 2  // => 102
+myImplicitFunction("Pitbull").breed  // => "Golden Pitbull"
+
+// The difference is that these values are now eligible to be used when another
+// piece of code "needs" an implicit value. One such situation is implicit
+// function arguments:
+def sendGreetings(toWhom: String)(implicit howMany: Int) =
+  s"Hello $toWhom, $howMany blessings to you and yours!"
+
+// If we supply a value for "howMany", the function behaves as usual
+sendGreetings("John")(1000)  // => "Hello John, 1000 blessings to you and yours!"
+
+// But if we omit the implicit parameter, an implicit value of the same type is
+// used, in this case, "myImplicitInt":
+sendGreetings("Jane")  // => "Hello Jane, 100 blessings to you and yours!"
+
+// Implicit function parameters enable us to simulate type classes in other
+// functional languages. It is so often used that it gets its own shorthand. The
+// following two lines mean the same thing:
+def foo[T](implicit c: C[T]) = ...
+def foo[T : C] = ...
+
+
+// Another situation in which the compiler looks for an implicit is if you have
+//   obj.method(...)
+// but "obj" doesn't have "method" as a method. In this case, if there is an
+// implicit conversion of type A => B, where A is the type of obj, and B has a
+// method called "method", that conversion is applied. So having
+// myImplicitFunction above in scope, we can say:
+"Retriever".breed  // => "Golden Retriever"
+"Sheperd".bark  // => "Woof, woof!"
+
+// Here the String is first converted to Dog using our function above, and then
+// the appropriate method is called. This is an extremely powerful feature, but
+// again, it is not to be used lightly. In fact, when you defined the implicit
+// function above, your compiler should have given you a warning, that you
+// shouldn't do this unless you really know what you're doing.
 
 
 /////////////////////////////////////////////////

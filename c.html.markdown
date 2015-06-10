@@ -26,12 +26,14 @@ Multi-line comments look like this. They work in C89 as well.
 Multi-line comments don't nest /* Be careful */  // comment ends on this line...
 */ // ...not this one!
 
-  // Constants: #define <keyword>
+// Constants: #define <keyword>
 #define DAYS_IN_YEAR 365
 
-  // Enumeration constants are also ways to declare constants.
-  enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
+// Enumeration constants are also ways to declare constants.
+// All statements must end with a semicolon
+enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 // MON gets 2 automatically, TUE gets 3, etc.
+
 
 // Import headers with #include
 #include <stdlib.h>
@@ -57,7 +59,6 @@ int main() {
   // print output using printf, for "print formatted"
   // %d is an integer, \n is a newline
   printf("%d\n", 0); // => Prints 0
-  // All statements must end with a semicolon
 
   ///////////////////////////////////////
   // Types
@@ -84,7 +85,7 @@ int main() {
   // doubles are usually 64-bit floating-point numbers
   double x_double = 0.0; // real numbers without any suffix are doubles
 
-  // integer types may be unsigned (only positive)
+  // integer types may be unsigned (greater than or equal to zero)
   unsigned short ux_short;
   unsigned int ux_int;
   unsigned long long ux_long_long;
@@ -233,7 +234,7 @@ int main() {
   // same with j-- and --j
 
   // Bitwise operators!
-  ~0x0F; // => 0xF0 (bitwise negation, "1's complement")
+  ~0x0F; // => 0xFFFFFFF0 (bitwise negation, "1's complement", example result for 32-bit int)
   0x0F & 0xF0; // => 0x00 (bitwise AND)
   0x0F | 0xF0; // => 0xFF (bitwise OR)
   0x04 ^ 0x0F; // => 0x0B (bitwise XOR)
@@ -241,7 +242,7 @@ int main() {
   0x02 >> 1; // => 0x01 (bitwise right shift (by 1))
 
   // Be careful when shifting signed integers - the following are undefined:
-  // - shifting into the sign bit of a signed integer (int a = 1 << 32)
+  // - shifting into the sign bit of a signed integer (int a = 1 << 31)
   // - left-shifting a negative number (int a = -1 << 2)
   // - shifting by an offset which is >= the width of the type of the LHS:
   //   int a = 1 << 32; // UB if int is 32 bits wide
@@ -385,7 +386,8 @@ int main() {
   // or when it's the argument of the `sizeof` or `alignof` operator:
   int arraythethird[10];
   int *ptr = arraythethird; // equivalent with int *ptr = &arr[0];
-  printf("%zu, %zu\n", sizeof arraythethird, sizeof ptr); // probably prints "40, 4" or "40, 8"
+  printf("%zu, %zu\n", sizeof arraythethird, sizeof ptr);
+  // probably prints "40, 4" or "40, 8"
 
 
   // Pointers are incremented and decremented based on their type
@@ -476,7 +478,7 @@ void testFunc() {
 }
 
 //make external variables private to source file with static:
-static int j = 0; //other files using testFunc() cannot access variable i
+static int j = 0; //other files using testFunc2() cannot access variable j
 void testFunc2() {
   extern int j;
 }

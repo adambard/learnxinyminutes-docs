@@ -268,7 +268,7 @@ end
 # implicitement la valeur de la dernière instruction évaluée
 double(2) #=> 4
 
-# Les paranthèses sont facultative
+# Les parenthèses sont facultatives
 # lorsqu'il n'y a pas d'ambiguïté sur le résultat
 double 3 #=> 6
 

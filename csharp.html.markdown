@@ -5,6 +5,7 @@ contributors:
     - ["Max Yankov", "https://github.com/golergka"]
     - ["Melvyn Laïly", "http://x2a.yt"]
     - ["Shaun McCarthy", "http://www.shaunmccarthy.com"]
+    - ["Wouter Van Schandevijl", "http://github.com/laoujin"]
 filename: LearnCSharp.cs
 ---
 
@@ -18,22 +19,29 @@ C# is an elegant and type-safe object-oriented language that enables developers 
 Multi-line comments look like this
 */
 /// <summary>
-/// This is an XML documentation comment
+/// This is an XML documentation comment which can be used to generate external
+/// documentation or provide context help within an IDE
 /// </summary>
+//public void MethodOrClassOrOtherWithParsableHelp() {}
 
-// Specify namespaces application will be using
+// Specify the namespaces this source code will be using
+// The namespaces below are all part of the standard .NET Framework Class Libary 
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Dynamic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Net;
 using System.Threading.Tasks;
 using System.IO;
 
-// defines scope to organize code into "packages"
-namespace Learning
+// But this one is not:
+using System.Data.Entity;
+// In order to be able to use it, you need to add a dll reference
+// This can be done with the NuGet package manager: `Install-Package EntityFramework`
+
+// Namespaces define scope to organize code into "packages" or "modules"
+// Using this code from another source file: using Learning.CSharp;
+namespace Learning.CSharp
 {
     // Each .cs file should at least contain a class with the same name as the file
     // you're allowed to do otherwise, but shouldn't for sanity.
@@ -125,7 +133,7 @@ on a new line! ""Wow!"", the masses cried";
 
             // Use const or read-only to make a variable immutable
             // const values are calculated at compile time
-            const int HOURS_I_WORK_PER_WEEK = 9001;
+            const int HoursWorkPerWeek = 9001;
 
             ///////////////////////////////////////////////////
             // Data Structures
@@ -242,8 +250,15 @@ on a new line! ""Wow!"", the masses cried";
             int fooDoWhile = 0;
             do
             {
-                //Iterated 100 times, fooDoWhile 0->99
+                // Start iteration 100 times, fooDoWhile 0->99
+                if (false)
+                    continue; // skip the current iteration
+
                 fooDoWhile++;
+
+                if (fooDoWhile == 50)
+                    break; // breaks from the loop completely
+
             } while (fooDoWhile < 100);
 
             //for loop structure => for(<start_statement>; <conditional>; <step>)
@@ -301,7 +316,7 @@ on a new line! ""Wow!"", the masses cried";
             // Converting data
 
             // Convert String To Integer
-            // this will throw an Exception on failure
+            // this will throw a FormatException on failure
             int.Parse("123");//returns an integer version of "123"
 
             // try parse will default to type default on failure
@@ -315,6 +330,11 @@ on a new line! ""Wow!"", the masses cried";
             Convert.ToString(123);
             // or
             tryInt.ToString();
+
+            // Casting
+            // Cast decimal 15 to a int
+            // and then implicitly cast to long
+            long x = (int) 15M;
         }
 
         ///////////////////////////////////////
@@ -367,8 +387,12 @@ on a new line! ""Wow!"", the masses cried";
         }
 
         // Methods can have the same name, as long as the signature is unique
-        public static void MethodSignatures(string maxCount)
+        // A method that differs only in return type is not unique
+        public static void MethodSignatures(
+            ref int maxCount, // Pass by reference
+            out int count)
         {
+            count = 15; // out param must be assigned before control leaves the method
         }
 
         // GENERICS
@@ -399,6 +423,10 @@ on a new line! ""Wow!"", the masses cried";
             // OPTIONAL PARAMETERS
             MethodSignatures(3, 1, 3, "Some", "Extra", "Strings");
             MethodSignatures(3, another: 3); // explicity set a parameter, skipping optional ones
+
+            // BY REF AND OUT PARAMETERS
+            int maxCount = 0, count; // ref params must have value
+            MethodSignatures(ref maxCount, out count);
 
             // EXTENSION METHODS
             int i = 3;
@@ -434,6 +462,31 @@ on a new line! ""Wow!"", the masses cried";
             // LAMBDA EXPRESSIONS - allow you to write code in line
             Func<int, int> square = (x) => x * x; // Last T item is the return value
             Console.WriteLine(square(3)); // 9
+
+            // ERROR HANDLING - coping with an uncertain world
+            try
+            {
+                var funBike = PennyFarthing.CreateWithGears(6);
+
+                // will no longer execute because CreateWithGears throws an exception
+                string some = "";
+                if (true) some = null;
+                some.ToLower(); // throws a NullReferenceException
+            }
+            catch (NotSupportedException)
+            {
+                Console.WriteLine("Not so much fun now!");
+            }
+            catch (Exception ex) // catch all other exceptions
+            {
+                throw new ApplicationException("It hit the fan", ex);
+                // throw; // A rethrow that preserves the callstack
+            }
+            // catch { } // catch-all without capturing the Exception
+            finally
+            {
+                // executes after try or catch
+            }
 
             // DISPOSABLE RESOURCES MANAGEMENT - let you handle unmanaged resources easily.
             // Most of objects that access unmanaged resources (file handle, device contexts, etc.)
@@ -595,10 +648,26 @@ on a new line! ""Wow!"", the masses cried";
 
         public BikeBrand Brand; // After declaring an enum type, we can declare the field of this type
 
+        // Decorate an enum with the FlagsAttribute to indicate that multiple values can be switched on
+        [Flags] // Any class derived from Attribute can be used to decorate types, methods, parameters etc
+        public enum BikeAccessories
+        {
+            None = 0,
+            Bell = 1,
+            MudGuards = 2, // need to set the values manually!
+            Racks = 4,
+            Lights = 8,
+            FullPackage = Bell | MudGuards | Racks | Lights
+        }
+
+        // Usage: aBike.Accessories.HasFlag(Bicycle.BikeAccessories.Bell)
+        // Before .NET 4: (aBike.Accessories & Bicycle.BikeAccessories.Bell) == Bicycle.BikeAccessories.Bell
+        public BikeAccessories Accessories { get; set; }
+
         // Static members belong to the type itself rather then specific object.
         // You can access them without a reference to any object:
         // Console.WriteLine("Bicycles created: " + Bicycle.bicyclesCreated);
-        static public int BicyclesCreated = 0;
+        public static int BicyclesCreated { get; set; }
 
         // readonly values are set at run time
         // they can only be assigned upon declaration or in a constructor
@@ -678,6 +747,23 @@ on a new line! ""Wow!"", the masses cried";
             private set;
         }
 
+        // It's also possible to define custom Indexers on objects.
+        // All though this is not entirely useful in this example, you
+        // could do bicycle[0] which yields "chris" to get the first passenger or
+        // bicycle[1] = "lisa" to set the passenger. (of this apparent quattrocycle)
+        private string[] passengers = { "chris", "phil", "darren", "regina" };
+
+        public string this[int i]
+        {
+            get {
+                return passengers[i];
+            }
+
+            set {
+                return passengers[i] = value;
+            }
+        }
+
         //Method to display the attribute values of this Object.
         public virtual string Info()
         {
@@ -720,8 +806,15 @@ on a new line! ""Wow!"", the masses cried";
             }
             set
             {
-                throw new ArgumentException("You can't change gears on a PennyFarthing");
+                throw new InvalidOperationException("You can't change gears on a PennyFarthing");
             }
+        }
+
+        public static PennyFarthing CreateWithGears(int gears)
+        {
+            var penny = new PennyFarthing(1, 1);
+            penny.Gear = gears; // Oops, can't do this!
+            return penny;
         }
 
         public override string Info()
@@ -767,7 +860,7 @@ on a new line! ""Wow!"", the masses cried";
     /// EntityFramework Code First is awesome (similar to Ruby's ActiveRecord, but bidirectional)
     /// http://msdn.microsoft.com/en-us/data/jj193542.aspx
     /// </summary>
-    public class BikeRepository : DbSet
+    public class BikeRepository : DbContext
     {
         public BikeRepository()
             : base()
@@ -781,13 +874,15 @@ on a new line! ""Wow!"", the masses cried";
 
 ## Topics Not Covered
 
- * Flags
  * Attributes
- * Static properties
- * Exceptions, Abstraction
- * ASP.NET (Web Forms/MVC/WebMatrix)
- * Winforms
- * Windows Presentation Foundation (WPF)
+ * async/await, yield, pragma directives
+ * Web Development
+ 	* ASP.NET MVC & WebApi (new)
+ 	* ASP.NET Web Forms (old)
+ 	* WebMatrix (tool)
+ * Desktop Development
+ 	* Windows Presentation Foundation (WPF) (new) 
+ 	* Winforms (old)
 
 ## Further Reading
 
@@ -800,7 +895,4 @@ on a new line! ""Wow!"", the masses cried";
  * [ASP.NET Web Matrix Tutorials](http://www.asp.net/web-pages/tutorials)
  * [ASP.NET Web Forms Tutorials](http://www.asp.net/web-forms/tutorials)
  * [Windows Forms Programming in C#](http://www.amazon.com/Windows-Forms-Programming-Chris-Sells/dp/0321116208)
-
-
-
-[C# Coding Conventions](http://msdn.microsoft.com/en-us/library/vstudio/ff926074.aspx)
+ * [C# Coding Conventions](http://msdn.microsoft.com/en-us/library/vstudio/ff926074.aspx)

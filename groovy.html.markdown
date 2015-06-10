@@ -405,7 +405,7 @@ assert sum(2,5) == 7
 
 ## Further resources
 
-[Groovy documentation](http://groovy.codehaus.org/Documentation)
+[Groovy documentation](http://www.groovy-lang.org/documentation.html)
 
 [Groovy web console](http://groovyconsole.appspot.com/)
 

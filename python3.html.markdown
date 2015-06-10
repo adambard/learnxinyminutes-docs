@@ -13,7 +13,7 @@ executable pseudocode.
 
 Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
 
-Note: This article applies to Python 3 specifically. Check out the other tutorial if you want to learn the old Python 2.7
+Note: This article applies to Python 3 specifically. Check out [here](http://learnxinyminutes.com/docs/python/) if you want to learn the old Python 2.7
 
 ```python
 
@@ -39,7 +39,7 @@ Note: This article applies to Python 3 specifically. Check out the other tutoria
 # Except division which returns floats by default
 35 / 5  # => 7.0
 
-# Result of integer division truncated down both for positive and negative. 
+# Result of integer division truncated down both for positive and negative.
 5 // 3     # => 1
 5.0 // 3.0 # => 1.0 # works on floats too
 -5 // 3  # => -2
@@ -73,8 +73,8 @@ False or True #=> True
 # Note using Bool operators with ints
 0 and 2 #=> 0
 -5 or 0 #=> -5
-0 == False #=> True 
-2 == True #=> False 
+0 == False #=> True
+2 == True #=> False
 1 == True #=> True
 
 # Equality is ==
@@ -101,6 +101,8 @@ False or True #=> True
 
 # Strings can be added too! But try not to do this.
 "Hello " + "world!"  # => "Hello world!"
+# Strings can be added without using '+'
+"Hello " "world!"  # => "Hello world!"
 
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
@@ -143,7 +145,7 @@ bool({}) #=> False
 # Python has a print function
 print("I'm Python. Nice to meet you!")
 
-# No need to declare variables before assigning to them. 
+# No need to declare variables before assigning to them.
 # Convention is to use lower_case_with_underscores
 some_var = 5
 some_var  # => 5
@@ -184,7 +186,7 @@ li[2:]  # => [4, 3]
 li[:3]  # => [1, 2, 4]
 # Select every second entry
 li[::2]   # =>[1, 4]
-# Revert the list
+# Return a reversed copy of the list
 li[::-1]   # => [3, 4, 2, 1]
 # Use any combination of these to make advanced slices
 # li[start:end:step]
@@ -194,7 +196,7 @@ del li[2]   # li is now [1, 2, 3]
 
 # You can add lists
 # Note: values for li and for other_li are not modified.
-li + other_li   # => [1, 2, 3, 4, 5, 6] 
+li + other_li   # => [1, 2, 3, 4, 5, 6]
 
 # Concatenate lists with "extend()"
 li.extend(other_li)   # Now li is [1, 2, 3, 4, 5, 6]
@@ -211,7 +213,7 @@ tup = (1, 2, 3)
 tup[0]   # => 1
 tup[0] = 3  # Raises a TypeError
 
-# You can do all those list thingies on tuples too
+# You can do most of the list operations on tuples too
 len(tup)   # => 3
 tup + (4, 5, 6)   # => (1, 2, 3, 4, 5, 6)
 tup[:2]   # => (1, 2)
@@ -233,15 +235,15 @@ filled_dict = {"one": 1, "two": 2, "three": 3}
 # Look up values with []
 filled_dict["one"]   # => 1
 
-# Get all keys as a list with "keys()". 
-# We need to wrap the call in list() because we are getting back an iterable. We'll talk about those later.
-# Note - Dictionary key ordering is not guaranteed.
-# Your results might not match this exactly.
+# Get all keys as an iterable with "keys()". We need to wrap the call in list()
+# to turn it into a list. We'll talk about those later.  Note - Dictionary key
+# ordering is not guaranteed. Your results might not match this exactly.
 list(filled_dict.keys())   # => ["three", "two", "one"]
 
 
-# Get all values as a list with "values()". Once again we need to wrap it in list() to get it out of the iterable.
-# Note - Same as above regarding key ordering.
+# Get all values as an iterable with "values()". Once again we need to wrap it
+# in list() to get it out of the iterable. Note - Same as above regarding key
+# ordering.
 list(filled_dict.values())   # => [3, 2, 1]
 
 
@@ -276,10 +278,10 @@ empty_set = set()
 # Initialize a set with a bunch of values. Yeah, it looks a bit like a dict. Sorry.
 some_set = {1, 1, 2, 2, 3, 4}   # some_set is now {1, 2, 3, 4}
 
-#Can set new variables to a set
+# Can set new variables to a set
 filled_set = some_set
 
-# Add one more item to the set 
+# Add one more item to the set
 filled_set.add(5)   # filled_set is now {1, 2, 3, 4, 5}
 
 # Do set intersection with &
@@ -326,7 +328,7 @@ for animal in ["dog", "cat", "mouse"]:
     print("{} is a mammal".format(animal))
 
 """
-"range(number)" returns a list of numbers
+"range(number)" returns an iterable of numbers
 from zero to the given number
 prints:
     0
@@ -335,6 +337,18 @@ prints:
     3
 """
 for i in range(4):
+    print(i)
+
+"""
+"range(lower, upper)" returns an iterable of numbers
+from the lower number to the upper number
+prints:
+    4
+    5
+    6
+    7
+"""
+for i in range(4, 8):
     print(i)
 
 """
@@ -394,7 +408,6 @@ our_iterator.__next__() # Raises StopIteration
 list(filled_dict.keys())  #=> Returns ["one", "two", "three"]
 
 
-
 ####################################################
 ## 4. Functions
 ####################################################
@@ -410,14 +423,12 @@ add(5, 6)   # => prints out "x is 5 and y is 6" and returns 11
 # Another way to call functions is with keyword arguments
 add(y=6, x=5)   # Keyword arguments can arrive in any order.
 
-
 # You can define functions that take a variable number of
 # positional arguments
 def varargs(*args):
     return args
 
 varargs(1, 2, 3)   # => (1, 2, 3)
-
 
 # You can define functions that take a variable number of
 # keyword arguments, as well
@@ -447,14 +458,14 @@ all_the_args(**kwargs)   # equivalent to foo(a=3, b=4)
 all_the_args(*args, **kwargs)   # equivalent to foo(1, 2, 3, 4, a=3, b=4)
 
 
-# Function Scope                                                                
+# Function Scope
 x = 5
 
 def setX(num):
     # Local var x not the same as global variable x
     x = num # => 43
     print (x) # => 43
-    
+
 def setGlobalX(num):
     global x
     print (x) # => 5
@@ -501,7 +512,9 @@ class Human(object):
     # Basic initializer, this is called when this class is instantiated.
     # Note that the double leading and trailing underscores denote objects
     # or attributes that are used by python but that live in user-controlled
-    # namespaces. You should not invent such names on your own.
+    # namespaces. Methods(or objects or attributes) like: __init__, __str__,
+    # __repr__ etc. are called magic methods (or sometimes called dunder methods)
+    # You should not invent such names on your own.
     def __init__(self, name):
         # Assign the argument to the instance's name attribute
         self.name = name
@@ -587,7 +600,7 @@ def double_numbers(iterable):
 # double_numbers.
 # Note range is a generator too. Creating a list 1-900000000 would take lot of
 # time to be made
-# We use a trailing underscore in variable names when we want to use a name that 
+# We use a trailing underscore in variable names when we want to use a name that
 # would normally collide with a python keyword
 range_ = range(1, 900000000)
 # will double all numbers until a result >=30 found
@@ -635,8 +648,8 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 
 * [The Official Docs](http://docs.python.org/3/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
-* [Python Module of the Week](http://pymotw.com/3/)
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
+* [Python Course](http://www.python-course.eu/index.php)
 
 ### Dead Tree
 
