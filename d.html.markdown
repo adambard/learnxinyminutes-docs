@@ -47,12 +47,13 @@ void main() {
     } while(n > 0);
 
     // For and while are nice, but in D-land we prefer foreach
-    foreach(i; 1..int.max) { // The .. creates a continuous range 
+    // The .. creates a continuous range, excluding the end
+    foreach(i; 1..1000000) { 
         if(n % 2 == 0)
             writeln(i);
     }
 
-    foreach_reverse(i; 1..short.max) {
+    foreach_reverse(i; 1..int.max) {
         if(n % 2 == 1) {
             writeln(i);
         } else {
@@ -62,7 +63,7 @@ void main() {
 }
 ```
 
-We can define new types and functions with `struct`, `class`, `union`, and `enum`. Structs and unions
+We can define new types with `struct`, `class`, `union`, and `enum`. Structs and unions
 are passed to functions by value (i.e. copied) and classes are passed by reference. Futhermore,
 we can use templates to parameterize all of these on both types and values!
 
@@ -75,7 +76,8 @@ struct LinkedList(T) {
 
 class BinTree(T) {
     T data = null;
-
+    
+    // If there is only one template parameter, we can omit parens
     BinTree!T left;
     BinTree!T right;
 }
@@ -104,7 +106,9 @@ T max(T)(T a, T b) {
     return a;
 }
 
-// Use the ref keyword to pass by referece
+// Use the ref keyword to ensure pass by referece.
+// That is, even if a and b are value types, they
+// will always be passed by reference to swap
 void swap(T)(ref T a, ref T b) {
     auto temp = a;
 
@@ -136,22 +140,7 @@ class MyClass(T, U) {
 
 }
 
-// We define "setter" methods as follows
-
-class MyClass(T, U) {
-    T _data;
-    U _other;
-    
-    @property void data(T t) {
-        _data = t;
-    }
-
-    @property void other(U u) {
-        _other = u;
-    }
-}
-
-// And "getter" methods like so
+// And "getter" and "setter" methods like so
 class MyClass(T, U) {
     T _data;
     U _other;
@@ -197,7 +186,7 @@ With properties, we can add any amount of validation to
 our getter and setter methods, and keep the clean syntax of
 accessing members directly!
 
-Other object-oriented goodness for all your enterprise needs
+Other object-oriented goodies at our disposal
 include `interface`s, `abstract class`es,
 and `override`ing methods.
 
@@ -208,12 +197,13 @@ functional algorithms (map, filter, reduce and friends) can be
 found in the wonderful `std.algorithm` module!
 
 ```d
-import std.algorithm;
+import std.algorithm : map, filter, reduce;
+import std.range : iota; // builds an end-exclusive range
 
 void main() {
     // We want to print the sum of a list of squares of even ints
     // from 1 to 100. Easy!
-
+    
     // Just pass lambda expressions as template parameters!
     auto num = iota(1, 101).filter!(x => x % 2 == 0)
                            .map!(y => y ^^ 2)
