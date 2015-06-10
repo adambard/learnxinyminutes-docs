@@ -6,7 +6,7 @@ contributors:
 lang: en
 ---
 
-If you're like me and spend way to much time on the internet, odds are you've heard 
+If you're like me and spend way too much time on the internet, odds are you've heard 
 about [D](http://dlang.org/). The D programming language is a modern, general-purpose,
 multi-paradigm language with fantastic support for OOP, functional programming, metaprogramming,
 and easy concurrency and parallelism, and runs the gamut from low-level features such as
@@ -113,10 +113,13 @@ void swap(T)(ref T a, ref T b) {
 }
 
 // With templates, we can also parameterize on values, not just types
-class Matrix(T = int, uint m, uint n) {
+class Matrix(uint m, uint n, T = int) {
     T[m] rows;
     T[n] columns;
 }
+
+auto mat = new Matrix!(3, 3);
+
 ```
 
 Speaking of classes, let's talk about properties for a second. A property
