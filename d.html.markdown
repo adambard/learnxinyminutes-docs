@@ -205,6 +205,7 @@ void main() {
     // from 1 to 100. Easy!
     
     // Just pass lambda expressions as template parameters!
+    // You can pass any old function you like, but lambdas are convenient here.
     auto num = iota(1, 101).filter!(x => x % 2 == 0)
                            .map!(y => y ^^ 2)
                            .reduce!((a, b) => a + b);
