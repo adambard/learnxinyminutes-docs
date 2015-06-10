@@ -133,13 +133,6 @@ getter and setter methods (`object.setX(7)`)!
 
 ```d
 // Consider a class parameterized on a types T, U
-
-class MyClass(T, U) {
-    T _data;
-    U _other;
-
-}
-
 // And "getter" and "setter" methods like so
 class MyClass(T, U) {
     T _data;
