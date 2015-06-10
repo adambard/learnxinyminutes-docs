@@ -19,6 +19,8 @@ dudes. With all that out of the way, let's look at some examples!
 
 ```d
 // You know what's coming...
+module hello;
+
 import std.stdio;
 
 // args is optional
@@ -65,7 +67,7 @@ we can use templates to parameterize all of these on both types and values!
 
 ```d
 // Here, T is a type parameter. Think <T> from C++/C#/Java
-struct(T) LinkedList {
+struct LinkedList(T) {
     T data = null;
     LinkedList!(T)* next; // The ! is used to instaniate a parameterized type. Again, think <T> 
 }
@@ -90,7 +92,33 @@ enum Day {
 // Use alias to create abbreviations for types
 
 alias IntList = LinkedList!int;
-
 alias NumTree = BinTree!double;
 
+// We can create function templates as well!
+
+T max(T)(T a, T b) {
+    if(a < b) 
+        return b;
+
+    return a;
+}
+
+// Use the ref keyword to pass by referece
+void swap(T)(ref T a, ref T b) {
+    auto temp = a;
+
+    a = b;
+    b = a; 
+}
+
+// With templates, we can also parameterize on values, not just types
+class Matrix(T = int, uint m, uint n) {
+    T[m] rows;
+    T[n] columns;
+}
 ```
+
+Speaking of classes, let's talk about properties for a second. A property
+is roughly a function that may act like an lvalue, so we can
+have the syntax of POD structures (`structure.x = 7`) with the semantics of
+getter and setter methods (`object.setX(7)`)!
