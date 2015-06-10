@@ -161,6 +161,32 @@ Perl-овые модули предоставляют широкий набор 
 Раздел документации perlfaq содержит вопросы и ответы о многих частых 
 задачах, и часто предлагает подходящие CPAN-модули.
 
+
+#### Unicode
+
+Вам наверняка понадобится работать с не-ASCII текстами.
+Добавьте эти прагмы в начало скрипта:
+
+```perl
+use utf8;
+use open ':std' => ':utf8';
+```
+
+Подробнее читайте в perldoc, разделы perlunicode и open.
+
+
+#### strict, warnings
+
+Прагмы strict и warnings включают полезные проверки во время компиляции:
+
+```perl
+use strict;
+use warnings;
+```
+
+Подробнее смотрите perldoc strict и perldoc warnings.
+
+
 #### Смотрите также
 
  - [perl-tutorial](http://perl-tutorial.org/)
