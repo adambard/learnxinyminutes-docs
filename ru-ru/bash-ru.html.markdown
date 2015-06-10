@@ -13,6 +13,7 @@ contributors:
     - ["Etan Reisner", "https://github.com/deryni"]
 translators:
     - ["Andrey Samsonov", "https://github.com/kryzhovnik"]
+    - ["Andre Polykanine", "https://github.com/Oire"]
 filename: LearnBash-ru.sh
 lang: ru-ru
 ---
