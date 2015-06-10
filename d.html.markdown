@@ -109,7 +109,7 @@ void swap(T)(ref T a, ref T b) {
     auto temp = a;
 
     a = b;
-    b = a; 
+    b = temp; 
 }
 
 // With templates, we can also parameterize on values, not just types
@@ -118,7 +118,7 @@ class Matrix(uint m, uint n, T = int) {
     T[n] columns;
 }
 
-auto mat = new Matrix!(3, 3);
+auto mat = new Matrix!(3, 3); // We've defaulted T to int
 
 ```
 
@@ -196,3 +196,47 @@ void main() {
 With properties, we can add any amount of validation to
 our getter and setter methods, and keep the clean syntax of
 accessing members directly!
+
+Other object-oriented goodness for all your enterprise needs
+include `interface`s, `abstract class`es,
+and `override`ing methods.
+
+We've seen D's OOP facilities, but let's switch gears. D offers
+functional programming with first-class functions, `pure` 
+functions, and immutable data. In addition, all of your favorite
+functional algorithms (map, filter, reduce and friends) can be
+found in the wonderful `std.algorithm` module!
+
+```d
+import std.algorithm;
+
+void main() {
+    // We want to print the sum of a list of squares of even ints
+    // from 1 to 100. Easy!
+
+    // Just pass lambda expressions as template parameters!
+    auto num = iota(1, 101).filter!(x => x % 2 == 0)
+                           .map!(y => y ^^ 2)
+                           .reduce!((a, b) => a + b);
+
+    writeln(num);
+}
+```
+
+Notice how we got to build a nice Haskellian pipeline to compute num? 
+That's thanks to a D innovation know as Uniform Function Call Syntax.
+With UFCS, we can choose whether to write a function call as a method
+or free function all. In general, if we have a function 
+
+```d
+f(A, B, C, ...)
+```
+
+Then we may write 
+
+```d
+A.f(B, C, ...)
+```
+
+and the two are equivalent! No more fiddling to remember if it's
+str.length or length(str)!
