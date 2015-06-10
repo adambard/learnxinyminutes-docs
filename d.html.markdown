@@ -53,10 +53,11 @@ void main() {
     }
 
     foreach_reverse(i; 1..short.max) {
-        if(n % 2 == 1)
+        if(n % 2 == 1) {
             writeln(i);
-        else
+        } else {
             writeln("No!");
+        }
     }
 }
 ```
@@ -122,3 +123,73 @@ Speaking of classes, let's talk about properties for a second. A property
 is roughly a function that may act like an lvalue, so we can
 have the syntax of POD structures (`structure.x = 7`) with the semantics of
 getter and setter methods (`object.setX(7)`)!
+
+```d
+// Consider a class parameterized on a types T, U
+
+class MyClass(T, U) {
+    T _data;
+    U _other;
+
+}
+
+// We define "setter" methods as follows
+
+class MyClass(T, U) {
+    T _data;
+    U _other;
+    
+    @property void data(T t) {
+        _data = t;
+    }
+
+    @property void other(U u) {
+        _other = u;
+    }
+}
+
+// And "getter" methods like so
+class MyClass(T, U) {
+    T _data;
+    U _other;
+    
+    // Constructors are always named `this`
+    this(T t, U u) {
+        data = t;
+        other = u;
+    }
+    
+    // getters
+    @property T data() {
+        return _data;
+    }
+
+    @property U other() {
+        return _other;
+    }
+
+    // setters    
+    @property void data(T t) {
+        _data = t;
+    }
+
+    @property void other(U u) {
+        _other = u;
+    }
+}
+// And we use them in this manner
+
+void main() {
+    auto mc = MyClass!(int, string);
+
+    mc.data = 7;
+    mc.other = "seven";
+
+    writeln(mc.data);
+    writeln(mc.other);
+}
+```
+
+With properties, we can add any amount of validation to
+our getter and setter methods, and keep the clean syntax of
+accessing members directly!
