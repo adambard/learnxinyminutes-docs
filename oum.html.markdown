@@ -1,7 +1,7 @@
 ---
   language: Oum
   contributors:
-    -["Theo Butler", "https://github.com/Theodus"]
+    - ["Theo Butler", "https://github.com/Theodus"]
   filename: learnoum.oum
 ---
 
