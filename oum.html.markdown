@@ -32,7 +32,7 @@ a = new OumInteger(3)
 2 - 1 //=> 1
 2 * 2 //=> 4
 
-// exponent returns a double
+// exponent operation returns a double
 
 2 ^ 3 //=> 8.0
 
