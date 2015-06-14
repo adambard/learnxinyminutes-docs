@@ -15,18 +15,20 @@ lang: fr-fr
 
 %%% Trois signes pour cent sont utilisés pour commenter les modules.
 
-% Trois types de ponctuation sont utilisés en Erlang.
+% Trois symboles de ponctuation sont utilisés en Erlang.
 % Les virgules (`,`) servent à séparer les paramètres dans les appels de
 % fonctions, les contructeurs, et les motifs.
-% Les points (`.`) (suivis par des caractères blancs) servent à séparer
-% les fonctions et les expressions dans l'interpréteur.
+% Les points (`.`) (suivis par des blancs) servent à séparer les fonctions et
+% les expressions dans l'interpréteur.
 % Les points-virgules (`;`) servent à séparer les clauses. Ces dernières
 % apparaissent dans différent cas de figure : définitions de fonctions et
-% expressions `case`, `if`, `try..catch`, et `receive`.
+% expressions `case`, `if`, `try..catch`, `receive`.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% 1. Variables et filtrage par motif.
+%% 1. Variables et filtrage par motif
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+(L'équivalent anglais de *filtrage par motif* est *pattern patching*.)
 
 Nb = 42.  % Chaque nom de variable doit commencer par une lettre majuscule.
 
@@ -101,7 +103,7 @@ Nom = "Bonjour".
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Les modules constituent l'unité de base d'un programme Erlang. Toutes les
-% fonctions que l'on écrit sont sauvées dans des modules. Les modules sont
+% fonctions que l'on écrit sont enregistrées dans des modules. Les modules sont
 % enregistrés dans des fichiers avec une extension `.erl`.
 % Les modules doivent être compilés afin d'éxecuter le programme.
 % Un module compilé a une extension `.beam`.
@@ -138,27 +140,27 @@ somme(L) -> somme(L, 0).
 somme([], N)    -> N;
 somme([T|Q], N) -> somme(Q, T+N).
 
-% Les funs sont des fonctions "anonymes" ; elles sont appelées ainsi parce
-% qu'elles n'ont pas de noms. Cependant, elles peuvent être affectées à des
+% Les `fun`s sont des fonctions "anonymes" ; elles sont appelées ainsi parce
+% qu'elles n'ont pas de nom. Cependant, elles peuvent être affectées à des
 % variables.
 Doubler = fun(X) -> 2 * X end. % `Doubler` pointe vers une fonction anonyme
                                % dont le handle est : #Fun<erl_eval.6.17052888>
 Doubler(2).  % 4
 
-% Les fonctions peuvent prendre des funs comme paramètres et peuvent renvoyer
-% des funs.
+% Les fonctions peuvent prendre des `fun`s comme paramètres et peuvent renvoyer
+% des `fun`s.
 Mult = fun(Fois) -> ( fun(X) -> X * Fois end ) end.
 Tripler = Mult(3).
 Tripler(5).  % 15
 
 % Les listes en compréhension sont des expressions qui créent des listes sans
-% requérir ni funs, ni maps, ni filters.
+% requérir ni `fun`s, ni maps, ni filters.
 % La notation `[F(X) || X <- L]` signifie "la liste des `F(X)` où `X` est
 % extrait de la liste `L`."
 L = [1,2,3,4,5].
 [2 * X || X <- L].  % [2,4,6,8,10]
-% Une liste en compréhension peut avoir des générateurs, ainsi que des gardes,
-% qui sélectionnent un sous-ensemble des valeurs générées.
+% Une liste en compréhension peut être constituée de générateurs, ainsi que de
+% gardes, qui sélectionnent un sous-ensemble des valeurs générées.
 NombresPairs = [N || N <- [1, 2, 3, 4], N rem 2 == 0]. % [2, 4]
 
 % La garde est un élément syntaxique qui rend le filtrage par motif encore
@@ -186,7 +188,7 @@ est_chien(A) -> false.
 est_animal(A) when is_atom(A), (A =:= chien) or (A =:= chat) -> true;
 est_animal(A)                                                -> false.
 
-% Attention : les expressions Erlang valides ne peuvent pas toutes être
+% Attention : toutes les expressions Erlang valides ne peuvent pas être
 % utilisées comme expressions gardes ; en particulier, nos fonctions
 % `est_chat` et `est_chien` ne sont pas autorisées au sein de la séquence de
 % gardes dans la définition de `est_animal`. Pour plus de détails sur les
@@ -317,7 +319,7 @@ self(). % <0.41.0>
 
 ```
 
-## Références
+## Ressources (en anglais)
 
 * ["Learn You Some Erlang for great good!"](http://learnyousomeerlang.com/)
 * ["Programming Erlang: Software for a Concurrent World" by Joe Armstrong](http://pragprog.com/book/jaerlang/programming-erlang)
