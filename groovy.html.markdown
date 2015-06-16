@@ -6,7 +6,7 @@ contributors:
 filename: learngroovy.groovy
 ---
 
-Groovy - A dynamic language for the Java platform [Read more here.](http://groovy.codehaus.org)
+Groovy - A dynamic language for the Java platform [Read more here.](http://www.groovy-lang.org/)
 
 ```groovy
 
@@ -231,7 +231,7 @@ for ( e in map ) {
   Operators
 
   Operator Overloading for a list of the common operators that Groovy supports:
-  http://groovy.codehaus.org/Operator+Overloading
+  http://www.groovy-lang.org/operators.html#Operator-Overloading
 
   Helpful groovy operators
 */
@@ -249,7 +249,7 @@ def username = user?.username
   A Groovy Closure is like a "code block" or a method pointer. It is a piece of
   code that is defined and then executed at a later point.
 
-  More info at: http://groovy.codehaus.org/Closures+-+Formal+Definition
+  More info at: http://www.groovy-lang.org/closures.html
 */
 //Example:
 def clos = { println "Hello World!" }
@@ -409,7 +409,7 @@ assert sum(2,5) == 7
 
 [Groovy web console](http://groovyconsole.appspot.com/)
 
-Join a [Groovy user group](http://groovy.codehaus.org/User+Groups)
+Join a [Groovy user group](http://www.groovy-lang.org/usergroups.html)
 
 ## Books
 
