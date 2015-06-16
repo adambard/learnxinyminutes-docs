@@ -16,6 +16,7 @@ import std.stdio;
 void main(string[] args) {
     writeln("Hello, World!");
 }
+```
 
 If you're like me and spend way too much time on the internet, odds are you've heard 
 about [D](http://dlang.org/). The D programming language is a modern, general-purpose,
@@ -133,6 +134,13 @@ getter and setter methods (`object.setX(7)`)!
 
 ```d
 // Consider a class parameterized on a types T, U
+
+class MyClass(T, U) {
+    T _data;
+    U _other;
+
+}
+
 // And "getter" and "setter" methods like so
 class MyClass(T, U) {
     T _data;
@@ -212,6 +220,6 @@ Notice how we got to build a nice Haskellian pipeline to compute num?
 That's thanks to a D innovation know as Uniform Function Call Syntax.
 With UFCS, we can choose whether to write a function call as a method
 or free function call! Walter wrote a nice article on this [http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394](here.) In short, you can call functions whose first parameter 
-is of some type A on any expression of type A as a methods.
+is of some type A on any expression of type A as a method.
 
 
