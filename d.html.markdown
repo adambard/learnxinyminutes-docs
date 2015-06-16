@@ -6,17 +6,6 @@ contributors:
 lang: en
 ---
 
-If you're like me and spend way too much time on the internet, odds are you've heard 
-about [D](http://dlang.org/). The D programming language is a modern, general-purpose,
-multi-paradigm language with fantastic support for OOP, functional programming, metaprogramming,
-and easy concurrency and parallelism, and runs the gamut from low-level features such as
-memory management, inline assembly, and pointer arithmetic, to high-level constructs 
-such as higher-order functions and generic structures and functions via templates, all with
-a pleasant syntax, and blazing fast performance! 
-
-D is actively developed by Walter Bright and Andrei Alexandrescu, two super smart, really cool
-dudes. With all that out of the way, let's look at some examples!
-
 ```d
 // You know what's coming...
 module hello;
@@ -28,16 +17,27 @@ void main(string[] args) {
     writeln("Hello, World!");
 }
 
-// Conditionals and loops work as expected.
+If you're like me and spend way too much time on the internet, odds are you've heard 
+about [D](http://dlang.org/). The D programming language is a modern, general-purpose,
+multi-paradigm language with support for everything from low-level features to 
+expressive high-level abstractions.
+
+D is actively developed by Walter Bright and Andrei Alexandrescu, two super smart, really cool
+dudes. With all that out of the way, let's look at some examples!
+
+
 import std.stdio;
 
 void main() {
-    for(int i = 0; i < 5; i++) {
+
+    // Conditionals and loops work as expected.
+    for(int i = 0; i < 10000; i++) {
         writeln(i);
     }
 
     auto n = 1; // use auto for type inferred variables
-
+    
+    // Numeric literals can use _ as a digit seperator for clarity
     while(n < 10_000) {
         n += n;
     }
@@ -48,7 +48,7 @@ void main() {
 
     // For and while are nice, but in D-land we prefer foreach
     // The .. creates a continuous range, excluding the end
-    foreach(i; 1..1000000) { 
+    foreach(i; 1..1_000_000) { 
         if(n % 2 == 0)
             writeln(i);
     }
@@ -122,7 +122,7 @@ class Matrix(uint m, uint n, T = int) {
     T[n] columns;
 }
 
-auto mat = new Matrix!(3, 3); // We've defaulted T to int
+auto mat = new Matrix!(3, 3); // We've defaulted type T to int
 
 ```
 
@@ -176,19 +176,20 @@ void main() {
 
     mc.data = 7;
     mc.other = "seven";
-
+    
     writeln(mc.data);
     writeln(mc.other);
 }
 ```
 
-With properties, we can add any amount of validation to
+With properties, we can add any amount of logic to
 our getter and setter methods, and keep the clean syntax of
 accessing members directly!
 
 Other object-oriented goodies at our disposal
 include `interface`s, `abstract class`es,
-and `override`ing methods.
+and `override`ing methods. D does inheritance just like Java:
+Extend one class, implement as many interfaces as you please.
 
 We've seen D's OOP facilities, but let's switch gears. D offers
 functional programming with first-class functions, `pure` 
@@ -217,17 +218,7 @@ void main() {
 Notice how we got to build a nice Haskellian pipeline to compute num? 
 That's thanks to a D innovation know as Uniform Function Call Syntax.
 With UFCS, we can choose whether to write a function call as a method
-or free function all. In general, if we have a function 
+or free function call! Walter wrote a nice article on this [http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394](here.) In short, you can call functions whose first parameter 
+is of some type A on any expression of type A as a methods.
 
-```d
-f(A, B, C, ...)
-```
 
-Then we may write 
-
-```d
-A.f(B, C, ...)
-```
-
-and the two are equivalent! No more fiddling to remember if it's
-str.length or length(str)!
