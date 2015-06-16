@@ -26,7 +26,7 @@ expressive high-level abstractions.
 D is actively developed by Walter Bright and Andrei Alexandrescu, two super smart, really cool
 dudes. With all that out of the way, let's look at some examples!
 
-
+```d
 import std.stdio;
 
 void main() {
