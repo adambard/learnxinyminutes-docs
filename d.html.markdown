@@ -219,7 +219,29 @@ void main() {
 Notice how we got to build a nice Haskellian pipeline to compute num? 
 That's thanks to a D innovation know as Uniform Function Call Syntax.
 With UFCS, we can choose whether to write a function call as a method
-or free function call! Walter wrote a nice article on this [here.](http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394) In short, you can call functions whose first parameter 
+or free function call! Walter wrote a nice article on this
+[here.](http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394) 
+In short, you can call functions whose first parameter 
 is of some type A on any expression of type A as a method.
 
+I like parallelism. Anyone else like parallelism? Sure you do. Let's do some!
 
+```d
+import std.stdio;
+import std.parallelism : parallel;
+import std.math : sqrt;
+
+void main() {
+    // We want take the square root every number in our array,
+    // and take advantage of as many cores as we have available.
+    auto arr = new double[1_000_000];
+
+    // Use an index, and an array element by referece,
+    // and just call parallel on the array!
+    foreach(i, ref elem; parallel(arr)) {
+        ref = sqrt(i + 1.0);
+    }
+}
+
+
+```
