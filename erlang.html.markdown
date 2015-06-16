@@ -164,6 +164,13 @@ is_cat(A) -> false.
 is_dog(A) when is_atom(A), A =:= dog -> true;
 is_dog(A) -> false.
 
+% We won't dwell on the `=:=` operator here; just be aware that it is used to
+% check whether two Erlang expressions have the same value *and* the same type.
+% Contrast this behaviour to that of the `==` operator:
+1 + 2 =:= 3.   % true
+1 + 2 =:= 3.0. % false
+1 + 2 ==  3.0. % true
+
 % A guard sequence is either a single guard or a series of guards, separated
 % by semicolons (`;`). The guard sequence `G1; G2; ...; Gn` is true if at
 % least one of the guards `G1`, `G2`, ..., `Gn` evaluates to `true`.
