@@ -84,7 +84,7 @@ fn main() {
     // This is basically an immutable pointer to a string – it doesn’t
     // actually contain the contents of a string, just a pointer to
     // something that does (in this case, `s`)
-    let s_slice: &str = &*s;
+    let s_slice: &str = &s;
 
     println!("{} {}", s, s_slice); // hello world hello world
 
@@ -99,7 +99,7 @@ fn main() {
 
     // A slice – an immutable view into a vector or array
     // This is much like a string slice, but for vectors
-    let slice: &[i32] = &*vector;
+    let slice: &[i32] = &vector;
 
     // Use `{:?}` to print something debug-style
     println!("{:?} {:?}", vector, slice); // [1, 2, 3, 4, 5] [1, 2, 3, 4, 5]
