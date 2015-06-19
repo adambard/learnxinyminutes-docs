@@ -32,7 +32,7 @@ println "Hello world!"
 /*
   变量：
 
-  可以给变量赋值，稍后再用
+  可以给变量赋值，以便稍后使用
 */
 
 def x = 1
@@ -51,7 +51,7 @@ x = "Groovy!"
 println x
 
 /*
-  集合和map
+  集合和映射
 */
 
 //创建一个空的列表
@@ -73,7 +73,7 @@ technologies.addAll(["Gradle","Griffon"])
 // 和Java一样
 technologies.remove("Griffon")
 
-// 减法也行
+// 减号也行
 technologies = technologies - 'Grails'
 
 /*** 遍历列表 ***/
@@ -93,7 +93,7 @@ contained = 'Groovy' in technologies
 // 检查多个元素
 technologies.containsAll(['Groovy','Grails'])
 
-/*** 排序列表 ***/
+/*** 列表排序 ***/
 
 // 排序列表（修改原列表）
 technologies.sort()
@@ -101,7 +101,7 @@ technologies.sort()
 // 要想不修改原列表，可以这样：
 sortedTechnologies = technologies.sort( false )
 
-/*** 操作列表 ***/
+/*** 列表操作 ***/
 
 //替换列表元素
 Collections.replaceAll(technologies, 'Gradle', 'gradle')
@@ -112,27 +112,27 @@ Collections.shuffle(technologies, new Random())
 //清空列表
 technologies.clear()
 
-//创建空的map
+//创建空的映射
 def devMap = [:]
 
 //增加值
 devMap = ['name':'Roberto', 'framework':'Grails', 'language':'Groovy']
 devMap.put('lastName','Perez')
 
-//遍历map元素
+//遍历映射元素
 devMap.each { println "$it.key: $it.value" }
 devMap.eachWithIndex { it, i -> println "$i: $it"}
 
-//判断map是否包含某键
+//判断映射是否包含某键
 assert devMap.containsKey('name')
 
-//判断map是否包含某值
+//判断映射是否包含某值
 assert devMap.containsValue('Roberto')
 
-//取得map所有的键
+//取得映射所有的键
 println devMap.keySet()
 
-//取得map所有的值
+//取得映射所有的值
 println devMap.values()
 
 /*
@@ -217,7 +217,7 @@ for (i in array) {
     x += i
 }
 
-//遍历map
+//遍历映射
 def map = ['name':'Roberto', 'framework':'Grails', 'language':'Groovy']
 x = 0
 for ( e in map ) {
@@ -227,7 +227,7 @@ for ( e in map ) {
 /*
   运算符
 
-  Groovy中下列运算符支持重载：
+  在Groovy中以下常用运算符支持重载：
   http://www.groovy-lang.org/operators.html#Operator-Overloading
 
   实用的groovy运算符
@@ -243,7 +243,7 @@ def username = user?.username
 
 /*
   闭包
-  Groovy闭包好比代码块或者方法指针，它是一段定义稍后执行的代码。
+  Groovy闭包好比代码块或者方法指针，它是一段代码定义，可以以后执行。
 
   更多信息见：http://www.groovy-lang.org/closures.html
 */
@@ -326,7 +326,7 @@ String.metaClass.testAdd = {
 String x = "test"
 x?.testAdd()
 
-//方法调用注入
+//拦截方法调用
 class Test implements GroovyInterceptable {
     def sum(Integer x, Integer y) { x + y }
 
@@ -349,7 +349,7 @@ assertEquals "boo", f.boo
 
 /*
   类型检查和静态编译
-  Groovy天生是并将永远是一门静态语言，但也支持类型检查和静态编译
+  Groovy天生是并将永远是一门动态语言，但也支持类型检查和静态编译
 
   更多： http://www.infoq.com/articles/new-groovy-20
 */
