@@ -5,7 +5,7 @@ contributors:
 filename: learnrust.rs
 ---
 
-Rust is an in-development programming language developed by Mozilla Research.
+Rust is a programming language developed by Mozilla Research.
 Rust combines low-level control over performance with high-level convenience and 
 safety guarantees. 
 
