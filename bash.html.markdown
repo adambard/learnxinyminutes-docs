@@ -83,7 +83,8 @@ echo Hello, $Name!
 
 # We have the usual if structure:
 # use 'man test' for more info about conditionals
-if [ $Name -ne $USER ]
+# use "-ne" for algebraic comparison and "!=" for strings
+if [ $Name != $USER ]
 then
     echo "Your name isn't your username"
 else
