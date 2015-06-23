@@ -1,5 +1,5 @@
 ---
-language: php
+language: PHP
 contributors:
     - ["Malcolm Fell", "http://emarref.net/"]
     - ["Trismegiste", "https://github.com/Trismegiste"]
@@ -9,9 +9,9 @@ filename: learnphp.php
 This document describes PHP 5+.
 
 ```php
-<?php // PHP code must be enclosed with <?php ? > tags
+<?php // PHP code must be enclosed with <?php tags
 
-// If your php file only contains PHP code, it is best practise
+// If your php file only contains PHP code, it is best practice
 // to omit the php closing tag.
 
 // Two forward slashes start a one-line comment.
@@ -31,7 +31,8 @@ echo "World\n"; // Prints "World" with a line break
 // (all statements must end with a semicolon)
 
 // Anything outside <?php tags is echoed automatically
-?>Hello World Again!
+?>
+Hello World Again!
 <?php
 
 
@@ -58,6 +59,9 @@ $float = 1.234;
 $float = 1.2e3;
 $float = 7E-10;
 
+// Delete variable
+unset($int1);
+
 // Arithmetic
 $sum        = 1 + 1; // 2
 $difference = 2 - 1; // 1
@@ -68,7 +72,7 @@ $quotient   = 2 / 1; // 2
 $number = 0;
 $number += 1;      // Increment $number by 1
 echo $number++;    // Prints 1 (increments after evaluation)
-echo ++$number;    // Prints 3 (increments before evalutation)
+echo ++$number;    // Prints 3 (increments before evaluation)
 $number /= $float; // Divide and assign the quotient to $number
 
 // Strings should be enclosed in single quotes;
@@ -101,6 +105,21 @@ echo 'This string ' . 'is concatenated';
 
 
 /********************************
+ * Constants
+ */
+
+// A constant is defined by using define()
+// and can never be changed during runtime!
+
+// a valid constant name starts with a letter or underscore,
+// followed by any number of letters, numbers, or underscores.
+define("FOO",     "something");
+
+// access to a constant is possible by direct using the choosen name
+echo 'This outputs '.FOO;
+
+
+/********************************
  * Arrays
  */
 
@@ -120,6 +139,11 @@ echo $associative['One']; // prints 1
 $array = ['One', 'Two', 'Three'];
 echo $array[0]; // => "One"
 
+// Add an element to the end of an array
+$array[] = 'Four';
+
+// Remove element from array
+unset($array[3]);
 
 /********************************
  * Output
@@ -160,6 +184,11 @@ $y = 0;
 echo $x; // => 2
 echo $z; // => 0
 
+// Dumps type and value of variable to stdout
+var_dump($z); // prints int(0)
+
+// Prints variable to stdout in human-readable format
+print_r($array); // prints: Array ( [0] => One [1] => Two [2] => Three )
 
 /********************************
  * Logic
@@ -183,7 +212,7 @@ assert($c >= $d);
 // The following will only be true if the values match and are the same type.
 assert($c === $d);
 assert($a !== $d);
-assert(1 == '1');
+assert(1 === '1');
 assert(1 !== '1');
 
 // Variables can be converted between types, depending on their usage.
@@ -424,6 +453,13 @@ class MyClass
 
     static $staticVar   = 'static';
 
+    // Static variables and their visibility
+    public static $publicStaticVar = 'publicStatic';
+    // Accessible within the class only
+    private static $privateStaticVar = 'privateStatic';
+    // Accessible from the class and subclasses
+    protected static $protectedStaticVar = 'protectedStatic';
+
     // Properties must declare their visibility
     public $property    = 'public';
     public $instanceProp;
@@ -442,9 +478,16 @@ class MyClass
         print 'MyClass';
     }
 
+    //final keyword would make a function unoverridable
     final function youCannotOverrideMe()
     {
     }
+
+/*
+ * Declaring class properties or methods as static makes them accessible without
+ * needing an instantiation of the class. A property declared as static can not
+ * be accessed with an instantiated class object (though a static method can).
+*/
 
     public static function myStaticMethod()
     {
@@ -634,10 +677,14 @@ $cls = new SomeOtherNamespace\MyClass();
 
 ## More Information
 
-Visit the [official PHP documentation](http://www.php.net/manual/) for reference and community input.
+Visit the [official PHP documentation](http://www.php.net/manual/) for reference
+and community input.
 
-If you're interested in up-to-date best practices, visit [PHP The Right Way](http://www.phptherightway.com/).
+If you're interested in up-to-date best practices, visit
+[PHP The Right Way](http://www.phptherightway.com/).
 
-If you're coming from a language with good package management, check out [Composer](http://getcomposer.org/).
+If you're coming from a language with good package management, check out
+[Composer](http://getcomposer.org/).
 
-For common standards, visit the PHP Framework Interoperability Group's [PSR standards](https://github.com/php-fig/fig-standards).
+For common standards, visit the PHP Framework Interoperability Group's
+[PSR standards](https://github.com/php-fig/fig-standards).
