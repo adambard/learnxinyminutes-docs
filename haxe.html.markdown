@@ -323,7 +323,7 @@ class LearnHaxe3{
         var  l = 0;
         do{
             trace("do statement always runs at least once");
-        } while (i > 0);
+        } while (l > 0);
 
         // for loop
         /*
@@ -340,7 +340,7 @@ class LearnHaxe3{
         // (more on ranges later as well)
         var n = ['foo', 'bar', 'baz'];
         for (val in 0...n.length){
-            trace(val + " is the value for val (an index for m)");
+            trace(val + " is the value for val (an index for n)");
         }
 
 
@@ -375,7 +375,7 @@ class LearnHaxe3{
             case "rex"  : favorite_thing = "shoe";
             case "spot" : favorite_thing = "tennis ball";
             default     : favorite_thing = "some unknown treat";
-            // case _   : "some unknown treat"; // same as default
+            // case _   : favorite_thing = "some unknown treat"; // same as default
         }
         // The "_" case above is a "wildcard" value
         // that will match anything.
@@ -397,7 +397,7 @@ class LearnHaxe3{
         // if statements
         var k = if (true) 10 else 20;
 
-        trace("K equals ", k); // outputs 10
+        trace("k equals ", k); // outputs 10
 
         var other_favorite_thing = switch(my_dog_name) {
             case "fido" : "teddy";
@@ -495,8 +495,10 @@ class LearnHaxe3{
         // foo_instance.public_read = 4; // this will throw an error if uncommented:
         // trace(foo_instance.public_write); // as will this.
 
-        trace(foo_instance + " is the value for foo_instance"); // calls the toString method
-        trace(foo_instance.toString() + " is the value for foo_instance.toString()"); // same thing
+        // calls the toString method:
+        trace(foo_instance + " is the value for foo_instance");
+        // same thing:
+        trace(foo_instance.toString() + " is the value for foo_instance.toString()");
 
 
         /*
@@ -524,8 +526,8 @@ class LearnHaxe3{
  */
 class FooClass extends BarClass implements BarInterface{
     public var public_any:Int; // public variables are accessible anywhere
-    public var public_read (default,null): Int; // use this style to only enable public read
-    public var public_write (null, default): Int; // or public write
+    public var public_read (default, null): Int; // enable only public read
+    public var public_write (null, default): Int; // or only public write
     public var property (get, set): Int; // use this style to enable getters/setters
 
     // private variables are not available outside the class.
@@ -534,9 +536,10 @@ class FooClass extends BarClass implements BarInterface{
 
     // a public constructor
     public function new(arg:Int){
-        super(); // call the constructor of the parent object, since we extended BarClass
+        // call the constructor of the parent object, since we extended BarClass:
+        super();
 
-        this.public_any= 0;
+        this.public_any = 0;
         this._private = arg;
 
     }

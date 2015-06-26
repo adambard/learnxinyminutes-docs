@@ -341,7 +341,7 @@ var myFunc = myObj.myFunc;
 myFunc(); // = undefined
 
 // 相应的，一个函数也可以被指定为一个对象的方法，并且可以通过`this`访问
-// 这个对象的成员，即使在行数被定义时并没有依附在对象上。
+// 这个对象的成员，即使在函数被定义时并没有依附在对象上。
 var myOtherFunc = function(){
     return this.myString.toUpperCase();
 }

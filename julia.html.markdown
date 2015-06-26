@@ -8,7 +8,7 @@ filename: learnjulia.jl
 Julia is a new homoiconic functional language focused on technical computing.
 While having the full power of homoiconic macros, first-class functions, and low-level control, Julia is as easy to learn and use as Python.
 
-This is based on the current development version of Julia, as of October 18th, 2013.
+This is based on Julia 0.3.
 
 ```ruby
 
@@ -91,7 +91,7 @@ false
 
 # $ can be used for string interpolation:
 "2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
-# You can put any Julia expression inside the parenthesis.
+# You can put any Julia expression inside the parentheses.
 
 # Another way to format strings is the printf macro.
 @printf "%d is less than %f" 4.5 5.3 # 5 is less than 5.300000
@@ -190,7 +190,7 @@ end
 # inside the julia folder to find these files.
 
 # You can initialize arrays from ranges
-a = [1:5] # => 5-element Int64 Array: [1,2,3,4,5]
+a = [1:5;] # => 5-element Int64 Array: [1,2,3,4,5]
 
 # You can look at ranges with slice syntax.
 a[1:3] # => [1, 2, 3]
@@ -264,7 +264,7 @@ in(("two", 3), filled_dict) # => false
 haskey(filled_dict, "one") # => true
 haskey(filled_dict, 1) # => false
 
-# Trying to look up a non-existant key will raise an error
+# Trying to look up a non-existent key will raise an error
 try
     filled_dict["four"] # => ERROR: key not found: four in getindex at dict.jl:489
 catch e

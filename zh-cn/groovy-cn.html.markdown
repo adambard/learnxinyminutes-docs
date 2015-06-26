@@ -1,36 +1,38 @@
 ---
 language: Groovy
-filename: learngroovy.groovy
+filename: learngroovy-cn.groovy
 contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
-filename: learngroovy.groovy
+translators:
+    - ["Todd Gao", "http://github.com/7c00"]
+lang: zh-cn
 ---
 
-Groovy - A dynamic language for the Java platform [Read more here.](http://www.groovy-lang.org/)
+Groovy - Java平台的动态语言。[了解更多。](http://www.groovy-lang.org/)
 
 ```groovy
 
 /*
-  Set yourself up:
+  安装：
 
-  1) Install GVM - http://gvmtool.net/
-  2) Install Groovy: gvm install groovy
-  3) Start the groovy console by typing: groovyConsole
+  1) 安装 GVM - http://gvmtool.net/
+  2) 安装 Groovy： gvm install groovy
+  3) 启动 groovy 控制台，键入： groovyConsole
 
 */
 
-//  Single line comments start with two forward slashes
+//  双斜线开始的是单行注释
 /*
-Multi line comments look like this.
+像这样的是多行注释
 */
 
 // Hello World
 println "Hello world!"
 
 /*
-  Variables:
+  变量：
 
-  You can assign values to variables for later use
+  可以给变量赋值，以便稍后使用
 */
 
 def x = 1
@@ -49,142 +51,137 @@ x = "Groovy!"
 println x
 
 /*
-  Collections and maps
+  集合和映射
 */
 
-//Creating an empty list
+//创建一个空的列表
 def technologies = []
 
-/*** Adding a elements to the list ***/
+/*** 往列表中增加一个元素 ***/
 
-// As with Java
+// 和Java一样
 technologies.add("Grails")
 
-// Left shift adds, and returns the list
+// 左移添加，返回该列表
 technologies << "Groovy"
 
-// Add multiple elements
+// 增加多个元素
 technologies.addAll(["Gradle","Griffon"])
 
-/*** Removing elements from the list ***/
+/*** 从列表中删除元素 ***/
 
-// As with Java
+// 和Java一样
 technologies.remove("Griffon")
 
-// Subtraction works also
+// 减号也行
 technologies = technologies - 'Grails'
 
-/*** Iterating Lists ***/
+/*** 遍历列表 ***/
 
-// Iterate over elements of a list
+// 遍历列表中的元素
 technologies.each { println "Technology: $it"}
 technologies.eachWithIndex { it, i -> println "$i: $it"}
 
-/*** Checking List contents ***/
+/*** 检查列表内容 ***/
 
-//Evaluate if a list contains element(s) (boolean)
+//判断列表是否包含某元素，返回boolean
 contained = technologies.contains( 'Groovy' )
 
-// Or
+// 或
 contained = 'Groovy' in technologies
 
-// Check for multiple contents
+// 检查多个元素
 technologies.containsAll(['Groovy','Grails'])
 
-/*** Sorting Lists ***/
+/*** 列表排序 ***/
 
-// Sort a list (mutates original list)
+// 排序列表（修改原列表）
 technologies.sort()
 
-// To sort without mutating original, you can do:
+// 要想不修改原列表，可以这样：
 sortedTechnologies = technologies.sort( false )
 
-/*** Manipulating Lists ***/
+/*** 列表操作 ***/
 
-//Replace all elements in the list
+//替换列表元素
 Collections.replaceAll(technologies, 'Gradle', 'gradle')
 
-//Shuffle a list
+//打乱列表
 Collections.shuffle(technologies, new Random())
 
-//Clear a list
+//清空列表
 technologies.clear()
 
-//Creating an empty map
+//创建空的映射
 def devMap = [:]
 
-//Add values
+//增加值
 devMap = ['name':'Roberto', 'framework':'Grails', 'language':'Groovy']
 devMap.put('lastName','Perez')
 
-//Iterate over elements of a map
+//遍历映射元素
 devMap.each { println "$it.key: $it.value" }
 devMap.eachWithIndex { it, i -> println "$i: $it"}
 
-//Evaluate if a map contains a key
+//判断映射是否包含某键
 assert devMap.containsKey('name')
 
-//Evaluate if a map contains a value
+//判断映射是否包含某值
 assert devMap.containsValue('Roberto')
 
-//Get the keys of a map
+//取得映射所有的键
 println devMap.keySet()
 
-//Get the values of a map
+//取得映射所有的值
 println devMap.values()
 
 /*
   Groovy Beans
 
-  GroovyBeans are JavaBeans but using a much simpler syntax
+  GroovyBeans 是 JavaBeans，但使用了更简单的语法
 
-  When Groovy is compiled to bytecode, the following rules are used.
+  Groovy 被编译为字节码时，遵循下列规则。
 
-    * If the name is declared with an access modifier (public, private or
-      protected) then a field is generated.
+    * 如果一个名字声明时带有访问修饰符（public, private, 或者 protected），
+      则会生成一个字段（field）。
 
-    * A name declared with no access modifier generates a private field with
-      public getter and setter (i.e. a property).
+    * 名字声明时没有访问修饰符，则会生成一个带有public getter和setter的
+      private字段，即属性（property）。
 
-    * If a property is declared final the private field is created final and no
-      setter is generated.
+    * 如果一个属性声明为final，则会创建一个final的private字段，但不会生成setter。
 
-    * You can declare a property and also declare your own getter or setter.
+    * 可以声明一个属性的同时定义自己的getter和setter。
 
-    * You can declare a property and a field of the same name, the property will
-      use that field then.
+    * 可以声明具有相同名字的属性和字段，该属性会使用该字段。
 
-    * If you want a private or protected property you have to provide your own
-      getter and setter which must be declared private or protected.
+    * 如果要定义private或protected属性，必须提供声明为private或protected的getter
+      和setter。
 
-    * If you access a property from within the class the property is defined in
-      at compile time with implicit or explicit this (for example this.foo, or
-      simply foo), Groovy will access the field directly instead of going though
-      the getter and setter.
+    * 如果使用显式或隐式的 this（例如 this.foo, 或者 foo）访问类的在编译时定义的属性，
+      Groovy会直接访问对应字段，而不是使用getter或者setter
 
-    * If you access a property that does not exist using the explicit or
-      implicit foo, then Groovy will access the property through the meta class,
-      which may fail at runtime.
+    * 如果使用显式或隐式的 foo 访问一个不存在的属性，Groovy会通过元类（meta class）
+      访问它，这可能导致运行时错误。
 
 */
 
 class Foo {
-    // read only property
+    // 只读属性
     final String name = "Roberto"
 
-    // read only property with public getter and protected setter
+    // 只读属性，有public getter和protected setter
     String language
     protected void setLanguage(String language) { this.language = language }
 
-    // dynamically typed property
+    // 动态类型属性
     def lastName
 }
 
 /*
-  Logical Branching and Looping
+  逻辑分支和循环
 */
 
-//Groovy supports the usual if - else syntax
+//Groovy支持常见的if - else语法
 def x = 3
 
 if(x==1) {
@@ -195,32 +192,32 @@ if(x==1) {
     println "X greater than Two"
 }
 
-//Groovy also supports the ternary operator:
+//Groovy也支持三元运算符
 def y = 10
 def x = (y > 1) ? "worked" : "failed"
 assert x == "worked"
 
-//For loop
-//Iterate over a range
+//for循环
+//使用区间（range）遍历
 def x = 0
 for (i in 0 .. 30) {
     x += i
 }
 
-//Iterate over a list
+//遍历列表
 x = 0
 for( i in [5,3,2,1] ) {
     x += i
 }
 
-//Iterate over an array
+//遍历数组
 array = (0..20).toArray()
 x = 0
 for (i in array) {
     x += i
 }
 
-//Iterate over a map
+//遍历映射
 def map = ['name':'Roberto', 'framework':'Grails', 'language':'Groovy']
 x = 0
 for ( e in map ) {
@@ -228,54 +225,52 @@ for ( e in map ) {
 }
 
 /*
-  Operators
+  运算符
 
-  Operator Overloading for a list of the common operators that Groovy supports:
+  在Groovy中以下常用运算符支持重载：
   http://www.groovy-lang.org/operators.html#Operator-Overloading
 
-  Helpful groovy operators
+  实用的groovy运算符
 */
-//Spread operator:  invoke an action on all items of an aggregate object.
+//展开（spread）运算符：对聚合对象的所有元素施加操作
 def technologies = ['Groovy','Grails','Gradle']
-technologies*.toUpperCase() // = to technologies.collect { it?.toUpperCase() }
+technologies*.toUpperCase() // 相当于 technologies.collect { it?.toUpperCase() }
 
-//Safe navigation operator: used to avoid a NullPointerException.
+//安全导航（safe navigation）运算符：用来避免NullPointerException
 def user = User.get(1)
 def username = user?.username
 
 
 /*
-  Closures
-  A Groovy Closure is like a "code block" or a method pointer. It is a piece of
-  code that is defined and then executed at a later point.
+  闭包
+  Groovy闭包好比代码块或者方法指针，它是一段代码定义，可以以后执行。
 
-  More info at: http://www.groovy-lang.org/closures.html
+  更多信息见：http://www.groovy-lang.org/closures.html
 */
-//Example:
+//例子：
 def clos = { println "Hello World!" }
 
 println "Executing the Closure:"
 clos()
 
-//Passing parameters to a closure
+//传参数给闭包
 def sum = { a, b -> println a+b }
 sum(2,4)
 
-//Closures may refer to variables not listed in their parameter list.
+//闭包可以引用参数列表以外的变量
 def x = 5
 def multiplyBy = { num -> num * x }
 println multiplyBy(10)
 
-// If you have a Closure that takes a single argument, you may omit the
-// parameter definition of the Closure
+// 只有一个参数的闭包可以省略参数的定义
 def clos = { print it }
 clos( "hi" )
 
 /*
-  Groovy can memorize closure results [1][2][3]
+  Groovy可以记忆闭包结果 [1][2][3]
 */
 def cl = {a, b ->
-    sleep(3000) // simulate some time consuming processing
+    sleep(3000) // 模拟费时操作
     a + b
 }
 
@@ -300,8 +295,7 @@ callClosure(3, 4)
 /*
   Expando
 
-  The Expando class is a dynamic bean so we can add properties and we can add
-  closures as methods to an instance of this class
+  Expando类是一种动态bean类，可以给它的实例添加属性和添加闭包作为方法
 
   http://mrhaki.blogspot.mx/2009/10/groovy-goodness-expando-as-dynamic-bean.html
 */
@@ -321,10 +315,10 @@ callClosure(3, 4)
 
 
 /*
-  Metaprogramming (MOP)
+  元编程(MOP)
 */
 
-//Using ExpandoMetaClass to add behaviour
+//使用ExpandoMetaClass增加行为
 String.metaClass.testAdd = {
     println "we added this"
 }
@@ -332,7 +326,7 @@ String.metaClass.testAdd = {
 String x = "test"
 x?.testAdd()
 
-//Intercepting method calls
+//拦截方法调用
 class Test implements GroovyInterceptable {
     def sum(Integer x, Integer y) { x + y }
 
@@ -345,7 +339,7 @@ def test = new Test()
 test?.sum(2,3)
 test?.multiply(2,3)
 
-//Groovy supports propertyMissing for dealing with property resolution attempts.
+//Groovy支持propertyMissing，来处理属性解析尝试
 class Foo {
    def propertyMissing(String name) { name }
 }
@@ -354,13 +348,12 @@ def f = new Foo()
 assertEquals "boo", f.boo
 
 /*
-  TypeChecked and CompileStatic
-  Groovy, by nature, is and will always be a dynamic language but it supports
-  typechecked and compilestatic
+  类型检查和静态编译
+  Groovy天生是并将永远是一门动态语言，但也支持类型检查和静态编译
 
-  More info: http://www.infoq.com/articles/new-groovy-20
+  更多： http://www.infoq.com/articles/new-groovy-20
 */
-//TypeChecked
+//类型检查
 import groovy.transform.TypeChecked
 
 void testMethod() {}
@@ -375,7 +368,7 @@ void test() {
 
 }
 
-//Another example:
+//另一例子
 import groovy.transform.TypeChecked
 
 @TypeChecked
@@ -390,7 +383,7 @@ Integer test() {
 
 }
 
-//CompileStatic example:
+//静态编译例子
 import groovy.transform.CompileStatic
 
 @CompileStatic
@@ -403,15 +396,15 @@ assert sum(2,5) == 7
 
 ```
 
-## Further resources
+## 进阶资源
 
-[Groovy documentation](http://www.groovy-lang.org/documentation.html)
+[Groovy文档](http://www.groovy-lang.org/documentation.html)
 
 [Groovy web console](http://groovyconsole.appspot.com/)
 
-Join a [Groovy user group](http://www.groovy-lang.org/usergroups.html)
+加入[Groovy用户组](http://www.groovy-lang.org/usergroups.html)
 
-## Books
+## 图书
 
 * [Groovy Goodness] (https://leanpub.com/groovy-goodness-notebook)
 
