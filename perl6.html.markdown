@@ -1044,7 +1044,7 @@ postcircumfix:<{ }>(%h, $key, :delete); # (you can call operators like that)
 # *everything* -- with great power comes great responsibility)
 
 ## Meta operators !
-# Oh boy, get ready. Get ready, because we're dwelving deep
+# Oh boy, get ready. Get ready, because we're delving deep
 #  into the rabbit's hole, and you probably won't want to go
 #  back to other languages after reading that.
 #  (I'm guessing you don't want to already at that point).
