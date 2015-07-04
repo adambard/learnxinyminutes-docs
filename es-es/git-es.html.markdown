@@ -38,7 +38,7 @@ uno o varios archivos, a lo largo del tiempo.
 * Se puede trabajar sin conexion.
 * Colaborar con otros es sencillo!.
 * Derivar, Crear ramas del proyecto (aka: Branching) es facil!.
-* Combinar (aka: Marging)
+* Combinar (aka: Merging)
 * Git es rapido.
 * Git es flexible.
 
