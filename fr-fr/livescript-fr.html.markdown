@@ -246,7 +246,7 @@ double-minus-one = (- 1) << (* 2)
 map = (f, xs) --> xs.map f
 [1 2 3] |> map (* 2)            # => [2 4 6]
 
-# La version sans pipe correspont à:
+# La version sans pipe correspond à:
 ((map (* 2)) [1, 2, 3])
 
 # You pouvez aussi choisir où vous voulez que la valeur soit placée, en 
