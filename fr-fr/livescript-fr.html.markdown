@@ -36,8 +36,8 @@ Vous pouvez contacter l'auteur du guide original en anglais ici :
 ```
 ```coffeescript
 # LiveScript utilise l'indentation pour délimiter les blocs de code plutôt que 
-# les accolades, et les espaces pour appliquer les fonctions, plutôt que les 
-# parenthèses.
+# les accolades, et les espaces pour appliquer les fonctions (bien que les 
+# parenthèses soient utilisables).
 
 
 ########################################################################
@@ -52,7 +52,7 @@ void            # comme `undefined` mais plus sûr (ne peut pas être redéfini)
 null
 
 
-# Les booléens se déclarent de la façon suivante:
+# Les booléens s'utilisent de la façon suivante:
 true
 false
 
@@ -143,7 +143,8 @@ funRE = //
 
 # Les comparaisons sont presque identiques, à l'exception que `==` équivaut au
 # `===` de JS, là où le `==` de JS est `~=` en LiveScript, et `===` active la 
-# comparaison d'objets et de tableaux, ainsi que les comparaisons strictes
+# comparaison d'objets et de tableaux, ainsi que les comparaisons strictes 
+# (sans conversion de type)
 2 == 2          # => true
 2 == "2"        # => false
 2 ~= "2"        # => true
@@ -180,27 +181,28 @@ not false       # => true
 add = (left, right) -> left + right
 add 1, 2        # => 3
 
-# Les fonctions qui ne prennent pas d'arguments sont appelées avec un point 
-# d'exclamation!
+# Les fonctions qui ne prennent pas d'arguments peuvent être appelées avec un 
+# point d'exclamation!
 two = -> 2
 two!
 
 # LiveScript utilise l'environnement de la fonction, comme JavaScript.
 # A l'inverse de JavaScript, le `=` fonctionne comme un opérateur de 
-# déclaration, et il déclarera toujours la variable située à gauche. 
+# déclaration, et il déclarera toujours la variable située à gauche (sauf si
+# la variable a été déclarée dans l'environnement parent). 
 
 # L'opérateur `:=` est disponible pour réutiliser un nom provenant de 
 # l'environnement parent.
 
 
-# Vous pouvez "déballer" les arguments d'une fonction pour récupérer 
+# Vous pouvez extraire les arguments d'une fonction pour récupérer 
 # rapidement les valeurs qui vous intéressent dans une structure de données 
 # complexe:
 tail = ([head, ...rest]) -> rest
 tail [1, 2, 3]  # => [2, 3]
 
 # Vous pouvez également transformer les arguments en utilisant les opérateurs
-# binaires. Définir des arguments par défaut est aussi possible.
+# binaires et unaires. Définir des arguments par défaut est aussi possible.
 foo = (a = 1, b = 2) -> a + b
 foo!    # => 3
 
@@ -214,7 +216,7 @@ copy a, { b: 2 }        # => { a: 1, b: 2 }
 a                       # => { a: 1 }
 
 
-# Une fonction peut être réduite en utilisant une longue flèche à la place
+# Une fonction peut être curryfiée en utilisant une longue flèche à la place
 # d'une courte:
 add = (left, right) --> left + right
 add1 = add 1
@@ -227,14 +229,14 @@ identity 1      # => 1
 # Les opérateurs ne sont pas des fonctions en LiveScript, mais vous pouvez 
 # facilement les transformer en fonction:
 divide-by-two = (/ 2)
-[2, 4, 8, 16].map(divide-by-two) .reduce (+)
+[2, 4, 8, 16].map(divide-by-two).reduce (+)
 
 # Comme dans tout bon langage fonctionnel, vous pouvez créer des fonctions 
 # composées d'autres fonctions:
 double-minus-one = (- 1) . (* 2)
 
 # En plus de la formule mathématique `f . g`, vous avez les opérateurs `>>`
-# et `<<`, qui décrivent l'ordre d'application des fonctions. 
+# et `<<`, qui décrivent l'ordre d'application des fonctions composées. 
 double-minus-one = (* 2) >> (- 1)
 double-minus-one = (- 1) << (* 2)
 
@@ -244,22 +246,27 @@ double-minus-one = (- 1) << (* 2)
 map = (f, xs) --> xs.map f
 [1 2 3] |> map (* 2)            # => [2 4 6]
 
+# La version sans pipe correspont à:
+((map (* 2)) [1, 2, 3])
+
 # You pouvez aussi choisir où vous voulez que la valeur soit placée, en 
 # marquant la position avec un tiret bas (_):
 reduce = (f, xs, initial) --> xs.reduce f, initial
 [1 2 3] |> reduce (+), _, 0     # => 6
 
 
-# Le tiret bas est également utilisé pour l'application régulière partielle,
+# Le tiret bas est également utilisé pour l'application partielle,
 # que vous pouvez utiliser pour toute fonction:
 div = (left, right) -> left / right
 div-by-two = div _, 2
 div-by-two 4      # => 2
 
 
-# Pour conclure, LiveScript vous permet d'utiliser les fonctions de rappel
+# Pour conclure, LiveScript vous permet d'utiliser les fonctions de rappel.
 # (mais vous devriez essayer des approches plus fonctionnelles, comme 
-# Promises):
+# Promises).
+# Un fonction de rappel est une fonction qui est passée en argument à une autre
+# fonction:
 readFile = (name, f) -> f name
 a <- readFile 'foo'
 b <- readFile 'bar'
@@ -291,8 +298,8 @@ x = switch
 # Le corps des fonctions, les déclarations et les assignements disposent d'un
 # `switch` implicite, donc vous n'avez pas besoin de le réécrire: 
 take = (n, [x, ...xs]) -->
-                        | n == 0 => []
-                        | _      => [x] ++ take (n - 1), xs
+    | n == 0 => []
+    | _      => [x] ++ take (n - 1), xs
 
 
 ########################################################################
@@ -307,8 +314,8 @@ evens       = [x for x in oneToTwenty when x % 2 == 0]
 
 # `when` et `unless` peuvent être utilisés comme des filtres.
 
-# Cette technique fonctionne sur les objets de la même manière, via la syntaxe 
-# suivante:
+# Cette technique fonctionne sur les objets de la même manière. Vous allez
+# pouvoir générer l'ensemble de paires clé/valeur via la syntaxe suivante:
 copy = { [k, v] for k, v of source }
 
 
@@ -332,7 +339,7 @@ kitten = new Cat 'Mei'
 kitten.purr!      # => "*Mei (a cat) purrs*"
 
 # En plus de l'héritage classique, vous pouvez utiliser autant de mixins
-# que vous voulez pour votre classe. Les mixins sont justes des objets:
+# que vous voulez pour votre classe. Les mixins sont juste des objets:
 Huggable =
   hug: -> @action 'is hugged'
 
