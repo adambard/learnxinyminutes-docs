@@ -3,18 +3,20 @@ language: LiveScript
 filename: learnLivescript-fr.ls
 contributors:
     - ["Christina Whyte", "http://github.com/kurisuwhyte/"]
+translators:
     - ["Morgan Bohn", "https://github.com/morganbohn"]
 lang: fr-fr
 ---
 
-LiveScript est un langage qui se compile en JavaScript. Il a un rapport direct 
-avec JavaScript, et vous permet d'écrire du JavaScript de façon considérables 
-sans répétitivité. LiveScript ajoute non seulement des fonctionnalités pour 
-écrire du code fonctionnel, mais possède aussi nombre d'améliorations pour la 
-programmation orientée objet et la programmation impérative.
+LiveScript est un langage qui compile en JavaScript. Il a un rapport direct 
+avec JavaScript, et vous permet d'écrire du JavaScript plus simplement, plus 
+efficacement et sans répétitivité. LiveScript ajoute non seulement des 
+fonctionnalités pour écrire du code fonctionnel, mais possède aussi nombre 
+d'améliorations pour la programmation orientée objet et la programmation 
+impérative.
 
-LiveScript est un descendant indirect de [CoffeeScript][], direct de [Coco][] 
-avec beaucoup plus de compatibilité.
+LiveScript est un descendant direct de [Coco][], indirect de [CoffeeScript][],
+avec lequel il a beaucoup plus de compatibilité.
 
 [Coco]: http://satyr.github.io/coco/
 [CoffeeScript]: http://coffeescript.org/
