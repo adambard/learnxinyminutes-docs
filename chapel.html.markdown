@@ -7,7 +7,7 @@ lang: en
 ---
 What is Chapel?
 ===============
-You can read all about chapel at [Cray's official Chapel website](chapel.cray.com).
+You can read all about chapel at [Cray's official Chapel website](http://chapel.cray.com).
 In short, Chapel is an open-source, high-productivity, parallel-programming language in development
 at Cray Inc., and is designed to run on multi-core PCs as well as multi-kilocore supercomputers.
 
