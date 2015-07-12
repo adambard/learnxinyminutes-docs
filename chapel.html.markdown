@@ -11,11 +11,10 @@ You can read all about chapel at [Cray's official Chapel website](chapel.cray.co
 In short, Chapel is an open-source, high-productivity, parallel-programming language in development
 at Cray Inc., and is designed to run on multi-core PCs as well as multi-kilocore supercomputers.
 
-Chapel is currently in-development so there are occasional hiccups with 
-performance and language features, which is why you should write as much Chapel  
-
 Your input, questions, and discoveries are important to us!
 -----------------------------------------------------------
+Chapel is currently in-development so there are occasional hiccups with 
+performance and language features.
 The more information you give the Chapel development team about issues you encounter with the language, 
 the better the language gets.
 Feel free to email the team and other developers through the sourceforge email lists at [sourceforge](https://sourceforge.net/p/chapel/mailman)
@@ -38,7 +37,6 @@ and its as easy as
 You will need to ```source util/setchplenv.*``` from the chapel directory every 
 time your terminal starts so its suggested that you drop that command in a script
 that will get executed on startup (like .bashrc).
-
 
 Chapel is easily installed with Brew for OS X
 1. ```brew update```
