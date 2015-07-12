@@ -11,8 +11,8 @@ You can read all about chapel at [Cray's official Chapel website](chapel.cray.co
 In short, Chapel is an open-source, high-productivity, parallel-programming language in development
 at Cray Inc., and is designed to run on multi-core PCs as well as multi-kilocore supercomputers.
 
-Your input, questions, and discoveries are important to us!
------------------------------------------------------------
+Your input, questions, and discoveries are important to the developers!
+-----------------------------------------------------------------------
 Chapel is currently in-development so there are occasional hiccups with 
 performance and language features.
 The more information you give the Chapel development team about issues you encounter with the language, 
@@ -27,7 +27,7 @@ under the Apache v2.0 license
 Installing the Compiler
 -----------------------
 Chapel can be built and installed on your average 'nix machine (and cygwin).
-Download the latest release version from https://github.com/chapel-lang/chapel/releases/
+[Download the latest release version](https://github.com/chapel-lang/chapel/releases/)
 and its as easy as 
  1. ```tar -xvf chapel-1.11.0.tar.gz```
  2. ```cd chapel-1.11.0```
