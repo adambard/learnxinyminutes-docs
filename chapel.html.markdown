@@ -49,7 +49,7 @@ hear about what fiber mixture the ropes are, or how they were braided, or how th
 differ between one another.
 It won't teach you how to develop amazingly performant code, and it's not exhaustive. 
 Refer to the [language specification](http://chapel.cray.com/language.html) 
-and the [library-documentation](http://chapel.cray.com/docs/latest/) for more details.
+and the [library documentation](http://chapel.cray.com/docs/latest/) for more details.
 
 Occasionally check here back to see if more topics have been added.
 
