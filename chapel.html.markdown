@@ -18,7 +18,6 @@ performance and language features.
 The more information you give the Chapel development team about issues you encounter with the language, 
 the better the language gets.
 Feel free to email the team and other developers through the sourceforge email lists at [sourceforge](https://sourceforge.net/p/chapel/mailman)
-There is also a #chapel-developers hosted at chat.freenode.net.
 
 If you're really interested in the cutting edge compiler or contributing to the project, 
 the git repository for Chapel is open-source at [github](https://github.com/chapel-lang/chapel) 
