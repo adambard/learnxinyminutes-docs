@@ -17,11 +17,10 @@ Chapel is currently in-development so there are occasional hiccups with
 performance and language features.
 The more information you give the Chapel development team about issues you encounter with the language, 
 the better the language gets.
-Feel free to email the team and other developers through the sourceforge email lists at [sourceforge](https://sourceforge.net/p/chapel/mailman)
+Feel free to email the team and other developers through the [sourceforge email lists](https://sourceforge.net/p/chapel/mailman).
 
-If you're really interested in the cutting edge compiler or contributing to the project, 
-the git repository for Chapel is open-source at [github](https://github.com/chapel-lang/chapel) 
-under the Apache v2.0 license
+If you're really interested in the development of the compiler or contributing to the project, 
+[check out the master Github repository](https://github.com/chapel-lang/chapel).
 
 Installing the Compiler
 -----------------------
@@ -33,7 +32,7 @@ and its as easy as
  3. ```make```
  4. ```source util/setchplenv.bash # or .sh or .csh or .fish```
 
-You will need to ```source util/setchplenv.*``` from the chapel directory every 
+You will need to ```source util/setchplenv.EXT``` from the chapel directory every 
 time your terminal starts so its suggested that you drop that command in a script
 that will get executed on startup (like .bashrc).
 
@@ -160,9 +159,13 @@ writeln( "(", sameTup[1], ",", sameTup[2], ")" );
 writeln( diffTup );
 // Tuples can also be written into.
 diffTup[1] = -1;
-// Can also be used to easily write a collection of variables
-// as is common in debugging
+// you can expand tuples as well
+var (tupInt, tupReal, tupCplx) = diffTup;
+writeln( diffTup == (tupInt, tupReal, tupCplx) );
+// Can also be used to easily write a collection of 
+// variables as a list (common in debugging)
 writeln( (a,b,thisInt,thatInt,thisBool,thatBool) );
+
 
 // Type aliasing
 type chroma = int;     // type of a single hue
