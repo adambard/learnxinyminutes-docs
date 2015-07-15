@@ -8,15 +8,12 @@ lang: en
 What is Chapel?
 ===============
 You can read all about chapel at [Cray's official Chapel website](http://chapel.cray.com).
-In short, Chapel is an open-source, high-productivity, parallel-programming language in development
-at Cray Inc., and is designed to run on multi-core PCs as well as multi-kilocore supercomputers.
+In short, Chapel is an open-source, high-productivity, parallel-programming language in development at Cray Inc., and is designed to run on multi-core PCs as well as multi-kilocore supercomputers.
 
 Your input, questions, and discoveries are important to the developers!
 -----------------------------------------------------------------------
-Chapel is currently in-development so there are occasional hiccups with 
-performance and language features.
-The more information you give the Chapel development team about issues you encounter with the language, 
-the better the language gets.
+Chapel is currently in-development so there are occasional hiccups with performance and language features.
+The more information you give the Chapel development team about issues you encounter with the language, the better the language gets.
 Feel free to email the team and other developers through the [sourceforge email lists](https://sourceforge.net/p/chapel/mailman).
 
 If you're really interested in the development of the compiler or contributing to the project, 
@@ -32,9 +29,7 @@ and its as easy as
  3. ```make```
  4. ```source util/setchplenv.bash # or .sh or .csh or .fish```
 
-You will need to ```source util/setchplenv.EXT``` from the chapel directory every 
-time your terminal starts so its suggested that you drop that command in a script
-that will get executed on startup (like .bashrc).
+You will need to ```source util/setchplenv.EXT``` from the chapel directory every time your terminal starts so its suggested that you drop that command in a script that will get executed on startup (like .bashrc).
 
 Chapel is easily installed with Brew for OS X
  1. ```brew update```
@@ -42,12 +37,9 @@ Chapel is easily installed with Brew for OS X
 
 Who is this tutorial for?
 -------------------------
-This tutorial is for people who want to learn the ropes of chapel without having to 
-hear about what fiber mixture the ropes are, or how they were braided, or how the braid configurations
-differ between one another.
+This tutorial is for people who want to learn the ropes of chapel without having to hear about what fiber mixture the ropes are, or how they were braided, or how the braid configurations differ between one another.
 It won't teach you how to develop amazingly performant code, and it's not exhaustive. 
-Refer to the [language specification](http://chapel.cray.com/language.html) 
-and the [library documentation](http://chapel.cray.com/docs/latest/) for more details.
+Refer to the [language specification](http://chapel.cray.com/language.html) and the [library documentation](http://chapel.cray.com/docs/latest/) for more details.
 
 Occasionally check here back to see if more topics have been added.
 
@@ -69,11 +61,11 @@ stdout.writeln( "This goes to standard output (just like plain writeln() does)")
 stderr.writeln( "This goes to standard error" );
 
 // Variables
-// Variables dont have to be explicitly as long as the compiler can figure 
-// out the type that it will hold.
+// Variables dont have to be explicitly typed as long as 
+// the compiler can figure out the type that it will hold.
 var myVar = 10; // 10 is an int, so myVar is implicitly an int
 myVar = -10;
-// var anError; // compile time error, dont know what type anError should be.
+// var anError; // this would be a compile time error.
 
 // We can (and should) explicitly type things
 var mySecondVar: real; // define mySecondVar as a real
@@ -96,10 +88,26 @@ var my64Real: real(64) = 1.516; // 64 bit (8 bytes) sized real
 
 // Typecasting
 var intFromReal = myReal : int;
-// could also explicitly type intFromReal 
-// var intFromReal: int = myReal : int;
+var intFromReal2: int = myReal : int;
 
-// Operators
+// consts are constants, they cannot be changed after set in runtime
+const almostPi: real = 11.0/7.0;
+// params are constants whose value must be known statically at compile time
+// Like consts, they cannot be changed during runtime
+param compileTimeConst: int = 16;
+
+// The config modifier allows values to be set at the command line
+// and is much easier that the usual getOpts debacle 
+// config vars and consts can be changed through the command line at run time
+config var varCmdLineArg: int = -123; 
+config const constCmdLineArg: int = 777;
+// set with --VarName=Value or --VarName Value at run time
+
+// config params can be set at compile time
+config param paramCmdLineArg: bool = false;
+writeln( varCmdLineArg, ", ", constCmdLineArg, ", ", paramCmdLineArg );
+//set config with --set paramCmdLineArg=value at compile time
+
 // Math operators
 var a: int, thisInt = 1234, thatInt = 5678;
 a = thisInt + thatInt;  // Addition
@@ -138,12 +146,11 @@ a <<= 3;               // left-bit-shift-equals ( a = a << 10; )
 // pre/post-increment/decrement operators like
 //  ++j, --j, j++, j-- 
 
-
 // Swap operator
-var temp_this = thisInt;
-var temp_that = thatInt;
+var old_this = thisInt;
+var old_that = thatInt;
 thisInt <=> thatInt; // Swap the values of thisInt and thatInt
-writeln( (temp_this == thatInt) && (temp_that == thisInt) );
+writeln( (old_this == thatInt) && (old_that == thisInt) );
 
 // We can also define operator overloads, 
 // which we'll cover with procedures.
@@ -162,13 +169,13 @@ diffTup[1] = -1;
 // you can expand tuples as well
 var (tupInt, tupReal, tupCplx) = diffTup;
 writeln( diffTup == (tupInt, tupReal, tupCplx) );
-// Can also be used to easily write a collection of 
-// variables as a list (common in debugging)
+// Can also be used to easily write a collection 
+// of variables as a list (common in debugging)
 writeln( (a,b,thisInt,thatInt,thisBool,thatBool) );
 
 
 // Type aliasing
-type chroma = int;     // type of a single hue
+type chroma = int;        // type of a single hue
 type RGBColor = 3*chroma; // type representing a full color 
 var black: RGBColor = ( 0,0,0 );
 var white: RGBColor = ( 255, 255, 255 );
@@ -176,11 +183,11 @@ var white: RGBColor = ( 255, 255, 255 );
 
 
 // If-Then statements
-// if-thens dont require parentheses around the condition
+// if-thens dont require parentheses around the condition 
 // as they do in C (however, we will use them)
-// and a single line body can use the 'then' keyword instead of braces
-// and else statements can be written similarly
-// (but we're only going to show it once).
+// A single line body can use the 'then' keyword instead of 
+// braces and else statements can be written similarly
+
 if 10 < 100 then
   writeln( "All is well" );
 
@@ -211,7 +218,6 @@ if ( a % 3 == 0 ) {
 // Ternary: if-then-else in a statement
 var maximum = if ( thisInt < thatInt ) then thatInt else thisInt;
 
-// Select statements
 // Select statements are much like switch statements in other languages
 // However, Select statements dont cascade like in C or Java
 var inputOption = "anOption";
@@ -229,10 +235,7 @@ select( inputOption ){
   }
 }
 
-// Loops
-// While Loops
 // While loops and Do-While loops are basically the same in every language.
-
 var j: int = 1;
 var jSum: int = 0;
 while( j <= 1000 ){
@@ -248,11 +251,10 @@ do{
 }while( j <= 10000 );
 writeln( jSum );
 
-// For loops
-// For loops are much like those in python in that they iterate over a range.
-// ranges themselves are types, and can be stuffed into variables 
-// (more about that later)
 
+// For loops are much like those in python in that they iterate over a range.
+// Ranges themselves are types, and can be stuffed into variables 
+// (more about that later)
 for i in 1..10 do write( i , ", ") ;
 writeln();
 
@@ -273,14 +275,23 @@ for x in 1..10 {
 // For-loops and arrays both use ranges and domains to 
 // define an index set that can be iterated over.
 // Ranges are single dimensional
-// Domains can be multi-dimensional and represent indicies 
-// of different types as well.
+// Domains can be multi-dimensional and can 
+// represent indicies of different types as well.
 // They are types, and can be assigned into variables;
 var range1to10: range = 1..10;  // // 1, 2, 3, ... , 10
+var range2to11 = 2..11; // 2, 3, 4, ..., 11
+
+//ranges can be unbounded 
+var range1toInf: range(boundedType=BoundedRangeType.boundedLow) = 1.. ; // 1, 2, 3, 4, 5, ...
+var rangeNegInfto1 = ..1; // ..., -4, -3, -2, -1, 0, 1
+// Note: the range(boundedType= ... ) is only 
+// necessary if we explicitly type the variable
 
 // Ranges can be strided using the 'by' operator.
-// Note: the stridable=true is only necessary if we type the variable
 var range2to10by2: range(stridable=true) = 2..10 by 2; // 2, 4, 6, 8, 10
+var reverse2to10by2 = 10..2 by -2; // 10, 8, 6, 4, 2
+// Note: the range(stridable=true) is only 
+// necessary if we explicitly type the variable
 
 // The end point of a range can be determined using the count (#) operator
 var rangeCount: range = -5..#12; // range from -5 to 6
@@ -299,9 +310,11 @@ for i in rangeCountBy{
   write( i, if i == rangeCountBy.last then "\n" else ", " );
 }
 
-// domains are similarly defined using range notation
-var domain1to10: domain(1) = {1..10};          // domain from 1..10;
-var twoDimensions: domain(2) = {-2..2,0..2}; // domain over two dimensions
+// Rectangular domains are similarly defined using range notation
+var domain1to10: domain(1) = {1..10};        // 1D domain from 1..10;
+var twoDimensions: domain(2) = {-2..2,0..2}; // 2D domain over product of ranges
+var thirdDim: range = 1..16;
+var threeDims: domain(3) = {thirdDim, 1..10, 5..10}; // using a range variable
 
 // Can iterate over the indices as tuples
 for idx in twoDimensions do
@@ -310,38 +323,37 @@ writeln();
 
 // Or can deconstruct the tuple
 for (x,y) in twoDimensions {
-  write( (x,y), ", " );
+  write( "(", x, ", ", y, ")", ", " );
 }
 writeln();
 
 // Associative domains act like sets
-var intSet: domain(int); // empty set of ints
-intSet += 1;
-intSet += 2;
-intSet += 3;
-intSet += 1; // redundant add 1  
-intSet -= 3; // remove 3
-writeln( intSet ); 
+var stringSet: domain(string); // empty set of strings
+stringSet += "a";
+stringSet += "b";
+stringSet += "c";
+stringSet += "a"; // redundant add "a"  
+stringSet -= "c"; // remove "c"
+writeln( stringSet ); 
 
 
-// Arrays
 // Array are similar to those of other languages.
-// Their sizes are defined using ranges and domains.
-// that represent their indices, but we'll touch more on those later
-var intArray: [1..10] int; // array of integers defined using range literal
+// Their sizes are defined using domains that represent their indices
+var intArray: [1..10] int;
+var intArray2: [{1..10}] int; //equivalent
 
 // Accessed using bracket notation
 for i in 1..10 do
   intArray[i] = -i;
 writeln( intArray );
 // we cannot access intArray[0] because it exists outside 
-// of the index set we defined (1..10)
+// of the index set, {1..10}, we defined it to have
 // intArray[11] is illegal for the same reason.
 
 var realDomain: domain(2) = {1..5,1..7};
 var realArray: [realDomain] real;
-// similarly we could have done:
-// var realArray: [1..5,1..7] real; 
+var realArray2: [1..5,1..7] real;   // equivalent 
+var realArray3: [{1..5,1..7}] real; // equivalent
 
 for i in 1..5 {
   // use the range from 2nd dimension of the domain
@@ -353,7 +365,7 @@ for i in 1..5 {
 }
 
 // arrays have domains as members that we can iterate over
-for idx in realArray.domain {  // idx is, again, a 2*int tuple 
+for idx in realArray.domain {  // again, idx is a 2*int tuple 
   realArray[idx] = 1 / realArray[idx[1],idx[2]]; // access by tuple and list   
 }
 
@@ -373,16 +385,13 @@ var dict: [dictDomain] int = [ "one" => 1, "two" => 2 ];
 dict["three"] = 3;
 writeln( dict );
 
-
-// Procedures
 // Chapel procedures have similar syntax to other languages functions.
-
 proc fibonacci( n : int ) : int {
-  if ( n == 0 || n == 1 ) then return n;
+  if ( n <= 1 ) then return n;
   return fibonacci( n-1 ) + fibonacci( n-2 );
 }
 
-// input parameters can be untyped
+// input parameters can be untyped (a generic procedure)
 proc doublePrint( thing ): void {
   write( thing, " ", thing, "\n");
 }
@@ -394,7 +403,7 @@ proc addThree( n ) {
 
 doublePrint( addThree( fibonacci( 20 ) ) );
 
-// Can also take unlimited number of parameters
+// Can also take 'unlimited' number of parameters
 proc maxOf( x ...?k ) { 
   // x refers to a tuple of one type, with k elements
   var maximum = x[1];
@@ -404,7 +413,7 @@ proc maxOf( x ...?k ) {
 writeln( maxOf( 1, -10, 189, -9071982, 5, 17, 20001, 42 ) );
 
 // the ? operator is called the query operator, and is used to take 
-// undetermined values (like tuple and array sizes, and generic types).
+// undetermined values (like tuple or array sizes, and generic types).
 
 // Taking arrays as parameters.
 // The query operator is used to determine the domain of A.
@@ -427,9 +436,9 @@ writeln( defaultsProc( x=11 ) );
 writeln( defaultsProc( x=12, y=5.432 ) );
 writeln( defaultsProc( y=9.876, x=13 ) );
 
-// Generic procedures can still retain type
-// Here we define a procedure that takes two arguments
-// of the same type, yet we dont define what that type is.
+// We can query the type of arguments to make safer generic procedures
+// Here we define a procedure that takes two arguments of
+// the same type, yet we dont define what that type is.
 proc genericProc( arg1 : ?valueType, arg2 : valueType ): void {
   select( valueType ){
     when int do writeln( arg1, " and ", arg2, " are ints" );
@@ -481,24 +490,24 @@ writeln( false ^ true  );
 writeln( true  ^ false );
 writeln( false ^ false );
 
-// Define a * operator on any two types.
+// Define a * operator on any two types that returns a tupe of those types
 proc *( left : ?ltype, right : ?rtype): ( ltype, rtype ){
   return (left, right );
 }
 
 writeln( 1 * "a" ); // uses our * operator
-writeln( 1 * 2 ); // uses the original * operator
+writeln( 1 * 2 );   // uses the original * operator
 
 /*
-Note: You could break everything if you 
-      get careless with your overloads.
-This here will break everything. Dont do it.
+Note: You could break everything if you get careless with your overloads.
+This here will break everything. Don't do it.
 proc +( left: int, right: int ): int{
   return left - right;
 } 
 */
 
-// Classes
+// Classes are similar to those in C++ and Java.
+// They currently lack privatization
 class MyClass {
   // Member variables
   var memberInt : int; 
@@ -541,8 +550,8 @@ writeln( myObject.getMemberInt() );
 // ... using our values
 var myDiffObject = new MyClass( -1, true );
     myDiffObject = new MyClass( memberInt = -1, 
-                                memberBool = false ); // equivalent
-writeln( (myDiffObject.getMemberInt(), myDiffObject.getMemberBool() ));
+                                memberBool = true ); // equivalent
+writeln( myDiffObject );
 
 // Construct using written constructor
 var myOtherObject = new MyClass( 1.95 );
@@ -557,7 +566,7 @@ proc +( A : MyClass, B : MyClass) : MyClass {
 }
 
 var plusObject = myObject + myDiffObject;
-writeln( (plusObject.getMemberInt(), plusObject.getMemberBool() ) );
+writeln( plusObject );
 
 // destruction
 delete myObject;
@@ -609,9 +618,11 @@ class GenericClass {
 }
 
 var realList = new GenericClass( real, 10 );
-// We can assign to the array in the object using the bracket notation
+// We can assign to the member array of the object using the bracket 
+// notation that we defined ( proc this( i: int ){ ... }  )
 for i in realList.classDomain do realList[i] = i + 1.0;
-// We can iterate over a 
+// We can iterate over the values in our list with the iterator 
+// we defined ( iter these(){ ... } )
 for value in realList do write( value, ", " );
 writeln();
 
@@ -626,11 +637,10 @@ for value in copyNewTypeList do write( value, ", " );
 writeln();
 
 
-// Tasks
-// A task is some work that will be done separately from
-// the current task, and (if there are any available) in its own thread.
+// A task is some work that will be done separately from the current
+// task, and (if there are any available) in its own thread.
 
-// a synch statement will ensure that the progress of the 
+// a sync statement will ensure that the progress of the 
 // main task will not progress until the children have synced back up.
 sync {
 // a begin statement will spin the body off into one new task
@@ -661,20 +671,19 @@ cobegin {
     writeln( "a whole" );
   }
 }
-// Notice here that the prints may happen in any order.
+// Notice here that the prints from each statement may happen in any order.
 
 // Coforall loop will create a new task for EACH iteration
-// NOTE! coforall should be used only for creating tasks!
-// Using it to iterating over an array or something like that is very a bad idea!
-
 var num_tasks = 10; // Number of tasks we want
 coforall taskID in 1..#num_tasks {
   writeln( "Hello from task# ", taskID );
 }
 // Again we see that prints happen in any order.
+// NOTE! coforall should be used only for creating tasks!
+// Using it to iterating over a structure is very a bad idea!
 
 // forall loops are another parallel loop, but only create a smaller number 
-// of tasks, specifically dataParTasksPerLocale number of task (more later)
+// of tasks, specifically --dataParTasksPerLocale=number of task
 forall i in 1..100 {
   write( i, ", ");
 }
@@ -715,8 +724,8 @@ timer.clear();
 // the parallel loop went faster than the serial loop
 
 // A succinct way of writing a forall loop over an array:
-[ val in myBigArray ] val = 1 / val; // iterate over values
-// or
-[ idx in myBigArray.domain ] myBigArray[idx] = -myBigArray[idx]; // iterate over indicies
-
+// iterate over values
+[ val in myBigArray ] val = 1 / val; 
+// or iterate over indicies
+[ idx in myBigArray.domain ] myBigArray[idx] = -myBigArray[idx]; 
 ```
