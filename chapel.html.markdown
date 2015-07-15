@@ -28,7 +28,6 @@ writeln( "There are ", 3, " commas (\",\") in this line of code" );
 stdout.writeln( "This goes to standard output (just like plain writeln() does)");
 stderr.writeln( "This goes to standard error" );
 
-// Variables
 // Variables dont have to be explicitly typed as long as 
 // the compiler can figure out the type that it will hold.
 var myVar = 10; // 10 is an int, so myVar is implicitly an int
@@ -123,24 +122,23 @@ writeln( (old_this == thatInt) && (old_that == thisInt) );
 // We can also define operator overloads, 
 // which we'll cover with procedures.
 
-// Tuples
-// tuples can be of the same type
+// Tuples can be of the same type
 var sameTup: 2*int = (10,-1);
+var sameTup2 = (11, -6);
 // or different types
 var diffTup: (int,real,complex) = (5, 1.928, myCplx);
+var diffTupe2 = ( 7, 5.64, 6.0+1.5i );
 // Accessed using array bracket notation
 // However, tuples are all 1-indexed
 writeln( "(", sameTup[1], ",", sameTup[2], ")" );
 writeln( diffTup );
 // Tuples can also be written into.
 diffTup[1] = -1;
-// you can expand tuples as well
+// Can expand tuple values into their own variables
 var (tupInt, tupReal, tupCplx) = diffTup;
 writeln( diffTup == (tupInt, tupReal, tupCplx) );
-// Can also be used to easily write a collection 
-// of variables as a list (common in debugging)
+// Useful for writing a list of variables ( as is common in debugging)
 writeln( (a,b,thisInt,thatInt,thisBool,thatBool) );
-
 
 // Type aliasing
 type chroma = int;        // type of a single hue
@@ -148,14 +146,7 @@ type RGBColor = 3*chroma; // type representing a full color
 var black: RGBColor = ( 0,0,0 );
 var white: RGBColor = ( 255, 255, 255 );
 
-
-
-// If-Then statements
-// if-thens dont require parentheses around the condition 
-// as they do in C (however, we will use them)
-// A single line body can use the 'then' keyword instead of 
-// braces and else statements can be written similarly
-
+// if-then-else works just like any other C-family language
 if 10 < 100 then
   writeln( "All is well" );
 
@@ -163,7 +154,6 @@ if -1 < 1 then
   writeln( "Continuing to believe reality" );
 else
   writeln( "Send mathematician, something's wrong" );
-
 
 if ( 10 > 100 ) {
   writeln( "Universe broken. Please reboot universe." );
@@ -219,7 +209,6 @@ do{
 }while( j <= 10000 );
 writeln( jSum );
 
-
 // For loops are much like those in python in that they iterate over a range.
 // Ranges themselves are types, and can be stuffed into variables 
 // (more about that later)
@@ -245,9 +234,11 @@ for x in 1..10 {
 // Ranges are single dimensional
 // Domains can be multi-dimensional and can 
 // represent indicies of different types as well.
-// They are types, and can be assigned into variables;
-var range1to10: range = 1..10;  // // 1, 2, 3, ... , 10
+// They are first-class citizen types, and can be assigned into variables
+var range1to10: range = 1..10;  // 1, 2, 3, ..., 10
 var range2to11 = 2..11; // 2, 3, 4, ..., 11
+var rangeThistoThat: range = thisInt..thatInt; // using variables
+var rangeEmpty: range = 100..-100 ; // this is a valid, but empty range
 
 //ranges can be unbounded 
 var range1toInf: range(boundedType=BoundedRangeType.boundedLow) = 1.. ; // 1, 2, 3, 4, 5, ...
@@ -257,9 +248,11 @@ var rangeNegInfto1 = ..1; // ..., -4, -3, -2, -1, 0, 1
 
 // Ranges can be strided using the 'by' operator.
 var range2to10by2: range(stridable=true) = 2..10 by 2; // 2, 4, 6, 8, 10
-var reverse2to10by2 = 10..2 by -2; // 10, 8, 6, 4, 2
 // Note: the range(stridable=true) is only 
 // necessary if we explicitly type the variable
+
+// Use by to create a reverse range
+var reverse2to10by2 = 10..2 by -2; // 10, 8, 6, 4, 2
 
 // The end point of a range can be determined using the count (#) operator
 var rangeCount: range = -5..#12; // range from -5 to 6
@@ -278,7 +271,7 @@ for i in rangeCountBy{
   write( i, if i == rangeCountBy.last then "\n" else ", " );
 }
 
-// Rectangular domains are similarly defined using range notation
+// Rectangular domains are defined using the same range syntax
 var domain1to10: domain(1) = {1..10};        // 1D domain from 1..10;
 var twoDimensions: domain(2) = {-2..2,0..2}; // 2D domain over product of ranges
 var thirdDim: range = 1..16;
@@ -324,8 +317,7 @@ var realArray2: [1..5,1..7] real;   // equivalent
 var realArray3: [{1..5,1..7}] real; // equivalent
 
 for i in 1..5 {
-  // use the range from 2nd dimension of the domain
-  for j in realDomain.dim(2) {
+  for j in realDomain.dim(2) {   // only use the 2nd dimension of the domain
     realArray[i,j] = -1.61803 * i + 0.5 * j;  // access using index list
     var idx: 2*int = (i,j);                   // note: 'index' is a keyword
     realArray[idx] = - realArray[(i,j)];      // index using tuples
@@ -351,7 +343,7 @@ writeln( rSum, "\n", realArray );
 var dictDomain: domain(string) = { "one", "two" };
 var dict: [dictDomain] int = [ "one" => 1, "two" => 2 ];
 dict["three"] = 3;
-writeln( dict );
+for key in dictDomain do writeln( dict[key] );
 
 // Chapel procedures have similar syntax to other languages functions.
 proc fibonacci( n : int ) : int {
@@ -404,7 +396,40 @@ writeln( defaultsProc( x=11 ) );
 writeln( defaultsProc( x=12, y=5.432 ) );
 writeln( defaultsProc( y=9.876, x=13 ) );
 
-// We can query the type of arguments to make safer generic procedures
+// intent modifiers on the arguments convey how 
+// those arguments are passed to the procedure
+// in: copy arg in, but not out
+// out: copy arg out, but not in
+// inout: copy arg in, copy arg out
+// ref: pass arg by reference
+proc intentsProc( in inarg, out outarg, inout inoutarg, ref refarg ){
+  writeln( "Inside Before: ", (inarg, outarg, inoutarg, refarg) );
+  inarg = inarg + 100;
+  outarg = outarg + 100;
+  inoutarg = inoutarg + 100;
+  refarg = refarg + 100;
+  writeln( "Inside After: ", (inarg, outarg, inoutarg, refarg) );
+}
+
+var inVar: int = 1;
+var outVar: int = 2;
+var inoutVar: int = 3;
+var refVar: int = 4;
+writeln( "Outside Before: ", (inVar, outVar, inoutVar, refVar) );
+intentsProc( inVar, outVar, inoutVar, refVar );
+writeln( "Outside After: ", (inVar, outVar, inoutVar, refVar) );
+
+// Similarly we can define intents on the return type
+proc makeArray( elems: int, startNumber: int ) ref : [1..#elems] int {
+  var array: [1..#elems] int;
+  for idx in array.domain do array[idx] = startNumber + idx;
+  return array;
+}
+writeln( makeArray( 10, -1 ) );
+// this makes more practical sense for class methods where references to 
+// elements in a data-structure are returned via a method or iterator
+
+// We can query the type of arguments to generic procedures
 // Here we define a procedure that takes two arguments of
 // the same type, yet we dont define what that type is.
 proc genericProc( arg1 : ?valueType, arg2 : valueType ): void {
@@ -421,9 +446,8 @@ genericProc( 1.0+2.0i, 3.0+4.0i );
 
 // We can also enforce a form of polymorphism with the 'where' clause
 // This allows the compiler to decide which function to use.
-// Note: that means that all information needs to be known at compile
-// time. Hence, we use params here to assert that the arguments must
-// be known at compile time.
+// Note: that means that all information needs to be known at compile time. 
+// The param modifier on the arg is used to enforce this constraint.
 proc whereProc( param N : int ): void
  where ( N > 0 ) {
   writeln( "N is greater than 0" );  
@@ -473,6 +497,25 @@ proc +( left: int, right: int ): int{
   return left - right;
 } 
 */
+
+// iterators are a close cousin to the procedure.
+// However, instead of returning a single value, 
+// iterators yield many values to a loop.
+// This is useful when a complicated set or order of iterations is needed but 
+// allows the code defining the iterations to be separate from the loop body.
+iter oddsThenEvens( N: int ): int {
+  for i in 1..N by 2 {
+    yield i; // yield values instead of returning.
+  }
+  
+  for i in 2..N by 2 {
+    yield i;
+  }  
+}
+
+for i in oddsThenEvens( 10 ) do write( i, ", " );
+writeln();
+
 
 // Classes are similar to those in C++ and Java.
 // They currently lack privatization
@@ -567,16 +610,18 @@ class GenericClass {
                      type classType = otherType ) {
     this.classDomain = other.classDomain;
     // Copy and cast
-    [ idx in this.classDomain ] this[ idx ] = other[ idx ] : classType; 
+    for idx in this.classDomain do this[ idx ] = other[ idx ] : classType; 
   }
   
-  // Define bracket notation on a GenericClass object
+  // Define bracket notation on a GenericClass 
+  // object so it can behave like a normal array
   // i.e. objVar[ i ] or objVar( i )
   proc this( i : int ) ref : classType {
     return this.classArray[ i ];
   }
   
-  // Define an iterator for the class.
+  // Define an iterator for the class to 
+  // yield values from the array to a loop
   // i.e. for i in objVar do ....
   iter these() ref : classType {
     for i in this.classDomain do
@@ -604,19 +649,20 @@ var copyNewTypeList = new GenericClass( realList, int );
 for value in copyNewTypeList do write( value, ", " );
 writeln();
 
+// Parallelism
+// In other languages, parallelism is typically this is done with 
+// complicated libraries and strange class structure hierarchies.
+// Chapel has it baked right into the language.
 
-// A task is some work that will be done separately from the current
-// task, and (if there are any available) in its own thread.
-
+// A begin statement will spin the body of that statement off into one new task.
 // a sync statement will ensure that the progress of the 
 // main task will not progress until the children have synced back up.
 sync {
-// a begin statement will spin the body off into one new task
-  begin {
+  begin { // start of new task's body
     var a = 0;
     for i in 1..1000 do a += 1;
     writeln( "Done: ", a);
-  }
+  } // end of new tasks body
   writeln( "spun off a task!");
 }
 writeln( "Back together" );
@@ -625,12 +671,11 @@ proc printFibb( n: int ){
   writeln( "fibonacci(",n,") = ", fibonacci( n ) );
 }
 
-// a cobegin statement will spin each 
-// statement of the body into one new task
+// a cobegin statement will spin each statement of the body into one new task
 cobegin {
-  printFibb( 20 );
-  printFibb( 10 );
-  printFibb( 5 );
+  printFibb( 20 ); // new task
+  printFibb( 10 ); // new task
+  printFibb( 5 );  // new task
   { 
     // this is a nested statement body and thus is a single statement
     // to the parent statement and is executed by a single task
