@@ -25,29 +25,30 @@ writeln( "World!" );
 // each thing is printed right next to each other, so include your spacing!
 writeln( "There are ", 3, " commas (\",\") in this line of code" );
 // Different output channels
-stdout.writeln( "This goes to standard output (just like plain writeln() does)");
+stdout.writeln( "This goes to standard output (just like plain writeln( ) does)");
 stderr.writeln( "This goes to standard error" );
 
 // Variables dont have to be explicitly typed as long as 
 // the compiler can figure out the type that it will hold.
 var myVar = 10; // 10 is an int, so myVar is implicitly an int
 myVar = -10;
+var mySecondVar = myVar;
 // var anError; // this would be a compile time error.
 
 // We can (and should) explicitly type things
-var mySecondVar: real; // define mySecondVar as a real
-var myThirdVar: real = -1.234;
-mySecondVar = myThirdVar;
+var myThirdVar: real; // define mySecondVar as a real
+var myFourthVar: real = -1.234;
+myThirdVar = myFourthVar;
 
 // There are a number of basic types.
-var myInt: int = -1000; // signed ints
-var myUint: uint = 1234; // unsigned ints
-var myReal: real = 9.876; // floating point numbers
-var myImag: imag = 5.0i; // imaginary numbers
-var myCplx: complex = 10 + 9i; // complex numbers
-myCplx = myInt + myImag ; // another way to form complex numbers
-var myBool: bool = false; // booleans
-var myStr: string = "Some string..."; // strings
+var myInt: int = -1000; // Signed ints
+var myUint: uint = 1234; // Unsigned ints
+var myReal: real = 9.876; // Floating point numbers
+var myImag: imag = 5.0i; // Imaginary numbers
+var myCplx: complex = 10 + 9i; // Complex numbers
+myCplx = myInt + myImag ; // Another way to form complex numbers
+var myBool: bool = false; // Booleans
+var myStr: string = "Some string..."; // Strings
 
 // Some types can have sizes
 var my8Int: int(8) = 10; // 8 bit (one byte) sized int;
@@ -59,6 +60,7 @@ var intFromReal2: int = myReal : int;
 
 // consts are constants, they cannot be changed after set in runtime
 const almostPi: real = 22.0/7.0;
+
 // params are constants whose value must be known statically at compile time
 // Like consts, they cannot be changed during runtime
 param compileTimeConst: int = 16;
@@ -68,47 +70,47 @@ param compileTimeConst: int = 16;
 // config vars and consts can be changed through the command line at run time
 config var varCmdLineArg: int = -123; 
 config const constCmdLineArg: int = 777;
-// set with --VarName=Value or --VarName Value at run time
+// Set with --VarName=Value or --VarName Value at run time
 
 // config params can be set at compile time
 config param paramCmdLineArg: bool = false;
 writeln( varCmdLineArg, ", ", constCmdLineArg, ", ", paramCmdLineArg );
-//set config with --set paramCmdLineArg=value at compile time
+// Set config with --set paramCmdLineArg=value at compile time
 
 // Math operators
 var a: int, thisInt = 1234, thatInt = 5678;
 a = thisInt + thatInt;  // Addition
 a = thisInt * thatInt;  // Multiplication
 a = thisInt - thatInt;  // Subtraction
-a = thisInt / thatInt;  // division
-a = thisInt ** thatInt; // exponentiation
-a = thisInt % thatInt;  // remainder (modulo)
+a = thisInt / thatInt;  // Division
+a = thisInt ** thatInt; // Exponentiation
+a = thisInt % thatInt;  // Remainder (modulo)
 
 // Logical Operators
 var b: bool, thisBool = false, thatBool = true;
-b = thisBool && thatBool; // logical and
-b = thisBool || thatBool; // logical or
-b = !thisBool;            // logical negation
+b = thisBool && thatBool; // Logical and
+b = thisBool || thatBool; // Logical or
+b = !thisBool;            // Logical negation
 
 // Relational Operators
-b = thisInt > thatInt;           // greater-than
-b = thisInt >= thatInt;          // greater-than-or-equal-to
-b = thisInt < a && a <= thatInt; // less-than, and, less-than-or-equal-to
-b = thisInt != thatInt;          // not-equal-to
-b = thisInt == thatInt;          // equal-to
+b = thisInt > thatInt;           // Greater-than
+b = thisInt >= thatInt;          // Greater-than-or-equal-to
+b = thisInt < a && a <= thatInt; // Less-than, and, less-than-or-equal-to
+b = thisInt != thatInt;          // Not-equal-to
+b = thisInt == thatInt;          // Equal-to
 
 // Bitwise operations
-a = thisInt << 10;     // left-bit-shift by 10 bits;
-a = thatInt >> 5;      // right-bit-shift by 5 bits;
-a = ~thisInt;          // bitwise-negation
-a = thisInt ^ thatInt; // bitwise exclusive-or
+a = thisInt << 10;     // Left-bit-shift by 10 bits;
+a = thatInt >> 5;      // Right-bit-shift by 5 bits;
+a = ~thisInt;          // Bitwise-negation
+a = thisInt ^ thatInt; // Bitwise exclusive-or
 
 // Compound assignment operations
-a += thisInt;          // addition-equals ( a = a + thisInt;)
-a *= thatInt;          // times-equals ( a = a * thatInt; )
-b &&= thatBool;        // logical-and-equals ( b = b && thatBool; )
-a <<= 3;               // left-bit-shift-equals ( a = a << 10; )
-// and so on...
+a += thisInt;          // Addition-equals ( a = a + thisInt;)
+a *= thatInt;          // Times-equals ( a = a * thatInt; )
+b &&= thatBool;        // Logical-and-equals ( b = b && thatBool; )
+a <<= 3;               // LEft-bit-shift-equals ( a = a << 10; )
+// and many, many more.
 // Unlike other C family languages there are no 
 // pre/post-increment/decrement operators like
 //  ++j, --j, j++, j-- 
@@ -119,8 +121,7 @@ var old_that = thatInt;
 thisInt <=> thatInt; // Swap the values of thisInt and thatInt
 writeln( (old_this == thatInt) && (old_that == thisInt) );
 
-// We can also define operator overloads, 
-// which we'll cover with procedures.
+// Operator overloads can also be defined, as we'll see with procedures
 
 // Tuples can be of the same type
 var sameTup: 2*int = (10,-1);
@@ -128,25 +129,29 @@ var sameTup2 = (11, -6);
 // or different types
 var diffTup: (int,real,complex) = (5, 1.928, myCplx);
 var diffTupe2 = ( 7, 5.64, 6.0+1.5i );
+
 // Accessed using array bracket notation
 // However, tuples are all 1-indexed
 writeln( "(", sameTup[1], ",", sameTup[2], ")" );
 writeln( diffTup );
+
 // Tuples can also be written into.
 diffTup[1] = -1;
+
 // Can expand tuple values into their own variables
 var (tupInt, tupReal, tupCplx) = diffTup;
 writeln( diffTup == (tupInt, tupReal, tupCplx) );
+
 // Useful for writing a list of variables ( as is common in debugging)
 writeln( (a,b,thisInt,thatInt,thisBool,thatBool) );
 
 // Type aliasing
-type chroma = int;        // type of a single hue
-type RGBColor = 3*chroma; // type representing a full color 
+type chroma = int;        // Type of a single hue
+type RGBColor = 3*chroma; // Type representing a full color 
 var black: RGBColor = ( 0,0,0 );
 var white: RGBColor = ( 255, 255, 255 );
 
-// if-then-else works just like any other C-family language
+// If-then-else works just like any other C-family language
 if 10 < 100 then
   writeln( "All is well" );
 
@@ -193,16 +198,16 @@ select( inputOption ){
   }
 }
 
-// While loops and Do-While loops are basically the same in every language.
+// While and Do-While loops are basically the same in every language.
 var j: int = 1;
 var jSum: int = 0;
 while( j <= 1000 ){
   jSum += j;
-  j += 1; // there are no ++j, --j, j++, j--, operators
+  j += 1;
 }
 writeln( jSum );
 
-// basic Do-While loop
+// Do-While loop
 do{
   jSum += j;
   j += 1;
@@ -213,7 +218,7 @@ writeln( jSum );
 // Ranges themselves are types, and can be stuffed into variables 
 // (more about that later)
 for i in 1..10 do write( i , ", ") ;
-writeln();
+writeln( );
 
 var iSum: int = 0;
 for i in 1..1000 {
@@ -225,7 +230,7 @@ for x in 1..10 {
   for y in 1..10 {
     write( (x,y), "\t" );
   }
-  writeln();
+  writeln( );
 }
 
 // Ranges and Domains
@@ -238,13 +243,15 @@ for x in 1..10 {
 var range1to10: range = 1..10;  // 1, 2, 3, ..., 10
 var range2to11 = 2..11; // 2, 3, 4, ..., 11
 var rangeThistoThat: range = thisInt..thatInt; // using variables
-var rangeEmpty: range = 100..-100 ; // this is a valid, but empty range
+var rangeEmpty: range = 100..-100 ; // this is valid but contains no indices 
 
-//ranges can be unbounded 
-var range1toInf: range(boundedType=BoundedRangeType.boundedLow) = 1.. ; // 1, 2, 3, 4, 5, ...
-var rangeNegInfto1 = ..1; // ..., -4, -3, -2, -1, 0, 1
+// Ranges can be unbounded 
+var range1toInf: range(boundedType=BoundedRangeType.boundedLow) = 1.. ; 
+// 1, 2, 3, 4, 5, ...
 // Note: the range(boundedType= ... ) is only 
 // necessary if we explicitly type the variable
+
+var rangeNegInfto1 = ..1; // ..., -4, -3, -2, -1, 0, 1
 
 // Ranges can be strided using the 'by' operator.
 var range2to10by2: range(stridable=true) = 2..10 by 2; // 2, 4, 6, 8, 10
@@ -280,23 +287,22 @@ var threeDims: domain(3) = {thirdDim, 1..10, 5..10}; // using a range variable
 // Can iterate over the indices as tuples
 for idx in twoDimensions do
   write( idx , ", ");
-writeln();
+writeln( );
 
-// Or can deconstruct the tuple
+// or can deconstruct the tuple
 for (x,y) in twoDimensions {
   write( "(", x, ", ", y, ")", ", " );
 }
-writeln();
+writeln( );
 
 // Associative domains act like sets
 var stringSet: domain(string); // empty set of strings
 stringSet += "a";
 stringSet += "b";
 stringSet += "c";
-stringSet += "a"; // redundant add "a"  
-stringSet -= "c"; // remove "c"
+stringSet += "a"; // Redundant add "a"  
+stringSet -= "c"; // Remove "c"
 writeln( stringSet ); 
-
 
 // Array are similar to those of other languages.
 // Their sizes are defined using domains that represent their indices
@@ -307,35 +313,35 @@ var intArray2: [{1..10}] int; //equivalent
 for i in 1..10 do
   intArray[i] = -i;
 writeln( intArray );
-// we cannot access intArray[0] because it exists outside 
-// of the index set, {1..10}, we defined it to have
+// We cannot access intArray[0] because it exists outside 
+// of the index set, {1..10}, we defined it to have.
 // intArray[11] is illegal for the same reason.
 
 var realDomain: domain(2) = {1..5,1..7};
 var realArray: [realDomain] real;
-var realArray2: [1..5,1..7] real;   // equivalent 
-var realArray3: [{1..5,1..7}] real; // equivalent
+var realArray2: [1..5,1..7] real;   // Equivalent 
+var realArray3: [{1..5,1..7}] real; // Equivalent
 
 for i in 1..5 {
-  for j in realDomain.dim(2) {   // only use the 2nd dimension of the domain
-    realArray[i,j] = -1.61803 * i + 0.5 * j;  // access using index list
-    var idx: 2*int = (i,j);                   // note: 'index' is a keyword
-    realArray[idx] = - realArray[(i,j)];      // index using tuples
+  for j in realDomain.dim(2) {   // Only use the 2nd dimension of the domain
+    realArray[i,j] = -1.61803 * i + 0.5 * j;  // Access using index list
+    var idx: 2*int = (i,j);                   // Note: 'index' is a keyword
+    realArray[idx] = - realArray[(i,j)];      // Index using tuples
   }
 }
 
-// arrays have domains as members that we can iterate over
-for idx in realArray.domain {  // again, idx is a 2*int tuple 
-  realArray[idx] = 1 / realArray[idx[1],idx[2]]; // access by tuple and list   
+// Arrays have domains as members that we can iterate over
+for idx in realArray.domain {  // Again, idx is a 2*int tuple 
+  realArray[idx] = 1 / realArray[idx[1],idx[2]]; // Access by tuple and list   
 }
 
 writeln( realArray );
 
-// can also iterate over the values of an array
+// Can also iterate over the values of an array
 var rSum: real = 0;
 for value in realArray {
-  rSum += value; // read a value
-  value = rSum;  // write a value
+  rSum += value; // Read a value
+  value = rSum;  // Write a value
 }
 writeln( rSum, "\n", realArray );
 
@@ -351,12 +357,12 @@ proc fibonacci( n : int ) : int {
   return fibonacci( n-1 ) + fibonacci( n-2 );
 }
 
-// input parameters can be untyped (a generic procedure)
+// Input parameters can be untyped (a generic procedure)
 proc doublePrint( thing ): void {
   write( thing, " ", thing, "\n");
 }
 
-// return type can be inferred (as long as the compiler can figure it out)
+// Return type can be inferred (as long as the compiler can figure it out)
 proc addThree( n ) {
   return n + 3;
 }
@@ -372,12 +378,12 @@ proc maxOf( x ...?k ) {
 }
 writeln( maxOf( 1, -10, 189, -9071982, 5, 17, 20001, 42 ) );
 
-// the ? operator is called the query operator, and is used to take 
+// The ? operator is called the query operator, and is used to take 
 // undetermined values (like tuple or array sizes, and generic types).
 
 // Taking arrays as parameters.
 // The query operator is used to determine the domain of A.
-// this is important to define the return type (if you wanted to)
+// This is important to define the return type (if you wanted to)
 proc invertArray( A: [?D] int ): [D] int{
   for a in A do a = -a;
   return A;
@@ -396,7 +402,7 @@ writeln( defaultsProc( x=11 ) );
 writeln( defaultsProc( x=12, y=5.432 ) );
 writeln( defaultsProc( y=9.876, x=13 ) );
 
-// intent modifiers on the arguments convey how 
+// Intent modifiers on the arguments convey how 
 // those arguments are passed to the procedure
 // in: copy arg in, but not out
 // out: copy arg out, but not in
@@ -426,7 +432,7 @@ proc makeArray( elems: int, startNumber: int ) ref : [1..#elems] int {
   return array;
 }
 writeln( makeArray( 10, -1 ) );
-// this makes more practical sense for class methods where references to 
+// This makes more practical sense for class methods where references to 
 // elements in a data-structure are returned via a method or iterator
 
 // We can query the type of arguments to generic procedures
@@ -462,17 +468,17 @@ whereProc( 10 );
 whereProc( -1 );
 // whereProc( 0 ) would result in a compiler error because there 
 // are no functions that satisfy the where clause's condition.
-// We could have defined a whereProc without a where clause that would
-// then have been called. 
+// We could have defined a whereProc without a where clause that would then have
+// served as a catch all for all the other cases (of which there is only one).
 
-// Operator definitions are through procedures as well
-// we can define the unary operators:
+// Operator definitions are through procedures as well.
+// We can define the unary operators:
 // + - ! ~
 // and the binary operators:
 // + - * / % ** == <= >= < > << >> & | ˆ by 
 // += -= *= /= %= **= &= |= ˆ= <<= >>= <=>
 
-// boolean exclusive or operator
+// Boolean exclusive or operator
 proc ^( left : bool, right : bool ): bool {
   return (left || right) && !( left && right );
 }
@@ -487,8 +493,8 @@ proc *( left : ?ltype, right : ?rtype): ( ltype, rtype ){
   return (left, right );
 }
 
-writeln( 1 * "a" ); // uses our * operator
-writeln( 1 * 2 );   // uses the original * operator
+writeln( 1 * "a" ); // Uses our * operator
+writeln( 1 * 2 );   // Uses the default * operator
 
 /*
 Note: You could break everything if you get careless with your overloads.
@@ -498,24 +504,21 @@ proc +( left: int, right: int ): int{
 } 
 */
 
-// iterators are a close cousin to the procedure.
+// Iterators are a sisters to the procedure, and almost 
+// everything about procedures also applies to iterators
 // However, instead of returning a single value, 
 // iterators yield many values to a loop.
 // This is useful when a complicated set or order of iterations is needed but 
 // allows the code defining the iterations to be separate from the loop body.
 iter oddsThenEvens( N: int ): int {
-  for i in 1..N by 2 {
+  for i in 1..N by 2 do
     yield i; // yield values instead of returning.
-  }
-  
-  for i in 2..N by 2 {
+  for i in 2..N by 2 do
     yield i;
-  }  
 }
 
 for i in oddsThenEvens( 10 ) do write( i, ", " );
-writeln();
-
+writeln( );
 
 // Classes are similar to those in C++ and Java.
 // They currently lack privatization
@@ -548,7 +551,7 @@ class MyClass {
     return this.memberInt;
   }
 
-  proc getMemberBool(): bool {
+  proc getMemberBool( ): bool {
     return this.memberBool;
   }
   
@@ -556,30 +559,30 @@ class MyClass {
 
 // Construct using default constructor, using default values
 var myObject = new MyClass( 10 );
-    myObject = new MyClass( memberInt = 10 ); // equivalent
-writeln( myObject.getMemberInt() );
+    myObject = new MyClass( memberInt = 10 ); // Equivalent
+writeln( myObject.getMemberInt( ) );
 // ... using our values
 var myDiffObject = new MyClass( -1, true );
     myDiffObject = new MyClass( memberInt = -1, 
-                                memberBool = true ); // equivalent
+                                memberBool = true ); // Equivalent
 writeln( myDiffObject );
 
 // Construct using written constructor
 var myOtherObject = new MyClass( 1.95 );
-    myOtherObject = new MyClass( val = 1.95 ); // equivalent
-writeln( myOtherObject.getMemberInt() );
+    myOtherObject = new MyClass( val = 1.95 ); // Equivalent
+writeln( myOtherObject.getMemberInt( ) );
 
 // We can define an operator on our class as well but 
 // the definition has to be outside the class definition
 proc +( A : MyClass, B : MyClass) : MyClass {
-  return new MyClass( memberInt = A.getMemberInt() + B.getMemberInt(),
-                      memberBool = A.getMemberBool() || B.getMemberBool() );
+  return new MyClass( memberInt = A.getMemberInt( ) + B.getMemberInt( ),
+                      memberBool = A.getMemberBool( ) || B.getMemberBool( ) );
 }
 
 var plusObject = myObject + myDiffObject;
 writeln( plusObject );
 
-// destruction
+// Destruction
 delete myObject;
 delete myDiffObject;
 delete myOtherObject;
@@ -620,10 +623,10 @@ class GenericClass {
     return this.classArray[ i ];
   }
   
-  // Define an iterator for the class to 
-  // yield values from the array to a loop
+  // Define an implicit iterator for the class 
+  // to yield values from the array to a loop
   // i.e. for i in objVar do ....
-  iter these() ref : classType {
+  iter these( ) ref : classType {
     for i in this.classDomain do
       yield this[i];
   }
@@ -635,19 +638,19 @@ var realList = new GenericClass( real, 10 );
 // notation that we defined ( proc this( i: int ){ ... }  )
 for i in realList.classDomain do realList[i] = i + 1.0;
 // We can iterate over the values in our list with the iterator 
-// we defined ( iter these(){ ... } )
+// we defined ( iter these( ){ ... } )
 for value in realList do write( value, ", " );
-writeln();
+writeln( );
 
 // Make a copy of realList using the copy constructor
 var copyList = new GenericClass( realList );
 for value in copyList do write( value, ", " );
-writeln();
+writeln( );
 
-// make a copy of realList and change the type, also using the copy constructor
+// Make a copy of realList and change the type, also using the copy constructor
 var copyNewTypeList = new GenericClass( realList, int );
 for value in copyNewTypeList do write( value, ", " );
-writeln();
+writeln( );
 
 // Parallelism
 // In other languages, parallelism is typically this is done with 
@@ -655,14 +658,14 @@ writeln();
 // Chapel has it baked right into the language.
 
 // A begin statement will spin the body of that statement off into one new task.
-// a sync statement will ensure that the progress of the 
-// main task will not progress until the children have synced back up.
+// A sync statement will ensure that the progress of the main 
+// task will not progress until the children have synced back up.
 sync {
-  begin { // start of new task's body
+  begin { // Start of new task's body
     var a = 0;
     for i in 1..1000 do a += 1;
     writeln( "Done: ", a);
-  } // end of new tasks body
+  } // End of new tasks body
   writeln( "spun off a task!");
 }
 writeln( "Back together" );
@@ -671,13 +674,13 @@ proc printFibb( n: int ){
   writeln( "fibonacci(",n,") = ", fibonacci( n ) );
 }
 
-// a cobegin statement will spin each statement of the body into one new task
+// A cobegin statement will spin each statement of the body into one new task
 cobegin {
   printFibb( 20 ); // new task
   printFibb( 10 ); // new task
   printFibb( 5 );  // new task
   { 
-    // this is a nested statement body and thus is a single statement
+    // This is a nested statement body and thus is a single statement
     // to the parent statement and is executed by a single task
     writeln( "this gets" );
     writeln( "executed as" );
@@ -700,41 +703,41 @@ coforall taskID in 1..#num_tasks {
 forall i in 1..100 {
   write( i, ", ");
 }
-writeln();
+writeln( );
 // Here we see that there are sections that are in order, followed by 
-// a section that would not follow ( e.g. 1, 2, 3, 7, 8, 9, 4, 5, 6, )
-// this is because each task is taking on a chunk of the range 1..10
+// a section that would not follow ( e.g. 1, 2, 3, 7, 8, 9, 4, 5, 6, ).
+// This is because each task is taking on a chunk of the range 1..10
 // (1..3, 4..6, or 7..9) doing that chunk serially, but each task happens
 // in parallel.
 // Your results may depend on your machine and configuration
 
-// For both the forall and coforall loops, the execution of the parent task
-// will not continue until all the children sync up.
+// For both the forall and coforall loops, the execution of the 
+// parent task will not continue until all the children sync up.
 
-// forall loops are particularly useful for parallel iteration over arrays
+// forall loops are particularly useful for parallel iteration over arrays.
 // Lets run an experiment to see how much faster a parallel loop is
 use Time; // Import the Time module to use Timer objects
 var timer: Timer; 
-var myBigArray: [{1..4000,1..4000}] real; // large array we will write into
+var myBigArray: [{1..4000,1..4000}] real; // Large array we will write into
 // Serial Experiment
-timer.start(); // start timer
-for (x,y) in myBigArray.domain { // serial iteration
+timer.start( ); // Start timer
+for (x,y) in myBigArray.domain { // Serial iteration
   myBigArray[x,y] = (x:real) / (y:real);
 }
-timer.stop(); // stop timer
-writeln( "Serial: ", timer.elapsed() ); // print elapsed time
-timer.clear(); // clear timer for parallel loop
+timer.stop( ); // Stop timer
+writeln( "Serial: ", timer.elapsed( ) ); // Print elapsed time
+timer.clear( ); // Clear timer for parallel loop
 
 // Parallel Experiment
-timer.start(); // start timer
-forall (x,y) in myBigArray.domain { // parallel iteration
+timer.start( ); // start timer
+forall (x,y) in myBigArray.domain { // Parallel iteration
   myBigArray[x,y] = (x:real) / (y:real);
 }
-timer.stop(); // stop timer
-writeln( "Parallel: ", timer.elapsed() ); // print elapsed time
-timer.clear();
-// you may have noticed that (depending on how many cores you have) that
-// the parallel loop went faster than the serial loop
+timer.stop( ); // Stop timer
+writeln( "Parallel: ", timer.elapsed( ) ); // Print elapsed time
+timer.clear( );
+// You may have noticed that (depending on how many cores you have) 
+// that the parallel loop went faster than the serial loop
 
 // A succinct way of writing a forall loop over an array:
 // iterate over values
@@ -749,6 +752,17 @@ It won't teach you how to develop amazingly performant code, and it's not exhaus
 Refer to the [language specification](http://chapel.cray.com/language.html) and the [library documentation](http://chapel.cray.com/docs/latest/) for more details.
 
 Occasionally check back here and on the [Chapel site](http://chapel.cray.com) to see if more topics have been added or more tutorials created.
+
+### What this tutorial is lacking:
+ * Modules and standard modules
+ * Synchronize and atomic variables
+ * Multiple Locales (distributed memory system)
+ * proc main(){ ... }
+ * Records
+ * Whole/sliced array assignment
+ * Reductions and scans
+ * Range and domain slicing
+ * Parallel iterators
 
 Your input, questions, and discoveries are important to the developers!
 -----------------------------------------------------------------------
