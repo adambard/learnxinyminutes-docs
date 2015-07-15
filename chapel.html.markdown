@@ -91,7 +91,7 @@ var intFromReal = myReal : int;
 var intFromReal2: int = myReal : int;
 
 // consts are constants, they cannot be changed after set in runtime
-const almostPi: real = 11.0/7.0;
+const almostPi: real = 22.0/7.0;
 // params are constants whose value must be known statically at compile time
 // Like consts, they cannot be changed during runtime
 param compileTimeConst: int = 16;
