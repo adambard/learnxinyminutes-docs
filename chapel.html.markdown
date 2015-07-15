@@ -77,6 +77,15 @@ config param paramCmdLineArg: bool = false;
 writeln( varCmdLineArg, ", ", constCmdLineArg, ", ", paramCmdLineArg );
 // Set config with --set paramCmdLineArg=value at compile time
 
+// refs operate much like a reference in C++
+var actual = 10;
+ref refToActual = actual; // refToActual refers to actual
+writeln( actual, " == ", refToActual ); // prints the same value
+actual = -123; // modify actual (which refToActual refers to)
+writeln( actual, " == ", refToActual ); // prints the same value
+refToActual = 99999999; // modify what refToActual refers to (which is actual)
+writeln( actual, " == ", refToActual ); // prints the same value
+
 // Math operators
 var a: int, thisInt = 1234, thatInt = 5678;
 a = thisInt + thatInt;  // Addition
@@ -426,12 +435,19 @@ intentsProc( inVar, outVar, inoutVar, refVar );
 writeln( "Outside After: ", (inVar, outVar, inoutVar, refVar) );
 
 // Similarly we can define intents on the return type
-proc makeArray( elems: int, startNumber: int ) ref : [1..#elems] int {
-  var array: [1..#elems] int;
-  for idx in array.domain do array[idx] = startNumber + idx;
-  return array;
+// refElement returns a reference to an element of array
+proc refElement( array : [?D] ?T, idx ) ref : T {
+  return array[ idx ]; // returns a reference to 
 }
-writeln( makeArray( 10, -1 ) );
+
+var myChangingArray : [1..5] int = [1,2,3,4,5];
+writeln( myChangingArray );
+// Store reference to element in ref variable 
+ref refToElem = refElement( myChangingArray, 5 ); 
+writeln( refToElem );
+refToElem = -2; // modify reference which modifies actual value in array
+writeln( refToElem );
+writeln( myChangingArray );
 // This makes more practical sense for class methods where references to 
 // elements in a data-structure are returned via a method or iterator
 
