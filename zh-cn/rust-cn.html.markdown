@@ -8,7 +8,7 @@ filename: learnrust-cn.rs
 lang: zh-cn
 ---
 
-Rust 是由 Mozilla 研究院开发的编程语言。Rust 将底层的性能控制和高级语言的便利性和安全保障结合在了一起。
+Rust 是由 Mozilla 研究院开发的编程语言。Rust 将底层的性能控制与高级语言的便利性和安全保障结合在了一起。
 
 而 Rust 并不需要一个垃圾回收器或者运行时即可实现这个目的，这使得 Rust 库可以成为一种 C 语言的替代品。
 
@@ -73,7 +73,7 @@ fn main() {
     let s: String = "hello world".to_string();
 
     // 字符串分片(slice) - 另一个字符串的不可变视图
-    // 基本上就是指向一个字符串的不可变指针，它不包含字符串里任何类容，只是一个指向某个东西的指针
+    // 基本上就是指向一个字符串的不可变指针，它不包含字符串里任何内容，只是一个指向某个东西的指针
     // 比如这里就是 `s`
     let s_slice: &str = &s;
 
@@ -181,7 +181,7 @@ fn main() {
     println!("{:?}", another_foo.frobnicate()); // Some(1)
 
     ///////////////////////////////////
-    // 3. 模板匹配 (Pattern matching) //
+    // 3. 模式匹配 (Pattern matching) //
     ///////////////////////////////////
 
     let foo = OptionalI32::AnI32(1);
@@ -190,7 +190,7 @@ fn main() {
         OptionalI32::Nothing  => println!("it’s nothing!"),
     }
 
-    // 高级模板匹配
+    // 高级模式匹配
     struct FooBar { x: i32, y: OptionalI32 }
     let bar = FooBar { x: 15, y: OptionalI32::AnI32(32) };
 
@@ -206,7 +206,7 @@ fn main() {
     }
 
     ///////////////////////////////
-    // 4. 条件控制 (Control flow) //
+    // 4. 流程控制 (Control flow) //
     ///////////////////////////////
 
     // `for` 循环
@@ -251,7 +251,7 @@ fn main() {
     ////////////////////////////////////////////////
 
     // 独占指针 (Owned pointer) - 同一时刻只能有一个对象能“拥有”这个指针
-    // 意味着 `Box` 离开他的作用域后，会被安全的释放
+    // 意味着 `Box` 离开他的作用域后，会被安全地释放
     let mut mine: Box<i32> = Box::new(3);
     *mine = 5; // 解引用
     // `now_its_mine` 获取了 `mine` 的所有权。换句话说，`mine` 移动 (move) 了
@@ -286,8 +286,8 @@ fn main() {
 
 ## 更深入的资料
 
-Rust 还有很多很多其他类容 - 这只是 Rust 最基础的东西，帮助你了解 Rust 里面最重要的东西。
-如果想深入学习 Rust，可以去阅读
+Rust 还有很多很多其他内容 - 这只是 Rust 最基本的功能，帮助你了解 Rust 里面最重要的东西。
+如果想深入学习 Rust，可以去读
 [The Rust Programming Language](http://doc.rust-lang.org/book/index.html)
 或者上 reddit [/r/rust](http://reddit.com/r/rust) 订阅。
 同时 irc.mozilla.org 的 #rust 频道上的小伙伴们也非常欢迎新来的朋友。
