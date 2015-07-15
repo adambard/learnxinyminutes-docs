@@ -757,7 +757,7 @@ Occasionally check back here and on the [Chapel site](http://chapel.cray.com) to
  * Modules and standard modules
  * Synchronize and atomic variables
  * Multiple Locales (distributed memory system)
- * proc main(){ ... }
+ * ```proc main(){ ... }```
  * Records
  * Whole/sliced array assignment
  * Reductions and scans
