@@ -5,43 +5,11 @@ contributors:
     - ["Ian J. Bertolacci", "http://www.cs.colostate.edu/~ibertola/"]
 lang: en
 ---
-What is Chapel?
-===============
+
 You can read all about chapel at [Cray's official Chapel website](http://chapel.cray.com).
 In short, Chapel is an open-source, high-productivity, parallel-programming language in development at Cray Inc., and is designed to run on multi-core PCs as well as multi-kilocore supercomputers.
 
-Your input, questions, and discoveries are important to the developers!
------------------------------------------------------------------------
-Chapel is currently in-development so there are occasional hiccups with performance and language features.
-The more information you give the Chapel development team about issues you encounter with the language, the better the language gets.
-Feel free to email the team and other developers through the [sourceforge email lists](https://sourceforge.net/p/chapel/mailman).
-
-If you're really interested in the development of the compiler or contributing to the project, 
-[check out the master Github repository](https://github.com/chapel-lang/chapel).
-
-Installing the Compiler
------------------------
-Chapel can be built and installed on your average 'nix machine (and cygwin).
-[Download the latest release version](https://github.com/chapel-lang/chapel/releases/)
-and its as easy as 
- 1. ```tar -xvf chapel-1.11.0.tar.gz```
- 2. ```cd chapel-1.11.0```
- 3. ```make```
- 4. ```source util/setchplenv.bash # or .sh or .csh or .fish```
-
-You will need to ```source util/setchplenv.EXT``` from the chapel directory every time your terminal starts so its suggested that you drop that command in a script that will get executed on startup (like .bashrc).
-
-Chapel is easily installed with Brew for OS X
- 1. ```brew update```
- 2. ```brew install chapel```
-
-Who is this tutorial for?
--------------------------
-This tutorial is for people who want to learn the ropes of chapel without having to hear about what fiber mixture the ropes are, or how they were braided, or how the braid configurations differ between one another.
-It won't teach you how to develop amazingly performant code, and it's not exhaustive. 
-Refer to the [language specification](http://chapel.cray.com/language.html) and the [library documentation](http://chapel.cray.com/docs/latest/) for more details.
-
-Occasionally check here back to see if more topics have been added.
+More information and support can be found at the bottom of this document.
 
 ```chapel
 // Comments are C-family style
@@ -729,3 +697,44 @@ timer.clear();
 // or iterate over indicies
 [ idx in myBigArray.domain ] myBigArray[idx] = -myBigArray[idx]; 
 ```
+Who is this tutorial for?
+-------------------------
+This tutorial is for people who want to learn the ropes of chapel without having to hear about what fiber mixture the ropes are, or how they were braided, or how the braid configurations differ between one another.
+It won't teach you how to develop amazingly performant code, and it's not exhaustive. 
+Refer to the [language specification](http://chapel.cray.com/language.html) and the [library documentation](http://chapel.cray.com/docs/latest/) for more details.
+
+Occasionally check back here and on the Chapel site to see if more topics have been added or more tutorials created.
+
+Your input, questions, and discoveries are important to the developers!
+-----------------------------------------------------------------------
+The Chapel language is still in-development (version 1.11.0), so there are occasional hiccups with performance and language features.
+The more information you give the Chapel development team about issues you encounter or features you would like to see, the better the language becomes.
+Feel free to email the team and other developers through the [sourceforge email lists](https://sourceforge.net/p/chapel/mailman).
+
+If you're really interested in the development of the compiler or contributing to the project, 
+[check out the master Github repository](https://github.com/chapel-lang/chapel).
+It is under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0).
+
+Installing the Compiler
+-----------------------
+Chapel can be built and installed on your average 'nix machine (and cygwin).
+[Download the latest release version](https://github.com/chapel-lang/chapel/releases/)
+and its as easy as 
+ 1. ```tar -xvf chapel-1.11.0.tar.gz```
+ 2. ```cd chapel-1.11.0```
+ 3. ```make```
+ 4. ```source util/setchplenv.bash # or .sh or .csh or .fish```
+
+You will need to ```source util/setchplenv.EXT``` from the chapel directory every time your terminal starts so its suggested that you drop that command in a script that will get executed on startup (like .bashrc).
+
+Chapel is easily installed with Brew for OS X
+ 1. ```brew update```
+ 2. ```brew install chapel```
+
+Compiling Code
+--------------
+Builds like other compilers
+```chpl myFile.chpl -o myExe``
+
+A notable argument:
+ * ``--fast``: enables a number of optimizations and disables array bounds checks. Only enable when application is stable.
