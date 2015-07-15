@@ -703,7 +703,7 @@ This tutorial is for people who want to learn the ropes of chapel without having
 It won't teach you how to develop amazingly performant code, and it's not exhaustive. 
 Refer to the [language specification](http://chapel.cray.com/language.html) and the [library documentation](http://chapel.cray.com/docs/latest/) for more details.
 
-Occasionally check back here and on the Chapel site to see if more topics have been added or more tutorials created.
+Occasionally check back here and on the [Chapel site](http://chapel.cray.com) to see if more topics have been added or more tutorials created.
 
 Your input, questions, and discoveries are important to the developers!
 -----------------------------------------------------------------------
@@ -734,7 +734,7 @@ Chapel is easily installed with Brew for OS X
 Compiling Code
 --------------
 Builds like other compilers
-```chpl myFile.chpl -o myExe``
+```chpl myFile.chpl -o myExe```
 
 A notable argument:
- * ``--fast``: enables a number of optimizations and disables array bounds checks. Only enable when application is stable.
+ * ``--fast``: enables a number of optimizations and disables array bounds checks. Should only enable when application is stable.
