@@ -1,11 +1,11 @@
 ---
-language: chapel
+language: Chapel
 filename: learnchapel.chpl
 contributors:
     - ["Ian J. Bertolacci", "http://www.cs.colostate.edu/~ibertola/"]
 ---
 
-You can read all about chapel at [Cray's official Chapel website](http://chapel.cray.com).
+You can read all about Chapel at [Cray's official Chapel website](http://chapel.cray.com).
 In short, Chapel is an open-source, high-productivity, parallel-programming language in development at Cray Inc., and is designed to run on multi-core PCs as well as multi-kilocore supercomputers.
 
 More information and support can be found at the bottom of this document.
@@ -117,7 +117,7 @@ a = thisInt ^ thatInt; // Bitwise exclusive-or
 a += thisInt;          // Addition-equals ( a = a + thisInt;)
 a *= thatInt;          // Times-equals ( a = a * thatInt; )
 b &&= thatBool;        // Logical-and-equals ( b = b && thatBool; )
-a <<= 3;               // LEft-bit-shift-equals ( a = a << 10; )
+a <<= 3;               // Left-bit-shift-equals ( a = a << 10; )
 // and many, many more.
 // Unlike other C family languages there are no 
 // pre/post-increment/decrement operators like
@@ -190,7 +190,7 @@ if ( a % 3 == 0 ) {
 var maximum = if ( thisInt < thatInt ) then thatInt else thisInt;
 
 // Select statements are much like switch statements in other languages
-// However, Select statements dont cascade like in C or Java
+// However, Select statements don't cascade like in C or Java
 var inputOption = "anOption";
 select( inputOption ){
   when "anOption" do writeln( "Chose 'anOption'" );
@@ -201,8 +201,6 @@ select( inputOption ){
   otherwise { 
     writeln( "Any other Input" );
     writeln( "the otherwise case doesn't need a do if the body is one line" );
-    writeln( "Oh, and when statements dont cascade like the case statements" );
-    writeln( "of other languages" );
   }
 }
 
@@ -246,7 +244,7 @@ for x in 1..10 {
 // define an index set that can be iterated over.
 // Ranges are single dimensional
 // Domains can be multi-dimensional and can 
-// represent indicies of different types as well.
+// represent indices of different types as well.
 // They are first-class citizen types, and can be assigned into variables
 var range1to10: range = 1..10;  // 1, 2, 3, ..., 10
 var range2to11 = 2..11; // 2, 3, 4, ..., 11
@@ -452,7 +450,7 @@ writeln( myChangingArray );
 
 // We can query the type of arguments to generic procedures
 // Here we define a procedure that takes two arguments of
-// the same type, yet we dont define what that type is.
+// the same type, yet we don't define what that type is.
 proc genericProc( arg1 : ?valueType, arg2 : valueType ): void {
   select( valueType ){
     when int do writeln( arg1, " and ", arg2, " are ints" );
@@ -620,10 +618,10 @@ class GenericClass {
   }
   
   // Copy constructor
-  // Note: We still have to put the the type as an argument, but we can 
+  // Note: We still have to put the type as an argument, but we can 
   // default to the type of the other object using the query (?) operator
   // Further, we can take advantage of this to allow our copy constructor
-  // to copy classes of different types
+  // to copy classes of different types and cast on the fly
   proc GenericClass( other : GenericClass(?otherType), 
                      type classType = otherType ) {
     this.classDomain = other.classDomain;
@@ -762,7 +760,7 @@ timer.clear( );
 ```
 Who is this tutorial for?
 -------------------------
-This tutorial is for people who want to learn the ropes of chapel without having to hear about what fiber mixture the ropes are, or how they were braided, or how the braid configurations differ between one another.
+This tutorial is for people who want to learn the ropes of Chapel without having to hear about what fiber mixture the ropes are, or how they were braided, or how the braid configurations differ between one another.
 It won't teach you how to develop amazingly performant code, and it's not exhaustive. 
 Refer to the [language specification](http://chapel.cray.com/language.html) and the [library documentation](http://chapel.cray.com/docs/latest/) for more details.
 
@@ -793,22 +791,22 @@ Installing the Compiler
 -----------------------
 Chapel can be built and installed on your average 'nix machine (and cygwin).
 [Download the latest release version](https://github.com/chapel-lang/chapel/releases/)
-and its as easy as 
- 1. ```tar -xvf chapel-1.11.0.tar.gz```
- 2. ```cd chapel-1.11.0```
- 3. ```make```
- 4. ```source util/setchplenv.bash # or .sh or .csh or .fish```
+and its as easy as
+ 1. `tar -xvf chapel-1.11.0.tar.gz`
+ 2. `cd chapel-1.11.0`
+ 3. `make`
+ 4. `source util/setchplenv.bash # or .sh or .csh or .fish`
 
-You will need to ```source util/setchplenv.EXT``` from the chapel directory every time your terminal starts so its suggested that you drop that command in a script that will get executed on startup (like .bashrc).
+You will need to `source util/setchplenv.EXT` from within the Chapel directory (`$CHPL_HOME`) every time your terminal starts so its suggested that you drop that command in a script that will get executed on startup (like .bashrc).
 
 Chapel is easily installed with Brew for OS X
- 1. ```brew update```
- 2. ```brew install chapel```
+ 1. `brew update`
+ 2. `brew install chapel`
 
 Compiling Code
 --------------
 Builds like other compilers
-```chpl myFile.chpl -o myExe```
 
-A notable argument:
- * ``--fast``: enables a number of optimizations and disables array bounds checks. Should only enable when application is stable.
+`chpl myFile.chpl -o myExe`
+
+A notable argument, `--fast` enables a number of optimizations and disables array bounds checks. Should only enable when application is stable.
