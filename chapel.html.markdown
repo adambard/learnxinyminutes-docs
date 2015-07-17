@@ -1,11 +1,11 @@
 ---
-language: chapel
+language: Chapel
 filename: learnchapel.chpl
 contributors:
     - ["Ian J. Bertolacci", "http://www.cs.colostate.edu/~ibertola/"]
 ---
 
-You can read all about chapel at [Cray's official Chapel website](http://chapel.cray.com).
+You can read all about Chapel at [Cray's official Chapel website](http://chapel.cray.com).
 In short, Chapel is an open-source, high-productivity, parallel-programming language in development at Cray Inc., and is designed to run on multi-core PCs as well as multi-kilocore supercomputers.
 
 More information and support can be found at the bottom of this document.
@@ -762,7 +762,7 @@ timer.clear( );
 ```
 Who is this tutorial for?
 -------------------------
-This tutorial is for people who want to learn the ropes of chapel without having to hear about what fiber mixture the ropes are, or how they were braided, or how the braid configurations differ between one another.
+This tutorial is for people who want to learn the ropes of Chapel without having to hear about what fiber mixture the ropes are, or how they were braided, or how the braid configurations differ between one another.
 It won't teach you how to develop amazingly performant code, and it's not exhaustive. 
 Refer to the [language specification](http://chapel.cray.com/language.html) and the [library documentation](http://chapel.cray.com/docs/latest/) for more details.
 
@@ -793,22 +793,27 @@ Installing the Compiler
 -----------------------
 Chapel can be built and installed on your average 'nix machine (and cygwin).
 [Download the latest release version](https://github.com/chapel-lang/chapel/releases/)
-and its as easy as 
- 1. ```tar -xvf chapel-1.11.0.tar.gz```
- 2. ```cd chapel-1.11.0```
- 3. ```make```
- 4. ```source util/setchplenv.bash # or .sh or .csh or .fish```
+and its as easy as
+
+1. ```tar -xvf chapel-1.11.0.tar.gz```
+
+2. ```cd chapel-1.11.0```
+
+3. ```make```
+
+4. ```source util/setchplenv.bash # or .sh or .csh or .fish```
 
 You will need to ```source util/setchplenv.EXT``` from the chapel directory every time your terminal starts so its suggested that you drop that command in a script that will get executed on startup (like .bashrc).
 
 Chapel is easily installed with Brew for OS X
- 1. ```brew update```
- 2. ```brew install chapel```
+
+1. ```brew update```
+
+2. ```brew install chapel```
 
 Compiling Code
 --------------
 Builds like other compilers
 ```chpl myFile.chpl -o myExe```
 
-A notable argument:
- * ``--fast``: enables a number of optimizations and disables array bounds checks. Should only enable when application is stable.
+A notable argument, ``--fast`` enables a number of optimizations and disables array bounds checks. Should only enable when application is stable.
