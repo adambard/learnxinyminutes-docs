@@ -3,7 +3,6 @@ language: chapel
 filename: learnchapel.chpl
 contributors:
     - ["Ian J. Bertolacci", "http://www.cs.colostate.edu/~ibertola/"]
-lang: en
 ---
 
 You can read all about chapel at [Cray's official Chapel website](http://chapel.cray.com).
@@ -11,7 +10,7 @@ In short, Chapel is an open-source, high-productivity, parallel-programming lang
 
 More information and support can be found at the bottom of this document.
 
-```chapel
+```c
 // Comments are C-family style
 // one line comment
 /*
