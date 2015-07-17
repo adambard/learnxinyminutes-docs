@@ -797,7 +797,7 @@ and its as easy as
  3. `make`
  4. `source util/setchplenv.bash # or .sh or .csh or .fish`
 
-You will need to `source util/setchplenv.EXT` from the chapel directory every time your terminal starts so its suggested that you drop that command in a script that will get executed on startup (like .bashrc).
+You will need to `source util/setchplenv.EXT` from within the Chapel directory (`$CHPL_HOME`) every time your terminal starts so its suggested that you drop that command in a script that will get executed on startup (like .bashrc).
 
 Chapel is easily installed with Brew for OS X
  1. `brew update`
