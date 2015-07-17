@@ -327,8 +327,8 @@ prints:
     mouse is a mammal
 """
 for animal in ["dog", "cat", "mouse"]:
-    # You can use % to interpolate formatted strings
-    print "%s is a mammal" % animal
+    # You can use {0} to interpolate formatted strings. (See above.)
+    print "{0} is a mammal".format(animal)
 
 """
 "range(number)" returns a list of numbers
@@ -387,7 +387,7 @@ else:   # Optional clause to the try/except block. Must follow all except blocks
 
 # Use "def" to create new functions
 def add(x, y):
-    print "x is %s and y is %s" % (x, y)
+    print "x is {0} and y is {1}".format(x, y)
     return x + y    # Return values with a return statement
 
 # Calling functions with parameters
@@ -497,7 +497,7 @@ class Human(object):
 
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
-        return "%s: %s" % (self.name, msg)
+        return "{0}: {1}".format(self.name, msg)
 
     # A class method is shared among all instances
     # They are called with the calling class as the first argument
