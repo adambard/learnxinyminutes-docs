@@ -1,6 +1,6 @@
 ---
 language: Chapel
-filename: learnchapel.chpl
+filename: learnChapel.chpl
 contributors:
     - ["Ian J. Bertolacci", "http://www.cs.colostate.edu/~ibertola/"]
 ---
@@ -27,7 +27,7 @@ writeln( "There are ", 3, " commas (\",\") in this line of code" );
 stdout.writeln( "This goes to standard output (just like plain writeln( ) does)");
 stderr.writeln( "This goes to standard error" );
 
-// Variables dont have to be explicitly typed as long as 
+// Variables don't have to be explicitly typed as long as 
 // the compiler can figure out the type that it will hold.
 var myVar = 10; // 10 is an int, so myVar is implicitly an int
 myVar = -10;
@@ -540,7 +540,7 @@ class MyClass {
   var memberInt : int; 
   var memberBool : bool = true; 
 
-  // Classes have default constructors that dont need to be coded (see below)
+  // Classes have default constructors that don't need to be coded (see below)
   // Our explicitly defined constructor
   proc MyClass( val : real ){
     this.memberInt = ceil( val ): int;
@@ -771,7 +771,7 @@ Occasionally check back here and on the [Chapel site](http://chapel.cray.com) to
 ### What this tutorial is lacking:
 
  * Modules and standard modules
- * Synchronize and atomic variables
+ * Synchronize variables and atomic operations
  * Multiple Locales (distributed memory system)
  * ```proc main(){ ... }```
  * Records
