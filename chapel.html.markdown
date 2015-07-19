@@ -5,7 +5,7 @@ contributors:
     - ["Ian J. Bertolacci", "http://www.cs.colostate.edu/~ibertola/"]
 ---
 
-You can read all about chapel at [Cray's official Chapel website](http://chapel.cray.com).
+You can read all about Chapel at [Cray's official Chapel website](http://chapel.cray.com).
 In short, Chapel is an open-source, high-productivity, parallel-programming language in development at Cray Inc., and is designed to run on multi-core PCs as well as multi-kilocore supercomputers.
 
 More information and support can be found at the bottom of this document.
@@ -27,7 +27,7 @@ writeln( "There are ", 3, " commas (\",\") in this line of code" );
 stdout.writeln( "This goes to standard output (just like plain writeln( ) does)");
 stderr.writeln( "This goes to standard error" );
 
-// Variables dont have to be explicitly typed as long as 
+// Variables don't have to be explicitly typed as long as 
 // the compiler can figure out the type that it will hold.
 var myVar = 10; // 10 is an int, so myVar is implicitly an int
 myVar = -10;
@@ -117,7 +117,7 @@ a = thisInt ^ thatInt; // Bitwise exclusive-or
 a += thisInt;          // Addition-equals ( a = a + thisInt;)
 a *= thatInt;          // Times-equals ( a = a * thatInt; )
 b &&= thatBool;        // Logical-and-equals ( b = b && thatBool; )
-a <<= 3;               // LEft-bit-shift-equals ( a = a << 10; )
+a <<= 3;               // Left-bit-shift-equals ( a = a << 10; )
 // and many, many more.
 // Unlike other C family languages there are no 
 // pre/post-increment/decrement operators like
@@ -190,7 +190,7 @@ if ( a % 3 == 0 ) {
 var maximum = if ( thisInt < thatInt ) then thatInt else thisInt;
 
 // Select statements are much like switch statements in other languages
-// However, Select statements dont cascade like in C or Java
+// However, Select statements don't cascade like in C or Java
 var inputOption = "anOption";
 select( inputOption ){
   when "anOption" do writeln( "Chose 'anOption'" );
@@ -201,8 +201,6 @@ select( inputOption ){
   otherwise { 
     writeln( "Any other Input" );
     writeln( "the otherwise case doesn't need a do if the body is one line" );
-    writeln( "Oh, and when statements dont cascade like the case statements" );
-    writeln( "of other languages" );
   }
 }
 
@@ -246,7 +244,7 @@ for x in 1..10 {
 // define an index set that can be iterated over.
 // Ranges are single dimensional
 // Domains can be multi-dimensional and can 
-// represent indicies of different types as well.
+// represent indices of different types as well.
 // They are first-class citizen types, and can be assigned into variables
 var range1to10: range = 1..10;  // 1, 2, 3, ..., 10
 var range2to11 = 2..11; // 2, 3, 4, ..., 11
@@ -452,7 +450,7 @@ writeln( myChangingArray );
 
 // We can query the type of arguments to generic procedures
 // Here we define a procedure that takes two arguments of
-// the same type, yet we dont define what that type is.
+// the same type, yet we don't define what that type is.
 proc genericProc( arg1 : ?valueType, arg2 : valueType ): void {
   select( valueType ){
     when int do writeln( arg1, " and ", arg2, " are ints" );
@@ -542,7 +540,7 @@ class MyClass {
   var memberInt : int; 
   var memberBool : bool = true; 
 
-  // Classes have default constructors that dont need to be coded (see below)
+  // Classes have default constructors that don't need to be coded (see below)
   // Our explicitly defined constructor
   proc MyClass( val : real ){
     this.memberInt = ceil( val ): int;
@@ -620,10 +618,10 @@ class GenericClass {
   }
   
   // Copy constructor
-  // Note: We still have to put the the type as an argument, but we can 
+  // Note: We still have to put the type as an argument, but we can 
   // default to the type of the other object using the query (?) operator
   // Further, we can take advantage of this to allow our copy constructor
-  // to copy classes of different types
+  // to copy classes of different types and cast on the fly
   proc GenericClass( other : GenericClass(?otherType), 
                      type classType = otherType ) {
     this.classDomain = other.classDomain;
@@ -773,7 +771,7 @@ Occasionally check back here and on the [Chapel site](http://chapel.cray.com) to
 ### What this tutorial is lacking:
 
  * Modules and standard modules
- * Synchronize and atomic variables
+ * Synchronize variables and atomic operations
  * Multiple Locales (distributed memory system)
  * ```proc main(){ ... }```
  * Records
@@ -805,7 +803,7 @@ and its as easy as
  3. ```make```
  4. ```source util/setchplenv.bash # or .sh or .csh or .fish```
 
-You will need to ```source util/setchplenv.EXT``` from the chapel directory every time your terminal starts so its suggested that you drop that command in a script that will get executed on startup (like .bashrc).
+You will need to `source util/setchplenv.EXT` from within the Chapel directory (`$CHPL_HOME`) every time your terminal starts so its suggested that you drop that command in a script that will get executed on startup (like .bashrc).
 
 Chapel is easily installed with Brew for OS X
 
