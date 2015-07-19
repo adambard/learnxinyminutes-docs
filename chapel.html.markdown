@@ -1,6 +1,6 @@
 ---
-language: Chapel
-filename: learnChapel.chpl
+language: chapel
+filename: learnchapel.chpl
 contributors:
     - ["Ian J. Bertolacci", "http://www.cs.colostate.edu/~ibertola/"]
 ---
