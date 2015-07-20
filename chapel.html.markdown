@@ -757,6 +757,83 @@ timer.clear( );
 [ val in myBigArray ] val = 1 / val; 
 // or iterate over indicies
 [ idx in myBigArray.domain ] myBigArray[idx] = -myBigArray[idx]; 
+
+proc countdown( seconds: int ){
+  for i in 1..seconds by -1 {
+    writeln( i );
+    sleep( 1 );
+  }
+}
+
+// sync vars have two states: empty and full.
+// If you read an empty variable or write a full variable, you are waited
+// until the variable is full or empty again
+var someSyncVar$: sync int; // varName$ is a convention not a law.
+sync {
+  begin {
+    writeln( "Waiting to read" );
+    var read_sync = someSyncVar$;
+    writeln( "value is ", read_sync );
+  }
+
+  begin {
+    writeln( "Writing in..." );
+    countdown( 3 );
+    someSyncVar$ = 123;    
+  }
+}
+
+// single vars can only be written once. A read on an unwritten single results
+// in a wait, but when the variable has a value it can be read indefinitely
+var someSingleVar$: single int; // varName$ is a convention not a law.
+sync {
+  begin {
+    writeln( "Waiting to read" );
+    for i in 1..5 {
+      var read_single = someSingleVar$;
+      writeln( i,"th time around an the value is ", read_single );
+    }
+  }
+
+  begin {
+    writeln( "Writing in..." );
+    countdown( 3 );
+    someSingleVar$ = 5; // first and only write ever.
+  }
+}
+
+// atomic variables can be of type bool, int, uint, and real of any size.
+var uranium: atomic int;
+uranium.write( 238 ); // atomically write a variable
+writeln( uranium.read() ); // atomically read a variable
+// operations are described as functions, you could define your own operators.
+uranium.sub( 3 ); // atomically subtract a variable
+writeln( uranium.read() );
+var replaceWith = 239;
+var was = uranium.exchange( replaceWith ); 
+writeln( "uranium was ", was, " but is now ", replaceWith );
+var isEqualTo = 235;
+if uranium.compareExchange( isEqualTo, replaceWith ) {
+  writeln( "uranium was equal to ", isEqualTo, 
+           " so replaced value with ", replaceWith );
+} else {
+  writeln( "uranium was not equal to ", isEqualTo, 
+           " value stays the same...  whatever it was" );
+}
+
+sync {
+  begin {
+    writeln( "Waiting to for uranium to be ", isEqualTo );
+    uranium.waitFor( isEqualTo );
+    writeln( "Uranium was set (by someone) to ", isEqualTo );
+  }
+
+  begin {
+    writeln( "Waiting to write uranium to ", isEqualTo );
+    countdown( 3 );
+    uranium.write( isEqualTo );
+  }
+}
 ```
 
 Who is this tutorial for?
@@ -771,7 +848,6 @@ Occasionally check back here and on the [Chapel site](http://chapel.cray.com) to
 ### What this tutorial is lacking:
 
  * Modules and standard modules
- * Synchronize variables and atomic operations
  * Multiple Locales (distributed memory system)
  * ```proc main(){ ... }```
  * Records
