@@ -501,7 +501,7 @@ writeln( false ^ true  );
 writeln( true  ^ false );
 writeln( false ^ false );
 
-// Define a * operator on any two types that returns a tupe of those types
+// Define a * operator on any two types that returns a tuple of those types
 proc *( left : ?ltype, right : ?rtype): ( ltype, rtype ){
   return (left, right );
 }
