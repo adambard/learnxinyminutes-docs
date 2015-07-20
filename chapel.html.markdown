@@ -35,7 +35,7 @@ var mySecondVar = myVar;
 // var anError; // this would be a compile time error.
 
 // We can (and should) explicitly type things
-var myThirdVar: real; // define mySecondVar as a real
+var myThirdVar: real;
 var myFourthVar: real = -1.234;
 myThirdVar = myFourthVar;
 
