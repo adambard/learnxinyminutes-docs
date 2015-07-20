@@ -32,7 +32,7 @@ stderr.writeln( "This goes to standard error" );
 var myVar = 10; // 10 is an int, so myVar is implicitly an int
 myVar = -10;
 var mySecondVar = myVar;
-// var anError; // this would be a compile time error.
+// var anError; // this would be a compile-time error.
 
 // We can (and should) explicitly type things
 var myThirdVar: real;
@@ -57,11 +57,11 @@ var my64Real: real(64) = 1.516; // 64 bit (8 bytes) sized real
 var intFromReal = myReal : int;
 var intFromReal2: int = myReal : int;
 
-// consts are constants, they cannot be changed after set in runtime
+// consts are constants, they cannot be changed after set in runtime.
 const almostPi: real = 22.0/7.0;
 
-// params are constants whose value must be known statically at compile time
-// Like consts, they cannot be changed during runtime
+// params are constants whose value must be known statically at compile-time
+// Their value cannot be changed.
 param compileTimeConst: int = 16;
 
 // The config modifier allows values to be set at the command line
@@ -71,10 +71,10 @@ config var varCmdLineArg: int = -123;
 config const constCmdLineArg: int = 777;
 // Set with --VarName=Value or --VarName Value at run time
 
-// config params can be set at compile time
+// config params can be set/changed at compile-time
 config param paramCmdLineArg: bool = false;
+// Set config with --set paramCmdLineArg=value at compile-time
 writeln( varCmdLineArg, ", ", constCmdLineArg, ", ", paramCmdLineArg );
-// Set config with --set paramCmdLineArg=value at compile time
 
 // refs operate much like a reference in C++
 var actual = 10;
@@ -465,7 +465,7 @@ genericProc( 1.0+2.0i, 3.0+4.0i );
 
 // We can also enforce a form of polymorphism with the 'where' clause
 // This allows the compiler to decide which function to use.
-// Note: that means that all information needs to be known at compile time. 
+// Note: that means that all information needs to be known at compile-time. 
 // The param modifier on the arg is used to enforce this constraint.
 proc whereProc( param N : int ): void
  where ( N > 0 ) {
@@ -896,6 +896,7 @@ Builds like other compilers:
 
 ```chpl myFile.chpl -o myExe```
 
-A notable argument:
+Notable arguments:
 
  * ``--fast``: enables a number of optimizations and disables array bounds checks. Should only enable when application is stable.
+ * ```--set <Symbol Name>=<Value>```: set config param <Symbol Name> to <Value> at compile-time
