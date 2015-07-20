@@ -765,6 +765,42 @@ proc countdown( seconds: int ){
   }
 }
 
+// Atomic variables, common to many languages, are ones whose operations
+// occur uninterupted. Multiple threads can both modify atomic variables
+// and can know that their values are safe.
+// Chapel atomic variables can be of type bool, int, uint, and real.
+var uranium: atomic int;
+uranium.write( 238 ); // atomically write a variable
+writeln( uranium.read() ); // atomically read a variable
+// operations are described as functions, you could define your own operators.
+uranium.sub( 3 ); // atomically subtract a variable
+writeln( uranium.read() );
+var replaceWith = 239;
+var was = uranium.exchange( replaceWith ); 
+writeln( "uranium was ", was, " but is now ", replaceWith );
+var isEqualTo = 235;
+if uranium.compareExchange( isEqualTo, replaceWith ) {
+  writeln( "uranium was equal to ", isEqualTo, 
+           " so replaced value with ", replaceWith );
+} else {
+  writeln( "uranium was not equal to ", isEqualTo, 
+           " value stays the same...  whatever it was" );
+}
+
+sync {
+  begin {
+    writeln( "Waiting to for uranium to be ", isEqualTo );
+    uranium.waitFor( isEqualTo );
+    writeln( "Uranium was set (by someone) to ", isEqualTo );
+  }
+
+  begin {
+    writeln( "Waiting to write uranium to ", isEqualTo );
+    countdown( 3 );
+    uranium.write( isEqualTo );
+  }
+}
+
 // sync vars have two states: empty and full.
 // If you read an empty variable or write a full variable, you are waited
 // until the variable is full or empty again
@@ -799,39 +835,6 @@ sync {
     writeln( "Writing in..." );
     countdown( 3 );
     someSingleVar$ = 5; // first and only write ever.
-  }
-}
-
-// atomic variables can be of type bool, int, uint, and real of any size.
-var uranium: atomic int;
-uranium.write( 238 ); // atomically write a variable
-writeln( uranium.read() ); // atomically read a variable
-// operations are described as functions, you could define your own operators.
-uranium.sub( 3 ); // atomically subtract a variable
-writeln( uranium.read() );
-var replaceWith = 239;
-var was = uranium.exchange( replaceWith ); 
-writeln( "uranium was ", was, " but is now ", replaceWith );
-var isEqualTo = 235;
-if uranium.compareExchange( isEqualTo, replaceWith ) {
-  writeln( "uranium was equal to ", isEqualTo, 
-           " so replaced value with ", replaceWith );
-} else {
-  writeln( "uranium was not equal to ", isEqualTo, 
-           " value stays the same...  whatever it was" );
-}
-
-sync {
-  begin {
-    writeln( "Waiting to for uranium to be ", isEqualTo );
-    uranium.waitFor( isEqualTo );
-    writeln( "Uranium was set (by someone) to ", isEqualTo );
-  }
-
-  begin {
-    writeln( "Waiting to write uranium to ", isEqualTo );
-    countdown( 3 );
-    uranium.write( isEqualTo );
   }
 }
 ```
