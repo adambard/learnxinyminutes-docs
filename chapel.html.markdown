@@ -65,7 +65,7 @@ const almostPi: real = 22.0/7.0;
 param compileTimeConst: int = 16;
 
 // The config modifier allows values to be set at the command line
-// and is much easier that the usual getOpts debacle 
+// and is much easier than the usual getOpts debacle 
 // config vars and consts can be changed through the command line at run time
 config var varCmdLineArg: int = -123; 
 config const constCmdLineArg: int = 777;
