@@ -214,7 +214,7 @@ length(a) # => 8
 # Кортеж — неизменяемая структура.
 tup = (1, 2, 3) # => (1,2,3) # кортеж (Int64,Int64,Int64).
 tup[1] # => 1
-try:
+try
     tup[1] = 3 # => ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
 catch e
     println(e)
