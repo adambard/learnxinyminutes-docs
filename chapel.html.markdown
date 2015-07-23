@@ -837,6 +837,25 @@ sync {
     someSingleVar$ = 5; // first and only write ever.
   }
 }
+
+// we can define the operations + * & | ^ && || min max minloc maxloc
+// over an entire array using scans and reductions
+// Reductions apply the operation over the entire array and
+// result in a single value
+var listOfValues: [1..10] int = [456,354,15,57,36,45,15,8,678,2];
+var sumOfValues = + reduce listOfValues;
+var maxValue = max reduce listOfValues; // give just max value
+// gives max value and index of the max value
+var (theMaxValue, idxOfMax) = maxloc reduce zip(listOfValues, listOfValues.domain);
+writeln( (sumOfValues, maxValue, idxOfMax, listOfValues[ idxOfMax ] ) );
+
+// Scans apply the operation incrementally and return an array of the
+// value of the operation at that index as it progressed through the 
+// array from array.domain.low to array.domain.high
+var runningSumOfValues = + scan listOfValues;
+var maxScan = max scan listOfValues;
+writeln( runningSumOfValues );
+writeln( maxScan );
 ```
 
 Who is this tutorial for?
