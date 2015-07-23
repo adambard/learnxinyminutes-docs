@@ -642,6 +642,7 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 
 ### Free Online
 
+* [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
 * [Ideas for Python Projects](http://pythonpracticeprojects.com)
