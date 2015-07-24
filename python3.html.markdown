@@ -394,15 +394,15 @@ our_iterable[1]  # Raises a TypeError
 our_iterator = iter(our_iterable)
 
 # Our iterator is an object that can remember the state as we traverse through it.
-# We get the next object by calling the __next__ function.
-our_iterator.__next__()  #=> "one"
+# We get the next object with "next()".
+next(our_iterator)  #=> "one"
 
-# It maintains state as we call __next__.
-our_iterator.__next__()  #=> "two"
-our_iterator.__next__()  #=> "three"
+# It maintains state as we iterate.
+next(our_iterator)  #=> "two"
+next(our_iterator)  #=> "three"
 
 # After the iterator has returned all of its data, it gives you a StopIterator Exception
-our_iterator.__next__() # Raises StopIteration
+next(our_iterator) # Raises StopIteration
 
 # You can grab all the elements of an iterator by calling list() on it.
 list(filled_dict.keys())  #=> Returns ["one", "two", "three"]
