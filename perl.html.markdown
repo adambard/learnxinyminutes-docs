@@ -12,16 +12,16 @@ Perl 5 is a highly capable, feature-rich programming language with over 25 years
 Perl 5 runs on over 100 platforms from portables to mainframes and is suitable for both rapid prototyping and large scale development projects.
 
 ```perl
-# Single line comments start with a number symbol.
+# Single line comments start with a number sign.
 
 
 #### Perl variable types
 
-#  Variables begin with the $ symbol.
+#  Variables begin with a sigil, which is a symbol showing the type.
 #  A valid variable name starts with a letter or underscore,
 #  followed by any number of letters, numbers, or underscores.
 
-### Perl has three main variable types: scalars, arrays, and hashes.
+### Perl has three main variable types: $scalar, @array, and %hash.
 
 ## Scalars
 #  A scalar represents a single value:
