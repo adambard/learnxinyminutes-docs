@@ -968,9 +968,8 @@ Occasionally check back here and on the [Chapel site](http://chapel.cray.com) to
 
 ### What this tutorial is lacking:
 
- * Modules and standard modules
+ * Exposition of the standard modules
  * Multiple Locales (distributed memory system)
- * ```proc main(){ ... }```
  * Records
  * Whole/sliced array assignment
  * Range and domain slicing
@@ -994,26 +993,28 @@ Chapel can be built and installed on your average 'nix machine (and cygwin).
 [Download the latest release version](https://github.com/chapel-lang/chapel/releases/)
 and its as easy as 
 
- 1. ```tar -xvf chapel-1.11.0.tar.gz```
- 2. ```cd chapel-1.11.0```
- 3. ```make```
- 4. ```source util/setchplenv.bash # or .sh or .csh or .fish```
+ 1. `tar -xvf chapel-1.11.0.tar.gz`
+ 2. `cd chapel-1.11.0`
+ 3. `make`
+ 4. `source util/setchplenv.bash # or .sh or .csh or .fish`
 
 You will need to `source util/setchplenv.EXT` from within the Chapel directory (`$CHPL_HOME`) every time your terminal starts so its suggested that you drop that command in a script that will get executed on startup (like .bashrc).
 
 Chapel is easily installed with Brew for OS X
 
- 1. ```brew update```
- 2. ```brew install chapel```
+ 1. `brew update`
+ 2. `brew install chapel`
 
 Compiling Code
 --------------
 
 Builds like other compilers:
 
-```chpl myFile.chpl -o myExe```
+`chpl myFile.chpl -o myExe`
 
 Notable arguments:
 
- * ``--fast``: enables a number of optimizations and disables array bounds checks. Should only enable when application is stable.
- * ```--set <Symbol Name>=<Value>```: set config param <Symbol Name> to <Value> at compile-time
+ * `--fast`: enables a number of optimizations and disables array bounds checks. Should only enable when application is stable.
+ * `--set <Symbol Name>=<Value>`: set config param `<Symbol Name>` to `<Value>` at compile-time.
+ * `--main-module <Module Name>`: use the main() procedure found in the module `<Module Name>` as the executable's main.
+ * `--module-dir <Directory>`: includes `<Directory` in the module search path.
