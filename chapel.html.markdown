@@ -533,11 +533,13 @@ iter oddsThenEvens( N: int ): int {
 for i in oddsThenEvens( 10 ) do write( i, ", " );
 writeln( );
 
-// The 'zippered' iterator is an iterator that takes two or more iterators that 
-// have the same number of iterations and zips them together into one stream
-                        // Ranges have implicit iterators
-for (odd, even) in zip( 1..#10 by 2, 2..#10 by 2 ) do 
-  writeln( (odd, even) );
+// We can zipper together two or more iterators (who have the same number 
+// of iterations)  using zip() to create a single zipped iterator, where each 
+// iteration of the zipped iterator yields a tuple of one value yielded 
+// from each iterator.
+                                 // Ranges have implicit iterators
+for (positive, negative) in zip( 1..5, -5..-1) do 
+  writeln( (positive, negative) );
 
 // Classes are similar to those in C++ and Java.
 // They currently lack privatization
