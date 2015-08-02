@@ -683,7 +683,7 @@ module OurModule {
   // We can use modules inside of other modules.
   use Time;
   
-  // We'll use this a procedure in the parallelism section.
+  // We'll use this procedure in the parallelism section.
   proc countdown( seconds: int ){
     for i in 1..seconds by -1 {
       writeln( i );
@@ -691,7 +691,7 @@ module OurModule {
     }
   } 
   
-  // Submodule of Ourmodule 
+  // Submodules of OurModule 
   // It is possible to create arbitrarily deep module nests.
   module ChildModule {
     proc foo(){
@@ -726,7 +726,7 @@ foo();   // Less explicit call on ChildModule.foo()
 proc main(){
 
   // Parallelism
-  // In other languages, parallelism is typically this is done with 
+  // In other languages, parallelism is typically done with 
   // complicated libraries and strange class structure hierarchies.
   // Chapel has it baked right into the language.
 
@@ -820,13 +820,6 @@ proc main(){
 
   // or iterate over indicies
   [ idx in myBigArray.domain ] myBigArray[idx] = -myBigArray[idx]; 
-
-  proc countdown( seconds: int ){
-    for i in 1..seconds by -1 {
-      writeln( i );
-      sleep( 1 );
-    }
-  }
 
   // Atomic variables, common to many languages, are ones whose operations
   // occur uninterupted. Multiple threads can both modify atomic variables
