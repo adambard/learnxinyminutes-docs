@@ -673,234 +673,288 @@ var copyNewTypeList = new GenericClass( realList, int );
 for value in copyNewTypeList do write( value, ", " );
 writeln( );
 
-// Parallelism
-// In other languages, parallelism is typically this is done with 
-// complicated libraries and strange class structure hierarchies.
-// Chapel has it baked right into the language.
 
-// A begin statement will spin the body of that statement off into one new task.
-// A sync statement will ensure that the progress of the main 
-// task will not progress until the children have synced back up.
-sync {
-  begin { // Start of new task's body
-    var a = 0;
-    for i in 1..1000 do a += 1;
-    writeln( "Done: ", a);
-  } // End of new tasks body
-  writeln( "spun off a task!");
-}
-writeln( "Back together" );
+// Modules are Chapel's way of managing name spaces.
+// The files containing these modules do not need to be named after the modules
+// (as is with Java), but files implicitly name modules.
+// In this case, this file implicitly names the 'learnchapel' module
 
-proc printFibb( n: int ){
-  writeln( "fibonacci(",n,") = ", fibonacci( n ) );
-}
-
-// A cobegin statement will spin each statement of the body into one new task
-cobegin {
-  printFibb( 20 ); // new task
-  printFibb( 10 ); // new task
-  printFibb( 5 );  // new task
-  { 
-    // This is a nested statement body and thus is a single statement
-    // to the parent statement and is executed by a single task
-    writeln( "this gets" );
-    writeln( "executed as" );
-    writeln( "a whole" );
+module OurModule {
+  // We can use modules inside of other modules.
+  use Time;
+  
+  // We'll use this a procedure in the parallelism section.
+  proc countdown( seconds: int ){
+    for i in 1..seconds by -1 {
+      writeln( i );
+      sleep( 1 );
+    }
+  } 
+  
+  // Submodule of Ourmodule 
+  // It is possible to create arbitrarily deep module nests.
+  module ChildModule {
+    proc foo(){
+      writeln( "ChildModule.foo()");
+    }
   }
-}
-// Notice here that the prints from each statement may happen in any order.
-
-// Coforall loop will create a new task for EACH iteration
-var num_tasks = 10; // Number of tasks we want
-coforall taskID in 1..#num_tasks {
-  writeln( "Hello from task# ", taskID );
-}
-// Again we see that prints happen in any order.
-// NOTE! coforall should be used only for creating tasks!
-// Using it to iterating over a structure is very a bad idea!
-
-// forall loops are another parallel loop, but only create a smaller number 
-// of tasks, specifically --dataParTasksPerLocale=number of task
-forall i in 1..100 {
-  write( i, ", ");
-}
-writeln( );
-// Here we see that there are sections that are in order, followed by 
-// a section that would not follow ( e.g. 1, 2, 3, 7, 8, 9, 4, 5, 6, ).
-// This is because each task is taking on a chunk of the range 1..10
-// (1..3, 4..6, or 7..9) doing that chunk serially, but each task happens
-// in parallel.
-// Your results may depend on your machine and configuration
-
-// For both the forall and coforall loops, the execution of the 
-// parent task will not continue until all the children sync up.
-
-// forall loops are particularly useful for parallel iteration over arrays.
-// Lets run an experiment to see how much faster a parallel loop is
-use Time; // Import the Time module to use Timer objects
-var timer: Timer; 
-var myBigArray: [{1..4000,1..4000}] real; // Large array we will write into
-
-// Serial Experiment
-timer.start( ); // Start timer
-for (x,y) in myBigArray.domain { // Serial iteration
-  myBigArray[x,y] = (x:real) / (y:real);
-}
-timer.stop( ); // Stop timer
-writeln( "Serial: ", timer.elapsed( ) ); // Print elapsed time
-timer.clear( ); // Clear timer for parallel loop
-
-// Parallel Experiment
-timer.start( ); // start timer
-forall (x,y) in myBigArray.domain { // Parallel iteration
-  myBigArray[x,y] = (x:real) / (y:real);
-}
-timer.stop( ); // Stop timer
-writeln( "Parallel: ", timer.elapsed( ) ); // Print elapsed time
-timer.clear( );
-// You may have noticed that (depending on how many cores you have) 
-// that the parallel loop went faster than the serial loop
-
-// A succinct way of writing a forall loop over an array:
-// iterate over values
-[ val in myBigArray ] val = 1 / val;
-
-// or iterate over indicies
-[ idx in myBigArray.domain ] myBigArray[idx] = -myBigArray[idx]; 
-
-proc countdown( seconds: int ){
-  for i in 1..seconds by -1 {
-    writeln( i );
-    sleep( 1 );
+  
+  module SiblingModule {
+    proc foo(){
+      writeln( "SiblingModule.foo()" );
+    }
   }
-}
+} // end OurModule
 
-// Atomic variables, common to many languages, are ones whose operations
-// occur uninterupted. Multiple threads can both modify atomic variables
-// and can know that their values are safe.
-// Chapel atomic variables can be of type bool, int, uint, and real.
-var uranium: atomic int;
-uranium.write( 238 );      // atomically write a variable
-writeln( uranium.read() ); // atomically read a variable
+// Using OurModule also uses all the modules it uses.
+// Since OurModule uses Time, we also use time.
+use OurModule;
 
-// operations are described as functions, you could define your own operators.
-uranium.sub( 3 ); // atomically subtract a variable
-writeln( uranium.read() );
+// At this point we have not used ChildModule or SiblingModule so their symbols
+// (i.e. foo ) are not available to us. 
+// However, the module names are, and we can explicitly call foo() through them.
+SiblingModule.foo();         // Calls SiblingModule.foo()
 
-var replaceWith = 239;
-var was = uranium.exchange( replaceWith ); 
-writeln( "uranium was ", was, " but is now ", replaceWith );
+// Super explicit naming.
+OurModule.ChildModule.foo(); // Calls ChildModule.foo()
 
-var isEqualTo = 235;
-if uranium.compareExchange( isEqualTo, replaceWith ) {
-  writeln( "uranium was equal to ", isEqualTo, 
-           " so replaced value with ", replaceWith );
-} else {
-  writeln( "uranium was not equal to ", isEqualTo, 
-           " so value stays the same...  whatever it was" );
-}
+use ChildModule;
+foo();   // Less explicit call on ChildModule.foo()
 
-sync {
-  begin { // Reader task
-    writeln( "Reader: waiting for uranium to be ", isEqualTo );
-    uranium.waitFor( isEqualTo );
-    writeln( "Reader: uranium was set (by someone) to ", isEqualTo );
+// We can declare a main procedure
+// Note: all the code above main still gets executed.
+proc main(){
+
+  // Parallelism
+  // In other languages, parallelism is typically this is done with 
+  // complicated libraries and strange class structure hierarchies.
+  // Chapel has it baked right into the language.
+
+  // A begin statement will spin the body of that statement off 
+  // into one new task.
+  // A sync statement will ensure that the progress of the main 
+  // task will not progress until the children have synced back up.
+  sync {
+    begin { // Start of new task's body
+      var a = 0;
+      for i in 1..1000 do a += 1;
+      writeln( "Done: ", a);
+    } // End of new tasks body
+    writeln( "spun off a task!");
+  }
+  writeln( "Back together" );
+
+  proc printFibb( n: int ){
+    writeln( "fibonacci(",n,") = ", fibonacci( n ) );
   }
 
-  begin { // Writer task
-    writeln( "Writer: will set uranium to the value ", isEqualTo, " in..." );
-    countdown( 3 );
-    uranium.write( isEqualTo );
+  // A cobegin statement will spin each statement of the body into one new task
+  cobegin {
+    printFibb( 20 ); // new task
+    printFibb( 10 ); // new task
+    printFibb( 5 );  // new task
+    { 
+      // This is a nested statement body and thus is a single statement
+      // to the parent statement and is executed by a single task
+      writeln( "this gets" );
+      writeln( "executed as" );
+      writeln( "a whole" );
+    }
   }
-}
+  // Notice here that the prints from each statement may happen in any order.
 
-// sync vars have two states: empty and full.
-// If you read an empty variable or write a full variable, you are waited
-// until the variable is full or empty again
-var someSyncVar$: sync int; // varName$ is a convention not a law.
-sync {
-  begin { // Reader task
-    writeln( "Reader: waiting to read." );
-    var read_sync = someSyncVar$;
-    writeln( "value is ", read_sync );
+  // Coforall loop will create a new task for EACH iteration
+  var num_tasks = 10; // Number of tasks we want
+  coforall taskID in 1..#num_tasks {
+    writeln( "Hello from task# ", taskID );
   }
+  // Again we see that prints happen in any order.
+  // NOTE! coforall should be used only for creating tasks!
+  // Using it to iterating over a structure is very a bad idea!
 
-  begin { // Writer task
-    writeln( "Writer: will write in..." );
-    countdown( 3 );
-    someSyncVar$ = 123;    
+  // forall loops are another parallel loop, but only create a smaller number 
+  // of tasks, specifically --dataParTasksPerLocale=number of task
+  forall i in 1..100 {
+    write( i, ", ");
   }
-}
+  writeln( );
+  // Here we see that there are sections that are in order, followed by 
+  // a section that would not follow ( e.g. 1, 2, 3, 7, 8, 9, 4, 5, 6, ).
+  // This is because each task is taking on a chunk of the range 1..10
+  // (1..3, 4..6, or 7..9) doing that chunk serially, but each task happens
+  // in parallel.
+  // Your results may depend on your machine and configuration
 
-// single vars can only be written once. A read on an unwritten single results
-// in a wait, but when the variable has a value it can be read indefinitely
-var someSingleVar$: single int; // varName$ is a convention not a law.
-sync {
-  begin { // Reader task
-    writeln( "Reader: waiting to read." );
-    for i in 1..5 {
-      var read_single = someSingleVar$;
-      writeln( "Reader: iteration ", i,", and the value is ", read_single );
+  // For both the forall and coforall loops, the execution of the 
+  // parent task will not continue until all the children sync up.
+
+  // forall loops are particularly useful for parallel iteration over arrays.
+  // Lets run an experiment to see how much faster a parallel loop is
+  use Time; // Import the Time module to use Timer objects
+  var timer: Timer; 
+  var myBigArray: [{1..4000,1..4000}] real; // Large array we will write into
+
+  // Serial Experiment
+  timer.start( ); // Start timer
+  for (x,y) in myBigArray.domain { // Serial iteration
+    myBigArray[x,y] = (x:real) / (y:real);
+  }
+  timer.stop( ); // Stop timer
+  writeln( "Serial: ", timer.elapsed( ) ); // Print elapsed time
+  timer.clear( ); // Clear timer for parallel loop
+
+  // Parallel Experiment
+  timer.start( ); // start timer
+  forall (x,y) in myBigArray.domain { // Parallel iteration
+    myBigArray[x,y] = (x:real) / (y:real);
+  }
+  timer.stop( ); // Stop timer
+  writeln( "Parallel: ", timer.elapsed( ) ); // Print elapsed time
+  timer.clear( );
+  // You may have noticed that (depending on how many cores you have) 
+  // that the parallel loop went faster than the serial loop
+
+  // A succinct way of writing a forall loop over an array:
+  // iterate over values
+  [ val in myBigArray ] val = 1 / val;
+
+  // or iterate over indicies
+  [ idx in myBigArray.domain ] myBigArray[idx] = -myBigArray[idx]; 
+
+  proc countdown( seconds: int ){
+    for i in 1..seconds by -1 {
+      writeln( i );
+      sleep( 1 );
     }
   }
 
-  begin { // Writer task
-    writeln( "Writer: will write in..." );
-    countdown( 3 );
-    someSingleVar$ = 5; // first and only write ever.
+  // Atomic variables, common to many languages, are ones whose operations
+  // occur uninterupted. Multiple threads can both modify atomic variables
+  // and can know that their values are safe.
+  // Chapel atomic variables can be of type bool, int, uint, and real.
+  var uranium: atomic int;
+  uranium.write( 238 );      // atomically write a variable
+  writeln( uranium.read() ); // atomically read a variable
+
+  // operations are described as functions, you could define your own operators.
+  uranium.sub( 3 ); // atomically subtract a variable
+  writeln( uranium.read() );
+
+  var replaceWith = 239;
+  var was = uranium.exchange( replaceWith ); 
+  writeln( "uranium was ", was, " but is now ", replaceWith );
+
+  var isEqualTo = 235;
+  if uranium.compareExchange( isEqualTo, replaceWith ) {
+    writeln( "uranium was equal to ", isEqualTo, 
+             " so replaced value with ", replaceWith );
+  } else {
+    writeln( "uranium was not equal to ", isEqualTo, 
+             " so value stays the same...  whatever it was" );
   }
-}
 
-// Heres an example of using atomics and a synch variable to create a 
-// count-down mutex (also known as a multiplexer)
-var count: atomic int; // our counter
-var lock$: sync bool;   // the mutex lock
+  sync {
+    begin { // Reader task
+      writeln( "Reader: waiting for uranium to be ", isEqualTo );
+      uranium.waitFor( isEqualTo );
+      writeln( "Reader: uranium was set (by someone) to ", isEqualTo );
+    }
 
-count.write( 2 );       // Only let two tasks in at a time.
-lock$.writeXF( true );  // Set lock$ to full (unlocked)
-// Note: The value doesnt actually matter, just the state 
-// (full:unlocked / empty:locked)
-// Also, writeXF() fills (F) the sync var regardless of its state (X)
+    begin { // Writer task
+      writeln( "Writer: will set uranium to the value ", isEqualTo, " in..." );
+      countdown( 3 );
+      uranium.write( isEqualTo );
+    }
+  }
 
-coforall task in 1..#5 { // Generate tasks
-  // Create a barrier
-  do{
-    lock$;                 // Read lock$ (wait)
-  }while count.read() < 1; // Keep waiting until a spot opens up
+  // sync vars have two states: empty and full.
+  // If you read an empty variable or write a full variable, you are waited
+  // until the variable is full or empty again
+  var someSyncVar$: sync int; // varName$ is a convention not a law.
+  sync {
+    begin { // Reader task
+      writeln( "Reader: waiting to read." );
+      var read_sync = someSyncVar$;
+      writeln( "value is ", read_sync );
+    }
+
+    begin { // Writer task
+      writeln( "Writer: will write in..." );
+      countdown( 3 );
+      someSyncVar$ = 123;    
+    }
+  }
+
+  // single vars can only be written once. A read on an unwritten single results
+  // in a wait, but when the variable has a value it can be read indefinitely
+  var someSingleVar$: single int; // varName$ is a convention not a law.
+  sync {
+    begin { // Reader task
+      writeln( "Reader: waiting to read." );
+      for i in 1..5 {
+        var read_single = someSingleVar$;
+        writeln( "Reader: iteration ", i,", and the value is ", read_single );
+      }
+    }
+
+    begin { // Writer task
+      writeln( "Writer: will write in..." );
+      countdown( 3 );
+      someSingleVar$ = 5; // first and only write ever.
+    }
+  }
+
+  // Heres an example of using atomics and a synch variable to create a 
+  // count-down mutex (also known as a multiplexer)
+  var count: atomic int; // our counter
+  var lock$: sync bool;   // the mutex lock
+
+  count.write( 2 );       // Only let two tasks in at a time.
+  lock$.writeXF( true );  // Set lock$ to full (unlocked)
+  // Note: The value doesnt actually matter, just the state 
+  // (full:unlocked / empty:locked)
+  // Also, writeXF() fills (F) the sync var regardless of its state (X)
+
+  coforall task in 1..#5 { // Generate tasks
+    // Create a barrier
+    do{
+      lock$;                 // Read lock$ (wait)
+    }while count.read() < 1; // Keep waiting until a spot opens up
   
-  count.sub(1);          // decrement the counter
-  lock$.writeXF( true ); // Set lock$ to full (signal)
+    count.sub(1);          // decrement the counter
+    lock$.writeXF( true ); // Set lock$ to full (signal)
   
-  // Actual 'work'
-  writeln( "Task #", task, " doing work." );
-  sleep( 2 );
+    // Actual 'work'
+    writeln( "Task #", task, " doing work." );
+    sleep( 2 );
 
-  count.add( 1 );        // Increment the counter
-  lock$.writeXF( true ); // Set lock$ to full (signal)
-}
+    count.add( 1 );        // Increment the counter
+    lock$.writeXF( true ); // Set lock$ to full (signal)
+  }
 
-// we can define the operations + * & | ^ && || min max minloc maxloc
-// over an entire array using scans and reductions
-// Reductions apply the operation over the entire array and
-// result in a single value
-var listOfValues: [1..10] int = [15,57,354,36,45,15,456,8,678,2];
-var sumOfValues = + reduce listOfValues;
-var maxValue = max reduce listOfValues; // 'max' give just max value
+  // we can define the operations + * & | ^ && || min max minloc maxloc
+  // over an entire array using scans and reductions
+  // Reductions apply the operation over the entire array and
+  // result in a single value
+  var listOfValues: [1..10] int = [15,57,354,36,45,15,456,8,678,2];
+  var sumOfValues = + reduce listOfValues;
+  var maxValue = max reduce listOfValues; // 'max' give just max value
 
-// 'maxloc' gives max value and index of the max value
-// Note: We have to zip the array and domain together with the zip iterator
-var (theMaxValue, idxOfMax) = maxloc reduce zip(listOfValues, 
-                                                listOfValues.domain);
+  // 'maxloc' gives max value and index of the max value
+  // Note: We have to zip the array and domain together with the zip iterator
+  var (theMaxValue, idxOfMax) = maxloc reduce zip(listOfValues, 
+                                                  listOfValues.domain);
                                                 
-writeln( (sumOfValues, maxValue, idxOfMax, listOfValues[ idxOfMax ] ) );
+  writeln( (sumOfValues, maxValue, idxOfMax, listOfValues[ idxOfMax ] ) );
 
-// Scans apply the operation incrementally and return an array of the
-// value of the operation at that index as it progressed through the 
-// array from array.domain.low to array.domain.high
-var runningSumOfValues = + scan listOfValues;
-var maxScan = max scan listOfValues;
-writeln( runningSumOfValues );
-writeln( maxScan );
+  // Scans apply the operation incrementally and return an array of the
+  // value of the operation at that index as it progressed through the 
+  // array from array.domain.low to array.domain.high
+  var runningSumOfValues = + scan listOfValues;
+  var maxScan = max scan listOfValues;
+  writeln( runningSumOfValues );
+  writeln( maxScan );
+}
 ```
 
 Who is this tutorial for?
