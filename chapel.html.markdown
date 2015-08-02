@@ -533,6 +533,12 @@ iter oddsThenEvens( N: int ): int {
 for i in oddsThenEvens( 10 ) do write( i, ", " );
 writeln( );
 
+// The 'zippered' iterator is an iterator that takes two or more iterators that 
+// have the same number of iterations and zips them together into one stream
+                        // Ranges have implicit iterators
+for (odd, even) in zip( 1..#10 by 2, 2..#10 by 2 ) do 
+  writeln( (odd, even) );
+
 // Classes are similar to those in C++ and Java.
 // They currently lack privatization
 class MyClass {
@@ -569,7 +575,7 @@ class MyClass {
   }
   
 }
-
+  
 // Construct using default constructor, using default values
 var myObject = new MyClass( 10 );
     myObject = new MyClass( memberInt = 10 ); // Equivalent
@@ -732,6 +738,7 @@ writeln( );
 use Time; // Import the Time module to use Timer objects
 var timer: Timer; 
 var myBigArray: [{1..4000,1..4000}] real; // Large array we will write into
+
 // Serial Experiment
 timer.start( ); // Start timer
 for (x,y) in myBigArray.domain { // Serial iteration
@@ -754,7 +761,8 @@ timer.clear( );
 
 // A succinct way of writing a forall loop over an array:
 // iterate over values
-[ val in myBigArray ] val = 1 / val; 
+[ val in myBigArray ] val = 1 / val;
+
 // or iterate over indicies
 [ idx in myBigArray.domain ] myBigArray[idx] = -myBigArray[idx]; 
 
@@ -770,32 +778,35 @@ proc countdown( seconds: int ){
 // and can know that their values are safe.
 // Chapel atomic variables can be of type bool, int, uint, and real.
 var uranium: atomic int;
-uranium.write( 238 ); // atomically write a variable
+uranium.write( 238 );      // atomically write a variable
 writeln( uranium.read() ); // atomically read a variable
+
 // operations are described as functions, you could define your own operators.
 uranium.sub( 3 ); // atomically subtract a variable
 writeln( uranium.read() );
+
 var replaceWith = 239;
 var was = uranium.exchange( replaceWith ); 
 writeln( "uranium was ", was, " but is now ", replaceWith );
+
 var isEqualTo = 235;
 if uranium.compareExchange( isEqualTo, replaceWith ) {
   writeln( "uranium was equal to ", isEqualTo, 
            " so replaced value with ", replaceWith );
 } else {
   writeln( "uranium was not equal to ", isEqualTo, 
-           " value stays the same...  whatever it was" );
+           " so value stays the same...  whatever it was" );
 }
 
 sync {
-  begin {
-    writeln( "Waiting to for uranium to be ", isEqualTo );
+  begin { // Reader task
+    writeln( "Reader: waiting for uranium to be ", isEqualTo );
     uranium.waitFor( isEqualTo );
-    writeln( "Uranium was set (by someone) to ", isEqualTo );
+    writeln( "Reader: uranium was set (by someone) to ", isEqualTo );
   }
 
-  begin {
-    writeln( "Waiting to write uranium to ", isEqualTo );
+  begin { // Writer task
+    writeln( "Writer: will set uranium to the value ", isEqualTo, " in..." );
     countdown( 3 );
     uranium.write( isEqualTo );
   }
@@ -806,14 +817,14 @@ sync {
 // until the variable is full or empty again
 var someSyncVar$: sync int; // varName$ is a convention not a law.
 sync {
-  begin {
-    writeln( "Waiting to read" );
+  begin { // Reader task
+    writeln( "Reader: waiting to read." );
     var read_sync = someSyncVar$;
     writeln( "value is ", read_sync );
   }
 
-  begin {
-    writeln( "Writing in..." );
+  begin { // Writer task
+    writeln( "Writer: will write in..." );
     countdown( 3 );
     someSyncVar$ = 123;    
   }
@@ -823,30 +834,62 @@ sync {
 // in a wait, but when the variable has a value it can be read indefinitely
 var someSingleVar$: single int; // varName$ is a convention not a law.
 sync {
-  begin {
-    writeln( "Waiting to read" );
+  begin { // Reader task
+    writeln( "Reader: waiting to read." );
     for i in 1..5 {
       var read_single = someSingleVar$;
-      writeln( i,"th time around an the value is ", read_single );
+      writeln( "Reader: iteration ", i,", and the value is ", read_single );
     }
   }
 
-  begin {
-    writeln( "Writing in..." );
+  begin { // Writer task
+    writeln( "Writer: will write in..." );
     countdown( 3 );
     someSingleVar$ = 5; // first and only write ever.
   }
+}
+
+// Heres an example of using atomics and a synch variable to create a 
+// count-down mutex (also known as a multiplexer)
+var count: atomic int; // our counter
+var lock$: sync bool;   // the mutex lock
+
+count.write( 2 );       // Only let two tasks in at a time.
+lock$.writeXF( true );  // Set lock$ to full (unlocked)
+// Note: The value doesnt actually matter, just the state 
+// (full:unlocked / empty:locked)
+// Also, writeXF() fills (F) the sync var regardless of its state (X)
+
+coforall task in 1..#5 { // Generate tasks
+  // Create a barrier
+  do{
+    lock$;                 // Read lock$ (wait)
+  }while count.read() < 1; // Keep waiting until a spot opens up
+  
+  count.sub(1);          // decrement the counter
+  lock$.writeXF( true ); // Set lock$ to full (signal)
+  
+  // Actual 'work'
+  writeln( "Task #", task, " doing work." );
+  sleep( 2 );
+
+  count.add( 1 );        // Increment the counter
+  lock$.writeXF( true ); // Set lock$ to full (signal)
 }
 
 // we can define the operations + * & | ^ && || min max minloc maxloc
 // over an entire array using scans and reductions
 // Reductions apply the operation over the entire array and
 // result in a single value
-var listOfValues: [1..10] int = [456,354,15,57,36,45,15,8,678,2];
+var listOfValues: [1..10] int = [15,57,354,36,45,15,456,8,678,2];
 var sumOfValues = + reduce listOfValues;
-var maxValue = max reduce listOfValues; // give just max value
-// gives max value and index of the max value
-var (theMaxValue, idxOfMax) = maxloc reduce zip(listOfValues, listOfValues.domain);
+var maxValue = max reduce listOfValues; // 'max' give just max value
+
+// 'maxloc' gives max value and index of the max value
+// Note: We have to zip the array and domain together with the zip iterator
+var (theMaxValue, idxOfMax) = maxloc reduce zip(listOfValues, 
+                                                listOfValues.domain);
+                                                
 writeln( (sumOfValues, maxValue, idxOfMax, listOfValues[ idxOfMax ] ) );
 
 // Scans apply the operation incrementally and return an array of the
@@ -874,7 +917,6 @@ Occasionally check back here and on the [Chapel site](http://chapel.cray.com) to
  * ```proc main(){ ... }```
  * Records
  * Whole/sliced array assignment
- * Reductions and scans
  * Range and domain slicing
  * Parallel iterators
 
