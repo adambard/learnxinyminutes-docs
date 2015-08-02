@@ -32,10 +32,10 @@ stderr.writeln( "This goes to standard error" );
 var myVar = 10; // 10 is an int, so myVar is implicitly an int
 myVar = -10;
 var mySecondVar = myVar;
-// var anError; // this would be a compile time error.
+// var anError; // this would be a compile-time error.
 
 // We can (and should) explicitly type things
-var myThirdVar: real; // define mySecondVar as a real
+var myThirdVar: real;
 var myFourthVar: real = -1.234;
 myThirdVar = myFourthVar;
 
@@ -57,24 +57,24 @@ var my64Real: real(64) = 1.516; // 64 bit (8 bytes) sized real
 var intFromReal = myReal : int;
 var intFromReal2: int = myReal : int;
 
-// consts are constants, they cannot be changed after set in runtime
+// consts are constants, they cannot be changed after set in runtime.
 const almostPi: real = 22.0/7.0;
 
-// params are constants whose value must be known statically at compile time
-// Like consts, they cannot be changed during runtime
+// params are constants whose value must be known statically at compile-time
+// Their value cannot be changed.
 param compileTimeConst: int = 16;
 
 // The config modifier allows values to be set at the command line
-// and is much easier that the usual getOpts debacle 
+// and is much easier than the usual getOpts debacle 
 // config vars and consts can be changed through the command line at run time
 config var varCmdLineArg: int = -123; 
 config const constCmdLineArg: int = 777;
 // Set with --VarName=Value or --VarName Value at run time
 
-// config params can be set at compile time
+// config params can be set/changed at compile-time
 config param paramCmdLineArg: bool = false;
+// Set config with --set paramCmdLineArg=value at compile-time
 writeln( varCmdLineArg, ", ", constCmdLineArg, ", ", paramCmdLineArg );
-// Set config with --set paramCmdLineArg=value at compile time
 
 // refs operate much like a reference in C++
 var actual = 10;
@@ -465,7 +465,7 @@ genericProc( 1.0+2.0i, 3.0+4.0i );
 
 // We can also enforce a form of polymorphism with the 'where' clause
 // This allows the compiler to decide which function to use.
-// Note: that means that all information needs to be known at compile time. 
+// Note: that means that all information needs to be known at compile-time. 
 // The param modifier on the arg is used to enforce this constraint.
 proc whereProc( param N : int ): void
  where ( N > 0 ) {
@@ -501,7 +501,7 @@ writeln( false ^ true  );
 writeln( true  ^ false );
 writeln( false ^ false );
 
-// Define a * operator on any two types that returns a tupe of those types
+// Define a * operator on any two types that returns a tuple of those types
 proc *( left : ?ltype, right : ?rtype): ( ltype, rtype ){
   return (left, right );
 }
@@ -532,6 +532,14 @@ iter oddsThenEvens( N: int ): int {
 
 for i in oddsThenEvens( 10 ) do write( i, ", " );
 writeln( );
+
+// We can zipper together two or more iterators (who have the same number 
+// of iterations)  using zip() to create a single zipped iterator, where each 
+// iteration of the zipped iterator yields a tuple of one value yielded 
+// from each iterator.
+                                 // Ranges have implicit iterators
+for (positive, negative) in zip( 1..5, -5..-1) do 
+  writeln( (positive, negative) );
 
 // Classes are similar to those in C++ and Java.
 // They currently lack privatization
@@ -569,7 +577,7 @@ class MyClass {
   }
   
 }
-
+  
 // Construct using default constructor, using default values
 var myObject = new MyClass( 10 );
     myObject = new MyClass( memberInt = 10 ); // Equivalent
@@ -732,6 +740,7 @@ writeln( );
 use Time; // Import the Time module to use Timer objects
 var timer: Timer; 
 var myBigArray: [{1..4000,1..4000}] real; // Large array we will write into
+
 // Serial Experiment
 timer.start( ); // Start timer
 for (x,y) in myBigArray.domain { // Serial iteration
@@ -754,9 +763,144 @@ timer.clear( );
 
 // A succinct way of writing a forall loop over an array:
 // iterate over values
-[ val in myBigArray ] val = 1 / val; 
+[ val in myBigArray ] val = 1 / val;
+
 // or iterate over indicies
 [ idx in myBigArray.domain ] myBigArray[idx] = -myBigArray[idx]; 
+
+proc countdown( seconds: int ){
+  for i in 1..seconds by -1 {
+    writeln( i );
+    sleep( 1 );
+  }
+}
+
+// Atomic variables, common to many languages, are ones whose operations
+// occur uninterupted. Multiple threads can both modify atomic variables
+// and can know that their values are safe.
+// Chapel atomic variables can be of type bool, int, uint, and real.
+var uranium: atomic int;
+uranium.write( 238 );      // atomically write a variable
+writeln( uranium.read() ); // atomically read a variable
+
+// operations are described as functions, you could define your own operators.
+uranium.sub( 3 ); // atomically subtract a variable
+writeln( uranium.read() );
+
+var replaceWith = 239;
+var was = uranium.exchange( replaceWith ); 
+writeln( "uranium was ", was, " but is now ", replaceWith );
+
+var isEqualTo = 235;
+if uranium.compareExchange( isEqualTo, replaceWith ) {
+  writeln( "uranium was equal to ", isEqualTo, 
+           " so replaced value with ", replaceWith );
+} else {
+  writeln( "uranium was not equal to ", isEqualTo, 
+           " so value stays the same...  whatever it was" );
+}
+
+sync {
+  begin { // Reader task
+    writeln( "Reader: waiting for uranium to be ", isEqualTo );
+    uranium.waitFor( isEqualTo );
+    writeln( "Reader: uranium was set (by someone) to ", isEqualTo );
+  }
+
+  begin { // Writer task
+    writeln( "Writer: will set uranium to the value ", isEqualTo, " in..." );
+    countdown( 3 );
+    uranium.write( isEqualTo );
+  }
+}
+
+// sync vars have two states: empty and full.
+// If you read an empty variable or write a full variable, you are waited
+// until the variable is full or empty again
+var someSyncVar$: sync int; // varName$ is a convention not a law.
+sync {
+  begin { // Reader task
+    writeln( "Reader: waiting to read." );
+    var read_sync = someSyncVar$;
+    writeln( "value is ", read_sync );
+  }
+
+  begin { // Writer task
+    writeln( "Writer: will write in..." );
+    countdown( 3 );
+    someSyncVar$ = 123;    
+  }
+}
+
+// single vars can only be written once. A read on an unwritten single results
+// in a wait, but when the variable has a value it can be read indefinitely
+var someSingleVar$: single int; // varName$ is a convention not a law.
+sync {
+  begin { // Reader task
+    writeln( "Reader: waiting to read." );
+    for i in 1..5 {
+      var read_single = someSingleVar$;
+      writeln( "Reader: iteration ", i,", and the value is ", read_single );
+    }
+  }
+
+  begin { // Writer task
+    writeln( "Writer: will write in..." );
+    countdown( 3 );
+    someSingleVar$ = 5; // first and only write ever.
+  }
+}
+
+// Heres an example of using atomics and a synch variable to create a 
+// count-down mutex (also known as a multiplexer)
+var count: atomic int; // our counter
+var lock$: sync bool;   // the mutex lock
+
+count.write( 2 );       // Only let two tasks in at a time.
+lock$.writeXF( true );  // Set lock$ to full (unlocked)
+// Note: The value doesnt actually matter, just the state 
+// (full:unlocked / empty:locked)
+// Also, writeXF() fills (F) the sync var regardless of its state (X)
+
+coforall task in 1..#5 { // Generate tasks
+  // Create a barrier
+  do{
+    lock$;                 // Read lock$ (wait)
+  }while count.read() < 1; // Keep waiting until a spot opens up
+  
+  count.sub(1);          // decrement the counter
+  lock$.writeXF( true ); // Set lock$ to full (signal)
+  
+  // Actual 'work'
+  writeln( "Task #", task, " doing work." );
+  sleep( 2 );
+
+  count.add( 1 );        // Increment the counter
+  lock$.writeXF( true ); // Set lock$ to full (signal)
+}
+
+// we can define the operations + * & | ^ && || min max minloc maxloc
+// over an entire array using scans and reductions
+// Reductions apply the operation over the entire array and
+// result in a single value
+var listOfValues: [1..10] int = [15,57,354,36,45,15,456,8,678,2];
+var sumOfValues = + reduce listOfValues;
+var maxValue = max reduce listOfValues; // 'max' give just max value
+
+// 'maxloc' gives max value and index of the max value
+// Note: We have to zip the array and domain together with the zip iterator
+var (theMaxValue, idxOfMax) = maxloc reduce zip(listOfValues, 
+                                                listOfValues.domain);
+                                                
+writeln( (sumOfValues, maxValue, idxOfMax, listOfValues[ idxOfMax ] ) );
+
+// Scans apply the operation incrementally and return an array of the
+// value of the operation at that index as it progressed through the 
+// array from array.domain.low to array.domain.high
+var runningSumOfValues = + scan listOfValues;
+var maxScan = max scan listOfValues;
+writeln( runningSumOfValues );
+writeln( maxScan );
 ```
 
 Who is this tutorial for?
@@ -771,12 +915,10 @@ Occasionally check back here and on the [Chapel site](http://chapel.cray.com) to
 ### What this tutorial is lacking:
 
  * Modules and standard modules
- * Synchronize variables and atomic operations
  * Multiple Locales (distributed memory system)
  * ```proc main(){ ... }```
  * Records
  * Whole/sliced array assignment
- * Reductions and scans
  * Range and domain slicing
  * Parallel iterators
 
@@ -817,6 +959,7 @@ Builds like other compilers:
 
 ```chpl myFile.chpl -o myExe```
 
-A notable argument:
+Notable arguments:
 
  * ``--fast``: enables a number of optimizations and disables array bounds checks. Should only enable when application is stable.
+ * ```--set <Symbol Name>=<Value>```: set config param <Symbol Name> to <Value> at compile-time
