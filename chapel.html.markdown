@@ -673,15 +673,14 @@ var copyNewTypeList = new GenericClass( realList, int );
 for value in copyNewTypeList do write( value, ", " );
 writeln( );
 
-
 // Modules are Chapel's way of managing name spaces.
 // The files containing these modules do not need to be named after the modules
-// (as is with Java), but files implicitly name modules.
+// (as in Java), but files implicitly name modules.
 // In this case, this file implicitly names the 'learnchapel' module
 
 module OurModule {
   // We can use modules inside of other modules.
-  use Time;
+  use Time; // Time is one of the standard modules.
   
   // We'll use this procedure in the parallelism section.
   proc countdown( seconds: int ){
@@ -947,7 +946,7 @@ proc main(){
   var maxScan = max scan listOfValues;
   writeln( runningSumOfValues );
   writeln( maxScan );
-}
+} // end main()
 ```
 
 Who is this tutorial for?
@@ -1010,4 +1009,4 @@ Notable arguments:
  * `--fast`: enables a number of optimizations and disables array bounds checks. Should only enable when application is stable.
  * `--set <Symbol Name>=<Value>`: set config param `<Symbol Name>` to `<Value>` at compile-time.
  * `--main-module <Module Name>`: use the main() procedure found in the module `<Module Name>` as the executable's main.
- * `--module-dir <Directory>`: includes `<Directory` in the module search path.
+ * `--module-dir <Directory>`: includes `<Directory>` in the module search path.
