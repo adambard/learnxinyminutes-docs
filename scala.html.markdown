@@ -122,12 +122,12 @@ s"We have $n apples" // => "We have 45 apples"
 
 // Expressions inside interpolated strings are also possible
 val a = Array(11, 9, 6)
-s"My second daughter is ${a(0) - a(2)} years old." // => "My second daughter is 5 years old."
+s"My second daughter is ${a(0) - a(2)} years old."    // => "My second daughter is 5 years old."
 s"We have double the amount of ${n / 2.0} in apples." // => "We have double the amount of 22.5 in apples."
-s"Power of 2: ${math.pow(2, 2)}" // => "Power of 2: 4"
+s"Power of 2: ${math.pow(2, 2)}"                      // => "Power of 2: 4"
 
 // Formatting with interpolated strings with the prefix "f"
-f"Power of 5: ${math.pow(5, 2)}%1.0f" // "Power of 5: 25"
+f"Power of 5: ${math.pow(5, 2)}%1.0f"         // "Power of 5: 25"
 f"Square root of 122: ${math.sqrt(122)}%1.4f" // "Square root of 122: 11.0454"
 
 // Raw strings, ignoring special characters.
