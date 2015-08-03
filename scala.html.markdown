@@ -5,6 +5,7 @@ contributors:
     - ["George Petrov", "http://github.com/petrovg"]
     - ["Dominic Bou-Samra", "http://dbousamra.github.com"]
     - ["Geoff Liu", "http://geoffliu.me"]
+    - ["Ha-Duong Nguyen", "http://reference-error.org"]
 filename: learn.scala
 ---
 
@@ -33,10 +34,10 @@ Scala - the scalable language
 // 1. Basics
 /////////////////////////////////////////////////
 
-// Single line comments start with two forward slashes
+// Single-line comments start with two forward slashes
 
 /*
-  Multi line comments, as you can already see from above, look like this.
+  Multi-line comments, as you can already see from above, look like this.
 */
 
 // Printing, and forcing a new line on the next print
