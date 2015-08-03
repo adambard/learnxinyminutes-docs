@@ -51,9 +51,9 @@ print("Hello world")
 // val declarations are immutable, whereas vars are mutable. Immutability is
 // a good thing.
 val x = 10 // x is now 10
-x = 20 // error: reassignment to val
+x = 20     // error: reassignment to val
 var y = 10
-y = 20  // y is now 20
+y = 20     // y is now 20
 
 /*
   Scala is a statically typed language, yet note that in the above declarations,
@@ -73,17 +73,17 @@ true
 false
 
 // Boolean operations
-!true // false
-!false // true
+!true         // false
+!false        // true
 true == false // false
-10 > 5 // true
+10 > 5        // true
 
 // Math is as per usual
-1 + 1 // 2
-2 - 1 // 1
-5 * 3 // 15
-6 / 2 // 3
-6 / 4 // 1
+1 + 1   // 2
+2 - 1   // 1
+5 * 3   // 15
+6 / 2   // 3
+6 / 4   // 1
 6.0 / 4 // 1.5
 
 
