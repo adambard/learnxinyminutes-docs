@@ -16,15 +16,16 @@ Scala - the scalable language
   Set yourself up:
 
   1) Download Scala - http://www.scala-lang.org/downloads
-  2) unzip/untar in your favourite location and put the bin subdir on the path
-  3) Start a scala REPL by typing scala. You should see the prompt:
+  2) Unzip/untar to your favourite location and put the bin subdir in your `PATH` environment variable
+  3) Start a Scala REPL by running `scala`. You should see the prompt:
 
   scala>
 
-  This is the so called REPL (Read-Eval-Print Loop). You may type any valid
-  Scala expression into it, and the result will be printed. We will explain what
-  Scala files look like further into this tutorial, but for now, let's start
-  with some basics.
+  This is the so called REPL (Read-Eval-Print Loop). You may type any Scala
+  expression, and the result will be printed. We will explain what Scala files
+  look like further into this tutorial, but for now, let's start with some
+  basics.
+
 */
 
 
