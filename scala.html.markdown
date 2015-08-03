@@ -220,19 +220,19 @@ def foo(x: Int): Int = {
 
 1 to 5
 val r = 1 to 5
-r.foreach( println )
+r.foreach(println)
 
 r foreach println
 // NB: Scala is quite lenient when it comes to dots and brackets - study the
 // rules separately. This helps write DSLs and APIs that read like English
 
-(5 to 1 by -1) foreach ( println )
+(5 to 1 by -1) foreach (println)
 
 // A while loops
 var i = 0
-while (i < 10) {  println("i " + i); i+=1  }
+while (i < 10) { println("i " + i); i += 1 }
 
-while (i < 10) {  println("i " + i); i+=1  }   // Yes, again. What happened? Why?
+while (i < 10) { println("i " + i); i += 1 }   // Yes, again. What happened? Why?
 
 i    // Show the value of i. Note that while is a loop in the classical sense -
      // it executes sequentially while changing the loop variable. while is very
@@ -241,19 +241,19 @@ i    // Show the value of i. Note that while is a loop in the classical sense -
 
 // A do while loop
 do {
-  println("x is still less than 10");
+  println("x is still less than 10")
   x += 1
 } while (x < 10)
 
 // Tail recursion is an idiomatic way of doing recurring things in Scala.
 // Recursive functions need an explicit return type, the compiler can't infer it.
 // Here it's Unit.
-def showNumbersInRange(a:Int, b:Int):Unit = {
+def showNumbersInRange(a:Int, b:Int): Unit = {
   print(a)
   if (a < b)
     showNumbersInRange(a + 1, b)
 }
-showNumbersInRange(1,14)
+showNumbersInRange(1, 14)
 
 
 // Conditionals
@@ -307,13 +307,13 @@ s(1)
 (a, 2, "three")
 
 // Why have this?
-val divideInts = (x:Int, y:Int) => (x / y, x % y)
+val divideInts = (x: Int, y: Int) => (x / y, x % y)
 
-divideInts(10,3) // The function divideInts gives you the result and the remainder
+divideInts(10, 3) // The function divideInts gives you the result and the remainder
 
 // To access the elements of a tuple, use _._n where n is the 1-based index of
 // the element
-val d = divideInts(10,3)
+val d = divideInts(10, 3)
 
 d._1
 
@@ -416,8 +416,8 @@ val otherGeorge = george.copy(phoneNumber = "9876")
 def matchPerson(person: Person): String = person match {
   // Then you specify the patterns:
   case Person("George", number) => "We found George! His number is " + number
-  case Person("Kate", number) => "We found Kate! Her number is " + number
-  case Person(name, number) => "We matched someone : " + name + ", phone : " + number
+  case Person("Kate", number)   => "We found Kate! Her number is " + number
+  case Person(name, number)     => "We matched someone : " + name + ", phone : " + number
 }
 
 val email = "(.*)@(.*)".r  // Define a regex for the next example.
@@ -448,7 +448,7 @@ def matchEverything(obj: Any): String = obj match {
   case List(1, b, c) => s"Got a list with three elements and starts with 1: 1, $b, $c"
 
   // You can nest patterns:
-  case List(List((1, 2,"YAY"))) => "Got a list of list of tuple"
+  case List(List((1, 2, "YAY"))) => "Got a list of list of tuple"
 }
 
 // In fact, you can pattern match any object with an "unapply" method. This
@@ -495,7 +495,7 @@ sSquared.reduce (_+_)
 // The filter function takes a predicate (a function from A -> Boolean) and
 // selects all elements which satisfy the predicate
 List(1, 2, 3) filter (_ > 2) // List(3)
-case class Person(name:String, age:Int)
+case class Person(name: String, age: Int)
 List(
   Person(name = "Dom", age = 23),
   Person(name = "Bob", age = 30)
@@ -596,7 +596,7 @@ import scala.collection.immutable._
 import scala.collection.immutable.{List, Map}
 
 // Rename an import using '=>'
-import scala.collection.immutable.{ List => ImmutableList }
+import scala.collection.immutable.{List => ImmutableList}
 
 // Import all classes, except some. The following excludes Map and Set:
 import scala.collection.immutable.{Map => _, Set => _, _}
