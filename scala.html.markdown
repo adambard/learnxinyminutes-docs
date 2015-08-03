@@ -178,7 +178,7 @@ addWithDefault(1)    // => 6
 
 
 // Anonymous functions look like this:
-(x:Int) => x * x
+(x: Int) => x * x
 
 // Unlike defs, even the input type of anonymous functions can be omitted if the
 // context makes it clear. Notice the type "Int => Int" which means a function
@@ -248,7 +248,7 @@ do {
 // Tail recursion is an idiomatic way of doing recurring things in Scala.
 // Recursive functions need an explicit return type, the compiler can't infer it.
 // Here it's Unit.
-def showNumbersInRange(a:Int, b:Int): Unit = {
+def showNumbersInRange(a: Int, b: Int): Unit = {
   print(a)
   if (a < b)
     showNumbersInRange(a + 1, b)
