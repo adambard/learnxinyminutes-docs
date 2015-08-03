@@ -173,8 +173,8 @@ def sq(x: Int) = x * x  // Compiler can guess return type is Int
 
 // Functions can have default parameters:
 def addWithDefault(x: Int, y: Int = 5) = x + y
-addWithDefault(1, 2)  // => 3
-addWithDefault(1)  // => 6
+addWithDefault(1, 2) // => 3
+addWithDefault(1)    // => 6
 
 
 // Anonymous functions look like this:
@@ -195,8 +195,8 @@ sq(10)   // => 100
 val addOne: Int => Int = _ + 1
 val weirdSum: (Int, Int) => Int = (_ * 2 + _ * 3)
 
-addOne(5)  // => 6
-weirdSum(2, 4)  // => 16
+addOne(5)      // => 6
+weirdSum(2, 4) // => 16
 
 
 // The return keyword exists in Scala, but it only returns from the inner-most
@@ -206,9 +206,9 @@ weirdSum(2, 4)  // => 16
 def foo(x: Int): Int = {
   val anonFunc: Int => Int = { z =>
     if (z > 5)
-      return z  // This line makes z the return value of foo!
+      return z // This line makes z the return value of foo!
     else
-      z + 2  // This line is the return value of anonFunc
+      z + 2    // This line is the return value of anonFunc
   }
   anonFunc(x)  // This line is the return value of foo
 }
@@ -361,7 +361,7 @@ class Dog(br: String) {
 
 val mydog = new Dog("greyhound")
 println(mydog.breed) // => "greyhound"
-println(mydog.bark) // => "Woof, woof!"
+println(mydog.bark)  // => "Woof, woof!"
 
 
 // The "object" keyword creates a type AND a singleton instance of it. It is
@@ -543,8 +543,8 @@ implicit def myImplicitFunction(breed: String) = new Dog("Golden " + breed)
 
 // By itself, implicit keyword doesn't change the behavior of the value, so
 // above values can be used as usual.
-myImplicitInt + 2  // => 102
-myImplicitFunction("Pitbull").breed  // => "Golden Pitbull"
+myImplicitInt + 2                   // => 102
+myImplicitFunction("Pitbull").breed // => "Golden Pitbull"
 
 // The difference is that these values are now eligible to be used when another
 // piece of code "needs" an implicit value. One such situation is implicit
@@ -572,8 +572,8 @@ def foo[T : C] = ...
 // implicit conversion of type A => B, where A is the type of obj, and B has a
 // method called "method", that conversion is applied. So having
 // myImplicitFunction above in scope, we can say:
-"Retriever".breed  // => "Golden Retriever"
-"Sheperd".bark  // => "Woof, woof!"
+"Retriever".breed // => "Golden Retriever"
+"Sheperd".bark    // => "Woof, woof!"
 
 // Here the String is first converted to Dog using our function above, and then
 // the appropriate method is called. This is an extremely powerful feature, but
