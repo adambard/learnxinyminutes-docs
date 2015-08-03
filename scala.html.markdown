@@ -631,13 +631,8 @@ writer.close()
 
 ## Further resources
 
-[Scala for the impatient](http://horstmann.com/scala/)
-
-[Twitter Scala school](http://twitter.github.io/scala_school/)
-
-[The scala documentation](http://docs.scala-lang.org/)
-
-[Try Scala in your browser](http://scalatutorials.com/tour/)
-
-Join the [Scala user group](https://groups.google.com/forum/#!forum/scala-user)
-
+* [Scala for the impatient](http://horstmann.com/scala/)
+* [Twitter Scala school](http://twitter.github.io/scala_school/)
+* [The scala documentation](http://docs.scala-lang.org/)
+* [Try Scala in your browser](http://scalatutorials.com/tour/)
+* Join the [Scala user group](https://groups.google.com/forum/#!forum/scala-user)
