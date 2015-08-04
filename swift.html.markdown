@@ -26,7 +26,9 @@ import UIKit
 // TODO: Do something soon
 // FIXME: Fix this code
 
-println("Hello, world")
+// In Swift 2, println and print were combined into one print method.
+print("Hello, world") // standard print
+print("Hello, world", appendNewLine: true) // appending a new line
 
 // variables (var) value can change after being set
 // constants (let) value can NOT be changed after being set
@@ -46,12 +48,12 @@ let piText = "Pi = \(π), Pi 2 = \(π * 2)" // String interpolation
 // Build Specific values
 // uses -D build configuration
 #if false
-    println("Not printed")
+    print("Not printed")
     let buildValue = 3
 #else
     let buildValue = 7
 #endif
-println("Build value: \(buildValue)") // Build value: 7
+print("Build value: \(buildValue)") // Build value: 7
 
 /*
     Optionals are a Swift language feature that allows you to store a `Some` or
@@ -69,7 +71,7 @@ var someOptionalString2: Optional<String> = "optional"
 if someOptionalString != nil {
     // I am not nil
     if someOptionalString!.hasPrefix("opt") {
-        println("has the prefix")
+        print("has the prefix")
     }
     
     let empty = someOptionalString?.isEmpty
@@ -138,21 +140,21 @@ var emptyMutableDictionary = [String: Float]() // var == mutable
 let myArray = [1, 1, 2, 3, 5]
 for value in myArray {
     if value == 1 {
-        println("One!")
+        print("One!")
     } else {
-        println("Not one!")
+        print("Not one!")
     }
 }
 
 // for loop (dictionary)
 var dict = ["one": 1, "two": 2]
 for (key, value) in dict {
-    println("\(key): \(value)")
+    print("\(key): \(value)")
 }
 
 // for loop (range)
 for i in -1...shoppingList.count {
-    println(i)
+    print(i)
 }
 shoppingList[1...2] = ["steak", "peacons"]
 // use ..< to exclude the last number
@@ -165,7 +167,7 @@ while i < 1000 {
 
 // do-while loop
 do {
-    println("hello")
+    print("hello")
 } while 1 == 2
 
 // Switch
@@ -222,8 +224,8 @@ let pricesTuple = getGasPrices()
 let price = pricesTuple.2 // 3.79
 // Ignore Tuple (or other) values by using _ (underscore)
 let (_, price1, _) = pricesTuple // price1 == 3.69
-println(price1 == pricesTuple.1) // true
-println("Gas price: \(price)")
+print(price1 == pricesTuple.1) // true
+print("Gas price: \(price)")
 
 // Variadic Args
 func setup(numbers: Int...) {
@@ -251,7 +253,7 @@ func swapTwoInts(inout a: Int, inout b: Int) {
 var someIntA = 7
 var someIntB = 3
 swapTwoInts(&someIntA, &someIntB)
-println(someIntB) // 7
+print(someIntB) // 7
 
 
 //
@@ -305,7 +307,7 @@ struct NamesTable {
 // Structures have an auto-generated (implicit) designated initializer
 let namesTable = NamesTable(names: ["Me", "Them"])
 let name = namesTable[1]
-println("Name is \(name)") // Name is Them
+print("Name is \(name)") // Name is Them
 
 //
 // MARK: Classes
@@ -386,7 +388,7 @@ let aShape = mySquare as Shape
 
 // compare instances, not the same as == which compares objects (equal to)
 if mySquare === mySquare {
-    println("Yep, it's mySquare")
+    print("Yep, it's mySquare")
 }
 
 // Optional init
@@ -409,13 +411,13 @@ class Circle: Shape {
 }
 
 var myCircle = Circle(radius: 1)
-println(myCircle?.getArea())    // Optional(3)
-println(myCircle!.getArea())    // 3
+print(myCircle?.getArea())    // Optional(3)
+print(myCircle!.getArea())    // 3
 var myEmptyCircle = Circle(radius: -1)
-println(myEmptyCircle?.getArea())    // "nil"
+print(myEmptyCircle?.getArea())    // "nil"
 if let circle = myEmptyCircle {
     // will not execute since myEmptyCircle is nil
-    println("circle is not nil")
+    print("circle is not nil")
 }
 
 
@@ -447,7 +449,7 @@ enum BookName: String {
     case John = "John"
     case Luke = "Luke"
 }
-println("Name: \(BookName.John.rawValue)")
+print("Name: \(BookName.John.rawValue)")
 
 // Enum with associated Values
 enum Furniture {
@@ -467,9 +469,9 @@ enum Furniture {
 }
 
 var desk: Furniture = .Desk(height: 80)
-println(desk.description())     // "Desk with 80 cm"
+print(desk.description())     // "Desk with 80 cm"
 var chair = Furniture.Chair("Foo", 40)
-println(chair.description())    // "Chair of Foo with 40 cm"
+print(chair.description())    // "Chair of Foo with 40 cm"
 
 
 //
@@ -522,7 +524,7 @@ extension Square: Printable {
     }
 }
 
-println("Square: \(mySquare)")
+print("Square: \(mySquare)")
 
 // You can also extend built-in types
 extension Int {
@@ -535,8 +537,8 @@ extension Int {
     }
 }
 
-println(7.customProperty) // "This is 7"
-println(14.multiplyBy(3)) // 42
+print(7.customProperty) // "This is 7"
+print(14.multiplyBy(3)) // 42
 
 // Generics: Similar to Java and C#. Use the `where` keyword to specify the
 //   requirements of the generics.
@@ -550,7 +552,7 @@ func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
     return nil
 }
 let foundAtIndex = findIndex([1, 2, 3, 4], 3)
-println(foundAtIndex == 2) // true
+print(foundAtIndex == 2) // true
 
 // Operators:
 // Custom operators can start with the characters:
@@ -566,9 +568,9 @@ prefix func !!! (inout shape: Square) -> Square {
 }
 
 // current value
-println(mySquare.sideLength) // 4
+print(mySquare.sideLength) // 4
 
 // change side length using custom !!! operator, increases size by 3
 !!!mySquare
-println(mySquare.sideLength) // 12
+print(mySquare.sideLength) // 12
 ```
