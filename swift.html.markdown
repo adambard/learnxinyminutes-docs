@@ -4,6 +4,7 @@ contributors:
   - ["Grant Timmerman", "http://github.com/grant"]
   - ["Christopher Bess", "http://github.com/cbess"]
   - ["Joey Huang", "http://github.com/kamidox"]  
+  - ["Anthony Nguyen", "http://github.com/anthonyn60"]
 filename: learnswift.swift
 ---
 
