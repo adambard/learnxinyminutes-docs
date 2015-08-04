@@ -26,9 +26,9 @@ import UIKit
 // TODO: Do something soon
 // FIXME: Fix this code
 
-// In Swift 2, println and print were combined into one print method.
-print("Hello, world") // standard print
-print("Hello, world", appendNewLine: true) // appending a new line
+// In Swift 2, println and print were combined into one print method. Print automatically appends a new line.
+print("Hello, world") // println is now print
+print("Hello, world", appendNewLine: false) // printing without appending a newline
 
 // variables (var) value can change after being set
 // constants (let) value can NOT be changed after being set
