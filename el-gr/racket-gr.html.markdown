@@ -1,4 +1,4 @@
----σ
+---
 language: racket
 filename: learnracket.rkt
 contributors:
@@ -8,13 +8,11 @@ contributors:
   - ["Duong H. Nguyen", "https://github.com/cmpitg"]
   - ["Keyan Zhang", "https://github.com/keyanzhang"]
 translators:
-    - ["Vasilis Panagiotopoulos" , "https://github.com/billpcs/"]
+  - ["Vasilis Panagiotopoulos" , "https://github.com/billpcs/"]
 ---
 
-Racket is a general purpose, multi-paradigm programming language in the Lisp/Scheme family.
-
-Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3rac25) or th3rac25 [at] [google's email service]
-
+H Racket είναι μια γενικού σκοπού, πολυ-υποδειγματική γλώσσα προγραμματισμού που ανήκει 
+στην οικογένεια της Lisp/Scheme
 
 ```racket
 #lang racket ; ορίζει την γλώσσα που χρησιμοποιόυμε
