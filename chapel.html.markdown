@@ -24,7 +24,7 @@ writeln( "World!" );
 // each thing is printed right next to each other, so include your spacing!
 writeln( "There are ", 3, " commas (\",\") in this line of code" );
 // Different output channels
-stdout.writeln( "This goes to standard output (just like plain writeln( ) does)");
+stdout.writeln( "This goes to standard output, just like plain writeln() does");
 stderr.writeln( "This goes to standard error" );
 
 // Variables don't have to be explicitly typed as long as 
@@ -285,6 +285,7 @@ for i in rangeCountBy{
 }
 
 // Rectangular domains are defined using the same range syntax
+// However they are required to be bounded (unlike ranges)
 var domain1to10: domain(1) = {1..10};        // 1D domain from 1..10;
 var twoDimensions: domain(2) = {-2..2,0..2}; // 2D domain over product of ranges
 var thirdDim: range = 1..16;
@@ -309,6 +310,18 @@ stringSet += "c";
 stringSet += "a"; // Redundant add "a"  
 stringSet -= "c"; // Remove "c"
 writeln( stringSet ); 
+
+// Both ranges and domains can be sliced to produce a range or domain with the
+// intersection of indices
+var rangeA = 1.. ; // range from 1 to infinity
+var rangeB =  ..5; // range from negative infinity to 5
+var rangeC = rangeA[rangeB]; // resulting range is 1..5
+writeln( (rangeA, rangeB, rangeC ) );
+
+var domainA = {1..10, 5..20};
+var domainB = {-5..5, 1..10};
+var domainC = domainA[domainB];
+writeln( (domainA, domainB, domainC) );
 
 // Array are similar to those of other languages.
 // Their sizes are defined using domains that represent their indices
@@ -356,6 +369,48 @@ var dictDomain: domain(string) = { "one", "two" };
 var dict: [dictDomain] int = [ "one" => 1, "two" => 2 ];
 dict["three"] = 3;
 for key in dictDomain do writeln( dict[key] );
+
+// Arrays can be assigned to each other in different ways
+var thisArray : [{0..5}] int = [0,1,2,3,4,5];
+var thatArray : [{0..5}] int;
+
+// Simply assign one to the other.
+// This copies thisArray into thatArray, instead of just creating a reference.
+// Modifying thisArray does not also modify thatArray.
+thatArray = thisArray; 
+thatArray[1] = -1;
+writeln( (thisArray, thatArray) );
+
+// Assign a slice one array to a slice (of the same size) of the other.
+thatArray[{4..5}] = thisArray[{1..2}];
+writeln( (thisArray, thatArray) );
+
+// Operation can also be promoted to work on arrays.
+var thisPlusThat = thisArray + thatArray;
+writeln( thisPlusThat );
+
+// Arrays and loops can also be expressions, where loop 
+// body's expression is the result of each iteration.
+var arrayFromLoop = for i in 1..10 do i;
+writeln( arrayFromLoop );
+
+// An expression can result in nothing, 
+// such as when filtering with an if-expression
+var evensOrFives = for i in 1..10 do if (i % 2 == 0 || i % 5 == 0) then i;
+
+writeln( arrayFromLoop );
+
+// Or could be written with a bracket notation
+// Note: this syntax uses the 'forall' parallel concept discussed later.
+var evensOrFivesAgain = [ i in 1..10 ] if (i % 2 == 0 || i % 5 == 0) then i;
+
+// Or over the values of the array
+arrayFromLoop = [ value in arrayFromLoop ] value + 1;
+
+// Note: this notation can get somewhat tricky. For example: 
+// evensOrFives = [ i in 1..10 ] if (i % 2 == 0 || i % 5 == 0) then i;
+// would break.
+// The reasons for this are explained in depth when discussing zipped iterators.
 
 // Chapel procedures have similar syntax to other languages functions.
 proc fibonacci( n : int ) : int {
@@ -533,6 +588,19 @@ iter oddsThenEvens( N: int ): int {
 for i in oddsThenEvens( 10 ) do write( i, ", " );
 writeln( );
 
+// Iterators can also yield conditionally, the result of which can be nothing
+iter absolutelyNothing( N ): int {
+  for i in 1..N {
+    if ( N < i ) { // Always false
+      yield i;     // Yield statement never happens
+    }
+  }
+}
+
+for i in absolutelyNothing( 10 ){
+  writeln( "Woa there! absolutelyNothing yielded ", i );
+}
+
 // We can zipper together two or more iterators (who have the same number 
 // of iterations)  using zip() to create a single zipped iterator, where each 
 // iteration of the zipped iterator yields a tuple of one value yielded 
@@ -540,6 +608,34 @@ writeln( );
                                  // Ranges have implicit iterators
 for (positive, negative) in zip( 1..5, -5..-1) do 
   writeln( (positive, negative) );
+
+// Zipper iteration is quite important in the assignment of arrays, 
+// slices of arrays, and array/loop expressions.
+var fromThatArray : [1..#5] int = [1,2,3,4,5];
+var toThisArray : [100..#5] int;
+
+// The operation
+toThisArray = fromThatArray;
+// is produced through
+for (i,j) in zip( toThisArray.domain, fromThatArray.domain) {
+  toThisArray[ i ] = fromThatArray[ j ];
+}
+
+toThisArray = [ j in -100..#5 ] j;
+writeln( toThisArray );
+// is produced through
+for (i, j) in zip( toThisArray.domain, -100..#5 ){
+  toThisArray[i] = j;
+}
+writeln( toThisArray );
+
+// This is all very important in undestanding why the statement 
+// var iterArray : [1..10] int = [ i in 1..10 ] if ( i % 2 == 1 ) then j;
+// exhibits a runtime error.
+// Even though the domain of the array and the loop-expression are 
+// the same size, the body of the expression can be though of as an iterator.
+// Because iterators can yield nothing, that iterator yields a different number
+// of things than the domain of the array or loop, which is not allowed.
 
 // Classes are similar to those in C++ and Java.
 // They currently lack privatization
@@ -813,12 +909,9 @@ proc main(){
   // You may have noticed that (depending on how many cores you have) 
   // that the parallel loop went faster than the serial loop
 
-  // A succinct way of writing a forall loop over an array:
-  // iterate over values
-  [ val in myBigArray ] val = 1 / val;
-
-  // or iterate over indicies
-  [ idx in myBigArray.domain ] myBigArray[idx] = -myBigArray[idx]; 
+  // The bracket style loop-expression described
+  // much earlier implicitly uses a forall loop.
+  [ val in myBigArray ] val = 1 / val; // Parallel operation
 
   // Atomic variables, common to many languages, are ones whose operations
   // occur uninterupted. Multiple threads can both modify atomic variables
@@ -837,7 +930,7 @@ proc main(){
   writeln( "uranium was ", was, " but is now ", replaceWith );
 
   var isEqualTo = 235;
-  if uranium.compareExchange( isEqualTo, replaceWith ) {
+  if ( uranium.compareExchange( isEqualTo, replaceWith ) ) {
     writeln( "uranium was equal to ", isEqualTo, 
              " so replaced value with ", replaceWith );
   } else {
@@ -911,7 +1004,7 @@ proc main(){
     // Create a barrier
     do{
       lock$;                 // Read lock$ (wait)
-    }while count.read() < 1; // Keep waiting until a spot opens up
+    }while ( count.read() < 1 ); // Keep waiting until a spot opens up
   
     count.sub(1);          // decrement the counter
     lock$.writeXF( true ); // Set lock$ to full (signal)
@@ -954,7 +1047,7 @@ Who is this tutorial for?
 
 This tutorial is for people who want to learn the ropes of chapel without having to hear about what fiber mixture the ropes are, or how they were braided, or how the braid configurations differ between one another.
 It won't teach you how to develop amazingly performant code, and it's not exhaustive. 
-Refer to the [language specification](http://chapel.cray.com/language.html) and the [library documentation](http://chapel.cray.com/docs/latest/) for more details.
+Refer to the [language specification](http://chapel.cray.com/language.html) and the [module documentation](http://chapel.cray.com/docs/latest/) for more details.
 
 Occasionally check back here and on the [Chapel site](http://chapel.cray.com) to see if more topics have been added or more tutorials created.
 
@@ -963,8 +1056,6 @@ Occasionally check back here and on the [Chapel site](http://chapel.cray.com) to
  * Exposition of the standard modules
  * Multiple Locales (distributed memory system)
  * Records
- * Whole/sliced array assignment
- * Range and domain slicing
  * Parallel iterators
 
 Your input, questions, and discoveries are important to the developers!
