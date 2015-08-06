@@ -5,6 +5,7 @@ contributors:
     - ["George Petrov", "http://github.com/petrovg"]
     - ["Dominic Bou-Samra", "http://dbousamra.github.com"]
     - ["Geoff Liu", "http://geoffliu.me"]
+    - ["Ha-Duong Nguyen", "http://reference-error.org"]
 filename: learn.scala
 ---
 
@@ -16,15 +17,16 @@ Scala - the scalable language
   Set yourself up:
 
   1) Download Scala - http://www.scala-lang.org/downloads
-  2) unzip/untar in your favourite location and put the bin subdir on the path
-  3) Start a scala REPL by typing scala. You should see the prompt:
+  2) Unzip/untar to your favourite location and put the bin subdir in your `PATH` environment variable
+  3) Start a Scala REPL by running `scala`. You should see the prompt:
 
   scala>
 
-  This is the so called REPL (Read-Eval-Print Loop). You may type any valid
-  Scala expression into it, and the result will be printed. We will explain what
-  Scala files look like further into this tutorial, but for now, let's start
-  with some basics.
+  This is the so called REPL (Read-Eval-Print Loop). You may type any Scala
+  expression, and the result will be printed. We will explain what Scala files
+  look like further into this tutorial, but for now, let's start with some
+  basics.
+
 */
 
 
@@ -32,10 +34,10 @@ Scala - the scalable language
 // 1. Basics
 /////////////////////////////////////////////////
 
-// Single line comments start with two forward slashes
+// Single-line comments start with two forward slashes
 
 /*
-  Multi line comments, as you can already see from above, look like this.
+  Multi-line comments, as you can already see from above, look like this.
 */
 
 // Printing, and forcing a new line on the next print
@@ -46,12 +48,12 @@ println(10)
 print("Hello world")
 
 // Declaring values is done using either var or val.
-// val declarations are immutable, whereas var's are mutable. Immutability is
+// val declarations are immutable, whereas vars are mutable. Immutability is
 // a good thing.
 val x = 10 // x is now 10
-x = 20 // error: reassignment to val
+x = 20     // error: reassignment to val
 var y = 10
-y = 20  // y is now 20
+y = 20     // y is now 20
 
 /*
   Scala is a statically typed language, yet note that in the above declarations,
@@ -71,17 +73,17 @@ true
 false
 
 // Boolean operations
-!true // false
-!false // true
+!true         // false
+!false        // true
 true == false // false
-10 > 5 // true
+10 > 5        // true
 
 // Math is as per usual
-1 + 1 // 2
-2 - 1 // 1
-5 * 3 // 15
-6 / 2 // 3
-6 / 4 // 1
+1 + 1   // 2
+2 - 1   // 1
+5 * 3   // 15
+6 / 2   // 3
+6 / 4   // 1
 6.0 / 4 // 1.5
 
 
@@ -120,12 +122,12 @@ s"We have $n apples" // => "We have 45 apples"
 
 // Expressions inside interpolated strings are also possible
 val a = Array(11, 9, 6)
-s"My second daughter is ${a(0) - a(2)} years old." // => "My second daughter is 5 years old."
+s"My second daughter is ${a(0) - a(2)} years old."    // => "My second daughter is 5 years old."
 s"We have double the amount of ${n / 2.0} in apples." // => "We have double the amount of 22.5 in apples."
-s"Power of 2: ${math.pow(2, 2)}" // => "Power of 2: 4"
+s"Power of 2: ${math.pow(2, 2)}"                      // => "Power of 2: 4"
 
 // Formatting with interpolated strings with the prefix "f"
-f"Power of 5: ${math.pow(5, 2)}%1.0f" // "Power of 5: 25"
+f"Power of 5: ${math.pow(5, 2)}%1.0f"         // "Power of 5: 25"
 f"Square root of 122: ${math.sqrt(122)}%1.4f" // "Square root of 122: 11.0454"
 
 // Raw strings, ignoring special characters.
@@ -171,12 +173,12 @@ def sq(x: Int) = x * x  // Compiler can guess return type is Int
 
 // Functions can have default parameters:
 def addWithDefault(x: Int, y: Int = 5) = x + y
-addWithDefault(1, 2)  // => 3
-addWithDefault(1)  // => 6
+addWithDefault(1, 2) // => 3
+addWithDefault(1)    // => 6
 
 
 // Anonymous functions look like this:
-(x:Int) => x * x
+(x: Int) => x * x
 
 // Unlike defs, even the input type of anonymous functions can be omitted if the
 // context makes it clear. Notice the type "Int => Int" which means a function
@@ -193,8 +195,8 @@ sq(10)   // => 100
 val addOne: Int => Int = _ + 1
 val weirdSum: (Int, Int) => Int = (_ * 2 + _ * 3)
 
-addOne(5)  // => 6
-weirdSum(2, 4)  // => 16
+addOne(5)      // => 6
+weirdSum(2, 4) // => 16
 
 
 // The return keyword exists in Scala, but it only returns from the inner-most
@@ -204,9 +206,9 @@ weirdSum(2, 4)  // => 16
 def foo(x: Int): Int = {
   val anonFunc: Int => Int = { z =>
     if (z > 5)
-      return z  // This line makes z the return value of foo!
+      return z // This line makes z the return value of foo!
     else
-      z + 2  // This line is the return value of anonFunc
+      z + 2    // This line is the return value of anonFunc
   }
   anonFunc(x)  // This line is the return value of foo
 }
@@ -218,19 +220,19 @@ def foo(x: Int): Int = {
 
 1 to 5
 val r = 1 to 5
-r.foreach( println )
+r.foreach(println)
 
 r foreach println
 // NB: Scala is quite lenient when it comes to dots and brackets - study the
 // rules separately. This helps write DSLs and APIs that read like English
 
-(5 to 1 by -1) foreach ( println )
+(5 to 1 by -1) foreach (println)
 
 // A while loops
 var i = 0
-while (i < 10) {  println("i " + i); i+=1  }
+while (i < 10) { println("i " + i); i += 1 }
 
-while (i < 10) {  println("i " + i); i+=1  }   // Yes, again. What happened? Why?
+while (i < 10) { println("i " + i); i += 1 }   // Yes, again. What happened? Why?
 
 i    // Show the value of i. Note that while is a loop in the classical sense -
      // it executes sequentially while changing the loop variable. while is very
@@ -239,19 +241,19 @@ i    // Show the value of i. Note that while is a loop in the classical sense -
 
 // A do while loop
 do {
-  println("x is still less than 10");
+  println("x is still less than 10")
   x += 1
 } while (x < 10)
 
 // Tail recursion is an idiomatic way of doing recurring things in Scala.
 // Recursive functions need an explicit return type, the compiler can't infer it.
 // Here it's Unit.
-def showNumbersInRange(a:Int, b:Int):Unit = {
+def showNumbersInRange(a: Int, b: Int): Unit = {
   print(a)
   if (a < b)
     showNumbersInRange(a + 1, b)
 }
-showNumbersInRange(1,14)
+showNumbersInRange(1, 14)
 
 
 // Conditionals
@@ -305,13 +307,13 @@ s(1)
 (a, 2, "three")
 
 // Why have this?
-val divideInts = (x:Int, y:Int) => (x / y, x % y)
+val divideInts = (x: Int, y: Int) => (x / y, x % y)
 
-divideInts(10,3) // The function divideInts gives you the result and the remainder
+divideInts(10, 3) // The function divideInts gives you the result and the remainder
 
 // To access the elements of a tuple, use _._n where n is the 1-based index of
 // the element
-val d = divideInts(10,3)
+val d = divideInts(10, 3)
 
 d._1
 
@@ -359,7 +361,7 @@ class Dog(br: String) {
 
 val mydog = new Dog("greyhound")
 println(mydog.breed) // => "greyhound"
-println(mydog.bark) // => "Woof, woof!"
+println(mydog.bark)  // => "Woof, woof!"
 
 
 // The "object" keyword creates a type AND a singleton instance of it. It is
@@ -414,8 +416,8 @@ val otherGeorge = george.copy(phoneNumber = "9876")
 def matchPerson(person: Person): String = person match {
   // Then you specify the patterns:
   case Person("George", number) => "We found George! His number is " + number
-  case Person("Kate", number) => "We found Kate! Her number is " + number
-  case Person(name, number) => "We matched someone : " + name + ", phone : " + number
+  case Person("Kate", number)   => "We found Kate! Her number is " + number
+  case Person(name, number)     => "We matched someone : " + name + ", phone : " + number
 }
 
 val email = "(.*)@(.*)".r  // Define a regex for the next example.
@@ -446,7 +448,7 @@ def matchEverything(obj: Any): String = obj match {
   case List(1, b, c) => s"Got a list with three elements and starts with 1: 1, $b, $c"
 
   // You can nest patterns:
-  case List(List((1, 2,"YAY"))) => "Got a list of list of tuple"
+  case List(List((1, 2, "YAY"))) => "Got a list of list of tuple"
 }
 
 // In fact, you can pattern match any object with an "unapply" method. This
@@ -493,7 +495,7 @@ sSquared.reduce (_+_)
 // The filter function takes a predicate (a function from A -> Boolean) and
 // selects all elements which satisfy the predicate
 List(1, 2, 3) filter (_ > 2) // List(3)
-case class Person(name:String, age:Int)
+case class Person(name: String, age: Int)
 List(
   Person(name = "Dom", age = 23),
   Person(name = "Bob", age = 30)
@@ -541,8 +543,8 @@ implicit def myImplicitFunction(breed: String) = new Dog("Golden " + breed)
 
 // By itself, implicit keyword doesn't change the behavior of the value, so
 // above values can be used as usual.
-myImplicitInt + 2  // => 102
-myImplicitFunction("Pitbull").breed  // => "Golden Pitbull"
+myImplicitInt + 2                   // => 102
+myImplicitFunction("Pitbull").breed // => "Golden Pitbull"
 
 // The difference is that these values are now eligible to be used when another
 // piece of code "needs" an implicit value. One such situation is implicit
@@ -570,8 +572,8 @@ def foo[T : C] = ...
 // implicit conversion of type A => B, where A is the type of obj, and B has a
 // method called "method", that conversion is applied. So having
 // myImplicitFunction above in scope, we can say:
-"Retriever".breed  // => "Golden Retriever"
-"Sheperd".bark  // => "Woof, woof!"
+"Retriever".breed // => "Golden Retriever"
+"Sheperd".bark    // => "Woof, woof!"
 
 // Here the String is first converted to Dog using our function above, and then
 // the appropriate method is called. This is an extremely powerful feature, but
@@ -594,7 +596,7 @@ import scala.collection.immutable._
 import scala.collection.immutable.{List, Map}
 
 // Rename an import using '=>'
-import scala.collection.immutable.{ List => ImmutableList }
+import scala.collection.immutable.{List => ImmutableList}
 
 // Import all classes, except some. The following excludes Map and Set:
 import scala.collection.immutable.{Map => _, Set => _, _}
@@ -629,13 +631,8 @@ writer.close()
 
 ## Further resources
 
-[Scala for the impatient](http://horstmann.com/scala/)
-
-[Twitter Scala school](http://twitter.github.io/scala_school/)
-
-[The scala documentation](http://docs.scala-lang.org/)
-
-[Try Scala in your browser](http://scalatutorials.com/tour/)
-
-Join the [Scala user group](https://groups.google.com/forum/#!forum/scala-user)
-
+* [Scala for the impatient](http://horstmann.com/scala/)
+* [Twitter Scala school](http://twitter.github.io/scala_school/)
+* [The scala documentation](http://docs.scala-lang.org/)
+* [Try Scala in your browser](http://scalatutorials.com/tour/)
+* Join the [Scala user group](https://groups.google.com/forum/#!forum/scala-user)
