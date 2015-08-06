@@ -1,6 +1,6 @@
 ---
 language: racket
-filename: learnracket.rkt
+filename: learnracket-gr.rkt
 contributors:
   - ["th3rac25", "https://github.com/voila"]
   - ["Eli Barzilay", "https://github.com/elibarzilay"]
@@ -9,6 +9,7 @@ contributors:
   - ["Keyan Zhang", "https://github.com/keyanzhang"]
 translators:
   - ["Vasilis Panagiotopoulos" , "https://github.com/billpcs/"]
+lang: el-gr
 ---
 
 H Racket είναι μια γενικού σκοπού, πολυ-υποδειγματική γλώσσα προγραμματισμού που ανήκει 
