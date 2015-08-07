@@ -11,9 +11,8 @@ lang: ro-ro
 Clojure este un limbaj din familia Lisp dezvoltat pentru Masina Virtuala Java
 (Java Virtual Machine - JVM). Pune un accent mult mai puternic pe
 [programarea funcionala](https://en.wikipedia.org/wiki/Functional_programming)
-pura decat Common Lisp, dar include
-utilitare [STM](https://en.wikipedia.org/wiki/Software_transactional_memory) pentru
-a gestiona starea, atunci cand aceasta apare.
+pura decat Common Lisp, dar include utilitare [STM](https://en.wikipedia.org/wiki/Software_transactional_memory)
+pentru a gestiona starea, atunci cand aceasta apare.
 
 Combinatia aceasta ii permite sa gestioneze procese concurente foarte usor,
 de multe ori in mod automat.
