@@ -283,4 +283,4 @@ Go的根源在[Go官方网站](http://golang.org/)。
 
 强烈推荐阅读语言定义部分，很简单而且很简洁！(as language definitions go these days.)
 
-学习Go还要阅读Go标准库的源代码，全部文档化了，可读性非常好，可以学到go，go style和go idioms。在文档中点击函数名，源代码就出来了！
+学习Go还要阅读Go[标准库的源代码](http://golang.org/src/)，全部文档化了，可读性非常好，可以学到go，go style和go idioms。在[文档](http://golang.org/pkg/)中点击函数名，源代码就出来了！
