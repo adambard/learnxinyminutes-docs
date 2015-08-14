@@ -2,7 +2,7 @@
 name: perl
 category: language
 language: perl
-filename: learnperl.pl
+filename: learnperl-pt.pl
 contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]
 translators:
