@@ -960,7 +960,7 @@ proc main(){
     begin { // Reader task
       writeln( "Reader: waiting to read." );
       var read_sync = someSyncVar$;
-      writeln( "value is ", read_sync );
+      writeln( "Reader: value is ", read_sync );
     }
 
     begin { // Writer task
