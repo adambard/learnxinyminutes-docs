@@ -257,7 +257,7 @@ proc greet greeting\ name return\ \"Hello,\ \$name!
 proc fold {cmd args} {
     set res 0
     foreach arg $args {
-        set res [cmd $res $arg]
+        set res [$cmd $res $arg]
     }
 }
 fold ::tcl::mathop::* 5 3 3 ;# ->  45
