@@ -121,7 +121,8 @@ puts lots\nof\n\n\n\n\n\nnewlines
 
 
 # A word enclosed in braces is not subject to any special interpretation or
-# substitutions, except that a backslash before a brace is not counted when look#ing for the closing brace
+# substitutions, except that a backslash before a brace is not counted when
+# looking for the closing brace
 set somevar {
     This is a literal $ sign, and this \} escaped
     brace remains uninterpreted
