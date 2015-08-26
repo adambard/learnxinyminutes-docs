@@ -164,7 +164,7 @@ set greeting "Hello, $person(name)"
 # A namespace holds commands and variables
 namespace eval people {
     namespace eval person1 {
-        set name Neo
+        variable name Neo
     }
 }
 
@@ -190,7 +190,10 @@ set greeting "Hello $people::person1::name"
 namespace delete ::
 
 
-# Because of name resolution behaviour, it's safer to use the "variable" command to declare or to assign a value to a namespace.
+# Because of name resolution behaviour, it's safer to use the "variable" command to 
+# declare or to assign a value to a namespace. If a variable called "name" already 
+# exists in the global namespace, using "set" here will assign a value to the global variable
+# instead of creating a new variable in the local namespace.
 namespace eval people {
     namespace eval person1 {
         variable name Neo
