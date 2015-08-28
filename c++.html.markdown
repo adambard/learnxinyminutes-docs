@@ -158,11 +158,12 @@ void foo()
 
 int main()
 {
-    // Assume everything is from the namespace "Second"
-    // unless otherwise specified.
+    // Includes all symbols from `namesapce Second` into the current scope. Note
+    // that simply `foo()` no longer works, since it is now ambiguous whether
+    // we're calling the `foo` in `namespace Second` or the top level.
     using namespace Second;
 
-    foo(); // prints "This is Second::foo"
+    Second::foo(); // prints "This is Second::foo"
     First::Nested::foo(); // prints "This is First::Nested::foo"
     ::foo(); // prints "This is global foo"
 }
