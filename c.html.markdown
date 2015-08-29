@@ -183,8 +183,8 @@ int main() {
   i1 / i2; // => 0 (0.5, but truncated towards 0)
 
   // You need to cast at least one integer to float to get a floating-point result
-  (float)i1 / i2 // => 0.5f
-  i1 / (double)i2 // => 0.5 // Same with double
+  (float)i1 / i2; // => 0.5f
+  i1 / (double)i2; // => 0.5 // Same with double
   f1 / f2; // => 0.5, plus or minus epsilon
   // Floating-point numbers and calculations are not exact
 
