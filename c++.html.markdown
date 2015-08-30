@@ -765,6 +765,22 @@ Foo f1 = fooSub;
 Foo f1;
 f1 = f2;
 
+
+// How to truly clear a container:
+class Foo { ... };
+vector<Foo> v;
+for (int i = 0; i < 10; ++i)
+  v.push_back(Foo());
+
+// Following line sets size of v to 0, but destructors don't get called,
+// and resources aren't released!
+v.empty();
+v.push_back(Foo());  // New value is copied into the first Foo we inserted in the loop.
+
+// Truly destroys all values in v. See section about temporary object for
+// explanation of why this works.
+v.swap(vector<Foo>());
+
 ```
 Further Reading:
 
