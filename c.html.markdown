@@ -18,9 +18,9 @@ memory management and C will take you as far as you need to go.
 ```c
 // Single-line comments start with // - only available in C99 and later.
 
-  /*
+/*
 Multi-line comments look like this. They work in C89 as well.
-  */
+*/
 
 /*
 Multi-line comments don't nest /* Be careful */  // comment ends on this line...
@@ -55,7 +55,7 @@ int add_two_ints(int x1, int x2); // function prototype
 
 // Your program's entry point is a function called
 // main with an integer return type.
-int main() {
+int main(void) {
   // print output using printf, for "print formatted"
   // %d is an integer, \n is a newline
   printf("%d\n", 0); // => Prints 0
@@ -157,12 +157,12 @@ int main() {
   int cha = 'a'; // fine
   char chb = 'a'; // fine too (implicit conversion from int to char)
 
-  //Multi-dimensional arrays:
+  // Multi-dimensional arrays:
   int multi_array[2][5] = {
     {1, 2, 3, 4, 5},
     {6, 7, 8, 9, 0}
   };
-  //access elements:
+  // access elements:
   int array_int = multi_array[0][2]; // => 3
 
   ///////////////////////////////////////
@@ -183,8 +183,8 @@ int main() {
   i1 / i2; // => 0 (0.5, but truncated towards 0)
 
   // You need to cast at least one integer to float to get a floating-point result
-  (float)i1 / i2 // => 0.5f
-  i1 / (double)i2 // => 0.5 // Same with double
+  (float)i1 / i2; // => 0.5f
+  i1 / (double)i2; // => 0.5 // Same with double
   f1 / f2; // => 0.5, plus or minus epsilon
   // Floating-point numbers and calculations are not exact
 
@@ -219,13 +219,13 @@ int main() {
   0 || 1; // => 1 (Logical or)
   0 || 0; // => 0
 
-  //Conditional expression ( ? : )
+  // Conditional expression ( ? : )
   int e = 5;
   int f = 10;
   int z;
   z = (e > f) ? e : f; // => 10 "if e > f return e, else return f."
 
-  //Increment and decrement operators:
+  // Increment and decrement operators:
   char *s = "iLoveC";
   int j = 0;
   s[j++]; // => "i". Returns the j-th item of s THEN increments value of j.
@@ -371,7 +371,7 @@ int main() {
     x_array[xx] = 20 - xx;
   } // Initialize x_array to 20, 19, 18,... 2, 1
 
-    // Declare a pointer of type int and initialize it to point to x_array
+  // Declare a pointer of type int and initialize it to point to x_array
   int* x_ptr = x_array;
   // x_ptr now points to the first element in the array (the integer 20).
   // This works because arrays often decay into pointers to their first element.
@@ -404,8 +404,8 @@ int main() {
     *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx
   } // Initialize memory to 20, 19, 18, 17... 2, 1 (as ints)
 
-    // Dereferencing memory that you haven't allocated gives
-    // "unpredictable results" - the program is said to invoke "undefined behavior"
+  // Dereferencing memory that you haven't allocated gives
+  // "unpredictable results" - the program is said to invoke "undefined behavior"
   printf("%d\n", *(my_ptr + 21)); // => Prints who-knows-what? It may even crash.
 
   // When you're done with a malloc'd block of memory, you need to free it,
@@ -471,13 +471,13 @@ str_reverse(c);
 printf("%s\n", c); // => ".tset a si sihT"
 */
 
-//if referring to external variables outside function, must use extern keyword.
+// if referring to external variables outside function, must use extern keyword.
 int i = 0;
 void testFunc() {
   extern int i; //i here is now using external variable i
 }
 
-//make external variables private to source file with static:
+// make external variables private to source file with static:
 static int j = 0; //other files using testFunc2() cannot access variable j
 void testFunc2() {
   extern int j;
@@ -634,7 +634,7 @@ Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://
 It is *the* book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some
 inaccuracies (well, ideas that are not considered good anymore) or now-changed practices.
 
-Another good resource is [Learn C the hard way](http://c.learncodethehardway.org/book/).
+Another good resource is [Learn C The Hard Way](http://c.learncodethehardway.org/book/).
 
 If you have a question, read the [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 
