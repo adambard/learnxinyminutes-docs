@@ -209,13 +209,14 @@ foo 5 -- 75
 -- the expression on its right is applied as the parameter to the function on its left.
 
 -- before
-(even (fib 7)) -- false
-
--- after
-even . fib $ 7 -- false
+even (fib 7) -- false
 
 -- equivalently
 even $ fib 7 -- false
+
+-- composing functions
+even . fib $ 7 -- false
+
 
 ----------------------------------------------------
 -- 5. Type signatures

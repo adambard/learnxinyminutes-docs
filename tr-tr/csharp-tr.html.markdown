@@ -8,7 +8,7 @@ contributors:
 translators:
     - ["Melih Mucuk", "http://melihmucuk.com"]
 lang: tr-tr
-filename: LearnCSharp.cs
+filename: LearnCSharp-tr.cs
 
 ---
 

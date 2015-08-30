@@ -195,7 +195,7 @@ cond do
     "But I will"
 end
 
-# It is common to see the last condition equal to `true`, which will always match.
+# It is common to set the last condition equal to `true`, which will always match.
 cond do
   1 + 1 == 3 ->
     "I will never be seen"

@@ -43,7 +43,7 @@ edit('myfunction.m') % Open function/script in editor
 type('myfunction.m') % Print the source of function/script to Command Window
 
 profile on 	% turns on the code profiler
-profile of 	% turns off the code profiler
+profile off 	% turns off the code profiler
 profile viewer 	% Open profiler
 
 help command 	% Displays documentation for command in Command Window
