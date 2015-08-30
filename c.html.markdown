@@ -634,7 +634,7 @@ Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://
 It is *the* book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some
 inaccuracies (well, ideas that are not considered good anymore) or now-changed practices.
 
-Other good resources include [Learn C The Hard Way](http://c.learncodethehardway.org/book/) and [SourceCrunch](https://www.sourcecrunch.com/courses/foundations-of-c).
+Another good resource is [Learn C The Hard Way](http://c.learncodethehardway.org/book/).
 
 If you have a question, read the [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 
