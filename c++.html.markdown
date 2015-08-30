@@ -751,7 +751,8 @@ pt2 = nullptr;  // Sets pt2 to null.
 
 
 // '=' != '=' != '='!
-// Calls Foo::Foo(const Foo&) or some variant copy constructor.
+// Calls Foo::Foo(const Foo&) or some variant (see move semantics) copy
+// constructor.
 Foo f2;
 Foo f1 = f2;
 
