@@ -16,8 +16,7 @@ con Java para aplicaciones más complejas. Debido a su integracion estrecha con 
 web y soporte por defecto de los navegadores modernos se ha vuelto mucho más común 
 para front-end que Java.
 
-JavaScript no sólo se limita a los navegadores web:
-* Node.js: Un proyecto que provee con un ambiente para el motor V8 de Google Chrome.
+JavaScript no sólo se limita a los navegadores web, aunque: Node.js, Un proyecto que proporciona un entorno de ejecución independiente para el motor V8 de Google Chrome, se está volviendo más y más popular.
 
 ¡La retroalimentación es bienvenida! Puedes encontrarme en: 
 [@adambrenecki](https://twitter.com/adambrenecki), o
@@ -49,6 +48,7 @@ hazAlgo()
 
 // Toda la aritmética básica funciona como uno esperaría.
 1 + 1; // = 2
+0.1 + 0.2; // = 0.30000000000000004
 8 - 1; // = 7
 10 * 2; // = 20
 35 / 5; // = 7
@@ -102,9 +102,11 @@ false;
 
 // Los tipos no importan con el operador ==...
 "5" == 5; // = true
+null == undefined; // = true
 
 // ...a menos que uses ===
 "5" === 5; // = false
+null === undefined; // false
 
 // Los Strings funcionan como arreglos de caracteres
 // Puedes accesar a cada caracter con la función charAt()
@@ -126,7 +128,7 @@ undefined; // usado para indicar que un valor no está presente actualmente
 // Aunque 0 === "0" sí es false.
 
 ///////////////////////////////////
-// 2. Variables, Arreglos y Objetos
+// 2. Variables, Arrays y Objetos
 
 // Las variables se declaran con la palabra var. JavaScript cuenta con tipado dinámico,
 // así que no se necesitan aplicar tipos. La asignación se logra con el operador =.
@@ -220,7 +222,6 @@ for (var i = 0; i < 5; i++){
 }
 
 // && es un "y" lógico, || es un "o" lógico
-var casa = {tamano:"grande",casa:"color"};
 if (casa.tamano == "grande" && casa.color == "azul"){
     casa.contiene = "oso";
 }
