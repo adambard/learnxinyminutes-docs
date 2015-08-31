@@ -4,6 +4,7 @@ filename: learncpp.cpp
 contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Matt Kline", "https://github.com/mrkline"]
+    - ["Geoff Liu", "http://geoffliu.me"]
 lang: en
 ---
 
@@ -248,6 +249,56 @@ fooRef = bar;
 const string& barRef = bar; // Create a const reference to bar.
 // Like C, const values (and pointers and references) cannot be modified.
 barRef += ". Hi!"; // Error, const references cannot be modified.
+
+// Sidetrack: Before we talk more about references, we must introduce a concept
+// called a temporary object. Suppose we have the following code:
+string tempObjectFun() { ... }
+string retVal = tempObjectFun();
+
+// What happens in the second line is actually:
+//   - a string object is returned from `tempObjectFun`
+//   - a new string is constructed with the returned object as arugment to the
+//     constructor
+//   - the returned object is destroyed
+// The returned object is called a temporary object. Temporary objects are
+// created whenever a function returns an object, and they are destroyed at the
+// end of the evaluation of the enclosing expression. So in this code:
+foo(bar(tempObjectFun()))
+
+// assuming `foo` and `bar` exist, the object returned from `tempObjectFun` is
+// passed to `bar`, and it is destroyed before `foo` is called.
+
+// Now back to references. The exception to the "at the end of the enclosing
+// expression" rule is if a temporary object is bound to a const reference, in
+// which case its life gets extended to the current scope:
+
+void constReferenceTempObjectFun() {
+  // `constRef` gets the temporary object, and it is valid until the end of this
+  // function.
+  const string& constRef = tempObjectFun();
+  ...
+}
+
+// Another kind of reference introduced in C++11 is specifically for temporary
+// objects. You cannot have a variable of its type, but it takes precedence in
+// overload resolution:
+
+void someFun(string& s) { ... }  // Regular reference
+void someFun(string&& s) { ... }  // Reference to temporary object
+
+string foo;
+someFun(foo);  // Calls the version with regular reference
+someFun(tempObjectFun());  // Calls the version with temporary reference
+
+// For example, you will see these two versions of constructors for
+// std::basic_string:
+basic_string(const basic_string& other);
+basic_string(basic_string&& other);
+
+// Idea being if we are constructing a new string from a temporary object (which
+// is going to be destroyed soon anyway), we can have a more efficient
+// constructor that "salvages" parts of that temporary string. You will see this
+// concept referred to as the move semantic.
 
 //////////////////////////////////////////
 // Classes and object-oriented programming
@@ -700,7 +751,8 @@ pt2 = nullptr;  // Sets pt2 to null.
 
 
 // '=' != '=' != '='!
-// Calls Foo::Foo(const Foo&) or some variant copy constructor.
+// Calls Foo::Foo(const Foo&) or some variant (see move semantics) copy
+// constructor.
 Foo f2;
 Foo f1 = f2;
 
@@ -713,6 +765,22 @@ Foo f1 = fooSub;
 // Calls Foo::operator=(Foo&) or variant.
 Foo f1;
 f1 = f2;
+
+
+// How to truly clear a container:
+class Foo { ... };
+vector<Foo> v;
+for (int i = 0; i < 10; ++i)
+  v.push_back(Foo());
+
+// Following line sets size of v to 0, but destructors don't get called,
+// and resources aren't released!
+v.empty();
+v.push_back(Foo());  // New value is copied into the first Foo we inserted in the loop.
+
+// Truly destroys all values in v. See section about temporary object for
+// explanation of why this works.
+v.swap(vector<Foo>());
 
 ```
 Further Reading:
