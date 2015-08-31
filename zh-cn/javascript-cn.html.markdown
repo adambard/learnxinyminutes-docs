@@ -402,7 +402,7 @@ myObj.meaningOfLife; // = 42
 // 函数也可以工作。
 myObj.myFunc() // = "hello world!"
 
-// 当然，如果你要访问的成员在原型当中也没有定义的话，解释器就会去找原型的原型，以此类堆。
+// 当然，如果你要访问的成员在原型当中也没有定义的话，解释器就会去找原型的原型，以此类推。
 myPrototype.__proto__ = {
     myBoolean: true
 };
