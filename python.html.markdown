@@ -382,7 +382,7 @@ else:   # Optional clause to the try/except block. Must follow all except blocks
 finally: #  Execute under all circumstances
     print "We can clean up resources here"
 
-# Instead of try/finally to cleanup resources you can use with
+# Instead of try/finally to cleanup resources you can use a with statement
 with open("myfile.txt") as f:
     for line in f:
         print line
