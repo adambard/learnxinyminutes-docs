@@ -149,6 +149,9 @@ set greeting "Hello, [set {first name}]"
 
 # To promote the words within a word to individual words of the current
 # command, use the expansion operator, "{*}".
+```
+
+```tcl
 set {*}{name Neo}
 
 # is equivalent to
