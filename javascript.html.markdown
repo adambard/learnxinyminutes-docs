@@ -3,6 +3,7 @@ language: javascript
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
+    - ["Jakub Młokosiewicz", "https://github.com/hckr"]
 filename: javascript.js
 ---
 
@@ -125,6 +126,8 @@ undefined; // used to indicate a value is not currently present (although
            // `undefined` is actually a value itself)
 
 // false, null, undefined, NaN, 0 and "" are falsy; everything else is truthy.
+// Falsy means that non-Boolean value, when used in context where a Boolean
+// value is expected (e.g. in an if statement), will be considered false.
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
 ///////////////////////////////////
@@ -140,6 +143,14 @@ someOtherVar = 10;
 
 // ...but your variable will be created in the global scope, not in the scope
 // you defined it in.
+
+// ...but if you enter strict mode, after using the following statement:
+
+"use strict"; // or 'use strict'
+
+// ...you'll get an error, new variable won't be created and you'll save some
+// of your valuable time which would otherwise be spent on debugging
+nonExistentVar = 11; // ReferenceError
 
 // Variables declared without being assigned to are set to undefined.
 var someThirdVar; // = undefined
@@ -165,6 +176,13 @@ myArray.length; // = 4
 
 // Add/Modify at specific index
 myArray[3] = "Hello";
+
+// It's worth mentioning that you can treat strings as arrays of characters:
+var alphabet = "abcdefghijklmnopqrstuvwxyz";
+alphabet[0]; // "a"
+
+// ...but you can't modify them:
+alphabet[5] = "F"; // alphabet is still "abcdefghijklmnopqrstuvwxyz"
 
 // JavaScript's objects are equivalent to "dictionaries" or "maps" in other
 // languages: an unordered collection of key-value pairs.
@@ -227,8 +245,13 @@ if (colour == "red" || colour == "blue"){
 }
 
 // && and || "short circuit", which is useful for setting default values.
+
+// If otherName is undefined (or other falsy value), name will default
+// to "default":
 var name = otherName || "default";
 
+// secondFunc() will execute *only if* firstFunc() returned a truthy value:
+firstFunc() && secondFunc();
 
 // The `switch` statement checks for equality with `===`.
 // use 'break' after each case 
