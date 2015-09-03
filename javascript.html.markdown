@@ -256,7 +256,7 @@ firstFunc() && secondFunc();
 // The `switch` statement checks for equality with `===`.
 // use 'break' after each case 
 // or the cases after the correct one will be executed too. 
-grade = 'B';
+var grade = 'B';
 switch (grade) {
   case 'A':
     console.log("Great job");
@@ -422,7 +422,7 @@ doubler(8); // = 16
 var MyConstructor = function(){
     this.myNumber = 5;
 }
-myNewObj = new MyConstructor(); // = {myNumber: 5}
+var myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
 
 // Every JavaScript object has a 'prototype'. When you go to access a property
