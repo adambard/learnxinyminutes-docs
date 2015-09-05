@@ -375,12 +375,12 @@ except (TypeError, NameError):
 else:   # Optional clause to the try/except block. Must follow all except blocks
     print("All good!")   # Runs only if the code in try raises no exceptions
 finally: #  Execute under all circumstances
-    print "We can clean up resources here"
+    print ("We can clean up resources here")
  		 
 # Instead of try/finally to cleanup resources you can use a with statement
 with open("myfile.txt") as f:
     for line in f:
-        print line
+        print (line)
 
 # Python offers a fundamental abstraction called the Iterable.
 # An iterable is an object that can be treated as a sequence.
