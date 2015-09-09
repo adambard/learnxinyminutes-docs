@@ -149,6 +149,8 @@ print("Jsem 3. Python 3.")
 # Konvence je používat male_pismo_s_podtrzitky
 nazev_promenne = 5
 nazev_promenne  # => 5
+# Názvy proměnných mohou obsahovat i UTF8 znaky
+název_proměnné = 5
 
 # Přístup k předtím nepoužité proměnné vyvolá výjimku
 # Odchytávání vyjímek - viz další kapitola
@@ -185,9 +187,9 @@ sez[2:]  # => [4, 3]
 # Odříznutí konce
 sez[:3]  # => [1, 2, 4]
 # Vybrání každého druhého prvku
-sez[::2]   # =>[1, 4]
+sez[::2]  # =>[1, 4]
 # Vrácení seznamu v opačném pořadí
-sez[::-1]   # => [3, 4, 2, 1]
+sez[::-1]  # => [3, 4, 2, 1]
 # Lze použít jakoukoliv kombinaci parametrů pro vytvoření složitějšího řezu
 # sez[zacatek:konec:krok]
 
@@ -202,10 +204,10 @@ sez + jiny_seznam   # => [1, 2, 3, 4, 5, 6]
 sez.extend(jiny_seznam)   # sez je nyní [1, 2, 3, 4, 5, 6]
 
 # Kontrola, jestli prvek v seznamu existuje, se provádí pomocí in
-1 in sez   # => True
+1 in sez  # => True
 
 # Délku seznamu lze zjistit pomocí len
-len(sez)   # => 6
+len(sez)  # => 6
 
 
 # N-tice je jako seznam, ale je neměnná
@@ -220,11 +222,11 @@ ntice[:2]          # => (1, 2)
 2 in ntice         # => True
 
 # N-tice (nebo seznamy) lze rozbalit do proměnných jedním přiřazením
-a, b, c = (1, 2, 3)     # a je nyní 1, b je nyní 2 a c je nyní 3
+a, b, c = (1, 2, 3)  # a je nyní 1, b je nyní 2 a c je nyní 3
 # N-tice jsou vytvářeny automaticky, když vynecháte závorky
 d, e, f = 4, 5, 6
 # Prohození proměnných je tak velmi snadné
-e, d = d, e     # d je nyní 5, e je nyní 4
+e, d = d, e  # d je nyní 5, e je nyní 4
 
 
 # Slovníky ukládají klíče a hodnoty
@@ -233,7 +235,7 @@ prazdny_slovnik = {}
 slovnik = {"jedna": 1, "dva": 2, "tři": 3}
 
 # Přistupovat k hodnotám lze pomocí []
-slovnik["jedna"] # => 1
+slovnik["jedna"]  # => 1
 
 # Všechny klíče dostaneme pomocí keys() jako iterátor. Nyní ještě potřebujeme
 # obalit volání v list(), abychom dostali seznam. To rozebereme později.
@@ -275,58 +277,57 @@ del slovnik["jedna"]  # odebere klíč "jedna" ze slovnik
 # Množiny ukládají ... překvapivě množiny
 prazdna_mnozina = set()
 # Také je lze rovnou naplnit. A ano, budou se vám plést se slovníky. Bohužel.
-mnozina = {1, 1, 2, 2, 3, 4}   # mnozina je nyní {1, 2, 3, 4}
+mnozina = {1, 1, 2, 2, 3, 4}  # mnozina je nyní {1, 2, 3, 4}
 
 # Přidání položky do množiny
-mnozina.add(5)   # mnozina je nyní {1, 2, 3, 4, 5}
+mnozina.add(5)  # mnozina je nyní {1, 2, 3, 4, 5}
 
 # Průnik lze udělat pomocí operátoru &
 jina_mnozina = {3, 4, 5, 6}
-mnozina & jina_mnozina   # => {3, 4, 5}
+mnozina & jina_mnozina  # => {3, 4, 5}
 
 # Sjednocení pomocí operátoru |
-mnozina | jina_mnozina   # => {1, 2, 3, 4, 5, 6}
+mnozina | jina_mnozina  # => {1, 2, 3, 4, 5, 6}
 
 # Rozdíl pomocí operátoru -
-{1, 2, 3, 4} - {2, 3, 5}   # => {1, 4}
+{1, 2, 3, 4} - {2, 3, 5}  # => {1, 4}
 
 # Operátorem in se lze dotázat na přítomnost prvku v množině
-2 in mnozina   # => True
-10 in mnozina   # => False
+2 in mnozina  # => True
+9 in mnozina  # => False
 
 
 ####################################################
-## 3. Řízení toku a iterace
+## 3. Řízení toku programu, cykly
 ####################################################
 
-# Let's just make a variable
-some_var = 5
+# Vytvořme si proměnnou
+promenna = 5
 
-# Here is an if statement. Indentation is significant in python!
-# prints "some_var is smaller than 10"
-if some_var > 10:
-    print("some_var is totally bigger than 10.")
-elif some_var < 10:    # This elif clause is optional.
-    print("some_var is smaller than 10.")
-else:                  # This is optional too.
-    print("some_var is indeed 10.")
+# Takto vypadá podmínka. Na odsazení v Pythonu záleží!
+# Vypíše "proměnná je menší než 10".
+if promenna > 10:
+    print("proměnná je velká jak Rusko")
+elif promenna < 10:  # Část elif je nepovinná
+    print("proměnná je menší než 10")
+else:                # Část else je také nepovinná
+    print("proměnná je právě 10")
 
-
-"""
-For loops iterate over lists
-prints:
-    dog is a mammal
-    cat is a mammal
-    mouse is a mammal
-"""
-for animal in ["dog", "cat", "mouse"]:
-    # You can use format() to interpolate formatted strings
-    print("{} is a mammal".format(animal))
 
 """
-"range(number)" returns an iterable of numbers
-from zero to the given number
-prints:
+Smyčka for umí iterovat (nejen) přes seznamy
+vypíše:
+    pes je savec
+    kočka je savec
+    myš je savec
+"""
+for zvire in ["pes", "kočka", "myš"]:
+    # Můžete použít formát pro složení řetězce
+    print("{} je savec".format(zvire))
+
+"""
+range(cislo) vrací itarátor čísel od 0 do cislo
+vypíše:
     0
     1
     2
@@ -336,9 +337,8 @@ for i in range(4):
     print(i)
 
 """
-"range(lower, upper)" returns an iterable of numbers
-from the lower number to the upper number
-prints:
+range(spodni_limit, horni_limit) vrací itarátor čísel mezi limity
+vypíše:
     4
     5
     6
@@ -348,8 +348,8 @@ for i in range(4, 8):
     print(i)
 
 """
-While loops go until a condition is no longer met.
-prints:
+Smyčka while se opakuje, dokud je podmínka splněna.
+vypíše:
     0
     1
     2
@@ -358,61 +358,63 @@ prints:
 x = 0
 while x < 4:
     print(x)
-    x += 1  # Shorthand for x = x + 1
+    x += 1  # Zkrácený zápis x = x + 1. Pozor, žádné x++ neexisuje.
 
-# Handle exceptions with a try/except block
+
+# Výjimky lze ošetřit pomocí bloku try/except(/else/finally)
 try:
-    # Use "raise" to raise an error
-    raise IndexError("This is an index error")
+    # Pro vyhození výjimky použijte raise
+    raise IndexError("Přistoupil jste k neexistujícímu prvku v seznamu.")
 except IndexError as e:
-    pass    # Pass is just a no-op. Usually you would do recovery here.
-except (TypeError, NameError):
-    pass    # Multiple exceptions can be handled together, if required.
-else:   # Optional clause to the try/except block. Must follow all except blocks
-    print("All good!")   # Runs only if the code in try raises no exceptions
-finally:  #   Execute under all circumstances
-    print("We can clean up resources here")
- 		 
-# Instead of try/finally to cleanup resources you can use a with statement
-with open("myfile.txt") as f:
-    for line in f:
-        print(line)
+    print("Nastala chyba: {}".format(e))
+    # Vypíše: Nastala chyba: Přistoupil jste k neexistujícímu prvku v seznamu.
+except (TypeError, NameError):  # Více výjimek lze zachytit najednou
+    pass  # Pass znamená nedělej nic - nepříliš vhodný způsob ošetření chyb
+else:  # Volitelný blok else musí být až za bloky except
+    print("OK!")  # Vypíše OK! v případě, že nenastala žádná výjimka
+finally:  # Blok finally se spustí nakonec za všech okolností
+    print("Uvolníme zdroje, uzavřeme soubory...")
 
-# Python offers a fundamental abstraction called the Iterable.
-# An iterable is an object that can be treated as a sequence.
-# The object returned the range function, is an iterable.
+# Místo try/finally lze použít with pro automatické uvolnění zdrojů
+with open("soubor.txt") as soubor:
+    for radka in soubor:
+        print(radka)
 
-slovnik = {"one": 1, "two": 2, "three": 3}
-our_iterable = slovnik.keys()
-print(our_iterable)  # => range(1,10). This is an object that implements our Iterable interface
+# Python běžně používá iterovatelné objekty, což je prakticky cokoliv,
+# co lze považovat za sekvenci. Například to, co vrací metoda range(),
+# nebo otevřený soubor, jsou iterovatelné objekty.
 
-# We can loop over it.
-for i in our_iterable:
-    print(i)    # Prints one, two, three
+slovnik = {"jedna": 1, "dva": 2, "tři": 3}
+iterovatelny_objekt = slovnik.keys()
+print(iterovatelny_objekt)  # => dict_keys(["jedna", "dva", "tři"]). Toto je iterovatelný objekt.
 
-# However we cannot address elements by index.
-our_iterable[1]  # Raises a TypeError
+# Můžeme použít cyklus for na jeho projití
+for klic in iterovatelny_objekt:
+    print(klic)    # vypíše postupně: jedna, dva, tři
 
-# An iterable is an object that knows how to create an iterator.
-our_iterator = iter(our_iterable)
+# Ale nelze přistupovat k prvkům pod jejich indexem
+iterovatelny_objekt[1]  # Vyhodí TypeError
 
-# Our iterator is an object that can remember the state as we traverse through it.
-# We get the next object with "next()".
-next(our_iterator)  # => "one"
+# Všechny položky iterovatelného objektu lze získat jako seznam pomocí list()
+list(slovnik.keys())  # => ["jedna", "dva", "tři"]
 
-# It maintains state as we iterate.
-next(our_iterator)  # => "two"
-next(our_iterator)  # => "three"
+# Z iterovatelného objektu lze vytvořit iterátor
+iterator = iter(iterovatelny_objekt)
 
-# After the iterator has returned all of its data, it gives you a StopIterator Exception
-next(our_iterator)  #  Raises StopIteration
+# Iterátor je objekt, který si pamatuje stav v rámci svého iterovatelného objektu
+# Další hodnotu dostaneme voláním next()
+next(iterator)  # => "jedna"
 
-# You can grab all the elements of an iterator by calling list() on it.
-list(slovnik.keys())  # => Returns ["one", "two", "three"]
+# Iterátor si udržuje svůj stav v mezi jednotlivými voláními next()
+next(iterator)  # => "dva"
+next(iterator)  # => "tři"
+
+# Jakmile interátor vrátí všechna svá data, vyhodí výjimku StopIteration
+next(iterator)  # Vyhodí StopIteration
 
 
 ####################################################
-## 4. Functions
+## 4. Funkce
 ####################################################
 
 # Use "def" to create new functions
