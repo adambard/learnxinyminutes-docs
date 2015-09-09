@@ -13,7 +13,8 @@ filename: learnpython3.py
 Python byl vytvořen Guidem Van Rossum v raných 90. letech. Nyní je jedním z nejpopulárnějších jazyků.
 Zamiloval jsem si Python pro jeho syntaktickou čistotu - je to vlastně spustitelný pseudokód.
 
-Vaše zpětná vazba je vítána! Můžete mě zastihnout na [@louiedinh](http://twitter.com/louiedinh) nebo louiedinh [at] [email od googlu] (anglicky).
+Vaše zpětná vazba je vítána! Můžete mě zastihnout na [@louiedinh](http://twitter.com/louiedinh) nebo louiedinh [at] [email od googlu] anglicky,
+autora českého překladu pak na [@tbedrich](http://twitter.com/tbedrich) nebo ja [at] tbedrich.cz
 
 Poznámka: Tento článek je zaměřen na Python 3. Zde se můžete [naučit starší Python 2.7](http://learnxinyminutes.com/docs/python/).
 
