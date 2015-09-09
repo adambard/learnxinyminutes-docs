@@ -238,13 +238,13 @@ slovnik = {"jedna": 1, "dva": 2, "tři": 3}
 # Přistupovat k hodnotám lze pomocí []
 slovnik["jedna"]  # => 1
 
-# Všechny klíče dostaneme pomocí keys() jako iterátor. Nyní ještě potřebujeme
-# obalit volání v list(), abychom dostali seznam. To rozebereme později.
-# Pozor, že jakékoliv pořadí klíčů není garantováno - může být různé.
+# Všechny klíče dostaneme pomocí keys() jako iterovatelný objekt. Nyní ještě
+# potřebujeme obalit volání v list(), abychom dostali seznam. To rozebereme
+# později. Pozor, že jakékoliv pořadí klíčů není garantováno - může být různé.
 list(slovnik.keys())  # => ["dva", "jedna", "tři"]
 
-# Všechny hodnoty opět jako iterátor získáme pomocí values(). Opět tedy
-# potřebujeme použít list(), abychom dostali seznam. Stejně jako
+# Všechny hodnoty opět jako iterovatelný objekt získáme pomocí values(). Opět
+# tedy potřebujeme použít list(), abychom dostali seznam. Stejně jako
 # v předchozím případě, pořadí není garantováno a může být různé
 list(slovnik.values())  # => [3, 2, 1]
 
@@ -327,7 +327,7 @@ for zvire in ["pes", "kočka", "myš"]:
     print("{} je savec".format(zvire))
 
 """
-range(cislo) vrací itarátor čísel od 0 do cislo
+range(cislo) vrací iterovatelný objekt čísel od 0 do cislo
 vypíše:
     0
     1
@@ -338,7 +338,7 @@ for i in range(4):
     print(i)
 
 """
-range(spodni_limit, horni_limit) vrací itarátor čísel mezi limity
+range(spodni_limit, horni_limit) vrací iterovatelný objekt čísel mezi limity
 vypíše:
     4
     5
