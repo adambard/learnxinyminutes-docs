@@ -4,6 +4,7 @@ contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Andre Polykanine", "https://github.com/Oire"]
+    - ["Tomáš Bedřich", "http://tbedrich.cz"]
 translators:
     - ["Tomáš Bedřich", "http://tbedrich.cz"]
 filename: learnpython3.py
@@ -20,7 +21,7 @@ Poznámka: Tento článek je zaměřen na Python 3. Zde se můžete [naučit sta
 
 # Jednořádkový komentář začíná křížkem
 
-""" Víceřádkové komentáře používají 3x"
+""" Víceřádkové komentáře používají tři uvozovky nebo apostrofy
     a jsou často využívány jako dokumentační komentáře k metodám
 """
 
@@ -417,96 +418,95 @@ next(iterator)  # Vyhodí StopIteration
 ## 4. Funkce
 ####################################################
 
-# Use "def" to create new functions
-def add(x, y):
-    print("x is {} and y is {}".format(x, y))
-    return x + y    # Return values with a return statement
+# Pro vytvoření nové funkce použijte def
+def secist(x, y):
+    print("x je {} a y je {}".format(x, y))
+    return x + y  # Hodnoty se vrací pomocí return
 
-# Calling functions with parameters
-add(5, 6)   # => prints out "x is 5 and y is 6" and returns 11
+# Volání funkce s parametry
+secist(5, 6)  # => Vypíše "x je 5 a y je 6" a vrátí 11
 
-# Another way to call functions is with keyword arguments
-add(y=6, x=5)   # Keyword arguments can arrive in any order.
+# Jiný způsob, jak volat funkci, je použít pojmenované argumenty
+secist(y=6, x=5)  # Pojmenované argumenty můžete předat v libovolném pořadí
 
-# You can define functions that take a variable number of
-# positional arguments
-def varargs(*args):
-    return args
+# Lze definovat funkce s proměnným počtem (pozičních) argumentů
+def vrat_argumenty(*argumenty):
+    return argumenty
 
-varargs(1, 2, 3)   # => (1, 2, 3)
+vrat_argumenty(1, 2, 3)  # => (1, 2, 3)
 
-# You can define functions that take a variable number of
-# keyword arguments, as well
-def keyword_args(**kwargs):
-    return kwargs
+# Lze definovat také funkce s proměnným počtem pojmenovaných argumentů
+def vrat_pojmenovane_argumenty(**pojmenovane_argumenty):
+    return pojmenovane_argumenty
 
-# Let's call it to see what happens
-keyword_args(big="foot", loch="ness")   # => {"big": "foot", "loch": "ness"}
+vrat_pojmenovane_argumenty(kdo="se bojí", nesmi="do lesa")
+# => {"kdo": "se bojí", "nesmi": "do lesa"}
 
 
-# You can do both at once, if you like
-def all_the_args(*args, **kwargs):
-    print(args)
-    print(kwargs)
-"""
-all_the_args(1, 2, a=3, b=4) prints:
-    (1, 2)
-    {"a": 3, "b": 4}
-"""
+# Pokud chcete, lze použít obojí najednou
+# Konvence je používat pro tyto účely názvy *args a **kwargs
+def vypis_vse(*args, **kwargs):
+    print(args, kwargs)  # print() vypíše všechny své parametry oddělené mezerou
 
-# When calling functions, you can do the opposite of args/kwargs!
-# Use * to expand tuples and use ** to expand kwargs.
-args = (1, 2, 3, 4)
-kwargs = {"a": 3, "b": 4}
-all_the_args(*args)   # equivalent to foo(1, 2, 3, 4)
-all_the_args(**kwargs)   # equivalent to foo(a=3, b=4)
-all_the_args(*args, **kwargs)   # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+vypis_vse(1, 2, a=3, b=4)  # Vypíše: (1, 2) {"a": 3, "b": 4}
+
+# * nebo ** lze použít k rozbalení N-tic nebo slovníků!
+ntice = (1, 2, 3, 4)
+slovnik = {"a": 3, "b": 4}
+vypis_vse(ntice)  # Vyhodnotí se jako vypis_vse((1, 2, 3, 4)) – jeden parametr, N-tice
+vypis_vse(*ntice)  # Vyhodnotí se jako vypis_vse(1, 2, 3, 4)
+vypis_vse(**slovnik)  # Vyhodnotí se jako vypis_vse(a=3, b=4)
+vypis_vse(*ntice, **slovnik)  # Vyhodnotí se jako vypis_vse(1, 2, 3, 4, a=3, b=4)
 
 
-# Function Scope
+# Viditelnost proměnných - vytvořme si globální proměnnou x
 x = 5
 
-def setX(num):
-    # Local var x not the same as global variable x
-    x = num  # => 43
-    print (x)  # => 43
+def nastavX(cislo):
+    # Lokální proměnná x překryje globální x
+    x = cislo  # => 43
+    print(x)  # => 43
 
-def setGlobalX(num):
+def nastavGlobalniX(cislo):
     global x
-    print (x)  # => 5
-    x = num  #  global var x is now set to 6
-    print (x)  # => 6
+    print(x)  # => 5
+    x = cislo  # Nastaví globální proměnnou x na 6
+    print(x)  # => 6
 
-setX(43)
-setGlobalX(6)
+nastavX(43)
+nastavGlobalX(6)
 
 
-# Python has first class functions
-def create_adder(x):
-    def adder(y):
-        return x + y
-    return adder
+# Funkce jsou first-class objekty
+def vyrobit_scitacku(pricitane_cislo):
+    def scitacka(x):
+        return x + pricitane_cislo
+    return scitacka
 
-add_10 = create_adder(10)
-add_10(3)   # => 13
+pricist_10 = vyrobit_scitacku(10)
+pricist_10(3)  # => 13
 
-# There are also anonymous functions
-(lambda x: x > 2)(3)   # => True
+# Klíčové slovo lambda vytvoří anonymní funkci
+(lambda parametr: parametr > 2)(3)  # => True
 
-# TODO - Fix for iterables
-# There are built-in higher order functions
-map(add_10, [1, 2, 3])   # => [11, 12, 13]
-filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
+# Lze použít funkce map() a filter() z funkcionálního programování
+map(pricist_10, [1, 2, 3])
+# => <map object at 0x0123467> - iterovatelný objekt s obsahem: [11, 12, 13]
+filter(lambda x: x > 5, [3, 4, 5, 6, 7])
+# => <filter object at 0x0123467> - iterovatelný objekt s obsahem: [6, 7]
 
-# We can use list comprehensions for nice maps and filters
-# List comprehension stores the output as a list which can itself be a nested list
-[add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
+# S generátorovou notací lze dosáhnout podobných výsledků, ale vrací seznam
+[pricist_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]   # => [6, 7]
+# Generátorová notace funguje i pro slovníky
+{x: x**2 for x in range(1, 5)}  # => {1: 1, 2: 4, 3: 9, 4: 16}
+# A také pro množiny
+{pismeno for pismeno in "abeceda"}  # => {"d", "a", "c", "e", "b"}
+
 
 ####################################################
-## 5. Classes
+## 5. Třídy
 ####################################################
-
 
 # We subclass from object to get a class.
 class Human(object):
