@@ -9,7 +9,7 @@ translators:
 filename: learnpython3.py
 ---
 
-Python byl vytvořen Guidem Van Rossum v raných 90 letech. Nyní je jedním z nejpopulárnějších jazyků.
+Python byl vytvořen Guidem Van Rossum v raných 90. letech. Nyní je jedním z nejpopulárnějších jazyků.
 Zamiloval jsem si Python pro jeho syntaktickou čistotu - je to vlastně spustitelný pseudokód.
 
 Vaše zpětná vazba je vítána! Můžete mě zastihnout na [@louiedinh](http://twitter.com/louiedinh) nebo louiedinh [at] [email od googlu] (anglicky).
@@ -139,168 +139,164 @@ bool({})  # => False
 
 
 ####################################################
-## 2. Variables and Collections
+## 2. Proměnné a kolekce
 ####################################################
 
-# Python has a print function
-print("I'm Python. Nice to meet you!")
+# Python má funkci print
+print("Jsem 3. Python 3.")
 
-# No need to declare variables before assigning to them.
-# Convention is to use lower_case_with_underscores
-some_var = 5
-some_var  # => 5
+# Proměnné není třeba deklarovat před přiřazením
+# Konvence je používat male_pismo_s_podtrzitky
+nazev_promenne = 5
+nazev_promenne  # => 5
 
-# Accessing a previously unassigned variable is an exception.
-# See Control Flow to learn more about exception handling.
-some_unknown_var  # Raises a NameError
+# Přístup k předtím nepoužité proměnné vyvolá výjimku
+# Odchytávání vyjímek - viz další kapitola
+neznama_promenna  # Vyhodí NameError
 
-# Lists store sequences
-li = []
-# You can start with a prefilled list
-other_li = [4, 5, 6]
+# Seznam se používá pro ukládání sekvencí
+sez = []
+# Lze ho rovnou naplnit
+jiny_seznam = [4, 5, 6]
 
-# Add stuff to the end of a list with append
-li.append(1)    # li is now [1]
-li.append(2)    # li is now [1, 2]
-li.append(4)    # li is now [1, 2, 4]
-li.append(3)    # li is now [1, 2, 4, 3]
-# Remove from the end with pop
-li.pop()        # => 3 and li is now [1, 2, 4]
-# Let's put it back
-li.append(3)    # li is now [1, 2, 4, 3] again.
+# Na konec seznamu se přidává pomocí append
+sez.append(1)    # sez je nyní [1]
+sez.append(2)    # sez je nyní [1, 2]
+sez.append(4)    # sez je nyní [1, 2, 4]
+sez.append(3)    # sez je nyní [1, 2, 4, 3]
+# Z konce se odebírá se pomocí pop
+sez.pop()        # => 3 a sez je nyní [1, 2, 4]
+# Vložme trojku zpátky
+sez.append(3)    # sez je nyní znovu [1, 2, 4, 3]
 
-# Access a list like you would any array
-li[0]  # => 1
-# Look at the last element
-li[-1]  # => 3
+# Přístup k prvkům funguje jako v poli
+sez[0]  # => 1
+# Mínus počítá odzadu (-1 je poslední prvek)
+sez[-1]  # => 3
 
-# Looking out of bounds is an IndexError
-li[4]  # Raises an IndexError
+# Přístup mimo seznam vyhodí IndexError
+sez[4]  # Vyhodí IndexError
 
-# You can look at ranges with slice syntax.
-# (It's a closed/open range for you mathy types.)
-li[1:3]  # => [2, 4]
-# Omit the beginning
-li[2:]  # => [4, 3]
-# Omit the end
-li[:3]  # => [1, 2, 4]
-# Select every second entry
-li[::2]   # =>[1, 4]
-# Return a reversed copy of the list
-li[::-1]   # => [3, 4, 2, 1]
-# Use any combination of these to make advanced slices
-# li[start:end:step]
+# Pomocí řezů lze ze seznamu vybírat různé intervaly
+# (pro matematiky: jedná se o uzavřený/otevřený interval)
+sez[1:3]  # => [2, 4]
+# Odříznutí začátku
+sez[2:]  # => [4, 3]
+# Odříznutí konce
+sez[:3]  # => [1, 2, 4]
+# Vybrání každého druhého prvku
+sez[::2]   # =>[1, 4]
+# Vrácení seznamu v opačném pořadí
+sez[::-1]   # => [3, 4, 2, 1]
+# Lze použít jakoukoliv kombinaci parametrů pro vytvoření složitějšího řezu
+# sez[zacatek:konec:krok]
 
-# Remove arbitrary elements from a list with "del"
-del li[2]   # li is now [1, 2, 3]
+# Odebírat prvky ze seznamu lze pomocí del
+del sez[2]   # sez je nyní [1, 2, 3]
 
-# You can add lists
-# Note: values for li and for other_li are not modified.
-li + other_li   # => [1, 2, 3, 4, 5, 6]
+# Seznamy můžete sčítat
+# Hodnoty sez a jiny_seznam přitom nejsou změněny
+sez + jiny_seznam   # => [1, 2, 3, 4, 5, 6]
 
-# Concatenate lists with "extend()"
-li.extend(other_li)   # Now li is [1, 2, 3, 4, 5, 6]
+# Spojit seznamy lze pomocí extend
+sez.extend(jiny_seznam)   # sez je nyní [1, 2, 3, 4, 5, 6]
 
-# Check for existence in a list with "in"
-1 in li   # => True
+# Kontrola, jestli prvek v seznamu existuje, se provádí pomocí in
+1 in sez   # => True
 
-# Examine the length with "len()"
-len(li)   # => 6
+# Délku seznamu lze zjistit pomocí len
+len(sez)   # => 6
 
 
-# Tuples are like lists but are immutable.
-tup = (1, 2, 3)
-tup[0]   # => 1
-tup[0] = 3  # Raises a TypeError
+# N-tice je jako seznam, ale je neměnná
+ntice = (1, 2, 3)
+ntice[0]      # => 1
+ntice[0] = 3  # Vyhodí TypeError
 
-# You can do most of the list operations on tuples too
-len(tup)   # => 3
-tup + (4, 5, 6)   # => (1, 2, 3, 4, 5, 6)
-tup[:2]   # => (1, 2)
-2 in tup   # => True
+# S n-ticemi lze dělat většinu operací, jako se seznamy
+len(ntice)         # => 3
+ntice + (4, 5, 6)  # => (1, 2, 3, 4, 5, 6)
+ntice[:2]          # => (1, 2)
+2 in ntice         # => True
 
-# You can unpack tuples (or lists) into variables
-a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
-# Tuples are created by default if you leave out the parentheses
+# N-tice (nebo seznamy) lze rozbalit do proměnných jedním přiřazením
+a, b, c = (1, 2, 3)     # a je nyní 1, b je nyní 2 a c je nyní 3
+# N-tice jsou vytvářeny automaticky, když vynecháte závorky
 d, e, f = 4, 5, 6
-# Now look how easy it is to swap two values
-e, d = d, e     # d is now 5 and e is now 4
+# Prohození proměnných je tak velmi snadné
+e, d = d, e     # d je nyní 5, e je nyní 4
 
 
-# Dictionaries store mappings
-empty_dict = {}
-# Here is a prefilled dictionary
-filled_dict = {"one": 1, "two": 2, "three": 3}
+# Slovníky ukládají klíče a hodnoty
+prazdny_slovnik = {}
+# Lze je také rovnou naplnit
+slovnik = {"jedna": 1, "dva": 2, "tři": 3}
 
-# Look up values with []
-filled_dict["one"]   # => 1
+# Přistupovat k hodnotám lze pomocí []
+slovnik["jedna"] # => 1
 
-# Get all keys as an iterable with "keys()". We need to wrap the call in list()
-# to turn it into a list. We'll talk about those later.  Note - Dictionary key
-# ordering is not guaranteed. Your results might not match this exactly.
-list(filled_dict.keys())   # => ["three", "two", "one"]
+# Všechny klíče dostaneme pomocí keys() jako iterátor. Nyní ještě potřebujeme
+# obalit volání v list(), abychom dostali seznam. To rozebereme později.
+# Pozor, že jakékoliv pořadí klíčů není garantováno - může být různé.
+list(slovnik.keys())  # => ["dva", "jedna", "tři"]
+
+# Všechny hodnoty opět jako iterátor získáme pomocí values(). Opět tedy
+# potřebujeme použít list(), abychom dostali seznam. Stejně jako
+# v předchozím případě, pořadí není garantováno a může být různé
+list(slovnik.values())  # => [3, 2, 1]
+
+# Operátorem in se lze dotázat na přítomnost klíče
+"jedna" in slovnik  # => True
+1 in slovnik        # => False
+
+# Přístup k neexistujícímu klíči vyhodí KeyError
+slovnik["four"]  # Vyhodí KeyError
+
+# Metoda get() funguje podobně jako [], ale vrátí None místo vyhození KeyError
+slovnik.get("jedna")   # => 1
+slovnik.get("čtyři")   # => None
+# Metodě get() lze předat i výchozí hodnotu místo None
+slovnik.get("jedna", 4)   # => 1
+slovnik.get("čtyři", 4)   # => 4
+
+# metoda setdefault() vloží prvek do slovníku pouze pokud tam takový klíč není
+slovnik.setdefault("pět", 5)  # slovnik["pět"] je nastaven na 5
+slovnik.setdefault("pět", 6)  # slovnik["pět"] je pořád 5
+
+# Přidání nové hodnoty do slovníku
+slovnik["čtyři"] = 4
+# Hromadně aktualizovat nebo přidat data lze pomocí update(), parametrem je opět slovník
+slovnik.update({"čtyři": 4})  # slovnik je nyní {"jedna": 1, "dva": 2, "tři": 3, "čtyři": 4, "pět": 5}
+
+# Odebírat ze slovníku dle klíče lze pomocí del
+del slovnik["jedna"]  # odebere klíč "jedna" ze slovnik
 
 
-# Get all values as an iterable with "values()". Once again we need to wrap it
-# in list() to get it out of the iterable. Note - Same as above regarding key
-# ordering.
-list(filled_dict.values())   # => [3, 2, 1]
+# Množiny ukládají ... překvapivě množiny
+prazdna_mnozina = set()
+# Také je lze rovnou naplnit. A ano, budou se vám plést se slovníky. Bohužel.
+mnozina = {1, 1, 2, 2, 3, 4}   # mnozina je nyní {1, 2, 3, 4}
 
+# Přidání položky do množiny
+mnozina.add(5)   # mnozina je nyní {1, 2, 3, 4, 5}
 
-# Check for existence of keys in a dictionary with "in"
-"one" in filled_dict   # => True
-1 in filled_dict   # => False
+# Průnik lze udělat pomocí operátoru &
+jina_mnozina = {3, 4, 5, 6}
+mnozina & jina_mnozina   # => {3, 4, 5}
 
-# Looking up a non-existing key is a KeyError
-filled_dict["four"]   # KeyError
+# Sjednocení pomocí operátoru |
+mnozina | jina_mnozina   # => {1, 2, 3, 4, 5, 6}
 
-# Use "get()" method to avoid the KeyError
-filled_dict.get("one")   # => 1
-filled_dict.get("four")   # => None
-# The get method supports a default argument when the value is missing
-filled_dict.get("one", 4)   # => 1
-filled_dict.get("four", 4)   # => 4
-
-# "setdefault()" inserts into a dictionary only if the given key isn't present
-filled_dict.setdefault("five", 5)  # filled_dict["five"] is set to 5
-filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5
-
-# Adding to a dictionary
-filled_dict.update({"four":4})  # => {"one": 1, "two": 2, "three": 3, "four": 4}
-#filled_dict["four"] = 4  #another way to add to dict
-
-# Remove keys from a dictionary with del
-del filled_dict["one"]  # Removes the key "one" from filled dict
-
-
-# Sets store ... well sets
-empty_set = set()
-# Initialize a set with a bunch of values. Yeah, it looks a bit like a dict. Sorry.
-some_set = {1, 1, 2, 2, 3, 4}   # some_set is now {1, 2, 3, 4}
-
-# Can set new variables to a set
-filled_set = some_set
-
-# Add one more item to the set
-filled_set.add(5)   # filled_set is now {1, 2, 3, 4, 5}
-
-# Do set intersection with &
-other_set = {3, 4, 5, 6}
-filled_set & other_set   # => {3, 4, 5}
-
-# Do set union with |
-filled_set | other_set   # => {1, 2, 3, 4, 5, 6}
-
-# Do set difference with -
+# Rozdíl pomocí operátoru -
 {1, 2, 3, 4} - {2, 3, 5}   # => {1, 4}
 
-# Check for existence in a set with in
-2 in filled_set   # => True
-10 in filled_set   # => False
+# Operátorem in se lze dotázat na přítomnost prvku v množině
+2 in mnozina   # => True
+10 in mnozina   # => False
 
 
 ####################################################
-## 3. Control Flow and Iterables
+## 3. Řízení toku a iterace
 ####################################################
 
 # Let's just make a variable
@@ -386,8 +382,8 @@ with open("myfile.txt") as f:
 # An iterable is an object that can be treated as a sequence.
 # The object returned the range function, is an iterable.
 
-filled_dict = {"one": 1, "two": 2, "three": 3}
-our_iterable = filled_dict.keys()
+slovnik = {"one": 1, "two": 2, "three": 3}
+our_iterable = slovnik.keys()
 print(our_iterable)  # => range(1,10). This is an object that implements our Iterable interface
 
 # We can loop over it.
@@ -412,7 +408,7 @@ next(our_iterator)  # => "three"
 next(our_iterator)  #  Raises StopIteration
 
 # You can grab all the elements of an iterator by calling list() on it.
-list(filled_dict.keys())  # => Returns ["one", "two", "three"]
+list(slovnik.keys())  # => Returns ["one", "two", "three"]
 
 
 ####################################################
