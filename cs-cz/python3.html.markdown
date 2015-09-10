@@ -589,56 +589,44 @@ dir(math)
 
 
 ####################################################
-## 7. Advanced
+## 7. Pokročilé
 ####################################################
 
-# Generators help you make lazy code
-def double_numbers(iterable):
-    for i in iterable:
-        yield i + i
+# Generátory jsou funkce, které místo return obsahují yield
+def nasobicka_2(sekvence):
+    for i in sekvence:
+        yield 2 * i
 
-# A generator creates values on the fly.
-# Instead of generating and returning all values at once it creates one in each
-# iteration.  This means values bigger than 15 wont be processed in
-# double_numbers.
-# Note range is a generator too. Creating a list 1-900000000 would take lot of
-# time to be made
-# We use a trailing underscore in variable names when we want to use a name that
-# would normally collide with a python keyword
-range_ = range(1, 900000000)
-# will double all numbers until a result >=30 found
-for i in double_numbers(range_):
-    print(i)
+# Generátor generuje hodnoty postupně, jak jsou potřeba. Místo toho, aby vrátil
+# celou sekvenci s prvky vynásobenými dvěma, provádí jeden výpočet v každé iteraci.
+# To znamená, že čísla větší než 15 se v metodě nasobicka_2 vůbec nezpracují.
+
+# Funkce range() je také generátor - vytváření seznamu 900000000 prvků by zabralo
+# hodně času i paměti, proto se místo toho čísla generují postupně.
+
+for i in nasobicka_2(range(900000000)):
+    print(i)  # Vypíše čísla 0, 2, 4, 6, 8, ... 30
     if i >= 30:
         break
 
 
-# Decorators
-# in this example beg wraps say
-# Beg will call say. If say_please is True then it will change the returned
-# message
-from functools import wraps
+# Dekorátory jsou funkce, které se používají pro obalení jiné funkce, čímž mohou
+# přidávat nebo měnit její stávající chování. Funkci dostávají jako parametr
+# a typicky místo ní vrací jinou, která uvnitř volá tu původní.
+
+def nekolikrat(puvodni_funkce):
+    def opakovaci_funkce(*args, **kwargs):
+        for i in range(3):
+            puvodni_funkce(*args, **kwargs)
+
+    return opakovaci_funkce
 
 
-def beg(target_function):
-    @wraps(target_function)
-    def wrapper(*args, **kwargs):
-        msg, say_please = target_function(*args, **kwargs)
-        if say_please:
-            return "{} {}".format(msg, "Please! I am poor :(")
-        return msg
+@nekolikrat
+def pozdrav(jmeno):
+    print("Měj se {}!".format(jmeno))
 
-    return wrapper
-
-
-@beg
-def say(say_please=False):
-    msg = "Can you buy me a beer?"
-    return msg, say_please
-
-
-print(say())  # Can you buy me a beer?
-print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
+pozdrav("Pepo")  # Vypíše 3x: Měj se Pepo!
 ```
 
 ## Ready For More?
