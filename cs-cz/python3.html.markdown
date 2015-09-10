@@ -629,22 +629,7 @@ def pozdrav(jmeno):
 pozdrav("Pepo")  # Vypíše 3x: Měj se Pepo!
 ```
 
-## Ready For More?
+## Co dál?
 
-### Free Online
-
-* [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
-* [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
-* [Dive Into Python](http://www.diveintopython.net/)
-* [Ideas for Python Projects](http://pythonpracticeprojects.com)
-* [The Official Docs](http://docs.python.org/3/)
-* [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
-* [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
-* [Python Course](http://www.python-course.eu/index.php)
-* [First Steps With Python](https://realpython.com/learn/python-first-steps/)
-
-### Dead Tree
-
-* [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
-* [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
-* [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
+Spoustu odkazů na české i anglické materiály najdete na [webu české Python komunity]
+(http://python.cz/). Můžete také přijít na Pyvo, kde to společně probereme.
