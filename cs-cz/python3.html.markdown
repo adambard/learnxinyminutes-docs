@@ -563,29 +563,27 @@ Clovek.odkaslej_si()  # => "*ehm*"
 ## 6. Moduly
 ####################################################
 
-# You can import modules
+# Lze importovat moduly
 import math
 print(math.sqrt(16))  # => 4
 
-# You can get specific functions from a module
+# Lze také importovat pouze vybrané funkce z modulu
 from math import ceil, floor
-print(ceil(3.7))  # => 4.0
-print(floor(3.7))   # => 3.0
+print(ceil(3.7))   # => 4.0
+print(floor(3.7))  # => 3.0
 
-# You can import all functions from a module.
-# Warning: this is not recommended
+# Můžete také importovat všechny funkce z modulu, ale radši to nedělejte
 from math import *
 
-# You can shorten module names
+# Můžete si přejmenovat modul při jeho importu
 import math as m
-math.sqrt(16) == m.sqrt(16)   # => True
+math.sqrt(16) == m.sqrt(16)  # => True
 
-# Python modules are just ordinary python files. You
-# can write your own, and import them. The name of the
-# module is the same as the name of the file.
+# Modul v Pythonu není nic jiného, než obyčejný soubor .py
+# Můžete si napsat vlastní a prostě ho importovat podle jména
+from muj_modul import moje_funkce  # Nyní vyhodí ImportError - muj_modul neexistuje
 
-# You can find out which functions and attributes
-# defines a module.
+# Funkcí dir() lze zjistit, co modul obsahuje
 import math
 dir(math)
 
