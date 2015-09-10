@@ -258,7 +258,7 @@ help return
 help source
 help .
 
-# 用 mam 指令阅读相关的 Bash 手册
+# 用 man 指令阅读相关的 Bash 手册
 apropos bash
 man 1 bash
 man bash
