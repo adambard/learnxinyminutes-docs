@@ -509,59 +509,58 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7])
 ## 5. Třídy
 ####################################################
 
-# We subclass from object to get a class.
-class Human(object):
+# Třída Clovek je potomkem (dědí od) třídy object
+class Clovek(object):
 
-    # A class attribute. It is shared by all instances of this class
-    species = "H. sapiens"
+    # Atribut třídy - je sdílený všemi instancemi
+    druh = "H. sapiens"
 
-    # Basic initializer, this is called when this class is instantiated.
-    # Note that the double leading and trailing underscores denote objects
-    # or attributes that are used by python but that live in user-controlled
-    # namespaces. Methods(or objects or attributes) like: __init__, __str__,
-    # __repr__ etc. are called magic methods (or sometimes called dunder methods)
-    # You should not invent such names on your own.
-    def __init__(self, name):
-        # Assign the argument to the instance's name attribute
-        self.name = name
+    # Toto je kostruktor. Je volán, když vytváříme instanci třídy. Dvě
+    # podtržítka na začátku a na konci značí, že se jedná o atribut nebo
+    # objekt využívaný Pythonem ke speciálním účelům, ale můžete sami
+    # definovat jeho chování. Metody jako __init__, __str__, __repr__
+    # a další se nazývají "magické metody". Nikdy nepoužívejte toto
+    # speciální pojmenování pro běžné metody.
+    def __init__(self, jmeno):
+        # Přiřazení parametru do atributu instance jmeno
+        self.jmeno = jmeno
 
-    # An instance method. All methods take "self" as the first argument
-    def say(self, msg):
-        return "{name}: {message}".format(name=self.name, message=msg)
+    # Metoda instance - všechny metody instance mají "self" jako první parametr
+    def rekni(self, hlaska):
+        return "{jmeno}: {hlaska}".format(jmeno=self.jmeno, hlaska=hlaska)
 
-    # A class method is shared among all instances
-    # They are called with the calling class as the first argument
+    # Metoda třídy - sdílená všemi instancemi
+    # Dostává jako první parametr třídu, na které je volána
     @classmethod
-    def get_species(cls):
-        return cls.species
+    def vrat_druh(cls):
+        return cls.druh
 
-    # A static method is called without a class or instance reference
+    # Statická metoda je volána bez reference na třídu nebo instanci
     @staticmethod
-    def grunt():
-        return "*grunt*"
+    def odkaslej_si():
+        return "*ehm*"
 
 
-# Instantiate a class
-i = Human(name="Ian")
-print(i.say("hi"))     # prints out "Ian: hi"
+# Vytvoření instance
+d = Clovek(jmeno="David")
+a = Clovek("Adéla")
+print(d.rekni("ahoj"))    # Vypíše: "David: ahoj"
+print(a.rekni("nazdar"))  # Vypíše: "Adéla: nazdar"
 
-j = Human("Joel")
-print(j.say("hello"))  # prints out "Joel: hello"
+# Volání třídní metody
+d.vrat_druh()  # => "H. sapiens"
 
-# Call our class method
-i.get_species()   # => "H. sapiens"
+# Změna atributu třídy
+Clovek.druh = "H. neanderthalensis"
+d.vrat_druh()  # => "H. neanderthalensis"
+a.vrat_druh()  # => "H. neanderthalensis"
 
-# Change the shared attribute
-Human.species = "H. neanderthalensis"
-i.get_species()   # => "H. neanderthalensis"
-j.get_species()   # => "H. neanderthalensis"
-
-# Call the static method
-Human.grunt()   # => "*grunt*"
+# Volání statické metody
+Clovek.odkaslej_si()  # => "*ehm*"
 
 
 ####################################################
-## 6. Modules
+## 6. Moduly
 ####################################################
 
 # You can import modules
