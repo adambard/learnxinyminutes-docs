@@ -254,7 +254,7 @@ list(slovnik.values())  # => [3, 2, 1]
 1 in slovnik        # => False
 
 # Přístup k neexistujícímu klíči vyhodí KeyError
-slovnik["four"]  # Vyhodí KeyError
+slovnik["čtyři"]  # Vyhodí KeyError
 
 # Metoda get() funguje podobně jako [], ale vrátí None místo vyhození KeyError
 slovnik.get("jedna")   # => 1
@@ -475,7 +475,7 @@ def nastavGlobalniX(cislo):
     print(x)  # => 6
 
 nastavX(43)
-nastavGlobalX(6)
+nastavGlobalniX(6)
 
 
 # Funkce jsou first-class objekty
