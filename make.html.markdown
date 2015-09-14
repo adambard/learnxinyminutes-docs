@@ -6,7 +6,7 @@ filename: Makefile
 ---
 
 A Makefile defines a graph of rules for creating a target (or targets).
-It's purpose is the do the minimum amount of work needed to update a 
+Its purpose is to do the minimum amount of work needed to update a 
 target to the most recent version of the source. Famously written over a
 weekend by Stuart Feldman in 1976, it is still widely used (particularly 
 on Unix) despite many competitors and criticisms.
@@ -152,7 +152,7 @@ name4 +=grey
 
 # Pattern-specific variable values (GNU extension).
 echo: name2 = Sara # True within the matching rule 
-	# and also within it's remade recursive dependencies 
+	# and also within its remade recursive dependencies 
 	# (except it can break when your graph gets too complicated!)
 
 # Some variables defined automatically by make.
