@@ -239,7 +239,7 @@ func learnConcurrency() {
     go inc(0, c) // go is a statement that starts a new goroutine.
     go inc(10, c)
     go inc(-805, c)
-    // 从channel中独处结果并打印。
+    // 从channel中读取结果并打印。
     // 打印出什么东西是不可预知的。
     fmt.Println(<-c, <-c, <-c) // channel在右边的时候，<-是读操作。
 
