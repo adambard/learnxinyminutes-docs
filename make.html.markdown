@@ -58,7 +58,7 @@ file2.txt file3.txt: file0.txt file1.txt
 
 # A phony target. Any target that isn't a file.
 # It will never be up to date so make will always try to run it.
-all: faker process
+all: maker process
  
 # We can declare things out of order.
 maker:
@@ -230,7 +230,7 @@ endif
 
 ### More Resources
 
-[gnu make documentation](https://www.gnu.org/software/make/manual/)
-[software carpentry tutorial](http://swcarpentry.github.io/make-novice/)
-learn C the hard way [ex2](http://c.learncodethehardway.org/book/ex2.html) [ex28](http://c.learncodethehardway.org/book/ex28.html)
++ [gnu make documentation](https://www.gnu.org/software/make/manual/)
++ [software carpentry tutorial](http://swcarpentry.github.io/make-novice/)
++ learn C the hard way [ex2](http://c.learncodethehardway.org/book/ex2.html) [ex28](http://c.learncodethehardway.org/book/ex28.html)
 
