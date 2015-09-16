@@ -111,12 +111,19 @@ small/%.png: %.svg
 %.png: %.svg
 	@echo this rule is chosen
 	
-# however make will use the first pattern rule that can make the target
+# However make will use the first pattern rule that can make the target
 %.png: %.ps
 	@echo this rule is not chosen if %.svg and %.ps are both present
 
 # make already has some pattern rules built-in. For instance, it knows 
 # how to turn *.c files into *.o files.
+
+# Older makefiles might use suffix rules instead of pattern rules
+.png.ps:
+    @echo this rule is similar to a pattern rule.
+
+# Tell make about the suffix rule
+.SUFFIXES: .png
 
 #-----------------------------------------------------------------------
 # Variables
