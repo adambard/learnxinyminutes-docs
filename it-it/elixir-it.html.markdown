@@ -1,10 +1,11 @@
 ---
 language: elixir
 contributors:
+    - ["Luca 'Kino' Maroni", "https://github.com/kino90"]
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
-    - ["Luca Maroni", "https://github.com/kino90"]
-filename: learnelixir.ex
+filename: learnelixir-it.ex
+lang: it-it
 ---
 
 Elixir è un linguaggio funzionale moderno, costruito sulla VM Erlang.
@@ -29,20 +30,20 @@ e molte altre funzionalità.
 ## ---------------------------
 
 # Numeri
-3    # intero (integer)
+3    # intero (Integer)
 0x1F # intero
-3.0  # decimale (float)
+3.0  # decimale (Float)
 
 # Atomi, che sono literals, una costante con un nome. Iniziano con `:`.
 :ciao # atomo (Atom)
 
-# Tuple che sono salvati in celle di memoria contigue.
+# Tuple che sono salvate in celle di memoria contigue.
 {1,2,3} # tupla (Tuple)
 
 # Possiamo accedere ad un elemento di una tupla con la funzione `elem`:
 elem({1, 2, 3}, 0) #=> 1
 
-# Liste, che sono implementate come liste come linked lists.
+# Liste, che sono implementate come liste concatenate (o linked list).
 [1,2,3] # lista (List)
 
 # Possiamo accedere alla testa (head) e alla coda (tail) delle liste così:
