@@ -54,7 +54,7 @@ the community has moved to at least 1.9.2 or 1.9.3.
 ## Ruby Implementations
 
 The Ruby ecosystem enjoys many different implementations of Ruby, each with
-unique strengths and states of compatability. To be clear, the different
+unique strengths and states of compatibility. To be clear, the different
 implementations are written in different languages, but *they are all Ruby*.
 Each implementation has special hooks and extra features, but they all run
 normal Ruby files well. For instance, JRuby is written in Java, but you do
