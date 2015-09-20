@@ -462,6 +462,8 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 * [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
 
+* [Udemy Git Tutorial: A Comprehensive Guide](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
+
 * [git-scm - Video Tutorials](http://git-scm.com/videos)
 
 * [git-scm - Documentation](http://git-scm.com/docs)
