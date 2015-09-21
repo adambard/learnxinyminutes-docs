@@ -6,9 +6,9 @@ filename: Makefile
 ---
 
 A Makefile defines a graph of rules for creating a target (or targets).
-Its purpose is to do the minimum amount of work needed to update a 
+Its purpose is to do the minimum amount of work needed to update a
 target to the most recent version of the source. Famously written over a
-weekend by Stuart Feldman in 1976, it is still widely used (particularly 
+weekend by Stuart Feldman in 1976, it is still widely used (particularly
 on Unix) despite many competitors and criticisms.
 
 There are many varieties of make in existance, this article assumes that
@@ -36,9 +36,9 @@ file0.txt:
 
 # This rule will only run if file0.txt is newer than file1.txt.
 file1.txt: file0.txt
-	cat file0.txt > file1.txt    
+	cat file0.txt > file1.txt
 	# use the same quoting rules as in the shell.
-	@cat file0.txt >> file1.txt  
+	@cat file0.txt >> file1.txt
 	# @ stops the command from being echoed to stdout.
 	-@echo 'hello'
 	# - means that make will keep going in the case of an error.
@@ -59,7 +59,7 @@ file2.txt file3.txt: file0.txt file1.txt
 # A phony target. Any target that isn't a file.
 # It will never be up to date so make will always try to run it.
 all: maker process
- 
+
 # We can declare things out of order.
 maker:
 	touch ex0.txt ex1.txt
@@ -70,7 +70,7 @@ maker:
 
 # A rule with a dependency on a phony target will always run
 ex0.txt ex1.txt: maker
-	
+
 # Common phony targets are: all make clean install ...
 
 #-----------------------------------------------------------------------
@@ -79,7 +79,7 @@ ex0.txt ex1.txt: maker
 
 process: file*.txt	#using a wildcard to match filenames
 	@echo $^	# $^ is a variable containing the list of prerequisites
-	@echo $@	# prints the target name 
+	@echo $@	# prints the target name
 	#(for multiple target rules, $@ is whichever caused the rule to run)
 	@echo $<	# the first prerequisite listed
 	@echo $?	# only the dependencies that are out of date
@@ -110,7 +110,7 @@ small/%.png: %.svg
 # make will use the last version for a pattern rule that it finds.
 %.png: %.svg
 	@echo this rule is chosen
-	
+
 # However make will use the first pattern rule that can make the target
 %.png: %.ps
 	@echo this rule is not chosen if %.svg and %.ps are both present
@@ -141,7 +141,7 @@ echo:
 	@echo $name    # This won't work, treated as $(n)ame.
 	@echo $(name3) # Unknown variables are treated as empty strings.
 
-# There are 4 places to set variables. 
+# There are 4 places to set variables.
 # In order of priority from highest to lowest:
 # 1: commandline arguments
 # 2: Makefile
@@ -158,8 +158,8 @@ name4 +=grey
 # Append values to variable (includes a space).
 
 # Pattern-specific variable values (GNU extension).
-echo: name2 = Sara # True within the matching rule 
-	# and also within its remade recursive dependencies 
+echo: name2 = Sara # True within the matching rule
+	# and also within its remade recursive dependencies
 	# (except it can break when your graph gets too complicated!)
 
 # Some variables defined automatically by make.
@@ -201,7 +201,7 @@ var4 ::= good night
 sourcefiles = $(wildcard *.c */*.c)
 objectfiles = $(patsubst %.c,%.o,$(sourcefiles))
 
-# Format is $(func arg0,arg1,arg2...) 
+# Format is $(func arg0,arg1,arg2...)
 
 # Some examples
 ls:	* src/*
@@ -226,7 +226,7 @@ else
 endif
 
 # There are also ifneq, ifdef, ifndef
- 
+
 foo = true
 
 ifdef $(foo)
