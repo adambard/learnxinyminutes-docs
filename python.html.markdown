@@ -327,8 +327,8 @@ prints:
     mouse is a mammal
 """
 for animal in ["dog", "cat", "mouse"]:
-    # You can use % to interpolate formatted strings
-    print "%s is a mammal" % animal
+    # You can use {0} to interpolate formatted strings. (See above.)
+    print "{0} is a mammal".format(animal)
 
 """
 "range(number)" returns a list of numbers
@@ -379,7 +379,13 @@ except (TypeError, NameError):
     pass    # Multiple exceptions can be handled together, if required.
 else:   # Optional clause to the try/except block. Must follow all except blocks
     print "All good!"   # Runs only if the code in try raises no exceptions
+finally: #  Execute under all circumstances
+    print "We can clean up resources here"
 
+# Instead of try/finally to cleanup resources you can use a with statement
+with open("myfile.txt") as f:
+    for line in f:
+        print line
 
 ####################################################
 ## 4. Functions
@@ -387,7 +393,7 @@ else:   # Optional clause to the try/except block. Must follow all except blocks
 
 # Use "def" to create new functions
 def add(x, y):
-    print "x is %s and y is %s" % (x, y)
+    print "x is {0} and y is {1}".format(x, y)
     return x + y    # Return values with a return statement
 
 # Calling functions with parameters
@@ -497,7 +503,7 @@ class Human(object):
 
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
-        return "%s: %s" % (self.name, msg)
+        return "{0}: {1}".format(self.name, msg)
 
     # A class method is shared among all instances
     # They are called with the calling class as the first argument
@@ -624,16 +630,17 @@ print say(say_please=True)  # Can you buy me a beer? Please! I am poor :(
 
 ### Free Online
 
+* [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
 * [The Official Docs](http://docs.python.org/2.6/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
 * [Python Module of the Week](http://pymotw.com/2/)
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
+* [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 
 ### Dead Tree
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
 * [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
-

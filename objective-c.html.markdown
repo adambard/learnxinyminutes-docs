@@ -415,7 +415,7 @@ distance = 18; // References "long distance" from MyClass implementation
 
 + (NSString *)classMethod
 {
-    return [[self alloc] init];
+    return @"Some string";
 }
 
 + (MyClass *)myClassFromHeight:(NSNumber *)defaultHeight 

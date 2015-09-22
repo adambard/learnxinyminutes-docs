@@ -79,10 +79,14 @@ true && false #=> false
 true || false #=> true
 !true #=> false
 
-# Alternate spellings of logical operators
-true and false #=> false
-true or false #=> true
-not true #=> false
+# There are alternate versions of the logical operators with much lower
+# precedence. These are meant to be used as flow-control constructs to chain
+# statements together until one of them returns true or false.
+
+# `do_something_else` only called if `do_something` succeeds.
+do_something() and do_something_else()
+# `log_error` only called if `do_something` fails.
+do_something() or log_error()
 
 
 # Strings are objects
@@ -169,6 +173,8 @@ array[1..3] #=> [2, 3, 4]
 
 # Add to an array like this
 array << 6 #=> [1, 2, 3, 4, 5, 6]
+# Or like this
+array.push(6) #=> [1, 2, 3, 4, 5, 6]
 
 # Check if an item exists in an array
 array.include?(1) #=> true

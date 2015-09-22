@@ -7,11 +7,13 @@ contributors:
     - ["Nami-Doc", "http://github.com/Nami-Doc"]
 ---
 
-Perl 6 is a highly capable, feature-rich programming language made for the
-upcoming hundred years.
+Perl 6 is a highly capable, feature-rich programming language made for at 
+least the next hundred years.
 
-Perl 6 runs on [the Parrot VM](http://parrot.org/), the JVM
-and [the MoarVM](http://moarvm.com).
+The primary Perl 6 compiler is called [Rakudo](http://rakudo.org), which runs on
+the JVM and [the MoarVM](http://moarvm.com) and 
+[prior to March 2015](http://pmthium.com/2015/02/suspending-rakudo-parrot/),
+[the Parrot VM](http://parrot.org/).
 
 Meta-note : the triple pound signs are here to denote headlines,
 double paragraphs, and single notes.
@@ -211,7 +213,7 @@ say $x; #=> 52
 # - `if`
 # Before talking about `if`, we need to know which values are "Truthy"
 #  (represent True), and which are "Falsey" (or "Falsy") -- represent False.
-# Only these values are Falsey: (), 0, "0", "", Nil, A type (like `Str` or `Int`),
+# Only these values are Falsey: (), "", Nil, A type (like `Str` or `Int`),
 #  and of course False itself.
 # Every other value is Truthy.
 if True {
@@ -1042,7 +1044,7 @@ postcircumfix:<{ }>(%h, $key, :delete); # (you can call operators like that)
 # *everything* -- with great power comes great responsibility)
 
 ## Meta operators !
-# Oh boy, get ready. Get ready, because we're dwelving deep
+# Oh boy, get ready. Get ready, because we're delving deep
 #  into the rabbit's hole, and you probably won't want to go
 #  back to other languages after reading that.
 #  (I'm guessing you don't want to already at that point).

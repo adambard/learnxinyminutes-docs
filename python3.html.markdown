@@ -374,6 +374,13 @@ except (TypeError, NameError):
     pass    # Multiple exceptions can be handled together, if required.
 else:   # Optional clause to the try/except block. Must follow all except blocks
     print("All good!")   # Runs only if the code in try raises no exceptions
+finally: #  Execute under all circumstances
+    print("We can clean up resources here")
+ 		 
+# Instead of try/finally to cleanup resources you can use a with statement
+with open("myfile.txt") as f:
+    for line in f:
+        print(line)
 
 # Python offers a fundamental abstraction called the Iterable.
 # An iterable is an object that can be treated as a sequence.
@@ -394,15 +401,15 @@ our_iterable[1]  # Raises a TypeError
 our_iterator = iter(our_iterable)
 
 # Our iterator is an object that can remember the state as we traverse through it.
-# We get the next object by calling the __next__ function.
-our_iterator.__next__()  #=> "one"
+# We get the next object with "next()".
+next(our_iterator)  #=> "one"
 
-# It maintains state as we call __next__.
-our_iterator.__next__()  #=> "two"
-our_iterator.__next__()  #=> "three"
+# It maintains state as we iterate.
+next(our_iterator)  #=> "two"
+next(our_iterator)  #=> "three"
 
 # After the iterator has returned all of its data, it gives you a StopIterator Exception
-our_iterator.__next__() # Raises StopIteration
+next(our_iterator) # Raises StopIteration
 
 # You can grab all the elements of an iterator by calling list() on it.
 list(filled_dict.keys())  #=> Returns ["one", "two", "three"]
@@ -642,18 +649,18 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 
 ### Free Online
 
+* [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
 * [Ideas for Python Projects](http://pythonpracticeprojects.com)
-
 * [The Official Docs](http://docs.python.org/3/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 * [Python Course](http://www.python-course.eu/index.php)
+* [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 
 ### Dead Tree
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
 * [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
-

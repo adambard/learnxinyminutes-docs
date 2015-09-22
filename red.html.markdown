@@ -212,7 +212,9 @@ The source can be found on [github](https://github.com/red/red).
 
 The Red/System language specification can be found [here](http://static.red-lang.org/red-system-specs-light.html).
 
-To learn more about Rebol and Red join the [chat on StackOverflow](http://chat.stackoverflow.com/rooms/291/rebol-and-red). You will need 20 points to chat but if you ask or answer questions about Red or Rebol we will help you get those points. And if that is not working for you drop a mail to us on the [Red mailing list](mailto: red-langNO_SPAM@googlegroups.com) (remove NO_SPAM).
+To learn more about Rebol and Red join the [chat on Gitter](https://gitter.im/red/red). And if that is not working for you drop a mail to us on the [Red mailing list](mailto: red-langNO_SPAM@googlegroups.com) (remove NO_SPAM).
+
+Browse or ask questions on [Stack Overflow](stackoverflow.com/questions/tagged/red).
 
 Maybe you want to try Red right away? That is possible on the [try Rebol and Red site](http://tryrebol.esperconsultancy.nl).
 
