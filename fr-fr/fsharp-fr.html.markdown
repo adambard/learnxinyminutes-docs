@@ -2,101 +2,107 @@
 language: F#
 contributors:
     - ["Scott Wlaschin", "http://fsharpforfunandprofit.com/"]
-filename: learnfsharp.fs
+translators:
+    - ["Alois de Gouvello", "https://github.com/aloisdg"]
+filename: learnfsharp-fr.fs
 ---
 
-F# is a general purpose functional/OO programming language.  It's free and open source, and runs on Linux, Mac, Windows and more. 
+F# est un langage de programmation fonctionnel et orienté objet. Il est gratuit et son code source est ouvert. Il tourne sur Linux, Mac, Windows et plus. 
 
-It has a powerful type system that traps many errors at compile time, but it uses type inference so that it reads more like a dynamic language.
+Il a un puissant système de type qui piège de nombreuses erreurs à la compilation, mais il utilise l'inférence de type donc il se lit plus comme un langage dynamique.
 
-The syntax of F# is different from C-style languages:
+La syntaxe de F# est différente des langages héritant de C.
 
-* Curly braces are not used to delimit blocks of code. Instead, indentation is used (like Python).
-* Whitespace is used to separate parameters rather than commas.
+* Les accolades ne sont pas utilisées pour délimiter les blocs de code. À la place, l'indentation est utilisée (à la manière de Python).
+* Les espaces sont utilisés pour séparer les paramètres à la place des virgules.
 
-If you want to try out the code below, you can go to [tryfsharp.org](http://www.tryfsharp.org/Create) and paste it into an interactive REPL.
+Si vous voulez essayer le code ci-dessous, vous pouvez vous rendre sur [tryfsharp.org](http://www.tryfsharp.org/Create) et le coller dans le [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop).
 
 ```csharp
 
-// single line comments use a double slash
+// Les commentaires d'une seule ligne commencent par un double slash
 (* multi line comments use (* . . . *) pair
 
 -end of multi line comment- *)
 
 // ================================================
-// Basic Syntax
+// Syntaxe de base
 // ================================================
 
-// ------ "Variables" (but not really) ------
-// The "let" keyword defines an (immutable) value
+// ------ "Variables" (mais pas réellement) ------
+// Le mot clé "let" définit une valeur (immutable)
 let myInt = 5
 let myFloat = 3.14
-let myString = "hello"           //note that no types needed
+let myString = "hello"           // Notons qu'aucun type n'est nécessaire
 
-// ------ Lists ------
-let twoToFive = [2;3;4;5]        // Square brackets create a list with
-                                 // semicolon delimiters.
-let oneToFive = 1 :: twoToFive   // :: creates list with new 1st element
-// The result is [1;2;3;4;5]
-let zeroToFive = [0;1] @ twoToFive   // @ concats two lists
+// ------ Listes ------
+let twoToFive = [2;3;4;5]        // Les crochets créent une liste avec
+                                 // des point-virgules pour délimiteurs.
+let oneToFive = 1 :: twoToFive   // :: crée une liste avec un nouvel élément
+// Le résultat est [1;2;3;4;5]
+let zeroToFive = [0;1] @ twoToFive   // @ concatène deux listes
 
-// IMPORTANT: commas are never used as delimiters, only semicolons!
+// IMPORTANT: les virgules ne sont jamais utilisées pour délimiter,
+// seulement les point-virgules !
 
-// ------ Functions ------
-// The "let" keyword also defines a named function.
-let square x = x * x          // Note that no parens are used.
-square 3                      // Now run the function. Again, no parens.
+// ------ Fonctions ------
+// Le mot clé "let" définit aussi le nom d'une fonction.
+let square x = x * x          // Notons qu'aucune parenthèse n'est utilisée.
+square 3                      // Maitenant, exécutons la fonction.
+                              // Encore une fois, aucune paranthèse.
 
-let add x y = x + y           // don't use add (x,y)! It means something
-                              // completely different.
-add 2 3                       // Now run the function.
+let add x y = x + y           // N'utilisez pas add (x,y) ! Cela signifie
+                              // quelque chose de complètement différent.
+add 2 3                       // À présent, exécutons la fonction.
 
-// to define a multiline function, just use indents. No semicolons needed.
+// Pour définir une fonction sur plusieurs lignes, utilisons l'indentation.
+// Les point-virgules ne sont pas nécessaires.
 let evens list =
-   let isEven x = x%2 = 0     // Define "isEven" as a sub function
-   List.filter isEven list    // List.filter is a library function
-                              // with two parameters: a boolean function
-                              // and a list to work on
+   let isEven x = x%2 = 0     // Définit "isEven" comme une fonction imbriquée
+   List.filter isEven list    // List.filter est une fonction de la librairie
+                              // à deux paramètres: un fonction retournant un
+                              // booléen et une list sur laquelle travailler
 
-evens oneToFive               // Now run the function
+evens oneToFive               // À présent, exécutons la fonction.
 
-// You can use parens to clarify precedence. In this example,
-// do "map" first, with two args, then do "sum" on the result.
-// Without the parens, "List.map" would be passed as an arg to List.sum
+// Vous pouvez utilisez les parenthèses pour clarifier.
+// Dans cet exemple, "map" est exécutée en première, avec deux arguments,
+// ensuite "sum" est exécutée sur le résultat.
+// Sans les parenthèses, "List.map" serait passé en argument à List.sum.
 let sumOfSquaresTo100 =
    List.sum ( List.map square [1..100] )
 
-// You can pipe the output of one operation to the next using "|>"
-// Piping data around is very common in F#, similar to UNIX pipes.
+// Vous pouvez rediriger la sortie d'une fonction vers une autre avec "|>"
+// Rediriger des données est très commun en F#, comme avec les pipes UNIX.
 
-// Here is the same sumOfSquares function written using pipes
+// Voici la même fonction sumOfSquares écrite en utilisant des pipes
 let sumOfSquaresTo100piped =
-   [1..100] |> List.map square |> List.sum  // "square" was defined earlier
+   [1..100] |> List.map square |> List.sum  // "square" est déclaré avant
 
-// you can define lambdas (anonymous functions) using the "fun" keyword
+// Vous pouvez définir des lambdas (fonctions anonymes) grâce au mot clé "fun"
 let sumOfSquaresTo100withFun =
    [1..100] |> List.map (fun x -> x*x) |> List.sum
 
-// In F# there is no "return" keyword. A function always
-// returns the value of the last expression used.
+// En F#, il n'y a pas de mot clé "return". Une fonction retourne toujours
+// la valeur de la dernière expression utilisée.
 
 // ------ Pattern Matching ------
-// Match..with.. is a supercharged case/switch statement.
+// Match..with.. est une surcharge de la condition case/switch.
 let simplePatternMatch =
    let x = "a"
    match x with
     | "a" -> printfn "x is a"
     | "b" -> printfn "x is b"
-    | _ -> printfn "x is something else"   // underscore matches anything
+    | _ -> printfn "x is something else"   // underscore correspond à tout le reste
 
-// F# doesn't allow nulls by default -- you must use an Option type
-// and then pattern match.  
-// Some(..) and None are roughly analogous to Nullable wrappers
+// F# n'autorise pas la valeur null par défaut -- vous devez utiliser le type Option
+// et ensuite faire correspondre le pattern.  
+// Some(..) et None sont approximativement analogue à des wrappers de Nullable
 let validValue = Some(99)
 let invalidValue = None
 
-// In this example, match..with matches the "Some" and the "None",
-// and also unpacks the value in the "Some" at the same time.
+// Dans cet exemple, match..with trouve une correspondance à "Some" et à "None",
+// et affiche la valeur du "Some" en même temps.
 let optionPatternMatch input =
    match input with
     | Some i -> printfn "input is an int=%d" i
@@ -105,20 +111,20 @@ let optionPatternMatch input =
 optionPatternMatch validValue
 optionPatternMatch invalidValue
 
-// ------ Printing ------
-// The printf/printfn functions are similar to the
-// Console.Write/WriteLine functions in C#.
+// ------ Affichage ------
+// Les fonctions printf/printfn sont similaires aux fonctions
+// Console.Write/WriteLine de C#.
 printfn "Printing an int %i, a float %f, a bool %b" 1 2.0 true
 printfn "A string %s, and something generic %A" "hello" [1;2;3;4]
 
-// There are also sprintf/sprintfn functions for formatting data
-// into a string, similar to String.Format in C#.
+// Il y a aussi les fonctions printf/sprintfn pour formater des données
+// en string. C'est similaire à String.Format de C#.
 
 // ================================================
-// More on functions 
+// Plus sur les fonctions 
 // ================================================
 
-// F# is a true functional language -- functions are first
+// F# est un véritable langage fonctionel -- les fonctions sont first
 // class entities and can be combined easy to make powerful
 // constructs
 
