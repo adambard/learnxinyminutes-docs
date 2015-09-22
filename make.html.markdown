@@ -97,7 +97,7 @@ process: ex1.txt file0.txt
 # Can teach make how to convert certain files into other files.
 
 %.png: %.svg
-	inkscape --export-png %.svg
+	inkscape --export-png $^
 
 # Pattern rules will only do anything if make decides to create the \
 target.
@@ -105,7 +105,7 @@ target.
 # Directory paths are normally ignored when matching pattern rules. But
 # make will try to use the most appropriate rule available.
 small/%.png: %.svg
-	inkscape --export-png --export-dpi 30 %.svg
+	inkscape --export-png --export-dpi 30 $^
 
 # make will use the last version for a pattern rule that it finds.
 %.png: %.svg
@@ -113,14 +113,14 @@ small/%.png: %.svg
 
 # However make will use the first pattern rule that can make the target
 %.png: %.ps
-	@echo this rule is not chosen if %.svg and %.ps are both present
+	@echo this rule is not chosen if *.svg and *.ps are both present
 
 # make already has some pattern rules built-in. For instance, it knows 
 # how to turn *.c files into *.o files.
 
 # Older makefiles might use suffix rules instead of pattern rules
 .png.ps:
-    @echo this rule is similar to a pattern rule.
+	@echo this rule is similar to a pattern rule.
 
 # Tell make about the suffix rule
 .SUFFIXES: .png
@@ -222,7 +222,7 @@ report:
 ifeq ($(sport),tennis)
 	@echo 'game, set, match'
 else
-	@echo 'They think it's all over; it is now'
+	@echo "They think it's all over; it is now"
 endif
 
 # There are also ifneq, ifdef, ifndef
