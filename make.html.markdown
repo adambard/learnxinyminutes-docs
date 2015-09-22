@@ -120,7 +120,7 @@ small/%.png: %.svg
 
 # Older makefiles might use suffix rules instead of pattern rules
 .png.ps:
-    @echo this rule is similar to a pattern rule.
+	@echo this rule is similar to a pattern rule.
 
 # Tell make about the suffix rule
 .SUFFIXES: .png
@@ -222,7 +222,7 @@ report:
 ifeq ($(sport),tennis)
 	@echo 'game, set, match'
 else
-	@echo 'They think it's all over; it is now'
+	@echo "They think it's all over; it is now"
 endif
 
 # There are also ifneq, ifdef, ifndef
