@@ -124,18 +124,18 @@ printfn "A string %s, and something generic %A" "hello" [1;2;3;4]
 // Plus sur les fonctions 
 // ================================================
 
-// F# est un véritable langage fonctionel -- les fonctions sont first
-// class entities and can be combined easy to make powerful
-// constructs
+// F# est un véritable langage fonctionel -- les fonctions sont des
+// entités de premier ordre et peuvent êtres combinées facilement
+// pour créer des constructions puissantes
 
-// Modules are used to group functions together
-// Indentation is needed for each nested module.
+// Les modules sont utilisés pour grouper des fonctions ensemble.
+// L'indentation est nécessaire pour chaque module imbriqué.
 module FunctionExamples = 
 
-    // define a simple adding function
+    // définit un simple fonction d'addition
     let add x y = x + y
     
-    // basic usage of a function
+    // usage basique d'une fonction
     let a = add 1 2
     printfn "1+2 = %i" a
     
@@ -144,51 +144,51 @@ module FunctionExamples =
     let b = add42 1
     printfn "42+1 = %i" b
     
-    // composition to combine functions
+    // composition pour combiner des fonctions
     let add1 = add 1
     let add2 = add 2
     let add3 = add1 >> add2
     let c = add3 7
     printfn "3+7 = %i" c
     
-    // higher order functions
+    // Fonctions de premier ordre
     [1..10] |> List.map add3 |> printfn "new list is %A"
     
-    // lists of functions, and more
+    // Listes de fonctions et plus
     let add6 = [add1; add2; add3] |> List.reduce (>>)
     let d = add6 7
     printfn "1+2+3+7 = %i" d
 
 // ================================================
-// Lists and collection
+// Listes et collections
 // ================================================
 
-// There are three types of ordered collection:
-// * Lists are most basic immutable collection. 
-// * Arrays are mutable and more efficient when needed. 
-// * Sequences are lazy and infinite (e.g. an enumerator). 
+// Il y a trois types de collection ordonnée :
+// * Les listes sont les collections immutables les plus basiques
+// * Les tableaux sont mmutables et plus efficients
+// * les séquences sont lazy et infinies (e.g. un enumerator)
 //
-// Other collections include immutable maps and sets
+// Des autres collections incluent des maps immutables et des sets
 // plus all the standard .NET collections
 
 module ListExamples = 
 
-    // lists use square brackets 
+    // les listes uitlisent des crochets 
     let list1 = ["a";"b"]
-    let list2 = "c" :: list1    // :: is prepending
-    let list3 = list1 @ list2   // @ is concat
+    let list2 = "c" :: list1    // :: pour un ajout au début
+    let list3 = list1 @ list2   // @ pour la concatenation
     
-    // list comprehensions (aka generators)
+    // Compréhensions des listes (aka générateurs)
     let squares = [for i in 1..10 do yield i*i] 
 
-    // prime number generator
+    //  Générateur de nombre premier
     let rec sieve = function
         | (p::xs) -> p :: sieve [ for x in xs do if x % p > 0 then yield x ]
         | []      -> []
     let primes = sieve [2..50]
     printfn "%A" primes 
     
-    // pattern matching for lists
+    // pattern matching pour les listes
     let listMatcher aList = 
         match aList with
         | [] -> printfn "the list is empty" 
@@ -201,7 +201,7 @@ module ListExamples =
     listMatcher [1]
     listMatcher []        
 
-    // recursion using lists
+    // Récursion en utilisant les listes
     let rec sum aList = 
         match aList with
         | [] -> 0
@@ -209,26 +209,26 @@ module ListExamples =
     sum [1..10]
     
     // -----------------------------------------    
-    // Standard library functions 
+    // Fonctions de la librairie standard 
     // -----------------------------------------
     
     // map
     let add3 x = x + 3
     [1..10] |> List.map add3
 
-    // filter
+    // filtre
     let even x = x % 2 = 0
     [1..10] |> List.filter even
     
-    // many more -- see documentation
+    // beaucoup plus -- se référer à la documentation
     
 module ArrayExamples = 
 
-    // arrays use square brackets with bar
+    // les tableaux utilisent les crochets avec des barres
     let array1 = [| "a";"b" |]
-    let first = array1.[0]        // indexed access using dot
+    let first = array1.[0]        // accès à l'index en utilisant un point
    
-    // pattern matching for arrays is same as for lists
+    // pattern matching pour les tableaux est le même que celui des listes
     let arrayMatcher aList = 
         match aList with
         | [| |] -> printfn "the array is empty" 
@@ -238,7 +238,7 @@ module ArrayExamples =
 
     arrayMatcher [| 1;2;3;4 |]
 
-    // Standard library functions just as for List
+    // Fonctions de la librairie standard comme celles des listes
    
     [| 1..10 |] 
     |> Array.map (fun i -> i+3)
@@ -248,16 +248,16 @@ module ArrayExamples =
     
 module SequenceExamples = 
 
-    // sequences use curly braces
+    // Les séquences utilisent des accolades
     let seq1 = seq { yield "a"; yield "b" }
     
-    // sequences can use yield and 
-    // can contain subsequences
+    // Les séquences peuvent utiliser yield et 
+    // peuvent contenir des subsequences
     let strange = seq {
-        // "yield! adds one element
+        // "yield! ajoute un élément
         yield 1; yield 2;
         
-        // "yield!" adds a whole subsequence
+        // "yield!" ajoute une complète subsequence
         yield! [5..10]  
         yield! seq {
             for i in 1..10 do 
@@ -266,8 +266,8 @@ module SequenceExamples =
     strange |> Seq.toList              
               
 
-    // Sequences can be created using "unfold"
-    // Here's the fibonacci series
+    // Les séquences peuvent être créent en utilisantg "unfold"
+    // Voici la suite de fibonacci
     let fib = Seq.unfold (fun (fst,snd) ->
         Some(fst + snd, (snd, fst + snd))) (0,1)
 
@@ -277,20 +277,20 @@ module SequenceExamples =
    
     
 // ================================================
-// Data Types 
+// Types de données
 // ================================================
 
 module DataTypeExamples = 
 
-    // All data is immutable by default
+    // Toutes les donnés sont immutables par défaut
 
-    // Tuples are quick 'n easy anonymous types
-    // -- Use a comma to create a tuple
+    // Les tuples sont de simple et rapide types anonymes
+    // -- Utilisons une virgule pour créer un tuple
     let twoTuple = 1,2
     let threeTuple = "a",2,true
     
     // Pattern match to unpack
-    let x,y = twoTuple  //sets x=1 y=2
+    let x,y = twoTuple  // sets x=1 y=2
 
     // ------------------------------------ 
     // Record types have named fields 
