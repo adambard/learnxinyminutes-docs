@@ -6,7 +6,7 @@ contributors:
 lang: en
 ---
 
-```d
+```c
 // You know what's coming...
 module hello;
 
@@ -26,7 +26,7 @@ expressive high-level abstractions.
 D is actively developed by Walter Bright and Andrei Alexandrescu, two super smart, really cool
 dudes. With all that out of the way, let's look at some examples!
 
-```d
+```c
 import std.stdio;
 
 void main() {
@@ -68,7 +68,7 @@ We can define new types with `struct`, `class`, `union`, and `enum`. Structs and
 are passed to functions by value (i.e. copied) and classes are passed by reference. Futhermore,
 we can use templates to parameterize all of these on both types and values!
 
-```d
+```c
 // Here, T is a type parameter. Think <T> from C++/C#/Java
 struct LinkedList(T) {
     T data = null;
@@ -132,7 +132,7 @@ is roughly a function that may act like an lvalue, so we can
 have the syntax of POD structures (`structure.x = 7`) with the semantics of
 getter and setter methods (`object.setX(7)`)!
 
-```d
+```c
 // Consider a class parameterized on a types T, U
 
 class MyClass(T, U) {
@@ -198,7 +198,7 @@ functions, and immutable data. In addition, all of your favorite
 functional algorithms (map, filter, reduce and friends) can be
 found in the wonderful `std.algorithm` module!
 
-```d
+```c
 import std.algorithm : map, filter, reduce;
 import std.range : iota; // builds an end-exclusive range
 
@@ -226,7 +226,7 @@ is of some type A on any expression of type A as a method.
 
 I like parallelism. Anyone else like parallelism? Sure you do. Let's do some!
 
-```d
+```c
 import std.stdio;
 import std.parallelism : parallel;
 import std.math : sqrt;
