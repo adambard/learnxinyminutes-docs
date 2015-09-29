@@ -104,9 +104,10 @@ sentence == "question?"   #=> false
 [1, 2, 3].class         #=> Array(Int32)
 [1, "hello", 'x'].class #=> Array(Int32 | String | Char)
 
-# Same as Array(Int32).new
-[]          # Syntax error: for empty arrays use '[] of ElementType'
-[] of Int32 #=> []
+# Empty arrays should define a type
+[]               # Syntax error: for empty arrays use '[] of ElementType'
+[] of Int32      #=> []
+Array(Int32).new #=> []
 
 # Arrays can be indexed
 array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
@@ -155,7 +156,69 @@ set << 2
 set << 3
 
 # Hashes
-# TODO: to be continued
+{1 => 2, 3 => 4}.class   #=> Hash(Int32, Int32)
+{1 => 2, 'a' => 3}.class #=> Hash(Int32 | Char, Int32)
+
+# Empty hashes should define a type
+{}                     # Syntax error
+{} of Int32 => Int32   # {}
+Hash(Int32, Int32).new # {}
+
+# Hashes can be quickly looked up by key
+hash = {"color" => "green", "number" => 5}
+hash["color"]        #=> "green"
+hash["no_such_key"]  #=> Missing hash key: "no_such_key" (KeyError)
+hash["no_such_key"]? #=> nil
+
+# Check existence of keys hash
+hash.has_key? "color" #=> true
+
+# Special notation for symbol and string keys
+{key1: 'a', key2: 'b'}     # {:key1 => 'a', :key2 => 'b'}
+{"key1": 'a', "key2": 'b'} # {"key1" => 'a', "key2" => 'b'}
+
+# Special hash literal syntax with other types too, as long as
+# they define a .new and a #[]= methods
+MyType{"foo": "bar"}
+
+# The above is equivalent to
+tmp = MyType.new
+tmp["foo"] = "bar"
+tmp
+
+# Ranges
+
+1..10                  #=> Range(Int32, Int32)
+Range.new(1..10).class #=> Range(Int32, Int32)
+
+# Can be inclusive or exclusive
+3..5.to_a  #=> [3, 4, 5]
+3...5.to_a #=> [3, 4]
+
+# Check whether range includes the given value or not
+1..8.includes? 2 #=> true
+
+# Tuples are a fixed-size, immutable, stack-allocated sequence of values of
+# possibly different types.
+{1, "hello", 'x'}.class #=> Tuple(Int32, String, Char)
+
+# Acces tuple's value with index
+tuple = {:key1, :key2}
+tuple[1] #=> :key2
+tuple[2] #=> syntax error
+
+# Can be expanded into multiple variables
+a, b, c = {:a, 'b', "c"}
+a #=> :a
+b #=> 'b'
+c #=> "c"
+
+# Procs represent a functional pointer with an optional context
+proc = ->(x : Int32) { x.to_s }
+proc.class # (Int32 -> Nil)
+
+# Invoke proc with call method
+proc.call 10 #=> "10"
 
 ```
 
