@@ -2,7 +2,10 @@
 language: self
 contributors:
     - ["Russell Allen", "http://github.com/russellallen"]
-filename: learnself.self
+filename: learnself-ro.self
+lang: ro-ro
+translators:
+    - ["Serban Constantin", "https://github.com/fuzzmz"]
 ---
 
 Self is a fast prototype based OO language which runs in its own JIT vm. Most development is done through interacting with live objects through a visual development environment called *morphic* with integrated browsers and debugger. 
