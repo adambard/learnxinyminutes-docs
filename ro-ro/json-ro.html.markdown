@@ -9,38 +9,38 @@ translators:
 lang: ro-ro
 ---
 
-As JSON is an extremely simple data-interchange format, this is most likely going
-to be the simplest Learn X in Y Minutes ever.
+Deoarece JSON este un fromat foarte simplu de schimb de date acesta va fi
+probabil cel mai simplu Invata X in Y minute.
 
-JSON in its purest form has no actual comments, but most parsers will accept
-C-style (`//`, `/* */`) comments. For the purposes of this, however,  everything is
-going to be 100% valid JSON. Luckily, it kind of speaks for itself.
+JSON in forma cea mai pura nu contine comentarii insa majoritatea parserelor
+vor accepta comentarii in stil C (`//`, `/* */`). Pentru acest caz insa totul
+va fi JSON 100% valid. Din fericire codul vorbeste de la sine.
 
 ```json
 {
-  "key": "value",
+  "cheie": "valoare",
   
-  "keys": "must always be enclosed in double quotes",
-  "numbers": 0,
-  "strings": "Hellø, wørld. All unicode is allowed, along with \"escaping\".",
-  "has bools?": true,
-  "nothingness": null,
+  "chei": "trebuie mereu inconjurate de ghilimele",
+  "numere": 0,
+  "stringuri": "Bunã. Tot setul unicode este permis, chiar si \"escaping\".",
+  "are booleane?": true,
+  "nimic": null,
 
-  "big number": 1.2e+100,
+  "numere mari": 1.2e+100,
 
-  "objects": {
-    "comment": "Most of your structure will come from objects.",
+  "obiecte": {
+    "comentariu": "Majoritatea structurii va veni din obiecte.",
 
-    "array": [0, 1, 2, 3, "Arrays can have anything in them.", 5],
+    "vectori": [0, 1, 2, 3, "Vectorii pot avea orice in ei.", 5],
 
-    "another object": {
-      "comment": "These things can be nested, very useful."
+    "alt obiect": {
+      "comentariu": "Lucrurile pot fi subordonate. Foarte util."
     }
   },
 
-  "silliness": [
+  "glumite": [
     {
-      "sources of potassium": ["bananas"]
+      "surse de potasiu": ["banane"]
     },
     [
       [1, 0, 0, 0],
@@ -50,12 +50,12 @@ going to be 100% valid JSON. Luckily, it kind of speaks for itself.
     ]
   ],
   
-  "alternative style": {
-    "comment": "check this out!"
-  , "comma position": "doesn't matter - as long as its before the value, then its valid"
-  , "another comment": "how nice"
+  "stil alternativ": {
+    "comentariu": "ia uite la asta!"
+  , "pozitia virgulei": "nu conteaza - daca e inaintea valorii atunci e valida"
+  , "alt comentariu": "ce dragut"
   },
 
-  "that was short": "And, you're done. You now know everything JSON has to offer."
+  "a fost scurt": "Am terminat. Acum stii tot ce are JSON de oferit."
 }
 ```
