@@ -9,7 +9,7 @@ filename: learnjulia-es.jl
 lang: es-es
 ---
 
-![JuliaLang](https://camo.githubusercontent.com/e1ae5c7f6fe275a50134d5889a68f0acdd09ada8/687474703a2f2f6a756c69616c616e672e6f72672f696d616765732f6c6f676f5f68697265732e706e67)
+![JuliaLang](http://s13.postimg.org/z89djuwyf/julia_small.png)
 
 [Julia](http://julialanges.github.io) es un [lenguaje de programación](http://es.wikipedia.org/wiki/Lenguaje_de_programaci%C3%B3n) [multiplataforma](http://es.wikipedia.org/wiki/Multiplataforma) y [multiparadigma](http://es.wikipedia.org/wiki/Lenguaje_de_programaci%C3%B3n_multiparadigma) de [tipado dinámico](http://es.wikipedia.org/wiki/Tipado_din%C3%A1mico), [alto nivel](http://es.wikipedia.org/wiki/Lenguaje_de_alto_nivel) y [alto desempeño](http://es.wikipedia.org/wiki/Computaci%C3%B3n_de_alto_rendimiento) para la computación [genérica](http://es.wikipedia.org/wiki/Lenguaje_de_programaci%C3%B3n_de_prop%C3%B3sito_general), [técnica y científica](http://es.wikipedia.org/wiki/Computaci%C3%B3n_cient%C3%ADfica),  con una sintaxis que es familiar para los usuarios de otros entornos de computación técnica y científica. Provee de un [sofisticado compilador JIT](http://es.wikipedia.org/wiki/Compilaci%C3%B3n_en_tiempo_de_ejecuci%C3%B3n), [ejecución distribuida y paralela](http://docs.julialang.org/en/release-0.3/manual/parallel-computing), [precisión numérica](http://julia.readthedocs.org/en/latest/manual/integers-and-floating-point-numbers) y de una [extensa librería con funciones matemáticas](http://docs.julialang.org/en/release-0.3/stdlib). La librería estándar, escrita casi completamente en Julia, también integra las mejores y más maduras librerías de C y Fortran para el [álgebra lineal](http://docs.julialang.org/en/release-0.3/stdlib/linalg), [generación de números aleatorios](http://docs.julialang.org/en/release-0.3/stdlib/numbers/?highlight=random#random-numbers), [procesamiento de señales](http://docs.julialang.org/en/release-0.3/stdlib/math/?highlight=signal#signal-processing), y [procesamiento de cadenas](http://docs.julialang.org/en/release-0.3/stdlib/strings). Adicionalmente, la comunidad de [desarrolladores de Julia](https://github.com/JuliaLang/julia/graphs/contributors) contribuye un número de [paquetes externos](http://pkg.julialang.org) a través del gestor de paquetes integrado de Julia a un paso acelerado. [IJulia](https://github.com/JuliaLang/IJulia.jl), una colaboración entre las comunidades de [IPython](http://ipython.org) y Julia, provee de una poderosa interfaz gráfica basada en el [navegador para Julia](https://juliabox.org).
 
@@ -931,7 +931,7 @@ code_native(area_circulo, (Float64,))
 =#
 ```
 
-![Julia-tan](http://www.mechajyo.org/wp/wp-content/uploads/2014/10/3a2c3b7de5dd39aa7f056a707cd4eb59.png)
+![Julia-tan](http://s27.postimg.org/x37ndhz0j/julia_tan_small.png)
 
 ## ¿Listo para más?
 
