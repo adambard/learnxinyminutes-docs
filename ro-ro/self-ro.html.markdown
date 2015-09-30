@@ -8,52 +8,57 @@ translators:
     - ["Serban Constantin", "https://github.com/fuzzmz"]
 ---
 
-Self is a fast prototype based OO language which runs in its own JIT vm. Most development is done through interacting with live objects through a visual development environment called *morphic* with integrated browsers and debugger. 
+Self este un limbaj orientat pe obiecte de prototyping rapid ce ruleaza in
+propriul VM JIT. Majoritatea dezvoltarii este facuta prin interactionarea cu 
+obiecte live printr-un mediu vizual de dezvoltare numit *morphic* ce contine
+browsere si debugger integrat.
 
-Everything in Self is an object. All computation is done by sending messages to objects. Objects in Self can be understood as sets of key-value slots.
+Totul in Self este un obiect. Toate functiile sunt efectuate trimitand mesaje
+catre obiecte. Obiectele in Self pot fi intelese ca sloturi de perechi
+cheie-valoare.
 
-# Constructing objects
+# Construirea obiectelor
 
-The inbuild Self parser can construct objects, including method objects. 
+Parserul Self integrat poate construi obiecte, inclusiv obiecte metoda. 
 
 ```
-"This is a comment"
+"Acesta este un comentariu"
 
-"A string:"
-'This is a string with \'escaped\' characters.\n'
+"Un string:"
+'Un string cu caractere \'escaped\'.\n'
 
-"A 30 bit integer"
+"Un integer de 30 de biti"
 23
 
-"A 30 bit float"
+"Un float de 30 de biti"
 3.2
 
 "-20"
 -14r16
 
-"An object which only understands one message, 'x' which returns 20"
+"Un obiect ce intelege doar un mesaj, 'x' ce returneaza 20"
 (|
   x = 20.
 |)
 
-"An object which also understands 'x:' which sets the x slot"
+"Un obiect ce intelege si 'x:' ce seteaza slotul x"
 (|
   x <- 20.
 |)
 
-"An object which understands the method 'doubleX' which 
-doubles the value of x and then returns the object"
+"Un obiect ce intelege metoda 'doubleX' ce 
+dubleaza valoarea lui x si apoi returneaza obiectul"
 (|
   x <- 20.
   doubleX = (x: x * 2. self)
 |)
 
-"An object which understands all the messages 
-that 'traits point' understands". The parser 
-looks up 'traits point' by sending the messages 
-'traits' then 'point' to a known object called 
-the 'lobby'. It looks up the 'true' object by 
-also sending the message 'true' to the lobby."
+"Un obiect ce intelege toate mesajele pe care 
+'traits point' le intelege". Parserul verifica 
+'traits point' prin trimiterea mesajelor 
+'traits' apoi 'point' catre un obiect cunoscut sub numele 
+de 'lobby'. Verifica obiectul 'true' tot prin trimiterea 
+mesajului 'true' catre lobby."
 (|     parent* = traits point.
        x = 7.
        y <- 5.
@@ -61,19 +66,22 @@ also sending the message 'true' to the lobby."
 |)
 ```
 
-# Sending messages to objects
+# Trimiterea mesajelor catre obiect
 
-Messages can either be unary, binary or keyword. Precedence is in that order. Unlike Smalltalk, the precedence of binary messages must be specified, and all keywords after the first must start with a capital letter. Messages are separeated from their destination by whitespace.
+Mesajele pot fi fie unare, binare sau keyword. Precedenta este in acea ordine.
+Spre deosebire de Smalltalk, precedenta mesajelor binare trebuie specificata,
+si toate keywords dupa primul trebuie sa inceapa cu litera mare.
+Mesajele sunt separate de destinatie prin spatii libere.
 
 ```
-"unary message, sends 'printLine' to the object '23' 
-which prints the string '23' to stdout and returns the receiving object (ie 23)"
+"mesaj unar, trimite 'printLine' catre obiectul '23' 
+care printeaza stringul '23' pe stdout si returneaza obiectul destinatie (ex 23)"
 23 printLine
 
-"sends the message '+' with '7' to '23', then the message '*' with '8' to the result"
+"trimite mesajul '+' cu '7' catre '23', apoi mesajul '*' cu '8' catre rezultat"
 (23 + 7) * 8 
 
-"sends 'power:' to '2' with '8' returns 256"
+"trimite 'power:' catre '2' cu '8' returneaza 256"
 2 power: 8 
 
 "sends 'keyOf:IfAbsent:' to 'hello' with arguments 'e' and '-1'. 
