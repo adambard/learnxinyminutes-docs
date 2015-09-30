@@ -1,8 +1,11 @@
 ---
 language: xml
-filename: learnxml.xml
+filename: learnxml-ro.xml
 contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
+translators:
+    - ["Serban Constantin", "https://github.com/fuzzmz"]
+lang: ro-ro
 ---
 
 XML is a markup language designed to store and transport data.
