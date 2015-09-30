@@ -412,7 +412,7 @@ varargs(1, 2, 3)   # => (1, 2, 3)
 
 
 # You can define functions that take a variable number of
-# keyword args, as well, which will be interpreted as a map if you do not use **
+# keyword args, as well, which will be interpreted as a dict if you do not use **
 def keyword_args(**kwargs):
     return kwargs
 
