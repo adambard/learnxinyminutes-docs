@@ -1,9 +1,12 @@
 ---
 language: json
-filename: learnjson.json
+filename: learnjson-ro.json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]
+translators:
+    - ["Serban Constantin", "https://github.com/fuzzmz"]
+lang: ro-ro
 ---
 
 As JSON is an extremely simple data-interchange format, this is most likely going
