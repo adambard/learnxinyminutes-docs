@@ -41,7 +41,7 @@ En Julia los programas están organizados entorno al [despacho múltiple](http:/
 
 Esto se basa en la versión `0.3.11`.
 
-```julia
+```ruby
 # Los comentarios de una línea comienzan con una almohadilla (o signo de gato).
 
 #=
