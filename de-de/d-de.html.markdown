@@ -4,7 +4,7 @@ filename: learnd-de.d
 contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]
     - ["Dominik Süß", "www.thesuess.me"]
-lang: de
+lang: de-de
 ---
 
 ```c
