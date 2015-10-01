@@ -735,7 +735,7 @@ class Foo {
   virtual void bar();
 };
 class FooSub : public Foo {
-  virtual void bar();  // overrides Foo::bar!
+  virtual void bar();  // Overrides Foo::bar!
 };
 
 
