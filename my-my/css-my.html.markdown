@@ -49,7 +49,7 @@ Dengan menentukan sebuah elemen seperti ini pada sebuah laman:
 <div class='suatu-class class2' id='suatuId' attr='nilai' />
 */
 
-/* kita bisa memilih elemen berdasarkan nama class-nya */
+/* kita boleh memilih elemen berdasarkan nama class-nya */
 .suatu-class { }
 
 /*atau dengan dua class sekaligus! */
@@ -77,12 +77,12 @@ div { }
 [attr~='la'] { font-size:smaller; }
 
 
-/* dan yang lebih penting lagi, kita bisa mengombinasikannya sekaligus
-dengan syarat tidak ada spasi diantara selektor-selektor. sebab adanya spasi
+/* dan yang lebih penting lagi, kita boleh menggabungkannya sekaligus
+dengan syarat tidak ada ruang kosong diantara selektor-selektor. sebab adanya ruang kosong
 akan membuat selektor itu memiliki makna yang berbeda.*/
 div.suatu-class[attr$='ai'] { }
 
-/* kita juga bisa memilih sebuah elemen berdasarkan posisi elemen induknya.*/
+/* kita juga boleh memilih sebuah elemen berdasarkan posisi elemen induknya.*/
 
 /*sebuah elemen yang merupakan anak langsung dari elemen induk (diseleksi dng
 cara yang sama) */
@@ -98,7 +98,7 @@ div.suatu-induk .suatu-class {}
 misalnya? */
 div.suatu-induk.suatu-class {}
 
-/* kita juga bisa memilih sebuah elemen berdasarkan saudara elemen yang muncul
+/* kita juga boleh memilih sebuah elemen berdasarkan saudara elemen yang muncul
 tepat sebelumnya */
 .aku-muncul-tepat-sebelum + .elemen-ini { }
 
@@ -167,14 +167,14 @@ Simpan semua CSS yang hendak kita pakai dengan ekstensi `.css`.
 <!-- kita harus menautkan file css itu ke laman di bagian <head>: -->
 <link rel='stylesheet' type='text/css' href='folder/namafile.css' />
 
-<!-- kita juga bisa mengetik CSS secara inline di dalam markup.
-Namun, sebisa mungkin metode ini dihindari. -->
+<!-- kita juga boleh mengetik CSS secara inline di dalam markup.
+Namun, seboleh mungkin metode ini dihindari. -->
 <style>
    selektor { properti:nilai; }
 </style>
 
 <!-- atau langsung mengetik properti CSS pada sebuah elemen.
-Metode ini harus dihindari sebisa mungkin. -->
+Metode ini harus dihindari seboleh mungkin. -->
 <div style='properti:nilai;'>
 </div>
 
@@ -182,8 +182,8 @@ Metode ini harus dihindari sebisa mungkin. -->
 
 ## Prioritas
 
-Kita tahu bahwa sebuah elemen bisa dipilih dengan lebih dari satu selektor,
-serta bisa diberi lebih dari satu properti.
+Kita tahu bahwa sebuah elemen boleh dipilih dengan lebih dari satu selektor,
+serta boleh diberi lebih dari satu properti.
 Dalam kasus seperti ini, hanya salah satu properti saja yang akan diterapkan
 pada elemen dengan prioritas tertentu.
 
