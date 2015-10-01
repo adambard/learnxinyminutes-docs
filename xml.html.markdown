@@ -49,10 +49,11 @@ Unlike HTML, XML does not specify how to display or to format data, just carry i
 <!-- XML carries two kind of data:
   1 - Attributes -> That's metadata about a node.
       Usually, the XML parser uses this information to store the data properly.
-      It is characterized by appearing in parenthesis within the opening tag
+      It is characterized by appearing with the format name="value" within the opening
+      tag.
   2 - Elements -> That's pure data.
       That's what the parser will retrieve from the XML file.
-      Elements appear between the open and close tags, without parenthesis. -->
+      Elements appear between the open and close tags. -->
       
   
 <!-- Below, an element with two attributes -->
