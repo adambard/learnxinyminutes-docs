@@ -966,6 +966,48 @@ on a new line! ""Wow!"", the masses cried";
         }
     }
     
+    // New C# 6 features
+    class GlassBall : IJumpable, IBreakable
+    {
+        // Autoproperty initializers
+        public int Damage { get; private set; } = 0;
+        
+        // Autoproperty initializers on getter-only properties
+        public string Name { get; } = "Glass ball";
+        
+        // Getter-only autoproperty that is initialized in constructor
+        public string GenieName { get; }
+        
+        public GlassBall(string genieName = null)
+        {
+            GenieName = genieName;
+        }
+        
+        public void Jump(int meters)
+        {
+            if (meters < 0)
+                // New nameof() expression; compiler will check that the identifier exists
+                // nameof(x) == "x"
+                // Prevents e.g. parameter names changing but not updated in error messages
+                throw new ArgumentException("Cannot jump negative amount!", nameof(meters));
+
+            Damage += meters;
+        }
+        
+        // Expression-bodied properties ...
+        public bool Broken
+            => Damage > 100;
+        
+        // ... and methods
+        public override string ToString()
+            // Interpolated string
+            => $"{Name}. Damage taken: {Damage}";
+            
+        public string SummonGenie()
+            // Null-conditional operators
+            // x?.y will return null immediately if x is null; y is not evaluated
+            => GenieName?.ToUpper();
+    }
 } // End Namespace
 ```
 
@@ -973,6 +1015,8 @@ on a new line! ""Wow!"", the masses cried";
 
  * Attributes
  * async/await, pragma directives
+ * Exception filters
+ * `using static`
  * Web Development
  	* ASP.NET MVC & WebApi (new)
  	* ASP.NET Web Forms (old)
