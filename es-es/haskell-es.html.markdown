@@ -16,52 +16,52 @@ en un bloque como este.
 -}
 
 ----------------------------------------------------
--- 1. Primitive Datatypes and Operators
+-- 1. Tipos de datos primitivos y Operadores
 ----------------------------------------------------
 
--- You have numbers
+-- Cuentas con números
 3 -- 3
 
--- Math is what you would expect
+-- Operadores aritméticos
 1 + 1 -- 2
 8 - 1 -- 7
 10 * 2 -- 20
 35 / 5 -- 7.0
 
--- Division is not integer division by default
+-- Por defecto la división no devuelve un entero
 35 / 4 -- 8.75
 
--- integer division
+-- Para la división entera utiliza
 35 `div` 4 -- 8
 
--- Boolean values are primitives
+-- Valores booleanos
 True
 False
 
--- Boolean operations
+-- Operaciones booleanas
 not True -- False
 not False -- True
 1 == 1 -- True
 1 /= 1 -- False
 1 < 10 -- True
 
--- In the above examples, `not` is a function that takes one value.
--- Haskell doesn't need parentheses for function calls...all the arguments
--- are just listed after the function. So the general pattern is:
+-- En los ejemplos superiores, `not` es una función que toma un valor.
+-- Haskell no necesita paréntisis para las llamadas a funciones...todos los argumentos
+-- son enlistados después de la función. Entonces el patrón general es:
 -- func arg1 arg2 arg3...
--- See the section on functions for information on how to write your own.
+-- Observa la sección de funciones para obtener información de como escribir tu propia función.
 
--- Strings and characters
-"This is a string."
-'a' -- character
-'You cant use single quotes for strings.' -- error!
+-- Cadenas y caracteres
+"Esto es una cadena."
+'a' -- caracter
+'No puedes utilizar comillas simples para cadenas.' -- ¡error!
 
--- Strings can be concatenated
-"Hello " ++ "world!" -- "Hello world!"
+-- Concatenación de cadenas
+"¡Hola " ++ "mundo!" -- "¡Hola mundo!"
 
--- A string is a list of characters
-['H', 'e', 'l', 'l', 'o'] -- "Hello"
-"This is a string" !! 0 -- 'T'
+-- Una cadena es una lista de caracteres
+['H', 'o', 'l', 'a'] -- "Hola"
+"Esto es una cadena" !! 0 -- 'E'
 
 
 ----------------------------------------------------
