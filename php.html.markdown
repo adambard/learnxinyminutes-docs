@@ -487,7 +487,7 @@ class MyClass
  * Declaring class properties or methods as static makes them accessible without
  * needing an instantiation of the class. A property declared as static can not
  * be accessed with an instantiated class object (though a static method can).
-*/
+ */
 
     public static function myStaticMethod()
     {
@@ -495,7 +495,9 @@ class MyClass
     }
 }
 
+// Class constants can always be accessed statically 
 echo MyClass::MY_CONST;    // Outputs 'value';
+
 echo MyClass::$staticVar;  // Outputs 'static';
 MyClass::myStaticMethod(); // Outputs 'I am static';
 

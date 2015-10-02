@@ -7,19 +7,19 @@ contributors:
 filename: learncss.css
 ---
 
-In early days of web there was no visual elements, just pure text. But with the  
-further development of browser fully visual web pages also became common.   
+In the early days of the web there were no visual elements, just pure text. But with the  
+further development of browsers, fully visual web pages also became common.   
 CSS is the standard language that exists to keep the separation between   
 the content (HTML) and the look-and-feel of web pages.
 
 In short, what CSS does is to provide a syntax that enables you to target   
 different elements on an HTML page and assign different visual properties to them.
 
-Like any other language, CSS has many versions. Here we focus on CSS2.0   
-which is not the most recent but the most widely supported and compatible version.
+Like any other languages, CSS has many versions. Here we focus on CSS2.0,   
+which is not the most recent version, but is the most widely supported and compatible version.
 
-**NOTE:** Because the outcome of CSS is some visual effects, in order to 
-learn it, you need try all different things in a 
+**NOTE:** Because the outcome of CSS consists of visual effects, in order to 
+learn it, you need try everything in a 
 CSS playground like [dabblet](http://dabblet.com/).
 The main focus of this article is on the syntax and some general tips.
 

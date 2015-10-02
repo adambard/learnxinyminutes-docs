@@ -379,7 +379,13 @@ except (TypeError, NameError):
     pass    # Multiple exceptions can be handled together, if required.
 else:   # Optional clause to the try/except block. Must follow all except blocks
     print "All good!"   # Runs only if the code in try raises no exceptions
+finally: #  Execute under all circumstances
+    print "We can clean up resources here"
 
+# Instead of try/finally to cleanup resources you can use a with statement
+with open("myfile.txt") as f:
+    for line in f:
+        print line
 
 ####################################################
 ## 4. Functions
@@ -406,7 +412,7 @@ varargs(1, 2, 3)   # => (1, 2, 3)
 
 
 # You can define functions that take a variable number of
-# keyword args, as well, which will be interpreted as a map if you do not use **
+# keyword args, as well, which will be interpreted as a dict if you do not use **
 def keyword_args(**kwargs):
     return kwargs
 

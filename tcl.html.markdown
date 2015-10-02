@@ -121,7 +121,8 @@ puts lots\nof\n\n\n\n\n\nnewlines
 
 
 # A word enclosed in braces is not subject to any special interpretation or
-# substitutions, except that a backslash before a brace is not counted when look#ing for the closing brace
+# substitutions, except that a backslash before a brace is not counted when
+# looking for the closing brace
 set somevar {
     This is a literal $ sign, and this \} escaped
     brace remains uninterpreted
@@ -148,6 +149,9 @@ set greeting "Hello, [set {first name}]"
 
 # To promote the words within a word to individual words of the current
 # command, use the expansion operator, "{*}".
+```
+
+```tcl
 set {*}{name Neo}
 
 # is equivalent to
@@ -163,7 +167,7 @@ set greeting "Hello, $person(name)"
 # A namespace holds commands and variables
 namespace eval people {
     namespace eval person1 {
-        set name Neo
+        variable name Neo
     }
 }
 
@@ -189,7 +193,10 @@ set greeting "Hello $people::person1::name"
 namespace delete ::
 
 
-# Because of name resolution behaviour, it's safer to use the "variable" command to declare or to assign a value to a namespace.
+# Because of name resolution behaviour, it's safer to use the "variable" command to 
+# declare or to assign a value to a namespace. If a variable called "name" already 
+# exists in the global namespace, using "set" here will assign a value to the global variable
+# instead of creating a new variable in the local namespace.
 namespace eval people {
     namespace eval person1 {
         variable name Neo
@@ -256,7 +263,7 @@ proc greet greeting\ name return\ \"Hello,\ \$name!
 proc fold {cmd args} {
     set res 0
     foreach arg $args {
-        set res [cmd $res $arg]
+        set res [$cmd $res $arg]
     }
 }
 fold ::tcl::mathop::* 5 3 3 ;# ->  45

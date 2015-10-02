@@ -281,7 +281,7 @@ fn main() {
     println!("{}", var); // Unlike `box`, `var` can still be used
     println!("{}", *ref_var);
     // var = 5; // this would not compile because `var` is borrowed
-    // *ref_var = 6; // this would too, because `ref_var` is an immutable reference
+    // *ref_var = 6; // this would not too, because `ref_var` is an immutable reference
 
     // Mutable reference
     // While a value is mutably borrowed, it cannot be accessed at all.

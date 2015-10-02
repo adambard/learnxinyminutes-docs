@@ -1,8 +1,8 @@
 ---
 language: xml
-filename: learnxml.xml
+filename: learnxml-pt.xml
 contributors:
-	- ["João Farias", "https://github.com/JoaoGFarias"]
+    - ["João Farias", "https://github.com/JoaoGFarias"]
 translators:
     - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
 lang: pt-br
