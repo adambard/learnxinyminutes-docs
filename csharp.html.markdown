@@ -873,13 +873,13 @@ on a new line! ""Wow!"", the masses cried";
     // New C# 6 features
     class GlassBall : IJumpable, IBreakable
     {
-        // Autoproperty initialisers
+        // Autoproperty initializers
         public int Damage { get; private set; } = 0;
         
-        // Autoproperty initialisers on getter-only properties
+        // Autoproperty initializers on getter-only properties
         public string Name { get; } = "Glass ball";
         
-        // Getter-only autoproperty that is initialised in constructor
+        // Getter-only autoproperty that is initialized in constructor
         public string GenieName { get; }
         
         public GlassBall(string genieName = null)
