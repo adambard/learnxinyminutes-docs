@@ -25,6 +25,7 @@ filename: learnerlang.erl
 %% 1. Variables and pattern matching.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% In Erlang new variables are bound with an `=` statement.
 Num = 42.  % All variable names must start with an uppercase letter.
 
 % Erlang has single-assignment variables; if you try to assign a different
@@ -32,9 +33,11 @@ Num = 42.  % All variable names must start with an uppercase letter.
 Num = 43. % ** exception error: no match of right hand side value 43
 
 % In most languages, `=` denotes an assignment statement. In Erlang, however,
-% `=` denotes a pattern-matching operation. `Lhs = Rhs` really means this:
-% evaluate the right side (`Rhs`), and then match the result against the
-% pattern on the left side (`Lhs`).
+% `=` denotes a pattern-matching operation. When an empty variable is used on the
+% left hand side of the `=` operator to is bound (assigned), but when a bound
+% varaible is used on the left hand side the following behaviour is observed.
+% `Lhs = Rhs` really means this: evaluate the right side (`Rhs`), and then
+% match the result against the pattern on the left side (`Lhs`).
 Num = 7 * 6.
 
 % Floating-point number.
