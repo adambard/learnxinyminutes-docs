@@ -1,8 +1,6 @@
 ---
 language: css
 contributors:
-    - ["Mohammad Valipour", "https://github.com/mvalipour"]
-translators:
     - ["Abdul Muhaimin", "http://github.com/infacq"]
 lang: my-my
 filename: learncss-my.css
@@ -28,7 +26,7 @@ Fokus utama artikel ini adalah pada sintaks dan sejumlah tips umumnya.
 
 
 ```css
-/* catatan komen terletak diantara sepasang tanda garis miring dan bintang,
+/* catatan komen terletak diantara sepasang tanda garis condong dan bintang,
 persis seperti baris ini! */
 
 /* ####################
