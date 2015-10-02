@@ -47,10 +47,30 @@ public class LearnJava {
 
 
         ///////////////////////////////////////
-        // Types & Variables
+        // Variables 
         ///////////////////////////////////////
-
+        
+        /*
+        *  Variable Declaration
+        */
         // Declare a variable using <type> <name>
+        int fooInt;
+        // Declare multiple variables of the same type <type> <name1>, <name2>, <name3>
+        int fooInt1, fooInt2, fooInt3;
+
+        /*
+        *  Variable Initialization
+        */
+
+        // Initialize a variable using <type> <name> = <val>
+        int fooInt = 1;
+        // Initialize multiple variables of same type with same value <type> <name1>, <name2>, <name3> = <val>
+        int fooInt1, fooInt2, fooInt3;
+        fooInt1 = fooInt2 = fooInt3 = 1;
+
+        /*
+        *  Variable types
+        */
         // Byte - 8-bit signed two's complement integer
         // (-128 <= byte <= 127)
         byte fooByte = 100;
