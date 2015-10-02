@@ -101,7 +101,7 @@ $sgl_quotes
 END;
 
 // String concatenation is done with .
-echo 'This string ' . 'is concatenated'; 
+echo 'This string ' . 'is concatenated';
 
 
 /********************************
