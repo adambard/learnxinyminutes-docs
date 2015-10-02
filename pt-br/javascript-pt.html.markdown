@@ -194,52 +194,54 @@ myObj.myThirdKey = true;
 myObj.myFourthKey; // = undefined
 
 ///////////////////////////////////
-// 3. Logic and Control Structures
+// 3. Lógica e Estruturas de Controle
 
-// The syntax for this section is almost identical to Java's. 
+// A sintaxe para essa seção é quase idêntica a maioria das linguagens.
 
 // The `if` structure works as you'd expect.
-var count = 1;
+// A estrutura `if` funciona como deveria ser.
+var count = 1
 if (count == 3){
-    // evaluated if count is 3
+    // executa se count é 3
 } else if (count == 4){
-    // evaluated if count is 4
+    // executa se count é 4
 } else {
-    // evaluated if it's not either 3 or 4
+    // executa se count não é 3 nem 4
 }
 
-// As does `while`.
+// Como se faz `while`.
 while (true){
-    // An infinite loop!
+    // Um loop infinito!
 }
 
-// Do-while loops are like while loops, except they always run at least once.
-var input;
+// Os loops do-while são como os loops de while, exceto quando eles sempre
+// executam pelo menos uma vez.
 do {
     input = getInput();
 } while (!isValid(input))
 
 // The `for` loop is the same as C and Java:
 // initialisation; continue condition; iteration.
+
+// O loop `for` é o mesmo de C e Java:
+// inicialização, condição de continuar; iteração
 for (var i = 0; i < 5; i++){
-    // will run 5 times
+    // vai rodar cinco vezes
 }
 
-// && is logical and, || is logical or
+// && é o `e` lógico , || é o `ou` lógico
 if (house.size == "big" && house.colour == "blue"){
     house.contains = "bear";
 }
-if (colour == "red" || colour == "blue"){
-    // colour is either red or blue
+if (cor == "red" || cor == "blue"){
+    // cor é vermelha OU azul
 }
 
-// && and || "short circuit", which is useful for setting default values.
-var name = otherName || "default";
+// && e || "pequeno circuito", é útil para determinar valores padrões.
+var name = otherName || "padrão";
 
-
-// The `switch` statement checks for equality with `===`.
-// use 'break' after each case 
-// or the cases after the correct one will be executed too. 
+// O `switch` checa pela igualdade com `===`.
+// Use `break` após cada `case`
 grade = 'B';
 switch (grade) {
   case 'A':
