@@ -1,18 +1,3 @@
----
-language: java
-contributors:
-    - ["Jake Prather", "http://github.com/JakeHP"]
-    - ["Jakukyo Friel", "http://weakish.github.io"]
-    - ["Madison Dickson", "http://github.com/mix3d"]
-    - ["Simon Morgan", "http://sjm.io/"]
-filename: LearnJava.java
----
-
-Java is a general-purpose, concurrent, class-based, object-oriented computer
-programming language.
-[Read more here.](http://docs.oracle.com/javase/tutorial/java/)
-
-```java
 // Single-line comments start with //
 /*
 Multi-line comments look like this.
@@ -47,30 +32,10 @@ public class LearnJava {
 
 
         ///////////////////////////////////////
-        // Variables 
+        // Types & Variables
         ///////////////////////////////////////
-        
-        /*
-        *  Variable Declaration
-        */
+
         // Declare a variable using <type> <name>
-        int fooInt;
-        // Declare multiple variables of same type <type> <name1>, <name2>, <name3>
-        int fooInt1, fooInt2, fooInt3;
-
-        /*
-        *  Variable Initialization
-        */
-
-        // Initialize a variable using <type> <name> = <val>
-        int fooInt = 1;
-        // Initialize multiple variables of same type with same value <type> <name1>, <name2>, <name3> = <val>
-        int fooInt1, fooInt2, fooInt3;
-        fooInt1 = fooInt2 = fooInt3 = 1;
-
-        /*
-        *  Variable types
-        */
         // Byte - 8-bit signed two's complement integer
         // (-128 <= byte <= 127)
         byte fooByte = 100;
@@ -437,26 +402,26 @@ class PennyFarthing extends Bicycle {
 
 // Example - Food:
 public interface Edible {
-	public void eat(); // Any class that implements this interface, must
+    public void eat(); // Any class that implements this interface, must
                        // implement this method.
 }
 
 public interface Digestible {
-	public void digest();
+    public void digest();
 }
 
 
 // We can now create a class that implements both of these interfaces.
 public class Fruit implements Edible, Digestible {
     @Override
-	public void eat() {
-		// ...
-	}
+    public void eat() {
+        // ...
+    }
 
     @Override
-	public void digest() {
-		// ...
-	}
+    public void digest() {
+        // ...
+    }
 }
 
 // In Java, you can extend only one class, but you can implement many
@@ -464,51 +429,10 @@ public class Fruit implements Edible, Digestible {
 public class ExampleClass extends ExampleClassParent implements InterfaceOne,
     InterfaceTwo {
     @Override
-	public void InterfaceOneMethod() {
-	}
+    public void InterfaceOneMethod() {
+    }
 
     @Override
-	public void InterfaceTwoMethod() {
-	}
+    public void InterfaceTwoMethod() {
+    }
 }
-```
-
-## Further Reading
-
-The links provided here below are just to get an understanding of the topic, feel free to Google and find specific examples.
-
-**Official Oracle Guides**:
-
-* [Java Tutorial Trail from Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
-
-* [Java Access level modifiers](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
-
-* [Object-Oriented Programming Concepts](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
-    * [Inheritance](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
-    * [Polymorphism](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
-    * [Abstraction](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
-
-* [Exceptions](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
-
-* [Interfaces](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
-
-* [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
-
-* [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
-
-**Online Practice and Tutorials**
-
-* [Learneroo.com - Learn Java](http://www.learneroo.com)
-
-* [Codingbat.com](http://codingbat.com/java)
-
-
-**Books**:
-
-* [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
-
-* [Thinking in Java](http://www.mindview.net/Books/TIJ/)
-
-* [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
-
-* [Java The Complete Reference](http://www.amazon.com/gp/product/0071606300)
