@@ -209,7 +209,7 @@ if (count == 3){
     // executa se count não é 3 nem 4
 }
 
-// Como se faz `while`.
+// Como se faz um `while`.
 while (true){
     // Um loop infinito!
 }
@@ -224,7 +224,7 @@ do {
 // initialisation; continue condition; iteration.
 
 // O loop `for` é o mesmo de C e Java:
-// inicialização, condição de continuar; iteração
+// inicialização, condição para continuar; iteração
 for (var i = 0; i < 5; i++){
     // vai rodar cinco vezes
 }
@@ -260,79 +260,84 @@ switch (grade) {
 
 
 ///////////////////////////////////
-// 4. Functions, Scope and Closures
+// 4. Funções, Escopos e Closures
 
-// JavaScript functions are declared with the `function` keyword.
+// Funções Javascript são declaradas com a palavra-chave `function`.
 function myFunction(thing){
     return thing.toUpperCase();
 }
 myFunction("foo"); // = "FOO"
 
-// Note that the value to be returned must start on the same line as the
-// `return` keyword, otherwise you'll always return `undefined` due to
-// automatic semicolon insertion. Watch out for this when using Allman style.
+// Repare que o valor a ser retornado deve começar na mesma linha que
+// a palavra-chave `return`, senão você sempre irá retornar `undefined` 
+// visto que o ponto-e-vírgula é inserido automáticamente nas quebras de 
+// linha. Preste atenção quando usar o estilo Allman.
 function myFunction()
 {
-    return // <- semicolon automatically inserted here
+    return // <- ponto-e-vírgula adicionado automaticamente aqui
     {
         thisIsAn: 'object literal'
     }
 }
 myFunction(); // = undefined
 
-// JavaScript functions are first class objects, so they can be reassigned to
-// different variable names and passed to other functions as arguments - for
-// example, when supplying an event handler:
+// Funções Javascript são objetos de primeira classe, portanto elas podem
+// ser atribuídas a nomes de variáveis e serem passadas para outras funções
+// como argumentos - por exemplo, quando criamos um manipulador de eventos:
 function myFunction(){
-    // this code will be called in 5 seconds' time
+    // este código será chamado em 5 segundos
 }
 setTimeout(myFunction, 5000);
-// Note: setTimeout isn't part of the JS language, but is provided by browsers
-// and Node.js.
+// Nota: `setTimeout` não é parte da linguagem Javascript, mas é provido pelos
+// browsers e o Node.js.
 
-// Function objects don't even have to be declared with a name - you can write
-// an anonymous function definition directly into the arguments of another.
+// Objetos de funções não precisam nem serem declarados com nome - você pode 
+// escrever a definição de uma função anônima diretamente nos argumentos de 
+// outra função.
 setTimeout(function(){
-    // this code will be called in 5 seconds' time
+    // este código será chamado em 5 segundos
 }, 5000);
 
-// JavaScript has function scope; functions get their own scope but other blocks
-// do not.
+// O Javascript tem escopo de função; as funções tem seu próprio escopo, 
+// mas outros blocos não.
 if (true){
     var i = 5;
 }
-i; // = 5 - not undefined as you'd expect in a block-scoped language
+i; // = 5 - não `undefined` como você esperaria numa linguagem de blogo-escopo
 
-// This has led to a common pattern of "immediately-executing anonymous
-// functions", which prevent temporary variables from leaking into the global
-// scope.
+// Isso levou a padrão comum chamado de IIFE (Imediately Invoked Function 
+// Expression) ou (Expressão de Função Invocada Imediatamente), que previne
+// que variáveis temporárias vazem para o escopo global.
 (function(){
     var temporary = 5;
-    // We can access the global scope by assiging to the "global object", which
-    // in a web browser is always `window`. The global object may have a
-    // different name in non-browser environments such as Node.js.
+    // Nós podemos acessar o escopo global definindo o "objeto global", que
+    // no browser vai ser sempre `window`. O objeto global pode ter um nome
+    // diferente para ambiente não-browser como o Node.js.
     window.permanent = 10;
 })();
-temporary; // raises ReferenceError
+temporary; // levanta um erro de referência inexiste
 permanent; // = 10
 
-// One of JavaScript's most powerful features is closures. If a function is
-// defined inside another function, the inner function has access to all the
-// outer function's variables, even after the outer function exits.
+// Uma das principais características do Javascript é a closure. Que é
+// uma função definida dentro de outra função, a função interna pode acessar
+// todas as variáveis da função externa, mesmo depois da função de fora
+// finalizar sua execução.
 function sayHelloInFiveSeconds(name){
     var prompt = "Hello, " + name + "!";
-    // Inner functions are put in the local scope by default, as if they were
-    // declared with `var`.
+
+    // Funções internas são colocadas no escopo local por padrão, assim como
+    // se fossem declaradas com `var`. 
     function inner(){
         alert(prompt);
     }
     setTimeout(inner, 5000);
-    // setTimeout is asynchronous, so the sayHelloInFiveSeconds function will
-    // exit immediately, and setTimeout will call inner afterwards. However,
-    // because inner is "closed over" sayHelloInFiveSeconds, inner still has
-    // access to the `prompt` variable when it is finally called.
+    // `setTimeout` é assíncrono, portanto a função `sayHelloInFiveSeconds`
+    // vai sair imediatamente, e o `setTimeout` irá chamar a interna depois.
+    // Entretanto. como a interna é fechada dentro de "sayHelloInFiveSeconds",
+    // a interna permanece podendo acessar a variável `prompt` quando depois
+    // de chamada.
 }
-sayHelloInFiveSeconds("Adam"); // will open a popup with "Hello, Adam!" in 5s
+sayHelloInFiveSeconds("Adam"); // Vai abrir um popup com "Hello, Adam!" em 5s
 
 ///////////////////////////////////
 // 5. More about Objects; Constructors and Prototypes
