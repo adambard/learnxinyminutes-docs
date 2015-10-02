@@ -349,7 +349,10 @@ public:
     // These are called when an object is deleted or falls out of scope.
     // This enables powerful paradigms such as RAII
     // (see below)
-    // Destructors must be virtual to allow classes to be derived from this one.
+    // Destructors should be virtual if a class is to be derived from;
+    // if they are not virtual, then any resources allocated using RAII in
+    // the derived class will not be released if it destroyed through a
+    // base-class reference or pointer.
     virtual ~Dog();
 
 }; // A semicolon must follow the class definition.
