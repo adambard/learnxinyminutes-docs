@@ -8,39 +8,39 @@ lang: my-my
 filename: learncss-my.css
 ---
 
-Pada mulanya, web tidak mempunyai elemen visual, hanya teks sahaja.
-Tapi sejajar perkembangan pembangunan pelayar, laman web dengan elemen visual menjadi suatu kebiasaan.
-CSS adalah bahasa yang digunakan untuk menjaga keterasingan antara
+Pada mulanya, halaman web tidak mempunyai elemen visual, hanya teks sahaja.
+Tetapi sejajar perkembangan pembangunan pelayar, laman web disertai elemen visual menjadi suatu kemestian.
+CSS adalah salah satu bahasa yang digunakan untuk menjaga keterasingan antara
 kandungan (HTML) serta tampilan-dan-kesan laman web.
 
 Secara kasar, fungsi CSS menyajikan sintaks yang memampukan kita
 untuk memilih elemen tertentu dalam sesebuah halaman HTML
-dan menerapkan berbagai properti visual bagi elemen tersebut.
+dan menerapkan berbagai kesan khas visual untuk elemen tersebut.
 
-Seperti bahasa yang lain-lain, CSS juga memiliki banyak versi.
-Di artikel ini, kita fokus pada CSS2.0 - yang meskipun bukan versi terkini
+Seperti bahasa yang lain-lain, CSS juga mengalami beberapa jilid.
+Di artikel ini, kita akan fokus hanya pada CSS2.0 - yang meskipun bukan versi terkini
 namun paling serasi dan didukung meluas sekali oleh kebanyakan pelayar.
 
-**CATATAN:** Lantaran keluaran dari CSS berwujud efek-efek visual,
+**CATATAN:** Lantaran keluaran dari CSS berwujud kesan khas visual,
 maka untuk mempelajarinya, kita perlu mencuba berbagai hal dalam dunia olah CSS
-semisal [dabblet](http://dabblet.com/).
-Fokus utama artikel ini ialah pada sintaks dan sejumlah tips umum.
+seperti [dabblet](http://dabblet.com/).
+Fokus utama artikel ini adalah pada sintaks dan sejumlah tips umumnya.
 
 
 ```css
-/* komentar terletak diantara sepasang tanda garis miring dan bintang,
-persis seperti baris ini ini! */
+/* catatan komen terletak diantara sepasang tanda garis miring dan bintang,
+persis seperti baris ini! */
 
 /* ####################
    ## SELEKTOR
    ####################*/
 
-/* Secara garis besar, statemen utama dalam CSS sangat sederhana */
+/* Umumnya, statemen utama dalam CSS sangat sederhana */
 selektor { properti: nilai; /* properti lainnya */ }
 
-/* selektor berfungsi untuk memilih suatu elemen dalam sesebuah halaman.
+/* selektor berfungsi untuk memilih suatu elemen didalam sesebuah halaman.
 
-Kita juga boleh memilih semua elemen di sebuah halaman! */
+Kita juga boleh memilih kesemua elemen dalam sebuah halaman! */
 * { color:red; }
 
 /*
@@ -55,7 +55,7 @@ Dengan menentukan sebuah elemen seperti ini pada sebuah laman:
 /*atau dengan dua class sekaligus! */
 .suatu-class.class2 { }
 
-/* atau dengan nama tag-nya */
+/* atau dengan tag-nya */
 div { }
 
 /* atau id-nya */
@@ -73,18 +73,18 @@ div { }
 /* atau ditutup dengan nilai */
 [attr$='ai'] { font-size:smaller; }
 
-/* atau bahkan disisipi nilai */
+/* atau bahkan diiring sebarang nilai */
 [attr~='la'] { font-size:smaller; }
 
 
 /* dan yang lebih penting lagi, kita boleh menggabungkannya sekaligus
 dengan syarat tidak ada ruang kosong diantara selektor-selektor. sebab adanya ruang kosong
-akan membuat selektor itu memiliki makna yang berbeda.*/
+akan membuat selektor itu memiliki makna yang berbeza.*/
 div.suatu-class[attr$='ai'] { }
 
 /* kita juga boleh memilih sebuah elemen berdasarkan posisi elemen induknya.*/
 
-/*sebuah elemen yang merupakan anak langsung dari elemen induk (diseleksi dng
+/*sebuah elemen yang merupakan anak langsung dari elemen induk (diseleksi dengan
 cara yang sama) */
 div.suatu-induk > .-suatu-class {}
 
@@ -94,7 +94,7 @@ merupakan anak elemen dari suatu div dengan class "induk-entah" PADA LEVEL
 HIRARKI MANAPUN */
 div.suatu-induk .suatu-class {}
 
-/* peringatan: selektor yang sama jika tanpa ada spasi akan bermakna lain.
+/* AWAS: selektor yang sama jika tanpa ada ruang kosong akan membawa makna yang lain.
 misalnya? */
 div.suatu-induk.suatu-class {}
 
@@ -109,7 +109,7 @@ sebelumnya */
 /* Ada beberapa pseudo-class yang memampukan kita memilih suatu elemen
 berdasarkan perilaku lamannya (bukan struktur lamannya) */
 
-/* semisal ketika sebuah elemen ditimpa hover (pointer mouse) */
+/* contoh seperti ketika sebuah elemen ditimpa hover (pointer mouse) */
 :hover {}
 
 /* atau link yang sudah pernah diklik*/
@@ -129,31 +129,31 @@ berdasarkan perilaku lamannya (bukan struktur lamannya) */
 selektor {
 
     /* Unit */
-    width: 50%; /* dalam persen */
+    width: 50%; /* dalam peratusan */
     font-size: 2em; /* angka kali jumlah font-size saat ini */
-    width: 200px; /* dalam pixel */
-    font-size: 20pt; /* dalam point */
-    width: 5cm; /* dalam centimeter */
-    width: 50mm; /* dalam milimeter */
-    width: 5in; /* dalam inci */
+    width: 200px; /* piksel */
+    font-size: 20pt; /* point */
+    width: 5cm; /* sentimeter */
+    width: 50mm; /* milimeter */
+    width: 5in; /* inci */
 
     /* Warna */
-    background-color: #F6E;  /* dalam short hex */
-    background-color: #F262E2; /* dalam format long hex */
+    background-color: #F6E;  /* kod hex  yang pendek */
+    background-color: #F262E2; /* bentuk hex yang panjang */
     background-color: tomato; /* warna yang sudah punya konvensi nama */
     background-color: rgb(255, 255, 255); /* dalam rgb */
-    background-color: rgb(10%, 20%, 50%); /* dalam persen rgb */
-    background-color: rgba(255, 0, 0, 0.3); /* dalam rgb semi-transparan*/
+    background-color: rgb(10%, 20%, 50%); /* dalam peratusan rgb */
+    background-color: rgba(255, 0, 0, 0.3); /* dalam rgb separuh-tampak-tembus*/
 
     /* Gambar */
     background-image: url(/folder-gambar/image.jpg);
 
     /* Font */
     font-family: Arial;
-    font-family: "Courier New"; /* jika nama font memiliki spasi,
-    							ia diketik dalam tanda petik ganda */
+    font-family: "Courier New"; /* jika nama font memiliki ruang antaranya,
+    							ia mesti dirangkum dalam tanda petik ganda */
     font-family: "Courier New", Trebuchet, Arial; /* jika font pertama tidak
-    							ditemukan, peramban menggunakan font berikutnya,
+    							dijumpai, ia akan menggunakan font berikutnya,
     							demikian secara berturut-turut */
 }
 
@@ -161,31 +161,31 @@ selektor {
 
 ## Penggunaan
 
-Simpan semua CSS yang hendak kita pakai dengan ekstensi `.css`.
+Simpan semua CSS yang hendak kita pakai dengan sambungan `.css`.
 
 ```xml
-<!-- kita harus menautkan file css itu ke laman di bagian <head>: -->
+<!-- menetapkan fail css itu ke laman di bagian <head>: -->
 <link rel='stylesheet' type='text/css' href='folder/namafile.css' />
 
-<!-- kita juga boleh mengetik CSS secara inline di dalam markup.
-Namun, seboleh mungkin metode ini dihindari. -->
+<!-- kita juga boleh meletak sintaks CSS secara inline di dalam markup.
+Namun, hindari kaedah ini sebaik mungkin. -->
 <style>
    selektor { properti:nilai; }
 </style>
 
-<!-- atau langsung mengetik properti CSS pada sebuah elemen.
-Metode ini harus dihindari seboleh mungkin. -->
+<!-- atau langsung memasukkan properti CSS pada sebuah elemen.
+Kaedah ini harus dihindari seboleh mungkin. -->
 <div style='properti:nilai;'>
 </div>
 
 ```
 
-## Prioritas
+## Keutamaan
 
-Kita tahu bahwa sebuah elemen boleh dipilih dengan lebih dari satu selektor,
+Kita sedia maklum sesebuah elemen boleh dipilih menggunakan lebih dari satu selektor,
 serta boleh diberi lebih dari satu properti.
-Dalam kasus seperti ini, hanya salah satu properti saja yang akan diterapkan
-pada elemen dengan prioritas tertentu.
+Merujuk kes dibawah ini, hanya salah satu properti saja yang akan diterapkan
+pada elemen dengan keutamaan tertentu.
 
 Dengan susunan CSS:
 
@@ -211,34 +211,33 @@ p { properti: nilai !important; }
 dan susunan markup:
 
 ```xml
-<p style='/*F*/ properti:nilai;' class='class1 class2' attr='nilai'>
-</p>
+<p style='/*F*/ properti:nilai;' class='class1 class2' attr='nilai'></p>
 ```
 
-Maka prioritas penerapan style-nya ialah sbb.:  
+Maka keutamaan penerapan style-nya ialah sbb.:  
 Ingat, penerapan ini untuk masing-masing **properti**,
-bukan keseluruhan larik.
+bukan keseluruhan baris.
 
-* `E` prioritas pertama sebab ada kata `!important`.  
-	Dianjurkan untuk menghindari kata ini jika tidak benar-benar perlu.
-* `F` prioritas kedua sebab ia diketik secara inline.
-* `A` prioritas ketiga sebab selektor ini lebih spesifik dibanding yang lain.  
-	lebih spesifik = lebih banyak unsur selektor. contoh ini punya 3 unsur:
+* `E` keutamaan pertama sebab ada kata `!important`.  
+	Dianjurkan untuk menghindari kata ini jika tidak betul-betul diperlukan.
+* `F` keutamaan kedua sebab ia digunakan secara inline.
+* `A` keutamaan ketiga sebab selektor ini lebih spesifik berbanding yang lain.  
+	lebih khusus = lebih banyak unsur selektor. contoh ini punya 3 unsur:
 	1 tagname `p` + 1 nama class `class1` + 1 attribute `attr='nilai'`
-* `C` prioritas berikutnya sebab meski sama spesifik dengan `B` namun
+* `C` keutamaan berikutnya sebab meski sama spesifik dengan `B` namun
 	ia muncul lebih akhir.
 * Lalu `B`
 * dan terakhir baru `D`.
 
-## Kompatibilitas
+## Keserasian
 
-Sebagian besar fitur dalam CSS2 (dan lambat laun juga CSS3) kompatibel dengan
-semua peramban dan perangkat. Namun selalu vital untuk memastikan kompatibilitas
-unsur dan nilai yang kita ketikkan dalam CSS dengan peramban yang ditargetkan.
+Sebagian besar ciri-ciri dalam CSS2 (dan lambat laun juga CSS3) serasi dengan
+semua peramban dan perangkat. Namun adalah penting untuk memastikan keserasian
+unsur dan nilai yang kita gunakan dalam CSS dengan peramban yang disasarkan.
 
-[QuirksMode CSS](http://www.quirksmode.org/css/) ialah salah satu sumber terbaik untuk memeriksa kompatibilitas CSS dan peramban.
+[QuirksMode CSS](http://www.quirksmode.org/css/) ialah salah satu sumber terbaik untuk memeriksa kesesuaian CSS dan peramban.
 
-## Referensi Lanjut
+## Maklumat Lanjut
 
 * [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
 * [QuirksMode CSS](http://www.quirksmode.org/css/)
