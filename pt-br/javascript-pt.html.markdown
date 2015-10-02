@@ -37,96 +37,99 @@ facaAlgo()
 // a usar ponto-e-vírgula neste guia.
 
 ///////////////////////////////////
-// 1. Numbers, Strings and Operators
+// 1. Números, Strings e Operadores
 
-// JavaScript has one number type (which is a 64-bit IEEE 754 double).
-// Doubles have a 52-bit mantissa, which is enough to store integers
-//    up to about 9✕10¹⁵ precisely.
+// Javascript tem um tipo de número (que é o 64-bit IEEE 754 double).
+// Doublas tem uma mantissa 52-bit, que é suficiente para guardar inteiros
+// acima de 9✕10¹⁵ precisamente.
 3; // = 3
 1.5; // = 1.5
 
-// Some basic arithmetic works as you'd expect.
+// A aritmética básica funciona seria de esperar.
 1 + 1; // = 2
 0.1 + 0.2; // = 0.30000000000000004
 8 - 1; // = 7
 10 * 2; // = 20
 35 / 5; // = 7
 
-// Including uneven division.
+// Inclusive divisão desigual.
 5 / 2; // = 2.5
 
-// Bitwise operations also work; when you perform a bitwise operation your float
-// is converted to a signed int *up to* 32 bits.
+// Operadores Bitwise também funcionam; quando você faz uma operação bitwise
+// seu float é convertido para um int de até 32 bits.
 1 << 2; // = 4
 
-// Precedence is enforced with parentheses.
+// A precedência é aplicada com parênteses.
 (1 + 3) * 2; // = 8
 
 // There are three special not-a-real-number values:
-Infinity; // result of e.g. 1/0
--Infinity; // result of e.g. -1/0
-NaN; // result of e.g. 0/0
+// Existem três especiais valores não-é-número-real:
+Infinity; // resultado de 1/0
+-Infinity; // resultado de -1/0
+NaN; // resultado de 0/0
 
-// There's also a boolean type.
+// Existe também o tipo booleano.
 true;
 false;
 
-// Strings are created with ' or ".
+// Strings são criados com ' ou ".
 'abc';
-"Hello, world";
+"Olá, mundo";
 
 // Negation uses the ! symbol
+// Negação usa o símbolo !
 !true; // = false
 !false; // = true
 
-// Equality is ===
+// Igualdade é ===
 1 === 1; // = true
 2 === 1; // = false
 
-// Inequality is !==
+// Desigualdade é !==
 1 !== 1; // = false
 2 !== 1; // = true
 
-// More comparisons
+// Mais comparações
 1 < 10; // = true
 1 > 10; // = false
 2 <= 2; // = true
 2 >= 2; // = true
 
-// Strings are concatenated with +
-"Hello " + "world!"; // = "Hello world!"
+// Strings são concatenadas com +
+"Olá " + "mundo!"; // = "Olá mundo!"
 
-// and are compared with < and >
+// e comparadas com < e >
 "a" < "b"; // = true
 
-// Type coercion is performed for comparisons with double equals...
+// A coerção de tipos é feita para comparações com dois iguais...
 "5" == 5; // = true
 null == undefined; // = true
 
-// ...unless you use ===
+// ...a menos que use ===
 "5" === 5; // = false
 null === undefined; // = false 
 
-// ...which can result in some weird behaviour...
+// ...que irá resultar num comportamento estranho...
 13 + !0; // 14
 "13" + !0; // '13true'
 
-// You can access characters in a string with `charAt`
-"This is a string".charAt(0);  // = 'T'
+// Você pode acessar caracteres de uma String usando o `charAt`
+"Isto é uma String".charAt(0);  // = 'I'
 
-// ...or use `substring` to get larger pieces.
-"Hello world".substring(0, 5); // = "Hello"
+// ...ou usar `substring` para pegar pedaços maiores.
+"Olá mundo".substring(0, 3); // = "Olá"
 
-// `length` is a property, so don't use ().
-"Hello".length; // = 5
+// `length` é uma propriedade, portanto não use ().
+"Olá".length; // = 3
 
-// There's also `null` and `undefined`.
-null;      // used to indicate a deliberate non-value
-undefined; // used to indicate a value is not currently present (although
-           // `undefined` is actually a value itself)
+// Existe também o `null` e o `undefined`.
+null;      // usado para indicar um valor não considerado
+undefined; // usado para indicar um valor que não é a atualmente definido
+           // (entretando `undefined` é usado como um próprio valor
 
-// false, null, undefined, NaN, 0 and "" are falsy; everything else is truthy.
-// Note that 0 is falsy and "0" is truthy, even though 0 == "0".
+// false, null, undefined, NaN, 0 and "" são valores falsy;
+// qualquer outro valor é truthy
+// Note que 0 é falsy e "0" é truthy, até mesmo 0 == "0".
 
 ///////////////////////////////////
 // 2. Variables, Arrays and Objects
