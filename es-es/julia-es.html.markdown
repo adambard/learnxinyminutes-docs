@@ -733,7 +733,7 @@ end
 # Esto significa que se construyen a partir de muchos métodos más pequeños.
 # Cada constructor de Leon es un método de la función genérica Leon.
 
-# Por ejemplo, vamos a hacer métodos para para Leon, Pantera, y Tigre de una
+# Por ejemplo, vamos a hacer métodos para Leon, Pantera, y Tigre de una
 # función genérica maullar:
 
 # acceso utilizando notación de puntos
