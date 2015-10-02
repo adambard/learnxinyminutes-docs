@@ -21,6 +21,7 @@ true.class #=> Bool
 !0     #=> false
 
 # Integers
+
 1.class #=> Int32
 
 # Four signed integer types
@@ -49,6 +50,7 @@ true.class #=> Bool
 0xfe012d #=> 16646445
 
 # Floats
+
 1.0.class #=> Float64
 
 # There are two floating point types
@@ -60,6 +62,7 @@ true.class #=> Bool
 1.5e-7.class  #=> Float64
 
 # Chars
+
 'a'.class #=> Char
 
 # Octal codepoint
@@ -69,6 +72,7 @@ true.class #=> Bool
 '\u0041' #=> 'A'
 
 # Strings
+
 "s".class #=> String
 
 # Strings are immutable
@@ -101,6 +105,7 @@ sentence == :exclamation! #=> false
 sentence == "question?"   #=> false
 
 # Arrays
+
 [1, 2, 3].class         #=> Array(Int32)
 [1, "hello", 'x'].class #=> Array(Int32 | String | Char)
 
@@ -156,6 +161,7 @@ set << 2
 set << 3
 
 # Hashes
+
 {1 => 2, 3 => 4}.class   #=> Hash(Int32, Int32)
 {1 => 2, 'a' => 3}.class #=> Hash(Int32 | Char, Int32)
 
@@ -219,6 +225,118 @@ proc.class # (Int32 -> Nil)
 
 # Invoke proc with call method
 proc.call 10 #=> "10"
+
+# Control statements
+
+if true
+  "if statement"
+elsif false
+  "else-if, optional"
+else
+  "else, also optional"
+end
+
+puts "if as a suffix" if true
+
+# If as an expression
+a = if 2 > 1
+      3
+    else
+      4
+    end
+
+a #=> 3
+
+# Ternary if
+a = 1 > 2 ? 3 : 4 #=> 4
+
+# Case statement
+cmd = "move"
+
+action = case cmd
+  when "create"
+    "Creating..."
+  when "copy"
+    "Copying..."
+  when "move"
+    "Moving..."
+  when "delete"
+    "Deleting..."
+end
+
+action #=> "Moving..."
+
+# Loops
+index = 0
+while index <= 3
+  puts "Index: #{index}"
+  index += 1
+end
+# Index: 0
+# Index: 1
+# Index: 2
+# Index: 3
+
+index = 0
+until index > 3
+  puts "Index: #{index}"
+  index += 1
+end
+# Index: 0
+# Index: 1
+# Index: 2
+# Index: 3
+
+# But the preferable way is to use each
+(1..3).each do |index|
+  puts "Index: #{index}"
+end
+# Index: 0
+# Index: 1
+# Index: 2
+# Index: 3
+
+# Variable's type depends on the type of the expression
+# in control statements
+if a < 3
+  a = "hello"
+else
+  a = true
+end
+typeof a #=> (String | Bool)
+
+if a && b
+  # here both a and b are guaranteed not to be Nil
+end
+
+if a.is_a? String
+  a.class #=> String
+end
+
+# Exception handling
+
+# Define new exception
+class MyException < Exception
+end
+
+# Define another exception
+class MyAnotherException < Exception; end
+
+ex = begin
+   raise MyException.new
+rescue ex1 : IndexError
+  "ex1"
+rescue ex2 : MyException | MyAnotherException
+  "ex2"
+rescue ex3 : Exception
+  "ex3"
+rescue ex4 # catch any kind of exception
+  "ex4"
+end
+
+ex #=> "ex2"
+
+# TODO: Types and methods
 
 ```
 
