@@ -53,11 +53,11 @@ int main(int argc, char** argv)
 
 // However, C++ varies in some of the following ways:
 
-// In C++, character literals are one byte.
-sizeof('c') == 1
+// In C++, character literals are chars
+sizeof('c') == sizeof(char) == 1
 
-// In C, character literals are the same size as ints.
-sizeof('c') == sizeof(10)
+// In C, character literals are ints
+sizeof('c') == sizeof(int)
 
 
 // C++ has strict prototyping
