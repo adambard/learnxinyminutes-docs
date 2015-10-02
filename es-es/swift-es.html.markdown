@@ -11,12 +11,10 @@ lang: es-es
 filename: learnswift.swift
 ---
 
-Swift es un lenguaje de programación para el desarrollo en iOS y OS X creado por Apple. Diseñado para coexistir con Objective-C y ser más resistente contra el código erroneo, Swift fue introducido en el 2014 en el WWDC, la conferencia de desarrolladores de Apple.
-
-Swift is a programming language for iOS and OS X development created by Apple. Designed to coexist with Objective-C and to be more resilient against erroneous code, Swift was introduced in 2014 at Apple's developer conference WWDC. It is built with the LLVM compiler included in Xcode 6+.
-
-The official [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) book from Apple is now available via iBooks.
-El libro oficial de Apple, [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329), se encuentra disponible en iBooks. 
+Swift es un lenguaje de programación para el desarrollo en iOS y OS X creado
+por Apple. Diseñado para coexistir con Objective-C y ser más resistente contra 
+el código erroneo, Swift fue introducido en el 2014 en el WWDC, la conferencia
+de desarrolladores de Apple.
 
 Véase también la guía oficial de Apple, [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html), el cual tiene un completo tutorial de Swift.
 
@@ -29,14 +27,16 @@ import UIKit
 // MARK: Básicos
 //
 
-// XCode soporta referencias para anotar tu código y agregarlos a lista de la barra de saltos.
+// XCode soporta referencias para anotar tu código y agregarlos a lista de la 
+// barra de saltos.
 // MARK: Marca de sección
 // TODO: Hacer algo pronto
 // FIXME: Arreglar este código
 
-// En Swift 2, println y print fueron combinados en un solo método print. Print añade una nueva línea automáticamente.
+// En Swift 2, println y print fueron combinados en un solo método print. 
+// Print añade una nueva línea automáticamente.
 print("Hola, mundo") // println ahora es print
-print("Hola, mundo", appendNewLine: false) // print sin agregar una nueva línea
+print("Hola, mundo", appendNewLine: false) // print sin agregar nueva línea
 
 // Valores de variables (var) pueden cambiar después de ser asignados
 // Valores de constrantes (let) no pueden cambiarse después de ser asignados
@@ -45,8 +45,11 @@ var myVariable = 42
 let øπΩ = "value" // nombres de variable unicode
 let π = 3.1415926
 let convenience = "keyword" // nombre de variable contextual
-let weak = "keyword"; let override = "another keyword" // declaraciones pueden ser separadas por punto y coma
-let `class` = "keyword" // Acentos abiertos permite utilizar palabras clave como nombres de variable
+// Las declaraciones pueden ser separadas por punto y coma (;)
+let weak = "keyword"; let override = "another keyword" 
+// Los acentos abiertos (``) permiten utilizar palabras clave como nombres de 
+// variable
+let `class` = "keyword" 
 let explicitDouble: Double = 70
 let intValue = 0007 // 7
 let largeIntValue = 77_000 // 77000
@@ -64,9 +67,12 @@ let piText = "Pi = \(π), Pi 2 = \(π * 2)" // Interpolación de string
 print("Build value: \(buildValue)") // Build value: 7
 
 /*
-    Las opcionales son un aspecto del lenguaje Swift que permite el almacenamiento de un valor `Some` (algo) o `None` (nada).
+    Las opcionales son un aspecto del lenguaje Swift que permite el 
+    almacenamiento de un valor `Some` (algo) o `None` (nada).
     
-    Debido a que Swift requiere que cada propiedad tenga un valor, hasta un valor 'nil' debe de ser explicitamente almacenado como un valor opcional.
+    Debido a que Swift requiere que cada propiedad tenga un valor, 
+    hasta un valor 'nil' debe de ser explicitamente almacenado como un 
+    valor opcional.
     
     Optional<T> es un enum.
 */
@@ -98,7 +104,8 @@ if let someOptionalStringConstant = someOptionalString {
 
 // Swift tiene soporte de almacenamiento para cualquier tipo de valor.
 // AnyObject == id
-// A diferencia de Objective-C `id`, AnyObject funciona con cualquier valor (Class, Int, struct, etc)
+// A diferencia de Objective-C `id`, AnyObject funciona con cualquier 
+// valor (Class, Int, struct, etc)
 var anyObjectVar: AnyObject = 7
 anyObjectVar = "Cambiado a un valor string, no es buena práctica, pero posible."
 
@@ -115,7 +122,9 @@ anyObjectVar = "Cambiado a un valor string, no es buena práctica, pero posible.
 //
 
 /*
-    Tipos Array (arreglo) y Dictionary (diccionario) son structs (estructuras). Así que `let` y `var` también indican si son mudables (var) o inmutables (let) durante la declaración de sus tipos.    
+    Tipos Array (arreglo) y Dictionary (diccionario) son structs (estructuras). 
+    Así que `let` y `var` también indican si son mudables (var) o 
+    inmutables (let) durante la declaración de sus tipos.    
 */
 
 // Array (arreglo)
@@ -216,7 +225,8 @@ func greet(name: String, day: String) -> String {
 }
 greet("Bob", "Martes")
 
-// Similar a lo anterior, a excepción del compartamiento de los parámetros de la función
+// Similar a lo anterior, a excepción del compartamiento de los parámetros 
+// de la función
 func greet2(requiredName: String, externalParamName localParamName: String) -> String {
     return "Hola \(requiredName), hoy es el día \(localParamName)"
 }
@@ -362,7 +372,8 @@ internal class Rect: Shape {
     
     init(sideLength: Int) {
         self.sideLength = sideLength
-        // Siempre poner super.init de último al momento de inicializar propiedades personalizadas
+        // Siempre poner super.init de último al momento de inicializar propiedades 
+        // personalizadas
         super.init()
     }
     
@@ -447,8 +458,8 @@ enum Suit {
     }
 }
 
-// Los valores de enum permite la sintaxis corta, sin necesidad de poner el tipo del enum
-// cuando la variable es declarada de manera explícita
+// Los valores de enum permite la sintaxis corta, sin necesidad de poner 
+// el tipo del enum cuando la variable es declarada de manera explícita
 var suitValue: Suit = .Hearts
 
 // Enums de tipo no-entero requiere asignaciones de valores crudas directas 
@@ -508,9 +519,10 @@ class MyShape: Rect {
     func grow() {
         sideLength += 2
 
-        // Pon un signo de interrogación después de la propiedad opcional, método, o
-        // subscript para ignorar un valor nil y devolver nil en lugar de 
-        // tirar un error de tiempo de ejecución ("optional chaining")        
+        // Pon un signo de interrogación después de la propiedad opcional, 
+        // método, o subscript para ignorar un valor nil y devolver nil 
+        // en lugar de  tirar un error de tiempo de ejecución 
+        // ("optional chaining")        
         if let allow = self.delegate?.canReshape?() {
             // test for delegate then for method
             self.delegate?.reshaped?()
@@ -548,8 +560,8 @@ extension Int {
 print(7.customProperty) // "This is 7"
 print(14.multiplyBy(3)) // 42
 
-// Generics: Similar Java y C#. Utiliza la palabra clave `where` para especificar
-//  los requerimientos de los genéricos.
+// Generics: Similar Java y C#. Utiliza la palabra clave `where` para
+// especificar los requerimientos de los genéricos.
 
 func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
     for (index, value) in enumerate(array) {
@@ -578,7 +590,8 @@ prefix func !!! (inout shape: Square) -> Square {
 // Valor actual
 print(mySquare.sideLength) // 4
 
-// Cambiar la longitud del lado utilizando el operador !!!, incrementa el tamaño por 3
+// Cambiar la longitud del lado utilizando el operador !!!, 
+// incrementa el tamaño por 3
 !!!mySquare
 print(mySquare.sideLength) // 12
 ```
