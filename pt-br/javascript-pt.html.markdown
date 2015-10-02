@@ -132,62 +132,65 @@ undefined; // usado para indicar um valor que não é a atualmente definido
 // Note que 0 é falsy e "0" é truthy, até mesmo 0 == "0".
 
 ///////////////////////////////////
-// 2. Variables, Arrays and Objects
+// 2. Variáveis, Arrays e Objetos
 
-// Variables are declared with the `var` keyword. JavaScript is dynamically
-// typed, so you don't need to specify type. Assignment uses a single `=`
-// character.
+// Variáveis são declarados com a palavra-chave `var`. O Javascript é 
+// dinâmicamente tipado, portanto você não precisa especificar o tipo.
+// Atribuições usam um simples caracter de `=`.
 var someVar = 5;
 
-// if you leave the var keyword off, you won't get an error...
+// se você deixar de colocar a palavra-chave var, você não receber um erro...
 someOtherVar = 10;
 
-// ...but your variable will be created in the global scope, not in the scope
-// you defined it in.
+// ...mas sua variável será criada no escopo global, não no escopo em que você
+// definiu ela.
 
-// Variables declared without being assigned to are set to undefined.
+// Variáveis declaradas sem receberem um valor são definidas como `undefined`.
 var someThirdVar; // = undefined
 
-// There's shorthand for performing math operations on variables:
-someVar += 5; // equivalent to someVar = someVar + 5; someVar is 10 now
-someVar *= 10; // now someVar is 100
+// Existe um shorthad para operações matemáticas em variáveis:
+someVar += 5; // equivalente a someVar = someVar + 5; someVar é 10 agora
+someVar *= 10; // agora someVar é 100
 
-// and an even-shorter-hand for adding or subtracting 1
+// e um para adição e subtração de 1
 someVar++; // now someVar is 101
 someVar--; // back to 100
 
-// Arrays are ordered lists of values, of any type.
-var myArray = ["Hello", 45, true];
+// Arrays são listas ordenadas de valores, de qualquer tipo.
+var myArray = ["Olá", 45, true];
 
-// Their members can be accessed using the square-brackets subscript syntax.
-// Array indices start at zero.
+// Seus membros podem ser acessados usando a sintaxe de colchetes.
+// O indíce de um Array começa pelo 0.
 myArray[1]; // = 45
 
-// Arrays are mutable and of variable length.
+// Arrays são mutáveis e de tamanho variável.
 myArray.push("World");
 myArray.length; // = 4
 
-// Add/Modify at specific index
+// Adicionar/modificar em um índice específico
 myArray[3] = "Hello";
 
-// JavaScript's objects are equivalent to "dictionaries" or "maps" in other
-// languages: an unordered collection of key-value pairs.
-var myObj = {key1: "Hello", key2: "World"};
+// Objetos de Javascript são equivalentes aos dicionários ou maps de outras
+// linguagens: uma coleção não ordenada de pares chave-valor.
+var myObj = {chave1: "Olá", chave2: "Mundo"};
 
-// Keys are strings, but quotes aren't required if they're a valid
-// JavaScript identifier. Values can be any type.
+// Chaves são strings, mas as aspas não são necessárias se elas são
+// identificadores válidos no Javascript. Valores podem ser de qualquer tipo.
 var myObj = {myKey: "myValue", "my other key": 4};
 
-// Object attributes can also be accessed using the subscript syntax,
+// Atributos de objetos também podem ser acessados com a sintaxe de colchetes.
 myObj["my other key"]; // = 4
 
-// ... or using the dot syntax, provided the key is a valid identifier.
+// ... ou usando a sintaxe de ponto, passando a chave que é um identificador
+// válido.
 myObj.myKey; // = "myValue"
 
-// Objects are mutable; values can be changed and new keys added.
+// Objetos são mutáveis, valores podem ser modificados e novas chaves 
+// adicionadas.
 myObj.myThirdKey = true;
 
-// If you try to access a value that's not yet set, you'll get undefined.
+// Se você tentar acessar um valor que não foi determinado ainda, você irá
+// receber `undefined`.
 myObj.myFourthKey; // = undefined
 
 ///////////////////////////////////
