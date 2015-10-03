@@ -22,7 +22,7 @@ en un bloque como este.
 -- Cuentas con números
 3 -- 3
 
--- Operadores aritméticos
+-- Matématicas es lo que esperas
 1 + 1 -- 2
 8 - 1 -- 7
 10 * 2 -- 20
@@ -65,85 +65,85 @@ not False -- True
 
 
 ----------------------------------------------------
--- Lists and Tuples
+-- Listas y Tuplas
 ----------------------------------------------------
 
--- Every element in a list must have the same type.
--- These two lists are the same:
+-- Cada elemento en una lista debe ser del mismo tipo.
+-- Estas dos listas son iguales:
 [1, 2, 3, 4, 5]
 [1..5]
 
--- Ranges are versatile.
+-- Los rangos son versátiles.
 ['A'..'F'] -- "ABCDEF"
 
--- You can create a step in a range.
+-- Puedes crear un paso en un rango.
 [0,2..10] -- [0, 2, 4, 6, 8, 10]
-[5..1] -- This doesn't work because Haskell defaults to incrementing.
+[5..1] -- Esto no funciona debido a que Haskell incrementa por defecto.
 [5,4..1] -- [5, 4, 3, 2, 1]
 
--- indexing into a list
+-- indexación en una lista
 [0..] !! 5 -- 5
 
--- You can also have infinite lists in Haskell!
-[1..] -- a list of all the natural numbers
+-- También tienes listas infinitas en Haskell!
+[1..] -- una lista de todos los números naturales
 
--- Infinite lists work because Haskell has "lazy evaluation". This means
--- that Haskell only evaluates things when it needs to. So you can ask for
--- the 1000th element of your list and Haskell will give it to you:
+-- Las listas infinitas funcionan porque Haskell tiene "lazy evaluation". Esto significa
+-- que Haskell solo evalúa las cosas cuando lo necesita. Así que puedes pedir
+-- el elemento 1000 de tú lista y Haskell te devolverá:
 
 [1..] !! 999 -- 1000
 
--- And now Haskell has evaluated elements 1 - 1000 of this list...but the
--- rest of the elements of this "infinite" list don't exist yet! Haskell won't
--- actually evaluate them until it needs to.
+-- Y ahora Haskell ha evaluado elementos 1 - 1000 de esta lista...pero el
+-- resto de los elementos de esta lista "infinita" !no existen todavía! Haskell no lo hará
+-- en realidad los evalúa hasta que los necesita.
 
--- joining two lists
+-- uniendo dos listas
 [1..5] ++ [6..10]
 
--- adding to the head of a list
+-- añadiendo a la cabeza de la lista
 0:[1..5] -- [0, 1, 2, 3, 4, 5]
 
--- more list operations
+-- más operaciones con listas
 head [1..5] -- 1
 tail [1..5] -- [2, 3, 4, 5]
 init [1..5] -- [1, 2, 3, 4]
 last [1..5] -- 5
 
--- list comprehensions
+-- listas intencionales
 [x*2 | x <- [1..5]] -- [2, 4, 6, 8, 10]
 
--- with a conditional
+-- con condiciones
 [x*2 | x <- [1..5], x*2 > 4] -- [6, 8, 10]
 
--- Every element in a tuple can be a different type, but a tuple has a
--- fixed length.
--- A tuple:
+-- Cada elemento en una tupla puede ser de diferente tipo, pero una tupla tiene
+-- longitud fija.
+-- Ejemplo de una tupla:
 ("haskell", 1)
 
--- accessing elements of a pair (i.e. a tuple of length 2)
+-- acceder a los elementos (por ejemplo una tupla de longitud 2)
 fst ("haskell", 1) -- "haskell"
 snd ("haskell", 1) -- 1
 
 ----------------------------------------------------
--- 3. Functions
+-- 3. Funciones
 ----------------------------------------------------
--- A simple function that takes two variables
+-- Una función simple que recibe dos variables
 add a b = a + b
 
--- Note that if you are using ghci (the Haskell interpreter)
--- You'll need to use `let`, i.e.
+-- Nota: Si estas utilizando ghci (el interprete de Haskell)
+-- Necesitas utilizar `let`, por ejemplo
 -- let add a b = a + b
 
--- Using the function
+-- Utilizando la función
 add 1 2 -- 3
 
--- You can also put the function name between the two arguments
--- with backticks:
+-- También puedes llamar a la función enmedio de dos argumentos
+-- con acentos abiertos:
 1 `add` 2 -- 3
 
--- You can also define functions that have no letters! This lets
--- you define your own operators! Here's an operator that does
--- integer division
+-- !También puedes definir las funciones que no tienen letras! De este modo
+-- !Tú defines tus propios operadores! Aquí esta un operador que realiza
+-- una división entera
 (//) a b = a `div` b
 35 // 4 -- 8
 
