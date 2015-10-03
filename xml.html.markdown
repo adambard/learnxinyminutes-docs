@@ -62,7 +62,7 @@ Unlike HTML, XML does not specify how to display or to format data, just carry i
 
 ```
 
-* Well-Formated Document x Validation
+* Well-Formatted Document x Validation
 
 A XML document is well-formated if it is syntactically correct.
 However, it is possible to inject more constraints in the document,
