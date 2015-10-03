@@ -97,7 +97,7 @@ not False  # => True
 None  # => None
 
 # No uses el símbolo de igualdad `==` para comparar objetos con None
-# Usa `is` en lugar de
+# Usa `is` en su lugar
 "etc" is None #=> False
 None is None  #=> True
 
@@ -383,7 +383,7 @@ def keyword_args(**kwargs):
 keyword_args(pie="grande", lago="ness") #=> {"pie": "grande", "lago": "ness"}
 
 
-# You can do both at once, if you like# Puedes hacer ambas a la vez si quieres
+# Puedes hacer ambas a la vez si quieres
 def todos_los_argumentos(*args, **kwargs):
     print args
     print kwargs
@@ -511,7 +511,7 @@ def duplicar_numeros(iterable):
     for i in iterable:
         yield i + i
 
-# Un generador cera valores sobre la marcha.
+# Un generador crea valores sobre la marcha.
 # En vez de generar y retornar todos los valores de una vez, crea uno en cada iteración.
 # Esto significa que valores más grandes que 15 no serán procesados en 'duplicar_numeros'.
 # Fíjate que 'range' es un generador. Crear una lista 1-900000000 tomaría mucho tiempo en crearse.
