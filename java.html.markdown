@@ -472,7 +472,7 @@ public abstract class Animal
 	// Method can have a body
 	public void eat()
 	{
-		System.out.println("I am just an animal Eating.");  
+		System.out.println("I am an animal and I am Eating.");  
 		// Note: Can access private variable.
 		age = 30;
 	}
