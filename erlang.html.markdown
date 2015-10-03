@@ -302,6 +302,39 @@ CalculateArea ! {circle, 2}. % 12.56000000000000049738
 % The shell is also a process; you can use `self` to get the current pid.
 self(). % <0.41.0>
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 5. Testing with EUnit
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Unit tests can be written using EUnits's test generators and assert macros
+-module(fib).
+   -export([fib/1]).
+   -include_lib("eunit/include/eunit.hrl").
+
+   fib(0) -> 1;
+   fib(1) -> 1;
+   fib(N) when N > 1 -> fib(N-1) + fib(N-2).
+
+   fib_test_() ->
+       [?_assert(fib(0) =:= 1),
+	?_assert(fib(1) =:= 1),
+	?_assert(fib(2) =:= 2),
+	?_assert(fib(3) =:= 3),
+	?_assert(fib(4) =:= 5),
+	?_assert(fib(5) =:= 8),
+	?_assertException(error, function_clause, fib(-1)),
+	?_assert(fib(31) =:= 2178309)
+       ].
+
+% EUnit will automatically export to a test() fucntion to allo running the tests
+% in the erlang shell
+fib:test()
+
+% The popular erlang build tool Rebar is also compatible with EUnit
+% ```
+% rebar eunit
+% ```
+
 ```
 
 ## References
