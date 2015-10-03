@@ -15,7 +15,7 @@ Je suis tombé amoureux de Python de par la clarté de sa syntaxe. C'est pratiqu
 Vos retours sont grandement appréciés. Vous pouvez me contacter sur Twitter [@louiedinh](http://twitter.com/louiedinh) ou par e-mail: louiedinh [at] [google's email service]
 
 NB: Cet artice s'applique spécifiquement à Python 2.7, mais devrait s'appliquer pour toute version Python 2.x
-Vous pourrez bientôt trouver un article pour Python 3!
+Vous pourrez bientôt trouver un article pour Python 3 an Français. Pour le moment vous pouvez jettez un coup d'oeil à l'article [Python 3 en Anglais](http://learnxinyminutes.com/docs/python3/).
 
 ```python
 # Une ligne simple de commentaire commence par un dièse
