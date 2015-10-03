@@ -19,7 +19,7 @@ Nadie los usa.
 Tu tampoco deberías
 =end
 
-# Lo primero y principal: Todo es un objeto
+# En primer lugar: Todo es un objeto
 
 # Los números son objetos
 
@@ -97,13 +97,13 @@ y #=> 10
 # Por convención, usa snake_case para nombres de variables
 snake_case = true
 
-# Usa nombres de variables descriptivos
+# Usa nombres de variables descriptivas
 ruta_para_la_raiz_de_un_projecto = '/buen/nombre/'
 ruta = '/mal/nombre/'
 
 # Los símbolos (son objetos)
 # Los símbolos son inmutables, constantes reusables representadas internamente por un
-# valor entero. Son usalmente usados en vez de strings para expresar eficientemente
+# valor entero. Son normalmente usados en vez de strings para expresar eficientemente
 # valores específicos y significativos
 
 :pendiente.class #=> Symbol
@@ -130,7 +130,7 @@ arreglo = [1, "hola", false] #=> => [1, "hola", false]
 arreglo[0] #=> 1
 arreglo[12] #=> nil
 
-# Tal como la aritmética, el acceso como variable[índice]
+# Al igual que en aritmética, el acceso como variable[índice]
 # es sólo azúcar sintáctica
 # para llamar el método [] de un objeto
 arreglo.[] 0 #=> 1
