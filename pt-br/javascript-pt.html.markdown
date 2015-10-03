@@ -340,75 +340,74 @@ function sayHelloInFiveSeconds(name){
 sayHelloInFiveSeconds("Adam"); // Vai abrir um popup com "Hello, Adam!" em 5s
 
 ///////////////////////////////////
-// 5. More about Objects; Constructors and Prototypes
+// 5. Mais sobre Objetos; Construtores e Prototypes
 
-// Objects can contain functions.
+// Objetos podem conter funções.
 var myObj = {
     myFunc: function(){
-        return "Hello world!";
+        return "Olá mundo!";
     }
 };
-myObj.myFunc(); // = "Hello world!"
+myObj.myFunc(); // = "Olá mundo!"
 
-// When functions attached to an object are called, they can access the object
-// they're attached to using the `this` keyword.
+// Quando uma função ligada a um objeto é chamada, ela pode acessar o objeto
+// da qual foi ligada usando a palavra-chave `this`. 
 myObj = {
-    myString: "Hello world!",
+    myString: "Olá mundo!",
     myFunc: function(){
         return this.myString;
     }
 };
-myObj.myFunc(); // = "Hello world!"
+myObj.myFunc(); // = "Olá mundo!"
 
-// What this is set to has to do with how the function is called, not where
-// it's defined. So, our function doesn't work if it isn't called in the
-// context of the object.
+// O `this` só funciona para dentro do escopo do objeto, portanto, se chamarmos 
+// um método do objeto fora de seu escopo, este não irá funcionar.
 var myFunc = myObj.myFunc;
 myFunc(); // = undefined
 
-// Inversely, a function can be assigned to the object and gain access to it
-// through `this`, even if it wasn't attached when it was defined.
+// Inversamente, uma função pode ser atribuída a um objeto e ganhar a acesso
+// através do `this`, até mesmo se ela não for chamada quando foi definida.
 var myOtherFunc = function(){
     return this.myString.toUpperCase();
 }
 myObj.myOtherFunc = myOtherFunc;
-myObj.myOtherFunc(); // = "HELLO WORLD!"
+myObj.myOtherFunc(); // = "OLÁ MUNDO!"
 
-// We can also specify a context for a function to execute in when we invoke it
-// using `call` or `apply`.
+// Nós podemos também especificar um contexto onde a função irá executar, 
+// usando o `call` ou `apply`.
 
 var anotherFunc = function(s){
     return this.myString + s;
 }
-anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
+anotherFunc.call(myObj, " E Olá Lua!"); // = "Olá mundo! E Olá Lua!"
 
-// The `apply` function is nearly identical, but takes an array for an argument
-// list.
+// A função `apply` é praticamente a mesma coisa,  mas ela pega um array
+// como lista de argumentos.
 
-anotherFunc.apply(myObj, [" And Hello Sun!"]); // = "Hello World! And Hello Sun!"
+anotherFunc.apply(myObj, [" E Olá Sol!"]); // = "Olá mundo! E Olá Sol!"
 
-// This is useful when working with a function that accepts a sequence of
-// arguments and you want to pass an array.
+// Isto é util quando trabalhamos com uma função que aceita uma sequência de
+// argumentos e você quer passar um array.
 
 Math.min(42, 6, 27); // = 6
 Math.min([42, 6, 27]); // = NaN (uh-oh!)
 Math.min.apply(Math, [42, 6, 27]); // = 6
 
-// But, `call` and `apply` are only temporary. When we want it to stick, we can
-// use `bind`.
+// Mas, o `call` e `apply` são somente temporários. Quando você quiser que 
+// permaneça sempre no escopo, use `bind`.
 
 var boundFunc = anotherFunc.bind(myObj);
-boundFunc(" And Hello Saturn!"); // = "Hello World! And Hello Saturn!"
+boundFunc(" E Olá Saturno!"); // = "Olá mundo! E Olá Saturno!"
 
-// `bind` can also be used to partially apply (curry) a function.
+// `bind` também pode ser usado para parcialmente aplicar (curry) uma função.
 
 var product = function(a, b){ return a * b; }
 var doubler = product.bind(this, 2);
 doubler(8); // = 16
 
-// When you call a function with the `new` keyword, a new object is created, and
-// made available to the function via the this keyword. Functions designed to be
-// called like that are called constructors.
+// Quando você invoca uma função com a palavra-chave `new`, um novo objeto
+// é criado, e fica disponível para a função pela palavra-chave `this`. 
+// Funções são desenhadas para serem invocadas como se invocam os construtores.
 
 var MyConstructor = function(){
     this.myNumber = 5;
@@ -416,15 +415,17 @@ var MyConstructor = function(){
 myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
 
-// Every JavaScript object has a 'prototype'. When you go to access a property
-// on an object that doesn't exist on the actual object, the interpreter will
-// look at its prototype.
+// Todo objeto JavaScript possui um `prototype`. Quando você tenta acessar 
+// uma propriedade de um objeto que não existe no objeto atual, o interpretador
+// vai olhar imediatamente para o seu prototype.
 
-// Some JS implementations let you access an object's prototype on the magic
-// property `__proto__`. While this is useful for explaining prototypes it's not
-// part of the standard; we'll get to standard ways of using prototypes later.
+// Algumas implementações em JS deixam você acessar o objeto prototype com a 
+// propriedade mágica `__proto__`. Enquanto isso é util para explicar 
+// prototypes, não é parte de um padrão; nós vamos falar de algumas formas de 
+// usar prototypes depois.
+
 var myObj = {
-    myString: "Hello world!"
+    myString: "Olá Mundo!"
 };
 var myPrototype = {
     meaningOfLife: 42,
@@ -437,34 +438,36 @@ myObj.__proto__ = myPrototype;
 myObj.meaningOfLife; // = 42
 
 // This works for functions, too.
-myObj.myFunc(); // = "hello world!"
+// Isto funciona para funções, também.
+myObj.myFunc(); // = "olá mundo!"
 
-// Of course, if your property isn't on your prototype, the prototype's
-// prototype is searched, and so on.
+// É claro, se sua propriedade não está em seu prototype, 
+// o prototype do prototype será procurado e por aí vai.
 myPrototype.__proto__ = {
     myBoolean: true
 };
 myObj.myBoolean; // = true
 
-// There's no copying involved here; each object stores a reference to its
-// prototype. This means we can alter the prototype and our changes will be
-// reflected everywhere.
+// Não há cópia envolvida aqui; cada objeto guarda uma referência do
+// prototype. Isso significa que podemos alterar o prototype e nossas mudanças
+// serão refletidas em qualquer lugar.
 myPrototype.meaningOfLife = 43;
 myObj.meaningOfLife; // = 43
 
-// We mentioned that `__proto__` was non-standard, and there's no standard way to
-// change the prototype of an existing object. However, there are two ways to
-// create a new object with a given prototype.
 
-// The first is Object.create, which is a recent addition to JS, and therefore
-// not available in all implementations yet.
+// Nós mencionamos que o `__proto__` não é uma forma padrão, e não há uma 
+// forma padrão de mudar o prototype de um objeto já existente. Entretanto, 
+// existem duas formas de se criar um objeto com um dado prototype.
+
+// A primeira forma é `Object.create`, que é uma adição recente do JS,
+// e ainda não está disponível em todas as implementações.
 var myObj = Object.create(myPrototype);
 myObj.meaningOfLife; // = 43
 
-// The second way, which works anywhere, has to do with constructors.
-// Constructors have a property called prototype. This is *not* the prototype of
-// the constructor function itself; instead, it's the prototype that new objects
-// are given when they're created with that constructor and the new keyword.
+// A segunda forma, que funciona em qualquer lugar, é feita com construtores.
+// Construtores tem uma propriedade chamada prototype. Este *não* é o prototype
+// do construtor em si; ao invés disso, ele é o prototype dos novos objetos
+// criados pelo construtor.
 MyConstructor.prototype = {
     myNumber: 5,
     getMyNumber: function(){
@@ -476,42 +479,43 @@ myNewObj2.getMyNumber(); // = 5
 myNewObj2.myNumber = 6
 myNewObj2.getMyNumber(); // = 6
 
-// Built-in types like strings and numbers also have constructors that create
-// equivalent wrapper objects.
+// Tipos originais da linguagem como strings e números também possuem
+// construtores equivalentes. 
 var myNumber = 12;
 var myNumberObj = new Number(12);
 myNumber == myNumberObj; // = true
 
-// Except, they aren't exactly equivalent.
+// Exceto, que eles não são totalmente equivalentes.
 typeof myNumber; // = 'number'
 typeof myNumberObj; // = 'object'
 myNumber === myNumberObj; // = false
 if (0){
-    // This code won't execute, because 0 is falsy.
+    // O código não vai executar, porque 0 é um valor falso.
 }
 if (Number(0)){
-    // This code *will* execute, because Number(0) is truthy.
+    // O código *vai* executar, porque `Number(0)` é um valor verdadeiro.
 }
 
-// However, the wrapper objects and the regular builtins share a prototype, so
-// you can actually add functionality to a string, for instance.
+// Entretanto, esses objetos encapsulados e as funções originais compartilham
+// um mesmo prototype, portanto você pode adicionar funcionalidades a uma string,
+// por exemplo.
 String.prototype.firstCharacter = function(){
     return this.charAt(0);
 }
 "abc".firstCharacter(); // = "a"
 
-// This fact is often used in "polyfilling", which is implementing newer
-// features of JavaScript in an older subset of JavaScript, so that they can be
-// used in older environments such as outdated browsers.
+// Esse fato é usado para criar os chamados `polyfills`, que implementam
+// uma nova característica do Javascript em uma versão mais velha, para que
+// assim funcionem em ambientes mais velhos como browsers ultrapassados.
 
-// For instance, we mentioned that Object.create isn't yet available in all
-// implementations, but we can still use it with this polyfill:
+// Havíamos mencionado que `Object.create` não estava ainda disponível em 
+// todos as implementações, mas nós podemos usá-lo com esse polyfill:
 if (Object.create === undefined){ // don't overwrite it if it exists
     Object.create = function(proto){
-        // make a temporary constructor with the right prototype
+        // faz um construtor temporário com o prototype certo
         var Constructor = function(){};
         Constructor.prototype = proto;
-        // then use it to create a new, appropriately-prototyped object
+        // então utiliza o new para criar um objeto prototype apropriado
         return new Constructor();
     }
 }
