@@ -521,30 +521,31 @@ if (Object.create === undefined){ // don't overwrite it if it exists
 }
 ```
 
-## Further Reading
+## Leitura Adicional
 
-The [Mozilla Developer
-Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) provides
-excellent documentation for JavaScript as it's used in browsers. Plus, it's a
-wiki, so as you learn more you can help others out by sharing your own
-knowledge.
+O [Mozilla Developer
+Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) dispõe de uma
+excelente documentação sobre Javascript e seu uso nos browsers. E mais, 
+é uma wiki, portanto conforme você vai aprendendo, mais você pode ir ajudando
+os outros compartilhando do seu conhecimento.
 
-MDN's [A re-introduction to
-JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
-covers much of the concepts covered here in more detail. This guide has quite
-deliberately only covered the JavaScript language itself; if you want to learn
-more about how to use JavaScript in web pages, start by learning about the
+[Uma re-introdução do JavaScript pela MDN]
+(https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
+cobre muito dos conceitos abordados aqui em mais detalhes. Este guia fala
+somente sobre a linguagem JavaScript em si; se você quiser aprender mais
+sobre e como usar o JavaScript em páginas na web, comece aprendendo sobre
 [Document Object
 Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 
-[Learn Javascript by Example and with Challenges](http://www.learneroo.com/modules/64/nodes/350) is a variant of this reference with built-in challenges. 
+[Aprenda Javascript por Exemplos e com Desafios](http://www.learneroo.com/modules/64/nodes/350) é uma
+variação desse guia com desafios.
 
-[JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) is an in-depth
-guide of all the counter-intuitive parts of the language.
+[JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) é um guia 
+profundo de todas as partes do JavaScript.
 
-[JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) is a classic guide / reference book. 
+[JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) é o guia clássico
+/ livro de referência. 
 
-In addition to direct contributors to this article, some content is adapted
-from Louie Dinh's Python tutorial on this site, and the [JS
-Tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
-on the Mozilla Developer Network.
+Parte desse artigo foi adaptado do tutorial de Python do Louie Dinh que está
+nesse site e do [Tutorial de JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
+da Mozilla Developer Network.
