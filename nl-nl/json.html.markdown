@@ -9,7 +9,7 @@ translators:
 lang: nl-nl
 ---
 
-Aangezien JSON een extreem eenvoudig data-uitwisselingsformaat is, zal dit waarschijnlijk
+Aangezien JSON een extreem eenvoudig datauitwisselingsformaat is, zal dit waarschijnlijk
 de meest eenvoudige Learn X in Y Minutes ooit zijn.
 
 Puur JSON heeft geen commentaar, maar de meeste parsers zullen commentaar in de stijl
@@ -22,7 +22,7 @@ Gelukkig spreekt het meeste voor zichzelf.
 
   "keys": "moeten altijd tussen dubbele aanhalingstekens staan",
   "getallen": 0,
-  "strings": "Hellø, world. Alle unicode karakters zijn toegelaten, zo ook \"escaping\".",
+  "strings": "Hellø, world. Alle Unicode-karakters zijn toegelaten, zo ook \"escaping\".",
   "heeft json booleans?": true,
   "niets": null,
 
@@ -40,7 +40,7 @@ Gelukkig spreekt het meeste voor zichzelf.
 
   "dwaasheid": [
     {
-      "bronnen van kalium": ["banenen"]
+      "bronnen van kalium": ["bananen"]
     },
     [
       [1, 0, 0, 0],
