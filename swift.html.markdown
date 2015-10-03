@@ -5,6 +5,7 @@ contributors:
   - ["Christopher Bess", "http://github.com/cbess"]
   - ["Joey Huang", "http://github.com/kamidox"]  
   - ["Anthony Nguyen", "http://github.com/anthonyn60"]
+  - ["Jonas Wippermann", "http://vfuc.co/"]
 filename: learnswift.swift
 ---
 
@@ -145,6 +146,11 @@ for value in myArray {
     } else {
         print("Not one!")
     }
+}
+
+// for loop with indices (array)
+for index in myArray.indices {
+    print("Value with index \(index) is \(myArray[index])")
 }
 
 // for loop (dictionary)
