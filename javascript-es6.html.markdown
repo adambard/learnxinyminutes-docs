@@ -304,6 +304,20 @@ setTimeout(function(){
     // this code will be called in 5 seconds' time
 }, 5000);
 
+// In ES6, anonymous functions can also be written using arrow syntax.
+setTimeout(() => {
+    // this code will be called in 5 seconds' time
+}, 5000);
+
+// When there is exactly one argument, you do not need the brackets.
+var myFunction = name => {
+    alert("Hello, " + name + "!");
+};
+// is the same as
+var myFunction = (name) => {
+    alert("Hello, " + name + "!");
+};
+
 // JavaScript has function scope; functions get their own scope but other blocks
 // do not (when using var).
 if (true){
