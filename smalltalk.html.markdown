@@ -37,9 +37,8 @@ Feedback highly appreciated! Reach me at [@jigyasa_grover](https://twitter.com/j
 
 `"Period (.) is the statement seperator"`
 
-"************************************************************************
- * Transcript:                                                          *
- ************************************************************************"
+## Transcript:
+```
 Transcript clear.                                           "clear to transcript window"
 Transcript show: 'Hello World'.                             "output string in transcript window"
 Transcript nextPutAll: 'Hello World'.                       "output string in transcript window"
@@ -50,6 +49,7 @@ Transcript cr.                                              "carriage return / l
 'Hello' printOn: Transcript.                                "append print string into the window"
 'Hello' storeOn: Transcript.                                "append store string into the window"
 Transcript endEntry.                                        "flush the output buffer"
+```
 
 "************************************************************************
  * Assignment:                                                          *
