@@ -285,7 +285,7 @@ interface InterfaceGatinho
     public function brinca() : void;
 }
 
-trait TraitGato implements GatinhoInterface
+trait TraitGato implements InterfaceGatinho
 {
     public function brinca() : void
     {
@@ -300,7 +300,7 @@ class Samuel
 
 
 $gato = new Samuel();
-$gato instanceof GatinhoInterface === true; // True
+$gato instanceof InterfaceGatinho === true; // True
 
 ```
 
