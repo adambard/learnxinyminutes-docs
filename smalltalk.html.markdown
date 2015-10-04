@@ -51,9 +51,8 @@ Transcript cr.                                              "carriage return / l
 Transcript endEntry.                                        "flush the output buffer"
 ```
 
-"************************************************************************
- * Assignment:                                                          *
- ************************************************************************"
+##Assignment:   
+```
 | x y |
 x _ 4.                                                      "assignment (Squeak) <-"
 x := 5.                                                     "assignment"
@@ -69,10 +68,10 @@ y := x copy.                                                "copy object"
 y := x shallowCopy.                                         "copy object (not overridden)"
 y := x deepCopy.                                            "copy object and instance vars"
 y := x veryDeepCopy.                                        "complete tree copy using a dictionary"
+```
 
-"************************************************************************
- * Constants:                                                           *
- ************************************************************************"
+##Constants:                                                           
+```
 | b |
 b := true.                                                  "true constant"
 b := false.                                                 "false constant"
@@ -90,9 +89,10 @@ x := #aSymbol.                                              "symbol constants"
 x := #(3 2 1).                                              "array constants"
 x := #('abc' 2 $a).                                         "mixing of types allowed"
 
-"************************************************************************
- * Booleans:                                                            *
- ************************************************************************"
+```
+
+## Booleans:                                                            
+```
 | b x y |
 x := 1. y := 2.
 b := (x = y).                                               "equals"
@@ -128,9 +128,10 @@ b := x isNumber.                                            "test if object is n
 b := $A isUppercase.                                        "test if upper case character"
 b := $A isLowercase.                                        "test if lower case character"
 
-"************************************************************************
- * Arithmetic expressions:                                              *
- ************************************************************************"
+```
+
+## Arithmetic expressions:                                              
+```
 | x |
 x := 6 + 3.                                                 "addition"
 x := 6 - 3.                                                 "subtraction"
@@ -185,9 +186,10 @@ x := Float nan.                                             "not-a-number"
 x := Random new next; yourself. x next.                     "random number stream (0.0 to 1.0)
 x := 100 atRandom.                                          "quick random number"
 
-"************************************************************************
- * Bitwise Manipulation:                                                *
- ************************************************************************"
+```
+
+##Bitwise Manipulation:                                                
+```
 | b x |
 x := 16rFF bitAnd: 16r0F.                                   "and bits"
 x := 16rF0 bitOr: 16r0F.                                    "or bits"
@@ -201,9 +203,10 @@ b := 16rFF allMask: 16r0F.                                  "test if all bits se
 b := 16rFF anyMask: 16r0F.                                  "test if any bits set in mask set in receiver"
 b := 16rFF noMask: 16r0F.                                   "test if all bits set in mask clear in receiver"
 
-"************************************************************************
- * Conversion:                                                          *
- ************************************************************************"
+```
+
+## Conversion:                                                          
+```
 | x |
 x := 3.99 asInteger.                                        "convert number to integer (truncates in Squeak)"
 x := 3.99 asFraction.                                       "convert number to fraction"
@@ -216,40 +219,39 @@ x := 15 radix: 16.                                          "convert to string i
 x := 15 printStringBase: 16.
 x := 15 storeStringBase: 16.
 
-"************************************************************************
- * Blocks:                                                              *
- *    - blocks are objects and may be assigned to a variable            *
- *    - value is last expression evaluated unless explicit return       *
- *    - blocks may be nested                                            *
- *    - specification [ arguments | | localvars | expressions ]         *
- *    - Squeak does not currently support localvars in blocks           *
- *    - max of three arguments allowed                                  *
- *    - ^expression terminates block & method (exits all nested blocks) *
- *    - blocks intended for long term storage should not contain ^      *
- ************************************************************************"
+```
+
+## Blocks:                                                              
+- blocks are objects and may be assigned to a variable            
+- value is last expression evaluated unless explicit return       
+- blocks may be nested                                            
+- specification [ arguments | | localvars | expressions ]         
+- Squeak does not currently support localvars in blocks           
+- max of three arguments allowed                                  
+- `^`expression terminates block & method (exits all nested blocks) 
+- blocks intended for long term storage should not contain `^`      
+
+```
 | x y z |
 x := [ y := 1. z := 2. ]. x value.                          "simple block usage"
 x := [ :argOne :argTwo |   argOne, ' and ' , argTwo.].      "set up block with argument passing"
 Transcript show: (x value: 'First' value: 'Second'); cr.    "use block with argument passing"
-"x := [ | z | z := 1.].                                      localvars not available in squeak blocks"
+"x := [ | z | z := 1.]. *** localvars not available in squeak blocks"
+```
 
-"************************************************************************
- * Method calls:                                                        *
- *    - unary methods are messages with no arguments                    *
- *    - binary methods                                                  *
- *    - keyword methods are messages with selectors including colons    *
- *                                                                      *
- * standard categories/protocols:                                       *
- *    - initialize-release    (methods called for new instance)         *
- *    - accessing             (get/set methods)                         *
- *    - testing               (boolean tests - is)                      *
- *    - comparing             (boolean tests with parameter             *
- *    - displaying            (gui related methods)                     *
- *    - printing              (methods for printing)                    *
- *    - updating              (receive notification of changes)         *
- *    - private               (methods private to class)                *
- *    - instance-creation     (class methods for creating instance)     *
- ************************************************************************"
+## Method calls:                                                        
+- unary methods are messages with no arguments                    
+- binary methods                                                  
+- keyword methods are messages with selectors including colons standard categories/protocols:                     - initialize-release    (methods called for new instance)         
+- accessing             (get/set methods)                         
+- testing               (boolean tests - is)                      
+- comparing             (boolean tests with parameter             
+- displaying            (gui related methods)                     
+- printing              (methods for printing)                    
+- updating              (receive notification of changes)         
+- private               (methods private to class)                
+- instance-creation     (class methods for creating instance)     
+```
 | x |
 x := 2 sqrt.                                                "unary message"
 x := 2 raisedTo: 10.                                        "keyword message"
@@ -261,10 +263,10 @@ Transcript                                                  "Cascading - send mu
    show: 'world';
    cr.
 x := 3 + 2; * 100.                                          "result=300. Sends message to same receiver (3)"
+```
 
-"************************************************************************
- * Conditional Statements:                                              *
- ************************************************************************"
+##Conditional Statements:
+```
 | x |
 x > 10 ifTrue: [Transcript show: 'ifTrue'; cr].             "if then"
 x > 10 ifFalse: [Transcript show: 'ifFalse'; cr].           "if else"
@@ -293,10 +295,10 @@ switch at: $A put: [Transcript show: 'Case A'; cr].
 switch at: $B put: [Transcript show: 'Case B'; cr].
 switch at: $C put: [Transcript show: 'Case C'; cr].
 result := (switch at: $B) value.
+```
 
-"************************************************************************
- * Iteration statements:                                                *
- ************************************************************************"
+## Iteration statements:                                                
+```
 | x y |
 x := 4. y := 1.
 [x > 0] whileTrue: [x := x - 1. y := y * 2].                "while true loop"
@@ -305,10 +307,10 @@ x timesRepeat: [y := y * 2].                                "times repear loop (
 1 to: x do: [:a | y := y * 2].                              "for loop"
 1 to: x by: 2 do: [:a | y := y / 2].                        "for loop with specified increment"
 #(5 4 3) do: [:a | x := x + a].                             "iterate over array elements"
+```
 
-"************************************************************************
- * Character:                                                           *
- ************************************************************************"
+## Character:                                                           
+```
 | x y |
 x := $A.                                                    "character assignment"
 y := x isLowercase.                                         "test if lower case"
@@ -326,9 +328,10 @@ y := x asString.                                            "convert to string"
 b := $A <= $B.                                              "comparison"
 y := $A max: $B.
 
-"************************************************************************
- * Symbol:                                                              *
- ************************************************************************"
+```
+
+## Symbol:
+```
 | b x y |
 x := #Hello.                                                "symbol assignment"
 y := 'String', 'Concatenation'.                             "symbol concatenation (result is string)"
@@ -347,10 +350,10 @@ y := x asOrderedCollection.                                 "convert symbol to o
 y := x asSortedCollection.                                  "convert symbol to sorted collection"
 y := x asBag.                                               "convert symbol to bag collection"
 y := x asSet.                                               "convert symbol to set collection"
+```
 
-"************************************************************************
- * String:                                                              *
- ************************************************************************"
+## String:
+```
 | b x y |
 x := 'This is a string'.                                    "string assignment"
 x := 'String', 'Concatenation'.                             "string concatenation"
@@ -377,12 +380,12 @@ y := x asSortedCollection.                                  "convert string to s
 y := x asBag.                                               "convert string to bag collection"
 y := x asSet.                                               "convert string to set collection"
 y := x shuffled.                                            "randomly shuffle string"
+```
 
-"************************************************************************
- * Array:         Fixed length collection                               *
- * ByteArray:     Array limited to byte elements (0-255)                *
- * WordArray:     Array limited to word elements (0-2^32)               *
- ************************************************************************"
+## Array:         Fixed length collection
+## ByteArray:     Array limited to byte elements (0-255)
+## WordArray:     Array limited to word elements (0-2^32)
+```
 | b x y sum max |
 x := #(4 3 2 1).                                            "constant array"
 x := Array with: 5 with: 4 with: 3 with: 2.                 "create array with up to 4 elements"
@@ -419,10 +422,10 @@ y := x asOrderedCollection.                                 "convert to ordered 
 y := x asSortedCollection.                                  "convert to sorted collection"
 y := x asBag.                                               "convert to bag collection"
 y := x asSet.                                               "convert to set collection"
+```
 
-"************************************************************************
- * OrderedCollection: acts like an expandable array                     *
- ************************************************************************"
+##OrderedCollection: acts like an expandable array
+```
 | b x y sum max |
 x := OrderedCollection with: 4 with: 3 with: 2 with: 1.     "create collection with up to 4 elements"
 x := OrderedCollection new.                                 "allocate collection"
@@ -462,11 +465,10 @@ y := x asOrderedCollection.                                 "convert to ordered 
 y := x asSortedCollection.                                  "convert to sorted collection"
 y := x asBag.                                               "convert to bag collection"
 y := x asSet.                                               "convert to set collection"
+```
 
-"************************************************************************
- * SortedCollection:    like OrderedCollection except order of elements *
- *                         determined by sorting criteria               *
- ************************************************************************"
+## SortedCollection:    like OrderedCollection except order of elements determined by sorting criteria
+```
 | b x y sum max |
 x := SortedCollection with: 4 with: 3 with: 2 with: 1.      "create collection with up to 4 elements"
 x := SortedCollection new.                                  "allocate collection"
@@ -505,11 +507,10 @@ y := x asOrderedCollection.                                 "convert to ordered 
 y := x asSortedCollection.                                  "convert to sorted collection"
 y := x asBag.                                               "convert to bag collection"
 y := x asSet.                                               "convert to set collection"
+```
 
-"************************************************************************
- * Bag:        like OrderedCollection except elements are in no         *
- *                particular order                                      *
- ************************************************************************"
+## Bag:        like OrderedCollection except elements are in no particular order
+```
 | b x y sum max |
 x := Bag with: 4 with: 3 with: 2 with: 1.                   "create collection with up to 4 elements"
 x := Bag new.                                               "allocate collection"
@@ -537,11 +538,11 @@ y := x asOrderedCollection.                                 "convert to ordered 
 y := x asSortedCollection.                                  "convert to sorted collection"
 y := x asBag.                                               "convert to bag collection"
 y := x asSet.                                               "convert to set collection"
+```
 
-"************************************************************************
- * Set:           like Bag except duplicates not allowed                *
- * IdentitySet:   uses identity test (== rather than =)                 *
- ************************************************************************"
+## Set:           like Bag except duplicates not allowed
+## IdentitySet:   uses identity test (== rather than =)  
+```
 | b x y sum max |
 x := Set with: 4 with: 3 with: 2 with: 1.                   "create collection with up to 4 elements"
 x := Set new.                                               "allocate collection"
@@ -568,10 +569,10 @@ y := x asOrderedCollection.                                 "convert to ordered 
 y := x asSortedCollection.                                  "convert to sorted collection"
 y := x asBag.                                               "convert to bag collection"
 y := x asSet.                                               "convert to set collection"
+```
 
-"************************************************************************
- * Interval:                                                            *
- ************************************************************************"
+## Interval:
+```
 | b x y sum max |
 x := Interval from: 5 to: 10.                               "create interval object"
 x := 5 to: 10.
@@ -597,19 +598,19 @@ y := x asOrderedCollection.                                 "convert to ordered 
 y := x asSortedCollection.                                  "convert to sorted collection"
 y := x asBag.                                               "convert to bag collection"
 y := x asSet.                                               "convert to set collection"
+```
 
-"************************************************************************
- * Associations:                                                        *
- ************************************************************************"
+##Associations: 
+```
 | x y |
 x := #myVar->'hello'.
 y := x key.
 y := x value.
+```
 
-"************************************************************************
- * Dictionary:                                                          *
- * IdentityDictionary:   uses identity test (== rather than =)          *
- ************************************************************************"
+## Dictionary:
+## IdentityDictionary:   uses identity test (== rather than =)
+```
 | b x y |
 x := Dictionary new.                                        "allocate collection"
 x add: #a->4; add: #b->3; add: #c->1; add: #d->2; yourself. "add element to collection"
@@ -670,10 +671,10 @@ CMRDictionary associationsDo: [:aKeyValue |                 "another iterator fo
    Transcript show: aKeyValue printString; cr].
 Smalltalk removeKey: #CMRGlobal ifAbsent: [].               "remove entry from Smalltalk dictionary"
 Smalltalk removeKey: #CMRDictionary ifAbsent: [].           "remove user dictionary from Smalltalk dictionary"
+```
 
-"************************************************************************
- * Internal Stream:                                                     *
- ************************************************************************"
+## Internal Stream:
+```
 | b x ios |
 ios := ReadStream on: 'Hello read stream'.
 ios := ReadStream on: 'Hello read stream' from: 1 to: 5.
@@ -700,10 +701,10 @@ x := ios next.
 x := ios peek.
 x := ios contents.
 b := ios atEnd.
+```
 
-"************************************************************************
- * FileStream:                                                          *
- ************************************************************************"
+## FileStream:
+```
 | b x ios |
 ios := FileStream newFileNamed: 'ios.txt'.
 ios nextPut: $H; cr.
@@ -721,10 +722,10 @@ x := ios next.
 x := ios peek.
 b := ios atEnd.
 ios close.
+```
 
-"************************************************************************
- * Date:                                                                *
- ************************************************************************"
+## Date:
+```
 | x y |
 x := Date today.                                            "create date for today"
 x := Date dateAndTimeNow.                                   "create date from current time/date"
@@ -755,10 +756,10 @@ y := x subtractDays: 10.                                    "subtract days to da
 y := x subtractDate: (Date today).                          "subtract date (result in days)"
 y := x printFormat: #(2 1 3 $/ 1 1).                        "print formatted date"
 b := (x <= Date today).                                     "comparison"
+```
 
-"************************************************************************
- * Time:                                                                *
- ************************************************************************"
+## Time:
+```
 | x y |
 x := Time now.                                              "create time from current time"
 x := Time dateAndTimeNow.                                   "create time from current time/date"
@@ -775,10 +776,10 @@ y := x asSeconds.                                           "convert time to sec
 x := Time millisecondsToRun: [                              "timing facility"
    1 to: 1000 do: [:index | y := 3.14 * index]].
 b := (x <= Time now).                                       "comparison"
+```
 
-"************************************************************************
- * Point:                                                               *
- ************************************************************************"
+## Point:
+```
 | x y |
 x := 200@100.                                               "obtain a new point"
 y := x x.                                                   "x coordinate"
@@ -800,15 +801,15 @@ x := 200@100 // 3@4.                                        "divide points"
 x := 200@100 max: 50@200.                                   "max x and y"
 x := 200@100 min: 50@200.                                   "min x and y"
 x := 20@5 dotProduct: 10@2.                                 "sum of product (x1*x2 + y1*y2)"
+```
 
-"************************************************************************
- * Rectangle:                                                           *
- ************************************************************************"
+## Rectangle:
+```
 Rectangle fromUser.
+```
 
-"************************************************************************
- * Pen:                                                                 *
- ************************************************************************"
+## Pen:
+```
 | myPen |
 Display restoreAfter: [
    Display fillWhite.
@@ -832,10 +833,10 @@ Display width.                                              "get display width"
 Display height.                                             "get display height"
 
 ].
+```
 
-"************************************************************************
- * Dynamic Message Calling/Compiling:                                   *
- ************************************************************************"
+## Dynamic Message Calling/Compiling:
+```
 | receiver message result argument keyword1 keyword2 argument1 argument2 |
 "unary message"
 receiver := 5.
@@ -868,10 +869,10 @@ result := (Message
       setSelector: (keyword1, keyword2) asSymbol
       arguments: (Array with: argument1 with: argument2))
    sentTo: receiver.
+```
 
-"************************************************************************
- * class/meta-class:                                                    *
- ************************************************************************"
+## Class/Meta-class:
+```
 | b x |
 x := String name.                                           "class name"
 x := String category.                                       "organization category"
@@ -901,10 +902,10 @@ b := String isBits.                                         "true if index insta
 b := String isBytes.                                        "true if index instance vars contain bytes"
 b := String isWords.                                        true if index instance vars contain words"
 Object withAllSubclasses size.                              "get total number of class entries"
+```
 
-"************************************************************************
- * debuging:                                                            *
- ************************************************************************"
+## Debuging:
+```
 | a b x |
 x yourself.                                                 "returns receiver"
 String browse.                                              "browse specified class"
@@ -924,14 +925,15 @@ x primitiveFailed.                                          "system primitive fa
 
 a := 'A1'. b := 'B2'. a become: b.                          "switch two objects"
 Transcript show: a, b; cr.
+```
 
-"************************************************************************
- * Misc.                                                                *
- ************************************************************************"
+## Misc
+```
 | x |
 "Smalltalk condenseChanges."                                "compress the change file"
 x := FillInTheBlank request: 'Prompt Me'.                   "prompt user for input"
 Utilities openCommandKeyHelp
+```
 
 
 
