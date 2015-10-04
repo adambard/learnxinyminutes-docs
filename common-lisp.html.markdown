@@ -176,7 +176,7 @@ nil                  ; for false - and the empty list
 *rover* ; => #S(DOG :NAME "rover" :BREED "collie" :AGE 5)
 
 (dog-p *rover*) ; => true  #| -p signifies "predicate". It's used to
-                              check if *rover* is an instance of dog.|#
+                              check if *rover* is an instance of dog. |#
 (dog-name *rover*) ; => "rover"
 
 ;; Dog-p, make-dog, and dog-name are all created by defstruct!
