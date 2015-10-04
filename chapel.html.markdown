@@ -1074,14 +1074,14 @@ Installing the Compiler
 
 Chapel can be built and installed on your average 'nix machine (and cygwin).
 [Download the latest release version](https://github.com/chapel-lang/chapel/releases/)
-and its as easy as 
+and it's as easy as 
 
  1. `tar -xvf chapel-1.11.0.tar.gz`
  2. `cd chapel-1.11.0`
  3. `make`
  4. `source util/setchplenv.bash # or .sh or .csh or .fish`
 
-You will need to `source util/setchplenv.EXT` from within the Chapel directory (`$CHPL_HOME`) every time your terminal starts so its suggested that you drop that command in a script that will get executed on startup (like .bashrc).
+You will need to `source util/setchplenv.EXT` from within the Chapel directory (`$CHPL_HOME`) every time your terminal starts so it's suggested that you drop that command in a script that will get executed on startup (like .bashrc).
 
 Chapel is easily installed with Brew for OS X
 
