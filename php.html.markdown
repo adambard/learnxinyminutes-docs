@@ -215,6 +215,14 @@ assert($a !== $d);
 assert(1 === '1');
 assert(1 !== '1');
 
+// spaceship operator since PHP 7
+$a = 100;
+$b = 1000;
+
+echo $a <=> $a; // 0 since they are equal
+echo $a <=> $b; // -1 since $a < $b
+echo $b <=> $a; // 1 since $b > $a
+
 // Variables can be converted between types, depending on their usage.
 
 $integer = 1;
@@ -263,6 +271,18 @@ if (false) {
 
 // ternary operator
 print (false ? 'Does not get printed' : 'Does');
+
+// ternary shortcut operator since PHP 5.3
+// equivalent of "$x ? $x : 'Does'""
+$x = false;
+print($x ?: 'Does');
+
+// null coalesce operator since php 7
+$a = null;
+$b = 'Does print';
+echo $a ?? 'a is not set'; // prints 'a is not set'
+echo $b ?? 'b is not set'; // prints 'Does print'
+
 
 $x = 0;
 if ($x === '0') {
