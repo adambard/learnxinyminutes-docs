@@ -305,7 +305,7 @@ setTimeout(function(){
 }, 5000);
 
 // JavaScript has function scope; functions get their own scope but other blocks
-// do not.
+// do not (when using var).
 if (true){
     var i = 5;
 }
@@ -323,6 +323,13 @@ i; // = 5 - not undefined as you'd expect in a block-scoped language
 })();
 temporary; // raises ReferenceError
 permanent; // = 10
+
+// This problem can be solved by using the new let keyword which causes the
+// variable to only be accessible from its own scope.
+if (true){
+    let j = 5;
+}
+alert(j); // error
 
 // One of JavaScript's most powerful features is closures. If a function is
 // defined inside another function, the inner function has access to all the
