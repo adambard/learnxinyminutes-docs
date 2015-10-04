@@ -236,7 +236,8 @@ on a new line! ""Wow!"", the masses cried";
             // Ternary operators
             // A simple if/else can be written as follows
             // <condition> ? <true> : <false>
-            string isTrue = (true) ? "True" : "False";
+            int toCompare = 17;
+            string isTrue = toCompare == 17 ? "True" : "False";
 
             // While loop
             int fooWhile = 0;
