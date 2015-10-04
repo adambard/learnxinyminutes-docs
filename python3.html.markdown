@@ -4,7 +4,7 @@ contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Andre Polykanine", "https://github.com/Oire"]
-	- ["Zachary Ferguson", "http://github.com/zfergus2"]
+    - ["Zachary Ferguson", "http://github.com/zfergus2"]
 filename: learnpython3.py
 ---
 
@@ -158,7 +158,7 @@ print("I'm Python. Nice to meet you!")
 
 # By default the print function also prints out a newline at the end.
 # Use the optional argument end to change the end character.
-print("I'm Python. Nice to meet you!", end="")
+print("Hello, World", end="!") # => Hello, World!
 
 # No need to declare variables before assigning to them.
 # Convention is to use lower_case_with_underscores
@@ -501,10 +501,9 @@ all_the_args(*args, **kwargs)   # equivalent to foo(1, 2, 3, 4, a=3, b=4)
 
 # Returning multiple values (with tuple assignments)
 def swap(x, y):
-	return y, x   # Return multiple values as a tuple
-				  # (Note: parenthesis have been excluded but can be included)
-#   return (y, x) # Just as valid as the above example.
-	
+    return y, x # Return multiple values as a tuple without the parenthesis.
+                # (Note: parenthesis have been excluded but can be included)
+
 x = 1
 y = 2
 x, y = swap(x, y) # => x = 2, y = 1
