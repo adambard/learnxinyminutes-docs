@@ -3,19 +3,20 @@ language: javascript
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
-filename: javascript.js
+translators:
+    - ["Willian Justen", "http://willianjusten.com.br"]
+lang: pt-br
 ---
 
-JavaScript foi criada por Brendan Eich, funcionário da Netscape, em 1995. Ela
+JavaScript foi criada por Brendan Eich, funcionário da Netscape na época, em 1995. Ela
 foi originalmente criada para ser uma linguagem de script para websites,
 complementando o uso de Java para aplicações web mais complexas, mas a sua
 integração com páginas web e seu suporte nativo nos browsers fez com que
 ela se tornasse mais comum que Java no frontend web.
 
-Javascript não é somente limitado a browsers web, no entanto: existe o Node.js,
+Javascript não é somente limitada a browsers web, existindo o Node.js,
 que é um projeto que fornece um interpretador baseado no motor V8 do Google 
 Chrome e está se tornando cada vez mais famoso.
-
 
 Feedback são muito apreciados! Você me encontrar em
 [@adambrenecki](https://twitter.com/adambrenecki), ou
@@ -29,23 +30,23 @@ Feedback são muito apreciados! Você me encontrar em
 // comandos podem ser terminados com  ;
 facaAlgo();
 
-// ... mas eles não precisam ser, assim como o ponto-e-vírgula é automaticamente
+// ... mas eles não precisam ser, o ponto-e-vírgula é automaticamente
 // inserido quando há uma nova linha, exceto alguns casos.
 facaAlgo()
 
-// Porque esses casos podem causar resultados inesperados, vamos continuar 
+// Como esses casos podem causar resultados inesperados, vamos continuar 
 // a usar ponto-e-vírgula neste guia.
 
 ///////////////////////////////////
 // 1. Números, Strings e Operadores
 
 // Javascript tem um tipo de número (que é o 64-bit IEEE 754 double).
-// Doublas tem uma mantissa 52-bit, que é suficiente para guardar inteiros
+// Doubles tem uma mantissa 52-bit, que é suficiente para guardar inteiros
 // acima de 9✕10¹⁵ precisamente.
 3; // = 3
 1.5; // = 1.5
 
-// A aritmética básica funciona seria de esperar.
+// A aritmética básica funciona como seria de se esperar.
 1 + 1; // = 2
 0.1 + 0.2; // = 0.30000000000000004
 8 - 1; // = 7
@@ -62,7 +63,6 @@ facaAlgo()
 // A precedência é aplicada com parênteses.
 (1 + 3) * 2; // = 8
 
-// There are three special not-a-real-number values:
 // Existem três especiais valores não-é-número-real:
 Infinity; // resultado de 1/0
 -Infinity; // resultado de -1/0
@@ -76,16 +76,15 @@ false;
 'abc';
 "Olá, mundo";
 
-// Negation uses the ! symbol
 // Negação usa o símbolo !
 !true; // = false
 !false; // = true
 
-// Igualdade é ===
+// Igualdade é o sinal de ===
 1 === 1; // = true
 2 === 1; // = false
 
-// Desigualdade é !==
+// Desigualdade é o sinal de !==
 1 !== 1; // = false
 2 !== 1; // = true
 
@@ -101,7 +100,7 @@ false;
 // e comparadas com < e >
 "a" < "b"; // = true
 
-// A coerção de tipos é feita para comparações com dois iguais...
+// A comparação de tipos não é feita com o uso de ==...
 "5" == 5; // = true
 null == undefined; // = true
 
@@ -109,7 +108,7 @@ null == undefined; // = true
 "5" === 5; // = false
 null === undefined; // = false 
 
-// ...que irá resultar num comportamento estranho...
+// ...isso pode resultar em comportamentos estranhos...
 13 + !0; // 14
 "13" + !0; // '13true'
 
@@ -125,21 +124,21 @@ null === undefined; // = false
 // Existe também o `null` e o `undefined`.
 null;      // usado para indicar um valor não considerado
 undefined; // usado para indicar um valor que não é a atualmente definido
-           // (entretando `undefined` é usado como um próprio valor
+           // (entretando `undefined` é considerado de fato um valor
 
-// false, null, undefined, NaN, 0 and "" são valores falsy;
-// qualquer outro valor é truthy
-// Note que 0 é falsy e "0" é truthy, até mesmo 0 == "0".
+// false, null, undefined, NaN, 0 and "" são valores falsos;
+// qualquer outro valor é verdadeiro
+// Note que 0 é falso e "0" é verdadeiro, até mesmo 0 == "0".
 
 ///////////////////////////////////
 // 2. Variáveis, Arrays e Objetos
 
-// Variáveis são declarados com a palavra-chave `var`. O Javascript é 
+// Variáveis são declaradas com a palavra-chave `var`. O Javascript é 
 // dinâmicamente tipado, portanto você não precisa especificar o tipo.
 // Atribuições usam um simples caracter de `=`.
 var someVar = 5;
 
-// se você deixar de colocar a palavra-chave var, você não receber um erro...
+// se você deixar de colocar a palavra-chave var, você não irá receber um erro...
 someOtherVar = 10;
 
 // ...mas sua variável será criada no escopo global, não no escopo em que você
@@ -148,13 +147,13 @@ someOtherVar = 10;
 // Variáveis declaradas sem receberem um valor são definidas como `undefined`.
 var someThirdVar; // = undefined
 
-// Existe um shorthad para operações matemáticas em variáveis:
+// Existe um shorthand para operações matemáticas em variáveis:
 someVar += 5; // equivalente a someVar = someVar + 5; someVar é 10 agora
 someVar *= 10; // agora someVar é 100
 
 // e um para adição e subtração de 1
-someVar++; // now someVar is 101
-someVar--; // back to 100
+someVar++; // agora someVar é 101
+someVar--; // volta para 100
 
 // Arrays são listas ordenadas de valores, de qualquer tipo.
 var myArray = ["Olá", 45, true];
