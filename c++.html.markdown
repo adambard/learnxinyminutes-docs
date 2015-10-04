@@ -245,9 +245,9 @@ cout << fooRef; // Prints "I am foo. Hi!"
 // Doesn't reassign "fooRef". This is the same as "foo = bar", and
 //   foo == "I am bar"
 // after this line.
-cout << &fooRef << endl; //Prints address of fooRef
+cout << &fooRef << endl; //Prints address of foo
 fooRef = bar;
-cout << &fooRef << endl; //Prints address of fooRef, AGAIN
+cout << &fooRef << endl; //Still prints address of foo
 cout << fooRef;  // Prints "I am bar"
 
 //The address of fooRef remains the same, i.e. it is still referring to foo.
