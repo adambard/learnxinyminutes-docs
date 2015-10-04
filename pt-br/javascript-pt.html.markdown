@@ -492,9 +492,6 @@ myNumber === myNumberObj; // = false
 if (0){
     // O código não vai executar, porque 0 é um valor falso.
 }
-if (Number(0)){
-    // O código *vai* executar, porque `Number(0)` é um valor verdadeiro.
-}
 
 // Entretanto, esses objetos encapsulados e as funções originais compartilham
 // um mesmo prototype, portanto você pode adicionar funcionalidades a uma string,
