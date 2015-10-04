@@ -130,7 +130,9 @@ int main(void) {
   // can be declared as well. The size of such an array need not be a compile
   // time constant:
   printf("Enter the array size: "); // ask the user for an array size
-  char buf[0x100];
+  int size;
+  scanf("%d", &size);
+  char buf[size];
   fgets(buf, sizeof buf, stdin);
 
   // strtoul parses a string to an unsigned integer
