@@ -244,7 +244,7 @@ print("Benzin fiyatı: \(fiyat)")
 
 // Çeşitli Argümanlar
 func ayarla(sayilar: Int...) {
-    // its an array
+    // it's an array
     let sayi = sayilar[0]
     let argumanSAyisi = sayilar.count
 }
