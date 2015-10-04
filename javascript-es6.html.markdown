@@ -1,8 +1,9 @@
 ---
-language: javascript
+language: javascript-es6
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
+    - ["David Bailey", "http://www.dbailey.uk.to/"]
 filename: javascript.js
 ---
 
@@ -16,9 +17,16 @@ JavaScript isn't just limited to web browsers, though: Node.js, a project that
 provides a standalone runtime for Google Chrome's V8 JavaScript engine, is
 becoming more and more popular.
 
-Feedback would be highly appreciated! You can reach me at
-[@adambrenecki](https://twitter.com/adambrenecki), or
-[adam@brenecki.id.au](mailto:adam@brenecki.id.au).
+JavaScript is an implementation of ECMAScript, and while most platforms only
+support ES5, support for the next generation, i.e. ES6, is steadily growing. ES6
+includes many new features to the language but it remains backwards compatible
+with old ES5 code. To learn ES5 JavaScript, go
+[here](http://learnxinyminutes.com/docs/javascript/).
+
+Feedback would be highly appreciated! You can reach the original author at
+[@adambrenecki](https://twitter.com/adambrenecki) or
+[adam@brenecki.id.au](mailto:adam@brenecki.id.au), and me at
+[david.bailey@archlinux.net](mailto:david.bailey@archlinux.net).
 
 ```js
 // Comments are like C. Single-line comments start with two slashes,
@@ -70,9 +78,10 @@ NaN; // result of e.g. 0/0
 true;
 false;
 
-// Strings are created with ' or ".
+// Strings are created with ', " or `.
 'abc';
 "Hello, world";
+// We will learn about the last of these later.
 
 // Negation uses the ! symbol
 !true; // = false
@@ -128,7 +137,7 @@ undefined; // used to indicate a value is not currently present (although
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
 ///////////////////////////////////
-// 2. Variables, Arrays and Objects
+// 2. Variables, Arrays, Objects and Template Strings
 
 // Variables are declared with the `var` keyword. JavaScript is dynamically
 // typed, so you don't need to specify type. Assignment uses a single `=`
@@ -185,6 +194,14 @@ myObj.myThirdKey = true;
 
 // If you try to access a value that's not yet set, you'll get undefined.
 myObj.myFourthKey; // = undefined
+
+// Template strings are created with ` and can contain code.
+var name = 'world';
+var myTemplate = `Hello, ${name}!`; // Hello, world!
+
+// Template strings can also contain multiple lines.
+myTemplate = `This is not possible
+              when using speech marks.`;
 
 ///////////////////////////////////
 // 3. Logic and Control Structures
