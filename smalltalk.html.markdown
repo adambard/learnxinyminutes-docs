@@ -8,41 +8,34 @@ contributors:
 - Smalltalk was created as the language to underpin the "new world" of computing exemplified by "human–computer symbiosis."
 - It was designed and created in part for educational use, more so for constructionist learning, at the Learning Research Group (LRG) of Xerox PARC by Alan Kay, Dan Ingalls, Adele Goldberg, Ted Kaehler, Scott Wallace, and others during the 1970s.
 
-Feedback highly appreciated! Reach me at [@jigyasa_grover](https://twitter.com/jigyasa_grover) or `grover.jigyasa1@gmail.com`.
+Feedback highly appreciated! Reach me at [@jigyasa_grover](https://twitter.com/jigyasa_grover) or send me an e-mail at `grover.jigyasa1@gmail.com`.
 
-```
 
-"************************************************************************
- * Allowable characters:                                                *
- *    - a-z                                                             *
- *    - A-Z                                                             *
- *    - 0-9                                                             *
- *    - .+/\*~<>@%|&?                                                   *
- *    - blank, tab, cr, ff, lf                                          *
- *                                                                      *
- * Variables:                                                           *
- *    - variables must be declared before use                           *
- *    - shared vars must begin with uppercase                           *
- *    - local vars must begin with lowercase                            *
- *    - reserved names: nil, true, false, self, super, and Smalltalk    *
- *                                                                      *
- * Variable scope:                                                      *
- *    - Global: defined in Dictionary Smalltalk and accessible by all   *
- *         objects in system                                            *
- *    - Special: (reserved) Smalltalk, super, self, true, false, & nil  *
- *    - Method Temporary: local to a method                             *
- *    - Block Temporary: local to a block                               *
- *    - Pool: variables in a Dictionary object                          *
- *    - Method Parameters: automatic local vars created as a result of  *
- *         message call with params                                     *
- *    - Block Parameters: automatic local vars created as a result of   *
- *         value: message call                                          *
- *    - Class: shared with all instances of one class & its subclasses  *
- *    - Class Instance: unique to each instance of a class              *
- *    - Instance Variables: unique to each instance                     *
- ************************************************************************"
-"Comments are enclosed in quotes"
-"Period (.) is the statement seperator"
+##Allowable characters:                                                
+- a-z                                                             
+- A-Z                                                             
+- 0-9                                                             
+- .+/\*~<>@%|&?
+- blank, tab, cr, ff, lf
+
+##Variables:
+- variables must be declared before use                           
+- shared vars must begin with uppercase                           
+- local vars must begin with lowercase                            
+- reserved names: `nil`, `true`, `false`, `self`, `super`, and `Smalltalk`
+
+##Variable scope:                                                      
+- Global: defined in Dictionary Smalltalk and accessible by all objects in system                                 - Special: (reserved) `Smalltalk`, `super`, `self`, `true`, `false`, & `nil` 
+- Method Temporary: local to a method                             
+- Block Temporary: local to a block                               
+- Pool: variables in a Dictionary object                          
+- Method Parameters: automatic local vars created as a result of message call with params                         - Block Parameters: automatic local vars created as a result of value: message call                               - Class: shared with all instances of one class & its subclasses  
+ - Class Instance: unique to each instance of a class              
+- Instance Variables: unique to each instance
+
+`"Comments are enclosed in quotes"`
+
+`"Period (.) is the statement seperator"`
 
 "************************************************************************
  * Transcript:                                                          *
