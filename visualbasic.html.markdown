@@ -236,7 +236,7 @@ Module Module1
     'Nine
     Private Sub IfElseStatement()
     Console.Title = "If / Else Statement | Learn X in Y Minutes"
-        'Sometimes its important to consider more than two alternatives.
+        'Sometimes it is important to consider more than two alternatives.
         'Sometimes there are a good few others.
         'When this is the case, more than one if statement would be required.
         'An if statement is great for vending machines. Where the user enters a code.
