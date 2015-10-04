@@ -352,6 +352,18 @@ for i in range(4, 8):
     print(i)
 
 """
+"range(lower, upper, step)" returns an iterable of numbers
+from the lower number to the upper number, while incrementing
+by step. If step is not indicated, the default value is 1.
+prints:
+    4
+    6
+    8
+"""
+for i in range(4, 8, 2):
+    print(i)
+"""
+
 While loops go until a condition is no longer met.
 prints:
     0
