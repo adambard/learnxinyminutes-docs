@@ -11,7 +11,7 @@ lang: es-es
 ---
 
 Git es un sistema de control de versiones distribuido diseñado para manejar
-cualquier tipo de proyect,o ya sea largo o pequeño, con velocidad y eficiencia.
+cualquier tipo de proyecto, ya sea largo o pequeño, con velocidad y eficiencia.
 
 Git realiza esto haciendo "snapshots" del proyecto, con ello permite
 versionar y administrar nuestro código fuente.
