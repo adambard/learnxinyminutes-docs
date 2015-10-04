@@ -219,9 +219,9 @@ else
 end
 
 unless true
-  'unless statement'
+  'false statement'
 else
-  'else statement'
+  'true statement, optional'
 end
 
 'if statement' if true
