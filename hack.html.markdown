@@ -2,6 +2,7 @@
 language: Hack
 contributors:
     - ["Stephen Holdaway", "https://github.com/stecman"]
+    - ["David Lima", "https://github.com/davelima"]
 filename: learnhack.hh
 ---
 
@@ -152,7 +153,7 @@ class ArgumentPromotion
                                 private bool $isAwesome) {}
 }
 
-class WithoutArugmentPromotion
+class WithoutArgumentPromotion
 {
     public string $name;
 
@@ -169,9 +170,9 @@ class WithoutArugmentPromotion
 }
 
 
-// Co-oprerative multi-tasking
+// Co-operative multi-tasking
 // 
-// Two new keywords "async" and "await" can be used to perform mutli-tasking
+// Two new keywords "async" and "await" can be used to perform multi-tasking
 // Note that this does not involve threads - it just allows transfer of control
 async function cooperativePrint(int $start, int $end) : Awaitable<void>
 {
