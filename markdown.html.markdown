@@ -232,6 +232,12 @@ can be anything so long as they are unique. -->
 I want to type *this text surrounded by asterisks* but I don't want it to be
 in italics, so I do this: \*this text surrounded by asterisks\*.
 
+<!-- Keyboard keys -->
+<!-- In Github Flavored Markdown, you can use a <kbd> tag to represent keyboard keys -->
+
+Your computer crashed? Try sending a
+<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
+
 <!-- Tables -->
 <!-- Tables are only available in Github Flavored Markdown and are slightly
 cumbersome, but if you really want it: -->
