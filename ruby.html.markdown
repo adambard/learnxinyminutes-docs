@@ -218,10 +218,10 @@ else
   'else, also optional'
 end
 
-unless true
-  'false statement'
+unless false
+  'true statement'
 else
-  'true statement, optional'
+  'false statement, optional'
 end
 
 'if statement' if true
