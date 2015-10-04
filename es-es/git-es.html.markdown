@@ -11,15 +11,15 @@ lang: es-es
 ---
 
 Git es un sistema de control de versiones distribuido diseñado para manejar
-cualquier tipo de proyecto ya sea largos o pequeños, con velocidad y eficiencia.
+cualquier tipo de proyect,o ya sea largo o pequeño, con velocidad y eficiencia.
 
 Git realiza esto haciendo "snapshots" del proyecto, con ello permite
 versionar y administrar nuestro código fuente.
 
 ## Versionamiento, conceptos.
 
-### Que es el control de versiones?
-El control de versiones es un sistema que guarda todos los cambios realizados a
+### Qué es el control de versiones?
+El control de versiones es un sistema que guarda todos los cambios realizados en
 uno o varios archivos, a lo largo del tiempo.
 
 ### Versionamiento centralizado vs Versionamiento Distribuido.
@@ -31,15 +31,15 @@ uno o varios archivos, a lo largo del tiempo.
 + El versionamiento distribuido no tiene una estructura definida, incluso se
   puede mantener el estilo de los repositorios SVN con git.
 
-[Informacion adicional](http://git-scm.com/book/es/Empezando-Acerca-del-control-de-versiones)
+[Información adicional](http://git-scm.com/book/es/Empezando-Acerca-del-control-de-versiones)
 
-### Por que usar Git?
+### Por qué usar Git?
 
 * Se puede trabajar sin conexion.
 * Colaborar con otros es sencillo!.
-* Derivar, Crear ramas del proyecto (aka: Branching) es facil!.
+* Derivar, Crear ramas del proyecto (aka: Branching) es fácil!.
 * Combinar (aka: Merging)
-* Git es rapido.
+* Git es rápido.
 * Git es flexible.
 
 ## Arquitectura de Git.
@@ -48,10 +48,10 @@ uno o varios archivos, a lo largo del tiempo.
 
 Un repositorio es un conjunto de archivos, directorios, registros, cambios (aka:
 comits), y encabezados (aka: heads). Imagina que un repositorio es una clase,
-y que sus atributos otorgan  acceso al historial del elemento, ademas de otras
+y que sus atributos otorgan  acceso al historial del elemento, además de otras
 cosas.
 
-Un repositorio esta compuesto por la carpeta .git y un "arbol de trabajo".
+Un repositorio esta compuesto por la carpeta .git y un "árbol de trabajo".
 
 ### Directorio .git (componentes del repositorio)
 
@@ -62,38 +62,38 @@ y mas.
 
 ### Directorio de trabajo (componentes del repositorio)
 
-Es basicamente los directorios y archivos dentro del repositorio. La mayorioa de
+Es basicamente los directorios y archivos dentro del repositorio. La mayoría de
 las veces se le llama "directorio de trabajo".
 
-### Inidice (componentes del directorio .git)
+### Índice (componentes del directorio .git)
 
-El inidice es la area de inicio en git. Es basicamente la capa que separa el
+El índice es el área de inicio en git. Es basicamente la capa que separa el
 directorio de trabajo, del repositorio en git. Esto otorga a los desarrolladores
-mas poder sobre lo que envia y recibe en el repositorio.
+mas poder sobre lo que envía y recibe en el repositorio.
 
 ### Commit (aka: cambios)
 
 Un commit es una captura de un conjunto de cambios, o modificaciones hechas en
 el directorio de trabajo. Por ejemplo, si se añaden 5 archivos, se remueven 2,
-estos cambios se almacenaran en un commit (aka: captura). Este commit puede ser o
+estos cambios se almacenarán en un commit (aka: captura). Este commit puede ser o
 no ser enviado (aka: "pusheado") hacia un repositorio.
 
 ### Branch (rama)
 
-Un "branch", es escencialmente un apuntador hacia el ultimo commit (cambio
-registrado) que se ha realizado. A medida que se realizan mas commits, este
-apuntador se actualizara automaticamente hacia el ultimo commit.
+Un "branch", es escencialmente un apuntador hacia el último commit (cambio
+registrado) que se ha realizado. A medida que se realizan más commits, este
+apuntador se actualizará automaticamente hacia el ultimo commit.
 
 ### "HEAD" y "head" (component of .git dir)
 
 "HEAD" es un apuntador hacia la rama (branch) que se esta utilizando. Un
 repositorio solo puede tener un HEAD activo. En cambio "head", es un apuntador a
-cualquier commit realizado, un repositorio puede tener cualquier numero de
+cualquier commit realizado, un repositorio puede tener cualquier número de
 "heads".
 
 ### conceptos - recursos.
 
-* [Git para informaticos](http://eagain.net/articles/git-for-computer-scientists/)
+* [Git para informáticos](http://eagain.net/articles/git-for-computer-scientists/)
 * [Git para diseñadores](http://hoth.entp.com/output/git_for_designers.html)
 
 
@@ -102,8 +102,8 @@ cualquier commit realizado, un repositorio puede tener cualquier numero de
 
 ### init
 
-Crear un repositorio de git vacio. Las configuraciones, informacion almacenada y
-demas son almacenadas en el directorio ".git".
+Crear un repositorio de git vacio. Las configuraciones, información almacenada y
+demás son almacenadas en el directorio ".git".
 
 ```bash
 $ git init
@@ -127,7 +127,7 @@ $ git config --global user.name "nombre"
 
 ### help
 
-Otorga un accceso rapido a una guia extremadamente detallada de cada comando en
+Otorga un accceso rápido a una guía extremadamente detallada de cada comando en
 git. O puede ser usada simplemente como un recordatorio de estos.
 
 ```bash
@@ -146,7 +146,7 @@ $ git help init
 
 ### status
 
-Muestra las diferencias entre el archivo indice y el commit al cual apunta el
+Muestra las diferencias entre el archivo índice y el commit al cual apunta el
 HEAD actualmente.
 
 
@@ -163,7 +163,7 @@ $ git help status
 
 Para añadir archivos al arbol (directorio, repositorio) de trabajo. Si no se
 utiliza `git add`, los nuevos archivos no se añadiran al arbol de trabajo, por
-lo que no se incluiran en los commits (cambios).
+lo que no se incluirán en los commits (cambios).
 
 ```bash
 # Añade un archivo en el directorio de trabajo actual.
@@ -202,7 +202,7 @@ $ git branch master --edit-description
 ### checkout
 
 Actualiza todos los archivos en el directorio de trabajo para que sean igual que
-las versiones almacenadas en el indice, o en un arbol de trabajo especificado.
+las versiones almacenadas en el índice, o en un árbol de trabajo especificado.
 
 ```bash
 # Despachar un repositorio. - Por defecto la master branch. (la rama principal llamada 'master')
@@ -215,8 +215,8 @@ $ git checkout -b jdei
 
 ### clone
 
-Clona, o copia, una repo existente en un nuevo directorio. Tambien añada el
-seguimiento hacia las ramas existentes del repo que ha sido clonada, lo que
+Clona, o copia, un repositorio existente en un nuevo directorio. También añade el
+seguimiento hacia las ramas existentes del repositorio que ha sido clonado, lo que
 permite subir (push) los archivos hacia una rama remota.
 
 ```bash
@@ -226,8 +226,8 @@ $ git clone https://github.com/jquery/jquery.git
 
 ### commit
 
-Almacena los cambios que almacenados en el indice en un nuevo "commit". Este
-commit contiene los cambios hechos mas un resumen hecho por el desarrollador.
+Almacena el contenido actual del índice en un nuevo "commit". Este
+commit contiene los cambios hechos más un resumen proporcionado por el desarrollador.
 
 ```bash
 # commit with a message
@@ -237,8 +237,8 @@ $ git commit -m "jedi anakin wil be - jedis.list"
 
 ### diff
 
-Muestra las diferencias entre un archivo en el directorio de trabajo, el indice
-y commits.
+Muestra las diferencias entre un archivo en el directorio de trabajo, el índice
+y los commits.
 
 ```bash
 # Muestra la diferencia entre un directorio de trabajo y el indice.
@@ -253,7 +253,7 @@ $ git diff HEAD
 
 ### grep
 
-Permite realizar una busqueda rapida en un repositorio.
+Permite realizar una busqueda rápida en un repositorio.
 
 Configuracion opcionales:
 
