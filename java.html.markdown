@@ -477,9 +477,9 @@ public abstract class Animal
 		age = 30;
 	}
 
-	// No need to initialise, however in an interface 
+	// No need to initialize, however in an interface 
 	// a variable is implicitly final and hence has
-	// to be initialised.
+	// to be initialized.
 	private int age;
 
 	public void printAge()
@@ -509,7 +509,7 @@ class Dog extends Animal
 	// @Override annotation here, since java doesn't allow
 	// overriding of static methods.
 	// What is happening here is called METHOD HIDING.
-	// Check out this awesome SO post: (http://stackoverflow.com/questions/16313649/)
+	// Check out this awesome SO post: http://stackoverflow.com/questions/16313649/
 	public static void main(String[] args)
 	{
 		Dog pluto = new Dog();
