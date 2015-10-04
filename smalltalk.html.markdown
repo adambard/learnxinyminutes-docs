@@ -29,8 +29,10 @@ Feedback highly appreciated! Reach me at [@jigyasa_grover](https://twitter.com/j
 - Method Temporary: local to a method                             
 - Block Temporary: local to a block                               
 - Pool: variables in a Dictionary object                          
-- Method Parameters: automatic local vars created as a result of message call with params                         - Block Parameters: automatic local vars created as a result of value: message call                               - Class: shared with all instances of one class & its subclasses  
- - Class Instance: unique to each instance of a class              
+- Method Parameters: automatic local vars created as a result of message call with params
+- Block Parameters: automatic local vars created as a result of value: message call
+- Class: shared with all instances of one class & its subclasses  
+- Class Instance: unique to each instance of a class              
 - Instance Variables: unique to each instance
 
 `"Comments are enclosed in quotes"`
