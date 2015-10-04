@@ -22,7 +22,7 @@ en un bloque como este.
 -- Cuentas con números
 3 -- 3
 
--- Matématicas es lo que esperas
+-- Matématicas, es lo que esperas
 1 + 1 -- 2
 8 - 1 -- 7
 10 * 2 -- 20
@@ -147,75 +147,75 @@ add 1 2 -- 3
 (//) a b = a `div` b
 35 // 4 -- 8
 
--- Guards: an easy way to do branching in functions
+-- Guardas: son una manera fácil para ramificar funciones
 fib x
   | x < 2 = 1
   | otherwise = fib (x - 1) + fib (x - 2)
 
--- Pattern matching is similar. Here we have given three different
--- definitions for fib. Haskell will automatically call the first
--- function that matches the pattern of the value.
+-- Coincidencia de patrones es similar. Aquí hemos dado tres diferentes
+-- definiciones para fib. Haskell llamará automáticamente la primer
+-- función que coincide con el patrón del valor.
 fib 1 = 1
 fib 2 = 2
 fib x = fib (x - 1) + fib (x - 2)
 
--- Pattern matching on tuples:
+-- Coincidencia de patrones en tuplas:
 foo (x, y) = (x + 1, y + 2)
 
--- Pattern matching on lists. Here `x` is the first element
--- in the list, and `xs` is the rest of the list. We can write
--- our own map function:
+-- Coincidencia de patrones en listas. Aquí `x` es el primer elemento
+-- en una lista, y `xs` es el resto de la lista. Podemos escribir
+-- nuestra propia función map:
 myMap func [] = []
 myMap func (x:xs) = func x:(myMap func xs)
 
--- Anonymous functions are created with a backslash followed by
--- all the arguments.
+-- Funciones anónimas son creadas con una diagonal invertida seguido de
+-- todos los argumentos.
 myMap (\x -> x + 2) [1..5] -- [3, 4, 5, 6, 7]
 
--- using fold (called `inject` in some languages) with an anonymous
--- function. foldl1 means fold left, and use the first value in the
--- list as the initial value for the accumulator.
+-- utilizando pliegues (llamado `inject` en algunos lenguajes) con una función
+-- anónima. foldl1 significa pliegue por la izquierda, y usa el primer valor 
+-- en la lista como el valor inicial para el acumulador.
 foldl1 (\acc x -> acc + x) [1..5] -- 15
 
 ----------------------------------------------------
--- 4. More functions
+-- 4. Más funciones
 ----------------------------------------------------
 
--- partial application: if you don't pass in all the arguments to a function,
--- it gets "partially applied". That means it returns a function that takes the
--- rest of the arguments.
+-- aplicación parcial: si no quieres pasar todos los argumentos a una función,
+-- esta es "parcialmente aplicada". Es decir esta retorna una función que toma
+-- el resto de los argumentos.
 
 add a b = a + b
-foo = add 10 -- foo is now a function that takes a number and adds 10 to it
+foo = add 10 -- foo es actualmente una función que toma un número y suma 10 a esta
 foo 5 -- 15
 
--- Another way to write the same thing
+-- Otra manera de escribir los mismo
 foo = (+10)
 foo 5 -- 15
 
--- function composition
--- the (.) function chains functions together.
--- For example, here foo is a function that takes a value. It adds 10 to it,
--- multiplies the result of that by 5, and then returns the final value.
+-- composición de funciones
+-- el (.) encadena funciones.
+-- Por ejemplo, aquí foo es una función que toma un valor. Y se le suma 10,
+-- posteriormente multiplica el resultado por 5, y devuelve el resultado final.
 foo = (*5) . (+10)
 
 -- (5 + 10) * 5 = 75
 foo 5 -- 75
 
--- fixing precedence
--- Haskell has another operator called `$`. This operator applies a function 
--- to a given parameter. In contrast to standard function application, which 
--- has highest possible priority of 10 and is left-associative, the `$` operator 
--- has priority of 0 and is right-associative. Such a low priority means that
--- the expression on its right is applied as the parameter to the function on its left.
+-- fijación de precedencia 
+-- Haskell tiene otro operador llamado `$`. Este operador aplica a una función 
+-- para un parámetro dado. En contraste a la aplicación de función estándar,  
+-- la cúal tiene prioridad más alta posible de 10 y es asociativa por la izquierda, 
+-- el operador `$` tiene prioridad de 0 y es asociativa por la derecha. Tal que
+-- una baja prioridad significa que la expresión a su derecha es aplicada como parámetro a la función a su izquierda.
 
--- before
+-- antes
 even (fib 7) -- false
 
--- equivalently
+-- equivalentemente
 even $ fib 7 -- false
 
--- composing functions
+-- composición de funciones
 even . fib $ 7 -- false
 
 
