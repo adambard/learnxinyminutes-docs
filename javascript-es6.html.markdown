@@ -440,6 +440,16 @@ var MyConstructor = function(){
 myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
 
+// In ES6 JavaScript, this can also be acheived with class syntax.
+
+class MyConstructor {
+    constructor() {
+        this.myNumber = 5;
+    }
+}
+myNewObj = new MyConstructor(); // = {myNumber: 5}
+myNewObj.myNumber; // = 5
+
 // Every JavaScript object has a 'prototype'. When you go to access a property
 // on an object that doesn't exist on the actual object, the interpreter will
 // look at its prototype.
