@@ -220,24 +220,24 @@ even . fib $ 7 -- false
 
 
 ----------------------------------------------------
--- 5. Type signatures
+-- 5. Firma de tipos
 ----------------------------------------------------
 
--- Haskell has a very strong type system, and everything has a type signature.
+-- Haskell tiene un fuerte sistema de tipado, y cada cosa tiene una firma de tipo.
 
--- Some basic types:
+-- Algunos tipos básicos:
 5 :: Integer
-"hello" :: String
+"hola" :: String
 True :: Bool
 
--- Functions have types too.
--- `not` takes a boolean and returns a boolean:
+-- Las funciones tienen muchos tipos.
+-- `not` toma un booleano y devuelve un booleano:
 -- not :: Bool -> Bool
 
--- Here's a function that takes two arguments:
+-- Aquí esta función toma dos argumentos:
 -- add :: Integer -> Integer -> Integer
 
--- When you define a value, it's good practice to write its type above it:
+-- Cuando defines un valor, es una buena práctica escribir su tipo en una línea superior:
 double :: Integer -> Integer
 double x = x * 2
 
