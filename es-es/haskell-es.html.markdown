@@ -242,18 +242,18 @@ double :: Integer -> Integer
 double x = x * 2
 
 ----------------------------------------------------
--- 6. Control Flow and If Expressions
+-- 6. Control de flujo y Expresiones If
 ----------------------------------------------------
 
--- if expressions
+-- expressiones if
 haskell = if 1 == 1 then "awesome" else "awful" -- haskell = "awesome"
 
--- if expressions can be on multiple lines too, indentation is important
+-- expressiones if pueden estar en múltiples líneas, la identación es importante
 haskell = if 1 == 1
             then "awesome"
             else "awful"
 
--- case expressions: Here's how you could parse command line arguments
+-- expressiones case: Here's how you could parse command line arguments
 case args of
   "help" -> printHelp
   "start" -> startProgram
@@ -416,9 +416,9 @@ Hello, Friend!
 
 ```
 
-There's a lot more to Haskell, including typeclasses and monads. These are the
-big ideas that make Haskell such fun to code in. I'll leave you with one final
-Haskell example: an implementation of quicksort in Haskell:
+Existe mucho más de Haskell, incluyendo clases de tipos y mónadas. Estas son
+las grandes ideas que hacen a Haskell divertido. Te dejamos un ejemplo final
+de Haskell: una implementación de algoritmo QuickSort:
 
 ```haskell
 qsort [] = []
@@ -427,8 +427,9 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
           greater = filter (>= p) xs
 ```
 
-Haskell is easy to install. Get it [here](http://www.haskell.org/platform/).
+Haskell es fácil de instalar. Obtenlo [aquí](http://www.haskell.org/platform/).
 
-You can find a much gentler introduction from the excellent
-[Learn you a Haskell](http://learnyouahaskell.com/) or
-[Real World Haskell](http://book.realworldhaskell.org/).
+Usted puede encontrar más información en:
+[Learn you a Haskell](http://learnyouahaskell.com/) o
+[Real World Haskell](http://book.realworldhaskell.org/) o
+[Aprende Haskell por el bien de todos](http://aprendehaskell.es/)
