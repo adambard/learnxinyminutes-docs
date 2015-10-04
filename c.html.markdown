@@ -131,7 +131,7 @@ int main(void) {
   // time constant:
   printf("Enter the array size: "); // ask the user for an array size
   int size;
-  scanf("%d", &size);
+  fscanf(stdin, "%d", &size);
   char buf[size];
   fgets(buf, sizeof buf, stdin);
 
