@@ -160,7 +160,7 @@ def foobar
 end
 \`\`\` <!-- here too, no backslashes, just ``` -->
 
-<-- The above text doesn't require indenting, plus Github will use syntax
+<!-- The above text doesn't require indenting, plus Github will use syntax
 highlighting of the language you specify after the ``` -->
 
 <!-- Horizontal rule (<hr />) -->
