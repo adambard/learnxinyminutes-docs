@@ -473,7 +473,7 @@ public abstract class Animal
 	public void eat()
 	{
 		System.out.println("I am an animal and I am Eating.");  
-		// Note: Can access private variable.
+		// Note: We can access private variable here.
 		age = 30;
 	}
 
