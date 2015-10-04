@@ -383,8 +383,9 @@ y := x shuffled.                                            "randomly shuffle st
 ```
 
 ## Array:         Fixed length collection
-## ByteArray:     Array limited to byte elements (0-255)
-## WordArray:     Array limited to word elements (0-2^32)
+- ByteArray:     Array limited to byte elements (0-255)
+- WordArray:     Array limited to word elements (0-2^32)
+
 ```
 | b x y sum max |
 x := #(4 3 2 1).                                            "constant array"
