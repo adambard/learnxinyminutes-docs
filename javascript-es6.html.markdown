@@ -18,9 +18,9 @@ provides a standalone runtime for Google Chrome's V8 JavaScript engine, is
 becoming more and more popular.
 
 JavaScript is an implementation of ECMAScript, and while most platforms only
-support ES5, support for the next generation, i.e. ES6, is steadily growing. ES6
-includes many new features to the language but it remains backwards compatible
-with old ES5 code. To learn ES5 JavaScript, go
+fully support ES5 at the moment, support ES6 is steadily growing. ES6 includes
+many new features to the language but it remains backwards compatible with old
+ES5 code. To learn ES5 JavaScript, go
 [here](http://learnxinyminutes.com/docs/javascript/).
 
 Feedback would be highly appreciated! You can reach the original author at
@@ -369,6 +369,14 @@ sayHelloInFiveSeconds("Adam"); // will open a popup with "Hello, Adam!" in 5s
 // Objects can contain functions.
 var myObj = {
     myFunc: function(){
+        return "Hello world!";
+    }
+};
+myObj.myFunc(); // = "Hello world!"
+
+// In ES6, there is also new, shorter syntax.
+var myObj = {
+    myFunc(){
         return "Hello world!";
     }
 };
