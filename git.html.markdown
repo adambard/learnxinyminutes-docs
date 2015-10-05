@@ -74,7 +74,7 @@ other repositories, or not!
 ### Branch
 
 A branch is essentially a pointer to the last commit you made. As you go on
-committing, this pointer will automatically update to ooint the latest commit.
+committing, this pointer will automatically update to point the latest commit.
 
 ### HEAD and head (component of .git dir)
 
@@ -141,7 +141,7 @@ $ git commit --help
 $ git init --help
 ```
 
-### ignore (set of) files
+### ignore files
 
 To intentionally untrack file(s) & folder(s) from git. Typically meant for
 private & temp files which would otherwise be shared in the repository.
