@@ -284,6 +284,15 @@ function myFunction(thing="foo"){
 myFunction(); // = "FOO"
 myFunction("bar"); // = "BAR"
 
+// You can additionally call a function with each item of an array in ES6. This
+// can be useful if you have a single variable containing arguments of a
+// function.
+function myFunction(foo, bar) {
+    return foo + bar;
+}
+// same as myFunction("Hello ", "world!");
+myFunction(...["Hello ", "world!"]); // = "Hello, world!"
+
 // Note that the value to be returned must start on the same line as the
 // `return` keyword, otherwise you'll always return `undefined` due to
 // automatic semicolon insertion. Watch out for this when using Allman style.
