@@ -8,7 +8,7 @@ translators:
 lang: pt-br
 ---
 
-Brainfuck (em letras minúsculas, eceto no início de frases) é uma linguagem de
+Brainfuck (em letras minúsculas, exceto no início de frases) é uma linguagem de
 programação Turing-completa extremamente simples com apenas 8 comandos.
 
 ```
