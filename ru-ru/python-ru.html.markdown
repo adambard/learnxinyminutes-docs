@@ -238,6 +238,15 @@ d, e, f = 4, 5, 6
 # Обратите внимание, как легко поменять местами значения двух переменных
 e, d = d, e     # теперь d == 5, а e == 4
 
+#take input of integers in a single line
+#if input 1 2 3
+input = map(int,raw_input().split()) #integer
+
+input #=>[1, 2, 3]
+
+input = map(str,raw_input().split()) #string
+
+input #=>['1', '2', '3']
 
 #  Словари содержат ассоциативные массивы
 empty_dict = {}
