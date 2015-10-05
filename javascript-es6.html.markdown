@@ -276,6 +276,14 @@ function myFunction(thing){
 }
 myFunction("foo"); // = "FOO"
 
+// Function arguments can also have default values in ES6, if none are given
+// when the function is called.
+function myFunction(thing="foo"){
+    return thing.toUpperCase();
+}
+myFunction(); // = "FOO"
+myFunction("bar"); // = "BAR"
+
 // Note that the value to be returned must start on the same line as the
 // `return` keyword, otherwise you'll always return `undefined` due to
 // automatic semicolon insertion. Watch out for this when using Allman style.
