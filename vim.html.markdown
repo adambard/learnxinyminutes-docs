@@ -73,9 +73,13 @@ specific points in the file, and fast editing.
 ## Modes:
 
 Vim is based on the concept on modes
+
 Command Mode - vim starts up in this mode, used to navigate and write commands
+
 Insert Mode  - used to make changes in your file
+
 Visual Mode  - used to highlight text and do operations to them
+
 Ex Mode      - used to drop down to the bottom with the ':' prompt to enter commands
 
 ```
@@ -97,8 +101,11 @@ Ex Mode      - used to drop down to the bottom with the ':' prompt to enter comm
 
 Vim can be thought of as a set of commands in a 
 'Verb-Modifier-Noun' format, where:
+
 Verb     - your action
+
 Modifier - how you're doing your action
+
 Noun     - the object on which your action acts on
 
 A few important examples of 'Verbs, 'Modifiers', and 'Nouns':
@@ -165,6 +172,7 @@ actions and commands again.
 ### Configuring ~/.vimrc
 
 The .vimrc file can be used to configure vim on startup.
+
 Here's a sample ~/.vimrc file:
 
 ```
