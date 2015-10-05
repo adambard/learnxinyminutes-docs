@@ -51,7 +51,6 @@ specific points in the file, and for fast editing.
     t<character>     # Jump forward and land right before <character> 
 
     # For example,    
-
     f<               # Jump forward and land on <
     t<               # Jump forward and land right before <
     
