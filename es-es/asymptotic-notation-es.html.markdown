@@ -3,137 +3,168 @@ category: Algorithms & Data Structures
 name: Asymptotic Notation
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
+translators:
+    - ["Gerson Lázaro", "https://gersonlazaro.com"]
+lang: es-es
 ---
 
-# Asymptotic Notations
+# Notaciones asintóticas
 
-## What are they?
+## ¿Qué son?
 
-Asymptotic Notations are languages that allow us to analyze an algorithm's running time by
-identifying its behavior as the input size for the algorithm increases. This is also known as
-an algorithm's growth rate. Does the algorithm suddenly become incredibly slow when the input
-size grows? Does it mostly maintain its quick run time as the input size increases?
-Asymptotic Notation gives us the ability to answer these questions.
+Las notaciones asintóticas son lenguajes que nos permitan analizar el tiempo de 
+ejecución de un algoritmo identificando su comportamiento si el tamaño de 
+entrada para el algoritmo aumenta. Esto también se conoce como la tasa de 
+crecimiento de un algoritmo. ¿El algoritmo de repente se vuelve increíblemente 
+lento cuando el tamaño de entrada crece? ¿Tiende a mantener un rápido tiempo de 
+ejecución a medida que el tamaño de entrada aumenta? La notación asintótica nos 
+da la capacidad para responder a estas preguntas.
 
-## Are there alternatives to answering these questions?
+## ¿Hay alternativas que respondan a estas preguntas?
 
-One way would be to count the number of primitive operations at different input sizes.
-Though this is a valid solution, the amount of work this takes for even simple algorithms
-does not justify its use.
+Una manera sería contar el número de operaciones primitivas en diferentes 
+tamaños de entrada. Aunque esta es una solución válida, la cantidad de trabajo 
+que esto conlleva, incluso para los algoritmos simples, no justifica su uso.
 
-Another way is to physically measure the amount of time an algorithm takes to complete
-given different input sizes. However, the accuracy and relativity (times obtained would
-only be relative to the machine they were computed on) of this method is bound to
-environmental variables such as computer hardware specifications, processing power, etc.
+Otra manera es medir físicamente la cantidad de tiempo que un algoritmo toma 
+para completar su ejecución dados diferentes tamaños de entrada. Sin embargo, 
+la exactitud y la relatividad (los tiempos obtenidos sólo serían relativos a la 
+máquina sobre la cual se calcularon) de este método está ligado a variables 
+ambientales tales como especificaciones de hardware, capacidad de procesamiento,
+etc.
 
-## Types of Asymptotic Notation
+## Tipos de Notación Asintótica
 
-In the first section of this doc we described how an Asymptotic Notation identifies the
-behavior of an algorithm as the input size changes. Let us imagine an algorithm as a function
-f, n as the input size, and f(n) being the running time. So for a given algorithm f, with input
-size n you get some resultant run time f(n). This results in a graph where the Y axis is the
-runtime, X axis is the input size, and plot points are the resultants of the amount of time
-for a given input size.
+En la primera sección de este documento hemos descrito cómo una notación 
+asintótica identifica el comportamiento de un algoritmo ante los cambios en el 
+tamaño de la entrada. Imaginemos un algoritmo como una función f, con tamaño de 
+entrada n, y f(n) siendo el tiempo de ejecución. Así que para un algoritmo f 
+dado, con el tamaño de entrada n obtenemos algún tiempo de ejecución resultante 
+f(n). Esto resulta en un gráfico donde el eje Y es el tiempo de ejecución, el 
+eje X es el tamaño de la entrada y los puntos en el gráfico son los resultantes 
+de la cantidad de tiempo para un tamaño de entrada dado.
 
-You can label a function, or algorithm, with an Asymptotic Notation in many different ways.
-Some examples are, you can describe an algorithm by its best case, worse case, or equivalent case.
-The most common is to analyze an algorithm by its worst case. You typically don't evaluate by best case because those conditions aren't what you're planning for. A very good example of this is sorting algorithms; specifically, adding elements to a tree structure. Best case for most algorithms could be as low as a single operation. However, in most cases, the element you're adding will need to be sorted appropriately through the tree, which could mean examining an entire branch. This is the worst case, and this is what we plan for.
+Puedes etiquetar una función, o un algoritmo, con una notación asintótica de 
+muchas maneras diferentes. Algunos ejemplos son describir un algoritmo por su 
+mejor caso, su peor caso, o el caso promedio. Lo más común es analizar un 
+algoritmo por su peor caso. Por lo general, no se evalúa el mejor caso, porque 
+no planeas el algoritmo para estas condiciones. Un muy buen ejemplo de esto son
+los algoritmos de ordenamiento; específicamente, añadir elementos a un árbol. 
+El mejor caso para la mayoría de los algoritmos podría ser tan bajo como una 
+sola operación. Sin embargo, en la mayoría de los casos, el elemento que está 
+añadiendo tendrá que ser ordenado adecuadamente a través del árbol, lo que 
+podría significar examinar toda una rama. Este es el peor de los casos, y 
+para estos casos es que planeamos el algoritmo.
 
-### Types of functions, limits, and simplification
 
-```
-Logarithmic Function - log n
-Linear Function - an + b
-Quadratic Function - an^2 + bn + c
-Polynomial Function - an^z + . . . + an^2 + a*n^1 + a*n^0, where z is some constant
-Exponential Function - a^n, where a is some constant
-```
-
-These are some basic function growth classifications used in various notations. The list starts at the slowest growing function (logarithmic, fastest execution time) and goes on to the fastest growing (exponential, slowest execution time). Notice that as 'n', or the input, increases in each of those functions, the result clearly increases much quicker in quadratic, polynomial, and exponential, compared to logarithmic and linear.
-
-One extremely important note is that for the notations about to be discussed you should do your best to use simplest terms. This means to disregard constants, and lower order terms, because as the input size (or n in our f(n)
-example) increases to infinity (mathematical limits), the lower order terms and constants are of little
-to no importance. That being said, if you have constants that are 2^9001, or some other ridiculous,
-unimaginable amount, realize that simplifying will skew your notation accuracy.
-
-Since we want simplest form, lets modify our table a bit...
+### Tipos de funciones, límites, y simplificación
 
 ```
-Logarithmic - log n
-Linear - n
-Quadratic - n^2
-Polynomial - n^z, where z is some constant
-Exponential - a^n, where a is some constant
+Función logarítmica - log n
+Función lineal - an + b
+Función cuadrática - an^2 + bn + c
+Función polinomicas - an^z + . . . + an^2 + a*n^1 + a*n^0, donde z es constante
+Función exponencial - a^n, donde a es constante
 ```
 
-### Big-O
-Big-O, commonly written as O, is an Asymptotic Notation for the worst case, or ceiling of growth
-for a given function. Say `f(n)` is your algorithm runtime, and `g(n)` is an arbitrary time complexity
-you are trying to relate to your algorithm. `f(n)` is O(g(n)), if for any real constant c (c > 0),
-`f(n)` <= `c g(n)` for every input size n (n > 0).
+Estas son algunas clasificaciones de funciones de crecimiento básicos utilizados
+en varias notaciones. La lista comienza en la función de crecimiento menor
+(logarítmica, el tiempo de ejecución mas rápido) y pasa a la de mayor 
+crecimiento  (exponencial, el tiempo de ejecución mas lento). Observe como al 
+crecer 'n', o la entrada, en cada una de estas funciones, el resultado aumenta 
+claramente mucho más rápido en las cuadráticas, polinómicas y exponenciales, 
+en comparación con las logarítmicas y lineales.
 
-*Example 1*  
+Una anotación muy importante es que en las notaciones que se discutirán debes 
+hacer tu mejor esfuerzo por utilizar los términos más simples. Esto significa 
+hacer caso omiso de las constantes y terminos de orden inferior, porque a medida
+que el tamaño de entrada (o n en f(n)) aumenta hacia el infinito (límites 
+matemáticos), los términos y constantes de orden inferior se vuelven de poca o 
+ninguna importancia. Dicho esto, si tienes constantes que son 2^9001, 
+o alguna otra cantidad ridícula, inimaginable, te daras cuenta de que la 
+simplificación sesgará la exactitud de la notación.
+
+Como queremos algo simplificado, vamos a modificarlo un poco...
+
+```
+Logarítmico - log n
+Lineal - n
+Cuandrático - n^2
+Polinómico - n^z, donde z es constante
+Exponencial - a^n, donde a es constante
+```
+
+### O-grande (Big-O)
+O-grande (Big-O), comúnmente escrito como O, es una notación asintótica para el 
+peor caso, o el techo de crecimiento para una función determinada. Si `f (n)` 
+es el tiempo de ejecución del algoritmo, y `g (n)` es un tiempo de complejidad 
+arbitraria que relacionas con el algoritmo, entonces `f (n)` es O(g(n)), si por 
+cualquier constante real c (c > 0), `f (n)` <= `c g(n)` para cada tamaño de 
+entrada n (n > 0 ).
+
+
+*Ejemplo 1*  
 
 ```
 f(n) = 3log n + 100  
 g(n) = log n
 ```
 
-Is `f(n)` O(g(n))?  
-Is `3 log n + 100` O(log n)?  
-Let's look to the definition of Big-O.
+`f(n)` es O(g(n))?  
+`3 log n + 100` es O(log n)?  
+Echemos un vistazo a la definición de O-grande.
 
 ```
 3log n + 100 <= c * log n  
 ```
-
-Is there some constant c that satisfies this for all n?  
+¿Hay alguna constante c que satisface esto para todo n? 
 
 ```
-3log n + 100 <= 150 * log n, n > 2 (undefined at n = 1)  
+3log n + 100 <= 150 * log n, n > 2 (indefinido en n = 1)  
 ```
 
-Yes! The definition of Big-O has been met therefore `f(n)` is O(g(n)).
+¡Sí! La definición de O-grande se cumple, por lo tanto `f (n)` es O(g(n)).
 
-*Example 2*  
+*Ejemplo 2*  
 
 ```
 f(n) = 3*n^2  
 g(n) = n
 ```
 
-Is `f(n)` O(g(n))?  
-Is `3 * n^2` O(n)?  
-Let's look at the definition of Big-O.
+`f(n)` es O(g(n))?  
+`3 * n^2` es O(n)?  
+Echemos un vistazo a la definición de O-grande.
 
 ```
 3 * n^2 <= c * n  
 ```
 
-Is there some constant c that satisfies this for all n?  
-No, there isn't. `f(n)` is NOT O(g(n)).
-
+¿Hay alguna constante c que satisface esto para todo n? 
+No, no la hay. `f(n)` no es O(g(n)).
+********************************************************************************
 ### Big-Omega
-Big-Omega, commonly written as Ω, is an Asymptotic Notation for the best case, or a floor growth rate
-for a given function.
+Big-Omega, comunmente escrito como Ω, es una notación asintótica para el mejor
+caso, o el piso en el crecimiento para una función dada.
 
-`f(n)` is Ω(g(n)), if for any real constant c (c > 0), `f(n)` is >= `c g(n)` for every input size n (n > 0).
+`f(n)` es Ω(g(n)), si para cualquier constante real c (c > 0), 
+`f(n)` es >= `c g(n)` para cualquier tamaño de entrada n (n > 0).
 
-Feel free to head over to additional resources for examples on this. Big-O is the primary notation used
-for general algorithm time complexity.
+No dudes en dirigirte a los recursos adicionales para ejemplos sobre esto. 
+O-grande es la notación principal utilizada para la complejidad general de
+tiempo algoritmico.
 
-### Ending Notes
-It's hard to keep this kind of topic short, and you should definitely go through the books and online
-resources listed. They go into much greater depth with definitions and examples.
-More where x='Algorithms & Data Structures' is on its way; we'll have a doc up on analyzing actual
-code examples soon.
+### Notas finales
+Es difícil mantener este tipo de tema corto, y sin duda deberias revisar los 
+libros y recursos en línea en la lista. Entran en mucha mayor profundidad con 
+definiciones y ejemplos. 
 
-## Books
+## Libros
 
-* [Algorithms](http://www.amazon.com/Algorithms-4th-Robert-Sedgewick/dp/032157351X)
-* [Algorithm Design](http://www.amazon.com/Algorithm-Design-Foundations-Analysis-Internet/dp/0471383651)
+* [Algoritmos (Algorithms)](http://www.amazon.com/Algorithms-4th-Robert-Sedgewick/dp/032157351X)
+* [Diseño de algoritmos (Algorithm Design)](http://www.amazon.com/Algorithm-Design-Foundations-Analysis-Internet/dp/0471383651)
 
-## Online Resources
+## Recursos Online
 
 * [MIT](http://web.mit.edu/16.070/www/lecture/big_o.pdf)
 * [KhanAcademy](https://www.khanacademy.org/computing/computer-science/algorithms/asymptotic-notation/a/asymptotic-notation)
