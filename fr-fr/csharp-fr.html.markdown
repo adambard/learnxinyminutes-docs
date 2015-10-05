@@ -239,7 +239,8 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             // Opérateur ternaire
             // Un simple if/else peut s'écrire :
             // <condition> ? <valeur si true> : <valeur si false>
-            string isTrue = (true) ? "True" : "False";
+            int toCompare = 17;
+            string isTrue = toCompare == 17 ? "True" : "False";
 
             // Boucle while
             int fooWhile = 0;
