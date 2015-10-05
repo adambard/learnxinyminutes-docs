@@ -25,7 +25,11 @@ tools to compile Sass into CSS. Many IDEs also offer Sass compilation, as well.
 
 
 ```sass
-/* Like CSS, Sass uses slash-asterisk to denote comments */
+/* Like CSS, Sass uses slash-asterisk to denote comments. Slash-asterisk comments 
+   can span multiple lines. These comments will appear in your compiled CSS */
+
+// Sass also supports single line comments that use double slashes. These comments will
+// not be rendered in your compiled CSS
 
 /* ####################
    ## VARIABLES
@@ -113,12 +117,52 @@ article img {
 /* It is recommended to not nest too deeply as this can cause issues with
    specificity and make your CSS harder to work with and maintain. Best practices
    recommend going no more than 3 levels deep when nesting. */
+   
+/* ###############################
+   ## REFERENCE PARENT SELECTORS
+   ############################### */   
+   
+/* Reference parent selectors are used when you're nesting statements and want to 
+   reference the parent selector from within the nested statements. You can reference
+   a parent using & */
+   
+a {
+  text-decoration: none;
+  color: #ff0000;
+  
+  &:hover {
+    text-decoration: underline;  
+  }
+  
+  body.noLinks & {
+    display: none;
+  }
+}
+
+/* The above Sass will compile into the CSS below */
+
+a {
+  text-decoration: none;
+  color: #ff0000;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+body.noLinks a {
+  display: none;
+}
+
 
 /* ####################
    ## MIXINS
    #################### */
+   
 /* Mixins allow you to define reusable chunks of CSS. They can take one or more
-   arguments to allow you to make reusable pieces of styling. */
+   arguments to allow you to make reusable pieces of styling. Mixins can also
+   be very helpful when dealing with vendor prefixes. */
+   
 @mixin form-button($color, $size, $border-radius) {
   color: $color;
   font-size: $size;
@@ -126,109 +170,229 @@ article img {
 }
 
 /* Mixins are invoked within a CSS declaration. */
+
 .user-form .submit {
   @include form-button(#0000ff, 16px, 4px);
-  margin: 10px;
 }
 
 /* The above mixin will compile into the following css */
+
 .user-form .submit {
   color: #0000ff;
   font-size: 16px;
   border-radius: 4px;
-  margin: 10px;
+}
+
+/* ####################
+   ## FUNCTIONS
+   #################### */
+   
+/* Sass provides functions that can be used to accomplish a variety of tasks. Consider the following */
+   
+body {
+  width: round(10.25px);    
+}
+
+.footer {
+  background-color: fade_out(#000000, 0.25)
+}
+
+/* The above Sass will compile into the following CSS */
+
+body {
+  width: 10px;
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.75);
+}   
+   
+/* You may also define your own functions. Functions are very similar to mixins. When trying to choose between 
+   a function or a mixin, remember that functions are best for returning values while mixins are best for 
+   generating CSS while functions are better for logic that might be used throughout your Sass code. The
+   examples in the Math Operators' section are ideal candidates for becoming a reusable function. */
+
+/* This function will take a target size and the parent size and calculate and return the percentage */
+   
+@function calculate-percentage($target-size, $parent-size) {
+  @return $target-size / $parent-size * 100%;
+}
+
+/* Functions can be invoked by using their name and passing in the required arguments */
+
+$main-content: calculate-percentage(600px, 960px);
+
+.main-content {
+  width: $main-content;
+}
+
+.sidebar {
+  width: calculate-percentage(300px, 960px);
+}
+
+/* The above Sass will compile into the following CSS */
+
+.main-content {
+  width: 62.5%;
+}
+
+.sidebar {
+  width: 31.25%;
 }
 
 /* ####################
    ## EXTEND/INHERITANCE
    #################### */
+   
+/* Sass allows you to extend an existing CSS statement. This makes it 
+   very easy to write CSS that does not violate DRY principles. Any
+   CSS statement can be extended */
+   
+.content-window {
+  font-size: 14px;
+  padding: 10px;
+  color: #000;
+  border-radius: 4px;
+}
+
+.message-window {
+  @extend .content-window;
+  background-color: #0000ff;
+}
+
+.notification-window {
+  @extend .content-window;
+  background-color: #ff0000;
+}
+
+.settings-window {
+  @extend .content-window;
+  background-color: #ccc;
+}
+
+/* The above Sass will be compile into the following CSS */
+
+.content-window,
+.message-window,
+.notification-window,
+.settings-window {
+  font-size: 14px;
+  padding: 10px;
+  color: #000;
+  border-radius: 4px;
+}
+
+.message-window {
+  background-color: #0000ff;
+}
+
+.notification-window {
+  background-color: #ff0000;
+}
+
+.settings-window {
+  background-color: #ccc;
+}
+
+/* Extending a CSS statement is preferable to creating a mixin 
+   because of the way it groups together the classes that all share
+   the same base styling. If this was done with a mixin, the font-size,
+   padding, color, and border-radius would be duplicated for each statement
+   that called the mixin. While it won't affect your workflow, it will
+   add unnecessary bloat to the files created by the Sass compiler. */
+   
+/* #########################
+   ## PLACEHOLDER SELECTORS
+   ######################### */   
+   
+/* Placeholders are useful when creating a CSS statement to extend. If you wanted to create
+   a CSS statement that was exclusively used with @extend, you can do so using a placeholder.
+   Placeholders begin with a '%' instead of '.' or '#'. Placeholders will not appear in the 
+   compiled CSS. */
+   
+%content-window {
+  font-size: 14px;
+  padding: 10px;
+  color: #000;
+  border-radius: 4px;
+}
+
+.message-window {
+  @extend %content-window;
+  background-color: #0000ff;
+}
+
+/* The above Sass would compile to the following CSS */
+
+.message-window {
+  font-size: 14px;
+  padding: 10px;
+  color: #000;
+  border-radius: 4px;
+}
+
+.message-window {
+  background-color: #0000ff;
+}
       
 /* ####################
    ## MATH OPERATIONS
    #################### */      
    
+/* Sass provides the following operators: +, -, *, /, and %. These can
+   be useful for calculating values directly in your Sass files instead
+   of using values that you've already calculated by hand. Below is an example
+   of a setting up a simple two column design. */
+   
+$content-area: 960px;
+$main-content: 600px;
+$sidebar-content: 300px;
+
+$main-size: $main-content / $content-area * 100%;
+$sidebar-size: $sidebar-content / $content-area * 100%;
+$gutter: 100% - ($main-size + $sidebar-size);
+
+body {
+  width: 100%;
+}
+
+.main-content {
+  width: $main-size;
+}
+
+.sidebar {
+  width: $sidebar-size;
+}
+
+.gutter {
+  width: $gutter;
+}
+
+/* The above Sass would compile to the CSS below */
+
+body {
+  width: 100%;
+}
+
+.main-content {
+  width: 62.5%;
+}
+
+.sidebar {
+  width: 31.25%;
+}
+
+.gutter {
+  width: 6.25%;
+}
+   
 ```
 
 ## Usage
 
-Save any CSS you want in a file with extension `.css`.
 
-```xml
-<!-- you need to include the css file in your page's <head>: -->
-<link rel='stylesheet' type='text/css' href='path/to/style.css' />
-
-<!-- you can also include some CSS inline in your markup. However it is highly  
-recommended to avoid this. -->
-<style>
-   a { color: purple; }
-</style>
-
-<!-- or directly set CSS properties on the element. 
-This has to be avoided as much as you can. -->
-<div style="border: 1px solid red;">
-</div>
-
-```
-
-## Precedence
-
-As you noticed an element may be targetted by more than one selector. 
-and may have a property set on it in more than one.  
-In these cases, one of the rules takes precedence over others.
-
-Given the following CSS:
-
-```css
-/*A*/
-p.class1[attr='value']
-
-/*B*/
-p.class1 {}
-
-/*C*/
-p.class2 {}
-
-/*D*/
-p {}
-
-/*E*/
-p { property: value !important; }
-
-```
-
-and the following markup:
-
-```xml
-<p style='/*F*/ property:value;' class='class1 class2' attr='value'>
-</p>
-```
-
-The precedence of style is as followed:  
-Remember, the precedence is for each **property**, not for the entire block.
-
-* `E` has the highest precedence because of the keyword `!important`.  
-    It is recommended to avoid this unless it is strictly necessary to use.
-* `F` is next, because it is inline style.
-* `A` is next, because it is more "specific" than anything else.  
-    more specific = more specifiers. here 3 specifiers: 1 tagname `p` +   
-    class name `class1` + 1 attribute `attr='value'`
-* `C` is next. although it has the same specificness as `B`  
-    but it appears last.
-* Then is `B`
-* and lastly is `D`.
 
 ## Compatibility
 
-Most of the features in CSS2 (and gradually in CSS3) are compatible across  
-all browsers and devices. But it's always vital to have in mind the compatibility 
-of what you use in CSS with your target browsers.
-
-[QuirksMode CSS](http://www.quirksmode.org/css/) is one of the best sources for this.
-
-To run a quick compatibility check, [CanIUse](http://caniuse.com) is a great resource.
 
 ## Further Reading
-
-* [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
-* [QuirksMode CSS](http://www.quirksmode.org/css/)
-* [Z-Index - The stacking context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
