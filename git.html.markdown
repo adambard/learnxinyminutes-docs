@@ -144,6 +144,16 @@ $ git commit --help
 $ git init --help
 ```
 
+### ignore (set of) files
+
+To intentionally untrack file(s) & folder(s) from git. Typically meant for
+private & temp files which would otherwise be shared in the repository.
+```bash
+$ echo "temp/" >> .gitignore
+$ echo "private_key" >> .gitignore
+```
+
+
 ### status
 
 To show differences between the index file (basically your working copy/repo)
