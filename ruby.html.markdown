@@ -169,8 +169,8 @@ array[-1] #=> 5
 array[2, 3] #=> [3, 4, 5]
 
 # Reverse an Array
-# array = [1,2,3]
-array.reverse #=> [3,2,1]
+a=[1,2,3]
+a[::-1] #=> [3,2,1]
 
 # Or with a range
 array[1..3] #=> [2, 3, 4]
