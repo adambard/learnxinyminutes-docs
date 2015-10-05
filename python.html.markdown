@@ -104,6 +104,10 @@ not False  # => True
 # Strings can be added without using '+'
 "Hello " "world!"  # => "Hello world!"
 
+# Reverse a string
+# s="hello"
+reverse(s) #=> "olleh"
+
 # ... or multiplied
 "Hello" * 3  # => "HelloHelloHello"
 
