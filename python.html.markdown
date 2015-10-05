@@ -160,6 +160,10 @@ li = []
 # You can start with a prefilled list
 other_li = [4, 5, 6]
 
+# String slpit to list
+a="adambard"
+list(a) #=> ['a','d','a','m','b','a','r','d']
+
 # Add stuff to the end of a list with append
 li.append(1)    # li is now [1]
 li.append(2)    # li is now [1, 2]
