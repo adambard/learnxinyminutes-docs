@@ -26,7 +26,7 @@ ColdFusion is a scripting language for web development.
 <!--- Displaying simple data --->
 <!--- Use <cfoutput> for simple values such as strings, numbers, and expressions --->
 <cfoutput>#myVariable#</cfoutput> <!--- myValue --->
-<cfoutput>#myNumber#</cfoutput> <!--- myValue --->
+<cfoutput>#myNumber#</cfoutput> <!--- 3.14 --->
 
 <!--- Declaring complex variables --->
 <!--- Declaring an array of 1 dimension: literal or bracket notation --->
