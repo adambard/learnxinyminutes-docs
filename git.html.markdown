@@ -232,6 +232,10 @@ to a remote branch.
 ```bash
 # Clone learnxinyminutes-docs
 $ git clone https://github.com/adambard/learnxinyminutes-docs.git
+# shallow clone - faster cloning that pulls only latest snapshot
+$ git clone --depth 1 https://github.com/adambard/learnxinyminutes-docs.git
+# clone only a specific branch
+$ git clone -b master-cn https://github.com/adambard/learnxinyminutes-docs.git --single-branch
 ```
 
 ### commit
