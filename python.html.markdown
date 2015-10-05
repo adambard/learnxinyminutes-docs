@@ -482,14 +482,6 @@ add_10(3)   # => 13
 map(add_10, [1, 2, 3])   # => [11, 12, 13]
 filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 
-#take input of integers in a single line
-#if input 1 2 3
-
-input = map(int,raw_input().split()) #integer
-input #=>[1, 2, 3]
-
-input = map(str,raw_input().split()) #string
-input #=>['1', '2', '3']
 
 # We can use list comprehensions for nice maps and filters
 [add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
