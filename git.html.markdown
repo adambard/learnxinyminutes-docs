@@ -106,15 +106,12 @@ $ git init
 
 ### config
 
-To configure settings. Whether it be for the repository, the system itself, or global
-configurations.
+To configure settings. Whether it be for the repository, the system itself,
+or global configurations ( global config file is `~/.gitconfig` ).
 
 
 ```bash
 # Print & Set Some Basic Config Variables (Global)
-$ git config --global user.email
-$ git config --global user.name
-
 $ git config --global user.email "MyEmail@Zoho.com"
 $ git config --global user.name "My Name"
 ```
@@ -249,6 +246,9 @@ $ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
 
 # automatically stage modified or deleted files, except new files, and then commit
 $ git commit -a -m "Modified foo.php and removed bar.php"
+
+# change last commit (this deletes previous commit with a fresh commit)
+$ git commit --amend -m "Correct message"
 ```
 
 ### diff
@@ -300,8 +300,8 @@ Display commits to the repository.
 # Show all commits
 $ git log
 
-# Show X number of commits
-$ git log -n 10
+# Show only commit message & ref
+$ git log --oneline
 
 # Show merge commits only
 $ git log --merges
