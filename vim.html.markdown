@@ -7,13 +7,13 @@ filename: LearnVim.txt
 ---
 
 
-[vim](www.vim.org)
+[Vim](www.vim.org)
 (Vi IMproved) is a clone of the popular vi editor for Unix. It is a a text 
 editor designed for speed and increased productivity, and is ubiquitous in most 
 unix-based systems. It has numerous keybindings for speedy navigation to 
 specific points in the file, and for fast editing.
 
-## Basics of navigating vim
+## Basics of navigating Vim
 
 ```
     vim <filename>   # Open <filename> in vim
@@ -167,7 +167,7 @@ same sequence of actions and commands again on the text selection.
 
 ### Configuring ~/.vimrc
 
-The .vimrc file can be used to configure vim on startup.
+The .vimrc file can be used to configure Vim on startup.
 
 Here's a sample ~/.vimrc file:
 
