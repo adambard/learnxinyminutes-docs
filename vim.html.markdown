@@ -11,7 +11,7 @@ filename: LearnVim.txt
 (Vi IMproved) is a clone of the popular vi editor for Unix. It is a a text 
 editor designed for speed and increased productivity, and is ubiquitous in most 
 unix-based systems. It has numerous keybindings for speedy navigation to 
-specific points in the file, and fast editing.
+specific points in the file, and for fast editing.
 
 ## Basics of navigating vim
 
@@ -72,14 +72,11 @@ specific points in the file, and fast editing.
 
 ## Modes:
 
-Vim is based on the concept on modes
+Vim is based on the concept on **modes**.
 
-Command Mode - vim starts up in this mode, used to navigate and write commands
-
-Insert Mode  - used to make changes in your file
-
-Visual Mode  - used to highlight text and do operations to them
-
+Command Mode - vim starts up in this mode, used to navigate and write commands  
+Insert Mode  - used to make changes in your file  
+Visual Mode  - used to highlight text and do operations to them  
 Ex Mode      - used to drop down to the bottom with the ':' prompt to enter commands
 
 ```
@@ -102,10 +99,8 @@ Ex Mode      - used to drop down to the bottom with the ':' prompt to enter comm
 Vim can be thought of as a set of commands in a 
 'Verb-Modifier-Noun' format, where:
 
-Verb     - your action
-
-Modifier - how you're doing your action
-
+Verb     - your action  
+Modifier - how you're doing your action  
 Noun     - the object on which your action acts on
 
 A few important examples of 'Verbs, 'Modifiers', and 'Nouns':
@@ -159,9 +154,9 @@ A few important examples of 'Verbs, 'Modifiers', and 'Nouns':
 ## Macros
 
 Macros are basically recordable actions.
-When you start recording a macro, they record **every** action and command
-you use, until you stop recording. On invoking a macro, they apply the same
-actions and commands again.
+When you start recording a macro, it records **every** action and command
+you use, until you stop recording. On invoking a macro, it applies the exact
+same sequence of actions and commands again on the text selection.
 
 ```
     qa               # Start recording a macro named 'a'
