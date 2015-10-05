@@ -238,13 +238,13 @@ d, e, f = 4, 5, 6
 # Обратите внимание, как легко поменять местами значения двух переменных
 e, d = d, e     # теперь d == 5, а e == 4
 
-#take input of integers in a single line
-#if input 1 2 3
-input = map(int,raw_input().split()) #integer
+#принять ввод чисел в одной строке
+#если вход 1 2 3
+input = map(int,raw_input().split()) #целое число
 
 input #=>[1, 2, 3]
 
-input = map(str,raw_input().split()) #string
+input = map(str,raw_input().split()) #строка
 
 input #=>['1', '2', '3']
 
