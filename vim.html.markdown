@@ -17,12 +17,15 @@ specific points in the file, and for fast editing.
 
 ```
     vim <filename>   # Open <filename> in vim
+    :q               # Quit vim
     :w               # Save current file
-    :q!              # Quit vim without saving file
     :wq              # Save file and quit vim 
+    :q!              # Quit vim without saving file
+                     # ! *forces* :q to execute, hence quiting vim without saving
+    :x               # Save file and quit vim, shorter version of :wq
 
     u                # Undo
-    CTRL+r           # Redo
+    CTRL+R           # Redo
 
     h                # Move left one character
     j                # Move down one line
@@ -68,7 +71,6 @@ specific points in the file, and for fast editing.
     H                # Move to the top of the screen
     M                # Move to the middle of the screen
     L                # Move to the bottom of the screen
-
 ```
 
 ## Modes:
@@ -81,9 +83,11 @@ Visual Mode  - used to highlight text and do operations to them
 Ex Mode      - used to drop down to the bottom with the ':' prompt to enter commands
 
 ```
-    :                # Puts vim into ex mode
+    i                # Puts vim into insert mode, before the cursor position
+    a                # Puts vim into insert mode, after the cursor position
     v                # Puts vim into visual mode    
-    <esc>            # 'Escapes' from whichever mode you're in into Command mode
+    :                # Puts vim into ex mode
+    <esc>            # 'Escapes' from whichever mode you're in, into Command mode
 
     # Copying and pasting text
 
@@ -93,6 +97,7 @@ Ex Mode      - used to drop down to the bottom with the ':' prompt to enter comm
     dd               # Delete the current line
     p                # Paste the copied text after the current cursor position
     P                # Paste the copied text before the current cursor position
+    x                # Deleting character under current cursor position
 ```
 
 ## The 'Grammar' of vim
@@ -138,6 +143,7 @@ A few important examples of 'Verbs, 'Modifiers', and 'Nouns':
     yip              # Yank inside paragraph (copy the para you're in)
     ct<              # Change to open bracket
                      # Change the text from where you are to the next open bracket
+    d$               # Delete till end of line
 ```
 
 ## Some shortcuts and tricks
@@ -172,7 +178,6 @@ The .vimrc file can be used to configure Vim on startup.
 Here's a sample ~/.vimrc file:
 
 ```
-
 " Example ~/.vimrc
 " 2015.10 
 
@@ -215,7 +220,6 @@ set expandtab
 
 " Enable intelligent tabbing and spacing for indentation and alignment
 set smarttab
-
 ```
 
 ### References
