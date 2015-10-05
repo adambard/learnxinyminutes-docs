@@ -142,7 +142,7 @@ Echemos un vistazo a la definición de O-grande.
 
 ¿Hay alguna constante c que satisface esto para todo n? 
 No, no la hay. `f(n)` no es O(g(n)).
-********************************************************************************
+
 ### Big-Omega
 Big-Omega, comunmente escrito como Ω, es una notación asintótica para el mejor
 caso, o el piso en el crecimiento para una función dada.
