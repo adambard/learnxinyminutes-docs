@@ -144,6 +144,11 @@ undefined; // used to indicate a value is not currently present (although
 // character.
 var someVar = 5;
 
+// You can also use the `const` keyword if the variable is constant and won't be
+// changed.
+const myVar = 2;
+myVar = 3; // won't work
+
 // if you leave the var keyword off, you won't get an error...
 someOtherVar = 10;
 
