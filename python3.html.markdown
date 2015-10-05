@@ -4,6 +4,7 @@ contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Andre Polykanine", "https://github.com/Oire"]
+    - ["Zachary Ferguson", "http://github.com/zfergus2"]
 filename: learnpython3.py
 ---
 
@@ -36,7 +37,7 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 8 - 1  # => 7
 10 * 2  # => 20
 
-# Except division which returns floats by default
+# Except division which returns floats, real numbers, by default
 35 / 5  # => 7.0
 
 # Result of integer division truncated down both for positive and negative.
@@ -51,13 +52,13 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 # Modulo operation
 7 % 3 # => 1
 
-# Exponentiation (x to the yth power)
+# Exponentiation (x**y, x to the yth power)
 2**4 # => 16
 
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
 
-# Boolean values are primitives
+# Boolean values are primitives (Note: the capitalization)
 True
 False
 
@@ -94,6 +95,16 @@ False or True #=> True
 # Comparisons can be chained!
 1 < 2 < 3  # => True
 2 < 3 < 2  # => False
+
+# (is vs. ==) is checks if two variable refer to the same object, but == checks 
+# if the objects pointed to have the same values.
+a = [1, 2, 3, 4] # Point a at a new list, [1, 2, 3, 4]
+b = a # Point b at what a is pointing to
+b is a # => True, a and b refer to the same object
+b == a # => True, a's and b's objects are equal
+b = [1, 2, 3, 4] # Point a at a new list, [1, 2, 3, 4]
+b is a # => False, a and b do not refer to the same object
+b == a # => True, a's and b's objects are equal
 
 # Strings are created with " or '
 "This is a string."
@@ -145,6 +156,10 @@ bool({}) #=> False
 # Python has a print function
 print("I'm Python. Nice to meet you!")
 
+# By default the print function also prints out a newline at the end.
+# Use the optional argument end to change the end character.
+print("Hello, World", end="!") # => Hello, World!
+
 # No need to declare variables before assigning to them.
 # Convention is to use lower_case_with_underscores
 some_var = 5
@@ -191,6 +206,9 @@ li[::-1]   # => [3, 4, 2, 1]
 # Use any combination of these to make advanced slices
 # li[start:end:step]
 
+# Make a one layer deep copy using slices
+li2 = li[:] # => li2 = [1, 2, 4, 3] but (li2 is li) will result in false.
+
 # Remove arbitrary elements from a list with "del"
 del li[2]   # li is now [1, 2, 3]
 
@@ -213,6 +231,12 @@ tup = (1, 2, 3)
 tup[0]   # => 1
 tup[0] = 3  # Raises a TypeError
 
+# Note that a tuple of length one has to have a comma after the last element but
+# tuples of other lengths, even zero, do not.
+type((1))  # => <class 'int'>
+type((1,)) # => <class 'tuple'>
+type(())   # => <class 'tuple'>
+
 # You can do most of the list operations on tuples too
 len(tup)   # => 3
 tup + (4, 5, 6)   # => (1, 2, 3, 4, 5, 6)
@@ -231,6 +255,12 @@ e, d = d, e     # d is now 5 and e is now 4
 empty_dict = {}
 # Here is a prefilled dictionary
 filled_dict = {"one": 1, "two": 2, "three": 3}
+
+# Note keys for dictionaries have to be immutable types. This is to ensure that 
+# the key can be converted to a constant hash value for quick look-ups. 
+# Immutable types include ints, floats, strings, tuples.
+invalid_dict = {[1,2,3]: "123"} # => Raises a TypeError: unhashable type: 'list'
+valid_dict = {(1,2,3):[1,2,3]}  # Values can be of any type, however.
 
 # Look up values with []
 filled_dict["one"]   # => 1
@@ -278,6 +308,10 @@ empty_set = set()
 # Initialize a set with a bunch of values. Yeah, it looks a bit like a dict. Sorry.
 some_set = {1, 1, 2, 2, 3, 4}   # some_set is now {1, 2, 3, 4}
 
+# Similar to keys of a dictionary, elements of a set have to be immutable.
+invalid_set = {[1], 1} # => Raises a TypeError: unhashable type: 'list'
+valid_set = {(1,), 1}
+
 # Can set new variables to a set
 filled_set = some_set
 
@@ -297,6 +331,7 @@ filled_set | other_set   # => {1, 2, 3, 4, 5, 6}
 # Check for existence in a set with in
 2 in filled_set   # => True
 10 in filled_set   # => False
+
 
 
 ####################################################
@@ -476,6 +511,15 @@ all_the_args(*args)   # equivalent to foo(1, 2, 3, 4)
 all_the_args(**kwargs)   # equivalent to foo(a=3, b=4)
 all_the_args(*args, **kwargs)   # equivalent to foo(1, 2, 3, 4, a=3, b=4)
 
+# Returning multiple values (with tuple assignments)
+def swap(x, y):
+    return y, x # Return multiple values as a tuple without the parenthesis.
+                # (Note: parenthesis have been excluded but can be included)
+
+x = 1
+y = 2
+x, y = swap(x, y) # => x = 2, y = 1
+# (x, y) = swap(x,y) # Again parenthesis have been excluded but can be included.
 
 # Function Scope
 x = 5
