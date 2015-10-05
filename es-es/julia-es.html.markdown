@@ -45,7 +45,7 @@ Esto se basa en la versión `0.3.11`.
 # Los comentarios de una línea comienzan con una almohadilla (o signo de gato).
 
 #=
-  Los commentarios multilínea pueden escribirse
+  Los comentarios multilínea pueden escribirse
   usando '#=' antes de el texto  y '=#'
   después del texto. También se pueden anidar.
 =#
@@ -174,7 +174,7 @@ otraVariable_123! = 6    # => 6
     otra_variable
 
   * Los nombres de los tipos comienzan con una letra mayúscula y separación de
-    palabras se muestra con CamelCase en vez de guion bajo:
+    palabras se muestra con CamelCase en vez de guión bajo:
 
     OtroTipo
 
@@ -214,7 +214,7 @@ matrix = [1 2; 3 4]
      3  4
 =#
 
-# Añadir cosas a la final de un arreglo con push! y append!.
+# Añadir cosas al final de un arreglo con push! y append!.
 push!(a, 1)      # => [1]
 push!(a, 2)      # => [1,2]
 push!(a, 4)      # => [1,2,4]
@@ -237,7 +237,7 @@ a[end]    # => 6
 shift!(a)         # => 1 y a es ahora: [2,4,3,4,5,6]
 unshift!(a, 7)    # => [7,2,4,3,4,5,6]
 
-# Los nombres de funciónes que terminan en exclamaciones indican que modifican
+# Los nombres de funciones que terminan en exclamaciones indican que modifican
 # su o sus argumentos de entrada.
 arr = [5, 4, 6]    # => 3-element Array{Int64,1}: [5,4,6]
 sort(arr)          # => [4,5,6] y arr es todavía: [5,4,6]
@@ -710,7 +710,7 @@ end
 # Sólo define una función del mismo nombre que el tipo y llama al constructor
 # existente para obtener un valor del tipo correcto.
 
-# Este es un constructor externo porque es fuera de la definición del tipo.
+# Este es un constructor externo porque está fuera de la definición del tipo.
 Leon(rugido::String) = Leon("verde", rugido)
 
 type Pantera <: Gato    # Pantera también es un a subtipo de Gato
@@ -730,10 +730,10 @@ end
 ########################
 
 # En Julia, todas las funciones nombradas son funciones genéricas.
-# Esto significa que se construyen a partir de muchos métodosmás pequeños.
+# Esto significa que se construyen a partir de muchos métodos más pequeños.
 # Cada constructor de Leon es un método de la función genérica Leon.
 
-# Por ejemplo, vamos a hacer métodos para para Leon, Pantera, y Tigre de una
+# Por ejemplo, vamos a hacer métodos para Leon, Pantera, y Tigre de una
 # función genérica maullar:
 
 # acceso utilizando notación de puntos
