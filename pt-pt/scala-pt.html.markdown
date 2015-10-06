@@ -1,6 +1,6 @@
 ---
 language: Scala
-filename: learnscala.scala
+filename: learnscala-pt.scala
 contributors:
     - ["George Petrov", "http://github.com/petrovg"]
     - ["Dominic Bou-Samra", "http://dbousamra.github.com"]
@@ -9,7 +9,6 @@ contributors:
 translators:
     - ["João Costa", "http://joaocosta.eu"]
 lang: pt-pt
-filename: learn-pt.scala
 ---
 
 Scala - a linguagem escalável
