@@ -19,7 +19,7 @@ Vous pourrez bientôt trouver un article pour Python 3 en Français. Pour le mom
 
 ```python
 # Une ligne simple de commentaire commence par un dièse
-""" Les lignes de commenatires multipes peuvent être écrites
+""" Les lignes de commentaires multipes peuvent être écrites
     en utilisant 3 guillemets ("), et sont souvent utilisées
     pour les commentaires
 """
