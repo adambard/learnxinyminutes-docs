@@ -343,9 +343,9 @@ public class LearnJava {
         
         private static final Set<String> COUNTRIES = new HashSet<String>();
         static {
-	       validCodes.add("DENMARK");
-	       validCodes.add("SWEDEN");
-	       validCodes.add("FINLAND");
+           validCodes.add("DENMARK");
+           validCodes.add("SWEDEN");
+           validCodes.add("FINLAND");
         }
         
         // But there's a nifty way to achive the same thing in an
@@ -505,12 +505,12 @@ public class Fruit implements Edible, Digestible {
 public class ExampleClass extends ExampleClassParent implements InterfaceOne,
     InterfaceTwo {
     @Override
-	public void InterfaceOneMethod() {
-	}
+    public void InterfaceOneMethod() {
+    }
 
     @Override
-	public void InterfaceTwoMethod() {
-	}
+    public void InterfaceTwoMethod() {
+    }
 }
 
 // Abstract Classes 
@@ -530,56 +530,56 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 
 public abstract class Animal 
 {
-	public abstract void makeSound();
+    public abstract void makeSound();
 
-	// Method can have a body
-	public void eat()
-	{
-		System.out.println("I am an animal and I am Eating.");  
-		// Note: We can access private variable here.
-		age = 30;
-	}
+    // Method can have a body
+    public void eat()
+    {
+        System.out.println("I am an animal and I am Eating.");  
+        // Note: We can access private variable here.
+        age = 30;
+    }
 
-	// No need to initialize, however in an interface 
-	// a variable is implicitly final and hence has
-	// to be initialized.
-	protected int age;
+    // No need to initialize, however in an interface 
+    // a variable is implicitly final and hence has
+    // to be initialized.
+    protected int age;
 
-	public void printAge()
-	{
-		System.out.println(age);  
-	}
+    public void printAge()
+    {
+        System.out.println(age);  
+    }
 
-	// Abstract classes can have main function.
-	public static void main(String[] args)
-	{
-		System.out.println("I am abstract");
-	}
+    // Abstract classes can have main function.
+    public static void main(String[] args)
+    {
+        System.out.println("I am abstract");
+    }
 }
 
 class Dog extends Animal
 {
-	// Note still have to override the abstract methods in the
-	// abstract class.
-	@Override
-	public void makeSound()
-	{
-		System.out.println("Bark");
-		// age = 30;	==> ERROR!	age is private to Animal
-	}
+    // Note still have to override the abstract methods in the
+    // abstract class.
+    @Override
+    public void makeSound()
+    {
+        System.out.println("Bark");
+        // age = 30;	==> ERROR!	age is private to Animal
+    }
 
-	// NOTE: You will get an error if you used the 
-	// @Override annotation here, since java doesn't allow
-	// overriding of static methods.
-	// What is happening here is called METHOD HIDING.
-	// Check out this awesome SO post: http://stackoverflow.com/questions/16313649/
-	public static void main(String[] args)
-	{
-		Dog pluto = new Dog();
-		pluto.makeSound();
-		pluto.eat();
-		pluto.printAge();
-	}
+    // NOTE: You will get an error if you used the 
+    // @Override annotation here, since java doesn't allow
+    // overriding of static methods.
+    // What is happening here is called METHOD HIDING.
+    // Check out this awesome SO post: http://stackoverflow.com/questions/16313649/
+    public static void main(String[] args)
+    {
+        Dog pluto = new Dog();
+        pluto.makeSound();
+        pluto.eat();
+        pluto.printAge();
+    }
 }
 
 // Final Classes 
@@ -595,23 +595,23 @@ class Dog extends Animal
 // extended.
 public final class SaberToothedCat extends Animal
 {
-	// Note still have to override the abstract methods in the
-	// abstract class.
-	@Override
-	public void makeSound()
-	{
-		System.out.println("Roar");
-	}
+    // Note still have to override the abstract methods in the
+    // abstract class.
+    @Override
+    public void makeSound()
+    {
+        System.out.println("Roar");
+    }
 }
 
 // Final Methods
 public abstract class Mammal()
 {
-	// Final Method Syntax:
+    // Final Method Syntax:
     // <access modifier> final <return type> <function name>(<args>)
-	
+
     // Final methods, like, final classes cannot be overridden by a child class,
-	// and are therefore the final implementation of the method.
+    // and are therefore the final implementation of the method.
     public final boolean isWarmBlooded()
     {
         return true;
