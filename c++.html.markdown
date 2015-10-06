@@ -264,7 +264,7 @@ string retVal = tempObjectFun();
 
 // What happens in the second line is actually:
 //   - a string object is returned from tempObjectFun
-//   - a new string is constructed with the returned object as arugment to the
+//   - a new string is constructed with the returned object as argument to the
 //     constructor
 //   - the returned object is destroyed
 // The returned object is called a temporary object. Temporary objects are
