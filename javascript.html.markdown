@@ -218,6 +218,13 @@ for (var i = 0; i < 5; i++){
     // will run 5 times
 }
 
+//The For/In statement loops through the properties of an object:
+var description = "";
+var person = {fname:"Paul", lname:"Ken", age:18}; 
+for (var x in person) {
+    description += person[x] + " ";
+}
+
 // && is logical and, || is logical or
 if (house.size == "big" && house.colour == "blue"){
     house.contains = "bear";
