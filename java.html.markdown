@@ -513,28 +513,6 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 	}
 }
 
-// There are also two special types of classes, abstract and final.
-
-
-public abstract class Mammal()
-{
-    // Abstract classes can contain concrete methods.
-    public boolean hasHair()
-    {
-        return true;
-    }
-    
-    // Final methods, like, final classes cannot be overridden by a child class.
-    public final boolean isWarmBlooded()
-    {
-        return true;
-    }
-
-    // Abstract methods are methods required to be overridden in a child class.
-    public abstract String getBinomialNomenclature();
-}
-
-
 // Abstract Classes 
 // Abstract Class declaration syntax
 // <access-level> abstract <abstract-class-name> extends <super-abstract-classes> {
