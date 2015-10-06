@@ -160,7 +160,7 @@ li = []
 # You can start with a prefilled list
 other_li = [4, 5, 6]
 
-# String slpit to list
+# String split to list
 a="adambard"
 list(a) #=> ['a','d','a','m','b','a','r','d']
 
