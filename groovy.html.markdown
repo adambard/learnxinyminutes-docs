@@ -99,7 +99,7 @@ technologies.sort()
 // To sort without mutating original, you can do:
 sortedTechnologies = technologies.sort( false )
 
-/*** Manipulating Lists ***/
+/*** Manipulating Lists ***/e
 
 //Replace all elements in the list
 Collections.replaceAll(technologies, 'Gradle', 'gradle')
@@ -205,7 +205,7 @@ assert x == "worked"
 
 displayName = user.name ? user.name : 'Anonymous'
 
-//We can write like this:
+//We can write it:
 displayName = user.name ?: 'Anonymous'
 
 //For loop
