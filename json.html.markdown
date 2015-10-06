@@ -49,7 +49,7 @@ going to be 100% valid JSON. Luckily, it kind of speaks for itself.
   
   "alternative style": {
     "comment": "check this out!"
-  , "comma position": "doesn't matter - as long as its before the value, then its valid"
+  , "comma position": "doesn't matter - as long as it's before the value, then it's valid"
   , "another comment": "how nice"
   },
 

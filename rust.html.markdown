@@ -14,7 +14,7 @@ it possible to use Rust libraries as a "drop-in replacement" for C.
 
 Rust’s first release, 0.1, occurred in January 2012, and for 3 years development 
 moved so quickly that until recently the use of stable releases was discouraged
-and instead the general advise was to use nightly builds. 
+and instead the general advice was to use nightly builds. 
 
 On May 15th 2015, Rust 1.0 was released with a complete guarantee of backward 
 compatibility. Improvements to compile times and other aspects of the compiler are

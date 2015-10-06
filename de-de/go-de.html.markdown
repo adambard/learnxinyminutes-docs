@@ -312,7 +312,7 @@ Dokumentation lesen.
 Auch zu empfehlen ist die Spezifikation von Go, die nach heutigen Standards sehr
 kurz und auch gut verständlich formuliert ist. Auf der Leseliste von Go-Neulingen
 ist außerdem der Quelltext der [Go standard Bibliothek](http://golang.org/src/pkg/).
-Gut documentiert, demonstriert sie leicht zu verstehendes und im idiomatischen Stil
+Gut dokumentiert, demonstriert sie leicht zu verstehendes und im idiomatischen Stil
 verfasstes Go. Erreichbar ist der Quelltext auch durch das Klicken der Funktionsnamen
 in der [offiziellen Dokumentation von Go](http://golang.org/pkg/).
 

@@ -198,7 +198,7 @@ li[::-1]   # => [3, 4, 2, 1]
 
 # Remove arbitrary elements from a list with "del"
 del li[2]   # li is now [1, 2, 3]
-r
+
 # You can add lists
 li + other_li   # => [1, 2, 3, 4, 5, 6]
 # Note: values for li and for other_li are not modified.
