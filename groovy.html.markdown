@@ -99,7 +99,7 @@ technologies.sort()
 // To sort without mutating original, you can do:
 sortedTechnologies = technologies.sort( false )
 
-/*** Manipulating Lists ***/
+/*** Manipulating Lists ***/e
 
 //Replace all elements in the list
 Collections.replaceAll(technologies, 'Gradle', 'gradle')
@@ -199,6 +199,14 @@ if(x==1) {
 def y = 10
 def x = (y > 1) ? "worked" : "failed"
 assert x == "worked"
+
+//Groovy supports 'The Elvis Operator' too!
+//Instead of using the ternary operator:
+
+displayName = user.name ? user.name : 'Anonymous'
+
+//We can write it:
+displayName = user.name ?: 'Anonymous'
 
 //For loop
 //Iterate over a range
@@ -422,6 +430,3 @@ Join a [Groovy user group](http://www.groovy-lang.org/usergroups.html)
 [1] http://roshandawrani.wordpress.com/2010/10/18/groovy-new-feature-closures-can-now-memorize-their-results/
 [2] http://www.solutionsiq.com/resources/agileiq-blog/bid/72880/Programming-with-Groovy-Trampoline-and-Memoize
 [3] http://mrhaki.blogspot.mx/2011/05/groovy-goodness-cache-closure-results.html
-
-
-
