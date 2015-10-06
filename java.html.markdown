@@ -338,7 +338,7 @@ public class LearnJava {
         }
         
         // But there's a nifty way to achive the same thing in an
-        // easier way, buy using something that is called Double Brace
+        // easier way, by using something that is called Double Brace
         // Initialization.
         
         private static final Set<String> COUNTRIES = HashSet<String>() {{
