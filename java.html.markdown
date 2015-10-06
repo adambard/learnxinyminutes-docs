@@ -5,6 +5,7 @@ contributors:
     - ["Jakukyo Friel", "http://weakish.github.io"]
     - ["Madison Dickson", "http://github.com/mix3d"]
     - ["Simon Morgan", "http://sjm.io/"]
+    - ["Zachary Ferguson", "http://github.com/zfergus2"]
 filename: LearnJava.java
 ---
 
@@ -31,7 +32,7 @@ import java.security.*;
 // the file.
 public class LearnJava {
 
-    // A program must have a main method as an entry point.
+    // In order to run a java program, it must have a main method as an entry point.
     public static void main (String[] args) {
 
         // Use System.out.println() to print lines.
@@ -45,6 +46,8 @@ public class LearnJava {
         System.out.print("Hello ");
         System.out.print("World");
 
+        // Use System.out.printf() for easy formatted printing.
+        System.out.printf("pi = %.5f", Math.PI); // => pi = 3.14159
 
         ///////////////////////////////////////
         // Types & Variables
@@ -73,7 +76,7 @@ public class LearnJava {
 
         // Float - Single-precision 32-bit IEEE 754 Floating Point
         float fooFloat = 234.5f;
-        // f is used to denote that this variable value is of type float;
+        // f or F is used to denote that this variable value is of type float;
         // otherwise it is treated as double.
 
         // Double - Double-precision 64-bit IEEE 754 Floating Point
@@ -86,9 +89,12 @@ public class LearnJava {
         // Char - A single 16-bit Unicode character
         char fooChar = 'A';
 
-        // final variables can't be reassigned to another object.
+        // final variables can't be reassigned to another object,
         final int HOURS_I_WORK_PER_WEEK = 9001;
-
+        // but they can be initialized later.
+        final double E;
+        E = 2.71828;
+        
         // Strings
         String fooString = "My String Is Here!";
 
@@ -146,6 +152,7 @@ public class LearnJava {
         System.out.println("2-1 = " + (i2 - i1)); // => 1
         System.out.println("2*1 = " + (i2 * i1)); // => 2
         System.out.println("1/2 = " + (i1 / i2)); // => 0 (0.5 truncated down)
+        System.out.println("1/2 = " + (i1 / (i2*1.0))); // => 0.5
 
         // Modulo
         System.out.println("11%3 = "+(11 % 3)); // => 2
@@ -158,12 +165,17 @@ public class LearnJava {
         System.out.println("2 <= 2? " + (2 <= 2)); // => true
         System.out.println("2 >= 2? " + (2 >= 2)); // => true
 
+        // Boolean operators
+        System.out.println("3 > 2 && 2 > 3? " + ((3 > 2) && (2 > 3))); // => false
+        System.out.println("3 > 2 || 2 > 3? " + ((3 > 2) || (2 > 3))); // => true
+        System.out.println("!(3 == 2)? " + (!(3 == 2))); // => true
+
         // Bitwise operators!
         /*
         ~      Unary bitwise complement
         <<     Signed left shift
-        >>     Signed right shift
-        >>>    Unsigned right shift
+        >>     Signed/Arithmetic right shift
+        >>>    Unsigned/Logical right shift
         &      Bitwise AND
         ^      Bitwise exclusive OR
         |      Bitwise inclusive OR
@@ -216,9 +228,8 @@ public class LearnJava {
         System.out.println("fooDoWhile Value: " + fooDoWhile);
 
         // For Loop
-        int fooFor;
         // for loop structure => for(<start_statement>; <conditional>; <step>)
-        for (fooFor = 0; fooFor < 10; fooFor++) {
+        for (int fooFor = 0; fooFor < 10; fooFor++) {
             System.out.println(fooFor);
             // Iterated 10 times, fooFor 0->9
         }
@@ -310,7 +321,8 @@ public class LearnJava {
 } // End LearnJava class
 
 
-// You can include other, non-public outer-level classes in a .java file
+// You can include other, non-public outer-level classes in a .java file, 
+// but it is good practice. Instead split classes into separate files.
 
 
 // Class Declaration Syntax:
@@ -330,6 +342,8 @@ class Bicycle {
     // Constructors are a way of creating classes
     // This is a constructor
     public Bicycle() {
+        // You can also call another constructor: 
+        // this(1, 50, 5, "Bontrager");
         gear = 1;
         cadence = 50;
         speed = 5;
@@ -351,7 +365,7 @@ class Bicycle {
     // Java classes often implement getters and setters for their fields
 
     // Method declaration syntax:
-    // <scope> <return type> <method name>(<args>)
+    // <access modifier> <return type> <method name>(<args>)
     public int getCadence() {
         return cadence;
     }
@@ -382,7 +396,7 @@ class Bicycle {
     }
 
     //Method to display the attribute values of this Object.
-    @Override
+    @Override // Inherited from the Object class.
     public String toString() {
         return "gear: " + gear + " cadence: " + cadence + " speed: " + speed +
             " name: " + name;
@@ -417,26 +431,26 @@ class PennyFarthing extends Bicycle {
 
 // Example - Food:
 public interface Edible {
-	public void eat(); // Any class that implements this interface, must
+    public void eat(); // Any class that implements this interface, must
                        // implement this method.
 }
 
 public interface Digestible {
-	public void digest();
+    public void digest();
 }
 
 
 // We can now create a class that implements both of these interfaces.
 public class Fruit implements Edible, Digestible {
     @Override
-	public void eat() {
-		// ...
-	}
+    public void eat() {
+        // ...
+    }
 
     @Override
-	public void digest() {
-		// ...
-	}
+    public void digest() {
+        // ...
+    }
 }
 
 // In Java, you can extend only one class, but you can implement many
@@ -451,6 +465,44 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 	public void InterfaceTwoMethod() {
 	}
 }
+
+// There are also two special types of classes, abstract and final.
+
+// Marking a class as abstract means that it contains abstract methods that must
+// be defined in a child class. Similar to interfaces, abstract classes cannot 
+// be instantiated, but instead must be extended and the abstract methods 
+// defined. Different from interfaces, abstract classes can contain a mixture of
+// concrete and abstract methods.
+public abstract class Mammal()
+{
+    // Abstract classes can contain concrete methods.
+    public boolean hasHair()
+    {
+        return true;
+    }
+    
+    // Final methods, like, final classes cannot be overridden by a child class.
+    public final boolean isWarmBlooded()
+    {
+        return true;
+    }
+
+    // Abstract methods are methods required to be overridden in a child class.
+    public abstract String getBinomialNomenclature();
+}
+
+// Final classes are classes that cannot be inherited from and are therefore a
+// final child. In a way, final classes are the opposite of abstract classes 
+// because abstract classes must be extended, but final classes cannot be 
+// extended.
+public final class SaberToothedCat extends Mammal
+{
+    public String getBinomialNomenclature()
+    {
+        return "Smilodon fatalis";
+    }
+}
+
 ```
 
 ## Further Reading
