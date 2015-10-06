@@ -10,9 +10,9 @@ ColdFusion is a scripting language for web development.
 
 ```ColdFusion
 <!--- Comments start with "<!---" and end with "--->" --->
-<!--- 
+<!---
     Comments can
-    also 
+    also
     span
     multiple lines
 --->
@@ -25,8 +25,10 @@ ColdFusion is a scripting language for web development.
 
 <!--- Displaying simple data --->
 <!--- Use <cfoutput> for simple values such as strings, numbers, and expressions --->
-<cfoutput>#myVariable#</cfoutput> <!--- myValue --->
-<cfoutput>#myNumber#</cfoutput> <!--- 3.14 --->
+<cfoutput>#myVariable#<br /></cfoutput> <!--- myValue --->
+<cfoutput>#myNumber#<br /></cfoutput> <!--- 3.14 --->
+
+<hr />
 
 <!--- Declaring complex variables --->
 <!--- Declaring an array of 1 dimension: literal or bracket notation --->
@@ -40,19 +42,23 @@ ColdFusion is a scripting language for web development.
 
 <!--- Operators --->
 <!--- Arithmetic --->
-<cfoutput>#1 + 1#</cfoutput> = 2
-<cfoutput>#10 - 8#</cfoutput> = 2
-<cfoutput>#1 * 2#</cfoutput> = 2
-<cfoutput>#10 / 5#</cfoutput> = 2
-<cfoutput>#12 % 5#</cfoutput> = 0
+<cfoutput>#1 + 1#<br /></cfoutput> = 2
+<cfoutput>#10 - 8#<br /></cfoutput> = 2
+<cfoutput>#1 * 2#<br /></cfoutput> = 2
+<cfoutput>#10 / 5#<br /></cfoutput> = 2
+<cfoutput>#12 % 5#<br /></cfoutput> = 0
+
+<hr />
 
 <!--- Comparison --->
-<cfoutput>#1 eq 1#</cfoutput> <!--- TRUE --->
-<cfoutput>#15 neq 1#</cfoutput> <!--- TRUE --->
-<cfoutput>#10 gt 8#</cfoutput> <!--- TRUE --->
-<cfoutput>#1 lt 2#</cfoutput> <!--- TRUE --->
-<cfoutput>#10 gte 5#</cfoutput> <!--- TRUE --->
-<cfoutput>#1 lte 5#</cfoutput> <!--- TRUE --->
+<cfoutput>#1 eq 1#<br /></cfoutput> <!--- TRUE --->
+<cfoutput>#15 neq 1#<br /></cfoutput> <!--- TRUE --->
+<cfoutput>#10 gt 8#<br /></cfoutput> <!--- TRUE --->
+<cfoutput>#1 lt 2#<br /></cfoutput> <!--- TRUE --->
+<cfoutput>#10 gte 5#<br /></cfoutput> <!--- TRUE --->
+<cfoutput>#1 lte 5#<br /></cfoutput> <!--- TRUE --->
+
+<hr />
 
 <!--- Control Structures --->
 <cfset myCondition = "Test" />
@@ -63,36 +69,17 @@ ColdFusion is a scripting language for web development.
 <cfelse>
     myCondition is unknown
 </cfif>
+
+<hr />
+
+<!--- Loops --->
+<cfloop from="0" to="10" index="i">
+	<cfoutput>#i# <br /></cfoutput>
+</cfloop>
+
+<hr />
 ```
-<!--        // While loop
-        int fooWhile = 0;
-        while(fooWhile < 100) {
-            System.out.println(fooWhile);
-            // Increment the counter
-            // Iterated 100 times, fooWhile 0,1,2...99
-            fooWhile++;
-        }
-        System.out.println("fooWhile Value: " + fooWhile);
-
-        // Do While Loop
-        int fooDoWhile = 0;
-        do {
-            System.out.println(fooDoWhile);
-            // Increment the counter
-            // Iterated 99 times, fooDoWhile 0->99
-            fooDoWhile++;
-        } while(fooDoWhile < 100);
-        System.out.println("fooDoWhile Value: " + fooDoWhile);
-
-        // For Loop
-        int fooFor;
-        // for loop structure => for(<start_statement>; <conditional>; <step>)
-        for (fooFor = 0; fooFor < 10; fooFor++) {
-            System.out.println(fooFor);
-            // Iterated 10 times, fooFor 0->9
-        }
-        System.out.println("fooFor Value: " + fooFor);
-
+<!--
         // For Each Loop
         // The for loop is also able to iterate over arrays as well as objects
         // that implement the Iterable interface.
@@ -322,7 +309,7 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 }
 
 
-// Abstract Classes 
+// Abstract Classes
 // Abstract Class declaration syntax
 // <access-level> abstract <abstract-class-name> extends <super-abstract-classes> {
 //     // Constants and variables
@@ -334,26 +321,26 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 // Also abstract classes CAN have the "main" method.
 // Abstract classes solve these problems.
 
-public abstract class Animal 
+public abstract class Animal
 {
 	public abstract void makeSound();
 
 	// Method can have a body
 	public void eat()
 	{
-		System.out.println("I am an animal and I am Eating.");  
+		System.out.println("I am an animal and I am Eating.");
 		// Note: We can access private variable here.
 		age = 30;
 	}
 
-	// No need to initialize, however in an interface 
+	// No need to initialize, however in an interface
 	// a variable is implicitly final and hence has
 	// to be initialized.
 	private int age;
 
 	public void printAge()
 	{
-		System.out.println(age);  
+		System.out.println(age);
 	}
 
 	// Abstract classes can have main function.
@@ -374,7 +361,7 @@ class Dog extends Animal
 		// age = 30;	==> ERROR!	age is private to Animal
 	}
 
-	// NOTE: You will get an error if you used the 
+	// NOTE: You will get an error if you used the
 	// @Override annotation here, since java doesn't allow
 	// overriding of static methods.
 	// What is happening here is called METHOD HIDING.
