@@ -325,6 +325,33 @@ public class LearnJava {
 
         // toString returns this Object's string representation.
         System.out.println("trek info: " + trek.toString());
+        
+        // Double Brace Initialization
+        // The Java Language has no syntax for how to create static Collections
+        // in an easy way. Usually you end up in the following way:
+        
+        private static final Set<String> COUNTRIES = new HashSet<String>();
+        static {
+	       validCodes.add("DENMARK");
+	       validCodes.add("SWEDEN");
+	       validCodes.add("FINLAND");
+        }
+        
+        // But there's a nifty way to achive the same thing in an
+        // easier way, buy using something that is called Double Brace
+        // Initialization.
+        
+        private static final Set<String> COUNTRIES = HashSet<String>() {{
+            add("DENMARK");
+            add("SWEDEN");
+            add("FINLAND");            
+        }}
+        
+        // The first brace is creating an new AnonymousInnerClass and the 
+        // second one declares and instance initializer block. This block
+        // is called with the anonymous inner class is created.
+        // This does not only work for Collections, it works for all
+        // non-final classes.
 
     } // End main method
 } // End LearnJava class
