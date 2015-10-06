@@ -513,14 +513,9 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 	}
 }
 
-<<<<<<< HEAD
 // There are also two special types of classes, abstract and final.
 
-// Marking a class as abstract means that it contains abstract methods that must
-// be defined in a child class. Similar to interfaces, abstract classes cannot 
-// be instantiated, but instead must be extended and the abstract methods 
-// defined. Different from interfaces, abstract classes can contain a mixture of
-// concrete and abstract methods.
+
 public abstract class Mammal()
 {
     // Abstract classes can contain concrete methods.
@@ -539,17 +534,6 @@ public abstract class Mammal()
     public abstract String getBinomialNomenclature();
 }
 
-// Final classes are classes that cannot be inherited from and are therefore a
-// final child. In a way, final classes are the opposite of abstract classes 
-// because abstract classes must be extended, but final classes cannot be 
-// extended.
-public final class SaberToothedCat extends Mammal
-{
-    public String getBinomialNomenclature()
-    {
-        return "Smilodon fatalis";
-    }
-=======
 
 // Abstract Classes 
 // Abstract Class declaration syntax
@@ -558,10 +542,13 @@ public final class SaberToothedCat extends Mammal
 //     // Method declarations
 // }
 
-// Methods can't have bodies in an interface, unless the method is
-// static. Also variables are NOT final by default, unlike an interface.
-// Also abstract classes CAN have the "main" method.
-// Abstract classes solve these problems.
+// Marking a class as abstract means that it contains abstract methods that must
+// be defined in a child class. Similar to interfaces, abstract classes cannot 
+// be instantiated, but instead must be extended and the abstract methods 
+// defined. Different from interfaces, abstract classes can contain a mixture of
+// concrete and abstract methods. Methods in an interface cannot have a body, 
+// unless the method is static, and variables are final by default, unlike an
+// abstract class. Also abstract classes CAN have the "main" method.
 
 public abstract class Animal 
 {
@@ -578,7 +565,7 @@ public abstract class Animal
 	// No need to initialize, however in an interface 
 	// a variable is implicitly final and hence has
 	// to be initialized.
-	private int age;
+	protected int age;
 
 	public void printAge()
 	{
@@ -615,7 +602,28 @@ class Dog extends Animal
 		pluto.eat();
 		pluto.printAge();
 	}
->>>>>>> adambard/master
+}
+
+// Final Classes 
+// Final Class declaration syntax
+// <access-level> final <final-class-name> {
+//     // Constants and variables
+//     // Method declarations
+// }
+
+// Final classes are classes that cannot be inherited from and are therefore a
+// final child. In a way, final classes are the opposite of abstract classes 
+// because abstract classes must be extended, but final classes cannot be 
+// extended.
+public final class SaberToothedCat extends Animal
+{
+	// Note still have to override the abstract methods in the
+	// abstract class.
+	@Override
+	public void makeSound()
+	{
+		System.out.println("Roar");
+	}
 }
 
 ```
