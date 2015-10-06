@@ -2,7 +2,6 @@
 language: PHP
 contributors:
     - ["Pascal Boutin", "http://pboutin.net/"]
-filename: learnphp.php
 lang: fr-fr
 ---
 
@@ -16,11 +15,11 @@ This document describes PHP 5+.
 
 // Deux barres obliques amorcent un commentaire simple.
 
-# Le dièse également, bien que les barres obliques soient plus courantes
+# Le dièse aussi, bien que les barres obliques soient plus courantes
 
 /*
     Les barres obliques et les astérisques peuvent être utilisés
-    pour faire un commentaire multi-ligne.
+    pour faire un commentaire multi-lignes.
 */
 
 // Utilisez "echo" ou "print" afficher une sortie
@@ -28,6 +27,7 @@ print('Hello '); // Affiche "Hello " sans retour à la ligne
 
 // Les parenthèses sont facultatives pour print et echo
 echo "World\n"; // Affiche "World" avec un retour à la ligne
+
 // tout les instructions doivent se terminer par un point-virgule
 
 // Tout ce qui se trouve en dehors des <?php ?> est automatiquement
@@ -248,7 +248,7 @@ $boolean = (boolean) $zero; // => false
 $integer = 5;
 $string = strval($integer);
 
-$var = null; // Valeur Null
+$var = null; // Valeur nulle
 
 
 /********************************
@@ -353,7 +353,7 @@ echo "\n";
 
 // Il est également possible d'accéder aux clés du tableau
 foreach ($wheels as $vehicle => $wheel_count) {
-    echo "Le $vehicle a $wheel_count roues";
+    echo "The $vehicle have $wheel_count wheels";
 }
 
 echo "\n";
