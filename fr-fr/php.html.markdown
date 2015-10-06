@@ -1,6 +1,6 @@
 ---
 language: PHP
-contributors:
+translators:
     - ["Pascal Boutin", "http://pboutin.net/"]
 lang: fr-fr
 ---
@@ -8,10 +8,10 @@ lang: fr-fr
 This document describes PHP 5+.
 
 ```php
- // Le code PHP doit être placé à l'intérieur de tags '<?php'
+ // Le code PHP doit être placé à l'intérieur de balises '<?php'
 
 // Si votre fichier php ne contient que du code PHP, il est
-// généralement recommandé de ne pas fermer le tag '?>'
+// généralement recommandé de ne pas fermer la balise '?>'
 
 // Deux barres obliques amorcent un commentaire simple.
 
@@ -28,7 +28,7 @@ print('Hello '); // Affiche "Hello " sans retour à la ligne
 // Les parenthèses sont facultatives pour print et echo
 echo "World\n"; // Affiche "World" avec un retour à la ligne
 
-// tout les instructions doivent se terminer par un point-virgule
+// toutes les instructions doivent se terminer par un point-virgule
 
 // Tout ce qui se trouve en dehors des <?php ?> est automatiquement
 // affiché en sortie
@@ -42,7 +42,7 @@ Hello World Again!
 
 // Les noms de variables débutent par le symbole $
 // Un nom de variable valide commence par une lettre ou un souligné,
-// suivi de n'importe quelle lettre, nombre ou soulignés.
+// suivi de n'importe quelle lettre, nombre ou de soulignés.
 
 // Les valeurs booléenes ne sont pas sensibles à la casse
 $boolean = true;  // ou TRUE ou True
@@ -71,8 +71,8 @@ $quotient   = 2 / 1; // 2 (division)
 // Arithmétique (raccourcis)
 $number = 0;
 $number += 2;      // Incrémente $number de 2
-echo $number++;    // Affiche 1 (incrémente après l'évaluation)
-echo ++$number;    // Affiche 3 (incrémente après l'évaluation)
+echo $number++;    // Affiche 2 (incrémente après l'évaluation)
+echo ++$number;    // Affiche 4 (incrémente avant l'évaluation)
 $number /= $float; // Divise et assigne le quotient à $number
 
 // Les chaînes de caractères (strings) doivent être à
@@ -82,21 +82,21 @@ $sgl_quotes = '$String'; // => '$String'
 // Évitez les guillemets sauf pour inclure le contenu d'une autre variable
 $dbl_quotes = "This is a $sgl_quotes."; // => 'This is a $String.'
 
-// Les caractères spéciaux sont seulement échappé avec des guillemets
+// Les caractères spéciaux sont seulement échappés avec des guillemets
 $escaped   = "This contains a \t tab character.";
 $unescaped = 'This just contains a slash and a t: \t';
 
-// En cas de besoins, placez la variable dans des accolades
+// En cas de besoin, placez la variable dans des accolades
 $money = "I have $${number} in the bank.";
 
-// Depuis PHP 5.3, nowdocs peut être utilisé pour faire des chaînes
+// Depuis PHP 5.3, Nowdoc peut être utilisé pour faire des chaînes
 // multi-lignes non-interprétées
 $nowdoc = <<<'END'
 Multi line
 string
 END;
 
-// Heredocs peut être utilisé pour faire des chaînes multi-lignes interprétées
+// Heredoc peut être utilisé pour faire des chaînes multi-lignes interprétées
 $heredoc = <<<END
 Multi line
 $sgl_quotes
@@ -125,9 +125,9 @@ echo 'This outputs '.FOO;
  * Tableaux (array)
  */
 
-// Tout les tableaux en PHP sont associatifs (hashmaps),
+// Tous les tableaux en PHP sont associatifs (hashmaps),
 
-// Fonctionne dans tout les versions de PHP
+// Fonctionne dans toutes les versions de PHP
 $associative = array('One' => 1, 'Two' => 2, 'Three' => 3);
 
 // PHP 5.4 a introduit une nouvelle syntaxe
@@ -142,7 +142,7 @@ echo $array[0]; // => "One"
 // Ajoute un élément à la fin du tableau
 $array[] = 'Four';
 
-// Retrait d'un élément d'un tableau
+// Retrait d'un élément du tableau
 unset($array[3]);
 
 /********************************
@@ -187,7 +187,7 @@ echo $z; // => 0
 // Affiche le type et la valeur de la variable dans stdout
 var_dump($z); // prints int(0)
 
-// Affiche la variable dans stdout dans un format plus accessible
+// Affiche la variable dans stdout dans un format plus convivial
 print_r($array); // prints: Array ( [0] => One [1] => Two [2] => Three )
 
 /********************************
@@ -200,7 +200,7 @@ $d = '1';
 
 // assert affiche un avertissement dans son argument n'est pas vrai
 
-// Ces comparaisons vont toujours être vrais, même si leurs
+// Ces comparaisons vont toujours être vraies, même si leurs
 // types ne sont pas les mêmes.
 assert($a == $b); // égalité
 assert($c != $a); // inégalité
@@ -210,7 +210,7 @@ assert($c > $b);
 assert($a <= $b);
 assert($c >= $d);
 
-// Ces comparaisons vont seulement être vrais si les types concordent.
+// Ces comparaisons vont seulement être vraies si les types concordent.
 assert($c === $d);
 assert($a !== $d);
 assert(1 === '1');
@@ -224,7 +224,7 @@ echo $a <=> $a; // 0 car ils sont égaux
 echo $a <=> $b; // -1 car $a < $b
 echo $b <=> $a; // 1 car $b > $a
 
-// Les variables peuvent être transtypées dépendant de leur usage.
+// Les variables peuvent être transtypées dépendamment de leur usage.
 
 $integer = 1;
 echo $integer + $integer; // => 2
@@ -302,7 +302,7 @@ if ($x === '0') {
 <?php if ($x): ?>
 <p>Ceci est affiché si $x est vrai</p>
 <?php else: ?>
-<p>Sinon ce sera ceci</p>
+<p>Ceci est affiché si $x est faux</p>
 <?php endif; ?>
 
 <?php
@@ -368,7 +368,7 @@ while ($i < 5) {
 
 for ($i = 0; $i < 5; $i++) {
     if ($i === 3) {
-        continue; // Permet de passer imédiatement à l'itération suivante
+        continue; // Permet de passer immédiatement à l'itération suivante
     }
     echo $i;
 } // Affiche "0124"
@@ -385,8 +385,10 @@ function my_function () {
 
 echo my_function(); // => "Hello"
 
-// Un nom de fonction valide doit débuter par une lettre ou un souligné,
-// suivi de n'importe, quelles lettres, nombres ou soulignés.
+
+// Les noms de fonction débutent par le symbole $
+// Un nom de variable valide commence par une lettre ou un souligné,
+// suivi de n'importe quelle lettre, nombre ou de soulignés.
 
 function add ($x, $y = 1) { // $y est facultatif et sa valeur par défaut est 1
   $result = $x + $y;
@@ -435,7 +437,7 @@ call_user_func(callable $callback [, $parameter [, ... ]]);
 
 <?php
 // Le PHP se trouvant dans un fichier inclus doit
-// également commencer par un tag PHP.
+// également commencer par une balise PHP.
 
 include 'my-file.php';
 // Le code se trouvant dans my-file.php est maintenant disponible dans
@@ -552,6 +554,7 @@ $my_other_class = new MyOtherClass('Instance prop');
 $my_other_class->printProtectedProperty(); // => Retourne "protected"
 $my_other_class->myMethod();               // Retourne "MyClass > MyOtherClass"
 
+// On peut empêcher qu'une classe soit héritée
 final class YouCannotExtendMe
 {
 }
@@ -678,13 +681,13 @@ $cls = new SomeOtherNamespace\MyClass();
 
 ## Pour plus d'informations
 
-Visitez la [documentation officielle](http://www.php.net/manual/fr)..
+Visitez la [documentation officielle](http://www.php.net/manual/fr).
 
-Si vous êtes intéressé aux bonnes pratiques, visitez
+Si vous êtes intéressé par les bonnes pratiques, visitez
 [PHP The Right Way](http://www.phptherightway.com/) (anglais seulement).
 
-Si vous êtes habitué d'utiliser de bons gestionaires de dépendances, regardez
+Si vous êtes habitué à utiliser de bons gestionaires de dépendances, regardez
 [Composer](http://getcomposer.org/).
 
-Pour les standards, visitez "the PHP Framework Interoperability Group's"
+Pour consulter les standards, visitez "the PHP Framework Interoperability Groups"
 [PSR standards](https://github.com/php-fig/fig-standards).
