@@ -47,10 +47,30 @@ public class LearnJava {
 
 
         ///////////////////////////////////////
-        // Types & Variables
+        // Variables 
         ///////////////////////////////////////
-
+        
+        /*
+        *  Variable Declaration
+        */
         // Declare a variable using <type> <name>
+        int fooInt;
+        // Declare multiple variables of the same type <type> <name1>, <name2>, <name3>
+        int fooInt1, fooInt2, fooInt3;
+
+        /*
+        *  Variable Initialization
+        */
+
+        // Initialize a variable using <type> <name> = <val>
+        int fooInt = 1;
+        // Initialize multiple variables of same type with same value <type> <name1>, <name2>, <name3> = <val>
+        int fooInt1, fooInt2, fooInt3;
+        fooInt1 = fooInt2 = fooInt3 = 1;
+
+        /*
+        *  Variable types
+        */
         // Byte - 8-bit signed two's complement integer
         // (-128 <= byte <= 127)
         byte fooByte = 100;
@@ -305,6 +325,33 @@ public class LearnJava {
 
         // toString returns this Object's string representation.
         System.out.println("trek info: " + trek.toString());
+        
+        // Double Brace Initialization
+        // The Java Language has no syntax for how to create static Collections
+        // in an easy way. Usually you end up in the following way:
+        
+        private static final Set<String> COUNTRIES = new HashSet<String>();
+        static {
+	       validCodes.add("DENMARK");
+	       validCodes.add("SWEDEN");
+	       validCodes.add("FINLAND");
+        }
+        
+        // But there's a nifty way to achive the same thing in an
+        // easier way, by using something that is called Double Brace
+        // Initialization.
+        
+        private static final Set<String> COUNTRIES = HashSet<String>() {{
+            add("DENMARK");
+            add("SWEDEN");
+            add("FINLAND");            
+        }}
+        
+        // The first brace is creating an new AnonymousInnerClass and the 
+        // second one declares and instance initializer block. This block
+        // is called with the anonymous inner class is created.
+        // This does not only work for Collections, it works for all
+        // non-final classes.
 
     } // End main method
 } // End LearnJava class
@@ -451,6 +498,74 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 	public void InterfaceTwoMethod() {
 	}
 }
+
+
+// Abstract Classes 
+// Abstract Class declaration syntax
+// <access-level> abstract <abstract-class-name> extends <super-abstract-classes> {
+//     // Constants and variables
+//     // Method declarations
+// }
+
+// Methods can't have bodies in an interface, unless the method is
+// static. Also variables are NOT final by default, unlike an interface.
+// Also abstract classes CAN have the "main" method.
+// Abstract classes solve these problems.
+
+public abstract class Animal 
+{
+	public abstract void makeSound();
+
+	// Method can have a body
+	public void eat()
+	{
+		System.out.println("I am an animal and I am Eating.");  
+		// Note: We can access private variable here.
+		age = 30;
+	}
+
+	// No need to initialize, however in an interface 
+	// a variable is implicitly final and hence has
+	// to be initialized.
+	private int age;
+
+	public void printAge()
+	{
+		System.out.println(age);  
+	}
+
+	// Abstract classes can have main function.
+	public static void main(String[] args)
+	{
+		System.out.println("I am abstract");
+	}
+}
+
+class Dog extends Animal
+{
+	// Note still have to override the abstract methods in the
+	// abstract class.
+	@Override
+	public void makeSound()
+	{
+		System.out.println("Bark");
+		// age = 30;	==> ERROR!	age is private to Animal
+	}
+
+	// NOTE: You will get an error if you used the 
+	// @Override annotation here, since java doesn't allow
+	// overriding of static methods.
+	// What is happening here is called METHOD HIDING.
+	// Check out this awesome SO post: http://stackoverflow.com/questions/16313649/
+	public static void main(String[] args)
+	{
+		Dog pluto = new Dog();
+		pluto.makeSound();
+		pluto.eat();
+		pluto.printAge();
+	}
+}
+
 ```
 
 ## Further Reading

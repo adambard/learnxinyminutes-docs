@@ -4,6 +4,7 @@ contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
     - ["Marco Scannadinari", "https://github.com/marcoms"]
     - ["Geoffrey Liu", "https://github.com/g-liu"]
+    - ["Connor Shea", "https://github.com/connorshea"]
 filename: learncss.css
 ---
 
@@ -238,10 +239,13 @@ of what you use in CSS with your target browsers.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) is one of the best sources for this.
 
-To run a quick compatibility check, [CanIUse](http://caniuse.com) is a great resource.
+To run a quick compatibility check, [Can I Use...](http://caniuse.com) is a great resource.
 
 ## Further Reading
 
+* [Mozilla Developer Network's CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [Codrops' CSS Reference](http://tympanus.net/codrops/css_reference/)
 * [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
 * [QuirksMode CSS](http://www.quirksmode.org/css/)
 * [Z-Index - The stacking context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
+* [SCSS](http://sass-lang.com/) and [LESS](http://lesscss.org/) for CSS pre-processing

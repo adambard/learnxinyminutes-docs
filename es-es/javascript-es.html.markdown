@@ -478,9 +478,6 @@ miNumero === miNumeroObjeyo; // = false
 if (0){
     // Este código no se ejecutara porque 0 es false.
 }
-if (Number(0)){
-    // Este código sí se ejecutara, puesto que Number(0) es true.
-}
 
 // Aún así, los objetos que envuelven y los prototipos por defecto comparten
 // un prototipo. así que puedes agregar funcionalidades a un string de la 

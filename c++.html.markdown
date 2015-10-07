@@ -245,7 +245,13 @@ cout << fooRef; // Prints "I am foo. Hi!"
 // Doesn't reassign "fooRef". This is the same as "foo = bar", and
 //   foo == "I am bar"
 // after this line.
+cout << &fooRef << endl; //Prints the address of foo
 fooRef = bar;
+cout << &fooRef << endl; //Still prints the address of foo
+cout << fooRef;  // Prints "I am bar"
+
+//The address of fooRef remains the same, i.e. it is still referring to foo.
+
 
 const string& barRef = bar; // Create a const reference to bar.
 // Like C, const values (and pointers and references) cannot be modified.
@@ -258,7 +264,7 @@ string retVal = tempObjectFun();
 
 // What happens in the second line is actually:
 //   - a string object is returned from tempObjectFun
-//   - a new string is constructed with the returned object as arugment to the
+//   - a new string is constructed with the returned object as argument to the
 //     constructor
 //   - the returned object is destroyed
 // The returned object is called a temporary object. Temporary objects are

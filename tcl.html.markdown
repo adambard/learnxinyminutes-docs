@@ -356,7 +356,7 @@ eval $command ;# There is an error here, because there are too many arguments \
 set replacement {Archibald Sorbisol}
 set command {set name $replacement}
 set command [subst $command] 
-eval $command ;# The same error as before:  to many arguments to "set" in \
+eval $command ;# The same error as before: too many arguments to "set" in \
     {set name Archibald Sorbisol}
 
 

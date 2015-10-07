@@ -248,7 +248,8 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
             // Ternärer Operator
             // Anstatt eines einfachen if/else lässt sich auch folgendes schreiben:
             // <condition> ? <true> : <false>
-            string isTrue = true ? "Ja" : "Nein";
+            int zumVergleich = 17;
+            string isTrue = zumVergleich == 17 ? "Ja" : "Nein";
 
             // while-Schleife
             int fooWhile = 0;

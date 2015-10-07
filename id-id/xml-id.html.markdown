@@ -5,6 +5,7 @@ contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
 translators:
   - ["Rizky Luthfianto", "https://github.com/rilut"]
+lang: id-id
 ---
 
 XML adalah bahasa markup yang dirancang untuk menyimpan dan mengirim data.
