@@ -693,6 +693,11 @@ use My\Namespace as SomeOtherNamespace;
 
 $cls = new SomeOtherNamespace\MyClass();
 
+/**********************
+*  Error Handling
+*  
+*/
+
 // Simple error handling can be done with try catch block
 
 try {
