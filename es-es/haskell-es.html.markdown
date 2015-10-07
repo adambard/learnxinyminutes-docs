@@ -7,7 +7,7 @@ translators:
 lang: es-es
 ---
 
-Haskell fue diseñado como lenguaje de programación funcional práctico y puro. Es famoso por sus mónadas y su sistema de tipos, pero regreso a él debido a su elegancia. Haskell hace la codificación una verdadera alegría para mí.
+Haskell fue diseñado como lenguaje de programación funcional práctico y puro. Es famoso por sus mónadas y su sistema de tipos, pero siempre regreso a él debido a su elegancia. Haskell hace la codificación una verdadera alegría para mí.
 
 ```haskell
 -- Para comentar una sola línea utiliza dos guiones.
@@ -19,7 +19,7 @@ en un bloque como este.
 -- 1. Tipos de datos primitivos y Operadores
 ----------------------------------------------------
 
--- Cuentas con números
+-- Tienes números a tu disposición
 3 -- 3
 
 -- Matématicas, es lo que esperas
@@ -94,7 +94,7 @@ not False -- True
 [1..] !! 999 -- 1000
 
 -- Y ahora Haskell ha evaluado elementos 1 - 1000 de esta lista...pero el
--- resto de los elementos de esta lista "infinita" !no existen todavía! Haskell no lo hará
+-- resto de los elementos de esta lista "infinita" ¡no existen todavía! Haskell no lo hará
 -- en realidad los evalúa hasta que los necesita.
 
 -- uniendo dos listas
@@ -109,10 +109,10 @@ tail [1..5] -- [2, 3, 4, 5]
 init [1..5] -- [1, 2, 3, 4]
 last [1..5] -- 5
 
--- listas intencionales
+-- Listas por comprensión
 [x*2 | x <- [1..5]] -- [2, 4, 6, 8, 10]
 
--- con condiciones
+-- Listas por comprensión usando condicionales
 [x*2 | x <- [1..5], x*2 > 4] -- [6, 8, 10]
 
 -- Cada elemento en una tupla puede ser de diferente tipo, pero una tupla tiene
@@ -141,8 +141,8 @@ add 1 2 -- 3
 -- con acentos abiertos:
 1 `add` 2 -- 3
 
--- !También puedes definir las funciones que no tienen letras! De este modo
--- !Tú defines tus propios operadores! Aquí esta un operador que realiza
+-- ¡También puedes definir funciones sin tener que utilizar letras! De este modo
+-- ¡Tú defines tus propios operadores! Aquí esta un operador que realiza
 -- una división entera
 (//) a b = a `div` b
 35 // 4 -- 8
@@ -152,7 +152,7 @@ fib x
   | x < 2 = 1
   | otherwise = fib (x - 1) + fib (x - 2)
 
--- Coincidencia de patrones es similar. Aquí hemos dado tres diferentes
+-- La coincidencia de patrones es similar. Aquí hemos dado tres diferentes
 -- definiciones para fib. Haskell llamará automáticamente la primer
 -- función que coincide con el patrón del valor.
 fib 1 = 1
@@ -182,7 +182,7 @@ foldl1 (\acc x -> acc + x) [1..5] -- 15
 ----------------------------------------------------
 
 -- aplicación parcial: si no quieres pasar todos los argumentos a una función,
--- esta es "parcialmente aplicada". Es decir esta retorna una función que toma
+-- esta es "parcialmente aplicada". Esto significa que retorna una función que toma
 -- el resto de los argumentos.
 
 add a b = a + b
@@ -234,7 +234,7 @@ True :: Bool
 -- `not` toma un booleano y devuelve un booleano:
 -- not :: Bool -> Bool
 
--- Aquí esta función toma dos argumentos:
+-- Aquí, esta función toma dos argumentos:
 -- add :: Integer -> Integer -> Integer
 
 -- Cuando defines un valor, es una buena práctica escribir su tipo en una línea superior:
@@ -245,71 +245,72 @@ double x = x * 2
 -- 6. Control de flujo y Expresiones If
 ----------------------------------------------------
 
--- expressiones if
+-- expressiones if en una sola línea
 haskell = if 1 == 1 then "awesome" else "awful" -- haskell = "awesome"
 
--- expressiones if pueden estar en múltiples líneas, la identación es importante
+-- expressiones if en múltiples líneas, la identación es importante
 haskell = if 1 == 1
             then "awesome"
             else "awful"
 
--- expressiones case: Here's how you could parse command line arguments
+-- expressiones case: Aquí se muestra como analizar los argumentos 
+-- desde línea de comandos
 case args of
   "help" -> printHelp
   "start" -> startProgram
   _ -> putStrLn "bad args"
 
--- Haskell doesn't have loops; it uses recursion instead.
--- map applies a function over every element in an array
+-- Haskell no tiene ciclos; en lugar de esto utiliza recursión.
+-- map aplica una función sobre cada elemento en un arreglo
 
 map (*2) [1..5] -- [2, 4, 6, 8, 10]
 
--- you can make a for function using map
+-- tú puedes crear una función utilizando map
 for array func = map func array
 
--- and then use it
+-- y entonces utilizarla
 for [0..5] $ \i -> show i
 
--- we could've written that like this too:
+-- también podríamos haberlo escrito de esta manera:
 for [0..5] show
 
--- You can use foldl or foldr to reduce a list
--- foldl <fn> <initial value> <list>
+-- Puedes utilizar foldl o foldr para reducir una lista
+-- foldl <fn> <valor inicial> <lista>
 foldl (\x y -> 2*x + y) 4 [1,2,3] -- 43
 
--- This is the same as
+-- Esto es lo mismo que
 (2 * (2 * (2 * 4 + 1) + 2) + 3)
 
--- foldl is left-handed, foldr is right-
+-- foldl es izquierda, foldr es derecha
 foldr (\x y -> 2*x + y) 4 [1,2,3] -- 16
 
--- This is now the same as
+-- Esto es los mismo que
 (2 * 1 + (2 * 2 + (2 * 3 + 4)))
 
 ----------------------------------------------------
--- 7. Data Types
+-- 7. Tipos de datos
 ----------------------------------------------------
 
--- Here's how you make your own data type in Haskell
+-- Por ejemplo, para crear tu propio tipo de dato en Haskell
 
-data Color = Red | Blue | Green
+data Color = Rojo | Azul | Verde
 
--- Now you can use it in a function:
+-- Ahora puedes utilizarlo en una función:
 
 
 say :: Color -> String
-say Red = "You are Red!"
-say Blue = "You are Blue!"
-say Green =  "You are Green!"
+say Rojo = "¡Es Rojo!"
+say Azul = "¡Es Azul!"
+say Verde =  "¡Es Verde!"
 
--- Your data types can have parameters too:
+-- Tus tipos de datos pueden tener parámetros también:
 
 data Maybe a = Nothing | Just a
 
--- These are all of type Maybe
-Just "hello"    -- of type `Maybe String`
-Just 1          -- of type `Maybe Int`
-Nothing         -- of type `Maybe a` for any `a`
+-- Estos son todos de tipo Maybe
+Just "hello"    -- de tipo `Maybe String`
+Just 1          -- de tipo `Maybe Int`
+Nothing         -- de tipo `Maybe a` para cualquier `a`
 
 ----------------------------------------------------
 -- 8. Haskell IO
@@ -393,32 +394,32 @@ main'' = do
 
 
 ----------------------------------------------------
--- 9. The Haskell REPL
+-- 9. El interprete de comandos de Haskell
 ----------------------------------------------------
 
--- Start the repl by typing `ghci`.
--- Now you can type in Haskell code. Any new values
--- need to be created with `let`:
+-- Para comenzar escribe desde la terminal `ghci`.
+-- Ahora puede escribir código en Haskell. Para cualquier valor nuevo
+-- que necesites crear utiliza `let`:
 
 let foo = 5
 
--- You can see the type of any value with `:t`:
+-- Puedes inspeccionar el tipo de cualquier valor con `:t`:
 
 >:t foo
 foo :: Integer
 
--- You can also run any action of type `IO ()`
+-- Puedes ejecutar acciones de tipo `IO ()`
 
 > sayHello
-What is your name?
-Friend!
-Hello, Friend!
+¿Cual es tu nombre?
+Amigo
+Hola, Amigo
 
 ```
 
 Existe mucho más de Haskell, incluyendo clases de tipos y mónadas. Estas son
 las grandes ideas que hacen a Haskell divertido. Te dejamos un ejemplo final
-de Haskell: una implementación de algoritmo QuickSort:
+de Haskell: una implementación del algoritmo QuickSort:
 
 ```haskell
 qsort [] = []
