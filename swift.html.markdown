@@ -5,6 +5,7 @@ contributors:
   - ["Christopher Bess", "http://github.com/cbess"]
   - ["Joey Huang", "http://github.com/kamidox"]  
   - ["Anthony Nguyen", "http://github.com/anthonyn60"]
+  - ["Clayton Walker", "https://github.com/cwalk"]
 filename: learnswift.swift
 ---
 
