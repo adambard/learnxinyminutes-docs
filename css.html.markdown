@@ -13,11 +13,10 @@ further development of browsers, fully visual web pages also became common.
 CSS is the standard language that exists to keep the separation between   
 the content (HTML) and the look-and-feel of web pages.
 
+The latest version of CSS is CSS3. Before using the CSS3 properties, check if your browser is compatible with CSS3.
+
 In short, what CSS does is to provide a syntax that enables you to target   
 different elements on an HTML page and assign different visual properties to them.
-
-Like any other languages, CSS has many versions. Here we focus on CSS2.0,   
-which is not the most recent version, but is the most widely supported and compatible version.
 
 **NOTE:** Because the outcome of CSS consists of visual effects, in order to 
 learn it, you need try everything in a 
@@ -159,6 +158,13 @@ selector {
     font-family: "Courier New"; /* if name has space it appears in single or double quotes */
     font-family: "Courier New", Trebuchet, Arial, sans-serif; /* if first one was not found
                              browser uses the second font, and so forth */
+                             
+    /*Borders*/
+    border-width:5px;
+    border-style:solid;
+    border-color:red; /*Border color can be set in as many ways background-color is set*/
+    border: 5px solid red; /*This is a short hand approach for setting the same values*/
+    border-radius:20px; /*This is a CSS3 property*/
 }
 
 ```
