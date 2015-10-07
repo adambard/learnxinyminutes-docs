@@ -154,7 +154,7 @@ public class LearnJava {
         //            interface. This allows the execution time of basic
         //            operations, such as get and insert element, to remain
         //            constant even for large sets.
-        // TreeMap - This class is a sorted tree structure. It implemets a red
+        // TreeMap - This class is a sorted tree structure. It implements a red
         //           black tree and sorts the entries based on the key value or
         //           the comparator provided while creating the object
 
