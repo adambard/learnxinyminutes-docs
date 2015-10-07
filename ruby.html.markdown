@@ -106,8 +106,14 @@ placeholder = 'use string interpolation'
 'hello ' + 3 #=> TypeError: can't convert Fixnum into String
 'hello ' + 3.to_s #=> "hello 3"
 
-# print to the output
+# print to the output with a newline at the end
 puts "I'm printing!"
+#=> I'm printing!
+#=> nil
+
+# print to the output without a newline
+print "I'm printing!"
+#=> I'm printing! => nill
 
 # Variables
 x = 25 #=> 25
