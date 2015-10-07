@@ -8,7 +8,7 @@ filename: learnphp.php
 lang: es-es
 ---
 
-Este documento describe PHP 5+.
+Este documento describe a PHP 5+.
 
 ```php
 <?php // El código PHP debe estar contenido dentro de la etiqueta <?php
