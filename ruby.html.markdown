@@ -155,6 +155,7 @@ array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 # Arrays can be indexed
 # From the front
 array[0] #=> 1
+array.first #=> 1
 array[12] #=> nil
 
 # Like arithmetic, [var] access
@@ -165,6 +166,7 @@ array.[] 12 #=> nil
 
 # From the end
 array[-1] #=> 5
+array.last #=> 5
 
 # With a start index and length
 array[2, 3] #=> [3, 4, 5]
