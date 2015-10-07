@@ -42,7 +42,7 @@ Hello World Again!
  * Tipos y Variables
  */
 
-// Las variablers comienzan con el simbolo $.
+// Las variables comienzan con el simbolo $.
 // Un nombre de variable valido comienza con una letra o un guion bajo,
 // seguido por cualquier numero de letras, números o guiones bajos.
 
