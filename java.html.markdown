@@ -5,6 +5,7 @@ contributors:
     - ["Jakukyo Friel", "http://weakish.github.io"]
     - ["Madison Dickson", "http://github.com/mix3d"]
     - ["Simon Morgan", "http://sjm.io/"]
+    - ["Nimit Shah", "https://github.com/NimitS1"]
 filename: LearnJava.java
 ---
 
@@ -153,6 +154,9 @@ public class LearnJava {
         //            interface. This allows the execution time of basic
         //            operations, such as get and insert element, to remain
         //            constant even for large sets.
+        // TreeMap - This class is a sorted tree structure. It implemets a red
+        //           black tree and sorts the entries based on the key value or
+        //           the comparator provided while creating the object
 
         ///////////////////////////////////////
         // Operators
