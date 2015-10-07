@@ -281,7 +281,7 @@ public class LearnJava {
         String myAnswer = "maybe";
         switch(myAnswer){
             case "yes":
-                System.out.prinln("You answered yes.");
+                System.out.println("You answered yes.");
                 break;
             case "no":
                 System.out.println("You answered no.");
@@ -290,7 +290,7 @@ public class LearnJava {
                 System.out.println("You answered maybe.");
                 break;
             default:
-                Sustem.out.println("You answered " + myAnswer);
+                System.out.println("You answered " + myAnswer);
                 break;
         }
 
