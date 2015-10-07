@@ -9,6 +9,9 @@ ColdFusion is a scripting language for web development.
 [Read more here.](http://www.adobe.com/products/coldfusion-family.html)
 
 ```ColdFusion
+
+<em>HTML tags have been provided for output readability</em>
+
 <!--- Comments start with "<!---" and end with "--->" --->
 <!---
     Comments can
@@ -18,52 +21,77 @@ ColdFusion is a scripting language for web development.
 --->
 
 <!--- CFML tags have a similar format to HTML tags. --->
-
+<h1>Simple Variables</h1>
 <!--- Variable Declaration: Variables are loosely typed, similar to javascript --->
+<p>Set <b>myVariable</b> to "myValue"</p>
 <cfset myVariable = "myValue" />
+<p>Set <b>myNumber</b> to 3.14</p>
 <cfset myNumber = 3.14 />
 
 <!--- Displaying simple data --->
 <!--- Use <cfoutput> for simple values such as strings, numbers, and expressions --->
-<cfoutput>#myVariable#<br /></cfoutput> <!--- myValue --->
-<cfoutput>#myNumber#<br /></cfoutput> <!--- 3.14 --->
+<p>Display <b>myVariable</b>: <cfoutput>#myVariable#</cfoutput></p><!--- myValue --->
+<p>Display <b>myNumber</b>: <cfoutput>#myNumber#</cfoutput></p><!--- 3.14 --->
 
 <hr />
 
+<h1>Complex Variables</h1>
 <!--- Declaring complex variables --->
 <!--- Declaring an array of 1 dimension: literal or bracket notation --->
+<p>Set <b>myArray1</b> to an array of 1 dimension using literal or bracket notation</p>
 <cfset myArray1 = [] />
 <!--- Declaring an array of 1 dimension: function notation --->
+<p>Set <b>myArray2</b> to an array of 1 dimension using function notation</p>
 <cfset myArray2 = ArrayNew(1) />
 
 <!--- Outputting complex variables --->
+<p>Contents of <b>myArray1</b></p>
 <cfdump var="#myArray1#" /> <!--- An empty array object --->
-<cfdump var="#myArray1#" /> <!--- An empty array object --->
+<p>Contents of <b>myArray2</b></p>
+<cfdump var="#myArray2#" /> <!--- An empty array object --->
 
 <!--- Operators --->
 <!--- Arithmetic --->
-<cfoutput>#1 + 1#<br /></cfoutput> = 2
-<cfoutput>#10 - 8#<br /></cfoutput> = 2
-<cfoutput>#1 * 2#<br /></cfoutput> = 2
-<cfoutput>#10 / 5#<br /></cfoutput> = 2
-<cfoutput>#12 % 5#<br /></cfoutput> = 0
+<h1>Operators</h1>
+<h2>Arithmetic</h2>
+<p>1 + 1 = <cfoutput>#1 + 1#</cfoutput></p>
+<p>10 - 7 = <cfoutput>#10 - 7#<br /></cfoutput></p>
+<p>15 * 10 = <cfoutput>#15 * 10#<br /></cfoutput></p>
+<p>100 / 5 = <cfoutput>#100 / 5#<br /></cfoutput></p>
+<p>120 % 5 = <cfoutput>#120 % 5#<br /></cfoutput></p>
+<p>120 mod 5 = <cfoutput>#120 mod 5#<br /></cfoutput></p>
 
 <hr />
 
 <!--- Comparison --->
-<cfoutput>#1 eq 1#<br /></cfoutput> <!--- TRUE --->
-<cfoutput>#15 neq 1#<br /></cfoutput> <!--- TRUE --->
-<cfoutput>#10 gt 8#<br /></cfoutput> <!--- TRUE --->
-<cfoutput>#1 lt 2#<br /></cfoutput> <!--- TRUE --->
-<cfoutput>#10 gte 5#<br /></cfoutput> <!--- TRUE --->
-<cfoutput>#1 lte 5#<br /></cfoutput> <!--- TRUE --->
+<h2>Comparison</h2>
+<h3>Standard Notation</h3>
+<p>Is 1 eq 1? <cfoutput>#1 eq 1#</cfoutput></p>
+<p>Is 15 neq 1? <cfoutput>#15 neq 1#</cfoutput></p>
+<p>Is 10 gt 8? <cfoutput>#10 gt 8#</cfoutput></p>
+<p>Is 1 lt 2? <cfoutput>#1 lt 2#</cfoutput></p>
+<p>Is 10 gte 5? <cfoutput>#10 gte 5#</cfoutput></p>
+<p>Is 1 lte 5? <cfoutput>#1 lte 5#</cfoutput></p>
+
+<h3>Alternative Notation</h3>
+<p>Is 1 == 1? <cfoutput>#1 eq 1#</cfoutput></p>
+<p>Is 15 != 1? <cfoutput>#15 neq 1#</cfoutput></p>
+<p>Is 10 > 8? <cfoutput>#10 gt 8#</cfoutput></p>
+<p>Is 1 < 2? <cfoutput>#1 lt 2#</cfoutput></p>
+<p>Is 10 >= 5? <cfoutput>#10 gte 5#</cfoutput></p>
+<p>Is 1 <= 5? <cfoutput>#1 lte 5#</cfoutput></p>
 
 <hr />
 
 <!--- Control Structures --->
+<h1>Control Structures</h1>
+
 <cfset myCondition = "Test" />
+
+<p>Condition to test for: "<cfoutput>#myCondition#</cfoutput>"</p>
+
 <cfif myCondition eq "Test">
-    <cfoutput>#myCondition#</cfoutput>
+    <cfoutput>#myCondition#. We're testing.</cfoutput>
 <cfelseif myCondition eq "Production">
     <cfoutput>#myCondition#. Proceed Carefully!!!</cfoutput>
 <cfelse>
@@ -73,54 +101,53 @@ ColdFusion is a scripting language for web development.
 <hr />
 
 <!--- Loops --->
+<h1>Loops</h1>
+<h2>For Loop</h2>
 <cfloop from="0" to="10" index="i">
-	<cfoutput>#i# <br /></cfoutput>
+	<p>Index equals <cfoutput>#i#</cfoutput></p>
+</cfloop>
+
+<h2>For Each Loop (Complex Variables)</h2>
+
+<p>Set <b>myArray3</b> to [5, 15, 99, 45, 100]</p>
+
+<cfset myArray3 = [5, 15, 99, 45, 100] />
+
+<cfloop array="#myArray3#" index="i">
+	<p>Index equals <cfoutput>#i#</cfoutput></p>
+</cfloop>
+
+<p>Set <b>myArray4</b> to ["Alpha", "Bravo", "Charlie", "Delta", "Echo"]</p>
+
+<cfset myArray4 = ["Alpha", "Bravo", "Charlie", "Delta", "Echo"] />
+
+<cfloop array="#myArray4#" index="s">
+	<p>Index equals <cfoutput>#s#</cfoutput></p>
+</cfloop>
+
+<h2>Switch Statement</h2>
+
+<p>Set <b>myArray5</b> to [5, 15, 99, 45, 100]</p>
+
+<cfset myArray5 = [5, 15, 99, 45, 100] />
+
+<cfloop array="#myArray5#" index="i">
+	<cfswitch expression="#i#">
+		<cfcase value="5,15,45" delimiters=",">
+			<p><cfoutput>#i#</cfoutput> is a multiple of 5.</p>
+		</cfcase>
+		<cfcase value="99">
+			<p><cfoutput>#i#</cfoutput> is ninety-nine.</p>
+		</cfcase>
+		<cfdefaultcase>
+			<p><cfoutput>#i#</cfoutput> is not 5, 15, 45, or 99.</p>
+		</cfdefaultcase> 
+	</cfswitch> 
 </cfloop>
 
 <hr />
 ```
 <!--
-        // For Each Loop
-        // The for loop is also able to iterate over arrays as well as objects
-        // that implement the Iterable interface.
-        int[] fooList = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        // for each loop structure => for (<object> : <iterable>)
-        // reads as: for each element in the iterable
-        // note: the object type must match the element type of the iterable.
-
-        for (int bar : fooList) {
-            System.out.println(bar);
-            //Iterates 9 times and prints 1-9 on new lines
-        }
-
-        // Switch Case
-        // A switch works with the byte, short, char, and int data types.
-        // It also works with enumerated types (discussed in Enum Types), the
-        // String class, and a few special classes that wrap primitive types:
-        // Character, Byte, Short, and Integer.
-        int month = 3;
-        String monthString;
-        switch (month) {
-            case 1: monthString = "January";
-                    break;
-            case 2: monthString = "February";
-                    break;
-            case 3: monthString = "March";
-                    break;
-            default: monthString = "Some other month";
-                     break;
-        }
-        System.out.println("Switch Case Result: " + monthString);
-
-        // Conditional Shorthand
-        // You can use the '?' operator for quick assignments or logic forks.
-        // Reads as "If (statement) is true, use <first value>, otherwise, use
-        // <second value>"
-        int foo = 5;
-        String bar = (foo < 10) ? "A" : "B";
-        System.out.println(bar); // Prints A, because the statement is true
-
-
         ////////////////////////////////////////
         // Converting Data Types And Typecasting
         ////////////////////////////////////////
