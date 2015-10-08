@@ -484,6 +484,8 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 * [Udemy Git Tutorial: A Comprehensive Guide](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
 
+* [Git Immersion - A Guided tour that walks through the fundamentals of git](http://gitimmersion.com/)
+
 * [git-scm - Video Tutorials](http://git-scm.com/videos)
 
 * [git-scm - Documentation](http://git-scm.com/docs)
