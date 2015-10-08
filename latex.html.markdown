@@ -2,6 +2,7 @@
 language: latex
 contributors:
     - ["Chaitanya Krishna Ande", "http://icymist.github.io"]
+    - ["Colton Kohnke", "http://github.com/voltnor"]
 filename: learn-latex.tex
 ---
 
@@ -12,122 +13,142 @@ getting it to behave exactly the way you want can be a bit hairy.
 
 
 ```latex
+
 % All comment lines start with %
 % There are no multi-line comments
 
 % LaTeX is NOT a ``What You See Is What You Get'' word processing software like
 % MS Word, or OpenOffice Writer
 
-% Getting to the final document using LaTeX consists of the following steps:
-% 1. Write the document in plain text
-% 2. Compile plain text document to produce a pdf
-%    The compilation step looks something like this:
-%    $ pdflatex your-tex-file.tex your-tex-file.pdf
-% A number of LaTeX editors combine both Step 1 and Step 2 in the same piece of
-% software. So, you get to see Step 1, but not Step 2 completely.
-% Step 2 is still happening behind the scenes.
+% LaTeX documents start with a defining the type of document it's compiling
+% Other document types include book, report, presentations, etc. 
+\documentclass[12pt]{article}
 
-% You write all your formatting information in plain text in Step 1.
-% The compilation part in Step 2 takes care of producing the document in the
-% format you defined in Step 1.
+% Next we define the packages the document uses.
+% I'm going to include the float and caption packages for figures.
+\usepackage{caption}
+\usepackage{float}
 
-% For Step 1, it is best if you get a good text editor
-% On Windows, probably Notepad++
-% For Step 2, you will need to get a TeX distribution
-% Windows: MikTeX
-% MacOS: MacTeX
-% Linux: Should be available from your package manager
+% We can define some other document properties too!
+\author{Chaitanya Krishna Ande \& Colton Kohnke}
+\date{\today}
+\title{Learn LaTeX in Y Minutes!}
 
-% Let's get to the final pdf document as soon as possible
-
-% Choose the kind of document you want to write.
-% You can replace article with book, report, etc.
-\documentclass{article}
-% begin the document
-\begin{document}
-% end the document
-\end{document}
-% Compile to pdf
-% Now, you already have a final document which of course it is empty.
-% Everything that you write is between the
-% \begin{document}
-% \end{document}
-
-% Start a new document from here.
-% Let's do a decent document
-\documentclass{article}
-% required for inserting images
-\usepackage{graphicx} 
-% begin the document
-\begin{document}
-% set the title (optional)
-\title{Title of the document}
-% set the author (optional)
-\author{Chaitanya Krishna Ande}
-
-% make the title (optional)
+% Now we're ready to begin the document
+% Everything before this line is called "The Preamble"
+\begin{document} 
+% if we set the author, date, title fields, we can have LaTeX 
+% create a title page fo us.
 \maketitle
 
-% start the first section
 \section{Introduction}
+Hello, my name is Colton and together we're going to explore LaTeX !
 
-% write your text
-This is the introduction.
-
-% start another section
 \section{Another section}
-This is the text for another section.
+This is the text for another section. I think it needs a subsection.
 
-% another section with subsection
-\section{Section with sub-section}
-Text for the section.
-\subsection{Sub-section}
-Let's discuss the Pythagoras theorem.
-\subsubsection{Pythagoras Theorm}
-% for cross-reference
+\subsection{This is a subsection}
+I think we need another one
+
+\subsubsection{Pythagoras}
+Much better now.
 \label{subsec:pythagoras}
 
-% notice how the sections and sub-sections are automatically numbered
+\section*{This is an unnumbered section}
+However not all sections have to be numbered!
 
-% Some math
-% Inline math within $ $
-For a right angled triangle (see Fig.~\ref{fig:right-triangle}) with sides $a$, $b$ and $c$, where $c$ is the
-hypotenuse, the following holds:
+\section{Some Text notes}
+LaTeX is generally pretty good about placing text where it should go. If 
+a line \\ needs \\ to \\ break \\ you add \textbackslash\textbackslash to 
+the text. In case you haven't noticed the \textbackslash is the character
+the tells the LaTeX compiler it should pay attention to what's next.
+
+\section{Math}
+
+One of the primary uses for LaTeX is to produce academic article or 
+technical papers. Usually in the realm of math and science. As such, 
+we need to be able to add special symbols to our paper! \\
+
+My favorite Greek letter is $\xi$. I also like $\beta$, $\gamma$ and $\sigma$.
+Notice how I needed to add \$ signs before and after the symbols. This is 
+because when writing, we are in text-mode. However, the math symbols only exist
+in math-mode. We can enter math-mode from text mode with the \$ signs. 
+The opposite also holds true. Variable can also be rendered in math-mode. \\
+
+% We can also add references
+For a right angled triangle (see Fig.~\ref{fig:right-triangle}) with sides $a$,
+ $b$ and $c$, where $c$ is the hypotenuse, the following holds:
 % Display math with the equation 'environment'
-\begin{equation}
+\begin{equation} % enters math-mode
     c^2 = a^2 + b^2.
     % for cross-reference
     \label{eq:pythagoras}
-\end{equation}
+\end{equation} % all \begin statments must have an end statement
 
-% Let's cross-reference the equation
 Eqn.~\ref{eq:pythagoras} is also known as the Pythagoras Theorem which is also
 the subject of Sec.~\ref{subsec:pythagoras}.
 
-\subsubsection{Figure}
-Let's insert a Figure.
 
-\begin{figure}
+\section{Figures}
+
+Let's insert a Figure. Figure placement can get a little tricky. 
+I definately have to lookup the placement options each time.
+
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{right-triangle.png}
-    \caption{Right triangle with sides a, b, c}
+    %\includegraphics[width=0.8\linewidth]{right-triangle.png}
+    % Commented out for compilation purposes. Use your imagination.
+    \caption{Right triangle with sides $a$, $b$, $c$}
     \label{fig:right-triangle}
 \end{figure}
 
-
-\subsubsection{Table}
+\subsection{Table}
 Let's insert a Table.
 
-\begin{table}
-\caption{Caption for the Table.}
-\begin{tabular}{ccc}
-Number &  Last Name & First Name \\
-\hline
-1 & Biggus & Dickus \\
-2 & Monty & Python
-\end{tabular}
+\begin{table}[H]
+  \caption{Caption for the Table.}
+  \begin{tabular}{ccc}
+    Number &  Last Name & First Name \\
+    \hline
+    1 & Biggus & Dickus \\
+    2 & Monty & Python
+  \end{tabular}
 \end{table}
+
+
+\section{Compiling} 
+
+By now you're probably wondering how to compile this fabulous document 
+(yes, it actually compiles). \\
+Getting to the final document using LaTeX consists of the following steps:
+  \begin{enumerate} % we can also created numbered lists!
+    \item Write the document in plain text
+    \item Compile plain text document to produce a pdf. 
+     The compilation step looks something like this: \\
+     % Verbatim tells the compiler to not interpret.
+     \begin{verbatim} 
+        $pdflatex learn-latex.tex learn-latex.pdf 
+     \end{verbatim}
+  \end{enumerate}
+
+A number of LaTeX editors combine both Step 1 and Step 2 in the same piece of
+software. So, you get to see Step 1, but not Step 2 completely.
+Step 2 is still happening behind the scenes.
+
+You write all your formatting information in plain text in Step 1.
+The compilation part in Step 2 takes care of producing the document in the
+format you defined in Step 1.
+
+\section{End}
+
+That's all for now!
 
 % end the document
 \end{document}
 ```
+## More on LaTeX
+
+* The amazing LaTeX wikibook: [https://en.wikibooks.org/wiki/LaTeX](https://en.wikibooks.org/wiki/LaTeX)
+* An actual tutorial: [http://www.latex-tutorial.com/](http://www.latex-tutorial.com/)
+
+
