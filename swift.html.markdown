@@ -574,4 +574,18 @@ print(mySquare.sideLength) // 4
 // change side length using custom !!! operator, increases size by 3
 !!!mySquare
 print(mySquare.sideLength) // 12
+
+// Operators can also be generics
+infix operator <-> {}
+func <-><T: Equatable> (inout a: T, inout b: T) {
+    let c = a
+    a = b
+    b = c
+}
+
+var foo: Float = 10
+var bar: Float = 20
+
+foo <-> bar
+print("foo is \(foo), bar is \(bar)") // "foo is 20.0, bar is 10.0"
 ```
