@@ -107,7 +107,7 @@ div.some-parent.class-name {}
    ####################*/
 
 选择器 {
-    
+
     /* 单位 */
     width: 50%; /* 百分比 */
     font-size: 2em; /* 当前字体大小的两倍 */
@@ -116,7 +116,7 @@ div.some-parent.class-name {}
     width: 5cm; /* 厘米 */
     width: 50mm; /* 毫米 */
     width: 5in; /* 英尺 */
-    
+
     /* 颜色 */
     background-color: #F6E;  /* 短16位 */
     background-color: #F262E2; /* 长16位 */
@@ -124,10 +124,10 @@ div.some-parent.class-name {}
     background-color: rgb(255, 255, 255); /* rgb */
     background-color: rgb(10%, 20%, 50%); /*  rgb 百分比 */
     background-color: rgba(255, 0, 0, 0.3); /*  rgb 加透明度 */
-    
+
     /* 图片 */
     background-image: url(/path-to-image/image.jpg);
-    
+
     /* 字体 */
     font-family: Arial;
     font-family: "Courier New"; /* 使用双引号包裹含空格的字体名称 */

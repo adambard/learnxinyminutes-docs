@@ -6,7 +6,7 @@ contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["pantaovay", "https://github.com/pantaovay"]
     - ["lidashuang", "https://github.com/lidashuang"]
-    
+
 ---
 
 发明Go语言是出于更好地完成工作的需要。Go不是计算机科学的最新发展潮流，但它却提供了解决现实问题的最新最快的方法。
@@ -66,7 +66,7 @@ func learnTypes() {
 
     s2 := `A "raw" string literal
 can include line breaks.` // 同样是String类型
-    
+
     // 非ascii字符。Go使用UTF-8编码。
     g := 'Σ' // rune类型，int32的别名，使用UTF-8编码
 
@@ -104,7 +104,7 @@ can include line breaks.` // 同样是String类型
     // 输出变量
     fmt.Println(s, c, a4, s3, d2, m)
 
-    learnFlowControl() // 回到流程控制 
+    learnFlowControl() // 回到流程控制
 }
 
 // Go全面支持垃圾回收。Go有指针，但是不支持指针运算。
@@ -152,7 +152,7 @@ func learnFlowControl() {
 
     // for 是go里唯一的循环关键字，不过它有很多变种
     for { // 死循环
-        break    // 骗你的 
+        break    // 骗你的
         continue // 不会运行的
     }
     // 和for一样，if中的:=先给y赋值，然后再和x作比较。
@@ -163,7 +163,7 @@ func learnFlowControl() {
     xBig := func() bool {
         return x > 100 // x是上面声明的变量引用
     }
-    fmt.Println("xBig:", xBig()) // true （上面把y赋给x了） 
+    fmt.Println("xBig:", xBig()) // true （上面把y赋给x了）
     x /= 1e5                     // x变成10
     fmt.Println("xBig:", xBig()) // 现在是false
 
@@ -194,9 +194,9 @@ func (p pair) String() string { // p被叫做“接收器”
 func learnInterfaces() {
     // 花括号用来定义结构体变量，:=在这里将一个结构体变量赋值给p。
     p := pair{3, 4}
-    fmt.Println(p.String()) // 调用pair类型p的String方法 
-    var i Stringer          // 声明i为Stringer接口类型 
-    i = p                   // 有效！因为p实现了Stringer接口（类似java中的塑型） 
+    fmt.Println(p.String()) // 调用pair类型p的String方法
+    var i Stringer          // 声明i为Stringer接口类型
+    i = p                   // 有效！因为p实现了Stringer接口（类似java中的塑型）
     // 调用i的String方法，输出和上面一样
     fmt.Println(i.String())
 
@@ -209,7 +209,7 @@ func learnInterfaces() {
 }
 
 func learnErrorHandling() {
-    // ", ok"用来判断有没有正常工作 
+    // ", ok"用来判断有没有正常工作
     m := map[int]string{3: "three", 4: "four"}
     if x, ok := m[1]; !ok { // ok 为false，因为m中没有1
         fmt.Println("no one there")
@@ -245,7 +245,7 @@ func learnConcurrency() {
 
     cs := make(chan string)       // 操作string的channel
     cc := make(chan chan string)  // 操作channel的channel
-    go func() { c <- 84 }()       // 开始一个goroutine来发送一个新的数字 
+    go func() { c <- 84 }()       // 开始一个goroutine来发送一个新的数字
     go func() { cs <- "wordy" }() // 发送给cs
     // Select类似于switch，但是每个case包括一个channel操作。
     // 它随机选择一个准备好通讯的case。
@@ -254,7 +254,7 @@ func learnConcurrency() {
         fmt.Println("it's a", i)
     case <-cs: // 或者直接丢弃
         fmt.Println("it's a string")
-    case <-cc: // 空的，还没作好通讯的准备 
+    case <-cc: // 空的，还没作好通讯的准备
         fmt.Println("didn't happen.")
     }
     // 上面c或者cs的值被取到，其中一个goroutine结束，另外一个一直阻塞。

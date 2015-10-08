@@ -39,7 +39,7 @@ translators:
 # 算术符号只是语法糖而已
 # 实际上是调用对象的方法
 1.+(3) #=> 4
-10.* 5 #=> 50 
+10.* 5 #=> 50
 
 # 特殊的值也是对象
 nil # 空
@@ -60,7 +60,7 @@ false.class #=> FalseClass
 !true  #=> false
 !false #=> true
 
-# 除了false自己，nil是唯一的值为false的对象 
+# 除了false自己，nil是唯一的值为false的对象
 
 !nil   #=> true
 !false #=> true
@@ -233,7 +233,7 @@ when 'D'
   puts "Scraping through"
 when 'F'
   puts "You failed!"
-else 
+else
   puts "Alternative grading system, eh?"
 end
 

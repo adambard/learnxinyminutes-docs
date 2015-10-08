@@ -86,7 +86,7 @@ false;
 1 !== 1; // = false
 2 !== 1; // = true
 
-// 更多的比较操作符 
+// 更多的比较操作符
 1 < 10; // = true
 1 > 10; // = false
 2 <= 2; // = true
@@ -104,7 +104,7 @@ null == undefined; // = true
 
 // ...除非你是用 ===
 "5" === 5; // = false
-null === undefined; // = false 
+null === undefined; // = false
 
 // ...但会导致奇怪的行为
 13 + !0; // 14
@@ -130,7 +130,7 @@ undefined; // 用来表示还没有设置的值(尽管`undefined`自身实际是
 // 2. 变量、数组和对象
 
 // 变量需要用`var`关键字声明。Javascript是动态类型语言，
-// 所以你无需指定类型。 赋值需要用 `=` 
+// 所以你无需指定类型。 赋值需要用 `=`
 var someVar = 5;
 
 // 如果你在声明时没有加var关键字，你也不会得到错误...
@@ -142,7 +142,7 @@ someOtherVar = 10;
 var someThirdVar; // = undefined
 
 // 对变量进行数学运算有一些简写法：
-someVar += 5; // 等价于 someVar = someVar + 5; someVar 现在是 10 
+someVar += 5; // 等价于 someVar = someVar + 5; someVar 现在是 10
 someVar *= 10; // 现在 someVar 是 100
 
 // 自增和自减也有简写
@@ -194,7 +194,7 @@ if (count == 3){
 } else if (count == 4){
     // count 是 4 时执行
 } else {
-    // 其他情况下执行 
+    // 其他情况下执行
 }
 
 // while循环
@@ -222,12 +222,12 @@ if (colour == "red" || colour == "blue"){
     // colour是red或者blue时执行
 }
 
-// && 和 || 是“短路”语句，它在设定初始化值时特别有用 
+// && 和 || 是“短路”语句，它在设定初始化值时特别有用
 var name = otherName || "default";
 
 // `switch`语句使用`===`检查相等性。
 // 在每一个case结束时使用 'break'
-// 否则其后的case语句也将被执行。 
+// 否则其后的case语句也将被执行。
 grade = 'B';
 switch (grade) {
   case 'A':
@@ -289,7 +289,7 @@ i; // = 5 - 并非我们在其他语言中所期望得到的undefined
 (function(){
     var temporary = 5;
     // 我们可以访问修改全局对象（"global object"）来访问全局作用域，
-    // 在web浏览器中是`window`这个对象。 
+    // 在web浏览器中是`window`这个对象。
     // 在其他环境如Node.js中这个对象的名字可能会不同。
     window.permanent = 10;
 })();
