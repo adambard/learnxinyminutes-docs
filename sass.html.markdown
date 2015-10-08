@@ -188,7 +188,8 @@ body.noLinks a {
    #################### */
    
 /* Sass provides functions that can be used to accomplish a variety of tasks. Consider the following */
-   
+
+/* Functions can be invoked by using their name and passing in the required arguments */
 body {
   width: round(10.25px);    
 }
@@ -207,18 +208,18 @@ body {
   background-color: rgba(0, 0, 0, 0.75);
 }   
    
-/* You may also define your own functions. Functions are very similar to mixins. When trying to choose between 
-   a function or a mixin, remember that functions are best for returning values while mixins are best for 
-   generating CSS while functions are better for logic that might be used throughout your Sass code. The
-   examples in the Math Operators' section are ideal candidates for becoming a reusable function. */
+/* You may also define your own functions. Functions are very similar to mixins. When trying 
+   to choose between a function or a mixin, remember that functions are best for returning 
+   values while mixins are best for generating CSS while functions are better for logic that 
+   might be used throughout your Sass code. The examples in the Math Operators' section are 
+   ideal candidates for becoming a reusable function. */
 
-/* This function will take a target size and the parent size and calculate and return the percentage */
+/* This function will take a target size and the parent size and calculate and return 
+   the percentage */
    
 @function calculate-percentage($target-size, $parent-size) {
   @return $target-size / $parent-size * 100%;
 }
-
-/* Functions can be invoked by using their name and passing in the required arguments */
 
 $main-content: calculate-percentage(600px, 960px);
 
