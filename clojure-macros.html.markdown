@@ -142,11 +142,11 @@ You'll want to be familiar with Clojure. Make sure you understand everything in
 
 ### Further Reading
 
-Writing Macros from [Clojure for the Brave and True](http://www.braveclojure.com/)  
+Writing Macros from [Clojure for the Brave and True](http://www.braveclojure.com/)
 [http://www.braveclojure.com/writing-macros/](http://www.braveclojure.com/writing-macros/)
 
-Official docs  
+Official docs
 [http://clojure.org/macros](http://clojure.org/macros)
 
-When to use macros?  
+When to use macros?
 [http://dunsmor.com/lisp/onlisp/onlisp_12.html](http://dunsmor.com/lisp/onlisp/onlisp_12.html)

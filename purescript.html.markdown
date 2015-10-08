@@ -70,12 +70,12 @@ true && (9 >= 19 || 1 < 2) -- true
 
 -- Safe access return Maybe a
 head [1,2,3] -- Just (1)
-tail [3,2,1] -- Just ([2,1]) 
+tail [3,2,1] -- Just ([2,1])
 init [1,2,3] -- Just ([1,2])
 last [3,2,1] -- Just (1)
 -- Random access - indexing
 [3,4,5,6,7] !! 2 -- Just (5)
--- Range 
+-- Range
 1..5 -- [1,2,3,4,5]
 length [2,2,2] -- 3
 drop 3 [5,4,3,2,1] -- [2,1]
@@ -129,10 +129,10 @@ first :: [Number] -> Number
 first (x:_) = x
 first [3,4,5] -- 3
 second :: [Number] -> Number
-second (_:y:_) = y 
+second (_:y:_) = y
 second [3,4,5] -- 4
 sumTwo :: [Number] -> [Number]
-sumTwo (x:y:rest) = (x+y) : rest 
+sumTwo (x:y:rest) = (x+y) : rest
 sumTwo [2,3,4,5,6] -- [5,4,5,6]
 
 -- sumTwo doesn't handle when the array is empty or just have one
@@ -161,7 +161,7 @@ ecoTitle {title: "The Quantum Thief"} -- Object does not have property author
 
 -- Lambda expressions
 (\x -> x*x) 3 -- 9
-(\x y -> x*x + y*y) 4 5 -- 41 
+(\x y -> x*x + y*y) 4 5 -- 41
 sqr = \x -> x*x
 
 -- Currying
@@ -187,7 +187,7 @@ foldr (+) 0 (1..10) -- 55
 sum (1..10) -- 55
 product (1..10) -- 3628800
 
--- Testing with predicate 
+-- Testing with predicate
 any even [1,2,3] -- true
 all even [1,2,3] -- false
 
