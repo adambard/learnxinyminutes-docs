@@ -5,6 +5,7 @@ language: perl
 filename: learnperl-fr.pl
 contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]
+    - ["Matteo Taroli", "http://www.matteotaroli.be"]
 translators:
     - ["Matteo Taroli", "http://www.matteotaroli.be"]
 lang: fr-fr
@@ -27,7 +28,7 @@ est autant adapté à un prototypage rapide qu'à des projets de grande envergur
 ### Perl a trois types principaux de variables: $scalaire, @tableau and %hash
 
 ## Scalaires
-#  Un scalaire représente une valeure unique :
+#  Un scalaire représente une valeur unique :
 my $animal = "chameau";
 my $reponse = 42;
 
@@ -99,8 +100,15 @@ for my $element (@elements) {
 
 # implicitement
 
+# La variable de contexte scalaire $_ est utilisée par défaut dans différentes
+# situations, comme par exemple dans la boucle foreach ou en argument par défaut
+# de la plupart des fonctions pour en simplifier l'écriture.
+
+# Dans l'exemple suivant, $_ prends successivement la valeur de
+# chaque élément de la liste.  
+
 for (@elements) {
-  print;
+  print; # affiche le contenu de $_
 }
 
 
@@ -116,11 +124,11 @@ if ($a =~ /foo/) { ... }  # vrai si $a contient "foo"
 
 # Simple substitution
 
-$a =~ s/foo/bar/;         # remplace foo par bar dans $a
+$a =~ s/foo/bar/;         # remplace le premier foo par bar dans $a
 $a =~ s/foo/bar/g;        # remplace TOUTES LES INSTANCES de foo par bar dans $a
 
 
-#### Fichiers and E/S
+#### Fichiers et E/S
 
 # Vous pouvez ouvrir un fichier pour y écrire ou pour le lire avec la fonction "open()".
 
@@ -136,9 +144,9 @@ open(my $log, ">>", "my.log")     or die "Impossible d'ouvrir my.log: $!";
 my $ligne = <$in>
 my $lignes = <$in>
 
-#### Ecrire des sous-programmes
+#### Ecrire des fonctions
 
-# Ecrire des sous-programmes est facile :
+# Ecrire des fonctions est facile :
 
 sub logger {
   my $logmessage = shift;
@@ -148,9 +156,9 @@ sub logger {
   print $logfile $logmessage;
 }
 
-# Maintenant, nous pouvons utiliser le sous-programme comme n'importe quelle fonction intégrée :
+# Maintenant, nous pouvons utiliser cette fonction comme n'importe quelle fonction intégrée :
 
-logger("On a un sous-programme de logging!!");
+logger("On a une fonction de logging!!");
 ```
 
 #### Utiliser des modules Perl
