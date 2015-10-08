@@ -414,7 +414,7 @@ class Human(object):
     def get_species(cls):
         return cls.species
 
-    # Une méthode statique est appellée sans référence à une classe ou à une instance 
+    # Une méthode statique est appellée sans référence à une classe ou à une instance
     @staticmethod
     def grunt():
         return "*grunt*"

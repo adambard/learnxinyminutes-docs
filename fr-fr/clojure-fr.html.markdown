@@ -343,7 +343,7 @@ ressemblent à toutes les autres formes:
 ; STM
 ;;;;;;;;;;;;;;;;;
 
-; La mémoire logiciel transactionnelle ("Software Transactional Memory") 
+; La mémoire logiciel transactionnelle ("Software Transactional Memory")
 ; est le mécanisme que Clojure utilise pour gérer les états persistents.
 ; Il y a plusieurs formes en Clojure qui utilisent cela.
 
@@ -357,7 +357,7 @@ ressemblent à toutes les autres formes:
 (swap! my-atom assoc :a 1) ; Définit my-atom comme le résultat de (assoc {} :a 1)
 (swap! my-atom assoc :b 2) ; Définit my-atom comme le résultat de (assoc {:a 1} :b 2)
 
-; Use '@' to dereference the atom and get the value 
+; Use '@' to dereference the atom and get the value
 my-atom  ;=> Atom<#...> (Renvoie l'objet Atom)
 @my-atom ; => {:a 1 :b 2}
 

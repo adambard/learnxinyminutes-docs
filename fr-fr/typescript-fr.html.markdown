@@ -65,7 +65,7 @@ interface Person {
   move(): void;
 }
 
-// Un objet implémentant l'interface "Person" peut être traité comme 
+// Un objet implémentant l'interface "Person" peut être traité comme
 // une Person car il a les propriétés "name" et "move"
 var p: Person = { name: "Bobby", move: () => {} };
 // Des objets implémentants la propriété optionnelle :
