@@ -7,11 +7,11 @@ contributors:
     - ["Nami-Doc", "http://github.com/Nami-Doc"]
 ---
 
-Perl 6 is a highly capable, feature-rich programming language made for at 
+Perl 6 is a highly capable, feature-rich programming language made for at
 least the next hundred years.
 
 The primary Perl 6 compiler is called [Rakudo](http://rakudo.org), which runs on
-the JVM and [the MoarVM](http://moarvm.com) and 
+the JVM and [the MoarVM](http://moarvm.com) and
 [prior to March 2015](http://pmthium.com/2015/02/suspending-rakudo-parrot/),
 [the Parrot VM](http://parrot.org/).
 
@@ -132,7 +132,7 @@ sub with-named($normal-arg, :$named) {
 with-named(1, named => 6); #=> 7
 # There's one gotcha to be aware of, here:
 # If you quote your key, Perl 6 won't be able to see it at compile time,
-#  and you'll have a single Pair object as a positional paramater,
+#  and you'll have a single Pair object as a positional parameter,
 #  which means this fails:
 with-named(1, 'named' => 6);
 
@@ -143,7 +143,7 @@ sub with-mandatory-named(:$str!)  {
   say "$str !";
 }
 with-mandatory-named(str => "My String"); #=> My String !
-with-mandatory-named; # run time error: "Required named parameter not passed" 
+with-mandatory-named; # run time error: "Required named parameter not passed"
 with-mandatory-named(3); # run time error: "Too many positional parameters passed"
 
 ## If a sub takes a named boolean argument ...
@@ -197,7 +197,7 @@ sub mutate($n is rw) {
   say "\$n is now $n !";
 }
 
-# If what you want is a copy instead, use `is copy`.
+# If what you want a copy instead, use `is copy`.
 
 # A sub itself returns a container, which means it can be marked as rw:
 my $x = 42;
@@ -234,7 +234,7 @@ say "Quite truthy" if True;
 # - Ternary conditional, "?? !!" (like `x ? y : z` in some other languages)
 my $a = $condition ?? $value-if-true !! $value-if-false;
 
-# - `given`-`when` looks like other languages `switch`, but much more
+# - `given`-`when` looks like other languages' `switch`, but much more
 # powerful thanks to smart matching and thanks to Perl 6's "topic variable", $_.
 #
 # This variable contains the default argument of a block,
@@ -290,7 +290,7 @@ for @array -> $variable {
 # That means you can use `when` in a `for` just like you were in a `given`.
 for @array {
   say "I've got $_";
-  
+
   .say; # This is also allowed.
         # A dot call with no "topic" (receiver) is sent to `$_` by default
   $_.say; # the above and this are equivalent.
@@ -634,14 +634,14 @@ class A {
   method get-value {
     $.field + $!private-field;
   }
-  
+
   method set-value($n) {
     # $.field = $n; # As stated before, you can't use the `$.` immutable version.
     $!field = $n;   # This works, because `$!` is always mutable.
-    
+
     $.other-field = 5; # This works, because `$.other-field` is `rw`.
   }
-  
+
   method !private-method {
     say "This method is private to the class !";
   }
@@ -660,19 +660,19 @@ $a.other-field = 10; # This, however, works, because the public field
 
 class A {
   has $.val;
-  
+
   submethod not-inherited {
     say "This method won't be available on B.";
     say "This is most useful for BUILD, which we'll see later";
   }
-  
+
   method bar { $.val * 5 }
 }
 class B is A { # inheritance uses `is`
   method foo {
     say $.val;
   }
-  
+
   method bar { $.val * 10 } # this shadows A's `bar`
 }
 
@@ -699,20 +699,20 @@ role PrintableVal {
 # you "import" a mixin (a "role") with "does":
 class Item does PrintableVal {
   has $.val;
-  
+
   # When `does`-ed, a `role` literally "mixes in" the class:
   #  the methods and fields are put together, which means a class can access
   #  the private fields/methods of its roles (but not the inverse !):
   method access {
     say $!counter++;
   }
-  
+
   # However, this:
   # method print {}
   # is ONLY valid when `print` isn't a `multi` with the same dispatch.
   # (this means a parent class can shadow a child class's `multi print() {}`,
   #  but it's an error if a role does)
-  
+
   # NOTE: You can use a role as a class (with `is ROLE`). In this case, methods
   # will be shadowed, since the compiler will consider `ROLE` to be a class.
 }
@@ -812,7 +812,7 @@ module Foo::Bar {
       say "Can't access me from outside, I'm my !";
     }
   }
-  
+
   say ++$n; # lexically-scoped variables are still available
 }
 say $Foo::Bar::n; #=> 1
@@ -1075,8 +1075,8 @@ say [//] Nil, Any, False, 1, 5; #=> False
 
 
 # Default value examples:
-say [*] (); #=> 1 
-say [+] (); #=> 0 
+say [*] (); #=> 1
+say [+] (); #=> 0
             # meaningless values, since N*1=N and N+0=N.
 say [//];   #=> (Any)
             # There's no "default value" for `//`.
@@ -1335,7 +1335,7 @@ sub MAIN($name) { say "Hello, $name !" }
 # This produces:
 #    $ perl6 cli.pl
 #    Usage:
-#      t.pl <name> 
+#      t.pl <name>
 
 # And since it's a regular Perl 6 sub, you can haz multi-dispatch:
 # (using a "Bool" for the named argument so that we can do `--replace`
@@ -1348,7 +1348,7 @@ multi MAIN('import', File, Str :$as) { ... } # omitting parameter name
 # This produces:
 #    $ perl 6 cli.pl
 #    Usage:
-#      t.pl [--replace] add <key> <value> 
+#      t.pl [--replace] add <key> <value>
 #      t.pl remove <key>
 #      t.pl [--as=<Str>] import (File)
 # As you can see, this is *very* powerful.
@@ -1400,7 +1400,7 @@ for <well met young hero we shall meet later> {
                         #  (explained in details below).
     .say
   }
-  
+
   if rand == 0 ff rand == 1 { # compare variables other than `$_`
     say "This ... probably will never run ...";
   }
@@ -1461,4 +1461,3 @@ If you want to go further, you can:
  - Come along on `#perl6` at `irc.freenode.net`. The folks here are always helpful.
  - Check the [source of Perl 6's functions and classes](https://github.com/rakudo/rakudo/tree/nom/src/core). Rakudo is mainly written in Perl 6 (with a lot of NQP, "Not Quite Perl", a Perl 6 subset easier to implement and optimize).
  - Read [the language design documents](http://design.perl6.org). They explain P6 from an implementor point-of-view, but it's still very interesting.
-
