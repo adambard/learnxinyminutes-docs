@@ -221,7 +221,7 @@ for (var i = 0; i < 5; i++){
 //The For/In statement loops iterates over every property across the entire prototype chain
 var description = "";
 var person = {fname:"Paul", lname:"Ken", age:18}; 
-for (var x in person) {
+for (var x in person){
     description += person[x] + " ";
 }
 
@@ -229,8 +229,8 @@ for (var x in person) {
 //and not its prototypes use hasOwnProperty() check
 var description = "";
 var person = {fname:"Paul", lname:"Ken", age:18}; 
-for (var x in person) {
-    if( person.hasOwnProperty( x ) ) {
+for (var x in person){
+    if (person.hasOwnProperty(x)){
         description += person[x] + " ";
     }
 }
