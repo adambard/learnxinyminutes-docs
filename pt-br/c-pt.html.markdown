@@ -15,13 +15,13 @@ Ah, C. Ainda é **a** linguagem de computação de alta performance.
 C é a liguangem de mais baixo nível que a maioria dos programadores
 irão usar, e isso dá a ela uma grande velocidade bruta. Apenas fique
 antento que este manual de gerenciamento de memória e C vai levanter-te
-tão longe quanto você precisa. 
+tão longe quanto você precisa.
 
 ```c
 // Comentários de uma linha iniciam-se com // - apenas disponível a partir do C99
 
 /*
-Comentários de multiplas linhas se parecem com este. 
+Comentários de multiplas linhas se parecem com este.
 Funcionam no C89 também.
 */
 
@@ -53,13 +53,13 @@ int soma_dois_ints(int x1, int x2); // protótipo de função
 // O ponto de entrada do teu programa é uma função
 // chamada main, com tipo de retorno inteiro
 int main() {
-	// Usa-se printf para escrever na tela, 
+	// Usa-se printf para escrever na tela,
 	// para "saída formatada"
 	// %d é um inteiro, \n é uma nova linha
     printf("%d\n", 0); // => Imprime 0
 	// Todos as declarações devem acabar com
 	// ponto e vírgula
-	
+
     ///////////////////////////////////////
     // Tipos
     ///////////////////////////////////////
@@ -77,7 +77,7 @@ int main() {
     // longs tem entre 4 e 8 bytes; longs long tem garantia
     // de ter pelo menos 64 bits
     long x_long = 0;
-    long long x_long_long = 0; 
+    long long x_long_long = 0;
 
     // floats são normalmente números de ponto flutuante
 	// com 32 bits
@@ -92,7 +92,7 @@ int main() {
     unsigned int ux_int;
     unsigned long long ux_long_long;
 
-	// caracteres dentro de aspas simples são inteiros 
+	// caracteres dentro de aspas simples são inteiros
 	// no conjunto de caracteres da máquina.
     '0' // => 48 na tabela ASCII.
     'A' // => 65 na tabela ASCII.
@@ -103,7 +103,7 @@ int main() {
 
 	// Se o argumento do operador `sizeof` é uma expressão, então seus argumentos
 	// não são avaliados (exceto em VLAs (veja abaixo)).
-	// O valor devolve, neste caso, é uma constante de tempo de compilação. 
+	// O valor devolve, neste caso, é uma constante de tempo de compilação.
     int a = 1;
 	// size_t é um inteiro sem sinal com pelo menos 2 bytes que representa
 	// o tamanho de um objeto.
@@ -128,7 +128,7 @@ int main() {
     printf("%d\n", meu_array[1]); // => 2
 
 	// No C99 (e como uma features opcional em C11), arrays de tamanho variável
-	// VLA (do inglês), podem ser declarados também. O tamanho destes arrays 
+	// VLA (do inglês), podem ser declarados também. O tamanho destes arrays
 	// não precisam ser uma constante de tempo de compilação:
     printf("Entre o tamanho do array: "); // Pergunta ao usuário pelo tamanho
     char buf[0x100];
@@ -143,14 +143,14 @@ int main() {
     // > Entre o tamanho do array:: 10
     // > sizeof array = 40
 
-	// String são apenas arrays de caracteres terminados por um 
+	// String são apenas arrays de caracteres terminados por um
 	// byte NUL (0x00), representado em string pelo caracter especial '\0'.
 	// (Não precisamos incluir o byte NUL em literais de string; o compilador
 	// o insere ao final do array para nós.)
-    char uma_string[20] = "Isto é uma string"; 
+    char uma_string[20] = "Isto é uma string";
 	// Observe que 'é' não está na tabela ASCII
 	// A string vai ser salva, mas a saída vai ser estranha
-	// Porém, comentários podem conter acentos 
+	// Porém, comentários podem conter acentos
     printf("%s\n", uma_string); // %s formata a string
 
     printf("%d\n", uma_string[16]); // => 0
@@ -174,7 +174,7 @@ int main() {
     ///////////////////////////////////////
 
     // Atalho para multiplas declarações:
-    int i1 = 1, i2 = 2; 
+    int i1 = 1, i2 = 2;
     float f1 = 1.0, f2 = 2.0;
 
     int a, b, c;
@@ -224,13 +224,13 @@ int main() {
     int a = 5;
     int b = 10;
     int z;
-    z = (a > b) ? a : b; // => 10 "se a > b retorne a, senão retorne b." 
+    z = (a > b) ? a : b; // => 10 "se a > b retorne a, senão retorne b."
 
     //Operadores de incremento e decremento:
     char *s = "iLoveC";
     int j = 0;
     s[j++]; // => "i". Retorna o j-ésimo item de s E DEPOIS incrementa o valor de j.
-    j = 0; 
+    j = 0;
     s[++j]; // => "L". Incrementa o valor de j. E DEPOIS retorna o j-ésimo item de s.
     // o mesmo com j-- e --j
 
@@ -305,7 +305,7 @@ int main() {
         exit(-1);
         break;
     }
-    
+
 
     ///////////////////////////////////////
     // Cast de tipos
@@ -324,8 +324,8 @@ int main() {
 	// Tipos irão ter overflow sem aviso
     printf("%d\n", (unsigned char) 257); // => 1 (Max char = 255 se char tem 8 bits)
 
-	// Para determinar o valor máximo de um `char`, de um `signed char` e de 
-	// um `unisigned char`, respectivamente, use as macros CHAR_MAX, SCHAR_MAX 
+	// Para determinar o valor máximo de um `char`, de um `signed char` e de
+	// um `unisigned char`, respectivamente, use as macros CHAR_MAX, SCHAR_MAX
 	// e UCHAR_MAX de <limits.h>
 
 	// Tipos inteiros podem sofrer cast para pontos-flutuantes e vice-versa.
@@ -534,7 +534,7 @@ int area(retan r)
     return r.largura * r.altura;
 }
 
-// Se você tiver structus grande, você pode passá-las "por ponteiro" 
+// Se você tiver structus grande, você pode passá-las "por ponteiro"
 // para evitar cópia de toda a struct:
 int area(const retan *r)
 {
@@ -551,8 +551,8 @@ conhecidos. Ponteiros para funções são como qualquer outro ponteiro
 diretamente e passá-las para por toda parte.
 Entretanto, a sintaxe de definição por ser um pouco confusa.
 
-Exemplo: use str_reverso através de um ponteiro 
-*/	
+Exemplo: use str_reverso através de um ponteiro
+*/
 void str_reverso_através_ponteiro(char *str_entrada) {
     // Define uma variável de ponteiro para função, nomeada f.
     void (*f)(char *); //Assinatura deve ser exatamente igual à função alvo.
@@ -572,7 +572,7 @@ typedef void (*minha_função_type)(char *);
 
 // Declarando o ponteiro:
 // ...
-// minha_função_type f; 
+// minha_função_type f;
 
 //Caracteres especiais:
 '\a' // Alerta (sino)
@@ -583,7 +583,7 @@ typedef void (*minha_função_type)(char *);
 '\r' // Retorno de carroça
 '\b' // Backspace
 '\0' // Caracter nulo. Geralmente colocado ao final de string em C.
-     //   oi\n\0. \0 é usado por convenção para marcar o fim da string. 
+     //   oi\n\0. \0 é usado por convenção para marcar o fim da string.
 '\\' // Barra invertida
 '\?' // Interrogação
 '\'' // Aspas simples
@@ -603,7 +603,7 @@ typedef void (*minha_função_type)(char *);
 "%p"    // ponteiro
 "%x"    // hexadecimal
 "%o"    // octal
-"%%"    // imprime % 
+"%%"    // imprime %
 
 ///////////////////////////////////////
 // Ordem de avaliação

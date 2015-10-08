@@ -135,7 +135,7 @@ None  # => None
 "etc" is None  # => False
 None is None  # => True
 
-# Operator 'is' testuje identyczność obiektów. To nie jest zbyt 
+# Operator 'is' testuje identyczność obiektów. To nie jest zbyt
 # pożyteczne, gdy działamy tylko na prostych wartościach,
 # ale przydaje się, gdy mamy do czynienia z obiektami.
 
@@ -302,7 +302,7 @@ pelen_zbior.add(5)   # pelen_zbior is now {1, 2, 3, 4, 5}
 inny_zbior = {3, 4, 5, 6}
 pelen_zbior & other_set   # => {3, 4, 5}
 
-# Suma zbiorów |  
+# Suma zbiorów |
 pelen_zbior | other_set   # => {1, 2, 3, 4, 5, 6}
 
 # Różnicę zbiorów da znak -
@@ -320,7 +320,7 @@ pelen_zbior | other_set   # => {1, 2, 3, 4, 5, 6}
 # Tworzymy zmienną some_var
 some_var = 5
 
-# Tutaj widzisz wyrażenie warunkowe "if". Wcięcia są ważne Pythonie! 
+# Tutaj widzisz wyrażenie warunkowe "if". Wcięcia są ważne Pythonie!
 # wypisze "some_var jest mniejsza niż 10"
 if some_var > 10:
     print("some_var jest wieksza niż 10")
@@ -442,7 +442,7 @@ def setX(num):
     # Lokalna zmienna x nie jest tym samym co zmienna x
     x = num # => 43
     print x # => 43
-    
+
 def setGlobalX(num):
     global x
     print x # => 5
@@ -482,7 +482,7 @@ class Czlowiek(object):
 
     # Atrybut klasy. Występuje we wszystkich instancjach klasy.
     gatunek = "H. sapiens"
-    
+
     # Podstawowa inicjalizacja - wywoływana podczas tworzenia instacji.
     # Zauważ, że podwójne podkreślenia przed i za nazwą oznaczają
     # obietky lub atrybuty, który żyją tylko w kontrolowanej przez
@@ -568,7 +568,7 @@ def podwojne_liczby(iterowalne):
         yield i + i
 
 # Generatory tworzą wartości w locie.
-# W przeciwienstwie do wygenerowania wartości raz i ich zachowania, 
+# W przeciwienstwie do wygenerowania wartości raz i ich zachowania,
 # powstają one na bieżąco, w wyniku iteracji. To oznacza, że wartości
 # większe niż 15 nie będą przetworzone w funkcji "podwojne_liczby".
 # Zauważ, że xrange to generator, który wykonuje tę samą operację co range.
@@ -578,7 +578,7 @@ def podwojne_liczby(iterowalne):
 # Pythona.
 xrange_ = xrange(1, 900000000)
 
-# poniższa pętla będzie podwajać liczby aż do 30 
+# poniższa pętla będzie podwajać liczby aż do 30
 for i in podwojne_liczby(xrange_):
     print(i)
     if i >= 30:

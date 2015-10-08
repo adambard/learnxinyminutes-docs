@@ -18,10 +18,10 @@ Essa combinação permite gerenciar processamento concorrente de maneira muito s
 ```clojure
 ; Comentários começam por ponto e vírgula
 
-; Clojure é escrito em "forms", os quais são simplesmente 
+; Clojure é escrito em "forms", os quais são simplesmente
 ; listas de coisas dentro de parênteses, separados por espaços em branco.
 
-; O "reader" (leitor) de Clojure presume que o primeiro elemento de 
+; O "reader" (leitor) de Clojure presume que o primeiro elemento de
 ; uma par de parênteses é uma função ou macro, e que os resto são argumentos.
 
 : A primeira chamada de um arquivo deve ser ns, para configurar o namespace (espaço de nomes)
@@ -59,7 +59,7 @@ Essa combinação permite gerenciar processamento concorrente de maneira muito s
 (class false) ; Booleanos são java.lang.Boolean
 (class nil); O valor "null" é chamado nil
 
-; Se você quiser criar um lista de literais, use aspa simples para 
+; Se você quiser criar um lista de literais, use aspa simples para
 ; ela não ser avaliada
 '(+ 1 2) ; => (+ 1 2)
 ; (que é uma abreviação de (quote (+ 1 2)))
@@ -75,7 +75,7 @@ Essa combinação permite gerenciar processamento concorrente de maneira muito s
 (class [1 2 3]); => clojure.lang.PersistentVector
 (class '(1 2 3)); => clojure.lang.PersistentList
 
-; Uma lista é escrita como (1 2 3), mas temos que colocar a aspa 
+; Uma lista é escrita como (1 2 3), mas temos que colocar a aspa
 ; simples para impedir o leitor (reader) de pensar que é uma função.
 ; Também, (list 1 2 3) é o mesmo que '(1 2 3)
 
@@ -179,13 +179,13 @@ x ; => 1
 (class (hash-map :a 1 :b 2 :c 3)) ; => clojure.lang.PersistentHashMap
 
 ; Arraymaps pode automaticamente se tornar hashmaps através da maioria das
-; operações se eles ficarem grandes o suficiente, portanto não há necessida de 
+; operações se eles ficarem grandes o suficiente, portanto não há necessida de
 ; se preocupar com isso.
 
 ;Mapas podem usar qualquer valor que se pode derivar um hash como chave
 
 
-; Mapas podem usar qualquer valor em que se pode derivar um hash como chave, 
+; Mapas podem usar qualquer valor em que se pode derivar um hash como chave,
 ; mas normalmente palavras-chave (keywords) são melhores.
 ; Keywords são como strings mas com algumas vantagens.
 (class :a) ; => clojure.lang.Keyword
@@ -243,7 +243,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; Forms úteis
 ;;;;;;;;;;;;;;;;;
 
-; Construções lógicas em Clojure são como macros, e 
+; Construções lógicas em Clojure são como macros, e
 ; se parecem com as demais
 (if false "a" "b") ; => "b"
 (if false "a") ; => nil
@@ -303,7 +303,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; Java
 ;;;;;;;;;;;;;;;;;
 
-; Java tem uma biblioteca padrão enorme e muito útil, 
+; Java tem uma biblioteca padrão enorme e muito útil,
 ; portanto é importante aprender como utiliza-la.
 
 ; Use import para carregar um modulo java
