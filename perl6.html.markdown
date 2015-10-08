@@ -1429,7 +1429,7 @@ for <well met young hero we shall meet later> {
 # A flip-flop can change state as many times as needed:
 for <test start print it stop not printing start print again stop not anymore> {
   .say if $_ eq 'start' ^ff^ $_ eq 'stop'; # exclude both "start" and "stop",
-                                           #=> "print this printing again"
+                                           #=> "print it print again"
 }
 
 # you might also use a Whatever Star,
