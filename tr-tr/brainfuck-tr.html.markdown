@@ -8,8 +8,8 @@ translators:
 lang: tr-tr
 ---
 
-Brainfuck (normalde brainfuck olarak bütün harfleri küçük olarak yazılır.) 
-son derece minimal bir programlama dilidir. (Sadece 8 komut) ve tamamen 
+Brainfuck (normalde brainfuck olarak bütün harfleri küçük olarak yazılır.)
+son derece minimal bir programlama dilidir. (Sadece 8 komut) ve tamamen
 Turing'dir.
 
 ```
