@@ -20,7 +20,7 @@ filename: learn-emacs-lisp-es.el
 ;;
 ;; Ahora instala GNU Emacs 24.3:
 ;;
-;; Debian: apt-get install emacs 
+;; Debian: apt-get install emacs
 ;; (o sigue las instrucciones de tu distribución preferida)
 ;; OSX: http://emacsformacosx.com/emacs-builds/Emacs-24.3-universal-10.6.8.dmg
 ;; Windows: http://ftp.gnu.org/gnu/windows/emacs/emacs-24.3-bin-i386.zip
@@ -31,20 +31,20 @@ filename: learn-emacs-lisp-es.el
 ;; Aviso importante:
 ;;
 ;; Seguir este tutorial no provocará daños en tu ordenador a menos que
-;; te enfades tanto que que acabes tirándolo al suelo. En tal caso 
+;; te enfades tanto que que acabes tirándolo al suelo. En tal caso
 ;; declino cualquier responsabilidad. ¡A divertirse!
 
 
-;; "N. del. T.": Algunos términos comunes de la informática se han dejado 
-;; sin traducir ya que es mucho más probable que el lector los conozca en 
+;; "N. del. T.": Algunos términos comunes de la informática se han dejado
+;; sin traducir ya que es mucho más probable que el lector los conozca en
 ;; su forma en inglés, siendo la versión en español de muy raro uso.
 ;; Además "sexps" se ha decidido traducir por sexpresión.
-;; Por último, añadir que no se han traducido los ejemplos de código ya que no 
+;; Por último, añadir que no se han traducido los ejemplos de código ya que no
 ;; es necesario entender qué dice el string para comprender el funcionamiento
 ;; y podría llevar a error.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;; Inicia Emacs.
 ;;
 ;; Pulsa la tecla `q' para pasar el mensaje de bienvenida.
@@ -55,21 +55,21 @@ filename: learn-emacs-lisp-es.el
 ;; A este espacio editable se le llama "buffer".
 ;;
 ;; Scratch es el buffer por defecto cuando abres Emacs.
-;; En Emacs nunca editas ficheros, sino que editas buffers que 
+;; En Emacs nunca editas ficheros, sino que editas buffers que
 ;; posteriormente pueden grabarse a un fichero.
 ;; can save to a file.
-;; 
+;;
 ;; "Lisp interaction" indica el conjunto de ordenes disponibles.
-;; 
+;;
 ;; Emacs dispone de un set de comandos disponibles en cualquier buffer
-;; ("built-ins") y aparte varios conjuntos de ordenes disponibles 
-;; según el modo específico que esté activo. En nuestro caso 
+;; ("built-ins") y aparte varios conjuntos de ordenes disponibles
+;; según el modo específico que esté activo. En nuestro caso
 ;; estamos usando `lisp-interaction-mode', el cual incluye las
 ;; ordenes necesarias para evaluar y navegar código Elisp.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Un punto y coma comienza un comentario. Pueden ponerse en cualquier 
+;; Un punto y coma comienza un comentario. Pueden ponerse en cualquier
 ;; posicion de la linea.
 ;;
 ;; Los programas en Elisp se componen de expresiones simbólicas
@@ -81,12 +81,12 @@ filename: learn-emacs-lisp-es.el
 ;; Las sexpresiones se rodean por paréntesis, y pueden anidarse:
 (+ 2 (+ 1 1))
 
-;; Una expresion simbólica está formada bien por átomos o bien por otras 
-;; expresiones simbólicas. En el ejemplo de arriba, 1 y 2 son átomos, 
+;; Una expresion simbólica está formada bien por átomos o bien por otras
+;; expresiones simbólicas. En el ejemplo de arriba, 1 y 2 son átomos,
 ;; mientras que (+ 2 (+ 1 1)) y (+ 1 1) son expresiones simbólicas.
 
 ;; Gracias a `lisp-interaction-mode' puedes evaluar las sexpresiones.
-;; Coloca el cursor justo despues del paréntesis de cierre y 
+;; Coloca el cursor justo despues del paréntesis de cierre y
 ;; mantén pulsada la tecla Control y la j (para abreviar usaremos "C-j").
 
 (+ 3 (+ 1 2))
@@ -96,7 +96,7 @@ filename: learn-emacs-lisp-es.el
 ;; `C-j' añade el resultado de la evaluación al buffer.
 
 ;; `C-xC-e' muestra el mismo resultado pero en la linea inferior
-;; la cual se llama "minibuffer".  Este será el metodo que usaremos 
+;; la cual se llama "minibuffer".  Este será el metodo que usaremos
 ;; normalmente para no llenar el buffer con texto inútil.
 
 ;; `setq' guarda un valor en una variable:
@@ -132,7 +132,7 @@ filename: learn-emacs-lisp-es.el
 (defun hello (name) (insert "Hello " name))
 ;; `C-xC-e' => hello
 
-;; Ahora vamos a llamar a la funcion con el string "you" como valor para 
+;; Ahora vamos a llamar a la funcion con el string "you" como valor para
 ;; el único parámetro que posee.
 (hello "you")
 ;; `C-xC-e' => "Hello you"
@@ -149,7 +149,7 @@ filename: learn-emacs-lisp-es.el
 ;; `C-xC-e'
 ;; => [La pantalla ahora tiene dos ventanas y el cursor está en el buffer *test*]
 
-;; Mueve el ratón sobre la ventana superior y pulsa el boton izdo. para volver. 
+;; Mueve el ratón sobre la ventana superior y pulsa el boton izdo. para volver.
 ;; Otra forma es usando `C-xo' (pulsa simultaneamente control y x y luego la o)
 ;; para ir a la otra ventana.
 
@@ -160,7 +160,7 @@ filename: learn-emacs-lisp-es.el
 ;; `C-xC-e'
 ;; => [De las dos ventanas de la pantalla, el cursor está en la marcada como *test*]
 
-;; A partir de ahora, si no te importa, dejaremos de decir que pulses `C-xC-e': 
+;; A partir de ahora, si no te importa, dejaremos de decir que pulses `C-xC-e':
 ;; tendrás que hacerlo para ejecutar cada sexpresión que siga.
 
 ;; También tendrás que volver al buffer *scratch* bien con el ratón o con `C-xo'.
@@ -185,13 +185,13 @@ filename: learn-emacs-lisp-es.el
   (hello local-name)
   (other-window 1))
 
-;; En este caso, no hace falta añadir `progn' ya que `let' permite combinar 
+;; En este caso, no hace falta añadir `progn' ya que `let' permite combinar
 ;; varias sexpresiones.
 
 ;; Vamos a darle formato a un string:
 (format "Hello %s!\n" "visitor")
 
-;; Cada %s indica la posicion donde irá un string, el cual será reemplazado 
+;; Cada %s indica la posicion donde irá un string, el cual será reemplazado
 ;; por "visitor". "\n" es el caracter de nueva línea.
 
 ;; Mejoremos nuestra funcion usando `format':
@@ -247,7 +247,7 @@ filename: learn-emacs-lisp-es.el
 ;; Para coger el primer elemento de la lista usaremos `car':
 (car list-of-names)
 
-;; Para coger todos menos el primer elemento de la lista 
+;; Para coger todos menos el primer elemento de la lista
 ;; usaremos `cdr':
 (cdr list-of-names)
 
@@ -255,9 +255,9 @@ filename: learn-emacs-lisp-es.el
 (push "Stephanie" list-of-names)
 
 ;; OJO: `car' y `cdr' no modifican la lista, mientras que `push' sí.
-;; ¡Es una diferencia importante! Algunas funciones no tienen efectos 
+;; ¡Es una diferencia importante! Algunas funciones no tienen efectos
 ;; colaterales (como `car') mientras que otras sí (como `push').
-;; "N. del T.": estos efectos colaterales se les llama `side-effects' en 
+;; "N. del T.": estos efectos colaterales se les llama `side-effects' en
 ;; las distintas variantes de lisp.
 
 ;; Llamemos a `hello' con cada elemento de `list-of-names':
@@ -273,7 +273,7 @@ filename: learn-emacs-lisp-es.el
 (greeting)
 
 ;; ¿Te acuerdas de la función `hello' definida un poco más arriba?
-;; Recibía un parámetro: `name'. Así que `mapcar' llama a `hello' con cada 
+;; Recibía un parámetro: `name'. Así que `mapcar' llama a `hello' con cada
 ;; elemento de `list-of-names' como parámetro de `hello'.
 
 ;; Ahora ordenaremos un poco lo que tenemos en el buffer:
@@ -289,7 +289,7 @@ filename: learn-emacs-lisp-es.el
 ;; (search-forward "Hello") busca un string "Hello".
 ;; (while x y) evalua la/s sexpresion/es y mientras que x devuelva
 ;; alguna cosa.
-;; En el momento que x devuelva `nil' (es decir nada), sale del 
+;; En el momento que x devuelva `nil' (es decir nada), sale del
 ;; bucle `while'.
 
 (replace-hello-by-bonjour)
@@ -299,8 +299,8 @@ filename: learn-emacs-lisp-es.el
 
 ;; Y además, hemos obtenido un error: "Search failed: Hello".
 ;;
-;; Para evitar este error, hay que decirle a `search-forward' si debería dejar de 
-;; buscar en el buffer en algún momento y si debería fallar sin quejarse cuando 
+;; Para evitar este error, hay que decirle a `search-forward' si debería dejar de
+;; buscar en el buffer en algún momento y si debería fallar sin quejarse cuando
 ;; no encuentra nada.
 
 ;; (search-forward "Hello" nil t) justo hace eso:
@@ -308,7 +308,7 @@ filename: learn-emacs-lisp-es.el
 ;; El argumento `nil' significa que la busqueda no está ligada a ninguna posición.
 ;; Y el argumento `t' le pide que no diga nada si no encuentra el string.
 
-;; Usaremos esta sexpresión en la función siguiente, la cual ya 
+;; Usaremos esta sexpresión en la función siguiente, la cual ya
 ;; no muestra ningún error:
 
 (defun hello-to-bonjour ()
@@ -335,13 +335,13 @@ filename: learn-emacs-lisp-es.el
                            (list 'face 'bold)))
     (other-window 1))
 
-;; Esta función nos presenta `re-search-forward': en vez de 
+;; Esta función nos presenta `re-search-forward': en vez de
 ;; buscar el string "Bonjour" exacto, se busca por un patrón
-;; usando una "expresión regular" (lo cual se muestra abreviado 
+;; usando una "expresión regular" (lo cual se muestra abreviado
 ;; en el prefijo "re-" del inglés "Regular Expression").
 
 ;; La expresión regular a utilizar es "Bonjour \\(.+\\)!" y se traduce como:
-;; el string "Bonjour ", seguido de 
+;; el string "Bonjour ", seguido de
 ;; un grupo de           | representado por \\( ... \\)
 ;;   cualquier caracter  | representado por .
 ;;   al menos una vez    | representado por +

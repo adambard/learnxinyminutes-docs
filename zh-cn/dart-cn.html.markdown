@@ -82,7 +82,7 @@ example5() {
 // classBody 中可以包含实例方法和变量，
 // 还可以包含类方法和变量。
 class Example6Class {
-  var example6InstanceVariable = "Example6 instance variable"; 
+  var example6InstanceVariable = "Example6 instance variable";
   sayIt() {
     print(example6InstanceVariable);
   }
@@ -93,7 +93,7 @@ example6() {
 
 // 类方法和变量使用 static 关键词声明。
 class Example7Class {
-  static var example7ClassVariable = "Example7 class variable"; 
+  static var example7ClassVariable = "Example7 class variable";
   static sayItFromClass() {
     print(example7ClassVariable);
   }
@@ -111,7 +111,7 @@ example7() {
 // 字符串和数字默认是常量。
 // 但是 array 和 map 不是。他们需要用 "const" 声明为常量。
 var example8A = const ["Example8 const array"],
-  example8M = const {"someKey": "Example8 const map"}; 
+  example8M = const {"someKey": "Example8 const map"};
 example8() {
   print(example8A[0]);
   print(example8M["someKey"]);
@@ -243,7 +243,7 @@ example18() {
 // 用三个单引号或三个双引号表示的字符串
 // 可以跨越多行，并且包含行分隔符。
 example19() {
-  print('''Example19 <a href="etc"> 
+  print('''Example19 <a href="etc">
 Example19 Don't can't I'm Etc
 Example19 </a>''');
 }
@@ -269,7 +269,7 @@ example20() {
 class Example21 {
   List<String> _names;
   Example21() {
-    _names = ["a", "b"]; 
+    _names = ["a", "b"];
   }
   List<String> get names => _names;
   set names(List<String> list) {
@@ -359,7 +359,7 @@ example25() {
 
 // 可以在大括号 {} 中声明命名参数。
 // 大括号 {} 中声明的参数的顺序是随意的。
-// 在中括号 [] 中声明的参数也是可选的。 
+// 在中括号 [] 中声明的参数也是可选的。
 example26() {
   var _name, _surname, _email;
   setConfig1({name, surname}) {
@@ -395,7 +395,7 @@ example27() {
 // 要导入一个库，使用 import "libraryPath" 的形式，或者如果要导入的是
 // 核心库使用 import "dart:libraryName" 。还有一个称为 "pub" 的包管理工具，
 // 它使用 import "package:packageName" 的约定形式。
-// 看下这个文件顶部的 import "dart:collection"; 语句。 
+// 看下这个文件顶部的 import "dart:collection"; 语句。
 // 导入语句必需在其它代码声明之前出现。IterableBase 来自于 dart:collection 。
 class Example28 extends IterableBase {
   var names;
@@ -411,7 +411,7 @@ example28() {
 
 // 对于控制流语句，我们有：
 // * 必需带 break 的标准 switch 语句
-// * if-else 和三元操作符 ..?..:.. 
+// * if-else 和三元操作符 ..?..:..
 // * 闭包和匿名函数
 // * break, continue 和 return 语句
 example29() {

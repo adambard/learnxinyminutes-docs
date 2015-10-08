@@ -536,7 +536,7 @@ main = diga_oi
    Pense que o valor do tipo `IO a` representando um
    programa de computador que irá gerar um valor do tipo `a`
    quando for ele executado.
-   
+
    Nós podemos guardar e reusar isso apenas apontando `<-`.
    Nós podemos também cria nossas próprias ações do tipo `IO String`
 -}

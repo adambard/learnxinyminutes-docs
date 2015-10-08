@@ -8,7 +8,7 @@ filename: learnelixir-cn.ex
 lang: zh-cn
 ---
 
-Elixir 是一门构建在Erlang VM 之上的函数式编程语言。Elixir 完全兼容 Erlang, 
+Elixir 是一门构建在Erlang VM 之上的函数式编程语言。Elixir 完全兼容 Erlang,
 另外还提供了更标准的语法，特性。
 
 ```elixir
@@ -49,11 +49,11 @@ elem({1, 2, 3}, 0) #=> 1
 head #=> 1
 tail #=> [2,3]
 
-# 在elixir,就像在Erlang, `=` 表示模式匹配 (pattern matching) 
+# 在elixir,就像在Erlang, `=` 表示模式匹配 (pattern matching)
 # 不是赋值。
 #
 # 这表示会用左边的模式(pattern)匹配右侧
-# 
+#
 # 上面的例子中访问列表的头部和尾部就是这样工作的。
 
 # 当左右两边不匹配时，会返回error, 在这个
@@ -81,7 +81,7 @@ string.
 <<?a, ?b, ?c>> #=> "abc"
 [?a, ?b, ?c]   #=> 'abc'
 
-# 在 elixir中，`?a`返回 `a` 的 ASCII 整型值  
+# 在 elixir中，`?a`返回 `a` 的 ASCII 整型值
 ?a #=> 97
 
 # 合并列表使用 `++`, 对于二进制类型则使用 `<>`
@@ -171,7 +171,7 @@ case {:one, :two} do
     "This will match any value"
 end
 
-# 模式匹配时，如果不需要某个值，通用的做法是把值 匹配到 `_` 
+# 模式匹配时，如果不需要某个值，通用的做法是把值 匹配到 `_`
 # 例如，我们只需要要列表的头元素:
 [head | _] = [1,2,3]
 head #=> 1
@@ -203,7 +203,7 @@ end
 
 # `try/catch` 用于捕获被抛出的值, 它也支持 `after` 子句，
 # 无论是否值被捕获，after 子句都会被调用
-# `try/catch` 
+# `try/catch`
 try do
   throw(:hello)
 catch
@@ -387,7 +387,7 @@ pid <- {:circle, 2}
 #=> Area = 12.56000000000000049738
 #   {:circle,2}
 
-# shell也是一个进程(process), 你可以使用`self`获取当前 pid 
+# shell也是一个进程(process), 你可以使用`self`获取当前 pid
 self() #=> #PID<0.27.0>
 ```
 

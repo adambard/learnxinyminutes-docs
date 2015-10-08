@@ -131,7 +131,7 @@ print('Hello World!'); // 和echo相同
 
 // echo和print实际上也属于这个语言本身，所以我们省略括号
 echo 'Hello World!';
-print 'Hello World!'; 
+print 'Hello World!';
 
 $paragraph = 'paragraph';
 
@@ -332,7 +332,7 @@ function my_function () {
 
 echo my_function(); // => "Hello"
 
-// 函数名需要以字母或者下划线开头, 
+// 函数名需要以字母或者下划线开头,
 // 后面可以跟着任意的字母、下划线、数字.
 
 function add ($x, $y = 1) { // $y 是可选参数，默认值为 1
@@ -627,7 +627,7 @@ $cls = new SomeOtherNamespace\MyClass();
 
 ## 更多阅读
 
-访问 [PHP 官方文档](http://www.php.net/manual/) 
+访问 [PHP 官方文档](http://www.php.net/manual/)
 
 如果你对最佳实践感兴趣（实时更新） [PHP The Right Way](http://www.phptherightway.com/).
 

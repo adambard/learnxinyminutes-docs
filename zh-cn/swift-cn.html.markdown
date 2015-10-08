@@ -5,7 +5,7 @@ contributors:
   - ["Grant Timmerman", "http://github.com/grant"]
 translators:
   - ["Xavier Yao", "http://github.com/xavieryao"]
-  - ["Joey Huang", "http://github.com/kamidox"]  
+  - ["Joey Huang", "http://github.com/kamidox"]
 lang: zh-cn
 ---
 
@@ -19,7 +19,7 @@ Swift 的官方语言教程 [Swift Programming Language](https://itunes.apple.co
 // 导入外部模块
 import UIKit
 
-// 
+//
 // MARK: 基础
 //
 
@@ -33,7 +33,7 @@ println("Hello, world")
 // 变量 (var) 的值设置后可以随意改变
 // 常量 (let) 的值设置后不能改变
 var myVariable = 42
-let øπΩ = "value" // 可以支持 unicode 变量名 
+let øπΩ = "value" // 可以支持 unicode 变量名
 let π = 3.1415926
 let myConstant = 3.1415926
 let explicitDouble: Double = 70   // 明确指定变量类型为 Double ，否则编译器将自动推断变量类型
@@ -55,7 +55,7 @@ println("Build value: \(buildValue)") // Build value: 7
 
 /*
     Optionals 是 Swift 的新特性，它允许你存储两种状态的值给 Optional 变量：有效值或 None
-    
+
     Swift 要求所有的 Optinal 属性都必须有明确的值，如果为空，则必须明确设定为 nil
 
     Optional<T> 是个枚举类型
@@ -69,7 +69,7 @@ if someOptionalString != nil {
     if someOptionalString!.hasPrefix("opt") {
         println("has the prefix")
     }
-    
+
     let empty = someOptionalString?.isEmpty
 }
 someOptionalString = nil
@@ -94,7 +94,7 @@ anyObjectVar = "Changed value to a string, not good practice, but possible."
 
 /*
     这里是注释
-    
+
     /*
         支持嵌套的注释
     */
@@ -177,7 +177,7 @@ case "cucumber", "watercress":
     let vegetableComment = "That would make a good tea sandwich."
 case let localScopeValue where localScopeValue.hasSuffix("pepper"):
     let vegetableComment = "Is it a spicy \(localScopeValue)?"
-default: // 在 Swift 里，switch 语句的 case 必须处理所有可能的情况，如果 case 无法全部处理，则必须包含 default语句 
+default: // 在 Swift 里，switch 语句的 case 必须处理所有可能的情况，如果 case 无法全部处理，则必须包含 default语句
     let vegetableComment = "Everything tastes good in soup."
 }
 
@@ -296,7 +296,7 @@ print(numbers) // [3, 6, 18]
 
 struct NamesTable {
     let names = [String]()
-    
+
     // 自定义下标运算符
     subscript(index: Int) -> String {
         return names[index]
@@ -329,7 +329,7 @@ public class Shape {
 internal class Rect: Shape {
     // 值属性 (Stored properties)
     var sideLength: Int = 1
-    
+
     // 计算属性 (Computed properties)
     private var perimeter: Int {
         get {
@@ -340,11 +340,11 @@ internal class Rect: Shape {
             sideLength = newValue / 4
         }
     }
-    
+
     // 延时加载的属性，只有这个属性第一次被引用时才进行初始化，而不是定义时就初始化
     // subShape 值为 nil ，直到 subShape 第一次被引用时才初始化为一个 Rect 实例
     lazy var subShape = Rect(sideLength: 4)
-    
+
     // 监控属性值的变化。
     // 当我们需要在属性值改变时做一些事情，可以使用 `willSet` 和 `didSet` 来设置监控函数
     // `willSet`: 值改变之前被调用
@@ -359,7 +359,7 @@ internal class Rect: Shape {
             println(oldValue)
         }
     }
-    
+
     // 命名构造函数 (designated inits)，它必须初始化所有的成员变量，
     // 然后调用父类的命名构造函数继续初始化父类的所有变量。
     init(sideLength: Int) {
@@ -367,13 +367,13 @@ internal class Rect: Shape {
         // 必须显式地在构造函数最后调用父类的构造函数 super.init
         super.init()
     }
-    
+
     func shrink() {
         if sideLength > 0 {
             --sideLength
         }
     }
-    
+
     // 函数重载使用 override 关键字
     override func getArea() -> Int {
         return sideLength * sideLength
@@ -411,12 +411,12 @@ class Circle: Shape {
     override func getArea() -> Int {
         return 3 * radius * radius
     }
-    
+
     // optional 构造函数，可能会返回 nil
     init?(radius: Int) {
         self.radius = radius
         super.init()
-        
+
         if radius <= 0 {
             return nil
         }
@@ -469,7 +469,7 @@ enum Furniture {
     case Desk(height: Int)
     // 和 String, Int 关联的枚举记录
     case Chair(brand: String, height: Int)
-    
+
     func description() -> String {
         switch self {
         case .Desk(let height):
@@ -512,7 +512,7 @@ protocol ShapeGenerator {
 
 class MyShape: Rect {
     var delegate: TransformShape?
-    
+
     func grow() {
         sideLength += 2
 
@@ -546,7 +546,7 @@ extension Int {
     var customProperty: String {
         return "This is \(self)"
     }
-    
+
     func multiplyBy(num: Int) -> Int {
         return num * self
     }

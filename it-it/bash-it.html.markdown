@@ -164,7 +164,7 @@ echo "Ci sono $(ls | wc -l) oggetti qui."
 echo "Ci sono `ls | wc -l` oggetti qui."
 
 # Bash utilizza uno statemente case che funziona in maniera simile allo switch in Java e C++:
-case "$VARIABILE" in 
+case "$VARIABILE" in
     #Lista di pattern per le condizioni che vuoi soddisfare
     0) echo "C'è uno zero.";;
     1) echo "C'è un uno.";;
@@ -245,7 +245,7 @@ grep "^foo.*bar$" file.txt
 grep -c "^foo.*bar$" file.txt
 # se vuoi letteralmente cercare la stringa,
 # e non la regex, usa fgrep (o grep -F)
-fgrep "^foo.*bar$" file.txt 
+fgrep "^foo.*bar$" file.txt
 
 
 # Leggi la documentazione dei builtin di bash con il builtin 'help' di bash:

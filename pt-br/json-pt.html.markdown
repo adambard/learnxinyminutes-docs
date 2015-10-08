@@ -12,15 +12,15 @@ filename: learnjson-pt.json
 Como JSON é um formato de intercâmbio de dados, este será, muito provavelmente, o
 "Learn X in Y minutes" mais simples existente.
 
-JSON na sua forma mais pura não tem comentários em reais, mas a maioria dos analisadores 
-aceitarão comentários no estilo C (//, /\* \*/). Para os fins do presente, no entanto, 
+JSON na sua forma mais pura não tem comentários em reais, mas a maioria dos analisadores
+aceitarão comentários no estilo C (//, /\* \*/). Para os fins do presente, no entanto,
 tudo o que é vai ser 100% JSON válido. Felizmente, isso meio que fala por si.
 
 
 ```json
 {
   "chave": "valor",
-  
+
   "chaves": "deve ser sempre entre aspas (junto ou separado)",
   "números": 0,
   "strings": "Olá, mundo. Todo o padrão UNICODE é permitido, junto com \"escapando\".",

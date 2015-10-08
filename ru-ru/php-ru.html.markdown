@@ -109,7 +109,7 @@ echo 'This string ' . 'is concatenated';
 /********************************
  * Константы
  */
- 
+
 // Константа определяется при помощи define()
 // и никогда не может быть изменена во время выполнения программы!
 
@@ -171,7 +171,7 @@ $y = 2;
 $x = $y; // $x теперь содержит значение переменной $y
 $z = &$y;
 // $z содержит ссылку на $y. Изменение значения $z затронет значение $y и наоборот.
-// Значение $x остается неизменным. 
+// Значение $x остается неизменным.
 
 echo $x; // => 2
 echo $z; // => 2
@@ -657,7 +657,7 @@ $cls = new SomeOtherNamespace\MyClass();
 ```
 
 ## Смотрите также:
-Посетите страницу [официальной документации PHP](http://www.php.net/manual/) для справки. 
+Посетите страницу [официальной документации PHP](http://www.php.net/manual/) для справки.
 Если вас интересуют полезные приемы использования PHP посетите [PHP The Right Way](http://www.phptherightway.com/).
 Если вы раньше пользовались языком с хорошей организацией пакетов, посмотрите [Composer](http://getcomposer.org/).
-Для изучения стандартов использования языка посетите PHP Framework Interoperability Group's [PSR standards](https://github.com/php-fig/fig-standards). 
+Для изучения стандартов использования языка посетите PHP Framework Interoperability Group's [PSR standards](https://github.com/php-fig/fig-standards).

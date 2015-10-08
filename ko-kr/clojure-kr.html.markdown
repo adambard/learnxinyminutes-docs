@@ -9,7 +9,7 @@ lang: ko-kr
 ---
 
 Clojure는 Java 가상머신을 위해 개발된 Lisp 계통의 언어입니다
-이는 Common Lisp보다 순수 [함수형 프로그래밍](https://en.wikipedia.org/wiki/Functional_programming)을 더욱 강조했으며, 
+이는 Common Lisp보다 순수 [함수형 프로그래밍](https://en.wikipedia.org/wiki/Functional_programming)을 더욱 강조했으며,
 상태를 있는 그대로 다루기 위해 다양한 [STM](https://en.wikipedia.org/wiki/Software_transactional_memory) 을 지원하는 프로그램들을 갖췄습니다.
 
 이를 조합하여, 병행처리(concurrent processing)를 매우 단순하게 처리할 수 있으며,

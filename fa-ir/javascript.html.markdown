@@ -41,7 +41,7 @@ lang: fa-ir
 doStuff();
 ```
 <p dir='rtl'>
-ولی لزومی به این کار نیست. نقطه ویرگول به صورت خودکار در نظر گرفته میشوند.  
+ولی لزومی به این کار نیست. نقطه ویرگول به صورت خودکار در نظر گرفته میشوند.
 </p>
 <p dir='rtl'>
 وقتی که خط جدیدی شروع میشود. مگر در موارد خاص.
@@ -533,7 +533,7 @@ if (Object.create === undefined){ // don't overwrite it if it exists
 <h2 dir='rtl'> منابع دیگر </h2>
 
 The [Mozilla Developer
-Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) 
+Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 <p dir='rtl'>مرجعی بسیار خوب برای جاوااسکریپت به شکلی که در مرورگر ها مورد استفاده قرار گرفته است.</p>
 <p dir='rtl'>از آنجایی که این منبع یک ویکی میباشد همانطور که مطالب بیشتری یاد میگیرید میتوانید به دیگران نیز در یادگیری آن کمک کنید.</p>
 
@@ -544,7 +544,7 @@ JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introdu
 [Document Object
 Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 
-[Javascript Garden](http://bonsaiden.github.io/JavaScript-Garden/) 
+[Javascript Garden](http://bonsaiden.github.io/JavaScript-Garden/)
 <p dir='rtl'>راهنمای دقیقی از قسمت های غیر ملموس زبان.</p>
 
 <p dir='rtl'>اضافه بر این در ویرایش این مقاله، قسمت هایی از سایت زیر مورد استفاده قرار گرفته است.</p>

@@ -20,7 +20,7 @@ commenti in stile C (//, /\* \*/). Per lo scopo prefissato, tuttavia, tutto sar�
 ```json
 {
   "chiave": "valore",
-  
+
   "chiavi": "devono sempre essere racchiuse tra doppi apici",
   "numeri": 0,
   "stringhe": "Ciaø, møndø. Tutti gli unicode sono permessi, assieme con l \"escaping\".",
@@ -50,7 +50,7 @@ commenti in stile C (//, /\* \*/). Per lo scopo prefissato, tuttavia, tutto sar�
       [0, 0, 0, 1]
     ]
   ],
-  
+
   "stile alternativo": {
     "commento": "Guarda quà!"
   , "posizione della virgola": "non conta - fintantochè è prima del valore, allora è valida"

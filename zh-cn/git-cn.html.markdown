@@ -8,7 +8,7 @@ translators:
 lang: zh-cn
 ---
 
-Git是一个分布式版本控制及源代码管理工具 
+Git是一个分布式版本控制及源代码管理工具
 
 Git可以为你的项目保存若干快照，以此来对整个项目进行版本管理
 
@@ -243,7 +243,7 @@ $ git config --global alias.g "grep --break --heading --line-number"
 $ git grep 'variableName' -- '*.java'
 
 # 搜索包含 "arrayListName" 和, "add" 或 "remove" 的所有行
-$ git grep -e 'arrayListName' --and \( -e add -e remove \) 
+$ git grep -e 'arrayListName' --and \( -e add -e remove \)
 ```
 
 更多的例子可以查看：
@@ -313,7 +313,7 @@ $ git pull origin master
 $ git push origin master
 ```
 
-### rebase (谨慎使用) 
+### rebase (谨慎使用)
 
 将一个分支上所有的提交历史都应用到另一个分支上
 *不要在一个已经公开的远端分支上使用rebase*.

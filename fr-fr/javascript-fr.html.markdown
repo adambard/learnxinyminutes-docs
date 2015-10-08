@@ -12,14 +12,14 @@ lang: fr-fr
 JavaScript a été créé par Brendan Eich, travaillant alors a Netscape, en 1995.
 Le langage avait à l'origine pour but d'être un langage de scripting simple
 pour les sites web, complétant le Java (à ne pas confondre avec JavaScript)
-pour des applications web complexes. Mais son intégration très proche et 
-simple des pages web, ainsi que le support natif des navigateurs a rendu 
-le JavaScript incontournable aujourd'hui tant bien dans le front-end que 
+pour des applications web complexes. Mais son intégration très proche et
+simple des pages web, ainsi que le support natif des navigateurs a rendu
+le JavaScript incontournable aujourd'hui tant bien dans le front-end que
 dans le back-end.
 
 En effet, le JavaScript n'est plus uniquement limité aux navigateurs, grâce à
-Node.JS, un projet qui offre un environnement indépendant dans lequel un 
-interpréteur Javascript, basé sur le célèbre moteur V8 de Google Chrome, 
+Node.JS, un projet qui offre un environnement indépendant dans lequel un
+interpréteur Javascript, basé sur le célèbre moteur V8 de Google Chrome,
 peut être utilisé directement côté serveur pour exécuter des programmes écrits
 en JavaScript.
 
@@ -31,7 +31,7 @@ en JavaScript.
 // Toutes les expressions peuvent finir par ;
 doStuff();
 
-// ... mais n'en n'ont pas forcément besoin, les point-virgules sont ajoutés 
+// ... mais n'en n'ont pas forcément besoin, les point-virgules sont ajoutés
 // lors de l’interprétation aux sauts de ligne, sauf exceptions
 doStuff()
 
@@ -117,7 +117,7 @@ false; // faux
 
 // Il y a également null et undefined
 null; // utilisé pour une non-valeur
-undefined; // utilisé pour une valeur actuellement non présente (cependant, 
+undefined; // utilisé pour une valeur actuellement non présente (cependant,
            // undefined est aussi une valeur valide)
 
 // false, null, undefined, NaN, 0 and '' sont 'presque-faux' (falsy), tout le reste
@@ -128,15 +128,15 @@ undefined; // utilisé pour une valeur actuellement non présente (cependant,
 ///////////////////////////////////
 // 2. Variables, Tableaux et Objets
 
-// Les variables sont déclarées avec le mot clé var. Le typage en JavaScript est 
+// Les variables sont déclarées avec le mot clé var. Le typage en JavaScript est
 // dynamique, donc pas besoin de spécifier le type. L'assignement utilise un seul =.
 var someVar = 5;
 
 // si vous oubliez le mot clé var, vous n'aurez pas d'erreur (sauf en mode strict)
 someOtherVar = 10;
 
-// ... mais la variable aura une portée globale (plus communément trouvé en tant 
-// que "global scope" en anglais), et non pas une portée limitée à la fonction 
+// ... mais la variable aura une portée globale (plus communément trouvé en tant
+// que "global scope" en anglais), et non pas une portée limitée à la fonction
 // dans laquelle vous l'aviez définie.
 
 // Les variables déclarées et non assignées sont undefined par défaut
@@ -198,7 +198,7 @@ else if (count === 4) {
   // uniquement quand count est 4
 }
 else {
-  // le reste du temps, si ni 3, ni 4. 
+  // le reste du temps, si ni 3, ni 4.
 }
 
 // De même pour while.
@@ -264,7 +264,7 @@ function myFunction(thing){
 }
 myFunction('foo'); // = 'FOO'
 
-// Les fonctions JavaScript sont des objets de première classe, donc peuvent 
+// Les fonctions JavaScript sont des objets de première classe, donc peuvent
 // être réassignées à d'autres variables et passées en tant que paramètres pour
 // d'autres fonctions
 function myFunction(){
@@ -274,13 +274,13 @@ setTimeout(myFunction, 5000);
 // Note: setTimeout ne fait pas parti du langage, mais les navigateurs ainsi
 // que Node.js le rendent disponible
 
-// Les fonctions n'ont pas nécessairement besoin d'un nom, elles peuvent être 
+// Les fonctions n'ont pas nécessairement besoin d'un nom, elles peuvent être
 // anonymes
 setTimeout(function(){
     // ce code s'exécutera dans 5 secondes
 }, 5000);
 
-// Le Javascript crée uniquement un scope, une portée d'action limitée, pour 
+// Le Javascript crée uniquement un scope, une portée d'action limitée, pour
 // les fonctions, et pas dans les autres blocs.
 if (true){
     var i = 5;
@@ -293,7 +293,7 @@ i; // = 5 - et non undefined comme vous pourriez vous y attendre
     var temporary = 5;
     // Nous pouvons accéder au scope global en assignant à l'objet global,
     // qui dans les navigateurs est "window". Il est différent dans Node.js,
-    // le scope global sera en fait local au module dans lequel vous 
+    // le scope global sera en fait local au module dans lequel vous
     // vous trouvez. http://nodejs.org/api/globals.html
     window.permanent = 10;
 })();
@@ -302,8 +302,8 @@ i; // = 5 - et non undefined comme vous pourriez vous y attendre
 temporary; // raises ReferenceError
 permanent; // = 10
 
-// Une des fonctionnalités les plus puissantes de Javascript est le système de 
-// closures. Si une fonction est définie dans une autre fonction, alors la 
+// Une des fonctionnalités les plus puissantes de Javascript est le système de
+// closures. Si une fonction est définie dans une autre fonction, alors la
 // fonction interne aura accès aux variables de la fonction parente, même si
 // celle-ci a déjà finie son exécution.
 function sayHelloInFiveSeconds(name){
@@ -340,7 +340,7 @@ myObj = {
 };
 myObj.myFunc(); // = 'Hello world!'
 
-// La valeur de "this" change de par l'endroit où la fonction est appelée, et 
+// La valeur de "this" change de par l'endroit où la fonction est appelée, et
 // non de l'endroit où elle est définie. Donc elle ne fonctionnera pas si elle
 // est appelée hors du contexte l'objet.
 var myFunc = myObj.myFunc;
@@ -356,7 +356,7 @@ myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = 'HELLO WORLD!'
 
 // Le contexte correspond à la valeur de "this".
-// Nous pouvons aussi spécifier un contexte, forcer la valeur de "this, 
+// Nous pouvons aussi spécifier un contexte, forcer la valeur de "this,
 // pour une fonction quand elle est appelée grâce à "call" ou "apply".
 var anotherFunc = function(s){
     return this.myString + s;
@@ -371,19 +371,19 @@ Math.min(42, 6, 27); // = 6
 Math.min([42, 6, 27]); // = NaN (uh-oh!)
 Math.min.apply(Math, [42, 6, 27]); // = 6
 
-// Mais, "call" and "apply" fonctionnenent uniquement au moment de l'appel de la 
-// fonction. Pour lier le contexte de façon permanente, nous pouvons utiliser 
+// Mais, "call" and "apply" fonctionnenent uniquement au moment de l'appel de la
+// fonction. Pour lier le contexte de façon permanente, nous pouvons utiliser
 // "bind" pour garder une référence à la fonction avec ce "this".
 var boundFunc = anotherFunc.bind(myObj);
 boundFunc(' And Hello Saturn!'); // = 'Hello World! And Hello Saturn!'
 
-// "bind" peut aussi être utilisé pour créer une application partielle de la 
+// "bind" peut aussi être utilisé pour créer une application partielle de la
 // fonction (curry)
 var product = function(a, b){ return a * b; }
 var doubler = product.bind(this, 2);
 doubler(8); // = 16
 
-// Lorsque vous appelez une fonction avec le mot clé "new", un nouvel objet est 
+// Lorsque vous appelez une fonction avec le mot clé "new", un nouvel objet est
 // crée et mis à disposition de la fonction via "this". Ces fonctions sont
 // communément appelées constructeurs.
 var MyConstructor = function(){
@@ -395,8 +395,8 @@ myNewObj.myNumber; // = 5
 // Chaque objet en Javascript a un "prototype". Quand vous essayez d'accéder à
 // une propriété que l'objet n'a pas, l'interpréteur va regarder son prototype.
 
-// Quelques implémentations de JS vous laissent accéder au prototype avec la 
-// propriété "magique" __proto__. Ceci peut être utile, mais n'est pas standard 
+// Quelques implémentations de JS vous laissent accéder au prototype avec la
+// propriété "magique" __proto__. Ceci peut être utile, mais n'est pas standard
 // et ne fonctionne pas dans certains des navigateurs actuels.
 var myObj = {
     myString: 'Hello world!'
@@ -478,7 +478,7 @@ String.prototype.firstCharacter = function(){
 'abc'.firstCharacter(); // = 'a'
 
 // C'est très souvent utilisé pour le "polyfilling", qui implémente des nouvelles
-// fonctionnalités de JavaScript dans de plus anciens environnements, tels que 
+// fonctionnalités de JavaScript dans de plus anciens environnements, tels que
 // les vieux navigateurs.
 
 //Par exemple, Object.create est assez récent, mais peut être implémenté grâce à
@@ -498,25 +498,25 @@ if (Object.create === undefined){ // pour ne pas reécrire si la fonction existe
 
 The [Mozilla Developer
 Network](https://developer.mozilla.org/fr-FR/docs/Web/JavaScript) expose une
-excellente documentation pour le Javascript dans les navigateurs. Et contient 
+excellente documentation pour le Javascript dans les navigateurs. Et contient
 également un wiki pour s'entraider.
 
 MDN's [A re-introduction to
 JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
 recouvre les principaux sujets vus ici. Le guide est délibérément uniquement
-à propos du JavaScript, et ne parle pas des navigateurs; pour cela, dirigez vous 
+à propos du JavaScript, et ne parle pas des navigateurs; pour cela, dirigez vous
 plutôt ici :
 [Document Object
 Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 
-[Learn Javascript by Example and with Challenges](http://www.learneroo.com/modules/64/nodes/350) quelques challenges. 
+[Learn Javascript by Example and with Challenges](http://www.learneroo.com/modules/64/nodes/350) quelques challenges.
 
 [JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) is an in-depth
 un guide pour vous éviter les faux-amis dans le JavaScript.
 
-[JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) un classique. A lire. 
+[JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) un classique. A lire.
 
-En addition aux contributeurs de cet article, du contenu provient du 
+En addition aux contributeurs de cet article, du contenu provient du
 "Python tutorial" de Louie Dinh, et de [JS
 Tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
 sur le réseau Mozilla.

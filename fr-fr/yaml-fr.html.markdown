@@ -6,8 +6,8 @@ contributors:
 lang: fr-fr
 ---
 
-Proposé à l'origine par Clark Evans en Mai 2001, YAML est un un format de 
-représentation de données par sérialisation, conçu pour être aisément 
+Proposé à l'origine par Clark Evans en Mai 2001, YAML est un un format de
+représentation de données par sérialisation, conçu pour être aisément
 éditable et lisible par nous même, les humains.
 
 YAML est plus concis que le XML auquel il est parfois comparé par ceux qui le découvre, plus lisible et clair que le CSV, et emprunte beaucoup au JSON dont il est un parent naturel. Toutefois, YAML emprunte également des idées et concepts de chez Python, et s'intègre bien avec bon nombre de langages.
@@ -20,11 +20,11 @@ YAML est plus concis que le XML auquel il est parfois comparé par ceux qui le d
 # SCALAIRES #
 #############
 
-# Les scalaires sont l'ensemble des types YAML qui ne sont pas des collections 
+# Les scalaires sont l'ensemble des types YAML qui ne sont pas des collections
 # ( listes ou tableaux associatifs ).
 
-# Notre objet root ( racine ), sera une map ( carte ) et englobera 
-# l'intégralité du document. Cette map est l'équivalent d'un dictionnaire, 
+# Notre objet root ( racine ), sera une map ( carte ) et englobera
+# l'intégralité du document. Cette map est l'équivalent d'un dictionnaire,
 # hash ou objet dans d'autres langages.
 clé: valeur
 aurtre_clé: une autre valeur
@@ -33,29 +33,29 @@ notation_scientifique: 1e+12
 boolean: true
 valeur_null: null
 clé avec espaces: valeur
-# Bien qu'il ne soit pas nécessaire d'enfermer les chaînes de caractères 
+# Bien qu'il ne soit pas nécessaire d'enfermer les chaînes de caractères
 # entre guillemets, cela reste possible, et parfois utile.
 toutefois: "Une chaîne, peut être contenue entre guillemets."
 "Une clé entre guillemets.": "Utile si on veut utiliser ':' dans la clé."
 
-# Les chaînes couvrant plusieurs lignes, peuvent être écrites au choix, 
+# Les chaînes couvrant plusieurs lignes, peuvent être écrites au choix,
 # comme un 'bloc littéral' ( avec | ) ou bien 'bloc replié' avec ( > ).
 bloc_littéral: |
-    Tout ce bloc de texte sera la valeur de la clé 'bloc_littéral', 
-    avec préservation des retours à la ligne. ( chaque ligne vide à 
+    Tout ce bloc de texte sera la valeur de la clé 'bloc_littéral',
+    avec préservation des retours à la ligne. ( chaque ligne vide à
     l'intérieur du même bloc, sera remplacée par "\n\n" )
 
     Le littéral continue jusqu'à ce que l'indentation soit annulée.
 
-        Toutes lignes qui serait "d'avantage indentées" conservent leur 
+        Toutes lignes qui serait "d'avantage indentées" conservent leur
         indentation, constituée de 4 espaces.
 bloc_replié: >
-    Tout ce bloc de texte sera la valeur de la clé 'bloc_replié', mais 
+    Tout ce bloc de texte sera la valeur de la clé 'bloc_replié', mais
     cette fois ci, toutes les nouvelles lignes deviendront un simple espace.
 
     Les lignes vides, comme ci-dessus, seront converties en caractère "\n".
 
-        Les lignes 'plus-indentées' gardent leurs retours à la ligne - 
+        Les lignes 'plus-indentées' gardent leurs retours à la ligne -
         ce texte apparaîtra sur deux lignes.
 
 ###############
@@ -72,7 +72,7 @@ une_map_imbriquée:
 # les Clés des Maps ne sont pas nécessairement des chaînes de caractères.
 0.25: une clé de type float
 
-# les Clés peuvent également être des objets s'étendant sur plusieurs lignes, 
+# les Clés peuvent également être des objets s'étendant sur plusieurs lignes,
 # en utilisant le signe "?" pour indiquer le début de la clé.
 ? |
     ceci est une Clé
@@ -94,7 +94,7 @@ une_séquence:
         - Ceci est une séquence
         - dans une autre séquence
 
-# YAML étant un proche parent de JSON, vous pouvez écrire directement 
+# YAML étant un proche parent de JSON, vous pouvez écrire directement
 # des maps et séquences façon JSON
 json_map: {"clé": "valeur"}
 json_seq: [1, 2, 3, "soleil"]
@@ -103,7 +103,7 @@ json_seq: [1, 2, 3, "soleil"]
 # AUTRES FONCTIONNALITÉES YAML #
 #################################
 
-# YAML possède une fonctionnalité fort utile nommée 'ancres'. Celle-ci 
+# YAML possède une fonctionnalité fort utile nommée 'ancres'. Celle-ci
 # vous permet de dupliquer aisément du contenu au sein de votre document.
 
 # Les deux clés suivantes auront la même valeur:
@@ -113,7 +113,7 @@ autre_ancre: *nom_ancre
 # Avec les Tags YAML, vous pouvez explicitement déclarer des types de données.
 chaine_explicite: !!str 0.5
 
-# Certains parsers implémentent des tags spécifiques à d'autres langages, 
+# Certains parsers implémentent des tags spécifiques à d'autres langages,
 # comme par exemple le "complex number" de Python.
 python_complex_number: !!python/complex 1+2j
 
@@ -122,7 +122,7 @@ python_complex_number: !!python/complex 1+2j
 #####################
 
 # YAML interprète également les données formatées ISO de type date et datetime,
-# pas seulement les chaînes et nombres. 
+# pas seulement les chaînes et nombres.
 datetime: 2001-12-15T02:59:43.1Z
 datetime_avec_espaces: 2001-12-14 21:59:43.10 -5
 date: 2002-12-14

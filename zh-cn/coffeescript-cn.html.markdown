@@ -77,7 +77,7 @@ alert "I knew it!" if elvis?
 #=> if(typeof elvis !== "undefined" && elvis !== null) { alert("I knew it!"); }
 
 # 数组推导:
-cubes = (math.cube num for num in list) 
+cubes = (math.cube num for num in list)
 #=>cubes = (function() {
 #	var _i, _len, _results;
 #	_results = [];

@@ -509,8 +509,8 @@ void stampaMessaggio<10>() {
 }
 
 printMessage<20>();  // Stampa "impara il C++ in 20 minuti!"
-printMessage<10>();  // Stampa "Impara il C++ più velocemente in soli 10 minuti!"                                   
-                                        
+printMessage<10>();  // Stampa "Impara il C++ più velocemente in soli 10 minuti!"
+
 ////////////////////////////
 // Gestione delle eccezioni
 ///////////////////////////
@@ -520,7 +520,7 @@ printMessage<10>();  // Stampa "Impara il C++ più velocemente in soli 10 minuti
 // ma ogni tipo può essere lanciato come eccezione
 #include <exception>
 
-// Tutte le eccezioni lanciate all'interno del blocco _try_ possono essere catturate dai successivi 
+// Tutte le eccezioni lanciate all'interno del blocco _try_ possono essere catturate dai successivi
 // handlers _catch_.
 try {
     // Non allocare eccezioni nello heap usando _new_.
@@ -693,7 +693,7 @@ int* pt2 = new int;
 pt2 = nullptr;  // Setta pt2 a null.
 
 // Ma in qualche modo il tipo 'bool' è una eccezione (questo è per rendere compilabile `if (ptr)`.
-*pt = nullptr;  // Questo compila, anche se '*pt' è un bool! 
+*pt = nullptr;  // Questo compila, anche se '*pt' è un bool!
 
 
 // '=' != '=' != '='!

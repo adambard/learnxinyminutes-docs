@@ -43,26 +43,26 @@ int main (int argc, const char * argv[])
     // В место этого воспользуйтесь @autoreleasepool, если вы используете
     // автоматический подсчет ссылок (ARC)
     @autoreleasepool {
-    
+
     // Используйте NSLog для печати в консоль
     NSLog(@"Привет Мир!"); // Напечатает строку "Привет Мир!"
- 
+
     ///////////////////////////////////////
     // Типы и переменные
     ///////////////////////////////////////
-    
+
     // Объявление простых типов
     int myPrimitive1  = 1;
     long myPrimitive2 = 234554664565;
-    
+
     // Объявление объектов
     // Помещайте * в начало названия объекта для строго типизированного объявления
-    MyClass *myObject1 = nil;  // Строгая типизация	
-    id       myObject2 = nil;  // Слабая типизация 
+    MyClass *myObject1 = nil;  // Строгая типизация
+    id       myObject2 = nil;  // Слабая типизация
     // %@ – это объект
     // 'description' - это общий для всех объектов метод вывода данных
     NSLog(@"%@ and %@", myObject1, [myObject2 description]); // напечатает "(null) and (null)"
-    
+
     // Строка
     NSString *worldString = @"Мир";
     NSLog(@"Привет %@!", worldString); // напечатает "Привет Мир!"
@@ -70,7 +70,7 @@ int main (int argc, const char * argv[])
     NSMutableString *mutableString = [NSMutableString stringWithString:@"Привет"];
     [mutableString appendString:@" Мир!"];
     NSLog(@"%@", mutableString); // напечатает => "Привет Мир!"
-    
+
     // Символьные литералы
     NSNumber *theLetterZNumber = @'Z';
     char theLetterZ            = [theLetterZNumber charValue]; // или 'Z'
@@ -80,7 +80,7 @@ int main (int argc, const char * argv[])
     NSNumber *fortyTwoNumber = @42;
     int fortyTwo             = [fortyTwoNumber intValue]; // или '42'
     NSLog(@"%i", fortyTwo);
-    
+
     // Беззнаковый целочисленный литерал
     NSNumber *fortyTwoUnsignedNumber = @42U;
     unsigned int fortyTwoUnsigned    = [fortyTwoUnsignedNumber unsignedIntValue]; // или 42
@@ -89,15 +89,15 @@ int main (int argc, const char * argv[])
     NSNumber *fortyTwoShortNumber = [NSNumber numberWithShort:42];
     short fortyTwoShort           = [fortyTwoShortNumber shortValue]; // или 42
     NSLog(@"%hi", fortyTwoShort);
-    
+
     NSNumber *fortyOneShortNumber   = [NSNumber numberWithShort:41];
     unsigned short fortyOneUnsigned = [fortyOneShortNumber unsignedShortValue]; // или 41
     NSLog(@"%u", fortyOneUnsigned);
-    
+
     NSNumber *fortyTwoLongNumber = @42L;
     long fortyTwoLong            = [fortyTwoLongNumber longValue]; // или 42
     NSLog(@"%li", fortyTwoLong);
-    
+
     NSNumber *fiftyThreeLongNumber   = @53L;
     unsigned long fiftyThreeUnsigned = [fiftyThreeLongNumber unsignedLongValue]; // или 53
     NSLog(@"%lu", fiftyThreeUnsigned);
@@ -107,7 +107,7 @@ int main (int argc, const char * argv[])
     float piFloat           = [piFloatNumber floatValue]; // или 3.141592654f
     NSLog(@"%f", piFloat); // напечатает 3.141592654
     NSLog(@"%5.2f", piFloat); // напечатает " 3.14"
-    
+
     NSNumber *piDoubleNumber = @3.1415926535;
     double piDouble                 = [piDoubleNumber doubleValue]; // или 3.1415926535
     NSLog(@"%f", piDouble);
@@ -119,12 +119,12 @@ int main (int argc, const char * argv[])
     NSDecimalNumber *twoDecNum = [NSDecimalNumber decimalNumberWithString:@"5.002"];
     // NSDecimalNumber не способен использовать стандартные +, -, *, / операторы,
     // поэтому он предоставляет свои собственные:
-    [oneDecNum decimalNumberByAdding:twoDecNum]; 
+    [oneDecNum decimalNumberByAdding:twoDecNum];
     [oneDecNum decimalNumberBySubtracting:twoDecNum];
     [oneDecNum decimalNumberByMultiplyingBy:twoDecNum];
     [oneDecNum decimalNumberByDividingBy:twoDecNum];
     NSLog(@"%@", oneDecNum); // напечатает "10.99", т.к. NSDecimalNumber - изменяемый
-    
+
     // BOOL (булевый) литерал
     NSNumber *yesNumber = @YES;
     NSNumber *noNumber  = @NO;
@@ -132,7 +132,7 @@ int main (int argc, const char * argv[])
     BOOL yesBool = YES;
     BOOL noBool  = NO;
     NSLog(@"%i", yesBool); // напечатает 1
-    
+
     // Массив
     // Может содержать различные типы данных, но должен быть объектом Objective-C
     NSArray *anArray      = @[@1, @2, @3, @4];
@@ -165,11 +165,11 @@ int main (int argc, const char * argv[])
     [mutableSet addObject:@"Привет"];
     [mutableSet addObject:@"Привет"];
     NSLog(@"%@", mutableSet); // напечатает => {(Привет)}
-    
+
     ///////////////////////////////////////
     // Операторы
     ///////////////////////////////////////
-    
+
     // Операторы работают также как в Си.
     // Например:
     2 + 5; // => 7
@@ -214,13 +214,13 @@ int main (int argc, const char * argv[])
             NSLog(@"Я напечатаюсь");
         } break;
     }
-    
+
     // Цикл с предусловием
     int ii = 0;
     while (ii < 4)
     {
         NSLog(@"%d,", ii++); // ii++ инкрементирует ii после передачи значения
-    } // => напечатает "0," 
+    } // => напечатает "0,"
       //               "1,"
       //               "2,"
       //               "3,"
@@ -230,29 +230,29 @@ int main (int argc, const char * argv[])
     for (jj=0; jj < 4; jj++)
     {
         NSLog(@"%d,", jj);
-    } // => напечатает "0," 
+    } // => напечатает "0,"
       //               "1,"
       //               "2,"
       //               "3,"
-     
-    // Цикл просмотра           
+
+    // Цикл просмотра
     NSArray *values = @[@0, @1, @2, @3];
     for (NSNumber *value in values)
     {
         NSLog(@"%@,", value);
-    } // => напечатает "0," 
+    } // => напечатает "0,"
       //               "1,"
       //               "2,"
       //               "3,"
 
     // Цикл for для объектов. Может использоваться с любым объектом Objective-C
-    for (id item in values) { 
-        NSLog(@"%@,", item); 
-    } // напечатает => "0," 
+    for (id item in values) {
+        NSLog(@"%@,", item);
+    } // напечатает => "0,"
       //           "1,"
       //           "2,"
-      //           "3,"      
-      
+      //           "3,"
+
     // Обработка исключений
     @try
     {
@@ -267,29 +267,29 @@ int main (int argc, const char * argv[])
         NSLog(@"В конце отводится время для очистки.");
     } // => напечатает "Исключение: Файл не найден в системе"
       //               "В конце отводится время для очистки."
- 
+
     // NSError - это полезные объекты для аргументов функции, чтобы заполнить их
     // пользовательскими ошибками.
     NSError *error = [NSError errorWithDomain:@"Неправильный эл. адрес." code:4 userInfo:nil];
- 
+
     ///////////////////////////////////////
     // Объекты
     ///////////////////////////////////////
-    
+
     // Создание объектов через выделение памяти и инициализацию.
     // Объект не является полнофункциональным пока обе части не выполнятся.
     MyClass *myObject = [[MyClass alloc] init];
-        
+
     // В Objective-C модель ООП базируется на передаче сообщений.
     // В Objective-C Вы не просто вызваете метод; вы посылаете сообщение.
     [myObject instanceMethodWithParameter:@"Стив Джобс"];
 
     // Очищайте память, перед завершением работы программы.
     [pool drain];
-    
+
     // Конец @autoreleasepool
     }
-    
+
     // Конец программы.
     return 0;
 }
@@ -321,7 +321,7 @@ int main (int argc, const char * argv[])
 @property int propInt; // Имя сеттер-метода = 'setPropInt'
 @property (copy) id copyId; // (copy) => Скопировать объект в ходе присвоения.
 // (readonly) => Не позволяет установить значение вне @interface
-@property (readonly) NSString *roString; // Используйте @synthesize 
+@property (readonly) NSString *roString; // Используйте @synthesize
                                // в @implementation, чтобы создать аксессор
 // Вы можете настроить геттер и сеттер имена вместо используемого 'set'-имени по умолчанию:
 @property (getter=lengthGet, setter=lengthSet:) int length;
@@ -347,7 +347,7 @@ int main (int argc, const char * argv[])
 // Чтобы обратиться к открытым (public) переменным из файла реализации, @property генерирует сеттер-метод
 // автоматически. Название метода - это 'set' с последующим именем переменной из @property:
 MyClass *myClass = [[MyClass alloc] init]; // создает экземпляр объекта класса MyClass
-[myClass setCount:10]; 
+[myClass setCount:10];
 NSLog(@"%d", [myClass count]); // напечатает => 10
 // Или используйте свой геттер и сеттер методы, которые определены в @interface:
 [myClass lengthSet:32];
@@ -371,7 +371,7 @@ NSString *stringFromInstanceMethod = [myClass instanceMethodWithParameter:@"Пр
 // как переменные
 // SEL - это тип данных. @selector() вернет селектор из предоставленного имени метода
 // methodAParameterAsString:andAParameterAsNumber: - это название метода в MyClass
-SEL selectorVar = @selector(methodAParameterAsString:andAParameterAsNumber:); 
+SEL selectorVar = @selector(methodAParameterAsString:andAParameterAsNumber:);
 if ([myClass respondsToSelector:selectorVar]) { // Проверяет содержит ли класс метод
     // Необходимо установить все аргументы метода в один объект, что отправить его в performSelector-функцию
     NSArray *arguments = [NSArray arrayWithObjects:@"Привет", @4, nil];
@@ -395,7 +395,7 @@ distance = 18; // References "long distance" from MyClass implementation
 @synthesize roString = _roString; // _roString available now in @implementation
 
 // Called before calling any class methods or instantiating any objects
-+ (void)initialize 
++ (void)initialize
 {
     if (self == [MyClass class]) {
         distance = 0;
@@ -420,7 +420,7 @@ distance = 18; // References "long distance" from MyClass implementation
     return self;
 }
 // Можно создать конструкторы, которые содержат аргументы:
-- (id)initWithDistance:(int)defaultDistance 
+- (id)initWithDistance:(int)defaultDistance
 {
     distance = defaultDistance;
     return self;
@@ -431,7 +431,7 @@ distance = 18; // References "long distance" from MyClass implementation
     return [[self alloc] init];
 }
 
-+ (MyClass *)myClassFromHeight:(NSNumber *)defaultHeight 
++ (MyClass *)myClassFromHeight:(NSNumber *)defaultHeight
 {
     height = defaultHeight;
     return [[self alloc] init];
@@ -472,9 +472,9 @@ distance = 18; // References "long distance" from MyClass implementation
 // Категории позволяют вам:
 // -- Добавлять методы в существующий класс для организационных целей.
 // -- Допускает вам расширять объекты Objective-C классов (напр.: NSString) добавить ваши собственные методы.
-// -- Добавляет возможность создать защищенные и закрытые методы классов. 
+// -- Добавляет возможность создать защищенные и закрытые методы классов.
 // ПРИМЕЧАНИЕ: Не переопределяйте методы базового класса в категории даже если у вас есть возможность это сделать
-// to. Переопределение методов может привести к ошибкам компиляции позднее между различными категориями и это 
+// to. Переопределение методов может привести к ошибкам компиляции позднее между различными категориями и это
 // нарушает цель категорий, чтобы добавлять только функциональность. Вместо этого подклассы переопределяют методы.
 
 // Здесь простой базовый класс Car.
@@ -531,7 +531,7 @@ distance = 18; // References "long distance" from MyClass implementation
     NSLog(@"Воском натерли.");
 }
 
-@end 
+@end
 
 // Любой экземпляр объекта Car имеет возможность воспользоваться категорией. Все, что нужно сделать, это импортировать ее:
 #import "Car+Clean.h" // Импортировать как множество различных категорий, как вы хотите использовать.
@@ -546,7 +546,7 @@ int main (int argc, const char * argv[]) {
         [mustang turnOn]; // Используйте методы из базового класса Car.
         [mustang washWindows]; // Используйте методы категории Clean из класса Car.
     }
-    return 0; 
+    return 0;
 }
 
 // Objective-C не поддерживает объявление защищенных методов, но вы можете имитировать их.
@@ -562,7 +562,7 @@ int main (int argc, const char * argv[]) {
 // Чтобы воспользоваться защищенными методами, импортируйте категорию, затем реализуйте методы:
 #import "Car+Protected.h" // Запомните, делайте импорт только в файле с @implementation.
 
-@implementation Car 
+@implementation Car
 
 - (void)lockCar {
     NSLog(@"Машина закрыта."); // Экземпляры класса Car не могут использовать
@@ -651,7 +651,7 @@ int main (int argc, const char * argv[]) {
 }
 // Вы можете использовать протокол как данные, если вы знаете, что он реализует
 // методы и переменные.
-- (void)turnOnEngineWithCarUtilities:(id <CarUtilities>)objectOfSomeKind { 
+- (void)turnOnEngineWithCarUtilities:(id <CarUtilities>)objectOfSomeKind {
     [objectOfSomeKind engineOn]; // У вас есть доступ к переменным объекта
     [objectOfSomeKind turnOnEngine]; // и методам.
     [objectOfSomeKind engineOn]; // Может или не может быть значение YES. Класс
@@ -696,7 +696,7 @@ if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
 @protocol Sister; // Эти строки предотвращают рекурсию, решая этим проблему.
 
 @protocol Brother <NSObject>
- 
+
 - (void)beNiceToSister:(id <Sister>)sister;
 
 @end
@@ -728,20 +728,20 @@ addUp = ^(int n) { // Удалите (int n) в блоке, чтобы не пр
 int addUp = add(10 + 16); // Вызывает блок кода с аргументами.
 // Блоки часто используются как аргументы функции, чтобы позже их вызвать, или
 // как функции обратного вызова (callbacks).
-@implementation BlockExample : NSObject 
- 
+@implementation BlockExample : NSObject
+
 - (void)runBlock:(void (^)(NSString))block {
     NSLog(@"В аргументе блок ничего не возвращает и принимает NSString-объект.");
     block(@"Аргумент передан блоку на исполнение."); // Вызов блока.
 }
 
 @end
- 
- 
+
+
 ///////////////////////////////////////
 // Управление памятью
 ///////////////////////////////////////
-/* 
+/*
 Для каждого объекта, используемого в приложении, должна быть выделена память
 для таких объектов. Когда приложение прекращает использование объекта, память
 должна быть освобождена, чтобы гарантировать эффективность приложения.

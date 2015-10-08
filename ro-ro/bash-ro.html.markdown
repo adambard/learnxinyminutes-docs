@@ -19,10 +19,10 @@ Aproape toate exemplele de mai jos pot fi parte dintr-un script sau pot fi execu
 
 ```bash
 #!/bin/bash
-# Prima linie din script se numeste "shebang" 
+# Prima linie din script se numeste "shebang"
 # care spune systemului cum sa execute scriptul
 # http://en.wikipedia.org/wiki/Shebang_(Unix)
-# Dupa cum te-ai prins deja, comentariile incep cu #. 
+# Dupa cum te-ai prins deja, comentariile incep cu #.
 # Shebang este de asemenea un comentariu.
 
 # Exemplu simplu de hello world:
@@ -43,7 +43,7 @@ VARIABLE = "Niste text"
 echo $VARIABLE
 echo "$VARIABLE"
 echo '$VARIABLE'
-# Atunci cand folosesti variabila, o atribui, o exporti sau altfel, 
+# Atunci cand folosesti variabila, o atribui, o exporti sau altfel,
 # numele ei se scrie fara $.
 # Daca vrei sa folosesti valoarea variabilei, atunci trebuie sa folosesti $.
 # Atentie la faptul ca ' (apostrof) nu va inlocui variabla cu valoarea ei.
@@ -74,7 +74,7 @@ read NAME # Observa faptul ca nu a trebuit sa declaram o variabila noua
 echo Salut, $NAME!
 
 # Avem obisnuita instructiune "if"
-# Foloseste "man test" pentru mai multe informatii 
+# Foloseste "man test" pentru mai multe informatii
 # despre instructinea conditionala
 if [ $NAME -ne $USER ]
 then
@@ -90,7 +90,7 @@ echo "Intotdeauna executat" && echo "Executat daca prima instructiune NU esueaza
 # Expresiile apar in urmatorul format
 echo $(( 10 + 5 ))
 
-# Spre deosebire de alte limbaje de programare bash este un shell - asa ca 
+# Spre deosebire de alte limbaje de programare bash este un shell - asa ca
 # functioneaza in contextul directorului curent. Poti vedea fisiere si directoare
 # din directorul curent folosind comanda "ls":
 ls
@@ -98,9 +98,9 @@ ls
 # Aceste comenzi au optiuni care la controleaza executia
 ls -l # Listeaza fiecare fisier si director pe o linie separata
 
-# Rezultatele comenzii anterioare pot fi 
+# Rezultatele comenzii anterioare pot fi
 # trimise urmatoarei comenzi drept argument
-# Comanda grep filtreaza argumentele trimise cu sabloane. 
+# Comanda grep filtreaza argumentele trimise cu sabloane.
 # Astfel putem vedea fiserele .txt din directorul curent.
 ls -l | grep "\.txt"
 
@@ -109,21 +109,21 @@ python2 hello.py < "input.in"
 python2 hello.py > "output.out"
 python2 hello.py 2> "error.err"
 # Output-ul va suprascrie fisierul daca acesta exista.
-# Daca vrei sa fie concatenate poti folosi ">>" 
+# Daca vrei sa fie concatenate poti folosi ">>"
 
 # Comenzile pot fi inlocuite in interiorul altor comenzi folosind $( ):
-# Urmatoarea comanda afiseaza numarul de fisiere 
+# Urmatoarea comanda afiseaza numarul de fisiere
 # si directoare din directorul curent
 echo "Sunt $(ls | wc -l) fisiere aici."
 
 # Acelasi lucru se poate obtine folosind apostrf-ul inversat ``,
-# dar nu pot fi folosite unele in interiorul celorlalte asa ca modalitatea 
+# dar nu pot fi folosite unele in interiorul celorlalte asa ca modalitatea
 # preferata este de a folosi $( )
 echo "Sunt `ls | wc -l` fisiere aici."
 
-# Bash foloseste o instructiune 'case' care functioneaza 
+# Bash foloseste o instructiune 'case' care functioneaza
 # in mod similar cu instructiunea switch din Java si C++
-case "$VARIABLE" in 
+case "$VARIABLE" in
     0) echo "Este un zero.";;
     1) echo "Este un unu.";;
     *) echo "Nu este null";;

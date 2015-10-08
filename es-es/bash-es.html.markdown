@@ -16,9 +16,9 @@ lang: es-es
 
 Tutorial de Shell en español.
 
-Bash es el nombre del shell de unix, el cual también es distribuido como 
+Bash es el nombre del shell de unix, el cual también es distribuido como
 el shell del sistema operativo GNU. También es el shell
-por defecto de Linux y Mac OS X. Casi todos los ejemplos abajo pueden 
+por defecto de Linux y Mac OS X. Casi todos los ejemplos abajo pueden
 ser parte de un script shell o ser ejecutados directamente en la terminal.
 
 [Leer más aquí.](http://www.gnu.org/software/bash/manual/bashref.html)
@@ -26,7 +26,7 @@ ser parte de un script shell o ser ejecutados directamente en la terminal.
 ```bash
 #!/bin/bash
 
-# La primera línea del script es el [shebang](http://en.wikipedia.org/wiki/Shebang_(Unix)) que le indica al sistema 
+# La primera línea del script es el [shebang](http://en.wikipedia.org/wiki/Shebang_(Unix)) que le indica al sistema
 # cómo ejecutar el script.
 # Como te habrás dado cuenta, los comentarios en shell empiezan con #.
 # El shebang también es un comentario.
@@ -52,7 +52,7 @@ echo '$VARIABLE'
 
 # Cuando la variable es usada - o asignada, exportada, etcétera - se
 # escribe su nombre sin $. Si se quiere saber el valor de la variables,
-# entonces sí se usa $. Note que ' (comilla simple) no expandirá las 
+# entonces sí se usa $. Note que ' (comilla simple) no expandirá las
 # variables.
 
 # Sustitución de strings en variables.
@@ -94,7 +94,7 @@ fi
 echo "Siempre ejecutado" || echo "Sólo ejecutado si el primer comando falla"
 echo "Siempre ejecutado" && echo "Sólo ejecutado si el primer comando NO falla"
 
-# Para usar && y || con condicionales, se necesitan 
+# Para usar && y || con condicionales, se necesitan
 # múltiples pares de corchetes:
 if [ $NOMBRE == "Steve" ] && [ $EDAD -eq 15 ]
 then
@@ -117,7 +117,7 @@ ls
 # Estos comandos tienen opciones que controlan su ejecución:
 ls -l # Lista todos los archivos y directorios en líneas distintas.
 
-# Los resultados del comando anterior pueden ser pasados al siguiente 
+# Los resultados del comando anterior pueden ser pasados al siguiente
 # como input. El comando 'grep' filtra el input con los comandos provistos.
 # Así es como podemos listar archivos .txt en el directorio actual:
 ls -l | grep "\.txt"
@@ -141,8 +141,8 @@ echo "Hay $(ls | wc -l) elementos aquí."
 echo "Hay `ls | wc -l` elementos aquí."
 
 # Bash usa una estructura de casos similar al switch de Java o C++:
-case "$VARIABLE" in 
-    # Lista de patrones que las condiciones deben cumplir: 
+case "$VARIABLE" in
+    # Lista de patrones que las condiciones deben cumplir:
     0) echo "Hay un cero.";;
     1) echo "Hay un uno.";;
     *) echo "No es null.";;
