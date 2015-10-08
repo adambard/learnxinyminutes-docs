@@ -337,7 +337,7 @@ public class LearnJava {
 	       validCodes.add("FINLAND");
         }
 
-        // But there's a nifty way to achive the same thing in an
+        // But there's a nifty way to achieve the same thing in an
         // easier way, by using something that is called Double Brace
         // Initialization.
 
@@ -347,9 +347,9 @@ public class LearnJava {
             add("FINLAND");
         }}
 
-        // The first brace is creating an new AnonymousInnerClass and the
-        // second one declares and instance initializer block. This block
-        // is called with the anonymous inner class is created.
+        // The first brace is creating a new AnonymousInnerClass and the
+        // second one declares an instance initializer block. This block
+        // is called when the anonymous inner class is created.
         // This does not only work for Collections, it works for all
         // non-final classes.
 
@@ -476,14 +476,14 @@ public interface Digestible {
 // We can now create a class that implements both of these interfaces.
 public class Fruit implements Edible, Digestible {
     @Override
-	public void eat() {
-		// ...
-	}
+  	public void eat() {
+  		// awesome code goes here
+  	}
 
     @Override
-	public void digest() {
-		// ...
-	}
+  	public void digest() {
+  		// awesome code goes here
+  	}
 }
 
 // In Java, you can extend only one class, but you can implement many
@@ -491,12 +491,14 @@ public class Fruit implements Edible, Digestible {
 public class ExampleClass extends ExampleClassParent implements InterfaceOne,
     InterfaceTwo {
     @Override
-	public void InterfaceOneMethod() {
-	}
+  	public void InterfaceOneMethod() {
+      // awesome code goes here
+  	}
 
     @Override
-	public void InterfaceTwoMethod() {
-	}
+  	public void InterfaceTwoMethod() {
+      // awesome code goes here
+  	}
 }
 
 
