@@ -513,12 +513,8 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
     }
 }
 
-<<<<<<< HEAD
-// Abstract Classes 
-=======
-
 // Abstract Classes
->>>>>>> adambard/master
+
 // Abstract Class declaration syntax
 // <access-level> abstract <abstract-class-name> extends <super-abstract-classes> {
 //     // Constants and variables
@@ -535,7 +531,6 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 
 public abstract class Animal
 {
-<<<<<<< HEAD
     public abstract void makeSound();
 
     // Method can have a body
@@ -561,38 +556,10 @@ public abstract class Animal
     {
         System.out.println("I am abstract");
     }
-=======
-	public abstract void makeSound();
-
-	// Method can have a body
-	public void eat()
-	{
-		System.out.println("I am an animal and I am Eating.");
-		// Note: We can access private variable here.
-		age = 30;
-	}
-
-	// No need to initialize, however in an interface
-	// a variable is implicitly final and hence has
-	// to be initialized.
-	private int age;
-
-	public void printAge()
-	{
-		System.out.println(age);
-	}
-
-	// Abstract classes can have main function.
-	public static void main(String[] args)
-	{
-		System.out.println("I am abstract");
-	}
->>>>>>> adambard/master
 }
 
 class Dog extends Animal
 {
-<<<<<<< HEAD
     // Note still have to override the abstract methods in the
     // abstract class.
     @Override
@@ -614,32 +581,10 @@ class Dog extends Animal
         pluto.eat();
         pluto.printAge();
     }
-=======
-	// Note still have to override the abstract methods in the
-	// abstract class.
-	@Override
-	public void makeSound()
-	{
-		System.out.println("Bark");
-		// age = 30;	==> ERROR!	age is private to Animal
-	}
-
-	// NOTE: You will get an error if you used the
-	// @Override annotation here, since java doesn't allow
-	// overriding of static methods.
-	// What is happening here is called METHOD HIDING.
-	// Check out this awesome SO post: http://stackoverflow.com/questions/16313649/
-	public static void main(String[] args)
-	{
-		Dog pluto = new Dog();
-		pluto.makeSound();
-		pluto.eat();
-		pluto.printAge();
-	}
->>>>>>> adambard/master
 }
 
 // Final Classes 
+
 // Final Class declaration syntax
 // <access-level> final <final-class-name> {
 //     // Constants and variables
