@@ -132,7 +132,7 @@ sub with-named($normal-arg, :$named) {
 with-named(1, named => 6); #=> 7
 # There's one gotcha to be aware of, here:
 # If you quote your key, Perl 6 won't be able to see it at compile time,
-#  and you'll have a single Pair object as a positional paramater,
+#  and you'll have a single Pair object as a positional parameter,
 #  which means this fails:
 with-named(1, 'named' => 6);
 
@@ -197,7 +197,7 @@ sub mutate($n is rw) {
   say "\$n is now $n !";
 }
 
-# If what you want is a copy instead, use `is copy`.
+# If what you want a copy instead, use `is copy`.
 
 # A sub itself returns a container, which means it can be marked as rw:
 my $x = 42;
@@ -234,7 +234,7 @@ say "Quite truthy" if True;
 # - Ternary conditional, "?? !!" (like `x ? y : z` in some other languages)
 my $a = $condition ?? $value-if-true !! $value-if-false;
 
-# - `given`-`when` looks like other languages `switch`, but much more
+# - `given`-`when` looks like other languages' `switch`, but much more
 # powerful thanks to smart matching and thanks to Perl 6's "topic variable", $_.
 #
 # This variable contains the default argument of a block,
@@ -1461,4 +1461,3 @@ If you want to go further, you can:
  - Come along on `#perl6` at `irc.freenode.net`. The folks here are always helpful.
  - Check the [source of Perl 6's functions and classes](https://github.com/rakudo/rakudo/tree/nom/src/core). Rakudo is mainly written in Perl 6 (with a lot of NQP, "Not Quite Perl", a Perl 6 subset easier to implement and optimize).
  - Read [the language design documents](http://design.perl6.org). They explain P6 from an implementor point-of-view, but it's still very interesting.
-
