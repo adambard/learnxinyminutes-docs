@@ -556,7 +556,7 @@ vec ; => #(1 2 3 4)
 (define other 3)
 (swap! tmp other)
 (printf "tmp = ~a; other = ~a\n" tmp other)
-;; `tmp` 변수는 이름 충돌을 피하기 위해 `tmp_1`로 이름이 변경된다. 
+;; `tmp` 변수는 이름 충돌을 피하기 위해 `tmp_1`로 이름이 변경된다.
 ;; (let ([tmp_1 tmp])
 ;;   (set! tmp other)
 ;;   (set! other tmp_1))

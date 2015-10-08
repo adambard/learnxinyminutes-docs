@@ -117,7 +117,7 @@ echo "There are $(ls | wc -l) items here."
 echo "There are `ls | wc -l` items here."
 
 # BashはJavaやC++のように、case文による分岐ができます
-case "$VARIABLE" in 
+case "$VARIABLE" in
     #分岐条件として使いたいパターンを並べてください
     0) echo "There is a zero.";;
     1) echo "There is a one.";;
