@@ -6,6 +6,7 @@ contributors:
     - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
     - ["Jakub Trzebiatowski", "http://cbs.stgn.pl"]
     - ["Marco Scannadinari", "https://marcoms.github.io"]
+    - ["himanshu", "https://github.com/himanshu81494"]
 
 ---
 
