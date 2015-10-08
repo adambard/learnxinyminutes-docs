@@ -74,7 +74,7 @@ alert "Так и знал!" if elvis?
 #=> if(typeof elvis !== "undefined" && elvis !== null) { alert("Так и знал!"); }
 
 # Итерации по массивам:
-cubes = (math.cube num for num in list) 
+cubes = (math.cube num for num in list)
 #=>cubes = (function() {
 #	var _i, _len, _results;
 #	_results = [];
