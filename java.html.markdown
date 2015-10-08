@@ -566,21 +566,20 @@ class Dog extends Animal
 	}
 }
 
-// Lamda Expressions
+// Lambda Expressions
 // Java 8 added in Lambda Expression functionality
 // Lambda Expressions allow you to treat functionality as a method argument or using code as data
-// Lambdas have: optional type declaration, parenthesis around parameter, curly braces, and
-// return keywords
+// Lambdas have: optional type declaration, parenthesis around parameter, curly braces, and return keywords
 
 //List example
 
-//Without lamdas
+//Without lambdas
 List<Integer> list = Arrays.asList(1,2,3,4,5);
 for(Integer n: list) {
   System.out.println(n);
 }
 
-//With lamdas
+//With lambdas
 List<Integer> list = Arrays.asList(1,2,3,4,5);
 list.forEach(n -> System.out.println(n));
 
