@@ -515,7 +515,7 @@ class MyClass
     }
 }
 
-// Class constants can always be accessed statically 
+// Class constants can always be accessed statically
 echo MyClass::MY_CONST;    // Outputs 'value';
 
 echo MyClass::$staticVar;  // Outputs 'static';

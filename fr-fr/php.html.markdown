@@ -1,5 +1,8 @@
 ---
 language: PHP
+contributors:
+    - ["Malcolm Fell", "http://emarref.net/"]
+    - ["Trismegiste", "https://github.com/Trismegiste"]
 translators:
     - ["Pascal Boutin", "http://pboutin.net/"]
 lang: fr-fr
