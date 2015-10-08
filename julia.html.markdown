@@ -14,7 +14,7 @@ This is based on Julia 0.3.
 
 # Single line comments start with a hash (pound) symbol.
 #= Multiline comments can be written
-   by putting '#=' before the text  and '=#' 
+   by putting '#=' before the text  and '=#'
    after the text. They can also be nested.
 =#
 
@@ -670,7 +670,7 @@ square_area(l) = l * l      # square_area (generic function with 1 method)
 square_area(5) #25
 
 # What happens when we feed square_area an integer?
-code_native(square_area, (Int32,))  
+code_native(square_area, (Int32,))
 	#	    .section    __TEXT,__text,regular,pure_instructions
 	#	Filename: none
 	#	Source line: 1              # Prologue
@@ -703,10 +703,10 @@ code_native(square_area, (Float64,))
 	#	    vmulsd  XMM0, XMM0, XMM0 # Scalar double precision multiply (AVX)
 	#	    pop RBP
 	#	    ret
-	#	
+	#
 # Note that julia will use floating point instructions if any of the
 # arguements are floats.
-# Let's calculate the area of a circle 
+# Let's calculate the area of a circle
 circle_area(r) = pi * r * r     # circle_area (generic function with 1 method)
 circle_area(5)                  # 78.53981633974483
 
@@ -737,7 +737,7 @@ code_native(circle_area, (Float64,))
 	#	    vmulsd  XMM0, XMM1, XMM0
 	#	    pop RBP
 	#	    ret
-	#	
+	#
 ```
 
 ## Further Reading
