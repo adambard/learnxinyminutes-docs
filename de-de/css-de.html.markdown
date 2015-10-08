@@ -141,7 +141,7 @@ selector {
     font-family: Arial;
     font-family: "Courier New"; /* wenn der Name ein Leerzeichen beinhält, kommt er in
     Anführungszeichen */
-    font-family: "Courier New", Trebuchet, Arial; /* wird die erste Schriftart 
+    font-family: "Courier New", Trebuchet, Arial; /* wird die erste Schriftart
     nicht gefunden, wird die zweite benutzt, usw. */
 }
 

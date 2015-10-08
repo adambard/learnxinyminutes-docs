@@ -4,7 +4,7 @@ contributors:
     - ["Irfan Charania", "https://github.com/irfancharania"]
     - ["Max Yankov", "https://github.com/golergka"]
 translators:
-    - ["Olfran Jiménez", "https://twitter.com/neslux"]	
+    - ["Olfran Jiménez", "https://twitter.com/neslux"]
 filename: LearnCSharp-es.cs
 lang: es-es
 ---

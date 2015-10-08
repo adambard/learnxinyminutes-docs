@@ -17,7 +17,7 @@ Beinahe alle der folgenden Beispiele können als Teile eines Shell-Skripts oder 
 
 ```bash
 #!/bin/bash
-# Die erste Zeile des Scripts nennt sich Shebang, dies gibt dem System an, 
+# Die erste Zeile des Scripts nennt sich Shebang, dies gibt dem System an,
 # wie das Script ausgeführt werden soll: http://de.wikipedia.org/wiki/Shebang
 # Du hast es bestimmt schon mitgekriegt, Kommentare fangen mit # an. Das Shebang ist auch ein Kommentar
 
@@ -32,13 +32,13 @@ VARIABLE="irgendein String"
 
 # Aber nicht so:
 VARIABLE = "irgendein String"
-# Bash wird VARIABLE für einen Befehl halten, den es ausführen soll. Es wird einen Fehler ausgeben, 
-# weil es den Befehl nicht findet. 
+# Bash wird VARIABLE für einen Befehl halten, den es ausführen soll. Es wird einen Fehler ausgeben,
+# weil es den Befehl nicht findet.
 
 # Eine Variable wird so benutzt:
 echo $VARIABLE
 echo "$VARIABLE"
-# Wenn du eine Variable selbst benutzt – ihr Werte zuweist, sie exportierst oder irgendetwas anders –, 
+# Wenn du eine Variable selbst benutzt – ihr Werte zuweist, sie exportierst oder irgendetwas anders –,
 # dann über ihren Namen ohne $. Aber wenn du ihren zugewiesenen Wert willst, dann musst du $ voranstellen.
 
 # Einen Wert aus der Eingabe lesen:

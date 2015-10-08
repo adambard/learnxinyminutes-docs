@@ -38,15 +38,15 @@ llave con espacios: valor
 llave: "Un string, entre comillas."
 "Las llaves tambien pueden estar entre comillas.": "valor entre comillas"
 
-# Los strings de líneas múltiples pueden ser escritos 
+# Los strings de líneas múltiples pueden ser escritos
 # como un 'bloque literal' (usando pipes |)
 # o como un 'bloque doblado' (usando >)
 
 bloque_literal: |
 	Este bloque completo de texto será preservado como el valor de la llave
 	'bloque_literal', incluyendo los saltos de línea.
-	
-	Se continúa guardando la literal hasta que se cese la indentación. 
+
+	Se continúa guardando la literal hasta que se cese la indentación.
 		Cualquier línea que tenga más indentación, mantendrá los espacios dados
 		(por ejemplo, estas líneas se guardarán con cuatro espacios)
 
@@ -81,7 +81,7 @@ un_mapa_indentado:
     que tiene múltiples líneas
 : y este es su valor
 
-# YAML tambien permite colecciones como llaves, pero muchos lenguajes de 
+# YAML tambien permite colecciones como llaves, pero muchos lenguajes de
 # programación se quejarán.
 
 # Las secuencias (equivalentes a listas o arreglos) se ven así:
@@ -96,8 +96,8 @@ una_secuencia:
         - Esta es una secuencia
         - ...dentro de otra secuencia
 
-# Dado que todo JSON está incluído dentro de YAML, también puedes escribir 
-# mapas con la sintaxis de JSON y secuencias: 
+# Dado que todo JSON está incluído dentro de YAML, también puedes escribir
+# mapas con la sintaxis de JSON y secuencias:
 mapa_de_json: {"llave": "valor"}
 secuencia_de_json: [3, 2, 1, "despegue"]
 
@@ -113,7 +113,7 @@ otra_ancla: *nombre_del_ancla
 
 # YAML también tiene tags, que puedes usar para declarar tipos explícitamente.
 string_explícito: !!str 0.5
-# Algunos parseadores implementar tags específicas del lenguaje, como el 
+# Algunos parseadores implementar tags específicas del lenguaje, como el
 # que se muestra a continuación, encargado de manejar números complejos en
 # Python:
 numero_complejo_python: !!python/complex 1+2j
@@ -143,7 +143,7 @@ set:
     ? item3
 
 # Al igual que Python, los sets sólo son mapas con valores nulos.
-# El ejemplo de arriba es equivalente a: 
+# El ejemplo de arriba es equivalente a:
 set2:
     item1: null
     item2: null
