@@ -17,9 +17,9 @@ e sfrutta solo 8 caratteri.
 
 ```
 
-Qualsiasi carattere che non sia "><+-.,[]" (escludendo gli apici) 
+Qualsiasi carattere che non sia "><+-.,[]" (escludendo gli apici)
 viene ignorato.
-Branfuck è caratterizzato da un array (vettore) di 30,000 celle 
+Branfuck è caratterizzato da un array (vettore) di 30,000 celle
 inizializzare a zero, e un puntatore che punta alla cella corrente.
 
 Vi sono solo otto comando:
@@ -29,11 +29,11 @@ Vi sono solo otto comando:
 < : Sposta il puntatore sulla cella precendete (precedente a sinistra).
 . : Stampa il valore in ASCII della cella corrente. (es: 65 = 'A')
 , : Legge un singolo carattere come input per la cella corrente.
-[ : Se il valore della cella corrente è zero, conclude il ciclo 
+[ : Se il valore della cella corrente è zero, conclude il ciclo
     andando alla sua corrispondente ].
     Altrimenti, passa alla prossima istruzione.
 ] : Se il valore della cella corrente è zero, passa alla prossima istruzione.
-    Altrimenti torna indetro fino alla [ corrispondente. 
+    Altrimenti torna indetro fino alla [ corrispondente.
 
 [ e ] creano un loop (while). Ovviamente dovranno essere bilanciati.
 Per ogni [ dovrà corrispondere una ]
@@ -49,7 +49,7 @@ Incrementa la cella #2 10 volte, e torna alla cella #1, e la decrementa.
 Questo avviene 6 volte (servono che la cella #1 venga decrementata 6 volte
 per raggiungere lo 0. Quindi passa alla corrispondente ] e prosegue).
 
-A questo punto, siamo sulla cella #1, che ha valore 0, 
+A questo punto, siamo sulla cella #1, che ha valore 0,
 la cella #2 ha valore 60 (6*10). Ci spostiamo sulla cella #2, incrementiamo
 per 5 volte, e otteniamo il valore 65, quindi stampaimo il valore della cella
 #2 (.).
@@ -58,7 +58,7 @@ per 5 volte, e otteniamo il valore 65, quindi stampaimo il valore della cella
 
 , [ > + < - ] > .
 
-Questo programma legge un carattere come input dall'utente, 
+Questo programma legge un carattere come input dall'utente,
 quindi salva il carattere dentro la cella #1.
 In seguito, incominca a ciclare.
 Si sposta alla cella #², e increementa il valore della cella (#2).
@@ -87,13 +87,13 @@ Arrivati a questo punto abbiamo un problema: alla fine del ciclo interno
 la cella #2 ha valore 0. In questo caso, quando il ciclo esterno rifarà
 partire il ciclo interno, non funzionerà più perchè la cella #2 ha valore 0.
 Per ovviare a questo problema, oltre alla cella 3, incrementiamo anche la cella
-#4, e alla fine di ogni ciclo interno copiala il valore della cella #4 
-nella cella #2, in modo che il ciclo interno 
+#4, e alla fine di ogni ciclo interno copiala il valore della cella #4
+nella cella #2, in modo che il ciclo interno
 possa essere eseguito una altra volta.
 Alla fine la cella #3 contiene il risultato.
 ```
 
-E questo è brainfuck...Non è difficele, vero? 
+E questo è brainfuck...Non è difficele, vero?
 Per divertimento adesso puoi scrivere i tuoi programmi in brainfuck,
 oppure puoi scrivere un interprete brainfuck in un altro linguaggio.
 L'interprete è abbastanza semplice da implementare, ma se sei veramente

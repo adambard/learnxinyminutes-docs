@@ -57,8 +57,8 @@ Tidak seperti HTML, XML tidak menentukan bagaimana menampilkan atau format data,
    2 - Elemen -> Itu data yang murni.
        Itulah yang parser akan mengambil dari file XML.
        Elemen muncul antara tag membuka dan menutup.-->
-      
-  
+
+
 <!-- Di bawah ini, unsur dengan dua atribut-->
 <file type="gif" id="4293">komputer.gif</file>
 
