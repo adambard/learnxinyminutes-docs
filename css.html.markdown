@@ -8,19 +8,19 @@ contributors:
 filename: learncss.css
 ---
 
-In the early days of the web there were no visual elements, just pure text. But with the  
-further development of browsers, fully visual web pages also became common.   
-CSS is the standard language that exists to keep the separation between   
+In the early days of the web there were no visual elements, just pure text. But with the
+further development of browsers, fully visual web pages also became common.
+CSS is the standard language that exists to keep the separation between
 the content (HTML) and the look-and-feel of web pages.
 
-In short, what CSS does is to provide a syntax that enables you to target   
+In short, what CSS does is to provide a syntax that enables you to target
 different elements on an HTML page and assign different visual properties to them.
 
-Like any other languages, CSS has many versions. Here we focus on CSS2.0,   
+Like any other languages, CSS has many versions. Here we focus on CSS2.0,
 which is not the most recent version, but is the most widely supported and compatible version.
 
-**NOTE:** Because the outcome of CSS consists of visual effects, in order to 
-learn it, you need try everything in a 
+**NOTE:** Because the outcome of CSS consists of visual effects, in order to
+learn it, you need try everything in a
 CSS playground like [dabblet](http://dabblet.com/).
 The main focus of this article is on the syntax and some general tips.
 
@@ -78,8 +78,8 @@ div { }
 [otherAttr|='en'] { font-size:smaller; }
 
 
-/* and more importantly you can combine these together -- there shouldn't be  
-any space between different parts because that makes it to have another  
+/* and more importantly you can combine these together -- there shouldn't be
+any space between different parts because that makes it to have another
 meaning. */
 div.some-class[attr$='ue'] { }
 
@@ -89,22 +89,22 @@ div.some-class[attr$='ue'] { }
 div.some-parent > .class-name {}
 
 /* or any of its parents in the tree
-   the following basically means any element that has class "class-name"  
+   the following basically means any element that has class "class-name"
    and is child of a div with class name "some-parent" IN ANY DEPTH */
 div.some-parent .class-name {}
 
-/* warning: the same selector without space has another meaning.  
+/* warning: the same selector without space has another meaning.
    can you say what? */
 div.some-parent.class-name {}
 
-/* you also might choose to select an element based on its direct  
+/* you also might choose to select an element based on its direct
    previous sibling */
 .i-am-before + .this-element { }
 
 /* or any sibling before this */
 .i-am-any-before ~ .this-element {}
 
-/* There are some pseudo classes that allows you to select an element  
+/* There are some pseudo classes that allows you to select an element
    based on its page behaviour (rather than page structure) */
 
 /* for example for when an element is hovered */
@@ -125,7 +125,7 @@ selected:focus {}
    #################### */
 
 selector {
-    
+
     /* Units */
     width: 50%; /* in percent */
     font-size: 2em; /* times current font-size */
@@ -138,7 +138,7 @@ selector {
     width: 0.4vw; /* times horizontal width of browser viewport (CSS3) */
     min-height: 0.1vmin; /* the lesser of vertical, horizontal dimensions of browser viewport (CSS3) */
     max-width: 0.3vmax; /* same as above, except the greater of the dimensions (CSS3) */
-    
+
     /* Colors */
     background-color: #F6E;  /* in short hex */
     background-color: #F262E2; /* in long hex format */
@@ -150,10 +150,10 @@ selector {
     background-color: hsl(0, 100%, 50%); /* hsl format (CSS3). */
     background-color: hsla(0, 100%, 50%, 0.3); /* Similar to RGBA, specify opacity at end (CSS3) */
 
-    
+
     /* Images */
     background-image: url(/path-to-image/image.jpg); /* quotes inside url() optional */
-    
+
     /* Fonts */
     font-family: Arial;
     font-family: "Courier New"; /* if name has space it appears in single or double quotes */
@@ -171,13 +171,13 @@ Save any CSS you want in a file with extension `.css`.
 <!-- you need to include the css file in your page's <head>: -->
 <link rel='stylesheet' type='text/css' href='path/to/style.css' />
 
-<!-- you can also include some CSS inline in your markup. However it is highly  
+<!-- you can also include some CSS inline in your markup. However it is highly
 recommended to avoid this. -->
 <style>
    a { color: purple; }
 </style>
 
-<!-- or directly set CSS properties on the element. 
+<!-- or directly set CSS properties on the element.
 This has to be avoided as much as you can. -->
 <div style="border: 1px solid red;">
 </div>
@@ -186,8 +186,8 @@ This has to be avoided as much as you can. -->
 
 ## Precedence
 
-As you noticed an element may be targetted by more than one selector. 
-and may have a property set on it in more than one.  
+As you noticed an element may be targetted by more than one selector.
+and may have a property set on it in more than one.
 In these cases, one of the rules takes precedence over others.
 
 Given the following CSS:
@@ -217,24 +217,24 @@ and the following markup:
 </p>
 ```
 
-The precedence of style is as followed:  
+The precedence of style is as followed:
 Remember, the precedence is for each **property**, not for the entire block.
 
-* `E` has the highest precedence because of the keyword `!important`.  
+* `E` has the highest precedence because of the keyword `!important`.
     It is recommended to avoid this unless it is strictly necessary to use.
 * `F` is next, because it is inline style.
-* `A` is next, because it is more "specific" than anything else.  
-    more specific = more specifiers. here 3 specifiers: 1 tagname `p` +   
+* `A` is next, because it is more "specific" than anything else.
+    more specific = more specifiers. here 3 specifiers: 1 tagname `p` +
     class name `class1` + 1 attribute `attr='value'`
-* `C` is next. although it has the same specificness as `B`  
+* `C` is next. although it has the same specificness as `B`
     but it appears last.
 * Then is `B`
 * and lastly is `D`.
 
 ## Compatibility
 
-Most of the features in CSS2 (and gradually in CSS3) are compatible across  
-all browsers and devices. But it's always vital to have in mind the compatibility 
+Most of the features in CSS2 (and gradually in CSS3) are compatible across
+all browsers and devices. But it's always vital to have in mind the compatibility
 of what you use in CSS with your target browsers.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) is one of the best sources for this.

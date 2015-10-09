@@ -5,7 +5,8 @@ contributors:
     - ["Jakukyo Friel", "http://weakish.github.io"]
     - ["Madison Dickson", "http://github.com/mix3d"]
     - ["Simon Morgan", "http://sjm.io/"]
-    - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
+    - ["Zachary Ferguson", "http://github.com/zfergus2"]
+	- ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
 filename: LearnJava.java
 ---
 
@@ -32,7 +33,7 @@ import java.security.*;
 // the file.
 public class LearnJava {
 
-    // A program must have a main method as an entry point.
+    // In order to run a java program, it must have a main method as an entry point.
     public static void main (String[] args) {
 
         // Use System.out.println() to print lines.
@@ -46,11 +47,13 @@ public class LearnJava {
         System.out.print("Hello ");
         System.out.print("World");
 
+        // Use System.out.printf() for easy formatted printing.
+        System.out.printf("pi = %.5f", Math.PI); // => pi = 3.14159
 
         ///////////////////////////////////////
-        // Variables 
+        // Variables
         ///////////////////////////////////////
-        
+
         /*
         *  Variable Declaration
         */
@@ -94,7 +97,7 @@ public class LearnJava {
 
         // Float - Single-precision 32-bit IEEE 754 Floating Point
         float fooFloat = 234.5f;
-        // f is used to denote that this variable value is of type float;
+        // f or F is used to denote that this variable value is of type float;
         // otherwise it is treated as double.
 
         // Double - Double-precision 64-bit IEEE 754 Floating Point
@@ -107,9 +110,12 @@ public class LearnJava {
         // Char - A single 16-bit Unicode character
         char fooChar = 'A';
 
-        // final variables can't be reassigned to another object.
+        // final variables can't be reassigned to another object,
         final int HOURS_I_WORK_PER_WEEK = 9001;
-
+        // but they can be initialized later.
+        final double E;
+        E = 2.71828;
+        
         // Strings
         String fooString = "My String Is Here!";
 
@@ -167,6 +173,7 @@ public class LearnJava {
         System.out.println("2-1 = " + (i2 - i1)); // => 1
         System.out.println("2*1 = " + (i2 * i1)); // => 2
         System.out.println("1/2 = " + (i1 / i2)); // => 0 (0.5 truncated down)
+        System.out.println("1/2 = " + (i1 / (i2*1.0))); // => 0.5
 
         // Modulo
         System.out.println("11%3 = "+(11 % 3)); // => 2
@@ -179,12 +186,17 @@ public class LearnJava {
         System.out.println("2 <= 2? " + (2 <= 2)); // => true
         System.out.println("2 >= 2? " + (2 >= 2)); // => true
 
+        // Boolean operators
+        System.out.println("3 > 2 && 2 > 3? " + ((3 > 2) && (2 > 3))); // => false
+        System.out.println("3 > 2 || 2 > 3? " + ((3 > 2) || (2 > 3))); // => true
+        System.out.println("!(3 == 2)? " + (!(3 == 2))); // => true
+
         // Bitwise operators!
         /*
         ~      Unary bitwise complement
         <<     Signed left shift
-        >>     Signed right shift
-        >>>    Unsigned right shift
+        >>     Signed/Arithmetic right shift
+        >>>    Unsigned/Logical right shift
         &      Bitwise AND
         ^      Bitwise exclusive OR
         |      Bitwise inclusive OR
@@ -237,9 +249,8 @@ public class LearnJava {
         System.out.println("fooDoWhile Value: " + fooDoWhile);
 
         // For Loop
-        int fooFor;
         // for loop structure => for(<start_statement>; <conditional>; <step>)
-        for (fooFor = 0; fooFor < 10; fooFor++) {
+        for (int fooFor = 0; fooFor < 10; fooFor++) {
             System.out.println(fooFor);
             // Iterated 10 times, fooFor 0->9
         }
@@ -343,29 +354,29 @@ public class LearnJava {
 
         // toString returns this Object's string representation.
         System.out.println("trek info: " + trek.toString());
-        
+
         // Double Brace Initialization
         // The Java Language has no syntax for how to create static Collections
         // in an easy way. Usually you end up in the following way:
-        
+
         private static final Set<String> COUNTRIES = new HashSet<String>();
         static {
-	       validCodes.add("DENMARK");
-	       validCodes.add("SWEDEN");
-	       validCodes.add("FINLAND");
+           validCodes.add("DENMARK");
+           validCodes.add("SWEDEN");
+           validCodes.add("FINLAND");
         }
-        
+
         // But there's a nifty way to achive the same thing in an
         // easier way, by using something that is called Double Brace
         // Initialization.
-        
+
         private static final Set<String> COUNTRIES = HashSet<String>() {{
             add("DENMARK");
             add("SWEDEN");
-            add("FINLAND");            
+            add("FINLAND");
         }}
-        
-        // The first brace is creating an new AnonymousInnerClass and the 
+
+        // The first brace is creating an new AnonymousInnerClass and the
         // second one declares and instance initializer block. This block
         // is called with the anonymous inner class is created.
         // This does not only work for Collections, it works for all
@@ -375,7 +386,8 @@ public class LearnJava {
 } // End LearnJava class
 
 
-// You can include other, non-public outer-level classes in a .java file
+// You can include other, non-public outer-level classes in a .java file, 
+// but it is good practice. Instead split classes into separate files.
 
 
 // Class Declaration Syntax:
@@ -395,6 +407,8 @@ class Bicycle {
     // Constructors are a way of creating classes
     // This is a constructor
     public Bicycle() {
+        // You can also call another constructor: 
+        // this(1, 50, 5, "Bontrager");
         gear = 1;
         cadence = 50;
         speed = 5;
@@ -410,13 +424,13 @@ class Bicycle {
         this.name = name;
     }
 
-    // Function Syntax:
+    // Method Syntax:
     // <public/private/protected> <return type> <function name>(<args>)
 
     // Java classes often implement getters and setters for their fields
 
     // Method declaration syntax:
-    // <scope> <return type> <method name>(<args>)
+    // <access modifier> <return type> <method name>(<args>)
     public int getCadence() {
         return cadence;
     }
@@ -447,7 +461,7 @@ class Bicycle {
     }
 
     //Method to display the attribute values of this Object.
-    @Override
+    @Override // Inherited from the Object class.
     public String toString() {
         return "gear: " + gear + " cadence: " + cadence + " speed: " + speed +
             " name: " + name;
@@ -482,26 +496,26 @@ class PennyFarthing extends Bicycle {
 
 // Example - Food:
 public interface Edible {
-	public void eat(); // Any class that implements this interface, must
+    public void eat(); // Any class that implements this interface, must
                        // implement this method.
 }
 
 public interface Digestible {
-	public void digest();
+    public void digest();
 }
 
 
 // We can now create a class that implements both of these interfaces.
 public class Fruit implements Edible, Digestible {
     @Override
-	public void eat() {
-		// ...
-	}
+    public void eat() {
+        // ...
+    }
 
     @Override
-	public void digest() {
-		// ...
-	}
+    public void digest() {
+        // ...
+    }
 }
 
 // In Java, you can extend only one class, but you can implement many
@@ -509,81 +523,120 @@ public class Fruit implements Edible, Digestible {
 public class ExampleClass extends ExampleClassParent implements InterfaceOne,
     InterfaceTwo {
     @Override
-	public void InterfaceOneMethod() {
-	}
+    public void InterfaceOneMethod() {
+    }
 
     @Override
-	public void InterfaceTwoMethod() {
-	}
+    public void InterfaceTwoMethod() {
+    }
 }
 
+// Abstract Classes
 
-// Abstract Classes 
 // Abstract Class declaration syntax
 // <access-level> abstract <abstract-class-name> extends <super-abstract-classes> {
 //     // Constants and variables
 //     // Method declarations
 // }
 
-// Methods can't have bodies in an interface, unless the method is
-// static. Also variables are NOT final by default, unlike an interface.
-// Also abstract classes CAN have the "main" method.
-// Abstract classes solve these problems.
+// Marking a class as abstract means that it contains abstract methods that must
+// be defined in a child class. Similar to interfaces, abstract classes cannot 
+// be instantiated, but instead must be extended and the abstract methods 
+// defined. Different from interfaces, abstract classes can contain a mixture of
+// concrete and abstract methods. Methods in an interface cannot have a body, 
+// unless the method is static, and variables are final by default, unlike an
+// abstract class. Also abstract classes CAN have the "main" method.
 
-public abstract class Animal 
+public abstract class Animal
 {
-	public abstract void makeSound();
+    public abstract void makeSound();
 
-	// Method can have a body
-	public void eat()
-	{
-		System.out.println("I am an animal and I am Eating.");  
-		// Note: We can access private variable here.
-		age = 30;
-	}
+    // Method can have a body
+    public void eat()
+    {
+        System.out.println("I am an animal and I am Eating.");  
+        // Note: We can access private variable here.
+        age = 30;
+    }
 
-	// No need to initialize, however in an interface 
-	// a variable is implicitly final and hence has
-	// to be initialized.
-	private int age;
+    // No need to initialize, however in an interface 
+    // a variable is implicitly final and hence has
+    // to be initialized.
+    protected int age;
 
-	public void printAge()
-	{
-		System.out.println(age);  
-	}
+    public void printAge()
+    {
+        System.out.println(age);  
+    }
 
-	// Abstract classes can have main function.
-	public static void main(String[] args)
-	{
-		System.out.println("I am abstract");
-	}
+    // Abstract classes can have main function.
+    public static void main(String[] args)
+    {
+        System.out.println("I am abstract");
+    }
 }
 
 class Dog extends Animal
 {
-	// Note still have to override the abstract methods in the
-	// abstract class.
-	@Override
-	public void makeSound()
-	{
-		System.out.println("Bark");
-		// age = 30;	==> ERROR!	age is private to Animal
-	}
+    // Note still have to override the abstract methods in the
+    // abstract class.
+    @Override
+    public void makeSound()
+    {
+        System.out.println("Bark");
+        // age = 30;	==> ERROR!	age is private to Animal
+    }
 
-	// NOTE: You will get an error if you used the 
-	// @Override annotation here, since java doesn't allow
-	// overriding of static methods.
-	// What is happening here is called METHOD HIDING.
-	// Check out this awesome SO post: http://stackoverflow.com/questions/16313649/
-	public static void main(String[] args)
-	{
-		Dog pluto = new Dog();
-		pluto.makeSound();
-		pluto.eat();
-		pluto.printAge();
-	}
+    // NOTE: You will get an error if you used the 
+    // @Override annotation here, since java doesn't allow
+    // overriding of static methods.
+    // What is happening here is called METHOD HIDING.
+    // Check out this awesome SO post: http://stackoverflow.com/questions/16313649/
+    public static void main(String[] args)
+    {
+        Dog pluto = new Dog();
+        pluto.makeSound();
+        pluto.eat();
+        pluto.printAge();
+    }
 }
 
+// Final Classes 
+
+// Final Class declaration syntax
+// <access-level> final <final-class-name> {
+//     // Constants and variables
+//     // Method declarations
+// }
+
+// Final classes are classes that cannot be inherited from and are therefore a
+// final child. In a way, final classes are the opposite of abstract classes 
+// because abstract classes must be extended, but final classes cannot be 
+// extended.
+public final class SaberToothedCat extends Animal
+{
+    // Note still have to override the abstract methods in the
+    // abstract class.
+    @Override
+    public void makeSound()
+    {
+        System.out.println("Roar");
+    }
+}
+
+// Final Methods
+public abstract class Mammal()
+{
+    // Final Method Syntax:
+    // <access modifier> final <return type> <function name>(<args>)
+
+    // Final methods, like, final classes cannot be overridden by a child class,
+    // and are therefore the final implementation of the method.
+    public final boolean isWarmBlooded()
+    {
+        return true;
+    }
+}
 ```
 
 ## Further Reading

@@ -10,13 +10,16 @@ As JSON is an extremely simple data-interchange format, this is most likely goin
 to be the simplest Learn X in Y Minutes ever.
 
 JSON in its purest form has no actual comments, but most parsers will accept
-C-style (`//`, `/* */`) comments. For the purposes of this, however,  everything is
-going to be 100% valid JSON. Luckily, it kind of speaks for itself.
+C-style (`//`, `/* */`) comments. Some parsers also tolerate a trailing comma
+(i.e. a comma after the last element of an array or the after the last property of an object),
+but they should be avoided for better compatibility.
+
+For the purposes of this, however, everything is going to be 100% valid JSON. Luckily, it kind of speaks for itself.
 
 ```json
 {
   "key": "value",
-  
+
   "keys": "must always be enclosed in double quotes",
   "numbers": 0,
   "strings": "Hellø, wørld. All unicode is allowed, along with \"escaping\".",
@@ -46,7 +49,7 @@ going to be 100% valid JSON. Luckily, it kind of speaks for itself.
       [0, 0, 0, 1]
     ]
   ],
-  
+
   "alternative style": {
     "comment": "check this out!"
   , "comma position": "doesn't matter - as long as it's before the value, then it's valid"
