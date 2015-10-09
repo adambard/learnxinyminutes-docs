@@ -6,7 +6,7 @@ contributors:
     - ["Madison Dickson", "http://github.com/mix3d"]
     - ["Simon Morgan", "http://sjm.io/"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
-	- ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
+    - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
 filename: LearnJava.java
 ---
 
