@@ -96,7 +96,7 @@ False or True #=> True
 1 < 2 < 3  # => True
 2 < 3 < 2  # => False
 
-# (is vs. ==) is checks if two variable refer to the same object, but == checks 
+# (is vs. ==) is checks if two variable refer to the same object, but == checks
 # if the objects pointed to have the same values.
 a = [1, 2, 3, 4] # Point a at a new list, [1, 2, 3, 4]
 b = a # Point b at what a is pointing to
@@ -256,8 +256,8 @@ empty_dict = {}
 # Here is a prefilled dictionary
 filled_dict = {"one": 1, "two": 2, "three": 3}
 
-# Note keys for dictionaries have to be immutable types. This is to ensure that 
-# the key can be converted to a constant hash value for quick look-ups. 
+# Note keys for dictionaries have to be immutable types. This is to ensure that
+# the key can be converted to a constant hash value for quick look-ups.
 # Immutable types include ints, floats, strings, tuples.
 invalid_dict = {[1,2,3]: "123"} # => Raises a TypeError: unhashable type: 'list'
 valid_dict = {(1,2,3):[1,2,3]}  # Values can be of any type, however.
@@ -423,7 +423,7 @@ else:   # Optional clause to the try/except block. Must follow all except blocks
     print("All good!")   # Runs only if the code in try raises no exceptions
 finally: #  Execute under all circumstances
     print("We can clean up resources here")
- 		 
+
 # Instead of try/finally to cleanup resources you can use a with statement
 with open("myfile.txt") as f:
     for line in f:
@@ -661,8 +661,6 @@ def double_numbers(iterable):
 # Instead of generating and returning all values at once it creates one in each
 # iteration.  This means values bigger than 15 wont be processed in
 # double_numbers.
-# Note range is a generator too. Creating a list 1-900000000 would take lot of
-# time to be made
 # We use a trailing underscore in variable names when we want to use a name that
 # would normally collide with a python keyword
 range_ = range(1, 900000000)
