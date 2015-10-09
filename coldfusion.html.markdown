@@ -146,263 +146,176 @@ ColdFusion is a scripting language for web development.
 </cfloop>
 
 <hr />
+
+<h1>Converting types</h1>
+
+<style>
+	table.table th, table.table td {
+		border: 1px solid #000000;
+		padding: 2px;
+	}
+	
+	table.table th {
+		background-color: #CCCCCC;
+	}
+</style>
+
+<table class="table" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Value</th>
+			<th>As Boolean</th>
+			<th>As number</th>
+			<th>As date-time</th>
+			<th>As string</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>"Yes"</th>
+			<td>TRUE</td>
+			<td>1</td>
+			<td>Error</td>
+			<td>"Yes"</td>
+		</tr>
+		<tr>
+			<th>"No"</th>
+			<td>FALSE</td>
+			<td>0</td>
+			<td>Error</td>
+			<td>"No"</td>
+		</tr>
+		<tr>
+			<th>TRUE</th>
+			<td>TRUE</td>
+			<td>1</td>
+			<td>Error</td>
+			<td>"Yes"</td>
+		</tr>
+		<tr>
+			<th>FALSE</th>
+			<td>FALSE</td>
+			<td>0</td>
+			<td>Error</td>
+			<td>"No"</td>
+		</tr>
+		<tr>
+			<th>Number</th>
+			<td>True if Number is not 0; False otherwise.</td>
+			<td>Number</td>
+			<td>See &#34;Date-time values&#34; earlier in this chapter.</td>
+			<td>String representation of the number (for example, &#34;8&#34;).</td>
+		</tr>
+		<tr>
+			<th>String</th>
+			<td>If "Yes", True <br>If "No", False <br>If it can be converted to 0, False <br>If it can be converted to any other number, True</td>
+			<td>If it represents a number (for example, &#34;1,000&#34; or &#34;12.36E-12&#34;), it is converted to the corresponding number.</td>
+			<td>If it represents a date-time (see next column), it is converted to the numeric value of the corresponding date-time object. <br>If it is an ODBC date, time, or timestamp (for example &#34;{ts &#39;2001-06-14 11:30:13&#39;}&#34;, or if it is expressed in a standard U.S. date or time format, including the use of full or abbreviated month names, it is converted to the corresponding date-time value. <br>Days of the week or unusual punctuation result in an error. <br>Dashes, forward-slashes, and spaces are generally allowed.</td>
+			<td>String</td>
+		</tr>
+		<tr>
+			<th>Date</th>
+			<td>Error</td>
+			<td>The numeric value of the date-time object.</td>
+			<td>Date</td>
+			<td>An ODBC timestamp.</td>
+		</tr>
+	</tbody>
+</table>
+
+<hr />
+
+<h1>Components</h1>
+
+<em>Code for reference (Functions must return something to support IE)</em>
+
+<pre>
+&lt;cfcomponent&gt;
+	&lt;cfset this.hello = "Hello" /&gt;
+	&lt;cfset this.world = "world" /&gt;
+
+	&lt;cffunction name="sayHello"&gt;
+		&lt;cfreturn this.hello & ", " & this.world & "!" /&gt;
+	&lt;/cffunction&gt;
+	
+	&lt;cffunction name="setHello"&gt;
+		&lt;cfargument name="newHello" type="string" required="true" /&gt;
+		
+		&lt;cfset this.hello = arguments.newHello /&gt;
+		 
+		&lt;cfreturn true /&gt;
+	&lt;/cffunction&gt;
+	
+	&lt;cffunction name="setWorld"&gt;
+		&lt;cfargument name="newWorld" type="string" required="true" /&gt;
+		
+		&lt;cfset this.world = arguments.newWorld /&gt;
+		 
+		&lt;cfreturn true /&gt;
+	&lt;/cffunction&gt;
+	
+	&lt;cffunction name="getHello"&gt;
+		&lt;cfreturn this.hello /&gt;
+	&lt;/cffunction&gt;
+	
+	&lt;cffunction name="getWorld"&gt;
+		&lt;cfreturn this.world /&gt;
+	&lt;/cffunction&gt;
+&lt;/cfcomponent&gt;
+</pre>
+
+<cfset this.hello = "Hello" />
+<cfset this.world = "world" />
+
+<cffunction name="sayHello">
+	<cfreturn this.hello & ", " & this.world & "!" />
+</cffunction>
+
+<cffunction name="setHello">
+	<cfargument name="newHello" type="string" required="true" />
+	
+	<cfset this.hello = arguments.newHello />
+	 
+	<cfreturn true />
+</cffunction>
+
+<cffunction name="setWorld">
+	<cfargument name="newWorld" type="string" required="true" />
+	
+	<cfset this.world = arguments.newWorld />
+	 
+	<cfreturn true />
+</cffunction>
+
+<cffunction name="getHello">
+	<cfreturn this.hello />
+</cffunction>
+
+<cffunction name="getWorld">
+	<cfreturn this.world />
+</cffunction>
+
+
+<b>sayHello()</b>
+<cfoutput><p>#sayHello()#</p></cfoutput>
+<b>getHello()</b>
+<cfoutput><p>#getHello()#</p></cfoutput>
+<b>getWorld()</b>
+<cfoutput><p>#getWorld()#</p></cfoutput>
+<b>setHello("Hola")</b>
+<cfoutput><p>#setHello("Hola")#</p></cfoutput>
+<b>setWorld("mundo")</b>
+<cfoutput><p>#setWorld("mundo")#</p></cfoutput>
+<b>sayHello()</b>
+<cfoutput><p>#sayHello()#</p></cfoutput>
+<b>getHello()</b>
+<cfoutput><p>#getHello()#</p></cfoutput>
+<b>getWorld()</b>
+<cfoutput><p>#getWorld()#</p></cfoutput>
 ```
-<!--
-        ////////////////////////////////////////
-        // Converting Data Types And Typecasting
-        ////////////////////////////////////////
-
-        // Converting data
-
-        // Convert String To Integer
-        Integer.parseInt("123");//returns an integer version of "123"
-
-        // Convert Integer To String
-        Integer.toString(123);//returns a string version of 123
-
-        // For other conversions check out the following classes:
-        // Double
-        // Long
-        // String
-
-        // Typecasting
-        // You can also cast Java objects, there's a lot of details and deals
-        // with some more intermediate concepts. Feel free to check it out here:
-        // http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
-
-
-        ///////////////////////////////////////
-        // Classes And Functions
-        ///////////////////////////////////////
-
-        System.out.println("\n->Classes & Functions");
-
-        // (definition of the Bicycle class follows)
-
-        // Use new to instantiate a class
-        Bicycle trek = new Bicycle();
-
-        // Call object methods
-        trek.speedUp(3); // You should always use setter and getter methods
-        trek.setCadence(100);
-
-        // toString returns this Object's string representation.
-        System.out.println("trek info: " + trek.toString());
-
-    } // End main method
-} // End LearnJava class
-
-
-// You can include other, non-public outer-level classes in a .java file
-
-
-// Class Declaration Syntax:
-// <public/private/protected> class <class name> {
-//    // data fields, constructors, functions all inside.
-//    // functions are called as methods in Java.
-// }
-
-class Bicycle {
-
-    // Bicycle's Fields/Variables
-    public int cadence; // Public: Can be accessed from anywhere
-    private int speed;  // Private: Only accessible from within the class
-    protected int gear; // Protected: Accessible from the class and subclasses
-    String name; // default: Only accessible from within this package
-
-    // Constructors are a way of creating classes
-    // This is a constructor
-    public Bicycle() {
-        gear = 1;
-        cadence = 50;
-        speed = 5;
-        name = "Bontrager";
-    }
-
-    // This is a constructor that takes arguments
-    public Bicycle(int startCadence, int startSpeed, int startGear,
-        String name) {
-        this.gear = startGear;
-        this.cadence = startCadence;
-        this.speed = startSpeed;
-        this.name = name;
-    }
-
-    // Function Syntax:
-    // <public/private/protected> <return type> <function name>(<args>)
-
-    // Java classes often implement getters and setters for their fields
-
-    // Method declaration syntax:
-    // <scope> <return type> <method name>(<args>)
-    public int getCadence() {
-        return cadence;
-    }
-
-    // void methods require no return statement
-    public void setCadence(int newValue) {
-        cadence = newValue;
-    }
-
-    public void setGear(int newValue) {
-        gear = newValue;
-    }
-
-    public void speedUp(int increment) {
-        speed += increment;
-    }
-
-    public void slowDown(int decrement) {
-        speed -= decrement;
-    }
-
-    public void setName(String newName) {
-        name = newName;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    //Method to display the attribute values of this Object.
-    @Override
-    public String toString() {
-        return "gear: " + gear + " cadence: " + cadence + " speed: " + speed +
-            " name: " + name;
-    }
-} // end class Bicycle
-
-// PennyFarthing is a subclass of Bicycle
-class PennyFarthing extends Bicycle {
-    // (Penny Farthings are those bicycles with the big front wheel.
-    // They have no gears.)
-
-    public PennyFarthing(int startCadence, int startSpeed){
-        // Call the parent constructor with super
-        super(startCadence, startSpeed, 0, "PennyFarthing");
-    }
-
-    // You should mark a method you're overriding with an @annotation.
-    // To learn more about what annotations are and their purpose check this
-    // out: http://docs.oracle.com/javase/tutorial/java/annotations/
-    @Override
-    public void setGear(int gear) {
-        gear = 0;
-    }
-}
-
-// Interfaces
-// Interface declaration syntax
-// <access-level> interface <interface-name> extends <super-interfaces> {
-//     // Constants
-//     // Method declarations
-// }
-
-// Example - Food:
-public interface Edible {
-	public void eat(); // Any class that implements this interface, must
-                       // implement this method.
-}
-
-public interface Digestible {
-	public void digest();
-}
-
-
-// We can now create a class that implements both of these interfaces.
-public class Fruit implements Edible, Digestible {
-    @Override
-	public void eat() {
-		// ...
-	}
-
-    @Override
-	public void digest() {
-		// ...
-	}
-}
-
-// In Java, you can extend only one class, but you can implement many
-// interfaces. For example:
-public class ExampleClass extends ExampleClassParent implements InterfaceOne,
-    InterfaceTwo {
-    @Override
-	public void InterfaceOneMethod() {
-	}
-
-    @Override
-	public void InterfaceTwoMethod() {
-	}
-}
-
-
-// Abstract Classes
-// Abstract Class declaration syntax
-// <access-level> abstract <abstract-class-name> extends <super-abstract-classes> {
-//     // Constants and variables
-//     // Method declarations
-// }
-
-// Methods can't have bodies in an interface, unless the method is
-// static. Also variables are NOT final by default, unlike an interface.
-// Also abstract classes CAN have the "main" method.
-// Abstract classes solve these problems.
-
-public abstract class Animal
-{
-	public abstract void makeSound();
-
-	// Method can have a body
-	public void eat()
-	{
-		System.out.println("I am an animal and I am Eating.");
-		// Note: We can access private variable here.
-		age = 30;
-	}
-
-	// No need to initialize, however in an interface
-	// a variable is implicitly final and hence has
-	// to be initialized.
-	private int age;
-
-	public void printAge()
-	{
-		System.out.println(age);
-	}
-
-	// Abstract classes can have main function.
-	public static void main(String[] args)
-	{
-		System.out.println("I am abstract");
-	}
-}
-
-class Dog extends Animal
-{
-	// Note still have to override the abstract methods in the
-	// abstract class.
-	@Override
-	public void makeSound()
-	{
-		System.out.println("Bark");
-		// age = 30;	==> ERROR!	age is private to Animal
-	}
-
-	// NOTE: You will get an error if you used the
-	// @Override annotation here, since java doesn't allow
-	// overriding of static methods.
-	// What is happening here is called METHOD HIDING.
-	// Check out this awesome SO post: http://stackoverflow.com/questions/16313649/
-	public static void main(String[] args)
-	{
-		Dog pluto = new Dog();
-		pluto.makeSound();
-		pluto.eat();
-		pluto.printAge();
-	}
-}
--->
 
 ## Further Reading
 
 The links provided here below are just to get an understanding of the topic, feel free to Google and find specific examples.
+
+1. [Coldfusion Reference From Adobe](https://helpx.adobe.com/coldfusion/cfml-reference/topics.html)
