@@ -114,7 +114,7 @@ public class LearnJava {
         // but they can be initialized later.
         final double E;
         E = 2.71828;
-        
+
         // Strings
         String fooString = "My String Is Here!";
 
@@ -368,7 +368,7 @@ public class LearnJava {
 } // End LearnJava class
 
 
-// You can include other, non-public outer-level classes in a .java file, 
+// You can include other, non-public outer-level classes in a .java file,
 // but it is good practice. Instead split classes into separate files.
 
 
@@ -389,7 +389,7 @@ class Bicycle {
     // Constructors are a way of creating classes
     // This is a constructor
     public Bicycle() {
-        // You can also call another constructor: 
+        // You can also call another constructor:
         // this(1, 50, 5, "Bontrager");
         gear = 1;
         cadence = 50;
@@ -489,17 +489,8 @@ public interface Digestible {
 
 // We can now create a class that implements both of these interfaces.
 public class Fruit implements Edible, Digestible {
+  
     @Override
-<<<<<<< HEAD
-  	public void eat() {
-  		// awesome code goes here
-  	}
-
-    @Override
-  	public void digest() {
-  		// awesome code goes here
-  	}
-=======
     public void eat() {
         // ...
     }
@@ -508,31 +499,21 @@ public class Fruit implements Edible, Digestible {
     public void digest() {
         // ...
     }
->>>>>>> adambard/master
 }
 
 // In Java, you can extend only one class, but you can implement many
 // interfaces. For example:
 public class ExampleClass extends ExampleClassParent implements InterfaceOne,
     InterfaceTwo {
-    @Override
-<<<<<<< HEAD
-  	public void InterfaceOneMethod() {
-      // awesome code goes here
-  	}
 
     @Override
-  	public void InterfaceTwoMethod() {
-      // awesome code goes here
-  	}
-=======
     public void InterfaceOneMethod() {
     }
 
     @Override
     public void InterfaceTwoMethod() {
     }
->>>>>>> adambard/master
+
 }
 
 // Abstract Classes
@@ -544,10 +525,10 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 // }
 
 // Marking a class as abstract means that it contains abstract methods that must
-// be defined in a child class. Similar to interfaces, abstract classes cannot 
-// be instantiated, but instead must be extended and the abstract methods 
+// be defined in a child class. Similar to interfaces, abstract classes cannot
+// be instantiated, but instead must be extended and the abstract methods
 // defined. Different from interfaces, abstract classes can contain a mixture of
-// concrete and abstract methods. Methods in an interface cannot have a body, 
+// concrete and abstract methods. Methods in an interface cannot have a body,
 // unless the method is static, and variables are final by default, unlike an
 // abstract class. Also abstract classes CAN have the "main" method.
 
@@ -563,7 +544,7 @@ public abstract class Animal
         age = 30;
     }
 
-    // No need to initialize, however in an interface 
+    // No need to initialize, however in an interface
     // a variable is implicitly final and hence has
     // to be initialized.
     protected int age;
@@ -591,7 +572,7 @@ class Dog extends Animal
         // age = 30;	==> ERROR!	age is private to Animal
     }
 
-    // NOTE: You will get an error if you used the 
+    // NOTE: You will get an error if you used the
     // @Override annotation here, since java doesn't allow
     // overriding of static methods.
     // What is happening here is called METHOD HIDING.
@@ -605,7 +586,7 @@ class Dog extends Animal
     }
 }
 
-// Final Classes 
+// Final Classes
 
 // Final Class declaration syntax
 // <access-level> final <final-class-name> {
@@ -614,8 +595,8 @@ class Dog extends Animal
 // }
 
 // Final classes are classes that cannot be inherited from and are therefore a
-// final child. In a way, final classes are the opposite of abstract classes 
-// because abstract classes must be extended, but final classes cannot be 
+// final child. In a way, final classes are the opposite of abstract classes
+// because abstract classes must be extended, but final classes cannot be
 // extended.
 public final class SaberToothedCat extends Animal
 {
