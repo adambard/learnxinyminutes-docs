@@ -43,9 +43,13 @@ Scala - the scalable language
 // Printing, and forcing a new line on the next print
 println("Hello world!")
 println(10)
+// Hello world!
+// 10
 
 // Printing, without forcing a new line on next print
 print("Hello world")
+print(10)
+// Hello world!10
 
 // Declaring values is done using either var or val.
 // val declarations are immutable, whereas vars are mutable. Immutability is

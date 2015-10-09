@@ -10,8 +10,11 @@ As JSON is an extremely simple data-interchange format, this is most likely goin
 to be the simplest Learn X in Y Minutes ever.
 
 JSON in its purest form has no actual comments, but most parsers will accept
-C-style (`//`, `/* */`) comments. For the purposes of this, however,  everything is
-going to be 100% valid JSON. Luckily, it kind of speaks for itself.
+C-style (`//`, `/* */`) comments. Some parsers also tolerate a trailing comma
+(i.e. a comma after the last element of an array or the after the last property of an object),
+but they should be avoided for better compatibility.
+
+For the purposes of this, however, everything is going to be 100% valid JSON. Luckily, it kind of speaks for itself.
 
 ```json
 {
