@@ -58,8 +58,8 @@ let piText = "Pi = \(π), Pi 2 = \(π * 2)" // String interpolation
 print("Build value: \(buildValue)") // Build value: 7
 
 /*
-    Optionals are a Swift language feature that either contains a value, 
-    or contains nil (no value) to indicate that a value is missing. 
+    Optionals are a Swift language feature that either contains a value,
+    or contains nil (no value) to indicate that a value is missing.
     A question mark (?) after the type marks the value as optional.
 
     Because Swift requires every property to have a value, even nil must be
@@ -82,9 +82,9 @@ if someOptionalString != nil {
 someOptionalString = nil
 
 /*
-    To get the underlying type from an optional, you unwrap it using the 
-    force unwrap operator (!). Only use the unwrap operator if you're sure 
-    the underlying value isn't nil.
+    Trying to use ! to access a non-existent optional value triggers a runtime 
+    error. Always make sure that an optional contains a non-nil value before
+    using ! to force-unwrap its value.
 */
 
 // implicitly unwrapped optional
