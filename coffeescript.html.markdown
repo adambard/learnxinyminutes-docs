@@ -7,7 +7,7 @@ filename: coffeescript.coffee
 ---
 
 CoffeeScript is a little language that compiles one-to-one into the equivalent JavaScript, and there is no interpretation at runtime.
-As one of the succeeders of JavaScript, CoffeeScript tries its best to output readable, pretty-printed and smooth-running JavaScript codes working well in every JavaScript runtime.
+As one of the successors to JavaScript, CoffeeScript tries its best to output readable, pretty-printed and smooth-running JavaScript code, which works well in every JavaScript runtime.
 
 See also [the CoffeeScript website](http://coffeescript.org/), which has a complete tutorial on CoffeeScript.
 
