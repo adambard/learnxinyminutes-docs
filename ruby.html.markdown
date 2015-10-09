@@ -265,7 +265,7 @@ end
 # If you still need and index you can use "each_with_index" and define an index
 # variable
 array.each_with_index do |element, index|
-  pust "#{element} is number #{index} in the array"
+  puts "#{element} is number #{index} in the array"
 end
 
 counter = 1
