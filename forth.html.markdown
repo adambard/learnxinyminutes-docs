@@ -133,7 +133,7 @@ variable age    \ ok
 age @ .    \ 21 ok
 age ?      \ 21 ok
 
-\ Constants are quite simiar, except we don't bother with memory addresses:
+\ Constants are quite similar, except we don't bother with memory addresses:
 100 constant WATER-BOILING-POINT    \ ok
 WATER-BOILING-POINT .               \ 100 ok
 
