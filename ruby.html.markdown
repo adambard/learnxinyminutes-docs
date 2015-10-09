@@ -106,8 +106,14 @@ placeholder = 'use string interpolation'
 'hello ' + 3 #=> TypeError: can't convert Fixnum into String
 'hello ' + 3.to_s #=> "hello 3"
 
-# print to the output
+# print to the output with a newline at the end
 puts "I'm printing!"
+#=> I'm printing!
+#=> nil
+
+# print to the output without a newline
+print "I'm printing!"
+#=> I'm printing! => nill
 
 # Variables
 x = 25 #=> 25
@@ -268,6 +274,19 @@ end
 #=> iteration 3
 #=> iteration 4
 #=> iteration 5
+
+# There are a bunch of other helpful looping functions in Ruby, 
+# for example "map", "reduce", "inject", the list goes on. Map,
+# for instance, takes the array it's looping over, does something
+# to it as defined in your block, and returns an entirely new array.
+array = [1,2,3,4,5]
+doubled = array.map do |element|
+  element * 2
+end
+puts doubled
+#=> [2,4,6,8,10]
+puts array
+#=> [1,2,3,4,5]
 
 grade = 'B'
 

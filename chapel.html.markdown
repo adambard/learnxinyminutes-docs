@@ -633,7 +633,7 @@ writeln( toThisArray );
 // var iterArray : [1..10] int = [ i in 1..10 ] if ( i % 2 == 1 ) then j;
 // exhibits a runtime error.
 // Even though the domain of the array and the loop-expression are
-// the same size, the body of the expression can be though of as an iterator.
+// the same size, the body of the expression can be thought of as an iterator.
 // Because iterators can yield nothing, that iterator yields a different number
 // of things than the domain of the array or loop, which is not allowed.
 
