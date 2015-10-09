@@ -235,7 +235,7 @@ proc ask(question: string): Answer =
     else: echo("Please be clear: yes or no")
 
 proc addSugar(amount: int = 2) = # Default amount is 2, returns nothing
-  assert(amount > 0 or amount < 9000, "Crazy Sugar")
+  assert(amount > 0 and amount < 9000, "Crazy Sugar")
   for a in 1..amount:
     echo(a, " sugar...")
 

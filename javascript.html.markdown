@@ -218,6 +218,26 @@ for (var i = 0; i < 5; i++){
     // will run 5 times
 }
 
+//The For/In statement loops iterates over every property across the entire prototype chain
+var description = "";
+var person = {fname:"Paul", lname:"Ken", age:18}; 
+for (var x in person){
+    description += person[x] + " ";
+}
+
+//If only want to consider properties attached to the object itself, 
+//and not its prototypes use hasOwnProperty() check
+var description = "";
+var person = {fname:"Paul", lname:"Ken", age:18}; 
+for (var x in person){
+    if (person.hasOwnProperty(x)){
+        description += person[x] + " ";
+    }
+}
+
+//for/in should not be used to iterate over an Array where the index order is important.
+//There is no guarantee that for/in will return the indexes in any particular order
+
 // && is logical and, || is logical or
 if (house.size == "big" && house.colour == "blue"){
     house.contains = "bear";

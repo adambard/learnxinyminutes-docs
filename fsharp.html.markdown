@@ -119,7 +119,7 @@ printfn "A string %s, and something generic %A" "hello" [1;2;3;4]
 // ================================================
 
 // F# is a true functional language -- functions are first
-// class entities and can be combined easy to make powerful
+// class entities and can be combined easily to make powerful
 // constructs
 
 // Modules are used to group functions together
