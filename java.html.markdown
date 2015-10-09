@@ -277,7 +277,7 @@ public class LearnJava {
         }
         System.out.println("Switch Case Result: " + monthString);
         
-        //Starting in Java 7 and above, switching Strings works like this:
+        // Starting in Java 7 and above, switching Strings works like this:
         String myAnswer = "maybe";
         switch(myAnswer){
             case "yes":
