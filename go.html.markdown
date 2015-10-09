@@ -408,8 +408,8 @@ func requestServer() {
 
 The root of all things Go is the [official Go web site](http://golang.org/).
 There you can follow the tutorial, play interactively, and read lots.
-Aside from a tour, [the docs](https://golang.org/doc/) contain how to write
-clean and effective Go code, package and command docs, and release history.
+Aside from a tour, [the docs](https://golang.org/doc/) contain information on
+how to write clean and effective Go code, package and command docs, and release history.
 
 The language definition itself is highly recommended. It's easy to read
 and amazingly short (as language definitions go these days.)
