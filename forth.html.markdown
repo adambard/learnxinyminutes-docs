@@ -117,7 +117,7 @@ one-to-12                                 \ 0 1 2 3 4 5 6 7 8 9 10 11 12 ok
 : threes ( n n -- ) ?do i . 3 +loop ;    \ ok
 15 0 threes                             \ 0 3 6 9 12 ok
 
-\ Indefinite loops with `begin` <stuff to do> <flag> `unil`:
+\ Indefinite loops with `begin` <stuff to do> <flag> `until`:
 : death ( -- ) begin ." Are we there yet?" 0 until ;    \ ok
 
 \ ---------------------------- Variables and Memory ----------------------------
