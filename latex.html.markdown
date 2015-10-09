@@ -3,6 +3,7 @@ language: latex
 contributors:
     - ["Chaitanya Krishna Ande", "http://icymist.github.io"]
     - ["Colton Kohnke", "http://github.com/voltnor"]
+    - ["Sricharan Chiruvolu", "http://sricharan.xyz"]
 filename: learn-latex.tex
 ---
 
@@ -25,12 +26,15 @@ getting it to behave exactly the way you want can be a bit hairy.
 \documentclass[12pt]{article}
 
 % Next we define the packages the document uses.
+% If you want to include graphics, colored text or
+% source code from a file into your document, 
+% you need to enhance the capabilities of LaTeX. This is done by adding packages. 
 % I'm going to include the float and caption packages for figures.
 \usepackage{caption}
 \usepackage{float}
 
 % We can define some other document properties too!
-\author{Chaitanya Krishna Ande \& Colton Kohnke}
+\author{Chaitanya Krishna Ande, Colton Kohnke \& Sricharan Chiruvolu}
 \date{\today}
 \title{Learn LaTeX in Y Minutes!}
 
@@ -41,6 +45,16 @@ getting it to behave exactly the way you want can be a bit hairy.
 % create a title page fo us.
 \maketitle
 
+% Most research papers have abstract, you can use the predefined commands for this.
+% This should appear in its logical order, therefore, after the top matter,
+% but before the main sections of the body. 
+% This command is available in document classes article and report.
+\begin{abstract}
+ LaTex documentation written as LaTex! How novel and totally not my idea!
+\end{abstract}
+
+% Section commands are intuitive. 
+% All the titles of the sections are added automatically to the table of contents.
 \section{Introduction}
 Hello, my name is Colton and together we're going to explore LaTeX !
 
@@ -69,15 +83,34 @@ One of the primary uses for LaTeX is to produce academic article or
 technical papers. Usually in the realm of math and science. As such, 
 we need to be able to add special symbols to our paper! \\
 
-My favorite Greek letter is $\xi$. I also like $\beta$, $\gamma$ and $\sigma$.
+Math has many symbols, far beyond what you can find on a keyboard.
+Set and relation symbols, arrows, operators, Greek letters to name a few. \\
+
+
+Sets and relations play a vital role in many mathematical research papers.
+Here's how you state all y that belong to X, $\forall$ x $\in$ X.
 Notice how I needed to add \$ signs before and after the symbols. This is 
 because when writing, we are in text-mode. However, the math symbols only exist
 in math-mode. We can enter math-mode from text mode with the \$ signs. 
 The opposite also holds true. Variable can also be rendered in math-mode. \\
 
-% We can also add references
-For a right angled triangle (see Fig.~\ref{fig:right-triangle}) with sides $a$,
- $b$ and $c$, where $c$ is the hypotenuse, the following holds:
+My favorite Greek letter is $\xi$. I also like $\beta$, $\gamma$ and $\sigma$.
+
+Operators are essential parts of a mathematical document: trigonometric functions 
+(sin, cos, tan), logarithms and exponentials (log, exp), limits (lim) e.t.c. have
+pre-defined LaTeX commands. Let's write an equation to see how it's done: \\
+
+$\cos$ (2$\theta$) = $\cos$^2 $\theta$ - $\sin$^2 $\theta$
+
+Fractions(Numerator-denominators) can be written in these forms:
+
+% 10 / 7
+^10/_7
+
+% Relatively complex fractions can be written as
+% \frac{numerator}{denominator}
+$\frac{n!}{k!(n - k)!}$
+
 % Display math with the equation 'environment'
 \begin{equation} % enters math-mode
     c^2 = a^2 + b^2.
@@ -88,11 +121,17 @@ For a right angled triangle (see Fig.~\ref{fig:right-triangle}) with sides $a$,
 Eqn.~\ref{eq:pythagoras} is also known as the Pythagoras Theorem which is also
 the subject of Sec.~\ref{subsec:pythagoras}.
 
+Summations and Integrals are written with sum and int commands:
+\begin{equation} % enters math-mode
+\sum_{i=0}^{5} f_i
+
+\int_0^\infty \mathrm{e}^{-x}\,\mathrm{d}x
+\end{equation} 
 
 \section{Figures}
 
 Let's insert a Figure. Figure placement can get a little tricky. 
-I definately have to lookup the placement options each time.
+I definitely have to lookup the placement options each time.
 
 \begin{figure}[H]
     \centering
@@ -114,6 +153,8 @@ Let's insert a Table.
     2 & Monty & Python
   \end{tabular}
 \end{table}
+
+% \section{Hyperlinks}
 
 
 \section{Compiling} 
