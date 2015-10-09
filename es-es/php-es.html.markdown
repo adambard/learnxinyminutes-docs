@@ -4,11 +4,11 @@ contributors:
     - ["Malcolm Fell", "http://emarref.net/"]
     - ["Trismegiste", "https://github.com/Trismegiste"]
     - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
-filename: learnphp.php
+filename: learnphp-es.php
 lang: es-es
 ---
 
-Este documento describe a PHP 5+.
+Este documento describe PHP 5+.
 
 ```php
 <?php // El código PHP debe estar contenido dentro de la etiqueta <?php
