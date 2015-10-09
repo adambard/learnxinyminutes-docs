@@ -14,7 +14,7 @@ C-style (`//`, `/* */`) comments. Some parsers also tolerate a trailing comma
 (i.e. a comma after the last element of an array or the after the last property of an object),
 but they should be avoided for better compatibility.
 
-For the purposes of this, however,  everything is going to be 100% valid JSON. Luckily, it kind of speaks for itself.
+For the purposes of this, however, everything is going to be 100% valid JSON. Luckily, it kind of speaks for itself.
 
 ```json
 {
