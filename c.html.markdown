@@ -307,8 +307,9 @@ int main(void) {
     exit(-1);
     break;
   }
-  
-  // using "goto"
+  /*
+  using "goto" in C
+  */
   typedef enum { false, true } bool;
   // for C don't have bool as data type :(
   bool disaster = false;
@@ -323,7 +324,10 @@ int main(void) {
   }
   error :
   printf("Error occured at i = %d & j = %d.\n", i, j);
-  // this will print out "Error occured at i = 52 & j = 99."
+  /*
+  https://ideone.com/GuPhd6
+  this will print out "Error occured at i = 52 & j = 99."
+  */
   
   
   ///////////////////////////////////////
@@ -491,13 +495,15 @@ char c[] = "This is a test.";
 str_reverse(c);
 printf("%s\n", c); // => ".tset a si sihT"
 */
-//as we can return return only one variable
-//to change values of more than one variables we use call by reference
+/*
+as we can return only one variable
+to change values of more than one variables we use call by reference
+*/
 void swapTwoNumbers(int *a, int *b)
 {
-int temp = *a;
-*a = *b;
-*b = temp;
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 /*
 int first = 10;
