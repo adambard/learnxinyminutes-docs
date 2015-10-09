@@ -275,6 +275,19 @@ end
 #=> iteration 4
 #=> iteration 5
 
+# There are a bunch of other helpful looping functions in Ruby, 
+# for example "map", "reduce", "inject", the list goes on. Map,
+# for instance, takes the array it's looping over, does something
+# to it as defined in your block, and returns an entirely new array.
+array = [1,2,3,4,5]
+doubled = array.map do |element|
+  element * 2
+end
+puts doubled
+#=> [2,4,6,8,10]
+puts array
+#=> [1,2,3,4,5]
+
 grade = 'B'
 
 case grade
