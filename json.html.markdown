@@ -37,7 +37,9 @@ For the purposes of this, however, everything is going to be 100% valid JSON. Lu
       "comment": "These things can be nested, very useful."
     }
   },
-
+  
+  "string" : ["json array containing json objects"],
+  
   "silliness": [
     {
       "sources of potassium": ["bananas"]
