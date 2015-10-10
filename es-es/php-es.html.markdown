@@ -6,7 +6,7 @@ contributors:
 translators:
 	- ["Adrián Carrascal", "https://github.com/acarrascalgarcia"]
 lang: es-es
-filename: learnphp.php
+filename: learnphp-es.php
 ---
 
 
@@ -20,7 +20,7 @@ Este documento describe a PHP 5+.
 
 // Dos diagonales empiezan un comentario de linea.
 
-# So will a hash (aka pound symbol) but // is more common
+# Lo mismo ocurrirá con numeral but // es mucho más común
 
 /*
 	 Encerrar el texto con diagonal-asterico y asterisco-diagonal
@@ -45,8 +45,8 @@ echo "Mundo\n"; // Imprime "Mundo" con un salto de linea
  */
 
 // Las variables comienzan con el símbolo $.
-// Un nombre de variable válido empieza con una letra o guíon bajo,
-// segudio de cualquier cantidad de letras, números o guíones bajos.
+// Un nombre valido de variable empieza con una letra o guíon bajo,
+// seguido de cualquier cantidad de letras, números o guíones bajos.
 
 // Los valores booleanos no son sensibles a mayúsculas y minúsculas.
 $boolean = true;  // or TRUE or True
@@ -91,3 +91,106 @@ $unescaped = 'Esto solo contiene una diagonal y una t: \t';
 
 // Encierra una variable entre llaves si es necesario
 $money = "Tengo $${number} en el banco.";
+
+// Desde PHP 5.3, los nowdocs se puede usar para multi-liners interpolados
+$nowdoc = <<<'END'
+Multi linea
+string
+END;
+
+// Los heredocs harán la interpolación de strings
+$heredoc = <<<END
+Multi linea
+$sgl_quotes
+END;
+
+// La concatenación de strings se hace con
+echo 'Este string ' . 'se concatenó';
+
+
+/********************************
+ * Constantes
+ */
+
+// Una constante se define usando define()
+// y no se puede cambiar en tiempo de ejecución!
+
+// Un nombre válido de constante empieza con una letra o un guíon bajo,
+// seguido por cualquier cantidad de letras, números o guíones bajos.
+define("FOO",     "algo");
+
+// Acceder a una constante es posible a través del nombre elegido
+echo 'Esto muestra '.FOO;
+
+
+/********************************
+ * Arrays
+ */
+
+// Todos los arrays en PHP son arrays asociativos (hashmaps),
+
+// Arrays asociativos, hashmaps en algunos lenguajes.
+
+// Trabaja con todas las versiones de PHP
+$associative = array('Uno' => 1, 'Dos' => 2, 'Tres' => 3);
+
+// PHP 5.4 introdujo una sintaxis nueva
+$associative = ['Uno' => 1, 'Dos' => 2, 'Tres' => 3];
+
+echo $associative['Uno']; // imprime 1
+
+// 
+$array = ['Uno', 'Dos', 'Tres'];
+echo $array[0]; // => "Uno"
+
+// Agrega un elemento al final del array
+$array[] = 'Four';
+
+// Elimina un elemento del array
+unset($array[3]);
+
+/********************************
+ * Output
+ */
+
+echo('¡Hola Mundo!');
+// Imprime ¡Hola Mundo! a stdout.
+// Stdout es la página web si se está ejecutando en un 
+// navegador.
+
+print('¡Hola Mundo!'); // Igual que "echo"
+
+// echo es realmente un constructor del lenguaje,
+// así que también lo puedes hacer sin los paréntesis.
+echo '¡Hola Mundo!';
+print '¡Hola Mundo!'; // Este es el "print"
+
+$paragraph = 'paragraph';
+
+echo 100;        // Imprima variables escalares directamente
+echo $paragraph; // o variables
+
+// Si las etiquetas abreviadas de apertura se configuraron,
+// o tu versión de PHP es 5.4.0 o mayor,
+// puedes usar la sintaxis abreviada del echo
+?>
+<p><?= $paragraph ?></p>
+<?php
+
+
+
+```
+
+## Más información
+
+Visitar la [Documentación oficial de PHP](http://www.php.net/manual/) como referencia
+y aportes de la comunidad.
+
+If you're interested in up-to-date best practices, visit
+[PHP The Right Way](http://www.phptherightway.com/).
+
+If you're coming from a language with good package management, check out
+[Composer](http://getcomposer.org/).
+
+For common standards, visit the PHP Framework Interoperability Group's
+[PSR standards](https://github.com/php-fig/fig-standards).
