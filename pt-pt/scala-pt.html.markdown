@@ -245,10 +245,11 @@ i    // Mostra o valor de i. Note que o while é um ciclo no sentido clássico -
      // paralelizar
 
 // Um ciclo do while
+i = 0
 do {
-  println("x ainda é menor que 10")
-  x = x + 1
-} while (x < 10)
+  println("i ainda é menor que 10")
+  i += 1
+} while (i < 10)
 
 // A forma idiomática em Scala de definir acções recorrentes é através de
 // recursão em cauda.
