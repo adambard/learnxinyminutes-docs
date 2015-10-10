@@ -340,7 +340,7 @@ filled_set | other_set   # => {1, 2, 3, 4, 5, 6}
 ## 3. Structures de contrôle et Itérables
 ####################################################
 
-# On créée juste une variable
+# On crée juste une variable
 some_var = 5
 
 # Voici une condition "si". L'indentation est significative en Python!
@@ -660,7 +660,7 @@ def double_numbers(iterable):
     for i in iterable:
         yield i + i
 
-# Un générateur créé des valeurs à la volée.
+# Un générateur crée des valeurs à la volée.
 # Au lieu de générer et retourner toutes les valeurs en une fois, il en crée une à chaque
 # itération.  Cela signifie que les valeurs supérieures à 15 ne seront pas traîtées par
 # double_numbers.
