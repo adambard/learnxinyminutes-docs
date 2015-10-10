@@ -3,6 +3,7 @@ language: PHP
 contributors:
     - ["Malcolm Fell", "http://emarref.net/"]
     - ["Trismegiste", "https://github.com/Trismegiste"]
+translators:
     - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
 filename: learnphp-es.php
 lang: es-es
