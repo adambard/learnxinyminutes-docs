@@ -5,13 +5,12 @@ contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
+translators:
+    - ["Gnomino", "https://github.com/Gnomino"]
 filename: learnpython3-fr.py
 lang: fr-fr
 ---
 
-Python was created by Guido Van Rossum in the early 90s. It is now one of the most popular
-languages in existence. I fell in love with Python for its syntactic clarity. It's basically
-executable pseudocode.
 Python a été créé par Guido Van Rossum au début des années 90. C'est maintenant un des 
 langages les populaires.Je suis tombé amoureux de Python pour la clarté de sa syntaxe.
 C'est tout simplement du pseudo-code éxécutable.
