@@ -5,7 +5,7 @@ contributors:
 translators:
     - ["Adolfo Jayme Barrientos", "https://github.com/fitojb"]
 author: Brian Martin
-author_url: http://brianmartin.biz
+author_url: https://github.com/fitojb
 filename: learnvisualbasic-es.vb
 lang: es-es
 ---
