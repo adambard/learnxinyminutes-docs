@@ -15,7 +15,7 @@ Python a été créé par Guido Van Rossum au début des années 90. C'est maint
 langages les populaires.Je suis tombé amoureux de Python pour la clarté de sa syntaxe.
 C'est tout simplement du pseudo-code éxécutable.
 
-L'auteur original apprécierait les retours ( en anglais ): vous pouvez le contacter sur Twitter à [@louiedinh](http://twitter.com/louiedinh) ou par mail à l'adresse louiedinh [at] [google's email service]
+L'auteur original apprécierait les retours (en anglais): vous pouvez le contacter sur Twitter à [@louiedinh](http://twitter.com/louiedinh) ou par mail à l'adresse louiedinh [at] [google's email service]
 
 Note : Cet article s'applique spécifiquement à Python 3. Jettez un coup d'oeil [ici](http://learnxinyminutes.com/docs/fr-fr/python-fr/) pour apprendre le vieux Python 2.7
 
@@ -40,7 +40,7 @@ Note : Cet article s'applique spécifiquement à Python 3. Jettez un coup d'oeil
 8 - 1  # => 7
 10 * 2  # => 20
 
-# Sauf pour la division qui retourne un float ( nombre à virgule flottante )
+# Sauf pour la division qui retourne un float (nombre à virgule flottante)
 35 / 5  # => 7.0
 
 # Résultats de divisions entières tronqués pour les nombres positifs et négatifs
@@ -52,7 +52,7 @@ Note : Cet article s'applique spécifiquement à Python 3. Jettez un coup d'oeil
 # Quand on utilise un float, le résultat est un float
 3 * 2.0 # => 6.0
 
-# Modulo ( reste de la division )
+# Modulo (reste de la division)
 7 % 3 # => 1
 
 # Exponentiation (x**y, x élevé à la puissance y)
@@ -109,7 +109,7 @@ b = [1, 2, 3, 4] # b pointe sur une nouvelle liste, [1, 2, 3, 4]
 b is a # => False, a et b ne pointent pas sur le même objet
 b == a # => True, les objets a et b ne pointent pas sur le même objet
 
-# Les chaînes ( ou string ) sont créées avec " ou '
+# Les chaînes (ou strings) sont créées avec " ou '
 "Ceci est une chaine"
 'Ceci est une chaine aussi.'
 
@@ -144,7 +144,7 @@ None  # => None
 "etc" is None  # => False
 None is None  # => True
 
-# None, 0, and les strings/lists/dicts ( chaînes/listes/dictionnaires ) valent False lorsqu'ils sont convertis en booléens.
+# None, 0, and les strings/lists/dicts (chaînes/listes/dictionnaires) valent False lorsqu'ils sont convertis en booléens.
 # Toutes les autres valeurs valent True
 bool(0)  # => False
 bool("")  # => False
@@ -512,7 +512,7 @@ all_the_args(*args)   # équivalent à foo(1, 2, 3, 4)
 all_the_args(**kwargs)   # équivalent à foo(a=3, b=4)
 all_the_args(*args, **kwargs)   # équivalent à foo(1, 2, 3, 4, a=3, b=4)
 
-# Retourne plusieurs valeurs ( avec un tuple )
+# Retourne plusieurs valeurs (avec un tuple)
 def swap(x, y):
     return y, x # Retourne plusieurs valeurs avec un tuple sans parenthèses.
                 # (Note: on peut aussi utiliser des parenthèses)
@@ -704,7 +704,7 @@ print(say(say_please=True))  # affiche Can you buy me a beer? Please! I am poor 
 
 ## Prêt pour encore plus ?
 
-### En ligne et gratuit ( en anglais )
+### En ligne et gratuit (en anglais)
 
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
@@ -716,7 +716,7 @@ print(say(say_please=True))  # affiche Can you buy me a beer? Please! I am poor 
 * [Python Course](http://www.python-course.eu/index.php)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 
-### Livres ( en anglais )
+### Livres (en anglais)
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
