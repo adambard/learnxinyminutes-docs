@@ -78,7 +78,7 @@ false
 1 < 2 < 3 # => true
 2 < 3 < 2 # => false
 
-# Strings are created with "
+# AbstractStrings are created with "
 "This is a string."
 
 # Character literals are written with '
@@ -314,7 +314,7 @@ end
 
 
 # For loops iterate over iterables.
-# Iterable types include Range, Array, Set, Dict, and String.
+# Iterable types include Range, Array, Set, Dict, and AbstractString.
 for animal=["dog", "cat", "mouse"]
     println("$animal is a mammal")
     # You can use $ to interpolate variables or expression into strings
@@ -550,13 +550,13 @@ super(Any) # => Any
 # <: is the subtyping operator
 type Lion <: Cat # Lion is a subtype of Cat
   mane_color
-  roar::String
+  roar::AbstractString
 end
 
 # You can define more constructors for your type
 # Just define a function of the same name as the type
 # and call an existing constructor to get a value of the correct type
-Lion(roar::String) = Lion("green",roar)
+Lion(roar::AbstractString) = Lion("green",roar)
 # This is an outer constructor because it's outside the type definition
 
 type Panther <: Cat # Panther is also a subtype of Cat
