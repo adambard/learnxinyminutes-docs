@@ -209,6 +209,30 @@ myTemplate = `This is not possible
               when using speech marks.`;
 
 ///////////////////////////////////
+// 3. Modules, Imports and Exports
+
+// In ES6, you can choose which variables to export when a file is imported by
+// another file.
+export var myNumber = 42;
+export var otherNumber = 63;
+
+// You could also write the above like this.
+var myNumber = 42;
+export myNumber;
+
+// You can then import the library into another file.
+import * as numbers from "numbers"; // file imported is numbers.js
+numbers.myNumber === 42;
+
+// You can also only import a specific variable/function...
+import myNumber from "numbers";
+myNumber === 42
+
+// ...or multiple variables.
+import {myNumber, otherNumber} from "numbers";
+myNumber + otherNumber === 105;
+
+///////////////////////////////////
 // 3. Logic and Control Structures
 
 // The syntax for this section is almost identical to Java's. 
