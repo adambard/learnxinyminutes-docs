@@ -6,13 +6,9 @@ contributors:
 filename: learnamd.js
 ---
 
-## Getting Started with AMD
+## Primeros pasos con AMD
 
-The **Asynchronous Module Definition** API specifies a mechanism for defining
-JavaScript modules such that the module and its dependencies can be asynchronously
-loaded. This is particularly well suited for the browser environment where
-synchronous loading of modules incurs performance, usability, debugging, and
-cross-domain access problems.
+La API de Definición Asíncrona de módulos especifica un mecanismo para definir módulos de Javascript, de forma que el módulo y sus dependencias puedan ser cargadas asincrónicametente. Esto es muy adecuado para el entorno del navegador donde la carga asíncrona de módulos incurre en el rendimiento, facilidad de uso, depuración y problemas de acceso por dominios cruzados.
 
 ### Basic concept
 ```javascript
