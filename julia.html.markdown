@@ -78,13 +78,16 @@ false
 1 < 2 < 3 # => true
 2 < 3 < 2 # => false
 
-# AbstractStrings are created with "
+# Strings are created with "
 "This is a string."
+
+# Julia has several types of strings, including ASCIIString and UTF8String.
+# More on this in the Types section.
 
 # Character literals are written with '
 'a'
 
-# A string can be indexed like an array of characters
+# Some strings can be indexed like an array of characters
 "This is a string"[1] # => 'T' # Julia indexes from 1
 # However, this is will not work well for UTF8 strings,
 # so iterating over strings is recommended (map, for loops, etc).
@@ -537,6 +540,17 @@ subtypes(Number) # => 6-element Array{Any,1}:
                  #     Real
 subtypes(Cat) # => 0-element Array{Any,1}
 
+# AbstractString, as the name implies, is also an abstract type
+subtypes(AbstractString)    # 8-element Array{Any,1}:
+                            #  Base.SubstitutionString{T<:AbstractString}
+                            #  DirectIndexString
+                            #  RepString
+                            #  RevString{T<:AbstractString}
+                            #  RopeString
+                            #  SubString{T<:AbstractString}
+                            #  UTF16String
+                            #  UTF8String
+
 # Every type has a super type; use the `super` function to get it.
 typeof(5) # => Int64
 super(Int64) # => Signed
@@ -546,6 +560,10 @@ super(Number) # => Any
 super(super(Signed)) # => Number
 super(Any) # => Any
 # All of these type, except for Int64, are abstract.
+typeof("fire") # => ASCIIString
+super(ASCIIString) # => DirectIndexString
+super(DirectIndexString) # => AbstractString
+# Likewise here with ASCIIString
 
 # <: is the subtyping operator
 type Lion <: Cat # Lion is a subtype of Cat
