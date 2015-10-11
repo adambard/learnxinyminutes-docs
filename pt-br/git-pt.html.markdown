@@ -9,7 +9,7 @@ translators:
   - ["Suzane Sant Ana", "http://github.com/suuuzi"]
 ---
 
-Git é um sistema distribuido de gestão para código fonte e controle de versões.
+Git é um sistema distribuído de gestão para código fonte e controle de versões.
 
 Funciona através de uma série de registos de estado do projeto e usa esse
 registo para permitir funcionalidades de versionamento e gestão de código
@@ -128,13 +128,13 @@ $ git config --global user.name "My Name"
 Para visualizar rapidamente o detalhamento de cada comando ou apenas lembrar da semântica.
 
 ```bash
-# Ver rapidamente os comandos disponiveis
+# Ver rapidamente os comandos disponíveis
 $ git help
 
-# Ver todos os comandos disponiveis
+# Ver todos os comandos disponíveis
 $ git help -a
 
-# Usar o *help* para um comando especifico
+# Usar o *help* para um comando específico
 # git help <comando_aqui>
 $ git help add
 $ git help commit
@@ -148,8 +148,7 @@ do repositório) e o *commit* da *HEAD* atual.
 
 
 ```bash
-# Apresenta o *branch*, arquivos não monitorados, alterações e outras
-# difereças
+# Apresenta o *branch*, arquivos não monitorados, alterações e outras diferenças
 $ git status
 
 # Para aprender mais detalhes sobre git *status*
@@ -204,7 +203,7 @@ Atualiza todos os arquivos no diretório do projeto para que fiquem iguais
 ```bash
 # Checkout de um repositório - por padrão para o branch master
 $ git checkout
-# Checkout de um branch especifico
+# Checkout de um branch específico
 $ git checkout branchName
 # Cria um novo branch e faz checkout para ele.
 # Equivalente a: "git branch <name>; git checkout <name>"

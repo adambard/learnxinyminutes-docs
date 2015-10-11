@@ -12,7 +12,7 @@ translators:
 # Isso é um comentário
 
 =begin
-Isso é um comentário multilinha
+Isso é um comentário multi linha
 Ninguém os usa
 Você não deve usar também
 =end
@@ -76,7 +76,7 @@ false.class #=> FalseClass
 
 placeholder = "usar interpolação de string"
 "Eu posso #{placeholder} quando estiver usando aspas duplas"
-#=> "Eu posso usar insterpolação de string quando estiver usando aspas duplas"
+#=> "Eu posso usar interpolação de string quando estiver usando aspas duplas"
 
 # imprime para output (saída)
 puts "Estou imprimindo"
@@ -160,7 +160,7 @@ hash['numero'] #=> 5
 # Procurar em um hash por uma chave que não existe retorna nil:
 hash['nada aqui'] #=> nil
 
-# Interar sobre hashes com o método #each:
+# Iterar sobre hashes com o método #each:
 hash.each do |k, v|
   puts "#{k} is #{v}"
 end
@@ -247,7 +247,7 @@ end
 # Funções (e todos os blocos) retornam implicitamente o valor da última linha
 dobrar(2) #=> 4
 
-# Parênteses são opicionais onde o resultado é claro
+# Parênteses são opcionais onde o resultado é claro
 dobrar 3 #=> 6
 
 dobrar dobrar 3 #=> 12

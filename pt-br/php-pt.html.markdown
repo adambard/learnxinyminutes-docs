@@ -157,7 +157,7 @@ echo('Olá Mundo!');
 
 print('Olá Mundo!'); // O mesmo que o echo
 
-// echo é atualmente um construtor de linguagem, então você pode 
+// echo é atualmente um construtor de linguagem, então você pode
 // remover os parênteses.
 echo 'Olá Mundo!';
 print 'Olá Mundo!'; // O print também é
@@ -203,7 +203,7 @@ $d = '1';
 
 // assert lança um aviso se o seu argumento não é verdadeiro
 
-// Estas comparações serão sempre verdadeiras, mesmo que os tipos 
+// Estas comparações serão sempre verdadeiras, mesmo que os tipos
 // não sejam os mesmos.
 assert($a == $b); // igualdade
 assert($c != $a); // desigualdade
@@ -231,7 +231,7 @@ $string = 'one';
 echo $string + $string; // => 0
 // Imprime 0 porque o operador + não pode fundir a string 'um' para um número
 
-// Tipo de fundição pode ser utilizado para tratar uma variável 
+// Tipo de fundição pode ser utilizado para tratar uma variável
 // como um outro tipo
 
 $booleano = (boolean) 1; // => true
@@ -416,12 +416,12 @@ echo $nome_funcao(1, 2); // => 3
  */
 
 <?php
-// PHP dentro de arquivos incluídos também deve começar com uma tag 
+// PHP dentro de arquivos incluídos também deve começar com uma tag
 // de abertura do PHP.
 
 include 'meu-arquivo.php';
 // O código meu-arquivo.php já está disponível no escopo atual.
-// Se o arquivo não pode ser incluído (por exemplo, arquivo não encontrado), 
+// Se o arquivo não pode ser incluído (por exemplo, arquivo não encontrado),
 //um aviso é emitido.
 
 include_once 'meu-arquivo.php';
@@ -459,7 +459,7 @@ class MinhaClasse
 {
     const MINHA_CONST      = 'valor'; // Uma constante
 
-    static $valorEstatico   = 'estatico';
+    static $valorEstatico   = 'estático';
 
     // Variáveis estáticas e sua visibilidade
     public static $valorEstaticoPublico = 'estaticoPublico';
@@ -492,7 +492,7 @@ class MinhaClasse
     }
 
 /*
- * Declarando propriedades ou métodos de classe como estáticos faz deles 
+ * Declarando propriedades ou métodos de classe como estáticos faz deles
  * acessíveis sem precisar instanciar a classe. A propriedade declarada
  * como estática não pode ser acessada com um objeto
  * instanciado da classe (embora métodos estáticos possam).
@@ -500,13 +500,13 @@ class MinhaClasse
 
     public static function meuMetodoEstatico()
     {
-        print 'Eu sou estatico';
+        print 'Eu sou estático';
     }
 }
 
 echo MinhaClasse::MINHA_CONST;    // Imprime 'valor';
-echo MinhaClasse::$valorEstatico; // Imprime 'estatico';
-MinhaClasse::meuMetodoEstatico(); // Imprime 'Eu sou estatico';
+echo MinhaClasse::$valorEstatico; // Imprime 'estático';
+MinhaClasse::meuMetodoEstatico(); // Imprime 'Eu sou estático';
 
 // Instantiate classes using new
 $minha_classe = new MinhaClasse('Uma propriedade de instância');
@@ -620,7 +620,7 @@ class UmaOutraClasse implements InterfaceUm, InterfaceDois
  * Traits (Traços)
  */
 
-// Traits estão disponíveis a partir de PHP 5.4.0 e 
+// Traits estão disponíveis a partir de PHP 5.4.0 e
 // são declarados usando "trait"
 
 trait MeuTraco
@@ -687,7 +687,7 @@ $cls = new OutroEspaconominal\MinhaClasse();
 
 ## Mais informações
 
-Visite a [documentação oficial do PHP](http://www.php.net/manual/) 
+Visite a [documentação oficial do PHP](http://www.php.net/manual/)
 para referência e participação da comunidade.
 
 Se você estiver interessado em melhores práticas atualizadas, visite
