@@ -4,6 +4,7 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "http://aminbandali.com"]
     - ["Andre Polykanine", "https://github.com/Oire"]
+    - ["Ankit Aggarwal", "http://ankitaggarwal.me"]
 filename: learnpython.py
 ---
 
@@ -143,6 +144,10 @@ bool("")  # => False
 
 # Python has a print statement
 print "I'm Python. Nice to meet you!"
+
+# Simple way to get input data from console
+input_string_var = raw_input("Enter some data: ") # Data is stored as a string
+input_number_var = input("Enter a number: ") # Data is stored as a number
 
 # No need to declare variables before assigning to them.
 some_var = 5    # Convention is to use lower_case_with_underscores
