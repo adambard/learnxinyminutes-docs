@@ -569,8 +569,8 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 ####################################################
 
 
-# We subclass from object to get a class.
-class Human(object):
+# We use the "class" operator to get a class
+class Human:
 
     # A class attribute. It is shared by all instances of this class
     species = "H. sapiens"
