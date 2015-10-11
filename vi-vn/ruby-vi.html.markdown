@@ -13,6 +13,7 @@ contributors:
   - ["Levi Bostian", "https://github.com/levibostian"]
   - ["Rahil Momin", "https://github.com/iamrahil"]
   - ["Vinh Nguyen", "http://rubydaily.net"]
+lang: vi-vn
 
 ---
 
