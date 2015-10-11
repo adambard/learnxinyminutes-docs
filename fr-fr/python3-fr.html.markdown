@@ -12,7 +12,7 @@ lang: fr-fr
 ---
 
 Python a été créé par Guido Van Rossum au début des années 90. C'est maintenant un des 
-langages les populaires.Je suis tombé amoureux de Python pour la clarté de sa syntaxe.
+langages les populaires. Je suis tombé amoureux de Python pour la clarté de sa syntaxe.
 C'est tout simplement du pseudo-code éxécutable.
 
 L'auteur original apprécierait les retours (en anglais): vous pouvez le contacter sur Twitter à [@louiedinh](http://twitter.com/louiedinh) ou par mail à l'adresse louiedinh [at] [google's email service]
@@ -23,7 +23,7 @@ Note : Cet article s'applique spécifiquement à Python 3. Jettez un coup d'oeil
 
 # Un commentaire d'une ligne commence par un dièse
 
-""" Les chaînes de caractère peuvent être écrites
+""" Les chaînes de caractères peuvent être écrites
     avec 3 guillemets doubles ("), et sont souvent
     utilisées comme des commentaires.
 """
@@ -196,7 +196,7 @@ li[-1]  # => 3
 li[4]  # Lève une IndexError
 
 # On peut accéder à une intervalle avec la syntaxe "slice"
-# (Pour les matheux, c'est un rang du type "fermé/ouvert")
+# (c'est un rang du type "fermé/ouvert")
 li[1:3]  # => [2, 4]
 # Omettre les deux premiers éléments
 li[2:]  # => [4, 3]
@@ -246,7 +246,7 @@ tup + (4, 5, 6)   # => (1, 2, 3, 4, 5, 6)
 tup[:2]   # => (1, 2)
 2 in tup   # => True
 
-# Vous pouvez "dé-packager" des tuples (ou des listes) dans des variables
+# Vous pouvez décomposer des tuples (ou des listes) dans des variables
 a, b, c = (1, 2, 3)     # a vaut 1, b vaut 2 et c vaut 3
 # Les tuples sont créés par défaut sans parenthèses
 d, e, f = 4, 5, 6
@@ -305,7 +305,7 @@ filled_dict.update({"four":4}) #=> {"one": 1, "two": 2, "three": 3, "four": 4}
 del filled_dict["one"]  # Enlever la clé "one" de filled_dict.
 
 
-# Les sets stockent ... des sets
+# Les sets stockent des ensembles
 empty_set = set()
 # Initialiser un set avec des valeurs. Oui, ça ressemble aux dictionnaires, désolé.
 some_set = {1, 1, 2, 2, 3, 4}   # some_set est maintenant {1, 2, 3, 4}
