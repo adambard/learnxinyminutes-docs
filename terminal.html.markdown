@@ -131,20 +131,57 @@ $ rm <files>
 * `rm -r`: Recursively remove. This is helpful when deleting directories.
 
 ### grep
+
 ```bash
 $ grep <pattern> <dir>
 ```
 
-* `grep <pattern> <dir> -r`
-* `grep <pattern> <dir> -n`
-* `grep <pattern> <dir> -I`
+`grep` is one of the most powerful tools you can use in development. It searches
+`dir` for any occurance of `pattern`. This is basically your terminal's what to
+find strings in a file! If you know how to use regular expressions, your
+`grep`ping will be much more powerful, too.
 
-### find
+* `grep <pattern> <dir> -r`: Search recursively (look in `dir`'s subfolders).
+* `grep <pattern> <dir> -n`: Give line numbers for occurences.
+* `grep <pattern> <dir> -I`: Ignore binary files. This helps is avoiding data
+  you probably don't want to look at.
 
 ### diff
 
+```bash
+$ diff <ver1> <ver2>
+```
+
+`diff` allows you to compare two different files.
+
+* `diff -y <ver1> <ver2>`: Compare files side by side.
+
 ### ssh
+
+```bash
+$ ssh my_username@some.external.server.computer
+```
+
+`ssh` allows you to log into another computer remotely. To leave the remote
+session, just enter `exit`.
 
 ### scp
 
+```bash
+$ scp <src> <dest>
+```
+
+`scp` is a way to copy files between computers. It behaves similarly to regular
+`cp`.
+
 ### sudo
+
+```bash
+$ sudo <command>
+```
+
+`sudo` allows you to run a command as the superuser, if you have the privilege.
+For example, if something isn't installing, try running the install command
+using sudo.
+
+* `sudo su`: Changes your privilege level to `superuser`.
