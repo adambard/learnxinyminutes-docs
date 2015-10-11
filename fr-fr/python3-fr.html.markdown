@@ -570,8 +570,8 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 ####################################################
 
 
-# On hérite de object pour créer une classe
-class Human(object):
+# On utilise l'opérateur "classe" pour définir une classe
+class Human:
 
     # Un attribut de la classe. Il est partagé par toutes les instances de la classe.
     species = "H. sapiens"
