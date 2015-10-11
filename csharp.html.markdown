@@ -6,7 +6,7 @@ contributors:
     - ["Melvyn Laïly", "http://x2a.yt"]
     - ["Shaun McCarthy", "http://www.shaunmccarthy.com"]
     - ["Wouter Van Schandevijl", "http://github.com/laoujin"]
-	- ["Grant Winney", "http://grantwinney.com"]
+    - ["Grant Winney", "http://grantwinney.com"]
 filename: LearnCSharp.cs
 ---
 
