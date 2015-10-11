@@ -443,6 +443,9 @@ on a new line! ""Wow!"", the masses cried";
             // ?? is syntactic sugar for specifying default value (coalesce)
             // in case variable is null
             int notNullable = nullable ?? 0; // 0
+            
+            // ?. is an operator for null-propogation - a shorthand way of checking for null
+            nullable?.Print(); // Use the Print() extension method if nullable isn't null
 
             // IMPLICITLY TYPED VARIABLES - you can let the compiler work out what the type is:
             var magic = "magic is a string, at compile time, so you still get type safety";
