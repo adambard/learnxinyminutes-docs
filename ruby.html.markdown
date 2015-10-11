@@ -12,6 +12,7 @@ contributors:
   - ["Dzianis Dashkevich", "https://github.com/dskecse"]
   - ["Levi Bostian", "https://github.com/levibostian"]
   - ["Rahil Momin", "https://github.com/iamrahil"]
+  - ["Shafqat Dulal", "http://sdulal.github.io"]
 
 ---
 
@@ -216,6 +217,8 @@ new_hash.has_value?(3) #=> true
 # They share a lot of useful methods such as each, map, count, and more
 
 # Control structures
+# Ruby has the special 'unless' statement, which is syntactic sugar.
+# Unless (some condition) = If !(some condition).
 
 if true
   'if statement'
@@ -224,6 +227,17 @@ elsif false
 else
   'else, also optional'
 end
+
+unless false
+  'true statement'
+else
+  'false statement, optional'
+end
+
+'if statement' if true
+'else statement' unless true
+
+(condition) ? 'true statement' : 'false statement'
 
 for counter in 1..5
   puts "iteration #{counter}"
