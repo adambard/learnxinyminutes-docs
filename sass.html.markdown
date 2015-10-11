@@ -170,6 +170,7 @@ ul {
 }
 
 /* '&' will be replaced by the parent selector. */
+/* You can also nest pseudo-classes. */
 /* Keep in mind that over-nesting will make your code less maintainable.
 For example: */
 
@@ -221,11 +222,11 @@ Have you ever wondered whether Sass is an acronym or not? You probably haven't, 
 Because people were constantly writing it as "SASS", the creator of the language jokingly called it "Syntactically Awesome StyleSheets". 
 
 
-##Practice Sass
+## Practice Sass
 If you want to play with Sass in your browser, check out [SassMeister](http://sassmeister.com/).
 You can use either syntax, just go into the settings and select either Sass or SCSS.
 
 	
 ## Further reading
 * [Official Documentation](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
-* [The Sass Way](http://thesassway.com/) provides tutorials beginner-advanced and articles.
+* [The Sass Way](http://thesassway.com/) provides tutorials (beginner-advanced) and articles.
