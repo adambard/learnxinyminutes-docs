@@ -12,33 +12,33 @@ filename: learnlua-de.lua
 
 --[[
      Fügt man zwei '[' und ']' hinzu,
-     erzeugt man ein mehrzeiliges Kommentar.
+     erzeugt man einen mehrzeiligen Kommentar.
 --]]
 --------------------------------------------------------------------------------
 -- 1. Variablen und Fluß-Kontrolle.
 --------------------------------------------------------------------------------
 
-num = 42  -- All Nummern sind vom Typ: Double.
+num = 42  -- Alle Nummern sind vom Typ: Double.
 -- Werd nicht nervös, 64-Bit Double haben 52 Bits zum Speichern von exakten
 -- Ganzzahlen; Maschinen-Genauigkeit ist kein Problem für Ganzzahlen kleiner als 
 -- 52 Bit.
 
-s = 'walternate'  -- Unveränderliche Zeichenkette wie by Python.
+s = 'walternate'  -- Zeichenketten sind unveränderlich, wie bei Python.
 t = "Doppelte Anführungszeichen sind auch OK"
 u = [[ Doppelte eckige Klammern
        beginnen und beenden
        mehrzeilige Zeichenketten.]]
-t = nil  -- Undefineren von t; Lua hat Garbage Collection.
+t = nil  -- Undefineren von t; Lua hat einen Garbage Collection.
 
--- Blöcke werden durch Schlüsselwörter markiert wie do/end:
+-- Blöcke werden durch Schlüsselwörter wie do/end markiert:
 while num < 50 do
-  num = num + 1  -- Keine Operatoren wie ++ oder +=
+  num = num + 1  -- Es gibt Keine Operatoren wie ++ oder +=
 end
 
 -- If Bedingungen:
 if num > 40 then
   print('over 40')
-elseif s ~= 'walternate' then  -- ~= ist ungleich
+elseif s ~= 'walternate' then  -- ~= bedeutet ungleich
   -- Gleichheits-Check == wie bei Python; OK für Zeichenketten.
   io.write('not over 40\n')  -- Standard ist stdout.
 else
@@ -94,7 +94,7 @@ end
 
 -- Closures und anonyme Funktionen sind ok:
 function adder(x)
-  -- Die zurückgegbe Funktion wird erzeugt wenn addr aufgerufen wird und merkt
+  -- Die zurückgegebene Funktion wird erzeugt wenn addr aufgerufen wird und merkt
   -- sich den Wert von x:
   return function (y) return x + y end
 end
@@ -103,12 +103,12 @@ a2 = adder(36)
 print(a1(16))  --> 25
 print(a2(64))  --> 100
 
--- Rückgabewerte. Funktions-Aufrufe und Zuweisungen funktionieren all mit
--- Listen die nicht immer gleich lang sein müssen. Überzählige Empfanger
--- bekommen nil; überzählige Sende werden entfernt.
+-- Rückgabewerte, Funktions-Aufrufe und Zuweisungen funktionieren alle mit
+-- Listen die nicht immer gleich lang sein müssen. Überzählige Empfänger
+-- bekommen nil; überzählige Sender werden ignoriert.
 
 x, y, z = 1, 2, 3, 4
--- Nun ist x = 1, y = 2, z = 3, und 4 wird entfernt.
+-- Nun ist x = 1, y = 2, z = 3, und 4 wird ignoriert.
 
 function bar(a, b, c)
   print(a, b, c)
@@ -116,30 +116,30 @@ function bar(a, b, c)
 end
 
 x, y = bar('zaphod')  --> prints "zaphod  nil nil"
--- Nun ist x = 4, y = 8, die Werte 15..42 werden entfernt.
+-- Nun ist x = 4, y = 8, die Werte 15..42 werden ignoriert.
 
 -- Funktionen sind erste Klasse, und können lokal oder global sein.
 -- Das ist alles das Gleiche:
 function f(x) return x * x end
 f = function (x) return x * x end
 
--- Und diese auch:
+-- Das auch:
 local function g(x) return math.sin(x) end
 local g = function(x) return math.sin(x) end
 -- Äquivalent zu local function g(x)..., außer das Referenzen auf g im
 -- Funktions-Körper nicht wie erwartet funktionieren.
 local g; g  = function (x) return math.sin(x) end
--- Die 'local g' Deklaration macht G-Selbst-Referenzen OK.
+-- Die Deklaration 'local g' macht Selbst-Referenzen auf g OK.
 
 -- Nebenbei gesagt, Trigonometrie-Funktionen verwenden Radianten.
 
 -- Funktionsaufrufe mit nur einem Zeichenketten-Parameter brauch keine runden
 -- Klammern.
-print 'hello'  -- Works fine.
+print 'hello'  -- Funktioniert wunderbar.
 
--- Funktionsaufruge mit einem Tabellen-Parameter brauchen auch keine runden
--- Klammern. Mehr zu Tabellen später.
-print {} -- Works fine too.
+-- Funktionsaufrufe mit einem Tabellen-Parameter brauchen auch keine runden
+-- Klammern. Mehr zu Tabellen kommt später.
+print {} -- Funktioniert auch wunderbar.
 
 --------------------------------------------------------------------------------
 -- 3. Tabellen.
@@ -151,19 +151,18 @@ print {} -- Works fine too.
 -- werden können.
 
 -- Verwenden von Tabellen als Dictionaries oder Maps:
--- Using tables as dictionaries / maps:
 
--- Dict lieterale haben standardmäßig Zeichenketten-Schlüssel:
+-- Dict-Literale haben standardmäßig Zeichenketten als Schlüssel:
 t = {key1 = 'value1', key2 = false}
 
--- Zeichenketten-Schlüssel verwenden ein JavaScript ähnliche Punkt-Notation.
+-- Zeichenketten-Schlüssel verwenden eine JavaScript ähnliche Punkt-Notation.
 print(t.key1)  -- Ausgabe 'value1'.
-t.newKey = {}  -- Neues Schlüssel/Wert Paar hinzufügen.
+t.newKey = {}  -- Neues Schlüssel/Wert-Paar hinzufügen.
 t.key2 = nil   -- key2 aus der Tabelle entfernen.
 
 -- Literale notation für jeden (nicht-nil) Wert als Schlüssel:
 u = {['@!#'] = 'qbert', [{}] = 1729, [6.28] = 'tau'}
-print(u[6.28])  -- ausgabe "tau"
+print(u[6.28])  -- Ausgabe "tau"
 
 -- Schlüssel-Vergleiche funktionieren per Wert für Nummern und Zeichenketten,
 -- aber über die Identität bei Tabellen.
@@ -176,9 +175,9 @@ b = u[{}]     -- Wir würden 1729 erwarten, aber es ist nil:
 
 -- Eine Funktion mit nur einem Tabellen-Parameter benötigt keine Klammern.
 function h(x) print(x.key1) end
-h{key1 = 'Sonmi~451'}  -- Prints 'Sonmi~451'.
+h{key1 = 'Sonmi~451'}  -- Ausgabe 'Sonmi~451'.
 
-for key, val in pairs(u) do  -- Tabellen-Interation.
+for key, val in pairs(u) do  -- Tabellen-Iteration.
   print(key, val)
 end
 
@@ -193,14 +192,14 @@ for i = 1, #v do  -- #v ist die Größe von v für Listen.
   print(v[i])  -- Indices beginnen mit 1 !! SO VERRÜCKT!
 end
 -- Eine 'Liste' ist kein echter Typ. v ist nur eine Tabelle mit fortlaufenden
--- Ganzzahlen als Schlüssel, behandelt wie eine Liste.
+-- Ganzzahlen als Schlüssel, die behandelt wird wie eine Liste.
 
 --------------------------------------------------------------------------------
 -- 3.1 Metatabellen und Metamethoden
 --------------------------------------------------------------------------------
 
--- Eine Tabelle kann eine Metatabelle haben die ihr so etwas wie
--- Tabellen-Operator-Überladungs-Verhalten verleiht. Später sehen wir wie
+-- Eine Tabelle kann eine Metatabelle haben. Diese verleiht ihr so etwas wie
+-- Tabellen-Operator-Überladungs-Verhalten. Später sehen wir wie
 -- Metatabellen js-prototypen artiges Verhalten unterstützen.
 
 f1 = {a = 1, b = 2}  -- Repräsentiert den Bruch a/b.
@@ -220,9 +219,9 @@ end
 setmetatable(f1, metafraction)
 setmetatable(f2, metafraction)
 
-s = f1 + f2  -- Rufe __add(f1, f2) vom der Metatabelle von f1 auf
+s = f1 + f2  -- Rufe __add(f1, f2) vom der Metatabelle von f1 auf.
 
--- f1 und f2 haben keine Schlüssel für ihrer Metatabellen, anders als bei js
+-- f1 und f2 haben keine Schlüssel für ihre Metatabellen, anders als bei js
 -- Prototypen. Daher muss mithilfe von getmetatable(f1) darauf zugegriffen
 -- werden. Eine Metatabelle ist wie eine normale Tabelle mit Schlüsseln die
 -- Lua bekannt sind, so wie __add.
@@ -247,7 +246,7 @@ eatenBy = myFavs.animal  -- Funktioniert dank Metatabelle!
 -- Damit kann man Lookups weiter anpassen.
 
 -- Werte wie __index,add, .. werden Metamethoden genannt.
--- Vollständige Liste aller Metamethoden.
+-- HIer eine vollständige Liste aller Metamethoden.
 
 -- __add(a, b)                     für a + b
 -- __sub(a, b)                     für a - b
@@ -266,10 +265,10 @@ eatenBy = myFavs.animal  -- Funktioniert dank Metatabelle!
 -- __call(a, ...)                  für a(...)
 
 --------------------------------------------------------------------------------
--- 3.2 Klassen-Artihe Tabellen und vererbung.
+-- 3.2 Klassen-Artige Tabellen und Vererbung.
 --------------------------------------------------------------------------------
 
--- Klassen sind in Lua nicht eingebaut; es gibt verschieden Wege sie mithilfe
+-- Klassen sind in Lua nicht eingebaut. Es gibt verschieden Wege sie mithilfe
 -- von Tabellen und Metatabellen zu erzeugen.
 
 -- Die Erklärund des Beispiels erfolgt unterhalb.
@@ -294,7 +293,7 @@ mrDog:makeSound()  -- 'I say woof'         -- 8.
 --    "function tablename.fn(self, ...)", Der : fügt nur ein Argument namens
 --    self hinzu. Siehe 7 & 8 um zu sehen wie self seinen Wert bekommt.
 -- 3. newObj wird eine Instanz von Dog.
--- 4. "self" ist die zu Instanzierende Klasse. Meisterns ist self = Doh, aber
+-- 4. "self" ist die zu Instanzierende Klasse. Meistern ist self = Dog, aber
 --    dies kann durch Vererbung geändert werden. newObj bekommt die Funktionen
 --    von self wenn wir die Metatabelle von newObj und __index von self auf
 --    self setzen.
@@ -325,12 +324,12 @@ seymour:makeSound()  -- 'woof woof woof'      -- 4.
 --    denn LoudDog hat keinen 'new' Schlüssel, aber "__index = Dog" steht in der
 --    Metatabelle.
 --    Ergebnis: Die Metatabelle von seymour ist LoudDog und "LoudDog.__index = Dog".
---    Daher ist seymour.key gleich seymour.key, LoudDog.key, Dog.key, je nacdem
+--    Daher ist seymour.key gleich seymour.key, LoudDog.key, Dog.key, je nachdem
 --    welche Tabelle als erstes einen passenden Schlüssel hat.
 -- 4. Der 'makeSound' Schlüssel wird in LoudDog gefunden: Das ist das Gleiche
 --    wie "LoudDog.makeSound(seymour)".
 
--- Wenn nötig, sieht new() eine Sub-Klasse genau so aus wie new() der
+-- Wenn nötig, sieht new() einer Sub-Klasse genau so aus wie new() der
 -- Basis-Klasse:
 function LoudDog:new()
   local newObj = {}
@@ -374,13 +373,13 @@ end)()
 -- Es ist als ob mod.lua eine Funktion wäre, sodass lokale Variablen in
 -- mod.lua ausserhalb unsichtbar sind.
 
--- Das funktioniert weil mod hier ist M in mod.lua:
+-- Das funktioniert weil mod hier das Gleiche wie M in mod.lua ist:
 mod.sayHello()  -- Says hello to Hrunkner.
 
--- Das ist Falsch: syMyName existiert nur in mod.lua:
-mod.sayMyName()  -- error
+-- Das ist Falsch: sayMyName existiert nur in mod.lua:
+mod.sayMyName()  -- Fehler
 
--- Der Rückgabe-Wert von require wird zwischengespeichert. Sodass module nur
+-- Der Rückgabe-Wert von require wird zwischengespeichert. Sodass Module nur
 -- einmal abgearbeitet werden, auch wenn sie mit require öfters eingebunden
 -- werden.
 
@@ -397,14 +396,14 @@ f = loadfile('mod2')  -- Sobald f() aufgerufen wird läuft mod2.lua.
 
 -- loadstring ist loadfile für Zeichenketten
 g = loadstring('print(343)')  -- Gibt eine Funktion zurück..
-g()  -- Ausgabe 343; Es kam keine Ausgabe bevor hier.
+g()  -- Ausgabe 343; Vorher kam keine Ausgabe.
 
 --]]
 
 ```
 ## Referenzen
 
-Ich war so begeistert Lua zu lernen, um damit Spiele mit <a href="http://love2d.org/">Love 2D game engine</a> zu programmieren.
+Ich war so begeistert Lua zu lernen, damit ich Spiele mit <a href="http://love2d.org/">Love 2D game engine</a> programmieren konnte.
 
 Ich habe angefangen mit <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
 Danach habe ich das offizielle Lua Buch gelesen: <a href="http://www.lua.org/pil/contents.html">Programming in Lua</a>
@@ -412,7 +411,7 @@ Danach habe ich das offizielle Lua Buch gelesen: <a href="http://www.lua.org/pil
 Es kann auch hilfreich sein hier vorbeizuschauen: <a href="http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">Lua short
 reference</a>
 
-Wichtige Themen die hier nicht angesprochen wurden, die Standard-Bibliotheken:
+Wichtige Themen die hier nicht angesprochen wurden; die Standard-Bibliotheken:
 
 * <a href="http://lua-users.org/wiki/StringLibraryTutorial">string library</a>
 * <a href="http://lua-users.org/wiki/TableLibraryTutorial">table library</a>
@@ -420,7 +419,7 @@ Wichtige Themen die hier nicht angesprochen wurden, die Standard-Bibliotheken:
 * <a href="http://lua-users.org/wiki/IoLibraryTutorial">io library</a>
 * <a href="http://lua-users.org/wiki/OsLibraryTutorial">os library</a>
 
-Übrigends, die gesamte Datei ist gültiges Lua. Speichere es als learn.lua und
-starte es als "lua learn.lua" !
+Übrigends, die gesamte Datei ist gültiges Lua. Speichere sie als learn.lua und
+starte sie als "lua learn.lua" !
 
 Die Erstfassung ist von tylerneylon.com, und ist auch hier verfügbar: <a href="https://gist.github.com/tylerneylon/5853042">github gist</a>. Viel Spaß mit Lua!
