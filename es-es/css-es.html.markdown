@@ -38,7 +38,7 @@ la sintaxis y consejos generales.
 /* Generalmente, la sentencia principal en CSS es muy simple. */
 selector { propiedad: valor; /* más propiedades separados por punto y coma...*/ }
 
-/* El selector es usado para apuntar a (seleccionar) un elemento en la página.
+/* El selector es usado para apuntar a un elemento en la página.
 
 ¡Puedes apuntar a todos los elementos en la página con el asterisco! */
 * { color:red; }
@@ -67,14 +67,16 @@ div { }
 /* O por el hecho de que el atributo tiene un valor determinado */
 [attr='valor'] { font-size:smaller; }
 
-/* Empieza con un valor ('val' en este caso)*/
+/* Empieza con un valor (CSS3)*/
 [attr^='val'] { font-size:smaller; }
 
-/* O termina con un valor ('or' en este caso) */
+/* O termina con un valor (CSS3) */
 [attr$='or'] { font-size:smaller; }
 
-/* O incluso contiene un valor ('lo' en este caso) */
-[attr~='lo'] { font-size:smaller; }
+/* o selecciona uno de los valores de la lista separada por espacios en blanco (CSS3) */
+[otherAttr~='foo'] { font-size:smaller; }
+
+
 
 /*Más importante, puedes combinar estos criterios de búsqueda entre sí.
 No debe existir ningún espacio entre estas partes porque hace que el 
@@ -95,6 +97,7 @@ div.un-padre .nombre-clase {}
 
 /* advertencia: el mismo selector sin espacio tiene otro significado. ¿Puedes
 identificar la diferencia?*/
+div.un-padre.nombre-clase {}
 
 /* También puedes seleccionar un elemento basado en su hermano inmediato previo*/
 .yo-estoy-antes + .este-elemento { }
@@ -109,10 +112,10 @@ la página) */
 /* Por ejemplo, para cuando pasas el mouse por encima de un elemento */
 :hover {}
 
-/* o una liga visitada*/
+/* o un enlace visitado*/
 :visited {}
 
-/* o una liga no visitada aún*/
+/* o un enlace no visitado aún*/
 :link {}
 
 /* o un elemento de un formulario que esté seleccionado */
@@ -219,7 +222,7 @@ Recuerda, la preferencia es por cada **property**, no para el bloque completo.
 	Es recomendado evitar esto a menos que sea estrictamente necesario incluirlo.
 * `F` le sigue, porque es estilo incrustado directamente en el HTML.
 * `A` le sigue, porque es más específico que cualquier otra opción.  
-	más específico = más especificadores. Aquí hay tres especificadores: elemento `p` +   
+	Más específico = más especificadores. Aquí hay tres especificadores: elemento `p` +   
 	nombre de la clase `clase1` + un atributo `attr='valor'`
 * `C` le sigue. Aunque tiene el mismo número de especificadores como `B`  
 	pero aparece después.
@@ -236,9 +239,14 @@ y dispositivos para los que desarrolles.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) es una excelente referencia para esto.
 
+Para ejecutar un test de compatibilidad puedes utilizar [Can I Use](http://caniuse.com/)
+
 ## Referencias
 
+* [Red para desarrolladores Mozilla - Documentación CSS](https://developer.mozilla.org/es/docs/Web/CSS)
+* [Codrops' CSS reference](http://tympanus.net/codrops/css_reference/)
 * [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
 * [QuirksMode CSS](http://www.quirksmode.org/css/)
 * [Z-Index - The stacking context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
+* [SCSS](http://sass-lang.com/) y [LESS](http://lesscss.org/) para preprocesamiento CSS
 
