@@ -13,7 +13,7 @@ lang: fr-fr
 
 Python a été créé par Guido Van Rossum au début des années 90. C'est maintenant un des 
 langages les populaires. Je suis tombé amoureux de Python pour la clarté de sa syntaxe.
-C'est tout simplement du pseudo-code éxécutable.
+C'est tout simplement du pseudo-code exécutable.
 
 L'auteur original apprécierait les retours (en anglais): vous pouvez le contacter sur Twitter à [@louiedinh](http://twitter.com/louiedinh) ou par mail à l'adresse louiedinh [at] [google's email service]
 
