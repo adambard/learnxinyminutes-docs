@@ -61,25 +61,83 @@ $ cd <path>
 
 This command will change your current directory to the folder with whatever path (relative or absolute).
 
----> Start more work here.
-
 ### man
+
+Usage:
+
+```bash
+$ man <command>
+```
+
+This command will present the manual page for the corresponding command, if it exists.
+To naviate the man page, you can use arrow keys. Use `/` to searching.
+`q` quits the man page and returns you back to your shell.
+
+All of the commands here have a man page!
 
 ### cat
 
-### head
+Usage:
 
-### open
+```bash
+$ cat <filename>
+```
+
+There are more advanced uses for `cat`, but it is mainly used for printing a
+file to the terminal. Some shells come with `tac` that prints a file in reverse!
 
 ### clear
 
+Usage:
+
+```bash
+$ clear
+```
+
+Use `clear` to get a fresh terminal screen.
+
 ### cp
+
+Usage:
+
+```bash
+$ cp <source(s)> <destination>
+```
+
+`cp` __copies__ files from the given source(s) to the given destination.
+Note, these are separate, so editing one version won't effect the other.
+
+* `cp -r sourceDir dest`: will recursively copy the contents of directory
+  `sourceDir` to the destination `dest`
 
 ### mv
 
+```bash
+$ mv <source(s)> <destination>
+```
+
+`mv` is similar to `cp`, although it basically __moves__ source(s) to destination.
+One of `mv`'s frequent uses is _renaming_ a file.
+
 ### rm
 
+```bash
+$ rm <files>
+```
+
+`rm` is used to __remove__ things. Be careful! You __cannot__ undo `rm` commands!
+
+* `rm -f`: Delete first, ask questions never. I.e. __force__ the deletion.
+* `rm -r`: Recursively remove. This is helpful when deleting directories.
+
 ### grep
+```bash
+$ grep <pattern> <dir>
+```
+
+* `grep <pattern> <dir> -r`
+* `grep <pattern> <dir> -n`
+* `grep <pattern> <dir> -I`
 
 ### find
 
