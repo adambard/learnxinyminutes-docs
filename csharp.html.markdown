@@ -6,6 +6,7 @@ contributors:
     - ["Melvyn Laïly", "http://x2a.yt"]
     - ["Shaun McCarthy", "http://www.shaunmccarthy.com"]
     - ["Wouter Van Schandevijl", "http://github.com/laoujin"]
+	- ["Grant Winney", "http://grantwinney.com"]
 filename: LearnCSharp.cs
 ---
 
@@ -660,7 +661,6 @@ on a new line! ""Wow!"", the masses cried";
             Lights = 8,
             FullPackage = Bell | MudGuards | Racks | Lights
         }
-		// More information on Attributes and their uses can be found below, in its own section.
 
         // Usage: aBike.Accessories.HasFlag(Bicycle.BikeAccessories.Bell)
         // Before .NET 4: (aBike.Accessories & Bicycle.BikeAccessories.Bell) == Bicycle.BikeAccessories.Bell
@@ -872,15 +872,11 @@ on a new line! ""Wow!"", the masses cried";
         public DbSet<Bicycle> Bikes { get; set; }
     }
 	
-    // Attributes provide descriptive information (metadata) about your code, which can then be accessed and
-    // utilized in various ways. Tools might use them to evaluate your code while you're designing or compiling,
-    // or you might access them through reflection at runtime.
+    // Attributes provide metadata about your code, which can be accessed by
+	// third-party tools, or via reflection at runtime.
     public class AttributeSamples
     {
-        // You already saw an example earlier of an attribute provided by the .NET framework, called Flags.
-
-        // Another attribute that provides some metadata about enumerations is the Obsolete attribute.
-        // Some attributes (such as Obsolete) can even accept parameters when you use them.
+        // An example of an attribute provided by the .NET Framework is Obsolete.
         public enum OuterPlanets
         {
             Jupiter,
@@ -889,53 +885,48 @@ on a new line! ""Wow!"", the masses cried";
             Neptune,
 
             [Obsolete]
-            Pluto,      // Pluto has been marked as obsolete.
+            Pluto,      // obsolete; warn developers when using
 
-            // PlanetX has been marked obsolete too, but with a reason and a boolean value
-            // indicating any usages of this particular value should be treated as an error.
             [Obsolete("This isn't a real planet!", true)]
-            PlanetX
+            PlanetX     // obsolete; consider usage to be an error
         }
-        // Providing this metadata allows, for example, a tool like Visual Studio to warn other developers
-        // about the intended usage of these values. Visual Studio will underline usages of Pluto in blue,
-        // while any usages of PlanetX will be underlined in red and will prevent compilation with the following error:
-        //  -> Enum member 'AttributeSample.AttributeSamples.OuterPlanets.PlanetX' is obsolete: "This isn't a real planet!"
-
-        // The Description attribute is an extremely general one. You can apply it pretty much anywhere in
-        // your codebase, then reference it later on as needed.
+        // Tools like Visual Studio can take advantage of these attributes.
+		// It will underline usages of Pluto in blue and usages of PlanetX in
+		// red, as well as prevent compilation in the latter case.
+		
+        // Another from .NET is the Description attribute. You can apply this
+		// general attribute nearly anywhere, then reference it later as needed.
         public class Person
         {
-            [Description("A person's name should include both their first and last names.")]
-            public string Name { get; set; }
+            [Description("A full name includes both first and last names.")]
+            public string FullName { get; set; }
 
             [Description("A person's age, rounded down to the nearest year.")]
             public int Age { get; set; }
         }
 
-        // In your program, you can use a technique called reflection to access those values at runtime.
+        // Use reflection to access the attributes at runtime.
         public class SomeProgram
         {
             public void GetPersonProperties()
             {
-                // Use reflection to get all properties in the Person class
+                // Using reflection, get all properties in the Person class.
                 PropertyInfo[] personProperties = typeof(Person).GetProperties();
 
-                // For each property, display its name and description
+                // Display each property's name and description.
                 foreach (var prop in personProperties)
                     Console.WriteLine("{0}: {1}", prop.Name, prop.GetCustomAttribute<DescriptionAttribute>().Description);
 
-                // Output:  Name: A person's name should include both their first and last names.
+                // Output:  FullName: A full name includes both first and last names.
                 //          Age: A person's age, rounded down to the nearest year.
             }
         }
 
-        // You've seen a few attributes that come bundled in the .NET framework, but some tools will come with their own.
-        // For example, nUnit (used for writing tests), has some that you apply to your test classes and methods,
-        // and that's how nUnit knows what in your solution it should execute (and report back the results of to you).
+        // Some tools come with their own attributes. For example, nUnit has you
+		// decorate your test classes and methods, so it knows which are tests.
 
-        // You can create your own Attribute by extending the Attribute class, same as all other custom attributes do.
-        // Indicate exactly to which elements your attribute may be applied by using the AttributeUsage attribute.
-        // Here, we've told it our attribute can be applied anywhere an attribute is allowed.
+        // Create your own attributes by extending the Attribute class.
+		// Indicate where it may be applied by using the AttributeUsage attribute.
         [AttributeUsage(AttributeTargets.All)]
         public class PurposeAttribute : Attribute
         {
@@ -955,16 +946,17 @@ on a new line! ""Wow!"", the masses cried";
             }
         }
 
-        // Here, we apply our custom attribute to a class. "Reason" is required, while Author and LastModifiedBy are optional. 
-        [Purpose("This class represents a single food item.", LastModifiedBy = "John Myers")]
+        // When applying the above attribute, "Reason" is required,
+		// while Author and LastModifiedBy are optional. 
+        [Purpose("Represents a single food item.", LastModifiedBy = "John Myers")]
         public class Food
         {
             public string Name { get; set; }
 
-            [Purpose("The business wanted to track quantity. Story #1234", Author = "Susan", LastModifiedBy = "Jerry")]
+            [Purpose("Track qty. Feature #248", Author = "Susan", LastModifiedBy = "Jerry")]
             public string Quantity { get; set; }
 
-            [Purpose("A food item's description includes its name and quantity.", Author = "Jerry")]
+            [Purpose("A description includes name and qty.", Author = "Jerry")]
             public virtual string GetDescription()
             {
                 return string.Format("Name: {0}, Quantity: {1}", Name, Quantity);
