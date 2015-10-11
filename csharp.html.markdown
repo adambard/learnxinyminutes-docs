@@ -873,7 +873,7 @@ on a new line! ""Wow!"", the masses cried";
     }
 	
     // Attributes provide metadata about your code, which can be accessed by
-	// third-party tools, or via reflection at runtime.
+    // third-party tools, or via reflection at runtime.
     public class AttributeSamples
     {
         // An example of an attribute provided by the .NET Framework is Obsolete.
@@ -891,11 +891,11 @@ on a new line! ""Wow!"", the masses cried";
             PlanetX     // obsolete; consider usage to be an error
         }
         // Tools like Visual Studio can take advantage of these attributes.
-		// It will underline usages of Pluto in blue and usages of PlanetX in
-		// red, as well as prevent compilation in the latter case.
-		
+        // It will underline usages of Pluto in blue and usages of PlanetX in
+        // red, as well as prevent compilation in the latter case.
+        
         // Another from .NET is the Description attribute. You can apply this
-		// general attribute nearly anywhere, then reference it later as needed.
+        // general attribute nearly anywhere, then reference it later as needed.
         public class Person
         {
             [Description("A full name includes both first and last names.")]
@@ -923,10 +923,10 @@ on a new line! ""Wow!"", the masses cried";
         }
 
         // Some tools come with their own attributes. For example, nUnit has you
-		// decorate your test classes and methods, so it knows which are tests.
+        // decorate your test classes and methods, so it knows which are tests.
 
         // Create your own attributes by extending the Attribute class.
-		// Indicate where it may be applied by using the AttributeUsage attribute.
+        // Indicate where it may be applied by using the AttributeUsage attribute.
         [AttributeUsage(AttributeTargets.All)]
         public class PurposeAttribute : Attribute
         {
@@ -947,7 +947,7 @@ on a new line! ""Wow!"", the masses cried";
         }
 
         // When applying the above attribute, "Reason" is required,
-		// while Author and LastModifiedBy are optional. 
+        // while Author and LastModifiedBy are optional. 
         [Purpose("Represents a single food item.", LastModifiedBy = "John Myers")]
         public class Food
         {
