@@ -215,6 +215,14 @@ assert($a !== $d);
 assert(1 === '1');
 assert(1 !== '1');
 
+// spaceship operator since PHP 7
+$a = 100;
+$b = 1000;
+
+echo $a <=> $a; // 0 since they are equal
+echo $a <=> $b; // -1 since $a < $b
+echo $b <=> $a; // 1 since $b > $a
+
 // Variables can be converted between types, depending on their usage.
 
 $integer = 1;
@@ -263,6 +271,18 @@ if (false) {
 
 // ternary operator
 print (false ? 'Does not get printed' : 'Does');
+
+// ternary shortcut operator since PHP 5.3
+// equivalent of "$x ? $x : 'Does'""
+$x = false;
+print($x ?: 'Does');
+
+// null coalesce operator since php 7
+$a = null;
+$b = 'Does print';
+echo $a ?? 'a is not set'; // prints 'a is not set'
+echo $b ?? 'b is not set'; // prints 'Does print'
+
 
 $x = 0;
 if ($x === '0') {
@@ -487,7 +507,7 @@ class MyClass
  * Declaring class properties or methods as static makes them accessible without
  * needing an instantiation of the class. A property declared as static can not
  * be accessed with an instantiated class object (though a static method can).
-*/
+ */
 
     public static function myStaticMethod()
     {
@@ -495,7 +515,9 @@ class MyClass
     }
 }
 
+// Class constants can always be accessed statically
 echo MyClass::MY_CONST;    // Outputs 'value';
+
 echo MyClass::$staticVar;  // Outputs 'static';
 MyClass::myStaticMethod(); // Outputs 'I am static';
 
@@ -671,7 +693,42 @@ use My\Namespace as SomeOtherNamespace;
 
 $cls = new SomeOtherNamespace\MyClass();
 
+/**********************
+*  Error Handling
+*  
 */
+
+// Simple error handling can be done with try catch block
+
+try {
+    // Do something
+} catch ( Exception $e) {
+    // Handle exception
+}
+
+// When using try catch blocks in a namespaced enviroment use the following
+
+try { 
+    // Do something
+} catch (\Exception $e) { 
+    // Handle exception
+}
+
+// Custom exceptions
+
+class MyException extends Exception {}
+
+try {
+    
+    $condition = true; 
+    
+    if ($condition) {
+        throw new MyException('Something just happend');
+    }
+    
+} catch (MyException $e) {
+    // Handle my exception
+}
 
 ```
 

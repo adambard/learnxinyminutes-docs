@@ -64,7 +64,7 @@ doStuff()
 // There are three special not-a-real-number values:
 Infinity; // result of e.g. 1/0
 -Infinity; // result of e.g. -1/0
-NaN; // result of e.g. 0/0
+NaN; // result of e.g. 0/0, stands for 'Not a Number'
 
 // There's also a boolean type.
 true;
@@ -189,7 +189,7 @@ myObj.myFourthKey; // = undefined
 ///////////////////////////////////
 // 3. Logic and Control Structures
 
-// The syntax for this section is almost identical to Java's. 
+// The syntax for this section is almost identical to Java's.
 
 // The `if` structure works as you'd expect.
 var count = 1;
@@ -218,6 +218,26 @@ for (var i = 0; i < 5; i++){
     // will run 5 times
 }
 
+//The For/In statement loops iterates over every property across the entire prototype chain
+var description = "";
+var person = {fname:"Paul", lname:"Ken", age:18}; 
+for (var x in person){
+    description += person[x] + " ";
+}
+
+//If only want to consider properties attached to the object itself, 
+//and not its prototypes use hasOwnProperty() check
+var description = "";
+var person = {fname:"Paul", lname:"Ken", age:18}; 
+for (var x in person){
+    if (person.hasOwnProperty(x)){
+        description += person[x] + " ";
+    }
+}
+
+//for/in should not be used to iterate over an Array where the index order is important.
+//There is no guarantee that for/in will return the indexes in any particular order
+
 // && is logical and, || is logical or
 if (house.size == "big" && house.colour == "blue"){
     house.contains = "bear";
@@ -231,8 +251,8 @@ var name = otherName || "default";
 
 
 // The `switch` statement checks for equality with `===`.
-// use 'break' after each case 
-// or the cases after the correct one will be executed too. 
+// use 'break' after each case
+// or the cases after the correct one will be executed too.
 grade = 'B';
 switch (grade) {
   case 'A':
@@ -475,9 +495,6 @@ myNumber === myNumberObj; // = false
 if (0){
     // This code won't execute, because 0 is falsy.
 }
-if (Number(0)){
-    // This code *will* execute, because Number(0) is truthy.
-}
 
 // However, the wrapper objects and the regular builtins share a prototype, so
 // you can actually add functionality to a string, for instance.
@@ -519,12 +536,12 @@ more about how to use JavaScript in web pages, start by learning about the
 [Document Object
 Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 
-[Learn Javascript by Example and with Challenges](http://www.learneroo.com/modules/64/nodes/350) is a variant of this reference with built-in challenges. 
+[Learn Javascript by Example and with Challenges](http://www.learneroo.com/modules/64/nodes/350) is a variant of this reference with built-in challenges.
 
 [JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) is an in-depth
 guide of all the counter-intuitive parts of the language.
 
-[JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) is a classic guide / reference book. 
+[JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) is a classic guide / reference book.
 
 In addition to direct contributors to this article, some content is adapted
 from Louie Dinh's Python tutorial on this site, and the [JS

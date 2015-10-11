@@ -25,7 +25,7 @@ Multi-line comments look like this
 //public void MethodOrClassOrOtherWithParsableHelp() {}
 
 // Specify the namespaces this source code will be using
-// The namespaces below are all part of the standard .NET Framework Class Libary 
+// The namespaces below are all part of the standard .NET Framework Class Libary
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -48,7 +48,7 @@ namespace Learning.CSharp
     public class LearnCSharp
     {
         // BASIC SYNTAX - skip to INTERESTING FEATURES if you have used Java or C++ before
-        public static void Syntax() 
+        public static void Syntax()
         {
             // Use Console.WriteLine to print lines
             Console.WriteLine("Hello World");
@@ -236,7 +236,8 @@ on a new line! ""Wow!"", the masses cried";
             // Ternary operators
             // A simple if/else can be written as follows
             // <condition> ? <true> : <false>
-            string isTrue = (true) ? "True" : "False";
+            int toCompare = 17;
+            string isTrue = toCompare == 17 ? "True" : "False";
 
             // While loop
             int fooWhile = 0;
@@ -370,11 +371,11 @@ on a new line! ""Wow!"", the masses cried";
         //
         // INTERESTING FEATURES
         //
-        
+
         // DEFAULT METHOD SIGNATURES
 
         public // Visibility
-        static // Allows for direct call on class without object 
+        static // Allows for direct call on class without object
         int // Return Type,
         MethodSignatures(
             int maxCount, // First variable, expects an int
@@ -382,7 +383,7 @@ on a new line! ""Wow!"", the masses cried";
             int another = 3,
             params string[] otherParams // captures all other parameters passed to method
         )
-        { 
+        {
             return -1;
         }
 
@@ -399,8 +400,8 @@ on a new line! ""Wow!"", the masses cried";
         // The classes for TKey and TValue is specified by the user calling this function.
         // This method emulates the SetDefault of Python
         public static TValue SetDefault<TKey, TValue>(
-            IDictionary<TKey, TValue> dictionary, 
-            TKey key, 
+            IDictionary<TKey, TValue> dictionary,
+            TKey key,
             TValue defaultItem)
         {
             TValue result;
@@ -409,7 +410,7 @@ on a new line! ""Wow!"", the masses cried";
             return result;
         }
 
-        // You can narrow down the objects that are passed in 
+        // You can narrow down the objects that are passed in
         public static void IterateAndPrint<T>(T toPrint) where T: IEnumerable<int>
         {
             // We can iterate, since T is a IEnumerable
@@ -449,13 +450,13 @@ on a new line! ""Wow!"", the masses cried";
 
             // GENERICS
             //
-            var phonebook = new Dictionary<string, string>() { 
+            var phonebook = new Dictionary<string, string>() {
                 {"Sarah", "212 555 5555"} // Add some entries to the phone book
             };
 
             // Calling SETDEFAULT defined as a generic above
             Console.WriteLine(SetDefault<string,string>(phonebook, "Shaun", "No Phone")); // No Phone
-            // nb, you don't need to specify the TKey and TValue since they can be 
+            // nb, you don't need to specify the TKey and TValue since they can be
             // derived implicitly
             Console.WriteLine(SetDefault(phonebook, "Sarah", "No Phone")); // 212 555 5555
 
@@ -490,26 +491,26 @@ on a new line! ""Wow!"", the masses cried";
 
             // DISPOSABLE RESOURCES MANAGEMENT - let you handle unmanaged resources easily.
             // Most of objects that access unmanaged resources (file handle, device contexts, etc.)
-            // implement the IDisposable interface. The using statement takes care of 
+            // implement the IDisposable interface. The using statement takes care of
             // cleaning those IDisposable objects for you.
             using (StreamWriter writer = new StreamWriter("log.txt"))
             {
                 writer.WriteLine("Nothing suspicious here");
                 // At the end of scope, resources will be released.
                 // Even if an exception is thrown.
-            } 
+            }
 
             // PARALLEL FRAMEWORK
             // http://blogs.msdn.com/b/csharpfaq/archive/2010/06/01/parallel-programming-in-net-framework-4-getting-started.aspx
-            var websites = new string[] { 
-                "http://www.google.com", "http://www.reddit.com", 
+            var websites = new string[] {
+                "http://www.google.com", "http://www.reddit.com",
                 "http://www.shaunmccarthy.com"
             };
             var responses = new Dictionary<string, string>();
-            
+
             // Will spin up separate threads for each request, and join on them
             // before going to the next step!
-            Parallel.ForEach(websites, 
+            Parallel.ForEach(websites,
                 new ParallelOptions() {MaxDegreeOfParallelism = 3}, // max of 3 threads
                 website =>
             {
@@ -533,7 +534,7 @@ on a new line! ""Wow!"", the masses cried";
                 (introduceTo) => string.Format("Hey {0}, this is {1}", student.FirstName, introduceTo));
             Console.WriteLine(student.Introduce("Beth"));
 
-            // IQUERYABLE<T> - almost all collections implement this, which gives you a lot of 
+            // IQUERYABLE<T> - almost all collections implement this, which gives you a lot of
             // very useful Map / Filter / Reduce style methods
             var bikes = new List<Bicycle>();
             bikes.Sort(); // Sorts the array
@@ -555,8 +556,8 @@ on a new line! ""Wow!"", the masses cried";
             // ASPARALLEL
             // And this is where things get wicked - combines linq and parallel operations
             var threeWheelers = bikes.AsParallel().Where(b => b.Wheels == 3).Select(b => b.Name);
-            // this will happen in parallel! Threads will automagically be spun up and the 
-            // results divvied amongst them! Amazing for large datasets when you have lots of 
+            // this will happen in parallel! Threads will automagically be spun up and the
+            // results divvied amongst them! Amazing for large datasets when you have lots of
             // cores
 
             // LINQ - maps a store to IQueryable<T> objects, with delayed execution
@@ -574,9 +575,9 @@ on a new line! ""Wow!"", the masses cried";
                 .Select(b => b.Name); // still no query run
 
             // Now the query runs, but opens a reader, so only populates are you iterate through
-            foreach (string bike in query) 
+            foreach (string bike in query)
                 Console.WriteLine(result);
-            
+
 
 
         }
@@ -628,7 +629,7 @@ on a new line! ""Wow!"", the masses cried";
             private set; // You can set modifiers on the get/set methods
         }
 
-        int _speed; // Everything is private by default: Only accessible from within this class. 
+        int _speed; // Everything is private by default: Only accessible from within this class.
                     // can also use keyword private
         public string Name { get; set; }
         
@@ -679,7 +680,7 @@ on a new line! ""Wow!"", the masses cried";
 
         // Constructors are a way of creating classes
         // This is a default constructor
-        public Bicycle() 
+        public Bicycle()
         {
             this.Gear = 1; // you can access members of the object with the keyword this
             Cadence = 50;  // but you don't always need it
@@ -691,13 +692,13 @@ on a new line! ""Wow!"", the masses cried";
 
         // This is a specified constructor (it contains arguments)
         public Bicycle(int startCadence, int startSpeed, int startGear,
-                       string name, bool hasCardsInSpokes, BikeBrand brand) 
+                       string name, bool hasCardsInSpokes, BikeBrand brand)
             : base() // calls base first
         {
-            Gear = startGear; 
+            Gear = startGear;
             Cadence = startCadence;
             _speed = startSpeed;
-            Name = name; 
+            Name = name;
             _hasCardsInSpokes = hasCardsInSpokes;
             Brand = brand;
         }
@@ -860,7 +861,7 @@ on a new line! ""Wow!"", the masses cried";
     }
 
     /// <summary>
-    /// Used to connect to DB for LinqToSql example. 
+    /// Used to connect to DB for LinqToSql example.
     /// EntityFramework Code First is awesome (similar to Ruby's ActiveRecord, but bidirectional)
     /// http://msdn.microsoft.com/en-us/data/jj193542.aspx
     /// </summary>
@@ -885,7 +886,7 @@ on a new line! ""Wow!"", the masses cried";
  	* ASP.NET Web Forms (old)
  	* WebMatrix (tool)
  * Desktop Development
- 	* Windows Presentation Foundation (WPF) (new) 
+ 	* Windows Presentation Foundation (WPF) (new)
  	* Winforms (old)
 
 ## Further Reading
