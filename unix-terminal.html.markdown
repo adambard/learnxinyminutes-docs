@@ -1,6 +1,6 @@
 ---
 tool: unix
-filename: terminal.html.markdown
+filename: unix-terminal.html.markdown
 contributors:
     - ["Leo Rudberg", "https://github.com/LOZORD"]
     - ["Betsy Lorton", "https://github.com/schbetsy"]
@@ -8,11 +8,11 @@ lang: en-us
 ---
 
 Here's a tutorial on how to use your terminal (bash, zsh, etc.).
-This tutorial assumes you're using a Unix machine (Mac or Linux), and not Windows.
+This tutorial assumes you're using a Unix-y machine (Mac or Linux), and not Windows.
 
 There is a tutorial on using [bash](http://learnxinyminutes.com/docs/bash/), but it focuses more on using bash for scripting and more advanced topics.
 
-This tutorial will cover just the basics for navigation and other important tools.
+This beginner-friendly tutorial will cover just the __basics__ for navigation and other important tools.
 
 ### pwd
 Usage:
