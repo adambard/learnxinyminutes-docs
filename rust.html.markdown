@@ -287,9 +287,9 @@ fn main() {
     // While a value is mutably borrowed, it cannot be accessed at all.
     let mut var2 = 4;
     let ref_var2: &mut i32 = &mut var2;
-    *ref_var2 += 2;
+    *ref_var2 += 2;         // '*' is used to point to the mutably borrowed var2
 
-    println!("{}", *ref_var2); // 6
+    println!("{}", *ref_var2); // 6 , //var2 would not compile. //ref_var2 is of type &mut i32, so                                                      //stores a reference to an i32 not the value.
     // var2 = 2; // this would not compile because `var2` is borrowed
 }
 ```
