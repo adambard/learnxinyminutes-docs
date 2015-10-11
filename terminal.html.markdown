@@ -21,7 +21,7 @@ Usage:
 $ pwd
 ```
 
-This command will print your current (working) directory's path. For this tutorial, you can think of directories and files as the same thing.
+This command will __print your current (working) directory__'s path. For this tutorial, you can think of directories and folders as the same thing.
 
 Every path originates from root, identified by `/`. If you are the admin for your machine, you will have access to modify things in root.
 
@@ -29,7 +29,7 @@ You will also have a user path, identified by `~`. This is where your Desktop, D
 
 `~` is just an alias to something like `/Users/<yourname>`.
 
-All other path names are "relative" -- they can be expanded to something originating at root.
+All other path names are "relative" -- they can be expanded to something originating from `/`.
 
 If you ever get lost, use `pwd` as a way to navigate your system!
 
@@ -41,7 +41,7 @@ Usage:
 $ ls
 ```
 
-This command lists all of the things (files, folders, links, etc.) that reside in your current directory.
+This command __lists__ all of the things (files, folders, links, etc.) that reside in your current directory.
 
 You can pass flags to `ls` to make it do different things:
 
@@ -59,7 +59,7 @@ Usage:
 $ cd <path>
 ```
 
-This command will change your current directory to the folder with whatever path (relative or absolute).
+This command will change your __current directory__ to the folder with whatever path (relative or absolute).
 
 ### man
 
@@ -69,11 +69,11 @@ Usage:
 $ man <command>
 ```
 
-This command will present the manual page for the corresponding command, if it exists.
-To naviate the man page, you can use arrow keys. Use `/` to searching.
+This command will present the __manual__ page for the corresponding command, if it exists.
+To naviate the man page, you can use arrow keys. Use `/` for searching.
 `q` quits the man page and returns you back to your shell.
 
-All of the commands here have a man page!
+__All of the commands here have a man page!__
 
 ### cat
 
@@ -94,7 +94,7 @@ Usage:
 $ clear
 ```
 
-Use `clear` to get a fresh terminal screen.
+Use `clear` to get a fresh terminal screen. Your history should still be in-tact.
 
 ### cp
 
@@ -108,7 +108,7 @@ $ cp <source(s)> <destination>
 Note, these are separate, so editing one version won't effect the other.
 
 * `cp -r sourceDir dest`: will recursively copy the contents of directory
-  `sourceDir` to the destination `dest`
+  `sourceDir` to the destination `dest`.
 
 ### mv
 
@@ -128,7 +128,7 @@ $ rm <files>
 `rm` is used to __remove__ things. Be careful! You __cannot__ undo `rm` commands!
 
 * `rm -f`: Delete first, ask questions never. I.e. __force__ the deletion.
-* `rm -r`: Recursively remove. This is helpful when deleting directories.
+* `rm -r`: __Recursively__ remove. This is helpful when deleting directories.
 
 ### grep
 
@@ -137,7 +137,7 @@ $ grep <pattern> <dir>
 ```
 
 `grep` is one of the most powerful tools you can use in development. It searches
-`dir` for any occurance of `pattern`. This is basically your terminal's what to
+`dir` for any occurance of `pattern`. This is basically your terminal's way to
 find strings in a file! If you know how to use regular expressions, your
 `grep`ping will be much more powerful, too.
 
@@ -163,7 +163,7 @@ $ ssh my_username@some.external.server.computer
 ```
 
 `ssh` allows you to log into another computer remotely. To leave the remote
-session, just enter `exit`.
+session, just enter `exit`. (`exit` will also quit your local terminal.)
 
 ### scp
 
@@ -182,6 +182,6 @@ $ sudo <command>
 
 `sudo` allows you to run a command as the superuser, if you have the privilege.
 For example, if something isn't installing, try running the install command
-using sudo.
+using `sudo`.
 
-* `sudo su`: Changes your privilege level to `superuser`.
+* `sudo su`: Log into the "all-powerful" `superuser` account.
