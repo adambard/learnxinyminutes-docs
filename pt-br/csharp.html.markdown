@@ -270,20 +270,20 @@ on a new line! ""Wow!"", the masses cried";
 
             // For Each Loop
             // Estrutura do foreach  => foreach(<Tipo Iterador> <Nome do Iterador> in <enumerable>)
-            // The foreach loop loops over any object implementing IEnumerable or IEnumerable<T>
-            // All the collection types (Array, List, Dictionary...) in the .Net framework
-            // implement one or both of these interfaces.
-            // (The ToCharArray() could be removed, because a string also implements IEnumerable)
+            // O laço foreach  percorre sobre qualquer objeto que implementa IEnumerable ou IEnumerable<T>
+            // Toda a coleção de tipos  (Array, List, Dictionary...) no .Net framework
+            // implementa uma ou mais destas interfaces.
+            // (O ToCharArray() pode ser removido, por que uma string também implementa IEnumerable)
             foreach (char character in "Hello World".ToCharArray())
             {
                 //Iterated over all the characters in the string
             }
 
             // Switch Case
-            // A switch works with the byte, short, char, and int data types.
-            // It also works with enumerated types (discussed in Enum Types),
-            // the String class, and a few special classes that wrap
-            // primitive types: Character, Byte, Short, and Integer.
+            // Um switch funciona com os tipos de dados byte, short, char, e int.
+            // Isto também funcional com tipos enumeradors (discutidos em Tipos Enum),
+            // A classe String, and a few special classes that wrap
+            // tipos primitívos: Character, Byte, Short, and Integer.
             int month = 3;
             string monthString;
             switch (month)
