@@ -426,6 +426,20 @@ echo $function_name(1, 2); // => 3
 // Useful for programatically determining which function to run.
 // Or, use call_user_func(callable $callback [, $parameter [, ... ]]);
 
+// You can specify the type of variable a function parameter accepts using type hints.
+// PHP >5.1: can be array, callable or a Class/Interface name
+// PHP 7.0: adds support for the scalar types: bool float, int and string.
+function formatDate(\DateTime $dt) {
+    return $dt->format('Y-m-d H:i:s');
+}
+
+$a = new \DateTime('2015-10-08');
+echo formatDate($a); // prints 2015-10-08 00:00:00
+
+$b = '2015-10-08';
+echo formatDate($b); // Throws a fatal error as string is not a DateTime object
+
+
 /********************************
  * Includes
  */
