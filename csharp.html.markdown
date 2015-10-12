@@ -749,7 +749,7 @@ on a new line! ""Wow!"", the masses cried";
 
         // It's also possible to define custom Indexers on objects.
         // All though this is not entirely useful in this example, you
-        // could do bicycle[0] which yields "chris" to get the first passenger or
+        // could do bicycle[0] which returns "chris" to get the first passenger or
         // bicycle[1] = "lisa" to set the passenger. (of this apparent quattrocycle)
         private string[] passengers = { "chris", "phil", "darren", "regina" };
 
@@ -760,7 +760,7 @@ on a new line! ""Wow!"", the masses cried";
             }
 
             set {
-                return passengers[i] = value;
+                passengers[i] = value;
             }
         }
 
