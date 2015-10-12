@@ -609,6 +609,37 @@ public final class SaberToothedCat extends Animal
     }
 }
 
+<<<<<<< HEAD
+// Lambda Expressions
+// Java 8 added in Lambda Expression functionality
+// Lambda Expressions allow you to treat functionality as a method argument or using code as data
+// Lambdas have: optional type declaration, parenthesis around parameter, curly braces, and return keywords
+
+//List example
+
+//Without lambdas
+List<Integer> list = Arrays.asList(1,2,3,4,5);
+for(Integer n: list) {
+  System.out.println(n);
+}
+
+//With lambdas
+List<Integer> list = Arrays.asList(1,2,3,4,5);
+list.forEach(n -> System.out.println(n));
+
+//Squaring list elements
+//Old
+List<Integer> list = Arrays.asList(1,2,3,4,5);
+for(Integer n : list) {
+  int x = n * n;
+  System.out.println(x);
+}
+//New
+List<Integer> list = Arrays.asList(1,2,3,4,5);
+list.stream().map((x) -> x*x).forEach(System.out::println);
+
+
+=======
 // Final Methods
 public abstract class Mammal()
 {
@@ -622,6 +653,7 @@ public abstract class Mammal()
         return true;
     }
 }
+>>>>>>> adambard/master
 ```
 
 ## Further Reading
