@@ -136,76 +136,76 @@ on a new line! ""Wow!"", the masses cried";
             const int HoursWorkPerWeek = 9001;
 
             ///////////////////////////////////////////////////
-            // Data Structures
+            // Estrutura de Dados
             ///////////////////////////////////////////////////
 
-            // Arrays - zero indexado
-            // The array size must be decided upon declaration
-            // The format for declaring an array is follows:
-            // <datatype>[] <var name> = new <datatype>[<array size>];
+            // Matrizes - zero indexado
+            // O tamanho do array pode ser decidido ainda na declaração
+            // O formato para declarar uma matriz é o seguinte: 
+            // <tipodado>[] <var nome> = new <tipodado>[<array tamanho>];
             int[] intArray = new int[10];
 
-            // Another way to declare & initialize an array
+            // Outra forma de declarar & inicializar uma matriz
             int[] y = { 9000, 1000, 1337 };
 
-            // Indexing an array - Accessing an element
+            // Indexando uma matriz - Acessando um elemento
             Console.WriteLine("intArray @ 0: " + intArray[0]);
-            // Arrays are mutable.
+            // Matriz são alteráveis
             intArray[1] = 1;
 
-            // Lists
-            // Lists are used more frequently than arrays as they are more flexible
-            // The format for declaring a list is follows:
-            // List<datatype> <var name> = new List<datatype>();
+            // Listas
+            // Listas são usadas frequentemente tanto quanto matriz por serem mais flexiveis
+            // O formato de declarar uma lista é o seguinte:
+            // List<tipodado> <var nome> = new List<tipodado>();
             List<int> intList = new List<int>();
             List<string> stringList = new List<string>();
-            List<int> z = new List<int> { 9000, 1000, 1337 }; // intialize
-            // The <> are for generics - Check out the cool stuff section
+            List<int> z = new List<int> { 9000, 1000, 1337 }; // inicializar
+            // O <> são para genéricos - Confira está interessante seção do material
 
-            // Lists don't default to a value;
-            // A value must be added before accessing the index
+            // Lista não possuem valores padrão.
+            // Um valor deve ser adicionado antes e depois acessado pelo indexador
             intList.Add(1);
             Console.WriteLine("intList @ 0: " + intList[0]);
 
-            // Others data structures to check out:
-            // Stack/Queue
-            // Dictionary (an implementation of a hash map)
+            // Outras estruturas de dados para conferir:
+            // Pilha/Fila
+            // Dicionário (uma implementação de map de hash)
             // HashSet
-            // Read-only Collections
+            // Read-only Coleção
             // Tuple (.Net 4+)
 
             ///////////////////////////////////////
-            // Operators
+            // Operadores
             ///////////////////////////////////////
             Console.WriteLine("\n->Operators");
 
-            int i1 = 1, i2 = 2; // Shorthand for multiple declarations
+            int i1 = 1, i2 = 2; // Forma curta para declarar diversas variáveis
 
-            // Arithmetic is straightforward
+            // Aritmética é clara
             Console.WriteLine(i1 + i2 - i1 * 3 / 7); // => 3
 
             // Modulo
             Console.WriteLine("11%3 = " + (11 % 3)); // => 2
 
-            // Comparison operators
-            Console.WriteLine("3 == 2? " + (3 == 2)); // => false
-            Console.WriteLine("3 != 2? " + (3 != 2)); // => true
-            Console.WriteLine("3 > 2? " + (3 > 2)); // => true
-            Console.WriteLine("3 < 2? " + (3 < 2)); // => false
-            Console.WriteLine("2 <= 2? " + (2 <= 2)); // => true
-            Console.WriteLine("2 >= 2? " + (2 >= 2)); // => true
+            // Comparações de operadores
+            Console.WriteLine("3 == 2? " + (3 == 2)); // => falso
+            Console.WriteLine("3 != 2? " + (3 != 2)); // => verdadeiro
+            Console.WriteLine("3 > 2? " + (3 > 2)); // => verdadeiro
+            Console.WriteLine("3 < 2? " + (3 < 2)); // => falso
+            Console.WriteLine("2 <= 2? " + (2 <= 2)); // => verdadeiro
+            Console.WriteLine("2 >= 2? " + (2 >= 2)); // => verdadeiro
 
-            // Bitwise operators!
+            // Operadores bit a bit (bitwise)
             /*
-            ~       Unary bitwise complement
+            ~       Unário bitwise complemento
             <<      Signed left shift
             >>      Signed right shift
             &       Bitwise AND
-            ^       Bitwise exclusive OR
-            |       Bitwise inclusive OR
+            ^       Bitwise exclusivo OR
+            |       Bitwise inclusivo OR
             */
 
-            // Incrementations
+            // Incrementações
             int i = 0;
             Console.WriteLine("\n->Inc/Dec-rementation");
             Console.WriteLine(i++); //i = 1. Post-Incrementation
@@ -214,11 +214,11 @@ on a new line! ""Wow!"", the masses cried";
             Console.WriteLine(--i); //i = 0. Pre-Decrementation
 
             ///////////////////////////////////////
-            // Control Structures
+            // Estrutura de Controle
             ///////////////////////////////////////
             Console.WriteLine("\n->Control Structures");
 
-            // If statements are c-like
+            // Declaração if é como a linguagem C
             int j = 10;
             if (j == 10)
             {
@@ -233,9 +233,9 @@ on a new line! ""Wow!"", the masses cried";
                 Console.WriteLine("I also don't");
             }
 
-            // Ternary operators
-            // A simple if/else can be written as follows
-            // <condition> ? <true> : <false>
+            // Operador Ternário
+            // Um simples if/else pode ser escrito da seguinte forma
+            // <condição> ? <verdadeiro> : <falso>
             int toCompare = 17;
             string isTrue = toCompare == 17 ? "True" : "False";
 
@@ -251,25 +251,25 @@ on a new line! ""Wow!"", the masses cried";
             int fooDoWhile = 0;
             do
             {
-                // Start iteration 100 times, fooDoWhile 0->99
+                // Inicia a interação 100 vezes, fooDoWhile 0->99
                 if (false)
-                    continue; // skip the current iteration
+                    continue; // pule a intereção atual para apróxima
 
                 fooDoWhile++;
 
                 if (fooDoWhile == 50)
-                    break; // breaks from the loop completely
+                    break; // Interrompe o laço inteiro
 
             } while (fooDoWhile < 100);
 
-            //for loop structure => for(<start_statement>; <conditional>; <step>)
+            //estrutura de loop for  => for(<declaração para começar>; <condicional>; <passos>)
             for (int fooFor = 0; fooFor < 10; fooFor++)
             {
-                //Iterated 10 times, fooFor 0->9
+                //Iterado 10 vezes, fooFor 0->9
             }
 
             // For Each Loop
-            // foreach loop structure => foreach(<iteratorType> <iteratorName> in <enumerable>)
+            // Estrutura do foreach  => foreach(<Tipo Iterador> <Nome do Iterador> in <enumerable>)
             // The foreach loop loops over any object implementing IEnumerable or IEnumerable<T>
             // All the collection types (Array, List, Dictionary...) in the .Net framework
             // implement one or both of these interfaces.

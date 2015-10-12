@@ -159,7 +159,7 @@ on a new line! ""Wow!"", the masses cried";
             // List<datatype> <var name> = new List<datatype>();
             List<int> intList = new List<int>();
             List<string> stringList = new List<string>();
-            List<int> z = new List<int> { 9000, 1000, 1337 }; // intialize
+            List<int> z = new List<int> { 9000, 1000, 1337 }; // initialize
             // The <> are for generics - Check out the cool stuff section
 
             // Lists don't default to a value;
