@@ -1,12 +1,9 @@
 ---
 language: c#
+filename: learnruby-ptbr.cs
 contributors:
-    - ["Irfan Charania", "https://github.com/irfancharania"]
-    - ["Max Yankov", "https://github.com/golergka"]
-    - ["Melvyn Laïly", "http://x2a.yt"]
-    - ["Shaun McCarthy", "http://www.shaunmccarthy.com"]
-    - ["Wouter Van Schandevijl", "http://github.com/laoujin"]
-filename: LearnCSharp.cs
+    - ["Robson Alves", "http://robsonalves.net/"]    
+lang: pt-br
 ---
 
 C# é uma linguagem elegante e altamente tipado orientada a objetos que permite aos desenvolvedores criarem uma variedade de aplicações seguras e robustas que são executadas no .NET Framework.
