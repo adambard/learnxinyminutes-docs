@@ -6,6 +6,7 @@ contributors:
     - ["Madison Dickson", "http://github.com/mix3d"]
     - ["Simon Morgan", "http://sjm.io/"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
+    - ["Rob Rose", "https://github.com/RobRoseKnows"]
 filename: LearnJava.java
 ---
 
