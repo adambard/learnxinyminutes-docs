@@ -108,7 +108,7 @@ div.some-parent.class-name {}
    based on its page behaviour (rather than page structure) */
 
 /* for example for when an element is hovered */
-selector:hover {}
+selected:hover {}
 
 /* or a visited link */
 selected:visited {}
