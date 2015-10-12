@@ -221,11 +221,11 @@ int main() {
     0 || 1; // => 1 (Ou lógico)
     0 || 0; // => 0
 
-    //Expressão condicional ( ? : )
+    //Expressão condicional ternária ( ? : )
     int a = 5;
     int b = 10;
     int z;
-    z = (a > b) ? a : b; // => 10 "se a > b retorne a, senão retorne b." 
+    z = (a > b) ? a : b; // => 10 "se a > b retorne a, senão retorne b."
 
     //Operadores de incremento e decremento:
     char *s = "iLoveC";
@@ -291,6 +291,8 @@ int main() {
     for (i = 0; i <= 5; i++) {
         ; // Use ponto e vírgula para agir como um corpo (declaração nula)
     }
+    // Ou
+    for (i = 0; i <= 5; i++);
 
 	// Criando branchs com escolhas múltiplas: switch()
     switch (alguma_expressao_integral) {
