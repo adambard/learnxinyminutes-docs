@@ -6,6 +6,7 @@ contributors:
     - ["Melvyn Laïly", "http://x2a.yt"]
     - ["Shaun McCarthy", "http://www.shaunmccarthy.com"]
     - ["Wouter Van Schandevijl", "http://github.com/laoujin"]
+    - ["Jo Pearce", "http://github.com/jdpearce"]
 filename: LearnCSharp.cs
 ---
 
@@ -417,6 +418,42 @@ on a new line! ""Wow!"", the masses cried";
                 // Item is an int
                 Console.WriteLine(item.ToString());
         }
+        
+        // YIELD
+        // Usage of the "yield" keyword indicates that the method it appears in is an Iterator
+        // (this means you can use it in a foreach loop)
+        public static IEnumerable<int> YieldCounter(int limit = 10)
+        {
+            for (var i = 0; i < limit; i++)
+                yield return i;
+        }
+
+        // which you would call like this :
+        public static void PrintYieldCounterToConsole()
+        {
+            foreach (var counter in YieldCounter())
+                Console.WriteLine(counter);
+        }
+        
+        // you can use more than one "yield return" in a method
+        public static IEnumerable<int> ManyYieldCounter()
+        {
+            yield return 0;
+            yield return 1;
+            yield return 2;
+            yield return 3;
+        }
+        
+        // you can also use "yield break" to stop the Iterator
+        // this method would only return half of the values from 0 to limit.
+        public static IEnumerable<int> YieldCounterWithBreak(int limit = 10)
+        {
+            for (var i = 0; i < limit; i++)
+            {
+                if (i > limit/2) yield break;
+                yield return i;
+            }
+        }             
 
         public static void OtherInterestingFeatures()
         {
@@ -875,7 +912,7 @@ on a new line! ""Wow!"", the masses cried";
 ## Topics Not Covered
 
  * Attributes
- * async/await, yield, pragma directives
+ * async/await, pragma directives
  * Web Development
  	* ASP.NET MVC & WebApi (new)
  	* ASP.NET Web Forms (old)
