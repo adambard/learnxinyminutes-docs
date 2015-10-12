@@ -6,6 +6,7 @@ contributors:
     - ["Melvyn Laïly", "http://x2a.yt"]
     - ["Shaun McCarthy", "http://www.shaunmccarthy.com"]
     - ["Wouter Van Schandevijl", "http://github.com/laoujin"]
+    - ["Grant Winney", "http://grantwinney.com"]
 filename: LearnCSharp.cs
 ---
 
@@ -870,12 +871,104 @@ on a new line! ""Wow!"", the masses cried";
 
         public DbSet<Bicycle> Bikes { get; set; }
     }
+	
+    // Attributes provide metadata about your code, which can be accessed by
+    // third-party tools, or via reflection at runtime.
+    public class AttributeSamples
+    {
+        // An example of an attribute provided by the .NET Framework is Obsolete.
+        public enum OuterPlanets
+        {
+            Jupiter,
+            Saturn,
+            Uranus,
+            Neptune,
+
+            [Obsolete]
+            Pluto,      // obsolete; warn developers when using
+
+            [Obsolete("This isn't a real planet!", true)]
+            PlanetX     // obsolete; consider usage to be an error
+        }
+        // Tools like Visual Studio can take advantage of these attributes.
+        // It will underline usages of Pluto in blue and usages of PlanetX in
+        // red, as well as prevent compilation in the latter case.
+        
+        // Another from .NET is the Description attribute. You can apply this
+        // general attribute nearly anywhere, then reference it later as needed.
+        public class Person
+        {
+            [Description("A full name includes both first and last names.")]
+            public string FullName { get; set; }
+
+            [Description("A person's age, rounded down to the nearest year.")]
+            public int Age { get; set; }
+        }
+
+        // Use reflection to access the attributes at runtime.
+        public class SomeProgram
+        {
+            public void GetPersonProperties()
+            {
+                // Using reflection, get all properties in the Person class.
+                PropertyInfo[] personProperties = typeof(Person).GetProperties();
+
+                // Display each property's name and description.
+                foreach (var prop in personProperties)
+                    Console.WriteLine("{0}: {1}", prop.Name, prop.GetCustomAttribute<DescriptionAttribute>().Description);
+
+                // Output:  FullName: A full name includes both first and last names.
+                //          Age: A person's age, rounded down to the nearest year.
+            }
+        }
+
+        // Some tools come with their own attributes. For example, nUnit has you
+        // decorate your test classes and methods, so it knows which are tests.
+
+        // Create your own attributes by extending the Attribute class.
+        // Indicate where it may be applied by using the AttributeUsage attribute.
+        [AttributeUsage(AttributeTargets.All)]
+        public class PurposeAttribute : Attribute
+        {
+            public string Author { get; set; }
+            public string LastModifiedBy { get; set; }
+
+            public PurposeAttribute(string reason)
+            {
+                ReasonValue = reason;
+            }
+
+            protected string ReasonValue { get; set; }
+
+            public string Reason
+            {
+                get { return ReasonValue; }
+            }
+        }
+
+        // When applying the above attribute, "Reason" is required,
+        // while Author and LastModifiedBy are optional. 
+        [Purpose("Represents a single food item.", LastModifiedBy = "John Myers")]
+        public class Food
+        {
+            public string Name { get; set; }
+
+            [Purpose("Track qty. Feature #248", Author = "Susan", LastModifiedBy = "Jerry")]
+            public string Quantity { get; set; }
+
+            [Purpose("A description includes name and qty.", Author = "Jerry")]
+            public virtual string GetDescription()
+            {
+                return string.Format("Name: {0}, Quantity: {1}", Name, Quantity);
+            }
+        }
+    }
+	
 } // End Namespace
 ```
 
 ## Topics Not Covered
 
- * Attributes
  * async/await, yield, pragma directives
  * Web Development
  	* ASP.NET MVC & WebApi (new)
