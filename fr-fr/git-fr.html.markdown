@@ -65,36 +65,33 @@ Cet élément vous est souvent présenté comme votre dossier de travail.
 
 ### Index (présent dans le répertoire .git)
 
-The Index is the staging area in git. It's basically a layer that separates your working tree
-from the Git repository. This gives developers more power over what gets sent
-to the Git repository.
+L'index est la zone de travail dans git. C'est basiquement la couche qui separe le dossier de
+travail du dépot Git. Cela donne aux développeurs plus de latitude sur ce qui est envoyé vers le dépot.
 
-### Commit
+### Instantané (Commit)
 
-A git commit is a snapshot of a set of changes, or manipulations to your Working
-Tree. For example, if you added 5 files, and removed 2 others, these changes
-will be contained in a commit (or snapshot). This commit can then be pushed to
-other repositories, or not!
+Un commit Git est un instantané des modifications sur l'arborescence de travail.
+Par exemple, si vous avez ajouté 5 fichiers, et supprimé 2 autres fichiers, ces changements
+seront contenu dans un commit. Ce commit peut ensuite être poussé vers un dépot, ou non!
 
-### Branch
+### Branche
 
-A branch is essentially a pointer to the last commit you made. As you go on
-committing, this pointer will automatically update to point the latest commit.
+Une branche est un pointeur vers le dernier commit réalisé. 
 
-### HEAD and head (component of .git dir)
+### HEAD et head (présent dans le répertoire .git)
 
-HEAD is a pointer that points to the current branch. A repository only has 1 *active* HEAD.
-head is a pointer that points to any commit. A repository can have any number of heads.
+HEAD est un pointeur qui pointe vers la branche courante. Un dépot Git ne possède qu'un HEAD actif.
+head est un pointeur qui pointe vers n'importe quel commit. Un dépot peut avoir une multitude de heads.
 
-### Stages of Git
-* Modified - Changes have been made to a file but file has not been committed to Git Database yet
-* Staged - Marks a modified file to go into your next commit snapshot
-* Committed - Files have been committed to the Git Database
+### Etapes de Git
+* Modifié - Des changement ont été réalisés sur un fichier. 
+* Staged  - Marque un fichier modifié comme étant retenu pour être inclus dans le prochain commit
+* Committed - Les fichiers ont été envoyés vers la base de données Git
 
-### Conceptual Resources
+### Ressources conceptuelles
 
-* [Git For Computer Scientists](http://eagain.net/articles/git-for-computer-scientists/)
-* [Git For Designers](http://hoth.entp.com/output/git_for_designers.html)
+* [Git pour les informaticiens](http://eagain.net/articles/git-for-computer-scientists/)
+* [Git pours les designers](http://hoth.entp.com/output/git_for_designers.html)
 
 
 ## Commands
