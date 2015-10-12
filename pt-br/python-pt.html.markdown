@@ -500,7 +500,6 @@ dir(math)
 * [The Official Docs](http://docs.python.org/2.6/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
 * [Python Module of the Week](http://pymotw.com/2/)
-* [Python para Zumbis](http://pycursos.com/python-para-zumbis/)
 
 ### Livros impressos
 
