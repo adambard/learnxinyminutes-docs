@@ -94,7 +94,7 @@ head est un pointeur qui pointe vers n'importe quel commit. Un dépot peut avoir 
 * [Git pours les designers](http://hoth.entp.com/output/git_for_designers.html)
 
 
-## Commands
+## Commandes
 
 
 ### init
