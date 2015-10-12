@@ -20,16 +20,13 @@ relatively quickly. It does not provide any new styling options but rather
 the tools to write your CSS more efficiently and make maintenance much
 easier.
 
-Sass files must be compiled into CSS. You can use any number of commandline
-tools to compile Sass into CSS. Many IDEs also offer Sass compilation, as well.
-
-
 ```sass
-/* Like CSS, Sass uses slash-asterisk to denote comments. Slash-asterisk comments 
-   can span multiple lines. These comments will appear in your compiled CSS */
+/* Like CSS, Sass uses slash-asterisk to denote comments. Slash-asterisk 
+   comments can span multiple lines. These comments will appear 
+   in your compiled CSS */
 
-// Sass also supports single line comments that use double slashes. These comments will
-// not be rendered in your compiled CSS
+// Sass also supports single line comments that use double slashes. These 
+// comments will not be rendered in your compiled CSS
 
 /* ####################
    ## VARIABLES
@@ -52,8 +49,7 @@ h1 {
   font-size: $headline-size;
 }
 
-/* After compiling the Sass files into CSS, you'll have the following code
-   in your generated CSS file */
+/* Generated CSS result */
    
 a { 
   color: #0000ff;
@@ -91,7 +87,7 @@ article {
   }
 }
 
-/* The above will compile into the following CSS */
+/* Generated CSS result */
 article {
   font-size: 14px;
 }
@@ -115,16 +111,16 @@ article img {
 }
 
 /* It is recommended to not nest too deeply as this can cause issues with
-   specificity and make your CSS harder to work with and maintain. Best practices
-   recommend going no more than 3 levels deep when nesting. */
+   specificity and make your CSS harder to work with and maintain. Best 
+   practices recommend going no more than 3 levels deep when nesting. */
    
 /* ###############################
    ## REFERENCE PARENT SELECTORS
    ############################### */   
    
-/* Reference parent selectors are used when you're nesting statements and want to 
-   reference the parent selector from within the nested statements. You can reference
-   a parent using & */
+/* Reference parent selectors are used when you're nesting statements and want
+   to reference the parent selector from within the nested statements. You can
+   reference a parent using & */
    
 a {
   text-decoration: none;
@@ -139,7 +135,7 @@ a {
   }
 }
 
-/* The above Sass will compile into the CSS below */
+/* Generated CSS result */
 
 a {
   text-decoration: none;
@@ -160,8 +156,8 @@ body.noLinks a {
    #################### */
    
 /* Mixins allow you to define reusable chunks of CSS. They can take one or more
-   arguments to allow you to make reusable pieces of styling. Mixins can also
-   be very helpful when dealing with vendor prefixes. */
+   arguments to allow you to make reusable pieces of styling. Mixins very 
+   helpful when dealing with vendor prefixes. */
    
 @mixin form-button($color, $size, $border-radius) {
   color: $color;
@@ -175,7 +171,7 @@ body.noLinks a {
   @include form-button(#0000ff, 16px, 4px);
 }
 
-/* The above mixin will compile into the following css */
+/* Generated CSS result */
 
 .user-form .submit {
   color: #0000ff;
@@ -187,9 +183,11 @@ body.noLinks a {
    ## FUNCTIONS
    #################### */
    
-/* Sass provides functions that can be used to accomplish a variety of tasks. Consider the following */
+/* Sass provides functions that can be used to accomplish a variety of 
+   tasks. Consider the following */
 
-/* Functions can be invoked by using their name and passing in the required arguments */
+/* Functions can be invoked by using their name and passing in the 
+   required arguments */
 body {
   width: round(10.25px);    
 }
@@ -198,7 +196,7 @@ body {
   background-color: fade_out(#000000, 0.25)
 }
 
-/* The above Sass will compile into the following CSS */
+/* Generated CSS result */
 
 body {
   width: 10px;
@@ -208,14 +206,15 @@ body {
   background-color: rgba(0, 0, 0, 0.75);
 }   
    
-/* You may also define your own functions. Functions are very similar to mixins. When trying 
-   to choose between a function or a mixin, remember that functions are best for returning 
-   values while mixins are best for generating CSS while functions are better for logic that 
-   might be used throughout your Sass code. The examples in the Math Operators' section are 
-   ideal candidates for becoming a reusable function. */
+/* You may also define your own functions. Functions are very similar to 
+   mixins. When trying to choose between a function or a mixin, remember
+   that functions are best for returning values while mixins are best for
+   generating CSS while functions are better for logic that might be used
+   throughout your Sass code. The examples in the Math Operators' section 
+   are ideal candidates for becoming a reusable function. */
 
-/* This function will take a target size and the parent size and calculate and return 
-   the percentage */
+/* This function will take a target size and the parent size and calculate 
+   and return the percentage */
    
 @function calculate-percentage($target-size, $parent-size) {
   @return $target-size / $parent-size * 100%;
@@ -231,7 +230,7 @@ $main-content: calculate-percentage(600px, 960px);
   width: calculate-percentage(300px, 960px);
 }
 
-/* The above Sass will compile into the following CSS */
+/* Generated CSS result */
 
 .main-content {
   width: 62.5%;
@@ -241,9 +240,9 @@ $main-content: calculate-percentage(600px, 960px);
   width: 31.25%;
 }
 
-/* ####################
+/* #####################
    ## EXTEND/INHERITANCE
-   #################### */
+   ##################### */
    
 /* Sass allows you to extend an existing CSS statement. This makes it 
    very easy to write CSS that does not violate DRY principles. Any
@@ -271,7 +270,7 @@ $main-content: calculate-percentage(600px, 960px);
   background-color: #ccc;
 }
 
-/* The above Sass will be compile into the following CSS */
+/* Generated CSS result */
 
 .content-window,
 .message-window,
@@ -306,10 +305,10 @@ $main-content: calculate-percentage(600px, 960px);
    ## PLACEHOLDER SELECTORS
    ######################### */   
    
-/* Placeholders are useful when creating a CSS statement to extend. If you wanted to create
-   a CSS statement that was exclusively used with @extend, you can do so using a placeholder.
-   Placeholders begin with a '%' instead of '.' or '#'. Placeholders will not appear in the 
-   compiled CSS. */
+/* Placeholders are useful when creating a CSS statement to extend. If you
+   wanted to create a CSS statement that was exclusively used with @extend,
+   you can do so using a placeholder. Placeholders begin with a '%' instead
+   of '.' or '#'. Placeholders will not appear in the compiled CSS. */
    
 %content-window {
   font-size: 14px;
@@ -323,7 +322,7 @@ $main-content: calculate-percentage(600px, 960px);
   background-color: #0000ff;
 }
 
-/* The above Sass would compile to the following CSS */
+/* Generated CSS result */
 
 .message-window {
   font-size: 14px;
@@ -369,7 +368,7 @@ body {
   width: $gutter;
 }
 
-/* The above Sass would compile to the CSS below */
+/* Generated CSS result */
 
 body {
   width: 100%;
@@ -391,9 +390,15 @@ body {
 
 ## Usage
 
+Sass files must be compiled into CSS. You can use any number of commandline
+tools to compile Sass into CSS. Many IDEs also offer Sass compilation, as well.
 
+[Compass](http://compass-style.org/) is one of the more popular tools for Sass compilation.  
 
 ## Compatibility
 
+Sass can be used in any project as long as you have something to compile it
+into CSS. You'll want to verify that the CSS you're using is compatible
+with your target browsers. 
 
-## Further Reading
+[QuirksMode CSS](http://www.quirksmode.org/css/) and [CanIUse](http://caniuse.com) great resources for checking compatibility. 
