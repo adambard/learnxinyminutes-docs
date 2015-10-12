@@ -1,6 +1,6 @@
 ---
 language: c#
-filename: learnruby-ptbr.cs
+filename: csharp-pt.cs
 contributors:
     - ["Robson Alves", "http://robsonalves.net/"]    
 lang: pt-br
