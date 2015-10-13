@@ -112,7 +112,7 @@ last [1..5] -- 5
 -- Listas por comprensión
 [x*2 | x <- [1..5]] -- [2, 4, 6, 8, 10]
 
--- Listas por comprensión usando condicionales
+-- Listas por comprensión utilizando condicionales
 [x*2 | x <- [1..5], x*2 > 4] -- [6, 8, 10]
 
 -- Cada elemento en una tupla puede ser de diferente tipo, pero una tupla tiene
@@ -316,81 +316,81 @@ Nothing         -- de tipo `Maybe a` para cualquier `a`
 -- 8. Haskell IO
 ----------------------------------------------------
 
--- While IO can't be explained fully without explaining monads,
--- it is not hard to explain enough to get going.
+-- Mientras que IO no puede ser explicado plenamente sin explicar las mónadas,
+-- no es difícil explicar lo suficiente para ponerse en marcha.
 
--- When a Haskell program is executed, `main` is
--- called. It must return a value of type `IO ()`. For example:
+-- Cuando un programa en Haskell se ejecuta, `main` es
+-- llamado. Este debe devolver un valor de tipo `IO ()`. Por ejemplo:
 
 main :: IO ()
-main = putStrLn $ "Hello, sky! " ++ (say Blue)
--- putStrLn has type String -> IO ()
+main = putStrLn $ "¡Hola, cielo! " ++ (say Blue)
+-- putStrLn tiene tipo String -> IO ()
 
--- It is easiest to do IO if you can implement your program as
--- a function from String to String. The function
+-- Es más fácil de hacer IO si puedes implementar tu programa como
+-- una función de String a String. La función
 --    interact :: (String -> String) -> IO ()
--- inputs some text, runs a function on it, and prints out the
--- output.
+-- recibe como entrada un texto,  ejecuta una función e imprime
+-- una salida.
 
 countLines :: String -> String
 countLines = show . length . lines
 
 main' = interact countLines
 
--- You can think of a value of type `IO ()` as representing a
--- sequence of actions for the computer to do, much like a
--- computer program written in an imperative language. We can use
--- the `do` notation to chain actions together. For example:
+-- Puedes pensar en el valor de tipo `IO ()` como la representación 
+-- de una secuencia de acciones que la computadora hace, al igual que
+-- un programa escrito en un lenguaje imperativo. Podemos utilizar
+-- la notación `do` para encadenar acciones. Por ejemplo:
 
 sayHello :: IO ()
 sayHello = do
-   putStrLn "What is your name?"
-   name <- getLine -- this gets a line and gives it the name "name"
-   putStrLn $ "Hello, " ++ name
+   putStrLn "¿Cual es tu nombre?"
+   name <- getLine -- obtenemos un valor y lo proporcionamos a "name"
+   putStrLn $ "Hola, " ++ name
 
--- Exercise: write your own version of `interact` that only reads
---           one line of input.
+-- Ejercicio: escribe tu propia version de `interact` que solo lea 
+--           una linea como entrada.
 
--- The code in `sayHello` will never be executed, however. The only
--- action that ever gets executed is the value of `main`.
--- To run `sayHello` comment out the above definition of `main`
--- and replace it with:
+-- Nunca se ejecuta el código en `sayHello`, sin embargo. La única
+-- acción que siempre se ejecuta es el valor de `main`.
+-- Para ejecutar `sayHello` comenta la definición anterior de `main`
+-- y sustituyela por:
 --   main = sayHello
 
--- Let's understand better how the function `getLine` we just
--- used works. Its type is:
+-- Vamos a entender mejor como funciona la función `getLine` cuando
+-- la utilizamos. Su tipo es:
 --    getLine :: IO String
--- You can think of a value of type `IO a` as representing a
--- computer program that will generate a value of type `a`
--- when executed (in addition to anything else it does). We can
--- store and reuse this value using `<-`. We can also
--- make our own action of type `IO String`:
+-- Puedes pensar en el valor de tipo `IO a` como la representación
+-- programa que generará un valor de tipo `a`
+-- cuando es ejecutado (además de cualquier otra cosa que haga). Podemos
+-- almacenar y reutilizar el valor usando `<-`. También podemos
+-- crear nuestra propia acción de tipo `IO String`:
 
 action :: IO String
 action = do
-   putStrLn "This is a line. Duh"
+   putStrLn "Esta es una linea."
    input1 <- getLine
    input2 <- getLine
-   -- The type of the `do` statement is that of its last line.
-   -- `return` is not a keyword, but merely a function
+   -- El tipo de la sentencia `do` es la de su última línea.
+   -- `return` no es una palabra clave, sino simplemente una función
    return (input1 ++ "\n" ++ input2) -- return :: String -> IO String
 
--- We can use this just like we used `getLine`:
+-- Podemos usar esto sólo como usabamos `getLine`:
 
 main'' = do
-    putStrLn "I will echo two lines!"
+    putStrLn "¡Volveré a repetir dos líneas!"
     result <- action
     putStrLn result
-    putStrLn "This was all, folks!"
+    putStrLn "Esto es todo, ¡amigos!"
 
--- The type `IO` is an example of a "monad". The way Haskell uses a monad to
--- do IO allows it to be a purely functional language. Any function that
--- interacts with the outside world (i.e. does IO) gets marked as `IO` in its
--- type signature. This lets us reason about what functions are "pure" (don't
--- interact with the outside world or modify state) and what functions aren't.
+-- El tipo `IO` es un ejemplo de una "mónada". La forma en que Haskell utiliza una monada
+-- permite que sea un lenguaje puramente funcional. Cualquier función que
+-- interactue con el mundo exterior (por ejemplo usar IO) obtiene una marca `IO`
+-- como su firma de tipo. Esto nos permite pensar qué funciones son "puras"
+-- (que no interactuan con el mundo exterior o modifican el estado) y que funciones no lo son.
 
--- This is a powerful feature, because it's easy to run pure functions
--- concurrently; so, concurrency in Haskell is very easy.
+-- Esta es una poderosa característica, porque es una manera fácil de ejecutar funciones puras
+-- concurrentemente; entonces, la concurrencia en Haskell es muy fácil.
 
 
 ----------------------------------------------------
