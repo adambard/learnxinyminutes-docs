@@ -21,49 +21,53 @@ javascript 1995 ஆம்  ஆண்டு Netscape இல் பணிபுர
 மிகவும் பிரபல்யமடைந்து வருகின்றது , உதாரணமாக கூகிள்க்ரோம் உலாவியின் 
 V8 JavaScript engine Node .js உதவியுடன் இயங்குகிறது .
 
-Feedback would be highly appreciated! You can reach me at
+உங்கள் கருத்துக்கள் மிகவும் வரவேற்கபடுகின்றன , என்னுடன் தொடர்புகொள்ள 
 [@adambrenecki](https://twitter.com/adambrenecki), or
 [adam@brenecki.id.au](mailto:adam@brenecki.id.au).
 
 ```js
-// Comments are like C. Single-line comments start with two slashes,
-/* and multiline comments start with slash-star
-   and end with star-slash */
+// குறிப்புக்கள் C நிரலாக்கத்தை ஒத்தது .ஒரு வரி குறிப்புக்கள்  "//" குறியீடுடன் ஆரம்பமாகும் 
 
-// Statements can be terminated by ;
+/* பலவரி குறிப்புக்கள் "/*" ஆரம்பமாகி "/*" இல் முடிவடையும்  */
+
+// ஒரு கூற்று முற்றுபெற செய்ய ; இடல் வேண்டும் .
 doStuff();
 
-// ... but they don't have to be, as semicolons are automatically inserted
-// wherever there's a newline, except in certain cases.
+// ...ஆனால் அரைபுள்ளி இட வேண்டும் என்று அவசியம் இல்லை ஏன்  எனில் 
+// ஒரு வரி புதிதாக இடப்படும் போது அரைபுள்ளிகள் தானாகவே இடப்படும் ஆனால் சில தருணங்களை தவிர .
 doStuff()
 
-// Because those cases can cause unexpected results, we'll keep on using
-// semicolons in this guide.
+// ஆனால் அவ்வாறான தருணங்கள் எதிர்பாராத முடிவுகளை தரலாம் 
+
+// எனவே நாம் தொடர்ந்து ஒரு கூற்று நிறைவடையும் போது அரைபுள்ளி ஒன்றை இடுவோம் .
 
 ///////////////////////////////////
-// 1. Numbers, Strings and Operators
+// 1. எண்கள்(Number) ,சரம் (String),செயற்குறிகள்(Operators) 
 
-// JavaScript has one number type (which is a 64-bit IEEE 754 double).
-// Doubles have a 52-bit mantissa, which is enough to store integers
-//    up to about 9✕10¹⁵ precisely.
+// JavaScript ஒரே ஒரு எண்வகை காணப்படுகிறது  தசமி  (which is a 64-bit IEEE 754 double).
+// தசமி எண்வகை  (Doubles) 2^ 52 வரை சேமிக்க கூடியது
+// முழு எண்வகையின் 9✕10¹⁵ சேமிக்க போதுமானது .
 3; // = 3
 1.5; // = 1.5
 
-// Some basic arithmetic works as you'd expect.
+// அடிப்படை கணித பொறிமுறைகள் 
 1 + 1; // = 2
 0.1 + 0.2; // = 0.30000000000000004
 8 - 1; // = 7
 10 * 2; // = 20
 35 / 5; // = 7
 
-// Including uneven division.
+// வகுத்தல்
 5 / 2; // = 2.5
 
-// Bitwise operations also work; when you perform a bitwise operation your float
-// is converted to a signed int *up to* 32 bits.
+
+//bitwise பொறிமுறையை உபயோகிக்கும் போது 
+//உங்கள் தசம எண்ணின் பெறுமானமானது ஒரு நேர் அல்லது மறை அல்லது பூசியமாகவுள்ள முழு எண்ணாக 
+//மாற்றம் பெறுகிறது  இது 32 இருமம்(bit) வரை செல்லலாம் 
+
 1 << 2; // = 4
 
-// Precedence is enforced with parentheses.
+// நிரலாக்கத்தில் செயலியை அமுல்படுத்தும் வரிசைமுறையில் அடைப்பு குறிக்கு முன்னிலை வழங்கபடுகிறது 
 (1 + 3) * 2; // = 8
 
 // There are three special not-a-real-number values:
