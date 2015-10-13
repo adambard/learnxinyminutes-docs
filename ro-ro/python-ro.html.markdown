@@ -8,14 +8,16 @@ filename: learnpython-ro.py
 lang: ro-ro
 ---
 
-Python a fost creat de Guido Van Rossum la începutul anilor '90. Python a devenit astăzi unul din
-cele mai populare limbaje de programare. M-am indrăgostit de Python pentru claritatea sa sintactică.
-Python este aproape pseudocod executabil.
+Python a fost creat de Guido Van Rossum la începutul anilor '90. Python a
+devenit astăzi unul din cele mai populare limbaje de programare.
+M-am indrăgostit de Python pentru claritatea sa sintactică. Python este aproape
+pseudocod executabil.
 
-Opinia dumneavoastră este binevenită! Puteţi sa imi scrieţi la [@ociule](http://twitter.com/ociule) sau ociule [at] [google's email service]
+Opinia dumneavoastră este binevenită! Puteţi sa imi scrieţi la [@ociule](http://twitter.com/ociule)
+sau ociule [at] [google's email service]
 
-Notă: Acest articol descrie Python 2.7, dar este util şi pentru Python 2.x. O versiune Python 3 va apărea
-în curând, în limba engleză mai întâi.
+Notă: Acest articol descrie Python 2.7, dar este util şi pentru Python 2.x.
+O versiune Python 3 va apărea în curând, în limba engleză mai întâi.
 
 ```python
 # Comentariile pe o singură linie încep cu un caracter diez.
@@ -36,7 +38,8 @@ Notă: Acest articol descrie Python 2.7, dar este util şi pentru Python 2.x. O 
 10 * 2 #=> 20
 35 / 5 #=> 7
 
-# Împărţirea este un pic surprinzătoare. Este de fapt împărţire pe numere întregi şi rotunjeşte
+# Împărţirea este un pic surprinzătoare. Este de fapt împărţire pe numere
+# întregi şi rotunjeşte
 # automat spre valoarea mai mică
 5 / 2 #=> 2
 
