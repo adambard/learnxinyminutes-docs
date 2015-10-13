@@ -96,15 +96,6 @@ head is a pointer that points to any commit. A repository can have any number of
 ## Commands
 
 
-### init
-
-Create an empty Git repository. The Git repository's settings, stored information,
-and more is stored in a directory (a folder) named ".git".
-
-```bash
-$ git init
-```
-
 ### config
 
 To configure settings. Whether it be for the repository, the system itself,
@@ -141,6 +132,14 @@ $ git add --help
 $ git commit --help
 $ git init --help
 ```
+### init
+
+Create an empty Git repository. The Git repository's settings, stored information,
+and more is stored in a directory (a folder) named ".git".
+
+```bash
+$ git init
+```
 
 ### ignore files
 
@@ -150,7 +149,6 @@ private & temp files which would otherwise be shared in the repository.
 $ echo "temp/" >> .gitignore
 $ echo "private_key" >> .gitignore
 ```
-
 
 ### status
 
