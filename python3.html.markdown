@@ -5,6 +5,7 @@ contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
+    - ["evuez", "http://github.com/evuez"]
 filename: learnpython3.py
 ---
 
