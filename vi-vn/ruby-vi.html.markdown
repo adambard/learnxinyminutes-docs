@@ -12,86 +12,87 @@ contributors:
   - ["Dzianis Dashkevich", "https://github.com/dskecse"]
   - ["Levi Bostian", "https://github.com/levibostian"]
   - ["Rahil Momin", "https://github.com/iamrahil"]
-  - ["Gabriel Halley", https://github.com/ghalley]
+  - ["Vinh Nguyen", "http://rubydaily.net"]
+lang: vi-vn
 
 ---
 
 ```ruby
-# This is a comment
+# Đây là một comment
 
 =begin
-This is a multiline comment
-No-one uses them
-You shouldn't either
+Đây là một comment nhiều dòng
+Không ai dùng cách này
+Bạn không nên dùng
 =end
 
-# First and foremost: Everything is an object.
+# Đầu tiên và quan trọng nhất: Mọi thứ là đối tượng.
 
-# Numbers are objects
+# Các con số là các đối tượng.
 
 3.class #=> Fixnum
 
 3.to_s #=> "3"
 
 
-# Some basic arithmetic
+# Một vài bài toán số học căn bản
 1 + 1 #=> 2
 8 - 1 #=> 7
 10 * 2 #=> 20
 35 / 5 #=> 7
 2**5 #=> 32
-5 % 3 #=> 2
 
-# Arithmetic is just syntactic sugar
-# for calling a method on an object
+# Số học vừa là các cú pháp  thân thiện cho việc gọi
+# một hàm trên một đối tượng
 1.+(3) #=> 4
 10.* 5 #=> 50
 
-# Special values are objects
-nil # Nothing to see here
-true # truth
-false # falsehood
+# Các giá trị đặc biệt là các đối tượng
+nil # Ở đây không có gì để xem
+true # luôn đúng
+false # luôn sai
 
-nil.class #=> NilClass
-true.class #=> TrueClass
-false.class #=> FalseClass
+nil.class #=> Lớp Nil
+true.class #=> Lớp True
+false.class #=> Lớp False
 
-# Equality
+# So sánh bằng
 1 == 1 #=> true
 2 == 1 #=> false
 
-# Inequality
+# So sánh không bằng
 1 != 1 #=> false
 2 != 1 #=> true
 
-# apart from false itself, nil is the only other 'falsey' value
+# Ngoài chính false, thì nil là một giá trị khác của false
 
 !nil   #=> true
 !false #=> true
 !0     #=> false
 
-# More comparisons
+# Các loại so sánh khác
 1 < 10 #=> true
 1 > 10 #=> false
 2 <= 2 #=> true
 2 >= 2 #=> true
 
-# Logical operators
+# Các toán tử logic
 true && false #=> false
 true || false #=> true
 !true #=> false
 
-# There are alternate versions of the logical operators with much lower
-# precedence. These are meant to be used as flow-control constructs to chain
-# statements together until one of them returns true or false.
 
-# `do_something_else` only called if `do_something` succeeds.
+# Có các cách khác của các toán tử logic với mức thấp hơn
+# Chúng được sử dụng như các cấu trúc điều khiển luồng nối các mệnh đề
+# với nhau cho đến khi một trong số chúng trả về đúng hoặc sai.
+
+# `do_something_else` chỉ được gọi nếu như hàm  `do_something` thành công.
 do_something() and do_something_else()
-# `log_error` only called if `do_something` fails.
+# `log_error` chỉ được gọi nếu hàm `do_something` không thành công.
 do_something() or log_error()
 
 
-# Strings are objects
+# Các chuỗi là các đối tượng
 
 'I am a string'.class #=> String
 "I am a string too".class #=> String
@@ -100,45 +101,39 @@ placeholder = 'use string interpolation'
 "I can #{placeholder} when using double quoted strings"
 #=> "I can use string interpolation when using double quoted strings"
 
-# Prefer single quoted strings to double quoted ones where possible
-# Double quoted strings perform additional inner calculations
+# Nên đưa các chuỗi vào trong dấu nháy đơn
+# Ngoài ra dấu nháy kép được sử dụng trong tính toán.
 
-# Combine strings, but not with numbers
+# Nối các chuỗi, nhưng không nối với các số.
 'hello ' + 'world'  #=> "hello world"
 'hello ' + 3 #=> TypeError: can't convert Fixnum into String
 'hello ' + 3.to_s #=> "hello 3"
 
-# print to the output with a newline at the end
+# Xuất ra ngoài màn hình
 puts "I'm printing!"
-#=> I'm printing!
-#=> nil
 
-# print to the output without a newline
-print "I'm printing!"
-#=> I'm printing! => nill
-
-# Variables
+# Các biến
 x = 25 #=> 25
 x #=> 25
 
-# Note that assignment returns the value assigned
-# This means you can do multiple assignment:
+# Chú ý về việc gán các giá trị được trả về vào biến.
+# Điều này có nghĩa là bạn có thể gán nhiều biến.
 
 x = y = 10 #=> 10
 x #=> 10
 y #=> 10
 
-# By convention, use snake_case for variable names
+# Theo quy ước, dùng snake_case cho các tên của biến.
 snake_case = true
 
-# Use descriptive variable names
+# Dùng để mô tả tên các biến
 path_to_project_root = '/good/name/'
 path = '/bad/name/'
 
-# Symbols (are objects)
-# Symbols are immutable, reusable constants represented internally by an
-# integer value. They're often used instead of strings to efficiently convey
-# specific, meaningful values
+# Ký tự (là các đối tượng)
+# Các ký tự là bất biến, như các biến hằng số chỉ đến các số nguyên.
+# Chúng thường xuyên được sử dụng thay cho các chuỗi để chuyển đổi các giá
+# trị hiệu quả.
 
 :pending.class #=> Symbol
 
@@ -150,76 +145,71 @@ status == 'pending' #=> false
 
 status == :approved #=> false
 
-# Arrays
+# Các mảng
 
-# This is an array
+# Đây là một mảng
 array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 
-# Arrays can contain different types of items
+# Các mảng có thể chứa nhiều phần tử khác nhau
 
 [1, 'hello', false] #=> [1, "hello", false]
 
-# Arrays can be indexed
-# From the front
+# Có thể truy cập các giá trị của mảng thông qua các chỉ mục
 array[0] #=> 1
-array.first #=> 1
 array[12] #=> nil
 
-# Like arithmetic, [var] access
-# is just syntactic sugar
-# for calling a method [] on an object
+# Giống như số học, sử dụng [biến] là một cú pháp thông dụng
 array.[] 0 #=> 1
 array.[] 12 #=> nil
 
-# From the end
+# Lấy phần tử cuối cùng
 array[-1] #=> 5
-array.last #=> 5
 
-# With a start index and length
+# Bắt đầu từ chỉ mục và số phần tử cần lấy
 array[2, 3] #=> [3, 4, 5]
 
-# Reverse an Array
+# Đảo ngược một mảng
 a=[1,2,3]
 a.reverse! #=> [3,2,1]
 
-# Or with a range
+# Lấy một khoảng
 array[1..3] #=> [2, 3, 4]
 
-# Add to an array like this
+# Thêm phần tử vào mảng bằng cách này
 array << 6 #=> [1, 2, 3, 4, 5, 6]
-# Or like this
+# Hoặc cách này
 array.push(6) #=> [1, 2, 3, 4, 5, 6]
 
-# Check if an item exists in an array
+# Kiểm tra phần tử có tồn tại trong mảng
 array.include?(1) #=> true
 
-# Hashes are Ruby's primary dictionary with keys/value pairs.
-# Hashes are denoted with curly braces:
+# Băm là phần chính của Ruby với các cặp khoá/giá trị
+# Băm được biểu thị bằng dấu ngoặc nhọn:
 hash = { 'color' => 'green', 'number' => 5 }
 
 hash.keys #=> ['color', 'number']
 
-# Hashes can be quickly looked up by key:
+# Băm có thể được truy cập nhanh chóng thông qua khoá
 hash['color'] #=> 'green'
 hash['number'] #=> 5
 
-# Asking a hash for a key that doesn't exist returns nil:
+# Khoá không tồn tại sẽ trả về nil
 hash['nothing here'] #=> nil
 
-# Since Ruby 1.9, there's a special syntax when using symbols as keys:
+# Kể từ Ruby bản 1.9, đây là một cú pháp đặc biệt, sử dụng symbol như khoá
 
 new_hash = { defcon: 3, action: true }
 
 new_hash.keys #=> [:defcon, :action]
 
-# Check existence of keys and values in hash
+# Kiểm tra khoá hoặc giá trị có tồn tại hay không
 new_hash.has_key?(:defcon) #=> true
 new_hash.has_value?(3) #=> true
 
-# Tip: Both Arrays and Hashes are Enumerable
-# They share a lot of useful methods such as each, map, count, and more
+# Mẹo: Cả Mảng và Băm đều là Enumberable
+# Chúng cùng chia sẻ rất nhiều phương thức hữu ích như each, map, count...
 
-# Control structures
+# Cấu trúc điều khiển
 
 if true
   'if statement'
@@ -238,15 +228,16 @@ end
 #=> iteration 4
 #=> iteration 5
 
-# HOWEVER, No-one uses for loops.
-# Instead you should use the "each" method and pass it a block.
-# A block is a bunch of code that you can pass to a method like "each".
-# It is analogous to lambdas, anonymous functions or closures in other
-# programming languages.
+# TUY NHIÊN, không ai sử dụng vòng lặp  for.
+# Thay vào đó, ban nên dùng phương thức "each" và truyền vào đó một khối.
+# Một khối là một loạt các mã mà bạn có thể truyền
+# cho một phương thức giống như each.
+# Nó tương tự với lambda,  các hàm ẩn danh hoặc closures trong các ngôn ngữ
+# lập trình khác.
 #
-# The "each" method of a range runs the block once for each element of the range.
-# The block is passed a counter as a parameter.
-# Calling the "each" method with a block looks like this:
+# Phương thức "each" cho một khoản sẽ chạy qua từng phần tử của khoảng đó.
+# Khối được truyền vào là một số đếm như là tham số.
+# Gọi một method "each" với một khối sẽ trông như thế này:
 
 (1..5).each do |counter|
   puts "iteration #{counter}"
@@ -257,21 +248,15 @@ end
 #=> iteration 4
 #=> iteration 5
 
-# You can also surround blocks in curly brackets:
+# Bạn cũng có thể bao khối trong các dấu ngoặc nhọn.
 (1..5).each { |counter| puts "iteration #{counter}" }
 
-# The contents of data structures can also be iterated using each.
+# Các nội dung của cấu trúc dữ liệu cũng có thể được lặp bằng each.
 array.each do |element|
   puts "#{element} is part of the array"
 end
 hash.each do |key, value|
   puts "#{key} is #{value}"
-end
-
-# If you still need and index you can use "each_with_index" and define an index
-# variable
-array.each_with_index do |element, index|
-  puts "#{element} is number #{index} in the array"
 end
 
 counter = 1
@@ -284,19 +269,6 @@ end
 #=> iteration 3
 #=> iteration 4
 #=> iteration 5
-
-# There are a bunch of other helpful looping functions in Ruby, 
-# for example "map", "reduce", "inject", the list goes on. Map,
-# for instance, takes the array it's looping over, does something
-# to it as defined in your block, and returns an entirely new array.
-array = [1,2,3,4,5]
-doubled = array.map do |element|
-  element * 2
-end
-puts doubled
-#=> [2,4,6,8,10]
-puts array
-#=> [1,2,3,4,5]
 
 grade = 'B'
 
@@ -316,7 +288,7 @@ else
 end
 #=> "Better luck next time"
 
-# cases can also use ranges
+# Cases cũng được dùng cho các dãy
 grade = 82
 case grade
 when 90..100
@@ -328,9 +300,9 @@ else
 end
 #=> "OK job"
 
-# exception handling:
+# Xử lý ngoại lệ:
 begin
-  # code here that might raise an exception
+  # Code ở đây có thể sẽ đưa ra một ngoại lệ.
   raise NoMemoryError, 'You ran out of memory.'
 rescue NoMemoryError => exception_variable
   puts 'NoMemoryError was raised', exception_variable
@@ -342,16 +314,16 @@ ensure
   puts 'This code always runs no matter what'
 end
 
-# Functions
+# Hàm
 
 def double(x)
   x * 2
 end
 
-# Functions (and all blocks) implicitly return the value of the last statement
+# Hàm (và tất cả các khối) được mặc định giá trị trả về ở mệnh đề cuối.
 double(2) #=> 4
 
-# Parentheses are optional where the result is unambiguous
+# Dấu ngoặc là một tuỳ chọn cho một kết quả rõ ràng.
 double 3 #=> 6
 
 double double 3 #=> 12
@@ -360,15 +332,14 @@ def sum(x, y)
   x + y
 end
 
-# Method arguments are separated by a comma
+# Các đối số được chia cắt bởi dấu phẩy.
 sum 3, 4 #=> 7
 
 sum sum(3, 4), 5 #=> 12
 
 # yield
-# All methods have an implicit, optional block parameter
-# it can be called with the 'yield' keyword
-
+# Tất cả các hàm có thể có một tham số tuỳ chọn.
+# Nó có thể được gọi với từ khóa "yield".
 def surround
   puts '{'
   yield
@@ -382,51 +353,51 @@ surround { puts 'hello world' }
 # }
 
 
-# You can pass a block to a function
-# "&" marks a reference to a passed block
+# Bạn có thể truyền một khối đến một hàm
+# Dấu "&" được đánh dấu đến một khối
 def guests(&block)
   block.call 'some_argument'
 end
 
-# You can pass a list of arguments, which will be converted into an array
-# That's what splat operator ("*") is for
+# Bạn có thể truyền một danh sách các tham số, nó sẽ được chuyển thành mảng.
+# Thông qua việc sử dụng dấu *.
 def guests(*array)
   array.each { |guest| puts guest }
 end
 
-# Define a class with the class keyword
+# Định nghĩ một lớp thông qua từ khoá class.
 class Human
 
-  # A class variable. It is shared by all instances of this class.
+  # Một biến class. Nó được chia sẽ cho tất cả các instance của lớp này.
   @@species = 'H. sapiens'
 
-  # Basic initializer
+  # Các khởi tạo căn bản
   def initialize(name, age = 0)
-    # Assign the argument to the "name" instance variable for the instance
+    # Gán đối số đến biến instance "name"
     @name = name
-    # If no age given, we will fall back to the default in the arguments list.
+    # Nếu không có age, sẽ lấy giá trị mặc định trong danh sách đối số.
     @age = age
   end
 
-  # Basic setter method
+  # Hàm nhập giá trị căn bản
   def name=(name)
     @name = name
   end
 
-  # Basic getter method
+  # Hàm lấy giá trị căn bản
   def name
     @name
   end
 
-  # The above functionality can be encapsulated using the attr_accessor method as follows
+  # Các hàm trên có thể được gọn lại bằng cách dùng hàm attr_accessor
   attr_accessor :name
 
-  # Getter/setter methods can also be created individually like this
+  # Các hàm nhận/lấy cũng có thể được tạo riêng như sau:
   attr_reader :name
   attr_writer :name
 
-  # A class method uses self to distinguish from instance methods.
-  # It can only be called on the class, not an instance.
+  # Một hàm lớp dùng self để phân biệt với hàm instance.
+  # Nó chỉ có thể được gọi trên lớp.
   def self.say(msg)
     puts msg
   end
@@ -437,12 +408,12 @@ class Human
 end
 
 
-# Instantiate a class
+# Khởi tạo một lớp
 jim = Human.new('Jim Halpert')
 
 dwight = Human.new('Dwight K. Schrute')
 
-# Let's call a couple of methods
+# Hãy gọi một cặp các hàm.
 jim.species #=> "H. sapiens"
 jim.name #=> "Jim Halpert"
 jim.name = "Jim Halpert II" #=> "Jim Halpert II"
@@ -450,30 +421,30 @@ jim.name #=> "Jim Halpert II"
 dwight.species #=> "H. sapiens"
 dwight.name #=> "Dwight K. Schrute"
 
-# Call the class method
+# Gọi một hàm lớp
 Human.say('Hi') #=> "Hi"
 
-# Variable's scopes are defined by the way we name them.
-# Variables that start with $ have global scope
+# Phạm vi của biến được định nghĩa bởi cách chúng ta đặt tên cho chúng.
+# Các biến bắt đầu với dấu $ là biến toàn cục.
 $var = "I'm a global var"
 defined? $var #=> "global-variable"
 
-# Variables that start with @ have instance scope
+# Các biến bắt đầu với dấu @ là biến phạm vi.
 @var = "I'm an instance var"
 defined? @var #=> "instance-variable"
 
-# Variables that start with @@ have class scope
+# Các biến bắt đầu với dấu @@ có pham vi là trong một lớp.
 @@var = "I'm a class var"
 defined? @@var #=> "class variable"
 
-# Variables that start with a capital letter are constants
+# Các biến bắt đầu với ký tự viết hoa là biến hằng.
 Var = "I'm a constant"
 defined? Var #=> "constant"
 
-# Class is also an object in ruby. So class can have instance variables.
-# Class variable is shared among the class and all of its descendants.
+# Lớp cũng là một đối tượng trong Ruby. Bởi vậy lớp có các biến instance.
+# Biến lớp được chia sẽ trong lớp và các lớp kế thừa nó.
 
-# base class
+# Lớp cơ sở
 class Human
   @@foo = 0
 
@@ -486,7 +457,7 @@ class Human
   end
 end
 
-# derived class
+# Lớp kế thừa
 class Worker < Human
 end
 
@@ -496,7 +467,7 @@ Worker.foo # 0
 Human.foo = 2 # 2
 Worker.foo # 2
 
-# Class instance variable is not shared by the class's descendants.
+# Các biến lớp instance không được chia sẽ trong lớp kế thừa.
 
 class Human
   @bar = 0
@@ -522,8 +493,8 @@ module ModuleExample
   end
 end
 
-# Including modules binds their methods to the class instances
-# Extending modules binds their methods to the class itself
+# Include một module sẽ đưa các hàm của module thành instances của lớp.
+# Extend một module sẽ đưa các hàm của module thành các biến của lớp.
 
 class Person
   include ModuleExample
@@ -538,7 +509,7 @@ Person.new.foo # => 'foo'
 Book.foo       # => 'foo'
 Book.new.foo   # => NoMethodError: undefined method `foo'
 
-# Callbacks are executed when including and extending a module
+# Hàm hồi quy được thực hiện khi include và extend một module.
 
 module ConcernExample
   def self.included(base)
@@ -569,7 +540,7 @@ Something.new.bar # => NoMethodError: undefined method `bar'
 Something.new.qux # => 'qux'
 ```
 
-## Additional resources
+## Các nguồn tham khảo thêm.
 
 - [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - A variant of this reference with in-browser challenges.
 - [Official Documentation](http://www.ruby-doc.org/core-2.1.1/)

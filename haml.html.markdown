@@ -122,10 +122,35 @@ $ haml input_file.haml output_file.html
 
   if book do
     %p This is a book
+    
+/ Adding ordered / unordered list
+%ul
+  %li
+    =item1
+    =item2
 
 /
   Again, no need to add the closing tags to the block, even for the Ruby.
   Indentation will take care of that for you.
+
+/ -------------------------------------------
+/ Inserting Table with bootstrap classes
+/ -------------------------------------------
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Header 1
+      %th Header 2
+    
+    %tr
+      %td Value1
+      %td value2
+    
+  %tfoot
+    %tr
+      %td
+        Foot value
 
 
 / -------------------------------------------
