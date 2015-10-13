@@ -38,7 +38,7 @@ For the purposes of this, however, everything is going to be 100% valid JSON. Lu
     }
   },
   
-  "string" : ["json array containing json objects"],
+  "json_array" : ["json array containing json objects"],
   
   "silliness": [
     {
