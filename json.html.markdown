@@ -58,7 +58,7 @@ Drawbacks of JSON include lack of type definition and some sort of DTD.
 
   "alternative style": {
     "comment": "check this out!"
-  , "comma position": "doesn't matter - as long as it's before the value, then it's valid"
+  , "comma position": "doesn't matter - as long as it's before the next key, then it's valid"
   , "another comment": "how nice"
   },
 
