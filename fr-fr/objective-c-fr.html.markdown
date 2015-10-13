@@ -14,7 +14,7 @@ lang: fr-fr
 
 L'Objective-C est un langage de programmation orienté objet réflexif principalement utilisé par Apple pour les systèmes d'exploitations Mac OS X et iOS et leurs frameworks respectifs, Cocoa et Cocoa Touch.
 
-```objective_c
+```objective-c
 // Les commentaires sur une seule ligne commencent par //
 
 /*
