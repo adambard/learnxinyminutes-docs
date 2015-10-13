@@ -6,6 +6,7 @@ contributors:
     - ["Madison Dickson", "http://github.com/mix3d"]
     - ["Simon Morgan", "http://sjm.io/"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
+    - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
 filename: LearnJava.java
 ---
 
@@ -286,6 +287,23 @@ public class LearnJava {
                      break;
         }
         System.out.println("Switch Case Result: " + monthString);
+        
+        // Starting in Java 7 and above, switching Strings works like this:
+        String myAnswer = "maybe";
+        switch(myAnswer){
+            case "yes":
+                System.out.println("You answered yes.");
+                break;
+            case "no":
+                System.out.println("You answered no.");
+                break;
+            case "maybe":
+                System.out.println("You answered maybe.");
+                break;
+            default:
+                System.out.println("You answered " + myAnswer);
+                break;
+        }
 
         // Conditional Shorthand
         // You can use the '?' operator for quick assignments or logic forks.
