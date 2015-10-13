@@ -8,7 +8,7 @@ commented code and explained as they go.
 
 ... to write more inline code tutorials. Just grab an existing file from
 this repo and copy the formatting (don't worry, it's all very simple).
-Make a new file, send a pull request, and if it passes muster I'll get it up pronto.
+Make a new file, send a pull request, and if it passes master I'll get it up pronto.
 Remember to fill in the "contributors" fields so you get credited
 properly!
 
