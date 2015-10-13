@@ -27,6 +27,7 @@ Multi-line comments don't nest /* Be careful */  // comment ends on this line...
 */ // ...not this one!
 
 // Constants: #define <keyword>
+// Constants are written in all-caps out of convention, not requirement
 #define DAYS_IN_YEAR 365
 
 // Enumeration constants are also ways to declare constants.
@@ -56,6 +57,15 @@ int add_two_ints(int x1, int x2); // function prototype
 // Your program's entry point is a function called
 // main with an integer return type.
 int main(void) {
+  // your program
+}
+
+// The command line arguments used to run your program are also passed to main
+// argc being the number of arguments - your program's name counts as 1
+// argv is an array of character arrays - containing the arguments themselves
+// argv[0] = name of your program, argv[1] = first argument, etc.
+int main (int argc, char** argv)
+{
   // print output using printf, for "print formatted"
   // %d is an integer, \n is a newline
   printf("%d\n", 0); // => Prints 0
