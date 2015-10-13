@@ -150,7 +150,7 @@ $ echo "temp/" >> .gitignore
 $ echo "private_key" >> .gitignore
 ```
 
-#### Resources
+##### Gitignore Resources
 * [gitignore.io](https://www.gitignore.io/)
 * [Common .gitignore](http://commongitignore.com/)
 
