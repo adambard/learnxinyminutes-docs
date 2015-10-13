@@ -150,6 +150,10 @@ $ echo "temp/" >> .gitignore
 $ echo "private_key" >> .gitignore
 ```
 
+#### Resources
+* [gitignore.io](https://www.gitignore.io/)
+* [Common .gitignore](http://commongitignore.com/)
+
 ### status
 
 To show differences between the index file (basically your working copy/repo)
