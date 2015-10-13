@@ -463,7 +463,7 @@ with open("myfile.txt") as f:
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
-print(our_iterable) # => range(1,10). This is an object that implements our Iterable interface
+print(our_iterable) # => dict_keys(['one', 'two', 'three']). This is an object that implements our Iterable interface.
 
 # We can loop over it.
 for i in our_iterable:
@@ -552,19 +552,19 @@ x, y = swap(x, y) # => x = 2, y = 1
 # Function Scope
 x = 5
 
-def setX(num):
+def set_x(num):
     # Local var x not the same as global variable x
     x = num # => 43
     print (x) # => 43
 
-def setGlobalX(num):
+def set_global_x(num):
     global x
     print (x) # => 5
     x = num # global var x is now set to 6
     print (x) # => 6
 
-setX(43)
-setGlobalX(6)
+set_x(43)
+set_global_x(6)
 
 
 # Python has first class functions
@@ -613,6 +613,9 @@ class Human:
         # Assign the argument to the instance's name attribute
         self.name = name
 
+        # Initialize property
+        self.age = 0
+
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
         return "{name}: {message}".format(name=self.name, message=msg)
@@ -627,6 +630,23 @@ class Human:
     @staticmethod
     def grunt():
         return "*grunt*"
+
+    # A property is just like a getter.
+    # It turns the method age() into an read-only attribute
+    # of the same name.
+    @property
+    def age(self):
+        return self._age
+
+    # This allows the property to be set
+    @age.setter
+    def age(self, age):
+        self._age = age
+	
+    # This allows the property to be deleted
+    @age.deleter
+    def age(self):
+        del self._age
 
 
 # Instantiate a class
@@ -646,6 +666,17 @@ j.get_species()   # => "H. neanderthalensis"
 
 # Call the static method
 Human.grunt()   # => "*grunt*"
+
+# Update the property
+i.age = 42
+
+# Get the property
+i.age # => 42
+
+# Delete the property
+del i.age
+i.age  # => raises an AttributeError
+
 
 
 ####################################################
