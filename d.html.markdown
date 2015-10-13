@@ -23,8 +23,10 @@ about [D](http://dlang.org/). The D programming language is a modern, general-pu
 multi-paradigm language with support for everything from low-level features to
 expressive high-level abstractions.
 
-D is actively developed by a large group of super-smart people and is spearheaded by Walter Bright
-and Andrei Alexandrescu. With all that out of the way, let's look at some examples!
+D is actively developed by a large group of super-smart people and is spearheaded by
+[Walter Bright](https://en.wikipedia.org/wiki/Walter_Bright) and
+[Andrei Alexandrescu](https://en.wikipedia.org/wiki/Andrei_Alexandrescu).
+With all that out of the way, let's look at some examples!
 
 ```c
 import std.stdio;
