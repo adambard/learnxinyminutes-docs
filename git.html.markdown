@@ -5,6 +5,7 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Leo Rudberg" , "http://github.com/LOZORD"]
     - ["Betsy Lorton" , "http://github.com/schbetsy"]
+    - ["Chris DeMars", "http://github.com/chrisdemars"]
 filename: LearnGit.txt
 ---
 
@@ -374,7 +375,7 @@ Stashing takes the dirty state of your working directory and saves it on a stack
 of unfinished changes that you can reapply at any time.
 
 Let's say you've been doing some work in your git repo, but you want to pull
-from the remote. Since you have dirty (uncommited) changes to some files, you
+from the remote. Since you have dirty (uncommitted) changes to some files, you
 are not able to run `git pull`. Instead, you can run `git stash` to save your
 changes onto a stack!
 
@@ -461,7 +462,7 @@ $ git reset --hard
 $ git reset 31f2bb1
 
 # Moves the current branch tip backward to the specified commit
-# and makes the working dir match (deletes uncommited changes and all commits
+# and makes the working dir match (deletes uncommitted changes and all commits
 # after the specified commit).
 $ git reset --hard 31f2bb1
 ```
