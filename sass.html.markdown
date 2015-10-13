@@ -28,9 +28,9 @@ easier.
 // Sass also supports single line comments that use double slashes. These 
 // comments will not be rendered in your compiled CSS
 
-/* ####################
+/* ############
    ## VARIABLES
-   #################### */
+   ############ */
 
 /* Sass allows you to define variables that can be used throughout
    your stylesheets. Variables are defined by placing a '$' in front 
@@ -60,9 +60,9 @@ h1 {
   font-size: 24px;
 }
 
-/* ####################
+/* ##########
    ## NESTING
-   #################### */
+   ########## */
    
 /* Nesting allows you to easily group together statements and nest them
    in a way that indicates their hierarchy */
@@ -114,9 +114,9 @@ article img {
    specificity and make your CSS harder to work with and maintain. Best 
    practices recommend going no more than 3 levels deep when nesting. */
    
-/* ###############################
+/* #############################
    ## REFERENCE PARENT SELECTORS
-   ############################### */   
+   ############################# */   
    
 /* Reference parent selectors are used when you're nesting statements and want
    to reference the parent selector from within the nested statements. You can
@@ -151,9 +151,9 @@ body.noLinks a {
 }
 
 
-/* ####################
+/* #########
    ## MIXINS
-   #################### */
+   ######### */
    
 /* Mixins allow you to define reusable chunks of CSS. They can take one or more
    arguments to allow you to make reusable pieces of styling. Mixins very 
@@ -179,9 +179,9 @@ body.noLinks a {
   border-radius: 4px;
 }
 
-/* ####################
+/* ############
    ## FUNCTIONS
-   #################### */
+   ############ */
    
 /* Sass provides functions that can be used to accomplish a variety of 
    tasks. Consider the following */
@@ -239,6 +239,48 @@ $main-content: calculate-percentage(600px, 960px);
 .sidebar {
   width: 31.25%;
 }
+
+/* #######################
+   ## PARTIALS AND IMPORTS
+   ####################### */
+/* Sass allows you to create partial files. This can help keep your Sass
+   code modularized. Partial files should begin with an '_', e.g. _reset.css.
+   Partials are not generated into CSS. */
+   
+/* Consider the following CSS which we'll put in a file called _reset.css */
+   
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+   
+/* Sass offers @import which can be used to import partials into a file.
+   This differs from the traditional CSS @import statement which makes 
+   another HTTP request to fetch the imported file. Sass takes the 
+   imported file and combines it with the compiled code. */
+   
+@import 'reset';
+   
+body {
+  font-size: 16px;
+  font-family: Helvetica, Arial, Sans-serif;
+}
+
+/* Generated CSS result */
+
+html, body, ul, ol {
+  margin: 0;
+  padding: 0;
+}   
+
+body {
+  font-size: 16px;
+  font-family: Helvetica, Arial, Sans-serif;
+}
+
 
 /* #####################
    ## EXTEND/INHERITANCE
@@ -301,9 +343,9 @@ $main-content: calculate-percentage(600px, 960px);
    that called the mixin. While it won't affect your workflow, it will
    add unnecessary bloat to the files created by the Sass compiler. */
    
-/* #########################
+/* ########################
    ## PLACEHOLDER SELECTORS
-   ######################### */   
+   ######################## */   
    
 /* Placeholders are useful when creating a CSS statement to extend. If you
    wanted to create a CSS statement that was exclusively used with @extend,
@@ -335,9 +377,9 @@ $main-content: calculate-percentage(600px, 960px);
   background-color: #0000ff;
 }
       
-/* ####################
+/* ##################
    ## MATH OPERATIONS
-   #################### */      
+   ################## */      
    
 /* Sass provides the following operators: +, -, *, /, and %. These can
    be useful for calculating values directly in your Sass files instead
@@ -397,8 +439,8 @@ tools to compile Sass into CSS. Many IDEs also offer Sass compilation, as well.
 
 ## Compatibility
 
-Sass can be used in any project as long as you have something to compile it
+Sass can be used in any project as long as you have a program to compile it
 into CSS. You'll want to verify that the CSS you're using is compatible
 with your target browsers. 
 
-[QuirksMode CSS](http://www.quirksmode.org/css/) and [CanIUse](http://caniuse.com) great resources for checking compatibility. 
+[QuirksMode CSS](http://www.quirksmode.org/css/) and [CanIUse](http://caniuse.com) are great resources for checking compatibility. 
