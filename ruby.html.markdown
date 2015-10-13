@@ -12,6 +12,7 @@ contributors:
   - ["Dzianis Dashkevich", "https://github.com/dskecse"]
   - ["Levi Bostian", "https://github.com/levibostian"]
   - ["Rahil Momin", "https://github.com/iamrahil"]
+  - ["Gabriel Halley", https://github.com/ghalley]
 
 ---
 
@@ -39,6 +40,7 @@ You shouldn't either
 10 * 2 #=> 20
 35 / 5 #=> 7
 2**5 #=> 32
+5 % 3 #=> 2
 
 # Arithmetic is just syntactic sugar
 # for calling a method on an object
@@ -160,6 +162,7 @@ array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 # Arrays can be indexed
 # From the front
 array[0] #=> 1
+array.first #=> 1
 array[12] #=> nil
 
 # Like arithmetic, [var] access
@@ -170,6 +173,7 @@ array.[] 12 #=> nil
 
 # From the end
 array[-1] #=> 5
+array.last #=> 5
 
 # With a start index and length
 array[2, 3] #=> [3, 4, 5]
@@ -262,6 +266,12 @@ array.each do |element|
 end
 hash.each do |key, value|
   puts "#{key} is #{value}"
+end
+
+# If you still need and index you can use "each_with_index" and define an index
+# variable
+array.each_with_index do |element, index|
+  puts "#{element} is number #{index} in the array"
 end
 
 counter = 1
