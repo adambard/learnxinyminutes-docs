@@ -68,15 +68,15 @@ not False  # => True
 
 # Boolean Operators
 # Note "and" and "or" are case-sensitive
-True and False #=> False
-False or True #=> True
+True and False # => False
+False or True # => True
 
 # Note using Bool operators with ints
-0 and 2 #=> 0
--5 or 0 #=> -5
-0 == False #=> True
-2 == True #=> False
-1 == True #=> True
+0 and 2 # => 0
+-5 or 0 # => -5
+0 == False # => True
+2 == True # => False
+1 == True # => True
 
 # Equality is ==
 1 == 1  # => True
@@ -123,10 +123,10 @@ b == a # => True, a's and b's objects are equal
 
 # You can repeat the formatting arguments to save some typing.
 "{0} be nimble, {0} be quick, {0} jump over the {1}".format("Jack", "candle stick")
-#=> "Jack be nimble, Jack be quick, Jack jump over the candle stick"
+# => "Jack be nimble, Jack be quick, Jack jump over the candle stick"
 
 # You can use keywords if you don't want to count.
-"{name} wants to eat {food}".format(name="Bob", food="lasagna") #=> "Bob wants to eat lasagna"
+"{name} wants to eat {food}".format(name="Bob", food="lasagna") # => "Bob wants to eat lasagna"
 
 # If your Python 3 code also needs to run on Python 2.5 and below, you can also
 # still use the old style of formatting:
@@ -145,8 +145,8 @@ None is None  # => True
 # All other values are True
 bool(0)  # => False
 bool("")  # => False
-bool([]) #=> False
-bool({}) #=> False
+bool([])  # => False
+bool({})  # => False
 
 
 ####################################################
@@ -212,6 +212,17 @@ li2 = li[:] # => li2 = [1, 2, 4, 3] but (li2 is li) will result in false.
 # Remove arbitrary elements from a list with "del"
 del li[2]   # li is now [1, 2, 3]
 
+# Remove first occurrence of a value
+li.remove(2)  # li is now [1, 3]
+li.remove(2)  # Raises a ValueError as 2 is not in the list
+
+# Insert an element at a specific index
+li.insert(1, 2)  # li is now [1, 2, 3] again
+
+# Get the index of the first item found
+li.index(2)  # => 3
+li.index(4)  # Raises a ValueError as 4 is not in the list
+
 # You can add lists
 # Note: values for li and for other_li are not modified.
 li + other_li   # => [1, 2, 3, 4, 5, 6]
@@ -244,11 +255,13 @@ tup[:2]   # => (1, 2)
 2 in tup   # => True
 
 # You can unpack tuples (or lists) into variables
-a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
+a, b, c = (1, 2, 3)  # a is now 1, b is now 2 and c is now 3
+# You can also do extended unpacking
+a, *b, c = (1, 2, 3, 4)  # a is now 1, b is now [2, 3] and c is now 4
 # Tuples are created by default if you leave out the parentheses
 d, e, f = 4, 5, 6
 # Now look how easy it is to swap two values
-e, d = d, e     # d is now 5 and e is now 4
+e, d = d, e  # d is now 5 and e is now 4
 
 
 # Dictionaries store mappings
@@ -296,11 +309,16 @@ filled_dict.setdefault("five", 5)  # filled_dict["five"] is set to 5
 filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5
 
 # Adding to a dictionary
-filled_dict.update({"four":4}) #=> {"one": 1, "two": 2, "three": 3, "four": 4}
+filled_dict.update({"four":4}) # => {"one": 1, "two": 2, "three": 3, "four": 4}
 #filled_dict["four"] = 4  #another way to add to dict
 
 # Remove keys from a dictionary with del
 del filled_dict["one"]  # Removes the key "one" from filled dict
+
+# From Python 3.5 you can also use the additional unpacking options
+{'a': 1, **{'b': 2}}  # => {'a': 1, 'b': 2}
+{'a': 1, **{'a': 2}}  # => {'a': 2}
+
 
 
 # Sets store ... well sets
@@ -326,7 +344,16 @@ filled_set & other_set   # => {3, 4, 5}
 filled_set | other_set   # => {1, 2, 3, 4, 5, 6}
 
 # Do set difference with -
-{1, 2, 3, 4} - {2, 3, 5}   # => {1, 4}
+{1, 2, 3, 4} - {2, 3, 5}  # => {1, 4}
+
+# Do set symmetric difference with ^
+{1, 2, 3, 4} ^ {2, 3, 5}  # => {1, 4, 5}
+
+# Check if set on the left is a superset of set on the right
+{1, 2} >= {1, 2, 3} # => False
+
+# Check if set on the left is a subset of set on the right
+{1, 2} <= {1, 2, 3} # => True
 
 # Check for existence in a set with in
 2 in filled_set   # => True
@@ -435,7 +462,7 @@ with open("myfile.txt") as f:
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
-print(our_iterable) #=> range(1,10). This is an object that implements our Iterable interface
+print(our_iterable) # => range(1,10). This is an object that implements our Iterable interface
 
 # We can loop over it.
 for i in our_iterable:
@@ -449,17 +476,17 @@ our_iterator = iter(our_iterable)
 
 # Our iterator is an object that can remember the state as we traverse through it.
 # We get the next object with "next()".
-next(our_iterator)  #=> "one"
+next(our_iterator)  # => "one"
 
 # It maintains state as we iterate.
-next(our_iterator)  #=> "two"
-next(our_iterator)  #=> "three"
+next(our_iterator)  # => "two"
+next(our_iterator)  # => "three"
 
 # After the iterator has returned all of its data, it gives you a StopIterator Exception
 next(our_iterator) # Raises StopIteration
 
 # You can grab all the elements of an iterator by calling list() on it.
-list(filled_dict.keys())  #=> Returns ["one", "two", "three"]
+list(filled_dict.keys())  # => Returns ["one", "two", "three"]
 
 
 ####################################################
