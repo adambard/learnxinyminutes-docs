@@ -630,6 +630,8 @@ typedef void (*my_fnp_type)(char *);
 
 ```
 
+### Header Files
+
 Header files are an important part of c as they allow for the connection of c 
 source files and can simplify code and definitions by seperating them into 
 seperate files.
@@ -639,7 +641,7 @@ files. They can be included in your c source file by using the precompiler
 command #include "example.h", given that example.h exists in the same directory 
 as the c file.
 
-```c
+```h
 /* A safe guard to prevent the header from being defined too many times. This */
 /* happens in the case of circle dependency, the contents of the header is    */
 /* already defined.                                                           */
