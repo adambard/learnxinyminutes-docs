@@ -1,6 +1,6 @@
 ---
-language: D 
-filename: learnd.d 
+language: D
+filename: learnd.d
 contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]
 lang: en
@@ -18,13 +18,15 @@ void main(string[] args) {
 }
 ```
 
-If you're like me and spend way too much time on the internet, odds are you've heard 
+If you're like me and spend way too much time on the internet, odds are you've heard
 about [D](http://dlang.org/). The D programming language is a modern, general-purpose,
-multi-paradigm language with support for everything from low-level features to 
+multi-paradigm language with support for everything from low-level features to
 expressive high-level abstractions.
 
-D is actively developed by Walter Bright and Andrei Alexandrescu, two super smart, really cool
-dudes. With all that out of the way, let's look at some examples!
+D is actively developed by a large group of super-smart people and is spearheaded by
+[Walter Bright](https://en.wikipedia.org/wiki/Walter_Bright) and
+[Andrei Alexandrescu](https://en.wikipedia.org/wiki/Andrei_Alexandrescu).
+With all that out of the way, let's look at some examples!
 
 ```c
 import std.stdio;
@@ -36,9 +38,10 @@ void main() {
         writeln(i);
     }
 
-    auto n = 1; // use auto for type inferred variables
-    
-    // Numeric literals can use _ as a digit seperator for clarity
+    // 'auto' can be used for inferring types.
+    auto n = 1;
+
+    // Numeric literals can use '_' as a digit separator for clarity.
     while(n < 10_000) {
         n += n;
     }
@@ -47,13 +50,15 @@ void main() {
         n -= (n / 2);
     } while(n > 0);
 
-    // For and while are nice, but in D-land we prefer foreach
-    // The .. creates a continuous range, excluding the end
-    foreach(i; 1..1_000_000) { 
+    // For and while are nice, but in D-land we prefer 'foreach' loops.
+    // The '..' creates a continuous range, including the first value
+    // but excluding the last.
+    foreach(i; 1..1_000_000) {
         if(n % 2 == 0)
             writeln(i);
     }
 
+    // There's also 'foreach_reverse' when you want to loop backwards.
     foreach_reverse(i; 1..int.max) {
         if(n % 2 == 1) {
             writeln(i);
@@ -72,13 +77,13 @@ we can use templates to parameterize all of these on both types and values!
 // Here, T is a type parameter. Think <T> from C++/C#/Java
 struct LinkedList(T) {
     T data = null;
-    LinkedList!(T)* next; // The ! is used to instaniate a parameterized type. Again, think <T> 
+    LinkedList!(T)* next; // The ! is used to instaniate a parameterized type. Again, think <T>
 }
 
 class BinTree(T) {
     T data = null;
-    
-    // If there is only one template parameter, we can omit parens
+
+    // If there is only one template parameter, we can omit the parentheses
     BinTree!T left;
     BinTree!T right;
 }
@@ -101,7 +106,7 @@ alias NumTree = BinTree!double;
 // We can create function templates as well!
 
 T max(T)(T a, T b) {
-    if(a < b) 
+    if(a < b)
         return b;
 
     return a;
@@ -114,7 +119,7 @@ void swap(T)(ref T a, ref T b) {
     auto temp = a;
 
     a = b;
-    b = temp; 
+    b = temp;
 }
 
 // With templates, we can also parameterize on values, not just types
@@ -145,13 +150,13 @@ class MyClass(T, U) {
 class MyClass(T, U) {
     T _data;
     U _other;
-    
+
     // Constructors are always named `this`
     this(T t, U u) {
         data = t;
         other = u;
     }
-    
+
     // getters
     @property T data() {
         return _data;
@@ -161,7 +166,7 @@ class MyClass(T, U) {
         return _other;
     }
 
-    // setters    
+    // setters
     @property void data(T t) {
         _data = t;
     }
@@ -177,7 +182,7 @@ void main() {
 
     mc.data = 7;
     mc.other = "seven";
-    
+
     writeln(mc.data);
     writeln(mc.other);
 }
@@ -193,7 +198,7 @@ and `override`ing methods. D does inheritance just like Java:
 Extend one class, implement as many interfaces as you please.
 
 We've seen D's OOP facilities, but let's switch gears. D offers
-functional programming with first-class functions, `pure` 
+functional programming with first-class functions, `pure`
 functions, and immutable data. In addition, all of your favorite
 functional algorithms (map, filter, reduce and friends) can be
 found in the wonderful `std.algorithm` module!
@@ -205,7 +210,7 @@ import std.range : iota; // builds an end-exclusive range
 void main() {
     // We want to print the sum of a list of squares of even ints
     // from 1 to 100. Easy!
-    
+
     // Just pass lambda expressions as template parameters!
     // You can pass any old function you like, but lambdas are convenient here.
     auto num = iota(1, 101).filter!(x => x % 2 == 0)
@@ -216,12 +221,12 @@ void main() {
 }
 ```
 
-Notice how we got to build a nice Haskellian pipeline to compute num? 
+Notice how we got to build a nice Haskellian pipeline to compute num?
 That's thanks to a D innovation know as Uniform Function Call Syntax.
 With UFCS, we can choose whether to write a function call as a method
 or free function call! Walter wrote a nice article on this
-[here.](http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394) 
-In short, you can call functions whose first parameter 
+[here.](http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394)
+In short, you can call functions whose first parameter
 is of some type A on any expression of type A as a method.
 
 I like parallelism. Anyone else like parallelism? Sure you do. Let's do some!

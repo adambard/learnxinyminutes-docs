@@ -1,446 +1,232 @@
 ---
 language: sass
-contributors:
-    - ["Sean Corrales", "https://github.com/droidenator"]
 filename: learnsass.scss
+contributors:
+  - ["Laura Kyle", "https://github.com/LauraNK"]
 ---
 
-Sass is a CSS pre-processor. It adds several features that plain
-CSS lacks such as variables, mixins, basic math, and inheritance.
- 
-Initially, Sass was written using spacing and indention instead
-of brackets and semi-colons; these files use the extension '.sass'.
-Sass was later revised to use brackets and semi-colons and become
-a superset of CSS3. This new version uses the extension ".scss". 
-Using ".scss" means that any valid CSS3 file can be converted to 
-Sass by simply changing the file extension to '.scss'.
+Sass is a CSS extension language that adds features such as variables, nesting, mixins and more. 
+Sass (and other preprocessors, such as [Less](http://lesscss.org/)) help developers to write maintainable and DRY (Don't Repeat Yourself) code.
 
-If you're already familiar with CSS3, you'll be able to pick up Sass
-relatively quickly. It does not provide any new styling options but rather
-the tools to write your CSS more efficiently and make maintenance much
-easier.
-
-```sass
-/* Like CSS, Sass uses slash-asterisk to denote comments. Slash-asterisk 
-   comments can span multiple lines. These comments will appear 
-   in your compiled CSS */
-
-// Sass also supports single line comments that use double slashes. These 
-// comments will not be rendered in your compiled CSS
-
-/* ############
-   ## VARIABLES
-   ############ */
-
-/* Sass allows you to define variables that can be used throughout
-   your stylesheets. Variables are defined by placing a '$' in front 
-   of a string. Many users like to keep their variables in a single file */
-$primary-color: #0000ff;
-$headline-size: 24px;
-
-/* Variables can be used in any CSS declaration. This allows you to change
-   a single value in one place. */
-a {
-  color: $primary-color;
-}
-
-h1 {
-  color: $primary-color;
-  font-size: $headline-size;
-}
-
-/* Generated CSS result */
-   
-a { 
-  color: #0000ff;
-}
-
-h1 {
-  color: #0000ff;
-  font-size: 24px;
-}
-
-/* ##########
-   ## NESTING
-   ########## */
-   
-/* Nesting allows you to easily group together statements and nest them
-   in a way that indicates their hierarchy */
-article {
-  font-size: 14px;
-  
-  a {
-    text-decoration: underline; 
-  }
-  
-  ul {
-    list-style-type: disc;
-    
-    li {
-      text-indent: 3em;
-    }
-  }
-  
-  pre, img {
-    display: inline-block;
-    float: left;
-  }
-}
-
-/* Generated CSS result */
-article {
-  font-size: 14px;
-}
-
-article a {
-  text-decoration: underline;
-}
-
-article ul {
-  list-style-type: disc;
-}
-
-article ul li {
-  text-indent: 3em;
-}
-
-article pre, 
-article img {
-  display: inline-block;
-  float: left;
-}
-
-/* It is recommended to not nest too deeply as this can cause issues with
-   specificity and make your CSS harder to work with and maintain. Best 
-   practices recommend going no more than 3 levels deep when nesting. */
-   
-/* #############################
-   ## REFERENCE PARENT SELECTORS
-   ############################# */   
-   
-/* Reference parent selectors are used when you're nesting statements and want
-   to reference the parent selector from within the nested statements. You can
-   reference a parent using & */
-   
-a {
-  text-decoration: none;
-  color: #ff0000;
-  
-  &:hover {
-    text-decoration: underline;  
-  }
-  
-  body.noLinks & {
-    display: none;
-  }
-}
-
-/* Generated CSS result */
-
-a {
-  text-decoration: none;
-  color: #ff0000;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-body.noLinks a {
-  display: none;
-}
+Sass has two different syntax options to choose from. SCSS, which has the same syntax as CSS but with the added features of Sass. Or Sass (the original syntax), which uses indentation rather than curly braces and semicolons. 
+This tutorial is written using SCSS.
 
 
-/* #########
-   ## MIXINS
-   ######### */
-   
-/* Mixins allow you to define reusable chunks of CSS. They can take one or more
-   arguments to allow you to make reusable pieces of styling. Mixins very 
-   helpful when dealing with vendor prefixes. */
-   
-@mixin form-button($color, $size, $border-radius) {
-  color: $color;
-  font-size: $size;
-  border-radius: $border-radius;
-}
+```scss
 
-/* Mixins are invoked within a CSS declaration. */
+	
+//Single line comments are removed when Sass is compiled to CSS.
 
-.user-form .submit {
-  @include form-button(#0000ff, 16px, 4px);
-}
+/*Multi line comments are preserved. */	
+	
+	
+	
+/*Variables
+==============================*/
+	
+	
 
-/* Generated CSS result */
+/* You can store a CSS value (such as a color) in a variable.
+Use the '$' symbol to create a variable. */
+	
+$primary-color: #A3A4FF;
+$secondary-color: #51527F;
+$body-font: 'Roboto', sans-serif;	
 
-.user-form .submit {
-  color: #0000ff;
-  font-size: 16px;
-  border-radius: 4px;
-}
-
-/* ############
-   ## FUNCTIONS
-   ############ */
-   
-/* Sass provides functions that can be used to accomplish a variety of 
-   tasks. Consider the following */
-
-/* Functions can be invoked by using their name and passing in the 
-   required arguments */
+/* You can use the variables throughout your stylesheet. 
+Now if you want to change a color, you only have to make the change once.*/	
+	
 body {
-  width: round(10.25px);    
+	background-color: $primary-color;
+	color: $secondary-color;
+	font-family: $body-font;
 }
 
-.footer {
-  background-color: fade_out(#000000, 0.25)
-}
-
-/* Generated CSS result */
-
+/* This would compile to: */
 body {
-  width: 10px;
-}
-
-.footer {
-  background-color: rgba(0, 0, 0, 0.75);
-}   
-   
-/* You may also define your own functions. Functions are very similar to 
-   mixins. When trying to choose between a function or a mixin, remember
-   that functions are best for returning values while mixins are best for
-   generating CSS while functions are better for logic that might be used
-   throughout your Sass code. The examples in the Math Operators' section 
-   are ideal candidates for becoming a reusable function. */
-
-/* This function will take a target size and the parent size and calculate 
-   and return the percentage */
-   
-@function calculate-percentage($target-size, $parent-size) {
-  @return $target-size / $parent-size * 100%;
-}
-
-$main-content: calculate-percentage(600px, 960px);
-
-.main-content {
-  width: $main-content;
-}
-
-.sidebar {
-  width: calculate-percentage(300px, 960px);
-}
-
-/* Generated CSS result */
-
-.main-content {
-  width: 62.5%;
-}
-
-.sidebar {
-  width: 31.25%;
-}
-
-/* #######################
-   ## PARTIALS AND IMPORTS
-   ####################### */
-/* Sass allows you to create partial files. This can help keep your Sass
-   code modularized. Partial files should begin with an '_', e.g. _reset.css.
-   Partials are not generated into CSS. */
-   
-/* Consider the following CSS which we'll put in a file called _reset.css */
-   
-html,
-body,
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-}
-   
-/* Sass offers @import which can be used to import partials into a file.
-   This differs from the traditional CSS @import statement which makes 
-   another HTTP request to fetch the imported file. Sass takes the 
-   imported file and combines it with the compiled code. */
-   
-@import 'reset';
-   
-body {
-  font-size: 16px;
-  font-family: Helvetica, Arial, Sans-serif;
-}
-
-/* Generated CSS result */
-
-html, body, ul, ol {
-  margin: 0;
-  padding: 0;
-}   
-
-body {
-  font-size: 16px;
-  font-family: Helvetica, Arial, Sans-serif;
+	background-color: #A3A4FF;
+	color: #51527F;
+	font-family: 'Roboto', sans-serif;
 }
 
 
-/* #####################
-   ## EXTEND/INHERITANCE
-   ##################### */
-   
-/* Sass allows you to extend an existing CSS statement. This makes it 
-   very easy to write CSS that does not violate DRY principles. Any
-   CSS statement can be extended */
-   
-.content-window {
-  font-size: 14px;
-  padding: 10px;
-  color: #000;
-  border-radius: 4px;
+/* This is much more maintainable than having to change the color
+each time it appears throughout your stylesheet. */
+	
+
+
+/*Mixins
+==============================*/
+
+
+
+/* If you find you are writing the same code for more than one
+element, you might want to store that code in a mixin.
+
+Use the '@mixin' directive, plus a name for your mixin.*/
+
+@mixin center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
 }
 
-.message-window {
-  @extend .content-window;
-  background-color: #0000ff;
+/* You can use the mixin with '@include' and the mixin name. */
+
+div {
+	@include center;
+	background-color: $primary-color;
 }
 
-.notification-window {
-  @extend .content-window;
-  background-color: #ff0000;
+/*Which would compile to: */
+div {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	background-color: #A3A4FF;
 }
 
-.settings-window {
-  @extend .content-window;
-  background-color: #ccc;
+
+/* You can use mixins to create a shorthand property. */
+
+@mixin size($width, $height) {
+	width: $width;
+	height: $height;
+}
+	
+/*Which you can invoke by passing width and height arguments. */
+
+.rectangle {
+	@include size(100px, 60px);
 }
 
-/* Generated CSS result */
-
-.content-window,
-.message-window,
-.notification-window,
-.settings-window {
-  font-size: 14px;
-  padding: 10px;
-  color: #000;
-  border-radius: 4px;
+.square {
+	@include size(40px, 40px);
 }
 
-.message-window {
-  background-color: #0000ff;
+/* This compiles to: */
+.rectangle {
+  width: 100px;
+  height: 60px; 
 }
 
-.notification-window {
-  background-color: #ff0000;
+.square {
+  width: 40px;
+  height: 40px; 
 }
 
-.settings-window {
-  background-color: #ccc;
+
+
+
+/*Extend (Inheritance)
+==============================*/
+
+
+
+/*Extend is a way to share the properties of one selector with another. */
+
+.display {
+	@include size(5em, 5em);
+	border: 5px solid $secondary-color;
 }
 
-/* Extending a CSS statement is preferable to creating a mixin 
-   because of the way it groups together the classes that all share
-   the same base styling. If this was done with a mixin, the font-size,
-   padding, color, and border-radius would be duplicated for each statement
-   that called the mixin. While it won't affect your workflow, it will
-   add unnecessary bloat to the files created by the Sass compiler. */
-   
-/* ########################
-   ## PLACEHOLDER SELECTORS
-   ######################## */   
-   
-/* Placeholders are useful when creating a CSS statement to extend. If you
-   wanted to create a CSS statement that was exclusively used with @extend,
-   you can do so using a placeholder. Placeholders begin with a '%' instead
-   of '.' or '#'. Placeholders will not appear in the compiled CSS. */
-   
-%content-window {
-  font-size: 14px;
-  padding: 10px;
-  color: #000;
-  border-radius: 4px;
+.display-success {
+	@extend .display;
+	border-color: #22df56;
 }
 
-.message-window {
-  @extend %content-window;
-  background-color: #0000ff;
+/* Compiles to: */
+.display, .display-success {
+  width: 5em;
+  height: 5em;
+  border: 5px solid #51527F; 
 }
 
-/* Generated CSS result */
-
-.message-window {
-  font-size: 14px;
-  padding: 10px;
-  color: #000;
-  border-radius: 4px;
+.display-success {
+  border-color: #22df56; 
 }
 
-.message-window {
-  background-color: #0000ff;
-}
-      
-/* ##################
-   ## MATH OPERATIONS
-   ################## */      
-   
-/* Sass provides the following operators: +, -, *, /, and %. These can
-   be useful for calculating values directly in your Sass files instead
-   of using values that you've already calculated by hand. Below is an example
-   of a setting up a simple two column design. */
-   
-$content-area: 960px;
-$main-content: 600px;
-$sidebar-content: 300px;
 
-$main-size: $main-content / $content-area * 100%;
-$sidebar-size: $sidebar-content / $content-area * 100%;
-$gutter: 100% - ($main-size + $sidebar-size);
+	
 
-body {
-  width: 100%;
+/*Nesting
+==============================*/
+
+
+
+/*Sass allows you to nest selectors within selectors */
+
+ul {
+	list-style-type: none;
+	margin-top: 2em;
+	
+	li {
+		background-color: #FF0000;		
+	}	
 }
 
-.main-content {
-  width: $main-size;
+/* '&' will be replaced by the parent selector. */
+/* You can also nest pseudo-classes. */
+/* Keep in mind that over-nesting will make your code less maintainable.
+For example: */
+
+ul {
+	list-style-type: none;
+	margin-top: 2em;
+	
+	li {
+		background-color: red;
+		
+		&:hover {
+		  background-color: blue;
+		}
+		
+		a {
+		  color: white;
+		}
+	}	
 }
 
-.sidebar {
-  width: $sidebar-size;
+/* Compiles to: */
+
+ul {
+  list-style-type: none;
+  margin-top: 2em;
 }
 
-.gutter {
-  width: $gutter;
+ul li {
+  background-color: red;
 }
 
-/* Generated CSS result */
-
-body {
-  width: 100%;
+ul li:hover {
+  background-color: blue;
 }
 
-.main-content {
-  width: 62.5%;
+ul li a {
+  color: white;
 }
 
-.sidebar {
-  width: 31.25%;
-}
 
-.gutter {
-  width: 6.25%;
-}
-   
-```
 
-## Usage
+	
+```	
 
-Sass files must be compiled into CSS. You can use any number of commandline
-tools to compile Sass into CSS. Many IDEs also offer Sass compilation, as well.
 
-[Compass](http://compass-style.org/) is one of the more popular tools for Sass compilation.  
 
-## Compatibility
+## SASS or Sass?
+Have you ever wondered whether Sass is an acronym or not? You probably haven't, but I'll tell you anyway. The name of the language is a word, "Sass", and not an acronym. 
+Because people were constantly writing it as "SASS", the creator of the language jokingly called it "Syntactically Awesome StyleSheets". 
 
-Sass can be used in any project as long as you have a program to compile it
-into CSS. You'll want to verify that the CSS you're using is compatible
-with your target browsers. 
 
-[QuirksMode CSS](http://www.quirksmode.org/css/) and [CanIUse](http://caniuse.com) are great resources for checking compatibility. 
+## Practice Sass
+If you want to play with Sass in your browser, check out [SassMeister](http://sassmeister.com/).
+You can use either syntax, just go into the settings and select either Sass or SCSS.
+
+	
+## Further reading
+* [Official Documentation](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
+* [The Sass Way](http://thesassway.com/) provides tutorials (beginner-advanced) and articles.

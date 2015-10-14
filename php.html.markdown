@@ -515,7 +515,7 @@ class MyClass
     }
 }
 
-// Class constants can always be accessed statically 
+// Class constants can always be accessed statically
 echo MyClass::MY_CONST;    // Outputs 'value';
 
 echo MyClass::$staticVar;  // Outputs 'static';
@@ -693,7 +693,42 @@ use My\Namespace as SomeOtherNamespace;
 
 $cls = new SomeOtherNamespace\MyClass();
 
+/**********************
+*  Error Handling
+*  
 */
+
+// Simple error handling can be done with try catch block
+
+try {
+    // Do something
+} catch ( Exception $e) {
+    // Handle exception
+}
+
+// When using try catch blocks in a namespaced enviroment use the following
+
+try { 
+    // Do something
+} catch (\Exception $e) { 
+    // Handle exception
+}
+
+// Custom exceptions
+
+class MyException extends Exception {}
+
+try {
+    
+    $condition = true; 
+    
+    if ($condition) {
+        throw new MyException('Something just happend');
+    }
+    
+} catch (MyException $e) {
+    // Handle my exception
+}
 
 ```
 
