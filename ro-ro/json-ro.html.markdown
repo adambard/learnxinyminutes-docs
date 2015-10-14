@@ -2,6 +2,9 @@
 language: json
 filename: learnjson.json
 contributors:
+  - ["Anna Harren", "https://github.com/iirelu"]
+  - ["Marco Scannadinari", "https://github.com/marcoms"]
+translators:
   - ["Dragomir Ioan", "https://github.com/ianiD"]
 ---
 
