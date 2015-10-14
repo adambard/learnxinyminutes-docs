@@ -1,7 +1,10 @@
 ---
 language: brainfuck
 contributors:
-    - ["Dragomir Ioan", "http://ianiD.github.io/"]
+    - ["Prajit Ramachandran", "http://prajitr.github.io/"]
+    - ["Mathias Bynens", "http://mathiasbynens.be/"]
+translators:
+    - ["Dragomir Ioan", "http://github.com/ianiD"]
 lang: ro-ro
 ---
 
