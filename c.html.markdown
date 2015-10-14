@@ -74,6 +74,9 @@ int main (int argc, char** argv)
   ///////////////////////////////////////
   // Types
   ///////////////////////////////////////
+  
+  // All variables MUST be declared at the top of the current block scope
+  // we declare them dynamically along the code for the sake of the tutorial
 
   // ints are usually 4 bytes
   int x_int = 0;
