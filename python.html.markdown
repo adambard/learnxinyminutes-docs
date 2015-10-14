@@ -4,6 +4,7 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "http://aminbandali.com"]
     - ["Andre Polykanine", "https://github.com/Oire"]
+    - ["evuez", "http://github.com/evuez"]
 filename: learnpython.py
 ---
 
@@ -206,6 +207,17 @@ li + other_li   # => [1, 2, 3, 4, 5, 6]
 # Concatenate lists with "extend()"
 li.extend(other_li)   # Now li is [1, 2, 3, 4, 5, 6]
 
+# Remove first occurrence of a value
+li.remove(2)  # li is now [1, 3, 4, 5, 6]
+li.remove(2)  # Raises a ValueError as 2 is not in the list
+
+# Insert an element at a specific index
+li.insert(1, 2)  # li is now [1, 2, 3, 4, 5, 6] again
+
+# Get the index of the first item found
+li.index(2)  # => 3
+li.index(7)  # Raises a ValueError as 7 is not in the list
+
 # Check for existence in a list with "in"
 1 in li   # => True
 
@@ -296,6 +308,15 @@ filled_set | other_set   # => {1, 2, 3, 4, 5, 6}
 
 # Do set difference with -
 {1, 2, 3, 4} - {2, 3, 5}   # => {1, 4}
+
+# Do set symmetric difference with ^
+{1, 2, 3, 4} ^ {2, 3, 5}  # => {1, 4, 5}
+
+# Check if set on the left is a superset of set on the right
+{1, 2} >= {1, 2, 3} # => False
+
+# Check if set on the left is a subset of set on the right
+{1, 2} <= {1, 2, 3} # => True
 
 # Check for existence in a set with in
 2 in filled_set   # => True
@@ -448,19 +469,19 @@ def pass_all_the_args(*args, **kwargs):
 # Function Scope
 x = 5
 
-def setX(num):
+def set_x(num):
     # Local var x not the same as global variable x
     x = num # => 43
     print x # => 43
 
-def setGlobalX(num):
+def set_global_x(num):
     global x
     print x # => 5
     x = num # global var x is now set to 6
     print x # => 6
 
-setX(43)
-setGlobalX(6)
+set_x(43)
+set_global_x(6)
 
 # Python has first class functions
 def create_adder(x):
@@ -504,6 +525,10 @@ class Human(object):
         # Assign the argument to the instance's name attribute
         self.name = name
 
+        # Initialize property
+        self.age = 0
+
+
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
         return "{0}: {1}".format(self.name, msg)
@@ -518,6 +543,23 @@ class Human(object):
     @staticmethod
     def grunt():
         return "*grunt*"
+
+    # A property is just like a getter.
+    # It turns the method age() into an read-only attribute
+    # of the same name.
+    @property
+    def age(self):
+        return self._age
+
+    # This allows the property to be set
+    @age.setter
+    def age(self, age):
+        self._age = age
+
+    # This allows the property to be deleted
+    @age.deleter
+    def age(self):
+        del self._age
 
 
 # Instantiate a class
@@ -537,6 +579,16 @@ j.get_species()   # => "H. neanderthalensis"
 
 # Call the static method
 Human.grunt()   # => "*grunt*"
+
+# Update the property
+i.age = 42
+
+# Get the property
+i.age # => 42
+
+# Delete the property
+del i.age
+i.age  # => raises an AttributeError
 
 
 ####################################################
