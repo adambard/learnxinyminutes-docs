@@ -160,6 +160,10 @@ print("I'm Python. Nice to meet you!")  # => I'm Python. Nice to meet you!
 # Use the optional argument end to change the end character.
 print("Hello, World", end="!")  # => Hello, World!
 
+# Simple way to get input data from console
+input_string_var = input("Enter some data: ") # Returns the data as a string
+# Note: In earlier versions of Python, input() method was named as raw_input()
+
 # No need to declare variables before assigning to them.
 # Convention is to use lower_case_with_underscores
 some_var = 5
