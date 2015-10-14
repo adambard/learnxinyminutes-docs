@@ -70,129 +70,143 @@ doStuff()
 // நிரலாக்கத்தில் செயலியை அமுல்படுத்தும் வரிசைமுறையில் அடைப்பு குறிக்கு முன்னிலை வழங்கபடுகிறது 
 (1 + 3) * 2; // = 8
 
-// There are three special not-a-real-number values:
+// மெய் எண்  அல்லாத மூன்றுபெறுமானங்கள் உள்ளன :
 Infinity; // result of e.g. 1/0
 -Infinity; // result of e.g. -1/0
-NaN; // result of e.g. 0/0, stands for 'Not a Number'
+NaN; // result of e.g. 0/0, இது எண்  அல்ல என்பதை  குறிக்கும் 
 
-// There's also a boolean type.
+// தர்க ரீதியில் ஆன கட்டமைப்பு காணப்படுகிறது .
 true;
 false;
 
-// Strings are created with ' or ".
+// சரம் (string) ' அல்லது "  குறியீட்டினால்  உருவாக்கபடுகிறது 
 'abc';
 "Hello, world";
 
-// Negation uses the ! symbol
+// ஒரு boolean பெறுமானத்தின் எதிர்மறை பெறுமானத்தை பெற ! குறியீடு பயன்படுத்தபடுகிறது 
 !true; // = false
 !false; // = true
 
-// Equality is ===
+//  சமமா என பார்க்க  ===
 1 === 1; // = true
 2 === 1; // = false
 
-// Inequality is !==
+// சமனற்றவையா  என பார்க்க  !==
 1 !== 1; // = false
 2 !== 1; // = true
 
-// More comparisons
+// மேலும் சில ஒப்பீடுகள் 
 1 < 10; // = true
 1 > 10; // = false
 2 <= 2; // = true
 2 >= 2; // = true
 
-// Strings are concatenated with +
+// இரண்டு சரங்களை(Strings) ஒன்றாக இணைப்பதற்கு +
 "Hello " + "world!"; // = "Hello world!"
 
-// and are compared with < and >
+// இரண்டு மாறிகளை/பெறுமானங்களை  ஒப்பிட  < and >
 "a" < "b"; // = true
 
-// Type coercion is performed for comparisons with double equals...
+// இரண்டு பெறுமானங்கள் / மாறிகள்  ஒரேவகையை சேர்ந்தவையா என பார்க்க 
 "5" == 5; // = true
 null == undefined; // = true
 
-// ...unless you use ===
+// ...இல்லாவிடின்  ===
 "5" === 5; // = false
 null === undefined; // = false 
 
-// ...which can result in some weird behaviour...
+// ...கிழே உள்ள கூற்றுகள் எதிர்பாராத 
+வெளியீடுகளை தரலாம் ...
 13 + !0; // 14
 "13" + !0; // '13true'
 
-// You can access characters in a string with `charAt`
+// ஒரு சரத்தில்(string ) உள்ள எழுத்தை பெற  `charAt`
 "This is a string".charAt(0);  // = 'T'
 
-// ...or use `substring` to get larger pieces.
+
+//... ஒரு சரத்தை(string )  சொற்களாக பிரிக்க (substring) `substring
 "Hello world".substring(0, 5); // = "Hello"
 
-// `length` is a property, so don't use ().
+// `length` ஒரு சரத்தில்(string) உள்ள சொற்களின் எண்ணிக்கை அல்லது நீளத்தை(length)அறிய 
 "Hello".length; // = 5
 
-// There's also `null` and `undefined`.
-null;      // used to indicate a deliberate non-value
-undefined; // used to indicate a value is not currently present (although
-           // `undefined` is actually a value itself)
+// `null` மற்றும்  `undefined` இரு பெறுமானங்கள் உள்ளன  .
+null;      // மதிப்பு அற்ற ஒரு பெறுமானத்தை குறிக்கும் 
+undefined; // பெறுமானம் இன்னும் நிர்ணயிக்க படவில்லை என்பதை குறிக்கும்  (
+           // `undefined` இருப்பினும் இதுவும் ஒரு பெறுமானமாக கருதபடுகிறது )
 
-// false, null, undefined, NaN, 0 and "" are falsy; everything else is truthy.
-// Note that 0 is falsy and "0" is truthy, even though 0 == "0".
+// ஆகியன  தர்க்க ரீதியாக பிழையானவை(false) , மற்றவை யாவும் சரியானவை (true).
+// 0 மானது பிழையை (false) குறிக்கும்  "0" சரியை (true) குறிக்கும் எனினும் 0 == "0".
 
 ///////////////////////////////////
-// 2. Variables, Arrays and Objects
+// 2. மாறிகள்  (Variables),அணிகள் (Arrays) மற்றும் பொருட்கள் (Objects)
 
-// Variables are declared with the `var` keyword. JavaScript is dynamically
-// typed, so you don't need to specify type. Assignment uses a single `=`
-// character.
+// மாறிகளை உருவாக்க `var ` என்னும் குறியீட்டு சொல் (keyword ) பயன்படுகிறது .
+//உருவாக்கப்படும் மாறிகள் எந்த வகையை சார்ந்தன என்பதை  JavaScript 
+//தானாகவே நிர்ணயிக்கும் . மாறிக்கு  ஒரு பெறுமானத்தை வழங்க  `=` பாவிக்க 
 var someVar = 5;
 
-// if you leave the var keyword off, you won't get an error...
+// //நீங்கள் மாறிகளை  நிறுவ  'var' குறியீட்டு சொல்லை பயன்படுத்தா விடினும் 
+//அது தவறில்லை ...
 someOtherVar = 10;
 
-// ...but your variable will be created in the global scope, not in the scope
-// you defined it in.
+// ...ஆனால் நீங்கள் நிறுவிய மாறி(variable) எல்லா உங்கள் ப்ரோக்ராம் இன் சகல இடங்களிலும் 
+//அணுக கூடியதாய் அமையும் , இல்லாவிடின் அது ஒரு குறிபிட்ட இடத்திற்கு மட்டும் 
+//மட்டுபடுத்தபடும் .
 
-// Variables declared without being assigned to are set to undefined.
+//பெறுமானம் வழங்கபடாத மாறிகளுக்கு ,இயல்பாக/தானாக undefined என்ற பெறுமானம் 
+//வழங்கப்படும் 
 var someThirdVar; // = undefined
 
-// There's shorthand for performing math operations on variables:
-someVar += 5; // equivalent to someVar = someVar + 5; someVar is 10 now
-someVar *= 10; // now someVar is 100
+// மாறிகளில் கணித செயல்பாடுகளை நடத்த சுருக்கெழுத்து முறைகள் காணப்படுகின்றன :
+someVar += 5; // இது  someVar = someVar + 5; ஐ  ஒத்தது someVar இன் பெறுமானம் இப்போது  10
+someVar *= 10; //  someVar இன் பெறுமானம் இப்போது  100
 
-// and an even-shorter-hand for adding or subtracting 1
-someVar++; // now someVar is 101
-someVar--; // back to 100
+//மிகவும் சுருக்கமான சுருகேழுத்து முறை கூட்டல்  அல்லது  கழித்தல் செயன்முறையை 
+//மேற்கொள்ள    
+someVar++; // someVar இன் பெறுமானம் இப்போது is 101
+someVar--; // someVar இன் பெறுமானம் இப்போது 100
 
-// Arrays are ordered lists of values, of any type.
+// அணிகள்(Arrays) எல்லாவகையான  பெறுமானங்களையும் உள்ளடக்க கூடியது 
 var myArray = ["Hello", 45, true];
 
-// Their members can be accessed using the square-brackets subscript syntax.
-// Array indices start at zero.
+// அணிகள்(Arrays) உறுப்பினர்கள் சதுர அடைப்புக்குறிக்குள் அதன் தான இலக்கத்தை கொண்டு 
+//அணுகமுடியும் .
+// அணிகளில் உள்ள உறுப்புகள் 0 இருந்து  ஆரம்பமாகும் .
 myArray[1]; // = 45
 
-// Arrays are mutable and of variable length.
+// அணிகள் உள்ள உறுப்புகளை மாற்றமுடியும்  அத்துடன் உறுப்புகளின் எண்ணிக்கையும் மாறலாம் .
 myArray.push("World");
 myArray.length; // = 4
 
-// Add/Modify at specific index
+// அணியில்(Array)  ஒரு குறிப்பிட்ட இடத்தில உள்ள பெறுமானத்தை மாற்ற .
 myArray[3] = "Hello";
 
-// JavaScript's objects are equivalent to "dictionaries" or "maps" in other
-// languages: an unordered collection of key-value pairs.
+// JavaScript's பொருள் (objects) அகராதியை ஒத்தன  
+// ஒழுங்கு படுத்த படாத சேகரிப்பு (collection) ஆகும் இதில் ஒரு சாவியும்(key) 
+//அதுக்குரிய பெறுமானமும்(value) காணப்படும் .
 var myObj = {key1: "Hello", key2: "World"};
 
-// Keys are strings, but quotes aren't required if they're a valid
-// JavaScript identifier. Values can be any type.
+// விசைகள் சரங்களை, ஆனால் அவர்கள் சரியான என்றால் மேற்கோள் அவசியம் இல்லை
+//சாவிகளை உ.ம் : "key" என நிறுவலாம் ஆனால் , மேற்கோள்  ஆனது சாவி முன்பே நிறுவபட்டிருப்பின்
+//அவசியம் இல்லை   
+// சாவிகளுக்குரிய பெறுமானங்கள் எந்த வகையாகவும் இருக்கலாம் 
 var myObj = {myKey: "myValue", "my other key": 4};
 
-// Object attributes can also be accessed using the subscript syntax,
+//பொருள் பண்புகளை சதுர அடைப்புக்குறிக்குள் அதன் சாவியின் பெயரை (key) கொண்டு 
+//அணுகமுடியும் ,
 myObj["my other key"]; // = 4
 
-// ... or using the dot syntax, provided the key is a valid identifier.
+// ... அல்லது புள்ளி குறியீட்டை பயன்படுத்தி ,சாவியின் (key is a valid identifier)
+//பெயர் மூலம் அணுக முடியும் 
 myObj.myKey; // = "myValue"
 
-// Objects are mutable; values can be changed and new keys added.
+// பொருட்கள்(ஒப்ஜெக்ட்ஸ்) மாற்றபடகூடியான சாவிகளின் பெறுமதிகளை மாற்ற முடியும் அத்துடன் புதிய 
+//சாவிகளை(keys) இடவும் முடியும் 
 myObj.myThirdKey = true;
 
-// If you try to access a value that's not yet set, you'll get undefined.
+//பெறுமதி வரையறுக்கபடாத ஒரு சாவியினை அணுகும் போது 
+//அது வெளியிடும் பெறுமதி `undefined`.
 myObj.myFourthKey; // = undefined
 
 ///////////////////////////////////
