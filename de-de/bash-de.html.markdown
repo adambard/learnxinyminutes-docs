@@ -80,7 +80,7 @@ in
     # Liste der Fälle, die unterschieden werden sollen
     0) echo "Hier ist eine Null."
     1) echo "Hier ist eine Eins."
-    *) echo "Das ist nicht Null."
+    *) echo "Das ist etwas anderes."
 esac
 
 # loops iterieren über die angegebene Zahl von Argumenten:
