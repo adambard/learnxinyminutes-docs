@@ -149,10 +149,10 @@ selector {
 
 ## Benutzung
 
-Speichere das CSS, das du benutzen willst mit der endung '.css'.
+Speichere das CSS, das du benutzen willst, mit der Endung '.css'.
 
 ```xml
-<!-- du musst die CSS-Datei im <head>-bereich der seite einbinden -->
+<!-- du musst die CSS-Datei im <head>-bereich der Seite einbinden -->
 <link rel='stylesheet' type='text/css' href='filepath/filename.css' />
 
 <!-- Einbindung funktioniert auch inline, wobei diese Methode nicht
@@ -203,9 +203,9 @@ und das folgende Markup:
 Die Spezifität der Stile ist wie folgt:
 (die Spezifität gilt nur für **einzelne Eigenschaften**, nicht für ganze Blöcke)
 
-* `E` hat die größte Spezifität wegen dem Schlüsselwort `!important`.
+* `E` hat die größte Spezifität wegen des Schlüsselworts `!important`.
 	man sollte diese Form aber vermeiden.
-* `F` ist als nächstes dran, da es direkt an dem element definiert ist.
+* `F` ist als nächstes dran, da es direkt an dem Element definiert ist.
 * Dann folgt `A`, da es "spezifischer" als alle anderen ist.
 	spezifischer = mehr Zuweisungen: 1 Tagname `p` +
 	Klassenname `klasse1` + 1 Attribut `attr='value'`
