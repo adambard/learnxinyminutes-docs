@@ -272,13 +272,13 @@ if (false) {
 // operador ternario
 print (false ? 'Does not get printed' : 'Does');
 
-// Acceso directo al operador ternario a partir de PHP 5.3
+// acceso directo al operador ternario a partir de PHP 5.3
 // equivalente al "$x ? $x : 'Does'""
 $x = false;
 print($x ?: 'Does');
 
 
-// el operador null coalesce a partir de PHP 7
+// el operador de coalescencia nula (null coalesce) a partir de PHP 7
 $a = null;
 $b = 'Does print';
 echo $a ?? 'a is not set'; // imprime 'a is not set'
