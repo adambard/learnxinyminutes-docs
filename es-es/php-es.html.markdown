@@ -92,7 +92,7 @@ $unescaped = 'This just contains a slash and a t: \t';
 $money = "I have $${number} in the bank.";
 
 // A partir de PHP 5.3, nowdocs se puede utilizar para  comentarios
-// multi linea uninterpoladas
+// multi linea no interpoladas
 $nowdoc = <<<'END'
 Multi line
 string
@@ -115,7 +115,7 @@ echo 'This string ' . 'is concatenated';
 // Una constante es definida usando define()
 // y nunca podrá ser cambiada duranta la ejecución!
 
-// un nombre de constante valido comienza con una letra o guion bajo,
+// Un nombre de constante valido comienza con una letra o guion bajo,
 // seguido de cualquier número de letras, números o guiones bajos.
 define("FOO",     "something");
 
@@ -271,6 +271,18 @@ if (false) {
 
 // operador ternario
 print (false ? 'Does not get printed' : 'Does');
+
+// Acceso directo al operador ternario a partir de PHP 5.3
+// equivalente al "$x ? $x : 'Does'""
+$x = false;
+print($x ?: 'Does');
+
+
+// el operador null coalesce a partir de PHP 7
+$a = null;
+$b = 'Does print';
+echo $a ?? 'a is not set'; // imprime 'a is not set'
+echo $b ?? 'b is not set'; // imprime 'Does print'
 
 $x = 0;
 if ($x === '0') {
@@ -496,8 +508,7 @@ class MyClass
 /* 
 * Declarando propiedades de las clases o métodos como estáticos los hace 
 * accesibles sin la necesidad de instanciar la clase. las propiedades declaras
-* como estáticas no pueden ser accesadas con una instancia del objeto de la clase
-* (un método estático si puede)
+* como estáticas no pueden ser accesadas con una instancia del objeto de la clase (un método estático si puede)
 */
 
 
@@ -507,7 +518,9 @@ class MyClass
     }
 }
 
+// las constantes de la clase siempre pueden ser accesadas estáticamente
 echo MyClass::MY_CONST;    // Imprime 'value';
+
 echo MyClass::$staticVar;  // Imprime 'static';
 MyClass::myStaticMethod(); // Imprime 'I am static';
 
@@ -529,7 +542,7 @@ class MyOtherClass extends MyClass
         echo $this->prot;
     }
 
-    // Sobreescribe un método
+    // Sobrescribe un método
     function myMethod()
     {
         parent::myMethod();
@@ -685,7 +698,42 @@ use My\Namespace as SomeOtherNamespace;
 
 $cls = new SomeOtherNamespace\MyClass();
 
+/**********************
+*  Manejo de Errores
+*  
 */
+
+// manejos simples de errores pueden ser hechos con bloques try catch
+
+try {
+    // Haz algo
+} catch ( Exception $e) {
+    // Maneja la excepción
+}
+
+// Cuando se use bloques try catch en un ambiente con espacio de nombre, utilize
+
+try { 
+    // Haz algo
+} catch (\Exception $e) { 
+    // Maneja la excepción
+}
+
+// Excepciones personalizadas
+
+class MyException extends Exception {}
+
+try {
+    
+    $condition = true; 
+    
+    if ($condition) {
+        throw new MyException('Something just happend');
+    }
+    
+} catch (MyException $e) {
+    // Maneja mi excepción
+}
 
 ```
 
