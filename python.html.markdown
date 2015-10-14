@@ -4,7 +4,6 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "http://aminbandali.com"]
     - ["Andre Polykanine", "https://github.com/Oire"]
-    - ["Ankit Aggarwal", "http://ankitaggarwal.me"]
 filename: learnpython.py
 ---
 
@@ -146,8 +145,10 @@ bool("")  # => False
 print "I'm Python. Nice to meet you!"
 
 # Simple way to get input data from console
-input_string_var = raw_input("Enter some data: ") # Data is stored as a string
-input_number_var = input("Enter a number: ") # Data is stored as a number
+input_string_var = raw_input("Enter some data: ") # Returns the data as a string
+input_var = input("Enter some data: ") # Evaluates the data as python code
+# Warning: Caution is recommended for input() method usage
+# Note: In python 3, input() is deprecated and raw_input() is renamed to input()
 
 # No need to declare variables before assigning to them.
 some_var = 5    # Convention is to use lower_case_with_underscores
