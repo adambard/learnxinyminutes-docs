@@ -206,7 +206,7 @@ Getting to the final document using LaTeX consists of the following steps:
     \item Compile source code to produce a pdf. 
      The compilation step looks something like this (in Linux): \\
      \begin{verbatim} 
-        $pdfLaTeX learn-LaTeX.tex learn-LaTeX.pdf 
+        $pdflatex learn-latex.tex learn-latex.pdf 
      \end{verbatim}
   \end{enumerate}
 
@@ -228,4 +228,4 @@ That's all for now!
 ## More on LaTeX
 
 * The amazing LaTeX wikibook: [https://en.wikibooks.org/wiki/LaTeX](https://en.wikibooks.org/wiki/LaTeX)
-* An actual tutorial: [http://www.LaTeX-tutorial.com/](http://www.LaTeX-tutorial.com/)
+* An actual tutorial: [http://www.latex-tutorial.com/](http://www.latex-tutorial.com/)
