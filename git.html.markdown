@@ -241,7 +241,7 @@ $ git clone -b master-cn https://github.com/adambard/learnxinyminutes-docs.git -
 ### commit
 
 Stores the current contents of the index in a new "commit." This commit contains
-the changes made and a message created by the user. *If you do not add the "-m" flag, git will throw you in to Vim or Nano, and your world will explode.*
+the changes made and a message created by the user. *If you do not add the "-m" flag, git will open up a text editor for you to enter your commit message.*
 
 ```bash
 # commit with a message
