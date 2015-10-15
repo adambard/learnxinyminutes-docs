@@ -20,9 +20,15 @@ Supporting browsers are: Firefox 3.5+, Internet Explorer 8.0+, Chrome 1.0+, Oper
 
 File extension for JSON files is ".json" and the MIME type for JSON text is "application/json".
 
+Many programming languages have support for serializing (encoding) and unserializing (decoding) JSON data into native data structures. Javascript has implicit support for manipulating JSON text as data.
+
+More information can be found at http://www.json.org/
+
 JSON is built on two structures:
 * A collection of name/value pairs. In various languages, this is realized as an object, record, struct, dictionary, hash table, keyed list, or associative array.
 * An ordered list of values. In most languages, this is realized as an array, vector, list, or sequence.
+
+An object with various name/value pairs.
 
 ```json
 {
