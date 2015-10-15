@@ -5,6 +5,7 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Leo Rudberg" , "http://github.com/LOZORD"]
     - ["Betsy Lorton" , "http://github.com/schbetsy"]
+    - ["Bruno Volcov", "http://github.com/volcov"]
 filename: LearnGit.txt
 ---
 
@@ -75,6 +76,11 @@ other repositories, or not!
 
 A branch is essentially a pointer to the last commit you made. As you go on
 committing, this pointer will automatically update to point the latest commit.
+
+### Tag
+
+A tag is a mark on specific point in history. Typically people use this
+functionality to mark release points (v1.0, and so on)
 
 ### HEAD and head (component of .git dir)
 
@@ -204,6 +210,28 @@ $ git branch -m myBranchName myNewBranchName
 
 # edit a branch's description
 $ git branch myBranchName --edit-description
+```
+
+### tag
+
+Manage your tags
+
+```bash
+# List tags
+$ git tag
+# Create a annotated tag
+# The -m specifies a tagging message,which is stored with the tag.
+# If you don’t specify a message for an annotated tag,
+# Git launches your editor so you can type it in.
+$ git tag -a v2.0 -m 'my version 2.0'
+# Show info about tag
+# That shows the tagger information, the date the commit was tagged,
+# and the annotation message before showing the commit information.
+$ git show v2.0
+# Push a single tag to remote
+$ git push origin v2.0
+# Push a lot of tags to remote
+$ git push origin --tags
 ```
 
 ### checkout
@@ -483,6 +511,8 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
 
 * [Udemy Git Tutorial: A Comprehensive Guide](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
+
+* [Git Immersion - A Guided tour that walks through the fundamentals of git](http://gitimmersion.com/)
 
 * [git-scm - Video Tutorials](http://git-scm.com/videos)
 

@@ -208,6 +208,7 @@ sSquared.reduce (_+_)
 // La fonction filter prend un prédicat (une fonction de type A -> Booléen) et
 // sélectionne tous les éléments qui satisfont ce prédicat
 List(1, 2, 3) filter (_ > 2) // List(3)
+case class Person(name: String, age: Int)
 List(
   Person(name = "Dom", age = 23),
   Person(name = "Bob", age = 30)
@@ -217,6 +218,7 @@ List(
 
 // Scala a une méthode foreach définie pour certaines collections
 // qui prend en argument une fonction renvoyant Unit (une méthode void)
+val aListOfNumbers = List(1, 2, 3, 4, 10, 20, 100)
 aListOfNumbers foreach (x => println(x))
 aListOfNumbers foreach println
 
@@ -271,11 +273,12 @@ i    // Montre la valeur de i. Notez que while est une boucle au sens classique.
      // mais utiliser des combinateurs et des compréhensions comme ci-dessus est plus
      // facile pour comprendre et pour faire la parallélisation
 
+i = 0
 // La boucle do while
 do {
   println("x is still less then 10");
-  x += 1
-} while (x < 10)
+  i += 1
+} while (i < 10)
 
 
 // La récursivité est un moyen idiomatique de faire une chose répétitive en Scala.
@@ -370,7 +373,7 @@ val email(user, domain) = "henry@zkpr.com"
 
 "Les chaînes de caractères Scala sont entourées de doubles guillements"
 'a' // Un caractère de Scala
-'Les simples guillemets n'existent pas en Scala // Erreur
+// 'Les simples guillemets n'existent pas en Scala' // Erreur
 "Les chaînes de caractères possèdent les méthodes usuelles de Java".length
 "Il y a aussi quelques méthodes extra de Scala.".reverse
 

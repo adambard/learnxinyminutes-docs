@@ -6,7 +6,12 @@ contributors:
     - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
     - ["Jakub Trzebiatowski", "http://cbs.stgn.pl"]
     - ["Marco Scannadinari", "https://marcoms.github.io"]
+<<<<<<< HEAD
     - ["Zachary Ferguson", "https://github.io/zfergus2"]
+=======
+    - ["himanshu", "https://github.com/himanshu81494"]
+
+>>>>>>> refs/remotes/adambard/master
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
@@ -27,6 +32,7 @@ Multi-line comments don't nest /* Be careful */  // comment ends on this line...
 */ // ...not this one!
 
 // Constants: #define <keyword>
+// Constants are written in all-caps out of convention, not requirement
 #define DAYS_IN_YEAR 365
 
 // Enumeration constants are also ways to declare constants.
@@ -52,10 +58,21 @@ int function_2(void);
 // Must declare a 'function prototype' before main() when functions occur after
 // your main() function.
 int add_two_ints(int x1, int x2); // function prototype
+// although `int add_two_ints(int, int);` is also valid (no need to name the args),
+// it is recommended to name arguments in the prototype as well for easier inspection
 
 // Your program's entry point is a function called
 // main with an integer return type.
 int main(void) {
+  // your program
+}
+
+// The command line arguments used to run your program are also passed to main
+// argc being the number of arguments - your program's name counts as 1
+// argv is an array of character arrays - containing the arguments themselves
+// argv[0] = name of your program, argv[1] = first argument, etc.
+int main (int argc, char** argv)
+{
   // print output using printf, for "print formatted"
   // %d is an integer, \n is a newline
   printf("%d\n", 0); // => Prints 0
@@ -63,6 +80,9 @@ int main(void) {
   ///////////////////////////////////////
   // Types
   ///////////////////////////////////////
+  
+  // All variables MUST be declared at the top of the current block scope
+  // we declare them dynamically along the code for the sake of the tutorial
 
   // ints are usually 4 bytes
   int x_int = 0;
@@ -221,7 +241,7 @@ int main(void) {
   0 || 1; // => 1 (Logical or)
   0 || 0; // => 0
 
-  // Conditional expression ( ? : )
+  // Conditional ternary expression ( ? : )
   int e = 5;
   int f = 10;
   int z;
@@ -291,6 +311,8 @@ int main(void) {
   for (i = 0; i <= 5; i++) {
     ; // use semicolon to act as the body (null statement)
   }
+  // Or
+  for (i = 0; i <= 5; i++);
 
   // branching with multiple choices: switch()
   switch (a) {
@@ -306,7 +328,29 @@ int main(void) {
     exit(-1);
     break;
   }
-
+  /*
+  using "goto" in C
+  */
+  typedef enum { false, true } bool;
+  // for C don't have bool as data type :(
+  bool disaster = false;
+  int i, j;
+  for(i=0;i<100;++i)
+  for(j=0;j<100;++j)
+  {
+    if((i + j) >= 150)
+        disaster = true;
+    if(disaster)
+        goto error;
+  }
+  error :
+  printf("Error occured at i = %d & j = %d.\n", i, j);
+  /*
+  https://ideone.com/GuPhd6
+  this will print out "Error occured at i = 52 & j = 99."
+  */
+  
+  
   ///////////////////////////////////////
   // Typecasting
   ///////////////////////////////////////
@@ -472,7 +516,24 @@ char c[] = "This is a test.";
 str_reverse(c);
 printf("%s\n", c); // => ".tset a si sihT"
 */
-
+/*
+as we can return only one variable
+to change values of more than one variables we use call by reference
+*/
+void swapTwoNumbers(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+/*
+int first = 10;
+int second = 20;
+printf("first: %d\nsecond: %d\n", first, second);
+swapTwoNumbers(&first, &second);
+printf("first: %d\nsecond: %d\n", first, second);
+// values will be swapped
+*/
 // if referring to external variables outside function, must use extern keyword.
 int i = 0;
 void testFunc() {

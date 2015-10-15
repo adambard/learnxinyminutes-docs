@@ -6,6 +6,7 @@ contributors:
     - ["Madison Dickson", "http://github.com/mix3d"]
     - ["Simon Morgan", "http://sjm.io/"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
+    - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
 filename: LearnJava.java
 ---
 
@@ -95,11 +96,13 @@ public class LearnJava {
         // Note: Java has no unsigned types.
 
         // Float - Single-precision 32-bit IEEE 754 Floating Point
+        // 2^-149 <= float <= (2-2^-23) * 2^127
         float fooFloat = 234.5f;
         // f or F is used to denote that this variable value is of type float;
         // otherwise it is treated as double.
 
         // Double - Double-precision 64-bit IEEE 754 Floating Point
+        // 2^-1074 <= x <= (2-2^-52) * 2^1023
         double fooDouble = 123.4;
 
         // Boolean - true & false
@@ -114,7 +117,35 @@ public class LearnJava {
         // but they can be initialized later.
         final double E;
         E = 2.71828;
+
+
+        // BigInteger - Immutable arbitrary-precision integers
+        //
+        // BigInteger is a data type that allows programmers to manipulate
+        // integers longer than 64-bits. Integers are stored as an array of
+        // of bytes and are manipulated using functions built into BigInteger
+        //
+        // BigInteger can be initialized using an array of bytes or a string.
         
+        BigInteger fooBigInteger = new BigDecimal(fooByteArray);
+
+
+        // BigDecimal - Immutable, arbitrary-precision signed decimal number
+        //
+        // A BigDecimal takes two parts: an arbitrary precision integer 
+        // unscaled value and a 32-bit integer scale
+        //
+        // BigDecimal allows the programmer complete control over decimal
+        // rounding. It is recommended to use BigDecimal with currency values
+        // and where exact decimal percision is required.
+        //
+        // BigDecimal can be initialized with an int, long, double or String
+        // or by initializing the unscaled value (BigInteger) and scale (int).
+
+        BigDecimal fooBigDecimal = new BigDecimal(fooBigInteger, fooInt);
+
+
+
         // Strings
         String fooString = "My String Is Here!";
 
@@ -286,6 +317,23 @@ public class LearnJava {
                      break;
         }
         System.out.println("Switch Case Result: " + monthString);
+        
+        // Starting in Java 7 and above, switching Strings works like this:
+        String myAnswer = "maybe";
+        switch(myAnswer){
+            case "yes":
+                System.out.println("You answered yes.");
+                break;
+            case "no":
+                System.out.println("You answered no.");
+                break;
+            case "maybe":
+                System.out.println("You answered maybe.");
+                break;
+            default:
+                System.out.println("You answered " + myAnswer);
+                break;
+        }
 
         // Conditional Shorthand
         // You can use the '?' operator for quick assignments or logic forks.
@@ -348,7 +396,7 @@ public class LearnJava {
            validCodes.add("FINLAND");
         }
 
-        // But there's a nifty way to achive the same thing in an
+        // But there's a nifty way to achieve the same thing in an
         // easier way, by using something that is called Double Brace
         // Initialization.
 
@@ -358,9 +406,9 @@ public class LearnJava {
             add("FINLAND");
         }}
 
-        // The first brace is creating an new AnonymousInnerClass and the
-        // second one declares and instance initializer block. This block
-        // is called with the anonymous inner class is created.
+        // The first brace is creating a new AnonymousInnerClass and the
+        // second one declares an instance initializer block. This block
+        // is called when the anonymous inner class is created.
         // This does not only work for Collections, it works for all
         // non-final classes.
 
@@ -368,7 +416,7 @@ public class LearnJava {
 } // End LearnJava class
 
 
-// You can include other, non-public outer-level classes in a .java file, 
+// You can include other, non-public outer-level classes in a .java file,
 // but it is good practice. Instead split classes into separate files.
 
 
@@ -389,7 +437,7 @@ class Bicycle {
     // Constructors are a way of creating classes
     // This is a constructor
     public Bicycle() {
-        // You can also call another constructor: 
+        // You can also call another constructor:
         // this(1, 50, 5, "Bontrager");
         gear = 1;
         cadence = 50;
@@ -489,6 +537,7 @@ public interface Digestible {
 
 // We can now create a class that implements both of these interfaces.
 public class Fruit implements Edible, Digestible {
+  
     @Override
     public void eat() {
         // ...
@@ -504,6 +553,7 @@ public class Fruit implements Edible, Digestible {
 // interfaces. For example:
 public class ExampleClass extends ExampleClassParent implements InterfaceOne,
     InterfaceTwo {
+
     @Override
     public void InterfaceOneMethod() {
     }
@@ -511,6 +561,7 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
     @Override
     public void InterfaceTwoMethod() {
     }
+
 }
 
 // Abstract Classes
@@ -522,10 +573,10 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 // }
 
 // Marking a class as abstract means that it contains abstract methods that must
-// be defined in a child class. Similar to interfaces, abstract classes cannot 
-// be instantiated, but instead must be extended and the abstract methods 
+// be defined in a child class. Similar to interfaces, abstract classes cannot
+// be instantiated, but instead must be extended and the abstract methods
 // defined. Different from interfaces, abstract classes can contain a mixture of
-// concrete and abstract methods. Methods in an interface cannot have a body, 
+// concrete and abstract methods. Methods in an interface cannot have a body,
 // unless the method is static, and variables are final by default, unlike an
 // abstract class. Also abstract classes CAN have the "main" method.
 
@@ -541,7 +592,7 @@ public abstract class Animal
         age = 30;
     }
 
-    // No need to initialize, however in an interface 
+    // No need to initialize, however in an interface
     // a variable is implicitly final and hence has
     // to be initialized.
     protected int age;
@@ -569,7 +620,7 @@ class Dog extends Animal
         // age = 30;	==> ERROR!	age is private to Animal
     }
 
-    // NOTE: You will get an error if you used the 
+    // NOTE: You will get an error if you used the
     // @Override annotation here, since java doesn't allow
     // overriding of static methods.
     // What is happening here is called METHOD HIDING.
@@ -583,7 +634,7 @@ class Dog extends Animal
     }
 }
 
-// Final Classes 
+// Final Classes
 
 // Final Class declaration syntax
 // <access-level> final <final-class-name> {
@@ -592,8 +643,8 @@ class Dog extends Animal
 // }
 
 // Final classes are classes that cannot be inherited from and are therefore a
-// final child. In a way, final classes are the opposite of abstract classes 
-// because abstract classes must be extended, but final classes cannot be 
+// final child. In a way, final classes are the opposite of abstract classes
+// because abstract classes must be extended, but final classes cannot be
 // extended.
 public final class SaberToothedCat extends Animal
 {
