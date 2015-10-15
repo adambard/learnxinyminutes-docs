@@ -54,6 +54,8 @@ int function_2(void);
 // Must declare a 'function prototype' before main() when functions occur after
 // your main() function.
 int add_two_ints(int x1, int x2); // function prototype
+// although `int add_two_ints(int, int);` is also valid (no need to name the args),
+// it is recommended to name arguments in the prototype as well for easier inspection
 
 // Your program's entry point is a function called
 // main with an integer return type.
