@@ -38,7 +38,7 @@ then later reattached.
     lsp              # List panes
      -a              # List all panes
      -s              # List all panes in session
-     -t              # List app panes in target
+     -t              # List all panes in target
 
     kill-window      # Kill current window
      -t "#"          # Kill target window
