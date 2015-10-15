@@ -5,6 +5,7 @@ contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]
   - ["himanshu", "https://github.com/himanshu81494"]
+  - ["Michael Neth", "https://github.com/infernocloud"]
 ---
 
 As JSON is an extremely simple data-interchange format, this is most likely going to be the simplest Learn X in Y Minutes ever.
