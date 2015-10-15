@@ -6,26 +6,28 @@ filename: learnrust-es.rs
 lang: es-es
 ---
 
-Rust es un lenguaje de programación desarrollado por Mozzilla Research.
-Rust combina el control del rendimiento a bajo nivel con la comodidad del alto nivel y
-garantías de seguridad.
+Rust es un lenguaje de programación desarrollado por Mozzilla Research. Rust
+combina el control del rendimiento a bajo nivel con la comodidad del alto nivel
+y garantías de seguridad.
 
-Consigue cumplir estos objetivos sin necesidad de un recolector de basura o runtime, haciendo
-posible usar las librerías de Rust como sustituto de C.
+Consigue cumplir estos objetivos sin necesidad de un recolector de basura o
+runtime, haciendo posible usar las librerías de Rust como sustituto de C.
 
-La primera versión de Rust, la 0.1, fue lanzada en enero de 2012, y durante 3 años el desarrollo
-fue tan rápido que hasta hace poco el uso de las versiones estables no era recomendable, y se
-aconsejaba usar las compilaciones nocturnas.
+La primera versión de Rust, la 0.1, fue lanzada en enero de 2012, y durante 3
+años el desarrollo fue tan rápido que hasta hace poco el uso de las versiones
+estables no era recomendable, y se aconsejaba usar las compilaciones nocturnas.
 
-El 15 de mayo de 2015 se lanzó Rust 1.0, con una garantía completa de retrocompatibilidad.
-A día de hoy los tiempos de compilación han mejorado mucho desde ese lanzamiento, así como
-otros aspectos del lenguaje y el compilador. Rust ha adoptado un modelo de desarrollo por series
-de publicaciones periódicas, con lanzamientos cada 6 semanas. Junto con cada lanzamiento, se lanza
-la beta de la siguiente versión.
+El 15 de mayo de 2015 se lanzó Rust 1.0, con una garantía completa de
+retrocompatibilidad. A día de hoy los tiempos de compilación han mejorado mucho
+desde ese lanzamiento, así como otros aspectos del lenguaje y el compilador.
+Rust ha adoptado un modelo de desarrollo por series de publicaciones periódicas,
+con lanzamientos cada 6 semanas. Junto con cada lanzamiento, se lanza la beta de
+la siguiente versión.
 
-A pesar de que Rust es un lenguaje relativamente de bajo nivel, tiene conceptos funcionales
-que generalmente se encuentran en lenguajes de más alto nivel. Esto hace que Rust sea rápido
-y al mismo tiempo fácil y eficiente a la hora de programar.
+A pesar de que Rust es un lenguaje relativamente de bajo nivel, tiene conceptos
+funcionales que generalmente se encuentran en lenguajes de más alto nivel. Esto
+hace que Rust sea rápido y al mismo tiempo fácil y eficiente a la hora de
+programar.
 
 ```rust
 // Esto es un comentario. Los comentarios de una sola línea se hacen así...
@@ -54,11 +56,11 @@ fn main() {
     let f: f64 = 1.3f64;
 
     // Inferencia de tipos
-    // La mayor parte del tiempo, el compilador de Rust puede inferir el tipo de una variable, por
-    // lo que no necesitas escribir una anotación de tipo explícita.
-    // A lo largo de este tutorial, los tipos están anotados explícitamente en varios sitios,
-    // pero solo con propósito demostrativo. La inferencia de tipos puede manejar esto por
-    // ti la mayor parte del tiempo.
+    // La mayor parte del tiempo, el compilador de Rust puede inferir el tipo de
+    // una variable, por lo que no necesitas escribir una anotación de tipo
+    // explícita. A lo largo de este tutorial, los tipos están anotados
+    // explícitamente en varios sitios, pero solo con propósito demostrativo. La
+    // inferencia de tipos puede manejar esto por ti la mayor parte del tiempo.
     let x_implicita = 1;
     let f_implicita = 1.3;
 
@@ -260,21 +262,25 @@ fn main() {
     // 5. Seguridad de memoria y punteros //
     ////////////////////////////////////////
 
-    // Posesión de punteros – solo una cosa puede ‘poseer’ este puntero en cada momento
-    // Esto significa que cuando la `Box` queda fuera del ámbito, puede ser liberada
-    // automáticamente de manera segura.
+    // Posesión de punteros – solo uno puede ‘poseer’ un puntero en cada momento
+    // Esto significa que cuando la `Box` queda fuera del ámbito, puede ser
+    // liberada automáticamente de manera segura.
     let mut mio: Box<i32> = Box::new(3);
     *mio = 5; // dereferenciar
-    // Aquí, `ahora_es_mio`, toma posesión de `mio`. En otras palabras, `mio` se mueve.
+    // Aquí, `ahora_es_mio`, toma posesión de `mio`. En otras palabras, `mio` se
+    // mueve.
     let mut ahora_es_mio = mio;
     *ahora_es_mio += 2;
 
     println!("{}", ahora_es_mio); // 7
-    // println!("{}", mio); // esto no compilaría, porque `now_its_mine` es el que posee el puntero
+    // println!("{}", mio); // esto no compilaría, porque `now_its_mine` es el
+    // que posee el puntero
 
     // Referencia – un puntero inmutable que referencia a otro dato
-    // Cuando se crea una referencia a un valor, decimos que el valor ha sido ‘tomado prestado’.
-    // Mientras un valor está prestado como inmutable, no puede ser modificado o movido.
+    // Cuando se crea una referencia a un valor, decimos que el valor ha sido
+    // ‘tomado prestado’.
+    // Mientras un valor está prestado como inmutable, no puede ser modificado o
+    // movido.
     // Una prestación dura hasta el fin del ámbito en el que se creó.
     let mut var = 4;
     var = 3;
@@ -283,31 +289,34 @@ fn main() {
     println!("{}", var); // A diferencia de `mio`, `var` se puede seguir usando
     println!("{}", *ref_var);
     // var = 5; // esto no compilaría, porque `var` está prestada
-    // *ref_var = 6; // esto tampoco, porque `ref_var` es una referencia inmutable
+    // *ref_var = 6; // esto tampoco, porque `ref_var` es una referencia
+    // inmutable
 
     // Referencia mutable
-    // Mientras que un valor está prestado como mutable, no puede ser accedido desde ningún
-    // otro sitio.
+    // Mientras que un valor está prestado como mutable, no puede ser accedido
+    // desde ningún otro sitio.
     let mut var2 = 4;
     let ref_var2: &mut i32 = &mut var2;
-    *ref_var2 += 2;         // '*' se usa para apuntar al var2 prestado como mutable
+    *ref_var2 += 2; // '*' se usa para apuntar al var2 prestado como mutable
 
-    println!("{}", *ref_var2); // 6 , //var2 no compilaría. //ref_var2 es de tipo &mut i32, por
-                               //lo que guarda una referencia a un i32 no el valor.
+    println!("{}", *ref_var2); // 6 , //var2 no compilaría. //ref_var2 es de
+                               // tipo &mut i32, por lo que guarda una
+                               // referencia a un i32 no el valor.
     // var2 = 2; // esto no compilaría porque `var2` está prestado
 }
 ```
 
 ## Lectura adicional
 
-Rust es mucho más que esto. Esto es solo lo más básico para que puedas entender las
-cosas más importantes. Para aprender más sobre Rust, lee [The Rust Programming
-Language](http://doc.rust-lang.org/book/index.html) y echa un vistazo al subreddit
-[/r/rust](http://reddit.com/r/rust). Los compañeros en el canal #rust en irc.mozilla.org
-también son muy buenos con los recien llegados. También puedes acceder a [Rust
-users](https://users.rust-lang.org/) a pedir ayuda o a [Rust
-internals](https://internals.rust-lang.org/) para aprender más sobre el lenguaje y
-colaborar en su desarrollo.
+Rust es mucho más que esto. Esto es solo lo más básico para que puedas entender
+las cosas más importantes. Para aprender más sobre Rust, lee [The Rust
+Programming Language](http://doc.rust-lang.org/book/index.html) y echa un
+vistazo al subreddit [/r/rust](http://reddit.com/r/rust). Los compañeros en el
+canal #rust en irc.mozilla.org también son muy buenos con los recien llegados.
+También puedes acceder a [Rust users](https://users.rust-lang.org/) a pedir
+ayuda o a [Rust internals](https://internals.rust-lang.org/) para aprender más
+sobre el lenguaje y colaborar en su desarrollo.
 
-También puedes probar Rust con un compilador online en el oficial
-[Rust playpen](http://play.rust-lang.org) o en la [web principal de Rust](http://rust-lang.org).
+También puedes probar Rust con un compilador online en el oficial [Rust
+playpen](http://play.rust-lang.org) o en la [web principal de
+Rust](http://rust-lang.org).
