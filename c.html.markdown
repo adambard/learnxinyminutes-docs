@@ -6,12 +6,8 @@ contributors:
     - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
     - ["Jakub Trzebiatowski", "http://cbs.stgn.pl"]
     - ["Marco Scannadinari", "https://marcoms.github.io"]
-<<<<<<< HEAD
     - ["Zachary Ferguson", "https://github.io/zfergus2"]
-=======
     - ["himanshu", "https://github.com/himanshu81494"]
-
->>>>>>> refs/remotes/adambard/master
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
