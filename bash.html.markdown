@@ -54,6 +54,11 @@ echo '$Variable'
 # its name without $. If you want to use the variable's value, you should use $.
 # Note that ' (single quote) won't expand the variables!
 
+# Parameter expansion ${ }:
+echo ${Variable}
+# This is a simple usage of parameter expansion
+# Below are other modifications that add onto this expansion
+
 # String substitution in variables
 echo ${Variable/Some/A}
 # This will substitute the first occurrence of "Some" with "A"
@@ -67,6 +72,12 @@ echo ${Variable:0:Length}
 echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"}
 # This works for null (Foo=) and empty string (Foo=""); zero (Foo=0) returns 0.
 # Note that it only returns default value and doesn't change variable value.
+
+# Brace Expansion { }
+# Used to generate arbitrary strings
+echo {1..10}
+echo {a..z}
+# This will output the range from the start value to the end value
 
 # Builtin variables:
 # There are some useful builtin variables, like
