@@ -557,6 +557,12 @@ void printIntArray(int *arr, int size) {
         printf("arr[%d] is: %d\n", i, arr[i]);
     }
 }
+/*
+int my_arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+int size = 10;
+printIntArray(my_arr, size);
+// will print "arr[0] is: 1" etc
+*/
 
 // if referring to external variables outside function, must use extern keyword.
 int i = 0;
