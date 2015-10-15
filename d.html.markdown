@@ -74,16 +74,18 @@ are passed to functions by value (i.e. copied) and classes are passed by referen
 we can use templates to parameterize all of these on both types and values!
 
 ```c
-// Here, T is a type parameter. Think <T> from C++/C#/Java
+// Here, 'T' is a type parameter. Think '<T>' from C++/C#/Java.
 struct LinkedList(T) {
     T data = null;
-    LinkedList!(T)* next; // The ! is used to instaniate a parameterized type. Again, think <T>
+
+    // Use '!' to instantiate a parameterized type. Again, think '<T>'.
+    LinkedList!(T)* next;
 }
 
 class BinTree(T) {
     T data = null;
 
-    // If there is only one template parameter, we can omit the parentheses
+    // If there is only one template parameter, we can omit the parentheses.
     BinTree!T left;
     BinTree!T right;
 }
@@ -98,13 +100,11 @@ enum Day {
     Saturday,
 }
 
-// Use alias to create abbreviations for types
-
+// Use alias to create abbreviations for types.
 alias IntList = LinkedList!int;
 alias NumTree = BinTree!double;
 
 // We can create function templates as well!
-
 T max(T)(T a, T b) {
     if(a < b)
         return b;
@@ -112,9 +112,8 @@ T max(T)(T a, T b) {
     return a;
 }
 
-// Use the ref keyword to ensure pass by referece.
-// That is, even if a and b are value types, they
-// will always be passed by reference to swap
+// Use the ref keyword to ensure pass by reference. That is, even if 'a' and 'b'
+// are value types, they will always be passed by reference to 'swap()'.
 void swap(T)(ref T a, ref T b) {
     auto temp = a;
 
@@ -122,13 +121,13 @@ void swap(T)(ref T a, ref T b) {
     b = temp;
 }
 
-// With templates, we can also parameterize on values, not just types
+// With templates, we can also parameterize on values, not just types.
 class Matrix(uint m, uint n, T = int) {
     T[m] rows;
     T[n] columns;
 }
 
-auto mat = new Matrix!(3, 3); // We've defaulted type T to int
+auto mat = new Matrix!(3, 3); // We've defaulted type 'T' to 'int'.
 
 ```
 
@@ -138,21 +137,20 @@ have the syntax of POD structures (`structure.x = 7`) with the semantics of
 getter and setter methods (`object.setX(7)`)!
 
 ```c
-// Consider a class parameterized on a types T, U
-
+// Consider a class parameterized on types 'T' & 'U'.
 class MyClass(T, U) {
     T _data;
     U _other;
-
 }
 
-// And "getter" and "setter" methods like so
+// And "getter" and "setter" methods like so:
 class MyClass(T, U) {
     T _data;
     U _other;
 
-    // Constructors are always named `this`
+    // Constructors are always named 'this'.
     this(T t, U u) {
+        // This will call the setter methods below.
         data = t;
         other = u;
     }
@@ -175,8 +173,8 @@ class MyClass(T, U) {
         _other = u;
     }
 }
-// And we use them in this manner
 
+// And we use them in this manner:
 void main() {
     auto mc = MyClass!(int, string);
 
