@@ -719,15 +719,11 @@ public class EnumTest {
     
     public static void main(String[] args) {
         EnumTest firstDay = new EnumTest(Day.MONDAY);
-        firstDay.tellItLikeItIs();
+        firstDay.tellItLikeItIs(); // => Mondays are bad.
         EnumTest thirdDay = new EnumTest(Day.WEDNESDAY);
-        thirdDay.tellItLikeItIs();
+        thirdDay.tellItLikeItIs(); // => Midweek days are so-so.
     }
 }
-
-// The output is:
-// Mondays are bad.
-// Midweek days are so-so.
 
 // Enum types are much more powerful than we show above. 
 // The enum body can include methods and other fields.
