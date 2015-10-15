@@ -144,6 +144,10 @@ someOtherVar = 10;
 // Variables declared without being assigned to are set to undefined.
 var someThirdVar; // = undefined
 
+// if you wan't to declare a couple of variables, then you could use a comma 
+// separator
+var someFourthVar = 2, someFifthVar = 4;
+
 // There's shorthand for performing math operations on variables:
 someVar += 5; // equivalent to someVar = someVar + 5; someVar is 10 now
 someVar *= 10; // now someVar is 100
