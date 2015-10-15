@@ -11,7 +11,7 @@ lang: ms-my
 Sass ialah bahasa sambungan CSS yang menambah ciri-ciri seperti pembolehubah, bersarang, mixins dan banyak lagi.
 Sass (dan prapemproses lain, seperti [Less](http://lesscss.org/)) membantu pembangun untuk menulis kod mampu diselenggara dan DRY (Don't Repeat Yourself).
 
-Sass mempunyai dua perbezaan pilihan sintaks untuk dipilih. SCSS, yang mana mempunyai sintaks yang sama seperti CSS tetapi dengan ditambah ciri-ciri Sass. Atau Sass (sintaks asal), yang menggunakan indentasi bukannya kurungan kerinting dan koma bernoktah.
+Sass mempunyai dua perbezaan pilihan sintaks untuk dipilih. SCSS, yang mana mempunyai sintaks yang sama seperti CSS tetapi dengan ditambah ciri-ciri Sass. Atau Sass (sintaks asal), yang menggunakan indentasi bukannya kurungan kerinting dan semikolon.
 Tutorial ini ditulis menggunakan SCSS.
 
 ```scss
