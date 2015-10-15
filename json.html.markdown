@@ -17,9 +17,11 @@ but they should be avoided for better compatibility.
 
 For the purposes of this, however, everything is going to be 100% valid JSON. Luckily, it kind of speaks for itself.
 
-Data types supported by JSON includes: numbers, string, boolean, array, object and null.
-Supporting browsers are: Firefox(Mozilla) 3.5, Internet Explorer 8, Chrome, Opera 10, Safari 4.
-JSON file type for JSON files is ".json". The MIME type for JSON text is "application/json"
+A JSON value must be a number, a string, an array, an object, or one of the following 3 literal names: true, false, null.
+
+Supporting browsers are: Firefox 3.5+, Internet Explorer 8+, Chrome, Opera 10+, and Safari 4+.
+File extension for JSON files is ".json" and the MIME type for JSON text is "application/json".
+
 Drawbacks of JSON include lack of type definition and some sort of DTD.
 
 ```json
