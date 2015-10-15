@@ -11,9 +11,7 @@ Perl 6 is a highly capable, feature-rich programming language made for at
 least the next hundred years.
 
 The primary Perl 6 compiler is called [Rakudo](http://rakudo.org), which runs on
-the JVM and [the MoarVM](http://moarvm.com) and
-[prior to March 2015](http://pmthium.com/2015/02/suspending-rakudo-parrot/),
-[the Parrot VM](http://parrot.org/).
+the JVM and [the MoarVM](http://moarvm.com).
 
 Meta-note : the triple pound signs are here to denote headlines,
 double paragraphs, and single notes.
