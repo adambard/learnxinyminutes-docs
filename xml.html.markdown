@@ -7,7 +7,7 @@ contributors:
 
 XML is a markup language designed to store and transport data.
 
-Unlike HTML, XML does not specify how to display or to format data, just carry it.
+Unlike HTML, XML does not specify how to display or to format data, it just carries it.
 
 * XML Syntax
 
