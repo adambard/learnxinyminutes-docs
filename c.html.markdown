@@ -232,7 +232,7 @@ int main (int argc, char** argv)
   0 || 1; // => 1 (Logical or)
   0 || 0; // => 0
 
-  // Conditional expression ( ? : )
+  // Conditional ternary expression ( ? : )
   int e = 5;
   int f = 10;
   int z;
@@ -302,6 +302,8 @@ int main (int argc, char** argv)
   for (i = 0; i <= 5; i++) {
     ; // use semicolon to act as the body (null statement)
   }
+  // Or
+  for (i = 0; i <= 5; i++);
 
   // branching with multiple choices: switch()
   switch (a) {
