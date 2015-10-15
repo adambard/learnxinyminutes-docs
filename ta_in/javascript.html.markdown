@@ -210,46 +210,49 @@ myObj.myThirdKey = true;
 myObj.myFourthKey; // = undefined
 
 ///////////////////////////////////
-// 3. Logic and Control Structures
+// 3. தர்க்கம் மற்றும் கட்டுப்பாட்டு கட்டமைப்பு
 
-// The syntax for this section is almost identical to Java's.
+// கீழே காட்டப்பட்டுள்ள தொடரியல் ஜாவா வை ஒத்தது 
 
-// The `if` structure works as you'd expect.
+// The `if` ஒரு குறித்த தர்க்கம் சரியாயின் 
+//அல்லது என்ற வடிவமைப்பை 
 var count = 1;
 if (count == 3){
-    // evaluated if count is 3
+    // count  இன் பெறுமானம் 3 சமமா என பார்க்கபடுகிறது 
 } else if (count == 4){
-    // evaluated if count is 4
+    // count  இன் பெறுமானம் 4க்கு  சமமா என பார்க்கபடுகிறது 
 } else {
-    // evaluated if it's not either 3 or 4
+    // count ஆனது 3  அல்ல  4 அல்ல  எனின் 
 }
 
-// As does `while`.
+// ஒரு குறிப்பிட்ட  ஒப்பீடு உண்மையாக இருக்கும் வரை  `while`.
 while (true){
-    // An infinite loop!
+    // இந்த இருக்கும் கூற்றுகள் முடிவிலி தடவை மறுபடி செயற்படுத்தப்படும் !
 }
 
-// Do-while loops are like while loops, except they always run at least once.
+// while போல் அல்லாது do-while ,அவை ஒரு தடவையேனும் அதனுள் உள்ள கூற்றுகள் செயற்படுத்தபடும் 
 var input;
 do {
     input = getInput();
 } while (!isValid(input))
 
-// The `for` loop is the same as C and Java:
-// initialisation; continue condition; iteration.
+// for (loop /சுற்று ) C , ஜாவாவை ஒத்தது 
+//மாறிக்கு பெறுமானத்தை  வழங்கல் , மாறியானது தர்க்கத்தை பூர்த்தி செய்கிறதா என பார்த்தல் ,
+//சுற்றுக்குள் இருக்கும் கூற்றை செயற்படுதல்  
+
 for (var i = 0; i < 5; i++){
-    // will run 5 times
+    // இந்த சுற்று 5 தடவைகள் தொடர்ந்து செயற்படுத்தபடும் 
 }
 
-//The For/In statement loops iterates over every property across the entire prototype chain
+//for /In  சுற்றுகள் prototype சங்கிலியில் உள்ள சகல காரணிகள் ஊடகவும் செல்லும் 
 var description = "";
 var person = {fname:"Paul", lname:"Ken", age:18}; 
 for (var x in person){
     description += person[x] + " ";
 }
 
-//If only want to consider properties attached to the object itself, 
-//and not its prototypes use hasOwnProperty() check
+//ஒரு பொருளில் (Object) இடப்பட்ட பண்புகளை (properties) கருத்தில் கொள்ளும் போது
+//குறிப்பிட்ட பண்புகளை அந்த Object கொண்டுள்ளதா என பார்க்க  
 var description = "";
 var person = {fname:"Paul", lname:"Ken", age:18}; 
 for (var x in person){
@@ -258,8 +261,9 @@ for (var x in person){
     }
 }
 
-//for/in should not be used to iterate over an Array where the index order is important.
-//There is no guarantee that for/in will return the indexes in any particular order
+//for /in  ஆனது அணியில் உள்ள பண்புகள் ஒழுங்குபடுத்தப்பட்டவிதம் முக்கியம் 
+//ஆயின் பாவிப்பதை தவிர்க்கவும் ஏனெனில் அது சரியான ஒழுங்கில் 
+//வெளியீட்டை தரும் என்பது ஐயம் ஆகும் 
 
 // && is logical and, || is logical or
 if (house.size == "big" && house.colour == "blue"){
@@ -273,9 +277,7 @@ if (colour == "red" || colour == "blue"){
 var name = otherName || "default";
 
 
-// The `switch` statement checks for equality with `===`.
-// use 'break' after each case
-// or the cases after the correct one will be executed too.
+
 grade = 'B';
 switch (grade) {
   case 'A':
@@ -296,15 +298,16 @@ switch (grade) {
 ///////////////////////////////////
 // 4. Functions, Scope and Closures
 
-// JavaScript functions are declared with the `function` keyword.
+// JavaScript இல் functions நிறுவ  `function` keyword.பயன்படும் 
 function myFunction(thing){
     return thing.toUpperCase();
 }
 myFunction("foo"); // = "FOO"
 
-// Note that the value to be returned must start on the same line as the
-// `return` keyword, otherwise you'll always return `undefined` due to
-// automatic semicolon insertion. Watch out for this when using Allman style.
+//ஒரு பெறுமானத்தை return செய்ய வேண்டும் எனின் இரண்டும் ஒரே வரியில் 
+//இருக்க வேண்டும் இல்லாவிடின் return ஆனது `undefined ` return செய்யும் 
+//காற் புள்ளி  தானாகவே இடப்படும் , நீங்கள்  Allman style உபயோகிக்கும் போது 
+//அவதானமாக இருக்கவும் 
 function myFunction()
 {
     return // <- semicolon automatically inserted here
@@ -314,64 +317,64 @@ function myFunction()
 }
 myFunction(); // = undefined
 
-// JavaScript functions are first class objects, so they can be reassigned to
-// different variable names and passed to other functions as arguments - for
-// example, when supplying an event handler:
+// JavaScript functions ஆனது   first class objects ஆகும் ,எனவே அவற்றை மாறிகளுக்கு 
+//assign செய்ய முடியும் அதுமட்டும் அல்லது functions களில் arguments ஆக அனுப்பமுடியும் 
+// உதாரணமாக ஒரு event handler:
 function myFunction(){
-    // this code will be called in 5 seconds' time
+    //இந்த code 5 செக்கன்களில்  செயற்படுத்தப்படும் 
 }
 setTimeout(myFunction, 5000);
-// Note: setTimeout isn't part of the JS language, but is provided by browsers
-// and Node.js.
+// Note: setTimeout ஆனது  ஜாவஸ்க்ரிப்ட்  சேர்ந்தது அன்று , ஆனால் அந்த வசதி 
+//உலாவிகளிலும் ,Node .js  காணப்படுகிறது 
 
-// Function objects don't even have to be declared with a name - you can write
-// an anonymous function definition directly into the arguments of another.
+// Function objects கட்டாயம் பெயரிடப்பட வீண்டும் என்று அவசியம் இல்லை 
+// அவை  anonymous(பெயரிடப்படாமல்) உருவாக்கபடலாம் 
 setTimeout(function(){
-    // this code will be called in 5 seconds' time
+        //இந்த code 5 செக்கன்களில்  செயற்படுத்தப்படும் 
 }, 5000);
 
-// JavaScript has function scope; functions get their own scope but other blocks
-// do not.
+// JavaScript  function ஒரு குறிப்பிட்ட  scope(எல்லை) கொண்டுள்ளது ;
+//functions தமக்கென  ஒரு scope கொண்டுள்ளன .
+
 if (true){
     var i = 5;
 }
-i; // = 5 - not undefined as you'd expect in a block-scoped language
+i; // = 5 - //இது undefined அல்ல 
 
-// This has led to a common pattern of "immediately-executing anonymous
-// functions", which prevent temporary variables from leaking into the global
-// scope.
+// இதன் காரணமாக anonymous functions உடனடியாக செயற்படுத்தபடுகின்றன 
+//இதன் மூலம் தற்காலிக மாறிகள்(variable) குளோபல் scope
+//இற்கு மாறுவதை தவிர்க்கலாம் .
 (function(){
     var temporary = 5;
-    // We can access the global scope by assiging to the "global object", which
-    // in a web browser is always `window`. The global object may have a
-    // different name in non-browser environments such as Node.js.
+	//நாங்கள் ஒரு மாறியை எங்கிருந்தும் அணுக (access) அதை "global object"
+	//ஒன்றுக்கு வழங்க வேண்டும் உலாவியில் அது எப்போதும் `window` ஆகும் .
+	//உலாவி  அல்லாத சூழலில் (Node.js) வேறு பெயருடன் இருக்கும் 
     window.permanent = 10;
 })();
 temporary; // raises ReferenceError
 permanent; // = 10
 
-// One of JavaScript's most powerful features is closures. If a function is
-// defined inside another function, the inner function has access to all the
-// outer function's variables, even after the outer function exits.
+//JavaScript's மிகவும் சக்தி வாய்ந்த ஒரு வசதி closures ஆகும் 
+//ஒரு function இன்னொரு function உள் உருவாக்கபடின்
+//அது உருவாகப்பட்ட function  இன் மாறிகளை அணுக முடியும்  
 function sayHelloInFiveSeconds(name){
     var prompt = "Hello, " + name + "!";
-    // Inner functions are put in the local scope by default, as if they were
-    // declared with `var`.
+    // Inner functions ஆனது local scope இல்  காணப்படும் 
+	//அது `var ` என்ற குறியீட்டு சொல்லால் நிறுவப்படும் 
     function inner(){
         alert(prompt);
     }
     setTimeout(inner, 5000);
-    // setTimeout is asynchronous, so the sayHelloInFiveSeconds function will
-    // exit immediately, and setTimeout will call inner afterwards. However,
-    // because inner is "closed over" sayHelloInFiveSeconds, inner still has
-    // access to the `prompt` variable when it is finally called.
+    //setTimeout  ஆனது background இல் இயங்கும்  , எனவே sayHelloInFiveSeconds function,
+	//செயற்பாடு முடிவடைய ,setTimeout ஆனது inner function call செய்யும்.
+
 }
-sayHelloInFiveSeconds("Adam"); // will open a popup with "Hello, Adam!" in 5s
+sayHelloInFiveSeconds("Adam"); // //இது ஒரு popup  ஐ ஐந்து செக்கன்களில் காட்டும் 
 
 ///////////////////////////////////
-// 5. More about Objects; Constructors and Prototypes
+// 5.  Objects; Constructors and Prototypes  பற்றி மேலும் 
 
-// Objects can contain functions.
+// Objects  functions ஐ கொண்டிருக்கலாம் 
 var myObj = {
     myFunc: function(){
         return "Hello world!";
@@ -379,8 +382,8 @@ var myObj = {
 };
 myObj.myFunc(); // = "Hello world!"
 
-// When functions attached to an object are called, they can access the object
-// they're attached to using the `this` keyword.
+//functions ஆனது objects உடன் இணைக்கப்பட்டுள போது அவை object ஐ அணுக முடியும் 
+//அவை this என்ற  குறியீட்டு  சொல்லை பயன்படுத்தி இணைக்கபடுகின்றன 
 myObj = {
     myString: "Hello world!",
     myFunc: function(){
@@ -389,30 +392,29 @@ myObj = {
 };
 myObj.myFunc(); // = "Hello world!"
 
-// What this is set to has to do with how the function is called, not where
-// it's defined. So, our function doesn't work if it isn't called in the
-// context of the object.
+//எங்கள் function ஆனது தொழிற் படாமல் போகலாம் அது context(அமைப்பு ) of the object call செய்யபடவிடின் 
 var myFunc = myObj.myFunc;
 myFunc(); // = undefined
 
-// Inversely, a function can be assigned to the object and gain access to it
-// through `this`, even if it wasn't attached when it was defined.
+
+//function ஆனது ஒரு object உக்கு assign செய்யலாம் பிறகு அதை நாம் அணுகமுடியும் 
+//`this` மூலம்  
 var myOtherFunc = function(){
     return this.myString.toUpperCase();
 }
 myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "HELLO WORLD!"
 
-// We can also specify a context for a function to execute in when we invoke it
-// using `call` or `apply`.
+//ஒரு function ஒரு அமைப்பை நாம் உருவாக்க முடியும் 
+//அதை நாம் `call` அல்லது  `apply` மூலம் செயல்படுத்த முடியும்
 
 var anotherFunc = function(s){
     return this.myString + s;
 }
 anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
 
-// The `apply` function is nearly identical, but takes an array for an argument
-// list.
+//apply செயற்பாட்டளவில் ஒத்தன ,ஆனால் அது array (அணி) argument 
+//ஆக எடுக்கிறது.
 
 anotherFunc.apply(myObj, [" And Hello Sun!"]); // = "Hello World! And Hello Sun!"
 
