@@ -176,13 +176,21 @@ class MyClass(T, U) {
 
 // And we use them in this manner:
 void main() {
-    auto mc = MyClass!(int, string);
+    auto mc = new MyClass!(int, string)(7, "seven");
 
-    mc.data = 7;
-    mc.other = "seven";
+    // Import the 'stdio' module from the standard library for writing to
+    // console (imports can be local to a scope).
+    import std.stdio;
 
-    writeln(mc.data);
-    writeln(mc.other);
+    // Call the getters to fetch the values.
+    writefln("Earlier: data = %d, str = %s", mc.data, mc.other);
+
+    // Call the setters to assign new values.
+    mc.data = 8;
+    mc.other = "eight";
+
+    // Call the getters again to fetch the new values.
+    writefln("Later: data = %d, str = %s", mc.data, mc.other);
 }
 ```
 
