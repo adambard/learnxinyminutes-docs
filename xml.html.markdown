@@ -83,7 +83,7 @@ With this tool, you can check the XML data outside the application logic.
 <!DOCTYPE note SYSTEM "Bookstore.dtd">
 <bookstore>
   <book category="COOKING">
-    <title >Everyday Italian</title>
+    <title>Everyday Italian</title>
     <price>30.00</price>
   </book>
 </bookstore>
@@ -121,7 +121,7 @@ With this tool, you can check the XML data outside the application logic.
 
 <bookstore>
   <book category="COOKING">
-    <title >Everyday Italian</title>
+    <title>Everyday Italian</title>
     <price>30.00</price>
   </book>
 </bookstore>
