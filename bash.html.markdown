@@ -11,6 +11,7 @@ contributors:
     - ["Rahil Momin", "https://github.com/iamrahil"]
     - ["Gregrory Kielian", "https://github.com/gskielian"]
     - ["Etan Reisner", "https://github.com/deryni"]
+    - ["Jonathan Wang", "https://github.com/Jonathansw"                       ]
 filename: LearnBash.sh
 ---
 
