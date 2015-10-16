@@ -105,11 +105,11 @@ b := (x > y).                                               "greater than"
 b := (x < y).                                               "less than"
 b := (x >= y).                                              "greater than or equal"
 b := (x <= y).                                              "less than or equal"
-b := b not.                                                 "boolean not"
-b := (x < 5) & (y > 1).                                     "boolean and"
-b := (x < 5) | (y > 1).                                     "boolean or"
-b := (x < 5) and: [y > 1].                                  "boolean and (short-circuit)"
-b := (x < 5) or: [y > 1].                                   "boolean or (short-circuit)"
+b := b not.                                                 "Boolean not"
+b := (x < 5) & (y > 1).                                     "Boolean and"
+b := (x < 5) | (y > 1).                                     "Boolean or"
+b := (x < 5) and: [y > 1].                                  "Boolean and (short-circuit)"
+b := (x < 5) or: [y > 1].                                   "Boolean or (short-circuit)"
 b := (x < 5) eqv: (y > 1).                                  "test if both true or both false"
 b := (x < 5) xor: (y > 1).                                  "test if one true and other false"
 b := 5 between: 3 and: 12.                                  "between (inclusive)"
@@ -246,8 +246,8 @@ Transcript show: (x value: 'First' value: 'Second'); cr.    "use block with argu
 - binary methods
 - keyword methods are messages with selectors including colons standard categories/protocols:                     - initialize-release    (methods called for new instance)
 - accessing             (get/set methods)
-- testing               (boolean tests - is)
-- comparing             (boolean tests with parameter
+- testing               (Boolean tests - is)
+- comparing             (Boolean tests with parameter
 - displaying            (gui related methods)
 - printing              (methods for printing)
 - updating              (receive notification of changes)

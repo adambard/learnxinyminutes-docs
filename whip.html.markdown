@@ -44,7 +44,7 @@ not_in_form
 ; Nesting forms works as you expect.
 (* 2 (+ 1 3)) ; => 8
 
-; There's a boolean type.
+; There's a Boolean type.
 true
 false
 

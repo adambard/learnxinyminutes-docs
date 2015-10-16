@@ -324,7 +324,7 @@ on a new line! ""Wow!"", the masses cried";
             // try parse will default to type default on failure
             // in this case: 0
             int tryInt;
-            if (int.TryParse("123", out tryInt)) // Function is boolean
+            if (int.TryParse("123", out tryInt)) // Function is Boolean
                 Console.WriteLine(tryInt);       // 123
 
             // Convert Integer To String
@@ -419,7 +419,7 @@ on a new line! ""Wow!"", the masses cried";
                 // Item is an int
                 Console.WriteLine(item.ToString());
         }
-        
+
         // YIELD
         // Usage of the "yield" keyword indicates that the method it appears in is an Iterator
         // (this means you can use it in a foreach loop)
@@ -435,7 +435,7 @@ on a new line! ""Wow!"", the masses cried";
             foreach (var counter in YieldCounter())
                 Console.WriteLine(counter);
         }
-        
+
         // you can use more than one "yield return" in a method
         public static IEnumerable<int> ManyYieldCounter()
         {
@@ -444,7 +444,7 @@ on a new line! ""Wow!"", the masses cried";
             yield return 2;
             yield return 3;
         }
-        
+
         // you can also use "yield break" to stop the Iterator
         // this method would only return half of the values from 0 to limit.
         public static IEnumerable<int> YieldCounterWithBreak(int limit = 10)
@@ -480,7 +480,7 @@ on a new line! ""Wow!"", the masses cried";
             // ?? is syntactic sugar for specifying default value (coalesce)
             // in case variable is null
             int notNullable = nullable ?? 0; // 0
-            
+
             // ?. is an operator for null-propagation - a shorthand way of checking for null
             nullable?.Print(); // Use the Print() extension method if nullable isn't null
 

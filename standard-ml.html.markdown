@@ -41,7 +41,7 @@ val int_remainder = 14 mod 4    (* gives 2, since 3*4 = 12 *)
 (* ~ is actually sometimes a function (e.g. when put in front of variables) *)
 val negative_rent = ~(rent)  (* Would also have worked if rent were a "real" *)
 
-(* There are also booleans and boolean operators *)
+(* There are also Booleans and Boolean operators *)
 val got_milk = true
 val got_bread = false
 val has_breakfast = got_milk andalso got_bread  (* 'andalso' is the operator *)
@@ -68,7 +68,7 @@ val some_answer = is_large (5 + 5)      (* Without parens, this would break! *)
 (* val some_answer = is_large 5 + 5 *)  (* Read as: (is_large 5) + 5. Bad! *)
 
 
-(* Besides booleans, ints and reals, Standard ML also has chars and strings: *)
+(* Besides Booleans, ints and reals, Standard ML also has chars and strings: *)
 val foo = "Hello, World!\n"  (* The \n is the escape sequence for linebreaks *)
 val one_letter = #"a"        (* That funky syntax is just one character, a *)
 

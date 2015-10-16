@@ -22,7 +22,7 @@ var name: string = "Anders";
 // When it's impossible to know, there is the "Any" type
 var notSure: any = 4;
 notSure = "maybe a string instead";
-notSure = false; // okay, definitely a boolean
+notSure = false; // okay, definitely a Boolean
 
 // For collections, there are typed arrays and generic arrays
 var list: number[] = [1, 2, 3];

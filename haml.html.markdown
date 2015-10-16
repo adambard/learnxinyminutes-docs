@@ -91,7 +91,7 @@ $ haml input_file.haml output_file.html
 / Attributes for any tag can be added in the hash
 %a{:href => '#', :class => 'bar', :title => 'Bar'}
 
-/ For boolean attributes assign the value 'true'
+/ For Boolean attributes assign the value 'true'
 %input{:selected => true}
 
 / To write data-attributes, use the :data key with its value as another hash
@@ -122,7 +122,7 @@ $ haml input_file.haml output_file.html
 
   if book do
     %p This is a book
-    
+
 / Adding ordered / unordered list
 %ul
   %li
@@ -142,11 +142,11 @@ $ haml input_file.haml output_file.html
     %tr
       %th Header 1
       %th Header 2
-    
+
     %tr
       %td Value1
       %td value2
-    
+
   %tfoot
     %tr
       %td
