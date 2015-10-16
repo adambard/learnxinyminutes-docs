@@ -6,6 +6,7 @@ contributors:
     - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
     - ["Jakub Trzebiatowski", "http://cbs.stgn.pl"]
     - ["Marco Scannadinari", "https://marcoms.github.io"]
+    - ["Riccardo Mutschlechner", "http://cs.wisc.edu/~riccardo"]
 
 ---
 
@@ -35,8 +36,8 @@ enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 // MON gets 2 automatically, TUE gets 3, etc.
 
 
-// Import headers with #include
-#include <stdlib.h>
+// Import headers with #include for additional functionality
+#include <stdlib.h> 
 #include <stdio.h>
 #include <string.h>
 
@@ -44,13 +45,14 @@ enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 // For your own headers, use double quotes instead of angle brackets:
 //#include "my_header.h"
 
-// Declare function signatures in advance in a .h file, or at the top of
-// your .c file.
+// You must declare function signatures in advance in a .h file, or at the top 
+// of your .c file, in order to call the functions from main().
 void function_1();
 int function_2(void);
 
 // Must declare a 'function prototype' before main() when functions occur after
-// your main() function.
+// your main() function. You may put the entire function above main, but
+// this is not really standard practice.
 int add_two_ints(int x1, int x2); // function prototype
 
 // Your program's entry point is a function called
@@ -70,7 +72,7 @@ int main(void) {
   // shorts are usually 2 bytes
   short x_short = 0;
 
-  // chars are guaranteed to be 1 byte
+  // chars are guaranteed to be 1 byte in POSIX standards; may vary otherwise.
   char x_char = 0;
   char y_char = 'y'; // Char literals are quoted with ''
 
@@ -82,10 +84,10 @@ int main(void) {
   // floats are usually 32-bit floating point numbers
   float x_float = 0.0f; // 'f' suffix here denotes floating point literal
 
-  // doubles are usually 64-bit floating-point numbers
+  // doubles are usually 64-bit double-precision floating-point numbers
   double x_double = 0.0; // real numbers without any suffix are doubles
 
-  // integer types may be unsigned (greater than or equal to zero)
+  // integer types may be unsigned, and value from 0 - 2^(numbits)-1 rather than  // -2^(numbits/2) - 2^(numbits/2)-1 (greater than or equal to zero)
   unsigned short ux_short;
   unsigned int ux_int;
   unsigned long long ux_long_long;
@@ -109,13 +111,13 @@ int main(void) {
   printf("sizeof(a++) = %zu where a = %d\n", size, a);
   // prints "sizeof(a++) = 4 where a = 1" (on a 32-bit architecture)
 
-  // Arrays must be initialized with a concrete size.
+  // Arrays must be initialized with a fixed length.
   char my_char_array[20]; // This array occupies 1 * 20 = 20 bytes
   int my_int_array[20]; // This array occupies 4 * 20 = 80 bytes
   // (assuming 4-byte words)
 
 
-  // You can initialize an array to 0 thusly:
+  // You can initialize an array to 0 like so:
   char my_array[20] = {0};
 
   // Indexing an array is like other languages -- or,
@@ -135,8 +137,8 @@ int main(void) {
   char buf[size];
   fgets(buf, sizeof buf, stdin);
 
-  // strtoul parses a string to an unsigned integer
-  size_t size2 = strtoul(buf, NULL, 10);
+  // strtoul parses a string to an unsigned long integer
+  unsigned long int size2 = strtoul(buf, NULL, 10);
   int var_length_array[size2]; // declare the VLA
   printf("sizeof array = %zu\n", sizeof var_length_array);
 
@@ -182,7 +184,7 @@ int main(void) {
   i1 + i2; // => 3
   i2 - i1; // => 1
   i2 * i1; // => 2
-  i1 / i2; // => 0 (0.5, but truncated towards 0)
+  i1 / i2; // => 0 (0.5, but truncated towards 0 - due to integer division)
 
   // You need to cast at least one integer to float to get a floating-point result
   (float)i1 / i2; // => 0.5f
@@ -285,13 +287,6 @@ int main(void) {
 
   printf("\n");
 
-  // *****NOTES*****:
-  // Loops and Functions MUST have a body. If no body is needed:
-  int i;
-  for (i = 0; i <= 5; i++) {
-    ; // use semicolon to act as the body (null statement)
-  }
-
   // branching with multiple choices: switch()
   switch (a) {
   case 0: // labels need to be integral *constant* expressions
@@ -301,7 +296,8 @@ int main(void) {
     printf("Huh, 'a' equals 1!\n");
     break;
   default:
-    // if `some_integral_expression` didn't match any of the labels
+    // if `some_integral_expression` (a in this case)  didn't match any of the 
+    // labels:
     fputs("error!\n", stderr);
     exit(-1);
     break;
