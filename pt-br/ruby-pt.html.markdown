@@ -6,6 +6,7 @@ contributors:
   - ["Bruno Henrique - Garu", "http://garulab.com"]
 translators:
   - ["Katyanna Moura", "https://twitter.com/amelie_kn"]
+  - ["Eric Araújo", "https://twitter.com/LedZeck"]
 ---
 
 ```ruby
@@ -175,7 +176,7 @@ novo_hash = {defcon: 3, acao: true}
 
 novo_hash.keys #=> [:defcon, :acao]
 
-# Dica: Tanto Arrays quanto Hashes são Enumerable.
+# Dica: Tanto Arrays quanto Hashes são enumeráveis (possuem a capacidade de retornar a quantidade de elementos  dentro deles).
 # Eles compartilham um monte de métodos úteis como each, map, count e mais
 
 # Estruturas de controle
