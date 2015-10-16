@@ -581,6 +581,31 @@ void doSomethingWithAFile(const std::string& filename)
 //   vetor (i.e. array de autodimensionamento), mapas hash, e assim por diante
 //   tudo é automaticamente destruído quando eles saem de escopo
 // - Mutex usa lock_guard e unique_lock
+
+
+/////////////////////
+// Templates
+/////////////////////
+
+// Templates em C++ são utilizados para programação genérica, ou seja,
+// utilizar um tipo de dado genérico onde possa suportar qualquer entrada.
+// Por exemplo, invés de criar uma função que apenas some inteiros, você
+// poderá fazer uma função que soma double, float e inteiros em uma única
+// definição para reutilizar código.
+
+// Definimos um função que utiliza um "typename"
+template<class T>
+T soma(T a, T b) {
+  return A + B;
+}
+
+// E agora para executá-la
+int i=5, j=6, k;
+double f=2.0, g=0.5, h;
+k=sum<int>(i,j);
+h=sum<double>(f,g);
+
+// Deste modo, não precisamos fazer overload nas funções! (:
 ```
 Leitura Adicional:
 
