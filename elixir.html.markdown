@@ -384,6 +384,8 @@ end
 
 # Compile the module and create a process that evaluates `area_loop` in the shell
 pid = spawn(fn -> Geometry.area_loop() end) #=> #PID<0.40.0>
+#Alternatively
+pid = spawn(Geometry, :area_loop, [])
 
 # Send a message to `pid` that will match a pattern in the receive statement
 send pid, {:rectangle, 2, 3}
