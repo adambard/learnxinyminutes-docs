@@ -423,3 +423,5 @@ idioms. Or you can click on a function name in [the
 documentation](http://golang.org/pkg/) and the source code comes up!
 
 Another great resource to learn Go is [Go by example](https://gobyexample.com/).
+
+Go Mobile adds support for mobile platforms (Android and iOS). You can write all-Go native mobile apps or write a library that contains bindings from a Go package, which can be invoked via Java (Android) and Objective-C (iOS). Check out the [Go Mobile page](https://github.com/golang/go/wiki/Mobile) for more information.

@@ -106,6 +106,20 @@ selected:link { }
 /* or an element in focus */
 selected:focus { }
 
+/* any element that is the first child of its parent */
+selector:first-child {}
+
+/* any element that is the last child of its parent */
+selector:last-child {}
+
+/* Just like pseudo classes, pseudo elements allow you to style certain parts of a document  */
+
+/* matches a virtual first child of the selected element */
+selector::before {}
+
+/* matches a virtual last child of the selected element */
+selector::after {}
+
 /* At appropriate places, an asterisk may be used as a wildcard to select every
    element */
 * { } /* all elements */
