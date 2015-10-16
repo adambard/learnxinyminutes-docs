@@ -3,6 +3,7 @@ language: css
 contributors:
     - ["Kostas Bariotis", "http://kostasbariotis.com"]
 filename: css-gr.html.markdown
+lang: el-gr
 ---
 
 Η αρχική μορφή του Παγκόσμιου Ιστού αποτελούταν απο καθαρό κείμενο, χωρίς οπτικά αντικείμενα. Με το πέρας 
