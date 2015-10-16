@@ -413,7 +413,7 @@ var doubler = product.bind(this, 2);
 doubler(8); // = 16
 
 // When you call a function with the `new` keyword, a new object is created, and
-// made available to the function via the this keyword. Functions designed to be
+// made available to the function via the `this` keyword. Functions designed to be
 // called like that are called constructors.
 
 var MyConstructor = function(){
