@@ -135,7 +135,6 @@ endif()
 # A variable reference is replaced by the value of the variable, or by the
 # empty string if the variable is not set
 ${variable_name}
-```
 
 # Lists
 # Setup the list of source files
@@ -168,3 +167,10 @@ if( UNIX )
     set( LEARN_CMAKE_DEFINITIONS
         "${LEARN_CMAKE_DEFINITIONS} -Wall -Wextra -Werror -Wno-deprecated-declarations -Wno-unused-parameter -Wno-comment" )
 endif()
+```
+
+### More Resources
+
++ [cmake tutorial](https://cmake.org/cmake-tutorial/)
++ [cmake documentation](https://cmake.org/documentation/)
++ [mastering cmake](http://amzn.com/1930934319/)
