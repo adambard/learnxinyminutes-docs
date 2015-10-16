@@ -165,6 +165,7 @@ some_var  # => 5
 some_other_var  # Raises a name error
 
 # if can be used as an expression
+# Equivalent of C's '?:' ternary operator
 "yahoo!" if 3 > 2 else 2  # => "yahoo!"
 
 # Lists store sequences
