@@ -137,7 +137,7 @@ selector {
     
     /* Απόλυτες μονάδες */
     width: 200px;     /* pixels */
-    font-size: 20pt;  /* points */
+    font-size: 20pt;  /* στιγμες */
     width: 5cm;       /* εκατοστά */
     min-width: 50mm;  /* χιλιοστά */
     max-width: 5in;   /* ίντσες */
