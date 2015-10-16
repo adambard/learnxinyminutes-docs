@@ -238,8 +238,7 @@ environment.
 ```
 
 By now you're probably wondering how to compile this fabulous document and look
-at the glorious glory that is a LaTeX pdf (yes, this document actually does
-compiles).
+at the glorious glory that is a LaTeX pdf.
 
 Getting to the final document using LaTeX consists of the following steps:
 
