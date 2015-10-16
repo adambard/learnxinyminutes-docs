@@ -12,166 +12,171 @@ lang: ro-ro
 filename: LearnBash-ro.sh
 ---
 
-Bash este numele shell-ului unix, care a fost de asemenea distribuit drept shell pentru sistemul de operare GNU si ca shell implicit pentru Linux si Mac OS X.
+Bash este numele shell-ului UNIX, care a fost de asemenea distribuit drept shell pentru sistemul de operare GNU și ca shell implicit pentru Linux si Mac OS X.
 Aproape toate exemplele de mai jos pot fi parte dintr-un script sau pot fi executate direct in linia de comanda.
 
-[Citeste mai multe:](http://www.gnu.org/software/bash/manual/bashref.html)
+[Citește mai multe:](http://www.gnu.org/software/bash/manual/bashref.html)
 
 ```bash
 #!/bin/bash
 # Prima linie din script se numeste "shebang" 
-# care spune systemului cum sa execute scriptul
+# care spune sistemului cum să execute scriptul
 # http://en.wikipedia.org/wiki/Shebang_(Unix)
-# Dupa cum te-ai prins deja, comentariile incep cu #. 
+# După cum te-ai prins deja, comentariile încep cu #. 
 # Shebang este de asemenea un comentariu.
 
 # Exemplu simplu de hello world:
 echo Hello world!
 
-# Fiecare comanda incepe pe o linie noua, sau dupa punct si virgula ;
+# Fiecare comandă începe pe o linie nouă, sau după punct și virgula ;
 echo 'Prima linie'; echo 'A doua linie'
 
 # Declararea unei variabile se face astfel:
-VARIABLE="Niste text"
+VARIABLE="Niște text"
 
-# DAR nu asa:
+# DAR nu așa:
 VARIABLE = "Niste text"
-# Bash va crede ca VARIABLE este o comanda care trebuie executata si va
-# returna o eroare pentru ca nu va putea fi gasita.
+# Bash va crede că VARIABLE este o comandă care trebuie executată și va
+# returna o eroare pentru că nu va putea fi găsita.
 
 # Folosind variabila:
 echo $VARIABLE
 echo "$VARIABLE"
 echo '$VARIABLE'
-# Atunci cand folosesti variabila, o atribui, o exporti sau altfel, 
-# numele ei se scrie fara $.
-# Daca vrei sa folosesti valoarea variabilei, atunci trebuie sa folosesti $.
-# Atentie la faptul ca ' (apostrof) nu va inlocui variabla cu valoarea ei.
+# Atunci când folosesti variabila, o atribui, o exporți sau altfel, 
+# numele ei se scrie fără $.
+# Daca vrei sa folosesti valoarea variabilei, atunci trebuie să folosești $.
+# Atentie la faptul că ' (apostrof) nu va inlocui variabla cu valoarea ei.
 
-# Inlocuirea de caractere in variabile
-echo ${VARIABLE/Some/A}
-# Asta va inlocui prima aparitie a "Some" cu "A" in variabila de mai sus.
+# Inlocuirea de caractere în variabile
+echo ${VARIABLE/Niște/Un}
+# Asta va înlocui prima apariție a "Niște" cu "Un" în variabila de mai sus.
 
-# Substring dintr-o variabila
+# Substring dintr-o variabilă
 echo ${VARIABLE:0:7}
 # Asta va returna numai primele 7 caractere din variabila.
 
 # Valoarea implicita a unei variabile:
-echo ${FOO:-"ValoareaImplicitaDacaFOOLipsesteSauEGoala"}
-# Asta functioneaza pentru null (FOO=),
-# sir de caractere gol (FOO=""), zero (FOO=0) returneaza 0
+echo ${FOO:-"ValoareaImplicitaDacaFOOLipseșteSauEGoală"}
+# Asta functionează pentru null (FOO=),
+# sir de caractere gol (FOO=""), zero (FOO=0) returnează 0
 
 # Variabile pre-existente
-echo "Ulima valoare returnata de ultimul program rulat: $?"
-echo "ID-ul procesului (PID) care ruleaza scriptul: $$"
-echo "Numarul de argumente: $#"
+echo "Ulima valoare returnată de ultimul program rulat: $?"
+echo "ID-ul procesului (PID) care rulează scriptul: $$"
+echo "Numărul de argumente: $#"
 echo "Argumentele scriptului: $@"
-echo "Argumentele scriptului separate in variabile: $1 $2..."
+echo "Argumentele scriptului separate în variabile: $1 $2..."
 
-# Citind o valoare din consola
-echo "Care e numele tau?"
-read NAME # Observa faptul ca nu a trebuit sa declaram o variabila noua
+# Citind o valoare din consolă
+echo "Care e numele tău?"
+read NAME # Observă faptul că nu a trebuit să declarăm o variabilă nouă
 echo Salut, $NAME!
 
 # Avem obisnuita instructiune "if"
-# Foloseste "man test" pentru mai multe informatii 
-# despre instructinea conditionala
+# Folosește "man test" pentru mai multe informații 
+# despre instrucținea conditionala
 if [ $NAME -ne $USER ]
 then
-    echo "Numele tau este username-ul tau"
+    echo "Numele tău este username-ul tău"
 else
-    echo "Numele tau nu este username-ul tau"
+    echo "Numele tău nu este username-ul tău"
 fi
 
-# Este de asemenea si executarea conditionala de comenzi
-echo "Intotdeauna executat" || echo "Executat daca prima instructiune esueaza"
-echo "Intotdeauna executat" && echo "Executat daca prima instructiune NU esueaza"
+# Există, de asemenea, și executarea conditională de comenzi
+echo "Întotdeauna executat" || echo "Executat dacă prima instrucțiune eșuează"
+echo "Întotdeauna executat" && echo "Executat dacă prima instrucțiune NU esuează"
 
-# Expresiile apar in urmatorul format
+# Expresiile apar în urmatorul format
 echo $(( 10 + 5 ))
 
-# Spre deosebire de alte limbaje de programare bash este un shell - asa ca 
-# functioneaza in contextul directorului curent. Poti vedea fisiere si directoare
+# Spre deosebire de alte limbaje de programare, bash este un shell - așa că 
+# funcționează in contextul directorului curent. Poți vedea fișiere și directoare
 # din directorul curent folosind comanda "ls":
 ls
 
-# Aceste comenzi au optiuni care la controleaza executia
-ls -l # Listeaza fiecare fisier si director pe o linie separata
+# Aceste comenzi au optiuni care le controlează execuțiă
+ls -l # Listează fiecare fișier și director pe o linie separată
 
 # Rezultatele comenzii anterioare pot fi 
-# trimise urmatoarei comenzi drept argument
-# Comanda grep filtreaza argumentele trimise cu sabloane. 
+# trimise următoarei comenzi drept argument
+# Comanda grep filtrează argumentele trimise cu sabloane. 
 # Astfel putem vedea fiserele .txt din directorul curent.
 ls -l | grep "\.txt"
 
-# De asemenea poti redirectiona o comanda, input si error output
-python2 hello.py < "input.in"
-python2 hello.py > "output.out"
-python2 hello.py 2> "error.err"
-# Output-ul va suprascrie fisierul daca acesta exista.
-# Daca vrei sa fie concatenate poti folosi ">>" 
+# De asemenea, poți redirecționa date de intrare spre sau erori/date de ieșire
+# dinspre o comandă
+python2 hello.py < "intrare.in"
+python2 hello.py > "ieșire.out"
+python2 hello.py 2> "erori.err"
+# Output-ul va suprascrie fișierul dacă acesta există.
+# Daca vrei să fie concatenate datele poți folosi ">>" în loc de ">"
 
-# Comenzile pot fi inlocuite in interiorul altor comenzi folosind $( ):
-# Urmatoarea comanda afiseaza numarul de fisiere 
-# si directoare din directorul curent
-echo "Sunt $(ls | wc -l) fisiere aici."
+# Comenzile pot fi înlocuite în interiorul altor comenzi folosind $( ):
+# Urmatoarea comandă afișează numărul de fișiere 
+# și directoare din directorul curent
+echo "Sunt $(ls | wc -l) fișiere aici."
 
-# Acelasi lucru se poate obtine folosind apostrf-ul inversat ``,
-# dar nu pot fi folosite unele in interiorul celorlalte asa ca modalitatea 
-# preferata este de a folosi $( )
-echo "Sunt `ls | wc -l` fisiere aici."
+# Același lucru se poate obține folosind apostroful inversat ``,
+# dar nu pot fi folosite limbricate, așa ca modalitatea 
+# preferată este de a folosi $( )
+echo "Sunt `ls | wc -l` fișiere aici."
 
-# Bash foloseste o instructiune 'case' care functioneaza 
-# in mod similar cu instructiunea switch din Java si C++
+# Bash folosește o instrucțiune 'case' care funcționeaza 
+# în mod similar cu instructiunea switch din Java si C++
 case "$VARIABLE" in 
     0) echo "Este un zero.";;
     1) echo "Este un unu.";;
     *) echo "Nu este null";;
 esac
 
-# Instructiunea for parcurge toate elementele trimise:
-# Continutul variabilei $VARIABLE este printat de 3 ori
+# Instrucțiunea 'for' parcurge toate elementele trimise:
+# Conținutul variabilei $VARIABLE este printat de 3 ori
 for VARIABLE in {1..3}
 do
     echo "$VARIABLE"
 done
 
-# while loop:
+# Buclă while:
 while [true]
 do
-    echo "in interiorul iteratiei aici..."
+    echo "în interiorul iterației aici..."
     break
 done
 
-# De asemenea poti defini functii
-# Definitie:
+# De asemenea poți defini funcții
+# Definiție:
 function foo ()
 {
-    echo "Argumentele functioneaza ca si argumentele scriptului: $@"
+    echo "Argumentele funcționeaza ca și argumentele scriptului: $@"
     echo "Si: $1 $2..."
-    echo "Asta este o functie"
+    echo "Asta este o funcție"
     return 0
 }
 
-# sau mai simplu
+# sau mai simplu:
 bar ()
 {
-    echo "Alta metoda de a declara o functie"
+    echo "Altă metodă de a declara o funcție"
     return 0
 }
 
-# Invocarea unei functii
+# Invocarea unei funcții:
 foo "Numele meu este: " $NAME
 
-# Sunt o multime de comenzi utile pe care ar trebui sa le inveti:
+# Sunt o multime de comenzi utile pe care ar trebui să le inveți:
 tail -n 10 file.txt
-# printeaza ultimele 10 linii din fisierul file.txt
+# afișează ultimele 10 linii din fișierul file.txt
+
 head -n 10 file.txt
-# printeaza primele 10 linii din fisierul file.txt
+# afișează primele 10 linii din fișierul file.txt
+
 sort file.txt
-# sorteaza liniile din file.txt
+# sortează liniile din file.txt
+
 uniq -d file.txt
-# raporteaza sau omite liniile care se repeta, cu -d le raporteaza
+# raporteaza sau omite liniile care se repetă. Cu -d le raporteaza
+
 cut -d ',' -f 1 file.txt
-# printeaza doar prima coloana inainte de caracterul ","
+# printează doar prima coloană inainte de caracterul ","
 ```
