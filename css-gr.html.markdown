@@ -221,14 +221,14 @@ p { property: value !important; }
 * `B` επόμενο.
 * `D` τελευταίο.
 
-## Συμβατικότητα
+## Συμβατότητα
 
 Τα περισσότερα απο τα παραπάνω ήδη υποστηρίζονται απο τους γνωστούς φυλλομετρητές. Άλλα θα πρέπει 
 πάντα να ελέγχουμε πρωτου τους χρησιμοποιήσουμε.
 
 ## Περισσότερα
 
-* Έλεγχος συμβατικότητας, [CanIUse](http://caniuse.com).
+* Έλεγχος συμβατότητας, [CanIUse](http://caniuse.com).
 * CSS Playground [Dabblet](http://dabblet.com/).
 * [Mozilla Developer Network's CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [Codrops' CSS Reference](http://tympanus.net/codrops/css_reference/)
