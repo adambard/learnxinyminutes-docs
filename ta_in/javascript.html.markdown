@@ -418,28 +418,29 @@ anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
 
 anotherFunc.apply(myObj, [" And Hello Sun!"]); // = "Hello World! And Hello Sun!"
 
-// This is useful when working with a function that accepts a sequence of
-// arguments and you want to pass an array.
+//இது தொடர்ச்சியான arguments ஐ நாம் function ஒன்றுக்குள் pass பண்ண 
+//வேண்டும் எனில் மிகவும் உபயோகமானது 
 
 Math.min(42, 6, 27); // = 6
 Math.min([42, 6, 27]); // = NaN (uh-oh!)
 Math.min.apply(Math, [42, 6, 27]); // = 6
 
-// But, `call` and `apply` are only temporary. When we want it to stick, we can
-// use `bind`.
+//ஆனால் `call ` ,`apply ` இரண்டும் தற்காலிகமானவை 
+//அவற்றை நிரந்தரமாக்க bind function ஐ பயன்படுத்தவும் 
 
 var boundFunc = anotherFunc.bind(myObj);
 boundFunc(" And Hello Saturn!"); // = "Hello World! And Hello Saturn!"
 
-// `bind` can also be used to partially apply (curry) a function.
+//`bind ` ஐ உபயோகித்து ஒரு function ஐ பகுதியாக apply செய்ய முடியும் 
 
 var product = function(a, b){ return a * b; }
 var doubler = product.bind(this, 2);
 doubler(8); // = 16
 
-// When you call a function with the `new` keyword, a new object is created, and
-// made available to the function via the this keyword. Functions designed to be
-// called like that are called constructors.
+
+//ஒரு function ஐ நாம் new என்ற குறியீட்டு சொல்லை பயன்படுத்தி 
+//அழைக்கும் போது  புதிய object உருவாக்கப்படும் .இவ்வாறான  functions 
+//constructors என அழைக்கப்படும் 
 
 var MyConstructor = function(){
     this.myNumber = 5;
@@ -447,13 +448,15 @@ var MyConstructor = function(){
 myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
 
-// Every JavaScript object has a 'prototype'. When you go to access a property
-// on an object that doesn't exist on the actual object, the interpreter will
-// look at its prototype.
+//ஒவ்வொரு JavaScript object உம் ஒரு `prototype ` கொண்டுள்ளது 
+//நீங்கள் object ஒன்றின் ஒரு property ஐ அணுகும் போது 
+//அந்த property இல்லாவிடின்  interpreter  ஆனது 
+//அதன் prototype உள்ளதா என பார்க்கும் 
 
-// Some JS implementations let you access an object's prototype on the magic
-// property `__proto__`. While this is useful for explaining prototypes it's not
-// part of the standard; we'll get to standard ways of using prototypes later.
+//JS இன் சில செயலாக்கங்கள் ஒரு object இன் protoype ஐ 
+//இலகுவாக `__proto__` மூலம் access செய்ய முடியும் .
+//இது prototype பாவணை யை இலகுவாக்கினாலும் 
+//இது சரியான ஒரு முறை அல்ல 
 var myObj = {
     myString: "Hello world!"
 };
@@ -470,32 +473,36 @@ myObj.meaningOfLife; // = 42
 // This works for functions, too.
 myObj.myFunc(); // = "hello world!"
 
-// Of course, if your property isn't on your prototype, the prototype's
-// prototype is searched, and so on.
+//உங்கள் property prototype இல் இல்லது இருப்பின் , protype இன் 
+//prototype search செய்யப்படும் 
 myPrototype.__proto__ = {
     myBoolean: true
 };
 myObj.myBoolean; // = true
 
-// There's no copying involved here; each object stores a reference to its
-// prototype. This means we can alter the prototype and our changes will be
-// reflected everywhere.
+//ஒவ்வொரு object உம்  அதன் protype க்கும்  reference (மேற்கோள் ) ஒன்றை வைத்திருக்கும்  
+//நாம் ஒரு protype இணை மாற்றினால் அதன் மாற்றங்கள் எல்லா இடத்திலும் (program இல் )
+//பிரதிபலிக்கும் 
 myPrototype.meaningOfLife = 43;
 myObj.meaningOfLife; // = 43
 
-// We mentioned that `__proto__` was non-standard, and there's no standard way to
-// change the prototype of an existing object. However, there are two ways to
-// create a new object with a given prototype.
+ 
+//நாம் முன்பு கூறியது போல் `__proto__` பயன்படுத்துவது சரியான முறை அல்ல 
+//எனவே நாம் ஒரு protype ஐ object இல் உருவாக்க  இரண்டு வழிமுறைகள்
+//உள்ளன
 
-// The first is Object.create, which is a recent addition to JS, and therefore
-// not available in all implementations yet.
+// முதல் முறை  Object.create இது அண்மையில் அறிமுகம் செய்ய பட்ட ஒன்று
+//எனவே சில இடங்களில் இந்த முறை இன்னும் அறிமுகம் ஆகவில்லை
+
 var myObj = Object.create(myPrototype);
 myObj.meaningOfLife; // = 43
 
-// The second way, which works anywhere, has to do with constructors.
-// Constructors have a property called prototype. This is *not* the prototype of
-// the constructor function itself; instead, it's the prototype that new objects
-// are given when they're created with that constructor and the new keyword.
+
+// இரண்டாவது முறை , இது சகல இடங்களிலும் வேலைசெய்யும், இது constructors மூலம்.
+//constructors prototype என்னும் ஒரு காரணியை  கொண்டுள்ளது , இது  constructor function
+//இன் prototype அன்று. ,இது நாம் new என்ற குறியீட்டு சொல்லையும்  அந்த constructor உபயோகித்து
+//உருவாக்கபடுகிறது
+
 MyConstructor.prototype = {
     myNumber: 5,
     getMyNumber: function(){
@@ -509,20 +516,26 @@ myNewObj2.getMyNumber(); // = 6
 
 // Built-in types like strings and numbers also have constructors that create
 // equivalent wrapper objects.
+// JavaScript இல் உள்ள strings மற்றும் numbers வகைகளும் constructors கொண்டுள்ளன
+//இவை wrapper objects ஐ ஒத்தன
+
 var myNumber = 12;
 var myNumberObj = new Number(12);
 myNumber == myNumberObj; // = true
 
-// Except, they aren't exactly equivalent.
+
+//இவை மிக சிறிய அளவில் ஒத்தவை
 typeof myNumber; // = 'number'
 typeof myNumberObj; // = 'object'
 myNumber === myNumberObj; // = false
 if (0){
-    // This code won't execute, because 0 is falsy.
+    // இந்த கூற்றானது செயல்படுத்தபடாது ஏனெனில் ௦ false ஆகும்
 }
 
 // However, the wrapper objects and the regular builtins share a prototype, so
 // you can actually add functionality to a string, for instance.
+
+//இருப்பினும்  wrapper objects மற்றும் regular builtins ஆகியன  prototype ஒன்றை கொண்டுள்ளன
 String.prototype.firstCharacter = function(){
     return this.charAt(0);
 }
@@ -532,8 +545,15 @@ String.prototype.firstCharacter = function(){
 // features of JavaScript in an older subset of JavaScript, so that they can be
 // used in older environments such as outdated browsers.
 
-// For instance, we mentioned that Object.create isn't yet available in all
-// implementations, but we can still use it with this polyfill:
+//இந்த முறையானது  "polyfilling" இல் உபயோகபடுத்தபடுகிறது.
+//புதிய சில  வசதிகளை JavaScript பழைய JavaScript பிரதிகளில் இல்  உருவாக்குகிறது.
+//இது பழைய சூழல்களில் உபயோகிகப்படும்.
+
+
+//நாங்கள் முன்பு கூறி இருந்தோம்  Object.create சில இடங்களில் இந்த முறை இன்னும் 
+//அறிமுகம் ஆகவில்லை என்று ஆனால் இதை polyfill ஐ  பயன்படுத்தி உருவாக்க
+//முடியும்
+
 if (Object.create === undefined){ // don't overwrite it if it exists
     Object.create = function(proto){
         // make a temporary constructor with the right prototype
@@ -545,7 +565,7 @@ if (Object.create === undefined){ // don't overwrite it if it exists
 }
 ```
 
-## Further Reading
+## மேலும் JavaScript பற்றி கற்க
 
 The [Mozilla Developer
 Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) provides
