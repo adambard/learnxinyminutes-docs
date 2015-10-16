@@ -3,15 +3,16 @@ language: hy
 filename: learnhy.hy
 contributors:
     - ["Abhishek L", "http://twitter.com/abhishekl"]
+    - ["Zirak", "http://zirak.me"]
 ---
 
 Hy is a lisp dialect built on top of python. This is achieved by
 converting hy code to python's abstract syntax tree (ast). This allows
 hy to call native python code or python to call native hy code as well
 
-This tutorial works for hy ≥ 0.9.12
+This tutorial works for hy ≥ 0.9.12, with some corrections for hy 0.11.
 
-```clojure
+```hy
 ;; this gives an gentle introduction to hy for a quick trial head to
 ;; http://try-hy.appspot.com
 ;;
@@ -89,6 +90,17 @@ True ; => True
 (foolists 3) ;=> [3 2]
 (foolists 10 3) ;=> [10 3]
 
+; you can use rest arguments and kwargs too:
+(defn something-fancy [wow &rest descriptions &kwargs props]
+  (print "Look at" wow)
+  (print "It's" descriptions)
+  (print "And it also has:" props))
+
+(something-fancy "My horse" "amazing" :mane "spectacular")
+  
+; you use apply instead of the splat operators:
+(apply something-fancy ["My horse" "amazing"] { "mane" "spectacular" })
+
 ; anonymous functions are created using `fn' or `lambda' constructs
 ; which are similiar to `defn'
 (map (fn [x] (* x x)) [1 2 3 4]) ;=> [1 4 9 16]
@@ -102,6 +114,8 @@ True ; => True
 
 ; slice lists using slice
 (slice mylist 1 3) ;=> [2 3]
+; or, in hy 0.11, use cut instead:
+(cut mylist 1 3) ;=> [2 3]
 
 ; get elements from a list or dict using `get'
 (get mylist 1) ;=> 2
@@ -121,6 +135,22 @@ True ; => True
 ; all builtin python methods etc. are accessible from hy
 ; a.foo(arg) is called as (.foo a arg)
 (.split (.strip "hello world  ")) ;=> ["hello" "world"]
+
+; there is a shortcut for executing multiple functions on a value called the
+; "threading macro", denoted by an arrow:
+(-> "hello world  " (.strip) (.split)) ;=> ["hello" "world]
+; the arrow passes the value along the calls as the first argument, for instance:
+(-> 4 (* 3) (+ 2))
+; is the same as:
+(+ (* 4 3) 2)
+
+; there is also a "threading tail macro", which instead passes the value as the
+; second argument. compare:
+(-> 4 (- 2) (+ 1)) ;=> 3
+(+ (- 4 2) 1) ;=> 3
+; to:
+(->> 4 (- 2) (+ 1)) ;=> -1
+(+ 1 (- 2 4)) ;=> -1
 
 ;; Conditionals
 ; (if condition (body-if-true) (body-if-false)
@@ -159,6 +189,14 @@ True ; => True
              None)]
    [get-spell (fn [self]
               self.spell)]])
+
+; or, in hy 0.11:
+(defclass Wizard [object]
+  (defn --init-- [self spell]
+    (setv self.spell spell))
+
+  (defn get-spell [self]
+    self.spell))
 
 ;; do checkout hylang.org
 ```
