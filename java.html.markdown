@@ -331,7 +331,7 @@ public class LearnJava {
         
         // Starting in Java 7 and above, switching Strings works like this:
         String myAnswer = "maybe";
-        switch(myAnswer){
+        switch(myAnswer) {
             case "yes":
                 System.out.println("You answered yes.");
                 break;
