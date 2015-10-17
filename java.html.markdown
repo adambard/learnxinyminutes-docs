@@ -285,7 +285,18 @@ public class LearnJava {
             // Iterated 10 times, fooFor 0->9
         }
         System.out.println("fooFor Value: " + fooFor);
-
+        
+        // Nested For Loop Exit with Label
+        outer:
+        for (int i = 0; i < 10; i++) {
+          for (int j = 0; j < 10; j++) {
+            if (i == 5 && j ==5) {
+              break outer;
+              // breaks out of outer loop instead of only the inner one
+            }
+          }
+        }
+        
         // For Each Loop
         // The for loop is also able to iterate over arrays as well as objects
         // that implement the Iterable interface.
