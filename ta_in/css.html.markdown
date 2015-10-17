@@ -17,13 +17,11 @@ lang:in-ta
 ஆனால் உலாவிகளில் கொண்டு வரப்பட்ட மாற்றங்களில் முழுமையான காட்சிபடுத்தல்களுடன்
 கூடிய இணையதளங்கள் உருவாகின.
 
-CSS helps maintain separation between the content (HTML) and the look-and-feel of a web page.
+
 CSS ஆனது HTML மற்றும் அதன் அழகுபடுத்கூடிய காரணிகளையும் வேறுபடுத்த உதவியது.
 
 ஒரு html இல் உள்ள உறுப்புகளை(elements) வெவ்வேறு வகையான காட்சி பண்புகளை வழங்க உதவுகிறது.
 
-
-This guide has been written for CSS 2, though CSS 3 is fast becoming popular.
 இந்த வழிகாட்டி CSS2 உக்கு எழுதப்பட்டுள்ளது, இருப்பினும் தற்போது CSS 3 வேகமாக பிரபல்யமாகி வருகிறது.
 
 **குறிப்பு:**
@@ -226,7 +224,7 @@ p { property: value !important; }
 <p style='/*F*/ property:value;' class='class1 class2' attr='value' />
 ```
 
-The precedence of style is as follows. Remember, the precedence is for each **property**, not for the entire block.
+
 css முன்னுரிமை பின்வருமாறு 
 * `E` இதுவே அதிக முக்கியத்துவம் வாய்ந்தது காரணம் இது `!important` பயன்படுத்துகிறது. இதை பயன்படுத்துவதை தவிர்க்கவும்
 * `F` இது இரண்டாவது காரணம் இது inline style.
