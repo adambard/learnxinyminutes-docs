@@ -192,7 +192,7 @@ selector {
 </div>
 ```
 
-## Precedence or Cascade
+## Precedence அல்லது Cascade
 
 ஒரு element ஆனது ஒன்றுக்கு மேற்பட்ட selectors மூலம் அணுகபடலாம் ,இவ்வாறான சந்தர்பங்களில் 
 ஒரு குறிபிட்ட விதிமுறையை பின்பற்றுகிறது இது cascading என அழைக்கபடுகிறது, அதனால் தன
