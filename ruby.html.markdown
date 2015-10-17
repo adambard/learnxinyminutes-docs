@@ -109,7 +109,7 @@ placeholder = 'use string interpolation'
 'hello ' + 3.to_s #=> "hello 3"
 
 # Combine strings and operators
-'hello ' * 3 #=> "hello hello hello"
+'hello ' * 3 #=> "hello hello hello "
 
 # Append to string
 'hello' << ' world' #=> "hello world"
