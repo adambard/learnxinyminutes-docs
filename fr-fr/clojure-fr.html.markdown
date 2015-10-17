@@ -276,16 +276,25 @@ ressemblent à toutes les autres formes:
   (print "Saying hello to " name)
   (str "Hello " name)) ; => "Hello Urkel" (prints "Saying hello to Urkel")
   
-; Utilisez les Threading Macros (-> et ->>) pour exprimer plus clairement vos transformations, en y pensant de manière multi-niveaux.
+; Utilisez les Threading Macros (-> et ->>) pour exprimer plus
+; clairement vos transformations, en y pensant de manière multi-niveaux.
 
-; La "flèche simple" ou "Thread-first", insère, à chaque niveau de la transformation, la forme courante en la seconde position de la forme suivante, constituant à chaque fois un nouvel étage de transformation. Par exemple:
+; La "flèche simple" ou "Thread-first", insère, à chaque niveau
+; de la transformation, la forme courante en la seconde position
+; de la forme suivante, constituant à chaque fois un nouvel étage
+; de transformation. Par exemple:
 (->  
    {:a 1 :b 2} 
    (assoc :c 3) ;=> Génère ici (assoc {:a 1 :b 2} :c 3)
    (dissoc :b)) ;=> Génère ici (dissoc (assoc {:a 1 :b 2} :c 3) :b)
    
-; Cette expression est ré-écrite en: (dissoc (assoc {:a 1 :b 2} :c 3) :b) et est évaluée en : {:a 1 :c 3}
-; La "flèche double" ou "Thread-last" procède de la même manière que "->", mais insère le résultat de la réécriture de chaque étage en dernière position. Par exemple:
+; Cette expression est ré-écrite en:
+; (dissoc (assoc {:a 1 :b 2} :c 3) :b)
+; et est évaluée en : {:a 1 :c 3}
+
+; La "flèche double" ou "Thread-last" procède de la même manière
+; que "->", mais insère le résultat de la réécriture de chaque
+; étage en dernière position. Par exemple:
 (->>
    (range 10)
    (map inc)     ;=> Génère ici (map inc (range 10)
