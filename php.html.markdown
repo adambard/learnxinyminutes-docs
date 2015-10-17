@@ -12,7 +12,7 @@ This document describes PHP 5+.
 <?php // PHP code must be enclosed with <?php tags
 
 // If your php file only contains PHP code, it is best practice
-// to omit the php closing tag.
+// to omit the php closing tag to prevent accidental output.
 
 // Two forward slashes start a one-line comment.
 
@@ -103,6 +103,8 @@ END;
 // String concatenation is done with .
 echo 'This string ' . 'is concatenated';
 
+// Strings can be passed in as parameters to echo
+echo 'Multiple', 'Parameters', 'Valid';
 
 /********************************
  * Constants
@@ -141,6 +143,8 @@ echo $array[0]; // => "One"
 
 // Add an element to the end of an array
 $array[] = 'Four';
+// or
+array_push($array, 'Five');
 
 // Remove element from array
 unset($array[3]);
