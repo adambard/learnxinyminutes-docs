@@ -344,3 +344,57 @@ $ zfs clone tank/home/sarlalian@now tank/home/sarlalian_new
 # Promoting the clone so it is no longer dependent on the snapshot
 $ zfs promote tank/home/sarlalian_new
 ```
+
+### Putting it all together
+
+This following a script utilizing FreeBSD, jails and ZFS to automate 
+provisioning a clean copy of a mysql staging database from a live replication
+slave.
+
+```bash
+#!/bin/sh
+
+echo "==== Stopping the staging database server ===="
+jail -r staging
+
+echo "==== Cleaning up existing staging server and snapshot ===="
+zfs destroy -r zroot/jails/staging
+zfs destroy zroot/jails/slave@staging
+
+echo "==== Quiescing the slave database ===="
+echo "FLUSH TABLES WITH READ LOCK;" | /usr/local/bin/mysql -u root -pmyrootpassword -h slave
+
+echo "==== Snapshotting the slave db filesystem as zroot/jails/slave@staging ===="
+zfs snapshot zroot/jails/slave@staging
+
+echo "==== Starting the slave database server ===="
+jail -c slave
+
+echo "==== Cloning the slave snapshot to the staging server ===="
+zfs clone zroot/jails/slave@staging zroot/jails/staging
+
+echo "==== Installing the staging mysql config ===="
+mv /jails/staging/usr/local/etc/my.cnf /jails/staging/usr/local/etc/my.cnf.slave
+cp /jails/staging/usr/local/etc/my.cnf.staging /jails/staging/usr/local/etc/my.cnf
+
+echo "==== Setting up the staging rc.conf file ===="
+mv /jails/staging/etc/rc.conf.local /jails/staging/etc/rc.conf.slave
+mv /jails/staging/etc/rc.conf.staging /jails/staging/etc/rc.conf.local
+
+echo "==== Starting the staging db server ===="
+jail -c staging
+
+echo "==== Make sthe staging database not pull from the master ===="
+echo "STOP SLAVE;" | /usr/local/bin/mysql -u root -pmyrootpassword -h staging
+echo "RESET SLAVE;" | /usr/local/bin/mysql -u root -pmyrootpassword -h staging
+```
+
+
+### Additional Reading
+
+* [BSDNow's Crash Course on ZFS](http://www.bsdnow.tv/tutorials/zfs)
+* [FreeBSD Handbook on ZFS](https://wiki.freebsd.org/ZF://wiki.freebsd.org/ZFS)
+* [BSDNow's Crash Course on ZFS](http://www.bsdnow.tv/tutorials/zfs)
+* [Oracle's Tuning Guide](http://www.oracle.com/technetwork/articles/servers-storage-admin/sto-recommended-zfs-settings-1951715.html)
+* [OpenZFS Tuning Guide](http://open-zfs.org/wiki/Performance_tuning)
+* [FreeBSD ZFS Tuning Guide](https://wiki.freebsd.org/ZFSTuningGuide)
