@@ -106,7 +106,7 @@ Here's how you state all y that belong to X, $\forall$ x $\in$ X. \\
 % The opposite also holds true. Variable can also be rendered in math-mode.
 
 My favorite Greek letter is $\xi$. I also like $\beta$, $\gamma$ and $\sigma$.
-I haven't found a Greek letter that yet that LaTeX doesn't know about!
+I haven't found a Greek letter yet that LaTeX doesn't know about!
 
 Operators are essential parts of a mathematical document: 
 trigonometric functions ($\sin$, $\cos$, $\tan$), 
