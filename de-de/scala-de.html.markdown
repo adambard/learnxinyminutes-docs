@@ -7,7 +7,7 @@ contributors:
     - ["Ha-Duong Nguyen", "http://reference-error.org"]
 translators:
   - ["Christian Albrecht", "https://github.com/coastalchief"]
-filename: scala-de.html.markdown
+filename: learnscala-de.scala
 lang: de-de
 ---
 
