@@ -6,7 +6,7 @@ contributors:
     - ["Rafal Chmiel", "http://github.com/rafalchmiel"]
 translators:
   - ["Christian Albrecht", "https://github.com/coastalchief"]
-filename: ruby-ecosystem-de.html.markdown
+filename: ruby-ecosystem-de.txt
 lang: de-de
 ---
 
