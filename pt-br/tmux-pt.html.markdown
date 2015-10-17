@@ -66,44 +66,44 @@ combinação de teclas de prefixo.
   (M-1) = Meta + 1 -or- Alt + 1
 ----------------------------------------------------------------------
 
-  ?                  # Lista todos os comandos.
-  :                  # Acessa o lugar (prompt command) para receber comandos do tmux
-  r                  # Força a redefiniçao do cliente acoplado.
-  c                  # Cria uma nova janela.
+  ?           # Lista todos os comandos.
+  :           # Acessa o lugar (prompt command) para receber comandos do tmux
+  r           # Força a redefiniçao do cliente acoplado.
+  c           # Cria uma nova janela.
 
-  !                  # Retira o painel corrente da janela.
-  %                  # Divide o painel corrente em dois para a esquerda e direita.
-  "                  # Divide o painel corrente em dois para cima e para baixo.
+  !           # Retira o painel corrente da janela.
+  %           # Divide o painel corrente em dois para a esquerda e direita.
+  "           # Divide o painel corrente em dois para cima e para baixo.
 
-  n                  # Move para a próxima janela.
-  p                  # Move para a janela anterior.
-  {                  # Troca o painel corrente pelo anterior.
-  }                  # Troca o painel corrent pelo posterior.
+  n           # Move para a próxima janela.
+  p           # Move para a janela anterior.
+  {           # Troca o painel corrente pelo anterior.
+  }           # Troca o painel corrent pelo posterior.
 
-  s                  # Seleciona uma nova seção para o cliente acoplado iterativamente.
-  w                  # Seleciona a janela corrente iterativamente.
-  0 to 9             # Seleciona a janela de 0 à 9.
+  s           # Seleciona uma nova seção para o cliente acoplado iterativamente.
+  w           # Seleciona a janela corrente iterativamente.
+  0 to 9      # Seleciona a janela de 0 à 9.
 
-  d                  # Separa o cliente atual.
-  D                  # Seleciona um cliente a ser separado.
+  d           # Separa o cliente atual.
+  D           # Seleciona um cliente a ser separado.
 
-  &                  # Encerra a janela corrente.
-  x                  # Encerra o painel corrente.
+  &           # Encerra a janela corrente.
+  x           # Encerra o painel corrente.
 
-  Up, Down           # Move para o painel acima, abaixo, a esquerda ou a direita respectivamente.
+  Up, Down    # Move para o painel acima, abaixo, a esquerda ou a direita.
   Left, Right
 
-  M-1 to M-5         # Organiza os paines:
+  M-1 to M-5  # Organiza os paines:
                        # 1) Horizontalmente de maneira igual
                        # 2) Verticalmente de maineira igual.
                        # 3) Principal horizontalmente
                        # 4) Principal verticamente.
                        # 5) Mosaico
 
-  C-Up, C-Down       # Altera o tamanho do painel corrente baseado em uma célula.
+  C-Up, C-Down    # Altera o tamanho do painel corrente baseado em uma célula.
   C-Left, C-Right
 
-  M-Up, M-Down       # Altera o tamanho do painel corrente baseado em cinco células.
+  M-Up, M-Down    # Altera o tamanho do painel corrente baseado em cinco células.
   M-Left, M-Right
 
 ```
@@ -136,7 +136,7 @@ set -g base-index 1
 # Mouse
 set-option -g mouse-select-pane on
 
-# Recarregar o arquivo de configuração sem a necessidade de reiniciar o programa.
+# Recarregar o arquivo de configuração sem a necessidade de reiniciar o programa
 unbind r
 bind r source-file ~/.tmux.conf
 
