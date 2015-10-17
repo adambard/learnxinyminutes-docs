@@ -197,10 +197,6 @@ selector {
 
 ## Precedence or Cascade
 
-An element may be targeted by multiple selectors and may have a property set on it in more than once. In these cases, one of the rules takes precedence over others. Generally, a rule in a more specific selector take precedence over a less specific one, and a rule occuring later in the stylesheet overwrites a previous one.
-
-This process is called cascading, hence the name Cascading Style Sheets.
-
 ஒரு element ஆனது ஒன்றுக்கு மேற்பட்ட selectors மூலம் அணுகபடலாம் ,இவ்வாறான சந்தர்பங்களில் 
 ஒரு குறிபிட்ட விதிமுறையை பின்பற்றுகிறது இது cascading என அழைக்கபடுகிறது, அதனால் தன
 இது  Cascading Style Sheets என அழைக்கபடுகிறது.
