@@ -12,7 +12,7 @@ hy to call native python code or python to call native hy code as well
 
 This tutorial works for hy ≥ 0.9.12, with some corrections for hy 0.11.
 
-```hy
+```clojure
 ;; this gives an gentle introduction to hy for a quick trial head to
 ;; http://try-hy.appspot.com
 ;;
