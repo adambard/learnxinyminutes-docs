@@ -383,7 +383,7 @@ for ($i = 0; $i < 5; $i++) {
 
 // Define a function with "function":
 function my_function () {
-  return 'Hello';
+    return 'Hello';
 }
 
 echo my_function(); // => "Hello"
@@ -392,8 +392,8 @@ echo my_function(); // => "Hello"
 // number of letters, numbers, or underscores.
 
 function add ($x, $y = 1) { // $y is optional and defaults to 1
-  $result = $x + $y;
-  return $result;
+    $result = $x + $y;
+    return $result;
 }
 
 echo add(4); // => 5
@@ -404,21 +404,21 @@ echo add(4, 2); // => 6
 
 // Since PHP 5.3 you can declare anonymous functions;
 $inc = function ($x) {
-  return $x + 1;
+    return $x + 1;
 };
 
 echo $inc(2); // => 3
 
 function foo ($x, $y, $z) {
-  echo "$x - $y - $z";
+    echo "$x - $y - $z";
 }
 
 // Functions can return functions
 function bar ($x, $y) {
-  // Use 'use' to bring in outside variables
-  return function ($z) use ($x, $y) {
-    foo($x, $y, $z);
-  };
+    // Use 'use' to bring in outside variables
+    return function ($z) use ($x, $y) {
+        foo($x, $y, $z);
+    };
 }
 
 $bar = bar('A', 'B');
@@ -429,6 +429,21 @@ $function_name = 'add';
 echo $function_name(1, 2); // => 3
 // Useful for programatically determining which function to run.
 // Or, use call_user_func(callable $callback [, $parameter [, ... ]]);
+
+
+// You can get the all the parameters passed to a function
+function parameters() {
+    $numargs = func_num_args();
+    if ($numargs > 0) {
+        echo func_get_arg(0) . ' | ';
+    }
+    $args_array = func_get_args();
+    foreach ($args_array as $key => $arg) {
+        echo $key . ' - ' . $arg . ' | ';
+    }
+}
+
+parameters('Hello', 'World'); // Hello | 0 - Hello | 1 - World |
 
 /********************************
  * Includes
