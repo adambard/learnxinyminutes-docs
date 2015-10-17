@@ -102,8 +102,7 @@ div.some-parent.class-name { }
 /* or அல்லது அதற்கு முந்தய உறுப்பின்  மூலம் */
 .i-am-any-element-before ~ .this-element { }
 
-/* There are some selectors called pseudo classes that can be used to select an
-   element when it is in a particular state
+/* 
 	சில selectors ஐ pseudo class மூலம் அணுக முடியும் , எப்போது எனில் அவை
 	குறித்த ஒரு நிலையில் இருக்கும் போது ஆகும்
    */
