@@ -426,6 +426,21 @@ echo $function_name(1, 2); // => 3
 // Useful for programatically determining which function to run.
 // Or, use call_user_func(callable $callback [, $parameter [, ... ]]);
 
+
+// You can get the all the parameters passed to a function
+function parameters() {
+  $numargs = func_num_args();
+  if ($numargs > 0) {
+    echo func_get_arg(0) . ' | ';
+  }
+  $args_array = func_get_args();
+  foreach ($args_array as $key => $arg) {
+    echo $key . ' - ' . $arg . ' | ';
+  }
+}
+
+parameters('Hello', 'World'); // Hello | 0 - Hello | 1 - World |
+
 /********************************
  * Includes
  */
