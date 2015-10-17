@@ -42,15 +42,7 @@ HTML போல் அன்றி , XML ஆனது தகவலை மட்�
   </book>
 </bookstore>
 
-<!-- Above is a typical XML file.
-  It starts with a declaration, informing some metadata (optional).
 
-  XML uses a tree structure. Above, the root node is 'bookstore', which has
-  three child nodes, all 'books'. Those nodes have more child nodes (or
-  children), and so on...
-
-  Nodes are created using open/close tags, and children are just nodes between
-  the open and close tags.-->
   <!--
   
 	மேல காட்டப்பட்டுள்ளது ஒரு xml file இன் உதாரணம் ஆகும்
@@ -63,14 +55,6 @@ HTML போல் அன்றி , XML ஆனது தகவலை மட்�
   -->
 
 
-<!-- XML carries two kinds of data:
-  1 - Attributes -> That's metadata about a node.
-      Usually, the XML parser uses this information to store the data properly.
-      It is characterized by appearing with the format name="value" within the opening
-      tag.
-  2 - Elements -> That's pure data.
-      That's what the parser will retrieve from the XML file.
-      Elements appear between the open and close tags. -->
 <!--
 XML இரண்டு வகையான தகவல்களை கொண்டு செல்லக்கூடியது
 1- Attributes -> ஒரு  கணு(node) பற்றிய metadata 
@@ -133,13 +117,13 @@ With this tool, you can check the XML data outside the application logic.
 ]>
 
 
-<!-- The DTD starts with a declaration.
-  Following, the root node is declared, requiring 1 or more child nodes 'book'.
-  Each 'book' should contain exactly one 'title' and 'price' and an attribute
-  called 'category', with "Literature" as its default value.
-  The 'title' and 'price' nodes contain a parsed character data.-->
+<!-- DTD ஆனது root node ஐ உருவாக்கிய பின் நிறுவ படுகிறது ,இது ஒன்று அல்லது 
+ஒன்றிக்கு மேற்பட்ட child node களை எதிர்பார்க்கிறது.
+ ஒவ்வொரு 'book' உம் கட்டாயமாக ஒரு 'title' , 'price','category', with "Literature"
+ ஆகிய பெறுமானங்களை கொண்டிருத்தல் அவசியம்.
+--> 
 
-<!-- The DTD could be declared inside the XML file itself.-->
+<!-- DTD ஆனது xml file ஒன்றினுள் உருவாக்கபடுகிறது-->
 
 <?xml version="1.0" encoding="UTF-8"?>
 
