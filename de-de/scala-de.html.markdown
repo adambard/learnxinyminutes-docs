@@ -293,7 +293,7 @@ i    // i ausgeben, res3: Int = 10
 // Ein do while Schleife  
 ```
 do {
-  println("x is still less than 10")
+  println("x ist immer noch weniger wie 10")
   x += 1
 } while (x < 10)
 ```
@@ -796,15 +796,21 @@ for(line <- Source.fromFile("myfile.txt").getLines())
 // Eine Datei schreiben  
 ```
 val writer = new PrintWriter("myfile.txt")
-writer.write("Writing line for line" + util.Properties.lineSeparator)
-writer.write("Another line here" + util.Properties.lineSeparator)
+writer.write("Schreibe Zeile" + util.Properties.lineSeparator)
+writer.write("Und noch eine Zeile" + util.Properties.lineSeparator)
 writer.close()
 ```
 
-## Further resources
+## Weitereführende Hinweise 
 
+// DE
+* [Scala Tutorial](https://scalatutorial.wordpress.com)
+* [Scala Tutorial](http://scalatutorial.de)
+
+// EN
 * [Scala for the impatient](http://horstmann.com/scala/)
 * [Twitter Scala school](http://twitter.github.io/scala_school/)
 * [The scala documentation](http://docs.scala-lang.org/)
 * [Try Scala in your browser](http://scalatutorials.com/tour/)
+* [Neophytes Guide to Scala](http://danielwestheide.com/scala/neophytes.html)
 * Join the [Scala user group](https://groups.google.com/forum/#!forum/scala-user)
