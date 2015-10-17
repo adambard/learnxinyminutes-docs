@@ -141,7 +141,6 @@ selector {
     font-family: Arial;
     font-family: "Courier New"; /* wenn der Name ein Leerzeichen beinhält, kommt er in
     Anführungszeichen */
-    font-family: "Courier New", Trebuchet, Arial; /* wird die erste Schriftart 
     nicht gefunden, wird die zweite benutzt, usw. */
 }
 
@@ -152,7 +151,7 @@ selector {
 Speichere das CSS, das du benutzen willst mit der endung '.css'.
 
 ```xml
-<!-- du musst die CSS-Datei im <head>-bereich der seite einbinden -->
+<!-- Du musst die CSS-Datei im <head>-bereich der seite einbinden -->
 <link rel='stylesheet' type='text/css' href='filepath/filename.css' />
 
 <!-- Einbindung funktioniert auch inline, wobei diese Methode nicht
@@ -170,8 +169,8 @@ empfohlen ist -->
 ## Spezifität
 
 Ein Element kann natürlich auch von mehr als einer Regel in einem Stylesheet
-angesprochen werdenm und kann eine Eigenschaft auch öfters als einmal zugewiesen
-bekommen. In diesen Fällen gibt es Regeln, die die Spezifität von Selektoren regeln.
+angesprochen werden und kann eine Eigenschaft auch öfters als einmal zugewiesen
+bekommen. In diesen Fällen gibt es Regeln, welche die Spezifität von Selektoren regeln.
 
 Wir haben dieses CSS:
 
@@ -227,4 +226,3 @@ vom Projekt unterstützten Browser zu überprüfen.
 * [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
 * [QuirksMode CSS](http://www.quirksmode.org/css/)
 * [Z-Index - The stacking context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
-
