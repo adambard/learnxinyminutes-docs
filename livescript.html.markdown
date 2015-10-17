@@ -166,7 +166,7 @@ not false       # => true
 
 ########################################################################
 ## 3. Functions
-########################################################################        
+########################################################################
 
 # Since LiveScript is functional, you'd expect functions to get a nice
 # treatment. In LiveScript it's even more apparent that functions are
@@ -229,7 +229,7 @@ double-minus-one = (- 1) . (* 2)
 
 # Other than the usual `f . g` mathematical formulae, you get the `>>`
 # and `<<` operators, that describe how the flow of values through the
-# functions. 
+# functions.
 double-minus-one = (* 2) >> (- 1)
 double-minus-one = (- 1) << (* 2)
 
@@ -344,7 +344,7 @@ kitten.hug!     # => "*Mei (a cat) is hugged*"
 ## Further reading
 
 There's just so much more to LiveScript, but this should be enough to
-get you started writing little functional things in it. The 
+get you started writing little functional things in it. The
 [official website](http://livescript.net/) has a lot of information on the
 language, and a nice online compiler for you to try stuff out!
 

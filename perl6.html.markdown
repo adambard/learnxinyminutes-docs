@@ -7,13 +7,11 @@ contributors:
     - ["Nami-Doc", "http://github.com/Nami-Doc"]
 ---
 
-Perl 6 is a highly capable, feature-rich programming language made for at 
+Perl 6 is a highly capable, feature-rich programming language made for at
 least the next hundred years.
 
 The primary Perl 6 compiler is called [Rakudo](http://rakudo.org), which runs on
-the JVM and [the MoarVM](http://moarvm.com) and 
-[prior to March 2015](http://pmthium.com/2015/02/suspending-rakudo-parrot/),
-[the Parrot VM](http://parrot.org/).
+the JVM and [the MoarVM](http://moarvm.com).
 
 Meta-note : the triple pound signs are here to denote headlines,
 double paragraphs, and single notes.
@@ -75,7 +73,7 @@ say @array; #=> a 6 b
 #  except they get "flattened" (hash context), removing duplicated keys.
 my %hash = 1 => 2,
            3 => 4;
-my %hash = autoquoted => "key", # keys get auto-quoted
+my %hash = foo => "bar", # keys get auto-quoted
             "some other" => "value", # trailing commas are okay
             ;
 my %hash = <key1 value1 key2 value2>; # you can also create a hash
@@ -96,7 +94,6 @@ say %hash<key2>;   # If it's a string, you can actually use <>
                    # (`{key1}` doesn't work, as Perl6 doesn't have barewords)
 
 ## * Subs (subroutines, or functions in most other languages).
-# Stored in variable, they use `&`.
 sub say-hello { say "Hello, world" }
 
 sub say-hello-to(Str $name) { # You can provide the type of an argument
@@ -107,8 +104,8 @@ sub say-hello-to(Str $name) { # You can provide the type of an argument
 
 ## It can also have optional arguments:
 sub with-optional($arg?) { # the "?" marks the argument optional
-  say "I might return `(Any)` if I don't have an argument passed,
-      or I'll return my argument";
+  say "I might return `(Any)` (Perl's "null"-like value) if I don't have
+        an argument passed, or I'll return my argument";
   $arg;
 }
 with-optional; # returns Any
@@ -125,14 +122,14 @@ hello-to('You'); #=> Hello, You !
 
 ## You can also, by using a syntax akin to the one of hashes (yay unified syntax !),
 ##  pass *named* arguments to a `sub`.
-# They're optional, and will default to "Any" (Perl's "null"-like value).
+# They're optional, and will default to "Any".
 sub with-named($normal-arg, :$named) {
   say $normal-arg + $named;
 }
 with-named(1, named => 6); #=> 7
 # There's one gotcha to be aware of, here:
 # If you quote your key, Perl 6 won't be able to see it at compile time,
-#  and you'll have a single Pair object as a positional paramater,
+#  and you'll have a single Pair object as a positional parameter,
 #  which means this fails:
 with-named(1, 'named' => 6);
 
@@ -143,7 +140,7 @@ sub with-mandatory-named(:$str!)  {
   say "$str !";
 }
 with-mandatory-named(str => "My String"); #=> My String !
-with-mandatory-named; # run time error: "Required named parameter not passed" 
+with-mandatory-named; # run time error: "Required named parameter not passed"
 with-mandatory-named(3); # run time error: "Too many positional parameters passed"
 
 ## If a sub takes a named boolean argument ...
@@ -162,7 +159,7 @@ named-def; #=> 5
 named-def(def => 15); #=> 15
 
 # Since you can omit parenthesis to call a function with no arguments,
-#  you need "&" in the name to capture `say-hello`.
+#  you need "&" in the name to store `say-hello` in a variable.
 my &s = &say-hello;
 my &other-s = sub { say "Anonymous function !" }
 
@@ -173,8 +170,8 @@ sub as-many($head, *@rest) { # `*@` (slurpy) will basically "take everything els
   say @rest.join(' / ') ~ " !";
 }
 say as-many('Happy', 'Happy', 'Birthday'); #=> Happy / Birthday !
-                                           # Note that the splat did not consume
-                                           #  the parameter before.
+                                           # Note that the splat (the *) did not
+                                           # consume the parameter before.
 
 ## You can call a function with an array using the
 # "argument list flattening" operator `|`
@@ -197,7 +194,7 @@ sub mutate($n is rw) {
   say "\$n is now $n !";
 }
 
-# If what you want is a copy instead, use `is copy`.
+# If what you want a copy instead, use `is copy`.
 
 # A sub itself returns a container, which means it can be marked as rw:
 my $x = 42;
@@ -234,7 +231,7 @@ say "Quite truthy" if True;
 # - Ternary conditional, "?? !!" (like `x ? y : z` in some other languages)
 my $a = $condition ?? $value-if-true !! $value-if-false;
 
-# - `given`-`when` looks like other languages `switch`, but much more
+# - `given`-`when` looks like other languages' `switch`, but much more
 # powerful thanks to smart matching and thanks to Perl 6's "topic variable", $_.
 #
 # This variable contains the default argument of a block,
@@ -290,7 +287,7 @@ for @array -> $variable {
 # That means you can use `when` in a `for` just like you were in a `given`.
 for @array {
   say "I've got $_";
-  
+
   .say; # This is also allowed.
         # A dot call with no "topic" (receiver) is sent to `$_` by default
   $_.say; # the above and this are equivalent.
@@ -378,9 +375,11 @@ say join(' ', @array[15..*]); #=> 15 16 17 18 19
 # which is equivalent to:
 say join(' ', @array[-> $n { 15..$n }]);
 
-# You can use that in most places you'd expect, even assigning to an array  
-my @numbers = ^20;  
-my @seq =  3, 9 ... * > 95; # 3 9 15 21 27 [...] 81 87 93 99
+# You can use that in most places you'd expect, even assigning to an array
+my @numbers = ^20;
+
+# Here numbers increase by "6"; more on `...` operator later.
+my @seq =  3, 9 ... * > 95; # 3 9 15 21 27 [...] 81 87 93 99;
 @numbers[5..*] = 3, 9 ... *; # even though the sequence is infinite,
                              # only the 15 needed values will be calculated.
 say @numbers; #=> 0 1 2 3 4 3 9 15 21 [...] 81 87
@@ -525,7 +524,7 @@ map(sub ($a, $b) { $a + $b + 3 }, @array); # (here with `sub`)
 # The constructs for declaring types are "class", "role",
 #  which you'll see later.
 
-# For now, let us examinate "subset":
+# For now, let us examine "subset":
 # a "subset" is a "sub-type" with additional checks.
 # For example: "a very big integer is an Int that's greater than 500"
 # You can specify the type you're subtyping (by default, Any),
@@ -608,40 +607,39 @@ sub foo {
   bar(); # call `bar` in-place
 }
 sub bar {
-  say $*foo; # `$*a` will be looked in the call stack, and find `foo`'s,
+  say $*foo; # `$*foo` will be looked in the call stack, and find `foo`'s,
              #  even though the blocks aren't nested (they're call-nested).
              #=> 1
 }
 
 ### Object Model
 
-## Perl 6 has a quite comprehensive object model
 # You declare a class with the keyword `class`, fields with `has`,
-# methods with `method`. Every field to private, and is named `$!attr`,
-# but you have `$.` to get a public (immutable) accessor along with it.
-# (using `$.` is like using `$!` plus a `method` with the same name)
+# methods with `method`. Every attribute that is private is named `$!attr`.
+# Immutable public attributes are named `$.attr`
+#   (you can make them mutable with `is rw`)
 
-# (Perl 6's object model ("SixModel") is very flexible,
+# Perl 6's object model ("SixModel") is very flexible,
 # and allows you to dynamically add methods, change semantics, etc ...
 # (this will not be covered here, and you should refer to the Synopsis).
 
 class A {
   has $.field; # `$.field` is immutable.
                # From inside the class, use `$!field` to modify it.
-  has $.other-field is rw; # You can obviously mark a public field `rw`.
+  has $.other-field is rw; # You can mark a public attribute `rw`.
   has Int $!private-field = 10;
 
   method get-value {
     $.field + $!private-field;
   }
-  
+
   method set-value($n) {
     # $.field = $n; # As stated before, you can't use the `$.` immutable version.
     $!field = $n;   # This works, because `$!` is always mutable.
-    
+
     $.other-field = 5; # This works, because `$.other-field` is `rw`.
   }
-  
+
   method !private-method {
     say "This method is private to the class !";
   }
@@ -656,23 +654,22 @@ $a.other-field = 10; # This, however, works, because the public field
                      #  is mutable (`rw`).
 
 ## Perl 6 also has inheritance (along with multiple inheritance)
-# (though considered a misfeature by many)
 
 class A {
   has $.val;
-  
+
   submethod not-inherited {
     say "This method won't be available on B.";
     say "This is most useful for BUILD, which we'll see later";
   }
-  
+
   method bar { $.val * 5 }
 }
 class B is A { # inheritance uses `is`
   method foo {
     say $.val;
   }
-  
+
   method bar { $.val * 10 } # this shadows A's `bar`
 }
 
@@ -699,20 +696,20 @@ role PrintableVal {
 # you "import" a mixin (a "role") with "does":
 class Item does PrintableVal {
   has $.val;
-  
+
   # When `does`-ed, a `role` literally "mixes in" the class:
   #  the methods and fields are put together, which means a class can access
   #  the private fields/methods of its roles (but not the inverse !):
   method access {
     say $!counter++;
   }
-  
+
   # However, this:
   # method print {}
   # is ONLY valid when `print` isn't a `multi` with the same dispatch.
   # (this means a parent class can shadow a child class's `multi print() {}`,
   #  but it's an error if a role does)
-  
+
   # NOTE: You can use a role as a class (with `is ROLE`). In this case, methods
   # will be shadowed, since the compiler will consider `ROLE` to be a class.
 }
@@ -751,7 +748,7 @@ fail "foo"; # We're not trying to access the value, so no problem.
 try {
   fail "foo";
   CATCH {
-    default { say "It threw because we try to get the fail's value!" }
+    default { say "It threw because we tried to get the fail's value!" }
   }
 }
 
@@ -763,7 +760,7 @@ try {
 ### Packages
 # Packages are a way to reuse code. Packages are like "namespaces", and any
 #  element of the six model (`module`, `role`, `class`, `grammar`, `subset`
-#  and `enum`) are actually packages. (Packages are the lowest common denomitor)
+#  and `enum`) are actually packages. (Packages are the lowest common denominator)
 # Packages are important - especially as Perl is well-known for CPAN,
 #  the Comprehensive Perl Archive Network.
 # You usually don't use packages directly: you use `class Package::Name::Here;`,
@@ -773,7 +770,7 @@ module Hello::World { # Bracketed form
                       #  that can be redeclared as something else later.
   # ... declarations here ...
 }
-module Parse::Text; # file-scoped form
+unit module Parse::Text; # file-scoped form
 grammar Parse::Text::Grammar { # A grammar is a package, which you could `use`
 }
 
@@ -797,10 +794,8 @@ my $actions = JSON::Tiny::Actions.new;
 # You've already seen `my` and `has`, we'll now explore the others.
 
 ## * `our` (happens at `INIT` time -- see "Phasers" below)
-# Along with `my`, there are several others declarators you can use.
-# The first one you'll want for the previous part is `our`.
+# It's like `my`, but it also creates a package variable.
 # (All packagish things (`class`, `role`, etc) are `our` by default)
-# it's like `my`, but it also creates a package variable:
 module Foo::Bar {
   our $n = 1; # note: you can't put a type constraint on an `our` variable
   our sub inc {
@@ -812,7 +807,7 @@ module Foo::Bar {
       say "Can't access me from outside, I'm my !";
     }
   }
-  
+
   say ++$n; # lexically-scoped variables are still available
 }
 say $Foo::Bar::n; #=> 1
@@ -829,7 +824,7 @@ constant why-not = 5, 15 ... *;
 say why-not[^5]; #=> 5 15 25 35 45
 
 ## * `state` (happens at run time, but only once)
-# State variables are only executed one time
+# State variables are only initialized one time
 # (they exist in other langages such as C as `static`)
 sub fixed-rand {
   state $val = rand;
@@ -862,7 +857,7 @@ for ^5 -> $a {
 
 ## * Compile-time phasers
 BEGIN { say "[*] Runs at compile time, as soon as possible, only once" }
-CHECK { say "[*] Runs at compile time, instead as late as possible, only once" }
+CHECK { say "[*] Runs at compile time, as late as possible, only once" }
 
 ## * Run-time phasers
 INIT { say "[*] Runs at run time, as soon as possible, only once" }
@@ -870,10 +865,13 @@ END { say "Runs at run time, as late as possible, only once" }
 
 ## * Block phasers
 ENTER { say "[*] Runs everytime you enter a block, repeats on loop blocks" }
-LEAVE { say "Runs everytime you leave a block, even when an exception happened. Repeats on loop blocks." }
+LEAVE { say "Runs everytime you leave a block, even when an exception
+    happened. Repeats on loop blocks." }
 
-PRE { say "Asserts a precondition at every block entry, before ENTER (especially useful for loops)" }
-POST { say "Asserts a postcondition at every block exit, after LEAVE (especially useful for loops)" }
+PRE { say "Asserts a precondition at every block entry,
+    before ENTER (especially useful for loops)" }
+POST { say "Asserts a postcondition at every block exit,
+    after LEAVE (especially useful for loops)" }
 
 ## * Block/exceptions phasers
 sub {
@@ -891,12 +889,12 @@ for ^5 {
 ## * Role/class phasers
 COMPOSE { "When a role is composed into a class. /!\ NOT YET IMPLEMENTED" }
 
-# They allow for cute trick or clever code ...:
-say "This code took " ~ (time - CHECK time) ~ "s to run";
+# They allow for cute tricks or clever code ...:
+say "This code took " ~ (time - CHECK time) ~ "s to compile";
 
 # ... or clever organization:
 sub do-db-stuff {
-  ENTER $db.start-transaction; # New transaction everytime we enter the sub
+  $db.start-transaction; # start a new transaction
   KEEP $db.commit; # commit the transaction if all went well
   UNDO $db.rollback; # or rollback if all hell broke loose
 }
@@ -1020,7 +1018,7 @@ sub circumfix:<[ ]>(Int $n) {
   $n ** $n
 }
 say [5]; #=> 3125
-         # circumfix is around. Again, not whitespace.
+         # circumfix is around. Again, no whitespace.
 
 sub postcircumfix:<{ }>(Str $s, Int $idx) {
   # post-circumfix is
@@ -1052,9 +1050,9 @@ postcircumfix:<{ }>(%h, $key, :delete); # (you can call operators like that)
 # Basically, they're operators that apply another operator.
 
 ## * Reduce meta-operator
-# It's a prefix meta-operator that takes a binary functions and
+# It's a prefix meta-operator that takes a binary function and
 #  one or many lists. If it doesn't get passed any argument,
-#  it either return a "default value" for this operator
+#  it either returns a "default value" for this operator
 #  (a meaningless value) or `Any` if there's none (examples below).
 #
 # Otherwise, it pops an element from the list(s) one at a time, and applies
@@ -1075,8 +1073,8 @@ say [//] Nil, Any, False, 1, 5; #=> False
 
 
 # Default value examples:
-say [*] (); #=> 1 
-say [+] (); #=> 0 
+say [*] (); #=> 1
+say [+] (); #=> 0
             # meaningless values, since N*1=N and N+0=N.
 say [//];   #=> (Any)
             # There's no "default value" for `//`.
@@ -1089,7 +1087,7 @@ say [[&add]] 1, 2, 3; #=> 6
 # This one is an infix meta-operator than also can be used as a "normal" operator.
 # It takes an optional binary function (by default, it just creates a pair),
 #  and will pop one value off of each array and call its binary function on these
-#  until it runs out of elements. It runs the an array with all these new elements.
+#  until it runs out of elements. It returns an array with all of these new elements.
 (1, 2) Z (3, 4); # ((1, 3), (2, 4)), since by default, the function makes an array
 1..3 Z+ 4..6; # (5, 7, 9), using the custom infix:<+> function
 
@@ -1109,8 +1107,7 @@ say [[&add]] 1, 2, 3; #=> 6
 #  (and might include a closure), and on the right, a value or the predicate
 #  that says when to stop (or Whatever for a lazy infinite list).
 my @list = 1, 2, 3 ... 10; # basic deducing
-#my @list = 1, 3, 6 ... 10; # this throws you into an infinite loop,
-                            #  because Perl 6 can't figure out the end
+#my @list = 1, 3, 6 ... 10; # this dies because Perl 6 can't figure out the end
 my @list = 1, 2, 3 ...^ 10; # as with ranges, you can exclude the last element
                             # (the iteration when the predicate matches).
 my @list = 1, 3, 9 ... * > 30; # you can use a predicate
@@ -1222,7 +1219,7 @@ so 'abbbbbbc' ~~ / a b ** 3..* c /; # `True` (infinite ranges are okay)
 #  they use a more perl6-ish syntax:
 say 'fooa' ~~ / f <[ o a ]>+ /; #=> 'fooa'
 # You can use ranges:
-say 'aeiou' ~~ / a <[ e..w ]> /; #=> 'aeiou'
+say 'aeiou' ~~ / a <[ e..w ]> /; #=> 'ae'
 # Just like in normal regexes, if you want to use a special character, escape it
 #  (the last one is escaping a space)
 say 'he-he !' ~~ / 'he-' <[ a..z \! \  ]> + /; #=> 'he-he !'
@@ -1244,7 +1241,7 @@ so 'foo!' ~~ / <-[ a..z ] + [ f o ]> + /; # True (the + doesn't replace the left
 so 'abc' ~~ / a [ b ] c /; # `True`. The grouping does pretty much nothing
 so 'fooABCABCbar' ~~ / foo [ A B C ] + bar /;
 # The previous line returns `True`.
-# We match the "abc" 1 or more time (the `+` was applied to the group).
+# We match the "ABC" 1 or more time (the `+` was applied to the group).
 
 # But this does not go far enough, because we can't actually get back what
 #  we matched.
@@ -1287,10 +1284,12 @@ say $/[0][0].Str; #=> ~
 
 # This stems from a very simple fact: `$/` does not contain strings, integers or arrays,
 #  it only contains match objects. These contain the `.list`, `.hash` and `.Str` methods.
-#  (but you can also just use `match<key>` for hash access and `match[idx]` for array access)
+#  (but you can also just use `match<key>` for hash access
+#    and `match[idx]` for array access)
 say $/[0].list.perl; #=> (Match.new(...),).list
-                     # We can see it's a list of Match objects. Those contain a bunch of infos:
-                     # where the match started/ended, the "ast" (see actions later), etc.
+                     # We can see it's a list of Match objects. Those contain
+                     # a bunch of infos: where the match started/ended,
+                     #    the "ast" (see actions later), etc.
                      # You'll see named capture below with grammars.
 
 ## Alternatives - the `or` of regexps
@@ -1328,14 +1327,14 @@ so 'ayc' ~~ / a [ b | y ] c /; # `True`. Obviously enough ...
 
 ### Extra: the MAIN subroutime
 # The `MAIN` subroutine is called when you run a Perl 6 file directly.
-# It's very powerful, because Perl 6 actually parses the argument
+# It's very powerful, because Perl 6 actually parses the arguments
 #  and pass them as such to the sub. It also handles named argument (`--foo`)
 #  and will even go as far as to autogenerate a `--help`
 sub MAIN($name) { say "Hello, $name !" }
 # This produces:
 #    $ perl6 cli.pl
 #    Usage:
-#      t.pl <name> 
+#      t.pl <name>
 
 # And since it's a regular Perl 6 sub, you can haz multi-dispatch:
 # (using a "Bool" for the named argument so that we can do `--replace`
@@ -1346,9 +1345,9 @@ multi MAIN('add', $key, $value, Bool :$replace) { ... }
 multi MAIN('remove', $key) { ... }
 multi MAIN('import', File, Str :$as) { ... } # omitting parameter name
 # This produces:
-#    $ perl 6 cli.pl
+#    $ perl6 cli.pl
 #    Usage:
-#      t.pl [--replace] add <key> <value> 
+#      t.pl [--replace] add <key> <value>
 #      t.pl remove <key>
 #      t.pl [--as=<Str>] import (File)
 # As you can see, this is *very* powerful.
@@ -1400,7 +1399,7 @@ for <well met young hero we shall meet later> {
                         #  (explained in details below).
     .say
   }
-  
+
   if rand == 0 ff rand == 1 { # compare variables other than `$_`
     say "This ... probably will never run ...";
   }
@@ -1429,7 +1428,7 @@ for <well met young hero we shall meet later> {
 # A flip-flop can change state as many times as needed:
 for <test start print it stop not printing start print again stop not anymore> {
   .say if $_ eq 'start' ^ff^ $_ eq 'stop'; # exclude both "start" and "stop",
-                                           #=> "print this printing again"
+                                           #=> "print it print again"
 }
 
 # you might also use a Whatever Star,
@@ -1461,4 +1460,3 @@ If you want to go further, you can:
  - Come along on `#perl6` at `irc.freenode.net`. The folks here are always helpful.
  - Check the [source of Perl 6's functions and classes](https://github.com/rakudo/rakudo/tree/nom/src/core). Rakudo is mainly written in Perl 6 (with a lot of NQP, "Not Quite Perl", a Perl 6 subset easier to implement and optimize).
  - Read [the language design documents](http://design.perl6.org). They explain P6 from an implementor point-of-view, but it's still very interesting.
-

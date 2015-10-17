@@ -292,7 +292,7 @@ calculateArea() ->
       _ ->
         io:format("We can only calculate area of rectangles or circles.")
     end.
-    
+
 % Compile the module and create a process that evaluates `calculateArea` in the
 % shell.
 c(calculateGeometry).

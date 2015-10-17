@@ -51,7 +51,7 @@ function identity(?string $stringOrNull) : ?string
 class TypeHintedProperties
 {
     public ?string $name;
-    
+
     protected int $id;
 
     private float $score = 100.0;
@@ -91,7 +91,7 @@ function openBox(Box<int> $box) : int
 
 
 // Shapes
-// 
+//
 // Hack adds the concept of shapes for defining struct-like arrays with a
 // guaranteed, type-checked set of keys
 type Point2D = shape('x' => int, 'y' => int);
@@ -108,7 +108,7 @@ distance(
 
 
 // Type aliasing
-// 
+//
 // Hack adds a bunch of type aliasing features for making complex types readable
 newtype VectorArray = array<int, Vector<int>>;
 
@@ -142,7 +142,7 @@ function getRoadType() : RoadType
 
 
 // Constructor argument promotion
-// 
+//
 // To avoid boilerplate property and constructor definitions that only set
 // properties, Hack adds a concise syntax for defining properties and a
 // constructor at the same time.
@@ -171,12 +171,12 @@ class WithoutArgumentPromotion
 
 
 // Co-operative multi-tasking
-// 
+//
 // Two new keywords "async" and "await" can be used to perform multi-tasking
 // Note that this does not involve threads - it just allows transfer of control
 async function cooperativePrint(int $start, int $end) : Awaitable<void>
 {
-    for ($i = $start; $i <= $end; $i++) { 
+    for ($i = $start; $i <= $end; $i++) {
         echo "$i ";
 
         // Give other tasks a chance to do something
@@ -193,9 +193,9 @@ AwaitAllWaitHandle::fromArray([
 
 
 // Attributes
-// 
+//
 // Attributes are a form of metadata for functions. Hack provides some
-// special built-in attributes that introduce useful behaviour. 
+// special built-in attributes that introduce useful behaviour.
 
 // The __Memoize special attribute causes the result of a function to be cached
 <<__Memoize>>
@@ -248,7 +248,7 @@ class ConsistentBar extends ConsistentFoo
 class InvalidFooSubclass extends ConsistentFoo
 {
     // Not matching the parent constructor will cause a type checker error:
-    //  
+    //
     //  "This object is of type ConsistentBaz. It is incompatible with this object
     //   of type ConsistentFoo because some of their methods are incompatible"
     //
@@ -259,7 +259,7 @@ class InvalidFooSubclass extends ConsistentFoo
 
     // Using the __Override annotation on a non-overriden method will cause a
     // type checker error:
-    //  
+    //
     //  "InvalidFooSubclass::otherMethod() is marked as override; no non-private
     //   parent definition found or overridden parent is defined in non-<?hh code"
     //
