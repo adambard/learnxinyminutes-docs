@@ -801,7 +801,7 @@ writer.write("Und noch eine Zeile" + util.Properties.lineSeparator)
 writer.close()
 ```
 
-## Weitereführende Hinweise 
+## Weiterführende Hinweise 
 
 // DE
 * [Scala Tutorial](https://scalatutorial.wordpress.com)

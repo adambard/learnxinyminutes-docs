@@ -602,7 +602,9 @@ Something.new.bar # => NoMethodError: undefined method `bar'
 Something.new.qux # => 'qux'
 ```
 
-## Additional resources
+## Weiterführende Hinweise
+
+//EN  
 
 - [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - A variant of this reference with in-browser challenges.
 - [Official Documentation](http://www.ruby-doc.org/core-2.1.1/)
