@@ -3,7 +3,9 @@ language: PHP
 contributors:
     - ["Malcolm Fell", "http://emarref.net/"]
     - ["Trismegiste", "https://github.com/Trismegiste"]
+translators:
     - ["Jerodev", "https://github.com/jerodev"]
+lang: nl-nl
 filename: learnphp.php
 ---
 
