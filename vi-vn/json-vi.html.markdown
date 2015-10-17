@@ -24,7 +24,7 @@ tránh để có sự tương thích tốt hơn.
 May mắn thay, chúng cũng tự trình bày cho chính mình mà không cần thêm giải thích.
 
 Các kiểu dữ liệu được JSON hỗ trợ bao gồm: số (*numbers*), chuỗi kí tự
-(*string*), toán tử đúng/sai (**boolean**), mảng (*array*), *object* và *null*.
+(*string*), toán tử đúng/sai (*boolean*), mảng (*array*), *object* và *null*.
 Các trình duyệt hỗ trợ bao gồm: Mozilla Firefox phiên bản 3.5 trở lên,
 Internet Explorer 8 trở lên, Google Chrome, Opera 10 trở lên, Safari 4 trở lên.
 Kiểu tệp JSON có dạng ".json". Kiểu MIME (Multipurpose Internet Mail Extensions)
