@@ -54,7 +54,7 @@ instância (ou tela original).
 ```
 
 
-### Teclas de commando (atalhos)
+### Teclas de atalhos (comandos)
 
 A maneira de controllar uma seção tmux acoplada é através de uma
 combinação de teclas de prefixo.
@@ -239,7 +239,7 @@ set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | 
 ```
 
 
-### References
+### Referências
 
 [Tmux | Início](http://tmux.sourceforge.net)
 
