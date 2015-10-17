@@ -52,7 +52,7 @@ and often automatically.
 ; Types
 ;;;;;;;;;;;;;
 
-; Clojure uses Java's object types for booleans, strings and numbers.
+; Clojure uses Java's object types for Booleans, strings and numbers.
 ; Use `class` to inspect them.
 (class 1) ; Integer literals are java.lang.Long by default
 (class 1.); Float literals are java.lang.Double

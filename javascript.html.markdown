@@ -66,7 +66,7 @@ Infinity; // result of e.g. 1/0
 -Infinity; // result of e.g. -1/0
 NaN; // result of e.g. 0/0, stands for 'Not a Number'
 
-// There's also a boolean type.
+// There's also a Boolean type.
 true;
 false;
 
@@ -104,7 +104,7 @@ null == undefined; // = true
 
 // ...unless you use ===
 "5" === 5; // = false
-null === undefined; // = false 
+null === undefined; // = false
 
 // ...which can result in some weird behaviour...
 13 + !0; // 14
@@ -220,15 +220,15 @@ for (var i = 0; i < 5; i++){
 
 //The For/In statement loops iterates over every property across the entire prototype chain
 var description = "";
-var person = {fname:"Paul", lname:"Ken", age:18}; 
+var person = {fname:"Paul", lname:"Ken", age:18};
 for (var x in person){
     description += person[x] + " ";
 }
 
-//If only want to consider properties attached to the object itself, 
+//If only want to consider properties attached to the object itself,
 //and not its prototypes use hasOwnProperty() check
 var description = "";
-var person = {fname:"Paul", lname:"Ken", age:18}; 
+var person = {fname:"Paul", lname:"Ken", age:18};
 for (var x in person){
     if (person.hasOwnProperty(x)){
         description += person[x] + " ";

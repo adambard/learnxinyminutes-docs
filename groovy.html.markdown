@@ -82,7 +82,7 @@ technologies.eachWithIndex { it, i -> println "$i: $it"}
 
 /*** Checking List contents ***/
 
-//Evaluate if a list contains element(s) (boolean)
+//Evaluate if a list contains element(s) (Boolean)
 contained = technologies.contains( 'Groovy' )
 
 // Or

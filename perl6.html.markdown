@@ -42,7 +42,7 @@ my $str2 = "String";
 #  and can contain (and end with) underscores :
 # my $weird'variable-name_ = 5; # works !
 
-my $bool = True; # `True` and `False` are Perl 6's boolean
+my $bool = True; # `True` and `False` are Perl 6's Boolean
 my $inverse = !$bool; # You can invert a bool with the prefix `!` operator
 my $forced-bool = so $str; # And you can use the prefix `so` operator
                            # which turns its operand into a Bool
@@ -143,11 +143,11 @@ with-mandatory-named(str => "My String"); #=> My String !
 with-mandatory-named; # run time error: "Required named parameter not passed"
 with-mandatory-named(3); # run time error: "Too many positional parameters passed"
 
-## If a sub takes a named boolean argument ...
+## If a sub takes a named Boolean argument ...
 sub takes-a-bool($name, :$bool) {
   say "$name takes $bool";
 }
-# ... you can use the same "short boolean" hash syntax:
+# ... you can use the same "short Boolean" hash syntax:
 takes-a-bool('config', :bool); # config takes True
 takes-a-bool('config', :!bool); # config takes False
 
@@ -345,7 +345,7 @@ if long-computation() -> $result {
 $arg ~~ &bool-returning-function; # `True` if the function, passed `$arg`
                                   # as an argument, returns `True`.
 1 ~~ Int; # "has type" (check superclasses and roles)
-1 ~~ True; # smart-matching against a boolean always returns that boolean
+1 ~~ True; # smart-matching against a Boolean always returns that Boolean
            # (and will warn).
 
 # You also, of course, have `<`, `<=`, `>`, `>=`.

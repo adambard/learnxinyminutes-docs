@@ -219,7 +219,7 @@ letters
 month.abb # "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"
 
 # LOGICALS
-# In R, a "logical" is a boolean
+# In R, a "logical" is a Boolean
 class(TRUE)	# "logical"
 class(FALSE)	# "logical"
 # Their behavior is normal

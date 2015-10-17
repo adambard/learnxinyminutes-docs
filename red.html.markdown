@@ -113,7 +113,7 @@ i1 / i2 ; result 0 (0.5, but truncated towards 0)
 
 ; Comparison operators are probably familiar, and unlike in other languages you
 ; only need a single '=' sign for comparison.
-; There is a boolean like type in Red. It has values true and false, but also the
+; There is a Boolean like type in Red. It has values true and false, but also the
 ; values on/off or yes/no can be used
 
 3 = 2 ; result false

@@ -55,7 +55,7 @@ add 2 3                       // Now run the function.
 let evens list =
    let isEven x = x%2 = 0     // Define "isEven" as a sub function
    List.filter isEven list    // List.filter is a library function
-                              // with two parameters: a boolean function
+                              // with two parameters: a Boolean function
                               // and a list to work on
 
 evens oneToFive               // Now run the function
@@ -627,7 +627,3 @@ module NetCompatibilityExamples =
 For more demonstrations of F#, go to the [Try F#](http://www.tryfsharp.org/Learn) site, or my [why use F#](http://fsharpforfunandprofit.com/why-use-fsharp/) series.
 
 Read more about F# at [fsharp.org](http://fsharp.org/).
-
-
-
-

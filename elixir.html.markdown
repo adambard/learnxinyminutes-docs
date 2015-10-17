@@ -114,8 +114,8 @@ div(10, 2) #=> 5
 # To get the division remainder use `rem`
 rem(10, 3) #=> 1
 
-# There are also boolean operators: `or`, `and` and `not`.
-# These operators expect a boolean as their first argument.
+# There are also Boolean operators: `or`, `and` and `not`.
+# These operators expect a Boolean as their first argument.
 true and true #=> true
 false or true #=> true
 # 1 and true    #=> ** (ArgumentError) argument error
