@@ -6,6 +6,7 @@ contributors:
     - ["Madison Dickson", "http://github.com/mix3d"]
 translators:
     - ["Ivan Sala","http://github.com/slavni96"]
+    - ["Tommaso Pifferi","http://github.com/neslinesli93"]
 lang: it-it
 ---
 
