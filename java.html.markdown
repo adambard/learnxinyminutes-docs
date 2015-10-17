@@ -250,7 +250,7 @@ public class LearnJava {
 
         // If statements are c-like
         int j = 10;
-        if (j == 10){
+        if (j == 10) {
             System.out.println("I get printed");
         } else if (j > 10) {
             System.out.println("I don't");
