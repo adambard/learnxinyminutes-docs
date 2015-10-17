@@ -13,7 +13,7 @@ contributors:
   - ["Rahil Momin", "https://github.com/iamrahil"]
 translators:
   - ["Christian Albrecht", "https://github.com/coastalchief"]
-filename: ruby-de.html.markdown
+filename: ruby-de.rb
 lang: de-de
 ---
 
