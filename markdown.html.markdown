@@ -153,6 +153,8 @@ inside your code -->
 John didn't even know what the `go_to()` function did!
 
 <!-- In Github Flavored Markdown, you can use a special syntax for code -->
+(the extra indentation is only to render the fenced block as-is here.
+omit it in your markdown) -->
     ```ruby
     def foobar
         puts "Hello world!"
