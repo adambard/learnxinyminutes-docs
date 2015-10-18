@@ -59,34 +59,34 @@ matematica =
   quadrato: quadrato
   cubo:   (x) -> x * quadrato x
 #=> var matematica = {
-#  "radice": Math.sqrt,
-#  "quadrato": quadrato,
-#  "cubo": function(x) { return x * quadrato(x); }
-#}
+#     "radice": Math.sqrt,
+#     "quadrato": quadrato,
+#     "cubo": function(x) { return x * quadrato(x); }
+#   }
 
 # Splats:
 gara = (vincitore, partecipanti...) ->
   print vincitore, partecipanti
 #=>gara = function() {
-#  var partecipanti, vincitore;
-#  vincitore = arguments[0], partecipanti = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-#  return print(vincitore, partecipanti);
-#};
+#    var partecipanti, vincitore;
+#    vincitore = arguments[0], partecipanti = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+#    return print(vincitore, partecipanti);
+#  };
 
 # Esistenza:
 alert "Lo sapevo!" if elvis?
 #=> if(typeof elvis !== "undefined" && elvis !== null) { alert("Lo sapevo!"); }
 
 # Comprensione degli Array:
-cubi = (matematica.cubo num for num in lista) 
+cubi = (matematica.cubo num for num in lista)
 #=>cubi = (function() {
-#	var _i, _len, _results;
-#	_results = [];
-# 	for (_i = 0, _len = lista.length; _i < _len; _i++) {
-#		num = lista[_i];
-#		_results.push(matematica.cubo(num));
-#	}
-#	return _results;
+#	   var _i, _len, _results;
+#	   _results = [];
+#    for (_i = 0, _len = lista.length; _i < _len; _i++) {
+#      num = lista[_i];
+#      _results.push(matematica.cubo(num));
+#    }
+#    return _results;
 #  })();
 
 cibi = ['broccoli', 'spinaci', 'cioccolato']
