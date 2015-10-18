@@ -324,7 +324,7 @@ i; // = 5 - not undefined as you'd expect in a block-scoped language
 // scope.
 (function(){
     var temporary = 5;
-    // We can access the global scope by assiging to the "global object", which
+    // We can access the global scope by assigning to the "global object", which
     // in a web browser is always `window`. The global object may have a
     // different name in non-browser environments such as Node.js.
     window.permanent = 10;
