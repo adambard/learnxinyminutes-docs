@@ -371,8 +371,11 @@ Pulls from a repository and merges it with another branch.
 # Update your local repo, by merging in new changes
 # from the remote "origin" and "master" branch.
 # git pull <remote> <branch>
-# git pull => implicitly defaults to => git pull origin master
 $ git pull origin master
+
+# By default, git pull will update your current branch
+# by merging in new changes from its remote-tracking branch 
+$ git pull
 
 # Merge in changes from remote branch and rebase
 # branch commits onto your local repo, like: "git pull <remote> <branch>, git rebase <branch>"
