@@ -721,7 +721,7 @@ $cls = new SomeOtherNamespace\MyClass();
 
 try {
     // Do something
-} catch ( Exception $e) {
+} catch (Exception $e) {
     // Handle exception
 }
 
