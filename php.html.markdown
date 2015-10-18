@@ -453,7 +453,7 @@ function variable($word, ...$list) {
 	}
 }
 
-variable("Separate", "Hello", "World") // Separate || Hello | world | 
+variable("Separate", "Hello", "World") // Separate || Hello | World | 
 
 /********************************
  * Includes
