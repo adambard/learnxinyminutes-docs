@@ -552,9 +552,9 @@ class MyClass
     }
     
     // opposite to __construct()
-    // called when object no longer referenced
+    // called when object is no longer referenced
     public function __destruct() {
-        print "Destroying"
+        print "Destroying";
     }
 
 /*
