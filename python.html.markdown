@@ -58,6 +58,12 @@ allow you to write Python 3 code that will run on Python 2, so check out the Pyt
 -5 // 3  # => -2
 -5.0 // 3.0 # => -2.0
 
+# Note that we can also import division module(Section 6 Modules)
+# to carry out normal division with just one '/'.
+from __future__ import division
+11/4    # => 2.75  ...normal division
+11//4   # => 2 ...floored division  
+
 # Modulo operation
 7 % 3 # => 1
 
