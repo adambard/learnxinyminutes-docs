@@ -130,6 +130,15 @@ ls -l # Lists every file and directory on a separate line
 # .txt files in the current directory:
 ls -l | grep "\.txt"
 
+# Since bash works in the context of a current directory, you might want to 
+# run your command in some other directory. We have cd for changing location:
+cd ~    # change to home directory
+cd ..   # go up one directory
+        # (^^say, from /home/username/Downloads to /home/username)
+cd /home/username/Documents   # change to specified directory
+cd ~/Documents/..    # still in home directory..isn't it??
+
+
 # You can redirect command input and output (stdin, stdout, and stderr).
 # Read from stdin until ^EOF$ and overwrite hello.py with the lines
 # between "EOF":
