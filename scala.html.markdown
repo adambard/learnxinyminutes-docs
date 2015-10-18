@@ -6,7 +6,7 @@ contributors:
     - ["Dominic Bou-Samra", "http://dbousamra.github.com"]
     - ["Geoff Liu", "http://geoffliu.me"]
     - ["Ha-Duong Nguyen", "http://reference-error.org"]
-	- ["Christian Albrecht", "https://github.com/coastalchief"]
+    - ["Christian Albrecht", "https://github.com/coastalchief"]
 ---
 
 Scala - the scalable language
