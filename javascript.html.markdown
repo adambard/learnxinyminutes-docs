@@ -54,6 +54,11 @@ doStuff()
 // Including uneven division.
 5 / 2; // = 2.5
 
+// And modulo division.
+10 % 2; // = 0
+30 % 4; // = 2
+18.5 % 7; // = 4.5
+
 // Bitwise operations also work; when you perform a bitwise operation your float
 // is converted to a signed int *up to* 32 bits.
 1 << 2; // = 4
@@ -104,7 +109,7 @@ null == undefined; // = true
 
 // ...unless you use ===
 "5" === 5; // = false
-null === undefined; // = false 
+null === undefined; // = false
 
 // ...which can result in some weird behaviour...
 13 + !0; // 14
@@ -220,15 +225,15 @@ for (var i = 0; i < 5; i++){
 
 //The For/In statement loops iterates over every property across the entire prototype chain
 var description = "";
-var person = {fname:"Paul", lname:"Ken", age:18}; 
+var person = {fname:"Paul", lname:"Ken", age:18};
 for (var x in person){
     description += person[x] + " ";
 }
 
-//If only want to consider properties attached to the object itself, 
+//If only want to consider properties attached to the object itself,
 //and not its prototypes use hasOwnProperty() check
 var description = "";
-var person = {fname:"Paul", lname:"Ken", age:18}; 
+var person = {fname:"Paul", lname:"Ken", age:18};
 for (var x in person){
     if (person.hasOwnProperty(x)){
         description += person[x] + " ";
@@ -413,7 +418,7 @@ var doubler = product.bind(this, 2);
 doubler(8); // = 16
 
 // When you call a function with the `new` keyword, a new object is created, and
-// made available to the function via the this keyword. Functions designed to be
+// made available to the function via the `this` keyword. Functions designed to be
 // called like that are called constructors.
 
 var MyConstructor = function(){

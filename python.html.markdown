@@ -14,7 +14,13 @@ executable pseudocode.
 Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
 
 Note: This article applies to Python 2.7 specifically, but should be applicable
-to Python 2.x. For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
+to Python 2.x. Python 2.7 is reachong end of life and will stop beeign maintained in 2020,
+it is though recommended to start learnign Python with Python 3.
+For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
+
+It is also possible to write Python code which is compatible with Python 2.7 and 3.x at the same time,
+using Python [`__future__` imports](https://docs.python.org/2/library/__future__.html). `__future__` imports
+allow you to write Python 3 code that will run on Python 2, so check out the Python 3 tutorial.
 
 ```python
 
@@ -143,6 +149,12 @@ bool("")  # => False
 
 # Python has a print statement
 print "I'm Python. Nice to meet you!" # => I'm Python. Nice to meet you!
+
+# Simple way to get input data from console
+input_string_var = raw_input("Enter some data: ") # Returns the data as a string
+input_var = input("Enter some data: ") # Evaluates the data as python code
+# Warning: Caution is recommended for input() method usage
+# Note: In python 3, input() is deprecated and raw_input() is renamed to input()
 
 # No need to declare variables before assigning to them.
 some_var = 5    # Convention is to use lower_case_with_underscores

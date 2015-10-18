@@ -90,17 +90,26 @@ else
     echo "Your name is your username"
 fi
 
+# NOTE: if $Name is empty, bash sees the above condition as:
+if [ -ne $USER ]
+# which is invalid syntax
+# so the "safe" way to use potentially empty variables in bash is:
+if [ "$Name" -ne $USER ] ...
+# which, when $Name is empty, is seen by bash as:
+if [ "" -ne $USER ] ...
+# which works as expected
+
 # There is also conditional execution
 echo "Always executed" || echo "Only executed if first command fails"
 echo "Always executed" && echo "Only executed if first command does NOT fail"
 
 # To use && and || with if statements, you need multiple pairs of square brackets:
-if [ $Name == "Steve" ] && [ $Age -eq 15 ]
+if [ "$Name" == "Steve" ] && [ "$Age" -eq 15 ]
 then
     echo "This will run if $Name is Steve AND $Age is 15."
 fi
 
-if [ $Name == "Daniya" ] || [ $Name == "Zach" ]
+if [ "$Name" == "Daniya" ] || [ "$Name" == "Zach" ]
 then
     echo "This will run if $Name is Daniya OR Zach."
 fi

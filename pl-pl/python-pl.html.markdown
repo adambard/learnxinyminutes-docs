@@ -125,7 +125,7 @@ not False  # => True
 # Ta metoda jest obecnie polecana:
 "{0} są {1}".format("napisy", "fajne")
 # Jeśli nie chce ci się liczyć użyj słów kluczowych.
-"{imie} chce zjeść {jadlo}".format(imie="Bob", jasno="lasagne")
+"{imie} chce zjeść {jadlo}".format(imie="Bob", jadlo="makaron")
 
 # None jest obiektem
 None  # => None
@@ -158,7 +158,7 @@ print "Jestem Python. Miło poznać!"
 print("Ja też jestem Python! ")
 
 # Nie trzeba deklarować zmiennych przed przypisaniem.
-jakas_zmienna = 5    # Konwencja mówi: używaj małych znaków i podłogi _
+jakas_zmienna = 5    # Konwencja mówi: używaj małych znaków i kładki _
 jakas_zmienna  # => 5
 
 # Próba dostępu do niezadeklarowanej zmiennej da błąd.

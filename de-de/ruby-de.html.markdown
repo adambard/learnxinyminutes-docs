@@ -1,6 +1,5 @@
 ---
 language: ruby
-filename: learnruby.rb
 contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]
   - ["Joel Walden", "http://joelwalden.net"]
@@ -12,42 +11,46 @@ contributors:
   - ["Dzianis Dashkevich", "https://github.com/dskecse"]
   - ["Levi Bostian", "https://github.com/levibostian"]
   - ["Rahil Momin", "https://github.com/iamrahil"]
-  - ["Gabriel Halley", "https://github.com/ghalley"]
-  - ["Persa Zula", "http://persazula.com"]
+translators:
+  - ["Christian Albrecht", "https://github.com/coastalchief"]
+filename: ruby-de.rb
+lang: de-de
 ---
 
-```ruby
-# This is a comment
+# Dies ist ein Kommentar
 
 =begin
-This is a multiline comment
-No-one uses them
-You shouldn't either
+Dies sind multi-line
+Kommentare. Niemand benutzt
+die wirklich.
 =end
 
-# First and foremost: Everything is an object.
+# Objekte - Alles ist ein Objekt
 
-# Numbers are objects
-
+## Zahlen sind Objekte
+```
 3.class #=> Fixnum
-
 3.to_s #=> "3"
+```
 
-
-# Some basic arithmetic
+### Simple Arithmetik
+```
 1 + 1 #=> 2
 8 - 1 #=> 7
 10 * 2 #=> 20
 35 / 5 #=> 7
 2**5 #=> 32
-5 % 3 #=> 2
+```
 
-# Arithmetic is just syntactic sugar
-# for calling a method on an object
+// Arithmetik ist aber eigentlich nur syntaktischer Zucker
+// um eine Methode eines Objekt aufzurufen
+```
 1.+(3) #=> 4
 10.* 5 #=> 50
+```
 
-# Special values are objects
+## Special values sind Objekte
+```
 nil # Nothing to see here
 true # truth
 false # falsehood
@@ -55,178 +58,202 @@ false # falsehood
 nil.class #=> NilClass
 true.class #=> TrueClass
 false.class #=> FalseClass
+```
 
-# Equality
+## Objektvergleiche
+### Gleicheit
+```
 1 == 1 #=> true
 2 == 1 #=> false
-
-# Inequality
+```
+### Ungleichheit
+```
 1 != 1 #=> false
 2 != 1 #=> true
-
-# apart from false itself, nil is the only other 'falsey' value
-
+```
+### Neben false selbst, nil ist ein anderer 'falsey' Wert
+```
 !nil   #=> true
 !false #=> true
 !0     #=> false
-
-# More comparisons
+```
+### Weitere Vergleiche
+```
 1 < 10 #=> true
 1 > 10 #=> false
 2 <= 2 #=> true
 2 >= 2 #=> true
-
-# Logical operators
+```
+### Logische Operatoren
+```
 true && false #=> false
 true || false #=> true
 !true #=> false
+```
 
-# There are alternate versions of the logical operators with much lower
-# precedence. These are meant to be used as flow-control constructs to chain
-# statements together until one of them returns true or false.
+Es gibt alternative Versionen der logischen Operatoren mit niedrigerer
+Wertigkeit. Diese werden meistens bei Flow-Control eingesetzt, um
+verschiedenen Ausdrücke zu verketten bis einer true oder false zurück
+liefert.
 
-# `do_something_else` only called if `do_something` succeeds.
+#### and
+##### `do_something_else` wird nur ausgewertet wenn `do_something` true ist.
 do_something() and do_something_else()
-# `log_error` only called if `do_something` fails.
+
+#### or
+#####`log_error` wird nur ausgewertet wenn `do_something` false ist.
 do_something() or log_error()
 
-
-# Strings are objects
-
+## Strings sind Objekte
+```
 'I am a string'.class #=> String
 "I am a string too".class #=> String
 
-placeholder = 'use string interpolation'
-"I can #{placeholder} when using double quoted strings"
-#=> "I can use string interpolation when using double quoted strings"
 
-# Prefer single quoted strings to double quoted ones where possible
-# Double quoted strings perform additional inner calculations
+platzhalter = 'Ruby'
+"Ich kann in #{placeholder} Platzhalter mit doppelten Anführungsstrichen füllen."
+```
+Einfache Anführungszeichen sollten bevorzugt werden.
+Doppelte Anführungszeichen führen interne Berechnungen durch.
 
-# Combine strings, but not with numbers
+### Strings können verbunden werden, aber nicht mit Zahlen
+```
 'hello ' + 'world'  #=> "hello world"
 'hello ' + 3 #=> TypeError: can't convert Fixnum into String
+```
+#### Zahl muss in String konvertiert werden
+```
 'hello ' + 3.to_s #=> "hello 3"
-
-# Combine strings and operators
-'hello ' * 3 #=> "hello hello hello "
-
-# Append to string
-'hello' << ' world' #=> "hello world"
-
-# print to the output with a newline at the end
+```
+### Text ausgeben
+```
 puts "I'm printing!"
-#=> I'm printing!
-#=> nil
-
-# print to the output without a newline
-print "I'm printing!"
-#=> I'm printing! => nill
-
-# Variables
+```
+# Variablen
+## Zuweisungen
+### Diese Zuweisung gibt den zugeordneten Wert zurück
+```
 x = 25 #=> 25
 x #=> 25
-
-# Note that assignment returns the value assigned
-# This means you can do multiple assignment:
-
+```
+### Damit funktionieren auch mehrfache Zuweisungen
+```
 x = y = 10 #=> 10
 x #=> 10
 y #=> 10
-
-# By convention, use snake_case for variable names
+```
+## Benennung
+### Konvention ist snake_case 
+```
 snake_case = true
-
-# Use descriptive variable names
+```
+### Benutze verständliche Variablennamen
+```
 path_to_project_root = '/good/name/'
 path = '/bad/name/'
+```
+# Symbols (sind auch Objekte)
+Symbols sind unveränderliche, wiederverwendbare Konstanten, welche intern  
+als integer repräsentiert werden. Sie werden häufig anstelle von Strings  
+verwendet, um sinnvoll Werte zu übermitteln.  
+Symbols werden mit dem Doppelpunkt gekennzeichnet.
 
-# Symbols (are objects)
-# Symbols are immutable, reusable constants represented internally by an
-# integer value. They're often used instead of strings to efficiently convey
-# specific, meaningful values
-
+```
 :pending.class #=> Symbol
-
 status = :pending
-
 status == :pending #=> true
-
 status == 'pending' #=> false
-
 status == :approved #=> false
-
+```
 # Arrays
 
-# This is an array
+## Ein Array anlegen
+```
 array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
+```
 
-# Arrays can contain different types of items
-
+## Array können verschiedene Typen beinhalten
+```
 [1, 'hello', false] #=> [1, "hello", false]
+```
 
-# Arrays can be indexed
-# From the front
-array[0] #=> 1
-array.first #=> 1
-array[12] #=> nil
-
-# Like arithmetic, [var] access
-# is just syntactic sugar
-# for calling a method [] on an object
+## Wie bei arithmetischen Ausdrücken auch wird beim Zugriff auf
+## [0] eigentlich die Methode [] des Array Objekts aufgerufen.
+```
 array.[] 0 #=> 1
 array.[] 12 #=> nil
+```
 
-# From the end
+## Arrays können von vorne indiziert werden
+```
+array[0] #=> 1
+array[12] #=> nil
+```
+
+## Arrays können von hinten indiziert werden
+```
 array[-1] #=> 5
-array.last #=> 5
+```
 
-# With a start index and length
+## Arrays können mit Stard Index und Länge indiziert werden
+```
 array[2, 3] #=> [3, 4, 5]
+```
 
-# Reverse an Array
-a=[1,2,3]
-a.reverse! #=> [3,2,1]
-
-# Or with a range
+## Arrays können mit einer Range indiziert werden
+```
 array[1..3] #=> [2, 3, 4]
+```
 
-# Add to an array like this
+## Einen Wert hinzufügen
+```
 array << 6 #=> [1, 2, 3, 4, 5, 6]
-# Or like this
 array.push(6) #=> [1, 2, 3, 4, 5, 6]
+```
 
-# Check if an item exists in an array
+## Testen, ob ein Element schon vorhanden ist
+```
 array.include?(1) #=> true
+```
 
-# Hashes are Ruby's primary dictionary with keys/value pairs.
-# Hashes are denoted with curly braces:
+# Hashes 
+Hashes sind das Hauptfeature um Key/Values zu speichern
+
+```
+
+## Ein Hash anlegen
+```
 hash = { 'color' => 'green', 'number' => 5 }
-
 hash.keys #=> ['color', 'number']
+```
 
-# Hashes can be quickly looked up by key:
+## Wert per key herausfinden
+```
 hash['color'] #=> 'green'
 hash['number'] #=> 5
+hash['nothing here'] #=> nil 
+// Asking a hash for a key that doesn't exist returns nil:
+```
 
-# Asking a hash for a key that doesn't exist returns nil:
-hash['nothing here'] #=> nil
-
-# Since Ruby 1.9, there's a special syntax when using symbols as keys:
-
+##  Symbols können auch keys sein
+```
 new_hash = { defcon: 3, action: true }
-
 new_hash.keys #=> [:defcon, :action]
+```
 
-# Check existence of keys and values in hash
+## Testen ob ein Key oder ein Value existiert
+```
 new_hash.has_key?(:defcon) #=> true
 new_hash.has_value?(3) #=> true
+```
 
-# Tip: Both Arrays and Hashes are Enumerable
-# They share a lot of useful methods such as each, map, count, and more
+### Tip:  Arrays und Hashes sind Enumerable
+### Und haben gemeinsame, hilfreiche Methoden wie:
+### each, map, count, and more
 
-# Control structures
-
+# Kontrolstrukturen
+## if
+```
 if true
   'if statement'
 elsif false
@@ -234,39 +261,35 @@ elsif false
 else
   'else, also optional'
 end
-
+```
+## for - Allerdings werden for Schleifen nicht oft vewendet.
+```
 for counter in 1..5
   puts "iteration #{counter}"
 end
-#=> iteration 1
-#=> iteration 2
-#=> iteration 3
-#=> iteration 4
-#=> iteration 5
+```
+## Stattdessen: "each" Methode und einen Bloch übergeben
+Ein Block ist ein Codeteil, den man einer Methode übergeben kann  
+Ähnelt stark lambdas, anonymen Funktionen oder Closures in anderen  
+Programmiersprachen.
 
-# HOWEVER, No-one uses for loops.
-# Instead you should use the "each" method and pass it a block.
-# A block is a bunch of code that you can pass to a method like "each".
-# It is analogous to lambdas, anonymous functions or closures in other
-# programming languages.
-#
-# The "each" method of a range runs the block once for each element of the range.
-# The block is passed a counter as a parameter.
-# Calling the "each" method with a block looks like this:
-
+```
 (1..5).each do |counter|
   puts "iteration #{counter}"
 end
-#=> iteration 1
-#=> iteration 2
-#=> iteration 3
-#=> iteration 4
-#=> iteration 5
+```
 
-# You can also surround blocks in curly brackets:
+Die each Methode einer Range führt den Block für jedes Element der Range aus.
+
+Dem Block wird ein "counter" parameter übergeben.
+
+### Den Block kann man auch in geschweiften Klammern schreiben
+```
 (1..5).each { |counter| puts "iteration #{counter}" }
+```
 
-# The contents of data structures can also be iterated using each.
+### Each kann auch über den Inhalt von Datenstrukturen iterieren
+```
 array.each do |element|
   puts "#{element} is part of the array"
 end
@@ -274,36 +297,15 @@ hash.each do |key, value|
   puts "#{key} is #{value}"
 end
 
-# If you still need and index you can use "each_with_index" and define an index
-# variable
-array.each_with_index do |element, index|
-  puts "#{element} is number #{index} in the array"
-end
-
 counter = 1
 while counter <= 5 do
   puts "iteration #{counter}"
   counter += 1
 end
-#=> iteration 1
-#=> iteration 2
-#=> iteration 3
-#=> iteration 4
-#=> iteration 5
+```
 
-# There are a bunch of other helpful looping functions in Ruby,
-# for example "map", "reduce", "inject", the list goes on. Map,
-# for instance, takes the array it's looping over, does something
-# to it as defined in your block, and returns an entirely new array.
-array = [1,2,3,4,5]
-doubled = array.map do |element|
-  element * 2
-end
-puts doubled
-#=> [2,4,6,8,10]
-puts array
-#=> [1,2,3,4,5]
-
+## case
+```
 grade = 'B'
 
 case grade
@@ -320,9 +322,11 @@ when 'F'
 else
   puts 'Alternative grading system, eh?'
 end
-#=> "Better luck next time"
+=> "Better luck next time"
+```
 
-# cases can also use ranges
+### Case können auch ranges
+```
 grade = 82
 case grade
 when 90..100
@@ -332,9 +336,11 @@ when 80...90
 else
   puts 'You failed!'
 end
-#=> "OK job"
+=> "OK job"
+```
 
 # exception handling:
+```
 begin
   # code here that might raise an exception
   raise NoMemoryError, 'You ran out of memory.'
@@ -347,235 +353,258 @@ else
 ensure
   puts 'This code always runs no matter what'
 end
-
-# Functions
-
+```
+# Funktionen
+```
 def double(x)
   x * 2
 end
-
-# Functions (and all blocks) implicitly return the value of the last statement
+```
+## Funktionen (und Blocks) 
+## geben implizit den Wert des letzten Statements zurück
+```
 double(2) #=> 4
+```
 
-# Parentheses are optional where the result is unambiguous
+### Klammern sind optional wenn das Ergebnis nicht mehdeutig ist
+```
 double 3 #=> 6
-
 double double 3 #=> 12
-
 def sum(x, y)
   x + y
 end
+```
 
-# Method arguments are separated by a comma
+### Methoden Parameter werden per Komma getrennt
+```
 sum 3, 4 #=> 7
-
 sum sum(3, 4), 5 #=> 12
+```
 
-# yield
-# All methods have an implicit, optional block parameter
-# it can be called with the 'yield' keyword
-
+## yield
+### Alle Methoden haben einen impliziten, optionalen block Parameter
+### Dieser wird mit dem Schlüsselword "yield" aufgerufen
+```
 def surround
   puts '{'
   yield
   puts '}'
 end
-
 surround { puts 'hello world' }
+```
 
-# {
-# hello world
-# }
-
-
-# You can pass a block to a function
-# "&" marks a reference to a passed block
+## Einen Block kann man auch einer Methoden übergeben
+### "&" kennzeichnet die Referenz zum übergebenen Block
+```
 def guests(&block)
   block.call 'some_argument'
 end
+```
 
-# You can pass a list of arguments, which will be converted into an array
-# That's what splat operator ("*") is for
+### Eine Liste von Parametern kann man auch übergeben,
+### Diese wird in ein Array konvertiert
+### "*" kennzeichnet dies.
+```
 def guests(*array)
   array.each { |guest| puts guest }
 end
-
-# Define a class with the class keyword
+```
+# Klassen
+## Werden mit dem class Schlüsselwort definiert
+```
 class Human
+```
 
-  # A class variable. It is shared by all instances of this class.
-  @@species = 'H. sapiens'
-
-  # Basic initializer
+### Konstruktor bzw. Initializer
+```
   def initialize(name, age = 0)
     # Assign the argument to the "name" instance variable for the instance
     @name = name
     # If no age given, we will fall back to the default in the arguments list.
     @age = age
   end
+```
 
-  # Basic setter method
+### setter Methode
+```
   def name=(name)
     @name = name
   end
-
-  # Basic getter method
+```
+### getter Methode
+```
   def name
     @name
   end
+```
 
-  # The above functionality can be encapsulated using the attr_accessor method as follows
+#### getter können mit der attr_accessor Methode vereinfacht definiert werden
+```
   attr_accessor :name
-
   # Getter/setter methods can also be created individually like this
   attr_reader :name
   attr_writer :name
-
   # A class method uses self to distinguish from instance methods.
   # It can only be called on the class, not an instance.
   def self.say(msg)
     puts msg
   end
-
   def species
     @@species
   end
 end
+```
 
-
-# Instantiate a class
+## Eine Klasse instanziieren
+```
 jim = Human.new('Jim Halpert')
-
 dwight = Human.new('Dwight K. Schrute')
+```
 
-# Let's call a couple of methods
+## Methodenaufrufe
+```
 jim.species #=> "H. sapiens"
 jim.name #=> "Jim Halpert"
 jim.name = "Jim Halpert II" #=> "Jim Halpert II"
 jim.name #=> "Jim Halpert II"
 dwight.species #=> "H. sapiens"
 dwight.name #=> "Dwight K. Schrute"
+```
 
-# Call the class method
+## Eine Klassenmethode aufrufen
+```
 Human.say('Hi') #=> "Hi"
+```
 
-# Variable's scopes are defined by the way we name them.
-# Variables that start with $ have global scope
+## Variable Gültigkeit
+### Variablen die mit "$" starten, gelten global
+```
 $var = "I'm a global var"
 defined? $var #=> "global-variable"
+```
 
-# Variables that start with @ have instance scope
+### Variablen die mit "@" starten, gelten für die Instanz
+```
 @var = "I'm an instance var"
 defined? @var #=> "instance-variable"
+```
 
-# Variables that start with @@ have class scope
+### Variablen die mit "@@" starten, gelten für die Klasse
+```
 @@var = "I'm a class var"
 defined? @@var #=> "class variable"
+```
 
-# Variables that start with a capital letter are constants
+### Variablen die mit einem Großbuchstaben anfangen, sind Konstanten
+```
 Var = "I'm a constant"
 defined? Var #=> "constant"
+```
 
-# Class is also an object in ruby. So class can have instance variables.
-# Class variable is shared among the class and all of its descendants.
+## Class ist auch ein Objekt
+### Hat also auch Instanzvariablen
+### Eine Klassenvariable wird innerhalb der Klasse und Ableitungen geteilt.
 
-# base class
+### Basis Klasse
+```
 class Human
   @@foo = 0
-
   def self.foo
     @@foo
   end
-
   def self.foo=(value)
     @@foo = value
   end
 end
+```
 
-# derived class
+### Abgeleitete Klasse
+```
 class Worker < Human
 end
-
 Human.foo # 0
 Worker.foo # 0
-
 Human.foo = 2 # 2
 Worker.foo # 2
+```
 
-# Class instance variable is not shared by the class's descendants.
-
+### Eine Klasseninstanzvariable wird nicht geteilt
+```
 class Human
   @bar = 0
-
   def self.bar
     @bar
   end
-
   def self.bar=(value)
     @bar = value
   end
 end
-
+```
+```
 class Doctor < Human
 end
-
+```
+```
 Human.bar # 0
 Doctor.bar # nil
-
+```
+```
 module ModuleExample
   def foo
     'foo'
   end
 end
-
-# Including modules binds their methods to the class instances
-# Extending modules binds their methods to the class itself
-
+```
+### Module einbinden, heisst ihre Methoden an die Instanzen der Klasse zu binden
+### Module erweitern, heisst ihre Mothden an die Klasse selbst zu binden
+```
 class Person
   include ModuleExample
 end
-
+```
+```
 class Book
   extend ModuleExample
 end
-
+```
+```
 Person.foo     # => NoMethodError: undefined method `foo' for Person:Class
 Person.new.foo # => 'foo'
 Book.foo       # => 'foo'
 Book.new.foo   # => NoMethodError: undefined method `foo'
-
-# Callbacks are executed when including and extending a module
-
-module ConcernExample
-  def self.included(base)
-    base.extend(ClassMethods)
-    base.send(:include, InstanceMethods)
-  end
-
-  module ClassMethods
-    def bar
-      'bar'
+```
+### Callbacks werden ausgeführt, wenn ein Modul eingebunden oder erweitert wird
+```
+  module ConcernExample
+    def self.included(base)
+      base.extend(ClassMethods)
+      base.send(:include, InstanceMethods)
+    end
+    module ClassMethods
+      def bar
+        'bar'
+      end
+    end
+    module InstanceMethods
+      def qux
+        'qux'
+      end
     end
   end
-
-  module InstanceMethods
-    def qux
-      'qux'
-    end
+  class Something
+    include ConcernExample
   end
-end
-
-class Something
-  include ConcernExample
-end
-
+```
+```
 Something.bar     # => 'bar'
 Something.qux     # => NoMethodError: undefined method `qux'
 Something.new.bar # => NoMethodError: undefined method `bar'
 Something.new.qux # => 'qux'
 ```
 
-## Additional resources
+## Weiterführende Hinweise
+
+//EN  
 
 - [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - A variant of this reference with in-browser challenges.
 - [Official Documentation](http://www.ruby-doc.org/core-2.1.1/)
