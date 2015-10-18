@@ -196,7 +196,7 @@ let (~/) x = 1.0 /. x ;;
 ~/4.0 (* = 0.25 *)
 
 
-(*** Built-in datastructures ***)
+(*** Built-in data structures ***)
 
 (* Lists are enclosed in square brackets, items are separated by
    semicolons. *)
@@ -341,10 +341,10 @@ let say x =
 
 say (Cat "Fluffy") ;; (* "Fluffy says meow". *)
 
-(** Traversing datastructures with pattern matching **)
+(** Traversing data structures with pattern matching **)
 
 (* Recursive types can be traversed with pattern matching easily.
-   Let's see how we can traverse a datastructure of the built-in list type.
+   Let's see how we can traverse a data structure of the built-in list type.
    Even though the built-in cons ("::") looks like an infix operator,
    it's actually a type constructor and can be matched like any other. *)
 let rec sum_list l =
