@@ -390,8 +390,11 @@ Push and merge changes from a branch to a remote & branch.
 # Push and merge changes from a local repo to a
 # remote named "origin" and "master" branch.
 # git push <remote> <branch>
-# git push => implicitly defaults to => git push origin master
 $ git push origin master
+
+# By default, git push will push and merge changes from
+# the current branch to its remote-tracking branch 
+$ git push
 
 # To link up current local branch with a remote branch, add -u flag:
 $ git push -u origin master
