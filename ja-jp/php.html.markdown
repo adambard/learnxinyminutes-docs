@@ -13,32 +13,30 @@ filename: learnphp.php
 ```php
 <?php // PHPのコードは、<?php タグで囲む必要があります。
 
-// もしあなたのphpファイルがPHPのみで構成される場合、それがベストプラクティスです。
+// もしあなたのphpファイルがPHPのみで構成される場合、
 // 意図しない出力を防ぐために、phpの閉じタグは省略するのがベストプラクティスです。
-// Two forward slashes start a one-line comment.
-
-# So will a hash (aka pound symbol) but // is more common
-
+// 一行のコメントを書く場合、2つのスラッシュで始めます。
+# ハッシュ(ポンド記号として知られる)を使いたいでしょうが、//のほうが一般的です
 /*
-     Surrounding text in slash-asterisk and asterisk-slash
-     makes it a multi-line comment.
+    スラッシュとアスタリスク、アスタリスクとスラッシュで囲むと、
+    複数行のコメントを書けます。
 */
 
-// Use "echo" or "print" to print output
-print('Hello '); // Prints "Hello " with no line break
+// 出力をプリントしたい場合は、"echo" か "print" を使います。
+print('Hello '); // これは "Hello " という改行なしの文字列をプリントします。
 
-// () are optional for print and echo
-echo "World\n"; // Prints "World" with a line break
-// (all statements must end with a semicolon)
+// カッコ()はprintとecho関数に置いては省略できます。
+echo "World\n"; // これは改行ありの"World"という文字列をプリントします。
+// (全ての命令文では、セミコロンを最後に付けることが必須です。)
 
-// Anything outside <?php tags is echoed automatically
+// <?php タグの外側にあるものは、自動的にプリントされます。
 ?>
 Hello World Again!
 <?php
 
 
 /************************************
- * Types & Variables
+ * 型と変数について
  */
 
 // Variables begin with the $ symbol.
