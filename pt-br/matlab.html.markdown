@@ -390,7 +390,8 @@ username = 'root';
 password = 'root';
 driver = 'com.mysql.jdbc.Driver';
 dburl = ['jdbc:mysql://localhost:8889/' dbname];
-javaclasspath('mysql-connector-java-5.1.xx-bin.jar'); %xx depende da versão, download disponível em http://dev.mysql.com/downloads/connector/j/
+%Abaixo, o xx depende da versão, download disponível em http://dev.mysql.com/downloads/connector/j/
+javaclasspath('mysql-connector-java-5.1.xx-bin.jar');
 conn = database(dbname, username, password, driver, dburl);
 sql = ['SELECT * FROM nome_tabela WHERE id = 22'] % Exemplo de uma consulta SQL
 a = fetch(conn, sql) %a will contain your data
@@ -456,9 +457,12 @@ fliplr(A) % Inverte a matriz da esquerda para a direita
 flipud(A) % Inverte a matriz de cima para baixo
 
 % Fatorações de Matrizes
-[L, U, P] = lu(A) % Decomposição LU: PA = LU,L é triangular inferior, U é triangular superior, P é a matriz de permutação
-[P, D] = eig(A) % Decomposição em Autovalores: AP = PD, colunas de P são autovetores e as diagonais de D são autovalores
-[U,S,V] = svd(X) % SVD: XV = US, U e V são matrizes unitárias, S possui elementos não negativos na diagonal em ordem decrescente
+% Decomposição LU: PA = LU,L é triangular inferior, U é triangular superior, P é a matriz de permutação
+[L, U, P] = lu(A)
+% Decomposição em Autovalores: AP = PD, colunas de P são autovetores e as diagonais de D são autovalores
+[P, D] = eig(A)
+% SVD: XV = US, U e V são matrizes unitárias, S possui elementos não negativos na diagonal em ordem decrescente
+[U,S,V] = svd(X)
 
 % Funções Vetoriais Comuns
 max     % Maior componente
