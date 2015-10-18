@@ -686,7 +686,6 @@ public abstract class Mammal()
         return true;
     }
 }
-```
 
 ## Further Reading
 
