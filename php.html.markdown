@@ -712,6 +712,43 @@ use My\Namespace as SomeOtherNamespace;
 
 $cls = new SomeOtherNamespace\MyClass();
 
+
+/**********************
+* Late Static Binding
+*
+* /
+
+class ParentClass {
+    public static function who() {
+        echo "I'm a " . __CLASS__ . "\n";
+    }
+    public static function test() {
+        // self references the class the method is defined within
+        self::who();
+        // static references the class the method was invoked on
+        static::who();
+    }
+}
+
+ParentClass::test();
+/*
+I'm a ParentClass
+I'm a ParentClass
+*/
+
+class ChildClass extends ParentClass {
+    public static function who() {
+        echo "But I'm " . __CLASS__ . "\n";
+    }
+}
+
+ChildClass::test();
+/*
+I'm a ParentClass
+But I'm ChildClass
+*/
+
+
 /**********************
 *  Error Handling
 *  
@@ -727,9 +764,9 @@ try {
 
 // When using try catch blocks in a namespaced enviroment use the following
 
-try { 
+try {
     // Do something
-} catch (\Exception $e) { 
+} catch (\Exception $e) {
     // Handle exception
 }
 
@@ -738,13 +775,13 @@ try {
 class MyException extends Exception {}
 
 try {
-    
-    $condition = true; 
-    
+
+    $condition = true;
+
     if ($condition) {
         throw new MyException('Something just happend');
     }
-    
+
 } catch (MyException $e) {
     // Handle my exception
 }
