@@ -42,29 +42,29 @@ Firefox(Mozilla) 3.5, Internet Explorer 8, Chrome, Opera 10, Safari 4.
 
 ```json
 {
-  "key": "value",
+  "key": "ஒரு சாவிக்கு ஒரு பெறுமதி உள்ளது ",
 
-  "keys": "must always be enclosed in double quotes",
+  "keys": "சாவிகள் , மற்றும் பெறுமானங்கள் மேற்கோள் குறிக்குள் இடல் வேண்டும்",
   "numbers": 0,
-  "strings": "Hellø, wørld. All unicode is allowed, along with \"escaping\".",
+  "strings": "Hellø, wørld. எல்லாவகையான  unicode உம் அனுமதிக்கப்படும், அத்துடன் \"escaping\".",
   "has bools?": true,
   "nothingness": null,
 
   "big number": 1.2e+100,
 
   "objects": {
-    "comment": "Most of your structure will come from objects.",
+    "comment": "பெரும்பாலான கட்டமைப்புகள் objects இல் இருந்தே வருகின்றன",
 
-    "array": [0, 1, 2, 3, "Arrays can have anything in them.", 5],
+    "array": [0, 1, 2, 3, "array யானது எல்லாவகையான பெறுமானங்களையும் கொண்டிருக்கும்", 5],
 
     "another object": {
-      "comment": "These things can be nested, very useful."
+      "comment": "இவை ஒன்றுக்குள் இன்னொன்றை எழுத முடியும்"
     }
   },
 
   "silliness": [
     {
-      "sources of potassium": ["bananas"]
+      "sources of potassium": ["வாழைபழம்"]
     },
     [
       [1, 0, 0, 0],
@@ -75,12 +75,12 @@ Firefox(Mozilla) 3.5, Internet Explorer 8, Chrome, Opera 10, Safari 4.
   ],
 
   "alternative style": {
-    "comment": "check this out!"
+    "comment": "இதை பார்க்கவும்"
   , "comma position": "doesn't matter - as long as it's before the value, then it's valid"
   , "another comment": "how nice"
   },
 
-  "that was short": "And, you're done. You now know everything JSON has to offer."
+  "that was short": "நீங்கள் ஜேசன் பற்றி யாவற்றையும் கற்றுள்ளீர்கள்"
 }
 ```
 
