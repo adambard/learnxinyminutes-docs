@@ -232,3 +232,7 @@ That's all for now!
 
 * The amazing LaTeX wikibook: [https://en.wikibooks.org/wiki/LaTeX](https://en.wikibooks.org/wiki/LaTeX)
 * An actual tutorial: [http://www.latex-tutorial.com/](http://www.latex-tutorial.com/)
+* Official LaTex project documentation: [https://latex-project.org/guides/](https://latex-project.org/guides/)
+* Getting to Grips with LaTeX: [http://www.andy-roberts.net/writing/latex](http://www.andy-roberts.net/writing/latex)
+* LaTex Tutorial: [http://www.pages.drexel.edu/~pyo22/students/latexRelated/latexTutorial.html]]
+  (http://www.pages.drexel.edu/~pyo22/students/latexRelated/latexTutorial.html)
