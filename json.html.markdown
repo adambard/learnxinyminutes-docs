@@ -59,7 +59,7 @@ Supported data types:
 
   "alternative style": {
     "comment": "check this out!"
-  , "comma position": "doesn't matter - as long as it's before the next key, then it's valid"
+  , "comma position": "doesn't matter, if it's before the next key, it's valid"
   , "another comment": "how nice"
   },
 
@@ -69,7 +69,7 @@ Supported data types:
 
 
 
-  "that was short": "And, you're done. You now know everything JSON has to offer."
+  "that was short": "And done. You now know everything JSON has to offer."
 }
 ```
 
