@@ -64,4 +64,30 @@ Drawbacks of JSON include lack of type definition and some sort of DTD.
 
   "that was short": "And, you're done. You now know everything JSON has to offer."
 }
+
+// Object JSON FROM String
+// The JSON.parse() method parses a string as JSON, optionally transforming the value produced by parsing.
+
+// Sintax:
+// JSON.parse(text[, reviver])
+
+//Parameters
+//text: The string to parse as JSON.
+
+//reviver Optional: If a function, prescribes how the value originally produced by parsing is transformed, before being returned.
+
+//Returns
+//Returns the Object corresponding to the given JSON text.
+
+//Throws
+//Throws a SyntaxError exception if the string to parse is not valid JSON.
+
+JSON.parse('{}');              // {}
+JSON.parse('true');            // true
+JSON.parse('"foo"');           // "foo"
+JSON.parse('[1, 5, "false"]'); // [1, 5, "false"]
+JSON.parse('null');            // null
+
 ```
+
+More About JSON: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON
