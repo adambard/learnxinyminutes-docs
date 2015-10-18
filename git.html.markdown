@@ -527,3 +527,6 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
 
 * [Pro Git](http://www.git-scm.com/book/en/v2)
+
+* [An introduction to Git and GitHub for Beginners (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+
