@@ -7,20 +7,21 @@ contributors:
   - ["himanshu", "https://github.com/himanshu81494"]
 ---
 
-As JSON is an extremely simple data-interchange format, this is most likely going
-to be the simplest Learn X in Y Minutes ever.
+JSON is an extremely simple data-interchange format. As [json.org](http://json.org) says, it is easy for humans to read and write and for machines to parse and generate.
 
-JSON in its purest form has no actual comments, but most parsers will accept
-C-style (`//`, `/* */`) comments. Some parsers also tolerate a trailing comma
-(i.e. a comma after the last element of an array or the after the last property of an object),
-but they should be avoided for better compatibility.
+A piece of JSON must represent either an array/list/sequence (`[ ]`) or a dictionary/object/associated array (`{ }`).
 
-For the purposes of this, however, everything is going to be 100% valid JSON. Luckily, it kind of speaks for itself.
+JSON in its purest form has no actual comments, but most parsers will accept C-style (`//`, `/* */`) comments. Some parsers also tolerate a trailing comma (i.e. a comma after the last element of an array or the after the last property of an object), but they should be avoided for better compatibility.
 
-Data types supported by JSON includes: numbers, string, boolean, array, object and null.
-Supporting browsers are: Firefox(Mozilla) 3.5, Internet Explorer 8, Chrome, Opera 10, Safari 4.
-JSON file type for JSON files is ".json". The MIME type for JSON text is "application/json"
-Drawbacks of JSON include lack of type definition and some sort of DTD.
+For the purposes of this tutorial, everything is going to be 100% valid JSON. Luckily, it kind of speaks for itself.
+
+Supported data types:
+
+* Strings: `"hello"`, `"\"A quote.\""`, `"\u0abe"`, `"Newline.\n"`
+* Numbers: `23`, `0.11`, `12e10`, `3.141e-10`, `1.23e+4`
+* Objects: `{ "key": "value" }`
+* Arrays: `["Values"]`
+* Miscellaneous: `true`, `false`, `null`
 
 ```json
 {
@@ -62,6 +63,16 @@ Drawbacks of JSON include lack of type definition and some sort of DTD.
   , "another comment": "how nice"
   },
 
+
+
+  "whitespace": "Does not matter.",
+
+
+
   "that was short": "And, you're done. You now know everything JSON has to offer."
 }
 ```
+
+## Further Reading
+
+* [JSON.org](http://json.org) All of JSON beautifully explained using flowchart-like graphics.
