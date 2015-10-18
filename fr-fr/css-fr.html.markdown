@@ -81,7 +81,7 @@ div.une-classe[attr$='eu'] { }
 /* Un élément qui est en enfant direct */
 div.un-parent > .enfant {}
 
-/*  dans la structure HTML */
+/* Cela cible aussi les .enfants plus profonds dans la structure HTML */
 div.un-parent .enfants {}
 
 /* Attention : le même sélecteur sans espace a un autre sens. */
