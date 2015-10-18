@@ -6,6 +6,7 @@ contributors:
     - ["Geoffrey Liu", "https://github.com/g-liu"]
     - ["Connor Shea", "https://github.com/connorshea"]
     - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
+    - ["Brett Taylor", "https://github.com/glutnix"]
 filename: learncss.css
 ---
 
@@ -131,9 +132,9 @@ selector::after {}
    #################### */
 
 selector {
-    
+
     /* Units of length can be absolute or relative. */
-    
+
     /* Relative units */
     width: 50%;       /* percentage of parent element width */
     font-size: 2em;   /* multiples of element's original font-size */
@@ -142,14 +143,14 @@ selector {
     font-size: 2vh;   /* or its height */
     font-size: 2vmin; /* whichever of a vh or a vw is smaller */
     font-size: 2vmax; /* or greater */
-    
+
     /* Absolute units */
     width: 200px;     /* pixels */
     font-size: 20pt;  /* points */
     width: 5cm;       /* centimeters */
     min-width: 50mm;  /* millimeters */
     max-width: 5in;   /* inches */
-    
+
     /* Colors */
     color: #F6E;                 /* short hex format */
     color: #FF66EE;              /* long hex format */
@@ -160,10 +161,10 @@ selector {
     color: transparent;          /* equivalent to setting the alpha to 0 */
     color: hsl(0, 100%, 50%);    /* as hsl percentages (CSS 3) */
     color: hsla(0, 100%, 50%, 0.3); /* as hsla percentages with alpha */
-    
+
     /* Images as backgrounds of elements */
     background-image: url(/img-path/img.jpg); /* quotes inside url() optional */
-    
+
     /* Fonts */
     font-family: Arial;
     /* if the font family name has a space, it must be quoted */
@@ -177,10 +178,10 @@ selector {
 
 Save a CSS stylesheet with the extension `.css`.
 
-```xml
+```html
 <!-- You need to include the css file in your page's <head>. This is the
      recommended method. Refer to http://stackoverflow.com/questions/8284365 -->
-<link rel='stylesheet' type='text/css' href='path/to/style.css' />
+<link rel='stylesheet' type='text/css' href='path/to/style.css'>
 
 <!-- You can also include some CSS inline in your markup. -->
 <style>
@@ -219,8 +220,8 @@ p { property: value !important; }
 
 and the following markup:
 
-```xml
-<p style='/*F*/ property:value;' class='class1 class2' attr='value' />
+```html
+<p style='/*F*/ property:value;' class='class1 class2' attr='value'>
 ```
 
 The precedence of style is as follows. Remember, the precedence is for each **property**, not for the entire block.
@@ -232,13 +233,55 @@ The precedence of style is as follows. Remember, the precedence is for each **pr
 * `B` is next.
 * `D` is the last one.
 
+## Media Queries
+
+CSS Media Queries are a feature in CSS 3 which allows you to specify when certain CSS rules should be applied, such as when printed, or when on a screen with certain dimensions or pixel density.
+
+```css
+/* A rule that will be used on all devices */
+h1 {
+  font-size: 2em;
+  color: white;
+  background-color: black;
+}
+
+/* change the h1 to use less ink on a printer */
+@media print {
+  h1 {
+    color: black;
+    background-color: white;
+  }
+}
+
+/* make the font bigger when shown on a screen at least 480px wide */
+@media screen and (min-width: 480px) {
+  h1 {
+    font-size: 3em;
+    font-weight: normal;
+  }
+}
+```
+
+Media queries can include these features:
+`width`, `height`, `device-width`, `device-height`, `orientation`, `aspect-ratio`, `device-aspect-ratio`, `color`, `color-index`, `monochrome`, `resolution`, `scan`, `grid`. Most of these features can be prefixed with `min-` or `max-`.
+
+The `resolution` feature is not supported by older devices, instead use `device-pixel-ratio`.
+
+Many smartphones and tablets will attempt to render the page as if it were on a desktop unless you provide a `viewport` meta-tag.
+
+```html
+<head>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+</head>
+```
+
 ## Compatibility
 
 Most of the features in CSS 2 (and many in CSS 3) are available across all browsers and devices. But it's always good practice to check before using a new feature.
 
 ## Resources
 
-* To run a quick compatibility check, [CanIUse](http://caniuse.com).
+* [Can I Use](http://caniuse.com) for browser feature support and browser usage statistics
 * CSS Playground [Dabblet](http://dabblet.com/).
 * [Mozilla Developer Network's CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [Codrops' CSS Reference](http://tympanus.net/codrops/css_reference/)
