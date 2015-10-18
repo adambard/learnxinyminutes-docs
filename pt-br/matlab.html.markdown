@@ -26,11 +26,11 @@ com
 algo assim
 %}
 
-% comandos podem ocupar várinhas linhas, usando '...':
+% Comandos podem ocupar várinhas linhas, usando '...':
  a = 1 + 2 + ...
  + 4
 
-% comandos podem ser passados para o sistema operacional
+% Comandos podem ser passados para o sistema operacional
 !ping google.com
 
 who % Exibe todas as variáveis na memória
@@ -46,7 +46,7 @@ ctrl-c % Aborta a computação atual
 edit('minhafuncao.m') % Abre a função/script no editor
 type('minhafuncao.m') % Imprime o código-fonte da função/script na janela de comando
 
-profile on 	% Ativa o perfil de código
+profile on    % Ativa o perfil de código
 profile off 	% Desativa o perfil de código
 profile viewer 	% Visualiza os resultados na janela de Profiler
 
@@ -77,294 +77,297 @@ c = exp(a)*sin(pi/2) % c = 7.3891
 load('arquivo.mat', 'y') % Argumentos entre parênteses, separados por vírgula
 % Sintaxe de comando:
 load arquivo.mat y 	% Sem parênteses, e espaços ao invés de vírgulas
-% Observe a falta de aspas no formulário de comando: entradas são sempre
-% passadas como texto literal - não pode passar valores de variáveis.
+% Observe a falta de aspas na forma de comando: entradas são sempre passadas
+% como texto literal - não pode passar valores de variáveis.
 % Além disso, não pode receber saída:
-[V,D] = eig(A);  % this has no equivalent in command form
-[~,D] = eig(A);  % if you only want D and not V
+[V,D] = eig(A);  % Isto não tem um equivalente na forma de comando
+[~,D] = eig(A);  % Se você só deseja D e não V
 
 
 
-% Logicals
-1 > 5 % ans = 0
-10 >= 10 % ans = 1
-3 ~= 4 % Not equal to -> ans = 1
-3 == 3 % equal to -> ans = 1
-3 > 1 && 4 > 1 % AND -> ans = 1
-3 > 1 || 4 > 1 % OR -> ans = 1
-~1 % NOT -> ans = 0
+% Operadores Lógicos e Relacionais
+1 > 5 % Resposta = 0
+10 >= 10 % Resposta = 1
+3 ~= 4 % Diferente de -> Resposta = 1
+3 == 3 % Igual a -> Resposta = 1
+3 > 1 && 4 > 1 % E -> Resposta = 1
+3 > 1 || 4 > 1 % OU -> Resposta = 1
+~1 % NOT -> Resposta = 0
 
-% Logicals can be applied to matrices:
+% Operadores Lógicos e Relacionais podem ser aplicados a matrizes
 A > 5
-% for each element, if condition is true, that element is 1 in returned matrix
+% Para cada elemento, caso seja verdade, esse elemento será 1 na matriz retornada
 A( A > 5 )
-% returns a vector containing the elements in A for which condition is true
+% Retorna um vetor com os elementos de A para os quais a condição é verdadeira
 
-% Strings
-a = 'MyString'
-length(a) % ans = 8
-a(2) % ans = y
-[a,a] % ans = MyStringMyString
+% Cadeias de caracteres (Strings)
+a = 'MinhaString'
+length(a) % Resposta = 11
+a(2) % Resposta = i
+[a,a] % Resposta = MinhaStringMinhaString
 
 
-% Cells
-a = {'one', 'two', 'three'}
-a(1) % ans = 'one' - returns a cell
-char(a(1)) % ans = one - returns a string
+% Vetores de células
+a = {'um', 'dois', 'três'}
+a(1) % Resposta = 'um' - retorna uma célula
+char(a(1)) % Resposta = um - retorna uma string
 
-% Structures
-A.b = {'one','two'};
+% Estruturas
+A.b = {'um','dois'};
 A.c = [1 2];
 A.d.e = false;
 
-% Vectors
+% Vetores
 x = [4 32 53 7 1]
-x(2) % ans = 32, indices in Matlab start 1, not 0
-x(2:3) % ans = 32 53
-x(2:end) % ans = 32 53 7 1
+x(2) % Resposta = 32, índices no Matlab começam por 1, não 0
+x(2:3) % Resposta = 32 53
+x(2:end) % Resposta = 32 53 7 1
 
-x = [4; 32; 53; 7; 1] % Column vector
+x = [4; 32; 53; 7; 1] % Vetor coluna
 
 x = [1:10] % x = 1 2 3 4 5 6 7 8 9 10
 
-% Matrices
+% Matrizes
 A = [1 2 3; 4 5 6; 7 8 9]
-% Rows are separated by a semicolon; elements are separated with space or comma
+% Linhas são separadas por um ponto e vírgula;
+% Elementos são separados com espaço ou vírgula
 % A =
 
 %     1     2     3
 %     4     5     6
 %     7     8     9
 
-A(2,3) % ans = 6, A(row, column)
-A(6) % ans = 8
-% (implicitly concatenates columns into vector, then indexes into that)
+A(2,3) % Resposta = 6, A(linha, coluna)
+A(6) % Resposta = 8
+% (implicitamente encadeia as colunas do vetor, e então as indexa)
 
 
-A(2,3) = 42 % Update row 2 col 3 with 42
+A(2,3) = 42 % Atualiza a linha 2 coluna 3 com o valor 42
 % A =
 
 %     1     2     3
 %     4     5     42
 %     7     8     9
 
-A(2:3,2:3) % Creates a new matrix from the old one
-%ans =
+A(2:3,2:3) % Cria uma nova matriz a partir da antiga
+%Resposta =
 
 %     5     42
 %     8     9
 
-A(:,1) % All rows in column 1
-%ans =
+A(:,1) % Todas as linhas na coluna 1
+%Resposta =
 
 %     1
 %     4
 %     7
 
-A(1,:) % All columns in row 1
-%ans =
+A(1,:) % Todas as colunas na linha 1
+%Resposta =
 
 %     1     2     3
 
-[A ; A] % Concatenation of matrices (vertically)
-%ans =
+[A ; A] % Concatenação de matrizes (verticalmente)
+%Resposta =
 
-%     1     2     3
-%     4     5    42
-%     7     8     9
 %     1     2     3
 %     4     5    42
 %     7     8     9
+%     1     2     3
+%     4     5    42
+%     7     8     9
 
-% this is the same as
+% Isto é o mesmo de
 vertcat(A,A);
 
 
-[A , A] % Concatenation of matrices (horizontally)
+[A , A] % Concatenação de matrizes (horizontalmente)
 
-%ans =
+%Resposta =
 
 %     1     2     3     1     2     3
 %     4     5    42     4     5    42
 %     7     8     9     7     8     9
 
-% this is the same as
+% Isto é o mesmo de
 horzcat(A,A);
 
 
-A(:, [3 1 2]) % Rearrange the columns of original matrix
-%ans =
+A(:, [3 1 2]) % Reorganiza as colunas da matriz original
+%Resposta =
 
 %     3     1     2
 %    42     4     5
 %     9     7     8
 
-size(A) % ans = 3 3
+size(A) % Resposta = 3 3
 
-A(1, :) =[] % Delete the first row of the matrix
-A(:, 1) =[] % Delete the first column of the matrix
+A(1, :) =[] % Remove a primeira linha da matriz
+A(:, 1) =[] % Remove a primeira coluna da matriz
 
-transpose(A) % Transpose the matrix, which is the same as:
+transpose(A) % Transposta a matriz, que é o mesmo de:
 A one
-ctranspose(A) % Hermitian transpose the matrix
-% (the transpose, followed by taking complex conjugate of each element)
+ctranspose(A) % Transposta a matriz
+% (a transposta, seguida pelo conjugado complexo de cada elemento)
 
 
 
 
-% Element by Element Arithmetic vs. Matrix Arithmetic
-% On their own, the arithmetic operators act on whole matrices. When preceded
-% by a period, they act on each element instead. For example:
-A * B % Matrix multiplication
-A .* B % Multiple each element in A by its corresponding element in B
+% Aritmética Elemento por Elemento vs. Aritmética com Matriz
+% Naturalmente, os operadores aritméticos agem em matrizes inteiras. Quando
+% precedidos por um ponto, eles atuam em cada elemento. Por exemplo:
+A * B % Multiplicação de matrizes
+A .* B % Multiplica cada elemento em A por seu correspondente em B
 
-% There are several pairs of functions, where one acts on each element, and
-% the other (whose name ends in m) acts on the whole matrix.
-exp(A) % exponentiate each element
-expm(A) % calculate the matrix exponential
-sqrt(A) % take the square root of each element
-sqrtm(A) %  find the matrix whose square is A
+% Existem vários pares de funções nas quais uma atua sob cada elemento, e a
+% outra (cujo nome termina com m) age na matriz por completo.
+exp(A) % Exponencia cada elemento
+expm(A) % Calcula o exponencial da matriz
+sqrt(A) % Tira a raiz quadrada de cada elemento
+sqrtm(A) %  Procura a matriz cujo quadrado é A
 
 
-% Plotting
-x = 0:.10:2*pi; % Creates a vector that starts at 0 and ends at 2*pi with increments of .1
+% Gráficos
+x = 0:.10:2*pi; % Vetor que começa em 0 e termina em 2*pi com incrementos de 0,1
 y = sin(x);
 plot(x,y)
-xlabel('x axis')
-ylabel('y axis')
-title('Plot of y = sin(x)')
-axis([0 2*pi -1 1]) % x range from 0 to 2*pi, y range from -1 to 1
+xlabel('eixo x')
+ylabel('eixo y')
+title('Gráfico de y = sin(x)')
+axis([0 2*pi -1 1]) % x vai de 0 a 2*pi, y vai de -1 a 1
 
-plot(x,y1,'-',x,y2,'--',x,y3,':') % For multiple functions on one plot
-legend('Line 1 label', 'Line 2 label') % Label curves with a legend
+plot(x,y1,'-',x,y2,'--',x,y3,':') % Para várias funções em um só gráfico
+legend('Descrição linha 1', 'Descrição linha 2') % Curvas com uma legenda
 
-% Alternative method to plot multiple functions in one plot.
-% while 'hold' is on, commands add to existing graph rather than replacing it
+% Método alternativo para traçar várias funções em um só gráfico:
+% Enquanto 'hold' estiver ativo, os comandos serão adicionados ao gráfico
+% existente ao invés de o substituirem.
 plot(x, y)
 hold on
 plot(x, z)
 hold off
 
-loglog(x, y) % A log-log plot
-semilogx(x, y) % A plot with logarithmic x-axis
-semilogy(x, y) % A plot with logarithmic y-axis
+loglog(x, y) % Plotar em escala loglog
+semilogx(x, y) % Um gráfico com eixo x logarítmico
+semilogy(x, y) % Um gráfico com eixo y logarítmico
 
-fplot (@(x) x^2, [2,5]) % plot the function x^2 from x=2 to x=5
+fplot (@(x) x^2, [2,5]) % Plotar a função x^2 para x=2 até x=5
 
-grid on % Show grid; turn off with 'grid off'
-axis square % Makes the current axes region square
-axis equal % Set aspect ratio so data units are the same in every direction
+grid on % Exibe as linhas de grade; Oculta com 'grid off'
+axis square % Torna quadrada a região dos eixos atuais
+axis equal % Taxa de proporção onde as unidades serão as mesmas em todas direções
 
-scatter(x, y); % Scatter-plot
-hist(x); % Histogram
+scatter(x, y); % Gráfico de dispersão ou bolha
+hist(x); % Histograma
 
 z = sin(x);
-plot3(x,y,z); % 3D line plot
+plot3(x,y,z); % Plotar em espaço em 3D
 
-pcolor(A) % Heat-map of matrix: plot as grid of rectangles, coloured by value
-contour(A) % Contour plot of matrix
-mesh(A) % Plot as a mesh surface
+pcolor(A) % Mapa de calor da matriz: traça uma grade de retângulos, coloridos pelo valor
+contour(A) % Plotar de contorno da matriz
+mesh(A) % Plotar malha 3D
 
-h = figure	% Create new figure object, with handle f
-figure(h) % Makes the figure corresponding to handle h the current figure
-close(h) % close figure with handle h
-close all % close all open figure windows
-close % close current figure window
+h = figure	% Cria uma nova figura objeto, com identificador h
+figure(h) % Cria uma nova janela de figura com h
+close(h) % Fecha a figura h
+close all % Fecha todas as janelas de figuras abertas
+close % Fecha a janela de figura atual
 
-shg % bring an existing graphics window forward, or create new one if needed
-clf clear % clear current figure window, and reset most figure properties
+shg % Traz uma janela gráfica existente para frente, ou cria uma nova se necessário
+clf clear % Limpa a janela de figura atual e redefine a maioria das propriedades da figura
 
-% Properties can be set and changed through a figure handle.
-% You can save a handle to a figure when you create it.
-% The function gcf returns a handle to the current figure
-h = plot(x, y); % you can save a handle to a figure when you create it
+% Propriedades podem ser definidas e alteradas através de um identificador.
+% Você pode salvar um identificador para uma figura ao criá-la.
+% A função gcf retorna o identificador da figura atual
+h = plot(x, y); % Você pode salvar um identificador para a figura ao criá-la
 set(h, 'Color', 'r')
-% 'y' yellow; 'm' magenta, 'c' cyan, 'r' red, 'g' green, 'b' blue, 'w' white, 'k' black
+% 'y' amarelo; 'm' magenta, 'c' ciano, 'r' vermelho, 'g' verde, 'b' azul, 'w' branco, 'k' preto
 set(h, 'LineStyle', '--')
- % '--' is solid line, '---' dashed, ':' dotted, '-.' dash-dot, 'none' is no line
+ % '--' linha sólida, '---' tracejada, ':' pontilhada, '-.' traço-ponto, 'none' sem linha
 get(h, 'LineStyle')
 
 
-% The function gca returns a handle to the axes for the current figure
-set(gca, 'XDir', 'reverse'); % reverse the direction of the x-axis
+% A função gca retorna o identificador para os eixos da figura atual
+set(gca, 'XDir', 'reverse'); % Inverte a direção do eixo x
 
-% To create a figure that contains several axes in tiled positions, use subplot
-subplot(2,3,1); % select the first position in a 2-by-3 grid of subplots
-plot(x1); title('First Plot') % plot something in this position
-subplot(2,3,2); % select second position in the grid
-plot(x2); title('Second Plot') % plot something there
-
-
-% To use functions or scripts, they must be on your path or current directory
-path % display current path
-addpath /path/to/dir % add to path
-rmpath /path/to/dir % remove from path
-cd /path/to/move/into % change directory
+% Para criar uma figura que contém vários gráficos use subplot, o qual divide
+% a janela de gráficos em m linhas e n colunas.
+subplot(2,3,1); % Seleciona a primeira posição em uma grade de 2-por-3
+plot(x1); title('Primeiro Plot') % Plota algo nesta posição
+subplot(2,3,2); % Seleciona a segunda posição na grade
+plot(x2); title('Segundo Plot') % Plota algo ali
 
 
-% Variables can be saved to .mat files
-save('myFileName.mat') % Save the variables in your Workspace
-load('myFileName.mat') % Load saved variables into Workspace
+% Para usar funções ou scripts, eles devem estar no caminho ou na pasta atual
+path % Exibe o caminho atual
+addpath /caminho/para/pasta % Adiciona o diretório ao caminho
+rmpath /caminho/para/pasta % Remove o diretório do caminho
+cd /caminho/para/mudar % Muda o diretório
 
-% M-file Scripts
-% A script file is an external file that contains a sequence of statements.
-% They let you avoid repeatedly typing the same code in the Command Window
-% Have .m extensions
 
-% M-file Functions
-% Like scripts, and have the same .m extension
-% But can accept input arguments and return an output
-% Also, they have their own workspace (ie. different variable scope).
-% Function name should match file name (so save this example as double_input.m).
-% 'help double_input.m' returns the comments under line beginning function
-function output = double_input(x)
-	%double_input(x) returns twice the value of x
+% Variáveis podem ser salvas em arquivos *.mat
+save('meuArquivo.mat') % Salva as variáveis do seu Workspace
+load('meuArquivo.mat') % Carrega as variáveis em seu Workspace
+
+% Arquivos M (M-files)
+% Um arquivo de script é um arquivo externo contendo uma sequência de instruções.
+% Eles evitam que você digite os mesmos códigos repetidamente na janela de comandos.
+% Possuem a extensão *.m
+
+% Arquivos M de Funções (M-file Functions)
+% Assim como scripts e têm a mesma extensão *.m
+% Mas podem aceitar argumentos de entrada e retornar uma saída.
+% Além disso, possuem seu próprio workspace (ex. diferente escopo de variáveis).
+% O nome da função deve coincidir com o nome do arquivo (salve o exemplo como dobra_entrada.m)
+% 'help dobra_entrada.m' retorna os comentários abaixo da linha de início da função
+function output = dobra_entrada(x)
+	%dobra_entrada(x) retorna duas vezes o valor de x
 	output = 2*x;
 end
-double_input(6) % ans = 12
+dobra_entrada(6) % Resposta = 12
 
 
-% You can also have subfunctions and nested functions.
-% Subfunctions are in the same file as the primary function, and can only be
-% called by functions in the file. Nested functions are defined within another
-% functions, and have access to both its workspace and their own workspace.
+% Você também pode ter subfunções e funções aninhadas.
+% Subfunções estão no mesmo arquivo da função primária, e só podem ser chamados
+% por funções dentro do arquivo. Funções aninhadas são definidas dentro de
+% outras funções, e têm acesso a ambos workspaces.
 
-% If you want to create a function without creating a new file you can use an
-% anonymous function. Useful when quickly defining a function to pass to
-% another function (eg. plot with fplot, evaluate an indefinite integral
-% with quad, find roots with fzero, or find minimum with fminsearch).
-% Example that returns the square of it's input, assigned to to the handle sqr:
+% Se você quer criar uma função sem criar um novo arquivo, você pode usar uma
+% função anônima. Úteis para definir rapidamente uma função para passar a outra
+% função (ex. plotar com fplot, avaliar uma integral indefinida com quad,
+% procurar raízes com fzero, ou procurar mínimo com fminsearch).
+% Exemplo que retorna o quadrado de sua entrada, atribuído ao identificador sqr:
 sqr = @(x) x.^2;
-sqr(10) % ans = 100
-doc function_handle % find out more
+sqr(10) % Resposta = 100
+doc function_handle % Saiba mais
 
-% User input
-a = input('Enter the value: ')
+% Entrada do usuário
+a = input('Digite o valor: ')
 
-% Stops execution of file and gives control to the keyboard: user can examine
-% or change variables. Type 'return' to continue execution, or 'dbquit' to exit
+% Para a execução do arquivo e passa o controle para o teclado: o usuário pode
+% examinar ou alterar variáveis. Digite 'return' para continuar a execução, ou 'dbquit' para sair
 keyboard
 
-% Reading in data (also xlsread/importdata/imread for excel/CSV/image files)
-fopen(filename)
+% Leitura de dados (ou xlsread/importdata/imread para arquivos excel/CSV/imagem)
+fopen(nomedoarquivo)
 
-% Output
-disp(a) % Print out the value of variable a
-disp('Hello World') % Print out a string
-fprintf % Print to Command Window with more control
+% Saída
+disp(a) % Imprime o valor da variável a
+disp('Olá Mundo') % Imprime a string
+fprintf % Imprime na janela de comandos com mais controle
 
-% Conditional statements (the parentheses are optional, but good style)
+% Estruturas Condicionais (os parênteses são opicionais, porém uma boa prática)
 if (a > 15)
-	disp('Greater than 15')
+	disp('Maior que 15')
 elseif (a == 23)
-	disp('a is 23')
+	disp('a é 23')
 else
-	disp('neither condition met')
+	disp('Nenhuma condição reconheceu')
 end
 
-% Looping
-% NB. looping over elements of a vector/matrix is slow!
-% Where possible, use functions that act on whole vector/matrix at once
+% Estruturas de Repetição
+% Nota: fazer o loop sobre elementos de um vetor/matriz é lento!
+% Sempre que possível, use funções que atuem em todo o vetor/matriz de uma só vez.
 for k = 1:5
 	disp(k)
 end
@@ -374,25 +377,26 @@ while (k < 5)
 	k = k + 1;
 end
 
-% Timing code execution: 'toc' prints the time since 'tic' was called
+% Tempo de Execução de Código (Timing Code Execution): 'toc' imprime o tempo
+% passado desde que 'tic' foi chamado.
 tic
 A = rand(1000);
 A*A*A*A*A*A*A;
 toc
 
-% Connecting to a MySQL Database
-dbname = 'database_name';
+% Conectando a uma base de dados MySQL
+dbname = 'nome_base_de_dados';
 username = 'root';
 password = 'root';
 driver = 'com.mysql.jdbc.Driver';
 dburl = ['jdbc:mysql://localhost:8889/' dbname];
-javaclasspath('mysql-connector-java-5.1.xx-bin.jar'); %xx depends on version, download available at http://dev.mysql.com/downloads/connector/j/
+javaclasspath('mysql-connector-java-5.1.xx-bin.jar'); %xx depende da versão, download disponível em http://dev.mysql.com/downloads/connector/j/
 conn = database(dbname, username, password, driver, dburl);
-sql = ['SELECT * from table_name where id = 22'] % Example sql statement
+sql = ['SELECT * FROM nome_tabela WHERE id = 22'] % Exemplo de uma consulta SQL
 a = fetch(conn, sql) %a will contain your data
 
 
-% Common math functions
+% Funções Matemáticas Comuns
 sin(x)
 cos(x)
 tan(x)
@@ -410,122 +414,122 @@ ceil(x)
 floor(x)
 round(x)
 rem(x)
-rand % Uniformly distributed pseudorandom numbers
-randi % Uniformly distributed pseudorandom integers
-randn % Normally distributed pseudorandom numbers
+rand % Números pseudo-aleatórios uniformemente distribuídos
+randi % Inteiros pseudo-aleatórios uniformemente distribuídos
+randn % Números pseudo-aleatórios normalmente distribuídos
 
-% Common constants
+% Constantes Comuns
 pi
 NaN
 inf
 
-% Solving matrix equations (if no solution, returns a least squares solution)
-% The \ and / operators are equivalent to the functions mldivide and mrdivide
-x=A\b % Solves Ax=b. Faster and more numerically accurate than using inv(A)*b.
-x=b/A % Solves xA=b
+% Resolvendo equações matriciais (se não houver solução, retorna uma solução de mínimos quadrados)
+% Os operadores \ e / são equivalentes às funções mldivide e mrdivide
+x=A\b % Resolve Ax=b. Mais rápido e numericamente mais preciso do que inv(A)*b.
+x=b/A % Resolve xA=b
 
-inv(A) % calculate the inverse matrix
-pinv(A) % calculate the pseudo-inverse
+inv(A) % Calcula a matriz inversa
+pinv(A) % Calcula a pseudo-inversa
 
-% Common matrix functions
-zeros(m,n) % m x n matrix of 0's
-ones(m,n) % m x n matrix of 1's
-diag(A) % Extracts the diagonal elements of a matrix A
-diag(x) % Construct a matrix with diagonal elements listed in x, and zeroes elsewhere
-eye(m,n) % Identity matrix
-linspace(x1, x2, n) % Return n equally spaced points, with min x1 and max x2
-inv(A) % Inverse of matrix A
-det(A) % Determinant of A
-eig(A) % Eigenvalues and eigenvectors of A
-trace(A) % Trace of matrix - equivalent to sum(diag(A))
-isempty(A) % Tests if array is empty
-all(A) % Tests if all elements are nonzero or true
-any(A) % Tests if any elements are nonzero or true
-isequal(A, B) % Tests equality of two arrays
-numel(A) % Number of elements in matrix
-triu(x) % Returns the upper triangular part of x
-tril(x) % Returns the lower triangular part of x
-cross(A,B) %  Returns the cross product of the vectors A and B
-dot(A,B) % Returns scalar product of two vectors (must have the same length)
-transpose(A) % Returns the transpose of A
-fliplr(A) % Flip matrix left to right
-flipud(A) % Flip matrix up to down
+% Funções Matriciais Comuns
+zeros(m,n) % Matriz de zeros m x n
+ones(m,n) % Matriz de 1's m x n
+diag(A) % Extrai os elementos diagonais da matriz A
+diag(x) % Constrói uma matriz com os elementos diagonais listados em x, e zero nas outras posições
+eye(m,n) % Matriz identidade
+linspace(x1, x2, n) % Retorna n pontos igualmente espaçados, com min x1 e max x2
+inv(A) % Inverso da matriz A
+det(A) % Determinante da matriz A
+eig(A) % Valores e vetores próprios de A
+trace(A) % Traço da matriz - equivalente a sum(diag(A))
+isempty(A) % Testa se a matriz está vazia
+all(A) % Testa se todos os elementos são diferentes de zero ou verdadeiro
+any(A) % Testa se algum elemento é diferente de zero ou verdadeiro
+isequal(A, B) % Testa a igualdade de duas matrizes
+numel(A) % Número de elementos na matriz
+triu(x) % Retorna a parte triangular superior de x
+tril(x) % Retorna a parte triangular inferior de x
+cross(A,B) %  Retorna o produto cruzado das matrizes A e B
+dot(A,B) % Retorna o produto escalar de duas matrizes (devem possuir mesmo tamanho)
+transpose(A) % Retorna a matriz transposta de A
+fliplr(A) % Inverte a matriz da esquerda para a direita
+flipud(A) % Inverte a matriz de cima para baixo
 
-% Matrix Factorisations
-[L, U, P] = lu(A) % LU decomposition: PA = LU,L is lower triangular, U is upper triangular, P is permutation matrix
-[P, D] = eig(A) % eigen-decomposition: AP = PD, P's columns are eigenvectors and D's diagonals are eigenvalues
-[U,S,V] = svd(X) % SVD: XV = US, U and V are unitary matrices, S has non-negative diagonal elements in decreasing order
+% Fatorações de Matrizes
+[L, U, P] = lu(A) % Decomposição LU: PA = LU,L é triangular inferior, U é triangular superior, P é a matriz de permutação
+[P, D] = eig(A) % Decomposição em Autovalores: AP = PD, colunas de P são autovetores e as diagonais de D são autovalores
+[U,S,V] = svd(X) % SVD: XV = US, U e V são matrizes unitárias, S possui elementos não negativos na diagonal em ordem decrescente
 
-% Common vector functions
-max     % largest component
-min     % smallest component
-length  % length of a vector
-sort    % sort in ascending order
-sum     % sum of elements
-prod    % product of elements
-mode	% modal value
-median  % median value
-mean    % mean value
-std     % standard deviation
-perms(x) % list all permutations of elements of x
+% Funções Vetoriais Comuns
+max     % Maior componente
+min     % Menor componente
+length  % Tamanho do vetor
+sort    % Ordena em orcer ascendente
+sum     % Soma de elementos
+prod    % Produto de elementos
+mode	% Valor modal
+median  % Valor mediano
+mean    % Valor médio
+std     % Desvio padrão
+perms(x) % Lista todas as permutações de elementos de x
 
 
 % Classes
-% Matlab can support object-oriented programming. 
-% Classes must be put in a file of the class name with a .m extension. 
-% To begin, we create a simple class to store GPS waypoints.
-% Begin WaypointClass.m
-classdef WaypointClass % The class name.
-  properties % The properties of the class behave like Structures
+% Matlab pode suportar programação orientada a objetos.
+% Classes devem ser colocadas em um arquivo de mesmo nome com a extensão *.m
+% Para começar, criamos uma simples classe que armazena posições de GPS
+% Início ClassePosicoesGPS.m
+classdef ClassePosicoesGPS % O nome da classe.
+  properties % As propriedades da classe comportam-se como estruturas
     latitude 
     longitude 
   end
   methods 
-    % This method that has the same name of the class is the constructor. 
-    function obj = WaypointClass(lat, lon)
+    % Este método que tem o mesmo nome da classe é o construtor.
+    function obj = ClassePosicoesGPS(lat, lon)
       obj.latitude = lat;
       obj.longitude = lon;
     end
 
-    % Other functions that use the Waypoint object
-    function r = multiplyLatBy(obj, n)
+    % Outras funções que usam os objetos de PosicoesGPS
+    function r = multiplicarLatPor(obj, n)
       r = n*[obj.latitude];
     end
 
-    % If we want to add two Waypoint objects together without calling
-    % a special function we can overload Matlab's arithmetic like so:
+    % Se quisermos somar dois objetos de PosicoesGPS juntos sem chamar
+    % uma função especial nós podemos sobrepor a aritmética do Matlab, desta maneira:
     function r = plus(o1,o2)
-      r = WaypointClass([o1.latitude] +[o2.latitude], ...
+      r = ClassePosicoesGPS([o1.latitude] +[o2.latitude], ...
                         [o1.longitude]+[o2.longitude]);
     end
   end
 end
-% End WaypointClass.m
+% End ClassePosicoesGPS.m
 
-% We can create an object of the class using the constructor
-a = WaypointClass(45.0, 45.0)
+% Podemos criar um objeto da classe usando o construtor
+a = ClassePosicoesGPS(45.0, 45.0)
 
-% Class properties behave exactly like Matlab Structures.
+% Propriedades da classe se comportam exatamente como estruturas Matlab
 a.latitude = 70.0
 a.longitude = 25.0
 
-% Methods can be called in the same way as functions
-ans = multiplyLatBy(a,3)
+% Métodos podem ser chamados da mesma forma que funções
+ans = multiplicarLatPor(a,3)
 
-% The method can also be called using dot notation. In this case, the object 
-% does not need to be passed to the method.
-ans = a.multiplyLatBy(a,1/3)
+% O método também pode ser chamado usando a notação de ponto. Neste caso,
+% o objeto não precisa ser passado para o método.
+ans = a.multiplicarLatPor(a,1/3)
 
-% Matlab functions can be overloaded to handle objects. 
-% In the method above, we have overloaded how Matlab handles 
-% the addition of two Waypoint objects.
-b = WaypointClass(15.0, 32.0)
+% Funções do Matlab podem ser sobrepostas para lidar com objetos.
+% No método abaixo, nós sobrepomos a forma como o Matlab lida com a soma de
+% dois objetos PosicoesGPS.
+b = ClassePosicoesGPS(15.0, 32.0)
 c = a + b
 
 ```
 
-## More on Matlab
+## Mais sobre Matlab
 
-* The official website [http://http://www.mathworks.com/products/matlab/](http://www.mathworks.com/products/matlab/)
-* The official MATLAB Answers forum: [http://www.mathworks.com/matlabcentral/answers/](http://www.mathworks.com/matlabcentral/answers/)
+* O site oficial [http://http://www.mathworks.com/products/matlab/](http://www.mathworks.com/products/matlab/)
+* O fórum oficial de respostas: [http://www.mathworks.com/matlabcentral/answers/](http://www.mathworks.com/matlabcentral/answers/)
 
