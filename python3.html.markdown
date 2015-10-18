@@ -5,6 +5,7 @@ contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
+    - ["evuez", "http://github.com/evuez"]
 filename: learnpython3.py
 ---
 
@@ -216,6 +217,17 @@ li2 = li[:]  # => li2 = [1, 2, 4, 3] but (li2 is li) will result in false.
 # Remove arbitrary elements from a list with "del"
 del li[2]  # li is now [1, 2, 3]
 
+# Remove first occurrence of a value
+li.remove(2)  # li is now [1, 3]
+li.remove(2)  # Raises a ValueError as 2 is not in the list
+
+# Insert an element at a specific index
+li.insert(1, 2)  # li is now [1, 2, 3] again
+
+# Get the index of the first item found
+li.index(2)  # => 3
+li.index(4)  # Raises a ValueError as 4 is not in the list
+
 # You can add lists
 # Note: values for li and for other_li are not modified.
 li + other_li  # => [1, 2, 3, 4, 5, 6]
@@ -249,6 +261,8 @@ tup[:2]          # => (1, 2)
 
 # You can unpack tuples (or lists) into variables
 a, b, c = (1, 2, 3)  # a is now 1, b is now 2 and c is now 3
+# You can also do extended unpacking
+a, *b, c = (1, 2, 3, 4)  # a is now 1, b is now [2, 3] and c is now 4
 # Tuples are created by default if you leave out the parentheses
 d, e, f = 4, 5, 6
 # Now look how easy it is to swap two values
@@ -306,6 +320,11 @@ filled_dict.update({"four":4})  # => {"one": 1, "two": 2, "three": 3, "four": 4}
 # Remove keys from a dictionary with del
 del filled_dict["one"]  # Removes the key "one" from filled dict
 
+# From Python 3.5 you can also use the additional unpacking options
+{'a': 1, **{'b': 2}}  # => {'a': 1, 'b': 2}
+{'a': 1, **{'a': 2}}  # => {'a': 2}
+
+
 
 # Sets store ... well sets
 empty_set = set()
@@ -331,6 +350,15 @@ filled_set | other_set  # => {1, 2, 3, 4, 5, 6}
 
 # Do set difference with -
 {1, 2, 3, 4} - {2, 3, 5}  # => {1, 4}
+
+# Do set symmetric difference with ^
+{1, 2, 3, 4} ^ {2, 3, 5}  # => {1, 4, 5}
+
+# Check if set on the left is a superset of set on the right
+{1, 2} >= {1, 2, 3} # => False
+
+# Check if set on the left is a subset of set on the right
+{1, 2} <= {1, 2, 3} # => True
 
 # Check for existence in a set with in
 2 in filled_set   # => True
@@ -439,7 +467,7 @@ with open("myfile.txt") as f:
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
-print(our_iterable)  # => range(1,10). This is an object that implements our Iterable interface
+print(our_iterable)  # => dict_keys(['one', 'two', 'three']). This is an object that implements our Iterable interface.
 
 # We can loop over it.
 for i in our_iterable:
@@ -528,19 +556,19 @@ x, y = swap(x, y)     # => x = 2, y = 1
 # Function Scope
 x = 5
 
-def setX(num):
+def set_x(num):
     # Local var x not the same as global variable x
     x = num    # => 43
     print (x)  # => 43
 
-def setGlobalX(num):
+def set_global_x(num):
     global x
     print (x)  # => 5
     x = num    # global var x is now set to 6
     print (x)  # => 6
 
-setX(43)
-setGlobalX(6)
+set_x(43)
+set_global_x(6)
 
 
 # Python has first class functions
@@ -589,6 +617,9 @@ class Human:
         # Assign the argument to the instance's name attribute
         self.name = name
 
+        # Initialize property
+        self.age = 0
+
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
         return "{name}: {message}".format(name=self.name, message=msg)
@@ -603,6 +634,23 @@ class Human:
     @staticmethod
     def grunt():
         return "*grunt*"
+
+    # A property is just like a getter.
+    # It turns the method age() into an read-only attribute
+    # of the same name.
+    @property
+    def age(self):
+        return self._age
+
+    # This allows the property to be set
+    @age.setter
+    def age(self, age):
+        self._age = age
+
+    # This allows the property to be deleted
+    @age.deleter
+    def age(self):
+        del self._age
 
 
 # Instantiate a class
@@ -622,6 +670,17 @@ j.get_species()  # => "H. neanderthalensis"
 
 # Call the static method
 Human.grunt()    # => "*grunt*"
+
+# Update the property
+i.age = 42
+
+# Get the property
+i.age # => 42
+
+# Delete the property
+del i.age
+i.age  # => raises an AttributeError
+
 
 
 ####################################################

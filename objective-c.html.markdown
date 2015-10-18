@@ -688,7 +688,7 @@ addUp = ^(int n) { // Remove (int n) to have a block that doesn't take in any pa
     mutableVar = 32; // Assigning new value to __block variable.
     return n + outsideVar; // Return statements are optional.
 }
-int addUp = add(10 + 16); // Calls block code with arguments.
+int addUp = addUp(10 + 16); // Calls block code with arguments.
 // Blocks are often used as arguments to functions to be called later, or for callbacks.
 @implementation BlockExample : NSObject
 
