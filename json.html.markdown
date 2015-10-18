@@ -65,3 +65,15 @@ Drawbacks of JSON include lack of type definition and some sort of DTD.
   "that was short": "And, you're done. You now know everything JSON has to offer."
 }
 ```
+
+## Further Reading
+
+The [Mozilla Developer
+Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) provides
+excellent documentation for JSON.
+
+[Getting Started With JSON](http://codular.com/json)
+
+[JSON Tutorial on W3Schools](http://www.w3schools.com/json/)
+
+[Learn JSON: simply easy learninf](http://www.tutorialspoint.com/json/)  
