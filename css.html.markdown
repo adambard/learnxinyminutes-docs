@@ -108,16 +108,16 @@ div.some-parent.class-name {}
    based on its page behaviour (rather than page structure) */
 
 /* for example for when an element is hovered */
-selected:hover {}
+selector:hover {}
 
 /* or a visited link */
-selected:visited {}
+selector:visited {}
 
 /* or not visited link */
-selected:link {}
+selector:link {}
 
 /* or an input element which is focused */
-selected:focus {}
+selector:focus {}
 
 
 /* ####################
