@@ -14,7 +14,7 @@ programming language.  It can also be used as a portable C library, even in
 cases where no scripting capability is needed, as it provides data structures
 such as dynamic strings, lists, and hash tables.  The C library also provides
 portable functionality for loading dynamic libraries, string formatting and
-code conversion, filesystem operations, network operations, and more.  
+code conversion, filesystem operations, network operations, and more.
 Various features of Tcl stand out:
 
 * Convenient cross-platform networking API
@@ -58,14 +58,14 @@ lighter that that of Lisp, just gets out of the way.
 #! /bin/env tclsh
 
 ################################################################################
-## 1. Guidelines 
+## 1. Guidelines
 ################################################################################
 
 # Tcl is not Bash or C!  This needs to be said because standard shell quoting
 # habits almost work in Tcl and it is common for people to pick up Tcl and try
 # to get by with syntax they know from another language.  It works at first,
 # but soon leads to frustration with more complex scripts.
- 
+
 # Braces are just a quoting mechanism, not a code block constructor or a list
 # constructor.  Tcl doesn't have either of those things.  Braces are used,
 # though, to escape special characters in procedure bodies and in strings that
@@ -73,7 +73,7 @@ lighter that that of Lisp, just gets out of the way.
 
 
 ################################################################################
-## 2. Syntax 
+## 2. Syntax
 ################################################################################
 
 # Every line is a command.  The first word is the name of the command, and
@@ -83,13 +83,13 @@ lighter that that of Lisp, just gets out of the way.
 # are used, they are not a string constructor, but just another escaping
 # character.
 
-set greeting1 Sal 
+set greeting1 Sal
 set greeting2 ut
 set greeting3 ations
 
 
 #semicolon also delimits commands
-set greeting1 Sal; set greeting2 ut; set greeting3 ations 
+set greeting1 Sal; set greeting2 ut; set greeting3 ations
 
 
 # Dollar sign introduces variable substitution
@@ -121,15 +121,16 @@ puts lots\nof\n\n\n\n\n\nnewlines
 
 
 # A word enclosed in braces is not subject to any special interpretation or
-# substitutions, except that a backslash before a brace is not counted when look#ing for the closing brace
+# substitutions, except that a backslash before a brace is not counted when
+# looking for the closing brace
 set somevar {
     This is a literal $ sign, and this \} escaped
     brace remains uninterpreted
-} 
+}
 
 
 # In a word enclosed in double quotes, whitespace characters lose their special
-# meaning 
+# meaning
 set name Neo
 set greeting "Hello, $name"
 
@@ -148,6 +149,9 @@ set greeting "Hello, [set {first name}]"
 
 # To promote the words within a word to individual words of the current
 # command, use the expansion operator, "{*}".
+```
+
+```tcl
 set {*}{name Neo}
 
 # is equivalent to
@@ -163,7 +167,7 @@ set greeting "Hello, $person(name)"
 # A namespace holds commands and variables
 namespace eval people {
     namespace eval person1 {
-        set name Neo
+        variable name Neo
     }
 }
 
@@ -174,7 +178,7 @@ set greeting "Hello $people::person1::name"
 
 
 ################################################################################
-## 3. A Few Notes 
+## 3. A Few Notes
 ################################################################################
 
 # All other functionality is implemented via commands.  From this point on,
@@ -189,7 +193,10 @@ set greeting "Hello $people::person1::name"
 namespace delete ::
 
 
-# Because of name resolution behaviour, it's safer to use the "variable" command to declare or to assign a value to a namespace.
+# Because of name resolution behaviour, it's safer to use the "variable" command to
+# declare or to assign a value to a namespace. If a variable called "name" already
+# exists in the global namespace, using "set" here will assign a value to the global variable
+# instead of creating a new variable in the local namespace.
 namespace eval people {
     namespace eval person1 {
         variable name Neo
@@ -203,7 +210,7 @@ set people::person1::name Neo
 
 
 ################################################################################
-## 4. Commands 
+## 4. Commands
 ################################################################################
 
 # Math can be done with the "expr" command.
@@ -256,7 +263,7 @@ proc greet greeting\ name return\ \"Hello,\ \$name!
 proc fold {cmd args} {
     set res 0
     foreach arg $args {
-        set res [cmd $res $arg]
+        set res [$cmd $res $arg]
     }
 }
 fold ::tcl::mathop::* 5 3 3 ;# ->  45
@@ -288,7 +295,7 @@ while {$i < 10} {
 
 
 # A list is a specially-formatted string.  In the simple case, whitespace is sufficient to delimit values
-set amounts 10\ 33\ 18 
+set amounts 10\ 33\ 18
 set amount [lindex $amounts 1]
 
 
@@ -332,7 +339,7 @@ eval {set name Neo}
 eval [list set greeting "Hello, $name"]
 
 
-# Therefore, when using "eval", use [list] to build up a desired command 
+# Therefore, when using "eval", use [list] to build up a desired command
 set command {set name}
 lappend command {Archibald Sorbisol}
 eval $command
@@ -348,8 +355,8 @@ eval $command ;# There is an error here, because there are too many arguments \
 # This mistake can easily occur with the "subst" command.
 set replacement {Archibald Sorbisol}
 set command {set name $replacement}
-set command [subst $command] 
-eval $command ;# The same error as before:  to many arguments to "set" in \
+set command [subst $command]
+eval $command ;# The same error as before: too many arguments to "set" in \
     {set name Archibald Sorbisol}
 
 
@@ -357,12 +364,12 @@ eval $command ;# The same error as before:  to many arguments to "set" in \
 # command.
 set replacement [list {Archibald Sorbisol}]
 set command {set name $replacement}
-set command [subst $command] 
+set command [subst $command]
 eval $command
 
 
 # It is extremely common to see the "list" command being used to properly
-# format values that are substituted into Tcl script templates.  There are 
+# format values that are substituted into Tcl script templates.  There are
 # several examples of this, below.
 
 
@@ -415,12 +422,12 @@ proc while {condition script} {
 
 # The "coroutine" command creates a separate call stack, along with a command
 # to enter that call stack. The "yield" command suspends execution in that
-# stack. 
+# stack.
 proc countdown {} {
 	#send something back to the initial "coroutine" command
 	yield
 
-	set count 3 
+	set count 3
 	while {$count > 1} {
 		yield [incr count -1]
 	}
@@ -428,12 +435,12 @@ proc countdown {} {
 }
 coroutine countdown1 countdown
 coroutine countdown2 countdown
-puts [countdown 1] ;# -> 2 
-puts [countdown 2] ;# -> 2 
-puts [countdown 1] ;# -> 1 
-puts [countdown 1] ;# -> 0 
+puts [countdown 1] ;# -> 2
+puts [countdown 2] ;# -> 2
+puts [countdown 1] ;# -> 1
+puts [countdown 1] ;# -> 0
 puts [coundown 1] ;# -> invalid command name "countdown1"
-puts [countdown 2] ;# -> 1 
+puts [countdown 2] ;# -> 1
 
 
 ```

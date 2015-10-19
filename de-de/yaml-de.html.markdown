@@ -1,10 +1,11 @@
 ---
 language: yaml
-filename: learnyaml.yaml
 contributors:
   - ["Adam Brenecki", "https://github.com/adambrenecki"]
 translators:
-	- ["Ruben M.", https://github.com/switchhax]
+  - ["Ruben M.", "https://github.com/switchhax"]
+filename: learnyaml-de.yaml
+lang: de-de
 ---
 
 YAML ist eine Sprache zur Datenserialisierung, die sofort von Menschenhand geschrieben und gelesen werden kann.

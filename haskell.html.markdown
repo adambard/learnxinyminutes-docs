@@ -209,13 +209,14 @@ foo 5 -- 75
 -- the expression on its right is applied as the parameter to the function on its left.
 
 -- before
-(even (fib 7)) -- false
-
--- after
-even . fib $ 7 -- false
+even (fib 7) -- false
 
 -- equivalently
 even $ fib 7 -- false
+
+-- composing functions
+even . fib $ 7 -- false
+
 
 ----------------------------------------------------
 -- 5. Type signatures
@@ -282,7 +283,7 @@ foldl (\x y -> 2*x + y) 4 [1,2,3] -- 43
 foldr (\x y -> 2*x + y) 4 [1,2,3] -- 16
 
 -- This is now the same as
-(2 * 3 + (2 * 2 + (2 * 1 + 4)))
+(2 * 1 + (2 * 2 + (2 * 3 + 4)))
 
 ----------------------------------------------------
 -- 7. Data Types

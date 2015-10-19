@@ -5,10 +5,11 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Suzane Sant Ana", "http://github.com/suuuzi"]
+    - ["Rodrigo Muniz", "http://github.com/muniz95"]
 lang: pt-br
 ---
 
-Brainfuck (em letras minúsculas, eceto no início de frases) é uma linguagem de
+Brainfuck (em letras minúsculas, exceto no início de frases) é uma linguagem de
 programação Turing-completa extremamente simples com apenas 8 comandos.
 
 ```
@@ -18,7 +19,7 @@ Brainfuck é representado por um vetor com 30 000 células inicializadas em zero
 e um ponteiro de dados que aponta para a célula atual.
 
 Existem 8 comandos:
-+ : Incrementa o vaor da célula atual em 1.
++ : Incrementa o valor da célula atual em 1.
 - : Decrementa o valor da célula atual em 1.
 > : Move o ponteiro de dados para a célula seguinte (célula à direita).
 < : Move o ponteiro de dados para a célula anterior (célula à esquerda).

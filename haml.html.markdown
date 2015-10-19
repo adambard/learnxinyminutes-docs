@@ -62,11 +62,11 @@ $ haml input_file.haml output_file.html
 %h1 Headline copy
 
 / To write multiline content, nest it instead
-%p 
+%p
   This is a lot of content that we could probably split onto two
   separate lines.
 
-/ 
+/
   You can escape html by using the ampersand and equals sign ( &= ). This
   converts html-sensitive characters (&, /, :) into their html encoded
   equivalents. For example
@@ -102,7 +102,7 @@ $ haml input_file.haml output_file.html
 / Inserting Ruby
 / -------------------------------------------
 
-/ 
+/
   To output a Ruby value as the contents of a tag, use an equals sign followed
   by the Ruby code
 
@@ -122,10 +122,35 @@ $ haml input_file.haml output_file.html
 
   if book do
     %p This is a book
+    
+/ Adding ordered / unordered list
+%ul
+  %li
+    =item1
+    =item2
 
 /
   Again, no need to add the closing tags to the block, even for the Ruby.
   Indentation will take care of that for you.
+
+/ -------------------------------------------
+/ Inserting Table with bootstrap classes
+/ -------------------------------------------
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Header 1
+      %th Header 2
+    
+    %tr
+      %td Value1
+      %td value2
+    
+  %tfoot
+    %tr
+      %td
+        Foot value
 
 
 / -------------------------------------------
@@ -141,7 +166,7 @@ $ haml input_file.haml output_file.html
 / -------------------------------------------
 
 /
-  Use the colon to define Haml filters, one example of a filter you can 
+  Use the colon to define Haml filters, one example of a filter you can
   use is :javascript, which can be used for writing inline js
 
 :javascript

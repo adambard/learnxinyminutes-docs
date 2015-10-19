@@ -22,7 +22,7 @@ and often automatically.
 ; Clojure is written in "forms", which are just
 ; lists of things inside parentheses, separated by whitespace.
 ;
-; The clojure reader  assumes that the first thing is a
+; The clojure reader assumes that the first thing is a
 ; function or macro to call, and the rest are arguments.
 
 ; The first call in a file should be ns, to set the namespace
@@ -263,6 +263,31 @@ keymap ; => {:a 1, :b 2, :c 3}
 (let [name "Urkel"]
   (print "Saying hello to " name)
   (str "Hello " name)) ; => "Hello Urkel" (prints "Saying hello to Urkel")
+
+
+; Use the threading macros (-> and ->>) to express transformations of
+; data more clearly.
+
+; The "Thread-first" macro (->) inserts into each form the result of
+; the previous, as the first argument (second item)
+(->  
+   {:a 1 :b 2} 
+   (assoc :c 3) ;=> (assoc {:a 1 :b 2} :c 3)
+   (dissoc :b)) ;=> (dissoc (assoc {:a 1 :b 2} :c 3) :b)
+
+; This expression could be written as:
+; (dissoc (assoc {:a 1 :b 2} :c 3) :b)
+; and evaluates to {:a 1 :c 3}
+
+; The double arrow does the same thing, but inserts the result of
+; each line at the *end* of the form. This is useful for collection
+; operations in particular:
+(->>
+   (range 10)
+   (map inc)     ;=> (map inc (range 10)
+   (filter odd?) ;=> (filter odd? (map inc (range 10))
+   (into []))    ;=> (into [] (filter odd? (map inc (range 10)))
+                 ; Result: [1 3 5 7 9]
 
 ; Modules
 ;;;;;;;;;;;;;;;

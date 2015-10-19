@@ -70,7 +70,7 @@ I'm in paragraph three!
 <!-- Should you ever want to insert an HTML <br /> tag, you can end a paragraph
 with two or more spaces and then begin a new paragraph. -->
 
-I end with two spaces (highlight me to see them).  
+I end with two spaces (highlight me to see them).
 
 There's a <br /> above me!
 
@@ -97,7 +97,7 @@ or
 + Item
 + One more item
 
-or 
+or
 
 - Item
 - Item
@@ -129,7 +129,7 @@ render the numbers in order, but this may not be a good idea -->
 <!-- There are even task lists. This creates HTML checkboxes. -->
 
 Boxes below without the 'x' are unchecked HTML checkboxes.
-- [ ] First task to complete. 
+- [ ] First task to complete.
 - [ ] Second task that needs done
 This checkbox below will be a checked HTML checkbox.
 - [x] This task has been completed
@@ -160,7 +160,7 @@ def foobar
 end
 \`\`\` <!-- here too, no backslashes, just ``` -->
 
-<-- The above text doesn't require indenting, plus Github will use syntax
+<!-- The above text doesn't require indenting, plus Github will use syntax
 highlighting of the language you specify after the ``` -->
 
 <!-- Horizontal rule (<hr />) -->
@@ -169,7 +169,7 @@ with or without spaces. -->
 
 ***
 ---
-- - - 
+- - -
 ****************
 
 <!-- Links -->
@@ -231,6 +231,12 @@ can be anything so long as they are unique. -->
 
 I want to type *this text surrounded by asterisks* but I don't want it to be
 in italics, so I do this: \*this text surrounded by asterisks\*.
+
+<!-- Keyboard keys -->
+<!-- In Github Flavored Markdown, you can use a <kbd> tag to represent keyboard keys -->
+
+Your computer crashed? Try sending a
+<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
 
 <!-- Tables -->
 <!-- Tables are only available in Github Flavored Markdown and are slightly

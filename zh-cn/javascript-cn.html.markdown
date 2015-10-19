@@ -341,7 +341,7 @@ var myFunc = myObj.myFunc;
 myFunc(); // = undefined
 
 // 相应的，一个函数也可以被指定为一个对象的方法，并且可以通过`this`访问
-// 这个对象的成员，即使在行数被定义时并没有依附在对象上。
+// 这个对象的成员，即使在函数被定义时并没有依附在对象上。
 var myOtherFunc = function(){
     return this.myString.toUpperCase();
 }
@@ -402,7 +402,7 @@ myObj.meaningOfLife; // = 42
 // 函数也可以工作。
 myObj.myFunc() // = "hello world!"
 
-// 当然，如果你要访问的成员在原型当中也没有定义的话，解释器就会去找原型的原型，以此类堆。
+// 当然，如果你要访问的成员在原型当中也没有定义的话，解释器就会去找原型的原型，以此类推。
 myPrototype.__proto__ = {
     myBoolean: true
 };
@@ -446,9 +446,6 @@ typeof myNumberObj; // = 'object'
 myNumber === myNumberObj; // = false
 if (0){
     // 这段代码不会执行，因为0代表假
-}
-if (Number(0)){
-    // 这段代码*会*执行，因为Number(0)代表真
 }
 
 // 不过，包装类型和内置类型共享一个原型，
