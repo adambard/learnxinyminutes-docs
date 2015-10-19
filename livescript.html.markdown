@@ -22,7 +22,8 @@ Feedback is always welcome, so feel free to reach me over at
 [@kurisuwhyte](https://twitter.com/kurisuwhyte) :)
 
 
-```coffeescript
+coffeescript
+------------
 # Just like its CoffeeScript cousin, LiveScript uses number symbols for
 # single-line comments.
 
@@ -30,8 +31,9 @@ Feedback is always welcome, so feel free to reach me over at
  Multi-line comments are written C-style. Use them if you want comments
  to be preserved in the JavaScript output.
  */
-```
-```coffeescript
+
+coffeescript
+------------
 # As far as syntax goes, LiveScript uses indentation to delimit blocks,
 # rather than curly braces, and whitespace to apply functions, rather
 # than parenthesis.
@@ -42,11 +44,10 @@ Feedback is always welcome, so feel free to reach me over at
 ########################################################################
 
 # Lack of value is defined by the keyword `void` instead of `undefined`
-void            # same as `undefined` but safer (can't be overridden)
+void ,same as `undefined` but safer (can't be overridden)
 
 # No valid value is represented by Null.
 null
-
 
 # The most basic actual value is the logical type:
 true
@@ -56,10 +57,9 @@ false
 on; off
 yes; no
 
-
 # Then you get numbers. These are double-precision floats like in JS.
 10
-0.4     # Note that the leading `0` is required
+0.4,Note that the leading `0` is required
 
 # For readability, you may use underscores and letter suffixes in a
 # number, and these will be ignored by the compiler.
@@ -67,7 +67,7 @@ yes; no
 
 
 # Strings are immutable sequences of characters, like in JS:
-"Christina"             # apostrophes are okay too!
+"Christina", apostrophes are okay too!
 """Multi-line
    strings
    are
@@ -76,7 +76,7 @@ yes; no
 
 # Sometimes you want to encode a keyword, the backslash notation makes
 # this easy:
-\keyword                # => 'keyword'
+\keyword # => 'keyword'
 
 
 # Arrays are ordered collections of values.
@@ -93,7 +93,7 @@ fruits = [ \apple, \orange, \pear ]
 fruits = <[ apple orange pear ]>
 
 # You can retrieve an item by their 0-based index:
-fruits[0]       # => "apple"
+fruits[0] # => "apple"
 
 # Objects are a collection of unordered key/value pairs, and a few other
 # things (more on that later).
@@ -107,19 +107,19 @@ person =
 person = {name: "Christina", likes: ["kittens", "and other cute stuff"]}
 
 # You can retrieve an item by their key:
-person.name     # => "Christina"
-person["name"]  # => "Christina"
+person.name    # => "Christina"
+person["name"] # => "Christina"
 
 
 # Regular expressions use the same syntax as JavaScript:
-trailing-space = /\s$/          # dashed-words become dashedWords
+trailing-space = /\s$/ # dashed-words become dashedWords
 
 # Except you can do multi-line expressions too!
 # (comments and whitespace just gets ignored)
 funRE = //
-        function\s+(.+)         # name
-        \s* \((.*)\) \s*        # arguments
-        { (.*) }                # body
+        function\s+(.+)    # name
+        \s* \((.*)\) \s*   # arguments
+        { (.*) }           # body
         //
 
 
@@ -133,7 +133,6 @@ funRE = //
 2 * 3   # => 6
 4 / 2   # => 2
 3 % 2   # => 1
-
 
 # Comparisons are mostly the same too, except that `==` is the same as
 # JS's `===`, where JS's `==` in LiveScript is `~=`, and `===` enables
@@ -185,7 +184,6 @@ two!
 # The `:=` operator is available to *reuse* a name from the parent
 # scope.
 
-
 # You can destructure arguments of a function to quickly get to
 # interesting values inside a complex data structure:
 tail = ([head, ...rest]) -> rest
@@ -194,7 +192,7 @@ tail [1, 2, 3]  # => [2, 3]
 # You can also transform the arguments using binary or unary
 # operators. Default arguments are also possible.
 foo = (a = 1, b = 2) -> a + b
-foo!    # => 3
+foo!  # => 3
 
 # You could use it to clone a particular argument to avoid side-effects,
 # for example:
@@ -205,23 +203,21 @@ a = { a: 1 }
 copy a, { b: 2 }        # => { a: 1, b: 2 }
 a                       # => { a: 1 }
 
-
 # A function may be curried by using a long arrow rather than a short
 # one:
 add = (left, right) --> left + right
 add1 = add 1
-add1 2          # => 3
+add1 2 # => 3
 
 # Functions get an implicit `it` argument, even if you don't declare
 # any.
 identity = -> it
-identity 1      # => 1
+identity 1  # => 1
 
 # Operators are not functions in LiveScript, but you can easily turn
 # them into one! Enter the operator sectioning:
 divide-by-two = (/ 2)
 [2, 4, 8, 16].map(divide-by-two) .reduce (+)
-
 
 # Not only of function application lives LiveScript, as in any good
 # functional language you get facilities for composing them:
@@ -233,11 +229,10 @@ double-minus-one = (- 1) . (* 2)
 double-minus-one = (* 2) >> (- 1)
 double-minus-one = (- 1) << (* 2)
 
-
 # And talking about flow of value, LiveScript gets the `|>` and `<|`
 # operators that apply a value to a function:
 map = (f, xs) --> xs.map f
-[1 2 3] |> map (* 2)            # => [2 4 6]
+[1 2 3] |> map (* 2)  # => [2 4 6]
 
 # You can also choose where you want the value to be placed, just mark
 # the place with an underscore (_):
@@ -251,7 +246,6 @@ div = (left, right) -> left / right
 div-by-two = div _, 2
 div-by-two 4      # => 2
 
-
 # Last, but not least, LiveScript has back-calls, which might help
 # with some callback-based code (though you should try more functional
 # approaches, like Promises):
@@ -262,7 +256,6 @@ console.log a + b
 
 # Same as:
 readFile 'foo', (a) -> readFile 'bar', (b) -> console.log a + b
-
 
 ########################################################################
 ## 4. Patterns, guards and control-flow
@@ -290,7 +283,6 @@ take = (n, [x, ...xs]) -->
                         | n == 0 => []
                         | _      => [x] ++ take (n - 1), xs
 
-
 ########################################################################
 ## 5. Comprehensions
 ########################################################################
@@ -308,7 +300,6 @@ evens       = [x for x in oneToTwenty when x % 2 == 0]
 # Object comprehension works in the same way, except that it gives you
 # back an object rather than an Array:
 copy = { [k, v] for k, v of source }
-
 
 ########################################################################
 ## 4. OOP
