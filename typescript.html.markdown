@@ -159,6 +159,10 @@ var tuple = pairToTuple({ item1:"hello", item2:"world"});
 // Including references to a definition file:
 /// <reference path="jquery.d.ts" />
 
+// Template Strings
+var name = 'Tyrone';
+var greeting = `Hi ${name}, how are you?`
+
 ```
 
 ## Further Reading
