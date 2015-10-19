@@ -6,7 +6,7 @@ contributors:
 translators:
     - ["David Hsieh", "http://github.com/deivuh"]
 lang: es-es    
-filename: learnr.r
+filename: learnr-es.r
 ---
 
 R es un lenguaje de computación estadística. Tiene muchas librerías para cargar
