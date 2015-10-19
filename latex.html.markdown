@@ -4,6 +4,7 @@ contributors:
     - ["Chaitanya Krishna Ande", "http://icymist.github.io"]
     - ["Colton Kohnke", "http://github.com/voltnor"]
     - ["Sricharan Chiruvolu", "http://sricharan.xyz"]
+    - ["Maithu Venkatesh", "http://github.com/maithuvenkatesh"]
 filename: learn-latex.tex
 ---
 
@@ -76,12 +77,17 @@ a line \\ needs \\ to \\ break \\ you add \textbackslash\textbackslash to
 the source code. \\ 
 
 \section{Lists}
-Lists are one of the easiest things to create in LaTeX! I need to go shopping
-tomorrow, so let's make a grocery list.
+Lists are one of the easiest things to create in LaTeX! Let's
+look at two types of lists you can create: bullet pointed lists
+and numbered lists.
+
+I need to go shopping tomorrow, so let's make a grocery list.
+
+The "enumerate" environment generates a numbered list.  
 \begin{enumerate} % This creates an "enumerate" environment.
   % \item tells the enumerate to increment
   \item Salad.
-  \item 27 watermelon.
+  \item 27 watermelons.
   \item A single jackrabbit.
   % we can even override the item number by using []
   \item[how many?] Medium sized squirt guns.
@@ -89,6 +95,12 @@ tomorrow, so let's make a grocery list.
   Not a list item, but still part of the enumerate.
 
 \end{enumerate} % All environments must have an end.
+
+The "itemize" environment generates a bullet pointed list.
+\begin{itemize}
+  \item A bullet.
+  \item Another bullet.
+\end{itemize}
 
 \section{Math}
 
