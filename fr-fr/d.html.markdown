@@ -3,6 +3,7 @@ language: D
 filename: learnd-fr.d
 contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]
+translators:
 	- ["Quentin Ladeveze", "aceawan.eu"]
 lang: fr-f
 ---
