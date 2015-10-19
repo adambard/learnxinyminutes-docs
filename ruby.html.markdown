@@ -28,9 +28,7 @@ You shouldn't either
 # First and foremost: Everything is an object.
 
 # Numbers are objects
-
 3.class #=> Fixnum
-
 3.to_s #=> "3"
 
 
@@ -52,7 +50,6 @@ You shouldn't either
 nil # Nothing to see here
 true # truth
 false # falsehood
-
 nil.class #=> NilClass
 true.class #=> TrueClass
 false.class #=> FalseClass
@@ -66,7 +63,6 @@ false.class #=> FalseClass
 2 != 1 #=> true
 
 # apart from false itself, nil is the only other 'falsey' value
-
 !nil   #=> true
 !false #=> true
 !0     #=> false
@@ -93,7 +89,6 @@ do_something() or log_error()
 
 
 # Strings are objects
-
 'I am a string'.class #=> String
 "I am a string too".class #=> String
 
@@ -130,7 +125,6 @@ x #=> 25
 
 # Note that assignment returns the value assigned
 # This means you can do multiple assignment:
-
 x = y = 10 #=> 10
 x #=> 10
 y #=> 10
@@ -163,7 +157,6 @@ status == :approved #=> false
 array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 
 # Arrays can contain different types of items
-
 [1, 'hello', false] #=> [1, "hello", false]
 
 # Arrays can be indexed
@@ -214,9 +207,7 @@ hash['number'] #=> 5
 hash['nothing here'] #=> nil
 
 # Since Ruby 1.9, there's a special syntax when using symbols as keys:
-
 new_hash = { defcon: 3, action: true }
-
 new_hash.keys #=> [:defcon, :action]
 
 # Check existence of keys and values in hash
@@ -227,7 +218,6 @@ new_hash.has_value?(3) #=> true
 # They share a lot of useful methods such as each, map, count, and more
 
 # Control structures
-
 if true
   'if statement'
 elsif false
@@ -350,7 +340,6 @@ ensure
 end
 
 # Functions
-
 def double(x)
   x * 2
 end
@@ -375,7 +364,6 @@ sum sum(3, 4), 5 #=> 12
 # yield
 # All methods have an implicit, optional block parameter
 # it can be called with the 'yield' keyword
-
 def surround
   puts '{'
   yield
@@ -504,7 +492,6 @@ Human.foo = 2 # 2
 Worker.foo # 2
 
 # Class instance variable is not shared by the class's descendants.
-
 class Human
   @bar = 0
 
@@ -531,7 +518,6 @@ end
 
 # Including modules binds their methods to the class instances
 # Extending modules binds their methods to the class itself
-
 class Person
   include ModuleExample
 end
@@ -546,7 +532,6 @@ Book.foo       # => 'foo'
 Book.new.foo   # => NoMethodError: undefined method `foo'
 
 # Callbacks are executed when including and extending a module
-
 module ConcernExample
   def self.included(base)
     base.extend(ClassMethods)
