@@ -5,6 +5,7 @@ lang: de-de
 contributors:
     - ["Max Yankov", "https://github.com/golergka"]
     - ["Darren Lin", "https://github.com/CogBear"]
+	- ["Michael Dähnert", "https://github.com/JaXt0r"]
 translators:
     - ["kultprok", "http://www.kulturproktologie.de"]
 filename: LearnBash-de.sh
@@ -68,6 +69,14 @@ ls -l # Liste alle Dateien und Unterverzeichnisse auf einer eigenen Zeile auf
 # Der grep-Befehl filtert den Input nach dem vorgegebenen Muster. So können wir alle
 # txt-Dateien im aktuellen Verzeichnis auflisten:
 ls -l | grep "\.txt"
+
+# Ergebnisse eines Befehls können an ein anderes Ausgabemedium als die Standardausgabe (stdout) übergeben werden.
+# Das Ergebnis der Auflistung wird in die Datei ergebnis.txt geschrieben.
+ls -l > ./ergebnis.txt
+
+# Ebenso ist es möglich Eingabewerte aus anderen Quellen als der Standardeingabe (stdin) zu erhalten.
+# Hier wird aus der datei ergebnis.txt ausgelesen
+grep "\.txt" < ./egebnis.txt
 
 # Befehle können innerhalb anderer Befehle mit $( ) erstetzt werden:
 # Der folgende Befehl zeigt die Anzahl aller Dateien und Unterverzeichnisse
