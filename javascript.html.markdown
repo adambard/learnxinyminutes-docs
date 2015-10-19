@@ -310,6 +310,12 @@ setTimeout(myFunction, 5000);
 // Note: setTimeout isn't part of the JS language, but is provided by browsers
 // and Node.js.
 
+// Another function provided by browsers is setInterval
+function myFunction(){
+    // this code will be called every 5 seconds
+}
+setInterval(myFunction(), 5000);
+
 // Function objects don't even have to be declared with a name - you can write
 // an anonymous function definition directly into the arguments of another.
 setTimeout(function(){
