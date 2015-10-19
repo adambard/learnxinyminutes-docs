@@ -32,7 +32,7 @@ import UIKit
 // TODO: Algo a fazer em breve
 // FIXME: Reparar este código
 
-// Em Swift 2, println e print foram juntadas num só método print. O print automaticamente acrescenta uma nova linha.
+// Em Swift 2, println e print foram unidos num só método print. O print automaticamente acrescenta uma nova linha.
 print("Hello, world") // println mudou para print
 print("Hello, world", appendNewLine: false) // imprimir sem acrescentar uma nova linha
 
@@ -51,8 +51,8 @@ let largeIntValue = 77_000 // 77000
 let label = "some text " + String(myVariable) // Casting
 let piText = "Pi = \(π), Pi 2 = \(π * 2)" // interpolação de Strings
 
-// Build Specific values
-// uses -D build configuration
+// Valores especificos à build
+// usam a configuração de build -D
 #if false
     print("Not printed")
     let buildValue = 3
@@ -62,21 +62,22 @@ let piText = "Pi = \(π), Pi 2 = \(π * 2)" // interpolação de Strings
 print("Build value: \(buildValue)") // Build value: 7
 
 /*
-    Optionals are a Swift language feature that either contains a value,
-    or contains nil (no value) to indicate that a value is missing.
-    A question mark (?) after the type marks the value as optional.
+    Optionals são um dos recursos de Swift, Optionals tanto podem conter
+    um valor ou conter nil (sem valor) que indica que não existe um valor.
+    Adicionar um ponto de exclamção (?) após definir o tipo declara
+    esse valor como um Optional.
 
-    Because Swift requires every property to have a value, even nil must be
-    explicitly stored as an Optional value.
+    Como Swift requere que todas as propriedades tenham um valor, até nil
+    tem que ser explicitamente guardado como um valor Optional.
 
-    Optional<T> is an enum.
+    Optional<T> é uma enumeração.
 */
-var someOptionalString: String? = "optional" // Can be nil
-// same as above, but ? is a postfix operator (syntax candy)
+var someOptionalString: String? = "optional" // Pode assumir o valor nil
+// Igual ao de cima, mas ? é um operando pósfixo (açúcar sintático)
 var someOptionalString2: Optional<String> = "optional"
 
 if someOptionalString != nil {
-    // I am not nil
+    // Não sou nil
     if someOptionalString!.hasPrefix("opt") {
         print("has the prefix")
     }
@@ -86,52 +87,54 @@ if someOptionalString != nil {
 someOptionalString = nil
 
 /*
-    Trying to use ! to access a non-existent optional value triggers a runtime
-    error. Always make sure that an optional contains a non-nil value before
-    using ! to force-unwrap its value.
+    Tentar usar ! para aceder a Optional com valor não existente, um nil,
+    causa em erro de execução.
+    É necessário ter sempre a certeza que um Optional não tem valor nil
+    antes de usar ! para fazer 'force-unwrap' ao seu valor.
 */
 
-// implicitly unwrapped optional
+// Optional implicitamente desembrulhado
 var unwrappedString: String! = "Value is expected."
-// same as above, but ! is a postfix operator (more syntax candy)
+// O mesmo de cima, mas ! é um operando pósfixo (mais açúcar sintático)
 var unwrappedString2: ImplicitlyUnwrappedOptional<String> = "Value is expected."
 
 if let someOptionalStringConstant = someOptionalString {
-    // has `Some` value, non-nil
+    // Tem um valor diferente de nil
     if !someOptionalStringConstant.hasPrefix("ok") {
-        // does not have the prefix
+        // Não tem o prefixo
     }
 }
 
-// Swift has support for storing a value of any type.
+// Swift tem suporte para guardar valores de qualquer tipo.
 // AnyObject == id
-// Unlike Objective-C `id`, AnyObject works with any value (Class, Int, struct, etc.)
+// Ao contrátio do `id` de Objective-C, AnyObject funciona com qualquer valor (Class, Int, struct, etc.)
 var anyObjectVar: AnyObject = 7
 anyObjectVar = "Changed value to a string, not good practice, but possible."
 
 /*
-    Comment here
+    Comentar aqui
 
     /*
-        Nested comments are also supported
+        Também é possível fazer comentários aninhados
     */
 */
 
 //
-// MARK: Collections
+// MARK: Coleções (Collections)
 //
 
 /*
-    Array and Dictionary types are structs. So `let` and `var` also indicate
-    that they are mutable (var) or immutable (let) when declaring these types.
+    Os tipos Array e Dictionary são structs e portanto `let` e `var` também
+    indicar se eles são mutáveis (var) or imutáveis (let) na altura em que
+    se declaram estes tipos.
 */
 
 // Array
 var shoppingList = ["catfish", "water", "lemons"]
 shoppingList[1] = "bottle of water"
-let emptyArray = [String]() // let == immutable
-let emptyArray2 = Array<String>() // same as above
-var emptyMutableArray = [String]() // var == mutable
+let emptyArray = [String]() // let == imutável
+let emptyArray2 = Array<String>() // mesmo de cima
+var emptyMutableArray = [String]() // var == mutável
 
 
 // Dictionary
@@ -140,13 +143,13 @@ var occupations = [
     "kaylee": "Mechanic"
 ]
 occupations["Jayne"] = "Public Relations"
-let emptyDictionary = [String: Float]() // let == immutable
-let emptyDictionary2 = Dictionary<String, Float>() // same as above
-var emptyMutableDictionary = [String: Float]() // var == mutable
+let emptyDictionary = [String: Float]() // let == imutável
+let emptyDictionary2 = Dictionary<String, Float>() // mesmo de cima
+var emptyMutableDictionary = [String: Float]() // var == mutável
 
 
 //
-// MARK: Control Flow
+// MARK: Flow Control
 //
 
 // for loop (array)
