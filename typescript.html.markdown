@@ -159,7 +159,7 @@ var tuple = pairToTuple({ item1:"hello", item2:"world"});
 // Including references to a definition file:
 /// <reference path="jquery.d.ts" />
 
-// Template Strings (strings that use backtics)
+// Template Strings (strings that use backticks)
 // String Intepolation with Template Strings
 var name = 'Tyrone';
 var greeting = `Hi ${name}, how are you?`
