@@ -1,10 +1,11 @@
 ---
 language: Matlab
+filename: learnmatlab.mat
 contributors:
     - ["mendozao", "http://github.com/mendozao"]
     - ["jamesscottbrown", "http://jamesscottbrown.com"]
     - ["Colton Kohnke", "http://github.com/voltnor"]
-
+    - ["Claudson Martins", "http://github.com/claudsonm"]
 ---
 
 MATLAB stands for MATrix LABoratory. It is a powerful numerical computing language commonly used in engineering and mathematics.
@@ -261,7 +262,7 @@ pcolor(A) % Heat-map of matrix: plot as grid of rectangles, coloured by value
 contour(A) % Contour plot of matrix
 mesh(A) % Plot as a mesh surface
 
-h = figure	% Create new figure object, with handle f
+h = figure	% Create new figure object, with handle h
 figure(h) % Makes the figure corresponding to handle h the current figure
 close(h) % close figure with handle h
 close all % close all open figure windows
@@ -329,7 +330,7 @@ double_input(6) % ans = 12
 % anonymous function. Useful when quickly defining a function to pass to
 % another function (eg. plot with fplot, evaluate an indefinite integral
 % with quad, find roots with fzero, or find minimum with fminsearch).
-% Example that returns the square of it's input, assigned to to the handle sqr:
+% Example that returns the square of it's input, assigned to the handle sqr:
 sqr = @(x) x.^2;
 sqr(10) % ans = 100
 doc function_handle % find out more
