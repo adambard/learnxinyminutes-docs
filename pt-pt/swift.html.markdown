@@ -17,7 +17,7 @@ Swift usa o compilador LLVM incluido no XCode 6+.
 
 O livro oficial [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) da Apple está agora disponivel via iBooks.
 
-Consulta também o [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/) da Apple, que contêm um tutorial completo em Swift.
+Consulta também o [guia de iniciação](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/) da Apple, que contêm um tutorial completo em Swift.
 
 ```swift
 // importar um módulo
@@ -87,7 +87,7 @@ if someOptionalString != nil {
 someOptionalString = nil
 
 /*
-    Tentar usar ! para aceder a Optional com valor não existente, um nil,
+    Tentar usar ! para aceder a Optional com valor não existente, ou seja, nil,
     causa em erro de execução.
     É necessário ter sempre a certeza que um Optional não tem valor nil
     antes de usar ! para fazer 'force-unwrap' ao seu valor.
@@ -124,9 +124,9 @@ anyObjectVar = "Changed value to a string, not good practice, but possible."
 //
 
 /*
-    Os tipos Array e Dictionary são structs e portanto `let` e `var` também
-    indicar se eles são mutáveis (var) or imutáveis (let) na altura em que
-    se declaram estes tipos.
+    Os tipos Array e Dictionary são structs e, portanto, `let` e `var`
+    também indicam se eles são mutáveis (var) or imutáveis (let)
+    na altura em que se declaram estes tipos.
 */
 
 // Array
@@ -149,7 +149,7 @@ var emptyMutableDictionary = [String: Float]() // var == mutável
 
 
 //
-// MARK: Flow Control
+// MARK: Controlo de Fluxo
 //
 
 // for loop (array)
@@ -168,27 +168,27 @@ for (key, value) in dict {
     print("\(key): \(value)")
 }
 
-// for loop (range)
+// ciclo for (limite)
 for i in -1...shoppingList.count {
     print(i)
 }
 shoppingList[1...2] = ["steak", "peacons"]
-// use ..< to exclude the last number
+// usar ..< para excluir o último número
 
-// while loop
+// ciclo while
 var i = 1
 while i < 1000 {
     i *= 2
 }
 
-// do-while loop
+// ciclo do-whie
 do {
     print("hello")
 } while 1 == 2
 
 // Switch
-// Very powerful, think `if` statements with syntax candy
-// They support String, object instances, and primitives (Int, Double, etc)
+// Muito poderoso, imagine `if`s com açúcar sintático
+// Funciona para String, instâncias de objectos e primitivas (Int, Double, etc.)
 let vegetable = "red pepper"
 switch vegetable {
 case "celery":
@@ -197,7 +197,7 @@ case "cucumber", "watercress":
     let vegetableComment = "That would make a good tea sandwich."
 case let localScopeValue where localScopeValue.hasSuffix("pepper"):
     let vegetableComment = "Is it a spicy \(localScopeValue)?"
-default: // required (in order to cover all possible input)
+default: // obrigatório (de forma a cobrir todos os possíveis inputs)
     let vegetableComment = "Everything tastes good in soup."
 }
 
