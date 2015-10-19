@@ -393,7 +393,7 @@ echo "RESET SLAVE;" | /usr/local/bin/mysql -u root -pmyrootpassword -h staging
 ### Additional Reading
 
 * [BSDNow's Crash Course on ZFS](http://www.bsdnow.tv/tutorials/zfs)
-* [FreeBSD Handbook on ZFS](https://wiki.freebsd.org/ZF://wiki.freebsd.org/ZFS)
+* [FreeBSD Handbook on ZFS](https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/zfs.html)
 * [BSDNow's Crash Course on ZFS](http://www.bsdnow.tv/tutorials/zfs)
 * [Oracle's Tuning Guide](http://www.oracle.com/technetwork/articles/servers-storage-admin/sto-recommended-zfs-settings-1951715.html)
 * [OpenZFS Tuning Guide](http://open-zfs.org/wiki/Performance_tuning)
