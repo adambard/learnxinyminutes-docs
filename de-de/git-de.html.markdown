@@ -5,6 +5,7 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:
     - ["kultprok", "http://www.kulturproktologie.de"]
+    - ["manuelgu", "http://github.com/manuelgu"]
 lang: de-de
 ---
 
@@ -42,7 +43,7 @@ Eine Versionskontrolle erfasst die Änderungen einer Datei oder eines Verzeichni
 
 ### Repository (Repo)
 
-Ein Satz von Dateien, Verzeichnisen, Historieneinträgen, Commits und Heads. Stell es dir wie eine Quellcode-Datenstruktur vor, unter anderem mit der Eigenschaft, dass alle *Elemente* dir Zugriff auf die Revisionshistorie geben.
+Ein Satz von Dateien, Verzeichnissen, Historie Einträgen, Commits und Heads. Stell es dir wie eine Quellcode-Datenstruktur vor, unter anderem mit der Eigenschaft, dass alle *Elemente* dir Zugriff auf die Revisionshistorie geben.
 
 Ein Repository besteht in Git aus dem .git-Verzeichnis und dem Arbeitsverzeichnis.
 
@@ -57,11 +58,11 @@ Dies sind die Verzeichnisse und Dateien in deinem Repository.
 
 ### Index (Teil des .git-Verzeichnisses)
 
-Der Index ist die die Staging-Area von Git. Es ist im Grunde eine Ebene, die Arbeitsverzeichnis vom Repository trennt. Sie gibt Entwicklern mehr Einfluss darüber, was ins Git-Repository eingeht.
+Der Index ist die die Staging-Area von Git. Es ist im Grunde eine Ebene, die das Arbeitsverzeichnis vom Repository trennt. Sie gibt Entwicklern mehr Einfluss darüber, was ins Git-Repository eingeht.
 
 ### Commit
 
-Ein Commit ist ein Schnappschuss von Uderungen in deinem Arbeitsverzeichnis. Wenn du zum Beispiel 5 Dateien hinzugefügt und 2 andere entfernt hast, werden diese Änderungen im Commit (Schnappschuss) enthalten sein. Dieser Commit kann dann in andere Repositorys gepusht werden. Oder nicht!
+Ein Commit ist ein Schnappschuss von Änderungen in deinem Arbeitsverzeichnis. Wenn du zum Beispiel 5 Dateien hinzugefügt und 2 andere entfernt hast, werden diese Änderungen im Commit (Schnappschuss) enthalten sein. Dieser Commit kann dann in andere Repositorys gepusht werden.
 
 ### Branch
 
@@ -97,7 +98,7 @@ Hiermit werden Einstellungen vorgenommen. Dies kann das Repository, das System s
 $ git config --global user.email
 $ git config --global user.name
 
-$ git config --global user.email "MyEmail@Zoho.com"
+$ git config --global user.email "mymail@provider.com"
 $ git config --global user.name "My Name"
 ```
 
@@ -127,7 +128,7 @@ Zeigt die Unterschiede zwischen Index (im Grunde dein Arbeitsverzeichnis/-reposi
 
 
 ```bash
-# Zeigt den Branch, nicht-verfolgte Dateien, Uderungen und andere Unterschiede an
+# Zeigt den Branch, nicht-verfolgte Dateien, Änderungen und andere Unterschiede an
 $ git status
 
 # Anderes Wissenswertes über git status anzeigen
@@ -251,7 +252,7 @@ Zeige Commits für das Repository an.
 # Zeige alle Commits
 $ git log
 
-# Zeige die Anzahl n an Commits
+# Zeige die Anzahl an Commits
 $ git log -n 10
 
 # Zeige nur Merges an
@@ -263,10 +264,10 @@ $ git log --merges
 *Merge*, also verschmelze, alle Änderungen von externen Commits in den aktuellen Branch.
 
 ```bash
-# Merge den angegebenen Branch in den aktuellen.
+# Merge den angegebenen Branch in den aktuellen
 $ git merge branchName
 
-# Erstelle immer einen Merge-Commit.
+# Erstelle immer einen Merge-Commit
 $ git merge --no-ff branchName
 ```
 
@@ -288,16 +289,16 @@ $ git mv -f myFile existingFile
 
 ### pull
 
-Führe einen Pull, zieht alle Daten, eines Repositorys und f?? einen Merge mit einem anderen Branch durch.
+Führe einen Pull, zieht alle Daten, eines Repositorys und führe einen Merge mit einem anderen Branch durch.
 
 ```bash
 # Update deines lokalen Repos, indem ein Merge der neuen Uderungen
-# von den remote-liegenden "origin"- und "master"-Branches durchgef?? wird.
+# von den remote-liegenden "origin"- und "master"-Branches durchgeführt wird.
 # git pull <remote> <branch>
 # git pull => impliziter Verweis auf origin und master
 $ git pull origin master
 
-# F?? einen Merge von Uderungen eines remote-Branch und ein Rebase
+# Führt einen Merge von Änderungen eines remote-Branch und ein Rebase
 # des Branch-Commits im lokalen Repo durch. Wie: pull <remote> <branch>, git rebase <branch>"
 $ git pull origin master --rebase
 ```
@@ -316,7 +317,7 @@ $ git push origin master
 
 ### rebase (mit Vorsicht einsetzen) 
 
-Nimm alle Änderungen, die in einem Branch durch Commits vorgenommen wurden, und übertrage sie auf einen anderen Branch. Achtung: Führe keinen Rebase von Commits durch, die auf ein öffentliches Repo gepusht wurden.
+Nimm alle Änderungen, die in einem Branch durch Commits vorgenommen wurden, und übertrage sie auf einen anderen Branch. Achtung: Führe keinen Rebase von Commits durch, die auf ein öffentliches Repository gepusht wurden.
 
 ```bash
 # Rebase "experimentBranch" in den "master"-Branch
@@ -326,7 +327,7 @@ $ git rebase master experimentBranch
 
 [Weiterführende Informationen](http://git-scm.com/book/en/Git-Branching-Rebasing)
 
-### reset (mit Vorsicht einsetzen)
+### reset (mit Vorsicht einsetzen!)
 
 Setze den aktuellen HEAD auf den angegebenen Zustand zurück. So können Merges, Pulls, Commits, Hinzufügungen und andere Änderungen rückgängig gemacht werden. Es ist ein hervorragender Befehl, aber auch sehr gefährlich, wenn du nicht weißt, was du tust.
 
@@ -337,7 +338,7 @@ $ git reset
 # Setze die Staging-Area zurück, um dem letzten Commit zu entsprechen und überschreibe das Arbeitsverzeichnis
 $ git reset --hard
 
-# Bewegt die Spitze des Branches zu dem angegebenen Commit (das Verzeichnis bleibt unber??)
+# Bewegt die Spitze des Branches zu dem angegebenen Commit (das Verzeichnis bleibt unberührt)
 # Alle Uderungen bleiben im Verzeichnis erhalten
 $ git reset 31f2bb1
 
@@ -356,7 +357,7 @@ Das Gegenteil von *git add*. *git rm* löscht Dateien vom Arbeitsverzeichnis.
 $ git rm HelloWorld.c
 
 # Entferne eine Datei aus einem verschachtelten Verzeichnis
-$ git rm /pather/to/the/file/HelloWorld.c
+$ git rm /path/to/the/file/HelloWorld.c
 ```
 
 ## Weiterführende Informationen
