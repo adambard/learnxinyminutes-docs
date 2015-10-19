@@ -72,9 +72,8 @@ void main() {
 }
 ```
 On peut définir de nouveaux types avec les mots-clés `struct`, `class`,
-`union` et `enum`. Les structures et les unions sont passées au fonctions par
-valeurs (elle sont copiées) et les classes sont passées par référence. De plus,
-On peut utiliser les templates pour rendre toutes ces abstractions génériques.
+`union` et `enum`. Ces types sont passés au fonction par valeur (ils sont copiés)
+De plus, on peut utiliser les templates pour rendre toutes ces abstractions génériques.
 
 ```d
 // Ici, 'T' est un paramètre de type. Il est similaire au <T> de C++/C#/Java.
