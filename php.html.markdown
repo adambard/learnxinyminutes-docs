@@ -452,6 +452,16 @@ function parameters() {
 
 parameters('Hello', 'World'); // Hello | 0 - Hello | 1 - World |
 
+// Since PHP 5.6 you can get a variable number of arguments
+function variable($word, ...$list) {
+	echo $word . " || ";
+	foreach ($list as $item) {
+		echo $item . ' | ';
+	}
+}
+
+variable("Separate", "Hello", "World") // Separate || Hello | World | 
+
 /********************************
  * Includes
  */
