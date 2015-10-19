@@ -69,12 +69,10 @@ Drawbacks of JSON include lack of type definition and some sort of DTD.
 // The JSON.parse() method parses a string as JSON, optionally transforming the value produced by parsing.
 
 // Sintax:
-// JSON.parse(text[, reviver])
+// JSON.parse(text)
 
 //Parameters
 //text: The string to parse as JSON.
-
-//reviver Optional: If a function, prescribes how the value originally produced by parsing is transformed, before being returned.
 
 //Returns
 //Returns the Object corresponding to the given JSON text.
