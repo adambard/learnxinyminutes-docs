@@ -1,10 +1,10 @@
 ---
 language: D
-filename: learnd.d
+filename: learnd-fr.d
 contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]
 	- ["Quentin Ladeveze", "aceawan.eu"]
-lang: fr
+lang: fr-f
 ---
 
 ```d
