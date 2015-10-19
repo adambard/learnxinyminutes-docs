@@ -72,11 +72,6 @@ void main() {
     }
 }
 ```
-
-We can define new types with `struct`, `class`, `union`, and `enum`. Structs and unions
-are passed to functions by value (i.e. copied) and classes are passed by reference. Futhermore,
-we can use templates to parameterize all of these on both types and values!
-
 On peut définir de nouveaux types avec les mots-clés `struct`, `class`,
 `union` et `enum`. Les structures et les unions sont passées au fonctions par
 valeurs (elle sont copiées) et les classes sont passées par référence. De plus,
@@ -204,22 +199,6 @@ void main() {
     writefln("Later: data = %d, str = %s", mc.data, mc.other);
 }
 ```
-
-With properties, we can add any amount of logic to
-our getter and setter methods, and keep the clean syntax of
-accessing members directly!
-
-Other object-oriented goodies at our disposal
-include `interface`s, `abstract class`es,
-and `override`ing methods. D does inheritance just like Java:
-Extend one class, implement as many interfaces as you please.
-
-We've seen D's OOP facilities, but let's switch gears. D offers
-functional programming with first-class functions, `pure`
-functions, and immutable data. In addition, all of your favorite
-functional algorithms (map, filter, reduce and friends) can be
-found in the wonderful `std.algorithm` module!
-
 Avec les propriétés, on peut constuire nos setters et nos getters
 comme on le souhaite, tout en gardant un syntaxe très propre,
 comme si on accédait directement à des membres de la classe.
