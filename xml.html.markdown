@@ -3,6 +3,7 @@ language: xml
 filename: learnxml.xml
 contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
+  - ["Rodrigo Russo", "https://github.com/rodrigozrusso"]
 ---
 
 XML is a markup language designed to store and transport data.
@@ -126,3 +127,8 @@ With this tool, you can check the XML data outside the application logic.
   </book>
 </bookstore>
 ```
+
+### More Resources
+
++ [W3 Extensible Markup Language](http://www.w3.org/XML/)
++ [W3 Schools](http://www.w3schools.com/xml/)
