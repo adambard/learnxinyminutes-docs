@@ -4,7 +4,7 @@ filename: learnd-fr.d
 contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]
 translators:
-	- ["Quentin Ladeveze", "aceawan.eu"]
+    - ["Quentin Ladeveze", "aceawan.eu"]
 lang: fr-fr
 ---
 
@@ -22,8 +22,8 @@ void main(string[] args) {
 
 Si vous êtes comme moi et que vous passez beaucoup trop de temps sur internet, il y a
 de grandes chances pour que vous ayez déjà entendu parler du [D](http://dlang.org/).
-D est un langage de programmation moderne, généraliste, multi-paradigme qui contient
-des fonctionnalités aussi bien de bas-niveau que haut-niveau.
+D est un langage de programmation moderne, généraliste, multi-paradigmes qui contient
+des fonctionnalités aussi bien de bas niveau que de haut niveau.
 
 D est activement développé par de nombreuses personnes très intelligents, guidées par
 [Walter Bright](https://fr.wikipedia.org/wiki/Walter_Bright))) et
@@ -34,18 +34,17 @@ Après cette petite introduction, jetons un coup d'oeil à quelques exemples.
 import std.stdio;
 
 void main() {
-
-	//Les conditions et les boucles sont classiques.
+    //Les conditions et les boucles sont classiques.
     for(int i = 0; i < 10000; i++) {
         writeln(i);
     }
 
-	// On peut utiliser auto pour inférer automatiquement le
-	// type d'une variable.
+    // On peut utiliser auto pour inférer automatiquement le
+    // type d'une variable.
     auto n = 1;
 
     // On peut faciliter la lecture des valeurs numériques
-	// en y insérant des `_`.
+    // en y insérant des `_`.
     while(n < 10_000) {
         n += n;
     }
