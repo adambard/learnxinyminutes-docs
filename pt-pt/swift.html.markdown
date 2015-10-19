@@ -203,54 +203,54 @@ default: // obrigatório (de forma a cobrir todos os possíveis inputs)
 
 
 //
-// MARK: Functions
+// MARK: Funções
 //
 
-// Functions are a first-class type, meaning they can be nested
-// in functions and can be passed around
+// Funções são tipos de primeira classe, o que significa que podem ser
+// aninhadas dentro de outras funções e passadas como argumento
 
-// Function with Swift header docs (format as reStructedText)
+// Função em Swift com documentação no header
 
 /**
-    A greet operation
+    Função de cumprimento.
 
-    - A bullet in docs
-    - Another bullet in the docs
+    - Um ponto em documentação
+    - Outro ponto na documentação
 
-    :param: name A name
-    :param: day A day
-    :returns: A string containing the name and day value.
+    :param: nome Um nome
+    :param: dia Um dia
+    :returns: Uma string com um cumprimento contendo o nome e o dia.
 */
-func greet(name: String, day: String) -> String {
-    return "Hello \(name), today is \(day)."
+func greet(nome: String, dia: String) -> String {
+    return "Hello \(nome), today is \(dia)."
 }
 greet("Bob", "Tuesday")
 
-// similar to above except for the function parameter behaviors
-func greet2(#requiredName: String, externalParamName localParamName: String) -> String {
-    return "Hello \(requiredName), the day is \(localParamName)"
+// Semelhante ao método de cima excepto ao comportamento dos argumentos
+func greet2(#nomeObrigatório: String, nomeArgumentoExterno nomeArgumentoLocal: String) -> String {
+    return "Hello \(nomeObrigatório), the day is \(nomeArgumentoLocal)"
 }
-greet2(requiredName:"John", externalParamName: "Sunday")
+greet2(nomeObrigatório:"John", nomeArgumentoExterno: "Sunday")
 
-// Function that returns multiple items in a tuple
+// Função que devolve vários itens num tuplo
 func getGasPrices() -> (Double, Double, Double) {
     return (3.59, 3.69, 3.79)
 }
 let pricesTuple = getGasPrices()
 let price = pricesTuple.2 // 3.79
-// Ignore Tuple (or other) values by using _ (underscore)
+// Ignorar tuplos ou outros valores usando _ (underscore)
 let (_, price1, _) = pricesTuple // price1 == 3.69
 print(price1 == pricesTuple.1) // true
 print("Gas price: \(price)")
 
-// Variadic Args
+// Argumentos variáveis
 func setup(numbers: Int...) {
-    // its an array
+    // é um array
     let number = numbers[0]
     let argCount = numbers.count
 }
 
-// Passing and returning functions
+// Passar e devolver funções
 func makeIncrementer() -> (Int -> Int) {
     func addOne(number: Int) -> Int {
         return 1 + number
@@ -260,7 +260,7 @@ func makeIncrementer() -> (Int -> Int) {
 var increment = makeIncrementer()
 increment(7)
 
-// pass by ref
+// Passar por referência (inout)
 func swapTwoInts(inout a: Int, inout b: Int) {
     let tempA = a
     a = b
