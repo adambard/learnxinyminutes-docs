@@ -481,7 +481,7 @@ exemplo30() {
   }
 }
 
-// Programas tem apenas um ponto de entrada na função principal.
+// Programas possuem apenas um ponto de entrada na função principal.
 // Não se espera nada para ser executado no escopo externo antes de 
 // um programa rodar com o que estiver em sua função principal.
 // Isso ajuda num carregamento mais rápido e até mesmo em um lazy loading apenas do que
