@@ -14,6 +14,7 @@ contributors:
   - ["Rahil Momin", "https://github.com/iamrahil"]
   - ["Gabriel Halley", "https://github.com/ghalley"]
   - ["Persa Zula", "http://persazula.com"]
+  - ["Amy Chang", "https://github.com/achange-in-grovo"]
 ---
 
 ```ruby
