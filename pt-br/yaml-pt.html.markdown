@@ -2,6 +2,8 @@
 language: yaml
 filename: learnyaml.yaml
 contributors:
+  - ["Adam Brenecki", "https://github.com/adambrenecki"]
+translators:
   - ["Rodrigo Russo", "https://github.com/rodrigozrusso"]
 ---
 
@@ -133,7 +135,7 @@ set:
 
 # Como Python, são apenas conjuntos de mapas com valors nulos; o acima é equivalente a:
 set2:
-    item1: null
-    item2: null
-    item3: null
+    item1: nulo
+    item2: nulo
+    item3: nulo
 ```
