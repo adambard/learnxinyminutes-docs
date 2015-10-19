@@ -291,12 +291,9 @@ myFunction("foo"); // = "FOO"
 // Note that the value to be returned must start on the same line as the
 // `return` keyword, otherwise you'll always return `undefined` due to
 // automatic semicolon insertion. Watch out for this when using Allman style.
-function myFunction()
-{
+function myFunction(){
     return // <- semicolon automatically inserted here
-    {
-        thisIsAn: 'object literal'
-    }
+    {thisIsAn: 'object literal'}
 }
 myFunction(); // = undefined
 
