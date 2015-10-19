@@ -25,11 +25,6 @@ de grandes chances pour que vous ayez déjà entendu parler du [D](http://dlang.
 D est un langage de programmation moderne, généraliste, multi-paradigme qui contient
 des fonctionnalités aussi bien de bas-niveau que haut-niveau.
 
-D is actively developed by a large group of super-smart people and is spearheaded by
-[Walter Bright](https://en.wikipedia.org/wiki/Walter_Bright) and
-[Andrei Alexandrescu](https://en.wikipedia.org/wiki/Andrei_Alexandrescu).
-With all that out of the way, let's look at some examples!
-
 D est activement développé par de nombreuses personnes très intelligents, guidées par
 [Walter Bright](https://fr.wikipedia.org/wiki/Walter_Bright))) et
 [Andrei Alexandrescu](https://fr.wikipedia.org/wiki/Andrei_Alexandrescu).
