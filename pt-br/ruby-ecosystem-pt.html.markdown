@@ -47,7 +47,7 @@ As três principais versões do Ruby em uso são:
 * 2.0.0 - Lançada em Fevereiro de 2013. Maioria das principais bibliotecas e 
   suporte a frameworks 2.0.0.
 * 1.9.3 - Lançada em Outubro de 2011. Está é a versão mais utilizada pelos rubistas
-  atualmente. Também [aposentada](https://www.ruby-lang.org/en/news/2015/02/23/support-for-ruby-1-9-3-has-ended/)
+  atualmente. Também [aposentada](https://www.ruby-lang.org/en/news/2015/02/23/support-for-ruby-1-9-3-has-ended/).
 * 1.8.7 - O Ruby 1.8.7 foi
   [aposentado](http://www.ruby-lang.org/en/news/2013/06/30/we-retire-1-8-7/).
 
@@ -72,7 +72,7 @@ Muito maduras/compatíveis:
   outros rubies mantêm compatibilidade com a MRI (veja [RubySpec](#rubyspec) abaixo).
 * [JRuby](http://jruby.org/) - Escrita em Java e Ruby, esta implementação
   robusta é um tanto rápida. Mais importante ainda, o ponto forte do JRuby é a
-  interoperabilidade com JVM/Java, aproveitando ferramentas JVM, projets, e
+  interoperabilidade com JVM/Java, aproveitando ferramentas JVM, projetos, e
   linguagens existentes.
 * [Rubinius](http://rubini.us/) - Escrita principalmente no próprio Ruby, com
   uma VM bytecode em C++. Também madura e rápida. Por causa de sua implementação
@@ -81,7 +81,7 @@ Muito maduras/compatíveis:
 Medianamente maduras/compatíveis:
 
 * [Maglev](http://maglev.github.io/) - Construída em cima da Gemstone, uma
-  máquina virtual Smalltalk. Smalltalk possui algumas ferramentas impressionantes,
+  máquina virtual Smalltalk. O Smalltalk possui algumas ferramentas impressionantes,
   e este projeto tenta trazer isso para o desenvolvimento Ruby.
 * [RubyMotion](http://www.rubymotion.com/) - Traz o Ruby para o desenvolvimento iOS.
 
@@ -94,7 +94,7 @@ Pouco maduras/compatíveis:
   o trabalho no IronRuby parece ter parado desde que a Microsoft retirou seu apoio.
 
 Implementações Ruby podem ter seus próprios números de lançamento, mas elas
-sempre focam uma versão específica da MRI para compatibilidade. Diversas
+sempre focam em uma versão específica da MRI para compatibilidade. Diversas
 implementações têm a capacidade de entrar em diferentes modos (1.8 ou 1.9, por
 exemplo) para especificar qual versão da MRI focar.
 
@@ -133,10 +133,10 @@ Testes são uma grande parte da cultura do Ruby. O Ruby vem com o seu próprio
 framework de teste de unidade chamado minitest (ou TestUnit para Ruby versão 1.8.x). 
 Existem diversas bibliotecas de teste com diferentes objetivos.
 
-* [TestUnit](http://ruby-doc.org/stdlib-1.8.7/libdoc/test/unit/rdoc/Test/Unit.html) 
-  - Framework de testes "Unit-style" para o Ruby 1.8 (built-in)
-* [minitest](http://ruby-doc.org/stdlib-2.0.0/libdoc/minitest/rdoc/MiniTest.html) 
-  - Framework de testes para o Ruby 1.9/2.0 (built-in)
+* [TestUnit](http://ruby-doc.org/stdlib-1.8.7/libdoc/test/unit/rdoc/Test/Unit.html) - 
+  Framework de testes "Unit-style" para o Ruby 1.8 (built-in)
+* [minitest](http://ruby-doc.org/stdlib-2.0.0/libdoc/minitest/rdoc/MiniTest.html) - 
+  Framework de testes para o Ruby 1.9/2.0 (built-in)
 * [RSpec](http://rspec.info/) - Um framework de testes que foca na expressividade
 * [Cucumber](http://cukes.info/) - Um framework de testes BDD que analisa testes Gherkin formatados
 
