@@ -314,7 +314,7 @@ setTimeout(myFunction, 5000);
 function myFunction(){
     // this code will be called every 5 seconds
 }
-setInterval(myFunction(), 5000);
+setInterval(myFunction, 5000);
 
 // Function objects don't even have to be declared with a name - you can write
 // an anonymous function definition directly into the arguments of another.
