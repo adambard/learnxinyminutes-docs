@@ -195,11 +195,11 @@ foo 5 -- 15
 -- function composition
 -- the (.) function chains functions together.
 -- For example, here foo is a function that takes a value. It adds 10 to it,
--- multiplies the result of that by 5, and then returns the final value.
-foo = (*5) . (+10)
+-- multiplies the result of that by 4, and then returns the final value.
+foo = (*4) . (+10)
 
--- (5 + 10) * 5 = 75
-foo 5 -- 75
+-- (5 + 10) * 4 = 75
+foo 5 -- 60
 
 -- fixing precedence
 -- Haskell has another operator called `$`. This operator applies a function 
