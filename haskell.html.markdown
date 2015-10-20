@@ -198,7 +198,7 @@ foo 5 -- 15
 -- multiplies the result of that by 4, and then returns the final value.
 foo = (*4) . (+10)
 
--- (5 + 10) * 4 = 40
+-- (5 + 10) * 4 = 60
 foo 5 -- 60
 
 -- fixing precedence
