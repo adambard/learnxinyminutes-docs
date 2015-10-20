@@ -16,7 +16,7 @@ con Java para aplicaciones más complejas. Debido a su integracion estrecha con 
 web y soporte por defecto de los navegadores modernos se ha vuelto mucho más común 
 para front-end que Java.
 
-JavaScript no sólo se limita a los navegadores web, aunque: Node.js, Un proyecto que proporciona un entorno de ejecución independiente para el motor V8 de Google Chrome, se está volviendo más y más popular.
+Aunque JavaScript no sólo se limita a los navegadores web: Node.js, Un proyecto que proporciona un entorno de ejecución independiente para el motor V8 de Google Chrome, se está volviendo más y más popular.
 
 ¡La retroalimentación es bienvenida! Puedes encontrarme en: 
 [@adambrenecki](https://twitter.com/adambrenecki), o
@@ -124,7 +124,7 @@ undefined; // usado para indicar que un valor no está presente actualmente
            // (aunque undefined es un valor en sí mismo)
 
 // false, null, undefined, NaN, 0 y "" es false; todo lo demás es true.
-// Note que 0 is false y "0" es true, a pesar de que 0 == "0".
+// Note que 0 es false y "0" es true, a pesar de que 0 == "0".
 // Aunque 0 === "0" sí es false.
 
 ///////////////////////////////////
@@ -477,9 +477,6 @@ typeof miNumeroObjeto; // = 'object'
 miNumero === miNumeroObjeyo; // = false
 if (0){
     // Este código no se ejecutara porque 0 es false.
-}
-if (Number(0)){
-    // Este código sí se ejecutara, puesto que Number(0) es true.
 }
 
 // Aún así, los objetos que envuelven y los prototipos por defecto comparten

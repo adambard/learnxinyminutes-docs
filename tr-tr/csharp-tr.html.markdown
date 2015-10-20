@@ -234,7 +234,8 @@ on a new line! ""Wow!"", the masses cried";
             // Üçlü operatörler
             // Basit bir if/else ifadesi şöyle yazılabilir
             // <koşul> ? <true> : <false>
-            string isTrue = (true) ? "True" : "False";
+            int toCompare = 17;
+            string isTrue = toCompare == 17 ? "True" : "False";
 
             // While döngüsü
             int fooWhile = 0;

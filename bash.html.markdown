@@ -51,7 +51,7 @@ echo $Variable
 echo "$Variable"
 echo '$Variable'
 # When you use the variable itself — assign it, export it, or else — you write
-# its name without $. If you want to use variable's value, you should use $.
+# its name without $. If you want to use the variable's value, you should use $.
 # Note that ' (single quote) won't expand the variables!
 
 # String substitution in variables
@@ -70,11 +70,11 @@ echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"}
 
 # Builtin variables:
 # There are some useful builtin variables, like
-echo "Last program return value: $?"
+echo "Last program's return value: $?"
 echo "Script's PID: $$"
-echo "Number of arguments: $#"
-echo "Scripts arguments: $@"
-echo "Scripts arguments separated in different variables: $1 $2..."
+echo "Number of arguments passed to script: $#"
+echo "All arguments passed to script: $@"
+echo "Script's arguments separated into different variables: $1 $2..."
 
 # Reading a value from input:
 echo "What's your name?"
@@ -90,17 +90,26 @@ else
     echo "Your name is your username"
 fi
 
+# NOTE: if $Name is empty, bash sees the above condition as:
+if [ -ne $USER ]
+# which is invalid syntax
+# so the "safe" way to use potentially empty variables in bash is:
+if [ "$Name" -ne $USER ] ...
+# which, when $Name is empty, is seen by bash as:
+if [ "" -ne $USER ] ...
+# which works as expected
+
 # There is also conditional execution
 echo "Always executed" || echo "Only executed if first command fails"
 echo "Always executed" && echo "Only executed if first command does NOT fail"
 
 # To use && and || with if statements, you need multiple pairs of square brackets:
-if [ $Name == "Steve" ] && [ $Age -eq 15 ]
+if [ "$Name" == "Steve" ] && [ "$Age" -eq 15 ]
 then
     echo "This will run if $Name is Steve AND $Age is 15."
 fi
 
-if [ $Name == "Daniya" ] || [ $Name == "Zach" ]
+if [ "$Name" == "Daniya" ] || [ "$Name" == "Zach" ]
 then
     echo "This will run if $Name is Daniya OR Zach."
 fi
@@ -108,8 +117,8 @@ fi
 # Expressions are denoted with the following format:
 echo $(( 10 + 5 ))
 
-# Unlike other programming languages, bash is a shell — so it works in a context
-# of current directory. You can list files and directories in the current
+# Unlike other programming languages, bash is a shell so it works in the context
+# of a current directory. You can list files and directories in the current
 # directory with the ls command:
 ls
 
@@ -252,7 +261,7 @@ grep "^foo.*bar$" file.txt
 grep -c "^foo.*bar$" file.txt
 # if you literally want to search for the string,
 # and not the regex, use fgrep (or grep -F)
-fgrep "^foo.*bar$" file.txt 
+fgrep "^foo.*bar$" file.txt
 
 
 # Read Bash shell builtins documentation with the bash 'help' builtin:

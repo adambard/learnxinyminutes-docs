@@ -5,20 +5,21 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Leo Rudberg" , "http://github.com/LOZORD"]
     - ["Betsy Lorton" , "http://github.com/schbetsy"]
+    - ["Bruno Volcov", "http://github.com/volcov"]
 filename: LearnGit.txt
 ---
 
-Git is a distributed version control and source code management system. 
+Git is a distributed version control and source code management system.
 
-It does this through a series of snapshots of your project, and it works 
-with those snapshots to provide you with functionality to version and 
+It does this through a series of snapshots of your project, and it works
+with those snapshots to provide you with functionality to version and
 manage your source code.
 
 ## Versioning Concepts
 
 ### What is version control?
 
-Version control is a system that records changes to a file, or set of files, over time.
+Version control is a system that records changes to a file(s), over time.
 
 ### Centralized Versioning VS Distributed Versioning
 
@@ -42,8 +43,9 @@ Version control is a system that records changes to a file, or set of files, ove
 
 ### Repository
 
-A set of files, directories, historical records, commits, and heads. Imagine it as a source code data structure,
-with the attribute that each source code "element" gives you access to its revision history, among other things.
+A set of files, directories, historical records, commits, and heads. Imagine it
+as a source code data structure, with the attribute that each source code
+"element" gives you access to its revision history, among other things.
 
 A git repository is comprised of the .git directory & working tree.
 
@@ -54,32 +56,38 @@ The .git directory contains all the configurations, logs, branches, HEAD, and mo
 
 ### Working Tree (component of repository)
 
-This is basically the directories and files in your repository. It is often referred to
-as your working directory.
+This is basically the directories and files in your repository. It is often
+referred to as your working directory.
 
 ### Index (component of .git dir)
 
 The Index is the staging area in git. It's basically a layer that separates your working tree
-from the Git repository. This gives developers more power over what gets sent to the Git
-repository.
+from the Git repository. This gives developers more power over what gets sent
+to the Git repository.
 
 ### Commit
 
-A git commit is a snapshot of a set of changes, or manipulations to your Working Tree.
-For example, if you added 5 files, and removed 2 others, these changes will be contained
-in a commit (or snapshot). This commit can then be pushed to other repositories, or not!
+A git commit is a snapshot of a set of changes, or manipulations to your Working
+Tree. For example, if you added 5 files, and removed 2 others, these changes
+will be contained in a commit (or snapshot). This commit can then be pushed to
+other repositories, or not!
 
 ### Branch
 
-A branch is essentially a pointer that points to the last commit you made. As you commit,
-this pointer will automatically update and point to the latest commit.
+A branch is essentially a pointer to the last commit you made. As you go on
+committing, this pointer will automatically update to point the latest commit.
+
+### Tag
+
+A tag is a mark on specific point in history. Typically people use this
+functionality to mark release points (v1.0, and so on)
 
 ### HEAD and head (component of .git dir)
 
 HEAD is a pointer that points to the current branch. A repository only has 1 *active* HEAD.
 head is a pointer that points to any commit. A repository can have any number of heads.
 
-###Stages of Git
+### Stages of Git
 * Modified - Changes have been made to a file but file has not been committed to Git Database yet
 * Staged - Marks a modified file to go into your next commit snapshot
 * Committed - Files have been committed to the Git Database
@@ -95,7 +103,7 @@ head is a pointer that points to any commit. A repository can have any number of
 
 ### init
 
-Create an empty Git repository. The Git repository's settings, stored information, 
+Create an empty Git repository. The Git repository's settings, stored information,
 and more is stored in a directory (a folder) named ".git".
 
 ```bash
@@ -104,15 +112,12 @@ $ git init
 
 ### config
 
-To configure settings. Whether it be for the repository, the system itself, or global
-configurations.
+To configure settings. Whether it be for the repository, the system itself,
+or global configurations ( global config file is `~/.gitconfig` ).
 
 
 ```bash
 # Print & Set Some Basic Config Variables (Global)
-$ git config --global user.email
-$ git config --global user.name
-
 $ git config --global user.email "MyEmail@Zoho.com"
 $ git config --global user.name "My Name"
 ```
@@ -142,10 +147,20 @@ $ git commit --help
 $ git init --help
 ```
 
+### ignore files
+
+To intentionally untrack file(s) & folder(s) from git. Typically meant for
+private & temp files which would otherwise be shared in the repository.
+```bash
+$ echo "temp/" >> .gitignore
+$ echo "private_key" >> .gitignore
+```
+
+
 ### status
 
-To show differences between the index file (basically your working copy/repo) and the current
-HEAD commit.
+To show differences between the index file (basically your working copy/repo)
+and the current HEAD commit.
 
 
 ```bash
@@ -172,7 +187,8 @@ $ git add /path/to/file/HelloWorld.c
 $ git add ./*.java
 ```
 
-This only adds a file to the staging area/index, it doesn't commit it to the working directory/repo.
+This only adds a file to the staging area/index, it doesn't commit it to the
+working directory/repo.
 
 ### branch
 
@@ -196,6 +212,28 @@ $ git branch -m myBranchName myNewBranchName
 $ git branch myBranchName --edit-description
 ```
 
+### tag
+
+Manage your tags
+
+```bash
+# List tags
+$ git tag
+# Create a annotated tag
+# The -m specifies a tagging message,which is stored with the tag.
+# If you don’t specify a message for an annotated tag,
+# Git launches your editor so you can type it in.
+$ git tag -a v2.0 -m 'my version 2.0'
+# Show info about tag
+# That shows the tagger information, the date the commit was tagged,
+# and the annotation message before showing the commit information.
+$ git show v2.0
+# Push a single tag to remote
+$ git push origin v2.0
+# Push a lot of tags to remote
+$ git push origin --tags
+```
+
 ### checkout
 
 Updates all files in the working tree to match the version in the index, or specified tree.
@@ -205,7 +243,8 @@ Updates all files in the working tree to match the version in the index, or spec
 $ git checkout
 # Checkout a specified branch
 $ git checkout branchName
-# Create a new branch & switch to it, like: "git branch <name>; git checkout <name>"
+# Create a new branch & switch to it
+# equivalent to "git branch <name>; git checkout <name>"
 $ git checkout -b newBranch
 ```
 
@@ -218,6 +257,10 @@ to a remote branch.
 ```bash
 # Clone learnxinyminutes-docs
 $ git clone https://github.com/adambard/learnxinyminutes-docs.git
+# shallow clone - faster cloning that pulls only latest snapshot
+$ git clone --depth 1 https://github.com/adambard/learnxinyminutes-docs.git
+# clone only a specific branch
+$ git clone -b master-cn https://github.com/adambard/learnxinyminutes-docs.git --single-branch
 ```
 
 ### commit
@@ -231,6 +274,9 @@ $ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
 
 # automatically stage modified or deleted files, except new files, and then commit
 $ git commit -a -m "Modified foo.php and removed bar.php"
+
+# change last commit (this deletes previous commit with a fresh commit)
+$ git commit --amend -m "Correct message"
 ```
 
 ### diff
@@ -268,7 +314,7 @@ $ git config --global alias.g "grep --break --heading --line-number"
 $ git grep 'variableName' -- '*.java'
 
 # Search for a line that contains "arrayListName" and, "add" or "remove"
-$ git grep -e 'arrayListName' --and \( -e add -e remove \) 
+$ git grep -e 'arrayListName' --and \( -e add -e remove \)
 ```
 
 Google is your friend; for more examples
@@ -282,8 +328,8 @@ Display commits to the repository.
 # Show all commits
 $ git log
 
-# Show X number of commits
-$ git log -n 10
+# Show only commit message & ref
+$ git log --oneline
 
 # Show merge commits only
 $ git log --merges
@@ -303,7 +349,7 @@ $ git merge --no-ff branchName
 
 ### mv
 
-Rename or move a file	
+Rename or move a file
 
 ```bash
 # Renaming a file
@@ -325,8 +371,11 @@ Pulls from a repository and merges it with another branch.
 # Update your local repo, by merging in new changes
 # from the remote "origin" and "master" branch.
 # git pull <remote> <branch>
-# git pull => implicitly defaults to => git pull origin master
 $ git pull origin master
+
+# By default, git pull will update your current branch
+# by merging in new changes from its remote-tracking branch 
+$ git pull
 
 # Merge in changes from remote branch and rebase
 # branch commits onto your local repo, like: "git pull <remote> <branch>, git rebase <branch>"
@@ -338,32 +387,37 @@ $ git pull origin master --rebase
 Push and merge changes from a branch to a remote & branch.
 
 ```bash
-# Push and merge changes from a local repo to a 
+# Push and merge changes from a local repo to a
 # remote named "origin" and "master" branch.
 # git push <remote> <branch>
-# git push => implicitly defaults to => git push origin master
 $ git push origin master
+
+# By default, git push will push and merge changes from
+# the current branch to its remote-tracking branch 
+$ git push
 
 # To link up current local branch with a remote branch, add -u flag:
 $ git push -u origin master
 # Now, anytime you want to push from that same local branch, use shortcut:
-$ git push 
+$ git push
 ```
 
 ### stash
 
-Stashing takes the dirty state of your working directory and saves it on a stack of unfinished changes that you can reapply at any time.
+Stashing takes the dirty state of your working directory and saves it on a stack
+of unfinished changes that you can reapply at any time.
 
-Let's say you've been doing some work in your git repo, but you want to pull from the remote.
-Since you have dirty (uncommited) changes to some files, you are not able to run `git pull`.
-Instead, you can run `git stash` to save your changes onto a stack!
+Let's say you've been doing some work in your git repo, but you want to pull
+from the remote. Since you have dirty (uncommited) changes to some files, you
+are not able to run `git pull`. Instead, you can run `git stash` to save your
+changes onto a stack!
 
 ```bash
 $ git stash
 Saved working directory and index state \
   "WIP on master: 049d078 added the index file"
   HEAD is now at 049d078 added the index file
-  (To restore them type "git stash apply") 
+  (To restore them type "git stash apply")
 ```
 
 Now you can pull!
@@ -410,7 +464,7 @@ Now you're ready to get back to work on your stuff!
 
 [Additional Reading.](http://git-scm.com/book/en/v1/Git-Tools-Stashing)
 
-### rebase (caution) 
+### rebase (caution)
 
 Take all changes that were committed on one branch, and replay them onto another branch.
 *Do not rebase commits that you have pushed to a public repo*.
@@ -464,6 +518,8 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 * [Udemy Git Tutorial: A Comprehensive Guide](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
 
+* [Git Immersion - A Guided tour that walks through the fundamentals of git](http://gitimmersion.com/)
+
 * [git-scm - Video Tutorials](http://git-scm.com/videos)
 
 * [git-scm - Documentation](http://git-scm.com/docs)
@@ -477,3 +533,6 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
 
 * [Pro Git](http://www.git-scm.com/book/en/v2)
+
+* [An introduction to Git and GitHub for Beginners (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+

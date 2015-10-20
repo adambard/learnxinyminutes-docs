@@ -304,7 +304,7 @@ void Dog::Dog()
 }
 
 // Objetos (como strings) devem ser passados por referência
-// se você está modificando-os ou referência const se você não é.
+// se você pretende modificá-los, ou com const caso contrário.
 void Dog::setName(const std::string& dogsName)
 {
     name = dogsName;
