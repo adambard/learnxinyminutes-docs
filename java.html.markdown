@@ -281,8 +281,18 @@ public class LearnJava {
             fooDoWhile++;
         } while(fooDoWhile < 100);
         System.out.println("fooDoWhile Value: " + fooDoWhile);
+        //How to exit from a while loop
+        while (true)
+        {
+            ....
+            if (obj == null)
+            {
+                break;
+            }
+            ....
+        }
 
-        // For Loop
+       // For Loop
         // for loop structure => for(<start_statement>; <conditional>; <step>)
         for (int fooFor = 0; fooFor < 10; fooFor++) {
             System.out.println(fooFor);
