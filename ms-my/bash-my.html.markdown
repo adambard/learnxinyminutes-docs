@@ -96,7 +96,7 @@ fi
 echo "Always executed" || echo "Only executed if first command fails"
 echo "Always executed" && echo "Only executed if first command does NOT fail"
 
-# Untuk guna & dan || bersama kenyataan ‘if’, anda perlu beberapa pasang daripada tanda kurung siku:
+# Untuk guna && dan || bersama kenyataan ‘if’, anda perlu beberapa pasang daripada tanda kurung siku:
 if [ $Name == "Steve" ] && [ $Age -eq 15 ]
 then
     echo "This will run if $Name is Steve AND $Age is 15."
@@ -181,7 +181,7 @@ case "$Variable" in
 esac
 
 # ‘for loops iterate' untuk sebanyak mana argumen yang ditetapkan:
-# Kandungan dari $Variable dicetakan tiga kali.
+# Kandungan dari $Variable dicetakan sebanyak tiga kali.
 for Variable in {1..3}
 do
     echo "$Variable"
@@ -270,7 +270,7 @@ apropos bash
 man 1 bash
 man bash
 
-# Baca info dokumentasi dengan info (? for help)
+# Baca dokumentasi info dengan info (? for help)
 apropos info | grep '^info.*('
 man info
 info info
