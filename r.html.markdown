@@ -3,6 +3,7 @@ language: R
 contributors:
     - ["e99n09", "http://github.com/e99n09"]
     - ["isomorphismes", "http://twitter.com/isomorphisms"]
+    - ["kalinn", "http://github.com/kalinn"]
 filename: learnr.r
 ---
 
@@ -197,6 +198,14 @@ class(NaN) # "numeric"
 # You can do arithmetic on two vectors with length greater than 1,
 # so long as the larger vector's length is an integer multiple of the smaller
 c(1,2,3) + c(1,2,3) # 2 4 6
+# Since a single number is a vector of length one, scalars are applied 
+# elementwise to vectors
+(4 * c(1,2,3) - 2) / 2 # 1 3 5
+# Except for scalars, use caution when performing arithmetic on vectors with 
+# different lengths. Although it can be done, 
+c(1,2,3,1,2,3) * c(1,2) # 1 4 3 2 2 6
+# Matching lengths is better practice and easier to read
+c(1,2,3,1,2,3) * c(1,2,1,2,1,2) 
 
 # CHARACTERS
 # There's no difference between strings and characters in R
@@ -235,6 +244,9 @@ class(NA)	# "logical"
 TRUE | FALSE	# TRUE
 # AND
 TRUE & FALSE	# FALSE
+# Applying | and & to vectors returns elementwise logic operations
+c(TRUE,FALSE,FALSE) | c(FALSE,TRUE,FALSE) # TRUE TRUE FALSE
+c(TRUE,FALSE,TRUE) & c(FALSE,TRUE,TRUE) # FALSE FALSE TRUE
 # You can test if x is TRUE
 isTRUE(TRUE)	# TRUE
 # Here we get a logical vector with many elements:
@@ -665,15 +677,101 @@ write.csv(pets, "pets2.csv") # to make a new .csv file
 
 
 #########################
+# Statistical Analysis
+#########################
+
+# Linear regression!
+linearModel <- lm(price  ~ time, data = list1)
+linearModel # outputs result of regression
+# =>
+# Call:
+# lm(formula = price ~ time, data = list1)
+# 
+# Coefficients:
+# (Intercept)         time  
+#      0.1453       0.4943  
+summary(linearModel) # more verbose output from the regression
+# =>
+# Call:
+# lm(formula = price ~ time, data = list1)
+#
+# Residuals:
+#     Min      1Q  Median      3Q     Max 
+# -8.3134 -3.0131 -0.3606  2.8016 10.3992 
+#
+# Coefficients:
+#             Estimate Std. Error t value Pr(>|t|)    
+# (Intercept)  0.14527    1.50084   0.097    0.923    
+# time         0.49435    0.06379   7.749 2.44e-09 ***
+# ---
+# Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+#
+# Residual standard error: 4.657 on 38 degrees of freedom
+# Multiple R-squared:  0.6124,	Adjusted R-squared:  0.6022 
+# F-statistic: 60.05 on 1 and 38 DF,  p-value: 2.44e-09
+coef(linearModel) # extract estimated parameters
+# =>
+# (Intercept)        time 
+#   0.1452662   0.4943490 
+summary(linearModel)$coefficients # another way to extract results
+# =>
+#              Estimate Std. Error    t value     Pr(>|t|)
+# (Intercept) 0.1452662 1.50084246 0.09678975 9.234021e-01
+# time        0.4943490 0.06379348 7.74920901 2.440008e-09
+summary(linearModel)$coefficients[,4] # the p-values 
+# =>
+#  (Intercept)         time 
+# 9.234021e-01 2.440008e-09 
+
+# GENERAL LINEAR MODELS
+# Logistic regression
+set.seed(1)
+list1$success = rbinom(length(list1$time), 1, .5) # random binary
+glModel <- glm(success  ~ time, data = list1, 
+	family=binomial(link="logit"))
+glModel # outputs result of logistic regression
+# =>
+# Call:  glm(formula = success ~ time, 
+#	family = binomial(link = "logit"), data = list1)
+#
+# Coefficients:
+# (Intercept)         time  
+#     0.17018     -0.01321  
+# 
+# Degrees of Freedom: 39 Total (i.e. Null);  38 Residual
+# Null Deviance:	    55.35 
+# Residual Deviance: 55.12 	 AIC: 59.12
+summary(glModel) # more verbose output from the regression
+# =>
+# Call:
+# glm(formula = success ~ time, 
+#	family = binomial(link = "logit"), data = list1)
+
+# Deviance Residuals: 
+#    Min      1Q  Median      3Q     Max  
+# -1.245  -1.118  -1.035   1.202   1.327  
+# 
+# Coefficients:
+#             Estimate Std. Error z value Pr(>|z|)
+# (Intercept)  0.17018    0.64621   0.263    0.792
+# time        -0.01321    0.02757  -0.479    0.632
+# 
+# (Dispersion parameter for binomial family taken to be 1)
+#
+#     Null deviance: 55.352  on 39  degrees of freedom
+# Residual deviance: 55.121  on 38  degrees of freedom
+# AIC: 59.121
+# 
+# Number of Fisher Scoring iterations: 3
+
+
+#########################
 # Plots
 #########################
 
 # BUILT-IN PLOTTING FUNCTIONS
 # Scatterplots!
 plot(list1$time, list1$price, main = "fake data")
-# Regressions!
-linearModel <- lm(price  ~ time, data = list1)
-linearModel # outputs result of regression
 # Plot regression line on existing plot
 abline(linearModel, col = "red")
 # Get a variety of nice diagnostics
@@ -695,7 +793,6 @@ ll <- as.data.table(list1)
 pp <- ggplot(ll, aes(x=time,price))
 pp + geom_point()
 # ggplot2 has excellent documentation (available http://docs.ggplot2.org/current/)
-
 
 
 ```
