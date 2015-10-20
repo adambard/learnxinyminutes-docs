@@ -19,6 +19,8 @@ R is a statistical computing language. It has lots of libraries for uploading an
 # in Windows you can use CTRL-ENTER to execute a line.
 # on Mac it is COMMAND-ENTER
 
+
+
 #############################################################################
 # Stuff you can do without understanding anything about programming
 #############################################################################
@@ -122,13 +124,13 @@ stem(discoveries, scale=2)
 #   8 | 0
 #   9 | 0
 #  10 | 0
-#  11 | 
+#  11 |
 #  12 | 0
 
 max(discoveries)
 # 12
 summary(discoveries)
-#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
 #    0.0     2.0     3.0     3.1     4.0    12.0
 
 # Roll a die a few times
@@ -791,6 +793,7 @@ ll <- as.data.table(list1)
 pp <- ggplot(ll, aes(x=time,price))
 pp + geom_point()
 # ggplot2 has excellent documentation (available http://docs.ggplot2.org/current/)
+
 
 
 ```
