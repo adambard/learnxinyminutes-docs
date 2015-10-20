@@ -32,7 +32,7 @@ Di seguito i più famosi manager Ruby:
 
 ## Ruby Versions
 
-Ruby fù creato da Yukihiro "Matz" Matsumoto, il [BDFL](https://en.wikipedia.org/wiki/Benevolent_Dictator_for_Life),
+Ruby fu creato da Yukihiro "Matz" Matsumoto, il [BDFL](https://en.wikipedia.org/wiki/Benevolent_Dictator_for_Life),
 (acronimo inglese che sta per "Benevolo dittatore a vita") , seppur
 ultimamente non è più del tutto vera; l'implementazione di Ruby
 è detta  MRI (Matz' Reference Implementation), e dunque quando si legge di una
@@ -49,9 +49,9 @@ Le tre maggiori versioni di Ruby in uso sono:
   [concluso](http://www.ruby-lang.org/en/news/2013/06/30/we-retire-1-8-7/).
 
 I cambiamenti tra la 1.8.7 a la 1.9.x sono maggiori di quelli tra la 1.9.3 a la
-2.0.0. Per esempio, nella 1.9 vengono introdotti gli encodings e la bytecode VM.
+2.0.0. Per esempio, nella 1.9 vengono introdotti encodings e bytecode VM.
 Esistono ancora dei progetti basati sulla 1.8.7, ma stanno diventando una
-minoranza, man mano che la community si sta trasferendo alle versioni 1.92 e
+minoranza man mano che la community si trasferisce alle versioni 1.92 e
 1.9.3
 
 ## Ruby Implementations
