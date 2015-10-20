@@ -58,6 +58,8 @@ echo '$Variable'
 # Parameter expansion ${ }:
 echo ${Variable}
 # This is a simple usage of parameter expansion
+# Parameter Expansion gets a value from a variable.  It "expands" or prints the value
+# During the expansion time the value or parameter are able to be modified
 # Below are other modifications that add onto this expansion
 
 # String substitution in variables
