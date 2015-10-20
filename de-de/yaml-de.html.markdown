@@ -56,7 +56,7 @@ folded_style: >
 # COLLECTION TYPEN #
 ####################
 
-# Verschachtelung wird duch Einrückung erzielt.
+# Verschachtelung wird durch Einrückung erzielt.
 eine_verschachtelte_map:
     schlüssel: wert
     nochn_Schlüssel: Noch ein Wert.
@@ -105,7 +105,7 @@ anderer_anker: *anker_name
 explicit_string: !!str 0.5
 # Manche Parser implementieren sprachspezifische Tags wie dieser hier für Pythons
 # komplexe Zahlen.
-python_komplexe_Zahlen: !!python/komplex 1+2j
+python_komplexe_Zahlen: !!python/complex 1+2j
 
 ####################
 # EXTRA YAML TYPEN #

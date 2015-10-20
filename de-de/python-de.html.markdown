@@ -194,7 +194,7 @@ d, e, f = 4, 5, 6
 e, d = d, e     # d is now 5 and e is now 4
 
 
-# Dictionarys (Wörterbucher) speichern Key-Value-Paare
+# Dictionarys (Wörterbücher) speichern Key-Value-Paare
 empty_dict = {}
 # Hier ein gefülltes Wörterbuch
 filled_dict = {"one": 1, "two": 2, "three": 3}

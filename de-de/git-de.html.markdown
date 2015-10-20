@@ -61,7 +61,7 @@ Der Index ist die die Staging-Area von Git. Es ist im Grunde eine Ebene, die Arb
 
 ### Commit
 
-Ein Commit ist ein Schnappschuss von Uderungen in deinem Arbeitsverzeichnis. Wenn du zum Beispiel 5 Dateien hinzugefügt und 2 andere entfernt hast, werden diese Änderungen im Commit (Schnappschuss) enthalten sein. Dieser Commit kann dann in andere Repositorys gepusht werden. Oder nicht!
+Ein Commit ist ein Schnappschuss von Änderungen in deinem Arbeitsverzeichnis. Wenn du zum Beispiel 5 Dateien hinzugefügt und 2 andere entfernt hast, werden diese Änderungen im Commit (Schnappschuss) enthalten sein. Dieser Commit kann dann in andere Repositorys gepusht werden. Oder nicht!
 
 ### Branch
 
@@ -127,7 +127,7 @@ Zeigt die Unterschiede zwischen Index (im Grunde dein Arbeitsverzeichnis/-reposi
 
 
 ```bash
-# Zeigt den Branch, nicht-verfolgte Dateien, Uderungen und andere Unterschiede an
+# Zeigt den Branch, nicht-verfolgte Dateien, Änderungen und andere Unterschiede an
 $ git status
 
 # Anderes Wissenswertes über git status anzeigen
@@ -288,16 +288,16 @@ $ git mv -f myFile existingFile
 
 ### pull
 
-Führe einen Pull, zieht alle Daten, eines Repositorys und f?? einen Merge mit einem anderen Branch durch.
+Führe einen Pull, zieht alle Daten, eines Repositorys und führe einen Merge mit einem anderen Branch durch.
 
 ```bash
-# Update deines lokalen Repos, indem ein Merge der neuen Uderungen
-# von den remote-liegenden "origin"- und "master"-Branches durchgef?? wird.
+# Update deines lokalen Repos, indem ein Merge der neuen Änderungen
+# von den remote-liegenden "origin"- und "master"-Branches durchgeführt wird.
 # git pull <remote> <branch>
 # git pull => impliziter Verweis auf origin und master
 $ git pull origin master
 
-# F?? einen Merge von Uderungen eines remote-Branch und ein Rebase
+# Führe einen Merge von Änderungen eines remote-Branch und ein Rebase
 # des Branch-Commits im lokalen Repo durch. Wie: pull <remote> <branch>, git rebase <branch>"
 $ git pull origin master --rebase
 ```
@@ -337,8 +337,8 @@ $ git reset
 # Setze die Staging-Area zurück, um dem letzten Commit zu entsprechen und überschreibe das Arbeitsverzeichnis
 $ git reset --hard
 
-# Bewegt die Spitze des Branches zu dem angegebenen Commit (das Verzeichnis bleibt unber??)
-# Alle Uderungen bleiben im Verzeichnis erhalten
+# Bewegt die Spitze des Branches zu dem angegebenen Commit (das Verzeichnis bleibt unberührt)
+# Alle Änderungen bleiben im Verzeichnis erhalten
 $ git reset 31f2bb1
 
 # Bewegt die Spitze des Branches zurück zu dem angegebenen Commit

@@ -463,7 +463,7 @@ with open("myfile.txt") as f:
 
 # Python offers a fundamental abstraction called the Iterable.
 # An iterable is an object that can be treated as a sequence.
-# The object returned the range function, is an iterable.
+# The object returned by the range function is an iterable.
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
