@@ -67,5 +67,43 @@ $('#btn').hover(function(){
 // by simply not giving any parameters
 $('#btn').dblclick(); // Fires double click on the element
 
+// You can handle multiple events while only using the selector once
+$('#btn').on(
+  {dblclick: myFunction1} // Triggered on double click
+  {blur: myFunction1} // Triggered on blur
+);
+
+// You can manipulate the document with some methods
+$('.table').hide(); # Hides the element(s)
+
+// Note: calling a function in these method will still hide the element
+$('.table').hide(function(){
+    // Element hidden then function executed
+});
+
+// You can store selectors in variables
+var tables = $('.table');
+
+// Some basic document manipulation methods are:
+tables.hide(); // Hides element(s)
+tables.show(); // Shows (un-hides) element(s)
+tables.toggle(); // Changes the hide/show state
+tables.fadeOut(); // Fades out
+tables.fadeIn(); // Fades in
+tables.fadeToggle(); // Fades in or out
+tables.fadeTo(0.5); // Fades to an opacity (between 0 and 1)
+tables.slideUp(); // Slides up
+tables.slideDown(); // Slides down
+tables.slideToggle(); // Slides up or down
+
+// All of the above take a speed (milliseconds) and callback function
+tables.hide(1000, myFunction); // 1 second hide animation then function
+
+// fadeTo has a required opacity as its second parameter
+tables.fadeTo(2000, 0.1, myFunction); // 2 sec. fade to 0.1 opacity then function
+
+// You can get slightly more advanced with the animate method
+
+
 
 ``
