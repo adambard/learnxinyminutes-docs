@@ -6,13 +6,15 @@ contributors:
     - ["Sricharan Chiruvolu", "http://sricharan.xyz"]
 filename: learn-latex.tex
 ---
+
+```tex
 % All comment lines start with %
 % There are no multi-line comments
 
 % LaTeX is NOT a "What You See Is What You Get" word processing software like
 % MS Word, or OpenOffice Writer
 
-% Every Latex command starts with a backslash (\)
+% Every LaTeX command starts with a backslash (\)
 
 % LaTeX documents start with a defining the type of document it's compiling
 % Other document types include book, report, presentations, etc.
@@ -45,7 +47,7 @@ filename: learn-latex.tex
 % but before the main sections of the body. 
 % This command is available in the document classes article and report.
 \begin{abstract}
- LaTex documentation written as LaTex! How novel and totally not my idea!
+ LaTeX documentation written as LaTeX! How novel and totally not my idea!
 \end{abstract}
 
 % Section commands are intuitive. 
@@ -63,8 +65,8 @@ I think we need another one
 Much better now.
 \label{subsec:pythagoras}
 
-% By using the asterisk we can suppress Latex's inbuilt numbering.
-% This works for other Latex commands as well. 
+% By using the asterisk we can suppress LaTeX's inbuilt numbering.
+% This works for other LaTeX commands as well. 
 \section*{This is an unnumbered section} 
 However not all sections have to be numbered!
 
@@ -74,7 +76,7 @@ a line \\ needs \\ to \\ break \\ you add \textbackslash\textbackslash to
 the source code. \\ 
 
 \section{Lists}
-Lists are one of the easiest things to create in Latex! I need to go shopping
+Lists are one of the easiest things to create in LaTeX! I need to go shopping
 tomorrow, so let's make a grocery list.
 \begin{enumerate} % This creates an "enumerate" environment.
   % \item tells the enumerate to increment
@@ -106,7 +108,7 @@ Here's how you state all y that belong to X, $\forall$ x $\in$ X. \\
 % The opposite also holds true. Variable can also be rendered in math-mode.
 
 My favorite Greek letter is $\xi$. I also like $\beta$, $\gamma$ and $\sigma$.
-I haven't found a Greek letter that yet that Latex doesn't know about!
+I haven't found a Greek letter that yet that LaTeX doesn't know about!
 
 Operators are essential parts of a mathematical document: 
 trigonometric functions ($\sin$, $\cos$, $\tan$), 
@@ -126,7 +128,7 @@ $^{10}/_{7}$
 % \frac{numerator}{denominator}
 $\frac{n!}{k!(n - k)!}$ \\
 
-We can also insert equations in an "equation environment." 
+We can also insert equations in an "equation environment". 
 
 % Display math with the equation 'environment'
 \begin{equation} % enters math-mode
@@ -141,7 +143,7 @@ figures, equations, sections, etc.
 
 Summations and Integrals are written with sum and int commands:
 
-% Some latex compilers will complain if there are blank lines
+% Some LaTeX compilers will complain if there are blank lines
 % In an equation environment.
 \begin{equation} 
   \sum_{i=0}^{5} f_{i}
@@ -181,9 +183,9 @@ We can also insert Tables in the same way as figures.
 
 % \section{Hyperlinks} % Coming soon
 
-\section{Getting Latex to not compile something (i,e, Source Code)}
-Let's say we want to include some code into our Latex document,
-we would then need Latex to not try and interpret that text and
+\section{Getting LaTeX to not compile something (i.e. Source Code)}
+Let's say we want to include some code into our LaTeX document,
+we would then need LaTeX to not try and interpret that text and
 instead just print it to the document. We do this we a verbatim 
 environment. 
 
@@ -198,7 +200,7 @@ environment.
 \section{Compiling} 
 
 By now you're probably wondering how to compile this fabulous document 
-and look at the glorious glory that is a Latex pdf.
+and look at the glorious glory that is a LaTeX pdf.
 (yes, this document actually does compiles). \\
 Getting to the final document using LaTeX consists of the following steps:
   \begin{enumerate}
@@ -225,6 +227,7 @@ That's all for now!
 % end the document
 \end{document}
 ```
+
 ## More on LaTeX
 
 * The amazing LaTeX wikibook: [https://en.wikibooks.org/wiki/LaTeX](https://en.wikibooks.org/wiki/LaTeX)

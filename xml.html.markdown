@@ -3,11 +3,12 @@ language: xml
 filename: learnxml.xml
 contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
+  - ["Rachel Stiyer", "https://github.com/rstiyer"]
 ---
 
 XML is a markup language designed to store and transport data.
 
-Unlike HTML, XML does not specify how to display or to format data, just carry it.
+Unlike HTML, XML does not specify how to display or to format data, it just carries it.
 
 * XML Syntax
 
@@ -65,12 +66,12 @@ Unlike HTML, XML does not specify how to display or to format data, just carry i
 
 * Well-Formated Document x Validation
 
-A XML document is well-formated if it is syntactically correct.
+An XML document is well-formatted if it is syntactically correct.
 However, it is possible to inject more constraints in the document,
 using document definitions, such as DTD and  XML Schema.
 
-A XML document which follows a document definition is called valid,
-regarding that document.
+An XML document which follows a document definition is called valid,
+in regards to that document.
 
 With this tool, you can check the XML data outside the application logic.
 
@@ -83,7 +84,7 @@ With this tool, you can check the XML data outside the application logic.
 <!DOCTYPE note SYSTEM "Bookstore.dtd">
 <bookstore>
   <book category="COOKING">
-    <title >Everyday Italian</title>
+    <title>Everyday Italian</title>
     <price>30.00</price>
   </book>
 </bookstore>
@@ -121,7 +122,7 @@ With this tool, you can check the XML data outside the application logic.
 
 <bookstore>
   <book category="COOKING">
-    <title >Everyday Italian</title>
+    <title>Everyday Italian</title>
     <price>30.00</price>
   </book>
 </bookstore>

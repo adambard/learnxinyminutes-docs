@@ -7,6 +7,7 @@ contributors:
     - ["Shaun McCarthy", "http://www.shaunmccarthy.com"]
     - ["Wouter Van Schandevijl", "http://github.com/laoujin"]
     - ["Jo Pearce", "http://github.com/jdpearce"]
+    - ["Chris Zimmerman", "https://github.com/chriszimmerman"]
 filename: LearnCSharp.cs
 ---
 
@@ -160,7 +161,7 @@ on a new line! ""Wow!"", the masses cried";
             // List<datatype> <var name> = new List<datatype>();
             List<int> intList = new List<int>();
             List<string> stringList = new List<string>();
-            List<int> z = new List<int> { 9000, 1000, 1337 }; // intialize
+            List<int> z = new List<int> { 9000, 1000, 1337 }; // initialize
             // The <> are for generics - Check out the cool stuff section
 
             // Lists don't default to a value;
@@ -394,6 +395,7 @@ on a new line! ""Wow!"", the masses cried";
             ref int maxCount, // Pass by reference
             out int count)
         {
+            //the argument passed in as 'count' will hold the value of 15 outside of this function
             count = 15; // out param must be assigned before control leaves the method
         }
 
@@ -460,7 +462,7 @@ on a new line! ""Wow!"", the masses cried";
         {
             // OPTIONAL PARAMETERS
             MethodSignatures(3, 1, 3, "Some", "Extra", "Strings");
-            MethodSignatures(3, another: 3); // explicity set a parameter, skipping optional ones
+            MethodSignatures(3, another: 3); // explicitly set a parameter, skipping optional ones
 
             // BY REF AND OUT PARAMETERS
             int maxCount = 0, count; // ref params must have value
@@ -481,7 +483,7 @@ on a new line! ""Wow!"", the masses cried";
             // in case variable is null
             int notNullable = nullable ?? 0; // 0
             
-            // ?. is an operator for null-propogation - a shorthand way of checking for null
+            // ?. is an operator for null-propagation - a shorthand way of checking for null
             nullable?.Print(); // Use the Print() extension method if nullable isn't null
 
             // IMPLICITLY TYPED VARIABLES - you can let the compiler work out what the type is:
@@ -650,7 +652,7 @@ on a new line! ""Wow!"", the masses cried";
             {
                 return _cadence;
             }
-            set // set - define a method to set a proprety
+            set // set - define a method to set a property
             {
                 _cadence = value; // Value is the value passed in to the setter
             }
@@ -910,6 +912,35 @@ on a new line! ""Wow!"", the masses cried";
         }
 
         public DbSet<Bicycle> Bikes { get; set; }
+    }
+    
+    // Classes can be split across multiple .cs files
+    // A1.cs
+    public partial class A 
+    {
+        public static void A1()
+        {
+            Console.WriteLine("Method A1 in class A");
+        }
+    }
+    
+    // A2.cs
+    public partial class A
+    {
+        public static void A2()
+        {
+            Console.WriteLine("Method A2 in class A");
+        }
+    }
+    
+    // Program using the partial class "A"
+    public class Program 
+    {
+        static void Main()
+        {
+            A.A1();
+            A.A2();
+        }
     }
 } // End Namespace
 ```
