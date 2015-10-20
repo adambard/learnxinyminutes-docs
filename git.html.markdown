@@ -371,8 +371,11 @@ Pulls from a repository and merges it with another branch.
 # Update your local repo, by merging in new changes
 # from the remote "origin" and "master" branch.
 # git pull <remote> <branch>
-# git pull => implicitly defaults to => git pull origin master
 $ git pull origin master
+
+# By default, git pull will update your current branch
+# by merging in new changes from its remote-tracking branch 
+$ git pull
 
 # Merge in changes from remote branch and rebase
 # branch commits onto your local repo, like: "git pull <remote> <branch>, git rebase <branch>"
@@ -387,8 +390,11 @@ Push and merge changes from a branch to a remote & branch.
 # Push and merge changes from a local repo to a
 # remote named "origin" and "master" branch.
 # git push <remote> <branch>
-# git push => implicitly defaults to => git push origin master
 $ git push origin master
+
+# By default, git push will push and merge changes from
+# the current branch to its remote-tracking branch 
+$ git push
 
 # To link up current local branch with a remote branch, add -u flag:
 $ git push -u origin master
@@ -527,3 +533,6 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
 
 * [Pro Git](http://www.git-scm.com/book/en/v2)
+
+* [An introduction to Git and GitHub for Beginners (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+

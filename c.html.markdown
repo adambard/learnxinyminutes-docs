@@ -445,6 +445,17 @@ int main (int argc, char** argv)
   for (xx = 0; xx < 20; xx++) {
     *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx
   } // Initialize memory to 20, 19, 18, 17... 2, 1 (as ints)
+  
+  // Note that there is no standard way to get the length of a
+  // dynamically allocated array in C. Because of this, if your arrays are
+  // going to be passed around your program a lot, you need another variable
+  // to keep track of the number of elements (size) of an array. See the
+  // functions section for more info.
+  int size = 10;
+  int *my_arr = malloc(sizeof(int) * size);
+  // Add an element to the array
+  my_arr = realloc(my_arr, ++size);
+  my_arr[10] = 5;
 
   // Dereferencing memory that you haven't allocated gives
   // "unpredictable results" - the program is said to invoke "undefined behavior"
@@ -530,6 +541,29 @@ swapTwoNumbers(&first, &second);
 printf("first: %d\nsecond: %d\n", first, second);
 // values will be swapped
 */
+
+/*
+With regards to arrays, they will always be passed to functions
+as pointers. Even if you statically allocate an array like `arr[10]`,
+it still gets passed as a pointer to the first element in any function calls.
+Again, there is no standard way to get the size of a dynamically allocated
+array in C.
+*/
+// Size must be passed!
+// Otherwise, this function has no way of knowing how big the array is.
+void printIntArray(int *arr, int size) {
+    int i;
+    for (i = 0; i < size; i++) {
+        printf("arr[%d] is: %d\n", i, arr[i]);
+    }
+}
+/*
+int my_arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+int size = 10;
+printIntArray(my_arr, size);
+// will print "arr[0] is: 1" etc
+*/
+
 // if referring to external variables outside function, must use extern keyword.
 int i = 0;
 void testFunc() {

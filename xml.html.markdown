@@ -3,6 +3,7 @@ language: xml
 filename: learnxml.xml
 contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
+  - ["Rachel Stiyer", "https://github.com/rstiyer"]
 ---
 
 XML is a markup language designed to store and transport data.
@@ -65,12 +66,12 @@ Unlike HTML, XML does not specify how to display or to format data, it just carr
 
 * Well-Formated Document x Validation
 
-A XML document is well-formated if it is syntactically correct.
+An XML document is well-formatted if it is syntactically correct.
 However, it is possible to inject more constraints in the document,
 using document definitions, such as DTD and  XML Schema.
 
-A XML document which follows a document definition is called valid,
-regarding that document.
+An XML document which follows a document definition is called valid,
+in regards to that document.
 
 With this tool, you can check the XML data outside the application logic.
 

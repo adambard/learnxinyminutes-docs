@@ -6,6 +6,8 @@ contributors:
     - ["Sricharan Chiruvolu", "http://sricharan.xyz"]
 filename: learn-latex.tex
 ---
+
+```tex
 % All comment lines start with %
 % There are no multi-line comments
 
@@ -225,6 +227,7 @@ That's all for now!
 % end the document
 \end{document}
 ```
+
 ## More on LaTeX
 
 * The amazing LaTeX wikibook: [https://en.wikibooks.org/wiki/LaTeX](https://en.wikibooks.org/wiki/LaTeX)
