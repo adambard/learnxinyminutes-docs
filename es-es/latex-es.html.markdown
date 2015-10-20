@@ -4,147 +4,164 @@ contributors:
     - ["Chaitanya Krishna Ande", "http://icymist.github.io"]
     - ["Colton Kohnke", "http://github.com/voltnor"]
     - ["Sricharan Chiruvolu", "http://sricharan.xyz"]
-filename: learn-latex.tex
+translators:
+    - ["David Hsieh", "http://github.com/deivuh"]
+lang: es-es
+filename: learn-latex-es.tex
 ---
 
 ```tex
-% All comment lines start with %
-% There are no multi-line comments
+% Todas las líneas de comentario empiezaon con %
+% No hay comentarios de bloque (multiples líneas)
 
-% LaTeX is NOT a "What You See Is What You Get" word processing software like
-% MS Word, or OpenOffice Writer
+% Latex NO es un procesador de palabras "What You See Is What You Get"
+% (Lo que ves es lo que obtienes) como MS Word u OpenOffice Writer
 
-% Every LaTeX command starts with a backslash (\)
+% Cada comando de LaTeX inicia con una barra invertida (\)
 
-% LaTeX documents start with a defining the type of document it's compiling
-% Other document types include book, report, presentations, etc.
-% The options for the document appear in the [] brackets. In this case
-% it specifies we want to use 12pt font.
+% Los documentos de LaTeX inicia con una definición de tipo del documento 
+% que compila. Entre otros tipos de documentos se encuentran libros, reportes,
+% presentaciones, etc. 
+% Las opciones para el documento aparecen dentro de los corchetes []. En
+% este caso esepecifica que quieremos utilizar una fuente de 12pt.
 \documentclass[12pt]{article}
 
-% Next we define the packages the document uses.
-% If you want to include graphics, colored text, or
-% source code from another language file into your document, 
-% you need to enhance the capabilities of LaTeX. This is done by adding packages. 
-% I'm going to include the float and caption packages for figures.
+% Luego definimos los paquetes que utiliza el documento.
+% Si deseas incluir gráficas, texto colorido o archivos de código fuente 
+% de otro lenguaje en tu documento, necesitas mejorar las capacidades de LaTeX,
+% Esto se hace agregando paquetes. 
+% Incluiré los paquetes float y caption para utilizar figuras.
 \usepackage{caption}
 \usepackage{float}
 
-% We can define some other document properties too!
-\author{Chaitanya Krishna Ande, Colton Kohnke \& Sricharan Chiruvolu}
+% También podemos definir otras propiedades del documento
+\author{Chaitanya Krishna Ande, Colton Kohnke, Sricharan Chiruvolu \& David Hsieh }
 \date{\today}
-\title{Learn LaTeX in Y Minutes!}
+\title{Aprende LaTeX en Y Minutos!}
 
-% Now we're ready to begin the document
-% Everything before this line is called "The Preamble"
+% Ahora estamos listos para empezar el documento
+% Todo lo anterior a esta línea es llamado "El Preámbulo"
 \begin{document} 
-% if we set the author, date, title fields, we can have LaTeX 
-% create a title page for us.
+% Si definimos el autor, la fecha, los títulos, podemos hacer que LaTeX 
+% cree una carátula para nosotros.
 \maketitle
 
-% Most research papers have abstract, you can use the predefined commands for this.
-% This should appear in its logical order, therefore, after the top matter,
-% but before the main sections of the body. 
-% This command is available in the document classes article and report.
+% La mayoría de los documentos de investigación cuentan con un abstract, puedes
+% utilizar comandos predefinidos para esto. Esto debe de aparecer en su
+% orden lógico, por lo tanto, después del título, pero antes de las secciones
+% principales del cuerpo.
+% Este comando está disponible en las clases de documento article y report.
 \begin{abstract}
- LaTeX documentation written as LaTeX! How novel and totally not my idea!
+ Documentación de LaTeX escrita en LaTeX! Que novedoso, y definitivamente 
+ no fue mi idea!
 \end{abstract}
 
-% Section commands are intuitive. 
-% All the titles of the sections are added automatically to the table of contents.
-\section{Introduction}
-Hello, my name is Colton and together we're going to explore LaTeX!
+% Los comandos se sección son intuitivos.
+% Todos los títulos de las secciones son agregados automáticamente a la tabla 
+% de contenido.
+\section{Introducción}
+Hola, mi nombre es David y juntos vamos a explorar LaTeX!
 
-\section{Another section}
-This is the text for another section. I think it needs a subsection.
+\section{Otra sección}
+Éste es el texto de otra sección. Creo que necesita una subsección.
 
-\subsection{This is a subsection} % Subsections are also intuitive.
-I think we need another one
+\subsection{Subsección} % Las subsecciones también son intuitivas.
+Creo que necesitamos otra
 
 \subsubsection{Pythagoras}
-Much better now.
+Ahora está mejor
 \label{subsec:pythagoras}
 
-% By using the asterisk we can suppress LaTeX's inbuilt numbering.
-% This works for other LaTeX commands as well. 
-\section*{This is an unnumbered section} 
-However not all sections have to be numbered!
+% Al utilizar asteriscos podemos eliminar la enumeración predefinida. 
+% Esto funciona también para otros comandos de LaTeX.
+\section*{Ésta es una sección sin numeración} 
+Sin embargo no todas las secciones serán enumeradas!
 
-\section{Some Text notes}
+\section{Algunas notas de texto}
+LaTeX es generalmente bueno para poner el texto en donde debe de ir. Si
+una línea \\ necesita \\ terminar \\ agregas \textbackslash\textbackslash al
+código fuente. \\
 LaTeX is generally pretty good about placing text where it should go. If 
 a line \\ needs \\ to \\ break \\ you add \textbackslash\textbackslash to 
 the source code. \\ 
 
-\section{Lists}
-Lists are one of the easiest things to create in LaTeX! I need to go shopping
-tomorrow, so let's make a grocery list.
-\begin{enumerate} % This creates an "enumerate" environment.
-  % \item tells the enumerate to increment
-  \item Salad.
-  \item 27 watermelon.
-  \item A single jackrabbit.
-  % we can even override the item number by using []
-  \item[how many?] Medium sized squirt guns.
+\section{Listas}
+Las listas son una de las cosas más fáciles de crear en LaTeX! Necesito ir 
+de compras mañana, así que hagamos una lista de compras.
+\begin{enumerate} % Esto crea un ambiente de "enumeración"
+  % \item incrementa la enumeración
+  \item Ensalada
+  \item 27 sandillas
+  \item Una liebre
+  % podemos sobreescribir el número de item utilizando []
+  \item[Cuántas?] Pistolas de agua
 
-  Not a list item, but still part of the enumerate.
+  No es un elemento de la lista, pero aún así es parte de la enumeración.
 
-\end{enumerate} % All environments must have an end.
+\end{enumerate} % Todos los ambientes deben de tener un fin.
 
-\section{Math}
+\section{Matemáticas}
 
-One of the primary uses for LaTeX is to produce academic articles or 
-technical papers. Usually in the realm of math and science. As such, 
-we need to be able to add special symbols to our paper! \\
+Uno de los primeros usos para LaTeX es producir artículos académicos o 
+documentos técnicos. Usualmente en el reino de las ciencias y matemáticas. 
+Por lo que necesitamos poder agregar símbolos especiales a nuestro
+documento!\\
 
-Math has many symbols, far beyond what you can find on a keyboard;
-Set and relation symbols, arrows, operators, and Greek letters to name a few.\\
+Las matemáticas tienen muchos símbolos, mucho más de los que puedes encontrar
+en un teclado; Símbolos de conjuntos y relación, flechas, operadores, las
+letras del alfabeto griego, entre otros.
 
-Sets and relations play a vital role in many mathematical research papers.
-Here's how you state all y that belong to X, $\forall$ x $\in$ X. \\
-% Notice how I needed to add $ signs before and after the symbols. This is 
-% because when writing, we are in text-mode. 
-% However, the math symbols only exist in math-mode. 
-% We can enter math-mode from text mode with the $ signs.
-% The opposite also holds true. Variable can also be rendered in math-mode.
+Los conjuntos y las relaciones tienen un papel importante en los documentos
+de investigación matemáticas. Así es como definimos que todo y que pertenece
+a X, $\forall$ x $\in$ X. \\
 
-My favorite Greek letter is $\xi$. I also like $\beta$, $\gamma$ and $\sigma$.
-I haven't found a Greek letter that yet that LaTeX doesn't know about!
+% Ten en cuenta como necesitaba agregar signos $ antes y después de los símbolos.
+% Estos es debido a que cuando estamos escribiendo estamos en modo texto.
+% Sin embargo, los símbolos matemáticos solo existen en modo matemático.
+% Podemos ingresar al modo matemático desde el modo texto con los signos $.
+% Esto también se cumple del otro modo. Las variables también pueden ser
+% renderizadas en modo matemático.
 
-Operators are essential parts of a mathematical document: 
-trigonometric functions ($\sin$, $\cos$, $\tan$), 
-logarithms and exponentials ($\log$, $\exp$), 
-limits ($\lim$), etc. 
-have per-defined LaTeX commands. 
-Let's write an equation to see how it's done: \\
+My letra griega favorita es $\xi$. También me gusta $\beta$, $\gamma$ y $\sigma$.
+No he encontrado ninguna letra griega que LaTeX no conozca!
+
+Los operadores son partes esenciales de un documento matemático:
+Funciones trigonométricas ($\sin$, $\cos$, $\tan$), 
+logaritmos y exponenciales ($\log$, $\exp$), 
+límites ($\lim$), etc. 
+tienen comandos de LaTeX predefinidos.
+Escribamos una ecuación para ver cómo se hace: \\
 
 $\cos(2\theta) = \cos^{2}(\theta) - \sin^{2}(\theta)$
 
-Fractions(Numerator-denominators) can be written in these forms:
+Las fracciones(numerador-denominador) pueden ser escritos de la siguiente manera:
 
 % 10 / 7
 $^{10}/_{7}$ 
 
-% Relatively complex fractions can be written as
-% \frac{numerator}{denominator}
+% Las fracciones relativamentes complejas pueden ser escritas como
+% \frac{numerador}{denominador}
 $\frac{n!}{k!(n - k)!}$ \\
 
-We can also insert equations in an "equation environment". 
+También podemos insertar ecuaciones en un "ambiente de ecuación".
 
-% Display math with the equation 'environment'
-\begin{equation} % enters math-mode
+% Mostrar matemática con el 'ambiente' de ecuación.
+\begin{equation} % Ingresa al modo matemático
     c^2 = a^2 + b^2.
-    \label{eq:pythagoras} % for referencing
-\end{equation} % all \begin statements must have an end statement
+    \label{eq:pythagoras} % para referencia
+\end{equation} % todas las declaraciones \begin deben de tener una declaración
+               % de fin
 
-We can then reference our new equation! 
-Eqn.~\ref{eq:pythagoras} is also known as the Pythagoras Theorem which is also
-the subject of Sec.~\ref{subsec:pythagoras}. A lot of things can be labeled: 
-figures, equations, sections, etc.
+Luego podemos hacerle referencia a nuestra nueva ecuación!
+Eqn.~\ref{eq:pythagoras} también es conocido como el Teorema de Pitágoras
+que también es el sujeto de Sec.~\ref{subsec:pythagoras}. Muchas cosas
+se pueden etiquetar:
+figuras, ecuaciones, secciones, etc.
 
-Summations and Integrals are written with sum and int commands:
+Las sumatorias y las integrales se escriben con los comandos sum e int:
 
-% Some LaTeX compilers will complain if there are blank lines
-% In an equation environment.
+% Algunos compiladores de LaTeX se quejarán si hay líneas en blanco
+% en un ambiente de ecuación
 \begin{equation} 
   \sum_{i=0}^{5} f_{i}
 \end{equation} 
@@ -152,83 +169,81 @@ Summations and Integrals are written with sum and int commands:
   \int_{0}^{\infty} \mathrm{e}^{-x} \mathrm{d}x
 \end{equation} 
 
-\section{Figures}
+\section{Figuras}
 
-Let's insert a Figure. Figure placement can get a little tricky. 
-I definitely have to lookup the placement options each time.
+Agreguemos una figura. El reemplazo de figuras puede tener truco, 
+por lo que cada vez que los uso busco cuáles son las opciones que tiene.
 
-\begin{figure}[H] % H here denoted the placement option. 
-    \centering % centers the figure on the page
-    % Inserts a figure scaled to 0.8 the width of the page.
+\begin{figure}[H] % Aquí H es denotado con la opción colocación.
+    \centering % Centra la figura figura en la página
+    % Inserta una figura a una escala de 0.8 con el ancho de la página.
     %\includegraphics[width=0.8\linewidth]{right-triangle.png} 
-    % Commented out for compilation purposes. Please use your imagination.
-    \caption{Right triangle with sides $a$, $b$, $c$}
+    % Comentado para propósitos de compilación. Por favor usa tu imaginación.
+    \caption{Triángulo rectángulo con lados $a$, $b$, $c$}
     \label{fig:right-triangle}
 \end{figure}
 
-\subsection{Table}
-We can also insert Tables in the same way as figures.
+\subsection{Tabla}
+También podemos agregar tablas de la misma manera que las figuras.
 
 \begin{table}[H]
-  \caption{Caption for the Table.}
-  % the {} arguments below describe how each row of the table is drawn.
-  % Again, I have to look these up. Each. And. Every. Time.
+  \caption{Leyenda para la tabla.}
+  % Los argumentos {} a continuación describen como cada fila de la 
+  % tabla es graficada
   \begin{tabular}{c|cc} 
-    Number &  Last Name & First Name \\ % Column rows are separated by $
-    \hline % a horizontal line
+    Número &  Apellido & Nombre \\ % Las columnas son separadas por &
+    \hline % una línea horizontal
     1 & Biggus & Dickus \\
     2 & Monty & Python
   \end{tabular}
 \end{table}
 
-% \section{Hyperlinks} % Coming soon
+\section{Haciendo que latex no compile algo (i.e. Código fuente)}
+Digamos que queremos incluir un poco de código a nuestro documento de LaTeX.,
+necesitaríamos que LaTeX no intente interpretar ese texto y que en lugar
+de eso solo lo imprima en el documento. Podemos hacer esto en un ambiente
+verbatim.
 
-\section{Getting LaTeX to not compile something (i.e. Source Code)}
-Let's say we want to include some code into our LaTeX document,
-we would then need LaTeX to not try and interpret that text and
-instead just print it to the document. We do this we a verbatim 
-environment. 
-
-% There are other packages that exist (i.e. minty, lstlisting, etc.)
-% but verbatim is the bare-bones basic one.
+% Existen otros paquetes (i.e. minty, lstlisting, etc.) pero 
+% verbatim es el más básico.
 \begin{verbatim} 
-  print("Hello World!")
-  a%b; % look! We can use % signs in verbatim. 
-  random = 4; #decided by fair random dice roll
+  print("Hola mundo!")
+  a%b; % mira! Podemos usarlos signos % en verbatim. 
+  aleatorio = 4; #decido al tirar los dados.
 \end{verbatim}
 
-\section{Compiling} 
+\section{Compilando} 
 
-By now you're probably wondering how to compile this fabulous document 
-and look at the glorious glory that is a LaTeX pdf.
-(yes, this document actually does compiles). \\
-Getting to the final document using LaTeX consists of the following steps:
+Hasta ahora probablemente te preguntarás cómo compilar el código de 
+este documento fabuloso y ver lo glorioso que es un pdf de LaTeX.
+(Sí, el documento sí se compila). \\
+Llegando al último documento usando LaTeX consiste en los siguientes pasos:
   \begin{enumerate}
-    \item Write the document in plain text (the "source code").
-    \item Compile source code to produce a pdf. 
-     The compilation step looks something like this (in Linux): \\
+    \item Escribir el documento en texto plano (el "código fuente").
+    \item Compilar el código fuente para producir un pdf. 
+     El paso de compilación se ve algo así (en Linux)): \\
      \begin{verbatim} 
-        $pdflatex learn-latex.tex learn-latex.pdf 
+        $pdflatex learn-latex-es.tex learn-latex-es.pdf 
      \end{verbatim}
   \end{enumerate}
 
-A number of LaTeX editors combine both Step 1 and Step 2 in the same piece of
-software. So, you get to see Step 1, but not Step 2 completely.
-Step 2 is still happening behind the scenes.
+Una cantidad de editores LaTeX combina los pasos 1 y 2 en en una misma pieza
+de software. Así que, llegas a ver el paso 1, pero no el paso 2 completamente.
+El paso 2 todavía ocurre detrás de las escenas.
 
-You write all your formatting information in plain text in Step 1.
-The compilation part in Step 2 takes care of producing the document in the
-format you defined in Step 1.
+Escribes toda la información de formato en texto plano en el paso 1.
+La compilación de la parte del paso 2 se encarga de producir el documento
+ en el formato que definiste en el paso 1.
 
-\section{End}
+\section{Fin}
 
-That's all for now!
+Eso es todo por ahora!
 
-% end the document
+% Termina el documento
 \end{document}
 ```
 
-## More on LaTeX
+## Más sobre LaTeX
 
 * The amazing LaTeX wikibook: [https://en.wikibooks.org/wiki/LaTeX](https://en.wikibooks.org/wiki/LaTeX)
 * An actual tutorial: [http://www.latex-tutorial.com/](http://www.latex-tutorial.com/)
