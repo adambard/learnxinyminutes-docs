@@ -4,6 +4,7 @@ filename: learnsass.scss
 contributors:
   - ["Laura Kyle", "https://github.com/LauraNK"]
   - ["Sean Corrales", "https://github.com/droidenator"]
+  - ["Kyle Mendes", "https://github.com/pink401k"]
 ---
 
 Sass is a CSS extension language that adds features such as variables, nesting, mixins and more.
@@ -24,7 +25,7 @@ If you're already familiar with CSS3, you'll be able to pick up Sass relatively 
 
 
 /* Variables
-==============================*/
+============================== */
 
 
 
@@ -36,7 +37,7 @@ $secondary-color: #51527F;
 $body-font: 'Roboto', sans-serif;
 
 /* You can use the variables throughout your stylesheet.
-Now if you want to change a color, you only have to make the change once.*/
+Now if you want to change a color, you only have to make the change once. */
 
 body {
 	background-color: $primary-color;
@@ -58,14 +59,14 @@ each time it appears throughout your stylesheet. */
 
 
 /* Mixins
-==============================*/
+============================== */
 
 
 
 /* If you find you are writing the same code for more than one
 element, you might want to store that code in a mixin.
 
-Use the '@mixin' directive, plus a name for your mixin.*/
+Use the '@mixin' directive, plus a name for your mixin. */
 
 @mixin center {
 	display: block;
@@ -124,7 +125,7 @@ div {
 
 
 /* Functions
-==============================*/
+============================== */
 
 
 
@@ -188,7 +189,7 @@ $main-content: calculate-percentage(600px, 960px);
 
 
 /* Extend (Inheritance)
-==============================*/
+============================== */
 
 
 
@@ -225,7 +226,7 @@ $main-content: calculate-percentage(600px, 960px);
 
 
 /* Nesting
-==============================*/
+============================== */
 
 
 
@@ -285,7 +286,7 @@ ul li a {
 
 
 /* Partials and Imports
-==============================*/
+============================== */
 
 
 
@@ -330,7 +331,7 @@ body {
 
 
 /* Placeholder Selectors
-==============================*/
+============================== */
 
 
 
@@ -367,7 +368,7 @@ body {
 
 
 /* Math Operations
-==============================*/
+============================== */
 
 
 
