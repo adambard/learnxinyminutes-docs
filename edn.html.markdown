@@ -7,13 +7,12 @@ contributors:
 
 Extensible Data Notation or EDN for short is a format for serializing data.
 
-The notation is used internally by Clojure to represent programs and
-it is used commonly by Clojure and Clojurescript programs to transfer
-data. Though there are implementations of EDN for many other
-languages.
+The notation is used internally by Clojure to represent programs and it also
+used as a data transfer format like JSON. Though it is more commonly used in
+Clojure land, there are implementations of EDN for many other languages.
 
-The main benefit of EDN is that it is extensible, which we will see
-how it is extended later on.
+The main benefit of EDN over JSON and YAML is that it is extensible, which we
+will see how it is extended later on.
 
 ```Clojure
 ; Comments start with a semicolon.
@@ -37,8 +36,7 @@ false
 \g \r \a \c \e
 
 ; Keywords starts with a colon. They behave like enums. Kinda
-; like symbols in ruby land.
-
+; like symbols in ruby.
 :eggs
 :cheese
 :olives
@@ -74,7 +72,9 @@ false
 ; Sets are collections that contain unique elements.
 #{:a :b 88 "huat"}
 
-;;; Tagged Elements
+;;;;;;;;;;;;;;;;;;;;;;;
+;;; Tagged Elements ;;;
+;;;;;;;;;;;;;;;;;;;;;;;
 
 ; EDN can be extended by tagging elements with # symbols.
 
