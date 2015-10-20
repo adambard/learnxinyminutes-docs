@@ -405,4 +405,4 @@ class PennyFarthing extends Bicycle {
 
 * [泛型](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
 
-* [Java代码规范](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+* [Java代码规范](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
