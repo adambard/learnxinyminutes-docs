@@ -8,7 +8,6 @@ contributors:
     - ["Ha-Duong Nguyen", "http://reference-error.org"]
 translators:
     - ["João Costa", "http://joaocosta.eu"]
-    - ["Felipe Nogueira de Souza", "http://fnsouza.me"]
 lang: pt-pt
 ---
 
@@ -57,7 +56,7 @@ print("Hello world")
 val x = 10 // x é agora 10
 x = 20     // erro: reatribuição de um val
 var y = 10
-y = 20     // y é agora 20
+y = 20     // y é agora 12
 
 /*
   Scala é uma linguagem estaticamente tipada, no entanto, nas declarações acima
@@ -195,7 +194,7 @@ val quadrado: Int => Int = x => x * x
 quadrado(10)   // => 100
 
 // Se cada argumento de uma função anónima for usado apenas uma vez, existe
-// uma forma ainda mais curta de os definir. Estas funções anónimas são
+// uma forma ainda mais curta de os definir. Estas funções anónumas são
 // extremamente comuns, como será visto na secção sobre estruturas de dados.
 val somaUm: Int => Int = _ + 1
 val somaEstranha: (Int, Int) => Int = (_ * 2 + _ * 3)
@@ -228,7 +227,7 @@ val r = 1 to 5
 r.foreach(println)
 
 r foreach println
-// NB: Scala é bastante brando no que toca a pontos e parentesis - estude as
+// NB: Scala é bastante brando no que toca a pontos e parentisis - estude as
 // regras separadamente. Isto permite escrever APIs e DSLs bastante legiveis
 
 (5 to 1 by -1) foreach (println)
@@ -582,7 +581,7 @@ enviaCumprimentos("Joana")  // => "Olá Joana, 100 cumprimentos para ti e para o
 // Outra situação em que o compilador prouca um implicito é se encontrar uma
 // expressão
 //    obj.método(...)
-// mas "obj" não possuir um método chamado "método". Neste caso, se houver uma
+// mas "obj" não possuir um método chamado "método". Neste cso, se houver uma
 // conversão implicita A => B, onde A é o tipo de obj, e B possui um método
 // chamado "método", a conversão é aplicada. Ou seja, tendo
 // aMinhaFunçãoImplicita definida, podemos dizer
