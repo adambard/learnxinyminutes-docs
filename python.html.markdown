@@ -5,7 +5,7 @@ contributors:
     - ["Amin Bandali", "http://aminbandali.com"]
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["evuez", "http://github.com/evuez"]
-	- ["MineDoubleSpace", "http://github.com/MineDoubleSpace"]
+    - ["MineDoubleSpace", "http://github.com/MineDoubleSpace"]
 filename: learnpython.py
 ---
 
