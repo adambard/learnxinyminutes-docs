@@ -8,7 +8,7 @@ contributors:
 translators:
     - ["David Hsieh", "http://github.com/deivuh"]
 lang: es-es
-filename: LearnObjectiveC.m
+filename: LearnObjectiveC-es.m
 
 ---
 Objective C es el lenguaje de programación principal utilizado por Apple para los sistemas operativos OS X y iOS y sus respectivos frameworks, Cocoa y Cocoa Touch.
