@@ -277,30 +277,30 @@ print(someIntB) // 7
 //
 var numbers = [1, 2, 6]
 
-// Functions are special case closures ({})
+// Funções são casos especiais de closures ({})
 
-// Closure example.
-// `->` separates the arguments and return type
-// `in` separates the closure header from the closure body
+// Exemplo de um Closure.
+// `->` separa o argumento e o tipo de retorno.
+// `in` separa o cabeçalho do closure do corpo do closure.
 numbers.map({
     (number: Int) -> Int in
     let result = 3 * number
     return result
 })
 
-// When the type is known, like above, we can do this
+// Quando o tipo é conhecido, como em cima, podemos fazer o seguinte
 numbers = numbers.map({ number in 3 * number })
-// Or even this
+// Ou até mesmo isto
 //numbers = numbers.map({ $0 * 3 })
 
 print(numbers) // [3, 6, 18]
 
-// Trailing closure
+// Closure à direita (Trailing closure)
 numbers = sorted(numbers) { $0 > $1 }
 
 print(numbers) // [18, 6, 3]
 
-// Super shorthand, since the < operator infers the types
+// Super curto, pois o operador < consegue inferir o tipo
 
 numbers = sorted(numbers, < )
 
