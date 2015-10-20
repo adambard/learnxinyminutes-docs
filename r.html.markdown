@@ -16,9 +16,8 @@ R is a statistical computing language. It has lots of libraries for uploading an
 # You can't make multi-line comments,
 # but you can stack multiple comments like so.
 
-# in Windows or Mac, hit COMMAND-ENTER to execute a line
-
-
+# in Windows you can use CTRL-ENTER to execute a line.
+# on Mac it is COMMAND-ENTER
 
 #############################################################################
 # Stuff you can do without understanding anything about programming
@@ -37,8 +36,8 @@ head(rivers)	# peek at the data set
 length(rivers)	# how many rivers were measured?
 # 141
 summary(rivers) # what are some summary statistics?
-#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-#  135.0   310.0   425.0   591.2   680.0  3710.0 
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+#  135.0   310.0   425.0   591.2   680.0  3710.0
 
 # make a stem-and-leaf plot (a histogram-like data visualization)
 stem(rivers)
@@ -55,14 +54,14 @@ stem(rivers)
 #  14 | 56
 #  16 | 7
 #  18 | 9
-#  20 | 
+#  20 |
 #  22 | 25
 #  24 | 3
-#  26 | 
-#  28 | 
-#  30 | 
-#  32 | 
-#  34 | 
+#  26 |
+#  28 |
+#  30 |
+#  32 |
+#  34 |
 #  36 | 1
 
 stem(log(rivers)) # Notice that the data are neither normal nor log-normal!
@@ -71,7 +70,7 @@ stem(log(rivers)) # Notice that the data are neither normal nor log-normal!
 #  The decimal point is 1 digit(s) to the left of the |
 #
 #  48 | 1
-#  50 | 
+#  50 |
 #  52 | 15578
 #  54 | 44571222466689
 #  56 | 023334677000124455789
@@ -86,7 +85,7 @@ stem(log(rivers)) # Notice that the data are neither normal nor log-normal!
 #  74 | 84
 #  76 | 56
 #  78 | 4
-#  80 | 
+#  80 |
 #  82 | 2
 
 # make a histogram:
@@ -109,7 +108,7 @@ sort(discoveries)
 # [76]  4  4  4  4  5  5  5  5  5  5  5  6  6  6  6  6  6  7  7  7  7  8  9 10 12
 
 stem(discoveries, scale=2)
-# 
+#
 #  The decimal point is at the |
 #
 #   0 | 000000000
@@ -130,7 +129,7 @@ max(discoveries)
 # 12
 summary(discoveries)
 #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-#    0.0     2.0     3.0     3.1     4.0    12.0 
+#    0.0     2.0     3.0     3.1     4.0    12.0
 
 # Roll a die a few times
 round(runif(7, min=.5, max=6.5))
@@ -274,7 +273,7 @@ class(NULL)	# NULL
 parakeet = c("beak", "feathers", "wings", "eyes")
 parakeet
 # =>
-# [1] "beak"     "feathers" "wings"    "eyes"    
+# [1] "beak"     "feathers" "wings"    "eyes"
 parakeet <- NULL
 parakeet
 # =>
@@ -291,7 +290,7 @@ as.numeric("Bilbo")
 # =>
 # [1] NA
 # Warning message:
-# NAs introduced by coercion 
+# NAs introduced by coercion
 
 # Also note: those were just the basic data types
 # There are many more data types, such as for dates, time series, etc.
@@ -431,10 +430,10 @@ mat %*% t(mat)
 mat2 <- cbind(1:4, c("dog", "cat", "bird", "dog"))
 mat2
 # =>
-#      [,1] [,2]   
-# [1,] "1"  "dog"  
-# [2,] "2"  "cat"  
-# [3,] "3"  "bird" 
+#      [,1] [,2]
+# [1,] "1"  "dog"
+# [2,] "2"  "cat"
+# [3,] "3"  "bird"
 # [4,] "4"  "dog"
 class(mat2)	# matrix
 # Again, note what happened!
