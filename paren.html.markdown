@@ -4,6 +4,7 @@ language: Paren
 filename: learnparen.paren
 contributors:
   - ["KIM Taegyoon", "https://github.com/kimtg"]
+  - ["Claudson Martins", "https://github.com/claudsonm"]
 ---
 
 [Paren](https://bitbucket.org/ktg/paren) is a dialect of Lisp. It is designed to be an embedded language.
