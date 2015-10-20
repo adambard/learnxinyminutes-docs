@@ -329,8 +329,8 @@ print("Name is \(name)") // Name is Them
 // MARK: Classes
 //
 
-// Classes, structures and its members have three levels of access control
-// They are: internal (default), public, private
+// Classes, estruturas e os seus membros têm três níveis de controlo de acesso
+// Nomeadamente: interno (predefinição)(internal) , público (public), privado (private)
 
 public class Shape {
     public func getArea() -> Int {
@@ -338,33 +338,33 @@ public class Shape {
     }
 }
 
-// All methods and properties of a class are public.
-// If you just need to store data in a
-// structured object, you should use a `struct`
+// Todos os métodos e propriedades de uma classe são públicos.
+// Se só for necessário guarda dados num
+// objecto estruturado, então é melhor usar uma `struct`
 
 internal class Rect: Shape {
     var sideLength: Int = 1
 
-    // Custom getter and setter property
+    // Propriedade getter e setter personalizado
     private var perimeter: Int {
         get {
             return 4 * sideLength
         }
         set {
-            // `newValue` is an implicit variable available to setters
+            // `newValue` é uma variável implicita disponível aos setters
             sideLength = newValue / 4
         }
     }
 
-    // Lazily load a property
-    // subShape remains nil (uninitialized) until getter called
+    // Carregar preguiçosamente uma propriedade
+    // subShape permanece a nil (unintialized) até o getter ser invocado
     lazy var subShape = Rect(sideLength: 4)
 
-    // If you don't need a custom getter and setter,
-    // but still want to run code before and after getting or setting
-    // a property, you can use `willSet` and `didSet`
+    // Se não for necessário um getter e setter personalizado,
+    // mas se quiser correr o código antes e depois de modificar ou aceder
+    // uma propriedade, é possível usar `willSet` e `didSet`
     var identifier: String = "defaultID" {
-        // the `willSet` arg will be the variable name for the new value
+        // o argumento de `willSet` é o nome da variável para o novo valor
         willSet(someIdentifier) {
             print(someIdentifier)
         }
@@ -372,7 +372,7 @@ internal class Rect: Shape {
 
     init(sideLength: Int) {
         self.sideLength = sideLength
-        // always super.init last when init custom properties
+        // invocar super.init no final do método de inicialização
         super.init()
     }
 
@@ -387,7 +387,7 @@ internal class Rect: Shape {
     }
 }
 
-// A simple class `Square` extends `Rect`
+// A class `Square` estende (extends) a classe `Rect` (hierarquia)
 class Square: Rect {
     convenience init() {
         self.init(sideLength: 5)
@@ -399,23 +399,23 @@ print(mySquare.getArea()) // 25
 mySquare.shrink()
 print(mySquare.sideLength) // 4
 
-// cast instance
+// Cast de uma instância de `Square` para `Shape`
 let aShape = mySquare as Shape
 
-// compare instances, not the same as == which compares objects (equal to)
+// Compara instâncias, não é igual a == , visto que == compara objects (igual a)
 if mySquare === mySquare {
     print("Yep, it's mySquare")
 }
 
-// Optional init
+// Inicializador (init) com Optional
 class Circle: Shape {
     var radius: Int
     override func getArea() -> Int {
         return 3 * radius * radius
     }
 
-    // Place a question mark postfix after `init` is an optional init
-    // which can return nil
+    // Colocar um ponto de interrpgação depois de `init` cria um inicializador
+    // Optional, o qual pode retornar nil
     init?(radius: Int) {
         self.radius = radius
         super.init()
@@ -432,7 +432,7 @@ print(myCircle!.getArea())    // 3
 var myEmptyCircle = Circle(radius: -1)
 print(myEmptyCircle?.getArea())    // "nil"
 if let circle = myEmptyCircle {
-    // will not execute since myEmptyCircle is nil
+    // Não vai executar pois a variável myEmptyCircle é igual a nil
     print("circle is not nil")
 }
 
