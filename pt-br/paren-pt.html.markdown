@@ -72,7 +72,7 @@ false ; para falso
 ;; 2. Variáveis
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Você pode criar ou definir uma variável usando (set)
-;; o nome de uma variável pode user qualquer caracter, exceto: ();#"
+;; o nome de uma variável pode conter qualquer caracter, exceto: ();#"
 (set alguma-variavel 5) ; => 5
 alguma-variavel ; => 5
 
