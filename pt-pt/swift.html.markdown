@@ -307,10 +307,10 @@ numbers = sorted(numbers, < )
 print(numbers) // [3, 6, 18]
 
 //
-// MARK: Structures
+// MARK: Estruturas (Structures)
 //
 
-// Structures and classes have very similar capabilities
+// Estruturas (struct) e classes (class) têm capacidades muito semelhantes
 struct NamesTable {
     let names = [String]()
 
@@ -320,7 +320,7 @@ struct NamesTable {
     }
 }
 
-// Structures have an auto-generated (implicit) designated initializer
+// Estruturas têm um inicializador implicito que é automaticamente gerado
 let namesTable = NamesTable(names: ["Me", "Them"])
 let name = namesTable[1]
 print("Name is \(name)") // Name is Them
