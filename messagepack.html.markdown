@@ -16,7 +16,7 @@ In MessagePack, small integers are encoded into a single byte, and typical short
 JSON, 40 Bytes UTF-8
 	
 ----------------------------------------------
-| {“name“:”John Doe“,”age“:12}		         |
+| {"name":"John Doe","age":12}		         |
 ----------------------------------------------
 |  {"         | 7B 22                        |
 |    name     | 6E 61 6D 65                  |
