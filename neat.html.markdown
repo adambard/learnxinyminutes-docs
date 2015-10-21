@@ -47,18 +47,18 @@ void main(string[] args) {
   // There are no one-value tuples though.
   // So you can always use () in the mathematical sense.
   // (string) arg; <- is an error
-  
+
   /*
     byte: 8 bit signed integer
       char: 8 bit UTF-8 byte component.
     short: 16 bit signed integer
     int: 32 bit signed integer
     long: 64 bit signed integer
-    
+
     float: 32 bit floating point
     double: 64 bit floating point
     real: biggest native size floating point (80 bit on x86).
-    
+
     bool: true or false
   */
   int a = 5;
@@ -139,14 +139,14 @@ void main(string[] args) {
   assert !(hewo is s);
   // same as
   assert  (hewo !is s);
-  
+
   // Allocate arrays using "new array length"
   int[] integers = new int[] 10;
   assert(integers.length == 10);
   assert(integers[0] == 0); // zero is default initializer
   integers = integers ~ 5; // This allocates a new array!
   assert(integers.length == 11);
-  
+
   // This is an appender array.
   // Instead of (length, pointer), it tracks (capacity, length, pointer).
   // When you append to it, it will use the free capacity if it can.
@@ -156,13 +156,13 @@ void main(string[] args) {
   appender ~= 2;
   appender ~= 3;
   appender.free(); // same as {mem.free(appender.ptr); appender = null;}
-  
+
   // Scope variables are automatically freed at the end of the current scope.
   scope int[auto~] someOtherAppender;
   // This is the same as:
   int[auto~] someOtherAppender2;
   onExit { someOtherAppender2.free; }
-  
+
   // You can do a C for loop too
   // - but why would you want to?
   for (int i = 0; i < 5; ++i) { }
@@ -178,23 +178,23 @@ void main(string[] args) {
     assert(i == 5);
     break; // otherwise we'd go back up to do {
   }
-  
+
   // This is a nested function.
   // Nested functions can access the surrounding function.
   string returnS() { return s; }
   writeln returnS();
-  
+
   // Take the address of a function using &
   // The type of a global function is ReturnType function(ParameterTypeTuple).
   void function() foop = &foo;
-  
+
   // Similarly, the type of a nested function is ReturnType delegate(ParameterTypeTuple).
   string delegate() returnSp = &returnS;
   writeln returnSp();
   // Class member functions and struct member functions also fit into delegate variables.
   // In general, delegates are functions that carry an additional context pointer.
   // ("fat pointers" in C)
-  
+
   // Allocate a "snapshot" with "new delegate".
   // Snapshots are not closures! I used to call them closures too,
   // but then my Haskell-using friends yelled at me so I had to stop.
@@ -232,8 +232,8 @@ void main(string[] args) {
   auto nestfun = λ() { } // There is NO semicolon needed here!
   // "}" can always substitute for "};".
   // This provides syntactic consistency with built-in statements.
-  
-  
+
+
   // This is a class.
   // Note: almost all elements of Neat can be used on the module level
   //       or just as well inside a function.
@@ -268,7 +268,7 @@ void main(string[] args) {
   E e = E:cd; // dynamic class cast!
   e.doE();
   writeln "$e"; // all interfaces convert to Object implicitly.
-  
+
   // Templates!
   // Templates are parameterized namespaces, taking a type as a parameter.
   template Templ(T) {

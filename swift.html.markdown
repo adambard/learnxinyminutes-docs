@@ -3,8 +3,9 @@ language: swift
 contributors:
   - ["Grant Timmerman", "http://github.com/grant"]
   - ["Christopher Bess", "http://github.com/cbess"]
-  - ["Joey Huang", "http://github.com/kamidox"]  
+  - ["Joey Huang", "http://github.com/kamidox"]
   - ["Anthony Nguyen", "http://github.com/anthonyn60"]
+  - ["Clayton Walker", "https://github.com/cwalk"]
 filename: learnswift.swift
 ---
 
@@ -12,7 +13,7 @@ Swift is a programming language for iOS and OS X development created by Apple. D
 
 The official [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) book from Apple is now available via iBooks.
 
-See also Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html), which has a complete tutorial on Swift.
+See also Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/), which has a complete tutorial on Swift.
 
 ```swift
 // import a module
@@ -57,8 +58,9 @@ let piText = "Pi = \(π), Pi 2 = \(π * 2)" // String interpolation
 print("Build value: \(buildValue)") // Build value: 7
 
 /*
-    Optionals are a Swift language feature that allows you to store a `Some` or
-    `None` value.
+    Optionals are a Swift language feature that either contains a value,
+    or contains nil (no value) to indicate that a value is missing.
+    A question mark (?) after the type marks the value as optional.
 
     Because Swift requires every property to have a value, even nil must be
     explicitly stored as an Optional value.
@@ -74,10 +76,16 @@ if someOptionalString != nil {
     if someOptionalString!.hasPrefix("opt") {
         print("has the prefix")
     }
-    
+
     let empty = someOptionalString?.isEmpty
 }
 someOptionalString = nil
+
+/*
+    Trying to use ! to access a non-existent optional value triggers a runtime 
+    error. Always make sure that an optional contains a non-nil value before
+    using ! to force-unwrap its value.
+*/
 
 // implicitly unwrapped optional
 var unwrappedString: String! = "Value is expected."
@@ -93,13 +101,13 @@ if let someOptionalStringConstant = someOptionalString {
 
 // Swift has support for storing a value of any type.
 // AnyObject == id
-// Unlike Objective-C `id`, AnyObject works with any value (Class, Int, struct, etc)
+// Unlike Objective-C `id`, AnyObject works with any value (Class, Int, struct, etc.)
 var anyObjectVar: AnyObject = 7
 anyObjectVar = "Changed value to a string, not good practice, but possible."
 
 /*
     Comment here
-    
+
     /*
         Nested comments are also supported
     */
@@ -295,10 +303,10 @@ print(numbers) // [3, 6, 18]
 // MARK: Structures
 //
 
-// Structures and classes have very similar capabilites
+// Structures and classes have very similar capabilities
 struct NamesTable {
     let names = [String]()
-    
+
     // Custom subscript
     subscript(index: Int) -> String {
         return names[index]
@@ -329,7 +337,7 @@ public class Shape {
 
 internal class Rect: Shape {
     var sideLength: Int = 1
-    
+
     // Custom getter and setter property
     private var perimeter: Int {
         get {
@@ -340,11 +348,11 @@ internal class Rect: Shape {
             sideLength = newValue / 4
         }
     }
-    
+
     // Lazily load a property
     // subShape remains nil (uninitialized) until getter called
     lazy var subShape = Rect(sideLength: 4)
-    
+
     // If you don't need a custom getter and setter,
     // but still want to run code before and after getting or setting
     // a property, you can use `willSet` and `didSet`
@@ -354,19 +362,19 @@ internal class Rect: Shape {
             print(someIdentifier)
         }
     }
-    
+
     init(sideLength: Int) {
         self.sideLength = sideLength
         // always super.init last when init custom properties
         super.init()
     }
-    
+
     func shrink() {
         if sideLength > 0 {
             --sideLength
         }
     }
-    
+
     override func getArea() -> Int {
         return sideLength * sideLength
     }
@@ -398,13 +406,13 @@ class Circle: Shape {
     override func getArea() -> Int {
         return 3 * radius * radius
     }
-    
+
     // Place a question mark postfix after `init` is an optional init
     // which can return nil
     init?(radius: Int) {
         self.radius = radius
         super.init()
-        
+
         if radius <= 0 {
             return nil
         }
@@ -458,7 +466,7 @@ enum Furniture {
     case Desk(height: Int)
     // Associate with String and Int
     case Chair(String, Int)
-    
+
     func description() -> String {
         switch self {
         case .Desk(let height):
@@ -497,7 +505,7 @@ protocol ShapeGenerator {
 
 class MyShape: Rect {
     var delegate: TransformShape?
-    
+
     func grow() {
         sideLength += 2
 
@@ -532,7 +540,7 @@ extension Int {
     var customProperty: String {
         return "This is \(self)"
     }
-    
+
     func multiplyBy(num: Int) -> Int {
         return num * self
     }
@@ -574,4 +582,18 @@ print(mySquare.sideLength) // 4
 // change side length using custom !!! operator, increases size by 3
 !!!mySquare
 print(mySquare.sideLength) // 12
+
+// Operators can also be generics
+infix operator <-> {}
+func <-><T: Equatable> (inout a: T, inout b: T) {
+    let c = a
+    a = b
+    b = c
+}
+
+var foo: Float = 10
+var bar: Float = 20
+
+foo <-> bar
+print("foo is \(foo), bar is \(bar)") // "foo is 20.0, bar is 10.0"
 ```

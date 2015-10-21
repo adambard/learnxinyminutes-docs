@@ -6,6 +6,7 @@ contributors:
     - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
 translators:
     - ["João Farias", "https://github.com/JoaoGFarias"]
+    - ["Elton Viana", "https://github.com/eltonvs"]
 lang: pt-br
 filename: c-pt.el
 ---
@@ -139,13 +140,13 @@ int main() {
     int var_length_array[size]; // declara o VLA
     printf("sizeof array = %zu\n", sizeof var_length_array);
 
-	//Uma possível saída para esse programa seria:
-    // > Entre o tamanho do array:: 10
+    // Uma possível saída para esse programa seria:
+    // > Entre o tamanho do array: 10
     // > sizeof array = 40
 
 	// String são apenas arrays de caracteres terminados por um 
-	// byte NUL (0x00), representado em string pelo caracter especial '\0'.
-	// (Não precisamos incluir o byte NUL em literais de string; o compilador
+	// byte nulo (0x00), representado em string pelo caracter especial '\0'.
+	// (Não precisamos incluir o byte nulo em literais de string; o compilador
 	// o insere ao final do array para nós.)
     char uma_string[20] = "Isto é uma string"; 
 	// Observe que 'é' não está na tabela ASCII
@@ -153,8 +154,8 @@ int main() {
 	// Porém, comentários podem conter acentos 
     printf("%s\n", uma_string); // %s formata a string
 
-    printf("%d\n", uma_string[16]); // => 0
-    // i.e., byte #17 é 0 (assim como 18, 19, e 20)
+    printf("%d\n", uma_string[17]); // => 0
+    // i.e., byte #18 é 0 (assim como o 19°, 20°, 21°...)
 
 	// Se temos caracteres entre aspas simples, temos um caracter literal.
 	// Seu tipo é `int`, *não* `char` (por razões históricas).
@@ -220,11 +221,11 @@ int main() {
     0 || 1; // => 1 (Ou lógico)
     0 || 0; // => 0
 
-    //Expressão condicional ( ? : )
+    //Expressão condicional ternária ( ? : )
     int a = 5;
     int b = 10;
     int z;
-    z = (a > b) ? a : b; // => 10 "se a > b retorne a, senão retorne b." 
+    z = (a > b) ? a : b; // => 10 "se a > b retorne a, senão retorne b."
 
     //Operadores de incremento e decremento:
     char *s = "iLoveC";
@@ -290,6 +291,8 @@ int main() {
     for (i = 0; i <= 5; i++) {
         ; // Use ponto e vírgula para agir como um corpo (declaração nula)
     }
+    // Ou
+    for (i = 0; i <= 5; i++);
 
 	// Criando branchs com escolhas múltiplas: switch()
     switch (alguma_expressao_integral) {

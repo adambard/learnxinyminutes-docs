@@ -11,28 +11,28 @@ contributors:
 Feedback highly appreciated! Reach me at [@jigyasa_grover](https://twitter.com/jigyasa_grover) or send me an e-mail at `grover.jigyasa1@gmail.com`.
 
 
-##Allowable characters:                                                
-- a-z                                                             
-- A-Z                                                             
-- 0-9                                                             
+##Allowable characters:
+- a-z
+- A-Z
+- 0-9
 - .+/\*~<>@%|&?
 - blank, tab, cr, ff, lf
 
 ##Variables:
-- variables must be declared before use                           
-- shared vars must begin with uppercase                           
-- local vars must begin with lowercase                            
+- variables must be declared before use
+- shared vars must begin with uppercase
+- local vars must begin with lowercase
 - reserved names: `nil`, `true`, `false`, `self`, `super`, and `Smalltalk`
 
-##Variable scope:                                                      
-- Global: defined in Dictionary Smalltalk and accessible by all objects in system                                 - Special: (reserved) `Smalltalk`, `super`, `self`, `true`, `false`, & `nil` 
-- Method Temporary: local to a method                             
-- Block Temporary: local to a block                               
-- Pool: variables in a Dictionary object                          
+##Variable scope:
+- Global: defined in Dictionary Smalltalk and accessible by all objects in system                                 - Special: (reserved) `Smalltalk`, `super`, `self`, `true`, `false`, & `nil`
+- Method Temporary: local to a method
+- Block Temporary: local to a block
+- Pool: variables in a Dictionary object
 - Method Parameters: automatic local vars created as a result of message call with params
 - Block Parameters: automatic local vars created as a result of value: message call
-- Class: shared with all instances of one class & its subclasses  
-- Class Instance: unique to each instance of a class              
+- Class: shared with all instances of one class & its subclasses
+- Class Instance: unique to each instance of a class
 - Instance Variables: unique to each instance
 
 `"Comments are enclosed in quotes"`
@@ -53,7 +53,7 @@ Transcript cr.                                              "carriage return / l
 Transcript endEntry.                                        "flush the output buffer"
 ```
 
-##Assignment:   
+##Assignment:
 ```
 | x y |
 x _ 4.                                                      "assignment (Squeak) <-"
@@ -72,7 +72,7 @@ y := x deepCopy.                                            "copy object and ins
 y := x veryDeepCopy.                                        "complete tree copy using a dictionary"
 ```
 
-##Constants:                                                           
+##Constants:
 ```
 | b |
 b := true.                                                  "true constant"
@@ -93,7 +93,7 @@ x := #('abc' 2 $a).                                         "mixing of types all
 
 ```
 
-## Booleans:                                                            
+## Booleans:
 ```
 | b x y |
 x := 1. y := 2.
@@ -132,7 +132,7 @@ b := $A isLowercase.                                        "test if lower case 
 
 ```
 
-## Arithmetic expressions:                                              
+## Arithmetic expressions:
 ```
 | x |
 x := 6 + 3.                                                 "addition"
@@ -190,7 +190,7 @@ x := 100 atRandom.                                          "quick random number
 
 ```
 
-##Bitwise Manipulation:                                                
+##Bitwise Manipulation:
 ```
 | b x |
 x := 16rFF bitAnd: 16r0F.                                   "and bits"
@@ -207,7 +207,7 @@ b := 16rFF noMask: 16r0F.                                   "test if all bits se
 
 ```
 
-## Conversion:                                                          
+## Conversion:
 ```
 | x |
 x := 3.99 asInteger.                                        "convert number to integer (truncates in Squeak)"
@@ -223,15 +223,15 @@ x := 15 storeStringBase: 16.
 
 ```
 
-## Blocks:                                                              
-- blocks are objects and may be assigned to a variable            
-- value is last expression evaluated unless explicit return       
-- blocks may be nested                                            
-- specification [ arguments | | localvars | expressions ]         
-- Squeak does not currently support localvars in blocks           
-- max of three arguments allowed                                  
-- `^`expression terminates block & method (exits all nested blocks) 
-- blocks intended for long term storage should not contain `^`      
+## Blocks:
+- blocks are objects and may be assigned to a variable
+- value is last expression evaluated unless explicit return
+- blocks may be nested
+- specification [ arguments | | localvars | expressions ]
+- Squeak does not currently support localvars in blocks
+- max of three arguments allowed
+- `^`expression terminates block & method (exits all nested blocks)
+- blocks intended for long term storage should not contain `^`
 
 ```
 | x y z |
@@ -241,18 +241,18 @@ Transcript show: (x value: 'First' value: 'Second'); cr.    "use block with argu
 "x := [ | z | z := 1.]. *** localvars not available in squeak blocks"
 ```
 
-## Method calls:                                                        
-- unary methods are messages with no arguments                    
-- binary methods                                                  
-- keyword methods are messages with selectors including colons standard categories/protocols:                     - initialize-release    (methods called for new instance)         
-- accessing             (get/set methods)                         
-- testing               (boolean tests - is)                      
-- comparing             (boolean tests with parameter             
-- displaying            (gui related methods)                     
-- printing              (methods for printing)                    
-- updating              (receive notification of changes)         
-- private               (methods private to class)                
-- instance-creation     (class methods for creating instance)     
+## Method calls:
+- unary methods are messages with no arguments
+- binary methods
+- keyword methods are messages with selectors including colons standard categories/protocols:                     - initialize-release    (methods called for new instance)
+- accessing             (get/set methods)
+- testing               (boolean tests - is)
+- comparing             (boolean tests with parameter
+- displaying            (gui related methods)
+- printing              (methods for printing)
+- updating              (receive notification of changes)
+- private               (methods private to class)
+- instance-creation     (class methods for creating instance)
 ```
 | x |
 x := 2 sqrt.                                                "unary message"
@@ -299,7 +299,7 @@ switch at: $C put: [Transcript show: 'Case C'; cr].
 result := (switch at: $B) value.
 ```
 
-## Iteration statements:                                                
+## Iteration statements:
 ```
 | x y |
 x := 4. y := 1.
@@ -311,7 +311,7 @@ x timesRepeat: [y := y * 2].                                "times repear loop (
 #(5 4 3) do: [:a | x := x + a].                             "iterate over array elements"
 ```
 
-## Character:                                                           
+## Character:
 ```
 | x y |
 x := $A.                                                    "character assignment"
@@ -544,7 +544,7 @@ y := x asSet.                                               "convert to set coll
 ```
 
 ## Set:           like Bag except duplicates not allowed
-## IdentitySet:   uses identity test (== rather than =)  
+## IdentitySet:   uses identity test (== rather than =)
 ```
 | b x y sum max |
 x := Set with: 4 with: 3 with: 2 with: 1.                   "create collection with up to 4 elements"
@@ -603,7 +603,7 @@ y := x asBag.                                               "convert to bag coll
 y := x asSet.                                               "convert to set collection"
 ```
 
-##Associations: 
+##Associations:
 ```
 | x y |
 x := #myVar->'hello'.

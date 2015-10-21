@@ -31,7 +31,7 @@ we are using GNU make which is the standard on Linux.
 file0.txt:
 	echo "foo" > file0.txt
 	# Even comments in these 'recipe' sections get passed to the shell.
-	# Try `make file0.txt` or simply `make` - first rule is the default. 
+	# Try `make file0.txt` or simply `make` - first rule is the default.
 
 
 # This rule will only run if file0.txt is newer than file1.txt.
@@ -49,7 +49,7 @@ file2.txt file3.txt: file0.txt file1.txt
 	touch file2.txt
 	touch file3.txt
 
-# Make will complain about multiple recipes for the same rule. Empty 
+# Make will complain about multiple recipes for the same rule. Empty
 # recipes don't count though and can be used to add new dependencies.
 
 #-----------------------------------------------------------------------
@@ -115,7 +115,7 @@ small/%.png: %.svg
 %.png: %.ps
 	@echo this rule is not chosen if *.svg and *.ps are both present
 
-# make already has some pattern rules built-in. For instance, it knows 
+# make already has some pattern rules built-in. For instance, it knows
 # how to turn *.c files into *.o files.
 
 # Older makefiles might use suffix rules instead of pattern rules
@@ -185,7 +185,7 @@ var := hello
 var2 ::=  $(var) hello
 #:= and ::= are equivalent.
 
-# These variables are evaluated procedurely (in the order that they 
+# These variables are evaluated procedurely (in the order that they
 # appear), thus breaking with the rest of the language !
 
 # This doesn't work
