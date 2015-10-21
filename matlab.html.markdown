@@ -262,7 +262,7 @@ pcolor(A) % Heat-map of matrix: plot as grid of rectangles, coloured by value
 contour(A) % Contour plot of matrix
 mesh(A) % Plot as a mesh surface
 
-h = figure	% Create new figure object, with handle h
+h = figure % Create new figure object, with handle h
 figure(h) % Makes the figure corresponding to handle h the current figure
 close(h) % close figure with handle h
 close all % close all open figure windows
@@ -460,7 +460,7 @@ length  % length of a vector
 sort    % sort in ascending order
 sum     % sum of elements
 prod    % product of elements
-mode	% modal value
+mode    % modal value
 median  % median value
 mean    % mean value
 std     % standard deviation
