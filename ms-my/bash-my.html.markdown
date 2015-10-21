@@ -38,12 +38,12 @@ Variable="Some string"
 
 # Tetapi bukan seperti ini:
 Variable = "Some string"
-# Bash akan memutuskan yang pembolehubah adalah arahan ia mesti dilaksanakan dan memberi ralat
+# Bash akan memutuskan yang pembolehubah adalah arahan ia mesti laksanakan dan memberi ralat
 # kerana ia tidak boleh dijumpai.
 
 # Atau seperti ini:
 Variable= 'Some string'
-# Bash akan memutuskan yang ‘Beberapa rentetan’ adalah arahan ia mesti dilaksanakan dan memberi
+# Bash akan memutuskan yang ‘Beberapa rentetan’ adalah arahan ia mesti laksanakan dan memberi
 # ralat kerana ia tidak dijumpai. (Dalam kes ini ‘Variable=' sebahagian dilihat
 # sebagai penetapan pembolehubah sah hanya untuk skop ‘Beberapa rentetan’
 # arahan.)
@@ -123,7 +123,7 @@ ls -l # Senarai setiap fail dan direktori pada baris yang berbeza
 # fail .txt di dalam direktori semasa:
 ls -l | grep "\.txt"
 
-# Anda boleh mengubah hala arahan input dan output (stdin, stdout, and stderr).
+# Anda boleh mengubah hala arahan input dan output (stdin, stdout, dan stderr).
 # Baca dari stdin sampai ^EOF$ dan menulis ganti hello.py dengan baris
 # antara “EOF":
 cat > hello.py << EOF
@@ -136,14 +136,14 @@ for line in sys.stdin:
     print(line, file=sys.stdout)
 EOF
 
-# Jalankan hello.py dengan pelbagai penghantaran semula stdin, stdout, and stderr:
+# Jalankan hello.py dengan pelbagai penghantaran semula stdin, stdout, dan stderr:
 python hello.py < "input.in"
 python hello.py > "output.out"
 python hello.py 2> "error.err"
 python hello.py > "output-and-error.log" 2>&1
 python hello.py > /dev/null 2>&1
 # Output ralat akan menulis ganti fail jika ia wujud,
-# jika anda ingin menambah sebaliknta, guna ‘>>”:
+# jika anda ingin menambah sebaliknya, guna ‘>>”:
 python hello.py >> "output.out" 2>> "error.err"
 
 # Menulis ganti output.out, menambah ke error.err, dan mengira baris:
@@ -253,7 +253,7 @@ grep "^foo.*bar$" file.txt
 # beri opsyen “-c” untuk sebaliknya mencetak jumlah baris sepadan regex
 grep -c "^foo.*bar$" file.txt
 # jika anda secara literal mahu untuk mencari rentetan,
-# dan bukannya regexm guna fgrep (atau grep -F)
+# dan bukannya regex, guna fgrep (atau grep -F)
 fgrep "^foo.*bar$" file.txt
 
 
