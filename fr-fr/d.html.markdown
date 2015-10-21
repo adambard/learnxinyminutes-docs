@@ -88,8 +88,8 @@ struct LinkedList(T) {
 class BinTree(T) {
     T data = null;
 
-	// Si il n'y a qu'un seul paramètre de template,
-	// on peut s'abstenir de mettre des parenthèses.
+    // Si il n'y a qu'un seul paramètre de template,
+    // on peut s'abstenir de mettre des parenthèses.
     BinTree!T left;
     BinTree!T right;
 }
