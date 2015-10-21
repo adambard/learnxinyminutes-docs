@@ -5,13 +5,14 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Daniel Zendejas", "https://github.com/DanielZendejas"]
+    - ["Ale Muñoz", "https://github.com/bomberstudios"]
 lang: es-es
 ---
 
 Markdown fue creado por John Gruber en 2004. Su propósito es ser una sintaxis fácil de leer y escribir que se convierta
 fácilmente a HTML (y, actualmente, otros formatos también).
 
-¡Denme todo la retroalimentación que quieran! / ¡Sientanse en la libertad de hacer forks o pull requests!
+¡Sus sugerencias son bienvenidas! / ¡Siéntanse libres de hacer forks o pull requests!
 
 
 ```markdown
@@ -22,7 +23,7 @@ así si creas un elemento HTML en tu archivo Markdown no podrás usar sintaxis
 Markdown dentro de él. -->
 
 <!-- La implementación de Markdown cambia de acuerdo al parseador. Esta
-guía servirá para clarificar cuales características son universales y
+guía servirá para clarificar qué características son universales y
 cuales son específicas de cada parseador-->
 
 <!-- Headers -->
@@ -36,7 +37,7 @@ de símbolos de números (#)-->
 ##### Esto es un <h5>
 ###### Esto es un <h6>
 
-<!-- Markdown también nos proveé con dos alternativas para indicar h1 y h2 -->
+<!-- Markdown también nos provee de dos alternativas para indicar h1 y h2 -->
 Esto es un h1
 =============
 
@@ -44,7 +45,7 @@ Esto es un h2
 -------------
 
 <!-- Estilos para texto plano -->
-<!-- El texto puede ser fácilmente estilizaedo con italicas, negritas o tachado 
+<!-- El texto puede ser fácilmente estilado con itálicas, negritas o tachado 
 usando markdown -->
 
 *Este texto está en itálicas.*
@@ -57,15 +58,14 @@ __Al igual que este texto.__
 **_Al igual que este!_**
 *__¡Y este!__*
 
-<!-- En Github Flavored Markdown, el cual es usado para mostrar archivos 
-Markdown en Github, también tenemos: -->
+<!-- En GitHub Flavored Markdown (usado para mostrar archivos Markdown en GitHub) también tenemos: -->
 
 ~~Este texto está tachado.~~
 
-<!-- Los párrafos son una o múltuples líneas de texto adyacentes separadas por 
+<!-- Los párrafos son una o múltiples líneas de texto adyacentes separadas por 
 una o múltiples líneas en blanco-->
 
-Este es un párrafo. Estoy escribiendo un párrafo, ¿No es divertido?
+Este es un párrafo. Estoy escribiendo un párrafo, ¿no es divertido?
 
 Ahora estoy en el párrafo dos.
 ¡Sigo en el párrafo dos!
@@ -77,7 +77,7 @@ un párrafo con dos o más espacios y luego empieza un párrafo nuevo-->
 
 Termino con dos espacios (selecciona esta línea completa para que los veas).  
 
-¡Hay un <br /> arriba de mí!
+¡Hay un <br /> sobre mí!
 
 <!-- Las citas de bloque son fáciles y se pueden hacer con el caracter >. -->
 
@@ -87,11 +87,10 @@ Termino con dos espacios (selecciona esta línea completa para que los veas).
 
 > ¿También puedes usar más de un nivel
 >> de indentación?
-> Esto es muy útil ¿No?
+> Esto es muy útil ¿no?
 
 <!-- Listas -->
-<!-- Las listas desordenadas se hacen usando asteriscos, símbolos de más,
- o guiones -->
+<!-- Las listas desordenadas se hacen usando asteriscos, símbolos de más, o guiones -->
 
 * Item
 * Item
@@ -146,11 +145,11 @@ para indentar dentro del código -->
         puts item
     end
 
-<!-- Código dentro de la línea puede ser escrito usando la comilla ` -->
+<!-- Si necesitas escribir códio dentro de una línea, puedes usar la comilla ` -->
 
 ¡John no sabía lo que la función `go_to()` hacía!
 
-<!-- Con Github Flavored Markdown, puedes usar una sintaxis especial para código -->
+<!-- Con GitHub Flavored Markdown, puedes usar una sintaxis especial para código -->
 
 \`\`\`ruby <!-- quita esas comillas cuando lo hagas, deja sólo ```ruby ! -->
 def foobar
@@ -158,8 +157,7 @@ def foobar
 end
 \`\`\` <!-- aquí también, sin comillas, sólo ``` -->
 
-<!-- El texto de arriba no necesita indentación, aparte Github usará
-resaltará la sintaxis del lenguaje que especifiques después de ``` -->
+<!-- El texto de arriba no necesita indentación, y además GitHub resaltará con colores la sintaxis del lenguaje que especifiques después de ``` -->
 
 <!-- Regla horizontal (<hr />) -->
 <!-- Las reglas horizontales se agregan fácilmente con tres o más asteriscos o guiones,
@@ -170,44 +168,39 @@ con o sin espacios. -->
 - - - 
 ****************
 
-<!-- Ligas -->
-<!-- Una de las mejores cosas de Markdown es la facilidad para hacer ligas. Pon
+<!-- Enlaces / Links -->
+<!-- Una de las mejores cosas de Markdown es la facilidad para hacer enlaces. Pon
 el texto a mostrar en corchetes [] seguidos por la URL en paréntesis () -->
 
 [¡Haz click!](http://test.com/)
 
-<!-- También puedes agregar el titulo de la liga usando comillas dentro de los paréntesis -->
+<!-- También puedes agregar el titulo del enlace usando comillas dentro de los paréntesis -->
 
-[¡Haz click!](http://test.com/ "Liga al test.com")
+[¡Haz click!](http://test.com/ "Enlace a test.com")
 
 <!-- También funcionan las rutas relativas. -->
 
 [Ir a la música](/music/).
 
-<!-- Markdown también soporta ligas con estilo de referencia -->
+<!-- Markdown también soporta enlaces con estilo de referencia -->
 
-¡[Has click a esta liga][liga1] para más información!
-[También mira esta liag][foobar] si quieres.
-
-
-
+¡[Haz click en este enlace][enlace1] para más información!
+[También mira este enlace][foobar] si quieres.
 
 <!-- El título también puede estar en comillas simples o dentro de paréntesis,
 también se pueden omitir completamente. Las referencias pueden estar en cualquier
 lugar en tu documento y los IDs de referencia pueden ser lo que sea mientras sean únicos. -->
 
-<!-- También hay "nombramiento implicito" el cual te permite usar el texto de la liga como id -->
+<!-- También hay "nombramiento implicito" el cual te permite usar el texto del enlace como id -->
 
 [Esta][] es una liga.
 
-
-
 <!-- Pero no se usa comúnmente. -->
 
-<!-- Imagenes -->
-<!-- Las imagenes se hacen de la misma forma que las ligas pero con un símbolo de exclamaciónal frente! -->
+<!-- Imágenes -->
+<!-- Las imágenes se hacen de la misma forma que los enlaces pero con un símbolo de exclamación delante! -->
 
-![Esta es una etiqueta (texto alternativo) para mi imagen](http://imgur.com/myimage.jpg "Un titulo opcional")
+![Esta es una etiqueta (texto alternativo) para mi imagen](http://imgur.com/myimage.jpg "Un título opcional")
 
 <!-- Y el estilo de referencia funciona como se espera -->
 
@@ -216,12 +209,12 @@ lugar en tu documento y los IDs de referencia pueden ser lo que sea mientras sea
 
 
 <!-- Misceláneos -->
-<!-- Auto-ligas -->
+<!-- Auto-enlacess -->
 
 <http://testwebsite.com/> equivale a
 [http://testwebsite.com/](http://testwebsite.com/)
 
-<!-- Auto-ligas para correos electrónicos -->
+<!-- Auto-enlaces para correos electrónicos -->
 
 <foo@bar.com>
 
@@ -231,7 +224,7 @@ Quiero escribir *este texto rodeado por asteriscos* pero no quiero que esté en 
 así que hago esto: \*Este texto está rodeado de asteriscos\*.
 
 <!-- Tablas -->
-<!-- Las tablas sólo están disponibles en Github Flavored Markdown y son un poco pesadas,
+<!-- Las tablas sólo están disponibles en GitHub Flavored Markdown y son un poco pesadas,
 pero si de verdad las quieres: -->
 
 | Col1         | Col2     | Col3          |
@@ -243,10 +236,10 @@ pero si de verdad las quieres: -->
 
 Col 1 | Col2 | Col3
 :-- | :-: | --:
-Ugh esto es feo | has que | pare.
+Ugh esto es feo | haz que | pare.
 
 <!-- ¡El fin! -->
 
 ```
 
-Para más información, mira el post oficial de John Gruber's [aquí](http://daringfireball.net/projects/markdown/syntax) y la gran referencia de Adam Pritchard's [aquí](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+Para más información, mira el post oficial de John Gruber [aquí](http://daringfireball.net/projects/markdown/syntax) y la gran referencia de Adam Pritchard [aquí](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
