@@ -391,7 +391,7 @@ public class LearnJava {
 
         // (definition of the Bicycle class follows)
 
-        // Use `new` keyword to instantiate a class
+        // Use the `new` keyword to instantiate a class
         Bicycle trek = new Bicycle();
 
         // Call object methods
