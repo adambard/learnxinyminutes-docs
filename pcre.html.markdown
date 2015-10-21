@@ -6,7 +6,7 @@ contributors:
     
 ---
 
-A regular expression (regex or regexp for short) is a special text string for describing a search pattern. e.g. to extract domain name from a string we can say `/.[a-z0-9]+$/` and it will match .com from `http://github.com/`.  
+A regular expression (regex or regexp for short) is a special text string for describing a search pattern. e.g. to extract domain name from a string we can say `/^[a-z]+:/` and it will match `http:` from `http://github.com/`.  
 
 PCRE (Perl Compatible Regular Expressions) is a C library implementing regex. It was written in 1997 when Perl was the de-facto choice for complex text processing tasks. 
 
