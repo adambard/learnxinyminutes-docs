@@ -5,6 +5,7 @@ contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
+    - ["Felipe Nogueira de Souza", "http://fnsouza.me"]
 filename: learnpython3.py
 ---
 
@@ -723,3 +724,4 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
 * [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
+* [Fluent Python](http://shop.oreilly.com/product/0636920032519.do)
