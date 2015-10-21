@@ -21,7 +21,9 @@ Feedback would be highly appreciated! You can reach me at
 [adam@brenecki.id.au](mailto:adam@brenecki.id.au).
 
 ```js
-// Comments are like C. Single-line comments start with two slashes,
+// Comments in JavaScript are the same as comments in C.
+
+//Single-line comments start with two slashes,
 /* and multiline comments start with slash-star
    and end with star-slash */
 
