@@ -36,22 +36,26 @@ allow you to write Python 3 code that will run on Python 2, so check out the Pyt
 ## 1. Primitive Datatypes and Operators
 ####################################################
 
-# You have numbers
+# You have numbers, which are type int
 3  # => 3
+type(3) # => <type 'int'>
 
 # Math is what you would expect
-1 + 1  # => 2
-8 - 1  # => 7
-10 * 2  # => 20
-35 / 5  # => 7
+1 + 1  # addition => 2
+8 - 1  # subtraction => 7
+10 * 2  # multiplication => 20
+35 / 5  # division => 7
 
 # Division is a bit tricky. It is integer division and floors the results
 # automatically.
 5 / 2  # => 2
 
 # To fix division we need to learn about floats.
+# A number with a decimal is type float
 2.0     # This is a float
+type(2.0) # => <type 'float'>
 11.0 / 4.0  # => 2.75 ahhh...much better
+float(2) # convert a int to float => 2.0
 
 # Result of integer division truncated down both for positive and negative.
 5 // 3     # => 1
@@ -66,6 +70,7 @@ from __future__ import division
 11//4   # => 2 ...floored division  
 
 # Modulo operation
+# this returns the remainder, in this example 7 divided by 3 is 2, with remainder 1
 7 % 3 # => 1
 
 # Exponentiation (x to the yth power)
@@ -74,23 +79,26 @@ from __future__ import division
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
 
-# Boolean Operators
+# Boolean Operators, which are type bool
 # Note "and" and "or" are case-sensitive
-True and False #=> False
-False or True #=> True
+type(True) # => <type 'bool'>
+type(False) # => <type 'bool'>
+True and False # => False
+False or True # => True
 
 # Note using Bool operators with ints
-0 and 2 #=> 0
--5 or 0 #=> -5
-0 == False #=> True
-2 == True #=> False
-1 == True #=> True
+0 and 2 # => 0
+-5 or 0 # => -5
+0 == False # => True
+2 == True # => False
+1 == True # => True
 
 # negate with not
 not True  # => False
 not False  # => True
 
 # Equality is ==
+# careful not to confuse with =, which is used for assignment
 1 == 1  # => True
 2 == 1  # => False
 
@@ -114,26 +122,36 @@ not False  # => True
 
 # Strings can be added too!
 "Hello " + "world!"  # => "Hello world!"
+
 # Strings can be added without using '+'
 "Hello " "world!"  # => "Hello world!"
 
 # ... or multiplied
 "Hello" * 3  # => "HelloHelloHello"
 
+# A number can be a string
+type("2") # => <type 'str'>
+
+# Other types can be changed to a string
+str(2+2) # int to string => '4'
+str(2.0) # float to string => '2.0'
+
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
 
 # % can be used to format strings, like this:
-"%s can be %s" % ("strings", "interpolated")
+"%s can be %s" % ("strings", "interpolated") # => "stings can be interpolated"
 
 # A newer way to format strings is the format method.
 # This method is the preferred way
-"{0} can be {1}".format("strings", "formatted")
-# You can use keywords if you don't want to count.
-"{name} wants to eat {food}".format(name="Bob", food="lasagna")
+"{0} can be {1}".format("strings", "formatted") # => "strings can be formatted"
 
-# None is an object
+# You can use keywords if you don't want to count.
+"{name} wants to eat {food}".format(name="Bob", food="lasagna") # => "Bob wants to eat lasagna"
+
+# None is an object, which is NoneType
 None  # => None
+type(None) # => <type 'NoneType'>
 
 # Don't use the equality "==" symbol to compare objects to None
 # Use "is" instead
