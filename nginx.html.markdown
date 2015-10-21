@@ -37,7 +37,7 @@ Open the file :
 `sudo nano /etc/nginx/nginx.conf`
 
 ```
-user www-data;              # 
+user www-data;             
 worker_processes 4;         # It defines how many concurrent processes that Nginx will use.
 pid /run/nginx.pid;         # This directive specifies where the process pid will be stored for internal reference.
 
@@ -105,8 +105,127 @@ http {
 
 	include /etc/nginx/conf.d/*.conf;
 	include /etc/nginx/sites-enabled/*;
+	
+	#  This tells us that the server and location blocks that define specific sites and 
+	url match locations will take place outside of this file.
 }
 ```
 The Nginx configuration file is managed in "blocks".
 
 The first block was the events block. The next one is the http block, and the start of the main hierarchy within the configuration file.
+
+#### The Main Context
+
+The most general context is the "main" or "global" context. It is the only context that is not contained within the typical context blocks that look like this:
+
+```
+# The main context is here, outside any other contexts
+
+. . .
+
+context {
+
+    . . .
+
+}
+```
+Any directive that exist entirely outside of these blocks is said to inhabit the "main" context. 
+The main context represents the broadest environment for Nginx configuration. It is used to configure details that affect the entire application on a basic level.
+
+#### The Events Context
+
+The "events" context is contained within the "main" context. 
+It is used to set global options that affect how Nginx handles connections at a general level. 
+There can only be a single events context defined within the Nginx configuration.
+
+```
+# main context
+
+events {
+
+    # events context
+    . . .
+
+}
+```
+Nginx uses an event-based connection processing model, so the directives defined within this context 
+determine how worker processes should handle connections.
+
+#### HTTP Context
+
+When configuring Nginx as a web server or reverse proxy, the "http" context will hold the majority of the configuration.
+This context will contain all of the directives and other contexts necessary to define how the program will handle HTTP or HTTPS connections.
+
+```
+# main context
+
+events {
+    # events context
+
+    . . .
+
+}
+
+http {
+    # main context
+
+    . . .
+
+}
+```
+The http context is a sibling of the events context, so they should be listed side-by-side, rather than nested. 
+
+#### Server Context
+
+The "server" context is declared within the "http" context.
+
+The general format for server context may look something like this. Remember that these reside within the http context:
+
+```
+# main context
+
+http: {
+
+    # http context
+
+    server {
+
+        # first server context
+
+    }
+
+    server {
+
+        # second server context
+
+    }
+
+}
+```
+The reason for allowing multiple declarations of the server context is that each instance defines a specific virtual server to handle client requests. 
+You can have as many server blocks as you need, each of which can handle a specific subset of connections.
+
+#### Starting, Stopping, and Reloading Configuration
+
+Once nginx is started, it can be controlled by invoking the executable with the -s parameter. We can use the following syntax:
+
+`nginx -s signal`
+
+Where signal may be one of the following:
+
+   * stop — fast shutdown
+   * quit — graceful shutdown
+   * reload — reloading the configuration file
+   * reopen — reopening the log files
+
+ For getting the list of all running nginx processes, the ps utility may be used, for example, in the following way: 
+ 
+ `ps -ax | grep nginx`
+
+To test the syntax of nginx.conf file, use : `nginx -t`
+
+
+#### Additional readings 
+
+[Installing NGINX](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-14-04-lts)
+[Beginner's Guide](http://nginx.org/en/docs/beginners_guide.html)
