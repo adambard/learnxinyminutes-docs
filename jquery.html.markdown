@@ -11,11 +11,13 @@ jQuery is a JavaScript library that helps you "do more, write less". It makes ma
 Because jQuery is a JavaScript library you should [learn JavaScript first](https://github.com/adambard/learnxinyminutes-docs/blob/master/javascript.html.markdown)
 
 ```js
-// Basic jQuery syntax is $(selector).action()
-$(this).click(); // Clicks the current element
+
 
 ///////////////////////////////////
 // 1. Selectors
+
+// Selectors in jQuery are used to select an element
+var page = $(window); // Selects the whole viewport
 
 // Selectors can also be CSS selector
 var paragraph = $('p'); // Selects all paragraph elements
@@ -25,17 +27,12 @@ var square_p = $('p.square') // Selects paragraphs with the 'square' class
 
 
 ///////////////////////////////////
-// 2. Events and Methods
+// 2. Events and Effects
 
 // A very common event used is the ready event on the document
 // You can use the 'ready' method to wait until the element has finished loading
 $(document).ready(function(){
   // Code won't execute until the document is loaded
-});
-
-// The document ready can be shortened to this:
-$(function(){
-  // Same as $(document).ready();
 });
 
 // jQuery is very good at triggering events
@@ -49,14 +46,19 @@ function onAction() {
   // This is executed when the event is triggered
 }
 
-// Some common events are:
+// Some other common events are:
 $('#btn').dblclick(onAction); // Double click
-$('#btn').mouseenter(onAction); // Mouse enters the element
-$('#btn').mouseleave(onAction); // Mouse leaves the element
 $('#btn').hover(onAction); // Hovering over
 $('#btn').focus(onAction); // On focus
 $('#btn').blur(onAction); // Losses focus
 $('#btn').submit(onAction); // On submit
+$('#btn').select(onAction); // When an element is selected
+$('#btn').keydown(onAction); // When a key is pushed down
+$('#btn').keyup(onAction); // When a key is released
+$('#btn').keypress(onAction); // When a key is pressed
+$('#btn').mousemove(onAction); // When the mouse is moved
+$('#btn').mouseenter(onAction); // Mouse enters the element
+$('#btn').mouseleave(onAction); // Mouse leaves the element
 
 // You can also use an anonymous function
 $('#btn').hover(function(){
@@ -73,10 +75,10 @@ $('#btn').on(
   {blur: myFunction1} // Triggered on blur
 );
 
-// You can manipulate the document with some methods
+// You can move and hide elements with some effect methods
 $('.table').hide(); # Hides the element(s)
 
-// Note: calling a function in these method will still hide the element
+// Note: calling a function in these methods will still hide the element
 $('.table').hide(function(){
     // Element hidden then function executed
 });
@@ -103,7 +105,34 @@ tables.hide(1000, myFunction); // 1 second hide animation then function
 tables.fadeTo(2000, 0.1, myFunction); // 2 sec. fade to 0.1 opacity then function
 
 // You can get slightly more advanced with the animate method
+tables.animate({margin-top:"+=50", height: "100px"}, 500, myFunction);
+// The animate method takes an object of css and values to end with,
+// optional options parameter to tune the animation,
+// and of course the callback function
 
+///////////////////////////////////
+// 3. Manipulation
+
+// These are similar to effects but can do more
+$('div').addClass('div') // Adds class div to all div taming-slim-20
+
+// Common manipulation methods
+$('p').append('Hello world'); // Adds to end of element
+$('p').attr('class'); // Gets attribute
+$('p').attr('class', 'content'); // Sets attribute
+$('p').hasClass('div'); // Returns true if it has the class
+$('p').height(); // Gets height of element or sets height
+
+
+// For many manipulation methods, getting info on an element
+// will ONLY get the first matching element
+$('p').height(); // Gets only the first 'p' tag's height
+
+// You can use each to loop through all the elements
+var heights = [];
+$('p').each(function() {
+  heights.push($(this.height)); // Adds all 'p' tag heights to array
+});
 
 
 ``
