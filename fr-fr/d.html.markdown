@@ -248,13 +248,13 @@ import std.parallelism : parallel;
 import std.math : sqrt;
 
 void main() {
-	// On veut calculer la racine carré de tous les nombres
-	// dans notre tableau, et profiter de tous les coeurs
-	// à notre disposition.
+    // On veut calculer la racine carré de tous les nombres
+    // dans notre tableau, et profiter de tous les coeurs
+    // à notre disposition.
     auto arr = new double[1_000_000];
 
-	// On utilise un index et une référence à chaque élément du tableau.
-	// On appelle juste la fonction parallel sur notre tableau !
+    // On utilise un index et une référence à chaque élément du tableau.
+    // On appelle juste la fonction parallel sur notre tableau !
     foreach(i, ref elem; parallel(arr)) {
         ref = sqrt(i + 1.0);
     }
