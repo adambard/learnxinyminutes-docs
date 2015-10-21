@@ -227,5 +227,5 @@ To test the syntax of nginx.conf file, use : `nginx -t`
 
 #### Additional readings 
 
-[Installing NGINX](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-14-04-lts)
-[Beginner's Guide](http://nginx.org/en/docs/beginners_guide.html)
+* [Installing NGINX](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-14-04-lts)
+* [Beginner's Guide](http://nginx.org/en/docs/beginners_guide.html)
