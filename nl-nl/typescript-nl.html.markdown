@@ -159,7 +159,7 @@ var paarNaarTupel = function<T>(p: Paar<T>) {
     return new Tupel(p.item1, p.item2);
 };
 
-var typel = paarNaarTupel({ item1: "hallo", item2: "wereld" });
+var tupel = paarNaarTupel({ item1: "hallo", item2: "wereld" });
 
 // Refferentie naar een definitie bestand:
 /// <reference path="jquery.d.ts" />
