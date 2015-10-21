@@ -199,6 +199,31 @@ int main()
 }
 
 //////////
+//Creating a dynamic array of integers and dynammically allocating the memory size of the array.
+/////////
+#include <iostream> // Include for I/O streams
+using namespace std; // Streams are in the std namespace (standard library)
+
+int main()
+{
+    int n;
+    cout << "Enter a number : \n";
+    cin >> n;
+   
+    int *myintarray = new int[n](); // allocating the array size dynammically . 
+   
+    for( int i = 0; i < n; i++)
+      cin>>myintarray[i];   // Takes input the elements of the array .
+    
+    for( int i = 0; i < n; i++)
+      cout<<myintarray[i];   // Displaying the elements of the array .
+    
+    delete [] myintarray; // Always delete the array that you create using new keyword to save memory
+   
+    return 0;
+}
+
+//////////
 // Strings
 //////////
 
