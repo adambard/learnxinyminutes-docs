@@ -494,8 +494,8 @@ print(chair.description())    // "Chair of Foo with 40 cm"
 // MARK: Protocolos (Protocols)
 //
 
-// protocolos obrigam a que os tipos tenham propriedades de instância,
-// métodos de instância, métodos de tipo,
+// Protocolos (`protcol`s) obrigam a que os tipos tenham
+// propriedades de instância, métodos de instância, métodos de tipo,
 // operadores e subscripts específicos.
 
 protocol ShapeGenerator {
@@ -528,12 +528,12 @@ class MyShape: Rect {
 
 
 //
-// MARK: Other
+// MARK: Outro
 //
 
-// `extension`s: Add extra functionality to an already existing type
+// extensões (`extension`s): Adiciona funcionalidade extra a um tipo já existente.
 
-// Square now "conforms" to the `Printable` protocol
+// Square agora "conforma" com o protocolo `Printable`
 extension Square: Printable {
     var description: String {
         return "Area: \(self.getArea()) - ID: \(self.identifier)"
@@ -542,7 +542,7 @@ extension Square: Printable {
 
 print("Square: \(mySquare)")
 
-// You can also extend built-in types
+// Também é possível extender tipos já embutidos
 extension Int {
     var customProperty: String {
         return "This is \(self)"
@@ -556,8 +556,8 @@ extension Int {
 print(7.customProperty) // "This is 7"
 print(14.multiplyBy(3)) // 42
 
-// Generics: Similar to Java and C#. Use the `where` keyword to specify the
-//   requirements of the generics.
+// Generics: Semelhante a Java e C#. Usa a palavra-chave `where` para
+// especificar requisitos do `generics`.
 
 func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
     for (index, value) in enumerate(array) {
@@ -570,27 +570,29 @@ func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
 let foundAtIndex = findIndex([1, 2, 3, 4], 3)
 print(foundAtIndex == 2) // true
 
-// Operators:
-// Custom operators can start with the characters:
+// Operadores:
+// Operadores personalizados podem começar com caracteres:
 //      / = - + * % < > ! & | ^ . ~
-// or
-// Unicode math, symbol, arrow, dingbat, and line/box drawing characters.
-prefix operator !!! {}
+// ou
+// Caracteres Unicode matemáticos, símbolos, setas, dingbat e
+// caracteres de desenho linha/caixa.
+operador prefixo !!! {}
 
-// A prefix operator that triples the side length when used
+// Um operador prefixo que triplica o comprimento do lado quando usado
 prefix func !!! (inout shape: Square) -> Square {
     shape.sideLength *= 3
     return shape
 }
 
-// current value
+// valor atual
 print(mySquare.sideLength) // 4
 
-// change side length using custom !!! operator, increases size by 3
+// muda o comprimento deste lado usando o operador personalizado !!!, aumenta
+// o comprimento 3x
 !!!mySquare
 print(mySquare.sideLength) // 12
 
-// Operators can also be generics
+// Operadores também podem ser generics
 infix operator <-> {}
 func <-><T: Equatable> (inout a: T, inout b: T) {
     let c = a
