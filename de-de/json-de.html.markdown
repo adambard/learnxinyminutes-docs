@@ -13,10 +13,31 @@ Da JSON ein äußerst einfaches Format für den Austausch von Daten ist, wird di
 Dokument das vermutlich einfachste "Learn X in Y Minutes" werden.
 
 In seiner grundlegenden Form hat JSON keine eigentlichen Kommentare. Dennoch
-akzeptieren die meisten Parser Kommentare in C-Syntax (`//`, `/* */`). Dennoch
-soll für dieses Dokument nur 100% gültiges JSON verwendet werden, weshalbt keine
-Kommentare verwendet werden. Glücklicherweise ist das nachfolgende Dokument
-selbsterklärend.
+akzeptieren die meisten Parser Kommentare in C-Syntax (`//`, `/* */`). Auch tolerieren einige Parser ein endendes Komma (zum Beispiel ein Komma nach dem letzten Element eines Arrays oder nach der letzten Eigenschaft eines Objektes) dieses sollte jedoch zwecks besserer Kompatibilität vermieden werden.
+
+Dennoch soll für dieses Dokument nur 100 % gültiges JSON verwendet werden, weshalbt keine Kommentare verwendet werden. Glücklicherweise ist das nachfolgende Dokument selbsterklärend.
+
+Ein JSON Wert muss eine Zahl, ein String, ein Array, ein Objekt oder eine der folgenden 3 Literale sein : true, false, null.
+
+JSON wird in folgenden Browsern unterstützt:
+- Firefox 3.5+
+- Internet Explorer 8.0+
+- Chrome 1.0+
+- Opera 10.0+
+- Safari 4.0+.
+
+Die JSON Dateiendung ist ".json" und der MIME Typ des Textes ist "application/json".
+
+Viele Programmiersprachen unterstützen die Serialisierung (Codierung) und Deserialisierung (Dekodierung) von JSON Daten in native Datenstrukturen. Javascript hat implizite Unterstützung für die Manipulation von JSON Text als Daten.
+
+Mehr Informationen gibt es auf http://www.json.org/
+
+JSON ist auf zwei Strukturen aufgebaut:
+
+    Eine Auflistung von Name / Wert-Paaren. In verschiedenen Sprachen, wird dies als ein Objekt, Rekord, struct, Wörterbuch, Hash-Tabelle, Schlüssel-Liste oder als assoziatives Arrays realisiert.
+    Eine geordnete Liste von Werten. In den meisten Sprachen wird dies als ein Array, Vektor, Liste oder Sequenz realisiert.
+
+Ein Objekt mit verschiedenen Name / Wert-Paaren.
 
 ```json
 {
