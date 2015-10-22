@@ -3,7 +3,8 @@ language: pogoscript
 contributors:
     - ["Tim Macfarlane", "http://github.com/refractalize"]
     - ["Cássio Böck", "https://github.com/cassiobsilva"]
-filename: learnPogo.pogo
+filename: learnPogo-pt-br.pogo
+lang: pt-br
 ---
 
 Pogoscript é uma linguagem de programação que possui tipos primitivos concorrents
@@ -26,7 +27,7 @@ temperature at (a) altitude :=
     else
         32 - a / 100
 
-// chamada de uma função
+// declarando uma função
 current temperature = temperature at 3200 altitude
 
 // essa função cria um novo objeto com métodos
@@ -43,7 +44,7 @@ position (x, y) = {
 // `self` é similiar ao `this` no Javascript, com exceção de que `self` não
 // é redefinido em cada nova função
 
-// chamada de métodos
+// declaração de métodos
 position (7, 2).distance from position (position (5, 1))
 
 // assim como no Javascript, objetos também são hashes
@@ -117,14 +118,13 @@ spark (position, color: 'black', velocity: {x = 0, y = 0}) = {
 red = spark (position 1 1, color: 'red')
 fast black = spark (position 1 1, velocity: {x = 10, y = 0})
 
-// functions can unsplat arguments too
+// funções também podem ser utilizadas para realizar o "unsplat" de argumentos
 log (messages, ...) =
     console.log (messages, ...)
 
-// blocks are functions passed to other functions.
-// This block takes two parameters, `spark` and `c`,
-// the body of the block is the indented code after the
-// function call
+// blocos são funções passadas para outras funções.
+// Este bloco recebe dois parâmetros, `spark` e `c`,
+// o corpo do bloco é o código indentado após a declaração da função
 
 render each @(spark) into canvas context @(c)
     ctx.begin path ()
@@ -138,40 +138,40 @@ render each @(spark) into canvas context @(c)
     )
     ctx.stroke ()
 
-// asynchronous calls
+// chamadas assíncronas
 
-// JavaScript both in the browser and on the server (with Node.js)
-// makes heavy use of asynchronous IO with callbacks. Async IO is
-// amazing for performance and making concurrency simple but it
-// quickly gets complicated.
-// Pogoscript has a few things to make async IO much much easier
+// O Javascript, tanto no navegador quanto no servidor (através do Node.js)
+// realiza um uso massivo de funções assíncronas de E/S (entrada/saída) com
+// chamadas de retorno. E/S assíncrona é maravilhosa para a performance e
+// torna a concorrência simples, porém pode rapidamente se tornar algo complicado.
+// O Pogoscript possui algumas coisas que tornam o uso de E/S assíncrono mosquitos
+// mais fácil
 
-// Node.js includes the `fs` module for accessing the file system.
-// Let's list the contents of a directory
+// O Node.js inclui o móduolo `fs` para acessar o sistema de arquivos.
+// Vamos listar o conteúdo de um diretório
 
 fs = require 'fs'
 directory listing = fs.readdir! '.'
 
-// `fs.readdir()` is an asynchronous function, so we can call it
-// using the `!` operator. The `!` operator allows you to call
-// async functions with the same syntax and largely the same
-// semantics as normal synchronous functions. Pogoscript rewrites
-// it so that all subsequent code is placed in the callback function
-// to `fs.readdir()`.
+// `fs.readdir()` é uma função assíncrona, então nos a chamamos usando o
+// operador `!`. O operador `!` permite que você chame funções assíncronas
+// com a mesma sintaxe e praticamente a mesma semântica do que as demais
+// funções síncronas. O Pogoscript reescreve a função para que todo código
+// inserido após o operador seja inserido em uma função de callback para o
+// `fs.readdir()`.
 
-// to catch asynchronous errors while calling asynchronous functions
+// para se obter erros ao utilizar funções assíncronas
 
 try
     another directory listing = fs.readdir! 'a-missing-dir'
 catch (ex)
     console.log (ex)
 
-// in fact, if you don't use `try catch`, it will raise the error up the
-// stack to the outer-most `try catch` or to the event loop, as you'd expect
-// with non-async exceptions
+// na verdade, se você não usar o `try catch`, o erro será passado para o
+// `try catch` mais externo do evento, assim como é feito nas exceções síncronas
 
-// all the other control structures work with asynchronous calls too
-// here's `if else`
+// todo o controle de estrutura funciona com chamadas assíncronas também
+// aqui um exemplo de `if else`
 config =
     if (fs.stat! 'config.json'.is file ())
         JSON.parse (fs.read file! 'config.json' 'utf-8')
@@ -180,23 +180,23 @@ config =
             color: 'red'
         }
 
-// to run two asynchronous calls concurrently, use the `?` operator.
-// The `?` operator returns a *future* which can be executed to
-// wait for and obtain the result, again using the `!` operator
+// para executar duas chamadas assíncronas de forma concorrente, use o
+// operador `?`.
+// O operador `?` retorna um *future* que pode ser executado aguardando
+// o resultado, novamente utilizando o operador `o`
 
-// we don't wait for either of these calls to finish
+// nós não esperamos nenhuma dessas chamadas serem concluídas
 a = fs.stat? 'a.txt'
 b = fs.stat? 'b.txt'
 
-// now we wait for the calls to finish and print the results
+// agora nos aguardamos o término das chamadas e escrevemos os resultados
 console.log "size of a.txt is #(a!.size)"
 console.log "size of b.txt is #(b!.size)"
 
-// futures in Pogoscript are analogous to Promises
+// no Pogoscript, futures são semelhantes a Promises
 ```
+E encerramos por aqui.
 
-That's it.
+Baixe o [Node.js](http://nodejs.org/) e execute `npm install pogo`.
 
-Download [Node.js](http://nodejs.org/) and `npm install pogo`.
-
-There is plenty of documentation on [http://pogoscript.org/](http://pogoscript.org/), including a [cheat sheet](http://pogoscript.org/cheatsheet.html), a [guide](http://pogoscript.org/guide/), and how [Pogoscript translates to Javascript](http://featurist.github.io/pogo-examples/). Get in touch on the [google group](http://groups.google.com/group/pogoscript) if you have questions!
+Há bastante documentação em [http://pogoscript.org/](http://pogoscript.org/), incluindo um material para [consulta rápida](http://pogoscript.org/cheatsheet.html), um [guia](http://pogoscript.org/guide/), e como o [Pogoscript é traduzido para o Javascript](http://featurist.github.io/pogo-examples/). Entre em contato através do [grupo do Google](http://groups.google.com/group/pogoscript) se você possui dúvidas!
