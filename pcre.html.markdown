@@ -43,7 +43,7 @@ There are two different sets of metacharacters:
   
 ```  
 
-* Generic character types 
+PCRE provides some generic character types, also called as character classes. 
 ```
   \d     any decimal digit
   \D     any character that is not a decimal digit
