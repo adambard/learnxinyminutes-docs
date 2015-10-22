@@ -438,11 +438,11 @@ if let circle = myEmptyCircle {
 
 
 //
-// MARK: Enums
+// MARK: Enumerações (Enums)
 //
 
-// Enums can optionally be of a specific type or on their own.
-// They can contain methods like classes.
+// Enums pode opcionalmente ser um tipo especifico ou não.
+// Enums podem conter métodos tal como as classes.
 
 enum Suit {
     case Spades, Hearts, Diamonds, Clubs
@@ -456,22 +456,22 @@ enum Suit {
     }
 }
 
-// Enum values allow short hand syntax, no need to type the enum type
-// when the variable is explicitly declared
+// Os valores de Enum permitem syntax reduzida, não é preciso escrever o tipo do enum
+// quando a variável é explicitamente definida.
 var suitValue: Suit = .Hearts
 
-// Non-Integer enums require direct raw value assignments
+// Enums que não sejam inteiros obrigam a atribuições valor bruto (raw value) diretas
 enum BookName: String {
     case John = "John"
     case Luke = "Luke"
 }
 print("Name: \(BookName.John.rawValue)")
 
-// Enum with associated Values
+// Enum com valores associados
 enum Furniture {
-    // Associate with Int
+    // Associar com um inteiro (Int)
     case Desk(height: Int)
-    // Associate with String and Int
+    // Associar com uma String e um Int
     case Chair(String, Int)
 
     func description() -> String {
