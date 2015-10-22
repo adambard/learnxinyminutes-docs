@@ -723,7 +723,7 @@ $cls = new SomeOtherNamespace\MyClass();
 /**********************
 * Late Static Binding
 *
-* /
+*/
 
 class ParentClass {
     public static function who() {
