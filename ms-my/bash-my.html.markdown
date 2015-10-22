@@ -11,7 +11,7 @@ contributors:
     - ["Rahil Momin", "https://github.com/iamrahil"]
     - ["Gregrory Kielian", "https://github.com/gskielian"]
     - ["Etan Reisner", "https://github.com/deryni"]
-filename: LearnBash.sh
+filename: LearnBash-ms.sh
 translators:
     - ["hack1m", "https://github.com/hack1m"]
 lang: ms-my   
