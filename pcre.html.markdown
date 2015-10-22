@@ -59,15 +59,16 @@ There are two different sets of metacharacters:
 
 ## Examples
 
-```
-Extract first word in a line
+We will test our examples on following string `66.249.64.13 - - [18/Sep/2004:11:07:48 +1000] "GET /robots.txt HTTP/1.0" 200 468 "-" "Googlebot/2.1"`. It is a standard Apache access log.
 
-^\w+ 
+| Regex | Result          | Comment |
+| :---- | :-------------- | :------ |
+| GET   | Finds ***GET*** | GET matches the characters GET literally (case sensitive) |
+| \d+.\d+.\d+.\d+ | 66.249.64.13 | `\d+` match a digit [0-9] one or more times defined by `+` quantifier, `\.` matches `.` literally |
+| (\d+\.){3}\d+ | 66.249.64.13 | `(\d+\.){3}` is trying to match group (`\d+\.`) exactly three times. |
+| \[.+\] | [18/Sep/2004:11:07:48 +1000] | `.+` matches any character (except newline), `.` is any character |
 
-^ matches beginning of a new line
-\w is a character class matching all word characters
 
-```
 
 ## Further Reading
 
