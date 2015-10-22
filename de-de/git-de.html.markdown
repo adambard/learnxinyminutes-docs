@@ -182,7 +182,7 @@ Bringt alle Dateien im Arbeitsverzeichnis auf den Stand des Index oder des angeg
 # Ein Repo auschecken - wenn nicht anders angegeben ist das der master
 $ git checkout
 # Eine Datei auschecken - sie befindet sich dann auf dem aktuellen Stand im Repository
-$ gut checkout /path/to/file
+$ git checkout /path/to/file
 # Einen bestimmten Branch auschecken
 $ git checkout branchName
 # Erstelle einen neuen Branch und wechsle zu ihm. Wie: "git branch <name>; git checkout <name>"
