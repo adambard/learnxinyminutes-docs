@@ -34,6 +34,7 @@ Version control is a system that records changes to a file(s), over time.
 * Can work offline.
 * Collaborating with others is easy!
 * Branching is easy!
+* Branching is fast!
 * Merging is easy!
 * Git is fast.
 * Git is flexible.
