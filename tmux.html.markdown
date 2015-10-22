@@ -3,6 +3,7 @@ category: tool
 tool: tmux
 contributors:
     - ["mdln", "https://github.com/mdln"]
+    - ["matthiaskern", "https://github.com/matthiaskern"]
 filename: LearnTmux.txt
 ---
 
@@ -116,7 +117,7 @@ like how .vimrc or init.el are used.
 
 ```
 # Example tmux.conf
-# 2014.10
+# 2015.12
 
 
 ### General
