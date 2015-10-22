@@ -68,7 +68,7 @@ We will test our examples on following string `66.249.64.13 - - [18/Sep/2004:11:
 | (\d+\.){3}\d+ | 66.249.64.13 | `(\d+\.){3}` is trying to match group (`\d+\.`) exactly three times. |
 | \[.+\] | [18/Sep/2004:11:07:48 +1000] | `.+` matches any character (except newline), `.` is any character |
 | ^\S+ | 66.249.64.13 | `^` means start of the line, `\S+` matches any number of non-space characters |
-| \+[0-9]+ | +1000 | `\+` matches the character `+` literally. `[0-9]` character class means single number |
+| \+[0-9]+ | +1000 | `\+` matches the character `+` literally. `[0-9]` character class means single number. Same can be achieved using `\+\d+` |
 
 
 
