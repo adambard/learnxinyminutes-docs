@@ -41,7 +41,7 @@ position (x, y) = {
         Math.sqrt (dx * dx + dy * dy)
 }
 
-// `self` é similiar ao `this` no Javascript, com exceção de que `self` não
+// `self` é similiar ao `this` do Javascript, com exceção de que `self` não
 // é redefinido em cada nova função
 
 // declaração de métodos
@@ -91,7 +91,7 @@ false @or true
 2 >= 2
 2 > 1
 
-// todos do Javascript também são suportados
+// os operadores padrão do Javascript também são suportados
 
 // definindo seu próprio operador
 (p1) plus (p2) =
@@ -142,9 +142,10 @@ render each @(spark) into canvas context @(c)
 
 // O Javascript, tanto no navegador quanto no servidor (através do Node.js)
 // realiza um uso massivo de funções assíncronas de E/S (entrada/saída) com
-// chamadas de retorno. E/S assíncrona é maravilhosa para a performance e
-// torna a concorrência simples, porém pode rapidamente se tornar algo complicado.
-// O Pogoscript possui algumas coisas que tornam o uso de E/S assíncrono mosquitos
+// chamadas de retorno (callbacks). A E/S assíncrona é ótima para a performance e
+// torna a utilização da concorrência simples, porém pode rapidamente se tornar
+// algo complicado.
+// O Pogoscript possui algumas coisas que tornam o uso de E/S assíncrono muito
 // mais fácil
 
 // O Node.js inclui o móduolo `fs` para acessar o sistema de arquivos.
@@ -155,12 +156,11 @@ directory listing = fs.readdir! '.'
 
 // `fs.readdir()` é uma função assíncrona, então nos a chamamos usando o
 // operador `!`. O operador `!` permite que você chame funções assíncronas
-// com a mesma sintaxe e praticamente a mesma semântica do que as demais
-// funções síncronas. O Pogoscript reescreve a função para que todo código
-// inserido após o operador seja inserido em uma função de callback para o
-// `fs.readdir()`.
+// com a mesma sintaxe e a mesma semântica do que as demais funções síncronas.
+// O Pogoscript reescreve a função para que todo código inserido após o
+//  operador seja inserido em uma função de callback para o `fs.readdir()`.
 
-// para se obter erros ao utilizar funções assíncronas
+// obtendo erros ao utilizar funções assíncronas
 
 try
     another directory listing = fs.readdir! 'a-missing-dir'
@@ -168,9 +168,9 @@ catch (ex)
     console.log (ex)
 
 // na verdade, se você não usar o `try catch`, o erro será passado para o
-// `try catch` mais externo do evento, assim como é feito nas exceções síncronas
+// `try catch` mais externo do evento, assim como é feito em exceções síncronas
 
-// todo o controle de estrutura funciona com chamadas assíncronas também
+// todo o controle de estrutura também funciona com chamadas assíncronas
 // aqui um exemplo de `if else`
 config =
     if (fs.stat! 'config.json'.is file ())
@@ -182,8 +182,8 @@ config =
 
 // para executar duas chamadas assíncronas de forma concorrente, use o
 // operador `?`.
-// O operador `?` retorna um *future* que pode ser executado aguardando
-// o resultado, novamente utilizando o operador `o`
+// O operador `?` retorna um *future*, que pode ser executado para
+// aguardar o resultado, novamente utilizando o operador `!`
 
 // nós não esperamos nenhuma dessas chamadas serem concluídas
 a = fs.stat? 'a.txt'
