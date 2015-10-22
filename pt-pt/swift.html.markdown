@@ -28,7 +28,7 @@ import UIKit
 //
 
 // O Xcode suporta landmarks para anotação de código e lista-as na jump bar
-// MARK: Marco de secção
+// MARK: Marco de secção (MARK)
 // TODO: Algo a fazer em breve
 // FIXME: Reparar este código
 
@@ -149,7 +149,7 @@ var emptyMutableDictionary = [String: Float]() // var == mutável
 
 
 //
-// MARK: Controlo de Fluxo
+// MARK: Controlo de Fluxo (Control Flow)
 //
 
 // for loop (array)
@@ -203,7 +203,7 @@ default: // obrigatório (de forma a cobrir todos os possíveis inputs)
 
 
 //
-// MARK: Funções
+// MARK: Funções (Functions)
 //
 
 // Funções são tipos de primeira classe, o que significa que podem ser
@@ -491,20 +491,20 @@ print(chair.description())    // "Chair of Foo with 40 cm"
 
 
 //
-// MARK: Protocols
+// MARK: Protocolos (Protocols)
 //
 
-// `protocol`s can require that conforming types have specific
-// instance properties, instance methods, type methods,
-// operators, and subscripts.
+// protocolos obrigam a que os tipos tenham propriedades de instância,
+// métodos de instância, métodos de tipo,
+// operadores e subscripts específicos.
 
 protocol ShapeGenerator {
     var enabled: Bool { get set }
     func buildShape() -> Shape
 }
 
-// Protocols declared with @objc allow optional functions,
-// which allow you to check for conformance
+// Protocolos definidos com @objc permitem funções com optional
+// que permitem verificar se existem conformidade
 @objc protocol TransformShape {
     optional func reshaped()
     optional func canReshape() -> Bool
@@ -516,11 +516,11 @@ class MyShape: Rect {
     func grow() {
         sideLength += 2
 
-        // Place a question mark after an optional property, method, or
-        // subscript to gracefully ignore a nil value and return nil
-        // instead of throwing a runtime error ("optional chaining").
+        // Coloca um ponto de interrogação após uma propriedade opcional, método
+        // ou subscript para graciosamente ignorar um valor nil e retornar nil
+        // em vez de provoar um erro em tempo de execução ("optional chaining").
         if let allow = self.delegate?.canReshape?() {
-            // test for delegate then for method
+            // testar o delegate e depois o método
             self.delegate?.reshaped?()
         }
     }
