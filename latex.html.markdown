@@ -4,6 +4,7 @@ contributors:
     - ["Chaitanya Krishna Ande", "http://icymist.github.io"]
     - ["Colton Kohnke", "http://github.com/voltnor"]
     - ["Sricharan Chiruvolu", "http://sricharan.xyz"]
+    - ["Radhika Ghosal", "https://github.com/RadhikaG"]
 filename: learn-latex.tex
 ---
 
@@ -26,14 +27,19 @@ filename: learn-latex.tex
 % If you want to include graphics, colored text, or
 % source code from another language file into your document, 
 % you need to enhance the capabilities of LaTeX. This is done by adding packages. 
-% I'm going to include the float and caption packages for figures.
+% I'm going to include the float, caption, array, and hyperref packages.
 \usepackage{caption}
 \usepackage{float}
+\usepackage{array}
+\usepackage{hyperref}
 
 % We can define some other document properties too!
-\author{Chaitanya Krishna Ande, Colton Kohnke \& Sricharan Chiruvolu}
+\author{Chaitanya Krishna Ande, Colton Kohnke, Radhika Ghosal \\
+\& Sricharan Chiruvolu}
 \date{\today}
-\title{Learn LaTeX in Y Minutes!}
+\title{Learn \LaTeX{} in Y Minutes!} 
+% The \LaTeX{} macro formats LaTeX prettily
+
 
 % Now we're ready to begin the document
 % Everything before this line is called "The Preamble"
@@ -89,6 +95,43 @@ tomorrow, so let's make a grocery list.
   Not a list item, but still part of the enumerate.
 
 \end{enumerate} % All environments must have an end.
+
+
+\section{Figures}
+
+Let's insert a Figure. Figure placement can get a little tricky. 
+I definitely have to lookup the placement options each time.
+
+\begin{figure}[H] % H here denoted the placement option. 
+    \centering % centers the figure on the page
+    % Inserts a figure scaled to 0.8 the width of the page.
+    %\includegraphics[width=0.8\linewidth]{right-triangle.png} 
+    % Commented out for compilation purposes. Please use your imagination.
+    \caption{Right triangle with sides $a$, $b$, $c$}
+    \label{fig:right-triangle}
+\end{figure}
+
+\subsection{Tables}
+We can also insert Tables in the same way as figures.
+
+\begin{table}[H]
+  \caption{Caption for the Table.}
+  % the {} arguments below describe how each row of the table is drawn.
+  % Again, I have to look these up. Each. And. Every. Time.
+  \begin{tabular}{c|cc} 
+    %l - left-justified column
+    %c - centered column column 
+    %r - right-justified column
+    %| - vertical line
+    Number &  Last Name & First Name \\
+    % & denotes end of each column
+    % \\ denotes end of row/line
+    \hline % a horizontal line
+    1 & Biggus & Dickus \\
+    2 & Monty & Python
+  \end{tabular}
+\end{table}
+
 
 \section{Math}
 
@@ -152,36 +195,80 @@ Summations and Integrals are written with sum and int commands:
   \int_{0}^{\infty} \mathrm{e}^{-x} \mathrm{d}x
 \end{equation} 
 
-\section{Figures}
+Matrices are defined in a similar fashion as tables.
 
-Let's insert a Figure. Figure placement can get a little tricky. 
-I definitely have to lookup the placement options each time.
+$$  \left[                  % Left bracket
+    \begin{array}{ c c }    % Defining matrix like a table
+       1 & 2 \\
+       3 & 4
+    \end{array} 
+    \right]                 % Right bracket
+$$
 
-\begin{figure}[H] % H here denoted the placement option. 
-    \centering % centers the figure on the page
-    % Inserts a figure scaled to 0.8 the width of the page.
-    %\includegraphics[width=0.8\linewidth]{right-triangle.png} 
-    % Commented out for compilation purposes. Please use your imagination.
-    \caption{Right triangle with sides $a$, $b$, $c$}
-    \label{fig:right-triangle}
-\end{figure}
+\section{More on Math expressions}
 
-\subsection{Table}
-We can also insert Tables in the same way as figures.
+    Now that you've got an introduction to how equations and math work in Latex,
+    here's more on typesetting these equations.
 
-\begin{table}[H]
-  \caption{Caption for the Table.}
-  % the {} arguments below describe how each row of the table is drawn.
-  % Again, I have to look these up. Each. And. Every. Time.
-  \begin{tabular}{c|cc} 
-    Number &  Last Name & First Name \\ % Column rows are separated by $
-    \hline % a horizontal line
-    1 & Biggus & Dickus \\
-    2 & Monty & Python
-  \end{tabular}
-\end{table}
+    \subsection{Adding text to equations}
 
-% \section{Hyperlinks} % Coming soon
+    Putting text straight into the math environment doesn't quite cut it
+    when you need to include text within an equation. \\
+
+    For example,\\
+
+    \begin{equation}
+        50 apples \times 100 apples = lots of apples
+    \end{equation}
+
+    So we do...
+
+    \begin{equation}
+        % \mbox{something} formats the textline 'something' for equations 
+        50 \mbox{ apples} \times 100 \mbox{ apples} = \mbox{ lots of apples} \nonumber
+    \end{equation}
+
+    \subsection{Multi-lined equations}
+
+    To display multi-lined equations neatly, we use a tabular equation environment
+    called \verb|eqnarray| to align each column of the equation as required.
+
+    % \verb|foo| denotes that 'foo' will not be preprocessed by latex, 
+    % ie. the inline version of the verbatim environment. 
+
+    \begin{eqnarray}        % eqnarray is like a tabular equation environment
+          10xy^2+15x^2y-5xy & = & 5\left(2xy^2+3x^2y-xy\right) \\ 
+           % \nonumber suppresses equation numbers in eqnarray
+                            & = & 5x\left(2y^2+3xy-y\right) \nonumber \\
+                            & = & 5xy\left(2y+3x-1\right)
+    \end{eqnarray}
+
+    \subsection{Breaking up long equations}
+
+    % If you don't care about equation numbers, just use eqnarray*
+    \begin{eqnarray*}
+        \left(1+x\right)^n & = & 1 + nx + \frac{n\left(n-1\right)}{2!}x^2 \\
+                           & & + \frac{n\left(n-1\right)\left(n-2\right)}{3!}x^3 \\
+                           & & + \frac{n\left(n-1\right)\left(n-2\right)\left(n-3\right)}{4!}x^4 \\
+                           & & + \ldots
+    \end{eqnarray*}
+
+    \subsection{Controlling horizontal spacing}
+
+    In this example, it is necessary to have some space between the 
+    maths and the text, so we use \verb|\quad| to space it out. 
+
+    \[f(n) = \left\{ 
+                    \begin{array}{l l}
+                        % \quad is a horizontal space equal to the current font size
+                        n/2 & \quad \mbox{if $n$ is even} \\
+                        -(n+1)/2 & \quad \mbox{if $n$ is odd} \\ 
+                    \end{array} 
+                \right. \]
+
+
+%\section{Hyperlinks} % Coming soon
+
 
 \section{Getting LaTeX to not compile something (i.e. Source Code)}
 Let's say we want to include some code into our LaTeX document,
@@ -201,7 +288,7 @@ environment.
 
 By now you're probably wondering how to compile this fabulous document 
 and look at the glorious glory that is a LaTeX pdf.
-(yes, this document actually does compiles). \\
+(yes, this document actually does compile). \\
 Getting to the final document using LaTeX consists of the following steps:
   \begin{enumerate}
     \item Write the document in plain text (the "source code").
@@ -225,8 +312,7 @@ format you defined in Step 1.
 That's all for now!
 
 % end the document
-\end{document}
-```
+\```
 
 ## More on LaTeX
 
