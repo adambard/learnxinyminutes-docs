@@ -553,7 +553,15 @@ Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 [JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) is an in-depth
 guide of all the counter-intuitive parts of the language.
 
+Courses:
+[Code School](https://www.codeschool.com/paths/javascript) 
+[Codecademy](https://www.codecademy.com/en/tracks/javascript) (free)
+
+Books:
 [JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) is a classic guide / reference book.
+[Eloquent JavaScript](http://eloquentjavascript.net/) (free)
+[JavaScript Patterns](http://www.amazon.com/gp/product/0596806752/)
+[JavaScript: The Good Parts](http://www.amazon.com/gp/product/0596517742/)
 
 In addition to direct contributors to this article, some content is adapted
 from Louie Dinh's Python tutorial on this site, and the [JS
