@@ -16,6 +16,13 @@ JavaScript isn't just limited to web browsers, though: Node.js, a project that
 provides a standalone runtime for Google Chrome's V8 JavaScript engine, is
 becoming more and more popular.
 
+Why JavaScript?
+Javascript is an important programming language because it is the language of
+the web browsers and this makes JavaScript the most popular programming
+language. JavaScript is highly documented and it is easy to get support.
+Also, JavaScript has a bright future and it is evolving rapidly with lots of
+powerful frameworks.
+
 Feedback would be highly appreciated! You can reach me at
 [@adambrenecki](https://twitter.com/adambrenecki), or
 [adam@brenecki.id.au](mailto:adam@brenecki.id.au).
