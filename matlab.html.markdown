@@ -1,9 +1,11 @@
 ---
 language: Matlab
+filename: learnmatlab.mat
 contributors:
     - ["mendozao", "http://github.com/mendozao"]
     - ["jamesscottbrown", "http://jamesscottbrown.com"]
-
+    - ["Colton Kohnke", "http://github.com/voltnor"]
+    - ["Claudson Martins", "http://github.com/claudsonm"]
 ---
 
 MATLAB stands for MATrix LABoratory. It is a powerful numerical computing language commonly used in engineering and mathematics.
@@ -260,7 +262,7 @@ pcolor(A) % Heat-map of matrix: plot as grid of rectangles, coloured by value
 contour(A) % Contour plot of matrix
 mesh(A) % Plot as a mesh surface
 
-h = figure	% Create new figure object, with handle f
+h = figure	% Create new figure object, with handle h
 figure(h) % Makes the figure corresponding to handle h the current figure
 close(h) % close figure with handle h
 close all % close all open figure windows
@@ -328,7 +330,7 @@ double_input(6) % ans = 12
 % anonymous function. Useful when quickly defining a function to pass to
 % another function (eg. plot with fplot, evaluate an indefinite integral
 % with quad, find roots with fzero, or find minimum with fminsearch).
-% Example that returns the square of it's input, assigned to to the handle sqr:
+% Example that returns the square of it's input, assigned to the handle sqr:
 sqr = @(x) x.^2;
 sqr(10) % ans = 100
 doc function_handle % find out more
@@ -463,6 +465,59 @@ median  % median value
 mean    % mean value
 std     % standard deviation
 perms(x) % list all permutations of elements of x
+
+
+% Classes
+% Matlab can support object-oriented programming. 
+% Classes must be put in a file of the class name with a .m extension. 
+% To begin, we create a simple class to store GPS waypoints.
+% Begin WaypointClass.m
+classdef WaypointClass % The class name.
+  properties % The properties of the class behave like Structures
+    latitude 
+    longitude 
+  end
+  methods 
+    % This method that has the same name of the class is the constructor. 
+    function obj = WaypointClass(lat, lon)
+      obj.latitude = lat;
+      obj.longitude = lon;
+    end
+
+    % Other functions that use the Waypoint object
+    function r = multiplyLatBy(obj, n)
+      r = n*[obj.latitude];
+    end
+
+    % If we want to add two Waypoint objects together without calling
+    % a special function we can overload Matlab's arithmetic like so:
+    function r = plus(o1,o2)
+      r = WaypointClass([o1.latitude] +[o2.latitude], ...
+                        [o1.longitude]+[o2.longitude]);
+    end
+  end
+end
+% End WaypointClass.m
+
+% We can create an object of the class using the constructor
+a = WaypointClass(45.0, 45.0)
+
+% Class properties behave exactly like Matlab Structures.
+a.latitude = 70.0
+a.longitude = 25.0
+
+% Methods can be called in the same way as functions
+ans = multiplyLatBy(a,3)
+
+% The method can also be called using dot notation. In this case, the object 
+% does not need to be passed to the method.
+ans = a.multiplyLatBy(a,1/3)
+
+% Matlab functions can be overloaded to handle objects. 
+% In the method above, we have overloaded how Matlab handles 
+% the addition of two Waypoint objects.
+b = WaypointClass(15.0, 32.0)
+c = a + b
 
 ```
 

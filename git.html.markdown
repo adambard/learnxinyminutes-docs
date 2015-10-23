@@ -5,6 +5,7 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Leo Rudberg" , "http://github.com/LOZORD"]
     - ["Betsy Lorton" , "http://github.com/schbetsy"]
+    - ["Bruno Volcov", "http://github.com/volcov"]
 filename: LearnGit.txt
 ---
 
@@ -75,6 +76,11 @@ other repositories, or not!
 
 A branch is essentially a pointer to the last commit you made. As you go on
 committing, this pointer will automatically update to point the latest commit.
+
+### Tag
+
+A tag is a mark on specific point in history. Typically people use this
+functionality to mark release points (v1.0, and so on)
 
 ### HEAD and head (component of .git dir)
 
@@ -204,6 +210,28 @@ $ git branch -m myBranchName myNewBranchName
 
 # edit a branch's description
 $ git branch myBranchName --edit-description
+```
+
+### tag
+
+Manage your tags
+
+```bash
+# List tags
+$ git tag
+# Create a annotated tag
+# The -m specifies a tagging message,which is stored with the tag.
+# If you don’t specify a message for an annotated tag,
+# Git launches your editor so you can type it in.
+$ git tag -a v2.0 -m 'my version 2.0'
+# Show info about tag
+# That shows the tagger information, the date the commit was tagged,
+# and the annotation message before showing the commit information.
+$ git show v2.0
+# Push a single tag to remote
+$ git push origin v2.0
+# Push a lot of tags to remote
+$ git push origin --tags
 ```
 
 ### checkout
@@ -343,8 +371,11 @@ Pulls from a repository and merges it with another branch.
 # Update your local repo, by merging in new changes
 # from the remote "origin" and "master" branch.
 # git pull <remote> <branch>
-# git pull => implicitly defaults to => git pull origin master
 $ git pull origin master
+
+# By default, git pull will update your current branch
+# by merging in new changes from its remote-tracking branch 
+$ git pull
 
 # Merge in changes from remote branch and rebase
 # branch commits onto your local repo, like: "git pull <remote> <branch>, git rebase <branch>"
@@ -359,8 +390,11 @@ Push and merge changes from a branch to a remote & branch.
 # Push and merge changes from a local repo to a
 # remote named "origin" and "master" branch.
 # git push <remote> <branch>
-# git push => implicitly defaults to => git push origin master
 $ git push origin master
+
+# By default, git push will push and merge changes from
+# the current branch to its remote-tracking branch 
+$ git push
 
 # To link up current local branch with a remote branch, add -u flag:
 $ git push -u origin master
@@ -484,6 +518,8 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 * [Udemy Git Tutorial: A Comprehensive Guide](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
 
+* [Git Immersion - A Guided tour that walks through the fundamentals of git](http://gitimmersion.com/)
+
 * [git-scm - Video Tutorials](http://git-scm.com/videos)
 
 * [git-scm - Documentation](http://git-scm.com/docs)
@@ -497,3 +533,6 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
 
 * [Pro Git](http://www.git-scm.com/book/en/v2)
+
+* [An introduction to Git and GitHub for Beginners (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+

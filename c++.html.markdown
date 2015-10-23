@@ -310,6 +310,70 @@ basic_string(basic_string&& other);
 // constructor that "salvages" parts of that temporary string. You will see this
 // concept referred to as "move semantics".
 
+/////////////////////
+// Enums
+/////////////////////
+
+// Enums are a way to assign a value to a constant most commonly used for
+// easier visualization and reading of code
+enum ECarTypes
+{
+  Sedan,
+  Hatchback,
+  SUV,
+  Wagon
+};
+
+ECarTypes GetPreferredCarType()
+{
+	return ECarTypes::Hatchback;
+}
+
+// As of C++11 there is an easy way to assign a type to the enum which can be
+// useful in serialization of data and converting enums back-and-forth between 
+// the desired type and their respective constants
+enum ECarTypes : uint8_t
+{
+  Sedan, // 0
+  Hatchback, // 1
+  SUV = 254, // 254
+  Hybrid // 255
+};
+
+void WriteByteToFile(uint8_t InputValue)
+{
+	// Serialize the InputValue to a file
+}
+
+void WritePreferredCarTypeToFile(ECarTypes InputCarType)
+{
+	// The enum is implicitly converted to a uint8_t due to its declared enum type
+	WriteByteToFile(InputCarType);
+}
+
+// On the other hand you may not want enums to be accidentally cast to an integer
+// type or to other enums so it is instead possible to create an enum class which 
+// won't be implicitly converted
+enum class ECarTypes : uint8_t
+{
+  Sedan, // 0
+  Hatchback, // 1
+  SUV = 254, // 254
+  Hybrid // 255
+};
+
+void WriteByteToFile(uint8_t InputValue)
+{
+	// Serialize the InputValue to a file
+}
+
+void WritePreferredCarTypeToFile(ECarTypes InputCarType)
+{
+	// Won't compile even though ECarTypes is a uint8_t due to the enum
+	// being declared as an "enum class"!
+	WriteByteToFile(InputCarType);
+}
+
 //////////////////////////////////////////
 // Classes and object-oriented programming
 //////////////////////////////////////////
@@ -404,6 +468,8 @@ int main() {
 // Inheritance:
 
 // This class inherits everything public and protected from the Dog class
+// as well as private but may not directly access private members/methods 
+// without a public or protected method for doing so
 class OwnedDog : public Dog {
 
     void setOwner(const std::string& dogsOwner);

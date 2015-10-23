@@ -6,7 +6,6 @@ contributors:
     - ["Dominic Bou-Samra", "http://dbousamra.github.com"]
     - ["Geoff Liu", "http://geoffliu.me"]
     - ["Ha-Duong Nguyen", "http://reference-error.org"]
-filename: learn.scala
 ---
 
 Scala - the scalable language
@@ -43,9 +42,13 @@ Scala - the scalable language
 // Printing, and forcing a new line on the next print
 println("Hello world!")
 println(10)
+// Hello world!
+// 10
 
 // Printing, without forcing a new line on next print
 print("Hello world")
+print(10)
+// Hello world!10
 
 // Declaring values is done using either var or val.
 // val declarations are immutable, whereas vars are mutable. Immutability is
@@ -240,10 +243,11 @@ i    // Show the value of i. Note that while is a loop in the classical sense -
      // comprehensions above is easier to understand and parallelize
 
 // A do while loop
+i = 0
 do {
-  println("x is still less than 10")
-  x += 1
-} while (x < 10)
+  println("i is still less than 10")
+  i += 1
+} while (i < 10)
 
 // Tail recursion is an idiomatic way of doing recurring things in Scala.
 // Recursive functions need an explicit return type, the compiler can't infer it.
@@ -562,8 +566,8 @@ sendGreetings("Jane")  // => "Hello Jane, 100 blessings to you and yours!"
 // Implicit function parameters enable us to simulate type classes in other
 // functional languages. It is so often used that it gets its own shorthand. The
 // following two lines mean the same thing:
-def foo[T](implicit c: C[T]) = ...
-def foo[T : C] = ...
+// def foo[T](implicit c: C[T]) = ...
+// def foo[T : C] = ...
 
 
 // Another situation in which the compiler looks for an implicit is if you have

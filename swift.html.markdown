@@ -5,6 +5,7 @@ contributors:
   - ["Christopher Bess", "http://github.com/cbess"]
   - ["Joey Huang", "http://github.com/kamidox"]
   - ["Anthony Nguyen", "http://github.com/anthonyn60"]
+  - ["Clayton Walker", "https://github.com/cwalk"]
 filename: learnswift.swift
 ---
 
@@ -57,8 +58,9 @@ let piText = "Pi = \(π), Pi 2 = \(π * 2)" // String interpolation
 print("Build value: \(buildValue)") // Build value: 7
 
 /*
-    Optionals are a Swift language feature that allows you to store a `Some` or
-    `None` value.
+    Optionals are a Swift language feature that either contains a value,
+    or contains nil (no value) to indicate that a value is missing.
+    A question mark (?) after the type marks the value as optional.
 
     Because Swift requires every property to have a value, even nil must be
     explicitly stored as an Optional value.
@@ -79,6 +81,12 @@ if someOptionalString != nil {
 }
 someOptionalString = nil
 
+/*
+    Trying to use ! to access a non-existent optional value triggers a runtime 
+    error. Always make sure that an optional contains a non-nil value before
+    using ! to force-unwrap its value.
+*/
+
 // implicitly unwrapped optional
 var unwrappedString: String! = "Value is expected."
 // same as above, but ! is a postfix operator (more syntax candy)
@@ -93,7 +101,7 @@ if let someOptionalStringConstant = someOptionalString {
 
 // Swift has support for storing a value of any type.
 // AnyObject == id
-// Unlike Objective-C `id`, AnyObject works with any value (Class, Int, struct, etc)
+// Unlike Objective-C `id`, AnyObject works with any value (Class, Int, struct, etc.)
 var anyObjectVar: AnyObject = 7
 anyObjectVar = "Changed value to a string, not good practice, but possible."
 
@@ -295,7 +303,7 @@ print(numbers) // [3, 6, 18]
 // MARK: Structures
 //
 
-// Structures and classes have very similar capabilites
+// Structures and classes have very similar capabilities
 struct NamesTable {
     let names = [String]()
 

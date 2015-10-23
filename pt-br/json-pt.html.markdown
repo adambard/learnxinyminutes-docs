@@ -35,7 +35,7 @@ tudo o que é vai ser 100% JSON válido. Felizmente, isso meio que fala por si.
     "array": [0, 1, 2, 3, "Arrays podem ter qualquer coisa em si.", 5],
 
     "outro objeto": {
-      "ccomentário": "Estas coisas podem ser aninhadas, muito úteis."
+      "comentário": "Estas coisas podem ser aninhadas, muito úteis."
     }
   },
 

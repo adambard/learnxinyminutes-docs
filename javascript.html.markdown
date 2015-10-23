@@ -21,7 +21,7 @@ Feedback would be highly appreciated! You can reach me at
 [adam@brenecki.id.au](mailto:adam@brenecki.id.au).
 
 ```js
-// Comments are like C. Single-line comments start with two slashes,
+// Comments are like C's. Single-line comments start with two slashes,
 /* and multiline comments start with slash-star
    and end with star-slash */
 
@@ -53,6 +53,11 @@ doStuff()
 
 // Including uneven division.
 5 / 2; // = 2.5
+
+// And modulo division.
+10 % 2; // = 0
+30 % 4; // = 2
+18.5 % 7; // = 4.5
 
 // Bitwise operations also work; when you perform a bitwise operation your float
 // is converted to a signed int *up to* 32 bits.
@@ -104,7 +109,7 @@ null == undefined; // = true
 
 // ...unless you use ===
 "5" === 5; // = false
-null === undefined; // = false 
+null === undefined; // = false
 
 // ...which can result in some weird behaviour...
 13 + !0; // 14
@@ -143,6 +148,10 @@ someOtherVar = 10;
 
 // Variables declared without being assigned to are set to undefined.
 var someThirdVar; // = undefined
+
+// if you wan't to declare a couple of variables, then you could use a comma 
+// separator
+var someFourthVar = 2, someFifthVar = 4;
 
 // There's shorthand for performing math operations on variables:
 someVar += 5; // equivalent to someVar = someVar + 5; someVar is 10 now
@@ -218,6 +227,26 @@ for (var i = 0; i < 5; i++){
     // will run 5 times
 }
 
+//The For/In statement loops iterates over every property across the entire prototype chain
+var description = "";
+var person = {fname:"Paul", lname:"Ken", age:18};
+for (var x in person){
+    description += person[x] + " ";
+}
+
+//If only want to consider properties attached to the object itself,
+//and not its prototypes use hasOwnProperty() check
+var description = "";
+var person = {fname:"Paul", lname:"Ken", age:18};
+for (var x in person){
+    if (person.hasOwnProperty(x)){
+        description += person[x] + " ";
+    }
+}
+
+//for/in should not be used to iterate over an Array where the index order is important.
+//There is no guarantee that for/in will return the indexes in any particular order
+
 // && is logical and, || is logical or
 if (house.size == "big" && house.colour == "blue"){
     house.contains = "bear";
@@ -262,12 +291,9 @@ myFunction("foo"); // = "FOO"
 // Note that the value to be returned must start on the same line as the
 // `return` keyword, otherwise you'll always return `undefined` due to
 // automatic semicolon insertion. Watch out for this when using Allman style.
-function myFunction()
-{
+function myFunction(){
     return // <- semicolon automatically inserted here
-    {
-        thisIsAn: 'object literal'
-    }
+    {thisIsAn: 'object literal'}
 }
 myFunction(); // = undefined
 
@@ -280,6 +306,12 @@ function myFunction(){
 setTimeout(myFunction, 5000);
 // Note: setTimeout isn't part of the JS language, but is provided by browsers
 // and Node.js.
+
+// Another function provided by browsers is setInterval
+function myFunction(){
+    // this code will be called every 5 seconds
+}
+setInterval(myFunction, 5000);
 
 // Function objects don't even have to be declared with a name - you can write
 // an anonymous function definition directly into the arguments of another.
@@ -299,7 +331,7 @@ i; // = 5 - not undefined as you'd expect in a block-scoped language
 // scope.
 (function(){
     var temporary = 5;
-    // We can access the global scope by assiging to the "global object", which
+    // We can access the global scope by assigning to the "global object", which
     // in a web browser is always `window`. The global object may have a
     // different name in non-browser environments such as Node.js.
     window.permanent = 10;
@@ -393,7 +425,7 @@ var doubler = product.bind(this, 2);
 doubler(8); // = 16
 
 // When you call a function with the `new` keyword, a new object is created, and
-// made available to the function via the this keyword. Functions designed to be
+// made available to the function via the `this` keyword. Functions designed to be
 // called like that are called constructors.
 
 var MyConstructor = function(){

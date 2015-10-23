@@ -81,10 +81,13 @@ false
 # Strings are created with "
 "This is a string."
 
+# Julia has several types of strings, including ASCIIString and UTF8String.
+# More on this in the Types section.
+
 # Character literals are written with '
 'a'
 
-# A string can be indexed like an array of characters
+# Some strings can be indexed like an array of characters
 "This is a string"[1] # => 'T' # Julia indexes from 1
 # However, this is will not work well for UTF8 strings,
 # so iterating over strings is recommended (map, for loops, etc).
@@ -114,11 +117,11 @@ catch e
     println(e)
 end
 
-# Variable names start with a letter.
+# Variable names start with a letter or underscore.
 # After that, you can use letters, digits, underscores, and exclamation points.
 SomeOtherVar123! = 6 # => 6
 
-# You can also use unicode characters
+# You can also use certain unicode characters
 ☃ = 8 # => 8
 # These are especially handy for mathematical notation
 2 * π # => 6.283185307179586
@@ -314,7 +317,7 @@ end
 
 
 # For loops iterate over iterables.
-# Iterable types include Range, Array, Set, Dict, and String.
+# Iterable types include Range, Array, Set, Dict, and AbstractString.
 for animal=["dog", "cat", "mouse"]
     println("$animal is a mammal")
     # You can use $ to interpolate variables or expression into strings
@@ -537,6 +540,17 @@ subtypes(Number) # => 6-element Array{Any,1}:
                  #     Real
 subtypes(Cat) # => 0-element Array{Any,1}
 
+# AbstractString, as the name implies, is also an abstract type
+subtypes(AbstractString)    # 8-element Array{Any,1}:
+                            #  Base.SubstitutionString{T<:AbstractString}
+                            #  DirectIndexString
+                            #  RepString
+                            #  RevString{T<:AbstractString}
+                            #  RopeString
+                            #  SubString{T<:AbstractString}
+                            #  UTF16String
+                            #  UTF8String
+
 # Every type has a super type; use the `super` function to get it.
 typeof(5) # => Int64
 super(Int64) # => Signed
@@ -546,17 +560,21 @@ super(Number) # => Any
 super(super(Signed)) # => Number
 super(Any) # => Any
 # All of these type, except for Int64, are abstract.
+typeof("fire") # => ASCIIString
+super(ASCIIString) # => DirectIndexString
+super(DirectIndexString) # => AbstractString
+# Likewise here with ASCIIString
 
 # <: is the subtyping operator
 type Lion <: Cat # Lion is a subtype of Cat
   mane_color
-  roar::String
+  roar::AbstractString
 end
 
 # You can define more constructors for your type
 # Just define a function of the same name as the type
 # and call an existing constructor to get a value of the correct type
-Lion(roar::String) = Lion("green",roar)
+Lion(roar::AbstractString) = Lion("green",roar)
 # This is an outer constructor because it's outside the type definition
 
 type Panther <: Cat # Panther is also a subtype of Cat

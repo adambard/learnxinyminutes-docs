@@ -23,8 +23,10 @@ about [D](http://dlang.org/). The D programming language is a modern, general-pu
 multi-paradigm language with support for everything from low-level features to
 expressive high-level abstractions.
 
-D is actively developed by Walter Bright and Andrei Alexandrescu, two super smart, really cool
-dudes. With all that out of the way, let's look at some examples!
+D is actively developed by a large group of super-smart people and is spearheaded by
+[Walter Bright](https://en.wikipedia.org/wiki/Walter_Bright) and
+[Andrei Alexandrescu](https://en.wikipedia.org/wiki/Andrei_Alexandrescu).
+With all that out of the way, let's look at some examples!
 
 ```c
 import std.stdio;
@@ -36,9 +38,10 @@ void main() {
         writeln(i);
     }
 
-    auto n = 1; // use auto for type inferred variables
+    // 'auto' can be used for inferring types.
+    auto n = 1;
 
-    // Numeric literals can use _ as a digit seperator for clarity
+    // Numeric literals can use '_' as a digit separator for clarity.
     while(n < 10_000) {
         n += n;
     }
@@ -47,13 +50,15 @@ void main() {
         n -= (n / 2);
     } while(n > 0);
 
-    // For and while are nice, but in D-land we prefer foreach
-    // The .. creates a continuous range, excluding the end
+    // For and while are nice, but in D-land we prefer 'foreach' loops.
+    // The '..' creates a continuous range, including the first value
+    // but excluding the last.
     foreach(i; 1..1_000_000) {
         if(n % 2 == 0)
             writeln(i);
     }
 
+    // There's also 'foreach_reverse' when you want to loop backwards.
     foreach_reverse(i; 1..int.max) {
         if(n % 2 == 1) {
             writeln(i);
@@ -69,16 +74,18 @@ are passed to functions by value (i.e. copied) and classes are passed by referen
 we can use templates to parameterize all of these on both types and values!
 
 ```c
-// Here, T is a type parameter. Think <T> from C++/C#/Java
+// Here, 'T' is a type parameter. Think '<T>' from C++/C#/Java.
 struct LinkedList(T) {
     T data = null;
-    LinkedList!(T)* next; // The ! is used to instaniate a parameterized type. Again, think <T>
+
+    // Use '!' to instantiate a parameterized type. Again, think '<T>'.
+    LinkedList!(T)* next;
 }
 
 class BinTree(T) {
     T data = null;
 
-    // If there is only one template parameter, we can omit parens
+    // If there is only one template parameter, we can omit the parentheses.
     BinTree!T left;
     BinTree!T right;
 }
@@ -93,13 +100,11 @@ enum Day {
     Saturday,
 }
 
-// Use alias to create abbreviations for types
-
+// Use alias to create abbreviations for types.
 alias IntList = LinkedList!int;
 alias NumTree = BinTree!double;
 
 // We can create function templates as well!
-
 T max(T)(T a, T b) {
     if(a < b)
         return b;
@@ -107,9 +112,8 @@ T max(T)(T a, T b) {
     return a;
 }
 
-// Use the ref keyword to ensure pass by referece.
-// That is, even if a and b are value types, they
-// will always be passed by reference to swap
+// Use the ref keyword to ensure pass by reference. That is, even if 'a' and 'b'
+// are value types, they will always be passed by reference to 'swap()'.
 void swap(T)(ref T a, ref T b) {
     auto temp = a;
 
@@ -117,13 +121,13 @@ void swap(T)(ref T a, ref T b) {
     b = temp;
 }
 
-// With templates, we can also parameterize on values, not just types
+// With templates, we can also parameterize on values, not just types.
 class Matrix(uint m, uint n, T = int) {
     T[m] rows;
     T[n] columns;
 }
 
-auto mat = new Matrix!(3, 3); // We've defaulted type T to int
+auto mat = new Matrix!(3, 3); // We've defaulted type 'T' to 'int'.
 
 ```
 
@@ -133,21 +137,20 @@ have the syntax of POD structures (`structure.x = 7`) with the semantics of
 getter and setter methods (`object.setX(7)`)!
 
 ```c
-// Consider a class parameterized on a types T, U
-
+// Consider a class parameterized on types 'T' & 'U'.
 class MyClass(T, U) {
     T _data;
     U _other;
-
 }
 
-// And "getter" and "setter" methods like so
+// And "getter" and "setter" methods like so:
 class MyClass(T, U) {
     T _data;
     U _other;
 
-    // Constructors are always named `this`
+    // Constructors are always named 'this'.
     this(T t, U u) {
+        // This will call the setter methods below.
         data = t;
         other = u;
     }
@@ -170,16 +173,24 @@ class MyClass(T, U) {
         _other = u;
     }
 }
-// And we use them in this manner
 
+// And we use them in this manner:
 void main() {
-    auto mc = MyClass!(int, string);
+    auto mc = new MyClass!(int, string)(7, "seven");
 
-    mc.data = 7;
-    mc.other = "seven";
+    // Import the 'stdio' module from the standard library for writing to
+    // console (imports can be local to a scope).
+    import std.stdio;
 
-    writeln(mc.data);
-    writeln(mc.other);
+    // Call the getters to fetch the values.
+    writefln("Earlier: data = %d, str = %s", mc.data, mc.other);
+
+    // Call the setters to assign new values.
+    mc.data = 8;
+    mc.other = "eight";
+
+    // Call the getters again to fetch the new values.
+    writefln("Later: data = %d, str = %s", mc.data, mc.other);
 }
 ```
 
