@@ -127,7 +127,7 @@ public class LearnJava {
         // of bytes and are manipulated using functions built into BigInteger
         //
         // BigInteger can be initialized using an array of bytes or a string.
-        
+
         BigInteger fooBigInteger = new BigDecimal(fooByteArray);
 
 
@@ -186,9 +186,9 @@ public class LearnJava {
         //               operations perform as could be expected for a
         //               doubly-linked list.
         // Maps - A set of objects that map keys to values. Map is
-	//        an interface and therefore cannot be instantiated.
-	//        The type of keys and values contained in a Map must
-	//        be specified upon instantiation of the implementing
+        //        an interface and therefore cannot be instantiated.
+        //        The type of keys and values contained in a Map must
+        //        be specified upon instantiation of the implementing
         //        class. Each key may map to only one corresponding value,
         //        and each key may appear only once (no duplicates).
         // HashMaps - This class uses a hashtable to implement the Map
@@ -290,7 +290,7 @@ public class LearnJava {
             // Iterated 10 times, fooFor 0->9
         }
         System.out.println("fooFor Value: " + fooFor);
-        
+
         // Nested For Loop Exit with Label
         outer:
         for (int i = 0; i < 10; i++) {
@@ -301,7 +301,7 @@ public class LearnJava {
             }
           }
         }
-        
+
         // For Each Loop
         // The for loop is also able to iterate over arrays as well as objects
         // that implement the Iterable interface.
@@ -333,7 +333,7 @@ public class LearnJava {
                      break;
         }
         System.out.println("Switch Case Result: " + monthString);
-        
+
         // Starting in Java 7 and above, switching Strings works like this:
         String myAnswer = "maybe";
         switch(myAnswer) {
@@ -564,7 +564,7 @@ public interface Digestible {
 
 // We can now create a class that implements both of these interfaces.
 public class Fruit implements Edible, Digestible {
-  
+
     @Override
     public void eat() {
         // ...
@@ -644,7 +644,7 @@ class Dog extends Animal
     public void makeSound()
     {
         System.out.println("Bark");
-        // age = 30;	==> ERROR!	age is private to Animal
+        // age = 30;    ==> ERROR!  age is private to Animal
     }
 
     // NOTE: You will get an error if you used the
