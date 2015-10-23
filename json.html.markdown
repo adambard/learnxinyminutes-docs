@@ -83,3 +83,5 @@ Objects can be a part of the array as well.
 ```json
 [{"name": "Bob", "age": 25}, {"name": "Jane", "age": 29}, {"name": "Jack", "age": 31}]
 ```
+
+Whitespace characters are ignored by JSON parsers which means that all spaces, tabs and newline characters can be stripped to minimize file size.
