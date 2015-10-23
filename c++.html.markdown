@@ -5,6 +5,7 @@ contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Matt Kline", "https://github.com/mrkline"]
     - ["Geoff Liu", "http://geoffliu.me"]
+    - ["Connor Waters", "http://github.com/connorwaters"]
 lang: en
 ---
 
@@ -53,11 +54,11 @@ int main(int argc, char** argv)
 
 // However, C++ varies in some of the following ways:
 
-// In C++, character literals are one byte.
-sizeof('c') == 1
+// In C++, character literals are chars
+sizeof('c') == sizeof(char) == 1
 
-// In C, character literals are the same size as ints.
-sizeof('c') == sizeof(10)
+// In C, character literals are ints
+sizeof('c') == sizeof(int)
 
 
 // C++ has strict prototyping
@@ -159,9 +160,9 @@ void foo()
 
 int main()
 {
-    // Includes all symbols from `namesapce Second` into the current scope. Note
-    // that simply `foo()` no longer works, since it is now ambiguous whether
-    // we're calling the `foo` in `namespace Second` or the top level.
+    // Includes all symbols from namespace Second into the current scope. Note
+    // that simply foo() no longer works, since it is now ambiguous whether
+    // we're calling the foo in namespace Second or the top level.
     using namespace Second;
 
     Second::foo(); // prints "This is Second::foo"
@@ -244,7 +245,13 @@ cout << fooRef; // Prints "I am foo. Hi!"
 // Doesn't reassign "fooRef". This is the same as "foo = bar", and
 //   foo == "I am bar"
 // after this line.
+cout << &fooRef << endl; //Prints the address of foo
 fooRef = bar;
+cout << &fooRef << endl; //Still prints the address of foo
+cout << fooRef;  // Prints "I am bar"
+
+//The address of fooRef remains the same, i.e. it is still referring to foo.
+
 
 const string& barRef = bar; // Create a const reference to bar.
 // Like C, const values (and pointers and references) cannot be modified.
@@ -256,8 +263,8 @@ string tempObjectFun() { ... }
 string retVal = tempObjectFun();
 
 // What happens in the second line is actually:
-//   - a string object is returned from `tempObjectFun`
-//   - a new string is constructed with the returned object as arugment to the
+//   - a string object is returned from tempObjectFun
+//   - a new string is constructed with the returned object as argument to the
 //     constructor
 //   - the returned object is destroyed
 // The returned object is called a temporary object. Temporary objects are
@@ -268,15 +275,15 @@ string retVal = tempObjectFun();
 // code:
 foo(bar(tempObjectFun()))
 
-// assuming `foo` and `bar` exist, the object returned from `tempObjectFun` is
-// passed to `bar`, and it is destroyed before `foo` is called.
+// assuming foo and bar exist, the object returned from tempObjectFun is
+// passed to bar, and it is destroyed before foo is called.
 
 // Now back to references. The exception to the "at the end of the enclosing
 // expression" rule is if a temporary object is bound to a const reference, in
 // which case its life gets extended to the current scope:
 
 void constReferenceTempObjectFun() {
-  // `constRef` gets the temporary object, and it is valid until the end of this
+  // constRef gets the temporary object, and it is valid until the end of this
   // function.
   const string& constRef = tempObjectFun();
   ...
@@ -301,7 +308,71 @@ basic_string(basic_string&& other);
 // Idea being if we are constructing a new string from a temporary object (which
 // is going to be destroyed soon anyway), we can have a more efficient
 // constructor that "salvages" parts of that temporary string. You will see this
-// concept referred to as the move semantic.
+// concept referred to as "move semantics".
+
+/////////////////////
+// Enums
+/////////////////////
+
+// Enums are a way to assign a value to a constant most commonly used for
+// easier visualization and reading of code
+enum ECarTypes
+{
+  Sedan,
+  Hatchback,
+  SUV,
+  Wagon
+};
+
+ECarTypes GetPreferredCarType()
+{
+	return ECarTypes::Hatchback;
+}
+
+// As of C++11 there is an easy way to assign a type to the enum which can be
+// useful in serialization of data and converting enums back-and-forth between 
+// the desired type and their respective constants
+enum ECarTypes : uint8_t
+{
+  Sedan, // 0
+  Hatchback, // 1
+  SUV = 254, // 254
+  Hybrid // 255
+};
+
+void WriteByteToFile(uint8_t InputValue)
+{
+	// Serialize the InputValue to a file
+}
+
+void WritePreferredCarTypeToFile(ECarTypes InputCarType)
+{
+	// The enum is implicitly converted to a uint8_t due to its declared enum type
+	WriteByteToFile(InputCarType);
+}
+
+// On the other hand you may not want enums to be accidentally cast to an integer
+// type or to other enums so it is instead possible to create an enum class which 
+// won't be implicitly converted
+enum class ECarTypes : uint8_t
+{
+  Sedan, // 0
+  Hatchback, // 1
+  SUV = 254, // 254
+  Hybrid // 255
+};
+
+void WriteByteToFile(uint8_t InputValue)
+{
+	// Serialize the InputValue to a file
+}
+
+void WritePreferredCarTypeToFile(ECarTypes InputCarType)
+{
+	// Won't compile even though ECarTypes is a uint8_t due to the enum
+	// being declared as an "enum class"!
+	WriteByteToFile(InputCarType);
+}
 
 //////////////////////////////////////////
 // Classes and object-oriented programming
@@ -349,7 +420,10 @@ public:
     // These are called when an object is deleted or falls out of scope.
     // This enables powerful paradigms such as RAII
     // (see below)
-    // Destructors must be virtual to allow classes to be derived from this one.
+    // The destructor should be virtual if a class is to be derived from;
+    // if it is not virtual, then the derived class' destructor will
+    // not be called if the object is destroyed through a base-class reference
+    // or pointer.
     virtual ~Dog();
 
 }; // A semicolon must follow the class definition.
@@ -394,6 +468,8 @@ int main() {
 // Inheritance:
 
 // This class inherits everything public and protected from the Dog class
+// as well as private but may not directly access private members/methods 
+// without a public or protected method for doing so
 class OwnedDog : public Dog {
 
     void setOwner(const std::string& dogsOwner);
@@ -492,9 +568,10 @@ int main () {
 /////////////////////
 
 // Templates in C++ are mostly used for generic programming, though they are
-// much more powerful than generics constructs in other languages. It also
-// supports explicit and partial specialization, functional-style type classes,
-// and also it's Turing-complete.
+// much more powerful than generic constructs in other languages. They also
+// support explicit and partial specialization and functional-style type
+// classes; in fact, they are a Turing-complete functional language embedded
+// in C++!
 
 // We start with the kind of generic programming you might be familiar with. To
 // define a class or function that takes a type parameter:
@@ -506,7 +583,7 @@ public:
 };
 
 // During compilation, the compiler actually generates copies of each template
-// with parameters substituted, and so the full definition of the class must be
+// with parameters substituted, so the full definition of the class must be
 // present at each invocation. This is why you will see template classes defined
 // entirely in header files.
 
@@ -520,13 +597,13 @@ intBox.insert(123);
 Box<Box<int> > boxOfBox;
 boxOfBox.insert(intBox);
 
-// Up until C++11, you must place a space between the two '>'s, otherwise '>>'
-// will be parsed as the right shift operator.
+// Until C++11, you had to place a space between the two '>'s, otherwise '>>'
+// would be parsed as the right shift operator.
 
 // You will sometimes see
 //   template<typename T>
-// instead. The 'class' keyword and 'typename' keyword are _mostly_
-// interchangeable in this case. For full explanation, see
+// instead. The 'class' keyword and 'typename' keywords are _mostly_
+// interchangeable in this case. For the full explanation, see
 //   http://en.wikipedia.org/wiki/Typename
 // (yes, that keyword has its own Wikipedia page).
 
@@ -582,12 +659,15 @@ try {
     // Do not allocate exceptions on the heap using _new_.
     throw std::runtime_error("A problem occurred");
 }
+
 // Catch exceptions by const reference if they are objects
 catch (const std::exception& ex)
 {
-  std::cout << ex.what();
+    std::cout << ex.what();
+}
+
 // Catches any exception not caught by previous _catch_ blocks
-} catch (...)
+catch (...)
 {
     std::cout << "Unknown exception caught";
     throw; // Re-throws the exception
@@ -597,8 +677,8 @@ catch (const std::exception& ex)
 // RAII
 ///////
 
-// RAII stands for Resource Allocation Is Initialization.
-// It is often considered the most powerful paradigm in C++,
+// RAII stands for "Resource Acquisition Is Initialization".
+// It is often considered the most powerful paradigm in C++
 // and is the simple concept that a constructor for an object
 // acquires that object's resources and the destructor releases them.
 
@@ -619,9 +699,9 @@ void doSomethingWithAFile(const char* filename)
 // Unfortunately, things are quickly complicated by error handling.
 // Suppose fopen can fail, and that doSomethingWithTheFile and
 // doSomethingElseWithIt return error codes if they fail.
-// (Exceptions are the preferred way of handling failure,
-//  but some programmers, especially those with a C background,
-//  disagree on the utility of exceptions).
+//  (Exceptions are the preferred way of handling failure,
+//   but some programmers, especially those with a C background,
+//   disagree on the utility of exceptions).
 // We now have to check each call for failure and close the file handle
 // if a problem occurred.
 bool doSomethingWithAFile(const char* filename)
@@ -741,15 +821,17 @@ class FooSub : public Foo {
 
 // 0 == false == NULL (most of the time)!
 bool* pt = new bool;
-*pt = 0;  // Sets the value points by 'pt' to false.
+*pt = 0; // Sets the value points by 'pt' to false.
 pt = 0;  // Sets 'pt' to the null pointer. Both lines compile without warnings.
 
 // nullptr is supposed to fix some of that issue:
 int* pt2 = new int;
-*pt2 = nullptr;  // Doesn't compile
+*pt2 = nullptr; // Doesn't compile
 pt2 = nullptr;  // Sets pt2 to null.
 
-// But somehow 'bool' type is an exception (this is to make `if (ptr)` compile).
+// There is an exception made for bools.
+// This is to allow you to test for null pointers with if(!ptr),
+// but as a consequence you can assign nullptr to a bool directly!
 *pt = nullptr;  // This still compiles, even though '*pt' is a bool!
 
 
@@ -776,12 +858,12 @@ vector<Foo> v;
 for (int i = 0; i < 10; ++i)
   v.push_back(Foo());
 
-// Following line sets size of v to 0, but destructors don't get called,
+// Following line sets size of v to 0, but destructors don't get called
 // and resources aren't released!
 v.empty();
-v.push_back(Foo());  // New value is copied into the first Foo we inserted in the loop.
+v.push_back(Foo());  // New value is copied into the first Foo we inserted
 
-// Truly destroys all values in v. See section about temporary object for
+// Truly destroys all values in v. See section about temporary objects for
 // explanation of why this works.
 v.swap(vector<Foo>());
 

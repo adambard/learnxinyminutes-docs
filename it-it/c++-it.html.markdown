@@ -4,6 +4,8 @@ filename: learncpp-it.cpp
 contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Matt Kline", "https://github.com/mrkline"]
+    - ["Geoff Liu", "http://geoffliu.me"]
+    - ["Connor Waters", "http://github.com/connorwaters"]
 translators:
     - ["Robert Margelli", "http://github.com/sinkswim/"]
 lang: it-it
@@ -54,11 +56,11 @@ int main(int argc, char** argv)
 
 // Tuttavia, il C++ varia nei seguenti modi:
 
-// In C++, i caratteri come letterali sono da un byte.
-sizeof('c') == 1
+// In C++, i caratteri come letterali sono dei char.
+sizeof('c') == sizeof(char) == 1
 
-// In C, i caratteri come letterali sono della stessa dimensione degli interi.
-sizeof('c') == sizeof(10)
+// In C, i caratteri come letterali sono degli interi.
+sizeof('c') == sizeof(int)
 
 
 // C++ ha prototipizzazione rigida
@@ -160,11 +162,14 @@ void foo()
 
 int main()
 {
-    // Assume che tutto venga dal namespace "Secondo"
-    // a meno che non venga dichiarato altrimenti.
+    // Include tutti i simboli del namespace Secondo nello scope attuale.
+    // Osserva che chiamare semplicemente foo() non va più bene perché è ambiguo:
+    // bisogna specificare se vogliamo chiamare foo definita nel namespace Secondo
+    // o foo definita nel livello principale del programma.
+
     using namespace Secondo;
 
-    foo(); // stampa "Questa è Secondo::foo"
+    Secondo::foo(); // stampa "Questa è Secondo::foo"
     Primo::Annidato::foo(); // stampa "Questa è Primo::Annidato::foo"
     ::foo(); // stampa "Questa è foo globale"
 }
@@ -244,11 +249,136 @@ cout << fooRef; // Stampa "Io sono foo. Ciao!"
 // Non riassegna "fooRef". Questo è come scrivere "foo = bar", e
 //   foo == "Io sono bar"
 // dopo questa riga.
+cout << &fooRef << endl; // Stampa l'indirizzo di foo
 fooRef = bar;
+cout << &fooRef << endl; // Stampa lo stesso l'indirizzo di foo
+cout << fooRef;  // Stampa "Io sono bar"
+
+// L'indirizzo di fooRef rimane lo stesso, ovvero si riferisce ancora a foo.
+
 
 const string& barRef = bar; // Crea un riferimento const a bar.
 // Come in C, i valori const (i puntatori e i riferimenti) non possono essere modificati.
 barRef += ". Ciao!"; // Errore, i riferimenti const non possono essere modificati.
+
+// Facciamo un piccolo excursus: prima di approfondire ancora i riferimenti, è necessario
+// introdurre il concetto di oggetto temporaneo. Supponiamo di avere il seguente codice:
+string tempObjectFun() { ... }
+string retVal = tempObjectFun();
+
+// Nella seconda riga si ha che:
+//   - un oggetto di tipo stringa viene ritornato da tempObjectFun
+//   - viene costruita una nuova stringa, utilizzando l'oggetto ritornato come
+//     argomento per il costruttore
+//   - l'oggetto ritornato da tempObjectFun viene distrutto
+// L'oggetto ritornato da tempObjectFun viene detto oggetto temporaneo.
+// Un oggetto temporaneo viene creato quando una funzione ritorna un oggetto, e viene
+// distrutto quando l'espressione che lo racchiude termina la sua esecuzione - questo
+// comportamento viene definito dallo standard, ma i compilatori possono modificarlo
+// a piacere. Cerca su google "return value optimization" se vuoi approfondire.
+// Dunque nel seguente codice:
+foo(bar(tempObjectFun()))
+
+// dando per scontato che foo e bar esistano, l'oggetto ritornato da tempObjectFun
+// è passato a bar ed è distrutto prima dell'invocazione di foo.
+
+// Tornando ai riferimenti, c'è un'eccezione a quanto appena detto.
+// Infatti un oggetto temporaneo "viene distrutto quando l'espressione
+// che lo racchiude termina la sua esecuzione", tranne quando è legato ad un
+// riferimento di tipo const. In tal caso la sua vita viene estesa per tutto
+// lo scope attuale:
+
+void constReferenceTempObjectFun() {
+    // constRef riceve l'oggetto temporaneo, che non viene distrutto fino
+    // alla fine di questa funzione.
+    const string& constRef = tempObjectFun();
+    ...
+}
+
+// Un altro tipo di riferimento introdotto nel C++11 è specifico per gli
+// oggetti temporanei. Non puoi dichiarare una variabile di quel tipo, ma
+// ha la precedenza nella risoluzione degli overload:
+
+void someFun(string& s) { ... }  // Riferimento normale
+void someFun(string&& s) { ... }  // Riferimento ad un oggetto temporaneo
+
+string foo;
+someFun(foo);  // Chiama la versione con il riferimento normale
+someFun(tempObjectFun());  // Chiama la versione con il riferimento temporaneo
+
+// Ad esempio potrai vedere questi due costruttori per std::basic_string:
+basic_string(const basic_string& other);
+basic_string(basic_string&& other);
+
+// L'idea è che se noi costruiamo una nuova stringa a partire da un oggetto temporaneo
+// (che in ogni caso verrà distrutto), possiamo avere un costruttore più efficiente
+// che in un certo senso "recupera" parti di quella stringa temporanea.
+// Ci si riferisce a questo concetto come "move semantics".
+
+/////////////////////
+// Enum
+/////////////////////
+
+// Gli enum sono un modo per assegnare un valore ad una costante, e sono
+// principalmente usati per rendere il codice più leggibile.
+enum ETipiMacchine
+{
+  AlfaRomeo,
+  Ferrari,
+  SUV,
+  Panda
+};
+
+ETipiMacchine GetPreferredCarType()
+{
+    return ETipiMacchine::Ferrari;
+}
+
+// Dal C++11 in poi c'è un modo molto semplice per assegnare un tipo ad un enum,
+// che può essere utile per la serializzazione dei dati o per convertire gli enum
+// tra il tipo desiderato e le rispettive costanti.
+enum ETipiMacchine : uint8_t
+{
+  AlfaRomeo, // 0
+  Ferrari, // 1
+  SUV = 254, // 254
+  Ibrida // 255
+};
+
+void WriteByteToFile(uint8_t InputValue)
+{
+    // Serializza InputValue in un file
+}
+
+void WritePreferredCarTypeToFile(ETipiMacchine InputCarType)
+{
+    // L'enum viene implicitamente convertito ad un uint8_t poiché
+    // è stato dichiarato come tale
+    WriteByteToFile(InputCarType);
+}
+
+// D'altro canto potresti voler evitare che un enum venga accidentalmente convertito
+// in un intero o in un altro tipo, quindi è possibile create una classe enum che
+// impedisce la conversione implicita.
+enum class ETipiMacchine : uint8_t
+{
+  AlfaRomeo, // 0
+  Ferrari, // 1
+  SUV = 254, // 254
+  Ibrida // 255
+};
+
+void WriteByteToFile(uint8_t InputValue)
+{
+    // Serializza InputValue in un file
+}
+
+void WritePreferredCarTypeToFile(ETipiMacchine InputCarType)
+{
+    // Il compilatore darà errore anche se ETipiMacchine è un uint8_t: questo
+    // perchè abbiamo dichiarato l'enum come "enum class"!
+    WriteByteToFile(InputCarType);
+}
 
 //////////////////////////////////////////////////
 // Classi e programmazione orientata agli oggetti
@@ -296,13 +426,16 @@ public:
     // Questi sono chiamati quando un oggetto è rimosso o esce dalla visibilità.
     // Questo permette paradigmi potenti come il RAII
     // (vedi sotto)
-    // I distruttori devono essere virtual per permettere a classi di essere derivate da questa.
+    // I distruttori devono essere virtual per permettere a classi di essere
+    // derivate da questa; altrimenti, il distruttore della classe derivata
+    // non viene chiamato se l'oggetto viene distrutto tramite un riferimento alla
+    // classe da cui ha ereditato o tramite un puntatore.
     virtual ~Dog();
 
 }; // Un punto e virgola deve seguire la definizione della funzione
 
 // Le funzioni membro di una classe sono generalmente implementate in files .cpp .
-void Cane::Cane()
+Cane::Cane()
 {
     std::cout << "Un cane è stato costruito\n";
 }
@@ -325,7 +458,7 @@ void Cane::print() const
     std::cout << "Il cane è " << nome << " e pesa " << peso << "kg\n";
 }
 
-void Cane::~Cane()
+Cane::~Cane()
 {
     cout << "Ciao ciao " << nome << "\n";
 }
@@ -340,10 +473,12 @@ int main() {
 
 // Ereditarietà:
 
-// Questa classe eredita tutto ciò che è public e protected dalla classe Cane
+// Questa classe eredita tutto ciò che è public e protected dalla classe Cane,
+// ma anche ciò che privato: tuttavia non potrà accedere direttamente a membri/metodi
+// privati se non c'è un metodo pubblico o privato che permetta di farlo.
 class MioCane : public Cane {
 
-    void impostaProprietario(const std::string& proprietarioCane)
+    void impostaProprietario(const std::string& proprietarioCane);
 
     // Sovrascrivi il comportamento della funzione print per tutti i MioCane. Vedi
     // http://it.wikipedia.org/wiki/Polimorfismo_%28informatica%29
@@ -447,6 +582,7 @@ int main () {
 // definire una classe o una funzione che prende un parametro di un dato tipo:
 template<class T>
 class Box {
+public:
     // In questa classe, T può essere usato come qualsiasi tipo.
     void inserisci(const T&) { ... }
 };
@@ -519,19 +655,23 @@ printMessage<10>();  // Stampa "Impara il C++ più velocemente in soli 10 minuti
 // (vedi http://en.cppreference.com/w/cpp/error/exception)
 // ma ogni tipo può essere lanciato come eccezione
 #include <exception>
+#include <stdexcept>
 
 // Tutte le eccezioni lanciate all'interno del blocco _try_ possono essere catturate dai successivi 
 // handlers _catch_.
 try {
     // Non allocare eccezioni nello heap usando _new_.
-    throw std::exception("È avvenuto un problema");
+    throw std::runtime_error("C'è stato un problema.");
 }
+
 // Cattura le eccezioni come riferimenti const se sono oggetti
 catch (const std::exception& ex)
 {
-  std::cout << ex.what();
+    std::cout << ex.what();
+}
+
 // Cattura ogni eccezioni non catturata dal blocco _catch_ precedente
-} catch (...)
+catch (...)
 {
     std::cout << "Catturata un'eccezione sconosciuta";
     throw; // Rilancia l'eccezione
@@ -541,7 +681,7 @@ catch (const std::exception& ex)
 // RAII
 ///////
 
-// RAII sta per Resource Allocation Is Initialization.
+// RAII sta per "Resource Allocation Is Initialization".
 // Spesso viene considerato come il più potente paradigma in C++.
 // È un concetto semplice: un costruttore di un oggetto
 // acquisisce le risorse di tale oggetto ed il distruttore le rilascia.
@@ -563,9 +703,9 @@ void faiQualcosaConUnFile(const char* nomefile)
 // Sfortunatamente, le cose vengono complicate dalla gestione degli errori.
 // Supponiamo che fopen fallisca, e che faiQualcosaConUnFile e
 // faiQualcosAltroConEsso ritornano codici d'errore se falliscono.
-// (Le eccezioni sono la maniera preferita per gestire i fallimenti,
-//  ma alcuni programmatori, specialmente quelli con un passato in C,
-//  non sono d'accordo con l'utilità delle eccezioni).
+//  (Le eccezioni sono la maniera preferita per gestire i fallimenti,
+//   ma alcuni programmatori, specialmente quelli con un passato in C,
+//   non sono d'accordo con l'utilità delle eccezioni).
 // Adesso dobbiamo verificare che ogni chiamata per eventuali fallimenti e chiudere il gestore di file
 // se un problema è avvenuto.
 bool faiQualcosaConUnFile(const char* nomefile)
@@ -615,7 +755,7 @@ void faiQualcosaConUnFile(const char* nomefile)
 {
     FILE* fh = fopen(nomefile, "r"); // Apre il file in modalità lettura
     if (fh == nullptr)
-        throw std::exception("Non è stato possibile aprire il file.").
+        throw std::runtime_error("Errore nell'apertura del file.");
 
     try {
         faiQualcosaConIlFile(fh);
@@ -678,26 +818,29 @@ class Foo {
   virtual void bar();
 };
 class FooSub : public Foo {
-  virtual void bar();  // sovrascrive Foo::bar!
+  virtual void bar();  // Sovrascrive Foo::bar!
 };
 
 
 // 0 == false == NULL (la maggior parte delle volte)!
 bool* pt = new bool;
-*pt = 0;  // Setta il valore puntato da 'pt' come falso.
+*pt = 0; // Setta il valore puntato da 'pt' come falso.
 pt = 0;  // Setta 'pt' al puntatore null. Entrambe le righe vengono compilate senza warnings.
 
 // nullptr dovrebbe risolvere alcune di quei problemi:
 int* pt2 = new int;
-*pt2 = nullptr;  // Non compila
+*pt2 = nullptr; // Non compila
 pt2 = nullptr;  // Setta pt2 a null.
 
-// Ma in qualche modo il tipo 'bool' è una eccezione (questo è per rendere compilabile `if (ptr)`.
-*pt = nullptr;  // Questo compila, anche se '*pt' è un bool! 
+// C'è un'eccezione per i bool.
+// Questo permette di testare un puntatore a null con if(!ptr), ma
+// come conseguenza non puoi assegnare nullptr a un bool direttamente!
+*pt = nullptr;  // Questo compila, anche se '*pt' è un bool!
 
 
 // '=' != '=' != '='!
-// Chiama Foo::Foo(const Foo&) o qualche variante del costruttore di copia.
+// Chiama Foo::Foo(const Foo&) o qualche variante (vedi "move semantics")
+// del costruttore di copia.
 Foo f2;
 Foo f1 = f2;
 
@@ -710,6 +853,22 @@ Foo f1 = fooSub;
 // Chiama Foo::operator=(Foo&) o una sua variante.
 Foo f1;
 f1 = f2;
+
+
+// Come deallocare realmente le risorse all'interno di un vettore:
+class Foo { ... };
+vector<Foo> v;
+for (int i = 0; i < 10; ++i)
+  v.push_back(Foo());
+
+// La riga seguente riduce la dimensione di v a 0, ma il distruttore non
+// viene chiamato e dunque le risorse non sono deallocate!
+v.empty();
+v.push_back(Foo());  // Il nuovo valore viene copiato nel primo Foo che abbiamo inserito
+
+// Distrugge realmente tutti i valori dentro v. Vedi la sezione riguardante gli
+// oggetti temporanei per capire come mai funziona così.
+v.swap(vector<Foo>());
 
 ```
 Letture consigliate:

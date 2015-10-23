@@ -3,6 +3,7 @@ language: Go
 filename: learngo-de.go
 contributors:
     - ["Joseph Adams", "https://github.com/jcla1"]
+    - ["Dennis Keller", "https://github.com/denniskeller"]
 lang: de-de
 ---
 Go wurde entwickelt, um Probleme zu lösen. Sie ist zwar nicht der neueste Trend in
@@ -306,13 +307,13 @@ func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 ## Weitere Resourcen
 Alles zu Go finden Sie auf der [offiziellen Go Webseite](http://golang.org/).
-Dort können sie der Tutorial folgen, interaktiv Quelltext ausprobieren und viel
+Dort können sie dem Tutorial folgen, interaktiv Quelltext ausprobieren und viel
 Dokumentation lesen.
 
 Auch zu empfehlen ist die Spezifikation von Go, die nach heutigen Standards sehr
 kurz und auch gut verständlich formuliert ist. Auf der Leseliste von Go-Neulingen
 ist außerdem der Quelltext der [Go standard Bibliothek](http://golang.org/src/pkg/).
-Gut documentiert, demonstriert sie leicht zu verstehendes und im idiomatischen Stil
+Gut dokumentiert, demonstriert sie leicht zu verstehendes und im idiomatischen Stil
 verfasstes Go. Erreichbar ist der Quelltext auch durch das Klicken der Funktionsnamen
 in der [offiziellen Dokumentation von Go](http://golang.org/pkg/).
 

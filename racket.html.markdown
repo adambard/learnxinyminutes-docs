@@ -285,7 +285,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 (= 3 3.0) ; => #t
 (= 2 1)   ; => #f
 
-;; `eq?' returns #t if 2 arguments refer to the same object (in memory), 
+;; `eq?' returns #t if 2 arguments refer to the same object (in memory),
 ;; #f otherwise.
 ;; In other words, it's a simple pointer comparison.
 (eq? '() '()) ; => #t, since there exists only one empty list in memory
@@ -320,7 +320,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 (eqv? (string-append "foo" "bar") (string-append "foo" "bar"))   ; => #f
 
 ;; `equal?' supports the comparison of the following datatypes:
-;; strings, byte strings, pairs, mutable pairs, vectors, boxes, 
+;; strings, byte strings, pairs, mutable pairs, vectors, boxes,
 ;; hash tables, and inspectable structures.
 ;; for other datatypes, `equal?' and `eqv?' return the same result.
 (equal? 3 3.0)                                                   ; => #f

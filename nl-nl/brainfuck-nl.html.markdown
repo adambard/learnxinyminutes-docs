@@ -15,7 +15,7 @@ minimalistische Turing-complete programmeertaal met maar acht commando's.
 ```
 Elk karakter behalve "><+-.,[]" (en de quotes) wordt genegeerd.
 
-Brainfuck wordt gerepresenteerd door een array met 30,000 cellen die initieel
+Brainfuck wordt gerepresenteerd door een array met 30.000 cellen die initieel
 gevuld is met nullen en een pointer die wijst naar de huidige cel.
 
 Dit zijn de acht commando's:

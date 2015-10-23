@@ -175,7 +175,8 @@ nil                  ; for false - and the empty list
               :age 5))
 *rover* ; => #S(DOG :NAME "rover" :BREED "collie" :AGE 5)
 
-(dog-p *rover*) ; => t  ;; ewww)
+(dog-p *rover*) ; => true  #| -p signifies "predicate". It's used to
+                              check if *rover* is an instance of dog. |#
 (dog-name *rover*) ; => "rover"
 
 ;; Dog-p, make-dog, and dog-name are all created by defstruct!
@@ -260,7 +261,7 @@ nil                  ; for false - and the empty list
 
 (defparameter *adjvec* (make-array '(3) :initial-contents '(1 2 3)
       :adjustable t :fill-pointer t))
-      
+
 *adjvec* ; => #(1 2 3)
 
 ;; Adding new element:
