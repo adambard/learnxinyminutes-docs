@@ -881,8 +881,8 @@ on a new line! ""Wow!"", the masses cried";
         bool Broken { get; } // interfaces can contain properties as well as methods & events
     }
 
-    // Class can inherit only one other class, but can implement any amount of interfaces, however
-    // the base class name must be the first in the list and all interfaces follow
+    // Classes can inherit only one other class, but can implement any amount of interfaces,
+    // however the base class name must be the first in the list and all interfaces follow
     class MountainBike : Bicycle, IJumpable, IBreakable
     {
         int damage = 0;
