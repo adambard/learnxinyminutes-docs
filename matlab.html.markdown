@@ -72,7 +72,7 @@ c = exp(a)*sin(pi/2) % c = 7.3891
 
 % Calling functions can be done in either of two ways:
 % Standard function syntax:
-load('myFile.mat', 'y') % arguments within parantheses, spererated by commas
+load('myFile.mat', 'y') % arguments within parentheses, separated by commas
 % Command syntax:
 load myFile.mat y 	% no parentheses, and spaces instead of commas
 % Note the lack of quote marks in command form: inputs are always passed as
@@ -273,7 +273,7 @@ clf clear % clear current figure window, and reset most figure properties
 
 % Properties can be set and changed through a figure handle.
 % You can save a handle to a figure when you create it.
-% The function gcf returns a handle to the current figure
+% The function get returns a handle to the current figure
 h = plot(x, y); % you can save a handle to a figure when you create it
 set(h, 'Color', 'r')
 % 'y' yellow; 'm' magenta, 'c' cyan, 'r' red, 'g' green, 'b' blue, 'w' white, 'k' black
