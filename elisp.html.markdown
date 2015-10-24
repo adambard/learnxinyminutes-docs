@@ -26,7 +26,7 @@ filename: learn-emacs-lisp.el
 ;;
 ;; Going through this tutorial won't damage your computer unless
 ;; you get so angry that you throw it on the floor.  In that case,
-;; I hereby decline any responsability.  Have fun!
+;; I hereby decline any responsibility.  Have fun!
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
