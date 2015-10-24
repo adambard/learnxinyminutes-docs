@@ -69,8 +69,9 @@ Exponential - a^n, where a is some constant
 ### Big-O
 Big-O, commonly written as O, is an Asymptotic Notation for the worst case, or ceiling of growth
 for a given function. Say `f(n)` is your algorithm runtime, and `g(n)` is an arbitrary time complexity
-you are trying to relate to your algorithm. `f(n)` is O(g(n)), if for any real constant c (c > 0),
-`f(n)` <= `c g(n)` for every input size n (n > 0).
+you are trying to relate to your algorithm. `f(n)` is O(g(n)), if there exists two positive constants
+c and n<sub>0</sub> such that
+`f(n)` <= `c g(n)` for every input size n (n >= n<sub>0</sub>).
 
 *Example 1*
 
@@ -110,14 +111,14 @@ Let's look at the definition of Big-O.
 3 * n^2 <= c * n
 ```
 
-Is there some constant c that satisfies this for all n?
+Is there some constant c that satisfies this for all n >= n<sub>0</sub>?
 No, there isn't. `f(n)` is NOT O(g(n)).
 
 ### Big-Omega
 Big-Omega, commonly written as Ω, is an Asymptotic Notation for the best case, or a floor growth rate
 for a given function.
 
-`f(n)` is Ω(g(n)), if for any real constant c (c > 0), `f(n)` is >= `c g(n)` for every input size n (n > 0).
+`f(n)` is Ω(g(n)), if there exists two positive constants c and n<sub>0</sub> such that, `f(n)` is >= `c g(n)` for every input size n (n >= n<sub>0</sub>).
 
 Feel free to head over to additional resources for examples on this. Big-O is the primary notation used
 for general algorithm time complexity.
