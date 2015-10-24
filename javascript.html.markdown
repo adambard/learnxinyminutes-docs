@@ -16,12 +16,8 @@ JavaScript isn't just limited to web browsers, though: Node.js, a project that
 provides a standalone runtime for Google Chrome's V8 JavaScript engine, is
 becoming more and more popular.
 
-Feedback would be highly appreciated! You can reach me at
-[@adambrenecki](https://twitter.com/adambrenecki), or
-[adam@brenecki.id.au](mailto:adam@brenecki.id.au).
-
 ```js
-// Comments are like C. Single-line comments start with two slashes,
+// Comments are like C's. Single-line comments start with two slashes,
 /* and multiline comments start with slash-star
    and end with star-slash */
 
@@ -148,6 +144,10 @@ someOtherVar = 10;
 
 // Variables declared without being assigned to are set to undefined.
 var someThirdVar; // = undefined
+
+// if you wan't to declare a couple of variables, then you could use a comma 
+// separator
+var someFourthVar = 2, someFifthVar = 4;
 
 // There's shorthand for performing math operations on variables:
 someVar += 5; // equivalent to someVar = someVar + 5; someVar is 10 now
@@ -287,12 +287,9 @@ myFunction("foo"); // = "FOO"
 // Note that the value to be returned must start on the same line as the
 // `return` keyword, otherwise you'll always return `undefined` due to
 // automatic semicolon insertion. Watch out for this when using Allman style.
-function myFunction()
-{
+function myFunction(){
     return // <- semicolon automatically inserted here
-    {
-        thisIsAn: 'object literal'
-    }
+    {thisIsAn: 'object literal'}
 }
 myFunction(); // = undefined
 
@@ -305,6 +302,12 @@ function myFunction(){
 setTimeout(myFunction, 5000);
 // Note: setTimeout isn't part of the JS language, but is provided by browsers
 // and Node.js.
+
+// Another function provided by browsers is setInterval
+function myFunction(){
+    // this code will be called every 5 seconds
+}
+setInterval(myFunction, 5000);
 
 // Function objects don't even have to be declared with a name - you can write
 // an anonymous function definition directly into the arguments of another.
@@ -527,28 +530,32 @@ if (Object.create === undefined){ // don't overwrite it if it exists
 
 ## Further Reading
 
-The [Mozilla Developer
-Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) provides
-excellent documentation for JavaScript as it's used in browsers. Plus, it's a
-wiki, so as you learn more you can help others out by sharing your own
-knowledge.
+The [Mozilla Developer Network][1] provides excellent documentation for
+JavaScript as it's used in browsers. Plus, it's a wiki, so as you learn more you
+can help others out by sharing your own knowledge.
 
-MDN's [A re-introduction to
-JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
-covers much of the concepts covered here in more detail. This guide has quite
-deliberately only covered the JavaScript language itself; if you want to learn
-more about how to use JavaScript in web pages, start by learning about the
-[Document Object
-Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
+MDN's [A re-introduction to JavaScript][2] covers much of the concepts covered
+here in more detail. This guide has quite deliberately only covered the
+JavaScript language itself; if you want to learn more about how to use
+JavaScript in web pages, start by learning about the [Document Object Model][3].
 
-[Learn Javascript by Example and with Challenges](http://www.learneroo.com/modules/64/nodes/350) is a variant of this reference with built-in challenges.
+[Learn Javascript by Example and with Challenges][4] is a variant of this
+reference with built-in challenges.
 
-[JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) is an in-depth
-guide of all the counter-intuitive parts of the language.
+[JavaScript Garden][5] is an in-depth guide of all the counter-intuitive parts
+of the language.
 
-[JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) is a classic guide / reference book.
+[JavaScript: The Definitive Guide][6] is a classic guide and reference book.
 
-In addition to direct contributors to this article, some content is adapted
-from Louie Dinh's Python tutorial on this site, and the [JS
-Tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
-on the Mozilla Developer Network.
+In addition to direct contributors to this article, some content is adapted from
+Louie Dinh's Python tutorial on this site, and the [JS Tutorial][7] on the
+Mozilla Developer Network.
+
+
+[1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+[2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
+[3]: https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core
+[4]: http://www.learneroo.com/modules/64/nodes/350
+[5]: http://bonsaiden.github.io/JavaScript-Garden/
+[6]: http://www.amazon.com/gp/product/0596805527/
+[7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript

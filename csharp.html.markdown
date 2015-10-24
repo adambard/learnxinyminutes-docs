@@ -913,6 +913,35 @@ on a new line! ""Wow!"", the masses cried";
 
         public DbSet<Bicycle> Bikes { get; set; }
     }
+    
+    // Classes can be split across multiple .cs files
+    // A1.cs
+    public partial class A 
+    {
+        public static void A1()
+        {
+            Console.WriteLine("Method A1 in class A");
+        }
+    }
+    
+    // A2.cs
+    public partial class A
+    {
+        public static void A2()
+        {
+            Console.WriteLine("Method A2 in class A");
+        }
+    }
+    
+    // Program using the partial class "A"
+    public class Program 
+    {
+        static void Main()
+        {
+            A.A1();
+            A.A2();
+        }
+    }
 } // End Namespace
 ```
 
