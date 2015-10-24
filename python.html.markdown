@@ -5,6 +5,7 @@ contributors:
     - ["Amin Bandali", "http://aminbandali.com"]
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["evuez", "http://github.com/evuez"]
+    - ["Dor-Ron", "https://github.com/Dor-Ron"]
 filename: learnpython.py
 ---
 
@@ -94,9 +95,11 @@ not False  # => True
 1 == 1  # => True
 2 == 1  # => False
 
-# Inequality is !=
+# Inequality is != and <>
 1 != 1  # => False
 2 != 1  # => True
+1 <> 1  # => False
+2 <> 1  # => True
 
 # More comparisons
 1 < 10  # => True
