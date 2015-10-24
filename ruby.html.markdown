@@ -208,7 +208,9 @@ new_hash.has_value?(3) #=> true
 
 # Control structures
 # Ruby has the special 'unless' statement, which is syntactic sugar.
-# Unless (some condition) = If !(some condition).
+# Equivalent statements:
+#  unless some_condition
+#  if !some_condition
 
 if true
   'if statement'
@@ -219,15 +221,22 @@ else
 end
 
 unless false
-  'true statement'
+  puts 'true statement'
 else
-  'false statement, optional'
+  puts 'false statement, optional'
 end
 
-'if statement' if true
-'else statement' unless true
+puts 'true statement' if true
+puts 'false statement' unless true
 
-(condition) ? 'true statement' : 'false statement'
+# Ternary operator
+(condition) ? puts 'true statement' : puts 'false statement'
+# Above is equivalent to the following:
+# if condition
+#   puts 'true statement'
+# else
+#   puts 'false statement'
+# end
 
 for counter in 1..5
   puts "iteration #{counter}"
