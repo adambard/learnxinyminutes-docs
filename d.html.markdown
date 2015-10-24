@@ -23,8 +23,10 @@ about [D](http://dlang.org/). The D programming language is a modern, general-pu
 multi-paradigm language with support for everything from low-level features to
 expressive high-level abstractions.
 
-D is actively developed by Walter Bright and Andrei Alexandrescu, two super smart, really cool
-dudes. With all that out of the way, let's look at some examples!
+D is actively developed by a large group of super-smart people and is spearheaded by
+[Walter Bright](https://en.wikipedia.org/wiki/Walter_Bright) and
+[Andrei Alexandrescu](https://en.wikipedia.org/wiki/Andrei_Alexandrescu).
+With all that out of the way, let's look at some examples!
 
 ```c
 import std.stdio;
@@ -36,9 +38,10 @@ void main() {
         writeln(i);
     }
 
-    auto n = 1; // use auto for type inferred variables
+    // 'auto' can be used for inferring types.
+    auto n = 1;
 
-    // Numeric literals can use _ as a digit seperator for clarity
+    // Numeric literals can use '_' as a digit separator for clarity.
     while(n < 10_000) {
         n += n;
     }
@@ -47,13 +50,15 @@ void main() {
         n -= (n / 2);
     } while(n > 0);
 
-    // For and while are nice, but in D-land we prefer foreach
-    // The .. creates a continuous range, excluding the end
+    // For and while are nice, but in D-land we prefer 'foreach' loops.
+    // The '..' creates a continuous range, including the first value
+    // but excluding the last.
     foreach(i; 1..1_000_000) {
         if(n % 2 == 0)
             writeln(i);
     }
 
+    // There's also 'foreach_reverse' when you want to loop backwards.
     foreach_reverse(i; 1..int.max) {
         if(n % 2 == 1) {
             writeln(i);
@@ -78,7 +83,7 @@ struct LinkedList(T) {
 class BinTree(T) {
     T data = null;
 
-    // If there is only one template parameter, we can omit parens
+    // If there is only one template parameter, we can omit the parentheses
     BinTree!T left;
     BinTree!T right;
 }

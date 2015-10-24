@@ -6,6 +6,7 @@ contributors:
     - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
     - ["Jakub Trzebiatowski", "http://cbs.stgn.pl"]
     - ["Marco Scannadinari", "https://marcoms.github.io"]
+    - ["himanshu", "https://github.com/himanshu81494"]
 
 ---
 
@@ -27,6 +28,7 @@ Multi-line comments don't nest /* Be careful */  // comment ends on this line...
 */ // ...not this one!
 
 // Constants: #define <keyword>
+// Constants are written in all-caps out of convention, not requirement
 #define DAYS_IN_YEAR 365
 
 // Enumeration constants are also ways to declare constants.
@@ -56,6 +58,15 @@ int add_two_ints(int x1, int x2); // function prototype
 // Your program's entry point is a function called
 // main with an integer return type.
 int main(void) {
+  // your program
+}
+
+// The command line arguments used to run your program are also passed to main
+// argc being the number of arguments - your program's name counts as 1
+// argv is an array of character arrays - containing the arguments themselves
+// argv[0] = name of your program, argv[1] = first argument, etc.
+int main (int argc, char** argv)
+{
   // print output using printf, for "print formatted"
   // %d is an integer, \n is a newline
   printf("%d\n", 0); // => Prints 0
@@ -306,7 +317,29 @@ int main(void) {
     exit(-1);
     break;
   }
-
+  /*
+  using "goto" in C
+  */
+  typedef enum { false, true } bool;
+  // for C don't have bool as data type :(
+  bool disaster = false;
+  int i, j;
+  for(i=0;i<100;++i)
+  for(j=0;j<100;++j)
+  {
+    if((i + j) >= 150)
+        disaster = true;
+    if(disaster)
+        goto error;
+  }
+  error :
+  printf("Error occured at i = %d & j = %d.\n", i, j);
+  /*
+  https://ideone.com/GuPhd6
+  this will print out "Error occured at i = 52 & j = 99."
+  */
+  
+  
   ///////////////////////////////////////
   // Typecasting
   ///////////////////////////////////////
@@ -472,7 +505,24 @@ char c[] = "This is a test.";
 str_reverse(c);
 printf("%s\n", c); // => ".tset a si sihT"
 */
-
+/*
+as we can return only one variable
+to change values of more than one variables we use call by reference
+*/
+void swapTwoNumbers(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+/*
+int first = 10;
+int second = 20;
+printf("first: %d\nsecond: %d\n", first, second);
+swapTwoNumbers(&first, &second);
+printf("first: %d\nsecond: %d\n", first, second);
+// values will be swapped
+*/
 // if referring to external variables outside function, must use extern keyword.
 int i = 0;
 void testFunc() {

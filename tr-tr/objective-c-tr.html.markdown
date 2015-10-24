@@ -14,7 +14,7 @@ kendi çatıları olan Cocoa ve Cocoa Touch için kullanılan bir programlama di
 Genel açamlı, object-oriented bir yapıya sahip programlama dilidir. C 
 programlama diline Smalltalk stilinde mesajlaşma ekler.  
 
-```objective_c
+```objective-c
 // Tek satır yorum // işaretleri ile başlar
 
 /*

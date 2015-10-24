@@ -569,8 +569,8 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 ####################################################
 
 
-# We subclass from object to get a class.
-class Human(object):
+# We use the "class" operator to get a class
+class Human:
 
     # A class attribute. It is shared by all instances of this class
     species = "H. sapiens"
@@ -664,8 +664,6 @@ def double_numbers(iterable):
 # Instead of generating and returning all values at once it creates one in each
 # iteration.  This means values bigger than 15 wont be processed in
 # double_numbers.
-# Note range is a generator too. Creating a list 1-900000000 would take lot of
-# time to be made
 # We use a trailing underscore in variable names when we want to use a name that
 # would normally collide with a python keyword
 range_ = range(1, 900000000)

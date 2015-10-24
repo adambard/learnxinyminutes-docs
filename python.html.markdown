@@ -142,7 +142,7 @@ bool("")  # => False
 ####################################################
 
 # Python has a print statement
-print "I'm Python. Nice to meet you!"
+print "I'm Python. Nice to meet you!" # => I'm Python. Nice to meet you!
 
 # No need to declare variables before assigning to them.
 some_var = 5    # Convention is to use lower_case_with_underscores

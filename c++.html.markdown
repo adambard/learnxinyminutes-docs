@@ -404,6 +404,8 @@ int main() {
 // Inheritance:
 
 // This class inherits everything public and protected from the Dog class
+// as well as private but may not directly access private members/methods 
+// without a public or protected method for doing so
 class OwnedDog : public Dog {
 
     void setOwner(const std::string& dogsOwner);

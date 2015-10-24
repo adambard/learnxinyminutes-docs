@@ -6,6 +6,7 @@ contributors:
     - ["Madison Dickson", "http://github.com/mix3d"]
     - ["Simon Morgan", "http://sjm.io/"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
+    - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
 filename: LearnJava.java
 ---
 
@@ -95,11 +96,13 @@ public class LearnJava {
         // Note: Java has no unsigned types.
 
         // Float - Single-precision 32-bit IEEE 754 Floating Point
+        // 2^-149 <= float <= (2-2^-23) * 2^127
         float fooFloat = 234.5f;
         // f or F is used to denote that this variable value is of type float;
         // otherwise it is treated as double.
 
         // Double - Double-precision 64-bit IEEE 754 Floating Point
+        // 2^-1074 <= x <= (2-2^-52) * 2^1023
         double fooDouble = 123.4;
 
         // Boolean - true & false
@@ -114,6 +117,34 @@ public class LearnJava {
         // but they can be initialized later.
         final double E;
         E = 2.71828;
+
+
+        // BigInteger - Immutable arbitrary-precision integers
+        //
+        // BigInteger is a data type that allows programmers to manipulate
+        // integers longer than 64-bits. Integers are stored as an array of
+        // of bytes and are manipulated using functions built into BigInteger
+        //
+        // BigInteger can be initialized using an array of bytes or a string.
+        
+        BigInteger fooBigInteger = new BigDecimal(fooByteArray);
+
+
+        // BigDecimal - Immutable, arbitrary-precision signed decimal number
+        //
+        // A BigDecimal takes two parts: an arbitrary precision integer 
+        // unscaled value and a 32-bit integer scale
+        //
+        // BigDecimal allows the programmer complete control over decimal
+        // rounding. It is recommended to use BigDecimal with currency values
+        // and where exact decimal percision is required.
+        //
+        // BigDecimal can be initialized with an int, long, double or String
+        // or by initializing the unscaled value (BigInteger) and scale (int).
+
+        BigDecimal fooBigDecimal = new BigDecimal(fooBigInteger, fooInt);
+
+
 
         // Strings
         String fooString = "My String Is Here!";
@@ -286,6 +317,23 @@ public class LearnJava {
                      break;
         }
         System.out.println("Switch Case Result: " + monthString);
+        
+        // Starting in Java 7 and above, switching Strings works like this:
+        String myAnswer = "maybe";
+        switch(myAnswer){
+            case "yes":
+                System.out.println("You answered yes.");
+                break;
+            case "no":
+                System.out.println("You answered no.");
+                break;
+            case "maybe":
+                System.out.println("You answered maybe.");
+                break;
+            default:
+                System.out.println("You answered " + myAnswer);
+                break;
+        }
 
         // Conditional Shorthand
         // You can use the '?' operator for quick assignments or logic forks.
