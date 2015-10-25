@@ -11,7 +11,7 @@ lang: es-es
 Markdown fue creado por John Gruber en 2004. Su propósito es ser una sintaxis fácil de leer y escribir que se convierta
 fácilmente a HTML (y, actualmente, otros formatos también).
 
-¡Denme todo la retroalimentación que quieran! / ¡Sientanse en la libertad de hacer forks o pull requests!
+¡Denme toda la retroalimentación que quieran! / ¡Sientanse en la libertad de hacer forks o pull requests!
 
 
 ```markdown
@@ -44,7 +44,7 @@ Esto es un h2
 -------------
 
 <!-- Estilos para texto plano -->
-<!-- El texto puede ser fácilmente estilizaedo con italicas, negritas o tachado 
+<!-- El texto puede ser fácilmente estilizado con italicas, negritas o tachado 
 usando markdown -->
 
 *Este texto está en itálicas.*
@@ -62,7 +62,7 @@ Markdown en Github, también tenemos: -->
 
 ~~Este texto está tachado.~~
 
-<!-- Los párrafos son una o múltuples líneas de texto adyacentes separadas por 
+<!-- Los párrafos son una o múltiples líneas de texto adyacentes separadas por 
 una o múltiples líneas en blanco-->
 
 Este es un párrafo. Estoy escribiendo un párrafo, ¿No es divertido?
