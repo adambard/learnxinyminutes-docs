@@ -106,6 +106,9 @@ Here's how you state all y that belong to X, $\forall$ x $\in$ X. \\
 % However, the math symbols only exist in math-mode. 
 % We can enter math-mode from text mode with the $ signs.
 % The opposite also holds true. Variable can also be rendered in math-mode.
+% We can also enter math mode with \[\]
+
+\[a^2 + b^2 = c^2 \]
 
 My favorite Greek letter is $\xi$. I also like $\beta$, $\gamma$ and $\sigma$.
 I haven't found a Greek letter that yet that LaTeX doesn't know about!
