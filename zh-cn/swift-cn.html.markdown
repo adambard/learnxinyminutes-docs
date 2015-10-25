@@ -6,7 +6,7 @@ contributors:
 translators:
   - ["Xavier Yao", "http://github.com/xavieryao"]
   - ["Joey Huang", "http://github.com/kamidox"]  
-  - ["Major Xu", "http://github.com/major1xu"]  
+  - ["Minjie Xu", "http://github.com/major1xu"]  
 lang: zh-cn
 ---
 
@@ -14,7 +14,7 @@ Swift 是 Apple 开发的用于 iOS 和 OS X 开发的编程语言。Swift 于20
 
 Swift 的官方语言教程 [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) 可以从 iBooks 免费下载.
 
-亦可参阅：Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html) ——一个完整的Swift 教程
+亦可参阅：Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/) ——一个完整的Swift 教程
 
 ```swift
 // 导入外部模块
