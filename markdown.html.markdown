@@ -11,11 +11,7 @@ Give me as much feedback as you want! / Feel free to fork and pull request!
 
 
 ```markdown
-<!-- Markdown is a superset of HTML, so any HTML file is valid Markdown, that
-means we can use HTML elements in Markdown, such as the comment element, and
-they won't be affected by a markdown parser. However, if you create an HTML
-element in your markdown file, you cannot use markdown syntax within that
-element's contents. -->
+<!-- Markdown is a markup language for structured writing. The main goal is to have documents that are both easy-to-read and easy-to-write. Normally that all done in plain text files. Because of the easy syntax it is very easy to contribute to a file. Together with Parsers which can create other output formats like HTML for example it is a elegant way to build nice looking outputs without knowledge the complex structure of HTML -->
 
 <!-- Markdown also varies in implementation from one parser to a next. This
 guide will attempt to clarify when features are universal or when they are
