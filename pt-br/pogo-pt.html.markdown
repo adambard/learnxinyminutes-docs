@@ -2,6 +2,7 @@
 language: pogoscript
 contributors:
     - ["Tim Macfarlane", "http://github.com/refractalize"]
+translators:
     - ["Cássio Böck", "https://github.com/cassiobsilva"]
 filename: learnPogo-pt-br.pogo
 lang: pt-br
