@@ -186,11 +186,11 @@ public class LearnJava {
         //               operations perform as could be expected for a
         //               doubly-linked list.
         // Maps - A set of objects that map keys to values. Map is
-	//        an interface and therefore cannot be instantiated.
-	//        The type of keys and values contained in a Map must
-	//        be specified upon instantiation of the implementing
-        //        class. Each key may map to only one corresponding value,
-        //        and each key may appear only once (no duplicates).
+        //               an interface and therefore cannot be instantiated.
+        //               The type of keys and values contained in a Map must
+        //               be specified upon instantiation of the implementing
+        //               class. Each key may map to only one corresponding value,
+        //               and each key may appear only once (no duplicates).
         // HashMaps - This class uses a hashtable to implement the Map
         //            interface. This allows the execution time of basic
         //            operations, such as get and insert element, to remain
