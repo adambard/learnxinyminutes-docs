@@ -450,6 +450,17 @@ class Bicycle {
     protected int gear; // Protected: Accessible from the class and subclasses
     String name; // default: Only accessible from within this package
 
+    static String className; // Static class variable
+
+    // Static block 
+    // Java has no implementation of static constructors, but
+    // has a static block that can be used to initialize class variables 
+    // (static variables). 
+    // This block will be called when the class is loaded.
+    static {
+        className = "Bicycle";
+    }
+
     // Constructors are a way of creating classes
     // This is a constructor
     public Bicycle() {
