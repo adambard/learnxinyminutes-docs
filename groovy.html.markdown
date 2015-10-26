@@ -99,7 +99,7 @@ technologies.sort()
 // To sort without mutating original, you can do:
 sortedTechnologies = technologies.sort( false )
 
-/*** Manipulating Lists ***/e
+/*** Manipulating Lists ***/
 
 //Replace all elements in the list
 Collections.replaceAll(technologies, 'Gradle', 'gradle')
