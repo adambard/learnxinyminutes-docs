@@ -16,8 +16,8 @@ le contenu (HTML) et le style d'une page web.
 En résumé, CSS fournit une syntaxe qui vous permet de cibler des élements présents
 sur une page HTML afin de leur donner des propriétés visuelles différentes.
 
-Comme tous les autres langages, CSS a plusieurs versions. Ici, nous allons parlons de CSS2.0
-qui n'est pas le plus récent, mais qui reste le plus utilisé et le plus compatible avec les différents navigateur.
+Comme tous les autres langages, CSS a plusieurs versions. Ici, nous allons parler de CSS2.0
+qui n'est pas le plus récent, mais quiest le plus utilisé et le plus compatible avec les différents navigateurs.
 
 **NOTE :** Vous pouvez tester les effets visuels que vous ajoutez au fur et à mesure du tutoriel sur des sites comme [dabblet](http://dabblet.com/) afin de voir les résultats, comprendre, et vous familiariser avec le langage.
 Cet article porte principalement sur la syntaxe et quelques astuces.
@@ -35,7 +35,7 @@ selecteur { propriete: valeur; /* autres proprietés...*/ }
 
 /* Le sélécteur sert à cibler un élément du HTML
 
-Vous pouvez cibler tous les éléments d'une page! */
+Vous pouvez cibler tous les éléments d'une page avec l'étoile! */
 * { color:red; }
 
 /*
@@ -81,7 +81,7 @@ div.une-classe[attr$='eu'] { }
 /* Un élément qui est en enfant direct */
 div.un-parent > .enfant {}
 
-/* Cela cible aussi les .enfants plus profonds dans la structure HTML */
+/* Cela cible aussi les enfants plus profonds dans la structure HTML */
 div.un-parent .enfants {}
 
 /* Attention : le même sélecteur sans espace a un autre sens. */
@@ -156,8 +156,7 @@ Le CSS s'écrit dans des fichiers `.css`.
    selecteur { propriete:valeur; }
 </style>
 
-<!-- ou directement sur l'élément HTML.
-PS : à ne pas faire. -->
+<!-- ou directement sur l'élément HTML. (Pas recommandé). -->
 <div style='propriete:valeur;'>
 </div>
 
@@ -185,7 +184,7 @@ p.classe2 {}
 p {}
 
 /*E*/
-p { propriete: valeur !important; }
+p { propriété: valeur !important; }
 
 ```
 
@@ -199,7 +198,7 @@ et le code HTML:
 Les priorités de style sont :
 Attention, les priorités s'appliquent aux **propriétés**, pas aux blocs entiers.
 
-* `E` a la priorité grâce à `!important`.  
+* `E` a la priorité grâce à `!important`. (Peut être dangereux, non recommandé)
 * `F` vient ensuite, car le code se trouve directement dans le HTML.
 * `A` vient ensuite, car il est le plus spécifique.  
 	plus spécifique veut dire, celui qui cible le plus l'élément
