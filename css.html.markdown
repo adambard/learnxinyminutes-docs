@@ -6,14 +6,11 @@ contributors:
     - ["Geoffrey Liu", "https://github.com/g-liu"]
     - ["Connor Shea", "https://github.com/connorshea"]
     - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
+    - ["Joyce Kung", "https://github.com/thejoycekung"]
 filename: learncss.css
 ---
 
-In the early days of the web there were no visual elements, just pure text. But with further development of web browsers, fully visual web pages also became common.
-
-CSS helps maintain separation between the content (HTML) and the look-and-feel of a web page.
-
-CSS lets you target different elements on an HTML page and assign different visual properties to them.
+In the early days of the web, there were no visual elements, only pure text. However, as web browsers became more robust, fully visual web pages also became common using HTML. CSS was then created to help maintain separation between the content (HTML) and the design of a web page. It lets you target different elements on an HTML page, and assign different visual properties to them.
 
 This guide has been written for CSS 2, though CSS 3 is fast becoming popular.
 
