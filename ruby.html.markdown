@@ -13,6 +13,7 @@ contributors:
   - ["Levi Bostian", "https://github.com/levibostian"]
   - ["Rahil Momin", "https://github.com/iamrahil"]
   - ["Gabriel Halley", https://github.com/ghalley]
+  - ["Bruno Volcov", https://github.com/volcov]
 
 ---
 
@@ -285,7 +286,7 @@ end
 #=> iteration 4
 #=> iteration 5
 
-# There are a bunch of other helpful looping functions in Ruby, 
+# There are a bunch of other helpful looping functions in Ruby,
 # for example "map", "reduce", "inject", the list goes on. Map,
 # for instance, takes the array it's looping over, does something
 # to it as defined in your block, and returns an entirely new array.
@@ -576,3 +577,4 @@ Something.new.qux # => 'qux'
 - [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
 - [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - An older [free edition](http://ruby-doc.com/docs/ProgrammingRuby/) is available online.
 - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - A community-driven Ruby coding style guide.
+- [Try Ruby](http://tryruby.org) - Learn the basic of Ruby programming language, interactive in the browser.
