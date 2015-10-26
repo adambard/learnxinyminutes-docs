@@ -1,14 +1,14 @@
 ---
-language: ColdFusion
+language: coldfusion
+filename: learncoldfusion.cfm
 contributors:
     - ["Wayne Boka", "http://wboka.github.io"]
-filename: LearnColdFusion.cfm
 ---
 
 ColdFusion is a scripting language for web development.
 [Read more here.](http://www.adobe.com/products/coldfusion-family.html)
 
-```ColdFusion
+```html
 
 <em>HTML tags have been provided for output readability</em>
 
