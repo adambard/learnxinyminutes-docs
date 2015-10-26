@@ -1,5 +1,6 @@
 ---
 language: brainfuck
+filename: brainfuck.html.markdown
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
