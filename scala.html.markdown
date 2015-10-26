@@ -606,6 +606,9 @@ import scala.collection.immutable.{List => ImmutableList}
 // Import all classes, except some. The following excludes Map and Set:
 import scala.collection.immutable.{Map => _, Set => _, _}
 
+// Java classes can also be imported. Scala syntax can be used
+import java.swing.{JFrame, JWindow}
+
 // Your programs entry point is defined in an scala file using an object, with a
 // single method, main:
 object Application {
