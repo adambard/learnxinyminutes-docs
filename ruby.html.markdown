@@ -49,7 +49,7 @@ You shouldn't either
 10.* 5 #=> 50
 
 # Special values are objects
-nil # Nothing to see here
+nil # equivalent to null in other languages
 true # truth
 false # falsehood
 
@@ -122,7 +122,7 @@ puts "I'm printing!"
 
 # print to the output without a newline
 print "I'm printing!"
-#=> I'm printing! => nill
+#=> I'm printing! => nil
 
 # Variables
 x = 25 #=> 25
