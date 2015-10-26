@@ -120,28 +120,25 @@ public class LearnJava {
         E = 2.71828;
 
 
-        // BigInteger - Immutable arbitrary-precision integers
-        //
-        // BigInteger is a data type that allows programmers to manipulate
-        // integers longer than 64-bits. Integers are stored as an array of
-        // of bytes and are manipulated using functions built into BigInteger
-        //
-        // BigInteger can be initialized using an array of bytes or a string.
-        
+        /*
+        BigInteger - Immutable arbitrary-precision integers
+    BigInteger is a data type that allows programmers to manipulate
+        integers longer than 64-bits. Integers are stored as an array of
+        of bytes and are manipulated using functions built into BigInteger
+        BigInteger can be initialized using an array of bytes or a string.
         BigInteger fooBigInteger = new BigDecimal(fooByteArray);
+        */
 
-
-        // BigDecimal - Immutable, arbitrary-precision signed decimal number
-        //
-        // A BigDecimal takes two parts: an arbitrary precision integer 
-        // unscaled value and a 32-bit integer scale
-        //
-        // BigDecimal allows the programmer complete control over decimal
-        // rounding. It is recommended to use BigDecimal with currency values
-        // and where exact decimal precision is required.
-        //
-        // BigDecimal can be initialized with an int, long, double or String
-        // or by initializing the unscaled value (BigInteger) and scale (int).
+    /*
+        BigDecimal - Immutable, arbitrary-precision signed decimal number
+        BigDecimal takes two parts: an arbitrary precision integer 
+        unscaled value and a 32-bit integer scale
+        BigDecimal allows the programmer complete control over decimal
+        rounding. It is recommended to use BigDecimal with currency values
+        and where exact decimal precision is required.
+        BigDecimal can be initialized with an int, long, double or String
+        or by initializing the unscaled value (BigInteger) and scale (int).
+        */
 
         BigDecimal fooBigDecimal = new BigDecimal(fooBigInteger, fooInt);
 
@@ -179,22 +176,24 @@ public class LearnJava {
         intArray[1] = 1;
         System.out.println("intArray @ 1: " + intArray[1]); // => 1
 
-        // Others to check out
-        // ArrayLists - Like arrays except more functionality is offered, and
-        //              the size is mutable.
-        // LinkedLists - Implementation of doubly-linked list. All of the
-        //               operations perform as could be expected for a
-        //               doubly-linked list.
-        // Maps - A set of objects that map keys to values. Map is
-	//        an interface and therefore cannot be instantiated.
-	//        The type of keys and values contained in a Map must
-	//        be specified upon instantiation of the implementing
-        //        class. Each key may map to only one corresponding value,
-        //        and each key may appear only once (no duplicates).
-        // HashMaps - This class uses a hashtable to implement the Map
-        //            interface. This allows the execution time of basic
-        //            operations, such as get and insert element, to remain
-        //            constant even for large sets.
+        /*
+        Others to check out
+          ArrayLists - Like arrays except more functionality is offered, and
+                       the size is mutable.
+          LinkedLists - Implementation of doubly-linked list. All of the
+                        operations perform as could be expected for a
+                        doubly-linked list.
+          Maps - A set of objects that map keys to values. Map is
+             an interface and therefore cannot be instantiated.
+             The type of keys and values contained in a Map must
+             be specified upon instantiation of the implementing
+                 class. Each key may map to only one corresponding value,
+                 and each key may appear only once (no duplicates).
+          HashMaps - This class uses a hashtable to implement the Map
+                     interface. This allows the execution time of basic
+                     operations, such as get and insert element, to remain
+                     constant even for large sets.
+        */
 
         ///////////////////////////////////////
         // Operators
@@ -282,15 +281,25 @@ public class LearnJava {
             fooDoWhile++;
         } while(fooDoWhile < 100);
         System.out.println("fooDoWhile Value: " + fooDoWhile);
+        //How to exit from a while loop
+        while (true)
+        {
+            ....
+            if (obj == null)
+            {
+                break;
+            }
+            ....
+        }
 
-        // For Loop
+       // For Loop
         // for loop structure => for(<start_statement>; <conditional>; <step>)
         for (int fooFor = 0; fooFor < 10; fooFor++) {
             System.out.println(fooFor);
             // Iterated 10 times, fooFor 0->9
         }
         System.out.println("fooFor Value: " + fooFor);
-        
+
         // Nested For Loop Exit with Label
         outer:
         for (int i = 0; i < 10; i++) {
@@ -301,7 +310,7 @@ public class LearnJava {
             }
           }
         }
-        
+
         // For Each Loop
         // The for loop is also able to iterate over arrays as well as objects
         // that implement the Iterable interface.
@@ -315,11 +324,14 @@ public class LearnJava {
             //Iterates 9 times and prints 1-9 on new lines
         }
 
-        // Switch Case
-        // A switch works with the byte, short, char, and int data types.
-        // It also works with enumerated types (discussed in Enum Types), the
-        // String class, and a few special classes that wrap primitive types:
-        // Character, Byte, Short, and Integer.
+        /*
+        Switch Case
+          A switch works with the byte, short, char, and int data types.
+          It also works with enumerated types (discussed in Enum Types), the
+          String class, and a few special classes that wrap primitive types:
+          Character, Byte, Short, and Integer.
+          */
+
         int month = 3;
         String monthString;
         switch (month) {
@@ -333,7 +345,7 @@ public class LearnJava {
                      break;
         }
         System.out.println("Switch Case Result: " + monthString);
-        
+
         // Starting in Java 7 and above, switching Strings works like this:
         String myAnswer = "maybe";
         switch(myAnswer) {
@@ -377,10 +389,12 @@ public class LearnJava {
         // Long
         // String
 
-        // Typecasting
-        // You can also cast Java objects, there's a lot of details and deals
-        // with some more intermediate concepts. Feel free to check it out here:
-        // http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
+        /*
+        Typecasting
+        You can also cast Java objects, there's a lot of details and deals
+        with some more intermediate concepts. Feel free to check it out here:
+        http: docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
+        */
 
 
         ///////////////////////////////////////
@@ -422,11 +436,13 @@ public class LearnJava {
             add("FINLAND");
         }}
 
-        // The first brace is creating a new AnonymousInnerClass and the
-        // second one declares an instance initializer block. This block
-        // is called when the anonymous inner class is created.
-        // This does not only work for Collections, it works for all
-        // non-final classes.
+        /*
+        The first brace is creating a new AnonymousInnerClass and the
+        second one declares an instance initializer block. This block
+        is called when the anonymous inner class is created.
+        This does not only work for Collections, it works for all
+        non-final classes.
+        */
 
     } // End main method
 } // End LearnJava class
@@ -564,7 +580,7 @@ public interface Digestible {
 
 // We can now create a class that implements both of these interfaces.
 public class Fruit implements Edible, Digestible {
-  
+
     @Override
     public void eat() {
         // ...
@@ -591,21 +607,23 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 
 }
 
-// Abstract Classes
+  /*
+  Abstract Classes
 
-// Abstract Class declaration syntax
-// <access-level> abstract <abstract-class-name> extends <super-abstract-classes> {
-//     // Constants and variables
-//     // Method declarations
-// }
+  Abstract Class declaration syntax
+  <access-level> abstract <abstract-class-name> extends <super-abstract-classes> {
+        Constants and variables
+        Method declarations
+  }
 
-// Marking a class as abstract means that it contains abstract methods that must
-// be defined in a child class. Similar to interfaces, abstract classes cannot
-// be instantiated, but instead must be extended and the abstract methods
-// defined. Different from interfaces, abstract classes can contain a mixture of
-// concrete and abstract methods. Methods in an interface cannot have a body,
-// unless the method is static, and variables are final by default, unlike an
-// abstract class. Also abstract classes CAN have the "main" method.
+  Marking a class as abstract means that it contains abstract methods that must
+  be defined in a child class. Similar to interfaces, abstract classes cannot
+  be instantiated, but instead must be extended and the abstract methods
+  defined. Different from interfaces, abstract classes can contain a mixture of
+  concrete and abstract methods. Methods in an interface cannot have a body,
+  unless the method is static, and variables are final by default, unlike an
+  abstract class. Also abstract classes CAN have the "main" method.
+  */
 
 public abstract class Animal
 {
@@ -644,14 +662,16 @@ class Dog extends Animal
     public void makeSound()
     {
         System.out.println("Bark");
-        // age = 30;	==> ERROR!	age is private to Animal
+        // age = 30;    ==> ERROR!  age is private to Animal
     }
 
-    // NOTE: You will get an error if you used the
-    // @Override annotation here, since java doesn't allow
-    // overriding of static methods.
-    // What is happening here is called METHOD HIDING.
-    // Check out this awesome SO post: http://stackoverflow.com/questions/16313649/
+      /*
+      NOTE: You will get an error if you used the
+      @Override annotation here, since java doesn't allow
+      overriding of static methods.
+      What is happening here is called METHOD HIDING.
+      Check out this awesome SO post: http: stackoverflow.com/questions/16313649/
+      */
     public static void main(String[] args)
     {
         Dog pluto = new Dog();
@@ -669,10 +689,12 @@ class Dog extends Animal
 //     // Method declarations
 // }
 
-// Final classes are classes that cannot be inherited from and are therefore a
-// final child. In a way, final classes are the opposite of abstract classes
-// because abstract classes must be extended, but final classes cannot be
-// extended.
+  /*
+  Final classes are classes that cannot be inherited from and are therefore a
+  final child. In a way, final classes are the opposite of abstract classes
+  because abstract classes must be extended, but final classes cannot be
+  extended.
+  */
 public final class SaberToothedCat extends Animal
 {
     // Note still have to override the abstract methods in the
