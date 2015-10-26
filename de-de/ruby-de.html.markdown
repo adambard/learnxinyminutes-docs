@@ -11,6 +11,7 @@ contributors:
   - ["Dzianis Dashkevich", "https://github.com/dskecse"]
   - ["Levi Bostian", "https://github.com/levibostian"]
   - ["Rahil Momin", "https://github.com/iamrahil"]
+  - ["Dennis Keller", "https://github.com/denniskeller"]
 translators:
   - ["Christian Albrecht", "https://github.com/coastalchief"]
 filename: ruby-de.rb
@@ -195,7 +196,7 @@ array[12] #=> nil
 array[-1] #=> 5
 ```
 
-## Arrays können mit Stard Index und Länge indiziert werden
+## Arrays können mit Start Index und Länge indiziert werden
 ```
 array[2, 3] #=> [3, 4, 5]
 ```
@@ -219,8 +220,6 @@ array.include?(1) #=> true
 # Hashes 
 Hashes sind das Hauptfeature um Key/Values zu speichern
 
-```
-
 ## Ein Hash anlegen
 ```
 hash = { 'color' => 'green', 'number' => 5 }
@@ -232,7 +231,7 @@ hash.keys #=> ['color', 'number']
 hash['color'] #=> 'green'
 hash['number'] #=> 5
 hash['nothing here'] #=> nil 
-// Asking a hash for a key that doesn't exist returns nil:
+// Fragen für einen Hash, der nicht existiert liefert nil:
 ```
 
 ##  Symbols können auch keys sein
@@ -247,7 +246,7 @@ new_hash.has_key?(:defcon) #=> true
 new_hash.has_value?(3) #=> true
 ```
 
-### Tip:  Arrays und Hashes sind Enumerable
+### Tipp:  Arrays und Hashes sind Enumerable
 ### Und haben gemeinsame, hilfreiche Methoden wie:
 ### each, map, count, and more
 
@@ -339,7 +338,7 @@ end
 => "OK job"
 ```
 
-# exception handling:
+# Exception handling:
 ```
 begin
   # code here that might raise an exception
@@ -366,7 +365,7 @@ end
 double(2) #=> 4
 ```
 
-### Klammern sind optional wenn das Ergebnis nicht mehdeutig ist
+### Klammern sind optional wenn das Ergebnis nicht mehrdeutig ist
 ```
 double 3 #=> 6
 double double 3 #=> 12
