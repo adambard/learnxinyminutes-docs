@@ -6,6 +6,7 @@ contributors:
     - ["Matt Kline", "https://github.com/mrkline"]
     - ["Geoff Liu", "http://geoffliu.me"]
     - ["Connor Waters", "http://github.com/connorwaters"]
+    - ["Jatin Dhankhar, "https://github.com/jatindhankhar"]
 lang: en
 ---
 
@@ -330,7 +331,7 @@ ECarTypes GetPreferredCarType()
 }
 
 // As of C++11 there is an easy way to assign a type to the enum which can be
-// useful in serialization of data and converting enums back-and-forth between 
+// useful in serialization of data and converting enums back-and-forth between
 // the desired type and their respective constants
 enum ECarTypes : uint8_t
 {
@@ -352,7 +353,7 @@ void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 }
 
 // On the other hand you may not want enums to be accidentally cast to an integer
-// type or to other enums so it is instead possible to create an enum class which 
+// type or to other enums so it is instead possible to create an enum class which
 // won't be implicitly converted
 enum class ECarTypes : uint8_t
 {
@@ -468,7 +469,7 @@ int main() {
 // Inheritance:
 
 // This class inherits everything public and protected from the Dog class
-// as well as private but may not directly access private members/methods 
+// as well as private but may not directly access private members/methods
 // without a public or protected method for doing so
 class OwnedDog : public Dog {
 
@@ -800,6 +801,47 @@ void doSomethingWithAFile(const std::string& filename)
 //   vector (i.e. self-resizing array), hash maps, and so on
 //   all automatically destroy their contents when they fall out of scope.
 // - Mutexes using lock_guard and unique_lock
+
+///////////////////////////////////
+// Logical and Bitwise operators
+//////////////////////////////////
+
+//Most of the operators in C++ are same as in other languages
+
+// Logical operators
+
+true && false // Performs **logical and** to yield false
+true || false // Performs **logical or** to yield true
+! true // Performs **logcical not** to yield
+
+//Instead of using symbols equivalent keywords can be used
+true and false // Performs **logical and** to yield false
+true or false // Performs **logical or** to yield true
+not true // Performs **logcical not** to yield
+
+//Bitwise operators
+
+// **<<** Left Shift Operator
+// << shifts bits to the left
+4 << 1 // Shifts bits of 4 to left by 1 to give 8
+// x << n can be thought as x * 2^n
+
+
+// **>>** Right Shift Operator
+// << shifts bits to the right
+4 >> 1 // Shifts bits of 4 to right by 1 to give 2
+// x << n can be thought as x / 2^n
+
+~4 // Performs a bitwise not
+4 | 3 // Performs bitwise or
+4 & 3 // Performs bitwise and
+4 ^ 3 // Performs bitwise xor
+
+//Equivalent keywords are
+compl 4 // Performs a bitwise not
+4 bitor 3 // Performs bitwise or
+4 bitand 3 // Performs bitwise and   
+4 xor 3 // Performs bitwise xor
 
 
 /////////////////////
