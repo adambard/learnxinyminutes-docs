@@ -16,7 +16,7 @@ The syntax of F# is different from C-style languages:
 
 If you want to try out the code below, you can go to [tryfsharp.org](http://www.tryfsharp.org/Create) and paste it into an interactive REPL.
 
-```csharp
+```fsharp
 
 // single line comments use a double slash
 (* multi line comments use (* . . . *) pair
@@ -248,7 +248,7 @@ module SequenceExamples =
     // sequences can use yield and
     // can contain subsequences
     let strange = seq {
-        // "yield! adds one element
+        // "yield" adds one element
         yield 1; yield 2;
 
         // "yield!" adds a whole subsequence
@@ -297,7 +297,7 @@ module DataTypeExamples =
     let person1 = {First="John"; Last="Doe"}
 
     // Pattern match to unpack
-    let {First=first} = person1    //sets first="john"
+    let {First=first} = person1    //sets first="John"
 
     // ------------------------------------
     // Union types (aka variants) have a set of choices
@@ -426,7 +426,7 @@ module ActivePatternExamples =
     // -----------------------------------
 
     // You can create partial matching patterns as well
-    // Just use undercore in the defintion, and return Some if matched.
+    // Just use underscore in the defintion, and return Some if matched.
     let (|MultOf3|_|) i = if i % 3 = 0 then Some MultOf3 else None
     let (|MultOf5|_|) i = if i % 5 = 0 then Some MultOf5 else None
 
