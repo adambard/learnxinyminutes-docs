@@ -7,6 +7,7 @@ contributors:
     - ["Simon Morgan", "http://sjm.io/"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
     - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
+    - ["Rachel Stiyer", "https://github.com/rstiyer"]
 filename: LearnJava.java
 ---
 
@@ -137,7 +138,7 @@ public class LearnJava {
         //
         // BigDecimal allows the programmer complete control over decimal
         // rounding. It is recommended to use BigDecimal with currency values
-        // and where exact decimal percision is required.
+        // and where exact decimal precision is required.
         //
         // BigDecimal can be initialized with an int, long, double or String
         // or by initializing the unscaled value (BigInteger) and scale (int).
@@ -184,8 +185,12 @@ public class LearnJava {
         // LinkedLists - Implementation of doubly-linked list. All of the
         //               operations perform as could be expected for a
         //               doubly-linked list.
-        // Maps - A set of objects that maps keys to values. A map cannot
-        //        contain duplicate keys; each key can map to at most one value.
+        // Maps - A set of objects that map keys to values. Map is
+	//        an interface and therefore cannot be instantiated.
+	//        The type of keys and values contained in a Map must
+	//        be specified upon instantiation of the implementing
+        //        class. Each key may map to only one corresponding value,
+        //        and each key may appear only once (no duplicates).
         // HashMaps - This class uses a hashtable to implement the Map
         //            interface. This allows the execution time of basic
         //            operations, such as get and insert element, to remain
@@ -250,7 +255,7 @@ public class LearnJava {
 
         // If statements are c-like
         int j = 10;
-        if (j == 10){
+        if (j == 10) {
             System.out.println("I get printed");
         } else if (j > 10) {
             System.out.println("I don't");
@@ -285,7 +290,18 @@ public class LearnJava {
             // Iterated 10 times, fooFor 0->9
         }
         System.out.println("fooFor Value: " + fooFor);
-
+        
+        // Nested For Loop Exit with Label
+        outer:
+        for (int i = 0; i < 10; i++) {
+          for (int j = 0; j < 10; j++) {
+            if (i == 5 && j ==5) {
+              break outer;
+              // breaks out of outer loop instead of only the inner one
+            }
+          }
+        }
+        
         // For Each Loop
         // The for loop is also able to iterate over arrays as well as objects
         // that implement the Iterable interface.
@@ -320,7 +336,7 @@ public class LearnJava {
         
         // Starting in Java 7 and above, switching Strings works like this:
         String myAnswer = "maybe";
-        switch(myAnswer){
+        switch(myAnswer) {
             case "yes":
                 System.out.println("You answered yes.");
                 break;
@@ -433,6 +449,17 @@ class Bicycle {
     private int speed;  // Private: Only accessible from within the class
     protected int gear; // Protected: Accessible from the class and subclasses
     String name; // default: Only accessible from within this package
+
+    static String className; // Static class variable
+
+    // Static block 
+    // Java has no implementation of static constructors, but
+    // has a static block that can be used to initialize class variables 
+    // (static variables). 
+    // This block will be called when the class is loaded.
+    static {
+        className = "Bicycle";
+    }
 
     // Constructors are a way of creating classes
     // This is a constructor

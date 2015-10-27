@@ -117,11 +117,11 @@ catch e
     println(e)
 end
 
-# Variable names start with a letter.
+# Variable names start with a letter or underscore.
 # After that, you can use letters, digits, underscores, and exclamation points.
 SomeOtherVar123! = 6 # => 6
 
-# You can also use unicode characters
+# You can also use certain unicode characters
 ☃ = 8 # => 8
 # These are especially handy for mathematical notation
 2 * π # => 6.283185307179586

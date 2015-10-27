@@ -12,7 +12,8 @@ contributors:
   - ["Dzianis Dashkevich", "https://github.com/dskecse"]
   - ["Levi Bostian", "https://github.com/levibostian"]
   - ["Rahil Momin", "https://github.com/iamrahil"]
-  - ["Gabriel Halley", https://github.com/ghalley"]
+  - ["Gabriel Halley", "https://github.com/ghalley"]
+  - ["Persa Zula", "http://persazula.com"]
 ---
 
 ```ruby
@@ -40,6 +41,7 @@ You shouldn't either
 35 / 5 #=> 7
 2**5 #=> 32
 5 % 3 #=> 2
+5 ^ 6 #=> 3
 
 # Arithmetic is just syntactic sugar
 # for calling a method on an object
@@ -106,6 +108,12 @@ placeholder = 'use string interpolation'
 'hello ' + 'world'  #=> "hello world"
 'hello ' + 3 #=> TypeError: can't convert Fixnum into String
 'hello ' + 3.to_s #=> "hello 3"
+
+# Combine strings and operators
+'hello ' * 3 #=> "hello hello hello "
+
+# Append to string
+'hello' << ' world' #=> "hello world"
 
 # print to the output with a newline at the end
 puts "I'm printing!"
@@ -284,7 +292,7 @@ end
 #=> iteration 4
 #=> iteration 5
 
-# There are a bunch of other helpful looping functions in Ruby, 
+# There are a bunch of other helpful looping functions in Ruby,
 # for example "map", "reduce", "inject", the list goes on. Map,
 # for instance, takes the array it's looping over, does something
 # to it as defined in your block, and returns an entirely new array.
