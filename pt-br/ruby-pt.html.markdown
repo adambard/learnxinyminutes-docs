@@ -4,6 +4,7 @@ lang: pt-br
 filename: learnruby-pt.rb
 contributors:
   - ["Bruno Henrique - Garu", "http://garulab.com"]
+  - ["Alan Peterson Carvalho Silva", "https://twitter.com/DemonKart"]
 translators:
   - ["Katyanna Moura", "https://twitter.com/amelie_kn"]
 ---
@@ -384,4 +385,65 @@ end
 Humano.bar # 0
 Doutor.bar # nil
 
+---
+
+module ModuloDeExemplo
+  def foo
+    'foo'
+  end
+end
+
+# Incluir (include) módulos conecta seus métodos às instâncias da classe 
+# Herdar (extend) módulos conecta seus métodos à classe em si
+
+class Pessoa
+  include ExemploDeModulo
+end
+
+class Livro
+  extend ExemploDeModulo
+end
+
+Pessoa.foo     # => NoMethodError: undefined method `foo' for Pessoa:Class
+Pessoa.new.foo # => 'foo'
+Livro.foo       # => 'foo'
+Livro.new.foo   # => NoMethodError: undefined method `foo'
+
+# Callbacks são executados ao incluir e herdar um módulo
+
+module ExemploDeConceito
+  def self.included(base)
+    base.extend(MetodosDeClasse)
+    base.send(:include, MetodosDeInstancia)
+  end
+
+  module MetodosDeClasse
+    def bar
+      'bar'
+    end
+  end
+
+  module MetodosDeInstancia
+    def qux
+      'qux'
+    end
+  end
+end
+
+class Algo
+  include ExemploDeConceito
+end
+
+Algo.bar     # => 'bar'
+Algo.qux     # => NoMethodError: undefined method `qux'
+Algo.new.bar # => NoMethodError: undefined method `bar'
+Algo.new.qux # => 'qux'
 ```
+
+## Recursos adicionais
+
+- [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - A variant of this reference with in-browser challenges.
+- [Documentação oficial](http://www.ruby-doc.org/core-2.1.1/)
+- [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
+- [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - Uma [versão grátis](http://ruby-doc.com/docs/ProgrammingRuby/) mais antiga está disponível online.
+- [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - Um guia mantido pela comunidade de estilo de código Ruby.
