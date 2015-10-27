@@ -8,7 +8,7 @@ contributors:
   - ["Michael Neth", "https://github.com/infernocloud"]
 ---
 
-As JSON is an extremely simple data-interchange format, this is most likely going to be the simplest Learn X in Y Minutes ever.
+As JSON is an extremely simple data-interchange format, this is most likely going to be the simplest Learn X in Y Minutes ever. JSON stands for Javascript Object Notation, but it is can be used in many other programming languages as well.
 
 JSON in its purest form has no actual comments, but most parsers will accept C-style (`//`, `/* */`) comments. Some parsers also tolerate a trailing comma (i.e. a comma after the last element of an array or the after the last property of an object), but they should be avoided for better compatibility.
 
