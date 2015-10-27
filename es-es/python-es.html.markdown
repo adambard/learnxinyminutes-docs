@@ -9,8 +9,8 @@ lang: es-es
 filename: learnpython-es.py
 ---
 
-Python fue creado por Guido Van Rossum en el principio de los 90'. Ahora es uno
-de los lenguajes más populares en existencia. Me enamoré de Python por su claridad sintáctica.
+Python fue creado por Guido Van Rossum en el principio de los 90. Ahora es uno
+de los lenguajes más populares que existen. Me enamoré de Python por su claridad sintáctica.
 Es básicamente pseudocódigo ejecutable.
 
 ¡Comentarios serán muy apreciados! Pueden contactarme en [@louiedinh](http://twitter.com/louiedinh) o louiedinh [at] [servicio de email de google]
@@ -19,8 +19,8 @@ Nota: Este artículo aplica a Python 2.7 específicamente, pero debería ser apl
 
 ```python
 # Comentarios de una línea comienzan con una almohadilla (o signo gato)
-""" Strings multilinea pueden escribirse
-    usando tres "'s, y comunmente son usados
+""" Strings multilínea pueden escribirse
+    usando tres "'s, y comúnmente son usados
     como comentarios.
 """
 
@@ -436,7 +436,7 @@ class Humano(object):
     def get_especie(cls):
         return cls.especie
 
-    # Un metodo estatico es llamado sin la clase o instancia como referencia
+    # Un metodo estático es llamado sin la clase o instancia como referencia
     @staticmethod
     def roncar():
         return "*roncar*"
@@ -507,7 +507,7 @@ def duplicar_numeros(iterable):
 # Nota: xrange es un generador que hace lo mismo que range.
 # Crear una lista de 1 a 900000000 lleva mucho tiempo y ocupa mucho espacio.
 # xrange crea un generador, mientras que range crea toda la lista.
-# Añadimos un guion bajo a los nombres de variable que coinciden con palabras 
+# Añadimos un guión bajo a los nombres de variable que coinciden con palabras
 # reservadas de python.
 xrange_ = xrange(1, 900000000)
 
