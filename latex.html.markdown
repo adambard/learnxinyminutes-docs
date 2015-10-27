@@ -4,6 +4,7 @@ contributors:
     - ["Chaitanya Krishna Ande", "http://icymist.github.io"]
     - ["Colton Kohnke", "http://github.com/voltnor"]
     - ["Sricharan Chiruvolu", "http://sricharan.xyz"]
+    - ["Ramanan Balakrishnan", "https://github.com/ramananbalakrishnan"]
 filename: learn-latex.tex
 ---
 
@@ -31,7 +32,8 @@ filename: learn-latex.tex
 \usepackage{float}
 
 % We can define some other document properties too!
-\author{Chaitanya Krishna Ande, Colton Kohnke \& Sricharan Chiruvolu}
+\author{Chaitanya Krishna Ande, Colton Kohnke,\\ Sricharan Chiruvolu \& Ramanan
+Balakrishnan}
 \date{\today}
 \title{Learn LaTeX in Y Minutes!}
 
@@ -100,7 +102,7 @@ Math has many symbols, far beyond what you can find on a keyboard;
 Set and relation symbols, arrows, operators, and Greek letters to name a few.\\
 
 Sets and relations play a vital role in many mathematical research papers.
-Here's how you state all y that belong to X, $\forall$ x $\in$ X. \\
+Here's how you state all x that belong to X, $\forall$ x $\in$ X. \\
 % Notice how I needed to add $ signs before and after the symbols. This is 
 % because when writing, we are in text-mode. 
 % However, the math symbols only exist in math-mode. 
@@ -111,7 +113,7 @@ Here's how you state all y that belong to X, $\forall$ x $\in$ X. \\
 \[a^2 + b^2 = c^2 \]
 
 My favorite Greek letter is $\xi$. I also like $\beta$, $\gamma$ and $\sigma$.
-I haven't found a Greek letter that yet that LaTeX doesn't know about!
+I haven't found a Greek letter yet that LaTeX doesn't know about!
 
 Operators are essential parts of a mathematical document: 
 trigonometric functions ($\sin$, $\cos$, $\tan$), 
@@ -131,7 +133,7 @@ $^{10}/_{7}$
 % \frac{numerator}{denominator}
 $\frac{n!}{k!(n - k)!}$ \\
 
-We can also insert equations in an "equation environment". 
+We can also insert equations in an ``equation environment''.
 
 % Display math with the equation 'environment'
 \begin{equation} % enters math-mode
@@ -204,10 +206,10 @@ environment.
 
 By now you're probably wondering how to compile this fabulous document 
 and look at the glorious glory that is a LaTeX pdf.
-(yes, this document actually does compiles). \\
+(yes, this document actually does compile). \\
 Getting to the final document using LaTeX consists of the following steps:
   \begin{enumerate}
-    \item Write the document in plain text (the "source code").
+    \item Write the document in plain text (the ``source code'').
     \item Compile source code to produce a pdf. 
      The compilation step looks something like this (in Linux): \\
      \begin{verbatim} 
