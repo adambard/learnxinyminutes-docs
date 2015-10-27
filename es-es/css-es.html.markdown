@@ -239,15 +239,15 @@ y dispositivos para los que desarrolles.
 
 * Para ejecutar un test de compatibilidad, revisa [CanIUse](http://caniuse.com).
 * CSS Playground [Dabblet](http://dabblet.com/).
-* [Mozilla Developer Network's CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* [Codrops' CSS Reference](http://tympanus.net/codrops/css_reference/)
+* [Mozilla Developer Network's CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS).
+* [Codrops' CSS Reference](http://tympanus.net/codrops/css_reference/).
 
 ## Otras lecturas
 
-* [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
-* [Selecting elements using attributes](https://css-tricks.com/almanac/selectors/a/attribute/)
-* [QuirksMode CSS](http://www.quirksmode.org/css/)
+* [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/).
+* [Selecting elements using attributes](https://css-tricks.com/almanac/selectors/a/attribute/).
+* [QuirksMode CSS](http://www.quirksmode.org/css/).
 * [Z-Index - The stacking context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
-* [SASS](http://sass-lang.com/) and [LESS](http://lesscss.org/) for CSS pre-processing
-* [CSS-Tricks](https://css-tricks.com)
+* [SASS](http://sass-lang.com/) y [LESS](http://lesscss.org/) para preprocesamiento CSS.
+* [CSS-Tricks](https://css-tricks.com).
 
