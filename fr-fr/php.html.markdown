@@ -148,6 +148,35 @@ $array[] = 'Four';
 // Retrait d'un élément du tableau
 unset($array[3]);
 
+//Parcourir un tableau
+for($i=0;$i<sizeof($array);$i++)
+{
+    echo "Element $i : ".$array[$i];
+}
+
+// Il existe également des tableaux multidimensionnels
+// Ou encore appelé des tableaux de tableaux
+$fruits = array ( "fruits"  => array ( "a" => "orange",
+                                       "b" => "banana",
+                                       "c" => "apple"
+                                     ),
+                  "fruits"  => array ( "a" => "watermelon",
+                                       "b" => "kiwi",
+                                       "c" => "strawberry"
+                                     ),
+                  "fruits"  => array ( "a" => "pear",
+                                       "b" => "pineapple",
+                                       "c" => "raspberry"
+                                     )
+                );
+
+// Pour parcourir un tableau de tableaux
+for($i=0;$i<sizeof($array);$i++)
+{
+    //Si on souhaite afficher : orange, watermelon, pear
+    echo "Element  : ".$array[$i]['a'];
+}
+
 /********************************
  * Affichage
  */
@@ -192,6 +221,11 @@ var_dump($z); // prints int(0)
 
 // Affiche la variable dans stdout dans un format plus convivial
 print_r($array); // prints: Array ( [0] => One [1] => Two [2] => Three )
+
+// Si vous souhaitez tester et afficher la variable sur la page web
+echo "<pre>";
+print_r($array);
+echo "</pre>";
 
 /********************************
  * Logique
