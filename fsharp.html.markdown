@@ -16,7 +16,7 @@ The syntax of F# is different from C-style languages:
 
 If you want to try out the code below, you can go to [tryfsharp.org](http://www.tryfsharp.org/Create) and paste it into an interactive REPL.
 
-```fsharp
+```csharp
 
 // single line comments use a double slash
 (* multi line comments use (* . . . *) pair
