@@ -219,7 +219,10 @@ Getting to the final document using LaTeX consists of the following steps:
 
 A number of LaTeX editors combine both Step 1 and Step 2 in the same piece of
 software. So, you get to see Step 1, but not Step 2 completely.
-Step 2 is still happening behind the scenes.
+Step 2 is still happening behind the scenes\footnote{In cases, where you use
+    references (like Eqn.~\ref{eq:pythagoras}), you may need to run Step 2 multiple times, to
+        generate an intermediary *.aux file.}.
+% Also, this is how you add footnotes to your document!
 
 You write all your formatting information in plain text in Step 1.
 The compilation part in Step 2 takes care of producing the document in the
