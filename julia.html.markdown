@@ -9,7 +9,7 @@ filename: learnjulia.jl
 Julia is a new homoiconic functional language focused on technical computing.
 While having the full power of homoiconic macros, first-class functions, and low-level control, Julia is as easy to learn and use as Python.
 
-This is based on Julia 0.3.
+This is based on Julia 0.4.
 
 ```ruby
 
@@ -23,7 +23,7 @@ This is based on Julia 0.3.
 ## 1. Primitive Datatypes and Operators
 ####################################################
 
-# Everything in Julia is a expression.
+# Everything in Julia is an expression.
 
 # There are several basic types of numbers.
 3 # => 3 (Int64)
@@ -272,8 +272,8 @@ values(filled_dict)
 # Note - Same as above regarding key ordering.
 
 # Check for existence of keys in a dictionary with in, haskey
-in(("one", 1), filled_dict) # => true
-in(("two", 3), filled_dict) # => false
+in(("one" => 1), filled_dict) # => true
+in(("two" => 3), filled_dict) # => false
 haskey(filled_dict, "one") # => true
 haskey(filled_dict, 1) # => false
 
@@ -292,7 +292,7 @@ get(filled_dict,"four",4) # => 4
 # Use Sets to represent collections of unordered, unique values
 empty_set = Set() # => Set{Any}()
 # Initialize a set with values
-filled_set = Set(1,2,2,3,4) # => Set{Int64}(1,2,3,4)
+filled_set = Set([1,2,2,3,4]) # => Set{Int64}(1,2,3,4)
 
 # Add more values to a set
 push!(filled_set,5) # => Set{Int64}(5,4,2,3,1)
@@ -302,7 +302,7 @@ in(2, filled_set) # => true
 in(10, filled_set) # => false
 
 # There are functions for set intersection, union, and difference.
-other_set = Set(3, 4, 5, 6) # => Set{Int64}(6,4,5,3)
+other_set = Set([3, 4, 5, 6]) # => Set{Int64}(6,4,5,3)
 intersect(filled_set, other_set) # => Set{Int64}(3,4,5)
 union(filled_set, other_set) # => Set{Int64}(1,2,3,4,5,6)
 setdiff(Set(1,2,3,4),Set(2,3,5)) # => Set{Int64}(1,4)
@@ -422,12 +422,10 @@ varargs(1,2,3) # => (1,2,3)
 # We just used it in a function definition.
 # It can also be used in a fuction call,
 # where it will splat an Array or Tuple's contents into the argument list.
-Set([1,2,3])    # => Set{Array{Int64,1}}([1,2,3]) # produces a Set of Arrays
-Set([1,2,3]...) # => Set{Int64}(1,2,3) # this is equivalent to Set(1,2,3)
+add([5,6]...) # this is equivalent to add(5,6)
 
-x = (1,2,3)     # => (1,2,3)
-Set(x)          # => Set{(Int64,Int64,Int64)}((1,2,3)) # a Set of Tuples
-Set(x...)       # => Set{Int64}(2,3,1)
+x = (5,6)     # => (5,6)
+add(x...)     # this is equivalent to add(5,6)
 
 
 # You can define functions with optional positional arguments
@@ -549,12 +547,8 @@ abstract Cat # just a name and point in the type hierarchy
 
 # Abstract types cannot be instantiated, but can have subtypes.
 # For example, Number is an abstract type
-subtypes(Number) # => 6-element Array{Any,1}:
-                 #     Complex{Float16}
-                 #     Complex{Float32}
-                 #     Complex{Float64}
+subtypes(Number) # => 2-element Array{Any,1}:
                  #     Complex{T<:Real}
-                 #     ImaginaryUnit
                  #     Real
 subtypes(Cat) # => 0-element Array{Any,1}
 
@@ -572,10 +566,11 @@ subtypes(AbstractString)    # 8-element Array{Any,1}:
 # Every type has a super type; use the `super` function to get it.
 typeof(5) # => Int64
 super(Int64) # => Signed
-super(Signed) # => Real
+super(Signed) # => Integer
+super(Integer) # => Real
 super(Real) # => Number
 super(Number) # => Any
-super(super(Signed)) # => Number
+super(super(Signed)) # => Real
 super(Any) # => Any
 # All of these type, except for Int64, are abstract.
 typeof("fire") # => ASCIIString
