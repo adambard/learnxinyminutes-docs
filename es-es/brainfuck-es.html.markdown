@@ -9,9 +9,10 @@ lang: es-es
 ---
 
 Brainfuck (con mayúscula sólo al inicio de una oración) es un
-lenguaje de programación mínimo, computacionalmente universal
-en tamaño con sólo 8 comandos.
+lenguaje de programación de Turing completo extremadamente minimalista, con 
+sólo 8 comandos.
 
+Puedes probar Brainfuck en tu navegador con [brainfuck-visualizer](http://fatiherikli.github.io/brainfuck-visualizer/)
 ```
 
 Cualquier caracter que no sea "><+-.,[]" (sin incluir las comillas)
