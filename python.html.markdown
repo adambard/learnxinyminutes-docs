@@ -101,6 +101,8 @@ not False  # => True
 1 <> 1  # => False
 2 <> 1  # => True
 
+# Note the <> is deprecated and will not work for python 3.x
+
 # More comparisons
 1 < 10  # => True
 1 > 10  # => False
