@@ -236,7 +236,7 @@ y dispositivos para los que desarrolles.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) es una excelente referencia para esto.
 
-## Referencias
+## Otras lecturas
 
 * [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
 * [QuirksMode CSS](http://www.quirksmode.org/css/)
