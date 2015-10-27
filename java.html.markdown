@@ -738,3 +738,5 @@ The links provided here below are just to get an understanding of the topic, fee
 * [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
 
 * [Java The Complete Reference](http://www.amazon.com/gp/product/0071606300)
+
+* [Learn Java in 21 Days] (http://portal.aauj.edu/e_books/teach_your_self_java_in_21_days.pdf)
