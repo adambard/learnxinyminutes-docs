@@ -418,7 +418,7 @@ typedef void (*my_fnp_type)(char *);
 
 ## Otras lecturas
 ################################################################################
-Lo mejor que puedes en contrar es una copia de [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language). Es *el*
+Lo mejor que puedes encontrar es una copia de [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language). Es *el*
 libro de C, escrito por Dennis Ritchie, creador de C y Brian Kernighan. Aún así,
 se cuidadoso, es antiguo, contiene algunas inexactitudes, y algunas prácticas 
 han cambiado.
