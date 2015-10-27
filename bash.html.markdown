@@ -263,6 +263,9 @@ grep -c "^foo.*bar$" file.txt
 # and not the regex, use fgrep (or grep -F)
 fgrep "^foo.*bar$" file.txt
 
+# trap command allows you to execute a command when a signal is received by your script.
+# Here trap command will execute rm if any one of the three listed signals is received.
+trap "rm $TEMP_FILE; exit" SIGHUP SIGINT SIGTERM
 
 # Read Bash shell builtins documentation with the bash 'help' builtin:
 help
