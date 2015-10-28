@@ -63,12 +63,22 @@ int main(void) {
   // your program
 }
 
-// The command line arguments used to run your program are also passed to main
-// argc being the number of arguments - your program's name counts as 1
-// argv is an array of character arrays - containing the arguments themselves
+// The command line arguments used to run your program are also passed to main,
+// with argc being the number of arguments (your program's name counts as 1)
+// and with argv as an array of character arrays containing the arguments themselves.
 // argv[0] = name of your program, argv[1] = first argument, etc.
 int main (int argc, char** argv)
 {
+
+  // Remember that arguments are passed to your program as strings.
+  // In the event that you are passing numerical arguments, you must first
+  // convert the strings into their respective type of variable.
+  // To convert the first argument of your program into an integer,
+  // you could do the following:
+  int arg1;
+  sscanf( argv[1], "%d", &argc );
+
+
   // print output using printf, for "print formatted"
   // %d is an integer, \n is a newline
   printf("%d\n", 0); // => Prints 0
