@@ -35,7 +35,7 @@ false
 ; Characters are preceeded by backslashes
 \g \r \a \c \e
 
-; Keywords start with a colon. They behave like enums. Kinda
+; Keywords start with a colon. They behave like enums. Kind of
 ; like symbols in Ruby.
 :eggs
 :cheese
