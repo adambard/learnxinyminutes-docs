@@ -76,7 +76,7 @@ int main (int argc, char** argv)
   ///////////////////////////////////////
   // Types
   ///////////////////////////////////////
-  
+
   // All variables MUST be declared at the top of the current block scope
   // we declare them dynamically along the code for the sake of the tutorial
 
@@ -162,6 +162,8 @@ int main (int argc, char** argv)
 
   // Strings are just arrays of chars terminated by a NULL (0x00) byte,
   // represented in strings as the special character '\0'.
+  // NULL characters are vital to functions that operate on strings,
+  // so be sure to include them!
   // (We don't have to include the NULL byte in string literals; the compiler
   //  inserts it at the end of the array for us.)
   char a_string[20] = "This is a string";
@@ -345,8 +347,8 @@ int main (int argc, char** argv)
   https://ideone.com/GuPhd6
   this will print out "Error occured at i = 52 & j = 99."
   */
-  
-  
+
+
   ///////////////////////////////////////
   // Typecasting
   ///////////////////////////////////////
@@ -445,7 +447,7 @@ int main (int argc, char** argv)
   for (xx = 0; xx < 20; xx++) {
     *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx
   } // Initialize memory to 20, 19, 18, 17... 2, 1 (as ints)
-  
+
   // Note that there is no standard way to get the length of a
   // dynamically allocated array in C. Because of this, if your arrays are
   // going to be passed around your program a lot, you need another variable
@@ -721,13 +723,13 @@ typedef void (*my_fnp_type)(char *);
 
 /******************************* Header Files **********************************
 
-Header files are an important part of c as they allow for the connection of c 
-source files and can simplify code and definitions by seperating them into 
+Header files are an important part of c as they allow for the connection of c
+source files and can simplify code and definitions by seperating them into
 seperate files.
 
-Header files are syntaxtically similar to c source files but reside in ".h" 
-files. They can be included in your c source file by using the precompiler 
-command #include "example.h", given that example.h exists in the same directory 
+Header files are syntaxtically similar to c source files but reside in ".h"
+files. They can be included in your c source file by using the precompiler
+command #include "example.h", given that example.h exists in the same directory
 as the c file.
 */
 
