@@ -27,8 +27,14 @@ concepts that are generally found in higher-level languages. This makes
 Rust not only fast, but also easy and efficient to code in.
 
 ```rust
-// This is a comment. Single-line look like this...
-/* ...and multi-line comment look like this */
+// This is a comment. Line comments look like this...
+// and extend multiple lines like this.
+
+/// Documentation comments look like this and support markdown notation.
+/// # Examples
+/// ```
+/// let five = 5
+/// ```
 
 ///////////////
 // 1. Basics //
