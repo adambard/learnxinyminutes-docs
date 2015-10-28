@@ -87,11 +87,13 @@ $sgl_quotes = '$String'; // => '$String'
 // Evite o uso de aspas duplas, exceto para incorporar outras variáveis
 $dbl_quotes = "Esta é uma $sgl_quotes."; // => 'Esta é uma $String.'
 
-// Os caracteres especiais só são escapados entre aspas duplas
-$escapado    = "Este contém um \t caractere tab.";
-$naoescapado = 'Este contém somente a barra e o t: \t';
+// Os caracteres especiais só são escapados entre aspas duplas.
+$escapado    = "Este contém um \t caractere tab."; 
+echo $escapado; //Imprime: Este contém um     caractere tab.
+$naoescapado = 'Este contém somente a barra e o t: \t'; 
+echo $naoescapado; //Imprime: Este contém somente a barra e o t: \t
 
-// Coloque uma variável entre chaves se necessário
+// Coloque uma variável entre chaves se necessário.
 $dinheiro = "Eu tenho $${numero} no banco.";
 
 // Desde o PHP 5.3, nowdocs podem ser usados para múltiplas linhas sem análise
@@ -107,7 +109,7 @@ $sgl_quotes
 FIM;
 
 // Concatenação de string é feita com .
-echo 'Esta string ' . 'é concatenada';
+echo 'Esta string ' . 'é concatenada'; //Imprime: 'Esta string é concatenada'
 
 
 /********************************
@@ -122,7 +124,7 @@ echo 'Esta string ' . 'é concatenada';
 define("FOO",     "alguma coisa");
 
 // Acesso a uma constante é possível usando diretamente o nome escolhido
-echo 'Isto sairá '.FOO;
+echo 'Isto sairá '.FOO; //Imprime: Isto sairá alguma coisa
 
 
 /********************************
