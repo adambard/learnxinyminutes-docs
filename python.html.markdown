@@ -648,28 +648,45 @@ dir(math)
 ## 7. Advanced
 ####################################################
 
-# Generators help you make lazy code
+# Generators
+# A generator "generates" values as they are requested instead of storing 
+# everything up front
+
+# The following method (*NOT* a generator) will double all values and store it 
+# in `double_arr`. For large size of iterables, that might get huge!
 def double_numbers(iterable):
+    double_arr = []
+    for i in iterable:
+        double_arr.append(i + i)
+
+# Running the following would mean we'll double all values first and return all 
+# of them back to be checked by our condition
+for value in double_numbers(range(1000000)):  # `test_non_generator`
+    print value
+    if value > 5:
+        break
+
+# We could instead use a generator to "generate" the doubled value as the item 
+# is being requested
+def double_numbers_generator(iterable):
     for i in iterable:
         yield i + i
 
-# A generator creates values on the fly.
-# Instead of generating and returning all values at once it creates one in each
-# iteration.  This means values bigger than 15 wont be processed in
-# double_numbers.
-# Note xrange is a generator that does the same thing range does.
-# Creating a list 1-900000000 would take lot of time and space to be made.
-# xrange creates an xrange generator object instead of creating the entire list
-# like range does.
-# We use a trailing underscore in variable names when we want to use a name that
-# would normally collide with a python keyword
-xrange_ = xrange(1, 900000000)
-
-# will double all numbers until a result >=30 found
-for i in double_numbers(xrange_):
-    print i
-    if i >= 30:
+# Running the same code as before, but with a generator, now allows us to iterate
+# over the values and doubling them one by one as they are being consumed by 
+# our logic. Hence as soon as we see a value > 5, we stop break out of the 
+# loop and don't need to double most of the values sent in (MUCH FASTER!)
+for value in double_numbers_generator(xrange(1000000)):  # `test_generator`
+    print value
+    if value > 5:
         break
+
+# BTW: did you notice the use of `range` in `test_non_generator` and `xrange` in `test_generator`? 
+# Just as `double_numbers_generator` is the generator version of `double_numbers`
+# We have `xrange` as the generator version of `range`
+# `range` would return back and array with 1000000 values for us to use
+# `xrange` would generate 1000000 values for us as we request / iterate over those items
+
 
 
 # Decorators
