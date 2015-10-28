@@ -8,6 +8,7 @@ contributors:
     - ["Wouter Van Schandevijl", "http://github.com/laoujin"]
     - ["Jo Pearce", "http://github.com/jdpearce"]
     - ["Chris Zimmerman", "https://github.com/chriszimmerman"]
+    - ["Shawn McGuire", "https://github.com/bigbash"]
 filename: LearnCSharp.cs
 ---
 
@@ -942,6 +943,24 @@ on a new line! ""Wow!"", the masses cried";
             A.A2();
         }
     }
+    
+    // String interpolation by prefixing the string with $
+    // and wrapping the expression you want to interpolate with { braces }
+    public class Rectangle
+    {
+        public int Length { get; set; }
+        public int Width { get; set; }
+    }
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Rectangle rect = new Rectangle { Length = 5, Width = 3 };
+            Console.WriteLine($"The length is {rect.Length} and the width is {rect.Width}");
+        }
+    }
+    
 } // End Namespace
 ```
 
