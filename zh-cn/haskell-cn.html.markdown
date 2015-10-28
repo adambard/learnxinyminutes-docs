@@ -200,13 +200,13 @@ foo 5 -- 75
 -- 你可以使用 `$` 来移除多余的括号。
 
 -- 修改前
-(even (fib 7)) -- true
+(even (fib 7)) -- False
 
 -- 修改后
-even . fib $ 7 -- true
+even . fib $ 7 -- False
 
 -- 等价地
-even $ fib 7 -- true
+even $ fib 7 -- False
 
 ----------------------------------------------------
 -- 5. 类型声明
