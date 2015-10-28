@@ -16,7 +16,7 @@ C++ est un langage de programmation système qui,
 fut créé pour
 
 - être un "C amélioré"
-- gérer la l'abstraction des données
+- gérer l'abstraction des données
 - gérer la programmation orienté objet
 - gérer la programmation générique
 
@@ -33,7 +33,7 @@ de programmation les plus utilisés au monde.
 // Comparaison avec le C
 /////////////////////////////////
 
-// C++ est _presque_ un sur-ensemble du C et partage sa syntaxe basic pour les
+// C++ est _presque_ un sur-ensemble du C et partage sa syntaxe basique pour les
 // déclarations de variables, les types primitifs et les fonctions.
 
 // Tout comme en C, le point d'entrée de votre programme est une fonction
@@ -55,7 +55,7 @@ int main(int argc, char** argv)
     return 0;
 }
 
-// Cependant, C++ varie du C selon certain éléments:
+// Cependant, C++ varie du C selon certains éléments:
 
 // En C++, les caractères littéraux sont des chars
 sizeof('c') == sizeof(char) == 1
