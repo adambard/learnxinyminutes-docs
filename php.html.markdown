@@ -152,6 +152,34 @@ array_push($array, 'Five');
 // Remove element from array
 unset($array[3]);
 
+// Go through an array
+for($i=0;$i<sizeof($array);$i++)
+{
+    echo "Element $i : ".$array[$i];
+}
+
+// There are multidimensional arrays
+$fruits = array ( "fruits"  => array ( "a" => "orange",
+                                       "b" => "banana",
+                                       "c" => "apple"
+                                     ),
+                  "fruits"  => array ( "a" => "watermelon",
+                                       "b" => "kiwi",
+                                       "c" => "strawberry"
+                                     ),
+                  "fruits"  => array ( "a" => "pear",
+                                       "b" => "pineapple",
+                                       "c" => "raspberry"
+                                     )
+                );
+
+// Go through a multidimensional array
+for($i=0;$i<sizeof($array);$i++)
+{
+    //Si on souhaite afficher : orange, watermelon, pear
+    echo "Element  : ".$array[$i]['a'];
+}
+
 /********************************
  * Output
  */
@@ -196,6 +224,11 @@ var_dump($z); // prints int(0)
 
 // Prints variable to stdout in human-readable format
 print_r($array); // prints: Array ( [0] => One [1] => Two [2] => Three )
+
+// Prints array on web page
+echo "<pre>";
+print_r($array);
+echo "</pre>";
 
 /********************************
  * Logic
