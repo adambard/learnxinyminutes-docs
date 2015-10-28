@@ -16,9 +16,14 @@ JavaScript isn't just limited to web browsers, though: Node.js, a project that
 provides a standalone runtime for Google Chrome's V8 JavaScript engine, is
 becoming more and more popular.
 
+JavaScript has a C-like syntax, so if you've used languages like C or Java,
+a lot of the basic syntax will already be familiar. Despite this, and despite
+the similarity in name, JavaScript's object model is significantly different to
+Java's.
+
 ```js
-// Comments are like C's. Single-line comments start with two slashes,
-/* and multiline comments start with slash-star
+// Single-line comments start with two slashes.
+/* Multiline comments start with slash-star,
    and end with star-slash */
 
 // Statements can be terminated by ;
@@ -145,7 +150,7 @@ someOtherVar = 10;
 // Variables declared without being assigned to are set to undefined.
 var someThirdVar; // = undefined
 
-// If you want to declare a couple of variables, then you could use a comma 
+// If you want to declare a couple of variables, then you could use a comma
 // separator
 var someFourthVar = 2, someFifthVar = 4;
 
@@ -193,8 +198,6 @@ myObj.myFourthKey; // = undefined
 
 ///////////////////////////////////
 // 3. Logic and Control Structures
-
-// The syntax for this section is almost identical to Java's.
 
 // The `if` structure works as you'd expect.
 var count = 1;
