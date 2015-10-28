@@ -636,6 +636,7 @@ writer.close()
 
 ## Further resources
 
+* [ScalaCourses.com](http://getscala.com/)
 * [Scala for the impatient](http://horstmann.com/scala/)
 * [Twitter Scala school](http://twitter.github.io/scala_school/)
 * [The scala documentation](http://docs.scala-lang.org/)
