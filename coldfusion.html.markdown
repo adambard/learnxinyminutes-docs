@@ -141,8 +141,8 @@ ColdFusion is a scripting language for web development.
 		</cfcase>
 		<cfdefaultcase>
 			<p><cfoutput>#i#</cfoutput> is not 5, 15, 45, or 99.</p>
-		</cfdefaultcase> 
-	</cfswitch> 
+		</cfdefaultcase>
+	</cfswitch>
 </cfloop>
 
 <hr />
@@ -154,7 +154,7 @@ ColdFusion is a scripting language for web development.
 		border: 1px solid #000000;
 		padding: 2px;
 	}
-	
+
 	table.table th {
 		background-color: #CCCCCC;
 	}
@@ -237,27 +237,27 @@ ColdFusion is a scripting language for web development.
 	&lt;cffunction name="sayHello"&gt;
 		&lt;cfreturn this.hello & ", " & this.world & "!" /&gt;
 	&lt;/cffunction&gt;
-	
+
 	&lt;cffunction name="setHello"&gt;
 		&lt;cfargument name="newHello" type="string" required="true" /&gt;
-		
+
 		&lt;cfset this.hello = arguments.newHello /&gt;
-		 
+
 		&lt;cfreturn true /&gt;
 	&lt;/cffunction&gt;
-	
+
 	&lt;cffunction name="setWorld"&gt;
 		&lt;cfargument name="newWorld" type="string" required="true" /&gt;
-		
+
 		&lt;cfset this.world = arguments.newWorld /&gt;
-		 
+
 		&lt;cfreturn true /&gt;
 	&lt;/cffunction&gt;
-	
+
 	&lt;cffunction name="getHello"&gt;
 		&lt;cfreturn this.hello /&gt;
 	&lt;/cffunction&gt;
-	
+
 	&lt;cffunction name="getWorld"&gt;
 		&lt;cfreturn this.world /&gt;
 	&lt;/cffunction&gt;
@@ -273,17 +273,17 @@ ColdFusion is a scripting language for web development.
 
 <cffunction name="setHello">
 	<cfargument name="newHello" type="string" required="true" />
-	
+
 	<cfset this.hello = arguments.newHello />
-	 
+
 	<cfreturn true />
 </cffunction>
 
 <cffunction name="setWorld">
 	<cfargument name="newWorld" type="string" required="true" />
-	
+
 	<cfset this.world = arguments.newWorld />
-	 
+
 	<cfreturn true />
 </cffunction>
 
