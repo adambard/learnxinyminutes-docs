@@ -43,7 +43,7 @@ getal = -42 if tegengestelde #=> if(tegengestelde) { getal = -42; }
 kwadraat = (x) -> x * x #=> var kwadraat = function(x) { return x * x; }
 
 vul = (houder, vloeistof = "koffie") ->
-  "Nu de #{houder} met #{koffie} aan het vullen..."
+  "Nu de #{houder} met #{vloeistof} aan het vullen..."
 #=>var vul;
 #
 #vul = function(houder, vloeistof) {
