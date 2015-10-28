@@ -564,6 +564,26 @@ int main () {
 }
 
 /////////////////////
+// Tuples
+/////////////////////
+
+// Defined in header <tuple>, Class template std::tuple is a fixed-size 
+// collection of heterogeneous values. It is a generalization of std::pair.
+
+#include <tuple>
+#include <iostream>
+ 
+int main()
+{
+    auto student = std::make_tuple(3.8, 'A', "Lisa Simpson");
+    std::cout << "ID: 0, "
+              << "GPA: " << std::get<0>(student) << ", "
+              << "grade: " << std::get<1>(student) << ", "
+              << "name: " << std::get<2>(student) << '\n';
+}
+
+
+/////////////////////
 // Templates
 /////////////////////
 
