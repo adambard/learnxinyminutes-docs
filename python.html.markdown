@@ -15,8 +15,8 @@ executable pseudocode.
 Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
 
 Note: This article applies to Python 2.7 specifically, but should be applicable
-to Python 2.x. Python 2.7 is reachong end of life and will stop beeign maintained in 2020,
-it is though recommended to start learnign Python with Python 3.
+to Python 2.x. As Python 2.7 is reaching end of life and will stop being maintained in 2020,
+it is recommended to start learning Python from Python 3.
 For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
 
 It is also possible to write Python code which is compatible with Python 2.7 and 3.x at the same time,
@@ -37,58 +37,58 @@ allow you to write Python 3 code that will run on Python 2, so check out the Pyt
 ####################################################
 
 # You have numbers
-3  # => 3
+3           # => 3
 
-# Math is what you would expect
-1 + 1  # => 2
-8 - 1  # => 7
-10 * 2  # => 20
-35 / 5  # => 7
+# Math is as you would expect it
+1 + 1       # => 2
+8 - 1       # => 7
+10 * 2      # => 20
+35 / 5      # => 7
 
 # Division is a bit tricky. It is integer division and floors the results
 # automatically.
-5 / 2  # => 2
+5 / 2       # => 2
 
 # To fix division we need to learn about floats.
-2.0     # This is a float
+2.0         # This is a float
 11.0 / 4.0  # => 2.75 ahhh...much better
 
 # Result of integer division truncated down both for positive and negative.
-5 // 3     # => 1
-5.0 // 3.0 # => 1.0 # works on floats too
--5 // 3  # => -2
+5 // 3      # => 1
+5.0 // 3.0  # => 1.0 # works on floats too
+-5 // 3     # => -2
 -5.0 // 3.0 # => -2.0
 
-# Note that we can also import division module(Section 6 Modules)
+# Note that we can also import the division module (see Section 6 Modules)
 # to carry out normal division with just one '/'.
 from __future__ import division
-11/4    # => 2.75  ...normal division
-11//4   # => 2 ...floored division  
+11/4        # => 2.75  ...normal division
+11//4       # => 2 ...floored division  
 
 # Modulo operation
-7 % 3 # => 1
+7 % 3       # => 1
 
 # Exponentiation (x to the yth power)
-2**4 # => 16
+2**4        # => 16
 
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
 
 # Boolean Operators
 # Note "and" and "or" are case-sensitive
-True and False #=> False
-False or True #=> True
+True and False  # => False
+False or True   # => True
 
 # Note using Bool operators with ints
-0 and 2 #=> 0
--5 or 0 #=> -5
-0 == False #=> True
-2 == True #=> False
-1 == True #=> True
+0 and 2     # => 0
+-5 or 0     # => -5
+0 == False  # => True
+2 == True   # => False
+1 == True   # => True
 
 # negate with not
-not True  # => False
-not False  # => True
+not True    # => False
+not False   # => True
 
 # Equality is ==
 1 == 1  # => True
@@ -137,8 +137,8 @@ None  # => None
 
 # Don't use the equality "==" symbol to compare objects to None
 # Use "is" instead
-"etc" is None  # => False
-None is None  # => True
+"etc" is None   # => False
+None is None    # => True
 
 # The 'is' operator tests for object identity. This isn't
 # very useful when dealing with primitive values, but is
@@ -146,8 +146,8 @@ None is None  # => True
 
 # None, 0, and empty strings/lists all evaluate to False.
 # All other values are True
-bool(0)  # => False
-bool("")  # => False
+bool(0)     # => False
+bool("")    # => False
 
 
 ####################################################
