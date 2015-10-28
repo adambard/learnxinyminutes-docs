@@ -48,7 +48,7 @@ Nota: Este artículo aplica a Python 2.7 específicamente, pero debería ser apl
 
 # Resultado de la división de enteros truncada para positivos y negativos
 5 // 3     # => 1
-5.0 // 3.0 # => 1.0 # funciona con números en coma flotante
+5.0 // 3.0 # => 1.0 # funciona con números de coma flotante
 -5 // 3  # => -2
 -5.0 // 3.0 # => -2.0
 
