@@ -374,7 +374,7 @@ Pulls from a repository and merges it with another branch.
 $ git pull origin master
 
 # By default, git pull will update your current branch
-# by merging in new changes from its remote-tracking branch 
+# by merging in new changes from its remote-tracking branch
 $ git pull
 
 # Merge in changes from remote branch and rebase
@@ -393,7 +393,7 @@ Push and merge changes from a branch to a remote & branch.
 $ git push origin master
 
 # By default, git push will push and merge changes from
-# the current branch to its remote-tracking branch 
+# the current branch to its remote-tracking branch
 $ git push
 
 # To link up current local branch with a remote branch, add -u flag:
