@@ -7,12 +7,12 @@ translators:
   - ["Tamás Diószegi", "https://github.com/ditam"]
 ---
 
-A YAML egy adat sorosító nyelv amit úgy terveztek, hogy közvetlenül is 
+A YAML egy adat sorosító nyelv, amit úgy terveztek, hogy közvetlenül is 
 olvasható és írható legyen emberi szemmel.
 
 A JSON formátum egy szigorú befoglaló halmazát alkotja, kiegészítve azt
 szintaktikai jelentéssel bíró sortörésekkel és indentációval,
-a Python-hoz hasonlóan. A Python-nal ellentétben azonban a YAML nem engedélyezi
+a Pythonhoz hasonlóan. A Pythonnal ellentétben azonban a YAML nem engedélyezi
 a közvetlen tab karakterek jelenlétét.
 
 Megjegyzés: UTF-8 ékezetes betűk használhatóak, ha a fájl kódlása megfelelő,
@@ -140,7 +140,7 @@ set:
 # Mint Pythonban, a halmazok null értékekkel feltöltött mapek, vagyis a fenti
 # halmaz egyenértékű a következővel:
 set2:
-    item1: null
-    item2: null
-    item3: null
+    elem1: null
+    elem2: null
+    elem3: null
 ```
