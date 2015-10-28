@@ -1,6 +1,6 @@
 ---
 language: yaml
-filename: learnyaml.yaml
+filename: learnyaml-hu.yaml
 contributors:
   - ["Adam Brenecki", "https://github.com/adambrenecki"]
 translators:
