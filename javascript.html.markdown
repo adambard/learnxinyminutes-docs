@@ -145,7 +145,7 @@ someOtherVar = 10;
 // Variables declared without being assigned to are set to undefined.
 var someThirdVar; // = undefined
 
-// if you wan't to declare a couple of variables, then you could use a comma 
+// if you want to declare a couple of variables, then you could use a comma 
 // separator
 var someFourthVar = 2, someFifthVar = 4;
 
