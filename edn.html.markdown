@@ -22,7 +22,7 @@ will see how it is extended later on.
 ;;; Basic Types ;;;
 ;;;;;;;;;;;;;;;;;;;
 
-nil         ; or aka null
+nil         ; also known in other languages as null
 
 ; Booleans
 true
@@ -35,14 +35,15 @@ false
 ; Characters are preceeded by backslashes
 \g \r \a \c \e
 
-; Keywords starts with a colon. They behave like enums. Kinda
-; like symbols in ruby.
+; Keywords start with a colon. They behave like enums. Kinda
+; like symbols in Ruby.
 :eggs
 :cheese
 :olives
 
-; Symbols are used to represent identifiers. You can namespace symbols by
-; using /. Whatever preceeds / is the namespace of the name.
+; Symbols are used to represent identifiers. They start with #.
+; You can namespace symbols by using /. Whatever preceeds / is
+; the namespace of the name.
 #spoon
 #kitchen/spoon ; not the same as #spoon
 #kitchen/fork
@@ -52,7 +53,7 @@ false
 42
 3.14159
 
-; Lists are a sequence of values
+; Lists are sequences of values
 (:bun :beef-patty 9 "yum!")
 
 ; Vectors allow random access
