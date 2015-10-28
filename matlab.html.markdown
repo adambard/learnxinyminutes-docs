@@ -468,17 +468,17 @@ perms(x) % list all permutations of elements of x
 
 
 % Classes
-% Matlab can support object-oriented programming. 
-% Classes must be put in a file of the class name with a .m extension. 
+% Matlab can support object-oriented programming.
+% Classes must be put in a file of the class name with a .m extension.
 % To begin, we create a simple class to store GPS waypoints.
 % Begin WaypointClass.m
 classdef WaypointClass % The class name.
   properties % The properties of the class behave like Structures
-    latitude 
-    longitude 
+    latitude
+    longitude
   end
-  methods 
-    % This method that has the same name of the class is the constructor. 
+  methods
+    % This method that has the same name of the class is the constructor.
     function obj = WaypointClass(lat, lon)
       obj.latitude = lat;
       obj.longitude = lon;
@@ -509,12 +509,12 @@ a.longitude = 25.0
 % Methods can be called in the same way as functions
 ans = multiplyLatBy(a,3)
 
-% The method can also be called using dot notation. In this case, the object 
+% The method can also be called using dot notation. In this case, the object
 % does not need to be passed to the method.
 ans = a.multiplyLatBy(a,1/3)
 
-% Matlab functions can be overloaded to handle objects. 
-% In the method above, we have overloaded how Matlab handles 
+% Matlab functions can be overloaded to handle objects.
+% In the method above, we have overloaded how Matlab handles
 % the addition of two Waypoint objects.
 b = WaypointClass(15.0, 32.0)
 c = a + b

@@ -82,7 +82,7 @@ if someOptionalString != nil {
 someOptionalString = nil
 
 /*
-    Trying to use ! to access a non-existent optional value triggers a runtime 
+    Trying to use ! to access a non-existent optional value triggers a runtime
     error. Always make sure that an optional contains a non-nil value before
     using ! to force-unwrap its value.
 */

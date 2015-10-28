@@ -250,6 +250,6 @@ set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | 
 
 [Display CPU/MEM % in statusbar](https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux)
 
-[tmuxinator - Manage complex tmux sessions](https://github.com/tmuxinator/tmuxinator) 
+[tmuxinator - Manage complex tmux sessions](https://github.com/tmuxinator/tmuxinator)
 
 

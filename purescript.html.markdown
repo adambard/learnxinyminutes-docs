@@ -62,7 +62,7 @@ true && (9 >= 19 || 1 < 2) -- true
 "Hellow\
 \orld" -- "Helloworld"
 -- Multiline string with newlines
-"""Hello 
+"""Hello
 world""" -- "Hello\nworld"
 -- Concatenate
 "such " ++ "amaze" -- "such amaze"
