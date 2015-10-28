@@ -150,6 +150,24 @@ selector {
     min-width: 50mm;  /* millimeters */
     max-width: 5in;   /* inches */
     
+    /* Padding */
+            /*Set internal spacing in container element*/
+    padding:10px 5px 15px 20px;     /* top padding is 10px
+                                    right padding is 5px
+                                    bottom padding is 15px
+                                    left padding is 20px */
+    padding:10px 5px 15px;
+                                    /* top padding is 10px
+                                    right and left padding are 5px
+                                    bottom padding is 15px */
+    padding:10px 5px;
+                                    /* top and bottom padding are 10px
+                                    right and left padding are 5px */
+
+    padding:10px;                   /* all four paddings are 10px */
+    
+    /* Also are padding-left, padding-right, padding-top, padding-bottom */
+    
     /* Colors */
     color: #F6E;                 /* short hex format */
     color: #FF66EE;              /* long hex format */
