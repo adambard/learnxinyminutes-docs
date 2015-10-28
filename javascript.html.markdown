@@ -547,6 +547,11 @@ of the language.
 
 [JavaScript: The Definitive Guide][6] is a classic guide and reference book.
 
+[Eloquent Javascript][8] by Marijn Haverbeke is an excellent JS book/ebook with attached terminal
+
+[Javascript: The Right Way][9] is a guide intended to introduce new developers to JavaScript and help experienced developers learn more about its best practices.
+
+
 In addition to direct contributors to this article, some content is adapted from
 Louie Dinh's Python tutorial on this site, and the [JS Tutorial][7] on the
 Mozilla Developer Network.
@@ -559,3 +564,5 @@ Mozilla Developer Network.
 [5]: http://bonsaiden.github.io/JavaScript-Garden/
 [6]: http://www.amazon.com/gp/product/0596805527/
 [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
+[8]: http://eloquentjavascript.net/
+[9]: http://jstherightway.org/
