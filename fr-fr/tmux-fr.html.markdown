@@ -9,8 +9,8 @@ filename: LearnTmux-fr.txt
 ---
 
 
-[tmux](http://tmux.sourceforge.net) est un multiplexeur de terminal: il permet
-de créer plusieurs terminaux, accédés et contrôlés depuis un seul écran. tmux
+[Tmux](http://tmux.sourceforge.net) est un multiplexeur de terminal: il permet
+de créer plusieurs terminaux, accédés et contrôlés depuis un seul écran. Tmux
 peut être détaché de l'écran tout en continuant de fonctionner en tâche de
 fond, puis rattaché de nouveau.
 
@@ -56,9 +56,9 @@ fond, puis rattaché de nouveau.
 
 ### Raccourcis clavier
 
-Afin de contrôler une session tmux attaché, on utilise une combinaison de
+Afin de contrôler une session tmux attachée, on utilise une combinaison de
 touches appelées 'Préfixe'. Elle doit être pressée afin d'utiliser les
-raccourcis
+raccourcis.
 
 ```
 --------------------------------------------------------------------------------
@@ -131,7 +131,7 @@ démarrage, comme .vimrc ou init.el.
 setw -g utf8 on
 set-option -g status-utf8 on
 
-# Retourner en arrière/Limite de l'historique
+# Retourne en arrière/Limite de l'historique
 set -g history-limit 2048
 
 # Indice de début
@@ -166,7 +166,7 @@ bind F12 set-option -g prefix `
 setw -g mode-keys vi
 set-option -g status-keys vi
 
-# Naviguer entre les panels avec les raccourcis clavier de vim
+# Navigue entre les panels avec les raccourcis clavier de vim
 bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
