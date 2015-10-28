@@ -3,6 +3,7 @@ language: javascript
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
+    - ["David Bailey", "https://tech4david.github.io/"]
 filename: javascript.js
 ---
 
@@ -134,7 +135,7 @@ undefined; // used to indicate a value is not currently present (although
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
 ///////////////////////////////////
-// 2. Variables, Arrays and Objects
+// 2. Variables, Strings, Arrays and Objects
 
 // Variables are declared with the `var` keyword. JavaScript is dynamically
 // typed, so you don't need to specify type. Assignment uses a single `=`
@@ -146,6 +147,11 @@ someOtherVar = 10;
 
 // ...but your variable will be created in the global scope, not in the scope
 // you defined it in.
+
+// If you don't want a variable to be changed, use the `const` keyword. This
+// will only work in ES6 environments.
+const MY_VAR = 2;
+MY_VAR = 3; // won't work
 
 // Variables declared without being assigned to are set to undefined.
 var someThirdVar; // = undefined
@@ -161,6 +167,19 @@ someVar *= 10; // now someVar is 100
 // and an even-shorter-hand for adding or subtracting 1
 someVar++; // now someVar is 101
 someVar--; // back to 100
+
+// There are two types of strings; "normal" strings and template strings.
+var myString = "world"; // "normal" string
+var templateString = `Hello, ${myString}!`; // Hello, world!
+
+// Template strings can contain line breaks and/or other variables, unlike
+// standard strings.
+templateString = `Hello,
+${myString}!`; // this is valid
+
+// Template strings can only be used in ES6 environments, but you can achieve
+// the same effects with a standard string.
+standardString = "Hello, " + myString + "!"; // Hello, world!
 
 // Arrays are ordered lists of values, of any type.
 var myArray = ["Hello", 45, true];
@@ -197,7 +216,34 @@ myObj.myThirdKey = true;
 myObj.myFourthKey; // = undefined
 
 ///////////////////////////////////
-// 3. Logic and Control Structures
+// 3. Modules, Imports and Exports
+
+// In ES6 environments, you can specify variables to export when your script is
+// imported from another script.
+export var myNumber = 42;
+export var otherNumber = 63;
+
+// You can also write the above as follows:
+var myNumber = 42;
+export myNumber;
+
+// To import variables from another script, use `import`.
+import * as numbers from "numbers"; // file imported is numbers.js
+numbers.myNumber === 42; // true
+
+// You can also specific variables/functions.
+import myNumber from "numbers";
+myNumber === 42; // true
+
+// When importing multiple specific variables, surround them with curly braces.
+import {myNumber, otherNumber} from "numbers";
+myNumber + otherNumber === 105; // true
+
+// Remember that modules using the syntax shown above are only supported in ES6
+// environments.
+
+///////////////////////////////////
+// 4. Logic and Control Structures
 
 // The `if` structure works as you'd expect.
 var count = 1;
@@ -280,13 +326,28 @@ switch (grade) {
 
 
 ///////////////////////////////////
-// 4. Functions, Scope and Closures
+// 5. Functions, Scope and Closures
 
 // JavaScript functions are declared with the `function` keyword.
 function myFunction(thing){
     return thing.toUpperCase();
 }
 myFunction("foo"); // = "FOO"
+
+// You can specify a default argument if one isn't given in ES6 environments.
+function sayHello(name="world") {
+    alert(`Hello, ${name}!`);
+}
+sayHello(); // Hello, world!
+sayHello("Alice"); // Hello, Alice!
+
+// ES6 environments also let you use an array items as arguments to a function.
+function sayHello(name1, name2) {
+    alert(`Hello, ${name1}!`);
+    alert(`Hello, ${name2}!`);
+}
+var names = ["Alice", "Bob"];
+sayHello(...names); // Hello, Alice! and Hello, Bob!
 
 // Note that the value to be returned must start on the same line as the
 // `return` keyword, otherwise you'll always return `undefined` due to
@@ -319,6 +380,19 @@ setTimeout(function(){
     // this code will be called in 5 seconds' time
 }, 5000);
 
+// You can also write anonymous functions using arrow syntax in ES6
+// environments. The following is the same as the above.
+setTimeout(() => {
+    // this code will be called in 5 seconds' time
+}, 5000);
+
+// When there is exactly one argument, brackets are not needed.
+var myFunction = name => `Hello, ${name}!`;
+var sameFctn = (name) => `Hello, ${name}!`; // same as above
+
+// Arrow functions will return the expression if there isn't a body surrounded
+// by curly braces.
+
 // JavaScript has function scope; functions get their own scope but other blocks
 // do not.
 if (true){
@@ -338,6 +412,13 @@ i; // = 5 - not undefined as you'd expect in a block-scoped language
 })();
 temporary; // raises ReferenceError
 permanent; // = 10
+
+// However, in ES6 environments you can use the `let` keyword which acts like
+// `var` but always has its own scope.
+if (true){
+    let j = 5;
+}
+j; // error as j is not defined in this scope
 
 // One of JavaScript's most powerful features is closures. If a function is
 // defined inside another function, the inner function has access to all the
@@ -433,6 +514,20 @@ var MyConstructor = function(){
 }
 myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
+
+// In ES6 environments, there is a more simple way to create classes.
+
+class MyConstructor {
+    constructor() {
+        this.myNumber = 5;
+    }
+    alertNumber() {
+        alert(this.myNumber);
+    }
+}
+myNewObj = new MyConstructor(); // = {myNumber: 5}
+myNewObj.myNumber; // = 5
+myNewObj.alertNumber(); // alerts 5
 
 // Every JavaScript object has a 'prototype'. When you go to access a property
 // on an object that doesn't exist on the actual object, the interpreter will
