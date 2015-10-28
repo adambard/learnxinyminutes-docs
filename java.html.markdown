@@ -127,13 +127,13 @@ public class LearnJava {
         // of bytes and are manipulated using functions built into BigInteger
         //
         // BigInteger can be initialized using an array of bytes or a string.
-        
+
         BigInteger fooBigInteger = new BigDecimal(fooByteArray);
 
 
         // BigDecimal - Immutable, arbitrary-precision signed decimal number
         //
-        // A BigDecimal takes two parts: an arbitrary precision integer 
+        // A BigDecimal takes two parts: an arbitrary precision integer
         // unscaled value and a 32-bit integer scale
         //
         // BigDecimal allows the programmer complete control over decimal
@@ -148,7 +148,11 @@ public class LearnJava {
 
 
         // Strings
+        // The biggest thing to remember about strings is that after they
+        // have been created, **they are immutable**. To modify a
+        // string, you must use a secondary string to contain the result.
         String fooString = "My String Is Here!";
+        String fooUpper = fooString.toUpperCase();
 
         // \n is an escaped character that starts a new line
         String barString = "Printing on a new line?\nNo Problem!";
@@ -290,7 +294,7 @@ public class LearnJava {
             // Iterated 10 times, fooFor 0->9
         }
         System.out.println("fooFor Value: " + fooFor);
-        
+
         // Nested For Loop Exit with Label
         outer:
         for (int i = 0; i < 10; i++) {
@@ -301,7 +305,7 @@ public class LearnJava {
             }
           }
         }
-        
+
         // For Each Loop
         // The for loop is also able to iterate over arrays as well as objects
         // that implement the Iterable interface.
@@ -333,7 +337,7 @@ public class LearnJava {
                      break;
         }
         System.out.println("Switch Case Result: " + monthString);
-        
+
         // Starting in Java 7 and above, switching Strings works like this:
         String myAnswer = "maybe";
         switch(myAnswer) {
@@ -452,10 +456,10 @@ class Bicycle {
 
     static String className; // Static class variable
 
-    // Static block 
+    // Static block
     // Java has no implementation of static constructors, but
-    // has a static block that can be used to initialize class variables 
-    // (static variables). 
+    // has a static block that can be used to initialize class variables
+    // (static variables).
     // This block will be called when the class is loaded.
     static {
         className = "Bicycle";
@@ -564,7 +568,7 @@ public interface Digestible {
 
 // We can now create a class that implements both of these interfaces.
 public class Fruit implements Edible, Digestible {
-  
+
     @Override
     public void eat() {
         // ...
@@ -614,7 +618,7 @@ public abstract class Animal
     // Method can have a body
     public void eat()
     {
-        System.out.println("I am an animal and I am Eating.");  
+        System.out.println("I am an animal and I am Eating.");
         // Note: We can access private variable here.
         age = 30;
     }
@@ -626,7 +630,7 @@ public abstract class Animal
 
     public void printAge()
     {
-        System.out.println(age);  
+        System.out.println(age);
     }
 
     // Abstract classes can have main function.
