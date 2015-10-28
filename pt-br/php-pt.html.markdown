@@ -7,7 +7,7 @@ translators:
     - ["Abdala Cerqueira", "http://abda.la"]
     - ["Raquel Diniz", "http://twitter.com/raquelrdiniz"]
 lang: pt-br
-filename: learnphp-pt.php
+filename: php-pt.html.markdown
 ---
 
 Este documento descreve PHP 5+.
@@ -20,21 +20,23 @@ Este documento descreve PHP 5+.
 
 // Duas barras iniciam o comentário de uma linha.
 
-# O hash (aka pound symbol) também inicia, mas // é mais comum
+# O hash (aka pound symbol) também inicia, mas // é mais comum.
 
 /*
      O texto envolto por barra-asterisco e asterisco-barra
-     faz um comentário de múltiplas linhas
+     faz um comentário de múltiplas linhas.
 */
 
-// Utilize "echo" ou "print" para imprimir a saída
-print('Olá '); // Imprime "Olá " sem quebra de linha
+// Utilize "echo" ou "print" para imprimir a saída.
+print('Olá '); // Imprime "Olá " sem quebra de linha.
+print 'Olá '; // Não tem a necessidade de utilizar as chaves.
 
 // () são opcionais para print e echo
-echo "Mundo\n"; // Imprime "Mundo" com quebra de linha
-// (Todas as declarações devem terminar com um ponto e vírgula)
+echo "Mundo\n"; // Imprime "Mundo" com quebra de linha.
+echo ("Mundo\n"); // Podemos tambem utilizar com chaves no echo.
+// (Todas as declarações devem terminar com um ponto e vírgula.)
 
-// Qualquer coisa fora da tag <?php é impresso automaticamente
+// Qualquer coisa fora da tag <?php é impresso automaticamente.
 ?>
 Olá mundo novamente!
 <?php
@@ -48,7 +50,7 @@ Olá mundo novamente!
 // Um nome de variável válido se inicia com uma letra ou sublinhado,
 // seguido por qualquer quantidade de letras, números ou sublinhados.
 
-// Valores booleanos não diferenciam maiúsculo de minúsculo (case-insensitive)
+// Valores booleanos não diferenciam maiúsculo de minúsculo (case-insensitive).
 $boolean = true;  // ou TRUE ou True
 $boolean = false; // ou FALSE ou False
 
@@ -63,8 +65,8 @@ $float = 1.234;
 $float = 1.2e3;
 $float = 7E-10;
 
-// Excluir variável
-unset($int1)
+// Excluir variável.
+unset($int1);
 
 // Aritmética
 $soma      = 1 + 1; // 2
@@ -79,7 +81,7 @@ echo $numero++;    // Imprime 1 (incrementa após a avaliação)
 echo ++$numero;    // Imprime 3 (incrementa antes da avaliação)
 $numero /= $float; // Divide e atribui o quociente de $numero
 
-// Strings podem ser colocadas entre aspas simples
+// Strings podem ser colocadas entre aspas simples.
 $sgl_quotes = '$String'; // => '$String'
 
 // Evite o uso de aspas duplas, exceto para incorporar outras variáveis
