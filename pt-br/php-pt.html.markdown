@@ -139,16 +139,16 @@ $associativo = array('Um' => 1, 'Dois' => 2, 'Tres' => 3);
 // PHP 5.4 introduziu uma nova sintaxe
 $associativo = ['Um' => 1, 'Dois' => 2, 'Tres' => 3];
 
-echo $associativo['Um']; // imprime 1
+echo $associativo['Um']; // Imprime 1.
 
 // Uma lista de literais atribui chaves inteiras implicitamente
 $array = ['Um', 'Dois', 'Tres'];
-echo $array[0]; // => "Um"
+echo $array[0]; // Imprime => "Um"
 
 // Adiciona um elemento no final do array
 $array[] = 'Quatro';
 
-// Remove um elemento do array
+// Remove um elemento do array.
 unset($array[3]);
 
 /********************************
@@ -159,12 +159,12 @@ echo('Olá Mundo!');
 // Imprime Olá Mundo! para stdout.
 // Stdout é uma página web se executado em um navegador.
 
-print('Olá Mundo!'); // O mesmo que o echo
+print('Olá Mundo!'); // O mesmo que o echo.
 
 // echo é atualmente um construtor de linguagem, então você pode 
 // remover os parênteses.
-echo 'Olá Mundo!';
-print 'Olá Mundo!'; // O print também é
+echo 'Olá Mundo!'; // Imprime: Olá Mundo!
+print 'Olá Mundo!'; // O print também é - Imprime: Olá Mundo! 
 
 $paragrafo = 'parágrafo';
 
@@ -185,11 +185,11 @@ $z = &$y;
 // $z irá mudar o valor de $y também, e vice-versa.
 // $x irá permanecer inalterado com o valor original de $y
 
-echo $x; // => 2
-echo $z; // => 2
+echo $x; // Imprime => 2
+echo $z; // Imprime => 2
 $y = 0;
-echo $x; // => 2
-echo $z; // => 0
+echo $x; // Imprime => 2
+echo $z; // Imprime => 0
 
 // Despeja tipos e valores de variável para o stdout
 var_dump($z); // imprime int(0)
@@ -226,13 +226,13 @@ assert(1 !== '1');
 // As variáveis podem ser convertidas entre tipos, dependendo da sua utilização.
 
 $inteiro = 1;
-echo $inteiro + $inteiro; // => 2
+echo $inteiro + $inteiro; // Imprime => 2
 
 $string = '1';
-echo $string + $string; // => 2 (strings são coagidas para inteiros)
+echo $string + $string; // Imprime => 2 (strings são coagidas para inteiros)
 
 $string = 'one';
-echo $string + $string; // => 0
+echo $string + $string; // Imprime => 0
 // Imprime 0 porque o operador + não pode fundir a string 'um' para um número
 
 // Tipo de fundição pode ser utilizado para tratar uma variável 
