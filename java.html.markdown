@@ -720,7 +720,7 @@ The links provided here below are just to get an understanding of the topic, fee
 
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
 
-* [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+* [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
 
 **Online Practice and Tutorials**
 
