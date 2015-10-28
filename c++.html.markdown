@@ -582,6 +582,43 @@ int main()
               << "name: " << std::get<2>(student) << '\n';
 }
 
+//////////////////////////
+// Date and time utilities
+//////////////////////////
+
+// C++ includes support for two types of time manipulation:
+//
+//      The chrono library, a flexible collection of types that track time with 
+//      varying degrees of precision (e.g. std::chrono::time_point).
+//
+//      C-style date and time library (e.g. std::time)
+
+#include <iostream>
+#include <chrono>       
+#include <ctime>
+
+// random function for computations
+long fibonacci(unsigned n)
+{
+    if (n < 2) return n;
+    return fibonacci(n-1) + fibonacci(n-2);
+}
+ 
+int main()
+{
+    std::chrono::time_point<std::chrono::system_clock> start, end;
+    
+    start = std::chrono::system_clock::now();
+    std::cout << "f(42) = " << fibonacci(42) << '\n';
+    end = std::chrono::system_clock::now();
+ 
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+ 
+    std::cout << "finished computation at " << std::ctime(&end_time)
+              << "elapsed time: " << elapsed_seconds.count() << "s\n";
+}
+
 
 /////////////////////
 // Templates
