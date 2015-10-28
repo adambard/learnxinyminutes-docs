@@ -123,6 +123,9 @@ not False  # => True
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
 
+# You can find the length of a string
+len("This is a string")  # => 16
+
 # % can be used to format strings, like this:
 "%s can be %s" % ("strings", "interpolated")
 
