@@ -5,12 +5,15 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Jelle Besseling", "https://github.com/Jell-E"]
+    - ["Stef van der Linde", "https://github.com/StefLinde"]
 lang: nl-nl
 ---
 
 Brainfuck (schrijf je niet met een hoofdletter behalve aan het begin van een
 zin) is een extreem
-minimalistische Turing-complete programmeertaal met maar acht commando's.
+minimalistische Turng-complete programmeertaal met maar acht commando's.
+
+Je kan brainfuck proberen in je browser met [brainfuck-visualizer](http://fatiherikli.github.io/brainfuck-visualizer/).
 
 ```
 Elk karakter behalve "><+-.,[]" (en de quotes) wordt genegeerd.
