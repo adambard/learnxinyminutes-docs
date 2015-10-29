@@ -4,17 +4,18 @@ filename: learnxml.xml
 contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
   - ["Rachel Stiyer", "https://github.com/rstiyer"]
+  - ["John Tyndall", "https://github.com/jbtyndall"]
 ---
 
-XML is a markup language designed to store and transport data.
+XML is a markup language designed to describe data.
 
-Unlike HTML, XML does not specify how to display or to format data, it just carries it.
+Unlike HTML, XML does not specify how to display or format data; it is a representation of data that allows it to be stored, transported, and shared via independent means.
 
-* XML Syntax
+## XML Syntax
+
+An XML document is an *ordered*, labeled tree comprised of **nodes** (i.e., **elements**).
 
 ```xml
-<!-- Comments in XML are like this -->
-
 <?xml version="1.0" encoding="UTF-8"?>
 <bookstore>
   <book category="COOKING">
@@ -37,51 +38,33 @@ Unlike HTML, XML does not specify how to display or to format data, it just carr
   </book>
 </bookstore>
 
-<!-- Above is a typical XML file.
-  It starts with a declaration, informing some metadata (optional).
-
-  XML uses a tree structure. Above, the root node is 'bookstore', which has
-  three child nodes, all 'books'. Those nodes have more child nodes (or
-  children), and so on...
-
-  Nodes are created using open/close tags, and children are just nodes between
-  the open and close tags.-->
-
-
-<!-- XML carries two kinds of data:
-  1 - Attributes -> That's metadata about a node.
-      Usually, the XML parser uses this information to store the data properly.
-      It is characterized by appearing with the format name="value" within the opening
-      tag.
-  2 - Elements -> That's pure data.
-      That's what the parser will retrieve from the XML file.
-      Elements appear between the open and close tags. -->
-
-
-<!-- Below, an element with two attributes -->
-<file type="gif" id="4293">computer.gif</file>
-
-
+<!-- This is a comment in XML -->
 ```
+In the XML above, the first line is the  **declaration**, which gives an XML parser information about the XML document. Declarations are optional, but must be the first line if included.
 
-* Well-Formated Document x Validation
+Each XML document has a unique **root** element, which is the **parent** element of all other elements.
+* e.g., `<bookstore>` is the root element
 
-An XML document is well-formatted if it is syntactically correct.
-However, it is possible to inject more constraints in the document,
-using document definitions, such as DTD and  XML Schema.
+Elements can have **child** elements.
+* e.g., `<bookstore>` has 3 children (of type `<book>`); these children have their own children (`<title>`, `<author>`, etc.).
 
-An XML document which follows a document definition is called valid,
-in regards to that document.
+### Elements and Attributes
 
-With this tool, you can check the XML data outside the application logic.
+Data can be represented in one of two ways:
+* **Elements** &mdash; named tags that can contain text, attributes, other elements, or nothing (i.e., an empty element).
+* **Attributes** &mdash; data related to a specific element.
 
 ```xml
+<title lang="en">Everyday Italian</title>
+```
+This element has an opening (`<title>`) and closing (`</title>`) tag; its value is everything between these tags (`Everyday Italian`).
 
-<!-- Below, you can see an simplified version of bookstore document,
-  with the addition of DTD definition.-->
+The element has one attribute, `lang`; the attribute's value (always denoted by quotes) is `en`.
 
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE note SYSTEM "Bookstore.dtd">
+## Well-Formed and Valid XML
+
+An XML document is **well-formed** if it conforms to basic XML syntax rules:
+```xml
 <bookstore>
   <book category="COOKING">
     <title>Everyday Italian</title>
@@ -89,37 +72,41 @@ With this tool, you can check the XML data outside the application logic.
   </book>
 </bookstore>
 
-<!-- This DTD could be something like:-->
+<!-- This XML document is well-formed because it has a single root as well as opening and closing tags nested in the proper order. -->
+```
 
-<!DOCTYPE note
-[
-<!ELEMENT bookstore (book+)>
-<!ELEMENT book (title,price)>
-<!ATTLIST book category CDATA "Literature">
-<!ELEMENT title (#PCDATA)>
-<!ELEMENT price (#PCDATA)>
-]>
+Well-formed XML can still contain semantic errors or inconsistencies:
 
+```xml
+<bookstore>
+  <book category="COOKING">
+    <title>Everyday Italian</title>
+    <price>30.00</price>
+  </book>
+  <book category="CHILDREN">
+    <title lang="en">Harry Potter</title>
+    <author>J K. Rowling</author>
+    <price>29.99</price>
+    <year>2005</year>
+  </book>
+</bookstore>
 
-<!-- The DTD starts with a declaration.
-  Following, the root node is declared, requiring 1 or more child nodes 'book'.
-  Each 'book' should contain exactly one 'title' and 'price' and an attribute
-  called 'category', with "Literature" as its default value.
-  The 'title' and 'price' nodes contain a parsed character data.-->
+<!-- This XML document is well-formed; however, the book elements are inconsistent. -->
+```
+The structure of XML documents can be standardized (or defined), allowing them to be transferred and stored in an expected format. Well-formed XML documents are **valid** if they follow the rules of these definitions.
 
-<!-- The DTD could be declared inside the XML file itself.-->
+###Document Type Definition (DTD)
 
+The following simplified `<bookstore>` XML document uses a Document Type Definition (DTD) to define its structure: 
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE note
-[
+<!DOCTYPE bookstore [
 <!ELEMENT bookstore (book+)>
 <!ELEMENT book (title,price)>
 <!ATTLIST book category CDATA "Literature">
 <!ELEMENT title (#PCDATA)>
 <!ELEMENT price (#PCDATA)>
 ]>
-
 <bookstore>
   <book category="COOKING">
     <title>Everyday Italian</title>
@@ -127,3 +114,41 @@ With this tool, you can check the XML data outside the application logic.
   </book>
 </bookstore>
 ```
+The DTD specifies the following about `<bookstore>` XML documents:
+* The root element must be `<bookstore>`
+* The `<bookstore>` element can have 1 or more `<book>` child elements
+* Each `<book>` element must contain exactly 1 `<title>` and `<price>` element
+* Each `<book>` element must have a `<category>` attribute; the default value is `Literature`
+* The `<title>` and `<price>` elements contain *parsed character data*.
+
+The DTD is considered **internal** since it is defined within the `<bookstore>` XML document.
+
+An **external** DTD means that the DTD is declared in a separate file (e.g., `bookstore.dtd`):
+
+```xml
+<!ELEMENT bookstore (book+)>
+<!ELEMENT book (title,price)>
+<!ATTLIST book category CDATA "Literature">
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+
+```
+The DTD is referenced in the XML document as follows:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bookstore SYSTEM "bookstore.dtd">
+<bookstore>
+  <book category="COOKING">
+    <title>Everyday Italian</title>
+    <price>30.00</price>
+  </book>
+</bookstore>
+```
+
+## Resources
+* [Validate an XML File](http://www.xmlvalidation.com)
+
+## Further Reading
+* [XML Tutorial](http://www.w3schools.com/xml)
+* [Extensible Markup Language (XML)](http://www.w3.org/TR/xml)
+* [XML Path Language (XPath)](http://www.w3.org/TR/xpath)
