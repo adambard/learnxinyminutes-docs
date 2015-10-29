@@ -186,9 +186,9 @@ public class LearnJava {
         //               operations perform as could be expected for a
         //               doubly-linked list.
         // Maps - A set of objects that map keys to values. Map is
-	//        an interface and therefore cannot be instantiated.
-	//        The type of keys and values contained in a Map must
-	//        be specified upon instantiation of the implementing
+        //        an interface and therefore cannot be instantiated.
+        //        The type of keys and values contained in a Map must
+        //        be specified upon instantiation of the implementing
         //        class. Each key may map to only one corresponding value,
         //        and each key may appear only once (no duplicates).
         // HashMaps - This class uses a hashtable to implement the Map
@@ -449,6 +449,17 @@ class Bicycle {
     private int speed;  // Private: Only accessible from within the class
     protected int gear; // Protected: Accessible from the class and subclasses
     String name; // default: Only accessible from within this package
+
+    static String className; // Static class variable
+
+    // Static block 
+    // Java has no implementation of static constructors, but
+    // has a static block that can be used to initialize class variables 
+    // (static variables). 
+    // This block will be called when the class is loaded.
+    static {
+        className = "Bicycle";
+    }
 
     // Constructors are a way of creating classes
     // This is a constructor
@@ -767,7 +778,7 @@ The links provided here below are just to get an understanding of the topic, fee
 
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
 
-* [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+* [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
 
 **Online Practice and Tutorials**
 
