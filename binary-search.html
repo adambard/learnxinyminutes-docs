@@ -32,27 +32,24 @@ def search(arr, x):
     return -1
 
 ```
-## binary Search Algorithm
+## Binary Search Algorithm
 
 The basic requirement for binary search to work is that the data to search should be sorted (in any order).
-### Types of functions, limits, and simplification
-
-
-*Example 2*
-
-Is `f(n)` O(g(n))?
-Is `3 * n^2` O(n)?
-Let's look at the definition of Big-O.
+### Algo
 
 ```
-3 * n^2 <= c * n
+The idea of binary search is to use the information that the array is sorted and reduce the time complexity to O(Logn). We basically ignore half of the elements just after one comparison.
+1) Compare x with the middle element.
+2) If x matches with middle element, we return the mid index.
+3) Else If x is greater than the mid element, then x can only lie in right half subarray after the mid element. So we recur for right half.
+4) Else (x is smaller) recur for the left half.
+Following is Recursive implementation of Binary Search.
+
 ```
-
-
-
-`f(n)` is Ω(g(n)), if for any real constant c (c > 0), `f(n)` is >= `c g(n)` for every input size n (n > 0).
 
 ### Ending Notes
+
+There is another form of binary search that is very useful.
 
 ## Books
 
