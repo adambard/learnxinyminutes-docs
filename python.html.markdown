@@ -37,91 +37,91 @@ allow you to write Python 3 code that will run on Python 2, so check out the Pyt
 ####################################################
 
 # You have numbers
-3  # => 3
+3         # => 3
 
 # Math is what you would expect
-1 + 1  # => 2
-8 - 1  # => 7
-10 * 2  # => 20
-35 / 5  # => 7
+1 + 1     # => 2
+8 - 1     # => 7
+10 * 2    # => 20
+35 / 5    # => 7
 
 # Division is a bit tricky. It is integer division and floors the results
 # automatically.
-5 / 2  # => 2
+5 / 2     # => 2
 
 # To fix division we need to learn about floats.
-2.0     # This is a float
-11.0 / 4.0  # => 2.75 ahhh...much better
+2.0           # This is a float
+11.0 / 4.0    # => 2.75 ahhh...much better
 
 # Result of integer division truncated down both for positive and negative.
-5 // 3     # => 1
-5.0 // 3.0 # => 1.0 # works on floats too
--5 // 3  # => -2
--5.0 // 3.0 # => -2.0
+5 // 3        # => 1
+5.0 // 3.0    # => 1.0 # works on floats too
+-5 // 3       # => -2
+-5.0 // 3.0   # => -2.0
 
 # Note that we can also import division module(Section 6 Modules)
 # to carry out normal division with just one '/'.
 from __future__ import division
 11/4    # => 2.75  ...normal division
-11//4   # => 2 ...floored division  
+11//4   # => 2 ...floored division
 
 # Modulo operation
-7 % 3 # => 1
+7 % 3   # => 1
 
 # Exponentiation (x to the yth power)
-2**4 # => 16
+2**4    # => 16
 
 # Enforce precedence with parentheses
-(1 + 3) * 2  # => 8
+(1 + 3) * 2    # => 8
 
 # Boolean Operators
 # Note "and" and "or" are case-sensitive
-True and False #=> False
-False or True #=> True
+True and False    # => False
+False or True     # => True
 
 # Note using Bool operators with ints
-0 and 2 #=> 0
--5 or 0 #=> -5
-0 == False #=> True
-2 == True #=> False
-1 == True #=> True
+0 and 2       # => 0
+-5 or 0       # => -5
+0 == False    # => True
+2 == True     # => False
+1 == True     # => True
 
 # negate with not
-not True  # => False
-not False  # => True
+not True      # => False
+not False     # => True
 
 # Equality is ==
-1 == 1  # => True
-2 == 1  # => False
+1 == 1    # => True
+2 == 1    # => False
 
 # Inequality is !=
-1 != 1  # => False
-2 != 1  # => True
+1 != 1    # => False
+2 != 1    # => True
 
 # More comparisons
-1 < 10  # => True
-1 > 10  # => False
-2 <= 2  # => True
-2 >= 2  # => True
+1 < 10    # => True
+1 > 10    # => False
+2 <= 2    # => True
+2 >= 2    # => True
 
 # Comparisons can be chained!
-1 < 2 < 3  # => True
-2 < 3 < 2  # => False
+1 < 2 < 3    # => True
+2 < 3 < 2    # => False
 
 # Strings are created with " or '
 "This is a string."
 'This is also a string.'
 
 # Strings can be added too!
-"Hello " + "world!"  # => "Hello world!"
+"Hello " + "world!"    # => "Hello world!"
 # Strings can be added without using '+'
-"Hello " "world!"  # => "Hello world!"
+"Hello " "world!"      # => "Hello world!"
 
 # ... or multiplied
-"Hello" * 3  # => "HelloHelloHello"
+"Hello" * 3    # => "HelloHelloHello"
 
 # A string can be treated like a list of characters
-"This is a string"[0]  # => 'T'
+"This is a string"[0]    # => 'T'
 
 # % can be used to format strings, like this:
 "%s can be %s" % ("strings", "interpolated")
@@ -133,12 +133,12 @@ not False  # => True
 "{name} wants to eat {food}".format(name="Bob", food="lasagna")
 
 # None is an object
-None  # => None
+None    # => None
 
 # Don't use the equality "==" symbol to compare objects to None
 # Use "is" instead
-"etc" is None  # => False
-None is None  # => True
+"etc" is None    # => False
+None is None     # => True
 
 # The 'is' operator tests for object identity. This isn't
 # very useful when dealing with primitive values, but is
@@ -146,8 +146,8 @@ None is None  # => True
 
 # None, 0, and empty strings/lists all evaluate to False.
 # All other values are True
-bool(0)  # => False
-bool("")  # => False
+bool(0)     # => False
+bool("")    # => False
 
 
 ####################################################
@@ -155,17 +155,17 @@ bool("")  # => False
 ####################################################
 
 # Python has a print statement
-print "I'm Python. Nice to meet you!" # => I'm Python. Nice to meet you!
+print "I'm Python. Nice to meet you!"    # => I'm Python. Nice to meet you!
 
 # Simple way to get input data from console
-input_string_var = raw_input("Enter some data: ") # Returns the data as a string
-input_var = input("Enter some data: ") # Evaluates the data as python code
+input_string_var = raw_input("Enter some data: ")    # Returns the data as a string
+input_var = input("Enter some data: ")               # Evaluates the data as python code
 # Warning: Caution is recommended for input() method usage
 # Note: In python 3, input() is deprecated and raw_input() is renamed to input()
 
 # No need to declare variables before assigning to them.
 some_var = 5    # Convention is to use lower_case_with_underscores
-some_var  # => 5
+some_var        # => 5
 
 # Accessing a previously unassigned variable is an exception.
 # See Control Flow to learn more about exception handling.
@@ -173,7 +173,7 @@ some_other_var  # Raises a name error
 
 # if can be used as an expression
 # Equivalent of C's '?:' ternary operator
-"yahoo!" if 3 > 2 else 2  # => "yahoo!"
+"yahoo!" if 3 > 2 else 2    # => "yahoo!"
 
 # Lists store sequences
 li = []
@@ -191,76 +191,76 @@ li.pop()        # => 3 and li is now [1, 2, 4]
 li.append(3)    # li is now [1, 2, 4, 3] again.
 
 # Access a list like you would any array
-li[0]  # => 1
+li[0]           # => 1
 # Assign new values to indexes that have already been initialized with =
 li[0] = 42
-li[0]  # => 42
-li[0] = 1  # Note: setting it back to the original value
+li[0]           # => 42
+li[0] = 1       # Note: setting it back to the original value
 # Look at the last element
-li[-1]  # => 3
+li[-1]          # => 3
 
 # Looking out of bounds is an IndexError
-li[4]  # Raises an IndexError
+li[4]           # Raises an IndexError
 
 # You can look at ranges with slice syntax.
 # (It's a closed/open range for you mathy types.)
-li[1:3]  # => [2, 4]
+li[1:3]         # => [2, 4]
 # Omit the beginning
-li[2:]  # => [4, 3]
+li[2:]          # => [4, 3]
 # Omit the end
-li[:3]  # => [1, 2, 4]
+li[:3]          # => [1, 2, 4]
 # Select every second entry
-li[::2]   # =>[1, 4]
+li[::2]         # =>[1, 4]
 # Reverse a copy of the list
-li[::-1]   # => [3, 4, 2, 1]
+li[::-1]        # => [3, 4, 2, 1]
 # Use any combination of these to make advanced slices
 # li[start:end:step]
 
 # Remove arbitrary elements from a list with "del"
-del li[2]   # li is now [1, 2, 3]
+del li[2]       # li is now [1, 2, 3]
 
 # You can add lists
 li + other_li   # => [1, 2, 3, 4, 5, 6]
 # Note: values for li and for other_li are not modified.
 
 # Concatenate lists with "extend()"
-li.extend(other_li)   # Now li is [1, 2, 3, 4, 5, 6]
+li.extend(other_li)    # Now li is [1, 2, 3, 4, 5, 6]
 
 # Remove first occurrence of a value
-li.remove(2)  # li is now [1, 3, 4, 5, 6]
-li.remove(2)  # Raises a ValueError as 2 is not in the list
+li.remove(2)       # li is now [1, 3, 4, 5, 6]
+li.remove(2)       # Raises a ValueError as 2 is not in the list
 
 # Insert an element at a specific index
-li.insert(1, 2)  # li is now [1, 2, 3, 4, 5, 6] again
+li.insert(1, 2)    # li is now [1, 2, 3, 4, 5, 6] again
 
 # Get the index of the first item found
-li.index(2)  # => 3
-li.index(7)  # Raises a ValueError as 7 is not in the list
+li.index(2)        # => 3
+li.index(7)        # Raises a ValueError as 7 is not in the list
 
 # Check for existence in a list with "in"
-1 in li   # => True
+1 in li            # => True
 
 # Examine the length with "len()"
-len(li)   # => 6
+len(li)            # => 6
 
 
 # Tuples are like lists but are immutable.
 tup = (1, 2, 3)
-tup[0]   # => 1
-tup[0] = 3  # Raises a TypeError
+tup[0]             # => 1
+tup[0] = 3         # Raises a TypeError
 
 # You can do all those list thingies on tuples too
-len(tup)   # => 3
-tup + (4, 5, 6)   # => (1, 2, 3, 4, 5, 6)
-tup[:2]   # => (1, 2)
-2 in tup   # => True
+len(tup)           # => 3
+tup + (4, 5, 6)    # => (1, 2, 3, 4, 5, 6)
+tup[:2]            # => (1, 2)
+2 in tup           # => True
 
 # You can unpack tuples (or lists) into variables
-a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
+a, b, c = (1, 2, 3)    # a is now 1, b is now 2 and c is now 3
 # Tuples are created by default if you leave out the parentheses
 d, e, f = 4, 5, 6
 # Now look how easy it is to swap two values
-e, d = d, e     # d is now 5 and e is now 4
+e, d = d, e            # d is now 5 and e is now 4
 
 
 # Dictionaries store mappings
@@ -269,77 +269,77 @@ empty_dict = {}
 filled_dict = {"one": 1, "two": 2, "three": 3}
 
 # Look up values with []
-filled_dict["one"]   # => 1
+filled_dict["one"]      # => 1
 
 # Get all keys as a list with "keys()"
-filled_dict.keys()   # => ["three", "two", "one"]
+filled_dict.keys()      # => ["three", "two", "one"]
 # Note - Dictionary key ordering is not guaranteed.
 # Your results might not match this exactly.
 
 # Get all values as a list with "values()"
-filled_dict.values()   # => [3, 2, 1]
+filled_dict.values()    # => [3, 2, 1]
 # Note - Same as above regarding key ordering.
 
 # Check for existence of keys in a dictionary with "in"
-"one" in filled_dict   # => True
-1 in filled_dict   # => False
+"one" in filled_dict    # => True
+1 in filled_dict        # => False
 
 # Looking up a non-existing key is a KeyError
-filled_dict["four"]   # KeyError
+filled_dict["four"]     # KeyError
 
 # Use "get()" method to avoid the KeyError
-filled_dict.get("one")   # => 1
-filled_dict.get("four")   # => None
+filled_dict.get("one")        # => 1
+filled_dict.get("four")       # => None
 # The get method supports a default argument when the value is missing
-filled_dict.get("one", 4)   # => 1
-filled_dict.get("four", 4)   # => 4
+filled_dict.get("one", 4)     # => 1
+filled_dict.get("four", 4)    # => 4
 # note that filled_dict.get("four") is still => None
 # (get doesn't set the value in the dictionary)
 
 # set the value of a key with a syntax similar to lists
-filled_dict["four"] = 4  # now, filled_dict["four"] => 4
+filled_dict["four"] = 4       # now, filled_dict["four"] => 4
 
 # "setdefault()" inserts into a dictionary only if the given key isn't present
-filled_dict.setdefault("five", 5)  # filled_dict["five"] is set to 5
-filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5
+filled_dict.setdefault("five", 5)    # filled_dict["five"] is set to 5
+filled_dict.setdefault("five", 6)    # filled_dict["five"] is still 5
 
 
 # Sets store ... well sets (which are like lists but can contain no duplicates)
 empty_set = set()
 # Initialize a "set()" with a bunch of values
-some_set = set([1, 2, 2, 3, 4])   # some_set is now set([1, 2, 3, 4])
+some_set = set([1, 2, 2, 3, 4])       # some_set is now set([1, 2, 3, 4])
 
 # order is not guaranteed, even though it may sometimes look sorted
-another_set = set([4, 3, 2, 2, 1])  # another_set is now set([1, 2, 3, 4])
+another_set = set([4, 3, 2, 2, 1])    # another_set is now set([1, 2, 3, 4])
 
 # Since Python 2.7, {} can be used to declare a set
-filled_set = {1, 2, 2, 3, 4}   # => {1, 2, 3, 4}
+filled_set = {1, 2, 2, 3, 4}          # => {1, 2, 3, 4}
 
 # Add more items to a set
-filled_set.add(5)   # filled_set is now {1, 2, 3, 4, 5}
+filled_set.add(5)                     # filled_set is now {1, 2, 3, 4, 5}
 
 # Do set intersection with &
 other_set = {3, 4, 5, 6}
-filled_set & other_set   # => {3, 4, 5}
+filled_set & other_set                # => {3, 4, 5}
 
 # Do set union with |
-filled_set | other_set   # => {1, 2, 3, 4, 5, 6}
+filled_set | other_set                # => {1, 2, 3, 4, 5, 6}
 
 # Do set difference with -
-{1, 2, 3, 4} - {2, 3, 5}   # => {1, 4}
+{1, 2, 3, 4} - {2, 3, 5}              # => {1, 4}
 
 # Do set symmetric difference with ^
-{1, 2, 3, 4} ^ {2, 3, 5}  # => {1, 4, 5}
+{1, 2, 3, 4} ^ {2, 3, 5}              # => {1, 4, 5}
 
 # Check if set on the left is a superset of set on the right
-{1, 2} >= {1, 2, 3} # => False
+{1, 2} >= {1, 2, 3}                   # => False
 
 # Check if set on the left is a subset of set on the right
-{1, 2} <= {1, 2, 3} # => True
+{1, 2} <= {1, 2, 3}                   # => True
 
 # Check for existence in a set with in
-2 in filled_set   # => True
-10 in filled_set   # => False
+2 in filled_set                       # => True
+10 in filled_set                      # => False
 
 
 ####################################################
@@ -437,10 +437,10 @@ def add(x, y):
     return x + y    # Return values with a return statement
 
 # Calling functions with parameters
-add(5, 6)   # => prints out "x is 5 and y is 6" and returns 11
+add(5, 6)           # => prints out "x is 5 and y is 6" and returns 11
 
 # Another way to call functions is with keyword arguments
-add(y=6, x=5)   # Keyword arguments can arrive in any order.
+add(y=6, x=5)       # Keyword arguments can arrive in any order.
 
 
 # You can define functions that take a variable number of
@@ -448,7 +448,7 @@ add(y=6, x=5)   # Keyword arguments can arrive in any order.
 def varargs(*args):
     return args
 
-varargs(1, 2, 3)   # => (1, 2, 3)
+varargs(1, 2, 3)    # => (1, 2, 3)
 
 
 # You can define functions that take a variable number of
@@ -457,7 +457,7 @@ def keyword_args(**kwargs):
     return kwargs
 
 # Let's call it to see what happens
-keyword_args(big="foot", loch="ness")   # => {"big": "foot", "loch": "ness"}
+keyword_args(big="foot", loch="ness")    # => {"big": "foot", "loch": "ness"}
 
 
 # You can do both at once, if you like
@@ -474,9 +474,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # Use * to expand positional args and use ** to expand keyword args.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args)   # equivalent to foo(1, 2, 3, 4)
-all_the_args(**kwargs)   # equivalent to foo(a=3, b=4)
-all_the_args(*args, **kwargs)   # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args)              # equivalent to foo(1, 2, 3, 4)
+all_the_args(**kwargs)           # equivalent to foo(a=3, b=4)
+all_the_args(*args, **kwargs)    # equivalent to foo(1, 2, 3, 4, a=3, b=4)
 
 # you can pass args and kwargs along to other functions that take args/kwargs
 # by expanding them with * and ** respectively
@@ -509,21 +509,21 @@ def create_adder(x):
     return adder
 
 add_10 = create_adder(10)
-add_10(3)   # => 13
+add_10(3)    # => 13
 
 # There are also anonymous functions
-(lambda x: x > 2)(3)   # => True
-(lambda x, y: x ** 2 + y ** 2)(2, 1) # => 5
+(lambda x: x > 2)(3)                    # => True
+(lambda x, y: x ** 2 + y ** 2)(2, 1)    # => 5
 
 # There are built-in higher order functions
-map(add_10, [1, 2, 3])   # => [11, 12, 13]
-map(max, [1, 2, 3], [4, 2, 1])   # => [4, 2, 3]
+map(add_10, [1, 2, 3])                  # => [11, 12, 13]
+map(max, [1, 2, 3], [4, 2, 1])          # => [4, 2, 3]
 
-filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
+filter(lambda x: x > 5, [3, 4, 5, 6, 7])    # => [6, 7]
 
 # We can use list comprehensions for nice maps and filters
-[add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
-[x for x in [3, 4, 5, 6, 7] if x > 5]   # => [6, 7]
+[add_10(i) for i in [1, 2, 3]]              # => [11, 12, 13]
+[x for x in [3, 4, 5, 6, 7] if x > 5]       # => [6, 7]
 
 
 ####################################################
@@ -589,15 +589,15 @@ j = Human("Joel")
 print j.say("hello")  # prints out "Joel: hello"
 
 # Call our class method
-i.get_species()   # => "H. sapiens"
+i.get_species()       # => "H. sapiens"
 
 # Change the shared attribute
 Human.species = "H. neanderthalensis"
-i.get_species()   # => "H. neanderthalensis"
-j.get_species()   # => "H. neanderthalensis"
+i.get_species()       # => "H. neanderthalensis"
+j.get_species()       # => "H. neanderthalensis"
 
 # Call the static method
-Human.grunt()   # => "*grunt*"
+Human.grunt()         # => "*grunt*"
 
 # Update the property
 i.age = 42
@@ -607,7 +607,7 @@ i.age # => 42
 
 # Delete the property
 del i.age
-i.age  # => raises an AttributeError
+i.age                 # => raises an AttributeError
 
 
 ####################################################
@@ -616,12 +616,12 @@ i.age  # => raises an AttributeError
 
 # You can import modules
 import math
-print math.sqrt(16)  # => 4
+print math.sqrt(16)    # => 4
 
 # You can get specific functions from a module
 from math import ceil, floor
-print ceil(3.7)  # => 4.0
-print floor(3.7)   # => 3.0
+print ceil(3.7)        # => 4.0
+print floor(3.7)       # => 3.0
 
 # You can import all functions from a module.
 # Warning: this is not recommended
@@ -629,10 +629,10 @@ from math import *
 
 # You can shorten module names
 import math as m
-math.sqrt(16) == m.sqrt(16)   # => True
+math.sqrt(16) == m.sqrt(16)    # => True
 # you can also test that the functions are equivalent
 from math import sqrt
-math.sqrt == m.sqrt == sqrt  # => True
+math.sqrt == m.sqrt == sqrt    # => True
 
 # Python modules are just ordinary python files. You
 # can write your own, and import them. The name of the
