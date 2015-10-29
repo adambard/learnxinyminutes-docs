@@ -63,7 +63,7 @@ allow you to write Python 3 code that will run on Python 2, so check out the Pyt
 # to carry out normal division with just one '/'.
 from __future__ import division
 11/4    # => 2.75  ...normal division
-11//4   # => 2 ...floored division  
+11//4   # => 2 ...floored division
 
 # Modulo operation
 7 % 3 # => 1
@@ -144,8 +144,16 @@ None is None  # => True
 # very useful when dealing with primitive values, but is
 # very useful when dealing with objects.
 
-# None, 0, and empty strings/lists all evaluate to False.
-# All other values are True
+# Any object can be used in a Boolean context.
+# The following values are considered falsey:
+#    - None
+#    - zero of any numeric type (e.g., 0, 0L, 0.0, 0j)
+#    - empty sequences (e.g., '', (), [])
+#    - empty containers (e.g., {}, set())
+#    - instances of user-defined classes meeting certain conditions
+#      see: https://docs.python.org/2/reference/datamodel.html#object.__nonzero__
+#
+# All other values are truthy (using the bool() function on them returns True).
 bool(0)  # => False
 bool("")  # => False
 
