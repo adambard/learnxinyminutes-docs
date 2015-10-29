@@ -483,7 +483,7 @@ echo MyClass::MY_CONST;    // Выведет 'value';
 echo MyClass::$staticVar;  // Выведет 'static';
 MyClass::myStaticMethod(); // Выведет 'I am static';
 
-// Новый экземпляр класса используя new
+// Создание нового экземпляра класса используя new
 $my_class = new MyClass('An instance property');
 
 // Если аргументы отсутствуют, можно не ставить круглые скобки
