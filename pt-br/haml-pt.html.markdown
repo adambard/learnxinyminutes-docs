@@ -6,8 +6,7 @@ contributors:
 translators:
   - ["Cássio Böck", "https://github.com/cassiobsilva"]
 ---
-
-Haml is a markup language predominantly used with Ruby that cleanly and simply describes the HTML of any web document without the use of inline code. It is a popular alternative to using Rails templating language (.erb) and allows you to embed Ruby code into your markup.
+Haml é uma linguagem de marcação predominantemente usada em conjunto com Ruby, ela descrever de forma simples e clara o código HTML das páginas sem a utilização de código inline. É uma alternativa popular ao uso da linguagem de templating (.erb) e que permite o uso de código Ruby em sua marcação.
 
 It aims to reduce repetition in your markup by closing tags for you based on the structure of the indents in your code. The result is markup that is well-structured, DRY, logical, and easier to read.
 
