@@ -256,3 +256,6 @@ void main() {
 
 
 ```
+
+## Further Reading
+[Programming in D](https://gumroad.com/l/PinD)
