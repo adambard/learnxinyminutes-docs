@@ -11,10 +11,10 @@ filename: haskell-de.hs
 
 Haskell wurde als praktische und funktionale Sprache entworfen.
 Es ist berühmt für das Schema der Monaden und des Typsystems, aber
-es sticht vor allem die Einfachheit und Eleganz hervor.
+es sticht vor allem durch seine Einfachheit und Eleganz hervor.
 
 ```haskell
--- Einfache Kommentare beginnen mit 2 Bindestriche.
+-- Einfache Kommentare beginnen mit 2 Bindestrichen.
 {- So wird ein Kommentar
 über mehrere Zeilen angelegt.
 -}
@@ -49,7 +49,7 @@ not False -- True
 1 /= 1 -- False
 1 < 10 -- True
 
--- `not` ist eine Funktion die ein Argument entgegenimmt.
+-- `not` ist eine Funktion die ein Argument entgegennimmt.
 -- Haskell benötigt keine Klammern um Argumente.
 -- Sie werden einfach aufgelistet: func arg1 arg2 arg3...
 -- Wie man Funktionen definiert kommt weiter unten.
@@ -76,26 +76,26 @@ not False -- True
 [1, 2, 3, 4, 5]
 [1..5]
 
--- Haskell unterstuetzt unendliche Listen!
-[1..] -- Die Liste aller natuerlichen Zahlen
+-- Haskell unterstützt unendliche Listen!
+[1..] -- Die Liste aller natürlichen Zahlen
 
 -- Unendliche Listen funktionieren in Haskell, da es "lazy evaluation"
--- unterstuetzt. Haskell evaluiert erst etwas, wenn es benötigt wird.
+-- unterstützt. Haskell evaluiert erst etwas, wenn es benötigt wird.
 -- Somit kannst du nach dem 1000. Element fragen und Haskell gibt es dir:
 
 [1..] !! 999 -- 1000
 
 -- Haskell evaluiert nun die ersten 1 - 1000 Elemente, aber der Rest der Liste
--- bleibt unangetastet. Haskell wird sie solange nicht weiterevalieren
+-- bleibt unangetastet. Haskell wird sie solange nicht weiterevaluieren,
 -- bis es muss.
 
 -- Zwei Listen konkatenieren
 [1..5] ++ [6..10]
 
--- Ein Element als Head hinzufuegen
+-- Ein Element als Head hinzufügen
 0:[1..5] -- [0, 1, 2, 3, 4, 5]
 
--- Gibt den 5. Index zurueck
+-- Gibt den 5. Index zurück
 [0..] !! 5 -- 5
 
 -- Weitere Listenoperationen
@@ -140,14 +140,14 @@ add 1 2 -- 3
 (//) a b = a `div` b
 35 // 4 -- 8
 
--- Guards sind eine einfache Möglichkeit fuer Fallunterscheidungen.
+-- Guards sind eine einfache Möglichkeit für Fallunterscheidungen.
 fib x
   | x < 2 = x
   | otherwise = fib (x - 1) + fib (x - 2)
 
 -- Pattern Matching funktioniert ähnlich.
 -- Hier sind drei Definitionen von fib. Haskell wird automatisch
--- die erste Funktionen nehmen die dem Pattern der Eingabe entspricht.
+-- die erste Funktionen nehmen, die dem Pattern der Eingabe entspricht.
 fib 1 = 1
 fib 2 = 2
 fib x = fib (x - 1) + fib (x - 2)
@@ -174,7 +174,7 @@ foldl1 (\acc x -> acc + x) [1..5] -- 15
 -- 4. Mehr Funktionen
 ----------------------------------------------------
 
--- currying: Wenn man nicht alle Argumente an eine Funktion uebergibt,
+-- currying: Wenn man nicht alle Argumente an eine Funktion übergibt,
 -- so wird sie eine neue Funktion gebildet ("curried").
 -- Es findet eine partielle Applikation statt und die neue Funktion
 -- nimmt die fehlenden Argumente auf.
@@ -221,14 +221,14 @@ even . fib $ 7 -- true
 True :: Bool
 
 -- Funktionen haben genauso Typen.
--- `not` ist Funktion die ein Bool annimmt und ein Bool zurueckgibt:
+-- `not` ist Funktion die ein Bool annimmt und ein Bool zurückgibt:
 -- not :: Bool -> Bool
 
 -- Eine Funktion die zwei Integer Argumente annimmt:
 -- add :: Integer -> Integer -> Integer
 
 -- Es ist guter Stil zu jeder Funktionsdefinition eine
--- Typdefinition darueber zu schreiben:
+-- Typdefinition darüber zu schreiben:
 double :: Integer -> Integer
 double x = x * 2
 
@@ -239,8 +239,8 @@ double x = x * 2
 -- If-Anweisung:
 haskell = if 1 == 1 then "awesome" else "awful" -- haskell = "awesome"
 
--- If-Anweisungen können auch ueber mehrere Zeilen verteilt sein.
--- Das Einruecken ist dabei äußerst wichtig.
+-- If-Anweisungen können auch über mehrere Zeilen verteilt sein.
+-- Das Einrücken ist dabei äußerst wichtig.
 haskell = if 1 == 1
             then "awesome"
             else "awful"
@@ -300,7 +300,7 @@ data Maybe a = Nothing | Just a
 -- Diese sind alle vom Typ Maybe:
 Just "hello"    -- vom Typ `Maybe String`
 Just 1          -- vom Typ `Maybe Int`
-Nothing         -- vom Typ `Maybe a` fuer jedes `a`
+Nothing         -- vom Typ `Maybe a` für jedes `a`
 
 ----------------------------------------------------
 -- 8. Haskell IO
@@ -309,8 +309,8 @@ Nothing         -- vom Typ `Maybe a` fuer jedes `a`
 -- IO kann nicht völlig erklärt werden ohne Monaden zu erklären,
 -- aber man kann die grundlegenden Dinge erklären.
 
--- Wenn eine Haskell Programm ausgefuehrt wird, so wird `main` aufgerufen.
--- Diese muss etwas vom Typ `IO ()` zurueckgeben. Zum Beispiel:
+-- Wenn eine Haskell Programm ausgeführt wird, so wird `main` aufgerufen.
+-- Diese muss etwas vom Typ `IO ()` zurückgeben. Zum Beispiel:
 
 main :: IO ()
 main = putStrLn $ "Hello, sky! " ++ (say Blue)
@@ -338,10 +338,10 @@ sayHello = do
                    -- an die Variable "name" gebunden
    putStrLn $ "Hello, " ++ name
 
--- Uebung: Schreibe deine eigene Version von `interact`,
+-- Übung: Schreibe deine eigene Version von `interact`,
 -- die nur eine Zeile einliest.
 
--- `sayHello` wird niemals ausgefuehrt, nur `main` wird ausgefuehrt.
+-- `sayHello` wird niemals ausgeführt, nur `main` wird ausgeführt.
 -- Um `sayHello` laufen zulassen kommentiere die Definition von `main`
 -- aus und ersetze sie mit:
 --     main = sayHello
@@ -359,7 +359,7 @@ action = do
    input1 <- getLine
    input2 <- getLine
    -- Der Typ von `do` ergibt sich aus der letzten Zeile.
-   -- `return` ist eine Funktion und keine Schluesselwort
+   -- `return` ist eine Funktion und keine Schlüsselwort
    return (input1 ++ "\n" ++ input2) -- return :: String -> IO String
 
 -- Nun können wir `action` wie `getLine` benutzen:
@@ -370,10 +370,10 @@ main'' = do
     putStrLn result
     putStrLn "This was all, folks!"
 
--- Der Typ `IO` ist ein Beispiel fuer eine Monade.
+-- Der Typ `IO` ist ein Beispiel für eine Monade.
 -- Haskell benutzt Monaden Seiteneffekte zu kapseln und somit
 -- eine rein funktional Sprache zu sein.
--- Jede Funktion die mit der Außenwelt interagiert (z.B. IO)
+-- Jede Funktion, die mit der Außenwelt interagiert (z.B. IO)
 -- hat den Typ `IO` in seiner Signatur.
 -- Damit kann man zwischen "reinen" Funktionen (interagieren nicht
 -- mit der Außenwelt oder ändern ihren Zustand) und Anderen unterscheiden.
@@ -387,7 +387,7 @@ main'' = do
 
 -- Starte die REPL mit dem Befehl `ghci`
 -- Nun kann man Haskell Code eingeben.
--- Alle neuen Werte muessen mit `let` gebunden werden:
+-- Alle neuen Werte müssen mit `let` gebunden werden:
 
 let foo = 5
 
@@ -396,7 +396,7 @@ let foo = 5
 >:t foo
 foo :: Integer
 
--- Auch jede `IO ()` Funktion kann ausgefuehrt werden.
+-- Auch jede `IO ()` Funktion kann ausgeführt werden.
 
 > sayHello
 What is your name?
@@ -407,7 +407,7 @@ Hello, Friend!
 
 Es gibt noch viel mehr in Haskell, wie zum Beispiel Typklassen und Monaden.
 Dies sind die Ideen durch die Haskell Programmierung zum Spaß wird.
-Mit dem folgenden kleinen Beispiel werde ich euch verlassen:
+Mit dem folgendem kleinen Beispiel werde ich euch verlassen:
 Quicksort in Haskell:
 
 ```haskell
@@ -418,8 +418,8 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
 ```
 
 Haskell ist sehr einfach zu installieren.
-Hohl es dir von [hier](http://www.haskell.org/platform/).
+Hol es dir von [hier](http://www.haskell.org/platform/).
 
-Eine sehr viele langsamere Einfuehrung findest du unter:
+Eine sehr viele langsamere Einführung findest du unter:
 [Learn you a Haskell](http://learnyouahaskell.com/) oder
 [Real World Haskell](http://book.realworldhaskell.org/).
