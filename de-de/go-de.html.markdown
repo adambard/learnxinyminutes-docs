@@ -49,7 +49,7 @@ func main() {
     beyondHello()
 }
 
-// Funktionen können Parameter akzeptieren. Siese werden in Klammern deklariert,
+// Funktionen können Parameter akzeptieren. Diese werden in Klammern deklariert,
 // die aber auch ohne Parameter erforderlich sind.
 func beyondHello() {
     var x int // Deklaration einer Variable, muss vor Gebrauch geschehen.
@@ -98,7 +98,7 @@ Zeilenumbrüche beinhalten.` // Selber Zeichenketten-Typ
     // "slices" haben eine dynamische Größe. Arrays und Slices haben beide ihre
     // Vorzüge, aber slices werden viel häufiger verwendet
     s3 := []int{4, 5, 9}       // Vergleichen Sie mit a3, hier: keine Ellipse
-    s4 := make([]int, 4)       // Weist Speicher für 4 ints zu, alle mit Initialwert 0
+    s4 := make([]int, 4)       // Weist Speicher für 4 ints zu, alle mit Wert 0
     var d2 [][]float64         // Nur eine Deklaration, keine Speicherzuweisung
     bs := []byte("eine slice") // Umwandlungs-Syntax
 
@@ -200,7 +200,8 @@ type pair struct {
     x, y int
 }
 
-// Definiere eine Methode von "pair". Dieser Typ erfüllt jetzt das Stringer interface.
+// Definiere eine Methode von "pair".
+// Dieser Typ erfüllt jetzt das Stringer interface.
 func (p pair) String() string { // p ist der Empfänger
     // Sprintf ist eine weitere öffentliche Funktion von fmt.
     // Der Syntax mit Punkt greift auf die Felder zu.
@@ -254,8 +255,9 @@ func learnConcurrency() {
     // Die selbe "make"-Funktion wie vorhin. Sie initialisiert Speicher für
     // maps, slices und Kanäle.
     c := make(chan int)
-    // Starte drei parallele "Goroutines". Die Zahlen werden parallel (concurrently)
-    // erhöht. Alle drei senden ihr Ergebnis in den gleichen Kanal.
+    // Starte drei parallele "Goroutines".
+    // Die Zahlen werden parallel (concurrently) erhöht.
+    // Alle drei senden ihr Ergebnis in den gleichen Kanal.
     go inc(0, c) // "go" ist das Statement zum Start einer neuen Goroutine
     go inc(10, c)
     go inc(-805, c)
