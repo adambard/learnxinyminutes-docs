@@ -330,7 +330,7 @@ ECarTypes GetPreferredCarType()
 }
 
 // As of C++11 there is an easy way to assign a type to the enum which can be
-// useful in serialization of data and converting enums back-and-forth between 
+// useful in serialization of data and converting enums back-and-forth between
 // the desired type and their respective constants
 enum ECarTypes : uint8_t
 {
@@ -352,7 +352,7 @@ void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 }
 
 // On the other hand you may not want enums to be accidentally cast to an integer
-// type or to other enums so it is instead possible to create an enum class which 
+// type or to other enums so it is instead possible to create an enum class which
 // won't be implicitly converted
 enum class ECarTypes : uint8_t
 {
@@ -468,7 +468,7 @@ int main() {
 // Inheritance:
 
 // This class inherits everything public and protected from the Dog class
-// as well as private but may not directly access private members/methods 
+// as well as private but may not directly access private members/methods
 // without a public or protected method for doing so
 class OwnedDog : public Dog {
 

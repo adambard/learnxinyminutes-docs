@@ -460,7 +460,7 @@ function variable($word, ...$list) {
 	}
 }
 
-variable("Separate", "Hello", "World") // Separate || Hello | World | 
+variable("Separate", "Hello", "World") // Separate || Hello | World |
 
 /********************************
  * Includes
@@ -768,7 +768,7 @@ But I'm ChildClass
 
 /**********************
 *  Error Handling
-*  
+*
 */
 
 // Simple error handling can be done with try catch block

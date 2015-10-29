@@ -270,8 +270,8 @@ keymap ; => {:a 1, :b 2, :c 3}
 
 ; The "Thread-first" macro (->) inserts into each form the result of
 ; the previous, as the first argument (second item)
-(->  
-   {:a 1 :b 2} 
+(->
+   {:a 1 :b 2}
    (assoc :c 3) ;=> (assoc {:a 1 :b 2} :c 3)
    (dissoc :b)) ;=> (dissoc (assoc {:a 1 :b 2} :c 3) :b)
 

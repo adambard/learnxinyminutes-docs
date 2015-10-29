@@ -63,7 +63,7 @@ allow you to write Python 3 code that will run on Python 2, so check out the Pyt
 # to carry out normal division with just one '/'.
 from __future__ import division
 11/4    # => 2.75  ...normal division
-11//4   # => 2 ...floored division  
+11//4   # => 2 ...floored division
 
 # Modulo operation
 7 % 3 # => 1

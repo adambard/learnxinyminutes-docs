@@ -148,13 +148,13 @@ int main (int argc, const char * argv[])
     [mutableDictionary setObject:@"value1" forKey:@"key1"];
     [mutableDictionary setObject:@"value2" forKey:@"key2"];
     [mutableDictionary removeObjectForKey:@"key1"];
-    
+
     // Change types from Mutable To Immutable
     //In general [object mutableCopy] will make the object mutable whereas [object copy] will make the object immutable
     NSMutableDictionary *aMutableDictionary = [aDictionary mutableCopy];
     NSDictionary *mutableDictionaryChanged = [mutableDictionary copy];
-    
-    
+
+
     // Set object
     NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
     NSLog(@"%@", set); // prints => {(Hello, World)} (may be in different order)

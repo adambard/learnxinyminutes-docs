@@ -202,9 +202,9 @@ foo = (*4) . (+10)
 foo 5 -- 60
 
 -- fixing precedence
--- Haskell has another operator called `$`. This operator applies a function 
--- to a given parameter. In contrast to standard function application, which 
--- has highest possible priority of 10 and is left-associative, the `$` operator 
+-- Haskell has another operator called `$`. This operator applies a function
+-- to a given parameter. In contrast to standard function application, which
+-- has highest possible priority of 10 and is left-associative, the `$` operator
 -- has priority of 0 and is right-associative. Such a low priority means that
 -- the expression on its right is applied as the parameter to the function on its left.
 

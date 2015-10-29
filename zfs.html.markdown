@@ -23,7 +23,7 @@ types of VDEV's that offer various advantages, including redundancy and speed.  
 VDEV's offer better reliability and safety than a RAID card.  It is discouraged to use a
 RAID setup with ZFS, as ZFS expects to directly manage the underlying disks.
 
-Types of VDEV's 
+Types of VDEV's
 * stripe (a single disk, no redundancy)
 * mirror (n-way mirrors supported)
 * raidz
@@ -68,7 +68,7 @@ Actions:
 List zpools
 
 ```bash
-# Create a raidz zpool 
+# Create a raidz zpool
 $ zpool create bucket raidz1 gpt/zfs0 gpt/zfs1 gpt/zfs2
 
 # List ZPools
@@ -347,7 +347,7 @@ $ zfs promote tank/home/sarlalian_new
 
 ### Putting it all together
 
-This following a script utilizing FreeBSD, jails and ZFS to automate 
+This following a script utilizing FreeBSD, jails and ZFS to automate
 provisioning a clean copy of a mysql staging database from a live replication
 slave.
 

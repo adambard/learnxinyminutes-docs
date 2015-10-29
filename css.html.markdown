@@ -131,9 +131,9 @@ selector::after {}
    #################### */
 
 selector {
-    
+
     /* Units of length can be absolute or relative. */
-    
+
     /* Relative units */
     width: 50%;       /* percentage of parent element width */
     font-size: 2em;   /* multiples of element's original font-size */
@@ -142,14 +142,14 @@ selector {
     font-size: 2vh;   /* or its height */
     font-size: 2vmin; /* whichever of a vh or a vw is smaller */
     font-size: 2vmax; /* or greater */
-    
+
     /* Absolute units */
     width: 200px;     /* pixels */
     font-size: 20pt;  /* points */
     width: 5cm;       /* centimeters */
     min-width: 50mm;  /* millimeters */
     max-width: 5in;   /* inches */
-    
+
     /* Colors */
     color: #F6E;                 /* short hex format */
     color: #FF66EE;              /* long hex format */
@@ -160,10 +160,10 @@ selector {
     color: transparent;          /* equivalent to setting the alpha to 0 */
     color: hsl(0, 100%, 50%);    /* as hsl percentages (CSS 3) */
     color: hsla(0, 100%, 50%, 0.3); /* as hsla percentages with alpha */
-    
+
     /* Images as backgrounds of elements */
     background-image: url(/img-path/img.jpg); /* quotes inside url() optional */
-    
+
     /* Fonts */
     font-family: Arial;
     /* if the font family name has a space, it must be quoted */
