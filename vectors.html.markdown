@@ -26,8 +26,6 @@ Compared to arrays, vectors consume more memory in exchange for the ability to m
 
 ## Vector implementation and working
 
-### Types of functions, limits, and simplification
-
 ```
 // create a vector to store int
    vector<int> vec; 
