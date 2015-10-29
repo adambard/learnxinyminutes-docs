@@ -1,14 +1,16 @@
 ---
-
 language: java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
+    - ["Jakukyo Friel", "http://weakish.github.io"]
+    - ["Madison Dickson", "http://github.com/mix3d"]
+    - ["Simon Morgan", "http://sjm.io/"]
 filename: LearnJava.java
-
 ---
 
-Java is a general-purpose, concurrent, class-based, object-oriented computer programming language.
-[Read more here.](http://docs.oracle.com/javase/tutorial/java/index.html)
+Java is a general-purpose, concurrent, class-based, object-oriented computer
+programming language.
+[Read more here.](http://docs.oracle.com/javase/tutorial/java/)
 
 ```java
 // Single-line comments start with //
@@ -25,29 +27,50 @@ import java.util.ArrayList;
 // Import all classes inside of java.security package
 import java.security.*;
 
-// Each .java file contains one public class, with the same name as the file.
+// Each .java file contains one outer-level public class, with the same name as
+// the file.
 public class LearnJava {
 
-    // A program must have a main method as an entry point
+    // A program must have a main method as an entry point.
     public static void main (String[] args) {
 
-        // Use System.out.println to print lines
+        // Use System.out.println() to print lines.
         System.out.println("Hello World!");
         System.out.println(
             "Integer: " + 10 +
             " Double: " + 3.14 +
             " Boolean: " + true);
 
-        // To print without a newline, use System.out.print
+        // To print without a newline, use System.out.print().
         System.out.print("Hello ");
         System.out.print("World");
 
 
         ///////////////////////////////////////
-        // Types & Variables
+        // Variables 
         ///////////////////////////////////////
+        
+        /*
+        *  Variable Declaration
+        */
+        // Declare a variable using <type> <name>
+        int fooInt;
+        // Declare multiple variables of the same type <type> <name1>, <name2>, <name3>
+        int fooInt1, fooInt2, fooInt3;
 
-        // Declare a variable using <type> <name> [
+        /*
+        *  Variable Initialization
+        */
+
+        // Initialize a variable using <type> <name> = <val>
+        int fooInt = 1;
+        // Initialize multiple variables of same type with same value <type> <name1>, <name2>, <name3> = <val>
+        int fooInt1, fooInt2, fooInt3;
+        fooInt1 = fooInt2 = fooInt3 = 1;
+
+        /*
+        *  Variable types
+        */
         // Byte - 8-bit signed two's complement integer
         // (-128 <= byte <= 127)
         byte fooByte = 100;
@@ -66,7 +89,7 @@ public class LearnJava {
         // L is used to denote that this variable value is of type Long;
         // anything without is treated as integer by default.
 
-        // Note: Java has no unsigned types
+        // Note: Java has no unsigned types.
 
         // Float - Single-precision 32-bit IEEE 754 Floating Point
         float fooFloat = 234.5f;
@@ -83,7 +106,7 @@ public class LearnJava {
         // Char - A single 16-bit Unicode character
         char fooChar = 'A';
 
-        // Use final to make a variable immutable
+        // final variables can't be reassigned to another object.
         final int HOURS_I_WORK_PER_WEEK = 9001;
 
         // Strings
@@ -98,15 +121,18 @@ public class LearnJava {
         System.out.println(bazString);
 
         // Arrays
-        //The array size must be decided upon declaration
-        //The format for declaring an array is follows:
-        //<datatype> [] <var name> = new <datatype>[<array size>];
-        int [] intArray = new int[10];
-        String [] stringArray = new String[1];
-        boolean [] booleanArray = new boolean[100];
+        // The array size must be decided upon instantiation
+        // The following formats work for declaring an array
+        // <datatype>[] <var name> = new <datatype>[<array size>];
+        // <datatype> <var name>[] = new <datatype>[<array size>];
+        int[] intArray = new int[10];
+        String[] stringArray = new String[1];
+        boolean boolArray[] = new boolean[100];
 
         // Another way to declare & initialize an array
-        int [] y = {9000, 1000, 1337};
+        int[] y = {9000, 1000, 1337};
+        String names[] = {"Bob", "John", "Fred", "Juan Pedro"};
+        boolean bools[] = new boolean[] {true, false, false};
 
         // Indexing an array - Accessing an element
         System.out.println("intArray @ 0: " + intArray[0]);
@@ -116,11 +142,17 @@ public class LearnJava {
         System.out.println("intArray @ 1: " + intArray[1]); // => 1
 
         // Others to check out
-        // ArrayLists - Like arrays except more functionality is offered,
-        //             and the size is mutable
-        // LinkedLists
-        // Maps
-        // HashMaps
+        // ArrayLists - Like arrays except more functionality is offered, and
+        //              the size is mutable.
+        // LinkedLists - Implementation of doubly-linked list. All of the
+        //               operations perform as could be expected for a
+        //               doubly-linked list.
+        // Maps - A set of objects that maps keys to values. A map cannot
+        //        contain duplicate keys; each key can map to at most one value.
+        // HashMaps - This class uses a hashtable to implement the Map
+        //            interface. This allows the execution time of basic
+        //            operations, such as get and insert element, to remain
+        //            constant even for large sets.
 
         ///////////////////////////////////////
         // Operators
@@ -148,22 +180,25 @@ public class LearnJava {
 
         // Bitwise operators!
         /*
-        ~       Unary bitwise complement
-        <<      Signed left shift
-        >>      Signed right shift
-        >>>     Unsigned right shift
-        &       Bitwise AND
-        ^       Bitwise exclusive OR
-        |       Bitwise inclusive OR
+        ~      Unary bitwise complement
+        <<     Signed left shift
+        >>     Signed right shift
+        >>>    Unsigned right shift
+        &      Bitwise AND
+        ^      Bitwise exclusive OR
+        |      Bitwise inclusive OR
         */
 
         // Incrementations
         int i = 0;
         System.out.println("\n->Inc/Dec-rementation");
-        System.out.println(i++); //i = 1. Post-Incrementation
-        System.out.println(++i); //i = 2. Pre-Incrementation
-        System.out.println(i--); //i = 1. Post-Decrementation
-        System.out.println(--i); //i = 0. Pre-Decrementation
+        // The ++ and -- operators increment and decrement by 1 respectively.
+        // If they are placed before the variable, they increment then return;
+        // after the variable they return then increment.
+        System.out.println(i++); // i = 1, prints 0 (post-increment)
+        System.out.println(++i); // i = 2, prints 2 (pre-increment)
+        System.out.println(i--); // i = 1, prints 2 (post-decrement)
+        System.out.println(--i); // i = 0, prints 0 (pre-decrement)
 
         ///////////////////////////////////////
         // Control Structures
@@ -182,62 +217,77 @@ public class LearnJava {
 
         // While loop
         int fooWhile = 0;
-        while(fooWhile < 100)
-        {
-            //System.out.println(fooWhile);
-            //Increment the counter
-            //Iterated 99 times, fooWhile 0->99
+        while(fooWhile < 100) {
+            System.out.println(fooWhile);
+            // Increment the counter
+            // Iterated 100 times, fooWhile 0,1,2...99
             fooWhile++;
         }
         System.out.println("fooWhile Value: " + fooWhile);
 
         // Do While Loop
         int fooDoWhile = 0;
-        do
-        {
-            //System.out.println(fooDoWhile);
-            //Increment the counter
-            //Iterated 99 times, fooDoWhile 0->99
+        do {
+            System.out.println(fooDoWhile);
+            // Increment the counter
+            // Iterated 99 times, fooDoWhile 0->99
             fooDoWhile++;
-        }while(fooDoWhile < 100);
+        } while(fooDoWhile < 100);
         System.out.println("fooDoWhile Value: " + fooDoWhile);
 
         // For Loop
         int fooFor;
-        //for loop structure => for(<start_statement>; <conditional>; <step>)
-        for(fooFor=0; fooFor<10; fooFor++){
-            //System.out.println(fooFor);
-            //Iterated 10 times, fooFor 0->9
+        // for loop structure => for(<start_statement>; <conditional>; <step>)
+        for (fooFor = 0; fooFor < 10; fooFor++) {
+            System.out.println(fooFor);
+            // Iterated 10 times, fooFor 0->9
         }
         System.out.println("fooFor Value: " + fooFor);
 
+        // For Each Loop
+        // The for loop is also able to iterate over arrays as well as objects
+        // that implement the Iterable interface.
+        int[] fooList = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        // for each loop structure => for (<object> : <iterable>)
+        // reads as: for each element in the iterable
+        // note: the object type must match the element type of the iterable.
+
+        for (int bar : fooList) {
+            System.out.println(bar);
+            //Iterates 9 times and prints 1-9 on new lines
+        }
+
         // Switch Case
         // A switch works with the byte, short, char, and int data types.
-        // It also works with enumerated types (discussed in Enum Types),
-        // the String class, and a few special classes that wrap
-        // primitive types: Character, Byte, Short, and Integer.
+        // It also works with enumerated types (discussed in Enum Types), the
+        // String class, and a few special classes that wrap primitive types:
+        // Character, Byte, Short, and Integer.
         int month = 3;
         String monthString;
-        switch (month){
-            case 1:
-                    monthString = "January";
+        switch (month) {
+            case 1: monthString = "January";
                     break;
-            case 2:
-                    monthString = "February";
+            case 2: monthString = "February";
                     break;
-            case 3:
-                    monthString = "March";
+            case 3: monthString = "March";
                     break;
-            default:
-                    monthString = "Some other month";
-                    break;
+            default: monthString = "Some other month";
+                     break;
         }
         System.out.println("Switch Case Result: " + monthString);
 
+        // Conditional Shorthand
+        // You can use the '?' operator for quick assignments or logic forks.
+        // Reads as "If (statement) is true, use <first value>, otherwise, use
+        // <second value>"
+        int foo = 5;
+        String bar = (foo < 10) ? "A" : "B";
+        System.out.println(bar); // Prints A, because the statement is true
 
-        ///////////////////////////////////////
-        // Converting Data Types And Typcasting
-        ///////////////////////////////////////
+
+        ////////////////////////////////////////
+        // Converting Data Types And Typecasting
+        ////////////////////////////////////////
 
         // Converting data
 
@@ -253,9 +303,8 @@ public class LearnJava {
         // String
 
         // Typecasting
-        // You can also cast java objects, there's a lot of details and
-        // deals with some more intermediate concepts.
-        // Feel free to check it out here:
+        // You can also cast Java objects, there's a lot of details and deals
+        // with some more intermediate concepts. Feel free to check it out here:
         // http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
 
 
@@ -274,20 +323,47 @@ public class LearnJava {
         trek.speedUp(3); // You should always use setter and getter methods
         trek.setCadence(100);
 
-        // toString is a convention to display the value of this Object.
+        // toString returns this Object's string representation.
         System.out.println("trek info: " + trek.toString());
+        
+        // Double Brace Initialization
+        // The Java Language has no syntax for how to create static Collections
+        // in an easy way. Usually you end up in the following way:
+        
+        private static final Set<String> COUNTRIES = new HashSet<String>();
+        static {
+	       validCodes.add("DENMARK");
+	       validCodes.add("SWEDEN");
+	       validCodes.add("FINLAND");
+        }
+        
+        // But there's a nifty way to achive the same thing in an
+        // easier way, by using something that is called Double Brace
+        // Initialization.
+        
+        private static final Set<String> COUNTRIES = HashSet<String>() {{
+            add("DENMARK");
+            add("SWEDEN");
+            add("FINLAND");            
+        }}
+        
+        // The first brace is creating an new AnonymousInnerClass and the 
+        // second one declares and instance initializer block. This block
+        // is called with the anonymous inner class is created.
+        // This does not only work for Collections, it works for all
+        // non-final classes.
 
     } // End main method
 } // End LearnJava class
 
 
-// You can include other, non-public classes in a .java file
+// You can include other, non-public outer-level classes in a .java file
 
 
 // Class Declaration Syntax:
-// <public/private/protected> class <class name>{
-//    //data fields, constructors, functions all inside.
-//    //functions are called as methods in Java.
+// <public/private/protected> class <class name> {
+//    // data fields, constructors, functions all inside.
+//    // functions are called as methods in Java.
 // }
 
 class Bicycle {
@@ -299,7 +375,7 @@ class Bicycle {
     String name; // default: Only accessible from within this package
 
     // Constructors are a way of creating classes
-    // This is a default constructor
+    // This is a constructor
     public Bicycle() {
         gear = 1;
         cadence = 50;
@@ -307,8 +383,9 @@ class Bicycle {
         name = "Bontrager";
     }
 
-    // This is a specified constructor (it contains arguments)
-    public Bicycle(int startCadence, int startSpeed, int startGear, String name) {
+    // This is a constructor that takes arguments
+    public Bicycle(int startCadence, int startSpeed, int startGear,
+        String name) {
         this.gear = startGear;
         this.cadence = startCadence;
         this.speed = startSpeed;
@@ -354,10 +431,8 @@ class Bicycle {
     //Method to display the attribute values of this Object.
     @Override
     public String toString() {
-        return "gear: " + gear +
-                " cadence: " + cadence +
-                " speed: " + speed +
-                " name: " + name;
+        return "gear: " + gear + " cadence: " + cadence + " speed: " + speed +
+            " name: " + name;
     }
 } // end class Bicycle
 
@@ -371,14 +446,124 @@ class PennyFarthing extends Bicycle {
         super(startCadence, startSpeed, 0, "PennyFarthing");
     }
 
-    // You should mark a method you're overriding with an @annotation
-    // To learn more about what annotations are and their purpose
-    // check this out: http://docs.oracle.com/javase/tutorial/java/annotations/
+    // You should mark a method you're overriding with an @annotation.
+    // To learn more about what annotations are and their purpose check this
+    // out: http://docs.oracle.com/javase/tutorial/java/annotations/
     @Override
     public void setGear(int gear) {
         gear = 0;
     }
+}
 
+// Interfaces
+// Interface declaration syntax
+// <access-level> interface <interface-name> extends <super-interfaces> {
+//     // Constants
+//     // Method declarations
+// }
+
+// Example - Food:
+public interface Edible {
+	public void eat(); // Any class that implements this interface, must
+                       // implement this method.
+}
+
+public interface Digestible {
+	public void digest();
+}
+
+
+// We can now create a class that implements both of these interfaces.
+public class Fruit implements Edible, Digestible {
+    @Override
+	public void eat() {
+		// ...
+	}
+
+    @Override
+	public void digest() {
+		// ...
+	}
+}
+
+// In Java, you can extend only one class, but you can implement many
+// interfaces. For example:
+public class ExampleClass extends ExampleClassParent implements InterfaceOne,
+    InterfaceTwo {
+    @Override
+	public void InterfaceOneMethod() {
+	}
+
+    @Override
+	public void InterfaceTwoMethod() {
+	}
+}
+
+
+// Abstract Classes 
+// Abstract Class declaration syntax
+// <access-level> abstract <abstract-class-name> extends <super-abstract-classes> {
+//     // Constants and variables
+//     // Method declarations
+// }
+
+// Methods can't have bodies in an interface, unless the method is
+// static. Also variables are NOT final by default, unlike an interface.
+// Also abstract classes CAN have the "main" method.
+// Abstract classes solve these problems.
+
+public abstract class Animal 
+{
+	public abstract void makeSound();
+
+	// Method can have a body
+	public void eat()
+	{
+		System.out.println("I am an animal and I am Eating.");  
+		// Note: We can access private variable here.
+		age = 30;
+	}
+
+	// No need to initialize, however in an interface 
+	// a variable is implicitly final and hence has
+	// to be initialized.
+	private int age;
+
+	public void printAge()
+	{
+		System.out.println(age);  
+	}
+
+	// Abstract classes can have main function.
+	public static void main(String[] args)
+	{
+		System.out.println("I am abstract");
+	}
+}
+
+class Dog extends Animal
+{
+	// Note still have to override the abstract methods in the
+	// abstract class.
+	@Override
+	public void makeSound()
+	{
+		System.out.println("Bark");
+		// age = 30;	==> ERROR!	age is private to Animal
+	}
+
+	// NOTE: You will get an error if you used the 
+	// @Override annotation here, since java doesn't allow
+	// overriding of static methods.
+	// What is happening here is called METHOD HIDING.
+	// Check out this awesome SO post: http://stackoverflow.com/questions/16313649/
+	public static void main(String[] args)
+	{
+		Dog pluto = new Dog();
+		pluto.makeSound();
+		pluto.eat();
+		pluto.printAge();
+	}
 }
 
 ```
@@ -387,7 +572,7 @@ class PennyFarthing extends Bicycle {
 
 The links provided here below are just to get an understanding of the topic, feel free to Google and find specific examples.
 
-Other Topics To Research:
+**Official Oracle Guides**:
 
 * [Java Tutorial Trail from Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
 
@@ -405,3 +590,20 @@ Other Topics To Research:
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
 
 * [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+
+**Online Practice and Tutorials**
+
+* [Learneroo.com - Learn Java](http://www.learneroo.com)
+
+* [Codingbat.com](http://codingbat.com/java)
+
+
+**Books**:
+
+* [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
+
+* [Thinking in Java](http://www.mindview.net/Books/TIJ/)
+
+* [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
+
+* [Java The Complete Reference](http://www.amazon.com/gp/product/0071606300)

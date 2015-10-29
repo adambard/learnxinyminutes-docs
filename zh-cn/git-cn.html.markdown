@@ -5,7 +5,6 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:
     - ["Chenbo Li", "http://binarythink.net"]
-filename: LearnGit.txt
 lang: zh-cn
 ---
 
@@ -220,7 +219,7 @@ $ git diff
 # 显示索引和最近一次提交的不同
 $ git diff --cached
 
-# 显示宫缩目录和最近一次提交的不同
+# 显示工作目录和最近一次提交的不同
 $ git diff HEAD
 ```
 
@@ -350,7 +349,7 @@ $ git reset --hard 31f2bb1
 
 ### rm
 
-和add相反，从工作空间中去掉某个文件爱你
+和add相反，从工作空间中去掉某个文件
 
 ```bash
 # 移除 HelloWorld.c

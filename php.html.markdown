@@ -1,5 +1,5 @@
 ---
-language: php
+language: PHP
 contributors:
     - ["Malcolm Fell", "http://emarref.net/"]
     - ["Trismegiste", "https://github.com/Trismegiste"]
@@ -11,7 +11,7 @@ This document describes PHP 5+.
 ```php
 <?php // PHP code must be enclosed with <?php tags
 
-// If your php file only contains PHP code, it is best practise
+// If your php file only contains PHP code, it is best practice
 // to omit the php closing tag.
 
 // Two forward slashes start a one-line comment.
@@ -59,6 +59,9 @@ $float = 1.234;
 $float = 1.2e3;
 $float = 7E-10;
 
+// Delete variable
+unset($int1);
+
 // Arithmetic
 $sum        = 1 + 1; // 2
 $difference = 2 - 1; // 1
@@ -69,7 +72,7 @@ $quotient   = 2 / 1; // 2
 $number = 0;
 $number += 1;      // Increment $number by 1
 echo $number++;    // Prints 1 (increments after evaluation)
-echo ++$number;    // Prints 3 (increments before evalutation)
+echo ++$number;    // Prints 3 (increments before evaluation)
 $number /= $float; // Divide and assign the quotient to $number
 
 // Strings should be enclosed in single quotes;
@@ -104,7 +107,7 @@ echo 'This string ' . 'is concatenated';
 /********************************
  * Constants
  */
- 
+
 // A constant is defined by using define()
 // and can never be changed during runtime!
 
@@ -136,6 +139,11 @@ echo $associative['One']; // prints 1
 $array = ['One', 'Two', 'Three'];
 echo $array[0]; // => "One"
 
+// Add an element to the end of an array
+$array[] = 'Four';
+
+// Remove element from array
+unset($array[3]);
 
 /********************************
  * Output
@@ -176,6 +184,11 @@ $y = 0;
 echo $x; // => 2
 echo $z; // => 0
 
+// Dumps type and value of variable to stdout
+var_dump($z); // prints int(0)
+
+// Prints variable to stdout in human-readable format
+print_r($array); // prints: Array ( [0] => One [1] => Two [2] => Three )
 
 /********************************
  * Logic
@@ -199,8 +212,16 @@ assert($c >= $d);
 // The following will only be true if the values match and are the same type.
 assert($c === $d);
 assert($a !== $d);
-assert(1 == '1');
+assert(1 === '1');
 assert(1 !== '1');
+
+// spaceship operator since PHP 7
+$a = 100;
+$b = 1000;
+
+echo $a <=> $a; // 0 since they are equal
+echo $a <=> $b; // -1 since $a < $b
+echo $b <=> $a; // 1 since $b > $a
 
 // Variables can be converted between types, depending on their usage.
 
@@ -250,6 +271,18 @@ if (false) {
 
 // ternary operator
 print (false ? 'Does not get printed' : 'Does');
+
+// ternary shortcut operator since PHP 5.3
+// equivalent of "$x ? $x : 'Does'""
+$x = false;
+print($x ?: 'Does');
+
+// null coalesce operator since php 7
+$a = null;
+$b = 'Does print';
+echo $a ?? 'a is not set'; // prints 'a is not set'
+echo $b ?? 'b is not set'; // prints 'Does print'
+
 
 $x = 0;
 if ($x === '0') {
@@ -440,6 +473,13 @@ class MyClass
 
     static $staticVar   = 'static';
 
+    // Static variables and their visibility
+    public static $publicStaticVar = 'publicStatic';
+    // Accessible within the class only
+    private static $privateStaticVar = 'privateStatic';
+    // Accessible from the class and subclasses
+    protected static $protectedStaticVar = 'protectedStatic';
+
     // Properties must declare their visibility
     public $property    = 'public';
     public $instanceProp;
@@ -458,9 +498,16 @@ class MyClass
         print 'MyClass';
     }
 
+    //final keyword would make a function unoverridable
     final function youCannotOverrideMe()
     {
     }
+
+/*
+ * Declaring class properties or methods as static makes them accessible without
+ * needing an instantiation of the class. A property declared as static can not
+ * be accessed with an instantiated class object (though a static method can).
+ */
 
     public static function myStaticMethod()
     {
@@ -468,7 +515,9 @@ class MyClass
     }
 }
 
+// Class constants can always be accessed statically 
 echo MyClass::MY_CONST;    // Outputs 'value';
+
 echo MyClass::$staticVar;  // Outputs 'static';
 MyClass::myStaticMethod(); // Outputs 'I am static';
 
@@ -650,10 +699,14 @@ $cls = new SomeOtherNamespace\MyClass();
 
 ## More Information
 
-Visit the [official PHP documentation](http://www.php.net/manual/) for reference and community input.
+Visit the [official PHP documentation](http://www.php.net/manual/) for reference
+and community input.
 
-If you're interested in up-to-date best practices, visit [PHP The Right Way](http://www.phptherightway.com/).
+If you're interested in up-to-date best practices, visit
+[PHP The Right Way](http://www.phptherightway.com/).
 
-If you're coming from a language with good package management, check out [Composer](http://getcomposer.org/).
+If you're coming from a language with good package management, check out
+[Composer](http://getcomposer.org/).
 
-For common standards, visit the PHP Framework Interoperability Group's [PSR standards](https://github.com/php-fig/fig-standards).
+For common standards, visit the PHP Framework Interoperability Group's
+[PSR standards](https://github.com/php-fig/fig-standards).
