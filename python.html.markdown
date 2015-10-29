@@ -123,8 +123,12 @@ not False  # => True
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
 
-# % can be used to format strings, like this:
-"%s can be %s" % ("strings", "interpolated")
+#String formatting with %
+#Even though the % string operator will be deprecated on Python 3.1 and removed 
+#later at some time, it may still be good to know how it works.
+x = 'apple'
+y = 'lemon'
+z = "The items in the basket are %s and %s" % (x,y)
 
 # A newer way to format strings is the format method.
 # This method is the preferred way
