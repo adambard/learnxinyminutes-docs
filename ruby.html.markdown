@@ -127,7 +127,7 @@ print "I'm printing!"
 
 #You can use return in ruby
 #but it is mostly unecessary since
-#ruby inherently returns the output
+#ruby inherently returns the output of functions
 
 
 # Variables
