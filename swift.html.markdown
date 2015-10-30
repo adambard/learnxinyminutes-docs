@@ -25,6 +25,7 @@ import UIKit
 
 // Xcode supports landmarks to annotate your code and lists them in the jump bar
 // MARK: Section mark
+// MARK: - Section mark with a separator line 
 // TODO: Do something soon
 // FIXME: Fix this code
 
@@ -128,6 +129,7 @@ shoppingList[1] = "bottle of water"
 let emptyArray = [String]() // let == immutable
 let emptyArray2 = Array<String>() // same as above
 var emptyMutableArray = [String]() // var == mutable
+var explicitEmptyMutableStringArray: [String] = [] // same as above
 
 
 // Dictionary
@@ -139,6 +141,7 @@ occupations["Jayne"] = "Public Relations"
 let emptyDictionary = [String: Float]() // let == immutable
 let emptyDictionary2 = Dictionary<String, Float>() // same as above
 var emptyMutableDictionary = [String: Float]() // var == mutable
+var explicitEmptyMutableDictionary: [String: Float] = [:] // same as above
 
 
 //
