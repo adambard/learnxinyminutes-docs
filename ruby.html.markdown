@@ -14,6 +14,7 @@ contributors:
   - ["Rahil Momin", "https://github.com/iamrahil"]
   - ["Gabriel Halley", "https://github.com/ghalley"]
   - ["Persa Zula", "http://persazula.com"]
+  - ["Adriana Castaneda", "https://github.com/alcastaneda"]
 ---
 
 ```ruby
@@ -113,7 +114,7 @@ placeholder = 'use string interpolation'
 'hello ' * 3 #=> "hello hello hello "
 
 # Append to string
-'hello' << ' world' #=> "hello world"
+'hello' << '  world' #=> "hello world"
 
 # print to the output with a newline at the end
 puts "I'm printing!"
@@ -123,6 +124,11 @@ puts "I'm printing!"
 # print to the output without a newline
 print "I'm printing!"
 #=> I'm printing! => nill
+
+#You can use return in ruby
+#but it is mostly unecessary since
+#ruby inherently returns the output
+
 
 # Variables
 x = 25 #=> 25
