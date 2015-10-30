@@ -16,6 +16,14 @@ Como JSON é um formato de intercâmbio de dados, este será, muito provavelment
 JSON na sua forma mais pura não tem comentários, mas a maioria dos analisadores 
 aceitarão comentários no estilo C (//, /\* \*/). No entanto estes devem ser evitados para otimizar a compatibilidade.
 
+Um valor JSON pode ser um numero, uma string, um array, um objeto, um booleano (true, false) ou null.
+
+Os browsers suportados são: Firefox 3.5+, Internet Explorer 8.0+, Chrome 1.0+, Opera 10.0+, e Safari 4.0+.
+
+A extensão dos ficheiros JSON é “.json” e o tipo de mídia de Internet (MIME) é “application/json”.
+
+Mais informação em: http://www.json.org/
+
 ```json
 {
   "chave": "valor",
