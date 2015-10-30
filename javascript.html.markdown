@@ -3,6 +3,7 @@ language: javascript
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
+    - ["Saravanan Ganesh", "http://srrvnn.me"]
 filename: javascript.js
 ---
 
@@ -20,6 +21,11 @@ JavaScript has a C-like syntax, so if you've used languages like C or Java,
 a lot of the basic syntax will already be familiar. Despite this, and despite
 the similarity in name, JavaScript's object model is significantly different to
 Java's.
+
+Note: The current version of the ECMAScript standard (the language specification
+that JavaScript implements) is ECMAScript 6 and introduces major updates to the
+language while being backwards compatible. The implementation of these features
+in major JavaScript engines is underway now.
 
 ```js
 // Single-line comments start with two slashes.
@@ -80,6 +86,11 @@ false;
 'abc';
 "Hello, world";
 
+// *ES6:*  Strings can be constructed using template literals that use backticks
+// instead of ' or ". They can have variables embedded inside as ${variable}
+let banta = "Harry", santa = "Hermione";
+`${banta}, your santa is ${santa}.` // = "Harry, your santa is Hermione."
+
 // Negation uses the ! symbol
 !true; // = false
 !false; // = true
@@ -133,8 +144,17 @@ undefined; // used to indicate a value is not currently present (although
 // false, null, undefined, NaN, 0 and "" are falsy; everything else is truthy.
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
+// *ES6:* ES6 introduces another primitive data type called `Symbols`.
+var symbol_one = Symbol();
+var symbol_two = Symbol('This is optional description, for debugging');
+typeof symbol_one === 'symbol' // = true
+
+// *ES6:* Symbols are immutable and unique.
+Symbol() === Symbol() // = false
+Symbol('learnx') === Symbol('learnx') // = false
+
 ///////////////////////////////////
-// 2. Variables, Arrays and Objects
+// 2. Variables, Arrays, Objects, Maps and Sets
 
 // Variables are declared with the `var` keyword. JavaScript is dynamically
 // typed, so you don't need to specify type. Assignment uses a single `=`
@@ -153,6 +173,26 @@ var someThirdVar; // = undefined
 // If you want to declare a couple of variables, then you could use a comma
 // separator
 var someFourthVar = 2, someFifthVar = 4;
+
+// *ES6:* Variables can also be declared with the `let` and `const` keywords.
+let someFifthVar = 5;
+const someSixthVar = 6;
+
+// *ES6:* Using the `let` keyword makes the variable block scoped, instead of
+// being function scoped like in `var`.
+for (let i = 0; i < 10; i++) {
+    x += 10;
+}
+i; // = raises ReferenceError
+
+// *ES6:* `const` variables must be declared using an initiator.
+const someSeventhVar = 7;
+const someEighthVar; // raises an error
+
+// *ES6:* Reassigning `const` variables fails silently.
+const someEighthVar = 8;
+someEighthVar = 9;
+someEighthVar; // = 8
 
 // There's shorthand for performing math operations on variables:
 someVar += 5; // equivalent to someVar = someVar + 5; someVar is 10 now
@@ -176,6 +216,21 @@ myArray.length; // = 4
 // Add/Modify at specific index
 myArray[3] = "Hello";
 
+// *ES6:* Arrays can be destructured using pattern matching
+var [a, b] = [1, 2];
+var [a, , b] = [1, -2, 2]
+
+a; // = 1
+b; // = 2
+
+// *ES6:* Destructuring an array is fail-soft, and can take default values
+var [a] = [];
+a; // = undefined;
+var [a = 1] = [];
+a; // = 1;
+var [a = 1] = [2];
+a; // = 2;
+
 // JavaScript's objects are equivalent to "dictionaries" or "maps" in other
 // languages: an unordered collection of key-value pairs.
 var myObj = {key1: "Hello", key2: "World"};
@@ -190,11 +245,79 @@ myObj["my other key"]; // = 4
 // ... or using the dot syntax, provided the key is a valid identifier.
 myObj.myKey; // = "myValue"
 
+// *ES6:* `Symbols` can be used as object keys. And because they are unique,
+// the only way to access the value is by using the reference to the symbol.
+myObj["key"] = "public value";
+myObj[Symbol("key")] = "secret value";
+myObj[Symbol("key")]; // = undefined
+
 // Objects are mutable; values can be changed and new keys added.
 myObj.myThirdKey = true;
 
 // If you try to access a value that's not yet set, you'll get undefined.
 myObj.myFourthKey; // = undefined
+
+// *ES6:* Objects can be destructured using pattern matching
+var {foo} = {foo: "bar"};
+foo // = "bar"
+
+// *ES6:* Objects can be destructured to variables with different names while
+// pattern matching
+var {foo, moo: baz} = {foo: "bar", moo: "car"};
+foo // = "bar"
+baz // = "car"
+
+// *ES6:* Objects can be destructured with default values while pattern matching
+var {foo="bar"} = {moo: "car"};
+foo // = "bar"
+
+// *ES6:* Destructuring an object is fail-soft
+var {foo} = {};
+foo // = undefined
+
+// *ES6:* ES6 includes iterators and the iterable protocol. To access the
+// iterator for any object, use `Symbol.iterator` as the key to get the
+// iterator object.
+var iterator1 = myArr[Symbol.iterator]; // = returns iterator function
+
+// *ES6:* If a value does exist at `Symbol.iterator`, the collection is
+// iterable.
+if (typeof myObj[Symbol.iterator] !== "undefined") {
+    console.log("You can iterator over myObj");
+}
+
+// *ES6:* Use the next() function of the iterator object, to receive the next
+// object with two properties: `value`, and `done`.
+var iterator = myArr[Symbol.iterator]; // myArr = [1,2]
+var myArrItem = null;
+
+myArrItem = iterator.next();
+myArrItem.value; // = 1
+myArrItem.done; // = false
+
+myArrItem = iterator.next();
+myArrItem.value; // = 2
+myArrItem.done; // = false
+
+myArrItem = iterator.next();
+myArrItem.value; // = undefined
+myArrItem.done; // = true
+
+// *ES6:* Maps are iterable key-value pairs. Create a new map using `new Map()`.
+var myMap = new Map();
+
+// *ES6:* Set and get entries from the map using .set and .get functions.
+myMap.set("name", "Douglas");
+myMap.get("name"); // = "Douglas"
+myMap.has("name"); // = true
+myMap.delete("name");
+
+// *ES6:* Sets are iterable unique values. Create a new set using `new Set()`.
+var mySet = new Set([1,2,2]);
+
+// *ES6:* Since sets allow only unique values, the duplicate values will be
+// ignored.
+console.log([...mySet]); // = [1,2]
 
 ///////////////////////////////////
 // 3. Logic and Control Structures
@@ -297,6 +420,13 @@ function myFunction(){
 }
 myFunction(); // = undefined
 
+// *ES6:*  Functions can use default values for their parameters
+function default(x, y = 2) {
+
+    retun x + y;
+}
+default(10); // == 12
+
 // JavaScript functions are first class objects, so they can be reassigned to
 // different variable names and passed to other functions as arguments - for
 // example, when supplying an event handler:
@@ -318,6 +448,11 @@ setInterval(myFunction, 5000);
 setTimeout(function(){
     // this code will be called in 5 seconds' time
 }, 5000);
+
+// *ES6:*  There is a shorthand for defining an anonymous function that
+follows the `param => returnValue` format.
+
+setTimeout(() => console.log('5 seconds, are up.'), 5000);
 
 // JavaScript has function scope; functions get their own scope but other blocks
 // do not.
@@ -356,6 +491,22 @@ function sayHelloInFiveSeconds(name){
     // access to the `prompt` variable when it is finally called.
 }
 sayHelloInFiveSeconds("Adam"); // will open a popup with "Hello, Adam!" in 5s
+
+// *ES6:*  Functions can be called with an array of items prefix with `...` that
+will be spread as parameters
+function spread(x, y, z) {
+
+    retun x + y + z;
+}
+spread(...[1,2,3]); // == 6
+
+// *ES6:*  Functions can received a number of parameters as an array by using
+`...` in their parameters
+function rest(x, ...rest) {
+
+    retun rest.length;
+}
+rest(1,1,2,3,4,5); // == 5
 
 ///////////////////////////////////
 // 5. More about Objects; Constructors and Prototypes
@@ -534,6 +685,72 @@ if (Object.create === undefined){ // don't overwrite it if it exists
         return new Constructor();
     }
 }
+
+// *ES6:* Objects can have proxies setup on them that will allow us to trap
+// and intercept actions to object properties. To setup a proxy on an object:
+var proxyObject = new Proxy(object, handler);
+
+// *ES6:* ... and use a handler object that has traps for actions. Handler.get will
+// trap all read access to the object properties
+var handler = {
+  get (target, key) {
+    console.info('Get on property' + key);
+    return target[key];
+  }
+}
+
+// *ES6:* You may also setup a trap for Handler.set, that will trap all write actions
+// on object properties.
+var handler = {
+  get (target, key) {
+    console.info('Get on property' + key);
+    return target[key];
+  },
+  set (target, key, value) {
+    console.info('Set on property' + key);
+    return true;
+  }
+}
+
+// *ES6:* Classes can be defined using the `class` keyword. This is only
+// syntactic sugar on top of prototypal inheritence. The constructor methods
+// uses the `constructor` keyword, and static methods use the `static` keyword
+
+class Foo {
+    constructor() {console.log("constructing Foo");}
+    bar() {return "bar";}
+    static baz() {return "baz";}
+}
+
+// *ES6:* New classes can be initiated using the `new` keywork, and classes can
+// be inherited using the `extends` keyword
+
+var FooObject = new Foo(); // = "constructing Foo"
+class Zoo extends Foo {
+    ...
+}
+
+// *ES6:* Static methods can be accessed using the Class, and other methods
+// using the objects
+
+Foo.baz() // = "baz"
+FooObject.bar() // = "bar"
+
+// *ES6:* ES6 allows you to export values as a module. Values can be anything
+// from a value type to an object, or even a function.
+var api = {
+  foo: "bar",
+  baz: "ponyfoo"
+};
+export default api;
+
+// *ES6:* `export default` is the syntax to export the object using the default
+// case when no custom naming is done. And to import there are a few ways:
+import coolapi from "api"; // = import default export into a variable
+import {foo, baz} from "api"; // = import specific named exports
+import {foo as moo, baz} from "api"; // = use alias while importing
+import _, {map} from "api"; // = mix and match default and named imports
+import * as coolapi from "api"; // = imports the namespace object for a module
 ```
 
 ## Further Reading
@@ -559,6 +776,9 @@ of the language.
 
 [Javascript: The Right Way][9] is a guide intended to introduce new developers to JavaScript and help experienced developers learn more about its best practices.
 
+[ES6 Fiddle][10] lets you experiment with ES6 code on a browser. To use ES6 in
+your projects, use [Babel JS][11] to transform ES6 code to ES5, thus making it
+compatible with all current browsers.
 
 In addition to direct contributors to this article, some content is adapted from
 Louie Dinh's Python tutorial on this site, and the [JS Tutorial][7] on the
@@ -574,3 +794,5 @@ Mozilla Developer Network.
 [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 [8]: http://eloquentjavascript.net/
 [9]: http://jstherightway.org/
+[10]: http://www.es6fiddle.net/
+[11]: https://babeljs.io/
