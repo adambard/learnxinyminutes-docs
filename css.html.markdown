@@ -25,11 +25,11 @@ The main focus of this article is on the syntax and some general tips.
    there are no "one-line comments"; this is the only comment style */
 
 /* ####################
-   ## SELECTORS
+   ##### SELECTORS ####
    #################### */
 
 /* the selector is used to target an element on a page.
-selector { property: value; /* more properties...*/ }
+selector { property: value;  property2: value2; ... } */
 
 /*
 Here is an example element:
@@ -127,7 +127,7 @@ selector::after {}
 .parent > * { } /* all children */
 
 /* ####################
-   ## PROPERTIES
+   #### PROPERTIES ####
    #################### */
 
 selector {
@@ -194,7 +194,7 @@ Save a CSS stylesheet with the extension `.css`.
 
 ## Precedence or Cascade
 
-An element may be targeted by multiple selectors and may have a property set on it in more than once. In these cases, one of the rules takes precedence over others. Generally, a rule in a more specific selector take precedence over a less specific one, and a rule occuring later in the stylesheet overwrites a previous one.
+An element may be targeted by multiple selectors and may have a property set on it more than once. In these cases, one of the rules takes precedence over others. Generally, a rule in a more specific selector take precedence over a less specific one, and a rule occuring later in the stylesheet overwrites a previous one.
 
 This process is called cascading, hence the name Cascading Style Sheets.
 

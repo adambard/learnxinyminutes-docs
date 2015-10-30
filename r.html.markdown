@@ -138,7 +138,7 @@ round(runif(7, min=.5, max=6.5))
 # 1 4 6 1 4 6 4
 # Your numbers will differ from mine unless we set the same random.seed(31337)
 
-# Draw from a standard Gaussian 9 times
+# Draw from a standard Gaussian (normal distribution) 9 times
 rnorm(9)
 # [1]  0.07528471  1.03499859  1.34809556 -0.82356087  0.61638975 -1.88757271
 # [7] -0.59975593  0.57629164  1.08455362
@@ -155,7 +155,8 @@ rnorm(9)
 # There are others, but these are the bare minimum you need to
 # get started.
 
-# INTEGERS
+### INTEGERS ###
+
 # Long-storage integers are written with L
 5L # 5
 class(5L) # "integer"
@@ -167,7 +168,8 @@ c(4L, 5L, 8L, 3L) # 4 5 8 3
 length(c(4L, 5L, 8L, 3L)) # 4
 class(c(4L, 5L, 8L, 3L)) # "integer"
 
-# NUMERICS
+### NUMERICS ###
+
 # A "numeric" is a double-precision floating-point number
 5 # 5
 class(5) # "numeric"
@@ -182,9 +184,10 @@ c(3,3,3,2,2,1) # 3 3 3 2 2 1
 class(Inf)	# "numeric"
 class(-Inf)	# "numeric"
 # You might use "Inf", for example, in integrate(dnorm, 3, Inf);
-# this obviates Z-score tables.
+# this eliminates the need for Z-score tables.
 
-# BASIC ARITHMETIC
+### BASIC ARITHMETIC###
+
 # You can do arithmetic with numbers
 # Doing arithmetic on a mix of integers and numerics gives you another numeric
 10L + 66L # 76      # integer plus integer gives integer
@@ -207,7 +210,8 @@ c(1,2,3,1,2,3) * c(1,2) # 1 4 3 2 2 6
 # Matching lengths is better practice and easier to read
 c(1,2,3,1,2,3) * c(1,2,1,2,1,2) 
 
-# CHARACTERS
+### CHARACTERS ###
+
 # There's no difference between strings and characters in R
 "Horatio" # "Horatio"
 class("Horatio") # "character"
@@ -228,11 +232,12 @@ letters
 # [20] "t" "u" "v" "w" "x" "y" "z"
 month.abb # "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"
 
-# LOGICALS
+### LOGICALS ###
+
 # In R, a "logical" is a boolean
 class(TRUE)	# "logical"
 class(FALSE)	# "logical"
-# Their behavior is normal
+# They behave just like regular booleans
 TRUE == TRUE	# TRUE
 TRUE == FALSE	# FALSE
 FALSE != FALSE	# FALSE
@@ -253,7 +258,8 @@ isTRUE(TRUE)	# TRUE
 c('Z', 'o', 'r', 'r', 'o') == "Zorro" # FALSE FALSE FALSE FALSE FALSE
 c('Z', 'o', 'r', 'r', 'o') == "Z" # TRUE FALSE FALSE FALSE FALSE
 
-# FACTORS
+### FACTORS ###
+
 # The factor class is for categorical data
 # Factors can be ordered (like childrens' grade levels) or unordered (like gender)
 factor(c("female", "female", "male", NA, "female"))
@@ -269,7 +275,8 @@ length(levels(factor("male"))) # 1
 data(infert) # "Infertility after Spontaneous and Induced Abortion"
 levels(infert$education) # "0-5yrs"  "6-11yrs" "12+ yrs"
 
-# NULL
+### NULL ###
+
 # "NULL" is a weird one; use it to "blank out" a vector
 class(NULL)	# NULL
 parakeet = c("beak", "feathers", "wings", "eyes")
@@ -281,7 +288,8 @@ parakeet
 # =>
 # NULL
 
-# TYPE COERCION
+### TYPE COERCION ###
+
 # Type-coercion is when you force a value to take on a different type
 as.character(c(6, 8)) # "6" "8"
 as.logical(c(1,0,1,1)) # TRUE FALSE  TRUE  TRUE
@@ -307,13 +315,15 @@ as.numeric("Bilbo")
 # We call this "assigning" the value to the variable.
 # Having variables lets us write loops, functions, and if/else statements
 
-# VARIABLES
+### VARIABLES ###
+
 # Lots of way to assign stuff:
 x = 5 # this is possible
 y <- "1" # this is preferred
 TRUE -> z # this works but is weird
 
-# LOOPS
+### LOOPS ###
+
 # We've got for loops
 for (i in 1:4) {
   print(i)
@@ -328,7 +338,8 @@ while (a > 4) {
 # Operations on entire vectors (i.e. a whole row, a whole column)
 # or apply()-type functions (we'll discuss later) are preferred
 
-# IF/ELSE
+### IF/ELSE ###
+
 # Again, pretty standard
 if (4 > 3) {
 	print("4 is greater than 3")
@@ -338,7 +349,8 @@ if (4 > 3) {
 # =>
 # [1] "4 is greater than 3"
 
-# FUNCTIONS
+### FUNCTIONS ###
+
 # Defined like so:
 jiggle <- function(x) {
 	x = x + rnorm(1, sd=.1)	#add in a bit of (controlled) noise
@@ -353,7 +365,7 @@ jiggle(5)	# 5±ε. After set.seed(2716057), jiggle(5)==5.005043
 # Data structures: Vectors, matrices, data frames, and arrays
 ###########################################################################
 
-# ONE-DIMENSIONAL
+### ONE-DIMENSIONAL ###
 
 # Let's start from the very beginning, and with something you already know: vectors.
 vec <- c(8, 9, 10, 11)
@@ -394,7 +406,7 @@ seq(from=0, to=31337, by=1337)
 #  [1]     0  1337  2674  4011  5348  6685  8022  9359 10696 12033 13370 14707
 # [13] 16044 17381 18718 20055 21392 22729 24066 25403 26740 28077 29414 30751
 
-# TWO-DIMENSIONAL (ALL ONE CLASS)
+### TWO-DIMENSIONAL (ALL ONE CLASS) ###
 
 # You can make a matrix out of entries all of the same type like so:
 mat <- matrix(nrow = 3, ncol = 2, c(1,2,3,4,5,6))
@@ -452,7 +464,7 @@ mat3
 # [2,]    6    7    0    4
 # Ah, everything of the same class. No coercions. Much better.
 
-# TWO-DIMENSIONAL (DIFFERENT CLASSES)
+### TWO-DIMENSIONAL (DIFFERENT CLASSES) ###
 
 # For columns of different types, use a data frame
 # This data structure is so useful for statistical programming,
@@ -578,7 +590,7 @@ students[students$house != "G",]
 # 5     R           Rowena         Cho    1
 # 6     S          Salazar       Draco    0
 
-# MULTI-DIMENSIONAL (ALL ELEMENTS OF ONE TYPE)
+### MULTI-DIMENSIONAL (ALL ELEMENTS OF ONE TYPE) ###
 
 # Arrays creates n-dimensional tables
 # All elements must be of the same type
@@ -605,7 +617,7 @@ array(c(c(c(2,300,4),c(8,9,0)),c(c(5,60,0),c(66,7,847))), dim=c(3,2,2))
 # [2,]   60    7
 # [3,]    0  847
 
-# LISTS (MULTI-DIMENSIONAL, POSSIBLY RAGGED, OF DIFFERENT TYPES)
+### LISTS (MULTI-DIMENSIONAL, POSSIBLY RAGGED, OF DIFFERENT TYPES) ###
 
 # Finally, R has lists (of vectors)
 list1 <- list(time = 1:40)
