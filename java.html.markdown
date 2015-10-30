@@ -8,6 +8,7 @@ contributors:
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
     - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
     - ["Rachel Stiyer", "https://github.com/rstiyer"]
+    - ["Abhishek C. Sharma", "https://github.com/portgasd666"]
 filename: LearnJava.java
 ---
 
@@ -127,13 +128,13 @@ public class LearnJava {
         // of bytes and are manipulated using functions built into BigInteger
         //
         // BigInteger can be initialized using an array of bytes or a string.
-        
+
         BigInteger fooBigInteger = new BigDecimal(fooByteArray);
 
 
         // BigDecimal - Immutable, arbitrary-precision signed decimal number
         //
-        // A BigDecimal takes two parts: an arbitrary precision integer 
+        // A BigDecimal takes two parts: an arbitrary precision integer
         // unscaled value and a 32-bit integer scale
         //
         // BigDecimal allows the programmer complete control over decimal
@@ -290,7 +291,7 @@ public class LearnJava {
             // Iterated 10 times, fooFor 0->9
         }
         System.out.println("fooFor Value: " + fooFor);
-        
+
         // Nested For Loop Exit with Label
         outer:
         for (int i = 0; i < 10; i++) {
@@ -301,7 +302,7 @@ public class LearnJava {
             }
           }
         }
-        
+
         // For Each Loop
         // The for loop is also able to iterate over arrays as well as objects
         // that implement the Iterable interface.
@@ -333,7 +334,7 @@ public class LearnJava {
                      break;
         }
         System.out.println("Switch Case Result: " + monthString);
-        
+
         // Starting in Java 7 and above, switching Strings works like this:
         String myAnswer = "maybe";
         switch(myAnswer) {
@@ -381,6 +382,41 @@ public class LearnJava {
         // You can also cast Java objects, there's a lot of details and deals
         // with some more intermediate concepts. Feel free to check it out here:
         // http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
+
+        ////////////////////////////////////////
+        // Variable Scope within Functions
+        ////////////////////////////////////////
+
+        // The scope of a variable refers to the part of the program that it is
+        // accessible and can be used without causing compilation errors
+
+        // Within functions Java has block scope, that is when you use a variable
+        // the compiler first looks for it in the current block and if it is not
+        // found then goes out to the next enclosing block and this continues until
+        // either it is found or the search reaches the top level block which is the function
+        // itself and then results in a compile time error
+
+        int scopedOuter = 5;
+        if(scopedOuter == 5) {
+          int scopedInner = 6;
+          // The value for scopedInner is obtained from this block whereas
+          // the search for scopedOuter bubbles out to the outer enclosing block
+          // where it is found
+          System.out.println(scopedOuter + scopedInner); // prints 11
+        }
+
+        // Note that Java does not have impicit shadowing of variables inside
+        // blocks and it is an compile time error to declare a variable having
+        // the same name as one in an outer block in an inner block
+        // In the above example the line
+        // int scopedOuter = 6;
+        // inside the if block would cause an error
+
+        // The above example is by no means the entire story when it comes to looking
+        // for varialbes. In addition to the above we have to worry about class instance
+        // variables, static variables and some other details.
+
+
 
 
         ///////////////////////////////////////
@@ -452,10 +488,10 @@ class Bicycle {
 
     static String className; // Static class variable
 
-    // Static block 
+    // Static block
     // Java has no implementation of static constructors, but
-    // has a static block that can be used to initialize class variables 
-    // (static variables). 
+    // has a static block that can be used to initialize class variables
+    // (static variables).
     // This block will be called when the class is loaded.
     static {
         className = "Bicycle";
@@ -564,7 +600,7 @@ public interface Digestible {
 
 // We can now create a class that implements both of these interfaces.
 public class Fruit implements Edible, Digestible {
-  
+
     @Override
     public void eat() {
         // ...
