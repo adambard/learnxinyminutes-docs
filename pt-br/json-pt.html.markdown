@@ -64,6 +64,6 @@ Mais informação em: http://www.json.org/
   , "outro comentário": "que bom"
   },
 
-  "que foi curto": "E, você está feito. Você já sabe tudo que JSON tem para oferecer.".
+  "que foi curto": "E, você está feito. Você já sabe tudo que JSON tem para oferecer."
 }
 ```
