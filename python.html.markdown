@@ -15,8 +15,8 @@ executable pseudocode.
 Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
 
 Note: This article applies to Python 2.7 specifically, but should be applicable
-to Python 2.x. Python 2.7 is reachong end of life and will stop beeign maintained in 2020,
-it is though recommended to start learnign Python with Python 3.
+to Python 2.x. Python 2.7 is reaching end of life and will stop being maintained in 2020,
+it is though recommended to start learning Python with Python 3.
 For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
 
 It is also possible to write Python code which is compatible with Python 2.7 and 3.x at the same time,
@@ -123,8 +123,12 @@ not False  # => True
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
 
-# % can be used to format strings, like this:
-"%s can be %s" % ("strings", "interpolated")
+#String formatting with %
+#Even though the % string operator will be deprecated on Python 3.1 and removed 
+#later at some time, it may still be good to know how it works.
+x = 'apple'
+y = 'lemon'
+z = "The items in the basket are %s and %s" % (x,y)
 
 # A newer way to format strings is the format method.
 # This method is the preferred way
