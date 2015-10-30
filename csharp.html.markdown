@@ -6,6 +6,8 @@ contributors:
     - ["Melvyn Laïly", "http://x2a.yt"]
     - ["Shaun McCarthy", "http://www.shaunmccarthy.com"]
     - ["Wouter Van Schandevijl", "http://github.com/laoujin"]
+    - ["Jo Pearce", "http://github.com/jdpearce"]
+    - ["Chris Zimmerman", "https://github.com/chriszimmerman"]
 filename: LearnCSharp.cs
 ---
 
@@ -159,7 +161,7 @@ on a new line! ""Wow!"", the masses cried";
             // List<datatype> <var name> = new List<datatype>();
             List<int> intList = new List<int>();
             List<string> stringList = new List<string>();
-            List<int> z = new List<int> { 9000, 1000, 1337 }; // intialize
+            List<int> z = new List<int> { 9000, 1000, 1337 }; // initialize
             // The <> are for generics - Check out the cool stuff section
 
             // Lists don't default to a value;
@@ -393,6 +395,7 @@ on a new line! ""Wow!"", the masses cried";
             ref int maxCount, // Pass by reference
             out int count)
         {
+            //the argument passed in as 'count' will hold the value of 15 outside of this function
             count = 15; // out param must be assigned before control leaves the method
         }
 
@@ -418,12 +421,48 @@ on a new line! ""Wow!"", the masses cried";
                 // Item is an int
                 Console.WriteLine(item.ToString());
         }
+        
+        // YIELD
+        // Usage of the "yield" keyword indicates that the method it appears in is an Iterator
+        // (this means you can use it in a foreach loop)
+        public static IEnumerable<int> YieldCounter(int limit = 10)
+        {
+            for (var i = 0; i < limit; i++)
+                yield return i;
+        }
+
+        // which you would call like this :
+        public static void PrintYieldCounterToConsole()
+        {
+            foreach (var counter in YieldCounter())
+                Console.WriteLine(counter);
+        }
+        
+        // you can use more than one "yield return" in a method
+        public static IEnumerable<int> ManyYieldCounter()
+        {
+            yield return 0;
+            yield return 1;
+            yield return 2;
+            yield return 3;
+        }
+        
+        // you can also use "yield break" to stop the Iterator
+        // this method would only return half of the values from 0 to limit.
+        public static IEnumerable<int> YieldCounterWithBreak(int limit = 10)
+        {
+            for (var i = 0; i < limit; i++)
+            {
+                if (i > limit/2) yield break;
+                yield return i;
+            }
+        }             
 
         public static void OtherInterestingFeatures()
         {
             // OPTIONAL PARAMETERS
             MethodSignatures(3, 1, 3, "Some", "Extra", "Strings");
-            MethodSignatures(3, another: 3); // explicity set a parameter, skipping optional ones
+            MethodSignatures(3, another: 3); // explicitly set a parameter, skipping optional ones
 
             // BY REF AND OUT PARAMETERS
             int maxCount = 0, count; // ref params must have value
@@ -443,6 +482,9 @@ on a new line! ""Wow!"", the masses cried";
             // ?? is syntactic sugar for specifying default value (coalesce)
             // in case variable is null
             int notNullable = nullable ?? 0; // 0
+            
+            // ?. is an operator for null-propagation - a shorthand way of checking for null
+            nullable?.Print(); // Use the Print() extension method if nullable isn't null
 
             // IMPLICITLY TYPED VARIABLES - you can let the compiler work out what the type is:
             var magic = "magic is a string, at compile time, so you still get type safety";
@@ -610,7 +652,7 @@ on a new line! ""Wow!"", the masses cried";
             {
                 return _cadence;
             }
-            set // set - define a method to set a proprety
+            set // set - define a method to set a property
             {
                 _cadence = value; // Value is the value passed in to the setter
             }
@@ -750,7 +792,7 @@ on a new line! ""Wow!"", the masses cried";
 
         // It's also possible to define custom Indexers on objects.
         // All though this is not entirely useful in this example, you
-        // could do bicycle[0] which yields "chris" to get the first passenger or
+        // could do bicycle[0] which returns "chris" to get the first passenger or
         // bicycle[1] = "lisa" to set the passenger. (of this apparent quattrocycle)
         private string[] passengers = { "chris", "phil", "darren", "regina" };
 
@@ -761,7 +803,7 @@ on a new line! ""Wow!"", the masses cried";
             }
 
             set {
-                return passengers[i] = value;
+                passengers[i] = value;
             }
         }
 
@@ -837,7 +879,8 @@ on a new line! ""Wow!"", the masses cried";
         bool Broken { get; } // interfaces can contain properties as well as methods & events
     }
 
-    // Class can inherit only one other class, but can implement any amount of interfaces
+    // Class can inherit only one other class, but can implement any amount of interfaces, however
+    // the base class name must be the first in the list and all interfaces follow
     class MountainBike : Bicycle, IJumpable, IBreakable
     {
         int damage = 0;
@@ -870,13 +913,42 @@ on a new line! ""Wow!"", the masses cried";
 
         public DbSet<Bicycle> Bikes { get; set; }
     }
+    
+    // Classes can be split across multiple .cs files
+    // A1.cs
+    public partial class A 
+    {
+        public static void A1()
+        {
+            Console.WriteLine("Method A1 in class A");
+        }
+    }
+    
+    // A2.cs
+    public partial class A
+    {
+        public static void A2()
+        {
+            Console.WriteLine("Method A2 in class A");
+        }
+    }
+    
+    // Program using the partial class "A"
+    public class Program 
+    {
+        static void Main()
+        {
+            A.A1();
+            A.A2();
+        }
+    }
 } // End Namespace
 ```
 
 ## Topics Not Covered
 
  * Attributes
- * async/await, yield, pragma directives
+ * async/await, pragma directives
  * Web Development
  	* ASP.NET MVC & WebApi (new)
  	* ASP.NET Web Forms (old)

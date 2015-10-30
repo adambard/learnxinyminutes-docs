@@ -12,7 +12,8 @@ contributors:
   - ["Dzianis Dashkevich", "https://github.com/dskecse"]
   - ["Levi Bostian", "https://github.com/levibostian"]
   - ["Rahil Momin", "https://github.com/iamrahil"]
-
+  - ["Gabriel Halley", "https://github.com/ghalley"]
+  - ["Persa Zula", "http://persazula.com"]
 ---
 
 ```ruby
@@ -39,6 +40,8 @@ You shouldn't either
 10 * 2 #=> 20
 35 / 5 #=> 7
 2**5 #=> 32
+5 % 3 #=> 2
+5 ^ 6 #=> 3
 
 # Arithmetic is just syntactic sugar
 # for calling a method on an object
@@ -106,6 +109,12 @@ placeholder = 'use string interpolation'
 'hello ' + 3 #=> TypeError: can't convert Fixnum into String
 'hello ' + 3.to_s #=> "hello 3"
 
+# Combine strings and operators
+'hello ' * 3 #=> "hello hello hello "
+
+# Append to string
+'hello' << ' world' #=> "hello world"
+
 # print to the output with a newline at the end
 puts "I'm printing!"
 #=> I'm printing!
@@ -160,6 +169,7 @@ array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 # Arrays can be indexed
 # From the front
 array[0] #=> 1
+array.first #=> 1
 array[12] #=> nil
 
 # Like arithmetic, [var] access
@@ -170,6 +180,7 @@ array.[] 12 #=> nil
 
 # From the end
 array[-1] #=> 5
+array.last #=> 5
 
 # With a start index and length
 array[2, 3] #=> [3, 4, 5]
@@ -264,6 +275,12 @@ hash.each do |key, value|
   puts "#{key} is #{value}"
 end
 
+# If you still need and index you can use "each_with_index" and define an index
+# variable
+array.each_with_index do |element, index|
+  puts "#{element} is number #{index} in the array"
+end
+
 counter = 1
 while counter <= 5 do
   puts "iteration #{counter}"
@@ -275,7 +292,7 @@ end
 #=> iteration 4
 #=> iteration 5
 
-# There are a bunch of other helpful looping functions in Ruby, 
+# There are a bunch of other helpful looping functions in Ruby,
 # for example "map", "reduce", "inject", the list goes on. Map,
 # for instance, takes the array it's looping over, does something
 # to it as defined in your block, and returns an entirely new array.

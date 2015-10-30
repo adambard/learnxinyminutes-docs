@@ -4,6 +4,8 @@ contributors:
     - ["Luca 'Kino' Maroni", "https://github.com/kino90"]
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
+translators:
+    - ["Tommaso Pifferi","http://github.com/neslinesli93"]
 filename: learnelixir-it.ex
 lang: it-it
 ---
@@ -379,6 +381,12 @@ spawn(f) #=> #PID<0.40.0>
 # Per passare messaggi si usa l'operatore `send`.
 # Perché tutto questo sia utile dobbiamo essere capaci di ricevere messaggi, 
 # oltre ad inviarli. Questo è realizzabile con `receive`:
+
+# Il blocco `receive do` viene usato per mettersi in ascolto di messaggi
+# ed elaborarli quando vengono ricevuti. Un blocco `receive do` elabora
+# un solo messaggio ricevuto: per fare elaborazione multipla di messaggi, 
+# una funzione con un blocco `receive do` al suo intero dovrà chiamare
+# ricorsivamente sé stessa per entrare di nuovo nel blocco `receive do`.
 defmodule Geometria do
   def calcolo_area do
     receive do
@@ -394,6 +402,8 @@ end
 
 # Compila il modulo e crea un processo che esegue `calcolo_area` nella shell
 pid = spawn(fn -> Geometria.calcolo_area() end) #=> #PID<0.40.0>
+# Alternativamente
+pid = spawn(Geometria, :calcolo_area, [])
 
 # Invia un messaggio a `pid` che farà match su un pattern nel blocco in receive 
 send pid, {:rettangolo, 2, 3}

@@ -13,7 +13,7 @@ filename: LearnObjectiveC.m
 Objective-C is the main programming language used by Apple for the OS X and iOS operating systems and their respective frameworks, Cocoa and Cocoa Touch.
 It is a general-purpose, object-oriented programming language that adds Smalltalk-style messaging to the C programming language.
 
-```objective_c
+```objective-c
 // Single-line comments start with //
 
 /*
@@ -148,7 +148,13 @@ int main (int argc, const char * argv[])
     [mutableDictionary setObject:@"value1" forKey:@"key1"];
     [mutableDictionary setObject:@"value2" forKey:@"key2"];
     [mutableDictionary removeObjectForKey:@"key1"];
-
+    
+    // Change types from Mutable To Immutable
+    //In general [object mutableCopy] will make the object mutable whereas [object copy] will make the object immutable
+    NSMutableDictionary *aMutableDictionary = [aDictionary mutableCopy];
+    NSDictionary *mutableDictionaryChanged = [mutableDictionary copy];
+    
+    
     // Set object
     NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
     NSLog(@"%@", set); // prints => {(Hello, World)} (may be in different order)
@@ -682,7 +688,7 @@ addUp = ^(int n) { // Remove (int n) to have a block that doesn't take in any pa
     mutableVar = 32; // Assigning new value to __block variable.
     return n + outsideVar; // Return statements are optional.
 }
-int addUp = add(10 + 16); // Calls block code with arguments.
+int addUp = addUp(10 + 16); // Calls block code with arguments.
 // Blocks are often used as arguments to functions to be called later, or for callbacks.
 @implementation BlockExample : NSObject
 

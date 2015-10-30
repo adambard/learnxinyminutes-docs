@@ -6,6 +6,8 @@ contributors:
     - ["Madison Dickson", "http://github.com/mix3d"]
     - ["Simon Morgan", "http://sjm.io/"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
+    - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
+    - ["Rachel Stiyer", "https://github.com/rstiyer"]
 filename: LearnJava.java
 ---
 
@@ -95,11 +97,13 @@ public class LearnJava {
         // Note: Java has no unsigned types.
 
         // Float - Single-precision 32-bit IEEE 754 Floating Point
+        // 2^-149 <= float <= (2-2^-23) * 2^127
         float fooFloat = 234.5f;
         // f or F is used to denote that this variable value is of type float;
         // otherwise it is treated as double.
 
         // Double - Double-precision 64-bit IEEE 754 Floating Point
+        // 2^-1074 <= x <= (2-2^-52) * 2^1023
         double fooDouble = 123.4;
 
         // Boolean - true & false
@@ -114,6 +118,34 @@ public class LearnJava {
         // but they can be initialized later.
         final double E;
         E = 2.71828;
+
+
+        // BigInteger - Immutable arbitrary-precision integers
+        //
+        // BigInteger is a data type that allows programmers to manipulate
+        // integers longer than 64-bits. Integers are stored as an array of
+        // of bytes and are manipulated using functions built into BigInteger
+        //
+        // BigInteger can be initialized using an array of bytes or a string.
+        
+        BigInteger fooBigInteger = new BigDecimal(fooByteArray);
+
+
+        // BigDecimal - Immutable, arbitrary-precision signed decimal number
+        //
+        // A BigDecimal takes two parts: an arbitrary precision integer 
+        // unscaled value and a 32-bit integer scale
+        //
+        // BigDecimal allows the programmer complete control over decimal
+        // rounding. It is recommended to use BigDecimal with currency values
+        // and where exact decimal precision is required.
+        //
+        // BigDecimal can be initialized with an int, long, double or String
+        // or by initializing the unscaled value (BigInteger) and scale (int).
+
+        BigDecimal fooBigDecimal = new BigDecimal(fooBigInteger, fooInt);
+
+
 
         // Strings
         String fooString = "My String Is Here!";
@@ -153,8 +185,12 @@ public class LearnJava {
         // LinkedLists - Implementation of doubly-linked list. All of the
         //               operations perform as could be expected for a
         //               doubly-linked list.
-        // Maps - A set of objects that maps keys to values. A map cannot
-        //        contain duplicate keys; each key can map to at most one value.
+        // Maps - A set of objects that map keys to values. Map is
+        //        an interface and therefore cannot be instantiated.
+        //        The type of keys and values contained in a Map must
+        //        be specified upon instantiation of the implementing
+        //        class. Each key may map to only one corresponding value,
+        //        and each key may appear only once (no duplicates).
         // HashMaps - This class uses a hashtable to implement the Map
         //            interface. This allows the execution time of basic
         //            operations, such as get and insert element, to remain
@@ -219,7 +255,7 @@ public class LearnJava {
 
         // If statements are c-like
         int j = 10;
-        if (j == 10){
+        if (j == 10) {
             System.out.println("I get printed");
         } else if (j > 10) {
             System.out.println("I don't");
@@ -254,7 +290,18 @@ public class LearnJava {
             // Iterated 10 times, fooFor 0->9
         }
         System.out.println("fooFor Value: " + fooFor);
-
+        
+        // Nested For Loop Exit with Label
+        outer:
+        for (int i = 0; i < 10; i++) {
+          for (int j = 0; j < 10; j++) {
+            if (i == 5 && j ==5) {
+              break outer;
+              // breaks out of outer loop instead of only the inner one
+            }
+          }
+        }
+        
         // For Each Loop
         // The for loop is also able to iterate over arrays as well as objects
         // that implement the Iterable interface.
@@ -286,6 +333,23 @@ public class LearnJava {
                      break;
         }
         System.out.println("Switch Case Result: " + monthString);
+        
+        // Starting in Java 7 and above, switching Strings works like this:
+        String myAnswer = "maybe";
+        switch(myAnswer) {
+            case "yes":
+                System.out.println("You answered yes.");
+                break;
+            case "no":
+                System.out.println("You answered no.");
+                break;
+            case "maybe":
+                System.out.println("You answered maybe.");
+                break;
+            default:
+                System.out.println("You answered " + myAnswer);
+                break;
+        }
 
         // Conditional Shorthand
         // You can use the '?' operator for quick assignments or logic forks.
@@ -385,6 +449,17 @@ class Bicycle {
     private int speed;  // Private: Only accessible from within the class
     protected int gear; // Protected: Accessible from the class and subclasses
     String name; // default: Only accessible from within this package
+
+    static String className; // Static class variable
+
+    // Static block 
+    // Java has no implementation of static constructors, but
+    // has a static block that can be used to initialize class variables 
+    // (static variables). 
+    // This block will be called when the class is loaded.
+    static {
+        className = "Bicycle";
+    }
 
     // Constructors are a way of creating classes
     // This is a constructor
@@ -622,6 +697,64 @@ public abstract class Mammal()
         return true;
     }
 }
+
+
+// Enum Type
+//
+// An enum type is a special data type that enables for a variable to be a set of predefined constants. The        // variable must be equal to one of the values that have been predefined for it.
+// Because they are constants, the names of an enum type's fields are in uppercase letters.
+// In the Java programming language, you define an enum type by using the enum keyword. For example, you would 
+// specify a days-of-the-week enum type as:
+
+public enum Day {
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
+    THURSDAY, FRIDAY, SATURDAY 
+}
+
+// We can use our enum Day like that:
+
+public class EnumTest {
+    
+    // Variable Enum
+    Day day;
+    
+    public EnumTest(Day day) {
+        this.day = day;
+    }
+    
+    public void tellItLikeItIs() {
+        switch (day) {
+            case MONDAY:
+                System.out.println("Mondays are bad.");
+                break;
+                    
+            case FRIDAY:
+                System.out.println("Fridays are better.");
+                break;
+                         
+            case SATURDAY: 
+            case SUNDAY:
+                System.out.println("Weekends are best.");
+                break;
+                        
+            default:
+                System.out.println("Midweek days are so-so.");
+                break;
+        }
+    }
+    
+    public static void main(String[] args) {
+        EnumTest firstDay = new EnumTest(Day.MONDAY);
+        firstDay.tellItLikeItIs(); // => Mondays are bad.
+        EnumTest thirdDay = new EnumTest(Day.WEDNESDAY);
+        thirdDay.tellItLikeItIs(); // => Midweek days are so-so.
+    }
+}
+
+// Enum types are much more powerful than we show above. 
+// The enum body can include methods and other fields.
+// You can se more at https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
+
 ```
 
 ## Further Reading
@@ -645,7 +778,7 @@ The links provided here below are just to get an understanding of the topic, fee
 
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
 
-* [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+* [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
 
 **Online Practice and Tutorials**
 
