@@ -2,53 +2,45 @@
 language: markdown
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
-    - ["Jacob Ward", "http://github.com/JacobCWard/"]
 filename: markdown.md
 ---
 
-
 Markdown was created by John Gruber in 2004. It's meant to be an easy to read and write syntax which converts easily to HTML (and now many other formats as well).
 
-Markdown is a superset of HTML, so any HTML file is valid Markdown, that
+Give me as much feedback as you want! / Feel free to fork and pull request!
+
+
+```markdown
+<!-- Markdown is a superset of HTML, so any HTML file is valid Markdown, that
 means we can use HTML elements in Markdown, such as the comment element, and
 they won't be affected by a markdown parser. However, if you create an HTML
 element in your markdown file, you cannot use markdown syntax within that
-element's contents.
+element's contents. -->
 
-Markdown also varies in implementation from one parser to a next. This
+<!-- Markdown also varies in implementation from one parser to a next. This
 guide will attempt to clarify when features are universal or when they are
-specific to a certain parser.
+specific to a certain parser. -->
 
-- [Headings](#headings)
-- [Simple Text Styles](#simple-text-styles)
-
-## Headings
-
-You can create HTML elements `<h1>` through `<h6>` easily by prepending the
-text you want to be in that element by a number of hashes (#).
-
-```markdown
+<!-- Headers -->
+<!-- You can create HTML elements <h1> through <h6> easily by prepending the
+text you want to be in that element by a number of hashes (#) -->
 # This is an <h1>
 ## This is an <h2>
 ### This is an <h3>
 #### This is an <h4>
 ##### This is an <h5>
 ###### This is an <h6>
-```
-Markdown also provides us with two alternative ways of indicating h1 and h2.
 
-```markdown
+<!-- Markdown also provides us with two alternative ways of indicating h1 and h2 -->
 This is an h1
 =============
 
 This is an h2
 -------------
-```
-## Simple text styles
 
-Text can be easily styled as italic or bold using markdown.
+<!-- Simple text styles -->
+<!-- Text can be easily styled as italic or bold using markdown -->
 
-```markdown
 *This text is in italics.*
 _And so is this text._
 
@@ -58,11 +50,10 @@ __And so is this text.__
 ***This text is in both.***
 **_As is this!_**
 *__And this!__*
-```
 
-In Github Flavored Markdown, which is used to render markdown files on
-Github, we also have strikethrough:
-```markdown
+<!-- In Github Flavored Markdown, which is used to render markdown files on
+Github, we also have strikethrough: -->
+
 ~~This text is rendered with strikethrough.~~
 
 <!-- Paragraphs are a one or multiple adjacent lines of text separated by one or
@@ -92,9 +83,7 @@ There's a <br /> above me!
 > You can also use more than one level
 >> of indentation?
 > How neat is that?
-```
 
-```markdown
 <!-- Lists -->
 <!-- Unordered lists can be made using asterisks, pluses, or hyphens -->
 
