@@ -153,12 +153,13 @@ inside your code -->
 John didn't even know what the `go_to()` function did!
 
 <!-- In Github Flavored Markdown, you can use a special syntax for code -->
-
-\`\`\`ruby <!-- except remove those backslashes when you do this, just ```ruby ! -->
-def foobar
-    puts "Hello world!"
-end
-\`\`\` <!-- here too, no backslashes, just ``` -->
+The extra indentation below is to render the fenced block as-is here.
+Omit it in your markdown.
+    ```ruby
+    def foobar
+        puts "Hello world!"
+    end
+    ```
 
 <!-- The above text doesn't require indenting, plus Github will use syntax
 highlighting of the language you specify after the ``` -->
