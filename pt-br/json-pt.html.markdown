@@ -3,6 +3,7 @@ language: json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]
+  - ["Francisco Marques", "https://github.com/ToFran"]
 translators:
   - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
 lang: pt-br
@@ -12,10 +13,8 @@ filename: learnjson-pt.json
 Como JSON é um formato de intercâmbio de dados, este será, muito provavelmente, o
 "Learn X in Y minutes" mais simples existente.
 
-JSON na sua forma mais pura não tem comentários em reais, mas a maioria dos analisadores 
-aceitarão comentários no estilo C (//, /\* \*/). Para os fins do presente, no entanto, 
-tudo o que é vai ser 100% JSON válido. Felizmente, isso meio que fala por si.
-
+JSON na sua forma mais pura não tem comentários, mas a maioria dos analisadores 
+aceitarão comentários no estilo C (//, /\* \*/). No entanto estes devem ser evitados para otimizar a compatibilidade.
 
 ```json
 {
