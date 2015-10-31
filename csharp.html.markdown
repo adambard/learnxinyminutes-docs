@@ -8,6 +8,7 @@ contributors:
     - ["Wouter Van Schandevijl", "http://github.com/laoujin"]
     - ["Jo Pearce", "http://github.com/jdpearce"]
     - ["Chris Zimmerman", "https://github.com/chriszimmerman"]
+    - ["Jason Collier", "https://github.com/jason-collier"]
 filename: LearnCSharp.cs
 ---
 
@@ -255,12 +256,16 @@ on a new line! ""Wow!"", the masses cried";
             {
                 // Start iteration 100 times, fooDoWhile 0->99
                 if (false)
+                {
                     continue; // skip the current iteration
+                }
 
                 fooDoWhile++;
 
                 if (fooDoWhile == 50)
+                {
                     break; // breaks from the loop completely
+                }
 
             } while (fooDoWhile < 100);
 
@@ -326,7 +331,9 @@ on a new line! ""Wow!"", the masses cried";
             // in this case: 0
             int tryInt;
             if (int.TryParse("123", out tryInt)) // Function is boolean
+            {
                 Console.WriteLine(tryInt);       // 123
+            }
 
             // Convert Integer To String
             // Convert class has a number of methods to facilitate conversions
@@ -409,7 +416,9 @@ on a new line! ""Wow!"", the masses cried";
         {
             TValue result;
             if (!dictionary.TryGetValue(key, out result))
+            {
                 return dictionary[key] = defaultItem;
+            }
             return result;
         }
 
@@ -418,26 +427,32 @@ on a new line! ""Wow!"", the masses cried";
         {
             // We can iterate, since T is a IEnumerable
             foreach (var item in toPrint)
+            {
                 // Item is an int
                 Console.WriteLine(item.ToString());
+            }
         }
-        
+
         // YIELD
         // Usage of the "yield" keyword indicates that the method it appears in is an Iterator
         // (this means you can use it in a foreach loop)
         public static IEnumerable<int> YieldCounter(int limit = 10)
         {
             for (var i = 0; i < limit; i++)
+            {
                 yield return i;
+            }
         }
 
         // which you would call like this :
         public static void PrintYieldCounterToConsole()
         {
             foreach (var counter in YieldCounter())
+            {
                 Console.WriteLine(counter);
+            }
         }
-        
+
         // you can use more than one "yield return" in a method
         public static IEnumerable<int> ManyYieldCounter()
         {
@@ -446,14 +461,17 @@ on a new line! ""Wow!"", the masses cried";
             yield return 2;
             yield return 3;
         }
-        
+
         // you can also use "yield break" to stop the Iterator
         // this method would only return half of the values from 0 to limit.
         public static IEnumerable<int> YieldCounterWithBreak(int limit = 10)
         {
             for (var i = 0; i < limit; i++)
             {
-                if (i > limit/2) yield break;
+                if (i > limit/2)
+                {
+                    yield break;
+                }
                 yield return i;
             }
         }             
@@ -482,7 +500,7 @@ on a new line! ""Wow!"", the masses cried";
             // ?? is syntactic sugar for specifying default value (coalesce)
             // in case variable is null
             int notNullable = nullable ?? 0; // 0
-            
+
             // ?. is an operator for null-propagation - a shorthand way of checking for null
             nullable?.Print(); // Use the Print() extension method if nullable isn't null
 
@@ -492,7 +510,8 @@ on a new line! ""Wow!"", the masses cried";
 
             // GENERICS
             //
-            var phonebook = new Dictionary<string, string>() {
+            var phonebook = new Dictionary<string, string>()
+            {
                 {"Sarah", "212 555 5555"} // Add some entries to the phone book
             };
 
@@ -513,7 +532,10 @@ on a new line! ""Wow!"", the masses cried";
 
                 // will no longer execute because CreateWithGears throws an exception
                 string some = "";
-                if (true) some = null;
+                if (true)
+                {
+                    some = null;
+                }
                 some.ToLower(); // throws a NullReferenceException
             }
             catch (NotSupportedException)
@@ -544,7 +566,8 @@ on a new line! ""Wow!"", the masses cried";
 
             // PARALLEL FRAMEWORK
             // http://blogs.msdn.com/b/csharpfaq/archive/2010/06/01/parallel-programming-in-net-framework-4-getting-started.aspx
-            var websites = new string[] {
+            var websites = new string[]
+            {
                 "http://www.google.com", "http://www.reddit.com",
                 "http://www.shaunmccarthy.com"
             };
@@ -565,7 +588,9 @@ on a new line! ""Wow!"", the masses cried";
 
             // This won't happen till after all requests have been completed
             foreach (var key in responses.Keys)
+            {
                 Console.WriteLine("{0}:{1}", key, responses[key]);
+            }
 
             // DYNAMIC OBJECTS (great for working with other languages)
             dynamic student = new ExpandoObject();
@@ -593,7 +618,9 @@ on a new line! ""Wow!"", the masses cried";
             // Hard to show here, but you get type ahead completion since the compiler can implicitly work
             // out the types above!
             foreach (var bikeSummary in bikeSummaries.Where(b => b.IsAwesome))
+            {
                 Console.WriteLine(bikeSummary.Name);
+            }
 
             // ASPARALLEL
             // And this is where things get wicked - combines linq and parallel operations
@@ -609,7 +636,9 @@ on a new line! ""Wow!"", the masses cried";
             // execution is delayed, which is great when querying a database
             var filter = db.Bikes.Where(b => b.HasTassles); // no query run
             if (42 > 6) // You can keep adding filters, even conditionally - great for "advanced search" functionality
+            {
                 filter = filter.Where(b => b.IsBroken); // no query run
+            }
 
             var query = filter
                 .OrderBy(b => b.Wheels)
@@ -618,7 +647,9 @@ on a new line! ""Wow!"", the masses cried";
 
             // Now the query runs, but opens a reader, so only populates are you iterate through
             foreach (string bike in query)
+            {
                 Console.WriteLine(result);
+            }
 
 
 
@@ -638,7 +669,8 @@ on a new line! ""Wow!"", the masses cried";
     }
 
     // Class Declaration Syntax:
-    // <public/private/protected/internal> class <class name>{
+    // <public/private/protected/internal> class <class name>
+    // {
     //    //data fields, constructors, functions all inside.
     //    //functions are called as methods in Java.
     // }
@@ -798,11 +830,13 @@ on a new line! ""Wow!"", the masses cried";
 
         public string this[int i]
         {
-            get {
+            get
+            {
                 return passengers[i];
             }
 
-            set {
+            set
+            {
                 passengers[i] = value;
             }
         }
@@ -913,17 +947,17 @@ on a new line! ""Wow!"", the masses cried";
 
         public DbSet<Bicycle> Bikes { get; set; }
     }
-    
+
     // Classes can be split across multiple .cs files
     // A1.cs
-    public partial class A 
+    public partial class A
     {
         public static void A1()
         {
             Console.WriteLine("Method A1 in class A");
         }
     }
-    
+
     // A2.cs
     public partial class A
     {
@@ -932,9 +966,9 @@ on a new line! ""Wow!"", the masses cried";
             Console.WriteLine("Method A2 in class A");
         }
     }
-    
+
     // Program using the partial class "A"
-    public class Program 
+    public class Program
     {
         static void Main()
         {
