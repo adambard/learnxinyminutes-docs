@@ -9,8 +9,8 @@ contributors:
     - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
     - ["Rachel Stiyer", "https://github.com/rstiyer"]
 translators:
-    - ["Oleksandr Tatarchuk", "http://github.com/tatarchuk"]
-filename: LearnJava.java
+    - ["Oleksandr Tatarchuk", "https://github.com/tatarchuk"]
+filename: LearnJavaUa.java
 lang: uk-ua
 ---
 
@@ -252,92 +252,88 @@ public class LearnJava {
         System.out.println(--i); // i = 0, prints 0 (pre-decrement)
 
         ///////////////////////////////////////
-        // Control Structures
+        // Управляючі конструкції
         ///////////////////////////////////////
         System.out.println("\n->Control Structures");
 
-        // If statements are c-like
+        // Оператор if використовується так само, як у мові С
         int j = 10;
         if (j == 10) {
-            System.out.println("I get printed");
+            System.out.println("Це надрукується");
         } else if (j > 10) {
-            System.out.println("I don't");
+            System.out.println("А це - ні");
         } else {
-            System.out.println("I also don't");
+            System.out.println("Це - також ні");
         }
 
-        // While loop
+        // Цикл з передумовою While
         int fooWhile = 0;
         while(fooWhile < 100) {
             System.out.println(fooWhile);
-            // Increment the counter
-            // Iterated 100 times, fooWhile 0,1,2...99
+            // Інкремент лічильника
+            // Виконається 100 разів, fooWhile 0,1,2...99
             fooWhile++;
         }
         System.out.println("fooWhile Value: " + fooWhile);
 
-        // Do While Loop
+        // Цикл з післяумовою Do While
         int fooDoWhile = 0;
         do {
             System.out.println(fooDoWhile);
-            // Increment the counter
-            // Iterated 99 times, fooDoWhile 0->99
+            // Інкремент лічильника
+            // Виконається 99 разів, fooDoWhile 0->99
             fooDoWhile++;
         } while(fooDoWhile < 100);
         System.out.println("fooDoWhile Value: " + fooDoWhile);
 
-        // For Loop
-        // for loop structure => for(<start_statement>; <conditional>; <step>)
+        // Цикл з параметром For
+        // структура циклу => for(<початковий стан>; <умова завершення>; <крок>)
         for (int fooFor = 0; fooFor < 10; fooFor++) {
             System.out.println(fooFor);
-            // Iterated 10 times, fooFor 0->9
+            // Виконається 10 разів, fooFor 0->9
         }
         System.out.println("fooFor Value: " + fooFor);
         
-        // Nested For Loop Exit with Label
+        // Вихід з вкладеного циклу через Label
         outer:
         for (int i = 0; i < 10; i++) {
           for (int j = 0; j < 10; j++) {
             if (i == 5 && j ==5) {
               break outer;
-              // breaks out of outer loop instead of only the inner one
+              // вихід із зовнішнього циклу, а не лише внутрішнього
             }
           }
         }
         
-        // For Each Loop
-        // The for loop is also able to iterate over arrays as well as objects
-        // that implement the Iterable interface.
-        int[] fooList = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        // for each loop structure => for (<object> : <iterable>)
-        // reads as: for each element in the iterable
-        // note: the object type must match the element type of the iterable.
+        // Цикл For Each
+        // Призначений для перебору масивів та колекцій       
+        int[] fooList = {1, 2, 3, 4, 5, 6, 7, 8, 9};       
 
         for (int bar : fooList) {
             System.out.println(bar);
             //Iterates 9 times and prints 1-9 on new lines
         }
 
-        // Switch Case
-        // A switch works with the byte, short, char, and int data types.
-        // It also works with enumerated types (discussed in Enum Types), the
-        // String class, and a few special classes that wrap primitive types:
-        // Character, Byte, Short, and Integer.
+        // Оператор вибору Switch Case
+        // Оператор вибору працює з типами даних byte, short, char, int.
+        // Також працює з переліками Enum, 
+        // класом String та класами-обгортками примітивних типів:
+        // Character, Byte, Short та Integer.
         int month = 3;
         String monthString;
         switch (month) {
-            case 1: monthString = "January";
+            case 1: monthString = "Січень";
                     break;
-            case 2: monthString = "February";
+            case 2: monthString = "Лютий";
                     break;
-            case 3: monthString = "March";
+            case 3: monthString = "Березень";
                     break;
-            default: monthString = "Some other month";
+            default: monthString = "Інший місяць";
                      break;
         }
-        System.out.println("Switch Case Result: " + monthString);
+        System.out.println("Switch Case результат: " + monthString);
         
-        // Starting in Java 7 and above, switching Strings works like this:
+        // Починаючи з Java 7 і далі, вибір рядкових змінних здійснюється так:
         String myAnswer = "maybe";
         switch(myAnswer) {
             case "yes":
@@ -354,59 +350,55 @@ public class LearnJava {
                 break;
         }
 
-        // Conditional Shorthand
-        // You can use the '?' operator for quick assignments or logic forks.
-        // Reads as "If (statement) is true, use <first value>, otherwise, use
-        // <second value>"
+        // Тернарний оператор вибору
+        // Можна використовувати '?' оператор для визначення умови.
+        // Читається так "Якщо (умова) вірна, то <перше значення>, інакше
+        // <друге значення"
         int foo = 5;
         String bar = (foo < 10) ? "A" : "B";
-        System.out.println(bar); // Prints A, because the statement is true
+        System.out.println(bar); // Надрукується А, бо умова вірна
 
 
         ////////////////////////////////////////
-        // Converting Data Types And Typecasting
+        // Перетворення типів
         ////////////////////////////////////////
 
-        // Converting data
+        // Перетворення String на Integer
+        Integer.parseInt("123");//поверне числову версію рядка "123"
 
-        // Convert String To Integer
-        Integer.parseInt("123");//returns an integer version of "123"
+        // Перетворення Integer на String
+        Integer.toString(123);//повертає рядкову версію 123
 
-        // Convert Integer To String
-        Integer.toString(123);//returns a string version of 123
-
-        // For other conversions check out the following classes:
+        // Для інших перетворень є наступні класи:
         // Double
         // Long
         // String
 
-        // Typecasting
-        // You can also cast Java objects, there's a lot of details and deals
-        // with some more intermediate concepts. Feel free to check it out here:
+        // Приведення типів
+        // Тут можна прочитати про приведення об'єктів:
         // http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
 
 
         ///////////////////////////////////////
-        // Classes And Functions
+        // Класи та функції
         ///////////////////////////////////////
 
         System.out.println("\n->Classes & Functions");
 
-        // (definition of the Bicycle class follows)
+        // (Клас Bicycle наведений нижче)
 
-        // Use new to instantiate a class
+        // Новий об'єкт класу
         Bicycle trek = new Bicycle();
 
-        // Call object methods
-        trek.speedUp(3); // You should always use setter and getter methods
+        // Виклик методу об'єкта
+        trek.speedUp(3); // Постійно використовуються методи з назвами set і get
         trek.setCadence(100);
 
-        // toString returns this Object's string representation.
+        // toString повертає рядкове представленя об'єкту.
         System.out.println("trek info: " + trek.toString());
-
-        // Double Brace Initialization
-        // The Java Language has no syntax for how to create static Collections
-        // in an easy way. Usually you end up in the following way:
+        
+        // У Java немає синтаксису для явного створення статичних колекцій.
+        // Це можна зробити так:
 
         private static final Set<String> COUNTRIES = new HashSet<String>();
         static {
@@ -415,9 +407,7 @@ public class LearnJava {
            validCodes.add("FINLAND");
         }
 
-        // But there's a nifty way to achieve the same thing in an
-        // easier way, by using something that is called Double Brace
-        // Initialization.
+        // Але є інший спосіб - Double Brace Initialization.
 
         private static final Set<String> COUNTRIES = new HashSet<String>() {{
             add("DENMARK");
@@ -425,49 +415,44 @@ public class LearnJava {
             add("FINLAND");
         }}
 
-        // The first brace is creating a new AnonymousInnerClass and the
-        // second one declares an instance initializer block. This block
-        // is called when the anonymous inner class is created.
-        // This does not only work for Collections, it works for all
-        // non-final classes.
+        // Використовується анонімний внутрішній клас
 
-    } // End main method
-} // End LearnJava class
+    } // Кінець методу main
+} // Кінець класу LearnJava
 
 
-// You can include other, non-public outer-level classes in a .java file,
-// but it is good practice. Instead split classes into separate files.
+// Можна додавати інші, не public класи зовнішнього рівня у .java файл,
+// але це не є хорошою практикою. Розміщуйте класи в окремих файлах.
 
 
-// Class Declaration Syntax:
+// Синтаксис оголошення класу:
 // <public/private/protected> class <class name> {
-//    // data fields, constructors, functions all inside.
-//    // functions are called as methods in Java.
+//    // поля, конструктори, функції та ін.
+//    // у Java функції називаються методами.
 // }
 
 class Bicycle {
 
-    // Bicycle's Fields/Variables
-    public int cadence; // Public: Can be accessed from anywhere
-    private int speed;  // Private: Only accessible from within the class
-    protected int gear; // Protected: Accessible from the class and subclasses
-    String name; // default: Only accessible from within this package
+    // Поля (змінні) класу Bicycle
+    public int cadence; // Public: доступно звідусіль
+    private int speed;  // Private: доступно лише у межах класу
+    protected int gear; // Protected: доступно лише класу та нащадкам
+    String name; // default: доступно у даному пакеті
 
-    static String className; // Static class variable
+    static String className; // статична змінна класу
 
-    // Static block 
-    // Java has no implementation of static constructors, but
-    // has a static block that can be used to initialize class variables 
-    // (static variables). 
-    // This block will be called when the class is loaded.
+    // статичний блок
+    // Java не має статичних конструкторів, але
+    // має статичний блок ініціалізації змінних класу    
+    // Цей блок виконується при завантаженні класу.
     static {
         className = "Bicycle";
     }
 
-    // Constructors are a way of creating classes
-    // This is a constructor
+    // Конструктори є способом створення класу
+    // Це - конструктор
     public Bicycle() {
-        // You can also call another constructor:
+        // Можна викликати інший конструктор:
         // this(1, 50, 5, "Bontrager");
         gear = 1;
         cadence = 50;
@@ -475,7 +460,7 @@ class Bicycle {
         name = "Bontrager";
     }
 
-    // This is a constructor that takes arguments
+    // Цей конструктор приймає аргументи
     public Bicycle(int startCadence, int startSpeed, int startGear,
         String name) {
         this.gear = startGear;
@@ -484,18 +469,18 @@ class Bicycle {
         this.name = name;
     }
 
-    // Method Syntax:
-    // <public/private/protected> <return type> <function name>(<args>)
+    // Синтаксис методу:
+    // <public/private/protected> <тип повернутого значення> <ім'я методу>(<аргументи>)
 
-    // Java classes often implement getters and setters for their fields
+    // Java класи часто мають методи для отримання та встановлення змінних
 
-    // Method declaration syntax:
-    // <access modifier> <return type> <method name>(<args>)
+    // Синтаксис оголошення методу:
+    // <модифікатор доступу> <тип повернутого значення> <ім'я методу>(<аргументи>)
     public int getCadence() {
         return cadence;
     }
 
-    // void methods require no return statement
+    // void методи не повертають значень
     public void setCadence(int newValue) {
         cadence = newValue;
     }
@@ -520,26 +505,26 @@ class Bicycle {
         return name;
     }
 
-    //Method to display the attribute values of this Object.
+    //Метод показує значення змінних об'єкту.
     @Override // Inherited from the Object class.
     public String toString() {
         return "gear: " + gear + " cadence: " + cadence + " speed: " + speed +
             " name: " + name;
     }
-} // end class Bicycle
+} // кінець класу Bicycle
 
-// PennyFarthing is a subclass of Bicycle
+// PennyFarthing є розширенням (нащадком) класу Bicycle
 class PennyFarthing extends Bicycle {
-    // (Penny Farthings are those bicycles with the big front wheel.
-    // They have no gears.)
+    // (Penny Farthings мають велике переднє колесо.
+    // Вони не мають передач.)
 
     public PennyFarthing(int startCadence, int startSpeed){
-        // Call the parent constructor with super
+        // Виклик батьківського конструктора через super
         super(startCadence, startSpeed, 0, "PennyFarthing");
     }
 
-    // You should mark a method you're overriding with an @annotation.
-    // To learn more about what annotations are and their purpose check this
+    // Перевизначений метод має відти відмічений аннотацією @annotation.
+    // Для ознайомлення з аннотаціями перейдіть за посиланням
     // out: http://docs.oracle.com/javase/tutorial/java/annotations/
     @Override
     public void setGear(int gear) {
@@ -547,17 +532,17 @@ class PennyFarthing extends Bicycle {
     }
 }
 
-// Interfaces
-// Interface declaration syntax
-// <access-level> interface <interface-name> extends <super-interfaces> {
-//     // Constants
-//     // Method declarations
+// Інтерфейси
+// Синтаксис оголошення інтерфейсів
+// <рівень доступу> interface <ім'я інтерфейсу> extends <супер-інтерфейс> {
+//     // Констатнти
+//     // Оголошення методів
 // }
 
-// Example - Food:
+//Приклад - Food:
 public interface Edible {
-    public void eat(); // Any class that implements this interface, must
-                       // implement this method.
+    public void eat(); // Будь-які класи, що реалізують цей інтерфейс
+                       // повинні реалізувати цей метод.
 }
 
 public interface Digestible {
@@ -565,7 +550,7 @@ public interface Digestible {
 }
 
 
-// We can now create a class that implements both of these interfaces.
+// Можна створити клас, що реалізує обидва інтерфейси.
 public class Fruit implements Edible, Digestible {
   
     @Override
@@ -579,8 +564,8 @@ public class Fruit implements Edible, Digestible {
     }
 }
 
-// In Java, you can extend only one class, but you can implement many
-// interfaces. For example:
+// В Java можна успадковувати лише один клас, але реалізовувати багато
+// інтерфейсів. Наприклад:
 public class ExampleClass extends ExampleClassParent implements InterfaceOne,
     InterfaceTwo {
 
@@ -594,37 +579,35 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 
 }
 
-// Abstract Classes
+// Абстрактні класи
 
-// Abstract Class declaration syntax
-// <access-level> abstract <abstract-class-name> extends <super-abstract-classes> {
-//     // Constants and variables
-//     // Method declarations
+// Синтаксис оголошення абстрактних класів:
+// <ріаень доступу> abstract <ім1я класу> extends <супер-абстрактний клас> {
+//     // Константи і змінні
+//     // Оголошення методів
 // }
 
-// Marking a class as abstract means that it contains abstract methods that must
-// be defined in a child class. Similar to interfaces, abstract classes cannot
-// be instantiated, but instead must be extended and the abstract methods
-// defined. Different from interfaces, abstract classes can contain a mixture of
-// concrete and abstract methods. Methods in an interface cannot have a body,
-// unless the method is static, and variables are final by default, unlike an
-// abstract class. Also abstract classes CAN have the "main" method.
+// Позначення класу як абстрактного означає, що оголошені у ньому методи мають
+// бути реалізовані у дочірніх класах. Подібно до інтерфейсів, не можна створити екземпляри
+// абстракних класів, але їх можна успадковувати. Нащадок зобов'язаний реалізувати всі абстрактні
+// методи. на відміну від інтерфейсів, абстрактні класи можуть мати як визначені,
+// так і абстрактні методи. Методи в інтерфейсах не мають тіла,
+// за вийнятком статичних методів, а змінні неявно мають модифікатор final, на відміну від
+// абстрактного класу. Абстрактні класи МОЖУТЬ мати метод "main".
 
 public abstract class Animal
 {
     public abstract void makeSound();
 
-    // Method can have a body
+    // Метод може мати тіло
     public void eat()
     {
         System.out.println("I am an animal and I am Eating.");  
-        // Note: We can access private variable here.
+        // Зауваження: є доступ до privat змінних.
         age = 30;
     }
 
-    // No need to initialize, however in an interface
-    // a variable is implicitly final and hence has
-    // to be initialized.
+    // Ініціалізація не потрібна
     protected int age;
 
     public void printAge()
@@ -632,7 +615,7 @@ public abstract class Animal
         System.out.println(age);  
     }
 
-    // Abstract classes can have main function.
+    // Абстрактні класи МОЖУТЬ мати метод "main".
     public static void main(String[] args)
     {
         System.out.println("I am abstract");
@@ -641,20 +624,19 @@ public abstract class Animal
 
 class Dog extends Animal
 {
-    // Note still have to override the abstract methods in the
-    // abstract class.
+    // Слід помічати перевизначення абстрактних методів
     @Override
     public void makeSound()
     {
         System.out.println("Bark");
-        // age = 30;	==> ERROR!	age is private to Animal
+        // age = 30;	==> ПОМИЛКА! age є private для Animal
     }
 
-    // NOTE: You will get an error if you used the
-    // @Override annotation here, since java doesn't allow
-    // overriding of static methods.
-    // What is happening here is called METHOD HIDING.
-    // Check out this awesome SO post: http://stackoverflow.com/questions/16313649/
+    // NOTE: Буде помилка, якщо використати аннотацію
+    // @Override тут, так як у java не можна
+    // перевизначати статичні методи.
+    // Те, що тут відбувається, називається METHOD HIDING.
+    // Більш детально: http://stackoverflow.com/questions/16313649/
     public static void main(String[] args)
     {
         Dog pluto = new Dog();
@@ -664,22 +646,20 @@ class Dog extends Animal
     }
 }
 
-// Final Classes
+// Final класи
 
-// Final Class declaration syntax
-// <access-level> final <final-class-name> {
-//     // Constants and variables
-//     // Method declarations
+// Синтаксис оголошення Final класів
+// <рівень доступу> final <ім'я класу> {
+//     // Константи і змінні
+//     // Оголошення методів
 // }
 
-// Final classes are classes that cannot be inherited from and are therefore a
-// final child. In a way, final classes are the opposite of abstract classes
-// because abstract classes must be extended, but final classes cannot be
-// extended.
+// Final не можуть мати нащадків, також самі вони є останніми нащадками.
+// Final класи є протилежністю абстрактних у цьому плані.
+
 public final class SaberToothedCat extends Animal
 {
-    // Note still have to override the abstract methods in the
-    // abstract class.
+    // Перевизначення методу
     @Override
     public void makeSound()
     {
@@ -687,14 +667,14 @@ public final class SaberToothedCat extends Animal
     }
 }
 
-// Final Methods
+// Final методи
 public abstract class Mammal()
 {
-    // Final Method Syntax:
-    // <access modifier> final <return type> <function name>(<args>)
+    // Синтаксис Final методів:
+    // <модифікаор доступу> final <тип повернутого значення> <ім'я функції>(<аргументи>)
 
-    // Final methods, like, final classes cannot be overridden by a child class,
-    // and are therefore the final implementation of the method.
+    // Final методи не можуть бути перевизначені класом-нащадком,
+    // вони є остаточною реалізацією методу.
     public final boolean isWarmBlooded()
     {
         return true;
@@ -702,21 +682,20 @@ public abstract class Mammal()
 }
 
 
-// Enum Type
+// Тип Enum (перелік)
 //
-// An enum type is a special data type that enables for a variable to be a set
-// of predefined constants. The variable must be equal to one of the values that
-// have been predefined for it. Because they are constants, the names of an enum
-// type's fields are in uppercase letters. In the Java programming language, you
-// define an enum type by using the enum keyword. For example, you would specify
-// a days-of-the-week enum type as:
+// Enum є спеціальним типом даних, який дозволяє змінним бути певною множиною
+// визначених констант. Змінна має відповідати одному зі значень, що
+// заздалегідь визначені для неї. Так як це константи, імена типів полів у enum
+// задаються у верхньому регістрі. У Java задається тип переліку за допомогою
+// ключового слова. Наприклад, перелік днів тижня можна задати так:
 
 public enum Day {
     SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
     THURSDAY, FRIDAY, SATURDAY 
 }
 
-// We can use our enum Day like that:
+// Можна використовувати перелік Day так:
 
 public class EnumTest {
     
@@ -756,13 +735,13 @@ public class EnumTest {
     }
 }
 
-// Enum types are much more powerful than we show above. 
-// The enum body can include methods and other fields.
-// You can se more at https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
+// Переліки набагато потужніші, ніж тут показано. 
+// Тіло переліків може містити методи та інші змінні.
+// Дивіться більше тут: https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
 
 ```
 
-## Додатково для прочитання
+## Додатково для читання
 
 The links provided here below are just to get an understanding of the topic, feel free to Google and find specific examples.
 
