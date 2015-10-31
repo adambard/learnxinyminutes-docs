@@ -41,7 +41,11 @@ You shouldn't either
 35 / 5 #=> 7
 2**5 #=> 32
 5 % 3 #=> 2
-5 ^ 6 #=> 3
+
+# Bitwise operators
+3 & 5 #=> 1
+3 | 5 #=> 7
+3 ^ 5 #=> 6
 
 # Arithmetic is just syntactic sugar
 # for calling a method on an object
