@@ -2,7 +2,7 @@
 name: Go
 category: language
 language: Go
-filename: learngo.go
+filename: learngo-fi.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["Christopher Bess", "https://github.com/cbess"]
@@ -11,154 +11,157 @@ contributors:
     - ["Jose Donizetti", "https://github.com/josedonizetti"]
     - ["Alexej Friesen", "https://github.com/heyalexej"]
     - ["Clayton Walker", "https://github.com/cwalk"]
+translators:
+    - ["Timo Virkkunen", "https://github.com/ComSecNinja"]
 ---
 
-Go was created out of the need to get work done. It's not the latest trend
-in computer science, but it is the newest fastest way to solve real-world
-problems.
+Go luotiin työn tekemistä varten. Se ei ole tietojenkäsittelyn uusin trendi,
+mutta se on uusin nopein tapa ratkaista oikean maailman ongelmia.
 
-It has familiar concepts of imperative languages with static typing.
-It's fast to compile and fast to execute, it adds easy-to-understand
-concurrency to leverage today's multi-core CPUs, and has features to
-help with large-scale programming.
+Sillä on staattisesti tyypitetyistä imperatiivisista kielistä tuttuja
+konsepteja. Se kääntyy ja suorittuu nopeasti, lisää helposti käsitettävän
+samanaikaisten komentojen suorittamisen nykyaikaisten moniytimisten
+prosessoreiden hyödyntämiseksi ja antaa käyttäjälle ominaisuuksia suurten
+projektien käsittelemiseksi.
 
-Go comes with a great standard library and an enthusiastic community.
+Go tuo mukanaan loistavan oletuskirjaston sekä innokkaan yhteisön.  
 
 ```go
-// Single line comment
-/* Multi-
- line comment */
+// Yhden rivin kommentti
+/* Useamman
+ rivin kommentti */
 
-// A package clause starts every source file.
-// Main is a special name declaring an executable rather than a library.
+// Package -lausekkeella aloitetaan jokainen lähdekooditiedosto.
+// Main on erityinen nimi joka ilmoittaa
+// suoritettavan tiedoston kirjaston sijasta.
 package main
 
-// Import declaration declares library packages referenced in this file.
+// Import -lauseke ilmoittaa tässä tiedostossa käytetyt kirjastot.
 import (
-	"fmt"       // A package in the Go standard library.
-	"io/ioutil" // Implements some I/O utility functions.
-	m "math"    // Math library with local alias m.
-	"net/http"  // Yes, a web server!
-	"strconv"   // String conversions.
+	"fmt"       // Paketti Go:n oletuskirjastosta.
+	"io/ioutil" // Implementoi hyödyllisiä I/O -funktioita.
+	m "math"    // Matematiikkakirjasto jolla on paikallinen nimi m.
+	"net/http"  // Kyllä, web-palvelin!
+	"strconv"   // Kirjainjonojen muuntajia.
 )
 
-// A function definition. Main is special. It is the entry point for the
-// executable program. Love it or hate it, Go uses brace brackets.
+// Funktion määrittelijä. Main on erityinen: se on ohjelman suorittamisen
+// aloittamisen alkupiste. Rakasta tai vihaa sitä, Go käyttää aaltosulkeita.
 func main() {
-	// Println outputs a line to stdout.
-	// Qualify it with the package name, fmt.
-	fmt.Println("Hello world!")
+    // Println tulostaa rivin stdoutiin.
+	// Se tulee paketin fmt mukana, joten paketin nimi on mainittava.
+	fmt.Println("Hei maailma!")
 
-	// Call another function within this package.
+    // Kutsu toista funktiota tämän paketin sisällä.
 	beyondHello()
 }
 
-// Functions have parameters in parentheses.
-// If there are no parameters, empty parentheses are still required.
+// Funktioilla voi olla parametrejä sulkeissa.
+// Vaikkei parametrejä olisikaan, sulkeet ovat silti pakolliset.
 func beyondHello() {
-	var x int // Variable declaration. Variables must be declared before use.
-	x = 3     // Variable assignment.
-	// "Short" declarations use := to infer the type, declare, and assign.
+	var x int // Muuttujan ilmoittaminen: ne täytyy ilmoittaa ennen käyttöä.
+	x = 3     // Arvon antaminen muuttujalle.
+    // "Lyhyet" ilmoitukset käyttävät := joka päättelee tyypin, ilmoittaa
+    // sekä antaa arvon muuttujalle.
 	y := 4
-	sum, prod := learnMultiple(x, y)        // Function returns two values.
-	fmt.Println("sum:", sum, "prod:", prod) // Simple output.
-	learnTypes()                            // < y minutes, learn more!
+	sum, prod := learnMultiple(x, y)          // Funktio palauttaa kaksi arvoa.
+	fmt.Println("summa:", sum, "tulo:", prod) // Yksinkertainen tuloste.
+	learnTypes()                              // < y minuuttia, opi lisää!
 }
 
-/* <- multiline comment
-Functions can have parameters and (multiple!) return values.
-Here `x`, `y` are the arguments and `sum`, `prod` is the signature (what's returned).
-Note that `x` and `sum` receive the type `int`.
+/* <- usean rivin kommentti
+Funktioilla voi olla parametrejä ja (useita!) palautusarvoja.
+Tässä `x`, `y` ovat argumenttejä ja `sum`, `prod` ovat ne, mitä palautetaan.
+Huomaa että `x` ja `sum` saavat tyyin `int`.
 */
 func learnMultiple(x, y int) (sum, prod int) {
-	return x + y, x * y // Return two values.
+	return x + y, x * y // Palauta kaksi arvoa.
 }
 
-// Some built-in types and literals.
+// Sisäänrakennettuja tyyppejä ja todellisarvoja.
 func learnTypes() {
-	// Short declaration usually gives you what you want.
-	str := "Learn Go!" // string type.
+    // Lyhyt ilmoitus antaa yleensä haluamasi.
+	str := "Opi Go!" // merkkijonotyyppi.
 
-	s2 := `A "raw" string literal
-can include line breaks.` // Same string type.
+	s2 := `"raaka" todellisarvoinen merrkijono
+voi sisältää rivinvaihtoja.` // Sama merkkijonotyyppi.
 
-	// Non-ASCII literal. Go source is UTF-8.
-	g := 'Σ' // rune type, an alias for int32, holds a unicode code point.
+    // Ei-ASCII todellisarvo. Go-lähdekoodi on UTF-8.
+	g := 'Σ' // riimutyyppi, lempinimi int32:lle, sisältää unicode-koodipisteen.
 
-	f := 3.14195 // float64, an IEEE-754 64-bit floating point number.
-	c := 3 + 4i  // complex128, represented internally with two float64's.
+	f := 3.14195 //float64, IEEE-754 64-bittinen liukuluku.
+	c := 3 + 4i  // complex128, sisäisesti ilmaistu kahdella float64:lla.
 
-	// var syntax with initializers.
-	var u uint = 7 // Unsigned, but implementation dependent size as with int.
+	// var -syntaksi alkuarvoilla.
+	var u uint = 7 // Etumerkitön, toteutus riippuvainen koosta kuten int.
 	var pi float32 = 22. / 7
 
-	// Conversion syntax with a short declaration.
-	n := byte('\n') // byte is an alias for uint8.
+    // Muuntosyntaksi lyhyellä ilmoituksella.
+	n := byte('\n') // byte on leminimi uint8:lle.
 
-	// Arrays have size fixed at compile time.
-	var a4 [4]int           // An array of 4 ints, initialized to all 0.
-	a3 := [...]int{3, 1, 5} // An array initialized with a fixed size of three
-	// elements, with values 3, 1, and 5.
+    // Listoilla on kiinteä koko kääntöhetkellä.
+	var a4 [4]int           // 4 int:in lista, alkiot ovat alustettu nolliksi.
+	a3 := [...]int{3, 1, 5} // Listan alustaja jonka kiinteäksi kooksi tulee 3
+	// alkiota, jotka saavat arvot 3, 1, ja 5.
 
-	// Slices have dynamic size. Arrays and slices each have advantages
-	// but use cases for slices are much more common.
-	s3 := []int{4, 5, 9}    // Compare to a3. No ellipsis here.
-	s4 := make([]int, 4)    // Allocates slice of 4 ints, initialized to all 0.
-	var d2 [][]float64      // Declaration only, nothing allocated here.
-	bs := []byte("a slice") // Type conversion syntax.
+    // Siivuilla on muuttuva koko. Sekä listoilla että siivuilla on puolensa,
+    // mutta siivut ovat yleisempiä käyttötapojensa vuoksi.
+	s3 := []int{4, 5, 9}    // Vertaa a3: ei sananheittoa (...).
+	s4 := make([]int, 4)    // Varaa 4 int:n siivun, alkiot alustettu nolliksi.
+	var d2 [][]float64      // Vain ilmoitus, muistia ei varata.
+	bs := []byte("a slice") // Tyypinmuuntosyntaksi.
 
-	// Because they are dynamic, slices can be appended to on-demand.
-	// To append elements to a slice, the built-in append() function is used.
-	// First argument is a slice to which we are appending. Commonly,
-	// the array variable is updated in place, as in example below.
-	s := []int{1, 2, 3}		// Result is a slice of length 3.
-	s = append(s, 4, 5, 6)	// Added 3 elements. Slice now has length of 6.
-	fmt.Println(s) // Updated slice is now [1 2 3 4 5 6]
+    // Koska siivut ovat dynaamisia, niitä voidaan yhdistellä sellaisinaan.
+    // Lisätäksesi alkioita siivuun, käytä sisäänrakennettua append()-funktiota.
+	// Ensimmäinen argumentti on siivu, johon alkoita lisätään.
+	s := []int{1, 2, 3}		// Tuloksena on kolmen alkion pituinen lista.
+	s = append(s, 4, 5, 6)	// Lisätty kolme alkiota. Siivun pituudeksi tulee 6.
+	fmt.Println(s) // Päivitetty siivu on nyt [1 2 3 4 5 6]
 
-	// To append another slice, instead of list of atomic elements we can
-	// pass a reference to a slice or a slice literal like this, with a
-	// trailing ellipsis, meaning take a slice and unpack its elements,
-	// appending them to slice s.
-	s = append(s, []int{7, 8, 9}...) // Second argument is a slice literal.
-	fmt.Println(s)	// Updated slice is now [1 2 3 4 5 6 7 8 9]
+    // Lisätäksesi siivun toiseen voit antaa append-funktiolle referenssin
+    // siivuun tai todellisarvoiseen siivuun lisäämällä sanaheiton argumentin
+    // perään. Tämä tapa purkaa siivun alkiot ja lisää ne siivuun s.
+	s = append(s, []int{7, 8, 9}...) // 2. argumentti on todellisarvoinen siivu.
+	fmt.Println(s)	// Päivitetty siivu on nyt [1 2 3 4 5 6 7 8 9]
 
-	p, q := learnMemory() // Declares p, q to be type pointer to int.
-	fmt.Println(*p, *q)   // * follows a pointer. This prints two ints.
+	p, q := learnMemory() // Ilmoittaa p ja q olevan tyyppiä osoittaja int:iin.
+	fmt.Println(*p, *q)   // * seuraa osoittajaa. Tämä tulostaa kaksi int:ä.
 
-	// Maps are a dynamically growable associative array type, like the
-	// hash or dictionary types of some other languages.
+    // Kartat ovat dynaamisesti kasvavia assosiatiivisia listoja, kuten hash tai
+    // dictionary toisissa kielissä.
 	m := map[string]int{"three": 3, "four": 4}
 	m["one"] = 1
 
-	// Unused variables are an error in Go.
-	// The underscore lets you "use" a variable but discard its value.
+    // Käyttämättömät muuttujat ovat virheitä Go:ssa.
+    // Alaviiva antaa sinun "käyttää" muuttujan mutta hylätä sen arvon.
 	_, _, _, _, _, _, _, _, _, _ = str, s2, g, f, u, pi, n, a3, s4, bs
-	// Output of course counts as using a variable.
+	// Tulostaminen tietysti lasketaan muuttujan käyttämiseksi.
 	fmt.Println(s, c, a4, s3, d2, m)
 
-	learnFlowControl() // Back in the flow.
+	learnFlowControl() // Takaisin flowiin.
 }
 
-// It is possible, unlike in many other languages for functions in go
-// to have named return values.
-// Assigning a name to the type being returned in the function declaration line
-// allows us to easily return from multiple points in a function as well as to
-// only use the return keyword, without anything further.
+// Go:ssa on useista muista kielistä poiketen mahdollista käyttää nimettyjä
+// palautusarvoja.
+// Nimen antaminen palautettavan arvon tyypille funktion ilmoitusrivillä
+// mahdollistaa helpon palaamisen useasta eri funktion suorituskohdasta sekä
+// pelkän return-lausekkeen käytön ilman muita mainintoja.
 func learnNamedReturns(x, y int) (z int) {
 	z = x * y
-	return // z is implicit here, because we named it earlier.
+	return // z on epäsuorasti tässä, koska nimesimme sen aiemmin.
 }
 
-// Go is fully garbage collected. It has pointers but no pointer arithmetic.
-// You can make a mistake with a nil pointer, but not by incrementing a pointer.
+// Go kerää kaikki roskansa. Siinä on osoittajia mutta ei niiden laskentoa.
+// Voit tehdä virheen mitättömällä osoittajalla, mutta et
+// kasvattamalla osoittajaa.
 func learnMemory() (p, q *int) {
-	// Named return values p and q have type pointer to int.
-	p = new(int) // Built-in function new allocates memory.
-	// The allocated int is initialized to 0, p is no longer nil.
-	s := make([]int, 20) // Allocate 20 ints as a single block of memory.
-	s[3] = 7             // Assign one of them.
-	r := -2              // Declare another local variable.
-	return &s[3], &r     // & takes the address of an object.
+    // Nimetyillä palautusarvoilla p ja q on tyyppi osoittaja int:iin.
+	p = new(int) // Sisäänrakennettu funktio new varaa muistia.
+    // Varattu int on alustettu nollaksi, p ei ole enää mitätön.
+	s := make([]int, 20) // Varaa 20 int:ä yhteen kohtaan muistissa.
+	s[3] = 7             // Anna yhdelle niistä arvo.
+	r := -2              // Ilmoita toinen paikallinen muuttuja.
+	return &s[3], &r     // & ottaa asian osoitteen muistissa.
 }
 
 func expensiveComputation() float64 {
@@ -166,234 +169,241 @@ func expensiveComputation() float64 {
 }
 
 func learnFlowControl() {
-	// If statements require brace brackets, and do not require parentheses.
+    // If -lausekkeet vaativat aaltosulkeet mutta ei tavallisia sulkeita.
 	if true {
-		fmt.Println("told ya")
+		fmt.Println("mitä mä sanoin")
 	}
-	// Formatting is standardized by the command line command "go fmt."
+	// Muotoilu on standardoitu käyttämällä komentorivin komentoa "go fmt".
 	if false {
-		// Pout.
+		// Nyrpistys.
 	} else {
-		// Gloat.
+		// Nautinto.
 	}
-	// Use switch in preference to chained if statements.
+	// Käytä switch -lauseketta ketjutettujen if -lausekkeiden sijasta.
 	x := 42.0
 	switch x {
 	case 0:
 	case 1:
 	case 42:
-		// Cases don't "fall through".
+		// Tapaukset eivät "tipu läpi".
 		/*
-		There is a `fallthrough` keyword however, see:
+		Kuitenkin meillä on erikseen `fallthrough` -avainsana. Katso:
 		  https://github.com/golang/go/wiki/Switch#fall-through
 		*/
 	case 43:
-		// Unreached.
+		// Saavuttamaton.
 	default:
-		// Default case is optional.
+		// Oletustapaus (default) on valinnainen.
 	}
-	// Like if, for doesn't use parens either.
-	// Variables declared in for and if are local to their scope.
-	for x := 0; x < 3; x++ { // ++ is a statement.
-		fmt.Println("iteration", x)
+    // Kuten if, for -lauseke ei myöskään käytä tavallisia sulkeita.
+	// for- ja if- lausekkeissa ilmoitetut muuttujat ovat paikallisia niiden
+    // piireissä.
+	for x := 0; x < 3; x++ { // ++ on lauseke. Sama kuin "x = x + 1".
+		fmt.Println("iteraatio", x)
 	}
-	// x == 42 here.
+	// x == 42 tässä.
 
-	// For is the only loop statement in Go, but it has alternate forms.
-	for { // Infinite loop.
-		break    // Just kidding.
-		continue // Unreached.
-	}
-
-	// You can use range to iterate over an array, a slice, a string, a map, or a channel.
-	// range returns one (channel) or two values (array, slice, string and map).
-	for key, value := range map[string]int{"one": 1, "two": 2, "three": 3} {
-		// for each pair in the map, print key and value
-		fmt.Printf("key=%s, value=%d\n", key, value)
+    // For on kielen ainoa silmukkalauseke mutta sillä on vaihtoehtosia muotoja.
+	for { // Päättymätön silmukka.
+		break    // Kunhan vitsailin.
+		continue // Saavuttamaton.
 	}
 
-	// As with for, := in an if statement means to declare and assign
-	// y first, then test y > x.
+    // Voit käyttää range -lauseketta iteroidaksesi listojen, siivujen, merkki-
+    // jonojen, karttojen tai kanavien läpi. range palauttaa yhden (kanava) tai
+    // kaksi arvoa (lista, siivu, merkkijono ja kartta).
+	for key, value := range map[string]int{"yksi": 1, "kaksi": 2, "kolme": 3} {
+        // jokaista kartan paria kohden, tulosta avain ja arvo
+		fmt.Printf("avain=%s, arvo=%d\n", key, value)
+	}
+
+    // Kuten for -lausekkeessa := if -lausekkeessa tarkoittaa ilmoittamista ja
+    // arvon asettamista.
+    // Aseta ensin y, sitten testaa onko y > x.
 	if y := expensiveComputation(); y > x {
 		x = y
 	}
-	// Function literals are closures.
+    // Todellisarvoiset funktiot ovat sulkeumia.
 	xBig := func() bool {
-		return x > 10000 // References x declared above switch statement.
+		return x > 10000 // Viittaa ylempänä ilmoitettuun x:ään.
 	}
-	fmt.Println("xBig:", xBig()) // true (we last assigned e^10 to x).
-	x = 1.3e3                    // This makes x == 1300
-	fmt.Println("xBig:", xBig()) // false now.
+	fmt.Println("xBig:", xBig()) // tosi (viimeisin arvo on e^10).
+	x = 1.3e3                    // Tämä tekee x == 1300
+	fmt.Println("xBig:", xBig()) // epätosi nyt.
 
-	// What's more is function literals may be defined and called inline,
-	// acting as an argument to function, as long as:
-	// a) function literal is called immediately (),
-	// b) result type matches expected type of argument.
-	fmt.Println("Add + double two numbers: ",
+    // Lisäksi todellisarvoiset funktiot voidaan samalla sekä ilmoittaa että
+    // kutsua, jolloin niitä voidaan käyttää funtioiden argumentteina kunhan:
+    // a) todellisarvoinen funktio kutsutaan välittömästi (),
+    // b) palautettu tyyppi vastaa odotettua argumentin tyyppiä.
+	fmt.Println("Lisää ja tuplaa kaksi numeroa: ",
 		func(a, b int) int {
 			return (a + b) * 2
-		}(10, 2)) // Called with args 10 and 2
-	// => Add + double two numbers: 24
+		}(10, 2)) // Kutsuttu argumenteilla 10 ja 2
+	// => Lisää ja tuplaa kaksi numeroa: 24
 
-	// When you need it, you'll love it.
+	// Kun tarvitset sitä, rakastat sitä.
 	goto love
 love:
 
-	learnFunctionFactory() // func returning func is fun(3)(3)
-	learnDefer()      // A quick detour to an important keyword.
-	learnInterfaces() // Good stuff coming up!
+	learnFunctionFactory() // Funktioita palauttavat funktiot
+	learnDefer()      // Nopea kiertoreitti tärkeään avainsanaan.
+	learnInterfaces() // Hyvää kamaa tulossa!
 }
 
 func learnFunctionFactory() {
-	// Next two are equivalent, with second being more practical
-	fmt.Println(sentenceFactory("summer")("A beautiful", "day!"))
+    // Seuraavat kaksi ovat vastaavia, mutta toinen on käytännöllisempi
+	fmt.Println(sentenceFactory("kesä")("Kaunis", "päivä!"))
 
-	d := sentenceFactory("summer")
-	fmt.Println(d("A beautiful", "day!"))
-	fmt.Println(d("A lazy", "afternoon!"))
+	d := sentenceFactory("kesä")
+	fmt.Println(d("Kaunis", "päivä!"))
+	fmt.Println(d("Laiska", "iltapäivä!"))
 }
 
-// Decorators are common in other languages. Same can be done in Go
-// with function literals that accept arguments.
+// Somisteet ovat yleisiä toisissa kielissä. Sama saavutetaan Go:ssa käyttämällä
+// todellisarvoisia funktioita jotka ottavat vastaan argumentteja.
 func sentenceFactory(mystring string) func(before, after string) string {
 	return func(before, after string) string {
-		return fmt.Sprintf("%s %s %s", before, mystring, after) // new string
+		return fmt.Sprintf("%s %s %s", before, mystring, after) // uusi jono
 	}
 }
 
 func learnDefer() (ok bool) {
-	// Deferred statements are executed just before the function returns.
-	defer fmt.Println("deferred statements execute in reverse (LIFO) order.")
-	defer fmt.Println("\nThis line is being printed first because")
-	// Defer is commonly used to close a file, so the function closing the
-	// file stays close to the function opening the file.
+    // Lykätyt lausekkeet suoritetaan juuri ennen funktiosta palaamista.
+	defer fmt.Println("lykätyt lausekkeet suorittuvat")
+    defer fmt.Println("käänteisessä järjestyksessä (LIFO).")
+	defer fmt.Println("\nTämä rivi tulostuu ensin, koska")
+    // Defer -lauseketta käytetään yleisesti tiedoston sulkemiseksi, jotta
+    // tiedoston sulkeva funktio pysyy lähellä sen avannutta funktiota.
 	return true
 }
 
-// Define Stringer as an interface type with one method, String.
+// Määrittele Stringer rajapintatyypiksi jolla on
+// yksi jäsenfunktio eli metodi, String.
 type Stringer interface {
 	String() string
 }
 
-// Define pair as a struct with two fields, ints named x and y.
+// Määrittele pair rakenteeksi jossa on kaksi kenttää, x ja y tyyppiä int.
 type pair struct {
 	x, y int
 }
 
-// Define a method on type pair. Pair now implements Stringer.
-func (p pair) String() string { // p is called the "receiver"
-	// Sprintf is another public function in package fmt.
-	// Dot syntax references fields of p.
+// Määrittele jäsenfunktio pair:lle. Pair tyydyttää nyt Stringer -rajapinnan.
+func (p pair) String() string { // p:tä kutsutaan nimellä "receiver"
+    // Sprintf on toinen julkinen funktio paketissa fmt.
+	// Pistesyntaksilla viitataan P:n kenttiin.
 	return fmt.Sprintf("(%d, %d)", p.x, p.y)
 }
 
 func learnInterfaces() {
-	// Brace syntax is a "struct literal". It evaluates to an initialized
-	// struct. The := syntax declares and initializes p to this struct.
+    // Aaltosuljesyntaksi on "todellisarvoinen rakenne". Se todentuu alustetuksi
+    // rakenteeksi. := -syntaksi ilmoittaa ja alustaa p:n täksi rakenteeksi.
 	p := pair{3, 4}
-	fmt.Println(p.String()) // Call String method of p, of type pair.
-	var i Stringer          // Declare i of interface type Stringer.
-	i = p                   // Valid because pair implements Stringer
-	// Call String method of i, of type Stringer. Output same as above.
+	fmt.Println(p.String()) // Kutsu p:n (tyyppiä pair) jäsenfunktiota String.
+	var i Stringer          // Ilmoita i Stringer-rajapintatyypiksi.
+	i = p                   // Pätevä koska pair tyydyttää rajapinnan Stringer.
+    // Kutsu i:n (Stringer) jäsenfunktiota String. Tuloste on sama kuin yllä.
 	fmt.Println(i.String())
 
-	// Functions in the fmt package call the String method to ask an object
-	// for a printable representation of itself.
-	fmt.Println(p) // Output same as above. Println calls String method.
-	fmt.Println(i) // Output same as above.
+    // Funktiot fmt-paketissa kutsuvat argumenttien String-jäsenfunktiota
+    // selvittääkseen onko niistä saatavilla tulostettavaa vastinetta.
+	fmt.Println(p) // Tuloste on sama kuin yllä. Println kutsuu String-metodia.
+	fmt.Println(i) // Tuloste on sama kuin yllä.
 
-	learnVariadicParams("great", "learning", "here!")
+	learnVariadicParams("loistavaa", "oppimista", "täällä!")
 }
 
-// Functions can have variadic parameters.
+// Funktioilla voi olla muuttuva eli variteettinen
+// määrä argumentteja eli parametrejä.
 func learnVariadicParams(myStrings ...interface{}) {
-	// Iterate each value of the variadic.
-	// The underbar here is ignoring the index argument of the array.
+    // Iteroi jokaisen argumentin läpi.
+    // Tässä alaviivalla sivuutetaan argumenttilistan kunkin kohdan indeksi.
 	for _, param := range myStrings {
 		fmt.Println("param:", param)
 	}
 
-	// Pass variadic value as a variadic parameter.
+    // Luovuta variteettinen arvo variteettisena parametrinä.
 	fmt.Println("params:", fmt.Sprintln(myStrings...))
 
 	learnErrorHandling()
 }
 
 func learnErrorHandling() {
-	// ", ok" idiom used to tell if something worked or not.
-	m := map[int]string{3: "three", 4: "four"}
-	if x, ok := m[1]; !ok { // ok will be false because 1 is not in the map.
-		fmt.Println("no one there")
+	// "; ok" -muotoa käytetään selvittääksemme toimiko jokin vai ei.
+	m := map[int]string{3: "kolme", 4: "neljä"}
+	if x, ok := m[1]; !ok { // ok on epätosi koska 1 ei ole kartassa.
+		fmt.Println("ei ketään täällä")
 	} else {
-		fmt.Print(x) // x would be the value, if it were in the map.
+		fmt.Print(x) // x olisi arvo jos se olisi kartassa.
 	}
-	// An error value communicates not just "ok" but more about the problem.
-	if _, err := strconv.Atoi("non-int"); err != nil { // _ discards value
-		// prints 'strconv.ParseInt: parsing "non-int": invalid syntax'
+    // Virhearvo voi kertoa muutakin ongelmasta.
+	if _, err := strconv.Atoi("ei-luku"); err != nil { // _ sivuuttaa arvon
+        // tulostaa strconv.ParseInt: parsing "ei-luku": invalid syntax
 		fmt.Println(err)
 	}
-	// We'll revisit interfaces a little later. Meanwhile,
+    // Palaamme rajapintoihin hieman myöhemmin. Sillä välin,
 	learnConcurrency()
 }
 
-// c is a channel, a concurrency-safe communication object.
+// c on kanava, samanaikaisturvallinen viestintäolio.
 func inc(i int, c chan int) {
-	c <- i + 1 // <- is the "send" operator when a channel appears on the left.
+	c <- i + 1 // <- on "lähetysoperaattori" kun kanava on siitä vasemmalla.
 }
 
-// We'll use inc to increment some numbers concurrently.
+// Käytämme inc -funktiota samanaikaiseen lukujen lisäämiseen.
 func learnConcurrency() {
-	// Same make function used earlier to make a slice. Make allocates and
-	// initializes slices, maps, and channels.
+    // Sama make -funktio jota käytimme aikaisemmin siivun luomiseksi. Make
+    // varaa muistin ja alustaa siivut, kartat ja kanavat.
 	c := make(chan int)
-	// Start three concurrent goroutines. Numbers will be incremented
-	// concurrently, perhaps in parallel if the machine is capable and
-	// properly configured. All three send to the same channel.
-	go inc(0, c) // go is a statement that starts a new goroutine.
+    // Aloita kolme samanaikaista gorutiinia (goroutine). Luvut kasvavat
+    // samanaikaisesti ja ehkäpä rinnakkain jos laite on kykenevä ja oikein
+    // määritelty. Kaikki kolme lähettävät samalle kanavalle.
+	go inc(0, c) // go -lauseke aloittaa uuden gorutiinin.
 	go inc(10, c)
 	go inc(-805, c)
-	// Read three results from the channel and print them out.
-	// There is no telling in what order the results will arrive!
-	fmt.Println(<-c, <-c, <-c) // channel on right, <- is "receive" operator.
+    // Lue kolme palautusarvoa kanavalta ja tulosta ne.
+    // Niiden saapumisjärjestystä ei voida taata!
+    // <- on "vastaanotto-operaattori" jos kanava on oikealla
+	fmt.Println(<-c, <-c, <-c)
 
-	cs := make(chan string)       // Another channel, this one handles strings.
-	ccs := make(chan chan string) // A channel of string channels.
-	go func() { c <- 84 }()       // Start a new goroutine just to send a value.
-	go func() { cs <- "wordy" }() // Again, for cs this time.
-	// Select has syntax like a switch statement but each case involves
-	// a channel operation. It selects a case at random out of the cases
-	// that are ready to communicate.
+	cs := make(chan string)       // Toinen kanava joka käsittelee merkkijonoja.
+	ccs := make(chan chan string) // Kanava joka käsittelee merkkijonokanavia.
+	go func() { c <- 84 }()       // Aloita uusi gorutiini arvon lähettämiseksi.
+	go func() { cs <- "sanaa" }() // Uudestaan, mutta cs -kanava tällä kertaa.
+    // Select -lausekkeella on syntaksi kuten switch -lausekkeella mutta
+    // jokainen tapaus sisältää kanavaoperaation. Se valitsee satunnaisen
+    // tapauksen niistä kanavista, jotka ovat kommunikaatiovalmiita
 	select {
-	case i := <-c: // The value received can be assigned to a variable,
-		fmt.Printf("it's a %T", i)
-	case <-cs: // or the value received can be discarded.
-		fmt.Println("it's a string")
-	case <-ccs: // Empty channel, not ready for communication.
-		fmt.Println("didn't happen.")
+	case i := <-c: // Vastaanotettu arvo voidaan antaa muuttujalle
+		fmt.Printf("se on %T", i)
+	case <-cs: // tai vastaanotettu arvo voidaan sivuuttaa.
+		fmt.Println("se on merkkijono")
+	case <-ccs: // Tyhjä kanava; ei valmis kommunikaatioon.
+		fmt.Println("ei tapahtunut.")
 	}
-	// At this point a value was taken from either c or cs. One of the two
-	// goroutines started above has completed, the other will remain blocked.
+    // Tässä vaiheessa arvo oli otettu joko c:ltä tai cs:ltä. Yksi kahdesta
+    // ylempänä aloitetusta gorutiinista on valmistunut, toinen pysyy tukossa.
 
-	learnWebProgramming() // Go does it. You want to do it too.
+	learnWebProgramming() // Go tekee sitä. Sinäkin haluat tehdä sitä.
 }
 
-// A single function from package http starts a web server.
+// Yksittäinen funktio http -paketista aloittaa web-palvelimen.
 func learnWebProgramming() {
 
-	// First parameter of ListenAndServe is TCP address to listen to.
-	// Second parameter is an interface, specifically http.Handler.
+    // ListenAndServe:n ensimmäinen parametri on TCP-osoite, jota kuunnellaan.
+    // Toinen parametri on rajapinta, http.Handler.
 	go func() {
 		err := http.ListenAndServe(":8080", pair{})
-		fmt.Println(err) // don't ignore errors
+		fmt.Println(err) // älä sivuuta virheitä.
 	}()
 
 	requestServer()
 }
 
-// Make pair an http.Handler by implementing its only method, ServeHTTP.
+// Tee pair:sta http.Handler implementoimalla sen ainoa metodi, ServeHTTP.
 func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	// Serve data with a method of http.ResponseWriter.
-	w.Write([]byte("You learned Go in Y minutes!"))
+    // Tarjoa dataa metodilla http.ResponseWriter.
+	w.Write([]byte("Opit Go:n Y minuutissa!"))
 }
 
 func requestServer() {
@@ -401,28 +411,30 @@ func requestServer() {
 	fmt.Println(err)
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
-	fmt.Printf("\nWebserver said: `%s`", string(body))
+	fmt.Printf("\nWeb-palvelin sanoo: `%s`", string(body))
 }
 ```
 
-## Further Reading
+## Lisää luettavaa
 
-The root of all things Go is the [official Go web site](http://golang.org/).
-There you can follow the tutorial, play interactively, and read lots.
-Aside from a tour, [the docs](https://golang.org/doc/) contain information on
-how to write clean and effective Go code, package and command docs, and release history.
+Go-tietämyksen alku ja juuri on sen [virallinen verkkosivu]()(http://golang.org/).
+Siellä voit seurata oppitunteja, askarrella vuorovaikutteisesti sekä lukea paljon.
+Kierroksen lisäksi [dokumentaatio](https://golang.org/doc/) pitää sisällään tietoa
+siistin Go-koodin kirjoittamisesta, pakettien ja komentojen käytöstä sekä julkaisuhistoriasta.
 
-The language definition itself is highly recommended. It's easy to read
-and amazingly short (as language definitions go these days.)
+Kielen määritelmä itsessään on suuresti suositeltavissa. Se on helppolukuinen ja
+yllättävän lyhyt (niissä määrin kuin kielimääritelmät nykypäivänä ovat.)
 
-You can play around with the code on [Go playground](https://play.golang.org/p/tnWMjr16Mm). Try to change it and run it from your browser! Note that you can use [https://play.golang.org](https://play.golang.org) as a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) to test things and code in your browser, without even installing Go.
+Voit askarrella parissa kanssa [Go playgroundissa](https://play.golang.org/p/tnWMjr16Mm).
+Muuttele sitä ja aja se selaimestasi! Huomaa, että voit käyttää [https://play.golang.org](https://play.golang.org)
+[REPL:na](https://en.wikipedia.org/wiki/Read-eval-print_loop) testataksesi ja koodataksesi selaimessasi, ilman Go:n asentamista.
 
-On the reading list for students of Go is the [source code to the standard
-library](http://golang.org/src/pkg/). Comprehensively documented, it
-demonstrates the best of readable and understandable Go, Go style, and Go
-idioms. Or you can click on a function name in [the
-documentation](http://golang.org/pkg/) and the source code comes up!
+Go:n opiskelijoiden lukulistalla on [oletuskirjaston lähdekoodi](http://golang.org/src/pkg/).
+Kattavasti dokumentoituna se antaa parhaan kuvan helppolukuisesta ja ymmärrettävästä Go-koodista,
+-tyylistä ja -tavoista. Voit klikata funktion nimeä [doukumentaatiossa](http://golang.org/pkg/) ja
+lähdekoodi tulee esille!
 
-Another great resource to learn Go is [Go by example](https://gobyexample.com/).
+Toinen loistava paikka oppia on [Go by example](https://gobyexample.com/).
 
-Go Mobile adds support for mobile platforms (Android and iOS). You can write all-Go native mobile apps or write a library that contains bindings from a Go package, which can be invoked via Java (Android) and Objective-C (iOS). Check out the [Go Mobile page](https://github.com/golang/go/wiki/Mobile) for more information.
+Go Mobile lisää tuen mobiilialustoille (Android ja iOS). Voit kirjoittaa pelkällä Go:lla natiiveja applikaatioita tai tehdä kirjaston joka sisältää sidoksia
+Go-paketista, jotka puolestaan voidaan kutsua Javasta (Android) ja Objective-C:stä (iOS). Katso [lisätietoja](https://github.com/golang/go/wiki/Mobile).
