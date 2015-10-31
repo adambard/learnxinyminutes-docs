@@ -3,7 +3,6 @@ language: PHP
 contributors:
     - ["Malcolm Fell", "http://emarref.net/"]
     - ["Trismegiste", "https://github.com/Trismegiste"]
-    - [ Liam Demafelix , https://liamdemafelix.com/]
 filename: learnphp.php
 ---
 
@@ -157,13 +156,14 @@ unset($array[3]);
  * Output
  */
 
-echo 'Hello World!';
+echo('Hello World!');
 // Prints Hello World! to stdout.
 // Stdout is the web page if running in a browser.
 
 print('Hello World!'); // The same as echo
 
-// print is a language construct too, so you can drop the parentheses
+// echo and print are language constructs too, so you can drop the parentheses
+echo 'Hello World!';
 print 'Hello World!';
 
 $paragraph = 'paragraph';
@@ -335,7 +335,7 @@ switch ($x) {
 $i = 0;
 while ($i < 5) {
     echo $i++;
-} // Prints "01234"
+}; // Prints "01234"
 
 echo "\n";
 
