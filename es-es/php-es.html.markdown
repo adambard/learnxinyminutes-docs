@@ -9,121 +9,121 @@ lang: es-es
 filename: learnphp-es.php
 ---
 
-This document describes PHP 5+.
+Este documento explica el funcionamiento de PHP 5+.
 
 ```php
-<?php // PHP code must be enclosed with <?php tags
+<?php // El código PHP debe estar dentro de etiquetas <?php
 
-// If your php file only contains PHP code, it is best practice
-// to omit the php closing tag to prevent accidental output.
+// Si tu fichero php solo contiene código php, es una buena práctica
+// omitir la etiqueta de cierre php para prevenir salidas acidentales.
 
-// Two forward slashes start a one-line comment.
+// Dos barras comienzan un comentario de una línea.
 
-# So will a hash (aka pound symbol) but // is more common
+# También lo hará una almohadilla, pero // es más común
 
 /*
-     Surrounding text in slash-asterisk and asterisk-slash
-     makes it a multi-line comment.
+     Escribir texto entre una barra-asterisco y asterisco-barra
+     crea un comentario multilínea.
 */
 
-// Use "echo" or "print" to print output
-print('Hello '); // Prints "Hello " with no line break
+// Utiliza "echo" o "print" para imprimir por pantalla
+print('Hola '); // Imprime "Hola " sin salto de línea
 
-// () are optional for print and echo
-echo "World\n"; // Prints "World" with a line break
-// (all statements must end with a semicolon)
+// () son opcionales para print y echo
+echo "Mundo\n"; // Imprime "Mundo" con un salto de línea
+// (todas las sentencias deben finalizar con un punto y coma)
 
-// Anything outside <?php tags is echoed automatically
+// Cualquier cosa fuera de las etiquetas <?php se imprime automáticamente
 ?>
-Hello World Again!
+¡Hola Mundo de nuevo!
 <?php
 
 
 /************************************
- * Types & Variables
+ * Tipos y variables
  */
 
-// Variables begin with the $ symbol.
-// A valid variable name starts with a letter or underscore,
-// followed by any number of letters, numbers, or underscores.
+// Las variables comienzan con el símbolo $.
+// Una variable válida comienza con una letra o guión bajo,
+// seguida de cualquier cantidad de letras, números o guiones bajos.
 
-// Boolean values are case-insensitive
-$boolean = true;  // or TRUE or True
-$boolean = false; // or FALSE or False
+// Las variables booleanas no distinguen entre mayúsculas o minúsculas
+$boolean = true;  // o TRUE o True
+$boolean = false; // o FALSE o False
 
-// Integers
+// Enteros
 $int1 = 12;   // => 12
 $int2 = -12;  // => -12
-$int3 = 012;  // => 10 (a leading 0 denotes an octal number)
-$int4 = 0x0F; // => 15 (a leading 0x denotes a hex literal)
+$int3 = 012;  // => 10 (un 0 al comienzo declara un número octal)
+$int4 = 0x0F; // => 15 (un 0x al comienzo declara un hexadecimal)
 
-// Floats (aka doubles)
+// Floats (también conocidos como doubles)
 $float = 1.234;
 $float = 1.2e3;
 $float = 7E-10;
 
-// Delete variable
+// Eliminar variable
 unset($int1);
 
-// Arithmetic
-$sum        = 1 + 1; // 2
-$difference = 2 - 1; // 1
-$product    = 2 * 2; // 4
-$quotient   = 2 / 1; // 2
+// Operaciones aritméticas
+$suma        = 1 + 1; // 2
+$diferencia  = 2 - 1; // 1
+$producto    = 2 * 2; // 4
+$cociente    = 2 / 1; // 2
 
-// Shorthand arithmetic
-$number = 0;
-$number += 1;      // Increment $number by 1
-echo $number++;    // Prints 1 (increments after evaluation)
-echo ++$number;    // Prints 3 (increments before evaluation)
-$number /= $float; // Divide and assign the quotient to $number
+// Operaciones aritméticas de escritura rápida
+$numero = 0;
+$numero += 1;      // Incrementa $numero en 1
+echo $numero++;    // Imprime 1 (incremento después la evaluación)
+echo ++$numero;    // Imprime 3 (incremento antes de la evaluación)
+$numero /= $float; // Divide y asigna el cociente a $numero
 
-// Strings should be enclosed in single quotes;
+// Las cadenas de caracteres deben declararse entre comillas simples
 $sgl_quotes = '$String'; // => '$String'
 
-// Avoid using double quotes except to embed other variables
+// Evita utilizar comillas dobles excepto para embeber otras variables
 $dbl_quotes = "This is a $sgl_quotes."; // => 'This is a $String.'
 
-// Special characters are only escaped in double quotes
-$escaped   = "This contains a \t tab character.";
-$unescaped = 'This just contains a slash and a t: \t';
+// Los caracteres especiales solo son válidos entre comillas dobles
+$escaped   = "Esto contiene \t un caracter tabulador.";
+$unescaped = 'Esto solo contiene una barra y una t: \t';
 
-// Enclose a variable in curly braces if needed
-$money = "I have $${number} in the bank.";
+// Rodea una variable entre corchetes si es necesario
+$dinero = "Tengo $${numero} en el banco.";
 
-// Since PHP 5.3, nowdocs can be used for uninterpolated multi-liners
+// Desde PHP 5.3, los nowdocs pueden ser utilizados para multilíneas no interpoladas
 $nowdoc = <<<'END'
 Multi line
 string
 END;
 
-// Heredocs will do string interpolation
+// Heredocs interpola cadenas de caracteres
 $heredoc = <<<END
 Multi line
 $sgl_quotes
 END;
 
-// String concatenation is done with .
-echo 'This string ' . 'is concatenated';
+// La concatenación de cadenas de caracteres se realiza con .
+echo 'Esta cadena de caracteres ' . 'está concatenada';
 
-// Strings can be passed in as parameters to echo
-echo 'Multiple', 'Parameters', 'Valid';  // Returns 'MultipleParametersValid'
+// Las cadenas de caracteres pueden ser pasadas como parámetros en un echo
+echo 'Multiples', 'Parametros', 'Validos';  // Devuelve 'MultiplesParametrosValidos'
 
 
 /********************************
- * Constants
+ * Constantes
  */
 
-// A constant is defined by using define()
-// and can never be changed during runtime!
+// Una constante se define utilizando define()
+// y nunca puede ser cambiada en tiempo de ejecución
 
-// a valid constant name starts with a letter or underscore,
-// followed by any number of letters, numbers, or underscores.
-define("FOO",     "something");
+// un nombre válido para una constante debe comenzar con una letra o guión bajo,
+// seguido por cualquier número de letras, números o guiones bajos.
+define("FOO",     "algo");
 
-// access to a constant is possible by calling the choosen name without a $
-echo FOO; // Returns 'something'
-echo 'This outputs '.FOO;  // Returns 'This ouputs something'
+// el acceso a una constante se puede realizar llamando a la variable elegida sin un símbolo de $
+echo FOO; // Devuelve 'algo'
+echo 'Esto imprime '.FOO;  // Devuelve 'Esto imprime algo'
 
 
 
@@ -131,62 +131,62 @@ echo 'This outputs '.FOO;  // Returns 'This ouputs something'
  * Arrays
  */
 
-// All arrays in PHP are associative arrays (hashmaps),
+// Todos los arrays en PHP son asociativos (hashmaps),
 
-// Associative arrays, known as hashmaps in some languages.
+// Los arrays asociativos son conocidos como hashmaps en algunos lenguajes.
 
-// Works with all PHP versions
-$associative = array('One' => 1, 'Two' => 2, 'Three' => 3);
+// Funciona con todas las versiones de php
+$asociativo = array('Uno' => 1, 'Dos' => 2, 'Tres' => 3);
 
-// PHP 5.4 introduced a new syntax
-$associative = ['One' => 1, 'Two' => 2, 'Three' => 3];
+// PHP 5.4 introdujo una nueva sintaxis
+$asociativo = ['Uno' => 1, 'Dos' => 2, 'Tres' => 3];
 
-echo $associative['One']; // prints 1
+echo $asociativo['Uno']; // imprime 1
 
-// List literals implicitly assign integer keys
-$array = ['One', 'Two', 'Three'];
-echo $array[0]; // => "One"
+// Lista literales implícitamente asignados con claves enteras
+$array = ['Uno', 'Dos', 'Tres'];
+echo $array[0]; // => "Uno"
 
-// Add an element to the end of an array
-$array[] = 'Four';
-// or
-array_push($array, 'Five');
+// Añadir un elemento al final de un array
+$array[] = 'Cuatro';
+// o
+array_push($array, 'Cinco');
 
-// Remove element from array
+// Eliminar un elemento de un array
 unset($array[3]);
 
 /********************************
- * Output
+ * Salidas por pantalla
  */
 
-echo('Hello World!');
-// Prints Hello World! to stdout.
-// Stdout is the web page if running in a browser.
+echo('¡Hola Mundo!');
+// Imprime ¡Hola Mundo! en stdout.
+// Stdout es la página web si se está ejecutando en un navegador.
 
-print('Hello World!'); // The same as echo
+print('!Hola Mundo!'); // Es lo mismo que echo
 
-// echo and print are language constructs too, so you can drop the parentheses
-echo 'Hello World!';
-print 'Hello World!';
+// No es necesario el paréntesis en echo y print
+echo '¡Hola Mundo!';
+print '¡Hola Mundo!';
 
-$paragraph = 'paragraph';
+$parrafo = 'parrafo';
 
-echo 100;        // Echo scalar variables directly
-echo $paragraph; // or variables
+echo 100;      // Haz echo de escalares directamente
+echo $parrafo; // o de variables
 
-// If short open tags are configured, or your PHP version is
-// 5.4.0 or greater, you can use the short echo syntax
+// Si las etiquetas cortas estás configuradas y tu versión de PHP es
+// la 5.4.0 o superior, puede utilizar la sintaxis abreviada de echo
 ?>
-<p><?= $paragraph ?></p>
+<p><?= $parrafo?></p>
 <?php
 
 $x = 1;
 $y = 2;
-$x = $y; // $x now contains the same value as $y
+$x = $y; // $x ahora contiene el mismo valor que $y
 $z = &$y;
-// $z now contains a reference to $y. Changing the value of
-// $z will change the value of $y also, and vice-versa.
-// $x will remain unchanged as the original value of $y
+// $z contiene ahora una referencia a $y. Un cambio en el valor de
+// $z cambiará también el valor de $y, y viceversa.
+// $x sin embargo, tendrá el valor original de $y
 
 echo $x; // => 2
 echo $z; // => 2
@@ -194,179 +194,178 @@ $y = 0;
 echo $x; // => 2
 echo $z; // => 0
 
-// Dumps type and value of variable to stdout
-var_dump($z); // prints int(0)
+// Dump muestra el tipo y valor de una variable en stdout
+var_dump($z); // imprime int(0)
 
-// Prints variable to stdout in human-readable format
-print_r($array); // prints: Array ( [0] => One [1] => Two [2] => Three )
+// Para mostrar el valor de una variable en un formato legible para humanos
+print_r($array); // imprime: Array ( [0] => Uno [1] => Dos [2] => Tres )
 
 /********************************
- * Logic
+ * Lógica
  */
 $a = 0;
 $b = '0';
 $c = '1';
 $d = '1';
 
-// assert throws a warning if its argument is not true
+// assert lanza una advertencia si su argumento no es verdadero
 
-// These comparisons will always be true, even if the types aren't the same.
-assert($a == $b); // equality
-assert($c != $a); // inequality
-assert($c <> $a); // alternative inequality
+// Estas comparaciones siempre serán verdaderas, incluso si los tipos no son los mismos.
+assert($a == $b); // igualdad
+assert($c != $a); // desigualdad
+assert($c <> $a); // desigualdad alternativa
 assert($a < $c);
 assert($c > $b);
 assert($a <= $b);
 assert($c >= $d);
 
-// The following will only be true if the values match and are the same type.
+// Los siguiente solo será verdadero si los valores coinciden y son del mismo tipo.
 assert($c === $d);
 assert($a !== $d);
 assert(1 === '1');
 assert(1 !== '1');
 
-// 'Spaceship' operator (since PHP 7)
-// Returns 0 if values on either side are equal
-// Returns 1 if value on the left is greater
-// Returns -1 if the value on the right is greater
+// Operador 'Spaceship' (desde PHP 7)
+// Devuelve 0 si ambos valores son iguales
+// Devuelve 1 si el valor de la izquierda es mayor
+// Devuelve -1 si el valor de la derecha es mayor
 
 $a = 100;
 $b = 1000;
 
-echo $a <=> $a; // 0 since they are equal
-echo $a <=> $b; // -1 since $a < $b
-echo $b <=> $a; // 1 since $b > $a
+echo $a <=> $a; //  0 porque son iguales
+echo $a <=> $b; // -1 porque $a < $b
+echo $b <=> $a; //  1 porque $b > $a
 
-// Variables can be converted between types, depending on their usage.
+// Las variables pueden ser convertidas entre tipos, dependiendo de su uso.
 
-$integer = 1;
-echo $integer + $integer; // => 2
+$entero = 1;
+echo $entero + $entero; // => 2
 
 $string = '1';
-echo $string + $string; // => 2 (strings are coerced to integers)
+echo $string + $string; // => 2 (los strings son convertidos a enteros)
 
-$string = 'one';
+$string = 'uno';
 echo $string + $string; // => 0
-// Outputs 0 because the + operator cannot cast the string 'one' to a number
+// Muestra un 0 porque el operador + no puede convertir la cadena de caracteres 'uno' a un número
 
-// Type casting can be used to treat a variable as another type
+// La conversión de tipos puede ser utilizada para tratar a una variable como otro tipo
 
 $boolean = (boolean) 1; // => true
 
-$zero = 0;
-$boolean = (boolean) $zero; // => false
+$cero = 0;
+$boolean = (boolean) $cero; // => false
 
-// There are also dedicated functions for casting most types
-$integer = 5;
-$string = strval($integer);
+// También hay funciones dedicadas a la conversión de tipos
+$entero = 5;
+$string = strval($entero);
 
-$var = null; // Null value
+$var = null; // Valor nulo
 
 
 /********************************
- * Control Structures
+ * Estructuras de control
  */
 
 if (true) {
-    print 'I get printed';
+    print 'He sido imprimido';
 }
 
 if (false) {
-    print 'I don\'t';
+    print 'Yo no';
 } else {
-    print 'I get printed';
+    print 'He sido imprimido';
 }
 
 if (false) {
-    print 'Does not get printed';
+    print 'No se imprime';
 } elseif(true) {
-    print 'Does';
+    print 'Sí se imprime';
 }
 
-// ternary operator
-print (false ? 'Does not get printed' : 'Does');
+// operador ternario
+print (false ? 'No se imprime' : 'Sí se imprime');
 
-// ternary shortcut operator since PHP 5.3
-// equivalent of "$x ? $x : 'Does'""
+// atajo para el operador ternario desde PHP 5.3
+// equivalente de "$x ? $x : 'Sí'""
 $x = false;
-print($x ?: 'Does');
+print($x ?: 'Sí');
 
-// null coalesce operator since php 7
+// operador 'no definido' desde php 7
 $a = null;
-$b = 'Does print';
-echo $a ?? 'a is not set'; // prints 'a is not set'
-echo $b ?? 'b is not set'; // prints 'Does print'
+$b = 'Imprime';
+echo $a ?? 'a no está definido'; // imprime 'a no está definido'
+echo $b ?? 'b no está definido'; // imprime 'Imprime'
 
 
 $x = 0;
 if ($x === '0') {
-    print 'Does not print';
+    print 'No imprime';
 } elseif($x == '1') {
-    print 'Does not print';
+    print 'No imprime';
 } else {
-    print 'Does print';
+    print 'Imprime';
 }
 
 
 
-// This alternative syntax is useful for templates:
+// Esta sintaxis alternativa se utiliza para plantillas:
 ?>
 
 <?php if ($x): ?>
-This is displayed if the test is truthy.
+Esto se muestra si la evaluación es verdadera.
 <?php else: ?>
-This is displayed otherwise.
+En otro caso, se muestra esto.
 <?php endif; ?>
 
 <?php
 
-// Use switch to save some logic.
+// Utiliza el switch para tener algo más de lógica.
 switch ($x) {
     case '0':
         print 'Switch does type coercion';
-        break; // You must include a break, or you will fall through
-               // to cases 'two' and 'three'
-    case 'two':
-    case 'three':
-        // Do something if $variable is either 'two' or 'three'
+        break; // Debes incluir un break para no seguir con los casos 'Dos' y 'Tres'
+    case 'Dos':
+    case 'Tres':
+        // Hacer algo si la variables es 'Dos' o 'Tres'
         break;
     default:
-        // Do something by default
+        // Hacer algo por defecto
 }
 
-// While, do...while and for loops are probably familiar
+// Los bucles While, do...while y for te serán familiares
 $i = 0;
 while ($i < 5) {
     echo $i++;
-}; // Prints "01234"
+}; // Imprime "01234"
 
 echo "\n";
 
 $i = 0;
 do {
     echo $i++;
-} while ($i < 5); // Prints "01234"
+} while ($i < 5); // Imprime "01234"
 
 echo "\n";
 
 for ($x = 0; $x < 10; $x++) {
     echo $x;
-} // Prints "0123456789"
+} // Imprime "0123456789"
 
 echo "\n";
 
-$wheels = ['bicycle' => 2, 'car' => 4];
+$ruedas = ['bicicleta' => 2, 'coche' => 4];
 
-// Foreach loops can iterate over arrays
-foreach ($wheels as $wheel_count) {
-    echo $wheel_count;
-} // Prints "24"
+// Los bucles foreach pueden iterar por arrays
+foreach ($ruedas as $numero_ruedas) {
+    echo $numero_ruedas;
+} // Imprime "24"
 
 echo "\n";
 
-// You can iterate over the keys as well as the values
-foreach ($wheels as $vehicle => $wheel_count) {
-    echo "A $vehicle has $wheel_count wheels";
+// También se puede iterar sobre las claves, así como sobre los valores
+foreach ($ruedas as $vehiculo => $numero_ruedas) {
+    echo "Un $vehiculo tiene $numero_ruedas ruedas";
 }
 
 echo "\n";
@@ -374,45 +373,45 @@ echo "\n";
 $i = 0;
 while ($i < 5) {
     if ($i === 3) {
-        break; // Exit out of the while loop
+        break; // Sale fuera del bucle while
     }
     echo $i++;
-} // Prints "012"
+} // Imprime "012"
 
 for ($i = 0; $i < 5; $i++) {
     if ($i === 3) {
-        continue; // Skip this iteration of the loop
+        continue; // Se salta esta iteración del bucle
     }
     echo $i;
-} // Prints "0124"
+} // Imprime "0124"
 
 
 /********************************
- * Functions
+ * Funciones
  */
 
-// Define a function with "function":
-function my_function () {
-    return 'Hello';
+// Define una función con "function":
+function mi_funcion () {
+    return 'Hola';
 }
 
-echo my_function(); // => "Hello"
+echo mi_funcion(); // => "Hola"
 
-// A valid function name starts with a letter or underscore, followed by any
-// number of letters, numbers, or underscores.
+// Un nombre válido de función comienza con una letra o guión bajo, seguido de cualquier
+// número de letras, números o guiones bajos.
 
-function add ($x, $y = 1) { // $y is optional and defaults to 1
-    $result = $x + $y;
-    return $result;
+function anadir ($x, $y = 1) { // $y es opcional y por defecto es 1
+    $resultado = $x + $y;
+    return $resultado;
 }
 
-echo add(4); // => 5
-echo add(4, 2); // => 6
+echo anadir(4); // => 5
+echo anadir(4, 2); // => 6
 
-// $result is not accessible outside the function
-// print $result; // Gives a warning.
+// $resultado no es accesible fuera de la función
+// print $resultado; // Devuelve una advertencia.
 
-// Since PHP 5.3 you can declare anonymous functions;
+// Desde PHP 5.3 se pueden declarar funciones anónimas
 $inc = function ($x) {
     return $x + 1;
 };
@@ -423,28 +422,28 @@ function foo ($x, $y, $z) {
     echo "$x - $y - $z";
 }
 
-// Functions can return functions
+// Las funciones pueden devolver funciones
 function bar ($x, $y) {
-    // Use 'use' to bring in outside variables
+    // Utiliza 'use' para meter variables de fuera de la función
     return function ($z) use ($x, $y) {
         foo($x, $y, $z);
     };
 }
 
 $bar = bar('A', 'B');
-$bar('C'); // Prints "A - B - C"
+$bar('C'); // Imprime "A - B - C"
 
-// You can call named functions using strings
-$function_name = 'add';
-echo $function_name(1, 2); // => 3
-// Useful for programatically determining which function to run.
-// Or, use call_user_func(callable $callback [, $parameter [, ... ]]);
+// Puedes llamar a funciones utilizando cadenas de caracteres
+$nombre_funcion = 'add';
+echo $nombre_funcion(1, 2); // => 3
+// Es útil para determinarl qué función ejecutar.
+// O, utiliza call_user_func(callable $callback [, $parameter [, ... ]]);
 
 
-// You can get the all the parameters passed to a function
-function parameters() {
-    $numargs = func_num_args();
-    if ($numargs > 0) {
+// Puedes obtener todos los parámetros pasados a una función
+function parametros() {
+    $numero_argumentos = func_num_args();
+    if ($numero_argumentos > 0) {
         echo func_get_arg(0) . ' | ';
     }
     $args_array = func_get_args();
@@ -453,151 +452,153 @@ function parameters() {
     }
 }
 
-parameters('Hello', 'World'); // Hello | 0 - Hello | 1 - World |
+parametros('Hola', 'Mundo'); // Hola | 0 - Hola | 1 - Mundo |
 
-// Since PHP 5.6 you can get a variable number of arguments
-function variable($word, ...$list) {
-	echo $word . " || ";
-	foreach ($list as $item) {
+// Desde PHP 5.6 se puede obtener un número variable de argumentos
+function variable($palabra, ...$lista) {
+	echo $palabra . " || ";
+	foreach ($lista as $item) {
 		echo $item . ' | ';
 	}
 }
 
-variable("Separate", "Hello", "World") // Separate || Hello | World | 
+variable("Separa", "Hola", "Mundo") // Separa || Hola | Mundo |
 
 /********************************
  * Includes
  */
 
 <?php
-// PHP within included files must also begin with a PHP open tag.
+// Los ficheros PHP incluidos deben comenzar también con la etiqueta de <?php
 
-include 'my-file.php';
-// The code in my-file.php is now available in the current scope.
-// If the file cannot be included (e.g. file not found), a warning is emitted.
+include 'mi-fichero.php';
+// El código de mi-fichero.php ya está disponible en el entorno actual.
+// Si el fichero no puede ser incluido (por ejemplo porque no se ha encontrado),
+// se muestra una advertencia.
 
-include_once 'my-file.php';
-// If the code in my-file.php has been included elsewhere, it will
-// not be included again. This prevents multiple class declaration errors
+include_once 'mi-fichero.php';
+// Si el código del fichero mi-fichero.php ya ha sido incluido, ya no se
+// incluirá de nuevo. Este previene errores por múltiples declaraciones.
 
-require 'my-file.php';
-require_once 'my-file.php';
-// Same as include(), except require() will cause a fatal error if the
-// file cannot be included.
+require 'mi-fichero.php';
+require_once 'mi-fichero.php';
+// Es lo mismo que el include(), pero require() causará un error fatal si el archivo
+// no ha podido ser incluido.
 
-// Contents of my-include.php:
+// Contenido de mi-include.php:
 <?php
 
-return 'Anything you like.';
-// End file
+return 'Cualquier cosa.';
+// acabar archivo
 
-// Includes and requires may also return a value.
-$value = include 'my-include.php';
+// Los include y require también pueden devolver un valor.
+$valor = include 'mi-include.php';
 
-// Files are included based on the file path given or, if none is given,
-// the include_path configuration directive. If the file isn't found in
-// the include_path, include will finally check in the calling script's
-// own directory and the current working directory before failing.
+// Los archivos son incluidos en función de la ruta data o, si ninguna ruta es
+// especificada se utilizará la directiva de configuración de include_path. Si el
+// fichero no se encuentra en el include_path, include comprobará la ruta del código
+// que lo llama antes de fallar.
 /* */
 
 /********************************
- * Classes
+ * Clases
  */
 
-// Classes are defined with the class keyword
+// Las clases son definidas con la palabra clave class
 
-class MyClass
+class MiClase
 {
-    const MY_CONST      = 'value'; // A constant
+    const MI_CONSTANTE      = 'valor'; // Una constante
 
     static $staticVar   = 'static';
 
-    // Static variables and their visibility
+    // Las variables estáticas y su visibilidad
     public static $publicStaticVar = 'publicStatic';
-    // Accessible within the class only
+    // Accesible solo dentro de su clase
     private static $privateStaticVar = 'privateStatic';
-    // Accessible from the class and subclasses
+    // Accesible desde la clase y las subclases
     protected static $protectedStaticVar = 'protectedStatic';
 
-    // Properties must declare their visibility
-    public $property    = 'public';
+    // Las propiedades deben declarar su visibilidad
+    public $propiedad    = 'public';
     public $instanceProp;
-    protected $prot = 'protected'; // Accessible from the class and subclasses
-    private $priv   = 'private';   // Accessible within the class only
+    protected $prot = 'protected'; // Accesible desde la clase y las subclases
+    private $priv   = 'private';   // Accesible solo desde la clase
 
-    // Create a constructor with __construct
+    // Crear un constructor con __construct
     public function __construct($instanceProp) {
-        // Access instance variables with $this
+        // Accede a las variables de la instancia con $this
         $this->instanceProp = $instanceProp;
     }
 
-    // Methods are declared as functions inside a class
-    public function myMethod()
+    // Los métodos son declarados como funciones dentro de una clase
+    public function miMetodo()
     {
-        print 'MyClass';
+        print 'MiClase';
     }
 
-    //final keyword would make a function unoverridable
-    final function youCannotOverrideMe()
+    // la palabra clave final hará una función no sobreescribible
+    final function noMePuedesSobreEscribir()
     {
     }
 
 /*
- * Declaring class properties or methods as static makes them accessible without
- * needing an instantiation of the class. A property declared as static can not
- * be accessed with an instantiated class object (though a static method can).
+ * Declarar propiedades de clase o métodos como estáticos los hace accesibles sin
+ * necesidad de instanciar la clase. Una propiedad declarada como estática no
+ * puede ser accedida mediante una instancia de la clase, pero sí mediante un
+ * método estático.
  */
 
-    public static function myStaticMethod()
+    public static function miMetodoEstatico()
     {
-        print 'I am static';
+        print 'Soy estático';
     }
 }
 
-// Class constants can always be accessed statically
-echo MyClass::MY_CONST;    // Outputs 'value';
+// Las constantes de una clase siempre pueden ser accedidas estáticamente
+echo MiClase::MI_CONSTANTE;    // Muestra 'valor';
 
-echo MyClass::$staticVar;  // Outputs 'static';
-MyClass::myStaticMethod(); // Outputs 'I am static';
+echo MiClase::$staticVar;  // Muestra 'static';
+MiClase::miMetodoEstatico(); // Muestra 'Soy estático';
 
-// Instantiate classes using new
-$my_class = new MyClass('An instance property');
-// The parentheses are optional if not passing in an argument.
+// Instancia una clase usando new
+$mi_clase = new MiClase('Una instancia');
+// Los paréntesis son opcionales si no se pasa ningún argumento.
 
-// Access class members using ->
-echo $my_class->property;     // => "public"
-echo $my_class->instanceProp; // => "An instance property"
-$my_class->myMethod();        // => "MyClass"
+// Accede a los miembros de una clase utilizando ->
+echo $mi_clase->propiedad;     // => "public"
+echo $mi_clase->instanceProp; // => "Una instancia"
+$mi_clase->miMetodo();        // => "MiClase"
 
 
-// Extend classes using "extends"
-class MyOtherClass extends MyClass
+// Extender clases utilizando "extends"
+class MiOtraClase extends MiClase
 {
-    function printProtectedProperty()
+    function imprimePropiedadProtegida()
     {
         echo $this->prot;
     }
 
-    // Override a method
-    function myMethod()
+    // Sobreescribe un método
+    function miMetodo()
     {
-        parent::myMethod();
-        print ' > MyOtherClass';
+        parent::miMetodo();
+        print ' > MiOtraClase';
     }
 }
 
-$my_other_class = new MyOtherClass('Instance prop');
-$my_other_class->printProtectedProperty(); // => Prints "protected"
-$my_other_class->myMethod();               // Prints "MyClass > MyOtherClass"
+$mi_otra_clase = new MiOtraClase('Propiedad de instancia');
+$mi_otra_clase->imprimePropiedadProtegida(); // => Imprime "protected"
+$mi_otra_clase->miMetodo();               // Imprime "MiClase > MiOtraClase"
 
-final class YouCannotExtendMe
+final class NoMePuedesExtender
 {
 }
 
-// You can use "magic methods" to create getters and setters
-class MyMapClass
+// Puedes utilizar "métodos mágicos" para crear los getters y setters
+class MiClaseMapeada
 {
-    private $property;
+    private $propiedad;
 
     public function __get($key)
     {
@@ -610,60 +611,60 @@ class MyMapClass
     }
 }
 
-$x = new MyMapClass();
-echo $x->property; // Will use the __get() method
-$x->property = 'Something'; // Will use the __set() method
+$x = new MiClaseMapeada();
+echo $x->propiedad; // Utilizará el método __get()
+$x->propiedad = 'Algo'; // Utilizará el método __set()
 
-// Classes can be abstract (using the abstract keyword) or
-// implement interfaces (using the implements keyword).
-// An interface is declared with the interface keyword.
+// Las clases pueden ser abstractas (utilizando la palabra clave abstract) o
+// implementando interfaces (utilizando la palabra clave implements).
+// Una interfaz puede ser declarada con la palabra clave interface.
 
-interface InterfaceOne
+interface InterfazUno
 {
-    public function doSomething();
+    public function hazAlgo();
 }
 
-interface InterfaceTwo
+interface InterfazDos
 {
-    public function doSomethingElse();
+    public function hazOtraCosa();
 }
 
-// interfaces can be extended
-interface InterfaceThree extends InterfaceTwo
+// las interfaces pueden ser extendidas
+interface InterfazTres extends InterfazDos
 {
-    public function doAnotherContract();
+    public function hazCualquierOtraCosa();
 }
 
-abstract class MyAbstractClass implements InterfaceOne
+abstract class MiClaseAbstracta implements InterfazUno
 {
-    public $x = 'doSomething';
+    public $x = 'hazAlgo';
 }
 
-class MyConcreteClass extends MyAbstractClass implements InterfaceTwo
+class MiOtraClase extends MiClaseAbstracta implements InterfazDos
 {
-    public function doSomething()
+    public function hazAlgo()
     {
         echo $x;
     }
 
-    public function doSomethingElse()
+    public function hazOtraCosa()
     {
-        echo 'doSomethingElse';
+        echo 'hazOtraCosa';
     }
 }
 
 
-// Classes can implement more than one interface
-class SomeOtherClass implements InterfaceOne, InterfaceTwo
+// Las clases pueden implementar más de una interfaz
+class CualquierOtraClase implements InterfazUno, InterfazDos
 {
-    public function doSomething()
+    public function hazAlgo()
     {
-        echo 'doSomething';
+        echo 'hazAlgo';
     }
 
-    public function doSomethingElse()
+    public function hazOtraCosa()
     {
-        echo 'doSomethingElse';
+        echo 'hazOtraCosa';
     }
 }
 
@@ -672,65 +673,65 @@ class SomeOtherClass implements InterfaceOne, InterfaceTwo
  * Traits
  */
 
-// Traits are available from PHP 5.4.0 and are declared using "trait"
+// Los traits están disponibles desde PHP 5.4.0 y son declarados utilizando "trait"
 
-trait MyTrait
+trait MiTrait
 {
-    public function myTraitMethod()
+    public function miMetodoTrait()
     {
-        print 'I have MyTrait';
+        print 'Tengo trait';
     }
 }
 
-class MyTraitfulClass
+class MiClaseTrait
 {
-    use MyTrait;
+    use MiTrait;
 }
 
-$cls = new MyTraitfulClass();
-$cls->myTraitMethod(); // Prints "I have MyTrait"
+$cls = new MiClaseTrait();
+$cls->miMetodoTrait(); // Imprime "Tengo trait"
 
 
 /********************************
  * Namespaces
  */
 
-// This section is separate, because a namespace declaration
-// must be the first statement in a file. Let's pretend that is not the case
+// Esta sección está separada porque una declaración de namespace debe
+// ser la primera sentencia en un archivo. Vamos a suponer que no es el caso
 
 <?php
 
-// By default, classes exist in the global namespace, and can
-// be explicitly called with a backslash.
+// Por defecto, las clases existen en el namespace global y pueden ser llamadas
+// explícitamente con una contrabarra.
 
-$cls = new \MyClass();
+$cls = new \MiClase();
 
 
 
-// Set the namespace for a file
-namespace My\Namespace;
+// Estableder el namespace para un archivo
+namespace Mi\Namespace;
 
-class MyClass
+class MiClase
 {
 }
 
-// (from another file)
-$cls = new My\Namespace\MyClass;
+// (de otro archivo)
+$cls = new Mi\Namespace\MiClase;
 
-//Or from within another namespace.
-namespace My\Other\Namespace;
+// O de otro namespace.
+namespace Mi\Otro\Namespace;
 
-use My\Namespace\MyClass;
+use Mi\Namespace\MiClase;
 
-$cls = new MyClass();
+$cls = new MiClase();
 
-// Or you can alias the namespace;
+// O se puede asignar un ales al namespace
 
-namespace My\Other\Namespace;
+namespace Mi\Otro\Namespace;
 
-use My\Namespace as SomeOtherNamespace;
+use Mi\Namespace as OtroNamespace;
 
-$cls = new SomeOtherNamespace\MyClass();
+$cls = new OtroNamespace\MiClase();
 
 
 /**********************
@@ -738,86 +739,87 @@ $cls = new SomeOtherNamespace\MyClass();
 *
 */
 
-class ParentClass {
-    public static function who() {
-        echo "I'm a " . __CLASS__ . "\n";
+class ClasePadre {
+    public static function quien() {
+        echo "Soy una " . __CLASS__ . "\n";
     }
     public static function test() {
-        // self references the class the method is defined within
-        self::who();
-        // static references the class the method was invoked on
-        static::who();
+        // Auto referencia a la clase en la que el método está definido
+        self::quien();
+        // Referencia estáticamente a la clase donde el método ha sido llamado
+        static::quien();
     }
 }
 
-ParentClass::test();
+ClasePadre::test();
 /*
-I'm a ParentClass
-I'm a ParentClass
+Soy una ClasePadre
+Soy una ClasePadre
 */
 
-class ChildClass extends ParentClass {
-    public static function who() {
-        echo "But I'm " . __CLASS__ . "\n";
+class ClaseHija extends ClasePadre {
+    public static function quien() {
+        echo "Pero soy una " . __CLASS__ . "\n";
     }
 }
 
-ChildClass::test();
+ClaseHija::test();
 /*
-I'm a ParentClass
-But I'm ChildClass
+Soy una ClasePadre
+Pero soy una ClaseHija
 */
 
 
 /**********************
-*  Error Handling
+*  Manejo de errores
 *  
 */
 
-// Simple error handling can be done with try catch block
+// Una simple gestión de errores puede ser realizada con un bloque try catch
 
 try {
-    // Do something
+    // Haz algo
 } catch (Exception $e) {
-    // Handle exception
+    // Maneja la excepción
 }
 
-// When using try catch blocks in a namespaced enviroment use the following
+// Cuando se utilicen bloques try catch en un entorno con namespaces hay que
+// usar lo siguiente
 
 try {
-    // Do something
+    // Haz algo
 } catch (\Exception $e) {
-    // Handle exception
+    // Maneja la excepción
 }
 
-// Custom exceptions
+// Excepciones personalizadas
 
-class MyException extends Exception {}
+class MiExcepcion extends Exception {}
 
 try {
 
-    $condition = true;
+    $condicion = true;
 
-    if ($condition) {
-        throw new MyException('Something just happend');
+    if ($condicion) {
+        throw new MiExcepcion('Ha pasado algo');
     }
 
-} catch (MyException $e) {
-    // Handle my exception
+} catch (MiExcepcion $e) {
+    // Manejar la excepción
 }
 
 ```
 
-## More Information
+## Más información
 
-Visit the [official PHP documentation](http://www.php.net/manual/) for reference
-and community input.
+Visita la [documentación oficial de PHP](http://www.php.net/manual/) para más referencias
+y apoyo de la comunidad.
 
-If you're interested in up-to-date best practices, visit
+Si estás interesado en buenas prácticas, visita
 [PHP The Right Way](http://www.phptherightway.com/).
 
-If you're coming from a language with good package management, check out
+Si vienes de un lenguaje con una buena gestión de paquetes, visita
 [Composer](http://getcomposer.org/).
 
-For common standards, visit the PHP Framework Interoperability Group's
+Para estándares comunes, visita el PHP Framework Interoperability Group
 [PSR standards](https://github.com/php-fig/fig-standards).
