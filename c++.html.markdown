@@ -801,6 +801,24 @@ void doSomethingWithAFile(const std::string& filename)
 //   all automatically destroy their contents when they fall out of scope.
 // - Mutexes using lock_guard and unique_lock
 
+// containers with object keys of non-primitive values (custom classes) require
+// compare function in the object itself or as a function pointer. Primitives
+// have default comparators, but you can override it.
+class Foo {
+public:
+	int j;
+	Foo(int a) : j(a) {}
+};
+struct compareFunction {
+    bool operator()(const Foo& a, const Foo& b) const {
+        return a.j < b.j;
+    }
+};
+//this isn't allowed (although it can vary depending on compiler)
+//std::map<Foo, int> fooMap;
+std::map<Foo, int, compareFunction> fooMap;
+fooMap[Foo(1)]  = 1;
+fooMap.find(Foo(1)); //true
 
 /////////////////////
 // Fun stuff
