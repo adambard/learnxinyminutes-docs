@@ -723,7 +723,7 @@ code_native(square_area, (Float64,))
 	#	    ret
 	#
 # Note that julia will use floating point instructions if any of the
-# arguements are floats.
+# arguments are floats.
 # Let's calculate the area of a circle
 circle_area(r) = pi * r * r     # circle_area (generic function with 1 method)
 circle_area(5)                  # 78.53981633974483
