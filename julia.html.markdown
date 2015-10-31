@@ -2,6 +2,7 @@
 language: Julia
 contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
+    - ["Pranit Bauva", "http://bauva.in"]
 filename: learnjulia.jl
 ---
 
