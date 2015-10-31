@@ -144,7 +144,12 @@ public class LearnJava {
         // or by initializing the unscaled value (BigInteger) and scale (int).
 
         BigDecimal fooBigDecimal = new BigDecimal(fooBigInteger, fooInt);
-
+        
+        // Be wary of the constructor that takes a float or double as
+        // the inaccuracy of the float/double will be copied in BigDecimal.
+        // Prefer the String constructor when you need an exact value.
+        
+        BigDecimal tenCents = new BigDecimal("0.1");
 
 
         // Strings
