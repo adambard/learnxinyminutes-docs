@@ -454,6 +454,9 @@ def matchEverything(obj: Any): String = obj match {
 
   // You can nest patterns:
   case List(List((1, 2, "YAY"))) => "Got a list of list of tuple"
+
+  // Match any case (default) if all previous haven't matched
+  case _ => "Got unknown object"
 }
 
 // In fact, you can pattern match any object with an "unapply" method. This
