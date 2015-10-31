@@ -169,6 +169,12 @@ def sumOfSquaresShort(x: Int, y: Int): Int = x * x + y * y
 // Syntax for calling functions is familiar:
 sumOfSquares(3, 4)  // => 25
 
+// You can use parameters names to specify them in different order
+def subtract(x: Int, y: Int): Int = x - y
+
+subtract(10, 3)     // => 7
+subtract(y=10, x=3) // => -7
+
 // In most cases (with recursive functions the most notable exception), function
 // return type can be omitted, and the same type inference we saw with variables
 // will work with function return values:
