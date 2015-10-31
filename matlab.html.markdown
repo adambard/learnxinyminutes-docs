@@ -15,6 +15,7 @@ If you have any feedback please feel free to reach me at
 [osvaldo.t.mendoza@gmail.com](mailto:osvaldo.t.mendoza@gmail.com).
 
 ```matlab
+%% Code sections start with two percent signs. Section titles go on the same line.
 % Comments start with a percent sign.
 
 %{
