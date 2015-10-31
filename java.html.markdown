@@ -128,7 +128,7 @@ public class LearnJava {
         //
         // BigInteger can be initialized using an array of bytes or a string.
         
-        BigInteger fooBigInteger = new BigDecimal(fooByteArray);
+        BigInteger fooBigInteger = new BigInteger(fooByteArray);
 
 
         // BigDecimal - Immutable, arbitrary-precision signed decimal number
