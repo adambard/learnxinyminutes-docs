@@ -5,6 +5,7 @@ contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:
     - ["Henrik Jürges", "https://github.com/santifa"]
+    - ["Nikolai Weh", "http://weh.hamburg"]
 filename: haskell-de.hs
 
 ---
@@ -64,6 +65,7 @@ not False -- True
 "Hello " ++ "world!" -- "Hello world!"
 
 -- Ein String ist eine Liste von Zeichen.
+['H', 'a', 'l', 'l', 'o', '!'] -- "Hallo!"
 "Das ist eine String" !! 0 -- 'D'
 
 
@@ -75,6 +77,18 @@ not False -- True
 -- Zwei gleiche Listen
 [1, 2, 3, 4, 5]
 [1..5]
+
+-- Die zweite Variante nennt sich die "range"-Syntax.
+-- Ranges sind recht flexibel:
+['A'..'F'] -- "ABCDEF"
+
+-- Es ist möglich eine Schrittweite anzugeben:
+[0,2..10] -- [0,2,4,6,8,10]
+[5..1] -- [], da Haskell standardmässig inkrementiert.
+[5,4..1] -- [5,4,3,2,1]
+
+-- Der "!!"-Operator extrahiert das Element an einem bestimmten Index:
+[1..10] !! 3 -- 4
 
 -- Haskell unterstuetzt unendliche Listen!
 [1..] -- Die Liste aller natuerlichen Zahlen
@@ -95,9 +109,6 @@ not False -- True
 -- Ein Element als Head hinzufuegen
 0:[1..5] -- [0, 1, 2, 3, 4, 5]
 
--- Gibt den 5. Index zurueck
-[0..] !! 5 -- 5
-
 -- Weitere Listenoperationen
 head [1..5] -- 1
 tail [1..5] -- [2, 3, 4, 5]
@@ -114,7 +125,8 @@ last [1..5] -- 5
 -- Ein Tupel:
 ("haskell", 1)
 
--- Auf Elemente eines Tupels zugreifen:
+-- Ein Paar (Pair) ist ein Tupel mit 2 Elementen, auf die man wie folgt
+-- zugreifen kann:
 fst ("haskell", 1) -- "haskell"
 snd ("haskell", 1) -- 1
 
@@ -142,7 +154,7 @@ add 1 2 -- 3
 
 -- Guards sind eine einfache Möglichkeit fuer Fallunterscheidungen.
 fib x
-  | x < 2 = x
+  | x < 2 = 1
   | otherwise = fib (x - 1) + fib (x - 2)
 
 -- Pattern Matching funktioniert ähnlich.
@@ -190,23 +202,28 @@ foo 5 -- 15
 -- Funktionskomposition
 -- Die (.) Funktion verkettet Funktionen.
 -- Zum Beispiel, die Funktion Foo nimmt ein Argument addiert 10 dazu und
--- multipliziert dieses Ergebnis mit 5.
-foo = (*5) . (+10)
+-- multipliziert dieses Ergebnis mit 4.
+foo = (*4) . (+10)
 
--- (5 + 10) * 5 = 75
-foo 5 -- 75
+-- (5 + 10) * 4 = 60
+foo 5 -- 60
 
 
--- Haskell hat eine Funktion `$`. Diese ändert den Vorrang,
--- so dass alles links von ihr zuerst berechnet wird und
--- und dann an die rechte Seite weitergegeben wird.
--- Mit `.` und `$` kann man sich viele Klammern ersparen.
+-- Haskell hat einen Operator `$`, welcher Funktionsapplikation durchfuehrt.
+-- Im Gegenzug zu der Standard-Funktionsapplikation, welche linksassoziativ ist
+-- und die höchstmögliche Priorität von "10" hat, ist der `$`-Operator
+-- rechtsassoziativ und hat die Priorität 0. Dieses hat (idr.) den Effekt,
+-- dass der `komplette` Ausdruck auf der rechten Seite als Parameter für die
+-- Funktion auf der linken Seite verwendet wird.
+-- Mit `.` und `$` kann man sich so viele Klammern ersparen.
 
--- Vorher
-(even (fib 7)) -- true
+(even (fib 7)) -- false
 
--- Danach
-even . fib $ 7 -- true
+-- Äquivalent:
+even $ fib 7 -- false
+
+-- Funktionskomposition:
+even . fib $ 7 -- false
 
 ----------------------------------------------------
 -- 5. Typensystem
@@ -233,19 +250,19 @@ double :: Integer -> Integer
 double x = x * 2
 
 ----------------------------------------------------
--- 6. If-Anweisung und Kontrollstrukturen
+-- 6. If-Ausdrücke und Kontrollstrukturen
 ----------------------------------------------------
 
--- If-Anweisung:
+-- If-Ausdruck:
 haskell = if 1 == 1 then "awesome" else "awful" -- haskell = "awesome"
 
--- If-Anweisungen können auch ueber mehrere Zeilen verteilt sein.
--- Das Einruecken ist dabei äußerst wichtig.
+-- If-Ausdrücke können auch über mehrere Zeilen verteilt sein.
+-- Die Einrückung ist dabei wichtig.
 haskell = if 1 == 1
             then "awesome"
             else "awful"
 
--- Case-Anweisung: Zum Beispiel "commandline" Argumente parsen.
+-- Case-Ausdruck: Am Beispiel vom Parsen von "commandline"-Argumenten.
 case args of
   "help" -> printHelp
   "start" -> startProgram
@@ -276,7 +293,7 @@ foldl (\x y -> 2*x + y) 4 [1,2,3] -- 43
 foldr (\x y -> 2*x + y) 4 [1,2,3] -- 16
 
 -- die Abarbeitung sieht so aus:
-(2 * 3 + (2 * 2 + (2 * 1 + 4)))
+(2 * 1 + (2 * 2 + (2 * 3 + 4)))
 
 ----------------------------------------------------
 -- 7. Datentypen
