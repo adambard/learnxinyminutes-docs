@@ -428,6 +428,9 @@ catch e
 end
 
 # You can define functions that take keyword arguments
+# Keyword arguments are identified by name only not by position thus
+# making it easier to call the function in case of a complicated function
+# with a lot of arguments. Keyword arguments start after ';'
 function keyword_args(;k1=4,name2="hello") # note the ;
     return ["k1"=>k1,"name2"=>name2]
 end
