@@ -321,8 +321,14 @@ divideInts(10, 3)    // (Int, Int) = (3,1)
 val d = divideInts(10, 3)    // (Int, Int) = (3,1)
 
 d._1    // Int = 3
-
 d._2    // Int = 1
+
+// Alternatively you can do multiple-variable assignment to tuple, which is more
+// convenient and readable in many cases
+val (div, mod) = divideInts(10, 3)
+
+div     // Int = 3
+mod     // Int = 1
 
 
 /////////////////////////////////////////////////
