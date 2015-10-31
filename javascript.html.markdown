@@ -137,6 +137,14 @@ undefined; // used to indicate a value is not currently present (although
 // false, null, undefined, NaN, 0 and "" are falsy; everything else is truthy.
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
+// You can also take advantage of truthiness with 
+// !! to force a boolean value from any type - this is shorthand for 
+// null checking
+var a = "a";
+a = !!a ; //true
+var b = "";
+b = !!b; //false
+
 ///////////////////////////////////
 // 2. Variables, Arrays and Objects
 
