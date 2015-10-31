@@ -630,7 +630,7 @@ on a new line! ""Wow!"", the masses cried";
 
     public static class Extensions
     {
-        // EXTENSION FUNCTIONS
+        // EXTENSION METHODS
         public static void Print(this object obj)
         {
             Console.WriteLine(obj.ToString());
