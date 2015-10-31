@@ -765,6 +765,13 @@ I'm a ParentClass
 But I'm ChildClass
 */
 
+/**********************
+*  Magic constants
+*  
+*/
+
+// Get directory of the file
+require __DIR__ . '/vendor/autoload.php';
 
 /**********************
 *  Error Handling
