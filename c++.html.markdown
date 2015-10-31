@@ -6,6 +6,7 @@ contributors:
     - ["Matt Kline", "https://github.com/mrkline"]
     - ["Geoff Liu", "http://geoffliu.me"]
     - ["Connor Waters", "http://github.com/connorwaters"]
+    - ["Ankush Goyal", "http://github.com/ankushg07"]
 lang: en
 ---
 
