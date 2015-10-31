@@ -77,6 +77,11 @@ false.class #=> FalseClass
 2 <= 2 #=> true
 2 >= 2 #=> true
 
+# Combined comparison operator
+1 <=> 10 #=> -1
+10 <=> 1 #=> 1
+1 <=> 1 #=> 0
+
 # Logical operators
 true && false #=> false
 true || false #=> true
