@@ -29,7 +29,7 @@ The main focus of this article is on the syntax and some general tips.
    #################### */
 
 /* the selector is used to target an element on a page.
-selector { property: value; /* more properties...*/ } */
+selector { property: value; /* more properties...*/ }
 
 /*
 Here is an example element:
