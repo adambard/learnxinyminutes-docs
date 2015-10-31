@@ -20,6 +20,10 @@ It is a general-purpose, object-oriented programming language that adds Smalltal
 Multi-line comments look like this
 */
 
+// XCode supports pragma mark directive that improve jump bar readability
+#pragma mark Navigation Functions // New tag on jump bar named 'Navigation Functions'
+#pragma mark - Navigation Functions // Same tag, now with a separator
+
 // Imports the Foundation headers with #import
 // Use <> to import global files (in general frameworks)
 // Use "" to import local files (from project)
