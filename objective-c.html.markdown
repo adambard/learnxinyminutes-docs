@@ -599,6 +599,52 @@ int main (int argc, const char * argv[]) {
 
 @end
 
+// Starting in Xcode 7.0, you can create Generic classes,
+// allowing you to provide greater type safety and clarity
+// without writing excessive boilerplate. 
+@interface Result<__covariant A> : NSObject
+
+- (void)handleSuccess:(void(^)(A))success
+              failure:(void(^)(NSError *))failure;
+
+@property (nonatomic) A object;
+
+@end
+
+// we can now declare instances of this class like
+Result<NSNumber *> *result;
+Result<NSArray *> *result;
+
+// Each of these cases would be equivalent to rewriting Result's interface
+// and substituting the appropriate type for A
+@interface Result : NSObject
+- (void)handleSuccess:(void(^)(NSArray *))success
+              failure:(void(^)(NSError *))failure;
+@property (nonatomic) NSArray * object;
+@end
+
+@interface Result : NSObject
+- (void)handleSuccess:(void(^)(NSNumber *))success
+              failure:(void(^)(NSError *))failure;
+@property (nonatomic) NSNumber * object;
+@end
+
+// It should be obvious, however, that writing one 
+//  Class to solve a problem is always preferable to writing two
+
+// Note that Clang will not accept generic types in @implementations,
+// so your @implemnation of Result would have to look like this:
+
+@implementation Result
+
+- (void)handleSuccess:(void (^)(id))success
+              failure:(void (^)(NSError *))failure {
+  // Do something
+}
+
+@end
+
+
 ///////////////////////////////////////
 // Protocols
 ///////////////////////////////////////
