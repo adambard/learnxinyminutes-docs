@@ -32,6 +32,9 @@ Module Module1
         Console.WriteLine("50. About")
         Console.WriteLine("Please Choose A Number From The Above List")
         Dim selection As String = Console.ReadLine
+        ' The "Case" in the Select statement is optional.
+        ' For example, "Select selection" instead of "Select Case selection"
+        ' will also work.
         Select Case selection
             Case "1" 'HelloWorld Output
                 Console.Clear() 'Clears the application and opens the private sub
