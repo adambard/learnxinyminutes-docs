@@ -238,7 +238,7 @@ li.remove(2)  # Raises a ValueError as 2 is not in the list
 li.insert(1, 2)  # li is now [1, 2, 3, 4, 5, 6] again
 
 # Get the index of the first item found
-li.index(2)  # => 3
+li.index(2)  # => 1
 li.index(7)  # Raises a ValueError as 7 is not in the list
 
 # Check for existence in a list with "in"
