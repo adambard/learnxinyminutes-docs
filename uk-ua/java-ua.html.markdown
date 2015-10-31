@@ -200,23 +200,23 @@ public class LearnJava {
         //            за сталий час для будь-якої кількості значень.
 
         ///////////////////////////////////////
-        // Operators
+        // Оператори
         ///////////////////////////////////////
         System.out.println("\n->Operators");
 
-        int i1 = 1, i2 = 2; // Shorthand for multiple declarations
+        int i1 = 1, i2 = 2; // Коротка форма присвоєння
 
-        // Arithmetic is straightforward
+        // Арифметичні операції виконуються
         System.out.println("1+2 = " + (i1 + i2)); // => 3
         System.out.println("2-1 = " + (i2 - i1)); // => 1
         System.out.println("2*1 = " + (i2 * i1)); // => 2
-        System.out.println("1/2 = " + (i1 / i2)); // => 0 (int/int returns an int)
+        System.out.println("1/2 = " + (i1 / i2)); // => 0 (int/int повертається як int)
         System.out.println("1/2 = " + (i1 / (double)i2)); // => 0.5
 
-        // Modulo
+        // Ділення з остачею
         System.out.println("11%3 = "+(11 % 3)); // => 2
 
-        // Comparison operators
+        // Оператори порівняння
         System.out.println("3 == 2? " + (3 == 2)); // => false
         System.out.println("3 != 2? " + (3 != 2)); // => true
         System.out.println("3 > 2? " + (3 > 2)); // => true
@@ -224,28 +224,28 @@ public class LearnJava {
         System.out.println("2 <= 2? " + (2 <= 2)); // => true
         System.out.println("2 >= 2? " + (2 >= 2)); // => true
 
-        // Boolean operators
+        // Логічні оператори
         System.out.println("3 > 2 && 2 > 3? " + ((3 > 2) && (2 > 3))); // => false
         System.out.println("3 > 2 || 2 > 3? " + ((3 > 2) || (2 > 3))); // => true
         System.out.println("!(3 == 2)? " + (!(3 == 2))); // => true
 
-        // Bitwise operators!
+        // Бітові оператори!
         /*
-        ~      Unary bitwise complement
-        <<     Signed left shift
-        >>     Signed/Arithmetic right shift
-        >>>    Unsigned/Logical right shift
-        &      Bitwise AND
-        ^      Bitwise exclusive OR
-        |      Bitwise inclusive OR
+        ~      Унарне бітове доповнення
+        <<     Знаковий зсув уліво
+        >>     Знаковий/Арифметичний зсув управо
+        >>>    Беззнаковий/Логічний зсув управо
+        &      Бітове І
+        ^      Бітови виключне АБО
+        |      Бітове АБО
         */
 
-        // Incrementations
+        // Інкремнт
         int i = 0;
-        System.out.println("\n->Inc/Dec-rementation");
-        // The ++ and -- operators increment and decrement by 1 respectively.
-        // If they are placed before the variable, they increment then return;
-        // after the variable they return then increment.
+        System.out.println("\n->Інкремент/Декремент");
+        // Оператори ++ і -- здійснюють інкремент та декремент ретроспективно.
+        // Якщо вони розташовані перед змінною, операція виконається перед поверненням;
+        // після - повернеться інкремент або декремент.
         System.out.println(i++); // i = 1, prints 0 (post-increment)
         System.out.println(++i); // i = 2, prints 2 (pre-increment)
         System.out.println(i--); // i = 1, prints 2 (post-decrement)
