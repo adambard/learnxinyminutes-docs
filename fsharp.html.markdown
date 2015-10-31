@@ -31,14 +31,14 @@ If you want to try out the code below, you can go to [tryfsharp.org](http://www.
 // The "let" keyword defines an (immutable) value
 let myInt = 5
 let myFloat = 3.14
-let myString = "hello"           //note that no types needed
+let myString = "hello"           // note that no types needed
 
 // ------ Lists ------
-let twoToFive = [2;3;4;5]        // Square brackets create a list with
+let twoToFive = [2; 3; 4; 5]        // Square brackets create a list with
                                  // semicolon delimiters.
 let oneToFive = 1 :: twoToFive   // :: creates list with new 1st element
-// The result is [1;2;3;4;5]
-let zeroToFive = [0;1] @ twoToFive   // @ concats two lists
+// The result is [1; 2; 3; 4; 5]
+let zeroToFive = [0; 1] @ twoToFive   // @ concats two lists
 
 // IMPORTANT: commas are never used as delimiters, only semicolons!
 
@@ -53,7 +53,7 @@ add 2 3                       // Now run the function.
 
 // to define a multiline function, just use indents. No semicolons needed.
 let evens list =
-   let isEven x = x%2 = 0     // Define "isEven" as a sub function
+   let isEven x = x % 2 = 0     // Define "isEven" as a sub function
    List.filter isEven list    // List.filter is a library function
                               // with two parameters: a boolean function
                               // and a list to work on
@@ -75,7 +75,7 @@ let sumOfSquaresTo100piped =
 
 // you can define lambdas (anonymous functions) using the "fun" keyword
 let sumOfSquaresTo100withFun =
-   [1..100] |> List.map (fun x -> x*x) |> List.sum
+   [1..100] |> List.map (fun x -> x * x) |> List.sum
 
 // In F# there is no "return" keyword. A function always
 // returns the value of the last expression used.
@@ -109,7 +109,7 @@ optionPatternMatch invalidValue
 // The printf/printfn functions are similar to the
 // Console.Write/WriteLine functions in C#.
 printfn "Printing an int %i, a float %f, a bool %b" 1 2.0 true
-printfn "A string %s, and something generic %A" "hello" [1;2;3;4]
+printfn "A string %s, and something generic %A" "hello" [1; 2; 3; 4]
 
 // There are also sprintf/sprintfn functions for formatting data
 // into a string, similar to String.Format in C#.
@@ -131,19 +131,19 @@ module FunctionExamples =
 
     // basic usage of a function
     let a = add 1 2
-    printfn "1+2 = %i" a
+    printfn "1 + 2 = %i" a
 
     // partial application to "bake in" parameters
     let add42 = add 42
     let b = add42 1
-    printfn "42+1 = %i" b
+    printfn "42 + 1 = %i" b
 
     // composition to combine functions
     let add1 = add 1
     let add2 = add 2
     let add3 = add1 >> add2
     let c = add3 7
-    printfn "3+7 = %i" c
+    printfn "3 + 7 = %i" c
 
     // higher order functions
     [1..10] |> List.map add3 |> printfn "new list is %A"
@@ -151,7 +151,7 @@ module FunctionExamples =
     // lists of functions, and more
     let add6 = [add1; add2; add3] |> List.reduce (>>)
     let d = add6 7
-    printfn "1+2+3+7 = %i" d
+    printfn "1 + 2 + 3 + 7 = %i" d
 
 // ================================================
 // Lists and collection
@@ -168,12 +168,12 @@ module FunctionExamples =
 module ListExamples =
 
     // lists use square brackets
-    let list1 = ["a";"b"]
+    let list1 = ["a"; "b"]
     let list2 = "c" :: list1    // :: is prepending
     let list3 = list1 @ list2   // @ is concat
 
     // list comprehensions (aka generators)
-    let squares = [for i in 1..10 do yield i*i]
+    let squares = [for i in 1..10 do yield i * i]
 
     // prime number generator
     let rec sieve = function
@@ -190,8 +190,8 @@ module ListExamples =
         | [first; second] -> printfn "list is %A and %A" first second
         | _ -> printfn "the list has more than two elements"
 
-    listMatcher [1;2;3;4]
-    listMatcher [1;2]
+    listMatcher [1; 2; 3; 4]
+    listMatcher [1; 2]
     listMatcher [1]
     listMatcher []
 
@@ -219,7 +219,7 @@ module ListExamples =
 module ArrayExamples =
 
     // arrays use square brackets with bar
-    let array1 = [| "a";"b" |]
+    let array1 = [| "a"; "b" |]
     let first = array1.[0]        // indexed access using dot
 
     // pattern matching for arrays is same as for lists
@@ -230,13 +230,13 @@ module ArrayExamples =
         | [| first; second |] -> printfn "array is %A and %A" first second
         | _ -> printfn "the array has more than two elements"
 
-    arrayMatcher [| 1;2;3;4 |]
+    arrayMatcher [| 1; 2; 3; 4 |]
 
     // Standard library functions just as for List
 
     [| 1..10 |]
-    |> Array.map (fun i -> i+3)
-    |> Array.filter (fun i -> i%2 = 0)
+    |> Array.map (fun i -> i + 3)
+    |> Array.filter (fun i -> i % 2 = 0)
     |> Array.iter (printfn "value is %i. ")
 
 
@@ -255,7 +255,7 @@ module SequenceExamples =
         yield! [5..10]
         yield! seq {
             for i in 1..10 do
-              if i%2 = 0 then yield i }}
+              if i % 2 = 0 then yield i }}
     // test
     strange |> Seq.toList
 
@@ -280,11 +280,11 @@ module DataTypeExamples =
 
     // Tuples are quick 'n easy anonymous types
     // -- Use a comma to create a tuple
-    let twoTuple = 1,2
-    let threeTuple = "a",2,true
+    let twoTuple = 1, 2
+    let threeTuple = "a", 2, true
 
     // Pattern match to unpack
-    let x,y = twoTuple  //sets x=1 y=2
+    let x, y = twoTuple  // sets x = 1, y = 2
 
     // ------------------------------------
     // Record types have named fields
@@ -297,7 +297,7 @@ module DataTypeExamples =
     let person1 = {First="John"; Last="Doe"}
 
     // Pattern match to unpack
-    let {First=first} = person1    //sets first="John"
+    let {First = first} = person1    // sets first="John"
 
     // ------------------------------------
     // Union types (aka variants) have a set of choices
@@ -331,7 +331,7 @@ module DataTypeExamples =
       | Worker of Person
       | Manager of Employee list
 
-    let jdoe = {First="John";Last="Doe"}
+    let jdoe = {First="John"; Last="Doe"}
     let worker = Worker jdoe
 
     // ------------------------------------
@@ -383,8 +383,8 @@ module DataTypeExamples =
     type Rank = Two | Three | Four | Five | Six | Seven | Eight
                 | Nine | Ten | Jack | Queen | King | Ace
 
-    let hand = [ Club,Ace; Heart,Three; Heart,Ace;
-                 Spade,Jack; Diamond,Two; Diamond,Ace ]
+    let hand = [ Club, Ace; Heart, Three; Heart, Ace;
+                 Spade, Jack; Diamond, Two; Diamond, Ace ]
 
     // sorting
     List.sort hand |> printfn "sorted hand is (low to high) %A"
@@ -419,7 +419,7 @@ module ActivePatternExamples =
       | _ -> printfn "%c is something else" ch
 
     // print a list
-    ['a';'b';'1';' ';'-';'c'] |> List.iter printChar
+    ['a'; 'b'; '1'; ' '; '-'; 'c'] |> List.iter printChar
 
     // -----------------------------------
     // FizzBuzz using active patterns
@@ -479,7 +479,7 @@ module AlgorithmExamples =
             List.concat [smallerElements; [firstElem]; largerElements]
 
     // test
-    sort [1;5;23;18;9;1;3] |> printfn "Sorted = %A"
+    sort [1; 5; 23; 18; 9; 1; 3] |> printfn "Sorted = %A"
 
 // ================================================
 // Asynchronous Code
@@ -536,7 +536,7 @@ module NetCompatibilityExamples =
 
     // ------- work with existing library functions  -------
 
-    let (i1success,i1) = System.Int32.TryParse("123");
+    let (i1success, i1) = System.Int32.TryParse("123");
     if i1success then printfn "parsed as %i" i1 else printfn "parse failed"
 
     // ------- Implement interfaces on the fly! -------
@@ -570,12 +570,12 @@ module NetCompatibilityExamples =
     // abstract base class with virtual methods
     [<AbstractClass>]
     type Shape() =
-        //readonly properties
+        // readonly properties
         abstract member Width : int with get
         abstract member Height : int with get
-        //non-virtual method
+        // non-virtual method
         member this.BoundingArea = this.Height * this.Width
-        //virtual method with base implementation
+        // virtual method with base implementation
         abstract member Print : unit -> unit
         default this.Print () = printfn "I'm a shape"
 
@@ -586,19 +586,19 @@ module NetCompatibilityExamples =
         override this.Height = y
         override this.Print ()  = printfn "I'm a Rectangle"
 
-    //test
-    let r = Rectangle(2,3)
+    // test
+    let r = Rectangle(2, 3)
     printfn "The width is %i" r.Width
     printfn "The area is %i" r.BoundingArea
     r.Print()
 
     // ------- extension methods  -------
 
-    //Just as in C#, F# can extend existing classes with extension methods.
+    // Just as in C#, F# can extend existing classes with extension methods.
     type System.String with
        member this.StartsWithA = this.StartsWith "A"
 
-    //test
+    // test
     let s = "Alice"
     printfn "'%s' starts with an 'A' = %A" s s.StartsWithA
 
