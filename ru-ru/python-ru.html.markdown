@@ -280,7 +280,7 @@ filled_dict.get("four", 4) #=> 4
 # Присваивайте значение ключам так же, как и в списках
 filled_dict["four"] = 4  # теперь filled_dict["four"] => 4
 
-# Метод setdefault вставляет() пару ключ-значение, только если такого ключа нет
+# Метод setdefault() вставляет пару ключ-значение, только если такого ключа нет
 filled_dict.setdefault("five", 5) #filled_dict["five"] возвращает 5
 filled_dict.setdefault("five", 6) #filled_dict["five"] по-прежнему возвращает 5
 
