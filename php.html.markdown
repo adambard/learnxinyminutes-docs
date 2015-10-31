@@ -770,8 +770,32 @@ But I'm ChildClass
 *  
 */
 
-// Get directory of the file
-require __DIR__ . '/vendor/autoload.php';
+// Get current class name. Must be used inside a class declaration.
+echo "Current class name is " . __CLASS__;
+
+// Get full path directory of a file
+echo "Current directory is " . __DIR__;
+
+    // Typical usage
+    require __DIR__ . '/vendor/autoload.php';
+
+// Get full path of a file
+echo "Current file path is " . __FILE__;
+
+// Get current function name
+echo "Current function name is " . __FUNCTION__;
+
+// Get current line number
+echo "Current line number is " . __LINE__;
+
+// Get the name of the current method. Only returns a value when used inside a trait or object declaration.
+echo "Current method is " . __METHOD__;
+
+// Get the name of the current namespace
+echo "Current namespace is " . __NAMESPACE__;
+
+// Get the name of the current trait. Only returns a value when used inside a trait or object declaration.
+echo "Current namespace is " . __TRAIT__;
 
 /**********************
 *  Error Handling
