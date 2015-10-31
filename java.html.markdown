@@ -416,7 +416,7 @@ public class LearnJava {
         // easier way, by using something that is called Double Brace
         // Initialization.
 
-        private static final Set<String> COUNTRIES = HashSet<String>() {{
+        private static final Set<String> COUNTRIES = new HashSet<String>() {{
             add("DENMARK");
             add("SWEDEN");
             add("FINLAND");
