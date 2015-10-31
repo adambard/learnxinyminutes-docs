@@ -21,7 +21,7 @@ element's contents. -->
 guide will attempt to clarify when features are universal or when they are
 specific to a certain parser. -->
 
-<!-- Headers -->
+<!-- Headings -->
 <!-- You can create HTML elements <h1> through <h6> easily by prepending the
 text you want to be in that element by a number of hashes (#) -->
 # This is an <h1>
