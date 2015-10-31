@@ -9,7 +9,7 @@ contributors:
     - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
     - ["Rachel Stiyer", "https://github.com/rstiyer"]
 translators:
-	- ["Oleksandr Tatarchuk", "http://github.com/tatarchuk"]
+    - ["Oleksandr Tatarchuk", "http://github.com/tatarchuk"]
 filename: LearnJava.java
 lang: uk-ua
 ---
