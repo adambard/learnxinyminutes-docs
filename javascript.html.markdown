@@ -101,6 +101,10 @@ false;
 // Strings are concatenated with +
 "Hello " + "world!"; // = "Hello world!"
 
+// ... which works with more than just strings
+"1, 2, " + 3; // = "1, 2, 3"
+"Hello " + ["world", "!"] // = "Hello world,!"
+
 // and are compared with < and >
 "a" < "b"; // = true
 
