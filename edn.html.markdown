@@ -16,7 +16,7 @@ will see how it is extended later on.
 
 ```Clojure
 ; Comments start with a semicolon.
-; Anythng after the semicolon is ignored.
+; Anything after the semicolon is ignored.
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Basic Types ;;;
