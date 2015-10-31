@@ -762,37 +762,37 @@ public class EnumTest {
 
 ```
 
-## Further Reading
+## Додатково для прочитання
 
 The links provided here below are just to get an understanding of the topic, feel free to Google and find specific examples.
 
-**Official Oracle Guides**:
+**Офіційні посібники Oracle**:
 
 * [Java Tutorial Trail from Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
 
-* [Java Access level modifiers](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
+* [Java модифікатори доступу](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
 
-* [Object-Oriented Programming Concepts](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
+* [ООП концепції](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
     * [Inheritance](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
     * [Polymorphism](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
     * [Abstraction](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
 
-* [Exceptions](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
+* [Виключення](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
 
-* [Interfaces](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
+* [Інтерфейси](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
 
-* [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
+* [параметризація](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
 
 * [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
 
-**Online Practice and Tutorials**
+**Online практика та посібники**
 
 * [Learneroo.com - Learn Java](http://www.learneroo.com)
 
 * [Codingbat.com](http://codingbat.com/java)
 
 
-**Books**:
+**Книжки**:
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
 
