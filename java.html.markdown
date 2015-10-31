@@ -207,8 +207,8 @@ public class LearnJava {
         System.out.println("1+2 = " + (i1 + i2)); // => 3
         System.out.println("2-1 = " + (i2 - i1)); // => 1
         System.out.println("2*1 = " + (i2 * i1)); // => 2
-        System.out.println("1/2 = " + (i1 / i2)); // => 0 (0.5 truncated down)
-        System.out.println("1/2 = " + (i1 / (i2*1.0))); // => 0.5
+        System.out.println("1/2 = " + (i1 / i2)); // => 0 (int/int returns an int)
+        System.out.println("1/2 = " + (i1 / (double)i2)); // => 0.5
 
         // Modulo
         System.out.println("11%3 = "+(11 % 3)); // => 2
