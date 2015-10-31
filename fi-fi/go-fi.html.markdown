@@ -13,6 +13,7 @@ contributors:
     - ["Clayton Walker", "https://github.com/cwalk"]
 translators:
     - ["Timo Virkkunen", "https://github.com/ComSecNinja"]
+lang: fi-fi
 ---
 
 Go luotiin työn tekemistä varten. Se ei ole tietojenkäsittelyn uusin trendi,
