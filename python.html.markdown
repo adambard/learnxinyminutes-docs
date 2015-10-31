@@ -132,6 +132,7 @@ z = "The items in the basket are %s and %s" % (x,y)
 
 # A newer way to format strings is the format method.
 # This method is the preferred way
+"{} is a {}".format("This", "placeholder")
 "{0} can be {1}".format("strings", "formatted")
 # You can use keywords if you don't want to count.
 "{name} wants to eat {food}".format(name="Bob", food="lasagna")
