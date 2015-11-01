@@ -6,7 +6,7 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["evuez", "http://github.com/evuez"]
 translators:
-    - ["Michael Yeh", "https://github.com/hinet60613"]
+    - ["Michael Yeh", "https://hinet60613.github.io/"]
 filename: learnpython.py
 lang: zh-tw
 ---
@@ -255,137 +255,139 @@ li.index(7)  # 7 不在串列中，造成 ValueError
 len(li)   # => 6
 
 
-# Tuples are like lists but are immutable.
+# 元組(Tuple，以下仍用原文)類似於串列，但是它是不可改變的
 tup = (1, 2, 3)
 tup[0]   # => 1
-tup[0] = 3  # Raises a TypeError
+tup[0] = 3  # 產生TypeError
 
-# You can do all those list thingies on tuples too
+# 能對串列做的東西都可以對tuple做
 len(tup)   # => 3
 tup + (4, 5, 6)   # => (1, 2, 3, 4, 5, 6)
 tup[:2]   # => (1, 2)
 2 in tup   # => True
 
-# You can unpack tuples (or lists) into variables
-a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
-d, e, f = 4, 5, 6       # you can leave out the parentheses
-# Tuples are created by default if you leave out the parentheses
+# 你可以把tuple拆開並分別將值存入不同變數
+a, b, c = (1, 2, 3)     # a 現在是 1, b 現在是 2, c 現在是 3
+d, e, f = 4, 5, 6       # 也可以不寫括號
+# 如果不加括號，預設會產生tuple
 g = 4, 5, 6             # => (4, 5, 6)
-# Now look how easy it is to swap two values
+# 你看，交換兩個值很簡單吧
 e, d = d, e     # d is now 5 and e is now 4
 
 
-# Dictionaries store mappings
+# 字典(Dictionary)用來儲存映射關係
 empty_dict = {}
-# Here is a prefilled dictionary
+# 你可以對字典做初始化
 filled_dict = {"one": 1, "two": 2, "three": 3}
 
-# Look up values with []
+# 用 [] 取值
 filled_dict["one"]   # => 1
 
-# Get all keys as a list with "keys()"
+# 用 "keys()" 將所有的Key輸出到一個List中
 filled_dict.keys()   # => ["three", "two", "one"]
-# Note - Dictionary key ordering is not guaranteed.
-# Your results might not match this exactly.
+# 註: 字典裡key的排序是不固定的
+# 你的執行結果可能與上面不同
+# 譯註: 只能保證所有的key都有出現，但不保證順序
 
-# Get all values as a list with "values()"
+# 用 "valuess()" 將所有的Value輸出到一個List中
 filled_dict.values()   # => [3, 2, 1]
-# Note - Same as above regarding key ordering.
+# 註: 同上，不保證順序
 
-# Check for existence of keys in a dictionary with "in"
+# 用 "in" 來檢查指定的Key是否在字典中
 "one" in filled_dict   # => True
 1 in filled_dict   # => False
 
-# Looking up a non-existing key is a KeyError
+# 查詢不存在的Key會造成KeyError
 filled_dict["four"]   # KeyError
 
-# Use "get()" method to avoid the KeyError
+# 用 "get()" 來避免KeyError
+# 若指定的Key不存在的話會得到None
 filled_dict.get("one")   # => 1
 filled_dict.get("four")   # => None
-# The get method supports a default argument when the value is missing
+# "get()" 函式支援預設值，當找不到指定的值時，會回傳指定的預設值
 filled_dict.get("one", 4)   # => 1
 filled_dict.get("four", 4)   # => 4
-# note that filled_dict.get("four") is still => None
-# (get doesn't set the value in the dictionary)
+# 注意此時 filled_dict.get("four") 仍然為 None
+# (get()此時並沒有產生出任何的值)
 
-# set the value of a key with a syntax similar to lists
-filled_dict["four"] = 4  # now, filled_dict["four"] => 4
+# 像操作list一樣，對指定的Key賦值
+filled_dict["four"] = 4  # 此時 filled_dict["four"] => 4
 
-# "setdefault()" inserts into a dictionary only if the given key isn't present
-filled_dict.setdefault("five", 5)  # filled_dict["five"] is set to 5
-filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5
+# "setdefault()" 只在指定的Key不存在時才會將值插入dictionary
+filled_dict.setdefault("five", 5)  # filled_dict["five"] 被指定為 5
+filled_dict.setdefault("five", 6)  # filled_dict["five"] 仍保持 5
 
 
-# Sets store ... well sets (which are like lists but can contain no duplicates)
+# 集合(Set)被用來儲存...集合。
+# 跟串列(List)有點像，但集合內不會有重複的元素
 empty_set = set()
-# Initialize a "set()" with a bunch of values
-some_set = set([1, 2, 2, 3, 4])   # some_set is now set([1, 2, 3, 4])
+# 初始化 "set()" 並給定一些值
+some_set = set([1, 2, 2, 3, 4])   # 現在 some_set 為 set([1, 2, 3, 4])，注意重複的元素只有一個會被存入
 
-# order is not guaranteed, even though it may sometimes look sorted
-another_set = set([4, 3, 2, 2, 1])  # another_set is now set([1, 2, 3, 4])
+# 一樣，不保證順序，就算真的有照順序排也只是你運氣好
+another_set = set([4, 3, 2, 2, 1])  # another_set 現在為 set([1, 2, 3, 4])
 
-# Since Python 2.7, {} can be used to declare a set
+# 從 Python 2.7 開始，可以使用大括號 {} 來宣告Set
 filled_set = {1, 2, 2, 3, 4}   # => {1, 2, 3, 4}
 
-# Add more items to a set
+# 加入更多元素進入Set
 filled_set.add(5)   # filled_set is now {1, 2, 3, 4, 5}
 
-# Do set intersection with &
+# 用 & 來對兩個集合取交集
 other_set = {3, 4, 5, 6}
 filled_set & other_set   # => {3, 4, 5}
 
-# Do set union with |
+# 用 | 來對兩個集合取聯集
 filled_set | other_set   # => {1, 2, 3, 4, 5, 6}
 
-# Do set difference with -
+# 用 - 來將第二個集合內有的元素移出第一個集合
 {1, 2, 3, 4} - {2, 3, 5}   # => {1, 4}
 
-# Do set symmetric difference with ^
+# 用 ^ 來對兩個集合取差集
 {1, 2, 3, 4} ^ {2, 3, 5}  # => {1, 4, 5}
 
-# Check if set on the left is a superset of set on the right
+# 檢查左邊是否為右邊的母集
 {1, 2} >= {1, 2, 3} # => False
 
-# Check if set on the left is a subset of set on the right
+# 檢查左邊是否為右邊的子集
 {1, 2} <= {1, 2, 3} # => True
 
-# Check for existence in a set with in
+# 用 in 來檢查某元素是否存在於集合內
 2 in filled_set   # => True
 10 in filled_set   # => False
 
 
 ####################################################
-## 3. Control Flow
+## 3. 控制流程
 ####################################################
 
-# Let's just make a variable
+# 首先，先宣告一個變數
 some_var = 5
 
-# Here is an if statement. Indentation is significant in python!
-# prints "some_var is smaller than 10"
+# 這邊是 if 判斷式。注意，縮排對Python是很重要的。
+# 下面應該會印出 "some_var is smaller than 10"
 if some_var > 10:
     print "some_var is totally bigger than 10."
-elif some_var < 10:    # This elif clause is optional.
+elif some_var < 10:    # elif 可有可無
     print "some_var is smaller than 10."
-else:           # This is optional too.
+else:           # else 也可有可無
     print "some_var is indeed 10."
 
 
 """
-For loops iterate over lists
-prints:
+For 迴圈會遞迴整的List
+下面的程式碼會輸出:
     dog is a mammal
     cat is a mammal
     mouse is a mammal
 """
 for animal in ["dog", "cat", "mouse"]:
-    # You can use {0} to interpolate formatted strings. (See above.)
+    # 你可以用{0}來組合0出格式化字串 (見上面.)
     print "{0} is a mammal".format(animal)
 
 """
-"range(number)" returns a list of numbers
-from zero to the given number
-prints:
+"range(number)" 回傳一個包含從0到給定值的數字List，
+下面的程式碼會輸出:
     0
     1
     2
@@ -395,9 +397,9 @@ for i in range(4):
     print i
 
 """
-"range(lower, upper)" returns a list of numbers
-from the lower number to the upper number
-prints:
+"range(lower, upper)" 回傳一個包含從給定的下限
+到給定的上限的數字List
+下面的程式碼會輸出:
     4
     5
     6
@@ -407,8 +409,8 @@ for i in range(4, 8):
     print i
 
 """
-While loops go until a condition is no longer met.
-prints:
+While迴圈會執行到條件不成立為止
+下面的程式碼會輸出:
     0
     1
     2
@@ -417,62 +419,62 @@ prints:
 x = 0
 while x < 4:
     print x
-    x += 1  # Shorthand for x = x + 1
+    x += 1  # x = x + 1 的簡寫
 
-# Handle exceptions with a try/except block
+# 用try/except處理例外
 
-# Works on Python 2.6 and up:
+# 適用Python 2.6及以上版本
 try:
-    # Use "raise" to raise an error
+    # 用 "raise" 來發起例外
     raise IndexError("This is an index error")
 except IndexError as e:
-    pass    # Pass is just a no-op. Usually you would do recovery here.
+    pass    # 毫無反應，就只是個什麼都沒做的pass。通常這邊會讓你做對例外的處理
 except (TypeError, NameError):
-    pass    # Multiple exceptions can be handled together, if required.
-else:   # Optional clause to the try/except block. Must follow all except blocks
-    print "All good!"   # Runs only if the code in try raises no exceptions
-finally: #  Execute under all circumstances
+    pass    # 有需要的話，多種例外可以一起處理
+else:   # else 可有可無，但必須寫在所有的except後
+    print "All good!"   # 只有在try的時候沒有產生任何except才會被執行
+finally: # 不管什麼情況下一定會被執行
     print "We can clean up resources here"
 
-# Instead of try/finally to cleanup resources you can use a with statement
+# 除了try/finally以外，你可以用 with 來簡單的處理清理動作
 with open("myfile.txt") as f:
     for line in f:
         print line
 
 ####################################################
-## 4. Functions
+## 4. 函式
 ####################################################
 
-# Use "def" to create new functions
+# 用 "def" 來建立新函式
 def add(x, y):
     print "x is {0} and y is {1}".format(x, y)
-    return x + y    # Return values with a return statement
+    return x + y    # 用 "return" 來回傳值
 
-# Calling functions with parameters
-add(5, 6)   # => prints out "x is 5 and y is 6" and returns 11
+# 用參數來呼叫韓式
+add(5, 6)   # => 輸出 "x is 5 and y is 6" 並回傳 11
 
-# Another way to call functions is with keyword arguments
-add(y=6, x=5)   # Keyword arguments can arrive in any order.
+# 你也可以寫上參數名稱來呼叫函式
+add(y=6, x=5)   # 這種狀況下，兩個參數的順序並不影響執行
 
 
-# You can define functions that take a variable number of
-# positional args, which will be interpreted as a tuple if you do not use the *
+# 你可以定義接受多個變數的函式，這些變數是按照順序排序的
+# 如果不加*的話會被解讀為tuple
 def varargs(*args):
     return args
 
 varargs(1, 2, 3)   # => (1, 2, 3)
 
 
-# You can define functions that take a variable number of
-# keyword args, as well, which will be interpreted as a dict if you do not use **
+# 你可以定義接受多個變數的函式，這些變數是按照keyword排序的
+# 如果不加**的話會被解讀為dictionary
 def keyword_args(**kwargs):
     return kwargs
 
-# Let's call it to see what happens
+# 呼叫看看會發生什麼事吧
 keyword_args(big="foot", loch="ness")   # => {"big": "foot", "loch": "ness"}
 
 
-# You can do both at once, if you like
+# 如果你想要，你也可以兩個同時用
 def all_the_args(*args, **kwargs):
     print args
     print kwargs
@@ -482,39 +484,40 @@ all_the_args(1, 2, a=3, b=4) prints:
     {"a": 3, "b": 4}
 """
 
-# When calling functions, you can do the opposite of args/kwargs!
-# Use * to expand positional args and use ** to expand keyword args.
+# 呼叫函式時，你可以做反向的操作
+# 用 * 將變數展開為順序排序的變數
+# 用 ** 將變數展開為Keyword排序的變數
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args)   # equivalent to foo(1, 2, 3, 4)
-all_the_args(**kwargs)   # equivalent to foo(a=3, b=4)
-all_the_args(*args, **kwargs)   # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args)   # 等同於 foo(1, 2, 3, 4)
+all_the_args(**kwargs)   # 等同於 foo(a=3, b=4)
+all_the_args(*args, **kwargs)   # 等同於 foo(1, 2, 3, 4, a=3, b=4)
 
-# you can pass args and kwargs along to other functions that take args/kwargs
-# by expanding them with * and ** respectively
+# 你可以把args跟kwargs傳到下一個函式內
+# 分別用 * 跟 ** 將它展開就可以了
 def pass_all_the_args(*args, **kwargs):
     all_the_args(*args, **kwargs)
     print varargs(*args)
     print keyword_args(**kwargs)
 
-# Function Scope
+# 函式範圍
 x = 5
 
 def set_x(num):
-    # Local var x not the same as global variable x
+    # 區域變數 x 和全域變數 x 不是同一個東西
     x = num # => 43
     print x # => 43
 
 def set_global_x(num):
     global x
     print x # => 5
-    x = num # global var x is now set to 6
+    x = num # 全域變數 x 在set_global_x(6)被設定為 6 
     print x # => 6
 
 set_x(43)
 set_global_x(6)
 
-# Python has first class functions
+# Python有一級函式
 def create_adder(x):
     def adder(y):
         return x + y
@@ -523,23 +526,23 @@ def create_adder(x):
 add_10 = create_adder(10)
 add_10(3)   # => 13
 
-# There are also anonymous functions
+# 也有匿名函式
 (lambda x: x > 2)(3)   # => True
 (lambda x, y: x ** 2 + y ** 2)(2, 1) # => 5
 
-# There are built-in higher order functions
+# 還有內建的高階函式
 map(add_10, [1, 2, 3])   # => [11, 12, 13]
 map(max, [1, 2, 3], [4, 2, 1])   # => [4, 2, 3]
 
 filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 
-# We can use list comprehensions for nice maps and filters
+# 我們可以用List列表的方式對map和filter等高階函式做更有趣的應用
 [add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]   # => [6, 7]
 
 
 ####################################################
-## 5. Classes
+## 5. 類別
 ####################################################
 
 # We subclass from object to get a class.
