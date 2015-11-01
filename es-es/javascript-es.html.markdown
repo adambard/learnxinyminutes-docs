@@ -476,7 +476,7 @@ typeof miNumero; // = 'number'
 typeof miNumeroObjeto; // = 'object'
 miNumero === miNumeroObjeyo; // = false
 if (0){
-    // Este código no se ejecutara porque 0 es false.
+    // Este código no se ejecutará porque 0 es false.
 }
 
 // Aún así, los objetos que envuelven y los prototipos por defecto comparten
