@@ -30,7 +30,7 @@ Aunque JavaScript no sólo se limita a los navegadores web: Node.js, Un proyecto
 // Cada sentencia puede ser terminada con punto y coma ;
 hazAlgo();
 
-// ... aunque no es necesario, ya que el punto y coma se agrega automaticamente
+// ... aunque no es necesario, ya que el punto y coma se agrega automáticamente
 // cada que se detecta una nueva línea, a excepción de algunos casos.
 hazAlgo()
 
@@ -321,7 +321,7 @@ function decirHolaCadaCincoSegundos(nombre){
         alert(texto);
     }
     setTimeout(interna, 5000);
-    // setTimeout es asíncrono, así que la funcion decirHolaCadaCincoSegundos 
+    // setTimeout es asíncrono, así que la función decirHolaCadaCincoSegundos 
     // terminará inmediatamente, y setTimeout llamará a interna() a los cinco segundos
     // Como interna está "cerrada dentro de" decirHolaCadaCindoSegundos, interna todavía tiene
     // acceso a la variable 'texto' cuando es llamada.
