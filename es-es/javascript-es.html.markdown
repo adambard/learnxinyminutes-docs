@@ -186,7 +186,7 @@ miObjeto.miLlave; // = "miValor"
 // agregar nuevas llaves.
 miObjeto.miTerceraLlave = true;
 
-// Si intentas accesar con una llave que aún no está asignada tendrás undefined.
+// Si intentas acceder con una llave que aún no está asignada tendrás undefined.
 miObjeto.miCuartaLlave; // = undefined
 
 ///////////////////////////////////
