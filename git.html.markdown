@@ -6,6 +6,7 @@ contributors:
     - ["Leo Rudberg" , "http://github.com/LOZORD"]
     - ["Betsy Lorton" , "http://github.com/schbetsy"]
     - ["Bruno Volcov", "http://github.com/volcov"]
+    - ["Andrew Taylor", "http://github.com/andrewjt71"]
 filename: LearnGit.txt
 ---
 
@@ -333,6 +334,9 @@ $ git log --oneline
 
 # Show merge commits only
 $ git log --merges
+
+# Show all commits represented by an ASCII graph
+$ git log --graph
 ```
 
 ### merge
@@ -498,6 +502,16 @@ $ git reset 31f2bb1
 # and makes the working dir match (deletes uncommited changes and all commits
 # after the specified commit).
 $ git reset --hard 31f2bb1
+```
+### revert
+
+Revert can be used to undo a commit. It should not be confused with reset which restores
+the state of a project to a previous point. Revert will add a new commit which is the
+inverse of the specified commit, thus reverting it.
+
+```bash
+# Revert a specified commit
+$ git revert <commit>
 ```
 
 ### rm

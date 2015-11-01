@@ -63,7 +63,7 @@ allow you to write Python 3 code that will run on Python 2, so check out the Pyt
 # to carry out normal division with just one '/'.
 from __future__ import division
 11/4    # => 2.75  ...normal division
-11//4   # => 2 ...floored division  
+11//4   # => 2 ...floored division
 
 # Modulo operation
 7 % 3 # => 1
@@ -132,6 +132,7 @@ z = "The items in the basket are %s and %s" % (x,y)
 
 # A newer way to format strings is the format method.
 # This method is the preferred way
+"{} is a {}".format("This", "placeholder")
 "{0} can be {1}".format("strings", "formatted")
 # You can use keywords if you don't want to count.
 "{name} wants to eat {food}".format(name="Bob", food="lasagna")
@@ -148,8 +149,16 @@ None is None  # => True
 # very useful when dealing with primitive values, but is
 # very useful when dealing with objects.
 
-# None, 0, and empty strings/lists all evaluate to False.
-# All other values are True
+# Any object can be used in a Boolean context.
+# The following values are considered falsey:
+#    - None
+#    - zero of any numeric type (e.g., 0, 0L, 0.0, 0j)
+#    - empty sequences (e.g., '', (), [])
+#    - empty containers (e.g., {}, set())
+#    - instances of user-defined classes meeting certain conditions
+#      see: https://docs.python.org/2/reference/datamodel.html#object.__nonzero__
+#
+# All other values are truthy (using the bool() function on them returns True).
 bool(0)  # => False
 bool("")  # => False
 
@@ -238,7 +247,7 @@ li.remove(2)  # Raises a ValueError as 2 is not in the list
 li.insert(1, 2)  # li is now [1, 2, 3, 4, 5, 6] again
 
 # Get the index of the first item found
-li.index(2)  # => 3
+li.index(2)  # => 1
 li.index(7)  # Raises a ValueError as 7 is not in the list
 
 # Check for existence in a list with "in"
@@ -261,8 +270,9 @@ tup[:2]   # => (1, 2)
 
 # You can unpack tuples (or lists) into variables
 a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
+d, e, f = 4, 5, 6       # you can leave out the parentheses
 # Tuples are created by default if you leave out the parentheses
-d, e, f = 4, 5, 6
+g = 4, 5, 6             # => (4, 5, 6)
 # Now look how easy it is to swap two values
 e, d = d, e     # d is now 5 and e is now 4
 
