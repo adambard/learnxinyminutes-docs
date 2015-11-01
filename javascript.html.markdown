@@ -205,9 +205,9 @@ myObj.myFourthKey; // = undefined
 
 // The `if` structure works as you'd expect.
 var count = 1;
-if (count == 3){
+if (count == 3) {
     // evaluated if count is 3
-} else if (count == 4){
+} else if (count == 4) {
     // evaluated if count is 4
 } else {
     // evaluated if it's not either 3 or 4
