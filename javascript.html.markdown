@@ -207,7 +207,7 @@ myObj.myFourthKey; // = undefined
 var count = 1;
 if (count == 3) {
     // evaluated if count is 3
-} else if (count == 4){
+} else if (count == 4) {
     // evaluated if count is 4
 } else {
     // evaluated if it's not either 3 or 4
@@ -241,8 +241,8 @@ for (var x in person){
 // and not its prototypes, use the `hasOwnProperty()` check.
 var description = "";
 var person = {fname:"Paul", lname:"Ken", age:18};
-for (var x in person){
-    if (person.hasOwnProperty(x)){
+for (var x in person) {
+    if (person.hasOwnProperty(x)) {
         description += person[x] + " ";
     }
 }
@@ -252,7 +252,7 @@ for (var x in person){
 // in any particular order.
 
 // && is logical and, || is logical or
-if (house.size == "big" && house.colour == "blue"){
+if (house.size == "big" && house.colour == "blue") {
     house.contains = "bear";
 }
 if (colour == "red" || colour == "blue"){
