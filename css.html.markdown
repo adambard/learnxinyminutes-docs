@@ -108,7 +108,7 @@ selected:link { }
 selected:focus { }
 
 /* any element that is the first child of its parent */
-selector:first-child {}
+selector:first-child { }
 
 /* any element that is the last child of its parent */
 selector:last-child {}
