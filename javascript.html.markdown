@@ -197,7 +197,7 @@ myObj.myKey; // = "myValue"
 // Objects are mutable; values can be changed and new keys added.
 myObj.myThirdKey = true;
 
-// If you try to access a value that's not yet set, you'll get undefined.
+// If you try to access a value that has not yet set, you'll get undefined.
 myObj.myFourthKey; // = undefined
 
 ///////////////////////////////////
