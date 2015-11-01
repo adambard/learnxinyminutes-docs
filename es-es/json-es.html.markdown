@@ -21,7 +21,7 @@ JSON en su forma más pura no tiene comentarios, pero la mayoría de los parsead
   "llaves": "siempre debe estar entre comillas (ya sean dobles o simples)",
   "numeros": 0,
   "strings": "Høla, múndo. Todo el unicode está permitido, así como \"escapar\".",
-  "sporta booleanos?": true,
+  "¿soporta booleanos?": true,
   "vacíos": null,
 
   "numero grande": 1.2e+100,
