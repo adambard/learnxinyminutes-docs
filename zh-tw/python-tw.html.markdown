@@ -8,6 +8,7 @@ contributors:
 translators:
     - ["Michael Yeh", "https://github.com/hinet60613"]
 filename: learnpython.py
+lang: zh-tw
 ---
 
 Python是在1990年代早期由Guido Van Rossum創建的。它是現在最流行的程式語言之一。我愛上Python是因為他極為清晰的語法，甚至可以說它就是可執行的虛擬碼。
@@ -142,115 +143,115 @@ None  # => None
 "etc" is None  # => False
 None is None  # => True
 
-# The 'is' operator tests for object identity. This isn't
-# very useful when dealing with primitive values, but is
-# very useful when dealing with objects.
+# 'is' 運算元是用來識別物件的。對原始型別來說或許沒什麼用，
+# 但對物件來說是很有用的。
 
-# Any object can be used in a Boolean context.
-# The following values are considered falsey:
-#    - None
-#    - zero of any numeric type (e.g., 0, 0L, 0.0, 0j)
-#    - empty sequences (e.g., '', (), [])
-#    - empty containers (e.g., {}, set())
-#    - instances of user-defined classes meeting certain conditions
-#      see: https://docs.python.org/2/reference/datamodel.html#object.__nonzero__
+# 任何物件都可以被當作布林值使用
+# 以下的值會被視為是False :
+#    - 無(None)
+#    - 任何型別的零 (例如: 0, 0L, 0.0, 0j)
+#    - 空序列 (例如: '', (), [])
+#    - 空容器 (例如: {}, set())
+#    - 自定義型別的實體，且滿足某些條件
+#      請參考文件: https://docs.python.org/2/reference/datamodel.html#object.__nonzero__
 #
-# All other values are truthy (using the bool() function on them returns True).
+# 其餘的值都會被視為True (用bool()函式讓他們回傳布林值).
 bool(0)  # => False
 bool("")  # => False
 
 
 ####################################################
-## 2. Variables and Collections
+## 2. 變數與集合
 ####################################################
 
-# Python has a print statement
+# Python的輸出很方便
 print "I'm Python. Nice to meet you!" # => I'm Python. Nice to meet you!
 
-# Simple way to get input data from console
-input_string_var = raw_input("Enter some data: ") # Returns the data as a string
-input_var = input("Enter some data: ") # Evaluates the data as python code
-# Warning: Caution is recommended for input() method usage
-# Note: In python 3, input() is deprecated and raw_input() is renamed to input()
+# 從命令列獲得值也很方便
+input_string_var = raw_input("Enter some data: ") # 資料會被視為字串存進變數
+input_var = input("Enter some data: ") # 輸入的資料會被當作Python程式碼執行
+# 注意: 請謹慎使用input()函式
+# 註: 在Python 3中，input()已被棄用，raw_input()已被更名為input()
 
-# No need to declare variables before assigning to them.
-some_var = 5    # Convention is to use lower_case_with_underscores
+# 使用變數前不需要先宣告
+some_var = 5    # 方便好用
+lower_case_with_underscores
 some_var  # => 5
 
-# Accessing a previously unassigned variable is an exception.
-# See Control Flow to learn more about exception handling.
-some_other_var  # Raises a name error
+# 存取沒有被賦值的變數會造成例外
+# 請參考錯誤流程部分做例外處理
+some_other_var  # 造成 NameError
 
-# if can be used as an expression
-# Equivalent of C's '?:' ternary operator
+# if可以當判斷式使用
+# 相當於C語言中的二元判斷式
 "yahoo!" if 3 > 2 else 2  # => "yahoo!"
 
-# Lists store sequences
+# 串列型態可以儲存集合
 li = []
-# You can start with a prefilled list
+# 你可以預先填好串列內容
 other_li = [4, 5, 6]
 
-# Add stuff to the end of a list with append
-li.append(1)    # li is now [1]
-li.append(2)    # li is now [1, 2]
-li.append(4)    # li is now [1, 2, 4]
-li.append(3)    # li is now [1, 2, 4, 3]
-# Remove from the end with pop
+# 用append()在串列後新增東西 append
+li.append(1)    # 此時 li 內容為 [1]
+li.append(2)    # 此時 li 內容為 [1, 2]
+li.append(4)    # 此時 li 內容為 [1, 2, 4]
+li.append(3)    # 此時 li 內容為 [1, 2, 4, 3]
+# 用pop()移除串列尾端的元素
 li.pop()        # => 3 and li is now [1, 2, 4]
-# Let's put it back
+# 然後再塞回去
 li.append(3)    # li is now [1, 2, 4, 3] again.
 
-# Access a list like you would any array
+# 你可以像存取陣列一樣的存取串列
 li[0]  # => 1
-# Assign new values to indexes that have already been initialized with =
+# 用等號 = 給串列中特定索引的元素賦值
 li[0] = 42
 li[0]  # => 42
-li[0] = 1  # Note: setting it back to the original value
-# Look at the last element
+li[0] = 1  # 註: 將其設定回原本的值
+# 用 -1 索引值查看串列最後一個元素
 li[-1]  # => 3
 
-# Looking out of bounds is an IndexError
+# 存取超過範圍會產生IndexError
 li[4]  # Raises an IndexError
 
-# You can look at ranges with slice syntax.
-# (It's a closed/open range for you mathy types.)
+# 你可以用切片語法來存取特定範圍的值
+# (相當於數學中的左閉右開區間，即包含最左邊界，但不包含右邊界)
 li[1:3]  # => [2, 4]
-# Omit the beginning
+# 略過開頭元素
 li[2:]  # => [4, 3]
-# Omit the end
+# 略過結尾元素
 li[:3]  # => [1, 2, 4]
-# Select every second entry
+# 每隔兩個元素取值
 li[::2]   # =>[1, 4]
-# Reverse a copy of the list
+# 串列反轉
 li[::-1]   # => [3, 4, 2, 1]
-# Use any combination of these to make advanced slices
-# li[start:end:step]
+# 你可以任意組合來達到你想要的效果
+# li[開始索引:結束索引:間隔]
 
-# Remove arbitrary elements from a list with "del"
-del li[2]   # li is now [1, 2, 3]
+# 用 "del" 從串列中移除任意元素
+del li[2]   # 現在 li 內容為 [1, 2, 3]
 
-# You can add lists
+# 你可以做串列相加
 li + other_li   # => [1, 2, 3, 4, 5, 6]
-# Note: values for li and for other_li are not modified.
+# 註: li 及 other_li 沒有被更動
 
-# Concatenate lists with "extend()"
-li.extend(other_li)   # Now li is [1, 2, 3, 4, 5, 6]
+# 用 "extend()" 做串列串接
+li.extend(other_li)   # 現在 li 內容為 [1, 2, 3, 4, 5, 6]
 
-# Remove first occurrence of a value
-li.remove(2)  # li is now [1, 3, 4, 5, 6]
-li.remove(2)  # Raises a ValueError as 2 is not in the list
+# 移除特定值的第一次出現
+li.remove(2)  # 現在 li 內容為 [1, 3, 4, 5, 6]
+li.remove(2)  # 2 不在串列中，造成 ValueError
 
-# Insert an element at a specific index
-li.insert(1, 2)  # li is now [1, 2, 3, 4, 5, 6] again
+# 在特定位置插入值
+li.insert(1, 2)  # 現在 li 內容再次回復為 [1, 2, 3, 4, 5, 6]
 
-# Get the index of the first item found
+# 取得特定值在串列中第一次出現的位置
 li.index(2)  # => 1
-li.index(7)  # Raises a ValueError as 7 is not in the list
+li.index(7)  # 7 不在串列中，造成 ValueError
 
-# Check for existence in a list with "in"
+# 用 "in" 檢查特定值是否出現在串列中
 1 in li   # => True
 
-# Examine the length with "len()"
+# 用 "len()" 取得串列長度
 len(li)   # => 6
 
 
