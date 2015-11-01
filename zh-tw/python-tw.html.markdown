@@ -567,60 +567,59 @@ class Human(object):
     def say(self, msg):
         return "{0}: {1}".format(self.name, msg)
 
-    # A class method is shared among all instances
-    # They are called with the calling class as the first argument
+    # 一個類別方法會被所有的實體所共用
+    # 他們會以類別為第一參數的方式被呼叫
     @classmethod
     def get_species(cls):
         return cls.species
 
-    # A static method is called without a class or instance reference
+    # 靜態方法
     @staticmethod
     def grunt():
         return "*grunt*"
 
-    # A property is just like a getter.
-    # It turns the method age() into an read-only attribute
-    # of the same name.
+    # 屬性就像是用getter取值一樣
+    # 它將方法 age() 轉為同名的、只能讀取的屬性
     @property
     def age(self):
         return self._age
 
-    # This allows the property to be set
+    # 這樣寫的話可以讓屬性被寫入新的值
     @age.setter
     def age(self, age):
         self._age = age
 
-    # This allows the property to be deleted
+    # 這樣寫的話允許屬性被刪除
     @age.deleter
     def age(self):
         del self._age
 
 
-# Instantiate a class
+# 將類別實體化
 i = Human(name="Ian")
 print i.say("hi")     # prints out "Ian: hi"
 
 j = Human("Joel")
 print j.say("hello")  # prints out "Joel: hello"
 
-# Call our class method
+# 呼叫類別方法
 i.get_species()   # => "H. sapiens"
 
-# Change the shared attribute
+# 更改共用的屬性
 Human.species = "H. neanderthalensis"
 i.get_species()   # => "H. neanderthalensis"
 j.get_species()   # => "H. neanderthalensis"
 
-# Call the static method
+# 呼叫靜態方法
 Human.grunt()   # => "*grunt*"
 
-# Update the property
+# 更新屬性
 i.age = 42
 
-# Get the property
+# 取得屬性
 i.age # => 42
 
-# Delete the property
+# 移除屬性
 del i.age
 i.age  # => raises an AttributeError
 
