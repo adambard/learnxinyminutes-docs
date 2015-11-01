@@ -436,6 +436,12 @@ public class LearnJava {
     } // End main method
 } // End LearnJava class
 
+// You can also use anonymous lambda functions to simplify certain actions
+// that do not need to be inside an object, like a compare function.
+// Let's say you want to sort a list of strings by length, ascending
+List<String> stringList = Arrays.asList("ccc", "bb", "a");
+Collections.sort(stringList, (first, second) 
+	-> Integer.compare(first.length(), second.length()));
 
 // You can include other, non-public outer-level classes in a .java file,
 // but it is good practice. Instead split classes into separate files.
