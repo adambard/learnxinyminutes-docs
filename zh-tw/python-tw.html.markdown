@@ -545,25 +545,25 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 ## 5. 類別
 ####################################################
 
-# We subclass from object to get a class.
+# 我們可以由object繼承出一個新的類別
 class Human(object):
 
-    # A class attribute. It is shared by all instances of this class
+    # 類別的參數，被所有這個類別的實體所共用
     species = "H. sapiens"
 
-    # Basic initializer, this is called when this class is instantiated.
-    # Note that the double leading and trailing underscores denote objects
-    # or attributes that are used by python but that live in user-controlled
-    # namespaces. You should not invent such names on your own.
+    # 基礎建構函式，當class被實體化的時候會被呼叫
+    # 注意前後的雙底線代表物件
+    # 還有被python用，但實際上是在使用者控制的命名
+    # 空間內的參數。你不應該自己宣告這樣的名稱。
     def __init__(self, name):
-        # Assign the argument to the instance's name attribute
+        # 將函式引入的參數 name 指定給實體的 name 參數
         self.name = name
 
-        # Initialize property
+        # 初始化屬性
         self.age = 0
 
 
-    # An instance method. All methods take "self" as the first argument
+    # 一個實體的方法(method)。 所有的method都以self為第一個參數
     def say(self, msg):
         return "{0}: {1}".format(self.name, msg)
 
@@ -626,41 +626,41 @@ i.age  # => raises an AttributeError
 
 
 ####################################################
-## 6. Modules
+## 6. 模組
 ####################################################
 
-# You can import modules
+# 你可以引入模組來做使用
 import math
 print math.sqrt(16)  # => 4
+                     # math.sqrt()為取根號
 
-# You can get specific functions from a module
+# 你可以只從模組取出特定幾個函式
 from math import ceil, floor
 print ceil(3.7)  # => 4.0
 print floor(3.7)   # => 3.0
 
-# You can import all functions from a module.
-# Warning: this is not recommended
+# 你可以將所有的函式從模組中引入
+# 注意：不建議這麼做
 from math import *
 
-# You can shorten module names
+# 你可以用 as 簡寫模組名稱
 import math as m
 math.sqrt(16) == m.sqrt(16)   # => True
-# you can also test that the functions are equivalent
+# 你也可以測試函示是否相等
 from math import sqrt
 math.sqrt == m.sqrt == sqrt  # => True
 
-# Python modules are just ordinary python files. You
-# can write your own, and import them. The name of the
-# module is the same as the name of the file.
+# Python的模組就只是一般的Python檔。
+# 你可以自己的模組自己寫、自己的模組自己引入
+# 模組的名稱和檔案名稱一樣
 
-# You can find out which functions and attributes
-# defines a module.
+# 你可以用dir()來查看有哪些可用函式和屬性
 import math
 dir(math)
 
 
 ####################################################
-## 7. Advanced
+## 7. 進階
 ####################################################
 
 # Generators help you make lazy code
