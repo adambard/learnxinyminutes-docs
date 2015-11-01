@@ -109,7 +109,7 @@ null == undefined; // = true
 null === undefined; // false
 
 // Los Strings funcionan como arreglos de caracteres
-// Puedes accesar a cada caracter con la función charAt()
+// Puedes acceder a cada caracter con la función charAt()
 "Este es un String".charAt(0);  // = 'E'
 
 // ...o puedes usar la función substring() para acceder a pedazos más grandes
@@ -301,7 +301,7 @@ i; // = 5 - en un lenguaje que da ámbitos por bloque esto sería undefined, per
 //inmediatamente", que preveé variables temporales de fugarse al ámbito global
 (function(){
     var temporal = 5;
-    // Podemos accesar al ámbito global asignando al 'objeto global', el cual
+    // Podemos acceder al ámbito global asignando al 'objeto global', el cual
     // en un navegador siempre es 'window'. El objeto global puede tener
     // un nombre diferente en ambientes distintos, por ejemplo Node.js .
     window.permanente = 10;
@@ -339,7 +339,7 @@ var miObjeto = {
 };
 miObjeto.miFuncion(); // = "¡Hola Mundo!"
 
-// Cuando las funciones de un objeto son llamadas, pueden accesar a las variables 
+// Cuando las funciones de un objeto son llamadas, pueden acceder a las variables 
 // del objeto con la palabra clave 'this'.
 miObjeto = {
     miString: "¡Hola Mundo!",
@@ -440,7 +440,7 @@ miPrototipo.sentidoDeLaVida = 43;
 miObjeto.sentidoDeLaVida; // = 43
 
 // Mencionabamos anteriormente que __proto__ no está estandarizado, y que no 
-// existe una forma estándar de accesar al prototipo de un objeto. De todas formas.
+// existe una forma estándar de acceder al prototipo de un objeto. De todas formas.
 // hay dos formas de crear un nuevo objeto con un prototipo dado.
 
 // El primer método es Object.create, el cual es una adición reciente a JavaScript,
