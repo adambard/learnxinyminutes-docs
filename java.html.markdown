@@ -190,7 +190,7 @@ public class LearnJava {
         // LinkedLists - Implementation of doubly-linked list. All of the
         //               operations perform as could be expected for a
         //               doubly-linked list.
-        // Maps - A set of objects that map keys to values. Map is
+        // Maps - A set of objects that maps keys to values. Map is
         //        an interface and therefore cannot be instantiated.
         //        The type of keys and values contained in a Map must
         //        be specified upon instantiation of the implementing
