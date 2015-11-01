@@ -663,34 +663,30 @@ dir(math)
 ## 7. 進階
 ####################################################
 
-# Generators help you make lazy code
+# 產生器(Generator)可以讓你寫更懶惰的程式碼
 def double_numbers(iterable):
     for i in iterable:
         yield i + i
 
-# A generator creates values on the fly.
-# Instead of generating and returning all values at once it creates one in each
-# iteration.  This means values bigger than 15 wont be processed in
-# double_numbers.
-# Note xrange is a generator that does the same thing range does.
-# Creating a list 1-900000000 would take lot of time and space to be made.
-# xrange creates an xrange generator object instead of creating the entire list
-# like range does.
-# We use a trailing underscore in variable names when we want to use a name that
-# would normally collide with a python keyword
+# 產生器可以讓你即時的產生值
+# 不是全部產生完之後再一次回傳，產生器會在每一個遞迴時
+# 產生值。 這也意味著大於15的值不會在double_numbers中產生。
+# 這邊，xrange()做的事情和range()一樣
+# 建立一個 1-900000000 的List會消耗很多時間和記憶體空間
+# xrange() 建立一個產生器物件，而不是如range()建立整個List
+# 我們用底線來避免可能和python的關鍵字重複的名稱
 xrange_ = xrange(1, 900000000)
 
-# will double all numbers until a result >=30 found
+# 下面的程式碼會把所有的值乘以兩倍，直到出現大於30的值
 for i in double_numbers(xrange_):
     print i
     if i >= 30:
         break
 
 
-# Decorators
-# in this example beg wraps say
-# Beg will call say. If say_please is True then it will change the returned
-# message
+# 裝飾子
+# 在這個範例中，beg會綁在say上
+# Beg會呼叫say。 如果say_please為True的話，它會更改回傳的訊息
 from functools import wraps
 
 
@@ -715,9 +711,9 @@ print say()  # Can you buy me a beer?
 print say(say_please=True)  # Can you buy me a beer? Please! I am poor :(
 ```
 
-## Ready For More?
+## 準備好學更多了嗎?
 
-### Free Online
+### 線上免費資源
 
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
@@ -728,7 +724,7 @@ print say(say_please=True)  # Can you buy me a beer? Please! I am poor :(
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 
-### Dead Tree
+### 或買本書?
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
