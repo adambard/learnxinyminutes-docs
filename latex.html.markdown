@@ -227,6 +227,15 @@ format you defined in Step 1.
 
 That's all for now!
 
+% Most often, you would want to have a references section in your document.
+% The easiest way to set this up would be by using the bibliography section
+\begin{thebibliography}{1}
+  % similar to other lists, the \bibitem command can be used to list items
+  % each entry can then be cited directly in the body of the text
+  \bibitem{latexwiki} The amazing LaTeX wikibook: {\em https://en.wikibooks.org/wiki/LaTeX}
+  \bibitem{latextutorial} An actual tutorial: {\em http://www.latex-tutorial.com}
+\end{thebibliography}
+
 % end the document
 \end{document}
 ```
