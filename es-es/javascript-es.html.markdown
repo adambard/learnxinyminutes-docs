@@ -401,11 +401,11 @@ var MiConstructor = function(){
 miNuevoObjeto = new MiConstructor(); // = {miNumero: 5}
 miNuevoObjeto.miNumero; // = 5
 
-// Todos los objetos JavaScript tienen un 'prototipo'. Cuando vas a accesar a una
+// Todos los objetos JavaScript tienen un 'prototipo'. Cuando vas a acceder a una
 // propiedad en un objeto que no existe en el objeto el intérprete buscará en
 // el prototipo.
 
-// Algunas implementaciones de JavaScript te permiten accesar al prototipo de 
+// Algunas implementaciones de JavaScript te permiten acceder al prototipo de 
 // un objeto con la propiedad __proto__. Mientras que esto es útil para explicar
 // prototipos, no es parte del estándar; veremos formas estándar de usar prototipos
 // más adelante.
