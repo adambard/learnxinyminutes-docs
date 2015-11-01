@@ -21,6 +21,13 @@ specific to a certain parser.
 
 - [Headings](#headings)
 - [Simple Text Styles](#simple-text-styles)
+- [Paragraphs](#paragraphs)
+- [Lists](#lists)
+- [Code blocks](#code-blocks)
+- [Horizontal rule](#horizontal-rule)
+- [Links](#links)
+- [Images](#images)
+- [Miscellany](#miscellany)
 
 ## Headings
 
@@ -198,9 +205,9 @@ end
 The above text doesn't require indenting, plus Github will use syntax
 highlighting of the language you specify after the \`\`\`
 
-## Horizontal rule (`<hr/>`)
+## Horizontal rule
 
-Horizontal rules are easily added with three or more asterisks or hyphens,
+Horizontal rules (`<hr/>`) are easily added with three or more asterisks or hyphens,
 with or without spaces.
 ```markdown
 ***
