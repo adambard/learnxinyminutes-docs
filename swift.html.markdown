@@ -6,6 +6,7 @@ contributors:
   - ["Joey Huang", "http://github.com/kamidox"]
   - ["Anthony Nguyen", "http://github.com/anthonyn60"]
   - ["Clayton Walker", "https://github.com/cwalk"]
+  - ["Fernando Valverde", "http://visualcosita.xyz"]
 filename: learnswift.swift
 ---
 
@@ -25,7 +26,7 @@ import UIKit
 
 // Xcode supports landmarks to annotate your code and lists them in the jump bar
 // MARK: Section mark
-// MARK: - Section mark with a separator line 
+// MARK: - Section mark with a separator line
 // TODO: Do something soon
 // FIXME: Fix this code
 
@@ -83,7 +84,7 @@ if someOptionalString != nil {
 someOptionalString = nil
 
 /*
-    Trying to use ! to access a non-existent optional value triggers a runtime 
+    Trying to use ! to access a non-existent optional value triggers a runtime
     error. Always make sure that an optional contains a non-nil value before
     using ! to force-unwrap its value.
 */

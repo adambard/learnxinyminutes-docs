@@ -1,13 +1,12 @@
 ---
-
 language: Objective-C
 contributors:
     - ["Eugene Yagrushkin", "www.about.me/yagrushkin"]
     - ["Yannick Loriot", "https://github.com/YannickL"]
     - ["Levi Bostian", "https://github.com/levibostian"]
     - ["Clayton Walker", "https://github.com/cwalk"]
+    - ["Fernando Valverde", "http://visualcosita.xyz"]
 filename: LearnObjectiveC.m
-
 ---
 
 Objective-C is the main programming language used by Apple for the OS X and iOS operating systems and their respective frameworks, Cocoa and Cocoa Touch.
@@ -152,13 +151,13 @@ int main (int argc, const char * argv[])
     [mutableDictionary setObject:@"value1" forKey:@"key1"];
     [mutableDictionary setObject:@"value2" forKey:@"key2"];
     [mutableDictionary removeObjectForKey:@"key1"];
-    
+
     // Change types from Mutable To Immutable
     //In general [object mutableCopy] will make the object mutable whereas [object copy] will make the object immutable
     NSMutableDictionary *aMutableDictionary = [aDictionary mutableCopy];
     NSDictionary *mutableDictionaryChanged = [mutableDictionary copy];
-    
-    
+
+
     // Set object
     NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
     NSLog(@"%@", set); // prints => {(Hello, World)} (may be in different order)
@@ -605,7 +604,7 @@ int main (int argc, const char * argv[]) {
 
 // Starting in Xcode 7.0, you can create Generic classes,
 // allowing you to provide greater type safety and clarity
-// without writing excessive boilerplate. 
+// without writing excessive boilerplate.
 @interface Result<__covariant A> : NSObject
 
 - (void)handleSuccess:(void(^)(A))success
@@ -633,7 +632,7 @@ Result<NSArray *> *result;
 @property (nonatomic) NSNumber * object;
 @end
 
-// It should be obvious, however, that writing one 
+// It should be obvious, however, that writing one
 //  Class to solve a problem is always preferable to writing two
 
 // Note that Clang will not accept generic types in @implementations,
