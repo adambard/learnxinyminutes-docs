@@ -14,6 +14,7 @@ contributors:
   - ["Rahil Momin", "https://github.com/iamrahil"]
   - ["Gabriel Halley", "https://github.com/ghalley"]
   - ["Persa Zula", "http://persazula.com"]
+  - ["Jake Faris", "https://github.com/farisj"]
 ---
 
 ```ruby
