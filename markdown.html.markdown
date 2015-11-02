@@ -19,6 +19,7 @@ Markdown also varies in implementation from one parser to a next. This
 guide will attempt to clarify when features are universal or when they are
 specific to a certain parser.
 
+- [HTML Elements](#html-elements)
 - [Headings](#headings)
 - [Simple Text Styles](#simple-text-styles)
 - [Paragraphs](#paragraphs)
@@ -28,6 +29,12 @@ specific to a certain parser.
 - [Links](#links)
 - [Images](#images)
 - [Miscellany](#miscellany)
+
+## HTML Elements
+Markdown is a superset of HTML, so any HTML file is valid Markdown.
+```markdown
+<!--This means we can use HTML elements in Markdown, such as the comment element, and they won't be affected by a markdown parser. However, if you create an HTML element in your markdown file, you cannot use markdown syntax within that element's contents.-->
+```
 
 ## Headings
 
