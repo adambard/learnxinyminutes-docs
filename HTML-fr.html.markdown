@@ -63,7 +63,7 @@ Cet article porte principalement sur la syntaxe et quelques astuces.
 </head>
 
 <!-- Après la balise <head>, on trouve la balise <body> -->
-<!-- Pour le moment, rien n'est encore affiché dans la fenêtre du navigateur. 
+<!-- Pour le moment, rien n'est encore affiché dans la fenêtre du navigateur. -->
 <!-- Il faut ensuite remplir le corps (balise <body>) avec du contenu -->
 
 <body>
