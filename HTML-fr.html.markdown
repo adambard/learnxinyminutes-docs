@@ -28,19 +28,17 @@ Cet article porte principalement sur la syntaxe et quelques astuces.
 <!doctype html>
 	<html>
 		<head>
-			<title>
-				Mon Site
-			</title>
+			<title>Mon Site</title>
 		</head>
 		<body>
 			<h1>Hello, world!</h1>
 			<a href = "http://codepen.io/anon/pen/xwjLbZ">Venez voir ce que ça donne</a>
-			<p>This is a paragraph of text, and it's inside a p tag.</p>
-			<p>This is another block of text.  Inside another p tag.  Mind blowing.</p>
+			<p>Ceci est un paragraphe</p>
+			<p>Ceci est un autre paragraphe</p>
 			<ul>
-				<li>This is a list item in an unordered list.</li>
-				<li>This is another list item.</li>
-				<li>And yet again, this is a list item.</li>
+				<li>Ceci est un item d'une liste non ordonnée (liste à puces)</li>
+				<li>Ceci est un autre item</li>
+				<li>Et ceci est le dernier item de la liste</li>
 			</ul>
 		</body>
 	</html>
@@ -59,10 +57,7 @@ Cet article porte principalement sur la syntaxe et quelques astuces.
 <!-- L'entête contient des descriptions et informations annexes qui ne sont pas affichées : se sont les métadonnées -->
 
 <head>
-			<title>
-			<!-- La balise <title> permet d'indiquer au navigateur le titre à afficher dans la barre de l'onglet de la fenêtre -->
-				Mon Site
-			</title>
+	<title>Mon Site</title><!-- La balise <title> permet d'indiquer au navigateur le titre à afficher dans la barre de l'onglet de la fenêtre -->
 </head>
 
 <!-- Après la balise <head>, on trouve la balise <body> -->
@@ -70,17 +65,17 @@ Cet article porte principalement sur la syntaxe et quelques astuces.
 <!--Il faut ensuite remplir le corps (balise <body>) avec du contenu -->
 
 <body>
-			<h1>Hello, world!</h1> <!-- La balise h1 permet de structurer le texte, c'est  un titre -->
-			<!-- Il exite différents sous-titres à <h1> qui sont hiérarchisés du plus important (h2) au plus précis (h6) -->
-			<a href = "http://codepen.io/anon/pen/xwjLbZ">Venez voir ce que ça donne</a> <!-- Lien vers la source cible indiqué dans href="" -->
-			<p>Ceci est un paragraphe </p> <!-- La balise <p> permet d'inclure du texte à la page html -->
-			<p>Ceci est un autre paragraphe</p>
-			<ul> <!-- La balise <ul> permet d'introduire une liste à puces -->
-			<!-- Si on souhaite une liste ordonnée : <ol> liste numérotée, 1. pour le premier élément, 2. pour le second, etc -->
-				<li>Ceci est un item d'une liste non ordonnée (liste à puces)</li>
-				<li>Ceci est un autre item</li>
-				<li>Et ceci est le dernier item de la liste</li>
-			</ul>
+	<h1>Hello, world!</h1> <!-- La balise h1 permet de structurer le texte, c'est  un titre -->
+	<!-- Il exite différents sous-titres à <h1> qui sont hiérarchisés du plus important (h2) au plus précis (h6) -->
+	<a href = "http://codepen.io/anon/pen/xwjLbZ">Venez voir ce que ça donne</a> <!-- Lien vers la source cible indiqué dans href="" -->
+	<p>Ceci est un paragraphe </p> <!-- La balise <p> permet d'inclure du texte à la page html -->
+	<p>Ceci est un autre paragraphe</p>
+	<ul> <!-- La balise <ul> permet d'introduire une liste à puces -->
+	<!-- Si on souhaite une liste ordonnée : <ol> liste numérotée, 1. pour le premier élément, 2. pour le second, etc -->
+		<li>Ceci est un item d'une liste non ordonnée (liste à puces)</li>
+		<li>Ceci est un autre item</li>
+		<li>Et ceci est le dernier item de la liste</li>
+	</ul>
 </body>
 
 <!-- Voilà comment créer un fichier HTML simple -->
@@ -94,19 +89,19 @@ Cet article porte principalement sur la syntaxe et quelques astuces.
 <!-- Il est possible de réaliser des tableaux également -->
 
 <table> <!-- On ouvre la balise <table> -->
-			<tr> <!-- <tr> permet de créer une ligne -->
-				<th>First Header</th> <!-- <th> permet de créer un titre au tableau -->
-				<th>Second Header</th>
-			</tr>
-			<tr>
-				<td>Première ligne, première cellule</td> <!-- <td> permet de créer une cellule -->
-				<td>Première ligne, deuxième cellule</td>
-			</tr>
-			<tr>
-				<td>Deuxième ligne, première cellule</td>
-				<td>Deuxième ligne, deuxième cellule</td>
-			</tr>
-	</table>
+	<tr> <!-- <tr> permet de créer une ligne -->
+		<th>First Header</th> <!-- <th> permet de créer un titre au tableau -->
+		<th>Second Header</th>
+	</tr>
+	<tr>
+		<td>Première ligne, première cellule</td> <!-- <td> permet de créer une cellule -->
+		<td>Première ligne, deuxième cellule</td>
+	</tr>
+	<tr>
+		<td>Deuxième ligne, première cellule</td>
+		<td>Deuxième ligne, deuxième cellule</td>
+	</tr>
+</table>
 
 ## Utilisation
 
