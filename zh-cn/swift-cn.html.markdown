@@ -5,7 +5,8 @@ contributors:
   - ["Grant Timmerman", "http://github.com/grant"]
 translators:
   - ["Xavier Yao", "http://github.com/xavieryao"]
-  - ["Joey Huang", "http://github.com/kamidox"]  
+  - ["Joey Huang", "http://github.com/kamidox"]
+  - ["CY Lim", "http://github.com/cylim"]
 lang: zh-cn
 ---
 
@@ -28,7 +29,9 @@ import UIKit
 // TODO: TODO 标记
 // FIXME: FIXME 标记
 
-print("Hello, world")
+// Swift2.0 println() 及 print() 已经整合成 print()。
+print("Hello, world") // 这是原本的 println()，会自动进入下一行
+print("Hello, world", appendNewLine: false) // 如果不要自动进入下一行，需设定进入下一行为 false
 
 // 变量 (var) 的值设置后可以随意改变
 // 常量 (let) 的值设置后不能改变
@@ -54,7 +57,8 @@ let piText = "Pi = \(π), Pi 2 = \(π * 2)" // 格式化字符串
 print("Build value: \(buildValue)") // Build value: 7
 
 /*
-    Optionals 是 Swift 的新特性，它允许你存储两种状态的值给 Optional 变量：有效值或 None
+    Optionals 是 Swift 的新特性，它允许你存储两种状态的值给 Optional 变量：有效值或 None 。
+    可在值名称后加个问号 （？） 来表示这个值是 Optional。
 
     Swift 要求所有的 Optinal 属性都必须有明确的值，如果为空，则必须明确设定为 nil
 
@@ -73,6 +77,10 @@ if someOptionalString != nil {
     let empty = someOptionalString?.isEmpty
 }
 someOptionalString = nil
+
+/*
+    使用 （！） 可以解决无法访问optional值的运行错误。若要使用 （！）来强制解析，一定要确保 Optional 里不是 nil参数。
+*/
 
 // 显式解包 optional 变量
 var unwrappedString: String! = "Value is expected."
@@ -116,6 +124,7 @@ shoppingList[1] = "bottle of water"
 let emptyArray = [String]() // 使用 let 定义常量，此时 emptyArray 数组不能添加或删除内容
 let emptyArray2 = Array<String>() // 与上一语句等价，上一语句更常用
 var emptyMutableArray = [String]() // 使用 var 定义变量，可以向 emptyMutableArray 添加数组元素
+var explicitEmptyMutableStringArray: [String] = [] // 与上一语句等价
 
 // 字典
 var occupations = [
@@ -126,6 +135,7 @@ occupations["Jayne"] = "Public Relations"   // 修改字典，如果 key 不存�
 let emptyDictionary = [String: Float]() // 使用 let 定义字典常量，字典常量不能修改里面的值
 let emptyDictionary2 = Dictionary<String, Float>() // 与上一语句类型等价，上一语句更常用
 var emptyMutableDictionary = [String: Float]() // 使用 var 定义字典变量
+var explicitEmptyMutableDictionary: [String: Float] = [:] // 与上一语句类型等价
 
 
 //
@@ -256,7 +266,7 @@ print(someIntB) // 7
 //
 var numbers = [1, 2, 6]
 
-// 函数是闭包的一个特例
+// 函数是闭包的一个特例 ({})
 
 // 闭包实例
 // `->` 分隔了闭包的参数和返回值
@@ -586,5 +596,19 @@ print(mySquare.sideLength) // 4
 // 使用自定义的 !!! 运算符来把矩形边长放大三倍
 !!!mySquare
 print(mySquare.sideLength) // 12
+
+// 运算符也可以是泛型
+infix operator <-> {}
+func <-><T: Equatable> (inout a: T, inout b: T) {
+    let c = a
+    a = b
+    b = c
+}
+
+var foo: Float = 10
+var bar: Float = 20
+
+foo <-> bar
+print("foo is \(foo), bar is \(bar)") // "foo is 20.0, bar is 10.0"
 
 ```
