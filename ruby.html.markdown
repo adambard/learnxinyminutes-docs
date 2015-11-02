@@ -41,7 +41,11 @@ You shouldn't either
 35 / 5 #=> 7
 2**5 #=> 32
 5 % 3 #=> 2
-5 ^ 6 #=> 3
+
+# Bitwise operators
+3 & 5 #=> 1
+3 | 5 #=> 7
+3 ^ 5 #=> 6
 
 # Arithmetic is just syntactic sugar
 # for calling a method on an object
@@ -49,7 +53,7 @@ You shouldn't either
 10.* 5 #=> 50
 
 # Special values are objects
-nil # Nothing to see here
+nil # equivalent to null in other languages
 true # truth
 false # falsehood
 
@@ -76,6 +80,11 @@ false.class #=> FalseClass
 1 > 10 #=> false
 2 <= 2 #=> true
 2 >= 2 #=> true
+
+# Combined comparison operator
+1 <=> 10 #=> -1
+10 <=> 1 #=> 1
+1 <=> 1 #=> 0
 
 # Logical operators
 true && false #=> false
@@ -122,7 +131,7 @@ puts "I'm printing!"
 
 # print to the output without a newline
 print "I'm printing!"
-#=> I'm printing! => nill
+#=> I'm printing! => nil
 
 # Variables
 x = 25 #=> 25

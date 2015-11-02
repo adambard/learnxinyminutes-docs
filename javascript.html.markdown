@@ -561,7 +561,9 @@ of the language.
 
 [Eloquent Javascript][8] by Marijn Haverbeke is an excellent JS book/ebook with attached terminal
 
-[Javascript: The Right Way][9] is a guide intended to introduce new developers to JavaScript and help experienced developers learn more about its best practices.
+[Eloquent Javascript - The Annotated Version][9] by Gordon Zhu is also a great derivative of Eloquent Javascript with extra explanations and clarifications for some of the more complicated examples.
+
+[Javascript: The Right Way][10] is a guide intended to introduce new developers to JavaScript and help experienced developers learn more about its best practices.
 
 
 In addition to direct contributors to this article, some content is adapted from
@@ -577,4 +579,5 @@ Mozilla Developer Network.
 [6]: http://www.amazon.com/gp/product/0596805527/
 [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 [8]: http://eloquentjavascript.net/
-[9]: http://jstherightway.org/
+[9]: http://watchandcode.com/courses/eloquent-javascript-the-annotated-version
+[10]: http://jstherightway.org/

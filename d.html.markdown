@@ -199,8 +199,8 @@ our getter and setter methods, and keep the clean syntax of
 accessing members directly!
 
 Other object-oriented goodies at our disposal
-include `interface`s, `abstract class`es,
-and `override`ing methods. D does inheritance just like Java:
+include interfaces, abstract classes,
+and overriding methods. D does inheritance just like Java:
 Extend one class, implement as many interfaces as you please.
 
 We've seen D's OOP facilities, but let's switch gears. D offers
@@ -247,7 +247,7 @@ void main() {
     // and take advantage of as many cores as we have available.
     auto arr = new double[1_000_000];
 
-    // Use an index, and an array element by referece,
+    // Use an index, and an array element by reference,
     // and just call parallel on the array!
     foreach(i, ref elem; parallel(arr)) {
         ref = sqrt(i + 1.0);
