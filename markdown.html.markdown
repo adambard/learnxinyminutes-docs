@@ -284,7 +284,7 @@ in italics, so I do this: \*this text surrounded by asterisks\*.
 
 ### Keyboard keys
 
-In Github Flavored Markdown, you can use a <kbd> tag to represent keyboard keys.
+In Github Flavored Markdown, you can use a `<kbd>` tag to represent keyboard keys.
 ```markdown
 Your computer crashed? Try sending a
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
