@@ -9,15 +9,15 @@ filename: learnvisualbasic.vb
 Module Module1
 
     Sub Main()
-        ' A Quick Overview of Visual Basic Console Applications before we dive
-        ' in to the deep end.
-        ' Apostrophe starts comments.
-        ' To Navigate this tutorial within the Visual Basic Complier, I've put
-        ' together a navigation system.
-        ' This navigation system is explained however as we go deeper into this
-        ' tutorial, you'll understand what it all means.
+        'A Quick Overview of Visual Basic Console Applications before we dive
+        'in to the deep end.
+        'Apostrophe starts comments.
+        'To Navigate this tutorial within the Visual Basic Complier, I've put
+        'together a navigation system.
+        'This navigation system is explained however as we go deeper into this
+        'tutorial, you'll understand what it all means.
         Console.Title = ("Learn X in Y Minutes")
-        Console.WriteLine("NAVIGATION") 'Display 
+        Console.WriteLine("NAVIGATION") 'Display
         Console.WriteLine("")
         Console.ForegroundColor = ConsoleColor.Green
         Console.WriteLine("1. Hello World Output")
@@ -32,6 +32,9 @@ Module Module1
         Console.WriteLine("50. About")
         Console.WriteLine("Please Choose A Number From The Above List")
         Dim selection As String = Console.ReadLine
+        'The "Case" in the Select statement is optional.
+        'For example, "Select selection" instead of "Select Case selection"
+        'will also work.
         Select Case selection
             Case "1" 'HelloWorld Output
                 Console.Clear() 'Clears the application and opens the private sub
@@ -39,13 +42,13 @@ Module Module1
             Case "2" 'Hello Input
                 Console.Clear()
                 HelloWorldInput()
-            Case "3" 'Calculating Whole Numbers 
+            Case "3" 'Calculating Whole Numbers
                 Console.Clear()
                 CalculatingWholeNumbers()
-            Case "4" 'Calculting Decimal Numbers 
+            Case "4" 'Calculting Decimal Numbers
                 Console.Clear()
                 CalculatingDecimalNumbers()
-            Case "5" 'Working Calcculator 
+            Case "5" 'Working Calcculator
                 Console.Clear()
                 WorkingCalculator()
             Case "6" 'Using Do While Loops
@@ -74,7 +77,7 @@ Module Module1
     'One - I'm using numbers to help with the above navigation when I come back
     'later to build it.
 
-    'We use private subs to seperate different sections of the program. 
+    'We use private subs to seperate different sections of the program.
     Private Sub HelloWorldOutput()
         'Title of Console Application
         Console.Title = "Hello World Ouput | Learn X in Y Minutes"
@@ -88,12 +91,12 @@ Module Module1
     'Two
     Private Sub HelloWorldInput()
         Console.Title = "Hello World YourName | Learn X in Y Minutes"
-        ' Variables
-        ' Data entered by a user needs to be stored.
-        ' Variables also start with a Dim and end with an As VariableType.
+        'Variables
+        'Data entered by a user needs to be stored.
+        'Variables also start with a Dim and end with an As VariableType.
 
-        ' In this tutorial, we want to know what your name, and make the program
-        ' respond to what is said.
+        'In this tutorial, we want to know what your name, and make the program
+        'respond to what is said.
         Dim username As String
         'We use string as string is a text based variable.
         Console.WriteLine("Hello, What is your name? ") 'Ask the user their name.
@@ -159,7 +162,7 @@ Module Module1
         Console.Write(a.ToString() + " - " + b.ToString())
         Console.WriteLine(" = " + e.ToString.PadLeft(3))
         Console.Write(a.ToString() + " / " + b.ToString())
-        Console.WriteLine(" = " + e.ToString.PadLeft(3))
+        Console.WriteLine(" = " + f.ToString.PadLeft(3))
         Console.ReadLine()
 
     End Sub
@@ -172,7 +175,7 @@ Module Module1
         'program more than once.
         Console.Title = "UsingDoWhileLoops | Learn X in Y Minutes"
         Dim answer As String 'We use the variable "String" as the answer is text
-        Do 'We start the program with 
+        Do 'We start the program with
             Console.Write("First number: ")
             Dim a As Double = Console.ReadLine
             Console.Write("Second number: ")
@@ -189,10 +192,10 @@ Module Module1
             Console.Write(a.ToString() + " - " + b.ToString())
             Console.WriteLine(" = " + e.ToString.PadLeft(3))
             Console.Write(a.ToString() + " / " + b.ToString())
-            Console.WriteLine(" = " + e.ToString.PadLeft(3))
+            Console.WriteLine(" = " + f.ToString.PadLeft(3))
             Console.ReadLine()
             'Ask the question, does the user wish to continue? Unfortunately it
-            'is case sensitive. 
+            'is case sensitive.
             Console.Write("Would you like to continue? (yes / no)")
             'The program grabs the variable and prints and starts again.
             answer = Console.ReadLine
@@ -208,8 +211,8 @@ Module Module1
 
         Console.Title = "Using For Loops | Learn X in Y Minutes"
         'Declare Variable and what number it should count down in Step -1,
-        'Step -2, Step -3 ect. 
-        For i As Integer = 10 To 0 Step -1 
+        'Step -2, Step -3 ect.
+        For i As Integer = 10 To 0 Step -1
             Console.WriteLine(i.ToString) 'Print the value of the counter
         Next i 'Calculate new value
         Console.WriteLine("Start") 'Lets start the program baby!!
@@ -236,7 +239,7 @@ Module Module1
     'Nine
     Private Sub IfElseStatement()
     Console.Title = "If / Else Statement | Learn X in Y Minutes"
-        'Sometimes its important to consider more than two alternatives.
+        'Sometimes it is important to consider more than two alternatives.
         'Sometimes there are a good few others.
         'When this is the case, more than one if statement would be required.
         'An if statement is great for vending machines. Where the user enters a code.
@@ -274,8 +277,8 @@ End Module
 
 ## References
 
-I learnt Visual Basic in the console application. It allowed me to understand the principles of computer programming to go on to learn other programming languages easily. 
+I learnt Visual Basic in the console application. It allowed me to understand the principles of computer programming to go on to learn other programming languages easily.
 
-I created a more indepth <a href="http://www.vbbootcamp.co.uk/" Title="Visual Basic Tutorial">Visual Basic tutorial</a> for those who would like to learn more. 
+I created a more indepth <a href="http://www.vbbootcamp.co.uk/" Title="Visual Basic Tutorial">Visual Basic tutorial</a> for those who would like to learn more.
 
-The entire syntax is valid. Copy the and paste in to the Visual Basic compiler and run (F5) the program. 
+The entire syntax is valid. Copy the and paste in to the Visual Basic compiler and run (F5) the program.

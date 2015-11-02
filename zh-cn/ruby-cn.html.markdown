@@ -1,10 +1,13 @@
 ---
 language: ruby
-filename: learnruby.rb
+filename: learnruby-zh.rb
+lang: zh-cn
 contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]
   - ["Joel Walden", "http://joelwalden.net"]
   - ["Luke Holder", "http://twitter.com/lukeholder"]
+  - ["lidashuang", "https://github.com/lidashuang"]
+  - ["ftwbzhao", "https://github.com/ftwbzhao"]
 translators:
   - ["Lin Xiangyu", "https://github.com/oa414"]
 ---
@@ -38,7 +41,7 @@ translators:
 1.+(3) #=> 4
 10.* 5 #=> 50 
 
-# 特殊的只也是对象
+# 特殊的值也是对象
 nil # 空
 true # 真
 false # 假
@@ -93,7 +96,7 @@ x = y = 10 #=> 10
 x #=> 10
 y #=> 10
 
-# 按照惯例，用snake_case 作为变量名
+# 按照惯例，用 snake_case 作为变量名
 snake_case = true
 
 # 使用具有描述性的运算符
@@ -101,7 +104,8 @@ path_to_project_root = '/good/name/'
 path = '/bad/name/'
 
 # 符号（Symbols，也是对象)
-# 符号是不可变的，内部用整数类型表示的可重用的值。通常用它代替字符串来有效地表达有意义的值
+# 符号是不可变的，内部用整数类型表示的可重用的值。
+# 通常用它代替字符串来有效地表示有意义的值。
 
 
 :pending.class #=> Symbol
@@ -117,11 +121,11 @@ status == :approved #=> false
 # 数组
 
 # 这是一个数组
-[1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
+array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 
 # 数组可以包含不同类型的元素
 
-array = [1, "hello", false] #=> => [1, "hello", false]
+[1, "hello", false] #=> [1, "hello", false]
 
 # 数组可以被索引
 # 从前面开始
@@ -137,8 +141,8 @@ array.[] 12 #=> nil
 # 从尾部开始
 array[-1] #=> 5
 
-# 同时指定开始的位置和结束的位置
-array[2, 4] #=> [3, 4, 5]
+# 同时指定开始的位置和长度
+array[2, 3] #=> [3, 4, 5]
 
 # 或者指定一个范围
 array[1..3] #=> [2, 3, 4]
@@ -171,7 +175,7 @@ new_hash = { defcon: 3, action: true}
 new_hash.keys #=> [:defcon, :action]
 
 # 小贴士：数组和哈希表都是可枚举的
-# 它们可以共享一些有用的方法，比如each, map, count, 和more
+# 它们可以共享一些有用的方法，比如each, map, count 等等
 
 # 控制流
 

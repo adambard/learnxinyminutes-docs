@@ -2,6 +2,7 @@
 language: elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
+    - ["Dzianis Dashkevich", "https://github.com/dskecse"]
 filename: learnelixir.ex
 ---
 
@@ -9,9 +10,9 @@ Elixir is a modern functional language built on top of the Erlang VM.
 It's fully compatible with Erlang, but features a more standard syntax
 and many more features.
 
-```ruby
+```elixir
 
-# Single line comments start with a hashtag.
+# Single line comments start with a number symbol.
 
 # There's no multi-line comment,
 # but you can stack multiple comments.
@@ -59,7 +60,7 @@ tail #=> [2,3]
 # the tuples have different sizes.
 # {a, b, c} = {1, 2} #=> ** (MatchError) no match of right hand side value: {1,2}
 
-# There's also binaries
+# There are also binaries
 <<1,2,3>> # binary
 
 # Strings and char lists
@@ -90,6 +91,11 @@ string.
 <<1,2,3>> <> <<4,5>> #=> <<1,2,3,4,5>>
 "hello " <> "world"  #=> "hello world"
 
+# Ranges are represented as `start..end` (both inclusive)
+1..10 #=> 1..10
+lower..upper = 1..10 # Can use pattern matching on ranges as well
+[lower, upper] #=> [1, 10]
+
 ## ---------------------------
 ## -- Operators
 ## ---------------------------
@@ -108,7 +114,7 @@ div(10, 2) #=> 5
 # To get the division remainder use `rem`
 rem(10, 3) #=> 1
 
-# There's also boolean operators: `or`, `and` and `not`.
+# There are also boolean operators: `or`, `and` and `not`.
 # These operators expect a boolean as their first argument.
 true and true #=> true
 false or true #=> true
@@ -119,7 +125,6 @@ false or true #=> true
 1 || true  #=> 1
 false && 1 #=> false
 nil && 20  #=> nil
-
 !true #=> false
 
 # For comparisons we have: `==`, `!=`, `===`, `!==`, `<=`, `>=`, `<` and `>`
@@ -165,12 +170,12 @@ case {:one, :two} do
   {:four, :five} ->
     "This won't match"
   {:one, x} ->
-    "This will match and assign `x` to `:two`"
+    "This will match and bind `x` to `:two`"
   _ ->
     "This will match any value"
 end
 
-# It's common practice to assign a value to `_` if we don't need it.
+# It's common to bind the value to `_` if we don't need it.
 # For example, if only the head of a list matters to us:
 [head | _] = [1,2,3]
 head #=> 1
@@ -190,7 +195,7 @@ cond do
     "But I will"
 end
 
-# It is common to see a last condition equal to `true`, which will always match.
+# It is common to set the last condition equal to `true`, which will always match.
 cond do
   1 + 1 == 3 ->
     "I will never be seen"
@@ -201,7 +206,7 @@ cond do
 end
 
 # `try/catch` is used to catch values that are thrown, it also supports an
-# `after` clause that is invoked whether or not a value is catched.
+# `after` clause that is invoked whether or not a value is caught.
 try do
   throw(:hello)
 catch
@@ -301,7 +306,7 @@ end
 Recursion.sum_list([1,2,3], 0) #=> 6
 
 # Elixir modules support attributes, there are built-in attributes and you
-# may also add custom attributes.
+# may also add custom ones.
 defmodule MyMod do
   @moduledoc """
   This is a built-in attribute on a example module.
@@ -312,21 +317,24 @@ defmodule MyMod do
 end
 
 ## ---------------------------
-## -- Records and Exceptions
+## -- Structs and Exceptions
 ## ---------------------------
 
-# Records are basically structures that allow you to associate a name with
-# a particular value.
-defrecord Person, name: nil, age: 0, height: 0
+# Structs are extensions on top of maps that bring default values,
+# compile-time guarantees and polymorphism into Elixir.
+defmodule Person do
+  defstruct name: nil, age: 0, height: 0
+end
 
-joe_info = Person.new(name: "Joe", age: 30, height: 180)
-#=> Person[name: "Joe", age: 30, height: 180]
+joe_info = %Person{ name: "Joe", age: 30, height: 180 }
+#=> %Person{age: 30, height: 180, name: "Joe"}
 
 # Access the value of name
 joe_info.name #=> "Joe"
 
 # Update the value of age
-joe_info = joe_info.age(31) #=> Person[name: "Joe", age: 31, height: 180]
+older_joe_info = %{ joe_info | age: 31 }
+#=> %Person{age: 31, height: 180, name: "Joe"}
 
 # The `try` block with the `rescue` keyword is used to handle exceptions
 try do
@@ -358,9 +366,16 @@ f = fn -> 2 * 2 end #=> #Function<erl_eval.20.80484245>
 spawn(f) #=> #PID<0.40.0>
 
 # `spawn` returns a pid (process identifier), you can use this pid to send
-# messages to the process. To do message passing we use the `<-` operator.
+# messages to the process. To do message passing we use the `send` operator.
 # For all of this to be useful we need to be able to receive messages. This is
-# achived with the `receive` mechanism:
+# achieved with the `receive` mechanism:
+
+# The `receive do` block is used to listen for messages and process
+# them when they are received. A `receive do` block will only
+# process one received message. In order to process multiple
+# messages, a function with a `receive do` block must recursively
+# call itself to get into the `receive do` block again.
+
 defmodule Geometry do
   def area_loop do
     receive do
@@ -376,13 +391,15 @@ end
 
 # Compile the module and create a process that evaluates `area_loop` in the shell
 pid = spawn(fn -> Geometry.area_loop() end) #=> #PID<0.40.0>
+# Alternatively
+pid = spawn(Geometry, :area_loop, [])
 
 # Send a message to `pid` that will match a pattern in the receive statement
-pid <- {:rectangle, 2, 3}
+send pid, {:rectangle, 2, 3}
 #=> Area = 6
 #   {:rectangle,2,3}
 
-pid <- {:circle, 2}
+send pid, {:circle, 2}
 #=> Area = 12.56000000000000049738
 #   {:circle,2}
 
@@ -394,5 +411,7 @@ self() #=> #PID<0.27.0>
 
 * [Getting started guide](http://elixir-lang.org/getting_started/1.html) from [elixir webpage](http://elixir-lang.org)
 * [Elixir Documentation](http://elixir-lang.org/docs/master/)
+* ["Programming Elixir"](https://pragprog.com/book/elixir/programming-elixir) by Dave Thomas
+* [Elixir Cheat Sheet](http://media.pragprog.com/titles/elixir/ElixirCheat.pdf)
 * ["Learn You Some Erlang for Great Good!"](http://learnyousomeerlang.com/) by Fred Hebert
-* "Programming Erlang: Software for a Concurrent World" by Joe Armstrong
+* ["Programming Erlang: Software for a Concurrent World"](https://pragprog.com/book/jaerlang2/programming-erlang) by Joe Armstrong
