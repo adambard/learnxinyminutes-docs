@@ -6,6 +6,7 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
     - ["evuez", "http://github.com/evuez"]
+    - ["Amy Chang", "https://github.com/achange-in-grovo"]
 filename: learnpython3.py
 ---
 
@@ -116,6 +117,9 @@ b == a            # => True, a's and b's objects are equal
 # Strings can be added without using '+'
 "Hello " "world!"    # => "Hello world!"
 
+# ... or multiplied
+"Hello" * 3  # => "HelloHelloHello"
+
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
 
@@ -132,7 +136,6 @@ b == a            # => True, a's and b's objects are equal
 # If your Python 3 code also needs to run on Python 2.5 and below, you can also
 # still use the old style of formatting:
 "%s can be %s the %s way" % ("Strings", "interpolated", "old")  # => "Strings can be interpolated the old way"
-
 
 # None is an object
 None  # => None
