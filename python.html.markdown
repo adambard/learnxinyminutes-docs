@@ -5,6 +5,7 @@ contributors:
     - ["Amin Bandali", "http://aminbandali.com"]
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["evuez", "http://github.com/evuez"]
+    - ["MineDoubleSpace", "http://github.com/MineDoubleSpace"]
 filename: learnpython.py
 ---
 
@@ -726,6 +727,8 @@ print say(say_please=True)  # Can you buy me a beer? Please! I am poor :(
 * [Python Module of the Week](http://pymotw.com/2/)
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
+* [Python for you and me](http://pymbook.readthedocs.org/en/latest/)
+* [Think Python: Think Like a Computer Scientist](http://greenteapress.com/thinkpython/html/index.html)
 
 ### Dead Tree
 
