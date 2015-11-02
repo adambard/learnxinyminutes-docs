@@ -335,10 +335,10 @@ module DataTypeExamples =
     let worker = Worker jdoe
 
     // ------------------------------------
-    // Modelling with types
+    // Modeling with types
     // ------------------------------------
 
-    // Union types are great for modelling state without using flags
+    // Union types are great for modeling state without using flags
     type EmailAddress =
         | ValidEmailAddress of string
         | InvalidEmailAddress of string
@@ -526,7 +526,7 @@ module AsyncExample =
     |> Async.RunSynchronously  // start them off
 
 // ================================================
-// .NET compatability
+// .NET compatibility
 // ================================================
 
 module NetCompatibilityExamples =
