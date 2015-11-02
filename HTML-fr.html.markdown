@@ -50,6 +50,8 @@ Cet article porte principalement sur la syntaxe et quelques astuces.
 <!-- Après ça on commence par ouvrir une balise <html> -->
 <!-- Et puis on la referme à la fin du fichier avec </html> -->
 <!-- après cette balise de fin, plus rien ne doit apparaître. -->
+<html>
+</html>
 
 <!-- À l'intérieur (entre la balise ouvrant et fermante <html></html>), on trouve : -->
 
