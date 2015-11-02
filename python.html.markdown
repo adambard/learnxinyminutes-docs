@@ -458,7 +458,7 @@ add(y=6, x=5)   # Keyword arguments can arrive in any order.
 
 
 # You can define functions that take a variable number of
-# positional args, which will be interpreted as a tuple if you do not use the *
+# positional args, which will be interpreted as a tuple by using *
 def varargs(*args):
     return args
 
@@ -466,7 +466,7 @@ varargs(1, 2, 3)   # => (1, 2, 3)
 
 
 # You can define functions that take a variable number of
-# keyword args, as well, which will be interpreted as a dict if you do not use **
+# keyword args, as well, which will be interpreted as a dict by using **
 def keyword_args(**kwargs):
     return kwargs
 
