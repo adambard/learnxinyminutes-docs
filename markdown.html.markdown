@@ -242,7 +242,7 @@ Markdown also supports reference style links.
 ```
 The title can also be in single quotes or in parentheses, or omitted
 entirely. The references can be anywhere in your document and the reference IDs
-can be anything so long as they are unique. -->
+can be anything so long as they are unique.
 
 There is also "implicit naming" which lets you use the link text as the id.
 ```markdown
