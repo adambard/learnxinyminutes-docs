@@ -6,10 +6,10 @@ contributors:
 lang: fr-fr
 ---
 HTML signifie HyperText Markup Language. 
-C'est un langage (format de fichier) qui permet d'écrire des pages internet.
+C'est un langage (format de fichiers) qui permet d'écrire des pages internet.
 C’est un langage de balisage, il nous permet d'écrire des pages HTML au moyen de balises (Markup, en anglais).
 Les fichiers HTML sont en réalité de simple fichier texte.
-Qu'est-ce qu'une balise ? C'est une façon de hiérarchiser ses données en les entourant par une balise ouvrante et une balise fermante. 
+Qu'est-ce que le balisage ? C'est une façon de hiérarchiser ses données en les entourant par une balise ouvrante et une balise fermante. 
 Ce balisage sert à donner une signification au texte ainsi entouré.
 Comme tous les autres langages, HTML a plusieurs versions. Ici, nous allons parlons de HTML5.
 
@@ -60,7 +60,7 @@ Cet article porte principalement sur la syntaxe et quelques astuces.
 
 <head>
 			<title>
-			<!-- La balise <title> permet d'indiquer au navigateur le titre à afficher dans la barre de titre de la fenêtre -->
+			<!-- La balise <title> permet d'indiquer au navigateur le titre à afficher dans la barre de l'onglet de la fenêtre -->
 				Mon Site
 			</title>
 </head>
