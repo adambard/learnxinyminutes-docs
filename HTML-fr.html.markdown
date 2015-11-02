@@ -93,7 +93,7 @@ Cet article porte principalement sur la syntaxe et quelques astuces.
 
 <!-- Il est possible de réaliser des tableaux également -->
 
-<table> <!-- On ouvre la balise <table>
+<table> <!-- On ouvre la balise <table> -->
 			<tr> <!-- <tr> permet de créer une ligne -->
 				<th>First Header</th> <!-- <th> permet de créer un titre au tableau -->
 				<th>Second Header</th>
