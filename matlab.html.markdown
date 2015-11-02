@@ -123,6 +123,7 @@ x(2:end) % ans = 32 53 7 1
 x = [4; 32; 53; 7; 1] % Column vector
 
 x = [1:10] % x = 1 2 3 4 5 6 7 8 9 10
+x = [1:2:10] % Increment by 2, i.e. x = 1 3 5 7 9
 
 % Matrices
 A = [1 2 3; 4 5 6; 7 8 9]
@@ -205,6 +206,8 @@ transpose(A) % Transpose the matrix, which is the same as:
 A one
 ctranspose(A) % Hermitian transpose the matrix
 % (the transpose, followed by taking complex conjugate of each element)
+A' % Concise version of complex transpose
+A.' % Concise version of transpose (without taking complex conjugate)
 
 
 
@@ -254,6 +257,8 @@ axis equal % Set aspect ratio so data units are the same in every direction
 
 scatter(x, y); % Scatter-plot
 hist(x); % Histogram
+stem(x); % Plot values as stems, useful for displaying discrete data
+bar(x); % Plot bar graph
 
 z = sin(x);
 plot3(x,y,z); % 3D line plot
@@ -262,7 +267,7 @@ pcolor(A) % Heat-map of matrix: plot as grid of rectangles, coloured by value
 contour(A) % Contour plot of matrix
 mesh(A) % Plot as a mesh surface
 
-h = figure	% Create new figure object, with handle h
+h = figure % Create new figure object, with handle h
 figure(h) % Makes the figure corresponding to handle h the current figure
 close(h) % close figure with handle h
 close all % close all open figure windows
@@ -400,7 +405,7 @@ exp(x)
 sqrt(x)
 log(x)
 log10(x)
-abs(x)
+abs(x) %If x is complex, returns magnitude
 min(x)
 max(x)
 ceil(x)
@@ -410,6 +415,14 @@ rem(x)
 rand % Uniformly distributed pseudorandom numbers
 randi % Uniformly distributed pseudorandom integers
 randn % Normally distributed pseudorandom numbers
+
+%Complex math operations
+abs(x) 	 % Magnitude of complex variable x
+phase(x) % Phase (or angle) of complex variable x
+real(x)  % Returns the real part of x (i.e returns a if x = a +jb)
+imag(x)  % Returns the imaginary part of x (i.e returns b if x = a+jb)
+conj(x)  % Returns the complex conjugate 
+
 
 % Common constants
 pi
@@ -460,11 +473,14 @@ length  % length of a vector
 sort    % sort in ascending order
 sum     % sum of elements
 prod    % product of elements
-mode	% modal value
+mode    % modal value
 median  % median value
 mean    % mean value
 std     % standard deviation
 perms(x) % list all permutations of elements of x
+find(x) % Finds all non-zero elements of x and returns their indexes, can use comparison operators, 
+        % i.e. find( x == 3 ) returns indexes of elements that are equal to 3
+        % i.e. find( x >= 3 ) returns indexes of elements greater than or equal to 3
 
 
 % Classes

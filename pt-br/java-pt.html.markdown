@@ -405,6 +405,219 @@ class Velocipede extends Bicicleta {
 
 }
 
+// Interfaces
+// Sintaxe de declaração de Interface
+// <nível de acesso> Interface <nome-da-interface> extends <super-interfaces> {
+// // Constantes
+// // Declarações de método
+//}
+
+// Exemplo - Comida:
+public interface Comestivel {
+    public void comer(); // Qualquer classe que implementa essa interface, deve
+                        // Implementar este método.
+}
+
+public interface Digestivel {
+    public void digerir();
+}
+
+
+// Agora podemos criar uma classe que implementa ambas as interfaces.
+public class Fruta implements Comestivel, Digestivel {
+
+    @Override
+    public void comer() {
+        // ...
+    }
+
+    @Override
+    public void digerir() {
+        // ...
+    }
+}
+
+// Em Java, você pode estender somente uma classe, mas você pode implementar muitas
+// Interfaces. Por exemplo:
+public class ClasseExemplo extends ExemploClassePai implements InterfaceUm,
+    InterfaceDois {
+
+    @Override
+    public void InterfaceUmMetodo() {
+    }
+
+    @Override
+    public void InterfaceDoisMetodo() {
+    }
+
+}
+
+// Classes abstratas
+
+// Sintaxe de declaração de classe abstrata
+// <Nível de acesso> abstract <nome-da-classe-abstrata> extends <estende super-abstratas-classes> {
+// // Constantes e variáveis
+// // Declarações de método
+//}
+
+// Marcar uma classe como abstrata significa que ela contém métodos abstratos que devem
+// ser definido em uma classe filha. Semelhante às interfaces, classes abstratas não podem
+// ser instanciadas, ao invés disso devem ser extendidas e os métodos abstratos
+// definidos. Diferente de interfaces, classes abstratas podem conter uma mistura de
+// métodos concretos e abstratos. Métodos em uma interface não podem ter um corpo,
+// a menos que o método seja estático, e as variáveis sejam finais, por padrão, ao contrário de um
+// classe abstrata. Classes abstratas também PODEM ter o método "main".
+
+public abstract class Animal
+{
+    public abstract void fazerSom();
+
+    // Método pode ter um corpo
+    public void comer()
+    {
+        System.out.println("Eu sou um animal e estou comendo.");  
+        //Nota: Nós podemos acessar variáveis privadas aqui.
+        idade = 30;
+    }
+
+    // Não há necessidade de inicializar, no entanto, em uma interface
+    // a variável é implicitamente final e, portanto, tem
+    // de ser inicializado.
+    protected int idade;
+
+    public void mostrarIdade()
+    {
+        System.out.println(idade);  
+    }
+
+    //Classes abstratas podem ter o método main.
+    public static void main(String[] args)
+    {
+        System.out.println("Eu sou abstrata");
+    }
+}
+
+class Cachorro extends Animal
+{
+
+    // Nota: ainda precisamos substituir os métodos abstratos na
+    // classe abstrata
+    @Override
+    public void fazerSom()
+    {
+        System.out.println("Bark");
+        // idade = 30;    ==> ERRO!  idade é privada de Animal
+    }
+
+    // NOTA: Você receberá um erro se usou a
+    // anotação Override aqui, uma vez que java não permite
+    // sobrescrita de métodos estáticos.
+    // O que está acontecendo aqui é chamado de "esconder o método".
+    // Vejá também este impressionante SO post: http://stackoverflow.com/questions/16313649/
+    public static void main(String[] args)
+    {
+        Cachorro pluto = new Cachorro();
+        pluto.fazerSom();
+        pluto.comer();
+        pluto.mostrarIdade();
+    }
+}
+
+// Classes Finais
+
+// Sintaxe de declaração de classe final
+// <nível de acesso> final <nome-da-classe-final> {
+// // Constantes e variáveis
+// // Declarações de método
+//}
+
+// Classes finais são classes que não podem ser herdadas e são, portanto, um
+// filha final. De certa forma, as classes finais são o oposto de classes abstratas
+// Porque classes abstratas devem ser estendidas, mas as classes finais não pode ser
+// estendidas.
+public final class TigreDenteDeSabre extends Animal
+{
+    // Nota: Ainda precisamos substituir os métodos abstratos na
+     // classe abstrata.
+    @Override
+    public void fazerSom();
+    {
+        System.out.println("Roar");
+    }
+}
+
+// Métodos Finais
+public abstract class Mamifero()
+{
+    // Sintaxe de Métodos Finais:
+    // <modificador-de-acesso> final <tipo-de-retorno> <nome-do-método>(<argumentos>)
+
+    // Métodos finais, como, classes finais não podem ser substituídas por uma classe filha,
+    // e são, portanto, a implementação final do método.
+    public final boolean EImpulsivo()
+    {
+        return true;
+    }
+}
+
+
+// Tipo Enum
+//
+// Um tipo enum é um tipo de dado especial que permite a uma variável ser um conjunto de constantes predefinidas. A 
+// variável deve ser igual a um dos valores que foram previamente definidos para ela.
+// Por serem constantes, os nomes dos campos de um tipo de enumeração estão em letras maiúsculas.
+// Na linguagem de programação Java, você define um tipo de enumeração usando a palavra-chave enum. Por exemplo, você poderia
+// especificar um tipo de enum dias-da-semana como:
+
+public enum Dia {
+    DOMINGO, SEGUNDA, TERÇA, QUARTA,
+    QUINTA, SEXTA, SABADO 
+}
+
+// Nós podemos usar nosso enum Dia assim:
+
+public class EnumTeste {
+
+    // Variável Enum
+    Dia dia;
+
+    public EnumTeste(Dia dia) {
+        this.dia = dia;
+    }
+
+    public void digaComoE() {
+        switch (dia) {
+            case SEGUNDA:
+                System.out.println("Segundas são ruins.");
+                break;
+
+            case SEXTA:
+                System.out.println("Sextas são melhores.");
+                break;
+
+            case SABADO: 
+            case DOMINGO:
+                System.out.println("Finais de semana são os melhores.");
+                break;
+
+            default:
+                System.out.println("Dias no meio da semana são mais ou menos.");
+                break;
+        }
+    }
+
+    public static void main(String[] args) {
+        EnumTeste primeiroDia = new EnumTeste(Dia.SEGUNDA);
+        primeiroDia.digaComoE(); // => Segundas-feiras são ruins.
+        EnumTeste terceiroDia = new EnumTeste(Dia.QUARTA);
+        terceiroDia.digaComoE(); // => Dias no meio da semana são mais ou menos.
+    }
+}
+
+// Tipos Enum são muito mais poderosos do que nós mostramos acima.
+// O corpo de um enum pode incluir métodos e outros campos.
+// Você pode ver mais em https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
+
 ```
 
 ## Leitura Recomendada
