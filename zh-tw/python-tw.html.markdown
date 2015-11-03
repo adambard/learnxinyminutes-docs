@@ -450,7 +450,7 @@ def add(x, y):
     print "x is {0} and y is {1}".format(x, y)
     return x + y    # 用 "return" 來回傳值
 
-# 用參數來呼叫韓式
+# 用參數來呼叫函式
 add(5, 6)   # => 輸出 "x is 5 and y is 6" 並回傳 11
 
 # 你也可以寫上參數名稱來呼叫函式
