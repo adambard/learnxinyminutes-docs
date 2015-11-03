@@ -126,10 +126,10 @@ Module Module1
         'Of course we would like to be able to add up decimals.
         'Therefore we could change the above from Integer to Double.
 
-        'Enter a whole number, 1.2, 2.4, 50.1, 104.9 etc
+        'Enter a floating-point number, 1.2, 2.4, 50.1, 104.9 etc
         Console.Write("First number: ")
         Dim a As Double = Console.ReadLine
-        Console.Write("Second number: ") 'Enter second whole number.
+        Console.Write("Second number: ") 'Enter second floating-point number.
         Dim b As Double = Console.ReadLine
         Dim c As Double = a + b
         Console.WriteLine(c)
@@ -145,12 +145,12 @@ Module Module1
         'Copy and paste the above again.
         Console.Write("First number: ")
         Dim a As Double = Console.ReadLine
-        Console.Write("Second number: ") 'Enter second whole number.
-        Dim b As Integer = Console.ReadLine
-        Dim c As Integer = a + b
-        Dim d As Integer = a * b
-        Dim e As Integer = a - b
-        Dim f As Integer = a / b
+        Console.Write("Second number: ") 'Enter second floating-point number.
+        Dim b As Double = Console.ReadLine
+        Dim c As Double = a + b
+        Dim d As Double = a * b
+        Dim e As Double = a - b
+        Dim f As Double = a / b
 
         'By adding the below lines we are able to calculate the subtract,
         'multiply as well as divide the a and b values
@@ -179,11 +179,11 @@ Module Module1
             Console.Write("First number: ")
             Dim a As Double = Console.ReadLine
             Console.Write("Second number: ")
-            Dim b As Integer = Console.ReadLine
-            Dim c As Integer = a + b
-            Dim d As Integer = a * b
-            Dim e As Integer = a - b
-            Dim f As Integer = a / b
+            Dim b As Double = Console.ReadLine
+            Dim c As Double = a + b
+            Dim d As Double = a * b
+            Dim e As Double = a - b
+            Dim f As Double = a / b
 
             Console.Write(a.ToString() + " + " + b.ToString())
             Console.WriteLine(" = " + c.ToString.PadLeft(3))
@@ -196,7 +196,7 @@ Module Module1
             Console.ReadLine()
             'Ask the question, does the user wish to continue? Unfortunately it
             'is case sensitive.
-            Console.Write("Would you like to continue? (yes / no)")
+            Console.Write("Would you like to continue? (yes / no) ")
             'The program grabs the variable and prints and starts again.
             answer = Console.ReadLine
             'The command for the variable to work would be in this case "yes"
