@@ -221,7 +221,7 @@ println("Gas price: \(price)")
 
 // Número variável de argumentos
 func setup(numbers: Int...) {
-    // its an array
+    // é um array
     let number = numbers[0]
     let argCount = numbers.count
 }

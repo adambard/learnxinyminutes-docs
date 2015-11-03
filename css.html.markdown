@@ -4,25 +4,22 @@ contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
     - ["Marco Scannadinari", "https://github.com/marcoms"]
     - ["Geoffrey Liu", "https://github.com/g-liu"]
+    - ["Connor Shea", "https://github.com/connorshea"]
+    - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
+    - ["Tyler Mumford", "https://tylermumford.com"]
 filename: learncss.css
 ---
 
-In the early days of the web there were no visual elements, just pure text. But with the  
-further development of browsers, fully visual web pages also became common.   
-CSS is the standard language that exists to keep the separation between   
-the content (HTML) and the look-and-feel of web pages.
+Web pages are built with HTML, which specifies the content of a page. CSS (Cascading Style Sheets) is a separate language which specifies a page's **appearance**.
 
-In short, what CSS does is to provide a syntax that enables you to target   
-different elements on an HTML page and assign different visual properties to them.
+CSS code is made of static *rules*. Each rule takes one or more *selectors* and gives specific *values* to a number of visual *properties*. Those properties are then applied to the page elements indicated by the selectors.
 
-Like any other languages, CSS has many versions. Here we focus on CSS2.0,   
-which is not the most recent version, but is the most widely supported and compatible version.
+This guide has been written with CSS 2 in mind, which is extended by the new features of CSS 3.
 
-**NOTE:** Because the outcome of CSS consists of visual effects, in order to 
-learn it, you need try everything in a 
-CSS playground like [dabblet](http://dabblet.com/).
+**NOTE:** Because CSS produces visual results, in order to learn it, you need to try everything in a CSS playground like [dabblet](http://dabblet.com/).
 The main focus of this article is on the syntax and some general tips.
 
+## Syntax
 
 ```css
 /* comments appear inside slash-asterisk, just like this line!
@@ -32,92 +29,103 @@ The main focus of this article is on the syntax and some general tips.
    ## SELECTORS
    #################### */
 
-/* Generally, the primary statement in CSS is very simple */
+/* the selector is used to target an element on a page. */
 selector { property: value; /* more properties...*/ }
 
-/* the selector is used to target an element on page.
-
-You can target all elements on the page using asterisk! */
-* { color:red; }
-
 /*
-Given an element like this on the page:
+Here is an example element:
 
-<div class='some-class class2' id='someId' attr='value' otherAttr='en-us foo bar' />
+<div class='class1 class2' id='anID' attr='value' otherAttr='en-us foo bar' />
 */
 
-/* you can target it by its name */
-.some-class { }
+/* You can target it using one of its CSS classes */
+.class1 { }
 
-/* or by both classes! */
-.some-class.class2 { }
+/* or both classes! */
+.class1.class2 { }
 
-/* or by its element name */
+/* or its name */
 div { }
 
 /* or its id */
-#someId { }
+#anID { }
 
-/* or by the fact that it has an attribute! */
+/* or using the fact that it has an attribute! */
 [attr] { font-size:smaller; }
 
 /* or that the attribute has a specific value */
 [attr='value'] { font-size:smaller; }
 
-/* start with a value (CSS3) */
+/* starts with a value (CSS 3) */
 [attr^='val'] { font-size:smaller; }
 
-/* or ends with (CSS3) */
+/* or ends with a value (CSS 3) */
 [attr$='ue'] { font-size:smaller; }
 
-/* or select by one of the values from the whitespace separated list (CSS3) */
-[otherAttr~='foo'] { font-size:smaller; }
+/* or contains a value in a space-separated list */
+[otherAttr~='foo'] { }
+[otherAttr~='bar'] { }
 
-/* or value can be exactly “value” or can begin with “value” immediately followed by “-” (U+002D) */
+/* or contains a value in a dash-separated list, ie, "-" (U+002D) */
 [otherAttr|='en'] { font-size:smaller; }
 
 
-/* and more importantly you can combine these together -- there shouldn't be  
-any space between different parts because that makes it to have another  
-meaning. */
+/* You can combine different selectors to create a more focused selector. Don't
+   put spaces between them. */
 div.some-class[attr$='ue'] { }
 
-/* you can also select an element based on its parent. */
+/* You can select an element which is a child of another element */
+div.some-parent > .class-name { }
 
-/* an element which is direct child of an element (selected the same way) */
-div.some-parent > .class-name {}
+/* or a descendant of another element. Children are the direct descendants of
+   their parent element, only one level down the tree. Descendants can be any
+   level down the tree. */
+div.some-parent .class-name { }
 
-/* or any of its parents in the tree
-   the following basically means any element that has class "class-name"  
-   and is child of a div with class name "some-parent" IN ANY DEPTH */
-div.some-parent .class-name {}
+/* Warning: the same selector without a space has another meaning.
+   Can you guess what? */
+div.some-parent.class-name { }
 
-/* warning: the same selector without space has another meaning.  
-   can you say what? */
-div.some-parent.class-name {}
+/* You may also select an element based on its adjacent sibling */
+.i-am-just-before + .this-element { }
 
-/* you also might choose to select an element based on its direct  
-   previous sibling */
-.i-am-before + .this-element { }
+/* or any sibling preceding it */
+.i-am-any-element-before ~ .this-element { }
 
-/* or any sibling before this */
-.i-am-any-before ~ .this-element {}
+/* There are some selectors called pseudo classes that can be used to select an
+   element only when it is in a particular state */
 
-/* There are some pseudo classes that allows you to select an element  
-   based on its page behaviour (rather than page structure) */
+/* for example, when the cursor hovers over an element */
+selector:hover { }
 
-/* for example for when an element is hovered */
-selector:hover {}
+/* or a link has been visited */
+selector:visited { }
 
-/* or a visited link */
-selected:visited {}
+/* or hasn't been visited */
+selected:link { }
 
-/* or not visited link */
-selected:link {}
+/* or an element is in focus */
+selected:focus { }
 
-/* or an input element which is focused */
-selected:focus {}
+/* any element that is the first child of its parent */
+selector:first-child {}
 
+/* any element that is the last child of its parent */
+selector:last-child {}
+
+/* Just like pseudo classes, pseudo elements allow you to style certain parts of a document  */
+
+/* matches a virtual first child of the selected element */
+selector::before {}
+
+/* matches a virtual last child of the selected element */
+selector::after {}
+
+/* At appropriate places, an asterisk may be used as a wildcard to select every
+   element */
+* { } /* all elements */
+.parent * { } /* all descendants */
+.parent > * { } /* all children */
 
 /* ####################
    ## PROPERTIES
@@ -125,123 +133,122 @@ selected:focus {}
 
 selector {
     
-    /* Units */
-    width: 50%; /* in percent */
-    font-size: 2em; /* times current font-size */
-    width: 200px; /* in pixels */
-    font-size: 20pt; /* in points */
-    width: 5cm; /* in centimeters */
-    min-width: 50mm; /* in millimeters */
-    max-width: 5in; /* in inches. max-(width|height) */
-    height: 0.2vh; /* times vertical height of browser viewport (CSS3) */
-    width: 0.4vw; /* times horizontal width of browser viewport (CSS3) */
-    min-height: 0.1vmin; /* the lesser of vertical, horizontal dimensions of browser viewport (CSS3) */
-    max-width: 0.3vmax; /* same as above, except the greater of the dimensions (CSS3) */
+    /* Units of length can be absolute or relative. */
+    
+    /* Relative units */
+    width: 50%;       /* percentage of parent element width */
+    font-size: 2em;   /* multiples of element's original font-size */
+    font-size: 2rem;  /* or the root element's font-size */
+    font-size: 2vw;   /* multiples of 1% of the viewport's width (CSS 3) */
+    font-size: 2vh;   /* or its height */
+    font-size: 2vmin; /* whichever of a vh or a vw is smaller */
+    font-size: 2vmax; /* or greater */
+    
+    /* Absolute units */
+    width: 200px;     /* pixels */
+    font-size: 20pt;  /* points */
+    width: 5cm;       /* centimeters */
+    min-width: 50mm;  /* millimeters */
+    max-width: 5in;   /* inches */
     
     /* Colors */
-    background-color: #F6E;  /* in short hex */
-    background-color: #F262E2; /* in long hex format */
-    background-color: tomato; /* can be a named color */
-    background-color: rgb(255, 255, 255); /* in rgb */
-    background-color: rgb(10%, 20%, 50%); /* in rgb percent */
-    background-color: rgba(255, 0, 0, 0.3); /* in semi-transparent rgb (CSS3) */
-    background-color: transparent; /* see thru */
-    background-color: hsl(0, 100%, 50%); /* hsl format (CSS3). */
-    background-color: hsla(0, 100%, 50%, 0.3); /* Similar to RGBA, specify opacity at end (CSS3) */
-
+    color: #F6E;                 /* short hex format */
+    color: #FF66EE;              /* long hex format */
+    color: tomato;               /* a named color */
+    color: rgb(255, 255, 255);   /* as rgb values */
+    color: rgb(10%, 20%, 50%);   /* as rgb percentages */
+    color: rgba(255, 0, 0, 0.3); /* as rgba values (CSS 3) Note: 0 <= a <= 1 */
+    color: transparent;          /* equivalent to setting the alpha to 0 */
+    color: hsl(0, 100%, 50%);    /* as hsl percentages (CSS 3) */
+    color: hsla(0, 100%, 50%, 0.3); /* as hsl percentages with alpha */
     
-    /* Images */
-    background-image: url(/path-to-image/image.jpg); /* quotes inside url() optional */
+    /* Images as backgrounds of elements */
+    background-image: url(/img-path/img.jpg); /* quotes inside url() optional */
     
     /* Fonts */
     font-family: Arial;
-    font-family: "Courier New"; /* if name has space it appears in single or double quotes */
-    font-family: "Courier New", Trebuchet, Arial, sans-serif; /* if first one was not found
-                             browser uses the second font, and so forth */
+    /* if the font family name has a space, it must be quoted */
+    font-family: "Courier New";
+    /* if the first one is not found, the browser uses the next, and so on */
+    font-family: "Courier New", Trebuchet, Arial, sans-serif;
 }
-
 ```
 
 ## Usage
 
-Save any CSS you want in a file with extension `.css`.
+Save a CSS stylesheet with the extension `.css`.
 
 ```xml
-<!-- you need to include the css file in your page's <head>: -->
+<!-- You need to include the css file in your page's <head>. This is the
+     recommended method. Refer to http://stackoverflow.com/questions/8284365 -->
 <link rel='stylesheet' type='text/css' href='path/to/style.css' />
 
-<!-- you can also include some CSS inline in your markup. However it is highly  
-recommended to avoid this. -->
+<!-- You can also include some CSS inline in your markup. -->
 <style>
    a { color: purple; }
 </style>
 
-<!-- or directly set CSS properties on the element. 
-This has to be avoided as much as you can. -->
+<!-- Or directly set CSS properties on the element. -->
 <div style="border: 1px solid red;">
 </div>
-
 ```
 
-## Precedence
+## Precedence or Cascade
 
-As you noticed an element may be targetted by more than one selector. 
-and may have a property set on it in more than one.  
-In these cases, one of the rules takes precedence over others.
+An element may be targeted by multiple selectors and may have a property set on it in more than once. In these cases, one of the rules takes precedence over others. Rules with a more specific selector take precedence over a less specific one, and a rule occuring later in the stylesheet overwrites a previous one.
+
+This process is called cascading, hence the name Cascading Style Sheets.
 
 Given the following CSS:
 
 ```css
-/*A*/
+/* A */
 p.class1[attr='value']
 
-/*B*/
-p.class1 {}
+/* B */
+p.class1 { }
 
-/*C*/
-p.class2 {}
+/* C */
+p.class2 { }
 
-/*D*/
-p {}
+/* D */
+p { }
 
-/*E*/
+/* E */
 p { property: value !important; }
-
 ```
 
 and the following markup:
 
 ```xml
-<p style='/*F*/ property:value;' class='class1 class2' attr='value'>
-</p>
+<p style='/*F*/ property:value;' class='class1 class2' attr='value' />
 ```
 
-The precedence of style is as followed:  
-Remember, the precedence is for each **property**, not for the entire block.
+The precedence of style is as follows. Remember, the precedence is for each **property**, not for the entire block.
 
-* `E` has the highest precedence because of the keyword `!important`.  
-    It is recommended to avoid this unless it is strictly necessary to use.
-* `F` is next, because it is inline style.
-* `A` is next, because it is more "specific" than anything else.  
-    more specific = more specifiers. here 3 specifiers: 1 tagname `p` +   
-    class name `class1` + 1 attribute `attr='value'`
-* `C` is next. although it has the same specificness as `B`  
-    but it appears last.
-* Then is `B`
-* and lastly is `D`.
+* `E` has the highest precedence because of the keyword `!important`. It is recommended that you avoid its usage.
+* `F` is next, because it is an inline style.
+* `A` is next, because it is more "specific" than anything else. It has 3 specifiers: The name of the element `p`, its class `class1`, an attribute `attr='value'`.
+* `C` is next, even though it has the same specificity as `B`. This is because it appears after `B`.
+* `B` is next.
+* `D` is the last one.
 
 ## Compatibility
 
-Most of the features in CSS2 (and gradually in CSS3) are compatible across  
-all browsers and devices. But it's always vital to have in mind the compatibility 
-of what you use in CSS with your target browsers.
+Most of the features in CSS 2 (and many in CSS 3) are available across all browsers and devices. But it's always good practice to check before using a new feature.
 
-[QuirksMode CSS](http://www.quirksmode.org/css/) is one of the best sources for this.
+## Resources
 
-To run a quick compatibility check, [CanIUse](http://caniuse.com) is a great resource.
+* [CanIUse](http://caniuse.com) (Detailed compatibility info)
+* [Dabblet](http://dabblet.com/) (CSS playground)
+* [Mozilla Developer Network's CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS) (Tutorials and reference)
+* [Codrops' CSS Reference](http://tympanus.net/codrops/css_reference/) (Reference)
 
 ## Further Reading
 
 * [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
+* [Selecting elements using attributes](https://css-tricks.com/almanac/selectors/a/attribute/)
 * [QuirksMode CSS](http://www.quirksmode.org/css/)
 * [Z-Index - The stacking context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
+* [SASS](http://sass-lang.com/) and [LESS](http://lesscss.org/) for CSS pre-processing
+* [CSS-Tricks](https://css-tricks.com)

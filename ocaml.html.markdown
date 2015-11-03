@@ -34,13 +34,13 @@ For a source file you can use "ocamlc -i /path/to/file.ml" command
 to print all names and type signatures.
 
 ```
-$ cat sigtest.ml 
+$ cat sigtest.ml
 let inc x = x + 1
 let add x y = x + y
 
-let a = 1 
+let a = 1
 
-$ ocamlc -i ./sigtest.ml 
+$ ocamlc -i ./sigtest.ml
 val inc : int -> int
 val add : int -> int -> int
 val a : int
@@ -104,7 +104,7 @@ let fact_4 = factorial (5-1) ;;
 let sqr2 = sqr (-2) ;;
 
 (* Every function must have at least one argument.
-   Since some funcions naturally don't take any arguments, there's 
+   Since some funcions naturally don't take any arguments, there's
    "unit" type for it that has the only one value written as "()" *)
 let print_hello () = print_endline "hello world" ;;
 
@@ -196,7 +196,7 @@ let (~/) x = 1.0 /. x ;;
 ~/4.0 (* = 0.25 *)
 
 
-(*** Built-in datastructures ***)
+(*** Built-in data structures ***)
 
 (* Lists are enclosed in square brackets, items are separated by
    semicolons. *)
@@ -301,7 +301,7 @@ let l = IntList (1, EmptyList) ;;
 (* Pattern matching is somewhat similar to switch statement in imperative
    languages, but offers a lot more expressive power.
 
-   Even though it may look complicated, it really boils down to matching 
+   Even though it may look complicated, it really boils down to matching
    an argument against an exact value, a predicate, or a type constructor.
    The type system is what makes it so powerful. *)
 
@@ -320,7 +320,7 @@ let is_one = function
 ;;
 
 (* Matching predicates, aka "guarded pattern matching". *)
-let abs x = 
+let abs x =
     match x with
     | x when x < 0 -> -x
     | _ -> x
@@ -341,10 +341,10 @@ let say x =
 
 say (Cat "Fluffy") ;; (* "Fluffy says meow". *)
 
-(** Traversing datastructures with pattern matching **)
+(** Traversing data structures with pattern matching **)
 
 (* Recursive types can be traversed with pattern matching easily.
-   Let's see how we can traverse a datastructure of the built-in list type.
+   Let's see how we can traverse a data structure of the built-in list type.
    Even though the built-in cons ("::") looks like an infix operator,
    it's actually a type constructor and can be matched like any other. *)
 let rec sum_list l =

@@ -102,6 +102,8 @@ for (@elements) {
   print;
 }
 
+# the Perlish post-condition way again
+print for @elements;
 
 #### Regular expressions
 

@@ -1,23 +1,27 @@
 ---
-
 language: Objective-C
 contributors:
     - ["Eugene Yagrushkin", "www.about.me/yagrushkin"]
     - ["Yannick Loriot", "https://github.com/YannickL"]
     - ["Levi Bostian", "https://github.com/levibostian"]
+    - ["Clayton Walker", "https://github.com/cwalk"]
+    - ["Fernando Valverde", "http://visualcosita.xyz"]
 filename: LearnObjectiveC.m
-
 ---
 
 Objective-C is the main programming language used by Apple for the OS X and iOS operating systems and their respective frameworks, Cocoa and Cocoa Touch.
-It is a general-purpose, object-oriented programming language that adds Smalltalk-style messaging to the C programming language. 
+It is a general-purpose, object-oriented programming language that adds Smalltalk-style messaging to the C programming language.
 
-```objective_c
+```objective-c
 // Single-line comments start with //
 
 /*
 Multi-line comments look like this
 */
+
+// XCode supports pragma mark directive that improve jump bar readability
+#pragma mark Navigation Functions // New tag on jump bar named 'Navigation Functions'
+#pragma mark - Navigation Functions // Same tag, now with a separator
 
 // Imports the Foundation headers with #import
 // Use <> to import global files (in general frameworks)
@@ -40,15 +44,15 @@ int main (int argc, const char * argv[])
 
     // Use NSLog to print lines to the console
     NSLog(@"Hello World!"); // Print the string "Hello World!"
- 
+
     ///////////////////////////////////////
     // Types & Variables
     ///////////////////////////////////////
-    
+
     // Primitive declarations
     int myPrimitive1  = 1;
     long myPrimitive2 = 234554664565;
-    
+
     // Object declarations
     // Put the * in front of the variable names for strongly-typed object declarations
     MyClass *myObject1 = nil;  // Strong typing
@@ -56,15 +60,15 @@ int main (int argc, const char * argv[])
     // %@ is an object
     // 'description' is a convention to display the value of the Objects
     NSLog(@"%@ and %@", myObject1, [myObject2 description]); // prints => "(null) and (null)"
-    
+
     // String
     NSString *worldString = @"World";
-    NSLog(@"Hello %@!", worldString); // prints => "Hello World!" 
+    NSLog(@"Hello %@!", worldString); // prints => "Hello World!"
     // NSMutableString is a mutable version of the NSString object
     NSMutableString *mutableString = [NSMutableString stringWithString:@"Hello"];
     [mutableString appendString:@" World!"];
     NSLog(@"%@", mutableString); // prints => "Hello World!"
-    
+
     // Character literals
     NSNumber *theLetterZNumber = @'Z';
     char theLetterZ            = [theLetterZNumber charValue]; // or 'Z'
@@ -74,11 +78,11 @@ int main (int argc, const char * argv[])
     NSNumber *fortyTwoNumber = @42;
     int fortyTwo             = [fortyTwoNumber intValue]; // or 42
     NSLog(@"%i", fortyTwo);
-    
+
     NSNumber *fortyTwoUnsignedNumber = @42U;
     unsigned int fortyTwoUnsigned    = [fortyTwoUnsignedNumber unsignedIntValue]; // or 42
     NSLog(@"%u", fortyTwoUnsigned);
-    
+
     NSNumber *fortyTwoShortNumber = [NSNumber numberWithShort:42];
     short fortyTwoShort           = [fortyTwoShortNumber shortValue]; // or 42
     NSLog(@"%hi", fortyTwoShort);
@@ -86,7 +90,7 @@ int main (int argc, const char * argv[])
     NSNumber *fortyOneShortNumber   = [NSNumber numberWithShort:41];
     unsigned short fortyOneUnsigned = [fortyOneShortNumber unsignedShortValue]; // or 41
     NSLog(@"%u", fortyOneUnsigned);
-    
+
     NSNumber *fortyTwoLongNumber = @42L;
     long fortyTwoLong            = [fortyTwoLongNumber longValue]; // or 42
     NSLog(@"%li", fortyTwoLong);
@@ -100,7 +104,7 @@ int main (int argc, const char * argv[])
     float piFloat           = [piFloatNumber floatValue]; // or 3.141592654f
     NSLog(@"%f", piFloat); // prints => 3.141592654
     NSLog(@"%5.2f", piFloat); // prints => " 3.14"
-    
+
     NSNumber *piDoubleNumber = @3.1415926535;
     double piDouble          = [piDoubleNumber doubleValue]; // or 3.1415926535
     NSLog(@"%f", piDouble);
@@ -110,7 +114,7 @@ int main (int argc, const char * argv[])
     NSDecimalNumber *oneDecNum = [NSDecimalNumber decimalNumberWithString:@"10.99"];
     NSDecimalNumber *twoDecNum = [NSDecimalNumber decimalNumberWithString:@"5.002"];
     // NSDecimalNumber isn't able to use standard +, -, *, / operators so it provides its own:
-    [oneDecNum decimalNumberByAdding:twoDecNum]; 
+    [oneDecNum decimalNumberByAdding:twoDecNum];
     [oneDecNum decimalNumberBySubtracting:twoDecNum];
     [oneDecNum decimalNumberByMultiplyingBy:twoDecNum];
     [oneDecNum decimalNumberByDividingBy:twoDecNum];
@@ -129,8 +133,8 @@ int main (int argc, const char * argv[])
     NSArray *anArray      = @[@1, @2, @3, @4];
     NSNumber *thirdNumber = anArray[2];
     NSLog(@"Third number = %@", thirdNumber); // prints => "Third number = 3"
-    // NSMutableArray is a mutable version of NSArray, allowing you to change 
-    // the items in the array and to extend or shrink the array object. 
+    // NSMutableArray is a mutable version of NSArray, allowing you to change
+    // the items in the array and to extend or shrink the array object.
     // Convenient, but not as efficient as NSArray.
     NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:2];
     [mutableArray addObject:@"Hello"];
@@ -148,6 +152,12 @@ int main (int argc, const char * argv[])
     [mutableDictionary setObject:@"value2" forKey:@"key2"];
     [mutableDictionary removeObjectForKey:@"key1"];
 
+    // Change types from Mutable To Immutable
+    //In general [object mutableCopy] will make the object mutable whereas [object copy] will make the object immutable
+    NSMutableDictionary *aMutableDictionary = [aDictionary mutableCopy];
+    NSDictionary *mutableDictionaryChanged = [mutableDictionary copy];
+
+
     // Set object
     NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
     NSLog(@"%@", set); // prints => {(Hello, World)} (may be in different order)
@@ -160,7 +170,7 @@ int main (int argc, const char * argv[])
     ///////////////////////////////////////
     // Operators
     ///////////////////////////////////////
-    
+
     // The operators works like in the C language
     // For example:
     2 + 5; // => 7
@@ -205,13 +215,13 @@ int main (int argc, const char * argv[])
             NSLog(@"I print");
         } break;
     }
-    
+
     // While loops statements
     int ii = 0;
     while (ii < 4)
     {
         NSLog(@"%d,", ii++); // ii++ increments ii in-place, after using its value
-    } // prints => "0," 
+    } // prints => "0,"
       //           "1,"
       //           "2,"
       //           "3,"
@@ -221,25 +231,25 @@ int main (int argc, const char * argv[])
     for (jj=0; jj < 4; jj++)
     {
         NSLog(@"%d,", jj);
-    } // prints => "0," 
+    } // prints => "0,"
       //           "1,"
       //           "2,"
       //           "3,"
-     
-    // Foreach statements             
+
+    // Foreach statements
     NSArray *values = @[@0, @1, @2, @3];
     for (NSNumber *value in values)
     {
         NSLog(@"%@,", value);
-    } // prints => "0," 
+    } // prints => "0,"
       //           "1,"
       //           "2,"
       //           "3,"
 
     // Object for loop statement. Can be used with any Objective-C object type
-    for (id item in values) { 
-        NSLog(@"%@,", item); 
-    } // prints => "0," 
+    for (id item in values) {
+        NSLog(@"%@,", item);
+    } // prints => "0,"
       //           "1,"
       //           "2,"
       //           "3,"
@@ -250,7 +260,7 @@ int main (int argc, const char * argv[])
         // Your statements here
         @throw [NSException exceptionWithName:@"FileNotFoundException"
                             reason:@"File Not Found on System" userInfo:nil];
-    } @catch (NSException * e) // use: @catch (id exceptionName) to catch all objects. 
+    } @catch (NSException * e) // use: @catch (id exceptionName) to catch all objects.
     {
         NSLog(@"Exception: %@", e);
     } @finally
@@ -259,17 +269,17 @@ int main (int argc, const char * argv[])
     } // prints => "Exception: File Not Found on System"
       //           "Finally. Time to clean up."
 
-    // NSError objects are useful for function arguments to populate on user mistakes. 
+    // NSError objects are useful for function arguments to populate on user mistakes.
     NSError *error = [NSError errorWithDomain:@"Invalid email." code:4 userInfo:nil];
- 
+
     ///////////////////////////////////////
     // Objects
     ///////////////////////////////////////
-    
+
     // Create an object instance by allocating memory and initializing it
     // An object is not fully functional until both steps have been completed
     MyClass *myObject = [[MyClass alloc] init];
-        
+
     // The Objective-C model of object-oriented programming is based on message
     // passing to object instances
     // In Objective-C one does not simply call a method; one sends a message
@@ -280,7 +290,7 @@ int main (int argc, const char * argv[])
 
     // End of @autoreleasepool
     }
-    
+
     // End the program
     return 0;
 }
@@ -301,9 +311,9 @@ int main (int argc, const char * argv[])
 @interface MyClass : NSObject <MyProtocol> // NSObject is Objective-C's base object class.
 {
     // Instance variable declarations (can exist in either interface or implementation file)
-    int count; // Protected access by default. 
+    int count; // Protected access by default.
     @private id data; // Private access (More convenient to declare in implementation file)
-    NSString *name; 
+    NSString *name;
 }
 // Convenient notation for public access variables to auto generate a setter method
 // By default, setter method name is 'set' followed by @property variable name
@@ -313,7 +323,7 @@ int main (int argc, const char * argv[])
 @property (readonly) NSString *roString; // Use @synthesize in @implementation to create accessor
 // You can customize the getter and setter names instead of using default 'set' name:
 @property (getter=lengthGet, setter=lengthSet:) int length;
- 
+
 // Methods
 +/- (return type)methodSignature:(Parameter Type *)parameterName;
 
@@ -335,7 +345,7 @@ int main (int argc, const char * argv[])
 // To access public variables from the implementation file, @property generates a setter method
 // automatically. Method name is 'set' followed by @property variable name:
 MyClass *myClass = [[MyClass alloc] init]; // create MyClass object instance
-[myClass setCount:10]; 
+[myClass setCount:10];
 NSLog(@"%d", [myClass count]); // prints => 10
 // Or using the custom getter and setter method defined in @interface:
 [myClass lengthSet:32];
@@ -358,7 +368,7 @@ NSString *stringFromInstanceMethod = [myClass instanceMethodWithParameter:@"Hell
 // as a variable
 // SEL is the data type. @selector() returns a selector from method name provided
 // methodAParameterAsString:andAParameterAsNumber: is method name for method in MyClass
-SEL selectorVar = @selector(methodAParameterAsString:andAParameterAsNumber:); 
+SEL selectorVar = @selector(methodAParameterAsString:andAParameterAsNumber:);
 if ([myClass respondsToSelector:selectorVar]) { // Checks if class contains method
     // Must put all method arguments into one object to send to performSelector function
     NSArray *arguments = [NSArray arrayWithObjects:@"Hello", @4, nil];
@@ -382,7 +392,7 @@ distance = 18; // References "long distance" from MyClass implementation
 @synthesize roString = _roString; // _roString available now in @implementation
 
 // Called before calling any class methods or instantiating any objects
-+ (void)initialize 
++ (void)initialize
 {
     if (self == [MyClass class]) {
         distance = 0;
@@ -392,7 +402,7 @@ distance = 18; // References "long distance" from MyClass implementation
 // Counterpart to initialize method. Called when an object's reference count is zero
 - (void)dealloc
 {
-    [height release]; // If not using ARC, make sure to release class variable objects 
+    [height release]; // If not using ARC, make sure to release class variable objects
     [super dealloc];  // and call parent class dealloc
 }
 
@@ -407,7 +417,7 @@ distance = 18; // References "long distance" from MyClass implementation
     return self;
 }
 // Can create constructors that contain arguments:
-- (id)initWithDistance:(int)defaultDistance 
+- (id)initWithDistance:(int)defaultDistance
 {
     distance = defaultDistance;
     return self;
@@ -418,7 +428,7 @@ distance = 18; // References "long distance" from MyClass implementation
     return @"Some string";
 }
 
-+ (MyClass *)myClassFromHeight:(NSNumber *)defaultHeight 
++ (MyClass *)myClassFromHeight:(NSNumber *)defaultHeight
 {
     height = defaultHeight;
     return [[self alloc] init];
@@ -434,7 +444,7 @@ distance = 18; // References "long distance" from MyClass implementation
     return @42;
 }
 
-// Objective-C does not have private method declarations, but you can simulate them. 
+// Objective-C does not have private method declarations, but you can simulate them.
 // To simulate a private method, create the method in the @implementation but not in the @interface.
 - (NSNumber *)secretPrivateMethod {
     return @72;
@@ -453,15 +463,15 @@ distance = 18; // References "long distance" from MyClass implementation
 // Categories
 ///////////////////////////////////////
 // A category is a group of methods designed to extend a class. They allow you to add new methods
-// to an existing class for organizational purposes. This is not to be mistaken with subclasses. 
-// Subclasses are meant to CHANGE functionality of an object while categories instead ADD 
+// to an existing class for organizational purposes. This is not to be mistaken with subclasses.
+// Subclasses are meant to CHANGE functionality of an object while categories instead ADD
 // functionality to an object.
 // Categories allow you to:
 // -- Add methods to an existing class for organizational purposes.
 // -- Allow you to extend Objective-C object classes (ex: NSString) to add your own methods.
-// -- Add ability to create protected and private methods to classes. 
-// NOTE: Do not override methods of the base class in a category even though you have the ability 
-// to. Overriding methods may cause compiler errors later between different categories and it 
+// -- Add ability to create protected and private methods to classes.
+// NOTE: Do not override methods of the base class in a category even though you have the ability
+// to. Overriding methods may cause compiler errors later between different categories and it
 // ruins the purpose of categories to only ADD functionality. Subclass instead to override methods.
 
 // Here is a simple Car base class.
@@ -493,8 +503,8 @@ distance = 18; // References "long distance" from MyClass implementation
 @end
 
 // Now, if we wanted to create a Truck object, we would instead create a subclass of Car as it would
-// be changing the functionality of the Car to behave like a truck. But lets say we want to just add 
-// functionality to this existing Car. A good example would be to clean the car. So we would create 
+// be changing the functionality of the Car to behave like a truck. But lets say we want to just add
+// functionality to this existing Car. A good example would be to clean the car. So we would create
 // a category to add these cleaning methods:
 // @interface filename: Car+Clean.h (BaseClassName+CategoryName.h)
 #import "Car.h" // Make sure to import base class to extend.
@@ -518,7 +528,7 @@ distance = 18; // References "long distance" from MyClass implementation
     NSLog(@"Waxed.");
 }
 
-@end 
+@end
 
 // Any Car object instance has the ability to use a category. All they need to do is import it:
 #import "Car+Clean.h" // Import as many different categories as you want to use.
@@ -533,7 +543,7 @@ int main (int argc, const char * argv[]) {
         [mustang turnOn]; // Use methods from base Car class.
         [mustang washWindows]; // Use methods from Car's Clean category.
     }
-    return 0; 
+    return 0;
 }
 
 // Objective-C does not have protected method declarations but you can simulate them.
@@ -547,7 +557,7 @@ int main (int argc, const char * argv[]) {
 //To use protected methods, import the category, then implement the methods:
 #import "Car+Protected.h" // Remember, import in the @implementation file only.
 
-@implementation Car 
+@implementation Car
 
 - (void)lockCar {
     NSLog(@"Car locked."); // Instances of Car can't use lockCar because it's not in the @interface.
@@ -570,8 +580,8 @@ int main (int argc, const char * argv[]) {
 // You can override numOfSides variable or getNumOfSides method to edit them with an extension:
 // @implementation filename: Shape.m
 #import "Shape.h"
-// Extensions live in the same file as the class @implementation. 
-@interface Shape () // () after base class name declares an extension.  
+// Extensions live in the same file as the class @implementation.
+@interface Shape () // () after base class name declares an extension.
 
 @property (copy) NSNumber *numOfSides; // Make numOfSides copy instead of readonly.
 -(NSNumber)getNumOfSides; // Make getNumOfSides return a NSNumber instead of an int.
@@ -579,7 +589,7 @@ int main (int argc, const char * argv[]) {
 
 @end
 // The main @implementation:
-@implementation Shape 
+@implementation Shape
 
 @synthesize numOfSides = _numOfSides;
 
@@ -592,6 +602,52 @@ int main (int argc, const char * argv[]) {
 
 @end
 
+// Starting in Xcode 7.0, you can create Generic classes,
+// allowing you to provide greater type safety and clarity
+// without writing excessive boilerplate.
+@interface Result<__covariant A> : NSObject
+
+- (void)handleSuccess:(void(^)(A))success
+              failure:(void(^)(NSError *))failure;
+
+@property (nonatomic) A object;
+
+@end
+
+// we can now declare instances of this class like
+Result<NSNumber *> *result;
+Result<NSArray *> *result;
+
+// Each of these cases would be equivalent to rewriting Result's interface
+// and substituting the appropriate type for A
+@interface Result : NSObject
+- (void)handleSuccess:(void(^)(NSArray *))success
+              failure:(void(^)(NSError *))failure;
+@property (nonatomic) NSArray * object;
+@end
+
+@interface Result : NSObject
+- (void)handleSuccess:(void(^)(NSNumber *))success
+              failure:(void(^)(NSError *))failure;
+@property (nonatomic) NSNumber * object;
+@end
+
+// It should be obvious, however, that writing one
+//  Class to solve a problem is always preferable to writing two
+
+// Note that Clang will not accept generic types in @implementations,
+// so your @implemnation of Result would have to look like this:
+
+@implementation Result
+
+- (void)handleSuccess:(void (^)(id))success
+              failure:(void (^)(NSError *))failure {
+  // Do something
+}
+
+@end
+
+
 ///////////////////////////////////////
 // Protocols
 ///////////////////////////////////////
@@ -603,14 +659,14 @@ int main (int argc, const char * argv[]) {
     @property BOOL engineOn; // Adopting class must @synthesize all defined @properties and
     - (void)turnOnEngine; // all defined methods.
 @end
-// Below is an example class implementing the protocol. 
+// Below is an example class implementing the protocol.
 #import "CarUtilities.h" // Import the @protocol file.
 
 @interface Car : NSObject <CarUtilities> // Name of protocol goes inside <>
     // You don't need the @property or method names here for CarUtilities. Only @implementation does.
 - (void)turnOnEngineWithUtilities:(id <CarUtilities>)car; // You can use protocols as data too.
 @end
-// The @implementation needs to implement the @properties and methods for the protocol. 
+// The @implementation needs to implement the @properties and methods for the protocol.
 @implementation Car : NSObject <CarUtilities>
 
 @synthesize engineOn = _engineOn; // Create a @synthesize statement for the engineOn @property.
@@ -619,14 +675,14 @@ int main (int argc, const char * argv[]) {
     _engineOn = YES; // how you implement a method, it just requires that you do implement it.
 }
 // You may use a protocol as data as you know what methods and variables it has implemented.
-- (void)turnOnEngineWithCarUtilities:(id <CarUtilities>)objectOfSomeKind { 
+- (void)turnOnEngineWithCarUtilities:(id <CarUtilities>)objectOfSomeKind {
     [objectOfSomeKind engineOn]; // You have access to object variables
-    [objectOfSomeKind turnOnEngine]; // and the methods inside. 
+    [objectOfSomeKind turnOnEngine]; // and the methods inside.
     [objectOfSomeKind engineOn]; // May or may not be YES. Class implements it however it wants.
 }
 
 @end
-// Instances of Car now have access to the protocol. 
+// Instances of Car now have access to the protocol.
 Car *carInstance = [[Car alloc] init];
 [carInstance setEngineOn:NO];
 [carInstance turnOnEngine];
@@ -655,10 +711,10 @@ if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
 // See the problem is that Sister relies on Brother, and Brother relies on Sister.
 #import "Sister.h"
 
-@protocol Sister; // These lines stop the recursion, resolving the issue. 
+@protocol Sister; // These lines stop the recursion, resolving the issue.
 
 @protocol Brother <NSObject>
- 
+
 - (void)beNiceToSister:(id <Sister>)sister;
 
 @end
@@ -667,24 +723,24 @@ if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
 ///////////////////////////////////////
 // Blocks
 ///////////////////////////////////////
-// Blocks are statements of code, just like a function, that are able to be used as data. 
+// Blocks are statements of code, just like a function, that are able to be used as data.
 // Below is a simple block with an integer argument that returns the argument plus 4.
-int (^addUp)(int n); // Declare a variable to store the block. 
-void (^noParameterBlockVar)(void); // Example variable declaration of block with no arguments. 
+int (^addUp)(int n); // Declare a variable to store the block.
+void (^noParameterBlockVar)(void); // Example variable declaration of block with no arguments.
 // Blocks have access to variables in the same scope. But the variables are readonly and the
-// value passed to the block is the value of the variable when the block is created. 
+// value passed to the block is the value of the variable when the block is created.
 int outsideVar = 17; // If we edit outsideVar after declaring addUp, outsideVar is STILL 17.
 __block long mutableVar = 3; // __block makes variables writable to blocks, unlike outsideVar.
-addUp = ^(int n) { // Remove (int n) to have a block that doesn't take in any parameters. 
+addUp = ^(int n) { // Remove (int n) to have a block that doesn't take in any parameters.
     NSLog(@"You may have as many lines in a block as you would like.");
     NSSet *blockSet; // Also, you can declare local variables.
     mutableVar = 32; // Assigning new value to __block variable.
-    return n + outsideVar; // Return statements are optional. 
+    return n + outsideVar; // Return statements are optional.
 }
-int addUp = add(10 + 16); // Calls block code with arguments. 
+int addUp = addUp(10 + 16); // Calls block code with arguments.
 // Blocks are often used as arguments to functions to be called later, or for callbacks.
-@implementation BlockExample : NSObject 
- 
+@implementation BlockExample : NSObject
+
  - (void)runBlock:(void (^)(NSString))block {
     NSLog(@"Block argument returns nothing and takes in a NSString object.");
     block(@"Argument given to block to execute."); // Calling block.
@@ -696,19 +752,19 @@ int addUp = add(10 + 16); // Calls block code with arguments.
 ///////////////////////////////////////
 // Memory Management
 ///////////////////////////////////////
-/* 
+/*
 For each object used in an application, memory must be allocated for that object. When the application
-is done using that object, memory must be deallocated to ensure application efficiency. 
-Objective-C does not use garbage collection and instead uses reference counting. As long as 
+is done using that object, memory must be deallocated to ensure application efficiency.
+Objective-C does not use garbage collection and instead uses reference counting. As long as
 there is at least one reference to an object (also called "owning" an object), then the object
-will be available to use (known as "ownership"). 
+will be available to use (known as "ownership").
 
 When an instance owns an object, its reference counter is increments by one. When the
 object is released, the reference counter decrements by one. When reference count is zero,
-the object is removed from memory. 
+the object is removed from memory.
 
-With all object interactions, follow the pattern of: 
-(1) create the object, (2) use the object, (3) then free the object from memory. 
+With all object interactions, follow the pattern of:
+(1) create the object, (2) use the object, (3) then free the object from memory.
 */
 
 MyClass *classVar = [MyClass alloc]; // 'alloc' sets classVar's reference count to one. Returns pointer to object
@@ -723,11 +779,11 @@ MyClass *newVar = [classVar retain]; // If classVar is released, object is still
 
 // Automatic Reference Counting (ARC)
 // Because memory management can be a pain, Xcode 4.2 and iOS 4 introduced Automatic Reference Counting (ARC).
-// ARC is a compiler feature that inserts retain, release, and autorelease automatically for you, so when using ARC, 
+// ARC is a compiler feature that inserts retain, release, and autorelease automatically for you, so when using ARC,
 // you must not use retain, relase, or autorelease
-MyClass *arcMyClass = [[MyClass alloc] init]; 
+MyClass *arcMyClass = [[MyClass alloc] init];
 // ... code using arcMyClass
-// Without ARC, you will need to call: [arcMyClass release] after you're done using arcMyClass. But with ARC, 
+// Without ARC, you will need to call: [arcMyClass release] after you're done using arcMyClass. But with ARC,
 // there is no need. It will insert this release statement for you
 
 // As for the 'assign' and 'retain' @property attributes, with ARC you use 'weak' and 'strong'
@@ -746,5 +802,9 @@ __unsafe_unretained NSArray *unsafeArray; // Like __weak, but unsafeArray not se
 [Wikipedia Objective-C](http://en.wikipedia.org/wiki/Objective-C)
 
 [Programming with Objective-C. Apple PDF book](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/ProgrammingWithObjectiveC.pdf)
+
+[Programming with Objective-C for iOS](https://developer.apple.com/library/ios/documentation/General/Conceptual/DevPedia-CocoaCore/ObjectiveC.html)
+
+[Programming with Objective-C for Mac OSX](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html)
 
 [iOS For High School Students: Getting Started](http://www.raywenderlich.com/5600/ios-for-high-school-students-getting-started)

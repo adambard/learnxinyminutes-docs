@@ -248,7 +248,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 
 ; Il y a encore d'autres fonctions dans l'espace de nom clojure.sets.
 
-; Formes utiles
+; Formes et macros utiles
 ;;;;;;;;;;;;;;;
 
 ; Les constructions logiques en Clojure sont juste des macros, et
@@ -275,6 +275,33 @@ ressemblent à toutes les autres formes:
 (let [name "Urkel"]
   (print "Saying hello to " name)
   (str "Hello " name)) ; => "Hello Urkel" (prints "Saying hello to Urkel")
+  
+; Utilisez les Threading Macros (-> et ->>) pour exprimer plus
+; clairement vos transformations, en y pensant de manière multi-niveaux.
+
+; La "flèche simple" ou "Thread-first", insère, à chaque niveau
+; de la transformation, la forme courante en la seconde position
+; de la forme suivante, constituant à chaque fois un nouvel étage
+; de transformation. Par exemple:
+(->  
+   {:a 1 :b 2} 
+   (assoc :c 3) ;=> Génère ici (assoc {:a 1 :b 2} :c 3)
+   (dissoc :b)) ;=> Génère ici (dissoc (assoc {:a 1 :b 2} :c 3) :b)
+   
+; Cette expression est ré-écrite en:
+; (dissoc (assoc {:a 1 :b 2} :c 3) :b)
+; et est évaluée en : {:a 1 :c 3}
+
+; La "flèche double" ou "Thread-last" procède de la même manière
+; que "->", mais insère le résultat de la réécriture de chaque
+; étage en dernière position. Par exemple:
+(->>
+   (range 10)
+   (map inc)     ;=> Génère ici (map inc (range 10)
+   (filter odd?) ;=> Génère ici (filter odd? (map inc (range 10))
+   (into []))    ;=> Génère ici (into [] (filter odd? (map inc (range 10))), ce qui est évalué au final à;
+                 ; [1 3 5 7 9]
+
 
 ; Modules
 ;;;;;;;;;;;;;;;

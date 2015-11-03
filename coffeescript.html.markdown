@@ -6,8 +6,8 @@ contributors:
 filename: coffeescript.coffee
 ---
 
-CoffeeScript is a little language that compiles one-to-one into the equivalent JavaScript, and there is no interpretation at runtime. 
-As one of the succeeders of JavaScript, CoffeeScript tries its best to output readable, pretty-printed and smooth-running JavaScript codes working well in every JavaScript runtime.
+CoffeeScript is a little language that compiles one-to-one into the equivalent JavaScript, and there is no interpretation at runtime.
+As one of the successors to JavaScript, CoffeeScript tries its best to output readable, pretty-printed and smooth-running JavaScript code, which works well in every JavaScript runtime.
 
 See also [the CoffeeScript website](http://coffeescript.org/), which has a complete tutorial on CoffeeScript.
 
@@ -54,35 +54,35 @@ math =
   square: square
   cube:   (x) -> x * square x
 #=> var math = {
-#  "root": Math.sqrt,
-#  "square": square,
-#  "cube": function(x) { return x * square(x); }
-#}
+#    "root": Math.sqrt,
+#    "square": square,
+#    "cube": function(x) { return x * square(x); }
+#   };
 
 # Splats:
 race = (winner, runners...) ->
   print winner, runners
 #=>race = function() {
-#  var runners, winner;
-#  winner = arguments[0], runners = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-#  return print(winner, runners);
-#};
+#    var runners, winner;
+#    winner = arguments[0], runners = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+#    return print(winner, runners);
+#  };
 
 # Existence:
 alert "I knew it!" if elvis?
 #=> if(typeof elvis !== "undefined" && elvis !== null) { alert("I knew it!"); }
 
 # Array comprehensions:
-cubes = (math.cube num for num in list) 
+cubes = (math.cube num for num in list)
 #=>cubes = (function() {
-#	var _i, _len, _results;
-#	_results = [];
+#	  var _i, _len, _results;
+#	  _results = [];
 # 	for (_i = 0, _len = list.length; _i < _len; _i++) {
-#		num = list[_i];
-#		_results.push(math.cube(num));
-#	}
-#	return _results;
-#  })();
+#		  num = list[_i];
+#		  _results.push(math.cube(num));
+#	  }
+#	  return _results;
+# })();
 
 foods = ['broccoli', 'spinach', 'chocolate']
 eat food for food in foods when food isnt 'chocolate'

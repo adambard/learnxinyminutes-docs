@@ -16,7 +16,7 @@ con Java para aplicaciones más complejas. Debido a su integracion estrecha con 
 web y soporte por defecto de los navegadores modernos se ha vuelto mucho más común 
 para front-end que Java.
 
-JavaScript no sólo se limita a los navegadores web, aunque: Node.js, Un proyecto que proporciona un entorno de ejecución independiente para el motor V8 de Google Chrome, se está volviendo más y más popular.
+Aunque JavaScript no sólo se limita a los navegadores web: Node.js, Un proyecto que proporciona un entorno de ejecución independiente para el motor V8 de Google Chrome, se está volviendo más y más popular.
 
 ¡La retroalimentación es bienvenida! Puedes encontrarme en: 
 [@adambrenecki](https://twitter.com/adambrenecki), o
@@ -30,7 +30,7 @@ JavaScript no sólo se limita a los navegadores web, aunque: Node.js, Un proyect
 // Cada sentencia puede ser terminada con punto y coma ;
 hazAlgo();
 
-// ... aunque no es necesario, ya que el punto y coma se agrega automaticamente
+// ... aunque no es necesario, ya que el punto y coma se agrega automáticamente
 // cada que se detecta una nueva línea, a excepción de algunos casos.
 hazAlgo()
 
@@ -109,7 +109,7 @@ null == undefined; // = true
 null === undefined; // false
 
 // Los Strings funcionan como arreglos de caracteres
-// Puedes accesar a cada caracter con la función charAt()
+// Puedes acceder a cada caracter con la función charAt()
 "Este es un String".charAt(0);  // = 'E'
 
 // ...o puedes usar la función substring() para acceder a pedazos más grandes
@@ -124,7 +124,7 @@ undefined; // usado para indicar que un valor no está presente actualmente
            // (aunque undefined es un valor en sí mismo)
 
 // false, null, undefined, NaN, 0 y "" es false; todo lo demás es true.
-// Note que 0 is false y "0" es true, a pesar de que 0 == "0".
+// Note que 0 es false y "0" es true, a pesar de que 0 == "0".
 // Aunque 0 === "0" sí es false.
 
 ///////////////////////////////////
@@ -186,7 +186,7 @@ miObjeto.miLlave; // = "miValor"
 // agregar nuevas llaves.
 miObjeto.miTerceraLlave = true;
 
-// Si intentas accesar con una llave que aún no está asignada tendrás undefined.
+// Si intentas acceder con una llave que aún no está asignada tendrás undefined.
 miObjeto.miCuartaLlave; // = undefined
 
 ///////////////////////////////////
@@ -301,7 +301,7 @@ i; // = 5 - en un lenguaje que da ámbitos por bloque esto sería undefined, per
 //inmediatamente", que preveé variables temporales de fugarse al ámbito global
 (function(){
     var temporal = 5;
-    // Podemos accesar al ámbito global asignando al 'objeto global', el cual
+    // Podemos acceder al ámbito global asignando al 'objeto global', el cual
     // en un navegador siempre es 'window'. El objeto global puede tener
     // un nombre diferente en ambientes distintos, por ejemplo Node.js .
     window.permanente = 10;
@@ -321,7 +321,7 @@ function decirHolaCadaCincoSegundos(nombre){
         alert(texto);
     }
     setTimeout(interna, 5000);
-    // setTimeout es asíncrono, así que la funcion decirHolaCadaCincoSegundos 
+    // setTimeout es asíncrono, así que la función decirHolaCadaCincoSegundos 
     // terminará inmediatamente, y setTimeout llamará a interna() a los cinco segundos
     // Como interna está "cerrada dentro de" decirHolaCadaCindoSegundos, interna todavía tiene
     // acceso a la variable 'texto' cuando es llamada.
@@ -339,7 +339,7 @@ var miObjeto = {
 };
 miObjeto.miFuncion(); // = "¡Hola Mundo!"
 
-// Cuando las funciones de un objeto son llamadas, pueden accesar a las variables 
+// Cuando las funciones de un objeto son llamadas, pueden acceder a las variables 
 // del objeto con la palabra clave 'this'.
 miObjeto = {
     miString: "¡Hola Mundo!",
@@ -401,11 +401,11 @@ var MiConstructor = function(){
 miNuevoObjeto = new MiConstructor(); // = {miNumero: 5}
 miNuevoObjeto.miNumero; // = 5
 
-// Todos los objetos JavaScript tienen un 'prototipo'. Cuando vas a accesar a una
+// Todos los objetos JavaScript tienen un 'prototipo'. Cuando vas a acceder a una
 // propiedad en un objeto que no existe en el objeto el intérprete buscará en
 // el prototipo.
 
-// Algunas implementaciones de JavaScript te permiten accesar al prototipo de 
+// Algunas implementaciones de JavaScript te permiten acceder al prototipo de 
 // un objeto con la propiedad __proto__. Mientras que esto es útil para explicar
 // prototipos, no es parte del estándar; veremos formas estándar de usar prototipos
 // más adelante.
@@ -440,7 +440,7 @@ miPrototipo.sentidoDeLaVida = 43;
 miObjeto.sentidoDeLaVida; // = 43
 
 // Mencionabamos anteriormente que __proto__ no está estandarizado, y que no 
-// existe una forma estándar de accesar al prototipo de un objeto. De todas formas.
+// existe una forma estándar de acceder al prototipo de un objeto. De todas formas.
 // hay dos formas de crear un nuevo objeto con un prototipo dado.
 
 // El primer método es Object.create, el cual es una adición reciente a JavaScript,
@@ -476,10 +476,7 @@ typeof miNumero; // = 'number'
 typeof miNumeroObjeto; // = 'object'
 miNumero === miNumeroObjeyo; // = false
 if (0){
-    // Este código no se ejecutara porque 0 es false.
-}
-if (Number(0)){
-    // Este código sí se ejecutara, puesto que Number(0) es true.
+    // Este código no se ejecutará porque 0 es false.
 }
 
 // Aún así, los objetos que envuelven y los prototipos por defecto comparten

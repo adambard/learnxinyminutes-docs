@@ -13,13 +13,14 @@ contributors:
 filename: LearnBash.sh
 translators:
     - ["Robert Margelli", "http://github.com/sinkswim/"]
+    - ["Tommaso Pifferi", "http://github.com/neslinesli93/"]
 lang: it-it
 ---
 
 Bash è il nome della shell di unix, la quale è stata distribuita anche come shell del sistema oprativo GNU e la shell di default su Linux e Mac OS X.
 Quasi tutti gli esempi sottostanti possono fare parte di uno shell script o eseguiti direttamente nella shell.
 
-[Per saperne di piu'.](http://www.gnu.org/software/bash/manual/bashref.html)
+[Per saperne di più.](http://www.gnu.org/software/bash/manual/bashref.html)
 
 ```bash
 #!/bin/bash
@@ -34,32 +35,34 @@ echo Ciao mondo!
 echo 'Questa è la prima riga'; echo 'Questa è la seconda riga'
 
 # Per dichiarare una variabile:
-VARIABILE="Una stringa"
+Variabile="Una stringa"
 
 # Ma non così:
-VARIABILE = "Una stringa"
-# Bash stabilirà che VARIABILE è un comando da eseguire e darà un errore
+Variabile = "Una stringa"
+# Bash stabilirà che Variabile è un comando da eseguire e darà un errore
 # perchè non esiste.
 
 # Usare la variabile:
-echo $VARIABILE
-echo "$VARIABILE"
-echo '$VARIABILE'
+echo $Variabile
+echo "$Variabile"
+echo '$Variabile'
 # Quando usi la variabile stessa - assegnala, esportala, oppure — scrivi
 # il suo nome senza $. Se vuoi usare il valore della variabile, devi usare $.
 # Nota che ' (singolo apice) non espande le variabili!
 
 # Sostituzione di stringhe nelle variabili
-echo ${VARIABILE/Una/A}
+echo ${Variabile/Una/A}
 # Questo sostituirà la prima occorrenza di "Una" con "La"
 
 # Sottostringa di una variabile
-echo ${VARIABILE:0:7}
+Lunghezza=7
+echo ${Variabile:0:Lunghezza}
 # Questo ritornerà solamente i primi 7 caratteri
 
 # Valore di default per la variabile
-echo ${FOO:-"ValoreDiDefaultSeFOOMancaOÈ Vuoto"}
-# Questo funziona per null (FOO=), stringa vuota (FOO=""), zero (FOO=0) ritorna 0
+echo ${Foo:-"ValoreDiDefaultSeFooMancaOppureÈVuoto"}
+# Questo funziona per null (Foo=), stringa vuota (Foo=""), zero (Foo=0) ritorna 0
+# Nota: viene ritornato il valore di default, il contenuto della variabile pero' non cambia.
 
 # Variabili builtin:
 # Ci sono delle variabili builtin molto utili, come
@@ -71,31 +74,40 @@ echo "Argomenti dello script separati in variabili distinte: $1 $2..."
 
 # Leggere un valore di input:
 echo "Come ti chiami?"
-read NOME # Nota che non abbiamo dovuto dichiarare una nuova variabile
-echo Ciao, $NOME!
+read Nome # Nota che non abbiamo dovuto dichiarare una nuova variabile
+echo Ciao, $Nome!
 
 # Classica struttura if:
 # usa 'man test' per maggiori informazioni sulle condizionali
-if [ $NOME -ne $USER ]
+if [ $Nome -ne $USER ]
 then
     echo "Il tuo nome non è lo username"
 else
     echo "Il tuo nome è lo username"
 fi
 
+# Nota: se $Name è vuoto, la condizione precedente viene interpretata come:
+if [ -ne $USER ]
+# che genera un errore di sintassi. Quindi il metodo sicuro per usare
+# variabili che possono contenere stringhe vuote è il seguente:
+if [ "$Name" -ne $USER ] ...
+# che viene interpretato come:
+if [ "" -ne $USER ] ...
+# e dunque funziona correttamente.
+
 # C'è anche l'esecuzione condizionale
 echo "Sempre eseguito" || echo "Eseguito solo se la prima condizione fallisce"
 echo "Sempre eseguito" && echo "Eseguito solo se la prima condizione NON fallisce"
 
 # Per usare && e || con l'if, c'è bisogno di piu' paia di parentesi quadre:
-if [ $NOME == "Steve" ] && [ $ETA -eq 15 ]
+if [ "$Nome" == "Steve" ] && [ "$Eta" -eq 15 ]
 then
-    echo "Questo verrà eseguito se $NOME è Steve E $ETA è 15."
+    echo "Questo verrà eseguito se $Nome è Steve E $Eta è 15."
 fi
 
-if [ $NOME == "Daniya" ] || [ $NOME == "Zach" ]
+if [ "$Nome" == "Daniya" ] || [ "$Nome" == "Zach" ]
 then
-    echo "Questo verrà eseguito se $NAME è Daniya O Zach."
+    echo "Questo verrà eseguito se $Nome è Daniya O Zach."
 fi
 
 # Le espressioni sono nel seguente formato:
@@ -137,7 +149,7 @@ python hello.py > /dev/null 2>&1
 # se invece vuoi appendere usa ">>":
 python hello.py >> "output.out" 2>> "error.err"
 
-# Sovrascrivi output.txt, appendi a error.err, e conta le righe:
+# Sovrascrivi output.out, appendi a error.err, e conta le righe:
 info bash 'Basic Shell Features' 'Redirections' > output.out 2>> error.err
 wc -l output.out error.err
 
@@ -145,7 +157,7 @@ wc -l output.out error.err
 # vedi: man fd
 echo <(echo "#ciaomondo")
 
-# Sovrascrivi output.txt con "#helloworld":
+# Sovrascrivi output.out con "#helloworld":
 cat > output.out <(echo "#helloworld")
 echo "#helloworld" > output.out
 echo "#helloworld" | cat > output.out
@@ -164,7 +176,7 @@ echo "Ci sono $(ls | wc -l) oggetti qui."
 echo "Ci sono `ls | wc -l` oggetti qui."
 
 # Bash utilizza uno statemente case che funziona in maniera simile allo switch in Java e C++:
-case "$VARIABILE" in 
+case "$Variabile" in 
     #Lista di pattern per le condizioni che vuoi soddisfare
     0) echo "C'è uno zero.";;
     1) echo "C'è un uno.";;
@@ -172,10 +184,10 @@ case "$VARIABILE" in
 esac
 
 # I cicli for iterano per ogni argomento fornito:
-# I contenuti di $VARIABILE sono stampati tre volte.
-for VARIABILE in {1..3}
+# I contenuti di $Variabile sono stampati tre volte.
+for Variabile in {1..3}
 do
-    echo "$VARIABILE"
+    echo "$Variabile"
 done
 
 # O scrivilo con il "ciclo for tradizionale":
@@ -186,16 +198,16 @@ done
 
 # Possono essere usati anche per agire su file..
 # Questo eseguirà il comando 'cat' su file1 e file2
-for VARIABILE in file1 file2
+for Variabile in file1 file2
 do
-    cat "$VARIABILE"
+    cat "$Variabile"
 done
 
 # ..o dall'output di un comando
 # Questo eseguirà cat sull'output di ls.
-for OUTPUT in $(ls)
+for Output in $(ls)
 do
-    cat "$OUTPUT"
+    cat "$Output"
 done
 
 # while loop:
@@ -223,7 +235,7 @@ bar ()
 }
 
 # Per chiamare la funzione
-foo "Il mio nome è" $NOME
+foo "Il mio nome è" $Nome
 
 # Ci sono un sacco di comandi utili che dovresti imparare:
 # stampa le ultime 10 righe di file.txt
@@ -245,7 +257,7 @@ grep "^foo.*bar$" file.txt
 grep -c "^foo.*bar$" file.txt
 # se vuoi letteralmente cercare la stringa,
 # e non la regex, usa fgrep (o grep -F)
-fgrep "^foo.*bar$" file.txt 
+fgrep "^foo.*bar$" file.txt
 
 
 # Leggi la documentazione dei builtin di bash con il builtin 'help' di bash:
