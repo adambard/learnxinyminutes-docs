@@ -45,10 +45,10 @@ Module Module1
             Case "3" 'Calculating Whole Numbers
                 Console.Clear()
                 CalculatingWholeNumbers()
-            Case "4" 'Calculting Decimal Numbers
+            Case "4" 'Calculating Decimal Numbers
                 Console.Clear()
                 CalculatingDecimalNumbers()
-            Case "5" 'Working Calcculator
+            Case "5" 'Working Calculator
                 Console.Clear()
                 WorkingCalculator()
             Case "6" 'Using Do While Loops
@@ -77,10 +77,10 @@ Module Module1
     'One - I'm using numbers to help with the above navigation when I come back
     'later to build it.
 
-    'We use private subs to seperate different sections of the program.
+    'We use private subs to separate different sections of the program.
     Private Sub HelloWorldOutput()
         'Title of Console Application
-        Console.Title = "Hello World Ouput | Learn X in Y Minutes"
+        Console.Title = "Hello World Output | Learn X in Y Minutes"
         'Use Console.Write("") or Console.WriteLine("") to print outputs.
         'Followed by Console.Read() alternatively Console.Readline()
         'Console.ReadLine() prints the output to the console.
@@ -102,7 +102,7 @@ Module Module1
         Console.WriteLine("Hello, What is your name? ") 'Ask the user their name.
         username = Console.ReadLine() 'Stores the users name.
         Console.WriteLine("Hello " + username) 'Output is Hello 'Their name'
-        Console.ReadLine() 'Outsputs the above.
+        Console.ReadLine() 'Outputs the above.
         'The above will ask you a question followed by printing your answer.
         'Other variables include Integer and we use Integer for whole numbers.
     End Sub
@@ -110,7 +110,7 @@ Module Module1
     'Three
     Private Sub CalculatingWholeNumbers()
         Console.Title = "Calculating Whole Numbers | Learn X in Y Minutes"
-        Console.Write("First number: ") 'Enter a whole number, 1, 2, 50, 104 ect
+        Console.Write("First number: ") 'Enter a whole number, 1, 2, 50, 104, etc
         Dim a As Integer = Console.ReadLine()
         Console.Write("Second number: ") 'Enter second whole number.
         Dim b As Integer = Console.ReadLine()
@@ -126,7 +126,7 @@ Module Module1
         'Of course we would like to be able to add up decimals.
         'Therefore we could change the above from Integer to Double.
 
-        'Enter a whole number, 1.2, 2.4, 50.1, 104.9 ect
+        'Enter a whole number, 1.2, 2.4, 50.1, 104.9 etc
         Console.Write("First number: ")
         Dim a As Double = Console.ReadLine
         Console.Write("Second number: ") 'Enter second whole number.
@@ -153,7 +153,7 @@ Module Module1
         Dim f As Integer = a / b
 
         'By adding the below lines we are able to calculate the subtract,
-        'multply as well as divide the a and b values
+        'multiply as well as divide the a and b values
         Console.Write(a.ToString() + " + " + b.ToString())
         'We want to pad the answers to the left by 3 spaces.
         Console.WriteLine(" = " + c.ToString.PadLeft(3))
@@ -199,7 +199,7 @@ Module Module1
             Console.Write("Would you like to continue? (yes / no)")
             'The program grabs the variable and prints and starts again.
             answer = Console.ReadLine
-        'The command for the variable to work would be in this case "yes"
+            'The command for the variable to work would be in this case "yes"
         Loop While answer = "yes"
 
     End Sub
@@ -211,7 +211,7 @@ Module Module1
 
         Console.Title = "Using For Loops | Learn X in Y Minutes"
         'Declare Variable and what number it should count down in Step -1,
-        'Step -2, Step -3 ect.
+        'Step -2, Step -3 etc.
         For i As Integer = 10 To 0 Step -1
             Console.WriteLine(i.ToString) 'Print the value of the counter
         Next i 'Calculate new value
@@ -238,36 +238,36 @@ Module Module1
 
     'Nine
     Private Sub IfElseStatement()
-    Console.Title = "If / Else Statement | Learn X in Y Minutes"
+        Console.Title = "If / Else Statement | Learn X in Y Minutes"
         'Sometimes it is important to consider more than two alternatives.
         'Sometimes there are a good few others.
         'When this is the case, more than one if statement would be required.
         'An if statement is great for vending machines. Where the user enters a code.
-        'A1, A2, A3, ect to select an item.
+        'A1, A2, A3, etc to select an item.
         'All choices can be combined into a single if statement.
 
         Dim selection As String = Console.ReadLine 'Value for selection
-            Console.WriteLine("A1. for 7Up")
-            Console.WriteLine("A2. for Fanta")
-            Console.WriteLine("A3. for Dr. Pepper")
-            Console.WriteLine("A4. for Diet Coke")
+        Console.WriteLine("A1. for 7Up")
+        Console.WriteLine("A2. for Fanta")
+        Console.WriteLine("A3. for Dr. Pepper")
+        Console.WriteLine("A4. for Diet Coke")
+        Console.ReadLine()
+        If selection = "A1" Then
+            Console.WriteLine("7up")
             Console.ReadLine()
-            If selection = "A1" Then
-                Console.WriteLine("7up")
-                Console.ReadLine()
-            ElseIf selection = "A2" Then
-                Console.WriteLine("fanta")
-                Console.ReadLine()
-            ElseIf selection = "A3" Then
-                Console.WriteLine("dr. pepper")
-                Console.ReadLine()
-            ElseIf selection = "A4" Then
-                Console.WriteLine("diet coke")
-                Console.ReadLine()
-            Else
-                Console.WriteLine("Please select a product")
-                Console.ReadLine()
-            End If
+        ElseIf selection = "A2" Then
+            Console.WriteLine("fanta")
+            Console.ReadLine()
+        ElseIf selection = "A3" Then
+            Console.WriteLine("dr. pepper")
+            Console.ReadLine()
+        ElseIf selection = "A4" Then
+            Console.WriteLine("diet coke")
+            Console.ReadLine()
+        Else
+            Console.WriteLine("Please select a product")
+            Console.ReadLine()
+        End If
 
     End Sub
 
