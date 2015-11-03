@@ -222,7 +222,7 @@ Module Module1
     'Eight
     Private Sub ConditionalStatement()
         Console.Title = "Conditional Statements | Learn X in Y Minutes"
-        Dim userName As String = Console.ReadLine
+        Dim userName As String
         Console.WriteLine("Hello, What is your name? ") 'Ask the user their name.
         userName = Console.ReadLine() 'Stores the users name.
         If userName = "Adam" Then
@@ -244,30 +244,28 @@ Module Module1
         'When this is the case, more than one if statement would be required.
         'An if statement is great for vending machines. Where the user enters a code.
         'A1, A2, A3, etc to select an item.
-        'All choices can be combined into a single if statement.
+        'All choices can be combined into a single if block.
 
-        Dim selection As String = Console.ReadLine 'Value for selection
+        Dim selection As String 'Declare a variable for selection
+        Console.WriteLine("Please select a product form our lovely vending machine.")
         Console.WriteLine("A1. for 7Up")
         Console.WriteLine("A2. for Fanta")
         Console.WriteLine("A3. for Dr. Pepper")
         Console.WriteLine("A4. for Diet Coke")
-        Console.ReadLine()
+
+        selection = Console.ReadLine() 'Store a selection from the user
         If selection = "A1" Then
             Console.WriteLine("7up")
-            Console.ReadLine()
         ElseIf selection = "A2" Then
             Console.WriteLine("fanta")
-            Console.ReadLine()
         ElseIf selection = "A3" Then
             Console.WriteLine("dr. pepper")
-            Console.ReadLine()
         ElseIf selection = "A4" Then
             Console.WriteLine("diet coke")
-            Console.ReadLine()
         Else
-            Console.WriteLine("Please select a product")
-            Console.ReadLine()
+            Console.WriteLine("Sorry, I don't have any " + selection)
         End If
+        Console.ReadLine()
 
     End Sub
 
