@@ -16,7 +16,7 @@ por Apple. Diseñado para coexistir con Objective-C y ser más resistente contra
 el código erroneo, Swift fue introducido en el 2014 en el WWDC, la conferencia
 de desarrolladores de Apple.
 
-Véase también la guía oficial de Apple, [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html), el cual tiene un completo tutorial de Swift.
+Véase también la guía oficial de Apple, [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/), el cual tiene un completo tutorial de Swift.
 
 
 ```swift
@@ -56,7 +56,7 @@ let largeIntValue = 77_000 // 77000
 let label = "some text " + String(myVariable) // Conversión (casting)
 let piText = "Pi = \(π), Pi 2 = \(π * 2)" // Interpolación de string 
 
-// Valos específicos de la construcción (build)
+// Valores específicos de la compilación (build)
 // utiliza la configuración -D 
 #if false
     print("No impreso")
@@ -185,8 +185,7 @@ do {
 } while 1 == 2
 
 // Switch
-// Muy potente, se puede pensar como declaraciones `if` 
-// Very powerful, think `if` statements with con azúcar sintáctico
+// Muy potente, se puede pensar como declaraciones `if` con _azúcar sintáctico_
 // Soportan String, instancias de objetos, y primitivos (Int, Double, etc)
 let vegetable = "red pepper"
 switch vegetable {
@@ -196,7 +195,7 @@ case "cucumber", "watercress":
     let vegetableComment = "That would make a good tea sandwich."
 case let localScopeValue where localScopeValue.hasSuffix("pepper"):
     let vegetableComment = "Is it a spicy \(localScopeValue)?"
-default: // required (in order to cover all possible input)
+default: // obligatorio (se debe cumplir con todos los posibles valores de entrada)
     let vegetableComment = "Everything tastes good in soup."
 }
 
@@ -273,7 +272,7 @@ print(someIntB) // 7
 
 
 //
-// MARK: Closures
+// MARK: Closures (Clausuras)
 //
 var numbers = [1, 2, 6]
 
@@ -288,7 +287,7 @@ numbers.map({
     return result
 })
 
-// Cuando se conoce el tipo, cono en lo anterior, se puede hacer esto
+// Cuando se conoce el tipo, como en lo anterior, se puede hacer esto
 numbers = numbers.map({ number in 3 * number })
 // o esto
 //numbers = numbers.map({ $0 * 3 })
