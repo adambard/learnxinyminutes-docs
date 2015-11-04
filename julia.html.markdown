@@ -399,6 +399,10 @@ add(5, 6) # => 11 after printing out "x is 5 and y is 6"
 f_add(x, y) = x + y # => "f (generic function with 1 method)"
 f_add(3, 4) # => 7
 
+# Function can also return multiple values as tuple
+f(x, y) = x + y, x - y
+f(3, 4) # => (7, -1)
+
 # You can define functions that take a variable number of
 # positional arguments
 function varargs(args...)
