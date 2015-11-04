@@ -23,7 +23,7 @@ Feedback is always welcome, so feel free to reach me over at
 
 
 ```coffeescript
-# Just like its CoffeeScript cousin, LiveScript uses hash symbols for
+# Just like its CoffeeScript cousin, LiveScript uses number symbols for
 # single-line comments.
 
 /*
@@ -135,11 +135,19 @@ funRE = //
 3 % 2   # => 1
 
 
-# Comparisons are mostly the same too, except that `==` and `===` are
-# inverted.
+# Comparisons are mostly the same too, except that `==` is the same as
+# JS's `===`, where JS's `==` in LiveScript is `~=`, and `===` enables
+# object and array comparisons, and also stricter comparisons:
 2 == 2          # => true
 2 == "2"        # => false
-2 === "2"       # => true
+2 ~= "2"        # => true
+2 === "2"       # => false
+
+[1,2,3] == [1,2,3]        # => false
+[1,2,3] === [1,2,3]       # => true
+
++0 == -0     # => true
++0 === -0    # => false
 
 # Other relational operators include <, <=, > and >=
 
@@ -158,7 +166,7 @@ not false       # => true
 
 ########################################################################
 ## 3. Functions
-########################################################################        
+########################################################################
 
 # Since LiveScript is functional, you'd expect functions to get a nice
 # treatment. In LiveScript it's even more apparent that functions are
@@ -211,8 +219,8 @@ identity 1      # => 1
 
 # Operators are not functions in LiveScript, but you can easily turn
 # them into one! Enter the operator sectioning:
-divide-by-2 = (/ 2)
-[2, 4, 8, 16].map(divide-by-2) .reduce (+)
+divide-by-two = (/ 2)
+[2, 4, 8, 16].map(divide-by-two) .reduce (+)
 
 
 # Not only of function application lives LiveScript, as in any good
@@ -221,7 +229,7 @@ double-minus-one = (- 1) . (* 2)
 
 # Other than the usual `f . g` mathematical formulae, you get the `>>`
 # and `<<` operators, that describe how the flow of values through the
-# functions. 
+# functions.
 double-minus-one = (* 2) >> (- 1)
 double-minus-one = (- 1) << (* 2)
 
@@ -240,8 +248,8 @@ reduce = (f, xs, initial) --> xs.reduce f, initial
 # The underscore is also used in regular partial application, which you
 # can use for any function:
 div = (left, right) -> left / right
-div-by-2 = div _, 2
-div-by-2 4      # => 2
+div-by-two = div _, 2
+div-by-two 4      # => 2
 
 
 # Last, but not least, LiveScript has back-calls, which might help
@@ -336,7 +344,7 @@ kitten.hug!     # => "*Mei (a cat) is hugged*"
 ## Further reading
 
 There's just so much more to LiveScript, but this should be enough to
-get you started writing little functional things in it. The 
+get you started writing little functional things in it. The
 [official website](http://livescript.net/) has a lot of information on the
 language, and a nice online compiler for you to try stuff out!
 

@@ -3,12 +3,15 @@ language: elisp
 contributors:
     - ["Bastien Guerry", "http://bzg.fr"]
 translators:
-	- ["Chenbo Li", "http://binarythink.net"]
-filename: learn-emacs-lisp.el
+    - ["Chenbo Li", "http://binarythink.net"]
+filename: learn-emacs-lisp-zh.el
+lang: zh-cn
 ---
 
 ```scheme
-;; 15分钟学会Emacs Lisp (v0.2a) （作者：bzg，https://github.com/bzg  译者：lichenbo，http://douban.com/people/lichenbo）
+;; 15分钟学会Emacs Lisp (v0.2a)
+;;（作者：bzg，https://github.com/bzg 
+;;  译者：lichenbo，http://douban.com/people/lichenbo）
 ;;
 ;; 请先阅读Peter Norvig的一篇好文:
 ;; http://norvig.com/21-days.html
@@ -129,7 +132,7 @@ filename: learn-emacs-lisp.el
 ;; `C-xC-e' 这时屏幕上会显示两个窗口，而光标此时位于*test* buffer内
  
 ;; 用鼠标单击上面的buffer就会使光标移回。
-;; 或者你可以使用 `C-xo' 是的光标跳到另一个窗口中
+;; 或者你可以使用 `C-xo' 使得光标跳到另一个窗口中
  
 ;; 你可以用 `progn'命令将s式结合起来:
 (progn
@@ -216,7 +219,7 @@ filename: learn-emacs-lisp.el
  
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; 我们将一些名字存到列表中；
+;; 我们将一些名字存到列表中：
 (setq list-of-names '("Sarah" "Chloe" "Mathilde"))
  
 ;; 用 `car'来取得第一个名字：
@@ -301,7 +304,8 @@ filename: learn-emacs-lisp.el
                            (list 'face 'bold)))
     (other-window 1))
  
-;; 这个函数使用了 `re-search-forward': 和查找一个字符串不同，你用这个命令可以查找一个模式，即正则表达式
+;; 这个函数使用了 `re-search-forward':
+;; 和查找一个字符串不同，你用这个命令可以查找一个模式，即正则表达式
  
 ;; 正则表达式 "Bonjour \\(.+\\)!" 的意思是:
 ;; 字符串 "Bonjour ", 之后跟着

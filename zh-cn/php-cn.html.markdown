@@ -1,11 +1,12 @@
 ---
-language: php
+language: PHP
 contributors:
     - ["Malcolm Fell", "http://emarref.net/"]
     - ["Trismegiste", "https://github.com/Trismegiste"]
 translators:
-	- ["Chenbo Li", "http://binarythink.net"]
-filename: learnphp.php
+    - ["Chenbo Li", "http://binarythink.net"]
+filename: learnphp-zh.php
+lang: zh-cn
 ---
 
 这份教程所使用的版本是 PHP 5+.
@@ -179,7 +180,7 @@ assert($c >= $d);
 // 下面的比较只有在类型相同、值相同的情况下才为真
 assert($c === $d);
 assert($a !== $d);
-assert(1 == '1');
+assert(1 === '1');
 assert(1 !== '1');
 
 // 变量可以根据其使用来进行类型转换
@@ -242,7 +243,7 @@ if ($x === '0') {
 
 
 
-// 下面的语法常用语模板中:
+// 下面的语法常用于模板中:
 ?>
 
 <?php if ($x): ?>
@@ -332,7 +333,7 @@ function my_function () {
 echo my_function(); // => "Hello"
 
 // 函数名需要以字母或者下划线开头, 
-// 后面可以跟着任意的字幕、下划线、数字.
+// 后面可以跟着任意的字母、下划线、数字.
 
 function add ($x, $y = 1) { // $y 是可选参数，默认值为 1
   $result = $x + $y;

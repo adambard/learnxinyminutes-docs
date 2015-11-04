@@ -1,12 +1,13 @@
 ---
-
+name: java
+category: language
 language: java
+lang: zh-cn
+filename: LearnJava-zh.java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:
-	- ["Chenbo Li", "http://binarythink.net"]
-filename: LearnJava.java
-
+    - ["Chenbo Li", "http://binarythink.net"]
 ---
 
 Java是一个通用的程序语言, 包含并发, 基于类的面向对象等特性
@@ -123,7 +124,7 @@ public class LearnJava {
         // HashMaps
 
         ///////////////////////////////////////
-        // 操作符 
+        // 操作符
         ///////////////////////////////////////
         System.out.println("\n->Operators");
 
@@ -148,7 +149,7 @@ public class LearnJava {
 
         // 位运算操作符
         /*
-        ~       补
+        ~       取反，求反码
         <<      带符号左移
         >>      带符号右移
         >>>     无符号右移
@@ -160,10 +161,13 @@ public class LearnJava {
         // 自增
         int i = 0;
         System.out.println("\n->Inc/Dec-rementation");
-        System.out.println(i++); //i = 1 后自增
-        System.out.println(++i); //i = 2 前自增
-        System.out.println(i--); //i = 1 后自减
-        System.out.println(--i); //i = 0 前自减
+        // ++ 和 -- 操作符使变量加或减1。放在变量前面或者后面的区别是整个表达
+        // 式的返回值。操作符在前面时，先加减，后取值。操作符在后面时，先取值
+        // 后加减。
+        System.out.println(i++); // 后自增 i = 1, 输出0
+        System.out.println(++i); // 前自增 i = 2, 输出2
+        System.out.println(i--); // 后自减 i = 1, 输出2
+        System.out.println(--i); // 前自减 i = 0, 输出0
 
         ///////////////////////////////////////
         // 控制结构
@@ -191,7 +195,7 @@ public class LearnJava {
         }
         System.out.println("fooWhile Value: " + fooWhile);
 
-        // Do While循环 
+        // Do While循环
         int fooDoWhile = 0;
         do
         {
@@ -321,7 +325,7 @@ class Bicycle {
     // 方法声明的语法:
     // <作用域> <返回值类型> <方法名>(<参数列表>)
     public int getCadence() {
-        retur450635425n cadence;
+        return cadence;
     }
 
     // void返450635425回值函数没有返回值
@@ -401,4 +405,4 @@ class PennyFarthing extends Bicycle {
 
 * [泛型](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
 
-* [Java代码规范](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+* [Java代码规范](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
