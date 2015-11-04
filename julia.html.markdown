@@ -102,6 +102,11 @@ false
 # Printing is easy
 println("I'm Julia. Nice to meet you!")
 
+# String can be compared lexicographically compared
+"good" > "bye" # => true
+"good" == "good" # => true
+"1 + 2 = 3" == "1 + 2 = $(1+2)" # => true
+
 ####################################################
 ## 2. Variables and Collections
 ####################################################
