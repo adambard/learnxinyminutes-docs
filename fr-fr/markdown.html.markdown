@@ -3,7 +3,7 @@ language: markdown
 contributors:
 - ["Andrei Curelaru", "http://www.infinidad.fr"]
 - ["Thibault", "https://github.com/iTech-"]
-filename: markdown.md
+filename: markdown-fr.md
 lang: fr-fr
 ---
 

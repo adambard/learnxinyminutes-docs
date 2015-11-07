@@ -11,7 +11,7 @@ Give me as much feedback as you want! / Feel free to fork and pull request!
 
 
 ```markdown
-<!-- Markdown is a superset of HTML, so any HTML file is valid Markdown, that
+<!-- Markdown is a superset of HTML, so any HTML file is valid Markdown. This
 means we can use HTML elements in Markdown, such as the comment element, and
 they won't be affected by a markdown parser. However, if you create an HTML
 element in your markdown file, you cannot use markdown syntax within that
@@ -21,9 +21,9 @@ element's contents. -->
 guide will attempt to clarify when features are universal or when they are
 specific to a certain parser. -->
 
-<!-- Headers -->
+<!-- Headings -->
 <!-- You can create HTML elements <h1> through <h6> easily by prepending the
-text you want to be in that element by a number of hashes (#) -->
+text you want to be in that element by a number of hashes (#). -->
 # This is an <h1>
 ## This is an <h2>
 ### This is an <h3>
@@ -31,7 +31,7 @@ text you want to be in that element by a number of hashes (#) -->
 ##### This is an <h5>
 ###### This is an <h6>
 
-<!-- Markdown also provides us with two alternative ways of indicating h1 and h2 -->
+<!-- Markdown also provides us with two alternative ways of indicating h1 and h2. -->
 This is an h1
 =============
 
@@ -39,7 +39,7 @@ This is an h2
 -------------
 
 <!-- Simple text styles -->
-<!-- Text can be easily styled as italic or bold using markdown -->
+<!-- Text can be easily styled as italic or bold using markdown. -->
 
 *This text is in italics.*
 _And so is this text._
@@ -85,7 +85,7 @@ There's a <br /> above me!
 > How neat is that?
 
 <!-- Lists -->
-<!-- Unordered lists can be made using asterisks, pluses, or hyphens -->
+<!-- Unordered lists can be made using asterisks, pluses, or hyphens. -->
 
 * Item
 * Item
@@ -103,21 +103,21 @@ or
 - Item
 - One last item
 
-<!-- Ordered lists are done with a number followed by a period -->
+<!-- Ordered lists are done with a number followed by a period. -->
 
 1. Item one
 2. Item two
 3. Item three
 
 <!-- You don't even have to label the items correctly and markdown will still
-render the numbers in order, but this may not be a good idea -->
+render the numbers in order, but this may not be a good idea. -->
 
 1. Item one
 1. Item two
 1. Item three
 <!-- (This renders the same as the above example) -->
 
-<!-- You can also use sublists -->
+<!-- You can also use sublists. -->
 
 1. Item one
 2. Item two
@@ -136,13 +136,13 @@ This checkbox below will be a checked HTML checkbox.
 
 <!-- Code blocks -->
 <!-- You can indicate a code block (which uses the <code> element) by indenting
-a line with four spaces or a tab -->
+a line with four spaces or a tab. -->
 
     This is code
     So is this
 
 <!-- You can also re-tab (or add an additional four spaces) for indentation
-inside your code -->
+inside your code. -->
 
     my_array.each do |item|
         puts item
@@ -152,7 +152,7 @@ inside your code -->
 
 John didn't even know what the `go_to()` function did!
 
-<!-- In Github Flavored Markdown, you can use a special syntax for code -->
+<!-- In Github Flavored Markdown, you can use a special syntax for code. -->
 
 \`\`\`ruby <!-- except remove those backslashes when you do this, just ```ruby ! -->
 def foobar
@@ -174,11 +174,11 @@ with or without spaces. -->
 
 <!-- Links -->
 <!-- One of the best things about markdown is how easy it is to make links. Put
-the text to display in hard brackets [] followed by the url in parentheses () -->
+the text to display in hard brackets [] followed by the url in parentheses (). -->
 
 [Click me!](http://test.com/)
 
-<!-- You can also add a link title using quotes inside the parentheses -->
+<!-- You can also add a link title using quotes inside the parentheses. -->
 
 [Click me!](http://test.com/ "Link to Test.com")
 
@@ -186,7 +186,7 @@ the text to display in hard brackets [] followed by the url in parentheses () --
 
 [Go to music](/music/).
 
-<!-- Markdown also supports reference style links -->
+<!-- Markdown also supports reference style links. -->
 
 [Click this link][link1] for more info about it!
 [Also check out this link][foobar] if you want to.
@@ -198,7 +198,7 @@ the text to display in hard brackets [] followed by the url in parentheses () --
 entirely. The references can be anywhere in your document and the reference IDs
 can be anything so long as they are unique. -->
 
-<!-- There is also "implicit naming" which lets you use the link text as the id -->
+<!-- There is also "implicit naming" which lets you use the link text as the id. -->
 
 [This][] is a link.
 
@@ -211,7 +211,7 @@ can be anything so long as they are unique. -->
 
 ![This is the alt-attribute for my image](http://imgur.com/myimage.jpg "An optional title")
 
-<!-- And reference style works as expected -->
+<!-- And reference style works as expected. -->
 
 ![This is the alt-attribute.][myimage]
 
@@ -233,7 +233,7 @@ I want to type *this text surrounded by asterisks* but I don't want it to be
 in italics, so I do this: \*this text surrounded by asterisks\*.
 
 <!-- Keyboard keys -->
-<!-- In Github Flavored Markdown, you can use a <kbd> tag to represent keyboard keys -->
+<!-- In Github Flavored Markdown, you can use a <kbd> tag to represent keyboard keys. -->
 
 Your computer crashed? Try sending a
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>

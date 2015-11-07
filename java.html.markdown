@@ -128,7 +128,7 @@ public class LearnJava {
         //
         // BigInteger can be initialized using an array of bytes or a string.
         
-        BigInteger fooBigInteger = new BigDecimal(fooByteArray);
+        BigInteger fooBigInteger = new BigInteger(fooByteArray);
 
 
         // BigDecimal - Immutable, arbitrary-precision signed decimal number
@@ -144,7 +144,12 @@ public class LearnJava {
         // or by initializing the unscaled value (BigInteger) and scale (int).
 
         BigDecimal fooBigDecimal = new BigDecimal(fooBigInteger, fooInt);
-
+        
+        // Be wary of the constructor that takes a float or double as
+        // the inaccuracy of the float/double will be copied in BigDecimal.
+        // Prefer the String constructor when you need an exact value.
+        
+        BigDecimal tenCents = new BigDecimal("0.1");
 
 
         // Strings
@@ -186,9 +191,9 @@ public class LearnJava {
         //               operations perform as could be expected for a
         //               doubly-linked list.
         // Maps - A set of objects that map keys to values. Map is
-	//        an interface and therefore cannot be instantiated.
-	//        The type of keys and values contained in a Map must
-	//        be specified upon instantiation of the implementing
+        //        an interface and therefore cannot be instantiated.
+        //        The type of keys and values contained in a Map must
+        //        be specified upon instantiation of the implementing
         //        class. Each key may map to only one corresponding value,
         //        and each key may appear only once (no duplicates).
         // HashMaps - This class uses a hashtable to implement the Map
@@ -207,8 +212,8 @@ public class LearnJava {
         System.out.println("1+2 = " + (i1 + i2)); // => 3
         System.out.println("2-1 = " + (i2 - i1)); // => 1
         System.out.println("2*1 = " + (i2 * i1)); // => 2
-        System.out.println("1/2 = " + (i1 / i2)); // => 0 (0.5 truncated down)
-        System.out.println("1/2 = " + (i1 / (i2*1.0))); // => 0.5
+        System.out.println("1/2 = " + (i1 / i2)); // => 0 (int/int returns an int)
+        System.out.println("1/2 = " + (i1 / (double)i2)); // => 0.5
 
         // Modulo
         System.out.println("11%3 = "+(11 % 3)); // => 2
@@ -416,7 +421,7 @@ public class LearnJava {
         // easier way, by using something that is called Double Brace
         // Initialization.
 
-        private static final Set<String> COUNTRIES = HashSet<String>() {{
+        private static final Set<String> COUNTRIES = new HashSet<String>() {{
             add("DENMARK");
             add("SWEDEN");
             add("FINLAND");
@@ -449,6 +454,17 @@ class Bicycle {
     private int speed;  // Private: Only accessible from within the class
     protected int gear; // Protected: Accessible from the class and subclasses
     String name; // default: Only accessible from within this package
+
+    static String className; // Static class variable
+
+    // Static block 
+    // Java has no implementation of static constructors, but
+    // has a static block that can be used to initialize class variables 
+    // (static variables). 
+    // This block will be called when the class is loaded.
+    static {
+        className = "Bicycle";
+    }
 
     // Constructors are a way of creating classes
     // This is a constructor
@@ -686,6 +702,66 @@ public abstract class Mammal()
         return true;
     }
 }
+
+
+// Enum Type
+//
+// An enum type is a special data type that enables for a variable to be a set
+// of predefined constants. The variable must be equal to one of the values that
+// have been predefined for it. Because they are constants, the names of an enum
+// type's fields are in uppercase letters. In the Java programming language, you
+// define an enum type by using the enum keyword. For example, you would specify
+// a days-of-the-week enum type as:
+
+public enum Day {
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
+    THURSDAY, FRIDAY, SATURDAY 
+}
+
+// We can use our enum Day like that:
+
+public class EnumTest {
+    
+    // Variable Enum
+    Day day;
+    
+    public EnumTest(Day day) {
+        this.day = day;
+    }
+    
+    public void tellItLikeItIs() {
+        switch (day) {
+            case MONDAY:
+                System.out.println("Mondays are bad.");
+                break;
+                    
+            case FRIDAY:
+                System.out.println("Fridays are better.");
+                break;
+                         
+            case SATURDAY: 
+            case SUNDAY:
+                System.out.println("Weekends are best.");
+                break;
+                        
+            default:
+                System.out.println("Midweek days are so-so.");
+                break;
+        }
+    }
+    
+    public static void main(String[] args) {
+        EnumTest firstDay = new EnumTest(Day.MONDAY);
+        firstDay.tellItLikeItIs(); // => Mondays are bad.
+        EnumTest thirdDay = new EnumTest(Day.WEDNESDAY);
+        thirdDay.tellItLikeItIs(); // => Midweek days are so-so.
+    }
+}
+
+// Enum types are much more powerful than we show above. 
+// The enum body can include methods and other fields.
+// You can se more at https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
+
 ```
 
 ## Further Reading
@@ -709,7 +785,7 @@ The links provided here below are just to get an understanding of the topic, fee
 
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
 
-* [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+* [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
 
 **Online Practice and Tutorials**
 

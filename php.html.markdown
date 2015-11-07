@@ -104,7 +104,8 @@ END;
 echo 'This string ' . 'is concatenated';
 
 // Strings can be passed in as parameters to echo
-echo 'Multiple', 'Parameters', 'Valid';
+echo 'Multiple', 'Parameters', 'Valid';  // Returns 'MultipleParametersValid'
+
 
 /********************************
  * Constants
@@ -117,8 +118,10 @@ echo 'Multiple', 'Parameters', 'Valid';
 // followed by any number of letters, numbers, or underscores.
 define("FOO",     "something");
 
-// access to a constant is possible by direct using the choosen name
-echo 'This outputs '.FOO;
+// access to a constant is possible by calling the choosen name without a $
+echo FOO; // Returns 'something'
+echo 'This outputs '.FOO;  // Returns 'This ouputs something'
+
 
 
 /********************************
@@ -159,9 +162,9 @@ echo('Hello World!');
 
 print('Hello World!'); // The same as echo
 
-// echo is actually a language construct, so you can drop the parentheses.
+// echo and print are language constructs too, so you can drop the parentheses
 echo 'Hello World!';
-print 'Hello World!'; // So is print
+print 'Hello World!';
 
 $paragraph = 'paragraph';
 
@@ -219,7 +222,11 @@ assert($a !== $d);
 assert(1 === '1');
 assert(1 !== '1');
 
-// spaceship operator since PHP 7
+// 'Spaceship' operator (since PHP 7)
+// Returns 0 if values on either side are equal
+// Returns 1 if value on the left is greater
+// Returns -1 if the value on the right is greater
+
 $a = 100;
 $b = 1000;
 
@@ -444,6 +451,16 @@ function parameters() {
 }
 
 parameters('Hello', 'World'); // Hello | 0 - Hello | 1 - World |
+
+// Since PHP 5.6 you can get a variable number of arguments
+function variable($word, ...$list) {
+	echo $word . " || ";
+	foreach ($list as $item) {
+		echo $item . ' | ';
+	}
+}
+
+variable("Separate", "Hello", "World") // Separate || Hello | World | 
 
 /********************************
  * Includes
@@ -716,7 +733,7 @@ $cls = new SomeOtherNamespace\MyClass();
 /**********************
 * Late Static Binding
 *
-* /
+*/
 
 class ParentClass {
     public static function who() {
