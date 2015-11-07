@@ -2,7 +2,7 @@
 language: markdown
 contributors:
 - ["Andrei Curelaru", "http://www.infinidad.fr"]
-- ["Thibaut", "https://github.com/iTech-"]
+- ["Thibault", "https://github.com/iTech-"]
 filename: markdown.md
 lang: fr-fr
 ---
@@ -278,7 +278,7 @@ Votre ordinateur a crashé ? Essayez :
 
 | Col1              | Col2     | Col3              |
 | :-----------      | :------: | ------------:     |
-| Alignement Gauche | Centé    | Alignement Droite |
+| Alignement Gauche | Centré   | Alignement Droite |
 | bla               | bla      | bla               |
 
 <!-- ou bien, pour un résultat équivalent : -->
