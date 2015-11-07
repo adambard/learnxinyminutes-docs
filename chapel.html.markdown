@@ -629,7 +629,7 @@ for (i, j) in zip( toThisArray.domain, -100..#5 ){
 }
 writeln( toThisArray );
 
-// This is all very important in undestanding why the statement
+// This is all very important in understanding why the statement
 // var iterArray : [1..10] int = [ i in 1..10 ] if ( i % 2 == 1 ) then j;
 // exhibits a runtime error.
 // Even though the domain of the array and the loop-expression are
@@ -914,7 +914,7 @@ proc main(){
   [ val in myBigArray ] val = 1 / val; // Parallel operation
 
   // Atomic variables, common to many languages, are ones whose operations
-  // occur uninterupted. Multiple threads can both modify atomic variables
+  // occur uninterrupted. Multiple threads can both modify atomic variables
   // and can know that their values are safe.
   // Chapel atomic variables can be of type bool, int, uint, and real.
   var uranium: atomic int;

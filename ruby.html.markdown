@@ -12,7 +12,9 @@ contributors:
   - ["Dzianis Dashkevich", "https://github.com/dskecse"]
   - ["Levi Bostian", "https://github.com/levibostian"]
   - ["Rahil Momin", "https://github.com/iamrahil"]
-  - ["Gabriel Halley", https://github.com/ghalley"]
+  - ["Gabriel Halley", "https://github.com/ghalley"]
+  - ["Persa Zula", "http://persazula.com"]
+  - ["Jake Faris", "https://github.com/farisj"]
 ---
 
 ```ruby
@@ -41,13 +43,18 @@ You shouldn't either
 2**5 #=> 32
 5 % 3 #=> 2
 
+# Bitwise operators
+3 & 5 #=> 1
+3 | 5 #=> 7
+3 ^ 5 #=> 6
+
 # Arithmetic is just syntactic sugar
 # for calling a method on an object
 1.+(3) #=> 4
 10.* 5 #=> 50
 
 # Special values are objects
-nil # Nothing to see here
+nil # equivalent to null in other languages
 true # truth
 false # falsehood
 
@@ -74,6 +81,11 @@ false.class #=> FalseClass
 1 > 10 #=> false
 2 <= 2 #=> true
 2 >= 2 #=> true
+
+# Combined comparison operator
+1 <=> 10 #=> -1
+10 <=> 1 #=> 1
+1 <=> 1 #=> 0
 
 # Logical operators
 true && false #=> false
@@ -107,6 +119,12 @@ placeholder = 'use string interpolation'
 'hello ' + 3 #=> TypeError: can't convert Fixnum into String
 'hello ' + 3.to_s #=> "hello 3"
 
+# Combine strings and operators
+'hello ' * 3 #=> "hello hello hello "
+
+# Append to string
+'hello' << ' world' #=> "hello world"
+
 # print to the output with a newline at the end
 puts "I'm printing!"
 #=> I'm printing!
@@ -114,7 +132,7 @@ puts "I'm printing!"
 
 # print to the output without a newline
 print "I'm printing!"
-#=> I'm printing! => nill
+#=> I'm printing! => nil
 
 # Variables
 x = 25 #=> 25
@@ -284,7 +302,7 @@ end
 #=> iteration 4
 #=> iteration 5
 
-# There are a bunch of other helpful looping functions in Ruby, 
+# There are a bunch of other helpful looping functions in Ruby,
 # for example "map", "reduce", "inject", the list goes on. Map,
 # for instance, takes the array it's looping over, does something
 # to it as defined in your block, and returns an entirely new array.

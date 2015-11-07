@@ -2,13 +2,14 @@
 language: whip
 contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
+  - ["Saurabh Sandav", "http://github.com/SaurabhSandav"]
 author: Tenor Biel
 author_url: http://github.com/L8D
 filename: whip.lisp
 ---
 
 Whip is a LISP-dialect made for scripting and simplified concepts.
-It has also borrowed a lot of functions and syntax from Haskell(a non-related language).
+It has also borrowed a lot of functions and syntax from Haskell (a non-related language).
 
 These docs were written by the creator of the language himself. So is this line.
 
@@ -93,13 +94,13 @@ null ; used to indicate a deliberate non-value
 undefined ; user to indicate a value that hasn't been set
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; 2. Vairbles, Lists, and Dicts
+; 2. Variables, Lists, and Dicts
 
 ; Variables are declared with the `def` or `let` functions.
 ; Variables that haven't been set will be `undefined`.
 (def some_var 5)
 ; `def` will keep the variable in the global context.
-; `let` will only have the variable inside its context, and has a wierder syntax.
+; `let` will only have the variable inside its context, and has a weirder syntax.
 (let ((a_var 5)) (+ a_var 5)) ; => 10
 (+ a_var 5) ; = undefined + 5 => undefined
 
@@ -163,7 +164,7 @@ undefined ; user to indicate a value that hasn't been set
 
 (my_function 10 10) ; = (+ (+ 10 10) 10) => 30
 
-; Obiously, all lambdas by definition are anonymous and
+; Obviously, all lambdas by definition are anonymous and
 ; technically always used anonymously. Redundancy.
 ((lambda (x) x) 10) ; => 10
 
@@ -171,12 +172,12 @@ undefined ; user to indicate a value that hasn't been set
 ; Comprehensions
 
 ; `range` or `..` generates a list of numbers for
-; each number between it's two args.
+; each number between its two args.
 (range 1 5) ; => (1 2 3 4 5)
 (.. 0 2)    ; => (0 1 2)
 
-; `map` applies it's first arg(which should be a lambda/function)
-; to each item in the following arg(which should be a list)
+; `map` applies its first arg (which should be a lambda/function)
+; to each item in the following arg (which should be a list)
 (map (-> (x) (+ x 1)) (1 2 3)) ; => (2 3 4)
 
 ; Reduce
@@ -191,7 +192,7 @@ undefined ; user to indicate a value that hasn't been set
 (slice (.. 1 5) 2) ; => (3 4 5)
 (\ (.. 0 100) -5) ; => (96 97 98 99 100)
 
-; `append` or `<<` is self expanatory
+; `append` or `<<` is self explanatory
 (append 4 (1 2 3)) ; => (1 2 3 4)
 (<< "bar" ("foo")) ; => ("foo" "bar")
 

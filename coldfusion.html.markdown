@@ -1,15 +1,19 @@
 ---
-language: ColdFusion
+language: coldfusion
+filename: learncoldfusion.cfm
 contributors:
     - ["Wayne Boka", "http://wboka.github.io"]
-filename: LearnColdFusion.cfm
+    - ["Kevin Morris", "https://twitter.com/kevinmorris"]
 ---
 
 ColdFusion is a scripting language for web development.
 [Read more here.](http://www.adobe.com/products/coldfusion-family.html)
 
-```ColdFusion
+### CFML
+_**C**old**F**usion **M**arkup **L**anguage_  
+ColdFusion started as a tag-based language. Almost all functionality is available using tags.
 
+```html
 <em>HTML tags have been provided for output readability</em>
 
 <!--- Comments start with "<!---" and end with "--->" --->
@@ -314,8 +318,13 @@ ColdFusion is a scripting language for web development.
 <cfoutput><p>#getWorld()#</p></cfoutput>
 ```
 
+### CFScript
+_**C**old**F**usion **S**cript_  
+In recent years, the ColdFusion language has added script syntax to mirror tag functionality. When using an up-to-date CF server, almost all functionality is available using scrypt syntax.
+
 ## Further Reading
 
 The links provided here below are just to get an understanding of the topic, feel free to Google and find specific examples.
 
 1. [Coldfusion Reference From Adobe](https://helpx.adobe.com/coldfusion/cfml-reference/topics.html)
+2. [Open Source Documentation](http://cfdocs.org/)

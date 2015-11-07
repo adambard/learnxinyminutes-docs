@@ -9,13 +9,13 @@ filename: learnvisualbasic.vb
 Module Module1
 
     Sub Main()
-        ' A Quick Overview of Visual Basic Console Applications before we dive
-        ' in to the deep end.
-        ' Apostrophe starts comments.
-        ' To Navigate this tutorial within the Visual Basic Complier, I've put
-        ' together a navigation system.
-        ' This navigation system is explained however as we go deeper into this
-        ' tutorial, you'll understand what it all means.
+        'A Quick Overview of Visual Basic Console Applications before we dive
+        'in to the deep end.
+        'Apostrophe starts comments.
+        'To Navigate this tutorial within the Visual Basic Complier, I've put
+        'together a navigation system.
+        'This navigation system is explained however as we go deeper into this
+        'tutorial, you'll understand what it all means.
         Console.Title = ("Learn X in Y Minutes")
         Console.WriteLine("NAVIGATION") 'Display
         Console.WriteLine("")
@@ -32,6 +32,9 @@ Module Module1
         Console.WriteLine("50. About")
         Console.WriteLine("Please Choose A Number From The Above List")
         Dim selection As String = Console.ReadLine
+        'The "Case" in the Select statement is optional.
+        'For example, "Select selection" instead of "Select Case selection"
+        'will also work.
         Select Case selection
             Case "1" 'HelloWorld Output
                 Console.Clear() 'Clears the application and opens the private sub
@@ -88,12 +91,12 @@ Module Module1
     'Two
     Private Sub HelloWorldInput()
         Console.Title = "Hello World YourName | Learn X in Y Minutes"
-        ' Variables
-        ' Data entered by a user needs to be stored.
-        ' Variables also start with a Dim and end with an As VariableType.
+        'Variables
+        'Data entered by a user needs to be stored.
+        'Variables also start with a Dim and end with an As VariableType.
 
-        ' In this tutorial, we want to know what your name, and make the program
-        ' respond to what is said.
+        'In this tutorial, we want to know what your name, and make the program
+        'respond to what is said.
         Dim username As String
         'We use string as string is a text based variable.
         Console.WriteLine("Hello, What is your name? ") 'Ask the user their name.

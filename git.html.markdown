@@ -6,6 +6,7 @@ contributors:
     - ["Leo Rudberg" , "http://github.com/LOZORD"]
     - ["Betsy Lorton" , "http://github.com/schbetsy"]
     - ["Bruno Volcov", "http://github.com/volcov"]
+    - ["Andrew Taylor", "http://github.com/andrewjt71"]
 filename: LearnGit.txt
 ---
 
@@ -333,6 +334,9 @@ $ git log --oneline
 
 # Show merge commits only
 $ git log --merges
+
+# Show all commits represented by an ASCII graph
+$ git log --graph
 ```
 
 ### merge
@@ -371,8 +375,11 @@ Pulls from a repository and merges it with another branch.
 # Update your local repo, by merging in new changes
 # from the remote "origin" and "master" branch.
 # git pull <remote> <branch>
-# git pull => implicitly defaults to => git pull origin master
 $ git pull origin master
+
+# By default, git pull will update your current branch
+# by merging in new changes from its remote-tracking branch 
+$ git pull
 
 # Merge in changes from remote branch and rebase
 # branch commits onto your local repo, like: "git pull <remote> <branch>, git rebase <branch>"
@@ -387,8 +394,11 @@ Push and merge changes from a branch to a remote & branch.
 # Push and merge changes from a local repo to a
 # remote named "origin" and "master" branch.
 # git push <remote> <branch>
-# git push => implicitly defaults to => git push origin master
 $ git push origin master
+
+# By default, git push will push and merge changes from
+# the current branch to its remote-tracking branch 
+$ git push
 
 # To link up current local branch with a remote branch, add -u flag:
 $ git push -u origin master
@@ -493,6 +503,16 @@ $ git reset 31f2bb1
 # after the specified commit).
 $ git reset --hard 31f2bb1
 ```
+### revert
+
+Revert can be used to undo a commit. It should not be confused with reset which restores
+the state of a project to a previous point. Revert will add a new commit which is the
+inverse of the specified commit, thus reverting it.
+
+```bash
+# Revert a specified commit
+$ git revert <commit>
+```
 
 ### rm
 
@@ -527,3 +547,6 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
 
 * [Pro Git](http://www.git-scm.com/book/en/v2)
+
+* [An introduction to Git and GitHub for Beginners (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+
