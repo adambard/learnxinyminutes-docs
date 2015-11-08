@@ -343,6 +343,7 @@ rescue
   RuntimeError -> "rescued a runtime error"
   _error -> "this will rescue any error"
 end
+#=> "rescued a runtime error"
 
 # All exceptions have a message
 try do
@@ -351,6 +352,7 @@ rescue
   x in [RuntimeError] ->
     x.message
 end
+#=> "some error"
 
 ## ---------------------------
 ## -- Concurrency
