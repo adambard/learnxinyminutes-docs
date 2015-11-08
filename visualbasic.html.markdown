@@ -126,7 +126,7 @@ Module Module1
         'Of course we would like to be able to add up decimals.
         'Therefore we could change the above from Integer to Double.
 
-        'Enter a floating-point number, 1.2, 2.4, 50.1, 104.9 etc
+        'Enter a floating-point number, 1.2, 2.4, 50.1, 104.9, etc
         Console.Write("First number: ")
         Dim a As Double = Console.ReadLine
         Console.Write("Second number: ") 'Enter second floating-point number.
@@ -211,7 +211,7 @@ Module Module1
 
         Console.Title = "Using For Loops | Learn X in Y Minutes"
         'Declare Variable and what number it should count down in Step -1,
-        'Step -2, Step -3 etc.
+        'Step -2, Step -3, etc.
         For i As Integer = 10 To 0 Step -1
             Console.WriteLine(i.ToString) 'Print the value of the counter
         Next i 'Calculate new value
