@@ -668,9 +668,9 @@ def double_numbers(iterable):
         yield i + i
 
 # A generator creates values on the fly.
-# Instead of generating and returning all values at once it creates one in each
-# iteration.  This means values bigger than 15 wont be processed in
-# double_numbers.
+# Instead of generating and returning all values at once, it creates one in each
+# iteration. This means values bigger than 15 wont be processed by
+# double_numbers in the for-loop below.
 # Note xrange is a generator that does the same thing range does.
 # Creating a list 1-900000000 would take lot of time and space to be made.
 # xrange creates an xrange generator object instead of creating the entire list
