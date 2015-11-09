@@ -155,8 +155,8 @@ Now, your handlers may utilize query parameters:
 ```clojure
 (defroutes myapp
   (GET "/posts" req
-    (let [title (get (:params req) "title")
-          author (get (:params req) "author")]
+    (let [title (get (:params req) :title)
+          author (get (:params req) :author)]
       (str "Title: " title ", Author: " author))))
 ```
 
@@ -165,8 +165,8 @@ Or, for POST and PUT requests, form parameters as well
 ```clojure
 (defroutes myapp
   (POST "/posts" req
-    (let [title (get (:params req) "title")
-          author (get (:params req) "author")]
+    (let [title (get (:params req) :title)
+          author (get (:params req) :author)]
       (str "Title: " title ", Author: " author))))
 ```
 

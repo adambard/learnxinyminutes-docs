@@ -5,7 +5,7 @@ contributors:
     - ["George Petrov", "http://github.com/petrovg"]
     - ["Dominic Bou-Samra", "http://dbousamra.github.com"]
     - ["Geoff Liu", "http://geoffliu.me"]
-filename: learn.scala
+    - ["Ha-Duong Nguyen", "http://reference-error.org"]
 ---
 
 Scala - the scalable language
@@ -16,15 +16,16 @@ Scala - the scalable language
   Set yourself up:
 
   1) Download Scala - http://www.scala-lang.org/downloads
-  2) unzip/untar in your favourite location and put the bin subdir on the path
-  3) Start a scala REPL by typing scala. You should see the prompt:
+  2) Unzip/untar to your favourite location and put the bin subdir in your `PATH` environment variable
+  3) Start a Scala REPL by running `scala`. You should see the prompt:
 
   scala>
 
-  This is the so called REPL (Read-Eval-Print Loop). You may type any valid
-  Scala expression into it, and the result will be printed. We will explain what
-  Scala files look like further into this tutorial, but for now, let's start
-  with some basics.
+  This is the so called REPL (Read-Eval-Print Loop). You may type any Scala
+  expression, and the result will be printed. We will explain what Scala files
+  look like further into this tutorial, but for now, let's start with some
+  basics.
+
 */
 
 
@@ -32,26 +33,30 @@ Scala - the scalable language
 // 1. Basics
 /////////////////////////////////////////////////
 
-// Single line comments start with two forward slashes
+// Single-line comments start with two forward slashes
 
 /*
-  Multi line comments, as you can already see from above, look like this.
+  Multi-line comments, as you can already see from above, look like this.
 */
 
 // Printing, and forcing a new line on the next print
 println("Hello world!")
 println(10)
+// Hello world!
+// 10
 
 // Printing, without forcing a new line on next print
 print("Hello world")
+print(10)
+// Hello world!10
 
 // Declaring values is done using either var or val.
-// val declarations are immutable, whereas var's are mutable. Immutability is
+// val declarations are immutable, whereas vars are mutable. Immutability is
 // a good thing.
 val x = 10 // x is now 10
-x = 20 // error: reassignment to val
+x = 20     // error: reassignment to val
 var y = 10
-y = 20  // y is now 20
+y = 20     // y is now 20
 
 /*
   Scala is a statically typed language, yet note that in the above declarations,
@@ -71,17 +76,17 @@ true
 false
 
 // Boolean operations
-!true // false
-!false // true
+!true         // false
+!false        // true
 true == false // false
-10 > 5 // true
+10 > 5        // true
 
 // Math is as per usual
-1 + 1 // 2
-2 - 1 // 1
-5 * 3 // 15
-6 / 2 // 3
-6 / 4 // 1
+1 + 1   // 2
+2 - 1   // 1
+5 * 3   // 15
+6 / 2   // 3
+6 / 4   // 1
 6.0 / 4 // 1.5
 
 
@@ -120,12 +125,12 @@ s"We have $n apples" // => "We have 45 apples"
 
 // Expressions inside interpolated strings are also possible
 val a = Array(11, 9, 6)
-s"My second daughter is ${a(0) - a(2)} years old." // => "My second daughter is 5 years old."
+s"My second daughter is ${a(0) - a(2)} years old."    // => "My second daughter is 5 years old."
 s"We have double the amount of ${n / 2.0} in apples." // => "We have double the amount of 22.5 in apples."
-s"Power of 2: ${math.pow(2, 2)}" // => "Power of 2: 4"
+s"Power of 2: ${math.pow(2, 2)}"                      // => "Power of 2: 4"
 
 // Formatting with interpolated strings with the prefix "f"
-f"Power of 5: ${math.pow(5, 2)}%1.0f" // "Power of 5: 25"
+f"Power of 5: ${math.pow(5, 2)}%1.0f"         // "Power of 5: 25"
 f"Square root of 122: ${math.sqrt(122)}%1.4f" // "Square root of 122: 11.0454"
 
 // Raw strings, ignoring special characters.
@@ -164,6 +169,12 @@ def sumOfSquaresShort(x: Int, y: Int): Int = x * x + y * y
 // Syntax for calling functions is familiar:
 sumOfSquares(3, 4)  // => 25
 
+// You can use parameters names to specify them in different order
+def subtract(x: Int, y: Int): Int = x - y
+
+subtract(10, 3)     // => 7
+subtract(y=10, x=3) // => -7
+
 // In most cases (with recursive functions the most notable exception), function
 // return type can be omitted, and the same type inference we saw with variables
 // will work with function return values:
@@ -171,12 +182,12 @@ def sq(x: Int) = x * x  // Compiler can guess return type is Int
 
 // Functions can have default parameters:
 def addWithDefault(x: Int, y: Int = 5) = x + y
-addWithDefault(1, 2)  // => 3
-addWithDefault(1)  // => 6
+addWithDefault(1, 2) // => 3
+addWithDefault(1)    // => 6
 
 
 // Anonymous functions look like this:
-(x:Int) => x * x
+(x: Int) => x * x
 
 // Unlike defs, even the input type of anonymous functions can be omitted if the
 // context makes it clear. Notice the type "Int => Int" which means a function
@@ -186,25 +197,27 @@ val sq: Int => Int = x => x * x
 // Anonymous functions can be called as usual:
 sq(10)   // => 100
 
-// If your anonymous function has one or two arguments, and each argument is
+// If each argument in your anonymous function is
 // used only once, Scala gives you an even shorter way to define them. These
 // anonymous functions turn out to be extremely common, as will be obvious in
 // the data structure section.
 val addOne: Int => Int = _ + 1
 val weirdSum: (Int, Int) => Int = (_ * 2 + _ * 3)
 
-addOne(5)  // => 6
-weirdSum(2, 4)  // => 16
+addOne(5)      // => 6
+weirdSum(2, 4) // => 16
 
 
 // The return keyword exists in Scala, but it only returns from the inner-most
-// def that surrounds it. It has no effect on anonymous functions. For example:
-def foo(x: Int) = {
+// def that surrounds it.
+// WARNING: Using return in Scala is error-prone and should be avoided.
+// It has no effect on anonymous functions. For example:
+def foo(x: Int): Int = {
   val anonFunc: Int => Int = { z =>
     if (z > 5)
-      return z  // This line makes z the return value of foo!
+      return z // This line makes z the return value of foo!
     else
-      z + 2  // This line is the return value of anonFunc
+      z + 2    // This line is the return value of anonFunc
   }
   anonFunc(x)  // This line is the return value of foo
 }
@@ -216,19 +229,19 @@ def foo(x: Int) = {
 
 1 to 5
 val r = 1 to 5
-r.foreach( println )
+r.foreach(println)
 
 r foreach println
 // NB: Scala is quite lenient when it comes to dots and brackets - study the
 // rules separately. This helps write DSLs and APIs that read like English
 
-(5 to 1 by -1) foreach ( println )
+(5 to 1 by -1) foreach (println)
 
 // A while loops
 var i = 0
-while (i < 10) {  println("i " + i); i+=1  }
+while (i < 10) { println("i " + i); i += 1 }
 
-while (i < 10) {  println("i " + i); i+=1  }   // Yes, again. What happened? Why?
+while (i < 10) { println("i " + i); i += 1 }   // Yes, again. What happened? Why?
 
 i    // Show the value of i. Note that while is a loop in the classical sense -
      // it executes sequentially while changing the loop variable. while is very
@@ -236,20 +249,21 @@ i    // Show the value of i. Note that while is a loop in the classical sense -
      // comprehensions above is easier to understand and parallelize
 
 // A do while loop
+i = 0
 do {
-  println("x is still less than 10");
-  x += 1
-} while (x < 10)
+  println("i is still less than 10")
+  i += 1
+} while (i < 10)
 
 // Tail recursion is an idiomatic way of doing recurring things in Scala.
 // Recursive functions need an explicit return type, the compiler can't infer it.
 // Here it's Unit.
-def showNumbersInRange(a:Int, b:Int):Unit = {
+def showNumbersInRange(a: Int, b: Int): Unit = {
   print(a)
   if (a < b)
     showNumbersInRange(a + 1, b)
 }
-showNumbersInRange(1,14)
+showNumbersInRange(1, 14)
 
 
 // Conditionals
@@ -270,21 +284,21 @@ val text = if (x == 10) "yeah" else "nope"
 /////////////////////////////////////////////////
 
 val a = Array(1, 2, 3, 5, 8, 13)
-a(0)
-a(3)
+a(0)     // Int = 1
+a(3)     // Int = 5
 a(21)    // Throws an exception
 
 val m = Map("fork" -> "tenedor", "spoon" -> "cuchara", "knife" -> "cuchillo")
-m("fork")
-m("spoon")
+m("fork")         // java.lang.String = tenedor
+m("spoon")        // java.lang.String = cuchara
 m("bottle")       // Throws an exception
 
 val safeM = m.withDefaultValue("no lo se")
-safeM("bottle")
+safeM("bottle")   // java.lang.String = no lo se
 
 val s = Set(1, 3, 7)
-s(0)
-s(1)
+s(0)      // Boolean = false
+s(1)      // Boolean = true
 
 /* Look up the documentation of map here -
  * http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Map
@@ -303,17 +317,18 @@ s(1)
 (a, 2, "three")
 
 // Why have this?
-val divideInts = (x:Int, y:Int) => (x / y, x % y)
+val divideInts = (x: Int, y: Int) => (x / y, x % y)
 
-divideInts(10,3) // The function divideInts gives you the result and the remainder
+// The function divideInts gives you the result and the remainder
+divideInts(10, 3)    // (Int, Int) = (3,1)
 
 // To access the elements of a tuple, use _._n where n is the 1-based index of
 // the element
-val d = divideInts(10,3)
+val d = divideInts(10, 3)    // (Int, Int) = (3,1)
 
-d._1
+d._1    // Int = 3
 
-d._2
+d._2    // Int = 1
 
 
 /////////////////////////////////////////////////
@@ -357,7 +372,7 @@ class Dog(br: String) {
 
 val mydog = new Dog("greyhound")
 println(mydog.breed) // => "greyhound"
-println(mydog.bark) // => "Woof, woof!"
+println(mydog.bark)  // => "Woof, woof!"
 
 
 // The "object" keyword creates a type AND a singleton instance of it. It is
@@ -405,41 +420,55 @@ val otherGeorge = george.copy(phoneNumber = "9876")
 // 6. Pattern Matching
 /////////////////////////////////////////////////
 
-val me = Person("George", "1234")
+// Pattern matching is a powerful and commonly used feature in Scala. Here's how
+// you pattern match a case class. NB: Unlike other languages, Scala cases do
+// not need breaks, fall-through does not happen.
 
-me match { case Person(name, number) => {
-            "We matched someone : " + name + ", phone : " + number }}
-
-me match { case Person(name, number) => "Match : " + name; case _ => "Hm..." }
-
-me match { case Person("George", number) => "Match"; case _ => "Hm..." }
-
-me match { case Person("Kate", number) => "Match"; case _ => "Hm..." }
-
-me match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy" }
-
-val kate = Person("Kate", "1234")
-
-kate match { case Person("Kate", _) => "Girl"; case Person("George", _) => "Boy" }
-
-
-
-// Regular expressions
-val email = "(.*)@(.*)".r  // Invoking r on String makes it a Regex
-val serialKey = """(\d{5})-(\d{5})-(\d{5})-(\d{5})""".r // Using verbatim (multiline) syntax
-
-val matcher = (value: String) => {
-  println(value match {
-	case email(name, domain) => s"It was an email: $name"
-	case serialKey(p1, p2, p3, p4) => s"Serial key: $p1, $p2, $p3, $p4"
-	case _ => s"No match on '$value'" // default if no match found
-  })
+def matchPerson(person: Person): String = person match {
+  // Then you specify the patterns:
+  case Person("George", number) => "We found George! His number is " + number
+  case Person("Kate", number)   => "We found Kate! Her number is " + number
+  case Person(name, number)     => "We matched someone : " + name + ", phone : " + number
 }
 
-matcher("mrbean@pyahoo.com") // => "It was an email: mrbean"
-matcher("nope..") // => "No match on 'nope..'"
-matcher("52917") // => "No match on '52917'"
-matcher("52752-16432-22178-47917") // => "Serial key: 52752, 16432, 22178, 47917"
+val email = "(.*)@(.*)".r  // Define a regex for the next example.
+
+// Pattern matching might look familiar to the switch statements in the C family
+// of languages, but this is much more powerful. In Scala, you can match much
+// more:
+def matchEverything(obj: Any): String = obj match {
+  // You can match values:
+  case "Hello world" => "Got the string Hello world"
+
+  // You can match by type:
+  case x: Double => "Got a Double: " + x
+
+  // You can specify conditions:
+  case x: Int if x > 10000 => "Got a pretty big number!"
+
+  // You can match case classes as before:
+  case Person(name, number) => s"Got contact info for $name!"
+
+  // You can match regular expressions:
+  case email(name, domain) => s"Got email address $name@$domain"
+
+  // You can match tuples:
+  case (a: Int, b: Double, c: String) => s"Got a tuple: $a, $b, $c"
+
+  // You can match data structures:
+  case List(1, b, c) => s"Got a list with three elements and starts with 1: 1, $b, $c"
+
+  // You can nest patterns:
+  case List(List((1, 2, "YAY"))) => "Got a list of list of tuple"
+}
+
+// In fact, you can pattern match any object with an "unapply" method. This
+// feature is so powerful that Scala lets you define whole functions as
+// patterns:
+val patternFunc: Person => String = {
+  case Person("George", number) => s"George's number: $number"
+  case Person(name, number) => s"Random person's number: $number"
+}
 
 
 /////////////////////////////////////////////////
@@ -449,6 +478,7 @@ matcher("52752-16432-22178-47917") // => "Serial key: 52752, 16432, 22178, 47917
 // Scala allows methods and functions to return, or take as parameters, other
 // functions or methods.
 
+val add10: Int => Int = _ + 10 // A function taking an Int and returning an Int
 List(1, 2, 3) map add10 // List(11, 12, 13) - add10 is applied to each element
 
 // Anonymous functions can be used instead of named functions:
@@ -476,7 +506,7 @@ sSquared.reduce (_+_)
 // The filter function takes a predicate (a function from A -> Boolean) and
 // selects all elements which satisfy the predicate
 List(1, 2, 3) filter (_ > 2) // List(3)
-case class Person(name:String, phoneNumber:String)
+case class Person(name: String, age: Int)
 List(
   Person(name = "Dom", age = 23),
   Person(name = "Bob", age = 30)
@@ -524,8 +554,8 @@ implicit def myImplicitFunction(breed: String) = new Dog("Golden " + breed)
 
 // By itself, implicit keyword doesn't change the behavior of the value, so
 // above values can be used as usual.
-myImplicitInt + 2  // => 102
-myImplicitFunction("Pitbull").breed  // => "Golden Pitbull"
+myImplicitInt + 2                   // => 102
+myImplicitFunction("Pitbull").breed // => "Golden Pitbull"
 
 // The difference is that these values are now eligible to be used when another
 // piece of code "needs" an implicit value. One such situation is implicit
@@ -543,8 +573,8 @@ sendGreetings("Jane")  // => "Hello Jane, 100 blessings to you and yours!"
 // Implicit function parameters enable us to simulate type classes in other
 // functional languages. It is so often used that it gets its own shorthand. The
 // following two lines mean the same thing:
-def foo[T](implicit c: C[T]) = ...
-def foo[T : C] = ...
+// def foo[T](implicit c: C[T]) = ...
+// def foo[T : C] = ...
 
 
 // Another situation in which the compiler looks for an implicit is if you have
@@ -553,8 +583,8 @@ def foo[T : C] = ...
 // implicit conversion of type A => B, where A is the type of obj, and B has a
 // method called "method", that conversion is applied. So having
 // myImplicitFunction above in scope, we can say:
-"Retriever".breed  // => "Golden Retriever"
-"Sheperd".bark  // => "Woof, woof!"
+"Retriever".breed // => "Golden Retriever"
+"Sheperd".bark    // => "Woof, woof!"
 
 // Here the String is first converted to Dog using our function above, and then
 // the appropriate method is called. This is an extremely powerful feature, but
@@ -577,7 +607,7 @@ import scala.collection.immutable._
 import scala.collection.immutable.{List, Map}
 
 // Rename an import using '=>'
-import scala.collection.immutable.{ List => ImmutableList }
+import scala.collection.immutable.{List => ImmutableList}
 
 // Import all classes, except some. The following excludes Map and Set:
 import scala.collection.immutable.{Map => _, Set => _, _}
@@ -612,13 +642,8 @@ writer.close()
 
 ## Further resources
 
-[Scala for the impatient](http://horstmann.com/scala/)
-
-[Twitter Scala school](http://twitter.github.io/scala_school/)
-
-[The scala documentation](http://docs.scala-lang.org/)
-
-[Try Scala in your browser](http://scalatutorials.com/tour/)
-
-Join the [Scala user group](https://groups.google.com/forum/#!forum/scala-user)
-
+* [Scala for the impatient](http://horstmann.com/scala/)
+* [Twitter Scala school](http://twitter.github.io/scala_school/)
+* [The scala documentation](http://docs.scala-lang.org/)
+* [Try Scala in your browser](http://scalatutorials.com/tour/)
+* Join the [Scala user group](https://groups.google.com/forum/#!forum/scala-user)

@@ -232,7 +232,8 @@ on a new line! ""Wow!"", the masses cried";
             // 三元表达式
             // 简单的 if/else 语句可以写成：
             // <条件> ? <真> : <假>
-            string isTrue = (true) ? "True" : "False";
+            int toCompare = 17;
+            string isTrue = toCompare == 17 ? "True" : "False";
 
             // While 循环
             int fooWhile = 0;

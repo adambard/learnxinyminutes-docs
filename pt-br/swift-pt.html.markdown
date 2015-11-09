@@ -1,7 +1,7 @@
 ---
 language: swift
 contributors:
-    - ["Grant Timmerman", "http://github.com/grant"],
+    - ["Grant Timmerman", "http://github.com/grant"]
     - ["Christopher Bess", "http://github.com/cbess"]
 translators:
     - ["Mariane Siqueira Machado", "https://twitter.com/mariane_sm"]
@@ -9,14 +9,14 @@ lang: pt-br
 filename: learnswift.swift
 ---
 
-Swift é uma linguagem de programação para desenvolvimento de aplicações no iOS e OS X criada pela Apple. Criada para 
+Swift é uma linguagem de programação para desenvolvimento de aplicações no iOS e OS X criada pela Apple. Criada para
 coexistir com Objective-C e para ser mais resiliente a código com erros, Swift foi apresentada em 2014 na Apple's
 developer conference WWDC. Foi construída com o compilador LLVM já incluído no Xcode 6 beta.
 
 O livro oficial [Swift Programming Language] (https://itunes.apple.com/us/book/swift-programming-language/id881256329) da
 Apple já está disponível via IBooks (apenas em inglês).
 
-Confira também o tutorial completo de Swift da Apple [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/LandingPage/index.html), também disponível apenas em inglês.
+Confira também o tutorial completo de Swift da Apple [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html), também disponível apenas em inglês.
 
 ```swift
 // importa um módulo
@@ -59,9 +59,9 @@ let piText = "Pi = \(π), Pi 2 = \(π * 2)" // Interpolação de strings
 println("Build value: \(buildValue)") // Build value: 7
 
 /*
-    Optionals fazem parte da linguagem e permitem que você armazene um 
+    Optionals fazem parte da linguagem e permitem que você armazene um
     valor `Some` (algo) ou `None` (nada).
-    
+
     Como Swift requer que todas as propriedades tenham valores, até mesmo nil deve
     ser explicitamente armazenado como um valor Optional.
 
@@ -76,7 +76,7 @@ if someOptionalString != nil {
     if someOptionalString!.hasPrefix("opt") {
         println("has the prefix")
     }
-    
+
     let empty = someOptionalString?.isEmpty
 }
 someOptionalString = nil
@@ -221,7 +221,7 @@ println("Gas price: \(price)")
 
 // Número variável de argumentos
 func setup(numbers: Int...) {
-    // its an array
+    // é um array
     let number = numbers[0]
     let argCount = numbers.count
 }
@@ -289,7 +289,7 @@ print(numbers) // [3, 6, 18]
 // Estruturas e classes tem funcionalidades muito similares
 struct NamesTable {
     let names: [String]
-    
+
     // Custom subscript
     subscript(index: Int) -> String {
         return names[index]
@@ -319,7 +319,7 @@ public class Shape {
 
 internal class Rect: Shape {
     var sideLength: Int = 1
-    
+
     // Getter e setter personalizado
     private var perimeter: Int {
         get {
@@ -330,13 +330,13 @@ internal class Rect: Shape {
             sideLength = newValue / 4
         }
     }
-    
+
     // Carregue uma propriedade sob demanda (lazy)
     // subShape permanece nil (não inicializado) até seu getter ser chamado
     lazy var subShape = Rect(sideLength: 4)
-    
+
     // Se você não precisa de um getter e setter personalizado,
-    // mas ainda quer roda código antes e depois de configurar 
+    // mas ainda quer roda código antes e depois de configurar
     // uma propriedade, você  pode usar `willSet` e `didSet`
     var identifier: String = "defaultID" {
         // o argumento `willSet` será o nome da variável para o novo valor
@@ -344,25 +344,25 @@ internal class Rect: Shape {
             print(someIdentifier)
         }
     }
-    
+
     init(sideLength: Int) {
         self.sideLength = sideLength
          // sempre chame super.init por último quand inicializar propriedades personalizadas (custom)
         super.init()
     }
-    
+
     func shrink() {
         if sideLength > 0 {
             --sideLength
         }
     }
-    
+
     override func getArea() -> Int {
         return sideLength * sideLength
     }
 }
 
-// Uma classe básica `Square` que estende `Rect` 
+// Uma classe básica `Square` que estende `Rect`
 class Square: Rect {
     convenience init() {
         self.init(sideLength: 5)
@@ -420,10 +420,10 @@ protocol ShapeGenerator {
 
 class MyShape: Rect {
     var delegate: TransformShape?
-    
+
     func grow() {
         sideLength += 2
-        
+
         if let allow = self.delegate?.canReshape?() {
             // test for delegate then for method
             // testa por delegação e então por método
@@ -439,7 +439,7 @@ class MyShape: Rect {
 
 // `extension`s: Adicionam uma funcionalidade extra para um tipo já existente.
 
-// Square agora "segue" o protocolo `Printable` 
+// Square agora "segue" o protocolo `Printable`
 extension Square: Printable {
     var description: String {
         return "Area: \(self.getArea()) - ID: \(self.identifier)"
@@ -453,7 +453,7 @@ extension Int {
     var customProperty: String {
         return "This is \(self)"
     }
-    
+
     func multiplyBy(num: Int) -> Int {
         return num * self
     }

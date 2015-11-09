@@ -10,6 +10,7 @@ contributors:
     - ["Anton Strömkvist", "http://lutic.org/"]
     - ["Rahil Momin", "https://github.com/iamrahil"]
     - ["Gregrory Kielian", "https://github.com/gskielian"]
+    - ["Etan Reisner", "https://github.com/deryni"]
 filename: LearnBash.sh
 ---
 
@@ -31,75 +32,93 @@ echo Hello world!
 echo 'This is the first line'; echo 'This is the second line'
 
 # Declaring a variable looks like this:
-VARIABLE="Some string"
+Variable="Some string"
 
 # But not like this:
-VARIABLE = "Some string"
-# Bash will decide that VARIABLE is a command it must execute and give an error
-# because it couldn't be found.
+Variable = "Some string"
+# Bash will decide that Variable is a command it must execute and give an error
+# because it can't be found.
+
+# Or like this:
+Variable= 'Some string'
+# Bash will decide that 'Some string' is a command it must execute and give an
+# error because it can't be found. (In this case the 'Variable=' part is seen
+# as a variable assignment valid only for the scope of the 'Some string'
+# command.)
 
 # Using the variable:
-echo $VARIABLE
-echo "$VARIABLE"
-echo '$VARIABLE'
+echo $Variable
+echo "$Variable"
+echo '$Variable'
 # When you use the variable itself — assign it, export it, or else — you write
-# its name without $. If you want to use variable's value, you should use $.
+# its name without $. If you want to use the variable's value, you should use $.
 # Note that ' (single quote) won't expand the variables!
 
 # String substitution in variables
-echo ${VARIABLE/Some/A}
-# This will substitute the first occurance of "Some" with "A"
+echo ${Variable/Some/A}
+# This will substitute the first occurrence of "Some" with "A"
 
 # Substring from a variable
-echo ${VARIABLE:0:7}
+Length=7
+echo ${Variable:0:Length}
 # This will return only the first 7 characters of the value
 
 # Default value for variable
-echo ${FOO:-"DefaultValueIfFOOIsMissingOrEmpty"}
-# This works for null (FOO=), empty string (FOO=""), zero (FOO=0) returns 0
+echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"}
+# This works for null (Foo=) and empty string (Foo=""); zero (Foo=0) returns 0.
+# Note that it only returns default value and doesn't change variable value.
 
 # Builtin variables:
 # There are some useful builtin variables, like
-echo "Last program return value: $?"
+echo "Last program's return value: $?"
 echo "Script's PID: $$"
-echo "Number of arguments: $#"
-echo "Scripts arguments: $@"
-echo "Scripts arguments seperated in different variables: $1 $2..."
+echo "Number of arguments passed to script: $#"
+echo "All arguments passed to script: $@"
+echo "Script's arguments separated into different variables: $1 $2..."
 
 # Reading a value from input:
 echo "What's your name?"
-read NAME # Note that we didn't need to declare a new variable
-echo Hello, $NAME!
+read Name # Note that we didn't need to declare a new variable
+echo Hello, $Name!
 
 # We have the usual if structure:
 # use 'man test' for more info about conditionals
-if [ $NAME -ne $USER ]
+if [ $Name -ne $USER ]
 then
     echo "Your name isn't your username"
 else
     echo "Your name is your username"
 fi
 
+# NOTE: if $Name is empty, bash sees the above condition as:
+if [ -ne $USER ]
+# which is invalid syntax
+# so the "safe" way to use potentially empty variables in bash is:
+if [ "$Name" -ne $USER ] ...
+# which, when $Name is empty, is seen by bash as:
+if [ "" -ne $USER ] ...
+# which works as expected
+
 # There is also conditional execution
 echo "Always executed" || echo "Only executed if first command fails"
 echo "Always executed" && echo "Only executed if first command does NOT fail"
 
 # To use && and || with if statements, you need multiple pairs of square brackets:
-if [ $NAME == "Steve" ] && [ $AGE -eq 15 ]
+if [ "$Name" == "Steve" ] && [ "$Age" -eq 15 ]
 then
-    echo "This will run if $NAME is Steve AND $AGE is 15."
+    echo "This will run if $Name is Steve AND $Age is 15."
 fi
 
-if [ $NAME == "Daniya" ] || [ $NAME == "Zach" ]
+if [ "$Name" == "Daniya" ] || [ "$Name" == "Zach" ]
 then
-    echo "This will run if $NAME is Daniya OR Zach."
+    echo "This will run if $Name is Daniya OR Zach."
 fi
 
 # Expressions are denoted with the following format:
 echo $(( 10 + 5 ))
 
-# Unlike other programming languages, bash is a shell — so it works in a context
-# of current directory. You can list files and directories in the current
+# Unlike other programming languages, bash is a shell so it works in the context
+# of a current directory. You can list files and directories in the current
 # directory with the ls command:
 ls
 
@@ -134,7 +153,7 @@ python hello.py > /dev/null 2>&1
 # if you want to append instead, use ">>":
 python hello.py >> "output.out" 2>> "error.err"
 
-# Overwrite output.txt, append to error.err, and count lines:
+# Overwrite output.out, append to error.err, and count lines:
 info bash 'Basic Shell Features' 'Redirections' > output.out 2>> error.err
 wc -l output.out error.err
 
@@ -142,7 +161,7 @@ wc -l output.out error.err
 # see: man fd
 echo <(echo "#helloworld")
 
-# Overwrite output.txt with "#helloworld":
+# Overwrite output.out with "#helloworld":
 cat > output.out <(echo "#helloworld")
 echo "#helloworld" > output.out
 echo "#helloworld" | cat > output.out
@@ -161,7 +180,7 @@ echo "There are $(ls | wc -l) items here."
 echo "There are `ls | wc -l` items here."
 
 # Bash uses a case statement that works similarly to switch in Java and C++:
-case "$VARIABLE" in 
+case "$Variable" in
     #List patterns for the conditions you want to meet
     0) echo "There is a zero.";;
     1) echo "There is a one.";;
@@ -169,10 +188,10 @@ case "$VARIABLE" in
 esac
 
 # for loops iterate for as many arguments given:
-# The contents of $VARIABLE is printed three times.
-for VARIABLE in {1..3}
+# The contents of $Variable is printed three times.
+for Variable in {1..3}
 do
-    echo "$VARIABLE"
+    echo "$Variable"
 done
 
 # Or write it the "traditional for loop" way:
@@ -183,16 +202,16 @@ done
 
 # They can also be used to act on files..
 # This will run the command 'cat' on file1 and file2
-for VARIABLE in file1 file2
+for Variable in file1 file2
 do
-    cat "$VARIABLE"
+    cat "$Variable"
 done
 
 # ..or the output from a command
 # This will cat the output from ls.
-for OUTPUT in $(ls)
+for Output in $(ls)
 do
-    cat "$OUTPUT"
+    cat "$Output"
 done
 
 # while loop:
@@ -220,7 +239,7 @@ bar ()
 }
 
 # Calling your function
-foo "My name is" $NAME
+foo "My name is" $Name
 
 # There are a lot of useful commands you should learn:
 # prints last 10 lines of file.txt
@@ -235,12 +254,14 @@ uniq -d file.txt
 cut -d ',' -f 1 file.txt
 # replaces every occurrence of 'okay' with 'great' in file.txt, (regex compatible)
 sed -i 's/okay/great/g' file.txt
-# print to stdout all lines of file.txt which match some regex, the example prints lines which begin with "foo" and end in "bar"
+# print to stdout all lines of file.txt which match some regex
+# The example prints lines which begin with "foo" and end in "bar"
 grep "^foo.*bar$" file.txt
 # pass the option "-c" to instead print the number of lines matching the regex
 grep -c "^foo.*bar$" file.txt
-# if you literally want to search for the string, and not the regex, use fgrep (or grep -F)
-fgrep "^foo.*bar$" file.txt 
+# if you literally want to search for the string,
+# and not the regex, use fgrep (or grep -F)
+fgrep "^foo.*bar$" file.txt
 
 
 # Read Bash shell builtins documentation with the bash 'help' builtin:

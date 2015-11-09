@@ -469,9 +469,6 @@ myNumber === myNumberObj; // = false
 if (0){
     // 0 est falsy, le code ne fonctionnera pas.
 }
-if (Number(0)){
-    // Parce que Number(0) est truthy, le code fonctionnera
-}
 
 // Cependant, vous pouvez ajouter des fonctionnalités aux types de bases grâce à
 // cette particularité.

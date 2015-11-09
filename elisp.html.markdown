@@ -29,7 +29,7 @@ filename: learn-emacs-lisp.el
 ;; I hereby decline any responsability.  Have fun!
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;; Fire up Emacs.
 ;;
 ;; Hit the `q' key to dismiss the welcome message.
@@ -42,9 +42,9 @@ filename: learn-emacs-lisp.el
 ;; The scratch buffer is the default buffer when opening Emacs.
 ;; You are never editing files: you are editing buffers that you
 ;; can save to a file.
-;; 
+;;
 ;; "Lisp interaction" refers to a set of commands available here.
-;; 
+;;
 ;; Emacs has a built-in set of commands available in every buffer,
 ;; and several subsets of commands available when you activate a
 ;; specific mode.  Here we use the `lisp-interaction-mode', which
@@ -109,7 +109,7 @@ filename: learn-emacs-lisp.el
 ;; The empty parentheses in the function's definition means that
 ;; it does not accept arguments.  But always using `my-name' is
 ;; boring, let's tell the function to accept one argument (here
-;; the argument is called "name"): 
+;; the argument is called "name"):
 
 (defun hello (name) (insert "Hello " name))
 ;; `C-xC-e' => hello
@@ -305,7 +305,7 @@ filename: learn-emacs-lisp.el
 (defun boldify-names ()
     (switch-to-buffer-other-window "*test*")
     (goto-char (point-min))
-    (while (re-search-forward "Bonjour \\([^!]+\\)!" nil 't)
+    (while (re-search-forward "Bonjour \\(.+\\)!" nil 't)
       (add-text-properties (match-beginning 1)
                            (match-end 1)
                            (list 'face 'bold)))
@@ -318,7 +318,7 @@ filename: learn-emacs-lisp.el
 ;; The regular expression is "Bonjour \\(.+\\)!" and it reads:
 ;; the string "Bonjour ", and
 ;; a group of            | this is the \\( ... \\) construct
-;;   any character not ! | this is the [^!]
+;;   any character       | this is the .
 ;;   possibly repeated   | this is the +
 ;; and the "!" string.
 

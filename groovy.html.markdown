@@ -6,7 +6,7 @@ contributors:
 filename: learngroovy.groovy
 ---
 
-Groovy - A dynamic language for the Java platform [Read more here.](http://groovy.codehaus.org)
+Groovy - A dynamic language for the Java platform [Read more here.](http://www.groovy-lang.org/)
 
 ```groovy
 
@@ -99,7 +99,7 @@ technologies.sort()
 // To sort without mutating original, you can do:
 sortedTechnologies = technologies.sort( false )
 
-/*** Manipulating Lists ***/
+/*** Manipulating Lists ***/e
 
 //Replace all elements in the list
 Collections.replaceAll(technologies, 'Gradle', 'gradle')
@@ -200,6 +200,14 @@ def y = 10
 def x = (y > 1) ? "worked" : "failed"
 assert x == "worked"
 
+//Groovy supports 'The Elvis Operator' too!
+//Instead of using the ternary operator:
+
+displayName = user.name ? user.name : 'Anonymous'
+
+//We can write it:
+displayName = user.name ?: 'Anonymous'
+
 //For loop
 //Iterate over a range
 def x = 0
@@ -231,7 +239,7 @@ for ( e in map ) {
   Operators
 
   Operator Overloading for a list of the common operators that Groovy supports:
-  http://groovy.codehaus.org/Operator+Overloading
+  http://www.groovy-lang.org/operators.html#Operator-Overloading
 
   Helpful groovy operators
 */
@@ -249,7 +257,7 @@ def username = user?.username
   A Groovy Closure is like a "code block" or a method pointer. It is a piece of
   code that is defined and then executed at a later point.
 
-  More info at: http://groovy.codehaus.org/Closures+-+Formal+Definition
+  More info at: http://www.groovy-lang.org/closures.html
 */
 //Example:
 def clos = { println "Hello World!" }
@@ -405,11 +413,11 @@ assert sum(2,5) == 7
 
 ## Further resources
 
-[Groovy documentation](http://groovy.codehaus.org/Documentation)
+[Groovy documentation](http://www.groovy-lang.org/documentation.html)
 
 [Groovy web console](http://groovyconsole.appspot.com/)
 
-Join a [Groovy user group](http://groovy.codehaus.org/User+Groups)
+Join a [Groovy user group](http://www.groovy-lang.org/usergroups.html)
 
 ## Books
 
@@ -422,6 +430,3 @@ Join a [Groovy user group](http://groovy.codehaus.org/User+Groups)
 [1] http://roshandawrani.wordpress.com/2010/10/18/groovy-new-feature-closures-can-now-memorize-their-results/
 [2] http://www.solutionsiq.com/resources/agileiq-blog/bid/72880/Programming-with-Groovy-Trampoline-and-Memoize
 [3] http://mrhaki.blogspot.mx/2011/05/groovy-goodness-cache-closure-results.html
-
-
-

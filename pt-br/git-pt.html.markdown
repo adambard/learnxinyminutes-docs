@@ -1,110 +1,119 @@
 ---
 category: tool
 tool: git
+lang: pt-br
+filename: LearnGit.txt
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:
-   	- ["Miguel Araújo", "https://github.com/miguelarauj1o"]
-lang: pt-br
-filename: learngit-pt.txt
+  - ["Suzane Sant Ana", "http://github.com/suuuzi"]
 ---
 
-Git é um sistema de controle de versão distribuído e de gerenciamento de código-fonte.
+Git é um sistema distribuido de gestão para código fonte e controle de versões.
 
-Ele faz isso através de uma série de momentos instantâneos de seu projeto, e ele funciona 
-com esses momentos para lhe fornecer a funcionalidade para a versão e 
-gerenciar o seu código-fonte.
+Funciona através de uma série de registos de estado do projeto e usa esse
+registo para permitir funcionalidades de versionamento e gestão de código
+fonte.
 
-## Versionando Conceitos
+## Conceitos de versionamento
 
-### O que é controle de versão?
+### O que é controle de versão
 
-O controle de versão é um sistema que registra alterações em um arquivo ou conjunto 
-de arquivos, ao longo do tempo.
+Controle de versão (*source control*) é um processo de registo de alterações
+a um arquivo ou conjunto de arquivos ao longo do tempo.
 
-### Versionamento Centralizado VS Versionamento Distribuído
+### Controle de versão:  Centralizado VS Distribuído
 
-* Controle de versão centralizado concentra-se na sincronização, controle e backup de arquivos.
-* Controle de versão distribuído concentra-se na partilha de mudanças. Toda mudança tem um ID único.
-* Sistemas Distribuídos não têm estrutura definida. Você poderia facilmente ter um estilo SVN, 
-sistema centralizado, com git.
+* Controle de versão centralizado foca na sincronização, registo e *backup*
+de arquivos.
+* Controle de versão distribuído foca em compartilhar alterações. Cada
+alteração é associada a um *id* único.
+* Sistemas distribuídos não tem estrutura definida. É possivel ter um sistema
+centralizado ao estilo SVN usando git.
 
-[Informação Adicional](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
+[Informação adicional (EN)](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
 
-### Porque usar o Git?
+### Por que usar git?
 
-* Possibilidade de trabalhar offline
-* Colaborar com os outros é fácil!
-* Ramificação é fácil
-* Mesclagem é fácil
-* Git é rápido
-* Git é flexível.
+* Permite trabalhar offline.
+* Colaborar com outros é fácil!
+* Criar *branches* é fácil!
+* Fazer *merge* é fácil!
+* Git é rápido.
+* Git é flexivel.
 
-## Arquitetura Git
+## Git - Arquitetura
+
 
 ### Repositório
 
-Um conjunto de arquivos, diretórios, registros históricos, cometes, e cabeças. Imagine-o 
-como uma estrutura de dados de código-fonte, com o atributo que cada "elemento" do 
-código-fonte dá-lhe acesso ao seu histórico de revisão, entre outras coisas.
+Um conjunto de arquivos, diretórios, registos históricos, *commits* e
+referências. Pode ser descrito como uma estrutura de dados de código fonte
+com a particularidade de cada elemento do código fonte permitir acesso ao
+histórico das suas alterações, entre outras coisas.
 
-Um repositório git é composto do diretório git. e árvore de trabalho.
+Um repositório git é constituido pelo diretório .git e a *working tree*
 
 ### Diretório .git (componente do repositório)
 
-O diretório git. contém todas as configurações, registros, galhos, cabeça(HEAD) e muito mais.
-[Lista Detalhada](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+O repositório .git contém todas as configurações, *logs*, *branches*,
+referências e outros.
 
-### Árvore de trabalho (componente do repositório)
+[Lista detalhada (EN)](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
-Esta é, basicamente, os diretórios e arquivos no seu repositório. Ele é muitas vezes referida 
-como seu diretório de trabalho.
+### *Working Tree* (componente do repositório)
 
-### Índice (componente do diretório .git)
+A *Working Tree* é basicamente a listagem dos diretórios e arquivos do repositório. É chamada também de diretório do projeto.
 
-O Índice é a área de teste no git. É basicamente uma camada que separa a sua árvore de trabalho 
-a partir do repositório Git. Isso dá aos desenvolvedores mais poder sobre o que é enviado para o
-repositório Git.
+### *Index* (componente do diretório .git)
 
-### Comete (commit)
+O *Index* é a camada da interface no git. É o elemento que separa
+o diretório do projeto do repositório git. Isto permite aos programadores um
+maior controle sobre o que é registado no repositório git.
 
-A commit git é um instantâneo de um conjunto de alterações ou manipulações a sua árvore de trabalho. 
-Por exemplo, se você adicionou 5 imagens, e removeu outros dois, estas mudanças serão contidas 
-em um commit (ou instantâneo). Esta confirmação pode ser empurrado para outros repositórios, ou não!
+### *Commit*
 
-### Ramo (branch)
+Um *commit** de git é um registo de um cojunto de alterações ou manipulações nos arquivos do projeto.
+Por exemplo, ao adicionar cinco arquivos e remover outros 2, estas alterações
+serão gravadas num *commit* (ou registo). Este *commit* pode então ser enviado
+para outros repositórios ou não!
 
-Um ramo é, essencialmente, um ponteiro que aponta para o último commit que você fez. Como 
-você se comprometer, este ponteiro irá atualizar automaticamente e apontar para o último commit.
+### *Branch*
 
-### Cabeça (HEAD) e cabeça (head) (componente do diretório .git)
+Um *branch* é essencialmente uma referência que aponta para o último *commit*
+efetuado. Na medida que são feitos novos commits, esta referência é atualizada
+automaticamente e passa a apontar para o commit mais recente.
 
-HEAD é um ponteiro que aponta para o ramo atual. Um repositório tem apenas 1 * ativo * HEAD. 
-head é um ponteiro que aponta para qualquer commit. Um repositório pode ter qualquer número de commits.
+### *HEAD* e *head* (componentes do diretório .git)
 
-### Recursos Conceituais
+*HEAD* é a referência que aponta para o *branch* em uso. Um repositório só tem
+uma *HEAD* activa.
+*head* é uma referência que aponta para qualquer *commit*. Um repositório pode
+ter um número indefinido de *heads*
 
-* [Git para Cientistas da Computação](http://eagain.net/articles/git-for-computer-scientists/)
+### Recursos conceituais (EN)
+
+* [Git para Cientistas de Computação](http://eagain.net/articles/git-for-computer-scientists/)
 * [Git para Designers](http://hoth.entp.com/output/git_for_designers.html)
 
 ## Comandos
 
-### init
+### *init*
 
-Criar um repositório Git vazio. As configurações do repositório Git, informações armazenadas, 
-e mais são armazenados em um diretório (pasta) com o nome ". git".
+Cria um repositório Git vazio. As definições, informação guardada e outros do
+repositório git são guardados em uma pasta chamada ".git".
 
 ```bash
 $ git init
 ```
 
-### config
+### *config*
 
-Para configurar as definições. Quer seja para o repositório, o próprio sistema, ou 
-configurações globais.
+Permite configurar as definições, sejam as definições do repositório, sistema
+ou configurações globais.
 
 ```bash
-# Impressão e definir algumas variáveis ​​de configuração básica (global)
+# Imprime e define algumas variáveis de configuração básicas (global)
 $ git config --global user.email
 $ git config --global user.name
 
@@ -112,22 +121,21 @@ $ git config --global user.email "MyEmail@Zoho.com"
 $ git config --global user.name "My Name"
 ```
 
-[Saiba mais sobre o git config.](http://git-scm.com/docs/git-config)
+[Aprenda mais sobre git config. (EN)](http://git-scm.com/docs/git-config)
 
 ### help
 
-Para lhe dar um acesso rápido a um guia extremamente detalhada de cada comando. ou 
-apenas dar-lhe um rápido lembrete de algumas semânticas.
+Para visualizar rapidamente o detalhamento de cada comando ou apenas lembrar da semântica.
 
 ```bash
-# Rapidamente verificar os comandos disponíveis
+# Ver rapidamente os comandos disponiveis
 $ git help
 
-# Confira todos os comandos disponíveis
+# Ver todos os comandos disponiveis
 $ git help -a
 
-# Ajuda específica de comando - manual do usuário
-# git help <command_here>
+# Usar o *help* para um comando especifico
+# git help <comando_aqui>
 $ git help add
 $ git help commit
 $ git help init
@@ -135,85 +143,89 @@ $ git help init
 
 ### status
 
-Para mostrar as diferenças entre o arquivo de índice (basicamente o trabalho de 
-copiar/repo) e a HEAD commit corrente.
+Apresenta as diferenças entre o arquivo *index* (a versão corrente
+do repositório) e o *commit* da *HEAD* atual.
+
 
 ```bash
-# Irá exibir o ramo, os arquivos não monitorados, as alterações e outras diferenças
+# Apresenta o *branch*, arquivos não monitorados, alterações e outras
+# difereças
 $ git status
 
-# Para saber outras "tid bits" sobre git status
+# Para aprender mais detalhes sobre git *status*
 $ git help status
 ```
 
 ### add
 
-Para adicionar arquivos para a atual árvore/directory/repo trabalho. Se você não 
-der `git add` nos novos arquivos para o trabalhando árvore/diretório, eles não serão 
-incluídos em commits!
+Adiciona arquivos ao repositório corrente. Se os arquivos novos não forem
+adicionados através de `git add` ao repositório, então eles não serão
+incluidos nos commits!
 
 ```bash
-# Adicionar um arquivo no seu diretório de trabalho atual
+# adiciona um arquivo no diretório do projeto atual
 $ git add HelloWorld.java
 
-# Adicionar um arquivo em um diretório aninhado
+# adiciona um arquivo num sub-diretório
 $ git add /path/to/file/HelloWorld.c
 
-# Suporte a expressões regulares!
+# permite usar expressões regulares!
 $ git add ./*.java
 ```
 
 ### branch
 
-Gerenciar seus ramos. Você pode visualizar, editar, criar, apagar ramos usando este comando.
+Gerencia os *branches*. É possível ver, editar, criar e apagar branches com este
+comando.
 
 ```bash
-# Lista ramos e controles remotos existentes
+# listar *branches* existentes e remotos
 $ git branch -a
 
-# Criar um novo ramo
+# criar um novo *branch*
 $ git branch myNewBranch
 
-# Apagar um ramo
+# apagar um *branch*
 $ git branch -d myBranch
 
-# Renomear um ramo
+# alterar o nome de um *branch*
 # git branch -m <oldname> <newname>
 $ git branch -m myBranchName myNewBranchName
 
-# Editar a descrição de um ramo
+# editar a descrição de um *branch*
 $ git branch myBranchName --edit-description
 ```
 
 ### checkout
 
-Atualiza todos os arquivos na árvore de trabalho para corresponder à versão no 
-índice, ou árvore especificada.
+Atualiza todos os arquivos no diretório do projeto para que fiquem iguais
+à versão do index ou do *branch* especificado.
 
 ```bash
-# Finalizar um repo - padrão de ramo mestre
+# Checkout de um repositório - por padrão para o branch master
 $ git checkout
-# Checa um ramo especificado
+# Checkout de um branch especifico
 $ git checkout branchName
-# Criar um novo ramo e mudar para ela, como: "<nome> git branch; git checkout <nome>"
+# Cria um novo branch e faz checkout para ele.
+# Equivalente a: "git branch <name>; git checkout <name>"
 $ git checkout -b newBranch
 ```
 
 ### clone
 
-Clones, ou cópias, de um repositório existente para um novo diretório. Ele também adiciona 
-filiais remotas de rastreamento para cada ramo no repo clonado, que permite que você empurre 
-a um ramo remoto.
+Clona ou copia um repositório existente para um novo diretório. Também
+adiciona *branches* de monitoramento remoto para cada *branch* no repositório
+clonado o que permite enviar alterações para um *branch* remoto.
 
 ```bash
-# Clone learnxinyminutes-docs
+# Clona learnxinyminutes-docs
 $ git clone https://github.com/adambard/learnxinyminutes-docs.git
 ```
 
 ### commit
 
-Armazena o conteúdo atual do índice em um novo "commit". Este commit contém 
-as alterações feitas e uma mensagem criada pelo utilizador.
+Guarda o conteudo atual do index num novo *commit*. Este *commit* contém
+as alterações feitas e a mensagem criada pelo usuário.
 
 ```bash
 # commit com uma mensagem
@@ -222,170 +234,170 @@ $ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
 
 ### diff
 
-Mostra as diferenças entre um arquivo no diretório, o índice de trabalho e commits.
+Apresenta as diferenças entre um arquivo no repositório do projeto, *index*
+e *commits*
 
 ```bash
-# Mostrar diferença entre o seu diretório de trabalho e o índice.
+# Apresenta a diferença entre o diretório atual e o index
 $ git diff
 
-# Mostrar diferenças entre o índice e o commit mais recente.
+# Apresenta a diferença entre o index e os commits mais recentes
 $ git diff --cached
 
-# Mostrar diferenças entre o seu diretório de trabalho e o commit mais recente.
+# Apresenta a diferença entre o diretório atual e o commit mais recente
 $ git diff HEAD
 ```
 
 ### grep
 
-Permite procurar rapidamente um repositório.
+Permite procurar facilmente num repositório
 
 Configurações opcionais:
 
 ```bash
-# Obrigado ao Travis Jeffery por isto
-# Configure os números de linha a serem mostrados nos resultados de busca grep
+# Define a apresentação de números de linha nos resultados do grep
 $ git config --global grep.lineNumber true
 
-# Fazer resultados de pesquisa mais legível, incluindo agrupamento
+# Agrupa os resultados da pesquisa para facilitar a leitura
 $ git config --global alias.g "grep --break --heading --line-number"
 ```
 
 ```bash
-# Procure por "variableName" em todos os arquivos java
+# Pesquisa por "variableName" em todos os arquivos java
 $ git grep 'variableName' -- '*.java'
 
-# Procure por uma linha que contém "arrayListName" e "adicionar" ou "remover"
-$ git grep -e 'arrayListName' --and \( -e add -e remove \) 
+# Pesquisa por uma linha que contém "arrayListName" e "add" ou "remove"
+$ git grep -e 'arrayListName' --and \( -e add -e remove \)
 ```
 
-Google é seu amigo; para mais exemplos
-[Git Grep Ninja](http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
+O Google é seu amigo; para mais exemplos:
+[Git Grep Ninja (EN)](http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
 
 ### log
 
-Mostrar commits para o repositório.
+Apresenta commits do repositório.
 
 ```bash
-# Mostrar todos os commits
+# Apresenta todos os commits
 $ git log
 
-# Mostrar um número X de commits
+# Apresenta X commits
 $ git log -n 10
 
-# Mostrar somente commits mesclados
+# Apresenta apenas commits de merge
 $ git log --merges
 ```
 
 ### merge
 
-"Merge" em mudanças de commits externos no branch atual.
+"Merge" junta as alterações de commits externos com o *branch* atual.
 
 ```bash
-# Mesclar o ramo especificado para o atual.
+# Junta o branch especificado com o atual
 $ git merge branchName
 
-# Gera sempre uma mesclagem commit ao mesclar
+# Para gerar sempre um commit ao juntar os branches
 $ git merge --no-ff branchName
 ```
 
 ### mv
 
-Renomear ou mover um arquivo
+Alterar o nome ou mover um arquivo.
 
 ```bash
-# Renomear um arquivo
+# Alterar o nome de um arquivo
 $ git mv HelloWorld.c HelloNewWorld.c
 
 # Mover um arquivo
 $ git mv HelloWorld.c ./new/path/HelloWorld.c
 
-# Força renomear ou mover
-# "ExistingFile" já existe no diretório, será substituído
+# Forçar a alteração de nome ou mudança local
+# "existingFile" já existe no directório, será sobrescrito.
 $ git mv -f myFile existingFile
 ```
 
 ### pull
 
-Puxa de um repositório e se funde com outro ramo.
+Puxa alterações de um repositório e as junta com outro branch
 
 ```bash
-# Atualize seu repo local, através da fusão de novas mudanças
-# A partir da "origem" remoto e ramo "master (mestre)".
+# Atualiza o repositório local, juntando as novas alterações
+# do repositório remoto 'origin' e branch 'master'
 # git pull <remote> <branch>
-# git pull => implícito por padrão => git pull origin master
+# git pull => aplica a predefinição => git pull origin master
 $ git pull origin master
 
-# Mesclar em mudanças de ramo remoto e rebase
-# Ramo commita em seu repo local, como: "git pull <remote> <branch>, git rebase <branch>"
+# Juntar alterações do branch remote e fazer rebase commits do branch
+# no repositório local, como: "git pull <remote> <branch>, git rebase <branch>"
 $ git pull origin master --rebase
 ```
 
 ### push
 
-Empurre e mesclar as alterações de uma ramificação para uma remota e ramo.
+Enviar e juntar alterações de um branch para o seu branch correspondente
+num repositório remoto.
 
 ```bash
-# Pressione e mesclar as alterações de um repo local para um 
-# Chamado remoto "origem" e ramo de "mestre".
+# Envia e junta as alterações de um repositório local
+# para um remoto denominado "origin" no branch "master".
 # git push <remote> <branch>
-# git push => implícito por padrão => git push origin master
+# git push => aplica a predefinição => git push origin master
 $ git push origin master
-
-# Para ligar atual filial local com uma filial remota, bandeira add-u:
-$ git push -u origin master
-# Agora, a qualquer hora que você quer empurrar a partir desse mesmo ramo local, uso de atalho:
-$ git push 
 ```
 
-### rebase (CAUTELA) 
+### rebase (cautela!)
 
-Tire todas as alterações que foram commitadas em um ramo, e reproduzi-las em outro ramo. 
-* Não rebase commits que você tenha empurrado a um repo público *.
+Pega em todas as alterações que foram registadas num branch e volta a
+aplicá-las em outro branch.
+*Não deve ser feito rebase de commits que foram enviados para um repositório
+público*
 
 ```bash
-# Rebase experimentBranch para mestre
+# Faz Rebase de experimentBranch para master
 # git rebase <basebranch> <topicbranch>
 $ git rebase master experimentBranch
 ```
 
-[Leitura Adicional.](http://git-scm.com/book/en/Git-Branching-Rebasing)
+[Leitura adicional (EN).](http://git-scm.com/book/en/Git-Branching-Rebasing)
 
-### reset (CAUTELA)
+### reset (cuidado!)
 
-Repor o atual HEAD de estado especificado. Isto permite-lhe desfazer fusões (merge), 
-puxa (push), commits, acrescenta (add), e muito mais. É um grande comando, mas também 
-perigoso se não saber o que se está fazendo.
+Restabelece a HEAD atual ao estado definido. Isto permite reverter *merges*,
+*pulls*, *commits*, *adds* e outros. É um comando muito poderoso mas também
+perigoso quando não há certeza do que se está fazendo.
 
 ```bash
-# Repor a área de teste, para coincidir com o último commit (deixa diretório inalterado)
+# Restabelece a camada intermediária de registo para o último
+# commit (o directório fica sem alterações)
 $ git reset
 
-# Repor a área de teste, para coincidir com o último commit, e substituir diretório trabalhado
+# Restabelece a camada intermediária de registo para o último commit, e
+# sobrescreve o projeto atual
 $ git reset --hard
 
-# Move a ponta ramo atual para o especificado commit (deixa diretório inalterado)
-# Todas as alterações ainda existem no diretório.
+# Move a head do branch atual para o commit especificado, sem alterar o projeto.
+# todas as alterações ainda existem no projeto
 $ git reset 31f2bb1
 
-# Move a ponta ramo atual para trás, para o commit especificado
-# E faz o jogo dir trabalho (exclui mudanças não commitadas e todos os commits
-# Após o commit especificado).
+# Inverte a head do branch atual para o commit especificado
+# fazendo com que este esteja em sintonia com o diretório do projeto
+# Remove alterações não registadas e todos os commits após o commit especificado
 $ git reset --hard 31f2bb1
 ```
 
 ### rm
 
-O oposto do git add, git rm remove arquivos da atual árvore de trabalho.
+O oposto de git add, git rm remove arquivos do branch atual.
 
 ```bash
 # remove HelloWorld.c
 $ git rm HelloWorld.c
 
-# Remove um arquivo de um diretório aninhado
+# Remove um arquivo de um sub-directório
 $ git rm /pather/to/the/file/HelloWorld.c
 ```
 
-# # Mais informações
+## Informação complementar (EN)
 
 * [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
 
@@ -398,5 +410,3 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
 
 * [GitGuys](http://www.gitguys.com/)
-
-* [Git - guia prático](http://rogerdudler.github.io/git-guide/index.pt_BR.html)

@@ -479,9 +479,6 @@ myNumber === myNumberObj; // = false
 if (0){
     // Dieser Teil wird nicht ausgeführt, weil 0 'falsy' ist.
 }
-if (Number(0)){
-    // Dieser Teil des Codes wird ausgeführt, weil Number(0) zu wahr evaluiert.
-}
 
 // Das Wrapper-Objekt und die regulären, eingebauten Typen, teilen sich einen 
 // Prototyp; so ist es möglich zum Beispiel einem String weitere Funktionen 

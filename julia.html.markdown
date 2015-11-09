@@ -2,19 +2,20 @@
 language: Julia
 contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
+    - ["Pranit Bauva", "http://github.com/pranitbauva1997"]
 filename: learnjulia.jl
 ---
 
 Julia is a new homoiconic functional language focused on technical computing.
 While having the full power of homoiconic macros, first-class functions, and low-level control, Julia is as easy to learn and use as Python.
 
-This is based on the current development version of Julia, as of October 18th, 2013.
+This is based on Julia 0.3.
 
 ```ruby
 
 # Single line comments start with a hash (pound) symbol.
 #= Multiline comments can be written
-   by putting '#=' before the text  and '=#' 
+   by putting '#=' before the text  and '=#'
    after the text. They can also be nested.
 =#
 
@@ -81,23 +82,31 @@ false
 # Strings are created with "
 "This is a string."
 
+# Julia has several types of strings, including ASCIIString and UTF8String.
+# More on this in the Types section.
+
 # Character literals are written with '
 'a'
 
-# A string can be indexed like an array of characters
+# Some strings can be indexed like an array of characters
 "This is a string"[1] # => 'T' # Julia indexes from 1
 # However, this is will not work well for UTF8 strings,
 # so iterating over strings is recommended (map, for loops, etc).
 
 # $ can be used for string interpolation:
 "2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
-# You can put any Julia expression inside the parenthesis.
+# You can put any Julia expression inside the parentheses.
 
 # Another way to format strings is the printf macro.
 @printf "%d is less than %f" 4.5 5.3 # 5 is less than 5.300000
 
 # Printing is easy
 println("I'm Julia. Nice to meet you!")
+
+# String can be compared lexicographically
+"good" > "bye" # => true
+"good" == "good" # => true
+"1 + 2 = 3" == "1 + 2 = $(1+2)" # => true
 
 ####################################################
 ## 2. Variables and Collections
@@ -114,11 +123,11 @@ catch e
     println(e)
 end
 
-# Variable names start with a letter.
+# Variable names start with a letter or underscore.
 # After that, you can use letters, digits, underscores, and exclamation points.
 SomeOtherVar123! = 6 # => 6
 
-# You can also use unicode characters
+# You can also use certain unicode characters
 ☃ = 8 # => 8
 # These are especially handy for mathematical notation
 2 * π # => 6.283185307179586
@@ -190,7 +199,7 @@ end
 # inside the julia folder to find these files.
 
 # You can initialize arrays from ranges
-a = [1:5] # => 5-element Int64 Array: [1,2,3,4,5]
+a = [1:5;] # => 5-element Int64 Array: [1,2,3,4,5]
 
 # You can look at ranges with slice syntax.
 a[1:3] # => [1, 2, 3]
@@ -264,7 +273,7 @@ in(("two", 3), filled_dict) # => false
 haskey(filled_dict, "one") # => true
 haskey(filled_dict, 1) # => false
 
-# Trying to look up a non-existant key will raise an error
+# Trying to look up a non-existent key will raise an error
 try
     filled_dict["four"] # => ERROR: key not found: four in getindex at dict.jl:489
 catch e
@@ -314,7 +323,7 @@ end
 
 
 # For loops iterate over iterables.
-# Iterable types include Range, Array, Set, Dict, and String.
+# Iterable types include Range, Array, Set, Dict, and AbstractString.
 for animal=["dog", "cat", "mouse"]
     println("$animal is a mammal")
     # You can use $ to interpolate variables or expression into strings
@@ -386,6 +395,14 @@ function add(x, y)
 end
 
 add(5, 6) # => 11 after printing out "x is 5 and y is 6"
+
+# Compact assignment of functions
+f_add(x, y) = x + y # => "f (generic function with 1 method)"
+f_add(3, 4) # => 7
+
+# Function can also return multiple values as tuple
+f(x, y) = x + y, x - y
+f(3, 4) # => (7, -1)
 
 # You can define functions that take a variable number of
 # positional arguments
@@ -537,6 +554,17 @@ subtypes(Number) # => 6-element Array{Any,1}:
                  #     Real
 subtypes(Cat) # => 0-element Array{Any,1}
 
+# AbstractString, as the name implies, is also an abstract type
+subtypes(AbstractString)    # 8-element Array{Any,1}:
+                            #  Base.SubstitutionString{T<:AbstractString}
+                            #  DirectIndexString
+                            #  RepString
+                            #  RevString{T<:AbstractString}
+                            #  RopeString
+                            #  SubString{T<:AbstractString}
+                            #  UTF16String
+                            #  UTF8String
+
 # Every type has a super type; use the `super` function to get it.
 typeof(5) # => Int64
 super(Int64) # => Signed
@@ -546,17 +574,21 @@ super(Number) # => Any
 super(super(Signed)) # => Number
 super(Any) # => Any
 # All of these type, except for Int64, are abstract.
+typeof("fire") # => ASCIIString
+super(ASCIIString) # => DirectIndexString
+super(DirectIndexString) # => AbstractString
+# Likewise here with ASCIIString
 
 # <: is the subtyping operator
 type Lion <: Cat # Lion is a subtype of Cat
   mane_color
-  roar::String
+  roar::AbstractString
 end
 
 # You can define more constructors for your type
 # Just define a function of the same name as the type
 # and call an existing constructor to get a value of the correct type
-Lion(roar::String) = Lion("green",roar)
+Lion(roar::AbstractString) = Lion("green",roar)
 # This is an outer constructor because it's outside the type definition
 
 type Panther <: Cat # Panther is also a subtype of Cat
@@ -670,7 +702,7 @@ square_area(l) = l * l      # square_area (generic function with 1 method)
 square_area(5) #25
 
 # What happens when we feed square_area an integer?
-code_native(square_area, (Int32,))  
+code_native(square_area, (Int32,))
 	#	    .section    __TEXT,__text,regular,pure_instructions
 	#	Filename: none
 	#	Source line: 1              # Prologue
@@ -703,10 +735,10 @@ code_native(square_area, (Float64,))
 	#	    vmulsd  XMM0, XMM0, XMM0 # Scalar double precision multiply (AVX)
 	#	    pop RBP
 	#	    ret
-	#	
+	#
 # Note that julia will use floating point instructions if any of the
-# arguements are floats.
-# Let's calculate the area of a circle 
+# arguments are floats.
+# Let's calculate the area of a circle
 circle_area(r) = pi * r * r     # circle_area (generic function with 1 method)
 circle_area(5)                  # 78.53981633974483
 
@@ -737,7 +769,7 @@ code_native(circle_area, (Float64,))
 	#	    vmulsd  XMM0, XMM1, XMM0
 	#	    pop RBP
 	#	    ret
-	#	
+	#
 ```
 
 ## Further Reading

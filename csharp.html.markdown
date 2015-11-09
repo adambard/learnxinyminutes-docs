@@ -5,6 +5,9 @@ contributors:
     - ["Max Yankov", "https://github.com/golergka"]
     - ["Melvyn Laïly", "http://x2a.yt"]
     - ["Shaun McCarthy", "http://www.shaunmccarthy.com"]
+    - ["Wouter Van Schandevijl", "http://github.com/laoujin"]
+    - ["Jo Pearce", "http://github.com/jdpearce"]
+    - ["Chris Zimmerman", "https://github.com/chriszimmerman"]
 filename: LearnCSharp.cs
 ---
 
@@ -18,29 +21,36 @@ C# is an elegant and type-safe object-oriented language that enables developers 
 Multi-line comments look like this
 */
 /// <summary>
-/// This is an XML documentation comment
+/// This is an XML documentation comment which can be used to generate external
+/// documentation or provide context help within an IDE
 /// </summary>
+//public void MethodOrClassOrOtherWithParsableHelp() {}
 
-// Specify namespaces application will be using
+// Specify the namespaces this source code will be using
+// The namespaces below are all part of the standard .NET Framework Class Libary
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Dynamic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Net;
 using System.Threading.Tasks;
 using System.IO;
 
-// defines scope to organize code into "packages"
-namespace Learning
+// But this one is not:
+using System.Data.Entity;
+// In order to be able to use it, you need to add a dll reference
+// This can be done with the NuGet package manager: `Install-Package EntityFramework`
+
+// Namespaces define scope to organize code into "packages" or "modules"
+// Using this code from another source file: using Learning.CSharp;
+namespace Learning.CSharp
 {
     // Each .cs file should at least contain a class with the same name as the file
     // you're allowed to do otherwise, but shouldn't for sanity.
     public class LearnCSharp
     {
         // BASIC SYNTAX - skip to INTERESTING FEATURES if you have used Java or C++ before
-        public static void Syntax() 
+        public static void Syntax()
         {
             // Use Console.WriteLine to print lines
             Console.WriteLine("Hello World");
@@ -125,7 +135,7 @@ on a new line! ""Wow!"", the masses cried";
 
             // Use const or read-only to make a variable immutable
             // const values are calculated at compile time
-            const int HOURS_I_WORK_PER_WEEK = 9001;
+            const int HoursWorkPerWeek = 9001;
 
             ///////////////////////////////////////////////////
             // Data Structures
@@ -151,7 +161,7 @@ on a new line! ""Wow!"", the masses cried";
             // List<datatype> <var name> = new List<datatype>();
             List<int> intList = new List<int>();
             List<string> stringList = new List<string>();
-            List<int> z = new List<int> { 9000, 1000, 1337 }; // intialize
+            List<int> z = new List<int> { 9000, 1000, 1337 }; // initialize
             // The <> are for generics - Check out the cool stuff section
 
             // Lists don't default to a value;
@@ -228,7 +238,8 @@ on a new line! ""Wow!"", the masses cried";
             // Ternary operators
             // A simple if/else can be written as follows
             // <condition> ? <true> : <false>
-            string isTrue = (true) ? "True" : "False";
+            int toCompare = 17;
+            string isTrue = toCompare == 17 ? "True" : "False";
 
             // While loop
             int fooWhile = 0;
@@ -242,8 +253,15 @@ on a new line! ""Wow!"", the masses cried";
             int fooDoWhile = 0;
             do
             {
-                //Iterated 100 times, fooDoWhile 0->99
+                // Start iteration 100 times, fooDoWhile 0->99
+                if (false)
+                    continue; // skip the current iteration
+
                 fooDoWhile++;
+
+                if (fooDoWhile == 50)
+                    break; // breaks from the loop completely
+
             } while (fooDoWhile < 100);
 
             //for loop structure => for(<start_statement>; <conditional>; <step>)
@@ -301,7 +319,7 @@ on a new line! ""Wow!"", the masses cried";
             // Converting data
 
             // Convert String To Integer
-            // this will throw an Exception on failure
+            // this will throw a FormatException on failure
             int.Parse("123");//returns an integer version of "123"
 
             // try parse will default to type default on failure
@@ -315,6 +333,11 @@ on a new line! ""Wow!"", the masses cried";
             Convert.ToString(123);
             // or
             tryInt.ToString();
+
+            // Casting
+            // Cast decimal 15 to a int
+            // and then implicitly cast to long
+            long x = (int) 15M;
         }
 
         ///////////////////////////////////////
@@ -350,11 +373,11 @@ on a new line! ""Wow!"", the masses cried";
         //
         // INTERESTING FEATURES
         //
-        
+
         // DEFAULT METHOD SIGNATURES
 
         public // Visibility
-        static // Allows for direct call on class without object 
+        static // Allows for direct call on class without object
         int // Return Type,
         MethodSignatures(
             int maxCount, // First variable, expects an int
@@ -362,21 +385,26 @@ on a new line! ""Wow!"", the masses cried";
             int another = 3,
             params string[] otherParams // captures all other parameters passed to method
         )
-        { 
+        {
             return -1;
         }
 
         // Methods can have the same name, as long as the signature is unique
-        public static void MethodSignatures(string maxCount)
+        // A method that differs only in return type is not unique
+        public static void MethodSignatures(
+            ref int maxCount, // Pass by reference
+            out int count)
         {
+            //the argument passed in as 'count' will hold the value of 15 outside of this function
+            count = 15; // out param must be assigned before control leaves the method
         }
 
         // GENERICS
         // The classes for TKey and TValue is specified by the user calling this function.
         // This method emulates the SetDefault of Python
         public static TValue SetDefault<TKey, TValue>(
-            IDictionary<TKey, TValue> dictionary, 
-            TKey key, 
+            IDictionary<TKey, TValue> dictionary,
+            TKey key,
             TValue defaultItem)
         {
             TValue result;
@@ -385,7 +413,7 @@ on a new line! ""Wow!"", the masses cried";
             return result;
         }
 
-        // You can narrow down the objects that are passed in 
+        // You can narrow down the objects that are passed in
         public static void IterateAndPrint<T>(T toPrint) where T: IEnumerable<int>
         {
             // We can iterate, since T is a IEnumerable
@@ -393,12 +421,52 @@ on a new line! ""Wow!"", the masses cried";
                 // Item is an int
                 Console.WriteLine(item.ToString());
         }
+        
+        // YIELD
+        // Usage of the "yield" keyword indicates that the method it appears in is an Iterator
+        // (this means you can use it in a foreach loop)
+        public static IEnumerable<int> YieldCounter(int limit = 10)
+        {
+            for (var i = 0; i < limit; i++)
+                yield return i;
+        }
+
+        // which you would call like this :
+        public static void PrintYieldCounterToConsole()
+        {
+            foreach (var counter in YieldCounter())
+                Console.WriteLine(counter);
+        }
+        
+        // you can use more than one "yield return" in a method
+        public static IEnumerable<int> ManyYieldCounter()
+        {
+            yield return 0;
+            yield return 1;
+            yield return 2;
+            yield return 3;
+        }
+        
+        // you can also use "yield break" to stop the Iterator
+        // this method would only return half of the values from 0 to limit.
+        public static IEnumerable<int> YieldCounterWithBreak(int limit = 10)
+        {
+            for (var i = 0; i < limit; i++)
+            {
+                if (i > limit/2) yield break;
+                yield return i;
+            }
+        }             
 
         public static void OtherInterestingFeatures()
         {
             // OPTIONAL PARAMETERS
             MethodSignatures(3, 1, 3, "Some", "Extra", "Strings");
-            MethodSignatures(3, another: 3); // explicity set a parameter, skipping optional ones
+            MethodSignatures(3, another: 3); // explicitly set a parameter, skipping optional ones
+
+            // BY REF AND OUT PARAMETERS
+            int maxCount = 0, count; // ref params must have value
+            MethodSignatures(ref maxCount, out count);
 
             // EXTENSION METHODS
             int i = 3;
@@ -414,6 +482,9 @@ on a new line! ""Wow!"", the masses cried";
             // ?? is syntactic sugar for specifying default value (coalesce)
             // in case variable is null
             int notNullable = nullable ?? 0; // 0
+            
+            // ?. is an operator for null-propagation - a shorthand way of checking for null
+            nullable?.Print(); // Use the Print() extension method if nullable isn't null
 
             // IMPLICITLY TYPED VARIABLES - you can let the compiler work out what the type is:
             var magic = "magic is a string, at compile time, so you still get type safety";
@@ -421,13 +492,13 @@ on a new line! ""Wow!"", the masses cried";
 
             // GENERICS
             //
-            var phonebook = new Dictionary<string, string>() { 
+            var phonebook = new Dictionary<string, string>() {
                 {"Sarah", "212 555 5555"} // Add some entries to the phone book
             };
 
             // Calling SETDEFAULT defined as a generic above
             Console.WriteLine(SetDefault<string,string>(phonebook, "Shaun", "No Phone")); // No Phone
-            // nb, you don't need to specify the TKey and TValue since they can be 
+            // nb, you don't need to specify the TKey and TValue since they can be
             // derived implicitly
             Console.WriteLine(SetDefault(phonebook, "Sarah", "No Phone")); // 212 555 5555
 
@@ -435,28 +506,53 @@ on a new line! ""Wow!"", the masses cried";
             Func<int, int> square = (x) => x * x; // Last T item is the return value
             Console.WriteLine(square(3)); // 9
 
+            // ERROR HANDLING - coping with an uncertain world
+            try
+            {
+                var funBike = PennyFarthing.CreateWithGears(6);
+
+                // will no longer execute because CreateWithGears throws an exception
+                string some = "";
+                if (true) some = null;
+                some.ToLower(); // throws a NullReferenceException
+            }
+            catch (NotSupportedException)
+            {
+                Console.WriteLine("Not so much fun now!");
+            }
+            catch (Exception ex) // catch all other exceptions
+            {
+                throw new ApplicationException("It hit the fan", ex);
+                // throw; // A rethrow that preserves the callstack
+            }
+            // catch { } // catch-all without capturing the Exception
+            finally
+            {
+                // executes after try or catch
+            }
+
             // DISPOSABLE RESOURCES MANAGEMENT - let you handle unmanaged resources easily.
             // Most of objects that access unmanaged resources (file handle, device contexts, etc.)
-            // implement the IDisposable interface. The using statement takes care of 
+            // implement the IDisposable interface. The using statement takes care of
             // cleaning those IDisposable objects for you.
             using (StreamWriter writer = new StreamWriter("log.txt"))
             {
                 writer.WriteLine("Nothing suspicious here");
                 // At the end of scope, resources will be released.
                 // Even if an exception is thrown.
-            } 
+            }
 
             // PARALLEL FRAMEWORK
             // http://blogs.msdn.com/b/csharpfaq/archive/2010/06/01/parallel-programming-in-net-framework-4-getting-started.aspx
-            var websites = new string[] { 
-                "http://www.google.com", "http://www.reddit.com", 
+            var websites = new string[] {
+                "http://www.google.com", "http://www.reddit.com",
                 "http://www.shaunmccarthy.com"
             };
             var responses = new Dictionary<string, string>();
-            
+
             // Will spin up separate threads for each request, and join on them
             // before going to the next step!
-            Parallel.ForEach(websites, 
+            Parallel.ForEach(websites,
                 new ParallelOptions() {MaxDegreeOfParallelism = 3}, // max of 3 threads
                 website =>
             {
@@ -480,7 +576,7 @@ on a new line! ""Wow!"", the masses cried";
                 (introduceTo) => string.Format("Hey {0}, this is {1}", student.FirstName, introduceTo));
             Console.WriteLine(student.Introduce("Beth"));
 
-            // IQUERYABLE<T> - almost all collections implement this, which gives you a lot of 
+            // IQUERYABLE<T> - almost all collections implement this, which gives you a lot of
             // very useful Map / Filter / Reduce style methods
             var bikes = new List<Bicycle>();
             bikes.Sort(); // Sorts the array
@@ -502,8 +598,8 @@ on a new line! ""Wow!"", the masses cried";
             // ASPARALLEL
             // And this is where things get wicked - combines linq and parallel operations
             var threeWheelers = bikes.AsParallel().Where(b => b.Wheels == 3).Select(b => b.Name);
-            // this will happen in parallel! Threads will automagically be spun up and the 
-            // results divvied amongst them! Amazing for large datasets when you have lots of 
+            // this will happen in parallel! Threads will automagically be spun up and the
+            // results divvied amongst them! Amazing for large datasets when you have lots of
             // cores
 
             // LINQ - maps a store to IQueryable<T> objects, with delayed execution
@@ -521,9 +617,9 @@ on a new line! ""Wow!"", the masses cried";
                 .Select(b => b.Name); // still no query run
 
             // Now the query runs, but opens a reader, so only populates are you iterate through
-            foreach (string bike in query) 
+            foreach (string bike in query)
                 Console.WriteLine(result);
-            
+
 
 
         }
@@ -556,7 +652,7 @@ on a new line! ""Wow!"", the masses cried";
             {
                 return _cadence;
             }
-            set // set - define a method to set a proprety
+            set // set - define a method to set a property
             {
                 _cadence = value; // Value is the value passed in to the setter
             }
@@ -575,7 +671,7 @@ on a new line! ""Wow!"", the masses cried";
             private set; // You can set modifiers on the get/set methods
         }
 
-        int _speed; // Everything is private by default: Only accessible from within this class. 
+        int _speed; // Everything is private by default: Only accessible from within this class.
                     // can also use keyword private
         public string Name { get; set; }
 
@@ -595,10 +691,26 @@ on a new line! ""Wow!"", the masses cried";
 
         public BikeBrand Brand; // After declaring an enum type, we can declare the field of this type
 
+        // Decorate an enum with the FlagsAttribute to indicate that multiple values can be switched on
+        [Flags] // Any class derived from Attribute can be used to decorate types, methods, parameters etc
+        public enum BikeAccessories
+        {
+            None = 0,
+            Bell = 1,
+            MudGuards = 2, // need to set the values manually!
+            Racks = 4,
+            Lights = 8,
+            FullPackage = Bell | MudGuards | Racks | Lights
+        }
+
+        // Usage: aBike.Accessories.HasFlag(Bicycle.BikeAccessories.Bell)
+        // Before .NET 4: (aBike.Accessories & Bicycle.BikeAccessories.Bell) == Bicycle.BikeAccessories.Bell
+        public BikeAccessories Accessories { get; set; }
+
         // Static members belong to the type itself rather then specific object.
         // You can access them without a reference to any object:
         // Console.WriteLine("Bicycles created: " + Bicycle.bicyclesCreated);
-        static public int BicyclesCreated = 0;
+        public static int BicyclesCreated { get; set; }
 
         // readonly values are set at run time
         // they can only be assigned upon declaration or in a constructor
@@ -606,7 +718,7 @@ on a new line! ""Wow!"", the masses cried";
 
         // Constructors are a way of creating classes
         // This is a default constructor
-        public Bicycle() 
+        public Bicycle()
         {
             this.Gear = 1; // you can access members of the object with the keyword this
             Cadence = 50;  // but you don't always need it
@@ -618,13 +730,13 @@ on a new line! ""Wow!"", the masses cried";
 
         // This is a specified constructor (it contains arguments)
         public Bicycle(int startCadence, int startSpeed, int startGear,
-                       string name, bool hasCardsInSpokes, BikeBrand brand) 
+                       string name, bool hasCardsInSpokes, BikeBrand brand)
             : base() // calls base first
         {
-            Gear = startGear; 
+            Gear = startGear;
             Cadence = startCadence;
             _speed = startSpeed;
-            Name = name; 
+            Name = name;
             _hasCardsInSpokes = hasCardsInSpokes;
             Brand = brand;
         }
@@ -680,9 +792,9 @@ on a new line! ""Wow!"", the masses cried";
 
         // It's also possible to define custom Indexers on objects.
         // All though this is not entirely useful in this example, you
-        // could do bicycle[0] which yields "chris" to get the first passenger or
+        // could do bicycle[0] which returns "chris" to get the first passenger or
         // bicycle[1] = "lisa" to set the passenger. (of this apparent quattrocycle)
-        private string[] passengers = { "chris", "phil", "darren", "regina" }
+        private string[] passengers = { "chris", "phil", "darren", "regina" };
 
         public string this[int i]
         {
@@ -691,7 +803,7 @@ on a new line! ""Wow!"", the masses cried";
             }
 
             set {
-                return passengers[i] = value;
+                passengers[i] = value;
             }
         }
 
@@ -737,8 +849,15 @@ on a new line! ""Wow!"", the masses cried";
             }
             set
             {
-                throw new ArgumentException("You can't change gears on a PennyFarthing");
+                throw new InvalidOperationException("You can't change gears on a PennyFarthing");
             }
+        }
+
+        public static PennyFarthing CreateWithGears(int gears)
+        {
+            var penny = new PennyFarthing(1, 1);
+            penny.Gear = gears; // Oops, can't do this!
+            return penny;
         }
 
         public override string Info()
@@ -760,7 +879,8 @@ on a new line! ""Wow!"", the masses cried";
         bool Broken { get; } // interfaces can contain properties as well as methods & events
     }
 
-    // Class can inherit only one other class, but can implement any amount of interfaces
+    // Class can inherit only one other class, but can implement any amount of interfaces, however
+    // the base class name must be the first in the list and all interfaces follow
     class MountainBike : Bicycle, IJumpable, IBreakable
     {
         int damage = 0;
@@ -780,11 +900,11 @@ on a new line! ""Wow!"", the masses cried";
     }
 
     /// <summary>
-    /// Used to connect to DB for LinqToSql example. 
+    /// Used to connect to DB for LinqToSql example.
     /// EntityFramework Code First is awesome (similar to Ruby's ActiveRecord, but bidirectional)
     /// http://msdn.microsoft.com/en-us/data/jj193542.aspx
     /// </summary>
-    public class BikeRepository : DbSet
+    public class BikeRepository : DbContext
     {
         public BikeRepository()
             : base()
@@ -793,18 +913,49 @@ on a new line! ""Wow!"", the masses cried";
 
         public DbSet<Bicycle> Bikes { get; set; }
     }
+    
+    // Classes can be split across multiple .cs files
+    // A1.cs
+    public partial class A 
+    {
+        public static void A1()
+        {
+            Console.WriteLine("Method A1 in class A");
+        }
+    }
+    
+    // A2.cs
+    public partial class A
+    {
+        public static void A2()
+        {
+            Console.WriteLine("Method A2 in class A");
+        }
+    }
+    
+    // Program using the partial class "A"
+    public class Program 
+    {
+        static void Main()
+        {
+            A.A1();
+            A.A2();
+        }
+    }
 } // End Namespace
 ```
 
 ## Topics Not Covered
 
- * Flags
  * Attributes
- * Static properties
- * Exceptions, Abstraction
- * ASP.NET (Web Forms/MVC/WebMatrix)
- * Winforms
- * Windows Presentation Foundation (WPF)
+ * async/await, pragma directives
+ * Web Development
+ 	* ASP.NET MVC & WebApi (new)
+ 	* ASP.NET Web Forms (old)
+ 	* WebMatrix (tool)
+ * Desktop Development
+ 	* Windows Presentation Foundation (WPF) (new)
+ 	* Winforms (old)
 
 ## Further Reading
 
@@ -817,7 +968,4 @@ on a new line! ""Wow!"", the masses cried";
  * [ASP.NET Web Matrix Tutorials](http://www.asp.net/web-pages/tutorials)
  * [ASP.NET Web Forms Tutorials](http://www.asp.net/web-forms/tutorials)
  * [Windows Forms Programming in C#](http://www.amazon.com/Windows-Forms-Programming-Chris-Sells/dp/0321116208)
-
-
-
-[C# Coding Conventions](http://msdn.microsoft.com/en-us/library/vstudio/ff926074.aspx)
+ * [C# Coding Conventions](http://msdn.microsoft.com/en-us/library/vstudio/ff926074.aspx)

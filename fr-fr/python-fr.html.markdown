@@ -14,12 +14,11 @@ Je suis tombé amoureux de Python de par la clarté de sa syntaxe. C'est pratiqu
 
 Vos retours sont grandement appréciés. Vous pouvez me contacter sur Twitter [@louiedinh](http://twitter.com/louiedinh) ou par e-mail: louiedinh [at] [google's email service]
 
-NB: Cet artice s'applique spécifiquement à Python 2.7, mais devrait s'appliquer pour toute version Python 2.x
-Vous pourrez bientôt trouver un article pour Python 3!
+N.B. : Cet article s'applique spécifiquement à Python 2.7, mais devrait s'appliquer pour toute version Python 2.x. Python 2.7 est en fin de vie et ne sera plus maintenu à partir de 2020, il est donc recommandé d'apprendre Python avec Python 3. Pour Python 3.x, il existe un autre [tutoriel pour Python 3](http://learnxinyminutes.com/docs/fr-fr/python3-fr/).
 
 ```python
 # Une ligne simple de commentaire commence par un dièse
-""" Les lignes de commenatires multipes peuvent être écrites
+""" Les lignes de commentaires multipes peuvent être écrites
     en utilisant 3 guillemets ("), et sont souvent utilisées
     pour les commentaires
 """

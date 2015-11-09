@@ -11,7 +11,10 @@ contributors:
   - ["Ariel Krakowski", "http://www.learneroo.com"]
   - ["Dzianis Dashkevich", "https://github.com/dskecse"]
   - ["Levi Bostian", "https://github.com/levibostian"]
-
+  - ["Rahil Momin", "https://github.com/iamrahil"]
+  - ["Gabriel Halley", "https://github.com/ghalley"]
+  - ["Persa Zula", "http://persazula.com"]
+  - ["Jake Faris", "https://github.com/farisj"]
 ---
 
 ```ruby
@@ -38,6 +41,12 @@ You shouldn't either
 10 * 2 #=> 20
 35 / 5 #=> 7
 2**5 #=> 32
+5 % 3 #=> 2
+
+# Bitwise operators
+3 & 5 #=> 1
+3 | 5 #=> 7
+3 ^ 5 #=> 6
 
 # Arithmetic is just syntactic sugar
 # for calling a method on an object
@@ -45,7 +54,7 @@ You shouldn't either
 10.* 5 #=> 50
 
 # Special values are objects
-nil # Nothing to see here
+nil # equivalent to null in other languages
 true # truth
 false # falsehood
 
@@ -60,8 +69,6 @@ false.class #=> FalseClass
 # Inequality
 1 != 1 #=> false
 2 != 1 #=> true
-!true  #=> false
-!false #=> true
 
 # apart from false itself, nil is the only other 'falsey' value
 
@@ -74,6 +81,26 @@ false.class #=> FalseClass
 1 > 10 #=> false
 2 <= 2 #=> true
 2 >= 2 #=> true
+
+# Combined comparison operator
+1 <=> 10 #=> -1
+10 <=> 1 #=> 1
+1 <=> 1 #=> 0
+
+# Logical operators
+true && false #=> false
+true || false #=> true
+!true #=> false
+
+# There are alternate versions of the logical operators with much lower
+# precedence. These are meant to be used as flow-control constructs to chain
+# statements together until one of them returns true or false.
+
+# `do_something_else` only called if `do_something` succeeds.
+do_something() and do_something_else()
+# `log_error` only called if `do_something` fails.
+do_something() or log_error()
+
 
 # Strings are objects
 
@@ -92,8 +119,20 @@ placeholder = 'use string interpolation'
 'hello ' + 3 #=> TypeError: can't convert Fixnum into String
 'hello ' + 3.to_s #=> "hello 3"
 
-# print to the output
+# Combine strings and operators
+'hello ' * 3 #=> "hello hello hello "
+
+# Append to string
+'hello' << ' world' #=> "hello world"
+
+# print to the output with a newline at the end
 puts "I'm printing!"
+#=> I'm printing!
+#=> nil
+
+# print to the output without a newline
+print "I'm printing!"
+#=> I'm printing! => nil
 
 # Variables
 x = 25 #=> 25
@@ -140,6 +179,7 @@ array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 # Arrays can be indexed
 # From the front
 array[0] #=> 1
+array.first #=> 1
 array[12] #=> nil
 
 # Like arithmetic, [var] access
@@ -150,15 +190,25 @@ array.[] 12 #=> nil
 
 # From the end
 array[-1] #=> 5
+array.last #=> 5
 
 # With a start index and length
 array[2, 3] #=> [3, 4, 5]
+
+# Reverse an Array
+a=[1,2,3]
+a.reverse! #=> [3,2,1]
 
 # Or with a range
 array[1..3] #=> [2, 3, 4]
 
 # Add to an array like this
 array << 6 #=> [1, 2, 3, 4, 5, 6]
+# Or like this
+array.push(6) #=> [1, 2, 3, 4, 5, 6]
+
+# Check if an item exists in an array
+array.include?(1) #=> true
 
 # Hashes are Ruby's primary dictionary with keys/value pairs.
 # Hashes are denoted with curly braces:
@@ -178,6 +228,10 @@ hash['nothing here'] #=> nil
 new_hash = { defcon: 3, action: true }
 
 new_hash.keys #=> [:defcon, :action]
+
+# Check existence of keys and values in hash
+new_hash.has_key?(:defcon) #=> true
+new_hash.has_value?(3) #=> true
 
 # Tip: Both Arrays and Hashes are Enumerable
 # They share a lot of useful methods such as each, map, count, and more
@@ -231,6 +285,12 @@ hash.each do |key, value|
   puts "#{key} is #{value}"
 end
 
+# If you still need and index you can use "each_with_index" and define an index
+# variable
+array.each_with_index do |element, index|
+  puts "#{element} is number #{index} in the array"
+end
+
 counter = 1
 while counter <= 5 do
   puts "iteration #{counter}"
@@ -241,6 +301,19 @@ end
 #=> iteration 3
 #=> iteration 4
 #=> iteration 5
+
+# There are a bunch of other helpful looping functions in Ruby,
+# for example "map", "reduce", "inject", the list goes on. Map,
+# for instance, takes the array it's looping over, does something
+# to it as defined in your block, and returns an entirely new array.
+array = [1,2,3,4,5]
+doubled = array.map do |element|
+  element * 2
+end
+puts doubled
+#=> [2,4,6,8,10]
+puts array
+#=> [1,2,3,4,5]
 
 grade = 'B'
 
@@ -280,9 +353,9 @@ rescue NoMemoryError => exception_variable
   puts 'NoMemoryError was raised', exception_variable
 rescue RuntimeError => other_exception_variable
   puts 'RuntimeError was raised now'
-else 
+else
   puts 'This runs if no exceptions were thrown at all'
-ensure 
+ensure
   puts 'This code always runs no matter what'
 end
 

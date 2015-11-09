@@ -2,13 +2,13 @@
 category: tool
 tool: tmux
 contributors:
-    - ["wzsk", "https://github.com/wzsk"]
+    - ["mdln", "https://github.com/mdln"]
 filename: LearnTmux.txt
 ---
 
 
-<a href="http://tmux.sourceforge.net/">
-tmux</a> is a terminal multiplexer: it enables a number of terminals
+[tmux](http://tmux.sourceforge.net)
+is a terminal multiplexer: it enables a number of terminals
 to be created, accessed, and controlled from a single screen. tmux
 may be detached from a screen and continue running in the background
 then later reattached.
@@ -38,7 +38,7 @@ then later reattached.
     lsp              # List panes
      -a              # List all panes
      -s              # List all panes in session
-     -t              # List app panes in target
+     -t              # List all panes in target
 
     kill-window      # Kill current window
      -t "#"          # Kill target window
@@ -50,13 +50,15 @@ then later reattached.
      -a              # Kill all sessions
      -a -t "#"       # Kill all sessions but the target
 
+```
 
 
-## Key Bindings
+### Key Bindings
 
-#   The method of controlling an attached tmux session is via key
-# combinations called 'Prefix' keys.
+The method of controlling an attached tmux session is via key
+combinations called 'Prefix' keys.
 
+```
 ----------------------------------------------------------------------
   (C-b) = Ctrl + b    # 'Prefix' combination required to use keybinds
 
@@ -109,9 +111,8 @@ then later reattached.
 
 ### Configuring ~/.tmux.conf
 
-  tmux.conf can be used to set options automatically on start up, much
+tmux.conf can be used to set options automatically on start up, much
 like how .vimrc or init.el are used.
-
 
 ```
 # Example tmux.conf
@@ -236,8 +237,19 @@ set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | 
 
 ```
 
-<a href="http://tmux.sourceforge.net/">Tmux | Home</a><br>
-<a href="http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/tmux.1?query=tmux">Tmux Manual page</a><br>
-<a href="http://wiki.gentoo.org/wiki/Tmux">Gentoo Wiki</a><br>
-<a href="https://wiki.archlinux.org/index.php/Tmux">Archlinux Wiki</a><br>
-<a href="https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux">Display CPU/MEM % in statusbar</a><br>
+
+### References
+
+[Tmux | Home](http://tmux.sourceforge.net)
+
+[Tmux Manual page](http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/tmux.1?query=tmux)
+
+[Gentoo Wiki](http://wiki.gentoo.org/wiki/Tmux)
+
+[Archlinux Wiki](https://wiki.archlinux.org/index.php/Tmux)
+
+[Display CPU/MEM % in statusbar](https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux)
+
+[tmuxinator - Manage complex tmux sessions](https://github.com/tmuxinator/tmuxinator) 
+
+

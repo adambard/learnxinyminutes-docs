@@ -7,6 +7,7 @@ contributors:
   - ["Joel Walden", "http://joelwalden.net"]
   - ["Luke Holder", "http://twitter.com/lukeholder"]
   - ["lidashuang", "https://github.com/lidashuang"]
+  - ["ftwbzhao", "https://github.com/ftwbzhao"]
 translators:
   - ["Lin Xiangyu", "https://github.com/oa414"]
 ---
@@ -120,11 +121,11 @@ status == :approved #=> false
 # 数组
 
 # 这是一个数组
-[1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
+array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 
 # 数组可以包含不同类型的元素
 
-array = [1, "hello", false] #=> => [1, "hello", false]
+[1, "hello", false] #=> [1, "hello", false]
 
 # 数组可以被索引
 # 从前面开始
@@ -140,8 +141,8 @@ array.[] 12 #=> nil
 # 从尾部开始
 array[-1] #=> 5
 
-# 同时指定开始的位置和结束的位置
-array[2, 4] #=> [3, 4, 5]
+# 同时指定开始的位置和长度
+array[2, 3] #=> [3, 4, 5]
 
 # 或者指定一个范围
 array[1..3] #=> [2, 3, 4]

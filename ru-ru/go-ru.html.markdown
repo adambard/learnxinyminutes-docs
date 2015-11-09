@@ -65,7 +65,7 @@ func beyondHello() {
     learnTypes()                            // < y minutes, learn more!
 }
 
-// Функция имеющая входные параметры и возврат нескольких значений.
+// Функция, имеющая входные параметры и возвращающая несколько значений.
 func learnMultiple(x, y int) (sum, prod int) {
     return x + y, x * y // Возврат двух значений.
 }

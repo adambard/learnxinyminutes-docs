@@ -83,7 +83,7 @@ True ; => True
 (greet "bilbo") ;=> "hello bilbo"
 
 ; functions can take optional arguments as well as keyword arguments
-(defn foolist [arg1 &optional [arg2 2]]
+(defn foolists [arg1 &optional [arg2 2]]
   [arg1 arg2])
 
 (foolists 3) ;=> [3 2]

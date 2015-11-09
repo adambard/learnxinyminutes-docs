@@ -9,7 +9,7 @@ translators:
 lang: pt-br
 ---
 
-Groovy - Uma linguagem dinâmica para a plataforma Java. [Leia mais aqui.](http://groovy.codehaus.org)
+Groovy - Uma linguagem dinâmica para a plataforma Java. [Leia mais aqui.](http://www.groovy-lang.org/)
 
 ```groovy
 
@@ -236,7 +236,7 @@ for ( e in map ) {
 
   Sobrecarregamento de Operadores para uma lsita dos operadores comuns que
   Grooby suporta:
-  http://groovy.codehaus.org/Operator+Overloading
+  http://www.groovy-lang.org/operators.html#Operator-Overloading
 
   Operadores Groovy úteis
 */
@@ -255,7 +255,7 @@ def nomeUsuario = usuario?.nomeUsuario
   Um closure, em Grooby, é como um "bloco de código" ou um ponteiro para método.
   É um pedação de código que é definido e executado em um momento posterior.
 
-  Mais informação em: http://groovy.codehaus.org/Closures+-+Formal+Definition
+  Mais informação em: http://www.groovy-lang.org/closures.html
 */
 //Exemplo:
 def clos = { println "Hello World!" }
@@ -413,11 +413,11 @@ assert soma(2,5) == 7
 
 ## Referências
 
-[Groovy documentation](http://groovy.codehaus.org/Documentation)
+[Groovy documentation](http://www.groovy-lang.org/documentation.html)
 
 [Groovy web console](http://groovyconsole.appspot.com/)
 
-Junte-se a um [grupo de usuários Groovy](http://groovy.codehaus.org/User+Groups)
+Junte-se a um [grupo de usuários Groovy](http://www.groovy-lang.org/usergroups.html)
 
 ## Livro
 

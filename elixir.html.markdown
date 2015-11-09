@@ -91,6 +91,11 @@ string.
 <<1,2,3>> <> <<4,5>> #=> <<1,2,3,4,5>>
 "hello " <> "world"  #=> "hello world"
 
+# Ranges are represented as `start..end` (both inclusive)
+1..10 #=> 1..10
+lower..upper = 1..10 # Can use pattern matching on ranges as well
+[lower, upper] #=> [1, 10]
+
 ## ---------------------------
 ## -- Operators
 ## ---------------------------
@@ -190,7 +195,7 @@ cond do
     "But I will"
 end
 
-# It is common to see the last condition equal to `true`, which will always match.
+# It is common to set the last condition equal to `true`, which will always match.
 cond do
   1 + 1 == 3 ->
     "I will never be seen"
@@ -338,6 +343,7 @@ rescue
   RuntimeError -> "rescued a runtime error"
   _error -> "this will rescue any error"
 end
+#=> "rescued a runtime error"
 
 # All exceptions have a message
 try do
@@ -346,6 +352,7 @@ rescue
   x in [RuntimeError] ->
     x.message
 end
+#=> "some error"
 
 ## ---------------------------
 ## -- Concurrency
@@ -364,6 +371,13 @@ spawn(f) #=> #PID<0.40.0>
 # messages to the process. To do message passing we use the `send` operator.
 # For all of this to be useful we need to be able to receive messages. This is
 # achieved with the `receive` mechanism:
+
+# The `receive do` block is used to listen for messages and process
+# them when they are received. A `receive do` block will only
+# process one received message. In order to process multiple
+# messages, a function with a `receive do` block must recursively
+# call itself to get into the `receive do` block again.
+
 defmodule Geometry do
   def area_loop do
     receive do
@@ -379,6 +393,8 @@ end
 
 # Compile the module and create a process that evaluates `area_loop` in the shell
 pid = spawn(fn -> Geometry.area_loop() end) #=> #PID<0.40.0>
+# Alternatively
+pid = spawn(Geometry, :area_loop, [])
 
 # Send a message to `pid` that will match a pattern in the receive statement
 send pid, {:rectangle, 2, 3}
