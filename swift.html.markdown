@@ -211,7 +211,7 @@ greet("Bob", "Tuesday")
 func greet2(#requiredName: String, externalParamName localParamName: String) -> String {
     return "Hello \(requiredName), the day is \(localParamName)"
 }
-greet2(requiredName:"John", externalParamName: "Sunday")
+greet2(requiredName: "John", externalParamName: "Sunday")
 
 // Function that returns multiple items in a tuple
 func getGasPrices() -> (Double, Double, Double) {
@@ -223,6 +223,16 @@ let price = pricesTuple.2 // 3.79
 let (_, price1, _) = pricesTuple // price1 == 3.69
 println(price1 == pricesTuple.1) // true
 println("Gas price: \(price)")
+
+// Named tuple params
+func getGasPrices2() -> (lowestPrice: Double, highestPrice: Double, midPrice: Double) {
+    return (1.77, 37.70, 7.37)
+}
+let pricesTuple2 = getGasPrices2()
+let price2 = pricesTuple2.lowestPrice
+let (_, price3, _) = pricesTuple2
+println(pricesTuple2.highestPrice == pricesTuple2.1) // true
+println("Highest gas price: \(pricesTuple2.highestPrice)")
 
 // Variadic Args
 func setup(numbers: Int...) {
@@ -335,6 +345,11 @@ internal class Rect: Shape {
             // `newValue` is an implicit variable available to setters
             sideLength = newValue / 4
         }
+    }
+    
+    // Computed properties must be declared as `var`, you know, cause they can change
+    var smallestSideLength: Int {
+        return self.sideLength - 1
     }
     
     // Lazily load a property
