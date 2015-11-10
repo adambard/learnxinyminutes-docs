@@ -149,6 +149,14 @@ var explicitEmptyMutableDictionary: [String: Float] = [:] // same as above
 // MARK: Control Flow
 //
 
+// Condition statements support "where" clauses, which can be used
+// to help provide conditions on optional values.
+// Both the assignment and the "where" clause must pass.
+let someNumber = Optional<Int>(7)
+if let num = someNumber where num > 3 {
+    print("num is greater than 3")
+}
+
 // for loop (array)
 let myArray = [1, 1, 2, 3, 5]
 for value in myArray {
@@ -198,7 +206,6 @@ default: // required (in order to cover all possible input)
     let vegetableComment = "Everything tastes good in soup."
 }
 
-
 //
 // MARK: Functions
 //
@@ -240,7 +247,7 @@ let (_, price1, _) = pricesTuple // price1 == 3.69
 print(price1 == pricesTuple.1) // true
 print("Gas price: \(price)")
 
-// Named tuple params
+// Labeled/named tuple params
 func getGasPrices2() -> (lowestPrice: Double, highestPrice: Double, midPrice: Double) {
     return (1.77, 37.70, 7.37)
 }
@@ -249,6 +256,18 @@ let price2 = pricesTuple2.lowestPrice
 let (_, price3, _) = pricesTuple2
 print(pricesTuple2.highestPrice == pricesTuple2.1) // true
 print("Highest gas price: \(pricesTuple2.highestPrice)")
+
+// guard statements
+func testGuard() {
+    // guards provide early exits or breaks, placing the error handler code near the conditions.
+    // it places variables it declares in the same scope as the guard statement.
+    guard let aNumber = Optional<Int>(7) else {
+        return
+    }
+
+    print("number is \(aNumber)")
+}
+testGuard()
 
 // Variadic Args
 func setup(numbers: Int...) {
