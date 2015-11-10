@@ -32,7 +32,7 @@ import UIKit
 
 // In Swift 2, println and print were combined into one print method. Print automatically appends a new line.
 print("Hello, world") // println is now print
-print("Hello, world", appendNewLine: false) // printing without appending a newline
+print("Hello, world", terminator: "") // printing without appending a newline
 
 // variables (var) value can change after being set
 // constants (let) value can NOT be changed after being set
@@ -60,14 +60,14 @@ let piText = "Pi = \(π), Pi 2 = \(π * 2)" // String interpolation
 print("Build value: \(buildValue)") // Build value: 7
 
 /*
-    Optionals are a Swift language feature that either contains a value,
-    or contains nil (no value) to indicate that a value is missing.
-    A question mark (?) after the type marks the value as optional.
+Optionals are a Swift language feature that either contains a value,
+or contains nil (no value) to indicate that a value is missing.
+A question mark (?) after the type marks the value as optional.
 
-    Because Swift requires every property to have a value, even nil must be
-    explicitly stored as an Optional value.
+Because Swift requires every property to have a value, even nil must be
+explicitly stored as an Optional value.
 
-    Optional<T> is an enum.
+Optional<T> is an enum.
 */
 var someOptionalString: String? = "optional" // Can be nil
 // same as above, but ? is a postfix operator (syntax candy)
@@ -84,9 +84,9 @@ if someOptionalString != nil {
 someOptionalString = nil
 
 /*
-    Trying to use ! to access a non-existent optional value triggers a runtime
-    error. Always make sure that an optional contains a non-nil value before
-    using ! to force-unwrap its value.
+Trying to use ! to access a non-existent optional value triggers a runtime
+error. Always make sure that an optional contains a non-nil value before
+using ! to force-unwrap its value.
 */
 
 // implicitly unwrapped optional
@@ -120,8 +120,8 @@ anyObjectVar = "Changed value to a string, not good practice, but possible."
 //
 
 /*
-    Array and Dictionary types are structs. So `let` and `var` also indicate
-    that they are mutable (var) or immutable (let) when declaring these types.
+Array and Dictionary types are structs. So `let` and `var` also indicate
+that they are mutable (var) or immutable (let) when declaring these types.
 */
 
 // Array
@@ -178,8 +178,8 @@ while i < 1000 {
     i *= 2
 }
 
-// do-while loop
-do {
+// repeat-while loop
+repeat {
     print("hello")
 } while 1 == 2
 
@@ -209,22 +209,22 @@ default: // required (in order to cover all possible input)
 // Function with Swift header docs (format as reStructedText)
 
 /**
-    A greet operation
+A greet operation
 
-    - A bullet in docs
-    - Another bullet in the docs
+- A bullet in docs
+- Another bullet in the docs
 
-    :param: name A name
-    :param: day A day
-    :returns: A string containing the name and day value.
+:param: name A name
+:param: day A day
+:returns: A string containing the name and day value.
 */
 func greet(name: String, day: String) -> String {
     return "Hello \(name), today is \(day)."
 }
-greet("Bob", "Tuesday")
+greet("Bob", day: "Tuesday")
 
 // similar to above except for the function parameter behaviors
-func greet2(#requiredName: String, externalParamName localParamName: String) -> String {
+func greet2(requiredName requiredName: String, externalParamName localParamName: String) -> String {
     return "Hello \(requiredName), the day is \(localParamName)"
 }
 greet2(requiredName: "John", externalParamName: "Sunday")
@@ -247,14 +247,14 @@ func getGasPrices2() -> (lowestPrice: Double, highestPrice: Double, midPrice: Do
 let pricesTuple2 = getGasPrices2()
 let price2 = pricesTuple2.lowestPrice
 let (_, price3, _) = pricesTuple2
-println(pricesTuple2.highestPrice == pricesTuple2.1) // true
-println("Highest gas price: \(pricesTuple2.highestPrice)")
+print(pricesTuple2.highestPrice == pricesTuple2.1) // true
+print("Highest gas price: \(pricesTuple2.highestPrice)")
 
 // Variadic Args
 func setup(numbers: Int...) {
     // its an array
-    let number = numbers[0]
-    let argCount = numbers.count
+    let _ = numbers[0]
+    let _ = numbers.count
 }
 
 // Passing and returning functions
@@ -275,7 +275,7 @@ func swapTwoInts(inout a: Int, inout b: Int) {
 }
 var someIntA = 7
 var someIntB = 3
-swapTwoInts(&someIntA, &someIntB)
+swapTwoInts(&someIntA, b: &someIntB)
 print(someIntB) // 7
 
 
@@ -303,15 +303,9 @@ numbers = numbers.map({ number in 3 * number })
 print(numbers) // [3, 6, 18]
 
 // Trailing closure
-numbers = sorted(numbers) { $0 > $1 }
+numbers = numbers.sort { $0 > $1 }
 
 print(numbers) // [18, 6, 3]
-
-// Super shorthand, since the < operator infers the types
-
-numbers = sorted(numbers, < )
-
-print(numbers) // [3, 6, 18]
 
 //
 // MARK: Structures
@@ -319,7 +313,7 @@ print(numbers) // [3, 6, 18]
 
 // Structures and classes have very similar capabilities
 struct NamesTable {
-    let names = [String]()
+    let names: [String]
 
     // Custom subscript
     subscript(index: Int) -> String {
@@ -472,9 +466,10 @@ enum Suit {
 // when the variable is explicitly declared
 var suitValue: Suit = .Hearts
 
-// Non-Integer enums require direct raw value assignments
+// String enums can have direct raw value assignments
+// or their raw values will be derived from the Enum field
 enum BookName: String {
-    case John = "John"
+    case John
     case Luke = "Luke"
 }
 print("Name: \(BookName.John.rawValue)")
@@ -518,7 +513,7 @@ protocol ShapeGenerator {
 // Protocols declared with @objc allow optional functions,
 // which allow you to check for conformance
 @objc protocol TransformShape {
-    optional func reshaped()
+    optional func reshape()
     optional func canReshape() -> Bool
 }
 
@@ -531,9 +526,9 @@ class MyShape: Rect {
         // Place a question mark after an optional property, method, or
         // subscript to gracefully ignore a nil value and return nil
         // instead of throwing a runtime error ("optional chaining").
-        if let allow = self.delegate?.canReshape?() {
+        if let reshape = self.delegate?.canReshape?() where reshape {
             // test for delegate then for method
-            self.delegate?.reshaped?()
+            self.delegate?.reshape?()
         }
     }
 }
@@ -546,7 +541,7 @@ class MyShape: Rect {
 // `extension`s: Add extra functionality to an already existing type
 
 // Square now "conforms" to the `Printable` protocol
-extension Square: Printable {
+extension Square: CustomStringConvertible {
     var description: String {
         return "Area: \(self.getArea()) - ID: \(self.identifier)"
     }
@@ -571,8 +566,8 @@ print(14.multiplyBy(3)) // 42
 // Generics: Similar to Java and C#. Use the `where` keyword to specify the
 //   requirements of the generics.
 
-func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
-    for (index, value) in enumerate(array) {
+func findIndex<T: Equatable>(array: [T], _ valueToFind: T) -> Int? {
+    for (index, value) in array.enumerate() {
         if value == valueToFind {
             return index
         }
