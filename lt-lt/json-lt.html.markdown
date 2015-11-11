@@ -1,6 +1,7 @@
 ---
 language: json
 filename: learnjson.json
+lang: lt
 contributors:
   - ["Zygimantus", "https://github.com/zygimantus"]
 ---
