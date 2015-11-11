@@ -53,15 +53,15 @@ void main() {
     // For and while are nice, but in D-land we prefer 'foreach' loops.
     // The '..' creates a continuous range, including the first value
     // but excluding the last.
-    foreach(i; 1..1_000_000) {
+    foreach(n; 1..1_000_000) {
         if(n % 2 == 0)
-            writeln(i);
+            writeln(n);
     }
 
     // There's also 'foreach_reverse' when you want to loop backwards.
-    foreach_reverse(i; 1..int.max) {
+    foreach_reverse(n; 1..int.max) {
         if(n % 2 == 1) {
-            writeln(i);
+            writeln(n);
         } else {
             writeln("No!");
         }
