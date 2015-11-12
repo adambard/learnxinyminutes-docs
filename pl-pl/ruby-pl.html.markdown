@@ -109,15 +109,15 @@ wypelnienie = 'użyć interpolacji stringa'
 
 
 # Łączenie stringów, ale nie liczb
-'hello ' + 'world'  #=> "hello world"
-'hello ' + 3 #=> TypeError: can't convert Fixnum into String
-'hello ' + 3.to_s #=> "hello 3"
+'hej ' + 'świecie'  #=> "hej świecie"
+'hej ' + 3 #=> TypeError: can't convert Fixnum into String
+'hej ' + 3.to_s #=> "hej 3"
 
 # Łączenie stringów i operatorów
-'hello ' * 3 #=> "hello hello hello "
+'hej ' * 3 #=> "hej hej hej "
 
 # Dodawanie do stringa
-'hello' << ' world' #=> "hello world"
+'hej' << ' świecie' #=> "hej świecie"
 
 # wydrukowanie wartości wraz z nową linią na końcu
 puts "Drukuję!"
@@ -139,8 +139,8 @@ x = y = 10 #=> 10
 x #=> 10
 y #=> 10
 
-# Zwyczajowo, używaj notacji snake_case dla nazw zmiennych
-snake_case = true
+# Zwyczajowo, używaj notacji nazwa_zmiennej dla nazw zmiennych
+nazwa_zmiennej = true
 
 # Używaj opisowych nazw zmiennych
 sciezka_do_projektu = '/dobra/nazwa/'
@@ -167,7 +167,7 @@ array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 
 # Tablice mogą zwierać różne typy danych
 
-[1, 'hello', false] #=> [1, "hello", false]
+[1, 'hej', false] #=> [1, "hej", false]
 
 # Tablice mogę być indeksowane
 # Od początku
@@ -175,7 +175,7 @@ tablica[0] #=> 1
 tablica.first #=> 1
 tablica[12] #=> nil
 
-# Podobnie jak przy arytmetyce, dostę poprzez [zmienna]
+# Podobnie jak przy arytmetyce, dostęp poprzez [zmienna]
 # jest tylko czytelniejszą składnią
 # dla wywoływania metody [] na obiekcie
 tablica.[] 0 #=> 1
@@ -385,10 +385,10 @@ def otoczenie
   puts '}'
 end
 
-otoczenie { puts 'hello world' }
+otoczenie { puts 'hej świecie' }
 
 # {
-# hello world
+# hej świecie
 # }
 
 
