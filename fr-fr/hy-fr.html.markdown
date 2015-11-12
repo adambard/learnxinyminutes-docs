@@ -54,11 +54,11 @@ True ; => True
 
 ;; variables
 ; les variables sont déclarées en utilisant setv, les noms de variables
-; peuvent utiliser UTF-8 à l'exception de ()[]{}",'`;#|
+; peuvent utiliser l'UTF-8 à l'exception de ()[]{}",'`;#|
 (setv a 42)
 (setv π 3.14159)
 (def *foo* 42)
-;; d'autres types de données conteneur
+;; d'autres types de conteneurs
 ; les chaînes, les listes, les tuples et dicts
 ; ce sont exactement les mêmes que les types de conteneurs de python
 "hello world" ;=> "hello world"
