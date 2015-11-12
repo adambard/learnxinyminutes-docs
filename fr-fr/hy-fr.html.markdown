@@ -1,6 +1,6 @@
 ---
 language: hy
-filename: learnhy.hy
+filename: learnhy-fr.hy
 contributors:
     - ["Abhishek L", "http://twitter.com/abhishekl"]
 translators:
@@ -15,7 +15,7 @@ Ceci permet à hy d'appeler du code python et à python d'appeler du code hy.
 Ce tutoriel fonctionne pour hy > 0.9.12
 
 ```clojure
-;; Ceci est une introduction facile à hy, pour un tutoriel rapide aller à
+;; Ceci est une introduction simple à hy, pour un tutoriel rapide aller à
 ;; http://try-hy.appspot.com
 ;;
 ; Les commentaires se font avec des points-virgules, comme les autres LISPS
