@@ -70,7 +70,7 @@ True ; => True
 (setv mytuple (, 1 2))
 ; les dictionnaires sont des paires clé-valeur
 (setv dict1 {"key1" 42 "key2" 21})
-; :nam peut être utilisé pour définir des mots clés dans hy qui peuvent être
+; :nom peut être utilisé pour définir des mots clés dans hy qui peuvent être
 ;  utilisées comme clés
 (setv dict2 {:key1 41 :key2 20})
 ; utilisez `get' pour obtenir l'élément à l'index / clé
@@ -101,7 +101,7 @@ True ; => True
 (map (fn [x] (* x x)) [1 2 3 4]) ;=> [1 4 9 16]
 
 ;; Opérations sur les séquences
-; hy a des utilitaires pré-construit pour les opérations sur les séquences etc.
+; hy a des utilitaires natifs pour les opérations sur les séquences etc.
 ; récupérez le premier élément en utilisant  `first' ou `car'
 (setv mylist [1 2 3 4])
 (setv mydict {"a" 1 "b" 2})
@@ -124,8 +124,8 @@ True ; => True
 (import datetime)
 (import [functools [partial reduce]]) ; importe fun1 et fun2 de module1
 (import [matplotlib.pyplot :as plt]) ; faire une importation foo comme bar
-; toutes les méthodes pré-construites de python sont accessibles à partir de hy
-; a.foo(arg) est appelé (.foo un arg)
+; toutes les méthodes natives de python sont accessibles à partir de hy
+; a.foo(arg) est appelé (.foo a arg)
 (.split (.strip "hello world  ")) ;=> ["hello" "world"]
 
 ;; Conditionelles
