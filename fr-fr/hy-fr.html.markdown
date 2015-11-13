@@ -22,7 +22,7 @@ Ce tutoriel fonctionne pour hy > 0.9.12
 
 ;; les s-expression de bases
 ; Les programmes Lisp sont fait d'expressions symboliques ou sexps qui
-; ressemble à
+; ressemblent à
 (some-function args)
 ; maintenant le quintessentiel hello world
 (print "hello world")
