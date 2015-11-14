@@ -5,6 +5,7 @@ contributors:
   - ["Xavier Yao", "http://github.com/xavieryao"]
 translators:
   - ["Tamás Diószegi", "http://github.com/ditam"]
+lang: hu-hu
 filename: coffeescript-hu.coffee
 ---
 
