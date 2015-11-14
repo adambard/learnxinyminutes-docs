@@ -10,7 +10,7 @@ contributors:
     - ["Rachel Stiyer", "https://github.com/rstiyer"]
 translators:
     - ["Oleksandr Tatarchuk", "https://github.com/tatarchuk"]
-filename: LearnJava.java
+filename: LearnJavaUa.java
 lang: uk-ua
 ---
 
