@@ -169,6 +169,12 @@ def sumOfSquaresShort(x: Int, y: Int): Int = x * x + y * y
 // Syntax for calling functions is familiar:
 sumOfSquares(3, 4)  // => 25
 
+// You can use parameters names to specify them in different order
+def subtract(x: Int, y: Int): Int = x - y
+
+subtract(10, 3)     // => 7
+subtract(y=10, x=3) // => -7
+
 // In most cases (with recursive functions the most notable exception), function
 // return type can be omitted, and the same type inference we saw with variables
 // will work with function return values:
@@ -278,21 +284,21 @@ val text = if (x == 10) "yeah" else "nope"
 /////////////////////////////////////////////////
 
 val a = Array(1, 2, 3, 5, 8, 13)
-a(0)
-a(3)
+a(0)     // Int = 1
+a(3)     // Int = 5
 a(21)    // Throws an exception
 
 val m = Map("fork" -> "tenedor", "spoon" -> "cuchara", "knife" -> "cuchillo")
-m("fork")
-m("spoon")
+m("fork")         // java.lang.String = tenedor
+m("spoon")        // java.lang.String = cuchara
 m("bottle")       // Throws an exception
 
 val safeM = m.withDefaultValue("no lo se")
-safeM("bottle")
+safeM("bottle")   // java.lang.String = no lo se
 
 val s = Set(1, 3, 7)
-s(0)
-s(1)
+s(0)      // Boolean = false
+s(1)      // Boolean = true
 
 /* Look up the documentation of map here -
  * http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Map
@@ -313,15 +319,16 @@ s(1)
 // Why have this?
 val divideInts = (x: Int, y: Int) => (x / y, x % y)
 
-divideInts(10, 3) // The function divideInts gives you the result and the remainder
+// The function divideInts gives you the result and the remainder
+divideInts(10, 3)    // (Int, Int) = (3,1)
 
 // To access the elements of a tuple, use _._n where n is the 1-based index of
 // the element
-val d = divideInts(10, 3)
+val d = divideInts(10, 3)    // (Int, Int) = (3,1)
 
-d._1
+d._1    // Int = 3
 
-d._2
+d._2    // Int = 1
 
 
 /////////////////////////////////////////////////

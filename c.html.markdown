@@ -148,15 +148,10 @@ int main (int argc, char** argv)
   printf("Enter the array size: "); // ask the user for an array size
   int size;
   fscanf(stdin, "%d", &size);
-  char buf[size];
-  fgets(buf, sizeof buf, stdin);
-
-  // strtoul parses a string to an unsigned integer
-  size_t size2 = strtoul(buf, NULL, 10);
-  int var_length_array[size2]; // declare the VLA
+  int var_length_array[size]; // declare the VLA
   printf("sizeof array = %zu\n", sizeof var_length_array);
 
-  // A possible outcome of this program may be:
+  // Example:
   // > Enter the array size: 10
   // > sizeof array = 40
 

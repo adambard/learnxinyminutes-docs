@@ -9,7 +9,7 @@ filename: whip.lisp
 ---
 
 Whip is a LISP-dialect made for scripting and simplified concepts.
-It has also borrowed a lot of functions and syntax from Haskell(a non-related language).
+It has also borrowed a lot of functions and syntax from Haskell (a non-related language).
 
 These docs were written by the creator of the language himself. So is this line.
 
@@ -172,12 +172,12 @@ undefined ; user to indicate a value that hasn't been set
 ; Comprehensions
 
 ; `range` or `..` generates a list of numbers for
-; each number between it's two args.
+; each number between its two args.
 (range 1 5) ; => (1 2 3 4 5)
 (.. 0 2)    ; => (0 1 2)
 
-; `map` applies it's first arg(which should be a lambda/function)
-; to each item in the following arg(which should be a list)
+; `map` applies its first arg (which should be a lambda/function)
+; to each item in the following arg (which should be a list)
 (map (-> (x) (+ x 1)) (1 2 3)) ; => (2 3 4)
 
 ; Reduce

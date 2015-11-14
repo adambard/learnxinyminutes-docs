@@ -451,7 +451,7 @@ public class Fruit implements Edible, Digestible {
     }
 }
 
-// В Java Вы можете наследоватьтолько один класс, однако можете реализовывать
+// В Java Вы можете наследовать только один класс, однако можете реализовывать
 // несколько интерфейсов. Например:
 public class ExampleClass extends ExampleClassParent implements InterfaceOne, InterfaceTwo {
     public void InterfaceOneMethod() {

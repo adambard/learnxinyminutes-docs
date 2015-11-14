@@ -106,6 +106,9 @@ Here's how you state all y that belong to X, $\forall$ x $\in$ X. \\
 % However, the math symbols only exist in math-mode. 
 % We can enter math-mode from text mode with the $ signs.
 % The opposite also holds true. Variable can also be rendered in math-mode.
+% We can also enter math mode with \[\]
+
+\[a^2 + b^2 = c^2 \]
 
 My favorite Greek letter is $\xi$. I also like $\beta$, $\gamma$ and $\sigma$.
 I haven't found a Greek letter that yet that LaTeX doesn't know about!
@@ -223,6 +226,15 @@ format you defined in Step 1.
 \section{End}
 
 That's all for now!
+
+% Most often, you would want to have a references section in your document.
+% The easiest way to set this up would be by using the bibliography section
+\begin{thebibliography}{1}
+  % similar to other lists, the \bibitem command can be used to list items
+  % each entry can then be cited directly in the body of the text
+  \bibitem{latexwiki} The amazing LaTeX wikibook: {\em https://en.wikibooks.org/wiki/LaTeX}
+  \bibitem{latextutorial} An actual tutorial: {\em http://www.latex-tutorial.com}
+\end{thebibliography}
 
 % end the document
 \end{document}

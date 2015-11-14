@@ -5,6 +5,7 @@ contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:
     - ["Henrik Jürges", "https://github.com/santifa"]
+    - ["Nikolai Weh", "http://weh.hamburg"]
 filename: haskell-de.hs
 
 ---
@@ -58,12 +59,13 @@ not False -- True
 -- Strings und Zeichen
 "Das ist ein String."
 'a' -- Zeichen
-'Einfache Anfuehrungszeichen gehen nicht.' -- error!
+'Einfache Anführungszeichen gehen nicht.' -- error!
 
 -- Strings können konkateniert werden.
 "Hello " ++ "world!" -- "Hello world!"
 
 -- Ein String ist eine Liste von Zeichen.
+['H', 'a', 'l', 'l', 'o', '!'] -- "Hallo!"
 "Das ist eine String" !! 0 -- 'D'
 
 
@@ -76,11 +78,23 @@ not False -- True
 [1, 2, 3, 4, 5]
 [1..5]
 
--- Haskell unterstuetzt unendliche Listen!
-[1..] -- Die Liste aller natuerlichen Zahlen
+-- Die zweite Variante nennt sich die "range"-Syntax.
+-- Ranges sind recht flexibel:
+['A'..'F'] -- "ABCDEF"
+
+-- Es ist möglich eine Schrittweite anzugeben:
+[0,2..10] -- [0,2,4,6,8,10]
+[5..1] -- [], da Haskell standardmässig inkrementiert.
+[5,4..1] -- [5,4,3,2,1]
+
+-- Der "!!"-Operator extrahiert das Element an einem bestimmten Index:
+[1..10] !! 3 -- 4
+
+-- Haskell unterstützt unendliche Listen!
+[1..] -- Die Liste aller natürlichen Zahlen
 
 -- Unendliche Listen funktionieren in Haskell, da es "lazy evaluation"
--- unterstuetzt. Haskell evaluiert erst etwas, wenn es benötigt wird.
+-- unterstützt. Haskell evaluiert erst etwas, wenn es benötigt wird.
 -- Somit kannst du nach dem 1000. Element fragen und Haskell gibt es dir:
 
 [1..] !! 999 -- 1000
@@ -92,11 +106,8 @@ not False -- True
 -- Zwei Listen konkatenieren
 [1..5] ++ [6..10]
 
--- Ein Element als Head hinzufuegen
+-- Ein Element als Head hinzufügen
 0:[1..5] -- [0, 1, 2, 3, 4, 5]
-
--- Gibt den 5. Index zurueck
-[0..] !! 5 -- 5
 
 -- Weitere Listenoperationen
 head [1..5] -- 1
@@ -114,7 +125,8 @@ last [1..5] -- 5
 -- Ein Tupel:
 ("haskell", 1)
 
--- Auf Elemente eines Tupels zugreifen:
+-- Ein Paar (Pair) ist ein Tupel mit 2 Elementen, auf die man wie folgt
+-- zugreifen kann:
 fst ("haskell", 1) -- "haskell"
 snd ("haskell", 1) -- 1
 
@@ -140,9 +152,9 @@ add 1 2 -- 3
 (//) a b = a `div` b
 35 // 4 -- 8
 
--- Guards sind eine einfache Möglichkeit fuer Fallunterscheidungen.
+-- Guards sind eine einfache Möglichkeit für Fallunterscheidungen.
 fib x
-  | x < 2 = x
+  | x < 2 = 1
   | otherwise = fib (x - 1) + fib (x - 2)
 
 -- Pattern Matching funktioniert ähnlich.
@@ -174,7 +186,7 @@ foldl1 (\acc x -> acc + x) [1..5] -- 15
 -- 4. Mehr Funktionen
 ----------------------------------------------------
 
--- currying: Wenn man nicht alle Argumente an eine Funktion uebergibt,
+-- currying: Wenn man nicht alle Argumente an eine Funktion übergibt,
 -- so wird sie eine neue Funktion gebildet ("curried").
 -- Es findet eine partielle Applikation statt und die neue Funktion
 -- nimmt die fehlenden Argumente auf.
@@ -190,23 +202,28 @@ foo 5 -- 15
 -- Funktionskomposition
 -- Die (.) Funktion verkettet Funktionen.
 -- Zum Beispiel, die Funktion Foo nimmt ein Argument addiert 10 dazu und
--- multipliziert dieses Ergebnis mit 5.
-foo = (*5) . (+10)
+-- multipliziert dieses Ergebnis mit 4.
+foo = (*4) . (+10)
 
--- (5 + 10) * 5 = 75
-foo 5 -- 75
+-- (5 + 10) * 4 = 60
+foo 5 -- 60
 
 
--- Haskell hat eine Funktion `$`. Diese ändert den Vorrang,
--- so dass alles links von ihr zuerst berechnet wird und
--- und dann an die rechte Seite weitergegeben wird.
--- Mit `.` und `$` kann man sich viele Klammern ersparen.
+-- Haskell hat einen Operator `$`, welcher Funktionsapplikation durchführt.
+-- Im Gegenzug zu der Standard-Funktionsapplikation, welche linksassoziativ ist
+-- und die höchstmögliche Priorität von "10" hat, ist der `$`-Operator
+-- rechtsassoziativ und hat die Priorität 0. Dieses hat (idr.) den Effekt,
+-- dass der `komplette` Ausdruck auf der rechten Seite als Parameter für die
+-- Funktion auf der linken Seite verwendet wird.
+-- Mit `.` und `$` kann man sich so viele Klammern ersparen.
 
--- Vorher
-(even (fib 7)) -- true
+(even (fib 7)) -- false
 
--- Danach
-even . fib $ 7 -- true
+-- Äquivalent:
+even $ fib 7 -- false
+
+-- Funktionskomposition:
+even . fib $ 7 -- false
 
 ----------------------------------------------------
 -- 5. Typensystem
@@ -221,31 +238,31 @@ even . fib $ 7 -- true
 True :: Bool
 
 -- Funktionen haben genauso Typen.
--- `not` ist Funktion die ein Bool annimmt und ein Bool zurueckgibt:
+-- `not` ist Funktion die ein Bool annimmt und ein Bool zurückgibt:
 -- not :: Bool -> Bool
 
 -- Eine Funktion die zwei Integer Argumente annimmt:
 -- add :: Integer -> Integer -> Integer
 
 -- Es ist guter Stil zu jeder Funktionsdefinition eine
--- Typdefinition darueber zu schreiben:
+-- Typdefinition darüber zu schreiben:
 double :: Integer -> Integer
 double x = x * 2
 
 ----------------------------------------------------
--- 6. If-Anweisung und Kontrollstrukturen
+-- 6. If-Ausdrücke und Kontrollstrukturen
 ----------------------------------------------------
 
--- If-Anweisung:
+-- If-Ausdruck:
 haskell = if 1 == 1 then "awesome" else "awful" -- haskell = "awesome"
 
--- If-Anweisungen können auch ueber mehrere Zeilen verteilt sein.
--- Das Einruecken ist dabei äußerst wichtig.
+-- If-Ausdrücke können auch über mehrere Zeilen verteilt sein.
+-- Die Einrückung ist dabei wichtig.
 haskell = if 1 == 1
             then "awesome"
             else "awful"
 
--- Case-Anweisung: Zum Beispiel "commandline" Argumente parsen.
+-- Case-Ausdruck: Am Beispiel vom Parsen von "commandline"-Argumenten.
 case args of
   "help" -> printHelp
   "start" -> startProgram
@@ -276,7 +293,7 @@ foldl (\x y -> 2*x + y) 4 [1,2,3] -- 43
 foldr (\x y -> 2*x + y) 4 [1,2,3] -- 16
 
 -- die Abarbeitung sieht so aus:
-(2 * 3 + (2 * 2 + (2 * 1 + 4)))
+(2 * 1 + (2 * 2 + (2 * 3 + 4)))
 
 ----------------------------------------------------
 -- 7. Datentypen
@@ -300,7 +317,7 @@ data Maybe a = Nothing | Just a
 -- Diese sind alle vom Typ Maybe:
 Just "hello"    -- vom Typ `Maybe String`
 Just 1          -- vom Typ `Maybe Int`
-Nothing         -- vom Typ `Maybe a` fuer jedes `a`
+Nothing         -- vom Typ `Maybe a` für jedes `a`
 
 ----------------------------------------------------
 -- 8. Haskell IO
@@ -309,8 +326,8 @@ Nothing         -- vom Typ `Maybe a` fuer jedes `a`
 -- IO kann nicht völlig erklärt werden ohne Monaden zu erklären,
 -- aber man kann die grundlegenden Dinge erklären.
 
--- Wenn eine Haskell Programm ausgefuehrt wird, so wird `main` aufgerufen.
--- Diese muss etwas vom Typ `IO ()` zurueckgeben. Zum Beispiel:
+-- Wenn eine Haskell Programm ausgeführt wird, so wird `main` aufgerufen.
+-- Diese muss etwas vom Typ `IO ()` zurückgeben. Zum Beispiel:
 
 main :: IO ()
 main = putStrLn $ "Hello, sky! " ++ (say Blue)
@@ -338,10 +355,10 @@ sayHello = do
                    -- an die Variable "name" gebunden
    putStrLn $ "Hello, " ++ name
 
--- Uebung: Schreibe deine eigene Version von `interact`,
+-- Übung: Schreibe deine eigene Version von `interact`,
 -- die nur eine Zeile einliest.
 
--- `sayHello` wird niemals ausgefuehrt, nur `main` wird ausgefuehrt.
+-- `sayHello` wird niemals ausgeführt, nur `main` wird ausgeführt.
 -- Um `sayHello` laufen zulassen kommentiere die Definition von `main`
 -- aus und ersetze sie mit:
 --     main = sayHello
@@ -359,7 +376,7 @@ action = do
    input1 <- getLine
    input2 <- getLine
    -- Der Typ von `do` ergibt sich aus der letzten Zeile.
-   -- `return` ist eine Funktion und keine Schluesselwort
+   -- `return` ist eine Funktion und keine Schlüsselwort
    return (input1 ++ "\n" ++ input2) -- return :: String -> IO String
 
 -- Nun können wir `action` wie `getLine` benutzen:
@@ -370,7 +387,7 @@ main'' = do
     putStrLn result
     putStrLn "This was all, folks!"
 
--- Der Typ `IO` ist ein Beispiel fuer eine Monade.
+-- Der Typ `IO` ist ein Beispiel für eine Monade.
 -- Haskell benutzt Monaden Seiteneffekte zu kapseln und somit
 -- eine rein funktional Sprache zu sein.
 -- Jede Funktion die mit der Außenwelt interagiert (z.B. IO)
@@ -387,7 +404,7 @@ main'' = do
 
 -- Starte die REPL mit dem Befehl `ghci`
 -- Nun kann man Haskell Code eingeben.
--- Alle neuen Werte muessen mit `let` gebunden werden:
+-- Alle neuen Werte müssen mit `let` gebunden werden:
 
 let foo = 5
 
@@ -396,7 +413,7 @@ let foo = 5
 >:t foo
 foo :: Integer
 
--- Auch jede `IO ()` Funktion kann ausgefuehrt werden.
+-- Auch jede `IO ()` Funktion kann ausgeführt werden.
 
 > sayHello
 What is your name?
@@ -420,6 +437,6 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
 Haskell ist sehr einfach zu installieren.
 Hohl es dir von [hier](http://www.haskell.org/platform/).
 
-Eine sehr viele langsamere Einfuehrung findest du unter:
+Eine sehr viele langsamere Einführung findest du unter:
 [Learn you a Haskell](http://learnyouahaskell.com/) oder
 [Real World Haskell](http://book.realworldhaskell.org/).

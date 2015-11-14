@@ -6,6 +6,7 @@ contributors:
   - ["Joey Huang", "http://github.com/kamidox"]
   - ["Anthony Nguyen", "http://github.com/anthonyn60"]
   - ["Clayton Walker", "https://github.com/cwalk"]
+  - ["Fernando Valverde", "http://visualcosita.xyz"]
 filename: learnswift.swift
 ---
 
@@ -25,12 +26,13 @@ import UIKit
 
 // Xcode supports landmarks to annotate your code and lists them in the jump bar
 // MARK: Section mark
+// MARK: - Section mark with a separator line
 // TODO: Do something soon
 // FIXME: Fix this code
 
 // In Swift 2, println and print were combined into one print method. Print automatically appends a new line.
 print("Hello, world") // println is now print
-print("Hello, world", appendNewLine: false) // printing without appending a newline
+print("Hello, world", terminator: "") // printing without appending a newline
 
 // variables (var) value can change after being set
 // constants (let) value can NOT be changed after being set
@@ -58,14 +60,14 @@ let piText = "Pi = \(π), Pi 2 = \(π * 2)" // String interpolation
 print("Build value: \(buildValue)") // Build value: 7
 
 /*
-    Optionals are a Swift language feature that either contains a value,
-    or contains nil (no value) to indicate that a value is missing.
-    A question mark (?) after the type marks the value as optional.
+Optionals are a Swift language feature that either contains a value,
+or contains nil (no value) to indicate that a value is missing.
+A question mark (?) after the type marks the value as optional.
 
-    Because Swift requires every property to have a value, even nil must be
-    explicitly stored as an Optional value.
+Because Swift requires every property to have a value, even nil must be
+explicitly stored as an Optional value.
 
-    Optional<T> is an enum.
+Optional<T> is an enum.
 */
 var someOptionalString: String? = "optional" // Can be nil
 // same as above, but ? is a postfix operator (syntax candy)
@@ -82,9 +84,9 @@ if someOptionalString != nil {
 someOptionalString = nil
 
 /*
-    Trying to use ! to access a non-existent optional value triggers a runtime 
-    error. Always make sure that an optional contains a non-nil value before
-    using ! to force-unwrap its value.
+Trying to use ! to access a non-existent optional value triggers a runtime
+error. Always make sure that an optional contains a non-nil value before
+using ! to force-unwrap its value.
 */
 
 // implicitly unwrapped optional
@@ -118,8 +120,8 @@ anyObjectVar = "Changed value to a string, not good practice, but possible."
 //
 
 /*
-    Array and Dictionary types are structs. So `let` and `var` also indicate
-    that they are mutable (var) or immutable (let) when declaring these types.
+Array and Dictionary types are structs. So `let` and `var` also indicate
+that they are mutable (var) or immutable (let) when declaring these types.
 */
 
 // Array
@@ -128,6 +130,7 @@ shoppingList[1] = "bottle of water"
 let emptyArray = [String]() // let == immutable
 let emptyArray2 = Array<String>() // same as above
 var emptyMutableArray = [String]() // var == mutable
+var explicitEmptyMutableStringArray: [String] = [] // same as above
 
 
 // Dictionary
@@ -139,11 +142,20 @@ occupations["Jayne"] = "Public Relations"
 let emptyDictionary = [String: Float]() // let == immutable
 let emptyDictionary2 = Dictionary<String, Float>() // same as above
 var emptyMutableDictionary = [String: Float]() // var == mutable
+var explicitEmptyMutableDictionary: [String: Float] = [:] // same as above
 
 
 //
 // MARK: Control Flow
 //
+
+// Condition statements support "where" clauses, which can be used
+// to help provide conditions on optional values.
+// Both the assignment and the "where" clause must pass.
+let someNumber = Optional<Int>(7)
+if let num = someNumber where num > 3 {
+    print("num is greater than 3")
+}
 
 // for loop (array)
 let myArray = [1, 1, 2, 3, 5]
@@ -174,8 +186,8 @@ while i < 1000 {
     i *= 2
 }
 
-// do-while loop
-do {
+// repeat-while loop
+repeat {
     print("hello")
 } while 1 == 2
 
@@ -194,7 +206,6 @@ default: // required (in order to cover all possible input)
     let vegetableComment = "Everything tastes good in soup."
 }
 
-
 //
 // MARK: Functions
 //
@@ -205,25 +216,25 @@ default: // required (in order to cover all possible input)
 // Function with Swift header docs (format as reStructedText)
 
 /**
-    A greet operation
+A greet operation
 
-    - A bullet in docs
-    - Another bullet in the docs
+- A bullet in docs
+- Another bullet in the docs
 
-    :param: name A name
-    :param: day A day
-    :returns: A string containing the name and day value.
+:param: name A name
+:param: day A day
+:returns: A string containing the name and day value.
 */
 func greet(name: String, day: String) -> String {
     return "Hello \(name), today is \(day)."
 }
-greet("Bob", "Tuesday")
+greet("Bob", day: "Tuesday")
 
 // similar to above except for the function parameter behaviors
-func greet2(#requiredName: String, externalParamName localParamName: String) -> String {
+func greet2(requiredName requiredName: String, externalParamName localParamName: String) -> String {
     return "Hello \(requiredName), the day is \(localParamName)"
 }
-greet2(requiredName:"John", externalParamName: "Sunday")
+greet2(requiredName: "John", externalParamName: "Sunday")
 
 // Function that returns multiple items in a tuple
 func getGasPrices() -> (Double, Double, Double) {
@@ -236,11 +247,33 @@ let (_, price1, _) = pricesTuple // price1 == 3.69
 print(price1 == pricesTuple.1) // true
 print("Gas price: \(price)")
 
+// Labeled/named tuple params
+func getGasPrices2() -> (lowestPrice: Double, highestPrice: Double, midPrice: Double) {
+    return (1.77, 37.70, 7.37)
+}
+let pricesTuple2 = getGasPrices2()
+let price2 = pricesTuple2.lowestPrice
+let (_, price3, _) = pricesTuple2
+print(pricesTuple2.highestPrice == pricesTuple2.1) // true
+print("Highest gas price: \(pricesTuple2.highestPrice)")
+
+// guard statements
+func testGuard() {
+    // guards provide early exits or breaks, placing the error handler code near the conditions.
+    // it places variables it declares in the same scope as the guard statement.
+    guard let aNumber = Optional<Int>(7) else {
+        return
+    }
+
+    print("number is \(aNumber)")
+}
+testGuard()
+
 // Variadic Args
 func setup(numbers: Int...) {
     // its an array
-    let number = numbers[0]
-    let argCount = numbers.count
+    let _ = numbers[0]
+    let _ = numbers.count
 }
 
 // Passing and returning functions
@@ -261,7 +294,7 @@ func swapTwoInts(inout a: Int, inout b: Int) {
 }
 var someIntA = 7
 var someIntB = 3
-swapTwoInts(&someIntA, &someIntB)
+swapTwoInts(&someIntA, b: &someIntB)
 print(someIntB) // 7
 
 
@@ -289,15 +322,9 @@ numbers = numbers.map({ number in 3 * number })
 print(numbers) // [3, 6, 18]
 
 // Trailing closure
-numbers = sorted(numbers) { $0 > $1 }
+numbers = numbers.sort { $0 > $1 }
 
 print(numbers) // [18, 6, 3]
-
-// Super shorthand, since the < operator infers the types
-
-numbers = sorted(numbers, < )
-
-print(numbers) // [3, 6, 18]
 
 //
 // MARK: Structures
@@ -305,7 +332,7 @@ print(numbers) // [3, 6, 18]
 
 // Structures and classes have very similar capabilities
 struct NamesTable {
-    let names = [String]()
+    let names: [String]
 
     // Custom subscript
     subscript(index: Int) -> String {
@@ -347,6 +374,11 @@ internal class Rect: Shape {
             // `newValue` is an implicit variable available to setters
             sideLength = newValue / 4
         }
+    }
+
+    // Computed properties must be declared as `var`, you know, cause' they can change
+    var smallestSideLength: Int {
+        return self.sideLength - 1
     }
 
     // Lazily load a property
@@ -453,9 +485,10 @@ enum Suit {
 // when the variable is explicitly declared
 var suitValue: Suit = .Hearts
 
-// Non-Integer enums require direct raw value assignments
+// String enums can have direct raw value assignments
+// or their raw values will be derived from the Enum field
 enum BookName: String {
-    case John = "John"
+    case John
     case Luke = "Luke"
 }
 print("Name: \(BookName.John.rawValue)")
@@ -499,7 +532,7 @@ protocol ShapeGenerator {
 // Protocols declared with @objc allow optional functions,
 // which allow you to check for conformance
 @objc protocol TransformShape {
-    optional func reshaped()
+    optional func reshape()
     optional func canReshape() -> Bool
 }
 
@@ -512,9 +545,9 @@ class MyShape: Rect {
         // Place a question mark after an optional property, method, or
         // subscript to gracefully ignore a nil value and return nil
         // instead of throwing a runtime error ("optional chaining").
-        if let allow = self.delegate?.canReshape?() {
+        if let reshape = self.delegate?.canReshape?() where reshape {
             // test for delegate then for method
-            self.delegate?.reshaped?()
+            self.delegate?.reshape?()
         }
     }
 }
@@ -527,7 +560,7 @@ class MyShape: Rect {
 // `extension`s: Add extra functionality to an already existing type
 
 // Square now "conforms" to the `Printable` protocol
-extension Square: Printable {
+extension Square: CustomStringConvertible {
     var description: String {
         return "Area: \(self.getArea()) - ID: \(self.identifier)"
     }
@@ -552,8 +585,8 @@ print(14.multiplyBy(3)) // 42
 // Generics: Similar to Java and C#. Use the `where` keyword to specify the
 //   requirements of the generics.
 
-func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
-    for (index, value) in enumerate(array) {
+func findIndex<T: Equatable>(array: [T], _ valueToFind: T) -> Int? {
+    for (index, value) in array.enumerate() {
         if value == valueToFind {
             return index
         }
