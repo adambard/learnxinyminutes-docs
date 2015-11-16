@@ -154,7 +154,7 @@ Na zobrazenie rozdielov medzi indexovými súbormi (tvoj pracovný repozitár) a
 # Zobrazí vetvu, nesledované súbory, zmeny a ostatné rozdiely
 $ git status
 
-# Zisti iné vychytávky o git statuse
+# Zistí iné vychytávky o git statuse
 $ git help status
 ```
 
@@ -404,9 +404,8 @@ Saved working directory and index state \
 Teraz môžeš uložiť vzdialenú vetvu!
 
 ```bash
-git pull
+$ git pull
 ```
-`...zmeny sa zaznamenajú...`
 
 Over, či je všetko v poriadku
 
