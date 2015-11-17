@@ -738,7 +738,7 @@ try {
 # You can throw an exception using `die`:
 die X::AdHoc.new(payload => 'Error !');
 
-# You can access the last exception with `$!` (usually used in a `CATCH` block)
+# You can access the last exception with `$!` (use `$_` in a `CATCH` block)
 
 # There are also some subtelties to exceptions. Some Perl 6 subs return a `Failure`,
 #  which is a kind of "unthrown exception". They're not thrown until you tried to look
