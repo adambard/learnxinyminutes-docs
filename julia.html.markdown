@@ -103,6 +103,11 @@ false
 # Printing is easy
 println("I'm Julia. Nice to meet you!")
 
+# String can be compared lexicographically
+"good" > "bye" # => true
+"good" == "good" # => true
+"1 + 2 = 3" == "1 + 2 = $(1+2)" # => true
+
 ####################################################
 ## 2. Variables and Collections
 ####################################################
@@ -390,6 +395,14 @@ function add(x, y)
 end
 
 add(5, 6) # => 11 after printing out "x is 5 and y is 6"
+
+# Compact assignment of functions
+f_add(x, y) = x + y # => "f (generic function with 1 method)"
+f_add(3, 4) # => 7
+
+# Function can also return multiple values as tuple
+f(x, y) = x + y, x - y
+f(3, 4) # => (7, -1)
 
 # You can define functions that take a variable number of
 # positional arguments
