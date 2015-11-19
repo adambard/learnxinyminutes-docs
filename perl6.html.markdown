@@ -373,7 +373,7 @@ say @array[^10]; # you can pass arrays as subscripts and it'll return
 say join(' ', @array[15..*]); #=> 15 16 17 18 19
 # which is equivalent to:
 say join(' ', @array[-> $n { 15..$n }]);
-# Note: if you try to do either of those with an infinite loop,
+# Note: if you try to do either of those with an infinite array,
 #       you'll trigger an infinite loop (your program won't finish)
 
 # You can use that in most places you'd expect, even assigning to an array
