@@ -268,33 +268,6 @@ foo // = "bar"
 var {foo} = {};
 foo // = undefined
 
-// *ES6:* ES6 ajoute les iterateurs. Pour accéder à l'iterateur de n'importe quel
-// objet il faut utiliser la clé `Symbol.iterator`.
-var iterator1 = myArr[Symbol.iterator]; // = returns iterator function
-
-// *ES6:* Si l'objet possède une valeur à la clé `Symbol.iterator` alors la
-// collection est itérable
-if (typeof myObj[Symbol.iterator] !== "undefined") {
-    console.log("You can iterate over myObj");
-}
-
-// *ES6:* En utilisant la méthode next() de l'iterateur nous recevons un objet
-// avec deux propriétés : `value` et `done`
-var iterator = myArr[Symbol.iterator]; // myArr = [1,2]
-var myArrItem = null;
-
-myArrItem = iterator.next();
-myArrItem.value; // = 1
-myArrItem.done; // = false
-
-myArrItem = iterator.next();
-myArrItem.value; // = 2
-myArrItem.done; // = false
-
-myArrItem = iterator.next();
-myArrItem.value; // = undefined
-myArrItem.done; // = true
-
 // *ES6:* Les Maps sont des objets itérables de type clé-valeur.
 // Il est possible de créer une nouvelle map en utilisant `new Map()`
 var myMap = new Map();
@@ -346,6 +319,22 @@ do {
 for (var i = 0; i < 5; i++){
     // sera exécutée 5 fois
 }
+
+// La boucle for...in permet d'itérer sur les noms des propriétés d'un objet
+var description = "";
+var person = {fname:"Paul", lname:"Ken", age:18};
+for (var x in person){
+    description += person[x] + " ";
+}
+description; // = "Paul Ken 18 "
+
+// *ES6:* La boucle for...of permet d'itérer sur les propriétés d'un objet
+var description = "";
+var person = {fname:"Paul", lname:"Ken", age:18};
+for (var x of person){
+    description += x + " ";
+}
+description; // = "Paul Ken 18 "
 
 // && est le "et" logique, || est le "ou" logique
 if (house.size === 'big' && house.colour === 'blue'){
