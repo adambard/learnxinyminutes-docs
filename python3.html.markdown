@@ -425,7 +425,6 @@ by step. If step is not indicated, the default value is 1.
 prints:
     4
     6
-    8
 """
 for i in range(4, 8, 2):
     print(i)
