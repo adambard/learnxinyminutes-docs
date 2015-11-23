@@ -35,15 +35,13 @@ contract AcmeBank {
     function AcmeBank() {
       // msg is a default variable that provides both the 
       // contract messager's address and amount
-      owner = msg.address; 
-      // the owner has no additional rights, we're setting it for 
-      // illustrative purposes
+      owner = msg.address; // msg.address refers to the address of the contract creator
     }
   
     function deposit(uint balance) {
         balances[msg.sender] += msg.value; // no need for "this." or "self." in front of the state variable
 
-        return balances[msg.sender];
+        return balances[msg.sender]; // msg.sender refers to the contract caller
     }
 
     function withdraw(uint withdrawAmount) returns (uint remainingBalance) {
@@ -55,6 +53,13 @@ contract AcmeBank {
         }
 
         return balances[msg.sender];
+      }
+    }
+
+    // It's good practice to have a remove function, which disables this contract
+    function remove () {
+      if(msg.sender == owner) { // Only let the contract creator do this
+        suicide(owner); // suicide makes this contract inactive, and returns funds to the owner
       }
     }
 
