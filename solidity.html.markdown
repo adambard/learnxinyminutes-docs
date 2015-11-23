@@ -49,7 +49,10 @@ contract AcmeBank {
     function withdraw(uint withdrawAmount) returns (uint remainingBalance) {
       if(balances[msg.sender] >= withdrawAmount) {
         balances[msg.sender] -= withdrawAmount;
-        balances[msg.sender].send(withdrawAmount);
+
+        if (!balances[msg.sender].send(withdrawAmount)) {
+          balances[msg.sender] += withdrawAmount;
+        }
 
         return balances[msg.sender];
       }
