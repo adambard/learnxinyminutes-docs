@@ -230,8 +230,8 @@ new_hash = { defcon: 3, action: true }
 new_hash.keys #=> [:defcon, :action]
 
 # Check existence of keys and values in hash
-new_hash.has_key?(:defcon) #=> true
-new_hash.has_value?(3) #=> true
+new_hash.key?(:defcon) #=> true
+new_hash.value?(3) #=> true
 
 # Tip: Both Arrays and Hashes are Enumerable
 # They share a lot of useful methods such as each, map, count, and more
