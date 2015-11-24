@@ -14,28 +14,30 @@ As Solidity and Ethereum are under active development, experimental or beta feat
 ```javascript
 // Let's start with a simple Bank contract, before diving into to the key components of the language
 
+// START EXAMPLE
 // Start with a Natspec comment (the three slashes) that can be used
 // for documentation - and as descriptive data for UI elements
 /// @title A simple deposit/withdrawal bank built on Bitcoin
 
 // All contracts are declared and named (in CamelCase)
+// They are similar to 'class' in other languages (and allow capabilities like inheritance)
 contract AcmeBank {
     // Declare state variables outside a function, 
     // these are persistent throughout the life of the contract
 
     // a dictionary that maps addresses to balances
-    mapping (address -> uint) balances; 
+    mapping (address => uint) balances; 
 
     // the 'public' makes 'owner' externally readable by users or contracts 
     // (but not writeable), the 'constant' means this value to be 
     // changed after initialization
-    address public constant owner; 
+    address public owner; 
     
     // Constructor, can receive one or many variables here
     function AcmeBank() {
       // msg is a default variable that provides both the 
       // contract messager's address and amount
-      owner = msg.address; // msg.address refers to the address of the contract creator
+      owner = msg.sender; // msg.sender refers to the address of the contract creator
     }
   
     function deposit(uint balance) {
@@ -48,7 +50,7 @@ contract AcmeBank {
       if(balances[msg.sender] >= withdrawAmount) {
         balances[msg.sender] -= withdrawAmount;
 
-        if (!balances[msg.sender].send(withdrawAmount)) {
+        if (!msg.sender.send(withdrawAmount)) {
           balances[msg.sender] += withdrawAmount;
         }
 
@@ -56,7 +58,7 @@ contract AcmeBank {
       }
     }
 
-    // It's good practice to have a remove function, which disables this contract
+    // It's good practice to have a remove function, which disables this contract - but does mean that users have to trust the owner
     function remove () {
       if(msg.sender == owner) { // Only let the contract creator do this
         suicide(owner); // suicide makes this contract inactive, and returns funds to the owner
@@ -74,7 +76,7 @@ contract AcmeBank {
     // otherwise, the sender loses their money; you should add this in most contracts
     function () { throw; }
 }
-// End example
+// END EXAMPLE
 
 // Now let's go through the basics of Solidity
 
@@ -82,7 +84,7 @@ contract AcmeBank {
 // uint is the data type typically used for currency (there are no doubles
 //  or floats) and for dates
 uint x; 
-int const a = 8; // int of 256 bits, cannot be changed after instantiation
+int constant a = 8; // int of 256 bits, cannot be changed after instantiation
 uint8 b;
 int64 c;
 // int256 is same as int
@@ -134,7 +136,7 @@ names.length; // get length
 names.length = 1; // lengths can also be set, unlike many other languages
 
 // Dictionaries (any type to any other type)
-mapping (string -> uint) public balances;
+mapping (string => uint) public balances;
 balances["john"] = 1;
 console.log(balances[jill]); // is 0, all non-set key values return zeroes
 // The 'public' lets you do the following from another contract
@@ -322,13 +324,14 @@ suicide(SOME_ADDRESS); // suicide the current contract, sending funds to the add
 // planning your data structures)
 
 // *** EXAMPLE: Let's do a more complex example ***
-// [TODO: Decide what a more complex example looks like, needs a few // characteristics:
+// [TODO: Decide what a more complex example looks like, needs a few characteristics:
 //   - has a 'constant' state variable
 //   - has a state machine (uses modifier)
 //   - sends money to an address
 //   - gets information from another contract (we'll show code for both contracts)
 //   - Shows inheritance
 //   - show variables being passed in on instantiation (and guard code to throw if variables not provided)
+//   - Shows the swapping out of a contract
 //   Ideas:
 //     - crowdfunding?
 //     - Peer to peer insurance
@@ -375,7 +378,9 @@ sha256("def");
 // All data to the start of time is stored in the blockchain, so you and 
 // anyone can observe all previous data states
 
-// 9. STYLE NOTES
+// 9. TESTING
+
+// 10. STYLE NOTES
 // Use 4 spaces for indentation 
 // (Python's PEP8 is used as the baseline style guide, including its general philosophy)
 ```
