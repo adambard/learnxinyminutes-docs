@@ -164,7 +164,6 @@ ls -fi *.txt -n # -f is not possible because -Force also exists
 # Use `Get-Help Get-ChildItem -Full` for a complete overview
 
 # Results of the previous cmdlet can be passed to the next as input.
-# grep cmdlet filters the input with provided patterns.
 # `$_` is the current object in the pipeline object.
 ls | Where-Object { $_.Name -match 'c' } | Export-CSV export.txt
 ls | ? { $_.Name -match 'c' } | ConvertTo-HTML | Out-File export.html
