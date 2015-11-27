@@ -6,10 +6,14 @@ contributors:
 filename: LearnPowershell.ps1
 ---
 
-PowerShell is the Windows scripting language and configuration management framework from Microsoft built on the .NET Framework. Windows 7 and up ship with PowerShell.  
-Nearly all examples below can be a part of a shell script or executed directly in the shell.
+PowerShell is the Windows scripting language and configuration management
+framework from Microsoft built on the .NET Framework. Windows 7 and up ship
+with PowerShell.  
+Nearly all examples below can be a part of a shell script or executed directly
+in the shell.
 
-A key difference with Bash is that it is mostly objects that you manipulate rather than plain text.
+A key difference with Bash is that it is mostly objects that you manipulate
+rather than plain text.
 
 [Read more here.](https://technet.microsoft.com/en-us/library/bb978526.aspx)
 
@@ -38,6 +42,10 @@ Get-Alias -Definition Get-Process
 
 Get-Help ps | less # alias: help
 ps | Get-Member # alias: gm
+
+Show-Command Get-EventLog # Display GUI to fill in the parameters
+
+Update-Help # Run as admin
 ```
 
 The tutorial starts here:
@@ -49,20 +57,21 @@ echo Hello world!
 # echo is an alias for Write-Output (=cmdlet)
 # Most cmdlets and functions follow the Verb-Noun naming convention
 
-# Each command starts on a new line, or after semicolon:
+# Each command starts on a new line, or after a semicolon:
 echo 'This is the first line'; echo 'This is the second line'
 
 # Declaring a variable looks like this:
 $aString="Some string"
 # Or like this:
-$aNumber = 5
+$aNumber = 5 -as [double]
 $aList = 1,2,3,4,5
+$aString = $aList -join '--' # yes, -split exists also
 $aHashtable = @{name1='val1'; name2='val2'}
 
 # Using variables:
 echo $aString
 echo "Interpolation: $aString"
-echo "`$aString has length of $($aString.length)"
+echo "`$aString has length of $($aString.Length)"
 echo '$aString'
 echo @"
 This is a Here-String
@@ -84,15 +93,14 @@ echo "Full path of current script directory: $PSScriptRoot"
 echo 'Full path of current script: ' + $MyInvocation.MyCommand.Path
 echo "FUll path of current directory: $Pwd"
 echo "Bound arguments in a function, script or code block: $PSBoundParameters"
-echo "Unbound arguments: $($Args -join ', ')." ######################## MOVE THIS TO FUNCTIONS
+echo "Unbound arguments: $($Args -join ', ')."
 # More builtins: `help about_Automatic_Variables`
 
-# Reading a value from input:
-$Name = Read-Host "What's your name?"
-echo "Hello, $Name!"
-[int]$Age = Read-Host "What's your age?"
+# Inline another file (dot operator)
+. .\otherScriptName.ps1
 
-# Control Flow
+
+### Control Flow
 # We have the usual if structure:
 if ($Age -is [string]) {
 	echo 'But.. $Age cannot be a string!'
@@ -127,7 +135,14 @@ foreach ($var in 'val1','val2','val3') { echo $var }
 # do {} while ()
 # do {} until ()
 
+# Exception handling
+try {} catch {} finally {}
+try {} catch [System.NullReferenceException] {
+	echo $_.Exception | Format-List -Force
+}
 
+
+### Providers
 # List files and directories in the current directory
 ls # or `dir`
 cd ~ # goto home
@@ -140,6 +155,8 @@ cd HKCU: # go to the HKEY_CURRENT_USER registry hive
 # Get all providers in your session
 Get-PSProvider
 
+
+### Pipeline
 # Cmdlets have parameters that control their execution:
 Get-ChildItem -Filter *.txt -Name # Get just the name of all txt files
 # Only need to type as much of a parameter name until it is no longer ambiguous
@@ -171,10 +188,96 @@ Get-EventLog Application -After (Get-Date).AddHours(-2) | Format-List
 
 # Get-Process as a table with three columns
 # The third column is the value of the VM property in MB and 2 decimal places
-# Computed columns can be written more succinctly as: `@{n='lbl';e={$_}`
-ps | Format-Table ID,Name,@{name='VM(MB)';expression={'{0:n2}' -f ($_.VM / 1MB)}} -autoSize
+# Computed columns can be written more verbose as:
+# `@{name='lbl';expression={$_}`
+ps | Format-Table ID,Name,@{n='VM(MB)';e={'{0:n2}' -f ($_.VM / 1MB)}} -autoSize
 
 
+### Functions
+# The [string] attribute is optional.
+function foo([string]$name) {
+	echo "Hey $name, have a function"
+}
+
+# Calling your function
+foo "Say my name"
+
+# Functions with named parameters, parameter attributes, parsable documention
+<#
+.SYNOPSIS
+Setup a new website
+.DESCRIPTION
+Creates everything your new website needs for much win
+.PARAMETER siteName
+The name for the new website
+.EXAMPLE
+New-Website -Name FancySite -Po 5000
+New-Website SiteWithDefaultPort
+New-Website siteName 2000 # ERROR! Port argument could not be validated
+('name1','name2') | New-Website -Verbose
+#>
+function New-Website() {
+	[CmdletBinding()]
+	param (
+		[Parameter(ValueFromPipeline=$true, Mandatory=$true)]
+		[Alias('name')]
+		[string]$siteName,
+		[ValidateSet(3000,5000,8000)]
+		[int]$port = 3000
+	)
+	BEGIN { Write-Verbose 'Creating new website(s)' }
+	PROCESS { echo "name: $siteName, port: $port" }
+	END { Write-Verbose 'Website(s) created' }
+}
+
+
+### It's all .NET
+# A PS string is in fact a .NET System.String
+# All .NET methods and properties are thus available
+'string'.ToUpper().Replace('G', 'ggg')
+# Or more powershellish
+'string'.ToUpper() -replace 'G', 'ggg'
+
+# Unsure how that .NET method is called again?
+'string' | gm
+
+# Syntax for calling static .NET methods
+[System.Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic')
+
+# Note that .NET functions MUST be called with parentheses
+# while PS functions CANNOT be called with parentheses
+$writer = New-Object System.IO.StreamWriter($path, $true)
+$writer.Write([Environment]::NewLine)
+$write.Dispose()
+
+### IO
+# Reading a value from input:
+$Name = Read-Host "What's your name?"
+echo "Hello, $Name!"
+[int]$Age = Read-Host "What's your age?"
+
+# Test-Path, Split-Path, Join-Path, Resolve-Path
+# Get-Content filename # returns a string[]
+# Set-Content, Add-Content, Clear-Content
+Get-Command ConvertTo-*,ConvertFrom-*
+
+
+### Useful stuff
+# Refresh your PATH
+$env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + 
+	";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+# Find Python in path
+$env:PATH.Split(";") | Where-Object { $_ -like "*python*"}
+
+# Change working directory without having to remember previous path
+Push-Location c:\temp # change working directory to c:\temp
+Pop-Location # change back to previous working directory
+
+# Unblock a directory after download
+Get-ChildItem -Recurse | Unblock-File
+
+# Open Windows Explorer in working directory
+ii .
 ```
 
 
@@ -188,3 +291,14 @@ if (-not (Test-Path $Profile)) {
 }
 # More info: `help about_profiles`
 ```
+
+Interesting Projects  
+* [Channel9](https://channel9.msdn.com/Search?term=powershell%20pipeline#ch9Search&lang-en=en) PowerShell videos
+* [PSake](https://github.com/psake/psake) Build automation tool
+* [Pester](https://github.com/pester/Pester) BDD Testing Framework
+
+Not covered  
+* WMI: Windows Management Intrumentation (Get-CimInstance)  
+* Multitasking: Start-Job -scriptBlock {...}, 
+* Code Signing
+* Remoting (Enter-PSSession/Exit-PSSession; Invoke-Command)
