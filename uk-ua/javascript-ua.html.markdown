@@ -3,7 +3,7 @@ language: javascript
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
-filename: javascript-ua.js
+filename: javascript-uk.js
 translators:
   - ["Ivan", "https://github.com/IvanEh"]
   - ["Serhii Maksymchuk", "https://github.com/Serg-Maximchuk"]
@@ -160,7 +160,7 @@ var myArray = ["Привіт", 45, true];
 // Індексація починається з нуля
 myArray[1]; // = 45
 
-// Масиви в JavaScript змінюють довжину при додаванні нових елементів
+// Масиви в JavaScript змінюють свою довжину при додаванні нових елементів
 myArray.push("Привіт");
 myArray.length; // = 4
 
