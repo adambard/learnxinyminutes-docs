@@ -278,6 +278,17 @@ Get-ChildItem -Recurse | Unblock-File
 
 # Open Windows Explorer in working directory
 ii .
+
+# Any key to exit
+$host.UI.RawUI.ReadKey()
+return
+
+# Create a shortcut
+$WshShell = New-Object -comObject WScript.Shell
+$Shortcut = $WshShell.CreateShortcut($link)
+$Shortcut.TargetPath = $file
+$Shortcut.WorkingDirectory = Split-Path $file
+$Shortcut.Save()
 ```
 
 
@@ -290,12 +301,18 @@ if (-not (Test-Path $Profile)) {
 	notepad $Profile
 }
 # More info: `help about_profiles`
+# For a more usefull shell, be sure to check the project PSReadLine below
 ```
 
 Interesting Projects  
-* [Channel9](https://channel9.msdn.com/Search?term=powershell%20pipeline#ch9Search&lang-en=en) PowerShell videos
+* [Channel9](https://channel9.msdn.com/Search?term=powershell%20pipeline#ch9Search&lang-en=en) PowerShell tutorials
+* [PSGet](https://github.com/psget/psget) NuGet for PowerShell
+* [PSReadLine](https://github.com/lzybkr/PSReadLine/) A bash inspired readline implementation for PowerShell (So good that it now ships with Windows10 by default!)
+* [Posh-Git](https://github.com/dahlbyk/posh-git/) Fancy Git Prompt (Recommended!)
 * [PSake](https://github.com/psake/psake) Build automation tool
 * [Pester](https://github.com/pester/Pester) BDD Testing Framework
+* [Jump-Location](https://github.com/tkellogg/Jump-Location) Powershell `cd` that reads your mind
+* [PowerShell Community Extensions](http://pscx.codeplex.com/) (Dead)
 
 Not covered  
 * WMI: Windows Management Intrumentation (Get-CimInstance)  
