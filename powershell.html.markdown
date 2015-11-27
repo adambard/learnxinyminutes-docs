@@ -13,6 +13,22 @@ A key difference with Bash is that it is mostly objects that you manipulate rath
 
 [Read more here.](https://technet.microsoft.com/en-us/library/bb978526.aspx)
 
+If you are uncertain about your environment:
+```powershell
+Get-ExecutionPolicy -List
+Set-ExecutionPolicy AllSigned
+# Execution policies include:
+# - Restricted: Scripts won't run.
+# - RemoteSigned: Downloaded scripts run only if signed by a trusted publisher. 
+# - AllSigned: Scripts need to be signed by a trusted publisher.
+# - Unrestricted: Run all scripts.
+help about_Execution_Policies # for more info
+
+# Current PowerShell version:
+$PSVersionTable
+```
+
+The tutorial starts here:
 ```powershell
 # As you already figured, comments start with #
 
@@ -25,17 +41,18 @@ echo Hello world!
 echo 'This is the first line'; echo 'This is the second line'
 
 # Declaring a variable looks like this:
-$Variable="Some string"
+$aString="Some string"
 # Or like this:
-$Variable1 = "Another string"
+$aNumber = 5
 
 # Using the variable:
-echo $Variable
-echo "$Variable"
-echo '$($Variable + '1')'
+echo $aString
+echo "Interpolation: $aString"
+echo "`$aString has length of $($aString.length)"
+echo '$aString'
 echo @"
 This is a Here-String
-$Variable
+$aString
 "@
 # Note that ' (single quote) won't expand the variables!
 # Here-Strings also work with single quote
@@ -45,12 +62,35 @@ $Variable
 echo "Booleans: $TRUE and $FALSE"
 echo "Empty value: $NULL"
 echo "Last program's return value: $?"
+echo "Exit code of last run Windows-based program: $LastExitCode"
+echo "The last token in the last line received by the session: $$"
+echo "The first token: $^"
 echo "Script's PID: $PID"
-echo "Number of arguments passed to script: $#"
-echo "All arguments passed to script: $Args"
-echo "Script's arguments separated into different variables: $1 $2..."
+echo "Full path of current script directory: $PSScriptRoot"
+echo 'Full path of current script: ' + $MyInvocation.MyCommand.Path
+echo "FUll path of current directory: $Pwd"
+echo "Bound arguments in a function, script or code block: $PSBoundParameters"
+echo "Unbound arguments: $($Args -join ', ')." ######################## MOVE THIS TO FUNCTIONS
+# More builtins: `help about_Automatic_Variables`
 
 # Reading a value from input:
 $Name = Read-Host "What's your name?"
 echo "Hello, $Name!"
 [int]$Age = Read-Host "What's your age?"
+
+
+
+
+```
+
+
+Configuring your shell
+```powershell
+# $Profile is the full path for your `Microsoft.PowerShell_profile.ps1`
+# All code there will be executed when the PS session starts
+if (-not (Test-Path $Profile)) {
+	New-Item -Type file -Path $Profile -Force
+	notepad $Profile
+}
+# More info: `help about_profiles`
+```
