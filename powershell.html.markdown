@@ -28,6 +28,18 @@ help about_Execution_Policies # for more info
 $PSVersionTable
 ```
 
+Getting help:
+```powershell
+# Find commands
+Get-Command about_* # alias: gcm
+Get-Command -Verb Add
+Get-Alias ps
+Get-Alias -Definition Get-Process
+
+Get-Help ps | less # alias: help
+ps | Get-Member # alias: gm
+```
+
 The tutorial starts here:
 ```powershell
 # As you already figured, comments start with #
@@ -44,8 +56,10 @@ echo 'This is the first line'; echo 'This is the second line'
 $aString="Some string"
 # Or like this:
 $aNumber = 5
+$aList = 1,2,3,4,5
+$aHashtable = @{name1='val1'; name2='val2'}
 
-# Using the variable:
+# Using variables:
 echo $aString
 echo "Interpolation: $aString"
 echo "`$aString has length of $($aString.length)"
@@ -78,7 +92,87 @@ $Name = Read-Host "What's your name?"
 echo "Hello, $Name!"
 [int]$Age = Read-Host "What's your age?"
 
+# Control Flow
+# We have the usual if structure:
+if ($Age -is [string]) {
+	echo 'But.. $Age cannot be a string!'
+} elseif ($Age -lt 12 -and $Age -gt 0) {
+	echo 'Child (Less than 12. Greater than 0)'
+} else {
+	echo 'Adult'
+}
 
+# Switch statements are more powerfull compared to most languages
+$val = "20"
+switch($val) {
+  { $_ -eq 42 }           { "The answer equals 42"; break }
+  '20'                    { "Exactly 20"; break }
+  { $_ -like 's*' }       { "Case insensitive"; break }
+  { $_ -clike 's*'}       { "clike, ceq, cne for case sensitive"; break }
+  { $_ -notmatch '^.*$'}  { "Regex matching. cnotmatch, cnotlike, ..."; break }
+  { 'x' -contains 'x'}    { "FALSE! -contains is for lists!"; break }
+  default                 { "Others" }
+}
+
+# The classic for
+for($i = 1; $i -le 10; $i++) {
+  "Loop number $i"
+}
+# Or shorter
+1..10 | % { "Loop number $_" }
+
+# PowerShell also offers
+foreach ($var in 'val1','val2','val3') { echo $var }
+# while () {}
+# do {} while ()
+# do {} until ()
+
+
+# List files and directories in the current directory
+ls # or `dir`
+cd ~ # goto home
+
+Get-Alias ls # -> Get-ChildItem
+# Uh!? These cmdlets have generic names because unlike other scripting
+# languages, PowerShell does not only operate in the current directory.
+cd HKCU: # go to the HKEY_CURRENT_USER registry hive
+
+# Get all providers in your session
+Get-PSProvider
+
+# Cmdlets have parameters that control their execution:
+Get-ChildItem -Filter *.txt -Name # Get just the name of all txt files
+# Only need to type as much of a parameter name until it is no longer ambiguous
+ls -fi *.txt -n # -f is not possible because -Force also exists
+# Use `Get-Help Get-ChildItem -Full` for a complete overview
+
+# Results of the previous cmdlet can be passed to the next as input.
+# grep cmdlet filters the input with provided patterns.
+# `$_` is the current object in the pipeline object.
+ls | Where-Object { $_.Name -match 'c' } | Export-CSV export.txt
+ls | ? { $_.Name -match 'c' } | ConvertTo-HTML | Out-File export.html
+
+# If you get confused in the pipeline use `Get-Member` for an overview
+# of the available methods and properties of the pipelined objects:
+ls | Get-Member
+Get-Date | gm
+
+# ` is the line continuation character. Or end the line with a |
+Get-Process | Sort-Object ID -Descending | Select-Object -First 10 Name,ID,VM `
+	| Stop-Process -WhatIf
+
+Get-EventLog Application -After (Get-Date).AddHours(-2) | Format-List
+
+# Use % as a shorthand for ForEach-Object
+(a,b,c) | ForEach-Object `
+	-Begin { "Starting"; $counter = 0 } `
+	-Process { "Processing $_"; $counter++ } `
+	-End { "Finishing: $counter" }
+
+# Get-Process as a table with three columns
+# The third column is the value of the VM property in MB and 2 decimal places
+# Computed columns can be written more succinctly as: `@{n='lbl';e={$_}`
+ps | Format-Table ID,Name,@{name='VM(MB)';expression={'{0:n2}' -f ($_.VM / 1MB)}} -autoSize
 
 
 ```
