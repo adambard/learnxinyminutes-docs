@@ -18,7 +18,7 @@ rather than plain text.
 [Read more here.](https://technet.microsoft.com/en-us/library/bb978526.aspx)
 
 If you are uncertain about your environment:
-```powershell
+```
 Get-ExecutionPolicy -List
 Set-ExecutionPolicy AllSigned
 # Execution policies include:
@@ -33,7 +33,7 @@ $PSVersionTable
 ```
 
 Getting help:
-```powershell
+```
 # Find commands
 Get-Command about_* # alias: gcm
 Get-Command -Verb Add
@@ -49,7 +49,7 @@ Update-Help # Run as admin
 ```
 
 The tutorial starts here:
-```powershell
+```
 # As you already figured, comments start with #
 
 # Simple hello world example:
@@ -293,7 +293,7 @@ $Shortcut.Save()
 
 
 Configuring your shell
-```powershell
+```
 # $Profile is the full path for your `Microsoft.PowerShell_profile.ps1`
 # All code there will be executed when the PS session starts
 if (-not (Test-Path $Profile)) {
