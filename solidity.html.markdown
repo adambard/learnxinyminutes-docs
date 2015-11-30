@@ -72,7 +72,7 @@ contract AcmeBank {
 
     // Fallback function
     // The fallback function is called if none of the other functions matches the given function identifier.
-    // It is often meant to be called when invalid data is sent or ether without data.
+    // Typically, called when invalid data is sent to the contract or ether without data.
     // Added so that ether sent to this contract is reverted if the contract fails
     // otherwise, the sender loses their money; you should add this in most contracts
     function () { throw; }
@@ -87,10 +87,10 @@ contract AcmeBank {
 //  or floats) and for dates
 uint x;
 
-// with 'constant', the compiler replaces each occurence with the acutal value
+// with 'constant', the compiler replaces each occurrence with the actual value
 // int of 256 bits, cannot be changed after instantiation
 int constant a = 8;
-int256 constant a = 8; // same effect as line above, here the 256 is explict
+int256 constant a = 8; // same effect as line above, here the 256 is explicit
 
 // For both int and uint, you can explicitly set space in steps of 8
 // e.g., int8, int16
@@ -221,7 +221,7 @@ function increment(uint x) returns (uint) {
 }
 
 // Functions can return many arguments, and by specifying the returned arguments
-//  you don't need to explicity return
+//  you don't need to explicitly return
 function increment(uint x, uint y) returns (uint x, uint y) {
   x += 1;
   y += 1;
@@ -241,7 +241,7 @@ function increment(uint x) constant returns (uint x) {
 // There are a few 'function visibility specifiers' that can be placed where 'constant'
 //  is, which include:
 // internal (can only be called by an internal function, not one external to the contract)
-// public - visibile externally and internally
+// public - visible externally and internally
 // private - only visible in the current contract
 
 // Functions are hoisted (so you can call a function, even if it is declared later) - and you can assign a function to a variable
