@@ -462,6 +462,10 @@ sha256("def");
 - [Browser-based Solidity Editor](http://chriseth.github.io/browser-solidity/)
 - [Gitter Chat room](https://gitter.im/ethereum/go-ethereum)
 
+## Sample contracts
+- [Solidity Baby Step Contracts](https://github.com/fivedogit/solidity-baby-steps/tree/master/contracts)
+- [Consensys Contracts](https://github.com/ConsenSys/dapp-store-contracts)
+
 ## Information purposefully excluded
 - Libraries
 
