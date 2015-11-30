@@ -4,6 +4,7 @@ contributors:
     - ["Chaitanya Krishna Ande", "http://icymist.github.io"]
     - ["Colton Kohnke", "http://github.com/voltnor"]
     - ["Sricharan Chiruvolu", "http://sricharan.xyz"]
+    - ["Ramanan Balakrishnan", "https://github.com/ramananbalakrishnan"]
 filename: learn-latex.tex
 ---
 
