@@ -81,11 +81,11 @@ contract AcmeBank {
 
 // Now let's go through the basics of Solidity
 
-// 1. DATA TYPES AND ASSOCIATED METHOD
+
+// 1. DATA TYPES AND ASSOCIATED METHODS
 // uint is the data type typically used for currency (there are no doubles
 //  or floats) and for dates
 uint x;
-
 
 // with 'constant', the compiler replaces each occurence with the acutal value
 // int of 256 bits, cannot be changed after instantiation
@@ -132,6 +132,7 @@ var a = true;
 // Delete can be called on most types, and will set the values to 0 by assignment
 uint x = 5;
 delete(x); // x is now 0
+
 
 // 2. DATA STRUCTURES
 // Arrays
@@ -181,6 +182,7 @@ state = State.Created;
 // 'memory' does not persist, 'storage' does
 // Default is 'storage' for local and state variables; 'memory' for function parameters
 
+
 // 3. Variables of note
 // ** this **
 this; // the address of the current contract
@@ -208,6 +210,7 @@ block.gasLimit();
 
 // ** storage - A persistent storage hash (does not need to be declared) **
 storage['abc'] = 'def'; // maps 256 bit words to 256 bit words
+
 
 // 4. FUNCTIONS AND MORE
 // A. Functions
@@ -290,6 +293,7 @@ function changeOwner(newOwner)
   owner = newOwner;
 }
 
+
 // 5. BRANCHING AND LOOPS
 
 // All basic logic blocks work - including if/else, for, while, break, continue, return
@@ -297,6 +301,7 @@ function changeOwner(newOwner)
 
 // Syntax is the same as javascript, but there is no type conversion from
 // non-boolean to boolean, so comparison operators must be used to get the boolean value
+
 
 // 6. OBJECTS/CONTRACTS
 
@@ -350,6 +355,7 @@ import "github.com/ethereum/dapp-bin/library/iterable_mapping.sol";
 // Importing is under active development and will change
 // Importing cannot currently be done at the command line
 
+
 // 7. CONTRACT DESIGN PATTERNS
 
 // A. Obfuscation
@@ -383,6 +389,8 @@ function remove() {
 // compilation may better handle this, but for now there are benefits to
 // planning your data structures)
 
+
+
 // *** EXAMPLE: Let's do a more complex example ***
 
 // ** START EXAMPLE **
@@ -400,7 +408,7 @@ function remove() {
 // ]
 // *** END EXAMPLE ***
 
-// Some final points
+
 // 7. NATIVE FUNCTIONS
 
 // Currency units
@@ -427,6 +435,7 @@ sha3("ab", "cd");
 ripemd160("abc");
 sha256("def");
 
+
 // 8. COMMON MISTAKES/MISCONCEPTIONS
 // A few common mistakes and misconceptions:
 
@@ -440,6 +449,7 @@ sha256("def");
 // read the data - but any person can still read the data
 
 // TODO
+
 
 // 9. STYLE NOTES
 // Use 4 spaces for indentation
