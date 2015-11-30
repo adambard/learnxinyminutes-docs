@@ -87,22 +87,22 @@ mySearch = function(src: string, sub: string) {
 
 // Les membres des classes sont publiques par défaut.
 class Point {
-    // Propriétés
-    x: number;
+  // Propriétés
+  x: number;
 
-    // Constructeur - Les mots clés "public" et "private" dans ce contexte
-    //  génèrent le code de la propriété et son initialisation dans le
-    // constructeur. Ici, "y" sera défini de la même façon que "x",
-    // mais avec moins de code. Les valeurs par défaut sont supportées.
-    constructor(x: number, public y: number = 0) {
-        this.x = x;
-    }
+  // Constructeur - Les mots clés "public" et "private" dans ce contexte
+  //  génèrent le code de la propriété et son initialisation dans le
+  // constructeur. Ici, "y" sera défini de la même façon que "x",
+  // mais avec moins de code. Les valeurs par défaut sont supportées.
+  constructor(x: number, public y: number = 0) {
+    this.x = x;
+  }
 
-    // Fonctions
-    dist() { return Math.sqrt(this.x * this.x + this.y * this.y); }
+  // Fonctions
+  dist() { return Math.sqrt(this.x * this.x + this.y * this.y); }
 
-    // Membres statiques
-    static origin = new Point(0, 0);
+  // Membres statiques
+  static origin = new Point(0, 0);
 }
 
 var p1 = new Point(10 ,20);
@@ -110,17 +110,17 @@ var p2 = new Point(25); // y sera 0
 
 // Héritage
 class Point3D extends Point {
-    constructor(x: number, y: number, public z: number = 0) {
-        // Un appel explicite au constructeur de la super classe
-        // est obligatoire.
-        super(x, y);
-    }
+  constructor(x: number, y: number, public z: number = 0) {
+    // Un appel explicite au constructeur de la super classe
+    // est obligatoire.
+    super(x, y);
+  }
 
-    // Redéfinition
-    dist() {
-        var d = super.dist();
-        return Math.sqrt(d * d + this.z * this.z);
-    }
+  // Redéfinition
+  dist() {
+    var d = super.dist();
+    return Math.sqrt(d * d + this.z * this.z);
+  }
 }
 
 // Modules, "." peut être utilisé comme un séparateur de sous modules.
@@ -144,19 +144,19 @@ var s2 = new G.Square(10);
 // Génériques
 // Classes
 class Tuple<T1, T2> {
-    constructor(public item1: T1, public item2: T2) {
-    }
+  constructor(public item1: T1, public item2: T2) {
+  }
 }
 
 // Interfaces
 interface Pair<T> {
-    item1: T;
-    item2: T;
+  item1: T;
+  item2: T;
 }
 
 // Et fonctions
 var pairToTuple = function<T>(p: Pair<T>) {
-    return new Tuple(p.item1, p.item2);
+  return new Tuple(p.item1, p.item2);
 };
 
 var tuple = pairToTuple({ item1:"hello", item2:"world"});
