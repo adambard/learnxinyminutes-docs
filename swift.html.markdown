@@ -46,7 +46,7 @@ let `class` = "keyword" // backticks allow keywords to be used as variable names
 let explicitDouble: Double = 70
 let intValue = 0007 // 7
 let largeIntValue = 77_000 // 77000
-let label = "some text " + String(myVariable) // Casting
+let label = "some text " + String(myVariable) // String construction
 let piText = "Pi = \(π), Pi 2 = \(π * 2)" // String interpolation
 
 // Build Specific values
