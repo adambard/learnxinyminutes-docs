@@ -30,10 +30,13 @@ contract AcmeBank {
     // these are persistent throughout the life of the contract
 
     // a dictionary that maps addresses to balances
-    mapping (address => uint) balances;
+    // the private means that other contracts can't see balances
+    // but the data is still available to all other parties on the
+    // blockchain
+    mapping (address => uint) private balances;
 
     // the 'public' makes 'owner' externally readable by users or contracts
-    // (but not writeable) -
+    // (but not writeable)
     address public owner;
 
     // Constructor, can receive one or many variables here
@@ -125,9 +128,10 @@ var a = true;
 
 // by default, all values are set to 0 on instantiation
 
-// Delete can be called on most types, and will set the values to 0 by assignment
+// Delete can be called on most types
+// (it does NOT destroy the value, but rather sets the value to 0 by assignment)
 uint x = 5;
-delete(x); // x is now 0
+delete x; // x is now 0
 
 
 // 2. DATA STRUCTURES
@@ -151,8 +155,8 @@ function balances(address _account) returns (uint balance) {
 }
 
 // To delete
-delete(balances["John"]);
-delete(balances); // deletes all elements
+delete balances["John"];
+delete balances; // deletes all elements
 
 // Unlike languages like Javascript, you cannot iterate through all elements in
 // a map, without knowing the source keys
@@ -166,7 +170,7 @@ Bank b = Bank({
   owner: msg.sender,
   balance: 5
 });
-delete(b); // set all values to 0, except any mappings
+delete b; // set all variables in struct to 0, except any mappings
 
 // Enums
 enum State { Created, Locked, Inactive };
@@ -226,6 +230,7 @@ function increment(uint x, uint y) returns (uint x, uint y) {
 uint (a,b) = increment(1,1);
 
 // The 'constant' indicates and ensures that a function does not/cannot change the persistent variables
+// Constant function execute locally, not on the blockchain
 uint y;
 
 function increment(uint x) constant returns (uint x) {
@@ -469,6 +474,7 @@ sha256("def");
 ## Sample contracts
 - [Solidity Baby Step Contracts](https://github.com/fivedogit/solidity-baby-steps/tree/master/contracts)
 - [Consensys Contracts](https://github.com/ConsenSys/dapp-store-contracts)
+- [State of Dapps](http://dapps.ethercasts.com/)
 
 ## Information purposefully excluded
 - Libraries
