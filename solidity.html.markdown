@@ -13,6 +13,10 @@ As Solidity and Ethereum are under active development, experimental or beta feat
 
 ```javascript
 // Let's start with a simple Bank contract, before diving into to the key components of the language
+// This bank has three main capabilities:
+// - deposit
+// - withdrawal
+// - check balance
 
 // ** START EXAMPLE **
 // Start with a Natspec comment (the three slashes) that can be used
@@ -54,14 +58,6 @@ contract AcmeBank {
         }
 
         return balances[msg.sender];
-      }
-    }
-
-    // It's good practice to have a remove function, which disables this
-    // contract - but does mean that users have to trust the owner
-    function remove() {
-      if(msg.sender == owner) { // Only let the contract creator do this
-        suicide(owner); // suicide makes this contract inactive, and returns funds to the owner
       }
     }
 
@@ -406,6 +402,14 @@ function remove() {
 //     - crowdfunding?
 //     - Peer to peer insurance
 // ]
+    // It's good practice to have a remove function, which disables this
+    // contract - but does mean that users have to trust the owner
+    // For a decentralized bank without a trusted part
+    function remove() {
+      if(msg.sender == owner) { // Only let the contract creator do this
+        suicide(owner); // suicide makes this contract inactive, and returns funds to the owner
+      }
+    }
 // *** END EXAMPLE ***
 
 
