@@ -70,7 +70,7 @@ void main() {
 ```
 
 We can define new types with `struct`, `class`, `union`, and `enum`. Structs and unions
-are passed to functions by value (i.e. copied) and classes are passed by reference. Futhermore,
+are passed to functions by value (i.e. copied) and classes are passed by reference. Furthermore,
 we can use templates to parameterize all of these on both types and values!
 
 ```c
