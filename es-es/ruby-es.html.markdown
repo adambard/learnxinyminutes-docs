@@ -97,7 +97,7 @@ y #=> 10
 # Por convención, usa snake_case para nombres de variables
 snake_case = true
 
-# Usa nombres de variables descriptivas
+# Usa nombres de variables descriptivos
 ruta_para_la_raiz_de_un_projecto = '/buen/nombre/'
 ruta = '/mal/nombre/'
 
