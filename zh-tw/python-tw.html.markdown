@@ -7,7 +7,7 @@ contributors:
     - ["evuez", "http://github.com/evuez"]
 translators:
     - ["Michael Yeh", "https://hinet60613.github.io/"]
-filename: learnpython.py
+filename: learnpython-tw.py
 lang: zh-tw
 ---
 
