@@ -1,22 +1,25 @@
 ---
 language: Matlab
+filename: learnmatlab.mat
 contributors:
     - ["mendozao", "http://github.com/mendozao"]
     - ["jamesscottbrown", "http://jamesscottbrown.com"]
-
+    - ["Colton Kohnke", "http://github.com/voltnor"]
+    - ["Claudson Martins", "http://github.com/claudsonm"]
 ---
 
-MATLAB stands for MATrix LABoratory. It is a powerful numerical computing language commonly used in engineering and mathematics.  
+MATLAB stands for MATrix LABoratory. It is a powerful numerical computing language commonly used in engineering and mathematics.
 
 If you have any feedback please feel free to reach me at
 [@the_ozzinator](https://twitter.com/the_ozzinator), or
 [osvaldo.t.mendoza@gmail.com](mailto:osvaldo.t.mendoza@gmail.com).
 
 ```matlab
+%% Code sections start with two percent signs. Section titles go on the same line.
 % Comments start with a percent sign.
 
 %{
-Multi line comments look 
+Multi line comments look
 something
 like
 this
@@ -62,18 +65,18 @@ disp('text') 	% print "text" to the screen
 % Variables & Expressions
 myVariable = 4 	% Notice Workspace pane shows newly created variable
 myVariable = 4; % Semi colon suppresses output to the Command Window
-4 + 6  		% ans = 10 
-8 * myVariable 	% ans = 32 
-2 ^ 3 		% ans = 8 
-a = 2; b = 3; 
+4 + 6  		% ans = 10
+8 * myVariable 	% ans = 32
+2 ^ 3 		% ans = 8
+a = 2; b = 3;
 c = exp(a)*sin(pi/2) % c = 7.3891
 
 % Calling functions can be done in either of two ways:
 % Standard function syntax:
-load('myFile.mat', 'y') % arguments within parantheses, spererated by commas
+load('myFile.mat', 'y') % arguments within parentheses, separated by commas
 % Command syntax:
 load myFile.mat y 	% no parentheses, and spaces instead of commas
-% Note the lack of quote marks in command form: inputs are always passed as 
+% Note the lack of quote marks in command form: inputs are always passed as
 % literal text - cannot pass variable values. Also, can't receive output:
 [V,D] = eig(A);  % this has no equivalent in command form
 [~,D] = eig(A);  % if you only want D and not V
@@ -103,7 +106,7 @@ a(2) % ans = y
 
 
 % Cells
-a = {'one', 'two', 'three'} 
+a = {'one', 'two', 'three'}
 a(1) % ans = 'one' - returns a cell
 char(a(1)) % ans = one - returns a string
 
@@ -113,7 +116,7 @@ A.c = [1 2];
 A.d.e = false;
 
 % Vectors
-x = [4 32 53 7 1] 
+x = [4 32 53 7 1]
 x(2) % ans = 32, indices in Matlab start 1, not 0
 x(2:3) % ans = 32 53
 x(2:end) % ans = 32 53 7 1
@@ -121,9 +124,10 @@ x(2:end) % ans = 32 53 7 1
 x = [4; 32; 53; 7; 1] % Column vector
 
 x = [1:10] % x = 1 2 3 4 5 6 7 8 9 10
+x = [1:2:10] % Increment by 2, i.e. x = 1 3 5 7 9
 
 % Matrices
-A = [1 2 3; 4 5 6; 7 8 9] 
+A = [1 2 3; 4 5 6; 7 8 9]
 % Rows are separated by a semicolon; elements are separated with space or comma
 % A =
 
@@ -132,7 +136,7 @@ A = [1 2 3; 4 5 6; 7 8 9]
 %     7     8     9
 
 A(2,3) % ans = 6, A(row, column)
-A(6) % ans = 8 
+A(6) % ans = 8
 % (implicitly concatenates columns into vector, then indexes into that)
 
 
@@ -171,7 +175,7 @@ A(1,:) % All columns in row 1
 %     4     5    42
 %     7     8     9
 
-% this is the same as 
+% this is the same as
 vertcat(A,A);
 
 
@@ -183,7 +187,7 @@ vertcat(A,A);
 %     4     5    42     4     5    42
 %     7     8     9     7     8     9
 
-% this is the same as 
+% this is the same as
 horzcat(A,A);
 
 
@@ -201,21 +205,23 @@ A(:, 1) =[] % Delete the first column of the matrix
 
 transpose(A) % Transpose the matrix, which is the same as:
 A one
-ctranspose(A) % Hermitian transpose the matrix 
+ctranspose(A) % Hermitian transpose the matrix
 % (the transpose, followed by taking complex conjugate of each element)
+A' % Concise version of complex transpose
+A.' % Concise version of transpose (without taking complex conjugate)
 
 
 
 
-% Element by Element Arithmetic vs. Matrix Arithmetic 
+% Element by Element Arithmetic vs. Matrix Arithmetic
 % On their own, the arithmetic operators act on whole matrices. When preceded
 % by a period, they act on each element instead. For example:
 A * B % Matrix multiplication
 A .* B % Multiple each element in A by its corresponding element in B
 
-% There are several pairs of functions, where one acts on each element, and 
+% There are several pairs of functions, where one acts on each element, and
 % the other (whose name ends in m) acts on the whole matrix.
-exp(A) % exponentiate each element 
+exp(A) % exponentiate each element
 expm(A) % calculate the matrix exponential
 sqrt(A) % take the square root of each element
 sqrtm(A) %  find the matrix whose square is A
@@ -233,7 +239,7 @@ axis([0 2*pi -1 1]) % x range from 0 to 2*pi, y range from -1 to 1
 plot(x,y1,'-',x,y2,'--',x,y3,':') % For multiple functions on one plot
 legend('Line 1 label', 'Line 2 label') % Label curves with a legend
 
-% Alternative method to plot multiple functions in one plot. 
+% Alternative method to plot multiple functions in one plot.
 % while 'hold' is on, commands add to existing graph rather than replacing it
 plot(x, y)
 hold on
@@ -252,6 +258,8 @@ axis equal % Set aspect ratio so data units are the same in every direction
 
 scatter(x, y); % Scatter-plot
 hist(x); % Histogram
+stem(x); % Plot values as stems, useful for displaying discrete data
+bar(x); % Plot bar graph
 
 z = sin(x);
 plot3(x,y,z); % 3D line plot
@@ -260,7 +268,7 @@ pcolor(A) % Heat-map of matrix: plot as grid of rectangles, coloured by value
 contour(A) % Contour plot of matrix
 mesh(A) % Plot as a mesh surface
 
-h = figure	% Create new figure object, with handle f
+h = figure % Create new figure object, with handle h
 figure(h) % Makes the figure corresponding to handle h the current figure
 close(h) % close figure with handle h
 close all % close all open figure windows
@@ -271,9 +279,9 @@ clf clear % clear current figure window, and reset most figure properties
 
 % Properties can be set and changed through a figure handle.
 % You can save a handle to a figure when you create it.
-% The function gcf returns a handle to the current figure 
+% The function get returns a handle to the current figure
 h = plot(x, y); % you can save a handle to a figure when you create it
-set(h, 'Color', 'r') 
+set(h, 'Color', 'r')
 % 'y' yellow; 'm' magenta, 'c' cyan, 'r' red, 'g' green, 'b' blue, 'w' white, 'k' black
 set(h, 'LineStyle', '--')
  % '--' is solid line, '---' dashed, ':' dotted, '-.' dash-dot, 'none' is no line
@@ -298,8 +306,8 @@ cd /path/to/move/into % change directory
 
 
 % Variables can be saved to .mat files
-save('myFileName.mat') % Save the variables in your Workspace 
-load('myFileName.mat') % Load saved variables into Workspace 
+save('myFileName.mat') % Save the variables in your Workspace
+load('myFileName.mat') % Load saved variables into Workspace
 
 % M-file Scripts
 % A script file is an external file that contains a sequence of statements.
@@ -312,11 +320,11 @@ load('myFileName.mat') % Load saved variables into Workspace
 % Also, they have their own workspace (ie. different variable scope).
 % Function name should match file name (so save this example as double_input.m).
 % 'help double_input.m' returns the comments under line beginning function
-function output = double_input(x) 
+function output = double_input(x)
 	%double_input(x) returns twice the value of x
 	output = 2*x;
 end
-double_input(6) % ans = 12 
+double_input(6) % ans = 12
 
 
 % You can also have subfunctions and nested functions.
@@ -325,10 +333,10 @@ double_input(6) % ans = 12
 % functions, and have access to both its workspace and their own workspace.
 
 % If you want to create a function without creating a new file you can use an
-% anonymous function. Useful when quickly defining a function to pass to 
-% another function (eg. plot with fplot, evaluate an indefinite integral 
+% anonymous function. Useful when quickly defining a function to pass to
+% another function (eg. plot with fplot, evaluate an indefinite integral
 % with quad, find roots with fzero, or find minimum with fminsearch).
-% Example that returns the square of it's input, assigned to to the handle sqr:
+% Example that returns the square of it's input, assigned to the handle sqr:
 sqr = @(x) x.^2;
 sqr(10) % ans = 100
 doc function_handle % find out more
@@ -336,12 +344,12 @@ doc function_handle % find out more
 % User input
 a = input('Enter the value: ')
 
-% Stops execution of file and gives control to the keyboard: user can examine 
+% Stops execution of file and gives control to the keyboard: user can examine
 % or change variables. Type 'return' to continue execution, or 'dbquit' to exit
 keyboard
 
 % Reading in data (also xlsread/importdata/imread for excel/CSV/image files)
-fopen(filename) 
+fopen(filename)
 
 % Output
 disp(a) % Print out the value of variable a
@@ -363,8 +371,8 @@ end
 for k = 1:5
 	disp(k)
 end
-	
-k = 0;	
+
+k = 0;
 while (k < 5)
 	k = k + 1;
 end
@@ -382,7 +390,7 @@ password = 'root';
 driver = 'com.mysql.jdbc.Driver';
 dburl = ['jdbc:mysql://localhost:8889/' dbname];
 javaclasspath('mysql-connector-java-5.1.xx-bin.jar'); %xx depends on version, download available at http://dev.mysql.com/downloads/connector/j/
-conn = database(dbname, username, password, driver, dburl); 
+conn = database(dbname, username, password, driver, dburl);
 sql = ['SELECT * from table_name where id = 22'] % Example sql statement
 a = fetch(conn, sql) %a will contain your data
 
@@ -394,11 +402,11 @@ tan(x)
 asin(x)
 acos(x)
 atan(x)
-exp(x) 
+exp(x)
 sqrt(x)
 log(x)
 log10(x)
-abs(x)
+abs(x) %If x is complex, returns magnitude
 min(x)
 max(x)
 ceil(x)
@@ -408,6 +416,14 @@ rem(x)
 rand % Uniformly distributed pseudorandom numbers
 randi % Uniformly distributed pseudorandom integers
 randn % Normally distributed pseudorandom numbers
+
+%Complex math operations
+abs(x) 	 % Magnitude of complex variable x
+phase(x) % Phase (or angle) of complex variable x
+real(x)  % Returns the real part of x (i.e returns a if x = a +jb)
+imag(x)  % Returns the imaginary part of x (i.e returns b if x = a+jb)
+conj(x)  % Returns the complex conjugate 
+
 
 % Common constants
 pi
@@ -426,7 +442,7 @@ pinv(A) % calculate the pseudo-inverse
 zeros(m,n) % m x n matrix of 0's
 ones(m,n) % m x n matrix of 1's
 diag(A) % Extracts the diagonal elements of a matrix A
-diag(x) % Construct a matrix with diagonal elements listed in x, and zeroes elsewhere 
+diag(x) % Construct a matrix with diagonal elements listed in x, and zeroes elsewhere
 eye(m,n) % Identity matrix
 linspace(x1, x2, n) % Return n equally spaced points, with min x1 and max x2
 inv(A) % Inverse of matrix A
@@ -452,17 +468,73 @@ flipud(A) % Flip matrix up to down
 [U,S,V] = svd(X) % SVD: XV = US, U and V are unitary matrices, S has non-negative diagonal elements in decreasing order
 
 % Common vector functions
-max     % largest component 
-min     % smallest component 
+max     % largest component
+min     % smallest component
 length  % length of a vector
-sort    % sort in ascending order 
-sum     % sum of elements 
+sort    % sort in ascending order
+sum     % sum of elements
 prod    % product of elements
-mode	% modal value
-median  % median value 
-mean    % mean value 
+mode    % modal value
+median  % median value
+mean    % mean value
 std     % standard deviation
 perms(x) % list all permutations of elements of x
+find(x) % Finds all non-zero elements of x and returns their indexes, can use comparison operators, 
+        % i.e. find( x == 3 ) returns indexes of elements that are equal to 3
+        % i.e. find( x >= 3 ) returns indexes of elements greater than or equal to 3
+
+
+% Classes
+% Matlab can support object-oriented programming. 
+% Classes must be put in a file of the class name with a .m extension. 
+% To begin, we create a simple class to store GPS waypoints.
+% Begin WaypointClass.m
+classdef WaypointClass % The class name.
+  properties % The properties of the class behave like Structures
+    latitude 
+    longitude 
+  end
+  methods 
+    % This method that has the same name of the class is the constructor. 
+    function obj = WaypointClass(lat, lon)
+      obj.latitude = lat;
+      obj.longitude = lon;
+    end
+
+    % Other functions that use the Waypoint object
+    function r = multiplyLatBy(obj, n)
+      r = n*[obj.latitude];
+    end
+
+    % If we want to add two Waypoint objects together without calling
+    % a special function we can overload Matlab's arithmetic like so:
+    function r = plus(o1,o2)
+      r = WaypointClass([o1.latitude] +[o2.latitude], ...
+                        [o1.longitude]+[o2.longitude]);
+    end
+  end
+end
+% End WaypointClass.m
+
+% We can create an object of the class using the constructor
+a = WaypointClass(45.0, 45.0)
+
+% Class properties behave exactly like Matlab Structures.
+a.latitude = 70.0
+a.longitude = 25.0
+
+% Methods can be called in the same way as functions
+ans = multiplyLatBy(a,3)
+
+% The method can also be called using dot notation. In this case, the object 
+% does not need to be passed to the method.
+ans = a.multiplyLatBy(a,1/3)
+
+% Matlab functions can be overloaded to handle objects. 
+% In the method above, we have overloaded how Matlab handles 
+% the addition of two Waypoint objects.
+b = WaypointClass(15.0, 32.0)
+c = a + b
 
 ```
 

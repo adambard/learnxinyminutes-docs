@@ -307,7 +307,7 @@ var stringSet: domain(string); // empty set of strings
 stringSet += "a";
 stringSet += "b";
 stringSet += "c";
-stringSet += "a"; // Redundant add "a"  
+stringSet += "a"; // Redundant add "a"
 stringSet -= "c"; // Remove "c"
 writeln( stringSet );
 
@@ -524,12 +524,12 @@ genericProc( 1.0+2.0i, 3.0+4.0i );
 // The param modifier on the arg is used to enforce this constraint.
 proc whereProc( param N : int ): void
  where ( N > 0 ) {
-  writeln( "N is greater than 0" );  
+  writeln( "N is greater than 0" );
 }
 
 proc whereProc( param N : int ): void
  where ( N < 0 ) {
-  writeln( "N is less than 0" );  
+  writeln( "N is less than 0" );
 }
 
 whereProc( 10 );
@@ -629,11 +629,11 @@ for (i, j) in zip( toThisArray.domain, -100..#5 ){
 }
 writeln( toThisArray );
 
-// This is all very important in undestanding why the statement
+// This is all very important in understanding why the statement
 // var iterArray : [1..10] int = [ i in 1..10 ] if ( i % 2 == 1 ) then j;
 // exhibits a runtime error.
 // Even though the domain of the array and the loop-expression are
-// the same size, the body of the expression can be though of as an iterator.
+// the same size, the body of the expression can be thought of as an iterator.
 // Because iterators can yield nothing, that iterator yields a different number
 // of things than the domain of the array or loop, which is not allowed.
 
@@ -914,7 +914,7 @@ proc main(){
   [ val in myBigArray ] val = 1 / val; // Parallel operation
 
   // Atomic variables, common to many languages, are ones whose operations
-  // occur uninterupted. Multiple threads can both modify atomic variables
+  // occur uninterrupted. Multiple threads can both modify atomic variables
   // and can know that their values are safe.
   // Chapel atomic variables can be of type bool, int, uint, and real.
   var uranium: atomic int;

@@ -3,6 +3,7 @@ language: json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]
+  - ["Francisco Marques", "https://github.com/ToFran"]
 translators:
   - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
 lang: pt-br
@@ -12,10 +13,16 @@ filename: learnjson-pt.json
 Como JSON é um formato de intercâmbio de dados, este será, muito provavelmente, o
 "Learn X in Y minutes" mais simples existente.
 
-JSON na sua forma mais pura não tem comentários em reais, mas a maioria dos analisadores 
-aceitarão comentários no estilo C (//, /\* \*/). Para os fins do presente, no entanto, 
-tudo o que é vai ser 100% JSON válido. Felizmente, isso meio que fala por si.
+JSON na sua forma mais pura não tem comentários, mas a maioria dos analisadores 
+aceitarão comentários no estilo C (//, /\* \*/). No entanto estes devem ser evitados para otimizar a compatibilidade.
 
+Um valor JSON pode ser um numero, uma string, um array, um objeto, um booleano (true, false) ou null.
+
+Os browsers suportados são: Firefox 3.5+, Internet Explorer 8.0+, Chrome 1.0+, Opera 10.0+, e Safari 4.0+.
+
+A extensão dos ficheiros JSON é “.json” e o tipo de mídia de Internet (MIME) é “application/json”.
+
+Mais informação em: http://www.json.org/
 
 ```json
 {
@@ -35,7 +42,7 @@ tudo o que é vai ser 100% JSON válido. Felizmente, isso meio que fala por si.
     "array": [0, 1, 2, 3, "Arrays podem ter qualquer coisa em si.", 5],
 
     "outro objeto": {
-      "ccomentário": "Estas coisas podem ser aninhadas, muito úteis."
+      "comentário": "Estas coisas podem ser aninhadas, muito úteis."
     }
   },
 
@@ -57,6 +64,6 @@ tudo o que é vai ser 100% JSON válido. Felizmente, isso meio que fala por si.
   , "outro comentário": "que bom"
   },
 
-  "que foi curto": "E, você está feito. Você já sabe tudo que JSON tem para oferecer.".
+  "que foi curto": "E, você está feito. Você já sabe tudo que JSON tem para oferecer."
 }
 ```
