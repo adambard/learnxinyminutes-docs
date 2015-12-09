@@ -81,7 +81,7 @@ not False -- True
 [5,4..1] -- [5, 4, 3, 2, 1]
 
 -- indexing into a list
-[0..] !! 5 -- 5
+[1..10] !! 3 -- 4
 
 -- You can also have infinite lists in Haskell!
 [1..] -- a list of all the natural numbers
@@ -195,11 +195,11 @@ foo 5 -- 15
 -- function composition
 -- the (.) function chains functions together.
 -- For example, here foo is a function that takes a value. It adds 10 to it,
--- multiplies the result of that by 5, and then returns the final value.
-foo = (*5) . (+10)
+-- multiplies the result of that by 4, and then returns the final value.
+foo = (*4) . (+10)
 
--- (5 + 10) * 5 = 75
-foo 5 -- 75
+-- (5 + 10) * 4 = 60
+foo 5 -- 60
 
 -- fixing precedence
 -- Haskell has another operator called `$`. This operator applies a function 
@@ -426,7 +426,7 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
           greater = filter (>= p) xs
 ```
 
-Haskell is easy to install. Get it [here](http://www.haskell.org/platform/).
+There are two popular ways to install Haskell: The traditional [Cabal-based installation](http://www.haskell.org/platform/), and the newer [Stack-based process](https://www.stackage.org/install).
 
 You can find a much gentler introduction from the excellent
 [Learn you a Haskell](http://learnyouahaskell.com/) or

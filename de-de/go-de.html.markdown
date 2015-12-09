@@ -3,6 +3,7 @@ language: Go
 filename: learngo-de.go
 contributors:
     - ["Joseph Adams", "https://github.com/jcla1"]
+    - ["Dennis Keller", "https://github.com/denniskeller"]
 lang: de-de
 ---
 Go wurde entwickelt, um Probleme zu lösen. Sie ist zwar nicht der neueste Trend in
@@ -24,7 +25,7 @@ aktive Community.
    zeiliger Kommentar */
 
 // Eine jede Quelldatei beginnt mit einer Paket-Klausel.
-// "main" ist ein besonderer Pkaetname, da er ein ausführbares Programm
+// "main" ist ein besonderer Paketname, da er ein ausführbares Programm
 // einleitet, im Gegensatz zu jedem anderen Namen, der eine Bibliothek
 // deklariert.
 package main
@@ -37,7 +38,7 @@ import (
     "strconv"  // Zeichenkettenmanipulation
 )
 
-// Es folgt die Definition einer Funktions, in diesem Fall von "main". Auch hier
+// Es folgt die Definition einer Funktion, in diesem Fall von "main". Auch hier
 // ist der Name wieder besonders. "main" markiert den Eintrittspunkt des
 // Programms. Vergessen Sie nicht die geschweiften Klammern!
 func main() {
@@ -55,7 +56,7 @@ func beyondHello() {
     var x int // Deklaration einer Variable, muss vor Gebrauch geschehen.
     x = 3     // Zuweisung eines Werts.
     // Kurze Deklaration: Benutzen Sie ":=", um die Typisierung automatisch zu
-    // folgern, die Variable zu deklarieren und ihr einen Wert zu zuweisen.
+    // folgern, die Variable zu deklarieren und ihr einen Wert zuzuweisen.
     y := 4
 
     // Eine Funktion mit mehreren Rückgabewerten.
@@ -146,7 +147,7 @@ func learnFlowControl() {
     if false {
         // nicht hier
     } else {
-        // sonder hier! spielt die Musik
+        // sondern hier! spielt die Musik
     }
 
     // Benutzen Sie ein "switch" Statement anstatt eine Anreihung von if-s
@@ -165,7 +166,7 @@ func learnFlowControl() {
     // Ab hier gilt wieder: x == 1
 
     // For ist die einzige Schleifenform in Go, sie hat aber mehrere Formen:
-    for { // Endloschleife
+    for { // Endlosschleife
         break    // nur ein Spaß
         continue // wird nie ausgeführt
     }
@@ -262,10 +263,10 @@ func learnConcurrency() {
     // Auslesen und dann Ausgeben der drei berechneten Werte.
     // Man kann nicht im voraus feststellen in welcher Reihenfolge die Werte
     // ankommen.
-    fmt.Println(<-c, <-c, <-c) // mit dem Kannal rechts ist <- der Empfangs-Operator
+    fmt.Println(<-c, <-c, <-c) // mit dem Kanal rechts ist <- der Empfangs-Operator
 
-    cs := make(chan string)       // ein weiterer Kannal, diesmal für strings
-    cc := make(chan chan string)  // ein Kannal für string Kannäle
+    cs := make(chan string)       // ein weiterer Kanal, diesmal für strings
+    cc := make(chan chan string)  // ein Kanal für string Kanäle
 
     // Start einer neuen Goroutine, nur um einen Wert zu senden
     go func() { c <- 84 }()
@@ -282,7 +283,7 @@ func learnConcurrency() {
         fmt.Println("wird nicht passieren.")
     }
     // Hier wird eine der beiden Goroutines fertig sein, die andere nicht.
-    // Sie wird warten bis der Wert den sie sendet von dem Kannal gelesen wird.
+    // Sie wird warten bis der Wert den sie sendet von dem Kanal gelesen wird.
 
     learnWebProgramming() // Go kann es und Sie hoffentlich auch bald.
 }
@@ -300,19 +301,19 @@ func learnWebProgramming() {
 // Methode implementieren: ServeHTTP
 func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
     // Senden von Daten mit einer Methode des http.ResponseWriter
-    w.Write([]byte("Sie habe Go in Y Minuten gelernt!"))
+    w.Write([]byte("Sie haben Go in Y Minuten gelernt!"))
 }
 ```
 
 ## Weitere Resourcen
 Alles zu Go finden Sie auf der [offiziellen Go Webseite](http://golang.org/).
-Dort können sie der Tutorial folgen, interaktiv Quelltext ausprobieren und viel
+Dort können sie dem Tutorial folgen, interaktiv Quelltext ausprobieren und viel
 Dokumentation lesen.
 
 Auch zu empfehlen ist die Spezifikation von Go, die nach heutigen Standards sehr
 kurz und auch gut verständlich formuliert ist. Auf der Leseliste von Go-Neulingen
 ist außerdem der Quelltext der [Go standard Bibliothek](http://golang.org/src/pkg/).
-Gut documentiert, demonstriert sie leicht zu verstehendes und im idiomatischen Stil
+Gut dokumentiert, demonstriert sie leicht zu verstehendes und im idiomatischen Stil
 verfasstes Go. Erreichbar ist der Quelltext auch durch das Klicken der Funktionsnamen
 in der [offiziellen Dokumentation von Go](http://golang.org/pkg/).
 

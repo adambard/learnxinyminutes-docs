@@ -5,7 +5,8 @@ contributors:
   - ["Grant Timmerman", "http://github.com/grant"]
 translators:
   - ["Xavier Yao", "http://github.com/xavieryao"]
-  - ["Joey Huang", "http://github.com/kamidox"]  
+  - ["Joey Huang", "http://github.com/kamidox"]
+  - ["CY Lim", "http://github.com/cylim"]
 lang: zh-cn
 ---
 
@@ -13,13 +14,13 @@ Swift 是 Apple 开发的用于 iOS 和 OS X 开发的编程语言。Swift 于20
 
 Swift 的官方语言教程 [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) 可以从 iBooks 免费下载.
 
-亦可参阅：Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html) ——一个完整的Swift 教程
+亦可参阅：Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/) ——一个完整的Swift 教程
 
 ```swift
 // 导入外部模块
 import UIKit
 
-// 
+//
 // MARK: 基础
 //
 
@@ -28,12 +29,14 @@ import UIKit
 // TODO: TODO 标记
 // FIXME: FIXME 标记
 
-println("Hello, world")
+// Swift2.0 println() 及 print() 已经整合成 print()。
+print("Hello, world") // 这是原本的 println()，会自动进入下一行
+print("Hello, world", appendNewLine: false) // 如果不要自动进入下一行，需设定进入下一行为 false
 
 // 变量 (var) 的值设置后可以随意改变
 // 常量 (let) 的值设置后不能改变
 var myVariable = 42
-let øπΩ = "value" // 可以支持 unicode 变量名 
+let øπΩ = "value" // 可以支持 unicode 变量名
 let π = 3.1415926
 let myConstant = 3.1415926
 let explicitDouble: Double = 70   // 明确指定变量类型为 Double ，否则编译器将自动推断变量类型
@@ -46,16 +49,17 @@ let piText = "Pi = \(π), Pi 2 = \(π * 2)" // 格式化字符串
 // 条件编译
 // 使用 -D 定义编译开关
 #if false
-    println("Not printed")
+    print("Not printed")
     let buildValue = 3
 #else
     let buildValue = 7
 #endif
-println("Build value: \(buildValue)") // Build value: 7
+print("Build value: \(buildValue)") // Build value: 7
 
 /*
-    Optionals 是 Swift 的新特性，它允许你存储两种状态的值给 Optional 变量：有效值或 None
-    
+    Optionals 是 Swift 的新特性，它允许你存储两种状态的值给 Optional 变量：有效值或 None 。
+    可在值名称后加个问号 （？） 来表示这个值是 Optional。
+
     Swift 要求所有的 Optinal 属性都必须有明确的值，如果为空，则必须明确设定为 nil
 
     Optional<T> 是个枚举类型
@@ -67,12 +71,16 @@ var someOptionalString2: Optional<String> = "optional"
 if someOptionalString != nil {
     // 变量不为空
     if someOptionalString!.hasPrefix("opt") {
-        println("has the prefix")
+        print("has the prefix")
     }
-    
+
     let empty = someOptionalString?.isEmpty
 }
 someOptionalString = nil
+
+/*
+    使用 （！） 可以解决无法访问optional值的运行错误。若要使用 （！）来强制解析，一定要确保 Optional 里不是 nil参数。
+*/
 
 // 显式解包 optional 变量
 var unwrappedString: String! = "Value is expected."
@@ -94,7 +102,7 @@ anyObjectVar = "Changed value to a string, not good practice, but possible."
 
 /*
     这里是注释
-    
+
     /*
         支持嵌套的注释
     */
@@ -116,6 +124,7 @@ shoppingList[1] = "bottle of water"
 let emptyArray = [String]() // 使用 let 定义常量，此时 emptyArray 数组不能添加或删除内容
 let emptyArray2 = Array<String>() // 与上一语句等价，上一语句更常用
 var emptyMutableArray = [String]() // 使用 var 定义变量，可以向 emptyMutableArray 添加数组元素
+var explicitEmptyMutableStringArray: [String] = [] // 与上一语句等价
 
 // 字典
 var occupations = [
@@ -126,6 +135,7 @@ occupations["Jayne"] = "Public Relations"   // 修改字典，如果 key 不存�
 let emptyDictionary = [String: Float]() // 使用 let 定义字典常量，字典常量不能修改里面的值
 let emptyDictionary2 = Dictionary<String, Float>() // 与上一语句类型等价，上一语句更常用
 var emptyMutableDictionary = [String: Float]() // 使用 var 定义字典变量
+var explicitEmptyMutableDictionary: [String: Float] = [:] // 与上一语句类型等价
 
 
 //
@@ -136,21 +146,21 @@ var emptyMutableDictionary = [String: Float]() // 使用 var 定义字典变量
 let myArray = [1, 1, 2, 3, 5]
 for value in myArray {
     if value == 1 {
-        println("One!")
+        print("One!")
     } else {
-        println("Not one!")
+        print("Not one!")
     }
 }
 
 // 字典的 for 循环
 var dict = ["one": 1, "two": 2]
 for (key, value) in dict {
-    println("\(key): \(value)")
+    print("\(key): \(value)")
 }
 
 // 区间的 loop 循环：其中 `...` 表示闭环区间，即[-1, 3]；`..<` 表示半开闭区间，即[-1,3)
 for i in -1...shoppingList.count {
-    println(i)
+    print(i)
 }
 shoppingList[1...2] = ["steak", "peacons"]
 // 可以使用 `..<` 来去掉最后一个元素
@@ -163,7 +173,7 @@ while i < 1000 {
 
 // do-while 循环
 do {
-    println("hello")
+    print("hello")
 } while 1 == 2
 
 // Switch 语句
@@ -177,7 +187,7 @@ case "cucumber", "watercress":
     let vegetableComment = "That would make a good tea sandwich."
 case let localScopeValue where localScopeValue.hasSuffix("pepper"):
     let vegetableComment = "Is it a spicy \(localScopeValue)?"
-default: // 在 Swift 里，switch 语句的 case 必须处理所有可能的情况，如果 case 无法全部处理，则必须包含 default语句 
+default: // 在 Swift 里，switch 语句的 case 必须处理所有可能的情况，如果 case 无法全部处理，则必须包含 default语句
     let vegetableComment = "Everything tastes good in soup."
 }
 
@@ -219,8 +229,8 @@ let pricesTuple = getGasPrices()
 let price = pricesTuple.2 // 3.79
 // 通过下划线 (_) 来忽略不关心的值
 let (_, price1, _) = pricesTuple // price1 == 3.69
-println(price1 == pricesTuple.1) // true
-println("Gas price: \(price)")
+print(price1 == pricesTuple.1) // true
+print("Gas price: \(price)")
 
 // 可变参数
 func setup(numbers: Int...) {
@@ -248,7 +258,7 @@ func swapTwoInts(inout a: Int, inout b: Int) {
 var someIntA = 7
 var someIntB = 3
 swapTwoInts(&someIntA, &someIntB)
-println(someIntB) // 7
+print(someIntB) // 7
 
 
 //
@@ -256,7 +266,7 @@ println(someIntB) // 7
 //
 var numbers = [1, 2, 6]
 
-// 函数是闭包的一个特例
+// 函数是闭包的一个特例 ({})
 
 // 闭包实例
 // `->` 分隔了闭包的参数和返回值
@@ -296,7 +306,7 @@ print(numbers) // [3, 6, 18]
 
 struct NamesTable {
     let names = [String]()
-    
+
     // 自定义下标运算符
     subscript(index: Int) -> String {
         return names[index]
@@ -306,7 +316,7 @@ struct NamesTable {
 // 结构体有一个自动生成的隐含的命名构造函数
 let namesTable = NamesTable(names: ["Me", "Them"])
 let name = namesTable[1]
-println("Name is \(name)") // Name is Them
+print("Name is \(name)") // Name is Them
 
 //
 // MARK: 类
@@ -329,7 +339,7 @@ public class Shape {
 internal class Rect: Shape {
     // 值属性 (Stored properties)
     var sideLength: Int = 1
-    
+
     // 计算属性 (Computed properties)
     private var perimeter: Int {
         get {
@@ -340,11 +350,11 @@ internal class Rect: Shape {
             sideLength = newValue / 4
         }
     }
-    
+
     // 延时加载的属性，只有这个属性第一次被引用时才进行初始化，而不是定义时就初始化
     // subShape 值为 nil ，直到 subShape 第一次被引用时才初始化为一个 Rect 实例
     lazy var subShape = Rect(sideLength: 4)
-    
+
     // 监控属性值的变化。
     // 当我们需要在属性值改变时做一些事情，可以使用 `willSet` 和 `didSet` 来设置监控函数
     // `willSet`: 值改变之前被调用
@@ -352,14 +362,14 @@ internal class Rect: Shape {
     var identifier: String = "defaultID" {
         // `willSet` 的参数是即将设置的新值，参数名可以指定，如果没有指定，就是 `newValue`
         willSet(someIdentifier) {
-            println(someIdentifier)
+            print(someIdentifier)
         }
         // `didSet` 的参数是已经被覆盖掉的旧的值，参数名也可以指定，如果没有指定，就是 `oldValue`
         didSet {
-            println(oldValue)
+            print(oldValue)
         }
     }
-    
+
     // 命名构造函数 (designated inits)，它必须初始化所有的成员变量，
     // 然后调用父类的命名构造函数继续初始化父类的所有变量。
     init(sideLength: Int) {
@@ -367,13 +377,13 @@ internal class Rect: Shape {
         // 必须显式地在构造函数最后调用父类的构造函数 super.init
         super.init()
     }
-    
+
     func shrink() {
         if sideLength > 0 {
             --sideLength
         }
     }
-    
+
     // 函数重载使用 override 关键字
     override func getArea() -> Int {
         return sideLength * sideLength
@@ -394,16 +404,16 @@ class Square: Rect {
 }
 
 var mySquare = Square()
-println(mySquare.getArea()) // 25
+print(mySquare.getArea()) // 25
 mySquare.shrink()
-println(mySquare.sideLength) // 4
+print(mySquare.sideLength) // 4
 
 // 类型转换
 let aShape = mySquare as Shape
 
 // 使用三个等号来比较是不是同一个实例
 if mySquare === aShape {
-    println("Yep, it's mySquare")
+    print("Yep, it's mySquare")
 }
 
 class Circle: Shape {
@@ -411,12 +421,12 @@ class Circle: Shape {
     override func getArea() -> Int {
         return 3 * radius * radius
     }
-    
+
     // optional 构造函数，可能会返回 nil
     init?(radius: Int) {
         self.radius = radius
         super.init()
-        
+
         if radius <= 0 {
             return nil
         }
@@ -425,13 +435,13 @@ class Circle: Shape {
 
 // 根据 Swift 类型推断，myCircle 是 Optional<Circle> 类型的变量
 var myCircle = Circle(radius: 1)
-println(myCircle?.getArea())    // Optional(3)
-println(myCircle!.getArea())    // 3
+print(myCircle?.getArea())    // Optional(3)
+print(myCircle!.getArea())    // 3
 var myEmptyCircle = Circle(radius: -1)
-println(myEmptyCircle?.getArea())    // "nil"
+print(myEmptyCircle?.getArea())    // "nil"
 if let circle = myEmptyCircle {
     // 此语句不会输出，因为 myEmptyCircle 变量值为 nil
-    println("circle is not nil")
+    print("circle is not nil")
 }
 
 
@@ -461,7 +471,7 @@ enum BookName: String {
     case John = "John"
     case Luke = "Luke"
 }
-println("Name: \(BookName.John.rawValue)")
+print("Name: \(BookName.John.rawValue)")
 
 // 与特定数据类型关联的枚举
 enum Furniture {
@@ -469,7 +479,7 @@ enum Furniture {
     case Desk(height: Int)
     // 和 String, Int 关联的枚举记录
     case Chair(brand: String, height: Int)
-    
+
     func description() -> String {
         switch self {
         case .Desk(let height):
@@ -481,9 +491,9 @@ enum Furniture {
 }
 
 var desk: Furniture = .Desk(height: 80)
-println(desk.description())     // "Desk with 80 cm"
+print(desk.description())     // "Desk with 80 cm"
 var chair = Furniture.Chair(brand: "Foo", height: 40)
-println(chair.description())    // "Chair of Foo with 40 cm"
+print(chair.description())    // "Chair of Foo with 40 cm"
 
 
 //
@@ -512,7 +522,7 @@ protocol ShapeGenerator {
 
 class MyShape: Rect {
     var delegate: TransformShape?
-    
+
     func grow() {
         sideLength += 2
 
@@ -539,21 +549,21 @@ extension Square: Printable {
     }
 }
 
-println("Square: \(mySquare)")  // Area: 16 - ID: defaultID
+print("Square: \(mySquare)")  // Area: 16 - ID: defaultID
 
 // 也可以给系统内置类型添加功能支持
 extension Int {
     var customProperty: String {
         return "This is \(self)"
     }
-    
+
     func multiplyBy(num: Int) -> Int {
         return num * self
     }
 }
 
-println(7.customProperty) // "This is 7"
-println(14.multiplyBy(3)) // 42
+print(7.customProperty) // "This is 7"
+print(14.multiplyBy(3)) // 42
 
 // 泛型: 和 Java 及 C# 的泛型类似，使用 `where` 关键字来限制类型。
 // 如果只有一个类型限制，可以省略 `where` 关键字
@@ -566,7 +576,7 @@ func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
     return nil
 }
 let foundAtIndex = findIndex([1, 2, 3, 4], 3)
-println(foundAtIndex == 2) // true
+print(foundAtIndex == 2) // true
 
 // 自定义运算符:
 // 自定义运算符可以以下面的字符打头:
@@ -581,11 +591,24 @@ prefix func !!! (inout shape: Square) -> Square {
 }
 
 // 当前值
-println(mySquare.sideLength) // 4
+print(mySquare.sideLength) // 4
 
 // 使用自定义的 !!! 运算符来把矩形边长放大三倍
 !!!mySquare
-println(mySquare.sideLength) // 12
+print(mySquare.sideLength) // 12
+
+// 运算符也可以是泛型
+infix operator <-> {}
+func <-><T: Equatable> (inout a: T, inout b: T) {
+    let c = a
+    a = b
+    b = c
+}
+
+var foo: Float = 10
+var bar: Float = 20
+
+foo <-> bar
+print("foo is \(foo), bar is \(bar)") // "foo is 20.0, bar is 10.0"
 
 ```
-

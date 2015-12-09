@@ -25,6 +25,7 @@ filename: learnerlang.erl
 %% 1. Variables and pattern matching.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% In Erlang new variables are bound with an `=` statement.
 Num = 42.  % All variable names must start with an uppercase letter.
 
 % Erlang has single-assignment variables; if you try to assign a different
@@ -32,9 +33,11 @@ Num = 42.  % All variable names must start with an uppercase letter.
 Num = 43. % ** exception error: no match of right hand side value 43
 
 % In most languages, `=` denotes an assignment statement. In Erlang, however,
-% `=` denotes a pattern-matching operation. `Lhs = Rhs` really means this:
-% evaluate the right side (`Rhs`), and then match the result against the
-% pattern on the left side (`Lhs`).
+% `=` denotes a pattern-matching operation. When an empty variable is used on the
+% left hand side of the `=` operator to is bound (assigned), but when a bound
+% variable is used on the left hand side the following behaviour is observed.
+% `Lhs = Rhs` really means this: evaluate the right side (`Rhs`), and then
+% match the result against the pattern on the left side (`Lhs`).
 Num = 7 * 6.
 
 % Floating-point number.
@@ -174,7 +177,7 @@ is_dog(A) -> false.
 % A guard sequence is either a single guard or a series of guards, separated
 % by semicolons (`;`). The guard sequence `G1; G2; ...; Gn` is true if at
 % least one of the guards `G1`, `G2`, ..., `Gn` evaluates to `true`.
-is_pet(A) when is_atom(A), (A =:= dog) or (A =:= cat) -> true;
+is_pet(A) when is_atom(A), (A =:= dog);(A =:= cat) -> true;
 is_pet(A)                                             -> false.
 
 % Warning: not all valid Erlang expressions can be used as guard expressions;
@@ -289,7 +292,7 @@ calculateArea() ->
       _ ->
         io:format("We can only calculate area of rectangles or circles.")
     end.
-    
+
 % Compile the module and create a process that evaluates `calculateArea` in the
 % shell.
 c(calculateGeometry).
@@ -298,6 +301,39 @@ CalculateArea ! {circle, 2}. % 12.56000000000000049738
 
 % The shell is also a process; you can use `self` to get the current pid.
 self(). % <0.41.0>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 5. Testing with EUnit
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Unit tests can be written using EUnits's test generators and assert macros
+-module(fib).
+-export([fib/1]).
+-include_lib("eunit/include/eunit.hrl").
+
+fib(0) -> 1;
+fib(1) -> 1;
+fib(N) when N > 1 -> fib(N-1) + fib(N-2).
+
+fib_test_() ->
+    [?_assert(fib(0) =:= 1),
+     ?_assert(fib(1) =:= 1),
+     ?_assert(fib(2) =:= 2),
+     ?_assert(fib(3) =:= 3),
+     ?_assert(fib(4) =:= 5),
+     ?_assert(fib(5) =:= 8),
+     ?_assertException(error, function_clause, fib(-1)),
+     ?_assert(fib(31) =:= 2178309)
+    ].
+
+% EUnit will automatically export to a test() function to allow running the tests
+% in the erlang shell
+fib:test()
+
+% The popular erlang build tool Rebar is also compatible with EUnit
+% ```
+% rebar eunit
+% ```
 
 ```
 

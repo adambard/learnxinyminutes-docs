@@ -245,7 +245,13 @@ cout << fooRef; // Prints "I am foo. Hi!"
 // Doesn't reassign "fooRef". This is the same as "foo = bar", and
 //   foo == "I am bar"
 // after this line.
+cout << &fooRef << endl; //Prints the address of foo
 fooRef = bar;
+cout << &fooRef << endl; //Still prints the address of foo
+cout << fooRef;  // Prints "I am bar"
+
+//The address of fooRef remains the same, i.e. it is still referring to foo.
+
 
 const string& barRef = bar; // Create a const reference to bar.
 // Like C, const values (and pointers and references) cannot be modified.
@@ -258,7 +264,7 @@ string retVal = tempObjectFun();
 
 // What happens in the second line is actually:
 //   - a string object is returned from tempObjectFun
-//   - a new string is constructed with the returned object as arugment to the
+//   - a new string is constructed with the returned object as argument to the
 //     constructor
 //   - the returned object is destroyed
 // The returned object is called a temporary object. Temporary objects are
@@ -303,6 +309,70 @@ basic_string(basic_string&& other);
 // is going to be destroyed soon anyway), we can have a more efficient
 // constructor that "salvages" parts of that temporary string. You will see this
 // concept referred to as "move semantics".
+
+/////////////////////
+// Enums
+/////////////////////
+
+// Enums are a way to assign a value to a constant most commonly used for
+// easier visualization and reading of code
+enum ECarTypes
+{
+  Sedan,
+  Hatchback,
+  SUV,
+  Wagon
+};
+
+ECarTypes GetPreferredCarType()
+{
+	return ECarTypes::Hatchback;
+}
+
+// As of C++11 there is an easy way to assign a type to the enum which can be
+// useful in serialization of data and converting enums back-and-forth between 
+// the desired type and their respective constants
+enum ECarTypes : uint8_t
+{
+  Sedan, // 0
+  Hatchback, // 1
+  SUV = 254, // 254
+  Hybrid // 255
+};
+
+void WriteByteToFile(uint8_t InputValue)
+{
+	// Serialize the InputValue to a file
+}
+
+void WritePreferredCarTypeToFile(ECarTypes InputCarType)
+{
+	// The enum is implicitly converted to a uint8_t due to its declared enum type
+	WriteByteToFile(InputCarType);
+}
+
+// On the other hand you may not want enums to be accidentally cast to an integer
+// type or to other enums so it is instead possible to create an enum class which 
+// won't be implicitly converted
+enum class ECarTypes : uint8_t
+{
+  Sedan, // 0
+  Hatchback, // 1
+  SUV = 254, // 254
+  Hybrid // 255
+};
+
+void WriteByteToFile(uint8_t InputValue)
+{
+	// Serialize the InputValue to a file
+}
+
+void WritePreferredCarTypeToFile(ECarTypes InputCarType)
+{
+	// Won't compile even though ECarTypes is a uint8_t due to the enum
+	// being declared as an "enum class"!
+	WriteByteToFile(InputCarType);
+}
 
 //////////////////////////////////////////
 // Classes and object-oriented programming
@@ -398,6 +468,8 @@ int main() {
 // Inheritance:
 
 // This class inherits everything public and protected from the Dog class
+// as well as private but may not directly access private members/methods 
+// without a public or protected method for doing so
 class OwnedDog : public Dog {
 
     void setOwner(const std::string& dogsOwner);
@@ -729,6 +801,24 @@ void doSomethingWithAFile(const std::string& filename)
 //   all automatically destroy their contents when they fall out of scope.
 // - Mutexes using lock_guard and unique_lock
 
+// containers with object keys of non-primitive values (custom classes) require
+// compare function in the object itself or as a function pointer. Primitives
+// have default comparators, but you can override it.
+class Foo {
+public:
+	int j;
+	Foo(int a) : j(a) {}
+};
+struct compareFunction {
+    bool operator()(const Foo& a, const Foo& b) const {
+        return a.j < b.j;
+    }
+};
+//this isn't allowed (although it can vary depending on compiler)
+//std::map<Foo, int> fooMap;
+std::map<Foo, int, compareFunction> fooMap;
+fooMap[Foo(1)]  = 1;
+fooMap.find(Foo(1)); //true
 
 /////////////////////
 // Fun stuff

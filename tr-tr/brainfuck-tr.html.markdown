@@ -19,7 +19,7 @@ gözardı edilir.
 Brainfuck 30,000 hücresi olan ve ilk değerleri sıfır olarak atanmış bir
 dizidir. İşaretçi ilk hücreyi işaret eder.
 
-Sekik komut vardır:
+Sekiz komut vardır:
 + : Geçerli hücrenin değerini bir artırır.
 - : Geçerli hücrenin değerini bir azaltır.
 > : Veri işaretçisini bir sonraki hücreye hareket ettirir(sağdaki hücreye).

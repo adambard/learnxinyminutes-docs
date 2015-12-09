@@ -499,9 +499,6 @@ myNumber === myNumberObj; // = false
 if (0){
     // This code won't execute, because 0 is falsy.
 }
-if (Number(0)){
-    // This code *will* execute, because Number(0) is truthy.
-}
 ```
 
 

@@ -42,7 +42,7 @@ The three major version of Ruby in use are:
 * 2.0.0 - Released in February 2013. Most major libraries and frameworks support
   2.0.0.
 * 1.9.3 - Released in October 2011. This is the version most rubyists use
-  currently.
+  currently. Also [retired](https://www.ruby-lang.org/en/news/2015/02/23/support-for-ruby-1-9-3-has-ended/)
 * 1.8.7 - Ruby 1.8.7 has been
   [retired](http://www.ruby-lang.org/en/news/2013/06/30/we-retire-1-8-7/).
 

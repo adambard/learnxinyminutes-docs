@@ -7,12 +7,9 @@ lang: tr-tr
 ---
 
 Swift iOS ve OSX platformlarında geliştirme yapmak için Apple tarafından oluşturulan yeni bir programlama dilidir.  Objective - C ile beraber kullanılabilecek ve de hatalı kodlara karşı daha esnek bir yapı sunacak bir şekilde tasarlanmıştır. Swift 2014 yılında Apple'ın geliştirici konferansı WWDC de tanıtıldı. Xcode 6+'a dahil edilen LLVM derleyici ile geliştirildi.
-
-The official [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) book from Apple is now available via iBooks.  
+ 
 
 Apple'ın resmi [Swift Programlama Dili](https://itunes.apple.com/us/book/swift-programming-language/id881256329) kitabı iBooks'ta yerini aldı.
-
-See also Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html), which has a complete tutorial on Swift.  
 
 Ayrıca Swift ile gelen tüm özellikleri görmek için Apple'ın [başlangıç kılavuzu](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html)na bakmanızda yarar var.
 
@@ -244,7 +241,7 @@ print("Benzin fiyatı: \(fiyat)")
 
 // Çeşitli Argümanlar
 func ayarla(sayilar: Int...) {
-    // its an array
+    // bu bir dizidir
     let sayi = sayilar[0]
     let argumanSAyisi = sayilar.count
 }

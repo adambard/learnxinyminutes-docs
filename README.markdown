@@ -18,7 +18,7 @@ All contributions are welcome, from the tiniest typo to a brand new article. Tra
 in all languages are welcome (or, for that matter, original articles in any language).
 Send a pull request or open an issue any time of day or night.
 
-**Please tag your issues pull requests with [language/lang-code] at the beginning**
+**Please tag your issues and pull requests with [language/lang-code] at the beginning**
 **(e.g. [python/en] for English Python).** This will help everyone pick out things they
 care about.
 

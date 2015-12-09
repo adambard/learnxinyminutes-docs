@@ -158,6 +158,7 @@ array << 6 #=> [1, 2, 3, 4, 5, 6]
 hash = {'color' => 'green', 'number' => 5}
 
 hash.keys #=> ['color', 'number']
+hash.values #=> ['green', 5]
 
 # Значение в хэше легко может быть найдено по ключу:
 hash['color'] #=> 'green'

@@ -1,10 +1,11 @@
 ---
 language: xml
-filename: learnxml.xml
+filename: learnxml-id.xml
 contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
 translators:
   - ["Rizky Luthfianto", "https://github.com/rilut"]
+lang: id-id
 ---
 
 XML adalah bahasa markup yang dirancang untuk menyimpan dan mengirim data.
