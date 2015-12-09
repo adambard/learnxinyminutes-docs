@@ -1,6 +1,6 @@
 ---
 language: json
-filename: learnjson.json
+filename: learnjson-sv.json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]
@@ -30,7 +30,7 @@ C-stils (`//`, `/* */`) kommentarer. Detta dokument kommer dock att tillämpa
   "stora tal": 1.2e+100,
 
   "objekt": {
-    "kommentar": "Det flesta datastukturerna i JSON kommer i form av objekt.",
+    "kommentar": "De flesta datastukturerna i JSON kommer i form av objekt.",
 
     "matris": [0, 1, 2, 3, "Matriser kan innehålla vad som helst.", 5],
 
