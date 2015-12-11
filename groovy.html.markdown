@@ -13,8 +13,8 @@ Groovy - A dynamic language for the Java platform [Read more here.](http://groov
 /*
   Set yourself up:
 
-  1) Install GVM - http://gvmtool.net/
-  2) Install Groovy: gvm install groovy
+  1) Install SDKMAN - http://sdkman.io/
+  2) Install Groovy: sdk install groovy
   3) Start the groovy console by typing: groovyConsole
 
 */
