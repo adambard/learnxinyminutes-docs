@@ -5,9 +5,9 @@ contributors:
     - ["Nemil Dalal", "https://www.nemil.com"]
 ---
 
-Solidity is a statically typed, contract programming language for [Ethereum](https://www.ethereum.org/) that has similarities to Javascript and C. Like an object in object-oriented languages, each contract contains state variables, functions, and common data types. Contract-specific features include modifier (guard) clauses, event notifiers, and custom variables.
+Solidity lets you program on [Ethereum](https://www.ethereum.org/), a blockchain-based virtual machine that allows the creation and computation of smart contracts, without needing centralized or trusted parties.
 
-Solidity lets you program on Ethereum, a blockchain-based virtual machine that allows the creation and computation of smart contracts, without needing centralized or trusted parties.
+Solidity is a statically typed, contract programming language that has similarities to Javascript and C. Like an object in object-oriented languages, each contract contains state variables, functions, and common data types. Contract-specific features include modifier (guard) clauses, event notifiers, and custom variables.
 
 As Solidity and Ethereum are under active development, experimental or beta features are explicitly marked, and subject to change. Pull requests welcome.
 
@@ -46,7 +46,7 @@ contract AcmeBank {
       owner = msg.sender; // msg.sender refers to the address of the contract creator
     }
 
-    function deposit(uint balance) public {
+    function deposit(uint balance) public returns (uint) {
         balances[msg.sender] += msg.value; // no need for "this." or "self." in front of the state variable
 
         return balances[msg.sender]; // msg.sender refers to the contract caller
@@ -65,7 +65,7 @@ contract AcmeBank {
     }
 
     // The 'constant' prevents the function from editing state variables
-    function balance() constant {
+    function balance() constant returns (uint) {
       return balances[msg.sender];
     }
 
@@ -90,6 +90,7 @@ uint x;
 // int of 256 bits, cannot be changed after instantiation
 int constant a = 8;
 int256 constant a = 8; // same effect as line above, here the 256 is explicit
+uint constant VERSION_ID = 0x123A1; // A hex constant
 
 // For both int and uint, you can explicitly set space in steps of 8
 // e.g., int8, int16
@@ -285,12 +286,14 @@ Coin.Sent().watch({}, '', function(error, result) {
 
 // The '_' (underscore) must be included as the last line in the function body, and is an indicator that the
 // function being called should be placed there
-modifier onlyBefore(uint _time) { if (now >= _time) throw; _ }
+modifier onlyAfter(uint _time) { if (now <= _time) throw; _ }
+modifier onlyOwner { if (msg.sender == owner) _ }
 
 // You can then append it right after the function declaration
 function changeOwner(newOwner)
-  onlyBefore(someTime)
-  {
+onlyAfter(someTime)
+onlyOwner()
+{
   owner = newOwner;
 }
 
@@ -298,7 +301,7 @@ function changeOwner(newOwner)
 // 5. BRANCHING AND LOOPS
 
 // All basic logic blocks work - including if/else, for, while, break, continue, return
-// switch is not provided
+// Unlike other languages, the 'switch' statement is NOT provided
 
 // Syntax is the same as javascript, but there is no type conversion from
 // non-boolean to boolean, so comparison operators must be used to get the boolean value
@@ -377,7 +380,7 @@ if (!addr.send(123)) {
 // Suicide
 suicide(SOME_ADDRESS); // suicide the current contract, sending funds to the address (often the creator)
 
-// This is a common pattern that lets the owner end the contract
+// This is a common contract pattern that lets the owner end the contract, and receive remaining funds
 function remove() {
   if(msg.sender == owner) { // Only let the contract creator do this
     suicide(owner); // suicide makes this contract inactive, and returns funds to the owner
@@ -389,7 +392,6 @@ function remove() {
 // blockchain forever - this encourages smart ways to use memory (eventually,
 // compilation may better handle this, but for now there are benefits to
 // planning your data structures)
-
 
 
 // *** EXAMPLE: Let's do a more complex example ***
@@ -472,6 +474,7 @@ sha256("def");
 - [Gitter Chat room](https://gitter.im/ethereum/go-ethereum)
 
 ## Sample contracts
+- [Dapp Bin](https://github.com/ethereum/dapp-bin)
 - [Solidity Baby Step Contracts](https://github.com/fivedogit/solidity-baby-steps/tree/master/contracts)
 - [Consensys Contracts](https://github.com/ConsenSys/dapp-store-contracts)
 - [State of Dapps](http://dapps.ethercasts.com/)
