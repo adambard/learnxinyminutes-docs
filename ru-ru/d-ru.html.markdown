@@ -713,7 +713,7 @@ struct StudentRange
         return students.length == 0;
     }
 
-    ref Student front() {
+    Student front() {
         return students[0];
     }
 
