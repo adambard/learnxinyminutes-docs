@@ -76,13 +76,13 @@ snd ("elm", 42) -- 42
 
 -- Records are like tuples but the fields have names.
 -- Notice that equals signs, not colons, are used.
-{ x = 3, y = 7}
+{ x = 3, y = 7 }
 
 -- Access a field with a dot and the field name.
-{ x = 3, y = 7}.x -- 3
+{ x = 3, y = 7 }.x -- 3
 
 -- Or with an accessor fuction, a dot and then the field name.
-.y { x = 3, y = 7} -- 7
+.y { x = 3, y = 7 } -- 7
 
 -- Update the fields of a record. (It must have the fields already.)
 { person |
@@ -126,7 +126,7 @@ case List.head aList of
 multiply a b =
   a * b
 
--- Apply (call) a function by passing it arguments (no commas necessay).
+-- Apply (call) a function by passing it arguments (no commas necessary).
 multiply 7 6 -- 42
 
 -- Partially apply a function by passing only some of its arguments.
@@ -168,7 +168,7 @@ fib n =
   else
     fib (n - 1) + fib (n - 2)
 
-List.map fib [0..8] -- [1, 1, 2, 3, 5, 8,13, 21, 34]
+List.map fib [0..8] -- [1, 1, 2, 3, 5, 8, 13, 21, 34]
 
 listLength aList =
   case aList of
