@@ -38,11 +38,10 @@ not False -- True
 1 < 10 -- True
 
 -- Strings and characters
-"This is a string."
-'a' -- character
-'You cant use single quotes for strings.' -- error!
+"This is a string because it uses double quotes."
+'a' -- characters in single quotes
 
--- Strings can be appended
+-- Strings can be appended.
 "Hello " ++ "world!" -- "Hello world!"
 
 {-- Lists, Tuples, and Records --}
@@ -53,10 +52,10 @@ not False -- True
 -- The second example can also be written with two dots.
 [1..5]
 
--- Append lists just like strings
+-- Append lists just like strings.
 [1..5] ++ [6..10] == [1..10] -- True
 
--- To add one item, use "cons"
+-- To add one item, use "cons".
 0 :: [1..5] -- [0, 1, 2, 3, 4, 5]
 
 -- The head and tail of a list are returned as a Maybe. Instead of checking
@@ -64,6 +63,7 @@ not False -- True
 List.head [1..5] -- Just 1
 List.tail [1..5] -- Just [2, 3, 4, 5]
 List.head [] -- Nothing
+-- List.functionName means the function lives in the List module.
 
 -- Every element in a tuple can be a different type, but a tuple has a
 -- fixed length.
@@ -74,23 +74,24 @@ List.head [] -- Nothing
 fst ("elm", 42) -- "elm"
 snd ("elm", 42) -- 42
 
--- Records are like tuples but the fields have names.
--- Notice that equals signs, not colons, are used.
+-- Records are like tuples but the fields have names. The order of fields
+-- doesn't matter. Notice that record values use equals signs, not colons.
 { x = 3, y = 7}
 
 -- Access a field with a dot and the field name.
 { x = 3, y = 7}.x -- 3
 
--- Or with an accessor fuction, a dot and then the field name.
+-- Or with an accessor fuction, which is a dot and the field name on its own.
 .y { x = 3, y = 7} -- 7
 
 -- Update the fields of a record. (It must have the fields already.)
 { person |
   name = "George" }
 
-{ physics |
-  position = physics.position + physics.velocity,
-  velocity = physics.velocity + physics.acceleration }
+-- Update multiple fields at once, using the current values.
+{ particle |
+  position = particle.position + particle.velocity,
+  velocity = particle.velocity + particle.acceleration }
 
 {-- Control Flow --}
 
@@ -111,11 +112,15 @@ else
 -- Use case statements to pattern match on different possibilities.
 case aList of
   [] -> "matches the empty list"
+  [x]-> "matches a list of exactly one item, " ++ toString x
   x::xs -> "matches a list of at least one item whose head is " ++ toString x
+-- Pattern matches go in order. If we put [x] last, it would never match because
+-- x::xs also matches (xs would be the empty list). Matches do not "fall through".
 
+-- Pattern match on a Maybe.
 case List.head aList of
   Just x -> "The head is " ++ toString x
-  Nothing -> "The list was empty"
+  Nothing -> "The list was empty."
 
 {-- Functions --}
 
@@ -151,8 +156,8 @@ area (width, height) =
 
 area (6, 7) -- 42
 
--- Use curly brackets to pattern match record field names
--- Use let to define intermediate values
+-- Use curly brackets to pattern match record field names.
+-- Use let to define intermediate values.
 volume {width, height, depth} =
   let
     area = width * height
@@ -161,7 +166,7 @@ volume {width, height, depth} =
 
 volume { width = 3, height = 2, depth = 7 } -- 42
 
--- Functions can be recursive
+-- Functions can be recursive.
 fib n =
   if n < 2 then
     1
@@ -170,12 +175,13 @@ fib n =
 
 List.map fib [0..8] -- [1, 1, 2, 3, 5, 8,13, 21, 34]
 
+-- Another recursive function (use List.length in real code).
 listLength aList =
   case aList of
     [] -> 0
     x::xs -> 1 + listLength xs
 
--- Function application happens before any infix operation
+-- Function calls happen before any infix operator. Parens indicate precedence.
 cos (degrees 30) ^ 2 + sin (degrees 30) ^ 2 -- 1
 -- First degrees is applied to 30, then the result is passed to the trig
 -- functions, which is then squared, and the addition happens last.
@@ -191,7 +197,7 @@ cos (degrees 30) ^ 2 + sin (degrees 30) ^ 2 -- 1
 True : Bool
 
 -- Functions have types too. Read -> as "goes to". Think of the rightmost type
--- as the type of the return value.
+-- as the type of the return value, and the others as arguments.
 not : Bool -> Bool
 round : Float -> Int
 
@@ -226,7 +232,7 @@ type alias Point3D = { x : Float, y : Float, z : Float }
 otherOrigin : Point3D
 otherOrigin = Point3D 0 0 0
 
--- But it's still the same type, you can equate them
+-- But it's still the same type, so you can equate them.
 origin == otherOrigin -- True
 
 -- By contrast, defining a union type creates a type that didn't exist before.
@@ -236,14 +242,15 @@ type Direction = North | South | East | West
 
 -- Tags can carry other values of known type. This can work recursively.
 type IntTree = Leaf | Node Int IntTree IntTree
-
 -- "Leaf" and "Node" are the tags. Everything following a tag is a type.
+
 -- Tags can be used as values or functions.
 root : IntTree
 root = Node 7 Leaf Leaf
 
 -- Union types (and type aliases) can use type variables.
 type Tree a = Leaf | Node a (Tree a) (Tree a)
+-- "The type tree of a is a leaf, or a node of a, tree of a, and tree of a."
 
 -- You can pattern match union tags. The uppercase tags must be matched exactly.
 -- The lowercase variables will match anything. Underscore also matches
@@ -260,21 +267,20 @@ leftmostElement tree =
 
 {-- Modules and Imports --}
 
--- The core libraries are organized into modulues, as are any third-party
--- libraries you may use. For large projects, you can define your own modulues.
+-- The core libraries are organized into modules, as are any third-party
+-- libraries you may use. For large projects, you can define your own modules.
 
 -- Put this at the top of the file. If omitted, you're in Main.
 module Name where
 
--- By default, everything is exported.
--- Limit what values and types are exported
-module Name (Type, value) where
+-- By default, everything is exported. You can specify exports explicity.
+module Name (MyType, myValue) where
 
 -- One common pattern is to export a union type but not its tags. This is known
 -- as an "opaque type", and is frequently used in libraries.
 
--- Import code from other modules to use it in this one
--- Places Dict in scope, so you can call Dict.insert
+-- Import code from other modules to use it in this one.
+-- Places Dict in scope, so you can call Dict.insert.
 import Dict
 
 -- Imports the Dict module and the Dict type, so your annotations don't have to
@@ -318,6 +324,8 @@ $ elm repl
 -- Install a new package, and record it in elm-package.json.
 $ elm package install evancz/elm-html
 
+-- See what changed between versions of a package.
+$ elm package diff evancz/elm-html 3.0.0 4.0.2
 -- Elm's package manager enforces semantic versioning, so minor version bumps
 -- will never break your build!
 ```
@@ -335,12 +343,14 @@ Here are some useful resources.
 
 * Documentation for [Elm's core libraries](http://package.elm-lang.org/packages/elm-lang/core/latest/). Take note of:
   * [Basics](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics), which is imported by default
-  * Data structures like [Array](http://package.elm-lang.org/packages/elm-lang/core/latest/Array), [Dict](http://package.elm-lang.org/packages/elm-lang/core/latest/Dict), and [Set](http://package.elm-lang.org/packages/elm-lang/core/latest/Set)
+  * [Maybe](http://package.elm-lang.org/packages/elm-lang/core/latest/Maybe) and its cousin [Result](http://package.elm-lang.org/packages/elm-lang/core/latest/Result), commonly used for missing values or error handling
+  * Data structures like [List](http://package.elm-lang.org/packages/elm-lang/core/latest/List), [Array](http://package.elm-lang.org/packages/elm-lang/core/latest/Array), [Dict](http://package.elm-lang.org/packages/elm-lang/core/latest/Dict), and [Set](http://package.elm-lang.org/packages/elm-lang/core/latest/Set)
   * JSON [encoding](http://package.elm-lang.org/packages/elm-lang/core/latest/Json-Encode) and [decoding](http://package.elm-lang.org/packages/elm-lang/core/latest/Json-Decode)
 
-* [The Elm Architecture](https://github.com/evancz/elm-architecture-tutorial#the-elm-architecture). An essay with examples on how to organize code into components.
+* [The Elm Architecture](https://github.com/evancz/elm-architecture-tutorial#the-elm-architecture). An essay by Elm's creator with examples on how to organize code into components.
 
 * The [Elm mailing list](https://groups.google.com/forum/#!forum/elm-discuss). Everyone is friendly and helpful.
 
+* [Scope in Elm](https://github.com/elm-guides/elm-for-js/blob/master/Scope.md#scope-in-elm) and [How to Read a Type Annotation](https://github.com/elm-guides/elm-for-js/blob/master/How%20to%20Read%20a%20Type%20Annotation.md#how-to-read-a-type-annotation). More community guides on the basics of Elm, written for JavaScript developers.
 
 Go out and write some Elm!
