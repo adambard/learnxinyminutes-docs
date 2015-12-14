@@ -202,6 +202,8 @@ logger("We have a logger subroutine!");
 # that Perl can find it.
 
 package MyModule;
+use strict;
+use warnings;
 
 sub trim {
   my $string = shift;
@@ -237,6 +239,8 @@ trim($string);
 # or Moo (see below).
 
 package MyCounter;
+use strict;
+use warnings;
 
 sub new {
   my $class = shift;
@@ -268,7 +272,7 @@ print $counter->count, "\n"; # 1
 # class can be used equivalently to the one above.
 
 package MyCounter;
-use Moo;
+use Moo; # imports strict and warnings
 
 has 'count' => (is => 'rwp', default => 0, init_arg => undef);
 
