@@ -15,6 +15,16 @@ Perl 5 runs on over 100 platforms from portables to mainframes and is suitable f
 ```perl
 # Single line comments start with a number sign.
 
+#### Strict and warnings
+
+use strict;
+use warnings;
+
+# All perl scripts and modules should include these lines. Strict causes
+# compilation to fail in cases like misspelled variable names, and warnings
+# will print warning messages in case of common pitfalls like concatenating
+# to an undefined value.
+
 #### Perl variable types
 
 #  Variables begin with a sigil, which is a symbol showing the type.
