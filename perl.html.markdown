@@ -262,6 +262,7 @@ sub increment {
 
 # Methods can be called on a class or object instance with the arrow operator.
 
+use MyCounter;
 my $counter = MyCounter->new;
 print $counter->count, "\n"; # 0
 $counter->increment;
