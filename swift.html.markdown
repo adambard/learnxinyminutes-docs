@@ -46,7 +46,7 @@ let `class` = "keyword" // backticks allow keywords to be used as variable names
 let explicitDouble: Double = 70
 let intValue = 0007 // 7
 let largeIntValue = 77_000 // 77000
-let label = "some text " + String(myVariable) // Casting
+let label = "some text " + String(myVariable) // String construction
 let piText = "Pi = \(π), Pi 2 = \(π * 2)" // String interpolation
 
 // Build Specific values
@@ -346,6 +346,44 @@ let name = namesTable[1]
 print("Name is \(name)") // Name is Them
 
 //
+// MARK: Error Handling
+//
+
+// The `ErrorType` protocol is used when throwing errors to catch
+enum MyError: ErrorType {
+    case BadValue(msg: String)
+    case ReallyBadValue(msg: String)
+}
+
+// functions marked with `throws` must be called using `try`
+func fakeFetch(value: Int) throws -> String {
+    guard 7 == value else {
+        throw MyError.ReallyBadValue(msg: "Some really bad value")
+    }
+
+    return "test"
+}
+
+func testTryStuff() {
+    // assumes there will be no error thrown, otherwise a runtime exception is raised
+    let _ = try! fakeFetch(7)
+
+    // if an error is thrown, then it proceeds, but if the value is nil
+    // it also wraps every return value in an optional, even if its already optional
+    let _ = try? fakeFetch(7)
+
+    do {
+        // normal try operation that provides error handling via `catch` block
+        try fakeFetch(1)
+    } catch MyError.BadValue(let msg) {
+        print("Error message: \(msg)")
+    } catch {
+        // must be exhaustive
+    }
+}
+testTryStuff()
+
+//
 // MARK: Classes
 //
 
@@ -559,7 +597,7 @@ class MyShape: Rect {
 
 // `extension`s: Add extra functionality to an already existing type
 
-// Square now "conforms" to the `Printable` protocol
+// Square now "conforms" to the `CustomStringConvertible` protocol
 extension Square: CustomStringConvertible {
     var description: String {
         return "Area: \(self.getArea()) - ID: \(self.identifier)"

@@ -124,7 +124,7 @@ not False  # => True
 "This is a string"[0]  # => 'T'
 
 #String formatting with %
-#Even though the % string operator will be deprecated on Python 3.1 and removed 
+#Even though the % string operator will be deprecated on Python 3.1 and removed
 #later at some time, it may still be good to know how it works.
 x = 'apple'
 y = 'lemon'

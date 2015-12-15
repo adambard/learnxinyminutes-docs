@@ -426,7 +426,7 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
           greater = filter (>= p) xs
 ```
 
-Haskell is easy to install. Get it [here](http://www.haskell.org/platform/).
+There are two popular ways to install Haskell: The traditional [Cabal-based installation](http://www.haskell.org/platform/), and the newer [Stack-based process](https://www.stackage.org/install).
 
 You can find a much gentler introduction from the excellent
 [Learn you a Haskell](http://learnyouahaskell.com/) or

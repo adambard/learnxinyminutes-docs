@@ -4,40 +4,41 @@ filename: learnsass.scss
 contributors:
   - ["Laura Kyle", "https://github.com/LauraNK"]
   - ["Sean Corrales", "https://github.com/droidenator"]
+  - ["Kyle Mendes", "https://github.com/pink401k"]
 ---
 
-Sass is a CSS extension language that adds features such as variables, nesting, mixins and more. 
-Sass (and other preprocessors, such as [Less](http://lesscss.org/)) help developers to write maintainable and DRY (Don't Repeat Yourself) code.
+Sass is a CSS extension language that adds features such as variables, nesting, mixins and more.
+Sass (and other preprocessors, such as [Less](http://lesscss.org/)) help developers write maintainable and DRY (Don't Repeat Yourself) code.
 
-Sass has two different syntax options to choose from. SCSS, which has the same syntax as CSS but with the added features of Sass. Or Sass (the original syntax), which uses indentation rather than curly braces and semicolons. 
+Sass has two different syntax options to choose from. SCSS, which has the same syntax as CSS but with the added features of Sass. Or Sass (the original syntax), which uses indentation rather than curly braces and semicolons.
 This tutorial is written using SCSS.
 
-If you're already familiar with CSS3, you'll be able to pick up Sass relatively quickly. It does not provide any new styling options but rather the tools to write your CSS more efficiently and make maintenance much easier.
+If you're already familiar with CSS3, you'll be able to pick up Sass relatively quickly. It does not provide any new styling properties but rather the tools to write your CSS more efficiently and make maintenance much easier.
 
 ```scss
 
-	
+
 //Single line comments are removed when Sass is compiled to CSS.
 
-/*Multi line comments are preserved. */	
-	
-	
-	
-/*Variables
-==============================*/
-	
-	
+/* Multi line comments are preserved. */
+
+
+
+/* Variables
+============================== */
+
+
 
 /* You can store a CSS value (such as a color) in a variable.
 Use the '$' symbol to create a variable. */
-	
+
 $primary-color: #A3A4FF;
 $secondary-color: #51527F;
-$body-font: 'Roboto', sans-serif;	
+$body-font: 'Roboto', sans-serif;
 
-/* You can use the variables throughout your stylesheet. 
-Now if you want to change a color, you only have to make the change once.*/	
-	
+/* You can use the variables throughout your stylesheet.
+Now if you want to change a color, you only have to make the change once. */
+
 body {
 	background-color: $primary-color;
 	color: $secondary-color;
@@ -54,18 +55,18 @@ body {
 
 /* This is much more maintainable than having to change the color
 each time it appears throughout your stylesheet. */
-	
 
 
-/*Mixins
-==============================*/
+
+/* Mixins
+============================== */
 
 
 
 /* If you find you are writing the same code for more than one
 element, you might want to store that code in a mixin.
 
-Use the '@mixin' directive, plus a name for your mixin.*/
+Use the '@mixin' directive, plus a name for your mixin. */
 
 @mixin center {
 	display: block;
@@ -82,7 +83,7 @@ div {
 	background-color: $primary-color;
 }
 
-/*Which would compile to: */
+/* Which would compile to: */
 div {
 	display: block;
 	margin-left: auto;
@@ -99,8 +100,8 @@ div {
 	width: $width;
 	height: $height;
 }
-	
-/*Which you can invoke by passing width and height arguments. */
+
+/* Which you can invoke by passing width and height arguments. */
 
 .rectangle {
 	@include size(100px, 60px);
@@ -110,31 +111,31 @@ div {
 	@include size(40px, 40px);
 }
 
-/* This compiles to: */
+/* Compiles to: */
 .rectangle {
   width: 100px;
-  height: 60px; 
+  height: 60px;
 }
 
 .square {
   width: 40px;
-  height: 40px; 
+  height: 40px;
 }
 
 
 
-/*Functions
-==============================*/   
-   
-   
-   
-/* Sass provides functions that can be used to accomplish a variety of 
+/* Functions
+============================== */
+
+
+
+/* Sass provides functions that can be used to accomplish a variety of
    tasks. Consider the following */
 
-/* Functions can be invoked by using their name and passing in the 
+/* Functions can be invoked by using their name and passing in the
    required arguments */
 body {
-  width: round(10.25px);    
+  width: round(10.25px);
 }
 
 .footer {
@@ -149,18 +150,18 @@ body {
 
 .footer {
   background-color: rgba(0, 0, 0, 0.75);
-}   
-   
-/* You may also define your own functions. Functions are very similar to 
+}
+
+/* You may also define your own functions. Functions are very similar to
    mixins. When trying to choose between a function or a mixin, remember
-   that mixins are best for generating CSS while functions are better for 
-   logic that might be used throughout your Sass code. The examples in 
-   the Math Operators' section are ideal candidates for becoming a reusable 
+   that mixins are best for generating CSS while functions are better for
+   logic that might be used throughout your Sass code. The examples in
+   the Math Operators' section are ideal candidates for becoming a reusable
    function. */
 
-/* This function will take a target size and the parent size and calculate 
+/* This function will take a target size and the parent size and calculate
    and return the percentage */
-   
+
 @function calculate-percentage($target-size, $parent-size) {
   @return $target-size / $parent-size * 100%;
 }
@@ -187,12 +188,12 @@ $main-content: calculate-percentage(600px, 960px);
 
 
 
-/*Extend (Inheritance)
-==============================*/
+/* Extend (Inheritance)
+============================== */
 
 
 
-/*Extend is a way to share the properties of one selector with another. */
+/* Extend is a way to share the properties of one selector with another. */
 
 .display {
 	@include size(5em, 5em);
@@ -208,36 +209,36 @@ $main-content: calculate-percentage(600px, 960px);
 .display, .display-success {
   width: 5em;
   height: 5em;
-  border: 5px solid #51527F; 
+  border: 5px solid #51527F;
 }
 
 .display-success {
-  border-color: #22df56; 
+  border-color: #22df56;
 }
 
-/* Extending a CSS statement is preferable to creating a mixin 
-   because of the way it groups together the classes that all share
-   the same base styling. If this was done with a mixin, the width, 
-   height, and border would be duplicated for each statement that 
+/* Extending a CSS statement is preferable to creating a mixin
+   because of the way Sass groups together the classes that all share
+   the same base styling. If this was done with a mixin, the width,
+   height, and border would be duplicated for each statement that
    called the mixin. While it won't affect your workflow, it will
    add unnecessary bloat to the files created by the Sass compiler. */
 
-	
-
-/*Nesting
-==============================*/
 
 
+/* Nesting
+============================== */
 
-/*Sass allows you to nest selectors within selectors */
+
+
+/* Sass allows you to nest selectors within selectors */
 
 ul {
 	list-style-type: none;
 	margin-top: 2em;
-	
+
 	li {
-		background-color: #FF0000;		
-	}	
+		background-color: #FF0000;
+	}
 }
 
 /* '&' will be replaced by the parent selector. */
@@ -249,18 +250,18 @@ For example: */
 ul {
 	list-style-type: none;
 	margin-top: 2em;
-	
+
 	li {
 		background-color: red;
-		
+
 		&:hover {
 		  background-color: blue;
 		}
-		
+
 		a {
 		  color: white;
 		}
-	}	
+	}
 }
 
 /* Compiles to: */
@@ -284,17 +285,17 @@ ul li a {
 
 
 
-/*Partials and Imports
-==============================*/   
-   
-   
-   
+/* Partials and Imports
+============================== */
+
+
+
 /* Sass allows you to create partial files. This can help keep your Sass
    code modularized. Partial files should begin with an '_', e.g. _reset.css.
    Partials are not generated into CSS. */
-   
+
 /* Consider the following CSS which we'll put in a file called _reset.css */
-   
+
 html,
 body,
 ul,
@@ -302,14 +303,14 @@ ol {
   margin: 0;
   padding: 0;
 }
-   
+
 /* Sass offers @import which can be used to import partials into a file.
-   This differs from the traditional CSS @import statement which makes 
-   another HTTP request to fetch the imported file. Sass takes the 
+   This differs from the traditional CSS @import statement which makes
+   another HTTP request to fetch the imported file. Sass takes the
    imported file and combines it with the compiled code. */
-   
+
 @import 'reset';
-   
+
 body {
   font-size: 16px;
   font-family: Helvetica, Arial, Sans-serif;
@@ -320,25 +321,25 @@ body {
 html, body, ul, ol {
   margin: 0;
   padding: 0;
-}   
+}
 
 body {
   font-size: 16px;
   font-family: Helvetica, Arial, Sans-serif;
 }
-  
 
-   
-/*Placeholder Selectors
-==============================*/  
-    
-    
-   
+
+
+/* Placeholder Selectors
+============================== */
+
+
+
 /* Placeholders are useful when creating a CSS statement to extend. If you
    wanted to create a CSS statement that was exclusively used with @extend,
    you can do so using a placeholder. Placeholders begin with a '%' instead
    of '.' or '#'. Placeholders will not appear in the compiled CSS. */
-   
+
 %content-window {
   font-size: 14px;
   padding: 10px;
@@ -364,18 +365,18 @@ body {
   background-color: #0000ff;
 }
 
-      
-  
-/*Math Operations
-==============================*/   
-    
-      
-   
+
+
+/* Math Operations
+============================== */
+
+
+
 /* Sass provides the following operators: +, -, *, /, and %. These can
    be useful for calculating values directly in your Sass files instead
    of using values that you've already calculated by hand. Below is an example
    of a setting up a simple two column design. */
-   
+
 $content-area: 960px;
 $main-content: 600px;
 $sidebar-content: 300px;
@@ -418,14 +419,11 @@ body {
   width: 6.25%;
 }
 
-	
-```	
-
-
+```
 
 ## SASS or Sass?
-Have you ever wondered whether Sass is an acronym or not? You probably haven't, but I'll tell you anyway. The name of the language is a word, "Sass", and not an acronym. 
-Because people were constantly writing it as "SASS", the creator of the language jokingly called it "Syntactically Awesome StyleSheets". 
+Have you ever wondered whether Sass is an acronym or not? You probably haven't, but I'll tell you anyway. The name of the language is a word, "Sass", and not an acronym.
+Because people were constantly writing it as "SASS", the creator of the language jokingly called it "Syntactically Awesome StyleSheets".
 
 
 ## Practice Sass
@@ -434,14 +432,13 @@ You can use either syntax, just go into the settings and select either Sass or S
 
 
 ## Compatibility
-
 Sass can be used in any project as long as you have a program to compile it
 into CSS. You'll want to verify that the CSS you're using is compatible
-with your target browsers. 
+with your target browsers.
 
-[QuirksMode CSS](http://www.quirksmode.org/css/) and [CanIUse](http://caniuse.com) are great resources for checking compatibility. 
+[QuirksMode CSS](http://www.quirksmode.org/css/) and [CanIUse](http://caniuse.com) are great resources for checking compatibility.
 
-	
+
 ## Further reading
 * [Official Documentation](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
 * [The Sass Way](http://thesassway.com/) provides tutorials (beginner-advanced) and articles.
