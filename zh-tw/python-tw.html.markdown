@@ -69,11 +69,11 @@ from __future__ import division
 # 指數 (x的y次方)
 2**4 # => 16
 
-# 括號即先乘除後加減
+# 用括號改變運算順序
 (1 + 3) * 2  # => 8
 
 # 布林運算
-# 注意 "and" 和 "or" 的大小寫
+# 注意 "and" 和 "or" 要用小寫
 True and False #=> False
 False or True #=> True
 
@@ -178,7 +178,7 @@ some_var = 5    # 方便好用
 lower_case_with_underscores
 some_var  # => 5
 
-# 存取沒有被賦值的變數會造成例外
+# 對沒有被賦值的變數取值會造成例外
 # 請參考錯誤流程部分做例外處理
 some_other_var  # 造成 NameError
 
@@ -191,15 +191,15 @@ li = []
 # 你可以預先填好串列內容
 other_li = [4, 5, 6]
 
-# 用append()在串列後新增東西 append
+# 用append()在串列後新增東西
 li.append(1)    # 此時 li 內容為 [1]
 li.append(2)    # 此時 li 內容為 [1, 2]
 li.append(4)    # 此時 li 內容為 [1, 2, 4]
 li.append(3)    # 此時 li 內容為 [1, 2, 4, 3]
 # 用pop()移除串列尾端的元素
-li.pop()        # => 3 and li is now [1, 2, 4]
+li.pop()        # => 3 ，此時 li 內容為 [1, 2, 4]
 # 然後再塞回去
-li.append(3)    # li is now [1, 2, 4, 3] again.
+li.append(3)    # 此時 li 內容再次為 [1, 2, 4, 3]
 
 # 你可以像存取陣列一樣的存取串列
 li[0]  # => 1
@@ -272,7 +272,7 @@ d, e, f = 4, 5, 6       # 也可以不寫括號
 # 如果不加括號，預設會產生tuple
 g = 4, 5, 6             # => (4, 5, 6)
 # 你看，交換兩個值很簡單吧
-e, d = d, e     # d is now 5 and e is now 4
+e, d = d, e     # 此時 d 的值為 5 且 e 的值為 4
 
 
 # 字典(Dictionary)用來儲存映射關係
@@ -289,7 +289,7 @@ filled_dict.keys()   # => ["three", "two", "one"]
 # 你的執行結果可能與上面不同
 # 譯註: 只能保證所有的key都有出現，但不保證順序
 
-# 用 "valuess()" 將所有的Value輸出到一個List中
+# 用 "values()" 將所有的Value輸出到一個List中
 filled_dict.values()   # => [3, 2, 1]
 # 註: 同上，不保證順序
 
@@ -457,16 +457,14 @@ add(5, 6)   # => 輸出 "x is 5 and y is 6" 並回傳 11
 add(y=6, x=5)   # 這種狀況下，兩個參數的順序並不影響執行
 
 
-# 你可以定義接受多個變數的函式，這些變數是按照順序排序的
-# 如果不加*的話會被解讀為tuple
+# 你可以定義接受多個變數的函式，用*來表示參數tuple
 def varargs(*args):
     return args
 
 varargs(1, 2, 3)   # => (1, 2, 3)
 
 
-# 你可以定義接受多個變數的函式，這些變數是按照keyword排序的
-# 如果不加**的話會被解讀為dictionary
+# 你可以定義接受多個變數的函式，用**來表示參數dictionary
 def keyword_args(**kwargs):
     return kwargs
 
@@ -555,6 +553,7 @@ class Human(object):
     # 注意前後的雙底線代表物件
     # 還有被python用，但實際上是在使用者控制的命名
     # 空間內的參數。你不應該自己宣告這樣的名稱。
+    # 注意前後的雙底線代表此物件或屬性雖然在使用者控制的命名空間內，但是被python使用
     def __init__(self, name):
         # 將函式引入的參數 name 指定給實體的 name 參數
         self.name = name
