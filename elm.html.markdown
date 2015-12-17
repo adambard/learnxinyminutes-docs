@@ -74,6 +74,10 @@ List.head [] -- Nothing
 fst ("elm", 42) -- "elm"
 snd ("elm", 42) -- 42
 
+-- The empty tuple, or "unit", is sometimes used as a placeholder.
+-- It is the only value of its type, also called "Unit".
+()
+
 -- Records are like tuples but the fields have names. The order of fields
 -- doesn't matter. Notice that record values use equals signs, not colons.
 { x = 3, y = 7 }
@@ -116,6 +120,7 @@ case aList of
   x::xs -> "matches a list of at least one item whose head is " ++ toString x
 -- Pattern matches go in order. If we put [x] last, it would never match because
 -- x::xs also matches (xs would be the empty list). Matches do not "fall through".
+-- The compiler will alert you to missing or extra cases.
 
 -- Pattern match on a Maybe.
 case List.head aList of
@@ -226,11 +231,13 @@ origin =
   { x = 0, y = 0, z = 0 }
 
 -- You can give existing types a nice name with a type alias.
-type alias Point3D = { x : Float, y : Float, z : Float }
+type alias Point3D =
+  { x : Float, y : Float, z : Float }
 
 -- If you alias a record, you can use the name as a constructor function.
 otherOrigin : Point3D
-otherOrigin = Point3D 0 0 0
+otherOrigin =
+  Point3D 0 0 0
 
 -- But it's still the same type, so you can equate them.
 origin == otherOrigin -- True
@@ -238,23 +245,27 @@ origin == otherOrigin -- True
 -- By contrast, defining a union type creates a type that didn't exist before.
 -- A union type is so called because it can be one of many possibilities.
 -- Each of the possibilities is represented as a "tag".
-type Direction = North | South | East | West
+type Direction =
+  North | South | East | West
 
 -- Tags can carry other values of known type. This can work recursively.
-type IntTree = Leaf | Node Int IntTree IntTree
+type IntTree =
+  Leaf | Node Int IntTree IntTree
 -- "Leaf" and "Node" are the tags. Everything following a tag is a type.
 
 -- Tags can be used as values or functions.
 root : IntTree
-root = Node 7 Leaf Leaf
+root =
+  Node 7 Leaf Leaf
 
 -- Union types (and type aliases) can use type variables.
-type Tree a = Leaf | Node a (Tree a) (Tree a)
--- "The type tree of a is a leaf, or a node of a, tree of a, and tree of a."
+type Tree a =
+  Leaf | Node a (Tree a) (Tree a)
+-- "The type tree-of-a is a leaf, or a node of a, tree-of-a, and tree-of-a."
 
--- You can pattern match union tags. The uppercase tags must be matched exactly.
--- The lowercase variables will match anything. Underscore also matches
--- anything, but signifies that you aren't using it.
+-- Pattern match union tags. The uppercase tags will be matched exactly. The
+-- lowercase variables will match anything. Underscore also matches anything,
+-- but signifies that you aren't using it.
 leftmostElement : Tree a -> Maybe a
 leftmostElement tree =
   case tree of
