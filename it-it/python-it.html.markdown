@@ -44,7 +44,7 @@ Python 2.x. Per Python 3.x, dai un'occhiata a [Python 3 tutorial](http://learnxi
 # restituito in automatico il risultato intero.
 5 / 2  # => 2
 
-# Per le divisioni con la virgbola abbiamo bisogno di parlare delle variabili floats.
+# Per le divisioni con la virgola abbiamo bisogno di parlare delle variabili floats.
 2.0     # Questo è un float
 11.0 / 4.0  # => 2.75 ahhh...molto meglio
 
@@ -118,7 +118,7 @@ not False  # => True
 # Un nuovo modo per fomattare le stringhe è il metodo format.
 # Questo metodo è quello consigliato
 "{0} possono essere {1}".format("le stringhe", "formattate")
-# Puoi usare della parole chiave se non vuoi contare
+# Puoi usare delle parole chiave se non vuoi contare
 "{nome} vuole mangiare {cibo}".format(nome="Bob", cibo="lasagna")
 
 # None è un oggetto
@@ -202,7 +202,7 @@ li[::-1]   # => [3, 4, 2, 1]
 del li[2]   # li è ora [1, 2, 3]
 # Puoi sommare le liste
 li + altra_li   # => [1, 2, 3, 4, 5, 6]
-# Nota: i valori per li ed _altri_li non sono modificati.
+# Nota: i valori per li ed altra_li non sono modificati.
 
 # Concatena liste con "extend()"
 li.extend(altra_li)   # Ora li è [1, 2, 3, 4, 5, 6]
@@ -288,7 +288,7 @@ filled_set = {1, 2, 2, 3, 4}   # => {1, 2, 3, 4}
 # Aggiungere elementi ad un set
 filled_set.add(5)   # filled_set è ora {1, 2, 3, 4, 5}
 
-# Fai interazioni su un set con &
+# Fai intersezioni su un set con &
 other_set = {3, 4, 5, 6}
 filled_set & other_set   # => {3, 4, 5}
 
@@ -378,8 +378,8 @@ except IndexError as e:
     pass    # Pass è solo una non-operazione. Solitamente vorrai fare un recupero.
 except (TypeError, NameError):
     pass    # Eccezioni multiple possono essere gestite tutte insieme, se necessario.
-else:   # Optional clause to the try/except block. Must follow all except blocks
-    print "All good!"   # Viene eseguita solo se il codice dentro try non genera eccezioni
+else:   # Clausola opzionale al blocco try/except. Deve seguire tutti i blocchi except
+    print "Tutto ok!"   # Viene eseguita solo se il codice dentro try non genera eccezioni
 finally: #  Eseguito sempre
     print "Possiamo liberare risorse qui"
 
@@ -405,7 +405,7 @@ aggiungi(y=6, x=5)   # Le parole chiave come argomenti possono arrivare in ogni 
 
 
 # Puoi definire funzioni che accettano un numero variabile di argomenti posizionali
-# che verranno interpretati come come tuple se non usi il *
+# che verranno interpretati come tuple se non usi il *
 def varargs(*args):
     return args
 
@@ -495,7 +495,7 @@ class Human(object):
     species = "H. sapiens"
 
     # Costruttore base, richiamato quando la classe viene inizializzata.
-    # Si noti che il doppio leading e l'underscore finali denotano oggetti
+    # Si noti che il doppio leading e gli underscore finali denotano oggetti
     # o attributi che sono usati da python ma che vivono nello spazio dei nome controllato
     # dall'utente. Non dovresti usare nomi di questo genere.
     def __init__(self, name):
@@ -575,7 +575,7 @@ dir(math)
 ## 7. Avanzate
 ####################################################
 
-# Generators help you make lazy code
+# I generatori ti aiutano a fare codice pigro
 def double_numbers(iterable):
     for i in iterable:
         yield i + i
@@ -611,7 +611,7 @@ def beg(target_function):
     def wrapper(*args, **kwargs):
         msg, say_please = target_function(*args, **kwargs)
         if say_please:
-            return "{} {}".format(msg, "Please! I am poor :(")
+            return "{} {}".format(msg, "Per favore! Sono povero :(")
         return msg
 
     return wrapper
@@ -619,17 +619,17 @@ def beg(target_function):
 
 @beg
 def say(say_please=False):
-    msg = "Can you buy me a beer?"
+    msg = "Puoi comprarmi una birra?"
     return msg, say_please
 
 
-print say()  # Can you buy me a beer?
-print say(say_please=True)  # Can you buy me a beer? Please! I am poor :(
+print say()  # Puoi comprarmi una birra?
+print say(say_please=True)  # Puoi comprarmi una birra? Per favore! Sono povero :(
 ```
 
-## Ready For More?
+## Pronto per qualcosa di più?
 
-### Free Online
+### Gratis Online
 
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
@@ -640,7 +640,7 @@ print say(say_please=True)  # Can you buy me a beer? Please! I am poor :(
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 
-### Dead Tree
+### Libri cartacei
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
