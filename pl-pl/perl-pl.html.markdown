@@ -155,8 +155,7 @@ wynajdywać koła na nowo. Moduły te można pobrać z [CPAN](http://www.cpan.or
 Sam Perl zawiera w swoich dystrybucjach kilka najpopularniejszych modułów
 z repozytorium [CPAN](http://www.cpan.org).
 
-Najczęściej zadawane pytania [perlfaq](http://perldoc.perl.org/perlfaq.html)
-- zawierają pytania i odpowiedzi dotyczące wielu typowo realizowanych zadań.
+Najczęściej zadawane pytania [perlfaq](http://perldoc.perl.org/perlfaq.html) zawierają pytania i odpowiedzi dotyczące wielu typowo realizowanych zadań.
 Często znajdziesz tam również sugestie dotyczące użycia najlepszego modułu
 z repozytorium CPAN do zrealizowania konkretnego zadania.
 
