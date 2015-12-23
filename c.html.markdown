@@ -157,6 +157,8 @@ int main (int argc, char** argv)
 
   // Strings are just arrays of chars terminated by a NULL (0x00) byte,
   // represented in strings as the special character '\0'.
+  // NULL characters are vital to functions that operate on strings,
+  // so be sure to include them!
   // (We don't have to include the NULL byte in string literals; the compiler
   //  inserts it at the end of the array for us.)
   char a_string[20] = "This is a string";
