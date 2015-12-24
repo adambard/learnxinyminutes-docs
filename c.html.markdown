@@ -239,7 +239,7 @@ int main (int argc, char** argv)
   z = (e > f) ? e : f; // => 10 "if e > f return e, else return f."
 
   // Increment and decrement operators:
-  char *s = "iLoveC";
+  char *s = "ILoveC";
   int j = 0;
   s[j++]; // => "i". Returns the j-th item of s THEN increments value of j.
   j = 0;
@@ -321,7 +321,7 @@ int main (int argc, char** argv)
     break;
   default:
     // if `some_integral_expression` didn't match any of the labels
-    fputs("error!\n", stderr);
+    fputs("Error!\n", stderr);
     exit(-1);
     break;
   }
@@ -497,7 +497,7 @@ int add_two_ints(int x1, int x2)
 
 /*
 Functions are call by value. When a function is called, the arguments passed to
-≈the function are copies of the original arguments (except arrays). Anything you
+the function are copies of the original arguments (except arrays). Anything you
 do to the arguments in the function do not change the value of the original
 argument where the function was called.
 
@@ -726,7 +726,7 @@ Header files are an important part of c as they allow for the connection of c
 source files and can simplify code and definitions by seperating them into
 seperate files.
 
-Header files are syntaxtically similar to c source files but reside in ".h"
+Header files are syntactically similar to c source files but reside in ".h"
 files. They can be included in your c source file by using the precompiler
 command #include "example.h", given that example.h exists in the same directory
 as the c file.
