@@ -803,9 +803,8 @@ module Foo::Bar {
     my sub unavailable { # `my sub` is the default
       say "Can't access me from outside, I'm my !";
     }
+    say ++$n; # increment the package variable and output its value
   }
-
-  say ++$n; # lexically-scoped variables are still available
 }
 say $Foo::Bar::n; #=> 1
 Foo::Bar::inc; #=> 2
