@@ -103,7 +103,7 @@ sub say-hello-to(Str $name) { # You can provide the type of an argument
 
 ## It can also have optional arguments:
 sub with-optional($arg?) { # the "?" marks the argument optional
-  say "I might return `(Any)` (Perl's "null"-like value) if I don't have
+  say "I might return `(Any)` (Perl's 'null'-like value) if I don't have
         an argument passed, or I'll return my argument";
   $arg;
 }
