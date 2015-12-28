@@ -420,8 +420,6 @@ include_once 'my-file.php';
 require 'my-file.php';
 require_once 'my-file.php';
 
-// Same as include(), except require() will cause a fatal error if the
-// file cannot be included.
 // Действует также как и include(), но если файл не удалось подключить,
 // функция выдает фатальную ошибку
 
@@ -485,7 +483,7 @@ echo MyClass::MY_CONST;    // Выведет 'value';
 echo MyClass::$staticVar;  // Выведет 'static';
 MyClass::myStaticMethod(); // Выведет 'I am static';
 
-// Новый экземпляр класса используя new
+// Создание нового экземпляра класса используя new
 $my_class = new MyClass('An instance property');
 
 // Если аргументы отсутствуют, можно не ставить круглые скобки

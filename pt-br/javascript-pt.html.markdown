@@ -436,7 +436,6 @@ var myPrototype = {
 myObj.__proto__ = myPrototype;
 myObj.meaningOfLife; // = 42
 
-// This works for functions, too.
 // Isto funciona para funções, também.
 myObj.myFunc(); // = "olá mundo!"
 
@@ -506,7 +505,7 @@ String.prototype.firstCharacter = function(){
 
 // Havíamos mencionado que `Object.create` não estava ainda disponível em 
 // todos as implementações, mas nós podemos usá-lo com esse polyfill:
-if (Object.create === undefined){ // don't overwrite it if it exists
+if (Object.create === undefined){ // Não o sobrescreve se já existir
     Object.create = function(proto){
         // faz um construtor temporário com o prototype certo
         var Constructor = function(){};

@@ -4,6 +4,7 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "http://aminbandali.com"]
     - ["Andre Polykanine", "https://github.com/Oire"]
+    - ["evuez", "http://github.com/evuez"]
 filename: learnpython.py
 ---
 
@@ -14,7 +15,13 @@ executable pseudocode.
 Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
 
 Note: This article applies to Python 2.7 specifically, but should be applicable
-to Python 2.x. For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
+to Python 2.x. Python 2.7 is reaching end of life and will stop being maintained in 2020,
+it is though recommended to start learning Python with Python 3.
+For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
+
+It is also possible to write Python code which is compatible with Python 2.7 and 3.x at the same time,
+using Python [`__future__` imports](https://docs.python.org/2/library/__future__.html). `__future__` imports
+allow you to write Python 3 code that will run on Python 2, so check out the Python 3 tutorial.
 
 ```python
 
@@ -51,6 +58,12 @@ to Python 2.x. For Python 3.x, take a look at the [Python 3 tutorial](http://lea
 5.0 // 3.0 # => 1.0 # works on floats too
 -5 // 3  # => -2
 -5.0 // 3.0 # => -2.0
+
+# Note that we can also import division module(Section 6 Modules)
+# to carry out normal division with just one '/'.
+from __future__ import division
+11/4    # => 2.75  ...normal division
+11//4   # => 2 ...floored division
 
 # Modulo operation
 7 % 3 # => 1
@@ -110,11 +123,16 @@ not False  # => True
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
 
-# % can be used to format strings, like this:
-"%s can be %s" % ("strings", "interpolated")
+#String formatting with %
+#Even though the % string operator will be deprecated on Python 3.1 and removed
+#later at some time, it may still be good to know how it works.
+x = 'apple'
+y = 'lemon'
+z = "The items in the basket are %s and %s" % (x,y)
 
 # A newer way to format strings is the format method.
 # This method is the preferred way
+"{} is a {}".format("This", "placeholder")
 "{0} can be {1}".format("strings", "formatted")
 # You can use keywords if you don't want to count.
 "{name} wants to eat {food}".format(name="Bob", food="lasagna")
@@ -131,8 +149,16 @@ None is None  # => True
 # very useful when dealing with primitive values, but is
 # very useful when dealing with objects.
 
-# None, 0, and empty strings/lists all evaluate to False.
-# All other values are True
+# Any object can be used in a Boolean context.
+# The following values are considered falsey:
+#    - None
+#    - zero of any numeric type (e.g., 0, 0L, 0.0, 0j)
+#    - empty sequences (e.g., '', (), [])
+#    - empty containers (e.g., {}, set())
+#    - instances of user-defined classes meeting certain conditions
+#      see: https://docs.python.org/2/reference/datamodel.html#object.__nonzero__
+#
+# All other values are truthy (using the bool() function on them returns True).
 bool(0)  # => False
 bool("")  # => False
 
@@ -144,6 +170,12 @@ bool("")  # => False
 # Python has a print statement
 print "I'm Python. Nice to meet you!" # => I'm Python. Nice to meet you!
 
+# Simple way to get input data from console
+input_string_var = raw_input("Enter some data: ") # Returns the data as a string
+input_var = input("Enter some data: ") # Evaluates the data as python code
+# Warning: Caution is recommended for input() method usage
+# Note: In python 3, input() is deprecated and raw_input() is renamed to input()
+
 # No need to declare variables before assigning to them.
 some_var = 5    # Convention is to use lower_case_with_underscores
 some_var  # => 5
@@ -153,6 +185,7 @@ some_var  # => 5
 some_other_var  # Raises a name error
 
 # if can be used as an expression
+# Equivalent of C's '?:' ternary operator
 "yahoo!" if 3 > 2 else 2  # => "yahoo!"
 
 # Lists store sequences
@@ -206,6 +239,17 @@ li + other_li   # => [1, 2, 3, 4, 5, 6]
 # Concatenate lists with "extend()"
 li.extend(other_li)   # Now li is [1, 2, 3, 4, 5, 6]
 
+# Remove first occurrence of a value
+li.remove(2)  # li is now [1, 3, 4, 5, 6]
+li.remove(2)  # Raises a ValueError as 2 is not in the list
+
+# Insert an element at a specific index
+li.insert(1, 2)  # li is now [1, 2, 3, 4, 5, 6] again
+
+# Get the index of the first item found
+li.index(2)  # => 1
+li.index(7)  # Raises a ValueError as 7 is not in the list
+
 # Check for existence in a list with "in"
 1 in li   # => True
 
@@ -226,8 +270,9 @@ tup[:2]   # => (1, 2)
 
 # You can unpack tuples (or lists) into variables
 a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
+d, e, f = 4, 5, 6       # you can leave out the parentheses
 # Tuples are created by default if you leave out the parentheses
-d, e, f = 4, 5, 6
+g = 4, 5, 6             # => (4, 5, 6)
 # Now look how easy it is to swap two values
 e, d = d, e     # d is now 5 and e is now 4
 
@@ -296,6 +341,15 @@ filled_set | other_set   # => {1, 2, 3, 4, 5, 6}
 
 # Do set difference with -
 {1, 2, 3, 4} - {2, 3, 5}   # => {1, 4}
+
+# Do set symmetric difference with ^
+{1, 2, 3, 4} ^ {2, 3, 5}  # => {1, 4, 5}
+
+# Check if set on the left is a superset of set on the right
+{1, 2} >= {1, 2, 3} # => False
+
+# Check if set on the left is a subset of set on the right
+{1, 2} <= {1, 2, 3} # => True
 
 # Check for existence in a set with in
 2 in filled_set   # => True
@@ -404,7 +458,7 @@ add(y=6, x=5)   # Keyword arguments can arrive in any order.
 
 
 # You can define functions that take a variable number of
-# positional args, which will be interpreted as a tuple if you do not use the *
+# positional args, which will be interpreted as a tuple by using *
 def varargs(*args):
     return args
 
@@ -412,7 +466,7 @@ varargs(1, 2, 3)   # => (1, 2, 3)
 
 
 # You can define functions that take a variable number of
-# keyword args, as well, which will be interpreted as a dict if you do not use **
+# keyword args, as well, which will be interpreted as a dict by using **
 def keyword_args(**kwargs):
     return kwargs
 
@@ -448,19 +502,19 @@ def pass_all_the_args(*args, **kwargs):
 # Function Scope
 x = 5
 
-def setX(num):
+def set_x(num):
     # Local var x not the same as global variable x
     x = num # => 43
     print x # => 43
 
-def setGlobalX(num):
+def set_global_x(num):
     global x
     print x # => 5
     x = num # global var x is now set to 6
     print x # => 6
 
-setX(43)
-setGlobalX(6)
+set_x(43)
+set_global_x(6)
 
 # Python has first class functions
 def create_adder(x):
@@ -504,6 +558,10 @@ class Human(object):
         # Assign the argument to the instance's name attribute
         self.name = name
 
+        # Initialize property
+        self.age = 0
+
+
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
         return "{0}: {1}".format(self.name, msg)
@@ -518,6 +576,23 @@ class Human(object):
     @staticmethod
     def grunt():
         return "*grunt*"
+
+    # A property is just like a getter.
+    # It turns the method age() into an read-only attribute
+    # of the same name.
+    @property
+    def age(self):
+        return self._age
+
+    # This allows the property to be set
+    @age.setter
+    def age(self, age):
+        self._age = age
+
+    # This allows the property to be deleted
+    @age.deleter
+    def age(self):
+        del self._age
 
 
 # Instantiate a class
@@ -537,6 +612,16 @@ j.get_species()   # => "H. neanderthalensis"
 
 # Call the static method
 Human.grunt()   # => "*grunt*"
+
+# Update the property
+i.age = 42
+
+# Get the property
+i.age # => 42
+
+# Delete the property
+del i.age
+i.age  # => raises an AttributeError
 
 
 ####################################################
@@ -636,11 +721,12 @@ print say(say_please=True)  # Can you buy me a beer? Please! I am poor :(
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
-* [The Official Docs](http://docs.python.org/2.6/)
+* [The Official Docs](http://docs.python.org/2/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
 * [Python Module of the Week](http://pymotw.com/2/)
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
+* [Fullstack Python](https://www.fullstackpython.com/)
 
 ### Dead Tree
 

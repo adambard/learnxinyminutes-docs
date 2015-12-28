@@ -108,12 +108,13 @@ can include line breaks.` // Same string type.
 	bs := []byte("a slice") // Type conversion syntax.
 
 	// Because they are dynamic, slices can be appended to on-demand.
-	// To append elements to a slice, built-in append() function is used.
+	// To append elements to a slice, the built-in append() function is used.
 	// First argument is a slice to which we are appending. Commonly,
 	// the array variable is updated in place, as in example below.
 	s := []int{1, 2, 3}		// Result is a slice of length 3.
 	s = append(s, 4, 5, 6)	// Added 3 elements. Slice now has length of 6.
 	fmt.Println(s) // Updated slice is now [1 2 3 4 5 6]
+
 	// To append another slice, instead of list of atomic elements we can
 	// pass a reference to a slice or a slice literal like this, with a
 	// trailing ellipsis, meaning take a slice and unpack its elements,
@@ -423,3 +424,5 @@ idioms. Or you can click on a function name in [the
 documentation](http://golang.org/pkg/) and the source code comes up!
 
 Another great resource to learn Go is [Go by example](https://gobyexample.com/).
+
+Go Mobile adds support for mobile platforms (Android and iOS). You can write all-Go native mobile apps or write a library that contains bindings from a Go package, which can be invoked via Java (Android) and Objective-C (iOS). Check out the [Go Mobile page](https://github.com/golang/go/wiki/Mobile) for more information.

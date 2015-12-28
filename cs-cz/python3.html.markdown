@@ -48,7 +48,7 @@ Poznámka: Tento článek je zaměřen na Python 3. Zde se můžete [naučit sta
 -5 // 3      # => -2
 -5.0 // 3.0  # => -2.0
 
-# Pokud použiteje desetinné číslo, výsledek je jím také
+# Pokud použijete desetinné číslo, výsledek je jím také
 3 * 2.0  # => 6.0
 
 # Modulo
@@ -420,7 +420,7 @@ next(iterator)  # Vyhodí StopIteration
 ## 4. Funkce
 ####################################################
 
-# Pro vytvoření nové funkce použijte def
+# Pro vytvoření nové funkce použijte klíčové slovo def
 def secist(x, y):
     print("x je {} a y je {}".format(x, y))
     return x + y  # Hodnoty se vrací pomocí return
@@ -520,7 +520,7 @@ class Clovek(object):
     # podtržítka na začátku a na konci značí, že se jedná o atribut nebo
     # objekt využívaný Pythonem ke speciálním účelům, ale můžete sami
     # definovat jeho chování. Metody jako __init__, __str__, __repr__
-    # a další se nazývají "magické metody". Nikdy nepoužívejte toto
+    # a další se nazývají "magické metody". Nikdy nepoužívejte toto
     # speciální pojmenování pro běžné metody.
     def __init__(self, jmeno):
         # Přiřazení parametru do atributu instance jmeno
@@ -566,7 +566,7 @@ Clovek.odkaslej_si()  # => "*ehm*"
 
 # Lze importovat moduly
 import math
-print(math.sqrt(16))  # => 4
+print(math.sqrt(16.0))  # => 4
 
 # Lze také importovat pouze vybrané funkce z modulu
 from math import ceil, floor

@@ -53,15 +53,15 @@ void main() {
     // For and while are nice, but in D-land we prefer 'foreach' loops.
     // The '..' creates a continuous range, including the first value
     // but excluding the last.
-    foreach(i; 1..1_000_000) {
+    foreach(n; 1..1_000_000) {
         if(n % 2 == 0)
-            writeln(i);
+            writeln(n);
     }
 
     // There's also 'foreach_reverse' when you want to loop backwards.
-    foreach_reverse(i; 1..int.max) {
+    foreach_reverse(n; 1..int.max) {
         if(n % 2 == 1) {
-            writeln(i);
+            writeln(n);
         } else {
             writeln("No!");
         }
@@ -70,20 +70,22 @@ void main() {
 ```
 
 We can define new types with `struct`, `class`, `union`, and `enum`. Structs and unions
-are passed to functions by value (i.e. copied) and classes are passed by reference. Futhermore,
+are passed to functions by value (i.e. copied) and classes are passed by reference. Furthermore,
 we can use templates to parameterize all of these on both types and values!
 
 ```c
-// Here, T is a type parameter. Think <T> from C++/C#/Java
+// Here, 'T' is a type parameter. Think '<T>' from C++/C#/Java.
 struct LinkedList(T) {
     T data = null;
-    LinkedList!(T)* next; // The ! is used to instaniate a parameterized type. Again, think <T>
+
+    // Use '!' to instantiate a parameterized type. Again, think '<T>'.
+    LinkedList!(T)* next;
 }
 
 class BinTree(T) {
     T data = null;
 
-    // If there is only one template parameter, we can omit the parentheses
+    // If there is only one template parameter, we can omit the parentheses.
     BinTree!T left;
     BinTree!T right;
 }
@@ -98,13 +100,11 @@ enum Day {
     Saturday,
 }
 
-// Use alias to create abbreviations for types
-
+// Use alias to create abbreviations for types.
 alias IntList = LinkedList!int;
 alias NumTree = BinTree!double;
 
 // We can create function templates as well!
-
 T max(T)(T a, T b) {
     if(a < b)
         return b;
@@ -112,9 +112,8 @@ T max(T)(T a, T b) {
     return a;
 }
 
-// Use the ref keyword to ensure pass by referece.
-// That is, even if a and b are value types, they
-// will always be passed by reference to swap
+// Use the ref keyword to ensure pass by reference. That is, even if 'a' and 'b'
+// are value types, they will always be passed by reference to 'swap()'.
 void swap(T)(ref T a, ref T b) {
     auto temp = a;
 
@@ -122,13 +121,13 @@ void swap(T)(ref T a, ref T b) {
     b = temp;
 }
 
-// With templates, we can also parameterize on values, not just types
+// With templates, we can also parameterize on values, not just types.
 class Matrix(uint m, uint n, T = int) {
     T[m] rows;
     T[n] columns;
 }
 
-auto mat = new Matrix!(3, 3); // We've defaulted type T to int
+auto mat = new Matrix!(3, 3); // We've defaulted type 'T' to 'int'.
 
 ```
 
@@ -138,21 +137,20 @@ have the syntax of POD structures (`structure.x = 7`) with the semantics of
 getter and setter methods (`object.setX(7)`)!
 
 ```c
-// Consider a class parameterized on a types T, U
-
+// Consider a class parameterized on types 'T' & 'U'.
 class MyClass(T, U) {
     T _data;
     U _other;
-
 }
 
-// And "getter" and "setter" methods like so
+// And "getter" and "setter" methods like so:
 class MyClass(T, U) {
     T _data;
     U _other;
 
-    // Constructors are always named `this`
+    // Constructors are always named 'this'.
     this(T t, U u) {
+        // This will call the setter methods below.
         data = t;
         other = u;
     }
@@ -175,16 +173,24 @@ class MyClass(T, U) {
         _other = u;
     }
 }
-// And we use them in this manner
 
+// And we use them in this manner:
 void main() {
-    auto mc = MyClass!(int, string);
+    auto mc = new MyClass!(int, string)(7, "seven");
 
-    mc.data = 7;
-    mc.other = "seven";
+    // Import the 'stdio' module from the standard library for writing to
+    // console (imports can be local to a scope).
+    import std.stdio;
 
-    writeln(mc.data);
-    writeln(mc.other);
+    // Call the getters to fetch the values.
+    writefln("Earlier: data = %d, str = %s", mc.data, mc.other);
+
+    // Call the setters to assign new values.
+    mc.data = 8;
+    mc.other = "eight";
+
+    // Call the getters again to fetch the new values.
+    writefln("Later: data = %d, str = %s", mc.data, mc.other);
 }
 ```
 
@@ -193,8 +199,8 @@ our getter and setter methods, and keep the clean syntax of
 accessing members directly!
 
 Other object-oriented goodies at our disposal
-include `interface`s, `abstract class`es,
-and `override`ing methods. D does inheritance just like Java:
+include interfaces, abstract classes,
+and overriding methods. D does inheritance just like Java:
 Extend one class, implement as many interfaces as you please.
 
 We've seen D's OOP facilities, but let's switch gears. D offers
@@ -212,7 +218,7 @@ void main() {
     // from 1 to 100. Easy!
 
     // Just pass lambda expressions as template parameters!
-    // You can pass any old function you like, but lambdas are convenient here.
+    // You can pass any function you like, but lambdas are convenient here.
     auto num = iota(1, 101).filter!(x => x % 2 == 0)
                            .map!(y => y ^^ 2)
                            .reduce!((a, b) => a + b);
@@ -222,7 +228,7 @@ void main() {
 ```
 
 Notice how we got to build a nice Haskellian pipeline to compute num?
-That's thanks to a D innovation know as Uniform Function Call Syntax.
+That's thanks to a D innovation know as Uniform Function Call Syntax (UFCS).
 With UFCS, we can choose whether to write a function call as a method
 or free function call! Walter wrote a nice article on this
 [here.](http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394)
@@ -232,21 +238,23 @@ is of some type A on any expression of type A as a method.
 I like parallelism. Anyone else like parallelism? Sure you do. Let's do some!
 
 ```c
+// Let's say we want to populate a large array with the square root of all
+// consecutive integers starting from 1 (up until the size of the array), and we
+// want to do this concurrently taking advantage of as many cores as we have
+// available.
+
 import std.stdio;
 import std.parallelism : parallel;
 import std.math : sqrt;
 
 void main() {
-    // We want take the square root every number in our array,
-    // and take advantage of as many cores as we have available.
+    // Create your large array
     auto arr = new double[1_000_000];
 
-    // Use an index, and an array element by referece,
-    // and just call parallel on the array!
+    // Use an index, access every array element by reference (because we're
+    // going to change each element) and just call parallel on the array!
     foreach(i, ref elem; parallel(arr)) {
         ref = sqrt(i + 1.0);
     }
 }
-
-
 ```

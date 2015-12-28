@@ -2,6 +2,7 @@
 language: Julia
 contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
+    - ["Pranit Bauva", "http://github.com/pranitbauva1997"]
 filename: learnjulia.jl
 ---
 
@@ -102,6 +103,11 @@ false
 # Printing is easy
 println("I'm Julia. Nice to meet you!")
 
+# String can be compared lexicographically
+"good" > "bye" # => true
+"good" == "good" # => true
+"1 + 2 = 3" == "1 + 2 = $(1+2)" # => true
+
 ####################################################
 ## 2. Variables and Collections
 ####################################################
@@ -117,11 +123,11 @@ catch e
     println(e)
 end
 
-# Variable names start with a letter.
+# Variable names start with a letter or underscore.
 # After that, you can use letters, digits, underscores, and exclamation points.
 SomeOtherVar123! = 6 # => 6
 
-# You can also use unicode characters
+# You can also use certain unicode characters
 ☃ = 8 # => 8
 # These are especially handy for mathematical notation
 2 * π # => 6.283185307179586
@@ -389,6 +395,14 @@ function add(x, y)
 end
 
 add(5, 6) # => 11 after printing out "x is 5 and y is 6"
+
+# Compact assignment of functions
+f_add(x, y) = x + y # => "f (generic function with 1 method)"
+f_add(3, 4) # => 7
+
+# Function can also return multiple values as tuple
+f(x, y) = x + y, x - y
+f(3, 4) # => (7, -1)
 
 # You can define functions that take a variable number of
 # positional arguments
@@ -723,7 +737,7 @@ code_native(square_area, (Float64,))
 	#	    ret
 	#
 # Note that julia will use floating point instructions if any of the
-# arguements are floats.
+# arguments are floats.
 # Let's calculate the area of a circle
 circle_area(r) = pi * r * r     # circle_area (generic function with 1 method)
 circle_area(5)                  # 78.53981633974483

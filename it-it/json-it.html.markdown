@@ -1,21 +1,28 @@
 ---
-
 language: json
 contributors:
-  	- ["Anna Harren", "https://github.com/iirelu"]
-  	- ["Marco Scannadinari", "https://github.com/marcoms"]
+  - ["Anna Harren", "https://github.com/iirelu"]
+  - ["Marco Scannadinari", "https://github.com/marcoms"]
+  - ["himanshu", "https://github.com/himanshu81494"]
 translators:
     - ["Robert Margelli", "http://github.com/sinkswim/"]
+    - ["Christian Grasso", "http://chris54721.net"]
 lang: it-it
-
 ---
 
-Dato che JSON è un formato per lo scambio di dati estremamente semplice, questo sarà con molta probabilità
-il più semplice Learn X in Y Minutes.
+JSON è un formato per l'interscambio di dati estremamente semplice, per cui questo sarà
+con molta probabilità il più semplice Learn X in Y Minutes.
 
 Nella sua forma più pura JSON non ha commenti, ma molti parser accettano
 commenti in stile C (//, /\* \*/). Per lo scopo prefissato, tuttavia, tutto sarà
 100% JSON valido. Fortunatamente, si spiega da sè.
+
+I tipi supportati da JSON comprendono: numeri, stringhe, boolean, array, oggetti e null.
+I browser supportati sono: Firefox (Mozilla) 3.5+, Internet Explorer 8+, Google Chrome,
+Opera 10+, Safari 4+.
+I file JSON sono salvati nel formato ".json". Il MIME type per documenti JSON è
+"application/json". Gli svantaggi del JSON includono l'assenza di una definizione dei tipi
+e di una sorta di [DTD](https://it.wikipedia.org/wiki/Document_Type_Definition).
 
 ```json
 {
@@ -23,7 +30,7 @@ commenti in stile C (//, /\* \*/). Per lo scopo prefissato, tuttavia, tutto sar�
   
   "chiavi": "devono sempre essere racchiuse tra doppi apici",
   "numeri": 0,
-  "stringhe": "Ciaø, møndø. Tutti gli unicode sono permessi, assieme con l \"escaping\".",
+  "stringhe": "Ciaø, møndø. Tutti i caratteri Unicode sono permessi, insieme all'\"escaping\".",
   "ha booleani?": true,
   "il nulla": null,
 
@@ -52,8 +59,8 @@ commenti in stile C (//, /\* \*/). Per lo scopo prefissato, tuttavia, tutto sar�
   ],
   
   "stile alternativo": {
-    "commento": "Guarda quà!"
-  , "posizione della virgola": "non conta - fintantochè è prima del valore, allora è valida"
+    "commento": "Guarda qua!"
+  , "posizione della virgola": "non conta - se è prima della chiave successiva, allora è valida"
   , "un altro commento": "che bello"
   },
 
