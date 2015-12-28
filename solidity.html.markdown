@@ -463,6 +463,7 @@ import "github.com/ethereum/dapp-bin/library/iterable_mapping.sol";
 // Importing under active development
 // Cannot currently be done at command line
 
+
 // 8. OTHER KEYWORDS
 
 // A. Throwing
@@ -528,6 +529,7 @@ reveal(100, "mySecret");
 
 // F. State machines
 // see example below for State enum and inState modifier
+
 
 // *** EXAMPLE: A crowdfunding example (broadly similar to Kickstarter) ***
 // ** START EXAMPLE **
@@ -661,6 +663,7 @@ contract CrowdFunder {
 }
 // ** END EXAMPLE **
 
+
 // 10. OTHER NATIVE FUNCTIONS
 
 // Currency units
@@ -686,13 +689,15 @@ sha3("ab", "cd");
 ripemd160("abc");
 sha256("def");
 
-11. LOW LEVEL FUNCTIONS
+
+// 11. LOW LEVEL FUNCTIONS
 // call - low level, not often used, does not provide type safety
 successBoolean = someContractAddress.call('function_name', 'arg1', 'arg2');
 
 // callcode - Code at target address executed in *context* of calling contract
 // provides library functionality
 someContractAddress.callcode('function_name');
+
 
 // 12. STYLE NOTES
 // Based on Python's PEP8 style guide
@@ -702,6 +707,7 @@ someContractAddress.callcode('function_name');
 // Avoid extraneous spaces in parentheses
 // Can omit curly braces for one line statement (if, for, etc)
 // else should be placed on own line
+
 
 // 13. NATSPEC comments - used for documentation, commenting, and external UIs
 // Contract natspec - always above contract definition
