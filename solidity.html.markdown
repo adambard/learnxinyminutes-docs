@@ -5,134 +5,194 @@ contributors:
     - ["Nemil Dalal", "https://www.nemil.com"]
 ---
 
-Solidity lets you program on [Ethereum](https://www.ethereum.org/), a blockchain-based virtual machine that allows the creation and computation of smart contracts, without needing centralized or trusted parties.
+Solidity lets you program on [Ethereum](https://www.ethereum.org/), a
+blockchain-based virtual machine that allows the creation and
+computation of smart contracts, without needing centralized or trusted parties.
 
-Solidity is a statically typed, contract programming language that has similarities to Javascript and C. Like an object in object-oriented languages, each contract contains state variables, functions, and common data types. Contract-specific features include modifier (guard) clauses, event notifiers, and custom variables.
+Solidity is a statically typed, contract programming language that has
+similarities to Javascript and C. Like objects in OOP, each contract contains
+state variables, functions, and common data types. Contract-specific features
+include modifier (guard) clauses, event notifiers for listeners, and custom
+global variables.
 
-As Solidity and Ethereum are under active development, experimental or beta features are explicitly marked, and subject to change. Pull requests welcome.
+Some Ethereum contract examples include crowdfunding, voting, and blind auctions.
+
+As Solidity and Ethereum are under active development, experimental or beta
+features are explicitly marked, and subject to change. Pull requests welcome.
 
 ```javascript
-// Let's start with a simple Bank contract, before diving into to the key components of the language
-// This bank has three main capabilities:
-// - deposit
-// - withdrawal
-// - check balance
+// First, a simple Bank contract
+// Allows deposits, withdrawals, and balance checks
 
-// ** START EXAMPLE **
-// Start with a Natspec comment (the three slashes) that can be used
-// for documentation - and as descriptive data for UI elements
-/// @title A simple deposit/withdrawal bank built on Bitcoin
+// simple_bank.sol (note .sol extension)
+/* **** START EXAMPLE **** */
 
-// All contracts are declared and named (in CamelCase)
-// They are similar to 'class' in other languages (and allow capabilities like inheritance)
-contract AcmeBank {
-    // Declare state variables outside a function,
-    // these are persistent throughout the life of the contract
+// Start with Natspec comment (the three slashes)
+// used for documentation - and as descriptive data for UI elements/actions
 
-    // a dictionary that maps addresses to balances
-    // the private means that other contracts can't see balances
-    // but the data is still available to all other parties on the
-    // blockchain
+/// @title SimpleBank
+/// @author nemild
+
+/* 'contract' has similarities to 'class' in other languages (class variables,
+inheritance, etc.) */
+contract SimpleBank { // CamelCase
+    // Declare state variables outside function, persist through life of contract
+
+    // dictionary that maps addresses to balances
     mapping (address => uint) private balances;
 
-    // the 'public' makes 'owner' externally readable by users or contracts
-    // (but not writeable)
+    // "private" means that other contracts can't directly query balances
+    // but data is still viewable to other parties on blockchain
+
     address public owner;
+    // 'public' makes externally readable (not writeable) by users or contracts
 
-    // Constructor, can receive one or many variables here
+    // Events - publicize actions to external listeners
+    event DepositMade(address accountAddress, uint amount);
+
+    // Constructor, can receive one or many variables here; only one allowed
     function AcmeBank() {
-      // msg is a default variable that provides both the
-      // contract messager's address and amount
-      owner = msg.sender; // msg.sender refers to the address of the contract creator
+        // msg provides contract messager's address and amount
+        // msg.sender is contract caller (address of contract creator)
+        owner = msg.sender;
     }
 
-    function deposit(uint balance) public returns (uint) {
-        balances[msg.sender] += msg.value; // no need for "this." or "self." in front of the state variable
+    /// @notice Deposit ether into bank
+    /// @return The balance of the user after the deposit is made
+    function deposit() public returns (uint) {
+        balances[msg.sender] += msg.value;
+        // no "this." or "self." required with state variable
+        // all values initialized to 0 by default
 
-        return balances[msg.sender]; // msg.sender refers to the contract caller
-    }
-
-    function withdraw(uint withdrawAmount) public returns (uint remainingBalance) {
-      if(balances[msg.sender] >= withdrawAmount) {
-        balances[msg.sender] -= withdrawAmount;
-
-        if (!msg.sender.send(withdrawAmount)) {
-          balances[msg.sender] += withdrawAmount;
-        }
+        DepositMade(msg.sender, msg.value); // fire event
 
         return balances[msg.sender];
+    }
+
+    /// @notice Withdraw ether from bank
+    /// @dev This does not return any excess ether sent to it
+    /// @param withdrawAmount amount you want to withdraw
+    /// @return The balance remaining for the user
+    function withdraw(uint withdrawAmount) public returns (uint remainingBal) {
+        if(balances[msg.sender] >= withdrawAmount) {
+            balances[msg.sender] -= withdrawAmount;
+
+        if (!msg.sender.send(withdrawAmount)) {
+            balances[msg.sender] += withdrawAmount; // to be safe
+        }
+
+          return balances[msg.sender];
       }
     }
 
-    // The 'constant' prevents the function from editing state variables
+    /// @notice Get balance
+    /// @return The balance of the user
+    // 'constant' prevents function from editing state variables;
+    // allows function to run locally/off blockchain
     function balance() constant returns (uint) {
-      return balances[msg.sender];
+        return balances[msg.sender];
     }
 
-    // Fallback function
-    // The fallback function is called if none of the other functions matches the given function identifier.
-    // Typically, called when invalid data is sent to the contract or ether without data.
-    // Added so that ether sent to this contract is reverted if the contract fails
-    // otherwise, the sender loses their money; you should add this in most contracts
-    function () { throw; }
+    // Fallback function - Called if other functions don't match call or
+    // sent ether without data
+    // Typically, called when invalid data is sent
+    // Added so ether sent to this contract is reverted if the contract fails
+    // otherwise, the sender's money is transferred to contract
+    function () {
+        throw; // throw reverts state to before call
+    }
 }
 // ** END EXAMPLE **
 
-// Now let's go through the basics of Solidity
 
+// Now, the basics of Solidity
 
 // 1. DATA TYPES AND ASSOCIATED METHODS
-// uint is the data type typically used for currency (there are no doubles
-//  or floats) and for dates
+// uint used for currency amount (there are no doubles
+//  or floats) and for dates (in unix time)
 uint x;
 
-// with 'constant', the compiler replaces each occurrence with the actual value
 // int of 256 bits, cannot be changed after instantiation
 int constant a = 8;
+
+// with 'constant', compiler replaces each occurrence with actual value
 int256 constant a = 8; // same effect as line above, here the 256 is explicit
 uint constant VERSION_ID = 0x123A1; // A hex constant
 
-// For both int and uint, you can explicitly set space in steps of 8
-// e.g., int8, int16
+// Be careful that you don't overflow, and protect against attacks that do
+
+// For int and uint, can explicitly set space in steps of 8 up to 256
+// e.g., int8, int16, int24
 uint8 b;
 int64 c;
 uint248 e;
+
+// No random functions built in, use other contracts for randomness
 
 // Type casting
 int x = int(b);
 
 bool b = true; // or do 'var b = true;' for inferred typing
 
-// Addresses - holds 20 byte/160 bit Ethereum addresses to another contract
-// ('Contract Account)') or person/external entity ('External Account')
-address public owner; // Add 'public' field to indicate publicly/externally accessible, a getter is automatically created, but NOT a setter
+// Addresses - holds 20 byte/160 bit Ethereum addresses
+// No arithmetic allowed
+address public owner;
 
-// All addresses can be sent ether in the following way:
+// Types of accounts:
+// Contract account: address set on create (func of creator address, num transactions sent)
+// External Account: (person/external entity): address created from public key
+
+// Add 'public' field to indicate publicly/externally accessible
+// a getter is automatically created, but NOT a setter
+
+// All addresses can be sent ether
 owner.send(SOME_BALANCE); // returns false on failure
-owner.balance; // the balance of the owner
+if (owner.send) {} // typically wrap in 'if', as contract addresses have
+// functions have executed on send and can fail
 
-// Bytes are provided from 1 to 32
+// can override send by defining your own
+
+// Can check balance
+owner.balance; // the balance of the owner (user or contract)
+
+
+// Bytes available from 1 to 32
 byte a; // byte is same as bytes1
-bytes32 b;
+bytes2 b;
+bytes32 c;
 
-// Dynamically sized
-bytes m; // A special array, same as byte[] (but packed tightly)
+// Dynamically sized bytes
+bytes m; // A special array, same as byte[] array (but packed tightly)
+// More expensive than byte1-byte32, so use those when possible
+
 // same as bytes, but does not allow length or index access (for now)
-string n = 'hello';
+string n = "hello"; // stored in UTF8, note double quotes, not single
+// string utility functions to be added in future
+// prefer bytes32/bytes, as UTF8 uses more storage
 
-// Type inference
+// Type inferrence
 // var does inferred typing based on first assignment,
 // can't be used in functions parameters
 var a = true;
-// there are edge cases where inference leads to a value being set (e.g., an uint 8)
-// that is different from what the user wanted (uint16), so use carefully
+// use carefully, inference may provide wrong type
+// e.g., an int8, when a counter needs to be int16
+
+// var can be used to assign function to variable
+function a(uint x) returns (uint) {
+    return x * 2;
+}
+var f = a;
+f(22); // call
 
 // by default, all values are set to 0 on instantiation
 
 // Delete can be called on most types
-// (it does NOT destroy the value, but rather sets the value to 0 by assignment)
+// (does NOT destroy value, but sets value to 0, the initial value)
 uint x = 5;
-delete x; // x is now 0
+
+
+// Destructuring/Tuples
+(x, y) = (2, 7); // assign/swap multiple value
 
 
 // 2. DATA STRUCTURES
@@ -142,74 +202,97 @@ bytes32[] names; // dynamic array
 uint newLength = names.push("John"); // adding returns new length of the array
 // Length
 names.length; // get length
-names.length = 1; // lengths can also be set, unlike many other languages
+names.length = 1; // lengths can be set (for dynamic arrays in storage only)
+
+// multidimensional array
+uint x[][5]; // arr with 5 dynamic array elements (opp order of most languages)
 
 // Dictionaries (any type to any other type)
 mapping (string => uint) public balances;
-balances["john"] = 1;
-console.log(balances[jill]); // is 0, all non-set key values return zeroes
-// The 'public' lets you do the following from another contract
-contractName.balances("john"); // returns 1
-// The 'public' keyword here created a getter (but not setter) that behaves like the following:
+balances["charles"] = 1;
+console.log(balances["ada"]); // is 0, all non-set key values return zeroes
+// 'public' allows following from another contract
+contractName.balances("claude"); // returns 1
+// 'public' created a getter (but not setter) like the following:
 function balances(address _account) returns (uint balance) {
-  return balances[_account];
+    return balances[_account];
 }
+
+// Nested mappings
+mapping (address => mapping (address => uint) balances) public custodians;
 
 // To delete
 delete balances["John"];
-delete balances; // deletes all elements
+delete balances; // sets all elements to 0
 
-// Unlike languages like Javascript, you cannot iterate through all elements in
-// a map, without knowing the source keys
+// Unlike other languages, CANNOT iterate through all elements in
+// mapping, without knowing source keys - can build data structure
+// on top to do this
 
 // Structs and enums
-  struct Bank { // note the capital
-      address owner;
-      uint balance;
-  }
+struct Bank {
+    address owner;
+    uint balance;
+}
 Bank b = Bank({
-  owner: msg.sender,
-  balance: 5
+    owner: msg.sender,
+    balance: 5
 });
-delete b; // set all variables in struct to 0, except any mappings
+// or
+Bank c = Bank(msg.sender, 5);
+
+c.amount = 5; // set to new value
+delete b;
+// sets to initial value, set all variables in struct to 0, except mappings
 
 // Enums
-enum State { Created, Locked, Inactive };
+enum State { Created, Locked, Inactive }; // often used for state machine
 State public state; // Declare variable from enum
 state = State.Created;
 // enums can be explicitly converted to ints
+uint createdState = uint(State.Created); //  0
 
-// Data locations: Memory vs. storage - all complex types (arrays, structs) have a data location
+// Data locations: Memory vs. storage vs. stack - all complex types (arrays,
+// structs) have a data location
 // 'memory' does not persist, 'storage' does
-// Default is 'storage' for local and state variables; 'memory' for function parameters
+// Default is 'storage' for local and state variables; 'memory' for func params
+// stack holds small local variables
+
+// for most types, can explicitly set which data location to use
 
 
-// 3. Variables of note
+// 3. Simple operators
+// Comparisons, bit operators and arithmetic operators are provided
+// exponentiation: **
+// exclusive or: ^
+// bitwise negation: ~
+
+
+// 4. Global Variables of note
 // ** this **
-this; // the address of the current contract
-// 'balance' often used at the end of a contracts life to send the
-// remaining balance to a party
+this; // address of contract
+// often used at end of contract life to send remaining balance to party
 this.balance;
-this.someFunction(); // calls a function externally (via a message call, not via an internal jump)
+this.someFunction(); // calls func externally via call, not via internal jump
 
-// ** msg - The current message received by the contract ** **
-msg.sender; // address, The address of the sender
-msg.value; // uint, The amount of gas provided to this contract in wei
+// ** msg - Current message received by the contract ** **
+msg.sender; // address of sender
+msg.value; // amount of gas provided to this contract in wei
 msg.data; // bytes, complete call data
 msg.gas; // remaining gas
 
 // ** tx - This transaction **
-tx.origin; // address, sender of the transaction
-tx.gasprice; // uint, gas price of the transaction
+tx.origin; // address of sender of the transaction
+tx.gasprice; // gas price of the transaction
 
-// ** block - Information about the current block **
-now // uint, current time, alias for block.timestamp
-block.number; // uint, current block number
-block.difficulty; // uint, current block difficulty
-block.blockhash(1); // returns bytes32, only provides for most recent 256 blocks
+// ** block - Information about current block **
+now // current time (approximately), alias for block.timestamp (uses Unix time)
+block.number; // current block number
+block.difficulty; // current block difficulty
+block.blockhash(1); // returns bytes32, only works for most recent 256 blocks
 block.gasLimit();
 
-// ** storage - A persistent storage hash (does not need to be declared) **
+// ** storage - Persistent storage hash **
 storage['abc'] = 'def'; // maps 256 bit words to 256 bit words
 
 
@@ -217,55 +300,61 @@ storage['abc'] = 'def'; // maps 256 bit words to 256 bit words
 // A. Functions
 // Simple function
 function increment(uint x) returns (uint) {
-  x += 1;
-  return x;
+    x += 1;
+    return x;
 }
 
-// Functions can return many arguments, and by specifying the returned arguments
-//  you don't need to explicitly return
+// Functions can return many arguments, and by specifying returned arguments
+// name don't need to explicitly return
 function increment(uint x, uint y) returns (uint x, uint y) {
-  x += 1;
-  y += 1;
+    x += 1;
+    y += 1;
 }
-// This function would have been called like this, and assigned to a tuple
+// Call previous functon
 uint (a,b) = increment(1,1);
 
-// The 'constant' indicates and ensures that a function does not/cannot change the persistent variables
-// Constant function execute locally, not on the blockchain
+// 'constant' indicates that function does not/cannot change persistent vars
+// Constant function execute locally, not on blockchain
 uint y;
 
 function increment(uint x) constant returns (uint x) {
-  x += 1;
-  y += 1; // this line would fail
-  // as y is a state variable, and can't be changed in a constant function
+    x += 1;
+    y += 1; // this line would fail
+    // y is a state variable, and can't be changed in a constant function
 }
 
-// There are a few 'function visibility specifiers' that can be placed where 'constant'
-//  is, which include:
-// internal (can only be called by an internal function, not one external to the contract)
-// public - visible externally and internally
+// 'Function Visibility specifiers'
+// These can be placed where 'constant' is, including:
+// public - visible externally and internally (default)
+// external
 // private - only visible in the current contract
+// internal - only visible in current contract, and those deriving from it
 
-// Functions are hoisted (so you can call a function, even if it is declared later) - and you can assign a function to a variable
+// Functions hoisted - and can assign a function to a variable
 function a() {
-  var z = b;
-  b();
+    var z = b;
+    b();
 }
 
 function b() {
 
 }
 
+
+// Prefer loops to recursion (max call stack depth is 1024)
+
 // B. Events
-// Events are an easy way to notify external listeners that something changed
-// You typically declare them after your contract parameters
-event Sent(address from, address to, uint amount);
+// Events are notify external parties; easy to search and
+// access events from outside blockchain (with lightweight clients)
+// typically declare after contract parameters
 
-// You then call it in a function, when you want to trigger it
-sent(from, to, amount);
+// Declare
+event Sent(address from, address to, uint amount); // note capital first letter
 
-// For an external party (a contract or external entity), to watch
-// for an event, you write the following:
+// Call
+Sent(from, to, amount);
+
+// For an external party (a contract or external entity), to watch:
 Coin.Sent().watch({}, '', function(error, result) {
     if (!error) {
         console.log("Coin transfer: " + result.args.amount +
@@ -276,195 +365,356 @@ Coin.Sent().watch({}, '', function(error, result) {
             "Receiver: " + Coin.balances.call(result.args.to));
     }
 }
-// This is a common paradigm for one contract to depend on another (e.g., a
-// contract that depends on the current exchange rate provided by another
-// contract)
+// Common paradigm for one contract to depend on another (e.g., a
+// contract that depends on current exchange rate provided by another)
 
 // C. Modifiers
-// Modifiers let you validate inputs to functions such as a minimal balance or user authentication
-// It's similar to a guard clause in other languages
+// Modifiers validate inputs to functions such as minimal balance or user auth;
+// similar to guard clause in other languages
 
-// The '_' (underscore) must be included as the last line in the function body, and is an indicator that the
+// '_' (underscore) often included as last line in body, and indicates
 // function being called should be placed there
 modifier onlyAfter(uint _time) { if (now <= _time) throw; _ }
 modifier onlyOwner { if (msg.sender == owner) _ }
+// commonly used with state machines
+modifier onlyIfState (State currState) { if (currState != State.A) _ }
 
-// You can then append it right after the function declaration
+// Append right after function declaration
 function changeOwner(newOwner)
 onlyAfter(someTime)
 onlyOwner()
+onlyIfState(State.A)
 {
-  owner = newOwner;
+    owner = newOwner;
+}
+
+// underscore can be included before end of body,
+// but explicitly returning will skip, so use carefully
+modifier checkValue(uint amount) {
+    _
+    if (msg.value > amount) {
+        msg.sender.send(amount - msg.value);
+    }
 }
 
 
-// 5. BRANCHING AND LOOPS
+// 6. BRANCHING AND LOOPS
 
-// All basic logic blocks work - including if/else, for, while, break, continue, return
-// Unlike other languages, the 'switch' statement is NOT provided
+// All basic logic blocks work - including if/else, for, while, break, continue
+// return - but no switch
 
-// Syntax is the same as javascript, but there is no type conversion from
-// non-boolean to boolean, so comparison operators must be used to get the boolean value
+// Syntax same as javascript, but no type conversion from non-boolean
+// to boolean (comparison operators must be used to get the boolean val)
 
 
-// 6. OBJECTS/CONTRACTS
+// 7. OBJECTS/CONTRACTS
 
-// A. Calling an external contract
+// A. Calling external contract
 contract infoFeed {
-  function info() returns (uint ret) { return 42; }
+    function info() returns (uint ret) { return 42; }
 }
 
 contract Consumer {
-  InfoFeed feed; // create a variable that will point to a contract on the blockchain
+    InfoFeed feed; // points to contract on blockchain
 
-  // Set feed to an existing contract
-  function setFeed(address addr) {
-    // Link to the contract by creating on the address
-    feed = InfoFeed(addr);
-  }
+    // Set feed to existing contract instance
+    function setFeed(address addr) {
+        // automatically cast, be careful; constructor is not called
+        feed = InfoFeed(addr);
+    }
 
-  // Set feed based to a new instance of the contract
-  function createNewFeed() {
-    feed = new InfoFeed();
-  }
+    // Set feed to new instance of contract
+    function createNewFeed() {
+        feed = new InfoFeed(); // constructor called
+    }
 
-  function callFeed() {
-    // T final parentheses call the contract, optionally adding
-    // custom value or gas numbers
-    feed.info.value(10).gas(800)();
-  }
+    function callFeed() {
+        // final parentheses call contract, can optionally add
+        // custom ether value or gas
+        feed.info.value(10).gas(800)();
+    }
 }
 
 // B. Inheritance
 
-// Order matters, last inherited contract (i.e., 'def') can override parts of the previously
-// inherited contracts
-contact MyContract is abc, def("a custom argument to def") {
+// Order matters, last inherited contract (i.e., 'def') can override parts of
+// previously inherited contracts
+contract MyContract is abc, def("a custom argument to def") {
 
 // Override function
-
-  function z() {
-    if (msg.sender == owner) {
-      def.z(); // call overridden function
+    function z() {
+        if (msg.sender == owner) {
+            def.z(); // call overridden function from def
+            super.z(); // call immediate parent overriden function
+        }
     }
-  }
+}
 
-  };
+// abstract function
+function someAbstractFunction(uint x);
+// cannot be compiled, so used in base/abstract contracts
+// that are then implemented
 
 // C. Import
 
 import "filename";
 import "github.com/ethereum/dapp-bin/library/iterable_mapping.sol";
 
-// Importing is under active development and will change
-// Importing cannot currently be done at the command line
+// Importing under active development
+// Cannot currently be done at command line
+
+// 8. OTHER KEYWORDS
+
+// A. Throwing
+// Throwing
+throw; // reverts unused money to sender, state is reverted
+// Can't currently catch
+
+// Common design pattern is:
+if (!addr.send(123)) {
+    throw;
+}
+
+// B. Selfdestruct
+// selfdestruct current contract, sending funds to address (often creator)
+selfdestruct(SOME_ADDRESS);
+
+// removes storage/code from current/future blocks
+// helps thin clients, but previous data persists in blockchain
+
+// Common pattern, lets owner end the contract and receive remaining funds
+function remove() {
+    if(msg.sender == creator) { // Only let the contract creator do this
+        selfdestruct(creator); // Makes contract inactive, returns funds
+    }
+}
+
+// May want to deactivate contract manually, rather than selfdestruct
+// (ether sent to selfdestructed contract is lost)
 
 
-// 7. CONTRACT DESIGN PATTERNS
+// 9. CONTRACT DESIGN NOTES
 
 // A. Obfuscation
-// Remember that all variables are publicly viewable on the blockchain, so
-// anything that needs some privacy needs to be obfuscated (e.g., hashed)
+// Remember all variables are publicly viewable on blockchain, so
+// anything that needs privacy needs to be obfuscated (e.g., hashed)
 
-// B. Throwing
-// Throwing
-throw; // throwing is easily done, and reverts unused money to the sender
-// You can't currently catch
+// Steps: 1. Commit to something, 2. Reveal commitment
+sha3("some_bid_amount", "some secret"); // commit
 
-// A common design pattern is:
-if (!addr.send(123)) {
-  throw;
-}
+// call contract's reveal function showing bid plus secret that hashes to SHA3
+reveal(100, "mySecret");
 
-// C. Suicide
-// Suicide
-suicide(SOME_ADDRESS); // suicide the current contract, sending funds to the address (often the creator)
+// B. Storage optimization
+// Writing to blockchain can be expensive, as data stored forever  encourages
+// smart ways to use memory (eventually, compilation will be better, but for now
+// benefits to planning data structures - and storing min amount in blockchain)
 
-// This is a common contract pattern that lets the owner end the contract, and receive remaining funds
-function remove() {
-  if(msg.sender == owner) { // Only let the contract creator do this
-    suicide(owner); // suicide makes this contract inactive, and returns funds to the owner
-  }
-}
+// Cost can often be high for items like multidimensional arrays
+// (cost is for storing data - not declaring unfilled variables)
 
-// D. Storage optimization
-// Reading and writing can be expensive, as data needs to be stored in the
-// blockchain forever - this encourages smart ways to use memory (eventually,
-// compilation may better handle this, but for now there are benefits to
-// planning your data structures)
+// C. Cannot restrict human or computer from reading contents of
+// transaction or transaction's state
 
+// When 'private' specified, indicating that other *contracts* can't read
+// the data directly - any other party can still read the data in blockchain
 
-// *** EXAMPLE: Let's do a more complex example ***
+// D. All data to start of time is stored in blockchain, so
+// anyone can observe all previous data and changes
 
+// E. Cron
+// Contracts must be manually called to handle time-based scheduling; can create
+// external code to do, or provide incentives (ether) for others to do for you
+
+// F. State machines
+// see example below for State enum and inState modifier
+
+// *** EXAMPLE: A crowdfunding example (broadly similar to Kickstarter) ***
 // ** START EXAMPLE **
-// [TODO: Decide what a more complex example looks like, needs a few characteristics:
-//   - has a 'constant' state variable
-//   - has a state machine (and uses modifier)
-//   - sends money to an address
-//   - gets information from another contract (we'll show code for both contracts)
-//   - Shows inheritance
-//   - show variables being passed in on instantiation (and guard code to throw if variables not provided)
-//   - Shows the swapping out of a contract address
-//   Ideas:
-//     - crowdfunding?
-//     - Peer to peer insurance
-// ]
-    // It's good practice to have a remove function, which disables this
-    // contract - but does mean that users have to trust the owner
-    // For a decentralized bank without a trusted part
-    function remove() {
-      if(msg.sender == owner) { // Only let the contract creator do this
-        suicide(owner); // suicide makes this contract inactive, and returns funds to the owner
-      }
+
+// CrowdFunder.sol
+
+/// @title CrowdFunder
+/// @author nemild
+contract CrowdFunder {
+    // Variables set on create by creator
+    address public creator;
+    address public fundRecipient; // creator may be different than recipient
+    uint public minimumToRaise; // required to tip, else everyone gets refund
+    string campaignUrl;
+
+    // Data structures
+    enum State {
+        Fundraising,
+        ExpiredRefundPending,
+        Successful,
+        ExpiredRefundComplete
     }
-// *** END EXAMPLE ***
+    struct Contribution {
+        uint amount;
+        address contributor;
+    }
 
+    // State variables
+    State public state = State.Fundraising; // initialize on create
+    uint public totalRaised;
+    uint public raiseBy;
+    Contribution[] contributions;
 
-// 7. NATIVE FUNCTIONS
+    event fundingReceived(address addr, uint amount, uint currentTotal);
+    event allRefundsSent();
+    event winnerPaid(address winnerAddress);
+
+    modifier inState(State _state) {
+        if (state != _state) throw;
+        _
+    }
+
+    modifier isCreator() {
+        if (msg.sender != creator) throw;
+        _
+    }
+
+    modifier atEndOfLifecycle() {
+        if(state != State.ExpiredRefundComplete && state != State.Successful) {
+            throw;
+        }
+    }
+
+    function CrowdFunder(
+        uint timeInHoursForFundraising,
+        string _campaignUrl,
+        address _fundRecipient,
+        uint _minimumToRaise)
+    {
+        creator = msg.sender;
+        fundRecipient = _fundRecipient;
+        campaignUrl = _campaignUrl;
+        minimumToRaise = _minimumToRaise;
+        raiseBy = now + (timeInHoursForFundraising * 1 hours);
+    }
+
+    function contribute()
+    public
+    inState(State.Fundraising)
+    {
+        contributions.push(
+            Contribution({
+                amount: msg.value,
+                contributor: msg.sender
+            }) // use array, so can iterate
+        );
+        totalRaised += msg.value;
+
+        fundingReceived(msg.sender, msg.value, totalRaised);
+
+        checkIfFundingCompleteOrExpired();
+    }
+
+    function checkIfFundingCompleteOrExpired() {
+        if (totalRaised > minimumToRaise) {
+            state = State.Successful;
+            payOut();
+
+            // could incentivize sender who initiated state change here
+        } else if ( now > raiseBy )  {
+            state = State.ExpiredRefundPending;
+            refundAll();
+        }
+    }
+
+    function payOut()
+    public
+    inState(State.Successful)
+    {
+        if(!fundRecipient.send(this.balance)) {
+            throw;
+        }
+
+        winnerPaid(fundRecipient);
+    }
+
+    function refundAll()
+    public
+    inState(State.ExpiredRefundPending)
+    {
+        uint length = contributions.length;
+        for (uint i = 0; i < length; i++) {
+            if(!contributions[i].contributor.send(contributions[i].amount)) {
+                throw;
+            }
+        }
+
+        allRefundsSent();
+        state = State.ExpiredRefundComplete;
+    }
+
+    function removeContract()
+    public
+    isCreator()
+    atEndOfLifecycle()
+    {
+        selfdestruct(msg.sender);
+    }
+
+    function () { throw; }
+}
+// ** END EXAMPLE **
+
+// 10. OTHER NATIVE FUNCTIONS
 
 // Currency units
-// By default, currency is defined using wei, the smallest unit of Ether
+// Currency is defined using wei, smallest unit of Ether
 uint minAmount = 1 wei;
-uint a = 1 finney; // 1 ether = 1000 finney
-// There are a number of other units, see: http://ether.fund/tool/converter
+uint a = 1 finney; // 1 ether == 1000 finney
+// Other units, see: http://ether.fund/tool/converter
 
 // Time units
 1 == 1 second
 1 minutes == 60 seconds
 
-
-// You typically multiply a variable times the unit, as these units are not
-// directly stored in a variable
+// Can multiply a variable times unit, as units are not stored in a variable
 uint x = 5;
 (x * 1 days); // 5 days
 
-// Be careful about leap seconds and leap years when using equality statements for time (instead, prefer greater than/less than)
+// Careful about leap seconds/years with equality statements for time
+// (instead, prefer greater than/less than)
 
 // Cryptography
-// All strings passed are concatenated before the hash is run
+// All strings passed are concatenated before hash action
 sha3("ab", "cd");
 ripemd160("abc");
 sha256("def");
 
+11. LOW LEVEL FUNCTIONS
+// call - low level, not often used, does not provide type safety
+successBoolean = someContractAddress.call('function_name', 'arg1', 'arg2');
 
-// 8. COMMON MISTAKES/MISCONCEPTIONS
-// A few common mistakes and misconceptions:
+// callcode - Code at target address executed in *context* of calling contract
+// provides library functionality
+someContractAddress.callcode('function_name');
 
-// A. You cannot restrict a human or computer from reading the content of
-// your transaction or a transaction's state
+// 12. STYLE NOTES
+// Based on Python's PEP8 style guide
 
-// All data to the start of time is stored in the blockchain, so you and
-// anyone can observe all previous data stats
+// 4 spaces for indentation
+// Two lines separate contract declarations (and other top level declarations)
+// Avoid extraneous spaces in parentheses
+// Can omit curly braces for one line statement (if, for, etc)
+// else should be placed on own line
 
-// When you don't specify public on a variable, you are indicating that other *contracts* can't
-// read the data - but any person can still read the data
+// 13. NATSPEC comments - used for documentation, commenting, and external UIs
+// Contract natspec - always above contract definition
+/// @title Contract title
+/// @author Author name
 
-// TODO
+// Function natspec
+/// @notice information about what function does; shown when function to execute
+/// @dev Function documentation for developer
 
-
-// 9. STYLE NOTES
-// Use 4 spaces for indentation
-// (Python's PEP8 is used as the baseline style guide, including its general philosophy)
+// Function parameter/return value natspec
+/// @param someParam Some description of what the param does
+/// @return Description of the return value
 ```
 
 ## Additional resources
@@ -472,6 +722,8 @@ sha256("def");
 - [Solidity Style Guide](https://ethereum.github.io/solidity//docs/style-guide/): Ethereum's style guide is heavily derived from Python's [pep8](https://www.python.org/dev/peps/pep-0008/) style guide.
 - [Browser-based Solidity Editor](http://chriseth.github.io/browser-solidity/)
 - [Gitter Chat room](https://gitter.im/ethereum/go-ethereum)
+- [Modular design strategies for Ethereum Contracts](https://docs.erisindustries.com/tutorials/solidity/)
+- Editor Snippets ([Ultisnips format](https://gist.github.com/nemild/98343ce6b16b747788bc))
 
 ## Sample contracts
 - [Dapp Bin](https://github.com/ethereum/dapp-bin)
@@ -481,5 +733,12 @@ sha256("def");
 
 ## Information purposefully excluded
 - Libraries
+- [Call keyword](http://solidity.readthedocs.org/en/latest/types.html)
+
+## Style
+- Python's [PEP8](https://www.python.org/dev/peps/pep-0008/) is used as the baseline style guide, including its general philosophy)
+
+## Future To Dos
+- New keywords: protected, inheritable
 
 Feel free to send a pull request with any edits - or email nemild -/at-/ gmail
