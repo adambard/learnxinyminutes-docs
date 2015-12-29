@@ -500,8 +500,8 @@ function remove() {
 // 9. CONTRACT DESIGN NOTES
 
 // A. Obfuscation
-// Remember all variables are publicly viewable on blockchain, so
-// anything that needs privacy needs to be obfuscated (e.g., hashed)
+// All variables are publicly viewable on blockchain, so anything
+// that should be totally private needs to be obfuscated (e.g., hashed w/secret)
 
 // Steps: 1. Commit to something, 2. Reveal commitment
 sha3("some_bid_amount", "some secret"); // commit
