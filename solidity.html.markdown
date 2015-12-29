@@ -2,7 +2,8 @@
 language: Solidity
 filename: learnSolidity.sol
 contributors:
-    - ["Nemil Dalal", "https://www.nemil.com"]
+  - ["Nemil Dalal", "https://www.nemil.com"]
+  - ["Joseph Chow", ""]
 ---
 
 Solidity lets you program on [Ethereum](https://www.ethereum.org/), a
@@ -81,7 +82,7 @@ contract SimpleBank { // CamelCase
                 balances[msg.sender] += withdrawAmount; // to be safe
             }
         }
-        
+
         return balances[msg.sender];
     }
 
