@@ -63,7 +63,7 @@ contract SimpleBank { // CamelCase
     function deposit() public returns (uint) {
         balances[msg.sender] += msg.value;
         // no "this." or "self." required with state variable
-        // all values initialized to 0 by default
+        // all values set to data type's initial value by default
 
         DepositMade(msg.sender, msg.value); // fire event
 
@@ -289,7 +289,7 @@ tx.origin; // address of sender of the transaction
 tx.gasprice; // gas price of the transaction
 
 // ** block - Information about current block **
-now // current time (approximately), alias for block.timestamp (uses Unix time)
+now; // current time (approximately), alias for block.timestamp (uses Unix time)
 block.number; // current block number
 block.difficulty; // current block difficulty
 block.blockhash(1); // returns bytes32, only works for most recent 256 blocks
@@ -428,7 +428,7 @@ contract Consumer {
 
     // Set feed to new instance of contract
     function createNewFeed() {
-        feed = new InfoFeed(); // constructor called
+        feed = new InfoFeed(); // new instance created; constructor called
     }
 
     function callFeed() {
