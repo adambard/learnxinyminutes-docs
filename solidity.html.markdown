@@ -501,7 +501,7 @@ function remove() {
 
 // A. Obfuscation
 // All variables are publicly viewable on blockchain, so anything
-// that should be totally private needs to be obfuscated (e.g., hashed w/secret)
+// that is private needs to be obfuscated (e.g., hashed w/secret)
 
 // Steps: 1. Commit to something, 2. Reveal commitment
 sha3("some_bid_amount", "some secret"); // commit
@@ -510,27 +510,28 @@ sha3("some_bid_amount", "some secret"); // commit
 reveal(100, "mySecret");
 
 // B. Storage optimization
-// Writing to blockchain can be expensive, as data stored forever  encourages
+// Writing to blockchain can be expensive, as data stored forever; encourages
 // smart ways to use memory (eventually, compilation will be better, but for now
 // benefits to planning data structures - and storing min amount in blockchain)
 
 // Cost can often be high for items like multidimensional arrays
 // (cost is for storing data - not declaring unfilled variables)
 
-// C. Cannot restrict human or computer from reading contents of
+// C. Data access in blockchain
+// Cannot restrict human or computer from reading contents of
 // transaction or transaction's state
 
-// When 'private' specified, indicating that other *contracts* can't read
-// the data directly - any other party can still read the data in blockchain
+// While 'private' prevents other *contracts* from reading data
+// directly - any other party can still read data in blockchain
 
-// D. All data to start of time is stored in blockchain, so
+// All data to start of time is stored in blockchain, so
 // anyone can observe all previous data and changes
 
-// E. Cron
-// Contracts must be manually called to handle time-based scheduling; can create
-// external code to do, or provide incentives (ether) for others to do for you
+// D. Cron Job
+// Contracts must be manually called to handle time-based scheduling; can create external
+// code to regularly ping, or provide incentives (ether) for others to
 
-// F. State machines
+// E. State machines
 // see example below for State enum and inState modifier
 
 
@@ -705,6 +706,7 @@ someContractAddress.callcode('function_name');
 // 12. STYLE NOTES
 // Based on Python's PEP8 style guide
 
+// Quick summary:
 // 4 spaces for indentation
 // Two lines separate contract declarations (and other top level declarations)
 // Avoid extraneous spaces in parentheses
