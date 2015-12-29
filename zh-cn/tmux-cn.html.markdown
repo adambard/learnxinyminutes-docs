@@ -39,7 +39,7 @@ lang: zh-cn
     lsp              # 列出窗格
      -a              # 列出所有窗格
      -s              # 列出会话中的所有窗格
-     -t              # List app panes in target
+     -t              # 列出 target 中的所有窗格
 
     kill-window      # 关闭当前窗口
      -t "#"          # 关闭指定的窗口
