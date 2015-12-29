@@ -79,7 +79,9 @@ contract SimpleBank { // CamelCase
             balances[msg.sender] -= withdrawAmount;
 
             if (!msg.sender.send(withdrawAmount)) {
-                balances[msg.sender] += withdrawAmount; // to be safe
+                // to be safe, may be sending to contract that
+                // has overridden 'send' which may then fail
+                balances[msg.sender] += withdrawAmount;
             }
         }
 
@@ -710,7 +712,9 @@ someContractAddress.callcode('function_name');
 // else should be placed on own line
 
 
-// 13. NATSPEC comments - used for documentation, commenting, and external UIs
+// 13. NATSPEC COMENTS
+// used for documentation, commenting, and external UIs
+
 // Contract natspec - always above contract definition
 /// @title Contract title
 /// @author Author name
@@ -740,7 +744,6 @@ someContractAddress.callcode('function_name');
 
 ## Information purposefully excluded
 - Libraries
-- [Call keyword](http://solidity.readthedocs.org/en/latest/types.html)
 
 ## Style
 - Python's [PEP8](https://www.python.org/dev/peps/pep-0008/) is used as the baseline style guide, including its general philosophy)
