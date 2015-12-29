@@ -729,17 +729,17 @@ someContractAddress.callcode('function_name');
 ```
 
 ## Additional resources
-- [Solidity Docs](https://ethereum.github.io/solidity/docs/home/)
+- [Solidity Docs](https://solidity.readthedocs.org/en/latest/)
 - [Solidity Style Guide](https://ethereum.github.io/solidity//docs/style-guide/): Ethereum's style guide is heavily derived from Python's [pep8](https://www.python.org/dev/peps/pep-0008/) style guide.
 - [Browser-based Solidity Editor](http://chriseth.github.io/browser-solidity/)
-- [Gitter Chat room](https://gitter.im/ethereum/go-ethereum)
+- [Gitter Chat room](https://gitter.im/ethereum/solidity)
 - [Modular design strategies for Ethereum Contracts](https://docs.erisindustries.com/tutorials/solidity/)
 - Editor Snippets ([Ultisnips format](https://gist.github.com/nemild/98343ce6b16b747788bc))
 
 ## Sample contracts
 - [Dapp Bin](https://github.com/ethereum/dapp-bin)
 - [Solidity Baby Step Contracts](https://github.com/fivedogit/solidity-baby-steps/tree/master/contracts)
-- [Consensys Contracts](https://github.com/ConsenSys/dapp-store-contracts)
+- [ConsenSys Contracts](https://github.com/ConsenSys/dapp-store-contracts)
 - [State of Dapps](http://dapps.ethercasts.com/)
 
 ## Information purposefully excluded
