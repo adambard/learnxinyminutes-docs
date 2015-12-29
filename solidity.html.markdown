@@ -219,7 +219,7 @@ function balances(address _account) returns (uint balance) {
 }
 
 // Nested mappings
-mapping (address => mapping (address => uint) balances) public custodians;
+mapping (address => mapping (address => uint)) public custodians;
 
 // To delete
 delete balances["John"];
