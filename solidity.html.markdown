@@ -7,7 +7,7 @@ contributors:
 
 Solidity lets you program on [Ethereum](https://www.ethereum.org/), a
 blockchain-based virtual machine that allows the creation and
-computation of smart contracts, without needing centralized or trusted parties.
+execution of smart contracts, without needing centralized or trusted parties.
 
 Solidity is a statically typed, contract programming language that has
 similarities to Javascript and C. Like objects in OOP, each contract contains
@@ -52,7 +52,7 @@ contract SimpleBank { // CamelCase
 
     // Constructor, can receive one or many variables here; only one allowed
     function AcmeBank() {
-        // msg provides contract messager's address and amount
+        // msg provides details about the message that's sent to the contract
         // msg.sender is contract caller (address of contract creator)
         owner = msg.sender;
     }
@@ -77,12 +77,12 @@ contract SimpleBank { // CamelCase
         if(balances[msg.sender] >= withdrawAmount) {
             balances[msg.sender] -= withdrawAmount;
 
-        if (!msg.sender.send(withdrawAmount)) {
-            balances[msg.sender] += withdrawAmount; // to be safe
+            if (!msg.sender.send(withdrawAmount)) {
+                balances[msg.sender] += withdrawAmount; // to be safe
+            }
         }
-
-          return balances[msg.sender];
-      }
+        
+        return balances[msg.sender];
     }
 
     /// @notice Get balance
@@ -277,7 +277,7 @@ this.someFunction(); // calls func externally via call, not via internal jump
 
 // ** msg - Current message received by the contract ** **
 msg.sender; // address of sender
-msg.value; // amount of gas provided to this contract in wei
+msg.value; // amount of ether provided to this contract in wei
 msg.data; // bytes, complete call data
 msg.gas; // remaining gas
 
