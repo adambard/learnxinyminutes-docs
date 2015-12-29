@@ -240,7 +240,7 @@ set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | 
 
 ### References
 
-[Tmux | Home](http://tmux.sourceforge.net)
+[Tmux | Home](http://tmux.github.io)
 
 [Tmux Manual page](http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/tmux.1?query=tmux)
 
