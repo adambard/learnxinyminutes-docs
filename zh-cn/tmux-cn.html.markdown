@@ -246,6 +246,8 @@ set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | 
 
 [Archlinux Wiki](https://wiki.archlinux.org/index.php/Tmux_(简体中文))
 
+[Tmux 快速教程](http://blog.jeswang.org/blog/2013/06/24/tmux-kuai-su-jiao-cheng)
+
 [如何在 tmux 状态栏中显示 CPU / 内存占用的百分比](https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux)
 
 [管理复杂 tmux 会话的工具 - tmuxinator](https://github.com/tmuxinator/tmuxinator)
