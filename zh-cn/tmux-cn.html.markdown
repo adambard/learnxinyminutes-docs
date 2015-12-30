@@ -242,7 +242,7 @@ set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | 
 
 [Tmux 手册](http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/tmux.1?query=tmux)
 
-[Gentoo Wiki](http://wiki.gentoo.org/wiki/Tmux)
+[FreeBSDChina Wiki](https://wiki.freebsdchina.org/software/t/tmux)
 
 [Archlinux Wiki](https://wiki.archlinux.org/index.php/Tmux_(简体中文))
 
