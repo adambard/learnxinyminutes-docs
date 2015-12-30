@@ -39,7 +39,7 @@ lang: zh-cn
     lsp              # 列出窗格
      -a              # 列出所有窗格
      -s              # 列出会话中的所有窗格
-     -t              # 列出 target 中的所有窗格
+     -t "#"          # 列出指定窗口中的所有窗格
 
     kill-window      # 关闭当前窗口
      -t "#"          # 关闭指定的窗口
@@ -56,7 +56,7 @@ lang: zh-cn
 
 ### 快捷键
 
-通过“前缀”快捷键，可以控制一个已经连入的tmux会话。
+通过“前缀”快捷键，可以控制一个已经连入的 tmux 会话。
 
 ```
 ----------------------------------------------------------------------
@@ -66,7 +66,7 @@ lang: zh-cn
 ----------------------------------------------------------------------
 
   ?                  # 列出所有快捷键
-  :                  # 进入tmux的命令提示符
+  :                  # 进入 tmux 的命令提示符
   r                  # 强制重绘当前客户端
   c                  # 创建一个新窗口
 
@@ -127,7 +127,7 @@ set-option -g status-utf8 on
 # 命令回滚/历史数量限制
 set -g history-limit 2048
 
-# Index Start
+# 从 1 开始编号，而不是从 0 开始
 set -g base-index 1
 
 # 启用鼠标
@@ -144,10 +144,10 @@ bind r source-file ~/.tmux.conf
 # 取消默认的前缀键 C-b
 unbind C-b
 
-# 设置新的前缀键
+# 设置新的前缀键 `
 set-option -g prefix `
 
-# 再次按下前缀键时，回到之前的窗口
+# 多次按下前缀键时，切换到上一个窗口
 bind C-a last-window
 bind ` last-window
 
@@ -159,7 +159,7 @@ bind F12 set-option -g prefix `
 setw -g mode-keys vi
 set-option -g status-keys vi
 
-# 使用 vim 风格的按键在窗格间移动
+# 使用 Vim 风格的按键在窗格间移动
 bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
@@ -238,14 +238,14 @@ set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | 
 
 ### 参考资料
 
-[Tmux 主页](http://tmux.sourceforge.net)
+[Tmux 主页](http://tmux.github.io)
 
 [Tmux 手册](http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/tmux.1?query=tmux)
 
 [Gentoo Wiki](http://wiki.gentoo.org/wiki/Tmux)
 
-[Archlinux Wiki](https://wiki.archlinux.org/index.php/Tmux)
+[Archlinux Wiki](https://wiki.archlinux.org/index.php/Tmux_(简体中文))
 
-[如何在 tmux 状态栏中显示 CPU / 内存占用百分比](https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux)
+[如何在 tmux 状态栏中显示 CPU / 内存占用的百分比](https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux)
 
 [管理复杂 tmux 会话的工具 - tmuxinator](https://github.com/tmuxinator/tmuxinator)
