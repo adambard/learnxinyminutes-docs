@@ -10,9 +10,9 @@ lang: zh-cn
 ---
 
 
-[tmux](http://tmux.sourceforge.net)是一款终端复用工具。
+[tmux](http://tmux.github.io)是一款终端复用工具。
 在它的帮助下，你可以在同一个控制台上建立、访问并控制多个终端。
-你可以断开与一个tmux终端的连接，此时程序将在后台运行，
+你可以断开与一个 tmux 终端的连接，此时程序将在后台运行，
 当你需要时，可以随时重新连接到这个终端。
 
 ```
@@ -70,7 +70,7 @@ lang: zh-cn
   r                  # 强制重绘当前客户端
   c                  # 创建一个新窗口
 
-  !                  # Break the current pane out of the window.
+  !                  # 将当前窗格从窗口中移出，成为为一个新的窗口
   %                  # 将当前窗格分为左右两半
   "                  # 将当前窗格分为上下两半
 
@@ -93,11 +93,11 @@ lang: zh-cn
   Left, Right
 
   M-1 到 M-5         # 排列窗格：
-                       # 1) even-horizontal
-                       # 2) even-vertical
-                       # 3) main-horizontal
-                       # 4) main-vertical
-                       # 5) tiled
+                       # 1) 水平等分
+                       # 2) 垂直等分
+                       # 3) 将一个窗格作为主要窗格，其他窗格水平等分
+                       # 4) 将一个窗格作为主要窗格，其他窗格垂直等分
+                       # 5) 平铺
 
   C-Up, C-Down       # 改变当前窗格的大小，每按一次增减一个单位
   C-Left, C-Right
