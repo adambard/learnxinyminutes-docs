@@ -254,7 +254,7 @@ void main() {
     // Use an index, access every array element by reference (because we're
     // going to change each element) and just call parallel on the array!
     foreach(i, ref elem; parallel(arr)) {
-        ref = sqrt(i + 1.0);
+        elem = sqrt(i + 1.0);
     }
 }
 ```
