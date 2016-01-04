@@ -13,7 +13,6 @@ contributors:
   - ["Levi Bostian", "https://github.com/levibostian"]
   - ["Rahil Momin", "https://github.com/iamrahil"]
   - ["Gabriel Halley", https://github.com/ghalley]
-  - ["Bruno Volcov", https://github.com/volcov]
 
 ---
 
