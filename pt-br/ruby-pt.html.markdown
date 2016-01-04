@@ -4,8 +4,21 @@ lang: pt-br
 filename: learnruby-pt.rb
 contributors:
   - ["Bruno Henrique - Garu", "http://garulab.com"]
+  - ["David Underwood", "http://theflyingdeveloper.com"]
+  - ["Joel Walden", "http://joelwalden.net"]
+  - ["Luke Holder", "http://twitter.com/lukeholder"]
+  - ["Tristan Hume", "http://thume.ca/"]
+  - ["Nick LaMuro", "https://github.com/NickLaMuro"]
+  - ["Marcos Brizeno", "http://www.about.me/marcosbrizeno"]
+  - ["Ariel Krakowski", "http://www.learneroo.com"]
+  - ["Dzianis Dashkevich", "https://github.com/dskecse"]
+  - ["Levi Bostian", "https://github.com/levibostian"]
+  - ["Rahil Momin", "https://github.com/iamrahil"]
+  - ["Gabriel Halley", https://github.com/ghalley]
+  - ["Bruno Volcov", https://github.com/volcov]
 translators:
   - ["Katyanna Moura", "https://twitter.com/amelie_kn"]
+  - ["Bruno Volcov", https://github.com/volcov]
 ---
 
 ```ruby
@@ -385,3 +398,11 @@ Humano.bar # 0
 Doutor.bar # nil
 
 ```
+
+## Recursos Adicionais
+
+- [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - Uma variante dessa referência com desafios no browser.
+- [Official Documentation](http://www.ruby-doc.org/core-2.1.1/)
+- [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
+- [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - Um guia de estilo de codificação Rubi conduzido pela comunidade
+- [Try Ruby](http://tryruby.org) - Aprenda o básico da linguagem de programação Ruby, de forma interativa no browser.
