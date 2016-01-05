@@ -809,7 +809,7 @@ void doSomethingWithAFile(const std::string& filename)
 // object right at the location where it is invoked or passed as 
 // an argument to a function.
 
-// Example consider sorting a vector of pairs using the second 
+// For example, consider sorting a vector of pairs using the second 
 // value of the pair
 
 vector<pair<int, int> > tester;
@@ -820,7 +820,7 @@ tester.push_back(make_pair(5, 0));
 // Pass a lambda expression as third argument to the sort function
 // sort is from the <algorithm> header
 
-sort(tester.begin(), tester.end(), [](const pair<int, int> &lhs, const pair<int, int> &rhs) {
+sort(tester.begin(), tester.end(), [](const pair<int, int>& lhs, const pair<int, int>& rhs) {
 		return lhs.second < rhs.second;
 	});
 
@@ -834,47 +834,21 @@ for(int i = 0; i < 3; i++){
 	dog_ids.push_back(i);  
 }
 
-int weight[3];
-weight[0] = 30, weight[1] = 50, weight[2] = 10;
+int weight[3] = {30, 50, 10};
 
 // Say you want to sort dog_ids according to the dogs' weights
 // So dog_ids should in the end become: [2, 0, 1]
 
 // Here's where lambda expressions come in handy
 
-sort(dog_ids.begin(), dog_ids.end(), [weight](const int &lhs, const int &rhs) {
+sort(dog_ids.begin(), dog_ids.end(), [&weight](const int &lhs, const int &rhs) {
 		return weight[lhs] < weight[rhs];
 	});
-// Note we captured "weight" in the above example.
+// Note we captured "weight" by reference in the above example.
 
 // lambda are really useful for the case of structs
 // You can use lambda expressions instead of overloading
 // the "<" operator
-
-struct dog{
-	int weight, age;
-}dogs[3];
-
-dogs[0].weight = 30, dogs[0].age = 4;
-dogs[1].weight = 40, dogs[1].age = 10;
-dogs[2].weight = 20, dogs[2].age = 9;
-
-// Say I want to sort the dogs array by the dogs' weights
-
-sort(dogs, dogs+3, [](const dog &lhs, const dog &rhs) {
-		return lhs.weight < rhs.weight;
-	});
-// dogs is now sorted according to their weight
-
-// Do something with the dogs
-
-// Now I want to sort the dogs by in descending order of their age
-
-sort(dogs, dogs+3, [](const dog &lhs, const dog &rhs) {
-		return lhs.age > rhs.age;
-	});
-// dogs is now sorted in descending order of their age
-
 
 ///////////////////////////////
 // Range For (C++11 and above)
@@ -884,23 +858,15 @@ sort(dogs, dogs+3, [](const dog &lhs, const dog &rhs) {
 int arr[] = {1, 10, 3};
 
 for(int elem: arr){
-	cout<<elem<<'\n';  
+	cout << elem << endl;
 }
 
 // You can use "auto" and not worry about the type of the elements of the container
-// Caveat: Don't assign inside the range for loop
 // For example:
 
 for(auto elem: arr) {
-	elem = -1;  
+	// Do something with each element of arr
 }
-
-// "arr" remains unchanged
-
-// Why doesn't it change?
-// What actually is happening is that the value of "arr[i]" is stored in 
-// the variable "elem" in every iteration. So assigning "elem" doesn't assign "arr[i]".
-// For more, checkout: http://en.cppreference.com/w/cpp/language/range-for
 
 /////////////////////
 // Fun stuff
