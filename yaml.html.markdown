@@ -3,6 +3,7 @@ language: yaml
 filename: learnyaml.yaml
 contributors:
   - ["Adam Brenecki", "https://github.com/adambrenecki"]
+  - ["Suhas SG", "https://github.com/jargnar"]
 ---
 
 YAML is a data serialisation language designed to be directly writable and
@@ -24,6 +25,8 @@ YAML doesn't allow literal tab characters at all.
 key: value
 another_key: Another value goes here.
 a_number_value: 100
+# If you want to use number 1 as a value, you have to enclose it in quotes, 
+# otherwise, YAML parser will assume that it is a boolean value of true.
 scientific_notation: 1e+12
 boolean: true
 null_value: null
@@ -66,14 +69,19 @@ a_nested_map:
 # Maps don't have to have string keys.
 0.25: a float key
 
-# Keys can also be multi-line objects, using ? to indicate the start of a key.
+# Keys can also be complex, like multi-line objects
+# We use ? followed by a space to indicate the start of a complex key.
 ? |
     This is a key
     that has multiple lines
 : and this is its value
 
-# YAML also allows collection types in keys, but many programming languages
-# will complain.
+# YAML also allows mapping between sequences with the complex key syntax
+# Some language parsers might complain
+# An example
+? - Manchester United
+  - Real Madrid
+: [ 2001-01-01, 2002-02-02 ]
 
 # Sequences (equivalent to lists or arrays) look like this:
 a_sequence:
@@ -101,11 +109,30 @@ json_seq: [3, 2, 1, "takeoff"]
 anchored_content: &anchor_name This string will appear as the value of two keys.
 other_anchor: *anchor_name
 
+# Anchors can be used to duplicate/inherit properties
+base: &base
+    name: Everyone has same name
+
+foo: &foo
+    <<: *base
+    age: 10
+
+bar: &bar
+    <<: *base
+    age: 20
+
+# foo and bar would also have name: Everyone has same name
+
 # YAML also has tags, which you can use to explicitly declare types.
 explicit_string: !!str 0.5
 # Some parsers implement language specific tags, like this one for Python's
 # complex number type.
 python_complex_number: !!python/complex 1+2j
+
+# We can also use yaml complex keys with language specific tags
+? !!python/tuple [5, 7]
+: Fifty Seven
+# Would be {(5, 7): 'Fifty Seven'} in python
 
 ####################
 # EXTRA YAML TYPES #

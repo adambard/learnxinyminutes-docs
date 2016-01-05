@@ -6,6 +6,7 @@ contributors:
   - ["Sean Corrales", "https://github.com/droidenator"]
 translators:
   - ["Gabriel Gomes", "https://github.com/gabrielgomesferraz"]
+  - ["Cássio Böck", "https://github.com/cassiobsilva"]
 lang: pt-br
 ---
 
@@ -154,16 +155,6 @@ body {
 .footer {
   background-color: rgba(0, 0, 0, 0.75);
 }
-
-/* You may also define your own functions. Functions are very similar to
-   mixins. When trying to choose between a function or a mixin, remember
-   that mixins are best for generating CSS while functions are better for
-   logic that might be used throughout your Sass code. The examples in
-   the Math Operators' section are ideal candidates for becoming a reusable
-   function. */
-
-/* This function will take a target size and the parent size and calculate
-   and return the percentage */
 
 /* Você também pode definir suas próprias funções. As funções são muito semelhantes aos
    mixins. Ao tentar escolher entre uma função ou um mixin, lembre-
@@ -319,11 +310,6 @@ ol {
   padding: 0;
 }
 
-/* Sass offers @import which can be used to import partials into a file.
-   This differs from the traditional CSS @import statement which makes
-   another HTTP request to fetch the imported file. Sass takes the
-   imported file and combines it with the compiled code. */
-
 /* Sass oferece @import que pode ser usado para importar parciais em um arquivo.
    Isso difere da declaração CSS @import tradicional, que faz
    outra solicitação HTTP para buscar o arquivo importado. Sass converte os
@@ -353,12 +339,6 @@ body {
 /*Placeholder Selectors
 ==============================*/  
 
-
-
-/* Placeholders are useful when creating a CSS statement to extend. If you
-   wanted to create a CSS statement that was exclusively used with @extend,
-   you can do so using a placeholder. Placeholders begin with a '%' instead
-   of '.' or '#'. Placeholders will not appear in the compiled CSS. */
 
 /* Os espaços reservados são úteis na criação de uma declaração CSS para ampliar. Se você
    queria criar uma instrução CSS que foi usado exclusivamente com @extend,
@@ -395,11 +375,6 @@ body {
 /*Operações Math
 ============================== * /
 
-
-/* Sass provides the following operators: +, -, *, /, and %. These can
-   be useful for calculating values directly in your Sass files instead
-   of using values that you've already calculated by hand. Below is an example
-   of a setting up a simple two column design. */
 
 /* Sass fornece os seguintes operadores: +, -, *, /, e %. estes podem
    ser úteis para calcular os valores diretamente no seu Sass arquivos em vez

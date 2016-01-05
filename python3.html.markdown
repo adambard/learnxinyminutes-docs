@@ -224,8 +224,8 @@ li.remove(2)  # Raises a ValueError as 2 is not in the list
 # Insert an element at a specific index
 li.insert(1, 2)  # li is now [1, 2, 3] again
 
-# Get the index of the first item found
-li.index(2)  # => 3
+# Get the index of the first item found matching the argument
+li.index(2)  # => 1
 li.index(4)  # Raises a ValueError as 4 is not in the list
 
 # You can add lists
@@ -425,7 +425,6 @@ by step. If step is not indicated, the default value is 1.
 prints:
     4
     6
-    8
 """
 for i in range(4, 8, 2):
     print(i)
@@ -689,7 +688,7 @@ i.age  # => raises an AttributeError
 
 # You can import modules
 import math
-print(math.sqrt(16))  # => 4
+print(math.sqrt(16))  # => 4.0
 
 # You can get specific functions from a module
 from math import ceil, floor

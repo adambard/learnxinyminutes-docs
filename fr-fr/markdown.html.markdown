@@ -2,7 +2,7 @@
 language: markdown
 contributors:
 - ["Andrei Curelaru", "http://www.infinidad.fr"]
-filename: markdown.md
+filename: markdown-fr.md
 lang: fr-fr
 ---
 

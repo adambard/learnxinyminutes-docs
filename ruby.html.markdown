@@ -14,6 +14,7 @@ contributors:
   - ["Rahil Momin", "https://github.com/iamrahil"]
   - ["Gabriel Halley", "https://github.com/ghalley"]
   - ["Persa Zula", "http://persazula.com"]
+  - ["Jake Faris", "https://github.com/farisj"]
 ---
 
 ```ruby
@@ -41,7 +42,11 @@ You shouldn't either
 35 / 5 #=> 7
 2**5 #=> 32
 5 % 3 #=> 2
-5 ^ 6 #=> 3
+
+# Bitwise operators
+3 & 5 #=> 1
+3 | 5 #=> 7
+3 ^ 5 #=> 6
 
 # Arithmetic is just syntactic sugar
 # for calling a method on an object
@@ -49,7 +54,7 @@ You shouldn't either
 10.* 5 #=> 50
 
 # Special values are objects
-nil # Nothing to see here
+nil # equivalent to null in other languages
 true # truth
 false # falsehood
 
@@ -76,6 +81,11 @@ false.class #=> FalseClass
 1 > 10 #=> false
 2 <= 2 #=> true
 2 >= 2 #=> true
+
+# Combined comparison operator
+1 <=> 10 #=> -1
+10 <=> 1 #=> 1
+1 <=> 1 #=> 0
 
 # Logical operators
 true && false #=> false
@@ -122,7 +132,7 @@ puts "I'm printing!"
 
 # print to the output without a newline
 print "I'm printing!"
-#=> I'm printing! => nill
+#=> I'm printing! => nil
 
 # Variables
 x = 25 #=> 25
@@ -220,8 +230,8 @@ new_hash = { defcon: 3, action: true }
 new_hash.keys #=> [:defcon, :action]
 
 # Check existence of keys and values in hash
-new_hash.has_key?(:defcon) #=> true
-new_hash.has_value?(3) #=> true
+new_hash.key?(:defcon) #=> true
+new_hash.value?(3) #=> true
 
 # Tip: Both Arrays and Hashes are Enumerable
 # They share a lot of useful methods such as each, map, count, and more
@@ -579,7 +589,9 @@ Something.new.qux # => 'qux'
 ## Additional resources
 
 - [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - A variant of this reference with in-browser challenges.
+- [An Interactive Tutorial for Ruby](https://rubymonk.com/) - Learn Ruby through a series of interactive tutorials.
 - [Official Documentation](http://www.ruby-doc.org/core-2.1.1/)
 - [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
 - [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - An older [free edition](http://ruby-doc.com/docs/ProgrammingRuby/) is available online.
 - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - A community-driven Ruby coding style guide.
+- [Try Ruby](http://tryruby.org) - Learn the basic of Ruby programming language, interactive in the browser.

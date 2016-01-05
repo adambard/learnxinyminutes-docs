@@ -169,6 +169,12 @@ def sumOfSquaresShort(x: Int, y: Int): Int = x * x + y * y
 // Syntax for calling functions is familiar:
 sumOfSquares(3, 4)  // => 25
 
+// You can use parameters names to specify them in different order
+def subtract(x: Int, y: Int): Int = x - y
+
+subtract(10, 3)     // => 7
+subtract(y=10, x=3) // => -7
+
 // In most cases (with recursive functions the most notable exception), function
 // return type can be omitted, and the same type inference we saw with variables
 // will work with function return values:
@@ -321,8 +327,14 @@ divideInts(10, 3)    // (Int, Int) = (3,1)
 val d = divideInts(10, 3)    // (Int, Int) = (3,1)
 
 d._1    // Int = 3
-
 d._2    // Int = 1
+
+// Alternatively you can do multiple-variable assignment to tuple, which is more
+// convenient and readable in many cases
+val (div, mod) = divideInts(10, 3)
+
+div     // Int = 3
+mod     // Int = 1
 
 
 /////////////////////////////////////////////////
@@ -454,6 +466,9 @@ def matchEverything(obj: Any): String = obj match {
 
   // You can nest patterns:
   case List(List((1, 2, "YAY"))) => "Got a list of list of tuple"
+
+  // Match any case (default) if all previous haven't matched
+  case _ => "Got unknown object"
 }
 
 // In fact, you can pattern match any object with an "unapply" method. This

@@ -53,6 +53,8 @@ $int1 = 12;   // => 12
 $int2 = -12;  // => -12
 $int3 = 012;  // => 10 (a leading 0 denotes an octal number)
 $int4 = 0x0F; // => 15 (a leading 0x denotes a hex literal)
+// Binary integer literals are available since PHP 5.4.0.
+$int5 = 0b11111111; // 255 (a leading 0b denotes a binary number)
 
 // Floats (aka doubles)
 $float = 1.234;
@@ -116,11 +118,11 @@ echo 'Multiple', 'Parameters', 'Valid';  // Returns 'MultipleParametersValid'
 
 // a valid constant name starts with a letter or underscore,
 // followed by any number of letters, numbers, or underscores.
-define("FOO",     "something");
+define("FOO", "something");
 
 // access to a constant is possible by calling the choosen name without a $
 echo FOO; // Returns 'something'
-echo 'This outputs '.FOO;  // Returns 'This ouputs something'
+echo 'This outputs ' . FOO;  // Returns 'This ouputs something'
 
 
 
