@@ -1,5 +1,6 @@
 ---
 language: latex
+lang: es-es
 contributors:
     - ["Chaitanya Krishna Ande", "http://icymist.github.io"]
     - ["Colton Kohnke", "http://github.com/voltnor"]
