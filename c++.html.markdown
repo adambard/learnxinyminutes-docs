@@ -840,16 +840,22 @@ tester.push_back(make_pair(5, 0));
 // sort is from the <algorithm> header
 
 sort(tester.begin(), tester.end(), [](const pair<int, int>& lhs, const pair<int, int>& rhs) {
-		return lhs.second < rhs.second;
-	});
+        return lhs.second < rhs.second;
+    });
 
 // Notice the syntax of the lambda expression,
-// [] in the lambda is used to "capture" variables.
-// For Example:
+// [] in the lambda is used to "capture" variables
+// The "Capture List" defines what from the outside of the lambda should be available inside the function body and how.
+// It can be either:
+//     1. a value : [x]
+//     2. a reference : [&x]
+//     3. any variable currently in scope by reference [&]
+//     4. same as 3, but by value [=]
+// Example:
 
 vector<int> dog_ids;
 // number_of_dogs = 3;
-for(int i = 0; i < 3; i++){
+for(int i = 0; i < 3; i++) {
 	dog_ids.push_back(i);  
 }
 
@@ -861,13 +867,10 @@ int weight[3] = {30, 50, 10};
 // Here's where lambda expressions come in handy
 
 sort(dog_ids.begin(), dog_ids.end(), [&weight](const int &lhs, const int &rhs) {
-		return weight[lhs] < weight[rhs];
-	});
+        return weight[lhs] < weight[rhs];
+    });
 // Note we captured "weight" by reference in the above example.
-
-// lambda are really useful for the case of structs
-// You can use lambda expressions instead of overloading
-// the "<" operator
+// More on Lambdas in C++ : http://stackoverflow.com/questions/7627098/what-is-a-lambda-expression-in-c11
 
 ///////////////////////////////
 // Range For (C++11 and above)
