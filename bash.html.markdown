@@ -83,7 +83,8 @@ echo Hello, $Name!
 
 # We have the usual if structure:
 # use 'man test' for more info about conditionals
-if [ $Name -ne $USER ]
+# use "-ne" for algebraic comparison and "!=" for strings
+if [ $Name != $USER ]
 then
     echo "Your name isn't your username"
 else
@@ -106,12 +107,12 @@ echo "Always executed" && echo "Only executed if first command does NOT fail"
 # To use && and || with if statements, you need multiple pairs of square brackets:
 if [ "$Name" == "Steve" ] && [ "$Age" -eq 15 ]
 then
-    echo "This will run if $Name is Steve AND $Age is 15."
+    echo 'This will run if $Name is Steve AND $Age is 15.'
 fi
 
 if [ "$Name" == "Daniya" ] || [ "$Name" == "Zach" ]
 then
-    echo "This will run if $Name is Daniya OR Zach."
+    echo 'This will run if $Name is Daniya OR Zach.'
 fi
 
 # Expressions are denoted with the following format:
