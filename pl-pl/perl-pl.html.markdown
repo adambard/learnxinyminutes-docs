@@ -163,7 +163,7 @@ z repozytorium CPAN do zrealizowania konkretnego zadania.
 
 #### Do doczytania
 
-    - [perl-tutorial](http://perl-tutorial.org/)
-    - [Naucz się Perla na www.perl.com](http://www.perl.org/learn.html)
-    - [perldoc](http://perldoc.perl.org/)
-    - wbudowane w Perla: `perldoc perlintro`
+ - [perl-tutorial](http://perl-tutorial.org/)
+ - [Naucz się Perla na www.perl.com](http://www.perl.org/learn.html)
+ - [perldoc](http://perldoc.perl.org/)
+ - wbudowane w Perla: `perldoc perlintro`
