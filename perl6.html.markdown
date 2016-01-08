@@ -1329,7 +1329,7 @@ so 'ayc' ~~ / a [ b | y ] c /; # `True`. Obviously enough ...
 
 
 
-### Extra: the MAIN subroutime
+### Extra: the MAIN subroutine
 # The `MAIN` subroutine is called when you run a Perl 6 file directly.
 # It's very powerful, because Perl 6 actually parses the arguments
 #  and pass them as such to the sub. It also handles named argument (`--foo`)
