@@ -18,6 +18,7 @@ rather than plain text.
 [Read more here.](https://technet.microsoft.com/en-us/library/bb978526.aspx)
 
 If you are uncertain about your environment:
+
 ```
 Get-ExecutionPolicy -List
 Set-ExecutionPolicy AllSigned
@@ -33,6 +34,7 @@ $PSVersionTable
 ```
 
 Getting help:
+
 ```
 # Find commands
 Get-Command about_* # alias: gcm
@@ -49,6 +51,7 @@ Update-Help # Run as admin
 ```
 
 The tutorial starts here:
+
 ```
 # As you already figured, comments start with #
 
@@ -292,6 +295,7 @@ $Shortcut.Save()
 
 
 Configuring your shell
+
 ```
 # $Profile is the full path for your `Microsoft.PowerShell_profile.ps1`
 # All code there will be executed when the PS session starts

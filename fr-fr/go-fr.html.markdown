@@ -3,7 +3,7 @@ name: Go
 category: language
 language: Go
 lang: fr-fr
-filename: learngo.go
+filename: learngo-fr.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["Christopher Bess", "https://github.com/cbess"]

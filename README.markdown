@@ -51,7 +51,7 @@ Long version:
 ### Header configuration
 
 The actual site uses Middleman to generate HTML files from these Markdown ones. Middleman, or at least
-the custom scripts underpinning the site, required that some key information be defined in the header.
+the custom scripts underpinning the site, requires that some key information be defined in the header.
 
 The following fields are necessary for English articles about programming languages:
 
