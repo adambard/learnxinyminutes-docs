@@ -247,10 +247,12 @@ function New-Website() {
 [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic')
 
 # Note that .NET functions MUST be called with parentheses
-# while PS functions CANNOT be called with parentheses
+# while PS functions CANNOT be called with parentheses.
+# If you do call a cmdlet/PS function with parentheses,
+# it is the same as passing a single parameter list
 $writer = New-Object System.IO.StreamWriter($path, $true)
 $writer.Write([Environment]::NewLine)
-$write.Dispose()
+$writer.Dispose()
 
 ### IO
 # Reading a value from input:
@@ -268,12 +270,14 @@ Get-Command ConvertTo-*,ConvertFrom-*
 # Refresh your PATH
 $env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + 
 	";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+
 # Find Python in path
 $env:PATH.Split(";") | Where-Object { $_ -like "*python*"}
 
 # Change working directory without having to remember previous path
 Push-Location c:\temp # change working directory to c:\temp
 Pop-Location # change back to previous working directory
+# Aliases are: pushd and popd
 
 # Unblock a directory after download
 Get-ChildItem -Recurse | Unblock-File
@@ -308,6 +312,7 @@ if (-not (Test-Path $Profile)) {
 ```
 
 Interesting Projects  
+
 * [Channel9](https://channel9.msdn.com/Search?term=powershell%20pipeline#ch9Search&lang-en=en) PowerShell tutorials
 * [PSGet](https://github.com/psget/psget) NuGet for PowerShell
 * [PSReadLine](https://github.com/lzybkr/PSReadLine/) A bash inspired readline implementation for PowerShell (So good that it now ships with Windows10 by default!)
@@ -318,6 +323,7 @@ Interesting Projects
 * [PowerShell Community Extensions](http://pscx.codeplex.com/) (Dead)
 
 Not covered  
+
 * WMI: Windows Management Intrumentation (Get-CimInstance)  
 * Multitasking: Start-Job -scriptBlock {...}, 
 * Code Signing
