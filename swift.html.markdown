@@ -221,9 +221,9 @@ A greet operation
 - A bullet in docs
 - Another bullet in the docs
 
-:param: name A name
-:param: day A day
-:returns: A string containing the name and day value.
+- Parameter name	: A name
+- Parameter day	: A day
+- Returns : A string containing the name and day value.
 */
 func greet(name: String, day: String) -> String {
     return "Hello \(name), today is \(day)."
