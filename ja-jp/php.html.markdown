@@ -39,61 +39,62 @@ Hello World Again!
  * 型と変数について
  */
 
-// Variables begin with the $ symbol.
-// A valid variable name starts with a letter or underscore,
-// followed by any number of letters, numbers, or underscores.
+// 変数は"$"マークで始まります
+// 有効な変数名にするには、文字またはアンダースコア(_)で始めて,
+// その後はどんな数字でも、文字でも、アンダースコアで続けても構いません
 
-// Boolean values are case-insensitive
+//ブーリアン値は大文字、小文字問いません
 $boolean = true;  // or TRUE or True
 $boolean = false; // or FALSE or False
 
-// Integers
+// 数値
 $int1 = 12;   // => 12
 $int2 = -12;  // => -12
-$int3 = 012;  // => 10 (a leading 0 denotes an octal number)
-$int4 = 0x0F; // => 15 (a leading 0x denotes a hex literal)
+$int3 = 012;  // => 10 (先頭の0は8進法を示す)
+$int4 = 0x0F; // => 15 (先頭の0xは16進法を示す)
 
-// Floats (aka doubles)
+// floats(浮動小数) (別名double)
 $float = 1.234;
 $float = 1.2e3;
 $float = 7E-10;
 
-// Delete variable
+// 変数の削除
 unset($int1);
 
-// Arithmetic
+// 計算式
 $sum        = 1 + 1; // 2
 $difference = 2 - 1; // 1
 $product    = 2 * 2; // 4
 $quotient   = 2 / 1; // 2
 
-// Shorthand arithmetic
+// 式の省略
 $number = 0;
-$number += 1;      // Increment $number by 1
-echo $number++;    // Prints 1 (increments after evaluation)
-echo ++$number;    // Prints 3 (increments before evaluation)
-$number /= $float; // Divide and assign the quotient to $number
+$number += 1;      // $numberに1加算Increment $number by 1
+echo $number++;    // 1 がプリントされる(式の評価の後に加算される)
+echo ++$number;    // 3 がプリントされる(式の評価の前に加算される)
+$number /= $float; // 割り算した結果の商を$numberに割り当てる
 
-// Strings should be enclosed in single quotes;
+// 文字列はシングルクォートで囲むのが望ましいです
 $sgl_quotes = '$String'; // => '$String'
 
-// Avoid using double quotes except to embed other variables
+// 文字列中に、他の変数を埋め込みたい場合以外は、ダブルクォートを使用するのはやめましょう
 $dbl_quotes = "This is a $sgl_quotes."; // => 'This is a $String.'
 
 // Special characters are only escaped in double quotes
+// 特殊文字はダブルクォートによってのみ、エスケープされます
 $escaped   = "This contains a \t tab character.";
 $unescaped = 'This just contains a slash and a t: \t';
 
-// Enclose a variable in curly braces if needed
+// 必要があれば、変数を波括弧で囲みます
 $money = "I have $${number} in the bank.";
 
-// Since PHP 5.3, nowdocs can be used for uninterpolated multi-liners
+// PHP 5.3から、nowdocs形式が変数の挿入をしない複数行の文字列の定義に使用できます
 $nowdoc = <<<'END'
 Multi line
 string
 END;
 
-// Heredocs will do string interpolation
+// ヒアドキュメント形式なら、文字列中に変数の挿入を行えます。
 $heredoc = <<<END
 Multi line
 $sgl_quotes
