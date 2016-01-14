@@ -506,7 +506,8 @@ function remove() {
 // Steps: 1. Commit to something, 2. Reveal commitment
 sha3("some_bid_amount", "some secret"); // commit
 
-// call contract's reveal function showing bid plus secret that hashes to SHA3
+// call contract's reveal function in the future
+// showing bid plus secret that hashes to SHA3
 reveal(100, "mySecret");
 
 // B. Storage optimization
@@ -531,7 +532,45 @@ reveal(100, "mySecret");
 // Contracts must be manually called to handle time-based scheduling; can create external
 // code to regularly ping, or provide incentives (ether) for others to
 
-// E. State machines
+// E. Observer Pattern
+// An Observer Pattern lets you register as a subscriber and
+// register a function which is called by the oracle (note, the oracle pays
+// for this action to be run)
+// Some similarities to subscription in Pub/sub
+
+// This is an abstract contract, both client and server classes import
+// the client should implement
+contract SomeOracleCallback {
+    function oracleCallback(int _value, uint _time, bytes32 info) external;
+}
+
+contract SomeOracle {
+    SomeOracleCallback[] callbacks; // array of all subscribers
+
+    // Register subscriber
+    function addSubscriber(SomeOracleCallback a) {
+        callbacks.push(a);
+    }
+
+    function notify(value, time, info) private {
+        for(uint i = 0;i < callbacks.length; i++) {
+            // all called subscribers must implement the oracleCallback
+            callbacks[i].oracleCallback(value, time, info);
+        }
+    }
+
+    function doSomething() public {
+        // Code to do something
+
+        // Notify all subscribers
+        notify(_value, _time, _info);
+    }
+}
+
+// Now, your client contract can addSubscriber by importing SampleOracleCallback
+// and registering with Sample Oracle
+
+// F. State machines
 // see example below for State enum and inState modifier
 
 
@@ -748,7 +787,7 @@ someContractAddress.callcode('function_name');
 - Libraries
 
 ## Style
-- Python's [PEP8](https://www.python.org/dev/peps/pep-0008/) is used as the baseline style guide, including its general philosophy)
+- Python's [PEP8](https://www.python.org/dev/peps/pep-0008/) is used as the baseline style guide, including its general philosophy
 
 ## Future To Dos
 - New keywords: protected, inheritable
