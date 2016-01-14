@@ -567,8 +567,8 @@ contract SomeOracle {
     }
 }
 
-// Now, your client contract can addSubscriber by importing SampleOracleCallback
-// and registering with Sample Oracle
+// Now, your client contract can addSubscriber by importing SomeOracleCallback
+// and registering with Some Oracle
 
 // F. State machines
 // see example below for State enum and inState modifier
