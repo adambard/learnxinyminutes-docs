@@ -100,53 +100,54 @@ Multi line
 $sgl_quotes
 END;
 
-// String concatenation is done with .
+// 文字列の連結は . で行います
 echo 'This string ' . 'is concatenated';
 
-// Strings can be passed in as parameters to echo
+// 別々のパラメータとしてechoに渡すこともできます
 echo 'Multiple', 'Parameters', 'Valid';
 
 /********************************
- * Constants
+ * 定数
  */
 
-// A constant is defined by using define()
-// and can never be changed during runtime!
+// 定数は define() を使って定義します
+// また、実行中は変更することができないので注意が必要です！
 
-// a valid constant name starts with a letter or underscore,
-// followed by any number of letters, numbers, or underscores.
+// 有効は定数は文字かアンダースコアで始めます
+// それ移行のは、どんな数値でも文字列でもアンダースコアでも構いません
 define("FOO",     "something");
 
+// 定義した名前をそのまま($はつけずに)使用することで、定数にアクセスできます
 // access to a constant is possible by direct using the choosen name
 echo 'This outputs '.FOO;
 
 
 /********************************
- * Arrays
+ * 配列
  */
 
-// All arrays in PHP are associative arrays (hashmaps),
+// PHPの配列はすべて連想配列です
 
-// Associative arrays, known as hashmaps in some languages.
+// 連想配列は、他の言語ではハッシュ(ハッシュマップ)として知られています
 
-// Works with all PHP versions
+// すべてのバージョンのPHPで動作します
 $associative = array('One' => 1, 'Two' => 2, 'Three' => 3);
 
-// PHP 5.4 introduced a new syntax
+// PHP 5.4 から、新しいシンタックスが導入されました
 $associative = ['One' => 1, 'Two' => 2, 'Three' => 3];
 
-echo $associative['One']; // prints 1
+echo $associative['One']; // 1とプリントされます
 
-// List literals implicitly assign integer keys
+// キーを指定しないシンプルな配列にも、自動的に数値キーが振られます
 $array = ['One', 'Two', 'Three'];
 echo $array[0]; // => "One"
 
-// Add an element to the end of an array
+// 配列の最後に要素を追加する
 $array[] = 'Four';
-// or
+// または、次のようにも書けます
 array_push($array, 'Five');
 
-// Remove element from array
+// 配列から要素を削除
 unset($array[3]);
 
 /********************************
