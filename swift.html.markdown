@@ -213,7 +213,7 @@ default: // required (in order to cover all possible input)
 // Functions are a first-class type, meaning they can be nested
 // in functions and can be passed around
 
-// Function with Swift header docs (format as reStructedText)
+// Function with Swift header docs (format as Swift-modified Markdown syntax)
 
 /**
 A greet operation
