@@ -151,37 +151,39 @@ array_push($array, 'Five');
 unset($array[3]);
 
 /********************************
- * Output
+ * 出力
  */
 
 echo('Hello World!');
-// Prints Hello World! to stdout.
+// 標準出力にHello World! とプリントします
+// 標準出力はブラウザーで実行していればWebページに出力されます
 // Stdout is the web page if running in a browser.
 
-print('Hello World!'); // The same as echo
+print('Hello World!'); // echoの結果と同じです
 
+// echo は言語自体の構成要素であり、括弧なしで呼び出せます
 // echo is actually a language construct, so you can drop the parentheses.
 echo 'Hello World!';
-print 'Hello World!'; // So is print
+print 'Hello World!'; // printも同様です
 
 $paragraph = 'paragraph';
 
-echo 100;        // Echo scalar variables directly
-echo $paragraph; // or variables
+echo 100;        // スカラー数値を直接出力します
+echo $paragraph; // 変数も使用できます
 
-// If short open tags are configured, or your PHP version is
-// 5.4.0 or greater, you can use the short echo syntax
+// PHPタグの短縮型が設定されているか、使用しているPHPのバージョンが
+// 5.4.0 以上であれば、短縮echoシンタックスを使用できます
 ?>
 <p><?= $paragraph ?></p>
 <?php
 
 $x = 1;
 $y = 2;
-$x = $y; // $x now contains the same value as $y
+$x = $y; // $xに$yの値を代入します
 $z = &$y;
-// $z now contains a reference to $y. Changing the value of
-// $z will change the value of $y also, and vice-versa.
-// $x will remain unchanged as the original value of $y
+// $zは$yへの参照です。
+// $zの値を変更すると$yの値も変更されるでしょう。逆も同様です。
+// $xは$yの最初の値を変わらず保持しています
 
 echo $x; // => 2
 echo $z; // => 2
@@ -189,23 +191,23 @@ $y = 0;
 echo $x; // => 2
 echo $z; // => 0
 
-// Dumps type and value of variable to stdout
-var_dump($z); // prints int(0)
+// 変数の型と値を標準出力へダンプします
+var_dump($z); // int(0) と出力されます
 
-// Prints variable to stdout in human-readable format
+// 人間が読めるフォーマットで変数を標準出力にプリントします
 print_r($array); // prints: Array ( [0] => One [1] => Two [2] => Three )
 
 /********************************
- * Logic
+ * ロジック
  */
 $a = 0;
 $b = '0';
 $c = '1';
 $d = '1';
 
-// assert throws a warning if its argument is not true
+// assertは引数がfalseの場合、Exceptionを投げます
 
-// These comparisons will always be true, even if the types aren't the same.
+//これらの比較は型が違ったとしても、常に真です。
 assert($a == $b); // equality
 assert($c != $a); // inequality
 assert($c <> $a); // alternative inequality
@@ -214,32 +216,33 @@ assert($c > $b);
 assert($a <= $b);
 assert($c >= $d);
 
-// The following will only be true if the values match and are the same type.
+// 次の比較は値が等しく、かつ同じ型である場合のみ真です
 assert($c === $d);
 assert($a !== $d);
 assert(1 === '1');
 assert(1 !== '1');
 
-// spaceship operator since PHP 7
+// spaceship演算子はPHP7から使用可能です
 $a = 100;
 $b = 1000;
 
-echo $a <=> $a; // 0 since they are equal
-echo $a <=> $b; // -1 since $a < $b
-echo $b <=> $a; // 1 since $b > $a
+echo $a <=> $a; // 等しいので0になります
+echo $a <=> $b; // $a < $b なので -1 です
+echo $b <=> $a; // $b > $a なので 1 です
 
-// Variables can be converted between types, depending on their usage.
+// 変数は使用するコンテキストによって、変換されます
 
 $integer = 1;
 echo $integer + $integer; // => 2
 
 $string = '1';
-echo $string + $string; // => 2 (strings are coerced to integers)
+echo $string + $string; // => 2 (文字列は強制的に数値として処理されます)
 
 $string = 'one';
 echo $string + $string; // => 0
-// Outputs 0 because the + operator cannot cast the string 'one' to a number
+// '+'演算子は文字列'one'を数値にキャストできないので、0と出力されます
 
+// 型のキャスティングによって、変数を指定したもう一つの型として扱うことができます
 // Type casting can be used to treat a variable as another type
 
 $boolean = (boolean) 1; // => true
@@ -247,15 +250,15 @@ $boolean = (boolean) 1; // => true
 $zero = 0;
 $boolean = (boolean) $zero; // => false
 
-// There are also dedicated functions for casting most types
+// 型をキャストするため専用の関数も存在します
 $integer = 5;
 $string = strval($integer);
 
-$var = null; // Null value
+$var = null; // Null値
 
 
 /********************************
- * Control Structures
+ * 制御構造
  */
 
 if (true) {
@@ -274,15 +277,15 @@ if (false) {
     print 'Does';
 }
 
-// ternary operator
+// 参考演算子
 print (false ? 'Does not get printed' : 'Does');
 
-// ternary shortcut operator since PHP 5.3
-// equivalent of "$x ? $x : 'Does'""
+// PHP 5.3から、三項演算子の短縮形が使用できます
+// $x ? $x : 'Does'と同義です
 $x = false;
 print($x ?: 'Does');
 
-// null coalesce operator since php 7
+// null合体演算子はPHP 7から使用できます
 $a = null;
 $b = 'Does print';
 echo $a ?? 'a is not set'; // prints 'a is not set'
@@ -300,29 +303,29 @@ if ($x === '0') {
 
 
 
-// This alternative syntax is useful for templates:
+// :を用いる別の構文はテンプレートで有用です
 ?>
 
 <?php if ($x): ?>
-This is displayed if the test is truthy.
+この部分はifが真のとき表示されます
 <?php else: ?>
-This is displayed otherwise.
+それ以外の場合は、この部分が表示されます
 <?php endif; ?>
 
 <?php
 
-// Use switch to save some logic.
+// いくつかのロジックを保存するにはswitchを使用します
 switch ($x) {
     case '0':
         print 'Switch does type coercion';
-        break; // You must include a break, or you will fall through
-               // to cases 'two' and 'three'
+        break; // breakを書く必要があります。
+               // でなければ、次の'two', 'three'のcase文を続けて実行することになります。
     case 'two':
     case 'three':
-        // Do something if $variable is either 'two' or 'three'
+        // 変数が'two'または'three'の場合、何かを実行します
         break;
     default:
-        // Do something by default
+        //デフォルトで何かを実行します
 }
 
 // While, do...while and for loops are probably familiar
