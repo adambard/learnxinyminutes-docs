@@ -392,7 +392,7 @@ testTryStuff()
 
 public class Shape {
     public func getArea() -> Int {
-        return 0;
+        return 0
     }
 }
 
