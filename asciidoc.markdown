@@ -45,22 +45,22 @@ v1.0, 2016-01-13
 This article about chips is going to be fun.
 ```
 
-Section Titles
+Section Titles 
 
 ```asciidoc
 = Level 0 (may only be used in document's header)
 
-== Level 1 <h2>
+== Same as <h2>
 
-=== Level 2 <h3>
+=== Same as <h3>
 
-==== Level 3 <h4>
+==== Same as <h4>
 
-===== Level 4 <h5>
+===== Same as  <h5>
 
-====== Level 5 <h6>
+====== Same as <h6>
 
-======= Level 6 <h7>
+======= Same as <h7>
 
 ```
 
