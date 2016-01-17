@@ -328,7 +328,7 @@ switch ($x) {
         //デフォルトで何かを実行します
 }
 
-// While, do...while and for loops are probably familiar
+// while, do,  forの構文は、おそらく他の言語とも共通なものです
 $i = 0;
 while ($i < 5) {
     echo $i++;
@@ -351,14 +351,14 @@ echo "\n";
 
 $wheels = ['bicycle' => 2, 'car' => 4];
 
-// Foreach loops can iterate over arrays
+//Foreachループによって、 配列を反復処理できます
 foreach ($wheels as $wheel_count) {
     echo $wheel_count;
 } // Prints "24"
 
 echo "\n";
 
-// You can iterate over the keys as well as the values
+// 値と同じ様に、keyも反復処理できます
 foreach ($wheels as $vehicle => $wheel_count) {
     echo "A $vehicle has $wheel_count wheels";
 }
@@ -382,20 +382,20 @@ for ($i = 0; $i < 5; $i++) {
 
 
 /********************************
- * Functions
+ * 関数
  */
 
-// Define a function with "function":
+// 関数を"function"で定義します
 function my_function () {
     return 'Hello';
 }
 
 echo my_function(); // => "Hello"
 
-// A valid function name starts with a letter or underscore, followed by any
-// number of letters, numbers, or underscores.
+// 有効な関数名は、文字またはアンダースコアで始めます。それ以降は
+// どれだけ長い文字、数値、アンダースコアを続けても構いません
 
-function add ($x, $y = 1) { // $y is optional and defaults to 1
+function add ($x, $y = 1) { // $yはオプショナルな値であり、デフォルトで 1 です
     $result = $x + $y;
     return $result;
 }
@@ -403,10 +403,10 @@ function add ($x, $y = 1) { // $y is optional and defaults to 1
 echo add(4); // => 5
 echo add(4, 2); // => 6
 
-// $result is not accessible outside the function
-// print $result; // Gives a warning.
+// $result には、関数の外からアクセス出来ません
+// print $result; // エラーになります
 
-// Since PHP 5.3 you can declare anonymous functions;
+// PHP 5.3 から、無名関数が使えます
 $inc = function ($x) {
     return $x + 1;
 };
@@ -417,9 +417,9 @@ function foo ($x, $y, $z) {
     echo "$x - $y - $z";
 }
 
-// Functions can return functions
+// 関数は、関数を返すことができます
 function bar ($x, $y) {
-    // Use 'use' to bring in outside variables
+    // 関数外の変数を利用したいときは、'use'を使います
     return function ($z) use ($x, $y) {
         foo($x, $y, $z);
     };
@@ -428,14 +428,15 @@ function bar ($x, $y) {
 $bar = bar('A', 'B');
 $bar('C'); // Prints "A - B - C"
 
-// You can call named functions using strings
+// 文字列を使って、定義済みの関数を呼び出すことができます
 $function_name = 'add';
 echo $function_name(1, 2); // => 3
-// Useful for programatically determining which function to run.
-// Or, use call_user_func(callable $callback [, $parameter [, ... ]]);
+
+// プログラミング中に、動的に動かす関数を決める場合に便利です。
+// もしくは、call_user_func(callable $callback [, $parameter [, ... ]]) を使っても同じことができます
 
 
-// You can get the all the parameters passed to a function
+// 特に指定しなくても、渡された引数を受け取ることもできます
 function parameters() {
     $numargs = func_num_args();
     if ($numargs > 0) {
@@ -450,38 +451,39 @@ function parameters() {
 parameters('Hello', 'World'); // Hello | 0 - Hello | 1 - World |
 
 /********************************
- * Includes
+ * ファイルの読み込み
  */
 
 <?php
-// PHP within included files must also begin with a PHP open tag.
+// 読み込まれたファイル中のPHPは、同じくPHPのオープンタグで始める必要があります
 
 include 'my-file.php';
-// The code in my-file.php is now available in the current scope.
-// If the file cannot be included (e.g. file not found), a warning is emitted.
+// my-file.php中のコードは、現在のスコープの中で使用可能です
+// もしファイルを読み込めなければ (例:file not found)、警告が発せられます
 
 include_once 'my-file.php';
-// If the code in my-file.php has been included elsewhere, it will
-// not be included again. This prevents multiple class declaration errors
+// my-file.phpのコードが既にどこかで読み込まれていれば、
+// ファイルを読み込みません。これは、クラスの多重定義のエラーを防ぎます
 
 require 'my-file.php';
 require_once 'my-file.php';
-// Same as include(), except require() will cause a fatal error if the
-// file cannot be included.
+// include()と同じように、require()はもしファイルを読み込むことができなければ、
+// 致命的エラーの原因となります
 
-// Contents of my-include.php:
+// my-include.phpの内容
 <?php
 
 return 'Anything you like.';
 // End file
 
-// Includes and requires may also return a value.
+// include()とrequire()は一つの値を返します
 $value = include 'my-include.php';
 
-// Files are included based on the file path given or, if none is given,
-// the include_path configuration directive. If the file isn't found in
-// the include_path, include will finally check in the calling script's
-// own directory and the current working directory before failing.
+// ファイルは与えられたファイルパスを基に読み込まれます。
+// ファイルパスを指定しない場合は、include_path の設定を利用します。
+// もしファイルがinclude_path中に見つからない場合は、
+// 呼び出し元スクリプトのディレクトリと作業ディレクトリの中も探します。
+// それでも見つからない場合、失敗します。
 /* */
 
 /********************************
