@@ -1,8 +1,8 @@
 ---
 language: make
 contributors:
-	- ["Robert Steed", "https://github.com/robochat"]
-	- ["altaris", "https://github.com/altaris"]
+    - ["Robert Steed", "https://github.com/robochat"]
+    - ["altaris", "https://github.com/altaris"]
 filename: Makefile
 ---
 
