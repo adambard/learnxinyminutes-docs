@@ -277,7 +277,7 @@ if (false) {
     print 'Does';
 }
 
-// 参考演算子
+// 三項演算子
 print (false ? 'Does not get printed' : 'Does');
 
 // PHP 5.3から、三項演算子の短縮形が使用できます
