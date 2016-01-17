@@ -487,51 +487,52 @@ $value = include 'my-include.php';
 /* */
 
 /********************************
- * Classes
+ * クラス
  */
 
-// Classes are defined with the class keyword
+// クラスはclassキーワードで定義します
 
 class MyClass
 {
-    const MY_CONST      = 'value'; // A constant
+    const MY_CONST      = 'value'; // クラス定数です
 
     static $staticVar   = 'static';
 
-    // Static variables and their visibility
+    // スタティック変数とアクセス制限
     public static $publicStaticVar = 'publicStatic';
-    // Accessible within the class only
+    // クラス内でのみアクセス可能
     private static $privateStaticVar = 'privateStatic';
-    // Accessible from the class and subclasses
+    // そのクラスと子クラスで参照可能
     protected static $protectedStaticVar = 'protectedStatic';
 
-    // Properties must declare their visibility
+    // プロパティはアクセス制限を宣言する必要があります
     public $property    = 'public';
     public $instanceProp;
-    protected $prot = 'protected'; // Accessible from the class and subclasses
-    private $priv   = 'private';   // Accessible within the class only
+    protected $prot = 'protected'; // そのクラスと子クラスで参照可能
+    private $priv   = 'private';   // クラス内でのみアクセス可能
 
-    // Create a constructor with __construct
+    // __constructでコンストラクターを生成します
     public function __construct($instanceProp) {
-        // Access instance variables with $this
+        // $thisでインスタンス変数にアクセスします
         $this->instanceProp = $instanceProp;
     }
 
-    // Methods are declared as functions inside a class
+    // メソッドはクラス内で関数として定義されます
     public function myMethod()
     {
         print 'MyClass';
     }
 
-    //final keyword would make a function unoverridable
+    // finalキーワードは関数の上書きを禁止します
     final function youCannotOverrideMe()
     {
     }
 
 /*
- * Declaring class properties or methods as static makes them accessible without
- * needing an instantiation of the class. A property declared as static can not
- * be accessed with an instantiated class object (though a static method can).
+ * クラスプロパティまたはメソッドをstaticとして作成すれば、
+ * クラスをインスタンス化(newすること)しなくてもアクセスできます。
+ * プロパティをstaticとして定義すると、
+ * インスタンス化されたクラスオブジェクトを通してのアクセスはできなくなります。
  */
 
     public static function myStaticMethod()
@@ -540,23 +541,23 @@ class MyClass
     }
 }
 
-// Class constants can always be accessed statically
+// クラス定数は、いつでも静的にアクセスできます。
 echo MyClass::MY_CONST;    // Outputs 'value';
 
 echo MyClass::$staticVar;  // Outputs 'static';
 MyClass::myStaticMethod(); // Outputs 'I am static';
 
-// Instantiate classes using new
+// クラスをインスタンス化するには、newを使います。
 $my_class = new MyClass('An instance property');
-// The parentheses are optional if not passing in an argument.
+// 括弧はもし引数を渡す必要がなければ省略可能です。
 
-// Access class members using ->
+// ->を使ってクラスのメンバにアクセスします。
 echo $my_class->property;     // => "public"
 echo $my_class->instanceProp; // => "An instance property"
 $my_class->myMethod();        // => "MyClass"
 
 
-// Extend classes using "extends"
+// extendsを使用してクラスを継承します。
 class MyOtherClass extends MyClass
 {
     function printProtectedProperty()
@@ -564,7 +565,7 @@ class MyOtherClass extends MyClass
         echo $this->prot;
     }
 
-    // Override a method
+    // メソッドを上書きします。
     function myMethod()
     {
         parent::myMethod();
@@ -580,7 +581,7 @@ final class YouCannotExtendMe
 {
 }
 
-// You can use "magic methods" to create getters and setters
+// 「マジックメソッド」を使ってゲッターとセッターを生成できます。
 class MyMapClass
 {
     private $property;
@@ -597,12 +598,12 @@ class MyMapClass
 }
 
 $x = new MyMapClass();
-echo $x->property; // Will use the __get() method
-$x->property = 'Something'; // Will use the __set() method
+echo $x->property; // __get() メソッドを使用します
+$x->property = 'Something'; // __set() メソッドを使用します
 
-// Classes can be abstract (using the abstract keyword) or
-// implement interfaces (using the implements keyword).
-// An interface is declared with the interface keyword.
+// クラスは抽象クラスにもできます(abstractキーワードを使用します)し、
+// インターフェースを実装することもできます(implementsキーワードを使用します)。
+// インターフェースはinterfaceキーワードで定義します。
 
 interface InterfaceOne
 {
@@ -614,7 +615,7 @@ interface InterfaceTwo
     public function doSomethingElse();
 }
 
-// interfaces can be extended
+// インターフェースは継承することができます
 interface InterfaceThree extends InterfaceTwo
 {
     public function doAnotherContract();
@@ -639,7 +640,7 @@ class MyConcreteClass extends MyAbstractClass implements InterfaceTwo
 }
 
 
-// Classes can implement more than one interface
+// クラスは1つ以上のインターフェースを実装できます。
 class SomeOtherClass implements InterfaceOne, InterfaceTwo
 {
     public function doSomething()
@@ -655,10 +656,10 @@ class SomeOtherClass implements InterfaceOne, InterfaceTwo
 
 
 /********************************
- * Traits
+ * トレイト
  */
 
-// Traits are available from PHP 5.4.0 and are declared using "trait"
+// トレイトはPHP 5.4.0 以上で使用可能で、traitキーワードで定義します。
 
 trait MyTrait
 {
@@ -678,39 +679,40 @@ $cls->myTraitMethod(); // Prints "I have MyTrait"
 
 
 /********************************
- * Namespaces
+ *  名前空間
  */
 
-// This section is separate, because a namespace declaration
-// must be the first statement in a file. Let's pretend that is not the case
+// このセクションは名前空間の定義はファイルの先頭で宣言される必要があるため、
+// 独立しています。
+// そのケースには当てはまらないふりをして続けましょう。
 
 <?php
 
-// By default, classes exist in the global namespace, and can
-// be explicitly called with a backslash.
+// デフォルトでは、クラスはグローバルな名前空間に存在し、
+// バックスラッシュによって明確にコールできます。
 
 $cls = new \MyClass();
 
 
 
-// Set the namespace for a file
+// ファイルに名前空間をセットします
 namespace My\Namespace;
 
 class MyClass
 {
 }
 
-// (from another file)
+// (別のファイルからの呼び出し)
 $cls = new My\Namespace\MyClass;
 
-//Or from within another namespace.
+// 異なる名前空間からの呼び出し
 namespace My\Other\Namespace;
 
 use My\Namespace\MyClass;
 
 $cls = new MyClass();
 
-// Or you can alias the namespace;
+// 名前空間に別名をつけることもできます
 
 namespace My\Other\Namespace;
 
@@ -719,27 +721,28 @@ use My\Namespace as SomeOtherNamespace;
 $cls = new SomeOtherNamespace\MyClass();
 
 /**********************
-*  Error Handling
+*  エラーハンドリング
 *  
 */
 
-// Simple error handling can be done with try catch block
+// シンプルなエラーハンドリングは、try catchを使えば行えます
 
 try {
-    // Do something
+    // 処理を実行します
 } catch ( Exception $e) {
-    // Handle exception
+    // 例外を処理します
 }
 
-// When using try catch blocks in a namespaced enviroment use the following
+// try catchを名前空間を持った環境で使用するときは、次のようにします。
 
 try { 
     // Do something
+    // 処理を実行します
 } catch (\Exception $e) { 
-    // Handle exception
+    // 例外を処理します
 }
 
-// Custom exceptions
+// 例外のカスタマイズ
 
 class MyException extends Exception {}
 
@@ -757,16 +760,17 @@ try {
 
 ```
 
-## More Information
+## より詳しい情報
 
-Visit the [official PHP documentation](http://www.php.net/manual/) for reference
-and community input.
+リファレンスを見るため、またコミュニティへの情報提供のために、 [PHP公式ドキュメント](http://www.php.net/manual/) を訪れてみてください。
 
-If you're interested in up-to-date best practices, visit
-[PHP The Right Way](http://www.phptherightway.com/).
+もし最新のベストプラクティスに興味があるなら、
+[PHP The Right Way](http://www.phptherightway.com/)を訪れてみてください。
 
-If you're coming from a language with good package management, check out
-[Composer](http://getcomposer.org/).
 
-For common standards, visit the PHP Framework Interoperability Group's
-[PSR standards](https://github.com/php-fig/fig-standards).
+もしあなたがよいパッケージマネジメント・システムを持つ言語で開発経験があるのなら、
+[Composer](http://getcomposer.org/)も確かめてみてください。
+
+
+共通基準を知るためには、PHP Framework Interoperability Groupの
+[PSR standards](https://github.com/php-fig/fig-standards)にも訪れてみてください。
