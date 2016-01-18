@@ -2,8 +2,10 @@
 language: wolfram
 contributors:
     - ["hyphz", "http://github.com/hyphz/"]
+translators:
     - ["altaris", "http://github.com/altaris/"]
-filename: learnwolfram.nb
+filename: learnwolfram-fr.nb
+lang: fr-fr
 ---
 
 Le langage Wolfram est utilisé dans les programmes suivants :
