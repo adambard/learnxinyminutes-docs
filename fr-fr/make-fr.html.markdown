@@ -3,7 +3,8 @@ language: make
 contributors:
     - ["Robert Steed", "https://github.com/robochat"]
     - ["altaris", "https://github.com/altaris"]
-filename: Makefile
+filename: Makefile-fr
+lang: fr-fr
 ---
 
 Un makefile est un fichier qui définit un ensemble de règles liées entre elles
@@ -34,23 +35,23 @@ l'implémentation standard : GNU make.
 #-----------------------------------------------------------------------
 
 # Une règle. Elle ne sera exécutée que si fichier0.txt n'existe pas.
-file0.txt:
+fichier0.txt:
 	echo "truc" > fichier0.txt
 	# Même les commentaires sont transférés dans le terminal.
 
 # Cette règle ne sera exécutée que si fichier0.txt est plus récent que
 # fichier1.txt.
-file1.txt: fichier0.txt
+fichier1.txt: fichier0.txt
 	cat fichier0.txt > fichier1.txt
-	# Utiliser les même guillemets que dans un terminal.
+	# Utiliser la même syntaxe que dans un terminal.
 	@cat fichier0.txt >> fichier1.txt
 	# @ empêche l'affichage de la sortie texte d'une commande.
 	-@echo 'hello'
-	# - signifie que la règle devrait continuer à être exécutée si cette
-	# commande échoue.
+	# - signifie que la règle devrait continuer à s'exécuter si cette commande
+	# échoue.
 
-# Un règle peut avoir plusieurs cibles et plusieurs dépendances.
-file2.txt fichier3.txt: fichier0.txt fichier1.txt
+# Une règle peut avoir plusieurs cibles et plusieurs dépendances.
+fichier2.txt fichier3.txt: fichier0.txt fichier1.txt
 	touch fichier2.txt
 	touch fichier3.txt
 
@@ -62,7 +63,7 @@ file2.txt fichier3.txt: fichier0.txt fichier1.txt
 # Fausses règles
 #-----------------------------------------------------------------------
 
-# Une fausse règle est un règle qui ne correspond pas à un fichier.
+# Une fausse règle est une règle qui ne correspond pas à un fichier.
 # Par définition, elle ne peut pas être à jour, et donc make l’exécutera à
 # chaque demande.
 all: maker process
@@ -75,7 +76,7 @@ maker:
 # suivante :
 .PHONY: all maker process
 
-# Un règle dépendante d'une fausse règle sera toujours exécutée.
+# Une règle dépendante d'une fausse règle sera toujours exécutée.
 ex0.txt ex1.txt: maker
 
 # Voici quelques exemples fréquents de fausses règles : all, make, clean,
