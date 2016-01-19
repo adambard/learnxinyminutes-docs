@@ -110,7 +110,7 @@ BetterPrintTo[x_] := Module[{y}, (For[y=0, y<x, y++, (Print@y)])]
 y = 20             (* y est une variable globale *)
 BetterPrintTo[5]   (* 0 1 2 3 4 *)
 y                  (* 20, y n'a pas été modifiée car le y du Module masque le
-                          y global. C'est bien mieux comme ca ! *)
+                          y global. C'est bien mieux comme ça ! *)
 
 (* Module permet de faire des déclarations globales aussi *)
 Module[{count}, count=0;        (* count est une variable locale *)
@@ -159,7 +159,7 @@ Manipulate[y^2, {y, 0, 20}] (* Crée une interface graphique interactive qui
                                affiche y^2, permettant à l'utilisateur de
                                modifier la valeur de y grâce à un contrôle
                                allant de 0 à 20. Ne fonctionne que si le
-                               logiciel utilisé gère les éléments graphique. *)
+                               logiciel utilisé gère les éléments graphiques. *)
 ```
 
 ## Envie d'aller plus loin ?
