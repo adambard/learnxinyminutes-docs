@@ -1,9 +1,9 @@
 ---
 language: make
 contributors:
-    - ["Robert Steed", "https://github.com/robochat"]
+	- ["Robert Steed", "https://github.com/robochat"]
 translators:
-    - ["altaris", "https://github.com/altaris"]
+	- ["altaris", "https://github.com/altaris"]
 filename: Makefile-fr
 lang: fr-fr
 ---
@@ -37,24 +37,24 @@ l'implémentation standard : GNU make.
 
 # Une règle. Elle ne sera exécutée que si fichier0.txt n'existe pas.
 fichier0.txt:
-    echo "truc" > fichier0.txt
-    # Même les commentaires sont transférés dans le terminal.
+	echo "truc" > fichier0.txt
+	# Même les commentaires sont transférés dans le terminal.
 
 # Cette règle ne sera exécutée que si fichier0.txt est plus récent que
 # fichier1.txt.
 fichier1.txt: fichier0.txt
-    cat fichier0.txt > fichier1.txt
-    # Utiliser la même syntaxe que dans un terminal.
-    @cat fichier0.txt >> fichier1.txt
-    # @ empêche l'affichage de la sortie texte d'une commande.
-    -@echo 'hello'
-    # - signifie que la règle devrait continuer à s'exécuter si cette commande
-    # échoue.
+	cat fichier0.txt > fichier1.txt
+	# Utiliser la même syntaxe que dans un terminal.
+	@cat fichier0.txt >> fichier1.txt
+	# @ empêche l'affichage de la sortie texte d'une commande.
+	-@echo 'hello'
+	# - signifie que la règle devrait continuer à s'exécuter si cette commande
+	# échoue.
 
 # Une règle peut avoir plusieurs cibles et plusieurs dépendances.
 fichier2.txt fichier3.txt: fichier0.txt fichier1.txt
-    touch fichier2.txt
-    touch fichier3.txt
+	touch fichier2.txt
+	touch fichier3.txt
 
 # Make affichera un avertissement si le makefile comporte plusieurs règles pour
 # une même cible. Cependant les règles vides ne comptent pas, et peuvent être
@@ -71,7 +71,7 @@ all: maker process
 
 # La déclaration des règles peut être faite dans n'importe quel ordre.
 maker:
-    touch ex0.txt ex1.txt
+	touch ex0.txt ex1.txt
 
 # On peut transformer une règle en fausse règle grâce à la cible spéciale
 # suivante :
@@ -89,17 +89,17 @@ ex0.txt ex1.txt: maker
 
 # Utilise un wildcard pour des noms de fichier
 process: fichier*.txt
-    @echo $^    # $^ est une variable contenant la liste des dépendances de la
-                # cible actuelle.
-    @echo $@    # $@ est le nom de la cible actuelle. En cas de cibles
-                # multiples, $@ est le nom de la cible ayant causé l'exécution
-                # de cette règle.
-    @echo $<    # $< contient la première dépendance.
-    @echo $?    # $? contient la liste des dépendances qui ne sont pas à jour.
-    @echo $+    # $+ contient la liste des dépendances avec d'éventuels
-                # duplicatas, contrairement à $^.
-    @echo $|    # $| contient la liste des cibles ayant préséance sur la cible
-                # actuelle.
+	@echo $^    # $^ est une variable contenant la liste des dépendances de la
+				# cible actuelle.
+	@echo $@    # $@ est le nom de la cible actuelle. En cas de cibles
+				# multiples, $@ est le nom de la cible ayant causé l'exécution
+				# de cette règle.
+	@echo $<    # $< contient la première dépendance.
+	@echo $?    # $? contient la liste des dépendances qui ne sont pas à jour.
+	@echo $+    # $+ contient la liste des dépendances avec d'éventuels
+				# duplicatas, contrairement à $^.
+	@echo $|    # $| contient la liste des cibles ayant préséance sur la cible
+				# actuelle.
 
 # Même si la définition de la règle est scindée en plusieurs morceaux, $^
 # listera toutes les dépendances indiquées.
@@ -113,30 +113,30 @@ process: ex1.txt fichier0.txt
 # En utilisant le pattern matching, on peut par exemple créer des règles pour
 # convertir les fichiers d'un certain format dans un autre.
 %.png: %.svg
-    inkscape --export-png $^
+	inkscape --export-png $^
 
 # Make exécute une règle même si le fichier correspondant est situé dans un sous
 # dossier. En cas de conflit, la règle avec la meilleure correspondance est
 # choisie.
 small/%.png: %.svg
-    inkscape --export-png --export-dpi 30 $^
+	inkscape --export-png --export-dpi 30 $^
 
 # Dans ce type de conflit (même cible, même dépendances), make exécutera la
 # dernière règle déclarée...
 %.png: %.svg
-    @echo cette règle est choisie
+	@echo cette règle est choisie
 
 # Dans ce type de conflit (même cible mais pas les mêmes dépendances), make
 # exécutera la première règle pouvant être exécutée.
 %.png: %.ps
-    @echo cette règle n\'est pas choisie si *.svg et *.ps sont présents
+	@echo cette règle n\'est pas choisie si *.svg et *.ps sont présents
 
 # Make a des règles pré établies. Par exemple, il sait comment créer la cible
 # *.o à partir de *.c.
 
 # Les makefiles plus vieux utilisent un matching par extension de fichier.
 .png.ps:
-    @echo cette règle est similaire à une règle par pattern matching
+	@echo cette règle est similaire à une règle par pattern matching
 
 # Utiliser cette règle spéciale pour déclarer une règle comme ayant un
 # matching par extension de fichier.
@@ -152,10 +152,10 @@ variable = Ted
 variable2="Sarah"
 
 echo:
-    @echo $(variable)
-    @echo ${variable2}
-    @echo $variable    # Cette syntaxe signifie $(n)ame et non pas $(variable) !
-    @echo $(variable3) # Les variables non déclarées valent "" (chaîne vide).
+	@echo $(variable)
+	@echo ${variable2}
+	@echo $variable    # Cette syntaxe signifie $(n)ame et non pas $(variable) !
+	@echo $(variable3) # Les variables non déclarées valent "" (chaîne vide).
 
 # Les variables sont déclarées de 4 manières, de la plus grande priorité à la
 # plus faible :
@@ -177,21 +177,21 @@ variable4 +=gris
 # Assignations de variable pour les règles correspondant à un pattern
 # (spécifique à GNU make).
 *.png: variable2 = Sara # Pour toutes les règles correspondant à *.png, et tous
-                        # leurs descendants, la variable variable2 vaudra
-                        # "Sara".
+						# leurs descendants, la variable variable2 vaudra
+						# "Sara".
 # Si le jeux des dépendances et descendances devient vraiment trop compliqué,
 # des incohérences peuvent survenir.
 
 # Certaines variables sont prédéfinies par make :
 affiche_predefinies:
-    echo $(CC)
-    echo ${CXX}
-    echo $(FC)
-    echo ${CFLAGS}
-    echo $(CPPFLAGS)
-    echo ${CXXFLAGS}
-    echo $(LDFLAGS)
-    echo ${LDLIBS}
+	echo $(CC)
+	echo ${CXX}
+	echo $(FC)
+	echo ${CFLAGS}
+	echo $(CPPFLAGS)
+	echo ${CXXFLAGS}
+	echo $(LDFLAGS)
+	echo ${LDLIBS}
 
 #-----------------------------------------------------------------------
 # Variables : le retour
@@ -225,9 +225,9 @@ fichiers_source = $(wildcard *.c */*.c)
 fichiers_objet  = $(patsubst %.c,%.o,$(fichiers_source))
 
 ls: * src/*
-    @echo $(filter %.txt, $^)
-    @echo $(notdir $^)
-    @echo $(join $(dir $^),$(notdir $^))
+	@echo $(filter %.txt, $^)
+	@echo $(notdir $^)
+	@echo $(join $(dir $^),$(notdir $^))
 
 #-----------------------------------------------------------------------
 # Directives
@@ -240,14 +240,14 @@ include meuh.mk
 sport = tennis
 report:
 ifeq ($(sport),tennis)                  # Il y a aussi ifneq.
-    @echo 'jeu, set et match'
+	@echo 'jeu, set et match'
 else
-    @echo "C'est pas ici Wimbledon ?"
+	@echo "C'est pas ici Wimbledon ?"
 endif
 
 truc = true
 ifdef $(truc)                           # Il y a aussi ifndef.
-    machin = 'salut'
+	machin = 'salut'
 endif
 ```
 
