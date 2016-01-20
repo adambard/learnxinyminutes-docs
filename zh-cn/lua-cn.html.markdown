@@ -210,7 +210,7 @@ f2 = {a = 2, b = 3}
 
 metafraction = {} 
 function metafraction.__add(f1, f2) 
-  sum = {} 
+  local sum = {} 
   sum.b = f1.b * f2.b 
   sum.a = f1.a * f2.b + f2.a * f1.b 
   return sum
@@ -273,7 +273,7 @@ eatenBy = myFavs.animal  -- 可以工作！感谢元表
 Dog = {}                                   -- 1. 
 
 function Dog:new()                         -- 2. 
-  newObj = {sound = 'woof'}                -- 3. 
+  local newObj = {sound = 'woof'}                -- 3. 
   self.__index = self                      -- 4. 
   return setmetatable(newObj, self)        -- 5. 
 end 
@@ -307,7 +307,7 @@ mrDog:makeSound()  -- 'I say woof'         -- 8.
 LoudDog = Dog:new()                           -- 1. 
 
 function LoudDog:makeSound() 
-  s = self.sound .. ' '                       -- 2. 
+  local s = self.sound .. ' '                       -- 2. 
   print(s .. s .. s) 
 end 
 
