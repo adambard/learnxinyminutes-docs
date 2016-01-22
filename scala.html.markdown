@@ -327,8 +327,14 @@ divideInts(10, 3)    // (Int, Int) = (3,1)
 val d = divideInts(10, 3)    // (Int, Int) = (3,1)
 
 d._1    // Int = 3
-
 d._2    // Int = 1
+
+// Alternatively you can do multiple-variable assignment to tuple, which is more
+// convenient and readable in many cases
+val (div, mod) = divideInts(10, 3)
+
+div     // Int = 3
+mod     // Int = 1
 
 
 /////////////////////////////////////////////////
@@ -460,6 +466,9 @@ def matchEverything(obj: Any): String = obj match {
 
   // You can nest patterns:
   case List(List((1, 2, "YAY"))) => "Got a list of list of tuple"
+
+  // Match any case (default) if all previous haven't matched
+  case _ => "Got unknown object"
 }
 
 // In fact, you can pattern match any object with an "unapply" method. This
@@ -611,6 +620,9 @@ import scala.collection.immutable.{List => ImmutableList}
 
 // Import all classes, except some. The following excludes Map and Set:
 import scala.collection.immutable.{Map => _, Set => _, _}
+
+// Java classes can also be imported. Scala syntax can be used
+import java.swing.{JFrame, JWindow}
 
 // Your programs entry point is defined in an scala file using an object, with a
 // single method, main:

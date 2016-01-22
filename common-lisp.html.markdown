@@ -339,7 +339,7 @@ nil                  ; for false - and the empty list
 
 ;; The () in the above is the list of arguments for the function
 (defun hello (name)
-   (format nil "Hello, ~a " name))
+   (format nil "Hello, ~a" name))
 
 (hello "Steve") ; => "Hello, Steve"
 
@@ -430,7 +430,7 @@ nil                  ; for false - and the empty list
 (defun walker (n)
   (if (zerop n)
       :walked
-      (walker (1- n))))
+      (walker (- n 1))))
 
 (walker 5) ; => :walked
 
