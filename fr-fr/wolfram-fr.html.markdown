@@ -57,101 +57,101 @@ x                (* 20 *)
 
 (* Le langage Wolfram effectue des manipulations symboliques, donc utiliser des
    variables non déclarées n'est pas illégal *)
-cow + 5          (* 5 + cow, comme cow n'est pas déclarée, l'évaluation
+truc + 5         (* 5 + truc, comme truc n'est pas déclarée, l'évaluation
                     s'arrête là *)
-cow + 5 + 10     (* 15 + cow, on évalue ce qu'on peut... *)
-%                (* 15 + cow, % représente le dernier résultat *)
-% - cow          (* 15, les variables non déclarées peuvent quand même
+truc + 5 + 10    (* 15 + truc, on évalue ce qu'on peut... *)
+%                (* 15 + truc, % représente le dernier résultat *)
+% - truc         (* 15, les variables non déclarées peuvent quand même
                     s'annuler *)
-moo = cow + 5    (* Attention : moo est ici une expression et non un nombre *)
+chose = truc + 5 (* Attention : chose est ici une expression et non un nombre *)
 
 (* Déclaration d'une fonction *)
-Double[x_] := x * 2    (* Le symbole := empêche l'évaluation immédiate du terme
-                          à droite *)
-Double[10]             (* 20 *)
-Double[Sin[Pi/2]]      (* 2 *)
-Double @ Sin @ (Pi/2)  (* 2, Utiliser @ évite les paquets de crochets
-                            fermants si moches *)
-(Pi/2) // Sin // Double(* 2, Utiliser // permet d'écrire les fonctions dans
-                             l'ordre d'appel *)
+Double[x_] := x * 2     (* Le symbole := empêche l'évaluation immédiate du terme
+                           à droite *)
+Double[10]              (* 20 *)
+Double[Sin[Pi/2]]       (* 2 *)
+Double @ Sin @ (Pi/2)   (* 2, Utiliser @ évite les paquets de crochets
+                           fermants si moches *)
+(Pi/2) // Sin // Double (* 2, Utiliser // permet d'écrire les fonctions dans
+                           l'ordre d'appel *)
 
 (* Pour la programmation impérative, utiliser ; pour séparer les expressions *)
-MyFirst[] := (Print@"Hello"; Print@"World")  (* Les parenthèses sont nécessaires
-                                                car ; est prioritaire sur := *)
-MyFirst[]                                    (* Hello World *)
+Salut[] := (Print@"Hello"; Print@"World")  (* Les parenthèses sont nécessaires
+                                              car ; est prioritaire sur := *)
+Salut[]                                    (* Hello World *)
 
 (* Boucles For à la C *)
-PrintTo[x_] := For[y=0, y<x, y++, (Print[y])]  (* L'évaluation des boucles For
+Compter[x_] := For[y=0, y<x, y++, (Print[y])]  (* L'évaluation des boucles For
                                                   se fait comme dans le C *)
-PrintTo[5]                                     (* 0 1 2 3 4 *)
+Compter[5]                                     (* 0 1 2 3 4 *)
 
 (* Boucles While *)
 x = 0; While[x < 2, (Print@x; x++)]     (* De nouveau, comme dans le C *)
 
 (* Expressions conditionnelles et If *)
-x = 8; If[x==8, Print@"Yes", Print@"No"]   (* If [condition, si vrai,
-                                              si faux] *)
-Switch[x, 2, Print@"Two", 8, Print@"Yes"]  (* Switch par valeur *)
-Which[x==2, Print@"No", x==8, Print@"Yes"] (* Switch du type if, else if,
-                                              else if, ..., else *)
+x = 8; If[x==8, Print@"Huit", Print@"Pas huit"] (* If [condition, si vrai,
+                                                   si faux] *)
+Switch[x, 2, Print@"Deux", 8, Print@"Huit"]     (* Switch par valeur *)
+Which[x==2, Print@"Deux", x==8, Print@"Huit"]   (* Switch du type if, else if,
+                                                   else if, ..., else *)
 
 (* Les variables autres que les paramètres de fonctions sont par défaut
    globales, même à l'intérieur des fonctions *)
 y = 10             (* 10, y est une variable globale *)
-PrintTo[5]         (* 0 1 2 3 4 *)
-y                  (* 5, y a été modifiée par PrintTo *)
+Compter[5]         (* 0 1 2 3 4 *)
+y                  (* 5, y a été modifiée par Compter *)
 x = 20             (* 20, x est une variable globale *)
-PrintTo[5]         (* 0 1 2 3 4 *)
-x                  (* 20, dans PrintTo, le paramètre x masque la variable
+Compter[5]         (* 0 1 2 3 4 *)
+x                  (* 20, dans Compter, le paramètre x masque la variable
                       globale x *)
 
 (* La fonction Module permet d'utiliser des variables locales *)
-BetterPrintTo[x_] := Module[{y}, (For[y=0, y<x, y++, (Print@y)])]
+MieuxCompter[x_] := Module[{y}, (For[y=0, y<x, y++, (Print@y)])]
 y = 20             (* y est une variable globale *)
-BetterPrintTo[5]   (* 0 1 2 3 4 *)
+MieuxCompter[5]    (* 0 1 2 3 4 *)
 y                  (* 20, y n'a pas été modifiée car le y du Module masque le
                           y global. C'est bien mieux comme ça ! *)
 
 (* Module permet de faire des déclarations globales aussi *)
-Module[{count}, count=0;        (* count est une variable locale *)
-  (IncCount[] := ++count);      (* Ce module déclare des fonctions, mais elles
+Module[{compte}, compte=0;      (* compte est une variable locale *)
+  (Incrementer[] := ++compte);  (* Ce module déclare des fonctions, mais elles
                                    ne sont globales. Elles ont cependant accès
                                    aux variables locales au module. *)
-  (DecCount[] := --count)]
-count              (* count, car il n'y a pas de variable globale nommée
-                      count *)
-IncCount[]         (* 1, la fonction utilise la variable count du module *)
-IncCount[]         (* 2, le précédent appel de IncCount a modifié count *)
-DecCount[]         (* 1 *)
-count              (* count, car il n'existe toujours pas de variable globale
-                      nommé count *)
+  (Decrementer[] := --compte)]
+compte             (* compte, car il n'y a pas de variable globale nommée
+                      compte *)
+Incrementer[]      (* 1, la fonction utilise la variable compte du module *)
+Incrementer[]      (* 2, le précédent appel de Incrementer a modifié compte *)
+Decrementer[]      (* 1 *)
+compte             (* compte, car il n'existe toujours pas de variable globale
+                      nommé compte *)
 
 (* Listes *)
-myList = {1, 2, 3, 4}     (* {1, 2, 3, 4} *)
-myList[[1]]               (* 1, les indexes commencent à 1 et non 0 !!! *)
-Map[Double, myList]       (* {2, 4, 6, 8}, appliquer une fonction à une liste de
+liste = {1, 2, 3, 4}     (* {1, 2, 3, 4} *)
+liste[[1]]               (* 1, les indexes commencent à 1 et non 0 !!! *)
+Map[Double, liste]       (* {2, 4, 6, 8}, appliquer une fonction à une liste de
                              manière fonctionnelle *)
-Double /@ myList          (* {2, 4, 6, 8}, syntaxe abrégée de la ligne
+Double /@ liste          (* {2, 4, 6, 8}, syntaxe abrégée de la ligne
                              précédente *)
-Scan[Print, myList]       (* 1 2 3 4, boucle impérative sur une liste *)
-Fold[Plus, 0, myList]     (* 10 (0+1+2+3+4) *)
-FoldList[Plus, 0, myList] (* {0, 1, 3, 6, 10}, variante de la fonction
+Scan[Print, liste]       (* 1 2 3 4, boucle impérative sur une liste *)
+Fold[Plus, 0, liste]     (* 10 (0+1+2+3+4) *)
+FoldList[Plus, 0, liste] (* {0, 1, 3, 6, 10}, variante de la fonction
                              précédente qui donne aussi les résultats
                              intermédiaires *)
-Append[myList, 5]         (* {1, 2, 3, 4, 5}, myList n'est pas modifiée... *)
-Prepend[myList, 5]        (* {5, 1, 2, 3, 4}, ... mais elle peut l'être en 
-                             écrivant "myList = " *)
-Join[myList, {3, 4}]      (* {1, 2, 3, 4, 3, 4} *)
-myList[[2]] = 5           (* {1, 5, 3, 4}, ceci modifie bien la liste *)
+Append[liste, 5]         (* {1, 2, 3, 4, 5}, liste n'est pas modifiée... *)
+Prepend[liste, 5]        (* {5, 1, 2, 3, 4}, ... mais elle peut l'être en 
+                             écrivant "liste = " *)
+Join[liste, {3, 4}]      (* {1, 2, 3, 4, 3, 4} *)
+liste[[2]] = 5           (* {1, 5, 3, 4}, ceci modifie bien la liste *)
 
 (* Tables associatives, ou dictionnaires *)
-myHash = <|"Green" -> 2, "Red" -> 1|>   (* Crée une table associative *)
-myHash[["Green"]]                       (* 2, l'utilise *)
-myHash[["Green"]] := 5                  (* 5, la modifie *)
-myHash[["Puce"]] := 3.5                 (* 3.5, l'étend *)
-KeyDropFrom[myHash, "Green"]            (* Supprime la clé "Green" *)
-Keys[myHash]                            (* {Red} *)
-Values[myHash]                          (* {1} *)
+table = <|"Vert" -> 2, "Rouge" -> 1|> (* Crée une table associative *)
+table[["Vert"]]                       (* 2, l'utilise *)
+table[["Vert"]] := 5                  (* 5, la modifie *)
+table[["Bleu"]] := 3.5                (* 3.5, l'étend *)
+KeyDropFrom[table, "Vert"]            (* Supprime la clé "Vert" *)
+Keys[table]                           (* {Rouge} *)
+Values[table]                         (* {1} *)
 
 (* Pour finir, toute bonne démonstration du langage Wolfram contient un
    Manipulate ! *)
