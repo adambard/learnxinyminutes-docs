@@ -33,22 +33,21 @@ formatage, car il ne contient aucune information de mise en page.
 5+8              (* 13 *)
 
 (* Appels de fonction *)
-(* Le langage Wolfram est sensible à la casse *)
 Sin[Pi/2]        (* 1 *)
-
 (* Syntaxe alternative pour les appels de fonction à 1 paramètre *)
 Sin@(Pi/2)       (* 1 *)
 (Pi/2) // Sin    (* 1 *)
 
-(* Dans le langage Wolfram, toutes les expressions sont en réalité des appels de
-   fonction *)
+(* Attention : le langage est sensible à la casse ! *)
+
+(* Toutes les expressions sont en réalité des appels de fonction *)
 Times[2, 2]      (* 4 *)
 Plus[5, 8]       (* 13 *)
 
 (* Utiliser une variable pour la première fois la déclare globalement *)
 x = 5            (* 5 *)
 x == 5           (* True, l'assignation et le test d'égalité est écrit comme
-                    dans le C *)
+                    en C *)
 x                (* 5 *)
 x = x + 5        (* 10 *)
 x                (* 10 *)
@@ -56,7 +55,7 @@ Set[x, 20]       (* TOUT est un appel de fonction, TOUUUUUUUUT *)
 x                (* 20 *)
 
 (* Le langage Wolfram effectue des manipulations symboliques, donc utiliser des
-   variables non déclarées n'est pas illégal *)
+   variables non déclarées est légal *)
 truc + 5         (* 5 + truc, comme truc n'est pas déclarée, l'évaluation
                     s'arrête là *)
 truc + 5 + 10    (* 15 + truc, on évalue ce qu'on peut... *)
@@ -75,18 +74,18 @@ Double @ Sin @ (Pi/2)   (* 2, Utiliser @ évite les paquets de crochets
 (Pi/2) // Sin // Double (* 2, Utiliser // permet d'écrire les fonctions dans
                            l'ordre d'appel *)
 
-(* Pour la programmation impérative, utiliser ; pour séparer les expressions *)
+(* En programmation impérative, utiliser ; pour séparer les expressions *)
 Salut[] := (Print@"Hello"; Print@"World")  (* Les parenthèses sont nécessaires
                                               car ; est prioritaire sur := *)
 Salut[]                                    (* Hello World *)
 
 (* Boucles For à la C *)
 Compter[x_] := For[y=0, y<x, y++, (Print[y])]  (* L'évaluation des boucles For
-                                                  se fait comme dans le C *)
+                                                  se fait comme en C *)
 Compter[5]                                     (* 0 1 2 3 4 *)
 
 (* Boucles While *)
-x = 0; While[x < 2, (Print@x; x++)]     (* De nouveau, comme dans le C *)
+x = 0; While[x < 2, (Print@x; x++)]     (* De nouveau, comme en C *)
 
 (* Expressions conditionnelles et If *)
 x = 8; If[x==8, Print@"Huit", Print@"Pas huit"] (* If [condition, si vrai,
