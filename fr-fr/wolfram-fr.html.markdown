@@ -150,8 +150,8 @@ table[["Vert"]]                       (* 2, l'utilise *)
 table[["Vert"]] := 5                  (* 5, la modifie *)
 table[["Bleu"]] := 3.5                (* 3.5, l'étend *)
 KeyDropFrom[table, "Vert"]            (* Supprime la clé "Vert" *)
-Keys[table]                           (* {Rouge} *)
-Values[table]                         (* {1} *)
+Keys[table]                           (* {Rouge, Bleu} *)
+Values[table]                         (* {1, 3.5} *)
 
 (* Pour finir, toute bonne démonstration du langage Wolfram contient un
    Manipulate ! *)
