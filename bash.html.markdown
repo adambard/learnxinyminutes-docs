@@ -83,7 +83,7 @@ echo Hello, $Name!
 
 # We have the usual if structure:
 # use 'man test' for more info about conditionals
-if [ $Name -ne $USER ]
+if [ $Name != $USER ]
 then
     echo "Your name isn't your username"
 else
@@ -91,12 +91,12 @@ else
 fi
 
 # NOTE: if $Name is empty, bash sees the above condition as:
-if [ -ne $USER ]
+if [ != $USER ]
 # which is invalid syntax
 # so the "safe" way to use potentially empty variables in bash is:
-if [ "$Name" -ne $USER ] ...
+if [ "$Name" != $USER ] ...
 # which, when $Name is empty, is seen by bash as:
-if [ "" -ne $USER ] ...
+if [ "" != $USER ] ...
 # which works as expected
 
 # There is also conditional execution

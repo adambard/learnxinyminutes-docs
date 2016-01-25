@@ -213,7 +213,7 @@ default: // required (in order to cover all possible input)
 // Functions are a first-class type, meaning they can be nested
 // in functions and can be passed around
 
-// Function with Swift header docs (format as reStructedText)
+// Function with Swift header docs (format as Swift-modified Markdown syntax)
 
 /**
 A greet operation
@@ -221,9 +221,9 @@ A greet operation
 - A bullet in docs
 - Another bullet in the docs
 
-:param: name A name
-:param: day A day
-:returns: A string containing the name and day value.
+- Parameter name	: A name
+- Parameter day	: A day
+- Returns : A string containing the name and day value.
 */
 func greet(name: String, day: String) -> String {
     return "Hello \(name), today is \(day)."
@@ -392,7 +392,7 @@ testTryStuff()
 
 public class Shape {
     public func getArea() -> Int {
-        return 0;
+        return 0
     }
 }
 

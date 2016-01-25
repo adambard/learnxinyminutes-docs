@@ -1,10 +1,12 @@
 ---
 language: markdown
+lang: cs-cz
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Michal Martinek", "https://github.com/MichalMartinek"]
 filename: markdown.md
+lang: cs-cz
 ---
 
 Markdown byl vytvořen Johnem Gruberem v roce 2004. Je zamýšlen jako lehce čitelná

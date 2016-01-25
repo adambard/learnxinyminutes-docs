@@ -535,7 +535,7 @@ class PennyFarthing extends Bicycle {
     // (Penny Farthings are those bicycles with the big front wheel.
     // They have no gears.)
 
-    public PennyFarthing(int startCadence, int startSpeed){
+    public PennyFarthing(int startCadence, int startSpeed) {
         // Call the parent constructor with super
         super(startCadence, startSpeed, 0, "PennyFarthing");
     }
