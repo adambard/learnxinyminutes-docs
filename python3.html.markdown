@@ -780,6 +780,7 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [A curated list of awesome Python frameworks, libraries and software](https://github.com/vinta/awesome-python)
 * [30 Python Language Features and Tricks You May Not Know About](http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
 * [Official Style Guide for Python](https://www.python.org/dev/peps/pep-0008/)
+* [Python 3 Computer Science Circles](http://cscircles.cemc.uwaterloo.ca/)
 
 ### Dead Tree
 
