@@ -434,7 +434,7 @@ nil                  ; para false - e para lista vazia
 
 (walker 5) ; => :walked
 
-;; Na maioria das vezes, nós usamos DOTLIST ou LOOP
+;; Na maioria das vezes, nós usamos DOLIST ou LOOP
 
 (dolist (i '(1 2 3 4))
   (format t "~a" i))
