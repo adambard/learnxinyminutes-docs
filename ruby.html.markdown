@@ -285,7 +285,7 @@ hash.each do |key, value|
   puts "#{key} is #{value}"
 end
 
-# If you still need and index you can use "each_with_index" and define an index
+# If you still need an index you can use "each_with_index" and define an index
 # variable
 array.each_with_index do |element, index|
   puts "#{element} is number #{index} in the array"
