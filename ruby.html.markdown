@@ -416,8 +416,8 @@ def foods
     ['pancake', 'sandwich', 'quesadilla']
 end
 breakfast, lunch, dinner = foods
-breakfast # 'pancake'
-dinner # 'quesadilla'
+breakfast #=> 'pancake'
+dinner #=> 'quesadilla'
 
 # By convention, all methods that return booleans end with a question mark
 5.even? # false
