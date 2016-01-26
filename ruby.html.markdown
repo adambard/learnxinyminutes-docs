@@ -411,6 +411,15 @@ def guests(*array)
   array.each { |guest| puts guest }
 end
 
+# If a method returns an array, you can use destructuring assignment
+def foods
+    ['pancake', 'sandwich', 'quesadilla']
+end
+breakfast, lunch, dinner = foods
+breakfast # 'pancake'
+dinner # 'quesadilla'
+
+
 # Define a class with the class keyword
 class Human
 
