@@ -419,6 +419,19 @@ breakfast, lunch, dinner = foods
 breakfast # 'pancake'
 dinner # 'quesadilla'
 
+# By convention, all methods that return booleans end with a question mark
+5.even? # false
+5.odd? # true
+
+# And if a method ends with an exclamation mark, it does something destructive
+# like mutate the receiver. Many methods have a ! version to make a change, and
+# a non-! version to just return a new changed version
+company_name = "Dunder Mifflin"
+company_name.upcase #=> "DUNDER MIFFLIN"
+company_name #=> "Dunder Mifflin"
+company_name.upcase! # we're mutating company_name this time!
+company_name #=> "DUNDER MIFFLIN"
+
 
 # Define a class with the class keyword
 class Human
