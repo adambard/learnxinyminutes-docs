@@ -1,6 +1,13 @@
 ---
 language: css
 contributors:
+    - ["Mohammad Valipour", "https://github.com/mvalipour"]
+    - ["Marco Scannadinari", "https://github.com/marcoms"]
+    - ["Geoffrey Liu", "https://github.com/g-liu"]
+    - ["Connor Shea", "https://github.com/connorshea"]
+    - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
+    - ["Tyler Mumford", "https://tylermumford.com"]
+translators:
     - ["Abdul Muhaimin", "http://github.com/infacq"]
 lang: my-my
 filename: learncss-my.css
