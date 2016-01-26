@@ -726,6 +726,7 @@ print say(say_please=True)  # Can you buy me a beer? Please! I am poor :(
 * [Python Module of the Week](http://pymotw.com/2/)
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
+* [LearnPython](http://www.learnpython.org/)
 * [Fullstack Python](https://www.fullstackpython.com/)
 
 ### Dead Tree
