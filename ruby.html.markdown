@@ -285,7 +285,7 @@ hash.each do |key, value|
   puts "#{key} is #{value}"
 end
 
-# If you still need and index you can use "each_with_index" and define an index
+# If you still need an index you can use "each_with_index" and define an index
 # variable
 array.each_with_index do |element, index|
   puts "#{element} is number #{index} in the array"
@@ -410,6 +410,28 @@ end
 def guests(*array)
   array.each { |guest| puts guest }
 end
+
+# If a method returns an array, you can use destructuring assignment
+def foods
+    ['pancake', 'sandwich', 'quesadilla']
+end
+breakfast, lunch, dinner = foods
+breakfast #=> 'pancake'
+dinner #=> 'quesadilla'
+
+# By convention, all methods that return booleans end with a question mark
+5.even? # false
+5.odd? # true
+
+# And if a method ends with an exclamation mark, it does something destructive
+# like mutate the receiver. Many methods have a ! version to make a change, and
+# a non-! version to just return a new changed version
+company_name = "Dunder Mifflin"
+company_name.upcase #=> "DUNDER MIFFLIN"
+company_name #=> "Dunder Mifflin"
+company_name.upcase! # we're mutating company_name this time!
+company_name #=> "DUNDER MIFFLIN"
+
 
 # Define a class with the class keyword
 class Human
