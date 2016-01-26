@@ -1,7 +1,7 @@
 ---
 language: asciidoc
 contributors:
-    - ["Ryan Mavilia", "http://unoriginality.rocks/:]
+    - ["Ryan Mavilia", "http://unoriginality.rocks/"]
 filename: asciidoc.md
 ---
 
