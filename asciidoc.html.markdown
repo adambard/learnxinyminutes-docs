@@ -44,23 +44,77 @@ v1.0, 2016-01-13
 
 This article about chips is going to be fun.
 ```
+Paragraphs
+
+```asciidoc
+You don't need anything special for paragraphs.
+
+Add a blank line between paragraphs to seperate them.
+
+To create a line blank add a +
+and you will recieve a line break!
+```
+
+Formatting Text
+
+```asciidoc
+_underscore creates italics_
+*asterisks for bold*
+*_combine for extra fun_*
+`use ticks to signify monospace`
+`*bolded monospace*`
+```
 
 Section Titles 
 
 ```asciidoc
 = Level 0 (may only be used in document's header)
 
-== Same as <h2>
+== Level 1 <h2>
 
-=== Same as <h3>
+=== Level 2 <h3>
 
-==== Same as <h4>
+==== Level 3 <h4>
 
-===== Same as  <h5>
+===== Level 4 <h5>
 
-====== Same as <h6>
+====== Level 5 <h6>
 
-======= Same as <h7>
+======= Level 6  <h7>
 
 ```
+
+Lists
+
+To create a bulleted list use asterisks.
+```asciidoc
+* foo
+* bar
+* baz
+```
+
+To create a numbered list use periods.
+```asciidoc
+. item 1
+. item 2
+. item 3
+```
+
+You can nest lists by adding extra asterisks or periods up to five times.
+```asciidoc
+* foo 1
+** foo 2
+*** foo 3
+**** foo 4
+***** foo 5
+```
+```asciidoc
+. foo 1
+.. foo 2
+... foo 3
+.... foo 4
+..... foo 5
+```
+
+
 
