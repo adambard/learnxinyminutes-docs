@@ -2,16 +2,40 @@
 language: json
 filename: learnjson-my.json
 contributors:
-  - ["Abdul Muhaimin", "https://github.com/infacq"]
+  - ["Anna Harren", "https://github.com/iirelu"]
+  - ["Marco Scannadinari", "https://github.com/marcoms"]
+  - ["himanshu", "https://github.com/himanshu81494"]
+  - ["Michael Neth", "https://github.com/infernocloud"]
+translators:
+- ["abdalim", "https://github.com/abdalim"]  
+- ["Abdul Muhaimin", "https://github.com/infacq"]
 ---
 
 Disebabkan JSON adalah suatu format pertukaran data yang teramat ringkas, artikel
-ini akan cuba menjadi suatu bahan yang amat mudah untuk difahami dalam siri
+ini akan cuba menjadi suatu panduan yang amat mudah untuk difahami dalam siri
 Learn X in Y Minutes.
 
 JSON dalam bentuk aslinya tidak membolehkan meletak sebarang komen, tetapi kebanyakan
 pemproses boleh  menerima sebarang format komen seperti bahasa C (`//`. `/* */`). Bagi
 tujuan ini, kesemua sintaks akan dipastikan 100% JSON yang sahih.
+
+Sebuah nilai JSON harus terdiri dari salah satu, iaitu, nombor, string, array,
+objek atau salah satu dari nama literal berikut: true, false, null.
+
+Banyak bahasa aturcara mempunyai fungsi untuk menyirikan (mengekod) dan
+menyah-sirikan (men-dekod) data JSON kepada struktur data asal. Javascript
+mempunyai sokongon tersirat untuk memanipulasi teks JSON sebagai data.
+
+Maklumat lebih lanjut boleh dijumpai di http://www.json.org/
+
+JSON dibina pada dua struktur:
+* Sebuah koleksi pasangan nama/nilai. Di dalam pelbagai bahasa aturcara, ini
+direalisasikan sebagai objek, rekod, "struct", "dictionary", "hash table",
+senarai berkunci, atau "associative array".
+* Sebuah senarai nilai yang tersusun. Dalam kebanyakan bahasa aturcara, ini
+direalisasikan sebagai array, vektor, senarai atau urutan.
+
+Sebuah objek dengan pelbagai pasangan nama/nilai.
 
 ```json
 {
