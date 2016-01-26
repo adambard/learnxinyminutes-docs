@@ -6,6 +6,7 @@ contributors:
 translators:
     - ["Kazushige Tominaga", "https://github.com/kazu9su"]
 filename: learnphp.php
+lang: ja-jp
 ---
 
 このドキュメントでは、 PHP 5+ について説明します。
