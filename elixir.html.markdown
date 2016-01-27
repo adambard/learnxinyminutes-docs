@@ -96,6 +96,14 @@ string.
 lower..upper = 1..10 # Can use pattern matching on ranges as well
 [lower, upper] #=> [1, 10]
 
+# Maps are key-value pairs
+genders = %{"david" => "male", "gillian" => "female"}
+genders["david"] #=> "male"
+
+# Maps with atom keys can be used like this
+genders = %{david: "male", gillian: "female"}
+genders.gillian #=> "female"
+
 ## ---------------------------
 ## -- Operators
 ## ---------------------------
