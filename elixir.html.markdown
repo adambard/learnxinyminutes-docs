@@ -3,6 +3,7 @@ language: elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
+    - ["Ryan Plant", "https://github.com/ryanplant-au"]
 filename: learnelixir.ex
 ---
 
