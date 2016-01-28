@@ -967,17 +967,16 @@ v.swap(vector<Foo>());
 
 // We start with constructing a tuple.
 // Packing values into tuple
-auto first = make_tuple(10,'A') ;
+auto first = make_tuple(10,'A');
 const int maxN = 1e9;
 const int maxL = 15;
-auto second = make_tuple(maxN,maxL) ;
+auto second = make_tuple(maxN,maxL);
 
 // printing elements of 'first' tuple
 cout << get<0>(first) << " " << get<1>(first) << "\n"; //prints : 10 A
 
 // printing elements of 'second' tuple
 cout << get<0>(second) << " " << get<1>(second) << "\n"; // prints: 1000000000 15
-
 
 // Unpacking tuple into variables
 
