@@ -948,7 +948,7 @@ for (int i = 0; i < 10; ++i)
 
 // Following line sets size of v to 0, but destructors don't get called
 // and resources aren't released!
-v.empty();
+v.clear();
 v.push_back(Foo());  // New value is copied into the first Foo we inserted
 
 // Truly destroys all values in v. See section about temporary objects for
