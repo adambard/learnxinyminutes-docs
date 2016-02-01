@@ -5,7 +5,6 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Petru Dimitriu", "http://petru-dimitriu.github.io"]
-filename: brainfuck-ro.clj
 lang: ro-ro
 ---
 
