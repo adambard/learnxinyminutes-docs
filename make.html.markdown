@@ -234,10 +234,8 @@ bar = 'hello'
 endif
 ```
 
-
 ### More Resources
 
 + [gnu make documentation](https://www.gnu.org/software/make/manual/)
 + [software carpentry tutorial](http://swcarpentry.github.io/make-novice/)
 + learn C the hard way [ex2](http://c.learncodethehardway.org/book/ex2.html) [ex28](http://c.learncodethehardway.org/book/ex28.html)
-

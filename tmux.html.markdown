@@ -7,7 +7,7 @@ filename: LearnTmux.txt
 ---
 
 
-[tmux](http://tmux.sourceforge.net)
+[tmux](http://tmux.github.io)
 is a terminal multiplexer: it enables a number of terminals
 to be created, accessed, and controlled from a single screen. tmux
 may be detached from a screen and continue running in the background
@@ -38,7 +38,7 @@ then later reattached.
     lsp              # List panes
      -a              # List all panes
      -s              # List all panes in session
-     -t              # List app panes in target
+     -t              # List all panes in target
 
     kill-window      # Kill current window
      -t "#"          # Kill target window
@@ -240,7 +240,7 @@ set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | 
 
 ### References
 
-[Tmux | Home](http://tmux.sourceforge.net)
+[Tmux | Home](http://tmux.github.io)
 
 [Tmux Manual page](http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/tmux.1?query=tmux)
 
@@ -249,3 +249,7 @@ set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | 
 [Archlinux Wiki](https://wiki.archlinux.org/index.php/Tmux)
 
 [Display CPU/MEM % in statusbar](https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux)
+
+[tmuxinator - Manage complex tmux sessions](https://github.com/tmuxinator/tmuxinator) 
+
+

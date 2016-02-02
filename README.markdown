@@ -18,7 +18,7 @@ All contributions are welcome, from the tiniest typo to a brand new article. Tra
 in all languages are welcome (or, for that matter, original articles in any language).
 Send a pull request or open an issue any time of day or night.
 
-**Please tag your issues pull requests with [language/lang-code] at the beginning**
+**Please tag your issues and pull requests with [language/lang-code] at the beginning**
 **(e.g. [python/en] for English Python).** This will help everyone pick out things they
 care about.
 
@@ -51,7 +51,7 @@ Long version:
 ### Header configuration
 
 The actual site uses Middleman to generate HTML files from these Markdown ones. Middleman, or at least
-the custom scripts underpinning the site, required that some key information be defined in the header.
+the custom scripts underpinning the site, requires that some key information be defined in the header.
 
 The following fields are necessary for English articles about programming languages:
 

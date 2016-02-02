@@ -12,7 +12,9 @@ contributors:
   - ["Dzianis Dashkevich", "https://github.com/dskecse"]
   - ["Levi Bostian", "https://github.com/levibostian"]
   - ["Rahil Momin", "https://github.com/iamrahil"]
-
+  - ["Gabriel Halley", "https://github.com/ghalley"]
+  - ["Persa Zula", "http://persazula.com"]
+  - ["Jake Faris", "https://github.com/farisj"]
 ---
 
 ```ruby
@@ -39,6 +41,12 @@ You shouldn't either
 10 * 2 #=> 20
 35 / 5 #=> 7
 2**5 #=> 32
+5 % 3 #=> 2
+
+# Bitwise operators
+3 & 5 #=> 1
+3 | 5 #=> 7
+3 ^ 5 #=> 6
 
 # Arithmetic is just syntactic sugar
 # for calling a method on an object
@@ -46,7 +54,7 @@ You shouldn't either
 10.* 5 #=> 50
 
 # Special values are objects
-nil # Nothing to see here
+nil # equivalent to null in other languages
 true # truth
 false # falsehood
 
@@ -73,6 +81,11 @@ false.class #=> FalseClass
 1 > 10 #=> false
 2 <= 2 #=> true
 2 >= 2 #=> true
+
+# Combined comparison operator
+1 <=> 10 #=> -1
+10 <=> 1 #=> 1
+1 <=> 1 #=> 0
 
 # Logical operators
 true && false #=> false
@@ -106,6 +119,12 @@ placeholder = 'use string interpolation'
 'hello ' + 3 #=> TypeError: can't convert Fixnum into String
 'hello ' + 3.to_s #=> "hello 3"
 
+# Combine strings and operators
+'hello ' * 3 #=> "hello hello hello "
+
+# Append to string
+'hello' << ' world' #=> "hello world"
+
 # print to the output with a newline at the end
 puts "I'm printing!"
 #=> I'm printing!
@@ -113,7 +132,7 @@ puts "I'm printing!"
 
 # print to the output without a newline
 print "I'm printing!"
-#=> I'm printing! => nill
+#=> I'm printing! => nil
 
 # Variables
 x = 25 #=> 25
@@ -160,6 +179,7 @@ array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 # Arrays can be indexed
 # From the front
 array[0] #=> 1
+array.first #=> 1
 array[12] #=> nil
 
 # Like arithmetic, [var] access
@@ -170,6 +190,7 @@ array.[] 12 #=> nil
 
 # From the end
 array[-1] #=> 5
+array.last #=> 5
 
 # With a start index and length
 array[2, 3] #=> [3, 4, 5]
@@ -209,8 +230,8 @@ new_hash = { defcon: 3, action: true }
 new_hash.keys #=> [:defcon, :action]
 
 # Check existence of keys and values in hash
-new_hash.has_key?(:defcon) #=> true
-new_hash.has_value?(3) #=> true
+new_hash.key?(:defcon) #=> true
+new_hash.value?(3) #=> true
 
 # Tip: Both Arrays and Hashes are Enumerable
 # They share a lot of useful methods such as each, map, count, and more
@@ -264,6 +285,12 @@ hash.each do |key, value|
   puts "#{key} is #{value}"
 end
 
+# If you still need an index you can use "each_with_index" and define an index
+# variable
+array.each_with_index do |element, index|
+  puts "#{element} is number #{index} in the array"
+end
+
 counter = 1
 while counter <= 5 do
   puts "iteration #{counter}"
@@ -275,7 +302,7 @@ end
 #=> iteration 4
 #=> iteration 5
 
-# There are a bunch of other helpful looping functions in Ruby, 
+# There are a bunch of other helpful looping functions in Ruby,
 # for example "map", "reduce", "inject", the list goes on. Map,
 # for instance, takes the array it's looping over, does something
 # to it as defined in your block, and returns an entirely new array.
@@ -383,6 +410,28 @@ end
 def guests(*array)
   array.each { |guest| puts guest }
 end
+
+# If a method returns an array, you can use destructuring assignment
+def foods
+    ['pancake', 'sandwich', 'quesadilla']
+end
+breakfast, lunch, dinner = foods
+breakfast #=> 'pancake'
+dinner #=> 'quesadilla'
+
+# By convention, all methods that return booleans end with a question mark
+5.even? # false
+5.odd? # true
+
+# And if a method ends with an exclamation mark, it does something destructive
+# like mutate the receiver. Many methods have a ! version to make a change, and
+# a non-! version to just return a new changed version
+company_name = "Dunder Mifflin"
+company_name.upcase #=> "DUNDER MIFFLIN"
+company_name #=> "Dunder Mifflin"
+company_name.upcase! # we're mutating company_name this time!
+company_name #=> "DUNDER MIFFLIN"
+
 
 # Define a class with the class keyword
 class Human
@@ -562,7 +611,9 @@ Something.new.qux # => 'qux'
 ## Additional resources
 
 - [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - A variant of this reference with in-browser challenges.
+- [An Interactive Tutorial for Ruby](https://rubymonk.com/) - Learn Ruby through a series of interactive tutorials.
 - [Official Documentation](http://www.ruby-doc.org/core-2.1.1/)
 - [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
 - [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - An older [free edition](http://ruby-doc.com/docs/ProgrammingRuby/) is available online.
 - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - A community-driven Ruby coding style guide.
+- [Try Ruby](http://tryruby.org) - Learn the basic of Ruby programming language, interactive in the browser.

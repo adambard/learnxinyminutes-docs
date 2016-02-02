@@ -1,75 +1,72 @@
 ---
-
 language: brainfuck
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Ivan Sala", "http://slavni96.github.io/"]
+    - ["Christian Grasso", "http://chris54721.net"]
 lang: it-it
-
 ---
 
-Brainfuck è un linguaggio di programmazione estremamente minimale,
-ma è ingrado di rappresentare completamente una macchina di turnig,
-e sfrutta solo 8 caratteri.
-[Per saperne di più](http://it.wikipedia.org/wiki/Brainfuck)
+Brainfuck è un linguaggio di programmazione
+[Turing equivalente](https://it.wikipedia.org/wiki/Turing_equivalenza)
+estremamente minimale, composto da solo 8 comandi.
+
+Puoi provarlo nel tuo browser utilizzando
+[brainfuck-visualizer](http://fatiherikli.github.io/brainfuck-visualizer/).
 
 ```
 
-Qualsiasi carattere che non sia "><+-.,[]" (escludendo gli apici) 
+Qualsiasi carattere diverso da "><+-.,[]" (escludendo gli apici)
 viene ignorato.
-Branfuck è caratterizzato da un array (vettore) di 30,000 celle 
-inizializzare a zero, e un puntatore che punta alla cella corrente.
+Branfuck è caratterizzato da un array di 30,000 celle inizializzate a zero
+e da un puntatore che punta alla cella corrente.
 
-Vi sono solo otto comando:
+Vi sono otto comandi:
 + : Incrementa il valore della cella attuale di uno.
 - : Decrementa il valore della cella attuale di uno.
-> : Sposta il puntatore sulla cella seguente (prossima a destra).
-< : Sposta il puntatore sulla cella precendete (precedente a sinistra).
-. : Stampa il valore in ASCII della cella corrente. (es: 65 = 'A')
-, : Legge un singolo carattere come input per la cella corrente.
-[ : Se il valore della cella corrente è zero, conclude il ciclo 
-    andando alla sua corrispondente ].
+> : Sposta il puntatore sulla cella seguente (sulla destra).
+< : Sposta il puntatore sulla cella precendete (sulla sinistra).
+. : Stampa il valore ASCII della cella corrente. (es. 65 = 'A')
+, : Legge un singolo carattere come input e lo salva nella cella corrente.
+[ : Se il valore della cella corrente è zero, prosegue fino alla ] corrispondente.
     Altrimenti, passa alla prossima istruzione.
 ] : Se il valore della cella corrente è zero, passa alla prossima istruzione.
-    Altrimenti torna indetro fino alla [ corrispondente. 
+    Altrimenti, torna indietro fino alla [ corrispondente.
 
-[ e ] creano un loop (while). Ovviamente dovranno essere bilanciati.
-Per ogni [ dovrà corrispondere una ]
+[ e ] formano un ciclo while. Ovviamente dovranno essere bilanciati.
+(Ad ogni [ dovrà corrispondere una ])
 
-Alcuni semplici esempi di programmi scritti in Brainfuck:
+Ecco alcuni semplici esempi di programmi scritti in Brainfuck:
 
 ++++++ [ > ++++++++++ < - ] > +++++ .
 
-Questo programma stampa in output la lettera 'A'. Priam incrementa
-la cella #1 fino a 6, Quindi la cella #1 viene usata per crare un ciclo.
-Poi, entra in un loop ([) e si sposta alla cella #2.
-Incrementa la cella #2 10 volte, e torna alla cella #1, e la decrementa.
-Questo avviene 6 volte (servono che la cella #1 venga decrementata 6 volte
-per raggiungere lo 0. Quindi passa alla corrispondente ] e prosegue).
+Questo programma stampa in output la lettera 'A'. Prima di tutto, incrementa
+la cella #1 fino al valore 6. La cella #1 verrà utilizzata per il ciclo.
+Poi, entra nel ciclo ([) e si sposta alla cella #2. Incrementa la cella #2 10
+volte, torna alla cella #1, e decrementa quest'ultima.
+Il ciclo si ripete 6 volte (la cella #1 viene decrementata 6 volte prima di
+raggiungere lo 0, quindi prosegue oltre la corrispondente ]).
 
-A questo punto, siamo sulla cella #1, che ha valore 0, 
-la cella #2 ha valore 60 (6*10). Ci spostiamo sulla cella #2, incrementiamo
-per 5 volte, e otteniamo il valore 65, quindi stampaimo il valore della cella
-#2 (.).
-65 è 'A' in ASCII, quindi alla fine viene stampata 'A'.
+A questo punto, siamo sulla cella #1, che ha valore 0, mentre la cella #2 ha
+valore 60. Ci spostiamo sulla cella #2, la incrementiamo per 5 volte, ottenendo
+il valore 65, quindi stampiamo il valore della cella #2.
+Il valore 65 equivale ad 'A' in ASCII, per cui viene stampato 'A' nel terminale.
 
 
 , [ > + < - ] > .
 
-Questo programma legge un carattere come input dall'utente, 
-quindi salva il carattere dentro la cella #1.
-In seguito, incominca a ciclare.
-Si sposta alla cella #², e increementa il valore della cella (#2).
-Quindi torna alla cella #1, e decrementa il valore della cella (#1).
-Questo continua fino a quando la cella #²1 diventa 0, e quindi la cella #2
-avrà il valore iniziale della cella #1.
-Infine, visto che ci troviamo sulla cella #1 alla fine del ciclo, si sposta
-sulla cella #2 e stampa il valore in ASCII.
+Questo programma legge un carattere come input dall'utente, quindi salva il
+carattere nella cella #1. Dopodichè entra in un ciclo. Si sposta alla cella #2,
+incrementa quest'ultima, torna alla cella #1, e decrementa quest'ultima.
+Il ciclo continua fino a quando la cella #1 diventa 0, e quindi la cella #2
+avrà il valore iniziale della cella #1. Infine, visto che ci troviamo sulla
+cella #1 alla fine del ciclo, si sposta sulla cella #2 e stampa il valore in
+ASCII.
 
-Gli spazi nel codice sovrastante, sono presenti solo a scopo di ottenere
-una maggiore leggibilità, si poteva anche scrivere senza:
+Gli spazi nel codice sovrastante sono presenti solo a scopo di ottenere
+una maggiore leggibilità. Lo stesso programma poteva essere scritto senza spazi:
 
 ,[>+<-]>.
 
@@ -77,25 +74,19 @@ Proviamo, adesso, a capire cosa fa invece questo programma:
 
 ,>,< [ > [ >+ >+ << -] >> [- << + >>] <<< -] >>
 
-Prende due numeri in input e quindi li moltiplica.
+Il programma legge 2 numeri come input dall'utente, e li moltiplica.
 
-Prima prende in input i due numeri (,>,<), quindi inizia un cilclo
-basandosi sulla cella #1.
-Quindi si sposta sulla cella #2, e inizia un altro ciclo condizionato
-dal valore della cella #2, incrementando la cella #3.
+Innanzitutto, legge in input i due numeri. Poi entra nel ciclo più esterno
+basandosi sulla cella #1. Quindi si sposta sulla cella #2, e inizia il ciclo
+più interno basandosi sul valore della cella #2, incrementando la cella #3.
 Arrivati a questo punto abbiamo un problema: alla fine del ciclo interno
-la cella #2 ha valore 0. In questo caso, quando il ciclo esterno rifarà
-partire il ciclo interno, non funzionerà più perchè la cella #2 ha valore 0.
-Per ovviare a questo problema, oltre alla cella 3, incrementiamo anche la cella
-#4, e alla fine di ogni ciclo interno copiala il valore della cella #4 
-nella cella #2, in modo che il ciclo interno 
-possa essere eseguito una altra volta.
-Alla fine la cella #3 contiene il risultato.
+la cella #2 avrà valore 0. Ciò impedirà di eseguire nuovamente il ciclo interno.
+Per ovviare a questo problema, incrementiamo anche la cella #4, e copiamo il
+valore di quest'ultima nella cella #2.
+Il risultato sarà infine contenuto nella cella #3.
 ```
 
-E questo è brainfuck...Non è difficele, vero? 
-Per divertimento adesso puoi scrivere i tuoi programmi in brainfuck,
-oppure puoi scrivere un interprete brainfuck in un altro linguaggio.
-L'interprete è abbastanza semplice da implementare, ma se sei veramente
-masochista prova ad implementare un interprete brainfuck in...
-brainfuck.
+E questo è brainfuck. Non è così difficile, eh? Se vuoi, ora puoi scrivere per
+divertimento altri programmi in brainfuck, oppure scrivere un interprete
+brainfuck in un altro linguaggio. L'interprete è abbastanza semplice da
+implementare, ma se sei veramente masochista, prova ad implementare un interprete brainfuck... in brainfuck.

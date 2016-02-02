@@ -149,7 +149,7 @@ namespace First {
 namespace Second {
     void foo()
     {
-        printf("This is Second::foo\n")
+        printf("This is Second::foo\n");
     }
 }
 
@@ -310,6 +310,70 @@ basic_string(basic_string&& other);
 // constructor that "salvages" parts of that temporary string. You will see this
 // concept referred to as "move semantics".
 
+/////////////////////
+// Enums
+/////////////////////
+
+// Enums are a way to assign a value to a constant most commonly used for
+// easier visualization and reading of code
+enum ECarTypes
+{
+  Sedan,
+  Hatchback,
+  SUV,
+  Wagon
+};
+
+ECarTypes GetPreferredCarType()
+{
+	return ECarTypes::Hatchback;
+}
+
+// As of C++11 there is an easy way to assign a type to the enum which can be
+// useful in serialization of data and converting enums back-and-forth between 
+// the desired type and their respective constants
+enum ECarTypes : uint8_t
+{
+  Sedan, // 0
+  Hatchback, // 1
+  SUV = 254, // 254
+  Hybrid // 255
+};
+
+void WriteByteToFile(uint8_t InputValue)
+{
+	// Serialize the InputValue to a file
+}
+
+void WritePreferredCarTypeToFile(ECarTypes InputCarType)
+{
+	// The enum is implicitly converted to a uint8_t due to its declared enum type
+	WriteByteToFile(InputCarType);
+}
+
+// On the other hand you may not want enums to be accidentally cast to an integer
+// type or to other enums so it is instead possible to create an enum class which 
+// won't be implicitly converted
+enum class ECarTypes : uint8_t
+{
+  Sedan, // 0
+  Hatchback, // 1
+  SUV = 254, // 254
+  Hybrid // 255
+};
+
+void WriteByteToFile(uint8_t InputValue)
+{
+	// Serialize the InputValue to a file
+}
+
+void WritePreferredCarTypeToFile(ECarTypes InputCarType)
+{
+	// Won't compile even though ECarTypes is a uint8_t due to the enum
+	// being declared as an "enum class"!
+	WriteByteToFile(InputCarType);
+}
+
 //////////////////////////////////////////
 // Classes and object-oriented programming
 //////////////////////////////////////////
@@ -404,6 +468,8 @@ int main() {
 // Inheritance:
 
 // This class inherits everything public and protected from the Dog class
+// as well as private but may not directly access private members/methods 
+// without a public or protected method for doing so
 class OwnedDog : public Dog {
 
     void setOwner(const std::string& dogsOwner);
@@ -735,6 +801,94 @@ void doSomethingWithAFile(const std::string& filename)
 //   all automatically destroy their contents when they fall out of scope.
 // - Mutexes using lock_guard and unique_lock
 
+// containers with object keys of non-primitive values (custom classes) require
+// compare function in the object itself or as a function pointer. Primitives
+// have default comparators, but you can override it.
+class Foo {
+public:
+	int j;
+	Foo(int a) : j(a) {}
+};
+struct compareFunction {
+    bool operator()(const Foo& a, const Foo& b) const {
+        return a.j < b.j;
+    }
+};
+//this isn't allowed (although it can vary depending on compiler)
+//std::map<Foo, int> fooMap;
+std::map<Foo, int, compareFunction> fooMap;
+fooMap[Foo(1)]  = 1;
+fooMap.find(Foo(1)); //true
+
+///////////////////////////////////////
+// Lambda Expressions (C++11 and above)
+///////////////////////////////////////
+
+// lambdas are a convenient way of defining an anonymous function
+// object right at the location where it is invoked or passed as 
+// an argument to a function.
+
+// For example, consider sorting a vector of pairs using the second 
+// value of the pair
+
+vector<pair<int, int> > tester;
+tester.push_back(make_pair(3, 6));
+tester.push_back(make_pair(1, 9));
+tester.push_back(make_pair(5, 0));
+
+// Pass a lambda expression as third argument to the sort function
+// sort is from the <algorithm> header
+
+sort(tester.begin(), tester.end(), [](const pair<int, int>& lhs, const pair<int, int>& rhs) {
+        return lhs.second < rhs.second;
+    });
+
+// Notice the syntax of the lambda expression,
+// [] in the lambda is used to "capture" variables
+// The "Capture List" defines what from the outside of the lambda should be available inside the function body and how.
+// It can be either:
+//     1. a value : [x]
+//     2. a reference : [&x]
+//     3. any variable currently in scope by reference [&]
+//     4. same as 3, but by value [=]
+// Example:
+
+vector<int> dog_ids;
+// number_of_dogs = 3;
+for(int i = 0; i < 3; i++) {
+	dog_ids.push_back(i);  
+}
+
+int weight[3] = {30, 50, 10};
+
+// Say you want to sort dog_ids according to the dogs' weights
+// So dog_ids should in the end become: [2, 0, 1]
+
+// Here's where lambda expressions come in handy
+
+sort(dog_ids.begin(), dog_ids.end(), [&weight](const int &lhs, const int &rhs) {
+        return weight[lhs] < weight[rhs];
+    });
+// Note we captured "weight" by reference in the above example.
+// More on Lambdas in C++ : http://stackoverflow.com/questions/7627098/what-is-a-lambda-expression-in-c11
+
+///////////////////////////////
+// Range For (C++11 and above)
+///////////////////////////////
+
+// You can use a range for loop to iterate over a container
+int arr[] = {1, 10, 3};
+
+for(int elem: arr){
+	cout << elem << endl;
+}
+
+// You can use "auto" and not worry about the type of the elements of the container
+// For example:
+
+for(auto elem: arr) {
+	// Do something with each element of arr
+}
 
 /////////////////////
 // Fun stuff
@@ -794,12 +948,58 @@ for (int i = 0; i < 10; ++i)
 
 // Following line sets size of v to 0, but destructors don't get called
 // and resources aren't released!
-v.empty();
+v.clear();
 v.push_back(Foo());  // New value is copied into the first Foo we inserted
 
 // Truly destroys all values in v. See section about temporary objects for
 // explanation of why this works.
 v.swap(vector<Foo>());
+
+
+///////////////////////////////////////
+// Tuples (C++11 and above)
+///////////////////////////////////////
+
+#include<tuple>
+
+// Conceptually, Tuples are similar to  old data structures (C-like structs) but instead of having named data members , 
+// its elements are accessed by their order in the tuple.
+
+// We start with constructing a tuple.
+// Packing values into tuple
+auto first = make_tuple(10, 'A');
+const int maxN = 1e9;
+const int maxL = 15;
+auto second = make_tuple(maxN, maxL);
+
+// printing elements of 'first' tuple
+cout << get<0>(first) << " " << get<1>(first) << "\n"; //prints : 10 A
+
+// printing elements of 'second' tuple
+cout << get<0>(second) << " " << get<1>(second) << "\n"; // prints: 1000000000 15
+
+// Unpacking tuple into variables
+
+int first_int;
+char first_char;
+tie(first_int, first_char) = first;
+cout << first_int << " " << first_char << "\n";  // prints : 10 A
+
+// We can also create tuple like this.
+
+tuple<int, char, double> third(11, 'A', 3.14141);
+// tuple_size returns number of elements in a tuple (as a constexpr)
+
+cout << tuple_size<decltype(third)>::value << "\n"; // prints: 3
+
+// tuple_cat concatenates the elements of all the tuples in the same order.
+
+auto concatenated_tuple = tuple_cat(first, second, third);
+// concatenated_tuple becomes = (10, 'A', 1e9, 15, 11, 'A' ,3.14141) 
+
+cout << get<0>(concatenated_tuple) << "\n"; // prints: 10
+cout << get<3>(concatenated_tuple) << "\n"; // prints: 15
+cout << get<5>(concatenated_tuple) << "\n"; // prints: 'A'
 
 ```
 Further Reading:

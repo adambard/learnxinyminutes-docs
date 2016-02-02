@@ -17,7 +17,7 @@ Cocoa Touch.
 Он является объектно-ориентированным языком программирования общего назначения,
 который добавляет обмен сообщениями в Smalltalk-стиле к языку программирования C.
 
-```objective_c
+```objective-c
 // Однострочные комментарии начинаются с //
 
 /*
@@ -381,20 +381,21 @@ if ([myClass respondsToSelector:selectorVar]) { // Проверяет содер
     NSLog(@"MyClass не содержит метод: %@", NSStringFromSelector(selectedVar));
 }
 
-// Имплементируйте методы в файле МойКласс.m:
+// Имплементируйте методы в файле MyClass.m:
 @implementation MyClass {
     long distance; // Переменная экземпляра с закрытым (private) доступом
     NSNumber height;
 }
 
-// To access a public variable from the interface file, use '_' followed by variable name:
-_count = 5; // References "int count" from MyClass interface
-// Access variables defined in implementation file:
-distance = 18; // References "long distance" from MyClass implementation
-// To use @property variable in implementation, use @synthesize to create accessor variable:
-@synthesize roString = _roString; // _roString available now in @implementation
+// Для доступа к public переменной, объявленной в интерфейсе, используйте '_' перед названием переменной:
+_count = 5; // Ссылается на "int count" из интерфейса MyClass
+// Получение доступа к переменной, объявленной в реализации происходит следующим образом:
+distance = 18; // Ссылается на "long distance" из реализации MyClass
+// Для использования в иплементации переменной, объявленной в интерфейсе с помощью @property,
+// следует использовать @synthesize для создания переменной аксессора:
+@synthesize roString = _roString; // Теперь _roString доступна в @implementation (реализации интерфейса)
 
-// Called before calling any class methods or instantiating any objects
+// Вызывается в первую очередь, перед вызовом других медотов класса или инициализации других объектов
 + (void)initialize 
 {
     if (self == [MyClass class]) {
@@ -505,10 +506,10 @@ distance = 18; // References "long distance" from MyClass implementation
 
 @end
 
-// Теперь, если мы хотели создать грузовой объект, мы должны вместо создания подкласса класса Car, как это будет
-// изменять функциональность Car чтобы вести себя подобно грузовику. Но давайте посмотрим, если мы хотим только добавить
-// функциональность в существующий Car. Хороший пример должен быть чистить автомобиль. Итак мы создадим
-// категорию для добавления его очистительных методов:
+// Теперь, если мы хотим создать объект Truck - грузовик, мы должны создать подкласс класса Car, что
+// изменит функционал Car и позволит вести себя подобно грузовику. Но что, если мы хотим только добавить
+// определенный функционал в уже существующий класс Car? Например - чистка автомобиля. Мы просто создадим
+// категорию, которая добавит несколько методов для чистки автомобиля в класс Car:
 // @interface ИмяФайла: Car+Clean.h (ИмяБазовогоКласса+ИмяКатегории.h)
 #import "Car.h" // Убедитесь в том, что базовый класс импортирован для расширения.
 
@@ -794,7 +795,7 @@ MyClass *arcMyClass = [[MyClass alloc] init];
 // weakVar-свойство автоматически примет значение nil,
 // во избежание падения приложения
 @property (strong) MyClass *strongVar; // 'strong' принимает право на владение
-// объектом. Гарантирует, что объект останится в памяти для использования
+// объектом. Гарантирует, что объект останется в памяти для использования
 
 // Для обычных переменных (не объявленных с помощью @property), используйте
 // следующий способ:

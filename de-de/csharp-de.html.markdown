@@ -883,7 +883,7 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
  * [LINQ](http://shop.oreilly.com/product/9780596519254.do)
  * [MSDN Library](http://msdn.microsoft.com/en-us/library/618ayhy6.aspx)
  * [ASP.NET MVC Tutorials](http://www.asp.net/mvc/tutorials)
- * [ASP.NET Web Matrix Tutorials](http://www.asp.net/web-pages/tutorials)
+ * [ASP.NET Web Matrix Tutorials](http://www.asp.net/web-pages/overview/exploring-webmatrix)
  * [ASP.NET Web Forms Tutorials](http://www.asp.net/web-forms/tutorials)
  * [Windows Forms Programming in C#](http://www.amazon.com/Windows-Forms-Programming-Chris-Sells/dp/0321116208)
 
