@@ -567,34 +567,34 @@ echo $kelas_saya->properti;             // => "publik"
 echo $kelas_saya->propertiInstansi;     // => "Sebuah properti instansi"
 $kelas_saya->methodSaya();              // => "KelasSaya"
 
-// Extend classes using "extends"
-class MyOtherClass extends MyClass
+// Menurunkan kelas menggunakan kata kunci "extends"
+class KelasSayaLainnya extends KelasSaya
 {
-    function printProtectedProperty()
+    function tampilkanPropertiTerlindungi()
     {
-        echo $this->prot;
+        echo $this->properti;
     }
 
-    // Override a method
-    function myMethod()
+    // "override" terhadap sebuah method
+    function methodSaya()
     {
-        parent::myMethod();
-        print ' > MyOtherClass';
+        parent::methodSaya();
+        print ' > KelasSayaLainnya';
     }
 }
 
-$my_other_class = new MyOtherClass('Instance prop');
-$my_other_class->printProtectedProperty(); // => Prints "protected"
-$my_other_class->myMethod();               // Prints "MyClass > MyOtherClass"
+$kelas_saya_lainnya = new KelasSayaLainnya('Instansiasi properti');
+$kelas_saya_lainnya->tampilkanPropertiTerlindung();     // => Menampilkan "terlindungi"
+$kelas_saya_lainnya->methodSaya();                      // Menampilkan "KelasSaya > KelasSayaLainnya"
 
-final class YouCannotExtendMe
+final class SayaTidakBisaDiturunkan
 {
 }
 
-// You can use "magic methods" to create getters and setters
-class MyMapClass
+// Gunakan method ajaib (magic method) untuk membuat fungsi "getters" dan "setters"
+class PetaKelasSaya
 {
-    private $property;
+    private $properti;
 
     public function __get($key)
     {
@@ -607,127 +607,125 @@ class MyMapClass
     }
 }
 
-$x = new MyMapClass();
-echo $x->property; // Will use the __get() method
-$x->property = 'Something'; // Will use the __set() method
+$x = new PetaKelasSaya();
+echo $x->properti;          // akan memanggil method __get()
+$x->properti = 'Sesuatu';   // akan memanggil method __set();
 
-// Classes can be abstract (using the abstract keyword) or
-// implement interfaces (using the implements keyword).
-// An interface is declared with the interface keyword.
+// Kelas dapat dijadikan abstrak (menggunakan kata kunci "abstract"), atau
+// meng-implementasikan interfaces (menggunakan kata kunci "implements").
+// Sebuah interface dideklarasikan dengan perintah "interface".
 
-interface InterfaceOne
+interface InterfaceSatu
 {
-    public function doSomething();
+    public function kerjakanSesuatu();
 }
 
-interface InterfaceTwo
+interface InterfaceDua
 {
-    public function doSomethingElse();
+    public function kerjakanYangLain();
 }
 
-// interfaces can be extended
-interface InterfaceThree extends InterfaceTwo
+// interface dapat diturunkan
+interface InterfaceTiga extends InterfaceDua
 {
-    public function doAnotherContract();
+    public function kerjakanYangBerbeda();
 }
 
-abstract class MyAbstractClass implements InterfaceOne
+abstract class KelasAbstrakSaya implements InterfaceSatu
 {
-    public $x = 'doSomething';
+    public $x = 'kerjakanSesuatu';
 }
 
-class MyConcreteClass extends MyAbstractClass implements InterfaceTwo
+class KelasKongkritSaya extends KelasAbstrakSaya implements InterfaceTwo
 {
-    public function doSomething()
+    public function kerjakanSesuatu()
     {
         echo $x;
     }
 
-    public function doSomethingElse()
+    public function kerjakanYangLain()
     {
-        echo 'doSomethingElse';
+        echo 'kerjakanYangLain';
     }
 }
 
-
-// Classes can implement more than one interface
-class SomeOtherClass implements InterfaceOne, InterfaceTwo
+// Kelas dapat diimplementasikan pada banyak interface
+class KelasLainnya implements InterfaceSatu, InterfaceDua
 {
-    public function doSomething()
+    public function kerjakanSesuatu()
     {
-        echo 'doSomething';
+        echo 'kerjakanSesuatu';
     }
 
-    public function doSomethingElse()
+    public function kerjakanYangLain()
     {
-        echo 'doSomethingElse';
+        echo 'kerjakanYangLain';
     }
 }
 
 
 /********************************
- * Traits
+ * Sifat (Traits)
  */
 
-// Traits are available from PHP 5.4.0 and are declared using "trait"
+// Traits mulai tersedia sejak PHP 5.4.0 dan dideklarasikan menggunakan kata kunci "trait"
 
-trait MyTrait
+trait TraitSaya
 {
-    public function myTraitMethod()
+    public function methodTraitSaya()
     {
-        print 'I have MyTrait';
+        print 'Saya menggunakan Trait';
     }
 }
 
-class MyTraitfulClass
+class KelasTraitSaya
 {
-    use MyTrait;
+    use TraitSaya;
 }
 
-$cls = new MyTraitfulClass();
-$cls->myTraitMethod(); // Prints "I have MyTrait"
+$kls = new KelasTraitSaya();
+$kls->methodTraitSaya();    // menampilkan "Saya menggunakan Trait"
 
 
 /********************************
  * Namespaces
  */
 
-// This section is separate, because a namespace declaration
-// must be the first statement in a file. Let's pretend that is not the case
+// Bagian ini telah dibatasi, karena deklarasi "namespace"
+// karena harus ditempatkan diawal dokumen.
 
 <?php
 
-// By default, classes exist in the global namespace, and can
-// be explicitly called with a backslash.
+// Secara default, kelas tersedia sebagai namespace umum, dan dapat
+// secara khusus dipanggil dengan garis-miring terbalik (backslash).
 
-$cls = new \MyClass();
+$kls = new \KelasSaya();
 
 
+// Menentukan namespace untuk sebuah dokumen
+namespace Saya\Namespace;
 
-// Set the namespace for a file
-namespace My\Namespace;
-
-class MyClass
+class KelasSaya
 {
 }
 
-// (from another file)
-$cls = new My\Namespace\MyClass;
+// (dari dokumen lainnya)
+$kls = new Saya\Namespace\KelasSaya;
 
-//Or from within another namespace.
-namespace My\Other\Namespace;
+// Atau dari dalam namespace lainnya.
+namespace Saya\Lainnya\Namespace;
 
-use My\Namespace\MyClass;
+use Saya\Namespace\KelasSaya;
 
-$cls = new MyClass();
+$kls = new KelasSaya();
 
-// Or you can alias the namespace;
+// Namespace dapat menggunakan alias
 
-namespace My\Other\Namespace;
+namespace Saya\Lainnya\Namespace;
 
-use My\Namespace as SomeOtherNamespace;
+use Saya\Namespace as SuatuKelasLainnya;
 
-$cls = new SomeOtherNamespace\MyClass();
+$kls = new SuatuKelasLainnya\KelasSaya();
 
 
 /**********************
@@ -735,34 +733,34 @@ $cls = new SomeOtherNamespace\MyClass();
 *
 */
 
-class ParentClass {
-    public static function who() {
-        echo "I'm a " . __CLASS__ . "\n";
+class KelasInduk {
+    public static function siapa() {
+        echo "Ini adalah " . __CLASS__ . "\n";
     }
-    public static function test() {
-        // self references the class the method is defined within
+    public static function coba() {
+        // kata kunci "self" merujuk pada method yang berada dalam satu kelas
         self::who();
-        // static references the class the method was invoked on
+        // kata kunci "static" merujuk pada method yang berada di kelas dimana method itu dijalankan
         static::who();
     }
 }
 
-ParentClass::test();
+KelasInduk::coba();
 /*
-I'm a ParentClass
-I'm a ParentClass
+Ini adalah KelasInduk
+Ini adalah KelasInduk
 */
 
-class ChildClass extends ParentClass {
-    public static function who() {
-        echo "But I'm " . __CLASS__ . "\n";
+class KelasAnak extends KelasInduk {
+    public static function siapa() {
+        echo "Tapi ini adalah " . __CLASS__ . "\n";
     }
 }
 
-ChildClass::test();
+KelasAnak::tes();
 /*
-I'm a ParentClass
-But I'm ChildClass
+Ini adalah KelasInduk
+Tapi ini adalah KelasAnak
 */
 
 /**********************
@@ -770,82 +768,81 @@ But I'm ChildClass
 *  
 */
 
-// Get current class name. Must be used inside a class declaration.
-echo "Current class name is " . __CLASS__;
+// Mendapatkan nama dari suatu kelas. Harus dideklarasikan didalam kelas tersebut.
+echo "Nama kelas ini adalah " . __CLASS__;
 
-// Get full path directory of a file
-echo "Current directory is " . __DIR__;
+// Mendapatkan alamat lengkap direktori
+echo "Alamat direktori ini adalah " . __DIR__;
 
-    // Typical usage
+    // Beberapa yang banyak digunakan
     require __DIR__ . '/vendor/autoload.php';
 
-// Get full path of a file
-echo "Current file path is " . __FILE__;
+// Mendapatkan alamat lengkap dokumen
+echo "Alamat dokumen ini adalah " . __FILE__;
 
-// Get current function name
-echo "Current function name is " . __FUNCTION__;
+// Mendapatkan nama fungsi
+echo "Nama fungsi ini adalah " . __FUNCTION__;
 
-// Get current line number
-echo "Current line number is " . __LINE__;
+// Mendapatkan nomor baris perintah
+echo "Nomor baris perintah ini adalah " . __LINE__;
 
-// Get the name of the current method. Only returns a value when used inside a trait or object declaration.
-echo "Current method is " . __METHOD__;
+// Mendapatkan nama method. Hanya mengembalikan sebuah nilai jika berada didalam trait atau deklarasi objek.
+echo "Nama method ini adalah " . __METHOD__;
 
-// Get the name of the current namespace
-echo "Current namespace is " . __NAMESPACE__;
+// Mendapatkan nama namespace 
+echo "Namespace saat ini adalah " . __NAMESPACE__;
 
-// Get the name of the current trait. Only returns a value when used inside a trait or object declaration.
-echo "Current namespace is " . __TRAIT__;
+// Mendapatkan nama dari trait. Hanya mengembalikan sebuah nilai jika berada didalam trait atau deklarasi objek.
+echo "Namespace saat ini adalah " . __TRAIT__;
 
 /**********************
-*  Error Handling
+*  Penanganan Kesalahan (Error)
 *  
 */
 
-// Simple error handling can be done with try catch block
+// Penanganan error sederhana menggunakan "try...catch"
 
 try {
-    // Do something
+    // Kerjakan sesuatu
 } catch (Exception $e) {
-    // Handle exception
+    // Penanganan exception
 }
 
-// When using try catch blocks in a namespaced enviroment use the following
+// Menggunakan "try...catch" blok pada namespace
 
 try {
-    // Do something
+    // Kerjakan sesuatu
 } catch (\Exception $e) {
-    // Handle exception
+    // Penanganan exception
 }
 
-// Custom exceptions
+// Exception khusus
 
-class MyException extends Exception {}
+class ExceptionSaya extends Exception {}
 
 try {
 
-    $condition = true;
+    $kondisi = true;
 
-    if ($condition) {
-        throw new MyException('Something just happend');
+    if ($kondisi) {
+        throw new ExceptionSaya('Terjadi sesuatu');
     }
 
-} catch (MyException $e) {
-    // Handle my exception
+} catch (ExceptionSaya $e) {
+    // Penanganan untuk exception khusus
 }
 
 ```
 
-## More Information
+## Informasi lainnya
 
-Visit the [official PHP documentation](http://www.php.net/manual/) for reference
-and community input.
+Kunjungi [Dokumentasi resmi PHP](http://www.php.net/manual/) untuk referensi dan masukan komunitas.
 
-If you're interested in up-to-date best practices, visit
+Jika anda tertarik untuk belajar lebih dalam, kunjungi 
 [PHP The Right Way](http://www.phptherightway.com/).
 
-If you're coming from a language with good package management, check out
+Jika anda terbiasa dengan manajemen paket, kunjungi
 [Composer](http://getcomposer.org/).
 
-For common standards, visit the PHP Framework Interoperability Group's
+Untuk standar umum, kunjungi PHP Framework Interoperability Group's
 [PSR standards](https://github.com/php-fig/fig-standards).
