@@ -48,7 +48,7 @@ println(10)
 // Printing, without forcing a new line on next print
 print("Hello world")
 print(10)
-// Hello world!10
+// Hello world10
 
 // Declaring values is done using either var or val.
 // val declarations are immutable, whereas vars are mutable. Immutability is
