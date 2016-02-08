@@ -193,7 +193,7 @@ foo = (+10)
 foo 5 -- 15
 
 -- function composition
--- the (.) function chains functions together.
+-- the operator `.` chains functions together.
 -- For example, here foo is a function that takes a value. It adds 10 to it,
 -- multiplies the result of that by 4, and then returns the final value.
 foo = (*4) . (+10)
@@ -401,10 +401,25 @@ main'' = do
 
 let foo = 5
 
--- You can see the type of any value with `:t`:
+-- You can see the type of any value or expression with `:t`:
 
->:t foo
+> :t foo
 foo :: Integer
+
+-- Operators, such as `+`, `:` and `$`, are functions.
+-- Their type can be inspected by putting the operator in parentheses:
+
+> :t (:)
+(:) :: a -> [a] -> [a]
+
+-- You can get additional information on any `name` using `:i`:
+
+> :i (+)
+class Num a where
+  (+) :: a -> a -> a
+  ...
+    -- Defined in ‘GHC.Num’
+infixl 6 +
 
 -- You can also run any action of type `IO ()`
 

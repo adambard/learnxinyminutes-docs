@@ -97,13 +97,13 @@ False or True   # => True
 1 < 2 < 3  # => True
 2 < 3 < 2  # => False
 
-# (is vs. ==) is checks if two variable refer to the same object, but == checks
+# (is vs. ==) is checks if two variables refer to the same object, but == checks
 # if the objects pointed to have the same values.
 a = [1, 2, 3, 4]  # Point a at a new list, [1, 2, 3, 4]
 b = a             # Point b at what a is pointing to
 b is a            # => True, a and b refer to the same object
 b == a            # => True, a's and b's objects are equal
-b = [1, 2, 3, 4]  # Point a at a new list, [1, 2, 3, 4]
+b = [1, 2, 3, 4]  # Point b at a new list, [1, 2, 3, 4]
 b is a            # => False, a and b do not refer to the same object
 b == a            # => True, a's and b's objects are equal
 
@@ -780,6 +780,7 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [A curated list of awesome Python frameworks, libraries and software](https://github.com/vinta/awesome-python)
 * [30 Python Language Features and Tricks You May Not Know About](http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
 * [Official Style Guide for Python](https://www.python.org/dev/peps/pep-0008/)
+* [Python 3 Computer Science Circles](http://cscircles.cemc.uwaterloo.ca/)
 
 ### Dead Tree
 

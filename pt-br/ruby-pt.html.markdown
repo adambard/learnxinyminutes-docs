@@ -4,6 +4,7 @@ lang: pt-br
 filename: learnruby-pt.rb
 contributors:
   - ["Bruno Henrique - Garu", "http://garulab.com"]
+  - ["Jean Matheus Souto", "http://jeanmatheussouto.github.io"]
 translators:
   - ["Katyanna Moura", "https://twitter.com/amelie_kn"]
 ---
@@ -161,9 +162,6 @@ hash['numero'] #=> 5
 hash['nada aqui'] #=> nil
 
 # Interar sobre hashes com o método #each:
-hash.each do |k, v|
-  puts "#{k} is #{v}"
-end
 
 hash.each do |k, v|
   puts "#{k} é #{v}"
@@ -385,3 +383,11 @@ Humano.bar # 0
 Doutor.bar # nil
 
 ```
+
+## Mais sobre Ruby
+
+- [Documentação oficial](http://www.ruby-doc.org/core-2.1.1/)
+- [Aprenda Ruby com desafios](http://www.learneroo.com/modules/61/nodes/338) - Uma coleção de desafios para testar a linguagem.
+- [Ruby a partir de outras linguagens](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
+- [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/)- Um mais antigo [free edition](http://ruby-doc.com/docs/ProgrammingRuby/) e tambem uma versão online disponível.
+- [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - Uma versão colaborativa de um *style-guide*
