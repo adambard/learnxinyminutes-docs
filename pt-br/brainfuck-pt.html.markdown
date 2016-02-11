@@ -15,7 +15,7 @@ programação Turing-completa extremamente simples com apenas 8 comandos.
 ```
 Qualquer caractere exceto "><+-.,[]" (sem contar as aspas) é ignorado.
 
-Brainfuck é representado por um vetor com 30 000 células inicializadas em zero
+Brainfuck é representado por um vetor com 30.000 células inicializadas em zero
 e um ponteiro de dados que aponta para a célula atual.
 
 Existem 8 comandos:
