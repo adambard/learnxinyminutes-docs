@@ -5,6 +5,7 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Leo Rudberg" , "http://github.com/LOZORD"]
     - ["Betsy Lorton" , "http://github.com/schbetsy"]
+    - ["Chris DeMars", "http://github.com/chrisdemars"]
     - ["Bruno Volcov", "http://github.com/volcov"]
     - ["Andrew Taylor", "http://github.com/andrewjt71"]
 filename: LearnGit.txt
@@ -102,15 +103,6 @@ head is a pointer that points to any commit. A repository can have any number of
 ## Commands
 
 
-### init
-
-Create an empty Git repository. The Git repository's settings, stored information,
-and more is stored in a directory (a folder) named ".git".
-
-```bash
-$ git init
-```
-
 ### config
 
 To configure settings. Whether it be for the repository, the system itself,
@@ -147,6 +139,14 @@ $ git add --help
 $ git commit --help
 $ git init --help
 ```
+### init
+
+Create an empty Git repository. The Git repository's settings, stored information,
+and more is stored in a directory (a folder) named ".git".
+
+```bash
+$ git init
+```
 
 ### ignore files
 
@@ -157,6 +157,9 @@ $ echo "temp/" >> .gitignore
 $ echo "private_key" >> .gitignore
 ```
 
+##### Gitignore Resources
+* [gitignore.io](https://www.gitignore.io/)
+* [Common .gitignore](http://commongitignore.com/)
 
 ### status
 
@@ -267,7 +270,7 @@ $ git clone -b master-cn https://github.com/adambard/learnxinyminutes-docs.git -
 ### commit
 
 Stores the current contents of the index in a new "commit." This commit contains
-the changes made and a message created by the user.
+the changes made and a message created by the user. *If you do not add the "-m" flag, git will open up a text editor for you to enter your commit message.*
 
 ```bash
 # commit with a message
@@ -412,7 +415,7 @@ Stashing takes the dirty state of your working directory and saves it on a stack
 of unfinished changes that you can reapply at any time.
 
 Let's say you've been doing some work in your git repo, but you want to pull
-from the remote. Since you have dirty (uncommited) changes to some files, you
+from the remote. Since you have dirty (uncommitted) changes to some files, you
 are not able to run `git pull`. Instead, you can run `git stash` to save your
 changes onto a stack!
 
@@ -499,7 +502,7 @@ $ git reset --hard
 $ git reset 31f2bb1
 
 # Moves the current branch tip backward to the specified commit
-# and makes the working dir match (deletes uncommited changes and all commits
+# and makes the working dir match (deletes uncommitted changes and all commits
 # after the specified commit).
 $ git reset --hard 31f2bb1
 ```
