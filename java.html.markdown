@@ -467,7 +467,7 @@ class Bicycle {
     }
 
     // Constructors are a way of creating classes
-    // This is a constructor
+    // Here is a constructor
     public Bicycle() {
         // You can also call another constructor:
         // this(1, 50, 5, "Bontrager");
@@ -477,7 +477,7 @@ class Bicycle {
         name = "Bontrager";
     }
 
-    // This is a constructor that takes arguments
+    // Here is a constructor that takes arguments
     public Bicycle(int startCadence, int startSpeed, int startGear,
         String name) {
         this.gear = startGear;
