@@ -9,7 +9,7 @@ filename: LearnZfs.txt
 
 [ZFS](http://open-zfs.org/wiki/Main_Page)
 is a rethinking of the storage stack, combining traditional file systems as well as volume
-managers into one cohesive tool.  ZFS has some specific teminology that sets it appart from
+managers into one cohesive tool.  ZFS has some specific terminology that sets it appart from
 more traditional storage systems, however it has a great set of features with a focus on
 usability for systems administrators.
 
