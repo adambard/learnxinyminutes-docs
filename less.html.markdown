@@ -8,7 +8,7 @@ contributors:
 Less is a CSS pre-processor, that adds features such as variables, nesting, mixins and more.
 Less (and other preprocessors, such as [Sass](http://sass-lang.com/) help developers to write maintainable and DRY (Don't Repeat Yourself) code.
 
-```less
+```css
 
 
 //Single line comments are removed when Less is compiled to CSS.
