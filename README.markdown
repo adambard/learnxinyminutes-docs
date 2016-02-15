@@ -1,31 +1,54 @@
 # [Learn X in Y minutes](http://learnxinyminutes.com)
 
-Whirlwind tours of (several, hopefully many someday) popular and
-ought-to-be-more-popular programming languages, presented as valid,
-commented code and explained as they go.
+Whirlwind tours of popular and ought-to-be-more-popular programming languages,
+presented as valid, commented code and explained as they go.
 
 ## We need YOU!...
 
-... to write more inline code tutorials. Just grab an existing file from
-this repo and copy the formatting (don't worry, it's all very simple).
-Make a new file, send a pull request, and if it passes muster I'll get it up pronto.
-Remember to fill in the "contributors" fields so you get credited
-properly!
+... to contribute in any way you can, from as little as fixing a typo to adding
+a whole new tutorial or translating an entire page! Don't worry, it's all very
+simple to get started, but we do ask you finish reading the rest of this page
+and follow our guidelines. Submit a pull request, and we'll get it reviewed and
+merged pronto.
 
-## Contributing
+If you would like to contribute but don't know where to start, look for issues
+tagged with "quickfix." These tend to be easy fixes you can do in just a few
+minutes, nice way to get your feet wet.
 
-All contributions are welcome, from the tiniest typo to a brand new article. Translations
-in all languages are welcome (or, for that matter, original articles in any language).
-Send a pull request or open an issue any time of day or night.
+### General Guidelines
 
-**Please tag your issues and pull requests with [language/lang-code] at the beginning**
-**(e.g. [python/en] for English Python).** This will help everyone pick out things they
-care about.
+Please tag your issues and pull requests with [language/lang-code] at the
+beginning (e.g. [python/en] for English Python). This will help everyone pick
+out things they care about.
 
 We're happy for any contribution in any form, but if you're making more than one major change
 (i.e. translations for two different languages) it would be super cool of you to make a
 separate pull request for each one so that someone can review them more effectively and/or
 individually.
+
+If you're making a significant change to the article, e.g. adding a whole new
+section or doing a rewrite, add your name to the top of the page under the
+contributors section. We do not have strict policies on what counts as
+"significant," but please understand that cleanup patches or minor bug fixes do
+not count.
+
+### Small Fixes
+
+When opening issues and pull requests that are (or would be) only a few lines
+(usually < 5), we strongly encourage you to indicate as such in the title. We
+tend to prioritize small changes since we can get through more of them quickly.
+
+### Translations
+
+We encourage you to @-mention specific collaborators for translation-related
+pull requests of the following languages:
+
+* @geoffliu: Chinese (simplified and traditional), Italian
+* @oire: Russian
+* @vendethiel: French
+
+For all other languages, we leave the pull request open for a few weeks for the
+public to comment before merging. We thank you for your patience.
 
 ### Style Guidelines
 

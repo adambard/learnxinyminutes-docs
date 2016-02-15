@@ -330,7 +330,7 @@ ECarTypes GetPreferredCarType()
 }
 
 // As of C++11 there is an easy way to assign a type to the enum which can be
-// useful in serialization of data and converting enums back-and-forth between 
+// useful in serialization of data and converting enums back-and-forth between
 // the desired type and their respective constants
 enum ECarTypes : uint8_t
 {
@@ -352,7 +352,7 @@ void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 }
 
 // On the other hand you may not want enums to be accidentally cast to an integer
-// type or to other enums so it is instead possible to create an enum class which 
+// type or to other enums so it is instead possible to create an enum class which
 // won't be implicitly converted
 enum class ECarTypes : uint8_t
 {
@@ -468,7 +468,7 @@ int main() {
 // Inheritance:
 
 // This class inherits everything public and protected from the Dog class
-// as well as private but may not directly access private members/methods 
+// as well as private but may not directly access private members/methods
 // without a public or protected method for doing so
 class OwnedDog : public Dog {
 
@@ -825,10 +825,10 @@ fooMap.find(Foo(1)); //true
 ///////////////////////////////////////
 
 // lambdas are a convenient way of defining an anonymous function
-// object right at the location where it is invoked or passed as 
+// object right at the location where it is invoked or passed as
 // an argument to a function.
 
-// For example, consider sorting a vector of pairs using the second 
+// For example, consider sorting a vector of pairs using the second
 // value of the pair
 
 vector<pair<int, int> > tester;
@@ -856,7 +856,7 @@ sort(tester.begin(), tester.end(), [](const pair<int, int>& lhs, const pair<int,
 vector<int> dog_ids;
 // number_of_dogs = 3;
 for(int i = 0; i < 3; i++) {
-	dog_ids.push_back(i);  
+	dog_ids.push_back(i);
 }
 
 int weight[3] = {30, 50, 10};
@@ -940,29 +940,13 @@ Foo f1;
 f1 = f2;
 
 
-// How to truly clear a container:
-class Foo { ... };
-vector<Foo> v;
-for (int i = 0; i < 10; ++i)
-  v.push_back(Foo());
-
-// Following line sets size of v to 0, but destructors don't get called
-// and resources aren't released!
-v.clear();
-v.push_back(Foo());  // New value is copied into the first Foo we inserted
-
-// Truly destroys all values in v. See section about temporary objects for
-// explanation of why this works.
-v.swap(vector<Foo>());
-
-
 ///////////////////////////////////////
 // Tuples (C++11 and above)
 ///////////////////////////////////////
 
 #include<tuple>
 
-// Conceptually, Tuples are similar to  old data structures (C-like structs) but instead of having named data members , 
+// Conceptually, Tuples are similar to  old data structures (C-like structs) but instead of having named data members ,
 // its elements are accessed by their order in the tuple.
 
 // We start with constructing a tuple.
@@ -995,7 +979,7 @@ cout << tuple_size<decltype(third)>::value << "\n"; // prints: 3
 // tuple_cat concatenates the elements of all the tuples in the same order.
 
 auto concatenated_tuple = tuple_cat(first, second, third);
-// concatenated_tuple becomes = (10, 'A', 1e9, 15, 11, 'A' ,3.14141) 
+// concatenated_tuple becomes = (10, 'A', 1e9, 15, 11, 'A' ,3.14141)
 
 cout << get<0>(concatenated_tuple) << "\n"; // prints: 10
 cout << get<3>(concatenated_tuple) << "\n"; // prints: 15
