@@ -175,7 +175,7 @@ public class LearnJava {
         // Another way to declare & initialize an array
         int[] y = {9000, 1000, 1337};
         String names[] = {"Bob", "John", "Fred", "Juan Pedro"};
-        boolean bools[] = new boolean[] {true, false, false};
+        boolean bools[] = {true, false, false};
 
         // Indexing an array - Accessing an element
         System.out.println("intArray @ 0: " + intArray[0]);
