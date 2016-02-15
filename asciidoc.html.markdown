@@ -13,7 +13,7 @@ Headers are optional and can't contain blank lines. It must be offset from conte
 
 Title Only
 
-```asciidoc
+```
 = Document Title
 
 First sentence of document.
@@ -21,7 +21,7 @@ First sentence of document.
 
 Title and Author
 
-```asciidoc
+```
 = Document Title
 First Last <first.last@learnxinyminutes.com>
 
@@ -29,7 +29,8 @@ Start of this document.
 ```
 
 Multiple Authors
-```asciidoc
+
+```
 = Document Title
 John Doe <john@go.com>; Jane Doe<jane@yo.com>; Black Beard <beardy@pirate.com>
 
@@ -37,16 +38,18 @@ Start of a doc with multiple authors.
 ```
 
 Revision Line (requires an author line)
-```asciidoc
+
+```
 = Doc Title V1
 Potato Man <chip@crunchy.com>
 v1.0, 2016-01-13
 
 This article about chips is going to be fun.
 ```
+
 Paragraphs
 
-```asciidoc
+```
 You don't need anything special for paragraphs.
 
 Add a blank line between paragraphs to seperate them.
@@ -57,7 +60,7 @@ and you will recieve a line break!
 
 Formatting Text
 
-```asciidoc
+```
 _underscore creates italics_
 *asterisks for bold*
 *_combine for extra fun_*
@@ -67,7 +70,7 @@ _underscore creates italics_
 
 Section Titles 
 
-```asciidoc
+```
 = Level 0 (may only be used in document's header)
 
 == Level 1 <h2>
@@ -87,34 +90,33 @@ Section Titles
 Lists
 
 To create a bulleted list use asterisks.
-```asciidoc
+
+```
 * foo
 * bar
 * baz
 ```
 
 To create a numbered list use periods.
-```asciidoc
+
+```
 . item 1
 . item 2
 . item 3
 ```
 
 You can nest lists by adding extra asterisks or periods up to five times.
-```asciidoc
+
+```
 * foo 1
 ** foo 2
 *** foo 3
 **** foo 4
 ***** foo 5
-```
-```asciidoc
+
 . foo 1
 .. foo 2
 ... foo 3
 .... foo 4
 ..... foo 5
 ```
-
-
-
