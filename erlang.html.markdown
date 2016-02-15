@@ -177,7 +177,7 @@ is_dog(A) -> false.
 % A guard sequence is either a single guard or a series of guards, separated
 % by semicolons (`;`). The guard sequence `G1; G2; ...; Gn` is true if at
 % least one of the guards `G1`, `G2`, ..., `Gn` evaluates to `true`.
-is_pet(A) when is_atom(A), (A =:= dog) or (A =:= cat) -> true;
+is_pet(A) when is_atom(A), (A =:= dog);(A =:= cat) -> true;
 is_pet(A)                                             -> false.
 
 % Warning: not all valid Erlang expressions can be used as guard expressions;

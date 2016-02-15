@@ -15,8 +15,8 @@ executable pseudocode.
 Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
 
 Note: This article applies to Python 2.7 specifically, but should be applicable
-to Python 2.x. Python 2.7 is reachong end of life and will stop beeign maintained in 2020,
-it is though recommended to start learnign Python with Python 3.
+to Python 2.x. Python 2.7 is reaching end of life and will stop being maintained in 2020,
+it is though recommended to start learning Python with Python 3.
 For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
 
 It is also possible to write Python code which is compatible with Python 2.7 and 3.x at the same time,
@@ -63,7 +63,7 @@ allow you to write Python 3 code that will run on Python 2, so check out the Pyt
 # to carry out normal division with just one '/'.
 from __future__ import division
 11/4    # => 2.75  ...normal division
-11//4   # => 2 ...floored division  
+11//4   # => 2 ...floored division
 
 # Modulo operation
 7 % 3 # => 1
@@ -123,11 +123,16 @@ not False  # => True
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
 
-# % can be used to format strings, like this:
-"%s can be %s" % ("strings", "interpolated")
+#String formatting with %
+#Even though the % string operator will be deprecated on Python 3.1 and removed
+#later at some time, it may still be good to know how it works.
+x = 'apple'
+y = 'lemon'
+z = "The items in the basket are %s and %s" % (x,y)
 
 # A newer way to format strings is the format method.
 # This method is the preferred way
+"{} is a {}".format("This", "placeholder")
 "{0} can be {1}".format("strings", "formatted")
 # You can use keywords if you don't want to count.
 "{name} wants to eat {food}".format(name="Bob", food="lasagna")
@@ -144,8 +149,16 @@ None is None  # => True
 # very useful when dealing with primitive values, but is
 # very useful when dealing with objects.
 
-# None, 0, and empty strings/lists all evaluate to False.
-# All other values are True
+# Any object can be used in a Boolean context.
+# The following values are considered falsey:
+#    - None
+#    - zero of any numeric type (e.g., 0, 0L, 0.0, 0j)
+#    - empty sequences (e.g., '', (), [])
+#    - empty containers (e.g., {}, set())
+#    - instances of user-defined classes meeting certain conditions
+#      see: https://docs.python.org/2/reference/datamodel.html#object.__nonzero__
+#
+# All other values are truthy (using the bool() function on them returns True).
 bool(0)  # => False
 bool("")  # => False
 
@@ -234,7 +247,7 @@ li.remove(2)  # Raises a ValueError as 2 is not in the list
 li.insert(1, 2)  # li is now [1, 2, 3, 4, 5, 6] again
 
 # Get the index of the first item found
-li.index(2)  # => 3
+li.index(2)  # => 1
 li.index(7)  # Raises a ValueError as 7 is not in the list
 
 # Check for existence in a list with "in"
@@ -257,8 +270,9 @@ tup[:2]   # => (1, 2)
 
 # You can unpack tuples (or lists) into variables
 a, b, c = (1, 2, 3)     # a is now 1, b is now 2 and c is now 3
+d, e, f = 4, 5, 6       # you can leave out the parentheses
 # Tuples are created by default if you leave out the parentheses
-d, e, f = 4, 5, 6
+g = 4, 5, 6             # => (4, 5, 6)
 # Now look how easy it is to swap two values
 e, d = d, e     # d is now 5 and e is now 4
 
@@ -444,7 +458,7 @@ add(y=6, x=5)   # Keyword arguments can arrive in any order.
 
 
 # You can define functions that take a variable number of
-# positional args, which will be interpreted as a tuple if you do not use the *
+# positional args, which will be interpreted as a tuple by using *
 def varargs(*args):
     return args
 
@@ -452,7 +466,7 @@ varargs(1, 2, 3)   # => (1, 2, 3)
 
 
 # You can define functions that take a variable number of
-# keyword args, as well, which will be interpreted as a dict if you do not use **
+# keyword args, as well, which will be interpreted as a dict by using **
 def keyword_args(**kwargs):
     return kwargs
 
@@ -712,6 +726,8 @@ print say(say_please=True)  # Can you buy me a beer? Please! I am poor :(
 * [Python Module of the Week](http://pymotw.com/2/)
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
+* [LearnPython](http://www.learnpython.org/)
+* [Fullstack Python](https://www.fullstackpython.com/)
 
 ### Dead Tree
 

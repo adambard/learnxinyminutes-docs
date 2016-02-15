@@ -4,17 +4,16 @@ filename: learngo-de.go
 contributors:
     - ["Joseph Adams", "https://github.com/jcla1"]
     - ["Dennis Keller", "https://github.com/denniskeller"]
+    - ["Jerome Meinke", "https://github.com/jmeinke"]
 lang: de-de
 ---
-Go wurde entwickelt, um Probleme zu lösen. Sie ist zwar nicht der neueste Trend in
-der Informatik, aber sie ist einer der neuesten und schnellsten Wege, um Aufgabe in
-der realen Welt zu lösen.
-
-Sie hat vertraute Elemente von imperativen Sprachen mit statischer Typisierung
-und kann schnell kompiliert und ausgeführt werden. Verbunden mit leicht zu
-verstehenden Parallelitäts-Konstrukten, um die heute üblichen mehrkern
-Prozessoren optimal nutzen zu können, eignet sich Go äußerst gut für große
-Programmierprojekte.
+Die Sprache Go (auch golang) wurde von Google entwickelt und wird seit 2007
+benutzt. Go ähnelt in der Syntax der Sprache C, bietet darüber hinaus aber viele
+Vorteile. Einerseits verzichtet Gp auf Speicherarithmetik und
+benutzt einen Garbabe Collector. Andererseits enthält Go native Sprachelemente
+für die Unterstützung von Nebenläufigkeit. Durch den Fokus auf einen schnellen
+Kompilierprozess wird außerdem die Softwareentwicklung in Großprojekten
+erleichtert.
 
 Außerdem beinhaltet Go eine gut ausgestattete Standardbibliothek und hat eine
 aktive Community.
@@ -24,8 +23,8 @@ aktive Community.
 /* Mehr-
    zeiliger Kommentar */
 
-// Eine jede Quelldatei beginnt mit einer Paket-Klausel.
-// "main" ist ein besonderer Pkaetname, da er ein ausführbares Programm
+// Wie bei Java gehört jede Quelldatei einem Paket an (Modularisierung).
+// "main" ist ein besonderer Paketname, da er ein ausführbares Programm
 // einleitet, im Gegensatz zu jedem anderen Namen, der eine Bibliothek
 // deklariert.
 package main
@@ -38,9 +37,9 @@ import (
     "strconv"  // Zeichenkettenmanipulation
 )
 
-// Es folgt die Definition einer Funktions, in diesem Fall von "main". Auch hier
+// Es folgt die Definition einer Funktion, in diesem Fall von "main". Auch hier
 // ist der Name wieder besonders. "main" markiert den Eintrittspunkt des
-// Programms. Vergessen Sie nicht die geschweiften Klammern!
+// Programms.
 func main() {
     // Println gibt eine Zeile zu stdout aus.
     // Der Prefix "fmt" bestimmt das Paket aus welchem die Funktion stammt.
@@ -50,13 +49,13 @@ func main() {
     beyondHello()
 }
 
-// Funktionen können Parameter akzeptieren, diese werden in Klammern deklariert,
-// die aber auch bei keinen Parametern erforderlich sind.
+// Funktionen können Parameter akzeptieren. Diese werden in Klammern deklariert,
+// die aber auch ohne Parameter erforderlich sind.
 func beyondHello() {
     var x int // Deklaration einer Variable, muss vor Gebrauch geschehen.
     x = 3     // Zuweisung eines Werts.
     // Kurze Deklaration: Benutzen Sie ":=", um die Typisierung automatisch zu
-    // folgern, die Variable zu deklarieren und ihr einen Wert zu zuweisen.
+    // folgern, die Variable zu deklarieren und ihr einen Wert zuzuweisen.
     y := 4
 
     // Eine Funktion mit mehreren Rückgabewerten.
@@ -99,7 +98,7 @@ Zeilenumbrüche beinhalten.` // Selber Zeichenketten-Typ
     // "slices" haben eine dynamische Größe. Arrays und Slices haben beide ihre
     // Vorzüge, aber slices werden viel häufiger verwendet
     s3 := []int{4, 5, 9}       // Vergleichen Sie mit a3, hier: keine Ellipse
-    s4 := make([]int, 4)       // Weist Speicher für 4 ints zu, alle mit Initialwert 0
+    s4 := make([]int, 4)       // Weist Speicher für 4 ints zu, alle mit Wert 0
     var d2 [][]float64         // Nur eine Deklaration, keine Speicherzuweisung
     bs := []byte("eine slice") // Umwandlungs-Syntax
 
@@ -147,7 +146,7 @@ func learnFlowControl() {
     if false {
         // nicht hier
     } else {
-        // sonder hier! spielt die Musik
+        // sondern hier! spielt die Musik
     }
 
     // Benutzen Sie ein "switch" Statement anstatt eine Anreihung von if-s
@@ -166,7 +165,7 @@ func learnFlowControl() {
     // Ab hier gilt wieder: x == 1
 
     // For ist die einzige Schleifenform in Go, sie hat aber mehrere Formen:
-    for { // Endloschleife
+    for { // Endlosschleife
         break    // nur ein Spaß
         continue // wird nie ausgeführt
     }
@@ -201,7 +200,8 @@ type pair struct {
     x, y int
 }
 
-// Definiere eine Methode von "pair". Dieser Typ erfüllt jetzt das Stringer interface.
+// Definiere eine Methode von "pair".
+// Dieser Typ erfüllt jetzt das Stringer interface.
 func (p pair) String() string { // p ist der Empfänger
     // Sprintf ist eine weitere öffentliche Funktion von fmt.
     // Der Syntax mit Punkt greift auf die Felder zu.
@@ -255,18 +255,19 @@ func learnConcurrency() {
     // Die selbe "make"-Funktion wie vorhin. Sie initialisiert Speicher für
     // maps, slices und Kanäle.
     c := make(chan int)
-    // Starte drei parallele "Goroutines". Die Zahlen werden parallel (concurrently)
-    // erhöht. Alle drei senden ihr Ergebnis in den gleichen Kanal.
+    // Starte drei parallele "Goroutines".
+    // Die Zahlen werden parallel (concurrently) erhöht.
+    // Alle drei senden ihr Ergebnis in den gleichen Kanal.
     go inc(0, c) // "go" ist das Statement zum Start einer neuen Goroutine
     go inc(10, c)
     go inc(-805, c)
     // Auslesen und dann Ausgeben der drei berechneten Werte.
     // Man kann nicht im voraus feststellen in welcher Reihenfolge die Werte
     // ankommen.
-    fmt.Println(<-c, <-c, <-c) // mit dem Kannal rechts ist <- der Empfangs-Operator
+    fmt.Println(<-c, <-c, <-c) // mit dem Kanal rechts ist <- der Empfangs-Operator
 
-    cs := make(chan string)       // ein weiterer Kannal, diesmal für strings
-    cc := make(chan chan string)  // ein Kannal für string Kannäle
+    cs := make(chan string)       // ein weiterer Kanal, diesmal für strings
+    cc := make(chan chan string)  // ein Kanal für string Kanäle
 
     // Start einer neuen Goroutine, nur um einen Wert zu senden
     go func() { c <- 84 }()
@@ -283,7 +284,7 @@ func learnConcurrency() {
         fmt.Println("wird nicht passieren.")
     }
     // Hier wird eine der beiden Goroutines fertig sein, die andere nicht.
-    // Sie wird warten bis der Wert den sie sendet von dem Kannal gelesen wird.
+    // Sie wird warten bis der Wert den sie sendet von dem Kanal gelesen wird.
 
     learnWebProgramming() // Go kann es und Sie hoffentlich auch bald.
 }
@@ -301,19 +302,18 @@ func learnWebProgramming() {
 // Methode implementieren: ServeHTTP
 func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
     // Senden von Daten mit einer Methode des http.ResponseWriter
-    w.Write([]byte("Sie habe Go in Y Minuten gelernt!"))
+    w.Write([]byte("Sie haben Go in Y Minuten gelernt!"))
 }
 ```
 
 ## Weitere Resourcen
-Alles zu Go finden Sie auf der [offiziellen Go Webseite](http://golang.org/).
-Dort können sie dem Tutorial folgen, interaktiv Quelltext ausprobieren und viel
-Dokumentation lesen.
+Informationen zu Go findet man auf der [offiziellen Go Webseite](http://golang.org/).
+Dort gibt es unter anderem ein Tutorial und interaktive Quelltext-Beispiele, vor
+allem aber Dokumentation zur Sprache und den Paketen.
 
 Auch zu empfehlen ist die Spezifikation von Go, die nach heutigen Standards sehr
-kurz und auch gut verständlich formuliert ist. Auf der Leseliste von Go-Neulingen
-ist außerdem der Quelltext der [Go standard Bibliothek](http://golang.org/src/pkg/).
-Gut dokumentiert, demonstriert sie leicht zu verstehendes und im idiomatischen Stil
-verfasstes Go. Erreichbar ist der Quelltext auch durch das Klicken der Funktionsnamen
+kurz und gut verständlich formuliert ist. Auf der Leseliste von Go-Neulingen
+ist außerdem der Quelltext der [Go standard Bibliothek](http://golang.org/src/pkg/)
+einzusehen. Dieser kann als Referenz für leicht zu verstehendes und im idiomatischen Stil
+verfasstes Go dienen. Erreichbar ist der Quelltext auch durch das Klicken der Funktionsnamen
 in der [offiziellen Dokumentation von Go](http://golang.org/pkg/).
-

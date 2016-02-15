@@ -91,10 +91,10 @@ until num == 0
 -- 2. 函数。 
 ---------------------------------------------------- 
 
-function fib(n) 
-  if n < 2 then return 1 end 
-  return fib(n - 2) + fib(n - 1) 
-end 
+function fib(n)
+  if n < 2 then return n end
+  return fib(n - 2) + fib(n - 1)
+end
 
 -- 支持闭包及匿名函数： 
 function adder(x) 
@@ -129,9 +129,11 @@ function f(x) return x * x end
 f = function (x) return x * x end 
 
 -- 这些也是等价的： 
-local function g(x) return math.sin(x) end 
-local g; g  = function (x) return math.sin(x) end 
--- 'local g'使得g可以自引用。 
+local function g(x) return math.sin(x) end
+local g; g = function (x) return math.sin(x) end
+-- 以上均因'local g'，使得g可以自引用。
+local g = function(x) return math.sin(x) end
+-- 等价于 local function g(x)..., 但函数体中g不可自引用
 
 -- 顺便提下，三角函数以弧度为单位。 
 
@@ -210,7 +212,7 @@ f2 = {a = 2, b = 3}
 
 metafraction = {} 
 function metafraction.__add(f1, f2) 
-  sum = {} 
+  local sum = {} 
   sum.b = f1.b * f2.b 
   sum.a = f1.a * f2.b + f2.a * f1.b 
   return sum
@@ -273,7 +275,7 @@ eatenBy = myFavs.animal  -- 可以工作！感谢元表
 Dog = {}                                   -- 1. 
 
 function Dog:new()                         -- 2. 
-  newObj = {sound = 'woof'}                -- 3. 
+  local newObj = {sound = 'woof'}                -- 3. 
   self.__index = self                      -- 4. 
   return setmetatable(newObj, self)        -- 5. 
 end 
@@ -307,7 +309,7 @@ mrDog:makeSound()  -- 'I say woof'         -- 8.
 LoudDog = Dog:new()                           -- 1. 
 
 function LoudDog:makeSound() 
-  s = self.sound .. ' '                       -- 2. 
+  local s = self.sound .. ' '                       -- 2. 
   print(s .. s .. s) 
 end 
 
@@ -328,7 +330,7 @@ seymour:makeSound()  -- 'woof woof woof'      -- 4.
 
 -- 如果有必要，子类也可以有new()，与基类相似： 
 function LoudDog:new() 
-  newObj = {} 
+  local newObj = {} 
   -- 初始化newObj 
   self.__index = self 
   return setmetatable(newObj, self) 
@@ -340,7 +342,9 @@ end
 
 
 --[[ 我把这部分给注释了，这样脚本剩下的部分可以运行 
+```
 
+```lua
 -- 假设文件mod.lua的内容类似这样： 
 local M = {} 
 
@@ -410,5 +414,10 @@ lua-users.org上的[Lua简明参考](http://lua-users.org/files/wiki_insecure/us
 * <a href="http://lua-users.org/wiki/MathLibraryTutorial">math library</a>
 * <a href="http://lua-users.org/wiki/IoLibraryTutorial">io library</a>
 * <a href="http://lua-users.org/wiki/OsLibraryTutorial">os library</a>
+
+顺便说一下，整个文件是可运行的Lua; 
+保存为 learn-cn.lua 用命令 `lua learn.lua` 启动吧！
+
+本文首次撰写于 [tylerneylon.com](http://tylerneylon.com) 同时也有 [github gist](https://gist.github.com/tylerneylon/5853042) 版.
 
 使用Lua，欢乐常在！
