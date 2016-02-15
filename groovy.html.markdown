@@ -280,7 +280,7 @@ def clos = { print it }
 clos( "hi" )
 
 /*
-  Groovy can memorize closure results [1][2][3]
+  Groovy can memoize closure results [1][2][3]
 */
 def cl = {a, b ->
     sleep(3000) // simulate some time consuming processing
