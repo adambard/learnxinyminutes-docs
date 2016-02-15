@@ -438,7 +438,7 @@ public class LearnJava {
 
 
 // You can include other, non-public outer-level classes in a .java file,
-// but it is good practice. Instead split classes into separate files.
+// but it is not good practice. Instead split classes into separate files.
 
 
 // Class Declaration Syntax:

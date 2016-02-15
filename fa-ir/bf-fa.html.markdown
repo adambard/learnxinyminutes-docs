@@ -1,5 +1,5 @@
 ---
-language: brainfuck
+language: bf
 contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
 lang: fa-ir
