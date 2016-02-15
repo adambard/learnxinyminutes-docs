@@ -174,6 +174,10 @@ some_var  # => 5
 # See Control Flow to learn more about exception handling.
 some_unknown_var  # Raises a NameError
 
+# if can be used as an expression
+# Equivalent of C's '?:' ternary operator
+"yahoo!" if 3 > 2 else 2  # => "yahoo!"
+
 # Lists store sequences
 li = []
 # You can start with a prefilled list
