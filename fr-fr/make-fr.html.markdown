@@ -1,9 +1,9 @@
 ---
 language: make
 contributors:
-	- ["Robert Steed", "https://github.com/robochat"]
+    - ["Robert Steed", "https://github.com/robochat"]
 translators:
-	- ["altaris", "https://github.com/altaris"]
+    - ["altaris", "https://github.com/altaris"]
 filename: Makefile-fr
 lang: fr-fr
 ---

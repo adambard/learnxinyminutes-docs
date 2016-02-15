@@ -1,5 +1,5 @@
 ---
-language: brainfuck
+language: bf
 lang: zh-cn
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
