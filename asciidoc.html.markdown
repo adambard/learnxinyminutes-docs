@@ -52,10 +52,10 @@ Paragraphs
 ```
 You don't need anything special for paragraphs.
 
-Add a blank line between paragraphs to seperate them.
+Add a blank line between paragraphs to separate them.
 
 To create a line blank add a +
-and you will recieve a line break!
+and you will receive a line break!
 ```
 
 Formatting Text
@@ -68,7 +68,7 @@ _underscore creates italics_
 `*bolded monospace*`
 ```
 
-Section Titles 
+Section Titles
 
 ```
 = Level 0 (may only be used in document's header)
