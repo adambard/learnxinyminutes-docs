@@ -723,8 +723,8 @@ typedef void (*my_fnp_type)(char *);
 /******************************* Header Files **********************************
 
 Header files are an important part of c as they allow for the connection of c
-source files and can simplify code and definitions by seperating them into
-seperate files.
+source files and can simplify code and definitions by separating them into
+separate files.
 
 Header files are syntactically similar to c source files but reside in ".h"
 files. They can be included in your c source file by using the precompiler
@@ -764,7 +764,7 @@ enum traffic_light_state {GREEN, YELLOW, RED};
 Node createLinkedList(int *vals, int len);
 
 /* Beyond the above elements, other definitions should be left to a c source */
-/* file. Excessive includeds or definitions should, also not be contained in */
+/* file. Excessive includes or definitions should, also not be contained in */
 /* a header file but instead put into separate headers or a c file.          */
 
 #endif /* End of the if precompiler directive. */
