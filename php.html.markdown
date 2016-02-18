@@ -146,6 +146,9 @@ echo $associative['One']; // prints 1
 $array = ['One', 'Two', 'Three'];
 echo $array[0]; // => "One"
 
+// Add an element to an associative array
+$array['Four'] = 4;
+
 // Add an element to the end of an array
 $array[] = 'Four';
 // or
