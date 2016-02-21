@@ -27,200 +27,198 @@ Ini adalah contoh komentar JavaDoc. Digunakan untuk mendeskripsikan sebuah kelas
 atau beberapa sifat dari kelas tersebut.
 */
 
-// Import ArrayList class inside of the java.util package
+// Menyertakan kelas ArrayList dalam paket java.util
 import java.util.ArrayList;
-// Import all classes inside of java.security package
+// Menyertakan semua kelas yang ada dalam paket java.security
 import java.security.*;
 
-// Each .java file contains one outer-level public class, with the same name as
-// the file.
-public class LearnJava {
+// Setiap dokumen .java sebuah kelas publik dengan nama yang sama dengan nama kelas.
+public class BelajarJava {
 
-    // In order to run a java program, it must have a main method as an entry point.
+    // Untuk menjalankan program java, program harus memiliki sebuah method utama (main) sebagai awalan.
     public static void main (String[] args) {
 
-        // Use System.out.println() to print lines.
-        System.out.println("Hello World!");
+        // System.out.println() digunakan untuk menampilkan satu baris teks.
+        System.out.println("Halo Dunia!");
         System.out.println(
             "Integer: " + 10 +
             " Double: " + 3.14 +
             " Boolean: " + true);
 
-        // To print without a newline, use System.out.print().
-        System.out.print("Hello ");
-        System.out.print("World");
+        // System.out.print() hanya menampilkan teks tanpa baris baru.
+        System.out.print("Halo ");
+        System.out.print("Dunia");
 
-        // Use System.out.printf() for easy formatted printing.
+        // System.out.printf() memudahkan dalam mengatur format penampilan.
         System.out.printf("pi = %.5f", Math.PI); // => pi = 3.14159
 
         ///////////////////////////////////////
-        // Variables
+        // Variabel
         ///////////////////////////////////////
 
         /*
-        *  Variable Declaration
+        *  Deklarasi Variabel
         */
-        // Declare a variable using <type> <name>
-        int fooInt;
-        // Declare multiple variables of the same type <type> <name1>, <name2>, <name3>
-        int fooInt1, fooInt2, fooInt3;
+        // Deklarasi variabel menggunakan format <tipe> <nama>
+        int nilai;
+        // Deklarasi banyak variabel menggunakan format yang sama <tipe> <nama1>, <tipe> <nama2>, <tipe> <nama3>
+        int nilai1, nilai2, nilai3;
 
         /*
-        *  Variable Initialization
+        *  Inisialisasi Variabel
         */
 
-        // Initialize a variable using <type> <name> = <val>
-        int fooInt = 1;
-        // Initialize multiple variables of same type with same value <type> <name1>, <name2>, <name3> = <val>
-        int fooInt1, fooInt2, fooInt3;
-        fooInt1 = fooInt2 = fooInt3 = 1;
+        // Inisialisasi sebuah variabel menggunakan <tipe> <nama> = <nilai>
+        int nilai = 1;
+        // Inisialisasi banyak variabel menggunakan format yang sama <tipe> <nama1>, <nama2>, <nama3> = <nilai>
+        int nilai1, nilai2, nilai3;
+        nilai1 = nilai2 = nilai3 = 1;
 
         /*
-        *  Variable types
+        *  Tipe Variabel
         */
-        // Byte - 8-bit signed two's complement integer
+        // Byte - 8 bit signed untuk bilangan bulat komplemen 2
         // (-128 <= byte <= 127)
-        byte fooByte = 100;
+        byte nilaiByte = 100;
 
-        // Short - 16-bit signed two's complement integer
+        // Short - 8 bit signed untuk bilangan bulat komplemen 2
         // (-32,768 <= short <= 32,767)
-        short fooShort = 10000;
+        short nilaiShort = 10000;
 
-        // Integer - 32-bit signed two's complement integer
+        // Integer - 32 bit signed untuk bilangan bulat komplemen 2
         // (-2,147,483,648 <= int <= 2,147,483,647)
-        int fooInt = 1;
+        int nilaiInt = 1;
 
-        // Long - 64-bit signed two's complement integer
+        // Long - 64 bit signed untuk bilangan bulat komplemen 2
         // (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
-        long fooLong = 100000L;
-        // L is used to denote that this variable value is of type Long;
-        // anything without is treated as integer by default.
+        long nilaiLong = 100000L;
+        // Karakter "L" pada akhir nilai menyatakan tipe Long;
+        // selainnya akan dianggap sebagai nilai bilangan bulat.
 
-        // Note: Java has no unsigned types.
+        // Catatan: Java tidak memiliki tipe unsigned.
 
-        // Float - Single-precision 32-bit IEEE 754 Floating Point
+        // Float - Presisi-satu 32-bit standar IEEE 754 untuk Floating Point
         // 2^-149 <= float <= (2-2^-23) * 2^127
-        float fooFloat = 234.5f;
-        // f or F is used to denote that this variable value is of type float;
-        // otherwise it is treated as double.
+        float nilaiFloat = 234.5f;
+        // Karakter "f" atau "F" pada akhir nilai menyatakan tipe Float;
+        // selainnya akan dianggap sebagai nilai double.
 
-        // Double - Double-precision 64-bit IEEE 754 Floating Point
+        // Double - Presisi-dua 64-bit standar IEEE 754 untuk Floating Point
         // 2^-1074 <= x <= (2-2^-52) * 2^1023
-        double fooDouble = 123.4;
+        double nilaiDouble = 123.4;
 
         // Boolean - true & false
-        boolean fooBoolean = true;
-        boolean barBoolean = false;
+        boolean nilaiBoolean = true;
+        boolean nilaiBoolean = false;
 
-        // Char - A single 16-bit Unicode character
-        char fooChar = 'A';
+        // Char - Sebuah karakter Unicode 16-bit
+        char nilaiChar = 'A';
 
-        // final variables can't be reassigned to another object,
-        final int HOURS_I_WORK_PER_WEEK = 9001;
-        // but they can be initialized later.
+        // Variabel "final" tidak dapat di-set kembali nilainya pada objek lain,
+        final int WAKTU_SAYA_BEKERJA_TIAP_MINGGU = 9001;
+        // tapi dapat dilakukan inisialisasi diwaktu yang lain.
         final double E;
         E = 2.71828;
 
 
-        // BigInteger - Immutable arbitrary-precision integers
+        // BigInteger - Bilangan bulat yang memiliki presisi dinamis
         //
-        // BigInteger is a data type that allows programmers to manipulate
-        // integers longer than 64-bits. Integers are stored as an array of
-        // of bytes and are manipulated using functions built into BigInteger
+        // BigInteger adalah tipe data yang memungkinkan pembuat program untuk memanipulasi
+        // bilangan bulat lebih panjang dari 64-bit. Bilangan bulat tersebut tersimpan dalam
+        // bentuk kumpulan byte (array) dan dimanipulasi menggunakan fungsi yang sudah tersedia
+        // pada BigInteger
         //
-        // BigInteger can be initialized using an array of bytes or a string.
+        // BigInteger dapat diinisialisasi menggunakan kumpulan byte atau teks.
         
-        BigInteger fooBigInteger = new BigInteger(fooByteArray);
+        BigInteger nilaiBigInteger = new BigInteger(kumpulanByte);
 
 
-        // BigDecimal - Immutable, arbitrary-precision signed decimal number
+        // BigDecimal - Bilangan signed desimal yang memiliki presisi dinamis
         //
-        // A BigDecimal takes two parts: an arbitrary precision integer 
-        // unscaled value and a 32-bit integer scale
-        //
-        // BigDecimal allows the programmer complete control over decimal
-        // rounding. It is recommended to use BigDecimal with currency values
-        // and where exact decimal precision is required.
-        //
-        // BigDecimal can be initialized with an int, long, double or String
-        // or by initializing the unscaled value (BigInteger) and scale (int).
+        // Tipe BigDecimal memiliki dua bagian: sebuah bilangan bulat dengan nilai presisi
+        // dinamis tanpa skala dan sebuah bilangan bulat skala 32-bit.
 
-        BigDecimal fooBigDecimal = new BigDecimal(fooBigInteger, fooInt);
+        // BigDecimal memungkinkan pembuat program untuk memegang kontrol penuh
+        // terhadap batas desimal. BigDecimal baik digunakan untuk nilai tukar mata uang
+        // dimana sangat mementingkan presisi nilai desimal.
+        //
+        // BigDecimal dapat diinisialisasi dengan int, long, double, String,
+        // atau dengan melakukan inisialisasi nilai tanpa skala (BigInteger) 
+        // dan nilai dengan skala (int). 
+
+        BigDecimal nilaiBigDecimal = new BigDecimal(nilaiBigInteger, nilaiInt);
         
-        // Be wary of the constructor that takes a float or double as
-        // the inaccuracy of the float/double will be copied in BigDecimal.
-        // Prefer the String constructor when you need an exact value.
+        // Perlu diperhatikan konstruktor yang digunakan apakah float atau double
+        // karena dapat mengakibatkan ketidak-akurasian float/double yang akan digunakan
+        // dalam BigDecimal. Sebaiknya gunakan nilai String pada konstruktor
+        // jika membutuhkan nilai pasti.
         
-        BigDecimal tenCents = new BigDecimal("0.1");
+        BigDecimal sepuluhSen = new BigDecimal("0.1");
 
 
         // Strings
-        String fooString = "My String Is Here!";
+        String nilaiString1 = "Ini adalah contoh String!";
 
-        // \n is an escaped character that starts a new line
-        String barString = "Printing on a new line?\nNo Problem!";
-        // \t is an escaped character that adds a tab character
-        String bazString = "Do you want to add a tab?\tNo Problem!";
-        System.out.println(fooString);
-        System.out.println(barString);
-        System.out.println(bazString);
+        // Karakter \n berfungsi untuk membuat baris baru 
+        String nilaiString2 = "Menampilkan baris baru?\nTidak masalah!";
+        // Karakter \t berfungsi untuk membuat tab antar karakter
+        String nilaiString3 = "Ingin menambahkan sebuah tab?\tTidak masalah!";
+        System.out.println(nilaiString1);
+        System.out.println(nilaiString2);
+        System.out.println(nilaiString3);
 
-        // Arrays
-        // The array size must be decided upon instantiation
-        // The following formats work for declaring an array
-        // <datatype>[] <var name> = new <datatype>[<array size>];
-        // <datatype> <var name>[] = new <datatype>[<array size>];
-        int[] intArray = new int[10];
-        String[] stringArray = new String[1];
-        boolean boolArray[] = new boolean[100];
+        // Larik (array)
+        // Ukuran array harus ditentukan ketika instansiasi
+        // Format berikut adalah beberapa cara deklarasi array
+        // <tipe data>[] <nama variabel> = new <tipe data>[<ukuran array>];
+        // <tipe data> <nama variabel>[] = new <tipe data>[<ukuran array>];
+        int[] barisAngka = new int[10];
+        String[] barisString = new String[1];
+        boolean barisBoolean[] = new boolean[100];
 
-        // Another way to declare & initialize an array
+        // Cara lain untuk mendeklarasikan dan menginisialisasi sebuah array
         int[] y = {9000, 1000, 1337};
-        String names[] = {"Bob", "John", "Fred", "Juan Pedro"};
+        String nama[] = {"Andi", "Budi", "Agus"};
         boolean bools[] = new boolean[] {true, false, false};
 
-        // Indexing an array - Accessing an element
-        System.out.println("intArray @ 0: " + intArray[0]);
+        // Indeks sebuah array - Mengakses sebuah elemen
+        System.out.println("barisAngka @ 0: " + barisAngka[0]);
 
-        // Arrays are zero-indexed and mutable.
-        intArray[1] = 1;
-        System.out.println("intArray @ 1: " + intArray[1]); // => 1
+        // Array menggunakan indeks 0 yang tetap.
+        barisAngka[1] = 1;
+        System.out.println("barisAngka @ 1: " + barisAngka[1]); // => 1
 
-        // Others to check out
-        // ArrayLists - Like arrays except more functionality is offered, and
-        //              the size is mutable.
-        // LinkedLists - Implementation of doubly-linked list. All of the
-        //               operations perform as could be expected for a
-        //               doubly-linked list.
-        // Maps - A set of objects that map keys to values. Map is
-        //        an interface and therefore cannot be instantiated.
-        //        The type of keys and values contained in a Map must
-        //        be specified upon instantiation of the implementing
-        //        class. Each key may map to only one corresponding value,
-        //        and each key may appear only once (no duplicates).
-        // HashMaps - This class uses a hashtable to implement the Map
-        //            interface. This allows the execution time of basic
-        //            operations, such as get and insert element, to remain
-        //            constant even for large sets.
+        // Lainnya yang perlu diketahui
+        // ArrayLists - Sama seperti array biasa, namum penggunaannya sudah ditentukan,
+        //              dan ukurannya dapat berubah-ubah.
+        // LinkedLists - Implementasi dari doubly-linked list. Semua operasi yang digunakan
+        //               hampir sama dengan operasi yang dimiliki oleh sebuah doubly-linked list.
+        // Maps - Sebuah kumpulan objek yang menyatakan hubungan antara kunci dan nilai. Map merupakan
+        //        sebuah interface sehingga tidak dapat diinstansiasi. Jenis kunci dan nilai yang digunakan
+        //        pada Map harus spesifik pada saat instansiasi ketika diimplementasikan pada sebuah kelas.
+        //        Setiap kunci hanya memiliki sebuah nilai, dan hanya muncul sekali.
+        // HashMaps - Kelas ini menggunakan tabel-hash untuk mengimplementasikan interface Map.
+        //            Hal ini memungkinkan waktu eksekusi ketika melakukan operasi dasar (mengakses
+        //            dan menambahkan elemen) menjadi konstan, meskipun memiliki banyak set data.
 
         ///////////////////////////////////////
-        // Operators
+        // Operator
         ///////////////////////////////////////
-        System.out.println("\n->Operators");
+        System.out.println("\n->Operator");
 
-        int i1 = 1, i2 = 2; // Shorthand for multiple declarations
+        int i1 = 1, i2 = 2; // Cara singkat untuk deklarasi banyak nilai
 
-        // Arithmetic is straightforward
+        // Kemudahan dalam artimatika
         System.out.println("1+2 = " + (i1 + i2)); // => 3
         System.out.println("2-1 = " + (i2 - i1)); // => 1
         System.out.println("2*1 = " + (i2 * i1)); // => 2
-        System.out.println("1/2 = " + (i1 / i2)); // => 0 (int/int returns an int)
+        System.out.println("1/2 = " + (i1 / i2)); // => 0 (int/int menghasilkan int juga)
         System.out.println("1/2 = " + (i1 / (double)i2)); // => 0.5
 
-        // Modulo
+        // Modulus
         System.out.println("11%3 = "+(11 % 3)); // => 2
 
-        // Comparison operators
+        // Operator Perbandingan
         System.out.println("3 == 2? " + (3 == 2)); // => false
         System.out.println("3 != 2? " + (3 != 2)); // => true
         System.out.println("3 > 2? " + (3 > 2)); // => true
@@ -228,12 +226,12 @@ public class LearnJava {
         System.out.println("2 <= 2? " + (2 <= 2)); // => true
         System.out.println("2 >= 2? " + (2 >= 2)); // => true
 
-        // Boolean operators
+        // Operator Boolean
         System.out.println("3 > 2 && 2 > 3? " + ((3 > 2) && (2 > 3))); // => false
         System.out.println("3 > 2 || 2 > 3? " + ((3 > 2) || (2 > 3))); // => true
         System.out.println("!(3 == 2)? " + (!(3 == 2))); // => true
 
-        // Bitwise operators!
+        // Operator Bitwise
         /*
         ~      Unary bitwise complement
         <<     Signed left shift
@@ -244,296 +242,295 @@ public class LearnJava {
         |      Bitwise inclusive OR
         */
 
-        // Incrementations
+        // Peningkatan
         int i = 0;
-        System.out.println("\n->Inc/Dec-rementation");
-        // The ++ and -- operators increment and decrement by 1 respectively.
-        // If they are placed before the variable, they increment then return;
-        // after the variable they return then increment.
-        System.out.println(i++); // i = 1, prints 0 (post-increment)
-        System.out.println(++i); // i = 2, prints 2 (pre-increment)
-        System.out.println(i--); // i = 1, prints 2 (post-decrement)
-        System.out.println(--i); // i = 0, prints 0 (pre-decrement)
+        System.out.println("\n->Pengurangan/Peningkatan");
+        // Operator ++ dan -- masing-masing melakukan peningkatan dan penurunan 1 nilai.
+        // Jika diletakkan sebelum variabel, maka akan di tambah/kurang 1 sebelum dilakukan perintah lainnya;
+        // jika setelah variabel, maka akan ditambah/kurang 1 setelah dilakukan perintah lainnya;
+        System.out.println(i++); // i = 1, prints 0 (peningkatan setelahnya)
+        System.out.println(++i); // i = 2, prints 2 (peningkatan sebelumnya)
+        System.out.println(i--); // i = 1, prints 2 (pengurangan setelahnya)
+        System.out.println(--i); // i = 0, prints 0 (pengurangan sebelumnya)
 
         ///////////////////////////////////////
-        // Control Structures
+        // Struktur Kontrol
         ///////////////////////////////////////
-        System.out.println("\n->Control Structures");
+        System.out.println("\n->Struktur Kontrol");
 
-        // If statements are c-like
+        // Perintah "if" hampir sama dengan bahasa C
         int j = 10;
         if (j == 10) {
-            System.out.println("I get printed");
+            System.out.println("Saya ditampilkan");
         } else if (j > 10) {
-            System.out.println("I don't");
+            System.out.println("Saya tidak ditampilkan");
         } else {
-            System.out.println("I also don't");
+            System.out.println("Saya juga tidak ditampilkan");
         }
 
-        // While loop
+        // Perulangan "while"
         int fooWhile = 0;
         while(fooWhile < 100) {
             System.out.println(fooWhile);
-            // Increment the counter
-            // Iterated 100 times, fooWhile 0,1,2...99
+            // Tingkatkan penghitung
+            // 100 kali iterasi, fooWhile 0,1,3,...,99
             fooWhile++;
         }
-        System.out.println("fooWhile Value: " + fooWhile);
+        System.out.println("Nilai fooWhile: " + fooWhile);
 
-        // Do While Loop
+        // Perulangan "do...while"
         int fooDoWhile = 0;
         do {
             System.out.println(fooDoWhile);
-            // Increment the counter
-            // Iterated 99 times, fooDoWhile 0->99
+            // Tingkatkan penghitung
+            // 99 kali iterasi, fooDoWhile 0->99
             fooDoWhile++;
         } while(fooDoWhile < 100);
-        System.out.println("fooDoWhile Value: " + fooDoWhile);
+        System.out.println("Nilai fooDoWhile: " + fooDoWhile);
 
-        // For Loop
-        // for loop structure => for(<start_statement>; <conditional>; <step>)
+        // Perulangan "for"
+        // Struktur perulangan "for" => for(<awal_pernyataan>; <kondisi>; <langkah/tahapan>)
         for (int fooFor = 0; fooFor < 10; fooFor++) {
             System.out.println(fooFor);
-            // Iterated 10 times, fooFor 0->9
+            // 10 kali iterasi, foofor 0-9
         }
-        System.out.println("fooFor Value: " + fooFor);
+        System.out.println("Nilai fooFor: " + fooFor);
         
-        // Nested For Loop Exit with Label
+        // Perulangan "for" bertingkat dengan label "exit"
         outer:
         for (int i = 0; i < 10; i++) {
           for (int j = 0; j < 10; j++) {
             if (i == 5 && j ==5) {
               break outer;
-              // breaks out of outer loop instead of only the inner one
+              // Menghentikan semua perulangan, tidak hanya perulangan bagian dalam saja 
             }
           }
         }
         
-        // For Each Loop
-        // The for loop is also able to iterate over arrays as well as objects
-        // that implement the Iterable interface.
+        // Perulangan "for each"
+        // Perulangan "for" juga dapat melakukan iterasi terhadap larik (array) dari objek
+        // yang mana mengimplementasikan interface Ieterable.
         int[] fooList = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        // for each loop structure => for (<object> : <iterable>)
-        // reads as: for each element in the iterable
-        // note: the object type must match the element type of the iterable.
+        // Struktur perulangan "for each" => for (<objek> : <iterable>)
+        // dibaca: setiap elemen dalam iterable
+        // catatan: tipe objek harus sama dengan tipe iterable
 
         for (int bar : fooList) {
             System.out.println(bar);
-            //Iterates 9 times and prints 1-9 on new lines
+            // Melakukan interasi sebanyak 9 kali dan menampilkan 1-9 tiap baris
         }
 
-        // Switch Case
-        // A switch works with the byte, short, char, and int data types.
-        // It also works with enumerated types (discussed in Enum Types), the
-        // String class, and a few special classes that wrap primitive types:
-        // Character, Byte, Short, and Integer.
-        int month = 3;
-        String monthString;
-        switch (month) {
-            case 1: monthString = "January";
+        // "switch case"
+        // "switch" dapat digunakan pada byte, short, char, dan tipe data bilangan bulat (int).
+        // "switch" juga dapat digunakan pada tipe "enum" (dijelaskan nanti), kelas String,
+        // dan beberapa kelas khusus yang mengandung tipe data primitif:
+        // Character, Byte, Short, dan Integer.
+        int bulan = 3;
+        String bulanString;
+        switch (bulan) {
+            case 1: bulanString = "Januari";
                     break;
-            case 2: monthString = "February";
+            case 2: bulanString = "Februari";
                     break;
-            case 3: monthString = "March";
+            case 3: bulanString = "Maret";
                     break;
-            default: monthString = "Some other month";
+            default: bulanString = "Bulan lainnya";
                      break;
         }
-        System.out.println("Switch Case Result: " + monthString);
+        System.out.println("Hasil switch case: " + bulanString);
         
-        // Starting in Java 7 and above, switching Strings works like this:
-        String myAnswer = "maybe";
-        switch(myAnswer) {
-            case "yes":
-                System.out.println("You answered yes.");
+        // Mulai dari Java 7 keatas, "switch" memiliki format:
+        String jawabanSaya = "mungkin";
+        switch(jawabanSaya) {
+            case "ya":
+                System.out.println("Anda menjawab ya.");
                 break;
-            case "no":
-                System.out.println("You answered no.");
+            case "tidak":
+                System.out.println("Anda menjawab tidak.");
                 break;
-            case "maybe":
-                System.out.println("You answered maybe.");
+            case "mungkin":
+                System.out.println("Anda menjawab mungkin.");
                 break;
             default:
-                System.out.println("You answered " + myAnswer);
+                System.out.println("Anda menjawab " + jawabanSaya);
                 break;
         }
 
-        // Conditional Shorthand
-        // You can use the '?' operator for quick assignments or logic forks.
-        // Reads as "If (statement) is true, use <first value>, otherwise, use
-        // <second value>"
+        // Pengkondisian dengan cara singkat
+        // Karakter '?' dapat digunakan untuk penilaian atau logika secara cepat antara dua pernyataan.
+        // Dibaca "Jika (pernyataan) adalah benar, gunakan <nilai pertama>, sisanya gunakan <nilai kedua>
         int foo = 5;
         String bar = (foo < 10) ? "A" : "B";
-        System.out.println(bar); // Prints A, because the statement is true
+        System.out.println(bar); // Menampilkan A, karena pernyataannya benar
 
 
         ////////////////////////////////////////
-        // Converting Data Types And Typecasting
+        // Konversi Data dan Tipe Data (Typecasting)
         ////////////////////////////////////////
 
-        // Converting data
+        // Konversi Data
 
-        // Convert String To Integer
-        Integer.parseInt("123");//returns an integer version of "123"
+        // Konversi String ke Integer
+        Integer.parseInt("123");    // menghasilkan nilai versi Integer dari "123"
 
-        // Convert Integer To String
-        Integer.toString(123);//returns a string version of 123
+        // Konversi Integer ke String
+        Integer.toString(123);      // menghasilkan nilai versi String dari 123
 
-        // For other conversions check out the following classes:
+        // Untuk konversi lainnya silakan coba kelas berikut:
         // Double
         // Long
         // String
 
         // Typecasting
-        // You can also cast Java objects, there's a lot of details and deals
-        // with some more intermediate concepts. Feel free to check it out here:
+        // Objek dalam Java juga dapat dikonversi, banyak penjelasan dan aturan
+        // dengan beberapa konsep sederhana. Silakan cek di alamat berikut:
         // http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
 
 
         ///////////////////////////////////////
-        // Classes And Functions
+        // Kelas dan Fungsi
         ///////////////////////////////////////
 
-        System.out.println("\n->Classes & Functions");
+        System.out.println("\n->Kelas & Fungsi");
 
-        // (definition of the Bicycle class follows)
+        // (penjelasan mengenai kelas "Sepeda" ada dibawah)
 
-        // Use new to instantiate a class
-        Bicycle trek = new Bicycle();
+        // Gunakan "new" untuk melakukan instansiasi pada kelas
+        Sepeda laju = new Sepeda();
 
-        // Call object methods
-        trek.speedUp(3); // You should always use setter and getter methods
-        trek.setCadence(100);
+        // Memanggil method objek
+        laju.tambahKecepatan(3); // Dapat juga digunakan "setter" dan "getter" method
+        laju.setIrama(100);
 
-        // toString returns this Object's string representation.
-        System.out.println("trek info: " + trek.toString());
+        // Method "toString()" menghasilkan representasi string dari objek.
+        System.out.println("informasi jalur: " + laju.toString());
 
-        // Double Brace Initialization
-        // The Java Language has no syntax for how to create static Collections
-        // in an easy way. Usually you end up in the following way:
+        // Dua Pasang Inisialisasi
+        // Bahasa Java tidak memiliki sintaks untuk membuat koleksi dari "static" sekaligus
+        // dengan mudah, kecuali dengan cara berikut:
 
-        private static final Set<String> COUNTRIES = new HashSet<String>();
+        private static final Set<String> NEGARA = new HashSet<String>();
         static {
-           validCodes.add("DENMARK");
-           validCodes.add("SWEDEN");
-           validCodes.add("FINLAND");
+           validCodes.add("INDONESIA");
+           validCodes.add("MALAYSIA");
+           validCodes.add("SINGAPURA");
         }
 
-        // But there's a nifty way to achieve the same thing in an
-        // easier way, by using something that is called Double Brace
-        // Initialization.
+        // Terdapat cara yang baik untuk menulis skrip dengan mudah,
+        // dengan menggunakan Dua-Kurung Kurawal Inisialisasi (Double Brace Initialization)
 
-        private static final Set<String> COUNTRIES = new HashSet<String>() {{
-            add("DENMARK");
-            add("SWEDEN");
-            add("FINLAND");
+        private static final Set<String> NEGARA = new HashSet<String>() {{
+            add("INDONESIA");
+            add("MALAYSIA");
+            add("SINGAPURA");
         }}
 
-        // The first brace is creating a new AnonymousInnerClass and the
-        // second one declares an instance initializer block. This block
-        // is called when the anonymous inner class is created.
-        // This does not only work for Collections, it works for all
-        // non-final classes.
+        // Kurung kurawal yang pertama membuat sebuah AnonymousInnerClas
+        // dan kurung kurawal yang kedua mendeklarasikan instance dari blok
+        // inisialisasi. Blok ini kemudian dipanggil ketika InnerClass dibentuk.
+        // Cara ini tidak hanya berfungsi pada koleksi data, juga dapat digunakan
+        // pada semua kelas bukan-"final".
 
-    } // End main method
-} // End LearnJava class
-
-
-// You can include other, non-public outer-level classes in a .java file,
-// but it is not good practice. Instead split classes into separate files.
+    } // Akhir dari method utama
+} // Akhir dari kelas BelajarJava
 
 
-// Class Declaration Syntax:
-// <public/private/protected> class <class name> {
-//    // data fields, constructors, functions all inside.
-//    // functions are called as methods in Java.
+// Kelas bukan-"public" lainnya dapat dimasukkan kedalam satu dokumen .java,
+// namun tidak dianjurkan, sebaiknya memisahkan menjadi beberapa dokumen terpisah.
+
+// Sintaks pendeklarasian kelas:
+//<public/private/protected> class <nama kelas> {
+//    // isi data, konstruktor, dan fungsi.
+//    // dalam Java, fungsi biasa disebut juga "method"
 // }
 
-class Bicycle {
+class Sepeda {
 
-    // Bicycle's Fields/Variables
-    public int cadence; // Public: Can be accessed from anywhere
-    private int speed;  // Private: Only accessible from within the class
-    protected int gear; // Protected: Accessible from the class and subclasses
-    String name; // default: Only accessible from within this package
+    // Variabel dari kelas Sepeda
+    public int irama;       // Public: dapat diakses dari manapun
+    private int kecepatan;  // Private: hanya dapat diakses dari dalam kelas
+    protected int rodaGigi;     // Protected: dapat diakses dari dalam kelas dan turunan kelas
+    String nama;            // Default: hanya dapat diakses kelas yang berada dalam paket yang sama
 
-    static String className; // Static class variable
+    static String namaKelas;    // Variabel "static"
 
-    // Static block 
-    // Java has no implementation of static constructors, but
-    // has a static block that can be used to initialize class variables 
-    // (static variables). 
-    // This block will be called when the class is loaded.
+    // Blok Static
+    // Java tidak memiliki implementasi untuk konstruktor "static", namun
+    // memiliki blok status yang dapat digunakan untuk inisialisasi variabel
+    // dalam kelas (variabel "static").
+    // Blok ini akan dipanggil secara otomatis ketika kelas dijalankan.
     static {
-        className = "Bicycle";
+        namaKelas = "Sepeda";
     }
 
-    // Constructors are a way of creating classes
-    // This is a constructor
-    public Bicycle() {
-        // You can also call another constructor:
+    // Konstruktor adalah salah satu cara untuk membuat kelas
+    // Ini adalah bagian konstruktor
+    public Sepeda() {
+        // Dapat juga dipanggil konstruktor lainnya:
         // this(1, 50, 5, "Bontrager");
-        gear = 1;
-        cadence = 50;
-        speed = 5;
-        name = "Bontrager";
+        rodaGigi = 1;
+        irama = 50;
+        kecepatan = 5;
+        nama = "Bontrager";
     }
 
-    // This is a constructor that takes arguments
-    public Bicycle(int startCadence, int startSpeed, int startGear,
-        String name) {
-        this.gear = startGear;
-        this.cadence = startCadence;
-        this.speed = startSpeed;
-        this.name = name;
+    // Ini adalah bagian konstruktor yang menggunakan argumen (parameter)
+    public Sepeda(int iramaAwal, int kecepatanAwal, int rodaGigiAwal,
+        String nama) {
+        this.rodaGigi = rodaGigiAwal;
+        this.irama = iramaAwal;
+        this.kecepatan = kecepatanAwal;
+        this.nama = nama;
     }
 
-    // Method Syntax:
-    // <public/private/protected> <return type> <function name>(<args>)
+    // Sintaks untuk method:
+    // <public/private/protected> <tipe kembalian> <nama fungsi>(<args>)
 
-    // Java classes often implement getters and setters for their fields
+    // Kelas Java terkadang mengimplementasikan "getters" dan "setters" untuk data.
 
-    // Method declaration syntax:
-    // <access modifier> <return type> <method name>(<args>)
-    public int getCadence() {
-        return cadence;
+    // Sintaks untuk deklarasi method:
+    // <public/private/protected> <tipe kembalian> <nama fungsi>(<args>)
+    public int getIrama() {
+        return irama;
     }
 
-    // void methods require no return statement
-    public void setCadence(int newValue) {
-        cadence = newValue;
+    // Tipe "void" tidak memiliki kembalian (return) nilai
+    public void setIrama(int nilaiBaru) {
+        irama = nilaiBaru;
     }
 
-    public void setGear(int newValue) {
-        gear = newValue;
+    public void setRodaGigi(int nilaiBaru) {
+        rodaGigi = nilaiBaru;
     }
 
-    public void speedUp(int increment) {
-        speed += increment;
+    public void tambahKecepatan(int nilaiTambahan) {
+        kecepatan += nilaiTambahan;
     }
 
-    public void slowDown(int decrement) {
-        speed -= decrement;
+    public void kurangiKecepatan(int nilaiPengurangan) {
+        kecepatan -= nilaiPengurangan;
     }
 
-    public void setName(String newName) {
-        name = newName;
+    public void setNama(String namaBaru) {
+        nama = namaBaru;
     }
 
-    public String getName() {
-        return name;
+    public String getNama() {
+        return nama;
     }
 
-    //Method to display the attribute values of this Object.
-    @Override // Inherited from the Object class.
+    // Method untuk menampilkan nilai dari tiap atribut yang dimiliki objek Sepeda.
+    @Override // Diturunkan dari kelas "Object" (Pustaka Java).
     public String toString() {
-        return "gear: " + gear + " cadence: " + cadence + " speed: " + speed +
-            " name: " + name;
+        return "roda gigi: " + rodaGigi + " irama: " + irama + " kecepatan: " + kecepatan +
+            " nama: " + nama;
     }
-} // end class Bicycle
+} // akhir dari kelas Sepeda
 
-// PennyFarthing is a subclass of Bicycle
-class PennyFarthing extends Bicycle {
+// PennyFarthing adalah kelas turunan dari Sepeda
+class PennyFarthing extends Sepeda {
+    // (Penny Farthings adalah sepeda dengan roda depan yang besar,
+    // dan tidak memiliki roda gigi.)
     // (Penny Farthings are those bicycles with the big front wheel.
     // They have no gears.)
 
@@ -546,231 +543,228 @@ class PennyFarthing extends Bicycle {
     // To learn more about what annotations are and their purpose check this
     // out: http://docs.oracle.com/javase/tutorial/java/annotations/
     @Override
-    public void setGear(int gear) {
-        gear = 0;
+    public void setRodaGigi(int rodaGigi) {
+        roda rodaGigi = 0;
     }
 }
 
 // Interfaces
-// Interface declaration syntax
-// <access-level> interface <interface-name> extends <super-interfaces> {
-//     // Constants
-//     // Method declarations
+// Sintaks untuk deklarasi Interface
+// <level akses> interface <nama interface> extends <interface induk> {
+//     // Konstan
+//     // Deklarasi method
 // }
 
-// Example - Food:
-public interface Edible {
-    public void eat(); // Any class that implements this interface, must
-                       // implement this method.
+// Contoh - Makanan:
+public interface dapatDimakan {
+    public void makan();    // Setiap kelas yang menggunakan interface "dapatDimakan",
+                            // harus mengimplementasikan method "makan".
 }
 
-public interface Digestible {
-    public void digest();
+public interface dapatDicerna {
+    public void cerna();
 }
 
 
-// We can now create a class that implements both of these interfaces.
-public class Fruit implements Edible, Digestible {
+// Membuat kelas dengan mengimplementasikan dua interface dalam satu waktu.
+public class Buah implements dapatDimakan, dapatDicerna {
   
     @Override
-    public void eat() {
+    public void makan() {
         // ...
     }
 
     @Override
-    public void digest() {
+    public void cerna() {
         // ...
     }
 }
 
-// In Java, you can extend only one class, but you can implement many
-// interfaces. For example:
-public class ExampleClass extends ExampleClassParent implements InterfaceOne,
-    InterfaceTwo {
+// Dalam Java, kelas hanya dapat diturunkan sekali, tapi dapat mengimplementasikan
+// banyak interface. Contoh:
+public class ContohKelas extends ContohKelasInduk implements InterfaceSatu,
+    InterfaceDua {
 
     @Override
-    public void InterfaceOneMethod() {
+    public void MethodInterfaceSatu() {
     }
 
     @Override
-    public void InterfaceTwoMethod() {
+    public void MethodInterfaceDua() {
     }
 
 }
 
-// Abstract Classes
-
+// Kelas Abstrak (Abstract)
+// Sintaks untuk deklarasi kelas abstrak
 // Abstract Class declaration syntax
-// <access-level> abstract <abstract-class-name> extends <super-abstract-classes> {
-//     // Constants and variables
-//     // Method declarations
-// }
+// <level akses> abstract <nama kelas abstrak> extends <induk kelas abstrak> {
+//     // Konstan dan variabel
+//     // Deklarasi method
 
-// Marking a class as abstract means that it contains abstract methods that must
-// be defined in a child class. Similar to interfaces, abstract classes cannot
-// be instantiated, but instead must be extended and the abstract methods
-// defined. Different from interfaces, abstract classes can contain a mixture of
-// concrete and abstract methods. Methods in an interface cannot have a body,
-// unless the method is static, and variables are final by default, unlike an
-// abstract class. Also abstract classes CAN have the "main" method.
+// Menjadikan kelas sebagai abstrak adalah memungkinkan kelas berisi method abstrak
+// yang harus didefinisikan pada kelas turunannya. Mirip dengan Interface, kelas abstrak
+// tidak dapat dilakukan instansiasi, namun harus diturunkan pada kelas lain dan method abstrak
+// harus didefinisikan. Perbedaannya dengan Interface ialah kelas abstrak dapat berisi method
+// kongkrit dan method abstrak. Pada Interface method tidak dapat memiliki isi, artinya hanya
+// method statis, dan variabel langsung ditentukan menjadi final, tidak seperti kelas abstrak.
+// Kelas abstrak juga dapat memiliki method "main".
 
-public abstract class Animal
+public abstract class Hewan
 {
-    public abstract void makeSound();
+    public abstract void bersuara();
 
-    // Method can have a body
-    public void eat()
+    // Method biasa dapat memiliki isi
+    public void makan()
     {
-        System.out.println("I am an animal and I am Eating.");  
-        // Note: We can access private variable here.
-        age = 30;
+        System.out.println("Saya adalah hewan dan Saya makan.");
+        // Catatan: Kita dapat mengakses variabel private yang ada disini.
+        umur = 30;
     }
 
-    // No need to initialize, however in an interface
-    // a variable is implicitly final and hence has
-    // to be initialized.
-    protected int age;
+    // Tidak perlu dilakukan inisialisasi, berbeda dengan Interface
+    // sebuah variabel adalah final dan harus dilakukan inisialisasi. 
+    protected int umur;
 
-    public void printAge()
+    public void tampilkanUmur()
     {
-        System.out.println(age);  
+        System.out.println(umur);  
     }
 
-    // Abstract classes can have main function.
+    // Kelas abstrak dapat memiliki fungsi utama (main).
     public static void main(String[] args)
     {
-        System.out.println("I am abstract");
+        System.out.println("Saya adalah kelas abstrak!");
     }
 }
 
-class Dog extends Animal
+class Kucing extends Hewan
 {
-    // Note still have to override the abstract methods in the
-    // abstract class.
+    // Catatan: kelas ini harus melakukan override method abstrak
+    // yang ada pada kelas abstrak (induk).
     @Override
-    public void makeSound()
+    public void bersuara()
     {
-        System.out.println("Bark");
-        // age = 30;	==> ERROR!	age is private to Animal
+        System.out.println("Moe");
+        // umur = 30;	==> ERROR!	umur merupakan variabel private pada abstrak Hewan
     }
 
-    // NOTE: You will get an error if you used the
-    // @Override annotation here, since java doesn't allow
-    // overriding of static methods.
-    // What is happening here is called METHOD HIDING.
-    // Check out this awesome SO post: http://stackoverflow.com/questions/16313649/
+    // CATATAN: Akan muncul error jika menggunakan 
+    // keterangan @Override pada method utama (main),
+    // Java tidak mengizinkan hal tersebut.
+    // Kejadian ini sering disebut sebagai METHOD HIDING.
+    // Pertanyaan-jawaban yang menarik dapat dilihat: http://stackoverflow.com/questions/16313649/
     public static void main(String[] args)
     {
-        Dog pluto = new Dog();
-        pluto.makeSound();
-        pluto.eat();
-        pluto.printAge();
+        Kucing moe = new Kucing();
+        noe.bersuara();
+        moe.makan();
+        moe.tampilkanUmur();
     }
 }
 
-// Final Classes
+// Kelas Final
 
-// Final Class declaration syntax
-// <access-level> final <final-class-name> {
-//     // Constants and variables
-//     // Method declarations
+// Sintaks untuk deklarasi kelas Final
+// <level akses> final <nama kelas final> {
+//     // Konstann dan variabel
+//     // Deklarasi method
 // }
 
-// Final classes are classes that cannot be inherited from and are therefore a
-// final child. In a way, final classes are the opposite of abstract classes
-// because abstract classes must be extended, but final classes cannot be
-// extended.
-public final class SaberToothedCat extends Animal
+// Kelas Final merupakan kelas yang tidak dapat diturunkan sehingga menjadikan
+// method tersebut turunan method terakhir. Disisi lain, kelas final merupakan
+// lawan dari kelas abstrak karena kelas abstrak dapat diturunkan lagi, sedangkan
+// kelas final tidak dapat diturunkan lagi.
+public final class Serigala extends Hewan
 {
-    // Note still have to override the abstract methods in the
-    // abstract class.
+    // Catatan: method abstrak harus di-override pada kelas abstrak.
     @Override
-    public void makeSound()
+    public void bersuara()
     {
-        System.out.println("Roar");
+        System.out.println("Auuww");
     }
 }
 
-// Final Methods
-public abstract class Mammal()
+// Method Final
+public abstract class Mamalia()
 {
-    // Final Method Syntax:
-    // <access modifier> final <return type> <function name>(<args>)
+    // Sintaks untuk method final:
+    // <level akses> final <tipe kembalian> <nama fungsi>(<args>)
 
-    // Final methods, like, final classes cannot be overridden by a child class,
-    // and are therefore the final implementation of the method.
-    public final boolean isWarmBlooded()
+    // Method final, seperti kelas final tidak dapat di-override oleh kelas turunan,
+    // sehingga menjadikannya implementasi terakhir dari method.
+    public final boolean apakahBerdarahDingin()
     {
         return true;
     }
 }
 
 
-// Enum Type
+// Tipe Enum
 //
-// An enum type is a special data type that enables for a variable to be a set
-// of predefined constants. The variable must be equal to one of the values that
-// have been predefined for it. Because they are constants, the names of an enum
-// type's fields are in uppercase letters. In the Java programming language, you
-// define an enum type by using the enum keyword. For example, you would specify
-// a days-of-the-week enum type as:
+// Tipe Enum merupakan tipe data spesial yang memungkinkan sebuah nilai dijadikan
+// konstan awal (predefined). Variabel setidaknya harus memiliki nilai yang sama
+// dengan salah satu dari enum-enum yang telah ditentukan. Karena nilainya merupakan
+// konstan, untuk itu penamaannya menggunakan huruf kapital (uppercase). Dalam Java,
+// Enum didefinisikan dengan kata kunci "enum". Contohnya nama-nama hari dalam semunggu:
 
-public enum Day {
-    SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
-    THURSDAY, FRIDAY, SATURDAY 
+public enum Hari {
+    SENIN, SELASA, RABU, KAMIS,
+    JUMAT, SABTU, MUNGGU 
 }
 
-// We can use our enum Day like that:
-
-public class EnumTest {
+// Cara menggunakan Enum:
+public class CobaEnum {
     
-    // Variable Enum
-    Day day;
+    // Variabel Enum
+    Hari hari;
     
-    public EnumTest(Day day) {
-        this.day = day;
+    // Konstruktor
+    public CobaEnum(Hari hari) {
+        this.hari = hari;
     }
     
-    public void tellItLikeItIs() {
+    public void tampilkanKeterangan() {
         switch (day) {
-            case MONDAY:
-                System.out.println("Mondays are bad.");
+            case SENIN:
+                System.out.println("Senin adalah hari yang menyebalkan.");
                 break;
                     
-            case FRIDAY:
-                System.out.println("Fridays are better.");
+            case JUMAT:
+                System.out.println("Jumat adalah hari yang singkat.");
                 break;
                          
-            case SATURDAY: 
-            case SUNDAY:
-                System.out.println("Weekends are best.");
+            case SABTU: 
+            case MINGGU:
+                System.out.println("Akhir pekan adalah hari yang menyenangkan.");
                 break;
                         
             default:
-                System.out.println("Midweek days are so-so.");
+                System.out.println("Hari kerja yang biasa saja.");
                 break;
         }
     }
     
     public static void main(String[] args) {
-        EnumTest firstDay = new EnumTest(Day.MONDAY);
-        firstDay.tellItLikeItIs(); // => Mondays are bad.
-        EnumTest thirdDay = new EnumTest(Day.WEDNESDAY);
-        thirdDay.tellItLikeItIs(); // => Midweek days are so-so.
+        CobaEnum hariPertama = new CobaEnum(Hari.SENIN);
+        hariPertama.tampilkanKeterangan();      // Senin adalah hari yang menyebalkan.
+        CobaEnum hariKetiga = new CobaEnum(Hari.RABU);
+        hariPertama.tampilkanKeterangan();      // Hari kerja yang biasa saja.
     }
 }
 
-// Enum types are much more powerful than we show above. 
-// The enum body can include methods and other fields.
-// You can se more at https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
+// Tipe enum memiliki banyak kegunaan selain yang dicontohkan diatas.
+// Tipe enum dapat memiliki isi seperti method dan variabel.
+// Penjelasan lebih detail di https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
 
 ```
 
-## Further Reading
+## Referensi Lainnya
 
-The links provided here below are just to get an understanding of the topic, feel free to Google and find specific examples.
+Link-link berikut hanya menyediakan pemahaman lebih lanjut mengenai topik diatas. 
+Tip, trik, dan contoh lainnya dapat melakukan pencarian melalui Google atau mesin pencari yang lain. 
 
-**Official Oracle Guides**:
+**Panduan resmi Oracle**
 
 * [Java Tutorial Trail from Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
 
@@ -789,14 +783,14 @@ The links provided here below are just to get an understanding of the topic, fee
 
 * [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
 
-**Online Practice and Tutorials**
+**Tutorial dan Praktik Online**
 
 * [Learneroo.com - Learn Java](http://www.learneroo.com)
 
 * [Codingbat.com](http://codingbat.com/java)
 
 
-**Books**:
+**Buku**:
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
 
