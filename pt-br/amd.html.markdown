@@ -5,7 +5,8 @@ contributors:
     - ["Frederik Ring", "https://github.com/m90"]
 translators:
     - ["Felipe Tarijon", "http://nanoincub.com/"]
-filename: learnamd.js
+lang: ptr-br
+filename: learnamd-pt.js
 ---
 
 ## Começando com AMD
