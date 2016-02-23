@@ -369,7 +369,7 @@ object Dog {
 
 // Case 类是有额外内建功能的类。Scala 初学者常遇到的问题之一便是何时用类
 // 和何时用 case 类。界线比较模糊，但通常类倾向于封装，多态和行为。类中的值
-// 的作用域一般为 private ， 只有方向是暴露的。case 类的主要目的是放置不可变
+// 的作用域一般为 private ， 只有方法是暴露的。case 类的主要目的是放置不可变
 // 数据。它们通常只有几个方法，且方法几乎没有副作用。
 case class Person(name: String, phoneNumber: String)
 

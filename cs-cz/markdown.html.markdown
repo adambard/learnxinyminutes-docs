@@ -5,7 +5,7 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Michal Martinek", "https://github.com/MichalMartinek"]
-filename: markdown.md
+filename: markdown-cz.md
 lang: cs-cz
 ---
 

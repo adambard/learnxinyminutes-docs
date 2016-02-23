@@ -142,6 +142,9 @@ $associative = ['One' => 1, 'Two' => 2, 'Three' => 3];
 
 echo $associative['One']; // prints 1
 
+// Add an element to an associative array
+$associative['Four'] = 4;
+
 // List literals implicitly assign integer keys
 $array = ['One', 'Two', 'Three'];
 echo $array[0]; // => "One"

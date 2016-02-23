@@ -60,7 +60,7 @@ also sending the message 'true' to the lobby."
 
 # Sending messages to objects
 
-Messages can either be unary, binary or keyword. Precedence is in that order. Unlike Smalltalk, the precedence of binary messages must be specified, and all keywords after the first must start with a capital letter. Messages are separeated from their destination by whitespace.
+Messages can either be unary, binary or keyword. Precedence is in that order. Unlike Smalltalk, the precedence of binary messages must be specified, and all keywords after the first must start with a capital letter. Messages are separated from their destination by whitespace.
 
 ```
 "unary message, sends 'printLine' to the object '23'
