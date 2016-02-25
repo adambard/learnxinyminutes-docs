@@ -162,6 +162,11 @@ selector {
     color: hsl(0, 100%, 50%);    /* as hsl percentages (CSS 3) */
     color: hsla(0, 100%, 50%, 0.3); /* as hsl percentages with alpha */
     
+    /* Opacity */
+    opacity: 0;                 /* Completely Transparent */
+    opacity: 0.5;               /* 50% Opacity*/
+    opacity: 1;                 /* Opaque. Default.*/
+    
     /* Images as backgrounds of elements */
     background-image: url(/img-path/img.jpg); /* quotes inside url() optional */
     
