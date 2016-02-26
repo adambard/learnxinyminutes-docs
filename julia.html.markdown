@@ -155,7 +155,7 @@ b = [4; 5; 6] # => 3-element Int64 Array: [4, 5, 6]
 b[1] # => 4
 b[end] # => 6
 
-# 2-dimentional arrays use space-separated values and semicolon-separated rows.
+# 2-dimensional arrays use space-separated values and semicolon-separated rows.
 matrix = [1 2; 3 4] # => 2x2 Int64 Array: [1 2; 3 4]
 
 # Arrays of a particular Type
@@ -420,7 +420,7 @@ varargs(1,2,3) # => (1,2,3)
 
 # The ... is called a splat.
 # We just used it in a function definition.
-# It can also be used in a fuction call,
+# It can also be used in a function call,
 # where it will splat an Array or Tuple's contents into the argument list.
 add([5,6]...) # this is equivalent to add(5,6)
 
