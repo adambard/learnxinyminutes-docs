@@ -104,7 +104,7 @@ let fact_4 = factorial (5-1) ;;
 let sqr2 = sqr (-2) ;;
 
 (* Every function must have at least one argument.
-   Since some funcions naturally don't take any arguments, there's
+   Since some functions naturally don't take any arguments, there's
    "unit" type for it that has the only one value written as "()" *)
 let print_hello () = print_endline "hello world" ;;
 
