@@ -1066,7 +1066,7 @@ The more information you give the Chapel development team about issues you encou
 Feel free to email the team and other developers through the [sourceforge email lists](https://sourceforge.net/p/chapel/mailman).
 
 If you're really interested in the development of the compiler or contributing to the project,
-[check out the master Github repository](https://github.com/chapel-lang/chapel).
+[check out the master GitHub repository](https://github.com/chapel-lang/chapel).
 It is under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0).
 
 Installing the Compiler
