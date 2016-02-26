@@ -197,7 +197,7 @@ let even x = x `mod` 2 == 0
 filter even (1..10) -- [2,4,6,8,10]
 map (\x -> x + 11) (1..5) -- [12,13,14,15,16]
 
--- Requires purescript-foldable-traversabe (Data.Foldable)
+-- Requires purescript-foldable-traversable (Data.Foldable)
 
 foldr (+) 0 (1..10) -- 55
 sum (1..10) -- 55
