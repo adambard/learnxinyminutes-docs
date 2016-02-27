@@ -48,7 +48,7 @@ not true -- false
 23 == 23 -- true
 1 /= 4 -- true
 1 >= 4 -- false
--- Comparisions < <= > >=
+-- Comparisons < <= > >=
 -- are defined in terms of compare
 compare 1 2 -- LT
 compare 2 2 -- EQ
@@ -62,7 +62,7 @@ true && (9 >= 19 || 1 < 2) -- true
 "Hellow\
 \orld" -- "Helloworld"
 -- Multiline string with newlines
-"""Hello 
+"""Hello
 world""" -- "Hello\nworld"
 -- Concatenate
 "such " ++ "amaze" -- "such amaze"
@@ -208,4 +208,3 @@ any even [1,2,3] -- true
 all even [1,2,3] -- false
 
 ```
-
