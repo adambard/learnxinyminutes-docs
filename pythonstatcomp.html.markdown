@@ -150,9 +150,8 @@ ggplot(aes(x="age",y="weight"), data=pets) + geom_point() + labs(title="pets")
 url = "https://raw.githubusercontent.com/e99n09/R-notes/master/data/hre.csv"
 r = requests.get(url)
 fp = "hre.csv"
-f = open(fp, "wb")
-f.write(r.text.encode("UTF-8"))
-f.close()
+with open(fp, "wb") as f:
+    f.write(r.text.encode("UTF-8"))
 
 hre = pd.read_csv(fp)
 
