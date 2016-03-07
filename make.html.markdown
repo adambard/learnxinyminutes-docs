@@ -149,11 +149,11 @@ echo:
 # In order of priority from highest to lowest:
 # 1: commandline arguments
 # 2: Makefile
-# 3: shell enviroment variables - make imports these automatically.
+# 3: shell environment variables - make imports these automatically.
 # 4: make has some predefined variables
 
 name4 ?= Jean
-# Only set the variable if enviroment variable is not already defined.
+# Only set the variable if environment variable is not already defined.
 
 override name5 = David
 # Stops commandline arguments from changing this variable.
