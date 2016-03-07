@@ -89,7 +89,7 @@ div {
 	background-color: #A3A4FF;
 }
 
-/* You can omit the mixin code from being compiled by adding paranthesis
+/* You can omit the mixin code from being compiled by adding parenthesis
    after the selector */
 
 .center() {
