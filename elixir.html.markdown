@@ -170,7 +170,7 @@ case {:one, :two} do
   {:four, :five} ->
     "This won't match"
   {:one, x} ->
-    "This will match and bind `x` to `:two`"
+    "This will match and bind `x` to `:two` in this clause"
   _ ->
     "This will match any value"
 end

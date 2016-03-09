@@ -24,33 +24,33 @@ Code in this file can be typed into Factor, but not directly imported because th
 5 4 +    ! No output
 
 ! `.` pops the top result from the stack and prints it.
-.    ! 9 
+.    ! 9
 
 ! More examples of arithmetic:
-6 7 * .        ! 42 
-1360 23 - .    ! 1337 
-12 12 / .      ! 1 
-13 2 mod .     ! 1 
+6 7 * .        ! 42
+1360 23 - .    ! 1337
+12 12 / .      ! 1
+13 2 mod .     ! 1
 
-99 neg .       ! -99 
--99 abs .      ! 99 
-52 23 max .    ! 52 
-52 23 min .    ! 23 
+99 neg .       ! -99
+-99 abs .      ! 99
+52 23 max .    ! 52
+52 23 min .    ! 23
 
 ! A number of words are provided to manipulate the stack, collectively known as shuffle words.
 
 3 dup -          ! duplicate the top item (1st now equals 2nd): 3 - 3
 2 5 swap /       ! swap the top with the second element:        5 / 2
-4 0 drop 2 /     ! remove the top item (dont print to screen):  4 / 2
+4 0 drop 2 /     ! remove the top item (don't print to screen):  4 / 2
 1 2 3 nip .s     ! remove the second item (similar to drop):    1 3
 1 2 clear .s     ! wipe out the entire stack
-1 2 3 4 over .s  ! duplicate the second item to the top: 1 2 3 4 3 
+1 2 3 4 over .s  ! duplicate the second item to the top: 1 2 3 4 3
 1 2 3 4 2 pick .s ! duplicate the third item to the top: 1 2 3 4 2 3
 
-! Creating Words 
+! Creating Words
 ! The `:` word sets Factor into compile mode until it sees the `;` word.
 : square ( n -- n ) dup * ;    ! No output
-5 square .                     ! 25 
+5 square .                     ! 25
 
 ! We can view what a word does too.
 ! \ suppresses evaluation of a word and pushes its identifier on the stack instead.
@@ -88,9 +88,9 @@ Code in this file can be typed into Factor, but not directly imported because th
 0 [ "Zero is true" . ] when                     ! Zero is true
 f [ "F is true" . ] when                        ! No output
 f [ "F is false" . ] unless                     ! F is false
-2 [ "Two is true" . ] [ "Two is false" . ] if   ! Two is true 
+2 [ "Two is true" . ] [ "Two is false" . ] if   ! Two is true
 
-! By default the conditionals consume the value under test, but starred variants 
+! By default the conditionals consume the value under test, but starred variants
 ! leave it alone if it's true:
 
 5 [ . ] when*      ! 5
@@ -100,7 +100,7 @@ f [ . ] when*      ! No output, empty stack, f is consumed because it's false
 ! Loops
 ! You've guessed it.. these are higher order words too.
 
-5 [ . ] each-integer               ! 0 1 2 3 4 
+5 [ . ] each-integer               ! 0 1 2 3 4
 4 3 2 1 0 5 [ + . ] each-integer   ! 0 2 4 6 8
 5 [ "Hello" . ] times              ! Hello Hello Hello Hello Hello
 
@@ -114,7 +114,7 @@ f [ . ] when*      ! No output, empty stack, f is consumed because it's false
 ! Loop reducing or building lists:
 { 1 2 3 4 5 } [ 2 mod 0 = ] filter  ! Keeps only list members for which quotation yields true: { 2 4 }  
 { 2 4 6 8 } 0 [ + ] reduce .        ! Like "fold" in functional languages: prints 20 (0+2+4+6+8)
-{ 2 4 6 8 } 0 [ + ] accumulate . .  ! Like reduce but keeps the intermediate values in a list: prints { 0 2 6 12 } then 20 
+{ 2 4 6 8 } 0 [ + ] accumulate . .  ! Like reduce but keeps the intermediate values in a list: prints { 0 2 6 12 } then 20
 1 5 [ 2 * dup ] replicate .         ! Loops the quotation 5 times and collects the results in a list: { 2 4 8 16 32 }
 1 [ dup 100 < ] [ 2 * dup ] produce ! Loops the second quotation until the first returns false and collects the results: { 2 4 8 16 32 64 128 }
 
@@ -142,7 +142,7 @@ name get-global .       ! "Bob"
    2 :> c                 ! Declares immutable variable c to hold 2
    c . ;                  ! Print it out
 
-! In a word declared this way,  the input side of the stack declaration 
+! In a word declared this way,  the input side of the stack declaration
 ! becomes meaningful and gives the variable names stack values are captured into
 :: double ( a -- result ) a 2 * ;
 
@@ -150,7 +150,7 @@ name get-global .       ! "Bob"
 :: mword2 ( a! -- x y )   ! Capture top of stack in mutable variable a
    a                      ! Push a
    a 2 * a!               ! Multiply a by 2 and store result back in a
-   a ;                    ! Push new value of a 
+   a ;                    ! Push new value of a
 5 mword2                  ! Stack: 5 10
 
 ! Lists and Sequences
@@ -167,7 +167,7 @@ name get-global .       ! "Bob"
 "Concat" "enate" append                       ! "Concatenate" - strings are sequences too
 "Concatenate" "Reverse " prepend              ! "Reverse Concatenate"
 { "Concatenate " "seq " "of " "seqs" } concat ! "Concatenate seq of seqs"
-{ "Connect" "subseqs" "with" "separators" } " " join  ! "Connect subseqs with separators" 
+{ "Connect" "subseqs" "with" "separators" } " " join  ! "Connect subseqs with separators"
 
 ! And if you want to get meta, quotations are sequences and can be dismantled..
 0 [ 2 + ] nth                              ! 2
