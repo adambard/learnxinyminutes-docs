@@ -85,7 +85,7 @@ snd ("elm", 42) -- 42
 -- Access a field with a dot and the field name.
 { x = 3, y = 7 }.x -- 3
 
--- Or with an accessor fuction, which is a dot and the field name on its own.
+-- Or with an accessor function, which is a dot and the field name on its own.
 .y { x = 3, y = 7 } -- 7
 
 -- Update the fields of a record. (It must have the fields already.)
@@ -309,7 +309,7 @@ import Graphics.Collage as C
 -- An incoming port is just a type signature.
 port clientID : Int
 
--- An outgoing port has a defintion.
+-- An outgoing port has a definition.
 port clientOrders : List String
 port clientOrders = ["Books", "Groceries", "Furniture"]
 
@@ -342,7 +342,7 @@ $ elm package diff evancz/elm-html 3.0.0 4.0.2
 ```
 
 The Elm language is surprisingly small. You can now look through almost any Elm
-source code and have a rough idea of what is going on. However, the possibilties
+source code and have a rough idea of what is going on. However, the possibilities
 for error-resistant and easy-to-refactor code are endless!
 
 Here are some useful resources.
