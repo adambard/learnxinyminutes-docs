@@ -5,7 +5,7 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Vojta Svoboda", "https://github.com/vojtasvoboda/"]
-filename: learnbrainfuck.bf
+filename: learnbrainfuck-cz.bf
 lang: cs-cz
 ---
 
