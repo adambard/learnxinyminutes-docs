@@ -4,6 +4,7 @@ contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
 translators:
     - ["Kyr", "http://github.com/kyrami"]
+    - ["manuelgu", "http://github.com/manuelgu"]
 lang: de-de
 filename: learncss-de.css
 ---
@@ -11,11 +12,11 @@ filename: learncss-de.css
 In den frühen Tagen des Internets gab es keine visuellen Elemente, alles war nur reiner Text. Aber mit der Weiterentwicklung von Browsern wurden auch vollständig visuelle Webseiten zu einem Standard.
 Durch Verwendung von CSS lässt sich eine strikte Trennung zwischen HTML-Code und Designelementen erreichen.
 
-Kurzgefasst, CSS ermöglicht es, verschiedene HTML-Elemente innerhalb eines Dokuments auszuwählen und ihnen visuelle Eigenschaften zu geben.
+Kurzgefasst, CSS ermöglicht es, verschiedene HTML-Elemente innerhalb eines Dokuments auszuwählen und ihnen visuelle Eigenschaften zu geben. Wichtig dabei sich vor Augen zu führen ist allerdings, dass sich mit CSS die eigentliche Blockstruktur von HTML nicht verändern lässt.
 
-CSS hat wie jede andere Sprache viele Versionen. Hier fokussieren wir uns auf CSS2.0, welche nicht die neueste, aber die am weitesten verbreitete und unterstützte Version ist.
+CSS hat, wie jede andere Sprache, viele Versionen. Hier fokussieren wir uns auf CSS2.0, welche nicht die neueste, aber die am weitesten verbreitete und unterstützte Version ist.
 
-**HINWEIS:** Weil die Ausgabe von CSS visuelle Eigenschaften sind, wirst du wahrscheinlich eine CSS-Sandbox wie [dabblet](http://dabblet.com/) benutzen müssen, um die Sprache richtig zu lernen.
+**HINWEIS:** Weil die Ausgabe von CSS visuelle Eigenschaften sind, wirst du wahrscheinlich eine CSS-Sandbox wie [dabblet](http://dabblet.com/) benutzen müssen, um die Sprache richtig zu lernen. Hier kannst du deinen Code direkt anschauen.
 In diesem Artikel wird am meisten auf generelle Hinweise und die Syntax geachtet.
 
 
@@ -70,9 +71,9 @@ div { }
 
 /* Noch wichtiger ist aber die Möglichkeit, all das miteinander kombinieren
 zu können - man sollte hierbei nur mit der Leerzeichensetzung vorsichtig sein,
-ein Leerzeichen macht es zu zwei verschiedenen Selektoren */
+denn ein Leerzeichen macht es zu zwei verschiedenen Selektoren */
 
-div.eine-klasse[attr$='rt'] { } /* so ist es richtig */
+div.eine-klasse[attr$='rt'] { } /* dies ist ein korrekter Syntax */
 
 /* Man kann auch ein Element über seine Elternelemente auswählen */
 
@@ -139,7 +140,7 @@ selector {
 
     /* Schriften */
     font-family: Arial;
-    font-family: "Courier New"; /* wenn der Name ein Leerzeichen beinhält, kommt er in
+    font-family: "Courier New"; /* wenn der Name ein Leerzeichen beinhaltet, kommt er in
     Anführungszeichen */
     font-family: "Courier New", Trebuchet, Arial; /* wird die erste Schriftart 
     nicht gefunden, wird die zweite benutzt, usw. */
@@ -152,7 +153,7 @@ selector {
 Speichere das CSS, das du benutzen willst mit der endung '.css'.
 
 ```xml
-<!-- du musst die CSS-Datei im <head>-bereich der seite einbinden -->
+<!-- du musst die CSS-Datei im <head>-bereich der Seite einbinden -->
 <link rel='stylesheet' type='text/css' href='filepath/filename.css' />
 
 <!-- Einbindung funktioniert auch inline, wobei diese Methode nicht
@@ -170,7 +171,7 @@ empfohlen ist -->
 ## Spezifität
 
 Ein Element kann natürlich auch von mehr als einer Regel in einem Stylesheet
-angesprochen werdenm und kann eine Eigenschaft auch öfters als einmal zugewiesen
+angesprochen werden und kann eine Eigenschaft auch öfters als einmal zugewiesen
 bekommen. In diesen Fällen gibt es Regeln, die die Spezifität von Selektoren regeln.
 
 Wir haben dieses CSS:
@@ -217,7 +218,7 @@ Die Spezifität der Stile ist wie folgt:
 ## Kompatibilität
 
 Die meisten Features von CSS sind in allen Browsern verfügbar. Man sollte
-jedoch immer darauf achten die benutzten Features auf Verfügbarkeit in den
+jedoch immer darauf achten, die benutzten Features auf Verfügbarkeit in den
 vom Projekt unterstützten Browser zu überprüfen.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) oder [Can I Use](http://caniuse.com/) sind zwei der besten Quellen dafür.
