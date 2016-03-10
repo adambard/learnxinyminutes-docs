@@ -6,7 +6,7 @@ contributors:
   - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
     - ["Vojta Svoboda", "https://github.com/vojtasvoboda/"]
-filename: learnjson.json
+filename: learnjson-cz.json
 lang: cs-cz
 ---
 
