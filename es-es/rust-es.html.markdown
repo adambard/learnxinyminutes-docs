@@ -1,6 +1,8 @@
 ---
 language: rust
 contributors:
+    - ["P1start", "http://p1start.github.io/"]
+translators:
     - ["Razican", "https://www.razican.com/"]
 filename: learnrust-es.rs
 lang: es-es
