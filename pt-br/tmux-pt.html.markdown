@@ -3,6 +3,7 @@ category: tool
 tool: tmux
 contributors:
     - ["mdln", "https://github.com/mdln"]
+    - ["m3nd3s", "https://github.com/m3nd3s"]
 translators:
     - ["Luis Custodio", "http://luiscustodio.com"]
 lang: pt-br
@@ -23,7 +24,7 @@ instância (ou tela original).
     new              # Cria uma nova seção
      -s "Nome"       # Cria uma nova seção com nome "Nome"
      -n "Janela"     # Cria uma janela com o nome "Janela"
-     -c "/dir"       # Inícia em uma pasta específica
+     -c "/dir"       # Inicia em uma pasta específica
 
     attach           # Reacopla a última seção disponível
      -t "#"          # Reacopla a seção com nome "#"
@@ -54,9 +55,9 @@ instância (ou tela original).
 ```
 
 
-### Teclas de atalhos (comandos)
+### Teclas de atalho (comandos)
 
-A maneira de controllar uma seção tmux acoplada é através de uma
+A maneira de controlar uma seção tmux acoplada é através de uma
 combinação de teclas de prefixo.
 
 ```
@@ -68,24 +69,24 @@ combinação de teclas de prefixo.
 
   ?           # Lista todos os comandos.
   :           # Acessa o lugar (prompt command) para receber comandos do tmux
-  r           # Força a redefiniçao do cliente acoplado.
+  r           # Força a redefinição do cliente acoplado.
   c           # Cria uma nova janela.
 
   !           # Retira o painel corrente da janela.
-  %           # Divide o painel corrente em dois para a esquerda e direita.
-  "           # Divide o painel corrente em dois para cima e para baixo.
+  %           # Divide o painel corrente em dois, um a esquerda e outro a direita.
+  "           # Divide o painel corrente em dois, um acima e abaixo.
 
-  n           # Move para a próxima janela.
-  p           # Move para a janela anterior.
-  {           # Troca o painel corrente pelo anterior.
-  }           # Troca o painel corrent pelo posterior.
+  n           # Muda o foco para a próxima janela.
+  p           # Muda o foco para a janela anterior.
+  {           # Troca o foco do painel corrente pelo anterior.
+  }           # Troca o foco do painel corrente pelo posterior.
 
   s           # Seleciona uma nova seção para o cliente acoplado iterativamente.
   w           # Seleciona a janela corrente iterativamente.
   0 to 9      # Seleciona a janela de 0 à 9.
 
-  d           # Separa o cliente atual.
-  D           # Seleciona um cliente a ser separado.
+  d           # Desacopla o cliente atual.
+  D           # Seleciona um cliente a ser desacoplado.
 
   &           # Encerra a janela corrente.
   x           # Encerra o painel corrente.
@@ -93,12 +94,12 @@ combinação de teclas de prefixo.
   Up, Down    # Move para o painel acima, abaixo, a esquerda ou a direita.
   Left, Right
 
-  M-1 to M-5  # Organiza os paines:
+  M-1 to M-5  # Organiza os painéis:
                        # 1) Horizontalmente de maneira igual
                        # 2) Verticalmente de maineira igual.
                        # 3) Principal horizontalmente
                        # 4) Principal verticamente.
-                       # 5) Mosaico
+                       # 5) Mosáico
 
   C-Up, C-Down    # Altera o tamanho do painel corrente baseado em uma célula.
   C-Left, C-Right
@@ -112,7 +113,7 @@ combinação de teclas de prefixo.
 ### Configurando ~/.tmux.conf
 
 Existe um arquivo chamado tmux.conf, ele pode ser usado para definir opções no
- momento de inicialização, da mesma maneira que .vimrc, init.el, .bash_profile são usados.
+ momento de inicialização, da mesma maneira que o `.vimrc`, `init.el` e `.bash_profile` são usados.
 
 
 ```
@@ -130,7 +131,7 @@ set-option -g status-utf8 on
 # Limite da história de comandos
 set -g history-limit 2048
 
-# Indíce de inicialização
+# Índice de inicialização
 set -g base-index 1
 
 # Mouse
@@ -158,11 +159,11 @@ bind ` last-window
 bind F11 set-option -g prefix C-a
 bind F12 set-option -g prefix `
 
-# Preferencia de teclas de atalho
+# Preferência de teclas de atalho
 setw -g mode-keys vi
 set-option -g status-keys vi
 
-# Mover enter paineis com teclas de orientaçao do vim
+# Mover entre painéis com teclas de orientação do vim
 bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
@@ -200,7 +201,7 @@ set-option -g pane-active-border-bg black
 set-option -g pane-border-fg white
 set-option -g pane-border-bg black
 
-# Palta de cores para mensagem
+# Paleta de cores para mensagem
 set-option -g message-fg black
 set-option -g message-bg green
 
