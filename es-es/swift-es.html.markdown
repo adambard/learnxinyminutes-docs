@@ -8,7 +8,7 @@ contributors:
 translators:
     - ["David Hsieh", "http://github.com/deivuh"]
 lang: es-es
-filename: learnswift.swift
+filename: learnswift-es.swift
 ---
 
 Swift es un lenguaje de programación para el desarrollo en iOS y OS X creado
