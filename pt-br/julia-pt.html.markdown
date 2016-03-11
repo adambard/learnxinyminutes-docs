@@ -1,6 +1,6 @@
 ---
 language: Julia
-filename: learnjulia.jl
+filename: learnjulia-pt.jl
 contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
 translators:
