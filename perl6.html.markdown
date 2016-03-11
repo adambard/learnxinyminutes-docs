@@ -1,10 +1,9 @@
 ---
-name: perl6
 category: language
 language: perl6
 filename: learnperl6.pl
 contributors:
-    - ["Nami-Doc", "http://github.com/Nami-Doc"]
+    - ["vendethiel", "http://github.com/vendethiel"]
 ---
 
 Perl 6 is a highly capable, feature-rich programming language made for at
@@ -104,7 +103,7 @@ sub say-hello-to(Str $name) { # You can provide the type of an argument
 
 ## It can also have optional arguments:
 sub with-optional($arg?) { # the "?" marks the argument optional
-  say "I might return `(Any)` (Perl's "null"-like value) if I don't have
+  say "I might return `(Any)` (Perl's 'null'-like value) if I don't have
         an argument passed, or I'll return my argument";
   $arg;
 }
@@ -374,6 +373,8 @@ say @array[^10]; # you can pass arrays as subscripts and it'll return
 say join(' ', @array[15..*]); #=> 15 16 17 18 19
 # which is equivalent to:
 say join(' ', @array[-> $n { 15..$n }]);
+# Note: if you try to do either of those with an infinite array,
+#       you'll trigger an infinite loop (your program won't finish)
 
 # You can use that in most places you'd expect, even assigning to an array
 my @numbers = ^20;
@@ -735,7 +736,7 @@ try {
 # You can throw an exception using `die`:
 die X::AdHoc.new(payload => 'Error !');
 
-# You can access the last exception with `$!` (usually used in a `CATCH` block)
+# You can access the last exception with `$!` (use `$_` in a `CATCH` block)
 
 # There are also some subtelties to exceptions. Some Perl 6 subs return a `Failure`,
 #  which is a kind of "unthrown exception". They're not thrown until you tried to look
@@ -763,8 +764,9 @@ try {
 #  and `enum`) are actually packages. (Packages are the lowest common denominator)
 # Packages are important - especially as Perl is well-known for CPAN,
 #  the Comprehensive Perl Archive Network.
-# You usually don't use packages directly: you use `class Package::Name::Here;`,
-# or if you only want to export variables/subs, you can use `module`:
+# You're not supposed to use the package keyword, usually:
+#  you use `class Package::Name::Here;` to declare a class,
+#  or if you only want to export variables/subs, you can use `module`:
 module Hello::World { # Bracketed form
                       # If `Hello` doesn't exist yet, it'll just be a "stub",
                       #  that can be redeclared as something else later.
@@ -773,11 +775,6 @@ module Hello::World { # Bracketed form
 unit module Parse::Text; # file-scoped form
 grammar Parse::Text::Grammar { # A grammar is a package, which you could `use`
 }
-
-# NOTE for Perl 5 users: even though the `package` keyword exists,
-#  the braceless form is invalid (to catch a "perl5ism"). This will error out:
-# package Foo; # because Perl 6 will think the entire file is Perl 5
-# Just use `module` or the brace version of `package`.
 
 # You can use a module (bring its declarations into scope) with `use`
 use JSON::Tiny; # if you installed Rakudo* or Panda, you'll have this module
@@ -806,9 +803,8 @@ module Foo::Bar {
     my sub unavailable { # `my sub` is the default
       say "Can't access me from outside, I'm my !";
     }
+    say ++$n; # increment the package variable and output its value
   }
-
-  say ++$n; # lexically-scoped variables are still available
 }
 say $Foo::Bar::n; #=> 1
 Foo::Bar::inc; #=> 2
@@ -870,8 +866,16 @@ LEAVE { say "Runs everytime you leave a block, even when an exception
 
 PRE { say "Asserts a precondition at every block entry,
     before ENTER (especially useful for loops)" }
+# exemple:
+for 0..2 {
+    PRE { $_ > 1 } # This is going to blow up with "Precondition failed"
+}
+
 POST { say "Asserts a postcondition at every block exit,
     after LEAVE (especially useful for loops)" }
+for 0..2 {
+    POST { $_ < 2 } # This is going to blow up with "Postcondition failed"
+}
 
 ## * Block/exceptions phasers
 sub {
@@ -1239,14 +1243,14 @@ so 'foo!' ~~ / <-[ a..z ] + [ f o ]> + /; # True (the + doesn't replace the left
 # Group: you can group parts of your regexp with `[]`.
 # These groups are *not* captured (like PCRE's `(?:)`).
 so 'abc' ~~ / a [ b ] c /; # `True`. The grouping does pretty much nothing
-so 'fooABCABCbar' ~~ / foo [ A B C ] + bar /;
+so 'foo012012bar' ~~ / foo [ '01' <[0..9]> ] + bar /;
 # The previous line returns `True`.
-# We match the "ABC" 1 or more time (the `+` was applied to the group).
+# We match the "012" 1 or more time (the `+` was applied to the group).
 
 # But this does not go far enough, because we can't actually get back what
 #  we matched.
 # Capture: We can actually *capture* the results of the regexp, using parentheses.
-so 'fooABCABCbar' ~~ / foo ( A B C ) + bar /; # `True`. (using `so` here, `$/` below)
+so 'fooABCABCbar' ~~ / foo ( 'A' <[A..Z]> 'C' ) + bar /; # `True`. (using `so` here, `$/` below)
 
 # So, starting with the grouping explanations.
 # As we said before, our `Match` object is available as `$/`:
@@ -1325,7 +1329,7 @@ so 'ayc' ~~ / a [ b | y ] c /; # `True`. Obviously enough ...
 
 
 
-### Extra: the MAIN subroutime
+### Extra: the MAIN subroutine
 # The `MAIN` subroutine is called when you run a Perl 6 file directly.
 # It's very powerful, because Perl 6 actually parses the arguments
 #  and pass them as such to the sub. It also handles named argument (`--foo`)

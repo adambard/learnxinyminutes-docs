@@ -21,22 +21,22 @@ JSON en su forma más pura no tiene comentarios, pero la mayoría de los parsead
   "llaves": "siempre debe estar entre comillas (ya sean dobles o simples)",
   "numeros": 0,
   "strings": "Høla, múndo. Todo el unicode está permitido, así como \"escapar\".",
-  "soporta booleanos?": true,
-  "vacios": null,
+  "¿soporta booleanos?": true,
+  "vacíos": null,
 
   "numero grande": 1.2e+100,
 
   "objetos": {
-    "comentario": "La mayoria de tu estructura vendra de objetos.",
+    "comentario": "La mayoría de tu estructura vendrá de objetos.",
 
     "arreglo": [0, 1, 2, 3, "Los arreglos pueden contener cualquier cosa.", 5],
 
     "otro objeto": {
-      "comentario": "Estas cosas pueden estar anidadas, muy util."
+      "comentario": "Estas cosas pueden estar anidadas, muy útil."
     }
   },
 
-  "tonteria": [
+  "tontería": [
     {
       "fuentes de potasio": ["bananas"]
     },
@@ -50,10 +50,10 @@ JSON en su forma más pura no tiene comentarios, pero la mayoría de los parsead
   
   "estilo alternativo": {
     "comentario": "Mira esto!"
-  , "posicion de la coma": "no importa - mientras este antes del valor, entonces sera valido"
-  , "otro comentario": "que lindo"
+  , "posición de la coma": "no importa - mientras este antes del valor, entonces sera válido"
+  , "otro comentario": "qué lindo"
   },
 
-  "eso fue rapido": "Y, estas listo. Ahora sabes todo lo que JSON tiene para ofrecer."
+  "eso fue rapido": "Y, estás listo. Ahora sabes todo lo que JSON tiene para ofrecer."
 }
 ```

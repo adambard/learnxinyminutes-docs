@@ -45,8 +45,8 @@ using System.Data.Entity;
 // Using this code from another source file: using Learning.CSharp;
 namespace Learning.CSharp
 {
-    // Each .cs file should at least contain a class with the same name as the file
-    // you're allowed to do otherwise, but shouldn't for sanity.
+    // Each .cs file should at least contain a class with the same name as the file.
+    // You're allowed to do otherwise, but shouldn't for sanity.
     public class LearnCSharp
     {
         // BASIC SYNTAX - skip to INTERESTING FEATURES if you have used Java or C++ before
@@ -630,7 +630,7 @@ on a new line! ""Wow!"", the masses cried";
 
     public static class Extensions
     {
-        // EXTENSION FUNCTIONS
+        // EXTENSION METHODS
         public static void Print(this object obj)
         {
             Console.WriteLine(obj.ToString());

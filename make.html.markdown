@@ -11,7 +11,7 @@ target to the most recent version of the source. Famously written over a
 weekend by Stuart Feldman in 1976, it is still widely used (particularly
 on Unix) despite many competitors and criticisms.
 
-There are many varieties of make in existance, this article assumes that
+There are many varieties of make in existence, this article assumes that
 we are using GNU make which is the standard on Linux.
 
 ```make
@@ -145,11 +145,11 @@ echo:
 # In order of priority from highest to lowest:
 # 1: commandline arguments
 # 2: Makefile
-# 3: shell enviroment variables - make imports these automatically.
+# 3: shell environment variables - make imports these automatically.
 # 4: make has some predefined variables
 
 name4 ?= Jean
-# Only set the variable if enviroment variable is not already defined.
+# Only set the variable if environment variable is not already defined.
 
 override name5 = David
 # Stops commandline arguments from changing this variable.
@@ -234,10 +234,8 @@ bar = 'hello'
 endif
 ```
 
-
 ### More Resources
 
 + [gnu make documentation](https://www.gnu.org/software/make/manual/)
 + [software carpentry tutorial](http://swcarpentry.github.io/make-novice/)
 + learn C the hard way [ex2](http://c.learncodethehardway.org/book/ex2.html) [ex28](http://c.learncodethehardway.org/book/ex28.html)
-
