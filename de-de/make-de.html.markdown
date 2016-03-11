@@ -4,7 +4,7 @@ contributors:
     - ["Robert Steed", "https://github.com/robochat"]
 translators:
   - ["Martin Schimandl", "https://github.com/Git-Jiro"]
-filename: Makefile
+filename: Makefile-de
 lang: de-de
 ---
 
