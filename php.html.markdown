@@ -539,9 +539,22 @@ class MyClass
         print 'MyClass';
     }
 
-    //final keyword would make a function unoverridable
+    // final keyword would make a function unoverridable
     final function youCannotOverrideMe()
     {
+    }
+    
+    // Magic Methods
+    
+    // what to do if Object is treated as a String
+    public function __toString() {
+        return $property;
+    }
+    
+    // opposite to __construct()
+    // called when object is no longer referenced
+    public function __destruct() {
+        print "Destroying";
     }
 
 /*
