@@ -151,6 +151,24 @@ selector {
     min-width: 50mm;  /* millimeters */
     max-width: 5in;   /* inches */
     
+    /* Margins */
+        /* Set margins/clear space around the element */
+    margin:10px 5px 15px 20px;    /* top margin is 10px
+                                    right margin is 5px
+                                    bottom margin is 15px
+                                    left margin is 20px */
+
+    margin:10px 5px 15px;           /* top margin is 10px
+                                    right and left margins are 5px
+                                    bottom margin is 15px */
+
+    margin:10px 5px;                /* top and bottom margins are 10px
+                                    right and left margins are 5px */
+
+    margin:10px;                    /* all four margins are 10px */
+    
+        /* Also see, margin-left, margin-right, margin-top, margin-bottom */
+    
     /* Colors */
     color: #F6E;                 /* short hex format */
     color: #FF66EE;              /* long hex format */
