@@ -3,6 +3,9 @@ language: brainfuck
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
+filename: brainfuck-de
+lang: de-de
+
 ---
 
 Brainfuck ist eine extrem minimalistische Turing-vollständige Programmiersprache
