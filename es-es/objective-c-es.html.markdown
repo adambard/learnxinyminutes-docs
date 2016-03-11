@@ -1,5 +1,4 @@
 ---
-
 language: Objective-C
 contributors:
     - ["Eugene Yagrushkin", "www.about.me/yagrushkin"]
@@ -9,7 +8,6 @@ translators:
     - ["David Hsieh", "http://github.com/deivuh"]
 lang: es-es
 filename: LearnObjectiveC-es.m
-
 ---
 Objective C es el lenguaje de programación principal utilizado por Apple para los sistemas operativos OS X y iOS y sus respectivos frameworks, Cocoa y Cocoa Touch.
 Es un lenguaje de programación para propósito general que le agrega al lenguaje de programación C una mensajería estilo "Smalltalk".
