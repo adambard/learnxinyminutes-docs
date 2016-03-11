@@ -83,23 +83,23 @@ mySearch = function(src: string, sub: string) {
 // Classes - members are public by default
 class Point {
   // Properties
-    x: number;
+  x: number;
 
-    // Constructor - the public/private keywords in this context will generate
-    // the boiler plate code for the property and the initialization in the
-    // constructor.
-    // In this example, "y" will be defined just like "x" is, but with less code
-    // Default values are also supported
+  // Constructor - the public/private keywords in this context will generate
+  // the boiler plate code for the property and the initialization in the
+  // constructor.
+  // In this example, "y" will be defined just like "x" is, but with less code
+  // Default values are also supported
 
-    constructor(x: number, public y: number = 0) {
-        this.x = x;
-    }
+  constructor(x: number, public y: number = 0) {
+    this.x = x;
+  }
 
-    // Functions
-    dist() { return Math.sqrt(this.x * this.x + this.y * this.y); }
+  // Functions
+  dist() { return Math.sqrt(this.x * this.x + this.y * this.y); }
 
-    // Static members
-    static origin = new Point(0, 0);
+  // Static members
+  static origin = new Point(0, 0);
 }
 
 var p1 = new Point(10 ,20);
@@ -107,15 +107,15 @@ var p2 = new Point(25); //y will be 0
 
 // Inheritance
 class Point3D extends Point {
-    constructor(x: number, y: number, public z: number = 0) {
-        super(x, y); // Explicit call to the super class constructor is mandatory
-    }
+  constructor(x: number, y: number, public z: number = 0) {
+    super(x, y); // Explicit call to the super class constructor is mandatory
+  }
 
-    // Overwrite
-    dist() {
-        var d = super.dist();
-        return Math.sqrt(d * d + this.z * this.z);
-    }
+  // Overwrite
+  dist() {
+    var d = super.dist();
+    return Math.sqrt(d * d + this.z * this.z);
+  }
 }
 
 // Modules, "." can be used as separator for sub modules
@@ -139,25 +139,33 @@ var s2 = new G.Square(10);
 // Generics
 // Classes
 class Tuple<T1, T2> {
-    constructor(public item1: T1, public item2: T2) {
-    }
+  constructor(public item1: T1, public item2: T2) {
+  }
 }
 
 // Interfaces
 interface Pair<T> {
-    item1: T;
-    item2: T;
+  item1: T;
+  item2: T;
 }
 
 // And functions
 var pairToTuple = function<T>(p: Pair<T>) {
-    return new Tuple(p.item1, p.item2);
+  return new Tuple(p.item1, p.item2);
 };
 
 var tuple = pairToTuple({ item1:"hello", item2:"world"});
 
 // Including references to a definition file:
 /// <reference path="jquery.d.ts" />
+
+// Template Strings (strings that use backticks)
+// String Interpolation with Template Strings
+var name = 'Tyrone';
+var greeting = `Hi ${name}, how are you?`
+// Multiline Strings with Template Strings
+var multiline = `This is an example
+of a multiline string`;
 
 ```
 

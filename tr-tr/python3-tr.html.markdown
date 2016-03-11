@@ -538,7 +538,7 @@ Insan.grunt()   # => "*grunt*"
 
 # Modülleri içe aktarabilirsiniz
 import math
-print(math.sqrt(16))  # => 4
+print(math.sqrt(16))  # => 4.0
 
 # Modülden belirli bir fonksiyonları alabilirsiniz
 from math import ceil, floor

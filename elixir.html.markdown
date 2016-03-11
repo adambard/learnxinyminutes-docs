@@ -170,7 +170,7 @@ case {:one, :two} do
   {:four, :five} ->
     "This won't match"
   {:one, x} ->
-    "This will match and bind `x` to `:two`"
+    "This will match and bind `x` to `:two` in this clause"
   _ ->
     "This will match any value"
 end
@@ -343,6 +343,7 @@ rescue
   RuntimeError -> "rescued a runtime error"
   _error -> "this will rescue any error"
 end
+#=> "rescued a runtime error"
 
 # All exceptions have a message
 try do
@@ -351,6 +352,7 @@ rescue
   x in [RuntimeError] ->
     x.message
 end
+#=> "some error"
 
 ## ---------------------------
 ## -- Concurrency
@@ -409,7 +411,7 @@ self() #=> #PID<0.27.0>
 
 ## References
 
-* [Getting started guide](http://elixir-lang.org/getting_started/1.html) from [elixir webpage](http://elixir-lang.org)
+* [Getting started guide](http://elixir-lang.org/getting-started/introduction.html) from the [Elixir website](http://elixir-lang.org)
 * [Elixir Documentation](http://elixir-lang.org/docs/master/)
 * ["Programming Elixir"](https://pragprog.com/book/elixir/programming-elixir) by Dave Thomas
 * [Elixir Cheat Sheet](http://media.pragprog.com/titles/elixir/ElixirCheat.pdf)

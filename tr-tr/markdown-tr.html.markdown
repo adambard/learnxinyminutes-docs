@@ -52,7 +52,7 @@ __Bu yazı da kalın.__
 **_Bu da öyle!_**
 *__Hatta bu bile!__*
 
-<!-- Github Flavored Markdown'da ayrıca üstü çizgili karakter de desteklenir: -->
+<!-- GitHub Flavored Markdown'da ayrıca üstü çizgili karakter de desteklenir: -->
 ~~Bu yazı üstü çizili olarak gözükecek.~~
 
 <!-- Paragraflar bir veya daha fazla boş satırla ayrılır. -->
@@ -151,7 +151,7 @@ kullanabilirsiniz -->
 
 Ahmet `go_to()` fonksiyonun ne yaptığını bilmiyor!
 
-<!-- Github Flavored Markdown'da, kod içerisinde aydınlatma kullanabilirsiniz -->
+<!-- GitHub Flavored Markdown'da, kod içerisinde aydınlatma kullanabilirsiniz -->
 
 \`\`\`ruby <!-- buradaki ters slaş (\) işaretlerini kullanmayın, sadece ```ruby ! -->
 def foobar
@@ -159,7 +159,7 @@ def foobar
 end
 \`\`\` <!-- burada da (\) işaretlerini kullanmayın, sadece ``` -->
 
-<!-- Yukarıdaki örnekte girinti kullanmanıza gerek yok, Github da 
+<!-- Yukarıdaki örnekte girinti kullanmanıza gerek yok, GitHub da 
 ``` işaretinden sonra belirttiğiniz yazılım diline göre gerekli
 syntax aydınlatmaları uygulanacaktır -->
 
@@ -230,7 +230,7 @@ Bu yazının *yıldızlar arasında gözükmesini* istiyorum fakat italik olmama
 bunun için, şu şekilde: \*bu yazı italik değil, yıldızlar arasında\*.
 
 <!-- Tablolar -->
-<!-- Tablolar sadece Github Flavored Markdown'da destekleniyor ve açıkçası
+<!-- Tablolar sadece GitHub Flavored Markdown'da destekleniyor ve açıkçası
 performansı çok yoruyorlar, fakat illa ki kullanmak isterseniz: -->
 
 | Sütun1       | Sütun 2  | Sütün 3       |
