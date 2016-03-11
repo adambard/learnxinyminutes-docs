@@ -5,6 +5,7 @@ contributors:
 translators:
     - ["Martin Schimandl", "https://github.com/Git-Jiro"]
 filename: learnlua-de.lua
+lang: de-de
 ---
 
 ```lua
