@@ -657,6 +657,12 @@ math.sqrt == m.sqrt == sqrt  # => True
 import math
 dir(math)
 
+# If you have a Python script named math.py in the same
+# folder as your current script, the file math.py will 
+# be loaded instead of the built-in Python module. 
+# This happens because the local folder has priority
+# over Python's built-in libraries. 
+
 
 ####################################################
 ## 7. Advanced
