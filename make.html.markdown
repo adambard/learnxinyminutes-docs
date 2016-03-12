@@ -2,7 +2,6 @@
 language: make
 contributors:
     - ["Robert Steed", "https://github.com/robochat"]
-    - ["Divay Prakash", "https://github.com/divayprakash"]
 filename: Makefile
 ---
 
