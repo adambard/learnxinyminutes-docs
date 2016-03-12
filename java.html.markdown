@@ -8,7 +8,6 @@ contributors:
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
     - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
     - ["Rachel Stiyer", "https://github.com/rstiyer"]
-    - ["Divay Prakash", "http://github.com/divayprakash"]
 filename: LearnJava.java
 ---
 
