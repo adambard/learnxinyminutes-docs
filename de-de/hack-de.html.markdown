@@ -1,10 +1,11 @@
 ---
 language: Hack
+lang: de-de
 contributors:
     - ["Stephen Holdaway", "https://github.com/stecman"]
     - ["David Lima", "https://github.com/davelima"]
     - ["Jerome Meinke", "https://github.com/jmeinke"]
-filename: learnhack.hh
+filename: learnhack-de.hh
 ---
 
 Hack ist eine von Facebook neu entwickelte Programmiersprache auf Basis von PHP.
