@@ -9,35 +9,19 @@ contributors:
 filename: learnpython.py
 ---
 
-<<<<<<< Updated upstream
 Python was created by Guido Van Rossum in the early 90s. It is now one of the 
 most popular languages in existence. I fell in love with Python for its 
 syntactic clarity. It's basically executable pseudocode.
 
 Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) 
-=======
-Python was created by Guido Van Rossum in the early 90s. It is now one of the
-most popular languages in existence. I fell in love with Python for its 
-syntactic clarity. It's basically executable pseudocode.
-
-Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh)
->>>>>>> Stashed changes
 or louiedinh [at] [google's email service]
 
 Note: This article applies to Python 2.7 specifically, but should be applicable
 to Python 2.x. Python 2.7 is reaching end of life and will stop being 
-<<<<<<< Updated upstream
-maintained in 2020, it is though recommended to start learning Python 
-with Python 3.
-For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
-
-It is also possible to write Python code which is compatible with Python 2.7 
-=======
 maintained in 2020, it is though recommended to start learning Python with
 Python 3. For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
 
 It is also possible to write Python code which is compatible with Python 2.7
->>>>>>> Stashed changes
 and 3.x at the same time, using Python [`__future__` imports](https://docs.python.org/2/library/__future__.html). `__future__` imports
 allow you to write Python 3 code that will run on Python 2, so check out the
 Python 3 tutorial.
@@ -670,14 +654,11 @@ math.sqrt == m.sqrt == sqrt  # => True
 import math
 dir(math)
 
-<<<<<<< Updated upstream
-=======
 # If you have a Python script named math.py in the same
 # folder as your current script, the file math.py will 
 # be loaded instead of the built-in Python module. 
 # This happens because the local folder has priority
 # over Python's built-in libraries. 
->>>>>>> Stashed changes
 
 ####################################################
 ## 7. Advanced
