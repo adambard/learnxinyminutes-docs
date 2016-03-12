@@ -36,7 +36,6 @@ Multi-line comments don't nest /* Be careful */  // comment ends on this line...
 enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 // MON gets 2 automatically, TUE gets 3, etc.
 
-
 // Import headers with #include
 #include <stdlib.h>
 #include <stdio.h>
@@ -114,7 +113,6 @@ int main (int argc, char** argv)
   // sizeof(obj) yields the size of the expression (variable, literal, etc.).
   printf("%zu\n", sizeof(int)); // => 4 (on most machines with 4-byte words)
 
-
   // If the argument of the `sizeof` operator is an expression, then its argument
   // is not evaluated (except VLAs (see below)).
   // The value it yields in this case is a compile-time constant.
@@ -129,7 +127,6 @@ int main (int argc, char** argv)
   char my_char_array[20]; // This array occupies 1 * 20 = 20 bytes
   int my_int_array[20]; // This array occupies 4 * 20 = 80 bytes
   // (assuming 4-byte words)
-
 
   // You can initialize an array to 0 thusly:
   char my_array[20] = {0};
@@ -347,7 +344,6 @@ int main (int argc, char** argv)
   this will print out "Error occured at i = 52 & j = 99."
   */
 
-
   ///////////////////////////////////////
   // Typecasting
   ///////////////////////////////////////
@@ -385,7 +381,6 @@ int main (int argc, char** argv)
   printf("%p\n", (void *)&x); // Use & to retrieve the address of a variable
   // (%p formats an object pointer of type void *)
   // => Prints some address in memory;
-
 
   // Pointers start with * in their declaration
   int *px, not_a_pointer; // px is a pointer to an int
@@ -431,7 +426,6 @@ int main (int argc, char** argv)
   int *ptr = arraythethird; // equivalent with int *ptr = &arr[0];
   printf("%zu, %zu\n", sizeof arraythethird, sizeof ptr);
   // probably prints "40, 4" or "40, 8"
-
 
   // Pointers are incremented and decremented based on their type
   // (this is called pointer arithmetic)
@@ -578,8 +572,6 @@ void testFunc2() {
 }
 //**You may also declare functions as static to make them private**
 
-
-
 ///////////////////////////////////////
 // User-defined types and structs
 ///////////////////////////////////////
@@ -696,6 +688,7 @@ typedef void (*my_fnp_type)(char *);
 "%o";    // octal
 "%%";    // prints %
 */
+
 ///////////////////////////////////////
 // Order of Evaluation
 ///////////////////////////////////////
