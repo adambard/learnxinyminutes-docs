@@ -1,8 +1,16 @@
 ---
-language: CSS
+language: css
+contributors:
+    - ["Mohammad Valipour", "https://github.com/mvalipour"]
+    - ["Marco Scannadinari", "https://github.com/marcoms"]
+    - ["Geoffrey Liu", "https://github.com/g-liu"]
+    - ["Connor Shea", "https://github.com/connorshea"]
+    - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
+    - ["Tyler Mumford", "https://tylermumford.com"]
 translators:
     - ["Arashk", "https://github.com/Arashk-A"]
 lang: fa-ir
+filename: learncss-fa.css
 ---
 
 <p dir='rtl'>در روزهای آغازین وب هیچگونه عنصر بصری مشاهده نمیشد و محتوا به صورت متن خالی بود. </p>
