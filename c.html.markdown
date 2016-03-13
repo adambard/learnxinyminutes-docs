@@ -528,6 +528,15 @@ void swapTwoNumbers(int *a, int *b)
     *a = *b;
     *b = temp;
 }
+
+/* we can swap 2 numbers without using the third variable  */
+void swapTwoNumbers (int *a, int *b)
+{
+ *a = *a + *b;
+ *b= *a - *b;
+ *a= *a - *b; 
+}
+
 /*
 int first = 10;
 int second = 20;
