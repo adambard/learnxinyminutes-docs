@@ -24,7 +24,9 @@ Multi-line comments look like this
 /// This is an XML documentation comment which can be used to generate external
 /// documentation or provide context help within an IDE
 /// </summary>
-//public void MethodOrClassOrOtherWithParsableHelp() {}
+/// <param name="firstParam">This is some parameter documentation for firstParam</param>
+/// <returns>Information on the returned value of a function</returns>
+//public void MethodOrClassOrOtherWithParsableHelp(string firstParam) {}
 
 // Specify the namespaces this source code will be using
 // The namespaces below are all part of the standard .NET Framework Class Library
