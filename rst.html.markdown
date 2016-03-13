@@ -1,7 +1,7 @@
 ---
 language: restructured text
 contributors:
-    - ["@DamienVGN", "https://github.com/martin-damien"]
+    - ["DamienVGN", "https://github.com/martin-damien"]
 filename: restructuredtext.rst
 ---
 
