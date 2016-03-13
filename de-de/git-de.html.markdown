@@ -10,7 +10,7 @@ lang: de-de
 
 Git ist eine verteilte Versions- und Quellcodeverwaltung. 
 
-Es nimmt Schnappschüsse der Projekte, um mit diesen Schnappschüssen verschiedene Versionen unterscheiden und den Quellcode verwalten zu können.
+Es nimmt Schnappschüsse der Projekte, um mit diesen Schnappschüssen verschiedene Versionen zu unterscheiden und den Quellcode verwalten zu können.
 
 Anmerkung des Übersetzers: Einige englische Begriffe wie *Repository*, *Commit* oder *Head* sind idiomatische Bestandteile im Umgang mit Git. Sie wurden nicht übersetzt.
 
@@ -42,13 +42,13 @@ Eine Versionsverwaltung erfasst die Änderungen einer Datei oder eines Verzeichn
 
 ### Repository (Repo)
 
-Ein Satz von Dateien, Verzeichnisen, Historieneinträgen, Commits und Heads. Stell es dir wie eine Quellcode-Datenstruktur vor, unter anderem mit der Eigenschaft, dass alle *Elemente* dir Zugriff auf die Revisionshistorie geben.
+Ein Satz von Dateien, Verzeichnissen, Historieneinträgen, Commits und Heads. Stell es dir wie eine Quellcode-Datenstruktur vor, unter anderem mit der Eigenschaft, dass alle *Elemente* dir Zugriff auf die Revisionshistorie geben.
 
 Ein Repository besteht in Git aus dem .git-Verzeichnis und dem Arbeitsverzeichnis.
 
 ### .git-Verzeichnis (Teil des Repositorys)
 
-Das .git-Verzeichnis enthält alle Einstellung, Logs, Branches, den HEAD und mehr.
+Das .git-Verzeichnis enthält alle Einstellungen, Logs, Branches, den HEAD und mehr.
 [Ausführliche Übersicht](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### Arbeitsverzeichnis (Teil des Repositorys)
@@ -57,15 +57,15 @@ Dies sind die Verzeichnisse und Dateien in deinem Repository.
 
 ### Index (Teil des .git-Verzeichnisses)
 
-Der Index ist die die Staging-Area von Git. Es ist im Grunde eine Ebene, die Arbeitsverzeichnis vom Repository trennt. Sie gibt Entwicklern mehr Einfluss darüber, was ins Git-Repository eingeht.
+Der Index ist die Staging-Area von Git. Es ist im Grunde eine Ebene, die das Arbeitsverzeichnis vom Repository trennt. Sie gibt Entwicklern mehr Einfluss darüber, was ins Git-Repository eingeht.
 
 ### Commit
 
-Ein Commit ist ein Schnappschuss von Änderungen in deinem Arbeitsverzeichnis. Wenn du zum Beispiel 5 Dateien hinzugefügt und 2 andere entfernt hast, werden diese Änderungen im Commit (Schnappschuss) enthalten sein. Dieser Commit kann dann in andere Repositories gepusht werden. Oder nicht!
+Ein Commit ist ein Schnappschuss von Änderungen in deinem Arbeitsverzeichnis. Wenn du zum Beispiel 5 Dateien hinzugefügt und 2 andere entfernt hast, werden diese Änderungen im Commit (Schnappschuss) enthalten sein. Dieser Commit kann dann in andere Repositorys gepusht werden. Oder nicht!
 
 ### Branch
 
-Ein Branch, ein Ast oder Zweig, ist im Kern ein Pointer auf den letzten Commit, den du gemacht hast. Während des Commits wird der Pointer automatisch auf Stand gebracht und zeigt dann auf den neuen letzten Commit.
+Ein Branch, ein Ast oder Zweig, ist im Kern ein Pointer auf den letzten Commit, den du gemacht hast. Während des Commits wird der Pointer automatisch aktualisiert und zeigt dann auf den neuen letzten Commit.
 
 ### HEAD und head (Teil des .git-Verzeichnisses)
 
@@ -206,7 +206,7 @@ $ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
 
 ### diff
 
-Zeigt die Unterschiede zwischen Dateien von Arbeitsverzeichnisse, dem Index und Commits an.
+Zeigt die Unterschiede zwischen Dateien im Arbeitsverzeichnis, dem Index und Commits an.
 
 ```bash
 # Unterschiede zwischen deinem Arbeitsverzeichnis und dem Index anzeigen
@@ -262,7 +262,7 @@ $ git log --merges
 
 ### merge
 
-*Merge*, also verschmelze, alle Änderungen von externen Commits in den aktuellen Branch.
+*Merge*, Zusammenführen von Änderungen aus externen Commits in den aktuellen Branch.
 
 ```bash
 # Merge den angegebenen Branch in den aktuellen.
@@ -283,14 +283,14 @@ $ git mv HelloWorld.c HelloNewWorld.c
 # Verschieben
 $ git mv HelloWorld.c ./new/path/HelloWorld.c
 
-# Umbenennung oder Verschieben erzwingen
+# Umbenennen oder Verschieben erzwingen
 # "existingFile" besteht schon im Verzeichnis, wird überschrieben mit "myFile"
 $ git mv -f myFile existingFile
 ```
 
 ### pull
 
-Führe einen Pull (zieht alle Daten eines Repositories) aus und führt einen Merge mit einem anderen Branch durch.
+Bezieht alle Daten eines Repositorys und führt einen Merge mit einem anderen Branch durch.
 
 ```bash
 # Update deines lokalen Repos, indem ein Merge der neuen Änderungen
@@ -299,14 +299,14 @@ Führe einen Pull (zieht alle Daten eines Repositories) aus und führt einen Mer
 # git pull => impliziter Verweis auf origin und master
 $ git pull origin master
 
-# Führt einen Merge von Änderungen eines remote-Branch und ein Rebase
+# Führt einen Merge der Änderungen eines remote-Branches und ein Rebase
 # des Branch-Commits im lokalen Repo durch. Wie: pull <remote> <branch>, git rebase <branch>"
 $ git pull origin master --rebase
 ```
 
 ### push
 
-Führe einen Push, ein Hochladen, und einen Merge von Änderungen eines remote-Branch mit einem Branch aus.
+Führe einen Push, ein Hochladen, und einen Merge von Änderungen eines remote-Branches mit einem Branch aus.
 
 ```bash
 # Führe Push und Merge von Änderungen des lokalen Repo zu einem
