@@ -4,9 +4,9 @@ tool: tmux
 contributors:
     - ["mdln", "https://github.com/mdln"]
 translators:
-    - ["@DamienVGN", "https://github.com/martin-damien"]
+    - ["DamienVGN", "https://github.com/martin-damien"]
 lang: fr-fr
-filename: LearnTmux.txt
+filename: LearnTmux-fr.txt
 ---
 
 
@@ -180,7 +180,7 @@ bind - split-window -v
 unbind '"'
 unbind %
 
-# Définis une commande pour envoyer un préfixe dans un tmux qui serais appelé dans un tmux
+# Définis une commande pour envoyer un préfixe dans un tmux qui serait appelé dans un tmux
 bind a send-prefix
 
 
@@ -228,7 +228,7 @@ set-option -g visual-bell off
 set-option -g set-titles on
 set-option -g set-titles-string '#H:#S.#I.#P #W #T' # window number,program name,active (or not)
 
-# Ajustements de la barre de status
+# Ajustement de la barre de status
 set -g status-left "#[fg=red] #H#[fg=green]:#[fg=white]#S#[fg=green] |#[default]"
 
 # Affiche un indice de performance dans la barre de status
