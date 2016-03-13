@@ -4,6 +4,7 @@ filename: learngo-de.go
 contributors:
     - ["Joseph Adams", "https://github.com/jcla1"]
     - ["Dennis Keller", "https://github.com/denniskeller"]
+translators:
     - ["Jerome Meinke", "https://github.com/jmeinke"]
 lang: de-de
 ---
