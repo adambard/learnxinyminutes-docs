@@ -100,7 +100,7 @@ not False -- True
 [1..] !! 999 -- 1000
 
 -- Haskell evaluiert nun die ersten 1 - 1000 Elemente, aber der Rest der Liste
--- bleibt unangetastet. Haskell wird sie solange nicht weiterevalieren
+-- bleibt unangetastet. Haskell wird sie solange nicht weiterevaluieren
 -- bis es muss.
 
 -- Zwei Listen konkatenieren
@@ -115,7 +115,7 @@ tail [1..5] -- [2, 3, 4, 5]
 init [1..5] -- [1, 2, 3, 4]
 last [1..5] -- 5
 
--- list comprehensions | Listen erschaffen
+-- Listen erschaffen ("list comprehensions")
 [x*2 | x <- [1..5]] -- [2, 4, 6, 8, 10]
 
 -- Mit Bedingungen
@@ -179,7 +179,7 @@ myMap (\x -> x + 2) [1..5] -- [3, 4, 5, 6, 7]
 
 -- Fold (`inject` in einigen Sprachen)
 -- Foldl1 bedeutet: fold von links nach rechts und nehme den ersten
--- Wert der Liste als Basiswert f[r den Akkumulator.
+-- Wert der Liste als Basiswert für den Akkumulator.
 foldl1 (\acc x -> acc + x) [1..5] -- 15
 
 ----------------------------------------------------
@@ -201,7 +201,7 @@ foo 5 -- 15
 
 -- Funktionskomposition
 -- Die (.) Funktion verkettet Funktionen.
--- Zum Beispiel, die Funktion Foo nimmt ein Argument addiert 10 dazu und
+-- Zum Beispiel, die Funktion Foo nimmt ein Argument, addiert 10 dazu und
 -- multipliziert dieses Ergebnis mit 4.
 foo = (*4) . (+10)
 
@@ -212,7 +212,7 @@ foo 5 -- 60
 -- Haskell hat einen Operator `$`, welcher Funktionsapplikation durchführt.
 -- Im Gegenzug zu der Standard-Funktionsapplikation, welche linksassoziativ ist
 -- und die höchstmögliche Priorität von "10" hat, ist der `$`-Operator
--- rechtsassoziativ und hat die Priorität 0. Dieses hat (idr.) den Effekt,
+-- rechtsassoziativ und hat die Priorität 0. Dieses hat (i.d.R.) den Effekt,
 -- dass der `komplette` Ausdruck auf der rechten Seite als Parameter für die
 -- Funktion auf der linken Seite verwendet wird.
 -- Mit `.` und `$` kann man sich so viele Klammern ersparen.
@@ -283,7 +283,7 @@ for [0..5] $ \i -> show i
 for [0..5] show
 
 -- foldl oder foldr reduziren Listen auf einen Wert.
--- foldl <fn> <initial value> <list>
+-- foldl <Funktion> <initialer Wert> <Liste>
 foldl (\x y -> 2*x + y) 4 [1,2,3] -- 43
 
 -- die Abarbeitung sieht so aus:
@@ -435,7 +435,7 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
 ```
 
 Haskell ist sehr einfach zu installieren.
-Hohl es dir von [hier](http://www.haskell.org/platform/).
+Hol es dir von [hier](http://www.haskell.org/platform/).
 
 Eine sehr viele langsamere Einführung findest du unter:
 [Learn you a Haskell](http://learnyouahaskell.com/) oder
