@@ -4,6 +4,7 @@ lang: de-de
 contributors:
     - ["Stephen Holdaway", "https://github.com/stecman"]
     - ["David Lima", "https://github.com/davelima"]
+translators:
     - ["Jerome Meinke", "https://github.com/jmeinke"]
 filename: learnhack-de.hh
 ---
