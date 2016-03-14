@@ -92,12 +92,12 @@ echo "immer ausgeführt" || echo "Nur ausgeführt wenn der erste Befehl fehlschl
 echo "immer ausgeführt" && echo "Nur ausgeführt wenn der erste Befehl Erfolg hat"
 
 # Um && und || mit if statements zu verwenden, braucht man mehrfache Paare eckiger Klammern:
-if [ $NAME == "Steve" ] && [ $Alter -eq 15 ]
+if [ "$NAME" == "Steve" ] && [ "$Alter" -eq 15 ]
 then
     echo "Wird ausgeführt wenn $NAME gleich 'Steve' UND $Alter gleich 15."
 fi
 
-if [ $Name == "Daniya" ] || [ $Name == "Zach" ]
+if [ "$Name" == "Daniya" ] || [ "$Name" == "Zach" ]
 then
     echo "Wird ausgeführt wenn $NAME gleich 'Daniya' ODER $NAME gleich 'Zach'."
 fi
