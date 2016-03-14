@@ -11,7 +11,7 @@ lang: zh-cn
 
 TypeScript是一门为开发大型JavaScript应用而设计的语言。TypeScript在JavaScript的基础上增加了类、模块、接口、泛型和静态类型（可选）等常见的概念。它是JavaScript的一个超集：所有JavaScript代码都是有效的TypeScript代码，所以任何JavaScript项目都可以无缝引入TypeScript. TypeScript编译器会把TypeScript代码编译成JavaScript代码。
 
-本文只关注TypeScript额外增加的语法，区别于[JavaScript](../javascript-cn/).
+本文只关注TypeScript额外增加的区别于[JavaScript](../javascript-cn/)的语法，.
 
 如需测试TypeScript编译器，你可以在[Playground](http://www.typescriptlang.org/Playground)码代码，它会自动编译成JavaScript代码然后直接显示出来。
 
@@ -21,7 +21,7 @@ var isDone: boolean = false;
 var lines: number = 42;
 var name: string = "Anders";
 
-// 如果不知道是什么类型，可以使用"Any"(任意)类型
+// 如果不知道是什么类型，可以使用"any"(任意)类型
 var notSure: any = 4;
 notSure = "maybe a string instead";
 notSure = false; // 亦可，定义为布尔型
@@ -52,7 +52,7 @@ var f4 = (i: number) => { return i * i; }
 // 返回推断类型的值, 单行程式可以不需要return关键字和大括号
 var f5 = (i: number) =>  i * i;
 
-// 接口是结构化的，任何具有这些属性的都需要兼容该接口
+// 接口是结构化的，任何具有这些属性的对象都与该接口兼容
 interface Person {
   name: string;
   // 可选属性，使用"?"标识
@@ -83,8 +83,8 @@ class Point {
   // 属性
   x: number;
 
-  // 构造器 - 这里面的public/private关键字会为属性和初始化值生成样板化代码
-  // 这个例子中, 不需要更多的代码就可以把"y"定义成和"x"一样
+  // 构造器 - 这里面的public/private关键字会为属性生成样板代码和初始化值
+  // 这个例子中，y会被同x一样定义，不需要额外代码
   // 同样支持默认值
 
   constructor(x: number, public y: number = 0) {
