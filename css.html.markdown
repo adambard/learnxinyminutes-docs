@@ -7,6 +7,7 @@ contributors:
     - ["Connor Shea", "https://github.com/connorshea"]
     - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
     - ["Tyler Mumford", "https://tylermumford.com"]
+    
 filename: learncss.css
 ---
 
@@ -195,7 +196,7 @@ Save a CSS stylesheet with the extension `.css`.
 
 ## Precedence or Cascade
 
-An element may be targeted by multiple selectors and may have a property set on it in more than once. In these cases, one of the rules takes precedence over others. Rules with a more specific selector take precedence over a less specific one, and a rule occuring later in the stylesheet overwrites a previous one.
+An element may be targeted by multiple selectors and may have a property set on it in more than once. In these cases, one of the rules takes precedence over others. Rules with a more specific selector take precedence over a less specific one, and a rule occuring later in the stylesheet overwrites a previous one (which also means that if two different linked stylesheets contain rules for an element and if the rules are of the same specificity, then order of linking would take precedence and the sheet linked latest would govern styling) .
 
 This process is called cascading, hence the name Cascading Style Sheets.
 
