@@ -5,7 +5,6 @@ contributors:
     - ["Amin Bandali", "http://aminbandali.com"]
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["evuez", "http://github.com/evuez"]
-    - ["Divay Prakash", "http://github.com/divayprakash"]
 filename: learnpython.py
 ---
 
