@@ -5,7 +5,7 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Richard Lindberg", "https://github.com/Lidenburg"]
-lang: sv-sv
+lang: sv-se
 ---
 
 Brainfuck (ej versaliserat förutom vid ny mening) är ett extremt
@@ -59,7 +59,7 @@ värde som cell #1 innehöll från början. Eftersom att programmet vid slutet a
 loopen är på cell #1 flyttas pekaren till cell #2 och sedan skriver den ut
 värdet av cell #2 i ASCII.
 
-Värt att kommaihåg är att programmet ovan kan skrivas utan mellanslag också:
+Värt att komma ihåg är att programmet ovan kan skrivas utan mellanslag också:
 
 ,[>+<-]>.
 
