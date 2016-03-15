@@ -1,5 +1,5 @@
 ---
-language: d
+language: D
 filename: learnd-ru.d
 contributors:
     - ["Anton Pastukhov", "http://dprogramming.ru/"]

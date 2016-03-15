@@ -72,8 +72,8 @@ __And so is this text.__
 *__And this!__*
 ```
 
-In Github Flavored Markdown, which is used to render markdown files on
-Github, we also have strikethrough:
+In GitHub Flavored Markdown, which is used to render markdown files on
+GitHub, we also have strikethrough:
 
 ```markdown
 ~~This text is rendered with strikethrough.~~
@@ -200,7 +200,7 @@ Inline code can be created using the backtick character `
 John didn't even know what the `go_to()` function did!
 ```
 
-In Github Flavored Markdown, you can use a special syntax for code
+In GitHub Flavored Markdown, you can use a special syntax for code
 
 <pre>
 <code class="highlight">&#x60;&#x60;&#x60;ruby
@@ -209,7 +209,7 @@ def foobar
 end
 &#x60;&#x60;&#x60;</code></pre>
 
-The above text doesn't require indenting, plus Github will use syntax
+The above text doesn't require indenting, plus GitHub will use syntax
 highlighting of the language you specify after the \`\`\`
 
 ## Horizontal rule
@@ -298,7 +298,7 @@ in italics, so I do this: \*this text surrounded by asterisks\*.
 
 ### Keyboard keys
 
-In Github Flavored Markdown, you can use a `<kbd>` tag to represent keyboard keys.
+In GitHub Flavored Markdown, you can use a `<kbd>` tag to represent keyboard keys.
 
 ```markdown
 Your computer crashed? Try sending a
@@ -306,7 +306,7 @@ Your computer crashed? Try sending a
 ```
 ### Tables
 
-Tables are only available in Github Flavored Markdown and are slightly
+Tables are only available in GitHub Flavored Markdown and are slightly
 cumbersome, but if you really want it:
 
 ```markdown

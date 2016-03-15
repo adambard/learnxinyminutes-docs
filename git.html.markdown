@@ -35,6 +35,7 @@ Version control is a system that records changes to a file(s), over time.
 * Can work offline.
 * Collaborating with others is easy!
 * Branching is easy!
+* Branching is fast!
 * Merging is easy!
 * Git is fast.
 * Git is flexible.
@@ -540,7 +541,7 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 * [Atlassian Git - Tutorials & Workflows](https://www.atlassian.com/git/)
 
-* [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+* [SalesForce Cheat Sheet](http://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf)
 
 * [GitGuys](http://www.gitguys.com/)
 

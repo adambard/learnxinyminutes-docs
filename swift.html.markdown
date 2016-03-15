@@ -94,6 +94,8 @@ var unwrappedString: String! = "Value is expected."
 // same as above, but ! is a postfix operator (more syntax candy)
 var unwrappedString2: ImplicitlyUnwrappedOptional<String> = "Value is expected."
 
+// If let structure - 
+// If let is a special structure in Swift that allows you to check if an Optional rhs holds a value, and in case it does - unwraps and assigns it to the lhs.
 if let someOptionalStringConstant = someOptionalString {
     // has `Some` value, non-nil
     if !someOptionalStringConstant.hasPrefix("ok") {

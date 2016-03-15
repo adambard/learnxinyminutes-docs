@@ -171,6 +171,6 @@ Este tutorial é apenas uma introdução básica para hy/lisp/python.
 
 Docs Hy: [http://hy.readthedocs.org](http://hy.readthedocs.org)
 
-Repo Hy no Github: [http://github.com/hylang/hy](http://github.com/hylang/hy)
+Repo Hy no GitHub: [http://github.com/hylang/hy](http://github.com/hylang/hy)
 
 Acesso ao freenode irc com #hy, hashtag no twitter: #hylang
