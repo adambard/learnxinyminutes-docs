@@ -694,7 +694,10 @@ on a new line! ""Wow!"", the masses cried";
         public BikeBrand Brand; // After declaring an enum type, we can declare the field of this type
 
         // Decorate an enum with the FlagsAttribute to indicate that multiple values can be switched on
-        [Flags] // Any class derived from Attribute can be used to decorate types, methods, parameters etc
+        // Any class derived from Attribute can be used to decorate types, methods, parameters etc
+        // Bitwise operators & and | can be used to perform and/or operations
+
+        [Flags]
         public enum BikeAccessories
         {
             None = 0,
@@ -881,8 +884,8 @@ on a new line! ""Wow!"", the masses cried";
         bool Broken { get; } // interfaces can contain properties as well as methods & events
     }
 
-    // Class can inherit only one other class, but can implement any amount of interfaces, however
-    // the base class name must be the first in the list and all interfaces follow
+    // Classes can inherit only one other class, but can implement any amount of interfaces,
+    // however the base class name must be the first in the list and all interfaces follow
     class MountainBike : Bicycle, IJumpable, IBreakable
     {
         int damage = 0;
