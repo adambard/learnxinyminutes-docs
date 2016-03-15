@@ -3,6 +3,8 @@ language: brainfuck
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
+translators:
+    - ["urfuchs", "https://github.com/urfuchs"]
 filename: brainfuck-de
 lang: de-de
 
@@ -81,7 +83,7 @@ erhöht und anschließend in Zelle #2 zurückkopiert.
 Am Ende steht in Zelle #3 das Ergebnis.
 ```
 
-Das ist Brainfuck. Nicht so schwierig, oder? Zum Spaß kannst du dein eigenes Brainfuchs
+Das ist Brainfuck. Nicht so schwierig, oder? Zum Spaß kannst du dein eigenes Brainfuck
 Programm schreiben oder du schreibst einen Brainfuck Interpreter in einer anderen
 Programmiersprache. Der Interpreter lässt sich ziemlich einfach implementieren.
 Falls du Masochist bist, kannst du auch versuchen, einen Brainfuck Interpreter in Brainfuck zu implementieren.
