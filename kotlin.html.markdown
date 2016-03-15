@@ -9,7 +9,7 @@ Kotlin is a Statically typed programming language for the JVM, Android and the
 browser. It is 100% interoperable with Java.
 [Read more here.](https://kotlinlang.org/)
 
-```kotlin
+```java
 // Single-line comments start with //
 /*
 Multi-line comments look like this.
