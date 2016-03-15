@@ -53,6 +53,8 @@ $int1 = 12;   // => 12
 $int2 = -12;  // => -12
 $int3 = 012;  // => 10 (a leading 0 denotes an octal number)
 $int4 = 0x0F; // => 15 (a leading 0x denotes a hex literal)
+// Binary integer literals are available since PHP 5.4.0.
+$int5 = 0b11111111; // 255 (a leading 0b denotes a binary number)
 
 // Floats (aka doubles)
 $float = 1.234;
@@ -116,11 +118,11 @@ echo 'Multiple', 'Parameters', 'Valid';  // Returns 'MultipleParametersValid'
 
 // a valid constant name starts with a letter or underscore,
 // followed by any number of letters, numbers, or underscores.
-define("FOO",     "something");
+define("FOO", "something");
 
 // access to a constant is possible by calling the choosen name without a $
 echo FOO; // Returns 'something'
-echo 'This outputs '.FOO;  // Returns 'This ouputs something'
+echo 'This outputs ' . FOO;  // Returns 'This ouputs something'
 
 
 
@@ -139,6 +141,9 @@ $associative = array('One' => 1, 'Two' => 2, 'Three' => 3);
 $associative = ['One' => 1, 'Two' => 2, 'Three' => 3];
 
 echo $associative['One']; // prints 1
+
+// Add an element to an associative array
+$associative['Four'] = 4;
 
 // List literals implicitly assign integer keys
 $array = ['One', 'Two', 'Three'];
@@ -534,9 +539,22 @@ class MyClass
         print 'MyClass';
     }
 
-    //final keyword would make a function unoverridable
+    // final keyword would make a function unoverridable
     final function youCannotOverrideMe()
     {
+    }
+    
+    // Magic Methods
+    
+    // what to do if Object is treated as a String
+    public function __toString() {
+        return $property;
+    }
+    
+    // opposite to __construct()
+    // called when object is no longer referenced
+    public function __destruct() {
+        print "Destroying";
     }
 
 /*
@@ -765,6 +783,37 @@ I'm a ParentClass
 But I'm ChildClass
 */
 
+/**********************
+*  Magic constants
+*  
+*/
+
+// Get current class name. Must be used inside a class declaration.
+echo "Current class name is " . __CLASS__;
+
+// Get full path directory of a file
+echo "Current directory is " . __DIR__;
+
+    // Typical usage
+    require __DIR__ . '/vendor/autoload.php';
+
+// Get full path of a file
+echo "Current file path is " . __FILE__;
+
+// Get current function name
+echo "Current function name is " . __FUNCTION__;
+
+// Get current line number
+echo "Current line number is " . __LINE__;
+
+// Get the name of the current method. Only returns a value when used inside a trait or object declaration.
+echo "Current method is " . __METHOD__;
+
+// Get the name of the current namespace
+echo "Current namespace is " . __NAMESPACE__;
+
+// Get the name of the current trait. Only returns a value when used inside a trait or object declaration.
+echo "Current namespace is " . __TRAIT__;
 
 /**********************
 *  Error Handling

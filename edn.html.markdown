@@ -5,18 +5,18 @@ contributors:
   - ["Jason Yeo", "https://github.com/jsyeo"]
 ---
 
-Extensible Data Notation or EDN for short is a format for serializing data.
+Extensible Data Notation (EDN) is a format for serializing data.
 
-The notation is used internally by Clojure to represent programs and it also
+The notation is used internally by Clojure to represent programs. It is also
 used as a data transfer format like JSON. Though it is more commonly used in
-Clojure land, there are implementations of EDN for many other languages.
+Clojure, there are implementations of EDN for many other languages.
 
-The main benefit of EDN over JSON and YAML is that it is extensible, which we
+The main benefit of EDN over JSON and YAML is that it is extensible. We
 will see how it is extended later on.
 
-```Clojure
+```clojure
 ; Comments start with a semicolon.
-; Anythng after the semicolon is ignored.
+; Anything after the semicolon is ignored.
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Basic Types ;;;
@@ -59,7 +59,7 @@ false
 ; Vectors allow random access
 [:gelato 1 2 -2]
 
-; Maps are associative data structures that associates the key with its value
+; Maps are associative data structures that associate the key with its value
 {:eggs        2
  :lemon-juice 3.5
  :butter      1}
@@ -68,7 +68,7 @@ false
 {[1 2 3 4] "tell the people what she wore",
  [5 6 7 8] "the more you see the more you hate"}
 
-; You may use commas for readability. They are treated as whitespaces.
+; You may use commas for readability. They are treated as whitespace.
 
 ; Sets are collections that contain unique elements.
 #{:a :b 88 "huat"}
@@ -82,11 +82,11 @@ false
 #MyYelpClone/MenuItem {:name "eggs-benedict" :rating 10}
 
 ; Let me explain this with a clojure example. Suppose I want to transform that
-; piece of edn into a MenuItem record.
+; piece of EDN into a MenuItem record.
 
 (defrecord MenuItem [name rating])
 
-; To transform edn to clojure values, I will need to use the built in EDN
+; To transform EDN to clojure values, I will need to use the built in EDN
 ; reader, edn/read-string
 
 (edn/read-string "{:eggs 2 :butter 1 :flour 5}")

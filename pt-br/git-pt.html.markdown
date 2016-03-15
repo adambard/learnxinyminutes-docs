@@ -5,8 +5,12 @@ lang: pt-br
 filename: LearnGit.txt
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
+    - ["Leo Rudberg" , "http://github.com/LOZORD"]
+    - ["Betsy Lorton" , "http://github.com/schbetsy"]
+    - ["Bruno Volcov", "http://github.com/volcov"]
 translators:
   - ["Suzane Sant Ana", "http://github.com/suuuzi"]
+  - ["Bruno Volcov", "http://github.com/volcov"]
 ---
 
 Git é um sistema distribuido de gestão para código fonte e controle de versões.
@@ -83,6 +87,11 @@ para outros repositórios ou não!
 Um *branch* é essencialmente uma referência que aponta para o último *commit*
 efetuado. Na medida que são feitos novos commits, esta referência é atualizada
 automaticamente e passa a apontar para o commit mais recente.
+
+### *Tag*
+
+Uma tag é uma marcação em um ponto específico da história. Geralmente as
+pessoas usam esta funcionalidade para marcar pontos de release (v2.0, e por aí vai)
 
 ### *HEAD* e *head* (componentes do diretório .git)
 
@@ -194,6 +203,29 @@ $ git branch -m myBranchName myNewBranchName
 
 # editar a descrição de um *branch*
 $ git branch myBranchName --edit-description
+```
+
+### Tag
+
+Gerencia as *tags*
+
+```bash
+# Listar tags
+$ git tag
+# Criar uma tag anotada.
+# O parâmetro -m define uma mensagem, que é armazenada com a tag.
+# Se você não especificar uma mensagem para uma tag anotada,
+# o Git vai rodar seu editor de texto para você digitar alguma coisa.
+$ git tag -a v2.0 -m 'minha versão 2.0'
+# Mostrar informações sobre a tag
+# O comando mostra a informação da pessoa que criou a tag,
+# a data de quando o commit foi taggeado,
+# e a mensagem antes de mostrar a informação do commit.
+$ git show v2.0
+# Enviar uma tag para o repositório remoto
+$ git push origin v2.0
+# Enviar várias tags para o repositório remoto
+$ git push origin --tags
 ```
 
 ### checkout

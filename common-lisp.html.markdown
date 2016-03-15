@@ -339,7 +339,7 @@ nil                  ; for false - and the empty list
 
 ;; The () in the above is the list of arguments for the function
 (defun hello (name)
-   (format nil "Hello, ~a " name))
+   (format nil "Hello, ~a" name))
 
 (hello "Steve") ; => "Hello, Steve"
 
@@ -430,7 +430,7 @@ nil                  ; for false - and the empty list
 (defun walker (n)
   (if (zerop n)
       :walked
-      (walker (1- n))))
+      (walker (- n 1))))
 
 (walker 5) ; => :walked
 
@@ -614,8 +614,15 @@ nil                  ; for false - and the empty list
 
 ## Further Reading
 
-[Keep moving on to the Practical Common Lisp book.](http://www.gigamonkeys.com/book/)
+*   [Keep moving on to the Practical Common Lisp book.](http://www.gigamonkeys.com/book/)
+*   [A Gentle Introduction to...](https://www.cs.cmu.edu/~dst/LispBook/book.pdf)
 
+
+## Extra Info
+
+*   [CLiki](http://www.cliki.net/)
+*   [common-lisp.net](https://common-lisp.net/)
+*   [Awesome Common Lisp](https://github.com/CodyReichert/awesome-cl)
 
 ## Credits.
 

@@ -91,9 +91,9 @@ int main() {
     // Örneğin,
     printf("%lu\n", sizeof(int)); // => 4 (bir çok makinede 4-byte words)
 
-    // If the argument of the `sizeof` operator an expression, then its argument
-    // is not evaluated (except VLAs (see below)).
-    // The value it yields in this case is a compile-time constant.
+    // Eger arguman düzenli ifae olan sizeof operatoru ise degerlendirilmez.
+    // VLAs hariç asagiya bakiniz).
+    // Bu durumda verimliligin degeri derleme-zamani sabitidir.
     int a = 1;
 
     // size_t bir objeyi temsil etmek için kullanılan 2 byte uzunluğundaki bir 
@@ -101,7 +101,7 @@ int main() {
 
     size_t size = sizeof(a++); // a++ is not evaluated
     printf("sizeof(a++) = %zu where a = %d\n", size, a);
-    // prints "sizeof(a++) = 4 where a = 1" (on a 32-bit architecture)
+    // yazdirilan "sizeof(a++) = 4 where a = 1" (32-bit mimaride)
 
     // Diziler somut bir boyut ile oluşturulmalıdır.
     char my_char_array[20]; // Bu dizi 1 * 20 = 20 byte alan kaplar
@@ -119,19 +119,19 @@ int main() {
     my_array[1] = 2;
     printf("%d\n", my_array[1]); // => 2
 
-    // In C99 (and as an optional feature in C11), variable-length arrays (VLAs)
-    // can be declared as well. The size of such an array need not be a compile
-    // time constant:
-    printf("Enter the array size: "); // ask the user for an array size
+    // C99'da (ve C11 istege bagli bir ozellik olarak), değidken-uzunluklu diziler (VLAs) bildirilebilirler.
+    // Böyle bir dizinin boyuunu derlenmesi gerekmez
+    // zaman sabiti:
+    printf("Enter the array size: "); // dizi boyutu kullaniciya soruluyor
     char buf[0x100];
     fgets(buf, sizeof buf, stdin);
 
-    // strtoul parses a string to an unsigned integer
+    // strtoul isaretsiz integerlar icin string ayiricisidir.
     size_t size = strtoul(buf, NULL, 10);
     int var_length_array[size]; // declare the VLA
     printf("sizeof array = %zu\n", sizeof var_length_array);
 
-    // A possible outcome of this program may be:
+    // Bu programın olası bir sonucu olabilir:
     // > Enter the array size: 10
     // > sizeof array = 40
 
@@ -151,8 +151,8 @@ int main() {
     printf("%d\n", a_string[16]); // => 0
     // i.e., byte #17 is 0 (as are 18, 19, and 20)
 
-    // If we have characters between single quotes, that's a character literal.
-    // It's of type `int`, and *not* `char` (for historical reasons).
+    // Tek tirnak arasinda karakterlere sahipsek, bu karakterler degismezdir.
+    // Tip `int` ise, `char` *degildir* (tarihsel sebeplerle).
     int cha = 'a'; // fine
     char chb = 'a'; // fine too (implicit conversion from int to char)
 
@@ -201,10 +201,10 @@ int main() {
     0x01 << 1; // => 0x02 (bitwise left shift (by 1))
     0x02 >> 1; // => 0x01 (bitwise right shift (by 1))
 
-    // Be careful when shifting signed integers - the following are undefined:
-    // - shifting into the sign bit of a signed integer (int a = 1 << 32)
-    // - left-shifting a negative number (int a = -1 << 2)
-    // - shifting by an offset which is >= the width of the type of the LHS:
+    // Isaretli sayilari kaydirirken dikkatli olun - tanimsizlar sunlardir:
+    // - isaretli sayinin isaret bitinde yap�ilan kaydirma (int a = 1 << 32)
+    // - negatif sayilarda sol kaydirma (int a = -1 << 2)
+    // - LHS tipinde >= ile olan ofset genisletmelerde yapilan kaydirma:
     //   int a = 1 << 32; // UB if int is 32 bits wide
 
     ///////////////////////////////////////

@@ -30,7 +30,7 @@ null_Wert: null
 Schlüssel mit Leerzeichen: value
 # Strings müssen nicht immer mit Anführungszeichen umgeben sein, können aber:
 jedoch: "Ein String in Anführungzeichen"
-"Ein Schlüssel in Anführungszeichen": "Nützlich, wenn du einen Doppelpunkt im Schluessel haben willst."
+"Ein Schlüssel in Anführungszeichen": "Nützlich, wenn du einen Doppelpunkt im Schlüssel haben willst."
 
 # Mehrzeilige Strings schreibst du am besten als 'literal block' (| gefolgt vom Text)
 # oder ein 'folded block' (> gefolgt vom text).
@@ -64,7 +64,7 @@ eine_verschachtelte_map:
         hallo: hallo
 
 # Schlüssel müssen nicht immer String sein.
-0.25: ein Float-Wert als Schluessel
+0.25: ein Float-Wert als Schlüssel
 
 # Schlüssel können auch mehrzeilig sein, ? symbolisiert den Anfang des Schlüssels
 ? |

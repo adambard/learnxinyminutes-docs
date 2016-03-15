@@ -9,7 +9,7 @@ filename: LearnJavaRu.java
 lang: ru-ru
 ---
 
-Java - это объектно ориентированный язык программирования общего назначения,
+Java - это объектно-ориентированный язык программирования общего назначения,
 основанный на классах и поддерживающий параллельное программирование.
 [Подробнее читайте здесь.](http://docs.oracle.com/javase/tutorial/java/index.html)
 
@@ -43,17 +43,41 @@ public class LearnJavaRu {
             " Double: " + 3.14 +
             " Boolean: " + true);
 
-        // Чтобы напечатать что-либо не заканчивая переводом строки
-        // используется System.out.print.
+        // Чтобы печатать что-либо, не заканчивая переводом строки,
+        // используйте System.out.print.
         System.out.print("Hello ");
         System.out.print("World");
 
+        // Используйте System.out.printf() для печати с форматированием
+        System.out.printf("pi = %.5f", Math.PI); // => pi = 3.14159
 
         ///////////////////////////////////////
-        // Типы и Переменные
+        // Переменные
         ///////////////////////////////////////
 
+        /*
+        *  Объявление переменных
+        */
         // Переменные объявляются с использованием <тип> <имя>
+        int fooInt;
+        // Одновременное объявление нескольких переменных одного типа
+        // <type> <name1>, <name2>, <name3>
+        int fooInt1, fooInt2, fooInt3;
+
+        /*
+        *  Инициализация переменных
+        */
+
+        // объявление и инициализация переменной <type> <name> = <val>
+        int fooInt = 1;
+        int fooInt1, fooInt2, fooInt3;
+        // инициализация нескольких переменных одного типа
+        // <type> <name1>, <name2>, <name3> = <val>
+        fooInt1 = fooInt2 = fooInt3 = 1;
+
+        /*
+        *  Типы переменных
+        */
         // Byte - 8-битное целое число.
         // (-128 <= byte <= 127)
         byte fooByte = 100;
@@ -247,7 +271,7 @@ public class LearnJavaRu {
         // Switch Case
         // switch работает с типами byte, short, char и int.
         // Также он работает с перечислениями,
-        // классом String и с некоторыми классами-обертками над
+        // классом String (с Java 7) и с некоторыми классами-обертками над
         // примитивными типами: Character, Byte, Short и Integer.
         int month = 3;
         String monthString;
@@ -319,7 +343,7 @@ public class LearnJavaRu {
         System.out.println("trek info: " + trek.toString());
 
     } // Конец метода main.
-} // Конец класса LearnJava.
+} // Конец класса LearnJavaRu.
 
 
 // Вы можете включать другие, не публичные классы в .java файл.
@@ -362,7 +386,7 @@ class Bicycle {
     // Классы в Java часто реализуют сеттеры и геттеры для своих полей.
 
     // Синтаксис определения метода:
-    // <модификатор> <тип возвращаемого значения> <имя>(<аргументы>)
+    // <модификатор доступа> <тип возвращаемого значения> <имя метода>(<аргументы>)
     public int getCadence() {
         return cadence;
     }
@@ -424,10 +448,10 @@ class PennyFarthing extends Bicycle {
 
 // Интерфейсы
 // Синтаксис определения интерфейса: 
-// <модификатор доступа> interface <имя> extends <базовый интерфейс> {
-//        // Константы
-//        // Определение методов.
-//}
+// <модификатор доступа> interface <имя интерфейса> extends <базовый интерфейс> {
+//     // Константы
+//     // Определение методов
+// }
 
 // Пример - Еда:
 public interface Edible {
@@ -451,7 +475,7 @@ public class Fruit implements Edible, Digestible {
     }
 }
 
-// В Java Вы можете наследоватьтолько один класс, однако можете реализовывать
+// В Java Вы можете наследовать только один класс, однако можете реализовывать
 // несколько интерфейсов. Например:
 public class ExampleClass extends ExampleClassParent implements InterfaceOne, InterfaceTwo {
     public void InterfaceOneMethod() {
