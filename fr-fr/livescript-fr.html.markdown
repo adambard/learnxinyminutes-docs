@@ -4,7 +4,7 @@ filename: learnLivescript-fr.ls
 contributors:
     - ["Christina Whyte", "http://github.com/kurisuwhyte/"]
 translators:
-    - ["Morgan Bohn", "https://github.com/morganbohn"]
+    - ["Morgan Bohn", "https://github.com/dotmobo"]
 lang: fr-fr
 ---
 
