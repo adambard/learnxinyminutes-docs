@@ -8,20 +8,22 @@ contributors:
 filename: learnpython.py
 ---
 
-Python was created by Guido Van Rossum in the early 90s. It is now one of the most popular
-languages in existence. I fell in love with Python for its syntactic clarity. It's basically
-executable pseudocode.
+Python was created by Guido Van Rossum in the early 90s. It is now one of the 
+most popular languages in existence. I fell in love with Python for its 
+syntactic clarity. It's basically executable pseudocode.
 
-Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
+Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) 
+or louiedinh [at] [google's email service]
 
 Note: This article applies to Python 2.7 specifically, but should be applicable
-to Python 2.x. Python 2.7 is reaching end of life and will stop being maintained in 2020,
-it is though recommended to start learning Python with Python 3.
-For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
+to Python 2.x. Python 2.7 is reaching end of life and will stop being 
+maintained in 2020, it is though recommended to start learning Python with
+Python 3. For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
 
-It is also possible to write Python code which is compatible with Python 2.7 and 3.x at the same time,
-using Python [`__future__` imports](https://docs.python.org/2/library/__future__.html). `__future__` imports
-allow you to write Python 3 code that will run on Python 2, so check out the Python 3 tutorial.
+It is also possible to write Python code which is compatible with Python 2.7
+and 3.x at the same time, using Python [`__future__` imports](https://docs.python.org/2/library/__future__.html). `__future__` imports
+allow you to write Python 3 code that will run on Python 2, so check out the
+Python 3 tutorial.
 
 ```python
 
@@ -372,7 +374,6 @@ elif some_var < 10:    # This elif clause is optional.
 else:           # This is optional too.
     print "some_var is indeed 10."
 
-
 """
 For loops iterate over lists
 prints:
@@ -409,6 +410,7 @@ for i in range(4, 8):
     print i
 
 """
+
 While loops go until a condition is no longer met.
 prints:
     0
@@ -441,6 +443,7 @@ with open("myfile.txt") as f:
     for line in f:
         print line
 
+
 ####################################################
 ## 4. Functions
 ####################################################
@@ -456,14 +459,12 @@ add(5, 6)   # => prints out "x is 5 and y is 6" and returns 11
 # Another way to call functions is with keyword arguments
 add(y=6, x=5)   # Keyword arguments can arrive in any order.
 
-
 # You can define functions that take a variable number of
 # positional args, which will be interpreted as a tuple by using *
 def varargs(*args):
     return args
 
 varargs(1, 2, 3)   # => (1, 2, 3)
-
 
 # You can define functions that take a variable number of
 # keyword args, as well, which will be interpreted as a dict by using **
@@ -472,7 +473,6 @@ def keyword_args(**kwargs):
 
 # Let's call it to see what happens
 keyword_args(big="foot", loch="ness")   # => {"big": "foot", "loch": "ness"}
-
 
 # You can do both at once, if you like
 def all_the_args(*args, **kwargs):
@@ -539,7 +539,6 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 [add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]   # => [6, 7]
 
-
 ####################################################
 ## 5. Classes
 ####################################################
@@ -560,7 +559,6 @@ class Human(object):
 
         # Initialize property
         self.age = 0
-
 
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
@@ -594,7 +592,6 @@ class Human(object):
     def age(self):
         del self._age
 
-
 # Instantiate a class
 i = Human(name="Ian")
 print i.say("hi")     # prints out "Ian: hi"
@@ -622,7 +619,6 @@ i.age # => 42
 # Delete the property
 del i.age
 i.age  # => raises an AttributeError
-
 
 ####################################################
 ## 6. Modules
@@ -663,7 +659,6 @@ dir(math)
 # This happens because the local folder has priority
 # over Python's built-in libraries. 
 
-
 ####################################################
 ## 7. Advanced
 ####################################################
@@ -691,13 +686,11 @@ for i in double_numbers(xrange_):
     if i >= 30:
         break
 
-
 # Decorators
 # in this example beg wraps say
 # Beg will call say. If say_please is True then it will change the returned
 # message
 from functools import wraps
-
 
 def beg(target_function):
     @wraps(target_function)
@@ -708,7 +701,6 @@ def beg(target_function):
         return msg
 
     return wrapper
-
 
 @beg
 def say(say_please=False):
