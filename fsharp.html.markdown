@@ -346,7 +346,7 @@ module DataTypeExamples =
     let trySendEmail email =
         match email with // use pattern matching
         | ValidEmailAddress address -> ()   // send
-        | InvalidEmailAddress address -> () // dont send
+        | InvalidEmailAddress address -> () // don't send
 
     // The combination of union types and record types together
     // provide a great foundation for domain driven design.
@@ -426,7 +426,7 @@ module ActivePatternExamples =
     // -----------------------------------
 
     // You can create partial matching patterns as well
-    // Just use underscore in the defintion, and return Some if matched.
+    // Just use underscore in the definition, and return Some if matched.
     let (|MultOf3|_|) i = if i % 3 = 0 then Some MultOf3 else None
     let (|MultOf5|_|) i = if i % 5 = 0 then Some MultOf5 else None
 
@@ -627,7 +627,3 @@ module NetCompatibilityExamples =
 For more demonstrations of F#, go to the [Try F#](http://www.tryfsharp.org/Learn) site, or my [why use F#](http://fsharpforfunandprofit.com/why-use-fsharp/) series.
 
 Read more about F# at [fsharp.org](http://fsharp.org/).
-
-
-
-
