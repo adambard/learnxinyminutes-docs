@@ -3,6 +3,7 @@ language: D
 filename: learnd-de.d 
 contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]
+translators:
     - ["Dominik Süß", "www.thesuess.me"]
 lang: de-de
 ---
@@ -22,7 +23,7 @@ void main(string[] args) {
 Wenn du so wie ich bist und viel zeit im Internet verbringst stehen die Chancen gut
 das du schonmal über [D](http://dlang.org/) gehört hast.
 Die D-Sprache ist eine moderne, überall einsetzbare programmiersprache die von Low bis
-High Level verwendet werden kann und dabei viele stile anbietet.
+High Level verwendet werden kann und dabei viele Stile anbietet.
 
 D wird aktiv von Walter Bright und Andrei Alexandrescu entwickelt, zwei super schlaue,
 richtig coole leute. Da das jetzt alles aus dem weg ist - auf zu den Beispielen!
@@ -128,8 +129,8 @@ auto mat = new Matrix!(3, 3); // Standardmäßig ist T vom typ Integer
 ```
 
 Wo wir schon bei Klassen sind - Wie wäre es mit Properties! Eine Property
-ist eine Funktion die wie ein Wert agiert. Das gibt uns viel klarere syntax
-im stil von `structure.x = 7` was gleichgültig wäre zu `structure.setX(7)`
+ist eine Funktion die wie ein Wert agiert. Das gibt uns viel klarere Syntax
+im Stil von `structure.x = 7` was gleichgültig wäre zu `structure.setX(7)`
 
 ```c
 // Diese Klasse ist parameterisiert mit T, U
