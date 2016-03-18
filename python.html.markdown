@@ -8,20 +8,22 @@ contributors:
 filename: learnpython.py
 ---
 
-Python was created by Guido Van Rossum in the early 90s. It is now one of the most popular
-languages in existence. I fell in love with Python for its syntactic clarity. It's basically
-executable pseudocode.
+Python was created by Guido Van Rossum in the early 90s. It is now one of the 
+most popular languages in existence. I fell in love with Python for its 
+syntactic clarity. It's basically executable pseudocode.
 
-Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
+Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) 
+or louiedinh [at] [google's email service]
 
-Note: This article applies to Python 2.7 specifically, but should be applicable
-to Python 2.x. Python 2.7 is reaching end of life and will stop being maintained in 2020,
-it is though recommended to start learning Python with Python 3.
-For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
+Note: This article applies to Python 2.7 specifically, but should be applicable 
+to Python 2.x. Python 2.7 is reaching end of life and will stop being 
+maintained in 2020, it is though recommended to start learning Python with 
+Python 3. For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
 
-It is also possible to write Python code which is compatible with Python 2.7 and 3.x at the same time,
-using Python [`__future__` imports](https://docs.python.org/2/library/__future__.html). `__future__` imports
-allow you to write Python 3 code that will run on Python 2, so check out the Python 3 tutorial.
+It is also possible to write Python code which is compatible with Python 2.7 
+and 3.x at the same time, using Python [`__future__` imports](https://docs.python.org/2/library/__future__.html). `__future__` imports
+allow you to write Python 3 code that will run on Python 2, so check out the 
+Python 3 tutorial.
 
 ```python
 
@@ -31,6 +33,7 @@ allow you to write Python 3 code that will run on Python 2, so check out the Pyt
     using three "s, and are often used
     as comments
 """
+
 
 ####################################################
 ## 1. Primitive Datatypes and Operators
@@ -187,6 +190,7 @@ some_other_var  # Raises a name error
 # if can be used as an expression
 # Equivalent of C's '?:' ternary operator
 "yahoo!" if 3 > 2 else 2  # => "yahoo!"
+
 
 # Lists store sequences
 li = []
@@ -441,6 +445,7 @@ with open("myfile.txt") as f:
     for line in f:
         print line
 
+
 ####################################################
 ## 4. Functions
 ####################################################
@@ -463,7 +468,6 @@ def varargs(*args):
     return args
 
 varargs(1, 2, 3)   # => (1, 2, 3)
-
 
 # You can define functions that take a variable number of
 # keyword args, as well, which will be interpreted as a dict by using **
@@ -698,7 +702,6 @@ for i in double_numbers(xrange_):
 # message
 from functools import wraps
 
-
 def beg(target_function):
     @wraps(target_function)
     def wrapper(*args, **kwargs):
@@ -709,12 +712,10 @@ def beg(target_function):
 
     return wrapper
 
-
 @beg
 def say(say_please=False):
     msg = "Can you buy me a beer?"
     return msg, say_please
-
 
 print say()  # Can you buy me a beer?
 print say(say_please=True)  # Can you buy me a beer? Please! I am poor :(
