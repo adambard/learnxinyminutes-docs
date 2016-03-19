@@ -317,5 +317,6 @@ object ObjectExample {
 
 ### Further Reading
 
-A web-based mini-IDE for Kotlin:
-[http://try.kotlinlang.org/)
+* [Kotlin tutorials](https://kotlinlang.org/docs/tutorials/)
+* [Try Kotlin in your browser](http://try.kotlinlang.org/)
+* [A list of Kotlin resources](http://kotlin.link/)
