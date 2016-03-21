@@ -824,7 +824,7 @@ say why-not[^5]; #=> 5 15 25 35 45
 # (they exist in other langages such as C as `static`)
 sub fixed-rand {
   state $val = rand;
-  say $rand;
+  say $val;
 }
 fixed-rand for ^10; # will print the same number 10 times
 
