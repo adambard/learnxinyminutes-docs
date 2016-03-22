@@ -143,9 +143,9 @@ int main (int argc, char** argv)
   // can be declared as well. The size of such an array need not be a compile
   // time constant:
   printf("Enter the array size: "); // ask the user for an array size
-  int size;
-  fscanf(stdin, "%d", &size);
-  int var_length_array[size]; // declare the VLA
+  int array_size;
+  fscanf(stdin, "%d", &array_size);
+  int var_length_array[array_size]; // declare the VLA
   printf("sizeof array = %zu\n", sizeof var_length_array);
 
   // Example:
