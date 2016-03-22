@@ -133,7 +133,7 @@ fun helloWorld(val name : String) {
     The name of the single parameter will be "it".
     */
     val notPositive = not {it > 0}
-    for (i in (0..4)) {
+    for (i in 0..4) {
         println("${notOdd(i)} ${notEven(i)} ${notZero(i)} ${notPositive(i)}")
     }
 
@@ -317,5 +317,6 @@ object ObjectExample {
 
 ### Further Reading
 
-A web-based mini-IDE for Kotlin:
-[http://try.kotlinlang.org/)
+* [Kotlin tutorials](https://kotlinlang.org/docs/tutorials/)
+* [Try Kotlin in your browser](http://try.kotlinlang.org/)
+* [A list of Kotlin resources](http://kotlin.link/)

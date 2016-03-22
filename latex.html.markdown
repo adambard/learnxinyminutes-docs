@@ -178,7 +178,7 @@ We can also insert Tables in the same way as figures.
   % the {} arguments below describe how each row of the table is drawn.
   % Again, I have to look these up. Each. And. Every. Time.
   \begin{tabular}{c|cc} 
-    Number &  Last Name & First Name \\ % Column rows are separated by $
+    Number &  Last Name & First Name \\ % Column rows are separated by &
     \hline % a horizontal line
     1 & Biggus & Dickus \\
     2 & Monty & Python
