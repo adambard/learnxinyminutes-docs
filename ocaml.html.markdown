@@ -216,7 +216,7 @@ List.nth my_list 1 ;;
 
 (* There are higher-order functions for lists such as map and filter. *)
 List.map (fun x -> x * 2) [1; 2; 3] ;;
-List.filter (fun x -> if x mod 2 = 0 then true else false) [1; 2; 3; 4] ;;
+List.filter (fun x -> x mod 2 = 0) [1; 2; 3; 4] ;;
 
 (* You can add an item to the beginning of a list with the "::" constructor
    often referred to as "cons". *)
