@@ -215,7 +215,7 @@ fun helloWorld(val name : String) {
 
     /*
     Sequences represent lazily-evaluated collections.
-    We can create a sequence using the "sequenceOf" function.
+    We can create a sequence using the "generateSequence" function.
     */
     val fooSequence = generateSequence(1, {it + 1})
     val x = fooSequence.take(10).toList()
