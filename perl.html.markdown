@@ -5,6 +5,7 @@ language: perl
 filename: learnperl.pl
 contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]
+    - ["Dan Book", "http://github.com/Grinnz"]
 ---
 
 Perl 5 is a highly capable, feature-rich programming language with over 25 years of development.
@@ -14,6 +15,15 @@ Perl 5 runs on over 100 platforms from portables to mainframes and is suitable f
 ```perl
 # Single line comments start with a number sign.
 
+#### Strict and warnings
+
+use strict;
+use warnings;
+
+# All perl scripts and modules should include these lines. Strict causes
+# compilation to fail in cases like misspelled variable names, and warnings
+# will print warning messages in case of common pitfalls like concatenating
+# to an undefined value.
 
 #### Perl variable types
 
@@ -37,7 +47,9 @@ my @animals = ("camel", "llama", "owl");
 my @numbers = (23, 42, 69);
 my @mixed   = ("camel", 42, 1.23);
 
-
+# Array elements are accessed using square brackets, with a $ to indicate
+# one value will be returned.
+my $second = $animals[1];
 
 ## Hashes
 #   A hash represents a set of key/value pairs:
@@ -50,11 +62,39 @@ my %fruit_color = (
   apple  => "red",
   banana => "yellow",
 );
+
+# Hash elements are accessed using curly braces, again with the $ sigil.
+my $color = $fruit_color{apple};
+
 # Scalars, arrays and hashes are documented more fully in perldata.
 # (perldoc perldata).
 
-# More complex data types can be constructed using references, which allow you
-# to build lists and hashes within lists and hashes.
+#### References
+
+# More complex data types can be constructed using references, which allow
+# you to build arrays and hashes within arrays and hashes.
+
+my $array_ref = \@array;
+my $hash_ref = \%hash;
+my @array_of_arrays = (\@array1, \@array2, \@array3);
+
+# You can also create anonymous arrays or hashes, returning a reference:
+
+my $fruits = ["apple", "banana"];
+my $colors = {apple => "red", banana => "yellow"};
+
+# References can be dereferenced by prefixing the appropriate sigil.
+
+my @fruits_array = @$fruits;
+my %colors_hash = %$colors;
+
+# As a shortcut, the arrow operator can be used to dereference and access a
+# single value.
+
+my $first = $array_ref->[0];
+my $value = $hash_ref->{banana};
+
+# See perlreftut and perlref for more in-depth documentation on references.
 
 #### Conditional and looping constructs
 
@@ -105,6 +145,9 @@ for (@elements) {
 # the Perlish post-condition way again
 print for @elements;
 
+# iterating through the keys and values of a referenced hash
+print $hash_ref->{$_} for keys %$hash_ref;
+
 #### Regular expressions
 
 # Perl's regular expression support is both broad and deep, and is the subject
@@ -151,11 +194,101 @@ sub logger {
 # Now we can use the subroutine just as any other built-in function:
 
 logger("We have a logger subroutine!");
+
+#### Modules
+
+# A module is a set of Perl code, usually subroutines, which can be used in
+# other Perl code. It is usually stored in a file with the extension .pm so
+# that Perl can find it.
+
+package MyModule;
+use strict;
+use warnings;
+
+sub trim {
+  my $string = shift;
+  $string =~ s/^\s+//;
+  $string =~ s/\s+$//;
+  return $string;
+}
+
+1;
+
+# From elsewhere:
+
+use MyModule;
+MyModule::trim($string);
+
+# The Exporter module can help with making subroutines exportable, so they
+# can be used like this:
+
+use MyModule 'trim';
+trim($string);
+
+# Many Perl modules can be downloaded from CPAN (http://www.cpan.org/) and
+# provide a range of features to help you avoid reinventing the wheel.  A
+# number of popular modules like Exporter are included with the Perl
+# distribution itself. See perlmod for more details on modules in Perl.
+
+#### Objects
+
+# Objects in Perl are just references that know which class (package) they
+# belong to, so that methods (subroutines) called on it can be found there.
+# The bless function is used in constructors (usually new) to set this up.
+# However, you never need to call it yourself if you use a module like Moose
+# or Moo (see below).
+
+package MyCounter;
+use strict;
+use warnings;
+
+sub new {
+  my $class = shift;
+  my $self = {count => 0};
+  return bless $self, $class;
+}
+
+sub count {
+  my $self = shift;
+  return $self->{count};
+}
+
+sub increment {
+  my $self = shift;
+  $self->{count}++;
+}
+
+1;
+
+# Methods can be called on a class or object instance with the arrow operator.
+
+use MyCounter;
+my $counter = MyCounter->new;
+print $counter->count, "\n"; # 0
+$counter->increment;
+print $counter->count, "\n"; # 1
+
+# The modules Moose and Moo from CPAN can help you set up your object classes.
+# They provide a constructor and simple syntax for declaring attributes. This
+# class can be used equivalently to the one above.
+
+package MyCounter;
+use Moo; # imports strict and warnings
+
+has 'count' => (is => 'rwp', default => 0, init_arg => undef);
+
+sub increment {
+  my $self = shift;
+  $self->_set_count($self->count + 1);
+}
+
+1;
+
+# Object-oriented programming is covered more thoroughly in perlootut, and its
+# low-level implementation in Perl is covered in perlobj.
 ```
 
-#### Using Perl modules
-
-Perl modules provide a range of features to help you avoid reinventing the wheel, and can be downloaded from CPAN (http://www.cpan.org/).  A number of popular modules are included with the Perl distribution itself.
+#### FAQ
 
 perlfaq contains questions and answers related to many common tasks, and often provides suggestions for good CPAN modules to use.
 

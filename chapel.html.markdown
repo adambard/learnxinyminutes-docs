@@ -629,7 +629,7 @@ for (i, j) in zip( toThisArray.domain, -100..#5 ){
 }
 writeln( toThisArray );
 
-// This is all very important in undestanding why the statement
+// This is all very important in understanding why the statement
 // var iterArray : [1..10] int = [ i in 1..10 ] if ( i % 2 == 1 ) then j;
 // exhibits a runtime error.
 // Even though the domain of the array and the loop-expression are
@@ -914,7 +914,7 @@ proc main(){
   [ val in myBigArray ] val = 1 / val; // Parallel operation
 
   // Atomic variables, common to many languages, are ones whose operations
-  // occur uninterupted. Multiple threads can both modify atomic variables
+  // occur uninterrupted. Multiple threads can both modify atomic variables
   // and can know that their values are safe.
   // Chapel atomic variables can be of type bool, int, uint, and real.
   var uranium: atomic int;
@@ -1066,7 +1066,7 @@ The more information you give the Chapel development team about issues you encou
 Feel free to email the team and other developers through the [sourceforge email lists](https://sourceforge.net/p/chapel/mailman).
 
 If you're really interested in the development of the compiler or contributing to the project,
-[check out the master Github repository](https://github.com/chapel-lang/chapel).
+[check out the master GitHub repository](https://github.com/chapel-lang/chapel).
 It is under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0).
 
 Installing the Compiler

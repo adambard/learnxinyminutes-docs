@@ -7,19 +7,26 @@ contributors:
     - ["Connor Shea", "https://github.com/connorshea"]
     - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
     - ["Brett Taylor", "https://github.com/glutnix"]
+    - ["Tyler Mumford", "https://tylermumford.com"]
 filename: learncss.css
 ---
 
-In the early days of the web there were no visual elements, just pure text. But with further development of web browsers, fully visual web pages also became common.
+Web pages are built with HTML, which specifies the content of a page.
+CSS (Cascading Style Sheets) is a separate language which specifies
+a page's **appearance**.
 
-CSS helps maintain separation between the content (HTML) and the look-and-feel of a web page.
+CSS code is made of static *rules*. Each rule takes one or more *selectors* and
+gives specific *values* to a number of visual *properties*. Those properties are
+then applied to the page elements indicated by the selectors.
 
-CSS lets you target different elements on an HTML page and assign different visual properties to them.
+This guide has been written with CSS 2 in mind, which is extended by the new
+features of CSS 3.
 
-This guide has been written for CSS 2, though CSS 3 is fast becoming popular.
-
-**NOTE:** Because CSS produces visual results, in order to learn it, you need try everything in a CSS playground like [dabblet](http://dabblet.com/).
+**NOTE:** Because CSS produces visual results, in order to learn it, you need to
+try everything in a CSS playground like [dabblet](http://dabblet.com/).
 The main focus of this article is on the syntax and some general tips.
+
+## Syntax
 
 ```css
 /* comments appear inside slash-asterisk, just like this line!
@@ -29,7 +36,7 @@ The main focus of this article is on the syntax and some general tips.
    ## SELECTORS
    #################### */
 
-/* the selector is used to target an element on a page.
+/* the selector is used to target an element on a page. */
 selector { property: value; /* more properties...*/ }
 
 /*
@@ -66,11 +73,11 @@ div { }
 [otherAttr~='foo'] { }
 [otherAttr~='bar'] { }
 
-/* or contains a value in a dash-separated list, ie, "-" (U+002D) */
+/* or contains a value in a dash-separated list, e.g., "-" (U+002D) */
 [otherAttr|='en'] { font-size:smaller; }
 
 
-/* You can concatenate different selectors to create a narrower selector. Don't
+/* You can combine different selectors to create a more focused selector. Don't
    put spaces between them. */
 div.some-class[attr$='ue'] { }
 
@@ -93,7 +100,7 @@ div.some-parent.class-name { }
 .i-am-any-element-before ~ .this-element { }
 
 /* There are some selectors called pseudo classes that can be used to select an
-   element when it is in a particular state */
+   element only when it is in a particular state */
 
 /* for example, when the cursor hovers over an element */
 selector:hover { }
@@ -104,7 +111,7 @@ selector:visited { }
 /* or hasn't been visited */
 selected:link { }
 
-/* or an element in focus */
+/* or an element is in focus */
 selected:focus { }
 
 /* any element that is the first child of its parent */
@@ -113,7 +120,8 @@ selector:first-child {}
 /* any element that is the last child of its parent */
 selector:last-child {}
 
-/* Just like pseudo classes, pseudo elements allow you to style certain parts of a document  */
+/* Just like pseudo classes, pseudo elements allow you to style certain parts of
+    a document  */
 
 /* matches a virtual first child of the selected element */
 selector::before {}
@@ -157,10 +165,10 @@ selector {
     color: tomato;               /* a named color */
     color: rgb(255, 255, 255);   /* as rgb values */
     color: rgb(10%, 20%, 50%);   /* as rgb percentages */
-    color: rgba(255, 0, 0, 0.3); /* as rgba values (CSS 3) Note: 0 < a < 1 */
+    color: rgba(255, 0, 0, 0.3); /* as rgba values (CSS 3) Note: 0 <= a <= 1 */
     color: transparent;          /* equivalent to setting the alpha to 0 */
     color: hsl(0, 100%, 50%);    /* as hsl percentages (CSS 3) */
-    color: hsla(0, 100%, 50%, 0.3); /* as hsla percentages with alpha */
+    color: hsla(0, 100%, 50%, 0.3); /* as hsl percentages with alpha */
 
     /* Images as backgrounds of elements */
     background-image: url(/img-path/img.jpg); /* quotes inside url() optional */
@@ -195,7 +203,13 @@ Save a CSS stylesheet with the extension `.css`.
 
 ## Precedence or Cascade
 
-An element may be targeted by multiple selectors and may have a property set on it in more than once. In these cases, one of the rules takes precedence over others. Generally, a rule in a more specific selector take precedence over a less specific one, and a rule occuring later in the stylesheet overwrites a previous one.
+An element may be targeted by multiple selectors and may have a property set on
+it in more than once. In these cases, one of the rules takes precedence over
+others. Rules with a more specific selector take precedence over a less specific
+one, and a rule occurring later in the stylesheet overwrites a previous one
+(which also means that if two different linked stylesheets contain rules for an
+element and if the rules are of the same specificity, then order of linking
+would take precedence and the sheet linked latest would govern styling) .
 
 This process is called cascading, hence the name Cascading Style Sheets.
 
@@ -224,12 +238,17 @@ and the following markup:
 <p style='/*F*/ property:value;' class='class1 class2' attr='value'>
 ```
 
-The precedence of style is as follows. Remember, the precedence is for each **property**, not for the entire block.
+The precedence of style is as follows. Remember, the precedence is for each
+**property**, not for the entire block.
 
-* `E` has the highest precedence because of the keyword `!important`. It is recommended that you avoid its usage.
+* `E` has the highest precedence because of the keyword `!important`. It is
+recommended that you avoid its usage.
 * `F` is next, because it is an inline style.
-* `A` is next, because it is more "specific" than anything else. It has 3 specifiers: The name of the element `p`, its class `class1`, an attribute `attr='value'`.
-* `C` is next, even though it has the same specificity as `B`. This is because it appears after `B`.
+* `A` is next, because it is more "specific" than anything else. It has 3
+    specifiers: The name of the element `p`, its class `class1`, an attribute
+    `attr='value'`.
+* `C` is next, even though it has the same specificity as `B`.
+    This is because it appears after `B`.
 * `B` is next.
 * `D` is the last one.
 
@@ -277,14 +296,16 @@ Many smartphones and tablets will attempt to render the page as if it were on a 
 
 ## Compatibility
 
-Most of the features in CSS 2 (and many in CSS 3) are available across all browsers and devices. But it's always good practice to check before using a new feature.
+Most of the features in CSS 2 (and many in CSS 3) are available across all
+browsers and devices. But it's always good practice to check before using
+a new feature.
 
 ## Resources
 
-* [Can I Use](http://caniuse.com) for browser feature support and browser usage statistics
-* CSS Playground [Dabblet](http://dabblet.com/).
-* [Mozilla Developer Network's CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* [Codrops' CSS Reference](http://tympanus.net/codrops/css_reference/)
+* [CanIUse](http://caniuse.com) (Detailed compatibility info)
+* [Dabblet](http://dabblet.com/) (CSS playground)
+* [Mozilla Developer Network's CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS) (Tutorials and reference)
+* [Codrops' CSS Reference](http://tympanus.net/codrops/css_reference/) (Reference)
 
 ## Further Reading
 

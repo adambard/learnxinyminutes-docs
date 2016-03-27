@@ -37,7 +37,7 @@ Feedback highly appreciated! Reach me at [@jigyasa_grover](https://twitter.com/j
 
 `"Comments are enclosed in quotes"`
 
-`"Period (.) is the statement seperator"`
+`"Period (.) is the statement separator"`
 
 ## Transcript:
 ```
@@ -305,7 +305,7 @@ result := (switch at: $B) value.
 x := 4. y := 1.
 [x > 0] whileTrue: [x := x - 1. y := y * 2].                "while true loop"
 [x >= 4] whileFalse: [x := x + 1. y := y * 2].              "while false loop"
-x timesRepeat: [y := y * 2].                                "times repear loop (i := 1 to x)"
+x timesRepeat: [y := y * 2].                                "times repeat loop (i := 1 to x)"
 1 to: x do: [:a | y := y * 2].                              "for loop"
 1 to: x by: 2 do: [:a | y := y / 2].                        "for loop with specified increment"
 #(5 4 3) do: [:a | x := x + a].                             "iterate over array elements"
@@ -320,7 +320,7 @@ y := x isUppercase.                                         "test if upper case"
 y := x isLetter.                                            "test if letter"
 y := x isDigit.                                             "test if digit"
 y := x isAlphaNumeric.                                      "test if alphanumeric"
-y := x isSeparator.                                         "test if seperator char"
+y := x isSeparator.                                         "test if separator char"
 y := x isVowel.                                             "test if vowel"
 y := x digitValue.                                          "convert to numeric digit value"
 y := x asLowercase.                                         "convert to lower case"

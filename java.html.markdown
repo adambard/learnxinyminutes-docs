@@ -17,9 +17,11 @@ programming language.
 
 ```java
 // Single-line comments start with //
+
 /*
 Multi-line comments look like this.
 */
+
 /**
 JavaDoc comments look like this. Used to describe the Class or various
 attributes of a Class.
@@ -30,11 +32,12 @@ import java.util.ArrayList;
 // Import all classes inside of java.security package
 import java.security.*;
 
-// Each .java file contains one outer-level public class, with the same name as
-// the file.
+// Each .java file contains one outer-level public class, with the same name
+// as the file.
 public class LearnJava {
 
-    // In order to run a java program, it must have a main method as an entry point.
+    // In order to run a java program, it must have a main method as an entry 
+    // point.
     public static void main (String[] args) {
 
         // Use System.out.println() to print lines.
@@ -60,7 +63,8 @@ public class LearnJava {
         */
         // Declare a variable using <type> <name>
         int fooInt;
-        // Declare multiple variables of the same type <type> <name1>, <name2>, <name3>
+        // Declare multiple variables of the same 
+        // type <type> <name1>, <name2>, <name3>
         int fooInt1, fooInt2, fooInt3;
 
         /*
@@ -69,7 +73,8 @@ public class LearnJava {
 
         // Initialize a variable using <type> <name> = <val>
         int fooInt = 1;
-        // Initialize multiple variables of same type with same value <type> <name1>, <name2>, <name3> = <val>
+        // Initialize multiple variables of same type with same 
+        // value <type> <name1>, <name2>, <name3> = <val>
         int fooInt1, fooInt2, fooInt3;
         fooInt1 = fooInt2 = fooInt3 = 1;
 
@@ -119,17 +124,14 @@ public class LearnJava {
         final double E;
         E = 2.71828;
 
-
         // BigInteger - Immutable arbitrary-precision integers
         //
         // BigInteger is a data type that allows programmers to manipulate
         // integers longer than 64-bits. Integers are stored as an array of
         // of bytes and are manipulated using functions built into BigInteger
         //
-        // BigInteger can be initialized using an array of bytes or a string.
-        
-        BigInteger fooBigInteger = new BigDecimal(fooByteArray);
-
+        // BigInteger can be initialized using an array of bytes or a string.        
+        BigInteger fooBigInteger = new BigInteger(fooByteArray);
 
         // BigDecimal - Immutable, arbitrary-precision signed decimal number
         //
@@ -142,10 +144,12 @@ public class LearnJava {
         //
         // BigDecimal can be initialized with an int, long, double or String
         // or by initializing the unscaled value (BigInteger) and scale (int).
-
         BigDecimal fooBigDecimal = new BigDecimal(fooBigInteger, fooInt);
-
-
+        
+        // Be wary of the constructor that takes a float or double as
+        // the inaccuracy of the float/double will be copied in BigDecimal.
+        // Prefer the String constructor when you need an exact value.
+        BigDecimal tenCents = new BigDecimal("0.1");
 
         // Strings
         String fooString = "My String Is Here!";
@@ -170,7 +174,7 @@ public class LearnJava {
         // Another way to declare & initialize an array
         int[] y = {9000, 1000, 1337};
         String names[] = {"Bob", "John", "Fred", "Juan Pedro"};
-        boolean bools[] = new boolean[] {true, false, false};
+        boolean bools[] = {true, false, false};
 
         // Indexing an array - Accessing an element
         System.out.println("intArray @ 0: " + intArray[0]);
@@ -179,16 +183,16 @@ public class LearnJava {
         intArray[1] = 1;
         System.out.println("intArray @ 1: " + intArray[1]); // => 1
 
-        // Others to check out
+        // Other data types worth checking out
         // ArrayLists - Like arrays except more functionality is offered, and
         //              the size is mutable.
         // LinkedLists - Implementation of doubly-linked list. All of the
         //               operations perform as could be expected for a
         //               doubly-linked list.
         // Maps - A set of objects that map keys to values. Map is
-	//        an interface and therefore cannot be instantiated.
-	//        The type of keys and values contained in a Map must
-	//        be specified upon instantiation of the implementing
+        //        an interface and therefore cannot be instantiated.
+        //        The type of keys and values contained in a Map must
+        //        be specified upon instantiation of the implementing
         //        class. Each key may map to only one corresponding value,
         //        and each key may appear only once (no duplicates).
         // HashMaps - This class uses a hashtable to implement the Map
@@ -207,8 +211,8 @@ public class LearnJava {
         System.out.println("1+2 = " + (i1 + i2)); // => 3
         System.out.println("2-1 = " + (i2 - i1)); // => 1
         System.out.println("2*1 = " + (i2 * i1)); // => 2
-        System.out.println("1/2 = " + (i1 / i2)); // => 0 (0.5 truncated down)
-        System.out.println("1/2 = " + (i1 / (i2*1.0))); // => 0.5
+        System.out.println("1/2 = " + (i1 / i2)); // => 0 (int/int returns int)
+        System.out.println("1/2 = " + (i1 / (double)i2)); // => 0.5
 
         // Modulo
         System.out.println("11%3 = "+(11 % 3)); // => 2
@@ -237,7 +241,7 @@ public class LearnJava {
         |      Bitwise inclusive OR
         */
 
-        // Incrementations
+        // Increment operators
         int i = 0;
         System.out.println("\n->Inc/Dec-rementation");
         // The ++ and -- operators increment and decrement by 1 respectively.
@@ -309,7 +313,6 @@ public class LearnJava {
         // for each loop structure => for (<object> : <iterable>)
         // reads as: for each element in the iterable
         // note: the object type must match the element type of the iterable.
-
         for (int bar : fooList) {
             System.out.println(bar);
             //Iterates 9 times and prints 1-9 on new lines
@@ -359,7 +362,6 @@ public class LearnJava {
         String bar = (foo < 10) ? "A" : "B";
         System.out.println(bar); // Prints A, because the statement is true
 
-
         ////////////////////////////////////////
         // Converting Data Types And Typecasting
         ////////////////////////////////////////
@@ -382,7 +384,6 @@ public class LearnJava {
         // with some more intermediate concepts. Feel free to check it out here:
         // http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
 
-
         ///////////////////////////////////////
         // Classes And Functions
         ///////////////////////////////////////
@@ -404,7 +405,6 @@ public class LearnJava {
         // Double Brace Initialization
         // The Java Language has no syntax for how to create static Collections
         // in an easy way. Usually you end up in the following way:
-
         private static final Set<String> COUNTRIES = new HashSet<String>();
         static {
            validCodes.add("DENMARK");
@@ -415,8 +415,7 @@ public class LearnJava {
         // But there's a nifty way to achieve the same thing in an
         // easier way, by using something that is called Double Brace
         // Initialization.
-
-        private static final Set<String> COUNTRIES = HashSet<String>() {{
+        private static final Set<String> COUNTRIES = new HashSet<String>() {{
             add("DENMARK");
             add("SWEDEN");
             add("FINLAND");
@@ -431,10 +430,8 @@ public class LearnJava {
     } // End main method
 } // End LearnJava class
 
-
 // You can include other, non-public outer-level classes in a .java file,
-// but it is good practice. Instead split classes into separate files.
-
+// but it is not good practice. Instead split classes into separate files.
 
 // Class Declaration Syntax:
 // <public/private/protected> class <class name> {
@@ -449,6 +446,16 @@ class Bicycle {
     private int speed;  // Private: Only accessible from within the class
     protected int gear; // Protected: Accessible from the class and subclasses
     String name; // default: Only accessible from within this package
+    static String className; // Static class variable
+
+    // Static block 
+    // Java has no implementation of static constructors, but
+    // has a static block that can be used to initialize class variables 
+    // (static variables). 
+    // This block will be called when the class is loaded.
+    static {
+        className = "Bicycle";
+    }
 
     // Constructors are a way of creating classes
     // This is a constructor
@@ -460,7 +467,6 @@ class Bicycle {
         speed = 5;
         name = "Bontrager";
     }
-
     // This is a constructor that takes arguments
     public Bicycle(int startCadence, int startSpeed, int startGear,
         String name) {
@@ -485,23 +491,18 @@ class Bicycle {
     public void setCadence(int newValue) {
         cadence = newValue;
     }
-
     public void setGear(int newValue) {
         gear = newValue;
     }
-
     public void speedUp(int increment) {
         speed += increment;
     }
-
     public void slowDown(int decrement) {
         speed -= decrement;
     }
-
     public void setName(String newName) {
         name = newName;
     }
-
     public String getName() {
         return name;
     }
@@ -519,7 +520,7 @@ class PennyFarthing extends Bicycle {
     // (Penny Farthings are those bicycles with the big front wheel.
     // They have no gears.)
 
-    public PennyFarthing(int startCadence, int startSpeed){
+    public PennyFarthing(int startCadence, int startSpeed) {
         // Call the parent constructor with super
         super(startCadence, startSpeed, 0, "PennyFarthing");
     }
@@ -550,10 +551,8 @@ public interface Digestible {
     public void digest();
 }
 
-
 // We can now create a class that implements both of these interfaces.
-public class Fruit implements Edible, Digestible {
-  
+public class Fruit implements Edible, Digestible {  
     @Override
     public void eat() {
         // ...
@@ -569,7 +568,6 @@ public class Fruit implements Edible, Digestible {
 // interfaces. For example:
 public class ExampleClass extends ExampleClassParent implements InterfaceOne,
     InterfaceTwo {
-
     @Override
     public void InterfaceOneMethod() {
     }
@@ -588,14 +586,13 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 //     // Method declarations
 // }
 
-// Marking a class as abstract means that it contains abstract methods that must
-// be defined in a child class. Similar to interfaces, abstract classes cannot
-// be instantiated, but instead must be extended and the abstract methods
-// defined. Different from interfaces, abstract classes can contain a mixture of
+// Marking a class as abstract means that it contains abstract methods that
+// must be defined in a child class. Similar to interfaces, abstract classes
+// cannot be instantiated, but instead must be extended and the abstract
+// methods defined. Different from interfaces, abstract classes can contain a
 // concrete and abstract methods. Methods in an interface cannot have a body,
-// unless the method is static, and variables are final by default, unlike an
-// abstract class. Also abstract classes CAN have the "main" method.
-
+// mixture of unless the method is static, and variables are final by default,
+// unlike an abstract class. Also abstract classes CAN have the "main" method.
 public abstract class Animal
 {
     public abstract void makeSound();
@@ -640,7 +637,7 @@ class Dog extends Animal
     // @Override annotation here, since java doesn't allow
     // overriding of static methods.
     // What is happening here is called METHOD HIDING.
-    // Check out this awesome SO post: http://stackoverflow.com/questions/16313649/
+    // Check out this SO post: http://stackoverflow.com/questions/16313649/
     public static void main(String[] args)
     {
         Dog pluto = new Dog();
@@ -679,13 +676,66 @@ public abstract class Mammal()
     // Final Method Syntax:
     // <access modifier> final <return type> <function name>(<args>)
 
-    // Final methods, like, final classes cannot be overridden by a child class,
-    // and are therefore the final implementation of the method.
+    // Final methods, like, final classes cannot be overridden by a child
+    // class, and are therefore the final implementation of the method.
     public final boolean isWarmBlooded()
     {
         return true;
     }
 }
+
+// Enum Type
+//
+// An enum type is a special data type that enables for a variable to be a set
+// of predefined constants. The variable must be equal to one of the values
+// that have been predefined for it. Because they are constants, the names of
+// an enum type's fields are in uppercase letters. In the Java programming
+// language, you define an enum type by using the enum keyword. For example,
+// you would specify a days-of-the-week enum type as:
+public enum Day {
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
+    THURSDAY, FRIDAY, SATURDAY 
+}
+
+// We can use our enum Day like that:
+public class EnumTest {
+    // Variable Enum
+    Day day;
+    
+    public EnumTest(Day day) {
+        this.day = day;
+    }
+    
+    public void tellItLikeItIs() {
+        switch (day) {
+            case MONDAY:
+                System.out.println("Mondays are bad.");
+                break;
+            case FRIDAY:
+                System.out.println("Fridays are better.");
+                break;   
+            case SATURDAY: 
+            case SUNDAY:
+                System.out.println("Weekends are best.");
+                break;     
+            default:
+                System.out.println("Midweek days are so-so.");
+                break;
+        }
+    }
+    
+    public static void main(String[] args) {
+        EnumTest firstDay = new EnumTest(Day.MONDAY);
+        firstDay.tellItLikeItIs(); // => Mondays are bad.
+        EnumTest thirdDay = new EnumTest(Day.WEDNESDAY);
+        thirdDay.tellItLikeItIs(); // => Midweek days are so-so.
+    }
+}
+
+// Enum types are much more powerful than we show above. 
+// The enum body can include methods and other fields.
+// You can se more at https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
+
 ```
 
 ## Further Reading
@@ -709,14 +759,13 @@ The links provided here below are just to get an understanding of the topic, fee
 
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
 
-* [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+* [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
 
 **Online Practice and Tutorials**
 
 * [Learneroo.com - Learn Java](http://www.learneroo.com)
 
 * [Codingbat.com](http://codingbat.com/java)
-
 
 **Books**:
 

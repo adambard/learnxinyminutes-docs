@@ -4,6 +4,7 @@ contributors:
     - ["Chaitanya Krishna Ande", "http://icymist.github.io"]
     - ["Colton Kohnke", "http://github.com/voltnor"]
     - ["Sricharan Chiruvolu", "http://sricharan.xyz"]
+    - ["Ramanan Balakrishnan", "https://github.com/ramananbalakrishnan"]
 filename: learn-latex.tex
 ---
 
@@ -106,6 +107,9 @@ Here's how you state all y that belong to X, $\forall$ x $\in$ X. \\
 % However, the math symbols only exist in math-mode. 
 % We can enter math-mode from text mode with the $ signs.
 % The opposite also holds true. Variable can also be rendered in math-mode.
+% We can also enter math mode with \[\]
+
+\[a^2 + b^2 = c^2 \]
 
 My favorite Greek letter is $\xi$. I also like $\beta$, $\gamma$ and $\sigma$.
 I haven't found a Greek letter that yet that LaTeX doesn't know about!
@@ -174,7 +178,7 @@ We can also insert Tables in the same way as figures.
   % the {} arguments below describe how each row of the table is drawn.
   % Again, I have to look these up. Each. And. Every. Time.
   \begin{tabular}{c|cc} 
-    Number &  Last Name & First Name \\ % Column rows are separated by $
+    Number &  Last Name & First Name \\ % Column rows are separated by &
     \hline % a horizontal line
     1 & Biggus & Dickus \\
     2 & Monty & Python
@@ -201,7 +205,7 @@ environment.
 
 By now you're probably wondering how to compile this fabulous document 
 and look at the glorious glory that is a LaTeX pdf.
-(yes, this document actually does compiles). \\
+(yes, this document actually does compile). \\
 Getting to the final document using LaTeX consists of the following steps:
   \begin{enumerate}
     \item Write the document in plain text (the "source code").
@@ -223,6 +227,15 @@ format you defined in Step 1.
 \section{End}
 
 That's all for now!
+
+% Most often, you would want to have a references section in your document.
+% The easiest way to set this up would be by using the bibliography section
+\begin{thebibliography}{1}
+  % similar to other lists, the \bibitem command can be used to list items
+  % each entry can then be cited directly in the body of the text
+  \bibitem{latexwiki} The amazing LaTeX wikibook: {\em https://en.wikibooks.org/wiki/LaTeX}
+  \bibitem{latextutorial} An actual tutorial: {\em http://www.latex-tutorial.com}
+\end{thebibliography}
 
 % end the document
 \end{document}
