@@ -5,7 +5,7 @@ contributors:
 filename: LearnKotlin.kt
 ---
 
-Kotlin is a Statically typed programming language for the JVM, Android and the
+Kotlin is a statically typed programming language for the JVM, Android and the
 browser. It is 100% interoperable with Java.
 [Read more here.](https://kotlinlang.org/)
 
@@ -72,7 +72,7 @@ fun helloWorld(val name : String) {
     A variable can be specified as nullable by appending a ? to its type.
     We can access a nullable variable by using the ?. operator.
     We can use the ?: operator to specify an alternative value to use
-    if a variable is null
+    if a variable is null.
     */
     var fooNullable: String? = "abc"
     println(fooNullable?.length) // => 3
@@ -137,7 +137,7 @@ fun helloWorld(val name : String) {
         println("${notOdd(i)} ${notEven(i)} ${notZero(i)} ${notPositive(i)}")
     }
 
-    //The "class" keyword is used to declare classes.
+    // The "class" keyword is used to declare classes.
     class ExampleClass(val x: Int) {
         fun memberFunction(y: Int) : Int {
             return x + y
@@ -194,7 +194,7 @@ fun helloWorld(val name : String) {
     println(fooList.size) // => 3
     println(fooList.first()) // => a
     println(fooList.last()) // => c
-    // elements can be accessed by index
+    // Elements of a list can be accessed by their index.
     println(fooList[1]) // => b
 
     // A mutable list can be created using the "mutableListOf" function.
