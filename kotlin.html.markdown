@@ -213,12 +213,37 @@ fun helloWorld(val name : String) {
     // Map values can be accessed by their key.
     println(fooMap["a"]) // => 8
 
+    /*
+    Sequences represent lazily-evaluated collections.
+    We can create a sequence using the "sequenceOf" function.
+    */
+    val fooSequence = generateSequence(1, {it + 1})
+    val x = fooSequence.take(10).toList()
+    println(x) // => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    // An example of using a sequence to generate Fibonacci numbers:
+    fun fibonacciSequence() : Sequence<Long> {
+        var a = 0L
+        var b = 1L
+
+        fun next() : Long {
+            val result = a + b
+            a = b
+            b = result
+            return a
+        }
+
+        return generateSequence(::next)
+    }
+    val y = fibonacciSequence().take(10).toList()
+    println(y) // => [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+
     // Kotlin provides higher-order functions for working with collections.
-    val x = (1..9).map {it * 3}
+    val z = (1..9).map {it * 3}
                   .filter {it < 20}
                   .groupBy {it % 2 == 0}
                   .mapKeys {if (it.key) "even" else "odd"}
-    println(x) // => {odd=[3, 9, 15], even=[6, 12, 18]}
+    println(z) // => {odd=[3, 9, 15], even=[6, 12, 18]}
 
     // A "for" loop can be used with anything that provides an iterator.
     for (c in "hello") {
