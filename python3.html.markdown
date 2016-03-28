@@ -771,7 +771,7 @@ class Batman(Human, Bat):
         # So instead we explicitly call __init__ for all ancestors.
         # The use of *args and **kwargs allows for a clean way to pass arguments,
         # with each parent "peeling a layer of the onion".
-        Human.__init__(self, *args, **kwargs)
+        Human.__init__(self, 'anonymous', *args, **kwargs)
         Bat.__init__(self, *args, can_fly=False, **kwargs)
         # override the value for the name attribute
         self.name = 'Sad Affleck'
@@ -802,7 +802,7 @@ if __name__ == '__main__':
     print(sup.sing())           # => nan nan nan nan nan batman!
 
     # Calls method from Human, because inheritance order matters
-    print(sup.say('I agree'))   # => Sad Affleck: I agree
+    sup.say('I agree')          # => Sad Affleck: I agree
 
     # Call method that exists only in 2nd ancestor
     print(sup.sonar())          # => ))) ... (((
