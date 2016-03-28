@@ -783,27 +783,35 @@ class Batman(Human, Bat):
 if __name__ == '__main__':
     sup = Batman()
 
-    # get the Method Resolution search Order used by both getattr() and super().
-    # this attribute is dynamic and can be updated
+    # Instance type checks
+    if isinstance(sup, Human):
+        print('I am human')
+    if isinstance(sup, Bat):
+        print('I am bat')
+    if type(sup) is Batman:
+        print('I am Batman')
+
+    # Get the Method Resolution search Order used by both getattr() and super().
+    # This attribute is dynamic and can be updated
     print(Batman.__mro__)       # => (<class '__main__.Batman'>, <class 'human.Human'>, <class 'bat.Bat'>, <class 'object'>)
 
-    # calls parent method but uses its own class attribute
+    # Calls parent method but uses its own class attribute
     print(sup.get_species())    # => Superhero
 
-    # calls overloaded method
+    # Calls overloaded method
     print(sup.sing())           # => nan nan nan nan nan batman!
 
-    # calls method from Human, because inheritance order matters
+    # Calls method from Human, because inheritance order matters
     print(sup.say('I agree'))   # => Sad Affleck: I agree
 
-    # call method only in 2nd ancestor
-    print(sup.sonar())
+    # Call method that exists only in 2nd ancestor
+    print(sup.sonar())          # => ))) ... (((
 
-    # inherited class attribute
+    # Inherited class attribute
     sup.age = 100
     print(sup.age)
 
-    # inherited attribute from 2nd ancestor whose default value was overriden
+    # Inherited attribute from 2nd ancestor whose default value was overriden
     print('Can I fly? ' + str(sup.fly))
 
 
