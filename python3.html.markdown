@@ -697,6 +697,9 @@ class Human:
         del self._age
 
 
+# When a Python interpreter reads a source file it executes all its code.
+# This __name__ check makes sure this code block is only executed when this
+# module is the main program.
 if __name__ == '__main__':
     # Instantiate a class
     i = Human(name="Ian")
