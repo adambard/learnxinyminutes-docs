@@ -625,7 +625,7 @@ class Human:
 
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
-        return "{name}: {message}".format(name=self.name, message=msg)
+        print ("{name}: {message}".format(name=self.name, message=msg))
 
     # A class method is shared among all instances
     # They are called with the calling class as the first argument
@@ -659,31 +659,30 @@ class Human:
 if __name__ == '__main__':
     # Instantiate a class
     i = Human(name="Ian")
-    print(i.say("hi"))     # prints out "Ian: hi"
-
+    i.say("hi")                     # "Ian: hi"
     j = Human("Joel")
-    print(j.say("hello"))  # prints out "Joel: hello"
+    j.say("hello")                  # "Joel: hello"
+    # i and j are instances of type Human, or in other words: they are Human objects
 
     # Call our class method
-    i.get_species()  # => "H. sapiens"
-
+    i.say(i.get_species())          # "Ian: H. sapiens"
     # Change the shared attribute
     Human.species = "H. neanderthalensis"
-    i.get_species()  # => "H. neanderthalensis"
-    j.get_species()  # => "H. neanderthalensis"
+    i.say(i.get_species())          # => "Ian: H. neanderthalensis"
+    j.say(j.get_species())          # => "Joel: H. neanderthalensis"
 
     # Call the static method
-    Human.grunt()    # => "*grunt*"
+    print(Human.grunt())            # => "*grunt*"
+    print(i.grunt())                # => "*grunt*"
 
-    # Update the property
+    # Update the property for this instance
     i.age = 42
-
     # Get the property
-    i.age # => 42
-
+    i.say(i.age)                    # => 42
+    j.say(j.age)                    # => 0
     # Delete the property
     del i.age
-    i.age  # => raises an AttributeError
+    # i.age                         # => this would raise an AttributeError
 
 
 
