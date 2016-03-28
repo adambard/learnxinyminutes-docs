@@ -599,8 +599,46 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7])  # => [6, 7]
 [add_10(i) for i in [1, 2, 3]]         # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]  # => [6, 7]
 
+
 ####################################################
-## 5. Classes
+## 5. Modules
+####################################################
+
+# You can import modules
+import math
+print(math.sqrt(16))  # => 4.0
+
+# You can get specific functions from a module
+from math import ceil, floor
+print(ceil(3.7))   # => 4.0
+print(floor(3.7))  # => 3.0
+
+# You can import all functions from a module.
+# Warning: this is not recommended
+from math import *
+
+# You can shorten module names
+import math as m
+math.sqrt(16) == m.sqrt(16)  # => True
+
+# Python modules are just ordinary python files. You
+# can write your own, and import them. The name of the
+# module is the same as the name of the file.
+
+# You can find out which functions and attributes
+# defines a module.
+import math
+dir(math)
+
+# If you have a Python script named math.py in the same
+# folder as your current script, the file math.py will
+# be loaded instead of the built-in Python module.
+# This happens because the local folder has priority
+# over Python's built-in libraries.
+
+
+####################################################
+## 6. Classes
 ####################################################
 
 
@@ -685,42 +723,6 @@ if __name__ == '__main__':
     # i.age                         # => this would raise an AttributeError
 
 
-
-####################################################
-## 6. Modules
-####################################################
-
-# You can import modules
-import math
-print(math.sqrt(16))  # => 4.0
-
-# You can get specific functions from a module
-from math import ceil, floor
-print(ceil(3.7))   # => 4.0
-print(floor(3.7))  # => 3.0
-
-# You can import all functions from a module.
-# Warning: this is not recommended
-from math import *
-
-# You can shorten module names
-import math as m
-math.sqrt(16) == m.sqrt(16)  # => True
-
-# Python modules are just ordinary python files. You
-# can write your own, and import them. The name of the
-# module is the same as the name of the file.
-
-# You can find out which functions and attributes
-# defines a module.
-import math
-dir(math)
-
-# If you have a Python script named math.py in the same
-# folder as your current script, the file math.py will
-# be loaded instead of the built-in Python module.
-# This happens because the local folder has priority
-# over Python's built-in libraries.
 
 ####################################################
 ## 7. Advanced
