@@ -641,7 +641,6 @@ dir(math)
 ## 6. Classes
 ####################################################
 
-
 # We use the "class" operator to get a class
 class Human:
 
@@ -664,6 +663,10 @@ class Human:
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
         print ("{name}: {message}".format(name=self.name, message=msg))
+
+    # Another instance method
+    def sing(self):
+        return 'yo... yo... microphone check... one two... one two...'
 
     # A class method is shared among all instances
     # They are called with the calling class as the first argument
@@ -722,6 +725,63 @@ if __name__ == '__main__':
     del i.age
     # i.age                         # => this would raise an AttributeError
 
+
+####################################################
+## 6.1 Multiple Inheritance
+####################################################
+
+# Another class definition
+class Bat:
+
+    species = 'Baty'
+
+    def __init__(self, can_fly=True):
+        self.fly = can_fly
+
+    # This class also has a say method
+    def say(self, msg):
+        msg = '... ... ...'
+        return msg
+
+    # And its own method as well
+    def sonar(self):
+        return '))) ... ((('
+
+if __name__ == '__main__':
+    b = Bat()
+    print(b.say('hello'))
+    print(b.fly)
+
+
+# from "filename-without-extension" import "function-or-class"
+from human import Human
+from bat import Bat
+
+# Batman inherits from both Human and Bat
+class Batman(Human, Bat):
+
+    # Batman has its own value for the species class attribute
+    species = 'Superhero'
+
+    def __init__(self, *args, **kwargs):
+        # Typically to inherit attributes you have to call super:
+        #super(Batman, self).__init__(*args, **kwargs)      
+        # However we are dealing with multiple inheritance here, and super()
+        # only works with the next base class in the MRO list.
+        # So instead we explicitly call __init__ for all ancestors.
+        # The use of *args and **kwargs allows for a clean way to pass arguments,
+        # with each parent "peeling a layer of the onion".
+        Human.__init__(self, *args, **kwargs)
+        Bat.__init__(self, *args, can_fly=False, **kwargs)
+        # override the value for the name attribute
+        self.name = 'Sad Affleck'
+
+    def sing(self):
+        return 'nan nan nan nan nan batman!'
+
+
+if __name__ == '__main__':
+    sup = Batman()
 
 
 ####################################################
