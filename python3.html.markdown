@@ -656,33 +656,34 @@ class Human:
         del self._age
 
 
-# Instantiate a class
-i = Human(name="Ian")
-print(i.say("hi"))     # prints out "Ian: hi"
+if __name__ == '__main__':
+    # Instantiate a class
+    i = Human(name="Ian")
+    print(i.say("hi"))     # prints out "Ian: hi"
 
-j = Human("Joel")
-print(j.say("hello"))  # prints out "Joel: hello"
+    j = Human("Joel")
+    print(j.say("hello"))  # prints out "Joel: hello"
 
-# Call our class method
-i.get_species()  # => "H. sapiens"
+    # Call our class method
+    i.get_species()  # => "H. sapiens"
 
-# Change the shared attribute
-Human.species = "H. neanderthalensis"
-i.get_species()  # => "H. neanderthalensis"
-j.get_species()  # => "H. neanderthalensis"
+    # Change the shared attribute
+    Human.species = "H. neanderthalensis"
+    i.get_species()  # => "H. neanderthalensis"
+    j.get_species()  # => "H. neanderthalensis"
 
-# Call the static method
-Human.grunt()    # => "*grunt*"
+    # Call the static method
+    Human.grunt()    # => "*grunt*"
 
-# Update the property
-i.age = 42
+    # Update the property
+    i.age = 42
 
-# Get the property
-i.age # => 42
+    # Get the property
+    i.age # => 42
 
-# Delete the property
-del i.age
-i.age  # => raises an AttributeError
+    # Delete the property
+    del i.age
+    i.age  # => raises an AttributeError
 
 
 
