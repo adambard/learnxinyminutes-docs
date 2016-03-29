@@ -416,7 +416,7 @@ lua-users.org上的[Lua简明参考](http://lua-users.org/files/wiki_insecure/us
 * <a href="http://lua-users.org/wiki/OsLibraryTutorial">os library</a>
 
 顺便说一下，整个文件是可运行的Lua; 
-保存为 learn-cn.lua 用命令 `lua learn.lua` 启动吧！
+保存为 learn-cn.lua 用命令 `lua learn-cn.lua` 启动吧！
 
 本文首次撰写于 [tylerneylon.com](http://tylerneylon.com) 同时也有 [github gist](https://gist.github.com/tylerneylon/5853042) 版.
 
