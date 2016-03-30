@@ -592,7 +592,7 @@ add_10(3)   # => 13
 list(map(add_10, [1, 2, 3]))          # => [11, 12, 13]
 list(map(max, [1, 2, 3], [4, 2, 1]))  # => [4, 2, 3]
 
-filter(lambda x: x > 5, [3, 4, 5, 6, 7])  # => [6, 7]
+list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  # => [6, 7]
 
 # We can use list comprehensions for nice maps and filters
 # List comprehension stores the output as a list which can itself be a nested list
