@@ -587,7 +587,6 @@ add_10(3)   # => 13
 (lambda x: x > 2)(3)                  # => True
 (lambda x, y: x ** 2 + y ** 2)(2, 1)  # => 5
 
-# TODO - Fix for iterables
 # There are built-in higher order functions
 list(map(add_10, [1, 2, 3]))          # => [11, 12, 13]
 list(map(max, [1, 2, 3], [4, 2, 1]))  # => [4, 2, 3]
