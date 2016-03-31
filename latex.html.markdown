@@ -212,7 +212,7 @@ Getting to the final document using LaTeX consists of the following steps:
     \item Compile source code to produce a pdf. 
      The compilation step looks something like this (in Linux): \\
      \begin{verbatim} 
-        $pdflatex learn-latex.tex learn-latex.pdf 
+        > pdflatex learn-latex.tex learn-latex.pdf 
      \end{verbatim}
   \end{enumerate}
 
