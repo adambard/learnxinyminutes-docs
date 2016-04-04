@@ -27,14 +27,14 @@ Elm se hodí k tvorbě webových uživatelských rozhraní a her.
 8 - 1 -- 7
 10 * 2 -- 20
 
--- Každý číselný literál bez desetinné tečky je typu Int nebo Float.
+-- Každé číslo bez desetinné tečky je typu Int nebo Float.
 33 / 2 -- 16.5 s reálným dělením
 33 // 2 -- 16 s celočíselným dělením
 
 -- Umocňování
 5 ^ 2 -- 25
 
--- Logické proměnné
+-- Pravdivostní proměnné
 not True -- False
 not False -- True
 1 == 1 -- True
@@ -53,7 +53,7 @@ not False -- True
 -- Každá položka seznamu musí být stejného typu.
 ["příliš", "žluťoučký", "kůň", "úpěl"]
 [1, 2, 3, 4, 5]
--- Druhý příklad lze také zapsat pomocí dvou teček.
+-- Druhý příklad lze zapsat také pomocí dvou teček.
 [1..5]
 
 -- Spojovat seznamy lze stejně jako řetězce.
@@ -78,7 +78,7 @@ List.head [] -- Nothing
 fst ("elm", 42) -- "elm"
 snd ("elm", 42) -- 42
 
--- Prázná n-tice, neboli "unit", se občas používá jako placeholder.
+-- Prázná n-tice, neboli "unit", se občas používá jako zástupný symbol.
 -- Je to jediná hodnota svého typu, který se také nazývá "Unit".
 ()
 
@@ -136,30 +136,30 @@ case List.head seznam of
 -- Syntaxe funkcí je v Elmu velmi úsporná, založená spíše na mezerách
 -- než na závorkách. Neexistuje tu klíčové slovo "return".
 
--- Funkci defunujeme jejím jménem, argumenty, rovnítkem a tělem.
+-- Funkci definujeme jejím jménem, parametry, rovnítkem a tělem.
 vynasob a b =
   a * b
 
--- Funkci voláme předáním argumentů (bez oddělujících čárek).
+-- Funkci voláme předáním parametrů (bez oddělujících čárek).
 vynasob 7 6 -- 42
 
--- Částečně aplikované funkci předáme pouzne některé argumenty.
+-- Částečně aplikované funkci předáme pouzne některé parametry.
 -- Poté zvolíme nové jméno.
 zdvoj =
   vynasob 2
 
--- Konstanty jsou podobné, ale nepřijímají žádné argumenty.
+-- Konstanty jsou podobné, ale nepřijímají žádné parametry.
 odpoved =
   42
 
--- Předejte funkci jako argument jiným funkcím.
+-- Předejte funkci jako parametr jiným funkcím.
 List.map zdvoj [1..4] -- [2, 4, 6, 8]
 
 -- Nebo použijte anonymní funkci.
 List.map (\a -> a * 2) [1..4] -- [2, 4, 6, 8]
 
 -- V definici funkce lze zapsat vzor, může-li nastat pouze jeden případ.
--- Tato funkce přijímá jednu dvojici místo dvou argumentů.
+-- Tato funkce přijímá jednu dvojici místo dvou parametrů.
 obsah (sirka, delka) =
   sirka * delka
 
@@ -193,7 +193,7 @@ delkaSeznamu seznam =
 -- Funkce se volají před jakýmkoli infixovým operátorem. Závorky určují prioritu.
 cos (degrees 30) ^ 2 + sin (degrees 30) ^ 2 -- 1
 -- Nejprve se aplikuje "degrees" na číslo 30, výsledek je pak předán trigonometrickým
--- funkcím, které jsou poté umocněny na druhou, na závěr proběhne sčítání.
+-- funkcím, které jsou následně umocněny na druhou, na závěr proběhne sčítání.
 
 {-- Typy a typové anotace --}
 
@@ -205,19 +205,19 @@ cos (degrees 30) ^ 2 + sin (degrees 30) ^ 2 -- 1
 "ahoj" : String
 True : Bool
 
--- Funkce mají také typy. Čtěte -> jako "vrací".
+-- Funkce mají také typy. Čtěte "->" jako "vrací".
 -- O typu na konci uvažujte jako návratovém typu, o ostatních jako typech argumentů.
 not : Bool -> Bool
 round : Float -> Int
 
--- Když definujete hodnotu je dobrým zvykem zapsat nad ní její typ.
+-- Když definujete hodnotu, je dobrým zvykem zapsat nad ni její typ.
 -- Anotace je formou dokumentace, která je ověřována překladačem.
 zdvoj : Int -> Int
 zdvoj x = x * 2
 
--- Funkce jako argument je uzavřena v závorkách.
+-- Funkce jako parametr je uzavřena v závorkách.
 -- Typy s malým počátečním písmenem jsou typové proměnné:
--- mohou být libovolného typu, ale v každém volání musí být konzistetní.
+-- mohou být libovolného typu, ale v každém volání musí být stejné.
 List.map : (a -> b) -> List a -> List b
 -- "List tečka map je typu a-vrací-b, vrací seznam-položek-typu-a, vrací seznam-položek-typu-b."
 
@@ -269,8 +269,8 @@ type Strom a =
 -- "Typ strom-prvků-a je vrchol, nebo uzel obsahující a, strom-prvků-a a strom-prvků-a."
 
 -- Vzory se shodují s tagy. Tagy s velkým počátečním písmenem odpovídají přesně.
--- Proměnné malým písmem odpovídají čemukoli. Podtržítko jaké odpovídá čemukoli,
--- ale symbolizuje, že se nebude dále používat.
+-- Proměnné malým písmem odpovídají čemukoli. Podtržítko také odpovídá čemukoli,
+-- ale určuje, že tuto hodnotu dále nechceme používat.
 nejviceVlevo : Strom a -> Maybe a
 nejviceVlevo strom =
   case strom of
@@ -304,7 +304,7 @@ import Dict
 -- Stále lze volat Dict.insert.
 import Dict exposing (Dict)
 
--- Přejmonování importu.
+-- Přejmenování importu.
 import Graphics.Collage as C
 
 {-- Porty --}
