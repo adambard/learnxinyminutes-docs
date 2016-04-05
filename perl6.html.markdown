@@ -103,7 +103,7 @@ sub say-hello-to(Str $name) { # You can provide the type of an argument
 
 ## It can also have optional arguments:
 sub with-optional($arg?) { # the "?" marks the argument optional
-  say "I might return `(Any)` (Perl's "null"-like value) if I don't have
+  say "I might return `(Any)` (Perl's 'null'-like value) if I don't have
         an argument passed, or I'll return my argument";
   $arg;
 }
@@ -803,9 +803,8 @@ module Foo::Bar {
     my sub unavailable { # `my sub` is the default
       say "Can't access me from outside, I'm my !";
     }
+    say ++$n; # increment the package variable and output its value
   }
-
-  say ++$n; # lexically-scoped variables are still available
 }
 say $Foo::Bar::n; #=> 1
 Foo::Bar::inc; #=> 2
@@ -825,7 +824,7 @@ say why-not[^5]; #=> 5 15 25 35 45
 # (they exist in other langages such as C as `static`)
 sub fixed-rand {
   state $val = rand;
-  say $rand;
+  say $val;
 }
 fixed-rand for ^10; # will print the same number 10 times
 
@@ -1330,7 +1329,7 @@ so 'ayc' ~~ / a [ b | y ] c /; # `True`. Obviously enough ...
 
 
 
-### Extra: the MAIN subroutime
+### Extra: the MAIN subroutine
 # The `MAIN` subroutine is called when you run a Perl 6 file directly.
 # It's very powerful, because Perl 6 actually parses the arguments
 #  and pass them as such to the sub. It also handles named argument (`--foo`)

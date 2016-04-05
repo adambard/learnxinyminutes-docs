@@ -23,7 +23,9 @@ Aunque JavaScript no sólo se limita a los navegadores web: Node.js, Un proyecto
 [adam@brenecki.id.au](mailto:adam@brenecki.id.au).
 
 ```js
-// Los comentarios son como en C. Los comentarios de una sola línea comienzan con //,
+// Los comentarios en JavaScript son los mismos como comentarios en C. 
+
+//Los comentarios de una sola línea comienzan con //,
 /* y los comentarios multilínea comienzan
    y terminan con */
 

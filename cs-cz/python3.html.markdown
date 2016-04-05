@@ -7,7 +7,7 @@ contributors:
     - ["Tomáš Bedřich", "http://tbedrich.cz"]
 translators:
     - ["Tomáš Bedřich", "http://tbedrich.cz"]
-filename: learnpython3.py
+filename: learnpython3-cz.py
 lang: cs-cz
 ---
 

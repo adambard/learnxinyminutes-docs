@@ -8,7 +8,7 @@ translators:
 lang: fr-fr
 ---
 
-```d
+```c
 // Commençons par un classique
 module hello;
 
@@ -30,7 +30,7 @@ D est activement développé par de nombreuses personnes très intelligents, gui
 [Andrei Alexandrescu](https://fr.wikipedia.org/wiki/Andrei_Alexandrescu).
 Après cette petite introduction, jetons un coup d'oeil à quelques exemples.
 
-```d
+```c
 import std.stdio;
 
 void main() {
@@ -75,7 +75,7 @@ On peut définir de nouveaux types avec les mots-clés `struct`, `class`,
 `union` et `enum`. Ces types sont passés au fonction par valeur (ils sont copiés)
 De plus, on peut utiliser les templates pour rendre toutes ces abstractions génériques.
 
-```d
+```c
 // Ici, 'T' est un paramètre de type. Il est similaire au <T> de C++/C#/Java.
 struct LinkedList(T) {
     T data = null;
@@ -140,7 +140,7 @@ une méthode qui peut se comporter comme une lvalue. On peut donc utiliser
 la syntaxe des structures classiques (`struct.x = 7`) comme si il
 s'agissait de méthodes getter ou setter.
 
-```d
+```c
 // Considérons une classe paramétrée avec les types 'T' et 'U'
 class MyClass(T, U) {
     T _data;
@@ -212,7 +212,7 @@ de premier ordre, les fonctions `pure` et les données immuables.
 De plus, tout vos algorithmes fonctionelles favoris (map, reduce, filter)
 sont disponibles dans le module `std.algorithm`.
 
-```d
+```c
 import std.algorithm : map, filter, reduce;
 import std.range : iota; // construit un intervalle excluant la dernière valeur.
 
@@ -242,7 +242,7 @@ est de type A, comme si c'était une méthode de A.
 J'aime le parallélisme. Vous aimez les parallélisme ? Bien sur que vous aimez ça
 Voyons comment on le fait en D !
 
-```d
+```c
 import std.stdio;
 import std.parallelism : parallel;
 import std.math : sqrt;

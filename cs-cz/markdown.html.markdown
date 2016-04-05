@@ -1,10 +1,12 @@
 ---
 language: markdown
+lang: cs-cz
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Michal Martinek", "https://github.com/MichalMartinek"]
-filename: markdown.md
+filename: markdown-cz.md
+lang: cs-cz
 ---
 
 Markdown byl vytvořen Johnem Gruberem v roce 2004. Je zamýšlen jako lehce čitelná
@@ -51,7 +53,7 @@ __Stejně jako tento.__
 **_Jako tento!_**
 *__A tento!__*
 
-<!-- Ve verzi Markdownu od Githubu, máme k dispozici taky prošktrnutí: -->
+<!-- Ve verzi Markdownu od GitHubu, máme k dispozici taky prošktrnutí: -->
 
 ~~Tento text je prošktrnutý.~~
 
@@ -150,7 +152,7 @@ Tento box bude zašktrnutý
 
 Jan nevědel, jak se dělá `go_to()` funkce!
 
-<!-- V Markdownu od Githubu , můžete použít speciální syntaxi pro kód -->
+<!-- V Markdownu od GitHubu , můžete použít speciální syntaxi pro kód -->
 
 \`\`\`ruby <!-- vyjma zpětných lomítek, jenom ```ruby ! -->
 def neco
@@ -158,7 +160,7 @@ def neco
 end
 \`\`\` <!-- zde taky, žádné zpětná lomítka, pouze ``` -->
 
-<!-- Text výše nepotřebuje odsazení a navíc Github použije zvýraznění označeného
+<!-- Text výše nepotřebuje odsazení a navíc GitHub použije zvýraznění označeného
  jazyka. -->
 
 <!-- Horizontální čára (<hr />) -->
@@ -230,13 +232,13 @@ Dejte text, který chcete zobrazit, do [] následovaný url v závorkách () a j
 Chci napsat *tento text obklopený hvězdičkami*, ale nechci aby to bylo kurzívou, tak udělám: \*tento text obklopený hvězdičkami\*.
 
 <!-- Klávesové zkratky -->
-<!-- V Markdownu od Githubu, můžete použít tag <kbd> k reprezentování klaves na počítači -->
+<!-- V Markdownu od GitHubu, můžete použít tag <kbd> k reprezentování klaves na počítači -->
 
 Váš počítač přestal pracovat? Zkuste
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
 
 <!-- Tabulky -->
-<!-- Tabulky jsou povolené pouze v Markdownu od Githubu a jsou trochu podivně,
+<!-- Tabulky jsou povolené pouze v Markdownu od GitHubu a jsou trochu podivně,
      ale když je opravdu chcete: -->
 
 | Sloupec1     | Sloupec2 | Sloupec3      |

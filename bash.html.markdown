@@ -83,7 +83,7 @@ echo Hello, $Name!
 
 # We have the usual if structure:
 # use 'man test' for more info about conditionals
-if [ $Name -ne $USER ]
+if [ $Name != $USER ]
 then
     echo "Your name isn't your username"
 else
@@ -91,12 +91,12 @@ else
 fi
 
 # NOTE: if $Name is empty, bash sees the above condition as:
-if [ -ne $USER ]
+if [ != $USER ]
 # which is invalid syntax
 # so the "safe" way to use potentially empty variables in bash is:
-if [ "$Name" -ne $USER ] ...
+if [ "$Name" != $USER ] ...
 # which, when $Name is empty, is seen by bash as:
-if [ "" -ne $USER ] ...
+if [ "" != $USER ] ...
 # which works as expected
 
 # There is also conditional execution
@@ -129,6 +129,15 @@ ls -l # Lists every file and directory on a separate line
 # grep command filters the input with provided patterns. That's how we can list
 # .txt files in the current directory:
 ls -l | grep "\.txt"
+
+# Since bash works in the context of a current directory, you might want to 
+# run your command in some other directory. We have cd for changing location:
+cd ~    # change to home directory
+cd ..   # go up one directory
+        # (^^say, from /home/username/Downloads to /home/username)
+cd /home/username/Documents   # change to specified directory
+cd ~/Documents/..    # still in home directory..isn't it??
+
 
 # You can redirect command input and output (stdin, stdout, and stderr).
 # Read from stdin until ^EOF$ and overwrite hello.py with the lines

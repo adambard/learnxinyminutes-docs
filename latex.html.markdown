@@ -178,7 +178,7 @@ We can also insert Tables in the same way as figures.
   % the {} arguments below describe how each row of the table is drawn.
   % Again, I have to look these up. Each. And. Every. Time.
   \begin{tabular}{c|cc} 
-    Number &  Last Name & First Name \\ % Column rows are separated by $
+    Number &  Last Name & First Name \\ % Column rows are separated by &
     \hline % a horizontal line
     1 & Biggus & Dickus \\
     2 & Monty & Python
@@ -205,14 +205,14 @@ environment.
 
 By now you're probably wondering how to compile this fabulous document 
 and look at the glorious glory that is a LaTeX pdf.
-(yes, this document actually does compiles). \\
+(yes, this document actually does compile). \\
 Getting to the final document using LaTeX consists of the following steps:
   \begin{enumerate}
     \item Write the document in plain text (the "source code").
     \item Compile source code to produce a pdf. 
      The compilation step looks something like this (in Linux): \\
      \begin{verbatim} 
-        $pdflatex learn-latex.tex learn-latex.pdf 
+        > pdflatex learn-latex.tex learn-latex.pdf 
      \end{verbatim}
   \end{enumerate}
 

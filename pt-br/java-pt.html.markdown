@@ -214,42 +214,42 @@ public class LearnJava {
             //Iteração feita 10 vezes, fooFor 0->9
         }
         System.out.println("Valor do fooFor: " + fooFor);
-        
-        // O Loop For Each 
+
+        // O Loop For Each
         // Itera automaticamente por um array ou lista de objetos.
         int[] fooList = {1,2,3,4,5,6,7,8,9};
         //estrutura do loop for each => for(<objeto> : <array_de_objeto>)
         //lê-se: para cada objeto no array
         //nota: o tipo do objeto deve ser o mesmo do array.
-        
+
         for( int bar : fooList ){
             //System.out.println(bar);
             //Itera 9 vezes e imprime 1-9 em novas linhas
         }
-        
+
         // Switch
         // Um switch funciona com os tipos de dados: byte, short, char e int
         // Ele também funciona com tipos enumerados (vistos em tipos Enum)
         // como também a classe String e algumas outras classes especiais
         // tipos primitivos: Character, Byte, Short e Integer
-        int mes = 3; 
-        String mesString; 
-        switch (mes){ 
+        int mes = 3;
+        String mesString;
+        switch (mes){
             case 1:
-                    mesString = "Janeiro"; 
+                    mesString = "Janeiro";
                     break;
             case 2:
-                    mesString = "Fevereiro"; 
+                    mesString = "Fevereiro";
                     break;
             case 3:
-                    mesString = "Março"; 
+                    mesString = "Março";
                     break;
             default:
-                    mesString = "Algum outro mês"; 
+                    mesString = "Algum outro mês";
                     break;
         }
         System.out.println("Resultado do Switch: " + mesString);
-        
+
         // Condição de forma abreviada.
         // Você pode usar o operador '?' para atribuições rápidas ou decisões lógicas.
         // Lê-se "Se (declaração) é verdadeira, use <primeiro valor>
@@ -287,9 +287,9 @@ public class LearnJava {
         // Classes e Métodos
         ///////////////////////////////////////
 
-        System.out.println("\n->Classes e Métodos"); 
+        System.out.println("\n->Classes e Métodos");
 
-        // (segue a definição da classe Bicicleta) 
+        // (segue a definição da classe Bicicleta)
 
         // Use o new para instanciar uma classe
         Bicicleta caloi = new Bicicleta(); // Objeto caloi criado.
@@ -318,9 +318,9 @@ class Bicicleta {
 
     // Atributos/Variáveis da classe Bicicleta.
     public int ritmo;          // Public: Pode ser acessada em qualquer lugar.
-    private int velocidade;    // Private: Apenas acessível a classe. 
+    private int velocidade;    // Private: Apenas acessível a classe.
     protected int catraca; // Protected: Acessível a classe e suas subclasses.
-    String nome;               // default: Apenas acessível ao pacote. 
+    String nome;               // default: Apenas acessível ao pacote.
 
     // Construtores são uma forma de criação de classes
     // Este é o construtor padrão.
@@ -388,7 +388,7 @@ class Bicicleta {
 // Velocipede é uma subclasse de bicicleta.
 class Velocipede extends Bicicleta {
     // (Velocípedes são bicicletas com rodas dianteiras grandes
-    // Elas não possuem catraca.) 
+    // Elas não possuem catraca.)
 
     public Velocipede(int ritmoInicial, int velocidadeInicial){
         // Chame o construtor do pai (construtor de Bicicleta) com o comando super.
@@ -626,11 +626,11 @@ Os links fornecidos aqui abaixo são apenas para ter uma compreensão do tema, u
 
 Outros tópicos para pesquisar:
 
-* [Tutorial Java para Sun Trail / Oracle](http://docs.oracle.com/javase/tutorial/index.html) 
+* [Tutorial Java para Sun Trail / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
 
 * [Modificadores de acesso do Java](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
 
-* [Coceitos de Programação Orientada à Objetos](http://docs.oracle.com/javase/tutorial/java/concepts/index.html): 
+* [Coceitos de Programação Orientada à Objetos](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
     * [Herança](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
     * [Polimorfismo](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
     * [Abstração](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
@@ -646,3 +646,9 @@ Outros tópicos para pesquisar:
 Livros:
 
 * [Use a cabeça, Java] (http://www.headfirstlabs.com/books/hfjava/)
+
+Apostila:
+
+* [Java e Orientação a Objetos] (http://www.caelum.com.br/apostila-java-orientacao-objetos/)
+
+* [Java para Desenvolvimento Web] (https://www.caelum.com.br/apostila-java-web/)
