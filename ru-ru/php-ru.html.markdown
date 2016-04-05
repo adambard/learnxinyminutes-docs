@@ -451,7 +451,7 @@ $value = include 'my-include.php';
 
 class MyClass
 {
-    const MY_CONST      = 'value'; // A constant
+    const MY_CONST      = 'value'; // Константа
 
     static $staticVar   = 'static';
 
