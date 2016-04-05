@@ -143,7 +143,7 @@ vynasob a b =
 -- Funkci voláme předáním parametrů (bez oddělujících čárek).
 vynasob 7 6 -- 42
 
--- Částečně aplikované funkci předáme pouzne některé parametry.
+-- Částečně aplikované funkci předáme pouze některé parametry.
 -- Poté zvolíme nové jméno.
 zdvoj =
   vynasob 2
