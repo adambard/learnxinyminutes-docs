@@ -326,7 +326,7 @@ int main (int argc, char** argv)
   using "goto" in C
   */
   typedef enum { false, true } bool;
-  // for C don't have bool as data type :(
+  // C doesn't have bool as a data type :(
   bool disaster = false;
   int i, j;
   for(i=0;i<100;++i)
