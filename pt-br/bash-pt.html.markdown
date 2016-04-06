@@ -161,11 +161,11 @@ echo "#helloworld" > output.out
 echo "#helloworld" | cat > output.out
 echo "#helloworld" | tee output.out > /dev/null
 
-# Limpa os arquivos temporarios detalhando quais foram deletados (use '-i' para confirmar exlusão)
+# Limpa os arquivos temporários detalhando quais foram deletados (use '-i' para confirmar exclusão)
 rm -v output.out error.err output-and-error.log
 
-# Comando podem ser substituidos por outros comandos usando $( ):
-# O comand oa seguir mostra o número de arquivos e diretórios no diretorio atual
+# Comando podem ser substituídos por outros comandos usando $( ):
+# O comando a seguir mostra o número de arquivos e diretórios no diretorio atual
 echo "Existem $(ls | wc -l) itens aqui."
 
 # O mesmo pode ser feito usando crase `` mas elas não podem ser aninhadas - dá se 
