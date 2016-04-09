@@ -3,6 +3,7 @@ language: chapel
 filename: learnchapel.chpl
 contributors:
     - ["Ian J. Bertolacci", "http://www.cs.colostate.edu/~ibertola/"]
+lang: en
 ---
 
 You can read all about Chapel at [Cray's official Chapel website](http://chapel.cray.com).
