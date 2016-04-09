@@ -1061,7 +1061,7 @@ Occasionally check back here and on the [Chapel site](http://chapel.cray.com) to
 Your input, questions, and discoveries are important to the developers!
 -----------------------------------------------------------------------
 
-The Chapel language is still in-development (version 1.12.0), so there are occasional hiccups with performance and language features.
+The Chapel language is still in-development (version 1.13.0), so there are occasional hiccups with performance and language features.
 The more information you give the Chapel development team about issues you encounter or features you would like to see, the better the language becomes.
 Feel free to email the team and other developers through the [sourceforge email lists](https://sourceforge.net/p/chapel/mailman).
 
@@ -1076,8 +1076,8 @@ Chapel can be built and installed on your average 'nix machine (and cygwin).
 [Download the latest release version](https://github.com/chapel-lang/chapel/releases/)
 and it's as easy as
 
- 1. `tar -xvf chapel-1.12.0.tar.gz`
- 2. `cd chapel-1.12.0`
+ 1. `tar -xvf chapel-1.13.0.tar.gz`
+ 2. `cd chapel-1.13.0`
  3. `make`
  4. `source util/setchplenv.bash # or .sh or .csh or .fish`
 
