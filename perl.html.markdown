@@ -286,6 +286,17 @@ sub increment {
 
 # Object-oriented programming is covered more thoroughly in perlootut, and its
 # low-level implementation in Perl is covered in perlobj.
+
+
+use LWP::Simple;
+# If you want to use Perl to write a spider, LWP::Simple would help.
+
+my $url = "http://example.org/";
+my $page = get $url;
+# now $page contains the HTML.
+
+die "Failed to get \"$url\"\n" unless defined $page;
+# If get failed, it would return undef.
 ```
 
 #### FAQ
