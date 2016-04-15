@@ -21,9 +21,9 @@ use strict;
 use warnings;
 
 # All perl scripts and modules should include these lines. Strict causes
-# compilation to fail in cases like misspelled variable names, and warnings
-# will print warning messages in case of common pitfalls like concatenating
-# to an undefined value.
+# compilation to fail in cases like misspelled variable names, and
+# warnings will print warning messages in case of common pitfalls like
+# concatenating to an undefined value.
 
 #### Perl variable types
 
@@ -47,8 +47,8 @@ my @animals = ("camel", "llama", "owl");
 my @numbers = (23, 42, 69);
 my @mixed   = ("camel", 42, 1.23);
 
-# Array elements are accessed using square brackets, with a $ to indicate
-# one value will be returned.
+# Array elements are accessed using square brackets, with a $ to
+# indicate one value will be returned.
 my $second = $animals[1];
 
 ## Hashes
@@ -56,7 +56,8 @@ my $second = $animals[1];
 
 my %fruit_color = ("apple", "red", "banana", "yellow");
 
-#  You can use whitespace and the "=>" operator to lay them out more nicely:
+#  You can use whitespace and the "=>" operator to lay them out more
+#  nicely:
 
 my %fruit_color = (
   apple  => "red",
@@ -71,8 +72,8 @@ my $color = $fruit_color{apple};
 
 #### References
 
-# More complex data types can be constructed using references, which allow
-# you to build arrays and hashes within arrays and hashes.
+# More complex data types can be constructed using references, which
+# allow you to build arrays and hashes within arrays and hashes.
 
 my $array_ref = \@array;
 my $hash_ref = \%hash;
@@ -88,13 +89,14 @@ my $colors = {apple => "red", banana => "yellow"};
 my @fruits_array = @$fruits;
 my %colors_hash = %$colors;
 
-# As a shortcut, the arrow operator can be used to dereference and access a
-# single value.
+# As a shortcut, the arrow operator can be used to dereference and
+# access a single value.
 
 my $first = $array_ref->[0];
 my $value = $hash_ref->{banana};
 
-# See perlreftut and perlref for more in-depth documentation on references.
+# See perlreftut and perlref for more in-depth documentation on
+# references.
 
 #### Conditional and looping constructs
 
@@ -150,18 +152,18 @@ print $hash_ref->{$_} for keys %$hash_ref;
 
 #### Regular expressions
 
-# Perl's regular expression support is both broad and deep, and is the subject
-# of lengthy documentation in perlrequick, perlretut, and elsewhere.
-# However, in short:
+# Perl's regular expression support is both broad and deep, and is the
+# subject of lengthy documentation in perlrequick, perlretut, and
+# elsewhere. However, in short:
 
 # Simple matching
 if (/foo/)       { ... }  # true if $_ contains "foo"
-if ($a =~ /foo/) { ... }  # true if $a contains "foo"
+if ($x =~ /foo/) { ... }  # true if $x contains "foo"
 
 # Simple substitution
 
-$a =~ s/foo/bar/;         # replaces foo with bar in $a
-$a =~ s/foo/bar/g;        # replaces ALL INSTANCES of foo with bar in $a
+$x =~ s/foo/bar/;         # replaces foo with bar in $x
+$x =~ s/foo/bar/g;        # replaces ALL INSTANCES of foo with bar in $x
 
 
 #### Files and I/O
@@ -172,9 +174,10 @@ open(my $in,  "<",  "input.txt")  or die "Can't open input.txt: $!";
 open(my $out, ">",  "output.txt") or die "Can't open output.txt: $!";
 open(my $log, ">>", "my.log")     or die "Can't open my.log: $!";
 
-# You can read from an open filehandle using the "<>" operator.  In scalar
-# context it reads a single line from the filehandle, and in list context it
-# reads the whole file in, assigning each line to an element of the list:
+# You can read from an open filehandle using the "<>" operator.  In
+# scalar context it reads a single line from the filehandle, and in list
+# context it reads the whole file in, assigning each line to an element
+# of the list:
 
 my $line  = <$in>;
 my @lines = <$in>;
@@ -197,9 +200,9 @@ logger("We have a logger subroutine!");
 
 #### Modules
 
-# A module is a set of Perl code, usually subroutines, which can be used in
-# other Perl code. It is usually stored in a file with the extension .pm so
-# that Perl can find it.
+# A module is a set of Perl code, usually subroutines, which can be used
+# in other Perl code. It is usually stored in a file with the extension
+# .pm so that Perl can find it.
 
 package MyModule;
 use strict;
@@ -219,24 +222,25 @@ sub trim {
 use MyModule;
 MyModule::trim($string);
 
-# The Exporter module can help with making subroutines exportable, so they
-# can be used like this:
+# The Exporter module can help with making subroutines exportable, so
+# they can be used like this:
 
 use MyModule 'trim';
 trim($string);
 
-# Many Perl modules can be downloaded from CPAN (http://www.cpan.org/) and
-# provide a range of features to help you avoid reinventing the wheel.  A
-# number of popular modules like Exporter are included with the Perl
-# distribution itself. See perlmod for more details on modules in Perl.
+# Many Perl modules can be downloaded from CPAN (http://www.cpan.org/)
+# and provide a range of features to help you avoid reinventing the
+# wheel.  A number of popular modules like Exporter are included with
+# the Perl distribution itself. See perlmod for more details on modules
+# in Perl.
 
 #### Objects
 
-# Objects in Perl are just references that know which class (package) they
-# belong to, so that methods (subroutines) called on it can be found there.
-# The bless function is used in constructors (usually new) to set this up.
-# However, you never need to call it yourself if you use a module like Moose
-# or Moo (see below).
+# Objects in Perl are just references that know which class (package)
+# they belong to, so that methods (subroutines) called on it can be
+# found there. The bless function is used in constructors (usually new)
+# to set this up. However, you never need to call it yourself if you use
+# a module like Moose or Moo (see below).
 
 package MyCounter;
 use strict;
@@ -260,7 +264,8 @@ sub increment {
 
 1;
 
-# Methods can be called on a class or object instance with the arrow operator.
+# Methods can be called on a class or object instance with the arrow
+# operator.
 
 use MyCounter;
 my $counter = MyCounter->new;
@@ -268,9 +273,9 @@ print $counter->count, "\n"; # 0
 $counter->increment;
 print $counter->count, "\n"; # 1
 
-# The modules Moose and Moo from CPAN can help you set up your object classes.
-# They provide a constructor and simple syntax for declaring attributes. This
-# class can be used equivalently to the one above.
+# The modules Moose and Moo from CPAN can help you set up your object
+# classes. They provide a constructor and simple syntax for declaring
+# attributes. This class can be used equivalently to the one above.
 
 package MyCounter;
 use Moo; # imports strict and warnings
@@ -284,8 +289,8 @@ sub increment {
 
 1;
 
-# Object-oriented programming is covered more thoroughly in perlootut, and its
-# low-level implementation in Perl is covered in perlobj.
+# Object-oriented programming is covered more thoroughly in perlootut,
+# and its low-level implementation in Perl is covered in perlobj.
 ```
 
 #### FAQ
