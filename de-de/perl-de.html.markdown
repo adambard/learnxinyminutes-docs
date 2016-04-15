@@ -1,6 +1,4 @@
 ---
-name: perl
-category: language
 language: perl
 filename: learnperl-de.pl
 contributors:
