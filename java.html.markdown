@@ -407,9 +407,9 @@ public class LearnJava {
         // in an easy way. Usually you end up in the following way:
         private static final Set<String> COUNTRIES = new HashSet<String>();
         static {
-           validCodes.add("DENMARK");
-           validCodes.add("SWEDEN");
-           validCodes.add("FINLAND");
+           COUNTRIES.add("DENMARK");
+           COUNTRIES.add("SWEDEN");
+           COUNTRIES.add("FINLAND");
         }
 
         // But there's a nifty way to achieve the same thing in an
