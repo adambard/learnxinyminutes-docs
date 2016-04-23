@@ -3,8 +3,10 @@ language: LiveScript
 filename: learnLivescript.ls
 contributors:
     - ["Christina Whyte", "http://github.com/kurisuwhyte/"]
+    - ["Maxwell Ou", "http://github.com/a20185/"]
 translators:
     - ["ShengDa Lyu", "http://github.com/SDLyu/"]
+    - ["Maxwell Ou", "http://github.com/a20185/"]
 lang: zh-cn    
 ---
 
@@ -203,7 +205,7 @@ identity 1      # => 1
 
 # 操作符在 LiveScript 里不是一個函数，但你可以简单地将它们转换成函数！
 # Enter the operator sectioning：
-divide-by-2 = (/ 2)
+divide-by2 = (/ 2)
 [2, 4, 8, 16].map(divide-by-2) .reduce (+)
 
 
@@ -226,8 +228,8 @@ reduce = (f, xs, initial) --> xs.reduce f, initial
 
 # 你也能使 _ 让任何函数变成偏函数应用：
 div = (left, right) -> left / right
-div-by-2 = div _, 2
-div-by-2 4      # => 2
+div-by2 = div _, 2
+div-by2 4      # => 2
 
 
 # 最后，也很重要的，LiveScript 拥有後呼叫特性， 可以是基於回调的代码
