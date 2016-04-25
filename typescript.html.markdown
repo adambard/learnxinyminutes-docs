@@ -171,7 +171,7 @@ of a multiline string`;
 
 ## Further Reading
  * [TypeScript Official website] (http://www.typescriptlang.org/)
- * [TypeScript language specifications (pdf)] (https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md)
+ * [TypeScript language specifications] (https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md)
  * [Anders Hejlsberg - Introducing TypeScript on Channel 9] (http://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript)
  * [Source Code on GitHub] (https://github.com/Microsoft/TypeScript)
  * [Definitely Typed - repository for type definitions] (http://definitelytyped.org/)
