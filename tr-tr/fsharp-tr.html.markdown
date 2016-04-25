@@ -7,7 +7,7 @@ translators:
 filename: learnfsharp.fs
 ---
 
-F# fonksiyonel ve nesne tabanlı, genel amaçlı bir programlama dilidir. Bedava ve açık kaynaklıdır ve Linux, Mac, Windows ve dahasında çalışır.
+F# fonksiyonel ve nesne yönelimli, genel amaçlı bir programlama dilidir. Bedava ve açık kaynaklıdır ve Linux, Mac, Windows ve dahasında çalışır.
 
 Hataları derleme zamanında yakalayan çok güçlü bir tip sistemine sahiptir, ancak tip çıkarımı yaptığından dinamik bir dil gibi görünür.
 
@@ -106,84 +106,84 @@ let optionPatternMatch input =
 optionPatternMatch validValue
 optionPatternMatch invalidValue
 
-// ------ Printing ------
-// The printf/printfn functions are similar to the
-// Console.Write/WriteLine functions in C#.
+// ------ Yazdırma ------
+// printf/printfn fonksiyonları C#'taki 
+// Console.Write/WriteLine fonksiyonlarına benzer.
 printfn "Printing an int %i, a float %f, a bool %b" 1 2.0 true
 printfn "A string %s, and something generic %A" "hello" [1; 2; 3; 4]
 
-// There are also sprintf/sprintfn functions for formatting data
-// into a string, similar to String.Format in C#.
+// sprintf/sprintfn fonksiyonları ise veriyi string'e
+// çevirmek içindir, C#'taki String.Format gibi.
 
 // ================================================
-// More on functions
+// Fonksiyonlar hakkında dahası
 // ================================================
 
-// F# is a true functional language -- functions are first
-// class entities and can be combined easily to make powerful
-// constructs
+// F# gerçek bir fonksiyonel dildir. Fonksiyonlar birinci
+// sınıf varlıklardır ve güçlü yapılar oluşturmak için
+// birleştirilebilirler.
 
-// Modules are used to group functions together
-// Indentation is needed for each nested module.
+// Modüller fonksiyonları gruplamak için kullanılır.
+// Her bir modül için girinti gerekir.
 module FunctionExamples =
 
-    // define a simple adding function
+    // Temel bir ekleme fonksiyonu tanımla
     let add x y = x + y
 
-    // basic usage of a function
+    // Bir fonksiyonun temel kullanımı
     let a = add 1 2
     printfn "1 + 2 = %i" a
 
-    // partial application to "bake in" parameters
+    // Parametreleri kaynaklamak için parçalı uygulama
     let add42 = add 42
     let b = add42 1
     printfn "42 + 1 = %i" b
 
-    // composition to combine functions
+    // Fonksiyonları birleştirmek için kompozisyon
     let add1 = add 1
     let add2 = add 2
     let add3 = add1 >> add2
     let c = add3 7
     printfn "3 + 7 = %i" c
 
-    // higher order functions
+    // Yüksek dereceli fonksiyonlar
     [1..10] |> List.map add3 |> printfn "new list is %A"
 
-    // lists of functions, and more
+    // Fonksiyonlar listesi ve dahası
     let add6 = [add1; add2; add3] |> List.reduce (>>)
     let d = add6 7
     printfn "1 + 2 + 3 + 7 = %i" d
 
 // ================================================
-// Lists and collection
+// Listeler ve kolleksiyonlar
 // ================================================
 
-// There are three types of ordered collection:
-// * Lists are most basic immutable collection.
-// * Arrays are mutable and more efficient when needed.
-// * Sequences are lazy and infinite (e.g. an enumerator).
-//
-// Other collections include immutable maps and sets
-// plus all the standard .NET collections
+// Üç çesit sıralı fonksiyon vardır:
+// * Listeler en temel değiştirilemez kolleksiyonlardır.
+// * Diziler değiştirilebilir ve gerektiğinde daha verimlidirler.
+// * Seriler tembel (lazy evaluation) ve sonsuzdurlar (Enumeratörler gibi). 
+// 
+// Değiştirilmez map'ler ve kümeler ve bütün .NET kolleksiyonları
+// diğer kolleksiyon türleridir.
 
 module ListExamples =
 
-    // lists use square brackets
+    // listeler köşeli parantez kullanır
     let list1 = ["a"; "b"]
-    let list2 = "c" :: list1    // :: is prepending
-    let list3 = list1 @ list2   // @ is concat
+    let list2 = "c" :: list1    // :: başa eleman ekler
+    let list3 = list1 @ list2   // @ listeleri birbirine ekler
 
-    // list comprehensions (aka generators)
+    // Liste comprehension'ları (jeneratörler olarak da bilinir)
     let squares = [for i in 1..10 do yield i * i]
 
-    // prime number generator
+    // asal sayı jeneratörü
     let rec sieve = function
         | (p::xs) -> p :: sieve [ for x in xs do if x % p > 0 then yield x ]
         | []      -> []
     let primes = sieve [2..50]
     printfn "%A" primes
 
-    // pattern matching for lists
+    // Listelerle kalıp eşleştirme
     let listMatcher aList =
         match aList with
         | [] -> printfn "the list is empty"
@@ -196,7 +196,7 @@ module ListExamples =
     listMatcher [1]
     listMatcher []
 
-    // recursion using lists
+    // Listeleri kullanarak recursion
     let rec sum aList =
         match aList with
         | [] -> 0
@@ -204,7 +204,7 @@ module ListExamples =
     sum [1..10]
 
     // -----------------------------------------
-    // Standard library functions
+    // Standart kütüphane fonksiyonları
     // -----------------------------------------
 
     // map
@@ -215,15 +215,15 @@ module ListExamples =
     let even x = x % 2 = 0
     [1..10] |> List.filter even
 
-    // many more -- see documentation
+    // ve dahası -- dökümantasyonu bakınız
 
 module ArrayExamples =
 
-    // arrays use square brackets with bar
+    // Diziler köşeli parantezle birlikte çubuk karakterini kullanır
     let array1 = [| "a"; "b" |]
-    let first = array1.[0]        // indexed access using dot
+    let first = array1.[0]        // nokta kullanarak indeks erişimi
 
-    // pattern matching for arrays is same as for lists
+    // Diziler için kalıp eşleştirme listlerle aynıdır
     let arrayMatcher aList =
         match aList with
         | [| |] -> printfn "the array is empty"
@@ -233,7 +233,7 @@ module ArrayExamples =
 
     arrayMatcher [| 1; 2; 3; 4 |]
 
-    // Standard library functions just as for List
+    // Listede olduğu gibi kütüphane fonksiyonları
 
     [| 1..10 |]
     |> Array.map (fun i -> i + 3)
@@ -243,16 +243,16 @@ module ArrayExamples =
 
 module SequenceExamples =
 
-    // sequences use curly braces
+    // seriler kıvrık parantez kullanır
     let seq1 = seq { yield "a"; yield "b" }
 
-    // sequences can use yield and
-    // can contain subsequences
+    // seriler yield'ı kullanabilir
+    // ve alt seriler barındırabilir
     let strange = seq {
-        // "yield" adds one element
+        // "yield" bir eleman ekliyor
         yield 1; yield 2;
 
-        // "yield!" adds a whole subsequence
+        // "yield!" bütün bir alt seriyi ekliyor
         yield! [5..10]
         yield! seq {
             for i in 1..10 do
@@ -261,8 +261,8 @@ module SequenceExamples =
     strange |> Seq.toList
 
 
-    // Sequences can be created using "unfold"
-    // Here's the fibonacci series
+    // Seriler "unfold" kullanılarak oluşturulabilir
+    // Fibonacci serisi örneği
     let fib = Seq.unfold (fun (fst,snd) ->
         Some(fst + snd, (snd, fst + snd))) (0,1)
 
@@ -272,49 +272,49 @@ module SequenceExamples =
 
 
 // ================================================
-// Data Types
+// Veri Tipleri
 // ================================================
 
 module DataTypeExamples =
 
-    // All data is immutable by default
+    // Bütün veriler varsayılan olarak değiştirilemezdir.
 
-    // Tuples are quick 'n easy anonymous types
-    // -- Use a comma to create a tuple
+    // Tuple'lar çabuk ve kolay anonim tiplerdir.
+    // -- Tuple oluşturmak için virgül kullan
     let twoTuple = 1, 2
     let threeTuple = "a", 2, true
 
-    // Pattern match to unpack
-    let x, y = twoTuple  // sets x = 1, y = 2
+    // paketi açmak için kalıp eşleştirme kullan
+    let x, y = twoTuple  // x = 1, y = 2
 
     // ------------------------------------
-    // Record types have named fields
+    // Record tipi isimlendirilmiş alanlara sahiptir
     // ------------------------------------
 
-    // Use "type" with curly braces to define a record type
+    // "type" ile kıvrık parantezleri record tipi oluşturmak için kullan
     type Person = {First:string; Last:string}
 
-    // Use "let" with curly braces to create a record
+    // "let" ile kıvrık parantezi record tipi oluşturmak için kullan
     let person1 = {First="John"; Last="Doe"}
 
-    // Pattern match to unpack
-    let {First = first} = person1    // sets first="John"
+    // paketi açmak için kalıp eşleştirme kullan
+    let {First = first} = person1    // first="John"
 
     // ------------------------------------
-    // Union types (aka variants) have a set of choices
-    // Only case can be valid at a time.
+    // Union tipleri (değişkenler olarak da bilinir) birden fazla
+	// seçeneğe sahiptir. Belli bir zamanda sadece bir tanesi geçerlidir.
     // ------------------------------------
 
-    // Use "type" with bar/pipe to define a union type
+    // "type" ile çubuk karakterini union tipi tanımlamak için kullan
     type Temp =
         | DegreesC of float
         | DegreesF of float
 
-    // Use one of the cases to create one
+    // Seçeneklerden birini kullan
     let temp1 = DegreesF 98.6
     let temp2 = DegreesC 37.0
 
-    // Pattern match on all cases to unpack
+    // Paketi açmak için bütün seçenekler üzerinde kalıp eşleştirme kullan
     let printTemp = function
        | DegreesC t -> printfn "%f degC" t
        | DegreesF t -> printfn "%f degF" t
@@ -323,11 +323,11 @@ module DataTypeExamples =
     printTemp temp2
 
     // ------------------------------------
-    // Recursive types
+    // Yinelgen (Recursive) tipler
     // ------------------------------------
 
-    // Types can be combined recursively in complex ways
-    // without having to create subclasses
+	// Tipler alt sınıflar oluşturmadan karmaşık şekillerde
+	// yinelgen olarak birleştirilebilirler.
     type Employee =
       | Worker of Person
       | Manager of Employee list
@@ -336,23 +336,22 @@ module DataTypeExamples =
     let worker = Worker jdoe
 
     // ------------------------------------
-    // Modeling with types
+    // Tipleri Kullanarak Modelleme
     // ------------------------------------
 
-    // Union types are great for modeling state without using flags
+    // Union tipleri bayrak kullanmadan durum modelleme için harikadır.
     type EmailAddress =
         | ValidEmailAddress of string
         | InvalidEmailAddress of string
 
     let trySendEmail email =
-        match email with // use pattern matching
-        | ValidEmailAddress address -> ()   // send
-        | InvalidEmailAddress address -> () // don't send
+        match email with // kalıp eşleştirme kullan
+        | ValidEmailAddress address -> ()   // gönder
+        | InvalidEmailAddress address -> () // gönderme
 
-    // The combination of union types and record types together
-    // provide a great foundation for domain driven design.
-    // You can create hundreds of little types that accurately
-    // reflect the domain.
+	// Union tiplerin record tiplerle birleşimi
+	// domain driven design için iyi bir temel oluşturur.
+    // Domain'i yansıtan yüzlerce ufak tip oluşturabilirsiniz.
 
     type CartItem = { ProductCode: string; Qty: int }
     type Payment = Payment of float
@@ -360,26 +359,27 @@ module DataTypeExamples =
     type PaidCartData = { PaidItems: CartItem list; Payment: Payment}
 
     type ShoppingCart =
-        | EmptyCart  // no data
+        | EmptyCart  // veri yok
         | ActiveCart of ActiveCartData
         | PaidCart of PaidCartData
 
     // ------------------------------------
-    // Built in behavior for types
+    // Tipler için içgüdüsel davranış
     // ------------------------------------
 
-    // Core types have useful "out-of-the-box" behavior, no coding needed.
-    // * Immutability
-    // * Pretty printing when debugging
-    // * Equality and comparison
+    // Çekirdek tipler kendinden çok kullanışlı özelliklere sahiptir
+	// Ek kodlama gerektirmez
+    // * Değişmezlik
+    // * Debug ederken yazdırma
+    // * Eşitlik ve kıyaslama
     // * Serialization
 
-    // Pretty printing using %A
+    // %A kullanarak yazdırma
     printfn "twoTuple=%A,\nPerson=%A,\nTemp=%A,\nEmployee=%A"
              twoTuple person1 temp1 worker
 
-    // Equality and comparison built in.
-    // Here's an example with cards.
+    // Eşitlik ve kıyaslama içgüdüseldir.
+    // İskambil kartlarıyla bir örnek
     type Suit = Club | Diamond | Spade | Heart
     type Rank = Two | Three | Four | Five | Six | Seven | Eight
                 | Nine | Ten | Jack | Queen | King | Ace
@@ -387,31 +387,31 @@ module DataTypeExamples =
     let hand = [ Club, Ace; Heart, Three; Heart, Ace;
                  Spade, Jack; Diamond, Two; Diamond, Ace ]
 
-    // sorting
+    // Sıralama
     List.sort hand |> printfn "sorted hand is (low to high) %A"
     List.max hand |> printfn "high card is %A"
     List.min hand |> printfn "low card is %A"
 
 
 // ================================================
-// Active patterns
+// Aktif Kalıplar
 // ================================================
 
 module ActivePatternExamples =
 
-    // F# has a special type of pattern matching called "active patterns"
-    // where the pattern can be parsed or detected dynamically.
+    // F# "aktif kalıplar" denen bir kalıp eşleştirmeye sahiptir.
+    // Kalıplar dinamik bir şekilde tespit edilip eşleştirilebilir.
 
-    // "banana clips" are the syntax for active patterns
+    // Aktif kalıplar için söz dizimi (| ... |) şeklindedir
 
-    // for example, define an "active" pattern to match character types...
+    // Örneğin, karakter tiplerini eşleyen bir "aktif" kalıp tanımlayın...
     let (|Digit|Letter|Whitespace|Other|) ch =
        if System.Char.IsDigit(ch) then Digit
        else if System.Char.IsLetter(ch) then Letter
        else if System.Char.IsWhiteSpace(ch) then Whitespace
        else Other
 
-    // ... and then use it to make parsing logic much clearer
+    // ... daha sonra eşleme mantığı çok daha net yapmak için bunu kullanın
     let printChar ch =
       match ch with
       | Digit -> printfn "%c is a Digit" ch
@@ -419,19 +419,19 @@ module ActivePatternExamples =
       | Whitespace -> printfn "%c is a Whitespace" ch
       | _ -> printfn "%c is something else" ch
 
-    // print a list
+    // Bir liste yazdırma
     ['a'; 'b'; '1'; ' '; '-'; 'c'] |> List.iter printChar
 
     // -----------------------------------
-    // FizzBuzz using active patterns
+    // Aktif Kalıpları Kullanarak FizzBuzz
     // -----------------------------------
 
-    // You can create partial matching patterns as well
-    // Just use underscore in the definition, and return Some if matched.
+	// Parçalı eşleşen kalıplar da oluşturabilirsiniz
+    // Tanımda alt çizgi karakterini kullanın ve eşleşince Some döndürün.
     let (|MultOf3|_|) i = if i % 3 = 0 then Some MultOf3 else None
     let (|MultOf5|_|) i = if i % 5 = 0 then Some MultOf5 else None
 
-    // the main function
+    // Ana fonksiyon
     let fizzBuzz i =
       match i with
       | MultOf3 & MultOf5 -> printf "FizzBuzz, "
@@ -443,106 +443,106 @@ module ActivePatternExamples =
     [1..20] |> List.iter fizzBuzz
 
 // ================================================
-// Conciseness
+// Sadelik
 // ================================================
 
 module AlgorithmExamples =
 
-    // F# has a high signal/noise ratio, so code reads
-    // almost like the actual algorithm
+    // F#'ın sinyal/gürültü oranı yüksektir, dolayısıyla
+    // kod algoritmayla hemen hemen aynı görünür.
 
-    // ------ Example: define sumOfSquares function ------
+    // ------ Örnek: sumOfSquares fonksiyonunu tanımla ------
     let sumOfSquares n =
-       [1..n]              // 1) take all the numbers from 1 to n
-       |> List.map square  // 2) square each one
-       |> List.sum         // 3) sum the results
+       [1..n]              // 1) 1'den n'e kadar bütün sayıları al
+       |> List.map square  // 2) hepsinin karesini al
+       |> List.sum         // 3) sonuçları topla
 
     // test
     sumOfSquares 100 |> printfn "Sum of squares = %A"
 
-    // ------ Example: define a sort function ------
+    // ------ Örnek: bir sıralama fonksiyonu tanımla ------
     let rec sort list =
        match list with
-       // If the list is empty
+       // Liste boşsa
        | [] ->
-            []                            // return an empty list
-       // If the list is not empty
-       | firstElem::otherElements ->      // take the first element
-            let smallerElements =         // extract the smaller elements
-                otherElements             // from the remaining ones
+            []                            // boş listeyi döndür
+       // Liste boş değilse
+       | firstElem::otherElements ->      // İlk elemanı al
+            let smallerElements =         // Daha küçük elemanları 
+                otherElements             // diğerlerinden ayır
                 |> List.filter (fun e -> e < firstElem)
-                |> sort                   // and sort them
-            let largerElements =          // extract the larger ones
-                otherElements             // from the remaining ones
+                |> sort                   // ve sırala
+            let largerElements =          // Daha büyük elemanları
+                otherElements             // diğerlerinden ayır
                 |> List.filter (fun e -> e >= firstElem)
-                |> sort                   // and sort them
-            // Combine the 3 parts into a new list and return it
+                |> sort                   // ve sırala
+            // 3 parçayı birbirine ekle ve listeyi döndür
             List.concat [smallerElements; [firstElem]; largerElements]
 
     // test
     sort [1; 5; 23; 18; 9; 1; 3] |> printfn "Sorted = %A"
 
 // ================================================
-// Asynchronous Code
+// Eşzamanlı olmayan kod
 // ================================================
 
 module AsyncExample =
 
-    // F# has built-in features to help with async code
-    // without encountering the "pyramid of doom"
+    // F# "pyramid of doom" durumuyla karşılaştırmayacak şekilde
+	// içgüdüsel eşzamanlı olmayan özelliklere sahiptir.
     //
-    // The following example downloads a set of web pages in parallel.
+    // Bir sonraki örnek bir web sayfasını paralel bir şekilde indirir.
 
     open System.Net
     open System
     open System.IO
     open Microsoft.FSharp.Control.CommonExtensions
 
-    // Fetch the contents of a URL asynchronously
+    // İçeriği eşzamanlı olmayan bir şekilde getir
     let fetchUrlAsync url =
-        async {   // "async" keyword and curly braces
-                  // creates an "async" object
+        async {   // "async" anahtar kelimesi ve kıvrık parantez
+                  // "async (eşzamanlı olmayan)" nesneyi oluşturur
             let req = WebRequest.Create(Uri(url))
             use! resp = req.AsyncGetResponse()
-                // use! is async assignment
+                // use! eşzamanlı olmayan atamadır
             use stream = resp.GetResponseStream()
-                // "use" triggers automatic close()
-                // on resource at end of scope
+                // "use" kullanılan bloğun dışına çıkınca
+                // close()'u otomatik olarak tetikler
             use reader = new IO.StreamReader(stream)
             let html = reader.ReadToEnd()
             printfn "finished downloading %s" url
             }
 
-    // a list of sites to fetch
+    // İndirmek için bir web sitesi listesi
     let sites = ["http://www.bing.com";
                  "http://www.google.com";
                  "http://www.microsoft.com";
                  "http://www.amazon.com";
                  "http://www.yahoo.com"]
 
-    // do it
+    // İndir
     sites
-    |> List.map fetchUrlAsync  // make a list of async tasks
-    |> Async.Parallel          // set up the tasks to run in parallel
-    |> Async.RunSynchronously  // start them off
+    |> List.map fetchUrlAsync  // async görevlerden oluşan bir liste yap
+    |> Async.Parallel          // bu görevleri paralel çalışacak şekilde ayarla
+    |> Async.RunSynchronously  // başlat
 
 // ================================================
-// .NET compatibility
+// .NET uyumluluğu
 // ================================================
 
 module NetCompatibilityExamples =
 
-    // F# can do almost everything C# can do, and it integrates
-    // seamlessly with .NET or Mono libraries.
+    // F#, C#'ın yapabildiği hemen herşeyi yapabilir,
+    // ve .NET ve Mono kütüphaneleriyle tereyağından kıl çeker gibi çalışır.
 
-    // ------- work with existing library functions  -------
+    // ------- var olan kütüphane fonksiyonları ile çalışma -------
 
     let (i1success, i1) = System.Int32.TryParse("123");
     if i1success then printfn "parsed as %i" i1 else printfn "parse failed"
 
-    // ------- Implement interfaces on the fly! -------
+    // ------- Arayüzleri yol üstünde tanımla! -------
 
-    // create a new object that implements IDisposable
+    // IDisposable'ı sağlayan yeni bir nesne oluştur
     let makeResource name =
        { new System.IDisposable
          with member this.Dispose() = printfn "%s disposed" name }
@@ -558,29 +558,29 @@ module NetCompatibilityExamples =
         printfn "using second resource"
         printfn "done."
 
-    // ------- Object oriented code -------
+    // ------- Nesne yönelimli kod -------
 
-    // F# is also a fully fledged OO language.
-    // It supports classes, inheritance, virtual methods, etc.
+    // F# aynı zamanda tam bir nesne yönelimli dildir.
+    // Sınıfları, kalıtımı ve sanal metotları destekler.
 
-    // interface with generic type
+    // Genel ipli bir arayüz
     type IEnumerator<'a> =
         abstract member Current : 'a
         abstract MoveNext : unit -> bool
 
-    // abstract base class with virtual methods
+    // Sanal metotları olan soyut temel sınıflar
     [<AbstractClass>]
     type Shape() =
-        // readonly properties
+        // sadece okunabilir özellikler
         abstract member Width : int with get
         abstract member Height : int with get
-        // non-virtual method
+        // sanal olmayan metot
         member this.BoundingArea = this.Height * this.Width
-        // virtual method with base implementation
+        // temel uygulamasıyla bir sanal metot
         abstract member Print : unit -> unit
         default this.Print () = printfn "I'm a shape"
 
-    // concrete class that inherits from base class and overrides
+    // Somut bir sınıfın soyut sınıftan kalıtımı
     type Rectangle(x:int, y:int) =
         inherit Shape()
         override this.Width = x
@@ -593,9 +593,9 @@ module NetCompatibilityExamples =
     printfn "The area is %i" r.BoundingArea
     r.Print()
 
-    // ------- extension methods  -------
+    // ------- ekleme metotları -------
 
-    // Just as in C#, F# can extend existing classes with extension methods.
+    // C#'ta olduğu gibi F# da var olan sınıfları ekleme metotları ile genişletebilir.
     type System.String with
        member this.StartsWithA = this.StartsWith "A"
 
@@ -603,7 +603,7 @@ module NetCompatibilityExamples =
     let s = "Alice"
     printfn "'%s' starts with an 'A' = %A" s s.StartsWithA
 
-    // ------- events  -------
+    // ------- olaylar -------
 
     type MyButton() =
         let clickEvent = new Event<_>()
@@ -623,8 +623,8 @@ module NetCompatibilityExamples =
 
 ```
 
-## More Information
+## Daha fazla bilgi
 
-For more demonstrations of F#, go to the [Try F#](http://www.tryfsharp.org/Learn) site, or my [why use F#](http://fsharpforfunandprofit.com/why-use-fsharp/) series.
+F# hakkında daha fazla demo için [Try F#](http://www.tryfsharp.org/Learn) sitesine gidin, veya benim (yazarın) [why use F#](http://fsharpforfunandprofit.com/why-use-fsharp/) serimi okuyun.
 
-Read more about F# at [fsharp.org](http://fsharp.org/).
+F# hakkında daha fazla bilgi için: [fsharp.org](http://fsharp.org/).
