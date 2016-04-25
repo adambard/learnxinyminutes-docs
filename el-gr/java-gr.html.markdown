@@ -8,7 +8,7 @@ contributors:
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
     - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
     - ["Rachel Stiyer", "https://github.com/rstiyer"]
-filename: LearnJava.java
+filename: LearnJava-gr.java
 translators:
   - ["Andreas Loizou" , "https://github.com/lack3r/"]
 lang: el-gr
