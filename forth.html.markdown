@@ -12,7 +12,7 @@ such as Open Firmware. It's also used by NASA.
 Note: This article focuses predominantly on the Gforth implementation of
 Forth, but most of what is written here should work elsewhere.
 
-```
+```forth
 \ This is a comment
 ( This is also a comment but it's only used when defining words )
 
