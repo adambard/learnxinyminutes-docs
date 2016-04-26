@@ -33,84 +33,84 @@ Aşağıdaki kodu denemek istiyorsanız, [tryfsharp.org](http://www.tryfsharp.or
 // "let" anahtar kelimesi (değişmez) değer tanımlar
 let myInt = 5
 let myFloat = 3.14
-let myString = "hello"           // tip bilgisi olmamasına dikkat
+let myString = "merhaba"           	// tip bilgisi olmamasına dikkat
 
 // ------ Listeler ------
-let twoToFive = [2; 3; 4; 5]        // Köşeli parantezler listeleri oluşturur,
-                                 // değerler ise noktalı virgülle ayrılır.
-let oneToFive = 1 :: twoToFive   // :: yeni birinci elemanı olan bir liste oluşturur.
+let ikidenBese = [2; 3; 4; 5]      	// Köşeli parantezler listeleri oluşturur,
+									// değerler ise noktalı virgülle ayrılır.
+let birdenBese = 1 :: ikidenBese   	// :: yeni birinci elemanı olan bir liste oluşturur.
 // Sonuç: [1; 2; 3; 4; 5]
-let zeroToFive = [0; 1] @ twoToFive   // @ iki listeyi birbirine ekler.
+let sifirdanBese = [0; 1] @ ikidenBese	// @ iki listeyi birbirine ekler.
 
 // ÖNEMLİ: virgüller hiçbir zaman ayraç olarak kullanılmaz, sadece noktalı virgüller!
 
 // ------ Fonksiyonlar ------
 // "let" anahtar kelimesi isimlendirilmiş fonksiyonları da tanımlar.
-let square x = x * x          // Parantez kullanılmadığına dikkat.
-square 3                      // Şimdi fonksiyonu uygula. Yine parantez yok.
+let kare x = x * x          // Parantez kullanılmadığına dikkat.
+kare 3                      // Şimdi fonksiyonu uygula. Yine parantez yok.
 
-let add x y = x + y           // add (x,y) kullanmayın! Bu tamamen başka bir anlama geliyor.
-add 2 3                       // Şimdi fonksiyonu uygula.
+let topla x y = x + y       // topla (x,y) kullanmayın! Bu tamamen başka bir anlama geliyor.
+topla 2 3                   // Şimdi fonksiyonu uygula.
 
 // çok satırlı bir fonksiyon tanımlamak için sadece girinti kullan. Noktalıı virgül gerekmez.
-let evens list =
-   let isEven x = x % 2 = 0     // "isEven"ı alt fonksiyon olarak tanımla
-   List.filter isEven list    // List.filter boolean bir fonksiyon ve
-                              // üzerinde çalışılacak bir liste parametrelerinden oluşan
-                              // bir kütüphane fonksiyonu
+let ciftler liste =
+   let ciftMi x = x % 2 = 0 	// "ciftMi"yi alt fonksiyon olarak tanımla
+   List.filter ciftMi liste    	// List.filter boolean bir fonksiyon ve
+								// üzerinde çalışılacak bir liste parametrelerinden oluşan
+								// bir kütüphane fonksiyonu
                               
-evens oneToFive               // Şimdi fonksiyonu uygula.
+evens birdenBese               	// Şimdi fonksiyonu uygula.
 
 // Parantezleri önceliği netleştirmek için kullanabilirsin. Bu örnekte
-// "map"i önce iki argümanla uygula, sonra sonuç üzerinde "sum" uygula.
-// Parantezler olmasaydı, "List.map" List.sum'ın ilk argümanı olurdu.
-let sumOfSquaresTo100 =
-   List.sum ( List.map square [1..100] )
+// "map"i önce iki argümanla uygula, sonra sonuç üzerinde "ekle" uygula.
+// Parantezler olmasaydı, "List.map" List.ekle'ın ilk argümanı olurdu.
+let yuzeKadarKarelerinToplami =
+   List.ekle ( List.map kare [1..100] )
 
 // Bir operasyonun sonucunu bir sonrakine "|>" kullanarak besleyebilirsin.
 // Veri beslemek F#'ta UNIX'te olduğu gibi yaygındır..
 
-// Burada sumOfSquares fonksiyonunun veri beslemeyle yazılmış hali var:
-let sumOfSquaresTo100piped =
-   [1..100] |> List.map square |> List.sum  // "square" önceden tanımlanmıştı
+// Burada karelerToplami fonksiyonunun veri beslemeyle yazılmış hali var:
+let veriBeslemeyleYuzeKadarKarelerinToplami =
+   [1..100] |> List.map kare |> List.ekle  // "kare" önceden tanımlanmıştı
 
 // Lambda'ları (anonim fonksiyonları) "fun" anahtar kelimesiyle tanımlayabilirsin
-let sumOfSquaresTo100withFun =
-   [1..100] |> List.map (fun x -> x * x) |> List.sum
+let funlaYuzeKadarKarelerinToplami =
+   [1..100] |> List.map (fun x -> x * x) |> List.ekle
 
 // F#'ta "return" anahtar kelimesi yoktur. Bir fonksiyon
 // her zaman son kullanılan ifadeyi döndürür.
 
 // ------ Kalıp eşleştirme ------
 // Match..with.. çok güçlü bir case/switch türevidir.
-let simplePatternMatch =
+let basitKalipEslestirme =
    let x = "a"
    match x with
-    | "a" -> printfn "x is a"
-    | "b" -> printfn "x is b"
-    | _ -> printfn "x is something else"   // alt çizgi bütün kalıplarla eşleşir
+    | "a" -> printfn "x a'dır"
+    | "b" -> printfn "x b'dir"
+    | _ -> printfn "x başka bir şeydir"   // alt çizgi bütün kalıplarla eşleşir
 
 // F# varsayılan olarak null'lara izin vermez -- Option tipini kullanıp
 // kalıp eşleştirme yapmalısın.
 // Some(..) ve None, Nullable tipler gibidir.
-let validValue = Some(99)
-let invalidValue = None
+let gecerliDeger = Some(99)
+let gecersizDeger = None
 
 // Bu örnekte, match..with "Some" ve "None"la eşleştirme yapıyor,
 // ve ayrıca "Some" içerisindeki değeri de çıkarıyor.
-let optionPatternMatch input =
+let optionKalipEslestirme input =
    match input with
     | Some i -> printfn "input is an int=%d" i
     | None -> printfn "input is missing"
 
-optionPatternMatch validValue
-optionPatternMatch invalidValue
+optionKalipEslestirme gecerliDeger
+optionKalipEslestirme gecersizDeger
 
 // ------ Yazdırma ------
 // printf/printfn fonksiyonları C#'taki 
 // Console.Write/WriteLine fonksiyonlarına benzer.
-printfn "Printing an int %i, a float %f, a bool %b" 1 2.0 true
-printfn "A string %s, and something generic %A" "hello" [1; 2; 3; 4]
+printfn "Bir int %i, bir ondalık %f, bir boolean %b yazdırma" 1 2.0 true
+printfn "Bir string %s, ve jenerik bir tip %A" "hello" [1; 2; 3; 4]
 
 // sprintf/sprintfn fonksiyonları ise veriyi string'e
 // çevirmek içindir, C#'taki String.Format gibi.
@@ -125,33 +125,33 @@ printfn "A string %s, and something generic %A" "hello" [1; 2; 3; 4]
 
 // Modüller fonksiyonları gruplamak için kullanılır.
 // Her bir modül için girinti gerekir.
-module FunctionExamples =
+module FonksiyonOrnekleri =
 
     // Temel bir ekleme fonksiyonu tanımla
-    let add x y = x + y
+    let topla x y = x + y
 
     // Bir fonksiyonun temel kullanımı
-    let a = add 1 2
+    let a = topla 1 2
     printfn "1 + 2 = %i" a
 
     // Parametreleri kaynaklamak için parçalı uygulama
-    let add42 = add 42
-    let b = add42 1
+    let kirkIkiEkle = topla 42
+    let b = kirkIkiEkle 1
     printfn "42 + 1 = %i" b
 
     // Fonksiyonları birleştirmek için kompozisyon
-    let add1 = add 1
-    let add2 = add 2
-    let add3 = add1 >> add2
-    let c = add3 7
+    let birEkle = topla 1
+    let ikiEkle = topla 2
+    let ucEkle = birEkle >> ikiEkle
+    let c = ucEkle 7
     printfn "3 + 7 = %i" c
 
     // Yüksek dereceli fonksiyonlar
-    [1..10] |> List.map add3 |> printfn "new list is %A"
+    [1..10] |> List.map ucEkle |> printfn "yeni liste: %A"
 
     // Fonksiyonlar listesi ve dahası
-    let add6 = [add1; add2; add3] |> List.reduce (>>)
-    let d = add6 7
+    let altiEkle = [birEkle; ikiEkle; ucEkle] |> List.reduce (>>)
+    let d = altiEkle 7
     printfn "1 + 2 + 3 + 7 = %i" d
 
 // ================================================
@@ -169,27 +169,27 @@ module FunctionExamples =
 module ListExamples =
 
     // listeler köşeli parantez kullanır
-    let list1 = ["a"; "b"]
-    let list2 = "c" :: list1    // :: başa eleman ekler
-    let list3 = list1 @ list2   // @ listeleri birbirine ekler
+    let liste1 = ["a"; "b"]
+    let liste2 = "c" :: liste1    // :: başa eleman ekler
+    let liste3 = liste1 @ liste2   // @ listeleri birbirine ekler
 
     // Liste comprehension'ları (jeneratörler olarak da bilinir)
-    let squares = [for i in 1..10 do yield i * i]
+    let kareler = [for i in 1..10 do yield i * i]
 
     // asal sayı jeneratörü
-    let rec sieve = function
-        | (p::xs) -> p :: sieve [ for x in xs do if x % p > 0 then yield x ]
+    let rec elek = function
+        | (p::xler) -> p :: elek [ for x in xler do if x % p > 0 then yield x ]
         | []      -> []
-    let primes = sieve [2..50]
-    printfn "%A" primes
+    let asallar = elek [2..50]
+    printfn "%A" asallar
 
     // Listelerle kalıp eşleştirme
-    let listMatcher aList =
-        match aList with
-        | [] -> printfn "the list is empty"
-        | [first] -> printfn "the list has one element %A " first
-        | [first; second] -> printfn "list is %A and %A" first second
-        | _ -> printfn "the list has more than two elements"
+    let listMatcher liste =
+        match liste with
+        | [] -> printfn "liste boş"
+        | [birinci] -> printfn "listede sadece bir eleman var: %A " birinci
+        | [birinci; ikinci] -> printfn "liste: %A ve %A" birinci ikinci
+        | _ -> printfn "listede ikiden fazla eleman var"
 
     listMatcher [1; 2; 3; 4]
     listMatcher [1; 2]
@@ -197,58 +197,58 @@ module ListExamples =
     listMatcher []
 
     // Listeleri kullanarak recursion
-    let rec sum aList =
-        match aList with
+    let rec ekle liste =
+        match liste with
         | [] -> 0
-        | x::xs -> x + sum xs
-    sum [1..10]
+        | x::xler -> x + ekle xler
+    ekle [1..10]
 
     // -----------------------------------------
     // Standart kütüphane fonksiyonları
     // -----------------------------------------
 
     // map
-    let add3 x = x + 3
-    [1..10] |> List.map add3
+    let ucEkle x = x + 3
+    [1..10] |> List.map ucEkle
 
     // filter
-    let even x = x % 2 = 0
-    [1..10] |> List.filter even
+    let cift x = x % 2 = 0
+    [1..10] |> List.filter cift
 
-    // ve dahası -- dökümantasyonu bakınız
+    // ve dahası -- dökümantasyona bakınız
 
-module ArrayExamples =
+module DiziOrnekleri =
 
     // Diziler köşeli parantezle birlikte çubuk karakterini kullanır
-    let array1 = [| "a"; "b" |]
-    let first = array1.[0]        // nokta kullanarak indeks erişimi
+    let dizi1 = [| "a"; "b" |]
+    let birinci = dizi1.[0]        // nokta kullanarak indeks erişimi
 
     // Diziler için kalıp eşleştirme listlerle aynıdır
-    let arrayMatcher aList =
-        match aList with
-        | [| |] -> printfn "the array is empty"
-        | [| first |] -> printfn "the array has one element %A " first
-        | [| first; second |] -> printfn "array is %A and %A" first second
-        | _ -> printfn "the array has more than two elements"
+    let diziEslestirici liste =
+        match liste with
+        | [| |] -> printfn "dizi boş"
+        | [| birinci |] -> printfn "dizide sadece bir eleman var: %A " birinci
+        | [| birinci; ikinci |] -> printfn "dizi: %A ve %A" birinci ikinci
+        | _ -> printfn "dizide ikiden fazla eleman var"
 
-    arrayMatcher [| 1; 2; 3; 4 |]
+    diziEslestirici [| 1; 2; 3; 4 |]
 
     // Listede olduğu gibi kütüphane fonksiyonları
 
     [| 1..10 |]
     |> Array.map (fun i -> i + 3)
     |> Array.filter (fun i -> i % 2 = 0)
-    |> Array.iter (printfn "value is %i. ")
+    |> Array.iter (printfn "değer: %i. ")
 
 
-module SequenceExamples =
+module SeriOrnekleri =
 
     // seriler kıvrık parantez kullanır
-    let seq1 = seq { yield "a"; yield "b" }
+    let seri1 = seq { yield "a"; yield "b" }
 
     // seriler yield'ı kullanabilir
     // ve alt seriler barındırabilir
-    let strange = seq {
+    let garip = seq {
         // "yield" bir eleman ekliyor
         yield 1; yield 2;
 
@@ -258,47 +258,47 @@ module SequenceExamples =
             for i in 1..10 do
               if i % 2 = 0 then yield i }}
     // test
-    strange |> Seq.toList
+    garip |> Seq.toList
 
 
     // Seriler "unfold" kullanılarak oluşturulabilir
     // Fibonacci serisi örneği
-    let fib = Seq.unfold (fun (fst,snd) ->
-        Some(fst + snd, (snd, fst + snd))) (0,1)
+    let fib = Seq.unfold (fun (birinci,ikinci) ->
+        Some(birinci + ikinci, (ikinci, birinci + ikinci))) (0,1)
 
     // test
     let fib10 = fib |> Seq.take 10 |> Seq.toList
-    printf "first 10 fibs are %A" fib10
+    printf "ilk 10 fibonacci sayısı: %A" fib10
 
 
 // ================================================
 // Veri Tipleri
 // ================================================
 
-module DataTypeExamples =
+module VeriTipiOrnekleri =
 
     // Bütün veriler varsayılan olarak değiştirilemezdir.
 
     // Tuple'lar çabuk ve kolay anonim tiplerdir.
-    // -- Tuple oluşturmak için virgül kullan
-    let twoTuple = 1, 2
-    let threeTuple = "a", 2, true
-
     // paketi açmak için kalıp eşleştirme kullan
-    let x, y = twoTuple  // x = 1, y = 2
+    let x, y = ikiliTuple  // x = 1, y = 2
+
+    // -- Tuple oluşturmak için virgül kullan
+    let ikiliTuple = 1, 2
+    let ucluTuple = "a", 2, true
 
     // ------------------------------------
     // Record tipi isimlendirilmiş alanlara sahiptir
     // ------------------------------------
 
     // "type" ile kıvrık parantezleri record tipi oluşturmak için kullan
-    type Person = {First:string; Last:string}
+    type Kisi = {birinci:string; Last:string}
 
     // "let" ile kıvrık parantezi record tipi oluşturmak için kullan
-    let person1 = {First="John"; Last="Doe"}
+    let kisi1 = {birinci="John"; Last="Doe"}
 
     // paketi açmak için kalıp eşleştirme kullan
-    let {First = first} = person1    // first="John"
+    let {birinci = birinci} = kisi1    // birinci="John"
 
     // ------------------------------------
     // Union tipleri (değişkenler olarak da bilinir) birden fazla
@@ -306,21 +306,21 @@ module DataTypeExamples =
     // ------------------------------------
 
     // "type" ile çubuk karakterini union tipi tanımlamak için kullan
-    type Temp =
-        | DegreesC of float
-        | DegreesF of float
+    type Derece =
+        | Santigrat of float
+        | Fahrenhayt of float
 
     // Seçeneklerden birini kullan
-    let temp1 = DegreesF 98.6
-    let temp2 = DegreesC 37.0
+    let derece1 = Fahrenhayt 98.6
+    let derece2 = Santigrat 37.0
 
     // Paketi açmak için bütün seçenekler üzerinde kalıp eşleştirme kullan
-    let printTemp = function
-       | DegreesC t -> printfn "%f degC" t
-       | DegreesF t -> printfn "%f degF" t
+    let dereceYazdir = function
+       | Santigrat t -> printfn "%f C" t
+       | Fahrenhayt t -> printfn "%f F" t
 
-    printTemp temp1
-    printTemp temp2
+    dereceYazdir derece1
+    dereceYazdir derece2
 
     // ------------------------------------
     // Yinelgen (Recursive) tipler
@@ -328,40 +328,40 @@ module DataTypeExamples =
 
 	// Tipler alt sınıflar oluşturmadan karmaşık şekillerde
 	// yinelgen olarak birleştirilebilirler.
-    type Employee =
-      | Worker of Person
-      | Manager of Employee list
+    type Calisan =
+      | Isci of Kisi
+      | Yonetici of Calisan liste
 
-    let jdoe = {First="John"; Last="Doe"}
-    let worker = Worker jdoe
+    let falancaKisi = {birinci="John"; Last="Doe"}
+    let isci = Isci falancaKisi
 
     // ------------------------------------
     // Tipleri Kullanarak Modelleme
     // ------------------------------------
 
     // Union tipleri bayrak kullanmadan durum modelleme için harikadır.
-    type EmailAddress =
-        | ValidEmailAddress of string
-        | InvalidEmailAddress of string
+    type EpostaAdresi =
+        | GecerliEpostaAdresi of string
+        | GecersizEpostaAdresi of string
 
-    let trySendEmail email =
-        match email with // kalıp eşleştirme kullan
-        | ValidEmailAddress address -> ()   // gönder
-        | InvalidEmailAddress address -> () // gönderme
+    let epostaGondermeyiDene eposta =
+        match eposta with // kalıp eşleştirme kullan
+        | GecerliEpostaAdresi adres -> ()   	// gönder
+        | GecersizEpostaAdresi adres -> () 		// gönderme
 
 	// Union tiplerin record tiplerle birleşimi
 	// domain driven design için iyi bir temel oluşturur.
     // Domain'i yansıtan yüzlerce ufak tip oluşturabilirsiniz.
 
-    type CartItem = { ProductCode: string; Qty: int }
-    type Payment = Payment of float
-    type ActiveCartData = { UnpaidItems: CartItem list }
-    type PaidCartData = { PaidItems: CartItem list; Payment: Payment}
+    type Urun = { UrunKodu: string; Miktar: int }
+    type Odeme = Odeme of float
+    type AktifSepetVerisi = { OdenmemisUrunler: Urun liste }
+    type OndenmisSepetVerisi = { OdenmisUrunler: Urun liste; Odeme: Odeme}
 
-    type ShoppingCart =
-        | EmptyCart  // veri yok
-        | ActiveCart of ActiveCartData
-        | PaidCart of PaidCartData
+    type AlisverisSepeti =
+        | BosSepet  // veri yok
+        | AktifSepet of AktifSepetVerisi
+        | OdenmisSepet of OndenmisSepetVerisi
 
     // ------------------------------------
     // Tipler için içgüdüsel davranış
@@ -375,29 +375,29 @@ module DataTypeExamples =
     // * Serialization
 
     // %A kullanarak yazdırma
-    printfn "twoTuple=%A,\nPerson=%A,\nTemp=%A,\nEmployee=%A"
-             twoTuple person1 temp1 worker
+    printfn "ikiliTuple=%A,\nKisi=%A,\nDerece=%A,\nCalisan=%A"
+             ikiliTuple kisi1 derece1 isci
 
     // Eşitlik ve kıyaslama içgüdüseldir.
     // İskambil kartlarıyla bir örnek
-    type Suit = Club | Diamond | Spade | Heart
-    type Rank = Two | Three | Four | Five | Six | Seven | Eight
-                | Nine | Ten | Jack | Queen | King | Ace
+    type Simge = Sinek | Karo | Maca | Kupa
+    type Sira = Iki | Uc | Dort | Bes | Alti | Yedi | Sekiz
+                | Dokuz | On | Bacak | Kiz | Papaz | As
 
-    let hand = [ Club, Ace; Heart, Three; Heart, Ace;
-                 Spade, Jack; Diamond, Two; Diamond, Ace ]
+    let el = [ Sinek, As; Kupa, Uc; Kupa, As;
+                 Maca, Bacak; Karo, Iki; Karo, As ]
 
     // Sıralama
-    List.sort hand |> printfn "sorted hand is (low to high) %A"
-    List.max hand |> printfn "high card is %A"
-    List.min hand |> printfn "low card is %A"
+    List.sirala el |> printfn "artarak dizilen el: %A"
+    List.max el |> printfn "en yüksek kart: %A"
+    List.min el |> printfn "en düşük kart: %A"
 
 
 // ================================================
 // Aktif Kalıplar
 // ================================================
 
-module ActivePatternExamples =
+module AktifKalipOrnekleri =
 
     // F# "aktif kalıplar" denen bir kalıp eşleştirmeye sahiptir.
     // Kalıplar dinamik bir şekilde tespit edilip eşleştirilebilir.
@@ -405,22 +405,22 @@ module ActivePatternExamples =
     // Aktif kalıplar için söz dizimi (| ... |) şeklindedir
 
     // Örneğin, karakter tiplerini eşleyen bir "aktif" kalıp tanımlayın...
-    let (|Digit|Letter|Whitespace|Other|) ch =
-       if System.Char.IsDigit(ch) then Digit
-       else if System.Char.IsLetter(ch) then Letter
-       else if System.Char.IsWhiteSpace(ch) then Whitespace
-       else Other
+    let (|Rakam|Harf|Bosluk|Diger|) karakter =
+       if System.Char.IsDigit(karakter) then Rakam
+       else if System.Char.IsLetter(karakter) then Harf
+       else if System.Char.IsWhiteSpace(karakter) then Bosluk
+       else Diger
 
     // ... daha sonra eşleme mantığı çok daha net yapmak için bunu kullanın
-    let printChar ch =
-      match ch with
-      | Digit -> printfn "%c is a Digit" ch
-      | Letter -> printfn "%c is a Letter" ch
-      | Whitespace -> printfn "%c is a Whitespace" ch
-      | _ -> printfn "%c is something else" ch
+    let karakterYazdir karakter =
+      match karakter with
+      | Rakam -> printfn "%c bir rakamdır" karakter
+      | Harf -> printfn "%c bir harftir" karakter
+      | Bosluk -> printfn "%c bir boşluktur" karakter
+      | _ -> printfn "%c başka bir şeydir" karakter
 
     // Bir liste yazdırma
-    ['a'; 'b'; '1'; ' '; '-'; 'c'] |> List.iter printChar
+    ['a'; 'b'; '1'; ' '; '-'; 'c'] |> List.iter karakterYazdir
 
     // -----------------------------------
     // Aktif Kalıpları Kullanarak FizzBuzz
@@ -428,15 +428,15 @@ module ActivePatternExamples =
 
 	// Parçalı eşleşen kalıplar da oluşturabilirsiniz
     // Tanımda alt çizgi karakterini kullanın ve eşleşince Some döndürün.
-    let (|MultOf3|_|) i = if i % 3 = 0 then Some MultOf3 else None
-    let (|MultOf5|_|) i = if i % 5 = 0 then Some MultOf5 else None
+    let (|UcunKati|_|) i = if i % 3 = 0 then Some UcunKati else None
+    let (|BesinKati|_|) i = if i % 5 = 0 then Some BesinKati else None
 
     // Ana fonksiyon
     let fizzBuzz i =
       match i with
-      | MultOf3 & MultOf5 -> printf "FizzBuzz, "
-      | MultOf3 -> printf "Fizz, "
-      | MultOf5 -> printf "Buzz, "
+      | UcunKati & BesinKati -> printf "FizzBuzz, "
+      | UcunKati -> printf "Fizz, "
+      | BesinKati -> printf "Buzz, "
       | _ -> printf "%i, " i
 
     // test
@@ -446,50 +446,50 @@ module ActivePatternExamples =
 // Sadelik
 // ================================================
 
-module AlgorithmExamples =
+module AlgoritmaOrnekleri =
 
     // F#'ın sinyal/gürültü oranı yüksektir, dolayısıyla
     // kod algoritmayla hemen hemen aynı görünür.
 
-    // ------ Örnek: sumOfSquares fonksiyonunu tanımla ------
-    let sumOfSquares n =
-       [1..n]              // 1) 1'den n'e kadar bütün sayıları al
-       |> List.map square  // 2) hepsinin karesini al
-       |> List.sum         // 3) sonuçları topla
+    // ------ Örnek: karelerToplami fonksiyonunu tanımla ------
+    let karelerToplami n =
+       [1..n]              	// 1) 1'den n'e kadar bütün sayıları al
+       |> List.map kare  	// 2) hepsinin karesini al
+       |> List.ekle         // 3) sonuçları topla
 
     // test
-    sumOfSquares 100 |> printfn "Sum of squares = %A"
+    karelerToplami 100 |> printfn "kareler toplamı = %A"
 
     // ------ Örnek: bir sıralama fonksiyonu tanımla ------
-    let rec sort list =
-       match list with
+    let rec sirala liste =
+       match liste with
        // Liste boşsa
        | [] ->
-            []                            // boş listeyi döndür
+            []                            	// boş listeyi döndür
        // Liste boş değilse
-       | firstElem::otherElements ->      // İlk elemanı al
-            let smallerElements =         // Daha küçük elemanları 
-                otherElements             // diğerlerinden ayır
-                |> List.filter (fun e -> e < firstElem)
-                |> sort                   // ve sırala
-            let largerElements =          // Daha büyük elemanları
-                otherElements             // diğerlerinden ayır
-                |> List.filter (fun e -> e >= firstElem)
-                |> sort                   // ve sırala
+       | ilkEleman::digerElemanlar ->		// İlk elemanı al
+            let kucukElemanlar =         	// Daha küçük elemanları 
+                digerElemanlar             	// diğerlerinden ayır
+                |> List.filter (fun e -> e < ilkEleman)
+                |> sirala                   // ve sırala
+            let buyukElemanlar =          	// Daha büyük elemanları
+                digerElemanlar             	// diğerlerinden ayır
+                |> List.filter (fun e -> e >= ilkEleman)
+                |> sirala                   // ve sırala
             // 3 parçayı birbirine ekle ve listeyi döndür
-            List.concat [smallerElements; [firstElem]; largerElements]
+            List.concat [kucukElemanlar; [ilkEleman]; buyukElemanlar]
 
     // test
-    sort [1; 5; 23; 18; 9; 1; 3] |> printfn "Sorted = %A"
+    sirala [1; 5; 23; 18; 9; 1; 3] |> printfn "Sırala = %A"
 
 // ================================================
-// Eşzamanlı olmayan kod
+// Eşzamansız kod
 // ================================================
 
-module AsyncExample =
+module EszamansizOrnegi =
 
     // F# "pyramid of doom" durumuyla karşılaştırmayacak şekilde
-	// içgüdüsel eşzamanlı olmayan özelliklere sahiptir.
+	// içgüdüsel eşzamansız özelliklere sahiptir.
     //
     // Bir sonraki örnek bir web sayfasını paralel bir şekilde indirir.
 
@@ -498,39 +498,39 @@ module AsyncExample =
     open System.IO
     open Microsoft.FSharp.Control.CommonExtensions
 
-    // İçeriği eşzamanlı olmayan bir şekilde getir
-    let fetchUrlAsync url =
+    // İçeriği eşzamansız bir şekilde getir
+    let eszamansizUrlGetir url =
         async {   // "async" anahtar kelimesi ve kıvrık parantez
-                  // "async (eşzamanlı olmayan)" nesneyi oluşturur
-            let req = WebRequest.Create(Uri(url))
-            use! resp = req.AsyncGetResponse()
-                // use! eşzamanlı olmayan atamadır
-            use stream = resp.GetResponseStream()
+                  // "async (eşzamansız)" nesneyi oluşturur
+            let istek = WebRequest.Create(Uri(url))
+            use! cevap = istek.AsyncGetResponse()
+                // use! eşzamansız atamadır
+            use akis = cevap.GetResponseStream()
                 // "use" kullanılan bloğun dışına çıkınca
                 // close()'u otomatik olarak tetikler
-            use reader = new IO.StreamReader(stream)
-            let html = reader.ReadToEnd()
-            printfn "finished downloading %s" url
+            use okuyucu = new IO.StreamReader(akis)
+            let html = okuyucu.ReadToEnd()
+            printfn "İndirme tamamlandı: %s" url
             }
 
     // İndirmek için bir web sitesi listesi
-    let sites = ["http://www.bing.com";
+    let siteler = ["http://www.bing.com";
                  "http://www.google.com";
                  "http://www.microsoft.com";
                  "http://www.amazon.com";
                  "http://www.yahoo.com"]
 
     // İndir
-    sites
-    |> List.map fetchUrlAsync  // async görevlerden oluşan bir liste yap
-    |> Async.Parallel          // bu görevleri paralel çalışacak şekilde ayarla
-    |> Async.RunSynchronously  // başlat
+    siteler
+    |> List.map eszamansizUrlGetir  // eşzamansız görevlerden oluşan bir liste yap
+    |> Async.Parallel          		// bu görevleri paralel çalışacak şekilde ayarla
+    |> Async.RunSynchronously  		// başlat
 
 // ================================================
 // .NET uyumluluğu
 // ================================================
 
-module NetCompatibilityExamples =
+module NetUyumlulukOrnekleri =
 
     // F#, C#'ın yapabildiği hemen herşeyi yapabilir,
     // ve .NET ve Mono kütüphaneleriyle tereyağından kıl çeker gibi çalışır.
@@ -548,14 +548,14 @@ module NetCompatibilityExamples =
          with member this.Dispose() = printfn "%s disposed" name }
 
     let useAndDisposeResources =
-        use r1 = makeResource "first resource"
-        printfn "using first resource"
+        use r1 = makeResource "birinci resource"
+        printfn "using birinci resource"
         for i in [1..3] do
             let resourceName = sprintf "\tinner resource %d" i
             use temp = makeResource resourceName
             printfn "\tdo something with %s" resourceName
-        use r2 = makeResource "second resource"
-        printfn "using second resource"
+        use r2 = makeResource "ikinci resource"
+        printfn "using ikinci resource"
         printfn "done."
 
     // ------- Nesne yönelimli kod -------
@@ -616,7 +616,7 @@ module NetCompatibilityExamples =
 
     // test
     let myButton = new MyButton()
-    myButton.OnClick.Add(fun (sender, arg) ->
+    myButton.OnClick.topla(fun (sender, arg) ->
             printfn "Click event with arg=%O" arg)
 
     myButton.TestEvent("Hello World!")
