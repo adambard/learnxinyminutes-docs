@@ -5,6 +5,7 @@ contributors:
 translators:
     - ["Mustafa Zengin", "http://zengin.github.com/"]
 filename: learnfsharp-tr.fs
+lang: tr-tr
 ---
 
 F# fonksiyonel ve nesne yönelimli, genel amaçlı bir programlama dilidir. Bedava ve açık kaynaklıdır ve Linux, Mac, Windows ve dahasında çalışır.
