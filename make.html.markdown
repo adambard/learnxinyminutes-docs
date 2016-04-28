@@ -74,7 +74,10 @@ maker:
 # A rule with a dependency on a phony target will always run
 ex0.txt ex1.txt: maker
 
+# Phony targets are used to perform actions to source.
 # Common phony targets are: all make clean install ...
+clean:
+	rm -f ex0.txt ex1.txt
 
 #-----------------------------------------------------------------------
 # Automatic Variables & Wildcards
