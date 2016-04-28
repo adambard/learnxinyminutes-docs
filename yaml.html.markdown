@@ -164,3 +164,8 @@ set2:
     item2: null
     item3: null
 ```
+
+### More Resources
+
++ [YAML official website](http://yaml.org/)
++ [Online YAML Validator](http://codebeautify.org/yaml-validator)
