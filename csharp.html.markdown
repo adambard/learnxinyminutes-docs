@@ -212,10 +212,10 @@ on a new line! ""Wow!"", the masses cried";
             // Incrementations
             int i = 0;
             Console.WriteLine("\n->Inc/Dec-rementation");
-            Console.WriteLine(i++); //i = 1. Post-Incrementation
-            Console.WriteLine(++i); //i = 2. Pre-Incrementation
-            Console.WriteLine(i--); //i = 1. Post-Decrementation
-            Console.WriteLine(--i); //i = 0. Pre-Decrementation
+            Console.WriteLine(i++); //Prints "0", i = 1. Post-Incrementation
+            Console.WriteLine(++i); //Prints "2", i = 2. Pre-Incrementation
+            Console.WriteLine(i--); //Prints "2", i = 1. Post-Decrementation
+            Console.WriteLine(--i); //Prints "0", i = 0. Pre-Decrementation
 
             ///////////////////////////////////////
             // Control Structures
