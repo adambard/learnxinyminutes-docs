@@ -7,6 +7,7 @@ contributors:
     - ["Betsy Lorton" , "http://github.com/schbetsy"]
     - ["Bruno Volcov", "http://github.com/volcov"]
     - ["Andrew Taylor", "http://github.com/andrewjt71"]
+    - ["Jason Stathopulos", "http://github.com/SpiritBreaker226"]
 filename: LearnGit.txt
 ---
 
@@ -519,6 +520,31 @@ $ git reset 31f2bb1
 # after the specified commit).
 $ git reset --hard 31f2bb1
 ```
+
+### reflog (caution)
+
+Reflog will list most of the git commands you have done for a given time period,
+default 90 days.
+
+This give you the a change to reverse any git commands that have gone wrong
+for instance if a rebase is has broken your application.
+
+You can do this:
+
+1. `git reflog` to list all of the git commands for the rebase
+```
+38b323f HEAD@{0}: rebase -i (finish): returning to refs/heads/feature/add_git_reflog
+38b323f HEAD@{1}: rebase -i (pick): Clarify inc/dec operators
+4fff859 HEAD@{2}: rebase -i (pick): Update java.html.markdown
+34ed963 HEAD@{3}: rebase -i (pick): [yaml/en] Add more resources (#1666)
+ed8ddf2 HEAD@{4}: rebase -i (pick): pythonstatcomp spanish translation (#1748)
+2e6c386 HEAD@{5}: rebase -i (start): checkout 02fb96d
+```
+2. Select where to reset to, in our case its `2e6c386`, or `HEAD@{5}`
+3. 'git reset --hard HEAD@{5}' this will reset your repo to that head
+4. You can start the rebase again or leave it alone.
+
+[Additional Reading.](https://git-scm.com/docs/git-reflog)
 
 ### revert
 
