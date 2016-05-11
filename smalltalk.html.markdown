@@ -946,10 +946,11 @@ Utilities openCommandKeyHelp
 ### Free Online
 
 * [GNU Smalltalk User's Guide](https://www.gnu.org/software/smalltalk/manual/html_node/Tutorial.html)
-* [smalltalk dot org](http://www.smalltalk.org/smalltalk/learning.html)
+* [smalltalk dot org](http://www.smalltalk.org/)
 * [Computer Programming using GNU Smalltalk](http://www.canol.info/books/computer_programming_using_gnu_smalltalk/)
 * [Smalltalk Cheatsheet](http://www.angelfire.com/tx4/cus/notes/smalltalk.html)
 * [Smalltalk-72 Manual](http://www.bitsavers.org/pdf/xerox/parc/techReports/Smalltalk-72_Instruction_Manual_Mar76.pdf)
 * [BYTE: A Special issue on Smalltalk](https://archive.org/details/byte-magazine-1981-08)
 * [Smalltalk, Objects, and Design](https://books.google.co.in/books?id=W8_Une9cbbgC&printsec=frontcover&dq=smalltalk&hl=en&sa=X&ved=0CCIQ6AEwAWoVChMIw63Vo6CpyAIV0HGOCh3S2Alf#v=onepage&q=smalltalk&f=false)
 * [Smalltalk: An Introduction to Application Development Using VisualWorks](https://books.google.co.in/books?id=zalQAAAAMAAJ&q=smalltalk&dq=smalltalk&hl=en&sa=X&ved=0CCgQ6AEwAmoVChMIw63Vo6CpyAIV0HGOCh3S2Alf/)
+* [Smalltalk Programming Resources](http://www.whoishostingthis.com/resources/smalltalk/)
