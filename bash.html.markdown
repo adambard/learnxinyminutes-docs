@@ -270,7 +270,7 @@ grep "^foo.*bar$" file.txt
 grep -c "^foo.*bar$" file.txt
 # if you literally want to search for the string,
 # and not the regex, use fgrep (or grep -F)
-fgrep "^foo.*bar$" file.txt
+fgrep "foobar" file.txt
 
 
 # Read Bash shell builtins documentation with the bash 'help' builtin:
