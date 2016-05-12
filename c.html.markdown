@@ -238,7 +238,7 @@ int main (int argc, char** argv)
   // Increment and decrement operators:
   char *s = "ILoveC";
   int j = 0;
-  s[j++]; // => "i". Returns the j-th item of s THEN increments value of j.
+  s[j++]; // => "I". Returns the j-th item of s THEN increments value of j.
   j = 0;
   s[++j]; // => "L". Increments value of j THEN returns j-th value of s.
   // same with j-- and --j
