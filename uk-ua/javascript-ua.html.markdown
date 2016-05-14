@@ -350,6 +350,7 @@ myFunc(); // = undefined
 // Функція може бути присвоєна іншому об’єкту. Тоді вона матиме доступ до 
 // цього об’єкта через this
 var myOtherFunc = function() {
+    return this.myString.toUpperCase();
 }
 myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "HELLO, WORLD!"
@@ -407,7 +408,7 @@ myObj.__proto__ = myPrototype;
 myObj.meaningOfLife; // = 42
 
 // Аналогічно для функцій
-myObj.myFunc(); // = "Hello, world!"
+myObj.myFunc(); // = "hello, world!"
 
 // Якщо інтерпретатор не знайде властивості в прототипі, то він продовжить пошук
 // в прототипі прототипа і так далі
@@ -432,7 +433,7 @@ myObj.meaningOfLife; // = 43
 
 // Другий спосіб: у конструкторів є властивість з іменем prototype. Це *не*
 // прототип функції-конструктора, це прототип для нових об’єктів, які будуть створені
-// цим конструктором і ключового слова new.
+// цим конструктором і ключовим словом new.
 MyConstructor.prototype = {
     myNumber: 5,
     getMyNumber: function() {
