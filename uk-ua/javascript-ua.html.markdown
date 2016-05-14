@@ -3,6 +3,7 @@ language: javascript
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
+    - ["clearsense", "https://github.com/clearsense"]
 filename: javascript-uk.js
 translators:
   - ["Ivan", "https://github.com/IvanEh"]
