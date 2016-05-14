@@ -455,9 +455,6 @@ myNumber == myNumberObj; // = true
 typeof myNumber; // = 'number'
 typeof myNumberObj; // = 'object'
 myNumber === myNumberObj; // = false
-if (0) {
-    // Цей код не виконається, тому що 0 - це хиба.
-}
 
 // Об’єкти-обгортки і вбудовані типи мають спільні прототипи, тому
 // ви можете розширити функціонал рядків:
