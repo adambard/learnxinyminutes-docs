@@ -396,8 +396,8 @@ $ git pull origin master
 $ git pull
 
 # Merge in changes from remote branch and rebase
-# branch commits onto your local repo, like: "git pull <remote> <branch>, git 
-# rebase <branch>"
+# branch commits onto your local repo, like: "git fetch <remote> <branch>, git 
+# rebase <remote>/<branch>"
 $ git pull origin master --rebase
 ```
 
