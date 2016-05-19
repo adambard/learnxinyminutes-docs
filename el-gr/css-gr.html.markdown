@@ -27,10 +27,8 @@ selector { property: value; /* περισσότερες ιδιότητες...*/ 
 
 /*
 Αυτό είναι ενα παράδειγμα αντικειμένου
-*/
-
 <div class='class1 class2' id='anID' attr='value' otherAttr='en-us foo bar' />
-
+*/
 
 /* Μπορούμε να το στοχεύσουμε με την χρήση CSS κλάσεων */
 .class1 { }
