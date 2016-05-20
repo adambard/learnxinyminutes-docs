@@ -13,7 +13,7 @@ You can evaluate Nix expressions using
 [nix-instantiate](https://nixos.org/nix/manual/#sec-nix-instantiate)
 or [`nix-repl`](https://github.com/edolstra/nix-repl).
 
-```nix
+```
 with builtins; [
 
   #  Comments
