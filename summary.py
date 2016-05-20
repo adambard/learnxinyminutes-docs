@@ -3,12 +3,12 @@
 what to do:
     create summary.markdown for gitbook
 how to use:
-    cd zh-cn && python summary.py
+    cd zh-cn && python ../summary.py
     gitbook init && gitbook build && gitbook pdf
 reuslt:
     it works, anyway.
 
-walker.zheng[mykulou@gmail.com]
+[walker.zheng](mykulou@gmail.com)
 '''
 
 import os
@@ -52,19 +52,18 @@ def write2file(content, path):
             for line in content:
                 f.write(line)
 
-readme = copy.deepcopy(summary)
+#readme = copy.deepcopy(summary)
 summary.insert(0, """learnxinyminutes-docs
 =======
 
 # SUMMARY
 """)
-readme.insert(0, """learnxinyminutes-docs
-=======
-
-# Introduction
-""")
-
-#write2file(readme, "README.markdown")
 write2file(summary, "SUMMARY.markdown")
+#readme.insert(0, """learnxinyminutes-docs
+#=======
+
+## Introduction
+#""")
+#write2file(readme, "README.markdown")
 
 
