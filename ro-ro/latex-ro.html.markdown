@@ -7,7 +7,6 @@ contributors:
     - ["Ramanan Balakrishnan", "https://github.com/ramananbalakrishnan"]
 translators:
     - ["Petru Dimitriu", "http://petru-dimitriu.github.io"]
-filename: brainfuck-ro.clj
 filename: learn-latex-ro.tex
 lang: ro-ro
 ---
@@ -43,19 +42,18 @@ lang: ro-ro
 \usepackage[utf8]{inputenc}
 
 % De asemenea, putem defini și alte proprietăți pentru documente.
-% We can define some other document properties too!
 \author{Chaitanya Krishna Ande, Colton Kohnke \& Sricharan Chiruvolu \\ Traducere de Petru Dimitriu}
 \date{\today}
 \title{Învățați LaTeX în Y minute!}
 
 % Suntem gata să începem documentul.
 % Tot ce se află înaintea acestei linii se numește "Preambul"
-\begin{document} 
+\begin{document}
 % dacă am setat autorul, data și titlul, putem cere LaTeX să
 % creeze o pagină de titlu
 \maketitle
 
-% Cele mai multe documente științifice au un abstract; puteți folosi comenzile
+% Cele mai multe documente științifice au un rezumat; puteți folosi comenzile
 % predefinite pentru acesta. Acesta ar trebui să apară, așa cum ar fi logic,
 % după titlu, dar înainte de secțiunile principale ale corpului.
 % Această comandă este disponibilă în clasele de document article și report.
@@ -71,7 +69,7 @@ Salut, mă numesc Petru. Astăzi vom învăța împreună LaTeX!
 \section{Altă secțiune}
 Acesta este textul pentru altă secțiune. Vom face o subsecțiune.
 
-\subsection{Aceasta este o subsecțiune} % Subsecțiunile sunt și ele intuitive.
+\subsection{Aceasta este o subsecțiune}
 Și încă una.
 
 \subsubsection{Pitagora}
@@ -80,7 +78,7 @@ Mult mai bine.
 
 % Folosind asteriscul putem suprima numărătoarea automată a LaTeX.
 % Aceasta funcționează și pentru alte comenzi LaTeX.
-\section*{Secțiune fără numerotare} 
+\section*{Secțiune fără numerotare}
 Totuși nu toate secțiunile trebuie să fie nenumerotate!
 
 \section{Note despre text}
@@ -89,7 +87,7 @@ nevoie \\ să \\ fie \\ întreruptă, puteți adăuga două caractere backslash
 la codul sursă.
 
 \section{Liste}
-Listele sunt printre cel mai simplu de făcut lucruri în LaTeX! Mâine merg la 
+Listele sunt printre cel mai simplu de făcut lucruri în LaTeX! Mâine merg la
 cumpărături așa că fac o listă:
 \begin{enumerate} % Aceasta creează un mediu "enumerate"
   % \item spune mediului "enumerate" să incrementeze
@@ -101,20 +99,20 @@ cumpărături așa că fac o listă:
 
   Nu este un element din listă, dar încă face parte din "enumerate".
 
-\end{enumerate} % All environments must have an end.
+\end{enumerate} % Toate mediile trebuie să aibă o instrucțiune de încheiere.
 
 \section{Matematică}
 
 Una dintre principalele întrebuințări ale LaTeX este realizarea
-articolelor academice sau a foilor tehnice, de obicei aflate în
+articolelor academice sau a fișelor tehnice, de obicei aflate în
 universul matematicii și științelor exacte. Astfel, trebuie să putem
-adăuga simboluri speciale în documentului nostru! \\
+adăuga simboluri speciale în documentul nostru! \\
 
 Matematica are multe simboluri, mult mai multe decât se găsesc
 pe o tastatură - printre ele, simboluri pentru mulțimi și relații,
 săgeți, operatori și litere grecești.\\
 
-Mulțimile și relațiile sunt de bază în lucrările științifce matematice.
+Mulțimile și relațiile sunt esențiale în lucrările științifce matematice.
 Iată cum se scrie: toți y aparținând lui X.\\
 $\forall$ x $\in$ X. \\
 
@@ -127,13 +125,13 @@ $\forall$ x $\in$ X. \\
 
 \[a^2 + b^2 = c^2 \]
 
-Litera mea grecească este $\xi$. De asemenea îmi plac $\beta$, $\gamma$ și
+Îmi place litera $\xi$. De asemenea îmi plac $\beta$, $\gamma$ și
 $\sigma$. Nu există nicio literă grecească necunoscută pentru LaTeX!
 
-Operatorii sunt exențiali într-un document matematic!
-funcțiile trigonometrice ($\sin$, $\cos$, $\tan$), 
-logaritmii și exponențialele ($\log$, $\exp$), 
-limitele ($\lim$), etc. 
+Operatorii sunt esențiali într-un document matematic!
+funcțiile trigonometrice ($\sin$, $\cos$, $\tan$),
+logaritmii și exponențialele ($\log$, $\exp$),
+limitele ($\lim$), etc.
 au comenzi definite în LaTeX pentru fiecare.
 Să vedem cum scriem o ecuație: \\
 
@@ -156,20 +154,20 @@ Putem insera ecuații și într-un "mediu pentru ecuații".
 \end{equation}
 % toate instrucțiunile cu \begin trebuie să fie cuplate cu o instrucțiune cu \end
 
-Putem referenția noua nosatră ecuație!
+Putem referenția noua noastră ecuație!
 ~\ref{eq:pitagora} este cunoscută și ca Teorema lui Pitagora, despre care vorbim și la Sec.~\ref{subsec:pitagora}. Multe lucruri prot fi etichetate:
 figuri, ecuații, secțiuni, etc.
 
 Sumele discrete și integralele se scriu cu comenzile sum și int.
 
-% Unele compilatoare LaTeX nu acceptă să există linii goala
+% Unele compilatoare LaTeX nu acceptă să existe linii goale
 % într-un mediu pentru ecuații.
-\begin{equation} 
+\begin{equation}
   \sum_{i=0}^{5} f_{i}
-\end{equation} 
-\begin{equation} 
+\end{equation}
+\begin{equation}
   \int_{0}^{\infty} \mathrm{e}^{-x} \mathrm{d}x
-\end{equation} 
+\end{equation}
 
 \section{Figuri}
 
@@ -179,7 +177,7 @@ Eu trebuie să mă uit peste opțiunile de așezare de fiecare dată.
 \begin{figure}[H] % H denumește opțiunle de așezare
     \centering % centrează figura pe pagină
     % Inserează o figură scalată la 0.8 din lățimea paginii.
-    %\includegraphics[width=0.8\linewidth]{right-triangle.png} 
+    %\includegraphics[width=0.8\linewidth]{right-triangle.png}
     % Comentat pentru a nu împiedica fișierul să compileze.
     \caption{Triunghi dreptunghic cu laturile $a$, $b$, $c$}
     \label{fig:right-triangle}
@@ -191,7 +189,7 @@ Putem insera tabele la fel cum inserăm figuri.
 \begin{table}[H]
   \caption{Descriere pentru tabel}
   % argumentele {} controlează cum vor fi afișate coloanele
-  \begin{tabular}{c|cc} 
+  \begin{tabular}{c|cc}
     Număr &  Nume & Prenume \\ % Numele coloanelor sunt separate prin $
     \hline % a linie orizonală
     1 & Popescu & Ion \\
@@ -208,27 +206,27 @@ ci doar să îl redea în document. Vom face asta cu un mediu verbatim.
 
 % Există și alte pachete (i.e. minty, lstlisting, etc.)
 % dar verbatim este pachetul cel mai simplu.
-\begin{verbatim} 
+\begin{verbatim}
   print("Salut lume!")
   a%b; % hei! putem folosi % în verbatim
-  random = 4; 
+  random = 4;
 \end{verbatim}
 
-\section{Compilarea} 
+\section{Compilarea}
 Acum vă întrebați cum se compilează acest document minunat și să vă
-minunați de rezultatul, un PDF LaTeX. (da, documentul acesta chiar
+minunați de rezultat, un PDF LaTeX. (da, documentul acesta chiar
 compilează). \\
 Realizarea documentului cu LaTeX va parcurge următorii pași:
   \begin{enumerate}
     \item Se scrie documentul în text simplu. (codul sursă)
     \item Se compilează documentul pentru a produce un PDF.
      Compilarea arată cam așa în Linux:\\
-     \begin{verbatim} 
-        $pdflatex learn-latex.tex learn-latex.pdf 
+     \begin{verbatim}
+        $pdflatex learn-latex.tex learn-latex.pdf
      \end{verbatim}
   \end{enumerate}
 
-Anumiți editor pentru LaTeX combină pașii 1 și 2 în același produs software.
+Anumite editoare pentru LaTeX combină pașii 1 și 2 în același produs software.
 Așadar, dacă vreți să vedeți realizați pasul 1 dar nu și pasul 2, el se poate
 realiza "în spate".
 
