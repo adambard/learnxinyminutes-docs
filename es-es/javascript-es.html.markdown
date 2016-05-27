@@ -16,7 +16,7 @@ con Java para aplicaciones más complejas. Debido a su integracion estrecha con 
 web y soporte por defecto de los navegadores modernos se ha vuelto mucho más común 
 para front-end que Java.
 
-Aunque JavaScript no sólo se limita a los navegadores web: Node.js, Un proyecto que proporciona un entorno de ejecución independiente para el motor V8 de Google Chrome, se está volviendo más y más popular.
+Sin embargo, JavaScript no sólo se limita a los navegadores web: Node.js, un proyecto que proporciona un entorno de ejecución independiente para el motor V8 de Google Chrome, se está volviendo más y más popular.
 
 ¡La retroalimentación es bienvenida! Puedes encontrarme en: 
 [@adambrenecki](https://twitter.com/adambrenecki), o
@@ -82,13 +82,13 @@ false;
 !true; // = false
 !false; // = true
 
-// Para comprobar una igualdad se usa ==
-1 == 1; // = true
-2 == 1; // = false
+// Para comprobar una igualdad se usa ===
+1 === 1; // = true
+2 === 1; // = false
 
-// Para comprobar una desigualdad se usa !=
-1 != 1; // = false
-2 != 1; // = true
+// Para comprobar una desigualdad se usa !==
+1 !== 1; // = false
+2 !== 1; // = true
 
 // Más comparaciones
 1 < 10; // = true
