@@ -5,7 +5,8 @@ contributors:
     - ["Ariel Krakowski", "http://www.learneroo.com"]
 translators:
     - ["Michal Martinek", "https://github.com/MichalMartinek"]
-filename: javascript.js
+lang: cs-cz
+filename: javascript-cz.js
 ---
 
 JavaScript byl vytvořen Brendan Eichem v roce 1995 pro Netscape. Byl původně
