@@ -5,6 +5,7 @@ contributors:
 translators:
     - ["Jhoon Saravia", "https://github.com/jhoon"]
 lang: es-es
+filename: groovy-es.html
 ---
 
 Groovy - Un lenguaje dinámico para la plataforma Java [Leer más aquí.](http://www.groovy-lang.org/)
