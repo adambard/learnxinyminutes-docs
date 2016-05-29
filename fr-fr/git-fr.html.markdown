@@ -112,8 +112,8 @@ fichiers
 
 ### Ressources conceptuelles
 
-* [Git pour les informaticiens](http://eagain.net/articles/git-for-computer-scientists/)
-* [Git pour les designers](http://hoth.entp.com/output/git_for_designers.html)
+* [Git pour les informaticiens (EN)](http://eagain.net/articles/git-for-computer-scientists/)
+* [Git pour les designers (EN)](http://hoth.entp.com/output/git_for_designers.html)
 
 
 ## Commandes
@@ -560,7 +560,7 @@ $ git rm HelloWorld.c
 $ git rm /chemin/vers/le/fichier/HelloWorld.c
 ```
 
-## Information complémentaire
+## Informations complémentaires
 
 * [tryGit - A fun interactive way to learn Git (EN)](http://try.github.io/levels/1/challenges/1)
 
