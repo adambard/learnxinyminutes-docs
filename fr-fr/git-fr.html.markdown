@@ -7,8 +7,9 @@ contributors:
     - ["Betsy Lorton" , "http://github.com/schbetsy"]
     - ["Bruno Volcov", "http://github.com/volcov"]
 translators:
-	- ["Xuan-thi Nguyen", "http://github.com/mellenguyen"]
-filename: LearnGit-fr.txt
+    - ["Xuan-thi Nguyen", "http://github.com/mellenguyen"]
+filename: LearnGit-fr-.txt
+lang: fr-fr
 ---
 
 Git est un logiciel de contrôle de versions distribué et un système de gestion
@@ -30,7 +31,7 @@ un ou plusieurs fichiers au fil du temps.
 * Le contrôle de version centralisé se concentre sur la synchronisation, le
 suivi et la sauvegarde des fichiers.
 * Le contrôle de version distribué se focalise sur l'échange des changements.
-Chaque changement a un id unique.
+Chaque changement a un identifiant unique.
 * Les systèmes distribués n'ont pas de structure définie. Vous pouvez aisément
 avoir un système centralisé de type SVN, avec Git.
 
@@ -48,12 +49,13 @@ avoir un système centralisé de type SVN, avec Git.
 ## Architecture Git
 
 
-### Dépôt (repository)
+### Dépôt ("repository")
 
-Un ensemble de fichiers, dossiers, historiques, commits (validations de
-changements) et de heads (état courant, "tête"). Représentez-vous ceci comme
-une structure de données de code source, avec la particularité que chaque
-"élement" vous donne, entre autres, accès à son historique des révisions.
+Un ensemble de fichiers, dossiers, historiques de modifications, commits
+(validations de changements) et de heads (état courant, "tête").
+Représentez-vous ceci comme une structure de données de code source, avec la
+particularité que chaque "élement" vous donne, entre autres, accès à son
+historique des révisions.
 
 Un dépôt Git comprend un répertoire .git et "l'arbre de travail" (working tree).
 
@@ -61,16 +63,16 @@ Un dépôt Git comprend un répertoire .git et "l'arbre de travail" (working tre
 
 Le répertoire .git contient toutes les configurations, logs (journaux),
 branches, HEAD et plus.
-[Liste détaillée](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+[Liste détaillée (EN)](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
-### Arbre de travail (composants du dépôt)
+### Arbre de travail (composant du dépôt)
 
 Il s'agit de l'ensemble des répertoires et fichiers de votre dépôt. Il est
 souvent qualifié de répertoire de travail ("working directory").
 
 ### Index (composant du répertoire .git)
 
-L'index est la zone d'index ("staging area") dans Git. Il s'agit d'une couche
+L'index est la zone de transit ("staging area") dans Git. Il s'agit d'une couche
 séparant votre arbre de travail de votre dépôt Git. Ceci donne aux développeurs
 plus de pouvoir sur ce qu'ils envoient au dépôt.
 
@@ -88,13 +90,13 @@ Une branche consiste essentiellement en un pointeur vers le dernier commit que
 vous avez fait. Au fur et à mesure de vos commits, ce pointeur se mettra
 automatiquement à jour pour pointer vers le dernier commit.
 
-### Etiquette
+### Etiquette ("tag")
 
 Une étiquette est une marque sur un point spécifique de l'historique.
 Typiquement, on utilise cette fonctionnalité pour marquer les états de
 publication (v1.0, et ainsi de suite).
 
-### HEAD and head (composants du répertoire .git)
+### HEAD and head (composant du répertoire .git)
 
 HEAD est un pointeur pointant vers la branche courante. Un dépôt ne peut avoir
 qu'un seul HEAD *actif*.
@@ -129,12 +131,12 @@ $ git init
 ### config
 
 Configuration des paramètres. Que ce soit pour le dépôt, le système lui-même,
-ou la configuration globale ( le fichier de configuration globale
-est `~/.gitconfig` ).
+ou la configuration globale (le fichier de configuration globale
+est `~/.gitconfig`).
 
 
 ```bash
-# Imprime et initialise quelques variables (globales) de configuration de base
+# Lit et assigne quelques variables (globales) de configuration de base
 $ git config --global user.email "monEmail@foo.com"
 $ git config --global user.name "Mon nom"
 ```
@@ -166,7 +168,7 @@ $ git init --help
 
 ### ignorer des fichiers
 
-Ignore intentionnellement les fichiers et dossiers non suivis de Git.
+Ne plus suivre certains fichiers et dossiers de Git.
 Habituellement fait pour les fichiers privés et temporaires qui seraient,
 autrement, partagés dans le dépôt.
 ```bash
@@ -284,7 +286,7 @@ vous permet de pousser vers une branche distante.
 # Clone learnxinyminutes-docs
 $ git clone https://github.com/adambard/learnxinyminutes-docs.git
 
-# Clone peu profond ("shallow clone") - clone plus rapide qui récupère
+# Clone superficiel ("shallow clone") - clone plus rapide qui récupère
 seulement le dernier instantané ("snapshot")
 $ git clone --depth 1 https://github.com/adambard/learnxinyminutes-docs.git
 
@@ -371,7 +373,8 @@ $ git log --merges
 
 ### merge
 
-Fusionne les changements de commits extérieurs dans la branche courante.
+Fusionne les changements provenant de commits externes dans la branche
+courante.
 
 ```bash
 # Fusionne la branche spécifiée dans la branche courante.
@@ -393,7 +396,7 @@ $ git mv HelloWorld.c HelloNewWorld.c
 $ git mv HelloWorld.c ./new/path/HelloWorld.c
 
 # Force le renommage ou le déplacement
-# "fichierExistant" existe déjà dans le répertoire, il sera écrasé
+# Si "fichierExistant" existe déjà dans le répertoire, il sera écrasé
 $ git mv -f monFichier fichierExistant
 ```
 
@@ -403,7 +406,7 @@ Récupère la version d'un dépôt et la fusionne avec une autre branche.
 
 ```bash
 # Met à jour votre dépôt local en y intégrant les changements
-# des branches distantes "origin" et "master".
+# depuis la branche "master" du dépôt distant "origin".
 # git pull <remote> <branch>
 $ git pull origin master
 
@@ -422,13 +425,13 @@ $ git pull origin master --rebase
 Pousse et fusionne les changements d'une dépôt local vers une branche distante.
 
 ```bash
-# Pousse et fusionne les changements d'un dépôt local vers une branche distante
-# appelée "origin" et une branche "master".
+# Pousse et fusionne les changements d'un dépôt local vers la branche
+# appelée "master" du dépôt distant "master".
 # git push <remote> <branch>
 $ git push origin master
 
 # Par défaut, git push poussera et fusionnera les changements de la branche
-# courante vers sa branche distante suivie. 
+# courante vers sa branche distante suivie.
 $ git push
 
 # Pour faire le lien entre la branche locale courante et sa branche distante,
@@ -546,11 +549,11 @@ $ git reset --hard 31f2bb1
 
 ### rm
 
-Le contraire de git add,.git rm supprime les fichiers de l'arbre de travail
+Le contraire de git add, git rm supprime les fichiers de l'arbre de travail
 courant.
 
 ```bash
-# remove HelloWorld.c
+# Supprime HelloWorld.c
 $ git rm HelloWorld.c
 
 # Enlève un fichier d'un répertoire imbriqué.
@@ -559,9 +562,9 @@ $ git rm /chemin/vers/le/fichier/HelloWorld.c
 
 ## Information complémentaire
 
-* [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
+* [tryGit - A fun interactive way to learn Git (EN)](http://try.github.io/levels/1/challenges/1)
 
-* [Udemy Git Tutorial: A Comprehensive Guide](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
+* [Udemy Git Tutorial: A Comprehensive Guide (EN)](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
 
 * [git-scm - Tutoriaux vidéos](http://git-scm.com/videos)
 
@@ -569,12 +572,12 @@ $ git rm /chemin/vers/le/fichier/HelloWorld.c
 
 * [Atlassian Git - Tutoriaux et Workflows](https://www.atlassian.com/git/)
 
-* [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+* [SalesForce Cheat Sheet (EN)](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
 
-* [GitGuys](http://www.gitguys.com/)
+* [GitGuys (EN)](http://www.gitguys.com/)
 
-* [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
+* [Git - the simple guide (EN)](http://rogerdudler.github.io/git-guide/index.html)
 
 * [Livre Pro Git](http://www.git-scm.com/book/fr/v1)
 
-* [Une introduction à Git et GitHub pour les débutants (tutoriel)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+* [Une introduction à Git et GitHub pour les débutants (tutoriel) (EN)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
