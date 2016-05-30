@@ -5,7 +5,7 @@ contributors:
 filename: CMake
 ---
 
-CMake it's a cross-platform, open-source build system. This tool will allow you
+CMake is a cross-platform, open-source build system. This tool will allow you
 to test, compile and create packages of your source code.
 
 The problem that CMake tries to solve it's the problem of Makefiles and
