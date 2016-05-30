@@ -8,12 +8,12 @@ filename: CMake
 CMake is a cross-platform, open-source build system. This tool will allow you
 to test, compile and create packages of your source code.
 
-The problem that CMake tries to solve it's the problem of Makefiles and
-Autoconfigure on cross-platform (different make interpreters have different
+The problem that CMake tries to solve is the problem of Makefiles and
+Autoconfigure on cross-platforms (different make interpreters have different
 command) and the ease-of-use on linking 3rd party libraries.
 
 CMake is an extensible, open-source system that manages the build process in
-an operating system and in a compiler-independent manner. Unlike many
+an operating system and compiler-independent manner. Unlike many
 cross-platform systems, CMake is designed to be used in conjunction with the
 native build environment. Simple configuration files placed in each source 
 directory (called CMakeLists.txt files) are used to generate standard build
