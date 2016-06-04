@@ -490,7 +490,7 @@ bool doSomethingWithAFile(const char* filename)
 {
     FILE* fh = fopen(filename, "r"); // Abra o arquivo em modo de leitura
     if (fh == nullptr) // O ponteiro retornado é nulo em caso de falha.
-        reuturn false; // Relate o fracasso para o chamador.
+        return false; // Relate o fracasso para o chamador.
 
     // Suponha cada função retorne false, se falhar
     if (!doSomethingWithTheFile(fh)) {
@@ -511,7 +511,7 @@ bool doSomethingWithAFile(const char* filename)
 {
     FILE* fh = fopen(filename, "r");
     if (fh == nullptr)
-        reuturn false;
+        return false;
 
     if (!doSomethingWithTheFile(fh))
         goto failure;
