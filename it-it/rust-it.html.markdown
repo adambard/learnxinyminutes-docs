@@ -226,7 +226,7 @@ fn main() {
     // 4. Flusso di controllo (Control flow) //
     ///////////////////////////////////////////
 
-    // cicli/iterazione con `for`
+    // Ciclo/iterazione con `for`
     let array = [1, 2, 3];
     for i in array.iter() {
         println!("{}", i);
@@ -237,7 +237,7 @@ fn main() {
         print!("{} ", i);
     }
     println!("");
-    // prints `0 1 2 3 4 5 6 7 8 9 `
+    // Stampa `0 1 2 3 4 5 6 7 8 9 `
 
     // `if`
     if 1 == 1 {
@@ -253,7 +253,7 @@ fn main() {
         "male"
     };
 
-    // ciclo `while`
+    // Ciclo `while`
     while 1 == 1 {
         println!("L'universo sta funzionando regolarmente.");
     }
