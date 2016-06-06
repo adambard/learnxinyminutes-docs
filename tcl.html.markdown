@@ -253,7 +253,7 @@ proc greet {greeting name} {
 # As noted earlier, braces do not construct a code block.  Every value, even
 # the third argument of the "proc" command, is a string.  The previous command
 # rewritten to not use braces at all:
-proc greet greeting\ name return\ \"Hello,\ \$name!
+proc greet greeting\ name return\ \"\$greeting,\ \$name!\"
 
 
 
