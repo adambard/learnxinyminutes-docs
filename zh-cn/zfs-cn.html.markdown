@@ -128,7 +128,7 @@ zroot  altroot                        -                              default
 zroot  health                         ONLINE                         -
 ...
 
-# Setting a zpool property （设置存储池属性，下例蛇这的是commen备注属性）
+# Setting a zpool property （设置存储池属性，下例这是设置commen备注属性）
 $ zpool set comment="Storage of mah stuff" zroot
 $ zpool get comment
 NAME   PROPERTY  VALUE                 SOURCE
@@ -239,7 +239,7 @@ $ zfs get compression zroot/usr/home
 NAME            PROPERTY     VALUE     SOURCE
 zroot/home      compression  off       default
 
-# Set property on dataset （设置压缩属性compressio）
+# Set property on dataset （设置压缩属性compression）
 $ zfs set compression=gzip-9 mypool/lamb
 
 # Get a set of properties from all datasets （列举所有数据集的名称，配额和预留属性）
@@ -271,7 +271,7 @@ Actions:  （快照相关操作）
 * Rename  （重命名）
 * Access snapshots  （访问）
 * Send / Receive    （发送/接收）
-* Clone             （克隆）
+* Clone             （克隆。译者注：关于clone和快照的区别可参看[这里](http://docs.oracle.com/cd/E19253-01/819-5461/gbcxz/index.html)）
 
 
 Create snapshots （创建快照）
