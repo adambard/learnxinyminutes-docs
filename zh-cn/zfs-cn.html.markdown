@@ -16,59 +16,57 @@ ZFS有一些特有的术语，这把它和传统的存储系统区分开来。�
 
 ## ZFS概念
 
-### 虚拟设备（Virtual Devices）
+### 虚拟设备（Virtual Devices，VDEV）
 
-A VDEV is similar to a raid device presented by a RAID card, there are several different
-types of VDEV's that offer various advantages, including redundancy and speed.  In general
-VDEV's offer better reliability and safety than a RAID card.  It is discouraged to use a
-RAID setup with ZFS, as ZFS expects to directly manage the underlying disks.
+对于操作系统来说，VDEA和传统的RAID阵列卡所呈现的rai设备类似。VDEV有几种不同的类型，每种类型
+都有自己的优势，包括冗余和速度。一般来说，VDEV的可靠性和安全性比阵列卡要好。因此使用ZFS时不
+建议使用阵列卡。让ZFS直接管理磁盘。
 
-Types of VDEV's
-* stripe (a single disk, no redundancy)
-* mirror (n-way mirrors supported)
+VDEV的类型
+* stripe (条带。单个磁盘，没有冗余)
+* mirror (镜像。支持n-wa镜像)
 * raidz
-	* raidz1 (1-disk parity, similar to RAID 5)
-	* raidz2 (2-disk parity, similar to RAID 6)
-	* raidz3 (3-disk parity, no RAID analog)
-* disk
-* file (not recommended for production due to another filesystem adding unnecessary layering)
+	* raidz1 (一个奇偶校验磁盘, 类似于RAID 5)
+	* raidz2 (两个奇偶校验磁盘, 类似于RAID 6)
+	* raidz3 (三个奇偶校验磁盘, 没有类似RAID等级)
+* disk  （磁盘）
+* file (文件。不推荐在生产环境中使用，因为中间又多了一层不必要的文件系统)
 
-Your data is striped across all the VDEV's present in your Storage Pool, so more VDEV's will
-increase your IOPS.
+数据会以条带方式存储于存储池中的所有VDE上。因此一个存储池中的VDEV越多，IOPS就越高。
 
-### Storage Pools
+###  storage pool （存储池） 
 
-ZFS uses Storage Pools as an abstraction over the lower level storage provider (VDEV), allow
-you to separate the user visible file system from the physical layout.
+ZFS 使用存储池来作为底层存储提供者（VDEV）的抽象。这样可以把用户可见的文件系统和底层的物理磁盘
+布局分离开来。
 
-### ZFS Dataset
+### ZFS 数据集（Dataset）
 
-ZFS datasets are analogous to traditional filesystems but with many more features.  They
-provide many of ZFS's advantages.  Datasets support [Copy on Write](https://en.wikipedia.org/wiki/Copy-on-write)
-snapshots, quota's, compression and de-duplication.
-
-
-### Limits
-
-One directory may contain up to 2^48 files, up to 16 exabytes each.  A single storage pool
-can contain up to 256 zettabytes (2^78) of space, and can be striped across 2^64 devices.  A
-single host can have 2^64 storage pools.  The limits are huge.
+ZFS 数据集类似于传统的文件系统（译者注：或者说是目录），但是提供了更多的功能。ZFS的很多优势也是
+在这一层体现出来的。数据集支持 [Copy on Write](https://en.wikipedia.org/wiki/Copy-on-write)
+快照, 配额, 压缩和重复消除（de-duplication）.
 
 
-## Commands
+### 限制
 
-### Storage Pools
+一个目录最多可包含 2^48个文件, 每个文件最大可以是16 exabytes.  一个存储池最大可包含256 zettabytes 、
+(2^78) 的空间, 可以条带化地分布于2^64 设备上. 单一主机最多可以创建2^64个存储池。这些限制可以说是相
+当大。
 
-Actions:
-* List
-* Status
-* Destroy
-* Get/Set properties
 
-List zpools
+## 命令
+
+### 存储池
+
+Actions: （存储池操作） 
+* List   （列举）
+* Status （查看状态）
+* Destroy （删除）
+* Get/Set properties （获取/设置属性）
+
+List zpools （列举存储池（也叫zpool））
 
 ```bash
-# Create a raidz zpool
+# Create a raidz zpool （创建一个raidz类型的存储池）
 $ zpool create bucket raidz1 gpt/zfs0 gpt/zfs1 gpt/zfs2
 
 # List ZPools
@@ -76,17 +74,17 @@ $ zpool list
 NAME    SIZE  ALLOC   FREE  EXPANDSZ   FRAG    CAP  DEDUP  HEALTH  ALTROOT
 zroot   141G   106G  35.2G         -    43%    75%  1.00x  ONLINE  -
 
-# List detailed information about a specific zpool
+# List detailed information about a specific zpool （列出某一存储池的详细信息）
 $ zpool list -v zroot
 NAME                                     SIZE  ALLOC   FREE  EXPANDSZ   FRAG    CAP  DEDUP HEALTH  ALTROOT
 zroot                                    141G   106G  35.2G         -    43%    75%  1.00x ONLINE  -
   gptid/c92a5ccf-a5bb-11e4-a77d-001b2172c655   141G   106G  35.2G         -    43%    75%
 ```
 
-Status of zpools
+Status of zpools （存储池状态）
 
 ```bash
-# Get status information about zpools
+# Get status information about zpools （获取全部zpool信息）
 $ zpool status
   pool: zroot
  state: ONLINE
@@ -99,7 +97,7 @@ config:
 
 errors: No known data errors
 
-# Scrubbing a zpool to correct any errors
+# Scrubbing a zpool to correct any errors （用scrub来更正存储池错误信息）
 $ zpool scrub zroot
 $ zpool status -v zroot
   pool: zroot
@@ -116,11 +114,12 @@ config:
 errors: No known data errors
 ```
 
-Properties of zpools
+Properties of zpools （存储池属性）
 
 ```bash
 
 # Getting properties from the pool properties can be user set or system provided.
+# （获取zroot存储池的全部属性）
 $ zpool get all zroot
 NAME   PROPERTY                       VALUE                          SOURCE
 zroot  size                           141G                           -
@@ -129,7 +128,7 @@ zroot  altroot                        -                              default
 zroot  health                         ONLINE                         -
 ...
 
-# Setting a zpool property
+# Setting a zpool property （设置存储池属性，下例蛇这的是commen备注属性）
 $ zpool set comment="Storage of mah stuff" zroot
 $ zpool get comment
 NAME   PROPERTY  VALUE                 SOURCE
@@ -137,48 +136,48 @@ tank   comment   -                     default
 zroot  comment   Storage of mah stuff  local
 ```
 
-Remove zpool
+Remove zpool （删除存储池）
 
 ```bash
 $ zpool destroy test
 ```
 
 
-### Datasets
+### Datasets （数据集）
 
-Actions:
-* Create
-* List
-* Rename
-* Delete
-* Get/Set properties
+Actions:   （数据集相关操作）
+* Create   （创建）
+* List     （列举）
+* Rename   （重命名）
+* Delete   （删除）
+* Get/Set properties   （获取/设置属性）
 
 Create datasets
 
 ```bash
-# Create dataset
+# Create dataset （创建数据集）
 $ zfs create tank/root/data
 $ mount | grep data
 tank/root/data on /data (zfs, local, nfsv4acls)
 
-# Create child dataset
+# Create child dataset （创建子数据集）
 $ zfs create tank/root/data/stuff
 $ mount | grep data
 tank/root/data on /data (zfs, local, nfsv4acls)
 tank/root/data/stuff on /data/stuff (zfs, local, nfsv4acls)
 
 
-# Create Volume
+# Create Volume （创建卷）
 $ zfs create -V zroot/win_vm
 $ zfs list zroot/win_vm
 NAME                 USED  AVAIL  REFER  MOUNTPOINT
 tank/win_vm         4.13G  17.9G    64K  -
 ```
 
-List datasets
+List datasets （列举数据集）
 
 ```bash
-# List all datasets
+# List all datasets （列举所有数据集）
 $ zfs list
 NAME                                                                       USED  AVAIL  REFER  MOUNTPOINT
 zroot                                                                      106G  30.8G   144K  none
@@ -189,12 +188,12 @@ zroot/backup                                                              5.23G 
 zroot/home                                                                 288K  30.8G   144K  none
 ...
 
-# List a specific dataset
+# List a specific dataset （列举某一数据集）
 $ zfs list zroot/home
 NAME         USED  AVAIL  REFER  MOUNTPOINT
 zroot/home   288K  30.8G   144K  none
 
-# List snapshots
+# List snapshots （列举快照）
 $ zfs list -t snapshot
 zroot@daily-2015-10-15                                                                  0      -   144K  -
 zroot/ROOT@daily-2015-10-15                                                             0      -   144K  -
@@ -207,24 +206,24 @@ zroot/var/log@daily-2015-10-15                                                  
 zroot/var/tmp@daily-2015-10-15                                                          0      -   152K  -
 ```
 
-Rename datasets
+Rename datasets （重命名数据集）
 
 ```bash
 $ zfs rename tank/root/home tank/root/old_home
 $ zfs rename tank/root/new_home tank/root/home
 ```
 
-Delete dataset
+Delete dataset （删除数据集）
 
 ```bash
-# Datasets cannot be deleted if they have any snapshots
+# Datasets cannot be deleted if they have any snapshots （数据集如果有快照则无法删除）
 zfs destroy tank/root/home
 ```
 
-Get / set properties of a dataset
+Get / set properties of a dataset （获取/设置数据集属性）
 
 ```bash
-# Get all properties
+# Get all properties （获取全部属性）
 $ zfs get all  zroot/usr/home                                                                                              │157 # Create Volume
 NAME            PROPERTY              VALUE                  SOURCE                                                                          │158 $ zfs create -V zroot/win_vm
 zroot/home      type                  filesystem             -                                                                               │159 $ zfs list zroot/win_vm
@@ -235,15 +234,15 @@ zroot/home      referenced            11.9G                  -                  
 zroot/home      mounted               yes                    -
 ...
 
-# Get property from dataset
+# Get property from dataset （获取数据集属性）
 $ zfs get compression zroot/usr/home
 NAME            PROPERTY     VALUE     SOURCE
 zroot/home      compression  off       default
 
-# Set property on dataset
+# Set property on dataset （设置压缩属性compressio）
 $ zfs set compression=gzip-9 mypool/lamb
 
-# Get a set of properties from all datasets
+# Get a set of properties from all datasets （列举所有数据集的名称，配额和预留属性）
 $ zfs list -o name,quota,reservation
 NAME                                                               QUOTA  RESERV
 zroot                                                               none    none
@@ -257,31 +256,31 @@ zroot/var                                                           none    none
 ```
 
 
-### Snapshots
+### Snapshots （快照）
 
-ZFS snapshots are one of the things about zfs that are a really big deal
+快照是ZFS 的一个非常重要的功能
 
-* The space they take up is equal to the difference in data between the filesystem and its snapshot
-* Creation time is only seconds
-* Recovery is as fast as you can write data.
-* They are easy to automate.
+* 快照占用的空间等于它和原始数据的差异量
+* 创建时间以秒计
+* 恢复时间和写入速度相同
+* 易于自动化
 
-Actions:
-* Create
-* Delete
-* Rename
-* Access snapshots
-* Send / Receive
-* Clone
+Actions:  （快照相关操作）
+* Create  （创建）
+* Delete  （删除）
+* Rename  （重命名）
+* Access snapshots  （访问）
+* Send / Receive    （发送/接收）
+* Clone             （克隆）
 
 
-Create snapshots
+Create snapshots （创建快照）
 
 ```bash
-# Create a snapshot of a single dataset
+# Create a snapshot of a single dataset （为单一数据集创建快照）
 zfs snapshot tank/home/sarlalian@now
 
-# Create a snapshot of a dataset and its children
+# Create a snapshot of a dataset and its children （为数据集及其子集创建快照）
 $ zfs snapshot -r tank/home@now
 $ zfs list -t snapshot
 NAME                       USED  AVAIL  REFER  MOUNTPOINT
@@ -291,65 +290,64 @@ tank/home/alice@now           0      -   156M  -
 tank/home/bob@now             0      -   156M  -
 ...
 
-Destroy snapshots
+Destroy snapshots （删除快照）
 
 ```bash
-# How to destroy a snapshot
+# How to destroy a snapshot  （如何删除）
 $ zfs destroy tank/home/sarlalian@now
 
-# Delete a snapshot on a parent dataset and its children
+# Delete a snapshot on a parent dataset and its children （删除某一数据集及其子集的快照）
 $ zfs destroy -r tank/home/sarlalian@now
 
 ```
 
-Renaming Snapshots
+Renaming Snapshots （重命名）
 
 ```bash
-# Rename a snapshot
+# Rename a snapshot （重命名快照，示例）
 $ zfs rename tank/home/sarlalian@now tank/home/sarlalian@today
 $ zfs rename tank/home/sarlalian@now today
 
 # zfs rename -r tank/home@now @yesterday
 ```
 
-Accessing snapshots
+Accessing snapshots  （访问快照）
 
 ```bash
-# CD Into a snapshot directory
+# CD Into a snapshot directory （cd进入一个快照目录）
 $ cd /home/.zfs/snapshot/
 ```
 
 Sending and Receiving
 
 ```bash
-# Backup a snapshot to a file
+# Backup a snapshot to a file （备份快照到一个文件）
 $ zfs send tank/home/sarlalian@now | gzip > backup_file.gz
 
-# Send a snapshot to another dataset
+# Send a snapshot to another dataset （发送快照到另一个数据集）
 $ zfs send tank/home/sarlalian@now | zfs recv backups/home/sarlalian
 
-# Send a snapshot to a remote host
+# Send a snapshot to a remote host （发送快照到一个远程主机）
 $ zfs send tank/home/sarlalian@now | ssh root@backup_server 'zfs recv tank/home/sarlalian'
 
-# Send full dataset with snapshos to new host
+# Send full dataset with snapshos to new host （发送数据集及其快照到一个新主机）
 $ zfs send -v -R tank/home@now | ssh root@backup_server 'zfs recv tank/home'
 ```
 
-Cloneing Snapshots
+Cloneing Snapshots  （克隆快照）
 
 ```bash
 # Clone a snapshot
 $ zfs clone tank/home/sarlalian@now tank/home/sarlalian_new
 
-# Promoting the clone so it is no longer dependent on the snapshot
+# Promoting the clone so it is no longer dependent on the snapshot（提升克隆，让它不再依赖原始数据）
 $ zfs promote tank/home/sarlalian_new
 ```
 
-### Putting it all together
+### Putting it all together （汇总）
 
-This following a script utilizing FreeBSD, jails and ZFS to automate
-provisioning a clean copy of a mysql staging database from a live replication
-slave.
+下面这个脚本使用了FreeBSD, jails和ZFS，来自动在一个mysql群集的热备主机上为一个mysq staging数据库
+创建一份纯净的拷贝。
 
 ```bash
 #!/bin/sh
@@ -390,7 +388,7 @@ echo "RESET SLAVE;" | /usr/local/bin/mysql -u root -pmyrootpassword -h staging
 ```
 
 
-### Additional Reading
+### Additional Reading （延伸阅读）
 
 * [BSDNow's Crash Course on ZFS](http://www.bsdnow.tv/tutorials/zfs)
 * [FreeBSD Handbook on ZFS](https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/zfs.html)
