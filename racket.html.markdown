@@ -114,6 +114,20 @@ some-var ; => 5
   "Alice"
   me) ; => "Bob"
 
+;; let* is like let, but allows you to use previous bindings in creating later bindings
+(let* ([x 1]
+       [y (+ x 1)])
+       (* x y))
+
+;; finally, letrec allows you to define recursive and mutually recursive functions
+(letrec ([is-even? (lambda (n)
+                       (or (zero? n)
+                           (is-odd? (sub1 n))))]
+           [is-odd? (lambda (n)
+                      (and (not (zero? n))
+                           (is-even? (sub1 n))))])
+    (is-odd? 11))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 3. Structs and Collections
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
