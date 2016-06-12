@@ -167,6 +167,16 @@ my-pet ; => #<dog>
 ;; and a quote can also be used for a literal list value
 '(1 2 3) ; => '(1 2 3)
 
+;; Racket has predefined functions on top of car and cdr, to extract parts of a list
+(cadr (list 1 2 3)) ; => 2
+(car (cdr (list 1 2 3))) ; => 2
+
+(cddr (list 1 2 3)) ; => '(3)
+(cdr (cdr (list 1 2 3))) ; => '(3)
+
+(caddr (list 1 2 3)) ; => 3
+(car (cdr (cdr (list 1 2 3)))) ; => 3
+
 ;; Can still use `cons' to add an item to the beginning of a list
 (cons 4 '(1 2 3)) ; => '(4 1 2 3)
 
