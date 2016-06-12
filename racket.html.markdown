@@ -133,12 +133,22 @@ some-var ; => 5
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Structs
+; By default, structs are immutable
 (struct dog (name breed age))
 (define my-pet
   (dog "lassie" "collie" 5))
 my-pet ; => #<dog>
+; returns whether the variable was constructed with the dog constructor
 (dog? my-pet) ; => #t
+; accesses the name field of the variable constructed with the dog constructor
 (dog-name my-pet) ; => "lassie"
+
+; You can explicitly declare a struct to be mutable with the #:mutable option
+(struct rgba-color (red green blue alpha) #:mutable)
+(define burgundy
+   (rgba-color 144 0 32 1.0))
+(set-color-green! burgundy 10)
+(color-green burgundy) ; => 10
 
 ;;; Pairs (immutable)
 ;; `cons' constructs pairs, `car' and `cdr' extract the first
