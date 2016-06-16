@@ -1,6 +1,6 @@
 ---
 language: json
-filename: learnjson.json
+filename: learnjson-sk.json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]
