@@ -6,7 +6,7 @@ contributors:
 translators:
   - ["Juraj Kostolanský", "http://www.kostolansky.sk"]
 lang: sk-sk
-filename: coffeescript.coffee
+filename: coffeescript-fr.coffee
 ---
 
 CoffeeScript je jazyk, ktorý sa kompiluje do ekvivalentného JavaScriptu,
