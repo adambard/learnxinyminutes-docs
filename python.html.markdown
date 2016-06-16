@@ -126,6 +126,9 @@ not False  # => True
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
 
+# You can find the length of a string
+len("This is a string")  # => 16
+
 #String formatting with %
 #Even though the % string operator will be deprecated on Python 3.1 and removed
 #later at some time, it may still be good to know how it works.
