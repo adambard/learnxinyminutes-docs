@@ -119,6 +119,9 @@ b == a            # => True, a's and b's objects are equal
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
 
+# You can find the length of a string
+len("This is a string")  # => 16
+
 # .format can be used to format strings, like this:
 "{} can be {}".format("Strings", "interpolated")  # => "Strings can be interpolated"
 
