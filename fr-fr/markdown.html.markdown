@@ -2,7 +2,7 @@
 language: markdown
 contributors:
 - ["Andrei Curelaru", "http://www.infinidad.fr"]
-filename: markdown.md
+filename: markdown-fr.md
 lang: fr-fr
 ---
 
@@ -62,8 +62,8 @@ __Celui-là aussi.__
 **_Pareil ici_**
 *__Et là!__*
 
-<!-- Dans le "Github Flavored Markdown", utilisé pour interpréter le Markdown 
-sur Github, on a également le strikethrough ( texte barré ) : -->
+<!-- Dans le "GitHub Flavored Markdown", utilisé pour interpréter le Markdown 
+sur GitHub, on a également le strikethrough ( texte barré ) : -->
 
 ~~Ce texte est barré avec strikethrough.~~
 
@@ -172,7 +172,7 @@ fonctionne aussi à l'intérieur du bloc de code -->
 
 La fonction `run()` ne vous oblige pas à aller courir!
 
-<!-- Via Github Flavored Markdown, vous pouvez utiliser 
+<!-- Via GitHub Flavored Markdown, vous pouvez utiliser 
 des syntaxes spécifiques -->
 
 \`\`\`ruby 
@@ -183,7 +183,7 @@ puts "Hello world!"
 end
 \`\`\` <!-- pareil, pas de backslashes, juste ``` en guise de fin -->
 
-<-- Pas besoin d'indentation pour le code juste au dessus, de plus, Github 
+<-- Pas besoin d'indentation pour le code juste au dessus, de plus, GitHub 
 va utiliser une coloration syntaxique pour le langage indiqué après les ``` -->
 
 <!-- Ligne Horizontale (<hr />) -->
@@ -264,7 +264,7 @@ Pour taper *ce texte* entouré d'astérisques mais pas en italique :
 Tapez \*ce texte\*.
 
 <!-- Tableaux -->
-<!-- les Tableaux ne sont disponibles que dans le Github Flavored Markdown
+<!-- les Tableaux ne sont disponibles que dans le GitHub Flavored Markdown
  et c'est ce n'est pas super agréable d'utilisation. 
  Mais si vous en avez besoin :
  -->

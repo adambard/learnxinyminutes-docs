@@ -8,7 +8,7 @@ translators:
 lang: fr-fr
 ---
 
-Au début du web, il n'y avait pas d'élements visuels, simplement du texte pure. Mais avec le dévelopement des navigateurs,
+Au début du web, il n'y avait pas d'élements visuels, simplement du texte pur. Mais avec le dévelopement des navigateurs,
 des pages avec du contenu visuel sont arrivées.
 CSS est le langage standard qui existe et permet de garder une séparation entre
 le contenu (HTML) et le style d'une page web.
@@ -16,8 +16,8 @@ le contenu (HTML) et le style d'une page web.
 En résumé, CSS fournit une syntaxe qui vous permet de cibler des élements présents
 sur une page HTML afin de leur donner des propriétés visuelles différentes.
 
-Comme tous les autres langages, CSS a plusieurs versions. Ici, nous allons parlons de CSS2.0
-qui n'est pas le plus récent, mais qui reste le plus utilisé et le plus compatible avec les différents navigateur.
+Comme tous les autres langages, CSS a plusieurs versions. Ici, nous allons parler de CSS2.0
+qui n'est pas le plus récent, mais qui reste le plus utilisé et le plus compatible avec les différents navigateurs.
 
 **NOTE :** Vous pouvez tester les effets visuels que vous ajoutez au fur et à mesure du tutoriel sur des sites comme [dabblet](http://dabblet.com/) afin de voir les résultats, comprendre, et vous familiariser avec le langage.
 Cet article porte principalement sur la syntaxe et quelques astuces.
@@ -33,7 +33,7 @@ Cet article porte principalement sur la syntaxe et quelques astuces.
 /* Généralement, la première déclaration en CSS est très simple */
 selecteur { propriete: valeur; /* autres proprietés...*/ }
 
-/* Le sélécteur sert à cibler un élément du HTML
+/* Le sélecteur sert à cibler un élément du HTML
 
 Vous pouvez cibler tous les éléments d'une page! */
 * { color:red; }

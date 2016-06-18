@@ -627,7 +627,7 @@ Human.grunt()   # => "*grunt*"
 
 # On peut importer des modules
 import math
-print(math.sqrt(16))  # => 4
+print(math.sqrt(16))  # => 4.0
 
 # On peut importer des fonctions spécifiques d'un module
 from math import ceil, floor

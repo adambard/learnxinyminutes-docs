@@ -3,13 +3,17 @@ language: coldfusion
 filename: learncoldfusion.cfm
 contributors:
     - ["Wayne Boka", "http://wboka.github.io"]
+    - ["Kevin Morris", "https://twitter.com/kevinmorris"]
 ---
 
 ColdFusion is a scripting language for web development.
 [Read more here.](http://www.adobe.com/products/coldfusion-family.html)
 
-```html
+### CFML
+_**C**old**F**usion **M**arkup **L**anguage_  
+ColdFusion started as a tag-based language. Almost all functionality is available using tags.
 
+```html
 <em>HTML tags have been provided for output readability</em>
 
 <!--- Comments start with "<!---" and end with "--->" --->
@@ -229,40 +233,38 @@ ColdFusion is a scripting language for web development.
 
 <em>Code for reference (Functions must return something to support IE)</em>
 
-<pre>
-&lt;cfcomponent&gt;
-	&lt;cfset this.hello = "Hello" /&gt;
-	&lt;cfset this.world = "world" /&gt;
+<cfcomponent>
+	<cfset this.hello = "Hello" />
+	<cfset this.world = "world" />
 
-	&lt;cffunction name="sayHello"&gt;
-		&lt;cfreturn this.hello & ", " & this.world & "!" /&gt;
-	&lt;/cffunction&gt;
+	<cffunction name="sayHello">
+		<cfreturn this.hello & ", " & this.world & "!" />
+	</cffunction>
 	
-	&lt;cffunction name="setHello"&gt;
-		&lt;cfargument name="newHello" type="string" required="true" /&gt;
+	<cffunction name="setHello">
+		<cfargument name="newHello" type="string" required="true" />
 		
-		&lt;cfset this.hello = arguments.newHello /&gt;
+		<cfset this.hello = arguments.newHello />
 		 
-		&lt;cfreturn true /&gt;
-	&lt;/cffunction&gt;
+		<cfreturn true />
+	</cffunction>
 	
-	&lt;cffunction name="setWorld"&gt;
-		&lt;cfargument name="newWorld" type="string" required="true" /&gt;
+	<cffunction name="setWorld">
+		<cfargument name="newWorld" type="string" required="true" />
 		
-		&lt;cfset this.world = arguments.newWorld /&gt;
+		<cfset this.world = arguments.newWorld />
 		 
-		&lt;cfreturn true /&gt;
-	&lt;/cffunction&gt;
+		<cfreturn true />
+	</cffunction>
 	
-	&lt;cffunction name="getHello"&gt;
-		&lt;cfreturn this.hello /&gt;
-	&lt;/cffunction&gt;
+	<cffunction name="getHello">
+		<cfreturn this.hello />
+	</cffunction>
 	
-	&lt;cffunction name="getWorld"&gt;
-		&lt;cfreturn this.world /&gt;
-	&lt;/cffunction&gt;
-&lt;/cfcomponent&gt;
-</pre>
+	<cffunction name="getWorld">
+		<cfreturn this.world />
+	</cffunction>
+</cfcomponent>
 
 <cfset this.hello = "Hello" />
 <cfset this.world = "world" />
@@ -314,8 +316,13 @@ ColdFusion is a scripting language for web development.
 <cfoutput><p>#getWorld()#</p></cfoutput>
 ```
 
+### CFScript
+_**C**old**F**usion **S**cript_  
+In recent years, the ColdFusion language has added script syntax to mirror tag functionality. When using an up-to-date CF server, almost all functionality is available using scrypt syntax.
+
 ## Further Reading
 
 The links provided here below are just to get an understanding of the topic, feel free to Google and find specific examples.
 
 1. [Coldfusion Reference From Adobe](https://helpx.adobe.com/coldfusion/cfml-reference/topics.html)
+2. [Open Source Documentation](http://cfdocs.org/)

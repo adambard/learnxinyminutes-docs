@@ -97,13 +97,13 @@ False or True   # => True
 1 < 2 < 3  # => True
 2 < 3 < 2  # => False
 
-# (is vs. ==) is checks if two variable refer to the same object, but == checks
+# (is vs. ==) is checks if two variables refer to the same object, but == checks
 # if the objects pointed to have the same values.
 a = [1, 2, 3, 4]  # Point a at a new list, [1, 2, 3, 4]
 b = a             # Point b at what a is pointing to
 b is a            # => True, a and b refer to the same object
 b == a            # => True, a's and b's objects are equal
-b = [1, 2, 3, 4]  # Point a at a new list, [1, 2, 3, 4]
+b = [1, 2, 3, 4]  # Point b at a new list, [1, 2, 3, 4]
 b is a            # => False, a and b do not refer to the same object
 b == a            # => True, a's and b's objects are equal
 
@@ -118,6 +118,9 @@ b == a            # => True, a's and b's objects are equal
 
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
+
+# You can find the length of a string
+len("This is a string")  # => 16
 
 # .format can be used to format strings, like this:
 "{} can be {}".format("Strings", "interpolated")  # => "Strings can be interpolated"
@@ -174,6 +177,10 @@ some_var  # => 5
 # See Control Flow to learn more about exception handling.
 some_unknown_var  # Raises a NameError
 
+# if can be used as an expression
+# Equivalent of C's '?:' ternary operator
+"yahoo!" if 3 > 2 else 2  # => "yahoo!"
+
 # Lists store sequences
 li = []
 # You can start with a prefilled list
@@ -224,8 +231,8 @@ li.remove(2)  # Raises a ValueError as 2 is not in the list
 # Insert an element at a specific index
 li.insert(1, 2)  # li is now [1, 2, 3] again
 
-# Get the index of the first item found
-li.index(2)  # => 3
+# Get the index of the first item found matching the argument
+li.index(2)  # => 1
 li.index(4)  # Raises a ValueError as 4 is not in the list
 
 # You can add lists
@@ -425,7 +432,6 @@ by step. If step is not indicated, the default value is 1.
 prints:
     4
     6
-    8
 """
 for i in range(4, 8, 2):
     print(i)
@@ -584,12 +590,11 @@ add_10(3)   # => 13
 (lambda x: x > 2)(3)                  # => True
 (lambda x, y: x ** 2 + y ** 2)(2, 1)  # => 5
 
-# TODO - Fix for iterables
 # There are built-in higher order functions
-map(add_10, [1, 2, 3])          # => [11, 12, 13]
-map(max, [1, 2, 3], [4, 2, 1])  # => [4, 2, 3]
+list(map(add_10, [1, 2, 3]))          # => [11, 12, 13]
+list(map(max, [1, 2, 3], [4, 2, 1]))  # => [4, 2, 3]
 
-filter(lambda x: x > 5, [3, 4, 5, 6, 7])  # => [6, 7]
+list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  # => [6, 7]
 
 # We can use list comprehensions for nice maps and filters
 # List comprehension stores the output as a list which can itself be a nested list
@@ -689,7 +694,7 @@ i.age  # => raises an AttributeError
 
 # You can import modules
 import math
-print(math.sqrt(16))  # => 4
+print(math.sqrt(16))  # => 4.0
 
 # You can get specific functions from a module
 from math import ceil, floor
@@ -713,6 +718,11 @@ math.sqrt(16) == m.sqrt(16)  # => True
 import math
 dir(math)
 
+# If you have a Python script named math.py in the same
+# folder as your current script, the file math.py will
+# be loaded instead of the built-in Python module.
+# This happens because the local folder has priority
+# over Python's built-in libraries.
 
 ####################################################
 ## 7. Advanced
@@ -781,6 +791,7 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [A curated list of awesome Python frameworks, libraries and software](https://github.com/vinta/awesome-python)
 * [30 Python Language Features and Tricks You May Not Know About](http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
 * [Official Style Guide for Python](https://www.python.org/dev/peps/pep-0008/)
+* [Python 3 Computer Science Circles](http://cscircles.cemc.uwaterloo.ca/)
 
 ### Dead Tree
 
