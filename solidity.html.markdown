@@ -659,7 +659,7 @@ contract CrowdFunder {
     // Wait 6 months after final contract state before allowing contract destruction
     modifier atEndOfLifecycle() {
     if(!((state == State.ExpiredRefund || state == State.Successful) &&
-        completeAt + 6 months > now)) {
+        completeAt + 6 months < now)) {
             throw;
         }
         _
