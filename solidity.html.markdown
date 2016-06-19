@@ -59,7 +59,7 @@ contract SimpleBank { // CamelCase
     // 'public' makes externally readable (not writeable) by users or contracts
 
     // Events - publicize actions to external listeners
-    event DepositMade(address accountAddress, uint amount);
+    event LogDepositMade(address accountAddress, uint amount);
 
     // Constructor, can receive one or many variables here; only one allowed
     function AcmeBank() {
@@ -75,7 +75,7 @@ contract SimpleBank { // CamelCase
         // no "this." or "self." required with state variable
         // all values set to data type's initial value by default
 
-        DepositMade(msg.sender, msg.value); // fire event
+        LogDepositMade(msg.sender, msg.value); // fire event
 
         return balances[msg.sender];
     }
@@ -366,8 +366,11 @@ function b() {
 // access events from outside blockchain (with lightweight clients)
 // typically declare after contract parameters
 
+// Typically, capitalized - and add Log in front to be explicit and prevent confusion
+// with a function call
+
 // Declare
-event Sent(address from, address to, uint amount); // note capital first letter
+event LogSent(address indexed from, address indexed to, uint amount); // note capital first letter
 
 // Call
 Sent(from, to, amount);
@@ -609,6 +612,144 @@ contract SomeOracle {
 
 // *** EXAMPLE: A crowdfunding example (broadly similar to Kickstarter) ***
 // ** START EXAMPLE **
+
+// CrowdFunder.sol
+
+/// @title CrowdFunder
+/// @author nemild
+contract CrowdFunder {
+    // Variables set on create by creator
+    address public creator;
+    address public fundRecipient; // creator may be different than recipient
+    uint public minimumToRaise; // required to tip, else everyone gets refund
+    string campaignUrl;
+    byte constant version = 1;
+
+    // Data structures
+    enum State {
+        Fundraising,
+        ExpiredRefund,
+        Successful
+    }
+    struct Contribution {
+        uint amount;
+        address contributor;
+    }
+
+    // State variables
+    State public state = State.Fundraising; // initialize on create
+    uint public totalRaised;
+    uint public raiseBy;
+    uint public completeAt;
+    Contribution[] contributions;
+
+    event LogFundingReceived(address addr, uint amount, uint currentTotal);
+    event LogWinnerPaid(address winnerAddress);
+
+    modifier inState(State _state) {
+        if (state != _state) throw;
+        _
+    }
+
+    modifier isCreator() {
+        if (msg.sender != creator) throw;
+        _
+    }
+
+    // Wait 6 months after final contract state before allowing contract destruction
+    modifier atEndOfLifecycle() {
+    if(!((state == State.ExpiredRefund || state == State.Successful) &&
+        completeAt + 6 months > now)) {
+            throw;
+        }
+        _
+    }
+
+    function CrowdFunder(
+        uint timeInHoursForFundraising,
+        string _campaignUrl,
+        address _fundRecipient,
+        uint _minimumToRaise)
+    {
+        creator = msg.sender;
+        fundRecipient = _fundRecipient;
+        campaignUrl = _campaignUrl;
+        minimumToRaise = _minimumToRaise;
+        raiseBy = now + (timeInHoursForFundraising * 1 hours);
+    }
+
+    function contribute()
+    public
+    inState(State.Fundraising)
+    {
+        contributions.push(
+            Contribution({
+                amount: msg.value,
+                contributor: msg.sender
+            }) // use array, so can iterate
+        );
+        totalRaised += msg.value;
+
+        LogFundingReceived(msg.sender, msg.value, totalRaised);
+
+        checkIfFundingCompleteOrExpired();
+        return contributions.length - 1; // return id
+    }
+
+    function checkIfFundingCompleteOrExpired() {
+        if (totalRaised > minimumToRaise) {
+            state = State.Successful;
+            payOut();
+
+            // could incentivize sender who initiated state change here
+        } else if ( now > raiseBy )  {
+            state = State.ExpiredRefund; // backers can now collect refunds by calling getRefund(id)
+        }
+        completeAt = now;
+    }
+
+    function payOut()
+    public
+    inState(State.Successful)
+    {
+        if(!fundRecipient.send(this.balance)) {
+            throw;
+        }
+
+
+        LogWinnerPaid(fundRecipient);
+    }
+
+    function getRefund(id)
+    public
+    inState(State.ExpiredRefund)
+    {
+        if (contributions.length <= id || id < 0 || contributions[id].amount == 0 ) {
+            throw;
+        }
+
+        uint amountToRefund = contributions[id].amount;
+        contributions[id].amount = 0;
+
+        if(!contributions[id].contributor.send(amountToSend)) {
+            contributions[id].amount = amountToSend;
+            return false;
+        }
+
+      return true;
+    }
+
+    function removeContract()
+    public
+    isCreator()
+    atEndOfLifecycle()
+    {
+        selfdestruct(msg.sender);
+    }
+
+    function () { throw; }
+}
+// ** END EXAMPLE **
 
 // 10. OTHER NATIVE FUNCTIONS
 
