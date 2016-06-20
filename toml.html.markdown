@@ -122,6 +122,78 @@ array5 = [
   "Whitespace", "is", "ignored"
 ]
 
+#########
+# Table #
+#########
+
+# Tables (or hash tables or dictionaries) are collections of key/value
+# pairs. They appear in square brackets on a line by themselves.
+# Empty tables are allowed and simply have no key/value pairs within them.
+[table]
+
+# Under that, and until the next table or EOF are the key/values of that table.
+# Key/value pairs within tables are not guaranteed to be in any specific order.
+[table-1]
+key1 = "some string"
+key2 = 123
+
+[table-2]
+key1 = "another string"
+key2 = 456
+
+# Dots are prohibited in bare keys because dots are used to signify nested tables.
+# Naming rules for each dot separated part are the same as for keys.
+[dog."tater.man"]
+type = "pug"
+
+# In JSON land, that would give you the following structure:
+# { "dog": { "tater.man": { "type": "pug" } } }
+
+# Whitespace around dot-separated parts is ignored, however, best practice is to
+# not use any extraneous whitespace.
+[a.b.c]            # this is best practice
+[ d.e.f ]          # same as [d.e.f]
+[ j . "ʞ" . 'l' ]  # same as [j."ʞ".'l']
+
+# You don't need to specify all the super-tables if you don't want to. TOML knows
+# how to do it for you.
+# [x] you
+# [x.y] don't
+# [x.y.z] need these
+[x.y.z.w] # for this to work
+
+# As long as a super-table hasn't been directly defined and hasn't defined a
+# specific key, you may still write to it.
+[a.b]
+c = 1
+
+[a]
+d = 2
+
+# You cannot define any key or table more than once. Doing so is invalid.
+
+# DO NOT DO THIS
+[a]
+b = 1
+
+[a]
+c = 2
+
+# DO NOT DO THIS EITHER
+[a]
+b = 1
+
+[a.b]
+c = 2
+
+# All table names must be non-empty.
+[]     # INVALID
+[a.]   # INVALID
+[a..b] # INVALID
+[.b]   # INVALID
+[.]    # INVALID
+
+
 #######################
 # EXTRA YAML FEATURES #
 #######################
