@@ -7,7 +7,7 @@ contributors:
 
 TOML stands for Tom's Obvious, Minimal Language. It is a data serialisation language designed to be a minimal configuration file format that's easy to read due to obvious semantics.
 
-It is an alternative of YAML and JSON. TOML is designed to map unambiguously to a hash table. TOML should be easy to parse into data structures in a wide variety of languages.
+It is an alternative of YAML and JSON. It aims to be more human friendly than JSON and simpler that YAML. TOML is designed to map unambiguously to a hash table. TOML should be easy to parse into data structures in a wide variety of languages.
 
 ```toml
 # Comments in TOML look like this.
@@ -106,7 +106,6 @@ date3 = 1979-05-27 # without offset nor time
 # COLLECTION TYPES #
 ####################
 
-#! todo
 
 #######################
 # EXTRA YAML FEATURES #
