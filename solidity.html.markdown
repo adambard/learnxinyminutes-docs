@@ -8,7 +8,7 @@ contributors:
 
 Solidity lets you program on [Ethereum](https://www.ethereum.org/), a
 blockchain-based virtual machine that allows the creation and
-execution of smart contracts, without needing centralized or trusted parties.
+execution of smart contracts, without requiring centralized or trusted parties.
 
 Solidity is a statically typed, contract programming language that has
 similarities to Javascript and C. Like objects in OOP, each contract contains
@@ -28,7 +28,7 @@ throttling usage to reduce risk. This document primarily discusses syntax, and s
 popular design patterns.
 
 As Solidity and Ethereum are under active development, experimental or beta
-features are explicitly marked, and subject to change. Pull requests welcome.
+features are typically marked, and subject to change. Pull requests welcome.
 
 ```javascript
 // First, a simple Bank contract
@@ -164,7 +164,7 @@ address public owner;
 // All addresses can be sent ether
 owner.send(SOME_BALANCE); // returns false on failure
 if (owner.send) {} // REMEMBER: wrap in 'if', as contract addresses have
-// functions executed on send and can fail
+// functions executed on send and these can fail
 // Also, make sure to deduct balances BEFORE attempting a send, as there is a risk of a recursive
 // call that can drain the contract
 
@@ -433,11 +433,11 @@ modifier checkValue(uint amount) {
 // For loops that are determined by user behavior, be careful - as contracts have a maximal
 // amount of gas for a block of code - and will fail if that is exceeded
 // For example:
-for( uint x = 0; x < refundAddressList.length; x++ ) {
-  if (!refundAddressList[x].send(SOME_AMOUNT)) {
-     throw;
-  }
-  }
+for(uint x = 0; x < refundAddressList.length; x++) {
+    if (!refundAddressList[x].send(SOME_AMOUNT)) {
+       throw;
+    }
+}
 
 // Two errors above:
 // 1. A failure on send stops the loop from completing, tying up money
@@ -745,6 +745,7 @@ contract CrowdFunder {
     atEndOfLifecycle()
     {
         selfdestruct(msg.sender);
+        // creator gets all money that hasn't be claimed
     }
 
     function () { throw; }
@@ -835,6 +836,7 @@ someContractAddress.callcode('function_name');
 ## Security
 - [Thinking About Smart Contract Security](https://blog.ethereum.org/2016/06/19/thinking-smart-contract-security/)
 - [Smart Contract Security](https://blog.ethereum.org/2016/06/10/smart-contract-security/)
+- [Hacking Distributed Blog](http://hackingdistributed.com/)
 
 ## Information purposefully excluded
 - Libraries
