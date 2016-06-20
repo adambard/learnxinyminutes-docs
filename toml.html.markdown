@@ -90,9 +90,9 @@ flt3 = 6.626E-34
 # Boolean #
 ###########
 
-# Booleans are always lowercase.
 bool1 = true
 bool2 = false
+boolMustBeLowercase = true
 
 ############
 # Datetime #
