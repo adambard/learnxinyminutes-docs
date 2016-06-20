@@ -197,14 +197,52 @@ c = 2
 # Inline table #
 ################
 
-inlineTables = { areEnclosed = "with { and }", mustBeInline = true }
+inlineTables = { areEnclosedWith = "{ and }", mustBeInline = true }
 point = { x = 1, y = 2 }
 
-#######################
-# EXTRA YAML FEATURES #
-#######################
+###################
+# Array of Tables #
+###################
 
-#! todo
+# An array of tables can be expressed by using a table name in double brackets.
+# Each table with the same
+double bracketed name will be an element in the array.
+# The tables are inserted
+in the order encountered.
+
+[[products]]
+name = "array of table"
+sku = 738594937
+emptyTableAreAllowed = true
+
+[[products]]
+
+[[products]]
+name = "Nail"
+sku = 284758393
+color = "gray"
+
+# You can create nested arrays of tables as well. Each double-bracketed
+# sub-table will belong to the nearest table element above it.
+
+[[fruit]]
+  name = "apple"
+
+  [fruit.physical]
+    color = "red"
+    shape = "round"
+
+  [[fruit.variety]]
+    name = "red delicious"
+
+  [[fruit.variety]]
+    name = "granny smith"
+
+[[fruit]]
+  name = "banana"
+
+  [[fruit.variety]]
+    name = "plantain"
 
 ```
 
