@@ -107,7 +107,17 @@ date3 = 1979-05-27 # without offset nor time
 # COLLECTION TYPES #
 ####################
 
-#! todo
+#########
+# Array #
+#########
+
+array1 = [ 1, 2, 3 ]
+array2 = [ "Commas", "are", "delimiters" ]
+array3 = [ "Don't mixed", "different", "types" ]
+array4 = [ [ 1.2, 2.4 ], ["all", 'strings', """are the same""", '''type'''] ]
+array5 = [
+  "Whitespace", "is", "ignored"
+]
 
 #######################
 # EXTRA YAML FEATURES #
