@@ -193,6 +193,12 @@ c = 2
 [.b]   # INVALID
 [.]    # INVALID
 
+################
+# Inline table #
+################
+
+inlineTables = { areEnclosed = "with { and }", mustBeInline = true }
+point = { x = 1, y = 2 }
 
 #######################
 # EXTRA YAML FEATURES #
