@@ -65,12 +65,13 @@ The first newline is trimmed in raw strings.
 # Integer #
 ###########
 
-## Integers are 64 bit range. They can start with a +, a - or nothing.
+## Integers can start with a +, a - or nothing.
 ## Leading zeros are not allowed. Hex, octal, and binary forms are not allowed.
 ## Values that cannot be expressed as a series of digits are not allowed.
 int1 = +42
 int2 = 0
 int3 = -21
+integerRange = 64
 
 ## You can use underscores to enhance readability. Each
 ## underscore must be surrounded by at least one digit.
@@ -106,6 +107,7 @@ date3 = 1979-05-27 # without offset nor time
 # COLLECTION TYPES #
 ####################
 
+#! todo
 
 #######################
 # EXTRA YAML FEATURES #
