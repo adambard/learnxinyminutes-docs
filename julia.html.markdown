@@ -99,7 +99,7 @@ false
 @printf "%d is less than %f" 4.5 5.3 # 5 is less than 5.300000
 
 # Printing is easy
-println("Hello World!")
+println("I'm Julia. Nice to meet you!")
 
 # String can be compared lexicographically
 "good" > "bye" # => true
@@ -285,7 +285,7 @@ end
 # Use the get method to avoid that error by providing a default value
 # get(dictionary,key,default_value)
 get(filled_dict,"one",4) # => 1
-get(filled_dict,"four", "Key not found") # => 4
+get(filled_dict,"four",4) # => 4
 
 # Use Sets to represent collections of unordered, unique values
 empty_set = Set() # => Set{Any}()
@@ -767,7 +767,6 @@ code_native(circle_area, (Float64,))
 	#	    pop RBP
 	#	    ret
 	#
-
 ```
 
 Further Reading
