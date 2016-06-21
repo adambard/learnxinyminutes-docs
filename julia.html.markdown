@@ -1,13 +1,11 @@
 ---
-language: Julia
-contributors:
-    - ["Leah Hanson", "http://leahhanson.us"]
-    - ["Pranit Bauva", "http://github.com/pranitbauva1997"]
-filename: learnjulia.jl
----
 
-Julia is a new homoiconic functional language focused on technical computing.
-While having the full power of homoiconic macros, first-class functions, and low-level control, Julia is as easy to learn and use as Python.
+language: Julia contributors: - ["Leah Hanson", "http://leahhanson.us"\] - ["Pranit Bauva", "http://github.com/pranitbauva1997"\]
+
+filename: learnjulia.jl
+-----------------------
+
+Julia is a new homoiconic functional language focused on technical computing. While having the full power of homoiconic macros, first-class functions, and low-level control, Julia is as easy to learn and use as Python.
 
 This is based on Julia 0.4.
 
@@ -101,7 +99,7 @@ false
 @printf "%d is less than %f" 4.5 5.3 # 5 is less than 5.300000
 
 # Printing is easy
-println("I'm Julia. Nice to meet you!")
+println("Hello World!")
 
 # String can be compared lexicographically
 "good" > "bye" # => true
@@ -255,7 +253,7 @@ e, d = d, e  # => (5,4) # d is now 5 and e is now 4
 empty_dict = Dict() # => Dict{Any,Any}()
 
 # You can create a dictionary using a literal
-filled_dict = ["one"=> 1, "two"=> 2, "three"=> 3]
+filled_dict = Dict("one"=> 1, "two"=> 2, "three"=> 3)
 # => Dict{ASCIIString,Int64}
 
 # Look up values with []
@@ -287,7 +285,7 @@ end
 # Use the get method to avoid that error by providing a default value
 # get(dictionary,key,default_value)
 get(filled_dict,"one",4) # => 1
-get(filled_dict,"four",4) # => 4
+get(filled_dict,"four", "Key not found") # => 4
 
 # Use Sets to represent collections of unordered, unique values
 empty_set = Set() # => Set{Any}()
@@ -305,7 +303,7 @@ in(10, filled_set) # => false
 other_set = Set([3, 4, 5, 6]) # => Set{Int64}(6,4,5,3)
 intersect(filled_set, other_set) # => Set{Int64}(3,4,5)
 union(filled_set, other_set) # => Set{Int64}(1,2,3,4,5,6)
-setdiff(Set(1,2,3,4),Set(2,3,5)) # => Set{Int64}(1,4)
+setdiff(Set([1,2,3,4]),Set([2,3,5])) # => Set{Int64}(1,4)
 
 
 ####################################################
@@ -346,7 +344,7 @@ end
 #    cat is a mammal
 #    mouse is a mammal
 
-for a in ["dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal"]
+for a in Dict("dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal")
     println("$(a[1]) is a $(a[2])")
 end
 # prints:
@@ -354,7 +352,7 @@ end
 #    cat is a mammal
 #    mouse is a mammal
 
-for (k,v) in ["dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal"]
+for (k,v) in Dict("dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal")
     println("$k is a $v")
 end
 # prints:
@@ -769,9 +767,11 @@ code_native(circle_area, (Float64,))
 	#	    pop RBP
 	#	    ret
 	#
+
 ```
 
-## Further Reading
+Further Reading
+---------------
 
 You can get a lot more detail from [The Julia Manual](http://docs.julialang.org/en/latest/manual/)
 
