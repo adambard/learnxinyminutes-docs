@@ -88,6 +88,7 @@ true == false // false
 6 / 2   // 3
 6 / 4   // 1
 6.0 / 4 // 1.5
+6 / 4.0 // 1.5
 
 
 // Evaluating an expression in the REPL gives you the type and value of the result
