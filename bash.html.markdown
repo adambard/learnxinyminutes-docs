@@ -11,6 +11,7 @@ contributors:
     - ["Rahil Momin", "https://github.com/iamrahil"]
     - ["Gregrory Kielian", "https://github.com/gskielian"]
     - ["Etan Reisner", "https://github.com/deryni"]
+    - ["Scarlz", "https://github.com/5car1z"]
 filename: LearnBash.sh
 ---
 
@@ -272,6 +273,31 @@ grep -c "^foo.*bar$" file.txt
 # and not the regex, use fgrep (or grep -F)
 fgrep "foobar" file.txt
 
+# Create shortcuts to pre-defined commands with alias:
+# move up a directory with ".."
+alias ..='cd ..'
+# see Bash command history with "h"
+alias h='history'
+# list working directory's files in long format with "ll"
+alias ll='ls -alF'
+# set grep command searches to use color in output
+alias grep='grep --color=auto'
+# echo out currently set environment paths
+alias path='echo -e ${PATH//:/\\n}'
+# output the current system time with "now"
+alias now='date +"%T"'
+# output the system's date with "nowdate"
+alias nowdate='date +"%d-%m-%Y"'
+
+# Run the alias command without arguments to see a list of aliases currently defined:
+alias
+# Provide an alias name to output only that particular alias:
+alias nowdate
+
+# To remove an assigned alias use unalias followed by the alias name:
+unalias nowdate
+# Use alias with -a to remove all previously defined aliases
+alias -a
 
 # Read Bash shell builtins documentation with the bash 'help' builtin:
 help
