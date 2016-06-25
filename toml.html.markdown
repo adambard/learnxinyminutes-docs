@@ -228,22 +228,47 @@ color = "gray"
 [[fruit]]
   name = "apple"
 
-  [fruit.physical]
-    color = "red"
+  [fruit.Geometry]
     shape = "round"
+    note = "I am an fruit's property"
 
-  [[fruit.variety]]
-    name = "red delicious"
+  [[fruit.color]]
+    name = "red"
+    note = "I am an array's item in apple"
 
-  [[fruit.variety]]
-    name = "granny smith"
+  [[fruit.color]]
+    name = "green"
+    note = "I am in the same array than red"
 
 [[fruit]]
   name = "banana"
 
-  [[fruit.variety]]
-    name = "plantain"
+  [[fruit.color]]
+    name = "yellow"
+    note = "I am an array's item too but banana's one"
+```
 
+In JSON land, this code will be:
+
+```json
+{
+  "fruit": [
+    {
+      "name": "apple",
+      "geometry": { "shape": "round", "note": "..."},
+      "variety": [
+        { "name": "red", "note": "..." },
+        { "name": "green", "note": "..." }
+      ]
+    },
+    {
+      "name": "banana",
+      "variety": [
+        { "name": "yellow", "note": "..." }
+      ]
+    }
+  ]
+}
 ```
 
 ### More Resources
