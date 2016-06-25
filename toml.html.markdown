@@ -7,10 +7,10 @@ contributors:
 
 TOML stands for Tom's Obvious, Minimal Language. It is a data serialisation language designed to be a minimal configuration file format that's easy to read due to obvious semantics.
 
-It is an alternative of YAML and JSON. It aims to be more human friendly than JSON and simpler that YAML. TOML is designed to map unambiguously to a hash table. TOML should be easy to parse into data structures in a wide variety of languages.
+It is an alternative to YAML and JSON. It aims to be more human friendly than JSON and simpler that YAML. TOML is designed to map unambiguously to a hash table. TOML should be easy to parse into data structures in a wide variety of languages.
 
 Be warned, TOML's spec is still changing a lot. Until it's marked as 1.0, you
-should assume that it is unstable and act accordingly. This document follow TOML v0.4.0. 
+should assume that it is unstable and act accordingly. This document follows TOML v0.4.0. 
 
 ```toml
 # Comments in TOML look like this.
@@ -30,7 +30,7 @@ number = 42
 float = 3.14
 boolean = true
 dateTime = 1979-05-27T07:32:00-08:00 #! Array, or Inline Table.
-scientific notation = 1e+12
+scientificNotation = 1e+12
 "key can be quoted" = true # Both " and ' are fine
 "key may contains" = "letters, numbers, underscores, and dashes"
 
@@ -43,8 +43,8 @@ scientific notation = 1e+12
 ##########
 
 # All strings must contain only valid UTF-8 characters.
-# We can escape and some characters have a compact escape sequence.
-# For example, \t add a tabulation. Refers to spec to get all of them.
+# We can escape characters and some of them have a compact escape sequence.
+# For example, \t add a tabulation. Refers to the spec to get all of them.
 basicString = "are surrounded by quotation marks. \"I'm quotable\". Name\tJos"
 
 multiLineString = """
@@ -205,10 +205,8 @@ point = { x = 1, y = 2 }
 ###################
 
 # An array of tables can be expressed by using a table name in double brackets.
-# Each table with the same
-double bracketed name will be an element in the array.
-# The tables are inserted
-in the order encountered.
+# Each table with the same double bracketed name will be an item in the array.
+# The tables are inserted in the order encountered.
 
 [[products]]
 name = "array of table"
