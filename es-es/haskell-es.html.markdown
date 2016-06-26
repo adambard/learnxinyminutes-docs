@@ -4,6 +4,7 @@ contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:
     - ["Jorge Antonio Atempa", "http://www.twitter.com/atempa09"]
+filename: haskell-es.md
 lang: es-es
 ---
 
