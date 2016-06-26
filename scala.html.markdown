@@ -48,7 +48,7 @@ println(10)
 // Printing, without forcing a new line on next print
 print("Hello world")
 print(10)
-// Hello world!10
+// Hello world10
 
 // Declaring values is done using either var or val.
 // val declarations are immutable, whereas vars are mutable. Immutability is
@@ -88,6 +88,7 @@ true == false // false
 6 / 2   // 3
 6 / 4   // 1
 6.0 / 4 // 1.5
+6 / 4.0 // 1.5
 
 
 // Evaluating an expression in the REPL gives you the type and value of the result
@@ -169,6 +170,12 @@ def sumOfSquaresShort(x: Int, y: Int): Int = x * x + y * y
 // Syntax for calling functions is familiar:
 sumOfSquares(3, 4)  // => 25
 
+// You can use parameters names to specify them in different order
+def subtract(x: Int, y: Int): Int = x - y
+
+subtract(10, 3)     // => 7
+subtract(y=10, x=3) // => -7
+
 // In most cases (with recursive functions the most notable exception), function
 // return type can be omitted, and the same type inference we saw with variables
 // will work with function return values:
@@ -231,7 +238,7 @@ r foreach println
 
 (5 to 1 by -1) foreach (println)
 
-// A while loops
+// A while loop
 var i = 0
 while (i < 10) { println("i " + i); i += 1 }
 
@@ -239,17 +246,18 @@ while (i < 10) { println("i " + i); i += 1 }   // Yes, again. What happened? Why
 
 i    // Show the value of i. Note that while is a loop in the classical sense -
      // it executes sequentially while changing the loop variable. while is very
-     // fast, faster that Java loops, but using the combinators and
-     // comprehensions above is easier to understand and parallelize
+     // fast, but using the combinators and comprehensions above is easier
+     // to understand and parallelize
 
-// A do while loop
+// A do-while loop
 i = 0
 do {
   println("i is still less than 10")
   i += 1
 } while (i < 10)
 
-// Tail recursion is an idiomatic way of doing recurring things in Scala.
+// Recursion is the idiomatic way of repeating an action in Scala (as in most
+// other functional languages).
 // Recursive functions need an explicit return type, the compiler can't infer it.
 // Here it's Unit.
 def showNumbersInRange(a: Int, b: Int): Unit = {
@@ -267,7 +275,7 @@ val x = 10
 if (x == 1) println("yeah")
 if (x == 10) println("yeah")
 if (x == 11) println("yeah")
-if (x == 11) println ("yeah") else println("nay")
+if (x == 11) println("yeah") else println("nay")
 
 println(if (x == 10) "yeah" else "nope")
 val text = if (x == 10) "yeah" else "nope"
@@ -278,21 +286,21 @@ val text = if (x == 10) "yeah" else "nope"
 /////////////////////////////////////////////////
 
 val a = Array(1, 2, 3, 5, 8, 13)
-a(0)
-a(3)
+a(0)     // Int = 1
+a(3)     // Int = 5
 a(21)    // Throws an exception
 
 val m = Map("fork" -> "tenedor", "spoon" -> "cuchara", "knife" -> "cuchillo")
-m("fork")
-m("spoon")
+m("fork")         // java.lang.String = tenedor
+m("spoon")        // java.lang.String = cuchara
 m("bottle")       // Throws an exception
 
 val safeM = m.withDefaultValue("no lo se")
-safeM("bottle")
+safeM("bottle")   // java.lang.String = no lo se
 
 val s = Set(1, 3, 7)
-s(0)
-s(1)
+s(0)      // Boolean = false
+s(1)      // Boolean = true
 
 /* Look up the documentation of map here -
  * http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Map
@@ -313,15 +321,22 @@ s(1)
 // Why have this?
 val divideInts = (x: Int, y: Int) => (x / y, x % y)
 
-divideInts(10, 3) // The function divideInts gives you the result and the remainder
+// The function divideInts gives you the result and the remainder
+divideInts(10, 3)    // (Int, Int) = (3,1)
 
 // To access the elements of a tuple, use _._n where n is the 1-based index of
 // the element
-val d = divideInts(10, 3)
+val d = divideInts(10, 3)    // (Int, Int) = (3,1)
 
-d._1
+d._1    // Int = 3
+d._2    // Int = 1
 
-d._2
+// Alternatively you can do multiple-variable assignment to tuple, which is more
+// convenient and readable in many cases
+val (div, mod) = divideInts(10, 3)
+
+div     // Int = 3
+mod     // Int = 1
 
 
 /////////////////////////////////////////////////
@@ -453,6 +468,9 @@ def matchEverything(obj: Any): String = obj match {
 
   // You can nest patterns:
   case List(List((1, 2, "YAY"))) => "Got a list of list of tuple"
+
+  // Match any case (default) if all previous haven't matched
+  case _ => "Got unknown object"
 }
 
 // In fact, you can pattern match any object with an "unapply" method. This
@@ -604,6 +622,9 @@ import scala.collection.immutable.{List => ImmutableList}
 
 // Import all classes, except some. The following excludes Map and Set:
 import scala.collection.immutable.{Map => _, Set => _, _}
+
+// Java classes can also be imported. Scala syntax can be used
+import java.swing.{JFrame, JWindow}
 
 // Your programs entry point is defined in an scala file using an object, with a
 // single method, main:

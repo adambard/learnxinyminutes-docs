@@ -16,13 +16,14 @@ JavaScript isn't just limited to web browsers, though: Node.js, a project that
 provides a standalone runtime for Google Chrome's V8 JavaScript engine, is
 becoming more and more popular.
 
-Feedback would be highly appreciated! You can reach me at
-[@adambrenecki](https://twitter.com/adambrenecki), or
-[adam@brenecki.id.au](mailto:adam@brenecki.id.au).
+JavaScript has a C-like syntax, so if you've used languages like C or Java,
+a lot of the basic syntax will already be familiar. Despite this, and despite
+the similarity in name, JavaScript's object model is significantly different to
+Java's.
 
 ```js
-// Comments are like C's. Single-line comments start with two slashes,
-/* and multiline comments start with slash-star
+// Single-line comments start with two slashes.
+/* Multiline comments start with slash-star,
    and end with star-slash */
 
 // Statements can be terminated by ;
@@ -40,7 +41,7 @@ doStuff()
 
 // JavaScript has one number type (which is a 64-bit IEEE 754 double).
 // Doubles have a 52-bit mantissa, which is enough to store integers
-//    up to about 9✕10¹⁵ precisely.
+// up to about 9✕10¹⁵ precisely.
 3; // = 3
 1.5; // = 1.5
 
@@ -100,6 +101,10 @@ false;
 // Strings are concatenated with +
 "Hello " + "world!"; // = "Hello world!"
 
+// ... which works with more than just strings
+"1, 2, " + 3; // = "1, 2, 3"
+"Hello " + ["world", "!"] // = "Hello world,!"
+
 // and are compared with < and >
 "a" < "b"; // = true
 
@@ -140,7 +145,7 @@ undefined; // used to indicate a value is not currently present (although
 // character.
 var someVar = 5;
 
-// if you leave the var keyword off, you won't get an error...
+// If you leave the var keyword off, you won't get an error...
 someOtherVar = 10;
 
 // ...but your variable will be created in the global scope, not in the scope
@@ -149,7 +154,7 @@ someOtherVar = 10;
 // Variables declared without being assigned to are set to undefined.
 var someThirdVar; // = undefined
 
-// if you wan't to declare a couple of variables, then you could use a comma 
+// If you want to declare a couple of variables, then you could use a comma
 // separator
 var someFourthVar = 2, someFifthVar = 4;
 
@@ -198,8 +203,6 @@ myObj.myFourthKey; // = undefined
 ///////////////////////////////////
 // 3. Logic and Control Structures
 
-// The syntax for this section is almost identical to Java's.
-
 // The `if` structure works as you'd expect.
 var count = 1;
 if (count == 3){
@@ -227,15 +230,15 @@ for (var i = 0; i < 5; i++){
     // will run 5 times
 }
 
-//The For/In statement loops iterates over every property across the entire prototype chain
+// The for/in statement iterates over every property across the entire prototype chain.
 var description = "";
 var person = {fname:"Paul", lname:"Ken", age:18};
 for (var x in person){
     description += person[x] + " ";
 }
 
-//If only want to consider properties attached to the object itself,
-//and not its prototypes use hasOwnProperty() check
+// To only consider properties attached to the object itself
+// and not its prototypes, use the `hasOwnProperty()` check.
 var description = "";
 var person = {fname:"Paul", lname:"Ken", age:18};
 for (var x in person){
@@ -244,8 +247,9 @@ for (var x in person){
     }
 }
 
-//for/in should not be used to iterate over an Array where the index order is important.
-//There is no guarantee that for/in will return the indexes in any particular order
+// For/in should not be used to iterate over an Array where the index order
+// is important, as there is no guarantee that for/in will return the indexes
+// in any particular order.
 
 // && is logical and, || is logical or
 if (house.size == "big" && house.colour == "blue"){
@@ -260,7 +264,7 @@ var name = otherName || "default";
 
 
 // The `switch` statement checks for equality with `===`.
-// use 'break' after each case
+// Use 'break' after each case
 // or the cases after the correct one will be executed too.
 grade = 'B';
 switch (grade) {
@@ -507,6 +511,10 @@ myNumber === myNumberObj; // = false
 if (0){
     // This code won't execute, because 0 is falsy.
 }
+if (new Number(0)){
+   // This code will execute, because wrapped numbers are objects, and objects
+   // are always truthy.
+}
 
 // However, the wrapper objects and the regular builtins share a prototype, so
 // you can actually add functionality to a string, for instance.
@@ -534,28 +542,42 @@ if (Object.create === undefined){ // don't overwrite it if it exists
 
 ## Further Reading
 
-The [Mozilla Developer
-Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) provides
-excellent documentation for JavaScript as it's used in browsers. Plus, it's a
-wiki, so as you learn more you can help others out by sharing your own
-knowledge.
+The [Mozilla Developer Network][1] provides excellent documentation for
+JavaScript as it's used in browsers. Plus, it's a wiki, so as you learn more you
+can help others out by sharing your own knowledge.
 
-MDN's [A re-introduction to
-JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
-covers much of the concepts covered here in more detail. This guide has quite
-deliberately only covered the JavaScript language itself; if you want to learn
-more about how to use JavaScript in web pages, start by learning about the
-[Document Object
-Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
+MDN's [A re-introduction to JavaScript][2] covers much of the concepts covered
+here in more detail. This guide has quite deliberately only covered the
+JavaScript language itself; if you want to learn more about how to use
+JavaScript in web pages, start by learning about the [Document Object Model][3].
 
-[Learn Javascript by Example and with Challenges](http://www.learneroo.com/modules/64/nodes/350) is a variant of this reference with built-in challenges.
+[Learn Javascript by Example and with Challenges][4] is a variant of this
+reference with built-in challenges.
 
-[JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) is an in-depth
-guide of all the counter-intuitive parts of the language.
+[JavaScript Garden][5] is an in-depth guide of all the counter-intuitive parts
+of the language.
 
-[JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) is a classic guide / reference book.
+[JavaScript: The Definitive Guide][6] is a classic guide and reference book.
 
-In addition to direct contributors to this article, some content is adapted
-from Louie Dinh's Python tutorial on this site, and the [JS
-Tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
-on the Mozilla Developer Network.
+[Eloquent Javascript][8] by Marijn Haverbeke is an excellent JS book/ebook with attached terminal
+
+[Eloquent Javascript - The Annotated Version][9] by Gordon Zhu is also a great derivative of Eloquent Javascript with extra explanations and clarifications for some of the more complicated examples.
+
+[Javascript: The Right Way][10] is a guide intended to introduce new developers to JavaScript and help experienced developers learn more about its best practices.
+
+
+In addition to direct contributors to this article, some content is adapted from
+Louie Dinh's Python tutorial on this site, and the [JS Tutorial][7] on the
+Mozilla Developer Network.
+
+
+[1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+[2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
+[3]: https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core
+[4]: http://www.learneroo.com/modules/64/nodes/350
+[5]: http://bonsaiden.github.io/JavaScript-Garden/
+[6]: http://www.amazon.com/gp/product/0596805527/
+[7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
+[8]: http://eloquentjavascript.net/
+[9]: http://watchandcode.com/courses/eloquent-javascript-the-annotated-version
+[10]: http://jstherightway.org/
