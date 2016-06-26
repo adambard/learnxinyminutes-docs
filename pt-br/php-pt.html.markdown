@@ -7,7 +7,7 @@ translators:
     - ["Abdala Cerqueira", "http://abda.la"]
     - ["Raquel Diniz", "http://twitter.com/raquelrdiniz"]
 lang: pt-br
-filename: learnphp-pt.php
+filename: php-pt.html.markdown
 ---
 
 Este documento descreve PHP 5+.
@@ -20,21 +20,23 @@ Este documento descreve PHP 5+.
 
 // Duas barras iniciam o comentário de uma linha.
 
-# O hash (aka pound symbol) também inicia, mas // é mais comum
+# O hash (aka pound symbol) também inicia, mas // é mais comum.
 
 /*
      O texto envolto por barra-asterisco e asterisco-barra
-     faz um comentário de múltiplas linhas
+     faz um comentário de múltiplas linhas.
 */
 
-// Utilize "echo" ou "print" para imprimir a saída
-print('Olá '); // Imprime "Olá " sem quebra de linha
+// Utilize "echo" ou "print" para imprimir a saída.
+print('Olá '); // Imprime "Olá " sem quebra de linha.
+print 'Olá '; // Não tem a necessidade de utilizar as chaves.
 
 // () são opcionais para print e echo
-echo "Mundo\n"; // Imprime "Mundo" com quebra de linha
-// (Todas as declarações devem terminar com um ponto e vírgula)
+echo "Mundo\n"; // Imprime "Mundo" com quebra de linha.
+echo ("Mundo\n"); // Podemos tambem utilizar com chaves no echo.
+// (Todas as declarações devem terminar com um ponto e vírgula.)
 
-// Qualquer coisa fora da tag <?php é impresso automaticamente
+// Qualquer coisa fora da tag <?php é impresso automaticamente.
 ?>
 Olá mundo novamente!
 <?php
@@ -48,7 +50,7 @@ Olá mundo novamente!
 // Um nome de variável válido se inicia com uma letra ou sublinhado,
 // seguido por qualquer quantidade de letras, números ou sublinhados.
 
-// Valores booleanos não diferenciam maiúsculo de minúsculo (case-insensitive)
+// Valores booleanos não diferenciam maiúsculo de minúsculo (case-insensitive).
 $boolean = true;  // ou TRUE ou True
 $boolean = false; // ou FALSE ou False
 
@@ -63,8 +65,8 @@ $float = 1.234;
 $float = 1.2e3;
 $float = 7E-10;
 
-// Excluir variável
-unset($int1)
+// Excluir variável.
+unset($int1);
 
 // Aritmética
 $soma      = 1 + 1; // 2
@@ -79,17 +81,19 @@ echo $numero++;    // Imprime 1 (incrementa após a avaliação)
 echo ++$numero;    // Imprime 3 (incrementa antes da avaliação)
 $numero /= $float; // Divide e atribui o quociente de $numero
 
-// Strings podem ser colocadas entre aspas simples
+// Strings podem ser colocadas entre aspas simples.
 $sgl_quotes = '$String'; // => '$String'
 
 // Evite o uso de aspas duplas, exceto para incorporar outras variáveis
 $dbl_quotes = "Esta é uma $sgl_quotes."; // => 'Esta é uma $String.'
 
-// Os caracteres especiais só são escapados entre aspas duplas
-$escapado    = "Este contém um \t caractere tab.";
-$naoescapado = 'Este contém somente a barra e o t: \t';
+// Os caracteres especiais só são escapados entre aspas duplas.
+$escapado    = "Este contém um \t caractere tab."; 
+echo $escapado; //Imprime: Este contém um     caractere tab.
+$naoescapado = 'Este contém somente a barra e o t: \t'; 
+echo $naoescapado; //Imprime: Este contém somente a barra e o t: \t
 
-// Coloque uma variável entre chaves se necessário
+// Coloque uma variável entre chaves se necessário.
 $dinheiro = "Eu tenho $${numero} no banco.";
 
 // Desde o PHP 5.3, nowdocs podem ser usados para múltiplas linhas sem análise
@@ -105,7 +109,7 @@ $sgl_quotes
 FIM;
 
 // Concatenação de string é feita com .
-echo 'Esta string ' . 'é concatenada';
+echo 'Esta string ' . 'é concatenada'; //Imprime: 'Esta string é concatenada'
 
 
 /********************************
@@ -120,7 +124,7 @@ echo 'Esta string ' . 'é concatenada';
 define("FOO",     "alguma coisa");
 
 // Acesso a uma constante é possível usando diretamente o nome escolhido
-echo 'Isto sairá '.FOO;
+echo 'Isto sairá '.FOO; //Imprime: Isto sairá alguma coisa
 
 
 /********************************
@@ -135,16 +139,16 @@ $associativo = array('Um' => 1, 'Dois' => 2, 'Tres' => 3);
 // PHP 5.4 introduziu uma nova sintaxe
 $associativo = ['Um' => 1, 'Dois' => 2, 'Tres' => 3];
 
-echo $associativo['Um']; // imprime 1
+echo $associativo['Um']; // Imprime 1.
 
 // Uma lista de literais atribui chaves inteiras implicitamente
 $array = ['Um', 'Dois', 'Tres'];
-echo $array[0]; // => "Um"
+echo $array[0]; // Imprime => "Um"
 
 // Adiciona um elemento no final do array
 $array[] = 'Quatro';
 
-// Remove um elemento do array
+// Remove um elemento do array.
 unset($array[3]);
 
 /********************************
@@ -155,12 +159,12 @@ echo('Olá Mundo!');
 // Imprime Olá Mundo! para stdout.
 // Stdout é uma página web se executado em um navegador.
 
-print('Olá Mundo!'); // O mesmo que o echo
+print('Olá Mundo!'); // O mesmo que o echo.
 
 // echo é atualmente um construtor de linguagem, então você pode 
 // remover os parênteses.
-echo 'Olá Mundo!';
-print 'Olá Mundo!'; // O print também é
+echo 'Olá Mundo!'; // Imprime: Olá Mundo!
+print 'Olá Mundo!'; // O print também é - Imprime: Olá Mundo! 
 
 $paragrafo = 'parágrafo';
 
@@ -181,11 +185,11 @@ $z = &$y;
 // $z irá mudar o valor de $y também, e vice-versa.
 // $x irá permanecer inalterado com o valor original de $y
 
-echo $x; // => 2
-echo $z; // => 2
+echo $x; // Imprime => 2
+echo $z; // Imprime => 2
 $y = 0;
-echo $x; // => 2
-echo $z; // => 0
+echo $x; // Imprime => 2
+echo $z; // Imprime => 0
 
 // Despeja tipos e valores de variável para o stdout
 var_dump($z); // imprime int(0)
@@ -222,13 +226,13 @@ assert(1 !== '1');
 // As variáveis podem ser convertidas entre tipos, dependendo da sua utilização.
 
 $inteiro = 1;
-echo $inteiro + $inteiro; // => 2
+echo $inteiro + $inteiro; // Imprime => 2
 
 $string = '1';
-echo $string + $string; // => 2 (strings são coagidas para inteiros)
+echo $string + $string; // Imprime => 2 (strings são coagidas para inteiros)
 
 $string = 'one';
-echo $string + $string; // => 0
+echo $string + $string; // Imprime => 0
 // Imprime 0 porque o operador + não pode fundir a string 'um' para um número
 
 // Tipo de fundição pode ser utilizado para tratar uma variável 
