@@ -12,7 +12,7 @@ contributors:
     - ["Jose Donizetti", "https://github.com/josedonizetti"]
     - ["Alexej Friesen", "https://github.com/heyalexej"]
     - ["Jean-Philippe Monette", "http://blogue.jpmonette.net/"]
-    - ["Thibault", "https://github.com/iTech-"]
+    - ["Thibault", "https://github.com/napnac"]
 ---
 
 Go a été créé dans l'optique de développer de façon efficace. Ce n'est pas la

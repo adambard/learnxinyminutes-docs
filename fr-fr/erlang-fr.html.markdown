@@ -5,7 +5,7 @@ contributors:
 translators:
     - ["Julien Cretel", "https://github.com/Jubobs"]
 filename: learnerlang-fr.erl
-    - ["Thibault", "https://github.com/iTech-"]
+    - ["Thibault", "https://github.com/napnac"]
 lang: fr-fr
 ---
 

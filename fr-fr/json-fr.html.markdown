@@ -6,7 +6,7 @@ contributors:
   - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
   - ["Alois de Gouvello","https://github.com/aloisdg"]
-  - ["Thibault", "https://github.com/iTech-"]
+  - ["Thibault", "https://github.com/napnac"]
 lang: fr-fr
 ---
 

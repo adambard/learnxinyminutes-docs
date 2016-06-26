@@ -3,7 +3,7 @@ language: haml
 filename: learnhaml.haml
 contributors:
   - ["Simon Neveu", "https://github.com/sneveu"]
-  - ["Thibault", "https://github.com/iTech-"]
+  - ["Thibault", "https://github.com/napnac"]
 lang: fr-fr
 ---
 

@@ -10,7 +10,7 @@ contributors:
 translators:
   - ["Geoffrey Roguelon", "https://github.com/GRoguelon"]
   - ["Nami-Doc", "https://github.com/Nami-Doc"]
-  - ["Thibault", "https://github.com/iTech-"]
+  - ["Thibault", "https://github.com/napnac"]
 lang: fr-fr
 ---
 

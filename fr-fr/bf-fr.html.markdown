@@ -6,7 +6,7 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Baptiste Fontaine", "http://bfontaine.net"]
-    - ["Thibault", "https://github.com/iTech-"]
+    - ["Thibault", "https://github.com/napnac"]
 lang: fr-fr
 ---
 

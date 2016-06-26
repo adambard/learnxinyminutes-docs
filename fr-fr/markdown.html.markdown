@@ -2,7 +2,7 @@
 language: markdown
 contributors:
 - ["Andrei Curelaru", "http://www.infinidad.fr"]
-- ["Thibault", "https://github.com/iTech-"]
+- ["Thibault", "https://github.com/napnac"]
 filename: markdown-fr.md
 lang: fr-fr
 ---

@@ -4,7 +4,7 @@ contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
 translators:
   - ["Geoffrey Roguelon", "https://github.com/GRoguelon"]
-  - ["Thibault", "https://github.com/iTech-"]
+  - ["Thibault", "https://github.com/napnac"]
 lang: fr-fr
 filename: coffeescript-fr.coffee
 ---
