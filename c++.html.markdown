@@ -873,92 +873,92 @@ v.swap(vector<Foo>());
 // CONTAINERS
 /////////////////////
 
-//Containers or the Standard Template Library are some predefined templates
-//They  manages the storage space for its elements and provide
-//member functions to access and manipulate them
+// Containers or the Standard Template Library are some predefined templates
+// They  manages the storage space for its elements and provide
+// member functions to access and manipulate them
 
-//Few containers are as follows:-
+// Few containers are as follows:-
 
-//Vectors (Dynamic array)
-//Allow us to Define the Array or list of objects at run time
-#include<vector>//will include the header file for vector
+// Vectors (Dynamic arrays)
+// Allow us to Define the Array or list of objects at run time
+#include<vector>  // will include the header file for vector
 vector< Data_Type > Vector_name; // used to initialize the vector
 cin>>val;
 Vector_name.push_back(val); // will push the value of variable into array
 
-//To iterate through vector, we have 2 choices
-//using normal looping 
+// To iterate through vector, we have 2 choices
+// using normal looping 
 for(int i=0; i<Vector_name.size(); i++)
-//it will iterate through the vector from index '0' till last index
+// It will iterate through the vector from index '0' till last index
 
 // Using Iterator
-vector<Data_Type>::iterator it; //initialize the iteartor for vector
+vector<Data_Type>::iterator it; // initialize the iteartor for vector
 for(it=vector_name.begin(); it!=vector_name.end();++it)
 
-//For accessing the element of the vector
-//operator []
+// For accessing the element of the vector
+// Operator []
 var= vector_name[index]; //will assign value at that index to var
 
 
-//Set
-//Sets are containers that store unique elements following a specific order
-//Very useful container to store unique values in sorted order 
-//without any other functions or code
+// Set
+// Sets are containers that store unique elements following a specific order
+// Very useful container to store unique values in sorted order 
+// without any other functions or code
 
-#include<set>//will include the header file for sets
-set< int > ST; //will initialize the set of int data type
-ST.insert(30);// will insert the value 30 in set ST
-ST.insert(10); // will insert the value 10 in set ST
-ST.insert(20); // will insert the value 20 in set ST
-ST.insert(30);// will insert the value 30 in set ST
-//Now elements of sets are as follows
- 10 20 30
+#include<set>   // Will include the header file for sets
+set< int > ST;  // Will initialize the set of int data type
+ST.insert(30);  // Will insert the value 30 in set ST
+ST.insert(10);  // Will insert the value 10 in set ST
+ST.insert(20);  // Will insert the value 20 in set ST
+ST.insert(30);  // Will insert the value 30 in set ST
+// Now elements of sets are as follows
+//  10 20 30
  
-//To erase an element
-ST.erase(20); // will erase element with value 20
-//Set ST: 10 30
-//To iterate through Set we use iterators
+// To erase an element
+ST.erase(20);  // Will erase element with value 20
+// Set ST: 10 30
+// To iterate through Set we use iterators
 set< int >::iterator it;
 for(it=ST.begin();it<ST.end();it++)
 {
 	cout<<*it<<endl;
 }
-//OUTPUT: 
+// OUTPUT: 
 // 10
 // 30
 
-//To clear the complete container we use Container_name.clear()
+// To clear the complete container we use Container_name.clear()
 ST.clear();
-cout<<ST.size(); //will print the size of set ST
+cout<<ST.size();  // will print the size of set ST
 // OUTPUT: 0
 
-//NOTE: for duplicate elements we can use multiset
+// NOTE: for duplicate elements we can use multiset
 
-//MAP
-//Maps store elements formed by a combination of a key value
-//and a mapped value, following a specific order
+// MAP
+// Maps store elements formed by a combination of a key value
+// and a mapped value, following a specific order
 
-#include<map> //will include the header file for map
-map< char, int >mymap; //will initalize the map with key as char and value as int
+#include<map>  // Will include the header file for map
+map< char, int >mymap;  // Will initalize the map with key as char and value as int
 
 mymap.insert ( pair<char,int>('A',1) );
-//will insert value 1 for key A
+// Will insert value 1 for key A
 mymap.insert ( pair<char,int>('Z',26) );
-//will insert value 26 for key Z
+// Will insert value 26 for key Z
 
-//To iterate 
+// To iterate 
 map<char,int>::iterator it;
 for (it=mymap.begin(); it!=mymap.end(); ++it)
     std::cout << it->first << "->" << it->second <<'\n';
-//output: 
-//A->1
-//Z->26
+// Output: 
+// A->1
+// Z->26
 
-//To find the value correponsing to a key
+// To find the value correponsing to a key
 it = mymap.find('Z');
 cout<<it->second;
 
-//OUTPUT: 26
+// OUTPUT: 26
 
 
 ```
