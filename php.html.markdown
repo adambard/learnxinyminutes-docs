@@ -91,6 +91,8 @@ $unescaped = 'This just contains a slash and a t: \t';
 $apples = "I have {$number} apples to eat.";
 $oranges = "I have ${number} oranges to eat.";
 $money = "I have $${number} in the bank.";
+// Curly braces are used to explicitly specify the end of a variable name
+echo "{$number}this_is_just_a_string_but_not_variable_name\n";
 
 // Since PHP 5.3, nowdocs can be used for uninterpolated multi-liners
 $nowdoc = <<<'END'
