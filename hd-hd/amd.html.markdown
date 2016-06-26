@@ -3,7 +3,8 @@ category: tool
 tool: amd
 contributors:
     - ["Frederik Ring", "https://github.com/m90"]
-filename: learnamd.js
+filename: learnamd-hd.js
+lang: hd
 ---
 ## एएमडी के साथ प्रारंभ करना
 
