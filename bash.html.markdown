@@ -11,6 +11,7 @@ contributors:
     - ["Rahil Momin", "https://github.com/iamrahil"]
     - ["Gregrory Kielian", "https://github.com/gskielian"]
     - ["Etan Reisner", "https://github.com/deryni"]
+    - ["Jonathan Wang", "https://github.com/Jonathansw"                       ]
 filename: LearnBash.sh
 ---
 
@@ -54,6 +55,13 @@ echo '$Variable'
 # its name without $. If you want to use the variable's value, you should use $.
 # Note that ' (single quote) won't expand the variables!
 
+# Parameter expansion ${ }:
+echo ${Variable}
+# This is a simple usage of parameter expansion
+# Parameter Expansion gets a value from a variable.  It "expands" or prints the value
+# During the expansion time the value or parameter are able to be modified
+# Below are other modifications that add onto this expansion
+
 # String substitution in variables
 echo ${Variable/Some/A}
 # This will substitute the first occurrence of "Some" with "A"
@@ -67,6 +75,12 @@ echo ${Variable:0:Length}
 echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"}
 # This works for null (Foo=) and empty string (Foo=""); zero (Foo=0) returns 0.
 # Note that it only returns default value and doesn't change variable value.
+
+# Brace Expansion { }
+# Used to generate arbitrary strings
+echo {1..10}
+echo {a..z}
+# This will output the range from the start value to the end value
 
 # Builtin variables:
 # There are some useful builtin variables, like
