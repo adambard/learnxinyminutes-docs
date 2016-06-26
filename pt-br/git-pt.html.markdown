@@ -32,7 +32,7 @@ a um arquivo ou conjunto de arquivos ao longo do tempo.
 de arquivos.
 * Controle de versão distribuído foca em compartilhar alterações. Cada
 alteração é associada a um *id* único.
-* Sistemas distribuídos não tem estrutura definida. É possivel ter um sistema
+* Sistemas distribuídos não têm estrutura definida. É possivel ter um sistema
 centralizado ao estilo SVN usando git.
 
 [Informação adicional (EN)](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
@@ -56,7 +56,7 @@ referências. Pode ser descrito como uma estrutura de dados de código fonte
 com a particularidade de cada elemento do código fonte permitir acesso ao
 histórico das suas alterações, entre outras coisas.
 
-Um repositório git é constituido pelo diretório .git e a *working tree*
+Um repositório git é constituído pelo diretório .git e a *working tree*
 
 ### Diretório .git (componente do repositório)
 
@@ -140,10 +140,10 @@ Para visualizar rapidamente o detalhamento de cada comando ou apenas lembrar da 
 # Ver rapidamente os comandos disponiveis
 $ git help
 
-# Ver todos os comandos disponiveis
+# Ver todos os comandos disponíveis
 $ git help -a
 
-# Usar o *help* para um comando especifico
+# Usar o *help* para um comando específico
 # git help <comando_aqui>
 $ git help add
 $ git help commit
@@ -158,7 +158,7 @@ do repositório) e o *commit* da *HEAD* atual.
 
 ```bash
 # Apresenta o *branch*, arquivos não monitorados, alterações e outras
-# difereças
+# diferenças
 $ git status
 
 # Para aprender mais detalhes sobre git *status*
@@ -400,7 +400,7 @@ perigoso quando não há certeza do que se está fazendo.
 
 ```bash
 # Restabelece a camada intermediária de registo para o último
-# commit (o directório fica sem alterações)
+# commit (o diretório fica sem alterações)
 $ git reset
 
 # Restabelece a camada intermediária de registo para o último commit, e
