@@ -53,7 +53,7 @@ on each side and allow newlines."""
 
 literalString = 'are surrounded by single quotes. Escaping are not allowed.'
 
-MultiLineLiteralString = '''
+multiLineLiteralString = '''
 are surrounded by three single quotes on each side
 and allow newlines. Still no escaping.
 The first newline is trimmed in raw strings.
