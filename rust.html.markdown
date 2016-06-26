@@ -2,7 +2,6 @@
 language: rust
 contributors:
     - ["P1start", "http://p1start.github.io/"]
-    - ["Pink401k", "http://github.com/Pink401k"]
 filename: learnrust.rs
 ---
 
