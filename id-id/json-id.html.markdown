@@ -1,11 +1,12 @@
 ---
 language: json
-filename: learnjson.json
+filename: learnjson-id.json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]
-translators
+translators:
   - ["Rizky Luthfianto", "https://github.com/rilut"]
+lang: id-id
 ---
 
 JSON adalah format pertukaran data yang sangat simpel, kemungkinan besar,

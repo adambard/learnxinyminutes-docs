@@ -56,7 +56,7 @@ __E este também está._
 *--Danouse! Este também__*
 
 <!-- Em GitHub Flavored Markdown, que é usado para processar arquivos Markdown 
-Github, nós também temos: --> 
+GitHub, nós também temos: --> 
 
 ~~Este texto é processado com tachado.~~
 
@@ -148,7 +148,7 @@ dentro do seu código -->
 
 John não sabia nem o que o função 'goto()' fazia!
 
-<!-- Em Github Flavored Markdown, você pode usar uma sintaxe especial para o código -->
+<!-- Em GitHub Flavored Markdown, você pode usar uma sintaxe especial para o código -->
 
 \`\`\`ruby <!-- exceto remover essas barras invertidas quando você faz isso, apenas ```
 ruby! --> 
@@ -157,7 +157,7 @@ def foobar
 end
 \`\`\` <!-- Aqui também, não barras invertidas, apenas ``` -->
 
-<-- O texto acima não requer recuo, mas o Github vai usar a sintaxe 
+<-- O texto acima não requer recuo, mas o GitHub vai usar a sintaxe 
 destacando do idioma que você especificar após a ``` -->
 
 <!-- Regra Horizontal (<hr />) --> 
@@ -230,7 +230,7 @@ Quero digitar * Este texto entre asteriscos *, mas eu não quero que ele seja
 em itálico, então eu faço o seguinte: \*Este texto entre asteriscos \*.
 
 <!-- Tabelas --> 
-<!-- Tabelas estão disponíveis apenas no Github Flavored Markdown e são ligeiramente 
+<!-- Tabelas estão disponíveis apenas no GitHub Flavored Markdown e são ligeiramente 
 complicadas, mas se você realmente quer: -->
 
 | Col1         | Col2     | Col3          |

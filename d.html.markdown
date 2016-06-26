@@ -53,15 +53,15 @@ void main() {
     // For and while are nice, but in D-land we prefer 'foreach' loops.
     // The '..' creates a continuous range, including the first value
     // but excluding the last.
-    foreach(i; 1..1_000_000) {
+    foreach(n; 1..1_000_000) {
         if(n % 2 == 0)
-            writeln(i);
+            writeln(n);
     }
 
     // There's also 'foreach_reverse' when you want to loop backwards.
-    foreach_reverse(i; 1..int.max) {
+    foreach_reverse(n; 1..int.max) {
         if(n % 2 == 1) {
-            writeln(i);
+            writeln(n);
         } else {
             writeln("No!");
         }
@@ -70,7 +70,7 @@ void main() {
 ```
 
 We can define new types with `struct`, `class`, `union`, and `enum`. Structs and unions
-are passed to functions by value (i.e. copied) and classes are passed by reference. Futhermore,
+are passed to functions by value (i.e. copied) and classes are passed by reference. Furthermore,
 we can use templates to parameterize all of these on both types and values!
 
 ```c
@@ -218,7 +218,7 @@ void main() {
     // from 1 to 100. Easy!
 
     // Just pass lambda expressions as template parameters!
-    // You can pass any old function you like, but lambdas are convenient here.
+    // You can pass any function you like, but lambdas are convenient here.
     auto num = iota(1, 101).filter!(x => x % 2 == 0)
                            .map!(y => y ^^ 2)
                            .reduce!((a, b) => a + b);
@@ -228,7 +228,7 @@ void main() {
 ```
 
 Notice how we got to build a nice Haskellian pipeline to compute num?
-That's thanks to a D innovation know as Uniform Function Call Syntax.
+That's thanks to a D innovation know as Uniform Function Call Syntax (UFCS).
 With UFCS, we can choose whether to write a function call as a method
 or free function call! Walter wrote a nice article on this
 [here.](http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394)
@@ -238,21 +238,23 @@ is of some type A on any expression of type A as a method.
 I like parallelism. Anyone else like parallelism? Sure you do. Let's do some!
 
 ```c
+// Let's say we want to populate a large array with the square root of all
+// consecutive integers starting from 1 (up until the size of the array), and we
+// want to do this concurrently taking advantage of as many cores as we have
+// available.
+
 import std.stdio;
 import std.parallelism : parallel;
 import std.math : sqrt;
 
 void main() {
-    // We want take the square root every number in our array,
-    // and take advantage of as many cores as we have available.
+    // Create your large array
     auto arr = new double[1_000_000];
 
-    // Use an index, and an array element by reference,
-    // and just call parallel on the array!
+    // Use an index, access every array element by reference (because we're
+    // going to change each element) and just call parallel on the array!
     foreach(i, ref elem; parallel(arr)) {
-        ref = sqrt(i + 1.0);
+        elem = sqrt(i + 1.0);
     }
 }
-
-
 ```

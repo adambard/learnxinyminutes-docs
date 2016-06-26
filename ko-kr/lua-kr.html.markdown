@@ -418,5 +418,5 @@ lua-users.org에 있는 <a href="http://lua-users.org/files/wiki_insecure/users/
 learn.lua로 저장한 후 "lua learn.lua"를 실행해 보세요!
 
 이 글은 tylerneylon.com에 처음으로 써본 글이며, 
-<a href="https://gist.github.com/tylerneylon/5853042">Github의 Gist</a>에서도 확인할 수 있습니다.
+<a href="https://gist.github.com/tylerneylon/5853042">GitHub의 Gist</a>에서도 확인할 수 있습니다.
 루아로 즐거운 시간을 보내세요!

@@ -110,7 +110,7 @@ int main (int argc, const char * argv[])
     NSLog(@"%f", piDouble);
     NSLog(@"%4.2f", piDouble); // prints => "3.14"
 
-    // NSDecimalNumber is a fixed-point class that's more precise then float or double
+    // NSDecimalNumber is a fixed-point class that's more precise than float or double
     NSDecimalNumber *oneDecNum = [NSDecimalNumber decimalNumberWithString:@"10.99"];
     NSDecimalNumber *twoDecNum = [NSDecimalNumber decimalNumberWithString:@"5.002"];
     // NSDecimalNumber isn't able to use standard +, -, *, / operators so it provides its own:
@@ -700,7 +700,7 @@ if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
 // NOTE: If two or more protocols rely on each other, make sure to forward-declare them:
 #import "Brother.h"
 
-@protocol Brother; // Forward-declare statement. Without it, compiler would through error.
+@protocol Brother; // Forward-declare statement. Without it, compiler will throw error.
 
 @protocol Sister <NSObject>
 

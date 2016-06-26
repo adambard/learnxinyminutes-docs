@@ -14,6 +14,8 @@ ANSI Common Lisp 是一个广泛通用于各个工业领域的、支持多种范
 
 免费的经典的入门书籍[《实用 Common Lisp 编程》](http://www.gigamonkeys.com/book/)
 
+许多人都抱怨上面这本书的翻译。[《ANSI Common Lisp》](http://acl.readthedocs.org/en/latest/)也许对中文读者更友好一些。
+
 另外还有一本热门的近期出版的
 [Land of Lisp](http://landoflisp.com/).
 
