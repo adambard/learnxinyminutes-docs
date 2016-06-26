@@ -8,7 +8,7 @@ contributors:
     - ["Bruno Volcov", "http://github.com/volcov"]
 translators:
     - ["Xuan-thi Nguyen", "http://github.com/mellenguyen"]
-filename: LearnGit-fr-.txt
+filename: LearnGit-fr.txt
 lang: fr-fr
 ---
 
