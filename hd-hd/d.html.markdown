@@ -1,9 +1,9 @@
 ---
 language: D
-filename: learnd.d
+filename: learnd-hd.d
 contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]
-lang: en
+lang: hd
 ---
 
 ```c
