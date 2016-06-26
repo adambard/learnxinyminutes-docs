@@ -4,7 +4,7 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Jacopo Andrea Giola", "http://geekpanda.net"]
-filename: markdown.md
+filename: markdown-it.md
 lang: it-it
 ---
 
