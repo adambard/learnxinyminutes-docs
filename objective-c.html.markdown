@@ -20,7 +20,7 @@ Multi-line comments look like this
 */
 
 // XCode supports pragma mark directive that improve jump bar readability
-#pragma mark Navigation Functions // New tag on jump bar named 'Navigation Functions'
+#pragma mark Navigation Functions // New tag o@"Third number = %@", thirdNumber); // prin jump bar named 'Navigation Functions'
 #pragma mark - Navigation Functions // Same tag, now with a separator
 
 // Imports the Foundation headers with #import
@@ -133,6 +133,8 @@ int main (int argc, const char * argv[])
     NSArray *anArray      = @[@1, @2, @3, @4];
     NSNumber *thirdNumber = anArray[2];
     NSLog(@"Third number = %@", thirdNumber); // prints => "Third number = 3"
+    // Since Xcode 7, NSArray objects can be typed (Generics)
+    NSArray<NSString *> *stringArray = @[@"hello", @"world"];
     // NSMutableArray is a mutable version of NSArray, allowing you to change
     // the items in the array and to extend or shrink the array object.
     // Convenient, but not as efficient as NSArray.
@@ -146,6 +148,8 @@ int main (int argc, const char * argv[])
     NSDictionary *aDictionary = @{ @"key1" : @"value1", @"key2" : @"value2" };
     NSObject *valueObject     = aDictionary[@"A Key"];
     NSLog(@"Object = %@", valueObject); // prints => "Object = (null)"
+    // Since Xcode 7, NSDictionary objects can be typed (Generics)
+    NSDictionary<NSString *, NSNumber *> *numberDictionary = @{@"a": @1, @"b": @2};
     // NSMutableDictionary also available as a mutable dictionary object
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
     [mutableDictionary setObject:@"value1" forKey:@"key1"];
@@ -161,6 +165,8 @@ int main (int argc, const char * argv[])
     // Set object
     NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
     NSLog(@"%@", set); // prints => {(Hello, World)} (may be in different order)
+    // Since Xcode 7, NSSet objects can be typed (Generics)
+    NSSet<NSString *> *stringSet = [NSSet setWithObjects:@"hello", @"world", nil];
     // NSMutableSet also available as a mutable set object
     NSMutableSet *mutableSet = [NSMutableSet setWithCapacity:2];
     [mutableSet addObject:@"Hello"];
