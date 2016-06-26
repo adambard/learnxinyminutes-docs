@@ -301,6 +301,9 @@ filled_dict.keys()   # => ["three", "two", "one"]
 filled_dict.values()   # => [3, 2, 1]
 # Note - Same as above regarding key ordering.
 
+# Get all key-value pairs as a list of tuples with "items()"
+filled_dicts.items()    # => [("one", 1), ("two", 2), ("three", 3)]
+
 # Check for existence of keys in a dictionary with "in"
 "one" in filled_dict   # => True
 1 in filled_dict   # => False
