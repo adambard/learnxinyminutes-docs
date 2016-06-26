@@ -5,11 +5,10 @@ contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
-filename: learnpython3.py
 translators:
     - ["Paulo Henrique Rodrigues Pinheiro", "http://www.sysincloud.it"]
 language: pt-br
-filename: learnpython3-pt-br.py
+filename: learnpython3-pt.py
 ---
 
 Python foi criado por Guido Van Rossum nos anos 1990. Ele é atualmente uma
