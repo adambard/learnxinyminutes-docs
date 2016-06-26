@@ -53,13 +53,13 @@ on each side and allow newlines."""
 
 literalString = 'are surrounded by single quotes. Escaping are not allowed.'
 
-MultiLineLiteralString = """
+MultiLineLiteralString = '''
 are surrounded by three single quotes on each side
 and allow newlines. Still no escaping.
 The first newline is trimmed in raw strings.
    All other whitespace
    is preserved. #! are preserved?
-"""
+'''
 
 # For binary data it is recommended that you use Base64, another ASCII or UTF8
 # encoding. The handling of that encoding will be application specific.
