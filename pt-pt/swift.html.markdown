@@ -7,6 +7,7 @@ contributors:
   - ["Joey Huang", "http://github.com/kamidox"]
   - ["Anthony Nguyen", "http://github.com/anthonyn60"]
   - ["Clayton Walker", "https://github.com/cwalk"]
+translators:
   - ["João Costa", "https://github.com/joaofcosta"]
 lang: pt-pt
 ---
