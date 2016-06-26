@@ -12,6 +12,7 @@ contributors:
     - ["Jose Donizetti", "https://github.com/josedonizetti"]
     - ["Alexej Friesen", "https://github.com/heyalexej"]
     - ["Jean-Philippe Monette", "http://blogue.jpmonette.net/"]
+    - ["Thibault", "https://github.com/napnac"]
 ---
 
 Go a été créé dans l'optique de développer de façon efficace. Ce n'est pas la
@@ -425,7 +426,7 @@ func requestServer() {
 La référence Go se trouve sur [le site officiel de Go](http://golang.org/).
 Vous pourrez y suivre le tutoriel interactif et en apprendre beaucoup plus.
 
-Une lecture de la documentation du langage est grandement conseillée. C'est
+Une lecture de la [documentation](https//golang.org/doc/) du langage est grandement conseillée. C'est
 facile à lire et très court (comparé aux autres langages).
 
 Vous pouvez exécuter et modifier le code sur [Go playground](https://play.golang.org/p/tnWMjr16Mm). Essayez de le modifier et de l'exécuter à partir de votre navigateur! Prennez en note que vous pouvez utiliser [https://play.golang.org](https://play.golang.org) comme un [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) pour tester et coder dans votre navigateur, sans même avoir à installer Go.
@@ -437,3 +438,5 @@ pouvez cliquer sur le nom d'une fonction dans [la
 documentation](http://golang.org/pkg/) et le code source apparaît!
 
 Une autre excellente ressource pour apprendre est [Go par l'exemple](https://gobyexample.com/).
+
+Les pubs Go Mobile supportent les plateformes Android et iOS. Vous pouvez écrire des applications mobiles en Go ou écrire une librairie qui contient des liens entre les paquets en Go, ce qui peut être fait via Java (Android) et Objective-C (iOS). Pour plus d'information, lisez la page de [Go Mobile](https://github.com/golang/go/wiki/Mobile).

@@ -6,11 +6,14 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Baptiste Fontaine", "http://bfontaine.net"]
+    - ["Thibault", "https://github.com/napnac"]
 lang: fr-fr
 ---
 
 Brainfuck (sans majuscule à part au début d’une phrase) est un langage
 Turing-complet extrêmement simple avec seulement 8 commandes.
+
+Vous pouvez tester le langage brainfuck depuis votre navigateur sur [brainfuck-visualizer](http://fatiherikli.github.io/brainfuck-visualizer/).
 
 ```
 Tout caractère en dehors de "><+-.,[]" (en dehors des guillemets) est ignoré.

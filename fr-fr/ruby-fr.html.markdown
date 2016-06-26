@@ -10,6 +10,7 @@ contributors:
 translators:
   - ["Geoffrey Roguelon", "https://github.com/GRoguelon"]
   - ["Nami-Doc", "https://github.com/Nami-Doc"]
+  - ["Thibault", "https://github.com/napnac"]
 lang: fr-fr
 ---
 
@@ -72,6 +73,16 @@ false.class #=> FalseClass
 2 <= 2 #=> true
 2 >= 2 #=> true
 
+# Opérateurs logiques
+true && false #=> false
+true || false #=> true
+!true #=> false
+
+# `fait_quelque_chose` sera appelé uniquement si `fait_un_truc` réussit.
+fait_un_truc() and fait_quelque_chose()
+# `log_erreur` sera appelé uniquement si `fait_un_truc` échoue.
+fait_un_truc() or log_erreur()
+
 # Les chaînes de caractères sont des objets
 
 'Je suis une chaîne de caractères'.class #=> String
@@ -81,8 +92,22 @@ placeholder = "utiliser l'interpolation de chaîne de caractères"
 "Je peux #{placeholder} quand j'utilise les guillemets"
 #=> "Je peux utiliser l'interpolation de chaîne de caractères quand j'utilise les guillemets"
 
-# Affichez un message
+# Combinez des chaînes, mais pas avec des nombres
+'hello' + 'world' #=> "hello world"
+'hello' + 3 #=> TypeError: can't convert Fixnum into String
+'hello ' + 3.to_s #=> "hello 3"
+
+# Combinez des chaînes et des opérateurs
+'hello ' * 3 #=> "hello hello hello "
+
+# Concactenez des chaînes
+'hello' << ' world' #=> "hello world"
+
+# Affichez un message (avec retour à la ligne)
 puts "J'affiche à l'écran!"
+
+# Affichez un message (sans retour à la ligne)
+print "J'affiche à l'écran!"
 
 # Variables
 x = 25 #=> 25
@@ -258,6 +283,20 @@ else
   puts "Sytème de notation alternatif"
 end
 
+# Système d'exception :
+begin
+  # le code ici peut engendrer une exception
+  raise NoMemoryError, 'Vous n'avez plus de mémoire'
+rescue NoMemoryError => exception_variable
+  puts 'NoMemoryError a été engendré', exception_variable
+rescue RuntimeError => other_exception_variable
+  puts 'RuntimeError vient d'être engendré
+else
+  puts 'Ce code est exécuté si aucunes exceptions n'a été engendré'
+ensure
+  puts 'Ce code sera toujours exécuté'
+end
+
 # Fonctions
 
 def double(x)
@@ -409,3 +448,11 @@ Humain.bar # 0
 Docteur.bar # nil
 
 ```
+
+## Ressources supplémentaires
+
+- [Apprendre Ruby avec des exemples et des challenges](http://www.learneroo.com/modules/61/nodes/338) - Une variante de cette référence avec des challenges au sein de votre navigateur.
+- [Documentation officielle](http://www.ruby-doc.org/core-2.1.1/)
+- [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
+- [Programmation en Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - Une ancienne [édition gratuite](http://ruby-doc.com/docs/ProgrammingRuby/) est disponible en ligne.
+- [Style de code en Ruby](https://github.com/bbatsov/ruby-style-guide) - Un guide de style de code en Ruby mené par la communauté.

@@ -2,6 +2,7 @@
 language: markdown
 contributors:
 - ["Andrei Curelaru", "http://www.infinidad.fr"]
+- ["Thibault", "https://github.com/napnac"]
 filename: markdown-fr.md
 lang: fr-fr
 ---
@@ -263,16 +264,22 @@ Il suffit de précéder les caractères spécifiques à ignorer par des backslas
 Pour taper *ce texte* entouré d'astérisques mais pas en italique : 
 Tapez \*ce texte\*.
 
+<!-- Touches de clavier -->
+<!-- Vous pouvez utiliser <kbd> pour représenter une touche de clavier -->
+
+Votre ordinateur a crashé ? Essayez :
+<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Suppr</kbd>
+
 <!-- Tableaux -->
 <!-- les Tableaux ne sont disponibles que dans le GitHub Flavored Markdown
  et c'est ce n'est pas super agréable d'utilisation. 
  Mais si vous en avez besoin :
  -->
 
-| Col1 | Col2 | Col3 |
-| :----------- | :------: | ------------: |
-| Alignement Gauche | Centé | Alignement Droite |
-| bla | bla | bla |
+| Col1              | Col2     | Col3              |
+| :-----------      | :------: | ------------:     |
+| Alignement Gauche | Centré   | Alignement Droite |
+| bla               | bla      | bla               |
 
 <!-- ou bien, pour un résultat équivalent : -->
 

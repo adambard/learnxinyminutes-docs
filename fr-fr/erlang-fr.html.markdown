@@ -5,20 +5,21 @@ contributors:
 translators:
     - ["Julien Cretel", "https://github.com/Jubobs"]
 filename: learnerlang-fr.erl
+    - ["Thibault", "https://github.com/napnac"]
 lang: fr-fr
 ---
 
 ```erlang
-% Un signe pour cent marque le début d'un commentaire de fin de ligne.
+% Un pourcentage marque le début d'un commentaire de fin de ligne.
 
-%% Deux signes pour cent sont utilisés pour commenter les fonctions.
+%% Deux pourcentages sont utilisés pour commenter les fonctions.
 
-%%% Trois signes pour cent sont utilisés pour commenter les modules.
+%%% Trois pourcentages sont utilisés pour commenter les modules.
 
 % Trois symboles de ponctuation sont utilisés en Erlang.
 % Les virgules (`,`) servent à séparer les paramètres dans les appels de
 % fonctions, les contructeurs, et les motifs.
-% Les points (`.`) (suivis par des blancs) servent à séparer les fonctions et
+% Les points (`.`) (suivis par des espaces) servent à séparer les fonctions et
 % les expressions dans l'interpréteur.
 % Les points-virgules (`;`) servent à séparer les clauses. Ces dernières
 % apparaissent dans différent cas de figure : définitions de fonctions et
@@ -30,6 +31,7 @@ lang: fr-fr
 
 (L'équivalent anglais de *filtrage par motif* est *pattern patching*.)
 
+% En Erlang, les nouvelles variables sont déclarées avec `=`.
 Nb = 42.  % Chaque nom de variable doit commencer par une lettre majuscule.
 
 % Les variables Erlang ne peuvent être affectées qu'une seule fois ; si vous
@@ -53,7 +55,7 @@ Bonjour = bonjour.
 AutreNoeud = exemple@noeud.
 
 % Les atomes de valeur autre qu'alphanumérique peuvent être délimités par
-% des guillemets droits simples.
+% des apostrophes.
 AtomeAvecEspace = 'un atome contenant des espaces'.
 
 % Les tuples sont similaires aux enregistrements du language C.
@@ -316,6 +318,38 @@ CalculerAire ! {cercle, 2}. % 12.56000000000000049738
 % L'interpréteur est lui-même un processus ; on peut utiliser `self` pour
 % obtenir le pid actuel.
 self(). % <0.41.0>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 5. Test avec EUnit 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Des tests peuvent être écrit en utilisant le générateur de test de EUnit et ses macros
+-module(fib).
+-export([fib/1]).
+-include_lib("eunit/include/eunit.hrl").
+
+fib(0) -> 1;
+fib(1) -> 1;
+fib(N) when N > 1 -> fib(N-1) + fib(N-2).
+
+fib_test_() ->
+    [?_assert(fib(0) =:= 1),
+     ?_assert(fib(1) =:= 1),
+     ?_assert(fib(2) =:= 2),
+     ?_assert(fib(3) =:= 3),
+     ?_assert(fib(4) =:= 5),
+     ?_assert(fib(5) =:= 8),
+     ?_assertException(error, function_clause, fib(-1)),
+     ?_assert(fib(31) =:= 2178309)
+    ].
+
+% EUnit va automtiquement exporter une fonction test() pour permettre de testester à l'intérieur du shell erlang
+fib:test()
+
+% Le célèbre outil Rebar est aussi compatible avec EUnit
+% ```
+% rebar eunit
+% ```
 
 ```
 
