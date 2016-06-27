@@ -5,6 +5,7 @@ contributors:
     - ["Jakukyo Friel", "http://weakish.github.io"]
     - ["Madison Dickson", "http://github.com/mix3d"]
     - ["Simon Morgan", "http://sjm.io/"]
+    - ["Michael Dähnert", "http://github.com/JaXt0r"]
 filename: LearnJava.java
 ---
 
@@ -89,6 +90,7 @@ public class LearnJava {
         // final variables can't be reassigned to another object.
         final int HOURS_I_WORK_PER_WEEK = 9001;
 
+
         // Strings
         String fooString = "My String Is Here!";
 
@@ -101,19 +103,28 @@ public class LearnJava {
         System.out.println(bazString);
         
         // String Building
-        // #1
-        String plusConcatenated = "Strings can " + "be concatenated " + "via + operator";
-
-        // #2
+        // #1 - with plus operator
+        // Compiler might optimize them for useful String pooling and performance usage automatically.
+        String plusConcatenated = "Strings can " + "be concatenated " + "via + operator.";
+        System.out.println(plusConcatenated);
+        // Output: Strings can be concatenated via + operator.
+        
+        // #2 - with StringBuilder
+        // Partial strings won't be pooled (better performance). Useful, where partial-strings will be build via variables etc. 
+        // Hint: Class is non thread safe. An thread-safe alternative with impact on performance ist StringBuffer.
         StringBuilder builderConcatenated = new StringBuilder();
         builderConcatenated.append("You ");
         builderConcatenated.append("can use ");
         builderConcatenated.append("the StringBuilder class.");
         System.out.println(builderConcatenated.toString());
+        // Output: You can use the StringBuilder class.
         
-        // #3
-        String.format("%s may prefer %s", "Or you", "String.format()");
-        
+        // #3 - with String formatter
+        // Another alternative for strings to be created fast and readable.
+        String.format("%s may prefer %s.", "Or you", "String.format()");
+        // Output: Or you may prefer String.format().
+
+
         // Arrays
         // The array size must be decided upon instantiation
         // The following formats work for declaring an array
