@@ -7,6 +7,7 @@ contributors:
     - ["Geoff Liu", "http://geoffliu.me"]
     - ["Connor Waters", "http://github.com/connorwaters"]
     - ["Ankush Goyal", "http://github.com/ankushg07"]
+    - ["Jatin Dhankhar", "https://github.com/jatindhankhar"]
 lang: en
 ---
 
@@ -1005,7 +1006,7 @@ cin>>val;
 Vector_name.push_back(val); // will push the value of variable into array
 
 // To iterate through vector, we have 2 choices
-// using normal looping 
+// using normal looping
 for(int i=0; i<Vector_name.size(); i++)
 // It will iterate through the vector from index '0' till last index
 
@@ -1020,7 +1021,7 @@ var= vector_name[index]; //will assign value at that index to var
 
 // Set
 // Sets are containers that store unique elements following a specific order
-// Very useful container to store unique values in sorted order 
+// Very useful container to store unique values in sorted order
 // without any other functions or code
 
 #include<set>   // Will include the header file for sets
@@ -1031,7 +1032,7 @@ ST.insert(20);  // Will insert the value 20 in set ST
 ST.insert(30);  // Will insert the value 30 in set ST
 // Now elements of sets are as follows
 //  10 20 30
- 
+
 // To erase an element
 ST.erase(20);  // Will erase element with value 20
 // Set ST: 10 30
@@ -1041,7 +1042,7 @@ for(it=ST.begin();it<ST.end();it++)
 {
 	cout<<*it<<endl;
 }
-// OUTPUT: 
+// OUTPUT:
 // 10
 // 30
 
@@ -1064,11 +1065,11 @@ mymap.insert ( pair<char,int>('A',1) );
 mymap.insert ( pair<char,int>('Z',26) );
 // Will insert value 26 for key Z
 
-// To iterate 
+// To iterate
 map<char,int>::iterator it;
 for (it=mymap.begin(); it!=mymap.end(); ++it)
     std::cout << it->first << "->" << it->second <<'\n';
-// Output: 
+// Output:
 // A->1
 // Z->26
 
@@ -1077,6 +1078,50 @@ it = mymap.find('Z');
 cout<<it->second;
 
 // OUTPUT: 26
+
+///////////////////////////////////
+// Logical and Bitwise operators
+//////////////////////////////////
+
+// Most of the operators in C++ are same as in other languages
+
+// Logical operators
+
+// C++ uses Short - circuit evaluation for boolean expressions, i.e, the second argument is executed or
+// evaluated only if the first argument does not suffice to determine the value of the expression
+
+true && false // Performs **logical and** to yield false
+true || false // Performs **logical or** to yield true
+! true // Performs **logcical not** to yield
+
+// Instead of using symbols equivalent keywords can be used
+true and false // Performs **logical and** to yield false
+true or false // Performs **logical or** to yield true
+not true // Performs **logcical not** to yield
+
+// Bitwise operators
+
+// **<<** Left Shift Operator
+// << shifts bits to the left
+4 << 1 // Shifts bits of 4 to left by 1 to give 8
+// x << n can be thought as x * 2^n
+
+
+// **>>** Right Shift Operator
+// << shifts bits to the right
+4 >> 1 // Shifts bits of 4 to right by 1 to give 2
+// x << n can be thought as x / 2^n
+
+~4 // Performs a bitwise not
+4 | 3 // Performs bitwise or
+4 & 3 // Performs bitwise and
+4 ^ 3 // Performs bitwise xor
+
+// Equivalent keywords are
+compl 4 // Performs a bitwise not
+4 bitor 3 // Performs bitwise or
+4 bitand 3 // Performs bitwise and
+4 xor 3 // Performs bitwise xor
 
 
 ```
