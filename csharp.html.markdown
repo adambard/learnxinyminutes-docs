@@ -826,7 +826,7 @@ on a new line! ""Wow!"", the masses cried";
         }
 
         // Methods can also be static. It can be useful for helper methods
-        public static bool DidWeCreateEnoughBycles()
+        public static bool DidWeCreateEnoughBicycles()
         {
             // Within a static method, we only can reference static class members
             return BicyclesCreated > 9000;
