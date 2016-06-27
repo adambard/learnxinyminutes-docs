@@ -1,8 +1,14 @@
 ---
 language: java
+filename: LearnJavaDe.java
 contributors:
+    - ["Jake Prather", "http://github.com/JakeHP"]
+    - ["Jakukyo Friel", "http://weakish.github.io"]
+    - ["Madison Dickson", "http://github.com/mix3d"]
+    - ["Simon Morgan", "http://sjm.io/"]
+translators:
     - ["Michael Dähnert", "http://github.com/JaXt0r"]
-filename: LearnJava-de.java
+lang: de-de
 ---
 
 Java ist eine Programmiersprache für vielfältige Aufgaben. Sie ist imperative und objektorientiert.
@@ -25,7 +31,7 @@ import java.security.*;
 
 // Jede .java Datei besteht aus einer äußeren öffentlichen (public) Klasse.
 // Der Name der Klasse muss identisch des Dateinamens sein.
-public class LearnJava {
+public class LearnJavaDe {
 
     // Ein Programm muss eine main Methode als Eintrittspunkt besitzen.
     public static void main (String[] args) {
@@ -302,7 +308,7 @@ public class LearnJava {
         System.out.println("trek info: " + trek.toString());
 
     } // Ende der Main Methode
-} // Ende der LearnJava Klasse
+} // Ende der LearnJavaDe Klasse
 
 
 // In einer .java-Datei können zusätzliche nicht öffentliche (non-public) äüßere Klassen vorhanden sein.
