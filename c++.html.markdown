@@ -1087,6 +1087,9 @@ cout<<it->second;
 
 // Logical operators
 
+// C++ uses Short - circuit evaluation for boolean expressions, i.e, the second argument is executed or
+// evaluated only if the first argument does not suffice to determine the value of the expression
+
 true && false // Performs **logical and** to yield false
 true || false // Performs **logical or** to yield true
 ! true // Performs **logcical not** to yield
