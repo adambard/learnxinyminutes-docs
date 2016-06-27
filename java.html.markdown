@@ -170,7 +170,21 @@ public class LearnJava {
         System.out.println(fooString);
         System.out.println(barString);
         System.out.println(bazString);
+        
+        // String Building
+        // #1
+        String plusConcatenated = "Strings can " + "be concatenated " + "via + operator";
 
+        // #2
+        StringBuilder builderConcatenated = new StringBuilder();
+        builderConcatenated.append("You ");
+        builderConcatenated.append("can use ");
+        builderConcatenated.append("the StringBuilder class.");
+        System.out.println(builderConcatenated.toString());
+        
+        // #3
+        String.format("%s may prefer %s", "Or you", "String.format()");
+        
         // Arrays
         // The array size must be decided upon instantiation
         // The following formats work for declaring an array
