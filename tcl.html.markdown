@@ -105,12 +105,14 @@ set greeting $greeting1$greeting2[set greeting3]
 # Command substitution should really be called script substitution, because an
 # entire script, not just a command, can be placed between the brackets. The
 # "incr" command increments the value of a variable and returns its value.
+
+set i 0
 set greeting $greeting[
 	incr i
 	incr i
 	incr i
 ]
-
+# i is now 3
 
 # backslash suppresses the special meaning of characters
 set amount \$16.42
@@ -149,9 +151,6 @@ set greeting "Hello, [set {first name}]"
 
 # To promote the words within a word to individual words of the current
 # command, use the expansion operator, "{*}".
-```
-
-```tcl
 set {*}{name Neo}
 
 # is equivalent to
@@ -254,17 +253,18 @@ proc greet {greeting name} {
 # As noted earlier, braces do not construct a code block.  Every value, even
 # the third argument of the "proc" command, is a string.  The previous command
 # rewritten to not use braces at all:
-proc greet greeting\ name return\ \"Hello,\ \$name!
+proc greet greeting\ name return\ \"\$greeting,\ \$name!\"
 
 
 
 # When the last parameter is the literal value, "args", it collects all extra
 # arguments when the command is invoked
 proc fold {cmd args} {
-    set res 0
+    set res 1
     foreach arg $args {
         set res [$cmd $res $arg]
     }
+    return res
 }
 fold ::tcl::mathop::* 5 3 3 ;# ->  45
 

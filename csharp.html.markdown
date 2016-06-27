@@ -8,6 +8,7 @@ contributors:
     - ["Wouter Van Schandevijl", "http://github.com/laoujin"]
     - ["Jo Pearce", "http://github.com/jdpearce"]
     - ["Chris Zimmerman", "https://github.com/chriszimmerman"]
+    - ["Shawn McGuire", "https://github.com/bigbash"]
 filename: LearnCSharp.cs
 ---
 
@@ -24,10 +25,12 @@ Multi-line comments look like this
 /// This is an XML documentation comment which can be used to generate external
 /// documentation or provide context help within an IDE
 /// </summary>
-//public void MethodOrClassOrOtherWithParsableHelp() {}
+/// <param name="firstParam">This is some parameter documentation for firstParam</param>
+/// <returns>Information on the returned value of a function</returns>
+//public void MethodOrClassOrOtherWithParsableHelp(string firstParam) {}
 
 // Specify the namespaces this source code will be using
-// The namespaces below are all part of the standard .NET Framework Class Libary
+// The namespaces below are all part of the standard .NET Framework Class Library
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -45,8 +48,8 @@ using System.Data.Entity;
 // Using this code from another source file: using Learning.CSharp;
 namespace Learning.CSharp
 {
-    // Each .cs file should at least contain a class with the same name as the file
-    // you're allowed to do otherwise, but shouldn't for sanity.
+    // Each .cs file should at least contain a class with the same name as the file.
+    // You're allowed to do otherwise, but shouldn't for sanity.
     public class LearnCSharp
     {
         // BASIC SYNTAX - skip to INTERESTING FEATURES if you have used Java or C++ before
@@ -210,10 +213,10 @@ on a new line! ""Wow!"", the masses cried";
             // Incrementations
             int i = 0;
             Console.WriteLine("\n->Inc/Dec-rementation");
-            Console.WriteLine(i++); //i = 1. Post-Incrementation
-            Console.WriteLine(++i); //i = 2. Pre-Incrementation
-            Console.WriteLine(i--); //i = 1. Post-Decrementation
-            Console.WriteLine(--i); //i = 0. Pre-Decrementation
+            Console.WriteLine(i++); //Prints "0", i = 1. Post-Incrementation
+            Console.WriteLine(++i); //Prints "2", i = 2. Pre-Incrementation
+            Console.WriteLine(i--); //Prints "2", i = 1. Post-Decrementation
+            Console.WriteLine(--i); //Prints "0", i = 0. Pre-Decrementation
 
             ///////////////////////////////////////
             // Control Structures
@@ -421,7 +424,7 @@ on a new line! ""Wow!"", the masses cried";
                 // Item is an int
                 Console.WriteLine(item.ToString());
         }
-        
+
         // YIELD
         // Usage of the "yield" keyword indicates that the method it appears in is an Iterator
         // (this means you can use it in a foreach loop)
@@ -437,7 +440,7 @@ on a new line! ""Wow!"", the masses cried";
             foreach (var counter in YieldCounter())
                 Console.WriteLine(counter);
         }
-        
+
         // you can use more than one "yield return" in a method
         public static IEnumerable<int> ManyYieldCounter()
         {
@@ -446,7 +449,7 @@ on a new line! ""Wow!"", the masses cried";
             yield return 2;
             yield return 3;
         }
-        
+
         // you can also use "yield break" to stop the Iterator
         // this method would only return half of the values from 0 to limit.
         public static IEnumerable<int> YieldCounterWithBreak(int limit = 10)
@@ -482,7 +485,7 @@ on a new line! ""Wow!"", the masses cried";
             // ?? is syntactic sugar for specifying default value (coalesce)
             // in case variable is null
             int notNullable = nullable ?? 0; // 0
-            
+
             // ?. is an operator for null-propagation - a shorthand way of checking for null
             nullable?.Print(); // Use the Print() extension method if nullable isn't null
 
@@ -630,7 +633,7 @@ on a new line! ""Wow!"", the masses cried";
 
     public static class Extensions
     {
-        // EXTENSION FUNCTIONS
+        // EXTENSION METHODS
         public static void Print(this object obj)
         {
             Console.WriteLine(obj.ToString());
@@ -692,7 +695,10 @@ on a new line! ""Wow!"", the masses cried";
         public BikeBrand Brand; // After declaring an enum type, we can declare the field of this type
 
         // Decorate an enum with the FlagsAttribute to indicate that multiple values can be switched on
-        [Flags] // Any class derived from Attribute can be used to decorate types, methods, parameters etc
+        // Any class derived from Attribute can be used to decorate types, methods, parameters etc
+        // Bitwise operators & and | can be used to perform and/or operations
+
+        [Flags]
         public enum BikeAccessories
         {
             None = 0,
@@ -879,8 +885,8 @@ on a new line! ""Wow!"", the masses cried";
         bool Broken { get; } // interfaces can contain properties as well as methods & events
     }
 
-    // Class can inherit only one other class, but can implement any amount of interfaces, however
-    // the base class name must be the first in the list and all interfaces follow
+    // Classes can inherit only one other class, but can implement any amount of interfaces,
+    // however the base class name must be the first in the list and all interfaces follow
     class MountainBike : Bicycle, IJumpable, IBreakable
     {
         int damage = 0;
@@ -913,17 +919,17 @@ on a new line! ""Wow!"", the masses cried";
 
         public DbSet<Bicycle> Bikes { get; set; }
     }
-    
+
     // Classes can be split across multiple .cs files
     // A1.cs
-    public partial class A 
+    public partial class A
     {
         public static void A1()
         {
             Console.WriteLine("Method A1 in class A");
         }
     }
-    
+
     // A2.cs
     public partial class A
     {
@@ -932,9 +938,9 @@ on a new line! ""Wow!"", the masses cried";
             Console.WriteLine("Method A2 in class A");
         }
     }
-    
+
     // Program using the partial class "A"
-    public class Program 
+    public class Program
     {
         static void Main()
         {
@@ -942,6 +948,24 @@ on a new line! ""Wow!"", the masses cried";
             A.A2();
         }
     }
+    
+    // String interpolation by prefixing the string with $
+    // and wrapping the expression you want to interpolate with { braces }
+    public class Rectangle
+    {
+        public int Length { get; set; }
+        public int Width { get; set; }
+    }
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Rectangle rect = new Rectangle { Length = 5, Width = 3 };
+            Console.WriteLine($"The length is {rect.Length} and the width is {rect.Width}");
+        }
+    }
+    
 } // End Namespace
 ```
 

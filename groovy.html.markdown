@@ -13,8 +13,8 @@ Groovy - A dynamic language for the Java platform [Read more here.](http://www.g
 /*
   Set yourself up:
 
-  1) Install GVM - http://gvmtool.net/
-  2) Install Groovy: gvm install groovy
+  1) Install SDKMAN - http://sdkman.io/
+  2) Install Groovy: sdk install groovy
   3) Start the groovy console by typing: groovyConsole
 
 */
@@ -99,7 +99,7 @@ technologies.sort()
 // To sort without mutating original, you can do:
 sortedTechnologies = technologies.sort( false )
 
-/*** Manipulating Lists ***/e
+/*** Manipulating Lists ***/
 
 //Replace all elements in the list
 Collections.replaceAll(technologies, 'Gradle', 'gradle')
@@ -280,7 +280,7 @@ def clos = { print it }
 clos( "hi" )
 
 /*
-  Groovy can memorize closure results [1][2][3]
+  Groovy can memoize closure results [1][2][3]
 */
 def cl = {a, b ->
     sleep(3000) // simulate some time consuming processing

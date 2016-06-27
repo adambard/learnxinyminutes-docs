@@ -7,7 +7,7 @@ contributors:
     - ["Tomáš Bedřich", "http://tbedrich.cz"]
 translators:
     - ["Tomáš Bedřich", "http://tbedrich.cz"]
-filename: learnpython3.py
+filename: learnpython3-cz.py
 lang: cs-cz
 ---
 
@@ -566,7 +566,7 @@ Clovek.odkaslej_si()  # => "*ehm*"
 
 # Lze importovat moduly
 import math
-print(math.sqrt(16))  # => 4
+print(math.sqrt(16.0))  # => 4
 
 # Lze také importovat pouze vybrané funkce z modulu
 from math import ceil, floor

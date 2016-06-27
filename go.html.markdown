@@ -221,7 +221,8 @@ func learnFlowControl() {
 	xBig := func() bool {
 		return x > 10000 // References x declared above switch statement.
 	}
-	fmt.Println("xBig:", xBig()) // true (we last assigned e^10 to x).
+	x = 99999
+	fmt.Println("xBig:", xBig()) // true
 	x = 1.3e3                    // This makes x == 1300
 	fmt.Println("xBig:", xBig()) // false now.
 

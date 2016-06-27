@@ -33,6 +33,7 @@ Eine Versionsverwaltung erfasst die Änderungen einer Datei oder eines Verzeichn
 * Ist offline einsetzbar.
 * Einfache Kollaboration!
 * Branching ist einfach!
+* Branching ist schnell!
 * Merging ist einfach!
 * Git ist schnell.
 * Git ist flexibel.
@@ -53,11 +54,11 @@ Das .git-Verzeichnis enthält alle Einstellung, Logs, Branches, den HEAD und meh
 
 ### Arbeitsverzeichnis (Teil des Repositorys)
 
-Dies sind die Verzeichnisse und Dateien in deinem Repository.
+Dies sind die Verzeichnisse und Dateien in deinem Repository, also z.B. dein Programmcode.
 
 ### Index (Teil des .git-Verzeichnisses)
 
-Der Index ist die die Staging-Area von Git. Es ist im Grunde eine Ebene, die Arbeitsverzeichnis vom Repository trennt. Sie gibt Entwicklern mehr Einfluss darüber, was ins Git-Repository eingeht.
+Der Index ist die Staging-Area von Git. Es ist im Grunde eine Ebene, die Arbeitsverzeichnis vom Repository trennt. Sie gibt Entwicklern mehr Einfluss darüber, was ins Git-Repository eingeht.
 
 ### Commit
 
@@ -84,7 +85,7 @@ Ein *head* ist ein Pointer, der auf einen beliebigen Commit zeigt.  Ein Reposito
 
 ### init
 
-Erstelle ein leeres Git-Repository. Die Einstellungen, gespeicherte Informationen und mehr zu diesem Git-Repository werden in einem Verzeichnis namens *.git* angelegt.
+Erstelle ein leeres Git-Repository im aktuellen Verzeichnis. Die Einstellungen, gespeicherte Informationen und mehr zu diesem Git-Repository werden in einem Verzeichnis namens *.git* angelegt.
 
 ```bash
 $ git init
@@ -180,6 +181,8 @@ Bringt alle Dateien im Arbeitsverzeichnis auf den Stand des Index oder des angeg
 ```bash
 # Ein Repo auschecken - wenn nicht anders angegeben ist das der master
 $ git checkout
+# Eine Datei auschecken - sie befindet sich dann auf dem aktuellen Stand im Repository
+$ git checkout /path/to/file
 # Einen bestimmten Branch auschecken
 $ git checkout branchName
 # Erstelle einen neuen Branch und wechsle zu ihm. Wie: "git branch <name>; git checkout <name>"
@@ -217,6 +220,9 @@ $ git diff --cached
 
 # Unterschiede zwischen deinem Arbeitsverzeichnis und dem aktuellsten Commit anzeigen
 $ git diff HEAD
+
+# Unterschiede zwischen dem Index und dem aktuellsten Commit (betrifft nur Dateien im Index)
+$ git diff --staged
 ```
 
 ### grep
@@ -374,3 +380,5 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
 
 * [GitGuys](http://www.gitguys.com/)
+
+* [gitflow - Ein Modell um mit Branches zu arbeiten](http://nvie.com/posts/a-successful-git-branching-model/)
