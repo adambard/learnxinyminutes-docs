@@ -433,9 +433,9 @@ Agent.get(my_agent, fn colors -> colors end) #=> ["red, "green"]
 
 # Update the agent's state the same way
 Agent.update(my_agent, fn colors -> ["blue" | colors] end)
+```
 
 ## References
-```
 
 * [Getting started guide](http://elixir-lang.org/getting_started/1.html) from [elixir webpage](http://elixir-lang.org)
 * [Elixir Documentation](http://elixir-lang.org/docs/master/)
