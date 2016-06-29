@@ -277,7 +277,6 @@ end
 
 # You can also surround blocks in curly brackets:
 (1..5).each { |counter| puts "iteration #{counter}" }
-# although this is only done for one-liners.
 
 # The contents of data structures can also be iterated using each.
 array.each do |element|
