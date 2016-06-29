@@ -6,6 +6,7 @@ contributors:
     - ["Rafal Chmiel", "http://github.com/rafalchmiel"]
 translators:
     - ["Xuan-thi Nguyen", "http://github.com/mellenguyen"]
+lang: fr-fr
 
 ---
 
@@ -40,10 +41,9 @@ Les gestionnaires d'environnement Ruby les plus populaires sont :
 
 Ruby a été créé par Yukihiro "Matz" Matsumoto, qui reste quelque peu un
 [BDFL](https://fr.wikipedia.org/wiki/Benevolent_Dictator_for_Life), bien que
-cela soit récemment en changement. Par conséquent, l'implémentation de
-référence de Ruby est appelé MRI (Matz' Reference Implementation), et quand
-vous entendez parler d'une version de Ruby, elle se réfère à la version de
-sortie de MRI.
+cela soit récemment en changement. Jusqu'à la standardisation du langage en
+2011, l'implémentation de référence de Ruby était appelé MRI (Matz' Reference
+Implementation).
 
 Les trois versions majeures de Ruby actuellement utilisées sont :
 
@@ -56,15 +56,14 @@ Les trois versions majeures de Ruby actuellement utilisées sont :
 Les changements entre 1.8.7 à 1.9.x sont bien plus grands qu'entre 1.9.3
 jusqu'à 2.0.0. Par exemple, les versions 1.9 ont introduit le support des
 encodages et d'une VM bytecode ([YARV](https://fr.wikipedia.org/wiki/YARV)).
-Il y a toujours des projets sur 1.8.7, mais deviennent minoritaires, étant
+Il y a toujours des projets sur 1.8.7, mais ils deviennent minoritaires, étant
 donné que la majorité de la communauté a migré vers au moins 1.9.2 ou 1.9.3.
 
 ## Implémentations Ruby
 
 L'écosystème Ruby comprend de nombreuses implémentations de Ruby, chacune avec
-des points forts uniques et différents degrés de compatibilité. Pour être plus
-clair, les différentes implémentations sont écrites dans différents languages,
-mais *elles sont toutes en Ruby*.
+des points forts uniques et différents degrés de compatibilité. Les différentes
+implémentations sont écrites dans différents languages.
 Chaque implémentation a des "hooks" et des fonctionnalités spécifiques, elles
 exécutent cependant très bien des fichiers Ruby classiques.
 Par exemple, JRuby est écrit en Java, mais vous n'avez pas besoin de connaître
@@ -76,7 +75,7 @@ Très mature/compatible:
   référence de Ruby. Elle est par définition 100% compatible (avec elle-même).
   Tous les autres rubies maintiennent la compatibilité avec MRI
   (voir [RubySpec](#rubyspec) à la suite).
-* [JRuby](http://jruby.org/) - Ecrite en Java et Ruby, cette robuste
+* [JRuby](http://jruby.org/) - Écrite en Java et Ruby, cette robuste
   implémentation est assez rapide.
   La force de JRuby réside surtout sur l'interopérabilité JVM/Java, faisant
   levier sur des outils JVM, des projets et des langages existants.
@@ -91,15 +90,7 @@ Mpyennement mature/compatible:
   Smalltalk possède quelques outils impressionnants, et ce projet tente
   de les apporter dans le développement Ruby.
 * [RubyMotion](http://www.rubymotion.com/) - Ruby pour développement iOS.
-
-Moins mature/compatible:
-
-* [Topaz](http://topazruby.com/) - Ecrite en Python (en utilisant la chaîne de
-  compilation PyPy), Topaz est assez jeune et non encore compatible.
-  Elle promet d'être une implémentation de haute-performance de Ruby.
-* [IronRuby](http://ironruby.net/) - Ecrite en C# et visant la plateforme .NET,
-  le travail sur IronRuby semble s'être arrêtée depuis que Microsoft s'est
-  retirée du support.
+* [Opal](http://opalrb.org/) - Compile le Ruby en Javascript
 
 Les implémentations de Ruby peuvent avoir leurs propres numéros de versions,
 mais elles ciblent toujours une versions spéficique de MRI pour la
@@ -108,10 +99,12 @@ Beaucoup d'implémentations ont la capacité d'entrer dans différents modes
 (par exemple, la version 1.8 ou 1.9) afin de spécifier quelle version de MRI
 cibler.
 
+Une liste non exhaustive d'implémentations peut être trouvée [ici (EN)](https://github.com/cogitator/ruby-implementations/wiki/List-of-Ruby-implementations).
+
 ## RubySpec
 
 La plupart des implémentations Ruby s'appuient fortement sur [RubySpec](http://rubyspec.org/).
-Ruby n'a pas de spécification officielles, c'est pourquoi la commaunité a écrit
+Ruby n'a pas de spécification officielle, c'est pourquoi la commaunité a écrit
 des spécifications exécutables en Ruby pour tester la compatibilité de leur
 implémentation avec MRI.
 
@@ -145,7 +138,7 @@ dépendance à résoudre.
 # Les tests
 
 Tester fait partie intégrante de la culture Ruby. Ruby fournit son propre
-framework de tests de type "Unit" appelé minitest (ou TestUnit pour Ruby
+framework de tests unitaires appelé minitest (ou TestUnit pour Ruby
 version 1.8.x). Il existe beaucoup de librairies de tests avec des buts
 différents.
 
