@@ -6,6 +6,7 @@ contributors:
 translators:
     - ["Xuan-thi Nguyen", "https://github.com/mellenguyen"]
 filename: LearnTmux-fr.txt
+lang: fr-fr
 ---
 
 
@@ -92,7 +93,7 @@ raccourcis.
   &                  # Tue la fenêtre courante
   x                  # Tue le panel courant
 
-  Up, Down           # Change vers le panel au dessus, en dessous, à gauche 
+  Up, Down           # Change vers le panel au dessus, en dessous, à gauche
   Left, Right        # ou à droite
 
   M-1 to M-5         # Arrange les panels:
@@ -131,10 +132,10 @@ démarrage, comme .vimrc ou init.el.
 setw -g utf8 on
 set-option -g status-utf8 on
 
-# Retourne en arrière/Limite de l'historique
+# Limite de l'historique
 set -g history-limit 2048
 
-# Indice de début
+# Indice de début du nombre de panels
 set -g base-index 1
 
 # Souris
@@ -172,13 +173,13 @@ bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
-# Echange/cycle de fenêtres
+# Navigation entre les fenêtres
 bind e previous-window
 bind f next-window
 bind E swap-window -t -1
 bind F swap-window -t +1
 
-# Commandes simples de partage des panels
+# Commandes simples de séparation des panels
 bind = split-window -h
 bind - split-window -v
 unbind '"'
