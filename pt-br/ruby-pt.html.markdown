@@ -4,8 +4,9 @@ lang: pt-br
 filename: learnruby-pt.rb
 contributors:
   - ["Bruno Henrique - Garu", "http://garulab.com"]
-  - ["Alan Peterson Carvalho Silva", "https://twitter.com/DemonKart"]
+  - ["Jean Matheus Souto", "http://jeanmatheussouto.github.io"]
 translators:
+  - ["Alan Peterson Carvalho Silva", "https://twitter.com/DemonKart"]
   - ["Katyanna Moura", "https://twitter.com/amelie_kn"]
 ---
 
@@ -101,7 +102,7 @@ caminho_para_a_raiz_do_projeto = '/bom/nome/'
 caminho = '/nome/ruim/'
 
 # Símbolos (são objetos)
-# Símbolos são imutáveis, são constantes reutilizáveis representadadas
+# Símbolos são imutáveis, são constantes reutilizáveis representados
 # internamente por um valor inteiro. Eles são frequentemente usados no
 # lugar de strings para transmitir com eficiência os valores específicos
 # e significativos
@@ -162,9 +163,6 @@ hash['numero'] #=> 5
 hash['nada aqui'] #=> nil
 
 # Interar sobre hashes com o método #each:
-hash.each do |k, v|
-  puts "#{k} is #{v}"
-end
 
 hash.each do |k, v|
   puts "#{k} é #{v}"
@@ -263,7 +261,7 @@ somar 3, 4 #=> 7
 somar(3,4), 5 #=> 12
 
 # yield
-# Todos os métodos possuem implicitamente um paramêntro opcional que é um bloco
+# Todos os métodos possuem implicitamente um paramêtro opcional que é um bloco
 # ele pode ser chamado com a palavra chave 'yield'
 
 def ao_redor
@@ -288,7 +286,7 @@ class Humano
 
   # Inicialização básica (contructor)
   def initialize(nome, idade=0)
-    # Atribui o argumento para a variável de instancia "nome" do objeto
+    # Atribui o argumento para a variável de instância "nome" do objeto
     @nome = nome
     # Se a idade não for passada, nós definimos um valor padrão na lista de argumentos
     @idade = idade
@@ -304,7 +302,7 @@ class Humano
     @nome
   end
 
-  # Um método de classe usa a palavra chave self para se defenciar dos métodos de instância.
+  # Um método de classe usa a palavra chave self para se diferenciar dos métodos de instância.
   # Ele só pode ser chamado na classe, não na instancia
   def self.diz(msg)
     puts "#{msg}"
@@ -365,7 +363,7 @@ Trabalhador.foo # 0
 Humano.foo = 2 # 2
 Trabalhador.foo # 2
 
-# Uma variável de instância não é compartilhada por suas classes decendentes.
+# Uma variável de instância não é compartilhada por suas classes descendentes.
 
 class Humano
   @bar = 0
@@ -440,6 +438,7 @@ Algo.new.bar # => NoMethodError: undefined method `bar'
 Algo.new.qux # => 'qux'
 ```
 
+<<<<<<< HEAD
 ## Recursos adicionais
 
 - [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - A variant of this reference with in-browser challenges.
@@ -447,3 +446,12 @@ Algo.new.qux # => 'qux'
 - [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
 - [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - Uma [versão grátis](http://ruby-doc.com/docs/ProgrammingRuby/) mais antiga está disponível online.
 - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - Um guia mantido pela comunidade de estilo de código Ruby.
+=======
+## Mais sobre Ruby
+
+- [Documentação oficial](http://www.ruby-doc.org/core-2.1.1/)
+- [Aprenda Ruby com desafios](http://www.learneroo.com/modules/61/nodes/338) - Uma coleção de desafios para testar a linguagem.
+- [Ruby a partir de outras linguagens](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
+- [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/)- Um mais antigo [free edition](http://ruby-doc.com/docs/ProgrammingRuby/) e tambem uma versão online disponível.
+- [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - Uma versão colaborativa de um *style-guide*
+>>>>>>> df4dbee36f5a3b9b63292a2346327f8b7d282a28

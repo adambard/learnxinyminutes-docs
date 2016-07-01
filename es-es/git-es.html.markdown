@@ -18,11 +18,11 @@ versionar y administrar nuestro código fuente.
 
 ## Versionamiento, conceptos.
 
-### Qué es el control de versiones?
+### ¿Qué es el control de versiones?
 El control de versiones es un sistema que guarda todos los cambios realizados en
 uno o varios archivos, a lo largo del tiempo.
 
-### Versionamiento centralizado vs Versionamiento Distribuido.
+### Versionamiento centralizado vs versionamiento distribuido.
 
 + El versionamiento centralizado se enfoca en sincronizar, rastrear, y respaldar
   archivos.
@@ -33,9 +33,9 @@ uno o varios archivos, a lo largo del tiempo.
 
 [Información adicional](http://git-scm.com/book/es/Empezando-Acerca-del-control-de-versiones)
 
-### Por qué usar Git?
+### ¿Por qué usar Git?
 
-* Se puede trabajar sin conexion.
+* Se puede trabajar sin conexión.
 * ¡Colaborar con otros es sencillo!.
 * Derivar, crear ramas del proyecto (aka: Branching) es fácil.
 * Combinar (aka: Merging)
@@ -47,7 +47,7 @@ uno o varios archivos, a lo largo del tiempo.
 ### Repositorio
 
 Un repositorio es un conjunto de archivos, directorios, registros, cambios (aka:
-comits), y encabezados (aka: heads). Imagina que un repositorio es una clase,
+commits), y encabezados (aka: heads). Imagina que un repositorio es una clase,
 y que sus atributos otorgan acceso al historial del elemento, además de otras
 cosas.
 
@@ -62,12 +62,12 @@ y mas.
 
 ### Directorio de trabajo (componentes del repositorio)
 
-Es basicamente los directorios y archivos dentro del repositorio. La mayoría de
+Es básicamente los directorios y archivos dentro del repositorio. La mayoría de
 las veces se le llama "directorio de trabajo".
 
 ### Índice (componentes del directorio .git)
 
-El índice es el área de inicio en git. Es basicamente la capa que separa el
+El índice es el área de inicio en git. Es básicamente la capa que separa el
 directorio de trabajo del repositorio en git. Esto otorga a los desarrolladores
 más poder sobre lo que se envía y se recibe del repositorio.
 
@@ -398,6 +398,10 @@ $ git rm /directorio/del/archivo/FooBar.c
 
 * [tryGit - Una forma entretenida y rapida de aprender Git.](http://try.github.io/levels/1/challenges/1)
 
+* [Udemy tutorial de Git: Una guía completa](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
+
+* [Inmersión Git - Una visita guiada caminando a través de los fundamentos de git](http://gitimmersion.com/)
+
 * [git-scm - Video-tutoriales](http://git-scm.com/videos)
 
 * [git-scm - Documentacion](http://git-scm.com/book/es)
@@ -407,3 +411,9 @@ $ git rm /directorio/del/archivo/FooBar.c
 * [SalesForce Chuleta](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
 
 * [GitGuys](http://www.gitguys.com/)
+
+* [Git - La guía simple](http://rogerdudler.github.io/git-guide/index.html)
+
+* [Pro Git](http://www.git-scm.com/book/en/v2)
+
+* [Una introducción a Git y Github para principiantes (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)

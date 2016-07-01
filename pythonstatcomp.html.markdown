@@ -1,13 +1,15 @@
 ---
-language: Statistical computing with Python
+category: tool
+tool: Statistical Computing with Python
 contributors:
     - ["e99n09", "https://github.com/e99n09"]
-filename: pythonstatcomp.py
 ---
 
 This is a tutorial on how to do some typical statistical programming tasks using Python. It's intended for people basically familiar with Python and experienced at statistical programming in a language like R, Stata, SAS, SPSS, or MATLAB.
 
 ```python
+
+
 
 # 0. Getting set up ====
 
@@ -25,17 +27,17 @@ This is a tutorial on how to do some typical statistical programming tasks using
     already using Python, there's a benefit to sticking with one language.
 """
 
-import requests # for HTTP requests (web scraping, APIs)
+import requests  # for HTTP requests (web scraping, APIs)
 import os
 
 # web scraping
 r = requests.get("https://github.com/adambard/learnxinyminutes-docs")
-r.status_code # if 200, request was successful
-r.text # raw page source
-print(r.text) # prettily formatted
+r.status_code  # if 200, request was successful
+r.text  # raw page source
+print(r.text)  # prettily formatted
 # save the page source in a file:
-os.getcwd() # check what's the working directory
-f = open("learnxinyminutes.html","wb")
+os.getcwd()  # check what's the working directory
+f = open("learnxinyminutes.html", "wb")
 f.write(r.text.encode("UTF-8"))
 f.close()
 
@@ -44,7 +46,7 @@ fp = "https://raw.githubusercontent.com/adambard/learnxinyminutes-docs/master/"
 fn = "pets.csv"
 r = requests.get(fp + fn)
 print(r.text)
-f = open(fn,"wb")
+f = open(fn, "wb")
 f.write(r.text.encode("UTF-8"))
 f.close()
 
@@ -58,7 +60,9 @@ f.close()
     you've used R, you will be familiar with the idea of the "data.frame" already.
 """
 
-import pandas as pd, numpy as np, scipy as sp
+import pandas as pd
+import numpy as np
+import scipy as sp
 pets = pd.read_csv(fn)
 pets
 #        name  age  weight species
@@ -74,20 +78,20 @@ pets
 pets.age
 pets["age"]
 
-pets.head(2) # prints first 2 rows
-pets.tail(1) # prints last row
+pets.head(2)  # prints first 2 rows
+pets.tail(1)  # prints last row
 
-pets.name[1] # 'vesuvius'
-pets.species[0] # 'cat'
-pets["weight"][2] # 34
+pets.name[1]  # 'vesuvius'
+pets.species[0]  # 'cat'
+pets["weight"][2]  # 34
 
 # in R, you would expect to get 3 rows doing this, but here you get 2:
 pets.age[0:2]
 # 0    3
 # 1    6
 
-sum(pets.age)*2 # 28
-max(pets.weight) - min(pets.weight) # 20
+sum(pets.age) * 2  # 28
+max(pets.weight) - min(pets.weight)  # 20
 
 """ If you are doing some serious linear algebra and number-crunching, you may
     just want arrays, not DataFrames. DataFrames are ideal for combining columns
@@ -96,7 +100,8 @@ max(pets.weight) - min(pets.weight) # 20
 
 # 3. Charts ====
 
-import matplotlib as mpl, matplotlib.pyplot as plt
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 %matplotlib inline
 
 # To do data vizualization in Python, use matplotlib
@@ -105,13 +110,17 @@ plt.hist(pets.age);
 
 plt.boxplot(pets.weight);
 
-plt.scatter(pets.age, pets.weight); plt.xlabel("age"); plt.ylabel("weight");
+plt.scatter(pets.age, pets.weight)
+plt.xlabel("age")
+plt.ylabel("weight");
 
 # seaborn sits atop matplotlib and makes plots prettier
 
 import seaborn as sns
 
-plt.scatter(pets.age, pets.weight); plt.xlabel("age"); plt.ylabel("weight");
+plt.scatter(pets.age, pets.weight)
+plt.xlabel("age")
+plt.ylabel("weight");
 
 # there are also some seaborn-specific plotting functions
 # notice how seaborn automatically labels the x-axis on this barplot
@@ -141,41 +150,40 @@ ggplot(aes(x="age",y="weight"), data=pets) + geom_point() + labs(title="pets")
 url = "https://raw.githubusercontent.com/e99n09/R-notes/master/data/hre.csv"
 r = requests.get(url)
 fp = "hre.csv"
-f = open(fp,"wb")
-f.write(r.text.encode("UTF-8"))
-f.close()
+with open(fp, "wb") as f:
+    f.write(r.text.encode("UTF-8"))
 
 hre = pd.read_csv(fp)
 
 hre.head()
 """
-   Ix      Dynasty        Name        Birth             Death Election 1  
-0 NaN  Carolingian   Charles I  2 April 742    28 January 814        NaN   
-1 NaN  Carolingian     Louis I          778       20 June 840        NaN   
-2 NaN  Carolingian   Lothair I          795  29 September 855        NaN   
-3 NaN  Carolingian    Louis II          825     12 August 875        NaN   
-4 NaN  Carolingian  Charles II  13 June 823     6 October 877        NaN   
+   Ix      Dynasty        Name        Birth             Death Election 1
+0 NaN  Carolingian   Charles I  2 April 742    28 January 814        NaN
+1 NaN  Carolingian     Louis I          778       20 June 840        NaN
+2 NaN  Carolingian   Lothair I          795  29 September 855        NaN
+3 NaN  Carolingian    Louis II          825     12 August 875        NaN
+4 NaN  Carolingian  Charles II  13 June 823     6 October 877        NaN
 
-  Election 2      Coronation 1   Coronation 2 Ceased to be Emperor  
-0        NaN   25 December 800            NaN       28 January 814   
-1        NaN  11 September 813  5 October 816          20 June 840   
-2        NaN       5 April 823            NaN     29 September 855   
-3        NaN        Easter 850     18 May 872        12 August 875   
-4        NaN   29 December 875            NaN        6 October 877   
+  Election 2      Coronation 1   Coronation 2 Ceased to be Emperor
+0        NaN   25 December 800            NaN       28 January 814
+1        NaN  11 September 813  5 October 816          20 June 840
+2        NaN       5 April 823            NaN     29 September 855
+3        NaN        Easter 850     18 May 872        12 August 875
+4        NaN   29 December 875            NaN        6 October 877
 
-  Descent from whom 1 Descent how 1 Descent from whom 2 Descent how 2  
-0                 NaN           NaN                 NaN           NaN  
-1           Charles I           son                 NaN           NaN  
-2             Louis I           son                 NaN           NaN  
-3           Lothair I           son                 NaN           NaN  
-4             Louis I           son                 NaN           NaN  
+  Descent from whom 1 Descent how 1 Descent from whom 2 Descent how 2
+0                 NaN           NaN                 NaN           NaN
+1           Charles I           son                 NaN           NaN
+2             Louis I           son                 NaN           NaN
+3           Lothair I           son                 NaN           NaN
+4             Louis I           son                 NaN           NaN
 """
 
 # clean the Birth and Death columns
 
-import re # module for regular expressions
+import re  # module for regular expressions
 
-rx = re.compile(r'\d+$') # match trailing digits
+rx = re.compile(r'\d+$')  # match trailing digits
 
 """ This function applies the regular expression to an input column (here Birth,
     Death), flattens the resulting list, converts it to a Series object, and
@@ -185,8 +193,9 @@ rx = re.compile(r'\d+$') # match trailing digits
       - http://stackoverflow.com/questions/11860476/how-to-unlist-a-python-list
       - http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.html
 """
+
 def extractYear(v):
-    return(pd.Series(reduce(lambda x,y: x+y,map(rx.findall,v),[])).astype(int))
+    return(pd.Series(reduce(lambda x, y: x + y, map(rx.findall, v), [])).astype(int))
 
 hre["BirthY"] = extractYear(hre.Birth)
 hre["DeathY"] = extractYear(hre.Death)
@@ -199,17 +208,17 @@ sns.lmplot("BirthY", "EstAge", data=hre, hue="Dynasty", fit_reg=False);
 
 # use scipy to run a linear regression
 from scipy import stats
-(slope,intercept,rval,pval,stderr)=stats.linregress(hre.BirthY,hre.EstAge)
+(slope, intercept, rval, pval, stderr) = stats.linregress(hre.BirthY, hre.EstAge)
 # code source: http://wiki.scipy.org/Cookbook/LinearRegression
 
 # check the slope
-slope # 0.0057672618839073328
+slope  # 0.0057672618839073328
 
 # check the R^2 value:
-rval**2 # 0.020363950027333586
+rval**2  # 0.020363950027333586
 
 # check the p-value
-pval # 0.34971812581498452
+pval  # 0.34971812581498452
 
 # use seaborn to make a scatterplot and plot the linear regression trend line
 sns.lmplot("BirthY", "EstAge", data=hre);
@@ -223,6 +232,7 @@ sns.lmplot("BirthY", "EstAge", data=hre);
     To see a version of the Holy Roman Emperors analysis using R, see
       - http://github.com/e99n09/R-notes/blob/master/holy_roman_emperors_dates.R
 """
+
 ```
 
 If you want to learn more, get _Python for Data Analysis_ by Wes McKinney. It's a superb resource and I used it as a reference when writing this tutorial.
