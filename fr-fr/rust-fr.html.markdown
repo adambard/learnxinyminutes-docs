@@ -80,10 +80,10 @@ fn main() {
     // A `Chaîne` - une chaîne de tas alloué
     let s: String = "Bonjour tout le monde".to_string();
 
-    // Une tranche de chaîne - une vue immutable dans une else chaîne
+    // Une tranche de chaîne - une vue immutable dans une else chaîne.
     // Ceci est essentiellement un pointeur immutable à une chaîne - il n'a pas
-    // Contient effectivement le contenu d'une chaîne, juste un pointeur vers
-    // Quelque chose qui fait(dans ce cas, `s`)
+    // contient effectivement le contenu d'une chaîne, juste un pointeur vers
+    // quelque chose qui fait(dans ce cas, `s`).
     let s_slice: &str = &s;
 
     println!("{} {}", s, s_slice); // Bonjour monde Bonjour tout le monde
@@ -97,8 +97,8 @@ fn main() {
     let mut vecteur: Vec<i32> = vec![1, 2, 3, 4];
     vecteur.push(5);
 
-    // Une tranche - une vue immutable dans un vecteur ou un tableau
-    // Ceci est un peu comme une tranche de chaîne, mais pour les vecteurs
+    // Une tranche - une vue immutable dans un vecteur ou un tableau.
+    // Ceci est un peu comme une tranche de chaîne, mais pour les vecteurs.
     let tranche: &[i32] = &vecteur;
 
     // Utiliser `{:?}` pour imprimer quelque chose de débogage de style
@@ -106,7 +106,7 @@ fn main() {
 
     // Tuples //
 
-    // Un tuple est un ensemble de valeurs de peut-être différents types
+    // Un tuple est un ensemble de valeurs de peut-être différents types.
     // de taille fixe
     let x:(i32, &str, f64) =(1, "bonjour", 3.4);
 
@@ -129,7 +129,7 @@ fn main() {
 
     let origine: Point = Point { x: 0, y: 0 };
 
-    // Un struct avec des champs sans nom, appelé 'tuple struct'
+    // Un struct avec des champs sans nom, appelé 'tuple struct'.
     struct Point2(i32, i32);
 
     let origine2 = Point2(0, 0);
@@ -138,11 +138,11 @@ fn main() {
     enum Direction {
         Àgauche,
         Droite,
-        Enhaut,
-        Verslebas,
+        En_Haut,
+        Vers_Le_Bas,
     }
 
-    let enhaut = Direction::Enhaut;
+    let en_haut = Direction::En_Haut;
 
     // Enum avec des champs
     enum OptionnelI32 {
@@ -157,7 +157,7 @@ fn main() {
 
     struct Foo<T> { bar: T }
 
-    // Ceci est défini dans la bibliothèque standard comme `Option`
+    // Ceci est défini dans la bibliothèque standard comme `Option`.
     enum Optionnel<T> {
         SomeVal(T),
         NoVal,
@@ -166,7 +166,7 @@ fn main() {
     // Méthodes //
 
     impl<T> Foo<T> {
-        // Méthodes prennent un paramètre explicite `de self`
+        // Méthodes prennent un paramètre explicite `de self`.
         fn get_bar(self) -> T {
             self.bar
         }
@@ -176,7 +176,7 @@ fn main() {
     println!("{}", a_foo.get_bar()); // 1
 
     // Traits (connu sous le nom des interfaces ou des classes de types dans
-    // d'elses langues)
+    // d'elses langues).
 
     trait Frobnicate<T> {
         fn frobnicate(self) -> Option<T>;
@@ -261,7 +261,7 @@ fn main() {
     // 5. Sécurité & pointeurs mémoire //
     /////////////////////////////////
 
-    // Pointeur occasion - une seule chose peut "propre" ce pointeur à un moment
+    // Pointeur occasion - une seule chose peut "posséder" pointeur à un moment.
     // Cela signifie que lorsque le `Box` laisse son champ d'application, il
     // peut être automatiquement libérée en toute sécurité.
     let mut mien: Box<i32> = Box::new(3);
@@ -269,13 +269,13 @@ fn main() {
     // Ici, `now_its_mine` prend possession de` mine`. En d'elses termes,
     // `mien` est déplacé.
     let mut now_its_mine = mien;
-    *now_its_mine + = 2;
+    *now_its_mine += 2;
 
     println!("{}", now_its_mine); // 7
     // println!("{}", de la mine); // Cela ne compile pas parce
     // que `now_its_mine` possède maintenant le pointeur
 
-    // Référence - un pointeur immutable qui fait référence à d'elses données
+    // Référence - un pointeur immutable qui fait référence à d'elses données.
     // Quand une référence est prise à une valeur, nous disons que la valeur
     // a été "emprunté".
     // Même si une valeur est emprunté immutablement, il ne peut pas être
@@ -287,16 +287,16 @@ fn main() {
 
     println!("{}", var); // Contrairement `box`, `var` peut encore être utilisé
     println!("{}", *ref_var);
-    // Var = 5; // Cela ne compile pas parce que `var` est emprunté
+    // Var = 5; // Cela ne compile pas parce que `var` est emprunté.
     // *ref_var = 6; // Ce ne serait pas non plus, parce que `ref_var` est une
-    // référence immutable
+    // référence immutable.
 
     // Référence Mutable
     // Même si une valeur est mutably emprunté, il ne peut pas être
     // accessible à tous.
     let mut var2 = 4;
     let ref_var2: &mut i32 = &mut var2;
-    // '*' est utilisé pour pointer vers le var2 mutably emprunté
+    // '*' est utilisé pour pointer vers le var2 mutably emprunté.
     *ref_var2 += 2;
 
     println!("{}", * ref_var2); // 6, // var2 ne serait pas compiler.
