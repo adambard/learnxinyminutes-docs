@@ -1,13 +1,11 @@
 ---
-language: Julia
-contributors:
-    - ["Leah Hanson", "http://leahhanson.us"]
-    - ["Pranit Bauva", "http://github.com/pranitbauva1997"]
-filename: learnjulia.jl
----
 
-Julia is a new homoiconic functional language focused on technical computing.
-While having the full power of homoiconic macros, first-class functions, and low-level control, Julia is as easy to learn and use as Python.
+language: Julia contributors: - ["Leah Hanson", "http://leahhanson.us"\] - ["Pranit Bauva", "http://github.com/pranitbauva1997"\]
+
+filename: learnjulia.jl
+-----------------------
+
+Julia is a new homoiconic functional language focused on technical computing. While having the full power of homoiconic macros, first-class functions, and low-level control, Julia is as easy to learn and use as Python.
 
 This is based on Julia 0.4.
 
@@ -101,7 +99,7 @@ false
 @printf "%d is less than %f" 4.5 5.3 # 5 is less than 5.300000
 
 # Printing is easy
-println("I'm Julia. Nice to meet you!")
+println("Hello World!")
 
 # String can be compared lexicographically
 "good" > "bye" # => true
@@ -287,7 +285,7 @@ end
 # Use the get method to avoid that error by providing a default value
 # get(dictionary,key,default_value)
 get(filled_dict,"one",4) # => 1
-get(filled_dict,"four",4) # => 4
+get(filled_dict,"four", "Key not found") # => 4
 
 # Use Sets to represent collections of unordered, unique values
 empty_set = Set() # => Set{Any}()
@@ -769,9 +767,11 @@ code_native(circle_area, (Float64,))
 	#	    pop RBP
 	#	    ret
 	#
+
 ```
 
-## Further Reading
+Further Reading
+---------------
 
 You can get a lot more detail from [The Julia Manual](http://docs.julialang.org/en/latest/manual/)
 
