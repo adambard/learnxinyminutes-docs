@@ -18,7 +18,7 @@ Le 15 mai 2015, Rust 1.0 a été libéré avec une garantie complète de compati
 
 Bien que Rust est un langage relativement bas niveau, Rust a quelques concepts fonctionnels qui se trouvent généralement dans les langues de niveau supérieur. Cela rend la rouille non seulement rapide, mais aussi facile et efficace de code.
 
-```
+```rust
 // Ceci est un commentaire. commentaires de ligne ressemblent à ceci ...
 // Et prolonger plusieurs lignes comme celle-ci.
 
