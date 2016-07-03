@@ -721,6 +721,16 @@ for value in double_numbers_generator(xrange(1000000)):  # `test_generator`
 # `range` would return back and array with 1000000 values for us to use
 # `xrange` would generate 1000000 values for us as we request / iterate over those items
 
+# Just as you can create a list comprehension, you can create generator
+# comprehensions as well.
+values = (-x for x in [1,2,3,4,5])
+for x in values:
+    print(x)  # prints -1 -2 -3 -4 -5 to console/terminal
+
+# You can also cast a generator comprehension directly to a list.
+values = (-x for x in [1,2,3,4,5])
+gen_to_list = list(values)
+print(gen_to_list)  # => [-1, -2, -3, -4, -5]
 
 
 # Decorators
