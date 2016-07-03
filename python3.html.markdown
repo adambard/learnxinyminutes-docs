@@ -820,7 +820,7 @@ if __name__ == '__main__':
     sup.age = 100
     print(sup.age)
 
-    # Inherited attribute from 2nd ancestor whose default value was overriden
+    # Inherited attribute from 2nd ancestor whose default value was overridden.
     print('Can I fly? ' + str(sup.fly))
 
 
@@ -829,29 +829,23 @@ if __name__ == '__main__':
 ## 7. Advanced
 ####################################################
 
-# Generators help you make lazy code
+# Generators help you make lazy code.
 def double_numbers(iterable):
     for i in iterable:
         yield i + i
 
-# A generator creates values on the fly.
-# Instead of generating and returning all values at once it creates one in each
-# iteration.  This means values bigger than 15 wont be processed in
-# double_numbers.
-# We use a trailing underscore in variable names when we want to use a name that
-# would normally collide with a python keyword
-range_ = range(1, 900000000)
-# will double all numbers until a result >=30 found
-for i in double_numbers(range_):
+# Generators are memory-efficient because they only load the data needed to
+# process the next value in the iterable. This allows them to perform
+# operations on otherwise prohibitively large value ranges.
+# NOTE: `range` replaces `xrange` in Python 3.
+for i in double_numbers(range(1, 900000000)):  # `range` is a generator.
     print(i)
     if i >= 30:
         break
 
-
 # Decorators
-# in this example beg wraps say
-# Beg will call say. If say_please is True then it will change the returned
-# message
+# In this example `beg` wraps `say`. If say_please is True then it
+# will change the returned message.
 from functools import wraps
 
 

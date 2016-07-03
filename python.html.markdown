@@ -708,7 +708,7 @@ def double_numbers_generator(iterable):
 
 # Running the same code as before, but with a generator, now allows us to iterate
 # over the values and doubling them one by one as they are being consumed by
-# our logic. Hence as soon as we see a value > 5, we stop break out of the
+# our logic. Hence as soon as we see a value > 5, we break out of the
 # loop and don't need to double most of the values sent in (MUCH FASTER!)
 for value in double_numbers_generator(xrange(1000000)):  # `test_generator`
     print value
