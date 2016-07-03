@@ -3,8 +3,8 @@ language: rust
 contributors:
     - ["P1start", "http://p1start.github.io/"]
 translators:
-    - ["jrrembert", "http://jrrembert.github.io"]
-filename: learnrust.rs
+    - ["Ryan Rembert", "http://jrrembert.github.io"]
+filename: learnrust-fr.rs
 lang: fr-fr
 ---
 
