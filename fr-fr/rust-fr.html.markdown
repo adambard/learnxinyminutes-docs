@@ -37,7 +37,7 @@ Bien que Rust est un langage relativement bas niveau, Rust a quelques concepts f
 // Les fonctions
 // `I32` est le type 32 bits entiers signés
 fn add2(x: i32, y: i32) -> i32 {
-    // Retour implicite(pas virgule)
+    // Retour implicite (pas virgule)
     x + y
 }
 
@@ -108,10 +108,10 @@ fn main() {
 
     // Un tuple est un ensemble de valeurs de peut-être différents types.
     // de taille fixe
-    let x:(i32, &str, f64) =(1, "bonjour", 3.4);
+    let x:(i32, &str, f64) = (1, "bonjour", 3.4);
 
     // Déstructurante `let`
-    let(a, b, c) = x;
+    let (a, b, c) = x;
     println!("{} {} {}", a, b, c); // 1 bonjour 3.4
 
     // indexation
@@ -151,7 +151,7 @@ fn main() {
     }
 
     let deux: OptionnelI32 = OptionnelI32::AnI32(2);
-    let rien = OptionnelI32 :: Rien;
+    let rien = OptionnelI32::Rien;
 
     // Generics //
 
