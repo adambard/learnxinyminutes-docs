@@ -601,6 +601,10 @@ list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  # => [6, 7]
 [add_10(i) for i in [1, 2, 3]]         # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]  # => [6, 7]
 
+# You can construct set and dict comprehensions as well.
+{x for x in 'abcddeef' if x in 'abc'}  # => {'d', 'e', 'f'}
+{x: x**2 for x in range(5)}  # => {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+
 
 ####################################################
 ## 5. Modules
@@ -816,7 +820,7 @@ if __name__ == '__main__':
     sup.age = 100
     print(sup.age)
 
-    # Inherited attribute from 2nd ancestor whose default value was overriden
+    # Inherited attribute from 2nd ancestor whose default value was overridden.
     print('Can I fly? ' + str(sup.fly))
 
 
@@ -825,29 +829,35 @@ if __name__ == '__main__':
 ## 7. Advanced
 ####################################################
 
-# Generators help you make lazy code
+# Generators help you make lazy code.
 def double_numbers(iterable):
     for i in iterable:
         yield i + i
 
-# A generator creates values on the fly.
-# Instead of generating and returning all values at once it creates one in each
-# iteration.  This means values bigger than 15 wont be processed in
-# double_numbers.
-# We use a trailing underscore in variable names when we want to use a name that
-# would normally collide with a python keyword
-range_ = range(1, 900000000)
-# will double all numbers until a result >=30 found
-for i in double_numbers(range_):
+# Generators are memory-efficient because they only load the data needed to
+# process the next value in the iterable. This allows them to perform
+# operations on otherwise prohibitively large value ranges.
+# NOTE: `range` replaces `xrange` in Python 3.
+for i in double_numbers(range(1, 900000000)):  # `range` is a generator.
     print(i)
     if i >= 30:
         break
 
+# Just as you can create a list comprehension, you can create generator
+# comprehensions as well.
+values = (-x for x in [1,2,3,4,5])
+for x in values:
+    print(x)  # prints -1 -2 -3 -4 -5 to console/terminal
+
+# You can also cast a generator comprehension directly to a list.
+values = (-x for x in [1,2,3,4,5])
+gen_to_list = list(values)
+print(gen_to_list)  # => [-1, -2, -3, -4, -5]
+
 
 # Decorators
-# in this example beg wraps say
-# Beg will call say. If say_please is True then it will change the returned
-# message
+# In this example `beg` wraps `say`. If say_please is True then it
+# will change the returned message.
 from functools import wraps
 
 
