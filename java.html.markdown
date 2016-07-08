@@ -9,7 +9,6 @@ contributors:
     - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
     - ["Rachel Stiyer", "https://github.com/rstiyer"]
     - ["Michael Dähnert", "http://github.com/JaXt0r"]
-    - ["Nimit Shah", "https://github.com/NimitS1"]
 filename: LearnJava.java
 ---
 
