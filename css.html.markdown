@@ -169,6 +169,13 @@ selector {
     color: transparent;          /* equivalent to setting the alpha to 0 */
     color: hsl(0, 100%, 50%);    /* as hsl percentages (CSS 3) */
     color: hsla(0, 100%, 50%, 0.3); /* as hsl percentages with alpha */
+    
+    /*Borders*/
+    border-width:5px; 
+    border-style:solid;
+    border-color:red;      /*Similar to how background-color is set*/
+    border: 5px solid red; /*This is a short hand approach for the same*/
+    border-radius:20px;    /*This is a CSS3 property*/    
 
     /* Images as backgrounds of elements */
     background-image: url(/img-path/img.jpg); /* quotes inside url() optional */
