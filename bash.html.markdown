@@ -163,6 +163,10 @@ echo "START OF FILE\n$Contents\nEND OF FILE"
 cp srcFile.txt clone.txt
 cp -r srcDirectory/ dst/ # recursively copy
 
+# Look into `scp` or `sftp` if you plan on exchanging files between computers.
+# `scp` behaves very similarly to `cp`.
+# `sftp` is more interactive.
+
 # Use `mv` to move files or directories from one place to another.
 # `mv` is similar to `cp`, but it deletes the source.
 # `mv` is also useful for renaming files!
@@ -320,6 +324,8 @@ grep -c "^foo.*bar$" file.txt
 grep -r "^foo.*bar$" someDir/ # recursively `grep`
 grep -n "^foo.*bar$" file.txt # give line numbers
 grep -rI "^foo.*bar$" someDir/ # recursively `grep`, but ignore binary files
+# perform the same initial search, but filter out the lines containing "baz"
+grep "^foo.*bar$" file.txt | grep -v "baz"
 
 # if you literally want to search for the string,
 # and not the regex, use fgrep (or grep -F)
