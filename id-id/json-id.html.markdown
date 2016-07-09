@@ -1,20 +1,32 @@
 ---
 language: json
-filename: learnjson-id.json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]
-translators:
+filename: learnjson-id.json
+translators
   - ["Rizky Luthfianto", "https://github.com/rilut"]
+  - ["Ahmad Zafrullah", "https://github.com/23Pstars"]
 lang: id-id
 ---
 
-JSON adalah format pertukaran data yang sangat simpel, kemungkinan besar,
-ini adalah "Learn X in Y Minutes" yang paling singkat.
+JSON adalah format pertukaran data yang sangat sederhana. Sebagaimana dikutip dari [json.org](http://json.org), JSON mudah untuk dibaca atau ditulis oleh manusia, dan mudah diuraikan dan diproses oleh mesin.
 
-Murninya, JSON tidak mempunyai fitur komentar, tapi kebanyakan parser akan
-menerima komentar bergaya bahasa C (`//`, `/* */`). Namun, pada halaman ini,
-hanya dicontohkan JSON yang 100% valid.
+Sebuah format JSON setidaknya memiliki:
+* Sebuah pasangan nama atau nilai dinyatakan dengan karakter (`{ }`). Dibeberapa bahasa pemrograman, karakter ini sering digunakan sebagai object, record, struct, dictionary, hash table, keyed list, atau associative array.
+* Daftar nilai dinyatakan dengan karakter (`[ ]`). Dibeberapa bahasa pemrograman, karakter ini sering digunakan sebagai array, vector, list, atau sequence.
+
+Format JSON murni tidak memiliki komentar, namun beberapa pengurai (parser) dapat mengenali komentar seperti yang digunakan oleh bahasa C (`//`, `/**/`). Beberapa pengurai lainnya juga memiliki toleransi terhadap akhiran sisa koma (seperti koma yang terdapat pada akhir elemen dari larik atau properti terakhir dari objek), tapi koma tersebut memang seharusnya diabaikan untuk dukungan yang lebih baik.
+
+Dalam tutorial ini, semuanya menggunakan format JSON murni.
+
+Tipe data yang didukung oleh JSON:
+
+* Teks: `"halo"`, `"\"tanda petik.\""`, `"\u0abe"`, `"baris baru.\n"`
+* Angka: `23`, `0.11`, `12e10`, `3.141e-10`, `1.23e+4`
+* Objek: `{ "kunci": "nilai" }`
+* Larik: `["nilai"]`
+* Lainnya: `true`, `false`, `null`
 
 ```json
 {
@@ -59,3 +71,7 @@ hanya dicontohkan JSON yang 100% valid.
   "singkat": "Dan Anda selesai! Sekarang Anda tahu apa saja yang disediakan oleh JSON."
 }
 ```
+
+## Referensi lebih labjut
+
+* [JSON.org](http://json.org) Semua keindahan JSON dijelaskan dalam bentuk alur-grafis.
