@@ -22,6 +22,8 @@ Nearly all examples below can be a part of a shell script or executed directly i
 
 [Read more here.](http://www.gnu.org/software/bash/manual/bashref.html)
 
+Another recommened link: [The Command Line Crash Course](http://cli.learncodethehardway.org/book/)
+
 ```bash
 #!/bin/bash
 # First line of the script is shebang which tells the system how to execute
@@ -81,7 +83,6 @@ echo "Script's arguments separated into different variables: $1 $2..."
 
 # Now that we know how to echo and use variables,
 # let's learn some of the other basics of bash!
-# For further reading: http://cli.learncodethehardway.org/book/
 
 # Getting our current directory is available through the command `pwd`.
 # `pwd` stands for "print working directory".
@@ -92,9 +93,7 @@ echo "I'm in $PWD" # interpolates the variable
 
 # If you get too much output in your terminal, or from a script, the command
 # `clear` clears your screen
-
 clear
-
 # Ctrl-L also works for clearning output
 
 # Reading a value from input:
@@ -176,12 +175,6 @@ cp -r srcDirectory/ dst/ # recursively copy
 # `mv` is also useful for renaming files!
 mv s0urc3.txt dst.txt # sorry, l33t hackers...
 
-# Use `rm` to remove files or directories.
-# WARNING: YOU CANNOT UNDO `rm` COMMANDS
-rm file1.txt file2.txt
-rm -r someDir/ # recursively delete
-
-
 # Since bash works in the context of a current directory, you might want to 
 # run your command in some other directory. We have cd for changing location:
 cd ~    # change to home directory
@@ -198,7 +191,6 @@ pwd # still in first directory
 mkdir myNewDir
 # The `-p` flag causes new intermediate directories to be created as necessary.
 mkdir -p myNewDir/with/intermediate/directories
-
 
 # You can redirect command input and output (stdin, stdout, and stderr).
 # Read from stdin until ^EOF$ and overwrite hello.py with the lines
@@ -238,7 +230,9 @@ echo "#helloworld" | cat > output.out
 echo "#helloworld" | tee output.out >/dev/null
 
 # Cleanup temporary files verbosely (add '-i' for interactive)
+# WARNING: `rm` commands cannot be undone
 rm -v output.out error.err output-and-error.log
+rm -r tempDir/ # recursively delete
 
 # Commands can be substituted within other commands using $( ):
 # The following command displays the number of files and directories in the
