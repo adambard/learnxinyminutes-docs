@@ -74,4 +74,4 @@ Tipe data yang didukung oleh JSON:
 
 ## Referensi lebih labjut
 
-* [JSON.org](http://json.org) Semua keindahan JSON dijelaskan dalam bentuk alur-grafis.
+* [JSON.org](http://json.org/json-id.html) semua keindahan JSON dijelaskan dalam bentuk alur-grafis (bahasa indonesia).
