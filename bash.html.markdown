@@ -13,6 +13,7 @@ contributors:
     - ["Etan Reisner", "https://github.com/deryni"]
     - ["Leo Rudberg", "https://github.com/LOZORD"]
     - ["Betsy Lorton", "https://github.com/schbetsy"]
+    - ["John Detter", "https://github.com/jdetter"]
 filename: LearnBash.sh
 ---
 
@@ -189,6 +190,11 @@ cd ~/Documents/..    # still in home directory..isn't it??
 # Use subshells to work across directories
 (echo "First, I'm here: $PWD") && (cd someDir; echo "Then, I'm here: $PWD")
 pwd # still in first directory
+
+# Use `mkdir` to create new directories.
+mkdir myNewDir
+# The `-p` flag causes new intermediate directories to be created as necessary.
+mkdir -p myNewDir/with/intermediate/directories
 
 
 # You can redirect command input and output (stdin, stdout, and stderr).
