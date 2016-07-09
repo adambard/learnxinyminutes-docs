@@ -108,7 +108,7 @@ echo "I'm in $PWD" # interpolates the variable
 # If you get too much output in your terminal, or from a script, the command
 # `clear` clears your screen
 clear
-# Ctrl-L also works for clearning output
+# Ctrl-L also works for clearing output
 
 # Reading a value from input:
 echo "What's your name?"
@@ -174,8 +174,8 @@ Contents=$(cat file.txt)
 echo "START OF FILE\n$Contents\nEND OF FILE"
 
 # Use `cp` to copy files or directories from one place to another.
-# `cp` creates NEW version of the sources,
-# so editing one won't affect the other.
+# `cp` creates NEW versions of the sources,
+# so editing the copy won't affect the original (and vice versa).
 # Note that it will overwrite the destination if it already exists.
 cp srcFile.txt clone.txt
 cp -r srcDirectory/ dst/ # recursively copy
