@@ -18,6 +18,9 @@ filename: LearnBash.sh
 ---
 
 Bash is a name of the unix shell, which was also distributed as the shell for the GNU operating system and as default shell on Linux and Mac OS X.
+Nearly all examples below can be a part of a shell script or executed directly in the shell.
+
+[Read more here.](http://www.gnu.org/software/bash/manual/bashref.html)
 
 ```bash
 #!/bin/bash
