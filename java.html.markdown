@@ -8,6 +8,7 @@ contributors:
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
     - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
     - ["Rachel Stiyer", "https://github.com/rstiyer"]
+    - ["Michael Dähnert", "http://github.com/JaXt0r"]
 filename: LearnJava.java
 ---
 
@@ -23,8 +24,17 @@ Multi-line comments look like this.
 */
 
 /**
-JavaDoc comments look like this. Used to describe the Class or various
-attributes of a Class.
+ * JavaDoc comments look like this. Used to describe the Class or various
+ * attributes of a Class.
+ * Main attributes:
+ *
+ * @author 		Name (and contact information such as email) of author(s).
+ * @version 	Current version of the program.
+ * @since		When this part of the program was first added.
+ * @param 		For describing the different parameters for a method.
+ * @return		For describing what the method returns.
+ * @deprecated  For showing the code is outdated or shouldn't be used.
+ * @see 		Links to another part of documentation.
 */
 
 // Import ArrayList class inside of the java.util package
@@ -162,6 +172,29 @@ public class LearnJava {
         System.out.println(barString);
         System.out.println(bazString);
 
+        // String Building
+        // #1 - with plus operator
+        // That's the basic way to do it (optimized under the hood)
+        String plusConcatenated = "Strings can " + "be concatenated " + "via + operator.";
+        System.out.println(plusConcatenated);
+        // Output: Strings can be concatenated via + operator.
+
+        // #2 - with StringBuilder
+        // This way doesn't create any intermediate strings. It just stores the string pieces, and ties them together
+        // when toString() is called.
+        // Hint: This class is not thread safe. A thread-safe alternative (with some impact on performance) is StringBuffer.
+        StringBuilder builderConcatenated = new StringBuilder();
+        builderConcatenated.append("You ");
+        builderConcatenated.append("can use ");
+        builderConcatenated.append("the StringBuilder class.");
+        System.out.println(builderConcatenated.toString()); // only now is the string built 
+        // Output: You can use the StringBuilder class.
+
+        // #3 - with String formatter
+        // Another alternative way to create strings. Fast and readable.
+        String.format("%s may prefer %s.", "Or you", "String.format()");
+        // Output: Or you may prefer String.format().
+ 
         // Arrays
         // The array size must be decided upon instantiation
         // The following formats work for declaring an array
@@ -199,6 +232,9 @@ public class LearnJava {
         //            interface. This allows the execution time of basic
         //            operations, such as get and insert element, to remain
         //            constant even for large sets.
+        // TreeMap - This class is a sorted tree structure. It implements a red
+        //           black tree and sorts the entries based on the key value or
+        //           the comparator provided while creating the object
 
         ///////////////////////////////////////
         // Operators

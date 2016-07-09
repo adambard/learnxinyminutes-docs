@@ -197,7 +197,6 @@ myObj.myFourthKey; // = undefined
 
 // A sintaxe para essa seção é quase idêntica a maioria das linguagens.
 
-// The `if` structure works as you'd expect.
 // A estrutura `if` funciona como deveria ser.
 var count = 1
 if (count == 3){
@@ -218,9 +217,6 @@ while (true){
 do {
     input = getInput();
 } while (!isValid(input))
-
-// The `for` loop is the same as C and Java:
-// initialisation; continue condition; iteration.
 
 // O loop `for` é o mesmo de C e Java:
 // inicialização, condição para continuar; iteração

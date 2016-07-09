@@ -122,10 +122,6 @@ like how .vimrc or init.el are used.
 ### General
 ###########################################################################
 
-# Enable UTF-8
-setw -g utf8 on
-set-option -g status-utf8 on
-
 # Scrollback/History limit
 set -g history-limit 2048
 

@@ -418,8 +418,18 @@ typedef void (*my_fnp_type)(char *);
 
 ## Otras lecturas
 
-Lo mejor que puedes en contrar es una copia de [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language)
+Lo mejor que puedes encontrar es una copia de [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language). Es *el*
+libro de C, escrito por Dennis Ritchie, creador de C y Brian Kernighan. Aún así,
+se cuidadoso, es antiguo, contiene algunas inexactitudes, y algunas prácticas 
+han cambiado.
 
-Otro buen recurso es [Learn C the hard way](http://c.learncodethehardway.org/book/)
+Otro buen recurso es [Learn C the hard way](http://c.learncodethehardway.org/book/).
+
+Si tienes una pregunta, lee [compl.lang.c Frequently Asked Questions](http://c-faq.com).
+
+Es muy importante utilizar el espaciado y la sangría apropiados y ser coherente 
+con su estilo de codificación en general. El código legible es mejor que el 
+código rápido. Para adoptar un buen estilo de codificación, vea el
+[Estilo de codificación del kernel Linux] (https://www.kernel.org/doc/Documentation/CodingStyle).
 
 Aparte de eso, Google es tu amigo.

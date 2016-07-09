@@ -1,10 +1,11 @@
 ---
-language: brainfuck
+language: bf
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Petru Dimitriu", "http://petru-dimitriu.github.io"]
+filename: bf-ro.html
 lang: ro-ro
 ---
 

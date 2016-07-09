@@ -8,21 +8,21 @@ contributors:
 filename: learnpython.py
 ---
 
-Python was created by Guido Van Rossum in the early 90s. It is now one of the 
-most popular languages in existence. I fell in love with Python for its 
+Python was created by Guido Van Rossum in the early 90s. It is now one of the
+most popular languages in existence. I fell in love with Python for its
 syntactic clarity. It's basically executable pseudocode.
 
-Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) 
+Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh)
 or louiedinh [at] [google's email service]
 
-Note: This article applies to Python 2.7 specifically, but should be applicable 
-to Python 2.x. Python 2.7 is reaching end of life and will stop being 
-maintained in 2020, it is though recommended to start learning Python with 
+Note: This article applies to Python 2.7 specifically, but should be applicable
+to Python 2.x. Python 2.7 is reaching end of life and will stop being
+maintained in 2020, it is though recommended to start learning Python with
 Python 3. For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
 
-It is also possible to write Python code which is compatible with Python 2.7 
+It is also possible to write Python code which is compatible with Python 2.7
 and 3.x at the same time, using Python [`__future__` imports](https://docs.python.org/2/library/__future__.html). `__future__` imports
-allow you to write Python 3 code that will run on Python 2, so check out the 
+allow you to write Python 3 code that will run on Python 2, so check out the
 Python 3 tutorial.
 
 ```python
@@ -301,6 +301,9 @@ filled_dict.keys()   # => ["three", "two", "one"]
 filled_dict.values()   # => [3, 2, 1]
 # Note - Same as above regarding key ordering.
 
+# Get all key-value pairs as a list of tuples with "items()"
+filled_dicts.items()    # => [("one", 1), ("two", 2), ("three", 3)]
+
 # Check for existence of keys in a dictionary with "in"
 "one" in filled_dict   # => True
 1 in filled_dict   # => False
@@ -546,6 +549,10 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 [add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]   # => [6, 7]
 
+# You can construct set and dict comprehensions as well.
+{x for x in 'abcddeef' if x in 'abc'}  # => {'d', 'e', 'f'}
+{x: x**2 for x in range(5)}  # => {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+
 
 ####################################################
 ## 5. Classes
@@ -665,38 +672,65 @@ import math
 dir(math)
 
 # If you have a Python script named math.py in the same
-# folder as your current script, the file math.py will 
-# be loaded instead of the built-in Python module. 
+# folder as your current script, the file math.py will
+# be loaded instead of the built-in Python module.
 # This happens because the local folder has priority
-# over Python's built-in libraries. 
+# over Python's built-in libraries.
 
 
 ####################################################
 ## 7. Advanced
 ####################################################
 
-# Generators help you make lazy code
+# Generators
+# A generator "generates" values as they are requested instead of storing
+# everything up front
+
+# The following method (*NOT* a generator) will double all values and store it
+# in `double_arr`. For large size of iterables, that might get huge!
 def double_numbers(iterable):
+    double_arr = []
+    for i in iterable:
+        double_arr.append(i + i)
+
+# Running the following would mean we'll double all values first and return all
+# of them back to be checked by our condition
+for value in double_numbers(range(1000000)):  # `test_non_generator`
+    print value
+    if value > 5:
+        break
+
+# We could instead use a generator to "generate" the doubled value as the item
+# is being requested
+def double_numbers_generator(iterable):
     for i in iterable:
         yield i + i
 
-# A generator creates values on the fly.
-# Instead of generating and returning all values at once it creates one in each
-# iteration.  This means values bigger than 15 wont be processed in
-# double_numbers.
-# Note xrange is a generator that does the same thing range does.
-# Creating a list 1-900000000 would take lot of time and space to be made.
-# xrange creates an xrange generator object instead of creating the entire list
-# like range does.
-# We use a trailing underscore in variable names when we want to use a name that
-# would normally collide with a python keyword
-xrange_ = xrange(1, 900000000)
-
-# will double all numbers until a result >=30 found
-for i in double_numbers(xrange_):
-    print i
-    if i >= 30:
+# Running the same code as before, but with a generator, now allows us to iterate
+# over the values and doubling them one by one as they are being consumed by
+# our logic. Hence as soon as we see a value > 5, we break out of the
+# loop and don't need to double most of the values sent in (MUCH FASTER!)
+for value in double_numbers_generator(xrange(1000000)):  # `test_generator`
+    print value
+    if value > 5:
         break
+
+# BTW: did you notice the use of `range` in `test_non_generator` and `xrange` in `test_generator`?
+# Just as `double_numbers_generator` is the generator version of `double_numbers`
+# We have `xrange` as the generator version of `range`
+# `range` would return back and array with 1000000 values for us to use
+# `xrange` would generate 1000000 values for us as we request / iterate over those items
+
+# Just as you can create a list comprehension, you can create generator
+# comprehensions as well.
+values = (-x for x in [1,2,3,4,5])
+for x in values:
+    print(x)  # prints -1 -2 -3 -4 -5 to console/terminal
+
+# You can also cast a generator comprehension directly to a list.
+values = (-x for x in [1,2,3,4,5])
+gen_to_list = list(values)
+print(gen_to_list)  # => [-1, -2, -3, -4, -5]
 
 
 # Decorators

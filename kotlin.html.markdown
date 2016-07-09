@@ -5,7 +5,7 @@ contributors:
 filename: LearnKotlin.kt
 ---
 
-Kotlin is a Statically typed programming language for the JVM, Android and the
+Kotlin is a statically typed programming language for the JVM, Android and the
 browser. It is 100% interoperable with Java.
 [Read more here.](https://kotlinlang.org/)
 
@@ -72,7 +72,7 @@ fun helloWorld(val name : String) {
     A variable can be specified as nullable by appending a ? to its type.
     We can access a nullable variable by using the ?. operator.
     We can use the ?: operator to specify an alternative value to use
-    if a variable is null
+    if a variable is null.
     */
     var fooNullable: String? = "abc"
     println(fooNullable?.length) // => 3
@@ -137,7 +137,7 @@ fun helloWorld(val name : String) {
         println("${notOdd(i)} ${notEven(i)} ${notZero(i)} ${notPositive(i)}")
     }
 
-    //The "class" keyword is used to declare classes.
+    // The "class" keyword is used to declare classes.
     class ExampleClass(val x: Int) {
         fun memberFunction(y: Int) : Int {
             return x + y
@@ -194,7 +194,7 @@ fun helloWorld(val name : String) {
     println(fooList.size) // => 3
     println(fooList.first()) // => a
     println(fooList.last()) // => c
-    // elements can be accessed by index
+    // Elements of a list can be accessed by their index.
     println(fooList[1]) // => b
 
     // A mutable list can be created using the "mutableListOf" function.
@@ -213,12 +213,37 @@ fun helloWorld(val name : String) {
     // Map values can be accessed by their key.
     println(fooMap["a"]) // => 8
 
+    /*
+    Sequences represent lazily-evaluated collections.
+    We can create a sequence using the "generateSequence" function.
+    */
+    val fooSequence = generateSequence(1, {it + 1})
+    val x = fooSequence.take(10).toList()
+    println(x) // => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    // An example of using a sequence to generate Fibonacci numbers:
+    fun fibonacciSequence() : Sequence<Long> {
+        var a = 0L
+        var b = 1L
+
+        fun next() : Long {
+            val result = a + b
+            a = b
+            b = result
+            return a
+        }
+
+        return generateSequence(::next)
+    }
+    val y = fibonacciSequence().take(10).toList()
+    println(y) // => [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+
     // Kotlin provides higher-order functions for working with collections.
-    val x = (1..9).map {it * 3}
+    val z = (1..9).map {it * 3}
                   .filter {it < 20}
                   .groupBy {it % 2 == 0}
                   .mapKeys {if (it.key) "even" else "odd"}
-    println(x) // => {odd=[3, 9, 15], even=[6, 12, 18]}
+    println(z) // => {odd=[3, 9, 15], even=[6, 12, 18]}
 
     // A "for" loop can be used with anything that provides an iterator.
     for (c in "hello") {
