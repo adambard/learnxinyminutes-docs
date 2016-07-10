@@ -11,7 +11,10 @@ contributors:
     - ["Rahil Momin", "https://github.com/iamrahil"]
     - ["Gregrory Kielian", "https://github.com/gskielian"]
     - ["Etan Reisner", "https://github.com/deryni"]
-    - ["Jonathan Wang", "https://github.com/Jonathansw"                       ]
+    - ["Jonathan Wang", "https://github.com/Jonathansw"]   
+    - ["Leo Rudberg", "https://github.com/LOZORD"]
+    - ["Betsy Lorton", "https://github.com/schbetsy"]
+    - ["John Detter", "https://github.com/jdetter"]
 filename: LearnBash.sh
 ---
 
@@ -19,6 +22,8 @@ Bash is a name of the unix shell, which was also distributed as the shell for th
 Nearly all examples below can be a part of a shell script or executed directly in the shell.
 
 [Read more here.](http://www.gnu.org/software/bash/manual/bashref.html)
+
+Another recommened link: [The Command Line Crash Course](http://cli.learncodethehardway.org/book/)
 
 ```bash
 #!/bin/bash
@@ -90,6 +95,21 @@ echo "Number of arguments passed to script: $#"
 echo "All arguments passed to script: $@"
 echo "Script's arguments separated into different variables: $1 $2..."
 
+# Now that we know how to echo and use variables,
+# let's learn some of the other basics of bash!
+
+# Getting our current directory is available through the command `pwd`.
+# `pwd` stands for "print working directory".
+# We can also use the builtin variable `$PWD`.
+# Observer that the following are equivalent:
+echo "I'm in $(pwd)" # execs `pwd` and interpolates output
+echo "I'm in $PWD" # interpolates the variable
+
+# If you get too much output in your terminal, or from a script, the command
+# `clear` clears your screen
+clear
+# Ctrl-L also works for clearing output
+
 # Reading a value from input:
 echo "What's your name?"
 read Name # Note that we didn't need to declare a new variable
@@ -138,11 +158,36 @@ ls
 
 # These commands have options that control their execution:
 ls -l # Lists every file and directory on a separate line
+ls -t # Sort the directory contents by last-modified date (descending)
+ls -R # Recursively `ls` this directory and all of its subdirectories
 
 # Results of the previous command can be passed to the next command as input.
 # grep command filters the input with provided patterns. That's how we can list
 # .txt files in the current directory:
 ls -l | grep "\.txt"
+
+# Use `cat` to print files to stdout:
+cat file.txt
+
+# We can also read the file using `cat`:
+Contents=$(cat file.txt)
+echo "START OF FILE\n$Contents\nEND OF FILE"
+
+# Use `cp` to copy files or directories from one place to another.
+# `cp` creates NEW versions of the sources,
+# so editing the copy won't affect the original (and vice versa).
+# Note that it will overwrite the destination if it already exists.
+cp srcFile.txt clone.txt
+cp -r srcDirectory/ dst/ # recursively copy
+
+# Look into `scp` or `sftp` if you plan on exchanging files between computers.
+# `scp` behaves very similarly to `cp`.
+# `sftp` is more interactive.
+
+# Use `mv` to move files or directories from one place to another.
+# `mv` is similar to `cp`, but it deletes the source.
+# `mv` is also useful for renaming files!
+mv s0urc3.txt dst.txt # sorry, l33t hackers...
 
 # Since bash works in the context of a current directory, you might want to 
 # run your command in some other directory. We have cd for changing location:
@@ -152,6 +197,14 @@ cd ..   # go up one directory
 cd /home/username/Documents   # change to specified directory
 cd ~/Documents/..    # still in home directory..isn't it??
 
+# Use subshells to work across directories
+(echo "First, I'm here: $PWD") && (cd someDir; echo "Then, I'm here: $PWD")
+pwd # still in first directory
+
+# Use `mkdir` to create new directories.
+mkdir myNewDir
+# The `-p` flag causes new intermediate directories to be created as necessary.
+mkdir -p myNewDir/with/intermediate/directories
 
 # You can redirect command input and output (stdin, stdout, and stderr).
 # Read from stdin until ^EOF$ and overwrite hello.py with the lines
@@ -191,7 +244,9 @@ echo "#helloworld" | cat > output.out
 echo "#helloworld" | tee output.out >/dev/null
 
 # Cleanup temporary files verbosely (add '-i' for interactive)
+# WARNING: `rm` commands cannot be undone
 rm -v output.out error.err output-and-error.log
+rm -r tempDir/ # recursively delete
 
 # Commands can be substituted within other commands using $( ):
 # The following command displays the number of files and directories in the
@@ -282,6 +337,13 @@ sed -i 's/okay/great/g' file.txt
 grep "^foo.*bar$" file.txt
 # pass the option "-c" to instead print the number of lines matching the regex
 grep -c "^foo.*bar$" file.txt
+# Other useful options are:
+grep -r "^foo.*bar$" someDir/ # recursively `grep`
+grep -n "^foo.*bar$" file.txt # give line numbers
+grep -rI "^foo.*bar$" someDir/ # recursively `grep`, but ignore binary files
+# perform the same initial search, but filter out the lines containing "baz"
+grep "^foo.*bar$" file.txt | grep -v "baz"
+
 # if you literally want to search for the string,
 # and not the regex, use fgrep (or grep -F)
 fgrep "foobar" file.txt
@@ -289,6 +351,11 @@ fgrep "foobar" file.txt
 # trap command allows you to execute a command when a signal is received by your script.
 # Here trap command will execute rm if any one of the three listed signals is received.
 trap "rm $TEMP_FILE; exit" SIGHUP SIGINT SIGTERM
+
+# `sudo` is used to perform commands as the superuser
+$NAME1=$(whoami)
+$NAME2=$(sudo whoami)
+echo "Was $NAME1, then became more powerful $NAME2"
 
 # Read Bash shell builtins documentation with the bash 'help' builtin:
 help
