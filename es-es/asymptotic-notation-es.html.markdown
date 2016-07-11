@@ -168,3 +168,4 @@ definiciones y ejemplos.
 
 * [MIT](http://web.mit.edu/16.070/www/lecture/big_o.pdf)
 * [KhanAcademy](https://www.khanacademy.org/computing/computer-science/algorithms/asymptotic-notation/a/asymptotic-notation)
+* [Apuntes Facultad de Ingeniería](https://www.scribd.com/document/317979564/Apuntes-Sobre-Analisis-de-Algoritmos)
