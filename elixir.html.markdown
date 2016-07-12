@@ -3,6 +3,7 @@ language: elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
+    - ["Ryan Plant", "https://github.com/ryanplant-au"]
 filename: learnelixir.ex
 ---
 
@@ -95,6 +96,14 @@ string.
 1..10 #=> 1..10
 lower..upper = 1..10 # Can use pattern matching on ranges as well
 [lower, upper] #=> [1, 10]
+
+# Maps are key-value pairs
+genders = %{"david" => "male", "gillian" => "female"}
+genders["david"] #=> "male"
+
+# Maps with atom keys can be used like this
+genders = %{david: "male", gillian: "female"}
+genders.gillian #=> "female"
 
 ## ---------------------------
 ## -- Operators
@@ -407,6 +416,23 @@ send pid, {:circle, 2}
 
 # The shell is also a process, you can use `self` to get the current pid
 self() #=> #PID<0.27.0>
+
+## ---------------------------
+## -- Agents
+## ---------------------------
+
+# An agent is a process that keeps track of some changing value
+
+# Create an agent with `Agent.start_link`, passing in a function
+# The initial state of the agent will be whatever that function returns
+{ok, my_agent} = Agent.start_link(fn -> ["red, green"] end)
+
+# `Agent.get` takes an agent name and a `fn` that gets passed the current state
+# Whatever that `fn` returns is what you'll get back
+Agent.get(my_agent, fn colors -> colors end) #=> ["red, "green"]
+
+# Update the agent's state the same way
+Agent.update(my_agent, fn colors -> ["blue" | colors] end)
 ```
 
 ## References
