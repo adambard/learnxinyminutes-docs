@@ -20,7 +20,7 @@ Multi-line comments look like this
 */
 
 // XCode supports pragma mark directive that improve jump bar readability
-#pragma mark Navigation Functions // New tag o@"Third number = %@", thirdNumber); // prin jump bar named 'Navigation Functions'
+#pragma mark Navigation Functions // New tag on jump bar named 'Navigation Functions'
 #pragma mark - Navigation Functions // Same tag, now with a separator
 
 // Imports the Foundation headers with #import
