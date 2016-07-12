@@ -15,7 +15,6 @@ contributors:
   - ["Gabriel Halley", "https://github.com/ghalley"]
   - ["Persa Zula", "http://persazula.com"]
   - ["Jake Faris", "https://github.com/farisj"]
-  - ["Ryan Plant", "http://github.com/ryanplant-au"]
 ---
 
 ```ruby
