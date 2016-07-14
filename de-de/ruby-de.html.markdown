@@ -144,7 +144,7 @@ x #=> 10
 y #=> 10
 ```
 ## Benennung
-### Konvention ist snake_case 
+### Konvention ist snake_case
 ```
 snake_case = true
 ```
@@ -154,9 +154,9 @@ path_to_project_root = '/good/name/'
 path = '/bad/name/'
 ```
 # Symbols (sind auch Objekte)
-Symbols sind unveränderliche, wiederverwendbare Konstanten, welche intern  
-als integer repräsentiert werden. Sie werden häufig anstelle von Strings  
-verwendet, um sinnvoll Werte zu übermitteln.  
+Symbols sind unveränderliche, wiederverwendbare Konstanten, welche intern
+als integer repräsentiert werden. Sie werden häufig anstelle von Strings
+verwendet, um sinnvoll Werte zu übermitteln.
 Symbols werden mit dem Doppelpunkt gekennzeichnet.
 
 ```
@@ -217,7 +217,7 @@ array.push(6) #=> [1, 2, 3, 4, 5, 6]
 array.include?(1) #=> true
 ```
 
-# Hashes 
+# Hashes
 Hashes sind das Hauptfeature um Key/Values zu speichern
 
 ## Ein Hash anlegen
@@ -230,7 +230,7 @@ hash.keys #=> ['color', 'number']
 ```
 hash['color'] #=> 'green'
 hash['number'] #=> 5
-hash['nothing here'] #=> nil 
+hash['nothing here'] #=> nil
 // Fragen für einen Hash, der nicht existiert liefert nil:
 ```
 
@@ -268,8 +268,8 @@ for counter in 1..5
 end
 ```
 ## Stattdessen: "each" Methode und einen Bloch übergeben
-Ein Block ist ein Codeteil, den man einer Methode übergeben kann  
-Ähnelt stark lambdas, anonymen Funktionen oder Closures in anderen  
+Ein Block ist ein Codeteil, den man einer Methode übergeben kann
+Ähnelt stark lambdas, anonymen Funktionen oder Closures in anderen
 Programmiersprachen.
 
 ```
@@ -359,7 +359,7 @@ def double(x)
   x * 2
 end
 ```
-## Funktionen (und Blocks) 
+## Funktionen (und Blocks)
 ## geben implizit den Wert des letzten Statements zurück
 ```
 double(2) #=> 4
@@ -603,7 +603,7 @@ Something.new.qux # => 'qux'
 
 ## Weiterführende Hinweise
 
-//EN  
+//EN
 
 - [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - A variant of this reference with in-browser challenges.
 - [Official Documentation](http://www.ruby-doc.org/core-2.1.1/)
