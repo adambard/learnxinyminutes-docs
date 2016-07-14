@@ -6,6 +6,7 @@ contributors:
     - ["Dominic Bou-Samra", "http://dbousamra.github.com"]
     - ["Geoff Liu", "http://geoffliu.me"]
     - ["Ha-Duong Nguyen", "http://reference-error.org"]
+    - ["Christian Albrecht", "https://github.com/coastalchief"]
 ---
 
 Scala - the scalable language
@@ -421,8 +422,63 @@ val otherGeorge = george.copy(phoneNumber = "9876")
 // And many others. Case classes also get pattern matching for free, see below.
 
 
-// Traits coming soon!
+// Traits
+Traits are somewhat similar to Java interfaces. With traits you define  
+a type and method signatures. Other than Java interfaces, Scala allows  
+you to mix method signatures with method implementations.  
+Parameters for constructors are not allowed.  
+Traits can inherit from other traits or classes, but only if they have  
+no parameters.  
+```
+trait Bird {
+	def breed: String
+	def color: String
+	def saySomething: String = "tweet"
+	def canFly: Boolean
+}
+class Duck extends Bird{
+	val breed = "bird"
+	val color = "green"
+	def canFly = true
+}
+```
+  
+```
+scala> var d = new Duck
+d: Duck = Duck@38c6f217  
+scala> d.breed
+res1: String = bird 
+scala> d.saySomething
+res0: String = tweet 
+scala> d.canFly
+res1: Boolean = true 
+```
 
+// Traits could be used via Mixins (Keyword "with")  
+```
+trait Sound {
+	def saySomething: String = "tweet tweet"
+}
+trait Bird {
+	def breed: String
+	def color: String
+	def canFly: Boolean
+}
+class Duck extends Bird with Sound{
+	val breed = "bird"
+	val color = "green"
+	def canFly = true
+}
+```
+  
+```
+scala> var d = new Duck
+d: Duck = Duck@3febb011
+scala> d.canFly
+res0: Boolean = true
+scala> d.saySomething
+res1: String = tweet tweet
+```
 
 /////////////////////////////////////////////////
 // 6. Pattern Matching
