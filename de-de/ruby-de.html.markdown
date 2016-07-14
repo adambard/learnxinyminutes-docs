@@ -231,7 +231,7 @@ hash.keys #=> ['color', 'number']
 hash['color'] #=> 'green'
 hash['number'] #=> 5
 hash['nothing here'] #=> nil
-// Fragen für einen Hash, der nicht existiert liefert nil:
+// Fragen an einen Hash nach einem Schlüssel, der nicht existiert, ruft nil hervor:
 ```
 
 ##  Symbols können auch keys sein
