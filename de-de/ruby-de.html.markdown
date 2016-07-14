@@ -11,9 +11,9 @@ contributors:
   - ["Dzianis Dashkevich", "https://github.com/dskecse"]
   - ["Levi Bostian", "https://github.com/levibostian"]
   - ["Rahil Momin", "https://github.com/iamrahil"]
-  - ["Dennis Keller", "https://github.com/denniskeller"]
 translators:
   - ["Christian Albrecht", "https://github.com/coastalchief"]
+  - ["Dennis Keller", "https://github.com/denniskeller"]
 filename: ruby-de.rb
 lang: de-de
 ---
