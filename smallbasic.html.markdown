@@ -37,25 +37,6 @@ WHILE J>0
  J--
 WEND
 
-REM Display lines and pixels
-At 0,ymax/2+txth("Q")
-Color 1: ? "sin(x)":
-Color 8: ? "cos(x)":
-Color 12: ? "tan(x)"
-Line 0,ymax/2,xmax,ymax/2
-For i=0 to xmax
-  Pset i,ymax/2-sin(i*2*pi/ymax)*ymax/4 color 1
-  Pset i,ymax/2-cos(i*2*pi/ymax)*ymax/4 color 8
-  Pset i,ymax/2-tan(i*2*pi/ymax)*ymax/4 color 12
-Next
-Pause
-
-REM User defined functions
-func add2(x,y)
-  add2=x+y
-end
-Print add2(5,5)
-
 REM Select case statement
 Select Case "Cool"
  Case "null", 1,2,3,4,5,6,7,8,"Cool","blah"
@@ -73,10 +54,37 @@ Catch err
   Print "failed to open"
 End Try
 
+REM User defined subs and functions
+func add2(x,y)
+  ' variables may be declared as local within the scope of a SUB or FUNC
+  local K
+  k = "k will cease to exist when this FUNC returns"
+  add2=x+y
+end
+Print add2(5,5)
+sub print_it(it)
+  print it
+end
+print_it "IT...."
+
+REM Display lines and pixels
+At 0,ymax/2+txth("Q")
+Color 1: ? "sin(x)":
+Color 8: ? "cos(x)":
+Color 12: ? "tan(x)"
+Line 0,ymax/2,xmax,ymax/2
+For i=0 to xmax
+  Pset i,ymax/2-sin(i*2*pi/ymax)*ymax/4 color 1
+  Pset i,ymax/2-cos(i*2*pi/ymax)*ymax/4 color 8
+  Pset i,ymax/2-tan(i*2*pi/ymax)*ymax/4 color 12
+Next
+showpage
+
 REM SmallBASIC is great for experimenting with fractals and other interesting effects
+Delay 3000
 Randomize
 ff = 440.03
-For j = 0 to 1000
+For j = 0 to 20
   r = rnd * 1000 % 255
   b = rnd * 1000 % 255
   g = rnd * 1000 % 255
@@ -91,7 +99,6 @@ For j = 0 to 1000
       showpage
     fi
   next
-  cls
 Next j
 
 REM For computer historians, SmallBASIC can run programs
@@ -100,6 +107,8 @@ REM found in early computer books and magazines, for example:
 20 LET B=7
 30 PRINT A*B
 40 PRINT A/B
+
+PAUSE
 
 ```
 
