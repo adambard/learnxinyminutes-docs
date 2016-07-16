@@ -13,9 +13,9 @@ SmallBASIC is a fast and easy to learn BASIC language interpreter ideal for ever
 
 SmallBASIC was originally developed by Nicholas Christopoulos in late 1999 for the Palm Pilot. Project development has been continued by Chris Warren-Smith since around 2005.
 
-Versions of SmallBASIC have been made for a number of early hand held devices including Franklin eBookman and the Nokia 770. Also various desktop releases have been released based on a variety of GUI tool-kits, some of which have become defunct. The current supported platforms are Linux and Windows based on SDL2 and Android based on NDK.
+Versions of SmallBASIC have been made for a number of early hand held devices including Franklin eBookman and the Nokia 770. Also various desktop versions have been released based on a variety of GUI tool-kits, some of which have become defunct. The current supported platforms are Linux and Windows based on SDL2 and Android based on NDK. A desktop command line version is also available, although not typically released in binary form.
 
-In late 2000's a large corporation released a BASIC like programming environment with a similar sounding name. SmallBASIC is not related to this other project.
+In around 2008 a large corporation released a BASIC like programming environment with a similar sounding name. SmallBASIC is not related to this other project.
 
 ```
 REM This is a comment
@@ -107,6 +107,13 @@ REM found in early computer books and magazines, for example:
 20 LET B=7
 30 PRINT A*B
 40 PRINT A/B
+
+REM SmallBASIC also has support for a few modern concepts such as JSON
+aa = array("{\"cat\":{\"name\":\"harry\"},\"pet\":\"true\"}")
+If (ismap(aa) == false) Then
+  throw "not an map"
+End If
+Print aa
 
 PAUSE
 
