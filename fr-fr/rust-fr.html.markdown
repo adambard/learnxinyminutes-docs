@@ -10,13 +10,13 @@ lang: fr-fr
 
 Rust est un langage de programmation développé par Mozilla Research. Rust combine le contrôle de bas niveau sur la performance avec la commodité et la sécurité garanties de haut niveau.
 
-Il atteint ces objectifs sans avoir besoin d'un collecteur d'ordures ou de l'exécution, ce qui rend possible l'utilisation de bibliothèques Rust comme un "remplacement drop-in" pour C.
+Il atteint ces objectifs sans avoir besoin d'un ramasse-miettes ou environnement d'exécution, ce qui rend possible l'utilisation de bibliothèques Rust comme une substitution directe pour C.
 
-La première version de Rust, 0.1, a eu lieu en Janvier 2012, et pendant trois ans de développement déplacé si rapidement que, jusqu'à récemment, l'utilisation de versions stables a été découragé et à la place du conseil général était d'utiliser nightly builds.
+La première version de Rust, 0.1, est sortie en janvier 2012 et a tellement évolué rapidement que jusqu'à récemment, l'utilisation de versions stables était déconseillée - à la place ce était conseillé d'utiliser les nightly builds.
 
 Le 15 mai 2015, Rust 1.0 a été libéré avec une garantie complète de compatibilité ascendante. Améliorations aux temps de compilation et d'autres aspects du compilateur sont actuellement disponibles dans la nightly builds. Rust a adopté un modèle de libération à bord du train avec les versions régulières toutes les six semaines. Rust 1.1 beta a été mis à la disposition dans le même temps de la libération de Rust 1.0.
 
-Bien que Rust est un langage relativement bas niveau, Rust a quelques concepts fonctionnels qui se trouvent généralement dans les langues de niveau supérieur. Cela rend la rouille non seulement rapide, mais aussi facile et efficace de code.
+Bien que Rust soit un langage relativement bas niveau, Rust a quelques concepts fonctionnels qui se trouvent généralement dans les langues de niveau supérieur. Cela rend Rust non seulement rapide, mais aussi efficace et facile à coder.
 
 ```rust
 // Ceci est un commentaire. commentaires de ligne ressemblent à ceci ...
