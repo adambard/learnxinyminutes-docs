@@ -46,7 +46,7 @@ program example   !declare a program called example.
     integer :: i,j,k=1,m
     real, parameter :: PI = 3.1415926535897931    !declare a constant.
     logical :: y = .TRUE. , n = .FALSE.    !boolean type.
-    complex :: w = (0,1)    ! sqrt(-1)
+    complex :: w = (0,1)    !sqrt(-1)
     character (len=3) :: month    !string of 3 characters.
     
     real :: array(6)     !declare an array of 6 reals.
@@ -108,7 +108,7 @@ program example   !declare a program called example.
       b = 5 !execution block must be on a new line.
     else
       b = 10
-    end if ! end statement needs the 'if' (or can use 'endif').
+    end if !end statement needs the 'if' (or can use 'endif').
 
 
     if (.NOT. (x < c .AND. v >= a .OR. z == z)) then   !boolean operators.
@@ -120,9 +120,9 @@ program example   !declare a program called example.
 
     i = 20
     select case (i)
-      case (0)    !case i == 0 
+      case (0)    !case i == 0
         j=0
-      case (1:10)    !cases i is 1 to 10 inclusive
+      case (1:10)    !cases i is 1 to 10 inclusive.
         j=1
       case (11:)    !all cases where i>=11
         j=2
@@ -163,7 +163,7 @@ program example   !declare a program called example.
     array2d =  reshape([1.0,2.0,3.0,4.0,5.0,6.0], [3,2])
     
     ! Fortran counts from 1 
-    ! (by default but can be defined different for specific arrays).
+    ! (by default but can be defined differently for specific arrays).
     v = array(1)    !take first element of array.
     v = array2d(2,2)
     
@@ -209,8 +209,8 @@ program example   !declare a program called example.
     print "(I6.4)", 3    !prints '  0003' 
     print "(F6.3)", 4.32    !prints ' 4.320'
     
-    ! The letter indicates the expected type and the number after gives the 
-    ! number of characters to use for printing the value.
+    ! The letter indicates the expected type and the number afterwards gives 
+    ! the number of characters to use for printing the value.
     ! Letters can be I (integer), F (real), E (engineering format), 
     ! L (logical), A (characters) ...
     print "(I3)", 3200    !print '***' since the number doesn't fit.
@@ -226,8 +226,8 @@ program example   !declare a program called example.
 
     ! To read a file.
     open(unit=11, file="records.txt", status="old") 
-    ! The file is referred to by a 'unit number', an integer that you pick in the 
-    ! range 9:99. Status can be one of {'old','replace','new'}.
+    ! The file is referred to by a 'unit number', an integer that you pick in
+    ! the range 9:99. Status can be one of {'old','replace','new'}.
     read(unit=11, fmt="(3F10.2)") a, b, c
     close(11)
 
@@ -236,14 +236,15 @@ program example   !declare a program called example.
     write(12, "(F10.2,F10.2,F10.2)") c, b, a
     close(12)
 
-    ! There are more advanced features available than discussed here and alternative
+    ! There are more features available than discussed here and alternative 
     ! variants due to backwards compatability with older Fortran versions.  
     
     
     ! Built-in Functions
     ! ==================
 
-    ! Fortran has around 200 functions/subroutines intrinsic to the language. 
+    ! Fortran has around 200 functions/subroutines intrinsic to the language.
+    ! Examples - 
     call cpu_time(v)    !sets 'v' to a time in seconds.
     k = ior(i,j)    !bitwise OR of 2 integers.
     v = bessel_j0(x)    !Bessel function of the first kind of order 0.
@@ -257,15 +258,15 @@ program example   !declare a program called example.
     ! A subroutine runs some code on some input values and can cause
     ! side-effects or modify the input values.
     
-    call routine(a,c,v)    !subroutine call
+    call routine(a,c,v)    !subroutine call.
     
     ! A function takes a list of input parameters and returns a single value.
     ! However the input parameters may still be modified and side effects 
     ! ennacted.
     
-    m = func(3,2,k)  !function call
+    m = func(3,2,k)  !function call.
     
-    !Function calls can also be evoked within expressions.
+    ! Function calls can also be evoked within expressions.
     Print *, func2(3,2,k) 
     
     ! A pure function is a function that doesn't modify its input parameters
@@ -292,9 +293,9 @@ contains ! Zone for defining sub-programs internal to the program.
     function func2(a,b,c) result(f)    !return variable declared to be 'f'.
         implicit none
         integer, intent(in) :: a,b    !can declare and enforce that variables 
-                                      !are not modified by function.
+                                      !are not modified by the function.
         integer, intent(inout) :: c
-        integer :: f     !function return type declared inside function.
+        integer :: f     !function return type declared inside the function.
         integer :: cnt = 0    !GOTCHA - initialisation implies variable is
                               !saved between function calls.
         f = a + b - c
@@ -325,7 +326,7 @@ end program example   ! End of Program Definition -----------------------
 ! Functions and Subroutines declared externally to the program listing need 
 ! to be declared to the program using an Interface declaration (even if they
 ! are in the same source file!) (see below). It is easier to define them within
-! the contains section of a module or program.
+! the 'contains' section of a module or program.
 
 elemental real function func4(a) result(res)
 ! An elemental function is a Pure function that takes a scalar input variable
@@ -357,24 +358,24 @@ module fruity
     implicit none    !comes after module imports.
 
     private    !make things private to the module (default is public).
-    !declare some variables/functions explicitly public
+    ! Declare some variables/functions explicitly public.
     public :: apple,mycar,create_mycar
-    !declare some variables/functions private to module -redundant in this case.
+    ! Declare some variables/functions private to the module (redundant here).
     private :: func4
     
     ! Interfaces
     ! ==========
-    ! Explicitly declare an external function/procedure within the module.
-    ! (better in general to put functions/procedures in the 'contains' section)
+    ! Explicitly declare an external function/procedure within the module
+    ! (better in general to put functions/procedures in the 'contains' section).
     interface
         elemental real function func4(a) result(res)
             real, intent(in) :: a
         end function func4
     end interface
     
-    ! Overloaded functions can be defined using named interfaces
+    ! Overloaded functions can be defined using named interfaces.
     interface myabs
-    ! Can use following special keyword for including functions already defined
+    ! Can use 'module procedure' keyword to include functions already defined
     ! within the module.
     module procedure real_abs, complex_abs
     end interface 
@@ -384,8 +385,8 @@ module fruity
     ! Can create custom structured data collections.
     type car
         character (len=100) :: model
-        real :: weight    ! (kg)
-        real :: dimensions(3)    !i.e. length-width-height (metres)
+        real :: weight    !(kg)
+        real :: dimensions(3)    !i.e. length-width-height (metres).
         character :: colour
     end type car
     
@@ -397,15 +398,15 @@ module fruity
 contains
 
     subroutine create_mycar(mycar)
-        !demonstrates usage of a derived data type.
+        ! Demonstrates usage of a derived data type.
         implicit none
         type(car),intent(out) :: mycar
         
-        !access type elements using '%' operator.
+        ! Access type elements using '%' operator.
         mycar%model = "Ford Prefect"
         mycar%colour = 'r'
         mycar%weight = 1400
-        mycar%dimensions(1) = 5.0    ! remember that default indexing starts from 1.
+        mycar%dimensions(1) = 5.0    !default indexing starts from 1!
         mycar%dimensions(2) = 3.0
         mycar%dimensions(3) = 1.5
         
