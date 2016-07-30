@@ -190,7 +190,7 @@ end
 --------------------------------------------------------------------------------
 
 -- A table can have a metatable that gives the table operator-overloadish
--- behaviour. Later we'll see how metatables support js-prototypey behaviour.
+-- behaviour. Later we'll see how metatables support js-prototype behaviour.
 
 f1 = {a = 1, b = 2}  -- Represents the fraction a/b.
 f2 = {a = 2, b = 3}
