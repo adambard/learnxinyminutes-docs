@@ -15,7 +15,7 @@ Fortran2015.
 
 This overview will discuss the features of Fortran 95 since it is the most
 widely implemented of the more recent specifications and the later versions are
-largely similar (whereas comparison FORTRAN 77 is a very different language).
+largely similar (by comparison FORTRAN 77 is a very different language).
 
 ```fortran
 
