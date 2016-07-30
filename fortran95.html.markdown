@@ -262,7 +262,7 @@ program example   !declare a program called example.
     
     ! A function takes a list of input parameters and returns a single value.
     ! However the input parameters may still be modified and side effects 
-    ! ennacted.
+    ! executed.
     
     m = func(3,2,k)  !function call.
     
