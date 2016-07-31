@@ -3,6 +3,7 @@ language: less
 filename: learnless.less
 contributors:
   - ["Saravanan Ganesh", "http://srrvnn.me"]
+  - ["Tiaan du Plessis", "https://github.com/tidupls"]
 ---
 
 Less is a CSS pre-processor, that adds features such as variables, nesting, mixins and more.
@@ -24,8 +25,8 @@ Less (and other preprocessors, such as [Sass](http://sass-lang.com/) help develo
 /* You can store a CSS value (such as a color) in a variable.
 Use the '@' symbol to create a variable. */
 
-@primary-color: #A3A4FF;
-@secondary-color: #51527F;
+@primary-color: #a3a4ff;
+@secondary-color: #51527f; 
 @body-font: 'Roboto', sans-serif;
 
 /* You can use the variables throughout your stylesheet.
@@ -39,7 +40,7 @@ body {
 
 /* This would compile to: */
 body {
-	background-color: #A3A4FF;
+	background-color: #a3a4ff;
 	color: #51527F;
 	font-family: 'Roboto', sans-serif;
 }
@@ -86,7 +87,7 @@ div {
 	margin-right: auto;
 	left: 0;
 	right: 0;
-	background-color: #A3A4FF;
+	background-color: #a3a4ff;
 }
 
 /* You can omit the mixin code from being compiled by adding parenthesis
@@ -112,95 +113,8 @@ div {
   margin-right: auto;
   left: 0;
   right: 0;
-  background-color: #A3A4FF;
+  background-color: #a3a4ff;
 }
-
-
-/*Functions
-==============================*/
-
-
-
-/* Less provides functions that can be used to accomplish a variety of
-   tasks. Consider the following */
-
-/* Functions can be invoked by using their name and passing in the
-   required arguments */
-body {
-  width: round(10.25px);
-}
-
-.footer {
-  background-color: fadeout(#000000, 0.25)
-}
-
-/* Compiles to: */
-
-body {
-  width: 10px;
-}
-
-.footer {
-  background-color: rgba(0, 0, 0, 0.75);
-}
-
-/* You may also define your own functions. Functions are very similar to
-   mixins. When trying to choose between a function or a mixin, remember
-   that mixins are best for generating CSS while functions are better for
-   logic that might be used throughout your Less code. The examples in
-   the Math Operators' section are ideal candidates for becoming a reusable
-   function. */
-
-/* This function will take a target size and the parent size and calculate
-   and return the percentage */
-
-.average(@x, @y) {
-  @average_result: ((@x + @y) / 2);
-}
-
-div {
-  .average(16px, 50px); // "call" the mixin
-  padding: @average_result;    // use its "return" value
-}
-
-/* Compiles to: */
-
-div {
-  padding: 33px;
-}
-
-/*Extend (Inheritance)
-==============================*/
-
-
-
-/*Extend is a way to share the properties of one selector with another. */
-
-.display {
-  height: 50px;
-}
-
-.display-success {
-  &:extend(.display);
-	border-color: #22df56;
-}
-
-/* Compiles to: */
-.display,
-.display-success {
-  height: 50px;
-}
-.display-success {
-  border-color: #22df56;
-}
-
-/* Extending a CSS statement is preferable to creating a mixin
-   because of the way it groups together the classes that all share
-   the same base styling. If this was done with a mixin, the properties
-   would be duplicated for each statement that
-   called the mixin. While it won't affect your workflow, it will
-   add unnecessary bloat to the files created by the Less compiler. */
-
 
 
 /*Nesting
@@ -215,7 +129,7 @@ ul {
 	margin-top: 2em;
 
 	li {
-		background-color: #FF0000;
+		background-color: #f00;
 	}
 }
 
@@ -261,6 +175,99 @@ ul li a {
   color: white;
 }
 
+
+/*Functions
+==============================*/
+
+
+
+/* Less provides functions that can be used to accomplish a variety of
+   tasks. Consider the following */
+
+/* Functions can be invoked by using their name and passing in the
+   required arguments */
+body {
+  width: round(10.25px);
+}
+
+.header {
+	background-color: lighten(#000, 0.5);
+}
+
+.footer {
+  background-color: fadeout(#000, 0.25)
+}
+
+/* Compiles to: */
+
+body {
+  width: 10px;
+}
+
+.header {
+  background-color: #010101;
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+/* You may also define your own functions. Functions are very similar to
+   mixins. When trying to choose between a function or a mixin, remember
+   that mixins are best for generating CSS while functions are better for
+   logic that might be used throughout your Less code. The examples in
+   the Math Operators' section are ideal candidates for becoming a reusable
+   function. */
+
+/* This function will take a target size and the parent size and calculate
+   and return the percentage */
+
+.average(@x, @y) {
+  @average-result: ((@x + @y) / 2);
+}
+
+div {
+  .average(16px, 50px); // "call" the mixin
+  padding: @average-result;    // use its "return" value
+}
+
+/* Compiles to: */
+
+div {
+  padding: 33px;
+}
+
+/*Extend (Inheritance)
+==============================*/
+
+
+
+/*Extend is a way to share the properties of one selector with another. */
+
+.display {
+  height: 50px;
+}
+
+.display-success {
+  &:extend(.display);
+	border-color: #22df56;
+}
+
+/* Compiles to: */
+.display,
+.display-success {
+  height: 50px;
+}
+.display-success {
+  border-color: #22df56;
+}
+
+/* Extending a CSS statement is preferable to creating a mixin
+   because of the way it groups together the classes that all share
+   the same base styling. If this was done with a mixin, the properties
+   would be duplicated for each statement that
+   called the mixin. While it won't affect your workflow, it will
+   add unnecessary bloat to the files created by the Less compiler. */
 
 
 /*Partials and Imports
@@ -365,7 +372,9 @@ body {
 
 ## Practice Less
 
-If you want to play with Less in your browser, check out [LESS2CSS](http://lesscss.org/less-preview/).
+If you want to play with Less in your browser, check out:
+* [Codepen](http://codepen.io/)
+* [LESS2CSS](http://lesscss.org/less-preview/)
 
 ## Compatibility
 
@@ -377,3 +386,4 @@ with your target browsers.
 
 ## Further reading
 * [Official Documentation](http://lesscss.org/features/)
+* [Less CSS - Beginner's Guide](http://www.hongkiat.com/blog/less-basic/)
