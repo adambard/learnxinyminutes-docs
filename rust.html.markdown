@@ -88,9 +88,10 @@ fn main() {
     let s: String = "hello world".to_string();
 
     // A string slice – an immutable view into another string
-    // This is basically an immutable pointer to a string – it doesn’t
+    // This is basically an immutable pair of pointers to a string – it doesn’t
     // actually contain the contents of a string, just a pointer to
-    // something that does (in this case, `s`)
+    // the begin and a pointer to the end of a string buffer,
+    // statically allocated or contained in another object (in this case, `s`)
     let s_slice: &str = &s;
 
     println!("{} {}", s, s_slice); // hello world hello world
