@@ -808,8 +808,8 @@ void doSomethingWithAFile(const std::string& filename)
 // have default comparators, but you can override it.
 class Foo {
 public:
-	int j;
-	Foo(int a) : j(a) {}
+    int j;
+    Foo(int a) : j(a) {}
 };
 struct compareFunction {
     bool operator()(const Foo& a, const Foo& b) const {
@@ -948,7 +948,7 @@ f1 = f2;
 
 #include<tuple>
 
-// Conceptually, Tuples are similar to  old data structures (C-like structs) but instead of having named data members ,
+// Conceptually, Tuples are similar to  old data structures (C-like structs) but instead of having named data members,
 // its elements are accessed by their order in the tuple.
 
 // We start with constructing a tuple.
@@ -958,10 +958,10 @@ const int maxN = 1e9;
 const int maxL = 15;
 auto second = make_tuple(maxN, maxL);
 
-// printing elements of 'first' tuple
+// Printing elements of 'first' tuple
 cout << get<0>(first) << " " << get<1>(first) << "\n"; //prints : 10 A
 
-// printing elements of 'second' tuple
+// Printing elements of 'second' tuple
 cout << get<0>(second) << " " << get<1>(second) << "\n"; // prints: 1000000000 15
 
 // Unpacking tuple into variables
@@ -989,43 +989,43 @@ cout << get<5>(concatenated_tuple) << "\n"; // prints: 'A'
 
 
 /////////////////////
-// CONTAINERS
+// Containers
 /////////////////////
 
-// Containers or the Standard Template Library are some predefined templates
-// They  manages the storage space for its elements and provide
-// member functions to access and manipulate them
+// Containers or the Standard Template Library are some predefined templates.
+// They manage the storage space for its elements and provide
+// member functions to access and manipulate them.
 
-// Few containers are as follows:-
+// Few containers are as follows:
 
-// Vectors (Dynamic arrays)
+// Vector (Dynamic array)
 // Allow us to Define the Array or list of objects at run time
-#include<vector>  // will include the header file for vector
-vector< Data_Type > Vector_name; // used to initialize the vector
-cin>>val;
+#include<vector>
+vector<Data_Type> Vector_name; // used to initialize the vector
+cin >> val;
 Vector_name.push_back(val); // will push the value of variable into array
 
-// To iterate through vector, we have 2 choices
-// using normal looping
+// To iterate through vector, we have 2 choices:
+// Normal looping
 for(int i=0; i<Vector_name.size(); i++)
 // It will iterate through the vector from index '0' till last index
 
-// Using Iterator
+// Iterator
 vector<Data_Type>::iterator it; // initialize the iteartor for vector
 for(it=vector_name.begin(); it!=vector_name.end();++it)
 
 // For accessing the element of the vector
 // Operator []
-var= vector_name[index]; //will assign value at that index to var
+var = vector_name[index]; // Will assign value at that index to var
 
 
 // Set
-// Sets are containers that store unique elements following a specific order
-// Very useful container to store unique values in sorted order
-// without any other functions or code
+// Sets are containers that store unique elements following a specific order.
+// Set is a very useful container to store unique values in sorted order
+// without any other functions or code.
 
-#include<set>   // Will include the header file for sets
-set< int > ST;  // Will initialize the set of int data type
+#include<set>
+set<int> ST;    // Will initialize the set of int data type
 ST.insert(30);  // Will insert the value 30 in set ST
 ST.insert(10);  // Will insert the value 10 in set ST
 ST.insert(20);  // Will insert the value 20 in set ST
@@ -1037,47 +1037,47 @@ ST.insert(30);  // Will insert the value 30 in set ST
 ST.erase(20);  // Will erase element with value 20
 // Set ST: 10 30
 // To iterate through Set we use iterators
-set< int >::iterator it;
-for(it=ST.begin();it<ST.end();it++)
-{
-	cout<<*it<<endl;
+set<int>::iterator it;
+for(it=ST.begin();it<ST.end();it++) {
+	cout << *it << endl;
 }
-// OUTPUT:
+// Output:
 // 10
 // 30
 
 // To clear the complete container we use Container_name.clear()
 ST.clear();
-cout<<ST.size();  // will print the size of set ST
-// OUTPUT: 0
+cout << ST.size();  // will print the size of set ST
+// Output: 0
 
 // NOTE: for duplicate elements we can use multiset
 
-// MAP
+// Map
 // Maps store elements formed by a combination of a key value
-// and a mapped value, following a specific order
+// and a mapped value, following a specific order.
 
-#include<map>  // Will include the header file for map
-map< char, int >mymap;  // Will initalize the map with key as char and value as int
+#include<map>
+map<char, int> mymap;  // Will initalize the map with key as char and value as int
 
-mymap.insert ( pair<char,int>('A',1) );
+mymap.insert(pair<char,int>('A',1));
 // Will insert value 1 for key A
-mymap.insert ( pair<char,int>('Z',26) );
+mymap.insert(pair<char,int>('Z',26));
 // Will insert value 26 for key Z
 
 // To iterate
 map<char,int>::iterator it;
 for (it=mymap.begin(); it!=mymap.end(); ++it)
-    std::cout << it->first << "->" << it->second <<'\n';
+    std::cout << it->first << "->" << it->second << '\n';
 // Output:
 // A->1
 // Z->26
 
 // To find the value correponsing to a key
 it = mymap.find('Z');
-cout<<it->second;
+cout << it->second;
 
-// OUTPUT: 26
+// Output: 26
+
 
 ///////////////////////////////////
 // Logical and Bitwise operators
@@ -1087,17 +1087,17 @@ cout<<it->second;
 
 // Logical operators
 
-// C++ uses Short - circuit evaluation for boolean expressions, i.e, the second argument is executed or
+// C++ uses Short-circuit evaluation for boolean expressions, i.e, the second argument is executed or
 // evaluated only if the first argument does not suffice to determine the value of the expression
 
 true && false // Performs **logical and** to yield false
 true || false // Performs **logical or** to yield true
-! true // Performs **logcical not** to yield
+! true        // Performs **logical not** to yield false
 
 // Instead of using symbols equivalent keywords can be used
 true and false // Performs **logical and** to yield false
-true or false // Performs **logical or** to yield true
-not true // Performs **logcical not** to yield
+true or false  // Performs **logical or** to yield true
+not true       // Performs **logical not** to yield false
 
 // Bitwise operators
 
@@ -1108,20 +1108,20 @@ not true // Performs **logcical not** to yield
 
 
 // **>>** Right Shift Operator
-// << shifts bits to the right
+// >> shifts bits to the right
 4 >> 1 // Shifts bits of 4 to right by 1 to give 2
-// x << n can be thought as x / 2^n
+// x >> n can be thought as x / 2^n
 
-~4 // Performs a bitwise not
+~4    // Performs a bitwise not
 4 | 3 // Performs bitwise or
 4 & 3 // Performs bitwise and
 4 ^ 3 // Performs bitwise xor
 
 // Equivalent keywords are
-compl 4 // Performs a bitwise not
-4 bitor 3 // Performs bitwise or
+compl 4    // Performs a bitwise not
+4 bitor 3  // Performs bitwise or
 4 bitand 3 // Performs bitwise and
-4 xor 3 // Performs bitwise xor
+4 xor 3    // Performs bitwise xor
 
 
 ```
