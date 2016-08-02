@@ -11,7 +11,7 @@ Translation"). Despite its age, it is still used for high-performance computing
 such as weather prediction. However, the language has changed considerably over
 the years, although mostly maintaining backwards compatibility; well known
 versions are FORTRAN 77, Fortran 90, Fortran 95, Fortran 2003, Fortran 2008 and
-Fortran2015.
+Fortran 2015.
 
 This overview will discuss the features of Fortran 95 since it is the most
 widely implemented of the more recent specifications and the later versions are
@@ -104,7 +104,7 @@ program example   !declare a program called example.
     else if (z .GT. a) then !z greater than a
     ! Text equivalents to symbol operators are .LT. .GT. .LE. .GE. .EQ. .NE.  
       b = 6
-    else if (z <  a) then !'then' must be on this line.
+    else if (z < a) then !'then' must be on this line.
       b = 5 !execution block must be on a new line.
     else
       b = 10
@@ -132,7 +132,7 @@ program example   !declare a program called example.
 
 
     month = 'jan'
-    ! Condition can be integer,logical or character.
+    ! Condition can be integer, logical or character type.
     ! Select constructions can also be named.
     monthly: select case (month)
       case ("jan")
@@ -162,7 +162,7 @@ program example   !declare a program called example.
     arrayb = [10.2,3e3,0.41,4e-5]
     array2d =  reshape([1.0,2.0,3.0,4.0,5.0,6.0], [3,2])
     
-    ! Fortran counts from 1 
+    ! Fortran array indexing starts from 1.
     ! (by default but can be defined differently for specific arrays).
     v = array(1)    !take first element of array.
     v = array2d(2,2)
@@ -375,9 +375,9 @@ module fruity
     
     ! Overloaded functions can be defined using named interfaces.
     interface myabs
-    ! Can use 'module procedure' keyword to include functions already defined
-    ! within the module.
-    module procedure real_abs, complex_abs
+        ! Can use 'module procedure' keyword to include functions already
+        ! defined within the module.
+        module procedure real_abs, complex_abs
     end interface 
         
     ! Derived Data Types
