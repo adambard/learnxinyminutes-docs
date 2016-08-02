@@ -27,7 +27,7 @@ Kotlin程序的入口点是一个"main"函数
 fun main(args: Array<String>) {
     /*
     使用"var"或"val"来声明一个值。
-    "val"声明的值不能被重新赋值，而"vars"声明的值可以。
+    "val"声明的值不能被重新赋值，而"var"声明的值可以。
     */
     val fooVal = 10 // 以后我们不能再次给fooVal赋值
     var fooVar = 10
@@ -53,7 +53,7 @@ fun main(args: Array<String>) {
 
     /*
     原始字符串用三重引号(""")来定义。
-    原始字符串可以包含新的行以及其他任何字符。
+    原始字符串可以包含换行符以及其他任何字符。
     */
     val fooRawString = """
 fun helloWorld(val name : String) {
@@ -73,7 +73,7 @@ fun helloWorld(val name : String) {
     当某个变量的值可以为 null 的时候，我们必须被明确指定它是可为空的。
     在变量声明处的类型后面加上?来标识它是可为空的。
     我们可以用?.操作符来访问可为空的变量。
-    我们可以用?:操作符来指定一个替代值在变量为空的时候使用。
+    我们可以用?:操作符来指定一个在变量为空时使用的替代值。
     */
     var fooNullable: String? = "abc"
     println(fooNullable?.length) // => 3
@@ -96,8 +96,7 @@ fun helloWorld(val name : String) {
     println(hello()) // => Hello, world!
 
     /*
-    用"vararg"关键字来修饰一个函数的参数
-    来允许可变参数传递给该函数
+    用"vararg"关键字来修饰一个函数的参数来允许可变参数传递给该函数
     */
     fun varargExample(vararg names: Int) {
         println("Argument has ${names.size} elements")
@@ -123,7 +122,7 @@ fun helloWorld(val name : String) {
     fun not(f: (Int) -> Boolean) : (Int) -> Boolean {
         return {n -> !f.invoke(n)}
     }
-    // 命名函数可以被指定为参数使用::操作符。
+    // 命名函数可以用::运算符被指定为参数。
     val notOdd = not(::odd)
     val notEven = not(::even)
     // 匿名函数可以被指定为参数。
@@ -286,7 +285,7 @@ fun helloWorld(val name : String) {
     println(result)
 
     /*
-    我们可以通过使用"is"操作符来检查一个对象是否是特定类型的。
+    我们可以通过使用"is"操作符来检查一个对象是否是某个类型的。
     如果对象通过了类型检查那么它可以作为该类型使用而不需要强制转换它。
     */
     fun smartCastExample(x: Any) : Boolean {
@@ -310,7 +309,7 @@ fun helloWorld(val name : String) {
     println(smartCastExample(true)) // => true
 
     /*
-    扩展是用来添加新的功能到一个类的。
+    扩展是用来给一个类添加新的功能的。
     它类似于C#的扩展方法。
     */
     fun String.remove(c: Char): String {
