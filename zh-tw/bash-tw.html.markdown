@@ -239,7 +239,9 @@ echo "#helloworld" | cat > output.out
 echo "#helloworld" | tee output.out >/dev/null
 
 # 清理臨時文件並顯示詳情（增加 '-i' 選項啓用互動模式）
+# 警告： `rm` 指令無法復原
 rm -v output.out error.err output-and-error.log
+rm -r tempDir/ # 遞迴刪除
 
 # 一個指令可用 $( ) 嵌套在另一個指令內部：
 # 以下的指令會印出當前目錄下的目錄和文件總數
