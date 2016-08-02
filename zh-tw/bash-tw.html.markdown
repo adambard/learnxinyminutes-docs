@@ -176,7 +176,6 @@ echo "START OF FILE\n$Contents\nEND OF FILE"
 cp srcFile.txt clone.txt
 cp -r srcDirectory/ dst/ # 遞迴複製
 
-#  `scp` or `sftp` if you plan on exchanging files between computers.
 # 如需在兩台電腦間交換檔案，請查看 `scp` 或 `sftp`。
 # `scp` 與 `cp` 相似。
 # `sftp` 則有更高的互動性（與 `ftp` 相似）。
