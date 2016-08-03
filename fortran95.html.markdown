@@ -148,7 +148,7 @@ program example   !declare a program called example.
     
     ! Goto statement exists but it is heavily discouraged though.
     goto 10    
-    stop 1000   !stops code immediately (returning specified condition code).
+    stop 1    !stops code immediately (returning specified condition code).
 10  j = 201    !this line is labeled as line 10
     
     
