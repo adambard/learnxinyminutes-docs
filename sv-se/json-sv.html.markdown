@@ -81,4 +81,4 @@ Följande datatyper stöds:
 
 ## Fortsatt läsning
 
-* [JSON.org](http://json.org) Allt du kan tänkas vilja veta om JSON, och lite därtill.
+* [JSON.org](http://json.org/json-sv.html) Allt du kan tänkas vilja veta om JSON, och lite därtill.
