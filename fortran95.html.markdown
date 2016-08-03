@@ -42,7 +42,7 @@ program example   !declare a program called example.
 
     real :: v,x    ! WARNING: default initial values are compiler dependent!    
     real :: a = 3, b=2E12, c = 0.01
-    integer :: i,j,k=1,m
+    integer :: i, j, k=1, m
     real, parameter :: PI = 3.1415926535897931    !declare a constant.
     logical :: y = .TRUE. , n = .FALSE.    !boolean type.
     complex :: w = (0,1)    !sqrt(-1)
