@@ -245,7 +245,7 @@ program example   !declare a program called example.
     ! Examples - 
     call cpu_time(v)    !sets 'v' to a time in seconds.
     k = ior(i,j)    !bitwise OR of 2 integers.
-    v = bessel_j0(x)    !Bessel function of the first kind of order 0.
+    v = log10(x)    !log base 10.
     i = floor(b)    !returns the closest integer less than or equal to x.
     v = aimag(w)    !imaginary part of a complex number.
     
