@@ -154,7 +154,8 @@ program example   !declare a program called example.
     
     ! Arrays
     ! ======
-    array = [1,2,3,4,5,6]
+    array = (/1,2,3,4,5,6/)
+    array = [1,2,3,4,5,6]    !using Fortran 2003 notation.
     arrayb = [10.2,3e3,0.41,4e-5]
     array2d =  reshape([1.0,2.0,3.0,4.0,5.0,6.0], [3,2])
     
