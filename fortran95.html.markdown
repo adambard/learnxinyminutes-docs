@@ -21,15 +21,14 @@ largely similar (by comparison FORTRAN 77 is a very different language).
 
 ! This is a comment.
 
-! Code can only exist inside programs, functions, subroutines or modules.
-
-! long lines can be continued using the continuation character '&'
 
 program example   !declare a program called example.
 
-    ! Indentation is not actually required but is recommended.
+    ! Code can only exist inside programs, functions, subroutines or modules.
+    ! Using indentation is not required but it is recommended.
 
-    ! Declaring variables
+
+    ! Declaring Variables
     ! ===================
     
     ! All declarations must come before statements and expressions.
@@ -423,7 +422,9 @@ contains
     
     real function complex_abs(z)
         complex :: z
-        complex_abs = sqrt(real(z)**2 + aimag(z)**2)
+        ! long lines can be continued using the continuation character '&'
+        complex_abs = sqrt(real(z)**2 + &
+                                         aimag(z)**2)
     end function complex_abs
 
 
