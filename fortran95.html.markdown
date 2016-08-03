@@ -86,10 +86,7 @@ program example   !declare a program called example.
     j = 10 + 2 - 3
     a = 11.54  /  (2.3 * 3.1)
     b = 2**3    !exponentiation
-    
-    !an aside:
-    print *, b    !print the variable 'b' to the command line (see I/O section).
-    
+
 
     ! Control Flow Statements & Operators
     ! ===================================
@@ -203,6 +200,8 @@ program example   !declare a program called example.
     ! Input/Output
     ! ============
     
+    print *, b    !print the variable 'b' to the command line
+
     ! We can format our printed output.
     print "(I6)", 320    !prints '   320'
     print "(I6.4)", 3    !prints '  0003' 
