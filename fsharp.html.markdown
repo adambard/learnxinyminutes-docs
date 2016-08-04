@@ -175,7 +175,12 @@ module ListExamples =
     // list comprehensions (aka generators)
     let squares = [for i in 1..10 do yield i * i]
 
-    // prime number generator
+    // A prime number generator
+    // - this is using a short notation for the pattern matching syntax
+    // - (p::xs) is 'first :: tail' of the list, could also be written as p :: xs
+    //   this means this matches 'p' (the first item in the list), and xs is the rest of the list
+    //   this is called the 'cons pattern'
+    // - uses 'rec' keyword, which is necessary when using recursion
     let rec sieve = function
         | (p::xs) -> p :: sieve [ for x in xs do if x % p > 0 then yield x ]
         | []      -> []
