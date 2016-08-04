@@ -176,7 +176,7 @@ module ListExamples =
     let squares = [for i in 1..10 do yield i * i]
 
     // A prime number generator
-    // - this is using a short for the pattern matching syntax
+    // - this is using a short notation for the pattern matching syntax
     // - (p::xs) is 'first :: tail' of the list, could also be written as p :: xs
     //   this means this matches 'p' (the first item in the list), and xs is the rest of the list
     //   this is called the 'cons pattern'
