@@ -3,7 +3,6 @@ language: less
 filename: learnless.less
 contributors:
   - ["Saravanan Ganesh", "http://srrvnn.me"]
-  - ["Tiaan du Plessis", "https://github.com/tidupls"]
 ---
 
 Less is a CSS pre-processor, that adds features such as variables, nesting, mixins and more.
@@ -26,7 +25,7 @@ Less (and other preprocessors, such as [Sass](http://sass-lang.com/) help develo
 Use the '@' symbol to create a variable. */
 
 @primary-color: #a3a4ff;
-@secondary-color: #51527f; 
+@secondary-color: #51527f;
 @body-font: 'Roboto', sans-serif;
 
 /* You can use the variables throughout your stylesheet.
