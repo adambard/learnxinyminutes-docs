@@ -197,6 +197,12 @@ program example   !declare a program called example.
         array = 0
     end where
     
+    ! Implied-DO loops are a compact way to create arrays.
+    array = [ (i, i = 1,6) ]    !creates an array of [1,2,3,4,5,6]
+    array = [ (i, i = 1,12,2) ]    !creates an array of [1,3,5,7,9,11]
+    array = [ (i**2, i = 1,6) ]    !creates an array of  [1,4,9,16,25,36]
+    array = [ ([4,5], i = 1,3) ]    !creates an array of [4,5,4,5,4,5]
+    
 
     ! Input/Output
     ! ============
