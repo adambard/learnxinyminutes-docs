@@ -6,6 +6,7 @@ contributors:
 translators:
     - ["Alexander Salamanca", "https://github.com/alexitosrv"]
 filename: LearnPowershell-es.ps1
+lang: es-es
 ---
 
 PowerShell es el lenguaje de automatización y gestión de configuraciones de Windows hecho por Microsoft basado en .NET Framework. Desde Windows 7 en adelante, esos sistemas operativos incluyen un intérprete de PowerShell.
@@ -13,7 +14,7 @@ Casi todos los ejemplos a continuación pueden ser parte de un script o ejecutad
 
 Una diferencia clave con respecto a Bash es que en PowerShell casi todo son manipulaciones de objetos en vez de análisis sobre flujos de texto plano.
 
-[Leer más acá.](https://technet.microsoft.com/en-us/library/bb978526.aspx)
+[Leer más acá.](https://technet.microsoft.com/en-us/library/bb978526.aspx) (EN)
 
 Si no está seguro sobre el ambiente de ejecución en su sistema:
 
@@ -53,9 +54,9 @@ Acá inicia el tutorial:
 ```
 # Como ya lo notó, los comentarios empiezan con #
 
-# Ejemplo de hola mundo simple:
+# Ejemplo de un simple hola mundo:
 echo Hola mundo!
-# echo es el alias del comando Write-Output (=también se le dice cmdlet)
+# echo es el alias del comando Write-Output (a los comandos también se les dice cmdlets)
 # La mayoría de los cmdlets y funciones siguen la convención de llamarse de la forma: Verbo-Sustantivo
 
 # Cada comando inicia en una nueva línea, o después de un punto y coma:
@@ -66,17 +67,17 @@ $unaCadena ="Algún texto"
 # O así:
 $unNumero = 5 -as [double] 
 $unaLista = 1,2,3,4,5
-$unaCadena = $aList -join '--' # también existe el parámetro -split 
+$unaCadena = $unaLista -join '--' # también existe el parámetro -split 
 $unaTablaHash = @{nom1='val1'; nom2='val2'}
 
 # Uso de variables:
 echo $unaCadena
 echo "Interpolación: $unaCadena"
-echo "`$unaCadena tiene longitud de $($unaCadena.Length)"
+echo "`$unaCadena tiene longitud de $($unaCadena.Length)"  
 echo '$unaCadena'
 echo @"
 Esta es una Here-String
-$unaVariable
+$otraVariable
 "@
 # Note que una ' (comilla simple) no expande las variables!
 # Las Here-Strings también funcionan con comilla simple
@@ -111,13 +112,13 @@ if ($Edad -is [string]) {
 	echo 'Adulto'
 }
 
-# Sentencias switch son más poderosas comparadas con otros lenguajes
+# Sentencias switch de PS son más poderosas comparadas con otros lenguajes
 $val = "20"
 switch($val) {
   { $_ -eq 42 }           { "La respuesta es 42"; break }
   '20'                    { "Exactamente 20"; break }
   { $_ -like 's*' }       { "No distingue entre mayúsculas/minúsculas"; break }
-  { $_ -clike 's*'}       { "clike, ceq, cne para ser diferenciar casos entre mayúsculas/mninúsculas"; break }
+  { $_ -clike 's*'}       { "clike, ceq, cne para ser diferenciar el caso entre mayúsculas/minúsculas"; break }
   { $_ -notmatch '^.*$'}  { "Emparejamiento de expresiones regulares. cnotmatch, cnotlike, ..."; break }
   { 'x' -contains 'x'}    { "FALSO! -contains es para listas!"; break }
   default                 { "Otros" }
@@ -146,10 +147,10 @@ try {} catch [System.NullReferenceException] {
 ### Proveedores
 # Lista de archivos y directorios en la ubicación actual
 ls # o el alias `dir`
-cd ~ # ir a la ruta inicial
+cd ~ # ir al directorio principal del usuario
 
 Get-Alias ls # -> Get-ChildItem
-# Eh!? Esos cmdlets tienen nombres genéricos porque a diferencia de otros lenguajes de scripting,
+# ¿¡Eh!? Estos cmdlets tienen nombres genéricos porque a diferencia de otros lenguajes de scripting,
 # PowerShell no opera únicamente en el directorio actual.
 cd HKCU: # se dirige a la rama HKEY_CURRENT_USER del registro de Windows
 
@@ -196,7 +197,7 @@ ps | Format-Table ID,Name,@{n='VM(MB)';e={'{0:n2}' -f ($_.VM / 1MB)}} -autoSize
 ### Funciones
 # El atributo [string] es opcional.
 function foo([string]$nombre) {
-	echo "Hey $nombre, tome una función"
+	echo "Hey $nombre, aquí tiene una función"
 }
 
 # Llamando una función
@@ -232,30 +233,30 @@ function Crear-SitioWeb() {
 
 
 ### Todo es .NET
-# Una cadena PS es, de hecho, una cadena .NET System.String
-# Todos los métodos y propiedades .NET están disponibles
+# Una cadena PS es, de hecho, una cadena tipo System.String de .NET 
+# Todos los métodos y propiedades de .NET están disponibles
 'cadena'.ToUpper().Replace('E', 'eee')
 # O más powershellezco
 'cadena'.ToUpper() -replace 'E', 'eee'
 
-# Si ¿no recuerda como es que se llama cierto método .NET?
+# ¿No recuerda cómo es que se llama cierto método .NET?
 'cadena' | gm
 
 # Sintaxis para ejecutar métodos .NET estáticos
 [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic')
 
-# Note que las funciones .NET DEBEN ser llamadas usando paréntesis
-# al contrario que las funciones PS, las cuales NO PUEDEN ser llamadas con paréntesis.
-# Si llama una función/cmdlet de PS usando paréntesis,
-# será como si le estuviera pasando un parámetro de lista
-$writer = New-Object System.IO.StreamWriter($path, $true)
+# Nótese que cualquier función que proviene de .NET Framework REQUIERE paréntesis para ser invocada
+# al contrario de las funciones definidas desde PS, las cuales NO PUEDEN ser invocadas con paréntesis.
+# Si se invoca una función/cmdlet de PS usando paréntesis,
+# es equivalente a que le estuviera pasando un parámetro de tipo lista
+$writer = New-Object System.IO.StreamWriter($ruta, $true)
 $writer.Write([Environment]::NewLine)
 $writer.Dispose()
 
 ### Entrada/Salida
 # Leyendo una variable 
 $Nombre = Read-Host "¿Cómo se llama?"
-echo "Hola, $Nombre!"
+echo "¡Hola $Nombre!"
 [int]$Edad = Read-Host "¿Cuál es su edad?"
 
 # Test-Path, Split-Path, Join-Path, Resolve-Path
@@ -277,10 +278,10 @@ Push-Location c:\temp # se cambia el directorio de trabajo a c:\temp
 Pop-Location # revierte el cambio y se devuelve a donde estaba al principio
 # Los aliases son : pushd y popd
 
-# Desbloquear un directorio después de descargarlos
+# Desbloquear un archivo después de descargarlo de Internet
 Get-ChildItem -Recurse | Unblock-File
 
-# Abre Windows Explorer en la ruta actual (usando el alias de Invoke-Item)
+# Abre Windows Explorer en la ruta actual (usando el alias ii de Invoke-Item)
 ii .
 
 # Pulse cualquier tecla para salir
@@ -306,19 +307,19 @@ if (-not (Test-Path $Profile)) {
 	notepad $Profile
 }
 # Más información en: `help about_profiles`
-# Para un shell más productivo, asegúrese de verifivar el proyecto  PSReadLine descrito abajo
+# Para un shell más productivo, asegúrese de verifivar el proyecto PSReadLine descrito abajo
 ```
 
-Proyectos interesantes
+Proyectos interesantes (EN)
 
-* [Channel9](https://channel9.msdn.com/Search?term=powershell%20pipeline#ch9Search&lang-en=en) Tutoriales de PowerShell 
+* [Channel9](https://channel9.msdn.com/Search?term=powershell%20pipeline#ch9Search&lang-en=en) Tutoriales de PowerShell
 * [PSGet](https://github.com/psget/psget) NuGet para PowerShell
 * [PSReadLine](https://github.com/lzybkr/PSReadLine/) Una implementación inspirada en bash para PowerShell (¡Es tan buena que ahora viene con Windows10 por defecto!)
 * [Posh-Git](https://github.com/dahlbyk/posh-git/) Un intérprete bonito de Git (¡Recomendado!)
 * [PSake](https://github.com/psake/psake) Herramienta de automatización de compilaciones
 * [Pester](https://github.com/pester/Pester) Framework de pruebas BDD
 * [Jump-Location](https://github.com/tkellogg/Jump-Location) Powershell `cd` que lee su mente
-* [PowerShell Community Extensions](http://pscx.codeplex.com/) (Abandonado)
+
 
 Material no cubierto en esta guía  
 
