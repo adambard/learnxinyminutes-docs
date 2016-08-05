@@ -53,7 +53,7 @@ Acá inicia el tutorial:
 ```
 # Como ya lo notó, los comentarios empiezan con #
 
-# Simple ejemplo hola mundo:
+# Ejemplo de hola mundo simple:
 echo Hola mundo!
 # echo es el alias del comando Write-Output (=también se le dice cmdlet)
 # La mayoría de los cmdlets y funciones siguen la convención de llamarse de la forma: Verbo-Sustantivo
@@ -62,28 +62,28 @@ echo Hola mundo!
 echo 'Esta es la primer línea'; echo 'Esta es la segunda'
 
 # La declaración de una variable se ve así:
-$aString="Algún texto"
+$unaCadena ="Algún texto"
 # O así:
-$aNumber = 5 -as [double] 
-$aList = 1,2,3,4,5
-$aString = $aList -join '--' # también existe el parámetro -split 
-$aHashtable = @{name1='val1'; name2='val2'}
+$unNumero = 5 -as [double] 
+$unaLista = 1,2,3,4,5
+$unaCadena = $aList -join '--' # también existe el parámetro -split 
+$unaTablaHash = @{nom1='val1'; nom2='val2'}
 
 # Uso de variables:
-echo $aString
-echo "Interpolación: $aString"
-echo "`$aString tiene longitud de $($aString.Length)"
-echo '$aString'
+echo $unaCadena
+echo "Interpolación: $unaCadena"
+echo "`$unaCadena tiene longitud de $($unaCadena.Length)"
+echo '$unaCadena'
 echo @"
 Esta es una Here-String
-$aString
+$unaVariable
 "@
 # Note que una ' (comilla simple) no expande las variables!
 # Las Here-Strings también funcionan con comilla simple
 
-# Variables incluídas:
-# Hay algunas variables incluídas que pueden servir, tales como
-echo "Booleanos: $TRUE and $FALSE"
+# Variables Automáticas:
+# Hay algunas variables previamente definidas en el ambiente que le pueden servir, tales como
+echo "Booleanos: $TRUE y $FALSE"
 echo "Valor vacío: $NULL"
 echo "Valor de retorno del último programa: $?"
 echo "Código de salida del último programa en Windows: $LastExitCode"
@@ -91,203 +91,203 @@ echo "El último token en la última línea de la sesión activa: $$"
 echo "El primer token: $^"
 echo "PID del script: $PID"
 echo "Ruta completa del directorio dónde está el script actual: $PSScriptRoot"
-echo 'Full path of current script: ' + $MyInvocation.MyCommand.Path
-echo "FUll path of current directory: $Pwd"
-echo "Bound arguments in a function, script or code block: $PSBoundParameters"
-echo "Unbound arguments: $($Args -join ', ')."
-# More builtins: `help about_Automatic_Variables`
+echo 'Ruta completa de script actual: ' + $MyInvocation.MyCommand.Path
+echo "Ruta completa de directorio actual: $Pwd"
+echo "Argumentos pasados a la invocación de una función, script o bloque de código: $PSBoundParameters"
+echo "Argumentos no predefinidos: $($Args -join ', ')."
+# Para saber más sobre variables automáticas: `help about_Automatic_Variables`
 
-# Inline another file (dot operator)
-. .\otherScriptName.ps1
+# Para enlazar otro archivo (operador punto)
+. .\otroNombreDeScript.ps1
 
 
-### Control Flow
-# We have the usual if structure:
-if ($Age -is [string]) {
-	echo 'But.. $Age cannot be a string!'
-} elseif ($Age -lt 12 -and $Age -gt 0) {
-	echo 'Child (Less than 12. Greater than 0)'
+### Control de Flujo
+# Tenemos la estructura de if como es usual:
+if ($Edad -is [string]) {
+	echo 'Pero... si $Edad no puede ser una cadena de texto!'
+} elseif ($Edad -lt 12 -and $Edad -gt 0) {
+	echo 'Niño (Menor de 12. Mayor que 0)'
 } else {
-	echo 'Adult'
+	echo 'Adulto'
 }
 
-# Switch statements are more powerfull compared to most languages
+# Sentencias switch son más poderosas comparadas con otros lenguajes
 $val = "20"
 switch($val) {
-  { $_ -eq 42 }           { "The answer equals 42"; break }
-  '20'                    { "Exactly 20"; break }
-  { $_ -like 's*' }       { "Case insensitive"; break }
-  { $_ -clike 's*'}       { "clike, ceq, cne for case sensitive"; break }
-  { $_ -notmatch '^.*$'}  { "Regex matching. cnotmatch, cnotlike, ..."; break }
-  { 'x' -contains 'x'}    { "FALSE! -contains is for lists!"; break }
-  default                 { "Others" }
+  { $_ -eq 42 }           { "La respuesta es 42"; break }
+  '20'                    { "Exactamente 20"; break }
+  { $_ -like 's*' }       { "No distingue entre mayúsculas/minúsculas"; break }
+  { $_ -clike 's*'}       { "clike, ceq, cne para ser diferenciar casos entre mayúsculas/mninúsculas"; break }
+  { $_ -notmatch '^.*$'}  { "Emparejamiento de expresiones regulares. cnotmatch, cnotlike, ..."; break }
+  { 'x' -contains 'x'}    { "FALSO! -contains es para listas!"; break }
+  default                 { "Otros" }
 }
 
-# The classic for
+# El for clásico
 for($i = 1; $i -le 10; $i++) {
-  "Loop number $i"
+  "Número de ciclo $i"
 }
-# Or shorter
-1..10 | % { "Loop number $_" }
+# O más corto
+1..10 | % { "Número de ciclo $_" }
 
-# PowerShell also offers
-foreach ($var in 'val1','val2','val3') { echo $var }
+# PowerShell también incluye
+foreach ($var in 'valor1','valor2','valor3') { echo $var }
 # while () {}
 # do {} while ()
 # do {} until ()
 
-# Exception handling
+# Manejo de excepciones
 try {} catch {} finally {}
 try {} catch [System.NullReferenceException] {
 	echo $_.Exception | Format-List -Force
 }
 
 
-### Providers
-# List files and directories in the current directory
-ls # or `dir`
-cd ~ # goto home
+### Proveedores
+# Lista de archivos y directorios en la ubicación actual
+ls # o el alias `dir`
+cd ~ # ir a la ruta inicial
 
 Get-Alias ls # -> Get-ChildItem
-# Uh!? These cmdlets have generic names because unlike other scripting
-# languages, PowerShell does not only operate in the current directory.
-cd HKCU: # go to the HKEY_CURRENT_USER registry hive
+# Eh!? Esos cmdlets tienen nombres genéricos porque a diferencia de otros lenguajes de scripting,
+# PowerShell no opera únicamente en el directorio actual.
+cd HKCU: # se dirige a la rama HKEY_CURRENT_USER del registro de Windows
 
-# Get all providers in your session
+# Para hacer un listado de todos los proveedores disponibles
 Get-PSProvider
 
 
-### Pipeline
-# Cmdlets have parameters that control their execution:
-Get-ChildItem -Filter *.txt -Name # Get just the name of all txt files
-# Only need to type as much of a parameter name until it is no longer ambiguous
-ls -fi *.txt -n # -f is not possible because -Force also exists
-# Use `Get-Help Get-ChildItem -Full` for a complete overview
+### Tuberías
+# Los Cmdlets tienen parámetros que controlan su ejecución:
+Get-ChildItem -Filter *.txt -Name # Se obtiene sólo el nombre de todos los archivos txt
+# Sólo se necesita escribir caracteres de un parámetro hasta que deja de ser ambiguo
+ls -fi *.txt -n # -f no se puede porque también existe -Force 
+# Use `Get-Help Get-ChildItem -Full` para un tratado más completo
 
-# Results of the previous cmdlet can be passed to the next as input.
-# `$_` is the current object in the pipeline object.
-ls | Where-Object { $_.Name -match 'c' } | Export-CSV export.txt
-ls | ? { $_.Name -match 'c' } | ConvertTo-HTML | Out-File export.html
+# Los results del cmdlet anterior se le pueden pasar como entrada al siguiente.
+# `$_` representa el objeto actual en el objeto de tubería.
+ls | Where-Object { $_.Name -match 'c' } | Export-CSV exportado.txt
+ls | ? { $_.Name -match 'c' } | ConvertTo-HTML | Out-File exportado.html
 
-# If you get confused in the pipeline use `Get-Member` for an overview
-# of the available methods and properties of the pipelined objects:
+# Si se confunde con la tubería use `Get-Member` para revisar
+# los métodos y propiedades de los objetos de la tubería:
 ls | Get-Member
 Get-Date | gm
 
-# ` is the line continuation character. Or end the line with a |
+# ` es el caracter de continuación de línea. O termine la línea con un |
 Get-Process | Sort-Object ID -Descending | Select-Object -First 10 Name,ID,VM `
 	| Stop-Process -WhatIf
 
 Get-EventLog Application -After (Get-Date).AddHours(-2) | Format-List
 
-# Use % as a shorthand for ForEach-Object
+# Use % como una abreviación de ForEach-Object
 (a,b,c) | ForEach-Object `
-	-Begin { "Starting"; $counter = 0 } `
-	-Process { "Processing $_"; $counter++ } `
-	-End { "Finishing: $counter" }
+	-Begin { "Iniciando"; $counter = 0 } `
+	-Process { "Procesando $_"; $counter++ } `
+	-End { "Terminando: $counter" }
 
-# Get-Process as a table with three columns
-# The third column is the value of the VM property in MB and 2 decimal places
-# Computed columns can be written more verbose as:
+# El siguiente comando ps (alias de Get-Process) devuelve una tabla con 3 columnas
+# La tercera columan es el valor de memoria virtual en MB y usando 2 dígitos decimales
+# Las columnas calculadas pueden escribirse más extensamente como:
 # `@{name='lbl';expression={$_}`
 ps | Format-Table ID,Name,@{n='VM(MB)';e={'{0:n2}' -f ($_.VM / 1MB)}} -autoSize
 
 
-### Functions
-# The [string] attribute is optional.
-function foo([string]$name) {
-	echo "Hey $name, have a function"
+### Funciones
+# El atributo [string] es opcional.
+function foo([string]$nombre) {
+	echo "Hey $nombre, tome una función"
 }
 
-# Calling your function
-foo "Say my name"
+# Llamando una función
+foo "Diga mi nombre"
 
-# Functions with named parameters, parameter attributes, parsable documention
+# Funciones con parámetros nombrados, atributos de parámetros y documentación analizable
 <#
 .SYNOPSIS
-Setup a new website
+Establecer un nuevo sitio web
 .DESCRIPTION
-Creates everything your new website needs for much win
+Crea todo lo que su sitio necesite
 .PARAMETER siteName
-The name for the new website
+El nombre para el nuevo sitio web
 .EXAMPLE
-New-Website -Name FancySite -Po 5000
-New-Website SiteWithDefaultPort
-New-Website siteName 2000 # ERROR! Port argument could not be validated
-('name1','name2') | New-Website -Verbose
+Crear-SitioWeb -Nombre SitioBonito -Po 5000
+Crear-SitioWeb SiteWithDefaultPort
+Crear-SitioWeb nombreSitio 2000 # ERROR! No se pudo validar arguemento de puerto
+('nombre1','nombre2') | Crear-SitioWeb -Verbose
 #>
-function New-Website() {
+function Crear-SitioWeb() {
 	[CmdletBinding()]
 	param (
 		[Parameter(ValueFromPipeline=$true, Mandatory=$true)]
-		[Alias('name')]
-		[string]$siteName,
+		[Alias('nombre')]
+		[string]$nombreSitio,
 		[ValidateSet(3000,5000,8000)]
-		[int]$port = 3000
+		[int]$puerto = 3000
 	)
-	BEGIN { Write-Verbose 'Creating new website(s)' }
-	PROCESS { echo "name: $siteName, port: $port" }
-	END { Write-Verbose 'Website(s) created' }
+	BEGIN { Write-Verbose 'Creando nuevo(s) sitio(s) web' }
+	PROCESS { echo "nombre: $nombreSitio, puerto: $puerto" }
+	END { Write-Verbose 'Sitio(s) web creado(s)' }
 }
 
 
-### It's all .NET
-# A PS string is in fact a .NET System.String
-# All .NET methods and properties are thus available
-'string'.ToUpper().Replace('G', 'ggg')
-# Or more powershellish
-'string'.ToUpper() -replace 'G', 'ggg'
+### Todo es .NET
+# Una cadena PS es, de hecho, una cadena .NET System.String
+# Todos los métodos y propiedades .NET están disponibles
+'cadena'.ToUpper().Replace('E', 'eee')
+# O más powershellezco
+'cadena'.ToUpper() -replace 'E', 'eee'
 
-# Unsure how that .NET method is called again?
-'string' | gm
+# Si ¿no recuerda como es que se llama cierto método .NET?
+'cadena' | gm
 
-# Syntax for calling static .NET methods
+# Sintaxis para ejecutar métodos .NET estáticos
 [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic')
 
-# Note that .NET functions MUST be called with parentheses
-# while PS functions CANNOT be called with parentheses.
-# If you do call a cmdlet/PS function with parentheses,
-# it is the same as passing a single parameter list
+# Note que las funciones .NET DEBEN ser llamadas usando paréntesis
+# al contrario que las funciones PS, las cuales NO PUEDEN ser llamadas con paréntesis.
+# Si llama una función/cmdlet de PS usando paréntesis,
+# será como si le estuviera pasando un parámetro de lista
 $writer = New-Object System.IO.StreamWriter($path, $true)
 $writer.Write([Environment]::NewLine)
 $writer.Dispose()
 
-### IO
-# Reading a value from input:
-$Name = Read-Host "What's your name?"
-echo "Hello, $Name!"
-[int]$Age = Read-Host "What's your age?"
+### Entrada/Salida
+# Leyendo una variable 
+$Nombre = Read-Host "¿Cómo se llama?"
+echo "Hola, $Nombre!"
+[int]$Edad = Read-Host "¿Cuál es su edad?"
 
 # Test-Path, Split-Path, Join-Path, Resolve-Path
-# Get-Content filename # returns a string[]
+# Get-Content filename # devuelve un string[]
 # Set-Content, Add-Content, Clear-Content
 Get-Command ConvertTo-*,ConvertFrom-*
 
 
-### Useful stuff
-# Refresh your PATH
+### Material útil
+# Actualizar la ruta de ejecuciones (PATH)
 $env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + 
 	";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
-# Find Python in path
+# Encontrar Python en el path
 $env:PATH.Split(";") | Where-Object { $_ -like "*python*"}
 
-# Change working directory without having to remember previous path
-Push-Location c:\temp # change working directory to c:\temp
-Pop-Location # change back to previous working directory
-# Aliases are: pushd and popd
+# Cambiar el directorio de trabajo sin tener que memorizar la ruta anterior
+Push-Location c:\temp # se cambia el directorio de trabajo a c:\temp
+Pop-Location # revierte el cambio y se devuelve a donde estaba al principio
+# Los aliases son : pushd y popd
 
-# Unblock a directory after download
+# Desbloquear un directorio después de descargarlos
 Get-ChildItem -Recurse | Unblock-File
 
-# Open Windows Explorer in working directory
+# Abre Windows Explorer en la ruta actual (usando el alias de Invoke-Item)
 ii .
 
-# Any key to exit
+# Pulse cualquier tecla para salir
 $host.UI.RawUI.ReadKey()
 return
 
-# Create a shortcut
+# Para crear un acceso directo
 $WshShell = New-Object -comObject WScript.Shell
 $Shortcut = $WshShell.CreateShortcut($link)
 $Shortcut.TargetPath = $file
@@ -296,33 +296,33 @@ $Shortcut.Save()
 ```
 
 
-Configuring your shell
+Configurando el shell
 
 ```
-# $Profile is the full path for your `Microsoft.PowerShell_profile.ps1`
-# All code there will be executed when the PS session starts
+# $Profile es la ruta completa para su `Microsoft.PowerShell_profile.ps1`
+# Todo el código alojado allí será ejecutado cuando se ejecuta una nueva sesión de PS 
 if (-not (Test-Path $Profile)) {
 	New-Item -Type file -Path $Profile -Force
 	notepad $Profile
 }
-# More info: `help about_profiles`
-# For a more usefull shell, be sure to check the project PSReadLine below
+# Más información en: `help about_profiles`
+# Para un shell más productivo, asegúrese de verifivar el proyecto  PSReadLine descrito abajo
 ```
 
-Interesting Projects  
+Proyectos interesantes
 
-* [Channel9](https://channel9.msdn.com/Search?term=powershell%20pipeline#ch9Search&lang-en=en) PowerShell tutorials
-* [PSGet](https://github.com/psget/psget) NuGet for PowerShell
-* [PSReadLine](https://github.com/lzybkr/PSReadLine/) A bash inspired readline implementation for PowerShell (So good that it now ships with Windows10 by default!)
-* [Posh-Git](https://github.com/dahlbyk/posh-git/) Fancy Git Prompt (Recommended!)
-* [PSake](https://github.com/psake/psake) Build automation tool
-* [Pester](https://github.com/pester/Pester) BDD Testing Framework
-* [Jump-Location](https://github.com/tkellogg/Jump-Location) Powershell `cd` that reads your mind
-* [PowerShell Community Extensions](http://pscx.codeplex.com/) (Dead)
+* [Channel9](https://channel9.msdn.com/Search?term=powershell%20pipeline#ch9Search&lang-en=en) Tutoriales de PowerShell 
+* [PSGet](https://github.com/psget/psget) NuGet para PowerShell
+* [PSReadLine](https://github.com/lzybkr/PSReadLine/) Una implementación inspirada en bash para PowerShell (¡Es tan buena que ahora viene con Windows10 por defecto!)
+* [Posh-Git](https://github.com/dahlbyk/posh-git/) Un intérprete bonito de Git (¡Recomendado!)
+* [PSake](https://github.com/psake/psake) Herramienta de automatización de compilaciones
+* [Pester](https://github.com/pester/Pester) Framework de pruebas BDD
+* [Jump-Location](https://github.com/tkellogg/Jump-Location) Powershell `cd` que lee su mente
+* [PowerShell Community Extensions](http://pscx.codeplex.com/) (Abandonado)
 
-Not covered  
+Material no cubierto en esta guía  
 
 * WMI: Windows Management Intrumentation (Get-CimInstance)  
-* Multitasking: Start-Job -scriptBlock {...}, 
-* Code Signing
+* Multitarea: Start-Job -scriptBlock {...}, 
+* Firmas de código
 * Remoting (Enter-PSSession/Exit-PSSession; Invoke-Command)
