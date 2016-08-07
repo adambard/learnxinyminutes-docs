@@ -194,7 +194,7 @@ filename: learn-emacs-lisp.el
 ;; And evaluate it:
 (greeting "you")
 
-;; Some function are interactive:
+;; Some functions are interactive:
 (read-from-minibuffer "Enter your name: ")
 
 ;; Evaluating this function returns what you entered at the prompt.
