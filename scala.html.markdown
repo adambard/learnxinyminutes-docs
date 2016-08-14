@@ -237,7 +237,7 @@ r foreach println
 
 (5 to 1 by -1) foreach (println)
 
-// A while loops
+// A while loop
 var i = 0
 while (i < 10) { println("i " + i); i += 1 }
 
@@ -245,17 +245,18 @@ while (i < 10) { println("i " + i); i += 1 }   // Yes, again. What happened? Why
 
 i    // Show the value of i. Note that while is a loop in the classical sense -
      // it executes sequentially while changing the loop variable. while is very
-     // fast, faster that Java loops, but using the combinators and
-     // comprehensions above is easier to understand and parallelize
+     // fast, but using the combinators and comprehensions above is easier
+     // to understand and parallelize
 
-// A do while loop
+// A do-while loop
 i = 0
 do {
   println("i is still less than 10")
   i += 1
 } while (i < 10)
 
-// Tail recursion is an idiomatic way of doing recurring things in Scala.
+// Recursion is the idiomatic way of repeating an action in Scala (as in most
+// other functional languages).
 // Recursive functions need an explicit return type, the compiler can't infer it.
 // Here it's Unit.
 def showNumbersInRange(a: Int, b: Int): Unit = {
@@ -273,7 +274,7 @@ val x = 10
 if (x == 1) println("yeah")
 if (x == 10) println("yeah")
 if (x == 11) println("yeah")
-if (x == 11) println ("yeah") else println("nay")
+if (x == 11) println("yeah") else println("nay")
 
 println(if (x == 10) "yeah" else "nope")
 val text = if (x == 10) "yeah" else "nope"
