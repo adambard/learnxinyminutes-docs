@@ -449,7 +449,8 @@ int main (int argc, char** argv)
   int size = 10;
   int *my_arr = malloc(sizeof(int) * size);
   // Add an element to the array
-  my_arr = realloc(my_arr, ++size);
+  size++;
+  my_arr = realloc(my_arr, sizeof(int) * size);
   my_arr[10] = 5;
 
   // Dereferencing memory that you haven't allocated gives
