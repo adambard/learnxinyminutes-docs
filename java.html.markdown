@@ -585,10 +585,14 @@ public interface Edible {
 
 public interface Digestible {
     public void digest();
+    // In Java 8, interfaces can have default method.
+    // public void digest() {
+    //     System.out.println("digesting ...");
+    // }
 }
 
 // We can now create a class that implements both of these interfaces.
-public class Fruit implements Edible, Digestible {  
+public class Fruit implements Edible, Digestible {
     @Override
     public void eat() {
         // ...
@@ -636,7 +640,7 @@ public abstract class Animal
     // Method can have a body
     public void eat()
     {
-        System.out.println("I am an animal and I am Eating.");  
+        System.out.println("I am an animal and I am Eating.");
         // Note: We can access private variable here.
         age = 30;
     }
