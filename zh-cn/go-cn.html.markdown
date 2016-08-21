@@ -129,7 +129,7 @@ func learnFlowControl() {
         fmt.Println("told ya")
     }
     // 用go fmt 命令可以帮你格式化代码，所以不用怕被人吐槽代码风格了，
-    // 也不用容忍被人的代码风格。
+    // 也不用容忍别人的代码风格。
     if false {
         // pout
     } else {
