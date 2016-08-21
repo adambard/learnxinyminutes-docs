@@ -2,6 +2,7 @@
 language: kotlin
 contributors:
     - ["S Webber", "https://github.com/s-webber"]
+    - ["Jakukyo Friel", "https://weakish.github.io"]
 filename: LearnKotlin.kt
 ---
 
@@ -9,7 +10,7 @@ Kotlin is a statically typed programming language for the JVM, Android and the
 browser. It is 100% interoperable with Java.
 [Read more here.](https://kotlinlang.org/)
 
-```java
+```kotlin
 // Single-line comments start with //
 /*
 Multi-line comments look like this.
@@ -42,12 +43,12 @@ fun main(args: Array<String>) {
     Strings can be represented in a similar way as in Java.
     Escaping is done with a backslash.
     */
-    val fooString = "My String Is Here!";
-    val barString = "Printing on a new line?\nNo Problem!";
-    val bazString = "Do you want to add a tab?\tNo Problem!";
-    println(fooString);
-    println(barString);
-    println(bazString);
+    val fooString = "My String Is Here!"
+    val barString = "Printing on a new line?\nNo Problem!"
+    val bazString = "Do you want to add a tab?\tNo Problem!"
+    println(fooString)
+    println(barString)
+    println(bazString)
 
     /*
     A raw string is delimited by a triple quote (""").
