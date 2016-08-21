@@ -88,7 +88,7 @@ fun helloWorld(val name : String) {
     Function arguments can optionally have a default value.
     The function return type, if required, is specified after the arguments.
     */
-    fun hello(name: String = "world") : String {
+    fun hello(name: String = "world"): String {
         return "Hello, $name!"
     }
     println(hello("foo")) // => Hello, foo!
@@ -120,7 +120,7 @@ fun helloWorld(val name : String) {
     println(even(7)) // => false
 
     // Functions can take functions as arguments and return functions.
-    fun not(f: (Int) -> Boolean) : (Int) -> Boolean {
+    fun not(f: (Int) -> Boolean): (Int) -> Boolean {
         return {n -> !f.invoke(n)}
     }
     // Named functions can be specified as arguments using the :: operator.
@@ -140,11 +140,11 @@ fun helloWorld(val name : String) {
 
     // The "class" keyword is used to declare classes.
     class ExampleClass(val x: Int) {
-        fun memberFunction(y: Int) : Int {
+        fun memberFunction(y: Int): Int {
             return x + y
         }
 
-        infix fun infixMemberFunction(y: Int) : Int {
+        infix fun infixMemberFunction(y: Int): Int {
             return x * y
         }
     }
@@ -170,7 +170,7 @@ fun helloWorld(val name : String) {
     println(fooData) // => DataClassExample(x=1, y=2, z=4)
 
     // Data classes have a "copy" function.
-    val fooCopy = fooData.copy(y = 100)
+    val fooCopy = fooData.copy(y=100)
     println(fooCopy) // => DataClassExample(x=1, y=100, z=4)
 
     // Objects can be destructured into multiple variables.
@@ -218,16 +218,16 @@ fun helloWorld(val name : String) {
     Sequences represent lazily-evaluated collections.
     We can create a sequence using the "generateSequence" function.
     */
-    val fooSequence = generateSequence(1, {it + 1})
+    val fooSequence = generateSequence(1, { it + 1 })
     val x = fooSequence.take(10).toList()
     println(x) // => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
     // An example of using a sequence to generate Fibonacci numbers:
-    fun fibonacciSequence() : Sequence<Long> {
+    fun fibonacciSequence(): Sequence<Long> {
         var a = 0L
         var b = 1L
 
-        fun next() : Long {
+        fun next(): Long {
             val result = a + b
             a = b
             b = result
@@ -334,7 +334,7 @@ We cannot assign it to a variable, but we can refer to it by its name.
 This is similar to Scala singleton objects.
 */
 object ObjectExample {
-    fun hello() : String {
+    fun hello(): String {
         return "hello"
     }
 }
