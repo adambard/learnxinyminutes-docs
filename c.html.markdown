@@ -236,7 +236,7 @@ int main (int argc, char** argv)
   z = (e > f) ? e : f; // => 10 "if e > f return e, else return f."
 
   // Increment and decrement operators:
-  char *s = "ILoveC";
+  char s[10] = "ILoveC";
   int j = 0;
   s[j++]; // => "I". Returns the j-th item of s THEN increments value of j.
   j = 0;
