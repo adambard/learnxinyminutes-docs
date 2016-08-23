@@ -1,4 +1,4 @@
----
+﻿---
 language: javascript
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
@@ -58,6 +58,11 @@ delejNeco()
 
 // Včetně dělení
 5 / 2; // = 2.5
+
+// A také dělení modulo
+10 % 2; // = 0
+30 % 4; // = 2
+18.5 % 7; // = 4.5
 
 // Bitové operace také fungují; když provádíte bitové operace, desetinné číslo  
 // (float) se převede na celé číslo (int) se znaménkem *do* 32 bitů
