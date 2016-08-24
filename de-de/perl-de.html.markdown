@@ -16,7 +16,7 @@ Perl 5 läuft auf über 100 Platformen von portablen Geräten bis hin zu Mainfra
 # Einzeilige Kommentare beginnen mit dem # Symbol.
 
 
-#### Perl variablen typen
+#### Perl Variablen Typen
 
 #  Variablen beginnen mit einem Sigil, das ist ein Symbol das den Typ anzeigt.
 #  Ein erlaubter Variablen-Name beginnt mit einem Buchstaben oder einem
@@ -109,7 +109,7 @@ print for @elements;
 #### Reguläre Ausdrücke
 
 # Die Unterstützung von Perl für reguläre Ausdrücke ist weit und tiefgreifend.
-# Sie ist ausführlichst in perlrequick, perlretut und sonstwo dokumentiert.
+# Sie ist ausführlich in perlrequick, perlretut und sonstwo dokumentiert.
 # Die Kurzfassung:
 
 # Einfaches Vergleichen
@@ -122,7 +122,7 @@ $a =~ s/foo/bar/;         # Ersetzt foo mit bar in $a
 $a =~ s/foo/bar/g;        # Ersetzt ALLE VORKOMMNISSE von foo mit bar in $a
 
 
-#### Datien und Ein-/Ausgabe
+#### Dateien und Ein-/Ausgabe
 
 # Dateien werden mit der "open()" Funktion zur Ein- oder Ausgabe geöffnet.
 
@@ -150,14 +150,14 @@ sub logger {
   print $logfile $logmessage;
 }
 
-# Nun könnne wir die Subroutine genau wie eine eingebaute Funktion verwenden:
+# Nun können wir die Subroutine genau wie eine eingebaute Funktion verwenden:
 
 logger("We have a logger subroutine!");
 ```
 
 #### Verwenden von Perl Modulen
 
-Perl Module lieferen eine Menge an Funktionen die dabei Helfen das Rad nicht neu erfinden zu müssen. Perl Module können von CPAN (http://www.cpan.org/) heruntergeladen werden. Einige populäre Module sind in der Perl Distribution selbst bereits enthalten.
+Perl Module liefern eine Menge an Funktionen die dabei Helfen das Rad nicht neu erfinden zu müssen. Perl Module können von CPAN (http://www.cpan.org/) heruntergeladen werden. Einige populäre Module sind in der Perl Distribution selbst bereits enthalten.
 
 Perlfaq enthält Fragen und Antworten zu häufig vorkommenden Aufgaben. Sehr oft sind auch Vorschläge enthalten welches CPAN module am besten geeignet ist.
 
