@@ -254,14 +254,14 @@ In JSON land, this code will be:
     {
       "name": "apple",
       "geometry": { "shape": "round", "note": "..."},
-      "variety": [
+      "color": [
         { "name": "red", "note": "..." },
         { "name": "green", "note": "..." }
       ]
     },
     {
       "name": "banana",
-      "variety": [
+      "color": [
         { "name": "yellow", "note": "..." }
       ]
     }
