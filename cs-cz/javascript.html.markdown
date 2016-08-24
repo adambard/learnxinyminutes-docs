@@ -105,6 +105,10 @@ false; // nepravda
 // Řetězce znaků se spojují pomocí +
 "Ahoj " + "světe!"; // = "Ahoj světe!"
 
+// ... což funguje nejenom s řetězci
+"1, 2, " + 3; // = "1, 2, 3"
+"Ahoj " + ["světe", "!"] // = "Ahoj světe,!"
+
 // a porovnávají se pomocí < nebo >
 "a" < "b"; // = true
 
@@ -131,7 +135,7 @@ null === undefined; // = false
 
 // Existují také typy `null` a `undefined`.
 null;      // značí, že žádnou hodnotu
-undefined; // značí, že hodnota nebyla definovaná definovaná (ikdyž
+undefined; // značí, že hodnota nebyla definovaná (ikdyž
            // `undefined` je hodnota sama o sobě)
 
 // false, null, undefined, NaN, 0 and "" vrací nepravdu (false). Všechno ostatní
@@ -155,6 +159,9 @@ jinaPromenna = 10;
 
 // Proměnné vytvořené bez přiřazení obsahují hodnotu undefined.
 var dalsiPromenna; // = undefined
+
+// Pokud chcete vytvořit několik proměnných najednou, můžete je oddělit čárkou
+var someFourthVar = 2, someFifthVar = 4;
 
 // Existuje kratší forma pro matematické operace na proměnné
 promenna += 5; // se provede stejně jako promenna = promenna + 5;
@@ -312,6 +319,12 @@ function funkce(){
 setTimeout(funkce, 5000);
 // Poznámka: setTimeout není část JS jazyka, ale funkce poskytována
 // prohlížeči a NodeJS
+
+// Další funkce poskytovaná prohlížeči je je setInterval
+function myFunction(){
+    // tento kód bude volán každých 5 vteřin
+}
+setInterval(myFunction, 5000);
 
 // Objekty funkcí nemusíme ani deklarovat pomocí jména, můžeme je napsat jako
 // ananymní funkci přímo vloženou jako argument
@@ -501,6 +514,11 @@ typeof mojeCisloObj; // = 'object'
 mojeCislo === mojeCisloObj; // = false
 if (0){
     // Tento kód se nespustí, protože 0 je nepravdivá (false)
+}
+
+if (new Number(0)){
+   // Tento kód se spustí, protože obalená čísla jsou objekty,
+   // a objekty jsou vždy pravdivé
 }
 
 // Avšak, obalovací objekty a normální vestavěnné typy sdílejí prototyp, takže
