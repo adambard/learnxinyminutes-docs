@@ -8,7 +8,7 @@ filename: LearnVim.txt
 
 
 [Vim](www.vim.org)
-(Vi IMproved) is a clone of the popular vi editor for Unix. It is a a text 
+(Vi IMproved) is a clone of the popular vi editor for Unix. It is a text 
 editor designed for speed and increased productivity, and is ubiquitous in most 
 unix-based systems. It has numerous keybindings for speedy navigation to 
 specific points in the file, and for fast editing.
