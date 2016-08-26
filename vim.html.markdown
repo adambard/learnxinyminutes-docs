@@ -19,7 +19,7 @@ specific points in the file, and for fast editing.
     vim <filename>   # Open <filename> in vim
     :q               # Quit vim
     :w               # Save current file
-    :wq              # Save file and quit vim 
+    :wq              # Save file and quit vim
     :q!              # Quit vim without saving file
                      # ! *forces* :q to execute, hence quiting vim without saving
     :x               # Save file and quit vim, shorter version of :wq
@@ -77,9 +77,9 @@ specific points in the file, and for fast editing.
 
 Vim is based on the concept on **modes**.
 
-Command Mode - vim starts up in this mode, used to navigate and write commands  
-Insert Mode  - used to make changes in your file  
-Visual Mode  - used to highlight text and do operations to them  
+Command Mode - vim starts up in this mode, used to navigate and write commands 
+Insert Mode  - used to make changes in your file 
+Visual Mode  - used to highlight text and do operations to them 
 Ex Mode      - used to drop down to the bottom with the ':' prompt to enter commands
 
 ```
@@ -105,15 +105,15 @@ Ex Mode      - used to drop down to the bottom with the ':' prompt to enter comm
 Vim can be thought of as a set of commands in a 
 'Verb-Modifier-Noun' format, where:
 
-Verb     - your action  
-Modifier - how you're doing your action  
+Verb     - your action 
+Modifier - how you're doing your action 
 Noun     - the object on which your action acts on
 
-A few important examples of 'Verbs, 'Modifiers', and 'Nouns':
+A few important examples of 'Verbs', 'Modifiers', and 'Nouns':
 
 ```
     # 'Verbs'
-    
+ 
     d                # Delete
     c                # Change
     y                # Yank (copy)
