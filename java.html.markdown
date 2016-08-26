@@ -566,7 +566,7 @@ class PennyFarthing extends Bicycle {
     // out: http://docs.oracle.com/javase/tutorial/java/annotations/
     @Override
     public void setGear(int gear) {
-        gear = 0;
+        this.gear = 0;
     }
 }
 
