@@ -896,7 +896,9 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [30 Python Language Features and Tricks You May Not Know About](http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
 * [Official Style Guide for Python](https://www.python.org/dev/peps/pep-0008/)
 * [Python 3 Computer Science Circles](http://cscircles.cemc.uwaterloo.ca/)
+* [Dive Into Python 3](http://www.diveintopython3.net/index.html)
 
 ### Dead Tree
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
+* [Dive Into Python 3](https://www.amazon.com/gp/product/1430224150?ie=UTF8&tag=diveintomark-20&creativeASIN=1430224150)
