@@ -4,6 +4,7 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Tasya Aditya Rukmana", "http://github.com/tadityar"]
+lang: id-id
 filename: markdown-id.md
 ---
 
