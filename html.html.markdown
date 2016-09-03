@@ -107,6 +107,8 @@ This article is concerned principally with HTML syntax and some useful tips.
 	</tr>
 </table>
 
+```
+
 ## Usage
 
 HTML is written in files ending with `.html`.
