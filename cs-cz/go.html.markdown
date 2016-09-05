@@ -2,7 +2,8 @@
 name: Go
 category: language
 language: Go
-filename: learngo.go
+filename: learngo-cs.go
+lang: cs-cz
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["Christopher Bess", "https://github.com/cbess"]
@@ -13,7 +14,6 @@ contributors:
     - ["Clayton Walker", "https://github.com/cwalk"]
 translators:
     - ["Ondra Linek", "https://github.com/defectus/"]
-
 ---
 
 Jazyk Go byl vytvořen, jelikož bylo potřeba dokončit práci. Není to poslední 
