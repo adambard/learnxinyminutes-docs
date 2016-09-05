@@ -9,7 +9,7 @@ contributors:
 
 ## Why Binary Search?
 
-Searching is one of the prime problems in the domain of Computer Science.Today there are more than 1 trillion searches per year, and we need algorithms that can do that very fastly. Binary search is one of the fundamental algorithms in computer science. In order to explore it, we’ll first build up a theoretical backbone, then use that to implement the algorithm properly.
+Searching is one of the prime problems in the domain of Computer Science. Today there are more than 1 trillion searches per year, and we need algorithms that can do that very fastly. Binary search is one of the fundamental algorithms in computer science. In order to explore it, we’ll first build up a theoretical backbone, then use that to implement the algorithm properly.
 
 ## Introduction
 
