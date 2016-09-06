@@ -1,9 +1,8 @@
 ---
-language: Meteor.js
-Filename: Meteor.html.markdown 
+tool: meteor.js
+Filename: meteor.html.markdown 
 contributors:
     - ["Mohammed Rafy", "https://github.com/IamRafy/"]
-   
 ---
 
 
