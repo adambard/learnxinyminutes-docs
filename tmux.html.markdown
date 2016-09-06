@@ -3,7 +3,6 @@ category: tool
 tool: tmux
 contributors:
     - ["mdln", "https://github.com/mdln"]
-    - ["matthiaskern", "https://github.com/matthiaskern"]
 filename: LearnTmux.txt
 ---
 
