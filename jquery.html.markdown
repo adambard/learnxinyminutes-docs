@@ -1,14 +1,14 @@
 ---
-category: library
-+library: jquery
-+contributors:
-+    - ["Sawyer Charles", "https://github.com/xssc"]
-+filename: jquery.js
-+---
+category: tool
+tool: jquery
+contributors:
+    - ["Sawyer Charles", "https://github.com/xssc"]
+filename: jquery.js
+---
 
 jQuery is a JavaScript library that helps you "do more, write less". It makes many common JavaScript tasks and makes them easier to write. jQuery is used by many big companies and developers everywhere. It makes AJAX, event handling, document manipulation, and much more, easier and faster.
 
-Because jQuery is a JavaScript library you should [learn JavaScript first](https://github.com/adambard/learnxinyminutes-docs/blob/master/javascript.html.markdown)
+Because jQuery is a JavaScript library you should [learn JavaScript first](https://learnxinyminutes.com/docs/javascript/)
 
 ```js
 
