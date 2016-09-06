@@ -1,5 +1,6 @@
 ---
-tool: meteor.js
+category: library
+library: meteor.js
 Filename: meteor.html.markdown 
 contributors:
     - ["Mohammed Rafy", "https://github.com/IamRafy/"]
