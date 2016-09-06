@@ -902,3 +902,4 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python 3](https://www.amazon.com/gp/product/1430224150?ie=UTF8&tag=diveintomark-20&creativeASIN=1430224150)
+* [Learn Python 3.0 VISUALLY](https://www.amazon.com/Learn-Python-3-0-VISUALLY-Interactive-ebook/dp/B00YI58B9U/ref=as_li_ss_tl?tag=prodhunt04-20&ascsubtag=ef54903efb7311e58eadce6500428ba90INT&linkCode=ll1&linkId=cd3cf68ee78515271e805ada48576b37&ref=producthunt#nav-subnav)
