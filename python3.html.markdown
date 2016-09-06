@@ -602,7 +602,7 @@ list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  # => [6, 7]
 [x for x in [3, 4, 5, 6, 7] if x > 5]  # => [6, 7]
 
 # You can construct set and dict comprehensions as well.
-{x for x in 'abcddeef' if x in 'abc'}  # => {'d', 'e', 'f'}
+{x for x in 'abcddeef' if x not in 'abc'}  # => {'d', 'e', 'f'}
 {x: x**2 for x in range(5)}  # => {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
 
 
