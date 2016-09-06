@@ -261,7 +261,7 @@ recommended that you avoid its usage.
 
 ## Media Queries
 
-CSS Media Queries are a feature in CSS 3 which allows you to specify when certain CSS rules should be applied, such as when printed, or when on a screen with certain dimensions or pixel density.
+CSS Media Queries are a feature in CSS 3 which allows you to specify when certain CSS rules should be applied, such as when printed, or when on a screen with certain dimensions or pixel density. They do not add to the selector's specifity.
 
 ```css
 /* A rule that will be used on all devices */
