@@ -3,6 +3,7 @@ category: tool
 tool: tmux
 contributors:
     - ["mdln", "https://github.com/mdln"]
+    - ["matthiaskern", "https://github.com/matthiaskern"]
 filename: LearnTmux.txt
 ---
 
@@ -116,7 +117,7 @@ like how .vimrc or init.el are used.
 
 ```
 # Example tmux.conf
-# 2014.10
+# 2015.12
 
 
 ### General
@@ -129,7 +130,7 @@ set -g history-limit 2048
 set -g base-index 1
 
 # Mouse
-set-option -g mouse-select-pane on
+set-option -g -q mouse on
 
 # Force reload of config file
 unbind r
@@ -204,8 +205,6 @@ setw -g window-status-bg black
 setw -g window-status-current-fg green
 setw -g window-status-bell-attr default
 setw -g window-status-bell-fg red
-setw -g window-status-content-attr default
-setw -g window-status-content-fg yellow
 setw -g window-status-activity-attr default
 setw -g window-status-activity-fg yellow
 
@@ -246,6 +245,4 @@ set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | 
 
 [Display CPU/MEM % in statusbar](https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux)
 
-[tmuxinator - Manage complex tmux sessions](https://github.com/tmuxinator/tmuxinator) 
-
-
+[tmuxinator - Manage complex tmux sessions](https://github.com/tmuxinator/tmuxinator)
