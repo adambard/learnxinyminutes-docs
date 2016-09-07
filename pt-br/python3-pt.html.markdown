@@ -7,7 +7,7 @@ contributors:
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
 translators:
     - ["Paulo Henrique Rodrigues Pinheiro", "http://www.sysincloud.it"]
-language: pt-br
+lang: pt-br
 filename: learnpython3-pt.py
 ---
 
