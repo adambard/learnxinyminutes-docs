@@ -188,7 +188,7 @@ int main()
    cout << "Your favorite number is " << myInt << "\n";
    // 显示“Your favorite number is <myInt>”
 
-    cerr << "Used for error messages";
+   cerr << "Used for error messages";
 }
 
 /////////
