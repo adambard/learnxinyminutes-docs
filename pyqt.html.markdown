@@ -46,6 +46,16 @@ In order to get some of the more advanced features in **pyqt** we need to start 
 Here we show how to introduce a dialog popup box, useful for asking the user to confirm a decision or to provide information.
 
 ```Python 
+import sys
+from PyQt4.QtGui import *
+from PyQt4.QtCore import *
+
+
+def window():
+    app = QApplication(sys.argv)
+    w = QWidget()
+    # Create a button and attach to widget w
+    b = QPushButton(w)
     b.setText("Press me")
     b.move(50, 50)
     # Tell b to call this function when clicked
@@ -54,12 +64,13 @@ Here we show how to introduce a dialog popup box, useful for asking the user to 
     w.setWindowTitle("PyQt Dialog")
     w.show()
     sys.exit(app.exec_())
-	
-	# This function should create a dialog window with a button
-	# that waits to be clicked and then exits the program
+
+# This function should create a dialog window with a button
+# that waits to be clicked and then exits the program
+
 
 def showdialog():
-	d = QDialog()
+    d = QDialog()
     b1 = QPushButton("ok", d)
     b1.move(50, 50)
     d.setWindowTitle("Dialog")
@@ -71,5 +82,4 @@ def showdialog():
 
 if __name__ == '__main__':
     window()
-
 ```
