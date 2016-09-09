@@ -68,8 +68,6 @@ def window():
 	
 # This function should create a dialog window with a button
 # that waits to be clicked and then exits the program
-
-
 def showdialog():
     d = QDialog()
     b1 = QPushButton("ok", d)
