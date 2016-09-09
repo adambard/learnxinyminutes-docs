@@ -65,7 +65,7 @@ def window():
     w.setWindowTitle("PyQt Dialog")
     w.show()
     sys.exit(app.exec_())
-
+	
 # This function should create a dialog window with a button
 # that waits to be clicked and then exits the program
 
