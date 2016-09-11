@@ -288,7 +288,7 @@ fn main() {
     var = 3;
     let ref_var: &i32 = &var;
 
-    println!("{}", var); // Diversamente da `box`, `var` può ancora essere usato
+    println!("{}", var); // Diversamente da `mio`, `var` può ancora essere usato
     println!("{}", *ref_var);
     // var = 5; // questo non compilerebbe, perché `var` è stato preso in prestito
     // *ref_var = 6; // neanche questo, perché `ref_var` è un riferimento immutabile
