@@ -261,6 +261,14 @@ fun helloWorld(val name : String) {
         ctr++
     } while (ctr < 10)
 
+    /*
+    "if" can be used as an expression that returns a value.
+    For this reason the ternary ?: operator is not needed in Kotlin.
+    */
+    val num = 5
+    val message = if (num % 2 == 0) "even" else "odd"
+    println("$num is $message") // => 5 is odd
+
     // "when" can be used as an alternative to "if-else if" chains.
     val i = 10
     when {
