@@ -262,7 +262,7 @@ fun helloWorld(val name : String) {
     } while (ctr < 10)
 
     /*
-    "if" can be used as a function that returns a value.
+    "if" can be used as an expression that returns a value.
     For this reason the ternary ?: operator is not needed in Kotlin.
     */
     val num = 5
