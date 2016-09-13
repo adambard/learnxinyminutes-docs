@@ -2,7 +2,6 @@
 language: kotlin
 contributors:
     - ["S Webber", "https://github.com/s-webber"]
-    - ["Jakukyo Friel", "https://weakish.github.io"]
 filename: LearnKotlin.kt
 ---
 
