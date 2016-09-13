@@ -11,7 +11,7 @@ errors immediately and provides a clear and understandable error message. Elm is
 great for designing user interfaces and games for the web.
 
 
-```elm
+```haskell
 -- Single line comments start with two dashes.
 {- Multiline comments can be enclosed in a block like this.
 {- They can be nested. -}
