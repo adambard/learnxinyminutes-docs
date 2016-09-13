@@ -169,7 +169,7 @@ fun helloWorld(val name : String) {
     println(fooData) // => DataClassExample(x=1, y=2, z=4)
 
     // Data classes have a "copy" function.
-    val fooCopy = fooData.copy(y=100)
+    val fooCopy = fooData.copy(y = 100)
     println(fooCopy) // => DataClassExample(x=1, y=100, z=4)
 
     // Objects can be destructured into multiple variables.
