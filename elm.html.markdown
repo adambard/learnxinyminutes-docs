@@ -2,6 +2,7 @@
 language: Elm
 contributors:
     - ["Max Goldstein", "http://maxgoldste.in/"]
+filename: learnelm.elm
 ---
 
 Elm is a functional reactive programming language that compiles to (client-side)
@@ -10,7 +11,7 @@ errors immediately and provides a clear and understandable error message. Elm is
 great for designing user interfaces and games for the web.
 
 
-```haskell
+```elm
 -- Single line comments start with two dashes.
 {- Multiline comments can be enclosed in a block like this.
 {- They can be nested. -}
