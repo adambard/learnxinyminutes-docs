@@ -128,7 +128,7 @@ fun helloWorld(val name : String) {
     // Lambda expressions can be specified as arguments.
     val notZero = not {n -> n == 0}
     /*
-    If a Lambda has only one parameter
+    If a lambda has only one parameter
     then its declaration can be omitted (along with the ->).
     The name of the single parameter will be "it".
     */
