@@ -237,8 +237,8 @@ int main (int argc, char** argv)
 
   // Increment and decrement operators:
   int j = 0;
-  int s = j++; // Return j THEN increase j. (s -> 0, j -> 1)
-  s = ++j; // Increase j THEN return j. (s -> 2, j -> 2)
+  int s = j++; // Return j THEN increase j. (s = 0, j = 1)
+  s = ++j; // Increase j THEN return j. (s = 2, j = 2)
   // same with j-- and --j
 
   // Bitwise operators!
