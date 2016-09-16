@@ -23,8 +23,6 @@ Nearly all examples below can be a part of a shell script or executed directly i
 
 [Read more here.](http://www.gnu.org/software/bash/manual/bashref.html)
 
-Another recommened link: [The Command Line Crash Course](http://cli.learncodethehardway.org/book/)
-
 ```bash
 #!/bin/bash
 # First line of the script is shebang which tells the system how to execute
