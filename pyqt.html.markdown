@@ -1,7 +1,7 @@
 ---
 category: tool
-tool: Qt Framework
-language: pyqt
+tool: PyQT
+language: Python
 filename: learnqt.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
