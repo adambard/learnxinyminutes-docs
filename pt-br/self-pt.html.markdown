@@ -5,7 +5,7 @@ contributors:
 translators:
     - ["Ricardo de Almeida Gonzaga", "http://github.com/ricardotk"]
 lang: pt-br
-filename: learnself.self
+filename: learnself-br.self
 ---
 
 Self é um protótipo rápido baseado em linguagem orientada a objeto a qual roda em sua própria JIT vm. A maior parte do desenvolvimento é feito através de interações com objetos ativos, através de um ambiente visual de desenvolvimento chamado *morphic* com navegador e depurador integrados.
