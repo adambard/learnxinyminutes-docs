@@ -573,6 +573,8 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 * [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
 
+* [Learn Git Branching - the most visual and interactive way to learn Git on the web](http://learngitbranching.js.org/)
+
 * [Udemy Git Tutorial: A Comprehensive Guide](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
 
 * [Git Immersion - A Guided tour that walks through the fundamentals of git](http://gitimmersion.com/)
