@@ -5,7 +5,7 @@ contributors:
     - ["mdln", "https://github.com/mdln"]
 translators:
     - ["Ferran Pelayo", "https://github.com/ferranpm"]
-filename: LearnTmux.txt
+filename: LearnTmux-es.txt
 lang: es-es
 ---
 
