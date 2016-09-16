@@ -89,6 +89,13 @@ error(permission_error(access,private_predicate,bar/0),logtalk(scopes::bar,user)
 error(existence_error(predicate_declaration,local/0),logtalk(scopes::local,user))
 ```
 
+When the predicate in a message is unknown for the object (the role it plays determines the lookup procedures), we also get an error. For example:
+
+```logtalk
+?- scopes::unknown.
+error(existence_error(predicate_declaration,unknown/0),logtalk(scopes::unknown,user))
+```
+
 # Defining and implementing a protocol
 
 Protocols contain predicate declarations that can be implemented by objects and categories:
@@ -199,7 +206,7 @@ In order to define objects playing the role of classes and/or instances, an obje
 
 :- end_object.
 
-% a simple class defining person attributes
+% a simple class defining age/1 and name/1 predicate for its instances
 :- object(person,
 	instantiates(class)).
 
