@@ -230,9 +230,9 @@ mapping (string => uint) public balances;
 balances["charles"] = 1;
 console.log(balances["ada"]); // is 0, all non-set key values return zeroes
 // 'public' allows following from another contract
-contractName.balances("claude"); // returns 1
+contractName.balances("charles"); // returns 1
 // 'public' created a getter (but not setter) like the following:
-function balances(address _account) returns (uint balance) {
+function balances(string _account) returns (uint balance) {
     return balances[_account];
 }
 
