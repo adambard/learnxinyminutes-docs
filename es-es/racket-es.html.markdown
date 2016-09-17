@@ -15,7 +15,7 @@ Racket es un lenguaje de propósito general, multiparadigma que hace parte de la
 Racket is a general purpose, multi-paradigm programming language in the Lisp/Scheme family.
 
 
-La retroalimentación de bienvenida, puedes encontrarme en [@th3rac25](http://twitter.com/th3rac25) or th3rac25 [at] [google's email service]
+Agradezco tus opiniones, puedes encontrarme en [@th3rac25](http://twitter.com/th3rac25) or th3rac25 [at] [google's email service]
 
 
 ```racket
