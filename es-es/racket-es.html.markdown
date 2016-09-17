@@ -11,9 +11,7 @@ translators:
     - ["Carlos Roman", "https://github.com/carlochess"]
 lang: es-es
 ---
-Racket es un lenguaje de propósito general, multiparadigma que hace parte de la familia Lisp/Scheme
-Racket is a general purpose, multi-paradigm programming language in the Lisp/Scheme family.
-
+Racket es un lenguaje de propósito general, multiparadigma que hace parte de la familia Lisp/Scheme.
 
 Agradezco tus opiniones, puedes encontrarme en [@th3rac25](http://twitter.com/th3rac25) or th3rac25 [at] [google's email service]
 
@@ -21,14 +19,14 @@ Agradezco tus opiniones, puedes encontrarme en [@th3rac25](http://twitter.com/th
 ```racket
 #lang racket ; Define el lenguaje que usas
 
-;;; Comentario
+;;; Comentarios
 
-;; Comentarios de una sola línea inician con un punto y coma
+;; Los comentarios de una sola línea inician con un punto y coma
 
-#| Bloque de comentarios
-   pueden distribuirse en varias líneas...
+#| Un bloque de comentarios
+   puede distribuirse en varias líneas...
     #|
-       ¡Incluso pueden estar anidados!
+       ¡Incluso puede estar anidado!
     |#
 |#
 
@@ -55,7 +53,7 @@ Agradezco tus opiniones, puedes encontrarme en [@th3rac25](http://twitter.com/th
 ;; Si quieres crear una lista de literales debes agregar ' al inicio
 ;; para que no sean evaluados
 '(+ 1 2) ; => (+ 1 2)
-;; Ahora, algunas operaciones aritméticas
+;; Ahora algunas operaciones aritméticas
 (+ 1 1)  ; => 2
 (- 8 1)  ; => 7
 (* 10 2) ; => 20
@@ -88,10 +86,10 @@ Agradezco tus opiniones, puedes encontrarme en [@th3rac25](http://twitter.com/th
 ;; ¡Los tipos de dato Strings pueden unirse tambien!
 (string-append "Hello " "world!") ; => "Hello world!"
 
-;; Una string puede ser tratada como una lista de caracteres
+;; Un string puede ser tratado como una lista de caracteres
 (string-ref "Apple" 0) ; => #\A
 
-;; la función format puede usarse para darle formato a un strings:
+;; la función format puede usarse para darle formato a un string:
 (format "~a can be ~a" "strings" "formatted")
 
 ;; Imprimir en consola es muy simple
@@ -112,7 +110,7 @@ some-var ; => 5
 ;; Acceder a una variable no definida con anterioridad resulta en una excepción
 ; x ; => x: undefined ...
 
-;; Local binding: La variable 'me' es limitada a tomar el valor "Bob" dentro del ambiente (let ...)
+;; Local binding: La variable 'me' esta limitada a tomar el valor "Bob" dentro del ambiente (let ...)
 (let ([me "Bob"])
   "Alice"
   me) ; => "Bob"
@@ -143,7 +141,7 @@ my-pet ; => #<dog>
 (cons 1 (cons 2 (cons 3 null))) ; => '(1 2 3)
 ;; 'list' es otro constructor apropiado para las listas
 (list 1 2 3) ; => '(1 2 3)
-;; y el simbolo comilla (') puede ser usado para una lista de valores literales
+;; y el simbolo comilla (') puede ser usado en una lista de valores literales
 '(1 2 3) ; => '(1 2 3)
 
 ;; Aquí aun se puede usar 'cons' para agregar un elemento al comienzo de la lista
