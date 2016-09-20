@@ -31,7 +31,7 @@ Logtalk provides _objects_, _protocols_, and _categories_ as first-class entitie
 
 An object encapsulates predicate declarations and definitions. Objects can be created dynamically but are usually static and defined in source files. A single source file can contain any number of entity definitions. A  simple object, defining a list member public predicate:
 
-```logtalk
+```
 :- object(list).
 
 	:- public(member/2).
@@ -46,7 +46,7 @@ An object encapsulates predicate declarations and definitions. Objects can be cr
 
 Assuming that the code above for the `list` object is saved in a `list.lgt` file, it can be compiled and loaded using the `logtalk_load/1` built-in predicates or its abbreviation, `{}/1`, with the file path as argument (the extension can be omitted):
 
-```logtalk
+```
 ?- {list}.
 yes
 ```
@@ -55,7 +55,7 @@ yes
 
 The `::/2` infix operator is used to send a message to an object. As in Prolog, we can backtrack for alternative solutions:
 
-```logtalk
+```
 ?- list::member(X, [1,2,3]).
 X = 1 ;
 X = 2 ;
@@ -65,7 +65,7 @@ yes
 
 Encapsulation is enforced. A predicate can be declared _public_, _protected_, or _private_. It can also be _local_ when there is no scope directive for it. For example:
 
-```logtalk
+```
 :- object(scopes).
 
 	:- private(bar/0).
@@ -78,7 +78,7 @@ Encapsulation is enforced. A predicate can be declared _public_, _protected_, or
 
 Assuming the object is saved in a `scopes.lgt` file:
 
-```logtalk
+```
 ?- {scopes}.
 yes
 
@@ -91,7 +91,7 @@ error(existence_error(predicate_declaration,local/0),logtalk(scopes::local,user)
 
 When the predicate in a message is unknown for the object (the role it plays determines the lookup procedures), we also get an error. For example:
 
-```logtalk
+```
 ?- scopes::unknown.
 error(existence_error(predicate_declaration,unknown/0),logtalk(scopes::unknown,user))
 ```
@@ -100,7 +100,7 @@ error(existence_error(predicate_declaration,unknown/0),logtalk(scopes::unknown,u
 
 Protocols contain predicate declarations that can be implemented by objects and categories:
 
-```logtalk
+```
 :- protocol(listp).
 
 	:- public(member/2).
@@ -119,7 +119,7 @@ Protocols contain predicate declarations that can be implemented by objects and 
 
 The scope of the protocol predicates can be restricted using protected or private implementation. For example:
 
-```logtalk
+```
 :- object(stack,
 	implements(private::listp)).
 
@@ -132,7 +132,7 @@ In fact, all entity relations can be qualified as public (the default), protecte
 
 An object without an  _instantiation_ or _specialization_ relation with another object plays the role of a prototype. A prototype can _extend_ another object, its parent prototype.
 
-```logtalk
+```
 % clyde, our prototypical elephant
 :- object(clyde).
 
@@ -155,7 +155,7 @@ An object without an  _instantiation_ or _specialization_ relation with another 
 
 When answering a message sent to an object playing the role of a prototype, we validate the message and look for an answer first in the prototype itself and, if not found, we delegate to the prototype parents if any:
 
-```logtalk
+```
 ?- fred::number_of_legs(N).
 N = 4
 yes
@@ -167,7 +167,7 @@ yes
 
 A message is valid if the corresponding predicate is declared (and the sender is within scope) but it will fail, rather then throwing an error, if the predicate is not defined. This is called the _closed-world assumption_. For example, consider the following object, saved in a `foo.lgt` file:
 
-```logtalk
+```
 :- object(foo).
 
 	:- public(bar).
@@ -177,7 +177,7 @@ A message is valid if the corresponding predicate is declared (and the sender is
 
 Loading the file and trying to call the `bar/0` predicate fails as expected. Note that this is different from calling an _unknown_ predicate, which results in an error:
 
-```logtalk
+```
 ?- {foo}.
 yes
 
@@ -194,7 +194,7 @@ Error = error(
 
 In order to define objects playing the role of classes and/or instances, an object must have at least an instantiation or a specialization relation with another object. Objects playing the role of meta-classes can be used when we need to see a class also as an instance. We use the following example to also illustrate how to dynamically create new objects at runtime:
 
-```logtalk
+```
 % a simple, generic, meta-class defining a new/2 predicate for its instances
 :- object(class,
 	instantiates(class)).
@@ -231,7 +231,7 @@ In order to define objects playing the role of classes and/or instances, an obje
 
 When answering a message sent to an object playing the role of an instance, we validate the message by starting in its class and going up to its class superclasses if necessary. Assuming that the message is valid, then we look for an answer starting in the instance itself:
 
-```logtalk
+```
 ?- person::new(Instance, [name(paulo)]).
 Instance = o1
 yes
@@ -253,7 +253,7 @@ yes
 
 A category is a fine grained unit of code reuse, used to encapsulate a _cohesive_ set of predicate declarations and definitions, implementing a _single_ functionality, that can be imported into any object. A category can thus be seen as the dual concept of a  protocol. In the following example, we define categories representing car engines and then import them into car objects:
 
-```logtalk
+```
 % a protocol describing engine characteristics
 :- protocol(carenginep).
 
@@ -307,7 +307,7 @@ A category is a fine grained unit of code reuse, used to encapsulate a _cohesive
 
 Categories are independently compiled and thus allow importing objects to be updated by simple updating the imported categories without requiring object recompilation. Categories also provide _runtime transparency_:
 
-```logtalk
+```
 ?- sedan::current_predicate(Predicate).
 Predicate = reference/1 ;
 Predicate = capacity/1 ;
@@ -322,7 +322,7 @@ yes
 
 Categories can be also be used for hot-patching objects. A category can add new predicates to an object and/or replace object predicate definitions. For example, consider the following object:
 
-```logtalk
+```
 :- object(buggy).
 
 	:- public(p/0).
@@ -333,7 +333,7 @@ Categories can be also be used for hot-patching objects. A category can add new 
 
 Assume that the object prints the wrong string when sent the message `p/0`:
 
-```logtalk
+```
 ?- {buggy}.
 yes
 
@@ -344,7 +344,7 @@ yes
 
 If the object source code is not available and we need to fix an application running the object code, we can simply define a category that fixes the buggy predicate:
 
-```logtalk
+```
 :- category(patch,
 	complements(buggy)).
 
@@ -356,7 +356,7 @@ If the object source code is not available and we need to fix an application run
 
 After compiling and loading the category into the running application we will now get:
 
-```logtalk
+```
 ?- {patch}.
 yes
 
@@ -369,7 +369,7 @@ yes
 
 Objects and categories can be parameterized by using as identifier a compound term instead of an atom. Object and category parameters are _logical variables_ shared with all encapsulated predicates. An example with geometric circles:
 
-```logtalk
+```
 :- object(circle(_Radius, _Color)).
 
 	:- public([
@@ -389,7 +389,7 @@ Objects and categories can be parameterized by using as identifier a compound te
 
 Parametric objects are used just as any other object, usually providing values for the parameters when sending a message:
 
-```logtalk
+```
 ?- circle(1.23, blue)::area(Area).
 Area = 4.75291
 yes
@@ -397,7 +397,7 @@ yes
 
 Parametric objects also provide a simple way of associating a set of predicates with a Prolog predicate. Prolog facts can be interpreted as _parametric object proxies_ when they have the same functor and arity as the identifiers of parametric objects. Handy syntax is provided to for working with proxies. For example, assuming the following clauses for a `circle/2` predicate:
 
-```logtalk
+```
 circle(1.23, blue).
 circle(3.71, yellow).
 circle(0.39, green).
@@ -407,7 +407,7 @@ circle(8.32, cyan).
 
 With these clauses loaded, we can easily compute for example a list with the areas of all the circles:
 
-```logtalk
+```
 ?- findall(Area, {circle(_, _)}::area(Area), Areas).
 Areas = [4.75291, 43.2412, 0.477836, 103.508, 217.468]
 yes
@@ -417,7 +417,7 @@ yes
 
 Logtalk supports _event-driven programming_ by allowing defining events and monitors for those events. An event is simply the sending of a message to an object. Interpreting message sending as an atomic activity, a _before_ event and an _after_ event are recognized. Event monitors define event handler predicates, `before/3` and `after/3`, and can query, register, and delete a system-wide event registry that associates events with monitors. For example, a simple tracer for any message being sent using the `::/2` control construct can be defined as:
 
-```logtalk
+```
 :- object(tracer,
 	implements(monitoring)).    % built-in protocol for event handlers
 
@@ -436,7 +436,7 @@ Logtalk supports _event-driven programming_ by allowing defining events and moni
 
 Assuming that the `tracer` object and the `list` object defined earlier are compiled and loaded, we can observe the event handlers in action by sending a message:
 
-```logtalk
+```
 ?- list::member(X, [1,2,3]).
 
 call: list <-- member(X, [1,2,3]) from user
@@ -453,7 +453,7 @@ yes
 
 Logtalk supports lambda expressions. Lambda parameters are represented using a list with the `(>>)/2` infix operator connecting them to the lambda. Some simple examples using library meta-predicates:
 
-```logtalk
+```
 ?- {library(metapredicates_loader)}.
 yes
 
@@ -464,7 +464,7 @@ yes
 
 Currying is also supported:
 
-```logtalk
+```
 ?- meta::map([X]>>([Y]>>(Y is 2*X)), [1,2,3], Ys).
 Ys = [2,4,6]
 yes
@@ -475,7 +475,7 @@ yes
 
 Terms and goals in source files can be _expanded_ at compile time by specifying a _hook object_ that defines term-expansion and goal-expansion rules. For example, consider the following simple object, saved in a `source.lgt` file:
 
-```logtalk
+```
 :- object(source).
 
 	:- public(bar/1).
@@ -488,7 +488,7 @@ Terms and goals in source files can be _expanded_ at compile time by specifying 
 
 Let's define an hook object, saved in a `my_macros.lgt` file, that changes clauses and calls to the `foo/1` local predicate:
 
-```logtalk
+```
 :- object(my_macros,
 	implements(expanding)).		% built-in protocol for expanding predicates
 
@@ -502,7 +502,7 @@ Let's define an hook object, saved in a `my_macros.lgt` file, that changes claus
 
 After loading the macros file, we can then expand our source file with it:
 
-```logtalk
+```
 ?- logtalk_load(my_macros), logtalk_load(source, [hook(my_macros)]).
 yes
 
