@@ -897,6 +897,7 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [Official Style Guide for Python](https://www.python.org/dev/peps/pep-0008/)
 * [Python 3 Computer Science Circles](http://cscircles.cemc.uwaterloo.ca/)
 * [Dive Into Python 3](http://www.diveintopython3.net/index.html)
+* [A Crash Course in Python for Scientists](http://nbviewer.jupyter.org/gist/anonymous/5924718)
 
 ### Dead Tree
 
