@@ -285,7 +285,7 @@ fn main() {
     var = 3;
     let ref_var: &i32 = &var;
 
-    println!("{}", var); // Contrairement `box`, `var` peut encore être utilisé
+    println!("{}", var); // Contrairement `mien`, `var` peut encore être utilisé
     println!("{}", *ref_var);
     // Var = 5; // Cela ne compile pas parce que `var` est emprunté.
     // *ref_var = 6; // Ce ne serait pas non plus, parce que `ref_var` est une
