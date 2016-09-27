@@ -511,6 +511,7 @@ void str_reverse(char *str_in)
     str_in[len - ii - 1] = tmp;
   }
 }
+//NOTE: string.h header file needs to be included to use strlen()
 
 /*
 char c[] = "This is a test.";
