@@ -4,7 +4,7 @@ contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]
 filename: learnjson-id.json
-translators
+translators:
   - ["Rizky Luthfianto", "https://github.com/rilut"]
   - ["Ahmad Zafrullah", "https://github.com/23Pstars"]
 lang: id-id
