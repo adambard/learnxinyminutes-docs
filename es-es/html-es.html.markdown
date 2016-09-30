@@ -1,119 +1,120 @@
 ---
-language: html
-filename: learnhtml.html
-contributors:
+lenguaje: html
+nombre del archivo: learnhtml.html
+contribuyentes:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
-translators:
-    - ["Robert Steed", "https://github.com/robochat"]
+traductor:
+    - ["Gino Amaury", "https://github.com/ginoamaury"]
 ---
 
-HTML stands for HyperText Markup Language. 
-It is a language which us to write pages for the world wide web.
-It is a markup language, it enables us to write to write webpages using code to indicate how text and data should be displayed.
-In fact, html files are simple text files.
-What is this markup? It is a method of organising the page's data by surrounding it with opening tags and closing tags.
-This markup serves to give significance to the text that it encloses. 
-Like other computer languages, HTML has many versions. Here we will talk about HTML5.
+HTML significa Lenguaje de marcado de hipertexto (HyperText Markup Language).
+Este es un lenguaje usado para escribir paginas en la web (WWW). 
+Este es un lenguaje de marcado, es usado para escribir paginas web usando codigo para indicar como se debe mostrar el texto y los datos.
+En efecto, los archivos html son simples archivos de texto.
+Que es esto de marcado? es un metodo para organizar los datos de la pagina encerrandolos con etiquetas de apertura y cierre.
+Este marcado sirve para darle significancia al texto que este encierra.
+Como en otros lenguajes computacionales, HTML tiene varias verciones. Aqui hablaremos acerca de HTML5.
 
-**NOTE :**  You can test the different tags and elements as you progress through the tutorial on a site like [codepen](http://codepen.io/pen/) in order to see their effects, understand how they work and familiarise yourself with the language.
-This article is concerned principally with HTML syntax and some useful tips.
+**Nota :**  Puedes probrar las diferentes etiquetas y elementos a medida que progresas en un tutorial en un sitio como  [codepen](http://codepen.io/pen/) con el fin de ver sus efectos, entender como funcionan y familiarizarse con el lenguaje.
+Este articulo es ta centrado principalmente en la sintaxis HTML y algunos tips de importancia.
 
 
 ```html
-<!-- Comments are enclosed like this line! -->
+<!-- los comentarios estan encerrados como en esta linea! -->
 
-<!-- #################### The Tags #################### -->
+<!-- #################### Las Etiquetas #################### -->
    
-<!-- Here is an example HTML file that we are going to analyse. -->
+<!-- Este es un ejemplo de un archivo HTML que analizaremos! -->
 
 <!doctype html>
 	<html>
 		<head>
-			<title>My Site</title>
+			<title>Mi Sitio</title>
 		</head>
 		<body>
-			<h1>Hello, world!</h1>
-			<a href = "http://codepen.io/anon/pen/xwjLbZ">Come look at what this shows/a>
-			<p>This is a paragraph.</p>
-			<p>This is another paragraph.</p>
+			<h1>Hola, Mundo!</h1>
+			<a href = "http://codepen.io/anon/pen/xwjLbZ">ven mira lo que esto muestra. </a>
+			<p>Esto es un parrafo</p>
+			<p>Este es otro parrafo</p>
 			<ul>
-				<li>This is an item in a non-enumerated list (bullet list)</li>
-				<li>This is another item</li>
-				<li>And this is the last item on the list</li>
+				<li>Este es un elemento de una lista no numerada (lista de viñetas)</li>
+				<li>Este es otro item</li>
+				<li>Y este es el ultimo item de la lista</li>
 			</ul>
 		</body>
 	</html>
 
-<!-- An HTML file always starts by indicating to the browser that the page is HTML. -->
+<!-- En un archivo HTML siempre inicia indicandole al buscador que esta es una pagina HTML. -->
 <!doctype html>
 
-<!-- After this, it starts by opening an <html> tag. -->
+<!-- Despues de esto, iniciams abriendo una etiqueta html <html> -->
 <html>
 
-<!-- that will be closed at the end of the file with </html>. -->
+<!-- Cuando termine el archivo cerraremos la etiqueta asi </html>. -->
 </html>
 
-<!-- Nothing should appear after this final tag. -->
+<!-- despues de la etiqueta final nada aparecera o podra aparecer -->
 
-<!-- Inside (between the opening and closing tags <html></html>), we find: -->
+<!-- Dentro (Entre las etiquetas de apertura y cierre <html></html>), encontraremos: -->
 
-<!-- A header defined by <head> (it must be closed with </head>). -->
-<!-- The header contains some description and additional information which are not displayed; this is metadata. -->
+<!-- Un encabezado definido por <head> (Este debe ser cerrado por </head>). -->
+
+<!-- El encabezado contiene alguna descripcion y informacion adicional que no se muestra; estos son los metadatos. -->
 
 <head>
-	<title>My Site</title><!-- The tag <title> indicates to the browser the title to show in browser window's title bar and tab name. -->
+	<title>Mi Sitio</title><!-- La etiqueta <title> Indica al buscador el titulo a mostrar en la ventana del buscador en la barra de titulo y en el nombre de la pestaña. -->
 </head>
 
-<!-- After the <head> section, we find the tag - <body> -->
-<!-- Until this point, nothing described will show up in the browser window. -->
-<!-- We must fill the body with the content to be displayed. -->
+<!-- Despues de la seccion del encabezado <head> , Encontraremos la etiqueta de cuerpo - <body> -->
+<!-- Hasta este punto. no hay nada descrito para que se muestre en la ventana del navegador -->
+<!-- Debemos llenar el cuerpo con el contenido que se mostrara -->
 
 <body>
-	<h1>Hello, world!</h1> <!-- The h1 tag creates a title. -->
-	<!-- There are also subtitles to <h1> from the most important (h2) to the most precise (h6). -->
-	<a href = "http://codepen.io/anon/pen/xwjLbZ">Come look at what this shows</a> <!-- a hyperlink to the url given by the attribute href="" -->
-	<p>This is a paragraph.</p> <!-- The tag <p> lets us include text in the html page. -->
-	<p>This is another paragraph.</p>
-	<ul> <!-- The tag <ul> creates a bullet list. -->
-	<!-- To have a numbered list instead we would use <ol> giving 1. for the first element, 2. for the second, etc. -->
-		<li>This is an item in a non-enumerated list (bullet list)</li>
-		<li>This is another item</li>
-		<li>And this is the last item on the list</li>
+	<h1>Hola, Mundo!</h1> <!-- La etiqueta <h1> crea un titulo. -->
+	<!-- Tambien tenemos subtitulos para <h1> desde la mas importante <h2> a la mas precisa <h6> -->
+	<a href = "http://codepen.io/anon/pen/xwjLbZ">ven mira lo que esto muestra.</a> <!-- Un hipervinculo a la URL dada por el atributo href="" -->
+	<p>Esto es un parrafo.</p> <!-- La etiqueta <p> nos permite incluir texto en nuestra pagina HTML -->
+	<p>Este es otro parrafo.</p>
+	<ul> <!-- La etiqueta <ul> crea una lista de viñetas -->
+	<!-- Para tener una lista numerada usariamos la etiqueta <ol> dando 1. para el primer elemento, 2. para el segundo, etc. -->
+		<li>Este es un elemento de una lista no numerada (lista de viñetas)</li>
+		<li>Este es otro item</li>
+		<li>Y este es el ultimo item de la lista</li>
 	</ul>
 </body>
 
-<!-- And that's it, creating an HTML file can be simple. -->
+<!-- Y esto es todo, la creacion de un archivo HTML puede ser muy simple. -->
 
-<!-- But it is possible to add many additional types of HTML tags. -->
+<!-- Sin embargo, es posible añadir muchos otros tipos de etiquetas HTML  -->
 
-<!-- To insert an image. -->
-<img src="http://i.imgur.com/XWG0O.gif"/> <!-- The source of the image is indicated using the attribute src="" -->
-<!-- The source can be an URL or even path to a file on your computer. -->
+<!-- Para insertar una imagen -->
+<img src="http://i.imgur.com/XWG0O.gif"/> <!-- La fuente donde se localiza la imagen se indica utilizando el atributo src=""-->
+<!-- La fuente puede ser una URL o incluso una ruta a una arhivo en tu computador. -->
 
-<!-- It is also possible to create a table. -->
+<!-- Tambien es posible crear una tabla -->
 
-<table> <!-- We open a <table> element. -->
-	<tr> <!-- <tr> allows us to create a row. -->
-		<th>First Header</th> <!-- <th> allows us to give a title to a table column. -->
-		<th>Second Header</th>
+<table> <!-- Abrimos una etiqueta o elemento tabla <table> -->
+	<tr> <!-- <tr> Nos permite crear una fila. -->
+		<th>Primer encabezado</th> <!-- <th> Nos permite dar un titulo a una columna de una tabla -->
+		<th>Segundo encabezado</th>
 	</tr>
 	<tr>
-		<td>first row, first column</td> <!-- <td> allows us to create a table cell. -->
-		<td>first row, second column</td>
+		<td>Primera fila, primera columna</td> <!-- <td> nos permite crear una celda  -->
+		<td>Primera fila, segunda columna</td>
 	</tr>
 	<tr>
-		<td>second row, first column</td>
-		<td>second row, second column</td>
+		<td>Segunda fila, primera columna</td>
+		<td>Segunda fila, segunda columna</td>
 	</tr>
 </table>
 
 ```
 
-## Usage
+## Uso
 
-HTML is written in files ending with `.html`.
+HTML es escrito en archivos que terminan con (extencion) `.html`.
 
-## To Learn More 
+## Para aprender mas! 
 
 * [wikipedia](https://en.wikipedia.org/wiki/HTML)
 * [HTML tutorial](https://developer.mozilla.org/en-US/docs/Web/HTML)
