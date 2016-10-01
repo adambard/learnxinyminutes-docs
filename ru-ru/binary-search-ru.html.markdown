@@ -3,6 +3,7 @@ category: Algorithms & Data Structures
 name: Binary Search
 contributors:
     - ["Abhishek Jaisingh", "http://github.com/abhishekjiitr"]
+    - ["Evan K.", "https://github.com/justblah"]
 translators:
     - ["Evan K.", "https://github.com/justblah"]
 ---
@@ -58,11 +59,6 @@ def search(arr, x):
 
 ## На почитать
 
-* [CLRS](https://mitpress.mit.edu/books/introduction-algorithms)
-* [Алгоритмы](http://www.amazon.com/Algorithms-4th-Robert-Sedgewick/dp/032157351X)
-* [Проектирование алгоритма](http://www.amazon.com/Algorithm-Design-Foundations-Analysis-Internet/dp/0471383651)
-
-## Онлайн ресурсы
-
-* [GeeksforGeeks](http://www.geeksforgeeks.org/the-ubiquitous-binary-search-set-1/)
-* [Руководтво от Topcoder](https://www.topcoder.com/community/data-science/data-science-tutorials/binary-search/)
+* [Проектирование, реализация и примеры](https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%BE%D0%B8%D1%87%D0%BD%D1%8B%D0%B9_%D0%BF%D0%BE%D0%B8%D1%81%D0%BA)
+* [Описание алгоритма ИТМО](http://neerc.ifmo.ru/wiki/index.php?title=%D0%A6%D0%B5%D0%BB%D0%BE%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%B4%D0%B2%D0%BE%D0%B8%D1%87%D0%BD%D1%8B%D0%B9_%D0%BF%D0%BE%D0%B8%D1%81%D0%BA)
+* [Ошибки при реализации бинарного поиска](https://habrahabr.ru/post/146228/)
