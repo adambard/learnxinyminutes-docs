@@ -12,7 +12,7 @@ filename: learnswift-es.swift
 ---
 
 Swift es un lenguaje de programación para el desarrollo en iOS y OS X creado
-por Apple. Diseñado para coexistir con Objective-C y ser más resistente contra 
+por Apple. Diseñado para coexistir con Objective-C y ser más resistente contra
 el código erroneo, Swift fue introducido en el 2014 en el WWDC, la conferencia
 de desarrolladores de Apple.
 
@@ -27,13 +27,13 @@ import UIKit
 // MARK: Básicos
 //
 
-// XCode soporta referencias para anotar tu código y agregarlos a lista de la 
+// XCode soporta referencias para anotar tu código y agregarlos a lista de la
 // barra de saltos.
 // MARK: Marca de sección
 // TODO: Hacer algo pronto
 // FIXME: Arreglar este código
 
-// En Swift 2, println y print fueron combinados en un solo método print. 
+// En Swift 2, println y print fueron combinados en un solo método print.
 // Print añade una nueva línea automáticamente.
 print("Hola, mundo") // println ahora es print
 print("Hola, mundo", appendNewLine: false) // print sin agregar nueva línea
@@ -46,18 +46,18 @@ let øπΩ = "value" // nombres de variable unicode
 let π = 3.1415926
 let convenience = "keyword" // nombre de variable contextual
 // Las declaraciones pueden ser separadas por punto y coma (;)
-let weak = "keyword"; let override = "another keyword" 
-// Los acentos abiertos (``) permiten utilizar palabras clave como nombres de 
+let weak = "keyword"; let override = "another keyword"
+// Los acentos abiertos (``) permiten utilizar palabras clave como nombres de
 // variable
-let `class` = "keyword" 
+let `class` = "keyword"
 let explicitDouble: Double = 70
 let intValue = 0007 // 7
 let largeIntValue = 77_000 // 77000
 let label = "some text " + String(myVariable) // Conversión (casting)
-let piText = "Pi = \(π), Pi 2 = \(π * 2)" // Interpolación de string 
+let piText = "Pi = \(π), Pi 2 = \(π * 2)" // Interpolación de string
 
 // Valores específicos de la compilación (build)
-// utiliza la configuración -D 
+// utiliza la configuración -D
 #if false
     print("No impreso")
     let buildValue = 3
@@ -67,13 +67,13 @@ let piText = "Pi = \(π), Pi 2 = \(π * 2)" // Interpolación de string
 print("Build value: \(buildValue)") // Build value: 7
 
 /*
-    Las opcionales son un aspecto del lenguaje Swift que permite el 
+    Las opcionales son un aspecto del lenguaje Swift que permite el
     almacenamiento de un valor `Some` (algo) o `None` (nada).
-    
-    Debido a que Swift requiere que cada propiedad tenga un valor, 
-    hasta un valor 'nil' debe de ser explicitamente almacenado como un 
+
+    Debido a que Swift requiere que cada propiedad tenga un valor,
+    hasta un valor 'nil' debe de ser explicitamente almacenado como un
     valor opcional.
-    
+
     Optional<T> es un enum.
 */
 var someOptionalString: String? = "opcional" // Puede ser nil
@@ -85,7 +85,7 @@ if someOptionalString != nil {
     if someOptionalString!.hasPrefix("opt") {
         print("Tiene el prefijo")
     }
-    
+
     let empty = someOptionalString?.isEmpty
 }
 someOptionalString = nil
@@ -104,14 +104,14 @@ if let someOptionalStringConstant = someOptionalString {
 
 // Swift tiene soporte de almacenamiento para cualquier tipo de valor.
 // AnyObject == id
-// A diferencia de Objective-C `id`, AnyObject funciona con cualquier 
+// A diferencia de Objective-C `id`, AnyObject funciona con cualquier
 // valor (Class, Int, struct, etc)
 var anyObjectVar: AnyObject = 7
 anyObjectVar = "Cambiado a un valor string, no es buena práctica, pero posible."
 
 /*
     Comentar aquí
-    
+
     /*
         Comentarios anidados también son soportados
     */
@@ -122,8 +122,8 @@ anyObjectVar = "Cambiado a un valor string, no es buena práctica, pero posible.
 //
 
 /*
-    Tipos Array (arreglo) y Dictionary (diccionario) son structs (estructuras). 
-    Así que `let` y `var` también indican si son mudables (var) o 
+    Tipos Array (arreglo) y Dictionary (diccionario) son structs (estructuras).
+    Así que `let` y `var` también indican si son mudables (var) o
     inmutables (let) durante la declaración de sus tipos.    
 */
 
@@ -173,7 +173,7 @@ for i in -1...shoppingList.count {
 shoppingList[1...2] = ["steak", "peacons"]
 // Utilizar ..< para excluir el último valor
 
-// Ciclo while 
+// Ciclo while
 var i = 1
 while i < 1000 {
     i *= 2
@@ -224,7 +224,7 @@ func greet(name: String, day: String) -> String {
 }
 greet("Bob", "Martes")
 
-// Similar a lo anterior, a excepción del compartamiento de los parámetros 
+// Similar a lo anterior, a excepción del compartamiento de los parámetros
 // de la función
 func greet2(requiredName: String, externalParamName localParamName: String) -> String {
     return "Hola \(requiredName), hoy es el día \(localParamName)"
@@ -312,7 +312,7 @@ print(numbers) // [3, 6, 18]
 // Las estructuras y las clases tienen capacidades similares
 struct NamesTable {
     let names = [String]()
-    
+
     // Subscript personalizado
     subscript(index: Int) -> String {
         return names[index]
@@ -343,7 +343,7 @@ public class Shape {
 
 internal class Rect: Shape {
     var sideLength: Int = 1
-    
+
     // Getter y setter personalizado
     private var perimeter: Int {
         get {
@@ -354,13 +354,13 @@ internal class Rect: Shape {
             sideLength = newValue / 4
         }
     }
-    
-    // Lazily loading (inicialización bajo demanda) a una propiedad 
+
+    // Lazily loading (inicialización bajo demanda) a una propiedad
     // subShape queda como nil (sin inicializar) hasta que getter es llamado
     lazy var subShape = Rect(sideLength: 4)
-    
+
     // Si no necesitas un getter y setter personalizado
-    // pero aún quieres ejecutar código antes y después de hacer get o set 
+    // pero aún quieres ejecutar código antes y después de hacer get o set
     // a una propiedad, puedes utilizar `willSet` y `didSet`    
     var identifier: String = "defaultID" {
         // El argumento `willSet` será el nombre de variable para el nuevo valor
@@ -368,20 +368,20 @@ internal class Rect: Shape {
             print(someIdentifier)
         }
     }
-    
+
     init(sideLength: Int) {
         self.sideLength = sideLength
-        // Siempre poner super.init de último al momento de inicializar propiedades 
+        // Siempre poner super.init de último al momento de inicializar propiedades
         // personalizadas
         super.init()
     }
-    
+
     func shrink() {
         if sideLength > 0 {
-            --sideLength
+            sideLength -= 1
         }
     }
-    
+
     override func getArea() -> Int {
         return sideLength * sideLength
     }
@@ -413,13 +413,13 @@ class Circle: Shape {
     override func getArea() -> Int {
         return 3 * radius * radius
     }
-    
+
     // Un signo de interrogación como sufijo después de `init` es un init opcional
     // que puede devolver nil    
     init?(radius: Int) {
         self.radius = radius
         super.init()
-        
+
         if radius <= 0 {
             return nil
         }
@@ -457,11 +457,11 @@ enum Suit {
     }
 }
 
-// Los valores de enum permite la sintaxis corta, sin necesidad de poner 
+// Los valores de enum permite la sintaxis corta, sin necesidad de poner
 // el tipo del enum cuando la variable es declarada de manera explícita
 var suitValue: Suit = .Hearts
 
-// Enums de tipo no-entero requiere asignaciones de valores crudas directas 
+// Enums de tipo no-entero requiere asignaciones de valores crudas directas
 enum BookName: String {
     case John = "John"
     case Luke = "Luke"
@@ -474,7 +474,7 @@ enum Furniture {
     case Desk(height: Int)
     // Asociación con String e Int
     case Chair(String, Int)
-    
+
     func description() -> String {
         switch self {
         case .Desk(let height):
@@ -496,7 +496,7 @@ print(chair.description())    // "Chair of Foo with 40 cm"
 //
 
 // `protocol` puede requerir que los tipos tengan propiedades
-// de instancia específicas, métodos de instancia, métodos de tipo, 
+// de instancia específicas, métodos de instancia, métodos de tipo,
 // operadores, y subscripts
 
 
@@ -514,13 +514,13 @@ protocol ShapeGenerator {
 
 class MyShape: Rect {
     var delegate: TransformShape?
-    
+
     func grow() {
         sideLength += 2
 
-        // Pon un signo de interrogación después de la propiedad opcional, 
-        // método, o subscript para ignorar un valor nil y devolver nil 
-        // en lugar de  tirar un error de tiempo de ejecución 
+        // Pon un signo de interrogación después de la propiedad opcional,
+        // método, o subscript para ignorar un valor nil y devolver nil
+        // en lugar de  tirar un error de tiempo de ejecución
         // ("optional chaining")        
         if let allow = self.delegate?.canReshape?() {
             // test for delegate then for method
@@ -536,7 +536,7 @@ class MyShape: Rect {
 
 // `extension`: Agrega funcionalidades a tipos existentes
 
-// Square ahora se "conforma" al protocolo `Printable` 
+// Square ahora se "conforma" al protocolo `Printable`
 extension Square: Printable {
     var description: String {
         return "Area: \(self.getArea()) - ID: \(self.identifier)"
@@ -550,7 +550,7 @@ extension Int {
     var customProperty: String {
         return "This is \(self)"
     }
-    
+
     func multiplyBy(num: Int) -> Int {
         return num * self
     }
@@ -589,7 +589,7 @@ prefix func !!! (inout shape: Square) -> Square {
 // Valor actual
 print(mySquare.sideLength) // 4
 
-// Cambiar la longitud del lado utilizando el operador !!!, 
+// Cambiar la longitud del lado utilizando el operador !!!,
 // incrementa el tamaño por 3
 !!!mySquare
 print(mySquare.sideLength) // 12
