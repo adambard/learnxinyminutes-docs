@@ -3,7 +3,6 @@ category: Algorithms & Data Structures
 name: Binary Search
 contributors:
     - ["Abhishek Jaisingh", "http://github.com/abhishekjiitr"]
-    - ["Evan K.", "https://github.com/justblah"]
 translators:
     - ["Evan K.", "https://github.com/justblah"]
 ---
