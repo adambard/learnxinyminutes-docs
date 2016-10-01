@@ -8,7 +8,7 @@ lang: es-es
 filename: LearnKotlin-es.kt
 ---
 
-Kotlin es un lenguaje estatico tipado para la JVM, Android y el navegador. Es
+Kotlin es un lenguaje estático tipado para la JVM, Android y el navegador. Es
 100% interoperable con Java.
 [Leer mas aqui.](https://kotlinlang.org/)
 
@@ -43,18 +43,17 @@ fun main(args: Array<String>) {
 
     /*
     Las cadenas pueden ser representadas de la misma manera que Java.
-    Escaping is done with a backslash.
     El escape de caracteres se realiza con una barra invertida.
     */
-    val fooString = "My Cadena está aquí!";
-    val barString = "¿Imprimiendo en una nueva linea?\nNo hay problema!";
-    val bazString = "¿Quieres agregar una tabulación?\tNo hay problema!";
+    val fooString = "Mi Cadena está aquí!";
+    val barString = "¿Imprimiendo en una nueva línea?\nNo hay problema!";
+    val bazString = "¿Quíeres agregar una tabulación?\tNo hay problema!";
     println(fooString);
     println(barString);
     println(bazString);
 
     /*
-    Una cadena está delimitada por un comillas triple (""").
+    Una cadena está delimitada por comillas triple (""").
     Estas cadenas pueden contener saltos de línea y otros caracteres.
     */
     val fooRawString = """
@@ -72,11 +71,11 @@ fun main(args: Array<String>) {
     println(fooTemplateString)
 
     /*
-    Para que una variable para aceptar valor nulo se debe especificar explícitamente
-    Como anulable añadiendole un ? a su tipo.
+    Para que una variable pueda aceptar valor nulo se debe especificar
+    explícitamente como anulable añadiendole ? a su tipo.
     Podemos acceder a una variable anulable mediante el uso del operador ?.
-    Podemos utilizar el operador ?: para especificar un valor alternativo a usar
-    Si una variable es nula.
+    Podemos utilizar el operador ?: para especificar un valor alternativo
+    a usar si una variable es nula.
     */
     var fooNullable: String? = "abc"
     println(fooNullable?.length) // => 3
@@ -112,7 +111,7 @@ fun main(args: Array<String>) {
 
     /*
     Cuando una función consiste de una sola expresión entonces las llaves
-    pueden ser omitidas.  El cuerpo es especificado despues del símbolo =
+    pueden ser omitidas. El cuerpo es especificado despues del símbolo =
     */
     fun odd(x: Int): Boolean = x % 2 == 1
     println(odd(6)) // => false
@@ -124,7 +123,8 @@ fun main(args: Array<String>) {
     println(even(6)) // => true
     println(even(7)) // => false
 
-    // Las funciones pueden tomar funciones como argumentos y retorna funciones.
+    // Las funciones pueden tomar funciones como argumentos y 
+    // retornar funciones.
     fun not(f: (Int) -> Boolean) : (Int) -> Boolean {
         return {n -> !f.invoke(n)}
     }
@@ -133,11 +133,11 @@ fun main(args: Array<String>) {
     // utilizando el operador ::.
     val notOdd = not(::odd)
     val notEven = not(::even)
-    // Las funciones anónimas pueden ser especificadas comoargumentos.
+    // Las funciones anónimas pueden ser especificadas como argumentos.
     val notZero = not {n -> n == 0}
     /*
-    Si una función anónima tiene un solo parametro entonces la declaracion
-    puede ser omitida (junto con ->). El nombre del unico parametro será "it".
+    Si una función anónima tiene un solo parametro entonces la declaración
+    puede ser omitida (junto con ->). El nombre del único parametro será "it".
     */
     val notPositive = not {it > 0}
     for (i in 0..4) {
@@ -156,20 +156,20 @@ fun main(args: Array<String>) {
     }
     /*
     Para crear una nueva instancia llamamos al constructor.
-    Notese que Kotlin no tiene la palabra clave "new".
+    Notese que Kotlin no usa la palabra clave "new".
     */
     val fooExampleClass = ExampleClass(7)
     // Las funciones miembros pueden ser llamadas usando la notacion de punto (.)
     println(fooExampleClass.memberFunction(4)) // => 11
     /*
     Si una función ha sido marcada con la palabra clave "infix" entonces
-    esta puede ser invocada usando la notacion infija.
+    esta puede ser invocada usando la notación infija.
     */
     println(fooExampleClass infixMemberFunction 4) // => 28
 
     /*
     Las clases "data" son una manera concisa de crear clases que solo contengan datos.
-    Los metodos "hashCode"/"equals" y "toString" son generados automaticamente.
+    Los metodos "hashCode"/"equals" y "toString" son generados automáticamente.
     */
     data class DataClassExample (val x: Int, val y: Int, val z: Int)
     val fooData = DataClassExample(1, 2, 4)
@@ -228,7 +228,7 @@ fun main(args: Array<String>) {
     val x = fooSequence.take(10).toList()
     println(x) // => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    // Un ejemplo usando las secuencias para generar los numeros de Fibonacci:
+    // Un ejemplo usando las secuencias para generar los números de Fibonacci:
     fun fibonacciSequence() : Sequence<Long> {
         var a = 0L
         var b = 1L
@@ -245,7 +245,7 @@ fun main(args: Array<String>) {
     val y = fibonacciSequence().take(10).toList()
     println(y) // => [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 
-    // Kotlin provee funciones de Orden Mayor para trabajar con colecciones.
+    // Kotlin provee funciones de Orden-Mayor para trabajar con colecciones.
     val z = (1..9).map {it * 3}
             .filter {it < 20}
             .groupBy {it % 2 == 0}
@@ -326,7 +326,7 @@ fun main(args: Array<String>) {
 
     /*
     Las extensiones son una manera de añadir nuevas funcionalidades a una clase.
-    Estas son similares a la extension de métodos en C$.
+    Estas son similares a la extension de métodos en C#.
      */
     fun String.remove(c: Char): String {
         return this.filter {it != c}
@@ -337,7 +337,7 @@ fun main(args: Array<String>) {
     println(ObjectExample.hello()) // => hello
 }
 
-// Las clases "Enum" son similares a los tipos "enum" de Java.
+// Las clases "enum" son similares a los tipos "enum" de Java.
 enum class EnumExample {
     A, B, C
 }
