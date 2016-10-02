@@ -459,7 +459,7 @@ on a new line! ""Wow!"", the masses cried";
                 if (i > limit/2) yield break;
                 yield return i;
             }
-        }             
+        }
 
         public static void OtherInterestingFeatures()
         {
@@ -948,7 +948,7 @@ on a new line! ""Wow!"", the masses cried";
             A.A2();
         }
     }
-    
+
     // String interpolation by prefixing the string with $
     // and wrapping the expression you want to interpolate with { braces }
     public class Rectangle
@@ -956,7 +956,7 @@ on a new line! ""Wow!"", the masses cried";
         public int Length { get; set; }
         public int Width { get; set; }
     }
-    
+
     class Program
     {
         static void Main(string[] args)
@@ -965,24 +965,24 @@ on a new line! ""Wow!"", the masses cried";
             Console.WriteLine($"The length is {rect.Length} and the width is {rect.Width}");
         }
     }
-    
+
     // New C# 6 features
     class GlassBall : IJumpable, IBreakable
     {
         // Autoproperty initializers
         public int Damage { get; private set; } = 0;
-        
+
         // Autoproperty initializers on getter-only properties
         public string Name { get; } = "Glass ball";
-        
+
         // Getter-only autoproperty that is initialized in constructor
         public string GenieName { get; }
-        
+
         public GlassBall(string genieName = null)
         {
             GenieName = genieName;
         }
-        
+
         public void Jump(int meters)
         {
             if (meters < 0)
@@ -993,16 +993,16 @@ on a new line! ""Wow!"", the masses cried";
 
             Damage += meters;
         }
-        
+
         // Expression-bodied properties ...
         public bool Broken
             => Damage > 100;
-        
+
         // ... and methods
         public override string ToString()
             // Interpolated string
             => $"{Name}. Damage taken: {Damage}";
-            
+
         public string SummonGenie()
             // Null-conditional operators
             // x?.y will return null immediately if x is null; y is not evaluated
