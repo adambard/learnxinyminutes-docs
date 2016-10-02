@@ -4,7 +4,7 @@ contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
   - ["Xavier Yao", "http://github.com/xavieryao"]
 filename: coffeescript-id.coffee
-contributors:
+translators:
   - ["Rizky Luthfianto", "http://github.com/rilut"]
 lang: id-id
 ---
