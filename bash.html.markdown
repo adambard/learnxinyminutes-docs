@@ -96,10 +96,10 @@ echo "Script's arguments separated into different variables: $1 $2..."
 # Now that we know how to echo and use variables,
 # let's learn some of the other basics of bash!
 
-# Getting our current directory is available through the command `pwd`.
+# Our current directory is available through the command `pwd`.
 # `pwd` stands for "print working directory".
 # We can also use the builtin variable `$PWD`.
-# Observer that the following are equivalent:
+# Observe that the following are equivalent:
 echo "I'm in $(pwd)" # execs `pwd` and interpolates output
 echo "I'm in $PWD" # interpolates the variable
 
