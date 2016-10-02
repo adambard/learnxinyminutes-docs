@@ -289,6 +289,19 @@ keymap ; => {:a 1, :b 2, :c 3}
    (into []))    ;=> (into [] (filter odd? (map inc (range 10)))
                  ; Result: [1 3 5 7 9]
 
+; When you are in a situation where you want more freedom as where to
+; put the result of previous data transformations in an 
+; expression, you can use the as-> macro. With it, you can assign a
+; specific name to transformations' output ans use it as a
+; placeholder in your chained expressions:
+
+(as-> [1 2 3] input
+  (map inc input);=> You can use last transform's output at the last position
+  (nth input 4) ;=>  and at the second position, in the same expression
+  (conj [4 5 6] input [8 9 10])) ;=> or in the middle !
+
+
+
 ; Modules
 ;;;;;;;;;;;;;;;
 
