@@ -117,6 +117,6 @@ HTML es escrito en archivos que terminan con (extensión) `.html`.
 
 ## Para aprender más! 
 
-* [wikipedia](https://en.wikipedia.org/wiki/HTML)
-* [HTML tutorial](https://developer.mozilla.org/en-US/docs/Web/HTML)
-* [W3School](http://www.w3schools.com/html/html_intro.asp)
+* [wikipedia](https://es.wikipedia.org/wiki/HTML)
+* [HTML tutorial](https://developer.mozilla.org/es/docs/Web/HTML)
+* [W3School (EN)](http://www.w3schools.com/html/html_intro.asp)
