@@ -10,6 +10,11 @@ contributors:
     - ["Anton Strömkvist", "http://lutic.org/"]
     - ["Rahil Momin", "https://github.com/iamrahil"]
     - ["Gregrory Kielian", "https://github.com/gskielian"]
+    - ["Etan Reisner", "https://github.com/deryni"]
+    - ["Jonathan Wang", "https://github.com/Jonathansw"]   
+    - ["Leo Rudberg", "https://github.com/LOZORD"]
+    - ["Betsy Lorton", "https://github.com/schbetsy"]
+    - ["John Detter", "https://github.com/jdetter"]
 filename: LearnBash-it.sh
 translators:
     - ["Robert Margelli", "http://github.com/sinkswim/"]
@@ -50,6 +55,13 @@ echo '$Variabile'
 # il suo nome senza $. Se vuoi usare il valore della variabile, devi usare $.
 # Nota che ' (singolo apice) non espande le variabili!
 
+# Espansione dei parametri ${ }:
+echo ${Variabile}
+# Questo è un esempio semplice dell'espansione dei parametri.
+# L'espansione dei parametri prende il valore di una variabile, ed appunto lo "espande" o lo stampa.
+# Durante l'espansione il valore o il parametro passato possono essere modificati.
+# Sotto ci sono altri esempi che analizzano l'uso dell'espansione dei parametri.
+
 # Sostituzione di stringhe nelle variabili
 echo ${Variabile/Una/A}
 # Questo sostituirà la prima occorrenza di "Una" con "La"
@@ -64,6 +76,12 @@ echo ${Foo:-"ValoreDiDefaultSeFooMancaOppureÈVuoto"}
 # Questo funziona per null (Foo=), stringa vuota (Foo=""), zero (Foo=0) ritorna 0
 # Nota: viene ritornato il valore di default, il contenuto della variabile pero' non cambia.
 
+# Espansione delle graffe { }
+# Viene usata per generare stringe in modo arbitrario
+echo {1..10}
+echo {a..z}
+# Con questi comandi viene stampato l'intervallo dal valore iniziale al valore finale (i numeri da 1 a 10, le lettere dell'alfabeto)
+
 # Variabili builtin:
 # Ci sono delle variabili builtin molto utili, come
 echo "Valore di ritorno dell'ultimo programma eseguito: $?"
@@ -71,6 +89,18 @@ echo "PID dello script: $$"
 echo "Numero di argomenti: $#"
 echo "Argomenti dello script: $@"
 echo "Argomenti dello script separati in variabili distinte: $1 $2..."
+
+# Adesso che sappiamo come stampare a schermo, e come usare le variabili, possiamo andare avanti con le basi di bash!
+# Per conoscere la directory su cui siamo posizionati, è sufficiente usare `pwd`.
+# `pwd` è l'acronimo di "print working directory", ovvero "stampa la directory corrente".
+# Possiamo anche usare la variabile builtin `$PWD`.
+# Prova questi due esempi, e vedi che il risultato è lo stesso:
+echo "Sono dentro $(pwd)" # esegue `pwd` ed interpola l'output
+echo "Sono dentro $PWD" # interpola direttamente la variabile builtin
+
+# Se c'è troppo testo nel terminale, ottenuto scrivendo comandi oppure eseguendo uno script, il comando `clear` pulisce lo schermo
+clear
+# Puoi utilizzare anche Ctrl-L al posto di clear
 
 # Leggere un valore di input:
 echo "Come ti chiami?"
@@ -120,11 +150,51 @@ ls
 
 # Questi comandi hanno opzioni che controllano la loro esecuzione:
 ls -l # Elenca tutti i file e le cartelle su una riga separata
+ls -t # Ordina i contenuti della cartella in base all'ultima data di modifica (ordine decrescente)
+ls -R # Esegue `ls` in modo ricorsivo all'interno di questa cartella e tutte le sottocartelle
 
 # I risultati del comando precedente possono essere passati al comando successivo come input.
 # Il comando grep filtra l'input con il pattern passato. Ecco come possiamo elencare i
 # file .txt nella cartella corrente:
 ls -l | grep "\.txt"
+
+# Usa `cat` per stampare il contenuto dei file a schermo:
+cat file.txt
+
+# Possiamo leggere il contenuto di un file e memorizzarlo in una variabile, sempre usando `cat`:
+Contenuti=$(cat file.txt)
+echo "INIZIO DEL FILE\n$Contenuti\nFINE DEL FILE"
+
+# Usa `cp` per copiare file o cartelle da un punto all'altro del sistema.
+# `cp` crea NUOVE versioni dei file, quindi le modifiche della copia non hanno effetto sull'originale, e viceversa.
+# Nota che il file (o la cartella) di destinazione vengono sovrascritte se già esistono!
+cp fileSorgente.txt copia.txt
+cp -r cartellaSorgente/ destinazione/ # copia ricorsiva
+
+# Se hai bisogno di trasferire file tra computer, puoi usare `scp` o `sftp`.
+# `scp` ha una sintassi simile a `cp`.
+# `sftp` invece è più interattivo.
+
+# Usa `mv` per spostare file o cartella da un punto all'altro del sistema.
+# `mv` è simile a `cp`, ma cancella il file(o la cartella) sorgente.
+# `mv` è molto utile anche per rinominare i file!
+mv s0rg3nt3.txt dst.txt # mi spiace anonymous...
+
+# Dal momento che bash lavora nel contesto della cartella corrente, potresti voler eseguire il comando dentro a qualche altra cartella. Per fare questo si usa `cd`:
+cd ~ # va nella cartella Home
+cd .. # va nella cartella "padre"
+      # (ad esempio da /home/user/Download a /home/user)
+cd /home/user/Documenti # entra nella cartella specificata
+cd ~/Documenti/.. # siamo sempre nella cartella home... vero?
+
+# Usa le subshell per lavorare in cartelle diverse contemporaneamente
+(echo "All'inizio sono qua: $PWD") && (cd cartella; echo "Adesso invece sono qua: $PWD")
+pwd # siamo sempre nella prima cartella
+
+# Usa `mkdir` per creare nuove cartelle
+mkdir nuovaCartella
+# Il flag `-p` indica la creazione delle cartelle intermedie, se non esistono.
+mkdir nuovaCartella/con/tante/cartelle/intermedie
 
 # Puoi redirezionare l'input e l'output del comando (stdin, stdout, e stderr).
 # Leggi da stdin finchè ^EOF$ e sovrascrivi hello.py con le righe
@@ -164,7 +234,9 @@ echo "#helloworld" | cat > output.out
 echo "#helloworld" | tee output.out >/dev/null
 
 # Pulisci i file temporanei verbosamente (aggiungi '-i' per la modalità interattiva)
+# Attenzione: il comando `rm` non può essere annullato!
 rm -v output.out error.err output-and-error.log
+rm -r cartellaTemporanea/ # cancella ricorsivamente
 
 # I comandi possono essere sostituiti con altri comandi usando $( ):
 # Il comando seguente mostra il numero di file e cartelle nella
@@ -255,10 +327,25 @@ sed -i 's/okay/great/g' file.txt
 grep "^foo.*bar$" file.txt
 # passa l'opzione "-c" per stampare invece il numero delle righe che soddisfano la regex
 grep -c "^foo.*bar$" file.txt
+# Altre opzioni utili possono essere:
+grep -r "^foo.*bar$" someDir/ # esegue `grep` ricorsivamente nella cartella
+grep -n "^foo.*bar$" file.txt # stampa il numero delle righe del file
+grep -rI "^foo.*bar$" someDir/ # esegue `grep` ricorsivamente nella cartella, ignorando i file non testuali
+# Esegue la stessa ricerca iniziale, ma filtrando solo le righe che contengono la stringa "baz"
+grep "^foo.*bar$" file.txt | grep -v "baz"
+
 # se vuoi letteralmente cercare la stringa,
 # e non la regex, usa fgrep (o grep -F)
-fgrep "^foo.*bar$" file.txt
+fgrep "foobar" file.txt
 
+# Il comando trap permette di eseguire un comando quando un segnale viene ricevuto dal tuo script.
+# In questo esempio, trap eseguirà rm se uno dei tre segnali (SIGHUP, SIGINT o SIGTERM) viene ricevuto.
+trap "rm $TEMP_FILE; exit" SIGHUP SIGINT SIGTERM
+
+# `sudo` viene usato per eseguire comandi come superuser, ovvero come utente che ha maggiori privilegi all'interno del sistema
+$NOME1=$(whoami)
+$NOME2=$(sudo whoami)
+echo "Ero $NOME1, poi sono diventato più potente: $NOME2"
 
 # Leggi la documentazione dei builtin di bash con il builtin 'help' di bash:
 help
