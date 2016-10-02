@@ -9,8 +9,9 @@ contributors:
 lang: id-id
 ---
 
-CoffeeScript adalah bahasa kecil yang dikompilasi satu-ke-satu menjadi JavaScript, dan tidak diinterpretasi pada saat runtime.
-Sebagai salah satu penerus JavaScript, CoffeeScript mencoba agar kode JavaScript yang dihasilkan lebih dibaca
+CoffeeScript adalah bahasa sederhana yang diterjemahkan saat kompilasi ke dalam JavaScript,
+dan bukan diterjemahkan pada saat *runtime*.  
+CoffeeScript mencoba agar kode JavaScript yang dihasilkan tetap mudah dibaca
 dan kompatibel dengan semua *runtime* JavaScript.
 
 Lihat juga [website CoffeeScript](http://coffeescript.org/) yang memiliki tutorial lengkap tentang CoffeeScript.
