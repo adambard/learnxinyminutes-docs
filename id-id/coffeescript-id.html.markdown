@@ -78,14 +78,14 @@ alert "Elvis ada!" if elvis?
 # Komprehensi *array*:
 kubik_kubik = (fungsi_matematika.kubik angka for angka in list)
 #=>kubik_kubik = (function() {
-#		 var _i, _len, _hasil;
-#		 _hasil = [];
-# 	for (_i = 0, _len = list.length; _i < _len; _i++) {
-#		  angka = list[_i];
-#		  _hasil.push(fungsi_matematika.kubik(angka));
-#	  }
-#	  return _hasil;
-# })();
+#     var _i, _len, _hasil;
+#     _hasil = [];
+#     for (_i = 0, _len = list.length; _i < _len; _i++) {
+#         angka = list[_i];
+#         _hasil.push(fungsi_matematika.kubik(angka));
+#     }
+#     return _hasil;
+#})();
 
 sayur_sayuran = ['brokoli', 'bayam', 'kemangi']
 makan sayuran for sayuran in sayur_sayuran when sayuran isnt 'kemangi'
