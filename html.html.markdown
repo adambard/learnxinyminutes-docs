@@ -8,7 +8,7 @@ translators:
 ---
 
 HTML stands for HyperText Markup Language. 
-It is a language which us to write pages for the world wide web.
+It is a language which use to write pages for the world wide web.
 It is a markup language, it enables us to write to write webpages using code to indicate how text and data should be displayed.
 In fact, html files are simple text files.
 What is this markup? It is a method of organising the page's data by surrounding it with opening tags and closing tags.
@@ -33,7 +33,7 @@ This article is concerned principally with HTML syntax and some useful tips.
 		</head>
 		<body>
 			<h1>Hello, world!</h1>
-			<a href = "http://codepen.io/anon/pen/xwjLbZ">Come look at what this shows/a>
+			<a href = "http://codepen.io/anon/pen/xwjLbZ">Come look at what this shows</a>
 			<p>This is a paragraph.</p>
 			<p>This is another paragraph.</p>
 			<ul>
