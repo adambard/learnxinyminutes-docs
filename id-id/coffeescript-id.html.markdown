@@ -100,7 +100,7 @@ makan sayuran for sayuran in sayur_sayuran when sayuran isnt 'kemangi'
 #}
 ```
 
-## Referensi tambahan
+## Referensi Tambahan
 
-- [Smooth CoffeeScript] (http://autotelicum.github.io/Smooth-CoffeeScript/)
-- [CoffeeScript Ristretto] (https://leanpub.com/coffeescript-ristretto/read)
+- [Smooth CoffeeScript (EN)] (http://autotelicum.github.io/Smooth-CoffeeScript/)
+- [CoffeeScript Ristretto (EN)] (https://leanpub.com/coffeescript-ristretto/read)
