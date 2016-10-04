@@ -1,5 +1,5 @@
 ---
-language: mysql
+language: sql
 contributors:
     - ["Abraham Toriz", "https://github.com/categulario"]
 filename: learnsql.sql
