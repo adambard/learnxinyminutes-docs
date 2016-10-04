@@ -96,7 +96,7 @@ I'm still in paragraph 2 too!
 I'm in paragraph three!
 ```
 
-Should you ever want to insert an HTML <br /> tag, you can end a paragraph
+Should you ever want to insert an HTML `<br />` tag, you can end a paragraph
 with two or more spaces and then begin a new paragraph.
 
 ```markdown
@@ -147,7 +147,7 @@ Ordered lists are done with a number followed by a period.
 3. Item three
 ```
 
-You don't even have to label the items correctly and markdown will still
+You don't even have to label the items correctly and Markdown will still
 render the numbers in order, but this may not be a good idea.
 
 ```markdown
