@@ -898,9 +898,3 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [Python 3 Computer Science Circles](http://cscircles.cemc.uwaterloo.ca/)
 * [Dive Into Python 3](http://www.diveintopython3.net/index.html)
 * [A Crash Course in Python for Scientists](http://nbviewer.jupyter.org/gist/anonymous/5924718)
-
-### Dead Tree
-
-* [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
-* [Dive Into Python 3](https://www.amazon.com/gp/product/1430224150?ie=UTF8&tag=diveintomark-20&creativeASIN=1430224150)
-* [Learn Python 3.0 VISUALLY](https://www.amazon.com/Learn-Python-3-0-VISUALLY-Interactive-ebook/dp/B00YI58B9U/)
