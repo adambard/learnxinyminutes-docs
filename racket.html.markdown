@@ -8,6 +8,7 @@ contributors:
   - ["Gustavo Schmidt", "https://github.com/gustavoschmidt"]
   - ["Duong H. Nguyen", "https://github.com/cmpitg"]
   - ["Keyan Zhang", "https://github.com/keyanzhang"]
+  - ["Joyce Kung", "https://github.com/thejoycekung"]
 ---
 
 Racket is a general purpose, multi-paradigm programming language in the Lisp/Scheme family.
@@ -20,7 +21,7 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 
 ;;; Comments
 
-;; Single line comments start with a semicolon
+;; Single line comments start with two semicolons
 
 #| Block comments
    can span multiple lines and...
@@ -52,7 +53,8 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 ;; If you want to create a literal list of data, use ' to stop it from
 ;; being evaluated
 '(+ 1 2) ; => (+ 1 2)
-;; Now, some arithmetic operations
+;; Now, some arithmetic operations (operators always come before
+;; operands):
 (+ 1 1)  ; => 2
 (- 8 1)  ; => 7
 (* 10 2) ; => 20
@@ -97,12 +99,15 @@ Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3r
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 2. Variables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; You can create a variable using define
 ;; a variable name can use any character except: ()[]{}",'`;#|\
+
 (define some-var 5)
 some-var ; => 5
 
 ;; You can also use unicode characters
+(define ❤ heart)
 (define ⊆ subset?)
 (⊆ (set 3 2) (set 1 2 3)) ; => #t
 
