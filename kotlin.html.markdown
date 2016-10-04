@@ -337,13 +337,18 @@ enum class EnumExample {
 
 /*
 The "object" keyword can be used to create singleton objects.
-We cannot assign it to a variable, but we can refer to it by its name.
+We cannot instantiate it but we can refer to its instance by its name.
 This is similar to Scala singleton objects.
 */
 object ObjectExample {
     fun hello() : String {
         return "hello"
     }
+}
+
+fun useObject() {
+    ObjectExample.hello()
+    val someRef: Any = ObjectExample // we use objects name just as is
 }
 
 ```
