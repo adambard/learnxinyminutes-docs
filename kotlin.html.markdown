@@ -337,7 +337,7 @@ enum class EnumExample {
 
 /*
 The "object" keyword can be used to create singleton objects.
-We cannot instantiate it but we can refer to its instance by its name.
+We cannot instantiate it but we can refer to its unique instance by its name.
 This is similar to Scala singleton objects.
 */
 object ObjectExample {
