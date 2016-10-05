@@ -27,7 +27,7 @@ A dicha función se le pasa un arreglo que contiene los argumentos de la linea d
 */
 fun main(args: Array<String>) {
     /*
-    La declaracion de valores se realiza utilizando tanto "var" como "val".
+    La declaración de valores se realiza utilizando tanto "var" como "val".
     Las declaraciones "val" no pueden ser reasignadas, mientras que "var" sí.
     */
     val fooVal = 10 // más adelante no podremos reasignar fooVal con un valor distinto.
@@ -156,10 +156,10 @@ fun main(args: Array<String>) {
     }
     /*
     Para crear una nueva instancia llamamos al constructor.
-    Notese que Kotlin no usa la palabra clave "new".
+    Nótese que Kotlin no usa la palabra clave "new".
     */
     val fooExampleClass = ExampleClass(7)
-    // Las funciones miembros pueden ser llamadas usando la notacion de punto (.)
+    // Las funciones miembros pueden ser llamadas usando la notación de punto (.)
     println(fooExampleClass.memberFunction(4)) // => 11
     /*
     Si una función ha sido marcada con la palabra clave "infix" entonces
@@ -175,7 +175,7 @@ fun main(args: Array<String>) {
     val fooData = DataClassExample(1, 2, 4)
     println(fooData) // => DataClassExample(x=1, y=2, z=4)
 
-    // las clases de datos tienen una funcion "copy".
+    // las clases de datos tienen una función "copy".
     val fooCopy = fooData.copy(y = 100)
     println(fooCopy) // => DataClassExample(x=1, y=100, z=4)
 
@@ -257,7 +257,7 @@ fun main(args: Array<String>) {
         println(c)
     }
 
-    // El bucle "while" funciona de la misma manera que en los demas lenguajes.
+    // El bucle "while" funciona de la misma manera que en los demás lenguajes.
     var ctr = 0
     while (ctr < 5) {
         println(ctr)
@@ -301,7 +301,7 @@ fun main(args: Array<String>) {
 
     /*
     Podemos analizar si un objeto es de un tipo particular usando el operador "is".
-    Si un objeto pasa un chequeo de tipo entonces este se puede utilizar como
+    Si un objeto pasa un chequeo de tipo entonces éste se puede utilizar como
     ese tipo sin convertido de forma explícita.
      */
     fun smartCastExample(x: Any) : Boolean {
@@ -326,7 +326,7 @@ fun main(args: Array<String>) {
 
     /*
     Las extensiones son una manera de añadir nuevas funcionalidades a una clase.
-    Estas son similares a la extension de métodos en C#.
+    Estas son similares a la extensión de métodos en C#.
      */
     fun String.remove(c: Char): String {
         return this.filter {it != c}
@@ -334,7 +334,7 @@ fun main(args: Array<String>) {
     println("Hola, mundo!".remove('l')) // => Hoa, mundo!
 
     println(EnumExample.A) // => A
-    println(ObjectExample.hello()) // => hello
+    println(ObjectExample.hello()) // => hola
 }
 
 // Las clases "enum" son similares a los tipos "enum" de Java.
@@ -343,19 +343,19 @@ enum class EnumExample {
 }
 
 /*
-La palabra clave "objeto" se puede utilizar para crear objetos únicos.
+La palabra clave "object" se puede utilizar para crear objetos únicos.
 No podemos asignarlo a una variable, pero podemos hacer referencia a ella por su nombre.
 Esto es similar a los objetos únicos de Scala
 */
 object ObjectExample {
     fun hello() : String {
-        return "hello"
+        return "hola"
     }
 }
 ```
 
 ### Lectura Adicional
 
-* [Kotlin tutorials](https://kotlinlang.org/docs/tutorials/)
-* [Try Kotlin in your browser](http://try.kotlinlang.org/)
-* [A list of Kotlin resources](http://kotlin.link/)
+* [Kotlin tutorials (EN)](https://kotlinlang.org/docs/tutorials/)
+* [Try Kotlin in your browser (EN)](http://try.kotlinlang.org/)
+* [A list of Kotlin resources (EN)](http://kotlin.link/)
