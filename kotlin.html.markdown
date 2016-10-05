@@ -317,6 +317,14 @@ fun helloWorld(val name : String) {
     println(smartCastExample(0)) // => false
     println(smartCastExample(true)) // => true
 
+    // Smartcast also works with when block
+    fun smartCastWhenExample(x: Any) = when (x) {
+        is Boolean -> x
+        is Int -> x > 0
+        is String -> x.isNotEmpty()
+        else -> false
+    }
+
     /*
     Extensions are a way to add new functionality to a class.
     This is similar to C# extension methods.
