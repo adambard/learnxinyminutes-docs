@@ -175,6 +175,17 @@ fun helloWorld(val name : String) {
     // Objects can be destructured into multiple variables.
     val (a, b, c) = fooCopy
     println("$a $b $c") // => 1 100 4
+    
+    // destructuring in "for" loop
+    for ((a, b, c) in listOf(fooData)) {
+        println("$a $b $c") // => 1 100 4
+    }
+    
+    val mapData = mapOf("a" to 1, "b" to 2)
+    // Map.Entry is destructurable as well
+    for ((key, value) in mapData) {
+        println("$key -> $value")
+    }
 
     // The "with" function is similar to the JavaScript "with" statement.
     data class MutableDataClassExample (var x: Int, var y: Int, var z: Int)
