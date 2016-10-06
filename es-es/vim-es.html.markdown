@@ -4,16 +4,16 @@ tool: vim
 contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
-- ["Ivan Alburquerque", "https://github.com/AlburIvan"]
+	- ["Ivan Alburquerque", "https://github.com/AlburIvan"]
 lang: es-es
 filename: LearnVim-es.txt
 ---
 
 
 [Vim](www.vim.org)
-(Vi IMproved) es un clón del popular editor vi para Unix. Es un editor de texto
+(Vi IMproved) es un clón del popular editor vi para UNIX. Es un editor de texto
 diseñado para ser veloz e incrementar la productividad, es ubicuo en la mayoría
-de los sistemas basados en UNIX. cuenta con numerosas combinaciones de teclas 
+de los sistemas basados en UNIX. Cuenta con numerosas combinaciones de teclas 
 para la navegación rápida a puntos especificos en un archivo y para rápida edición.
 
 
@@ -25,23 +25,23 @@ para la navegación rápida a puntos especificos en un archivo y para rápida ed
     :q               # Salir de vim
     :w               # Guardar archivo actual
     :wq              # Guardar archivo y salir de vim
-    :q!              # Salir de vim sin grabar el archivo
+    :q!              # Salir de vim sin guardar el archivo
                      # ! *forza* :q a ejecutarse, por lo tanto sale de vim sin guardar
     :x               # Guardar el archivo y salir de vim, versión corta de :wq
 
     u                # Deshacer
     CTRL+R           # Rehacer
 
-    h                # Desplazarse un caracter hacía la izquierda
+    h                # Desplazarse un carácter hacía la izquierda
     j                # Desplazarse una línea hacía abajo
     k                # Desplazarse una línea hacía arriba
-    l                # Desplazarse un caracter hacía la derecha
+    l                # Desplazarse un carácter hacía la derecha
 
     # Desplazarse dentro de la línea 
 
     0                # Desplazarse hacia el inicio de la línea
     $                # Desplazarse al final de la línea
-    ^                # Desplazarse al primer caracter no blanco en la línea
+    ^                # Desplazarse al primer carácter no blanco en la línea
 
     # Buscando en el texto
 
@@ -55,8 +55,8 @@ para la navegación rápida a puntos especificos en un archivo y para rápida ed
 
     # Saltando caracteres
 
-    f<carácter>     # Salta adelante y aterrizar en <carácter>
-    t<carácter>     # Salta adelante y aterrizar antes de <carácter>
+    f<carácter>     # Salta adelante y aterriza en <carácter>
+    t<carácter>     # Salta adelante y aterriza antes de <carácter>
 
     # Por ejemplo,
     f<               # Salta adelante y aterriza en <
@@ -83,10 +83,10 @@ para la navegación rápida a puntos especificos en un archivo y para rápida ed
 Vim se basa en el concepto de **modos**.
 
 
-Modo Comando    - vim se pone en marcha en éste modo, se usa para navegar y escribir comandos
+Modo Comando    - Vim se pone en marcha en éste modo, se usa para navegar y escribir comandos
 Modo Inserción  - Utilizado para realizar cambios en el archivo
 Modo Visual     - Utilizado para resaltar texto y operar en ellos
-Modo Ex         - utilizado para ir hacia la parte inferior con ':' para introducir comandos
+Modo Ex         - Utilizado para ir hacia la parte inferior con ':' para introducir comandos
 
 
 ```
@@ -153,90 +153,90 @@ Algunos ejemplos importantes de "Verbos", "Modificadores" y "Sustantivos":
     d$               # Eliminar hasta el final de la línea
 ```
 
-## Some shortcuts and tricks
+## Algunos accesos directos y trucos
 
-        <!--TODO: Add more!-->
 ```
-    >                # Indent selection by one block
-    <                # Dedent selection by one block
-    :earlier 15m     # Reverts the document back to how it was 15 minutes ago
-    :later 15m       # Reverse above command
-    ddp              # Swap position of consecutive lines, dd then p
-    .                # Repeat previous action
+    >                # Sangrar la selección por un bloque
+    <                # Desangrar la selección por un bloque
+    :earlier 15m     # Devuelve el documento de nuevo a como era hace 15 minutos
+    :later 15m       # Deshace el comando anterior
+    ddp              # Intercambia la posición de las lineas consecutivas, dd después p
+    .                # Repite la acción previa
 ```
 
 ## Macros
 
-Macros are basically recordable actions.
-When you start recording a macro, it records **every** action and command
-you use, until you stop recording. On invoking a macro, it applies the exact
-same sequence of actions and commands again on the text selection.
+Las macros son, básicamente, las acciones que se pueden grabar.
+Cuando comienzas a grabar un macro, registra **todas** las acciones y comandos
+que se utilizan hasta que detenga la grabación. En la invocación de un macro,
+se aplica exactamente la misma secuencia de acciones y comandos de nuevo
+en la selección de texto.
 
 ```
-    qa               # Start recording a macro named 'a'
-    q                # Stop recording
-    @a               # Play back the macro
+    qa               # Comienza a grabar un macro llamada 'a'
+    q                # Detiene la grabación
+    @a               # Comienza la reproducción del macro
 ```
 
-### Configuring ~/.vimrc
+### Configurando ~/.vimrc
 
-The .vimrc file can be used to configure Vim on startup.
+El archivo .vimrc puede ser usado para configurar Vim en el arranque.
 
-Here's a sample ~/.vimrc file:
+Aquí está un ejemplo de un archivo ~ / .vimrc:
 
 ```
-" Example ~/.vimrc
+" Ejemplo ~/.vimrc
 " 2015.10 
 
-" Required for vim to be iMproved
+" Se requiere para que vim sea 'mejor'
 set nocompatible
 
-" Determines filetype from name to allow intelligent auto-indenting, etc.
+" Determina la extensión del archivo por el nombre para permitir el auto-indentado inteligente, etc...
 filetype indent plugin on
 
-" Enable syntax highlighting
+" Habilita el resaltado de sintaxis
 syntax on
 
-" Better command-line completion
+" Mejor terminación de línea de comandos
 set wildmenu
 
-" Use case insensitive search except when using capital letters
+" Usa búsqueda sensible a mayúsculas excepto cuando se utilizan letras mayúsculas
 set ignorecase
 set smartcase
 
-" When opening a new line and no file-specific indenting is enabled,
-" keep same indent as the line you're currently on
+" Al abrir una nueva línea, si la sangría especifica del archivo no está habilitada,
+" mantén la misma sangría que la línea que estás actualmente
 set autoindent
 
-" Display line numbers on the left
+" Despliega el número de línea a la izquierda
 set number
 
-" Indentation options, change according to personal preference
+" Opciones de sangría, cambialas de acuerdo a tus preferencias personales
 
-" Number of visual spaces per TAB
+" Número de espacios visuales por tabulación
 set tabstop=4
 
-" Number of spaces in TAB when editing
+" Número de espacios de las tabulaciones al editar
 set softtabstop=4
 
-" Number of spaces indented when reindent operations (>> and <<) are used
+" Número de espacios sangrados cuando las operaciones de resangrado (>> y <<) son usadas
 set shiftwidth=4
 
-" Convert TABs to spaces
+" Convertir tabulaciones en espacios
 set expandtab
 
-" Enable intelligent tabbing and spacing for indentation and alignment
+" Habilitar la tabulación inteligente y el espaciamiento para el sangrado y la alineación
 set smarttab
 ```
 
-### References
+### Referencias
 
-[Vim | Home](http://www.vim.org/index.php)
+[Vim | Home (EN)](http://www.vim.org/index.php)
 
 `$ vimtutor`
 
-[A vim Tutorial and Primer](https://danielmiessler.com/study/vim/)
+[A vim Tutorial and Primer (EN)](https://danielmiessler.com/study/vim/)
 
-[What are the dark corners of Vim your mom never told you about? (Stack Overflow thread)](http://stackoverflow.com/questions/726894/what-are-the-dark-corners-of-vim-your-mom-never-told-you-about)
+[What are the dark corners of Vim your mom never told you about? (Stack Overflow thread) (EN)](http://stackoverflow.com/questions/726894/what-are-the-dark-corners-of-vim-your-mom-never-told-you-about)
 
-[Arch Linux Wiki](https://wiki.archlinux.org/index.php/Vim)
+[Arch Linux Wiki (EN)](https://wiki.archlinux.org/index.php/Vim)
