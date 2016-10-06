@@ -4,13 +4,13 @@ tool: vim
 contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
-	- ["Ivan Alburquerque", "https://github.com/AlburIvan"]
+    - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
 lang: es-es
 filename: LearnVim-es.txt
 ---
 
 
-[Vim](www.vim.org)
+[Vim](http://www.vim.org)
 (Vi IMproved) es un clón del popular editor vi para UNIX. Es un editor de texto
 diseñado para ser veloz e incrementar la productividad, es ubicuo en la mayoría
 de los sistemas basados en UNIX. Cuenta con numerosas combinaciones de teclas 
@@ -83,9 +83,9 @@ para la navegación rápida a puntos especificos en un archivo y para rápida ed
 Vim se basa en el concepto de **modos**.
 
 
-Modo Comando    - Vim se pone en marcha en éste modo, se usa para navegar y escribir comandos
-Modo Inserción  - Utilizado para realizar cambios en el archivo
-Modo Visual     - Utilizado para resaltar texto y operar en ellos
+Modo Comando    - Vim se pone en marcha en éste modo, se usa para navegar y escribir comandos    
+Modo Inserción  - Utilizado para realizar cambios en el archivo    
+Modo Visual     - Utilizado para resaltar texto y operar en ellos    
 Modo Ex         - Utilizado para ir hacia la parte inferior con ':' para introducir comandos
 
 
@@ -112,8 +112,8 @@ Modo Ex         - Utilizado para ir hacia la parte inferior con ':' para introdu
 Vim puede ser pensado como un conjunto de comandos en un
 formato "verbo-sustantivo-modificador ', donde:
 
-Verbo       - La acción a realizazr
-Modificador - Como vas hacer la acción
+Verbo       - La acción a realizar    
+Modificador - Como vas hacer la acción    
 Sustantivo  - el objeto al que se le va a aplicar la acción
 
 Algunos ejemplos importantes de "Verbos", "Modificadores" y "Sustantivos":
@@ -233,7 +233,7 @@ set smarttab
 
 [Vim | Home (EN)](http://www.vim.org/index.php)
 
-`$ vimtutor`
+`$ vimtutor` Command
 
 [A vim Tutorial and Primer (EN)](https://danielmiessler.com/study/vim/)
 
