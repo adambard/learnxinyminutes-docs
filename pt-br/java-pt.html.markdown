@@ -7,6 +7,7 @@ contributors:
 translators:
     - ["Victor Kléber Santos L. Melo", "http://victormelo.com.br/blog"]
     - ["Renê Douglas N. de Morais", "mailto:rene.douglas.bsi@gmail.com"]
+    - ["Yuri Alessandro D. T. Martins", "https://github.com/YuriAlessandro"]
 lang: pt-br
 filename: LearnJava-pt.java
 
@@ -407,7 +408,7 @@ class Velocipede extends Bicicleta {
 
 // Interfaces
 // Sintaxe de declaração de Interface
-// <nível de acesso> Interface <nome-da-interface> extends <super-interfaces> {
+// <nível de acesso> interface <nome-da-interface> extends <super-interfaces> {
 // // Constantes
 // // Declarações de método
 //}
@@ -415,11 +416,15 @@ class Velocipede extends Bicicleta {
 // Exemplo - Comida:
 public interface Comestivel {
     public void comer(); // Qualquer classe que implementa essa interface, deve
-                        // Implementar este método.
+                         // implementar este método.
 }
 
 public interface Digestivel {
     public void digerir();
+    // Em Java 8, interfaces podem ter métodos default.
+    // public void digerir() {
+    //     System.out.println("digerindo ...");
+    // }
 }
 
 
@@ -438,7 +443,7 @@ public class Fruta implements Comestivel, Digestivel {
 }
 
 // Em Java, você pode estender somente uma classe, mas você pode implementar muitas
-// Interfaces. Por exemplo:
+// interfaces. Por exemplo:
 public class ClasseExemplo extends ExemploClassePai implements InterfaceUm,
     InterfaceDois {
 
@@ -461,8 +466,8 @@ public class ClasseExemplo extends ExemploClassePai implements InterfaceUm,
 //}
 
 // Marcar uma classe como abstrata significa que ela contém métodos abstratos que devem
-// ser definido em uma classe filha. Semelhante às interfaces, classes abstratas não podem
-// ser instanciadas, ao invés disso devem ser extendidas e os métodos abstratos
+// ser definidos em uma classe filha. Semelhante às interfaces, classes abstratas não podem
+// ser instanciadas, ao invés disso devem ser estendidas e os métodos abstratos
 // definidos. Diferente de interfaces, classes abstratas podem conter uma mistura de
 // métodos concretos e abstratos. Métodos em uma interface não podem ter um corpo,
 // a menos que o método seja estático, e as variáveis sejam finais, por padrão, ao contrário de um
@@ -482,7 +487,7 @@ public abstract class Animal
 
     // Não há necessidade de inicializar, no entanto, em uma interface
     // a variável é implicitamente final e, portanto, tem
-    // de ser inicializado.
+    // de ser inicializada.
     protected int idade;
 
     public void mostrarIdade()
@@ -501,7 +506,7 @@ class Cachorro extends Animal
 {
 
     // Nota: ainda precisamos substituir os métodos abstratos na
-    // classe abstrata
+    // classe abstrata.
     @Override
     public void fazerSom()
     {
@@ -532,13 +537,13 @@ class Cachorro extends Animal
 //}
 
 // Classes finais são classes que não podem ser herdadas e são, portanto, um
-// filha final. De certa forma, as classes finais são o oposto de classes abstratas
-// Porque classes abstratas devem ser estendidas, mas as classes finais não pode ser
+// filho final. De certa forma, as classes finais são o oposto de classes abstratas,
+// porque classes abstratas devem ser estendidas, mas as classes finais não podem ser
 // estendidas.
 public final class TigreDenteDeSabre extends Animal
 {
     // Nota: Ainda precisamos substituir os métodos abstratos na
-     // classe abstrata.
+    // classe abstrata.
     @Override
     public void fazerSom();
     {
@@ -552,7 +557,7 @@ public abstract class Mamifero()
     // Sintaxe de Métodos Finais:
     // <modificador-de-acesso> final <tipo-de-retorno> <nome-do-método>(<argumentos>)
 
-    // Métodos finais, como, classes finais não podem ser substituídas por uma classe filha,
+    // Métodos finais, como classes finais, não podem ser substituídos por uma classe filha,
     // e são, portanto, a implementação final do método.
     public final boolean EImpulsivo()
     {
