@@ -78,7 +78,7 @@ composer require-dev phpunit/phpunit:^4.5.0
 # Se requerirá como una dependencia de desarrollo. Se usará la última versión >= 4.5.0 y <  5.0
 
 # Para obtener más información sobre las coincidencias de versiones de Composer, 
-ver [La Documentacion de Composer's Sobre Versiones (EN)](https://getcomposer.org/doc/articles/versions.md)
+ver [La Documentación de Composer\'s Sobre Versiones (EN)](https://getcomposer.org/doc/articles/versions.md)
 
 # Para ver qué opciones están disponibles para instalar y los paquetes instalados actualmente  
 composer show
