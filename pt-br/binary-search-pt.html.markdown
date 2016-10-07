@@ -71,12 +71,6 @@ Essa é a ideia da implementação recursiva da busca binária.
 
 Existem outras formas de busca binária que são muito úteis.
 
-## Livros
-
-* [CLRS](https://mitpress.mit.edu/books/introduction-algorithms)
-* [Algorithms](http://www.amazon.com/Algorithms-4th-Robert-Sedgewick/dp/032157351X)
-* [Algorithm Design](http://www.amazon.com/Algorithm-Design-Foundations-Analysis-Internet/dp/0471383651)
-
 ## Recursos Online
 
 * [GeeksforGeeks](http://www.geeksforgeeks.org/the-ubiquitous-binary-search-set-1/)
