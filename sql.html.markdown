@@ -5,32 +5,58 @@ contributors:
 filename: learnsql.sql
 ---
 
+SQL stands for Structured Query Language. It is the stantdard query language
+or relational databases.
+
 ```sql
--- Create a schema/database
+-- This is a single line comment
+
+-- The first thing you need is a database, so create one
 CREATE SCHEMA company;
 
--- Create a table with a primary key
+-- Next you need to organize the data into tables whose structure you define
+-- when it is created.
+--
+-- Each table may have a primary key that identifies each row uniquely and allows
+-- optimized queries.
+--
+-- When defining the fields for a table you should specify its name and type.
+-- It is also possible to specify wether or not the values for that column
+-- are allowed to be null.
+--
+-- Some of the data types available are:
+-- VARCHAR(N)      Variable length string (up to N chars)
+-- CHAR(N)         Fixed length string (up to N chars)
+-- BIT(N)          Fixed length bit string (up to N bits)
+-- INT             A 4-byte integer value
+-- SMALLINT        A 2-byte integer value
+-- FLOAT           A floating-point number
+-- DECIMAL(N, M)   A formatted decimal value with N integer positions and M decimal
+-- DATE            A year-month-day date
+-- TIMESTAMP       A field containing both date and time data
 CREATE TABLE department (
--- a column that cannot be null
     id INT NOT NULL,
     name VARCHAR(50),
 
     PRIMARY KEY (id)
 );
 
--- Create a table with an unique key
--- and a foreign key to the previously created table
+-- Here is a more extended CREATE TABLE statement that adds an unique key
+-- that tells the database engine that every value for that column must be
+-- unique. It is also possible to specify these keys later via ALTER TABLE
+-- statements.
+--
+-- The last part tells that this table references the previously created
+-- deparment table via the department_id column.
 CREATE TABLE employee (
     id INT NOT NULL,
     name VARCHAR(100) NOT NULL,
     age INT,
     bird_date DATE,
 
--- variable-lenght strings
     email VARCHAR(100),
     department_id INT,
 
--- specify a default value
     salary DECIMAL(10, 2) DEFAULT 50000,
     created_at TIMESTAMP,
 
@@ -66,7 +92,3 @@ UPDATE employee SET salary=100000, department_id=3 WHERE id=1;
 ### Free Online
 
 * [Official MySQL docs](https://dev.mysql.com/doc/refman/5.7/en/)
-
-### Books
-
-* [Fundamentals of Database Systems](https://www.amazon.com/Fundamentals-Database-Systems-Ramez-Elmasri/dp/0136086209?SubscriptionId=AKIAILSHYYTFIVPWUY6Q&tag=duckduckgo-ffab-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=0136086209)
