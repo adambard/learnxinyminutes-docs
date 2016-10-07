@@ -3,22 +3,25 @@ category: Algorithms & Data Structures
 name: Binary Search
 contributors:
     - ["Abhishek Jaisingh", "http://github.com/abhishekjiitr"]
+translators:
+    - ["Gino Amaury", "https://github.com/ginoamaury"]
+lang: es-es    
 ---
 
-# Binary Search
+# Búsqueda Binaria
 
-## Why Binary Search?
+## Por qué Búsqueda Binaria?
 
-Searching is one of the prime problems in the domain of Computer Science. Today there are more than 1 trillion searches per year, and we need algorithms that can do that very fastly. Binary search is one of the fundamental algorithms in computer science. In order to explore it, we’ll first build up a theoretical backbone, then use that to implement the algorithm properly.
+La búsqueda es uno de los problemas principales en el dominio de la ciencia de la computación. Hoy en dia hay mas de 1 billon de búsquedas por año, y necesitamos tener algoritmos que puedan hacer esto muy rápido. La búsqueda binaria es uno de los algoritmos fundamentales en la ciencia de la computación. Con el fin de explorarlo, vamos a construir por primera vez un esqueleto teórico y lo utilizaremos para implementar el algoritmo apropiadamente.
 
-## Introduction
+## Introducción
 
-A simple approach to implement search is to do a linear search, but this approach takes a lot of time and this time grows linearly with the amount or number of data points. i.e., start from the leftmost element of arr[] and one by one compare x with each element of arr[], if x matches with an element, return the index. If x doesn’t match with any of elements, return -1.
+Un método sencillo para poner en práctica la búsqueda es hacer una búsqueda lineal, pero este método requiere mucho tiempo y este crece linealmente con la cantidad o el número de datos. es decir, empezar desde el elemento a la izquierda de la matriz [] y uno por uno compara x con cada elemento de la matriz [], si x coincide con un elemento, devuelve el índice. Si x no coincide con ninguno de los elementos, devuelve -1.
 
 ```
-Linear Search: O (n)               Linear Time
+Búsqueda Lineal: O (n)               Tiempo lineal
 
-Binary Search: O ( log(n) )		   Logarithmic Time
+Búsqueda Binaria: O ( log(n) )		   Tiempo logarítmico
 
 ```
 ```
@@ -32,32 +35,34 @@ def search(arr, x):
     return -1
 
 ```
-## Binary Search Algorithm
+## Algoritmo de Búsqueda Binaria 
 
-The basic requirement for binary search to work is that the data to search should be sorted (in any order).
+El requisito básico para que la búsqueda binaria funcione es que los datos a buscar deben estar ordenados (en cualquier orden).
+
+
 ### Algo
 
 ```
-The idea of binary search is to use the information that the array is sorted and reduce the time complexity to O(Logn). We basically ignore half of the elements just after one comparison.
-1) Compare x with the middle element.
-2) If x matches with middle element, we return the mid index.
-3) Else If x is greater than the mid element, then x can only lie in right half subarray after the mid element. So we recur for right half.
-4) Else (x is smaller) recur for the left half.
-Following is Recursive implementation of Binary Search.
+La idea de la búsqueda binaria es usar la información de que la matriz está ordenada y así reducir la complejidad del tiempo a O(Logn). Básicamente ignoramos la mitad de los elementos después de la primera comparación.
+1) Compare x con el elemento del medio.
+2) si x coincide con el elemento del medio , retornamos el índice del elemento del medio.
+3) Si no coincide, si x es mayor que el elemento del medio, entonces x solo puede estar en la mitad derecha justo después del elemento del medio. Así que recurrimos a la mitad derecha. 
+4) Si no (x es más pequeño) recurrimos a la mitad izquierda.
+Siguiendo la implementación recursiva de búsqueda binaria.
 
 ```
 
-### Ending Notes
+### Notas finales 
 
-There is another form of binary search that is very useful.
+Hay otra forma de búsqueda binaria que es muy útil.
 
-## Books
+## Libros
 
-* [CLRS](https://mitpress.mit.edu/books/introduction-algorithms)
-* [Algorithms](http://www.amazon.com/Algorithms-4th-Robert-Sedgewick/dp/032157351X)
-* [Algorithm Design](http://www.amazon.com/Algorithm-Design-Foundations-Analysis-Internet/dp/0471383651)
+* [CLRS EN](https://mitpress.mit.edu/books/introduction-algorithms)
+* [Algoritmos EN](http://www.amazon.com/Algorithms-4th-Robert-Sedgewick/dp/032157351X)
+* [Diseño de Algoritmos EN](http://www.amazon.com/Algorithm-Design-Foundations-Analysis-Internet/dp/0471383651)
 
-## Online Resources
+## Recursos en línea 
 
-* [GeeksforGeeks](http://www.geeksforgeeks.org/the-ubiquitous-binary-search-set-1/)
-* [Topcoder Tutorial](https://www.topcoder.com/community/data-science/data-science-tutorials/binary-search/)
+* [GeeksforGeeks EN](http://www.geeksforgeeks.org/the-ubiquitous-binary-search-set-1/)
+* [Topcoder Tutorial EN](https://www.topcoder.com/community/data-science/data-science-tutorials/binary-search/)
