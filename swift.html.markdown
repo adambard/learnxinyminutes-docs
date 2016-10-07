@@ -154,9 +154,9 @@ var explicitEmptyMutableDictionary: [String: Float] = [:] // same as above
 // MARK: Control Flow
 //
 
-// <del>Condition statements support "where" clauses, which can be used
-// to help provide conditions on optional values.
-// Both the assignment and the "where" clause must pass.</del>
+/* ~~Condition statements support "where" clauses, which can be used
+   to help provide conditions on optional values.
+   Both the assignment and the "where" clause must pass.~~ */
 // Where clauses are no longer used to conjoin Boolean expressions with conditional binding.
 // This fixes user confusion issues and addresses a problem where Boolean conditions need to be
 // attached to arbitrary bindings. So, now you need use comma instead.
