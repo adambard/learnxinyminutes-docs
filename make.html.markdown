@@ -9,16 +9,16 @@ A Makefile defines a graph of rules for creating a target (or targets).
 Its purpose is to do the minimum amount of work needed to update a
 target to the most recent version of the source. Famously written over a
 weekend by Stuart Feldman in 1976, it is still widely used (particularly
-on Unix) despite many competitors and criticisms.
+on Unix and Linux) despite many competitors and criticisms.
 
-There are many varieties of make in existance, this article assumes that
-we are using GNU make which is the standard on Linux.
+There are many varieties of make in existence, however this article 
+assumes that we are using GNU make which is the standard on Linux.
 
 ```make
 
 # Comments can be written like this.
 
-# Files should be named Makefile and then be can run as `make <target>`.
+# File should be named Makefile and then can be run as `make <target>`.
 # Otherwise we use `make -f "filename" <target>`.
 
 # Warning - only use TABS to indent in Makefiles, never spaces!
@@ -27,12 +27,15 @@ we are using GNU make which is the standard on Linux.
 # Basics
 #-----------------------------------------------------------------------
 
+# Rules are of the format
+# target: <prerequisite>
+# where prerequisites are optional.
+
 # A rule - this rule will only run if file0.txt doesn't exist.
 file0.txt:
 	echo "foo" > file0.txt
 	# Even comments in these 'recipe' sections get passed to the shell.
 	# Try `make file0.txt` or simply `make` - first rule is the default.
-
 
 # This rule will only run if file0.txt is newer than file1.txt.
 file1.txt: file0.txt
@@ -99,8 +102,8 @@ process: ex1.txt file0.txt
 %.png: %.svg
 	inkscape --export-png $^
 
-# Pattern rules will only do anything if make decides to create the \
-target.
+# Pattern rules will only do anything if make decides to create the
+# target.
 
 # Directory paths are normally ignored when matching pattern rules. But
 # make will try to use the most appropriate rule available.
@@ -145,11 +148,11 @@ echo:
 # In order of priority from highest to lowest:
 # 1: commandline arguments
 # 2: Makefile
-# 3: shell enviroment variables - make imports these automatically.
+# 3: shell environment variables - make imports these automatically.
 # 4: make has some predefined variables
 
 name4 ?= Jean
-# Only set the variable if enviroment variable is not already defined.
+# Only set the variable if environment variable is not already defined.
 
 override name5 = David
 # Stops commandline arguments from changing this variable.
@@ -185,7 +188,7 @@ var := hello
 var2 ::=  $(var) hello
 #:= and ::= are equivalent.
 
-# These variables are evaluated procedurely (in the order that they
+# These variables are evaluated procedurally (in the order that they
 # appear), thus breaking with the rest of the language !
 
 # This doesn't work

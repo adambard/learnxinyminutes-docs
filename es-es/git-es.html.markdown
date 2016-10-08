@@ -398,6 +398,10 @@ $ git rm /directorio/del/archivo/FooBar.c
 
 * [tryGit - Una forma entretenida y rapida de aprender Git.](http://try.github.io/levels/1/challenges/1)
 
+* [Udemy tutorial de Git: Una guía completa](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
+
+* [Inmersión Git - Una visita guiada caminando a través de los fundamentos de git](http://gitimmersion.com/)
+
 * [git-scm - Video-tutoriales](http://git-scm.com/videos)
 
 * [git-scm - Documentacion](http://git-scm.com/book/es)
@@ -407,3 +411,9 @@ $ git rm /directorio/del/archivo/FooBar.c
 * [SalesForce Chuleta](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
 
 * [GitGuys](http://www.gitguys.com/)
+
+* [Git - La guía simple](http://rogerdudler.github.io/git-guide/index.html)
+
+* [Pro Git](http://www.git-scm.com/book/en/v2)
+
+* [Una introducción a Git y Github para principiantes (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)

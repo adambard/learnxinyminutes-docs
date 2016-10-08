@@ -535,7 +535,7 @@ Human.grunt()   # => "*grunt*"
 
 # 用import导入模块
 import math
-print(math.sqrt(16))  # => 4
+print(math.sqrt(16))  # => 4.0
 
 # 也可以从模块中导入个别值
 from math import ceil, floor

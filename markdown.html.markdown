@@ -7,7 +7,9 @@ filename: markdown.md
 ---
 
 
-Markdown was created by John Gruber in 2004. It's meant to be an easy to read and write syntax which converts easily to HTML (and now many other formats as well).
+Markdown was created by John Gruber in 2004. It's meant to be an easy to read 
+and write syntax which converts easily to HTML (and now many other formats as 
+well).
 
 Markdown also varies in implementation from one parser to a next. This
 guide will attempt to clarify when features are universal or when they are
@@ -26,10 +28,12 @@ specific to a certain parser.
 
 ## HTML Elements
 Markdown is a superset of HTML, so any HTML file is valid Markdown.
+
 ```markdown
-<!--This means we can use HTML elements in Markdown, such as the comment element,
-and they won't be affected by a markdown parser. However, if you create an HTML element
-in your markdown file, you cannot use markdown syntax within that element's contents.-->
+<!--This means we can use HTML elements in Markdown, such as the comment 
+element, and they won't be affected by a markdown parser. However, if you 
+create an HTML element in your markdown file, you cannot use markdown syntax 
+within that element's contents.-->
 ```
 
 ## Headings
@@ -54,6 +58,7 @@ This is an h1
 This is an h2
 -------------
 ```
+
 ## Simple text styles
 
 Text can be easily styled as italic or bold using markdown.
@@ -70,8 +75,8 @@ __And so is this text.__
 *__And this!__*
 ```
 
-In Github Flavored Markdown, which is used to render markdown files on
-Github, we also have strikethrough:
+In GitHub Flavored Markdown, which is used to render markdown files on
+GitHub, we also have strikethrough:
 
 ```markdown
 ~~This text is rendered with strikethrough.~~
@@ -91,7 +96,7 @@ I'm still in paragraph 2 too!
 I'm in paragraph three!
 ```
 
-Should you ever want to insert an HTML <br /> tag, you can end a paragraph
+Should you ever want to insert an HTML `<br />` tag, you can end a paragraph
 with two or more spaces and then begin a new paragraph.
 
 ```markdown
@@ -133,6 +138,7 @@ or
 - Item
 - One last item
 ```
+
 Ordered lists are done with a number followed by a period.
 
 ```markdown
@@ -141,7 +147,7 @@ Ordered lists are done with a number followed by a period.
 3. Item three
 ```
 
-You don't even have to label the items correctly and markdown will still
+You don't even have to label the items correctly and Markdown will still
 render the numbers in order, but this may not be a good idea.
 
 ```markdown
@@ -152,6 +158,7 @@ render the numbers in order, but this may not be a good idea.
 (This renders the same as the above example)
 
 You can also use sublists
+
 ```markdown
 1. Item one
 2. Item two
@@ -196,22 +203,23 @@ Inline code can be created using the backtick character `
 John didn't even know what the `go_to()` function did!
 ```
 
-In Github Flavored Markdown, you can use a special syntax for code
-```markdown
-\`\`\`ruby <!-- except remove those backslashes when you do this, just ```ruby ! -->
+In GitHub Flavored Markdown, you can use a special syntax for code
+
+<pre>
+<code class="highlight">&#x60;&#x60;&#x60;ruby
 def foobar
     puts "Hello world!"
 end
-\`\`\` <!-- here too, no backslashes, just ``` -->
-```
+&#x60;&#x60;&#x60;</code></pre>
 
-The above text doesn't require indenting, plus Github will use syntax
+The above text doesn't require indenting, plus GitHub will use syntax
 highlighting of the language you specify after the \`\`\`
 
 ## Horizontal rule
 
-Horizontal rules (`<hr/>`) are easily added with three or more asterisks or hyphens,
-with or without spaces.
+Horizontal rules (`<hr/>`) are easily added with three or more asterisks or 
+hyphens, with or without spaces.
+
 ```markdown
 ***
 ---
@@ -228,58 +236,64 @@ the text to display in hard brackets [] followed by the url in parentheses ()
 [Click me!](http://test.com/)
 ```
 You can also add a link title using quotes inside the parentheses.
+
 ```markdown
 [Click me!](http://test.com/ "Link to Test.com")
 ```
 Relative paths work too.
+
 ```markdown
 [Go to music](/music/).
 ```
-Markdown also supports reference style links.
-```markdown
-[Click this link][link1] for more info about it!
-[Also check out this link][foobar] if you want to.
 
-[link1]: http://test.com/ "Cool!"
-[foobar]: http://foobar.biz/ "Alright!"
-```
+Markdown also supports reference style links.
+
+<pre><code class="highlight">&#x5b;<span class="nv">Click this link</span>][<span class="ss">link1</span>] for more info about it!
+&#x5b;<span class="nv">Also check out this link</span>][<span class="ss">foobar</span>] if you want to.
+
+&#x5b;<span class="nv">link1</span>]: <span class="sx">http://test.com/</span> <span class="nn">"Cool!"</span>
+&#x5b;<span class="nv">foobar</span>]: <span class="sx">http://foobar.biz/</span> <span class="nn">"Alright!"</span></code></pre>
+
 The title can also be in single quotes or in parentheses, or omitted
 entirely. The references can be anywhere in your document and the reference IDs
 can be anything so long as they are unique.
 
 There is also "implicit naming" which lets you use the link text as the id.
-```markdown
-[This][] is a link.
 
-[this]: http://thisisalink.com/
-```
+<pre><code class="highlight">&#x5b;<span class="nv">This</span>][] is a link.
+
+&#x5b;<span class="nv">this</span>]: <span class="sx">http://thisisalink.com/</span></code></pre>
+
 But it's not that commonly used.
 
 ## Images
 Images are done the same way as links but with an exclamation point in front!
+
 ```markdown
 ![This is the alt-attribute for my image](http://imgur.com/myimage.jpg "An optional title")
 ```
+
 And reference style works as expected.
-```markdown
-![This is the alt-attribute.][myimage]
 
-[myimage]: relative/urls/cool/image.jpg "if you need a title, it's here"
-```
+<pre><code class="highlight">!&#x5b;<span class="nv">This is the alt-attribute.</span>][<span class="ss">myimage</span>]
 
+&#x5b;<span class="nv">myimage</span>]: <span class="sx">relative/urls/cool/image.jpg</span> <span class="nn">"if you need a title, it's here"</span></code></pre>
 ## Miscellany
 ### Auto-links
+
 ```markdown
 <http://testwebsite.com/> is equivalent to
 [http://testwebsite.com/](http://testwebsite.com/)
 ```
 
 ### Auto-links for emails
+
 ```markdown
 <foo@bar.com>
 ```
 
 ### Escaping characters
+
 ```markdown
 I want to type *this text surrounded by asterisks* but I don't want it to be
 in italics, so I do this: \*this text surrounded by asterisks\*.
@@ -287,15 +301,18 @@ in italics, so I do this: \*this text surrounded by asterisks\*.
 
 ### Keyboard keys
 
-In Github Flavored Markdown, you can use a `<kbd>` tag to represent keyboard keys.
+In GitHub Flavored Markdown, you can use a `<kbd>` tag to represent keyboard 
+keys.
+
 ```markdown
 Your computer crashed? Try sending a
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
 ```
 ### Tables
 
-Tables are only available in Github Flavored Markdown and are slightly
+Tables are only available in GitHub Flavored Markdown and are slightly
 cumbersome, but if you really want it:
+
 ```markdown
 | Col1         | Col2     | Col3          |
 | :----------- | :------: | ------------: |
@@ -309,5 +326,6 @@ Col 1 | Col2 | Col3
 :-- | :-: | --:
 Ugh this is so ugly | make it | stop
 ```
+
 ---
 For more info, check out John Gruber's official post of syntax [here](http://daringfireball.net/projects/markdown/syntax) and Adam Pritchard's great cheatsheet [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).

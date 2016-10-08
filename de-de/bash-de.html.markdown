@@ -92,12 +92,12 @@ echo "immer ausgeführt" || echo "Nur ausgeführt wenn der erste Befehl fehlschl
 echo "immer ausgeführt" && echo "Nur ausgeführt wenn der erste Befehl Erfolg hat"
 
 # Um && und || mit if statements zu verwenden, braucht man mehrfache Paare eckiger Klammern:
-if [ $NAME == "Steve" ] && [ $Alter -eq 15 ]
+if [ "$NAME" == "Steve" ] && [ "$Alter" -eq 15 ]
 then
     echo "Wird ausgeführt wenn $NAME gleich 'Steve' UND $Alter gleich 15."
 fi
 
-if [ $Name == "Daniya" ] || [ $Name == "Zach" ]
+if [ "$Name" == "Daniya" ] || [ "$Name" == "Zach" ]
 then
     echo "Wird ausgeführt wenn $NAME gleich 'Daniya' ODER $NAME gleich 'Zach'."
 fi
@@ -175,7 +175,7 @@ in
     # Liste der Fälle, die unterschieden werden sollen
     0) echo "Hier ist eine Null."
     1) echo "Hier ist eine Eins."
-    *) echo "Das ist nicht Null."
+    *) echo "Das ist etwas anderes."
 esac
 
 # 'for' Schleifen iterieren über die angegebene Zahl von Argumenten:

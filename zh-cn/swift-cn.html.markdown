@@ -31,7 +31,7 @@ import UIKit
 
 // Swift2.0 println() 及 print() 已经整合成 print()。
 print("Hello, world") // 这是原本的 println()，会自动进入下一行
-print("Hello, world", appendNewLine: false) // 如果不要自动进入下一行，需设定进入下一行为 false
+print("Hello, world", terminator: "") // 如果不要自动进入下一行，需设定结束符为空串
 
 // 变量 (var) 的值设置后可以随意改变
 // 常量 (let) 的值设置后不能改变
@@ -171,8 +171,8 @@ while i < 1000 {
     i *= 2
 }
 
-// do-while 循环
-do {
+// repeat-while 循环
+repeat {
     print("hello")
 } while 1 == 2
 
@@ -212,11 +212,11 @@ default: // 在 Swift 里，switch 语句的 case 必须处理所有可能的情
 func greet(name: String, day: String) -> String {
     return "Hello \(name), today is \(day)."
 }
-greet("Bob", "Tuesday")
+greet("Bob", day: "Tuesday")
 
-// 函数参数前带 `#` 表示外部参数名和内部参数名使用同一个名称。
+// 第一个参数表示外部参数名和内部参数名使用同一个名称。
 // 第二个参数表示外部参数名使用 `externalParamName` ，内部参数名使用 `localParamName`
-func greet2(#requiredName: String, externalParamName localParamName: String) -> String {
+func greet2(requiredName requiredName: String, externalParamName localParamName: String) -> String {
     return "Hello \(requiredName), the day is \(localParamName)"
 }
 greet2(requiredName:"John", externalParamName: "Sunday")    // 调用时，使用命名参数来指定参数的值
@@ -235,8 +235,8 @@ print("Gas price: \(price)")
 // 可变参数
 func setup(numbers: Int...) {
     // 可变参数是个数组
-    let number = numbers[0]
-    let argCount = numbers.count
+    let _ = numbers[0]
+    let _ = numbers.count
 }
 
 // 函数变量以及函数作为返回值返回
@@ -257,7 +257,7 @@ func swapTwoInts(inout a: Int, inout b: Int) {
 }
 var someIntA = 7
 var someIntB = 3
-swapTwoInts(&someIntA, &someIntB)
+swapTwoInts(&someIntA, b: &someIntB)
 print(someIntB) // 7
 
 
@@ -286,16 +286,9 @@ numbers = numbers.map({ number in 3 * number })
 print(numbers) // [3, 6, 18]
 
 // 简洁的闭包
-numbers = sorted(numbers) { $0 > $1 }
-// 函数的最后一个参数可以放在括号之外，上面的语句是这个语句的简写形式
-// numbers = sorted(numbers, { $0 > $1 })
+numbers = numbers.sort { $0 > $1 }
 
 print(numbers) // [18, 6, 3]
-
-// 超级简洁的闭包，因为 `<` 是个操作符函数
-numbers = sorted(numbers, < )
-
-print(numbers) // [3, 6, 18]
 
 
 //
@@ -305,7 +298,7 @@ print(numbers) // [3, 6, 18]
 // 结构体和类非常类似，可以有属性和方法
 
 struct NamesTable {
-    let names = [String]()
+    let names: [String]
 
     // 自定义下标运算符
     subscript(index: Int) -> String {
@@ -380,7 +373,7 @@ internal class Rect: Shape {
 
     func shrink() {
         if sideLength > 0 {
-            --sideLength
+            sideLength -= 1
         }
     }
 
@@ -516,7 +509,7 @@ protocol ShapeGenerator {
 // 一个类实现一个带 optional 方法的协议时，可以实现或不实现这个方法
 // optional 方法可以使用 optional 规则来调用
 @objc protocol TransformShape {
-    optional func reshaped()
+    optional func reshape()
     optional func canReshape() -> Bool
 }
 
@@ -528,9 +521,9 @@ class MyShape: Rect {
 
         // 在 optional 属性，方法或下标运算符后面加一个问号，可以优雅地忽略 nil 值，返回 nil。
         // 这样就不会引起运行时错误 (runtime error)
-        if let allow = self.delegate?.canReshape?() {
+        if let reshape = self.delegate?.canReshape?() where reshape {
             // 注意语句中的问号
-            self.delegate?.reshaped?()
+            self.delegate?.reshape?()
         }
     }
 }
@@ -542,8 +535,8 @@ class MyShape: Rect {
 
 // 扩展: 给一个已经存在的数据类型添加功能
 
-// 给 Square 类添加 `Printable` 协议的实现，现在其支持 `Printable` 协议
-extension Square: Printable {
+// 给 Square 类添加 `CustomStringConvertible` 协议的实现，现在其支持 `CustomStringConvertible` 协议
+extension Square: CustomStringConvertible {
     var description: String {
         return "Area: \(self.getArea()) - ID: \(self.identifier)"
     }
@@ -567,8 +560,8 @@ print(14.multiplyBy(3)) // 42
 
 // 泛型: 和 Java 及 C# 的泛型类似，使用 `where` 关键字来限制类型。
 // 如果只有一个类型限制，可以省略 `where` 关键字
-func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
-    for (index, value) in enumerate(array) {
+func findIndex<T: Equatable>(array: [T], _ valueToFind: T) -> Int? {
+    for (index, value) in array.enumerate() {
         if value == valueToFind {
             return index
         }

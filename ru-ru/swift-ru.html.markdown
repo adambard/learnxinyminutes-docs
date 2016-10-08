@@ -81,7 +81,7 @@ if someOptionalString != nil {
     if someOptionalString!.hasPrefix("opt") {
         println("содержит префикс")
     }
-    
+
     let empty = someOptionalString?.isEmpty
 }
 someOptionalString = nil
@@ -107,7 +107,7 @@ anyObjectVar = "Изменять значение на строку не явл�
 
 /*
     Комментируйте здесь
-    
+
     /*
         Вложенные комментарии тоже поддерживаются
     */
@@ -308,7 +308,7 @@ print(numbers) // [3, 6, 18]
 // Структуры и классы имеют очень похожие характеристики
 struct NamesTable {
     let names = [String]()
-    
+
     // Пользовательский индекс
     subscript(index: Int) -> String {
         return names[index]
@@ -339,7 +339,7 @@ public class Shape {
 
 internal class Rect: Shape {
     var sideLength: Int = 1
-    
+
     // Пользовательский сеттер и геттер
     private var perimeter: Int {
         get {
@@ -350,12 +350,12 @@ internal class Rect: Shape {
             sideLength = newValue / 4
         }
     }
-    
+
     // Ленивая загрузка свойства
     // свойство subShape остается равным nil (неинициализированным),
     // пока не вызовется геттер
     lazy var subShape = Rect(sideLength: 4)
-    
+
     // Если вам не нужны пользовательские геттеры и сеттеры,
     // но все же хотите запустить код перед и после вызовов геттера или сеттера
     // свойств, вы можете использовать `willSet` и `didSet`
@@ -365,19 +365,19 @@ internal class Rect: Shape {
             print(someIdentifier)
         }
     }
-    
+
     init(sideLength: Int) {
         self.sideLength = sideLength
         // последним всегда вызывается super.init, когда init с параметрами
         super.init()
     }
-    
+
     func shrink() {
         if sideLength > 0 {
-            --sideLength
+            sideLength -= 1
         }
     }
-    
+
     override func getArea() -> Int {
         return sideLength * sideLength
     }
@@ -409,13 +409,13 @@ class Circle: Shape {
     override func getArea() -> Int {
         return 3 * radius * radius
     }
-    
+
     // Поместите постфиксный знак вопроса после `init` - это и будет опциональная инициализация,
     // которая может вернуть nil
     init?(radius: Int) {
         self.radius = radius
         super.init()
-        
+
         if radius <= 0 {
             return nil
         }
@@ -469,7 +469,7 @@ enum Furniture {
     case Desk(height: Int)
     // Связать с типами String и Int
     case Chair(String, Int)
-    
+
     func description() -> String {
         switch self {
         case .Desk(let height):
@@ -508,7 +508,7 @@ protocol ShapeGenerator {
 
 class MyShape: Rect {
     var delegate: TransformShape?
-    
+
     func grow() {
         sideLength += 2
         // Размещайте знак вопроса перед опционным свойством, методом
@@ -542,7 +542,7 @@ extension Int {
     var customProperty: String {
         return "Это \(self)"
     }
-    
+
     func multiplyBy(num: Int) -> Int {
         return num * self
     }

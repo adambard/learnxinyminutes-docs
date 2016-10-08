@@ -6,6 +6,8 @@ contributors:
     - ["Matt Kline", "https://github.com/mrkline"]
     - ["Geoff Liu", "http://geoffliu.me"]
     - ["Connor Waters", "http://github.com/connorwaters"]
+    - ["Ankush Goyal", "http://github.com/ankushg07"]
+    - ["Jatin Dhankhar", "https://github.com/jatindhankhar"]
 lang: en
 ---
 
@@ -149,7 +151,7 @@ namespace First {
 namespace Second {
     void foo()
     {
-        printf("This is Second::foo\n")
+        printf("This is Second::foo\n");
     }
 }
 
@@ -330,7 +332,7 @@ ECarTypes GetPreferredCarType()
 }
 
 // As of C++11 there is an easy way to assign a type to the enum which can be
-// useful in serialization of data and converting enums back-and-forth between 
+// useful in serialization of data and converting enums back-and-forth between
 // the desired type and their respective constants
 enum ECarTypes : uint8_t
 {
@@ -352,7 +354,7 @@ void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 }
 
 // On the other hand you may not want enums to be accidentally cast to an integer
-// type or to other enums so it is instead possible to create an enum class which 
+// type or to other enums so it is instead possible to create an enum class which
 // won't be implicitly converted
 enum class ECarTypes : uint8_t
 {
@@ -468,7 +470,7 @@ int main() {
 // Inheritance:
 
 // This class inherits everything public and protected from the Dog class
-// as well as private but may not directly access private members/methods 
+// as well as private but may not directly access private members/methods
 // without a public or protected method for doing so
 class OwnedDog : public Dog {
 
@@ -806,8 +808,8 @@ void doSomethingWithAFile(const std::string& filename)
 // have default comparators, but you can override it.
 class Foo {
 public:
-	int j;
-	Foo(int a) : j(a) {}
+    int j;
+    Foo(int a) : j(a) {}
 };
 struct compareFunction {
     bool operator()(const Foo& a, const Foo& b) const {
@@ -819,6 +821,76 @@ struct compareFunction {
 std::map<Foo, int, compareFunction> fooMap;
 fooMap[Foo(1)]  = 1;
 fooMap.find(Foo(1)); //true
+
+///////////////////////////////////////
+// Lambda Expressions (C++11 and above)
+///////////////////////////////////////
+
+// lambdas are a convenient way of defining an anonymous function
+// object right at the location where it is invoked or passed as
+// an argument to a function.
+
+// For example, consider sorting a vector of pairs using the second
+// value of the pair
+
+vector<pair<int, int> > tester;
+tester.push_back(make_pair(3, 6));
+tester.push_back(make_pair(1, 9));
+tester.push_back(make_pair(5, 0));
+
+// Pass a lambda expression as third argument to the sort function
+// sort is from the <algorithm> header
+
+sort(tester.begin(), tester.end(), [](const pair<int, int>& lhs, const pair<int, int>& rhs) {
+        return lhs.second < rhs.second;
+    });
+
+// Notice the syntax of the lambda expression,
+// [] in the lambda is used to "capture" variables
+// The "Capture List" defines what from the outside of the lambda should be available inside the function body and how.
+// It can be either:
+//     1. a value : [x]
+//     2. a reference : [&x]
+//     3. any variable currently in scope by reference [&]
+//     4. same as 3, but by value [=]
+// Example:
+
+vector<int> dog_ids;
+// number_of_dogs = 3;
+for(int i = 0; i < 3; i++) {
+	dog_ids.push_back(i);
+}
+
+int weight[3] = {30, 50, 10};
+
+// Say you want to sort dog_ids according to the dogs' weights
+// So dog_ids should in the end become: [2, 0, 1]
+
+// Here's where lambda expressions come in handy
+
+sort(dog_ids.begin(), dog_ids.end(), [&weight](const int &lhs, const int &rhs) {
+        return weight[lhs] < weight[rhs];
+    });
+// Note we captured "weight" by reference in the above example.
+// More on Lambdas in C++ : http://stackoverflow.com/questions/7627098/what-is-a-lambda-expression-in-c11
+
+///////////////////////////////
+// Range For (C++11 and above)
+///////////////////////////////
+
+// You can use a range for loop to iterate over a container
+int arr[] = {1, 10, 3};
+
+for(int elem: arr){
+	cout << elem << endl;
+}
+
+// You can use "auto" and not worry about the type of the elements of the container
+// For example:
+
+for(auto elem: arr) {
+	// Do something with each element of arr
+}
 
 /////////////////////
 // Fun stuff
@@ -870,20 +942,187 @@ Foo f1;
 f1 = f2;
 
 
-// How to truly clear a container:
-class Foo { ... };
-vector<Foo> v;
-for (int i = 0; i < 10; ++i)
-  v.push_back(Foo());
+///////////////////////////////////////
+// Tuples (C++11 and above)
+///////////////////////////////////////
 
-// Following line sets size of v to 0, but destructors don't get called
-// and resources aren't released!
-v.empty();
-v.push_back(Foo());  // New value is copied into the first Foo we inserted
+#include<tuple>
 
-// Truly destroys all values in v. See section about temporary objects for
-// explanation of why this works.
-v.swap(vector<Foo>());
+// Conceptually, Tuples are similar to  old data structures (C-like structs) but instead of having named data members,
+// its elements are accessed by their order in the tuple.
+
+// We start with constructing a tuple.
+// Packing values into tuple
+auto first = make_tuple(10, 'A');
+const int maxN = 1e9;
+const int maxL = 15;
+auto second = make_tuple(maxN, maxL);
+
+// Printing elements of 'first' tuple
+cout << get<0>(first) << " " << get<1>(first) << "\n"; //prints : 10 A
+
+// Printing elements of 'second' tuple
+cout << get<0>(second) << " " << get<1>(second) << "\n"; // prints: 1000000000 15
+
+// Unpacking tuple into variables
+
+int first_int;
+char first_char;
+tie(first_int, first_char) = first;
+cout << first_int << " " << first_char << "\n";  // prints : 10 A
+
+// We can also create tuple like this.
+
+tuple<int, char, double> third(11, 'A', 3.14141);
+// tuple_size returns number of elements in a tuple (as a constexpr)
+
+cout << tuple_size<decltype(third)>::value << "\n"; // prints: 3
+
+// tuple_cat concatenates the elements of all the tuples in the same order.
+
+auto concatenated_tuple = tuple_cat(first, second, third);
+// concatenated_tuple becomes = (10, 'A', 1e9, 15, 11, 'A' ,3.14141)
+
+cout << get<0>(concatenated_tuple) << "\n"; // prints: 10
+cout << get<3>(concatenated_tuple) << "\n"; // prints: 15
+cout << get<5>(concatenated_tuple) << "\n"; // prints: 'A'
+
+
+/////////////////////
+// Containers
+/////////////////////
+
+// Containers or the Standard Template Library are some predefined templates.
+// They manage the storage space for its elements and provide
+// member functions to access and manipulate them.
+
+// Few containers are as follows:
+
+// Vector (Dynamic array)
+// Allow us to Define the Array or list of objects at run time
+#include<vector>
+vector<Data_Type> Vector_name; // used to initialize the vector
+cin >> val;
+Vector_name.push_back(val); // will push the value of variable into array
+
+// To iterate through vector, we have 2 choices:
+// Normal looping
+for(int i=0; i<Vector_name.size(); i++)
+// It will iterate through the vector from index '0' till last index
+
+// Iterator
+vector<Data_Type>::iterator it; // initialize the iteartor for vector
+for(it=vector_name.begin(); it!=vector_name.end();++it)
+
+// For accessing the element of the vector
+// Operator []
+var = vector_name[index]; // Will assign value at that index to var
+
+
+// Set
+// Sets are containers that store unique elements following a specific order.
+// Set is a very useful container to store unique values in sorted order
+// without any other functions or code.
+
+#include<set>
+set<int> ST;    // Will initialize the set of int data type
+ST.insert(30);  // Will insert the value 30 in set ST
+ST.insert(10);  // Will insert the value 10 in set ST
+ST.insert(20);  // Will insert the value 20 in set ST
+ST.insert(30);  // Will insert the value 30 in set ST
+// Now elements of sets are as follows
+//  10 20 30
+
+// To erase an element
+ST.erase(20);  // Will erase element with value 20
+// Set ST: 10 30
+// To iterate through Set we use iterators
+set<int>::iterator it;
+for(it=ST.begin();it<ST.end();it++) {
+	cout << *it << endl;
+}
+// Output:
+// 10
+// 30
+
+// To clear the complete container we use Container_name.clear()
+ST.clear();
+cout << ST.size();  // will print the size of set ST
+// Output: 0
+
+// NOTE: for duplicate elements we can use multiset
+
+// Map
+// Maps store elements formed by a combination of a key value
+// and a mapped value, following a specific order.
+
+#include<map>
+map<char, int> mymap;  // Will initalize the map with key as char and value as int
+
+mymap.insert(pair<char,int>('A',1));
+// Will insert value 1 for key A
+mymap.insert(pair<char,int>('Z',26));
+// Will insert value 26 for key Z
+
+// To iterate
+map<char,int>::iterator it;
+for (it=mymap.begin(); it!=mymap.end(); ++it)
+    std::cout << it->first << "->" << it->second << '\n';
+// Output:
+// A->1
+// Z->26
+
+// To find the value correponsing to a key
+it = mymap.find('Z');
+cout << it->second;
+
+// Output: 26
+
+
+///////////////////////////////////
+// Logical and Bitwise operators
+//////////////////////////////////
+
+// Most of the operators in C++ are same as in other languages
+
+// Logical operators
+
+// C++ uses Short-circuit evaluation for boolean expressions, i.e, the second argument is executed or
+// evaluated only if the first argument does not suffice to determine the value of the expression
+
+true && false // Performs **logical and** to yield false
+true || false // Performs **logical or** to yield true
+! true        // Performs **logical not** to yield false
+
+// Instead of using symbols equivalent keywords can be used
+true and false // Performs **logical and** to yield false
+true or false  // Performs **logical or** to yield true
+not true       // Performs **logical not** to yield false
+
+// Bitwise operators
+
+// **<<** Left Shift Operator
+// << shifts bits to the left
+4 << 1 // Shifts bits of 4 to left by 1 to give 8
+// x << n can be thought as x * 2^n
+
+
+// **>>** Right Shift Operator
+// >> shifts bits to the right
+4 >> 1 // Shifts bits of 4 to right by 1 to give 2
+// x >> n can be thought as x / 2^n
+
+~4    // Performs a bitwise not
+4 | 3 // Performs bitwise or
+4 & 3 // Performs bitwise and
+4 ^ 3 // Performs bitwise xor
+
+// Equivalent keywords are
+compl 4    // Performs a bitwise not
+4 bitor 3  // Performs bitwise or
+4 bitand 3 // Performs bitwise and
+4 xor 3    // Performs bitwise xor
+
 
 ```
 Further Reading:

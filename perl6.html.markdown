@@ -103,7 +103,7 @@ sub say-hello-to(Str $name) { # You can provide the type of an argument
 
 ## It can also have optional arguments:
 sub with-optional($arg?) { # the "?" marks the argument optional
-  say "I might return `(Any)` (Perl's "null"-like value) if I don't have
+  say "I might return `(Any)` (Perl's 'null'-like value) if I don't have
         an argument passed, or I'll return my argument";
   $arg;
 }
@@ -373,7 +373,7 @@ say @array[^10]; # you can pass arrays as subscripts and it'll return
 say join(' ', @array[15..*]); #=> 15 16 17 18 19
 # which is equivalent to:
 say join(' ', @array[-> $n { 15..$n }]);
-# Note: if you try to do either of those with an infinite loop,
+# Note: if you try to do either of those with an infinite array,
 #       you'll trigger an infinite loop (your program won't finish)
 
 # You can use that in most places you'd expect, even assigning to an array
@@ -736,7 +736,7 @@ try {
 # You can throw an exception using `die`:
 die X::AdHoc.new(payload => 'Error !');
 
-# You can access the last exception with `$!` (usually used in a `CATCH` block)
+# You can access the last exception with `$!` (use `$_` in a `CATCH` block)
 
 # There are also some subtelties to exceptions. Some Perl 6 subs return a `Failure`,
 #  which is a kind of "unthrown exception". They're not thrown until you tried to look
@@ -803,9 +803,8 @@ module Foo::Bar {
     my sub unavailable { # `my sub` is the default
       say "Can't access me from outside, I'm my !";
     }
+    say ++$n; # increment the package variable and output its value
   }
-
-  say ++$n; # lexically-scoped variables are still available
 }
 say $Foo::Bar::n; #=> 1
 Foo::Bar::inc; #=> 2
@@ -825,7 +824,7 @@ say why-not[^5]; #=> 5 15 25 35 45
 # (they exist in other langages such as C as `static`)
 sub fixed-rand {
   state $val = rand;
-  say $rand;
+  say $val;
 }
 fixed-rand for ^10; # will print the same number 10 times
 
@@ -1330,7 +1329,7 @@ so 'ayc' ~~ / a [ b | y ] c /; # `True`. Obviously enough ...
 
 
 
-### Extra: the MAIN subroutime
+### Extra: the MAIN subroutine
 # The `MAIN` subroutine is called when you run a Perl 6 file directly.
 # It's very powerful, because Perl 6 actually parses the arguments
 #  and pass them as such to the sub. It also handles named argument (`--foo`)

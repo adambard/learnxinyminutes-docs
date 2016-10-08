@@ -25,6 +25,23 @@ like
 this
 %}
 
+% Two percent signs denote the start of a new code section
+% Individual code sections can be run by moving the cursor to the section followed by
+% either clicking the "Run Section" button
+% or     using Ctrl+Shift+Enter (Windows) or Cmd+Shift+Return (OS X)
+
+%% This is the start of a code section
+%  One way of using sections is to separate expensive but unchanging start-up code like loading data
+load myFile.mat y
+
+%% This is another code section
+%  This section can be edited and run repeatedly on its own, and is helpful for exploratory programming and demos
+A = A * 2;
+plot(A);
+
+%% Code sections are also known as code cells or cell mode (not to be confused with cell arrays)
+
+
 % commands can span multiple lines, using '...':
  a = 1 + 2 + ...
  + 4
@@ -73,7 +90,7 @@ c = exp(a)*sin(pi/2) % c = 7.3891
 
 % Calling functions can be done in either of two ways:
 % Standard function syntax:
-load('myFile.mat', 'y') % arguments within parantheses, spererated by commas
+load('myFile.mat', 'y') % arguments within parentheses, separated by commas
 % Command syntax:
 load myFile.mat y 	% no parentheses, and spaces instead of commas
 % Note the lack of quote marks in command form: inputs are always passed as
@@ -279,7 +296,7 @@ clf clear % clear current figure window, and reset most figure properties
 
 % Properties can be set and changed through a figure handle.
 % You can save a handle to a figure when you create it.
-% The function gcf returns a handle to the current figure
+% The function get returns a handle to the current figure
 h = plot(x, y); % you can save a handle to a figure when you create it
 set(h, 'Color', 'r')
 % 'y' yellow; 'm' magenta, 'c' cyan, 'r' red, 'g' green, 'b' blue, 'w' white, 'k' black

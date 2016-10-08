@@ -5,6 +5,7 @@ contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 lang: fr-fr
 ---
+
 HTML signifie HyperText Markup Language. 
 C'est un langage (format de fichiers) qui permet d'écrire des pages internet.
 C’est un langage de balisage, il nous permet d'écrire des pages HTML au moyen de balises (Markup, en anglais).
@@ -17,7 +18,7 @@ Comme tous les autres langages, HTML a plusieurs versions. Ici, nous allons parl
 Cet article porte principalement sur la syntaxe et quelques astuces.
 
 
-```HTML
+```html
 <!-- Les commentaires sont entouré comme cette ligne! -->
 
 <!-- #################### Les balises #################### -->
@@ -104,6 +105,8 @@ Cet article porte principalement sur la syntaxe et quelques astuces.
 		<td>Deuxième ligne, deuxième cellule</td>
 	</tr>
 </table>
+
+```
 
 ## Utilisation
 

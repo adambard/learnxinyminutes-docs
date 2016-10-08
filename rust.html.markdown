@@ -27,8 +27,15 @@ concepts that are generally found in higher-level languages. This makes
 Rust not only fast, but also easy and efficient to code in.
 
 ```rust
-// This is a comment. Single-line look like this...
-/* ...and multi-line comment look like this */
+// This is a comment. Line comments look like this...
+// and extend multiple lines like this.
+
+/// Documentation comments look like this and support markdown notation.
+/// # Examples
+///
+/// ```
+/// let five = 5
+/// ```
 
 ///////////////
 // 1. Basics //
@@ -81,9 +88,10 @@ fn main() {
     let s: String = "hello world".to_string();
 
     // A string slice – an immutable view into another string
-    // This is basically an immutable pointer to a string – it doesn’t
+    // This is basically an immutable pair of pointers to a string – it doesn’t
     // actually contain the contents of a string, just a pointer to
-    // something that does (in this case, `s`)
+    // the begin and a pointer to the end of a string buffer,
+    // statically allocated or contained in another object (in this case, `s`)
     let s_slice: &str = &s;
 
     println!("{} {}", s, s_slice); // hello world hello world
@@ -278,10 +286,10 @@ fn main() {
     var = 3;
     let ref_var: &i32 = &var;
 
-    println!("{}", var); // Unlike `box`, `var` can still be used
+    println!("{}", var); // Unlike `mine`, `var` can still be used
     println!("{}", *ref_var);
     // var = 5; // this would not compile because `var` is borrowed
-    // *ref_var = 6; // this would not too, because `ref_var` is an immutable reference
+    // *ref_var = 6; // this would not either, because `ref_var` is an immutable reference
 
     // Mutable reference
     // While a value is mutably borrowed, it cannot be accessed at all.
@@ -289,8 +297,9 @@ fn main() {
     let ref_var2: &mut i32 = &mut var2;
     *ref_var2 += 2;         // '*' is used to point to the mutably borrowed var2
 
-    println!("{}", *ref_var2); // 6 , //var2 would not compile. //ref_var2 is of type &mut i32, so                                                      //stores a reference to an i32 not the value.
-    // var2 = 2; // this would not compile because `var2` is borrowed
+    println!("{}", *ref_var2); // 6 , // var2 would not compile.
+    // ref_var2 is of type &mut i32, so stores a reference to an i32, not the value.
+    // var2 = 2; // this would not compile because `var2` is borrowed.
 }
 ```
 

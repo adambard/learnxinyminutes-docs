@@ -302,7 +302,7 @@ class Bicycle {
 
     // 构造函数是初始化一个对象的方式
     // 以下是一个默认构造函数
-    public Bi450635425cycle() {
+    public Bicycle() {
         gear = 1;
         cadence = 50;
         speed = 5;
@@ -328,7 +328,7 @@ class Bicycle {
         return cadence;
     }
 
-    // void返450635425回值函数没有返回值
+    // void返回值函数没有返回值
     public void setCadence(int newValue) {
         cadence = newValue;
     }

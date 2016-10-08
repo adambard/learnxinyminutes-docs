@@ -24,6 +24,12 @@ val phone_no = 5551337
 val pi = 3.14159
 val negative_number = ~15  (* Yeah, unary minus uses the 'tilde' symbol *)
 
+(* Optionally, you can explicitly declare types. This is not necessary as
+   ML will automatically figure out the types of your values. *)
+val diameter = 7926 : int
+val e = 2.718 : real
+val name = "Bobby" : string
+
 (* And just as importantly, functions: *)
 fun is_large(x : int) = if x > 37 then true else false
 
@@ -31,6 +37,8 @@ fun is_large(x : int) = if x > 37 then true else false
 val tau = 2.0 * pi         (* You can multiply two reals *)
 val twice_rent = 2 * rent  (* You can multiply two ints *)
 (* val meh = 1.25 * 10 *)  (* But you can't multiply an int and a real *)
+val yeh = 1.25 * (Real.fromInt 10) (* ...unless you explicitly convert
+                                      one or the other *)
 
 (* +, - and * are overloaded so they work for both int and real. *)
 (* The same cannot be said for division which has separate operators: *)

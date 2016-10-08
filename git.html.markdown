@@ -7,6 +7,7 @@ contributors:
     - ["Betsy Lorton" , "http://github.com/schbetsy"]
     - ["Bruno Volcov", "http://github.com/volcov"]
     - ["Andrew Taylor", "http://github.com/andrewjt71"]
+    - ["Jason Stathopulos", "http://github.com/SpiritBreaker226"]
 filename: LearnGit.txt
 ---
 
@@ -24,9 +25,12 @@ Version control is a system that records changes to a file(s), over time.
 
 ### Centralized Versioning VS Distributed Versioning
 
-* Centralized version control focuses on synchronizing, tracking, and backing up files.
-* Distributed version control focuses on sharing changes. Every change has a unique id.
-* Distributed systems have no defined structure. You could easily have a SVN style, 		centralized system, with git.
+* Centralized version control focuses on synchronizing, tracking, and backing 
+up files.
+* Distributed version control focuses on sharing changes. Every change has a 
+unique id.
+* Distributed systems have no defined structure. You could easily have a SVN 
+style, centralized system, with git.
 
 [Additional Information](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
 
@@ -35,12 +39,12 @@ Version control is a system that records changes to a file(s), over time.
 * Can work offline.
 * Collaborating with others is easy!
 * Branching is easy!
+* Branching is fast!
 * Merging is easy!
 * Git is fast.
 * Git is flexible.
 
 ## Git Architecture
-
 
 ### Repository
 
@@ -52,7 +56,8 @@ A git repository is comprised of the .git directory & working tree.
 
 ### .git Directory (component of repository)
 
-The .git directory contains all the configurations, logs, branches, HEAD, and more.
+The .git directory contains all the configurations, logs, branches, HEAD, and 
+more.
 [Detailed List.](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### Working Tree (component of repository)
@@ -62,16 +67,16 @@ referred to as your working directory.
 
 ### Index (component of .git dir)
 
-The Index is the staging area in git. It's basically a layer that separates your working tree
-from the Git repository. This gives developers more power over what gets sent
-to the Git repository.
+The Index is the staging area in git. It's basically a layer that separates 
+your working tree from the Git repository. This gives developers more power 
+over what gets sent to the Git repository.
 
 ### Commit
 
-A git commit is a snapshot of a set of changes, or manipulations to your Working
-Tree. For example, if you added 5 files, and removed 2 others, these changes
-will be contained in a commit (or snapshot). This commit can then be pushed to
-other repositories, or not!
+A git commit is a snapshot of a set of changes, or manipulations to your 
+Working Tree. For example, if you added 5 files, and removed 2 others, these 
+changes will be contained in a commit (or snapshot). This commit can then be 
+pushed to other repositories, or not!
 
 ### Branch
 
@@ -85,11 +90,14 @@ functionality to mark release points (v1.0, and so on)
 
 ### HEAD and head (component of .git dir)
 
-HEAD is a pointer that points to the current branch. A repository only has 1 *active* HEAD.
-head is a pointer that points to any commit. A repository can have any number of heads.
+HEAD is a pointer that points to the current branch. A repository only has 1 
+*active* HEAD.  
+head is a pointer that points to any commit. A repository can have any number 
+of heads.
 
 ### Stages of Git
-* Modified - Changes have been made to a file but file has not been committed to Git Database yet
+* Modified - Changes have been made to a file but file has not been committed 
+to Git Database yet
 * Staged - Marks a modified file to go into your next commit snapshot
 * Committed - Files have been committed to the Git Database
 
@@ -98,14 +106,12 @@ head is a pointer that points to any commit. A repository can have any number of
 * [Git For Computer Scientists](http://eagain.net/articles/git-for-computer-scientists/)
 * [Git For Designers](http://hoth.entp.com/output/git_for_designers.html)
 
-
 ## Commands
-
 
 ### init
 
-Create an empty Git repository. The Git repository's settings, stored information,
-and more is stored in a directory (a folder) named ".git".
+Create an empty Git repository. The Git repository's settings, stored 
+information, and more is stored in a directory (a folder) named ".git".
 
 ```bash
 $ git init
@@ -115,7 +121,6 @@ $ git init
 
 To configure settings. Whether it be for the repository, the system itself,
 or global configurations ( global config file is `~/.gitconfig` ).
-
 
 ```bash
 # Print & Set Some Basic Config Variables (Global)
@@ -157,12 +162,10 @@ $ echo "temp/" >> .gitignore
 $ echo "private_key" >> .gitignore
 ```
 
-
 ### status
 
 To show differences between the index file (basically your working copy/repo)
 and the current HEAD commit.
-
 
 ```bash
 # Will display the branch, untracked files, changes and other differences
@@ -174,8 +177,8 @@ $ git help status
 
 ### add
 
-To add files to the staging area/index. If you do not `git add` new files to the
-staging area/index, they will not be included in commits!
+To add files to the staging area/index. If you do not `git add` new files to 
+the staging area/index, they will not be included in commits!
 
 ```bash
 # add a file in your current working directory
@@ -193,7 +196,8 @@ working directory/repo.
 
 ### branch
 
-Manage your branches. You can view, edit, create, delete branches using this command.
+Manage your branches. You can view, edit, create, delete branches using this 
+command.
 
 ```bash
 # list existing branches & remotes
@@ -220,54 +224,64 @@ Manage your tags
 ```bash
 # List tags
 $ git tag
+
 # Create a annotated tag
 # The -m specifies a tagging message,which is stored with the tag.
 # If you don’t specify a message for an annotated tag,
 # Git launches your editor so you can type it in.
 $ git tag -a v2.0 -m 'my version 2.0'
+
 # Show info about tag
 # That shows the tagger information, the date the commit was tagged,
 # and the annotation message before showing the commit information.
 $ git show v2.0
+
 # Push a single tag to remote
 $ git push origin v2.0
+
 # Push a lot of tags to remote
 $ git push origin --tags
 ```
 
 ### checkout
 
-Updates all files in the working tree to match the version in the index, or specified tree.
+Updates all files in the working tree to match the version in the index, or 
+specified tree.
 
 ```bash
 # Checkout a repo - defaults to master branch
 $ git checkout
+
 # Checkout a specified branch
 $ git checkout branchName
+
 # Create a new branch & switch to it
 # equivalent to "git branch <name>; git checkout <name>"
+
 $ git checkout -b newBranch
 ```
 
 ### clone
 
 Clones, or copies, an existing repository into a new directory. It also adds
-remote-tracking branches for each branch in the cloned repo, which allows you to push
-to a remote branch.
+remote-tracking branches for each branch in the cloned repo, which allows you 
+to push to a remote branch.
 
 ```bash
 # Clone learnxinyminutes-docs
 $ git clone https://github.com/adambard/learnxinyminutes-docs.git
+
 # shallow clone - faster cloning that pulls only latest snapshot
 $ git clone --depth 1 https://github.com/adambard/learnxinyminutes-docs.git
+
 # clone only a specific branch
 $ git clone -b master-cn https://github.com/adambard/learnxinyminutes-docs.git --single-branch
 ```
 
 ### commit
 
-Stores the current contents of the index in a new "commit." This commit contains
-the changes made and a message created by the user.
+Stores the current contents of the index in a new "commit." This commit 
+contains the changes made and a message created by the user.
 
 ```bash
 # commit with a message
@@ -382,7 +396,8 @@ $ git pull origin master
 $ git pull
 
 # Merge in changes from remote branch and rebase
-# branch commits onto your local repo, like: "git pull <remote> <branch>, git rebase <branch>"
+# branch commits onto your local repo, like: "git fetch <remote> <branch>, git 
+# rebase <remote>/<branch>"
 $ git pull origin master --rebase
 ```
 
@@ -408,8 +423,8 @@ $ git push
 
 ### stash
 
-Stashing takes the dirty state of your working directory and saves it on a stack
-of unfinished changes that you can reapply at any time.
+Stashing takes the dirty state of your working directory and saves it on a 
+stack of unfinished changes that you can reapply at any time.
 
 Let's say you've been doing some work in your git repo, but you want to pull
 from the remote. Since you have dirty (uncommited) changes to some files, you
@@ -440,7 +455,8 @@ nothing to commit, working directory clean
 ```
 
 You can see what "hunks" you've stashed so far using `git stash list`.
-Since the "hunks" are stored in a Last-In-First-Out stack, our most recent change will be at top.
+Since the "hunks" are stored in a Last-In-First-Out stack, our most recent 
+change will be at top.
 
 ```bash
 $ git stash list
@@ -470,7 +486,8 @@ Now you're ready to get back to work on your stuff!
 
 ### rebase (caution)
 
-Take all changes that were committed on one branch, and replay them onto another branch.
+Take all changes that were committed on one branch, and replay them onto 
+another branch.
 *Do not rebase commits that you have pushed to a public repo*.
 
 ```bash
@@ -484,8 +501,8 @@ $ git rebase master experimentBranch
 ### reset (caution)
 
 Reset the current HEAD to the specified state. This allows you to undo merges,
-pulls, commits, adds, and more. It's a great command but also dangerous if you don't
-know what you are doing.
+pulls, commits, adds, and more. It's a great command but also dangerous if you 
+don't know what you are doing.
 
 ```bash
 # Reset the staging area, to match the latest commit (leaves dir unchanged)
@@ -503,11 +520,37 @@ $ git reset 31f2bb1
 # after the specified commit).
 $ git reset --hard 31f2bb1
 ```
+
+### reflog (caution)
+
+Reflog will list most of the git commands you have done for a given time period,
+default 90 days.
+
+This give you the a change to reverse any git commands that have gone wrong
+for instance if a rebase is has broken your application.
+
+You can do this:
+
+1. `git reflog` to list all of the git commands for the rebase
+```
+38b323f HEAD@{0}: rebase -i (finish): returning to refs/heads/feature/add_git_reflog
+38b323f HEAD@{1}: rebase -i (pick): Clarify inc/dec operators
+4fff859 HEAD@{2}: rebase -i (pick): Update java.html.markdown
+34ed963 HEAD@{3}: rebase -i (pick): [yaml/en] Add more resources (#1666)
+ed8ddf2 HEAD@{4}: rebase -i (pick): pythonstatcomp spanish translation (#1748)
+2e6c386 HEAD@{5}: rebase -i (start): checkout 02fb96d
+```
+2. Select where to reset to, in our case its `2e6c386`, or `HEAD@{5}`
+3. 'git reset --hard HEAD@{5}' this will reset your repo to that head
+4. You can start the rebase again or leave it alone.
+
+[Additional Reading.](https://git-scm.com/docs/git-reflog)
+
 ### revert
 
-Revert can be used to undo a commit. It should not be confused with reset which restores
-the state of a project to a previous point. Revert will add a new commit which is the
-inverse of the specified commit, thus reverting it.
+Revert can be used to undo a commit. It should not be confused with reset which 
+restores the state of a project to a previous point. Revert will add a new 
+commit which is the inverse of the specified commit, thus reverting it.
 
 ```bash
 # Revert a specified commit
@@ -530,6 +573,8 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 * [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
 
+* [Learn Git Branching - the most visual and interactive way to learn Git on the web](http://learngitbranching.js.org/)
+
 * [Udemy Git Tutorial: A Comprehensive Guide](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
 
 * [Git Immersion - A Guided tour that walks through the fundamentals of git](http://gitimmersion.com/)
@@ -540,7 +585,7 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 * [Atlassian Git - Tutorials & Workflows](https://www.atlassian.com/git/)
 
-* [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+* [SalesForce Cheat Sheet](http://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf)
 
 * [GitGuys](http://www.gitguys.com/)
 
@@ -549,4 +594,3 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [Pro Git](http://www.git-scm.com/book/en/v2)
 
 * [An introduction to Git and GitHub for Beginners (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
-

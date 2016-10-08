@@ -14,7 +14,7 @@ Clojure, there are implementations of EDN for many other languages.
 The main benefit of EDN over JSON and YAML is that it is extensible. We
 will see how it is extended later on.
 
-```Clojure
+```clojure
 ; Comments start with a semicolon.
 ; Anything after the semicolon is ignored.
 
