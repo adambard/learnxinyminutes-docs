@@ -4,9 +4,11 @@ contributors:
   - ["Grant Timmerman", "http://github.com/grant"]
   - ["Christopher Bess", "http://github.com/cbess"]
   - ["Joey Huang", "http://github.com/kamidox"]
+  - ["Alexey Nazaroff", "http://github.com/rogaven"]
 filename: learnswift-ru.swift
 translators:
   - ["Dmitry Bessonov", "https://github.com/TheDmitry"]
+  - ["Alexey Nazaroff", "https://github.com/rogaven"]
 lang: ru-ru
 ---
 
@@ -21,6 +23,8 @@ Swift - это язык программирования, созданный к�
 Смотрите еще [начальное руководство](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html) Apple, которое содержит полное учебное пособие по Swift.
 
 ```swift
+// Версия Swift: 3.0
+
 // импорт модуля
 import UIKit
 
@@ -31,10 +35,14 @@ import UIKit
 // Xcode поддерживает маркеры, чтобы давать примечания своему коду
 // и вносить их в список обозревателя (Jump Bar)
 // MARK: Метка раздела
+// MARK: - Метка с разделителем
 // TODO: Сделайте что-нибудь вскоре
 // FIXME: Исправьте этот код
 
-println("Привет, мир")
+// Начиная со второй версии Swift, println и print объединены в методе print.
+// Перенос строки теперь добавляется в конец автоматически.
+print("Привет, мир!") // println – теперь просто print
+print("Привет, мир!", terminator: "") // вывод текста без переноса строки
 
 // переменные (var), значение которых можно изменить после инициализации
 // константы (let), значение которых нельзя изменить после инициализации
@@ -56,12 +64,12 @@ let piText = "Pi = \(π), Pi 2 = \(π * 2)" // Вставка переменны
 // Сборка особых значений
 // используя ключ -D сборки конфигурации
 #if false
-    println("Не печатается")
+    print("Не печатается")
     let buildValue = 3
 #else
     let buildValue = 7
 #endif
-println("Значение сборки: \(buildValue)") // Значение сборки: 7
+print("Значение сборки: \(buildValue)") // Значение сборки: 7
 
 /*
     Опционалы - это особенность языка Swift, которая допускает вам сохранять
@@ -79,31 +87,41 @@ var someOptionalString2: Optional<String> = "опционал"
 if someOptionalString != nil {
     // я не nil
     if someOptionalString!.hasPrefix("opt") {
-        println("содержит префикс")
+        print("содержит префикс")
     }
 
     let empty = someOptionalString?.isEmpty
 }
 someOptionalString = nil
 
+/*
+Использование ! для доступа к несуществующему опциональному значению генерирует
+рантайм ошибку. Всегда проверяйте, что опционал содержит не пустое значение,
+перед тем как раскрывать его через !.
+*/
+
 // неявная развертка опциональной переменной
 var unwrappedString: String! = "Ожидаемое значение."
 // как и выше, только ! - постфиксный оператор (с еще одним синтаксическим сахаром)
 var unwrappedString2: ImplicitlyUnwrappedOptional<String> = "Ожидаемое значение."
 
+// If let конструкции -
+// If let это специальная конструкция в Swift, которая позволяет проверить Optional
+// справа от `=` непустой, и если это так - разворачивает его и присваивает левой части.
 if let someOptionalStringConstant = someOptionalString {
-    // имеется некоторое значение, не nil
+    // имеется некоторое (`Some`) значение, не `nil`
     if !someOptionalStringConstant.hasPrefix("ok") {
         // нет такого префикса
     }
 }
 
 // Swift поддерживает сохранение значения любого типа
+// Для этих целей есть два ключевых слова `Any` и `AnyObject`
 // AnyObject == id
-// В отличие от `id` в Objective-C, AnyObject работает с любым значением (Class,
-// Int, struct и т.д.)
-var anyObjectVar: AnyObject = 7
-anyObjectVar = "Изменять значение на строку не является хорошей практикой, но возможно."
+// `Any` же, в отличие от `id` в Objective-C, `Any` работает с любым значением (Class, Int, struct и т.д.)
+var anyVar: Any = 7
+anyVar = "Изменять значение на строку не является хорошей практикой, но возможно."
+let anyObjectVar: AnyObject = Int(1) as NSNumber
 
 /*
     Комментируйте здесь
@@ -129,6 +147,7 @@ shoppingList[1] = "бутылка воды"
 let emptyArray = [String]() // let == неизменный
 let emptyArray2 = Array<String>() // как и выше
 var emptyMutableArray = [String]() // var == изменяемый
+var explicitEmptyMutableStringArray: [String] = [] // так же как и выше
 
 
 // Словарь
@@ -140,31 +159,39 @@ occupations["Jayne"] = "Связи с общественностью"
 let emptyDictionary = [String: Float]() // let == неизменный
 let emptyDictionary2 = Dictionary<String, Float>() // как и выше
 var emptyMutableDictionary = [String: Float]() // var == изменяемый
+var explicitEmptyMutableDictionary: [String: Float] = [:] // то же
 
 
 //
 // MARK: Поток управления
 //
 
+// С помощью "," можно указать дополнительные условия для раскрытия
+// опциональных значений.
+let someNumber = Optional<Int>(7)
+if let num = someNumber, num > 3 {
+    print("Больше 3х")
+}
+
 // цикл for для массива
 let myArray = [1, 1, 2, 3, 5]
 for value in myArray {
     if value == 1 {
-        println("Один!")
+        print("Один!")
     } else {
-        println("Не один!")
+        print("Не один!")
     }
 }
 
 // цикл for для словаря
 var dict = ["один": 1, "два": 2]
 for (key, value) in dict {
-    println("\(key): \(value)")
+    print("\(key): \(value)")
 }
 
 // цикл for для диапазона чисел
 for i in -1...shoppingList.count {
-    println(i)
+    print(i)
 }
 shoppingList[1...2] = ["бифштекс", "орехи пекан"]
 // используйте ..< для исключения последнего числа
@@ -176,8 +203,8 @@ while i < 1000 {
 }
 
 // цикл do-while
-do {
-    println("привет")
+repeat {
+    print("привет")
 } while 1 == 2
 
 // Переключатель
@@ -204,7 +231,7 @@ default: // обязательный (чтобы предусмотреть вс
 // Функции являются типом первого класса, т.е. они могут быть вложены в функциях
 // и могут передаваться между собой
 
-// Функция с документированным заголовком Swift (формат reStructedText)
+// Функция с документированным заголовком Swift (формат Swift-модифицированный Markdown)
 
 /**
     Операция приветствия
@@ -212,20 +239,20 @@ default: // обязательный (чтобы предусмотреть вс
     - Маркер в документировании
     - Еще один маркер в документации
 
-    :param: name - это имя
-    :param: day - это день
-    :returns: Строка, содержащая значения name и day.
+    - Parameter name	: Это имя
+    - Parameter day	: Это день
+    - Returns : Строка, содержащая значения name и day.
 */
 func greet(name: String, day: String) -> String {
     return "Привет \(name), сегодня \(day)."
 }
-greet("Боб", "вторник")
+greet(name: "Боб", day: "вторник")
 
 // как и выше, кроме обращения параметров функции
-func greet2(#requiredName: String, externalParamName localParamName: String) -> String {
-    return "Привет \(requiredName), сегодня \(localParamName)"
+func greet2(name: String, externalParamName localParamName: String) -> String {
+    return "Привет \(name), сегодня \(localParamName)"
 }
-greet2(requiredName:"Иван", externalParamName: "воскресенье")
+greet2(name: "Иван", externalParamName: "Воскресенье")
 
 // Функция, которая возвращает множество элементов в кортеже
 func getGasPrices() -> (Double, Double, Double) {
@@ -235,8 +262,31 @@ let pricesTuple = getGasPrices()
 let price = pricesTuple.2 // 3.79
 // Пропускайте значения кортежей с помощью подчеркивания _
 let (_, price1, _) = pricesTuple // price1 == 3.69
-println(price1 == pricesTuple.1) // вывод: true
-println("Цена газа: \(price)")
+print(price1 == pricesTuple.1) // вывод: true
+print("Цена газа: \(price)")
+
+// Именованные параметры кортежа
+func getGasPrices2() -> (lowestPrice: Double, highestPrice: Double, midPrice: Double) {
+    return (1.77, 37.70, 7.37)
+}
+let pricesTuple2 = getGasPrices2()
+let price2 = pricesTuple2.lowestPrice
+let (_, price3, _) = pricesTuple2
+print(pricesTuple2.highestPrice == pricesTuple2.1) // вывод: true
+print("Самая высокая цена за газ: \(pricesTuple2.highestPrice)")
+
+// guard утверждения
+func testGuard() {
+    // guards обеспечивают прерывание дальнейшего выполнения функции,
+    // позволяя держать обработчики ошибок рядом с проверкой условия
+    // Объявляемая переменная находится в той же области видимости, что и guard.
+    guard let aNumber = Optional<Int>(7) else {
+        return
+    }
+
+    print("число равно \(aNumber)")
+}
+testGuard()
 
 // Переменное число аргументов
 func setup(numbers: Int...) {
@@ -246,7 +296,7 @@ func setup(numbers: Int...) {
 }
 
 // Передача и возврат функций
-func makeIncrementer() -> (Int -> Int) {
+func makeIncrementer() -> ((Int) -> Int) {
     func addOne(number: Int) -> Int {
         return 1 + number
     }
@@ -256,15 +306,15 @@ var increment = makeIncrementer()
 increment(7)
 
 // передача по ссылке
-func swapTwoInts(inout a: Int, inout b: Int) {
+func swapTwoInts(a: inout Int, b: inout Int) {
     let tempA = a
     a = b
     b = tempA
 }
 var someIntA = 7
 var someIntB = 3
-swapTwoInts(&someIntA, &someIntB)
-println(someIntB) // 7
+swapTwoInts(a: &someIntA, b: &someIntB)
+print(someIntB) // 7
 
 
 //
@@ -291,13 +341,13 @@ numbers = numbers.map({ number in 3 * number })
 print(numbers) // [3, 6, 18]
 
 // Хвостовое замыкание
-numbers = sorted(numbers) { $0 > $1 }
+numbers = numbers.sorted { $0 > $1 }
 
 print(numbers) // [18, 6, 3]
 
 // Суперсокращение, поскольку оператор < выполняет логический вывод типов
 
-numbers = sorted(numbers, < )
+numbers = numbers.sorted(by: <)
 
 print(numbers) // [3, 6, 18]
 
@@ -307,7 +357,7 @@ print(numbers) // [3, 6, 18]
 
 // Структуры и классы имеют очень похожие характеристики
 struct NamesTable {
-    let names = [String]()
+    let names: [String]
 
     // Пользовательский индекс
     subscript(index: Int) -> String {
@@ -316,9 +366,48 @@ struct NamesTable {
 }
 
 // У структур автогенерируемый (неявно) инициализатор
-let namesTable = NamesTable(names: ["Me", "Them"])
+let namesTable = NamesTable(names: ["Иван", "Яков"])
 let name = namesTable[1]
-println("Name is \(name)") // Name is Them
+print("Имя :\(name)") // Имя: Яков
+
+//
+// MARK: Обработка ошибок
+//
+
+// Протокол `Error` используется для перехвата выбрасываемых ошибок
+enum MyError: Error {
+    case BadValue(msg: String)
+    case ReallyBadValue(msg: String)
+}
+
+// фунции помеченные словом `throws` должны вызываться с помощью `try`
+func fakeFetch(value: Int) throws -> String {
+    guard 7 == value else {
+        throw MyError.ReallyBadValue(msg: "Действительно плохое значение")
+    }
+
+    return "тест"
+}
+
+func testTryStuff() {
+    // предполагается, что не будет выброшено никаких ошибок,
+    // в противном случае мы получим рантайм исключение
+    let _ = try! fakeFetch(value: 7)
+
+    // Если возникает ошибка, то выполнение продолжится. Но если значение равно nil,
+    // то результат будет опционалом
+    let _ = try? fakeFetch(value: 7)
+
+    do {
+        // обычно try оператор, позволяющий обработать ошибку в `catch` блоке
+        try fakeFetch(value: 1)
+    } catch MyError.BadValue(let msg) {
+        print("Ошибка: \(msg)")
+    } catch {
+        // все остальное
+    }
+}
+testTryStuff()
 
 //
 // MARK: Классы
@@ -329,7 +418,7 @@ println("Name is \(name)") // Name is Them
 
 public class Shape {
     public func getArea() -> Int {
-        return 0;
+        return 0
     }
 }
 
@@ -349,6 +438,11 @@ internal class Rect: Shape {
             // `newValue` - неявная переменная, доступная в сеттере
             sideLength = newValue / 4
         }
+    }
+
+    // Вычисляемые свойства должны быть объявлены с помощью `var`, ведь они могут меняться
+    var smallestSideLength: Int {
+        return self.sideLength - 1
     }
 
     // Ленивая загрузка свойства
@@ -400,7 +494,7 @@ let aShape = mySquare as Shape
 
 // сравнение экземпляров, в отличие от ==, которая проверяет эквивалентность
 if mySquare === mySquare {
-    println("Ага, это mySquare")
+    print("Ага, это mySquare")
 }
 
 // Опциональная инициализация (init)
@@ -423,13 +517,13 @@ class Circle: Shape {
 }
 
 var myCircle = Circle(radius: 1)
-println(myCircle?.getArea())    // Optional(3)
-println(myCircle!.getArea())    // 3
+print(myCircle?.getArea())    // Optional(3)
+print(myCircle!.getArea())    // 3
 var myEmptyCircle = Circle(radius: -1)
-println(myEmptyCircle?.getArea())    // "nil"
+print(myEmptyCircle?.getArea())    // "nil"
 if let circle = myEmptyCircle {
     // не будет выполняться, поскольку myEmptyCircle равен nil
-    println("circle не nil")
+    print("circle не nil")
 }
 
 
@@ -456,12 +550,13 @@ enum Suit {
 // указывать тип перечисления, когда переменная объявляется явно
 var suitValue: Suit = .Hearts
 
-// Нецелочисленные перечисления требуют прямого указания значений
+// Значения нецелочисленных перечислений должны быть указаны явно
+// или могут выводится с помощью функции `rawValue` из имени
 enum BookName: String {
-    case John = "Иоанн"
+    case John
     case Luke = "Лука"
 }
-println("Имя: \(BookName.John.rawValue)")
+print("Имя: \(BookName.John.rawValue)")
 
 // Перечисление (enum) со связанными значениями
 enum Furniture {
@@ -481,9 +576,9 @@ enum Furniture {
 }
 
 var desk: Furniture = .Desk(height: 80)
-println(desk.description())     // "Письменный стол высотой 80 см."
+print(desk.description())     // "Письменный стол высотой 80 см."
 var chair = Furniture.Chair("Foo", 40)
-println(chair.description())    // "Стул марки Foo высотой 40 см."
+print(chair.description())    // "Стул марки Foo высотой 40 см."
 
 
 //
@@ -500,10 +595,10 @@ protocol ShapeGenerator {
 }
 
 // Протоколы, объявленные с @objc, допускают необязательные функции,
-// которые позволяют вам проверять на соответствие
+// которые позволяют вам проверять на соответствие. Для функций также необходимо указать @objc
 @objc protocol TransformShape {
-    optional func reshaped()
-    optional func canReshape() -> Bool
+    @objc optional func reshape()
+    @objc optional func canReshape() -> Bool
 }
 
 class MyShape: Rect {
@@ -511,12 +606,13 @@ class MyShape: Rect {
 
     func grow() {
         sideLength += 2
+
         // Размещайте знак вопроса перед опционным свойством, методом
         // или индексом, чтобы не учитывать nil-значение и возвратить nil
         // вместо выбрасывания ошибки выполнения (т.н. "опционная цепочка")
-        if let allow = self.delegate?.canReshape?() {
+        if let reshape = self.delegate?.canReshape?(), reshape {
             // проверка делегата на выполнение метода
-            self.delegate?.reshaped?()
+            self.delegate?.reshape?()
         }
     }
 }
@@ -528,14 +624,14 @@ class MyShape: Rect {
 
 // `extension`s: Добавляет расширенный функционал к существующему типу
 
-// Класс Square теперь "соответствует" протоколу `Printable`
-extension Square: Printable {
+// Класс Square теперь "соответствует" протоколу `CustomStringConvertible`
+extension Square: CustomStringConvertible {
     var description: String {
         return "Площадь: \(self.getArea()) - ID: \(self.identifier)"
     }
 }
 
-println("Объект Square: \(mySquare)")
+print("Объект Square: \(mySquare)")
 
 // Вы также можете расширить встроенные типы
 extension Int {
@@ -548,22 +644,22 @@ extension Int {
     }
 }
 
-println(7.customProperty) // "Это 7"
-println(14.multiplyBy(3)) // 42
+print(7.customProperty) // "Это 7"
+print(14.multiplyBy(num: 3)) // 42
 
 // Обобщения: Подобно языкам Java и C#. Используйте ключевое слово `where`,
 // чтобы определить условия обобщений.
 
 func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
-    for (index, value) in enumerate(array) {
+    for (index, value) in array.enumerated() {
         if value == valueToFind {
             return index
         }
     }
     return nil
 }
-let foundAtIndex = findIndex([1, 2, 3, 4], 3)
-println(foundAtIndex == 2) // вывод: true
+let foundAtIndex = findIndex(array: [1, 2, 3, 4], valueToFind: 3)
+print(foundAtIndex == 2) // вывод: true
 
 // Операторы:
 // Пользовательские операторы могут начинаться с символов:
@@ -571,19 +667,33 @@ println(foundAtIndex == 2) // вывод: true
 // или
 // Unicode- знаков математики, символов, стрелок, декорации и линий/кубов,
 // нарисованных символов.
-prefix operator !!! {}
+prefix operator !!!
 
 // Префиксный оператор, который утраивает длину стороны, когда используется
-prefix func !!! (inout shape: Square) -> Square {
+prefix func !!! (shape: inout Square) -> Square {
     shape.sideLength *= 3
     return shape
 }
 
 // текущее значение
-println(mySquare.sideLength) // 4
+print(mySquare.sideLength) // 4
 
 // Используя пользовательский оператор !!!, изменится длина стороны
 // путем увеличения размера в 3 раза
 !!!mySquare
-println(mySquare.sideLength) // 12
+print(mySquare.sideLength) // 12
+
+// Операторы также могут быть обобщенными
+infix operator <->
+func <-><T: Equatable> (a: inout T, b: inout T) {
+    let c = a
+    a = b
+    b = c
+}
+
+var foo: Float = 10
+var bar: Float = 20
+
+foo <-> bar
+print("foo это \(foo), bar это \(bar)") // "foo = 20.0, bar = 10.0"
 ```
