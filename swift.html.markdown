@@ -105,12 +105,11 @@ if let someOptionalStringConstant = someOptionalString {
 }
 
 // Swift has support for storing a value of any type.
-// Any == id
-// Unlike Objective-C `id`, Any works with any value (Class, Int, struct, etc.)
+// For that purposes there is two keywords: `Any` and `AnyObject`
+// `AnyObject` == `id` from Objective-C
+// `Any` – also works with any scalar values (Class, Int, struct, etc.)
 var anyVar: Any = 7
 anyVar = "Changed value to a string, not good practice, but possible."
-
-// Also there is similar type – `AnyObject`, which works only for objects
 let anyObjectVar: AnyObject = Int(1) as NSNumber
 
 /*
@@ -155,12 +154,9 @@ var explicitEmptyMutableDictionary: [String: Float] = [:] // same as above
 // MARK: Control Flow
 //
 
-/* ~~Condition statements support "where" clauses, which can be used
-   to help provide conditions on optional values.
-   Both the assignment and the "where" clause must pass.~~ */
-// Where clauses are no longer used to conjoin Boolean expressions with conditional binding.
-// This fixes user confusion issues and addresses a problem where Boolean conditions need to be
-// attached to arbitrary bindings. So, now you need use comma instead.
+// Condition statements support "," (comma) clauses, which can be used
+// to help provide conditions on optional values.
+// Both the assignment and the "," clause must pass.
 let someNumber = Optional<Int>(7)
 if let num = someNumber, num > 3 {
     print("num is greater than 3")
@@ -296,7 +292,7 @@ var increment = makeIncrementer()
 increment(7)
 
 // pass by ref
-func swapTwoInts( a: inout Int, b: inout Int) {
+func swapTwoInts(a: inout Int, b: inout Int) {
     let tempA = a
     a = b
     b = tempA
@@ -577,7 +573,8 @@ protocol ShapeGenerator {
 }
 
 // Protocols declared with @objc allow optional functions,
-// which allow you to check for conformance
+// which allow you to check for conformance. These functions must be
+// marked with @objc also.
 @objc protocol TransformShape {
     @objc optional func reshape()
     @objc optional func canReshape() -> Bool
@@ -665,7 +662,7 @@ print(mySquare.sideLength) // 12
 
 // Operators can also be generics
 infix operator <->
-func <-><T: Equatable> ( a: inout T, b: inout T) {
+func <-><T: Equatable> (a: inout T, b: inout T) {
     let c = a
     a = b
     b = c
