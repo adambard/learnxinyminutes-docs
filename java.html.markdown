@@ -1,20 +1,21 @@
 ---
 language: java
 contributors:
-    - ["Jake Prather", "http://github.com/JakeHP"]
-    - ["Jakukyo Friel", "http://weakish.github.io"]
-    - ["Madison Dickson", "http://github.com/mix3d"]
-    - ["Simon Morgan", "http://sjm.io/"]
-    - ["Zachary Ferguson", "http://github.com/zfergus2"]
-    - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
+    - ["Jake Prather", "https://github.com/JakeHP"]
+    - ["Jakukyo Friel", "https://weakish.github.io"]
+    - ["Madison Dickson", "https://github.com/mix3d"]
+    - ["Simon Morgan", "https://sjm.io/"]
+    - ["Zachary Ferguson", "https://github.com/zfergus2"]
+    - ["Cameron Schermerhorn", "https://github.com/cschermerhorn"]
     - ["Rachel Stiyer", "https://github.com/rstiyer"]
-    - ["Michael Dähnert", "http://github.com/JaXt0r"]
+    - ["Michael Dähnert", "https://github.com/JaXt0r"]
+    - ["Rob Rose", "https://github.com/RobRoseKnows"]
 filename: LearnJava.java
 ---
 
 Java is a general-purpose, concurrent, class-based, object-oriented computer
 programming language.
-[Read more here.](http://docs.oracle.com/javase/tutorial/java/)
+[Read more here.](https://docs.oracle.com/javase/tutorial/java/)
 
 ```java
 // Single-line comments start with //
@@ -389,7 +390,32 @@ public class LearnJava {
                 System.out.println("You answered " + myAnswer);
                 break;
         }
-
+        
+        
+        // Try-with-resources (Java 7+)
+        // Try-catch-finally statements work as expected in Java but in Java 7+
+        // the try-with-resources statement is also available. Try-with-resources
+        // simplifies try-catch-finally statements be closing resources
+        // automatically.
+        
+        // In order to use a try-with-resources, include a an instance of a class
+        // in the try statement. The class must implement java.lang.AutoCloseable.
+        try(BufferedReader br = new BufferedReader(new FileReader("foo.txt"))) {
+            // You can attempt to do something that could throw an exception.
+            System.out.println(br.readLine());
+            // In Java 7, the resource will always be closed, even if it throws
+            // an Exception. 
+        } catch (Exception ex) {
+            //The resource will be closed before the catch statement executes.
+            System.out.println("readLine() failed.");
+        }
+        // No need for a finally statement in this case, the BufferedReader is
+        // already closed. This can be used to avoid certain edge cases where
+        // a finally statement might not be called.
+        // To learn more:
+        // https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
+        
+        
         // Conditional Shorthand
         // You can use the '?' operator for quick assignments or logic forks.
         // Reads as "If (statement) is true, use <first value>, otherwise, use
@@ -418,7 +444,7 @@ public class LearnJava {
         // Typecasting
         // You can also cast Java objects, there's a lot of details and deals
         // with some more intermediate concepts. Feel free to check it out here:
-        // http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
+        // https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
 
         ///////////////////////////////////////
         // Classes And Functions
@@ -784,22 +810,22 @@ The links provided here below are just to get an understanding of the topic, fee
 
 **Official Oracle Guides**:
 
-* [Java Tutorial Trail from Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
+* [Java Tutorial Trail from Sun / Oracle](https://docs.oracle.com/javase/tutorial/index.html)
 
-* [Java Access level modifiers](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
+* [Java Access level modifiers](https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
 
-* [Object-Oriented Programming Concepts](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
-    * [Inheritance](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
-    * [Polymorphism](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
-    * [Abstraction](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
+* [Object-Oriented Programming Concepts](https://docs.oracle.com/javase/tutorial/java/concepts/index.html):
+    * [Inheritance](https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
+    * [Polymorphism](https://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
+    * [Abstraction](https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
 
-* [Exceptions](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
+* [Exceptions](https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
 
-* [Interfaces](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
+* [Interfaces](https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
 
-* [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
+* [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
 
-* [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
+* [Java Code Conventions](https://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
 
 **Online Practice and Tutorials**
 
@@ -813,6 +839,6 @@ The links provided here below are just to get an understanding of the topic, fee
 
 * [Thinking in Java](http://www.mindview.net/Books/TIJ/)
 
-* [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
+* [Objects First with Java](https://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
 
-* [Java The Complete Reference](http://www.amazon.com/gp/product/0071606300)
+* [Java The Complete Reference](https://www.amazon.com/gp/product/0071606300)
