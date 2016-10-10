@@ -547,28 +547,22 @@ on a new line! ""Wow!"", the masses cried";
 
             // PARALLEL FRAMEWORK
             // http://blogs.msdn.com/b/csharpfaq/archive/2010/06/01/parallel-programming-in-net-framework-4-getting-started.aspx
-            var websites = new string[] {
-                "http://www.google.com", "http://www.reddit.com",
-                "http://www.shaunmccarthy.com"
-            };
-            var responses = new Dictionary<string, string>();
 
-            // Will spin up separate threads for each request, and join on them
-            // before going to the next step!
-            Parallel.ForEach(websites,
-                new ParallelOptions() {MaxDegreeOfParallelism = 3}, // max of 3 threads
-                website =>
-            {
-                // Do something that takes a long time on the file
-                using (var r = WebRequest.Create(new Uri(website)).GetResponse())
+            var words = new List<string> {"dog", "cat", "horse", "pony"};
+
+            Parallel.ForEach(words,
+                new ParallelOptions() { MaxDegreeOfParallelism = 4 },
+                word =>
                 {
-                    responses[website] = r.ContentType;
+                    Console.WriteLine(word);
                 }
-            });
+            );
 
-            // This won't happen till after all requests have been completed
-            foreach (var key in responses.Keys)
-                Console.WriteLine("{0}:{1}", key, responses[key]);
+            //Running this will produce different outputs
+            //since each thread finishes at different times.
+            //Some example outputs are:
+            //cat dog horse pony
+            //dog horse pony cat
 
             // DYNAMIC OBJECTS (great for working with other languages)
             dynamic student = new ExpandoObject();
