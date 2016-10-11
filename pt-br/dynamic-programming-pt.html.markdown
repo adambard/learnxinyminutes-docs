@@ -71,6 +71,6 @@ Integer Knapsack Problem - Tutorial and C Program source code: http://www.thelea
 Longest Common Subsequence - Tutorial and C Program source code : http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---longest-common-subsequence 
 ```
 
-## Recursos Online
+## Recursos Online (EN)
 
 * [codechef](https://www.codechef.com/wiki/tutorial-dynamic-programming)
