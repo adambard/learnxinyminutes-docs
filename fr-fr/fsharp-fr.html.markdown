@@ -290,7 +290,7 @@ module DataTypeExamples =
     let x,y = twoTuple  // assigne x=1 y=2
 
     // ------------------------------------ 
-    // Record types have named fields 
+    // Record types ont des champs nommés 
     // ------------------------------------ 
 
     // On utilise "type" avec des accolades pour définir un record type(?)
@@ -396,24 +396,24 @@ module DataTypeExamples =
 
              
 // ================================================
-// Active patterns
+// Les Active patterns
 // ================================================
 
 module ActivePatternExamples = 
 
-    // F# has a special type of pattern matching called "active patterns" 
-    // where the pattern can be parsed or detected dynamically. 
+    // F# a un type particulier de pattern matching(?) nommé "active patterns" 
+    // où le pattern peut être parsé ou détecté dynamiquement. 
 
-    // "banana clips" are the syntax for active patterns
+    // "banana clips" est la syntaxe(?) pour l'active patterns
     
-    // for example, define an "active" pattern to match character types...
+    // par exemple, on définit un "active" pattern pour correspondre à des types "character"...
     let (|Digit|Letter|Whitespace|Other|) ch = 
        if System.Char.IsDigit(ch) then Digit
        else if System.Char.IsLetter(ch) then Letter
        else if System.Char.IsWhiteSpace(ch) then Whitespace
        else Other         
 
-    // ... and then use it to make parsing logic much clearer
+    // ... et ensuite on l'utilise pour rendre la logique de parsing(?) plus claire
     let printChar ch = 
       match ch with
       | Digit -> printfn "%c is a Digit" ch
@@ -421,19 +421,19 @@ module ActivePatternExamples =
       | Whitespace -> printfn "%c is a Whitespace" ch
       | _ -> printfn "%c is something else" ch
 
-    // print a list
+    // afficher une liste
     ['a';'b';'1';' ';'-';'c'] |> List.iter printChar
 
-    // -----------------------------------
-    // FizzBuzz using active patterns
-    // -----------------------------------
+    // -----------------------------------------
+    // FizzBuzz en utilisant les active patterns
+    // -----------------------------------------
     
-    // You can create partial matching patterns as well
-    // Just use undercore in the defintion, and return Some if matched.
+    // Vous pouvez créer(?) un partial matching patterns également
+    // On utilise just un undercore(?) dans la définitionn, et on retourne Some si ça correspond.
     let (|MultOf3|_|) i = if i % 3 = 0 then Some MultOf3 else None
     let (|MultOf5|_|) i = if i % 5 = 0 then Some MultOf5 else None
 
-    // the main function
+    // la fonction principale
     let fizzBuzz i = 
       match i with
       | MultOf3 & MultOf5 -> printf "FizzBuzz, " 
@@ -445,106 +445,106 @@ module ActivePatternExamples =
     [1..20] |> List.iter fizzBuzz 
     
 // ================================================
-// Conciseness 
+// Concision
 // ================================================
 
 module AlgorithmExamples = 
 
-    // F# has a high signal/noise ratio, so code reads 
-    // almost like the actual algorithm
+    // F# a un haut ratio signal/bruit, permettant au code de se lire 
+    // presque comme un véritable algorithme
 
-    // ------ Example: define sumOfSquares function ------
+    // ------ Exemple: definir une fonction sumOfSquares ------
     let sumOfSquares n = 
-       [1..n]              // 1) take all the numbers from 1 to n
-       |> List.map square  // 2) square each one
-       |> List.sum         // 3) sum the results
+       [1..n]              // 1) Prendre tous les nombres de 1 à n
+       |> List.map square  // 2) Elever chacun d'entre eux au carré
+       |> List.sum         // 3) Effectuer leur somme
 
     // test   
     sumOfSquares 100 |> printfn "Sum of squares = %A" 
        
-    // ------ Example: define a sort function ------  
+    // ------ Exemple: definir un fonction de tri ------  
     let rec sort list =
        match list with
-       // If the list is empty   
+       // Si la liste est vide   
        | [] ->                            
-            []                            // return an empty list
-       // If the list is not empty  
-       | firstElem::otherElements ->      // take the first element    
-            let smallerElements =         // extract the smaller elements    
-                otherElements             // from the remaining ones
+            []                            // on retourne une liste vide
+       // si la list n'est pas vide  
+       | firstElem::otherElements ->      // on prend le premier élément    
+            let smallerElements =         // on extrait les éléments plus petits    
+                otherElements             // on prend les restants
                 |> List.filter (fun e -> e < firstElem) 
-                |> sort                   // and sort them
-            let largerElements =          // extract the larger ones
-                otherElements             // from the remaining ones
+                |> sort                   // et on les trie(?)
+            let largerElements =          // on extrait les plus grands
+                otherElements             // de ceux qui restent
                 |> List.filter (fun e -> e >= firstElem)
-                |> sort                   // and sort them
-            // Combine the 3 parts into a new list and return it
+                |> sort                   // et on les trie(?)
+            // On combine les 3 morceaux dans une nouvelle liste que l'on retourne
             List.concat [smallerElements; [firstElem]; largerElements]
 
     // test
     sort [1;5;23;18;9;1;3] |> printfn "Sorted = %A" 
 
 // ================================================
-// Asynchronous Code
+// Code Asynchrone
 // ================================================
 
 module AsyncExample = 
 
-    // F# has built-in features to help with async code
-    // without encountering the "pyramid of doom"
+    // F# inclus des fonctionnalités pour aider avec le code asynchrone
+    // sans rencontrer la "pyramid of doom"
     //
-    // The following example downloads a set of web pages in parallel.
+    // L'exemple suivant télécharge une séquence de page web en parallèle.
 
     open System.Net
     open System
     open System.IO
     open Microsoft.FSharp.Control.CommonExtensions   
 
-    // Fetch the contents of a URL asynchronously
+    // Récupérer le contenu d'une URL de manière asynchrone
     let fetchUrlAsync url =        
-        async {   // "async" keyword and curly braces 
-                  // creates an "async" object
+        async {   // Le mot clé "async" et les accolades 
+                  // créent(?) un objet "asynchrone"
             let req = WebRequest.Create(Uri(url)) 
             use! resp = req.AsyncGetResponse()    
-                // use! is async assignment
+                // use! est un assignement asynchrone
             use stream = resp.GetResponseStream() 
-                // "use" triggers automatic close()
-                // on resource at end of scope
+                // "use" déclenche automatiquement close()
+                // sur les ressources à la fin du scope
             use reader = new IO.StreamReader(stream) 
             let html = reader.ReadToEnd() 
             printfn "finished downloading %s" url 
             }
             
-    // a list of sites to fetch
+    // une liste des sites à recupérer fetch(?)
     let sites = ["http://www.bing.com";
                  "http://www.google.com";
                  "http://www.microsoft.com";
                  "http://www.amazon.com";
                  "http://www.yahoo.com"]
 
-    // do it
+    // C'est parti!
     sites 
-    |> List.map fetchUrlAsync  // make a list of async tasks
-    |> Async.Parallel          // set up the tasks to run in parallel
-    |> Async.RunSynchronously  // start them off
+    |> List.map fetchUrlAsync  // créez(?) une liste de tâche(?) asynchrone
+    |> Async.Parallel          // dites aux tâches(?) de tourner en parallèle
+    |> Async.RunSynchronously  // démarrez les!
 
 // ================================================
-// .NET compatability
+// .NET compatabilité
 // ================================================
 
 module NetCompatibilityExamples = 
 
-    // F# can do almost everything C# can do, and it integrates
-    // seamlessly with .NET or Mono libraries.
+    // F# peut réaliser presque tout ce que C# peut faire, et il intègre
+    // seamlessly(?) avec les librairies .NET ou Mono.
 
-    // ------- work with existing library functions  -------
+    // ------- Travaillez avec les fonctions des librairies existantes  -------
     
     let (i1success,i1) = System.Int32.TryParse("123");
     if i1success then printfn "parsed as %i" i1 else printfn "parse failed"
 
-    // ------- Implement interfaces on the fly! -------
+    // ------- Implémentez des interfaces à la volée! -------
     
-    // create a new object that implements IDisposable
+    // Créer(?) un nouvel objet qui implémente IDisposable
     let makeResource name = 
        { new System.IDisposable 
          with member this.Dispose() = printfn "%s disposed" name }
@@ -560,52 +560,52 @@ module NetCompatibilityExamples =
         printfn "using second resource" 
         printfn "done." 
 
-    // ------- Object oriented code -------
+    // ------- Code orienté objet -------
     
-    // F# is also a fully fledged OO language.
-    // It supports classes, inheritance, virtual methods, etc.
+    // F# est aussi un language OO fledged(?) fourni.
+    // Il supporte les classes, l'héritage, les méthodes virtuelles, etc.
 
-    // interface with generic type
+    // interface avec type générique
     type IEnumerator<'a> = 
         abstract member Current : 'a
         abstract MoveNext : unit -> bool 
 
-    // abstract base class with virtual methods
+    // Classe de base abstraite avec méthodes virtuelles
     [<AbstractClass>]
     type Shape() = 
-        //readonly properties
+        // propriétés en lecture seule
         abstract member Width : int with get
         abstract member Height : int with get
-        //non-virtual method
+        // méthode non-virtuelle
         member this.BoundingArea = this.Height * this.Width
-        //virtual method with base implementation
+        // méthode virtuelle avec implémentation de la classe de base
         abstract member Print : unit -> unit 
         default this.Print () = printfn "I'm a shape"
 
-    // concrete class that inherits from base class and overrides 
+    // classe concrète qui hérite de sa classe de base et surcharge 
     type Rectangle(x:int, y:int) = 
         inherit Shape()
         override this.Width = x
         override this.Height = y
         override this.Print ()  = printfn "I'm a Rectangle"
 
-    //test
+    // test
     let r = Rectangle(2,3)
     printfn "The width is %i" r.Width
     printfn "The area is %i" r.BoundingArea
     r.Print()        
 
-    // ------- extension methods  -------
+    // ------- extension de méthode  -------
         
-    //Just as in C#, F# can extend existing classes with extension methods.
+    // Juste comme en C#, F# peut étendre des classes existantes and des extensions de méthode.
     type System.String with
        member this.StartsWithA = this.StartsWith "A"
 
-    //test
+    // test
     let s = "Alice"
     printfn "'%s' starts with an 'A' = %A" s s.StartsWithA    
     
-    // ------- events  -------
+    // ------- évènements(?) -------
    
     type MyButton() =
         let clickEvent = new Event<_>()
@@ -622,11 +622,11 @@ module NetCompatibilityExamples =
             printfn "Click event with arg=%O" arg)
 
     myButton.TestEvent("Hello World!")
-        
+
 ```
 
-## More Information
+## Plus d'information
 
-For more demonstrations of F#, go to the [Try F#](http://www.tryfsharp.org/Learn) site, or my [why use F#](http://fsharpforfunandprofit.com/why-use-fsharp/) series.
+Pour plus de démonstration de F#, rendez-vous sur le site [Try F#](http://www.tryfsharp.org/Learn), ou suivez la série [why use F#](http://fsharpforfunandprofit.com/why-use-fsharp/).
 
-Read more about F# at [fsharp.org](http://fsharp.org/).
+Apprenez en davantage à propose de F# sur [fsharp.org](http://fsharp.org/).
