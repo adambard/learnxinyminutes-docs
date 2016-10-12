@@ -21,9 +21,9 @@ Si vous voulez essayer le code ci-dessous, vous pouvez vous rendre sur [tryfshar
 ```csharp
 
 // Les commentaires d'une seule ligne commencent par un double slash
-(* multi line comments use (* . . . *) pair
+(* Les commentaires multilignes utilise les paires (* . . . *)
 
--end of multi line comment- *)
+-fin du commentaire mulitlignes- *)
 
 // ================================================
 // Syntaxe de base
@@ -36,9 +36,9 @@ let myFloat = 3.14
 let myString = "hello"           // Notons qu'aucun type n'est nécessaire
 
 // ------ Listes ------
-let twoToFive = [2;3;4;5]        // Les crochets créent une liste avec
+let twoToFive = [2;3;4;5]        // Les crochets créent(?) une liste avec
                                  // des point-virgules pour délimiteurs.
-let oneToFive = 1 :: twoToFive   // :: crée une liste avec un nouvel élément
+let oneToFive = 1 :: twoToFive   // :: créé(?) une liste avec un nouvel élément
 // Le résultat est [1;2;3;4;5]
 let zeroToFive = [0;1] @ twoToFive   // @ concatène deux listes
 
@@ -139,7 +139,7 @@ module FunctionExamples =
     let a = add 1 2
     printfn "1+2 = %i" a
     
-    // partial application to "bake in" parameters
+    // partial application to "bake in" parameters (?)
     let add42 = add 42
     let b = add42 1
     printfn "42+1 = %i" b
@@ -166,14 +166,14 @@ module FunctionExamples =
 // Il y a trois types de collection ordonnée :
 // * Les listes sont les collections immutables les plus basiques
 // * Les tableaux sont mmutables et plus efficients
-// * les séquences sont lazy et infinies (e.g. un enumerator)
+// * Les séquences sont lazy et infinies (e.g. un enumerator)
 //
 // Des autres collections incluent des maps immutables et des sets
-// plus all the standard .NET collections
+// plus toutes les collections de .NET
 
 module ListExamples = 
 
-    // les listes uitlisent des crochets 
+    // les listes utilisent des crochets 
     let list1 = ["a";"b"]
     let list2 = "c" :: list1    // :: pour un ajout au début
     let list3 = list1 @ list2   // @ pour la concatenation
@@ -207,11 +207,11 @@ module ListExamples =
         | [] -> 0
         | x::xs -> x + sum xs
     sum [1..10]
-    
+
     // -----------------------------------------    
     // Fonctions de la librairie standard 
     // -----------------------------------------
-    
+
     // map
     let add3 x = x + 3
     [1..10] |> List.map add3
@@ -239,87 +239,84 @@ module ArrayExamples =
     arrayMatcher [| 1;2;3;4 |]
 
     // Fonctions de la librairie standard comme celles des listes
-   
     [| 1..10 |] 
     |> Array.map (fun i -> i+3)
     |> Array.filter (fun i -> i%2 = 0)
     |> Array.iter (printfn "value is %i. ")
-    
-    
+
 module SequenceExamples = 
 
     // Les séquences utilisent des accolades
     let seq1 = seq { yield "a"; yield "b" }
-    
+
     // Les séquences peuvent utiliser yield et 
-    // peuvent contenir des subsequences
+    // peuvent contenir des sous-sequences
     let strange = seq {
-        // "yield! ajoute un élément
+        // "yield" ajoute un élément
         yield 1; yield 2;
-        
+
         // "yield!" ajoute une complète subsequence
-        yield! [5..10]  
+        yield! [5..10]
         yield! seq {
             for i in 1..10 do 
               if i%2 = 0 then yield i }}
-    // test                
-    strange |> Seq.toList              
-              
+    // test
+    strange |> Seq.toList
 
-    // Les séquences peuvent être créent en utilisantg "unfold"
+    // Les séquences peuvent être créent(?) en utilisant "unfold"
     // Voici la suite de fibonacci
     let fib = Seq.unfold (fun (fst,snd) ->
         Some(fst + snd, (snd, fst + snd))) (0,1)
 
-    // test                        
+    // test
     let fib10 = fib |> Seq.take 10 |> Seq.toList
-    printf "first 10 fibs are %A" fib10     
-   
-    
+    printf "first 10 fibs are %A" fib10
+
+
 // ================================================
 // Types de données
 // ================================================
 
 module DataTypeExamples = 
 
-    // Toutes les donnés sont immutables par défaut
+    // Toutes les données sont immutables par défaut
 
     // Les tuples sont de simple et rapide types anonymes
     // -- Utilisons une virgule pour créer un tuple
     let twoTuple = 1,2
     let threeTuple = "a",2,true
     
-    // Pattern match to unpack
-    let x,y = twoTuple  // sets x=1 y=2
+    // Pattern match to unpack(?)
+    let x,y = twoTuple  // assigne x=1 y=2
 
     // ------------------------------------ 
     // Record types have named fields 
     // ------------------------------------ 
 
-    // Use "type" with curly braces to define a record type
+    // On utilise "type" avec des accolades pour définir un record type(?)
     type Person = {First:string; Last:string}
     
-    // Use "let" with curly braces to create a record 
+    // On utilise "let" avec des accolades pour créer un record(?) 
     let person1 = {First="John"; Last="Doe"}
 
-    // Pattern match to unpack
-    let {First=first} = person1    //sets first="john"
+    // Pattern match to unpack(?)
+    let {First=first} = person1    // assigne first="john"
 
     // ------------------------------------ 
-    // Union types (aka variants) have a set of choices
-    // Only case can be valid at a time.
+    // Union types (aka variants) ont un set(?) de choix
+    // Un seul cas peut être valide à la fois.
     // ------------------------------------ 
 
-    // Use "type" with bar/pipe to define a union type
+    // On utilise "type" avec bar/pipe pour definir un union type(?)
     type Temp = 
         | DegreesC of float
         | DegreesF of float
         
-    // Use one of the cases to create one
+    // On utilise un de ces choix pour en créér un
     let temp1 = DegreesF 98.6
     let temp2 = DegreesC 37.0
 
-    // Pattern match on all cases to unpack
+    // Pattern match on all cases to unpack(?)
     let printTemp = function
        | DegreesC t -> printfn "%f degC" t
        | DegreesF t -> printfn "%f degF" t
