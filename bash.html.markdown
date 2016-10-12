@@ -351,8 +351,8 @@ fgrep "foobar" file.txt
 trap "rm $TEMP_FILE; exit" SIGHUP SIGINT SIGTERM
 
 # `sudo` is used to perform commands as the superuser
-$NAME1=$(whoami)
-$NAME2=$(sudo whoami)
+NAME1=$(whoami)
+NAME2=$(sudo whoami)
 echo "Was $NAME1, then became more powerful $NAME2"
 
 # Read Bash shell builtins documentation with the bash 'help' builtin:
