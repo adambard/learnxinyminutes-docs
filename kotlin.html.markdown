@@ -9,7 +9,7 @@ Kotlin is a statically typed programming language for the JVM, Android and the
 browser. It is 100% interoperable with Java.
 [Read more here.](https://kotlinlang.org/)
 
-```java
+```kotlin
 // Single-line comments start with //
 /*
 Multi-line comments look like this.
@@ -42,12 +42,12 @@ fun main(args: Array<String>) {
     Strings can be represented in a similar way as in Java.
     Escaping is done with a backslash.
     */
-    val fooString = "My String Is Here!";
-    val barString = "Printing on a new line?\nNo Problem!";
-    val bazString = "Do you want to add a tab?\tNo Problem!";
-    println(fooString);
-    println(barString);
-    println(bazString);
+    val fooString = "My String Is Here!"
+    val barString = "Printing on a new line?\nNo Problem!"
+    val bazString = "Do you want to add a tab?\tNo Problem!"
+    println(fooString)
+    println(barString)
+    println(bazString)
 
     /*
     A raw string is delimited by a triple quote (""").
@@ -87,7 +87,7 @@ fun helloWorld(val name : String) {
     Function arguments can optionally have a default value.
     The function return type, if required, is specified after the arguments.
     */
-    fun hello(name: String = "world") : String {
+    fun hello(name: String = "world"): String {
         return "Hello, $name!"
     }
     println(hello("foo")) // => Hello, foo!
@@ -119,16 +119,16 @@ fun helloWorld(val name : String) {
     println(even(7)) // => false
 
     // Functions can take functions as arguments and return functions.
-    fun not(f: (Int) -> Boolean) : (Int) -> Boolean {
+    fun not(f: (Int) -> Boolean): (Int) -> Boolean {
         return {n -> !f.invoke(n)}
     }
     // Named functions can be specified as arguments using the :: operator.
     val notOdd = not(::odd)
     val notEven = not(::even)
-    // Anonymous functions can be specified as arguments.
+    // Lambda expressions can be specified as arguments.
     val notZero = not {n -> n == 0}
     /*
-    If an anonymous function has only one parameter
+    If a lambda has only one parameter
     then its declaration can be omitted (along with the ->).
     The name of the single parameter will be "it".
     */
@@ -139,11 +139,11 @@ fun helloWorld(val name : String) {
 
     // The "class" keyword is used to declare classes.
     class ExampleClass(val x: Int) {
-        fun memberFunction(y: Int) : Int {
+        fun memberFunction(y: Int): Int {
             return x + y
         }
 
-        infix fun infixMemberFunction(y: Int) : Int {
+        infix fun infixMemberFunction(y: Int): Int {
             return x * y
         }
     }
@@ -228,16 +228,16 @@ fun helloWorld(val name : String) {
     Sequences represent lazily-evaluated collections.
     We can create a sequence using the "generateSequence" function.
     */
-    val fooSequence = generateSequence(1, {it + 1})
+    val fooSequence = generateSequence(1, { it + 1 })
     val x = fooSequence.take(10).toList()
     println(x) // => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
     // An example of using a sequence to generate Fibonacci numbers:
-    fun fibonacciSequence() : Sequence<Long> {
+    fun fibonacciSequence(): Sequence<Long> {
         var a = 0L
         var b = 1L
 
-        fun next() : Long {
+        fun next(): Long {
             val result = a + b
             a = b
             b = result
@@ -360,7 +360,7 @@ We cannot instantiate it but we can refer to its unique instance by its name.
 This is similar to Scala singleton objects.
 */
 object ObjectExample {
-    fun hello() : String {
+    fun hello(): String {
         return "hello"
     }
 }
