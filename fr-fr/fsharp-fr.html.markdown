@@ -325,11 +325,11 @@ module DataTypeExamples =
     printTemp temp2
 
     // ------------------------------------ 
-    // Recursive types
+    // Types récursif
     // ------------------------------------ 
 
-    // Types can be combined recursively in complex ways 
-    // without having to create subclasses
+    // Les types peuvent être combinés récursivement de façon complexe 
+    // sans avoir à créér(?) des sous-classes
     type Employee = 
       | Worker of Person
       | Manager of Employee list
@@ -338,23 +338,23 @@ module DataTypeExamples =
     let worker = Worker jdoe
     
     // ------------------------------------ 
-    // Modelling with types
+    // Modelling with types(?)
     // ------------------------------------ 
     
-    // Union types are great for modelling state without using flags
+    // Union types are great for modelling state without using flags(?)
     type EmailAddress = 
         | ValidEmailAddress of string
         | InvalidEmailAddress of string
 
     let trySendEmail email =
         match email with // use pattern matching
-        | ValidEmailAddress address -> ()   // send
-        | InvalidEmailAddress address -> () // dont send
+        | ValidEmailAddress address -> ()   // envoyer
+        | InvalidEmailAddress address -> () // ne pas envoyer
 
-    // The combination of union types and record types together
-    // provide a great foundation for domain driven design.
-    // You can create hundreds of little types that accurately 
-    // reflect the domain.
+    // Combiner ensemble, les union types et les record types
+    // offrent une excellente fondation pour le domain driven design(?).
+    // Vous pouvez créér(?) des centaines de petit types qui reflèteront accurately(?)
+    // le domain(?).
 
     type CartItem = { ProductCode: string; Qty: int }
     type Payment = Payment of float
@@ -362,26 +362,26 @@ module DataTypeExamples =
     type PaidCartData = { PaidItems: CartItem list; Payment: Payment}
         
     type ShoppingCart = 
-        | EmptyCart  // no data
+        | EmptyCart  // aucune donnée
         | ActiveCart of ActiveCartData
         | PaidCart of PaidCartData    
 
-    // ------------------------------------ 
-    // Built in behavior for types
-    // ------------------------------------ 
+    // ------------------------------------
+    // Built in behavior for types(?)
+    // ------------------------------------
 
-    // Core types have useful "out-of-the-box" behavior, no coding needed.
-    // * Immutability
-    // * Pretty printing when debugging
-    // * Equality and comparison
-    // * Serialization
-        
+    // Core types have useful "out-of-the-box" behavior, no coding needed.(?)
+    // * Immutabilité
+    // * Pretty printing when debugging(?)
+    // * Equality and comparison(?)
+    // * Sérialisation(?)
+
     // Pretty printing using %A
     printfn "twoTuple=%A,\nPerson=%A,\nTemp=%A,\nEmployee=%A" 
              twoTuple person1 temp1 worker
 
     // Equality and comparison built in.
-    // Here's an example with cards.
+    // Voici un exemple avec des cartes.
     type Suit = Club | Diamond | Spade | Heart
     type Rank = Two | Three | Four | Five | Six | Seven | Eight 
                 | Nine | Ten | Jack | Queen | King | Ace    
@@ -389,7 +389,7 @@ module DataTypeExamples =
     let hand = [ Club,Ace; Heart,Three; Heart,Ace; 
                  Spade,Jack; Diamond,Two; Diamond,Ace ]
 
-    // sorting
+    // tri
     List.sort hand |> printfn "sorted hand is (low to high) %A"
     List.max hand |> printfn "high card is %A"
     List.min hand |> printfn "low card is %A"
