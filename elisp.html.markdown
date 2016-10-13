@@ -225,6 +225,8 @@ filename: learn-emacs-lisp.el
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Let's store a list of names:
+;; If you want to create a literal list of data, use ' to stop it from
+;; being evaluated - literally, "quote" the data.
 (setq list-of-names '("Sarah" "Chloe" "Mathilde"))
 
 ;; Get the first element of this list with `car':
