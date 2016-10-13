@@ -38,7 +38,7 @@ let myString = "hello"           // Notons qu'aucun type n'est nécessaire
 // ------ Listes ------
 let twoToFive = [2;3;4;5]        // Les crochets créent(?) une liste avec
                                  // des point-virgules pour délimiteurs.
-let oneToFive = 1 :: twoToFive   // :: créé(?) une liste avec un nouvel élément
+let oneToFive = 1 :: twoToFive   // :: crée une liste avec un nouvel élément
 // Le résultat est [1;2;3;4;5]
 let zeroToFive = [0;1] @ twoToFive   // @ concatène deux listes
 
@@ -263,7 +263,7 @@ module SequenceExamples =
     // test
     strange |> Seq.toList
 
-    // Les séquences peuvent être créent(?) en utilisant "unfold"
+    // Les séquences peuvent être créées en utilisant "unfold"
     // Voici la suite de fibonacci
     let fib = Seq.unfold (fun (fst,snd) ->
         Some(fst + snd, (snd, fst + snd))) (0,1)
@@ -329,7 +329,7 @@ module DataTypeExamples =
     // ------------------------------------ 
 
     // Les types peuvent être combinés récursivement de façon complexe 
-    // sans avoir à créér(?) des sous-classes
+    // sans avoir à créer des sous-classes
     type Employee = 
       | Worker of Person
       | Manager of Employee list
@@ -353,7 +353,7 @@ module DataTypeExamples =
 
     // Combiner ensemble, les union types et les record types
     // offrent une excellente fondation pour le domain driven design(?).
-    // Vous pouvez créér(?) des centaines de petit types qui reflèteront accurately(?)
+    // Vous pouvez créer des centaines de petit types qui reflèteront accurately(?)
     // le domain(?).
 
     type CartItem = { ProductCode: string; Qty: int }
@@ -373,14 +373,14 @@ module DataTypeExamples =
     // Core types have useful "out-of-the-box" behavior, no coding needed.(?)
     // * Immutabilité
     // * Pretty printing when debugging(?)
-    // * Equality and comparison(?)
-    // * Sérialisation(?)
+    // * Egalité et comparaison
+    // * Sérialisation
 
-    // Pretty printing using %A
+    // Le Pretty printing s'utilise avec %A
     printfn "twoTuple=%A,\nPerson=%A,\nTemp=%A,\nEmployee=%A" 
              twoTuple person1 temp1 worker
 
-    // Equality and comparison built in.
+    // L'égalité et la comparaison sont innés
     // Voici un exemple avec des cartes.
     type Suit = Club | Diamond | Spade | Heart
     type Rank = Two | Three | Four | Five | Six | Seven | Eight 
@@ -428,7 +428,7 @@ module ActivePatternExamples =
     // FizzBuzz en utilisant les active patterns
     // -----------------------------------------
     
-    // Vous pouvez créer(?) un partial matching patterns également
+    // Vous pouvez créer un partial matching patterns également
     // On utilise just un undercore(?) dans la définitionn, et on retourne Some si ça correspond.
     let (|MultOf3|_|) i = if i % 3 = 0 then Some MultOf3 else None
     let (|MultOf5|_|) i = if i % 5 = 0 then Some MultOf5 else None
@@ -503,7 +503,7 @@ module AsyncExample =
     // Récupérer le contenu d'une URL de manière asynchrone
     let fetchUrlAsync url =        
         async {   // Le mot clé "async" et les accolades 
-                  // créent(?) un objet "asynchrone"
+                  // créent un objet "asynchrone"
             let req = WebRequest.Create(Uri(url)) 
             use! resp = req.AsyncGetResponse()    
                 // use! est un assignement asynchrone
@@ -524,7 +524,7 @@ module AsyncExample =
 
     // C'est parti!
     sites 
-    |> List.map fetchUrlAsync  // créez(?) une liste de tâche(?) asynchrone
+    |> List.map fetchUrlAsync  // créez une liste de tâche(?) asynchrone
     |> Async.Parallel          // dites aux tâches(?) de tourner en parallèle
     |> Async.RunSynchronously  // démarrez les!
 
@@ -544,7 +544,7 @@ module NetCompatibilityExamples =
 
     // ------- Implémentez des interfaces à la volée! -------
     
-    // Créer(?) un nouvel objet qui implémente IDisposable
+    // Créer un nouvel objet qui implémente IDisposable
     let makeResource name = 
        { new System.IDisposable 
          with member this.Dispose() = printfn "%s disposed" name }
