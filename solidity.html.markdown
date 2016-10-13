@@ -791,8 +791,13 @@ address a = this;
 successBoolean = someContractAddress.call(bytes4(sha3('function_name(uint256,address)')), u, a);
 
 // callcode - Code at target address executed in *context* of calling contract
+// will keep storage that usually resides in someContract in calling contract
 // provides library functionality
 successBoolean = someContractAddress.callcode(bytes4(sha3('function_name(uint256,address)')), u, a);
+
+// delegatecall - same as callcode but additionally impersonates msg.sender
+// msg.sender inside function_name is equal to the one in this outer contract
+successBoolean = someContractAddress.delegatecall(bytes4(sha3('function_name(uint256,address)')), u, a);
 
 
 // 13. STYLE NOTES
