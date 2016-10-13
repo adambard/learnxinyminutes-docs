@@ -36,7 +36,7 @@ let myFloat = 3.14
 let myString = "hello"           // Notons qu'aucun type n'est nécessaire
 
 // ------ Listes ------
-let twoToFive = [2;3;4;5]        // Les crochets créent(?) une liste avec
+let twoToFive = [2;3;4;5]        // Les crochets créent une liste avec
                                  // des point-virgules pour délimiteurs.
 let oneToFive = 1 :: twoToFive   // :: crée une liste avec un nouvel élément
 // Le résultat est [1;2;3;4;5]
@@ -286,7 +286,7 @@ module DataTypeExamples =
     let twoTuple = 1,2
     let threeTuple = "a",2,true
     
-    // Pattern match to unpack(?)
+    // Pattern match pour déballer
     let x,y = twoTuple  // assigne x=1 y=2
 
     // ------------------------------------ 
@@ -299,7 +299,7 @@ module DataTypeExamples =
     // On utilise "let" avec des accolades pour créer un record(?) 
     let person1 = {First="John"; Last="Doe"}
 
-    // Pattern match to unpack(?)
+    // Pattern match pour déballer
     let {First=first} = person1    // assigne first="john"
 
     // ------------------------------------ 
@@ -307,7 +307,7 @@ module DataTypeExamples =
     // Un seul cas peut être valide à la fois.
     // ------------------------------------ 
 
-    // On utilise "type" avec bar/pipe pour definir un union type(?)
+    // On utilise "type" avec bar/pipe pour definir un union type
     type Temp = 
         | DegreesC of float
         | DegreesF of float
@@ -353,7 +353,7 @@ module DataTypeExamples =
 
     // Combiner ensemble, les union types et les record types
     // offrent une excellente fondation pour le domain driven design(?).
-    // Vous pouvez créer des centaines de petit types qui reflèteront accurately(?)
+    // Vous pouvez créer des centaines de petit types qui reflèteront fidèlement
     // le domain(?).
 
     type CartItem = { ProductCode: string; Qty: int }
@@ -370,7 +370,7 @@ module DataTypeExamples =
     // Built in behavior for types(?)
     // ------------------------------------
 
-    // Core types have useful "out-of-the-box" behavior, no coding needed.(?)
+    // Les types natifs ont un comportement "prêt-à-l'emploi" des plus utiles, sans code à ajouter.
     // * Immutabilité
     // * Pretty printing when debugging(?)
     // * Egalité et comparaison
@@ -404,7 +404,7 @@ module ActivePatternExamples =
     // F# a un type particulier de pattern matching(?) nommé "active patterns" 
     // où le pattern peut être parsé ou détecté dynamiquement. 
 
-    // "banana clips" est la syntaxe(?) pour l'active patterns
+    // "banana clips" est la syntaxe pour l'active patterns
     
     // par exemple, on définit un "active" pattern pour correspondre à des types "character"...
     let (|Digit|Letter|Whitespace|Other|) ch = 
@@ -429,7 +429,7 @@ module ActivePatternExamples =
     // -----------------------------------------
     
     // Vous pouvez créer un partial matching patterns également
-    // On utilise just un undercore(?) dans la définitionn, et on retourne Some si ça correspond.
+    // On utilise just un underscore(?) dans la définitionn, et on retourne Some si ça correspond.
     let (|MultOf3|_|) i = if i % 3 = 0 then Some MultOf3 else None
     let (|MultOf5|_|) i = if i % 5 = 0 then Some MultOf5 else None
 
@@ -473,11 +473,11 @@ module AlgorithmExamples =
             let smallerElements =         // on extrait les éléments plus petits    
                 otherElements             // on prend les restants
                 |> List.filter (fun e -> e < firstElem) 
-                |> sort                   // et on les trie(?)
+                |> sort                   // et on les trie
             let largerElements =          // on extrait les plus grands
                 otherElements             // de ceux qui restent
                 |> List.filter (fun e -> e >= firstElem)
-                |> sort                   // et on les trie(?)
+                |> sort                   // et on les trie
             // On combine les 3 morceaux dans une nouvelle liste que l'on retourne
             List.concat [smallerElements; [firstElem]; largerElements]
 
@@ -515,7 +515,7 @@ module AsyncExample =
             printfn "finished downloading %s" url 
             }
             
-    // une liste des sites à recupérer fetch(?)
+    // une liste des sites à rapporter
     let sites = ["http://www.bing.com";
                  "http://www.google.com";
                  "http://www.microsoft.com";
@@ -524,8 +524,8 @@ module AsyncExample =
 
     // C'est parti!
     sites 
-    |> List.map fetchUrlAsync  // créez une liste de tâche(?) asynchrone
-    |> Async.Parallel          // dites aux tâches(?) de tourner en parallèle
+    |> List.map fetchUrlAsync  // créez une liste de tâche asynchrone
+    |> Async.Parallel          // dites aux tâches de tourner en parallèle
     |> Async.RunSynchronously  // démarrez les!
 
 // ================================================
@@ -534,8 +534,8 @@ module AsyncExample =
 
 module NetCompatibilityExamples = 
 
-    // F# peut réaliser presque tout ce que C# peut faire, et il intègre
-    // seamlessly(?) avec les librairies .NET ou Mono.
+    // F# peut réaliser presque tout ce que C# peut faire, et il s'intègre
+    // parfaitement avec les librairies .NET ou Mono.
 
     // ------- Travaillez avec les fonctions des librairies existantes  -------
     
@@ -562,7 +562,7 @@ module NetCompatibilityExamples =
 
     // ------- Code orienté objet -------
     
-    // F# est aussi un language OO fledged(?) fourni.
+    // F# est aussi un véritable language OO.
     // Il supporte les classes, l'héritage, les méthodes virtuelles, etc.
 
     // interface avec type générique
@@ -605,7 +605,7 @@ module NetCompatibilityExamples =
     let s = "Alice"
     printfn "'%s' starts with an 'A' = %A" s s.StartsWithA    
     
-    // ------- évènements(?) -------
+    // ------- événements -------
    
     type MyButton() =
         let clickEvent = new Event<_>()
