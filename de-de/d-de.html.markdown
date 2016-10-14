@@ -50,12 +50,14 @@ void main() {
     } while(n > 0);
 
     // For und while sind ja schön und gut aber D bevorzugt foreach
-    // .. erstellt eine spanne von zahlen, exklusive dem Ende
+    // Die '..' erstellen eine Spanne von Zahlen, inklusive dem ersten Wert
+    // jedoch ohne dem letzten
     foreach(i; 1..1_000_000) {
         if(n % 2 == 0)
             writeln(i);
     }
 
+    // Es gibt auch ein 'foreach_reverse' wenn du rückwerts gehen willst.
     foreach_reverse(i; 1..int.max) {
         if(n % 2 == 1) {
             writeln(i);
