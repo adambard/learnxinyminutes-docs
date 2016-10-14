@@ -29,7 +29,7 @@ Si vous voulez essayer le code ci-dessous, vous pouvez vous rendre sur [tryfshar
 // Syntaxe de base
 // ================================================
 
-// ------ "Variables" (mais pas réellement) ------
+// ------ "Variables" (mais pas vraiment) ------
 // Le mot clé "let" définit une valeur (immutable)
 let myInt = 5
 let myFloat = 3.14
@@ -61,7 +61,7 @@ let evens list =
    let isEven x = x%2 = 0     // Définit "isEven" comme une fonction imbriquée
    List.filter isEven list    // List.filter est une fonction de la librairie
                               // à deux paramètres: un fonction retournant un
-                              // booléen et une list sur laquelle travailler
+                              // booléen et une liste sur laquelle travailler
 
 evens oneToFive               // À présent, exécutons la fonction.
 
@@ -151,10 +151,10 @@ module FunctionExamples =
     let c = add3 7
     printfn "3+7 = %i" c
 
-    // Fonctions de premier ordre
+    // fonctions de premier ordre
     [1..10] |> List.map add3 |> printfn "new list is %A"
 
-    // Listes de fonctions et plus
+    // listes de fonction et plus
     let add6 = [add1; add2; add3] |> List.reduce (>>)
     let d = add6 7
     printfn "1+2+3+7 = %i" d
@@ -346,7 +346,7 @@ module DataTypeExamples =
         | InvalidEmailAddress of string
 
     let trySendEmail email =
-        match email with // use pattern matching
+        match email with // utilisations du pattern matching
         | ValidEmailAddress address -> ()   // envoyer
         | InvalidEmailAddress address -> () // ne pas envoyer
 
