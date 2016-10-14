@@ -5,7 +5,7 @@ contributors:
     - ["Frederik Ring", "https://github.com/m90"]
 translators:
     - ["Felipe Tarijon", "http://nanoincub.com/"]
-lang: ptr-br
+lang: pt-br
 filename: learnamd-pt.js
 ---
 
