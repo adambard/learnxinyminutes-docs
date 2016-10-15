@@ -6,7 +6,6 @@ contributors:
   - ["Sean Corrales", "https://github.com/droidenator"]
   - ["Kyle Mendes", "https://github.com/pink401k"]
   - ["Keith Miyake", "https://github.com/kaymmm"]
-  - ["César Suárez", "https://github.com/csuarez"]
 ---
 
 Sass is a CSS extension language that adds features such as variables, nesting, mixins and more.
