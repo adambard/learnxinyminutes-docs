@@ -16,20 +16,20 @@ Less (and other preprocessors, such as [Sass](http://sass-lang.com/) help develo
 /*Multi line comments are preserved. */
 
 
-/*Variables
+
+/* Variables
 ==============================*/
 
 
-
 /* You can store a CSS value (such as a color) in a variable.
-Use the '@' symbol to create a variable. */
+   Use the '@' symbol to create a variable. */
 
 @primary-color: #a3a4ff;
 @secondary-color: #51527f;
 @body-font: 'Roboto', sans-serif;
 
 /* You can use the variables throughout your stylesheet.
-Now if you want to change a color, you only have to make the change once.*/
+   Now if you want to change a color, you only have to make the change once.*/
 
 body {
 	background-color: @primary-color;
@@ -38,6 +38,7 @@ body {
 }
 
 /* This would compile to: */
+
 body {
 	background-color: #a3a4ff;
 	color: #51527F;
@@ -46,16 +47,16 @@ body {
 
 
 /* This is much more maintainable than having to change the color
-each time it appears throughout your stylesheet. */
+   each time it appears throughout your stylesheet. */
 
 
-/*Mixins
+
+/* Mixins
 ==============================*/
 
 
-
 /* If you find you are writing the same code for more than one
-element, you might want to reuse that easily.*/
+   element, you might want to reuse that easily.*/
 
 .center {
 	display: block;
@@ -72,7 +73,8 @@ div {
 	background-color: @primary-color;
 }
 
-/*Which would compile to: */
+/* Which would compile to: */
+
 .center {
   display: block;
   margin-left: auto;
@@ -105,7 +107,7 @@ div {
   background-color: @primary-color;
 }
 
-/*Which would compile to: */
+/* Which would compile to: */
 div {
   display: block;
   margin-left: auto;
@@ -116,12 +118,12 @@ div {
 }
 
 
-/*Nesting
+
+/* Nesting
 ==============================*/
 
 
-
-/*Less allows you to nest selectors within selectors */
+/* Less allows you to nest selectors within selectors */
 
 ul {
 	list-style-type: none;
@@ -135,8 +137,8 @@ ul {
 /* '&' will be replaced by the parent selector. */
 /* You can also nest pseudo-classes. */
 /* Keep in mind that over-nesting will make your code less maintainable.
-Best practices recommend going no more than 3 levels deep when nesting.
-For example: */
+   Best practices recommend going no more than 3 levels deep when nesting.
+   For example: */
 
 ul {
 	list-style-type: none;
@@ -175,16 +177,17 @@ ul li a {
 }
 
 
-/*Functions
+
+/* Functions
 ==============================*/
 
 
-
 /* Less provides functions that can be used to accomplish a variety of
-   tasks. Consider the following */
+   tasks. Consider the following: */
 
 /* Functions can be invoked by using their name and passing in the
-   required arguments */
+   required arguments. */
+
 body {
   width: round(10.25px);
 }
@@ -215,11 +218,10 @@ body {
    mixins. When trying to choose between a function or a mixin, remember
    that mixins are best for generating CSS while functions are better for
    logic that might be used throughout your Less code. The examples in
-   the Math Operators' section are ideal candidates for becoming a reusable
+   the 'Math Operators' section are ideal candidates for becoming a reusable
    function. */
 
-/* This function will take a target size and the parent size and calculate
-   and return the percentage */
+/* This function calculates the average of two numbers: */
 
 .average(@x, @y) {
   @average-result: ((@x + @y) / 2);
@@ -236,9 +238,10 @@ div {
   padding: 33px;
 }
 
+
+
 /*Extend (Inheritance)
 ==============================*/
-
 
 
 /*Extend is a way to share the properties of one selector with another. */
@@ -269,9 +272,9 @@ div {
    add unnecessary bloat to the files created by the Less compiler. */
 
 
+
 /*Partials and Imports
 ==============================*/
-
 
 
 /* Less allows you to create partial files. This can help keep your Less
@@ -314,9 +317,9 @@ body {
 }
 
 
-/*Math Operations
-==============================*/
 
+/* Math Operations
+==============================*/
 
 
 /* Less provides the following operators: +, -, *, /, and %. These can
@@ -377,9 +380,7 @@ If you want to play with Less in your browser, check out:
 
 ## Compatibility
 
-Less can be used in any project as long as you have a program to compile it
-into CSS. You'll want to verify that the CSS you're using is compatible
-with your target browsers.
+Less can be used in any project as long as you have a program to compile it into CSS. You'll want to verify that the CSS you're using is compatible with your target browsers.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) and [CanIUse](http://caniuse.com) are great resources for checking compatibility.
 
