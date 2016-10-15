@@ -39,7 +39,7 @@ def search(arr, x):
 
 Le prérequis fondamental de la recherche binaire est que les éléments soient triés.
 
-###Algo
+### Algo
 
 ```
 L'idée derrière la recherche binaire est d'utiliser le fait que le tableau est trié afin de réduire la complexité à O(Log(n)). Nous pouvons ignorer la moitié des éléments après la première comparaison.
