@@ -4,7 +4,6 @@ tool: PyQT
 filename: learnqt.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
-lang: en
 ---
 
 **Qt** is a widely-known framework for developing cross-platform software that can be run on various software and hardware platforms with little or no change in the code, while having the power and speed of native applications. Though **Qt** was originally written in *C++*.
