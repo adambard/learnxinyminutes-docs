@@ -580,5 +580,5 @@ Sass puede ser usado en cualquier proyecto mientras tengas un programa que lo co
 
 
 ## Más información
-* [Documentación oficial](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
-* [The Sass Way](http://thesassway.com/) tiene tutoriales (para principiantes y avanzandos) and artículos.
+* [Documentación oficial (EN)](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
+* [The Sass Way (EN)](http://thesassway.com/) tiene tutoriales (para principiantes y avanzandos) and artículos.
