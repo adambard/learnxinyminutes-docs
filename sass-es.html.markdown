@@ -275,7 +275,7 @@ div {
 ============================== */
 
 
-/* Sass provee funciones que pueden ser usadas para realizar una gran variedad
+/* Sass ofrece funciones que pueden ser usadas para realizar una gran variedad
    de tareas. Por ejemplo: */
 
 /* Se pueden invocar funciones usando su nombre y pasándole los
