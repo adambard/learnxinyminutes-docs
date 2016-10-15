@@ -115,6 +115,6 @@ HTML Dateien enden mit `.html`.
 
 ## Um mehr zu lernen
 
-* [wikipedia](https://en.wikipedia.org/wiki/HTML)
-* [HTML tutorial](https://developer.mozilla.org/en-US/docs/Web/HTML)
-* [W3School](http://www.w3schools.com/html/html_intro.asp)
+* [wikipedia (EN)](https://en.wikipedia.org/wiki/HTML)
+* [HTML tutorial (EN)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [W3School (EN)](http://www.w3schools.com/html/html_intro.asp)
