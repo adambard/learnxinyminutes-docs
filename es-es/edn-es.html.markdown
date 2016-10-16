@@ -8,68 +8,68 @@ translators:
 lang: es-es 
 ---
 
-Extensible Data Notation (EDN) is a format for serializing data.
+La notación de datos extensible (Extensible Data Notation (EDN)) es un formato para serializar los datos.
 
-The notation is used internally by Clojure to represent programs. It is also
-used as a data transfer format like JSON. Though it is more commonly used in
-Clojure, there are implementations of EDN for many other languages.
+La notación se utiliza internamente por Clojure para representar programas. También es
+utilizado como un formato de transferencia de datos como JSON. A pesar de que se utiliza más comúnmente en
+Clojure, existen implementaciones de EDN para muchos otros lenguajes.
 
-The main benefit of EDN over JSON and YAML is that it is extensible. We
-will see how it is extended later on.
+El principal beneficio de EDN sobre JSON y YAML es que es extensible. 
+Vamos a ver cómo se extiende más adelante.
 
 ```clojure
-; Comments start with a semicolon.
-; Anything after the semicolon is ignored.
+; Los comentarios comienzan con un punto y coma.
+; Cualquier cosa después del punto y coma es ignorado.
 
 ;;;;;;;;;;;;;;;;;;;
-;;;Tipos Basicos;;;
+;;;Tipos Básicos;;;
 ;;;;;;;;;;;;;;;;;;;
 
-nil         ; Tambien conocido en otros lenguajes como nulo (null).
+nil         ; También conocido en otros lenguajes como nulo (null).
 
 ; Booleanos
 true
 false
 
 ; Las cadenas se encierran entre comillas dobles
-"hungarian breakfast"
-"farmer's cheesy omelette"
+"desayuno húngaro"
+"tortilla de queso del granjero"
 
 ; Los caracteres están precedidos por barras invertidas
 \g \r \a \c \e
 
-; Las palabras claves comienzan con dos puntos.Se comportan como las enumeraciones. Mas o menos
-; Como simbolos en Ruby
-:eggs
-:cheese
-:olives
+; Las palabras claves comienzan con dos puntos.Se comportan como las enumeraciones. Más o menos
+; Como símbolos en Ruby
+:huevos
+:queso
+:aceitunas
 
 ; Los símbolos se utilizan para representar los identificadores.Estos empiezan con #.
-; You can namespace symbols by using /. Whatever preceeds / is
-; the namespace of the name.
-#spoon
-#kitchen/spoon ; not the same as #spoon
-#kitchen/fork
-#github/fork   ; you can't eat with this
+; puedes tener espacios usando el símbolo /. cualquier cosa precedida / es
+; un espacio en el nombre.
+#cuchara
+#cocina/cuchara ; no es lo mismo que #spoon
+#cocina/tenedor
+#github/tenedor   ; no se puede comer con este.
 
 ; Números enteros y flotantes
 42
 3.14159
 
 ; Las listas son secuencias de valores.
-(:bun :beef-patty 9 "yum!")
+(:bollo :empanada-de-res 9 "yum!")
 
 ; Vectores permiten acceso aleatorio
-[:gelato 1 2 -2]
+[:helado 1 2 -2]
 
 ; Los mapas son estructuras de datos asociativos que se asocian con la clave de su valor.
-{:eggs        2
- :lemon-juice 3.5
- :butter      1}
+{:huevos        2
+ :jugo-de-limon 3.5
+ :mantequilla     1}
 
 ; Usted no está restringido a usar palabras clave como claves.
-{[1 2 3 4] "tell the people what she wore",
- [5 6 7 8] "the more you see the more you hate"}
+{[1 2 3 4] "decirle a la gente lo que llevaba",
+ [5 6 7 8] "Entre mas tu ves, mas lo odias"}
 
 ; Puede usar comas para facilitar la lectura. Se tratan como espacios en blanco.
 
@@ -80,27 +80,27 @@ false
 ;;;Elementos de etiqueta ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; EDN puede ser extendido por elementos de etiqueta con el simbolo #.
+; EDN puede ser extendido por elementos de etiqueta con el símbolo #.
 
-#MyYelpClone/MenuItem {:name "eggs-benedict" :rating 10}
+#MyYelpClone/MenuItem {:nombre "huevos-Benedict" :clasificacion 10}
 
-; Permiteme explicar esto con un ejemplo en colujre. Supongamos que quiero
+; Permíteme explicar esto con un ejemplo en colujre. Supongamos que quiero
 ; transformar ese pedazo de EDN en un registro del Menú.
 
-(defrecord MenuItem [name rating])
+(defrecord MenuItem [nombre clasificacion])
 
 ; Para transformar EDN en valores clojure, necesitaremos usar el constructor en EDN
 ; lectura, edn/read-string
 
-(edn/read-string "{:eggs 2 :butter 1 :flour 5}")
-; -> {:eggs 2 :butter 1 :flour 5}
+(edn/read-string "{:huevos 2 :mantequilla 1 :harina 5}")
+; -> {:huevos 2 :mantequilla 1 :harina 5}
 
 ; Para transformar los elementos de etiqueta, definir la función de lectura y pasar un mapa
 ; que asigna etiquetas a funciones del lector de edn/read-string al igual que.
 
-(edn/read-string {:readers {'MyYelpClone/MenuItem map->menu-item}}
-                 "#MyYelpClone/MenuItem {:name \"eggs-benedict\" :rating 10}")
-; -> #user.MenuItem{:name "eggs-benedict", :rating 10}
+(edn/read-string {:lectores {'MyYelpClone/MenuItem map->menu-item}}
+                 "#MyYelpClone/MenuItem {:nombre \"huevos-benedict\" :clasificacion 10}")
+; -> #user.MenuItem{:nombre "huevos-benedict", :clasificacion 10}
 
 ```
 
