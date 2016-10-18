@@ -228,12 +228,12 @@ set smarttab
 
 ### Referências
 
-[Vim | Home](http://www.vim.org/index.php)
+[Vim | Home](http://www.vim.org/index.php) (EN)
 
-`$ vimtutor`
+`$ vimtutor pt`
 
-[A vim Tutorial and Primer](https://danielmiessler.com/study/vim/)
+[Vim: um tutorial/cartilha](https://danielmiessler.com/study/vim/) (EN)
 
-[What are the dark corners of Vim your mom never told you about? (Stack Overflow thread)](http://stackoverflow.com/questions/726894/what-are-the-dark-corners-of-vim-your-mom-never-told-you-about)
+[O que são as partes sombrias do Vim que sua mãe nunca te explicou? (tópico no Stack Overflow)](http://stackoverflow.com/questions/726894/what-are-the-dark-corners-of-vim-your-mom-never-told-you-about) (EN)
 
-[Arch Linux Wiki](https://wiki.archlinux.org/index.php/Vim)
+[Arch Linux Wiki](https://wiki.archlinux.org/index.php/Vim) (EN)
