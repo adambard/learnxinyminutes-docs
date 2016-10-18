@@ -639,19 +639,30 @@ outer()(); #=> 'Foo Bar'
 # the variable would be undefined (and you'd get a compile time error).
 
 # Perl 6 has another kind of scope : dynamic scope.
-# They use the twigil (composed sigil) `*` to mark dynamically-scoped variables:
-my $*a = 1;
-# Dyamically-scoped variables depend on the current call stack,
-#  instead of the current block depth.
-sub foo {
-  my $*foo = 1;
-  bar(); # call `bar` in-place
+# They use the twigil (composed sigil) `*` to mark dynamically-scoped variables.
+# Dynamically-scoped variables are looked up through the caller, not through
+# the outer scope
+
+my $*dyn_scoped_1 = 1;
+my $*dyn_scoped_2 = 10;
+
+sub say_dyn {
+  say "$*dyn_scoped_1 $*dyn_scoped_2";
 }
-sub bar {
-  say $*foo; # `$*foo` will be looked in the call stack, and find `foo`'s,
-             #  even though the blocks aren't nested (they're call-nested).
-             #=> 1
+
+sub call_say_dyn {
+  my $*dyn_scoped_1 = 25; # Defines $*dyn_scoped_1 only for this sub.
+  $*dyn_scoped_2 = 100; # Will change the value of the file scoped variable.
+  say_dyn(); #=> 25 100 $*dyn_scoped 1 and 2 will be looked for in the call.
+             # It uses he value of $*dyn_scoped_1 from inside this sub's lexical
+             # scope even though the blocks aren't nested (they're call-nested).
 }
+say_dyn(); #=> 1 10
+call_say_dyn(); #=> 25 100
+                # Uses $*dyn_scoped_1 as defined in call_say_dyn even though
+                # we are calling it from outside.
+say_dyn(); #=> 1 100 We changed the value of $*dyn_scoped_2 in call_say_dyn
+           #         so now its value has changed.
 
 ### Object Model
 
