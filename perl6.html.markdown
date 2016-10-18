@@ -237,8 +237,8 @@ unless False {
 say "Quite truthy" if True;
 
 # - Ternary conditional, "?? !!" (like `x ? y : z` in some other languages)
-# - returns $value-if-true if the condition is true and $value-if-false
-# - if it is false.
+#   returns $value-if-true if the condition is true and $value-if-false
+#   if it is false.
 #   my $result = $value condition ?? $value-if-true !! $value-if-false;
 
 my $age = 30;
