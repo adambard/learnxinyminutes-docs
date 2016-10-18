@@ -707,22 +707,22 @@ $a.other-field = 10; # This, however, works, because the public field
 
 ## Perl 6 also has inheritance (along with multiple inheritance)
 
-class A {
+class Z {
   has $.val;
 
   submethod not-inherited {
-    say "This method won't be available on B.";
+    say "This method won't be available on Y.";
     say "This is most useful for BUILD, which we'll see later";
   }
 
   method bar { $.val * 5 }
 }
-class B is A { # inheritance uses `is`
+class Y is Z { # inheritance uses `is`
   method foo {
     say $.val;
   }
 
-  method bar { $.val * 10 } # this shadows A's `bar`
+  method bar { $.val * 10 } # this shadows Z's `bar`
 }
 
 # When you use `my T $var`, `$var` starts off with `T` itself in it,
