@@ -638,6 +638,16 @@ outer()(); #=> 'Foo Bar'
 # But if we were to try and use `$bar` outside of `foo`,
 # the variable would be undefined (and you'd get a compile time error).
 
+### Twigils
+
+# There are many special `twigils` in Perl 6.
+# Twigils define the variables scope. Here are a few:
+# * Dynamic
+# ! Attribute (class member)
+# ? Compile-time variable
+# . Method (not really a variable)
+
+
 # Perl 6 has another kind of scope : dynamic scope.
 # They use the twigil (composed sigil) `*` to mark dynamically-scoped variables.
 # Dynamically-scoped variables are looked up through the caller, not through
@@ -666,9 +676,10 @@ say_dyn(); #=> 1 100 We changed the value of $*dyn_scoped_2 in call_say_dyn
 
 ### Object Model
 
-# You declare a class with the keyword `class`, fields with `has`,
-# methods with `method`. Every attribute that is private is named `$!attr`.
-# Immutable public attributes are named `$.attr`
+# Classes are declared with the keyword `class`, fields with `has`, and
+# methods with `method`. Every attribute that is private uses the ! twigil
+# for example: `$!attr`.
+# Immutable public attributes use the `.` twigil and are named `$.attr`
 #   (you can make them mutable with `is rw`)
 
 # Perl 6's object model ("SixModel") is very flexible,
@@ -731,11 +742,11 @@ class Y is Z { # inheritance uses `is`
 #  `$a .= b` is the same as `$a = $a.b`)
 # Also note that `BUILD` (the method called inside `new`)
 #  will set parent properties too, so you can pass `val => 5`.
-my B $b .= new(val => 5);
+my Y $b .= new(val => 5);
 
 # $b.not-inherited; # This won't work, for reasons explained above
 $b.foo; # prints 5
-$b.bar; #=> 50, since it calls B's `bar`
+$b.bar; #=> 50, since it calls Y's `bar`
 
 ## Roles are supported too (also called Mixins in other languages)
 role PrintableVal {
