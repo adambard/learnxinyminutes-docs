@@ -448,19 +448,19 @@ $b %%= 5; # divisible by and assignment
 ## Unpacking !
 # It's the ability to "extract" arrays and keys (AKA "destructuring").
 # It'll work in `my`s and in parameter lists.
-my ($a, $b) = 1, 2;
-say $a; #=> 1
-my ($, $, $c) = 1, 2, 3; # keep the non-interesting anonymous
-say $c; #=> 3
+my ($f, $g) = 1, 2;
+say $f; #=> 1
+my ($, $, $h) = 1, 2, 3; # keep the non-interesting anonymous
+say $h; #=> 3
 
 my ($head, *@tail) = 1, 2, 3; # Yes, it's the same as with "slurpy subs"
 my (*@small) = 1;
 
-sub foo(@array [$fst, $snd]) {
+sub unpack_array(@array [$fst, $snd]) {
   say "My first is $fst, my second is $snd ! All in all, I'm @array[].";
   # (^ remember the `[]` to interpolate the array)
 }
-foo(@tail); #=> My first is 2, my second is 3 ! All in all, I'm 2 3
+unpack_array(@tail); #=> My first is 2, my second is 3 ! All in all, I'm 2 3
 
 
 # If you're not using the array itself, you can also keep it anonymous,
