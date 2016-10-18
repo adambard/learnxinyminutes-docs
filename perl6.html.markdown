@@ -41,7 +41,7 @@ my $str2 = "String";
 # and can contain (and end with) underscores :
 # my $weird'variable-name_ = 5; # works !
 
-my $bool = True; # `True` and `False` are Perl 6's boolean
+my $bool = True; # `True` and `False` are Perl 6's boolean values.
 my $inverse = !$bool; # You can invert a bool with the prefix `!` operator
 my $forced-bool = so $str; # And you can use the prefix `so` operator
                            # which turns its operand into a Bool
@@ -56,8 +56,8 @@ my @array = 1, 2, 3;
 
 say @array[2]; # Array indices start at 0 -- This is the third element
 
-say "Interpolate an array using [] : @array[]";
-#=> Interpolate an array using [] : 1 2 3
+say "Access a value in an array using [] : @array[]";
+#=> Access an array using [] : 1 2 3
 
 @array[0] = -1; # Assign a new value to an array index
 @array[0, 1] = 5, 6; # Assign multiple values
