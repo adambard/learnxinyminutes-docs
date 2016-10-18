@@ -377,8 +377,7 @@ say $obj; # ｢a｣
 say $obj.WHAT; # (Match)
 
 # Hashes
-'key' ~~ %hash; # true if key exists in hash
-
+'key' ~~ %hash; # True if key exists in hash
 
 # # General syntax is $arg ~~ &bool-returning-function;
 # For a complete list of combinations, use this table:
@@ -430,7 +429,7 @@ say @numbers; #=> 0 1 2 3 4 3 9 15 21 [...] 81 87
 ## * Short-circuit (and tight) versions of the above
 #    Returns the first argument that evaluates to False, or the last argument.
 
-my $a, $b, $c = 1, 0, 2;
+my ( $a, $b, $c ) = 1, 0, 2;
 $a && $b && $c; # Returns 0, the first False value
 
 # || Returns the first argument that evaluates to True
