@@ -38,7 +38,7 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 8 - 1   # => 7
 10 * 2  # => 20
 
-# Except division which returns floats, real numbers, by default
+# Except division which returns integers if operating on integers
 35 / 5  # => 7.0
 
 # Result of integer division truncated down both for positive and negative.
@@ -48,7 +48,11 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 -5.0 // 3.0  # => -2.0
 
 # When you use a float, results are floats
-3 * 2.0  # => 6.0
+10.0 / 3  # => 3.3333333333333335
+
+# to force this behavior, use 
+from __future__ import division
+10 / 3 # => 3.3333333333333335
 
 # Modulo operation
 7 % 3  # => 1
