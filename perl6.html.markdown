@@ -56,14 +56,14 @@ my @array = 1, 2, 3;
 
 say @array[2]; # Array indices start at 0 -- This is the third element
 
-say "Access a value in an array using [] : @array[]";
-#=> Access an array using [] : 1 2 3
+say "Access an element of an array using [] : @array[]";
+#=> Access an element of an array using [] : 1 2 3
 
 @array[0] = -1; # Assign a new value to an array index
 @array[0, 1] = 5, 6; # Assign multiple values
 
 my @keys = 0, 2;
-@array[@keys] = @letters; # Assign using an array
+@array[@keys] = @letters; # Assignment using an array containing index values
 say @array; #=> a 6 b
 
 ## * Hashes, or key-value Pairs.
