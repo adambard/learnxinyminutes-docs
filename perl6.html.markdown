@@ -355,15 +355,6 @@ if long-computation() -> $result {
 # Aliases the left hand side to $_ and then evaluates the right hand side.
 # Here are some common comparison semantics:
 
-# Type - Checks if left side "has type" (can check superclasses and roles)
-
-1 ~~ Int; # True
-
-# Smart-matching against a boolean always returns that boolean (and will warn).
-
-1 ~~ True; # True
-False ~~ True; # True
-
 # String or Numeric Equality
 
 'Foo' ~~ 'Foo'; # True if strings are equal.
@@ -378,6 +369,15 @@ say $obj.WHAT; # (Match)
 
 # Hashes
 'key' ~~ %hash; # True if key exists in hash
+
+# Type - Checks if left side "has type" (can check superclasses and roles)
+
+1 ~~ Int; # True
+
+# Smart-matching against a boolean always returns that boolean (and will warn).
+
+1 ~~ True; # True
+False ~~ True; # True
 
 # # General syntax is $arg ~~ &bool-returning-function;
 # For a complete list of combinations, use this table:
