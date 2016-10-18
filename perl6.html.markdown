@@ -4,7 +4,6 @@ language: perl6
 filename: learnperl6.pl
 contributors:
     - ["vendethiel", "http://github.com/vendethiel"]
-    - ["samcv", "https://gitlab.com/u/samcv/"]
 ---
 
 Perl 6 is a highly capable, feature-rich programming language made for at
