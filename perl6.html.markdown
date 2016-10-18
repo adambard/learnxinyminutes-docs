@@ -37,8 +37,8 @@ my $str = 'String';
 # double quotes allow for interpolation (which we'll see later):
 my $str2 = "String";
 
-# variable names can contain but not end with simple quotes and dashes,
-#  and can contain (and end with) underscores :
+# Variable names can contain but not end with simple quotes and dashes,
+# and can contain (and end with) underscores :
 # my $weird'variable-name_ = 5; # works !
 
 my $bool = True; # `True` and `False` are Perl 6's boolean
