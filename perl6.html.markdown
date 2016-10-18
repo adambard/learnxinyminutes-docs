@@ -237,10 +237,15 @@ unless False {
 say "Quite truthy" if True;
 
 # - Ternary conditional, "?? !!" (like `x ? y : z` in some other languages)
-my $a = $condition ?? $value-if-true !! $value-if-false;
+#   returns $value-if-true if the condition is true and $value-if-false
+#   if it is false.
+#   my $result = $value condition ?? $value-if-true !! $value-if-false;
 
-# - `given`-`when` looks like other languages' `switch`, but much more
-# powerful thanks to smart matching and thanks to Perl 6's "topic variable", $_.
+my $age = 30;
+say $age > 18 ?? "You are an adult" !! "You are under 18";
+
+# - `given`-`when` looks like other languages' `switch`, but is much more
+# powerful thanks to smart matching and Perl 6's "topic variable", $_.
 #
 # This variable contains the default argument of a block,
 #  a loop's current iteration (unless explicitly named), etc.
@@ -251,6 +256,7 @@ my $a = $condition ?? $value-if-true !! $value-if-false;
 # Since other Perl 6 constructs use this variable (as said before, like `for`,
 # blocks, etc), this means the powerful `when` is not only applicable along with
 # a `given`, but instead anywhere a `$_` exists.
+
 given "foo bar" {
   say $_; #=> foo bar
   when /foo/ { # Don't worry about smart matching yet – just know `when` uses it.
@@ -345,16 +351,37 @@ if long-computation() -> $result {
 # - `eqv` is canonical equivalence (or "deep equality")
 (1, 2) eqv (1, 3);
 
-# - `~~` is smart matching
+# - Smart Match Operator: `~~`
+# Aliases the left hand side to $_ and then evaluates the right hand side.
+# Here are some common comparison semantics:
+
+# String or Numeric Equality
+
+'Foo' ~~ 'Foo'; # True if strings are equal.
+12.5 ~~ 12.50; # True if numbers are equal.
+
+# Regex - For matching a regular expression against the left side.
+# Returns a (Match) object, which evaluates as True if regexp matches.
+
+my $obj = 'abc' ~~ /a/;
+say $obj; # ｢a｣
+say $obj.WHAT; # (Match)
+
+# Hashes
+'key' ~~ %hash; # True if key exists in hash
+
+# Type - Checks if left side "has type" (can check superclasses and roles)
+
+1 ~~ Int; # True
+
+# Smart-matching against a boolean always returns that boolean (and will warn).
+
+1 ~~ True; # True
+False ~~ True; # True
+
+# # General syntax is $arg ~~ &bool-returning-function;
 # For a complete list of combinations, use this table:
 # http://perlcabal.org/syn/S03.html#Smart_matching
-'a' ~~ /a/; # true if matches regexp
-'key' ~~ %hash; # true if key exists in hash
-$arg ~~ &bool-returning-function; # `True` if the function, passed `$arg`
-                                  # as an argument, returns `True`.
-1 ~~ Int; # "has type" (check superclasses and roles)
-1 ~~ True; # smart-matching against a boolean always returns that boolean
-           # (and will warn).
 
 # You also, of course, have `<`, `<=`, `>`, `>=`.
 # Their string equivalent are also avaiable : `lt`, `le`, `gt`, `ge`.
@@ -395,18 +422,22 @@ my @seq =  3, 9 ... * > 95; # 3 9 15 21 27 [...] 81 87 93 99;
 say @numbers; #=> 0 1 2 3 4 3 9 15 21 [...] 81 87
               # (only 20 values)
 
-## * And, Or
+## * And &&, Or ||
 3 && 4; # 4, which is Truthy. Calls `.Bool` on `4` and gets `True`.
 0 || False; # False. Calls `.Bool` on `0`
 
 ## * Short-circuit (and tight) versions of the above
-$a && $b && $c; # Returns the first argument that evaluates to False,
-                # or the last argument.
-$a || $b;
+#    Returns the first argument that evaluates to False, or the last argument.
+
+my ( $a, $b, $c ) = 1, 0, 2;
+$a && $b && $c; # Returns 0, the first False value
+
+# || Returns the first argument that evaluates to True
+$b || $a; # 1
 
 # And because you're going to want them,
 #  you also have compound assignment operators:
-$a *= 2; # multiply and assignment
+$a *= 2; # multiply and assignment. Equivalent to $a = $a * 2;
 $b %%= 5; # divisible by and assignment
 @array .= sort; # calls the `sort` method and assigns the result back
 
@@ -417,19 +448,19 @@ $b %%= 5; # divisible by and assignment
 ## Unpacking !
 # It's the ability to "extract" arrays and keys (AKA "destructuring").
 # It'll work in `my`s and in parameter lists.
-my ($a, $b) = 1, 2;
-say $a; #=> 1
-my ($, $, $c) = 1, 2, 3; # keep the non-interesting anonymous
-say $c; #=> 3
+my ($f, $g) = 1, 2;
+say $f; #=> 1
+my ($, $, $h) = 1, 2, 3; # keep the non-interesting anonymous
+say $h; #=> 3
 
 my ($head, *@tail) = 1, 2, 3; # Yes, it's the same as with "slurpy subs"
 my (*@small) = 1;
 
-sub foo(@array [$fst, $snd]) {
+sub unpack_array(@array [$fst, $snd]) {
   say "My first is $fst, my second is $snd ! All in all, I'm @array[].";
   # (^ remember the `[]` to interpolate the array)
 }
-foo(@tail); #=> My first is 2, my second is 3 ! All in all, I'm 2 3
+unpack_array(@tail); #=> My first is 2, my second is 3 ! All in all, I'm 2 3
 
 
 # If you're not using the array itself, you can also keep it anonymous,
