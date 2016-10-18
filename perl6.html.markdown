@@ -96,7 +96,8 @@ say %hash{'key1'}; # You can use {} to get the value from a key
 say %hash<key2>;   # If it's a string, you can actually use <>
                    # (`{key1}` doesn't work, as Perl6 doesn't have barewords)
 
-## * Subs (subroutines, or functions in most other languages).
+## * Subs: subroutines or functions as most other languages call them are
+#          created with the `sub` keyword.
 sub say-hello { say "Hello, world" }
 
 sub say-hello-to(Str $name) { # You can provide the type of an argument
