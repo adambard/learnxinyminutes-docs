@@ -624,17 +624,17 @@ multi with-or-without-you {
 # (there are other declarators, `our`, `state`, ..., which we'll see later).
 # This is called "lexical scoping", where in inner blocks,
 #  you can access variables from outer blocks.
-my $foo = 'Foo';
-sub foo {
-  my $bar = 'Bar';
-  sub bar {
-    say "$foo $bar";
+my $file_scoped = 'Foo';
+sub outer {
+  my $outer_scoped = 'Bar';
+  sub inner {
+    say "$file_scoped $outer_scoped";
   }
-  &bar; # return the function
+  &inner; # return the function
 }
-foo()(); #=> 'Foo Bar'
+outer()(); #=> 'Foo Bar'
 
-# As you can see, `$foo` and `$bar` were captured.
+# As you can see, `$file_scoped` and `$outer_scoped` were captured.
 # But if we were to try and use `$bar` outside of `foo`,
 # the variable would be undefined (and you'd get a compile time error).
 
