@@ -193,6 +193,15 @@ sub mutate($n is rw) {
   say "\$n is now $n !";
 }
 
+my $m = 42;
+mutate $m; # $n is now 43 !
+
+# This works because we are passing the container $m to mutate.  If we try
+# to just pass a number instead of passing a variable it won't work because
+# there is no container being passed and integers are immutable by themselves:
+
+mutate 42; # Parameter '$n' expected a writable container, but got Int value
+
 # If what you want a copy instead, use `is copy`.
 
 # A sub itself returns a container, which means it can be marked as rw:
