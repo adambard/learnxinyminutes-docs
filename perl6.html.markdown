@@ -67,17 +67,21 @@ my @keys = 0, 2;
 say @array; #=> a 6 b
 
 ## * Hashes, or key-value Pairs.
-# Hashes are actually arrays of Pairs
-# (you can construct a Pair object using the syntax `Key => Value`),
-#  except they get "flattened" (hash context), removing duplicated keys.
+# Hashes are pairs of keys and values.
+# You can construct a Pair object using the syntax `Key => Value`.
+# Hash tables are very fast for lookup, and are stored unordered.
+# Keep in mind that keys get "flattened" in hash context, and any duplicated
+# keys are deduplicated.
 my %hash = 1 => 2,
            3 => 4;
 my %hash = foo => "bar", # keys get auto-quoted
             "some other" => "value", # trailing commas are okay
             ;
-my %hash = <key1 value1 key2 value2>; # you can also create a hash
-                                      # from an even-numbered array
-my %hash = key1 => 'value1', key2 => 'value2'; # same as this
+# Even though hashes are internally stored differently than arrays,
+# Perl 6 allows you to easily create a hash from an even numbered array:
+my %hash = <key1 value1 key2 value2>;
+
+my %hash = key1 => 'value1', key2 => 'value2'; # same result as above
 
 # You can also use the "colon pair" syntax:
 # (especially handy for named parameters that you'll see later)
