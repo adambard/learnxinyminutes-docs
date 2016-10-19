@@ -697,20 +697,20 @@ say_dyn(); #=> 1 100 We changed the value of $*dyn_scoped_2 in call_say_dyn
 # https://docs.perl6.org/language/objects.html.
 
 class A {
-  has $.field; # `$.field` is immutable.
-               # From inside the class, use `$!field` to modify it.
-  has $.other-field is rw; # You can mark a public attribute `rw`.
-  has Int $!private-field = 10;
+  has $.attrib; # `$.attrib` is immutable.
+               # From inside the class, use `$!attrib` to modify it.
+  has $.other-attrib is rw; # You can mark a public attribute `rw`.
+  has Int $!private-attrib = 10;
 
   method get-value {
-    $.field + $!private-field;
+    $.attrib + $!private-attrib;
   }
 
   method set-value($n) {
-    # $.field = $n; # As stated before, you can't use the `$.` immutable version.
-    $!field = $n;   # This works, because `$!` is always mutable.
+    # $.attrib = $n; # As stated before, you can't use the `$.` immutable version.
+    $!attrib = $n;   # This works, because `$!` is always mutable.
 
-    $.other-field = 5; # This works, because `$.other-field` is `rw`.
+    $.other-attrib = 5; # This works, because `$.other-attrib` is `rw`.
   }
 
   method !private-method {
@@ -718,12 +718,12 @@ class A {
   }
 };
 
-# Create a new instance of A with $.field set to 5 :
-# Note: you can't set private-field from here (more later on).
-my $a = A.new(field => 5);
+# Create a new instance of A with $.attrib set to 5 :
+# Note: you can't set private-attribute from here (more later on).
+my $a = A.new(attrib => 5);
 say $a.get-value; #=> 15
-#$a.field = 5; # This fails, because the `has $.field` is immutable
-$a.other-field = 10; # This, however, works, because the public field
+#$a.attrib = 5; # This fails, because the `has $.attrib` is immutable
+$a.other-attrib = 10; # This, however, works, because the public attribute
                      #  is mutable (`rw`).
 
 ## Perl 6 also has inheritance (along with multiple inheritance)
@@ -771,8 +771,8 @@ class Item does PrintableVal {
   has $.val;
 
   # When `does`-ed, a `role` literally "mixes in" the class:
-  #  the methods and fields are put together, which means a class can access
-  #  the private fields/methods of its roles (but not the inverse !):
+  #  the methods and attributes are put together, which means a class can access
+  #  the private attributes/methods of its roles (but not the inverse !):
   method access {
     say $!counter++;
   }
