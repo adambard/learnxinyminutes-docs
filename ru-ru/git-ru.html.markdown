@@ -1,9 +1,16 @@
- ---
-
-language: tool
-filename: ru-ru/git-ru.html.markdown
+---
+category: tool
+tool: git
 contributors:
-    - ["ShaltaevGleb", "shaltaev.gleb@gmail.com"]
+    - ["Jake Prather", "http://github.com/JakeHP"]
+    - ["Leo Rudberg" , "http://github.com/LOZORD"]
+    - ["Betsy Lorton" , "http://github.com/schbetsy"]
+    - ["Bruno Volcov", "http://github.com/volcov"]
+    - ["Andrew Taylor", "http://github.com/andrewjt71"]
+    - ["Jason Stathopulos", "http://github.com/SpiritBreaker226"]
+translators:
+    - ["ShaltaevGleb", "https://github.com/ShaltaevGleb"]
+filename: LearnGit-ru.txt
 lang: ru-ru
 ---
 
