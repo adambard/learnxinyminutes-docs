@@ -697,7 +697,7 @@ say_dyn(); #=> 1 100 We changed the value of $*dyn_scoped_2 in call_say_dyn
 # (these will not all be covered here, and you should refer to:
 # https://docs.perl6.org/language/objects.html.
 
-class A {
+class Attrib-Class {
   has $.attrib; # `$.attrib` is immutable.
                # From inside the class, use `$!attrib` to modify it.
   has $.other-attrib is rw; # You can mark a public attribute `rw`.
@@ -707,9 +707,9 @@ class A {
     $.attrib + $!private-attrib;
   }
 
-  method set-value($n) {
-    # $.attrib = $n; # As stated before, you can't use the `$.` immutable version.
-    $!attrib = $n;   # This works, because `$!` is always mutable.
+  method set-value($param) { # Methods can take parameters
+    $!attrib = $param;   # This works, because `$!` is always mutable.
+	# $.attrib = $param; # Wrong: You can't use the `$.` immutable version.
 
     $.other-attrib = 5; # This works, because `$.other-attrib` is `rw`.
   }
@@ -719,33 +719,44 @@ class A {
   }
 };
 
-# Create a new instance of A with $.attrib set to 5 :
+# Create a new instance of Attrib-Class with $.attrib set to 5 :
 # Note: you can't set private-attribute from here (more later on).
-my $a = A.new(attrib => 5);
-say $a.get-value; #=> 15
-#$a.attrib = 5; # This fails, because the `has $.attrib` is immutable
-$a.other-attrib = 10; # This, however, works, because the public attribute
-                     #  is mutable (`rw`).
+my $class-obj = Attrib-Class.new(attrib => 5);
+say $class-obj.get-value; #=> 15
+#$class-obj.attrib = 5; # This fails, because the `has $.attrib` is immutable
+$class-obj.other-attrib = 10; # This, however, works, because the public
+                              # attribute is mutable (`rw`).
 
-## Perl 6 also has inheritance (along with multiple inheritance)
+## Object Inheritance
+#  Perl 6 also has inheritance (along with multiple inheritance)
+#  While `method`'s are inherited, `submethod`'s are not.
+#  Submethods are useful for object construction and destruction tasks,
+#  such as BUILD, or methods that must be overriden by subtypes.
+#  We will learn about BUILD later on.
 
-class Z {
-  has $.val;
-
-  submethod not-inherited {
-    say "This method won't be available on Y.";
-    say "This is most useful for BUILD, which we'll see later";
+class Parent {
+  has $.age;
+  has $.name;
+  # This submethod won't be inherited by Child.
+  submethod favorite-color {
+    say "My favorite color is Blue";
   }
-
-  method bar { $.val * 5 }
+  # This method is inherited
+  method talk { say "Hi, my name is $!name" }
 }
-class Y is Z { # inheritance uses `is`
-  method foo {
-    say $.val;
-  }
-
-  method bar { $.val * 10 } # this shadows Z's `bar`
+# Inheritance uses the `is` keyword
+class Child is Parent {
+  method talk { say "Goo goo ga ga" }
+  # This shadows Parent's `talk` method, This child hasn't learned to speak yet!
 }
+my Parent $Richard .= new(age => 40, name => 'Richard');
+$Richard.favorite-color; #=> "My favorite color is Blue"
+$Richard.talk; #=> "Hi, my name is Richard"
+# # $Richard is able to access the submethod, he knows how to say his name.
+
+my Child $Madison .= new(age => 1, name => 'Madison');
+$Madison.talk; # prints "Goo goo ga ga" due to the overrided method.
+# $Madison.favorite-color does not work since it is not inherited
 
 # When you use `my T $var`, `$var` starts off with `T` itself in it,
 # so you can call `new` on it.
@@ -753,11 +764,9 @@ class Y is Z { # inheritance uses `is`
 #  `$a .= b` is the same as `$a = $a.b`)
 # Also note that `BUILD` (the method called inside `new`)
 #  will set parent properties too, so you can pass `val => 5`.
-my Y $b .= new(val => 5);
 
 # $b.not-inherited; # This won't work, for reasons explained above
-$b.foo; # prints 5
-$b.bar; #=> 50, since it calls Y's `bar`
+
 
 ## Roles are supported too (also called Mixins in other languages)
 role PrintableVal {
