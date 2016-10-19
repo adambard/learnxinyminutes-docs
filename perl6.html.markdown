@@ -681,15 +681,20 @@ say_dyn(); #=> 1 100 We changed the value of $*dyn_scoped_2 in call_say_dyn
 
 ### Object Model
 
-# Classes are declared with the keyword `class`, fields with `has`, and
-# methods with `method`. Every attribute that is private uses the ! twigil
-# for example: `$!attr`.
-# Immutable public attributes use the `.` twigil and are named `$.attr`
+# To call a method on an object, add a dot followed by the method name:
+# => $object.method
+# Classes are declared with the `class` keyword. Attributes are declared
+# with the `has` keyword, and methods declared with `method`.
+# Every attribute that is private uses the ! twigil for example: `$!attr`.
+# Immutable public attributes use the `.` twigil.
 #   (you can make them mutable with `is rw`)
+# The easiest way to remember the `$.` twigil is comparing it to how methods
+# are called.
 
 # Perl 6's object model ("SixModel") is very flexible,
 # and allows you to dynamically add methods, change semantics, etc ...
-# (this will not be covered here, and you should refer to the Synopsis).
+# (these will not all be covered here, and you should refer to:
+# https://docs.perl6.org/language/objects.html.
 
 class A {
   has $.field; # `$.field` is immutable.
@@ -716,7 +721,7 @@ class A {
 # Create a new instance of A with $.field set to 5 :
 # Note: you can't set private-field from here (more later on).
 my $a = A.new(field => 5);
-$a.get-value; #=> 15
+say $a.get-value; #=> 15
 #$a.field = 5; # This fails, because the `has $.field` is immutable
 $a.other-field = 10; # This, however, works, because the public field
                      #  is mutable (`rw`).
