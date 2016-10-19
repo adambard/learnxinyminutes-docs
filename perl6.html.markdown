@@ -789,18 +789,19 @@ class Item does PrintableVal {
 
 ### Exceptions
 # Exceptions are built on top of classes, in the package `X` (like `X::IO`).
-# Unlike many other languages, in Perl 6, you put the `CATCH` block *within* the
-#  block to `try`. By default, a `try` has a `CATCH` block that catches
-#  any exception (`CATCH { default {} }`).
+# Unlike many other languages, in Perl 6, you put the `CATCH` block *within*
+# the block to `try`. By default, a `try` has a `CATCH` block that catches
+# any exception (`CATCH { default {} }`).
 # You can redefine it using `when`s (and `default`)
-#  to handle the exceptions you want:
+# to handle the exceptions you want:
 try {
   open 'foo';
   CATCH {
     when X::AdHoc { say "unable to open file !" }
     # Any other exception will be re-raised, since we don't have a `default`
-    # Basically, if a `when` matches (or there's a `default`) marks the exception as
-    #  "handled" so that it doesn't get re-thrown from the `CATCH`.
+    # Basically, if a `when` matches (or there's a `default`) marks the
+	# exception as
+    # "handled" so that it doesn't get re-thrown from the `CATCH`.
     # You still can re-throw the exception (see below) by hand.
   }
 }
@@ -810,13 +811,14 @@ die X::AdHoc.new(payload => 'Error !');
 
 # You can access the last exception with `$!` (use `$_` in a `CATCH` block)
 
-# There are also some subtelties to exceptions. Some Perl 6 subs return a `Failure`,
-#  which is a kind of "unthrown exception". They're not thrown until you tried to look
-#  at their content, unless you call `.Bool`/`.defined` on them - then they're handled.
-#  (the `.handled` method is `rw`, so you can mark it as `False` back yourself)
+# There are also some subtelties to exceptions. Some Perl 6 subs return a
+# `Failure`, which is a kind of "unthrown exception". They're not thrown until
+# you tried to look at their content, unless you call `.Bool`/`.defined` on
+# them - then they're handled.
+# (the `.handled` method is `rw`, so you can mark it as `False` back yourself)
 #
-# You can throw a `Failure` using `fail`. Note that if the pragma `use fatal` is on,
-#  `fail` will throw an exception (like `die`).
+# You can throw a `Failure` using `fail`. Note that if the pragma `use fatal`
+# is on, `fail` will throw an exception (like `die`).
 fail "foo"; # We're not trying to access the value, so no problem.
 try {
   fail "foo";
@@ -1160,10 +1162,11 @@ sub add($a, $b) { $a + $b }
 say [[&add]] 1, 2, 3; #=> 6
 
 ## * Zip meta-operator
-# This one is an infix meta-operator than also can be used as a "normal" operator.
-# It takes an optional binary function (by default, it just creates a pair),
-#  and will pop one value off of each array and call its binary function on these
-#  until it runs out of elements. It returns an array with all of these new elements.
+# This one is an infix meta-operator than also can be used as a "normal"
+# operator.  It takes an optional binary function (by default, it just creates
+# a pair), and will pop one value off of each array and call its binary function
+# on these until it runs out of elements. It returns an array with all of these
+# new elements.
 (1, 2) Z (3, 4); # ((1, 3), (2, 4)), since by default, the function makes an array
 1..3 Z+ 4..6; # (5, 7, 9), using the custom infix:<+> function
 
@@ -1237,7 +1240,8 @@ say so 'a' ~~ / a /; # More readable with some spaces!
 #  returning a `Match` object. They know how to respond to list indexing,
 #  hash indexing, and return the matched string.
 # The results of the match are available as `$/` (implicitly lexically-scoped).
-# You can also use the capture variables (`$0`, `$1`, ... starting at 0, not 1 !).
+# You can also use the capture variables which start at 0:
+#    `$0`, `$1', `$2`...
 #
 # You can also note that `~~` does not perform start/end checking
 #  (meaning the regexp can be matched with just one char of the string),
