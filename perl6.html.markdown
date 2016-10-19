@@ -645,16 +645,17 @@ outer()(); #=> 'Foo Bar'
 
 ### Twigils
 
-# There are many special `twigils` in Perl 6.
-# Twigils define the variables scope. Here are a few:
-# * Dynamic
-# ! Attribute (class member)
+# There are many special `twigils` (composed sigil's) in Perl 6.
+# Twigils define the variables' scope.
+# The * and ? twigils work on standard variables:
+# * Dynamic variable
 # ? Compile-time variable
+# The ! and the . twigils are used with Perl 6's objects:
+# ! Attribute (class member)
 # . Method (not really a variable)
 
-
-# Perl 6 has another kind of scope : dynamic scope.
-# They use the twigil (composed sigil) `*` to mark dynamically-scoped variables.
+# `*` Twigil: Dynamic Scope
+# These variables use the`*` twigil to mark dynamically-scoped variables.
 # Dynamically-scoped variables are looked up through the caller, not through
 # the outer scope
 
