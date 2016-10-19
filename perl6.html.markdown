@@ -56,8 +56,8 @@ my @array = 1, 2, 3;
 
 say @array[2]; # Array indices start at 0 -- This is the third element
 
-say "Access an element of an array using [] : @array[]";
-#=> Access an element of an array using [] : 1 2 3
+say "Interpolate all elements of an array using [] : @array[]";
+#=> Interpolate all elements of an array using [] : 1 2 3
 
 @array[0] = -1; # Assign a new value to an array index
 @array[0, 1] = 5, 6; # Assign multiple values
