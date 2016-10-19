@@ -766,8 +766,6 @@ $Madison.talk; # prints "Goo goo ga ga" due to the overrided method.
 # Also note that `BUILD` (the method called inside `new`)
 #  will set parent properties too, so you can pass `val => 5`.
 
-# $b.not-inherited; # This won't work, for reasons explained above
-
 
 ## Roles are supported too (also called Mixins in other languages)
 role PrintableVal {
