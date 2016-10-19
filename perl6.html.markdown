@@ -624,9 +624,10 @@ multi with-or-without-you {
 
 
 ### Scoping
-# In Perl 6, contrarily to many scripting languages (like Python, Ruby, PHP),
-#  you are to declare your variables before using them. You know `my`.
-# (there are other declarators, `our`, `state`, ..., which we'll see later).
+# In Perl 6, unlike many scripting languages, (such as Python, Ruby, PHP),
+# you must declare your variables before using them. The `my` declarator
+# you have learned uses "lexical scoping". There are a few other declarators,
+# (`our`, `state`, ..., ) which we'll see later.
 # This is called "lexical scoping", where in inner blocks,
 #  you can access variables from outer blocks.
 my $file_scoped = 'Foo';
