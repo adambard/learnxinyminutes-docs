@@ -864,10 +864,10 @@ try {
 use JSON::Tiny; # if you installed Rakudo* or Panda, you'll have this module
 say from-json('[1]').perl; #=> [1]
 
-# To declare a package you use `class Package::Name::Here;` to declare a class,
-#  or if you only want to export variables/subs, you can use `module`:
-#  If you're coming from Perl 5 please not you're not usually supposed to use
-#  the `package` keyword.
+# Declare your own packages like this:
+#  `class Package::Name::Here;` to declare a class, or if you only want to
+#  export variables/subs, you can use `module`.  If you're coming from Perl 5
+#  please note you're not usually supposed to use the `package` keyword.
 
 module Hello::World { # Bracketed form
                       # If `Hello` doesn't exist yet, it'll just be a "stub",
