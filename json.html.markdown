@@ -48,7 +48,9 @@ Supported data types:
       "comment": "These things can be nested, very useful."
     }
   },
-
+  
+  "json_array" : ["json array containing json objects"],
+  
   "silliness": [
     {
       "sources of potassium": ["bananas"]
