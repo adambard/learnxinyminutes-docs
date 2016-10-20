@@ -200,6 +200,10 @@ li = []
 # You can start with a prefilled list
 other_li = [4, 5, 6]
 
+# String split to list
+a="adambard"
+list(a) #=> ['a','d','a','m','b','a','r','d']
+
 # Add stuff to the end of a list with append
 li.append(1)    # li is now [1]
 li.append(2)    # li is now [1, 2]
@@ -544,6 +548,7 @@ map(add_10, [1, 2, 3])   # => [11, 12, 13]
 map(max, [1, 2, 3], [4, 2, 1])   # => [4, 2, 3]
 
 filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
+
 
 # We can use list comprehensions for nice maps and filters
 [add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
