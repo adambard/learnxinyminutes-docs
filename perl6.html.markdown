@@ -859,21 +859,25 @@ try {
 #  and `enum`) are actually packages. (Packages are the lowest common denominator)
 # Packages are important - especially as Perl is well-known for CPAN,
 #  the Comprehensive Perl Archive Network.
-# You're not supposed to use the package keyword, usually:
-#  you use `class Package::Name::Here;` to declare a class,
+
+# You can use a module (bring its declarations into scope) with `use`
+use JSON::Tiny; # if you installed Rakudo* or Panda, you'll have this module
+say from-json('[1]').perl; #=> [1]
+
+# To declare a package you use `class Package::Name::Here;` to declare a class,
 #  or if you only want to export variables/subs, you can use `module`:
+#  If you're coming from Perl 5 please not you're not usually supposed to use
+#  the `package` keyword.
+
 module Hello::World { # Bracketed form
                       # If `Hello` doesn't exist yet, it'll just be a "stub",
                       #  that can be redeclared as something else later.
   # ... declarations here ...
 }
 unit module Parse::Text; # file-scoped form
+
 grammar Parse::Text::Grammar { # A grammar is a package, which you could `use`
 }
-
-# You can use a module (bring its declarations into scope) with `use`
-use JSON::Tiny; # if you installed Rakudo* or Panda, you'll have this module
-say from-json('[1]').perl; #=> [1]
 
 # As said before, any part of the six model is also a package.
 # Since `JSON::Tiny` uses (its own) `JSON::Tiny::Actions` class, you can use it:
