@@ -765,8 +765,13 @@ if __name__ == '__main__':
     print(b.say('hello'))
     print(b.fly)
 
+# To take advantage of modularization by file you could place the classes above in their own files,
+# say, human.py and bat.py
 
+# to import functions from other files use the following format
 # from "filename-without-extension" import "function-or-class"
+
+# superhero.py
 from human import Human
 from bat import Bat
 
