@@ -766,7 +766,6 @@ if __name__ == '__main__':
     print(b.fly)
 
 
-# from "filename-without-extension" import "function-or-class"
 from human import Human
 from bat import Bat
 
