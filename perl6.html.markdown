@@ -37,11 +37,11 @@ my $str = 'String';
 # double quotes allow for interpolation (which we'll see later):
 my $str2 = "String";
 
-# variable names can contain but not end with simple quotes and dashes,
-#  and can contain (and end with) underscores :
+# Variable names can contain but not end with simple quotes and dashes,
+# and can contain (and end with) underscores :
 # my $weird'variable-name_ = 5; # works !
 
-my $bool = True; # `True` and `False` are Perl 6's boolean
+my $bool = True; # `True` and `False` are Perl 6's boolean values.
 my $inverse = !$bool; # You can invert a bool with the prefix `!` operator
 my $forced-bool = so $str; # And you can use the prefix `so` operator
                            # which turns its operand into a Bool
@@ -56,28 +56,32 @@ my @array = 1, 2, 3;
 
 say @array[2]; # Array indices start at 0 -- This is the third element
 
-say "Interpolate an array using [] : @array[]";
-#=> Interpolate an array using [] : 1 2 3
+say "Interpolate all elements of an array using [] : @array[]";
+#=> Interpolate all elements of an array using [] : 1 2 3
 
 @array[0] = -1; # Assign a new value to an array index
 @array[0, 1] = 5, 6; # Assign multiple values
 
 my @keys = 0, 2;
-@array[@keys] = @letters; # Assign using an array
+@array[@keys] = @letters; # Assignment using an array containing index values
 say @array; #=> a 6 b
 
 ## * Hashes, or key-value Pairs.
-# Hashes are actually arrays of Pairs
-# (you can construct a Pair object using the syntax `Key => Value`),
-#  except they get "flattened" (hash context), removing duplicated keys.
+# Hashes are pairs of keys and values.
+# You can construct a Pair object using the syntax `Key => Value`.
+# Hash tables are very fast for lookup, and are stored unordered.
+# Keep in mind that keys get "flattened" in hash context, and any duplicated
+# keys are deduplicated.
 my %hash = 1 => 2,
            3 => 4;
 my %hash = foo => "bar", # keys get auto-quoted
             "some other" => "value", # trailing commas are okay
             ;
-my %hash = <key1 value1 key2 value2>; # you can also create a hash
-                                      # from an even-numbered array
-my %hash = key1 => 'value1', key2 => 'value2'; # same as this
+# Even though hashes are internally stored differently than arrays,
+# Perl 6 allows you to easily create a hash from an even numbered array:
+my %hash = <key1 value1 key2 value2>;
+
+my %hash = key1 => 'value1', key2 => 'value2'; # same result as above
 
 # You can also use the "colon pair" syntax:
 # (especially handy for named parameters that you'll see later)
@@ -92,7 +96,8 @@ say %hash{'key1'}; # You can use {} to get the value from a key
 say %hash<key2>;   # If it's a string, you can actually use <>
                    # (`{key1}` doesn't work, as Perl6 doesn't have barewords)
 
-## * Subs (subroutines, or functions in most other languages).
+## * Subs: subroutines or functions as most other languages call them are
+#          created with the `sub` keyword.
 sub say-hello { say "Hello, world" }
 
 sub say-hello-to(Str $name) { # You can provide the type of an argument
@@ -619,66 +624,95 @@ multi with-or-without-you {
 
 
 ### Scoping
-# In Perl 6, contrarily to many scripting languages (like Python, Ruby, PHP),
-#  you are to declare your variables before using them. You know `my`.
-# (there are other declarators, `our`, `state`, ..., which we'll see later).
+# In Perl 6, unlike many scripting languages, (such as Python, Ruby, PHP),
+# you must declare your variables before using them. The `my` declarator
+# you have learned uses "lexical scoping". There are a few other declarators,
+# (`our`, `state`, ..., ) which we'll see later.
 # This is called "lexical scoping", where in inner blocks,
 #  you can access variables from outer blocks.
-my $foo = 'Foo';
-sub foo {
-  my $bar = 'Bar';
-  sub bar {
-    say "$foo $bar";
+my $file_scoped = 'Foo';
+sub outer {
+  my $outer_scoped = 'Bar';
+  sub inner {
+    say "$file_scoped $outer_scoped";
   }
-  &bar; # return the function
+  &inner; # return the function
 }
-foo()(); #=> 'Foo Bar'
+outer()(); #=> 'Foo Bar'
 
-# As you can see, `$foo` and `$bar` were captured.
+# As you can see, `$file_scoped` and `$outer_scoped` were captured.
 # But if we were to try and use `$bar` outside of `foo`,
 # the variable would be undefined (and you'd get a compile time error).
 
-# Perl 6 has another kind of scope : dynamic scope.
-# They use the twigil (composed sigil) `*` to mark dynamically-scoped variables:
-my $*a = 1;
-# Dyamically-scoped variables depend on the current call stack,
-#  instead of the current block depth.
-sub foo {
-  my $*foo = 1;
-  bar(); # call `bar` in-place
+### Twigils
+
+# There are many special `twigils` (composed sigil's) in Perl 6.
+# Twigils define the variables' scope.
+# The * and ? twigils work on standard variables:
+# * Dynamic variable
+# ? Compile-time variable
+# The ! and the . twigils are used with Perl 6's objects:
+# ! Attribute (class member)
+# . Method (not really a variable)
+
+# `*` Twigil: Dynamic Scope
+# These variables use the`*` twigil to mark dynamically-scoped variables.
+# Dynamically-scoped variables are looked up through the caller, not through
+# the outer scope
+
+my $*dyn_scoped_1 = 1;
+my $*dyn_scoped_2 = 10;
+
+sub say_dyn {
+  say "$*dyn_scoped_1 $*dyn_scoped_2";
 }
-sub bar {
-  say $*foo; # `$*foo` will be looked in the call stack, and find `foo`'s,
-             #  even though the blocks aren't nested (they're call-nested).
-             #=> 1
+
+sub call_say_dyn {
+  my $*dyn_scoped_1 = 25; # Defines $*dyn_scoped_1 only for this sub.
+  $*dyn_scoped_2 = 100; # Will change the value of the file scoped variable.
+  say_dyn(); #=> 25 100 $*dyn_scoped 1 and 2 will be looked for in the call.
+             # It uses he value of $*dyn_scoped_1 from inside this sub's lexical
+             # scope even though the blocks aren't nested (they're call-nested).
 }
+say_dyn(); #=> 1 10
+call_say_dyn(); #=> 25 100
+                # Uses $*dyn_scoped_1 as defined in call_say_dyn even though
+                # we are calling it from outside.
+say_dyn(); #=> 1 100 We changed the value of $*dyn_scoped_2 in call_say_dyn
+           #         so now its value has changed.
 
 ### Object Model
 
-# You declare a class with the keyword `class`, fields with `has`,
-# methods with `method`. Every attribute that is private is named `$!attr`.
-# Immutable public attributes are named `$.attr`
+# To call a method on an object, add a dot followed by the method name:
+# => $object.method
+# Classes are declared with the `class` keyword. Attributes are declared
+# with the `has` keyword, and methods declared with `method`.
+# Every attribute that is private uses the ! twigil for example: `$!attr`.
+# Immutable public attributes use the `.` twigil.
 #   (you can make them mutable with `is rw`)
+# The easiest way to remember the `$.` twigil is comparing it to how methods
+# are called.
 
 # Perl 6's object model ("SixModel") is very flexible,
 # and allows you to dynamically add methods, change semantics, etc ...
-# (this will not be covered here, and you should refer to the Synopsis).
+# (these will not all be covered here, and you should refer to:
+# https://docs.perl6.org/language/objects.html.
 
-class A {
-  has $.field; # `$.field` is immutable.
-               # From inside the class, use `$!field` to modify it.
-  has $.other-field is rw; # You can mark a public attribute `rw`.
-  has Int $!private-field = 10;
+class Attrib-Class {
+  has $.attrib; # `$.attrib` is immutable.
+               # From inside the class, use `$!attrib` to modify it.
+  has $.other-attrib is rw; # You can mark a public attribute `rw`.
+  has Int $!private-attrib = 10;
 
   method get-value {
-    $.field + $!private-field;
+    $.attrib + $!private-attrib;
   }
 
-  method set-value($n) {
-    # $.field = $n; # As stated before, you can't use the `$.` immutable version.
-    $!field = $n;   # This works, because `$!` is always mutable.
+  method set-value($param) { # Methods can take parameters
+    $!attrib = $param;   # This works, because `$!` is always mutable.
+	# $.attrib = $param; # Wrong: You can't use the `$.` immutable version.
 
-    $.other-field = 5; # This works, because `$.other-field` is `rw`.
+    $.other-attrib = 5; # This works, because `$.other-attrib` is `rw`.
   }
 
   method !private-method {
@@ -686,33 +720,44 @@ class A {
   }
 };
 
-# Create a new instance of A with $.field set to 5 :
-# Note: you can't set private-field from here (more later on).
-my $a = A.new(field => 5);
-$a.get-value; #=> 15
-#$a.field = 5; # This fails, because the `has $.field` is immutable
-$a.other-field = 10; # This, however, works, because the public field
-                     #  is mutable (`rw`).
+# Create a new instance of Attrib-Class with $.attrib set to 5 :
+# Note: you can't set private-attribute from here (more later on).
+my $class-obj = Attrib-Class.new(attrib => 5);
+say $class-obj.get-value; #=> 15
+#$class-obj.attrib = 5; # This fails, because the `has $.attrib` is immutable
+$class-obj.other-attrib = 10; # This, however, works, because the public
+                              # attribute is mutable (`rw`).
 
-## Perl 6 also has inheritance (along with multiple inheritance)
+## Object Inheritance
+#  Perl 6 also has inheritance (along with multiple inheritance)
+#  While `method`'s are inherited, `submethod`'s are not.
+#  Submethods are useful for object construction and destruction tasks,
+#  such as BUILD, or methods that must be overriden by subtypes.
+#  We will learn about BUILD later on.
 
-class A {
-  has $.val;
-
-  submethod not-inherited {
-    say "This method won't be available on B.";
-    say "This is most useful for BUILD, which we'll see later";
+class Parent {
+  has $.age;
+  has $.name;
+  # This submethod won't be inherited by Child.
+  submethod favorite-color {
+    say "My favorite color is Blue";
   }
-
-  method bar { $.val * 5 }
+  # This method is inherited
+  method talk { say "Hi, my name is $!name" }
 }
-class B is A { # inheritance uses `is`
-  method foo {
-    say $.val;
-  }
-
-  method bar { $.val * 10 } # this shadows A's `bar`
+# Inheritance uses the `is` keyword
+class Child is Parent {
+  method talk { say "Goo goo ga ga" }
+  # This shadows Parent's `talk` method, This child hasn't learned to speak yet!
 }
+my Parent $Richard .= new(age => 40, name => 'Richard');
+$Richard.favorite-color; #=> "My favorite color is Blue"
+$Richard.talk; #=> "Hi, my name is Richard"
+# # $Richard is able to access the submethod, he knows how to say his name.
+
+my Child $Madison .= new(age => 1, name => 'Madison');
+$Madison.talk; # prints "Goo goo ga ga" due to the overrided method.
+# $Madison.favorite-color does not work since it is not inherited
 
 # When you use `my T $var`, `$var` starts off with `T` itself in it,
 # so you can call `new` on it.
@@ -720,11 +765,7 @@ class B is A { # inheritance uses `is`
 #  `$a .= b` is the same as `$a = $a.b`)
 # Also note that `BUILD` (the method called inside `new`)
 #  will set parent properties too, so you can pass `val => 5`.
-my B $b .= new(val => 5);
 
-# $b.not-inherited; # This won't work, for reasons explained above
-$b.foo; # prints 5
-$b.bar; #=> 50, since it calls B's `bar`
 
 ## Roles are supported too (also called Mixins in other languages)
 role PrintableVal {
@@ -739,8 +780,8 @@ class Item does PrintableVal {
   has $.val;
 
   # When `does`-ed, a `role` literally "mixes in" the class:
-  #  the methods and fields are put together, which means a class can access
-  #  the private fields/methods of its roles (but not the inverse !):
+  #  the methods and attributes are put together, which means a class can access
+  #  the private attributes/methods of its roles (but not the inverse !):
   method access {
     say $!counter++;
   }
@@ -757,34 +798,48 @@ class Item does PrintableVal {
 
 ### Exceptions
 # Exceptions are built on top of classes, in the package `X` (like `X::IO`).
-# Unlike many other languages, in Perl 6, you put the `CATCH` block *within* the
-#  block to `try`. By default, a `try` has a `CATCH` block that catches
-#  any exception (`CATCH { default {} }`).
+# You can access the last exception with the special variable `$!`
+# (use `$_` in a `CATCH` block) Note: This has no relation to $!variables.
+
+# You can throw an exception using `die`:
+open 'foo' or die 'Error!'; #=> Error!
+# Or more explicitly:
+die X::AdHoc.new(payload => 'Error!');
+
+## Using `try` and `CATCH`
+# By using `try` and `CATCH` you can contain and handle exceptions without
+# disrupting the rest of the program.
+# Unlike many other languages, in Perl 6, you put the `CATCH` block *within*
+# the block to `try`. By default, a `try` has a `CATCH` block that catches
+# any exception (`CATCH { default {} }`).
+
+try { my $a = (0 %% 0);  CATCH { say "Something happened: $_" } }
+ #=> Something happened: Attempt to divide by zero using infix:<%%>
+
 # You can redefine it using `when`s (and `default`)
-#  to handle the exceptions you want:
+# to handle the exceptions you want:
 try {
   open 'foo';
-  CATCH {
-    when X::AdHoc { say "unable to open file !" }
+  CATCH {     # In the `CATCH` block, the exception is set to $_
+    when X::AdHoc { say "Error: $_" }
+     #=>Error: Failed to open file /dir/foo: no such file or directory
+
     # Any other exception will be re-raised, since we don't have a `default`
-    # Basically, if a `when` matches (or there's a `default`) marks the exception as
-    #  "handled" so that it doesn't get re-thrown from the `CATCH`.
+    # Basically, if a `when` matches (or there's a `default`) marks the
+	# exception as
+    # "handled" so that it doesn't get re-thrown from the `CATCH`.
     # You still can re-throw the exception (see below) by hand.
   }
 }
 
-# You can throw an exception using `die`:
-die X::AdHoc.new(payload => 'Error !');
-
-# You can access the last exception with `$!` (use `$_` in a `CATCH` block)
-
-# There are also some subtelties to exceptions. Some Perl 6 subs return a `Failure`,
-#  which is a kind of "unthrown exception". They're not thrown until you tried to look
-#  at their content, unless you call `.Bool`/`.defined` on them - then they're handled.
-#  (the `.handled` method is `rw`, so you can mark it as `False` back yourself)
+# There are also some subtleties to exceptions. Some Perl 6 subs return a
+# `Failure`, which is a kind of "unthrown exception". They're not thrown until
+# you tried to look at their content, unless you call `.Bool`/`.defined` on
+# them - then they're handled.
+# (the `.handled` method is `rw`, so you can mark it as `False` back yourself)
 #
-# You can throw a `Failure` using `fail`. Note that if the pragma `use fatal` is on,
-#  `fail` will throw an exception (like `die`).
+# You can throw a `Failure` using `fail`. Note that if the pragma `use fatal`
+# is on, `fail` will throw an exception (like `die`).
 fail "foo"; # We're not trying to access the value, so no problem.
 try {
   fail "foo";
@@ -804,21 +859,25 @@ try {
 #  and `enum`) are actually packages. (Packages are the lowest common denominator)
 # Packages are important - especially as Perl is well-known for CPAN,
 #  the Comprehensive Perl Archive Network.
-# You're not supposed to use the package keyword, usually:
-#  you use `class Package::Name::Here;` to declare a class,
-#  or if you only want to export variables/subs, you can use `module`:
+
+# You can use a module (bring its declarations into scope) with `use`
+use JSON::Tiny; # if you installed Rakudo* or Panda, you'll have this module
+say from-json('[1]').perl; #=> [1]
+
+# Declare your own packages like this:
+#  `class Package::Name::Here;` to declare a class, or if you only want to
+#  export variables/subs, you can use `module`.  If you're coming from Perl 5
+#  please note you're not usually supposed to use the `package` keyword.
+
 module Hello::World { # Bracketed form
                       # If `Hello` doesn't exist yet, it'll just be a "stub",
                       #  that can be redeclared as something else later.
   # ... declarations here ...
 }
 unit module Parse::Text; # file-scoped form
+
 grammar Parse::Text::Grammar { # A grammar is a package, which you could `use`
 }
-
-# You can use a module (bring its declarations into scope) with `use`
-use JSON::Tiny; # if you installed Rakudo* or Panda, you'll have this module
-say from-json('[1]').perl; #=> [1]
 
 # As said before, any part of the six model is also a package.
 # Since `JSON::Tiny` uses (its own) `JSON::Tiny::Actions` class, you can use it:
@@ -1128,10 +1187,11 @@ sub add($a, $b) { $a + $b }
 say [[&add]] 1, 2, 3; #=> 6
 
 ## * Zip meta-operator
-# This one is an infix meta-operator than also can be used as a "normal" operator.
-# It takes an optional binary function (by default, it just creates a pair),
-#  and will pop one value off of each array and call its binary function on these
-#  until it runs out of elements. It returns an array with all of these new elements.
+# This one is an infix meta-operator than also can be used as a "normal"
+# operator.  It takes an optional binary function (by default, it just creates
+# a pair), and will pop one value off of each array and call its binary function
+# on these until it runs out of elements. It returns an array with all of these
+# new elements.
 (1, 2) Z (3, 4); # ((1, 3), (2, 4)), since by default, the function makes an array
 1..3 Z+ 4..6; # (5, 7, 9), using the custom infix:<+> function
 
@@ -1205,7 +1265,8 @@ say so 'a' ~~ / a /; # More readable with some spaces!
 #  returning a `Match` object. They know how to respond to list indexing,
 #  hash indexing, and return the matched string.
 # The results of the match are available as `$/` (implicitly lexically-scoped).
-# You can also use the capture variables (`$0`, `$1`, ... starting at 0, not 1 !).
+# You can also use the capture variables which start at 0:
+#    `$0`, `$1', `$2`...
 #
 # You can also note that `~~` does not perform start/end checking
 #  (meaning the regexp can be matched with just one char of the string),
