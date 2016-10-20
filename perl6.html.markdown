@@ -798,15 +798,32 @@ class Item does PrintableVal {
 
 ### Exceptions
 # Exceptions are built on top of classes, in the package `X` (like `X::IO`).
+# You can access the last exception with the special variable `$!`
+# (use `$_` in a `CATCH` block) Note: This has no relation to $!variables.
+
+# You can throw an exception using `die`:
+open 'foo' or die 'Error!'; #=> Error!
+# Or more explicitly:
+die X::AdHoc.new(payload => 'Error!');
+
+## Using `try` and `CATCH`
+# By using `try` and `CATCH` you can contain and handle exceptions without
+# disrupting the rest of the program.
 # Unlike many other languages, in Perl 6, you put the `CATCH` block *within*
 # the block to `try`. By default, a `try` has a `CATCH` block that catches
 # any exception (`CATCH { default {} }`).
+
+try { my $a = (0 %% 0);  CATCH { say "Something happened: $_" } }
+ #=> Something happened: Attempt to divide by zero using infix:<%%>
+
 # You can redefine it using `when`s (and `default`)
 # to handle the exceptions you want:
 try {
   open 'foo';
-  CATCH {
-    when X::AdHoc { say "unable to open file !" }
+  CATCH {     # In the `CATCH` block, the exception is set to $_
+    when X::AdHoc { say "Error: $_" }
+     #=>Error: Failed to open file /dir/foo: no such file or directory
+
     # Any other exception will be re-raised, since we don't have a `default`
     # Basically, if a `when` matches (or there's a `default`) marks the
 	# exception as
@@ -815,12 +832,7 @@ try {
   }
 }
 
-# You can throw an exception using `die`:
-die X::AdHoc.new(payload => 'Error !');
-
-# You can access the last exception with `$!` (use `$_` in a `CATCH` block)
-
-# There are also some subtelties to exceptions. Some Perl 6 subs return a
+# There are also some subtleties to exceptions. Some Perl 6 subs return a
 # `Failure`, which is a kind of "unthrown exception". They're not thrown until
 # you tried to look at their content, unless you call `.Bool`/`.defined` on
 # them - then they're handled.
