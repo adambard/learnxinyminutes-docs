@@ -877,7 +877,7 @@ module Hello::World { # Bracketed form
 unit module Parse::Text; # file-scoped form
 
 grammar Parse::Text::Grammar { # A grammar is a package, which you could `use`
-}
+}                    # You will learn more about grammars in the regex section
 
 # As said before, any part of the six model is also a package.
 # Since `JSON::Tiny` uses (its own) `JSON::Tiny::Actions` class, you can use it:
@@ -892,22 +892,30 @@ my $actions = JSON::Tiny::Actions.new;
 ## * `our` (happens at `INIT` time -- see "Phasers" below)
 # It's like `my`, but it also creates a package variable.
 # (All packagish things (`class`, `role`, etc) are `our` by default)
-module Foo::Bar {
-  our $n = 1; # note: you can't put a type constraint on an `our` variable
-  our sub inc {
+module Var::Increment {
+  our $our-var = 1; # Note: you can't put a type constraint like Int on an`our`
+  my $my-var = 22;  # variable.
+  our sub Inc {
+
     our sub available { # If you try to make inner `sub`s `our`...
                         # Better know what you're doing (Don't !).
-      say "Don't do that. Seriously. You'd get burned.";
+      say "Don't do that. Seriously. You'll get burned.";
     }
+
     my sub unavailable { # `my sub` is the default
       say "Can't access me from outside, I'm my !";
     }
-    say ++$n; # increment the package variable and output its value
+    say ++$our-var; # Increment the package variable and output its value
   }
+
 }
-say $Foo::Bar::n; #=> 1
-Foo::Bar::inc; #=> 2
-Foo::Bar::inc; #=> 3
+say $Var::Increment::our-var; #=> 1 This works
+say $Var::Increment::my-var; #=> (Any) This will not work.
+
+Var::Increment::Inc; #=> 2
+Var::Increment::Inc; #=> 3 # Notice how the value of $our-var was
+                         # retained.
+Var::Increment::unavailable; #> Could not find symbol '&unavailable'
 
 ## * `constant` (happens at `BEGIN` time)
 # You can use the `constant` keyword to declare a compile-time variable/symbol:
