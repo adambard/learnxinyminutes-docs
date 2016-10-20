@@ -47,10 +47,10 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 -5 // 3      # => -2
 -5.0 // 3.0  # => -2.0
 
-# When one of the inputs are float, results are floats
+# When one of the inputs is a float, result is a float
 10.0 / 3  # => 3.3333333333333335
 
-# to force this behavior, use 
+# to force this behavior on integers, use 
 from __future__ import division
 10 / 3 # => 3.3333333333333335
 
