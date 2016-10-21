@@ -117,7 +117,7 @@ Math has many symbols, far beyond what you can find on a keyboard;
 Set and relation symbols, arrows, operators, and Greek letters to name a few.\\
 
 Sets and relations play a vital role in many mathematical research papers.
-Here's how you state all y that belong to X, $\forall$ x $\in$ X. \\
+Here's how you state all x that belong to X, $\forall$ x $\in$ X. \\
 % Notice how I needed to add $ signs before and after the symbols. This is 
 % because when writing, we are in text-mode. 
 % However, the math symbols only exist in math-mode. 
@@ -128,7 +128,7 @@ Here's how you state all y that belong to X, $\forall$ x $\in$ X. \\
 \[a^2 + b^2 = c^2 \]
 
 My favorite Greek letter is $\xi$. I also like $\beta$, $\gamma$ and $\sigma$.
-I haven't found a Greek letter that yet that \LaTeX \hspace{1pt} doesn't know 
+I haven't found a Greek letter yet that \LaTeX \hspace{1pt} doesn't know
 about! \\
 
 Operators are essential parts of a mathematical document: 
@@ -148,7 +148,7 @@ $$ ^{10}/_{7} $$
 % \frac{numerator}{denominator}
 $$ \frac{n!}{k!(n - k)!} $$ \\
 
-We can also insert equations in an "equation environment". 
+We can also insert equations in an ``equation environment''.
 
 % Display math with the equation 'environment'
 \begin{equation} % enters math-mode
@@ -223,7 +223,7 @@ and look at the glorious glory that is a \LaTeX \hspace{1pt} pdf.
 Getting to the final document using \LaTeX \hspace{1pt} consists of the following 
 steps:
   \begin{enumerate}
-    \item Write the document in plain text (the "source code").
+    \item Write the document in plain text (the ``source code'').
     \item Compile source code to produce a pdf. 
      The compilation step looks like this (in Linux): \\
      \begin{verbatim} 
@@ -233,7 +233,10 @@ steps:
 
 A number of \LaTeX \hspace{1pt}editors combine both Step 1 and Step 2 in the 
 same piece of software. So, you get to see Step 1, but not Step 2 completely.
-Step 2 is still happening behind the scenes.
+Step 2 is still happening behind the scenes\footnote{In cases, where you use
+references (like Eqn.~\ref{eq:pythagoras}), you may need to run Step 2
+multiple times, to generate an intermediary *.aux file.}.
+% Also, this is how you add footnotes to your document!
 
 You write all your formatting information in plain text in Step 1.
 The compilation part in Step 2 takes care of producing the document in the
