@@ -23,8 +23,6 @@ Nearly all examples below can be a part of a shell script or executed directly i
 
 [Read more here.](http://www.gnu.org/software/bash/manual/bashref.html)
 
-Another recommened link: [The Command Line Crash Course](http://cli.learncodethehardway.org/book/)
-
 ```bash
 #!/bin/bash
 # First line of the script is shebang which tells the system how to execute
@@ -98,10 +96,10 @@ echo "Script's arguments separated into different variables: $1 $2..."
 # Now that we know how to echo and use variables,
 # let's learn some of the other basics of bash!
 
-# Getting our current directory is available through the command `pwd`.
+# Our current directory is available through the command `pwd`.
 # `pwd` stands for "print working directory".
 # We can also use the builtin variable `$PWD`.
-# Observer that the following are equivalent:
+# Observe that the following are equivalent:
 echo "I'm in $(pwd)" # execs `pwd` and interpolates output
 echo "I'm in $PWD" # interpolates the variable
 
@@ -353,8 +351,8 @@ fgrep "foobar" file.txt
 trap "rm $TEMP_FILE; exit" SIGHUP SIGINT SIGTERM
 
 # `sudo` is used to perform commands as the superuser
-$NAME1=$(whoami)
-$NAME2=$(sudo whoami)
+NAME1=$(whoami)
+NAME2=$(sudo whoami)
 echo "Was $NAME1, then became more powerful $NAME2"
 
 # Read Bash shell builtins documentation with the bash 'help' builtin:

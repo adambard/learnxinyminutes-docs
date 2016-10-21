@@ -286,7 +286,7 @@ fn main() {
     var = 3;
     let ref_var: &i32 = &var;
 
-    println!("{}", var); // Unlike `box`, `var` can still be used
+    println!("{}", var); // Unlike `mine`, `var` can still be used
     println!("{}", *ref_var);
     // var = 5; // this would not compile because `var` is borrowed
     // *ref_var = 6; // this would not either, because `ref_var` is an immutable reference

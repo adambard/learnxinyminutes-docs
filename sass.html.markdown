@@ -95,7 +95,7 @@ Useful for checking variables while debugging your SCSS. */
 
 /* @for is a control loop that iterates through a range of values.
 Particularly useful for setting styles on a collection of items.
-There are two forms, "through" and "to." The former includes the last value,
+There are two forms, "through" and "to". The former includes the last value,
 the latter stops at the last value. */
 
 @for $c from 1 to 4 {
@@ -206,7 +206,7 @@ $social-links: facebook twitter linkedin reddit;
 }
 
 
-/*Mixins
+/* Mixins
 ==============================*/
 
 /* If you find you are writing the same code for more than one
@@ -301,7 +301,7 @@ body {
    mixins. When trying to choose between a function or a mixin, remember
    that mixins are best for generating CSS while functions are better for
    logic that might be used throughout your Sass code. The examples in
-   the Math Operators' section are ideal candidates for becoming a reusable
+   the 'Math Operators' section are ideal candidates for becoming a reusable
    function. */
 
 /* This function will take a target size and the parent size and calculate
@@ -577,9 +577,7 @@ You can use either syntax, just go into the settings and select either Sass or S
 
 
 ## Compatibility
-Sass can be used in any project as long as you have a program to compile it
-into CSS. You'll want to verify that the CSS you're using is compatible
-with your target browsers.
+Sass can be used in any project as long as you have a program to compile it into CSS. You'll want to verify that the CSS you're using is compatible with your target browsers.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) and [CanIUse](http://caniuse.com) are great resources for checking compatibility.
 

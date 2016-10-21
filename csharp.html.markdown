@@ -459,7 +459,7 @@ on a new line! ""Wow!"", the masses cried";
                 if (i > limit/2) yield break;
                 yield return i;
             }
-        }             
+        }
 
         public static void OtherInterestingFeatures()
         {
@@ -547,28 +547,22 @@ on a new line! ""Wow!"", the masses cried";
 
             // PARALLEL FRAMEWORK
             // http://blogs.msdn.com/b/csharpfaq/archive/2010/06/01/parallel-programming-in-net-framework-4-getting-started.aspx
-            var websites = new string[] {
-                "http://www.google.com", "http://www.reddit.com",
-                "http://www.shaunmccarthy.com"
-            };
-            var responses = new Dictionary<string, string>();
 
-            // Will spin up separate threads for each request, and join on them
-            // before going to the next step!
-            Parallel.ForEach(websites,
-                new ParallelOptions() {MaxDegreeOfParallelism = 3}, // max of 3 threads
-                website =>
-            {
-                // Do something that takes a long time on the file
-                using (var r = WebRequest.Create(new Uri(website)).GetResponse())
+            var words = new List<string> {"dog", "cat", "horse", "pony"};
+
+            Parallel.ForEach(words,
+                new ParallelOptions() { MaxDegreeOfParallelism = 4 },
+                word =>
                 {
-                    responses[website] = r.ContentType;
+                    Console.WriteLine(word);
                 }
-            });
+            );
 
-            // This won't happen till after all requests have been completed
-            foreach (var key in responses.Keys)
-                Console.WriteLine("{0}:{1}", key, responses[key]);
+            //Running this will produce different outputs
+            //since each thread finishes at different times.
+            //Some example outputs are:
+            //cat dog horse pony
+            //dog horse pony cat
 
             // DYNAMIC OBJECTS (great for working with other languages)
             dynamic student = new ExpandoObject();
@@ -677,6 +671,10 @@ on a new line! ""Wow!"", the masses cried";
         int _speed; // Everything is private by default: Only accessible from within this class.
                     // can also use keyword private
         public string Name { get; set; }
+        
+        // Properties also have a special syntax for when you want a readonly property
+        // that simply returns the result of an expression
+        public string LongName => Name + " " + _speed + " speed"; 
 
         // Enum is a value type that consists of a set of named constants
         // It is really just mapping a name to a value (an int, unless specified otherwise).
@@ -948,7 +946,7 @@ on a new line! ""Wow!"", the masses cried";
             A.A2();
         }
     }
-    
+
     // String interpolation by prefixing the string with $
     // and wrapping the expression you want to interpolate with { braces }
     public class Rectangle
@@ -956,7 +954,7 @@ on a new line! ""Wow!"", the masses cried";
         public int Length { get; set; }
         public int Width { get; set; }
     }
-    
+
     class Program
     {
         static void Main(string[] args)
@@ -965,7 +963,49 @@ on a new line! ""Wow!"", the masses cried";
             Console.WriteLine($"The length is {rect.Length} and the width is {rect.Width}");
         }
     }
-    
+
+    // New C# 6 features
+    class GlassBall : IJumpable, IBreakable
+    {
+        // Autoproperty initializers
+        public int Damage { get; private set; } = 0;
+
+        // Autoproperty initializers on getter-only properties
+        public string Name { get; } = "Glass ball";
+
+        // Getter-only autoproperty that is initialized in constructor
+        public string GenieName { get; }
+
+        public GlassBall(string genieName = null)
+        {
+            GenieName = genieName;
+        }
+
+        public void Jump(int meters)
+        {
+            if (meters < 0)
+                // New nameof() expression; compiler will check that the identifier exists
+                // nameof(x) == "x"
+                // Prevents e.g. parameter names changing but not updated in error messages
+                throw new ArgumentException("Cannot jump negative amount!", nameof(meters));
+
+            Damage += meters;
+        }
+
+        // Expression-bodied properties ...
+        public bool Broken
+            => Damage > 100;
+
+        // ... and methods
+        public override string ToString()
+            // Interpolated string
+            => $"{Name}. Damage taken: {Damage}";
+
+        public string SummonGenie()
+            // Null-conditional operators
+            // x?.y will return null immediately if x is null; y is not evaluated
+            => GenieName?.ToUpper();
+    }
 } // End Namespace
 ```
 
@@ -973,6 +1013,8 @@ on a new line! ""Wow!"", the masses cried";
 
  * Attributes
  * async/await, pragma directives
+ * Exception filters
+ * `using static`
  * Web Development
  	* ASP.NET MVC & WebApi (new)
  	* ASP.NET Web Forms (old)

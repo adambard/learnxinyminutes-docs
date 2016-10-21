@@ -2,6 +2,7 @@
 language: Elm
 contributors:
     - ["Max Goldstein", "http://maxgoldste.in/"]
+filename: learnelm.elm
 ---
 
 Elm is a functional reactive programming language that compiles to (client-side)

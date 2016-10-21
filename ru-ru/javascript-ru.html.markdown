@@ -359,6 +359,7 @@ myFunc(); // = undefined
 // И наоборот, функция может быть присвоена объекту и получать доступ к нему
 // через this, даже если она не была прикреплена к нему при объявлении.
 var myOtherFunc = function() {
+    return this.myString.toUpperCase();
 }
 myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "ПРИВЕТ, МИР!"

@@ -236,11 +236,9 @@ int main (int argc, char** argv)
   z = (e > f) ? e : f; // => 10 "if e > f return e, else return f."
 
   // Increment and decrement operators:
-  char *s = "ILoveC";
   int j = 0;
-  s[j++]; // => "I". Returns the j-th item of s THEN increments value of j.
-  j = 0;
-  s[++j]; // => "L". Increments value of j THEN returns j-th value of s.
+  int s = j++; // Return j THEN increase j. (s = 0, j = 1)
+  s = ++j; // Increase j THEN return j. (s = 2, j = 2)
   // same with j-- and --j
 
   // Bitwise operators!
@@ -513,6 +511,7 @@ void str_reverse(char *str_in)
     str_in[len - ii - 1] = tmp;
   }
 }
+//NOTE: string.h header file needs to be included to use strlen()
 
 /*
 char c[] = "This is a test.";

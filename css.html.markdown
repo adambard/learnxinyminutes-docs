@@ -6,8 +6,8 @@ contributors:
     - ["Geoffrey Liu", "https://github.com/g-liu"]
     - ["Connor Shea", "https://github.com/connorshea"]
     - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
+    - ["Brett Taylor", "https://github.com/glutnix"]
     - ["Tyler Mumford", "https://tylermumford.com"]
-
 filename: learncss.css
 ---
 
@@ -193,10 +193,10 @@ selector {
 
 Save a CSS stylesheet with the extension `.css`.
 
-```xml
+```html
 <!-- You need to include the css file in your page's <head>. This is the
      recommended method. Refer to http://stackoverflow.com/questions/8284365 -->
-<link rel='stylesheet' type='text/css' href='path/to/style.css' />
+<link rel='stylesheet' type='text/css' href='path/to/style.css'>
 
 <!-- You can also include some CSS inline in your markup. -->
 <style>
@@ -241,8 +241,8 @@ p { property: value !important; }
 
 and the following markup:
 
-```xml
-<p style='/*F*/ property:value;' class='class1 class2' attr='value' />
+```html
+<p style='/*F*/ property:value;' class='class1 class2' attr='value'>
 ```
 
 The precedence of style is as follows. Remember, the precedence is for each
@@ -258,6 +258,48 @@ recommended that you avoid its usage.
     This is because it appears after `B`.
 * `B` is next.
 * `D` is the last one.
+
+## Media Queries
+
+CSS Media Queries are a feature in CSS 3 which allows you to specify when certain CSS rules should be applied, such as when printed, or when on a screen with certain dimensions or pixel density. They do not add to the selector's specifity.
+
+```css
+/* A rule that will be used on all devices */
+h1 {
+  font-size: 2em;
+  color: white;
+  background-color: black;
+}
+
+/* change the h1 to use less ink on a printer */
+@media print {
+  h1 {
+    color: black;
+    background-color: white;
+  }
+}
+
+/* make the font bigger when shown on a screen at least 480px wide */
+@media screen and (min-width: 480px) {
+  h1 {
+    font-size: 3em;
+    font-weight: normal;
+  }
+}
+```
+
+Media queries can include these features:
+`width`, `height`, `device-width`, `device-height`, `orientation`, `aspect-ratio`, `device-aspect-ratio`, `color`, `color-index`, `monochrome`, `resolution`, `scan`, `grid`. Most of these features can be prefixed with `min-` or `max-`.
+
+The `resolution` feature is not supported by older devices, instead use `device-pixel-ratio`.
+
+Many smartphones and tablets will attempt to render the page as if it were on a desktop unless you provide a `viewport` meta-tag.
+
+```html
+<head>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+</head>
+```
 
 ## Compatibility
 

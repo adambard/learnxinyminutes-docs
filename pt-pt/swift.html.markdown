@@ -379,7 +379,7 @@ internal class Rect: Shape {
 
     func shrink() {
         if sideLength > 0 {
-            --sideLength
+            sideLength -= 1
         }
     }
 

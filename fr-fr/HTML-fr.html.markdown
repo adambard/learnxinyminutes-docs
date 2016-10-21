@@ -106,6 +106,8 @@ Cet article porte principalement sur la syntaxe et quelques astuces.
 	</tr>
 </table>
 
+```
+
 ## Utilisation
 
 Le HTML s'écrit dans des fichiers `.html`.

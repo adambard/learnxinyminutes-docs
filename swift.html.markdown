@@ -7,6 +7,7 @@ contributors:
   - ["Anthony Nguyen", "http://github.com/anthonyn60"]
   - ["Clayton Walker", "https://github.com/cwalk"]
   - ["Fernando Valverde", "http://visualcosita.xyz"]
+  - ["Alexey Nazaroff", "https://github.com/rogaven"]
 filename: learnswift.swift
 ---
 
@@ -94,7 +95,7 @@ var unwrappedString: String! = "Value is expected."
 // same as above, but ! is a postfix operator (more syntax candy)
 var unwrappedString2: ImplicitlyUnwrappedOptional<String> = "Value is expected."
 
-// If let structure - 
+// If let structure -
 // If let is a special structure in Swift that allows you to check if an Optional rhs holds a value, and in case it does - unwraps and assigns it to the lhs.
 if let someOptionalStringConstant = someOptionalString {
     // has `Some` value, non-nil
@@ -104,10 +105,12 @@ if let someOptionalStringConstant = someOptionalString {
 }
 
 // Swift has support for storing a value of any type.
-// AnyObject == id
-// Unlike Objective-C `id`, AnyObject works with any value (Class, Int, struct, etc.)
-var anyObjectVar: AnyObject = 7
-anyObjectVar = "Changed value to a string, not good practice, but possible."
+// For that purposes there is two keywords: `Any` and `AnyObject`
+// `AnyObject` == `id` from Objective-C
+// `Any` – also works with any scalar values (Class, Int, struct, etc.)
+var anyVar: Any = 7
+anyVar = "Changed value to a string, not good practice, but possible."
+let anyObjectVar: AnyObject = Int(1) as NSNumber
 
 /*
     Comment here
@@ -151,11 +154,11 @@ var explicitEmptyMutableDictionary: [String: Float] = [:] // same as above
 // MARK: Control Flow
 //
 
-// Condition statements support "where" clauses, which can be used
+// Condition statements support "," (comma) clauses, which can be used
 // to help provide conditions on optional values.
-// Both the assignment and the "where" clause must pass.
+// Both the assignment and the "," clause must pass.
 let someNumber = Optional<Int>(7)
-if let num = someNumber where num > 3 {
+if let num = someNumber, num > 3 {
     print("num is greater than 3")
 }
 
@@ -230,13 +233,13 @@ A greet operation
 func greet(name: String, day: String) -> String {
     return "Hello \(name), today is \(day)."
 }
-greet("Bob", day: "Tuesday")
+greet(name: "Bob", day: "Tuesday")
 
 // similar to above except for the function parameter behaviors
-func greet2(requiredName requiredName: String, externalParamName localParamName: String) -> String {
-    return "Hello \(requiredName), the day is \(localParamName)"
+func greet2(name: String, externalParamName localParamName: String) -> String {
+    return "Hello \(name), the day is \(localParamName)"
 }
-greet2(requiredName: "John", externalParamName: "Sunday")
+greet2(name: "John", externalParamName: "Sunday")
 
 // Function that returns multiple items in a tuple
 func getGasPrices() -> (Double, Double, Double) {
@@ -279,7 +282,7 @@ func setup(numbers: Int...) {
 }
 
 // Passing and returning functions
-func makeIncrementer() -> (Int -> Int) {
+func makeIncrementer() -> ((Int) -> Int) {
     func addOne(number: Int) -> Int {
         return 1 + number
     }
@@ -289,14 +292,14 @@ var increment = makeIncrementer()
 increment(7)
 
 // pass by ref
-func swapTwoInts(inout a: Int, inout b: Int) {
+func swapTwoInts(a: inout Int, b: inout Int) {
     let tempA = a
     a = b
     b = tempA
 }
 var someIntA = 7
 var someIntB = 3
-swapTwoInts(&someIntA, b: &someIntB)
+swapTwoInts(a: &someIntA, b: &someIntB)
 print(someIntB) // 7
 
 
@@ -324,7 +327,7 @@ numbers = numbers.map({ number in 3 * number })
 print(numbers) // [3, 6, 18]
 
 // Trailing closure
-numbers = numbers.sort { $0 > $1 }
+numbers = numbers.sorted { $0 > $1 }
 
 print(numbers) // [18, 6, 3]
 
@@ -351,8 +354,8 @@ print("Name is \(name)") // Name is Them
 // MARK: Error Handling
 //
 
-// The `ErrorType` protocol is used when throwing errors to catch
-enum MyError: ErrorType {
+// The `Error` protocol is used when throwing errors to catch
+enum MyError: Error {
     case BadValue(msg: String)
     case ReallyBadValue(msg: String)
 }
@@ -368,15 +371,15 @@ func fakeFetch(value: Int) throws -> String {
 
 func testTryStuff() {
     // assumes there will be no error thrown, otherwise a runtime exception is raised
-    let _ = try! fakeFetch(7)
+    let _ = try! fakeFetch(value: 7)
 
     // if an error is thrown, then it proceeds, but if the value is nil
     // it also wraps every return value in an optional, even if its already optional
-    let _ = try? fakeFetch(7)
+    let _ = try? fakeFetch(value: 7)
 
     do {
         // normal try operation that provides error handling via `catch` block
-        try fakeFetch(1)
+        try fakeFetch(value: 1)
     } catch MyError.BadValue(let msg) {
         print("Error message: \(msg)")
     } catch {
@@ -443,7 +446,7 @@ internal class Rect: Shape {
 
     func shrink() {
         if sideLength > 0 {
-            --sideLength
+            sideLength -= 1
         }
     }
 
@@ -570,10 +573,11 @@ protocol ShapeGenerator {
 }
 
 // Protocols declared with @objc allow optional functions,
-// which allow you to check for conformance
+// which allow you to check for conformance. These functions must be
+// marked with @objc also.
 @objc protocol TransformShape {
-    optional func reshape()
-    optional func canReshape() -> Bool
+    @objc optional func reshape()
+    @objc optional func canReshape() -> Bool
 }
 
 class MyShape: Rect {
@@ -585,7 +589,7 @@ class MyShape: Rect {
         // Place a question mark after an optional property, method, or
         // subscript to gracefully ignore a nil value and return nil
         // instead of throwing a runtime error ("optional chaining").
-        if let reshape = self.delegate?.canReshape?() where reshape {
+        if let reshape = self.delegate?.canReshape?(), reshape {
             // test for delegate then for method
             self.delegate?.reshape?()
         }
@@ -620,20 +624,20 @@ extension Int {
 }
 
 print(7.customProperty) // "This is 7"
-print(14.multiplyBy(3)) // 42
+print(14.multiplyBy(num: 3)) // 42
 
 // Generics: Similar to Java and C#. Use the `where` keyword to specify the
 //   requirements of the generics.
 
-func findIndex<T: Equatable>(array: [T], _ valueToFind: T) -> Int? {
-    for (index, value) in array.enumerate() {
+func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
+    for (index, value) in array.enumerated() {
         if value == valueToFind {
             return index
         }
     }
     return nil
 }
-let foundAtIndex = findIndex([1, 2, 3, 4], 3)
+let foundAtIndex = findIndex(array: [1, 2, 3, 4], valueToFind: 3)
 print(foundAtIndex == 2) // true
 
 // Operators:
@@ -641,10 +645,10 @@ print(foundAtIndex == 2) // true
 //      / = - + * % < > ! & | ^ . ~
 // or
 // Unicode math, symbol, arrow, dingbat, and line/box drawing characters.
-prefix operator !!! {}
+prefix operator !!!
 
 // A prefix operator that triples the side length when used
-prefix func !!! (inout shape: Square) -> Square {
+prefix func !!! (shape: inout Square) -> Square {
     shape.sideLength *= 3
     return shape
 }
@@ -657,8 +661,8 @@ print(mySquare.sideLength) // 4
 print(mySquare.sideLength) // 12
 
 // Operators can also be generics
-infix operator <-> {}
-func <-><T: Equatable> (inout a: T, inout b: T) {
+infix operator <->
+func <-><T: Equatable> (a: inout T, b: inout T) {
     let c = a
     a = b
     b = c

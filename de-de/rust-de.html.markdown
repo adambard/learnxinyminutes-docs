@@ -319,7 +319,7 @@ fn main() {
     var = 3;
     let ref_var: &i32 = &var;
 
-    println!("{}", var); // Anders als `box`, `var` kann hier weiter verwendet werden
+    println!("{}", var); // Anders als `mine`, `var` kann hier weiter verwendet werden
     println!("{}", *ref_var);
     // var = 5; // das kompiliert nicht, da `var` ausgeliehen ist
     // *ref_var = 6; // das kompiliert auch nicht, da `ref_var` eine unveränderliche Referenz ist

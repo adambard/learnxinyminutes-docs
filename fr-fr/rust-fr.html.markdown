@@ -176,7 +176,7 @@ fn main() {
     println!("{}", a_foo.get_bar()); // 1
 
     // Traits (connu sous le nom des interfaces ou des classes de types dans
-    // d'elses langues).
+    // d'autres langues).
 
     trait Frobnicate<T> {
         fn frobnicate(self) -> Option<T>;
@@ -264,18 +264,18 @@ fn main() {
     // Pointeur occasion - une seule chose peut "posséder" pointeur à un moment.
     // Cela signifie que lorsque le `Box` laisse son champ d'application, il
     // peut être automatiquement libérée en toute sécurité.
-    let mut mien: Box<i32> = Box::new(3);
-    *mien = 5; // déréférencer
-    // Ici, `now_its_mine` prend possession de` mine`. En d'elses termes,
-    // `mien` est déplacé.
-    let mut now_its_mine = mien;
+    let mut mine: Box<i32> = Box::new(3);
+    *mine = 5; // déréférencer
+    // Ici, `now_its_mine` prend possession de `mine`. En d'autres termes,
+    // `mine` est déplacé.
+    let mut now_its_mine = mine;
     *now_its_mine += 2;
 
     println!("{}", now_its_mine); // 7
-    // println!("{}", de la mine); // Cela ne compile pas parce
+    // println!("{}", now_its_mine); // Cela ne compile pas parce
     // que `now_its_mine` possède maintenant le pointeur
 
-    // Référence - un pointeur immutable qui fait référence à d'elses données.
+    // Référence - un pointeur immutable qui fait référence à d'autres données.
     // Quand une référence est prise à une valeur, nous disons que la valeur
     // a été "emprunté".
     // Même si une valeur est emprunté immutablement, il ne peut pas être
@@ -285,22 +285,22 @@ fn main() {
     var = 3;
     let ref_var: &i32 = &var;
 
-    println!("{}", var); // Contrairement `box`, `var` peut encore être utilisé
+    println!("{}", var); // Contrairement à `mine`, `var` peut encore être utilisé
     println!("{}", *ref_var);
     // Var = 5; // Cela ne compile pas parce que `var` est emprunté.
-    // *ref_var = 6; // Ce ne serait pas non plus, parce que `ref_var` est une
+    // *ref_var = 6; // Ce ne serait pas correct non plus, parce que `ref_var` est une
     // référence immutable.
 
     // Référence Mutable
-    // Même si une valeur est mutably emprunté, il ne peut pas être
+    // Même si une valeur est empruntée de façon mutable, elle ne peut pas être
     // accessible à tous.
     let mut var2 = 4;
     let ref_var2: &mut i32 = &mut var2;
     // '*' est utilisé pour pointer vers le var2 mutably emprunté.
     *ref_var2 += 2;
 
-    println!("{}", * ref_var2); // 6, // var2 ne serait pas compiler.
-    // ref_var2 est de type &mut i32 donc stocke il référence à i32,
+    println!("{}", * ref_var2); // 6, // var2 ne compilerait pas.
+    // ref_var2 est de type &mut i32 donc stocke la référence à i32,
     // pas la valeur.
     // var2 = 2; // Cela ne compile pas parce que `var2` est emprunté.
 }

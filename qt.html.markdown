@@ -8,9 +8,9 @@ contributors:
 lang: en
 ---
 
-**Qt** is a widely-known framework for developing cross-platform software that can be run on various software and hardware platforms with little or no change in the code, while having the power and speed of native applications. Though **Qt** was originally written in *C++*, there are its ports to other languages: *PyQt*, *QtRuby*, *PHP-Qt*, etc.
+**Qt** is a widely-known framework for developing cross-platform software that can be run on various software and hardware platforms with little or no change in the code, while having the power and speed of native applications. Though **Qt** was originally written in *C++*, there are its ports to other languages: *[PyQt](https://learnxinyminutes.com/docs/pyqt/)*, *QtRuby*, *PHP-Qt*, etc.
 
-**Qt** is beautiful for creating applications with graphical user interface (GUI). This tutorial is how to do it in *C++*.
+**Qt** is great for creating applications with graphical user interface (GUI). This tutorial is how to do it in *C++*.
 
 ```c++
 /*
@@ -83,7 +83,7 @@ Notice that *QObject::connect* part. This method is used to connect *SIGNALS* of
 
 **Slots** are *actions* that might be performed in response to received signals.
 
-[READ MORE ABOUT SLOTS AND SIGNALS](http://doc.qt.io/qt-4.8/signalsandslots.html)
+[READ MORE ABOUT SLOTS AND SIGNALS](http://doc.qt.io/qt-5/signalsandslots.html)
 
 
 Next, let's learn that we can not only use standard widgets but also extend their behaviour using inheritance. Let's create a button and count how many times it was pressed. For this purpose we define our own class *CounterLabel*.  It must be declared in separate file because of specific Qt architecture.
@@ -149,9 +149,11 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-## Furter reading
-That's it! Of course Qt framework is much much larger than the part that was covered in this tutorial, so be ready to read and practice.
+That's it! Of course, Qt framework is much much larger than the part that was covered in this tutorial, so be ready to read and practice.
 
-[READ MORE ABOUT QT](http://doc.qt.io/qt-4.8/tutorials.html)
+## Further reading
 
-Good luck and have fun
+- [Qt 4.8 tutorials](http://doc.qt.io/qt-4.8/tutorials.html)
+- [Qt 5 tutorials](http://doc.qt.io/qt-5/qtexamplesandtutorials.html)
+
+Good luck and have fun!
