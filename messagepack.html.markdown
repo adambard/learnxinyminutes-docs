@@ -1,5 +1,6 @@
 ---
-language: messagepack
+category: tool
+tool: messagepack
 filename: learnmessagepack.mpac
 contributors:
   - ["Gabriel Chuan", "https://github.com/gczh"]
