@@ -8,6 +8,7 @@ contributors:
   - ["Keith Miyake", "https://github.com/kaymmm"]
 translators:
   - ["César Suárez", "https://github.com/csuarez"]
+lang: es-es
 ---
 
 Sass es un lenguaje que extiende CSS y que añade características tales como variables, anidación, mixins y más. Sass (y otros preprocesadores tales como [Less](http://lesscess.org/)) ayudan a los desarrolladores a escribir código mantenible y DRY (Don't Repeat Yourself).
