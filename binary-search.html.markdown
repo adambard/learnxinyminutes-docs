@@ -3,6 +3,7 @@ category: Algorithms & Data Structures
 name: Binary Search
 contributors:
     - ["Abhishek Jaisingh", "http://github.com/abhishekjiitr"]
+    - ["Elton Viana", "http://github.com/eltonvs"]
 ---
 
 # Binary Search
@@ -21,7 +22,7 @@ Linear Search: O (n)               Linear Time
 Binary Search: O ( log(n) )		   Logarithmic Time
 
 ```
-```
+```python
 def search(arr, x):
  
     for i in range(len(arr)):
