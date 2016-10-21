@@ -671,6 +671,10 @@ on a new line! ""Wow!"", the masses cried";
         int _speed; // Everything is private by default: Only accessible from within this class.
                     // can also use keyword private
         public string Name { get; set; }
+        
+        // Properties also have a special syntax for when you want a readonly property
+        // that simply returns the result of an expression
+        public string LongName => Name + " " + _speed + " speed"; 
 
         // Enum is a value type that consists of a set of named constants
         // It is really just mapping a name to a value (an int, unless specified otherwise).
