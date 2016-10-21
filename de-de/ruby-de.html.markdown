@@ -13,6 +13,7 @@ contributors:
   - ["Rahil Momin", "https://github.com/iamrahil"]
 translators:
   - ["Christian Albrecht", "https://github.com/coastalchief"]
+  - ["Dennis Keller", "https://github.com/denniskeller"]
 filename: ruby-de.rb
 lang: de-de
 ---
@@ -143,7 +144,7 @@ x #=> 10
 y #=> 10
 ```
 ## Benennung
-### Konvention ist snake_case 
+### Konvention ist snake_case
 ```
 snake_case = true
 ```
@@ -153,9 +154,9 @@ path_to_project_root = '/good/name/'
 path = '/bad/name/'
 ```
 # Symbols (sind auch Objekte)
-Symbols sind unveränderliche, wiederverwendbare Konstanten, welche intern  
-als integer repräsentiert werden. Sie werden häufig anstelle von Strings  
-verwendet, um sinnvoll Werte zu übermitteln.  
+Symbols sind unveränderliche, wiederverwendbare Konstanten, welche intern
+als integer repräsentiert werden. Sie werden häufig anstelle von Strings
+verwendet, um sinnvoll Werte zu übermitteln.
 Symbols werden mit dem Doppelpunkt gekennzeichnet.
 
 ```
@@ -195,7 +196,7 @@ array[12] #=> nil
 array[-1] #=> 5
 ```
 
-## Arrays können mit Stard Index und Länge indiziert werden
+## Arrays können mit Start Index und Länge indiziert werden
 ```
 array[2, 3] #=> [3, 4, 5]
 ```
@@ -216,10 +217,8 @@ array.push(6) #=> [1, 2, 3, 4, 5, 6]
 array.include?(1) #=> true
 ```
 
-# Hashes 
+# Hashes
 Hashes sind das Hauptfeature um Key/Values zu speichern
-
-```
 
 ## Ein Hash anlegen
 ```
@@ -231,8 +230,8 @@ hash.keys #=> ['color', 'number']
 ```
 hash['color'] #=> 'green'
 hash['number'] #=> 5
-hash['nothing here'] #=> nil 
-// Asking a hash for a key that doesn't exist returns nil:
+hash['nothing here'] #=> nil
+// Fragen an einen Hash nach einem Schlüssel, der nicht existiert, ruft nil hervor:
 ```
 
 ##  Symbols können auch keys sein
@@ -247,7 +246,7 @@ new_hash.has_key?(:defcon) #=> true
 new_hash.has_value?(3) #=> true
 ```
 
-### Tip:  Arrays und Hashes sind Enumerable
+### Tipp:  Arrays und Hashes sind Enumerable
 ### Und haben gemeinsame, hilfreiche Methoden wie:
 ### each, map, count, and more
 
@@ -269,8 +268,8 @@ for counter in 1..5
 end
 ```
 ## Stattdessen: "each" Methode und einen Bloch übergeben
-Ein Block ist ein Codeteil, den man einer Methode übergeben kann  
-Ähnelt stark lambdas, anonymen Funktionen oder Closures in anderen  
+Ein Block ist ein Codeteil, den man einer Methode übergeben kann
+Ähnelt stark lambdas, anonymen Funktionen oder Closures in anderen
 Programmiersprachen.
 
 ```
@@ -339,7 +338,7 @@ end
 => "OK job"
 ```
 
-# exception handling:
+# Exception handling:
 ```
 begin
   # code here that might raise an exception
@@ -360,13 +359,13 @@ def double(x)
   x * 2
 end
 ```
-## Funktionen (und Blocks) 
+## Funktionen (und Blocks)
 ## geben implizit den Wert des letzten Statements zurück
 ```
 double(2) #=> 4
 ```
 
-### Klammern sind optional wenn das Ergebnis nicht mehdeutig ist
+### Klammern sind optional wenn das Ergebnis nicht mehrdeutig ist
 ```
 double 3 #=> 6
 double double 3 #=> 12
@@ -604,7 +603,7 @@ Something.new.qux # => 'qux'
 
 ## Weiterführende Hinweise
 
-//EN  
+//EN
 
 - [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - A variant of this reference with in-browser challenges.
 - [Official Documentation](http://www.ruby-doc.org/core-2.1.1/)
