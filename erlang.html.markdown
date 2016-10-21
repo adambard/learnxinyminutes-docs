@@ -302,6 +302,12 @@ CalculateArea ! {circle, 2}. % 12.56000000000000049738
 % The shell is also a process; you can use `self` to get the current pid.
 self(). % <0.41.0>
 
+% You may register a PID with an alias to allow any process to easily send
+% messages to it. For example we could do the following.
+register(calc, CalculateArea).
+calc ! {circle, 3}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 5. Testing with EUnit
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
