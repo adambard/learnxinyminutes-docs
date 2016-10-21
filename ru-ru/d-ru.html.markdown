@@ -1,5 +1,5 @@
 ---
-language: d
+language: D
 filename: learnd-ru.d
 contributors:
     - ["Anton Pastukhov", "http://dprogramming.ru/"]
@@ -7,11 +7,12 @@ contributors:
     - ["Andre Polykanine", "http://oire.me/"]
 lang: ru-ru
 ---
+
 D - современный компилируемый язык общего назначения с Си-подобным синтаксисом,
 который сочетает удобство, продуманный дизайн и высокую производительность.
 D - это С++, сделанный правильно.
 
-```d
+```c
 // Welcome to D! Это однострочный комментарий
 
 /* многострочный

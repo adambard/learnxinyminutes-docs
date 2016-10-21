@@ -268,7 +268,7 @@ fn main() {
     var = 3;
     let ref_var: &i32 = &var;
 
-    println!("{}", var); //不像 `box`, `var` 还可以继续使用
+    println!("{}", var); //不像 `mine`, `var` 还可以继续使用
     println!("{}", *ref_var);
     // var = 5; // 编译报错，因为 `var` 被借用了
     // *ref_var = 6; // 编译报错，因为 `ref_var` 是不可变引用

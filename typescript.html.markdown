@@ -9,7 +9,7 @@ TypeScript is a language that aims at easing development of large scale applicat
 TypeScript adds common concepts such as classes, modules, interfaces, generics and (optional) static typing to JavaScript.
 It is a superset of JavaScript: all JavaScript code is valid TypeScript code so it can be added seamlessly to any project. The TypeScript compiler emits JavaScript.
 
-This article will focus only on TypeScript extra syntax, as opposed to [JavaScript] (../javascript/).
+This article will focus only on TypeScript extra syntax, as opposed to [JavaScript](javascript.html.markdown).
 
 To test TypeScript's compiler, head to the [Playground] (http://www.typescriptlang.org/Playground) where you will be able to type code, have auto completion and directly see the emitted JavaScript.
 
@@ -171,7 +171,7 @@ of a multiline string`;
 
 ## Further Reading
  * [TypeScript Official website] (http://www.typescriptlang.org/)
- * [TypeScript language specifications (pdf)] (http://go.microsoft.com/fwlink/?LinkId=267238)
+ * [TypeScript language specifications] (https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md)
  * [Anders Hejlsberg - Introducing TypeScript on Channel 9] (http://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript)
  * [Source Code on GitHub] (https://github.com/Microsoft/TypeScript)
  * [Definitely Typed - repository for type definitions] (http://definitelytyped.org/)

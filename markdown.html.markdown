@@ -7,7 +7,9 @@ filename: markdown.md
 ---
 
 
-Markdown was created by John Gruber in 2004. It's meant to be an easy to read and write syntax which converts easily to HTML (and now many other formats as well).
+Markdown was created by John Gruber in 2004. It's meant to be an easy to read 
+and write syntax which converts easily to HTML (and now many other formats as 
+well).
 
 Markdown also varies in implementation from one parser to a next. This
 guide will attempt to clarify when features are universal or when they are
@@ -28,9 +30,10 @@ specific to a certain parser.
 Markdown is a superset of HTML, so any HTML file is valid Markdown.
 
 ```markdown
-<!--This means we can use HTML elements in Markdown, such as the comment element,
-and they won't be affected by a markdown parser. However, if you create an HTML element
-in your markdown file, you cannot use markdown syntax within that element's contents.-->
+<!--This means we can use HTML elements in Markdown, such as the comment 
+element, and they won't be affected by a markdown parser. However, if you 
+create an HTML element in your markdown file, you cannot use markdown syntax 
+within that element's contents.-->
 ```
 
 ## Headings
@@ -72,8 +75,8 @@ __And so is this text.__
 *__And this!__*
 ```
 
-In Github Flavored Markdown, which is used to render markdown files on
-Github, we also have strikethrough:
+In GitHub Flavored Markdown, which is used to render markdown files on
+GitHub, we also have strikethrough:
 
 ```markdown
 ~~This text is rendered with strikethrough.~~
@@ -93,7 +96,7 @@ I'm still in paragraph 2 too!
 I'm in paragraph three!
 ```
 
-Should you ever want to insert an HTML <br /> tag, you can end a paragraph
+Should you ever want to insert an HTML `<br />` tag, you can end a paragraph
 with two or more spaces and then begin a new paragraph.
 
 ```markdown
@@ -144,7 +147,7 @@ Ordered lists are done with a number followed by a period.
 3. Item three
 ```
 
-You don't even have to label the items correctly and markdown will still
+You don't even have to label the items correctly and Markdown will still
 render the numbers in order, but this may not be a good idea.
 
 ```markdown
@@ -200,7 +203,7 @@ Inline code can be created using the backtick character `
 John didn't even know what the `go_to()` function did!
 ```
 
-In Github Flavored Markdown, you can use a special syntax for code
+In GitHub Flavored Markdown, you can use a special syntax for code
 
 <pre>
 <code class="highlight">&#x60;&#x60;&#x60;ruby
@@ -209,13 +212,13 @@ def foobar
 end
 &#x60;&#x60;&#x60;</code></pre>
 
-The above text doesn't require indenting, plus Github will use syntax
+The above text doesn't require indenting, plus GitHub will use syntax
 highlighting of the language you specify after the \`\`\`
 
 ## Horizontal rule
 
-Horizontal rules (`<hr/>`) are easily added with three or more asterisks or hyphens,
-with or without spaces.
+Horizontal rules (`<hr/>`) are easily added with three or more asterisks or 
+hyphens, with or without spaces.
 
 ```markdown
 ***
@@ -298,7 +301,8 @@ in italics, so I do this: \*this text surrounded by asterisks\*.
 
 ### Keyboard keys
 
-In Github Flavored Markdown, you can use a `<kbd>` tag to represent keyboard keys.
+In GitHub Flavored Markdown, you can use a `<kbd>` tag to represent keyboard 
+keys.
 
 ```markdown
 Your computer crashed? Try sending a
@@ -306,7 +310,7 @@ Your computer crashed? Try sending a
 ```
 ### Tables
 
-Tables are only available in Github Flavored Markdown and are slightly
+Tables are only available in GitHub Flavored Markdown and are slightly
 cumbersome, but if you really want it:
 
 ```markdown

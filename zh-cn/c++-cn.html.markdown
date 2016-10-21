@@ -188,7 +188,7 @@ int main()
    cout << "Your favorite number is " << myInt << "\n";
    // 显示“Your favorite number is <myInt>”
 
-    cerr << "Used for error messages";
+   cerr << "Used for error messages";
 }
 
 /////////
@@ -322,7 +322,7 @@ int main() {
     Dog myDog; // 此时显示“A dog has been constructed”
     myDog.setName("Barkley");
     myDog.setWeight(10);
-    myDog.printDog(); // 显示“Dog is Barkley and weighs 10 kg”
+    myDog.print(); // 显示“Dog is Barkley and weighs 10 kg”
     return 0;
 } // 显示“Goodbye Barkley”
 

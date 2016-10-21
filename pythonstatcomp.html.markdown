@@ -1,8 +1,8 @@
 ---
-language: Statistical computing with Python
+category: tool
+tool: Statistical Computing with Python
 contributors:
     - ["e99n09", "https://github.com/e99n09"]
-filename: pythonstatcomp.py
 ---
 
 This is a tutorial on how to do some typical statistical programming tasks using Python. It's intended for people basically familiar with Python and experienced at statistical programming in a language like R, Stata, SAS, SPSS, or MATLAB.
@@ -150,9 +150,8 @@ ggplot(aes(x="age",y="weight"), data=pets) + geom_point() + labs(title="pets")
 url = "https://raw.githubusercontent.com/e99n09/R-notes/master/data/hre.csv"
 r = requests.get(url)
 fp = "hre.csv"
-f = open(fp, "wb")
-f.write(r.text.encode("UTF-8"))
-f.close()
+with open(fp, "wb") as f:
+    f.write(r.text.encode("UTF-8"))
 
 hre = pd.read_csv(fp)
 

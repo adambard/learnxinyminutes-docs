@@ -38,7 +38,7 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 8 - 1   # => 7
 10 * 2  # => 20
 
-# Except division which returns floats, real numbers, by default
+# Except division which defaults to rounding down
 35 / 5  # => 7.0
 
 # Result of integer division truncated down both for positive and negative.
@@ -47,8 +47,12 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 -5 // 3      # => -2
 -5.0 // 3.0  # => -2.0
 
-# When you use a float, results are floats
-3 * 2.0  # => 6.0
+# When one of the inputs is a float, result is a float
+10.0 / 3  # => 3.3333333333333335
+
+# to force this behavior on integers, use 
+from __future__ import division
+10 / 3 # => 3.3333333333333335
 
 # Modulo operation
 7 % 3  # => 1
@@ -119,6 +123,9 @@ b == a            # => True, a's and b's objects are equal
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
 
+# You can find the length of a string
+len("This is a string")  # => 16
+
 # .format can be used to format strings, like this:
 "{} can be {}".format("Strings", "interpolated")  # => "Strings can be interpolated"
 
@@ -173,6 +180,10 @@ some_var  # => 5
 # Accessing a previously unassigned variable is an exception.
 # See Control Flow to learn more about exception handling.
 some_unknown_var  # Raises a NameError
+
+# if can be used as an expression
+# Equivalent of C's '?:' ternary operator
+"yahoo!" if 3 > 2 else 2  # => "yahoo!"
 
 # Lists store sequences
 li = []
@@ -583,22 +594,62 @@ add_10(3)   # => 13
 (lambda x: x > 2)(3)                  # => True
 (lambda x, y: x ** 2 + y ** 2)(2, 1)  # => 5
 
-# TODO - Fix for iterables
 # There are built-in higher order functions
-map(add_10, [1, 2, 3])          # => [11, 12, 13]
-map(max, [1, 2, 3], [4, 2, 1])  # => [4, 2, 3]
+list(map(add_10, [1, 2, 3]))          # => [11, 12, 13]
+list(map(max, [1, 2, 3], [4, 2, 1]))  # => [4, 2, 3]
 
-filter(lambda x: x > 5, [3, 4, 5, 6, 7])  # => [6, 7]
+list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  # => [6, 7]
 
 # We can use list comprehensions for nice maps and filters
 # List comprehension stores the output as a list which can itself be a nested list
 [add_10(i) for i in [1, 2, 3]]         # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]  # => [6, 7]
 
+# You can construct set and dict comprehensions as well.
+{x for x in 'abcddeef' if x not in 'abc'}  # => {'d', 'e', 'f'}
+{x: x**2 for x in range(5)}  # => {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+
+
 ####################################################
-## 5. Classes
+## 5. Modules
 ####################################################
 
+# You can import modules
+import math
+print(math.sqrt(16))  # => 4.0
+
+# You can get specific functions from a module
+from math import ceil, floor
+print(ceil(3.7))   # => 4.0
+print(floor(3.7))  # => 3.0
+
+# You can import all functions from a module.
+# Warning: this is not recommended
+from math import *
+
+# You can shorten module names
+import math as m
+math.sqrt(16) == m.sqrt(16)  # => True
+
+# Python modules are just ordinary python files. You
+# can write your own, and import them. The name of the
+# module is the same as the name of the file.
+
+# You can find out which functions and attributes
+# defines a module.
+import math
+dir(math)
+
+# If you have a Python script named math.py in the same
+# folder as your current script, the file math.py will
+# be loaded instead of the built-in Python module.
+# This happens because the local folder has priority
+# over Python's built-in libraries.
+
+
+####################################################
+## 6. Classes
+####################################################
 
 # We use the "class" operator to get a class
 class Human:
@@ -621,7 +672,11 @@ class Human:
 
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
-        return "{name}: {message}".format(name=self.name, message=msg)
+        print ("{name}: {message}".format(name=self.name, message=msg))
+
+    # Another instance method
+    def sing(self):
+        return 'yo... yo... microphone check... one two... one two...'
 
     # A class method is shared among all instances
     # They are called with the calling class as the first argument
@@ -652,94 +707,166 @@ class Human:
         del self._age
 
 
-# Instantiate a class
-i = Human(name="Ian")
-print(i.say("hi"))     # prints out "Ian: hi"
+# When a Python interpreter reads a source file it executes all its code.
+# This __name__ check makes sure this code block is only executed when this
+# module is the main program.
+if __name__ == '__main__':
+    # Instantiate a class
+    i = Human(name="Ian")
+    i.say("hi")                     # "Ian: hi"
+    j = Human("Joel")
+    j.say("hello")                  # "Joel: hello"
+    # i and j are instances of type Human, or in other words: they are Human objects
 
-j = Human("Joel")
-print(j.say("hello"))  # prints out "Joel: hello"
+    # Call our class method
+    i.say(i.get_species())          # "Ian: H. sapiens"
+    # Change the shared attribute
+    Human.species = "H. neanderthalensis"
+    i.say(i.get_species())          # => "Ian: H. neanderthalensis"
+    j.say(j.get_species())          # => "Joel: H. neanderthalensis"
 
-# Call our class method
-i.get_species()  # => "H. sapiens"
+    # Call the static method
+    print(Human.grunt())            # => "*grunt*"
+    print(i.grunt())                # => "*grunt*"
 
-# Change the shared attribute
-Human.species = "H. neanderthalensis"
-i.get_species()  # => "H. neanderthalensis"
-j.get_species()  # => "H. neanderthalensis"
-
-# Call the static method
-Human.grunt()    # => "*grunt*"
-
-# Update the property
-i.age = 42
-
-# Get the property
-i.age # => 42
-
-# Delete the property
-del i.age
-i.age  # => raises an AttributeError
-
+    # Update the property for this instance
+    i.age = 42
+    # Get the property
+    i.say(i.age)                    # => 42
+    j.say(j.age)                    # => 0
+    # Delete the property
+    del i.age
+    # i.age                         # => this would raise an AttributeError
 
 
 ####################################################
-## 6. Modules
+## 6.1 Multiple Inheritance
 ####################################################
 
-# You can import modules
-import math
-print(math.sqrt(16))  # => 4.0
+# Another class definition
+class Bat:
 
-# You can get specific functions from a module
-from math import ceil, floor
-print(ceil(3.7))   # => 4.0
-print(floor(3.7))  # => 3.0
+    species = 'Baty'
 
-# You can import all functions from a module.
-# Warning: this is not recommended
-from math import *
+    def __init__(self, can_fly=True):
+        self.fly = can_fly
 
-# You can shorten module names
-import math as m
-math.sqrt(16) == m.sqrt(16)  # => True
+    # This class also has a say method
+    def say(self, msg):
+        msg = '... ... ...'
+        return msg
 
-# Python modules are just ordinary python files. You
-# can write your own, and import them. The name of the
-# module is the same as the name of the file.
+    # And its own method as well
+    def sonar(self):
+        return '))) ... ((('
 
-# You can find out which functions and attributes
-# defines a module.
-import math
-dir(math)
+if __name__ == '__main__':
+    b = Bat()
+    print(b.say('hello'))
+    print(b.fly)
+
+# To take advantage of modularization by file you could place the classes above in their own files,
+# say, human.py and bat.py
+
+# to import functions from other files use the following format
+# from "filename-without-extension" import "function-or-class"
+
+# superhero.py
+from human import Human
+from bat import Bat
+
+# Batman inherits from both Human and Bat
+class Batman(Human, Bat):
+
+    # Batman has its own value for the species class attribute
+    species = 'Superhero'
+
+    def __init__(self, *args, **kwargs):
+        # Typically to inherit attributes you have to call super:
+        #super(Batman, self).__init__(*args, **kwargs)      
+        # However we are dealing with multiple inheritance here, and super()
+        # only works with the next base class in the MRO list.
+        # So instead we explicitly call __init__ for all ancestors.
+        # The use of *args and **kwargs allows for a clean way to pass arguments,
+        # with each parent "peeling a layer of the onion".
+        Human.__init__(self, 'anonymous', *args, **kwargs)
+        Bat.__init__(self, *args, can_fly=False, **kwargs)
+        # override the value for the name attribute
+        self.name = 'Sad Affleck'
+
+    def sing(self):
+        return 'nan nan nan nan nan batman!'
+
+
+if __name__ == '__main__':
+    sup = Batman()
+
+    # Instance type checks
+    if isinstance(sup, Human):
+        print('I am human')
+    if isinstance(sup, Bat):
+        print('I am bat')
+    if type(sup) is Batman:
+        print('I am Batman')
+
+    # Get the Method Resolution search Order used by both getattr() and super().
+    # This attribute is dynamic and can be updated
+    print(Batman.__mro__)       # => (<class '__main__.Batman'>, <class 'human.Human'>, <class 'bat.Bat'>, <class 'object'>)
+
+    # Calls parent method but uses its own class attribute
+    print(sup.get_species())    # => Superhero
+
+    # Calls overloaded method
+    print(sup.sing())           # => nan nan nan nan nan batman!
+
+    # Calls method from Human, because inheritance order matters
+    sup.say('I agree')          # => Sad Affleck: I agree
+
+    # Call method that exists only in 2nd ancestor
+    print(sup.sonar())          # => ))) ... (((
+
+    # Inherited class attribute
+    sup.age = 100
+    print(sup.age)
+
+    # Inherited attribute from 2nd ancestor whose default value was overridden.
+    print('Can I fly? ' + str(sup.fly))
+
 
 
 ####################################################
 ## 7. Advanced
 ####################################################
 
-# Generators help you make lazy code
+# Generators help you make lazy code.
 def double_numbers(iterable):
     for i in iterable:
         yield i + i
 
-# A generator creates values on the fly.
-# Instead of generating and returning all values at once it creates one in each
-# iteration.  This means values bigger than 15 wont be processed in
-# double_numbers.
-# We use a trailing underscore in variable names when we want to use a name that
-# would normally collide with a python keyword
-range_ = range(1, 900000000)
-# will double all numbers until a result >=30 found
-for i in double_numbers(range_):
+# Generators are memory-efficient because they only load the data needed to
+# process the next value in the iterable. This allows them to perform
+# operations on otherwise prohibitively large value ranges.
+# NOTE: `range` replaces `xrange` in Python 3.
+for i in double_numbers(range(1, 900000000)):  # `range` is a generator.
     print(i)
     if i >= 30:
         break
 
+# Just as you can create a list comprehension, you can create generator
+# comprehensions as well.
+values = (-x for x in [1,2,3,4,5])
+for x in values:
+    print(x)  # prints -1 -2 -3 -4 -5 to console/terminal
+
+# You can also cast a generator comprehension directly to a list.
+values = (-x for x in [1,2,3,4,5])
+gen_to_list = list(values)
+print(gen_to_list)  # => [-1, -2, -3, -4, -5]
+
 
 # Decorators
-# in this example beg wraps say
-# Beg will call say. If say_please is True then it will change the returned
-# message
+# In this example `beg` wraps `say`. If say_please is True then it
+# will change the returned message.
 from functools import wraps
 
 
@@ -769,20 +896,14 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 ### Free Online
 
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
-* [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
-* [Dive Into Python](http://www.diveintopython.net/)
 * [Ideas for Python Projects](http://pythonpracticeprojects.com)
 * [The Official Docs](http://docs.python.org/3/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
-* [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 * [Python Course](http://www.python-course.eu/index.php)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 * [A curated list of awesome Python frameworks, libraries and software](https://github.com/vinta/awesome-python)
 * [30 Python Language Features and Tricks You May Not Know About](http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
 * [Official Style Guide for Python](https://www.python.org/dev/peps/pep-0008/)
-
-### Dead Tree
-
-* [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
-* [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
-* [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
+* [Python 3 Computer Science Circles](http://cscircles.cemc.uwaterloo.ca/)
+* [Dive Into Python 3](http://www.diveintopython3.net/index.html)
+* [A Crash Course in Python for Scientists](http://nbviewer.jupyter.org/gist/anonymous/5924718)

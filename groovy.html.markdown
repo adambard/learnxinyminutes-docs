@@ -99,7 +99,7 @@ technologies.sort()
 // To sort without mutating original, you can do:
 sortedTechnologies = technologies.sort( false )
 
-/*** Manipulating Lists ***/e
+/*** Manipulating Lists ***/
 
 //Replace all elements in the list
 Collections.replaceAll(technologies, 'Gradle', 'gradle')
@@ -280,7 +280,7 @@ def clos = { print it }
 clos( "hi" )
 
 /*
-  Groovy can memorize closure results [1][2][3]
+  Groovy can memoize closure results [1][2][3]
 */
 def cl = {a, b ->
     sleep(3000) // simulate some time consuming processing

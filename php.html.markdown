@@ -88,6 +88,8 @@ $escaped   = "This contains a \t tab character.";
 $unescaped = 'This just contains a slash and a t: \t';
 
 // Enclose a variable in curly braces if needed
+$apples = "I have {$number} apples to eat.";
+$oranges = "I have ${number} oranges to eat.";
 $money = "I have $${number} in the bank.";
 
 // Since PHP 5.3, nowdocs can be used for uninterpolated multi-liners
@@ -141,6 +143,9 @@ $associative = array('One' => 1, 'Two' => 2, 'Three' => 3);
 $associative = ['One' => 1, 'Two' => 2, 'Three' => 3];
 
 echo $associative['One']; // prints 1
+
+// Add an element to an associative array
+$associative['Four'] = 4;
 
 // List literals implicitly assign integer keys
 $array = ['One', 'Two', 'Three'];
@@ -536,9 +541,22 @@ class MyClass
         print 'MyClass';
     }
 
-    //final keyword would make a function unoverridable
+    // final keyword would make a function unoverridable
     final function youCannotOverrideMe()
     {
+    }
+    
+    // Magic Methods
+    
+    // what to do if Object is treated as a String
+    public function __toString() {
+        return $property;
+    }
+    
+    // opposite to __construct()
+    // called when object is no longer referenced
+    public function __destruct() {
+        print "Destroying";
     }
 
 /*

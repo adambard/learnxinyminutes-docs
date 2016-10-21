@@ -1,7 +1,7 @@
 ---
 language: ruby
 lang: hu-hu
-filenev: learnruby.rb
+filename: learnruby-hu.rb
 contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]
   - ["Joel Walden", "http://joelwalden.net"]
@@ -13,7 +13,7 @@ contributors:
   - ["Dzianis Dashkevich", "https://github.com/dskecse"]
   - ["Levi Bostian", "https://github.com/levibostian"]
   - ["Rahil Momin", "https://github.com/iamrahil"]
-  translators:
+translators:
   - ["Zsolt Prontvai", "https://github.com/prozsolt"]
 ---
 

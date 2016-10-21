@@ -8,6 +8,7 @@ contributors:
     - ["Wouter Van Schandevijl", "http://github.com/laoujin"]
     - ["Jo Pearce", "http://github.com/jdpearce"]
     - ["Chris Zimmerman", "https://github.com/chriszimmerman"]
+    - ["Shawn McGuire", "https://github.com/bigbash"]
 filename: LearnCSharp.cs
 ---
 
@@ -24,10 +25,12 @@ Multi-line comments look like this
 /// This is an XML documentation comment which can be used to generate external
 /// documentation or provide context help within an IDE
 /// </summary>
-//public void MethodOrClassOrOtherWithParsableHelp() {}
+/// <param name="firstParam">This is some parameter documentation for firstParam</param>
+/// <returns>Information on the returned value of a function</returns>
+//public void MethodOrClassOrOtherWithParsableHelp(string firstParam) {}
 
 // Specify the namespaces this source code will be using
-// The namespaces below are all part of the standard .NET Framework Class Libary
+// The namespaces below are all part of the standard .NET Framework Class Library
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -210,10 +213,10 @@ on a new line! ""Wow!"", the masses cried";
             // Incrementations
             int i = 0;
             Console.WriteLine("\n->Inc/Dec-rementation");
-            Console.WriteLine(i++); //i = 1. Post-Incrementation
-            Console.WriteLine(++i); //i = 2. Pre-Incrementation
-            Console.WriteLine(i--); //i = 1. Post-Decrementation
-            Console.WriteLine(--i); //i = 0. Pre-Decrementation
+            Console.WriteLine(i++); //Prints "0", i = 1. Post-Incrementation
+            Console.WriteLine(++i); //Prints "2", i = 2. Pre-Incrementation
+            Console.WriteLine(i--); //Prints "2", i = 1. Post-Decrementation
+            Console.WriteLine(--i); //Prints "0", i = 0. Pre-Decrementation
 
             ///////////////////////////////////////
             // Control Structures
@@ -421,7 +424,7 @@ on a new line! ""Wow!"", the masses cried";
                 // Item is an int
                 Console.WriteLine(item.ToString());
         }
-        
+
         // YIELD
         // Usage of the "yield" keyword indicates that the method it appears in is an Iterator
         // (this means you can use it in a foreach loop)
@@ -437,7 +440,7 @@ on a new line! ""Wow!"", the masses cried";
             foreach (var counter in YieldCounter())
                 Console.WriteLine(counter);
         }
-        
+
         // you can use more than one "yield return" in a method
         public static IEnumerable<int> ManyYieldCounter()
         {
@@ -446,7 +449,7 @@ on a new line! ""Wow!"", the masses cried";
             yield return 2;
             yield return 3;
         }
-        
+
         // you can also use "yield break" to stop the Iterator
         // this method would only return half of the values from 0 to limit.
         public static IEnumerable<int> YieldCounterWithBreak(int limit = 10)
@@ -456,7 +459,7 @@ on a new line! ""Wow!"", the masses cried";
                 if (i > limit/2) yield break;
                 yield return i;
             }
-        }             
+        }
 
         public static void OtherInterestingFeatures()
         {
@@ -482,7 +485,7 @@ on a new line! ""Wow!"", the masses cried";
             // ?? is syntactic sugar for specifying default value (coalesce)
             // in case variable is null
             int notNullable = nullable ?? 0; // 0
-            
+
             // ?. is an operator for null-propagation - a shorthand way of checking for null
             nullable?.Print(); // Use the Print() extension method if nullable isn't null
 
@@ -544,28 +547,22 @@ on a new line! ""Wow!"", the masses cried";
 
             // PARALLEL FRAMEWORK
             // http://blogs.msdn.com/b/csharpfaq/archive/2010/06/01/parallel-programming-in-net-framework-4-getting-started.aspx
-            var websites = new string[] {
-                "http://www.google.com", "http://www.reddit.com",
-                "http://www.shaunmccarthy.com"
-            };
-            var responses = new Dictionary<string, string>();
 
-            // Will spin up separate threads for each request, and join on them
-            // before going to the next step!
-            Parallel.ForEach(websites,
-                new ParallelOptions() {MaxDegreeOfParallelism = 3}, // max of 3 threads
-                website =>
-            {
-                // Do something that takes a long time on the file
-                using (var r = WebRequest.Create(new Uri(website)).GetResponse())
+            var words = new List<string> {"dog", "cat", "horse", "pony"};
+
+            Parallel.ForEach(words,
+                new ParallelOptions() { MaxDegreeOfParallelism = 4 },
+                word =>
                 {
-                    responses[website] = r.ContentType;
+                    Console.WriteLine(word);
                 }
-            });
+            );
 
-            // This won't happen till after all requests have been completed
-            foreach (var key in responses.Keys)
-                Console.WriteLine("{0}:{1}", key, responses[key]);
+            //Running this will produce different outputs
+            //since each thread finishes at different times.
+            //Some example outputs are:
+            //cat dog horse pony
+            //dog horse pony cat
 
             // DYNAMIC OBJECTS (great for working with other languages)
             dynamic student = new ExpandoObject();
@@ -692,7 +689,10 @@ on a new line! ""Wow!"", the masses cried";
         public BikeBrand Brand; // After declaring an enum type, we can declare the field of this type
 
         // Decorate an enum with the FlagsAttribute to indicate that multiple values can be switched on
-        [Flags] // Any class derived from Attribute can be used to decorate types, methods, parameters etc
+        // Any class derived from Attribute can be used to decorate types, methods, parameters etc
+        // Bitwise operators & and | can be used to perform and/or operations
+
+        [Flags]
         public enum BikeAccessories
         {
             None = 0,
@@ -820,7 +820,7 @@ on a new line! ""Wow!"", the masses cried";
         }
 
         // Methods can also be static. It can be useful for helper methods
-        public static bool DidWeCreateEnoughBycles()
+        public static bool DidWeCreateEnoughBicycles()
         {
             // Within a static method, we only can reference static class members
             return BicyclesCreated > 9000;
@@ -879,8 +879,8 @@ on a new line! ""Wow!"", the masses cried";
         bool Broken { get; } // interfaces can contain properties as well as methods & events
     }
 
-    // Class can inherit only one other class, but can implement any amount of interfaces, however
-    // the base class name must be the first in the list and all interfaces follow
+    // Classes can inherit only one other class, but can implement any amount of interfaces,
+    // however the base class name must be the first in the list and all interfaces follow
     class MountainBike : Bicycle, IJumpable, IBreakable
     {
         int damage = 0;
@@ -913,17 +913,17 @@ on a new line! ""Wow!"", the masses cried";
 
         public DbSet<Bicycle> Bikes { get; set; }
     }
-    
+
     // Classes can be split across multiple .cs files
     // A1.cs
-    public partial class A 
+    public partial class A
     {
         public static void A1()
         {
             Console.WriteLine("Method A1 in class A");
         }
     }
-    
+
     // A2.cs
     public partial class A
     {
@@ -932,15 +932,75 @@ on a new line! ""Wow!"", the masses cried";
             Console.WriteLine("Method A2 in class A");
         }
     }
-    
+
     // Program using the partial class "A"
-    public class Program 
+    public class Program
     {
         static void Main()
         {
             A.A1();
             A.A2();
         }
+    }
+
+    // String interpolation by prefixing the string with $
+    // and wrapping the expression you want to interpolate with { braces }
+    public class Rectangle
+    {
+        public int Length { get; set; }
+        public int Width { get; set; }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Rectangle rect = new Rectangle { Length = 5, Width = 3 };
+            Console.WriteLine($"The length is {rect.Length} and the width is {rect.Width}");
+        }
+    }
+
+    // New C# 6 features
+    class GlassBall : IJumpable, IBreakable
+    {
+        // Autoproperty initializers
+        public int Damage { get; private set; } = 0;
+
+        // Autoproperty initializers on getter-only properties
+        public string Name { get; } = "Glass ball";
+
+        // Getter-only autoproperty that is initialized in constructor
+        public string GenieName { get; }
+
+        public GlassBall(string genieName = null)
+        {
+            GenieName = genieName;
+        }
+
+        public void Jump(int meters)
+        {
+            if (meters < 0)
+                // New nameof() expression; compiler will check that the identifier exists
+                // nameof(x) == "x"
+                // Prevents e.g. parameter names changing but not updated in error messages
+                throw new ArgumentException("Cannot jump negative amount!", nameof(meters));
+
+            Damage += meters;
+        }
+
+        // Expression-bodied properties ...
+        public bool Broken
+            => Damage > 100;
+
+        // ... and methods
+        public override string ToString()
+            // Interpolated string
+            => $"{Name}. Damage taken: {Damage}";
+
+        public string SummonGenie()
+            // Null-conditional operators
+            // x?.y will return null immediately if x is null; y is not evaluated
+            => GenieName?.ToUpper();
     }
 } // End Namespace
 ```
@@ -949,6 +1009,8 @@ on a new line! ""Wow!"", the masses cried";
 
  * Attributes
  * async/await, pragma directives
+ * Exception filters
+ * `using static`
  * Web Development
  	* ASP.NET MVC & WebApi (new)
  	* ASP.NET Web Forms (old)
