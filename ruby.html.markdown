@@ -608,6 +608,18 @@ Something.new.bar # => NoMethodError: undefined method `bar'
 Something.new.qux # => 'qux'
 ```
 
+# Sometimes you don't need a class, but still want to structure your data and have handy helper methods
+# In this case, you can use `Struct`.
+
+User = Struct.new(:first_name, :last_name, :user_name, :email_address) #=> User
+jane = User.new("Jane", "Smith", "jsmith", "jane@example.com")
+#=> <struct User first_name="Jane", last_name="Smith", user_name="jsmith", email_address="jane@example.com">
+jane.first_name #=> "Jane"
+jane.last_name #=> "Smith"
+jane.user_name #=> "jsmith"
+jane.email_address #=> "jane@example.com"
+
+
 ## Additional resources
 
 - [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - A variant of this reference with in-browser challenges.
