@@ -811,16 +811,21 @@ die X::AdHoc.new(payload => 'Error!');
 # This will avoid it being automatically handled and printing lots of scary
 # error messages to the screen.
 open 'foo' orelse say "Something happened $_"; #> Something happened
-
+              #>  Failed to open file foo: no such file or directory
 ## Using `try` and `CATCH`
 # By using `try` and `CATCH` you can contain and handle exceptions without
-# disrupting the rest of the program.
-# `try` will set the last exception to the special variable `$!`
-# Note: This has no relation to $!variables.
-# Similar to how $_ was set when we 'disarmed' the exception, we also use
-# $_ in the CATCH block.  Unlike many other languages, in Perl 6, you put
-# the `CATCH` block *within* the block to `try`. By default, a `try` has a
-# `CATCH` block that catches any exception (`CATCH { default {} }`).
+# disrupting the rest of the program. `try` will set the last exception to
+# the special variable `$!` Note: This has no relation to $!variables.
+try open 'foo'; 
+say "Well, I tried! $!" if defined $!; #> Well, I tried! Failed to open file
+                                       #foo: no such file or directory
+# Now, what if we want more control over handling the exception?
+# Unlike many other languages, in Perl 6, you put the `CATCH` block *within*
+# the block to `try`. Similar to how $_ was set when we 'disarmed' the
+# exception with orelse, we also use $_ in the CATCH block.
+# Note: ($! is only set *after* the `try` block)
+# By default, a `try` has a `CATCH` block that catches
+# any exception (`CATCH { default {} }`).
 
 try { my $a = (0 %% 0);  CATCH { say "Something happened: $_" } }
  #=> Something happened: Attempt to divide by zero using infix:<%%>
