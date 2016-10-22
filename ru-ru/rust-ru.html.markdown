@@ -314,6 +314,7 @@ En:
   - [The Rust Programming Language](http://doc.rust-lang.org/book/index.html)
   - [subreddit /r/rust](http://reddit.com/r/rust)
   - [Mozzila IRC on #rust cannel](irc.mozilla.org)
+
 Ru:
   - [Русское сообщество](https://rustycrate.ru/)
 
