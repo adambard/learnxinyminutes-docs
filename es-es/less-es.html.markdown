@@ -1,6 +1,7 @@
 ---
 language: less
-filename: learnless.less
+filename: learnless-es.less
+lang: es-es
 contributors:
   - ["Saravanan Ganesh", "http://srrvnn.me"]
 translators:
