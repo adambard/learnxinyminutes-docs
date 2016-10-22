@@ -14,7 +14,8 @@ Java in web frontends.
 
 JavaScript isn't just limited to web browsers, though: Node.js, a project that
 provides a standalone runtime for Google Chrome's V8 JavaScript engine, is
-becoming more and more popular.
+becoming more and more popular and is used to power Web Servers or create 
+Desktop applications.
 
 JavaScript has a C-like syntax, so if you've used languages like C or Java,
 a lot of the basic syntax will already be familiar. Despite this, and despite
