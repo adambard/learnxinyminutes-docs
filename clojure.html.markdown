@@ -297,7 +297,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 
 (as-> [1 2 3] input
   (map inc input);=> You can use last transform's output at the last position
-  (nth input 4) ;=>  and at the second position, in the same expression
+  (nth input 2) ;=>  and at the second position, in the same expression
   (conj [4 5 6] input [8 9 10])) ;=> or in the middle !
 
 
