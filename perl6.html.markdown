@@ -798,20 +798,29 @@ class Item does PrintableVal {
 
 ### Exceptions
 # Exceptions are built on top of classes, in the package `X` (like `X::IO`).
-# You can access the last exception with the special variable `$!`
-# (use `$_` in a `CATCH` block) Note: This has no relation to $!variables.
+# In Perl6 exceptions are automatically 'thrown'
+open 'foo' #> Failed to open file foo: no such file or directory
+# It will also print out what line the error was thrown at and other error info
 
-# You can throw an exception using `die`:
-open 'foo' or die 'Error!'; #=> Error!
+# You can throw your own exceptions using `die`:
+die 'Error!'; #=> Error!
 # Or more explicitly:
 die X::AdHoc.new(payload => 'Error!');
+
+# When using `orelse` it will disarm the exception and alias $_ to that failure
+# This will avoid it being automatically handled and printing lots of scary
+# error messages to the screen.
+open 'foo' orelse say "Something happened $_"; #> Something happened
 
 ## Using `try` and `CATCH`
 # By using `try` and `CATCH` you can contain and handle exceptions without
 # disrupting the rest of the program.
-# Unlike many other languages, in Perl 6, you put the `CATCH` block *within*
-# the block to `try`. By default, a `try` has a `CATCH` block that catches
-# any exception (`CATCH { default {} }`).
+# `try` will set the last exception to the special variable `$!`
+# Note: This has no relation to $!variables.
+# Similar to how $_ was set when we 'disarmed' the exception, we also use
+# $_ in the CATCH block.  Unlike many other languages, in Perl 6, you put
+# the `CATCH` block *within* the block to `try`. By default, a `try` has a
+# `CATCH` block that catches any exception (`CATCH { default {} }`).
 
 try { my $a = (0 %% 0);  CATCH { say "Something happened: $_" } }
  #=> Something happened: Attempt to divide by zero using infix:<%%>
@@ -889,7 +898,7 @@ my $actions = JSON::Tiny::Actions.new;
 # In Perl 6, you get different behaviors based on how you declare a variable.
 # You've already seen `my` and `has`, we'll now explore the others.
 
-## * `our` (happens at `INIT` time -- see "Phasers" below)
+## * `our` declarators happens at `INIT` time -- see "Phasers" below)
 # It's like `my`, but it also creates a package variable.
 # (All packagish things (`class`, `role`, etc) are `our` by default)
 module Var::Increment {
@@ -903,7 +912,7 @@ module Var::Increment {
     }
 
     my sub unavailable { # `my sub` is the default
-      say "Can't access me from outside, I'm my !";
+      say "Can't access me from outside, I'm 'my'!";
     }
     say ++$our-var; # Increment the package variable and output its value
   }
@@ -1573,3 +1582,6 @@ If you want to go further, you can:
  - Come along on `#perl6` at `irc.freenode.net`. The folks here are always helpful.
  - Check the [source of Perl 6's functions and classes](https://github.com/rakudo/rakudo/tree/nom/src/core). Rakudo is mainly written in Perl 6 (with a lot of NQP, "Not Quite Perl", a Perl 6 subset easier to implement and optimize).
  - Read [the language design documents](http://design.perl6.org). They explain P6 from an implementor point-of-view, but it's still very interesting.
+
+ <!--  vim: filetype=perl softtabstop=2 shiftwidth=2 expandtab
+ -->
