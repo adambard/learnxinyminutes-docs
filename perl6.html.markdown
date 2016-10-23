@@ -1588,5 +1588,4 @@ If you want to go further, you can:
  - Check the [source of Perl 6's functions and classes](https://github.com/rakudo/rakudo/tree/nom/src/core). Rakudo is mainly written in Perl 6 (with a lot of NQP, "Not Quite Perl", a Perl 6 subset easier to implement and optimize).
  - Read [the language design documents](http://design.perl6.org). They explain P6 from an implementor point-of-view, but it's still very interesting.
 
- <!--  vim: filetype=perl softtabstop=2 shiftwidth=2 expandtab
- -->
+ [//]: # ( vim: set filetype=perl softtabstop=2 shiftwidth=2 expandtab : )
