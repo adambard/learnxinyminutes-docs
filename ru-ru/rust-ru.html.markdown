@@ -4,7 +4,7 @@ contributors:
     - ["P1start", "http://p1start.github.io/"]
 translators:
     - ["ShaltaevGleb", "https://github.com/ShaltaevGleb"]
-filename: learnrust-ru.rs
+filename: learnrust.rs
 lang: ru-ru
 ---
 
