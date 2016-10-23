@@ -5,7 +5,7 @@ contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
     - ["ShaltaevGleb", "https://github.com/ShaltaevGleb"]
-filename: LearnVim-Ru.txt
+filename: LearnVim-ru.txt
 lang: ru-ru
 ---
 
