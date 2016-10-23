@@ -19,7 +19,7 @@ rather than plain text.
 
 If you are uncertain about your environment:
 
-```
+```powershell
 Get-ExecutionPolicy -List
 Set-ExecutionPolicy AllSigned
 # Execution policies include:
