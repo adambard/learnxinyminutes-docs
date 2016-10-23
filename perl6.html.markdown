@@ -903,7 +903,7 @@ my $actions = JSON::Tiny::Actions.new;
 # In Perl 6, you get different behaviors based on how you declare a variable.
 # You've already seen `my` and `has`, we'll now explore the others.
 
-## * `our` declarators happens at `INIT` time -- see "Phasers" below)
+## * `our` declarations happen at `INIT` time -- see "Phasers" below)
 # It's like `my`, but it also creates a package variable.
 # (All packagish things (`class`, `role`, etc) are `our` by default)
 module Var::Increment {
