@@ -3,9 +3,9 @@ category: tool
 tool: vim
 filename: LearnVim-cn.txt
 contributors:
-    - ["RadhikaG"， "https://github.com/RadhikaG"]
+   - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
-  - ["Jiang Haiyun"， "https://github.com/haiiiiiyun"]
+   - ["Jiang Haiyun", "https://github.com/haiiiiiyun"]
 lang: zh-cn
 ---
 
