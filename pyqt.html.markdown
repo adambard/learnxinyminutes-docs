@@ -1,7 +1,7 @@
 ---
 category: tool
 tool: PyQT
-filename: learnqt.py
+filename: learnpyqt.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
 ---
@@ -13,7 +13,7 @@ This is an adaption on the C++ intro to QT by [Aleksey Kholovchuk](https://githu
 ), some of the code examples should result in the same functionality
 this version just having been done using pyqt! 
 
-```Python
+```python
 import sys
 from PyQt4 import QtGui
 	
