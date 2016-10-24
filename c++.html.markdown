@@ -1011,7 +1011,7 @@ for(int i=0; i<Vector_name.size(); i++)
 // It will iterate through the vector from index '0' till last index
 
 // Iterator
-vector<Data_Type>::iterator it; // initialize the iteartor for vector
+vector<Data_Type>::iterator it; // initialize the iterator for vector
 for(it=vector_name.begin(); it!=vector_name.end();++it)
 
 // For accessing the element of the vector
