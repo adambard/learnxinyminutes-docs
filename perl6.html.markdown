@@ -822,7 +822,7 @@ open 'foo' orelse say "Something happened $_"; #> Something happened
 # By using `try` and `CATCH` you can contain and handle exceptions without
 # disrupting the rest of the program. `try` will set the last exception to
 # the special variable `$!` Note: This has no relation to $!variables.
-try open 'foo'; 
+try open 'foo';
 say "Well, I tried! $!" if defined $!; #> Well, I tried! Failed to open file
                                        #foo: no such file or directory
 # Now, what if we want more control over handling the exception?
@@ -1286,7 +1286,7 @@ say @fib[^10]; #=> 1 1 2 3 5 8 13 21 34 55
 #     (grammars are actually classes)
 #  - Earliest declaration wins
 say so 'a' ~~ /a/; #=> True
-say so 'a' ~~ / a /; # More readable with some spaces!
+say so 'a' ~~ / a /; #=> True #  More readable with some spaces!
 
 # In all our examples, we're going to use the smart-matching operator against
 #  a regexp. We're converting the result using `so`, but in fact, it's
@@ -1302,14 +1302,26 @@ say so 'a' ~~ / a /; # More readable with some spaces!
 
 # In Perl 6, you can have any alphanumeric as a literal,
 # everything else has to be escaped, using a backslash or quotes.
-say so 'a|b' ~~ / a '|' b /; # `True`. Wouln't mean the same if `|` wasn't escaped
+say so 'a|b' ~~ / a '|' b /; # `True`. Wouldn't mean the same if `|` wasn't escaped
 say so 'a|b' ~~ / a \| b /; # `True`. Another way to escape it.
 
 # The whitespace in a regexp is actually not significant,
-#  unless you use the `:s` (`:sigspace`, significant space) modifier.
-say so 'a b c' ~~ / a b c /; # `False`. Space is not significant here
-say so 'a b c' ~~ /:s a b c /; # `True`. We added the modifier `:s` here.
-
+#  unless you use the `:s` (`:sigspace`, significant space) adverb.
+say so 'a b c' ~~ / a  b  c /; #> `False`. Space is not significant here
+say so 'a b c' ~~ /:s a b c /; #> `True`. We added the modifier `:s` here.
+# If we use only one space between strings in a regex, Perl 6 will warn us:
+say so 'a b c' ~~ / a b c /; #> 'False' #> Space is not significant here; please
+# use quotes or :s (:sigspace) modifier (or, to suppress this warning, omit the
+# space, or otherwise change the spacing)
+# To fix this, either use at least two spaces between strings or use the `:s`
+# adverb.
+# As we saw before, we can embed the `:s` inside the slash delimiters, but we can
+# also put it outside of them if we specify `m` for 'match':
+say so 'a b c' ~~ m:s/a b c/; #> `True`
+# By using `m` to specify 'match' we can also use delimiters other than slashes:
+say so 'abc' ~~ m{a  b  c}; #> `True`
+# Use the :i adverb to specify case insensitivity:
+say so 'ABC' ~~ m:i{a  b  c}; #> `True`
 # It is, however, important as for how modifiers (that you're gonna see just below)
 #  are applied ...
 
