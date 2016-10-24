@@ -6,7 +6,7 @@ contributors:
 filename: learnkdb.q
 ---
 
-The q langauge and it's database component kdb+ were developed by Arthur
+The q langauge and its database component kdb+ were developed by Arthur
 Whitney and released by Kx systems in 2003. q is a descendant of
 [APL](https://en.wikipedia.org/wiki/APL_(programming_language)) and as such is
 very terse and a little strange looking for anyone from a "C heritage" language
