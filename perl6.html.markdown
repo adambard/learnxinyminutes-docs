@@ -807,9 +807,15 @@ die 'Error!'; #=> Error!
 # Or more explicitly:
 die X::AdHoc.new(payload => 'Error!');
 
+# In Perl 6, `orelse` is similar to the `or` operator, except it only matches
+# `undef` instead of anything evaluating as false.
 # When using `orelse` it will disarm the exception and alias $_ to that failure
 # This will avoid it being automatically handled and printing lots of scary
 # error messages to the screen.
+# We can use the exception method on $_ to access the exception
+open 'foo' orelse say "Something happened {.exception}";
+# This also works, and will print out the object returned even if it's
+# not a failure:
 open 'foo' orelse say "Something happened $_"; #> Something happened
               #>  Failed to open file foo: no such file or directory
 ## Using `try` and `CATCH`
