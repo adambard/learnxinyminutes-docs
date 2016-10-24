@@ -972,10 +972,11 @@ for ^5 -> $a {
 
 ### Phasers
 # Phasers in Perl 6 are blocks that happen at determined points of time in your
-#  program. When the program is compiled, when a for loop runs, when you leave a
-#  block, when an exception gets thrown ... (`CATCH` is actually a phaser !)
+# program.  They are called phasers because they mark a change in the phase
+# of a program.  For example, when the program is compiled, a for loop runs,
+# you leave a block, or an exception gets thrown. (`CATCH` is actually a phaser !)
 # Some of them can be used for their return values, some of them can't
-#  (those that can have a "[*]" in the beginning of their explanation text).
+# (those that can have a "[*]" in the beginning of their explanation text).
 # Let's have a look !
 
 ## * Compile-time phasers
