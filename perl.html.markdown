@@ -130,10 +130,6 @@ for my $i (0 .. $max) {
   print "index is $i";
 }
 
-while (my $i = each @elements) {
-  print "Current element is " . $elements[$i];
-}
-
 for my $element (@elements) {
   print $element;
 }
