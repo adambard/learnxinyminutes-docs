@@ -8,6 +8,7 @@ contributors:
     - ["Connor Waters", "http://github.com/connorwaters"]
 translators:
     - ["Robert Margelli", "http://github.com/sinkswim/"]
+    - ["Tommaso Pifferi", "http://github.com/neslinesli93/"]
 lang: it-it
 ---
 
@@ -151,7 +152,7 @@ namespace Primo {
 namespace Secondo {
     void foo()
     {
-        printf("Questa è Secondo::foo\n")
+        printf("Questa è Secondo::foo\n");
     }
 }
 
@@ -805,6 +806,94 @@ void faiQualcosaConUnFile(const std::string& nomefile)
 //   sono tutti automaticamente distrutti con i loro contenuti quando escono dalla visibilità.
 // - I mutex usano lock_guard e unique_lock
 
+// I contenitori che utilizzano chiavi non-primitive (classi personalizzate)
+// richiedono la funzione di confronto nell'oggetto stesso, o tramite un puntatore a funzione.
+// Le chiavi primitive hanno funzioni di confronto già definite, ma puoi sovrascriverle.
+class Foo {
+public:
+    int j;
+    Foo(int a) : j(a) {}
+};
+struct funzioneDiConfronto {
+    bool operator()(const Foo& a, const Foo& b) const {
+        return a.j < b.j;
+    }
+};
+// Questo non è permesso, anche se qualche compilatore potrebbe non dare problemi
+//std::map<Foo, int> fooMap;
+std::map<Foo, int, funzioneDiConfronto> fooMap;
+fooMap[Foo(1)]  = 1;
+fooMap.find(Foo(1)); -- vero
+
+///////////////////////////////////////
+// Espressioni Lambda (C++11 e superiori)
+///////////////////////////////////////
+
+// Le espressioni lambda (più semplicemente "lambda") sono utilizzate
+// per definire una funzione anonima nel punto in cui viene invocata, o
+// dove viene passata come argomento ad una funzione
+
+// Ad esempio, consideriamo l'ordinamento di un vettore costituito da una
+// coppia di interi, utilizzando il secondo elemento per confrontare
+vector<pair<int, int> > tester;
+tester.push_back(make_pair(3, 6));
+tester.push_back(make_pair(1, 9));
+tester.push_back(make_pair(5, 0));
+
+// Passiamo una lambda come terzo argomento alla funzione di ordinamento
+// `sort` è contenuta nell'header <algorithm>
+sort(tester.begin(), tester.end(), [](const pair<int, int>& lhs, const pair<int, int>& rhs) {
+    return lhs.second < rhs.second;
+});
+
+// Nota bene la sintassi utilizzata nelle lambda:
+// [] serve per "catturare" le variabili.
+// La "Lista di Cattura" definisce tutte le variabili esterne che devono essere disponibili
+// all'interno della funzione, e in che modo.
+// La lista può contenere:
+//     1. un valore: [x]
+//     2. un riferimento: [&x]
+//     3. qualunque variabile nello scope corrente, per riferimento [&]
+//     4. qualunque variabile nello scope corrente, per valore [=]
+// Esempio:
+
+vector<int> id_cani;
+// numero_cani = 3;
+for(int i = 0; i < 3; i++) {
+    id_cani.push_back(i);
+}
+
+int pesi[3] = {30, 50, 10};
+
+// Mettiamo che vuoi ordinare id_cani in base al peso dei cani
+// Alla fine, id_cani sarà: [2, 0, 1]
+
+// Le lambda vengono in aiuto
+
+sort(id_cani.begin(), id_cani.end(), [&pesi](const int &lhs, const int &rhs) {
+    return pesi[lhs] < pesi[rhs];
+});
+// Nota come abbiamo catturato "pesi" per riferimento nell'esempio.
+// Altre informazioni sulle lambda in C++: http://stackoverflow.com/questions/7627098/what-is-a-lambda-expression-in-c11
+
+///////////////////////////////
+// Ciclo For semplificato(C++11 e superiori)
+///////////////////////////////
+
+// Puoi usare un ciclo for per iterare su un tipo di dato contenitore
+int arr[] = {1, 10, 3};
+
+for(int elem: arr) {
+    cout << elem << endl;
+}
+
+// Puoi usare "auto" senza preoccuparti del tipo degli elementi nel contenitore
+// Ad esempio:
+
+for(auto elem: arr) {
+    // Fai qualcosa con `elem`
+}
+
 ///////////////////////
 // Roba divertente
 //////////////////////
@@ -855,20 +944,188 @@ Foo f1;
 f1 = f2;
 
 
-// Come deallocare realmente le risorse all'interno di un vettore:
-class Foo { ... };
-vector<Foo> v;
-for (int i = 0; i < 10; ++i)
-  v.push_back(Foo());
+///////////////////////////////////////
+// Tuple (C++11 e superiori)
+///////////////////////////////////////
 
-// La riga seguente riduce la dimensione di v a 0, ma il distruttore non
-// viene chiamato e dunque le risorse non sono deallocate!
-v.empty();
-v.push_back(Foo());  // Il nuovo valore viene copiato nel primo Foo che abbiamo inserito
+#include<tuple>
 
-// Distrugge realmente tutti i valori dentro v. Vedi la sezione riguardante gli
-// oggetti temporanei per capire come mai funziona così.
-v.swap(vector<Foo>());
+// Concettualmente le tuple sono simili alle strutture del C, ma invece di avere
+// i membri rappresentati con dei nomi, l'accesso agli elementi avviene tramite
+// il loro ordine all'interno della tupla.
+
+// Cominciamo costruendo una tupla.
+// Inserire i valori in una tupla
+auto prima = make_tuple(10, 'A');
+const int maxN = 1e9;
+const int maxL = 15;
+auto seconda = make_tuple(maxN, maxL);
+
+// Vediamo gli elementi contenuti nella tupla "prima"
+cout << get<0>(prima) << " " << get<1>(prima) << "\n"; // stampa : 10 A
+
+// Vediamo gli elementi contenuti nella tupla "seconda"
+cout << get<0>(seconda) << " " << get<1>(seconda) << "\n"; // stampa: 1000000000 15
+
+// Estrarre i valori dalla tupla, salvandoli nelle variabili
+int primo_intero;
+char primo_char;
+tie(primo_intero, primo_char) = prima;
+cout << primo_intero << " " << primo_char << "\n";  // stampa : 10 A
+
+// E' possibile creare tuple anche in questo modo
+tuple<int, char, double> terza(11, 'A', 3.14141);
+
+// tuple_size ritorna il numero di elementi in una tupla (come constexpr)
+cout << tuple_size<decltype(terza)>::value << "\n"; // stampa: 3
+
+// tuple_cat concatena gli elementi di tutte le tuple, nell'esatto ordine
+// in cui sono posizionati all'interno delle tuple stesse
+auto tupla_concatenata = tuple_cat(prima, seconda, terza);
+// tupla_concatenata diventa = (10, 'A', 1e9, 15, 11, 'A' ,3.14141)
+
+cout << get<0>(tupla_concatenata) << "\n"; // stampa: 10
+cout << get<3>(tupla_concatenata) << "\n"; // stampa: 15
+cout << get<5>(tupla_concatenata) << "\n"; // stampa: 'A'
+
+
+/////////////////////
+// Contenitori
+/////////////////////
+
+// I Contenitori della "Standard Template Library", ovvero la libreria standard
+// dei template contenuti nel C++, sono template predefiniti.
+// I Contenitori si occupano di come allocare lo spazio per gli elementi contenuti,
+// e forniscono funzioni per accedervi e manipolarli
+
+// Vediamo alcuni tipi di contenitori:
+
+// Vector (array dinamici/vettori)
+// Permettono di definire un vettore, o una lista di oggetti, a runtime
+#include<vector>
+vector<Tipo_Dato> nome_vettore; // usato per inizializzare un vettore
+cin >> val;
+nome_vettore.push_back(val); // inserisce il valore di "val" nel vettore
+
+// Per iterare in un vettore, abbiamo due possibilità:
+// Ciclo normale
+for(int i=0; i<nome_vettore.size(); i++)
+// Cicla dall'indice zero fino all'ultimo
+
+// Iteratore
+vector<Tipo_Dato>::iterator it; // inizializza l'iteratore per il vettore
+for(it=nome_vettore.begin(); it!=nome_vettore.end();++it)
+// Nota che adesso non cicla più sugli indici, ma direttamente sugli elementi!
+
+// Per accedere agli elementi del vettore
+// Operatore []
+var = nome_vettore[indice]; // Assegna a "var" il valore del vettore all'indice dato
+
+
+// Set (insiemi)
+// Gli insiemi sono contenitori che memorizzano elementi secondo uno specifico ordine.
+// Gli insiemi vengono per lo più utilizzati per memorizzare valori unici, secondo
+// un ordine, senza scrivere ulteriore codice.
+
+#include<set>
+set<int> insieme;    // Inizializza un insieme di interi
+insieme.insert(30);  // Inserisce il valore 30 nell'insieme
+insieme.insert(10);  // Inserisce il valore 10 nell'insieme
+insieme.insert(20);  // Inserisce il valore 20 nell'insieme
+insieme.insert(30);  // Inserisce il valore 30 nell'insieme
+// Gli elementi dell'insieme sono:
+//  10 20 30
+
+// Per cancellare un elemento
+insieme.erase(20);  // Cancella l'elemento con valore 20
+// L'insieme contiene adesso: 10 30
+
+// Per iterare su un insieme, usiamo gli iteratori
+set<int>::iterator it;
+for(it=insieme.begin();it<insieme.end();it++) {
+    cout << *it << endl;
+}
+// Stampa:
+// 10
+// 30
+
+// Per svuotare il contenitore usiamo il metodo "clear"
+insieme.clear();
+cout << insieme.size();
+// Stampa: 0
+
+// Nota: per permettere elementi duplicati, possiamo usare "multiset"
+
+// Map (mappa/tabella di hash)
+// Le mappe servono per memorizzare un elemento, detto chiave, a cui viene
+// associato un valore, il tutto secondo uno specifico ordine.
+
+#include<map>
+map<char, int> mia_mappa;  // Inizializza una mappa che usa i char come chiave, e gli interi come valore
+
+mia_mappa.insert(pair<char,int>('A',1));
+// Inserisce il valore 1 per la chiave A
+mia_mappa.insert(pair<char,int>('Z',26));
+// Inserisce il valore 26 per la chiave Z
+
+// Per iterare
+map<char,int>::iterator it;
+for (it=mia_mappa.begin(); it!=mia_mappa.end(); ++it)
+    std::cout << it->first << "->" << it->second << '\n';
+// Stampa:
+// A->1
+// Z->26
+
+// Per trovare il valore corrispondente ad una data chiave
+it = mia_mappa.find('Z');
+cout << it->second;
+// Stampa: 26
+
+
+///////////////////////////////////
+// Operatori logici e bitwise(bit-a-bit)
+//////////////////////////////////
+
+// La maggior parte di questi operatori in C++ sono gli stessi degli altri linguaggi
+
+// Operatori logici
+
+// Il C++ usa la "Short-circuit evaluation" per le espressioni booleane. Cosa significa?
+// In pratica, in una condizione con due argomenti, il secondo viene considerato solo se
+// il primo non basta a determinate il valore finale dell'espresione.
+
+true && false // Effettua il **and logico** e ritorna falso
+true || false // Effettua il **or logico** e ritorna vero
+! true        // Effettua il **not logico** e ritorna falso
+
+// Invece di usare i simboli, si possono usare le keyword equivalenti
+true and false // Effettua il **and logico** e ritorna falso
+true or false  // Effettua il **or logico** e ritorna vero
+not true       // Effettua il **not logico** e ritorna falso
+
+// Operatori bitwise(bit-a-bit)
+
+// **<<** Operatore di Shift a Sinistra
+// << sposta i bit a sinistra
+4 << 1 // Sposta a sinistra di 1 i bit di 4, ottenendo 8
+// x << n in pratica realizza x * 2^n
+
+
+// **>>** Operatore di Shift a Destra
+// >> sposta i bit a destra
+4 >> 1 // Sposta a destra di 1 i bit di 4, ottenendo 2
+// x >> n in pratica realizza x / 2^n
+
+~4    // Effettua il NOT bit-a-bit
+4 | 3 // Effettua il OR bit-a-bit
+4 & 3 // Effettua il AND bit-a-bit
+4 ^ 3 // Effettua il XOR bit-a-bit
+
+// Le keyword equivalenti sono
+compl 4    // Effettua il NOT bit-a-bit
+4 bitor 3  // Effettua il OR bit-a-bit
+4 bitand 3 // Effettua il AND bit-a-bit
+4 xor 3    // Effettua il XOR bit-a-bit
 
 ```
 Letture consigliate:
