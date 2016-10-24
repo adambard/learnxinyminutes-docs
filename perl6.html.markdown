@@ -1589,7 +1589,16 @@ for <a b c> {
 
 If you want to go further, you can:
 
- - Read the [Perl 6 Advent Calendar](http://perl6advent.wordpress.com/). This is probably the greatest source of Perl 6 information, snippets and such.
+ - Read the [Perl 6 Docs](https://docs.perl6.org/). This is a great
+ resource on Perl6.  If you are looking for something, use the search bar.
+ This will give you a dropdown menu of all the pages referencing your search
+ term (Much better than using Google to find Perl 6 documents!)
+ - Read the [Perl 6 Advent Calendar](http://perl6advent.wordpress.com/). This
+ is a great source of Perl 6 snippets and explainations.  If the docs don't
+ describe something well enough, you may find more detailed information here.
+ This information may be a bit older but there are many great examples and
+ explainations.  Posts stopped at the end of 2015 when the language was declared
+ stable and Perl 6.c was released.
  - Come along on `#perl6` at `irc.freenode.net`. The folks here are always helpful.
  - Check the [source of Perl 6's functions and classes](https://github.com/rakudo/rakudo/tree/nom/src/core). Rakudo is mainly written in Perl 6 (with a lot of NQP, "Not Quite Perl", a Perl 6 subset easier to implement and optimize).
  - Read [the language design documents](http://design.perl6.org). They explain P6 from an implementor point-of-view, but it's still very interesting.
