@@ -799,10 +799,10 @@ class Item does PrintableVal {
 ### Exceptions
 # Exceptions are built on top of classes, in the package `X` (like `X::IO`).
 # In Perl6 exceptions are automatically 'thrown'
-open 'foo' #> Failed to open file foo: no such file or directory
+open 'foo'; #> Failed to open file foo: no such file or directory
 # It will also print out what line the error was thrown at and other error info
 
-# You can throw your own exceptions using `die`:
+# You can throw an exception using `die`:
 die 'Error!'; #=> Error!
 # Or more explicitly:
 die X::AdHoc.new(payload => 'Error!');
@@ -909,12 +909,12 @@ my $actions = JSON::Tiny::Actions.new;
 # In Perl 6, you get different behaviors based on how you declare a variable.
 # You've already seen `my` and `has`, we'll now explore the others.
 
-## * `our` declarations happen at `INIT` time -- see "Phasers" below)
+## * `our` declarations happen at `INIT` time -- (see "Phasers" below)
 # It's like `my`, but it also creates a package variable.
 # (All packagish things (`class`, `role`, etc) are `our` by default)
 module Var::Increment {
-  our $our-var = 1; # Note: you can't put a type constraint like Int on an`our`
-  my $my-var = 22;  # variable.
+  our $our-var = 1; # Note: you can't put a type constraint like Int on an
+  my $my-var = 22;  # `our` variable.
   our sub Inc {
 
     our sub available { # If you try to make inner `sub`s `our`...
@@ -1092,8 +1092,8 @@ my @lazy-array { .print }; # This works and will only do as much work as is
 constant nilthingie = sink for ^3 { .say } #=> 0 1 2
 say nilthingie.perl; #=> Nil
 
-# - `quietly` blocks will  supress warnings:
-quietly { warn 'This is a warning!' }; => No output
+# - `quietly` blocks will suppress warnings:
+quietly { warn 'This is a warning!' }; #=> No output
 
 # - `contend` - Attempts side effects under STM
 # Not yet implemented !
