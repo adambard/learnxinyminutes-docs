@@ -1082,8 +1082,8 @@ constant thrice = eager gather for ^3 { say take $_ }; #=> 0 1 2
 constant nilthingie = sink for ^3 { .say } #=> 0 1 2
 say nilthingie.perl; #=> Nil
 
-# - `quietly` - Supresses warnings
-# Not yet implemented !
+# - `quietly` blocks will  supress warnings:
+quietly { warn 'This is a warning!' }; => No output
 
 # - `contend` - Attempts side effects under STM
 # Not yet implemented !
