@@ -226,12 +226,12 @@ set smarttab
 
 ### Ссылки
 
-[Vim | Home](http://www.vim.org/index.php)
+[Vim | Home (EN)](http://www.vim.org/index.php)
 
 `$ vimtutor`
 
-[A vim Tutorial and Primer](https://danielmiessler.com/study/vim/)
+[A vim Tutorial and Primer (EN)](https://danielmiessler.com/study/vim/)
 
-[What are the dark corners of Vim your mom never told you about? (Stack Overflow thread)](http://stackoverflow.com/questions/726894/what-are-the-dark-corners-of-vim-your-mom-never-told-you-about)
+[What are the dark corners of Vim your mom never told you about? (Stack Overflow thread) (EN)](http://stackoverflow.com/questions/726894/what-are-the-dark-corners-of-vim-your-mom-never-told-you-about)
 
-[Arch Linux Wiki](https://wiki.archlinux.org/index.php/Vim)
+[Arch Linux Wiki](https://wiki.archlinux.org/index.php/Vim_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9))
