@@ -168,5 +168,5 @@ YAML은 마치 파이썬처럼 개행과 들여쓰기에 문법적으로 의미�
 
 ### 더 읽기
 
-+ [YAML 공식 사이트](http://yaml.org/)
-+ [온라인 YAML 검사기](http://codebeautify.org/yaml-validator)
++ [(영어) YAML 공식 사이트](http://yaml.org/)
++ [(영어) 온라인 YAML 검사기](http://codebeautify.org/yaml-validator)
