@@ -438,7 +438,6 @@ Algo.new.bar # => NoMethodError: undefined method `bar'
 Algo.new.qux # => 'qux'
 ```
 
-<<<<<<< HEAD
 ## Recursos adicionais
 
 - [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - A variant of this reference with in-browser challenges.
