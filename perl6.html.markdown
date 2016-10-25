@@ -1075,9 +1075,19 @@ constant thrice = gather for ^3 { say take $_ }; # Doesn't print anything
 # versus:
 constant thrice = eager gather for ^3 { say take $_ }; #=> 0 1 2
 
-# - `lazy` - Defer actual evaluation until value is fetched (forces lazy context)
-# Not yet implemented !!
+### Iterables
+# Iterables are objects that can be iterated similar to the `for` construct
+# `flat`, flattens iterables:
+say (1, 10, (20, 10) ); #> (1 10 (20 10)) Notice how grouping is maintained
+say (1, 10, (20, 10) ).flat; #> (1 10 20 10) Now the iterable is flat
 
+# - `lazy` - Defer actual evaluation until value is fetched (forces lazy context)
+my @lazy-array = (1..100).lazy;
+say @lazy-array.is-lazy; #> True # Check for lazyness with the `is-lazy` method. 
+say @lazy-array; #> [...] List has not been iterated on!
+my @lazy-array { .print }; # This works and will only do as much work as is
+# needed.
+[//]: # ( TODO explain that gather/take and map are all lazy)
 # - `sink` - An `eager` that discards the results (forces sink context)
 constant nilthingie = sink for ^3 { .say } #=> 0 1 2
 say nilthingie.perl; #=> Nil
