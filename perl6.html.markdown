@@ -1314,11 +1314,12 @@ say so 'a b c' ~~ /:s a b c /; #> `True`. We added the modifier `:s` here.
 say so 'a b c' ~~ / a b c /; #> 'False' #> Space is not significant here; please
 # use quotes or :s (:sigspace) modifier (or, to suppress this warning, omit the
 # space, or otherwise change the spacing)
-# To fix this, either use at least two spaces between strings or use the `:s`
-# adverb.
+# To fix this and make the spaces less ambiguous,  either use at least two
+# spaces between strings or use the `:s` adverb.
+
 # As we saw before, we can embed the `:s` inside the slash delimiters, but we can
 # also put it outside of them if we specify `m` for 'match':
-say so 'a b c' ~~ m:s/a b c/; #> `True`
+say so 'a b c' ~~ m:s/a  b  c/; #> `True`
 # By using `m` to specify 'match' we can also use delimiters other than slashes:
 say so 'abc' ~~ m{a  b  c}; #> `True`
 # Use the :i adverb to specify case insensitivity:
@@ -1328,37 +1329,37 @@ say so 'ABC' ~~ m:i{a  b  c}; #> `True`
 
 ## Quantifying - `?`, `+`, `*` and `**`.
 # - `?` - 0 or 1
-so 'ac' ~~ / a b c /; # `False`
-so 'ac' ~~ / a b? c /; # `True`, the "b" matched 0 times.
-so 'abc' ~~ / a b? c /; # `True`, the "b" matched 1 time.
+so 'ac' ~~ / a  b  c /; # `False`
+so 'ac' ~~ / a  b?  c /; # `True`, the "b" matched 0 times.
+so 'abc' ~~ / a  b?  c /; # `True`, the "b" matched 1 time.
 
 # ... As you read just before, whitespace is important because it determines
 #  which part of the regexp is the target of the modifier:
-so 'def' ~~ / a b c? /; # `False`. Only the `c` is optional
-so 'def' ~~ / ab?c /; # `False`. Whitespace is not significant
+so 'def' ~~ / a  b  c? /; # `False`. Only the `c` is optional
+so 'def' ~~ / a  b?  c /; # `False`. Whitespace is not significant
 so 'def' ~~ / 'abc'? /; # `True`. The whole "abc" group is optional.
 
 # Here (and below) the quantifier applies only to the `b`
 
 # - `+` - 1 or more
-so 'ac' ~~ / a b+ c /; # `False`; `+` wants at least one matching
-so 'abc' ~~ / a b+ c /; # `True`; one is enough
-so 'abbbbc' ~~ / a b+ c /; # `True`, matched 4 "b"s
+so 'ac' ~~ / a  b+  c /; # `False`; `+` wants at least one matching
+so 'abc' ~~ / a  b+  c /; # `True`; one is enough
+so 'abbbbc' ~~ / a  b+  c /; # `True`, matched 4 "b"s
 
 # - `*` - 0 or more
-so 'ac' ~~ / a b* c /; # `True`, they're all optional.
-so 'abc' ~~ / a b* c /; # `True`
-so 'abbbbc' ~~ / a b* c /; # `True`
-so 'aec' ~~ / a b* c /; # `False`. "b"(s) are optional, not replaceable.
+so 'ac' ~~ / a  b*  c /; # `True`, they're all optional.
+so 'abc' ~~ / a  b*  c /; # `True`
+so 'abbbbc' ~~ / a  b*  c /; # `True`
+so 'aec' ~~ / a  b*  c /; # `False`. "b"(s) are optional, not replaceable.
 
 # - `**` - (Unbound) Quantifier
 # If you squint hard enough, you might understand
 #  why exponentation is used for quantity.
-so 'abc' ~~ / a b ** 1 c /; # `True` (exactly one time)
-so 'abc' ~~ / a b ** 1..3 c /; # `True` (one to three times)
-so 'abbbc' ~~ / a b ** 1..3 c /; # `True`
-so 'abbbbbbc' ~~ / a b ** 1..3 c /; # `False` (too much)
-so 'abbbbbbc' ~~ / a b ** 3..* c /; # `True` (infinite ranges are okay)
+so 'abc' ~~ / a  b**1  c /; # `True` (exactly one time)
+so 'abc' ~~ / a  b**1..3  c /; # `True` (one to three times)
+so 'abbbc' ~~ / a  b**1..3  c /; # `True`
+so 'abbbbbbc' ~~ / a  b**1..3  c /; # `False` (too much)
+so 'abbbbbbc' ~~ / a  b**3..*  c /; # `True` (infinite ranges are okay)
 
 # - `<[]>` - Character classes
 # Character classes are the equivalent of PCRE's `[]` classes, but
