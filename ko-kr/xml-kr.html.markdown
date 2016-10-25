@@ -20,7 +20,7 @@ XML은 HTML과는 달리 데이터를 보여주는 방법이나 그 형식을 �
 
 XML 문서는 기본적으로 자신을 설명하는 *속성*을 가질 수 있으며 자식으로서 텍스트 혹은 다른 요소를 가질 수 있는 *요소*들로 이루어집니다. 모든 XML 문서는 반드시 루트 요소를 가져야 합니다. 루트 요소는 문서에 있는 모든 다른 요소들의 조상입니다.
 
-XML 파서는 매우 엄격하게 설계되어 있으므로 문서의 형식이 틀렸다면 파싱을 멈출 것입니다. 그러므로 모든 XML 문서는 [XML 문법 규칙](http://www.w3schools.com/xml/xml_syntax.asp)을 따른다고 보장할 수 있습니다.
+XML 파서는 매우 엄격하게 설계되어 있으므로 문서의 형식이 틀렸다면 파싱을 멈출 것입니다. 그러므로 모든 XML 문서는 [(영어) XML 문법 규칙](http://www.w3schools.com/xml/xml_syntax.asp)을 따른다고 보장할 수 있습니다.
 
 ```xml
 <!-- 주석에는 두 개의 연속된 하이픈(-)이 들어갈 수 없습니다. -->
@@ -158,11 +158,11 @@ DTD는 오래되었기 때문에 지원이 광범위합니다. 불행히도 네�
 
 ## Resources
 
-* [Validate your XML](http://www.xmlvalidation.com)
+* [(영어) Validate your XML](http://www.xmlvalidation.com)
 
 ## Further Reading
 
-* [XML 스키마 정의 튜토리얼](http://www.w3schools.com/schema/)
-* [DTD 튜토리얼](http://www.w3schools.com/xml/xml_dtd_intro.asp)
-* [XML 튜토리얼](http://www.w3schools.com/xml/default.asp)
-* [XPath 쿼리로 XML 파싱하기](http://www.w3schools.com/xml/xml_xpath.asp)
+* [(영어) XML 스키마 정의 튜토리얼](http://www.w3schools.com/xml/xml_schema.asp)
+* [(영어) DTD 튜토리얼](http://www.w3schools.com/xml/xml_dtd_intro.asp)
+* [(영어) XML 튜토리얼](http://www.w3schools.com/xml/default.asp)
+* [(영어) XPath 쿼리로 XML 파싱하기](http://www.w3schools.com/xml/xml_xpath.asp)
