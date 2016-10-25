@@ -1093,7 +1093,7 @@ quietly { warn 'This is a warning!' }; => No output
 ## Everybody loves operators ! Let's get more of them
 
 # The precedence list can be found here:
-# http://perlcabal.org/syn/S03.html#Operator_precedence
+# https://docs.perl6.org/language/operators#Operator_Precedence
 # But first, we need a little explanation about associativity:
 
 # * Binary operators:
