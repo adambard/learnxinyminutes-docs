@@ -33,6 +33,9 @@ review them more effectively and/or individually.
     your file is UTF-8 encoded.
   + Try to leave out the byte-order-mark at the start of the file. (`:set nobomb`
     in Vim)
+  + You can check if the file contains a BOM on Linux/Unix systems by running
+    `file language.html.markdown`  You will see this if it uses a BOM:
+	`UTF-8 Unicode (with BOM) text`.
 
 
 ### Header configuration
