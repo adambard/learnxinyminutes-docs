@@ -1,7 +1,7 @@
 ---
 category: language
 language: perl6
-filename: learnperl6.pl
+filename: learnperl6.p6
 contributors:
     - ["vendethiel", "http://github.com/vendethiel"]
 ---
