@@ -35,6 +35,7 @@ package main
 // Import предназначен для указания зависимостей этого файла.
 import (
     "fmt"      // Пакет в стандартной библиотеке Go
+    "io/ioutil" // Реализация функций ввод/ввывода.
     "net/http" // Да, это веб-сервер!
     "strconv"  // Конвертирование типов в строки и обратно
     m "math"   // Импортировать math под локальным именем m.
@@ -320,6 +321,14 @@ func learnWebProgramming() {
 func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
     // Обработка запроса и отправка данных методом из http.ResponseWriter
     w.Write([]byte("You learned Go in Y minutes!"))
+}
+
+func requestServer() {
+    resp, err := http.Get("http://localhost:8080")
+    fmt.Println(err)
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    fmt.Printf("\nWebserver said: `%s`", string(body))
 }
 ```
 

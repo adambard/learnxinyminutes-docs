@@ -684,6 +684,45 @@ use My\Namespace as SomeOtherNamespace;
 
 $cls = new SomeOtherNamespace\MyClass();
 
+*//**********************
+* Позднее статическое связывание.
+*
+*/
+
+class ParentClass
+{
+    public static function who()
+    {
+        echo "I'm a " . __CLASS__ . "\n";
+    }
+
+    public static function test()
+    {
+        // self ссылается на класс в котором определен метод.
+        self::who();
+        // static ссылается на класс в котором метод вызван.
+        static::who();
+    }
+}
+
+ParentClass::test();
+/*
+I'm a ParentClass
+I'm a ParentClass
+*/
+
+class ChildClass extends ParentClass
+{
+    public static function who()
+    {
+        echo "But I'm " . __CLASS__ . "\n";
+    }
+}
+
+ChildClass::test();
+/*
+I'm a ParentClass
+But I'm ChildClass
 */
 
 ```
