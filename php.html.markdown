@@ -467,7 +467,13 @@ function variable($word, ...$list) {
 	}
 }
 
-variable("Separate", "Hello", "World") // Separate || Hello | World | 
+variable("Separate", "Hello", "World") // Separate || Hello | World |
+
+// Since PHP 7.0 you can add type hints for primitive types
+// to function arguments
+function type_hinted(string $word) {
+    echo $word;
+}
 
 /********************************
  * Includes
