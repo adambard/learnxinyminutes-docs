@@ -9,11 +9,9 @@ lang: pt-br
 filename: LearnTmux-pt.txt
 ---
 
-O [tmux](http://tmux.sourceforge.net)
-é um multiplexador de terminal, ele permite que terminais sejam criados,
-acessados e controlados a partir de uma unica instância. tmux pode ser separado
-de uma tela e continuar rodando no plano de fundo e depois ser reacoplado à
-instância (ou tela original).
+O [tmux](http://tmux.sourceforge.net) é um multiplexador de terminal,
+ele permite criar vários terminais e gerenciar tudo na mesma interface.
+tmux pode também rodar em background e depois ser recuperado(exibido) novamente.
 
 ```
 
@@ -25,9 +23,9 @@ instância (ou tela original).
      -n "Janela"     # Cria uma janela com o nome "Janela"
      -c "/dir"       # Inícia em uma pasta específica
 
-    attach           # Reacopla a última seção disponível
-     -t "#"          # Reacopla a seção com nome "#"
-     -d              # Separa (Desacopla) a sessaão de outras instâncias.
+    attach           # Acopla a última seção disponível
+     -t "#"          # Acopla a seção com nome "#"
+     -d              # Separa (Desacopla) a seção de outras instâncias.
 
     ls               # Lista todas as seções
      -a              # Lista todas as seções abertas
@@ -39,56 +37,54 @@ instância (ou tela original).
     lsp              # Lista os painéis
      -a              # Lista todos os painéis
      -s              # Lista todos os painéis em uma seção
-     -t "#"          # Lista os painéis baseado no nome "#"
+     -t "#"          # Lista os painéis chamados "#"
 
-    kill-window      # Encerrar a janela corrente
-     -t "#"          # Encerrar a janela baseado no nome "#"
+    kill-window      # Encerrar a janela atual
+     -t "#"          # Encerrar a janela chamada "#"
      -a              # Encerrar todas as janelas
-     -a -t "#"       # Encerrar todas as janelas exceto a com nome "#"
+     -a -t "#"       # Encerrar todas as janelas exceto a "#"
 
-    kill-session     # Encerrar seção corrente
+    kill-session     # Encerrar seção atual
      -t "#"          # Encerrar seção com nome "#"
      -a              # Encerrar todas as seções
-     -a -t "#"       # Encerrar todas as seções exceto a com nome "#"
+     -a -t "#"       # Encerrar todas as seções exceto a "#"
 
 ```
-
 
 ### Teclas de atalhos (comandos)
 
-A maneira de controllar uma seção tmux acoplada é através de uma
-combinação de teclas de prefixo.
+As seções tmux acopladas são controladas através de teclas de atalho. (prefix key)
 
 ```
 ----------------------------------------------------------------------
-  (C-b) = Ctrl + b    # Combinação de prefixos para usar comandos(atalhos).
+  (C-b) = Ctrl + b    # Abre a opção de receber comandos(atalhos).
 
   (M-1) = Meta + 1 -or- Alt + 1
 ----------------------------------------------------------------------
 
   ?           # Lista todos os comandos.
-  :           # Acessa o lugar (prompt command) para receber comandos do tmux
-  r           # Força a redefiniçao do cliente acoplado.
+  :           # Acessa o prompt command do tmux
+  r           # Força a reinicialização do cliente acoplado.
   c           # Cria uma nova janela.
 
-  !           # Retira o painel corrente da janela.
-  %           # Divide o painel corrente em dois para a esquerda e direita.
-  "           # Divide o painel corrente em dois para cima e para baixo.
+  !           # Retira o painel atual da janela.
+  %           # Divide o painel atual em dois. Esquerda e direita.
+  "           # Divide o painel atual em dois. Para cima e para baixo.
 
-  n           # Move para a próxima janela.
-  p           # Move para a janela anterior.
-  {           # Troca o painel corrente pelo anterior.
+  n           # Muda para a próxima janela.
+  p           # Muda para a janela anterior.
+  {           # Troca o painel atual pelo anterior.
   }           # Troca o painel corrent pelo posterior.
 
   s           # Seleciona uma nova seção para o cliente acoplado iterativamente.
-  w           # Seleciona a janela corrente iterativamente.
+  w           # Seleciona a janela atual iterativamente.
   0 to 9      # Seleciona a janela de 0 à 9.
 
   d           # Separa o cliente atual.
   D           # Seleciona um cliente a ser separado.
 
-  &           # Encerra a janela corrente.
-  x           # Encerra o painel corrente.
+  &           # Encerra a janela atual.
+  x           # Encerra o painel atual.
 
   Up, Down    # Move para o painel acima, abaixo, a esquerda ou a direita.
   Left, Right
@@ -100,10 +96,10 @@ combinação de teclas de prefixo.
                        # 4) Principal verticamente.
                        # 5) Mosaico
 
-  C-Up, C-Down    # Altera o tamanho do painel corrente baseado em uma célula.
+  C-Up, C-Down    # Altera o tamanho do painel atual em uma célula.
   C-Left, C-Right
 
-  M-Up, M-Down    # Altera o tamanho do painel corrente baseado em cinco células.
+  M-Up, M-Down    # Altera o tamanho do painel atual em cinco células.
   M-Left, M-Right
 
 ```
@@ -116,16 +112,12 @@ Existe um arquivo chamado tmux.conf, ele pode ser usado para definir opções no
 
 
 ```
-# Exemplo de tmux.conf
-# 2014.10
+# Exemplo tmux.conf
+# 2015.12
 
 
 ### General
 ###########################################################################
-
-# Habilita UTF-8
-setw -g utf8 on
-set-option -g status-utf8 on
 
 # Limite da história de comandos
 set -g history-limit 2048
@@ -134,14 +126,14 @@ set -g history-limit 2048
 set -g base-index 1
 
 # Mouse
-set-option -g mouse-select-pane on
+set-option -g -q mouse on
 
 # Recarregar o arquivo de configuração sem a necessidade de reiniciar o programa
 unbind r
 bind r source-file ~/.tmux.conf
 
 
-### Teclas de atalho
+### Keybinds / Comandos
 ###########################################################################
 
 # Desvincular C-b como prefixo padrão.
@@ -150,7 +142,7 @@ unbind C-b
 # Define um novo prefixo padrão.
 set-option -g prefix `
 
-# Definir prefixos que podem ser usados para voltar para a janela anterior.
+# Voltar janela anterior quando comando for usado duas vezes.
 bind C-a last-window
 bind ` last-window
 
@@ -158,11 +150,11 @@ bind ` last-window
 bind F11 set-option -g prefix C-a
 bind F12 set-option -g prefix `
 
-# Preferencia de teclas de atalho
+# Preferencia de comandos
 setw -g mode-keys vi
 set-option -g status-keys vi
 
-# Mover enter paineis com teclas de orientaçao do vim
+# Alternar enter painéis com teclas de orientaçao do vim
 bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
@@ -174,7 +166,7 @@ bind f next-window
 bind E swap-window -t -1
 bind F swap-window -t +1
 
-# Iterar entre os painéis
+# Dividir painéis
 bind = split-window -h
 bind - split-window -v
 unbind '"'
@@ -184,7 +176,7 @@ unbind %
 bind a send-prefix
 
 
-### Theme
+### Theme // Estilo
 ###########################################################################
 
 # Paleta de cores para a barra de status
@@ -209,8 +201,6 @@ setw -g window-status-bg black
 setw -g window-status-current-fg green
 setw -g window-status-bell-attr default
 setw -g window-status-bell-fg red
-setw -g window-status-content-attr default
-setw -g window-status-content-fg yellow
 setw -g window-status-activity-attr default
 setw -g window-status-activity-fg yellow
 
