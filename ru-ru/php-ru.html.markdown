@@ -651,7 +651,7 @@ use My\Namespace as SomeOtherNamespace;
 
 $cls = new SomeOtherNamespace\MyClass();
 
-*//**********************
+//**********************
 * Позднее статическое связывание.
 *
 */
@@ -691,6 +691,40 @@ ChildClass::test();
 I'm a ParentClass
 But I'm ChildClass
 */
+
+
+/**********************
+*  Магические константы
+*  
+*/
+
+// Возвращает имя текущего класса. Должно быть использовано внутри класса.
+echo "Current class name is " . __CLASS__;
+
+// Возвращает полный путь текущей папки из которой вызван файл.
+echo "Current directory is " . __DIR__;
+
+    // Обычно используют в таких случаях:
+    require __DIR__ . '/vendor/autoload.php';
+
+// Возвращает полный путь к текущему файлу.
+echo "Current file path is " . __FILE__;
+
+// Возвращает имя текущей функции.
+echo "Current function name is " . __FUNCTION__;
+
+// Возвращает номер текущей линии.
+echo "Current line number is " . __LINE__;
+
+// Возвращает имя текущего метода. Возвращает только если вызван внутри метода.
+echo "Current method is " . __METHOD__;
+
+// Возвращает имя текущего пространства имен.
+echo "Current namespace is " . __NAMESPACE__;
+
+// Возвращает имя текущего трейта. Возвращает только если испольщуется внутри трейта.
+echo "Current namespace is " . __TRAIT__;
+
 
 ```
 
