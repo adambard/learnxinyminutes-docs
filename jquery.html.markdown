@@ -38,9 +38,10 @@ $(document).ready(function(){
 function onAction() {
   // This is executed when the event is triggered
 }
-$('#btn').dblclick(onAction); // Double click
+$('#btn').click(onAction); // Calls onAction on click
 
 // Some other common events are:
+$('#btn').dblclick(onAction); // Double click
 $('#btn').hover(onAction); // Hovering over
 $('#btn').focus(onAction); // On focus
 $('#btn').blur(onAction); // Losses focus
