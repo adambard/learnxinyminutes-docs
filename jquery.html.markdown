@@ -28,19 +28,19 @@ var square_p = $('p.square') // Selects paragraphs with the 'square' class
 
 ///////////////////////////////////
 // 2. Events and Effects
-
+// jQuery is very good at handling what happens when an event is triggered
 // A very common event used is the ready event on the document
 // You can use the 'ready' method to wait until the element has finished loading
 $(document).ready(function(){
   // Code won't execute until the document is loaded
 });
-
+// You can also use defined functions
 function onAction() {
   // This is executed when the event is triggered
 }
+$('#btn').dblclick(onAction); // Double click
 
 // Some other common events are:
-$('#btn').dblclick(onAction); // Double click
 $('#btn').hover(onAction); // Hovering over
 $('#btn').focus(onAction); // On focus
 $('#btn').blur(onAction); // Losses focus
@@ -53,10 +53,6 @@ $('#btn').mousemove(onAction); // When the mouse is moved
 $('#btn').mouseenter(onAction); // Mouse enters the element
 $('#btn').mouseleave(onAction); // Mouse leaves the element
 
-// You can also use an anonymous function
-$('#btn').hover(function(){
-  // Executed on hover
-});
 
 // These can all also trigger the event instead of handling it
 // by simply not giving any parameters
