@@ -2,7 +2,7 @@
 language: xml
 filename: learnxml-nl.xml
 contributors:
-  - ["Jo„o Farias", "https://github.com/JoaoGFarias"]
+  - ["Jo√£o Farias", "https://github.com/JoaoGFarias"]
 translators:
   - ["Frank van Gemeren", "https://github.com/frvge"]
 lang: nl-nl
