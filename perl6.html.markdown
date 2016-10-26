@@ -808,16 +808,24 @@ die 'Error!'; #=> Error!
 die X::AdHoc.new(payload => 'Error!');
 
 # In Perl 6, `orelse` is similar to the `or` operator, except it only matches
-# `undef` instead of anything evaluating as false.
+# undefined variables instead of anything evaluating as false.
+# Undefined values include: `Nil`, `Mu` and `Failure` as well as `Int`, `Str`
+# and other types that have not been initialized to any value yet.
+# You can check if something is defined or not using the defined method:
+my $uninitialized; 
+say $uninitiazilzed.defined; #> False
 # When using `orelse` it will disarm the exception and alias $_ to that failure
 # This will avoid it being automatically handled and printing lots of scary
 # error messages to the screen.
 # We can use the exception method on $_ to access the exception
 open 'foo' orelse say "Something happened {.exception}";
-# This also works, and will print out the object returned even if it's
-# not a failure:
+# This also works:
 open 'foo' orelse say "Something happened $_"; #> Something happened
               #>  Failed to open file foo: no such file or directory
+# Both of those above work but in case we get an object from the left side that
+# is not a failure we will probably get a warning.  We see below how we can use
+# `try` and `CATCH` to be more specific with the exceptions we catch.
+
 ## Using `try` and `CATCH`
 # By using `try` and `CATCH` you can contain and handle exceptions without
 # disrupting the rest of the program. `try` will set the last exception to
