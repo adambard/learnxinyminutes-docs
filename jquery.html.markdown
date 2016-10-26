@@ -35,13 +35,6 @@ $(document).ready(function(){
   // Code won't execute until the document is loaded
 });
 
-// jQuery is very good at triggering events
-// and also handling what happens when an event is triggered
-$('#button').click(); // Fires a click event on $('#button')
-$('#button').click(function(){
-  // Code here gets executed when the #button element is clicked
-});
-
 function onAction() {
   // This is executed when the event is triggered
 }
@@ -114,7 +107,7 @@ tables.animate({margin-top:"+=50", height: "100px"}, 500, myFunction);
 // 3. Manipulation
 
 // These are similar to effects but can do more
-$('div').addClass('div') // Adds class div to all div taming-slim-20
+$('div').addClass('div'); // Adds class div to all div taming-slim-20
 
 // Common manipulation methods
 $('p').append('Hello world'); // Adds to end of element
