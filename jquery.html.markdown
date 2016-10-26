@@ -28,23 +28,17 @@ var square_p = $('p.square') // Selects paragraphs with the 'square' class
 
 ///////////////////////////////////
 // 2. Events and Effects
-
+// jQuery is very good at handling what happens when an event is triggered
 // A very common event used is the ready event on the document
 // You can use the 'ready' method to wait until the element has finished loading
 $(document).ready(function(){
   // Code won't execute until the document is loaded
 });
-
-// jQuery is very good at triggering events
-// and also handling what happens when an event is triggered
-$('#button').click(); // Fires a click event on $('#button')
-$('#button').click(function(){
-  // Code here gets executed when the #button element is clicked
-});
-
+// You can also use defined functions
 function onAction() {
   // This is executed when the event is triggered
 }
+$('#btn').click(onAction); // Invokes onAction on click
 
 // Some other common events are:
 $('#btn').dblclick(onAction); // Double click
@@ -60,10 +54,6 @@ $('#btn').mousemove(onAction); // When the mouse is moved
 $('#btn').mouseenter(onAction); // Mouse enters the element
 $('#btn').mouseleave(onAction); // Mouse leaves the element
 
-// You can also use an anonymous function
-$('#btn').hover(function(){
-  // Executed on hover
-});
 
 // These can all also trigger the event instead of handling it
 // by simply not giving any parameters
@@ -114,7 +104,7 @@ tables.animate({margin-top:"+=50", height: "100px"}, 500, myFunction);
 // 3. Manipulation
 
 // These are similar to effects but can do more
-$('div').addClass('div') // Adds class div to all div taming-slim-20
+$('div').addClass('div'); // Adds class div to all div taming-slim-20
 
 // Common manipulation methods
 $('p').append('Hello world'); // Adds to end of element
