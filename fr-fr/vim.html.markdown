@@ -13,8 +13,8 @@ lang: fr-fr
 [Vim](www.vim.org)
 (Vi IMproved) est le clone le plus populaire de l'éditeur de texte vi sous Unix.
 Vim est un éditeur de texte omniprésent sur les systèmes de type Unix, et a pour
-objectif la rapidité ainsi que l'augmentation de la productivité. Ce dernier a
-de nombreux raccourcis claviers pour une navigation et une édition plus rapide.
+objectif la rapidité ainsi que l'augmentation de la productivité. Il a de 
+nombreux raccourcis claviers pour une navigation et une édition plus rapide.
 
 ## Navigation basique avec Vim
 
@@ -25,7 +25,7 @@ de nombreux raccourcis claviers pour une navigation et une édition plus rapide.
     :wq              # Sauvegarde le fichier actuel et quitte vim
     :q!              # Quitte vim sans sauvegarder
                      # ! *force* l'exécution de :q, ce qui par conséquent 
-                        oblige vim à quitter sans sauvegarder
+                     # oblige vim à quitter sans sauvegarder
     :x               # Sauvegarde le fichier et quitte vim (raccourcis de :wq)
 
     u                # Annuler
@@ -61,7 +61,7 @@ de nombreux raccourcis claviers pour une navigation et une édition plus rapide.
     f<               # Se déplace en avant jusqu'à <
     t<               # Se déplace en avant juste avant <
     
-    # Se déplacer vers un mot
+    # Se déplacer dans un mot
 
     w                # Avance d'un mot
     b                # Recule d'un mot
@@ -104,7 +104,7 @@ Mode Ex        - pour entrer des commandes avec ':'
     x                # Supprime le caractère sous le curseur
 ```
 
-## La 'Grammaire' de Vim
+## La "Grammaire" de Vim
 
 Vim peut être vu comme un ensemble de commande sous la forme
 'Verbe-Modificateur-Nom' :
