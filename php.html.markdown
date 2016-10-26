@@ -283,7 +283,7 @@ if (false) {
 
 if (false) {
     print 'Does not get printed';
-} elseif(true) {
+} elseif (true) {
     print 'Does';
 }
 
@@ -305,7 +305,7 @@ echo $b ?? 'b is not set'; // prints 'Does print'
 $x = 0;
 if ($x === '0') {
     print 'Does not print';
-} elseif($x == '1') {
+} elseif ($x == '1') {
     print 'Does not print';
 } else {
     print 'Does print';
@@ -467,7 +467,7 @@ function variable($word, ...$list) {
 	}
 }
 
-variable("Separate", "Hello", "World") // Separate || Hello | World | 
+variable("Separate", "Hello", "World") // Separate || Hello | World |
 
 /********************************
  * Includes
@@ -530,7 +530,8 @@ class MyClass
     private $priv   = 'private';   // Accessible within the class only
 
     // Create a constructor with __construct
-    public function __construct($instanceProp) {
+    public function __construct($instanceProp)
+    {
         // Access instance variables with $this
         $this->instanceProp = $instanceProp;
     }
@@ -545,17 +546,19 @@ class MyClass
     final function youCannotOverrideMe()
     {
     }
-    
+
     // Magic Methods
-    
+
     // what to do if Object is treated as a String
-    public function __toString() {
+    public function __toString()
+    {
         return $property;
     }
-    
+
     // opposite to __construct()
     // called when object is no longer referenced
-    public function __destruct() {
+    public function __destruct()
+    {
         print "Destroying";
     }
 
@@ -755,11 +758,15 @@ $cls = new SomeOtherNamespace\MyClass();
 *
 */
 
-class ParentClass {
-    public static function who() {
+class ParentClass
+{
+    public static function who()
+    {
         echo "I'm a " . __CLASS__ . "\n";
     }
-    public static function test() {
+
+    public static function test()
+    {
         // self references the class the method is defined within
         self::who();
         // static references the class the method was invoked on
@@ -773,8 +780,10 @@ I'm a ParentClass
 I'm a ParentClass
 */
 
-class ChildClass extends ParentClass {
-    public static function who() {
+class ChildClass extends ParentClass
+{
+    public static function who()
+    {
         echo "But I'm " . __CLASS__ . "\n";
     }
 }
