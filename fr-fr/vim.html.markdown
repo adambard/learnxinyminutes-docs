@@ -11,7 +11,7 @@ lang: fr-fr
 
 
 [Vim](www.vim.org)
-(Vi IMproved) est le clone le plus populaire de l'éditeur de text vi sous Unix.
+(Vi IMproved) est le clone le plus populaire de l'éditeur de texte vi sous Unix.
 Vim est un éditeur de texte omniprésent sur les systèmes de type Unix, et a pour
 objectif la rapidité ainsi que l'augmentation de la productivité. Ce dernier a
 de nombreux raccourcis claviers pour une navigation et une édition plus rapide.
@@ -24,7 +24,7 @@ de nombreux raccourcis claviers pour une navigation et une édition plus rapide.
     :w               # Sauvegarde le fichier actuel
     :wq              # Sauvegarde le fichier actuel et quitte vim
     :q!              # Quitte vim sans sauvegarder
-                     # ! *force* l'éxecution de :q, ce qui par conséquent 
+                     # ! *force* l'exécution de :q, ce qui par conséquent 
                         oblige vim à quitter sans sauvegarder
     :x               # Sauvegarde le fichier et quitte vim (raccourcis de :wq)
 
@@ -36,7 +36,7 @@ de nombreux raccourcis claviers pour une navigation et une édition plus rapide.
     k                # Déplace le curseur vers le haut
     l                # Déplace le curseur vers la droite
 
-    # Movements au sein d'une ligne
+    # Mouvements au sein d'une ligne
 
     0                # Va au début de la ligne
     $                # Va à la fin de la ligne
@@ -44,10 +44,10 @@ de nombreux raccourcis claviers pour une navigation et une édition plus rapide.
 
     # Rechercher dans un texte
 
-    /mot             # Surligne toutes les occurences du mot après le curseur
-    ?mot             # Surligne toutes les occurences du mot avant le curseur
-    n                # Déplace le curseur sur la prochaine occurence du mot recherché
-    N                # Déplace le curseur sur la précédente occurence du mot recherché
+    /mot             # Surligne toutes les occurrences du mot après le curseur
+    ?mot             # Surligne toutes les occurrences du mot avant le curseur
+    n                # Déplace le curseur sur la prochaine occurrence du mot recherché
+    N                # Déplace le curseur sur la précédente occurrence du mot recherché
 
     :%s/abc/def/g    # Transforme les 'abc' en 'def' sur chaque ligne du texte
     :s/abc/def/g     # Transforme les 'abc' en 'def' sur la ligne actuelle
@@ -164,8 +164,8 @@ Quelques exemples importants de 'Verbes', 'Modificateurs', et de 'Noms' :
 
 Les macros sont des actions enregistrables.
 Quand on commence à enregistrer une macro, Vim enregistre **toutes** les actions
-et les commandes que vous utilisez, jusqu'à ce que vous arretiez d'enregistrer.
-Lorsque vous appellez une macro, elle applique exactement les mêmes actions et 
+et les commandes que vous utilisez, jusqu'à ce que vous arrêtiez d'enregistrer.
+Lorsque vous appelez une macro, elle applique exactement les mêmes actions et 
 commandes sur le texte sélectionné.
 
 ```
@@ -210,16 +210,16 @@ set number
 
 " Options d'indentation, à changer en fonction des préférences personnelles
 
-" Nombre d'espace visuel par tabulation
+" Nombre d'espaces visuels par tabulation
 set tabstop=4
 
-" Nombre d'espace par tabulation
+" Nombre d'espaces par tabulation
 set softtabstop=4
 
-" Nombre d'espace indenté avec les opérations d'indentations (>> et <<)
+" Nombre d'espaces indentés avec les opérations d'indentations (>> et <<)
 set shiftwidth=4
 
-" Convertit les tabulations en espaces
+" Convertis les tabulations en espaces
 set expandtab
 
 " Active des tabulations et des espaces intelligents pour l'indentation et l'alignement
