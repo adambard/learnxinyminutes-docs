@@ -102,7 +102,7 @@ public class LearnJava {
 
         // Integer - 32-bit signed two's complement integer
         // (-2,147,483,648 <= int <= 2,147,483,647)
-        int fooInt = 1;
+        int bazInt = 1;
 
         // Long - 64-bit signed two's complement integer
         // (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
