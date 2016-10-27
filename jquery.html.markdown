@@ -66,7 +66,7 @@ $('#btn').on(
 );
 
 // You can move and hide elements with some effect methods
-$('.table').hide(); # Hides the element(s)
+$('.table').hide(); // Hides the element(s)
 
 // Note: calling a function in these methods will still hide the element
 $('.table').hide(function(){
@@ -121,7 +121,7 @@ $('p').height(); // Gets only the first 'p' tag's height
 // You can use each to loop through all the elements
 var heights = [];
 $('p').each(function() {
-  heights.push($(this.height)); // Adds all 'p' tag heights to array
+  heights.push($(this).height()); // Adds all 'p' tag heights to array
 });
 
 
