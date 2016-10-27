@@ -16,7 +16,7 @@ La recherche est un des principaux problèmes dans le domaine de l'informatique.
 
 ## Introduction
 
-Une façon simple d'implémenter la recherche est de faire une recherche linéaire. Cependant, cette approche prend beaucoup de temps, et ce temps augmente linéairement avec la quantité de données. i.e., partons du premier élément d'un tableau t[], et un par un, comparons x avec chaque élément de t[]. Si x est égal à un élément, nous retournons l'index, si x n'égale aucun élément, nous retournons -1.
+Une façon simple d'implémenter la recherche est de faire une recherche linéaire. Cependant, cette approche prend beaucoup de temps, et ce temps augmente linéairement avec la quantité de données. Par exemple, partons du premier élément d'un tableau t[], et un par un, comparons x avec chaque élément de t[]. Si x est égal à un élément, nous retournons l'index, si x n'égale aucun élément, nous retournons -1.
 
 ```
 Recherche Linéaire: O (n)               Temps Linéaire
