@@ -198,7 +198,20 @@ public class LearnJava {
         builderConcatenated.append("the StringBuilder class.");
         System.out.println(builderConcatenated.toString()); // only now is the string built 
         // Output: You can use the StringBuilder class.
-
+        
+        // StringBuilder is efficient when the fully constructed String is not required until the end of some processing.
+        StringBuilder stringBuilder = new StringBuilder();
+        String inefficientString = "";
+        for(int i = 0 ; i < 10; i++){
+            stringBuilder.append(i).append(" ");
+            inefficientString += i + " ";
+        }
+        System.out.println(inefficientString);
+        System.out.println(stringBuilder.toString());
+        // inefficientString requires a lot more work to produce, as it generates a String on every loop iteration.
+        // Simple concatenation with + is compiled to a StringBuilder and toString()
+        // Avoid string concatenation in loops.
+        
         // #3 - with String formatter
         // Another alternative way to create strings. Fast and readable.
         String.format("%s may prefer %s.", "Or you", "String.format()");
