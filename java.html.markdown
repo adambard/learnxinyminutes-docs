@@ -95,6 +95,12 @@ public class LearnJava {
         // Byte - 8-bit signed two's complement integer
         // (-128 <= byte <= 127)
         byte fooByte = 100;
+        
+        // If you would like to interpret a byte as an unsigned integer
+        // then this simple operation can help
+        int unsignedIntLessThan256 = 0xff & fooByte;
+        // this contrasts a cast which can be negative.
+        int signedInt = (int) fooByte;
 
         // Short - 16-bit signed two's complement integer
         // (-32,768 <= short <= 32,767)
@@ -110,7 +116,9 @@ public class LearnJava {
         // L is used to denote that this variable value is of type Long;
         // anything without is treated as integer by default.
 
-        // Note: Java has no unsigned types.
+        // Note: byte, short, int and long are signed. They can have positive and negative values.
+        // There are no unsigned variants.
+        // char, however, is 16-bit unsigned.
 
         // Float - Single-precision 32-bit IEEE 754 Floating Point
         // 2^-149 <= float <= (2-2^-23) * 2^127
