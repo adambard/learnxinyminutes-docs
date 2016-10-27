@@ -6,8 +6,8 @@ contributors:
   - ["Bruno Henrique - Garu", "http://garulab.com"]
   - ["Jean Matheus Souto", "http://jeanmatheussouto.github.io"]
 translators:
-  - ["Alan Peterson Carvalho Silva", "https://twitter.com/DemonKart"]
   - ["Katyanna Moura", "https://twitter.com/amelie_kn"]
+  - ["Alan Peterson Carvalho Silva", "https://twitter.com/DemonKart"]
 ---
 
 ```ruby
@@ -440,17 +440,8 @@ Algo.new.qux # => 'qux'
 
 ## Recursos adicionais
 
-- [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - A variant of this reference with in-browser challenges.
-- [Documentação oficial](http://www.ruby-doc.org/core-2.1.1/)
-- [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
-- [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - Uma [versão grátis](http://ruby-doc.com/docs/ProgrammingRuby/) mais antiga está disponível online.
-- [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - Um guia mantido pela comunidade de estilo de código Ruby.
-=======
-## Mais sobre Ruby
-
-- [Documentação oficial](http://www.ruby-doc.org/core-2.1.1/)
 - [Aprenda Ruby com desafios](http://www.learneroo.com/modules/61/nodes/338) - Uma coleção de desafios para testar a linguagem.
+- [Documentação oficial](http://www.ruby-doc.org/core-2.1.1/)
 - [Ruby a partir de outras linguagens](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
 - [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/)- Um mais antigo [free edition](http://ruby-doc.com/docs/ProgrammingRuby/) e tambem uma versão online disponível.
 - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - Uma versão colaborativa de um *style-guide*
->>>>>>> df4dbee36f5a3b9b63292a2346327f8b7d282a28
