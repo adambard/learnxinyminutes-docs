@@ -651,6 +651,7 @@ use My\Namespace as SomeOtherNamespace;
 
 $cls = new SomeOtherNamespace\MyClass();
 
+
 /**********************
 * Позднее статическое связывание.
 *
