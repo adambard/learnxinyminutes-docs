@@ -1,7 +1,7 @@
 ---
 category: language
 language: perl6
-filename: learnperl6.pl
+filename: learnperl6.p6
 contributors:
     - ["vendethiel", "http://github.com/vendethiel"]
 ---
@@ -798,19 +798,47 @@ class Item does PrintableVal {
 
 ### Exceptions
 # Exceptions are built on top of classes, in the package `X` (like `X::IO`).
-# You can access the last exception with the special variable `$!`
-# (use `$_` in a `CATCH` block) Note: This has no relation to $!variables.
+# In Perl6 exceptions are automatically 'thrown'
+open 'foo'; #> Failed to open file foo: no such file or directory
+# It will also print out what line the error was thrown at and other error info
 
 # You can throw an exception using `die`:
-open 'foo' or die 'Error!'; #=> Error!
+die 'Error!'; #=> Error!
 # Or more explicitly:
 die X::AdHoc.new(payload => 'Error!');
 
+# In Perl 6, `orelse` is similar to the `or` operator, except it only matches
+# undefined variables instead of anything evaluating as false.
+# Undefined values include: `Nil`, `Mu` and `Failure` as well as `Int`, `Str`
+# and other types that have not been initialized to any value yet.
+# You can check if something is defined or not using the defined method:
+my $uninitialized; 
+say $uninitiazilzed.defined; #> False
+# When using `orelse` it will disarm the exception and alias $_ to that failure
+# This will avoid it being automatically handled and printing lots of scary
+# error messages to the screen.
+# We can use the exception method on $_ to access the exception
+open 'foo' orelse say "Something happened {.exception}";
+# This also works:
+open 'foo' orelse say "Something happened $_"; #> Something happened
+              #>  Failed to open file foo: no such file or directory
+# Both of those above work but in case we get an object from the left side that
+# is not a failure we will probably get a warning.  We see below how we can use
+# `try` and `CATCH` to be more specific with the exceptions we catch.
+
 ## Using `try` and `CATCH`
 # By using `try` and `CATCH` you can contain and handle exceptions without
-# disrupting the rest of the program.
+# disrupting the rest of the program. `try` will set the last exception to
+# the special variable `$!` Note: This has no relation to $!variables.
+try open 'foo';
+say "Well, I tried! $!" if defined $!; #> Well, I tried! Failed to open file
+                                       #foo: no such file or directory
+# Now, what if we want more control over handling the exception?
 # Unlike many other languages, in Perl 6, you put the `CATCH` block *within*
-# the block to `try`. By default, a `try` has a `CATCH` block that catches
+# the block to `try`. Similar to how $_ was set when we 'disarmed' the
+# exception with orelse, we also use $_ in the CATCH block.
+# Note: ($! is only set *after* the `try` block)
+# By default, a `try` has a `CATCH` block that catches
 # any exception (`CATCH { default {} }`).
 
 try { my $a = (0 %% 0);  CATCH { say "Something happened: $_" } }
@@ -877,7 +905,7 @@ module Hello::World { # Bracketed form
 unit module Parse::Text; # file-scoped form
 
 grammar Parse::Text::Grammar { # A grammar is a package, which you could `use`
-}
+}                    # You will learn more about grammars in the regex section
 
 # As said before, any part of the six model is also a package.
 # Since `JSON::Tiny` uses (its own) `JSON::Tiny::Actions` class, you can use it:
@@ -889,25 +917,33 @@ my $actions = JSON::Tiny::Actions.new;
 # In Perl 6, you get different behaviors based on how you declare a variable.
 # You've already seen `my` and `has`, we'll now explore the others.
 
-## * `our` (happens at `INIT` time -- see "Phasers" below)
+## * `our` declarations happen at `INIT` time -- (see "Phasers" below)
 # It's like `my`, but it also creates a package variable.
 # (All packagish things (`class`, `role`, etc) are `our` by default)
-module Foo::Bar {
-  our $n = 1; # note: you can't put a type constraint on an `our` variable
-  our sub inc {
+module Var::Increment {
+  our $our-var = 1; # Note: you can't put a type constraint like Int on an
+  my $my-var = 22;  # `our` variable.
+  our sub Inc {
+
     our sub available { # If you try to make inner `sub`s `our`...
                         # Better know what you're doing (Don't !).
-      say "Don't do that. Seriously. You'd get burned.";
+      say "Don't do that. Seriously. You'll get burned.";
     }
+
     my sub unavailable { # `my sub` is the default
-      say "Can't access me from outside, I'm my !";
+      say "Can't access me from outside, I'm 'my'!";
     }
-    say ++$n; # increment the package variable and output its value
+    say ++$our-var; # Increment the package variable and output its value
   }
+
 }
-say $Foo::Bar::n; #=> 1
-Foo::Bar::inc; #=> 2
-Foo::Bar::inc; #=> 3
+say $Var::Increment::our-var; #=> 1 This works
+say $Var::Increment::my-var; #=> (Any) This will not work.
+
+Var::Increment::Inc; #=> 2
+Var::Increment::Inc; #=> 3 # Notice how the value of $our-var was
+                         # retained.
+Var::Increment::unavailable; #> Could not find symbol '&unavailable'
 
 ## * `constant` (happens at `BEGIN` time)
 # You can use the `constant` keyword to declare a compile-time variable/symbol:
@@ -944,10 +980,11 @@ for ^5 -> $a {
 
 ### Phasers
 # Phasers in Perl 6 are blocks that happen at determined points of time in your
-#  program. When the program is compiled, when a for loop runs, when you leave a
-#  block, when an exception gets thrown ... (`CATCH` is actually a phaser !)
+# program.  They are called phasers because they mark a change in the phase
+# of a program.  For example, when the program is compiled, a for loop runs,
+# you leave a block, or an exception gets thrown. (`CATCH` is actually a phaser !)
 # Some of them can be used for their return values, some of them can't
-#  (those that can have a "[*]" in the beginning of their explanation text).
+# (those that can have a "[*]" in the beginning of their explanation text).
 # Let's have a look !
 
 ## * Compile-time phasers
@@ -1046,15 +1083,25 @@ constant thrice = gather for ^3 { say take $_ }; # Doesn't print anything
 # versus:
 constant thrice = eager gather for ^3 { say take $_ }; #=> 0 1 2
 
-# - `lazy` - Defer actual evaluation until value is fetched (forces lazy context)
-# Not yet implemented !!
+### Iterables
+# Iterables are objects that can be iterated similar to the `for` construct
+# `flat`, flattens iterables:
+say (1, 10, (20, 10) ); #> (1 10 (20 10)) Notice how grouping is maintained
+say (1, 10, (20, 10) ).flat; #> (1 10 20 10) Now the iterable is flat
 
+# - `lazy` - Defer actual evaluation until value is fetched (forces lazy context)
+my @lazy-array = (1..100).lazy;
+say @lazy-array.is-lazy; #> True # Check for lazyness with the `is-lazy` method. 
+say @lazy-array; #> [...] List has not been iterated on!
+my @lazy-array { .print }; # This works and will only do as much work as is
+# needed.
+[//]: # ( TODO explain that gather/take and map are all lazy)
 # - `sink` - An `eager` that discards the results (forces sink context)
 constant nilthingie = sink for ^3 { .say } #=> 0 1 2
 say nilthingie.perl; #=> Nil
 
-# - `quietly` - Supresses warnings
-# Not yet implemented !
+# - `quietly` blocks will suppress warnings:
+quietly { warn 'This is a warning!' }; #=> No output
 
 # - `contend` - Attempts side effects under STM
 # Not yet implemented !
@@ -1064,7 +1111,7 @@ say nilthingie.perl; #=> Nil
 ## Everybody loves operators ! Let's get more of them
 
 # The precedence list can be found here:
-# http://perlcabal.org/syn/S03.html#Operator_precedence
+# https://docs.perl6.org/language/operators#Operator_Precedence
 # But first, we need a little explanation about associativity:
 
 # * Binary operators:
@@ -1258,7 +1305,7 @@ say @fib[^10]; #=> 1 1 2 3 5 8 13 21 34 55
 #     (grammars are actually classes)
 #  - Earliest declaration wins
 say so 'a' ~~ /a/; #=> True
-say so 'a' ~~ / a /; # More readable with some spaces!
+say so 'a' ~~ / a /; #=> True #  More readable with some spaces!
 
 # In all our examples, we're going to use the smart-matching operator against
 #  a regexp. We're converting the result using `so`, but in fact, it's
@@ -1274,50 +1321,63 @@ say so 'a' ~~ / a /; # More readable with some spaces!
 
 # In Perl 6, you can have any alphanumeric as a literal,
 # everything else has to be escaped, using a backslash or quotes.
-say so 'a|b' ~~ / a '|' b /; # `True`. Wouln't mean the same if `|` wasn't escaped
+say so 'a|b' ~~ / a '|' b /; # `True`. Wouldn't mean the same if `|` wasn't escaped
 say so 'a|b' ~~ / a \| b /; # `True`. Another way to escape it.
 
 # The whitespace in a regexp is actually not significant,
-#  unless you use the `:s` (`:sigspace`, significant space) modifier.
-say so 'a b c' ~~ / a b c /; # `False`. Space is not significant here
-say so 'a b c' ~~ /:s a b c /; # `True`. We added the modifier `:s` here.
+#  unless you use the `:s` (`:sigspace`, significant space) adverb.
+say so 'a b c' ~~ / a  b  c /; #> `False`. Space is not significant here
+say so 'a b c' ~~ /:s a b c /; #> `True`. We added the modifier `:s` here.
+# If we use only one space between strings in a regex, Perl 6 will warn us:
+say so 'a b c' ~~ / a b c /; #> 'False' #> Space is not significant here; please
+# use quotes or :s (:sigspace) modifier (or, to suppress this warning, omit the
+# space, or otherwise change the spacing)
+# To fix this and make the spaces less ambiguous,  either use at least two
+# spaces between strings or use the `:s` adverb.
 
+# As we saw before, we can embed the `:s` inside the slash delimiters, but we can
+# also put it outside of them if we specify `m` for 'match':
+say so 'a b c' ~~ m:s/a  b  c/; #> `True`
+# By using `m` to specify 'match' we can also use delimiters other than slashes:
+say so 'abc' ~~ m{a  b  c}; #> `True`
+# Use the :i adverb to specify case insensitivity:
+say so 'ABC' ~~ m:i{a  b  c}; #> `True`
 # It is, however, important as for how modifiers (that you're gonna see just below)
 #  are applied ...
 
 ## Quantifying - `?`, `+`, `*` and `**`.
 # - `?` - 0 or 1
-so 'ac' ~~ / a b c /; # `False`
-so 'ac' ~~ / a b? c /; # `True`, the "b" matched 0 times.
-so 'abc' ~~ / a b? c /; # `True`, the "b" matched 1 time.
+so 'ac' ~~ / a  b  c /; # `False`
+so 'ac' ~~ / a  b?  c /; # `True`, the "b" matched 0 times.
+so 'abc' ~~ / a  b?  c /; # `True`, the "b" matched 1 time.
 
 # ... As you read just before, whitespace is important because it determines
 #  which part of the regexp is the target of the modifier:
-so 'def' ~~ / a b c? /; # `False`. Only the `c` is optional
-so 'def' ~~ / ab?c /; # `False`. Whitespace is not significant
+so 'def' ~~ / a  b  c? /; # `False`. Only the `c` is optional
+so 'def' ~~ / a  b?  c /; # `False`. Whitespace is not significant
 so 'def' ~~ / 'abc'? /; # `True`. The whole "abc" group is optional.
 
 # Here (and below) the quantifier applies only to the `b`
 
 # - `+` - 1 or more
-so 'ac' ~~ / a b+ c /; # `False`; `+` wants at least one matching
-so 'abc' ~~ / a b+ c /; # `True`; one is enough
-so 'abbbbc' ~~ / a b+ c /; # `True`, matched 4 "b"s
+so 'ac' ~~ / a  b+  c /; # `False`; `+` wants at least one matching
+so 'abc' ~~ / a  b+  c /; # `True`; one is enough
+so 'abbbbc' ~~ / a  b+  c /; # `True`, matched 4 "b"s
 
 # - `*` - 0 or more
-so 'ac' ~~ / a b* c /; # `True`, they're all optional.
-so 'abc' ~~ / a b* c /; # `True`
-so 'abbbbc' ~~ / a b* c /; # `True`
-so 'aec' ~~ / a b* c /; # `False`. "b"(s) are optional, not replaceable.
+so 'ac' ~~ / a  b*  c /; # `True`, they're all optional.
+so 'abc' ~~ / a  b*  c /; # `True`
+so 'abbbbc' ~~ / a  b*  c /; # `True`
+so 'aec' ~~ / a  b*  c /; # `False`. "b"(s) are optional, not replaceable.
 
 # - `**` - (Unbound) Quantifier
 # If you squint hard enough, you might understand
 #  why exponentation is used for quantity.
-so 'abc' ~~ / a b ** 1 c /; # `True` (exactly one time)
-so 'abc' ~~ / a b ** 1..3 c /; # `True` (one to three times)
-so 'abbbc' ~~ / a b ** 1..3 c /; # `True`
-so 'abbbbbbc' ~~ / a b ** 1..3 c /; # `False` (too much)
-so 'abbbbbbc' ~~ / a b ** 3..* c /; # `True` (infinite ranges are okay)
+so 'abc' ~~ / a  b**1  c /; # `True` (exactly one time)
+so 'abc' ~~ / a  b**1..3  c /; # `True` (one to three times)
+so 'abbbc' ~~ / a  b**1..3  c /; # `True`
+so 'abbbbbbc' ~~ / a  b**1..3  c /; # `False` (too much)
+so 'abbbbbbc' ~~ / a  b**3..*  c /; # `True` (infinite ranges are okay)
 
 # - `<[]>` - Character classes
 # Character classes are the equivalent of PCRE's `[]` classes, but
@@ -1561,7 +1621,18 @@ for <a b c> {
 
 If you want to go further, you can:
 
- - Read the [Perl 6 Advent Calendar](http://perl6advent.wordpress.com/). This is probably the greatest source of Perl 6 information, snippets and such.
+ - Read the [Perl 6 Docs](https://docs.perl6.org/). This is a great
+ resource on Perl6.  If you are looking for something, use the search bar.
+ This will give you a dropdown menu of all the pages referencing your search
+ term (Much better than using Google to find Perl 6 documents!)
+ - Read the [Perl 6 Advent Calendar](http://perl6advent.wordpress.com/). This
+ is a great source of Perl 6 snippets and explainations.  If the docs don't
+ describe something well enough, you may find more detailed information here.
+ This information may be a bit older but there are many great examples and
+ explainations.  Posts stopped at the end of 2015 when the language was declared
+ stable and Perl 6.c was released.
  - Come along on `#perl6` at `irc.freenode.net`. The folks here are always helpful.
  - Check the [source of Perl 6's functions and classes](https://github.com/rakudo/rakudo/tree/nom/src/core). Rakudo is mainly written in Perl 6 (with a lot of NQP, "Not Quite Perl", a Perl 6 subset easier to implement and optimize).
  - Read [the language design documents](http://design.perl6.org). They explain P6 from an implementor point-of-view, but it's still very interesting.
+
+ [//]: # ( vim: set filetype=perl softtabstop=2 shiftwidth=2 expandtab cc=80 : )
