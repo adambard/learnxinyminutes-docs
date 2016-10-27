@@ -9,7 +9,7 @@ filename: jquery-fr.js
 lang: fr-fr
 ---
 
-jQuery est une bibliothèque JavaScript dont le but est de permettre de "faire plus en écrivant moins" ( do more, write less ). Elle facilite l'écriture de nombreuses fonctions, notamment au niveau d'AJAX, de la gestion d'événements, ou encore de la manipulation de documents. 
+jQuery est une bibliothèque JavaScript dont le but est de permettre de "faire plus en écrivant moins" (do more, write less). Elle facilite l'écriture de nombreuses fonctions, notamment au niveau d'AJAX, de la gestion d'événements, ou encore de la manipulation de documents. 
 C'est pourquoi aujourd'hui, jQuery est utilisée par de nombreuses grandes entreprises et par des développeurs du monde entier.
 
 Étant donné que jQuery est une bibliothèque JavaScript, vous devriez d'abord [apprendre le JavaScript](https://learnxinyminutes.com/docs/fr-fr/javascript-fr/)
@@ -22,11 +22,11 @@ C'est pourquoi aujourd'hui, jQuery est utilisée par de nombreuses grandes entre
 // On utilise les sélecteurs de jQuery pour sélectionner des éléments
 var page = $(window); // Sélectionne tout le viewport
 
-// Les sélecteurs peuvent aussi être ceux du CSS
+// On peut aussi utiliser des sélecteurs CSS
 var paragraph = $('p'); // Sélectionne tous les éléments paragraphes
 var table1 = $('#table1'); // Sélectionne l'élément qui a l'id 'table1'
-var squares = $('.square'); // Sélectionne tous les éléments de la classe 'square'
-var square_p = $('p.square') // Sélectionne tous les paragraphes de la classe 'square'
+var squares = $('.square'); // Sélectionne tous les éléments avec la classe 'square'
+var square_p = $('p.square') // Sélectionne tous les paragraphes avec la classe 'square'
 
 
 ///////////////////////////////////
@@ -35,7 +35,7 @@ var square_p = $('p.square') // Sélectionne tous les paragraphes de la classe '
 // L'événement 'ready' est très souvent utilisé sur le document
 // On utilise la méthode 'ready' pour attendre que l'élément ait fini de se charger
 $(document).ready(function(){
-  // Ce code ne s'exécutera pas avant que le document soit chargé ( prêt )
+  // Ce code ne s'exécutera pas avant que le document soit chargé (prêt)
 });
 // On peut aussi utiliser des fonctions définies
 function onAction() {
@@ -48,11 +48,11 @@ function onAction() {
 }
 
 // D'autres évènements communs :
-$('#btn').dblclick(onAction); // Double click
+$('#btn').dblclick(onAction); // Double clic
 $('#btn').hover(onAction); // Survol de la souris
 $('#btn').focus(onAction); // Gain du focus
 $('#btn').blur(onAction); // Perte du focus
-$('#btn').submit(onAction); // Envoi ( d'un formulaire )
+$('#btn').submit(onAction); // Envoi (d'un formulaire)
 $('#btn').select(onAction); // Quand un élement est sélectionné
 $('#btn').keydown(onAction); // Quand une touche est enfoncée
 $('#btn').keyup(onAction); // Quand une touche est relâchée
@@ -70,14 +70,14 @@ $('#btn').hover(function(){
 // simplement en ne passant aucun paramètre à la méthode
 $('#btn').dblclick(); // Simule un double clic sur l'élément
 
-// On peut gérer plusieurs événements en utilisant le sélecteur une seulefois
+// On peut gérer plusieurs événements en utilisant le sélecteur une seule fois
 $('#btn').on(
   {dblclick: myFunction1} // Déclenché à chaque double clic
   {blur: myFunction1} // Déclenché quand l'élément perd le focus
 );
 
 // On peut déplacer et cacher des éléments grâce à des fonctions d'effets
-$('.table').hide(); # Cache le(s) élément(s)
+$('.table').hide(); // Cache le(s) élément(s)
 
 // Note: même avec un appel à une fonction dans ces méthodes 
 // cache quand même l'élément
@@ -134,7 +134,7 @@ $('p').height(); // Renvoie SEULEMENT la hauteur du premier élément 'p'
 // On peut utiliser 'each' pour parcourir tous les éléments
 var heights = [];
 $('p').each(function() {
-  heights.push($(this.height)); // Ajoute la hauteur de tous les éléments 'p' à la liste
+  heights.push($(this).height()); // Ajoute la hauteur de tous les éléments 'p' à la liste
 });
 
 
