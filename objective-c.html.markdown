@@ -1,13 +1,12 @@
 ---
-
 language: Objective-C
 contributors:
     - ["Eugene Yagrushkin", "www.about.me/yagrushkin"]
     - ["Yannick Loriot", "https://github.com/YannickL"]
     - ["Levi Bostian", "https://github.com/levibostian"]
     - ["Clayton Walker", "https://github.com/cwalk"]
+    - ["Fernando Valverde", "http://visualcosita.xyz"]
 filename: LearnObjectiveC.m
-
 ---
 
 Objective-C is the main programming language used by Apple for the OS X and iOS operating systems and their respective frameworks, Cocoa and Cocoa Touch.
@@ -19,6 +18,10 @@ It is a general-purpose, object-oriented programming language that adds Smalltal
 /*
 Multi-line comments look like this
 */
+
+// XCode supports pragma mark directive that improve jump bar readability
+#pragma mark Navigation Functions // New tag on jump bar named 'Navigation Functions'
+#pragma mark - Navigation Functions // Same tag, now with a separator
 
 // Imports the Foundation headers with #import
 // Use <> to import global files (in general frameworks)
@@ -107,7 +110,7 @@ int main (int argc, const char * argv[])
     NSLog(@"%f", piDouble);
     NSLog(@"%4.2f", piDouble); // prints => "3.14"
 
-    // NSDecimalNumber is a fixed-point class that's more precise then float or double
+    // NSDecimalNumber is a fixed-point class that's more precise than float or double
     NSDecimalNumber *oneDecNum = [NSDecimalNumber decimalNumberWithString:@"10.99"];
     NSDecimalNumber *twoDecNum = [NSDecimalNumber decimalNumberWithString:@"5.002"];
     // NSDecimalNumber isn't able to use standard +, -, *, / operators so it provides its own:
@@ -130,6 +133,8 @@ int main (int argc, const char * argv[])
     NSArray *anArray      = @[@1, @2, @3, @4];
     NSNumber *thirdNumber = anArray[2];
     NSLog(@"Third number = %@", thirdNumber); // prints => "Third number = 3"
+    // Since Xcode 7, NSArray objects can be typed (Generics)
+    NSArray<NSString *> *stringArray = @[@"hello", @"world"];
     // NSMutableArray is a mutable version of NSArray, allowing you to change
     // the items in the array and to extend or shrink the array object.
     // Convenient, but not as efficient as NSArray.
@@ -143,21 +148,25 @@ int main (int argc, const char * argv[])
     NSDictionary *aDictionary = @{ @"key1" : @"value1", @"key2" : @"value2" };
     NSObject *valueObject     = aDictionary[@"A Key"];
     NSLog(@"Object = %@", valueObject); // prints => "Object = (null)"
+    // Since Xcode 7, NSDictionary objects can be typed (Generics)
+    NSDictionary<NSString *, NSNumber *> *numberDictionary = @{@"a": @1, @"b": @2};
     // NSMutableDictionary also available as a mutable dictionary object
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
     [mutableDictionary setObject:@"value1" forKey:@"key1"];
     [mutableDictionary setObject:@"value2" forKey:@"key2"];
     [mutableDictionary removeObjectForKey:@"key1"];
-    
+
     // Change types from Mutable To Immutable
     //In general [object mutableCopy] will make the object mutable whereas [object copy] will make the object immutable
     NSMutableDictionary *aMutableDictionary = [aDictionary mutableCopy];
     NSDictionary *mutableDictionaryChanged = [mutableDictionary copy];
-    
-    
+
+
     // Set object
     NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
     NSLog(@"%@", set); // prints => {(Hello, World)} (may be in different order)
+    // Since Xcode 7, NSSet objects can be typed (Generics)
+    NSSet<NSString *> *stringSet = [NSSet setWithObjects:@"hello", @"world", nil];
     // NSMutableSet also available as a mutable set object
     NSMutableSet *mutableSet = [NSMutableSet setWithCapacity:2];
     [mutableSet addObject:@"Hello"];
@@ -599,6 +608,52 @@ int main (int argc, const char * argv[]) {
 
 @end
 
+// Starting in Xcode 7.0, you can create Generic classes,
+// allowing you to provide greater type safety and clarity
+// without writing excessive boilerplate.
+@interface Result<__covariant A> : NSObject
+
+- (void)handleSuccess:(void(^)(A))success
+              failure:(void(^)(NSError *))failure;
+
+@property (nonatomic) A object;
+
+@end
+
+// we can now declare instances of this class like
+Result<NSNumber *> *result;
+Result<NSArray *> *result;
+
+// Each of these cases would be equivalent to rewriting Result's interface
+// and substituting the appropriate type for A
+@interface Result : NSObject
+- (void)handleSuccess:(void(^)(NSArray *))success
+              failure:(void(^)(NSError *))failure;
+@property (nonatomic) NSArray * object;
+@end
+
+@interface Result : NSObject
+- (void)handleSuccess:(void(^)(NSNumber *))success
+              failure:(void(^)(NSError *))failure;
+@property (nonatomic) NSNumber * object;
+@end
+
+// It should be obvious, however, that writing one
+//  Class to solve a problem is always preferable to writing two
+
+// Note that Clang will not accept generic types in @implementations,
+// so your @implemnation of Result would have to look like this:
+
+@implementation Result
+
+- (void)handleSuccess:(void (^)(id))success
+              failure:(void (^)(NSError *))failure {
+  // Do something
+}
+
+@end
+
+
 ///////////////////////////////////////
 // Protocols
 ///////////////////////////////////////
@@ -651,7 +706,7 @@ if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
 // NOTE: If two or more protocols rely on each other, make sure to forward-declare them:
 #import "Brother.h"
 
-@protocol Brother; // Forward-declare statement. Without it, compiler would through error.
+@protocol Brother; // Forward-declare statement. Without it, compiler will throw error.
 
 @protocol Sister <NSObject>
 

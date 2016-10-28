@@ -159,11 +159,11 @@ seletor {
     color: # FF66EE; /* Formato hexadecimal longo */
     color: tomato; /* Uma cor nomeada */
     color: rgb (255, 255, 255); /* Como valores rgb */
-    cor: RGB (10%, 20%, 50%); /* Como porcentagens rgb */
-    cor: rgba (255, 0, 0, 0,3); /* Como valores RGBA (CSS 3) NOTA: 0 <a <1 */
+    color: RGB (10%, 20%, 50%); /* Como porcentagens rgb */
+    color: rgba (255, 0, 0, 0,3); /* Como valores RGBA (CSS 3) NOTA: 0 <a <1 */
     color: transparent; /* Equivale a definir o alfa a 0 */
-    cor: HSL (0, 100%, 50%); /* Como porcentagens HSL (CSS 3) */
-    cor: HSLA (0, 100%, 50%, 0,3); /* Como porcentagens HSLA com alfa */
+    color: HSL (0, 100%, 50%); /* Como porcentagens HSL (CSS 3) */
+    color: HSLA (0, 100%, 50%, 0,3); /* Como porcentagens HSLA com alfa */
 
     /* Imagens como fundos de elementos */
     background-image: url (/img-path/img.jpg); /* Citações dentro url () opcional */

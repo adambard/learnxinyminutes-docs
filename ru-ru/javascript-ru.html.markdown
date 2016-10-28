@@ -330,7 +330,7 @@ function sayHelloInFiveSeconds(name) {
 sayHelloInFiveSeconds("Адам"); // Через 5 с откроется окно «Привет, Адам!»
 
 ///////////////////////////////////
-// 5. Подробнее об объектах; конструкторы и прототипы
+// 5. Подробнее об объектах; Конструкторы и Прототипы
 
 // Объекты могут содержать в себе функции.
 var myObj = {
@@ -359,6 +359,7 @@ myFunc(); // = undefined
 // И наоборот, функция может быть присвоена объекту и получать доступ к нему
 // через this, даже если она не была прикреплена к нему при объявлении.
 var myOtherFunc = function() {
+    return this.myString.toUpperCase();
 }
 myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "ПРИВЕТ, МИР!"

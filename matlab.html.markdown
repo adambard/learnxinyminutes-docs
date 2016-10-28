@@ -15,6 +15,7 @@ If you have any feedback please feel free to reach me at
 [osvaldo.t.mendoza@gmail.com](mailto:osvaldo.t.mendoza@gmail.com).
 
 ```matlab
+%% Code sections start with two percent signs. Section titles go on the same line.
 % Comments start with a percent sign.
 
 %{
@@ -23,6 +24,23 @@ something
 like
 this
 %}
+
+% Two percent signs denote the start of a new code section
+% Individual code sections can be run by moving the cursor to the section followed by
+% either clicking the "Run Section" button
+% or     using Ctrl+Shift+Enter (Windows) or Cmd+Shift+Return (OS X)
+
+%% This is the start of a code section
+%  One way of using sections is to separate expensive but unchanging start-up code like loading data
+load myFile.mat y
+
+%% This is another code section
+%  This section can be edited and run repeatedly on its own, and is helpful for exploratory programming and demos
+A = A * 2;
+plot(A);
+
+%% Code sections are also known as code cells or cell mode (not to be confused with cell arrays)
+
 
 % commands can span multiple lines, using '...':
  a = 1 + 2 + ...
@@ -72,7 +90,7 @@ c = exp(a)*sin(pi/2) % c = 7.3891
 
 % Calling functions can be done in either of two ways:
 % Standard function syntax:
-load('myFile.mat', 'y') % arguments within parantheses, spererated by commas
+load('myFile.mat', 'y') % arguments within parentheses, separated by commas
 % Command syntax:
 load myFile.mat y 	% no parentheses, and spaces instead of commas
 % Note the lack of quote marks in command form: inputs are always passed as
@@ -123,6 +141,7 @@ x(2:end) % ans = 32 53 7 1
 x = [4; 32; 53; 7; 1] % Column vector
 
 x = [1:10] % x = 1 2 3 4 5 6 7 8 9 10
+x = [1:2:10] % Increment by 2, i.e. x = 1 3 5 7 9
 
 % Matrices
 A = [1 2 3; 4 5 6; 7 8 9]
@@ -205,6 +224,8 @@ transpose(A) % Transpose the matrix, which is the same as:
 A one
 ctranspose(A) % Hermitian transpose the matrix
 % (the transpose, followed by taking complex conjugate of each element)
+A' % Concise version of complex transpose
+A.' % Concise version of transpose (without taking complex conjugate)
 
 
 
@@ -254,6 +275,8 @@ axis equal % Set aspect ratio so data units are the same in every direction
 
 scatter(x, y); % Scatter-plot
 hist(x); % Histogram
+stem(x); % Plot values as stems, useful for displaying discrete data
+bar(x); % Plot bar graph
 
 z = sin(x);
 plot3(x,y,z); % 3D line plot
@@ -273,7 +296,7 @@ clf clear % clear current figure window, and reset most figure properties
 
 % Properties can be set and changed through a figure handle.
 % You can save a handle to a figure when you create it.
-% The function gcf returns a handle to the current figure
+% The function get returns a handle to the current figure
 h = plot(x, y); % you can save a handle to a figure when you create it
 set(h, 'Color', 'r')
 % 'y' yellow; 'm' magenta, 'c' cyan, 'r' red, 'g' green, 'b' blue, 'w' white, 'k' black
@@ -400,7 +423,7 @@ exp(x)
 sqrt(x)
 log(x)
 log10(x)
-abs(x)
+abs(x) %If x is complex, returns magnitude
 min(x)
 max(x)
 ceil(x)
@@ -410,6 +433,14 @@ rem(x)
 rand % Uniformly distributed pseudorandom numbers
 randi % Uniformly distributed pseudorandom integers
 randn % Normally distributed pseudorandom numbers
+
+%Complex math operations
+abs(x) 	 % Magnitude of complex variable x
+phase(x) % Phase (or angle) of complex variable x
+real(x)  % Returns the real part of x (i.e returns a if x = a +jb)
+imag(x)  % Returns the imaginary part of x (i.e returns b if x = a+jb)
+conj(x)  % Returns the complex conjugate 
+
 
 % Common constants
 pi
@@ -465,6 +496,9 @@ median  % median value
 mean    % mean value
 std     % standard deviation
 perms(x) % list all permutations of elements of x
+find(x) % Finds all non-zero elements of x and returns their indexes, can use comparison operators, 
+        % i.e. find( x == 3 ) returns indexes of elements that are equal to 3
+        % i.e. find( x >= 3 ) returns indexes of elements greater than or equal to 3
 
 
 % Classes

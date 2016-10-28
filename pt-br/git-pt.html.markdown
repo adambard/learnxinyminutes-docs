@@ -2,11 +2,15 @@
 category: tool
 tool: git
 lang: pt-br
-filename: LearnGit.txt
+filename: LearnGit-br.txt
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
+    - ["Leo Rudberg" , "http://github.com/LOZORD"]
+    - ["Betsy Lorton" , "http://github.com/schbetsy"]
+    - ["Bruno Volcov", "http://github.com/volcov"]
 translators:
   - ["Suzane Sant Ana", "http://github.com/suuuzi"]
+  - ["Bruno Volcov", "http://github.com/volcov"]
 ---
 
 Git é um sistema distribuido de gestão para código fonte e controle de versões.
@@ -28,7 +32,7 @@ a um arquivo ou conjunto de arquivos ao longo do tempo.
 de arquivos.
 * Controle de versão distribuído foca em compartilhar alterações. Cada
 alteração é associada a um *id* único.
-* Sistemas distribuídos não tem estrutura definida. É possivel ter um sistema
+* Sistemas distribuídos não têm estrutura definida. É possivel ter um sistema
 centralizado ao estilo SVN usando git.
 
 [Informação adicional (EN)](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
@@ -52,7 +56,7 @@ referências. Pode ser descrito como uma estrutura de dados de código fonte
 com a particularidade de cada elemento do código fonte permitir acesso ao
 histórico das suas alterações, entre outras coisas.
 
-Um repositório git é constituido pelo diretório .git e a *working tree*
+Um repositório git é constituído pelo diretório .git e a *working tree*
 
 ### Diretório .git (componente do repositório)
 
@@ -83,6 +87,11 @@ para outros repositórios ou não!
 Um *branch* é essencialmente uma referência que aponta para o último *commit*
 efetuado. Na medida que são feitos novos commits, esta referência é atualizada
 automaticamente e passa a apontar para o commit mais recente.
+
+### *Tag*
+
+Uma tag é uma marcação em um ponto específico da história. Geralmente as
+pessoas usam esta funcionalidade para marcar pontos de release (v2.0, e por aí vai)
 
 ### *HEAD* e *head* (componentes do diretório .git)
 
@@ -131,10 +140,10 @@ Para visualizar rapidamente o detalhamento de cada comando ou apenas lembrar da 
 # Ver rapidamente os comandos disponiveis
 $ git help
 
-# Ver todos os comandos disponiveis
+# Ver todos os comandos disponíveis
 $ git help -a
 
-# Usar o *help* para um comando especifico
+# Usar o *help* para um comando específico
 # git help <comando_aqui>
 $ git help add
 $ git help commit
@@ -149,7 +158,7 @@ do repositório) e o *commit* da *HEAD* atual.
 
 ```bash
 # Apresenta o *branch*, arquivos não monitorados, alterações e outras
-# difereças
+# diferenças
 $ git status
 
 # Para aprender mais detalhes sobre git *status*
@@ -194,6 +203,29 @@ $ git branch -m myBranchName myNewBranchName
 
 # editar a descrição de um *branch*
 $ git branch myBranchName --edit-description
+```
+
+### Tag
+
+Gerencia as *tags*
+
+```bash
+# Listar tags
+$ git tag
+# Criar uma tag anotada.
+# O parâmetro -m define uma mensagem, que é armazenada com a tag.
+# Se você não especificar uma mensagem para uma tag anotada,
+# o Git vai rodar seu editor de texto para você digitar alguma coisa.
+$ git tag -a v2.0 -m 'minha versão 2.0'
+# Mostrar informações sobre a tag
+# O comando mostra a informação da pessoa que criou a tag,
+# a data de quando o commit foi taggeado,
+# e a mensagem antes de mostrar a informação do commit.
+$ git show v2.0
+# Enviar uma tag para o repositório remoto
+$ git push origin v2.0
+# Enviar várias tags para o repositório remoto
+$ git push origin --tags
 ```
 
 ### checkout
@@ -368,7 +400,7 @@ perigoso quando não há certeza do que se está fazendo.
 
 ```bash
 # Restabelece a camada intermediária de registo para o último
-# commit (o directório fica sem alterações)
+# commit (o diretório fica sem alterações)
 $ git reset
 
 # Restabelece a camada intermediária de registo para o último commit, e
