@@ -796,6 +796,43 @@ echo "Current namespace is " . __NAMESPACE__;
 echo "Current namespace is " . __TRAIT__;
 
 
+/**********************
+*  Обработка ошибок
+*  
+*/
+
+// Простую обработку ошибок можно произвести спомощью try catch блока.
+
+try {
+    // Выполняем что-то
+} catch (Exception $e) {
+    // Обработка исключения
+}
+
+// При использовании try catch блока в области вилимости, стоит использовать следующий подход
+
+try {
+    // Do something
+} catch (\Exception $e) {
+    // Обработка исключения
+}
+
+// Специальное(кастомное) исключение - exceptions
+
+class MyException extends Exception {}
+
+try {
+
+    $condition = true;
+
+    if ($condition) {
+        throw new MyException('Something just happend');
+    }
+
+} catch (MyException $e) {
+    // Обработка исключения
+}
+
 ```
 
 ## Смотрите также:
