@@ -153,6 +153,12 @@ $associative['Four'] = 4;
 $array = ['One', 'Two', 'Three'];
 echo $array[0]; // => "One"
 
+// Добавить элемент в конец массива
+$array[] = 'Four';
+// или
+array_push($array, 'Five');
+// удалить элемент из массива
+unset($array[3]);
 
 /********************************
  * Вывод
