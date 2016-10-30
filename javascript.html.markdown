@@ -230,6 +230,17 @@ for (var i = 0; i < 5; i++){
     // will run 5 times
 }
 
+// Breaking out of labeled loops is similar to Java
+outer:
+for (var i = 0; i < 10; i++) {
+    for (var j = 0; j < 10; j++) {
+        if (i == 5 && j ==5) {
+            break outer;
+            // breaks out of outer loop instead of only the inner one
+        }
+    }
+}
+
 // The for/in statement iterates over every property across the entire prototype chain.
 var description = "";
 var person = {fname:"Paul", lname:"Ken", age:18};
