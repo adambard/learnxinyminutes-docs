@@ -202,7 +202,7 @@ int main (int argc, char** argv)
   11 % 3; // => 2
 
   // Comparison operators are probably familiar, but
-  // there is no Boolean type in c. We use ints instead.
+  // there is no Boolean type in C. We use ints instead.
   // (Or _Bool or bool in C99.)
   // 0 is false, anything else is true. (The comparison
   // operators always yield 0 or 1.)
@@ -715,14 +715,14 @@ typedef void (*my_fnp_type)(char *);
 
 /******************************* Header Files **********************************
 
-Header files are an important part of c as they allow for the connection of c
+Header files are an important part of C as they allow for the connection of C
 source files and can simplify code and definitions by separating them into
 separate files.
 
-Header files are syntactically similar to c source files but reside in ".h"
-files. They can be included in your c source file by using the precompiler
+Header files are syntactically similar to C source files but reside in ".h"
+files. They can be included in your C source file by using the precompiler
 command #include "example.h", given that example.h exists in the same directory
-as the c file.
+as the C file.
 */
 
 /* A safe guard to prevent the header from being defined too many times. This */
@@ -753,12 +753,12 @@ enum traffic_light_state {GREEN, YELLOW, RED};
 
 /* Function prototypes can also be defined here for use in multiple files,  */
 /* but it is bad practice to define the function in the header. Definitions */
-/* should instead be put in a c file.                                       */
+/* should instead be put in a C file.                                       */
 Node createLinkedList(int *vals, int len);
 
-/* Beyond the above elements, other definitions should be left to a c source */
+/* Beyond the above elements, other definitions should be left to a C source */
 /* file. Excessive includes or definitions should, also not be contained in */
-/* a header file but instead put into separate headers or a c file.          */
+/* a header file but instead put into separate headers or a C file.          */
 
 #endif /* End of the if precompiler directive. */
 
