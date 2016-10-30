@@ -343,6 +343,22 @@ i; // = 5 - not undefined as you'd expect in a block-scoped language
 temporary; // raises ReferenceError
 permanent; // = 10
 
+// With ES6 (aka ES2015) there are 2 new statements that let you create
+// variables with block-scopes.
+
+// let is like var, but the variable it declares is blocked-scoped
+if (true){
+    let j = 5;
+}
+j; // ReferenceError: j is not defined
+
+// const is like let, but its value must be set immediately and cannot be
+// changed afterwards
+if (true){
+    const k = 5;
+}
+k; // ReferenceError: k is not defined
+
 // One of JavaScript's most powerful features is closures. If a function is
 // defined inside another function, the inner function has access to all the
 // outer function's variables, even after the outer function exits.
