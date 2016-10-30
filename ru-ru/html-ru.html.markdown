@@ -37,13 +37,15 @@ HTML расшифровывается как Hypertext Markup Language(гипе�
 		</head>
 		<body>
 			<h1>Привет, мир!</h1>
-			<a href = "http://codepen.io/anon/pen/xwjLbZ">Come look at what this shows</a>
-			<p>This is a paragraph.</p>
-			<p>This is another paragraph.</p>
+			<a href = "http://codepen.io/anon/pen/xwjLbZ">
+				Переходите сюда, чтоб посмотреть как это выглядит.
+			</a>
+			<p>Это параграф.</p>
+			<p>Это другой параграф.</p>
 			<ul>
-				<li>This is an item in a non-enumerated list (bullet list)</li>
-				<li>This is another item</li>
-				<li>And this is the last item on the list</li>
+				<li>Это элемент не нумерованного списка (маркированный список)</li>
+				<li>Это другой элемент</li>
+				<li>Это последний элемент в списке</li>
 			</ul>
 		</body>
 	</html>
