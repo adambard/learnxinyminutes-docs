@@ -981,7 +981,7 @@ cout << tuple_size<decltype(third)>::value << "\n"; // prints: 3
 // tuple_cat concatenates the elements of all the tuples in the same order.
 
 auto concatenated_tuple = tuple_cat(first, second, third);
-// concatenated_tuple becomes = (10, 'A', 1e9, 15, 11, 'A' ,3.14141)
+// concatenated_tuple becomes = (10, 'A', 1e9, 15, 11, 'A', 3.14141)
 
 cout << get<0>(concatenated_tuple) << "\n"; // prints: 10
 cout << get<3>(concatenated_tuple) << "\n"; // prints: 15
@@ -1057,7 +1057,7 @@ cout << ST.size();  // will print the size of set ST
 // and a mapped value, following a specific order.
 
 #include<map>
-map<char, int> mymap;  // Will initalize the map with key as char and value as int
+map<char, int> mymap;  // Will initialize the map with key as char and value as int
 
 mymap.insert(pair<char,int>('A',1));
 // Will insert value 1 for key A
@@ -1072,7 +1072,7 @@ for (it=mymap.begin(); it!=mymap.end(); ++it)
 // A->1
 // Z->26
 
-// To find the value correponsing to a key
+// To find the value corresponding to a key
 it = mymap.find('Z');
 cout << it->second;
 
