@@ -7,7 +7,7 @@ contributors:
 translators:
   - ["Peter Szatmary", "https://github.com/peterszatmary"]
 lang: sk-sk
-filename: learnelixir.ex
+filename: learnelixir-sk.ex
 ---
 
 Elixir je moderný funkcionálny jazyk vytvorený nad Erlang VM (virtuálnym
