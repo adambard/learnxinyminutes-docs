@@ -17,8 +17,7 @@ HTML расшифровывается как Hypertext Markup Language(гипе�
 Эта разметка служит, чтобы придать значение тексту, который он окружает.
 Как и в других языках программирования, HTML имеет много версий. Здесь мы будем говорить о HTML5.
 
-**NOTE :**  You can test the different tags and elements as you progress through the tutorial on a site like [codepen](http://codepen.io/pen/) in order to see their effects, understand how they work and familiarise yourself with the language.
-This article is concerned principally with HTML syntax and some useful tips.
+
 ** Примечание: ** Вы можете тестировать различные теги и элементы по мере продвижения 
 через учебник на сайте, как [codepen](http://codepen.io/pen/) для того, чтобы увидеть 
 их влияние, понять, как они работают и ознакомиться с языком.
