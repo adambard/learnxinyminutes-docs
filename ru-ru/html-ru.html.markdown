@@ -50,21 +50,21 @@ HTML расшифровывается как Hypertext Markup Language(гипе�
 		</body>
 	</html>
 
-<!-- An HTML file always starts by indicating to the browser that the page is HTML. -->
+<!-- HTML-файл всегда начинается с указанием браузеру, что страница это HTML. -->
 <!doctype html>
 
-<!-- After this, it starts by opening an <html> tag. -->
+<!-- После этого, страница начинается с <html> тега. -->
 <html>
 
-<!-- that will be closed at the end of the file with </html>. -->
+<!-- страница будет закрыта в конце с помощью тега </html>. -->
 </html>
 
-<!-- Nothing should appear after this final tag. -->
+<!-- Ничто не должно появиться после этого заключительного тега. -->
 
-<!-- Inside (between the opening and closing tags <html></html>), we find: -->
+<!-- Внутри (между открывающим и закрывающим тегами <html> </ html>), мы находим: -->
 
-<!-- A header defined by <head> (it must be closed with </head>). -->
-<!-- The header contains some description and additional information which are not displayed; this is metadata. -->
+<!-- Заголовок определяется <head> (it он должен быть закрыт </head>). -->
+<!-- Заголовок содержит описание и дополнительную информацию, которая не отображается; это метаданные. -->
 
 <head>
 	<title>My Site</title><!-- The tag <title> indicates to the browser the title to show in browser window's title bar and tab name. -->
