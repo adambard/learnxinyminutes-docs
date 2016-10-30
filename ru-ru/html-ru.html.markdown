@@ -24,19 +24,19 @@ HTML расшифровывается как Hypertext Markup Language(гипе�
 В данной статье рассматривается в основном HTML синтаксис и некоторые полезные советы.
 
 ```html
-<!-- Comments are enclosed like this line! -->
+<!-- Комментарии заключаются как эта лини\! -->
 
-<!-- #################### The Tags #################### -->
+<!-- #################### Теги #################### -->
    
-<!-- Here is an example HTML file that we are going to analyse. -->
+<!-- Ниже приведен пример HTML-файл, который мы будем анализировать. -->
 
 <!doctype html>
 	<html>
 		<head>
-			<title>My Site</title>
+			<title>Мой сайт</title>
 		</head>
 		<body>
-			<h1>Hello, world!</h1>
+			<h1>Привет, мир!</h1>
 			<a href = "http://codepen.io/anon/pen/xwjLbZ">Come look at what this shows</a>
 			<p>This is a paragraph.</p>
 			<p>This is another paragraph.</p>
