@@ -596,7 +596,7 @@ void function_1()
 {
   struct rectangle my_rec;
 
-  // Access struct members with .
+  // Access struct members with.
   my_rec.width = 10;
   my_rec.height = 20;
 
