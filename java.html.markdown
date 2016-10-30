@@ -780,6 +780,10 @@ The links provided here below are just to get an understanding of the topic, fee
 
 * [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
 
+* New features in Java 8:
+    * [Lambda expressions (functional programming)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+    * [Date and time API (java.time package)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
+
 **Online Practice and Tutorials**
 
 * [Learneroo.com - Learn Java](http://www.learneroo.com)
