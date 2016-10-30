@@ -75,41 +75,43 @@ HTML расшифровывается как Hypertext Markup Language(гипе�
 <!-- Мы должны наполнить <body>  содержанием, которое будет отображаться. -->
 
 <body>
-	<h1>Hello, world!</h1> <!-- The h1 tag creates a title. -->
-	<!-- There are also subtitles to <h1> from the most important (h2) to the most precise (h6). -->
-	<a href = "http://codepen.io/anon/pen/xwjLbZ">Come look at what this shows</a> <!-- a hyperlink to the url given by the attribute href="" -->
-	<p>This is a paragraph.</p> <!-- The tag <p> lets us include text in the html page. -->
-	<p>This is another paragraph.</p>
-	<ul> <!-- The tag <ul> creates a bullet list. -->
-	<!-- To have a numbered list instead we would use <ol> giving 1. for the first element, 2. for the second, etc. -->
-		<li>This is an item in a non-enumerated list (bullet list)</li>
-		<li>This is another item</li>
-		<li>And this is the last item on the list</li>
+	<h1>Hello, world!</h1> <!-- Тег h1 создает заголовок. -->
+	<!-- Так же существуют другие заголовки от имеющего большее значение <h1> по убыванию к  <h6>. -->
+	<a href = "http://codepen.io/anon/pen/xwjLbZ">Переходите сюда, чтоб посмотреть как это выглядит.</a>
+	<!--гиперссылка на URL, заданнf атрибутом href="" -->
+	<p>Это параграф.</p> <!-- Тег <p> позволяет нам добавдять текст на странице HTML. -->
+	<p>Это другой параграф.</p>
+	<ul> <!-- Тег <ul> создает маркированный список. -->
+	<!-- Для того, чтобы иметь пронумерованный список лучше использовать <ol> 
+		тогда первый элемент будет иметь значение 1. для второго элемента, 2. и так далее. -->
+		<li>Это элемент в не нумерованном списке (маркированный список)</li>
+		<li>Это еще один элемент</li>
+		<li>И это последний пункт в списке</li>
 	</ul>
 </body>
 
-<!-- And that's it, creating an HTML file can be simple. -->
+<!-- Вот так просто можно создать HTML страницу. -->
 
-<!-- But it is possible to add many additional types of HTML tags. -->
+<!--Но можно добавить множество дополнительных типов HTML тегов. -->
 
-<!-- To insert an image. -->
-<img src="http://i.imgur.com/XWG0O.gif"/> <!-- The source of the image is indicated using the attribute src="" -->
-<!-- The source can be an URL or even path to a file on your computer. -->
+<!-- Для вставки картинки -->
+<img src="http://i.imgur.com/XWG0O.gif"/> <!-- Источник изображения указывается с помощью атрибута src="" -->
+<!-- Источником может быть URL или даже путь к файлу на вашем компьютере. -->
 
-<!-- It is also possible to create a table. -->
+<!-- Кроме того, можно создать таблицу. -->
 
-<table> <!-- We open a <table> element. -->
-	<tr> <!-- <tr> allows us to create a row. -->
-		<th>First Header</th> <!-- <th> allows us to give a title to a table column. -->
-		<th>Second Header</th>
+<table> <!-- Мы открыли <table> элемент. -->
+	<tr> <!-- <tr> позволяет создать ряд. -->
+		<th>Первый заголовок</th> <!-- <th> позволяет дать название для столбца таблицы. -->
+		<th>Второй заголовок</th>
 	</tr>
 	<tr>
-		<td>first row, first column</td> <!-- <td> allows us to create a table cell. -->
-		<td>first row, second column</td>
+		<td>Первый ряд, первая колонка</td> <!-- <td> позволяет нам создать ячейку таблицы. -->
+		<td>Первый ряд, вторая колонка</td>
 	</tr>
 	<tr>
-		<td>second row, first column</td>
-		<td>second row, second column</td>
+		<td>Второй ряв, первая колонка</td>
+		<td>Второй ряд, вторая колонка</td>
 	</tr>
 </table>
 
