@@ -123,6 +123,6 @@ HTML файлы имеют окончание(расширение) `.html`.
 
 ## Узнать больше
 
-* [википедиа](https://en.wikipedia.org/wiki/HTML)
-* [HTML учебник](https://developer.mozilla.org/en-US/docs/Web/HTML)
-* [W3School](http://www.w3schools.com/html/html_intro.asp)
+* [википедиа](https://ru.wikipedia.org/wiki/HTML)
+* [HTML учебник](https://developer.mozilla.org/ru/docs/Web/HTML)
+* [htmlbook](http://htmlbook.ru/)
