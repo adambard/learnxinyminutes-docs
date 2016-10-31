@@ -19,7 +19,7 @@ Scala - the scalable language
   Setup Scala:
 
   1) Download Scala - http://www.scala-lang.org/downloads
-  2) Unzip/untar to your favourite location and put the bin subdir in your `PATH` environment variable
+  2) Unzip/untar to your favorite location and put the bin subdir in your `PATH` environment variable
 */
 
 /*
