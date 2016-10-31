@@ -113,7 +113,7 @@ if ($Age -is [string]) {
 	echo 'Adult'
 }
 
-# Switch statements are more powerfull compared to most languages
+# Switch statements are more powerful compared to most languages
 $val = "20"
 switch($val) {
   { $_ -eq 42 }           { "The answer equals 42"; break }
@@ -204,7 +204,7 @@ function foo([string]$name) {
 # Calling your function
 foo "Say my name"
 
-# Functions with named parameters, parameter attributes, parsable documention
+# Functions with named parameters, parameter attributes, parsable documentation
 <#
 .SYNOPSIS
 Setup a new website
@@ -308,7 +308,7 @@ if (-not (Test-Path $Profile)) {
 	notepad $Profile
 }
 # More info: `help about_profiles`
-# For a more usefull shell, be sure to check the project PSReadLine below
+# For a more useful shell, be sure to check the project PSReadLine below
 ```
 
 Interesting Projects  
