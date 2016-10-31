@@ -17,7 +17,7 @@ wszechobecny na systemach UNIXopodobnych. Posiada wiele skrótów klawiszowych
 do szybkiej nawigacji do wybranych miejsc w plikach oraz szybkiej edycji 
 danych fragmentów.
 
-## Podstawy navigacji w Vim
+## Podstawy nawigacji w Vim
 
 ```
     vim <nazwapliku> # Otwórz <nazwapliku> w vim
@@ -28,7 +28,7 @@ danych fragmentów.
                      # ! *wymusza* wykonanie :q, dlatego nie wykonuje zapisu
     :x               # Zapisz i wyjdź, krótszy odpowiednik :wq
 
-    u                # Cofnij operacje
+    u                # Cofnij operację
     CTRL+R           # Powtórz operację
 
     h                # Przesuń kursor w lewo
@@ -38,8 +38,8 @@ danych fragmentów.
 
     # Poruszanie w obrębie jednej lini
 
-    0                # Skocz do początku lini
-    $                # Skocz do końca lini
+    0                # Skocz do początku linii
+    $                # Skocz do końca linii
     ^                # Skocz do pierwszego niebiałego znaku
 
     # Wyszukiwanie w tekście
@@ -49,8 +49,8 @@ danych fragmentów.
     n                # Przemieszcza kursor do następnego wystąpienia słowa
     N                # Przemieszcza kursor do poprzedniego wystąpenia słowa
 
-    :%s/foo/bar/g    # Zamień 'foo' na 'bar' w każdej lini tekstu
-    :s/foo/bar/g     # Zamień 'foo' na 'bar' w aktualnej lini
+    :%s/foo/bar/g    # Zamień 'foo' na 'bar' w każdej linii tekstu
+    :s/foo/bar/g     # Zamień 'foo' na 'bar' w aktualnej linii
 
     # Skoki do znaków
 
@@ -71,7 +71,7 @@ danych fragmentów.
 
     gg               # Skocz na początek pliku
     G                # Skocz na koniec pliku
-    :NUM             # Skocz do lini o numerze NUM
+    :NUM             # Skocz do linii o numerze NUM
     H                # Skocz na górę ekranu
     M                # Skocz na środek ekranu
     L                # Skocz na dół ekranu
@@ -96,9 +96,9 @@ Ex Mode      - (Tryb Ex)
     # Kopiowanie i wklejanie tekstu
 
     y                # Skopiuj zaznaczony tekst
-    yy               # Skopiuj aktualną linie
+    yy               # Skopiuj aktualną linię
     d                # Usuń zaznaczony tekst
-    dd               # Usuń aktualną linie
+    dd               # Usuń aktualną linię
     p                # Wklej skopiowany tekst za kursorem
     P                # Wklej skopiowany tekst przed kursorem
     x                # Usuń znak pod kursorem
@@ -106,13 +106,13 @@ Ex Mode      - (Tryb Ex)
 
 ## 'Gramatyka' vim'a
 
-Edytor można nauczyć za pomocą zbioru komend w formie 'Akcja-Modyfikator-Obiekt', gdzie:
+Vim można traktować jako zbiór komend w formacie 'Akcja-Modyfikator-Obiekt', gdzie:
 
 Akcja       - jedna z dostępnych akcji
 Modyfikator - w jaki sposób wykonywana jest akcja
 Obiekt      - obiekt na którym wykonywana jest akcja
 
-Kilka ważnych przykładów akcji, modyfikatorów i Obiektów:
+Kilka ważnych przykładów Akcji, Modyfikatorów i Obiektów:
 
 ```
     # 'Akcje'
@@ -145,24 +145,24 @@ Kilka ważnych przykładów akcji, modyfikatorów i Obiektów:
     cis              # Zmień w zdaniu
     yip              # Skopiuj paragraf w którym jest kursor
     ct<              # Zamień na <
-    d$               # Usuń tekst do końca lini
+    d$               # Usuń tekst do końca linii
 ```
 
 ## Pewne skróty i triki
 
         <!--TODO: Dodać więcej!-->
 ```
-    >                # Zrób wcięnie zaznaczonego bloku
+    >                # Zrób wcięcie zaznaczonego bloku
     <                # Usuń wcięcie zaznaczonego bloku
-    :earlier 15m     # Przywróc dokument do stanu z przed 15 minut 
-    :later 15m       # Odwróc efekt poprzedniej komendy
+    :earlier 15m     # Przywróć dokument do stanu z przed 15 minut 
+    :later 15m       # Odwróć efekt poprzedniej komendy
     ddp              # Zamień kolejnością kolejne linie, dd potem p
-    .                # Powtórz poptrzenią komendę
+    .                # Powtórz poprzenią komendę
 ```
 
 ## Makra
 
-Marka są właściwie nagrywanymi akcjami. Gdy zaczynasz nagrywać makro, nagrywa ono
+Makra są właściwie nagrywanymi akcjami. Gdy zaczynasz nagrywać makro, nagrywa ono
 **każdą** akcję i komendę jaką wykonasz do momentu przerwania nagrywania.
 Wywołanie makra wykonuje dokładnie te same operacje w tej samej kolejności.
 
@@ -176,10 +176,10 @@ Wywołanie makra wykonuje dokładnie te same operacje w tej samej kolejności.
 
 Plik .vimrc może być użyty do skonfigurowania Vim'a przy jego starcie
 
-Poniżej zamieszczono przykładony plik ~/.vimrc:
+Poniżej zamieszczono przykładowy plik ~/.vimrc:
 
 ```
-" Przykaładowy ~/.vimrc
+" Przykładowy ~/.vimrc
 " 2016.10 
 
 " Wymagane aby korzystać z opcji iMproved
@@ -194,12 +194,12 @@ syntax on
 " Lepsze uzupełnianie składni komend
 set wildmenu
 
-" Wyszukiwanie będzie ignorować wielkość liter poza przypadkami gdy użjemy wielkich liter
+" Wyszukiwanie będzie ignorować wielkość liter poza przypadkami gdy użyjemy wielkich liter
 set ignorecase
 set smartcase
 
 " Po otwarciu pliku gdzie nie jest zdefiniowane zachowanie wcięć
-" zostanie zachowane wcięcie takie samo jak w aktualnej lini
+" zostanie zachowane wcięcie takie samo jak w aktualnej linii
 set autoindent
 
 " Wyświetlaj numer lini
@@ -216,10 +216,10 @@ set softtabstop=4
 " Liczba spacji gdy wykonywane są operacje wcięcia (>> i <<)
 set shiftwidth=4
 
-" Zamieniaj tabulatury na spacje
+" Zamieniaj tabulatory na spacje
 set expandtab
 
-" Aktywuj inteligentne tabulatury i spacje do wcięć i wyrównań
+" Aktywuj inteligentne tabulatory i spacje do wcięć i wyrównań
 set smarttab
 ```
 
