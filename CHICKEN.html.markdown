@@ -479,7 +479,7 @@ sqr                        ;; => #<procedure (sqr x)>
 
 ;; Functors
 ;; Functors are high level modules that can be parameterized by other modules
-;; Following functor requires another module named 'M' that provides a funtion called 'multiply'
+;; Following functor requires another module named 'M' that provides a function called 'multiply'
 ;; The functor itself exports a generic function 'square'
 (functor (squaring-functor (M (multiply))) (square)
          (import scheme M) 
