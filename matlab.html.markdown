@@ -557,6 +557,8 @@ c = a + b
 
 ## More on Matlab
 
-* The official website [http://http://www.mathworks.com/products/matlab/](http://www.mathworks.com/products/matlab/)
-* The official MATLAB Answers forum: [http://www.mathworks.com/matlabcentral/answers/](http://www.mathworks.com/matlabcentral/answers/)
+* [The official website](http://www.mathworks.com/products/matlab/)
+* [The official MATLAB Answers forum](http://www.mathworks.com/matlabcentral/answers/)
+* [Loren on the Art of MATLAB](http://blogs.mathworks.com/loren/)
+* [Cleve's Corner](http://blogs.mathworks.com/cleve/)
 
