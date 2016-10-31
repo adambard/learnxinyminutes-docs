@@ -24,15 +24,15 @@ Scala - the scalable language
 
 /*
   Try the REPL
-  
-  Scala has a tool called the REPL (Read-Eval-Print Loop) that is anologus to 
+
+  Scala has a tool called the REPL (Read-Eval-Print Loop) that is anologus to
   commandline interpreters in many other languages. You may type any Scala
   expression, and the result will be evaluated and printed.  
-  
-  The REPL is a very handy tool to test and verify code.  Use it as you read 
+
+  The REPL is a very handy tool to test and verify code.  Use it as you read
   this tutorial to quickly explore concepts on your own.
 */
-  
+
 // Start a Scala REPL by running `scala`. You should see the prompt:
 $ scala
 scala>
@@ -50,7 +50,7 @@ res1: Int = 6
 scala> :type (true, 2.0)
 (Boolean, Double)
 
-// REPL sessions can be saved 
+// REPL sessions can be saved
 scala> :save /sites/repl-test.scala
 
 // Files can be loaded into the REPL
@@ -59,7 +59,7 @@ Loading /sites/repl-test.scala...
 res2: Int = 4
 res3: Int = 6
 
-// You can search your recent history 
+// You can search your recent history
 scala> :h?
 1 2 + 2
 2 res0 + 2
@@ -594,7 +594,7 @@ for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
  * best practices around them. We only include this section in the tutorial
  * because they are so commonplace in Scala libraries that it is impossible to
  * do anything meaningful without using a library that has implicits. This is
- * meant for you to understand and work with implicts, not declare your own.
+ * meant for you to understand and work with implicits, not declare your own.
  */
 
 // Any value (vals, functions, objects, etc) can be declared to be implicit by
