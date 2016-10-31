@@ -11,6 +11,7 @@ contributors:
     - ["Jose Donizetti", "https://github.com/josedonizetti"]
     - ["Alexej Friesen", "https://github.com/heyalexej"]
     - ["Clayton Walker", "https://github.com/cwalk"]
+    - ["Leonid Shevtsov", "https://github.com/leonid-shevtsov"]
 ---
 
 Go was created out of the need to get work done. It's not the latest trend
@@ -39,6 +40,7 @@ import (
 	"io/ioutil" // Implements some I/O utility functions.
 	m "math"    // Math library with local alias m.
 	"net/http"  // Yes, a web server!
+	"os"        // OS functions like working with the file system
 	"strconv"   // String conversions.
 )
 
@@ -133,6 +135,14 @@ can include line breaks.` // Same string type.
 	// Unused variables are an error in Go.
 	// The underscore lets you "use" a variable but discard its value.
 	_, _, _, _, _, _, _, _, _, _ = str, s2, g, f, u, pi, n, a3, s4, bs
+	// Usually you use it to ignore one of the return values of a function
+	// For example, in a quick and dirty script you might ignore the
+	// error value returned from os.Create, and expect that the file
+	// will always be created.
+	file, _ := os.Create("output.txt")
+	fmt.Fprint(file, "This is how you write to a file, by the way")
+	file.Close()
+	
 	// Output of course counts as using a variable.
 	fmt.Println(s, c, a4, s3, d2, m)
 
@@ -210,6 +220,10 @@ func learnFlowControl() {
 	for key, value := range map[string]int{"one": 1, "two": 2, "three": 3} {
 		// for each pair in the map, print key and value
 		fmt.Printf("key=%s, value=%d\n", key, value)
+	}
+	// If you only need the value, use the underscore as the key
+	for _, name := range []string{"Bob", "Bill", "Joe"} {
+		fmt.Printf("Hello, %s\n", name)
 	}
 
 	// As with for, := in an if statement means to declare and assign
