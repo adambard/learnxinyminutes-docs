@@ -214,7 +214,7 @@ hash.keys #=> ['color', 'number']
 hash['color'] #=> 'green'
 hash['number'] #=> 5
 
-# 查询一个不存在地键将会返回nil
+# 查询一个不存在的键将会返回nil
 hash['nothing here'] #=> nil
 
 # 从Ruby 1.9开始，用符号作为键的时候有特别的记号表示:
