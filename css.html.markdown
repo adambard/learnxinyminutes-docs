@@ -169,9 +169,9 @@ selector {
     color: transparent;          /* equivalent to setting the alpha to 0 */
     color: hsl(0, 100%, 50%);    /* as hsl percentages (CSS 3) */
     color: hsla(0, 100%, 50%, 0.3); /* as hsl percentages with alpha */
-    
+
     /* Borders */
-    border-width:5px; 
+    border-width:5px;
     border-style:solid;
     border-color:red;      /* similar to how background-color is set */
     border: 5px solid red; /* this is a short hand approach for the same */
@@ -261,7 +261,7 @@ recommended that you avoid its usage.
 
 ## Media Queries
 
-CSS Media Queries are a feature in CSS 3 which allows you to specify when certain CSS rules should be applied, such as when printed, or when on a screen with certain dimensions or pixel density. They do not add to the selector's specifity.
+CSS Media Queries are a feature in CSS 3 which allows you to specify when certain CSS rules should be applied, such as when printed, or when on a screen with certain dimensions or pixel density. They do not add to the selector's specificity.
 
 ```css
 /* A rule that will be used on all devices */
