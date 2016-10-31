@@ -58,8 +58,10 @@ $int1 = 12;   // => 12
 $int2 = -12;  // => -12
 $int3 = 012;  // => 10 (ведущий 0 обозначает восьмеричное число)
 $int4 = 0x0F; // => 15 (ведущие символы 0x означают шестнадцатеричное число)
+
 // Двоичная запись integer доступна начиная с PHP 5.4.0.
 $int5 = 0b11111111; // 255 (0b в начале означает двоичное число)
+
 // Дробные числа
 $float = 1.234;
 $float = 1.2e3;
@@ -87,6 +89,7 @@ $dbl_quotes = "This is a $sgl_quotes."; // => 'This is a $String.'
 // Специальные (escape) символы работают только в двойных кавычках
 $escaped   = "This contains a \t tab character.";
 $unescaped = 'This just contains a slash and a t: \t';
+
 // Заключайте переменные в фигурные скобки, если это необходимо
 $apples = "I have {$number} apples to eat.";
 $oranges = "I have ${number} oranges to eat.";
@@ -723,7 +726,120 @@ ChildClass::test();
 /*
 I'm a ParentClass
 But I'm ChildClass
+
+/**********************
+* Позднее статическое связывание.
+*
 */
+
+class ParentClass
+{
+    public static function who()
+    {
+        echo "I'm a " . __CLASS__ . "\n";
+    }
+
+    public static function test()
+    {
+        // self ссылается на класс в котором определен метод.
+        self::who();
+        // static ссылается на класс в котором метод вызван.
+        static::who();
+    }
+}
+
+ParentClass::test();
+/*
+I'm a ParentClass
+I'm a ParentClass
+*/
+
+class ChildClass extends ParentClass
+{
+    public static function who()
+    {
+        echo "But I'm " . __CLASS__ . "\n";
+    }
+}
+
+ChildClass::test();
+/*
+I'm a ParentClass
+But I'm ChildClass
+*/
+
+
+/**********************
+*  Магические константы
+*
+*/
+
+// Возвращает имя текущего класса. Должно быть использовано внутри класса.
+echo "Current class name is " . __CLASS__;
+
+// Возвращает полный путь текущей папки из которой вызван файл.
+echo "Current directory is " . __DIR__;
+
+    // Обычно используют в таких случаях:
+    require __DIR__ . '/vendor/autoload.php';
+
+// Возвращает полный путь к текущему файлу.
+echo "Current file path is " . __FILE__;
+
+// Возвращает имя текущей функции.
+echo "Current function name is " . __FUNCTION__;
+
+// Возвращает номер текущей линии.
+echo "Current line number is " . __LINE__;
+
+// Возвращает имя текущего метода. Возвращает только если вызван внутри метода.
+echo "Current method is " . __METHOD__;
+
+// Возвращает имя текущего пространства имен.
+echo "Current namespace is " . __NAMESPACE__;
+
+// Возвращает имя текущего трейта.
+// Возвращает только если испольщуется внутри трейта.
+echo "Current namespace is " . __TRAIT__;
+
+
+/**********************
+*  Обработка ошибок
+*  
+*/
+
+// Простую обработку ошибок можно произвести спомощью try catch блока.
+
+try {
+    // Выполняем что-то
+} catch (Exception $e) {
+    // Обработка исключения
+}
+
+// При использовании try catch блока в области вилимости, стоит использовать
+// следующий подход:
+
+try {
+    // Do something
+} catch (\Exception $e) {
+    // Обработка исключения
+}
+
+// Специальное(кастомное) исключение - exceptions
+
+class MyException extends Exception {}
+
+try {
+
+    $condition = true;
+
+    if ($condition) {
+        throw new MyException('Something just happend');
+    }
+
+} catch (MyException $e) {
+    // Обработка исключения
+}
 
 ```
 
@@ -734,4 +850,4 @@ But I'm ChildClass
 
 Если вы раньше пользовались языком с хорошей организацией пакетов, посмотрите [Composer](http://getcomposer.org/).
 
-Для изучения стандартов использования языка посетите PHP Framework Interoperability Group's [PSR standards](https://github.com/php-fig/fig-standards). 
+Для изучения стандартов использования языка посетите PHP Framework Interoperability Group's [PSR standards](https://github.com/php-fig/fig-standards).
