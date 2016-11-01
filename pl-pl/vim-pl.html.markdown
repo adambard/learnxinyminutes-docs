@@ -157,7 +157,7 @@ Kilka ważnych przykładów Akcji, Modyfikatorów i Obiektów:
     :earlier 15m     # Przywróć dokument do stanu z przed 15 minut 
     :later 15m       # Odwróć efekt poprzedniej komendy
     ddp              # Zamień kolejnością kolejne linie, dd potem p
-    .                # Powtórz poprzenią komendę
+    .                # Powtórz poprzednią komendę
 ```
 
 ## Makra
