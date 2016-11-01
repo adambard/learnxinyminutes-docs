@@ -427,8 +427,10 @@ What is your name?
 Friend!
 Hello, Friend!
 
+```
+
 There's a lot more to Haskell, including typeclasses and monads. These are the
-big ideas that make Haskell so fun to code in. I'll leave you with one final
+big ideas that make Haskell such fun to code in. I'll leave you with one final
 Haskell example: an implementation of a quicksort variant in Haskell:
 
 ```haskell
