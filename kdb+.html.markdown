@@ -6,9 +6,8 @@ contributors:
 filename: learnkdb.q
 ---
 
-The q langauge and its database component kdb+ were developed by Arthur
-Whitney and released by Kx systems in 2003. q is a descendant of
-[APL](https://en.wikipedia.org/wiki/APL_(programming_language)) and as such is
+The q langauge and its database component kdb+ were developed by Arthur Whitney
+and released by Kx systems in 2003. q is a descendant of APL and as such is
 very terse and a little strange looking for anyone from a "C heritage" language
 background. Its expressiveness and vector oriented nature make it well suited
 to performing complex calculations on large amounts of data (while also
@@ -698,7 +697,7 @@ first each (1 2 3;4 5 6;7 8 9)
 / their behaviour differs based on the number of arguments the function they
 / are modifying receives.  Here I'll summarise some of the most useful cases
 / a single argument function modified by scan given 2 args behaves like "do"
-{x * 2}\[5;1] / => 1 2 4 8 16 3 (i.e. multiply by 2, 5 times)
+{x * 2}\[5;1] / => 1 2 4 8 16 32 (i.e. multiply by 2, 5 times)
 {x * 2}/[5;1] / => 32 (using over only the final result is shown)
 
 / If the first argument is a function, we have the equivalent of "while"
