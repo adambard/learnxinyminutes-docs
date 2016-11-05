@@ -215,7 +215,7 @@ cond do
 end
 
 # Je bežné nastaviť poslednú podmienku rovnajúcu sa `true` , ktorá bude vždy
-zodpovedať.
+# zodpovedať.
 cond do
   1 + 1 == 3 ->
     "Nebudem nikdy videný"
@@ -310,12 +310,12 @@ defmodule Geometria do
 end
 
 Geometria.oblast({:obdlznik, 2, 3}) #=> 6
-Geometry.oblast({:kruh, 3})       #=> 28.25999999999999801048
+Geometria.oblast({:kruh, 3})       #=> 28.25999999999999801048
 # Geometria.oblast({:kruh, "nie_je_cislo"})
 #=> ** (FunctionClauseError) no function clause matching in Geometria.oblast/1
 
 # Vďaka nemeniteľnosti (immutability) je rekurzia významnou časťou elixiru
-defmodule Recurzia do
+defmodule Rekurzia do
   def sumuj_zoznam([hlavicka | schvost], acc) do
     sumuj_zoznam(chvost, acc + hlavicka)
   end
@@ -325,7 +325,7 @@ defmodule Recurzia do
   end
 end
 
-Recurzia.sumuj_zoznam([1,2,3], 0) #=> 6
+Rekurzia.sumuj_zoznam([1,2,3], 0) #=> 6
 
 # Elixir moduly podporujú atribúty, existujú vstavané atribúty a takisto
 # môžte pridávať vlastné.
@@ -422,7 +422,7 @@ end
 
 # Kompiluj modul a vytvor proces, ktorý vyhodnotí `slucka_oblasti` v shelli
 
-pid = spawn(fn -> Geometry.area_loop() end) #=> #PID<0.40.0>
+pid = spawn(fn -> Geometria.slucka_oblasti() end) #=> #PID<0.40.0>
 # Alternatívne
 pid = spawn(Geometria, :slucka_oblasti, [])
 
@@ -458,13 +458,13 @@ Agent.update(moj_agent, fn farby -> ["modra" | farby] end)
 
 ## Referencie
 
-* [Začíname](http://elixir-lang.org/getting-started/introduction.html) from the
+* [Začíname](http://elixir-lang.org/getting-started/introduction.html) z
 [Elixir stránky](http://elixir-lang.org)
 * [Elixir dokumentácia](http://elixir-lang.org/docs/master/)
-* ["Elixir programovanie"](https://pragprog.com/book/elixir/programming-elixir)
- by Dave Thomas
+* [Elixir programovanie](https://pragprog.com/book/elixir/programming-elixir)
+ od Dave Thomasa
 * [Elixir ťahák](http://media.pragprog.com/titles/elixir/ElixirCheat.pdf)
-* ["Nauč sa kúsok Erlangu pre veľké dobro!"](http://learnyousomeerlang.com/) by
-Fred Hebert
-* ["Erlang programovanie: Softvér pre konkurentný svet"](https://pragprog
-.com/book/jaerlang2/programming-erlang) by Joe Armstrong
+* [Nauč sa kúsok Erlangu pre veľké dobro!](http://learnyousomeerlang.com/) od
+Freda Heberta
+* [Erlang programovanie: Softvér pre konkurentný svet](https://pragprog
+.com/book/jaerlang2/programming-erlang) od Joe Armstronga
