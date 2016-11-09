@@ -68,7 +68,7 @@ at jonny.press@aquaq.co.uk
 / And exponentiation...
 2 xexp 4 / => 16
 
-/ ...and rounding...
+/ ...and truncating...
 floor 3.14159 / => 3
 
 / ...getting the absolute value...
@@ -311,7 +311,7 @@ d:`a`b`c!1 2 3
 / the keyword key returns the first list
 key d / => `a`b`c
 / and value the second
-value / => 1 2 3
+value d / => 1 2 3
 
 / Indexing is indentical to lists
 / with the first list as a key instead of the position
