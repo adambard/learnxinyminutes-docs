@@ -1,0 +1,5 @@
+bf.html.markdown linguist-language=Brainfuck
+bf-*.html.markdown linguist-language=Brainfuck
+c-*.html.markdown linguist-language=C
+c.html.markdown linguist-language=C
+ruby*.html.markdown linguist-language=Ruby
