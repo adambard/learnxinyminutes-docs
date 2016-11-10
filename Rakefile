@@ -1,5 +1,7 @@
 task default: %w[test]
 
 task :test do
-	  ruby "tests/yaml.rb"
+  Dir["./tests/*.rb"].each do |test_file|
+    ruby test_file
+  end
 end
