@@ -256,7 +256,7 @@ l / => 5 2 3 4
 / Lists can also be used for indexing and indexed assignment
 l[1 3] / => 2 4
 l[1 3]: 1 3
-l / => 1 1 3 3
+l / => 5 1 3 3
 
 / Lists can be untyped/mixed type
 l:(1;2;`hi)
@@ -290,6 +290,7 @@ last 1 2 3 / => 3
 
 / Take (#), drop (_) and find (?) are also useful working with lists
 l:1 2 3 4 5 6 7 8 9
+l:1+til 9 / til is a useful shortcut for generating ranges
 / take the first 5 elements
 5#l / => 1 2 3 4 5
 / drop the first 5
@@ -297,7 +298,7 @@ l:1 2 3 4 5 6 7 8 9
 / take the last 5
 -5#l / => 5 6 7 8 9
 / drop the last 5
--5_l / => 1 2 3 4 5
+-5_l / => 1 2 3 4
 / find the first occurance of 4
 l?4 / => 3
 l[3] / => 4
@@ -397,7 +398,7 @@ k!t
 / => id| c1 c2 c3
 / => --| --------
 / => 1 | 1  4  7
-/ => 2 | 2  5  8
+/ => 2 | 3  5  8
 / => 3 | 3  6  9
 
 / We can also use this shortcut for defining keyed tables
@@ -455,7 +456,7 @@ f[2] / => 4
 / however using a dictionary as a single argument can overcome this
 / allows for optional arguments or differing functionality
 d:`arg1`arg2`arg3!(1.0;2;"my function argument")
-{x[`arg1]+x[`arg2]}[d] / => 3.0
+{x[`arg1]+x[`arg2]}[d] / => 3f
 
 / Functions in q see the global scope
 a:1
@@ -464,6 +465,7 @@ a:1
 / However local scope obscures this
 a:1
 {a:2;:a}[] / => 2
+a / => 1
 
 / Functions cannot see nested scopes (only local and global)
 {local:1;{:local}[]}[] / throws error as local is not defined in inner function
@@ -494,11 +496,11 @@ t:([]name:`Arthur`Thomas`Polly;age:35 32 52;height:180 175 160;sex:`m`m`f)
 
 / equivalent of SELECT * FROM t
 select from t / (must be lower case, and the wildcard is not necessary)
-/ => name   age height
-/ => -----------------
-/ => Arthur 35  180
-/ => Thomas 32  175
-/ => Polly  52  160
+/ => name   age height sex
+/ => ---------------------
+/ => Arthur 35  180    m
+/ => Thomas 32  175    m
+/ => Polly  52  160    f
 
 / Select specific columns
 select name,age from t
@@ -523,6 +525,7 @@ select name, feet:floor height*0.032, inches:12*(height*0.032) mod 1 from t
 / => ------------------
 / => Arthur 5    9.12
 / => Thomas 5    7.2
+/ => Polly  5    1.44
 
 / Including custom functions
 select name, growth:{[h;a]h%a}[height;age] from t
@@ -534,18 +537,18 @@ select name, growth:{[h;a]h%a}[height;age] from t
 
 / The where clause can contain multiple statements separated by commas
 select from t where age>33,height>175
-/ => name   age height
-/ => -----------------
-/ => Arthur 35  180
+/ => name   age height sex
+/ => ---------------------
+/ => Arthur 35  180    m
 
 / The where statements are executed sequentially (not the same as logical AND)
 select from t where age<40,height=min height
-/ => name   age height
-/ => -----------------
-/ => Thomas 32  175
+/ => name   age height sex
+/ => ---------------------
+/ => Thomas 32  175    m
 select from t where (age<40)&(height=min height)
-/ => name age height
-/ => ---------------
+/ => name age height sex
+/ => -------------------
 
 / The by clause falls between select and from
 / and is equivalent to SQL's GROUP BY
@@ -585,7 +588,7 @@ t
 / => Polly  52  160    f
 
 / Insert however is in place, it takes a table name, and new data
-`t insert (`John;25;178;`m)
+`t insert (`John;25;178;`m) / => ,3
 t
 / => name   age height sex
 / => ---------------------
