@@ -16,6 +16,6 @@ if files_failed != 0
   puts "Please check the YAML headers for the documents that failed!"
   exit 1
 else
-  puts "Success. All #{$file_count} files were verified valid YAML"
+  puts "All #{$file_count} files were verified valid YAML"
   exit 0
 end
