@@ -23,17 +23,17 @@ from any platform to any other platform. And it will do this all from a binary e
 Ready to learn your first Red?
 
 ```
-All text before the header will be treated as comment, as long as you avoid using the
-word "red" starting with a capital "R" in this pre-header text. This is a temporary
-shortcoming of the used lexer but most of the time you start your script or program
-with the header itself.
+All text before the header will be treated as comment, as long as you avoid
+using the word "red" starting with a capital "R" in this pre-header text.
+This is a temporary shortcoming of the used lexer but most of the time you
+start your script or program with the header itself.
+
 The header of a red script is the capitalized word "red" followed by a
-whitespace character followed by a block of square brackets [].
-The block of brackets can be filled with useful information about this script or
-program: the author's name, the filename, the version, the license, a summary of
-what the program does or any other files it needs.
-The red/System header is just like the red header, only saying "red/System" and
-not "red".
+whitespace character followed by a block of square brackets []. The block of
+brackets can be filled with useful information about this script or program:
+the author's name, the filename, the version, the license, a summary of what
+the program does or any other files it needs. The red/System header is just
+like the red header, only saying "red/System" and not "red".
 
 Red []
 
@@ -50,9 +50,9 @@ comment {
 ; no need to restrict this to a 'main' function.
 
 ; Valid variable names start with a letter and can contain numbers,
-; variables containing only capital A thru F and numbers and ending with 'h' are
-; forbidden, because that is how hexadecimal numbers are expressed in Red and
-; Red/System.
+; variables containing only capital A thru F and numbers and ending with 'h'
+; are forbidden, because that is how hexadecimal numbers are expressed in Red
+; and Red/System.
 
 ; assign a value to a variable using a colon ":"
 my-name: "Red"
@@ -63,8 +63,8 @@ reason-for-using-the-colon: {Assigning values using the colon makes
 }
 is-this-name-valid?: true
 
-; print output using print, or prin for printing without a newline or linefeed at the
-; end of the printed text.
+; print output using print, or prin for printing without a newline or linefeed
+; at the end of the printed text.
 
 prin " My name is " print my-name
 My name is Red
@@ -72,7 +72,7 @@ My name is Red
 print ["My name is " my-name lf]
 My name is Red
 
-; In case you haven't already noticed: statements do NOT end with a semicolon ;-)
+; If you haven't already noticed: statements do NOT end with a semicolon ;-)
 
 ;
 ; Datatypes
@@ -85,13 +85,13 @@ My name is Red
 ; Some of the available types are integer! string! block!
 
 ; Declaring variables before using them?
-; Red knows by itself what variable is best to use for the data you want to use it
-; for.
+; Red knows by itself what variable is best to use for the data you want to
+; use it for.
 ; A variable declaration is not always necessary.
 ; It is considered good coding practise to declare your variables,
 ; but it is not forced upon you by Red.
-; You can declare a variable and specify its type. a variable's type determines its
-; size in bytes.
+; You can declare a variable and specify its type. a variable's type
+; determines its size in bytes.
 
 ; Variables of integer! type are usually 4 bytes or 32 bits
 my-integer: 0
@@ -111,10 +111,10 @@ i2 - i1 ; result 1
 i2 * i1 ; result 2
 i1 / i2 ; result 0 (0.5, but truncated towards 0)
 
-; Comparison operators are probably familiar, and unlike in other languages you
-; only need a single '=' sign for comparison.
-; There is a boolean like type in Red. It has values true and false, but also the
-; values on/off or yes/no can be used
+; Comparison operators are probably familiar, and unlike in other languages
+; you only need a single '=' sign for comparison.
+; There is a boolean like type in Red. It has values true and false, but also
+; the values on/off or yes/no can be used
 
 3 = 2 ; result false
 3 != 2 ; result true
@@ -127,14 +127,14 @@ i1 / i2 ; result 0 (0.5, but truncated towards 0)
 ; Control Structures
 ;
 ; if
-; Evaluate a block of code if a given condition is true. IF does not return any value,
-; so cannot be used in an expression.
+; Evaluate a block of code if a given condition is true. IF does not return
+; any value, so cannot be used in an expression.
 if a < 0 [print "a is negative"]
 
 ; either
-; Evaluate a block of code if a given condition is true, else evaluate an alternative
-; block of code. If the last expressions in both blocks have the same type, EITHER can
-; be used inside an expression.
+; Evaluate a block of code if a given condition is true, else evaluate an
+; alternative block of code. If the last expressions in both blocks have the
+; same type, EITHER can be used inside an expression.
 either a < 0 [
    either a = 0 [
        msg: "zero"
@@ -172,8 +172,8 @@ until [
 ]
 ;   will output:
 ooooo
-; Note that the loop will always be evaluated at least once, even if the condition is
-; not met from the beginning.
+; Note that the loop will always be evaluated at least once, even if the
+; condition is not met from the beginning.
 
 ; while
 ; While a given condition is met, evaluate a block of code.
