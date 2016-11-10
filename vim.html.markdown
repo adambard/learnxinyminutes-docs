@@ -156,6 +156,7 @@ A few important examples of 'Verbs', 'Modifiers', and 'Nouns':
     :later 15m       # Reverse above command
     ddp              # Swap position of consecutive lines, dd then p
     .                # Repeat previous action
+    :w !sudo tee %   # Save the current file as root
 ```
 
 ## Macros
