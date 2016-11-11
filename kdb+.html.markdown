@@ -6,17 +6,17 @@ contributors:
 filename: learnkdb.q
 ---
 
-The q langauge and its database component kdb+ were developed by Arthur Whitney
-and released by Kx systems in 2003. q is a descendant of APL and as such is
-very terse and a little strange looking for anyone from a "C heritage" language
-background. Its expressiveness and vector oriented nature make it well suited
+The q language and its database component kdb+ were developed by Arthur Whitney
+and released by [Kx Systems](http://kx.com) in 2003. q is a descendant of APL and as such is
+very terse and a little strange-looking for anyone from a "C heritage" language
+background. Its expressiveness and vector-oriented nature suit it
 to performing complex calculations on large amounts of data (while also
 encouraging some amount of [code
 golf](https://en.wikipedia.org/wiki/Code_golf)). The fundamental structure in
 the language is not the object but instead the list, and tables are built as
-collections of lists. This means - unlike most traditional RDBMS systems -
-tables are column oriented.  The language has both an in-memory and on-disk
-database built in, giving a large amount of flexibility. kdb+ is most widely
+collections of lists. This means &ndash; unlike most traditional RDBMS systems &ndash;
+tables are column-oriented.  The language has both an in-memory and on-disk
+database built in, giving a large amount of flexibility. Kdb+ is most widely
 used in the world of finance to store, analyze, process and retrieve large
 time-series data sets.
 
@@ -26,7 +26,7 @@ separable so this distinction is not really useful.
 All Feedback welcome!  You can reach me at matt.doherty@aquaq.co.uk, or Jonny
 at jonny.press@aquaq.co.uk
 
-```
+```kdb
 / Single line comments start with a forward-slash
 / These can also be used in-line, so long as at least one whitespace character
 / separates it from text to the left
@@ -42,10 +42,10 @@ at jonny.press@aquaq.co.uk
 // Basic Operators and Datatypes  //
 ////////////////////////////////////
 
-/ We have integers, which are 8 byte by default
+/ We have integers, which are 8-byte by default
 3 / => 3
 
-/ And floats, also 8 byte as standard.  Trailing f distinguishes from int
+/ And floats, also 8-byte as standard.  Trailing f distinguishes from int
 3.0 / => 3f
 
 / 4 byte numerical types can also be specified with trailing chars
@@ -352,7 +352,7 @@ d?2
 
 / Tables in q are basically a subset of dictionaries
 / a table is a dictionary where all values must be lists of the same length
-/ as such tables in q are column oriented (unlike most RDBMS)
+/ as such tables in q are column-oriented (unlike most RDBMS)
 / the flip keyword is used to convert a dictionary to a table
 / i.e. flip the indices
 flip `c1`c2`c3!(1 2 3;4 5 6;7 8 9)
@@ -404,7 +404,7 @@ k!t
 / We can also use this shortcut for defining keyed tables
 kt:([id:1 2 3]c1:1 2 3;c2:4 5 6;c3:7 8 9)
 
-/ Records can then be retreived based on this key
+/ Records can then be retrieved based on this key
 kt[1]
 / => c1| 1
 / => c2| 4
@@ -426,7 +426,7 @@ kt[`id!1]
 f:{x+x}
 f[2] / => 4
 
-/ Functions can be annonymous and called at point of definition
+/ Functions can be anonymous and called at point of definition
 {x+x}[2] / => 4
 
 / By default the last expression is returned
@@ -470,7 +470,7 @@ a / => 1
 / Functions cannot see nested scopes (only local and global)
 {local:1;{:local}[]}[] / throws error as local is not defined in inner function
 
-/ A function can have one or more of it's arguments fixed (projection)
+/ A function can have one or more of its arguments fixed (projection)
 f:+[4]
 f[4] / => 8
 f[5] / => 9
@@ -679,8 +679,8 @@ aj[`time`sym;trades;quotes]
 / q is a vector language so explicit loops (for, while etc.) are not encouraged
 / where possible functionality should be vectorized (i.e. operations on lists)
 / adverbs supplement this, modifying the behaviour of functions
-/ and providing loop type functionality when required
-/ (in q functions are sometimes refered to as verbs, hence adverbs)
+/ and providing loop-like functionality when required
+/ (in q, functions are sometimes referred to as verbs, hence adverbs)
 / the "each" adverb modifies a function to treat a list as individual variables
 first each (1 2 3;4 5 6;7 8 9)
 / => 1 4 7
@@ -696,7 +696,7 @@ first each (1 2 3;4 5 6;7 8 9)
 / => 3 4 5
 / => 4 5 6
 
-/ The true alternatives to loops in q are the adverbs scan (\) and over (/)
+/ The true alternatives to loops in q are the adverbs "scan" (\) and "over" (/)
 / their behaviour differs based on the number of arguments the function they
 / are modifying receives.  Here I'll summarise some of the most useful cases
 / a single argument function modified by scan given 2 args behaves like "do"
@@ -736,7 +736,7 @@ t:([]a:1 2 3;b:1 2 3f)
 /     ├── a
 /     └── b
 
-/ Loading this directory (as if it was as script, see above)
+/ Loading this directory (as if it were a script, see above)
 / loads these tables into the q session
 \l .
 / the serialized table will be loaded into memory
@@ -770,5 +770,6 @@ select from splayed / (the columns are read from disk on request)
 * [*q for mortals* q language tutorial](http://code.kx.com/wiki/JB:QforMortals2/contents)
 * [*kdb for mortals* on disk data tutorial](http://code.kx.com/wiki/JB:KdbplusForMortals/contents)
 * [q language reference](http://code.kx.com/wiki/Reference)
+* [q tutorials](http://code.kx.com/wiki/Tutorials)
 * [Online training courses](http://training.aquaq.co.uk/)
 * [TorQ production framework](https://github.com/AquaQAnalytics/TorQ)
