@@ -25,9 +25,9 @@ YAML doesn't allow literal tab characters at all.
 key: value
 another_key: Another value goes here.
 a_number_value: 100
-# If you want to use number 1 as a value, you have to enclose it in quotes, 
-# otherwise, YAML parser will assume that it is a boolean value of true.
 scientific_notation: 1e+12
+# The number 1 will be interpreted as a number, not a boolean. if you want
+# it to be intepreted as a boolean, use true
 boolean: true
 null_value: null
 key with spaces: value
