@@ -104,6 +104,11 @@ if let someOptionalStringConstant = someOptionalString {
     }
 }
 
+// The nil-coalescing operator ?? unwraps an optional if it contains a non-nil value, or returns a default value.
+var someOptionalString: String?
+let someString = someOptionalString ?? "abc"
+print(someString) // abc
+
 // Swift has support for storing a value of any type.
 // For that purposes there is two keywords: `Any` and `AnyObject`
 // `AnyObject` == `id` from Objective-C
