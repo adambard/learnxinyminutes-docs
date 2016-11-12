@@ -408,11 +408,14 @@ module ActivePatternExamples =
 
     // "banana clips" are the syntax for active patterns
 
+    // You can use "elif" instead of "else if" in conditional expressions.
+    // They are equivalent in F#
+
     // for example, define an "active" pattern to match character types...
     let (|Digit|Letter|Whitespace|Other|) ch =
        if System.Char.IsDigit(ch) then Digit
-       else if System.Char.IsLetter(ch) then Letter
-       else if System.Char.IsWhiteSpace(ch) then Whitespace
+       elif System.Char.IsLetter(ch) then Letter
+       elif System.Char.IsWhiteSpace(ch) then Whitespace
        else Other
 
     // ... and then use it to make parsing logic much clearer
