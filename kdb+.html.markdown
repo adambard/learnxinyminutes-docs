@@ -2,7 +2,7 @@
 language: kdb+
 contributors:
     - ["Matt Doherty", "https://github.com/picodoc"]
-    - ["Jonny Press", "jonny.press@aquaq.co.uk"]
+    - ["Jonny Press", "https://github.com/jonnypress"]
 filename: learnkdb.q
 ---
 
@@ -25,6 +25,8 @@ separable so this distinction is not really useful.
 
 All Feedback welcome!  You can reach me at matt.doherty@aquaq.co.uk, or Jonny
 at jonny.press@aquaq.co.uk
+
+To learn more about kdb+ you can join the [Personal kdb+](https://groups.google.com/forum/#!forum/personal-kdbplus) or [TorQ kdb+](https://groups.google.com/forum/#!forum/kdbtorq) group.
 
 ```
 / Single line comments start with a forward-slash
