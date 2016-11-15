@@ -18,7 +18,7 @@ lang: fr-fr
 ;;
 ;; Ensuite installez GNU Emacs 24.3 (ou une version ultérieure) :
 ;;
-;; Debian: apt-get install emacs (or see your distro instructions)
+;; Debian: apt-get install emacs (voir les instructions pour votre distribution)
 ;; MacOSX: http://emacsformacosx.com/emacs-builds/Emacs-24.3-universal-10.6.8.dmg
 ;; Windows: http://ftp.gnu.org/gnu/windows/emacs/emacs-24.3-bin-i386.zip
 ;;
@@ -28,7 +28,7 @@ lang: fr-fr
 ;; Avertissement important:
 ;;
 ;; Suivre ce tutoriel ne risque pas d'endommager votre ordinateur,
-;; sauf si vous vous énervez au point de le jeter par terre.  En tous
+;; sauf si vous vous énervez au point de le jeter par terre.  En tout
 ;; cas, je décline toute responsabilité en cas de problème.
 ;; Amusez-vous bien !
 
