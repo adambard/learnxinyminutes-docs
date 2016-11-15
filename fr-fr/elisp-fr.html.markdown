@@ -316,7 +316,7 @@ lang: fr-fr
 
 (hello-to-bonjour)
 
-;; Mettons de la couleur sur les noms :
+;; Mettons les noms en gras :
 
 (defun boldify-names ()
     (switch-to-buffer-other-window "*test*")
