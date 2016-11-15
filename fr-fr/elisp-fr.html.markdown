@@ -86,7 +86,7 @@ lang: fr-fr
 ;; `C-j' insère le résultat de l'évaluation dans le buffer.
 
 ;; `C-x C-e' affiche le même résultat dans la ligne tout en bas
-;; d'Emacs, appelée le "minibuffer".  On utilise en général `C-x C-e',
+;; d'Emacs, appelée le "minibuffer". On utilise en général `C-x C-e',
 ;; pour ne pas encombrer le buffer avec du texte inutile.
 
 ;; `setq' assigne une valeur à une variable :
