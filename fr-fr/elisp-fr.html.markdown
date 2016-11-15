@@ -336,7 +336,7 @@ lang: fr-fr
 ;; la chaîne "Bonjour ", et
 ;; un groupe de                | c'est la syntaxe \\( ... \\)
 ;;   n'importe quel caractère  | c'est le .
-;;   peut-être plusieurs       | c'est le +
+;;   une ou plusieurs fois     | c'est le +
 ;; et la chaîne "!".
 
 ;; Prêt ?  Testons !
