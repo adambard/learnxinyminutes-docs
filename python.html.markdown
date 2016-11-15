@@ -692,6 +692,7 @@ def double_numbers(iterable):
     double_arr = []
     for i in iterable:
         double_arr.append(i + i)
+    return double_arr
 
 # Running the following would mean we'll double all values first and return all
 # of them back to be checked by our condition
