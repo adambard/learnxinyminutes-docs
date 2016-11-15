@@ -29,7 +29,7 @@ lang: fr-fr
 ;; Avertissement important :
 ;;
 ;; Suivre ce tutoriel ne risque pas d'endommager votre ordinateur,
-;; sauf si vous vous énervez au point de le jeter par terre.  En tout
+;; sauf si vous vous énervez au point de le jeter par terre. En tout
 ;; cas, je décline toute responsabilité en cas de problème.
 ;; Amusez-vous bien !
 
@@ -142,7 +142,7 @@ lang: fr-fr
 ;; => [l'écran a deux fenêtres et le curseur est dans le buffer *test*]
 
 ;; Placez la souris sur la fenêtre du haut et cliquez-gauche pour
-;; retourner dans cette fenêtre.  Ou bien utilisez `C-x o' (i.e. tenez
+;; retourner dans cette fenêtre. Ou bien utilisez `C-x o' (i.e. tenez
 ;; control-x appuyé et appuyez sur o) pour aller dans l'autre fenêtre
 ;; interactivement.
 
