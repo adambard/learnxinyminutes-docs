@@ -1,7 +1,7 @@
 ---
 language: elisp
 contributors:
-    - ["Bastien Guerry", "http://bzg.fr"]
+    - ["Bastien Guerry", "https://bzg.fr"]
     - ["Saurabh Sandav", "http://github.com/SaurabhSandav"]
 filename: learn-emacs-lisp.el
 ---
