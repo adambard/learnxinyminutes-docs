@@ -250,7 +250,7 @@ lang: fr-fr
 
 ;; Note : `car' et `cdr' ne modifient pas la liste, mais `push' oui.
 ;; C'est une différence importante : certaines fonctions n'ont pas
-;; d'effets secondaires (comme `car') et d'autres oui (comme `push').
+;; d'effets de bord (comme `car') et d'autres oui (comme `push').
 
 ;; Évaluons `hello' pour tous les éléments dans `list-of-names' :
 (mapcar 'hello list-of-names)
