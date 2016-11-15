@@ -85,35 +85,35 @@ lang: fr-fr
 
 ;; `C-j' insère le résultat de l'évaluation dans le buffer.
 
-;; `C-xC-e' affiche le même résultat dans la ligne tout en bas
-;; d'Emacs, appelée le "minibuffer".  On utilise en général `C-xC-e',
+;; `C-x C-e' affiche le même résultat dans la ligne tout en bas
+;; d'Emacs, appelée le "minibuffer".  On utilise en général `C-x C-e',
 ;; pour ne pas encombrer le buffer avec du texte inutile.
 
 ;; `setq' assigne une valeur à une variable :
 (setq my-name "Bastien")
-;; `C-xC-e' => "Bastien" (affiché dans le minibuffer)
+;; `C-x C-e' => "Bastien" (affiché dans le minibuffer)
 
 ;; `insert' va insérer "Hello!" là où se trouve le curseur :
 (insert "Hello!")
-;; `C-xC-e' => "Hello!"
+;; `C-x C-e' => "Hello!"
 
 ;; Nous utilisons `insert' avec un seul argument "Hello!", mais
 ;; nous pouvons passer plus d'arguments - ici nous en passons deux :
 
 (insert "Hello" " world!")
-;; `C-xC-e' => "Hello world!"
+;; `C-x C-e' => "Hello world!"
 
 ;; Vous pouvez utiliser des variables au lieu de chaînes de caractères :
 (insert "Hello, I am " my-name)
-;; `C-xC-e' => "Hello, I am Bastien"
+;; `C-x C-e' => "Hello, I am Bastien"
 
 ;; Vous pouvez combiner les sexps en fonctions :
 (defun hello () (insert "Hello, I am " my-name))
-;; `C-xC-e' => hello
+;; `C-x C-e' => hello
 
 ;; Vous pouvez évaluer les fonctions :
 (hello)
-;; `C-xC-e' => Hello, I am Bastien
+;; `C-x C-e' => Hello, I am Bastien
 
 ;; Les parenthèses vides dans la définition de la fonction signifient
 ;; qu'elle ne prend pas d'argument.  Mais toujours utiliser `my-name'
@@ -121,12 +121,12 @@ lang: fr-fr
 ;; l'argument est appelé "name") :
 
 (defun hello (name) (insert "Hello " name))
-;; `C-xC-e' => hello
+;; `C-x C-e' => hello
 
 ;; Maintenant appelons la fonction avec la chaîne de caractères "you"
 ;; comme valeur de son unique argument :
 (hello "you")
-;; `C-xC-e' => "Hello you"
+;; `C-x C-e' => "Hello you"
 
 ;; Youpi!
 
@@ -138,11 +138,11 @@ lang: fr-fr
 ;; nouvelle fenêtre :
 
 (switch-to-buffer-other-window "*test*")
-;; `C-xC-e'
+;; `C-x C-e'
 ;; => [l'écran a deux fenêtres et le curseur est dans le buffer *test*]
 
 ;; Placez la souris sur la fenêtre du haut et cliquez-gauche pour
-;; retourner dans cette fenêtre.  Ou bien utilisez `C-xo' (i.e. tenez
+;; retourner dans cette fenêtre.  Ou bien utilisez `C-x o' (i.e. tenez
 ;; control-x appuyé et appuyez sur o) pour aller dans l'autre fenêtre
 ;; interactivement.
 
@@ -150,13 +150,13 @@ lang: fr-fr
 (progn
   (switch-to-buffer-other-window "*test*")
   (hello "you"))
-;; `C-xC-e'
+;; `C-x C-e'
 ;; => [L'écran a deux fenêtres et le curseur est dans le buffer *test*]
 
 ;; Maintenant si ça ne vous dérange pas, je vais arrêter de vous
-;; demander de faire `C-xC-e' : faites-le pour chaque sexp qui suit.
+;; demander de faire `C-x C-e' : faites-le pour chaque sexp qui suit.
 
-;; Retournez toujours dans le buffer *scratch* avec la souris ou `C-xo'.
+;; Retournez toujours dans le buffer *scratch* avec la souris ou `C-x o'.
 
 ;; Il est souvent utile d'effacer le contenu du buffer :
 (progn
