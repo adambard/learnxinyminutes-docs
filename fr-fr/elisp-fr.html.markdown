@@ -279,7 +279,7 @@ lang: fr-fr
     (other-window 1))
 
 ;; (goto-char (point-min)) va au début du buffer.
-;; (search-forward "Hello") chercher  la chaîne "Hello".
+;; (search-forward "Hello") cherche la chaîne "Hello".
 ;; (while x y) évalue la sexp(s) y tant que x renvoie something.
 ;; Si x renvoie `nil' (rien), nous sortons de la boucle.
 
