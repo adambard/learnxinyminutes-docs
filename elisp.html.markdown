@@ -9,7 +9,7 @@ filename: learn-emacs-lisp.el
 ```scheme
 ;; This gives an introduction to Emacs Lisp in 15 minutes (v0.2d)
 ;;
-;; Author: Bastien / @bzg2 / http://bzg.fr
+;; Author: Bastien / @bzg2 / https://bzg.fr
 ;;
 ;; First make sure you read this text by Peter Norvig:
 ;; http://norvig.com/21-days.html
