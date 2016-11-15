@@ -6,13 +6,14 @@ contributors:
 translators:
     - ["小柒", "http://weibo.com/u/2328126220"]
     - ["alswl", "https://github.com/alswl"]
-filename: learnr.r
+filename: learnr-zh.r
+lang: zh-cn
 ---
 
 R 是一门统计语言。它有很多数据分析和挖掘程序包。可以用来统计、分析和制图。
 你也可以在 LaTeX 文档中运行 `R` 命令。
 
-```python
+```r
 # 评论以 # 开始
 
 # R 语言原生不支持 多行注释
@@ -284,7 +285,7 @@ while (a > 4) {
 }
 
 # 记住，在 R 语言中 for / while 循环都很慢
-# 建议使用 apply()（我们一会介绍）来错做一串数据（比如一列或者一行数据）
+# 建议使用 apply()（我们一会介绍）来操作一串数据（比如一列或者一行数据）
 
 # IF/ELSE
 

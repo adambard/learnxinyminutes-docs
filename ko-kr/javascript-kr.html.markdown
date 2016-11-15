@@ -5,6 +5,7 @@ contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
+filename: javascript-kr.js
 lang: ko-kr
 ---
 
@@ -380,14 +381,11 @@ var myNumberObj = new Number(12)
 myNumber == myNumberObj // = true
 
 // 하지만 정확히 같지는 않습니다.
-typeof(myNumber) // = 'number'
-typeof(myNumberObj) // = 'object'
+typeof myNumber // = 'number'
+typeof myNumberObj // = 'object'
 myNumber === myNumberObj // = false
 if (0){
     // 0은 거짓이라서 이 코드는 실행되지 않습니다.
-}
-if (Number(0)){
-    // Number(0)은 참이라서 이 코드는 *실행됩니다*.
 }
 
 // 하지만 래퍼 객체와 일반 내장 함수는 프로토타입을 공유하기 때문에 

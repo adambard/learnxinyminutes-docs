@@ -1,0 +1,5 @@
+- [ ] Pull request title is prepended with `[language/lang-code]`
+- [ ] Pull request touches only one file (or a set of logically related files with similar changes made)
+- [ ] Content changes are aimed at *intermediate to experienced programmers* (this is a poor format for explaining fundamental programming concepts)
+- [ ] If you've changed any part of the YAML Frontmatter, make sure it is formatted according to [CONTRIBUTING.md](https://github.com/adambard/learnxinyminutes-docs/blob/master/CONTRIBUTING.markdown)
+  - [ ] Yes, I have double-checked quotes and field names!

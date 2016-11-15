@@ -2,7 +2,7 @@
 category: tool
 tool: git
 lang: pt-pt
-filename: LearnGit.txt
+filename: LearnGit-pt.txt
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:
@@ -74,8 +74,7 @@ maior controlo sobre o que é registado no repositório git.
 
 ### *Commit*
 
-Um *commit** de git é um registo de um cojunto de alterações ou manipulações
-no nos ficheiros do projecto.
+Um *commit** de git é um registo de um cojunto de alterações ou manipulações nos ficheiros do projecto.
 Por exemplo, ao adicionar cinco ficheiros e remover outros 2, estas alterações
 serão gravadas num *commit* (ou registo). Este *commit* pode então ser enviado
 para outros repositórios ou não!
@@ -83,7 +82,7 @@ para outros repositórios ou não!
 ### *Branch*
 
 Um *branch* é essencialmente uma referência que aponta para o último *commit*
-efetuado. à medida que são feitos novos commits, esta referência é atualizada
+efetuado. À medida que são feitos novos commits, esta referência é atualizada
 automaticamente e passa a apontar para o commit mais recente.
 
 ### *HEAD* e *head* (componentes do directório .git)
@@ -115,7 +114,7 @@ Permite configurar as definições, sejam as definições do repositório, siste
 ou configurações globais.
 
 ```bash
-# Imprime & Define Algumas Variáveis de Configuração Básicas (Global)
+# Imprime e define algumas variáveis de configuração básicas (global)
 $ git config --global user.email
 $ git config --global user.name
 
@@ -123,7 +122,7 @@ $ git config --global user.email "MyEmail@Zoho.com"
 $ git config --global user.name "My Name"
 ```
 
-[Aprenda Mais Sobre git config. (EN)](http://git-scm.com/docs/git-config)
+[Aprenda mais sobre git config. (EN)](http://git-scm.com/docs/git-config)
 
 ### help
 
@@ -166,7 +165,7 @@ adicionados através de `git add` ao repositório, então eles não serão
 incluidos nos commits!
 
 ```bash
-# adiciona um ficheiro no directório do project atual
+# adiciona um ficheiro no directório do projecto atual
 $ git add HelloWorld.java
 
 # adiciona um ficheiro num sub-directório
@@ -371,7 +370,7 @@ Restabelece a HEAD atual ao estado definido. Isto permite reverter *merges*,
 perigoso se não há certeza quanto ao que se está a fazer.
 
 ```bash
-# Restabelece a camada intermediária dr registo para o último
+# Restabelece a camada intermediária de registo para o último
 # commit (o directório fica sem alterações)
 $ git reset
 

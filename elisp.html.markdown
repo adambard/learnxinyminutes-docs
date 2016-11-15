@@ -2,6 +2,7 @@
 language: elisp
 contributors:
     - ["Bastien Guerry", "http://bzg.fr"]
+    - ["Saurabh Sandav", "http://github.com/SaurabhSandav"]
 filename: learn-emacs-lisp.el
 ---
 
@@ -26,10 +27,10 @@ filename: learn-emacs-lisp.el
 ;;
 ;; Going through this tutorial won't damage your computer unless
 ;; you get so angry that you throw it on the floor.  In that case,
-;; I hereby decline any responsability.  Have fun!
+;; I hereby decline any responsibility.  Have fun!
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;; Fire up Emacs.
 ;;
 ;; Hit the `q' key to dismiss the welcome message.
@@ -42,9 +43,9 @@ filename: learn-emacs-lisp.el
 ;; The scratch buffer is the default buffer when opening Emacs.
 ;; You are never editing files: you are editing buffers that you
 ;; can save to a file.
-;; 
+;;
 ;; "Lisp interaction" refers to a set of commands available here.
-;; 
+;;
 ;; Emacs has a built-in set of commands available in every buffer,
 ;; and several subsets of commands available when you activate a
 ;; specific mode.  Here we use the `lisp-interaction-mode', which
@@ -109,7 +110,7 @@ filename: learn-emacs-lisp.el
 ;; The empty parentheses in the function's definition means that
 ;; it does not accept arguments.  But always using `my-name' is
 ;; boring, let's tell the function to accept one argument (here
-;; the argument is called "name"): 
+;; the argument is called "name"):
 
 (defun hello (name) (insert "Hello " name))
 ;; `C-xC-e' => hello
@@ -193,7 +194,7 @@ filename: learn-emacs-lisp.el
 ;; And evaluate it:
 (greeting "you")
 
-;; Some function are interactive:
+;; Some functions are interactive:
 (read-from-minibuffer "Enter your name: ")
 
 ;; Evaluating this function returns what you entered at the prompt.
@@ -280,10 +281,10 @@ filename: learn-emacs-lisp.el
 ;; should stop searching at some point in the buffer, and whether it
 ;; should silently fail when nothing is found:
 
-;; (search-forward "Hello" nil t) does the trick:
+;; (search-forward "Hello" nil 't) does the trick:
 
 ;; The `nil' argument says: the search is not bound to a position.
-;; The `t' argument says: silently fail when nothing is found.
+;; The `'t' argument says: silently fail when nothing is found.
 
 ;; We use this sexp in the function below, which doesn't throw an error:
 
@@ -294,7 +295,7 @@ filename: learn-emacs-lisp.el
     (mapcar 'hello list-of-names)
     (goto-char (point-min))
     ;; Replace "Hello" by "Bonjour"
-    (while (search-forward "Hello" nil t)
+    (while (search-forward "Hello" nil 't)
       (replace-match "Bonjour"))
     (other-window 1))
 
@@ -305,7 +306,7 @@ filename: learn-emacs-lisp.el
 (defun boldify-names ()
     (switch-to-buffer-other-window "*test*")
     (goto-char (point-min))
-    (while (re-search-forward "Bonjour \\(.+\\)!" nil t)
+    (while (re-search-forward "Bonjour \\(.+\\)!" nil 't)
       (add-text-properties (match-beginning 1)
                            (match-end 1)
                            (list 'face 'bold)))
@@ -317,9 +318,9 @@ filename: learn-emacs-lisp.el
 
 ;; The regular expression is "Bonjour \\(.+\\)!" and it reads:
 ;; the string "Bonjour ", and
-;; a group of           | this is the \\( ... \\) construct
-;;   any character      | this is the .
-;;   possibly repeated  | this is the +
+;; a group of            | this is the \\( ... \\) construct
+;;   any character       | this is the .
+;;   possibly repeated   | this is the +
 ;; and the "!" string.
 
 ;; Ready?  Test it!

@@ -1,10 +1,10 @@
 ---
-language: php
+language: PHP
 category: language
 contributors:
     - ["Malcolm Fell", "http://emarref.net/"]
     - ["Trismegiste", "https://github.com/Trismegiste"]
-filename: learnphp.php
+filename: learnphp-kr.php
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
 lang: ko-kr

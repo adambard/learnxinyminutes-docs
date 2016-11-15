@@ -18,12 +18,12 @@ Anmerkung des Übersetzers: Einige englische Begriffe wie *Repository*, *Commit*
 
 ### Was ist Versionsverwaltung?
 
-Eine Versionskontrolle erfasst die Änderungen einer Datei oder eines Verzeichnisses im Verlauf der Zeit.
+Eine Versionsverwaltung erfasst die Änderungen einer Datei oder eines Verzeichnisses im Verlauf der Zeit.
 
 ### Zentrale im Vergleich mit verteilter Versionverwaltung
 
-* Zentrale Versionskontrolle konzentriert sich auf das Synchronisieren, Verfolgen und Sichern von Dateien.
-* Verteilte Versionskontrolle konzentriert sich auf das Teilen der Änderungen. Jede Änderung hat eine eindeutige ID.
+* Zentrale Versionsverwaltung konzentriert sich auf das Synchronisieren, Verfolgen und Sichern von Dateien.
+* Verteilte Versionsverwaltung konzentriert sich auf das Teilen der Änderungen. Jede Änderung hat eine eindeutige ID.
 * Verteilte Systeme haben keine vorbestimmte Struktur. Ein SVN-ähnliches, zentrales System wäre mit Git ebenso umsetzbar.
 
 [Weiterführende Informationen](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
@@ -33,6 +33,7 @@ Eine Versionskontrolle erfasst die Änderungen einer Datei oder eines Verzeichni
 * Ist offline einsetzbar.
 * Einfache Kollaboration!
 * Branching ist einfach!
+* Branching ist schnell!
 * Merging ist einfach!
 * Git ist schnell.
 * Git ist flexibel.
@@ -48,20 +49,20 @@ Ein Repository besteht in Git aus dem .git-Verzeichnis und dem Arbeitsverzeichni
 
 ### .git-Verzeichnis (Teil des Repositorys)
 
-Das .git-Verzeichnis enth? alle Einstellung, Logs, Branches, den HEAD und mehr.
+Das .git-Verzeichnis enthält alle Einstellung, Logs, Branches, den HEAD und mehr.
 [Ausführliche Übersicht](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### Arbeitsverzeichnis (Teil des Repositorys)
 
-Dies sind die Verzeichnisse und Dateien in deinem Repository.
+Dies sind die Verzeichnisse und Dateien in deinem Repository, also z.B. dein Programmcode.
 
 ### Index (Teil des .git-Verzeichnisses)
 
-Der Index ist die die Staging-Area von Git. Es ist im Grunde eine Ebene, die Arbeitsverzeichnis vom Repository trennt. Sie gibt Entwicklern mehr Einfluss darüber, was ins Git-Repository eingeht.
+Der Index ist die Staging-Area von Git. Es ist im Grunde eine Ebene, die Arbeitsverzeichnis vom Repository trennt. Sie gibt Entwicklern mehr Einfluss darüber, was ins Git-Repository eingeht.
 
 ### Commit
 
-Ein Commit ist ein Schnappschuss von Uderungen in deinem Arbeitsverzeichnis. Wenn du zum Beispiel 5 Dateien hinzugefügt und 2 andere entfernt hast, werden diese Änderungen im Commit (Schnappschuss) enthalten sein. Dieser Commit kann dann in andere Repositorys gepusht werden. Oder nicht!
+Ein Commit ist ein Schnappschuss von Änderungen in deinem Arbeitsverzeichnis. Wenn du zum Beispiel 5 Dateien hinzugefügt und 2 andere entfernt hast, werden diese Änderungen im Commit (Schnappschuss) enthalten sein. Dieser Commit kann dann in andere Repositories gepusht werden. Oder nicht!
 
 ### Branch
 
@@ -69,7 +70,9 @@ Ein Branch, ein Ast oder Zweig, ist im Kern ein Pointer auf den letzten Commit, 
 
 ### HEAD und head (Teil des .git-Verzeichnisses)
 
-HEAD ist ein Pointer auf den aktuellen Branch. Ein Repository hat nur einen *aktiven* HEAD. Ein head ist ein Pointer, der auf ein beliebige Zahl von heads zeigt.
+HEAD ist ein Pointer auf den aktuellen Branch. Ein Repository hat nur einen *aktiven* HEAD. 
+
+Ein *head* ist ein Pointer, der auf einen beliebigen Commit zeigt.  Ein Repository kann eine beliebige Zahl von *heads* enthalten.
 
 ### Konzeptionelle Hintergründe
 
@@ -82,7 +85,7 @@ HEAD ist ein Pointer auf den aktuellen Branch. Ein Repository hat nur einen *akt
 
 ### init
 
-Erstelle ein leeres Git-Repository. Die Einstellungen, gespeicherte Informationen und mehr zu diesem Git-Repository werden in einem Verzeichnis namens *.git* angelegt.
+Erstelle ein leeres Git-Repository im aktuellen Verzeichnis. Die Einstellungen, gespeicherte Informationen und mehr zu diesem Git-Repository werden in einem Verzeichnis namens *.git* angelegt.
 
 ```bash
 $ git init
@@ -127,7 +130,7 @@ Zeigt die Unterschiede zwischen Index (im Grunde dein Arbeitsverzeichnis/-reposi
 
 
 ```bash
-# Zeigt den Branch, nicht-verfolgte Dateien, Uderungen und andere Unterschiede an
+# Zeigt den Branch, nicht-verfolgte Dateien, Änderungen und andere Unterschiede an
 $ git status
 
 # Anderes Wissenswertes über git status anzeigen
@@ -151,7 +154,7 @@ $ git add ./*.java
 
 ### branch
 
-Verwalte alle Branches. Du kannst sie mit diesem Befehl ansehen, bearbeiten, neue erschaffen oder löschen.
+Verwalte alle Branches. Du kannst sie mit diesem Befehl ansehen, bearbeiten, neue erzeugen oder löschen.
 
 ```bash
 # Liste alle bestehenden Branches und Remotes auf
@@ -178,6 +181,8 @@ Bringt alle Dateien im Arbeitsverzeichnis auf den Stand des Index oder des angeg
 ```bash
 # Ein Repo auschecken - wenn nicht anders angegeben ist das der master
 $ git checkout
+# Eine Datei auschecken - sie befindet sich dann auf dem aktuellen Stand im Repository
+$ git checkout /path/to/file
 # Einen bestimmten Branch auschecken
 $ git checkout branchName
 # Erstelle einen neuen Branch und wechsle zu ihm. Wie: "git branch <name>; git checkout <name>"
@@ -186,7 +191,7 @@ $ git checkout -b newBranch
 
 ### clone
 
-Ein bestehendes Repository in ein neues Verzeichnis klonen oder kopieren. Es fügt außerdem für hedes geklonte Repo remote-tracking Branches hinzu. Du kannst auf diese Remote-Branches pushen.
+Ein bestehendes Repository in ein neues Verzeichnis klonen oder kopieren. Es fügt außerdem für jedes geklonte Repository remote-tracking Branches hinzu. Du kannst auf diese Remote-Branches pushen.
 
 ```bash
 # Klone learnxinyminutes-docs
@@ -215,6 +220,9 @@ $ git diff --cached
 
 # Unterschiede zwischen deinem Arbeitsverzeichnis und dem aktuellsten Commit anzeigen
 $ git diff HEAD
+
+# Unterschiede zwischen dem Index und dem aktuellsten Commit (betrifft nur Dateien im Index)
+$ git diff --staged
 ```
 
 ### grep
@@ -288,16 +296,16 @@ $ git mv -f myFile existingFile
 
 ### pull
 
-Führe einen Pull, zieht alle Daten, eines Repositorys und f?? einen Merge mit einem anderen Branch durch.
+Führe einen Pull (zieht alle Daten eines Repositories) aus und führt einen Merge mit einem anderen Branch durch.
 
 ```bash
-# Update deines lokalen Repos, indem ein Merge der neuen Uderungen
-# von den remote-liegenden "origin"- und "master"-Branches durchgef?? wird.
+# Update deines lokalen Repos, indem ein Merge der neuen Änderungen
+# von den remote-liegenden "origin"- und "master"-Branches durchgeführt wird.
 # git pull <remote> <branch>
 # git pull => impliziter Verweis auf origin und master
 $ git pull origin master
 
-# F?? einen Merge von Uderungen eines remote-Branch und ein Rebase
+# Führt einen Merge von Änderungen eines remote-Branch und ein Rebase
 # des Branch-Commits im lokalen Repo durch. Wie: pull <remote> <branch>, git rebase <branch>"
 $ git pull origin master --rebase
 ```
@@ -337,8 +345,8 @@ $ git reset
 # Setze die Staging-Area zurück, um dem letzten Commit zu entsprechen und überschreibe das Arbeitsverzeichnis
 $ git reset --hard
 
-# Bewegt die Spitze des Branches zu dem angegebenen Commit (das Verzeichnis bleibt unber??)
-# Alle Uderungen bleiben im Verzeichnis erhalten
+# Bewegt die Spitze des Branches zu dem angegebenen Commit (das Verzeichnis bleibt unberührt)
+# Alle Änderungen bleiben im Verzeichnis erhalten
 $ git reset 31f2bb1
 
 # Bewegt die Spitze des Branches zurück zu dem angegebenen Commit
@@ -372,3 +380,5 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
 
 * [GitGuys](http://www.gitguys.com/)
+
+* [gitflow - Ein Modell um mit Branches zu arbeiten](http://nvie.com/posts/a-successful-git-branching-model/)

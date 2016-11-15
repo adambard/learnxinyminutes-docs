@@ -6,6 +6,7 @@ filename: learngo-pt.go
 lang: pt-br
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
+    - ["Jose Donizetti", "https://github.com/josedonizetti"]
 translators:
     - ["Nuno Antunes", "https://github.com/ntns"]
 ---
@@ -74,7 +75,7 @@ func learnTypes() {
 pode incluir quebras de linha.` // mesmo tipo string
 
     // literal não-ASCII. A linguagem Go utiliza de raiz a codificação UTF-8.
-    g := 'Σ' // tipo rune, um alias para uint32, que contém um código unicode
+    g := 'Σ' // tipo rune, um alias para int32, que contém um código unicode
 
     f := 3.14195 // float64, número de vírgula flutuante de 64bit (IEEE-754)
     c := 3 + 4i  // complex128, representado internamente com dois float64s
@@ -306,3 +307,6 @@ a melhor demonstração de código fácil de ler e de perceber, do estilo Go, e 
 sua escrita idiomática. Ou então clique no nome de uma função na [documentação]
 (http://golang.org/pkg/) e veja o código fonte aparecer!
 
+Outra ótima fonte para aprender Go é o [Go by example](https://gobyexample.com/).
+Apesar de ser em inglês, é possível recodificar os exemplos para aprender sobre
+a linguagem.

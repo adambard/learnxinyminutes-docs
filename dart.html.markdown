@@ -81,7 +81,7 @@ example5() {
 // Where classBody can include instance methods and variables, but also
 // class methods and variables.
 class Example6Class {
-  var example6InstanceVariable = "Example6 instance variable"; 
+  var example6InstanceVariable = "Example6 instance variable";
   sayIt() {
     print(example6InstanceVariable);
   }
@@ -92,7 +92,7 @@ example6() {
 
 // Class methods and variables are declared with "static" terms.
 class Example7Class {
-  static var example7ClassVariable = "Example7 class variable"; 
+  static var example7ClassVariable = "Example7 class variable";
   static sayItFromClass() {
     print(example7ClassVariable);
   }
@@ -111,7 +111,7 @@ example7() {
 // by default. But arrays and maps are not. They can be made constant by
 // declaring them "const".
 var example8A = const ["Example8 const array"],
-  example8M = const {"someKey": "Example8 const map"}; 
+  example8M = const {"someKey": "Example8 const map"};
 example8() {
   print(example8A[0]);
   print(example8M["someKey"]);
@@ -245,7 +245,7 @@ example18() {
 // Strings with triple single-quotes or triple double-quotes span
 // multiple lines and include line delimiters.
 example19() {
-  print('''Example19 <a href="etc"> 
+  print('''Example19 <a href="etc">
 Example19 Don't can't I'm Etc
 Example19 </a>''');
 }
@@ -272,7 +272,7 @@ example20() {
 class Example21 {
   List<String> _names;
   Example21() {
-    _names = ["a", "b"]; 
+    _names = ["a", "b"];
   }
   List<String> get names => _names;
   set names(List<String> list) {
@@ -498,7 +498,7 @@ main() {
 
 ## Further Reading
 
-Dart has a comprehenshive web-site. It covers API reference, tutorials, articles and more, including a
+Dart has a comprehensive web-site. It covers API reference, tutorials, articles and more, including a
 useful Try Dart online.
 http://www.dartlang.org/
 http://try.dartlang.org/

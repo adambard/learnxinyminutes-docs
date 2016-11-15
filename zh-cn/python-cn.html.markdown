@@ -232,7 +232,7 @@ filled_dict.setdefault("five", 6)  # filled_dict["five"] 的值仍然是 5
 # 集合储存无顺序的元素
 empty_set = set()
 # 初始化一个集合
-some_set = set([1, 2, 2, 3, 4])  # filled_set 现在是 set([1, 2, 3, 4])
+some_set = set([1, 2, 2, 3, 4])  # some_set 现在是 set([1, 2, 3, 4])
 
 # Python 2.7 之后，大括号可以用来表示集合
 filled_set = {1, 2, 2, 3, 4}  # => {1 2 3 4}

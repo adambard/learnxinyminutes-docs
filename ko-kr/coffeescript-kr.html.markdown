@@ -3,7 +3,7 @@ language: coffeescript
 category: language
 contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
-filename: coffeescript.coffee
+filename: coffeescript-kr.coffee
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
 lang: ko-kr

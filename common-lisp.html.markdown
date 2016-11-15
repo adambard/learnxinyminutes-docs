@@ -8,7 +8,7 @@ contributors:
 
 ANSI Common Lisp is a general purpose, multi-paradigm programming
 language suited for a wide variety of industry applications. It is
-frequently referred to a programmable programming language.
+frequently referred to as a programmable programming language.
 
 The classic starting point is [Practical Common Lisp and freely available.](http://www.gigamonkeys.com/book/)
 
@@ -17,7 +17,7 @@ Another popular and recent book is
 
 
 
-```scheme
+```common_lisp
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 0. Syntax
@@ -140,7 +140,7 @@ nil                  ; for false - and the empty list
 ;; 2. Variables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; You can create a global (dynamically scoped) using defparameter
-;; a variable name can use any character except: ()[]{}",'`;#|\
+;; a variable name can use any character except: ()",'`;#|\
 
 ;; Dynamically scoped variables should have earmuffs in their name!
 
@@ -175,7 +175,8 @@ nil                  ; for false - and the empty list
               :age 5))
 *rover* ; => #S(DOG :NAME "rover" :BREED "collie" :AGE 5)
 
-(dog-p *rover*) ; => t  ;; ewww)
+(dog-p *rover*) ; => true  #| -p signifies "predicate". It's used to
+                              check if *rover* is an instance of dog. |#
 (dog-name *rover*) ; => "rover"
 
 ;; Dog-p, make-dog, and dog-name are all created by defstruct!
@@ -260,7 +261,7 @@ nil                  ; for false - and the empty list
 
 (defparameter *adjvec* (make-array '(3) :initial-contents '(1 2 3)
       :adjustable t :fill-pointer t))
-      
+
 *adjvec* ; => #(1 2 3)
 
 ;; Adding new element:
@@ -338,7 +339,7 @@ nil                  ; for false - and the empty list
 
 ;; The () in the above is the list of arguments for the function
 (defun hello (name)
-   (format nil "Hello, ~a " name))
+   (format nil "Hello, ~a" name))
 
 (hello "Steve") ; => "Hello, Steve"
 
@@ -429,9 +430,9 @@ nil                  ; for false - and the empty list
 (defun walker (n)
   (if (zerop n)
       :walked
-      (walker (1- n))))
+      (walker (- n 1))))
 
-(walker) ; => :walked
+(walker 5) ; => :walked
 
 ;; Most of the time, we use DOLIST or LOOP
 
@@ -573,13 +574,15 @@ nil                  ; for false - and the empty list
     "While `condition` is true, `body` is executed.
 
 `condition` is tested prior to each execution of `body`"
-    (let ((block-name (gensym)))
+    (let ((block-name (gensym)) (done (gensym)))
         `(tagbody
+           ,block-name
            (unless ,condition
-               (go ,block-name))
+               (go ,done))
            (progn
            ,@body)
-           ,block-name)))
+           (go ,block-name)
+           ,done)))
 
 ;; Let's look at the high-level version of this:
 
@@ -611,8 +614,15 @@ nil                  ; for false - and the empty list
 
 ## Further Reading
 
-[Keep moving on to the Practical Common Lisp book.](http://www.gigamonkeys.com/book/)
+*   [Keep moving on to the Practical Common Lisp book.](http://www.gigamonkeys.com/book/)
+*   [A Gentle Introduction to...](https://www.cs.cmu.edu/~dst/LispBook/book.pdf)
 
+
+## Extra Info
+
+*   [CLiki](http://www.cliki.net/)
+*   [common-lisp.net](https://common-lisp.net/)
+*   [Awesome Common Lisp](https://github.com/CodyReichert/awesome-cl)
 
 ## Credits.
 
