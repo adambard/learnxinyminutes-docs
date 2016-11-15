@@ -71,7 +71,7 @@ lang: fr-fr
 (+ 2 (+ 1 1))
 
 ;; Une expression symbolique contient des atomes ou d'autres
-;; expressions symboliques.  Dans les exemples ci-dessus, 1 et 2 sont
+;; expressions symboliques. Dans les exemples ci-dessus, 1 et 2 sont
 ;; des atomes et (+ 2 (+ 1 1)) et (+ 1 1) des expressions symboliques.
 
 ;; Dans le mode `lisp-interaction-mode' vous pouvez évaluer les sexps.
