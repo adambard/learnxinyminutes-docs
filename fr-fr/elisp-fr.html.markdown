@@ -266,7 +266,7 @@ lang: fr-fr
 
 ;; Vous vous souvenez de la fonction `hello' définie ci-dessus ?  Elle
 ;; prend seulement un argument, un nom.  `mapcar' appelle `hello' en
-;; utilisant successivement tous les éléments de `list-of-names' comme
+;; utilisant successivement chaque élément de `list-of-names' comme
 ;; argument de `hello'.
 
 ;; Maintenant arrangeons un peu ce qui est affiché dans le buffer :
