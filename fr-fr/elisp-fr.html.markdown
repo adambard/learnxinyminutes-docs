@@ -116,7 +116,7 @@ lang: fr-fr
 ;; `C-x C-e' => Hello, I am Bastien
 
 ;; Les parenthèses vides dans la définition de la fonction signifient
-;; qu'elle ne prend pas d'argument.  Mais toujours utiliser `my-name'
+;; qu'elle ne prend pas d'argument. Mais toujours utiliser `my-name'
 ;; est ennuyant, demandons à la fonction d'accepter un argument (ici
 ;; l'argument est appelé "name") :
 
