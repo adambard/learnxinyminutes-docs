@@ -13,19 +13,19 @@ lang: fr-fr
 ;;
 ;; Auteur : Bastien / @bzg2 / https://bzg.fr
 ;;
-;; Prenez d'abord le temps de lire ce texte en anglais de Peter Norvig:
+;; Prenez d'abord le temps de lire ce texte en anglais de Peter Norvig :
 ;; http://norvig.com/21-days.html
 ;;
 ;; Ensuite installez GNU Emacs 24.3 (ou une version ultérieure) :
 ;;
-;; Debian: apt-get install emacs (voir les instructions pour votre distribution)
-;; MacOSX: http://emacsformacosx.com/emacs-builds/Emacs-24.3-universal-10.6.8.dmg
-;; Windows: http://ftp.gnu.org/gnu/windows/emacs/emacs-24.3-bin-i386.zip
+;; Debian : apt-get install emacs (voir les instructions pour votre distribution)
+;; MacOSX : http://emacsformacosx.com/emacs-builds/Emacs-24.3-universal-10.6.8.dmg
+;; Windows : http://ftp.gnu.org/gnu/windows/emacs/emacs-24.3-bin-i386.zip
 ;;
-;; Vous trouverez plus d'informations sur l'installation:
+;; Vous trouverez plus d'informations sur l'installation :
 ;; http://www.gnu.org/software/emacs/#Obtaining
 
-;; Avertissement important:
+;; Avertissement important :
 ;;
 ;; Suivre ce tutoriel ne risque pas d'endommager votre ordinateur,
 ;; sauf si vous vous énervez au point de le jeter par terre.  En tout
@@ -36,15 +36,15 @@ lang: fr-fr
 ;;
 ;; Lancez Emacs.
 ;;
-;; Tapez la touche `q' pour enlever le message d'accueil.
+;; Tapez la touche "q" pour enlever le message d'accueil.
 ;;
-;; Maintenant regardez la ligne grise au pied de la fenêtre:
+;; Maintenant regardez la ligne grise au pied de la fenêtre :
 ;;
 ;; "*scratch*" est le nom de l'espace d'édition dans lequel vous vous
-;; trouvez.  Cet espace d'édition est appelé un "buffer".
+;; trouvez. Cet espace d'édition est appelé un "buffer".
 ;;
 ;; Le buffer scratch est le buffer par défaut quand on ouvre Emacs.
-;; Vous n'éditez jamais de fichier directement: vous éditez des
+;; Vous n'éditez jamais de fichier directement : vous éditez des
 ;; buffers que vous pouvez sauvegarder dans des fichiers.
 ;;
 ;; "Lisp interaction" désigne le jeu de commandes disponible ici.
@@ -60,13 +60,13 @@ lang: fr-fr
 ;; Le point-virgule commence un commentaire partout sur une ligne.
 ;;
 ;; Les programmes Elisp sont composés d'expressions symboliques aussi
-;; appelées "sexps":
+;; appelées "sexps" :
 (+ 2 2)
 
 ;; Cette expression symbolique se lit "Ajouter 2 à 2".
 
 ;; Les sexps sont placées entre parenthèses, possiblement sur
-;; plusieurs niveaux:
+;; plusieurs niveaux :
 (+ 2 (+ 1 1))
 
 ;; Une expression symbolique contient des atomes ou d'autres
@@ -88,7 +88,7 @@ lang: fr-fr
 ;; d'Emacs, appelée le "minibuffer".  On utilise en général `C-xC-e',
 ;; pour ne pas encombrer le buffer avec du texte inutile.
 
-;; `setq' assigne une valeur à une variable:
+;; `setq' assigne une valeur à une variable :
 (setq my-name "Bastien")
 ;; `C-xC-e' => "Bastien" (affiché dans le mini-buffer)
 
@@ -97,7 +97,7 @@ lang: fr-fr
 ;; `C-xC-e' => "Hello!"
 
 ;; Nous utilisons `insert' avec un seul argument "Hello!", mais
-;; nous pouvons passer plus d'arguments -- ici nous en passons deux:
+;; nous pouvons passer plus d'arguments - ici nous en passons deux :
 
 (insert "Hello" " world!")
 ;; `C-xC-e' => "Hello world!"
@@ -110,14 +110,14 @@ lang: fr-fr
 (defun hello () (insert "Hello, I am " my-name))
 ;; `C-xC-e' => hello
 
-;; Vous pouvez évaluer les fonctions:
+;; Vous pouvez évaluer les fonctions :
 (hello)
 ;; `C-xC-e' => Hello, I am Bastien
 
 ;; Les parenthèses vides dans la définition de la fonction signifient
 ;; qu'elle ne prend pas d'argument.  Mais toujours utiliser `my-name'
 ;; est ennuyant, demandons à la fonction d'accepter un argument (ici
-;; l'argument est appelé "name"):
+;; l'argument est appelé "name") :
 
 (defun hello (name) (insert "Hello " name))
 ;; `C-xC-e' => hello
@@ -145,7 +145,7 @@ lang: fr-fr
 ;; control-x appuyé et appuyez sur o) pour aller dans l'autre fenêtre
 ;; interactivement.
 
-;; Vous pouvez combiner plusieurs sexps avec `progn':
+;; Vous pouvez combiner plusieurs sexps avec `progn' :
 (progn
   (switch-to-buffer-other-window "*test*")
   (hello "you"))
@@ -153,7 +153,7 @@ lang: fr-fr
 ;; => [L'écran a deux fenêtres et le curseur est dans le buffer *test*]
 
 ;; Maintenant si ça ne vous dérange pas, je vais arrêter de vous
-;; demander de faire `C-xC-e': faites-le pour chaque sexp qui suit.
+;; demander de faire `C-xC-e' : faites-le pour chaque sexp qui suit.
 
 ;; Retournez toujours dans le buffer *scratch* avec la souris ou `C-xo'.
 
@@ -192,7 +192,7 @@ lang: fr-fr
 
 (hello "you")
 
-;; Créons une autre fonction qui utilise `let':
+;; Créons une autre fonction qui utilise `let' :
 (defun greeting (name)
   (let ((your-name "Bastien"))
     (insert (format "Hello %s!\n\nI am %s."
@@ -247,7 +247,7 @@ lang: fr-fr
 ;; Ajoutez un élément au début avec `push' :
 (push "Stephanie" list-of-names)
 
-;; NOTE: `car' et `cdr' ne modifient pas la liste, mais `push' oui.
+;; Note : `car' et `cdr' ne modifient pas la liste, mais `push' oui.
 ;; C'est une différence importante : certaines fonctions n'ont pas
 ;; d'effets secondaires (comme `car') et d'autres oui (comme `push').
 
