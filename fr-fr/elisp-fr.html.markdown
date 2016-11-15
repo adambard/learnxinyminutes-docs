@@ -91,7 +91,7 @@ lang: fr-fr
 
 ;; `setq' assigne une valeur à une variable :
 (setq my-name "Bastien")
-;; `C-xC-e' => "Bastien" (affiché dans le mini-buffer)
+;; `C-xC-e' => "Bastien" (affiché dans le minibuffer)
 
 ;; `insert' va insérer "Hello!" là où se trouve le curseur :
 (insert "Hello!")
@@ -208,14 +208,14 @@ lang: fr-fr
 (read-from-minibuffer "Enter your name: ")
 
 ;; Évaluer cette fonction va renvoyer ce que vous avez saisi dans le
-;; mini-buffer.
+;; minibuffer.
 
 ;; Faisons que notre fonction `greeting' vous demande votre nom :
 (defun greeting (from-name)
   (let ((your-name (read-from-minibuffer "Enter your name: ")))
     (insert (format "Hello!\n\nI am %s and you are %s."
                     from-name ; l'argument de la fonction
-                    your-name ; la variable "let-bindée", entrée dans le mini-buffer
+                    your-name ; la variable "let-bindée", entrée dans le minibuffer
                     ))))
 
 (greeting "Bastien")
