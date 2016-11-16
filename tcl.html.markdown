@@ -57,9 +57,9 @@ lighter that that of Lisp, just gets out of the way.
 ```tcl
 #! /bin/env tclsh
 
-################################################################################
+###############################################################################
 ## 1. Guidelines
-################################################################################
+###############################################################################
 
 # Tcl is not Bash or C!  This needs to be said because standard shell quoting
 # habits almost work in Tcl and it is common for people to pick up Tcl and try
@@ -72,9 +72,9 @@ lighter that that of Lisp, just gets out of the way.
 # are formatted as lists.
 
 
-################################################################################
+###############################################################################
 ## 2. Syntax
-################################################################################
+###############################################################################
 
 # Every line is a command.  The first word is the name of the command, and
 # subsequent words are arguments to the command. Words are delimited by
@@ -151,6 +151,8 @@ set greeting "Hello, [set {first name}]"
 
 # To promote the words within a word to individual words of the current
 # command, use the expansion operator, "{*}".
+```
+```tcl
 set {*}{name Neo}
 
 # is equivalent to
@@ -171,14 +173,15 @@ namespace eval people {
 }
 
 
-#The full name of a variable includes its enclosing namespace(s), delimited by two colons:
+# The full name of a variable includes its enclosing namespace(s), delimited by
+# two colons:
 set greeting "Hello $people::person1::name"
 
 
 
-################################################################################
+###############################################################################
 ## 3. A Few Notes
-################################################################################
+###############################################################################
 
 # All other functionality is implemented via commands.  From this point on,
 # there is no new syntax.  Everything else there is to learn about Tcl is about
@@ -192,10 +195,11 @@ set greeting "Hello $people::person1::name"
 namespace delete ::
 
 
-# Because of name resolution behaviour, it's safer to use the "variable" command to
-# declare or to assign a value to a namespace. If a variable called "name" already
-# exists in the global namespace, using "set" here will assign a value to the global variable
-# instead of creating a new variable in the local namespace.
+# Because of name resolution behaviour, it's safer to use the "variable"
+# command to declare or to assign a value to a namespace. If a variable called
+# "name" already exists in the global namespace, using "set" here will assign
+# a value to the global variable instead of creating a new variable in the
+# local namespace.
 namespace eval people {
     namespace eval person1 {
         variable name Neo
@@ -208,9 +212,9 @@ set people::person1::name Neo
 
 
 
-################################################################################
+###############################################################################
 ## 4. Commands
-################################################################################
+###############################################################################
 
 # Math can be done with the "expr" command.
 set a 3
@@ -294,7 +298,8 @@ while {$i < 10} {
 }
 
 
-# A list is a specially-formatted string.  In the simple case, whitespace is sufficient to delimit values
+# A list is a specially-formatted string.  In the simple case, whitespace is
+# sufficient to delimit values
 set amounts 10\ 33\ 18
 set amount [lindex $amounts 1]
 
@@ -406,7 +411,7 @@ proc set_double {varname value} {
 }
 
 
-#get rid of the built-in "while" command.
+# Get rid of the built-in "while" command.
 rename ::while {}
 
 
