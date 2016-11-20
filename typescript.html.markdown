@@ -13,7 +13,7 @@ This article will focus only on TypeScript extra syntax, as opposed to [JavaScri
 
 To test TypeScript's compiler, head to the [Playground] (http://www.typescriptlang.org/Playground) where you will be able to type code, have auto completion and directly see the emitted JavaScript.
 
-```js
+```ts
 // There are 3 basic types in TypeScript
 var isDone: boolean = false;
 var lines: number = 42;
