@@ -50,7 +50,7 @@ var f2 = function(i: number) { return i * i; }
 var f3 = (i: number): number => { return i * i; }
 // "Fat arrow" syntax with return type inferred
 var f4 = (i: number) => { return i * i; }
-// "Fat arrow" syntax with return type inferred, one-liner means no return
+// "Fat arrow" syntax with return type inferred, braceless means no return
 // keyword needed
 var f5 = (i: number) =>  i * i;
 
