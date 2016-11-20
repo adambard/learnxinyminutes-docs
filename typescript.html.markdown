@@ -46,10 +46,12 @@ function bigHorribleAlert(): void {
 var f1 = function(i: number): number { return i * i; }
 // Return type inferred
 var f2 = function(i: number) { return i * i; }
+// "Fat arrow" syntax
 var f3 = (i: number): number => { return i * i; }
-// Return type inferred
+// "Fat arrow" syntax with return type inferred
 var f4 = (i: number) => { return i * i; }
-// Return type inferred, one-liner means no return keyword needed
+// "Fat arrow" syntax with return type inferred, braceless means no return
+// keyword needed
 var f5 = (i: number) =>  i * i;
 
 // Interfaces are structural, anything that has the properties is compliant with
