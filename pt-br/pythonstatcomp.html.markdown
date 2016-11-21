@@ -9,7 +9,7 @@ lang: pt-br
 filename: pythonstatcomp.txt
 ---
 
-Este tutorial é sobre como realizar tarefas simples de programação estatística em Python. O público alvo são pessoas familiares com Python e experientes em programação estatística em linguagens como R, Stata, SAS, SPSS ou MATLAB
+Este tutorial mostra como realizar tarefas simples de programação estatística em Python. O público alvo são pessoas familiares com Python e experientes em programação estatística em linguagens como R, Stata, SAS, SPSS ou MATLAB
 
 ```python
 
