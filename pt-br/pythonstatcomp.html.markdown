@@ -16,8 +16,8 @@ Este tutorial mostra como realizar tarefas simples de programação estatística
 
 # 0. Preparação ====
 
-""" Preparar o ambiente com IPython e usar instalar com pip os módulos: numpy,
-    scipy, pandas, matplotlib, seaborn, requests.
+""" Preparar o ambiente com IPython e usar pip para instalar os módulos:
+    numpy, scipy, pandas, matplotlib, seaborn, requests.
     Certifique que este tutorial está rodando num IPython notebook para ter
     gráficos contextuais e fácil acesso a documentação.
 """
