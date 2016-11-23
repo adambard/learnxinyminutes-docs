@@ -74,7 +74,7 @@ $aHashtable = @{name1='val1'; name2='val2'}
 # Using variables:
 echo $aString
 echo "Interpolation: $aString"
-echo "`$aString has length of $($aString.Length)"
+echo "$aString has length of $($aString.Length)"
 echo '$aString'
 echo @"
 This is a Here-String
