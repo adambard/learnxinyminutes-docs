@@ -8,7 +8,6 @@ contributors:
   - ["Gustavo Schmidt", "https://github.com/gustavoschmidt"]
   - ["Duong H. Nguyen", "https://github.com/cmpitg"]
   - ["Keyan Zhang", "https://github.com/keyanzhang"]
-  - ["Derek Schuster", "https://github.com/derrreks"]
 ---
 
 Racket is a general purpose, multi-paradigm programming language in the Lisp/Scheme family.
