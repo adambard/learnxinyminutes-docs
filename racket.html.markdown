@@ -166,7 +166,8 @@ my-pet ; => #<dog>
 (list 1 2 3) ; => '(1 2 3)
 ;; a quote can also be used for a literal list value
 '(1 2 3) ; => '(1 2 3)
-;; a quasiquote with commas can be used to evaluate functions
+;; a quasiquote (represented by the backtick character) with commas 
+;; can be used to evaluate functions
 `(1 ,(+ 1 1) 3) ; => '(1 2 3)
 
 ;; With lists, car/cdr work slightly differently
