@@ -8,6 +8,7 @@ contributors:
   - ["Gustavo Schmidt", "https://github.com/gustavoschmidt"]
   - ["Duong H. Nguyen", "https://github.com/cmpitg"]
   - ["Keyan Zhang", "https://github.com/keyanzhang"]
+  - ["Derek Schuster", "https://github.com/derrreks"]
 ---
 
 Racket is a general purpose, multi-paradigm programming language in the Lisp/Scheme family.
@@ -164,10 +165,16 @@ my-pet ; => #<dog>
 (cons 1 (cons 2 (cons 3 null))) ; => '(1 2 3)
 ;; `list' is a convenience variadic constructor for lists
 (list 1 2 3) ; => '(1 2 3)
-;; and a quote can also be used for a literal list value
+;; a quote can also be used for a literal list value
 '(1 2 3) ; => '(1 2 3)
+;; a quasiquote with commas can be used to evaluate functions
+`(1 ,(+ 1 1) 3) ; => '(1 2 3)
 
-;; Racket has predefined functions on top of car and cdr, to extract parts of a list
+;; With lists, car/cdr work slightly differently
+(car '(1 2 3)) ; => 1
+(cdr '(1 2 3)) ; => '(2 3)
+
+;; Racket also has predefined functions on top of car and cdr, to extract parts of a list
 (cadr (list 1 2 3)) ; => 2
 (car (cdr (list 1 2 3))) ; => 2
 
