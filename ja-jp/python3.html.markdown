@@ -177,7 +177,7 @@ some_var = 5
 some_var                        # => 5
 
 # 代入されていない変数へのアクセスは例外を引き起こします。
-# 例外の取り扱いについては、3章の Control Flow をご確認ください。 TODO
+# 例外の取り扱いについては、3章の制御の流れをご確認ください。
 some_unknown_var                # NameError を送出します
 
 # ifは式として使用できます。
@@ -372,39 +372,37 @@ filled_set | other_set          # => {1, 2, 3, 4, 5, 6}
 10 in filled_set                # => False
 
 
-
 ####################################################
-## 3. Control Flow and Iterables
+# 3. 制御の流れとiterable
 ####################################################
 
-# Let's just make a variable
+# まずは変数を作りましょう。
 some_var = 5
 
-# Here is an if statement. Indentation is significant in python!
-# prints "some_var is smaller than 10"
+# これはif文です。インデントがPythonでは特徴的ですね!
+# 以下の例では"some_var is smaller than 10"と出力されます。
 if some_var > 10:
     print("some_var is totally bigger than 10.")
-elif some_var < 10:    # This elif clause is optional.
+elif some_var < 10:             # この elif 節はオプションです。
     print("some_var is smaller than 10.")
-else:                  # This is optional too.
+else:                           # この else 節もオプションです。
     print("some_var is indeed 10.")
 
 
 """
-For loops iterate over lists
-prints:
+for ループはリストの要素を反復することができます。
+出力:
     dog is a mammal
     cat is a mammal
     mouse is a mammal
 """
 for animal in ["dog", "cat", "mouse"]:
-    # You can use format() to interpolate formatted strings
+    # format() を使って文字列に変数を挿入して出力できます。
     print("{} is a mammal".format(animal))
 
 """
-"range(number)" returns an iterable of numbers
-from zero to the given number
-prints:
+"range(数値)" は、ゼロから与えられた数値までのiterableを返します。
+出力:
     0
     1
     2
@@ -414,9 +412,9 @@ for i in range(4):
     print(i)
 
 """
-"range(lower, upper)" returns an iterable of numbers
-from the lower number to the upper number
-prints:
+"range(lower, upper)" は、 lower の数値から upper の数値までのiterableを返します。
+upper の数値は含まれません。
+出力:
     4
     5
     6
@@ -426,10 +424,10 @@ for i in range(4, 8):
     print(i)
 
 """
-"range(lower, upper, step)" returns an iterable of numbers
-from the lower number to the upper number, while incrementing
-by step. If step is not indicated, the default value is 1.
-prints:
+"range(lower, upper, step)" は、lower の数値から upper の数値までが、
+step 刻みで表現されるiterableを返します
+step が与えられない場合、デフォルトは1になります。
+出力:
     4
     6
 """
@@ -437,8 +435,8 @@ for i in range(4, 8, 2):
     print(i)
 """
 
-While loops go until a condition is no longer met.
-prints:
+while によるループは条件が成立しなくなるまで実行されます。
+出力:
     0
     1
     2
@@ -447,57 +445,56 @@ prints:
 x = 0
 while x < 4:
     print(x)
-    x += 1  # Shorthand for x = x + 1
+    x += 1                      # x = x + 1 の省略記法
 
-# Handle exceptions with a try/except block
+# try/except ブロックにより、例外を扱う
 try:
-    # Use "raise" to raise an error
+    # "raise" により例外を発生させます。
     raise IndexError("This is an index error")
 except IndexError as e:
-    pass                 # Pass is just a no-op. Usually you would do recovery here.
+    pass            # pass は、何もしないという命令(no-op)に相当します。普通、ここで例外に対処します。
 except (TypeError, NameError):
-    pass                 # Multiple exceptions can be handled together, if required.
-else:                    # Optional clause to the try/except block. Must follow all except blocks
-    print("All good!")   # Runs only if the code in try raises no exceptions
-finally:                 #  Execute under all circumstances
+    pass            # もし必要なら、複数の種類の例外を一緒に処理できます。
+else:               # try/except ブロックへのオプションの節。他の全てのexceptブロックより後に置かなければなりません。
+    print("All good!")      # tryで例外が発生しなかった場合のみ実行されます。
+finally:                    # 例外が発生したか、しなかったか、どのような例外だったかに関らず実行されます。
     print("We can clean up resources here")
 
-# Instead of try/finally to cleanup resources you can use a with statement
+# try/finallyでリソースの始末をする代わりに、 with 文を使うこともできます。
 with open("myfile.txt") as f:
     for line in f:
         print(line)
 
-# Python offers a fundamental abstraction called the Iterable.
-# An iterable is an object that can be treated as a sequence.
-# The object returned the range function, is an iterable.
-
+# Pythonは、iterableと呼ばれる基本的な抽象化が提供しています。
+# iterableは、シーケンスとして取り扱えるオブジェクトです。
+# range関数で返されるオブジェクトもiterableの一種です。
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
-print(our_iterable)  # => dict_keys(['one', 'two', 'three']). This is an object that implements our Iterable interface.
+print(our_iterable)  # => dict_keys(['one', 'two', 'three']). これはiterableインタフェースを実装するオブジェクトです。
 
-# We can loop over it.
+# iterableでループを行うことができます。
 for i in our_iterable:
-    print(i)  # Prints one, two, three
+    print(i)                    # Prints one, two, three
 
-# However we cannot address elements by index.
-our_iterable[1]  # Raises a TypeError
+# しかし、インデックスで要素を参照することはできません。
+our_iterable[1]                 # TypeError が発生します。
 
-# An iterable is an object that knows how to create an iterator.
+# iterableは、iteratorの作り方がわかるオブジェクトです。
 our_iterator = iter(our_iterable)
 
-# Our iterator is an object that can remember the state as we traverse through it.
-# We get the next object with "next()".
-next(our_iterator)  # => "one"
+# iterator は、要素を取り出したときの状態を覚えるオブジェクトです。
+# "next()"により次の要素を取り出せます。
+next(our_iterator)              # => "one"
 
-# It maintains state as we iterate.
-next(our_iterator)  # => "two"
-next(our_iterator)  # => "three"
+# 反復(iterate)する度に、状態を更新します。
+next(our_iterator)              # => "two"
+next(our_iterator)              # => "three"
 
-# After the iterator has returned all of its data, it gives you a StopIterator Exception
-next(our_iterator)  # Raises StopIteration
+# iteratorが自身の持つ全てのデータを返したあとは、 StopIterator 例外を発生させます。
+next(our_iterator)              # StopIteration が発生します。
 
-# You can grab all the elements of an iterator by calling list() on it.
-list(filled_dict.keys())  # => Returns ["one", "two", "three"]
+# "list()"を呼ぶことにより、iteratorの全ての要素を得られます。
+list(filled_dict.keys())        # => ["one", "two", "three"]
 
 
 ####################################################
