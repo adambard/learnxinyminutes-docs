@@ -176,203 +176,200 @@ input_string_var = input("Enter some data: ")  # 入力を文字列として返�
 some_var = 5
 some_var  # => 5
 
-# Accessing a previously unassigned variable is an exception.
-# See Control Flow to learn more about exception handling.
-some_unknown_var  # Raises a NameError
+# 代入されていない変数へのアクセスは例外を引き起こします。
+# See Control Flow to learn more about exception handling. TODO
+some_unknown_var  # NameError を送出します
 
-# if can be used as an expression
-# Equivalent of C's '?:' ternary operator
+# ifは式として使用できます。
+# C言語の「?:(三項演算子)」に対応する例:
 "yahoo!" if 3 > 2 else 2  # => "yahoo!"
 
-# Lists store sequences
+# リストは順序を保存します。
 li = []
-# You can start with a prefilled list
+# 値の入っているリストも作成できます。
 other_li = [4, 5, 6]
 
-# Add stuff to the end of a list with append
+# append により、リストの末尾にものを入れられます。
 li.append(1)    # li is now [1]
 li.append(2)    # li is now [1, 2]
 li.append(4)    # li is now [1, 2, 4]
 li.append(3)    # li is now [1, 2, 4, 3]
-# Remove from the end with pop
-li.pop()        # => 3 and li is now [1, 2, 4]
-# Let's put it back
-li.append(3)    # li is now [1, 2, 4, 3] again.
+# pop でリストの末尾から取り除けます。
+li.pop()                        # => 3 and li is now [1, 2, 4]
+# 元に戻しましょう!
+li.append(3)                    # li is now [1, 2, 4, 3] again.
 
-# Access a list like you would any array
-li[0]   # => 1
-# Look at the last element
-li[-1]  # => 3
+# 配列のように、リストにアクセスできます。
+li[0]                           # => 1
+# 最後の要素を参照できます。
+li[-1]                          # => 3
 
-# Looking out of bounds is an IndexError
-li[4]  # Raises an IndexError
+# 範囲外の要素を参照すると IndexError になります。
+li[4]                           # IndexError が発生します
 
-# You can look at ranges with slice syntax.
-# (It's a closed/open range for you mathy types.)
-li[1:3]   # => [2, 4]
-# Omit the beginning
-li[2:]    # => [4, 3]
-# Omit the end
-li[:3]    # => [1, 2, 4]
-# Select every second entry
-li[::2]   # =>[1, 4]
-# Return a reversed copy of the list
-li[::-1]  # => [3, 4, 2, 1]
-# Use any combination of these to make advanced slices
+# スライス構文により範囲を参照できます。
+li[1:3]                         # => [2, 4]
+# 先端を取り除く
+li[2:]                          # => [4, 3]
+# 末尾を取り除く
+li[:3]                          # => [1, 2, 4]
+# 1つ飛ばしで選択する
+li[::2]                         # =>[1, 4]
+# 反転したリストを得る
+li[::-1]                        # => [3, 4, 2, 1]
+# これらの任意の組み合わせにより、より複雑なスライスを作ることができます。
 # li[start:end:step]
 
-# Make a one layer deep copy using slices
-li2 = li[:]  # => li2 = [1, 2, 4, 3] but (li2 is li) will result in false.
+# スライスにより、深いコピーを1階層分行うことができます。
+li2 = li[:]          # => li2 = [1, 2, 4, 3] だが、 (li2 is li) はFalseになる。
 
-# Remove arbitrary elements from a list with "del"
-del li[2]  # li is now [1, 2, 3]
+# "del"によりリストから任意の要素を削除できます。
+del li[2]                       # li は [1, 2, 3] になりました。
 
-# Remove first occurrence of a value
-li.remove(2)  # li is now [1, 3]
-li.remove(2)  # Raises a ValueError as 2 is not in the list
+# "remove"で最初に出現する要素を削除できます。
+li.remove(2)                    # li は [1, 3] になりました。
+li.remove(2)                    # 2はリストの中に存在しないので、 ValueError が発生します。
 
-# Insert an element at a specific index
-li.insert(1, 2)  # li is now [1, 2, 3] again
+# 要素を好きなところに挿入できます。
+li.insert(1, 2)                 # li は [1, 2, 3] に戻りました。
 
-# Get the index of the first item found matching the argument
-li.index(2)  # => 1
-li.index(4)  # Raises a ValueError as 4 is not in the list
+# "index"で引数の要素が最初に出現する場所のインデックスを得られます。
+li.index(2)                     # => 1
+li.index(4)                     # 4はリストの中に存在しないので、 ValueError が発生します。
 
-# You can add lists
-# Note: values for li and for other_li are not modified.
-li + other_li  # => [1, 2, 3, 4, 5, 6]
+# リスト同士を足すこともできます。
+# Note: li と other_li の値は変更されません。
+li + other_li                   # => [1, 2, 3, 4, 5, 6]
 
-# Concatenate lists with "extend()"
-li.extend(other_li)  # Now li is [1, 2, 3, 4, 5, 6]
+# "extend()"で他のリストを連結することができます。
+li.extend(other_li)             # li は [1, 2, 3, 4, 5, 6] になります。
 
-# Check for existence in a list with "in"
-1 in li  # => True
+# リストの中に値が存在するか、 "in" で確認できます。
+1 in li                         # => True
 
-# Examine the length with "len()"
-len(li)  # => 6
+# 長さは "len()" で確認できます。
+len(li)                         # => 6
 
 
-# Tuples are like lists but are immutable.
+# タプルはリストのようなものですが、不変であるという違いがあります。
 tup = (1, 2, 3)
-tup[0]      # => 1
-tup[0] = 3  # Raises a TypeError
+tup[0]                      # => 1
+tup[0] = 3                  # 内容を変更しようとすると TypeError が発生します。
 
-# Note that a tuple of length one has to have a comma after the last element but
-# tuples of other lengths, even zero, do not.
-type((1))   # => <class 'int'>
-type((1,))  # => <class 'tuple'>
-type(())    # => <class 'tuple'>
+# 長さが1のタプルを作成するには、要素の後にカンマを付ける必要があります。
+# しかし、それ以外の長さなら、例え長さが0でもそのようにする必要はありません。
+type((1))                       # => <class 'int'>
+type((1,))                      # => <class 'tuple'>
+type(())                        # => <class 'tuple'>
 
-# You can do most of the list operations on tuples too
-len(tup)         # => 3
-tup + (4, 5, 6)  # => (1, 2, 3, 4, 5, 6)
-tup[:2]          # => (1, 2)
-2 in tup         # => True
+# 大抵のリスト操作はタプルでも行うことができます。
+len(tup)                        # => 3
+tup + (4, 5, 6)                 # => (1, 2, 3, 4, 5, 6)
+tup[:2]                         # => (1, 2)
+2 in tup                        # => True
 
-# You can unpack tuples (or lists) into variables
-a, b, c = (1, 2, 3)  # a is now 1, b is now 2 and c is now 3
-# You can also do extended unpacking
-a, *b, c = (1, 2, 3, 4)  # a is now 1, b is now [2, 3] and c is now 4
-# Tuples are created by default if you leave out the parentheses
+# タプルやリストから複数の変数に代入することができます。
+a, b, c = (1, 2, 3)             # a, b, c にはそれぞれ 1, 2, 3 が代入されました。
+# 拡張記法もあります。
+a, *b, c = (1, 2, 3, 4)         # a は 1 、 b は [2, 3] 、c は4 になります。
+# 括弧を作成しなくてもデフォルトでタプルが作成されます。
 d, e, f = 4, 5, 6
-# Now look how easy it is to swap two values
-e, d = d, e  # d is now 5 and e is now 4
+# 2つの変数を交換するのがどれほど簡単か見てみましょう。
+e, d = d, e                     # d は 5 、 e は e になります。
 
 
-# Dictionaries store mappings
+# 辞書はマップ(キーと値の組み合わせ)を保存できます。
 empty_dict = {}
-# Here is a prefilled dictionary
+# 値が入っている辞書を直接作成することもできます。
 filled_dict = {"one": 1, "two": 2, "three": 3}
 
-# Note keys for dictionaries have to be immutable types. This is to ensure that
-# the key can be converted to a constant hash value for quick look-ups.
-# Immutable types include ints, floats, strings, tuples.
-invalid_dict = {[1,2,3]: "123"}  # => Raises a TypeError: unhashable type: 'list'
-valid_dict = {(1,2,3):[1,2,3]}   # Values can be of any type, however.
+# キーは不変の型である必要があります。
+# これは、高速化のため、キーを定数のハッシュ値に変換できるようにするためです。
+# 不変の型の例として、int、float、string、tupleなどが上げられます。
+invalid_dict = {[1, 2, 3]: "123"}  # => list はハッシュ化できないので、 TypeError が発生します。
+valid_dict = {(1, 2, 3): [1, 2, 3]}  # 一方、キーに対応する値はどのような型でも利用できます。
 
-# Look up values with []
-filled_dict["one"]  # => 1
+# [] で 値を取り出せます。
+filled_dict["one"]              # => 1
 
-# Get all keys as an iterable with "keys()". We need to wrap the call in list()
-# to turn it into a list. We'll talk about those later.  Note - Dictionary key
-# ordering is not guaranteed. Your results might not match this exactly.
-list(filled_dict.keys())  # => ["three", "two", "one"]
+# "keys()"により、全てのキーを反復可能な形式で取り出せます。
+# これをリストにするために、"list()"で囲んでいます。これについては後程解説します。
+# Note: 辞書のキーの順番は考慮されていません。実行した結果がこれと異なる場合があります。
+list(filled_dict.keys())        # => ["three", "two", "one"]
 
-
-# Get all values as an iterable with "values()". Once again we need to wrap it
-# in list() to get it out of the iterable. Note - Same as above regarding key
-# ordering.
-list(filled_dict.values())  # => [3, 2, 1]
-
-
-# Check for existence of keys in a dictionary with "in"
-"one" in filled_dict  # => True
-1 in filled_dict      # => False
-
-# Looking up a non-existing key is a KeyError
-filled_dict["four"]  # KeyError
-
-# Use "get()" method to avoid the KeyError
-filled_dict.get("one")      # => 1
-filled_dict.get("four")     # => None
-# The get method supports a default argument when the value is missing
-filled_dict.get("one", 4)   # => 1
-filled_dict.get("four", 4)  # => 4
-
-# "setdefault()" inserts into a dictionary only if the given key isn't present
-filled_dict.setdefault("five", 5)  # filled_dict["five"] is set to 5
-filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5
-
-# Adding to a dictionary
-filled_dict.update({"four":4})  # => {"one": 1, "two": 2, "three": 3, "four": 4}
-#filled_dict["four"] = 4        #another way to add to dict
-
-# Remove keys from a dictionary with del
-del filled_dict["one"]  # Removes the key "one" from filled dict
-
-# From Python 3.5 you can also use the additional unpacking options
-{'a': 1, **{'b': 2}}  # => {'a': 1, 'b': 2}
-{'a': 1, **{'a': 2}}  # => {'a': 2}
+# "values()"により、全ての値を反復可能な形式で取り出せます。
+# 前と同じように、これをリストにするために、"list()"で囲んでいます。
+# Note: 辞書の値の順番は考慮されていません。実行した結果がこれと異なる場合があります。
+list(filled_dict.values())      # => [3, 2, 1]
 
 
+# "in" により、辞書のキーが存在するか確認できます。
+"one" in filled_dict            # => True
+1 in filled_dict                # => False
 
-# Sets store ... well sets
+# 存在しないキーで辞書を参照すると KeyError になります。
+filled_dict["four"]             # KeyError
+
+# "get()" メソッドを使うことで KeyError を回避できます。
+filled_dict.get("one")          # => 1
+filled_dict.get("four")         # => None
+# get ではキーが存在しなかったときのデフォルト値を指定できます。
+filled_dict.get("one", 4)       # => 1
+filled_dict.get("four", 4)      # => 4
+
+# "setdefault()" で、キーが存在しなかった場合のみ、値を設定できます。
+filled_dict.setdefault("five", 5)  # filled_dict["five"] は 5 になりました。
+filled_dict.setdefault("five", 6)  # filled_dict["five"] は 5 のままです。
+
+# 辞書にマップを追加する
+filled_dict.update({"four": 4})  # => {"one": 1, "two": 2, "three": 3, "four": 4}
+# filled_dict["four"] = 4        # 辞書に追加する別の方法
+
+# del により辞書からキーを削除できます。
+del filled_dict["one"]          # "one" キーを辞書から削除します。
+
+# Python 3.5 以降では、追加の値を取り出す方法があります。
+{'a': 1, **{'b': 2}}            # => {'a': 1, 'b': 2}
+{'a': 1, **{'a': 2}}            # => {'a': 2}
+
+
+# set では集合を表現できます。
 empty_set = set()
-# Initialize a set with a bunch of values. Yeah, it looks a bit like a dict. Sorry.
-some_set = {1, 1, 2, 2, 3, 4}  # some_set is now {1, 2, 3, 4}
+# 集合を一連の値で初期化する例です。辞書に似ていますね？ごめんなさい。
+some_set = {1, 1, 2, 2, 3, 4}   # some_set is now {1, 2, 3, 4}
 
-# Similar to keys of a dictionary, elements of a set have to be immutable.
-invalid_set = {[1], 1}  # => Raises a TypeError: unhashable type: 'list'
+# 辞書のキーのように、集合の値は不変である必要があります。
+invalid_set = {[1], 1}         # => list はハッシュ化できないので、 TypeError が送出されます。
 valid_set = {(1,), 1}
 
-# Can set new variables to a set
+# 新しい値を集合にセットできます。
 filled_set = some_set
 
-# Add one more item to the set
-filled_set.add(5)  # filled_set is now {1, 2, 3, 4, 5}
+# 集合に新しい要素を追加できます。
+filled_set.add(5)               # filled_set は {1, 2, 3, 4, 5} になりました。
 
-# Do set intersection with &
+# & により、集合同士の共通部分が得られます。
 other_set = {3, 4, 5, 6}
-filled_set & other_set  # => {3, 4, 5}
+filled_set & other_set          # => {3, 4, 5}
 
-# Do set union with |
-filled_set | other_set  # => {1, 2, 3, 4, 5, 6}
+# | により、集合同士の合併が得られます。
+filled_set | other_set          # => {1, 2, 3, 4, 5, 6}
 
-# Do set difference with -
-{1, 2, 3, 4} - {2, 3, 5}  # => {1, 4}
+# - により、集合同士の差集合が得られます。
+{1, 2, 3, 4} - {2, 3, 5}        # => {1, 4}
 
-# Do set symmetric difference with ^
-{1, 2, 3, 4} ^ {2, 3, 5}  # => {1, 4, 5}
+# ^ により、集合同士の対象差が得られます。
+{1, 2, 3, 4} ^ {2, 3, 5}        # => {1, 4, 5}
 
-# Check if set on the left is a superset of set on the right
-{1, 2} >= {1, 2, 3} # => False
+# 左の集合が右の集合の上位集合であるか確認。
+{1, 2} >= {1, 2, 3}             # => False
 
-# Check if set on the left is a subset of set on the right
-{1, 2} <= {1, 2, 3} # => True
+# 左の集合が右の集合の部分集合であるか確認。
+{1, 2} <= {1, 2, 3}             # => True
 
-# Check for existence in a set with in
-2 in filled_set   # => True
-10 in filled_set  # => False
+# in により値が集合の中に存在するか確認できます。
+2 in filled_set                 # => True
+10 in filled_set                # => False
 
 
 
