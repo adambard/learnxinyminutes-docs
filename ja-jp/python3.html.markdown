@@ -1,3 +1,4 @@
+"""
 ---
 language: python3
 contributors:
@@ -6,145 +7,149 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
     - ["evuez", "http://github.com/evuez"]
+translators:
+    - ["kakakaya", "https://github.com/kakakaya"]
 filename: learnpython3.py
 ---
 
-Python was created by Guido Van Rossum in the early 90s. It is now one of the most popular
-languages in existence. I fell in love with Python for its syntactic clarity. It's basically
-executable pseudocode.
+90年代の初め、Guido Van RossumによってPythonは作成されました。現在となっては、最も有名な言語の1つです。
+私は構文の明快さによって、Pythonと恋に落ちました。
+以下は基本的に実行可能な疑似コードです。
 
-Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
+フィードバッグは大歓迎です! [@louiedinh](http://twitter.com/louiedinh) または louiedinh [at] [google's email service] にご連絡下さい!
 
-Note: This article applies to Python 3 specifically. Check out [here](http://learnxinyminutes.com/docs/python/) if you want to learn the old Python 2.7
+Note: この記事はPython 3に内容を絞っています。もし古いPython 2.7を学習したいなら、 [こちら](http://learnxinyminutes.com/docs/python/) をご確認下さい。
 
 ```python
+"""
 
-# Single line comments start with a number symbol.
+# 1行のコメントは番号記号(#)から始まります。
 
-""" Multiline strings can be written
-    using three "s, and are often used
-    as comments
+""" 複数行の文字は、"を3つ繋げることで
+    書くことができます。
+    また、これはコメントとしてもよく使われます。
 """
 
 ####################################################
-## 1. Primitive Datatypes and Operators
+# 1. プリミティブ型と演算子
 ####################################################
 
-# You have numbers
+# 数字です
 3  # => 3
 
-# Math is what you would expect
+# 四則演算はあなたの期待通りに動きます。
 1 + 1   # => 2
 8 - 1   # => 7
 10 * 2  # => 20
 35 / 5  # => 7.0
 
-# Result of integer division truncated down both for positive and negative.
+# 整数除算の結果は、正負に関わらず小数の切り捨てが行われます。
 5 // 3       # => 1
-5.0 // 3.0   # => 1.0 # works on floats too
+5.0 // 3.0   # => 1.0 # 浮動小数点でも同様に動作します。
 -5 // 3      # => -2
 -5.0 // 3.0  # => -2.0
 
-# The result of division is always a float
+# 除算の結果は常に浮動小数点になります。
 10.0 / 3  # => 3.3333333333333335
 
-# Modulo operation
+# 剰余の計算
 7 % 3  # => 1
 
-# Exponentiation (x**y, x to the yth power)
+# 冪乗 (x**y, x の y 乗)
 2**4  # => 16
 
-# Enforce precedence with parentheses
+# 括弧により、計算の順番を優先させられます。
 (1 + 3) * 2  # => 8
 
-# Boolean values are primitives (Note: the capitalization)
+# 真偽値はプリミティブ型です(大文字から始まっていることに注意!)
 True
 False
 
-# negate with not
+# not で真偽を反転させられます。
 not True   # => False
 not False  # => True
 
-# Boolean Operators
-# Note "and" and "or" are case-sensitive
+# ブール演算
+# 注意: "and" と "or" は小文字です
 True and False  # => False
 False or True   # => True
 
-# Note using Bool operators with ints
+# 整数でブール演算をするときのメモ
 0 and 2     # => 0
 -5 or 0     # => -5
 0 == False  # => True
 2 == True   # => False
 1 == True   # => True
 
-# Equality is ==
+# 値が等しいか確認するには ==
 1 == 1  # => True
 2 == 1  # => False
 
-# Inequality is !=
+# 値が等しくないか確認するには !=
 1 != 1  # => False
 2 != 1  # => True
 
-# More comparisons
+# 他の比較方法
 1 < 10  # => True
 1 > 10  # => False
 2 <= 2  # => True
 2 >= 2  # => True
 
-# Comparisons can be chained!
+# 比較は連結させられます!
 1 < 2 < 3  # => True
 2 < 3 < 2  # => False
 
-# (is vs. ==) is checks if two variables refer to the same object, but == checks
-# if the objects pointed to have the same values.
-a = [1, 2, 3, 4]  # Point a at a new list, [1, 2, 3, 4]
-b = a             # Point b at what a is pointing to
-b is a            # => True, a and b refer to the same object
-b == a            # => True, a's and b's objects are equal
-b = [1, 2, 3, 4]  # Point b at a new list, [1, 2, 3, 4]
-b is a            # => False, a and b do not refer to the same object
-b == a            # => True, a's and b's objects are equal
+# (is vs. ==)
+# "is" は、2つの変数が同一のオブジェクトを参照しているか確認します。
+# 一方 "==" は、それぞれが参照する2つのオブジェクトが同じ値を持つか確認します。
+a = [1, 2, 3, 4]  # a は新しいリストの [1, 2, 3, 4] を指します。
+b = a             # b は a が指すリストを指します。
+b is a            # => True, a と b は同一のオブジェクトを参照しています。
+b == a            # => True, a と b が参照するオブジェクトの値は等しいです。
+b = [1, 2, 3, 4]  # b は新しいリストの [1, 2, 3, 4] を指します。
+b is a            # => False, a と b は別々のオブジェクトを参照しています。
+b == a            # => True, a と b が参照するオブジェクトの値は等しいです。
 
-# Strings are created with " or '
+# " または ' を使って文字列を作成します。
 "This is a string."
 'This is also a string.'
 
-# Strings can be added too! But try not to do this.
+# 文字列も加算をすることができます!でも、あまり行わないように。
 "Hello " + "world!"  # => "Hello world!"
-# Strings can be added without using '+'
+# '+' を使わなくても連結はできます。
 "Hello " "world!"    # => "Hello world!"
 
-# A string can be treated like a list of characters
+# 文字列は文字のリストであるかのように扱うことができます。
 "This is a string"[0]  # => 'T'
 
-# You can find the length of a string
+# 文字列の長さを得るにはこのようにします。
 len("This is a string")  # => 16
 
-# .format can be used to format strings, like this:
+# .format で文字列のフォーマットを行えます
 "{} can be {}".format("Strings", "interpolated")  # => "Strings can be interpolated"
 
-# You can repeat the formatting arguments to save some typing.
+# 入力を減らすために、フォーマットするときに引数を繰り返し使うことができます。
 "{0} be nimble, {0} be quick, {0} jump over the {1}".format("Jack", "candle stick")
 # => "Jack be nimble, Jack be quick, Jack jump over the candle stick"
 
-# You can use keywords if you don't want to count.
+# 引数の順番を数えるのがお嫌い？キーワード引数をどうぞ。
 "{name} wants to eat {food}".format(name="Bob", food="lasagna")  # => "Bob wants to eat lasagna"
 
-# If your Python 3 code also needs to run on Python 2.5 and below, you can also
-# still use the old style of formatting:
+# もし Python 3 のコードを Python 2.5以下でも使う必要があるなら、
+# 旧式のフォーマット方法を使うこともできます。
 "%s can be %s the %s way" % ("Strings", "interpolated", "old")  # => "Strings can be interpolated the old way"
 
 
-# None is an object
+# None はオブジェクトです(大文字からです!)
 None  # => None
 
-# Don't use the equality "==" symbol to compare objects to None
-# Use "is" instead. This checks for equality of object identity.
+# オブジェクトがNoneであるか確認するのに "==" 演算子を使わないように。
+# 代わりに "is" を使いましょう。オブジェクトの素性を確認できます。
 "etc" is None  # => False
 None is None   # => True
 
-# None, 0, and empty strings/lists/dicts/tuples all evaluate to False.
-# All other values are True
+# None や 0 、空の 文字列/リスト/辞書/タプル は全て False として評価されます。
+# 他の全ての値は True になります。
 bool(0)   # => False
 bool("")  # => False
 bool([])  # => False
@@ -152,22 +157,22 @@ bool({})  # => False
 bool(())  # => False
 
 ####################################################
-## 2. Variables and Collections
+# 2. Variables and Collections
 ####################################################
 
-# Python has a print function
+# Python にはprint関数があります。
 print("I'm Python. Nice to meet you!")  # => I'm Python. Nice to meet you!
 
-# By default the print function also prints out a newline at the end.
-# Use the optional argument end to change the end character.
+# 標準では、print関数は最後に改行を出力します。
+# この動作を変更するためには、オプション引数を利用します。
 print("Hello, World", end="!")  # => Hello, World!
 
-# Simple way to get input data from console
-input_string_var = input("Enter some data: ") # Returns the data as a string
-# Note: In earlier versions of Python, input() method was named as raw_input()
+# コンソールから入力を得るための簡単な例
+input_string_var = input("Enter some data: ")  # 入力を文字列として返します
+# Note: Python の初期のバージョンでは、 input() は raw_input() という名前で存在します。
 
-# No need to declare variables before assigning to them.
-# Convention is to use lower_case_with_underscores
+# 変数に代入する前に宣言する必要はありません。
+# 慣例的に、小文字でアンダースコア区切り ( lower_case_with_underscores ) の変数が使われます。
 some_var = 5
 some_var  # => 5
 
