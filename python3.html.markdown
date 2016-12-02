@@ -491,7 +491,7 @@ next(our_iterator)  # => "one"
 next(our_iterator)  # => "two"
 next(our_iterator)  # => "three"
 
-# After the iterator has returned all of its data, it gives you a StopIterator Exception
+# After the iterator has returned all of its data, it gives you a StopIteration Exception
 next(our_iterator)  # Raises StopIteration
 
 # You can grab all the elements of an iterator by calling list() on it.
