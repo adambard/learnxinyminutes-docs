@@ -608,40 +608,39 @@ list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  # => [6, 7]
 
 
 ####################################################
-## 5. Modules
+# 5. モジュール
 ####################################################
 
-# You can import modules
+# Pythonではモジュールをインポートできます。
 import math
-print(math.sqrt(16))  # => 4.0
+print(math.sqrt(16))            # => 4.0
 
-# You can get specific functions from a module
+# モジュールの中から特定の関数をインポートすることもできます。
 from math import ceil, floor
-print(ceil(3.7))   # => 4.0
-print(floor(3.7))  # => 3.0
+print(ceil(3.7))                # => 4.0
+print(floor(3.7))               # => 3.0
 
-# You can import all functions from a module.
-# Warning: this is not recommended
+# 全部の関数をモジュールからインポートすることができます。
+# Warning: この方法は推奨されません。
 from math import *
 
-# You can shorten module names
+# 短い名前でモジュールをインポートすることができます。
 import math as m
-math.sqrt(16) == m.sqrt(16)  # => True
+math.sqrt(16) == m.sqrt(16)     # => True
 
-# Python modules are just ordinary python files. You
-# can write your own, and import them. The name of the
-# module is the same as the name of the file.
+# Pythonのモジュールは実際には単なるPythonのファイルです。
+# 自分で書くことも、インポートすることもできます。
+# ファイル名がそのままモジュール名になります。
 
-# You can find out which functions and attributes
-# defines a module.
+# モジュールで定義されている関数と属性を調べることができます。
 import math
 dir(math)
 
-# If you have a Python script named math.py in the same
-# folder as your current script, the file math.py will
-# be loaded instead of the built-in Python module.
-# This happens because the local folder has priority
-# over Python's built-in libraries.
+# もし、現在書いているスクリプトと同じフォルダに「math.py」という
+# Pythonのスクリプトが存在する場合、そのmath.pyが
+# 組み込みのPythonモジュールの代わりに読み込まれるでしょう。
+# これは、ローカルのフォルダはPythonの組み込みライブラリよりも
+# 優先度が高いため発生するのです。
 
 
 ####################################################
