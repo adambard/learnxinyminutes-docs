@@ -824,7 +824,7 @@ echo "Current method is " . __METHOD__;
 echo "Current namespace is " . __NAMESPACE__;
 
 // Get the name of the current trait. Only returns a value when used inside a trait or object declaration.
-echo "Current namespace is " . __TRAIT__;
+echo "Current trait is " . __TRAIT__;
 
 /**********************
 *  Error Handling
