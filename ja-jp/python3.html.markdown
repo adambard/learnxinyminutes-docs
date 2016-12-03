@@ -452,12 +452,12 @@ try:
     # "raise" により例外を発生させます。
     raise IndexError("This is an index error")
 except IndexError as e:
-    pass            # pass は、何もしないという命令(no-op)に相当します。普通、ここで例外に対処します。
+    pass  # pass は、何もしないという命令(no-op)に相当します。普通、ここで例外に対処します。
 except (TypeError, NameError):
-    pass            # もし必要なら、複数の種類の例外を一緒に処理できます。
-else:               # try/except ブロックへのオプションの節。他の全てのexceptブロックより後に置かなければなりません。
-    print("All good!")      # tryで例外が発生しなかった場合のみ実行されます。
-finally:                    # 例外が発生したか、しなかったか、どのような例外だったかに関らず実行されます。
+    pass                 # もし必要なら、複数の種類の例外を一緒に処理できます。
+else:  # try/except ブロックへのオプションの節。他の全てのexceptブロックより後に置かなければなりません。
+    print("All good!")        # tryで例外が発生しなかった場合のみ実行されます。
+finally:  # 例外が発生したか、しなかったか、どのような例外だったかに関らず実行されます。
     print("We can clean up resources here")
 
 # try/finallyでリソースの始末をする代わりに、 with 文を使うこともできます。
@@ -490,7 +490,7 @@ next(our_iterator)              # => "one"
 next(our_iterator)              # => "two"
 next(our_iterator)              # => "three"
 
-# iteratorが自身の持つ全てのデータを返したあとは、 StopIterator 例外を発生させます。
+# iteratorが自身の持つ全てのデータを返したあとは、 StopIteration 例外を発生させます。
 next(our_iterator)              # StopIteration が発生します。
 
 # "list()"を呼ぶことにより、iteratorの全ての要素を得られます。
@@ -498,37 +498,37 @@ list(filled_dict.keys())        # => ["one", "two", "three"]
 
 
 ####################################################
-## 4. Functions
+# 4. 関数
 ####################################################
 
-# Use "def" to create new functions
+# 新しい関数を作成するには "def" を使います。
 def add(x, y):
     print("x is {} and y is {}".format(x, y))
-    return x + y  # Return values with a return statement
+    return x + y                # return 文で値を返します。
 
-# Calling functions with parameters
-add(5, 6)  # => prints out "x is 5 and y is 6" and returns 11
+# 引数付きで関数を呼んでみましょう。
+add(5, 6)                    # => "x is 5 and y is 6" と出力し、 11 を返します。
 
-# Another way to call functions is with keyword arguments
-add(y=6, x=5)  # Keyword arguments can arrive in any order.
+# キーワード引数で関数を呼ぶこともできます。
+add(y=6, x=5)                   # キーワード引数を使うと任意の順番で引数を指定できます。
 
-# You can define functions that take a variable number of
-# positional arguments
+
+# 可変数の位置引数を持つ関数を定義できます。
 def varargs(*args):
     return args
 
 varargs(1, 2, 3)  # => (1, 2, 3)
 
-# You can define functions that take a variable number of
-# keyword arguments, as well
+
+# 可変数のキーワード引数を持つ関数を定義できます。
 def keyword_args(**kwargs):
     return kwargs
 
-# Let's call it to see what happens
+# 何が起こるか、試してみましょう
 keyword_args(big="foot", loch="ness")  # => {"big": "foot", "loch": "ness"}
 
 
-# You can do both at once, if you like
+# お望みなら、両方一気にやることもできます。
 def all_the_args(*args, **kwargs):
     print(args)
     print(kwargs)
@@ -538,69 +538,73 @@ all_the_args(1, 2, a=3, b=4) prints:
     {"a": 3, "b": 4}
 """
 
-# When calling functions, you can do the opposite of args/kwargs!
-# Use * to expand tuples and use ** to expand kwargs.
+# 関数を呼ぶとき、 args/kwargs の逆のことをすることができます!
+# * を使ってタプルを展開したり、 ** を使って辞書を展開できます。
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args)            # equivalent to foo(1, 2, 3, 4)
-all_the_args(**kwargs)         # equivalent to foo(a=3, b=4)
-all_the_args(*args, **kwargs)  # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args)             # foo(1, 2, 3, 4) に対応します。
+all_the_args(**kwargs)          # foo(a=3, b=4) に対応します。
+all_the_args(*args, **kwargs)   # foo(1, 2, 3, 4, a=3, b=4) に対応します。
 
-# Returning multiple values (with tuple assignments)
-def swap(x, y):
-    return y, x  # Return multiple values as a tuple without the parenthesis.
-                 # (Note: parenthesis have been excluded but can be included)
+
+# タプルで複数の値を返す
+def swap(x, y):    # 括弧を使わずに、複数の値をタプルとして返すことができます。
+    return y, x    # (Note: 括弧は使わなくてもいいですが、使うこともできます。)
+
 
 x = 1
 y = 2
-x, y = swap(x, y)     # => x = 2, y = 1
-# (x, y) = swap(x,y)  # Again parenthesis have been excluded but can be included.
+x, y = swap(x, y)               # => x = 2, y = 1
+# (x, y) = swap(x,y)  # このように、括弧は使っても使わなくてもいいです。
 
-# Function Scope
+
+# 関数のスコープ
 x = 5
 
+
 def set_x(num):
-    # Local var x not the same as global variable x
-    x = num    # => 43
-    print (x)  # => 43
+    # ローカル変数の x はグローバル変数の x とは異なります
+    x = num                     # => 43
+    print(x)                    # => 43
+
 
 def set_global_x(num):
     global x
-    print (x)  # => 5
-    x = num    # global var x is now set to 6
-    print (x)  # => 6
+    print(x)                    # => 5
+    x = num                     # グローバル変数の x に 6 が代入されました。
+    print(x)                    # => 6
 
 set_x(43)
 set_global_x(6)
 
 
-# Python has first class functions
+# Pythonは第一級関数をサポートします。
 def create_adder(x):
     def adder(y):
         return x + y
     return adder
 
 add_10 = create_adder(10)
-add_10(3)   # => 13
+add_10(3)                       # => 13
 
-# There are also anonymous functions
-(lambda x: x > 2)(3)                  # => True
+# 無名関数もサポートしています。
+(lambda x: x > 2)(3)                 # => True
 (lambda x, y: x ** 2 + y ** 2)(2, 1)  # => 5
 
-# There are built-in higher order functions
-list(map(add_10, [1, 2, 3]))          # => [11, 12, 13]
+# 高階関数も組込まれています。
+list(map(add_10, [1, 2, 3]))         # => [11, 12, 13]
 list(map(max, [1, 2, 3], [4, 2, 1]))  # => [4, 2, 3]
 
 list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  # => [6, 7]
 
-# We can use list comprehensions for nice maps and filters
-# List comprehension stores the output as a list which can itself be a nested list
-[add_10(i) for i in [1, 2, 3]]         # => [11, 12, 13]
+# map や filter の代わりに、リスト内包表記を使うことができます。
+# リスト内包表記は、出力を別のリスト内包表記にネストさせることができます。
+[add_10(i) for i in [1, 2, 3]]        # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]  # => [6, 7]
 
-# You can construct set and dict comprehensions as well.
+# 集合(set)や辞書も内包表記ができます。
 {x for x in 'abcddeef' if x not in 'abc'}  # => {'d', 'e', 'f'}
-{x: x**2 for x in range(5)}  # => {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+{x: x**2 for x in range(5)}                # => {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
 
 
 ####################################################
