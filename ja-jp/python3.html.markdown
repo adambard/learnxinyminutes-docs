@@ -644,95 +644,94 @@ dir(math)
 
 
 ####################################################
-## 6. Classes
+# 6. クラス
 ####################################################
 
-# We use the "class" operator to get a class
+# クラスを作成するために、"class"という演算子を使います。
 class Human:
 
-    # A class attribute. It is shared by all instances of this class
+    # クラスの属性です。このクラスの全てのインスタンスで共有されます。
     species = "H. sapiens"
 
-    # Basic initializer, this is called when this class is instantiated.
-    # Note that the double leading and trailing underscores denote objects
-    # or attributes that are used by python but that live in user-controlled
-    # namespaces. Methods(or objects or attributes) like: __init__, __str__,
-    # __repr__ etc. are called magic methods (or sometimes called dunder methods)
-    # You should not invent such names on your own.
+    # 標準的なイニシャライザで、このクラスがインスタンスを作成するときは毎回呼ばれます。
+    # 2つのアンダースコアがオブジェクトや属性の前後についているとき、これらはPythonによって利用され、
+    # ユーザーの名前空間には存在しないということに注意してください。
+    # __init__ や __str__ 、 __repr__ のようなメソッド(やオブジェクト、属性)は、
+    # magic methods (または dunder methods)と呼ばれます。
+    # このような名前を自分で発明しないほうがよいでしょう。
     def __init__(self, name):
-        # Assign the argument to the instance's name attribute
+        # 引数をインスタンスのname属性に設定します。
         self.name = name
 
-        # Initialize property
+        # プロパティの初期化
         self.age = 0
 
-    # An instance method. All methods take "self" as the first argument
+    # インスタンスメソッド。全てのメソッドは"self"を最初の引数に取ります。
     def say(self, msg):
-        print ("{name}: {message}".format(name=self.name, message=msg))
+        print("{name}: {message}".format(name=self.name, message=msg))
 
-    # Another instance method
+    # 別のインスタンスメソッドの例。
     def sing(self):
         return 'yo... yo... microphone check... one two... one two...'
 
-    # A class method is shared among all instances
-    # They are called with the calling class as the first argument
+    # クラスメソッドは全てのインスタンスで共有されます。
+    # クラスメソッドではクラスを最初の引数として呼ばれます。
     @classmethod
     def get_species(cls):
         return cls.species
 
-    # A static method is called without a class or instance reference
+    # スタティックメソッドはクラスやインスタンスを参照せずに呼ばれます。
     @staticmethod
     def grunt():
         return "*grunt*"
 
-    # A property is just like a getter.
-    # It turns the method age() into an read-only attribute
-    # of the same name.
+    # プロパティはgetterのようなものです。
+    # age() メソッドを同名の読取専用属性に変換します。
     @property
     def age(self):
         return self._age
 
-    # This allows the property to be set
+    # プロパティを設定できるようにします。
     @age.setter
     def age(self, age):
         self._age = age
 
-    # This allows the property to be deleted
+    # プロパティを削除できるようにします。
     @age.deleter
     def age(self):
         del self._age
 
 
-# When a Python interpreter reads a source file it executes all its code.
-# This __name__ check makes sure this code block is only executed when this
-# module is the main program.
+# Pythonインタプリタがソースファイルを読み込んだとき、全てのコードを実行します。
+# この __name__ による確認により、このモジュールがメインのプログラムである場合にのみ、
+# このコードブロックが実行されるようにします。
 if __name__ == '__main__':
-    # Instantiate a class
+    # クラスのインスタンスを作成します。
     i = Human(name="Ian")
-    i.say("hi")                     # "Ian: hi"
+    i.say("hi")                 # "Ian: hi"
     j = Human("Joel")
-    j.say("hello")                  # "Joel: hello"
-    # i and j are instances of type Human, or in other words: they are Human objects
+    j.say("hello")              # "Joel: hello"
+    # i と j はHumanのインスタンスです。別の言葉で言うなら、これらはHumanのオブジェクトです。
 
-    # Call our class method
-    i.say(i.get_species())          # "Ian: H. sapiens"
-    # Change the shared attribute
+    # クラスメソッドを呼んでみましょう。
+    i.say(i.get_species())      # "Ian: H. sapiens"
+    # 共有属性を変更してみましょう。
     Human.species = "H. neanderthalensis"
-    i.say(i.get_species())          # => "Ian: H. neanderthalensis"
-    j.say(j.get_species())          # => "Joel: H. neanderthalensis"
+    i.say(i.get_species())      # => "Ian: H. neanderthalensis"
+    j.say(j.get_species())      # => "Joel: H. neanderthalensis"
 
-    # Call the static method
+    # スタティックメソッドを呼んでみましょう。
     print(Human.grunt())            # => "*grunt*"
     print(i.grunt())                # => "*grunt*"
 
-    # Update the property for this instance
+    # インスタンスのプロパティを更新してみましょう。
     i.age = 42
-    # Get the property
+    # プロパティを取得してみましょう。
     i.say(i.age)                    # => 42
     j.say(j.age)                    # => 0
-    # Delete the property
+    # プロパティを削除してみましょう。
     del i.age
-    # i.age                         # => this would raise an AttributeError
+    # i.age                         # => AttributeError が発生します。
 
 
 ####################################################
