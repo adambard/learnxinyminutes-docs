@@ -1,4 +1,3 @@
-"""
 ---
 language: python3
 contributors:
@@ -21,7 +20,6 @@ filename: learnpython3.py
 Note: この記事はPython 3に内容を絞っています。もし古いPython 2.7を学習したいなら、 [こちら](http://learnxinyminutes.com/docs/python/) をご確認下さい。
 
 ```python
-"""
 
 # 1行のコメントは番号記号(#)から始まります。
 
@@ -828,40 +826,35 @@ if __name__ == '__main__':
     print('Can I fly? ' + str(sup.fly))
 
 
-
 ####################################################
-## 7. Advanced
+# 7. 発展的内容
 ####################################################
 
-# Generators help you make lazy code.
+# ジェネレータは遅延をするコードの作成に役立ちます。
 def double_numbers(iterable):
     for i in iterable:
         yield i + i
 
-# Generators are memory-efficient because they only load the data needed to
-# process the next value in the iterable. This allows them to perform
-# operations on otherwise prohibitively large value ranges.
-# NOTE: `range` replaces `xrange` in Python 3.
-for i in double_numbers(range(1, 900000000)):  # `range` is a generator.
+# 次の値を処理するのに必要なデータしか読み込まないので、ジェネレータはメモリをあまり消費しません。
+# この性質により、他の方法では非常に多くのメモリを消費するような操作が可能になります。
+for i in double_numbers(range(1, 900000000)):  # `range` もジェネレータの1つです。
     print(i)
     if i >= 30:
         break
 
-# Just as you can create a list comprehension, you can create generator
-# comprehensions as well.
-values = (-x for x in [1,2,3,4,5])
+# リスト内包表記のように、ジェネータ内包表記を作成することもできます。
+values = (-x for x in [1, 2, 3, 4, 5])
 for x in values:
-    print(x)  # prints -1 -2 -3 -4 -5 to console/terminal
+    print(x)                    # prints -1 -2 -3 -4 -5
 
-# You can also cast a generator comprehension directly to a list.
-values = (-x for x in [1,2,3,4,5])
+# ジェネレータ内包表記から直接リストを作成することもできます。
+values = (-x for x in [1, 2, 3, 4, 5])
 gen_to_list = list(values)
 print(gen_to_list)  # => [-1, -2, -3, -4, -5]
 
-
-# Decorators
-# In this example `beg` wraps `say`. If say_please is True then it
-# will change the returned message.
+# デコレータ
+# この例では`beg` が `say` を `wraps`します。
+# もし say_please が True なら、出力が変更されます。
 from functools import wraps
 
 
