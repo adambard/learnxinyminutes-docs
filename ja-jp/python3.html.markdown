@@ -735,10 +735,10 @@ if __name__ == '__main__':
 
 
 ####################################################
-## 6.1 Multiple Inheritance
+# 6.1 多重継承
 ####################################################
 
-# Another class definition
+# 別のクラスを定義します。
 class Bat:
 
     species = 'Baty'
@@ -746,12 +746,12 @@ class Bat:
     def __init__(self, can_fly=True):
         self.fly = can_fly
 
-    # This class also has a say method
+    # このクラスも say メソッドを持ちます。
     def say(self, msg):
         msg = '... ... ...'
         return msg
 
-    # And its own method as well
+    # 同様に、独自のメソッドも与えましょう。
     def sonar(self):
         return '))) ... ((('
 
@@ -760,33 +760,33 @@ if __name__ == '__main__':
     print(b.say('hello'))
     print(b.fly)
 
-# To take advantage of modularization by file you could place the classes above in their own files,
-# say, human.py and bat.py
+# ファイル単位のモジュール化を利用するために、上記のクラスを別々のファイルに配置することができます。
+# ここでは、human.pyとbat.pyを作成してみましょう。
 
-# to import functions from other files use the following format
-# from "filename-without-extension" import "function-or-class"
+# 他のファイルから関数をインポートするために、次のような形式を利用してください。
+# from "拡張子無しのファイル名" import "関数またはクラス"
 
 # superhero.py
 from human import Human
 from bat import Bat
 
-# Batman inherits from both Human and Bat
+
+# BatmanはHumanとBatの両方を継承します。
 class Batman(Human, Bat):
 
-    # Batman has its own value for the species class attribute
+    # Batmanは species のクラス属性に独自の値を持ちます。
     species = 'Superhero'
 
     def __init__(self, *args, **kwargs):
-        # Typically to inherit attributes you have to call super:
-        #super(Batman, self).__init__(*args, **kwargs)      
-        # However we are dealing with multiple inheritance here, and super()
-        # only works with the next base class in the MRO list.
-        # So instead we explicitly call __init__ for all ancestors.
-        # The use of *args and **kwargs allows for a clean way to pass arguments,
-        # with each parent "peeling a layer of the onion".
+        # 通常、属性を継承するにはsuper()を呼び出します。
+        #     super(Batman, self).__init__(*args, **kwargs)
+        # しかし、ここでは多重継承を行っているので、 super() はMRO(メソッド解決順序)の次の基本クラスにのみ動作します。
+        # なので、全ての祖先に対して明示的に __init__ を呼ぶことにします。
+        # *args と **kwargs を使うことで、それぞれの継承元が
+        # たまねぎの皮を剥がすごとく、引数を用いることができます。
         Human.__init__(self, 'anonymous', *args, **kwargs)
         Bat.__init__(self, *args, can_fly=False, **kwargs)
-        # override the value for the name attribute
+        # 名前の属性の値を上書きします。
         self.name = 'Sad Affleck'
 
     def sing(self):
@@ -796,7 +796,7 @@ class Batman(Human, Bat):
 if __name__ == '__main__':
     sup = Batman()
 
-    # Instance type checks
+    # インスタンスの型を調べてみましょう。
     if isinstance(sup, Human):
         print('I am human')
     if isinstance(sup, Bat):
@@ -804,27 +804,27 @@ if __name__ == '__main__':
     if type(sup) is Batman:
         print('I am Batman')
 
-    # Get the Method Resolution search Order used by both getattr() and super().
-    # This attribute is dynamic and can be updated
-    print(Batman.__mro__)       # => (<class '__main__.Batman'>, <class 'human.Human'>, <class 'bat.Bat'>, <class 'object'>)
+    # getattr() や super() の両方で使われるMROを取得します。
+    # この属性は動的であり、更新が可能です。
+    print(Batman.__mro__)  # => (<class '__main__.Batman'>, <class 'human.Human'>, <class 'bat.Bat'>, <class 'object'>)
 
-    # Calls parent method but uses its own class attribute
+    # 親メソッドを呼び出しますが、独自のクラス属性を参照します。
     print(sup.get_species())    # => Superhero
 
-    # Calls overloaded method
+    # オーバーロードされたメソッドを呼び出します。
     print(sup.sing())           # => nan nan nan nan nan batman!
 
-    # Calls method from Human, because inheritance order matters
+    # 継承順により、Humanから継承されたメソッドを呼び出します。
     sup.say('I agree')          # => Sad Affleck: I agree
 
-    # Call method that exists only in 2nd ancestor
+    # 2番目の先祖にのみ存在するメソッドを呼び出してみます。
     print(sup.sonar())          # => ))) ... (((
 
-    # Inherited class attribute
+    # 継承されたクラス属性
     sup.age = 100
     print(sup.age)
 
-    # Inherited attribute from 2nd ancestor whose default value was overridden.
+    # デフォルト値が上書きされて、2番目の先祖から継承された属性
     print('Can I fly? ' + str(sup.fly))
 
 
