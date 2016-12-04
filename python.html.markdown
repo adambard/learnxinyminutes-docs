@@ -5,6 +5,7 @@ contributors:
     - ["Amin Bandali", "http://aminbandali.com"]
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["evuez", "http://github.com/evuez"]
+    - ["Adam Bobowski", "https://github.com/Bobowski"]
 filename: learnpython.py
 ---
 
@@ -138,10 +139,11 @@ z = "The items in the basket are %s and %s" % (x,y)
 
 # A newer way to format strings is the format method.
 # This method is the preferred way
-"{} is a {}".format("This", "placeholder")
 "{0} can be {1}".format("strings", "formatted")
 # You can use keywords if you don't want to count.
 "{name} wants to eat {food}".format(name="Bob", food="lasagna")
+# Not-named arguments work in Python 2.7 and newer
+"{} is a {}".format("This", "placeholder")
 
 # None is an object
 None  # => None
