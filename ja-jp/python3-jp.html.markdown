@@ -8,7 +8,8 @@ contributors:
     - ["evuez", "http://github.com/evuez"]
 translators:
     - ["kakakaya", "https://github.com/kakakaya"]
-filename: learnpython3.py
+filename: learnpython3-jp.py
+lang: ja-jp
 ---
 
 90年代の初め、Guido Van RossumによってPythonは作成されました。現在となっては、最も有名な言語の1つです。
