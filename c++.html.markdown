@@ -11,7 +11,7 @@ contributors:
 lang: en
 ---
 
-C++ is a systems programming language that,
+C++ is a system programming language that,
 [according to its inventor Bjarne Stroustrup](http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2014/Keynote),
 was designed to
 
