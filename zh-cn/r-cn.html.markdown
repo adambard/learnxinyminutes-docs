@@ -303,7 +303,7 @@ if (4 > 3) {
 
 # 定义如下
 jiggle <- function(x) {
-	x + rnorm(x, sd=.1)	#add in a bit of (controlled) noise
+	x = x + rnorm(x, sd=.1)	#add in a bit of (controlled) noise
 	return(x)
 }
 
