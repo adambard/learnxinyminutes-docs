@@ -12,9 +12,10 @@ As one of the successors to JavaScript, CoffeeScript tries its best to output re
 See also [the CoffeeScript website](http://coffeescript.org/), which has a complete tutorial on CoffeeScript.
 
 ```coffeescript
-# CoffeeScript is a hipster language.
-# It goes with the trends of many modern languages.
-# So comments are like Ruby and Python, they use number symbols.
+# CoffeeScript is a language which compiles to JavaScript.
+# It attempts to try and make JavaScript more in line with the trends of many
+# modern languages.
+# Comments are similar to Ruby and Python, using the hash symbol `#`
 
 ###
 Block comments are like these, and they translate directly to '/ *'s and '* /'s
