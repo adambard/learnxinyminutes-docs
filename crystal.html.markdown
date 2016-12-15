@@ -342,7 +342,203 @@ end
 
 ex #=> "ex2"
 
-# TODO: Types and methods
+# Functions
+
+def double(x)
+  x * 2
+end
+
+# Functions (and all blocks) implicitly return the value of the last statement
+double(2) #=> 4
+
+# Parentheses are optional where the result is unambiguous
+double 3 #=> 6
+
+double double 3 #=> 12
+
+def sum(x, y)
+  x + y
+end
+
+# Method arguments are separated by a comma
+sum 3, 4 #=> 7
+
+sum sum(3, 4), 5 #=> 12
+
+# yield
+# All methods have an implicit, optional block parameter
+# it can be called with the 'yield' keyword
+
+def surround
+  puts '{'
+  yield
+  puts '}'
+end
+
+surround { puts "hello world" }
+
+# {
+# hello world
+# }
+
+
+# You can pass a block to a function
+# "&" marks a reference to a passed block
+def guests(&block)
+  block.call "some_argument"
+end
+
+# You can pass a list of arguments, which will be converted into an array
+# That's what splat operator ("*") is for
+def guests(*array)
+  array.each { |guest| puts guest }
+end
+
+# If a method returns an array, you can use destructuring assignment
+def foods
+    ["pancake", "sandwich", "quesadilla"]
+end
+breakfast, lunch, dinner = foods
+breakfast #=> "pancake"
+dinner    #=> "quesadilla"
+
+# By convention, all methods that return booleans end with a question mark
+5.even? # false
+5.odd?  # true
+
+# And if a method ends with an exclamation mark, it does something destructive
+# like mutate the receiver. Some methods have a ! version to make a change, and
+# a non-! version to just return a new changed version
+company_name = "Dunder Mifflin"
+company_name.upcase #=> "DUNDER MIFFLIN"
+company_name        #=> "Dunder Mifflin"
+
+
+# Define a class with the class keyword
+class Human
+
+  # A class variable. It is shared by all instances of this class.
+  @@species = "H. sapiens"
+  
+  # type of name is String
+  @name : String
+
+  # Basic initializer
+  # Assign the argument to the "name" instance variable for the instance
+  # If no age given, we will fall back to the default in the arguments list.
+  def initialize(@name, @age = 0)
+  end
+
+  # Basic setter method
+  def name=(name)
+    @name = name
+  end
+
+  # Basic getter method
+  def name
+    @name
+  end
+
+  # The above functionality can be encapsulated using the attr_accessor method as follows
+  property :name
+
+  # Getter/setter methods can also be created individually like this
+  getter :name
+  setter :name
+
+  # A class method uses self to distinguish from instance methods.
+  # It can only be called on the class, not an instance.
+  def self.say(msg)
+    puts msg
+  end
+
+  def species
+    @@species
+  end
+end
+
+
+# Instantiate a class
+jim = Human.new("Jim Halpert")
+
+dwight = Human.new("Dwight K. Schrute")
+
+# Let's call a couple of methods
+jim.species #=> "H. sapiens"
+jim.name #=> "Jim Halpert"
+jim.name = "Jim Halpert II" #=> "Jim Halpert II"
+jim.name #=> "Jim Halpert II"
+dwight.species #=> "H. sapiens"
+dwight.name #=> "Dwight K. Schrute"
+
+# Call the class method
+Human.say("Hi") #=> print Hi and returns nil
+
+# Variables that start with @ have instance scope
+class TestClass
+	@var = "I'm an instance var"
+end
+
+# Variables that start with @@ have class scope
+class TestClass
+	@@var = "I'm a class var"
+end
+# Variables that start with a capital letter are constants
+Var = "I'm a constant"
+Var = "can't be updated" # Already initialized constant Var
+
+# Class is also an object in crystal. So class can have instance variables.
+# Class variable is shared among the class and all of its descendants.
+
+# base class
+class Human
+  @@foo = 0
+
+  def self.foo
+    @@foo
+  end
+
+  def self.foo=(value)
+    @@foo = value
+  end
+end
+
+# derived class
+class Worker < Human
+end
+
+Human.foo   #=> 0
+Worker.foo  #=> 0
+
+Human.foo = 2 #=> 2
+Worker.foo    #=> 0
+
+Worker.foo = 3 #=> 3
+Human.foo   #=> 2
+Worker.foo  #=> 3
+
+module ModuleExample
+  def foo
+    "foo"
+  end
+end
+
+# Including modules binds their methods to the class instances
+# Extending modules binds their methods to the class itself
+
+class Person
+  include ModuleExample
+end
+
+class Book
+  extend ModuleExample
+end
+
+Person.foo     # => NoMethodError: undefined method `foo' for Person:Class
+Person.new.foo # => 'foo'
+Book.foo       # => 'foo'
+Book.new.foo   # => NoMethodError: undefined method `foo'
+
 
 ```
 
