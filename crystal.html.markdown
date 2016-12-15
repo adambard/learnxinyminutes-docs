@@ -2,7 +2,8 @@
 language: crystal
 filename: learncrystal.cr
 contributors:
-  - ["Vitalii Elenhaupt", "http://veelenga.com"]
+    - ["Vitalii Elenhaupt", "http://veelenga.com"]
+    - ["Arnaud Fernandés", "https://github.com/TechMagister/"]
 
 ---
 
@@ -534,10 +535,10 @@ class Book
   extend ModuleExample
 end
 
-Person.foo     # => NoMethodError: undefined method `foo' for Person:Class
+Person.foo     # => undefined method 'foo' for Person:Class
 Person.new.foo # => 'foo'
 Book.foo       # => 'foo'
-Book.new.foo   # => NoMethodError: undefined method `foo'
+Book.new.foo   # => undefined method 'foo' for Book
 
 
 ```
