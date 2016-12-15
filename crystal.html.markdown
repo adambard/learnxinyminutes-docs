@@ -16,9 +16,9 @@ nil.class  #=> Nil
 true.class #=> Bool
 
 # Falsey values are: nil, false and null pointers
-!nil   #=> true
-!false #=> true
-!0     #=> false
+!nil   #=> true  : Bool
+!false #=> true  : Bool
+!0     #=> false : Bool
 
 # Integers
 
@@ -40,14 +40,14 @@ true.class #=> Bool
 9223372036854775808.class #=> UInt64
 
 # Binary numbers
-0b1101 #=> 13
+0b1101 #=> 13 : Int32
 
 # Octal numbers
-0o123 #=> 83
+0o123 #=> 83 : Int32
 
 # Hexadecimal numbers
-0xFE012D #=> 16646445
-0xfe012d #=> 16646445
+0xFE012D #=> 16646445 : Int32
+0xfe012d #=> 16646445 : Int32
 
 # Floats
 
@@ -66,23 +66,23 @@ true.class #=> Bool
 'a'.class #=> Char
 
 # Octal codepoint
-'\101' #=> 'A'
+'\101' #=> 'A' : Char
 
 # Unicode codepoint
-'\u0041' #=> 'A'
+'\u0041' #=> 'A' : Char
 
 # Strings
 
 "s".class #=> String
 
 # Strings are immutable
-s = "hello, "  #=> "hello, "
-s.object_id    #=> 134667712
-s += "Crystal" #=> "hello, Crystal"
-s.object_id    #=> 142528472
+s = "hello, "  #=> "hello, "        : String
+s.object_id    #=> 134667712        : UInt64
+s += "Crystal" #=> "hello, Crystal" : String
+s.object_id    #=> 142528472        : UInt64
 
 # Supports interpolation
-"sum = #{1 + 2}" #=> "sum = 3"
+"sum = #{1 + 2}" #=> "sum = 3" : String
 
 # Multiline string
 "This is
@@ -98,11 +98,11 @@ s.object_id    #=> 142528472
 
 :symbol.class #=> Symbol
 
-sentence = :question?
+sentence = :question?     # :"question?" : Symbol
 
-sentence == :question?    #=> true
-sentence == :exclamation! #=> false
-sentence == "question?"   #=> false
+sentence == :question?    #=> true  : Bool
+sentence == :exclamation! #=> false : Bool
+sentence == "question?"   #=> false : Bool
 
 # Arrays
 
@@ -111,16 +111,16 @@ sentence == "question?"   #=> false
 
 # Empty arrays should define a type
 []               # Syntax error: for empty arrays use '[] of ElementType'
-[] of Int32      #=> []
-Array(Int32).new #=> []
+[] of Int32      #=> [] : Array(Int32)
+Array(Int32).new #=> [] : Array(Int32)
 
 # Arrays can be indexed
-array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
-array[0]                #=> 1
+array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5] : Array(Int32)
+array[0]                #=> 1               : Int32
 array[10]               # raises IndexError
 array[-6]               # raises IndexError
-array[10]?              #=> nil
-array[-6]?              #=> nil
+array[10]?              #=> nil             : (Int32 | Nil)
+array[-6]?              #=> nil             : (Int32 | Nil)
 
 # From the end
 array[-1] #=> 5
@@ -146,8 +146,8 @@ array       #=> [2, 3, 4, 5]
 array.includes? 3 #=> true
 
 # Special syntax for an array of string and an array of symbols
-%w(one two three) #=> ["one", "two", "three"]
-%i(one two three) #=> [:one, :two, :three]
+%w(one two three) #=> ["one", "two", "three"] : Array(String)
+%i(one two three) #=> [:one, :two, :three]    : Array(Symbol)
 
 # There is a special array syntax with other types too, as long as
 # they define a .new and a #<< method
@@ -185,7 +185,13 @@ hash.has_key? "color" #=> true
 
 # Special hash literal syntax with other types too, as long as
 # they define a .new and a #[]= methods
-MyType{"foo": "bar"}
+class MyType
+  def []=(key, value)
+    puts "do stuff"
+  end
+end
+
+MyType{"foo" => "bar"}
 
 # The above is equivalent to
 tmp = MyType.new
@@ -195,14 +201,14 @@ tmp
 # Ranges
 
 1..10                  #=> Range(Int32, Int32)
-Range.new(1..10).class #=> Range(Int32, Int32)
+Range.new(1, 10).class #=> Range(Int32, Int32)
 
 # Can be inclusive or exclusive
-3..5.to_a  #=> [3, 4, 5]
-3...5.to_a #=> [3, 4]
+(3..5).to_a  #=> [3, 4, 5]
+(3...5).to_a #=> [3, 4]
 
 # Check whether range includes the given value or not
-1..8.includes? 2 #=> true
+(1..8).includes? 2 #=> true
 
 # Tuples are a fixed-size, immutable, stack-allocated sequence of values of
 # possibly different types.
@@ -211,7 +217,7 @@ Range.new(1..10).class #=> Range(Int32, Int32)
 # Acces tuple's value with index
 tuple = {:key1, :key2}
 tuple[1] #=> :key2
-tuple[2] #=> syntax error
+tuple[2] #=> syntax error : Index out of bound
 
 # Can be expanded into multiple variables
 a, b, c = {:a, 'b', "c"}
@@ -221,7 +227,7 @@ c #=> "c"
 
 # Procs represent a functional pointer with an optional context
 proc = ->(x : Int32) { x.to_s }
-proc.class # (Int32 -> Nil)
+proc.class # Proc(Int32, String)
 
 # Invoke proc with call method
 proc.call 10 #=> "10"
@@ -303,7 +309,7 @@ if a < 3
 else
   a = true
 end
-typeof a #=> (String | Bool)
+typeof a #=> (Bool | String)
 
 if a && b
   # here both a and b are guaranteed not to be Nil
