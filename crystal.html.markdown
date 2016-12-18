@@ -166,7 +166,7 @@ set << 3
 {1 => 2, 3 => 4}.class   #=> Hash(Int32, Int32)
 {1 => 2, 'a' => 3}.class #=> Hash(Int32 | Char, Int32)
 
-# Empty hashes should define a type
+# Empty hashes should specify a type
 {}                     # Syntax error
 {} of Int32 => Int32   # {}
 Hash(Int32, Int32).new # {}
@@ -215,7 +215,7 @@ Range.new(1, 10).class #=> Range(Int32, Int32)
 # possibly different types.
 {1, "hello", 'x'}.class #=> Tuple(Int32, String, Char)
 
-# Acces tuple's value with index
+# Acces tuple's value by its index
 tuple = {:key1, :key2}
 tuple[1] #=> :key2
 tuple[2] #=> syntax error : Index out of bound
@@ -226,9 +226,12 @@ a #=> :a
 b #=> 'b'
 c #=> "c"
 
-# Procs represent a functional pointer with an optional context
+# Procs represent a function pointer with an optional context (the closure data)
+# It is typically created with a proc litteral
 proc = ->(x : Int32) { x.to_s }
 proc.class # Proc(Int32, String)
+# Or using the new method
+Proc(Int32, String).new { |x| x.to_s }
 
 # Invoke proc with call method
 proc.call 10 #=> "10"
@@ -320,29 +323,6 @@ if a.is_a? String
   a.class #=> String
 end
 
-# Exception handling
-
-# Define new exception
-class MyException < Exception
-end
-
-# Define another exception
-class MyAnotherException < Exception; end
-
-ex = begin
-   raise MyException.new
-rescue ex1 : IndexError
-  "ex1"
-rescue ex2 : MyException | MyAnotherException
-  "ex2"
-rescue ex3 : Exception
-  "ex3"
-rescue ex4 # catch any kind of exception
-  "ex4"
-end
-
-ex #=> "ex2"
-
 # Functions
 
 def double(x)
@@ -352,7 +332,7 @@ end
 # Functions (and all blocks) implicitly return the value of the last statement
 double(2) #=> 4
 
-# Parentheses are optional where the result is unambiguous
+# Parentheses are optional where the call is unambiguous
 double 3 #=> 6
 
 double double 3 #=> 12
@@ -411,8 +391,10 @@ dinner    #=> "quesadilla"
 # like mutate the receiver. Some methods have a ! version to make a change, and
 # a non-! version to just return a new changed version
 company_name = "Dunder Mifflin"
-company_name.upcase #=> "DUNDER MIFFLIN"
-company_name        #=> "Dunder Mifflin"
+company_name.gsub "Dunder", "Donald"  #=> "Donald Mifflin"
+company_name  #=> "Dunder Mifflin"
+company_name.gsub! "Dunder", "Donald"
+company_name  #=> "Donald Mifflin"
 
 
 # Define a class with the class keyword
@@ -420,7 +402,7 @@ class Human
 
   # A class variable. It is shared by all instances of this class.
   @@species = "H. sapiens"
-  
+
   # type of name is String
   @name : String
 
@@ -477,12 +459,12 @@ Human.say("Hi") #=> print Hi and returns nil
 
 # Variables that start with @ have instance scope
 class TestClass
-	@var = "I'm an instance var"
+  @var = "I'm an instance var"
 end
 
 # Variables that start with @@ have class scope
 class TestClass
-	@@var = "I'm a class var"
+  @@var = "I'm a class var"
 end
 # Variables that start with a capital letter are constants
 Var = "I'm a constant"
@@ -540,6 +522,29 @@ Person.new.foo # => 'foo'
 Book.foo       # => 'foo'
 Book.new.foo   # => undefined method 'foo' for Book
 
+
+# Exception handling
+
+# Define new exception
+class MyException < Exception
+end
+
+# Define another exception
+class MyAnotherException < Exception; end
+
+ex = begin
+   raise MyException.new
+rescue ex1 : IndexError
+  "ex1"
+rescue ex2 : MyException | MyAnotherException
+  "ex2"
+rescue ex3 : Exception
+  "ex3"
+rescue ex4 # catch any kind of exception
+  "ex4"
+end
+
+ex #=> "ex2"
 
 ```
 
