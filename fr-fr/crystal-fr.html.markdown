@@ -1,11 +1,11 @@
 ---
 language: crystal
-filename: learncrystal.cr
+filename: learncrystal-fr.cr
 contributors:
     - ["Vitalii Elenhaupt", "http://veelenga.com"]
     - ["Arnaud Fernandés", "https://github.com/TechMagister/"]
 translators:
-    - ["Arnaud Fernandés", "http://github.com/TechMagister"]
+    - ["Arnaud Fernandés", "http://github.com/TechMagister/"]
 lang: fr-fr
 ---
 
@@ -13,7 +13,7 @@ lang: fr-fr
 
 # Ceci est un commentaire
 
-# Tout est un object
+# Tout est object
 nil.class  #=> Nil
 100.class  #=> Int32
 true.class #=> Bool
@@ -27,13 +27,13 @@ true.class #=> Bool
 
 1.class #=> Int32
 
-# Quatre types d'entier signés
+# Quatre types d'entiers signés
 1_i8.class  #=> Int8
 1_i16.class #=> Int16
 1_i32.class #=> Int32
 1_i64.class #=> Int64
 
-# Quatre types d'entier non signés
+# Quatre types d'entiers non signés
 1_u8.class  #=> UInt8
 1_u16.class #=> UInt16
 1_u32.class #=> UInt32
@@ -42,13 +42,13 @@ true.class #=> Bool
 2147483648.class          #=> Int64
 9223372036854775808.class #=> UInt64
 
-# Nombre binaire
+# Nombre en base binaire
 0b1101 #=> 13 : Int32
 
 # Nombre en base octale
 0o123 #=> 83 : Int32
 
-# Nombres hexadecimaux
+# Nombres hexadécimaux
 0xFE012D #=> 16646445 : Int32
 0xfe012d #=> 16646445 : Int32
 
@@ -74,30 +74,30 @@ true.class #=> Bool
 # Notation unicode
 '\u0041' #=> 'A' : Char
 
-# Chaines de caratères
+# Chaînes de caratères
 
 "s".class #=> String
 
-# Les chaines de caractère sont immuables
+# Les chaînes de caractères sont immuables
 s = "hello, "  #=> "hello, "        : String
 s.object_id    #=> 134667712        : UInt64
 s += "Crystal" #=> "hello, Crystal" : String
 s.object_id    #=> 142528472        : UInt64
 
-# Support de l'interpolation
+# Interpolation
 "sum = #{1 + 2}" #=> "sum = 3" : String
 
-# Chaines multiligne
+# Chaînes multilignes
 "Ceci est une chaine sur
 plusieurs lignes"
 
-# Une autre notation pour les chaines de caratères
+# Une autre notation pour les chaînes de caratères
 # qui permet d'insérer des guillemets
 %(hello "world") #=> "hello \"world\""
 
 # Symboles
 # Ils sont immuables et réutilisables, ils sont représentés en interne par
-# un Int32. Ils sont souvent utilisés à la place des chaines de caractère
+# un Int32. Ils sont souvent utilisés à la place des chaînes de caractères
 # quand l'identité est plus importante que le contenu
 
 :symbol.class #=> Symbol
@@ -113,7 +113,7 @@ sentence == "question?"   #=> false : Bool
 [1, 2, 3].class         #=> Array(Int32)
 [1, "hello", 'x'].class #=> Array(Int32 | String | Char)
 
-#
+# Un type doit être spécifié pour les tableaux vides
 []               # Syntax error: for empty arrays use '[] of ElementType'
 [] of Int32      #=> [] : Array(Int32)
 Array(Int32).new #=> [] : Array(Int32)
@@ -149,7 +149,7 @@ array       #=> [2, 3, 4, 5]
 # Vérifie si un élément est présent dans le tableau
 array.includes? 3 #=> true
 
-# Syntaxe spéciale pour un tableau de chaine de caratère ou de symboles
+# Syntaxe spéciale pour un tableau de chaîne de caractères ou de symboles
 %w(one two three) #=> ["one", "two", "three"] : Array(String)
 %i(one two three) #=> [:one, :two, :three]    : Array(Symbol)
 
@@ -174,7 +174,7 @@ set << 3
 {} of Int32 => Int32   # {}
 Hash(Int32, Int32).new # {}
 
-# L'accès peut se faire rapidement via une clé
+# L'accès se fait via une clé
 hash = {"color" => "green", "number" => 5}
 hash["color"]        #=> "green"
 hash["no_such_key"]  #=> Missing hash key: "no_such_key" (KeyError)
@@ -184,7 +184,7 @@ hash["no_such_key"]? #=> nil
 hash.has_key? "color" #=> true
 
 # Notation spéciale pour les clés si ce sont des symboles
-# ou chaines de caractère
+# ou chaînes de caractères
 {key1: 'a', key2: 'b'}     # {:key1 => 'a', :key2 => 'b'}
 {"key1": 'a', "key2": 'b'} # {"key1" => 'a', "key2" => 'b'}
 
@@ -208,7 +208,7 @@ tmp
 1..10                  #=> Range(Int32, Int32)
 Range.new(1, 10).class #=> Range(Int32, Int32)
 
-# Ils peuvent être inclusif ou exclusif
+# Ils peuvent être inclusifs ou exclusifs
 (3..5).to_a  #=> [3, 4, 5]
 (3...5).to_a #=> [3, 4]
 
@@ -230,7 +230,7 @@ b #=> 'b'
 c #=> "c"
 
 # Les procédures ( Proc ) sont des pointeurs de fonction
-# avec un context optionel. Ils sont généralement créés avec
+# avec un contexte optionel. Ils sont généralement créés avec
 # cette notation :
 proc = ->(x : Int32) { x.to_s }
 proc.class # Proc(Int32, String)
@@ -264,7 +264,7 @@ a #=> 3
 # Opérateur ternaire
 a = 1 > 2 ? 3 : 4 #=> 4
 
-# Commutation
+# Aiguillage à l'aide du mot clé "case"
 cmd = "move"
 
 action = case cmd
@@ -371,13 +371,13 @@ def guests(&block)
   block.call "some_argument"
 end
 
-# Une liste d'argument peut être donnée, qui sera convertie en tableau
+# Une liste d'arguments peut être donnée, qui sera convertie en tableau
 # Pour cela, utilisez l'opérateur "*"
 def guests(*array)
   array.each { |guest| puts guest }
 end
 
-# Si une méthode retourne un tableau, il peut être décomposé
+# Si une méthode retourne un tableau, il peut être scindé
 def foods
     ["pancake", "sandwich", "quesadilla"]
 end
@@ -391,7 +391,7 @@ dinner    #=> "quesadilla"
 5.odd?  # true
 
 # Si une méthode finit avec un point d'exclamation, c'est qu'elle fait une
-# opération destructrice. Quelques méthodes one une version "!" pour faire
+# opération destructrice. Quelques méthodes ont une version "!" pour faire
 # des changements et une version non-"!" pour retourner une nouvelle version
 company_name = "Dunder Mifflin"
 company_name.gsub "Dunder", "Donald"  #=> "Donald Mifflin"
@@ -409,7 +409,7 @@ class Human
   # "name" est une chaine de caratère ( String )
   @name : String
 
-  # Constructeur basic, assigne l'argument à la variable "name"
+  # Constructeur basique, assigne l'argument à la variable "name"
   # si l'age n'est pas donné, sa valeur sera de 0
   def initialize(@name, @age = 0)
   end
@@ -552,4 +552,4 @@ ex #=> "ex2"
 
 ## Ressources additionnelles
 
-- [Documentation Officielle](http://crystal-lang.org/)
+- [Documentation Officielle (EN)](http://crystal-lang.org/)
