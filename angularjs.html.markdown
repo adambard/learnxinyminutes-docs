@@ -53,7 +53,7 @@ Before you study AngularJS, you should have a basic understanding of:
   * The ng-model directive binds the value of the input field to the application variable name.
   * The ng-bind directive binds the innerHTML of the <p> element to the application variable name.
 */
-<tag> Here are content to be intrepreted </tag>
+<tag> Here are content to be interpreted </tag>
 
 ///////////////////////////////////
 // AngularJS Expressions
@@ -275,7 +275,7 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 <script src="namesController.js"></script>
 
 ///////////////////////////////////
-// AngularJS Filers
+// AngularJS Filters
 
 // Filters can be added to expressions and directives using a pipe character.
 // AngularJS filters can be used to transform data:
@@ -326,7 +326,7 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 
 //An input filter can be added to a directive with a pipe character (|) 
 //and filter followed by a colon and a model name.
-//The filter filter selects a subset of an array:
+//The filter selects a subset of an array:
 
 <div ng-app="myApp" ng-controller="namesCtrl">
 
