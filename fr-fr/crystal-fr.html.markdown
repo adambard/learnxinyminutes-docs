@@ -13,7 +13,7 @@ lang: fr-fr
 
 # Ceci est un commentaire
 
-# Tout est object
+# Tout est objet
 nil.class  #=> Nil
 100.class  #=> Int32
 true.class #=> Bool
@@ -68,7 +68,7 @@ true.class #=> Bool
 
 'a'.class #=> Char
 
-# Notation octale des caratères
+# Notation octale des caractères
 '\101' #=> 'A' : Char
 
 # Notation unicode
