@@ -12,15 +12,15 @@ lang: zh-cn
 ## AngularJS 教程。
 
 AngularJS 1.0 版在 2012 年发布。
-Miško Hevery, 一位 Google 员工, 从 2009 年开始开发 AngularJS。
-结果发现这个想法很好，而该项目现在也由 Google 官方所支持了。
+Miško Hevery, 一位 Google 员工， 从 2009 年开始开发 AngularJS。
+结果发现这个想法很好，从而该项目现在也被 Google 官方所支持了。
 
 AngularJS 是一个 JavaScript 框架。它可以通过一个 "script" 标签添加到一个 HTML 页面中。
 AngularJS 通过指令扩展了 HTML 属性，并且通过表达式将数据绑定到 HTML。
 
-## 你应该已经了解的知识
+## 你应该已经了解了的知识
 
-在学习 AngularJS 前, 你应该对以下知识有了基本的了解：
+在学习 AngularJS 之前， 你应该对以下知识有了基本的了解：
 
 - HTML
 - CSS
@@ -28,7 +28,7 @@ AngularJS 通过指令扩展了 HTML 属性，并且通过表达式将数据绑�
 
 ```html
 // AngularJS 是一个 JavaScript 框架。它是一个用 JavaScript 写的库。
-// AngularJS 以一个 JavaScript 文件形式发布，并且能通过一个 script 标签添加到一个网页中：
+// AngularJS 以一个 JavaScript 文件的形式发布，并且能通过一个 script 标签添加到一个网页中：
 // <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 
 ///////////////////////////////////
@@ -36,7 +36,7 @@ AngularJS 通过指令扩展了 HTML 属性，并且通过表达式将数据绑�
 
 //AngularJS 通过 ng-directives 扩展 HTML。
 //ng-app 指令定义一个 AngularJS 应用。
-//ng-model 指令将 HTML 控件(input, select, textarea) 的值绑定到应用的数据上。
+//ng-model 指令将 HTML 控件 (input, select, textarea) 的值绑定到应用的数据上。
 //ng-bind 指令将应用的数据绑定到 HTML 视图上。
 <!DOCTYPE html>
 <html>
@@ -61,10 +61,10 @@ AngularJS 通过指令扩展了 HTML 属性，并且通过表达式将数据绑�
 ///////////////////////////////////
 // AngularJS 表达式
 
-// AngularJS 表达式写在双括号内: {{ 表达式 }}。
+// AngularJS 表达式写在双括号内： {{ 表达式 }}。
 // AngularJS 表达式采用和 ng-bind 指令一样的方式将数据绑定到 HTML。
 // AngularJS 将在编写表达式的原样位置上 "输出" 数据。
-// AngularJS 表达式非常像 JavaScript 表达式: 它们能包含文本, 运算符和变量。
+// AngularJS 表达式非常像 JavaScript 表达式：它们能包含文本，运算符和变量。
 // 例如 {{ 5 + 5 }} 或 {{ firstName + " " + lastName }}
 <!DOCTYPE html>
 <html>
@@ -76,7 +76,7 @@ AngularJS 通过指令扩展了 HTML 属性，并且通过表达式将数据绑�
   </body>
 </html>
 
-//如果你删除了 ng-app 指令, HTML 将原样显示表达式，不对它进行解析：
+//如果你删除了 ng-app 指令， HTML 将原样显示表达式，不对它进行解析：
 <!DOCTYPE html>
 <html>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
@@ -99,47 +99,47 @@ AngularJS 通过指令扩展了 HTML 属性，并且通过表达式将数据绑�
   </body>
 </html>
 
-// AngularJS 的数字类似 JavaScript 的数字:
+// AngularJS 的数字类似 JavaScript 的数字：
 <div ng-app="" ng-init="quantity=1;cost=5">
   <p>Total in dollar: {{ quantity * cost }}</p>
 </div>
 
-//AngularJS 的字符串类似 JavaScript 的字符串:
+//AngularJS 的字符串类似 JavaScript 的字符串：
 <div ng-app="" ng-init="firstName='John';lastName='Doe'">
   <p>The name is <span ng-bind="firstName + ' ' + lastName"></span></p>
 </div>
 
-//AngularJS 的对象类似 JavaScript 的对象:
+//AngularJS 的对象类似 JavaScript 的对象：
 <div ng-app="" ng-init="person={firstName:'John',lastName:'Doe'}">
   <p>The name is {{ person.lastName }}</p>
 </div>
 
-//AngularJS 的数组类似 JavaScript 的数组:
+//AngularJS 的数组类似 JavaScript 的数组：
 <div ng-app="" ng-init="points=[1,15,19,2,40]">
   <p>The third result is {{ points[2] }}</p>
 </div>
 
-// 像 JavaScript 表达式一样, AngularJS 表达式能包含文本, 运算符和变量。
-// 和 JavaScript 表达式不同, AngularJS 表达式能写在 HTML 内。
+// 和 JavaScript 表达式一样， AngularJS 表达式能包含文本，运算符和变量。
+// 和 JavaScript 表达式不同， AngularJS 表达式能写在 HTML 内。
 // AngularJS 表达式不支持条件，循环和异常，而 JavaScript 表达式却支持。
-// AngularJS 表达式支持过滤器, 而 JavaScript 表达式不支持。
+// AngularJS 表达式支持过滤器，而 JavaScript 表达式不支持。
 
 ///////////////////////////////////
 // AngularJS 指令
 
 
-//AngularJS directives are extended HTML attributes with the prefix ng-.
-//The ng-app directive initializes an AngularJS application.
-//The ng-init directive initializes application data.
-//The ng-model directive binds the value of HTML controls (input, select, textarea) to application data.
+//AngularJS 指令使用前缀 ng- 扩展 HTML 属性。
+//ng-app 指令初始化一个 AngularJS 应用。
+//ng-init 指令初始化应用的数据。
+//ng-model 指令将 HTML 控件 (input, select, textarea) 的值绑定到应用的数据上。
 <div ng-app="" ng-init="firstName='John'">
   <p>Name: <input type="text" ng-model="firstName"></p>
   <p>You wrote: {{ firstName }}</p>
 </div>
 
-//Using ng-init is not very common. You will learn how to initialize data in the chapter about controllers.
+//使用 ng-init 并不常见。你将在有关控制器的章节中学习如何初始化数据。
 
-//The ng-repeat directive repeats an HTML element:
+//ng-repeat 指令会重复一个 HTML 元素：
 <div ng-app="" ng-init="names=['Jani','Hege','Kai']">
   <ul>
     <li ng-repeat="x in names">
@@ -148,7 +148,7 @@ AngularJS 通过指令扩展了 HTML 属性，并且通过表达式将数据绑�
   </ul>
 </div>
 
-//The ng-repeat directive used on an array of objects:
+//ng-repeat 指令用在一个对象数组上：
 <div ng-app="" ng-init="names=[
 {name:'Jani',country:'Norway'},
 {name:'Hege',country:'Sweden'},
@@ -160,35 +160,35 @@ AngularJS 通过指令扩展了 HTML 属性，并且通过表达式将数据绑�
   </ul>
 </div>
 
-// AngularJS is perfect for database CRUD (Create Read Update Delete) applications.
-// Just imagine if these objects were records from a database.
+// AngularJS 最适合用于数据库 CRUD (Create Read Update Delete) 的应用。
+// 只需设想这些对象都是来自一个数据库的记录。
 
-// The ng-app directive defines the root element of an AngularJS application.
-// The ng-app directive will auto-bootstrap (automatically initialize) the application when a web page is loaded.
-// Later you will learn how ng-app can have a value (like ng-app="myModule"), to connect code modules.
+// ng-app 指令定义一个 AngularJS 应用的根元素。
+// ng-app 指令将在页面加载后自动启动（自动初始化）应用。
+// 稍后你将学习如何为 ng-app 设置一个值（如 ng-app="myModule"）， 来连接代码模块。
 
-// The ng-init directive defines initial values for an AngularJS application.
-// Normally, you will not use ng-init. You will use a controller or module instead.
-// You will learn more about controllers and modules later.
+// ng-init 指令为一个 AngularJS 应用定义初始值。
+// 通常，你不太使用 ng-init。你会转而使用一个控制器或模块。
+// 你将在稍后学到更多有关控制器和模块的内容。
 
-//The ng-model directive binds the value of HTML controls (input, select, textarea) to application data.
-//The ng-model directive can also:
-//Provide type validation for application data (number, email, required).
-//Provide status for application data (invalid, dirty, touched, error).
-//Provide CSS classes for HTML elements.
-//Bind HTML elements to HTML forms.
+//ng-model 指令将 HTML 控件 (input, select, textarea) 的值绑定到应用的数据上。
+//ng-model 指令还能：
+//为应用的数据提供类型验证 (number, email, required)。
+//为应用的数据提供状态信息 (invalid, dirty, touched, error)。
+//为 HTML 元素提供 CSS 类。
+//将 HTML 元素绑定到 HTML 表单。
 
-//The ng-repeat directive clones HTML elements once for each item in a collection (in an array).
+//ng-repeat 指令为集合（一个数组）中的每个元素克隆出 HTML 元素。
 
 ///////////////////////////////////
-// AngularJS Controllers
+// AngularJS 控制器
 
-// AngularJS controllers control the data of AngularJS applications.
-// AngularJS controllers are regular JavaScript Objects.
+// AngularJS 控制器控制 AngularJS 应用中的数据。
+// AngularJS 控制器就是常规的 JavaScript 对象。
 
-// AngularJS applications are controlled by controllers.
-// The ng-controller directive defines the application controller.
-// A controller is a JavaScript Object, created by a standard JavaScript object constructor.
+// AngularJS 应用由控制器控制。
+// ng-controller 指令定义应用的控制器。
+// 一个控制器就是一个 JavaScript 对象， 通过标准的 JavaScript 对象构建器创建。
 
 <div ng-app="myApp" ng-controller="myCtrl">
 
@@ -207,18 +207,18 @@ app.controller('myCtrl', function($scope) {
 });
 </script>
 
-//Application explained:
+//应用的解析：
 
-//The AngularJS application is defined by  ng-app="myApp". The application runs inside the <div>.
-//The ng-controller="myCtrl" attribute is an AngularJS directive. It defines a controller.
-//The myCtrl function is a JavaScript function.
-//AngularJS will invoke the controller with a $scope object.
-//In AngularJS, $scope is the application object (the owner of application variables and functions).
-//The controller creates two properties (variables) in the scope (firstName and lastName).
-//The ng-model directives bind the input fields to the controller properties (firstName and lastName).
+//AngularJS 应用通过 ng-app="myApp" 定义。该应用运行在 <div> 内。
+//ng-controller="myCtrl" 属性是一个 AngularJS 指令。它定义了一个控制器。
+//myCtrl 函数是一个 JavaScript 函数。
+//AngularJS 将使用一个 $scope 对象来调用控制器。
+//AngularJS 中， $scope 就是该应用对象（应用的变量和函数的所有者）。
+//该控制器在 $scope 内创建了两个属性（即变量 firstName 和 lastName）。
+//ng-model 指令将输入表单项绑定到控制器的属性上（firstName 和 lastName）。
 
-//The example above demonstrated a controller object with two properties: lastName and firstName.
-//A controller can also have methods (variables as functions):
+//以上的例子演示了一个包含有两个属性 lastName 和 firstName 的控制器。
+//一个控制器也可以有方法（函数的变量）：
 <div ng-app="myApp" ng-controller="personCtrl">
 
 First Name: <input type="text" ng-model="firstName"><br>
@@ -239,8 +239,8 @@ app.controller('personCtrl', function($scope) {
 });
 </script>
 
-//In larger applications, it is common to store controllers in external files.
-//Just copy the code between the <script> </script> tags into an external file named personController.js:
+//在较大型的应用中， 通常是将控制器代码保存在外部文件中。
+//只需将 <script> </script> 标签之间的代码复制到一个名为 personController.js 的外部文件中：
 
 <div ng-app="myApp" ng-controller="personCtrl">
 
@@ -253,7 +253,7 @@ Full Name: {{firstName + " " + lastName}}
 
 <script src="personController.js"></script>
 
-// For the next example we will create a new controller file:
+// 为方便下个例子使用，我们将创建一个新的控制器文件：
 angular.module('myApp', []).controller('namesCtrl', function($scope) {
     $scope.names = [
         {name:'Jani',country:'Norway'},
@@ -262,8 +262,8 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
     ];
 });
 
-//Save the file as  namesController.js:
-//And then use the controller file in an application:
+//将文件保存为 namesController.js：
+//然后在一个应用中使用该控制器：
 
 <div ng-app="myApp" ng-controller="namesCtrl">
 
@@ -278,34 +278,34 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 <script src="namesController.js"></script>
 
 ///////////////////////////////////
-// AngularJS Filers
+// AngularJS 过滤器
 
-// Filters can be added to expressions and directives using a pipe character.
-// AngularJS filters can be used to transform data:
+// 过滤器可以通过一个管道符添加到表达式和指令上。
+// AngularJS 过滤器能用来转换数据：
 
-- **currency**:  Format a number to a currency format.
-- **filter**:  Select a subset of items from an array.
-- **lowercase**: Format a string to lower case.
-- **orderBy**: Orders an array by an expression.
-- **uppercase**: Format a string to upper case.
+- **currency**:  将一个数字格式化成货币格式。
+- **filter**:  从一个数组中选择一组子集元素。
+- **lowercase**: 将一个字符串格式化成小写形式。
+- **orderBy**: 依据一个表达式排序一个数组。
+- **upper**: 将一个字符串格式化成大写形式。
 
-//A filter can be added to an expression with a pipe character (|) and a filter.
-//(For the next two examples we will use the person controller from the previous chapter)
-//The uppercase filter format strings to upper case:
+//一个过滤器可以通过一个管道符 (|) 及一个过滤器表达式添加到一个表达式上。
+//（在下面的两个例子中，我们将使用前一章中的 person 控制器）
+//uppercase 过滤器将字符串格式化成大写格式：
 <div ng-app="myApp" ng-controller="personCtrl">
 
 <p>The name is {{ lastName | uppercase }}</p>
 
 </div>
 
-//The lowercase filter format strings to lower case:
+//lowercase 过滤器将字符串格式化成小写格式：
 <div ng-app="myApp" ng-controller="personCtrl">
 
 <p>The name is {{ lastName | lowercase }}</p>
 
 </div>
 
-//The currency filter formats a number as currency:
+//currency 过滤器将一个数字格式化成货币格式：
 <div ng-app="myApp" ng-controller="costCtrl">
 
 <input type="number" ng-model="quantity">
@@ -315,8 +315,8 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 
 </div> 
 
-//A filter can be added to a directive with a pipe character (|) and a filter.
-//The orderBy filter orders an array by an expression:
+//一个过滤器可以通过一个管道符 (|) 及一个过滤器表达式添加到一个指令上。
+//orderBy 过滤器根据一个表达式排序一个数组：
 <div ng-app="myApp" ng-controller="namesCtrl">
 
 <ul>
@@ -327,9 +327,9 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 
 <div>
 
-//An input filter can be added to a directive with a pipe character (|) 
-//and filter followed by a colon and a model name.
-//The filter filter selects a subset of an array:
+//一个输入框过滤器可以通过一个管道符 (|) 
+//以及后跟一个冒号和模式名的 filter 添加到一个指令上。
+//该过滤器从一个数组中选择一个子集：
 
 <div ng-app="myApp" ng-controller="namesCtrl">
 
@@ -346,14 +346,14 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 ///////////////////////////////////
 // AngularJS AJAX - $http
 
-//$http is an AngularJS service for reading data from remote servers.
+//$http 是一个从远程服务器读取数据的 AngularJS 服务。
 
-// The following data can be provided by a web server:
+// 以下数据可由一个 web 服务器提供：
 // http://www.w3schools.com/angular/customers.php
-// **Check the URL to see the data format**
+// **访问 URL 来查看数据格式**
 
-// AngularJS $http is a core service for reading data from web servers.
-// $http.get(url) is the function to use for reading server data.
+// AngularJS $http 是一个从 web 服务器上读取数据的核心服务。
+// $http.get(url) 这个函数用来读取服务器数据。
 <div ng-app="myApp" ng-controller="customersCtrl"> 
 
 <ul>
@@ -372,29 +372,29 @@ app.controller('customersCtrl', function($scope, $http) {
 });
 </script>
 
-Application explained:
+// 应用解析：
 
-// The AngularJS application is defined by ng-app. The application runs inside a <div>.
-// The ng-controller directive names the controller object.
-// The customersCtrl function is a standard JavaScript object constructor.
-// AngularJS will invoke customersCtrl with a $scope and $http object.
-// $scope is the application object (the owner of application variables and functions).
-// $http is an XMLHttpRequest object for requesting external data.
-// $http.get() reads JSON data from http://www.w3schools.com/angular/customers.php.
-// If success, the controller creates a property (names) in the scope, with JSON data from the server.
+// AngularJS 应用由 ng-app 定义。该应用运行在一个 <div> 中。
+// ng-controller 指令命名控制器对象。
+// customersCtrl 函数是一个标准的 JavaScript 对象构造器。
+// AngularJS 会使用一个 $scope 和 $http 对象来调用 customersCtrl。
+// $scope 就是该应用对象（应用的变量和函数的所有者）。
+// $http 是一个用于请求外部数据的 XMLHttpRequest 对象。
+// $http.get() 从 http://www.w3schools.com/angular/customers.php 读取 JSON 数据。
+// 如果成功， 该控制器会根据来自服务器的 JSON 数据，在 $scope 中创建一个属性 (names)。
 
 
-// Requests for data from a different server (than the requesting page), are called cross-site HTTP requests.
-// Cross-site requests are common on the web. Many pages load CSS, images, and scripts from different servers.
-// In modern browsers, cross-site HTTP requests from scripts are restricted to same site for security reasons.
-// The following line, in our PHP examples, has been added to allow cross-site access.
+// 向不同的服务器（不同于请求页）请求数据，称作跨站 HTTP 请求。
+// 跨站请求在网站上很普遍。许多网页会从不同的服务器加载 CSS，图片和脚本。
+// 在现代浏览器中，基于安全原因，从脚本内进行跨站 HTTP 请求是被禁止的。
+// 下面的这行代码，已被加入到我们的 PHP 例子中，以便允许跨站访问。
 header("Access-Control-Allow-Origin: *");
 
 
 ///////////////////////////////////
-// AngularJS Tables
+// AngularJS 表格
 
-// Displaying tables with angular is very simple:
+// 使用 angular 显示表格非常简单：
 <div ng-app="myApp" ng-controller="customersCtrl"> 
 
 <table>
@@ -414,7 +414,7 @@ app.controller('customersCtrl', function($scope, $http) {
 });
 </script>
 
-// To sort the table, add an orderBy filter: 
+// 要排序表格，添加一个 orderBy 过滤器：
 <table>
   <tr ng-repeat="x in names | orderBy : 'Country'">
     <td>{{ x.Name }}</td>
@@ -422,7 +422,7 @@ app.controller('customersCtrl', function($scope, $http) {
   </tr>
 </table>
 
-// To display the table index, add a <td> with $index: 
+// 要显示表格索引值，添加一个带有 $index 的 <td>：
 <table>
   <tr ng-repeat="x in names">
     <td>{{ $index + 1 }}</td>
@@ -431,7 +431,7 @@ app.controller('customersCtrl', function($scope, $http) {
   </tr>
 </table>
 
-// Using $even and $odd
+// 使用 $even 和 $odd
 <table>
   <tr ng-repeat="x in names">
     <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Name }}</td>
@@ -444,9 +444,9 @@ app.controller('customersCtrl', function($scope, $http) {
 ///////////////////////////////////
 // AngularJS HTML DOM
 
-//AngularJS has directives for binding application data to the attributes of HTML DOM elements.
+//AngularJS 有用于将应用的数据绑定到 HTML DOM 元素属性的指令。
 
-// The ng-disabled directive binds AngularJS application data to the disabled attribute of HTML elements.
+// ng-disabled 指令将 AngularJS 应用的数据绑定到 HTML 元素的 disabled 属性上。
 
 <div ng-app="" ng-init="mySwitch=true">
 
@@ -460,21 +460,21 @@ app.controller('customersCtrl', function($scope, $http) {
 
 </div>
 
-//Application explained:
+//应用解析：
 
-// The ng-disabled directive binds the application data mySwitch to the HTML button's disabled attribute.
-// The ng-model directive binds the value of the HTML checkbox element to the value of mySwitch.
-// If the value of mySwitch evaluates to true, the button will be disabled: 
+// ng-disabled 指令将应用的 mySwitch 数据绑定到 HTML 按钮的 disabled 属性上。
+// ng-model 指令将 HTML checkbox 元素的值绑定到 mySwitch 的值上。
+// 如果 mySwitch 的值求值为 true，则该按钮将被禁用：
 <p>
 <button disabled>Click Me!</button>
 </p>
 
-// If the value of mySwitch evaluates to false, the button will not be disabled: 
+// 如果 mySwitch 的值求值为 false，则该按钮将不会被禁用：
 <p>
   <button>Click Me!</button>
 </p>
 
-// The ng-show directive shows or hides an HTML element.
+// ng-show 指令显示或隐藏一个 HTML 元素。
 
 <div ng-app="">
 
@@ -484,18 +484,18 @@ app.controller('customersCtrl', function($scope, $http) {
 
 </div>
 
-// The ng-show directive shows (or hides) an HTML element based on the value of ng-show.
-// You can use any expression that evaluates to true or false:
+// ng-show 指令基于 ng-show 的值显示（或隐藏）一个 HTML 元素。
+// 你可以使用任何能求值成 true 或 false 的表达式：
 <div ng-app="">
 <p ng-show="hour > 12">I am visible.</p>
 </div>
 
 ///////////////////////////////////
-// AngularJS Events
+// AngularJS 事件
 
-// AngularJS has its own HTML events directives.
+// AngularJS 有它自己的 HTML 事件指令。
 
-// The ng-click directive defines an AngularJS click event.
+// ng-click 指令定义一个 AngularJS 点击事件。
 <div ng-app="myApp" ng-controller="myCtrl">
 
 <button ng-click="count = count + 1">Click me!</button>
@@ -510,9 +510,9 @@ app.controller('myCtrl', function($scope) {
 });
 </script>
 
-// The ng-hide directive can be used to set the visibility of a part of an application.
-// The value ng-hide="true" makes an HTML element invisible.
-// The value ng-hide="false" makes the element visible.
+// ng-hide 指令可用于设置一个应用的部分区域的可见性。
+// 值 ng-hide="true" 使得一个 HTML 元素不可见。
+// 值 ng-hide="false" 使得一个 HTML 元素可见。
 <div ng-app="myApp" ng-controller="personCtrl">
 
 <button ng-click="toggle()">Toggle</button>
@@ -538,20 +538,20 @@ app.controller('personCtrl', function($scope) {
 });
 </script>
 
-//Application explained:
+//应用解析：
 
-// The first part of the personController is the same as in the chapter about controllers.
-// The application has a default property (a variable): $scope.myVar = false;
-// The ng-hide directive sets the visibility, of a <p> element with two input fields, 
-// according to the value (true or false) of myVar.
-// The function toggle() toggles myVar between true and false.
-// The value ng-hide="true" makes the element invisible.
+// personController 的第一部分和讲述控制器章节中的一样。
+// 该应用有一个默认属性（一个变量）：$scope.myVar = false：
+// ng-hide 指令依据 myVar 的值（true 或 false），
+// 设置 <p> 元素的可见性，该元素含有两个输入框。
+// 函数 toggle() 将 myVar 在 true 和 false 间进行切换。
+// 值 ng-hide="true" 使得该元素不可见。
 
 
-// The ng-show directive can also be used to set the visibility of a part of an application.
-// The value ng-show="false" makes an HTML element invisible.
-// The value ng-show="true" makes the element visible.
-// Here is the same example as above, using ng-show instead of ng-hide:
+// ng-show 指令也能用来设置一个应用的某部分的可见性。
+// 值 ng-show="false" 使得一个 HTML 元素不可见。
+// 值 ng-show="true" 使得一个 HTML 元素可见。
+// 这个例子与上面的一样，但用 ng-show 替代了 ng-hide：
 <div ng-app="myApp" ng-controller="personCtrl">
 
 <button ng-click="toggle()">Toggle</button>
@@ -578,14 +578,14 @@ app.controller('personCtrl', function($scope) {
 </script>
 
 ///////////////////////////////////
-// AngularJS Modules
+// AngularJS 模块
 
-// An AngularJS module defines an application.
-// The module is a container for the different parts of an application.
-// The module is a container for the application controllers.
-// Controllers always belong to a module.
+// 一个 AngularJS 模块定义一个应用。
+// 模块是一个应用的不同部分所在的一个容器。
+// 模块是应用控制器的一个容器。
+// 控制器总是隶属于一个模块。
 
-// This application ("myApp") has one controller ("myCtrl"):
+// 这个应用 ("myApp") 有一个控制器 ("myCtrl")：
 
 <!DOCTYPE html>
 <html>
@@ -607,8 +607,8 @@ app.controller("myCtrl", function($scope) {
 </body>
 </html>
 
-// It is common in AngularJS applications to put the module and the controllers in JavaScript files.
-// In this example, "myApp.js" contains an application module definition, while "myCtrl.js" contains the controller:
+// 在 AngularJS 应用中通常将模块和控制器放置在 JavaScript 文件中。
+// 在本例中，"myApp.js" 包含了一个应用模块的定义，而 "myCtrl.js" 包含了控制器：
 
 <!DOCTYPE html>
 <html>
@@ -628,7 +628,7 @@ app.controller("myCtrl", function($scope) {
 //myApp.js
 var app = angular.module("myApp", []); 
 
-// The [] parameter in the module definition can be used to define dependent modules.
+// 模块定义中的 [] 参数可用来定义依赖的模块。
 
 // myCtrl.js
 app.controller("myCtrl", function($scope) {
@@ -636,16 +636,16 @@ app.controller("myCtrl", function($scope) {
     $scope.lastName= "Doe";
 });
 
-// Global functions should be avoided in JavaScript. They can easily be overwritten 
-// or destroyed by other scripts.
+// JavaScript 中应该避免使用全局函数。它们会非常容易地被覆盖
+// 或被其它脚本破坏。
 
-// AngularJS modules reduces this problem, by keeping all functions local to the module.
+// AngularJS 脚本通过将所有函数保存在模块内，缓解了这种问题。
 
-// While it is common in HTML applications to place scripts at the end of the 
-// <body> element, it is recommended that you load the AngularJS library either
-// in the <head> or at the start of the <body>.
+// 虽然 HTML 应用中通常是将脚本放置在
+// <body> 元素的末尾，但还是推荐你要么在
+// <head> 中要么在 <body> 的开头处加载 AngularJS 库。
 
-// This is because calls to angular.module can only be compiled after the library has been loaded.
+// 这是因为对 angular.module 的调用只有在库被加载后才能被编译。
 
 <!DOCTYPE html>
 <html>
@@ -669,11 +669,11 @@ app.controller("myCtrl", function($scope) {
 
 
 ///////////////////////////////////
-// AngularJS Applications
+// AngularJS 应用
 
-// AngularJS modules define AngularJS applications.
-// AngularJS controllers control AngularJS applications.
-// The ng-app directive defines the application, the ng-controller directive defines the controller.
+// AngularJS 模块定义 AngularJS 应用。
+// AngularJS 控制器控制 AngularJS 应用。
+// ng-app 指令定义该应用，ng-controller 定义该控制器。
 <div ng-app="myApp" ng-controller="myCtrl">
   First Name: <input type="text" ng-model="firstName"><br>
   Last Name: <input type="text" ng-model="lastName"><br>
@@ -688,29 +688,29 @@ app.controller("myCtrl", function($scope) {
   });
 </script>
 
-// AngularJS modules define applications:
+// AngularJS 模块定义应用：
 var app = angular.module('myApp', []);
 
-// AngularJS controllers control applications:
+// AngularJS 控制器控制应用：
 app.controller('myCtrl', function($scope) {
     $scope.firstName= "John";
     $scope.lastName= "Doe";
 });
 ```
 
-## Source & References
+## 来源 & 参考
 
-**Examples**
+**例子**
 
 - http://www.w3schools.com/angular/angular_examples.asp
 
-**References**
+**参考**
 
 - http://www.w3schools.com/angular/angular_ref_directives.asp
 - http://www.w3schools.com/angular/default.asp
 - https://teamtreehouse.com/library/angular-basics/
 
-Feedback is welcome! You can find me in:
-[@WalterC_87](https://twitter.com/WalterC_87), or
-[me@waltercordero.com](mailto:me@waltercordero.com).
+欢迎反馈！你可以在这里找到我：
+[@WalterC_87](https://twitter.com/WalterC_87)， 或
+[me@waltercordero.com](mailto:me@waltercordero.com)。
 
