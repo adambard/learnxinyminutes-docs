@@ -708,9 +708,3 @@ app.controller('myCtrl', function($scope) {
 
 - http://www.w3schools.com/angular/angular_ref_directives.asp
 - http://www.w3schools.com/angular/default.asp
-- https://teamtreehouse.com/library/angular-basics/
-
-欢迎反馈！你可以在这里找到我：
-[@WalterC_87](https://twitter.com/WalterC_87)， 或
-[me@waltercordero.com](mailto:me@waltercordero.com)。
-
