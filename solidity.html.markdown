@@ -45,7 +45,7 @@ features are typically marked, and subject to change. Pull requests welcome.
 
 /* 'contract' has similarities to 'class' in other languages (class variables,
 inheritance, etc.) */
-contract SimpleBank { // CamelCase
+contract SimpleBank { // CapWords
     // Declare state variables outside function, persist through life of contract
 
     // dictionary that maps addresses to balances
