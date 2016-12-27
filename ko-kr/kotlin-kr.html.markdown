@@ -371,6 +371,6 @@ fun useObject() {
 
 ### 더 알아보기
 
-* [Kotlin tutorials](https://kotlinlang.org/docs/tutorials/)
-* [Try Kotlin in your browser](http://try.kotlinlang.org/)
-* [A list of Kotlin resources](http://kotlin.link/)
+* [Kotlin tutorials (EN)](https://kotlinlang.org/docs/tutorials/)
+* [Try Kotlin in your browser (EN)](http://try.kotlinlang.org/)
+* [A list of Kotlin resources (EN)](http://kotlin.link/)
