@@ -51,18 +51,18 @@ not False -- True
 ["the", "quick", "brown", "fox"]
 [1, 2, 3, 4, 5]
 -- The second example can also be written with two dots.
-[1..5]
+List.range 1 5
 
 -- Append lists just like strings.
-[1..5] ++ [6..10] == [1..10] -- True
+List.range 1 5 ++ List.range 6 10 == List.range 1 10 -- True
 
 -- To add one item, use "cons".
-0 :: [1..5] -- [0, 1, 2, 3, 4, 5]
+0 :: List.range 1 5 -- [0, 1, 2, 3, 4, 5]
 
 -- The head and tail of a list are returned as a Maybe. Instead of checking
 -- every value to see if it's null, you deal with missing values explicitly.
-List.head [1..5] -- Just 1
-List.tail [1..5] -- Just [2, 3, 4, 5]
+List.head (List.range 1 5) -- Just 1
+List.tail (List.range 1 5) -- Just [2, 3, 4, 5]
 List.head [] -- Nothing
 -- List.functionName means the function lives in the List module.
 
@@ -150,10 +150,10 @@ answer =
   42
 
 -- Pass functions as arguments to other functions.
-List.map double [1..4] -- [2, 4, 6, 8]
+List.map double (List.range 1 4) -- [2, 4, 6, 8]
 
 -- Or write an anonymous function.
-List.map (\a -> a * 2) [1..4] -- [2, 4, 6, 8]
+List.map (\a -> a * 2) (List.range 1 4) -- [2, 4, 6, 8]
 
 -- You can pattern match in function definitions when there's only one case.
 -- This function takes one tuple rather than two arguments.
@@ -180,7 +180,7 @@ fib n =
   else
     fib (n - 1) + fib (n - 2)
 
-List.map fib [0..8] -- [1, 1, 2, 3, 5, 8, 13, 21, 34]
+List.map fib (List.range 0 8) -- [1, 1, 2, 3, 5, 8, 13, 21, 34]
 
 -- Another recursive function (use List.length in real code).
 listLength aList =
@@ -335,10 +335,10 @@ $ elm repl
 
 -- Packages are identified by GitHub username and repo name.
 -- Install a new package, and record it in elm-package.json.
-$ elm package install evancz/elm-html
+$ elm package install elm-lang/html
 
 -- See what changed between versions of a package.
-$ elm package diff evancz/elm-html 3.0.0 4.0.2
+$ elm package diff elm-lang/html 1.1.0 2.0.0
 -- Elm's package manager enforces semantic versioning, so minor version bumps
 -- will never break your build!
 ```
