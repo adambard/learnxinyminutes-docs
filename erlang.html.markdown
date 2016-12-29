@@ -185,7 +185,7 @@ is_pet(A)                                             -> false.
 % guard sequence in `is_pet`'s definition. For a description of the
 % expressions allowed in guard sequences, refer to the specific section
 % in the Erlang reference manual:
-% http://erlang.org/doc/reference_manual/expressions.html#id84508
+% http://erlang.org/doc/reference_manual/expressions.html#guards
 
 
 % Records provide a method for associating a name with a particular element in a
