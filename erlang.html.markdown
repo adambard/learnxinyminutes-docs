@@ -183,9 +183,10 @@ is_pet(A)                                             -> false.
 % Warning: not all valid Erlang expressions can be used as guard expressions;
 % in particular, our `is_cat` and `is_dog` functions cannot be used within the
 % guard sequence in `is_pet`'s definition. For a description of the
-% expressions allowed in guard sequences, refer to this
-% [section](http://erlang.org/doc/reference_manual/expressions.html#id81912)
-% of the Erlang reference manual.
+% expressions allowed in guard sequences, refer to the specific section
+% in the Erlang reference manual:
+% http://erlang.org/doc/reference_manual/expressions.html#id84508
+
 
 % Records provide a method for associating a name with a particular element in a
 % tuple.
