@@ -18,7 +18,7 @@ double paragraphs, and single notes.
 
 `#=>` represents the output of a command.
 
-```perl
+```perl6
 # Single line comment start with a pound
 
 #`(
@@ -813,7 +813,7 @@ die X::AdHoc.new(payload => 'Error!');
 # Undefined values include: `Nil`, `Mu` and `Failure` as well as `Int`, `Str`
 # and other types that have not been initialized to any value yet.
 # You can check if something is defined or not using the defined method:
-my $uninitialized; 
+my $uninitialized;
 say $uninitiazilzed.defined; #> False
 # When using `orelse` it will disarm the exception and alias $_ to that failure
 # This will avoid it being automatically handled and printing lots of scary
@@ -1092,7 +1092,7 @@ say (1, 10, (20, 10) ).flat; #> (1 10 20 10) Now the iterable is flat
 
 # - `lazy` - Defer actual evaluation until value is fetched (forces lazy context)
 my @lazy-array = (1..100).lazy;
-say @lazy-array.is-lazy; #> True # Check for lazyness with the `is-lazy` method. 
+say @lazy-array.is-lazy; #> True # Check for lazyness with the `is-lazy` method.
 say @lazy-array; #> [...] List has not been iterated on!
 my @lazy-array { .print }; # This works and will only do as much work as is
 # needed.
