@@ -34,7 +34,8 @@ brackets can be filled with useful information about this script or program:
 the author's name, the filename, the version, the license, a summary of what
 the program does or any other files it needs. The red/System header is just
 like the red header, only saying "red/System" and not "red".
-
+```
+```red
 Red []
 
 ;this is a commented line
