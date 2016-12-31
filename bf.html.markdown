@@ -10,7 +10,7 @@ minimal Turing-complete programming language with just 8 commands.
 
 You can try brainfuck on your browser with [brainfuck-visualizer](http://fatiherikli.github.io/brainfuck-visualizer/).
 
-```
+```bf
 Any character not "><+-.,[]" (excluding quotation marks) is ignored.
 
 Brainfuck is represented by an array with 30,000 cells initialized to zero

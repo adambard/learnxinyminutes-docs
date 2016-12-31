@@ -11,7 +11,7 @@ its JavaScript sibling. Like JavaScript, Dart aims for great browser integration
 
 Dart's most controversial feature must be its Optional Typing.
 
-```javascript
+```dart
 import "dart:collection";
 import "dart:math" as DM;
 

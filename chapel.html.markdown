@@ -10,7 +10,7 @@ In short, Chapel is an open-source, high-productivity, parallel-programming lang
 
 More information and support can be found at the bottom of this document.
 
-```c
+```chapel
 // Comments are C-family style
 // one line comment
 /*
