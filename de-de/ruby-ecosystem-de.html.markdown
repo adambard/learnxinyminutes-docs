@@ -100,7 +100,7 @@ Viele können sogar zwischen verschiedenen Modi wechseln (1.8 mode -> 1.9 mode)
 
 ## RubySpec
 
-Die meisten Ruby Implementierungen vertrauen der [RubySpec](http://rubyspec.org/).  
+Die meisten Ruby Implementierungen vertrauen der [RubySpec](http://rubyspec.org/) 
 sehr stark. Da Ruby keine offizielle Spezifikation hat, hat die  
 Community ausführbare Specs (in Ruby) geschrieben, um so die Kompatibilität  
 zur MRI testen zu können.
