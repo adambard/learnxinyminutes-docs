@@ -19,11 +19,11 @@ Le 15 mai 2015, Rust 1.0 a été libéré avec une garantie complète de compati
 Bien que Rust soit un langage relativement bas niveau, Rust a quelques concepts fonctionnels qui se trouvent généralement dans les langues de niveau supérieur. Cela rend Rust non seulement rapide, mais aussi efficace et facile à coder.
 
 ```rust
-// Ceci est un commentaire. commentaires de ligne ressemblent à ceci ...
-// Et prolonger plusieurs lignes comme celle-ci.
+// Ceci est un commentaire. Les commentaires de ligne ressemblent à ceci...
+// et continuent sur plusieurs lignes comme cela.
 
-/// Les commentaires de documentation ressemblent à ceci et à soutenir
-/// la notation de démarques.
+/// Les commentaires de documentation ressemblent à ça et supportent la
+/// syntaxe Markdown.
 /// # Exemples
 ///
 /// ```
@@ -37,7 +37,7 @@ Bien que Rust soit un langage relativement bas niveau, Rust a quelques concepts 
 // Les fonctions
 // `I32` est le type 32 bits entiers signés
 fn add2(x: i32, y: i32) -> i32 {
-    // Retour implicite (pas virgule)
+    // Retour implicite (pas de point virgule)
     x + y
 }
 
@@ -45,19 +45,19 @@ fn add2(x: i32, y: i32) -> i32 {
 fn main() {
     // Nombres //
 
-    // Reliures immutable
+    // Liaison immutable
     let x: i32 = 1;
 
-    // Entier suffixes/float
+    // Suffixes entiers et flottants
     let y: I32 = 13i32;
     let f: f64 = 1.3f64;
 
-    // Type Inférence
-    // La plupart du temps, le compilateur Rust peut déduire le type de variable
-    // est, donc vous ne devez pas écrire une annotation de type explicite.
+    // Inférence de type
+    // La plupart du temps, le compilateur Rust peut déduire quel est le type 
+    // de variable, donc vous n'avez pas à écrire une annotation de type explicite.
     // Tout au long de ce tutoriel, les types sont explicitement annotées dans
     // de nombreux endroits, mais seulement à des fins de démonstration.
-    // L'inférence de type peut gérer cela pour vous la plupart du temps.
+    // L'inférence de type peut les générer pour vous la plupart du temps.
     let implicit_x = 1;
     let implicit_f = 1,3;
 
@@ -71,22 +71,22 @@ fn main() {
 
     // Chaînes //
 
-    // Littéraux chaîne
-    let x: &str = "Bonjour tout le monde!";
+    // Chaîne littérales
+    let x: &str = "Bonjour tout le monde !";
 
-    // Impression
+    // Affichage
     println!("{} {}", f, x); // 1.3 Bonjour tout le monde
 
-    // A `Chaîne` - une chaîne de tas alloué
+    // Une `Chaîne` - une chaîne de tas alloué
     let s: String = "Bonjour tout le monde".to_string();
 
-    // Une tranche de chaîne - une vue immutable dans une else chaîne.
-    // Ceci est essentiellement un pointeur immutable à une chaîne - il n'a pas
-    // contient effectivement le contenu d'une chaîne, juste un pointeur vers
-    // quelque chose qui fait(dans ce cas, `s`).
+    // Un morceau de chaîne - une vue immutable sur une autre chaîne.
+    // C'est essentiellement un pointeur immutable sur une chaîne - ça ne
+    // contient effectivement pas le contenu d'une chaîne, juste un pointeur vers
+    // le début et la fin de la chaîne.
     let s_slice: &str = &s;
 
-    println!("{} {}", s, s_slice); // Bonjour monde Bonjour tout le monde
+    println!("{} {}", s, s_slice); // Bonjour tout le monde Bonjour tout le monde
 
     // Vecteurs/tableau //
 
@@ -97,20 +97,19 @@ fn main() {
     let mut vecteur: Vec<i32> = vec![1, 2, 3, 4];
     vecteur.push(5);
 
-    // Une tranche - une vue immutable dans un vecteur ou un tableau.
-    // Ceci est un peu comme une tranche de chaîne, mais pour les vecteurs.
+    // Une tranche - une vue immutable sur un vecteur ou un tableau.
+    // Ceci est un peu comme un morceau de chaîne, mais pour les vecteurs.
     let tranche: &[i32] = &vecteur;
 
-    // Utiliser `{:?}` pour imprimer quelque chose de débogage de style
+    // Utiliser `{:?}` pour afficher quelque chose en mode debug
     println!("{:?} {:?}", vecteur, tranche); // [1, 2, 3, 4, 5] [1, 2, 3, 4, 5]
 
     // Tuples //
 
-    // Un tuple est un ensemble de valeurs de peut-être différents types.
-    // de taille fixe
+    // Un tuple est un ensemble de valeurs qui peuvent être de différents types.
     let x:(i32, &str, f64) = (1, "bonjour", 3.4);
 
-    // Déstructurante `let`
+    // Déstructurer `let`
     let (a, b, c) = x;
     println!("{} {} {}", a, b, c); // 1 bonjour 3.4
 
