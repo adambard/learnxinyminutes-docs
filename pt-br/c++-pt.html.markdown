@@ -19,9 +19,9 @@ foi concebida para
 - suportar programação genérica
 
 Embora sua sintaxe pode ser mais difícil ou complexa do que as linguagens mais
-recentes, C++ é amplamente utilizado porque compila para instruções nativas que 
-podem ser executadas diretamente pelo processador e oferece um controlo rígido sobre hardware (como C), enquanto oferece recursos de alto nível, como os 
-genéricos, exceções e classes. Esta combinação de velocidade e funcionalidade 
+recentes, C++ é amplamente utilizado porque compila para instruções nativas que
+podem ser executadas diretamente pelo processador e oferece um controlo rígido sobre hardware (como C), enquanto oferece recursos de alto nível, como os
+genéricos, exceções e classes. Esta combinação de velocidade e funcionalidade
 faz C++ uma das linguagens de programação mais utilizadas.
 
 ```c++
@@ -33,7 +33,7 @@ faz C++ uma das linguagens de programação mais utilizadas.
 // declarações de variáveis, tipos primitivos, e funções. No entanto, C++ varia
 // em algumas das seguintes maneiras:
 
-// A função main() em C++ deve retornar um int, embora void main() é aceita 
+// A função main() em C++ deve retornar um int, embora void main() é aceita
 // pela maioria dos compiladores (gcc, bumbum, etc.)
 // Este valor serve como o status de saída do programa.
 // Veja http://en.wikipedia.org/wiki/Exit_status para mais informações.
@@ -105,7 +105,7 @@ int main()
 // Parâmetros padrão de função
 /////////////////////////////
 
-// Você pode fornecer argumentos padrões para uma função se eles não são 
+// Você pode fornecer argumentos padrões para uma função se eles não são
 // fornecidos pelo chamador.
 
 void doSomethingWithInts(int a = 1, int b = 4)
@@ -157,7 +157,7 @@ void foo()
 
 int main()
 {
-    // Assuma que tudo é do namespace "Second" a menos que especificado de 
+    // Assuma que tudo é do namespace "Second" a menos que especificado de
     // outra forma.
     using namespace Second;
 
@@ -222,7 +222,7 @@ cout << myString; // "Hello Dog"
 
 // Além de indicadores como os de C, C++ têm _referências_. Esses são tipos de
 // ponteiro que não pode ser reatribuída uma vez definidos e não pode ser nulo.
-// Eles também têm a mesma sintaxe que a própria variável: Não * é necessário 
+// Eles também têm a mesma sintaxe que a própria variável: Não * é necessário
 // para _dereferencing_ e & (endereço de) não é usado para atribuição.
 
 using namespace std;
@@ -258,7 +258,7 @@ class Dog {
     std::string name;
     int weight;
 
-// Todos os membros a seguir este são públicos até que "private:" ou 
+// Todos os membros a seguir este são públicos até que "private:" ou
 // "protected:" é encontrado.
 public:
 
@@ -274,13 +274,13 @@ public:
 
     void setWeight(int dogsWeight);
 
-    // Funções que não modificam o estado do objecto devem ser marcadas como 
+    // Funções que não modificam o estado do objecto devem ser marcadas como
     // const. Isso permite que você chamá-los se for dada uma referência const
     // para o objeto. Além disso, observe as funções devem ser explicitamente
-    // declarados como _virtual_, a fim de ser substituídas em classes 
-    // derivadas. As funções não são virtuais por padrão por razões de 
+    // declarados como _virtual_, a fim de ser substituídas em classes
+    // derivadas. As funções não são virtuais por padrão por razões de
     // performance.
-    
+
     virtual void print() const;
 
     // As funções também podem ser definidas no interior do corpo da classe.
@@ -291,7 +291,7 @@ public:
     // Estes são chamados quando um objeto é excluído ou fica fora do escopo.
     // Isto permite paradigmas poderosos, como RAII
     // (veja abaixo)
-    // Destruidores devem ser virtual para permitir que as classes de ser 
+    // Destruidores devem ser virtual para permitir que as classes de ser
     // derivada desta.
     virtual ~Dog();
 
@@ -323,7 +323,7 @@ void Dog::print() const
 
 void Dog::~Dog()
 {
-    cout << "Goodbye " << name << "\n";
+    std::cout << "Goodbye " << name << "\n";
 }
 
 int main() {
@@ -343,8 +343,8 @@ class OwnedDog : public Dog {
 
     // Substituir o comportamento da função de impressão de todas OwnedDogs.
     // Ver http://en.wikipedia.org/wiki/Polymorphism_(computer_science)#Subtyping
-    // Para uma introdução mais geral, se você não estiver familiarizado com o 
-    // polimorfismo subtipo. A palavra-chave override é opcional, mas torna-se 
+    // Para uma introdução mais geral, se você não estiver familiarizado com o
+    // polimorfismo subtipo. A palavra-chave override é opcional, mas torna-se
     // na verdade você está substituindo o método em uma classe base.
     void print() const override;
 
@@ -371,8 +371,8 @@ void OwnedDog::print() const
 // Inicialização e Sobrecarga de Operadores
 //////////////////////////////////////////
 
-// Em C ++, você pode sobrecarregar o comportamento dos operadores, tais como 
-// +, -, *, /, etc. Isto é feito através da definição de uma função que é 
+// Em C ++, você pode sobrecarregar o comportamento dos operadores, tais como
+// +, -, *, /, etc. Isto é feito através da definição de uma função que é
 // chamado sempre que o operador é usado.
 
 #include <iostream>
@@ -438,7 +438,7 @@ int main () {
 // mas qualquer tipo pode ser jogado como uma exceção
 #include <exception>
 
-// Todas as exceções lançadas dentro do bloco try pode ser capturado por 
+// Todas as exceções lançadas dentro do bloco try pode ser capturado por
 // manipuladores de captura subseqüentes
 try {
     // Não aloca exceções no heap usando _new_.
@@ -460,7 +460,7 @@ catch (const std::exception& ex)
 ///////
 
 // RAII significa alocação de recursos é de inicialização.
-// Muitas vezes, é considerado o paradigma mais poderoso em C++, e é o 
+// Muitas vezes, é considerado o paradigma mais poderoso em C++, e é o
 // conceito simples que um construtor para um objeto adquire recursos daquele
 // objeto e o destruidor liberá-los.
 
@@ -479,11 +479,11 @@ void doSomethingWithAFile(const char* filename)
 }
 
 // Infelizmente, as coisas são levemente complicadas para tratamento de erros.
-// Suponha que fopen pode falhar, e que doSomethingWithTheFile e 
-// doSomethingElseWithIt retornam códigos de erro se eles falharem. (As 
-// exceções são a forma preferida de lidar com o fracasso, mas alguns 
-// programadores, especialmente aqueles com um conhecimento em C, discordam 
-// sobre a utilidade de exceções). Agora temos que verificar cada chamada para 
+// Suponha que fopen pode falhar, e que doSomethingWithTheFile e
+// doSomethingElseWithIt retornam códigos de erro se eles falharem. (As
+// exceções são a forma preferida de lidar com o fracasso, mas alguns
+// programadores, especialmente aqueles com um conhecimento em C, discordam
+// sobre a utilidade de exceções). Agora temos que verificar cada chamada para
 // o fracasso e fechar o identificador de arquivo se ocorreu um problema.
 
 bool doSomethingWithAFile(const char* filename)
@@ -609,7 +609,7 @@ h=sum<double>(f,g);
 ```
 Leitura Adicional:
 
-Uma referência atualizada da linguagem pode ser encontrada em 
+Uma referência atualizada da linguagem pode ser encontrada em
 <http://cppreference.com/w/cpp>
 
 Uma fonte adicional pode ser encontrada em <http://cplusplus.com>
