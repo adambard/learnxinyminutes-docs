@@ -10,6 +10,7 @@ contributors:
     - ["Rachel Stiyer", "https://github.com/rstiyer"]
     - ["Michael Dähnert", "https://github.com/JaXt0r"]
     - ["Rob Rose", "https://github.com/RobRoseKnows"]
+    - ["Sean Nam", "https://github.com/seannam"]
 filename: LearnJava.java
 ---
 
@@ -51,6 +52,14 @@ public class LearnJava {
     // point.
     public static void main (String[] args) {
 
+    	///////////////////////////////////////
+		// Input/Output
+		///////////////////////////////////////
+
+		/*
+		* Ouput
+		*/
+
         // Use System.out.println() to print lines.
         System.out.println("Hello World!");
         System.out.println(
@@ -64,6 +73,32 @@ public class LearnJava {
 
         // Use System.out.printf() for easy formatted printing.
         System.out.printf("pi = %.5f", Math.PI); // => pi = 3.14159
+
+        /*
+		* Input
+		*/
+
+		// use Scanner to read input
+		// must import java.util.Scanner;
+		Scanner scanner = new Scanner(System.in);
+
+		// read string input
+		String name = scanner.next();
+
+		// read byte input
+		byte numByte = scanner.nextByte();
+
+		// read int input
+		int numInt = scanner.nextInt();
+
+		// read long input
+		float numFloat - scanner.nextFloat();
+
+		// read double input
+		double numDouble = scanner.nextDouble();
+
+		// read boolean input
+		boolean bool = scanner.nextBoolean();
 
         ///////////////////////////////////////
         // Variables
