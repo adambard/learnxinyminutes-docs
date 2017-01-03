@@ -456,7 +456,7 @@ void Dog::print() const
 
 Dog::~Dog()
 {
-    cout << "Goodbye " << name << "\n";
+    std::cout << "Goodbye " << name << "\n";
 }
 
 int main() {
