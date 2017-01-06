@@ -5,9 +5,9 @@ contributors:
 filename: restructuredtext.rst
 ---
 
-RST is file format formely created by Python community to write documentation (and so, is part of Docutils).
+RST is a file format formely created by Python community to write documentation (and so, is part of Docutils).
 
-RST files are simple text files with lightweight syntaxe (comparing to HTML).
+RST files are simple text files with lightweight syntax (comparing to HTML).
 
 
 ## Installation
@@ -20,25 +20,25 @@ To use Restructured Text, you will have to install [Python](http://www.python.or
 $ easy_install docutils
 ```
 
-If your system have `pip`, you can use it too:
+If your system has `pip`, you can use it too:
 
 ```bash
 $ pip install docutils
 ```
 
 
-## File syntaxe
+## File syntax
 
 A simple example of the file syntax:
 
 ```rst
-.. Line with two dotes are special commands. But if no command can be found, the line is considered as a comment
+.. Lines starting with two dots are special commands. But if no command can be found, the line is considered as a comment
 
 =========================================================
 Main titles are written using equals signs over and under
 =========================================================
 
-Note that theire must be as many equals signs as title characters.
+Note that there must be as many equals signs as title characters.
 
 Title are underlined with equals signs too
 ==========================================
@@ -46,12 +46,12 @@ Title are underlined with equals signs too
 Subtitles with dashes
 ---------------------
 
-And sub-subtitles with tilde
+And sub-subtitles with tildes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can  put text in *italic* or in **bold**, you can "mark" text as code with double backquote ``: ``print()``.
 
-Lists are as simple as markdown:
+Lists are as simple as in Markdown:
 
 - First item
 - Second item
@@ -72,22 +72,22 @@ France      Paris
 Japan       Tokyo
 =========== ========
 
-More complexe tabless can be done easily (merged columns and/or rows) but I suggest you to read the complete doc for this :)
+More complex tabless can be done easily (merged columns and/or rows) but I suggest you to read the complete doc for this :)
 
-Their is multiple ways to make links:
+There are multiple ways to make links:
 
-- By adding an underscore after a word : Github_ and by adding the target after the text (this have the advantage to not insert un-necessary URL inside the readed text).
-- By typing a full comprehensible URL : https://github.com/ (will be automatically converted in link)
-- By making a more "markdown" link: `Github <https://github.com/>`_ .
+- By adding an underscore after a word : Github_ and by adding the target URL after the text (this way has the advantage to not insert unnecessary URLs inside readable text).
+- By typing a full comprehensible URL : https://github.com/ (will be automatically converted to a link)
+- By making a more Markdown-like link: `Github <https://github.com/>`_ .
 
 .. _Github https://github.com/
 
 ```
 
 
-## How to use it
+## How to Use It
 
-RST comes with docutils in which you have `rst2html` for exemple:
+RST comes with docutils where you have `rst2html`, for example:
 
 ```bash
 $ rst2html myfile.rst output.html
@@ -95,13 +95,13 @@ $ rst2html myfile.rst output.html
 
 *Note : On some systems the command could be rst2html.py*
 
-But their is more complexe applications that uses RST file format:
+But there are more complex applications that use the RST format:
 
 - [Pelican](http://blog.getpelican.com/), a static site generator
 - [Sphinx](http://sphinx-doc.org/), a documentation generator
 - and many others
 
 
-## Readings
+## Reading
 
 - [Official quick reference](http://docutils.sourceforge.net/docs/user/rst/quickref.html)
