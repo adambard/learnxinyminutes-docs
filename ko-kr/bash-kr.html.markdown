@@ -17,7 +17,7 @@ contributors:
     - ["John Detter", "https://github.com/jdetter"]
 translators:
     - ["Wooseop Kim", "https://github.com/linterpreteur"]
-filename: LearnBash.sh
+filename: LearnBash-kr.sh
 lang: ko-kr
 ---
 
