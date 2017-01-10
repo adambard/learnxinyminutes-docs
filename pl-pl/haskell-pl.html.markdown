@@ -220,24 +220,26 @@ even . fib $ 7 -- false
 
 
 ----------------------------------------------------
--- 5. Type signatures
+-- 5. Sygnatury typów
 ----------------------------------------------------
 
--- Haskell has a very strong type system, and every valid expression has a type. 
+-- Haskell posiada wyjątkowo silny system typów, w którym każde poprawne 
+-- wyrażenie ma swój typ.
 
--- Some basic types:
+-- Kilka podstawowych typów:
 5 :: Integer
 "hello" :: String
 True :: Bool
 
--- Functions have types too.
--- `not` takes a boolean and returns a boolean:
+-- Funkcje też są określonego typu.
+-- `not` przyjmuje wartość logiczną i taką też zwraca:
 -- not :: Bool -> Bool
 
--- Here's a function that takes two arguments:
+-- Przykład funkcji przyjmującej dwa argumenty
 -- add :: Integer -> Integer -> Integer
 
--- When you define a value, it's good practice to write its type above it:
+-- Dobrą praktyką podczas definiowania wartości jest napisanie nad nią
+-- także jej typu:
 double :: Integer -> Integer
 double x = x * 2
 
