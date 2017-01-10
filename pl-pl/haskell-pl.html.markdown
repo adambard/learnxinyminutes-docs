@@ -17,53 +17,52 @@ zamykać w bloki klamrami.
 -}
 
 ----------------------------------------------------
--- 1. Primitive Datatypes and Operators
+-- 1. Podstawowe typy danych oraz operatory
 ----------------------------------------------------
 
--- You have numbers
+-- Mamy liczby
 3 -- 3
 
--- Math is what you would expect
+-- Podstawowe działania działają tak, jak powinny
 1 + 1 -- 2
 8 - 1 -- 7
 10 * 2 -- 20
 35 / 5 -- 7.0
 
--- Division is not integer division by default
+-- dzielenie domyślnie zwraca ,,dokładny'' wynik
 35 / 4 -- 8.75
 
--- integer division
+-- dzielenie całkowitoliczbowe
 35 `div` 4 -- 8
 
--- Boolean values are primitives
+-- wartości logiczne także są podstawowym typem danych:
 True
 False
 
--- Boolean operations
+-- operacje logiczne: negacja oraz porównania
 not True -- False
 not False -- True
 1 == 1 -- True
 1 /= 1 -- False
 1 < 10 -- True
 
--- In the above examples, `not` is a function that takes one value.
--- Haskell doesn't need parentheses for function calls...all the arguments
--- are just listed after the function. So the general pattern is:
--- func arg1 arg2 arg3...
--- See the section on functions for information on how to write your own.
+-- W powyższych przykładach, `not` jest funkcją przyjmującą jeden argument.
+-- Haskell nie potrzebuje nawiasów, by wywołać funkcję: argumenty są po prostu
+-- wypisywane jeden za drugim. Ogólnie wygląda to tak:
+-- funkcja arg1 arg2 arg3...
+-- Sekcja poświęcona funkcjom zawiera informacje, jak stworzyć własne.
 
--- Strings and characters
-"This is a string."
-'a' -- character
-'You cant use single quotes for strings.' -- error!
+-- Łańcuchy znaków (stringi) i pojedyncze znaki:
+"To jest lancuch."
+'a' -- znak
+'Nie mozna laczyc apostrofow z lancuchami.' -- błąd!
 
--- Strings can be concatenated
+-- Łańcuchy można sklejać
 "Hello " ++ "world!" -- "Hello world!"
 
--- A string is a list of characters
+-- Łańcuch jest listą własnych znaków
 ['H', 'e', 'l', 'l', 'o'] -- "Hello"
-"This is a string" !! 0 -- 'T'
-
+"To jest lancuch" !! 0 -- 'T'
 
 ----------------------------------------------------
 -- Listy oraz krotki
