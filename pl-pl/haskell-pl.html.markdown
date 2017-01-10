@@ -66,45 +66,46 @@ not False -- True
 
 
 ----------------------------------------------------
--- Lists and Tuples
+-- Listy oraz krotki
 ----------------------------------------------------
 
--- Every element in a list must have the same type.
--- These two lists are the same:
+-- Wszystkie elementy listy muszą być tego samego typu.
+-- Poniższe dwie listy są identyczne:
 [1, 2, 3, 4, 5]
 [1..5]
 
--- Ranges are versatile.
+-- Zakresy są uniwersalne.
 ['A'..'F'] -- "ABCDEF"
 
--- You can create a step in a range.
+-- Przy tworzeniu zakresów można określić krok.
 [0,2..10] -- [0, 2, 4, 6, 8, 10]
-[5..1] -- This doesn't work because Haskell defaults to incrementing.
+[5..1] -- To nie zadziała, gdyż w Haskellu zakresy tworzone są domyślnie rosnąco
 [5,4..1] -- [5, 4, 3, 2, 1]
 
--- indexing into a list
+-- indeksowanie listy od zera
 [1..10] !! 3 -- 4
 
--- You can also have infinite lists in Haskell!
-[1..] -- a list of all the natural numbers
+-- Można nawet tworzyć listy nieskończone!
+[1..] -- lista wszystkich liczb naturalnych
 
--- Infinite lists work because Haskell has "lazy evaluation". This means
--- that Haskell only evaluates things when it needs to. So you can ask for
--- the 1000th element of your list and Haskell will give it to you:
+-- Nieskończone listy mają prawo działać, ponieważ Haskell cechuje się leniwym 
+-- wartościowaniem. To oznacza, że obliczane są jedynie te elementy listy, 
+-- których istotnie potrzebujemy. Możemy poprosić o tysiączny element i 
+-- dostaniemy go:
 
 [1..] !! 999 -- 1000
 
--- And now Haskell has evaluated elements 1 - 1000 of this list...but the
--- rest of the elements of this "infinite" list don't exist yet! Haskell won't
--- actually evaluate them until it needs to.
+-- Haskell wyznaczył pierwsze tysiąc elementów listy, ale cała jej reszta 
+-- jeszcze nie istnieje! Nie zostanie obliczona ich wartość, póki nie zajdzie
+-- taka potrzeba.
 
--- joining two lists
+-- łączenie dwóch list
 [1..5] ++ [6..10]
 
--- adding to the head of a list
+-- dodawanie pojedynczego elementu na początek listy
 0:[1..5] -- [0, 1, 2, 3, 4, 5]
 
--- more list operations
+-- więcej operacji na listach
 head [1..5] -- 1
 tail [1..5] -- [2, 3, 4, 5]
 init [1..5] -- [1, 2, 3, 4]
@@ -113,15 +114,14 @@ last [1..5] -- 5
 -- list comprehensions
 [x*2 | x <- [1..5]] -- [2, 4, 6, 8, 10]
 
--- with a conditional
+-- z dodatkowym warunkiem
 [x*2 | x <- [1..5], x*2 > 4] -- [6, 8, 10]
 
--- Every element in a tuple can be a different type, but a tuple has a
--- fixed length.
--- A tuple:
+-- każdy element krotki może być innego typu, jednak sama krotka musi być stałej 
+-- długości. Przykładowo:
 ("haskell", 1)
 
--- accessing elements of a pair (i.e. a tuple of length 2)
+-- dostęp do elementów pary (krotki długości 2):
 fst ("haskell", 1) -- "haskell"
 snd ("haskell", 1) -- 1
 
