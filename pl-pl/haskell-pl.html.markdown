@@ -244,48 +244,49 @@ double :: Integer -> Integer
 double x = x * 2
 
 ----------------------------------------------------
--- 6. Control Flow and If Expressions
+-- 6. Wyrażenia warunkowe
 ----------------------------------------------------
 
--- if expressions
-haskell = if 1 == 1 then "awesome" else "awful" -- haskell = "awesome"
+-- wyrażenie warunkowe
+haskell = if 1 == 1 then "wspaniale" else "paskudnie" -- haskell = "wspaniale"
 
--- if expressions can be on multiple lines too, indentation is important
+-- wyrażenie warunkowe można rozbić na wiele linii, 
+-- ale trzeba uważać na wcięcia w kodzie
 haskell = if 1 == 1
-            then "awesome"
-            else "awful"
+            then "wspaniale"
+            else "paskudnie"
 
--- case expressions: Here's how you could parse command line arguments
+-- rozpatrywanie przypadków: oto jak można parsować argumenty z linii poleceń:
 case args of
   "help" -> printHelp
   "start" -> startProgram
   _ -> putStrLn "bad args"
 
--- Haskell doesn't have loops; it uses recursion instead.
--- map applies a function over every element in a list
+-- Haskell zastępuje pętle (których nie ma) rekurencyjnymi wywołaniami funkcji.
+-- map aplikuje funkcję do każdego elementu listy:
 
 map (*2) [1..5] -- [2, 4, 6, 8, 10]
 
--- you can make a for function using map
+-- możesz zdefiniować funkcję for przy użyciu map:
 for array func = map func array
 
--- and then use it
+-- a następnie użyć jej:
 for [0..5] $ \i -> show i
 
--- we could've written that like this too:
+-- mogliśmy użyć krótszego zapisu bez zmiany działania funkcji for:
 for [0..5] show
 
--- You can use foldl or foldr to reduce a list
+-- Do redukcji listy służy polecenie foldl (foldr):
 -- foldl <fn> <initial value> <list>
 foldl (\x y -> 2*x + y) 4 [1,2,3] -- 43
 
--- This is the same as
+-- Jest to równoważne z:
 (2 * (2 * (2 * 4 + 1) + 2) + 3)
 
--- foldl is left-handed, foldr is right-handed
+-- foldl składa od od lewej strony, foldr od prawej
 foldr (\x y -> 2*x + y) 4 [1,2,3] -- 16
 
--- This is now the same as
+-- To zaś równoważne jest:
 (2 * 1 + (2 * 2 + (2 * 3 + 4)))
 
 ----------------------------------------------------
