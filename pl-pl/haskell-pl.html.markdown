@@ -287,29 +287,28 @@ foldr (\x y -> 2*x + y) 4 [1,2,3] -- 16
 (2 * 1 + (2 * 2 + (2 * 3 + 4)))
 
 ----------------------------------------------------
--- 7. Data Types
+-- 7. Typy danych
 ----------------------------------------------------
 
--- Here's how you make your own data type in Haskell
+-- Oto jak tworzy się nowe typy danych w Haskellu:
 
 data Color = Red | Blue | Green
 
--- Now you can use it in a function:
-
+-- Teraz można używać ich we własnych funkcjach:
 
 say :: Color -> String
 say Red = "You are Red!"
 say Blue = "You are Blue!"
 say Green =  "You are Green!"
 
--- Your data types can have parameters too:
+-- Twoje typy danych mogą posiadać nawet parametry:
 
 data Maybe a = Nothing | Just a
 
--- These are all of type Maybe
-Just "hello"    -- of type `Maybe String`
-Just 1          -- of type `Maybe Int`
-Nothing         -- of type `Maybe a` for any `a`
+-- Wszystkie poniższe są typu Maybe
+Just "hello"    -- typu `Maybe String`
+Just 1          -- typu `Maybe Int`
+Nothing         -- typu `Maybe a` for any `a`
 
 ----------------------------------------------------
 -- 8. Haskell IO
