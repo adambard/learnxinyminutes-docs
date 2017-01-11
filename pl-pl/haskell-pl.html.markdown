@@ -395,27 +395,27 @@ main'' = do
 
 
 ----------------------------------------------------
--- 9. The Haskell REPL
+-- 9. Interaktywne środowisko programowania
 ----------------------------------------------------
 
--- Start the repl by typing `ghci`.
--- Now you can type in Haskell code. Any new values
--- need to be created with `let`:
+-- Aby uruchomić repl (read-eval-print loop, interaktywne środowisko), należy
+-- wpisać `ghci`. Można już programować. Do definiowania nowych wartości służy
+-- słowo kluczowe `let`:
 
 let foo = 5
 
--- You can see the type of any value or expression with `:t`:
+-- Do sprawdzania typów dowolnej wartości (wyrażenia) wykorzystuje się `:t`:
 
 > :t foo
 foo :: Integer
 
--- Operators, such as `+`, `:` and `$`, are functions.
--- Their type can be inspected by putting the operator in parentheses:
+-- Działania takie jak `+`, `:` czy `$`, są funkcjami.
+-- Przed sprawdzeniem ich typu należy otoczyć je nawiasami:
 
 > :t (:)
 (:) :: a -> [a] -> [a]
 
--- You can get additional information on any `name` using `:i`:
+-- Dodatkowych informacji dostarcza `:i`:
 
 > :i (+)
 class Num a where
@@ -424,7 +424,7 @@ class Num a where
     -- Defined in ‘GHC.Num’
 infixl 6 +
 
--- You can also run any action of type `IO ()`
+-- Można nawet wykonywać akcje typu `IO ()`!
 
 > sayHello
 What is your name?
@@ -433,9 +433,9 @@ Hello, Friend!
 
 ```
 
-There's a lot more to Haskell, including typeclasses and monads. These are the
-big ideas that make Haskell such fun to code in. I'll leave you with one final
-Haskell example: an implementation of a quicksort variant in Haskell:
+Pominęliśmy wiele aspektów Haskella, wliczając w to monady. To właśnie one 
+sprawiają, że programowanie w Haskellu sprawia tyle frajdy. Na zakończenie
+pokażę Tobie implementację algorytmu quicksort w Haskellu:
 
 ```haskell
 qsort [] = []
@@ -444,8 +444,10 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
           greater = filter (>= p) xs
 ```
 
-There are two popular ways to install Haskell: The traditional [Cabal-based installation](http://www.haskell.org/platform/), and the newer [Stack-based process](https://www.stackage.org/install).
+Haskell może zostać zainstalowany na co najmniej dwa sposoby:
+ - tradycyjnie [przy użyciu Cabala](http://www.haskell.org/platform/),
+ - nowocześnie [z pomocą Stack](https://www.stackage.org/install).
 
-You can find a much gentler introduction from the excellent
-[Learn you a Haskell](http://learnyouahaskell.com/) or
+Godnymi poleceniami wprowadzeniami są wspaniałe
+[Learn you a Haskell](http://learnyouahaskell.com/) albo
 [Real World Haskell](http://book.realworldhaskell.org/).
