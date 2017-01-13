@@ -2,6 +2,7 @@
 language: restructured text
 contributors:
     - ["DamienVGN", "https://github.com/martin-damien"]
+    - ["Andre Polykanine", "https://github.com/Oire"]
 filename: restructuredtext.rst
 ---
 
@@ -102,6 +103,6 @@ But there are more complex applications that use the RST format:
 - and many others
 
 
-## Reading
+## Readings
 
 - [Official quick reference](http://docutils.sourceforge.net/docs/user/rst/quickref.html)
