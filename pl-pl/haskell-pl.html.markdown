@@ -5,7 +5,7 @@ contributors:
     - ["Remigiusz Suwalski", "https://github.com/remigiusz-suwalski"]
 ---
 
-Haskell został zaprojektowany jako praktyczy, czysto funkcyjny język 
+Haskell został zaprojektowany jako praktyczny, czysto funkcyjny język 
 programowania. Jest znany przede wszystkim ze względu na jego monady oraz system
 typów, ale ja lubię do niego wracać przez jego elegancję. Sprawił on, że 
 programowanie jest prawdziwą przyjemnością.
