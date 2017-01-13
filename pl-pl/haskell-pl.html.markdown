@@ -317,31 +317,29 @@ Nothing         -- typu `Maybe a` for any `a`
 -- 8. Haskell IO
 ----------------------------------------------------
 
--- While IO can't be explained fully without explaining monads,
--- it is not hard to explain enough to get going.
+-- Chociaż obsługa wejścia i wyjścia nie może zostać wyjaśniona przez poznaniem
+-- monad, spróbujemy zrobić to częściowo
 
--- When a Haskell program is executed, `main` is
--- called. It must return a value of type `IO a` for some type `a`. For example:
+-- Wykonanie programu napisanego w Haskellu wywołuje funkcję `main` 
+-- Musi zwrócić wartość typu `IO a` dla pewnego `a`. Przykład:
 
 main :: IO ()
 main = putStrLn $ "Hello, sky! " ++ (say Blue)
 -- putStrLn has type String -> IO ()
 
--- It is easiest to do IO if you can implement your program as
--- a function from String to String. The function
+-- Najłatwiej obsłużyć wejście i wyjście, kiedy program zostanie 
+-- zaimplementowany jako funkcja String -> String. Funkcja
 --    interact :: (String -> String) -> IO ()
--- inputs some text, runs a function on it, and prints out the
--- output.
+-- pobiera pewien tekst, wykonuje na nim operacje, po czym wypisuje wynik.
 
 countLines :: String -> String
 countLines = show . length . lines
 
 main' = interact countLines
 
--- You can think of a value of type `IO ()` as representing a
--- sequence of actions for the computer to do, much like a
--- computer program written in an imperative language. We can use
--- the `do` notation to chain actions together. For example:
+-- Możesz myśleć o wartości typu `IO ()` jako reprezentującej ciąg czynności,
+-- które komputer ma wykonać, zupełnie niczym program komputerowy w imperatywnym
+-- języku programowania. Akcje można łączyć przy użyciu notacji `do`:
 
 sayHello :: IO ()
 sayHello = do
@@ -349,23 +347,20 @@ sayHello = do
    name <- getLine -- this gets a line and gives it the name "name"
    putStrLn $ "Hello, " ++ name
 
--- Exercise: write your own version of `interact` that only reads
---           one line of input.
+-- Ćwiczenie: napisz własną wersję `interact`, 
+-- która czyta tylko jedną linię wejścia.
 
--- The code in `sayHello` will never be executed, however. The only
--- action that ever gets executed is the value of `main`.
--- To run `sayHello` comment out the above definition of `main`
--- and replace it with:
+-- Kod w `sayHello` nigdy się nie wykona. Jedyną akcją, która zostanie 
+-- uruchomiona, jest wartość `main`.
+-- Aby uruchomić `sayHello`, należy zastąpić poprzednią definicję `main` przez
 --   main = sayHello
 
--- Let's understand better how the function `getLine` we just
--- used works. Its type is:
+-- Spróbujmy lepiej zrozumieć, jak działa funkcja `getLine`, której właśnie
+-- użyliśmy. Jej typem jest
 --    getLine :: IO String
--- You can think of a value of type `IO a` as representing a
--- computer program that will generate a value of type `a`
--- when executed (in addition to anything else it does). We can
--- name and reuse this value using `<-`. We can also
--- make our own action of type `IO String`:
+-- Możesz myśleć o wartości typu `IO a` jako reprezentującej program, który
+-- wygeneruje wartość typu `a`, poza wszystkim innym, co jeszcze zrobi.
+-- Możemy także tworzyć własne akcje typu `IO String`:
 
 action :: IO String
 action = do
@@ -376,7 +371,7 @@ action = do
    -- `return` is not a keyword, but merely a function
    return (input1 ++ "\n" ++ input2) -- return :: String -> IO String
 
--- We can use this just like we used `getLine`:
+-- Możemy użyć tego tak jak używaliśmy `getLine`:
 
 main'' = do
     putStrLn "I will echo two lines!"
@@ -384,15 +379,14 @@ main'' = do
     putStrLn result
     putStrLn "This was all, folks!"
 
--- The type `IO` is an example of a "monad". The way Haskell uses a monad to
--- do IO allows it to be a purely functional language. Any function that
--- interacts with the outside world (i.e. does IO) gets marked as `IO` in its
--- type signature. This lets us reason about what functions are "pure" (don't
--- interact with the outside world or modify state) and what functions aren't.
+-- Typ `IO` jest przykładem monady. Sposób w jakim Haskell używa monad do 
+-- obsługi wejścia i wyjścia pozwala mu być czysto funkcyjnym językiem.
+-- Każda funkcja, która wchodzi w interakcje ze światem zewnętrznym, oznaczana
+-- jest jako `IO` w jej sygnaturze typu, co umożliwia odróżnianie funkcji
+-- czystych od zależnych od świata lub modyfikujących stan.
 
--- This is a powerful feature, because it's easy to run pure functions
--- concurrently; so, concurrency in Haskell is very easy.
-
+-- To naprawdę użyteczna własność, dzięki której jesteśmy w stanie uruchamiać
+-- czyste funkcje jednocześnie.
 
 ----------------------------------------------------
 -- 9. Interaktywne środowisko programowania
