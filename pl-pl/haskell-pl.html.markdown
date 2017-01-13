@@ -178,45 +178,45 @@ myMap (\x -> x + 2) [1..5] -- [3, 4, 5, 6, 7]
 foldl1 (\acc x -> acc + x) [1..5] -- 15
 
 ----------------------------------------------------
--- 4. More functions
+-- 4. Więcej funkcji
 ----------------------------------------------------
 
--- partial application: if you don't pass in all the arguments to a function,
--- it gets "partially applied". That means it returns a function that takes the
--- rest of the arguments.
+-- częściowe nakładanie: jeśli funkcja nie otrzyma wszystkich swoich argumentów, 
+-- zostaje cześciowo nałożona - zwraca funkcję, która przyjmuje pozostałe,
+-- brakujące argumenty.
 
 add a b = a + b
-foo = add 10 -- foo is now a function that takes a number and adds 10 to it
+foo = add 10 -- foo jest teraz funkcją, która przyjmuje liczbę, zwiększa ją o 10
 foo 5 -- 15
 
--- Another way to write the same thing
+-- Inny sposób na zapisanie tego samego:
 foo = (10+)
 foo 5 -- 15
 
--- function composition
--- the operator `.` chains functions together.
--- For example, here foo is a function that takes a value. It adds 10 to it,
--- multiplies the result of that by 4, and then returns the final value.
+-- składanie funkcji:
+-- operator `.` składa wiele funkcji w jedną.
+-- Dla przykładu, foo jest funkcją, która powiększa swój argument o 10, mnoży 
+-- tak uzyskaną liczbę przez 4 i zwraca wynik:
 foo = (4*) . (10+)
 
 -- 4*(10 + 5) = 60
 foo 5 -- 60
 
--- fixing precedence
--- Haskell has another operator called `$`. This operator applies a function 
--- to a given parameter. In contrast to standard function application, which 
--- has highest possible priority of 10 and is left-associative, the `$` operator 
--- has priority of 0 and is right-associative. Such a low priority means that
--- the expression on its right is applied as the parameter to the function on its left.
+-- ustalanie kolejności
+-- Haskell posiada inny operator, `$`, który nakłada funkcję do podanego
+-- parametru. W przeciwieństwie do zwykłego lewostronnie łącznego nakładania 
+-- funkcji, którego priorytet jest najwyższy (10), operator `$` posiada
+-- priorytet 0 i jest prawostronnie łączny. Tak niski priorytet oznacza, że
+-- wyrażenie po prawej traktowane jest jako parametr funkcji po lewej
 
--- before
-even (fib 7) -- false
+-- wcześniej
+even (fib 7) -- fałsz
 
--- equivalently
-even $ fib 7 -- false
+-- równoważnie
+even $ fib 7 -- fałsz
 
--- composing functions
-even . fib $ 7 -- false
+-- składanie funkcji
+even . fib $ 7 -- fałsz
 
 
 ----------------------------------------------------
