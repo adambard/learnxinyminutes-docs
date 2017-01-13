@@ -125,56 +125,53 @@ fst ("haskell", 1) -- "haskell"
 snd ("haskell", 1) -- 1
 
 ----------------------------------------------------
--- 3. Functions
+-- 3. Funkcje
 ----------------------------------------------------
--- A simple function that takes two variables
+-- Prosta funkcja przyjmująca dwa argumenty
 add a b = a + b
 
--- Note that if you are using ghci (the Haskell interpreter)
--- You'll need to use `let`, i.e.
+-- Pamiętaj, że podczas stosowania ghci, interpretera Haskella, wszelkie 
+-- definicje muszą zostać poprzedzone słowem `let`, na przykład:
 -- let add a b = a + b
 
--- Using the function
+-- Używanie funkcji:
 add 1 2 -- 3
 
--- You can also put the function name between the two arguments
--- with backticks:
+-- Nazwę funkcji można podać między dwoma argumentami, ale wtedy musi zostać
+-- otoczona grawisami:
 1 `add` 2 -- 3
 
--- You can also define functions that have no letters! This lets
--- you define your own operators! Here's an operator that does
--- integer division
+-- Nazwa funkcji nie musi zawierać żadnych liter, przykładem czego jest 
+-- operator dzielenia:
 (//) a b = a `div` b
 35 // 4 -- 8
 
--- Guards: an easy way to do branching in functions
+-- Strażnicy: prosty sposób na rozbijanie funkcji na przypadki
 fib x
   | x < 2 = 1
   | otherwise = fib (x - 1) + fib (x - 2)
 
--- Pattern matching is similar. Here we have given three different
--- definitions for fib. Haskell will automatically call the first
--- function that matches the pattern of the value.
+-- Dopasowanie wzorca jest podobne. Haskell sam automatycznie wybierze, która
+-- z poniższych definicji fib powinna zostać użyta:
 fib 1 = 1
 fib 2 = 2
 fib x = fib (x - 1) + fib (x - 2)
 
--- Pattern matching on tuples:
+-- Dopasowanie z krotkami:
 foo (x, y) = (x + 1, y + 2)
 
--- Pattern matching on lists. Here `x` is the first element
--- in the list, and `xs` is the rest of the list. We can write
--- our own map function:
+-- Dopasowanie z listami. Tutaj `x` jest pierwszym elementem listy, 
+-- natomiast `xs` to jej reszta (ogon). Poniższa funkcja nakłada funkcję
+-- na każdy z elementów listy:
 myMap func [] = []
 myMap func (x:xs) = func x:(myMap func xs)
 
--- Anonymous functions are created with a backslash followed by
--- all the arguments.
+-- Funkcje anonimowe tworzone są przy użyciu w-tył-ciachu, po którym następują
+-- wszystkie argumenty:
 myMap (\x -> x + 2) [1..5] -- [3, 4, 5, 6, 7]
 
--- using fold (called `inject` in some languages) with an anonymous
--- function. foldl1 means fold left, and use the first value in the
--- list as the initial value for the accumulator.
+-- używanie zwijania z anonimowymi funkcjami: foldl1 zwija z lewej strony,
+-- przyjmując jako wartość początkową zbieracza pierwszy element listy.
 foldl1 (\acc x -> acc + x) [1..5] -- 15
 
 ----------------------------------------------------
