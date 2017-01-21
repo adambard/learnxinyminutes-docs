@@ -170,8 +170,11 @@ $x =~ s/foo/bar/g;        # replaces ALL INSTANCES of foo with bar in $x
 
 # You can open a file for input or output using the "open()" function.
 
+# For reading:
 open(my $in,  "<",  "input.txt")  or die "Can't open input.txt: $!";
+# For writing (clears file if it exists):
 open(my $out, ">",  "output.txt") or die "Can't open output.txt: $!";
+# For writing (appends to end of file):
 open(my $log, ">>", "my.log")     or die "Can't open my.log: $!";
 
 # You can read from an open filehandle using the "<>" operator.  In
@@ -181,6 +184,12 @@ open(my $log, ">>", "my.log")     or die "Can't open my.log: $!";
 
 my $line  = <$in>;
 my @lines = <$in>;
+
+# You can write to an open filehandle using the standard "print"
+# function.
+
+print $out @lines;
+print $log $msg, "\n";
 
 #### Writing subroutines
 
