@@ -51,6 +51,13 @@ my @mixed   = ("camel", 42, 1.23);
 # indicate one value will be returned.
 my $second = $animals[1];
 
+# The size of an array is retrieved by accessing the array in a scalar
+# context, such as assigning it to a scalar variable or using the
+# "scalar" operator.
+
+my $num_animals = @animals;
+print "Number of numbers: ", scalar(@numbers), "\n";
+
 ## Hashes
 #   A hash represents a set of key/value pairs:
 
@@ -66,6 +73,11 @@ my %fruit_color = (
 
 # Hash elements are accessed using curly braces, again with the $ sigil.
 my $color = $fruit_color{apple};
+
+# All of the keys or values that exist in a hash can be accessed using
+# the "keys" and "values" functions.
+my @fruits = keys %fruit_color;
+my @colors = values %fruit_color;
 
 # Scalars, arrays and hashes are documented more fully in perldata.
 # (perldoc perldata).
@@ -142,6 +154,12 @@ for my $element (@elements) {
 
 for (@elements) {
   print;
+}
+
+# iterating through a hash (for and foreach are equivalent)
+
+foreach my $key (keys %hash) {
+  print $key, ': ', $hash{$key}, "\n";
 }
 
 # the Perlish post-condition way again
