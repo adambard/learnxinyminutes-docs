@@ -3,6 +3,7 @@ language: Scala
 filename: learnscala-pt.scala
 translators:
     - ["Francieli Viane", "https://github.com/FFrancieli"]
+lang: pt-br
 ---
 
 Scala - a linguagem escalável
