@@ -1,6 +1,11 @@
 ---
 language: Scala
 filename: learnscala-pt.scala
+contributors:
+    - ["George Petrov", "http://github.com/petrovg"]
+    - ["Dominic Bou-Samra", "http://dbousamra.github.com"]
+    - ["Geoff Liu", "http://geoffliu.me"]
+    - ["Ha-Duong Nguyen", "http://reference-error.org"]
 translators:
     - ["Francieli Viane", "https://github.com/FFrancieli"]
 lang: pt-br
