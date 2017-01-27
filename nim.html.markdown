@@ -40,6 +40,14 @@ This can work as a multiline comment.
 Or for unparsable, broken code
 """
 
+#[
+As of Nim 0.13, multiline comments are supported.
+
+  #[ Multiline comments can also be nested. ]#
+
+]#
+
+
 #
 # Data Structures
 #
