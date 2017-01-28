@@ -71,11 +71,14 @@ True and False  # => False
 False or True   # => True
 
 # Note using Bool operators with ints
+# False is 0 and True is 1
+# Don't mix up with bool(ints) and bitwise and/or (&,|)
 0 and 2     # => 0
 -5 or 0     # => -5
 0 == False  # => True
 2 == True   # => False
 1 == True   # => True
+-5 != False != True #=> True
 
 # Equality is ==
 1 == 1  # => True
