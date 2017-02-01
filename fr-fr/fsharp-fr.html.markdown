@@ -9,7 +9,7 @@ filename: learnfsharp-fr.fs
 
 F# est un langage de programmation fonctionnel et orienté objet. Il est gratuit et son code source est ouvert. Il tourne sur Linux, Mac, Windows et plus.
 
-Il a un puissant système de type qui piège de nombreuses erreurs à la compilation, mais il utilise l'inférence de type donc il se lit plus comme un langage dynamique.
+Il possède un puissant système de type qui piège de nombreuses erreurs à la compilation, mais il utilise l'inférence de type ce qui lui permet d'être lu comme un langage dynamique.
 
 La syntaxe de F# est différente des langages héritant de C.
 
@@ -23,7 +23,7 @@ Si vous voulez essayer le code ci-dessous, vous pouvez vous rendre sur [tryfshar
 // Les commentaires d'une seule ligne commencent par un double slash
 (* Les commentaires multilignes utilise les paires (* . . . *)
 
--fin du commentaire mulitlignes- *)
+-fin du commentaire multilignes- *)
 
 // ================================================
 // Syntaxe de base
@@ -49,7 +49,7 @@ let zeroToFive = [0;1] @ twoToFive   // @ concatène deux listes
 // Le mot clé "let" définit aussi le nom d'une fonction.
 let square x = x * x          // Notons qu'aucune parenthèse n'est utilisée.
 square 3                      // Maitenant, exécutons la fonction.
-                              // Encore une fois, aucune paranthèse.
+                              // Encore une fois, aucune parenthèse.
 
 let add x y = x + y           // N'utilisez pas add (x,y) ! Cela signifie
                               // quelque chose de complètement différent.
@@ -118,7 +118,7 @@ printfn "Printing an int %i, a float %f, a bool %b" 1 2.0 true
 printfn "A string %s, and something generic %A" "hello" [1;2;3;4]
 
 // Il y a aussi les fonctions printf/sprintfn pour formater des données
-// en string. C'est similaire à String.Format de C#.
+// en string. C'est similaire au String.Format de C#.
 
 // ================================================
 // Plus sur les fonctions
@@ -165,7 +165,7 @@ module FunctionExamples =
 
 // Il y a trois types de collection ordonnée :
 // * Les listes sont les collections immutables les plus basiques
-// * Les tableaux sont mmutables et plus efficients
+// * Les tableaux sont mutables et plus efficients
 // * Les séquences sont lazy et infinies (e.g. un enumerator)
 //
 // Des autres collections incluent des maps immutables et des sets
@@ -188,7 +188,7 @@ module ListExamples =
     let primes = sieve [2..50]
     printfn "%A" primes
 
-    // pattern matching pour les listes
+    // le pattern matching pour les listes
     let listMatcher aList =
         match aList with
         | [] -> printfn "the list is empty"
@@ -228,7 +228,7 @@ module ArrayExamples =
     let array1 = [| "a";"b" |]
     let first = array1.[0]        // accès à l'index en utilisant un point
 
-    // pattern matching pour les tableaux est le même que celui des listes
+    // le pattern matching des tableaux est le même que celui des listes
     let arrayMatcher aList =
         match aList with
         | [| |] -> printfn "the array is empty"
@@ -255,7 +255,7 @@ module SequenceExamples =
         // "yield" ajoute un élément
         yield 1; yield 2;
 
-        // "yield!" ajoute une complète subsequence
+        // "yield!" ajoute une sous-sequence complète
         yield! [5..10]
         yield! seq {
             for i in 1..10 do
@@ -292,17 +292,17 @@ module DataTypeExamples =
     // Record types ont des champs nommés
     // ------------------------------------
 
-    // On utilise "type" avec des accolades pour définir un record type(?)
+    // On utilise "type" avec des accolades pour définir un type record
     type Person = {First:string; Last:string}
 
-    // On utilise "let" avec des accolades pour créer un record(?)
+    // On utilise "let" avec des accolades pour créer un record
     let person1 = {First="John"; Last="Doe"}
 
     // Pattern match pour déballer
     let {First=first} = person1    // assigne first="john"
 
     // ------------------------------------
-    // Union types (aka variants) ont un set(?) de choix
+    // Union types (aka variants) ont un set de choix
     // Un seul cas peut être valide à la fois.
     // ------------------------------------
 
@@ -340,7 +340,7 @@ module DataTypeExamples =
     // Modelling with types(?)
     // ------------------------------------
 
-    // Union types are great for modelling state without using flags(?)
+    // Les types union sont excellents pour modelling state without using flags(?)
     type EmailAddress =
         | ValidEmailAddress of string
         | InvalidEmailAddress of string
@@ -350,10 +350,10 @@ module DataTypeExamples =
         | ValidEmailAddress address -> ()   // envoyer
         | InvalidEmailAddress address -> () // ne pas envoyer
 
-    // Combiner ensemble, les union types et les record types
-    // offrent une excellente fondation pour le domain driven design(?).
+    // Combiner ensemble, les types union et les types record
+    // offrent une excellente fondation pour le domain driven design.
     // Vous pouvez créer des centaines de petit types qui reflèteront fidèlement
-    // le domain(?).
+    // le domain.
 
     type CartItem = { ProductCode: string; Qty: int }
     type Payment = Payment of float
@@ -366,12 +366,12 @@ module DataTypeExamples =
         | PaidCart of PaidCartData
 
     // ------------------------------------
-    // Built in behavior for types(?)
+    // Comportement natif des types
     // ------------------------------------
 
     // Les types natifs ont un comportement "prêt-à-l'emploi" des plus utiles, sans code à ajouter.
     // * Immutabilité
-    // * Pretty printing when debugging(?)
+    // * Pretty printing au debug
     // * Egalité et comparaison
     // * Sérialisation
 
@@ -399,7 +399,7 @@ module DataTypeExamples =
 
 module ActivePatternExamples =
 
-    // F# a un type particulier de pattern matching(?) nommé "active patterns"
+    // F# a un type particulier de pattern matching nommé "active patterns"
     // où le pattern peut être parsé ou détecté dynamiquement.
 
     // "banana clips" est la syntaxe pour l'active patterns
@@ -411,7 +411,7 @@ module ActivePatternExamples =
        else if System.Char.IsWhiteSpace(ch) then Whitespace
        else Other
 
-    // ... et ensuite on l'utilise pour rendre la logique de parsing(?) plus claire
+    // ... et ensuite on l'utilise pour rendre la logique de parsing plus claire
     let printChar ch =
       match ch with
       | Digit -> printfn "%c is a Digit" ch
@@ -427,7 +427,7 @@ module ActivePatternExamples =
     // -----------------------------------------
 
     // Vous pouvez créer un partial matching patterns également
-    // On utilise just un underscore(?) dans la définitionn, et on retourne Some si ça correspond.
+    // On utilise just un underscore dans la définition, et on retourne Some si ça correspond.
     let (|MultOf3|_|) i = if i % 3 = 0 then Some MultOf3 else None
     let (|MultOf5|_|) i = if i % 5 = 0 then Some MultOf5 else None
 
@@ -595,7 +595,7 @@ module NetCompatibilityExamples =
 
     // ------- extension de méthode  -------
 
-    // Juste comme en C#, F# peut étendre des classes existantes and des extensions de méthode.
+    // Juste comme en C#, F# peut étendre des classes existantes avec des extensions de méthode.
     type System.String with
        member this.StartsWithA = this.StartsWith "A"
 
