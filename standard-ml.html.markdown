@@ -293,6 +293,9 @@ val thermometer =
 val some_result = (fn x => thermometer (x - 5) ^ thermometer (x + 5)) 37
 
 (* Here is a higher-order function that works on lists (a list combinator) *)
+(* map f l
+       applies f to each element of l from left to right, 
+       returning the list of results. *)
 val readings = [ 34, 39, 37, 38, 35, 36, 37, 37, 37 ]  (* first an int list *)
 val opinions = List.map thermometer readings (* gives [ "Cold", "Warm", ... ] *)
 
@@ -325,6 +328,10 @@ val n = op + (5, 5)   (* n is now 10 *)
 (* 'op' is useful when combined with high order functions because they expect
    functions and not operators as arguments. Most operators are really just
    infix functions. *)
+(* foldl f init [x1, x2, ..., xn]
+       returns
+       f(xn, ...f(x2, f(x1, init))...)
+       or init if the list is empty. *)
 val sum_of_numbers = foldl op + 0 [1, 2, 3, 4, 5]
 
 
