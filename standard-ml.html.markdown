@@ -5,6 +5,7 @@ contributors:
     - ["David Pedersen", "http://lonelyproton.com/"]
     - ["James Baker", "http://www.jbaker.io/"]
     - ["Leo Zovic", "http://langnostic.inaimathi.ca/"]
+    - ["Yu Zhang", "http://neilsustc.github.io/"]
 ---
 
 Standard ML is a functional programming language with type inference and some
