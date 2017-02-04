@@ -235,17 +235,18 @@ val hmm = answer "What is the meaning of life, the universe and everything?"
 
 (* Functions can take several arguments by taking one tuples as argument: *)
 fun solve2 (a : real, b : real, c : real) =
-    ( (~b + Math.sqrt(b * b - 4.0*a*c)) / (2.0 * a),
-      (~b - Math.sqrt(b * b - 4.0*a*c)) / (2.0 * a) )
+    ((~b + Math.sqrt(b * b - 4.0 * a * c)) / (2.0 * a),
+     (~b - Math.sqrt(b * b - 4.0 * a * c)) / (2.0 * a))
 
 (* Sometimes, the same computation is carried out several times. It makes sense
    to save and re-use the result the first time. We can use "let-bindings": *)
 fun solve2 (a : real, b : real, c : real) =
-    let val discr  = b * b - 4.0*a*c
+    let val discr  = b * b - 4.0 * a * c
         val sqr = Math.sqrt discr
         val denom = 2.0 * a
     in ((~b + sqr) / denom,
-        (~b - sqr) / denom) end
+        (~b - sqr) / denom)
+    end
 
 
 (* Pattern matching is a funky part of functional programming.  It is an
@@ -324,7 +325,7 @@ val n = op + (5, 5)   (* n is now 10 *)
 (* 'op' is useful when combined with high order functions because they expect
    functions and not operators as arguments. Most operators are really just
    infix functions. *)
-val sum_of_numbers = foldl op+ 0 [1,2,3,4,5]
+val sum_of_numbers = foldl op + 0 [1, 2, 3, 4, 5]
 
 
 (* Datatypes are useful for creating both simple and complex structures *)
@@ -407,7 +408,8 @@ fun writePoem(filename) =
     let val file = TextIO.openOut(filename)
         val _ = TextIO.output(file, "Roses are red,\nViolets are blue.\n")
         val _ = TextIO.output(file, "I have a gun.\nGet in the van.\n")
-    in TextIO.closeOut(file) end
+    in TextIO.closeOut(file)
+    end
 
 (* Read a nice poem from a file into a list of strings *)
 fun readPoem(filename) =
