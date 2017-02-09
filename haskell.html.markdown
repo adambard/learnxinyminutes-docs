@@ -152,7 +152,7 @@ fib x
   | otherwise = fib (x - 1) + fib (x - 2)
 
 -- Pattern matching is similar. Here we have given three different
--- equations for fib. Haskell will automatically use the first
+-- equations that define fib. Haskell will automatically use the first
 -- equation whose left hand side pattern matches the value.
 fib 1 = 1
 fib 2 = 2
@@ -198,7 +198,7 @@ foo 5 -- 15
 -- multiplies the result of that by 4, and then returns the final value.
 foo = (4*) . (10+)
 
--- 4*(10+ 5) = 60
+-- 4*(10+5) = 60
 foo 5 -- 60
 
 -- fixing precedence
