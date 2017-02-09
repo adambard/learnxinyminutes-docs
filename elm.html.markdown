@@ -79,7 +79,7 @@ snd ("elm", 42) -- 42
 -- It is the only value of its type, also called "Unit".
 ()
 
--- Records are like tuples but the fields have names. The order of fields
+-- Records are like tuples but they fields have names. The order of fields
 -- doesn't matter. Notice that record values use equals signs, not colons.
 { x = 3, y = 7 }
 
