@@ -1006,15 +1006,101 @@ on a new line! ""Wow!"", the masses cried";
             // x?.y will return null immediately if x is null; y is not evaluated
             => GenieName?.ToUpper();
     }
+
+    static class MagicService
+    {
+        private static bool LogException(Exception ex)
+        {
+            /* log exception somewhere */
+            return false;
+        }
+
+        public static bool CastSpell(string spell)
+        {
+            try
+            {
+                // Pretend we call API here
+                throw new MagicServiceException("Spell failed", 42);
+
+                // Spell succeeded
+                return true;
+            }
+            // Only catch if Code is 42 i.e. spell failed
+            catch(MagicServiceException ex) when (ex.Code == 42)
+            {
+                // Spell failed
+                return false;
+            }
+            // Other exceptions, or MagicServiceException where Code is not 42 
+            catch(Exception ex) when (LogException(ex))
+            {
+                // Execution never reaches this block
+                // The stack is not unwound
+            }
+            return false;
+            // Note that catching a MagicServiceException and rethrowing if Code
+            // is not 42 or 117 is different, as then the final catch-all block
+            // will not catch the rethrown exception
+        }
+    }
+
+    public class MagicServiceException : Exception
+    {
+        public int Code { get; }
+
+        public MagicServiceException(string message, int code) : base(message)
+        {
+            Code = code;
+        }
+    }
+
+    public static class PragmaWarning {
+        // Obsolete attribute
+        [Obsolete("Use NewMethod instead", false)]
+        public static void ObsoleteMethod()
+        {
+            /* obsolete code */
+        }
+
+        public static void NewMethod()
+        {
+            /* new code */
+        }
+
+        public static void Main()
+        {
+            ObsoleteMethod(); // CS0618: 'ObsoleteMethod is obsolete: Use NewMethod instead'
+#pragma warning disable CS0618
+            ObsoleteMethod(); // no warning
+#pragma warning restore CS0618
+            ObsoleteMethod(); // CS0618: 'ObsoleteMethod is obsolete: Use NewMethod instead'
+        }
+    }
 } // End Namespace
+
+using System;
+// C# 6, static using
+using static System.Math;
+
+namespace Learning.More.CSharp
+{
+    class StaticUsing
+    {
+        static void Main()
+        {
+            // Without a static using statement..
+            Console.WriteLine("The square root of 4 is {}.", Math.Sqrt(4));
+            // With one
+            Console.WriteLine("The square root of 4 is {}.", Sqrt(4));
+        }
+    }
+}
 ```
 
 ## Topics Not Covered
 
  * Attributes
- * async/await, pragma directives
- * Exception filters
- * `using static`
+ * async/await
  * Web Development
  	* ASP.NET MVC & WebApi (new)
  	* ASP.NET Web Forms (old)
