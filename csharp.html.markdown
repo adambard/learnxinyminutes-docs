@@ -1033,14 +1033,7 @@ on a new line! ""Wow!"", the masses cried";
                 // Spell failed
                 return false;
             }
-            // Suppose the API is quirky and sometimes returns a
-            // nonzero result code even if the spell succeeds
-            catch(MagicServiceException ex) when (ex.Code == 117)
-            {
-                // Spell actually succeeded
-                return true;
-            }
-            // Other exceptions, or MagicServiceException where Code is not 42 or 117 
+            // Other exceptions, or MagicServiceException where Code is not 42 
             catch(Exception ex) when (LogException(ex))
             {
                 // Execution never reaches this block
