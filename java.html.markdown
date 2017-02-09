@@ -52,13 +52,13 @@ public class LearnJava {
     // point.
     public static void main (String[] args) {
 
-    	///////////////////////////////////////
-		// Input/Output
-		///////////////////////////////////////
+    ///////////////////////////////////////
+    // Input/Output
+    ///////////////////////////////////////
 
-		/*
-		* Ouput
-		*/
+        /*
+        * Ouput
+        */
 
         // Use System.out.println() to print lines.
         System.out.println("Hello World!");
