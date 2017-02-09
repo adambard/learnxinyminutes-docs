@@ -75,8 +75,8 @@ public class LearnJava {
         System.out.printf("pi = %.5f", Math.PI); // => pi = 3.14159
 
         /*
-		* Input
-		*/
+        * Input
+        */
 
 		// use Scanner to read input
 		// must import java.util.Scanner;
