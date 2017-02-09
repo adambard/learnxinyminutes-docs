@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["Victor Kléber Santos L. Melo", "http://victormelo.com.br/blog"]
     - ["Renê Douglas N. de Morais", "mailto:rene.douglas.bsi@gmail.com"]
-    - ["Yuri Alessandro D. T. Martins", "https://github.com/YuriAlessandro"]
 lang: pt-br
 filename: LearnJava-pt.java
 
