@@ -138,17 +138,15 @@ while (condition) {
 
 
 # for loops and iteration
-for (my $i = 0; $i < $max; $i++) {
+for my $i (0 .. $max) {
   print "index is $i";
-}
-
-for (my $i = 0; $i < @elements; $i++) {
-  print "Current element is " . $elements[$i];
 }
 
 for my $element (@elements) {
   print $element;
 }
+
+map {print} @elements;
 
 # implicitly
 

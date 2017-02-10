@@ -118,11 +118,11 @@ public class LearnJava {
         */
 
         // Initialize a variable using <type> <name> = <val>
-        int fooInt = 1;
+        int barInt = 1;
         // Initialize multiple variables of same type with same 
         // value <type> <name1>, <name2>, <name3> = <val>
-        int fooInt1, fooInt2, fooInt3;
-        fooInt1 = fooInt2 = fooInt3 = 1;
+        int barInt1, barInt2, barInt3;
+        barInt1 = barInt2 = barInt3 = 1;
 
         /*
         *  Variable types

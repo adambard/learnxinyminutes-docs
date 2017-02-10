@@ -5,6 +5,7 @@ contributors:
     - ["Amin Bandali", "http://aminbandali.com"]
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["evuez", "http://github.com/evuez"]
+    - ["asyne", "https://github.com/justblah"]
     - ["habi", "http://github.com/habi"]
 filename: learnpython.py
 ---
@@ -751,6 +752,24 @@ gen_to_list = list(values)
 print(gen_to_list)  # => [-1, -2, -3, -4, -5]
 
 # Decorators
+# A decorator is a higher order function, which accepts and returns a function.
+# Simple usage example – add_apples decorator will add 'Apple' element into
+# fruits list returned by get_fruits target function.
+def add_apples(func):
+    def get_fruits():
+        fruits = func()
+        fruits.append('Apple')
+        return fruits
+    return get_fruits
+
+@add_apples
+def get_fruits():
+    return ['Banana', 'Mango', 'Orange']
+
+# Prints out the list of fruits with 'Apple' element in it:
+# Banana, Mango, Orange, Apple
+print ', '.join(get_fruits())
+
 # in this example beg wraps say
 # Beg will call say. If say_please is True then it will change the returned
 # message
