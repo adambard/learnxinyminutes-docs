@@ -5,7 +5,6 @@ contributors:
     - ["David Pedersen", "http://lonelyproton.com/"]
     - ["James Baker", "http://www.jbaker.io/"]
     - ["Leo Zovic", "http://langnostic.inaimathi.ca/"]
-    - ["Yu Zhang", "http://neilsustc.github.io/"]
 ---
 
 Standard ML is a functional programming language with type inference and some
@@ -333,7 +332,7 @@ val n = op + (5, 5)   (* n is now 10 *)
        returns
        f(xn, ...f(x2, f(x1, init))...)
        or init if the list is empty. *)
-val sum_of_numbers = foldl op + 0 [1, 2, 3, 4, 5]
+val sum_of_numbers = foldl op+ 0 [1, 2, 3, 4, 5]
 
 
 (* Datatypes are useful for creating both simple and complex structures *)
