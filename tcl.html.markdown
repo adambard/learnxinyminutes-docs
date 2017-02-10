@@ -268,7 +268,7 @@ proc fold {cmd args} {
     foreach arg $args {
         set res [$cmd $res $arg]
     }
-    return res
+    return $res
 }
 fold ::tcl::mathop::* 5 3 3 ;# ->  45
 

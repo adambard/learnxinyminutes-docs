@@ -86,10 +86,10 @@ my %hash = key1 => 'value1', key2 => 'value2'; # same result as above
 
 # You can also use the "colon pair" syntax:
 # (especially handy for named parameters that you'll see later)
-my %hash = :w(1), # equivalent to `w => 1`
-           # this is useful for the `True` shortcut:
-           :truey, # equivalent to `:truey(True)`, or `truey => True`
-           # and for the `False` one:
+my %hash = :w(1),    # equivalent to `w => 1`
+                     # this is useful for the `True` shortcut:
+           :truey,   # equivalent to `:truey(True)`, or `truey => True`
+                     # and for the `False` one:
            :!falsey, # equivalent to `:falsey(False)`, or `falsey => False`
            ;
 
@@ -125,8 +125,8 @@ hello-to; #=> Hello, World !
 hello-to(); #=> Hello, World !
 hello-to('You'); #=> Hello, You !
 
-## You can also, by using a syntax akin to the one of hashes (yay unified syntax !),
-##  pass *named* arguments to a `sub`.
+## You can also, by using a syntax akin to the one of hashes
+## (yay unified syntax !), pass *named* arguments to a `sub`.
 # They're optional, and will default to "Any".
 sub with-named($normal-arg, :$named) {
   say $normal-arg + $named;
@@ -145,8 +145,8 @@ sub with-mandatory-named(:$str!)  {
   say "$str !";
 }
 with-mandatory-named(str => "My String"); #=> My String !
-with-mandatory-named; # run time error: "Required named parameter not passed"
-with-mandatory-named(3); # run time error: "Too many positional parameters passed"
+with-mandatory-named;   # run time error: "Required named parameter not passed"
+with-mandatory-named(3);# run time error:"Too many positional parameters passed"
 
 ## If a sub takes a named boolean argument ...
 sub takes-a-bool($name, :$bool) {
@@ -169,9 +169,9 @@ my &s = &say-hello;
 my &other-s = sub { say "Anonymous function !" }
 
 # A sub can have a "slurpy" parameter, or "doesn't-matter-how-many"
-sub as-many($head, *@rest) { # `*@` (slurpy) will basically "take everything else".
-                             # Note: you can have parameters *before* (like here)
-                             # a slurpy one, but not *after*.
+sub as-many($head, *@rest) {  #`*@` (slurpy) will "take everything else"
+# Note: you can have parameters *before* a slurpy one (like here),
+# but not *after*.
   say @rest.join(' / ') ~ " !";
 }
 say as-many('Happy', 'Happy', 'Birthday'); #=> Happy / Birthday !
@@ -223,9 +223,9 @@ say $x; #=> 52
 
 # - `if`
 # Before talking about `if`, we need to know which values are "Truthy"
-#  (represent True), and which are "Falsey" (or "Falsy") -- represent False.
-# Only these values are Falsey: 0, (), {}, "", Nil, A type (like `Str` or `Int`),
-#  and of course False itself.
+# (represent True), and which are "Falsey" (or "Falsy") -- represent False.
+# Only these values are Falsey: 0, (), {}, "", Nil, A type (like `Str` or `Int`)
+# and of course False itself.
 # Every other value is Truthy.
 if True {
   say "It's true !";
@@ -265,13 +265,14 @@ say $age > 18 ?? "You are an adult" !! "You are under 18";
 
 given "foo bar" {
   say $_; #=> foo bar
-  when /foo/ { # Don't worry about smart matching yet – just know `when` uses it.
+  when /foo/ { # Don't worry about smart matching yet – just know `when` uses it
                # This is equivalent to `if $_ ~~ /foo/`.
     say "Yay !";
   }
-  when $_.chars > 50 { # smart matching anything with True (`$a ~~ True`) is True,
+  when $_.chars > 50 { # smart matching anything with True is True,
+                       # i.e. (`$a ~~ True`) 
                        # so you can also put "normal" conditionals.
-                       # This when is equivalent to this `if`:
+                       # This `when` is equivalent to this `if`:
                        #  if $_ ~~ ($_.chars > 50) {...}
                        # Which means:
                        #  if $_.chars > 50 {...}
@@ -288,7 +289,8 @@ given "foo bar" {
 # but can also be a C-style `for` loop:
 loop {
   say "This is an infinite loop !";
-  last; # last breaks out of the loop, like the `break` keyword in other languages
+  last; # last breaks out of the loop, like the `break` keyword in other
+        # languages
 }
 
 loop (my $i = 0; $i < 5; $i++) {
