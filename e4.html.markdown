@@ -1,0 +1,230 @@
+---
+language: E4
+contributors:
+    - ["Iskander Sharipov", "https://github.com/Quasilyte"]
+filename: e4.el
+---
+
+```elisp
+;; E4 is Emacs Forth, language which can be inlined right into Emacs Lisp code.
+;; It is functional and very simple to learn (few yet powerful concepts).
+;;
+;; As name suggests, you should have Emacs
+;; installed in your system in order to use E4.
+;; If you think of it as an big shortcoming, then count that it
+;; was actually been developed to be used inside Emacs Lisp code.
+;;
+;; To "install" E4, load e4.el file, which can be obtained from here:
+;; https://github.com/Quasilyte/e4
+;; `master' branch is, as usual, far more stable than `dev',
+;; but can lack many features.
+;;
+;; You should be familiar with Forth to feel comfortable.
+
+;; xe4 is e4 extras. They give you convenient API to use E4.
+(xe4:set-options '(return-stack-after-eval . t)
+                 '(flush-stack-before-eval . t))
+
+;; `xe4:' is our main function to execute E4 code.
+;; put some values onto stack, return it, then print:
+(message "%s" (xe4: 4 5 "string")) ; => "(string 5 4)"
+
+;; note that when we put 4, 5 and "string" on stack, 
+;; 4 becomes the `last' element and returned list represents that.
+
+;; but we started it the wrong way, here is our hello world:
+(xe4: "Hello, world!" ..) ; check out *Messages* buffer!
+;; `..' pops the top element of the stack and prints it out.
+;; `.s' prints the stack size and all of its elements, stack is left untouched:
+(xe4: "goblins" "ate" "stupid campers" .s) 
+;; => ("stupid campers" "ate" "goblins") returned to the Lisp
+;; "<3> (stupid campers ate goblins)" reported to the *Messages*
+
+;; as in Forth, whenever scalar (string/number/float/vector) appears,
+;; it ogoes on top of the data stack.
+
+;;;; basic operations ;;;;
+
+;; all types of default operators are defined and applied just like in Forth:
+(xe4: 0 10 5 +) ; => (15 0)
+(xe4: 1000 10 / 10 /) ; => (10)
+(xe4: 3.4 1+) ; => (4.4)
+(xe4: 8 8 =) ; => (-1), -1 is strict truth value (anything except 0 is true)
+(xe4: 256 250 =) ; => (0), 0 is false value
+
+;; some of them are overloaded:
+(xe4: "emacs" "is great" = "macro" "macro" =) ; => (-1 0)
+(xe4: "Hello, " "world!" +) ; => ("Hello, world!")
+
+;; if you want to know about variables, be patient.
+;; they will be covered in `functions' section.
+
+;;;; stack mutators ;;;;
+
+;; for now not much of stack manipulating primitives (words) are
+;; implemented, but here are the most useful ones (the case matters):
+(xe4: 7 DUP DUP) ; => (7 7 7)
+(xe4: 1 2 3 DROP DROP) ; => (1)
+(xe4: 0 5 0 5 SWAP) ; => (0 5 5 0)
+(xe4: 100 ["vector" 2 3] DEPTH) ; => (2 ["vector" 2 3] 100)
+
+;; yeah, we can denote vectors, but not much we can do with them.
+
+;;;; conditionals ;;;;
+
+;; IF, ELSE, ENDIF are the only ones:
+(xe4: 2 IF "you got me!" ENDIF) ; => ("you got me!")
+(xe4: 0 IF "you got me!" ENDIF) ; => nil
+(xe4: -1 IF "true" ELSE "false" ENDIF) ; => ("true")
+(xe4: 0 IF "true" ELSE "false!" "false!!" ENDIF) ; => ("false!!" "false!")
+(xe4: 0 IF ELSE "ommited true branch" ENDIF) ; => ("ommited true branch")
+(xe4: 0 IF "1" ELSE "a" "b" = IF "2" ELSE "3" ENDIF) ; => ("3")
+
+;;;; functions ;;;;
+
+;; of course, functional language means we have great support for 
+;; expressing ideas in forms of functions and higher order functions.
+
+;; function definition lies between `{' and `}' starting with
+;; name and then zero or more other words:
+(xe4: 
+ { my-word-for-being-surprised ( -- s ) "yikes!" }
+ my-word-for-being-surprised) ; => ("yikes!")
+
+;; some points of interest:
+;; 1) comments syntax is `(' comment-body `)'. they can be multiline,
+;;    they can be nested.
+;; 2) we describe stack snapshots in Forth signatures.
+;;    here, the word takes nothing from stack and puts there 1 string element
+;; 3) user-defined words are called in the same way as predefined ones
+
+;; what about recursion you ask? we have the best recursions ever!
+;; lets define stack printing function which will remove all printed elements:
+(xe4:
+ { .s+flush DEPTH 0 > IF .. .s+flush ENDIF }
+ ( prints 1, 2, 3, 2, 1 and makes data stack empty )
+ 1 2 3 2 1 .s+flush) ; => nil
+
+;; here is fib(n):
+;; define
+(e4: { fib 1- DUP 1 > IF DUP fib SWAP 1- fib + ENDIF })
+;; call & print
+(e4: 10 fib ..)
+
+;; as you see, user-defined words are normally stay there between 
+;; evaluation calls, but you can remove or redefine them.
+
+;; variables? there are no variables, but you can define a word
+;; which returns (puts onto stack) a single (or multiple) scalar.
+;; here are some tricks:
+(xe4:
+ { foo 1 } { bar 10 }
+
+ foo
+
+ ( word can be reassigned )
+ { foo bar }
+ { bar 20 }
+ 
+ ( but such an assignment is merely a substitution,
+   not a copy, so foo returns 20 as its value )
+ foo) ; => (1 20)
+
+;; before we will cover loops and iterations it is important for you to
+;; learn this trick:
+(xe4:
+ { var "magic" { var 777 } }
+ ( first call gives a "magic", the rest 2 return 777 )
+ var var var) ; => (777 777 "magic")
+
+;; that is right, `{' ... `}' can be nested.
+;; nested definitions are evaluated only when the outer word gets called.
+;; if the nested definition has the same name it should be called
+;; recursive definition, and it will modify original definition by itself.
+;; in the above example, var at the beginning had this body:
+;; [ "magic" { var 777 } ]
+;; after it gets called, it evaluates the body, so "magic" made it
+;; way to the stack and var body changed to the: [ 777 ].
+;; now, this is our main tool to build something more complex.
+
+;; lets start from the simple sequence.
+(xe4:
+ ( define sequence of "foo" "bar" "baz" )
+ 
+ { reset
+ { next "foo"
+ { next "bar"
+ { next "baz" } } } }
+ { next sequence-reset }
+       
+ ( prints "for", "bar", "baz" )
+ 
+ reset next .. next .. next ..
+ ( next calls return the last value (baz) )
+ 
+ reset
+ ( and we can now use sequence-next again ))
+
+;; this sequence is immutable and lives in the functions (words) only,
+;; it is not bound to any variables.
+
+;; we can make above sequence better,
+;; that it becomes circular list, so iterating through (1 2 3) 6 times 
+;; should give us (1 2 3 1 2 3):
+(xe4:
+ { init { cycle head } }
+ { head 1
+ { cycle 2
+ { cycle 3 init } } }
+ 
+ init 
+ cycle cycle cycle ( => 1, 2, 3 )
+ cycle cycle cycle ( => 1, 2, 3 )) ; => (3 2 1 3 2 1)
+
+;; using this knowledge we can build our own word for iterating.
+;; and we know, no functional language can exist without lambdas.
+;; below example actually uses lambdas:
+(xe4:
+ ( _ (underscore) is convention for lambdas )
+ { times DUP 0 > IF _ 1- times ENDIF DROP }
+
+ ( this solution works, but we can mess with counter at stack )
+  
+ { _ "hello, world!" .. } 6 times
+ { _ DUP .. } 3 times)
+
+;; as expected, "hello, words" is printed several times,
+;; the second lambda prints counter value.
+;; this is very simple implementation and its main weak point - 
+;; you can not use it to modify data stack.
+;; after each lambda call top stack element must be a counter, 
+;; or loop will go out of the control.
+;; as a consequence, returning 0 from the lambda means something like
+;; `break' in C-like languages.
+
+;; do you still remember our first sequence?
+;; it can be used to define a loop based on a iterator!
+(xe4:
+ ( previous loop can not be used to collect data into stack )
+ ( but we can make another one, using our super-sequence )
+
+ ( sequence consists of "foo", "bar" and "baz" )
+ reset
+ 
+ { iterate next "baz" = IF ELSE _ iterate ENDIF }
+ { _ DUP 2 * }
+ 4 iterate .s ( => 4 8 16 ))
+
+;; and we actually mapped some data!
+;; this approach makes sense for small amounts of iterations,
+;; and could be an option if there were any syntax sugar or
+;; other methods to define sequences for loops, but alas, for
+;; no we have none.
+
+;; many features are going to be added in short time, 
+;; just keep your eye on E4!
+
+;; hope you enjoyed this short turorial, 
+;; see ya!
+
+```
