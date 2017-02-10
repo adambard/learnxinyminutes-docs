@@ -208,9 +208,9 @@ li[4]  # Raises an IndexError
 # You can look at ranges with slice syntax.
 # (It's a closed/open range for you mathy types.)
 li[1:3]   # => [2, 4]
-# Omit the beginning
-li[2:]    # => [4, 3]
 # Omit the end
+li[2:]    # => [4, 3]
+# Omit the beginning
 li[:3]    # => [1, 2, 4]
 # Select every second entry
 li[::2]   # =>[1, 4]
