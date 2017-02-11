@@ -140,9 +140,9 @@ python_complex_number: !!python/complex 1+2j
 
 # Strings and numbers aren't the only scalars that YAML can understand.
 # ISO-formatted date and datetime literals are also parsed.
-datetime: 2001-12-15T02:59:43.1Z
-datetime_with_spaces: 2001-12-14 21:59:43.10 -5
-date: 2002-12-14
+datetime: 2001-05-15T03:14:15.9Z
+datetime_with_spaces: 2009-07-21 18:30:57.72 -1
+date: 2011-11-20
 
 # The !!binary tag indicates that a string is actually a base64-encoded
 # representation of a binary blob.

@@ -113,9 +113,9 @@ python_complex_nummer: !!python/complex 1+2j
 
 # Strings en nummers zijn niet de enige types die YAML begrijpt.
 # ISO opgemaakte datum- en datumtijdnotaties werken ook:
-datumtijd: 2001-12-15T02:59:43.1Z
-datumtijd_met_spaties: 2001-12-14 21:59:43.10 -5
-datum: 2002-12-14
+datumtijd: 2001-05-15T03:14:15.9Z
+datumtijd_met_spaties: 2009-07-21 18:30:57.72 -1
+datum: 2011-11-20
 
 # De !!binary tag geeft aan dat de string een base64-gecodeerde
 # binary blob is.

@@ -8,7 +8,7 @@ translators:
 lang: hu-hu
 ---
 
-A YAML egy adat sorosító nyelv, amit úgy terveztek, hogy közvetlenül is 
+A YAML egy adat sorosító nyelv, amit úgy terveztek, hogy közvetlenül is
 olvasható és írható legyen emberi szemmel.
 
 A JSON formátum egy szigorú befoglaló halmazát alkotja, kiegészítve azt
@@ -48,7 +48,7 @@ literal_block: |
     Az ilyen sztringet az indentáció visszahúzása zárja le, a behúzás pedig
     eltávolításra kerül.
 
-        A 'még jobban' behúzott részek megtartják a behúzásukat - 
+        A 'még jobban' behúzott részek megtartják a behúzásukat -
         ezeknek a soroknak 4 szóköz behúzása lesz.
 folded_style: >
     Az az egész szöveg-blokk lesz az értéke a 'folded_style' kulcsnak, de
@@ -120,9 +120,9 @@ python_complex_number: !!python/complex 1+2j
 
 # Nem a sztringek és a számok az egyedüli skalár típusok YAML-ben.
 # ISO-formátumú dátumok és dátumot jelölő literal kifejezések is értelmezettek.
-datetime: 2001-12-15T02:59:43.1Z
-datetime_with_spaces: 2001-12-14 21:59:43.10 -5
-date: 2002-12-14
+datetime: 2001-05-15T03:14:15.9Z
+datetime_with_spaces: 2009-07-21 18:30:57.72 -1
+date: 2011-11-20
 
 # A !!binary tag jelöli, hogy egy sztring valójában base64-kódolású
 # reprezentációja egy bináris blob-nak
