@@ -106,7 +106,7 @@ Error = error(
 yes
 ```
 
-A subtle point is that predicate scope directives specify predicate _calling_ semantics, not _definitions_ semantics. For example, if an object playing the role of a class declares a predicate private, the predicate can be defined in subclasses and instances *but* can only be called in its instances _from_ the class.
+A subtle point is that predicate scope directives specify predicate _calling_ semantics, not _definition_ semantics. For example, if an object playing the role of a class declares a predicate private, the predicate can be defined in subclasses and instances *but* can only be called in its instances _from_ the class.
 
 # Defining and implementing a protocol
 
