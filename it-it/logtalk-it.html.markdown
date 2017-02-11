@@ -548,4 +548,4 @@ La libreria Logtalk fornisce infine il supporto per combinare hook agli oggetti 
 
 # Maggiori informazioni
 
-Visita il [Sito web di Logtalk](http://logtalk.org) per maggiori informazioni.
+Visita il [Sito web di Logtalk (en)](http://logtalk.org) per maggiori informazioni.
