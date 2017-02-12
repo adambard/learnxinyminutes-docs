@@ -775,7 +775,7 @@ If you have a question, read the [compl.lang.c Frequently Asked Questions](http:
 
 It's very important to use proper spacing, indentation and to be consistent with your coding style in general.
 Readable code is better than clever code and fast code. For a good, sane coding style to adopt, see the
-[Linux kernel coding style](https://www.kernel.org/doc/Documentation/CodingStyle).
+[Linux kernel coding style](https://www.kernel.org/doc/Documentation/process/coding-style.rst).
 
 Other than that, Google is your friend.
 
