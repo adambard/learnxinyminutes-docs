@@ -15,7 +15,6 @@ contributors:
     - ["Leo Rudberg", "https://github.com/LOZORD"]
     - ["Betsy Lorton", "https://github.com/schbetsy"]
     - ["John Detter", "https://github.com/jdetter"]
-    - ["Rholais", "https://github.com/Rholais"]
 filename: LearnBash.sh
 ---
 
