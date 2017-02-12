@@ -15,6 +15,7 @@ contributors:
     - ["Leo Rudberg", "https://github.com/LOZORD"]
     - ["Betsy Lorton", "https://github.com/schbetsy"]
     - ["John Detter", "https://github.com/jdetter"]
+    - ["Rholais", "https://github.com/Rholais"]
 filename: LearnBash.sh
 ---
 
@@ -156,7 +157,7 @@ ls
 
 # These commands have options that control their execution:
 ls -l # Lists every file and directory on a separate line
-ls -t # Sort the directory contents by last-modified date (descending)
+ls -t # Sorts the directory contents by last-modified date (descending)
 ls -R # Recursively `ls` this directory and all of its subdirectories
 
 # Results of the previous command can be passed to the next command as input.
