@@ -8,7 +8,7 @@ translators:
 lang: it-it
 ---
 
-Logtalk è un linguaggio di programmazione logica orientata agli oggetti che estende il linguaggio Prolog con le moderne tecniche di Object-Oriented Programming quali incapsulamento, ereditarietà e riutilizzo del codice, senza compromettere le caratteristiche di programmazione dichiarativa del Prolog. Logtalk è implementato in codice altamente portabile e utilizza i più moderni standard di conformità del Prolog rispetto al compilatore back-end.
+Logtalk è un linguaggio di programmazione logica orientata agli oggetti che estende il linguaggio Prolog con le moderne tecniche di Object-Oriented Programming quali incapsulamento, ereditarietà e riutilizzo del codice, senza compromettere le caratteristiche di programmazione dichiarativa del Prolog. Logtalk è implementato in codice altamente portabile e utilizza i più moderni standard di conformità del Prolog rispetto al compilatore backend.
 
 Per mantenere una dimensione ragionevole, questo tutorial presuppone necessariamente che il lettore abbia una conoscenza del linguaggio Prolog ed è inoltre focalizzato esclusivamente sulla descrizione delle caratteristiche object-oriented di Logtalk.
 
@@ -32,7 +32,7 @@ Logtalk tratta gli oggetti, i protocolli e le categorie come entità di prima cl
 
 Un oggetto incapsula le dichiarazioni e le definizioni dei predicati. Gli oggetti possono essere creati in modo dinamico, ma di solito sono dichiarati come statici e definiti nel codice sorgente. Un singolo file sorgente può contenere un qualsiasi numero di definizioni di entità. Ecco un semplice oggetto `list` che definisce un membro pubblico `member/2`:
 
-```
+```logtalk
 :- object(list).
 
 	:- public(member/2).
@@ -47,7 +47,7 @@ Un oggetto incapsula le dichiarazioni e le definizioni dei predicati. Gli oggett
 
 Supponendo che il codice di cui sopra per l'oggetto `list` venga salvato in un file` list.lgt`, esso può essere compilato e caricato utilizzando il predicato predefiniti `logtalk_load/1` o la sua abbreviazione `{}/1`, con il percorso del file come argomento (l'estensione può essere omessa):
 
-```
+```logtalk
 ?- {list}.
 yes
 ```
@@ -56,7 +56,7 @@ yes
 
 L'operatore infisso `::/2` è usato per inviare messaggi ad un oggetto. Analogamente al Prolog, è possibile fare backtracking per le soluzioni alternative:
 
-```
+```logtalk
 ?- list::member(X, [1,2,3]).
 X = 1 ;
 X = 2 ;
@@ -67,8 +67,7 @@ yes
 Analogamente alla programmazione object-oriented, logtalk consente anche l'Incapsulamento. 
 Un predicato può essere dichiarata pubblico, protetto o privato. Può anche essere _local_ quando non esiste una direttiva specifica per esso all'interno dello scope. Per esempio:
 
-
-```
+```logtalk
 :- object(scopes).
 
 	:- private(bar/0).
@@ -81,7 +80,7 @@ Un predicato può essere dichiarata pubblico, protetto o privato. Può anche ess
 
 Assumendo che l'oggetto è salvato nel file `scopes.lgt`:
 
-```
+```logtalk
 ?- {scopes}.
 yes
 
@@ -103,7 +102,7 @@ yes
 Quando il predicato in un messaggio non è noto per l'oggetto (il ruolo dell'oggetto determina le procedure di ricerca), si ha un errore.
 Per esempio:
 
-```
+```logtalk
 ?- catch(scopes::unknown, Error, true).
 Error = error(
 	existence_error(predicate_declaration, unknown/0),
@@ -118,7 +117,7 @@ Un punto fondamentale da capire è che le direttive che specificano il predicato
 
 Un Protocollo contiene le dichiarazioni dei predicati che possono essere implementati da un qualsivoglia numero di oggetti e categorie:
 
-```
+```logtalk
 :- protocol(listp).
 
 	:- public(member/2).
@@ -137,7 +136,7 @@ Un Protocollo contiene le dichiarazioni dei predicati che possono essere impleme
 
 Lo scope dei predicati di un protocollo può essere ristretto usando implementazioni protected e private. Ad esempio:
 
-```
+```logtalk
 :- object(stack,
 	implements(private::listp)).
 
@@ -150,7 +149,7 @@ Difatti, tutte le relazioni tra entità (nella direttiva di apertura di un entit
 
 Un oggetto senza una istanza o senza una relazione di specializzazione con un altro oggetto interpreta il ruolo di prototipo. Un prototipo può estendere un altro oggetto, il suo prototipo genitore.
 
-```
+```logtalk
 % clyde, our prototypical elephant
 :- object(clyde).
 
@@ -173,7 +172,7 @@ Un oggetto senza una istanza o senza una relazione di specializzazione con un al
 
 Per rispondere ad un messaggio inviato ad un oggetto che ha il ruolo di prototipo, si cerca prima una risposta nel prototipo stesso e se il prototipo non sa rispondere si passa all'eventuale prototipo genitore (se esiste):
 
-```
+```logtalk
 ?- fred::number_of_legs(N).
 N = 4
 yes
@@ -185,7 +184,7 @@ yes
 
 Un messaggio è valido se il relativo predicato è dichiarato in un oggetto (e se il mittente è nel campo di applicazione), ma fallirà, piuttosto che lanciare un errore, se il predicato non è definito. Questa è chiamata la _closed-world assumption_. Ad esempio, si consideri il seguente oggetto, salvato in un file `foo.lgt`:
 
-```
+```logtalk
 :- object(foo).
 
 	:- public(bar).
@@ -195,7 +194,7 @@ Un messaggio è valido se il relativo predicato è dichiarato in un oggetto (e s
 
 Caricando il file e cercando di chiamare il predicato `bar/0` questo fallisce come previsto. Si noti che ciò è diverso dal chiamare un predicato sconosciuto _unknown_, che invece genera un errore:
 
-```
+```logtalk
 ?- {foo}.
 yes
 
@@ -214,7 +213,7 @@ yes
 
 Per definire gli oggetti nei ruoli di classi e/o istanze, un oggetto deve avere almeno un istanziazione o una relazione di specializzazione con un altro oggetto. Gli oggetti che hanno il ruolo di meta-classi possono essere utilizzati quando abbiamo bisogno di usare una classe come se fosse un'istanza. Il seguente esempio mostra come creare dinamicamente nuovi oggetti in fase di esecuzione:
 
-```
+```logtalk
 % a simple, generic, metaclass defining a new/2 predicate for its instances
 :- object(metaclass,
 	instantiates(metaclass)).
@@ -251,7 +250,7 @@ Per definire gli oggetti nei ruoli di classi e/o istanze, un oggetto deve avere 
 
 Nel rispondere ad un messaggio inviato ad un oggetto ha assunto il ruolo di istanza, tal messaggio viene convalidato partendo dalla sua classe e andando a ritroso nella gerarchia, se necessario, fino alle sue superclassi. Supponendo che il messaggio sia valido, allora si cerca una risposta a partire dall'istanza stessa:
 
-```
+```logtalk
 ?- person::new(Instance, [name(paulo)]).
 Instance = o1
 yes
@@ -273,7 +272,7 @@ yes
 
 Una categoria è un'unità atomica di codice riutilizzabile. Una categoria è usata per incapsulare una insieme coesivo (_cohesive_) di dichiarazioni e di definizioni di predicato ed è atta ad implementare una singola (_single_) funzionalità che può essere importata in qualsiasi oggetto. Una categoria può quindi essere concepita come il concetto duale di protocollo. Nel seguente esempio, si definiscono prima le categorie che rappresentano i motori di auto e poi si importano tali categorie negli oggetti auto:
 
-```
+```logtalk
 % a protocol describing engine characteristics
 :- protocol(carenginep).
 
@@ -327,7 +326,7 @@ Una categoria è un'unità atomica di codice riutilizzabile. Una categoria è us
 
 Le Categorie sono compilate in modo indipendente e, quindi, consentono l'importazione di oggetti da aggiornare mediante il semplice aggiornamento delle categorie importate, senza richiedere pertanto la ricompilazione dell'oggetto. Le Categorie forniscono anche la _runtime transparency_,  cioè il protocollo della categoria si aggiunge al protocollo degli oggetti che importano tale categoria:
 
-```
+```logtalk
 ?- sedan::current_predicate(Predicate).
 Predicate = reference/1 ;
 Predicate = capacity/1 ;
@@ -342,7 +341,7 @@ yes
 
 Le categorie possono essere anche usate per modificare gli oggetti al volo (_hot-patch_). Una categoria può aggiungere nuovi predicati ad un oggetto e/o sostituire le definizioni dei predicati dell'oggetto. Ad esempio, si consideri il seguente oggetto:
 
-```
+```logtalk
 :- object(buggy).
 
 	:- public(p/0).
@@ -353,7 +352,7 @@ Le categorie possono essere anche usate per modificare gli oggetti al volo (_hot
 
 Si supponga che l'oggetto stampi la stringa sbagliata quando riceve il messaggio `p/0`:
 
-```
+```logtalk
 ?- {buggy}.
 yes
 
@@ -364,7 +363,7 @@ yes
 
 Se il codice sorgente dell'oggetto non è disponibile e bisogna correggere l'applicazione che sta eseguendo il codice dell'oggetto, si può semplicemente definire una categoria che corregge il predicato non corretto:
 
-```
+```logtalk
 :- category(patch,
 	complements(buggy)).
 
@@ -376,7 +375,7 @@ Se il codice sorgente dell'oggetto non è disponibile e bisogna correggere l'app
 
 Dopo la compilazione e il caricamento della categoria nell'applicazione in esecuzione si ottiene:
 
-```
+```logtalk
 ?- {patch}.
 yes
 
@@ -391,7 +390,7 @@ Poiché l'hot-patching pregiudica forzatamente l'incapsulamento, un apposito fla
 
 Gli oggetti e le categorie possono essere parametrizzati utilizzando come identificativo un compound-term al posto di un atomo. Oggetti e parametri di una categoria sono variabili logiche _logical variables_ condivise con tutti i predicati incapsulati. Ecco un esempio con cerchi geometrici:
 
-```
+```logtalk
 :- object(circle(_Radius, _Color)).
 
 	:- public([
@@ -411,7 +410,7 @@ Gli oggetti e le categorie possono essere parametrizzati utilizzando come identi
 
 Oggetti parametrici possono essere utilizzati come qualsiasi altro oggetto e di solito forniscono i valori da assegnare ai parametri quando si invia un messaggio:
 
-```
+```logtalk
 ?- circle(1.23, blue)::area(Area).
 Area = 4.75291
 yes
@@ -419,7 +418,7 @@ yes
 
 Gli oggetti parametrici forniscono anche un modo semplice per associare un insieme di predicati con un semplice predicato Prolog. Fatti Prolog possono essere interpretati come oggetti proxy parametrici ( _parametric object proxies_) quando hanno lo stesso funtore e arietà degli identificatori di oggetti parametrici. Per lavorare con i proxy viene fornita una sintassi maneggevole. Per esempio, si prendano le seguenti clausole per il predicato `circle/2`:
 
-```
+```logtalk
 circle(1.23, blue).
 circle(3.71, yellow).
 circle(0.39, green).
@@ -429,7 +428,7 @@ circle(8.32, cyan).
 
 Con queste clausole, si può facilmente calcolare, ad esempio, un elenco con le aree di tutti i cerchi:
 
-```
+```logtalk
 ?- findall(Area, {circle(_, _)}::area(Area), Areas).
 Areas = [4.75291, 43.2412, 0.477836, 103.508, 217.468]
 yes
@@ -441,7 +440,7 @@ In pratica, il costrutto `{Goal}::Message` prova il goal `Goal`, instanziando le
 
 Logtalk supporta l'_event-driven programming_ mediante la definizione di eventi e di monitor. Un evento è semplicemente l'invio di un messaggio ad un oggetto. Un monitor è un gestore di un evento. L'evento (con l'invio di un messaggio) è un'attività atomica, ed è preceduta da un evento _before_ e da un evento _after_. Il monitor gestisce tali eventi mediante i predicati, `before/3` e `after/3`, che sono chiamati rispettivamente prima e dopo il verificarsi dell'evento. Un monitor può inoltre interrogare, registrare e cancellare un evento nel registro eventi a livello di sistema il quale che associa gli eventi con i monitor. Ad esempio, un semplice tracer per ogni messaggio inviato utilizzando il costrutto `::/2` può essere definito come:
 
-```
+```logtalk
 :- object(tracer,
 	implements(monitoring)).    % built-in protocol for event handlers
 
@@ -460,7 +459,7 @@ Logtalk supporta l'_event-driven programming_ mediante la definizione di eventi 
 
 Supponendo che l'oggetto `tracer` e l'oggetto `list` definito in precedenza siano stati già compilati e caricati, si possono osservare i gestori di eventi in azione durante l'invio di un messaggio:
 
-```
+```logtalk
 ?- list::member(X, [1,2,3]).
 
 call: list <-- member(X, [1,2,3]) from user
@@ -482,7 +481,7 @@ La programmazione event-driven può essere vista come una forma di _computationa
 Logtalk supporta anche le espressioni lambda. I parametri della espressioni lambda sono rappresentati mediante una lista con l'operatore infisso `(>>)/2` che collega i parametri alla relativa lambda espressione. Ecco alcuni semplici esempi di che usano i meta-predicati.
 
 
-```
+```logtalk
 ?- {library(metapredicates_loader)}.
 yes
 
@@ -491,9 +490,9 @@ Ys = [2,4,6]
 yes
 ```
 
-Logtalk supporta anche il Currying:
+Logtalk supporta anche il _currying_:
 
-```
+```logtalk
 ?- meta::map([X]>>([Y]>>(Y is 2*X)), [1,2,3], Ys).
 Ys = [2,4,6]
 yes
@@ -505,7 +504,7 @@ Infine, le variabili libere Lambda possono essere espresso usando la sintassi es
 
 I Termini e goal nel file sorgente possono essere _estesi_ al momento della compilazione specificando una hook ad un oggetto (_hook object_) che definisce le regole di riscrittura dei termini e riscrittura dei quesiti. Ad esempio, si consideri il seguente oggetto semplice, salvato nel file `source.lgt`:
 
-```
+```logtalk
 :- object(source).
 
 	:- public(bar/1).
@@ -518,7 +517,7 @@ I Termini e goal nel file sorgente possono essere _estesi_ al momento della comp
 
 Si supponga il seguente hook all'oggetto, salvato nel file `my_macros.lgt`, che estende le clausole e chiama il predicato locale  `foo/1`:
 
-```
+```logtalk
 :- object(my_macros,
 	implements(expanding)).    % built-in protocol for expanding predicates
 
@@ -532,7 +531,7 @@ Si supponga il seguente hook all'oggetto, salvato nel file `my_macros.lgt`, che 
 
 Dopo aver caricato il file contenente la macro, si può espandere il nostro file sorgente usando il flag del compilatore `hook`:
 
-```
+```logtalk
 ?- logtalk_load(my_macros), logtalk_load(source, [hook(my_macros)]).
 yes
 
