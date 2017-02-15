@@ -13,7 +13,7 @@ lang: de-de
 
 Java ist eine Programmiersprache für vielfältige Aufgaben. Sie ist imperative und objektorientiert.
 Oftmals wird sie für Desktop- Webapplikationen sowie als Programmiersprache im Betriebssystem Android verwendet.
-[Weitere Informationen \(Englisch\](http://docs.oracle.com/javase/tutorial/java/)
+[Weitere Informationen \(Englisch\)](http://docs.oracle.com/javase/tutorial/java/)
 
 ```java
 // Einzeilige Kommentare starten mit //
