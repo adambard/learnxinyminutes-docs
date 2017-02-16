@@ -447,7 +447,8 @@ Agent.update(my_agent, fn colors -> ["blue" | colors] end)
 
 * [Getting started guide](http://elixir-lang.org/getting-started/introduction.html) from the [Elixir website](http://elixir-lang.org)
 * [Elixir Documentation](http://elixir-lang.org/docs/master/)
-* ["Programming Elixir"](https://pragprog.com/book/elixir/programming-elixir) by Dave Thomas
+* [Programming Elixir](https://pragprog.com/book/elixir/programming-elixir) by Dave Thomas
 * [Elixir Cheat Sheet](http://media.pragprog.com/titles/elixir/ElixirCheat.pdf)
-* ["Learn You Some Erlang for Great Good!"](http://learnyousomeerlang.com/) by Fred Hebert
-* ["Programming Erlang: Software for a Concurrent World"](https://pragprog.com/book/jaerlang2/programming-erlang) by Joe Armstrong
+* [Learn You Some Erlang for Great Good!](http://learnyousomeerlang.com/) by Fred Hebert
+* [Metaprogramming Elixir](https://pragprog.com/book/cmelixir/metaprogramming-elixir) by Chris McCord
+* [Programming Erlang: Software for a Concurrent World](https://pragprog.com/book/jaerlang2/programming-erlang) by Joe Armstrong
