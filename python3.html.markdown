@@ -729,8 +729,8 @@ if __name__ == '__main__':
     # Update the property for this instance
     i.age = 42
     # Get the property
-    i.say(i.age)                    # => 42
-    j.say(j.age)                    # => 0
+    i.say(i.age)                    # => "Ian: 42"
+    j.say(j.age)                    # => "Joel: 0"
     # Delete the property
     del i.age
     # i.age                         # => this would raise an AttributeError
