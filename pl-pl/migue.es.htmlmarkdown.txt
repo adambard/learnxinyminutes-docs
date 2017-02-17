@@ -1,0 +1,64 @@
+Las cadenas son objetos #
+
+'Soy una cadena.'. Clase # => Cadena
+"Soy también una cadena" .. Clase # => Cadena
+
+llenar = 'utilización cadena de interpolación'
+"Sé rellenar # {} utilizando comillas dobles."
+# => "Puedo usar la interpolación cadena utilizando comillas dobles."
+
+# Trate de ahorrar tangas usando un apóstrofe en lugar de las citas cuando sea posible
+# Cotizaciones realizan operaciones internas adicionales
+
+
+cuerdas # Connect, pero no los números
+'Hey' + 'mundo' # => "oye mundo"
+'Hey' + 3 = #> TypeError: no se puede convertir la cadena en Fixnum
+'Hey' 3.to_s + # => "oye 3"
+
+# Combinando las cadenas y operadores
+'Hey' * 3 # => "eh eh eh"
+
+Agregando a una cadena #
+'Hey' << 'mundo' # => "oye mundo"
+
+# Imprime el valor junto con una nueva línea al final
+pone "Imprimir"
+# => Imprimir!
+# => Nil
+
+# No se imprime un nuevo valor al final de la línea
+impresión de "imprimir"
+# => Imprimir! => Nill
+
+las variables #
+x = 25 # => 25
+x = #> 25
+
+# Tenga en cuenta que la asignación devuelve el valor atribuido
+# Esto significa que puede realizar la asignación múltiple:
+
+x = y = 10 # => 10
+x = #> 10
+y # => 10
+
+# Habitualmente, utilice la notación para el nombre de la variable variable_name
+variableName = true
+
+# Use los nombres de variable descriptiva
+sciezka_do_projektu = '/ bueno / Nombre /'
+path = "/ mal / nombre / '
+
+# Símbolos (estos objetos)
+# Los símbolos son constantes inmutables, se usan repetidamente representados internamente como
+Enteros #. A menudo se utilizan en lugar de las cadenas con el fin de transferir datos de manera eficiente
+
+: Oczekujacy.class # => Símbolo
+
+estado =: en espera
+
+== estado: Pendiente # => true
+
+== estado 'esperando' # => false
+
+== Estado: Aprobado # => false
