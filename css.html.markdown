@@ -35,7 +35,7 @@ El objetivo principal de este artículo es la sintaxis y algunos consejos genera
    ## SELECTORS
    #################### */
 
-/* the selector is used to target an element on a page. */
+/* el selector es usado para apuntar a un elemento de la pagina. */
 selector { property: value; /* more properties...*/ }
 
 /*
