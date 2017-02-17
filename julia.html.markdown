@@ -775,4 +775,4 @@ code_native(circle_area, (Float64,))
 
 You can get a lot more detail from [The Julia Manual](http://docs.julialang.org/en/latest/#Manual-1)
 
-The best place to get help with Julia is the (very friendly) [mailing list](https://groups.google.com/forum/#!forum/julia-users).
+The best place to get help with Julia is the (very friendly) [Discourse forum](https://discourse.julialang.org/).
