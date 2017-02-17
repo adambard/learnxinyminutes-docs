@@ -24,11 +24,12 @@ Esta guia ha sido escrita con CSS 2 en mente, la cual es extendida por una nueva
 Probar todo en un patio de juegos CSS como [dabblet] (http://dabblet.com/).
 El objetivo principal de este artículo es la sintaxis y algunos consejos generales.
 
-## Syntax
+## Sintaxis
 
 ```css
-/* comments appear inside slash-asterisk, just like this line!
-   there are no "one-line comments"; this is the only comment style */
+/* Los comentarios aparecen dentro  de un diagonal-asterisco, justo como esta linea
+   no hay "comentarios en una linea"; este es el unico estilo de comentario.*/
+ 
 
 /* ####################
    ## SELECTORS
