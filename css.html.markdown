@@ -1,6 +1,6 @@
 ---
-language: css
-contributors:
+lenguaje: css
+contribudores:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
     - ["Marco Scannadinari", "https://github.com/marcoms"]
     - ["Geoffrey Liu", "https://github.com/g-liu"]
@@ -8,7 +8,8 @@ contributors:
     - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
     - ["Brett Taylor", "https://github.com/glutnix"]
     - ["Tyler Mumford", "https://tylermumford.com"]
-filename: learncss.css
+    - ["miky ackerman", "https://github.com/mikyackerman"]
+Archivo: learncss.css
 ---
 
 Web pages are built with HTML, which specifies the content of a page.
@@ -322,3 +323,4 @@ a new feature.
 * [Z-Index - The stacking context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
 * [SASS](http://sass-lang.com/) and [LESS](http://lesscss.org/) for CSS pre-processing
 * [CSS-Tricks](https://css-tricks.com)
+
