@@ -16,9 +16,7 @@ Paginas web estan contruidas en HTML, lo cual especifica el contenido de una pag
 CSS(Hoja de Estilos en Cascada) es un lenguaje separado el cual especifica
 la **apariencia** de una pagina.
 
-CSS code is made of static *rules*. Each rule takes one or more *selectors* and
-gives specific *values* to a number of visual *properties*. Those properties are
-then applied to the page elements indicated by the selectors.
+codigo CSS esta hecho de *reglas* estaticas. Cada regla toma uno o mas *selectores* y da *valores* especificos a un numero de *propiedades* visuales. Esas propiedades estan entonces aplicadas a los elementos indicados en una pagina por los selectores
 
 This guide has been written with CSS 2 in mind, which is extended by the new
 features of CSS 3.
