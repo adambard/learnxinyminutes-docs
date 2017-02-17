@@ -18,8 +18,7 @@ la **apariencia** de una pagina.
 
 codigo CSS esta hecho de *reglas* estaticas. Cada regla toma uno o mas *selectores* y da *valores* especificos a un numero de *propiedades* visuales. Esas propiedades estan entonces aplicadas a los elementos indicados en una pagina por los selectores
 
-This guide has been written with CSS 2 in mind, which is extended by the new
-features of CSS 3.
+Esta guia ha sido escrita con CSS 2 en mente, la cual es extendida por una nueva caracterica de CSS 3.
 
 **NOTE:** Because CSS produces visual results, in order to learn it, you need to
 try everything in a CSS playground like [dabblet](http://dabblet.com/).
