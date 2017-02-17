@@ -20,9 +20,9 @@ codigo CSS esta hecho de *reglas* estaticas. Cada regla toma uno o mas *selector
 
 Esta guia ha sido escrita con CSS 2 en mente, la cual es extendida por una nueva caracterica de CSS 3.
 
-**NOTE:** Because CSS produces visual results, in order to learn it, you need to
-try everything in a CSS playground like [dabblet](http://dabblet.com/).
-The main focus of this article is on the syntax and some general tips.
+**NOTA:** Debido a que CSS produce resultados visuales, para aprenderlo, necesitas
+Probar todo en un patio de juegos CSS como [dabblet] (http://dabblet.com/).
+El objetivo principal de este artículo es la sintaxis y algunos consejos generales.
 
 ## Syntax
 
