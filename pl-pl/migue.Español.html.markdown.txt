@@ -1,0 +1,73 @@
+# Esto es un comentario
+
+= comenzar
+Es un comentario de varias líneas
+nadie lo usa
+Además, no debería
+= fin
+
+# En primer lugar: Todo es un objeto.
+
+# Los números son objetos
+
+3.class # => Fixnum
+
+3.to_s # => "3"
+
+
+# Un poco de aritmética básica
+1 + # 1 => 2
+8 - # 1 => 7
+# 10 * 2 => 20
+35/5 # => 7
+2 ** # 5 => 32
+5% # 3 => 2
+# 5 R 6 => 3
+
+La aritmética es la sintaxis zastapeniem #
+# métodos inducidas en objetos
+1. + (3) # => 4
+* 10. # 5 => 50
+
+# Los valores especiales son objetos
+nil # Esto realmente no es nada
+true true #
+# False
+
+nil.class # => NilClass
+true.class # => TrueClass
+false.class # => FalseClass
+
+# Igualdad
+1 == 1 # => true
+2 == 1 # => false
+
+la desigualdad #
+1! = 1 # => false
+2! = 1 # => true
+
+# Sólo valor 'falso' fuera falsa, es nula
+
+! Ninguna # => true
+! Falso # => true
+0 # => false
+
+# Más comparaciones
+1 <= # 10> true
+1> 10 # => false
+2 <= 2 # => true
+2> = 2 # => true
+
+# Los operadores lógicos
+&& verdadero falso # => false
+verdadera || false # => true
+! La verdadera # => false
+
+# Hay versiones alternativas de los operadores lógicos con significativamente menos
+# Prioridad. Se utilizan para controlar las cadenas de expresiones de expresión
+# Hasta que uno de ellos devuelva verdadero o falso.
+
+# `Solamente Zrob_cos_innego` llamar when` zrob_cos` tendrán éxito.
+zrob_cos_innego () y zrob_cos ()
+# `Log_error` llamar solamente zrob_cos` when` no tiene éxito.
+zrob_cos () o LOG_ERROR ()
