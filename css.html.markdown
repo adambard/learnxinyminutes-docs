@@ -12,9 +12,9 @@ contribudores:
 Archivo: learncss.css
 ---
 
-Web pages are built with HTML, which specifies the content of a page.
-CSS (Cascading Style Sheets) is a separate language which specifies
-a page's **appearance**.
+Paginas web estan contruidas en HTML, lo cual especifica el contenido de una pagina
+CSS(Hoja de Estilos en Cascada) es un lenguaje separado el cual especifica
+la **apariencia** de una pagina.
 
 CSS code is made of static *rules*. Each rule takes one or more *selectors* and
 gives specific *values* to a number of visual *properties*. Those properties are
@@ -323,4 +323,5 @@ a new feature.
 * [Z-Index - The stacking context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
 * [SASS](http://sass-lang.com/) and [LESS](http://lesscss.org/) for CSS pre-processing
 * [CSS-Tricks](https://css-tricks.com)
+
 
