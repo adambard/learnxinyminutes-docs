@@ -182,7 +182,7 @@ A message is valid if the corresponding predicate is declared (and the sender is
 ```logtalk
 :- object(foo).
 
-	:- public(bar).
+	:- public(bar/0).
 
 :- end_object.
 ```
