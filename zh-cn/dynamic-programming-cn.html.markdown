@@ -3,7 +3,8 @@ category: Algorithms & Data Structures
 name: Dynamic Programming
 contributors:
     - ["Akashdeep Goel", "http://github.com/akashdeepgoel"]
-filename: learnangular-cn.html
+filename: dynamic-programming-cn.html.markdown
+lang: zh-cn
 translators:
    - ["EtaoinWu", "https://github.com/EtaoinWu"]
 ---
