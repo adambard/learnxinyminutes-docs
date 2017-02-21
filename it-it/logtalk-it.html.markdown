@@ -187,7 +187,7 @@ Un messaggio è valido se il relativo predicato è dichiarato in un oggetto (e s
 ```logtalk
 :- object(foo).
 
-	:- public(bar).
+	:- public(bar/0).
 
 :- end_object.
 ```
