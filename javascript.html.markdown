@@ -138,7 +138,7 @@ undefined; // used to indicate a value is not currently present (although
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
 ///////////////////////////////////
-// 2. Variables, Arrays and Objects
+// 2. Variables, Arrays and basics of Objects
 
 // Variables are declared with the `var` keyword. JavaScript is dynamically
 // typed, so you don't need to specify type. Assignment uses a single `=`
@@ -200,6 +200,11 @@ myObj.myThirdKey = true;
 // If you try to access a value that's not yet set, you'll get undefined.
 myObj.myFourthKey; // = undefined
 
+// JavaScript objects are not instantiated from blueprints ("classes" in other
+// object-oriented languages), but may refer to another special object called a
+// "prototype". See later section for more info.
+
+
 ///////////////////////////////////
 // 3. Logic and Control Structures
 
@@ -225,7 +230,7 @@ do {
 } while (!isValid(input))
 
 // The `for` loop is the same as C and Java:
-// initialisation; continue condition; iteration.
+// initialization; continue condition; iteration.
 for (var i = 0; i < 5; i++){
     // will run 5 times
 }
@@ -241,22 +246,25 @@ for (var i = 0; i < 10; i++) {
     }
 }
 
-// The for/in statement iterates over every property across the entire prototype chain.
+// The for/in statement allows iteration over properties of an object.
 var description = "";
 var person = {fname:"Paul", lname:"Ken", age:18};
 for (var x in person){
     description += person[x] + " ";
-}
+} // description = 'Paul Ken 18 '
 
-// To only consider properties attached to the object itself
-// and not its prototypes, use the `hasOwnProperty()` check.
-var description = "";
-var person = {fname:"Paul", lname:"Ken", age:18};
-for (var x in person){
-    if (person.hasOwnProperty(x)){
-        description += person[x] + " ";
-    }
+// It also works for array objects but iterates over the indices
+var myArray = [1, 2, 3, "apple", "banana", function(){}]
+for (var index in myArray) {
+  console.log(index + ": " + myArray[index]);
 }
+///prints:
+// 0: 1
+// 1: 2
+// 2: 3
+// 3: apple
+// 4: banana
+// 5: function () {}
 
 // For/in should not be used to iterate over an Array where the index order
 // is important, as there is no guarantee that for/in will return the indexes
@@ -272,7 +280,6 @@ if (colour == "red" || colour == "blue"){
 
 // && and || "short circuit", which is useful for setting default values.
 var name = otherName || "default";
-
 
 // The `switch` statement checks for equality with `===`.
 // Use 'break' after each case
@@ -485,6 +492,26 @@ myObj.myBoolean; // = true
 myPrototype.meaningOfLife = 43;
 myObj.meaningOfLife; // = 43
 
+// The for/in statement allows iteration over properties of an object,
+// walking up the prototype chain until it sees a null prototype.
+for (var x in myObj){
+    console.log(myObj[x]);
+}
+///prints:
+// Hello world!
+// 42
+// [Function: myFunc]
+
+// To only consider properties attached to the object itself
+// and not its prototypes, use the `hasOwnProperty()` check.
+for (var x in myObj){
+    if (myObj.hasOwnProperty(x)){
+        console.log(myObj[x]);
+    }
+}
+///prints:
+// Hello world!
+
 // We mentioned that `__proto__` was non-standard, and there's no standard way to
 // change the prototype of an existing object. However, there are two ways to
 // create a new object with a given prototype.
@@ -570,12 +597,15 @@ of the language.
 
 [JavaScript: The Definitive Guide][6] is a classic guide and reference book.
 
-[Eloquent Javascript][8] by Marijn Haverbeke is an excellent JS book/ebook with attached terminal
+[Eloquent Javascript][8] by Marijn Haverbeke is an excellent JS book/ebook with
+attached terminal
 
-[Eloquent Javascript - The Annotated Version][9] by Gordon Zhu is also a great derivative of Eloquent Javascript with extra explanations and clarifications for some of the more complicated examples.
+[Eloquent Javascript - The Annotated Version][9] by Gordon Zhu is also a great
+derivative of Eloquent Javascript with extra explanations and clarifications for
+some of the more complicated examples.
 
-[Javascript: The Right Way][10] is a guide intended to introduce new developers to JavaScript and help experienced developers learn more about its best practices.
-
+[Javascript: The Right Way][10] is a guide intended to introduce new developers
+to JavaScript and help experienced developers learn more about its best practices.
 
 In addition to direct contributors to this article, some content is adapted from
 Louie Dinh's Python tutorial on this site, and the [JS Tutorial][7] on the
