@@ -25,14 +25,20 @@ double paragraphs, and single notes.
   Multiline comments use #` and a quoting construct.
   (), [], {}, 「」, etc, will work.
 )
+```
 
-### Variables
+## Variables
 
+```perl6
 # In Perl 6, you declare a lexical variable using `my`
 my $variable;
 # Perl 6 has 4 kinds of variables:
+```
 
-## * Scalars. They represent a single value. They start with a `$`
+### Scalars
+
+```perl6
+# Scalars represent a single value. They start with a `$`
 
 my $str = 'String';
 # double quotes allow for interpolation (which we'll see later):
@@ -46,8 +52,12 @@ my $bool = True; # `True` and `False` are Perl 6's boolean values.
 my $inverse = !$bool; # You can invert a bool with the prefix `!` operator
 my $forced-bool = so $str; # And you can use the prefix `so` operator
                            # which turns its operand into a Bool
+```
 
-## * Lists. They represent multiple values. Their name start with `@`.
+### Lists
+
+```perl6
+# Lists represent multiple values. Their name start with `@`.
 
 my @array = 'a', 'b', 'c';
 # equivalent to :
@@ -66,8 +76,11 @@ say "Interpolate all elements of an array using [] : @array[]";
 my @keys = 0, 2;
 @array[@keys] = @letters; # Assignment using an array containing index values
 say @array; #=> a 6 b
+```
 
-## * Hashes, or key-value Pairs.
+### Hashes, or key-value Pairs.
+
+```perl6
 # Hashes are pairs of keys and values.
 # You can construct a Pair object using the syntax `Key => Value`.
 # Hash tables are very fast for lookup, and are stored unordered.
@@ -96,9 +109,13 @@ my %hash = :w(1),    # equivalent to `w => 1`
 say %hash{'key1'}; # You can use {} to get the value from a key
 say %hash<key2>;   # If it's a string, you can actually use <>
                    # (`{key1}` doesn't work, as Perl6 doesn't have barewords)
+```
 
-## * Subs: subroutines or functions as most other languages call them are
-#          created with the `sub` keyword.
+## Subs
+
+```perl6
+# subroutines or functions as most other languages call them are
+# created with the `sub` keyword.
 sub say-hello { say "Hello, world" }
 
 sub say-hello-to(Str $name) { # You can provide the type of an argument
@@ -186,8 +203,11 @@ sub concat3($a, $b, $c) {
 }
 concat3(|@array); #=> a, b, c
                   # `@array` got "flattened" as a part of the argument list
+```
 
-### Containers
+## Containers
+
+```perl6
 # In Perl 6, values are actually stored in "containers".
 # The assignment operator asks the container on the left to store the value on
 #  its right. When passed around, containers are marked as immutable.
@@ -216,11 +236,12 @@ sub x-store() is rw { $x }
 x-store() = 52; # in this case, the parentheses are mandatory
                 # (else Perl 6 thinks `x-store` is an identifier)
 say $x; #=> 52
+```
 
+## Control Flow Structures
+### Conditionals
 
-### Control Flow Structures
-## Conditionals
-
+```perl6
 # - `if`
 # Before talking about `if`, we need to know which values are "Truthy"
 # (represent True), and which are "Falsey" (or "Falsy") -- represent False.
@@ -249,7 +270,11 @@ say "Quite truthy" if True;
 
 my $age = 30;
 say $age > 18 ?? "You are an adult" !! "You are under 18";
+```
 
+### given/when, or switch
+
+```perl6
 # - `given`-`when` looks like other languages' `switch`, but is much more
 # powerful thanks to smart matching and Perl 6's "topic variable", $_.
 #
@@ -282,9 +307,11 @@ given "foo bar" {
     say "Something else"
   }
 }
+```
 
-## Looping constructs
+### Looping constructs
 
+```perl6
 # - `loop` is an infinite loop if you don't pass it arguments,
 # but can also be a C-style `for` loop:
 loop {
@@ -327,9 +354,11 @@ for @array {
 if long-computation() -> $result {
   say "The result is $result";
 }
+```
 
-### Operators
+## Operators
 
+```perl6
 ## Since Perl languages are very much operator-based languages,
 ## Perl 6 operators are actually just funny-looking subroutines, in syntactic
 ##  categories, like infix:<+> (addition) or prefix:<!> (bool not).
@@ -448,12 +477,18 @@ $b || $a; # 1
 $a *= 2; # multiply and assignment. Equivalent to $a = $a * 2;
 $b %%= 5; # divisible by and assignment
 @array .= sort; # calls the `sort` method and assigns the result back
+```
 
-### More on subs !
+## More on subs !
+
+```perl6
 # As we said before, Perl 6 has *really* powerful subs. We're going to see
 # a few more key concepts that make them better than in any other language :-).
+```
 
-## Unpacking !
+### Unpacking !
+
+```perl6
 # It's the ability to "extract" arrays and keys (AKA "destructuring").
 # It'll work in `my`s and in parameter lists.
 my ($f, $g) = 1, 2;
@@ -521,7 +556,11 @@ sub list-of($n) {
   }
 }
 my @list3 = list-of(3); #=> (0, 1, 2)
+```
 
+### lambdas
+
+```perl6
 ## You can create a lambda with `-> {}` ("pointy block") or `{}` ("block")
 my &lambda = -> $argument { "The argument passed to this lambda is $argument" }
 # `-> {}` and `{}` are pretty much the same thing, except that the former can
@@ -564,8 +603,11 @@ map(sub ($a, $b) { $a + $b + 3 }, @array); # (here with `sub`)
 
 # Note : those are sorted lexicographically.
 # `{ $^b / $^a }` is like `-> $a, $b { $b / $a }`
+```
 
-## About types...
+### About types...
+
+```perl6
 # Perl6 is gradually typed. This means you can specify the type
 #  of your variables/arguments/return types, or you can omit them
 #  and they'll default to "Any".
@@ -579,8 +621,11 @@ map(sub ($a, $b) { $a + $b + 3 }, @array); # (here with `sub`)
 # You can specify the type you're subtyping (by default, Any),
 #  and add additional checks with the "where" keyword:
 subset VeryBigInteger of Int where * > 500;
+```
 
-## Multiple Dispatch
+### Multiple Dispatch
+
+```perl6
 # Perl 6 can decide which variant of a `sub` to call based on the type of the
 # arguments, or on arbitrary preconditions, like with a type or a `where`:
 
@@ -624,9 +669,11 @@ multi with-or-without-you {
 # sub trait_mod:<is>(Routine $r, :$rw!) {}
 #
 # (commented because running this would be a terrible idea !)
+```
 
+## Scoping
 
-### Scoping
+```perl6
 # In Perl 6, unlike many scripting languages, (such as Python, Ruby, PHP),
 # you must declare your variables before using them. The `my` declarator
 # you have learned uses "lexical scoping". There are a few other declarators,
@@ -646,9 +693,11 @@ outer()(); #=> 'Foo Bar'
 # As you can see, `$file_scoped` and `$outer_scoped` were captured.
 # But if we were to try and use `$bar` outside of `foo`,
 # the variable would be undefined (and you'd get a compile time error).
+```
 
-### Twigils
+## Twigils
 
+```perl6
 # There are many special `twigils` (composed sigil's) in Perl 6.
 # Twigils define the variables' scope.
 # The * and ? twigils work on standard variables:
@@ -683,9 +732,11 @@ call_say_dyn(); #=> 25 100
                 # we are calling it from outside.
 say_dyn(); #=> 1 100 We changed the value of $*dyn_scoped_2 in call_say_dyn
            #         so now its value has changed.
+```
 
-### Object Model
+## Object Model
 
+```perl6
 # To call a method on an object, add a dot followed by the method name:
 # => $object.method
 # Classes are declared with the `class` keyword. Attributes are declared
@@ -730,8 +781,11 @@ say $class-obj.get-value; #=> 15
 #$class-obj.attrib = 5; # This fails, because the `has $.attrib` is immutable
 $class-obj.other-attrib = 10; # This, however, works, because the public
                               # attribute is mutable (`rw`).
+```
 
-## Object Inheritance
+### Object Inheritance
+
+```perl6
 #  Perl 6 also has inheritance (along with multiple inheritance)
 #  While `method`'s are inherited, `submethod`'s are not.
 #  Submethods are useful for object construction and destruction tasks,
@@ -768,9 +822,12 @@ $Madison.talk; # prints "Goo goo ga ga" due to the overrided method.
 #  `$a .= b` is the same as `$a = $a.b`)
 # Also note that `BUILD` (the method called inside `new`)
 #  will set parent properties too, so you can pass `val => 5`.
+```
 
+### Roles, or Mixins
 
-## Roles are supported too (also called Mixins in other languages)
+```perl6
+# Roles are supported too (also called Mixins in other languages)
 role PrintableVal {
   has $!counter = 0;
   method print {
@@ -798,8 +855,11 @@ class Item does PrintableVal {
   # NOTE: You can use a role as a class (with `is ROLE`). In this case, methods
   # will be shadowed, since the compiler will consider `ROLE` to be a class.
 }
+```
 
-### Exceptions
+## Exceptions
+
+```perl6
 # Exceptions are built on top of classes, in the package `X` (like `X::IO`).
 # In Perl6 exceptions are automatically 'thrown'
 open 'foo'; #> Failed to open file foo: no such file or directory
@@ -828,8 +888,11 @@ open 'foo' orelse say "Something happened $_"; #> Something happened
 # Both of those above work but in case we get an object from the left side that
 # is not a failure we will probably get a warning.  We see below how we can use
 # `try` and `CATCH` to be more specific with the exceptions we catch.
+```
 
-## Using `try` and `CATCH`
+### Using `try` and `CATCH`
+
+```perl6
 # By using `try` and `CATCH` you can contain and handle exceptions without
 # disrupting the rest of the program. `try` will set the last exception to
 # the special variable `$!` Note: This has no relation to $!variables.
@@ -883,8 +946,11 @@ try {
 # Those are "good" exceptions, which happen when you change your program's flow,
 #  using operators like `return`, `next` or `last`.
 # You can "catch" those with `CONTROL` (not 100% working in Rakudo yet).
+```
 
-### Packages
+## Packages
+
+```perl6
 # Packages are a way to reuse code. Packages are like "namespaces", and any
 #  element of the six model (`module`, `role`, `class`, `grammar`, `subset`
 #  and `enum`) are actually packages. (Packages are the lowest common denominator)
@@ -915,8 +981,11 @@ grammar Parse::Text::Grammar { # A grammar is a package, which you could `use`
 my $actions = JSON::Tiny::Actions.new;
 
 # We'll see how to export variables and subs in the next part:
+```
 
-### Declarators
+## Declarators
+
+```perl6
 # In Perl 6, you get different behaviors based on how you declare a variable.
 # You've already seen `my` and `has`, we'll now explore the others.
 
@@ -978,10 +1047,11 @@ for ^5 -> $a {
              # Next iteration will re-run `rand`.
   }
 }
+```
 
+## Phasers
 
-
-### Phasers
+```perl6
 # Phasers in Perl 6 are blocks that happen at determined points of time in your
 # program.  They are called phasers because they mark a change in the phase
 # of a program.  For example, when the program is compiled, a for loop runs,
@@ -1041,8 +1111,11 @@ sub do-db-stuff {
   KEEP $db.commit; # commit the transaction if all went well
   UNDO $db.rollback; # or rollback if all hell broke loose
 }
+```
 
-### Statement prefixes
+## Statement prefixes
+
+```perl6
 # Those act a bit like phasers: they affect the behavior of the following code.
 # Though, they run in-line with the executable code, so they're in lowercase.
 # (`try` and `start` are theoretically in that list, but explained somewhere else)
@@ -1085,8 +1158,11 @@ say join ',', gather if False {
 constant thrice = gather for ^3 { say take $_ }; # Doesn't print anything
 # versus:
 constant thrice = eager gather for ^3 { say take $_ }; #=> 0 1 2
+```
 
-### Iterables
+## Iterables
+
+```perl6
 # Iterables are objects that can be iterated similar to the `for` construct
 # `flat`, flattens iterables:
 say (1, 10, (20, 10) ); #> (1 10 (20 10)) Notice how grouping is maintained
@@ -1108,9 +1184,11 @@ quietly { warn 'This is a warning!' }; #=> No output
 
 # - `contend` - Attempts side effects under STM
 # Not yet implemented !
+```
 
-### More operators thingies !
+## More operators thingies !
 
+```perl6
 ## Everybody loves operators ! Let's get more of them
 
 # The precedence list can be found here:
@@ -1128,8 +1206,11 @@ $a ! $b ! $c; # with a list-associative `!`, this is `infix:<>`
 !$a! # with left-associative `!`, this is `(!$a)!`
 !$a! # with right-associative `!`, this is `!($a!)`
 !$a! # with non-associative `!`, this is illegal
+```
 
-## Create your own operators !
+### Create your own operators !
+
+```perl6
 # Okay, you've been reading all of that, so I guess I should try
 #  to show you something exciting.
 # I'll tell you a little secret (or not-so-secret):
@@ -1193,8 +1274,11 @@ postcircumfix:<{ }>(%h, $key, :delete); # (you can call operators like that)
 
 # (you are, obviously, recommended against making an operator out of
 # *everything* -- with great power comes great responsibility)
+```
 
-## Meta operators !
+### Meta operators !
+
+```perl6
 # Oh boy, get ready. Get ready, because we're delving deep
 #  into the rabbit's hole, and you probably won't want to go
 #  back to other languages after reading that.
@@ -1281,8 +1365,11 @@ say @fib[^10]; #=> 1 1 2 3 5 8 13 21 34 55
 # Note : as for ranges, once reified, elements aren't re-calculated.
 # That's why `@primes[^100]` will take a long time the first time you print
 #  it, then be instant.
+```
 
-### Regular Expressions
+## Regular Expressions
+
+```perl6
 # I'm sure a lot of you have been waiting for this one.
 # Well, now that you know a good deal of Perl 6 already, we can get started.
 # First off, you'll have to forget about "PCRE regexps" (perl-compatible regexps).
@@ -1402,8 +1489,11 @@ so 'foo' ~~ / <-[ f o ]> + /; # False
 so 'foo' ~~ / <[ a..z ] - [ f o ]> + /; # False (any letter except f and o)
 so 'foo' ~~ / <-[ a..z ] + [ f o ]> + /; # True (no letter except f and o)
 so 'foo!' ~~ / <-[ a..z ] + [ f o ]> + /; # True (the + doesn't replace the left part)
+```
 
-## Grouping and capturing
+### Grouping and capturing
+
+```perl6
 # Group: you can group parts of your regexp with `[]`.
 # These groups are *not* captured (like PCRE's `(?:)`).
 so 'abc' ~~ / a [ b ] c /; # `True`. The grouping does pretty much nothing
@@ -1478,7 +1568,7 @@ so 'ayc' ~~ / a [ b | y ] c /; # `True`. Obviously enough ...
 #  and other things that can't traditionnaly be represented by normal regexps.
 #
 # Then, all the alternatives are tried at once, and the longest wins.
-# Exemples:
+# Examples:
 # DECLARATIVE | PROCEDURAL
 / 'foo' \d+     [ <subrule1> || <subrule2> ] /;
 # DECLARATIVE (nested groups are not a problem)
@@ -1489,11 +1579,11 @@ so 'ayc' ~~ / a [ b | y ] c /; # `True`. Obviously enough ...
 
 # Note: the first-matching `or` still exists, but is now spelled `||`
 'foo' ~~ / fo || foo /; # `fo` now.
+```
 
+## Extra: the MAIN subroutine
 
-
-
-### Extra: the MAIN subroutine
+```perl6
 # The `MAIN` subroutine is called when you run a Perl 6 file directly.
 # It's very powerful, because Perl 6 actually parses the arguments
 #  and pass them as such to the sub. It also handles named argument (`--foo`)
@@ -1521,13 +1611,12 @@ multi MAIN('import', File, Str :$as) { ... } # omitting parameter name
 # As you can see, this is *very* powerful.
 # It even went as far as to show inline the constants.
 # (the type is only displayed if the argument is `$`/is named)
+```
 
-###
-### APPENDIX A:
-###
+## APPENDIX A:
 ### List of things
-###
 
+```perl6
 # It's considered by now you know the Perl6 basics.
 # This section is just here to list some common operations,
 #  but which are not in the "main part" of the tutorial to bloat it up
