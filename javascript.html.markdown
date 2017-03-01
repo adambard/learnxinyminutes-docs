@@ -138,7 +138,7 @@ undefined; // used to indicate a value is not currently present (although
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
 ///////////////////////////////////
-// 2. Variables, Arrays and basics of Objects
+// 2. Variables, Arrays and Objects
 
 // Variables are declared with the `var` keyword. JavaScript is dynamically
 // typed, so you don't need to specify type. Assignment uses a single `=`
@@ -200,11 +200,6 @@ myObj.myThirdKey = true;
 // If you try to access a value that's not yet set, you'll get undefined.
 myObj.myFourthKey; // = undefined
 
-// JavaScript objects are not instantiated from blueprints ("classes" in other
-// object-oriented languages), but may refer to another special object called a
-// "prototype". See later section for more info.
-
-
 ///////////////////////////////////
 // 3. Logic and Control Structures
 
@@ -252,23 +247,6 @@ var person = {fname:"Paul", lname:"Ken", age:18};
 for (var x in person){
     description += person[x] + " ";
 } // description = 'Paul Ken 18 '
-
-// It also works for array objects but iterates over the indices
-var myArray = [1, 2, 3, "apple", "banana", function(){}]
-for (var index in myArray) {
-  console.log(index + ": " + myArray[index]);
-}
-///prints:
-// 0: 1
-// 1: 2
-// 2: 3
-// 3: apple
-// 4: banana
-// 5: function () {}
-
-// For/in should not be used to iterate over an Array where the index order
-// is important, as there is no guarantee that for/in will return the indexes
-// in any particular order.
 
 // && is logical and, || is logical or
 if (house.size == "big" && house.colour == "blue"){
@@ -455,6 +433,10 @@ var MyConstructor = function(){
 }
 myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
+
+// Unlike most other popular object-oriented languages, JavaScript has no 
+// concept of 'instances' created from 'class' blueprints; instead, JavaScript
+// combines instantiation and inheritance into a single concept: a 'prototype'.
 
 // Every JavaScript object has a 'prototype'. When you go to access a property
 // on an object that doesn't exist on the actual object, the interpreter will
