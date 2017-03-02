@@ -1,5 +1,5 @@
 ---
-language: restructured text
+language: restructured text (RST)
 contributors:
     - ["DamienVGN", "https://github.com/martin-damien"]
     - ["Andre Polykanine", "https://github.com/Oire"]
