@@ -56,9 +56,9 @@ public class LearnJava {
     // Input/Output
     ///////////////////////////////////////
 
-        /*
-        * Ouput
-        */
+		/*
+		* Ouput
+		*/
 
         // Use System.out.println() to print lines.
         System.out.println("Hello World!");
@@ -75,8 +75,8 @@ public class LearnJava {
         System.out.printf("pi = %.5f", Math.PI); // => pi = 3.14159
 
         /*
-        * Input
-        */
+         * Input
+         */
 
 		// use Scanner to read input
 		// must import java.util.Scanner;
