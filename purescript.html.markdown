@@ -65,7 +65,7 @@ true && (9 >= 19 || 1 < 2) -- true
 """Hello
 world""" -- "Hello\nworld"
 -- Concatenate
-"such " ++ "amaze" -- "such amaze"
+"such " <> "amaze" -- "such amaze"
 
 --
 -- 2. Arrays are Javascript arrays, but must be homogeneous
