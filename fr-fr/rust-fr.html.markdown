@@ -14,7 +14,7 @@ Il atteint ces objectifs sans avoir besoin d'un ramasse-miettes ou environnement
 
 La première version de Rust, 0.1, est sortie en janvier 2012 et a tellement évolué rapidement que jusqu'à récemment, l'utilisation de versions stables était déconseillée - à la place ce était conseillé d'utiliser les nightly builds.
 
-Le 15 mai 2015, Rust 1.0 a été libéré avec une garantie complète de compatibilité ascendante. Améliorations aux temps de compilation et d'autres aspects du compilateur sont actuellement disponibles dans la nightly builds. Rust a adopté un modèle de libération à bord du train avec les versions régulières toutes les six semaines. Rust 1.1 beta a été mis à la disposition dans le même temps de la libération de Rust 1.0.
+Le 15 mai 2015, Rust 1.0 a été libéré avec une garantie complète de compatibilité ascendante. Améliorations aux temps de compilation et d'autres aspects du compilateur sont actuellement disponibles dans la nightly builds. Rust a adopté un modèle de train de livraison avec les versions régulières toutes les six semaines. Rust 1.1 beta a été mis à disposition au moment de la livraison de Rust 1.0.
 
 Bien que Rust soit un langage relativement bas niveau, Rust a quelques concepts fonctionnels qui se trouvent généralement dans les langues de niveau supérieur. Cela rend Rust non seulement rapide, mais aussi efficace et facile à coder.
 
