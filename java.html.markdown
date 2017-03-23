@@ -30,13 +30,13 @@ Multi-line comments look like this.
  * attributes of a Class.
  * Main attributes:
  *
- * @author 		Name (and contact information such as email) of author(s).
- * @version 	Current version of the program.
- * @since		When this part of the program was first added.
- * @param 		For describing the different parameters for a method.
- * @return		For describing what the method returns.
+ * @author         Name (and contact information such as email) of author(s).
+ * @version     Current version of the program.
+ * @since        When this part of the program was first added.
+ * @param         For describing the different parameters for a method.
+ * @return        For describing what the method returns.
  * @deprecated  For showing the code is outdated or shouldn't be used.
- * @see 		Links to another part of documentation.
+ * @see         Links to another part of documentation.
 */
 
 // Import ArrayList class inside of the java.util package
@@ -56,9 +56,9 @@ public class LearnJava {
     // Input/Output
     ///////////////////////////////////////
 
-		/*
-		* Ouput
-		*/
+        /*
+        * Ouput
+        */
 
         // Use System.out.println() to print lines.
         System.out.println("Hello World!");
@@ -78,27 +78,27 @@ public class LearnJava {
          * Input
          */
 
-		// use Scanner to read input
-		// must import java.util.Scanner;
-		Scanner scanner = new Scanner(System.in);
+        // use Scanner to read input
+        // must import java.util.Scanner;
+        Scanner scanner = new Scanner(System.in);
 
-		// read string input
-		String name = scanner.next();
+        // read string input
+        String name = scanner.next();
 
-		// read byte input
-		byte numByte = scanner.nextByte();
+        // read byte input
+        byte numByte = scanner.nextByte();
 
-		// read int input
-		int numInt = scanner.nextInt();
+        // read int input
+        int numInt = scanner.nextInt();
 
-		// read long input
-		float numFloat - scanner.nextFloat();
+        // read long input
+        float numFloat - scanner.nextFloat();
 
-		// read double input
-		double numDouble = scanner.nextDouble();
+        // read double input
+        double numDouble = scanner.nextDouble();
 
-		// read boolean input
-		boolean bool = scanner.nextBoolean();
+        // read boolean input
+        boolean bool = scanner.nextBoolean();
 
         ///////////////////////////////////////
         // Variables
@@ -752,7 +752,7 @@ class Dog extends Animal
     public void makeSound()
     {
         System.out.println("Bark");
-        // age = 30;	==> ERROR!	age is private to Animal
+        // age = 30;    ==> ERROR!    age is private to Animal
     }
 
     // NOTE: You will get an error if you used the
