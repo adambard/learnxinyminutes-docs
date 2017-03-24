@@ -186,13 +186,13 @@ fun helloWorld(val name : String) {
 
     // "with" 함수는 JavaScript 의 "with" 구문과 비슷하게 사용됩니다. 
     data class MutableDataClassExample (var x: Int, var y: Int, var z: Int)
-    val fooMutableDate = MutableDataClassExample(7, 4, 9)
-    with (fooMutableDate) {
+    val fooMutableData = MutableDataClassExample(7, 4, 9)
+    with (fooMutableData) {
         x -= 2
         y += 2
         z--
     }
-    println(fooMutableDate) // => MutableDataClassExample(x=5, y=6, z=8)
+    println(fooMutableData) // => MutableDataClassExample(x=5, y=6, z=8)
 
     /*
     "listOf" 함수로 리스트를 만들 수 있습니다.
