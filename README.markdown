@@ -1,25 +1,19 @@
 # [Learn X in Y minutes](http://learnxinyminutes.com)
 
-Whirlwind tours of (several, hopefully many someday) popular and
-ought-to-be-more-popular programming languages, presented as valid,
-commented code and explained as they go.
+Whirlwind tours of popular and ought-to-be-more-popular programming languages,
+presented as valid, commented code and explained as they go.
 
 ## We need YOU!...
 
-... to write more inline code tutorials. Just grab an existing file from
-this repo and copy the formatting (don't worry, it's all very simple).
-Make a new file, send a pull request, and if it passes muster I'll get it up pronto.
-Remember to fill in the author and author\_url fields so you get credited
-properly!
+... to contribute in any way you can, from as little as fixing a typo to adding
+a whole new tutorial or translating an entire page! Don't worry, it's all very
+simple to get started, but we do ask you finish reading the rest of this page
+and follow our guidelines. Submit a pull request, and we'll get it reviewed and
+merged pronto. For more information, see the guidelines in [Contributing.md](https://github.com/adambard/learnxinyminutes-docs/blob/master/CONTRIBUTING.md)
 
-### Requests
-
-The most requested languages are:
-
-* Scala
-* Javascript
-
-... but there are many more requests to do "every language", so don't let that stop you.
+If you would like to contribute but don't know where to start, look for issues
+tagged with "quickfix." These tend to be easy fixes you can do in just a few
+minutes, nice way to get your feet wet.
 
 ## License
 
