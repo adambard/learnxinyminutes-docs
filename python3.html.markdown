@@ -665,7 +665,7 @@ class Human:
         self.name = name
 
         # Initialize property
-        self.age = 0
+        self._age = 0
 
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
