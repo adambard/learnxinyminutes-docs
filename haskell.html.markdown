@@ -64,7 +64,7 @@ not False -- True
 
 
 ----------------------------------------------------
--- Lists and Tuples
+-- 2. Lists and Tuples
 ----------------------------------------------------
 
 -- Every element in a list must have the same type.
