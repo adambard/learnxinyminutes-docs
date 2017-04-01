@@ -65,7 +65,7 @@ not False -- True
 "To jest lancuch" !! 0 -- 'T'
 
 ----------------------------------------------------
--- Listy oraz krotki
+-- 2. Listy oraz krotki
 ----------------------------------------------------
 
 -- Wszystkie elementy listy muszą być tego samego typu.
