@@ -2,7 +2,7 @@
 category: tool
 tool: PyQT
 filename: learnpyqt-ru.py
-contributors:
+translator:
     - ["Vadim Toptunov", "https://github.com/VadimToptunov"]
 ---
 
