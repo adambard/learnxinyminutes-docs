@@ -1,7 +1,7 @@
 ---
 category: tool
 tool: PyQT
-filename: learnpyqt.py
+filename: learnpyqt-ru.py
 contributors:
     - ["Vadim Toptunov", "https://github.com/VadimToptunov"]
 ---
