@@ -52,7 +52,7 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 7 % 3  # => 1
 
 # Exponentiation (x**y, x to the yth power)
-2**4  # => 16
+2**3  # => 8
 
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
