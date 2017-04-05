@@ -1,8 +1,10 @@
 ---
 language: kotlin
-translator:
-    - ["Vadim Toptunov", "https://github.com/VadimToptunov"]
 filename: LearnKotlin-ru.kt
+contributors:
+    - ["S Webber", "https://github.com/s-webber"]
+translators:
+    - ["Vadim Toptunov", "https://github.com/VadimToptunov"]
 ---
 
 Kotlin - статистически типизированный язык для JVM, Android и браузера. Язык полностью cjdvtcnbv c Java. 
