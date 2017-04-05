@@ -370,5 +370,5 @@ fun useObject() {
 ### Дальнейшее чтение:
 
 * [Учебные материалы по Kotlin](https://kotlinlang.org/docs/tutorials/)
-* [TПопробуй Kotlin в своем браузере](http://try.kotlinlang.org/)
+* [Попробуй Kotlin в своем браузере](http://try.kotlinlang.org/)
 * [Список ресурсов по языку Kotlin](http://kotlin.link/)
