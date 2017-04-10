@@ -11,7 +11,7 @@ contributors:
     - ["Michael Dähnert", "https://github.com/JaXt0r"]
     - ["Rob Rose", "https://github.com/RobRoseKnows"]
     - ["Sean Nam", "https://github.com/seannam"]
-filename: LearnJava.java
+filename: LearnJava-fa.java
 ---
 
 جاوا یک زبان برنامه نویسی کامپیوتری چند منظوره، با قابلیت همزمانی، برپایه کلاس و شی گرایی می باشد.
@@ -29,13 +29,8 @@ Multi-line comments look like this.
  * attributes of a Class.
  * Main attributes:
  *
- * @author         Name (and contact information such as email) of author(s).
- * @version     Current version of the program.
- * @since        When this part of the program was first added.
- * @param         For describing the different parameters for a method.
- * @return        For describing what the method returns.
- * @deprecated  For showing the code is outdated or shouldn't be used.
- * @see         Links to another part of documentation.
+ * @author         @ghaseminya
+ * @version     v1.0
 */
 
 // Import ArrayList class inside of the java.util package
