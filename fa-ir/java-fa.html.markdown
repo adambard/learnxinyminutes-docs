@@ -11,6 +11,8 @@ contributors:
     - ["Michael Dähnert", "https://github.com/JaXt0r"]
     - ["Rob Rose", "https://github.com/RobRoseKnows"]
     - ["Sean Nam", "https://github.com/seannam"]
+translators:
+    - ["ghaseminya", "https://github.com/ghaseminya"]
 filename: LearnJava-fa.java
 ---
 
