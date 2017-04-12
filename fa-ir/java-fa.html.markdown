@@ -1,5 +1,6 @@
 ---
 language: java
+lang: fa-ir
 contributors:
     - ["Jake Prather", "https://github.com/JakeHP"]
     - ["Jakukyo Friel", "https://weakish.github.io"]
