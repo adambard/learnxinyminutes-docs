@@ -1,6 +1,7 @@
 ---
 category: tool
 tool: PyQT
+lang: ru-ru
 filename: learnpyqt-ru.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
