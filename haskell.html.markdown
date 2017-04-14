@@ -445,3 +445,5 @@ There are two popular ways to install Haskell: The traditional [Cabal-based inst
 You can find a much gentler introduction from the excellent
 [Learn you a Haskell](http://learnyouahaskell.com/) or
 [Real World Haskell](http://book.realworldhaskell.org/).
+
+[Thinking Functionally with Haskell] (http://www.amazon.com/gp/product/1107452643?keywords=haskell&qid=1445915596&ref_=sr_1_3&sr=8-3) is useful too.
