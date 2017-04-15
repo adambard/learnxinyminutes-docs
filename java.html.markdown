@@ -451,7 +451,7 @@ public class LearnJava {
         // Try-with-resources (Java 7+)
         // Try-catch-finally statements work as expected in Java but in Java 7+
         // the try-with-resources statement is also available. Try-with-resources
-        // simplifies try-catch-finally statements be closing resources
+        // simplifies try-catch-finally statements by closing resources
         // automatically.
         
         // In order to use a try-with-resources, include a an instance of a class
