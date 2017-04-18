@@ -37,9 +37,13 @@ use warnings;
 #  A scalar represents a single value:
 my $animal = "camel";
 my $answer = 42;
+my $display = "You have $answer ${animal}s.\n";
 
 # Scalar values can be strings, integers or floating point numbers, and
 # Perl will automatically convert between them as required.
+
+# Strings in single quotes are literal strings. Strings in double quotes
+# will interpolate variables and escape codes like "\n" for newline.
 
 ## Arrays
 #  An array represents a list of values:
