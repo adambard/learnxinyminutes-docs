@@ -128,6 +128,11 @@ small/%.png: %.svg
 # Tell make about the suffix rule
 .SUFFIXES: .png
 
+# Suppress the output of commands to stdout
+.SILENT:
+# the above is a "special" rule. It has no dependencies; just adding
+# it will cause `make` to not echo the commands before execution.
+
 #-----------------------------------------------------------------------
 # Variables
 #-----------------------------------------------------------------------
