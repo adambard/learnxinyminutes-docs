@@ -62,6 +62,18 @@ my $second = $animals[1];
 my $num_animals = @animals;
 print "Number of numbers: ", scalar(@numbers), "\n";
 
+# Arrays can also be interpolated into double-quoted strings, and the
+# elements are separated by a space character by default.
+
+print "We have these numbers: @numbers\n";
+
+# Be careful when using double quotes for strings containing symbols
+# such as email addresses, as it will be interpreted as a variable.
+
+my @example = ('secret', 'array');
+my $oops_email = "foo@example.com"; # 'foosecret array.com'
+my $ok_email = 'foo@example.com';
+
 ## Hashes
 #   A hash represents a set of key/value pairs:
 
