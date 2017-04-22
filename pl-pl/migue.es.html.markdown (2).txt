@@ -1,0 +1,41 @@
+# Desde la versión 1.9, Ruby tiene una sintaxis especial cuando usamos símbolos como claves:
+
+nowy_hasz = {condición 3, la acción: true}
+
+nowy_hasz.keys # => [: Estado: la acción]
+
+# Verificar la existencia de claves y valores en el hash
+new_hash.has_key? (: DEFCON) # => true
+new_hash.has_value (3) # => true
+
+# Nota: Los dos arrays y hashes son cuantificables
+# Compartir muchos métodos como cada uno, mapa, contar, y otros
+
+condicional #
+
+si es cierto
+  'Expresión si'
+elsif falsa
+  'Si comunicado, la opción'
+otro
+  'Expresión En caso contrario, el programa opcional'
+final
+
+para el contador en 1..5
+  pone "# {} cuenta de repetición"
+final
+# => 1 repetición
+# => 2 de repetición
+# => 3 de repetición
+# => Repetir 4
+# => 5 de repetición
+
+# Sin embargo, nadie realmente utiliza el bucle.
+# En su lugar, se debe utilizar el método de "uno" y dar su bloque.
+# Block es una pieza de código que puede especificar el método similar al "cada uno".
+Es análogo a la posición # lambda expresiones, funciones anónimas o cierres en otra
+# Los lenguajes de programación.
+#
+Método # "cada" de un rango dado, realiza un bloque para cada elemento de la gama.
+# Para bloque contador se transfiere como un parámetro.
+# Aplicación del método de "cada" bloquear la transferencia de la siguiente manera:

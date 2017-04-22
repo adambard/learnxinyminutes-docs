@@ -1,0 +1,111 @@
+(1..5) .Cada a | contador |
+  pone "# {} cuenta de repetición"
+final
+# => 1 repetición
+# => 2 de repetición
+# => 3 de repetición
+# => Repetir 4
+# => 5 de repetición
+
+# También se puede rodear las llaves de bloques:
+(1..5) .Cada {| contador | pone "# {contador de repeticiones}"}
+
+# El contenido de las estructuras de datos también se puede repetir usando cada uno.
+tablica.each a | Artículo |
+  imprimir "# {} es una parte componente de una matriz"
+final
+hasz.each a la | clave, valor |
+  pone "# {clave} es #} {valor"
+final
+
+# Si aún necesita indeksum, puede utilizar "each_with_index" y definir
+# Variable correspondiente al índice
+tablica.each_with_index el | índice de elementos |
+  pone "# {elemento} es el número # {} en el índice de matriz"
+final
+
+contador = 1
+mientras el contador de <= 5 a
+  pone "# {} cuenta de repetición"
+  contador = 1 +
+final
+# => 1 repetición
+# => 2 de repetición
+# => 3 de repetición
+# => Repetir 4
+# => 5 de repetición
+
+# En Ruby, hay una gran cantidad de funciones útiles, loops,
+# Por ejemplo, "mapa", "reducir", "inyectar" y muchos otros. mapas
+# En cada llamada, toma una matriz, donde hacer el bucle,
+# Ejecuta el código escrito usando bloques y devuelve una nueva matriz.
+array = [1,2,3,4,5]
+duplicado a tablica.map = | miembro
+  componente * 2
+final
+pone las duplicado
+# => [2,4,6,8,10]
+pone la mesa
+# => [1,2,3,4,5]
+
+Clasificación = 2
+
+evaluación de su caso
+cuando 1
+  puts 'Bien hecho, eres libre'
+cuando 2
+  puts 'La próxima vez tendrá más suerte'
+cuando 3
+  pone 'Usted puede hacer mejor'
+cuando 4
+  puts 'Przebrnales'
+cuando 5
+  pone 'Has fallado!'
+otro
+  pone 'Otro sistema de clasificación?
+final
+# => "La próxima vez que va a tener más suerte"
+
+Caso # rangos también puede uzwac
+Puntuación = 82
+evaluación de su caso
+cuando 90..100
+  pone 'Viva!'
+cuando el 80 ... 90
+  puts 'buen trabajo'
+otro
+  pone 'Has fallado!'
+final
+# => "Buen trabajo"
+
+# La gestión de errores:
+empezar
+  # El código que puede provocar una excepción
+  NoMemoryError levantar, 'Fuera de la memoria.'
+NoMemoryError de rescate => zmienna_wyjatku
+  pone 'ha sido llamado NoMemoryError', zmienna_wyjatku
+RuntimeError de rescate => inna_zmienna_wyjatku
+  pone 'ahora se ha llamado RuntimeError'
+otro
+  pone 'Va a ser ejecutado si no se produce una excepción'
+el garantizar
+  pone 'Este código se ejecuta siempre'
+final
+
+# Funciones
+
+duplicando def (x)
+  x * 2
+final
+
+# Funciones (y todos los bloques) siempre devuelven el valor de la última expresión
+duplicar (2) # => 4
+
+Ronda # Nawiady son opcionales cuando el resultado no es ambigua
+duplicando el # 3 => 6
+
+duplicar duplicar # 3 => 12
+
+suma def (x, y)
+  x + y
+final

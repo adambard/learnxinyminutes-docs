@@ -1,0 +1,75 @@
+# Métodos argumentos son separados por comas
+la suma de 3, # 4 => 7
+
+la suma de la suma (3, 4), # 5 => 12
+
+# rendimiento
+# Todos los métodos están ocultos, bloque de parámetros opcionales,
+# Que se pueden hacer usando la palabra clave 'rendimiento'
+
+ambiente def
+  pone '{'
+  rendimiento
+  pone '}'
+final
+
+{Entorno pone 'Hey mundo'}
+
+{#
+# Hey mundo
+#}
+
+
+# Se puede pasar al bloque de funciones
+# "Y" significa que se da una referencia al bloque
+invitados def (y bloquear)
+  blok.call 'jakis_argument'
+final
+
+# Se puede pasar una lista de argumentos que voy a convertir en una matriz
+# Eso es lo que el operador ( "*")
+invitados def (* array)
+  tablica.each {| hombre | pone un invitado}
+final
+
+# Definición de clases usando la palabra clave class
+clase de hombre
+
+  clase Variable #. Que es compartida por todas las instancias de la clase.
+  @@ H. especies =' sapiens'
+
+  # Básicas inicializar
+  def inicializar (nombre, edad = 0)
+    # Asignar el argumento de una variable de instancia dada llamado "nombre"
+    name = @imie
+    # Si no se especifica la edad, se usará el valor por defecto de la lista de argumentos.
+    @wiek = edad
+  final
+
+  # El método básico asigna el valor
+  = Def nombre (nombre)
+    name = @imie
+  final
+
+  # Valor captador Primaria
+  nombre def
+    @imie
+  final
+
+  # La funcionalidad anterior puede ser reemplazado usando el método en un attr_accessor tal manera
+  attr_accessor: nombre
+
+  # Métodos atribuir / enlace descendente se puede crear de forma individual
+  attr_reader: nombre
+  attr_writer: nombre
+
+  # Clase métodos que utilizan para distinguir lo propio de un método de instancia.
+  # Esto puede deberse a la clase, no es el caso.
+  self.powiedz def (mensaje)
+    pone un mensaje
+  final
+
+  especies def
+    @@ especies
+  final
+final

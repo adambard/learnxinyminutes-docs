@@ -1,0 +1,47 @@
+# Crear instancia
+mu = Czlowiek.new ( 'Jim Halpert')
+
+Dwight = Czlowiek.new ( "Dwight K. Schrute ')
+
+# Llamar a algunos métodos
+jim.gatunek # => "Homo sapiens"
+jim.imie # => "Jim Halpert"
+jim.imie = "Jim Halpert II '# =>" Jim Halpert II'
+jim.imie # => "Jim Halpert II '
+dwight.gatunek # => "Homo sapiens"
+dwight.imie # => "Dwight K. Schrute"
+
+# Clase de llamada
+Czlowiek.powiedz ( 'Hola') # => "Hola"
+
+# Ámbito de una variable se define por su nombre.
+# Las variables que comienzan en $ son globales
+$ Var = "Soy una variable global"
+definido? # $ Variable => "global-variable"
+
+Se proporcionan las variables # @ zczynajace en un caso dado
+@ variable = "Soy una variable de instancia"
+definido? # @ variable => "instancia variable"
+
+# Las variables que comienzan con @@ se proporcionan con la clase
+@@ var = "Soy una variable de clase"
+definido? Variable @@ # => "variable de clase"
+
+# Las variables que comienzan con una letra mayúscula, son constantes
+Var = "Soy una constante"
+definido? Variable # => "constante"
+
+# Clase es también un objeto de rubí. Así, puede tener variables de instancia.
+clase Variable # puede ser compartida entre una clase y su descendencia.
+
+Base clase #
+clase de hombre
+  @@ cualquier cosa 0 =
+
+  self.cokolwiek def
+    @@ nada
+  final
+
+  self.cokolwiek def = (valor)
+    @@ cualquier valor =
+  final
