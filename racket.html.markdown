@@ -147,8 +147,8 @@ my-pet ; => #<dog>
 (struct rgba-color (red green blue alpha) #:mutable)
 (define burgundy
    (rgba-color 144 0 32 1.0))
-(set-color-green! burgundy 10)
-(color-green burgundy) ; => 10
+(set-rgba-color-green! burgundy 10)
+(rgba-color-green burgundy) ;=> 10
 
 ;;; Pairs (immutable)
 ;; `cons' constructs pairs, `car' and `cdr' extract the first
