@@ -148,7 +148,7 @@ my-pet ; => #<dog>
 (define burgundy
    (rgba-color 144 0 32 1.0))
 (set-rgba-color-green! burgundy 10)
-(rgba-color-green burgundy) ;=> 10
+(rgba-color-green burgundy) ; => 10
 
 ;;; Pairs (immutable)
 ;; `cons' constructs pairs, `car' and `cdr' extract the first
