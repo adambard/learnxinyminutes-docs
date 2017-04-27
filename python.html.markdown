@@ -2,7 +2,7 @@
 language: python
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
-    - ["Amin Bandali", "http://aminbandali.com"]
+    - ["Amin Bandali", "https://aminb.org"]
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["evuez", "http://github.com/evuez"]
     - ["asyne", "https://github.com/justblah"]
