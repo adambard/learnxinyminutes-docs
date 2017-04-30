@@ -118,7 +118,7 @@ else
 case aList of
   [] -> "matches the empty list"
   [x]-> "matches a list of exactly one item, " ++ toString x
-  x::xs -> "matches a list of at least one item whose head is " ++ toString x
+  x::xs -> "matches a list of at least two item whose head is " ++ toString x
 -- Pattern matches go in order. If we put [x] last, it would never match because
 -- x::xs also matches (xs would be the empty list). Matches do not "fall through".
 -- The compiler will alert you to missing or extra cases.
