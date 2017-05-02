@@ -20,20 +20,20 @@ dan kebiasaannya secara automatik.
 
 
 ```clojure
-; Komen bermula dengan koma bertitik (*semicolon*).
+; Komen bermula dengan koma bertitik (semicolon).
 
 ; Clojure ditulis dalam bentuk yang seragam, iaitu
-; senarai perkataan di dalam kurungan (*parentheses*), dipisahkan dengan ruang kosong (*whitespace*).
+; senarai perkataan di dalam kurungan (parentheses), dipisahkan dengan ruang kosong (whitespace).
 ;
 ; Pembaca Clojure akan menganggap bahawa perkataan pertama dalam senarai tersebut
-; sebagai *function* atau *macro* untuk digunakan, dan yang selebihnya sebagai *arguments*.
+; sebagai `function` atau `macro` untuk digunakan, dan yang selebihnya sebagai arguments.
 
-; Panggilan pertama di dalam fail Clojure mestilah bermula dengan ns, untuk menentukan *namespace*
+; Panggilan pertama di dalam fail Clojure mestilah bermula dengan ns, untuk menentukan `namespace`
 (ns learnclojure)
 
 ; Contoh-contoh asas yang lain:
 
-; str akan mewujudkan sebuah string daripada beberapa *argument*
+; str akan mewujudkan sebuah string daripada beberapa `argument`
 (str "Hello" " " "World") ; => "Hello World"
 
 ; Operasi matematik pun mudah
@@ -49,18 +49,18 @@ dan kebiasaannya secara automatik.
 ; Gunakan not untuk mengubah lojik
 (not true) ; => false
 
-; Bentuk *nested* berfungsi seperti yang dijangkakan
+; Bentuk `nested` berfungsi seperti yang dijangkakan
 (+ 1 (- 3 2)) ; = 1 + (3 - 2) => 2
 
 ; Type (Jenis Data)
 ;;;;;;;;;;;;;
 
-; Clojure menggunakan jenis *object* dari Java untuk *boolean*, *string* dan nombor.
+; Clojure menggunakan jenis `object` dari Java untuk `boolean`, `string` dan nombor.
 ; Gunakan `class` untuk memeriksa jenis sesebuah data.
-(class 1) ; Secara *default* jenis data untuk Integer ialah java.lang.Long
+(class 1) ; Secara default jenis data untuk `Integer` ialah java.lang.Long
 (class 1.); Jenis data untuk Float pula ialah java.lang.Double
-(class ""); *String* sentiasa berada dalam tanda petikan (*quotation mark*), dan merupakan java.lang.String
-(class false) ; *Boolean* ialah java.lang.Boolean
+(class ""); `String` sentiasa berada dalam tanda petikan (quotation mark), dan merupakan java.lang.String
+(class false) ; `Boolean` ialah java.lang.Boolean
 (class nil); Nilai "null" dipanggil nil
 
 ; Jika mahu membuat senarai data secara harfiah, gunakan ' untuk elakkan senarai tersebut
@@ -74,17 +74,17 @@ dan kebiasaannya secara automatik.
 ; Collection & Sequence (Koleksi & Urutan)
 ;;;;;;;;;;;;;;;;;;;
 
-; *List* ialah struktur data *linked-list*, manakala *Vector* pula berasaskan *array*.
-; *Vector* dan *List* juga merupakan *class* dari Java!
+; `List` ialah struktur data `linked-list`, manakala `Vector` pula berasaskan `array`.
+; `Vector` dan `List` juga merupakan class dari Java!
 (class [1 2 3]); => clojure.lang.PersistentVector
 (class '(1 2 3)); => clojure.lang.PersistentList
 
-; Sesebuah *list* boleh ditulis seperti (1 2 3), tetapi kita perlu meletakkan '
+; Sesebuah list boleh ditulis seperti (1 2 3), tetapi kita perlu meletakkan '
 ; untuk mengelakkannya daripada berfungsi.
 ; Juga, (list 1 2 3) adalah sama dengan '(1 2 3)
 
 ; "Collections" hanyalah kumpulan data
-; Kedua-dua *list* dan *vector* ialah collection:
+; Kedua-dua list dan vector ialah collection:
 (coll? '(1 2 3)) ; => true
 (coll? [1 2 3]) ; => true
 
@@ -94,7 +94,7 @@ dan kebiasaannya secara automatik.
 (seq? [1 2 3]) ; => false
 
 ; Sesebuah seq hanya perlukan satu kemasukan data untuk diakses.
-; Jadi, seq yang boleh jadi *lazy* (malas) -- boleh menjadi tidak terkira (*infinite*):
+; Jadi, seq yang boleh jadi `lazy` (malas) -- boleh menjadi tidak terkira (infinite):
 (range 4) ; => (0 1 2 3)
 (range) ; => (0 1 2 3 4 ...) (tiada penghujung)
 (take 4 (range)) ;  (0 1 2 3)
@@ -128,7 +128,7 @@ dan kebiasaannya secara automatik.
 ; Function
 ;;;;;;;;;;;;;;;;;;;;;
 
-; Gunakan fn untuk membuat *function*. Sesebuah function pasti memulangkan semula
+; Gunakan fn untuk membuat `function`. Sesebuah function pasti memulangkan semula
 ; hasil daripada barisan yang terakhir.
 (fn [] "Hello World") ; => fn
 
@@ -177,7 +177,7 @@ x ; => 1
 ; Map
 ;;;;;;;;;;
 
-; Hash map dan array map menggunakan *interface* yang sama. Hash map lebih laju untuk diakses
+; Hash map dan array map menggunakan `interface` yang sama. Hash map lebih laju untuk diakses
 ; tetapi tidak mengekalkan urutan.
 (class {:a 1 :b 2 :c 3}) ; => clojure.lang.PersistentArrayMap
 (class (hash-map :a 1 :b 2 :c 3)) ; => clojure.lang.PersistentHashMap
@@ -214,7 +214,7 @@ keymap ; => {:a 1, :c 3, :b 2}
 (def newkeymap (assoc keymap :d 4))
 newkeymap ; => {:a 1, :b 2, :c 3, :d 4}
 
-; Tetapi ingat, data dalam clojure adalah *immutable* (tidak berubah)!
+; Tetapi ingat, data dalam clojure adalah `immutable` (tidak berubah)!
 keymap ; => {:a 1, :b 2, :c 3}
 
 ; Gunakan dissoc untuk membuang key
@@ -267,7 +267,7 @@ keymap ; => {:a 1, :b 2, :c 3}
   (str "Hello " name)) ; => "Hello Urkel" (prints "Saying hello to Urkel")
 
 
-; Gunakan *threading macro* (-> dan ->>) untuk menulis penggubahan data
+; Gunakan `threading macro` (-> dan ->>) untuk menulis penggubahan data
 ; dengan lebih jelas.
 
 ; Macro "thread-first" (->) memasukkan hasil perkiraan ke setiap form
