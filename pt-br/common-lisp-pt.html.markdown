@@ -285,7 +285,7 @@ nil                  ; para false - e para lista vazia
 ;; Cria um hash table
 (defparameter *m* (make-hash-table))
 
-;; seta um valor
+;; Seta um valor
 (setf (gethash 'a *m*) 1)
 
 ;; Recupera um valor
@@ -434,7 +434,7 @@ nil                  ; para false - e para lista vazia
 
 (walker 5) ; => :walked
 
-;; Na maioria das vezes, nós usamos DOTLISO ou LOOP
+;; Na maioria das vezes, nós usamos DOLIST ou LOOP
 
 (dolist (i '(1 2 3 4))
   (format t "~a" i))
@@ -467,7 +467,7 @@ nil                  ; para false - e para lista vazia
 ;; 7. Classes e Objetos
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Sem clases Animal, vamos usar os veículos de transporte de tração
+;; Sem classes Animal, vamos usar os veículos de transporte de tração
 ;; humana mecânicos.
 
 (defclass human-powered-conveyance ()
@@ -596,7 +596,7 @@ nil                  ; para false - e para lista vazia
 ;; Entretanto, com um compilador moderno, isso não é preciso; o LOOP
 ;; 'form' compila igual e é bem mais fácil de ler.
 
-;; Noteq ue ``` é usado , bem como `,` e `@`. ``` é um operador 'quote-type'
+;; Note que ``` é usado , bem como `,` e `@`. ``` é um operador 'quote-type'
 ;; conhecido como 'quasiquote'; isso permite o uso de `,` . `,` permite "unquoting"
 ;; e variáveis. @ interpolará listas.
 
