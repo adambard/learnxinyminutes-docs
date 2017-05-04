@@ -88,39 +88,29 @@ can include line breaks.` // 同样是String类型
     // 字符转换
     n := byte('\n') // byte是uint8的别名
 
-    // 数组类型编译的时候大小固定。
+    // 数组（Array）类型的大小在编译时即确定
     var a4 [4] int              // 有4个int变量的数组，初始为0
     a3 := [...]int{3, 1, 5}     // 有3个int变量的数组，同时进行了初始化
 
-    // Slice 可以动态的增删。Array和Slice各有千秋，但是使用slice的地方更多些。
-    s3 := []int{4, 5, 9}        // 和a3相比，这里没有省略号
-    s4 := make([]int, 4)        // 分配一个有4个int型变量的slice，全部被初始化为0
-    var d2 [][]float64          // 声明而已，什么都没有分配
-    bs := []byte("a slice")     // 类型转换的语法
+    // Array和slice各有所长，但是slice可以动态的增删，所以更多时候还是使用slice。
+    s3 := []int{4, 5, 9}    // 回去看看 a3 ，是不是这里没有省略号？
+    s4 := make([]int, 4)    // 分配4个int大小的内存并初始化为0
+    var d2 [][]float64      // 这里只是声明，并未分配内存空间
+    bs := []byte("a slice") // 进行类型转换
 
-    // Slice 是动态的，因此它的大小可以按需增长
-    // 用内置函数 append() 向 slice 末尾添加元素
-    // 目标 slice 是 append 函数第一个函数，由例可见，
-    // 数组变量在原地增长
-    s3 := []int{4, 5, 9}    // Compare to a3. No ellipsis here.
-    s4 := make([]int, 4)    // Allocates slice of 4 ints, initialized to all 0.
-    var d2 [][]float64      // Declaration only, nothing allocated here.
-    bs := []byte("a slice") // Type conversion syntax.
+    // 切片（Slice）的大小是动态的，它的长度可以按需增长
+    // 用内置函数 append() 向切片末尾添加元素
+    // 要增添到的目标是 append 函数第一个参数，
+    // 多数时候数组在原内存处顺次增长，如
+    s := []int{1, 2, 3}     // 这是个长度3的slice
+    s = append(s, 4, 5, 6)  // 再加仨元素，长度变为6了
+    fmt.Println(s) // 更新后的数组是 [1 2 3 4 5 6]
 
-    // Because they are dynamic, slices can be appended to on-demand.
-    // To append elements to a slice, the built-in append() function is used.
-    // First argument is a slice to which we are appending. Commonly,
-    // the array variable is updated in place, as in example below.
-    s := []int{1, 2, 3}     // Result is a slice of length 3.
-    s = append(s, 4, 5, 6)  // Added 3 elements. Slice now has length of 6.
-    fmt.Println(s) // Updated slice is now [1 2 3 4 5 6]
-
-    // To append another slice, instead of list of atomic elements we can
-    // pass a reference to a slice or a slice literal like this, with a
-    // trailing ellipsis, meaning take a slice and unpack its elements,
-    // appending them to slice s.
-    s = append(s, []int{7, 8, 9}...) // Second argument is a slice literal.
-    fmt.Println(s)  // Updated slice is now [1 2 3 4 5 6 7 8 9]
+    // 除了向append()提供一组原子元素（写死在代码里的）以外，我们
+    // 还可以用如下方法传递一个slice常量或变量，并在后面加上省略号，
+    // 用以表示我们将引用一个slice、解包其中的元素并将其添加到s数组末尾。
+    s = append(s, []int{7, 8, 9}...) // 第二个参数是一个slice常量
+    fmt.Println(s)  // 更新后的数组是 [1 2 3 4 5 6 7 8 9]
 
     p, q := learnMemory()       // 声明p,q为int型变量的指针
     fmt.Println(*p, *q)         // * 取值
@@ -132,10 +122,10 @@ can include line breaks.` // 同样是String类型
     // 在Go语言中未使用的变量在编译的时候会报错，而不是warning。
     // 下划线 _ 可以使你“使用”一个变量，但是丢弃它的值。
     _, _, _, _, _, _, _, _, _, _ = str, s2, g, f, u, pi, n, a3, s4, bs
-    // Usually you use it to ignore one of the return values of a function
-    // For example, in a quick and dirty script you might ignore the
-    // error value returned from os.Create, and expect that the file
-    // will always be created.
+    // 通常的用法是，在调用拥有多个返回值的函数时，
+    // 用下划线抛弃其中的一个参数。下面的例子就是一个脏套路，
+    // 调用os.Create并用下划线变量扔掉它的错误代码。
+    // 因为我们觉得这个文件一定会成功创建。
     file, _ := os.Create("output.txt")
     fmt.Fprint(file, "This is how you write to a file, by the way")
     file.Close()
@@ -146,11 +136,9 @@ can include line breaks.` // 同样是String类型
     learnFlowControl() // 回到流程控制
 }
 
-// It is possible, unlike in many other languages for functions in go
-// to have named return values.
-// Assigning a name to the type being returned in the function declaration line
-// allows us to easily return from multiple points in a function as well as to
-// only use the return keyword, without anything further.
+// 和其他编程语言不同的是，go支持有名称的变量返回值。
+// 声明返回值时带上一个名字允许我们在函数内的不同位置
+// 只用写return一个词就能将函数内指定名称的变量返回
 func learnNamedReturns(x, y int) (z int) {
     z = x * y
     return // z is implicit here, because we named it earlier.
@@ -204,13 +192,14 @@ func learnFlowControl() {
         continue // 不会运行的
     }
 
-    // You can use range to iterate over an array, a slice, a string, a map, or a channel.
-    // range returns one (channel) or two values (array, slice, string and map).
+    // 用range可以枚举 array、slice、string、map、channel等不同类型
+    // 对于channel，range返回一个值，
+    // array、slice、string、map等其他类型返回一对儿
     for key, value := range map[string]int{"one": 1, "two": 2, "three": 3} {
-        // for each pair in the map, print key and value
+        // 打印map中的每一个键值对
         fmt.Printf("key=%s, value=%d\n", key, value)
     }
-    // If you only need the value, use the underscore as the key
+    // 如果你只想要值，那就用前面讲的下划线扔掉没用的
     for _, name := range []string{"Bob", "Bill", "Joe"} {
         fmt.Printf("Hello, %s\n", name)
     }
@@ -227,10 +216,10 @@ func learnFlowControl() {
     x /= 1e5                     // x变成10
     fmt.Println("xBig:", xBig()) // 现在是false
 
-    // What's more is function literals may be defined and called inline,
-    // acting as an argument to function, as long as:
-    // a) function literal is called immediately (),
-    // b) result type matches expected type of argument.
+    // 除此之外，函数体可以在其他函数中定义并调用，
+    // 满足下列条件时，也可以作为参数传递给其他函数：
+    //   a) 定义的函数被立即调用
+    //   b) 函数返回值符合调用者对类型的要求
     fmt.Println("Add + double two numbers: ",
         func(a, b int) int {
             return (a + b) * 2
@@ -241,13 +230,13 @@ func learnFlowControl() {
     goto love
 love:
 
-    learnFunctionFactory() // func returning func is fun(3)(3)
-    learnDefer()      // A quick detour to an important keyword.
+    learnFunctionFactory() // 返回函数的函数多棒啊
+    learnDefer()      // 对defer关键字的简单介绍
     learnInterfaces() // 好东西来了！
 }
 
 func learnFunctionFactory() {
-    // Next two are equivalent, with second being more practical
+    // 空行分割的两个写法是相同的，不过第二个写法比较实用
     fmt.Println(sentenceFactory("summer")("A beautiful", "day!"))
 
     d := sentenceFactory("summer")
@@ -255,8 +244,8 @@ func learnFunctionFactory() {
     fmt.Println(d("A lazy", "afternoon!"))
 }
 
-// Decorators are common in other languages. Same can be done in Go
-// with function literals that accept arguments.
+// Decorator在一些语言中很常见，在go语言中，
+// 接受参数作为其定义的一部分的函数是修饰符的替代品
 func sentenceFactory(mystring string) func(before, after string) string {
     return func(before, after string) string {
         return fmt.Sprintf("%s %s %s", before, mystring, after) // new string
@@ -264,11 +253,11 @@ func sentenceFactory(mystring string) func(before, after string) string {
 }
 
 func learnDefer() (ok bool) {
-    // Deferred statements are executed just before the function returns.
+    // defer表达式在函数返回的前一刻执行
     defer fmt.Println("deferred statements execute in reverse (LIFO) order.")
     defer fmt.Println("\nThis line is being printed first because")
-    // Defer is commonly used to close a file, so the function closing the
-    // file stays close to the function opening the file.
+    // 关于defer的用法，例如用defer关闭一个文件，
+    // 就可以让关闭操作与打开操作的代码更近一些
     return true
 }
 
@@ -306,15 +295,15 @@ func learnInterfaces() {
     learnVariadicParams("great", "learning", "here!")
 }
 
-// Functions can have variadic parameters.
+// 有变长参数列表的函数
 func learnVariadicParams(myStrings ...interface{}) {
-    // Iterate each value of the variadic.
-    // The underbar here is ignoring the index argument of the array.
+    // 枚举变长参数列表的每个参数值
+    // 下划线在这里用来抛弃枚举时返回的数组索引值
     for _, param := range myStrings {
         fmt.Println("param:", param)
     }
 
-    // Pass variadic value as a variadic parameter.
+    // 将可变参数列表作为其他函数的参数列表
     fmt.Println("params:", fmt.Sprintln(myStrings...))
 
     learnErrorHandling()
@@ -402,16 +391,18 @@ func requestServer() {
 
 ## 更进一步
 
-Go的根源在[Go官方网站](http://golang.org/)。
-在那里你可以学习入门教程，通过浏览器交互式地学习，而且可以读到很多东西。
-Aside from a tour, [the docs](https://golang.org/doc/) contain information on how to write clean and effective Go code, package and command docs, and release history.
+关于Go的一切你都可以在[Go官方网站](http://golang.org/)找到。
+在那里你可以获得教程参考，在线试用，和更多的资料。
+在简单的尝试过后，在[官方文档](https://golang.org/doc/)那里你会得到你所需要的所有资料、关于编写代码的规范、库和命令行工具的文档与Go的版本历史。
 
-强烈推荐阅读语言定义部分，很简单而且很简洁！(as language definitions go these days.)
+强烈推荐阅读语言定义部分，很简单而且很简洁！（赶时髦！）
 
-You can play around with the code on [Go playground](https://play.golang.org/p/tnWMjr16Mm). Try to change it and run it from your browser! Note that you can use [https://play.golang.org](https://play.golang.org) as a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) to test things and code in your browser, without even installing Go.
+你还可以前往[Go在线体验中心](https://play.golang.org/p/tnWMjr16Mm)进，在浏览器里修改并运行这些代码，一定要试一试哦！你可以将[https://play.golang.org](https://play.golang.org)当作一个[REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop)，在那里体验语言特性或运行自己的代码，连环境都不用配！
 
 学习Go还要阅读Go[标准库的源代码](http://golang.org/src/)，全部文档化了，可读性非常好，可以学到go，go style和go idioms。在[文档](http://golang.org/pkg/)中点击函数名，源代码就出来了！
 
-Another great resource to learn Go is [Go by example](https://gobyexample.com/).
+[Go by example](https://gobyexample.com/)也是一个学习的好地方。
 
-Go Mobile adds support for mobile platforms (Android and iOS). You can write all-Go native mobile apps or write a library that contains bindings from a Go package, which can be invoked via Java (Android) and Objective-C (iOS). Check out the [Go Mobile page](https://github.com/golang/go/wiki/Mobile) for more information.
+
+
+Go Mobile添加了对移动平台的支持（Android and iOS）。你可以完全用go语言来创造一个app或编写一个可以从Java或Obj-C调用的函数库，敬请参考[Go Mobile page](https://github.com/golang/go/wiki/Mobile)。
