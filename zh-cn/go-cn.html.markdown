@@ -40,7 +40,7 @@ import (
 func main() {
     // 往标准输出打印一行。
     // 用包名fmt限制打印函数。
-    fmt.Println("Hello world!")
+    fmt.Println("天坑欢迎你!")
 
     // 调用当前包的另一个函数。
     beyondHello()
@@ -70,10 +70,10 @@ func learnMultiple(x, y int) (sum, prod int) {
 // 内置变量类型和关键词
 func learnTypes() {
     // 短声明给你所想。
-    str := "Learn Go!" // String类型
+    str := "少说话多读书!" // String类型
 
-    s2 := `A "raw" string literal
-can include line breaks.` // 同样是String类型
+    s2 := `这是一个
+可以换行的字符串` // 同样是String类型
 
     // 非ascii字符。Go使用UTF-8编码。
     g := 'Σ' // rune类型，int32的别名，使用UTF-8编码
@@ -127,7 +127,7 @@ can include line breaks.` // 同样是String类型
     // 调用os.Create并用下划线变量扔掉它的错误代码。
     // 因为我们觉得这个文件一定会成功创建。
     file, _ := os.Create("output.txt")
-    fmt.Fprint(file, "This is how you write to a file, by the way")
+    fmt.Fprint(file, "这句代码还示范了如何写入文件呢")
     file.Close()
 
     // 输出变量
@@ -162,7 +162,7 @@ func expensiveComputation() int {
 func learnFlowControl() {
     // If需要花括号，括号就免了
     if true {
-        fmt.Println("told ya")
+        fmt.Println("这句话肯定被执行")
     }
     // 用go fmt 命令可以帮你格式化代码，所以不用怕被人吐槽代码风格了，
     // 也不用容忍别人的代码风格。
@@ -182,7 +182,7 @@ func learnFlowControl() {
     }
     // 和if一样，for也不用括号
     for x := 0; x < 3; x++ { // ++ 自增
-        fmt.Println("iteration", x)
+        fmt.Println("遍历", x)
     }
     // x在这里还是1。为什么？
 
@@ -197,11 +197,11 @@ func learnFlowControl() {
     // array、slice、string、map等其他类型返回一对儿
     for key, value := range map[string]int{"one": 1, "two": 2, "three": 3} {
         // 打印map中的每一个键值对
-        fmt.Printf("key=%s, value=%d\n", key, value)
+        fmt.Printf("索引：%s, 值为：%d\n", key, value)
     }
     // 如果你只想要值，那就用前面讲的下划线扔掉没用的
     for _, name := range []string{"Bob", "Bill", "Joe"} {
-        fmt.Printf("Hello, %s\n", name)
+        fmt.Printf("你是。。 %s\n", name)
     }
 
     // 和for一样，if中的:=先给y赋值，然后再和x作比较。
@@ -220,7 +220,7 @@ func learnFlowControl() {
     // 满足下列条件时，也可以作为参数传递给其他函数：
     //   a) 定义的函数被立即调用
     //   b) 函数返回值符合调用者对类型的要求
-    fmt.Println("Add + double two numbers: ",
+    fmt.Println("两数相加乘二: ",
         func(a, b int) int {
             return (a + b) * 2
         }(10, 2)) // Called with args 10 and 2
@@ -237,11 +237,11 @@ love:
 
 func learnFunctionFactory() {
     // 空行分割的两个写法是相同的，不过第二个写法比较实用
-    fmt.Println(sentenceFactory("summer")("A beautiful", "day!"))
+    fmt.Println(sentenceFactory("原谅")("当然选择", "她！"))
 
-    d := sentenceFactory("summer")
-    fmt.Println(d("A beautiful", "day!"))
-    fmt.Println(d("A lazy", "afternoon!"))
+    d := sentenceFactory("原谅")
+    fmt.Println(d("当然选择", "她！"))
+    fmt.Println(d("你怎么可以", "她？"))
 }
 
 // Decorator在一些语言中很常见，在go语言中，
@@ -254,8 +254,8 @@ func sentenceFactory(mystring string) func(before, after string) string {
 
 func learnDefer() (ok bool) {
     // defer表达式在函数返回的前一刻执行
-    defer fmt.Println("deferred statements execute in reverse (LIFO) order.")
-    defer fmt.Println("\nThis line is being printed first because")
+    defer fmt.Println("defer表达式执行顺序为后进先出（LIFO）")
+    defer fmt.Println("\n这句话比上句话先输出，因为")
     // 关于defer的用法，例如用defer关闭一个文件，
     // 就可以让关闭操作与打开操作的代码更近一些
     return true
@@ -313,7 +313,7 @@ func learnErrorHandling() {
     // ", ok"用来判断有没有正常工作
     m := map[int]string{3: "three", 4: "four"}
     if x, ok := m[1]; !ok { // ok 为false，因为m中没有1
-        fmt.Println("no one there")
+        fmt.Println("别找了真没有")
     } else {
         fmt.Print(x) // 如果x在map中的话，x就是那个值喽。
     }
@@ -352,11 +352,11 @@ func learnConcurrency() {
     // 它随机选择一个准备好通讯的case。
     select {
     case i := <-c: // 从channel接收的值可以赋给其他变量
-        fmt.Println("it's a", i)
+        fmt.Println("这是……", i)
     case <-cs: // 或者直接丢弃
-        fmt.Println("it's a string")
+        fmt.Println("这是个字符串！")
     case <-cc: // 空的，还没作好通讯的准备
-        fmt.Println("didn't happen.")
+        fmt.Println("别瞎想")
     }
     // 上面c或者cs的值被取到，其中一个goroutine结束，另外一个一直阻塞。
 
@@ -377,7 +377,7 @@ func learnWebProgramming() {
 // 使pair实现http.Handler接口的ServeHTTP方法。
 func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
     // 使用http.ResponseWriter返回数据
-    w.Write([]byte("You learned Go in Y minutes!"))
+    w.Write([]byte("Y分钟golang速成!"))
 }
 
 func requestServer() {
@@ -385,7 +385,7 @@ func requestServer() {
     fmt.Println(err)
     defer resp.Body.Close()
     body, err := ioutil.ReadAll(resp.Body)
-    fmt.Printf("\nWebserver said: `%s`", string(body))
+    fmt.Printf("\n服务器消息： `%s`", string(body))
 }
 ```
 
