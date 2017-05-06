@@ -37,8 +37,7 @@ that is changing recently. As a result, the reference implementation of Ruby is
 called MRI (Matz' Reference Implementation), and when you hear a Ruby version,
 it is referring to the release version of MRI.
 
-The three major version of Ruby in use are:
-
+The major version of Ruby in use are:
 * 2.0.0 - Released in February 2013. Most major libraries and frameworks support
   2.0.0.
 * 1.9.3 - Released in October 2011. This is the version most rubyists use
@@ -63,27 +62,24 @@ not need to know Java to use it.
 Very mature/compatible:
 
 * [MRI](https://github.com/ruby/ruby) - Written in C, this is the reference implementation of Ruby. By
-  definition it is 100% compatible (with itself). All other rubies
-maintain compatibility with MRI (see [RubySpec](#rubyspec) below).
+  definition it is 100% compatible (with itself). All other rubies maintain compatibility with 
+  MRI (see [RubySpec](#rubyspec) below).
 * [JRuby](http://jruby.org/) - Written in Java and Ruby, this robust implementation is quite fast.
-  Most importantly, JRuby's strength is JVM/Java interop, leveraging existing
-JVM tools, projects, and languages.
+  Most importantly, JRuby's strength is JVM/Java interop, leveraging existing JVM tools, projects, and languages.
 * [Rubinius](http://rubini.us/) - Written primarily in Ruby itself with a C++ bytecode VM. Also
-  mature and fast. Because it is implemented in Ruby itself, it exposes many VM
-features into rubyland.
+  mature and fast. Because it is implemented in Ruby itself, it exposes many VM features into rubyland.
 
 Medium mature/compatible:
 
 * [Maglev](http://maglev.github.io/) - Built on top of Gemstone, a Smalltalk VM. Smalltalk has some
-  impressive tooling, and this project tries to bring that into Ruby
-development.
+  impressive tooling, and this project tries to bring that into Ruby development.
 * [RubyMotion](http://www.rubymotion.com/) - Brings Ruby to iOS development.
 
 Less mature/compatible:
 
-* [Topaz](http://topazruby.com/) - Written in RPython (using the PyPy toolchain), Topaz is fairly young
-  and not yet compatible. It shows promise to be a high-performance Ruby
-implementation.
+* [Topaz](http://topazruby.com/) - Written in RPython (using the PyPy toolchain), 
+  Topaz is fairly youn and not yet compatible. It shows promise to be a high-performance Ruby
+  implementation.
 * [IronRuby](http://ironruby.net/) - Written in C# targeting the .NET platform, work on IronRuby seems
   to have stopped since Microsoft pulled their support.
 
@@ -130,6 +126,22 @@ are many testing libraries with different goals.
 * [minitest](http://ruby-doc.org/stdlib-2.0.0/libdoc/minitest/rdoc/MiniTest.html) - Ruby 1.9/2.0's built-in testing framework
 * [RSpec](http://rspec.info/) - A testing framework that focuses on expressivity
 * [Cucumber](http://cukes.info/) - A BDD testing framework that parses Gherkin formatted tests
+
+# Popular Gems
+
+In ruby most things are broken down to gems. Small pieces of functionality you can include in your program.
+Some of the popular ones include:
+
+* [Rake](https://github.com/ruby/rake) - A make like task runner implemented in Ruby. 
+  Used to handle many simple tasks such as setting up a DB or clearing a project's temp folders.
+* [Rack](https://github.com/rack/rack) - A minimal, modular web server used by many projects 
+  to handle http request.
+* [Thor](https://github.com/erikhuda/thor) - A toolkit for building command line utilities.
+* [Rails](https://github.com/rails/rails) / ActiveRecord / ActiveSupport - Full stack framework 
+  for building APIs or MVC applications
+* [JSON](https://github.com/flori/json) - Ruby JSON Parser
+
+and many many more! Discover more at the [RubyGems site](https://rubygems.org/)
 
 ## Be Nice
 
