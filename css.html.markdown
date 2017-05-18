@@ -1,6 +1,6 @@
 ---
-lenguaje: css
-contribudores:
+language: css
+contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
     - ["Marco Scannadinari", "https://github.com/marcoms"]
     - ["Geoffrey Liu", "https://github.com/g-liu"]
@@ -8,8 +8,9 @@ contribudores:
     - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
     - ["Brett Taylor", "https://github.com/glutnix"]
     - ["Tyler Mumford", "https://tylermumford.com"]
+translators:
     - ["miky ackerman", "https://github.com/mikyackerman"]
-Archivo: learncss.css
+filename: learncss.css
 ---
 
 Paginas web estan contruidas en HTML, lo cual especifica el contenido de una pagina
