@@ -1,14 +1,14 @@
 ---
 language: Tcl
 contributors:
-    - ["Poor Yorick", "http://pooryorick.com/"]
+    - ["Poor Yorick", "https://pooryorick.com/"]
 filename: learntcl.tcl
 ---
 
-Tcl was created by [John Ousterhout](http://wiki.tcl.tk/John Ousterout) as a
+Tcl was created by [John Ousterhout](https://wiki.tcl.tk/John%20Ousterout) as a
 reusable scripting language for chip design tools he was creating.  In 1997 he
 was awarded the [ACM Software System
-Award](http://en.wikipedia.org/wiki/ACM_Software_System_Award) for Tcl.  It can
+Award](https://en.wikipedia.org/wiki/ACM_Software_System_Award) for Tcl.  It can
 be considered a domain-specific language for creating domain-specific
 languages.  As a file format, Tcl is the ideal format for configuration files.
 Tcl can be used both as an embeddable scripting language and as a general
@@ -113,9 +113,9 @@ set greeting $greeting1$greeting2[set greeting3]
 # "incr" command increments the value of a variable and returns its value:
 
 set greeting $greeting[
-	incr i
-	incr i
-	incr i
+    incr i
+    incr i
+    incr i
 ]
 # i is now 3
 
@@ -196,12 +196,12 @@ namespace eval people {
 
 # Use two colons to delimit namespace components in variable names:
 namespace eval people {
-	set greeting "Hello $person1::name"
+    set greeting "Hello $person1::name"
 }
 
 # Two colons also delimit namespace components in a command names:
 proc people::person1::speak {} {
-	puts {I am The One.  Who the hell are you?}
+    puts {I am The One.  Who the hell are you?}
 }
 
 
@@ -223,7 +223,7 @@ proc people::person1::speak {} {
 # happens, change "0" to "1": 
 
 if 0 {
-	namespace delete ::
+    namespace delete ::
 }
 
 # Because of name resolution behaviour, it's safer to use the "variable"
@@ -233,19 +233,19 @@ if 0 {
 # local namespace.
 
 namespace eval people {
-	namespace eval person1 {
-		variable name Neo
-	}
+    namespace eval person1 {
+        variable name Neo
+    }
 }
 
 # Once a variable is declared in a namespace, [set] operates on the variable in
 # that namespace:
 
 namespace eval people {
-		namespace eval person1 {
-			variable name
-			set name Neo
-		}
+        namespace eval person1 {
+            variable name
+            set name Neo
+        }
 }
 
 
@@ -254,10 +254,10 @@ namespace eval people {
 # makes the variable visible within the scope of the procedure:
 
 namespace eval people::person1 {
-	proc fly {} {
-		variable name
-		puts "$name is flying!"
-	}
+    proc fly {} {
+        variable name
+        puts "$name is flying!"
+    }
 }
 
 
@@ -331,7 +331,7 @@ proc fold {cmd first args} {
     foreach arg $args {
         set first [$cmd $first $arg]
     }
-	return $first
+    return $first
 }
 fold ::tcl::mathop::* 5 3 3 ;# ->  45
 
@@ -421,21 +421,21 @@ eval $command
 # see the error, change "0" to "1":
 
 if 0 {
-	set command {set name}
-	append command { Archibald Sorbisol}
-	eval $command ;# There is an error here, because there are too many arguments \
-	    to "set" in {set name Archibald Sorbisol}
+    set command {set name}
+    append command { Archibald Sorbisol}
+    eval $command ;# There is an error here, because there are too many arguments \
+        to "set" in {set name Archibald Sorbisol}
 }
 
 # This mistake can easily occur with the "subst" command.  To see the error,
 # change "0" to "1": 
 
 if 0 {
-	set replacement {Archibald Sorbisol}
-	set command {set name $replacement}
-	set command [subst $command] 
-	eval $command ;# The same error as before:  too many arguments to "set" in \
-		{set name Archibald Sorbisol}
+    set replacement {Archibald Sorbisol}
+    set command {set name $replacement}
+    set command [subst $command] 
+    eval $command ;# The same error as before:  too many arguments to "set" in \
+        {set name Archibald Sorbisol}
 }
 
 
@@ -461,27 +461,27 @@ apply $cmd Whaddup Neo
 
 # The "uplevel" command evaluates a script in some enclosing scope:
 proc greet {} {
-	uplevel {puts "$greeting, $name"}
+    uplevel {puts "$greeting, $name"}
 }
 
 proc set_double {varname value} {
-	if {[string is double $value]} {
-		uplevel [list variable $varname $value]
-	} else {
-		error [list {not a double} $value]
-	}
+    if {[string is double $value]} {
+        uplevel [list variable $varname $value]
+    } else {
+        error [list {not a double} $value]
+    }
 }
 
 
 # The "upvar" command links a variable in the current scope to a variable in
 # some enclosing scope:
 proc set_double {varname value} {
-	if {[string is double $value]} {
-		upvar 1 $varname var
-		set var $value
-	} else {
-		error [list {not a double} $value]
-	}
+    if {[string is double $value]} {
+        upvar 1 $varname var
+        set var $value
+    } else {
+        error [list {not a double} $value]
+    }
 }
 
 
@@ -503,13 +503,13 @@ proc while {condition script} {
 # to enter that call stack. The "yield" command suspends execution in that
 # stack:
 proc countdown count {
-	#send something back to the initial "coroutine" command
-	yield
+    #send something back to the initial "coroutine" command
+    yield
 
-	while {$count > 1} {
-		yield [incr count -1]
-	}
-	return 0
+    while {$count > 1} {
+        yield [incr count -1]
+    }
+    return 0
 }
 coroutine countdown1 countdown 3
 coroutine countdown2 countdown 5
@@ -518,7 +518,7 @@ puts [countdown2] ;# -> 4
 puts [countdown1] ;# -> 1 
 puts [countdown1] ;# -> 0 
 catch {
-	puts [coundown1] ;# -> invalid command name "countdown1"
+    puts [coundown1] ;# -> invalid command name "countdown1"
 } cres copts 
 puts $cres
 puts [countdown2] ;# -> 3 
@@ -527,35 +527,35 @@ puts [countdown2] ;# -> 3
 # Coroutines stacks can yield control to each other:
 
 proc pass {who args} {
-	return [yieldto $who {*}$args]
+    return [yieldto $who {*}$args]
 }
 
 coroutine a apply {{} {
-		yield
-		set result [pass b "please pass the salt"]
-		puts [list got the $result]
-		set result [pass b "please pass the pepper"]
-		puts [list got the $result]
+        yield
+        set result [pass b "please pass the salt"]
+        puts [list got the $result]
+        set result [pass b "please pass the pepper"]
+        puts [list got the $result]
 }}
 
 coroutine b apply {{} {
-	set request [yield]
-	while 1 {
-		set response [pass c $request]
-		puts "now yielding"
-		set request [pass a $response]
-	}
+    set request [yield]
+    while 1 {
+        set response [pass c $request]
+        puts "now yielding"
+        set request [pass a $response]
+    }
 }}
 
 coroutine c apply {{} {
-	set request [yield]
-	while 1 {
-		if {[string match *salt* $request]} {
-			set request [pass b salt]
-		} else {
-			set request [pass b huh?]
-		}
-	}
+    set request [yield]
+    while 1 {
+        if {[string match *salt* $request]} {
+            set request [pass b salt]
+        } else {
+            set request [pass b huh?]
+        }
+    }
 }}
 
 # get things moving
