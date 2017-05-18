@@ -346,8 +346,9 @@ if {3 > 4} {
 }
 
 
-# Loops are implemented as commands.  The first, second, and third
-# arguments of the "for" command are treated as expressions
+# Iterators are implemented as commands.  The first and third arguments to the
+# "for" command are treated as expressions, while the second argument of the
+# "for" command are treated as expressions
 set res 0
 for {set i 0} {$i < 10} {incr i} {
     set res [expr {$res + $i}]
