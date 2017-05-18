@@ -190,7 +190,7 @@ int main()
 {
    int monEntier;
 
-   // Imprime vers stdout (ou le terminal/l'écran)
+   // Affiche sur stdout (ou le terminal/l'écran)
    cout << "Entrez votre chiffre favori:\n";
    // Prend l'entrée clavier
    cin >> monEntier;
@@ -222,7 +222,7 @@ cout << maChaine + monAutreChaine; // Bonjour tout le monde !"
 
 cout << maChaine + " toi !"; // "Bonjour toi !"
 
-// Les chaînes de caractères C++ sont mutables et ont des valeurs sémantiques.
+// Les chaînes de caractères C++ sont mutables.
 maChaine.append(" le chien !");
 cout << maChaine; // "Bonjour le chien !"
 
@@ -233,8 +233,8 @@ cout << maChaine; // "Bonjour le chien !"
 
 // En plus des pointeurs comme ceux en C,
 // C++ possède des _références_.
-// Ce sont des types de pointeurs qui ne peuvent pas être réassignés une fois
-// initialisés, et ne peuvent pas être nulles.
+// Ce sont des types de pointeurs qui ne peuvent pas être réassignés
+// une fois initialisés, et ne peuvent pas être nulles.
 // Ils partagent la même syntaxe que les variables elles-mêmes:
 // les * ne sont pas nécessaires pour les déréférencer et
 // & (addresse de) n'est pas utilisé pour l'assignement.
@@ -247,15 +247,15 @@ string bar = "Je suis bar";
 
 string& fooRef = foo; // Ceci créé une référence à foo
 fooRef += ". Salut!"; // Modifie foo à travers la référence
-cout << fooRef; // Imprime "Je suis foo. Salut!"
+cout << fooRef; // Affiche "Je suis foo. Salut!"
 
 // Ne réassigne pas "fooRef". Ceci revient à faire "foo = bar", et
 // foo == "I am bar"
 // après cette ligne.
-cout << &fooRef << endl; // Imprime l'adresse de foo
+cout << &fooRef << endl; // Affiche l'adresse de foo
 fooRef = bar;
-cout << &fooRef << endl; // Imprime toujours l'adresse de foo
-cout << fooRef;  // Imprime "Je suis bar"
+cout << &fooRef << endl; // Affiche toujours l'adresse de foo
+cout << fooRef;  // Affiche "Je suis bar"
 
 // L'adresse de fooRef reste la même, c.-à-d. référence toujours foo.
 
@@ -396,7 +396,6 @@ void EcrireTypeVoiturePrefereDansLeFichier(ETypesDeVoitures TypeVoitureEntree)
 // Classes et programmation orientée objet
 ///////////////////////////////////////////////////
 
-// Premier exemple de classes
 #include <iostream>
 
 // Déclare une classe.
@@ -424,7 +423,7 @@ public:
 
     // Les fonctions qui ne modifient pas l'état de l'objet devraient être
     // marquées en constantes avec const.
-    // Ceci vous permet de les appeler avec une référence constante de l'objet.
+    // Ceci vous permet de les appeler avec une référence constante vers l'objet.
     // Notez aussi que les fonctions devant être surchargées dans des classes
     // dérivées doivent être explicitement déclarées avec _virtual_.
     // Les fonctions ne sont pas virtuelles par défault pour des raisons de
@@ -445,7 +444,7 @@ public:
     // classe de base ou d'un pointeur.
     virtual ~Chien();
 
-}; // Un semicolon doit clôre la définition de la classe.
+}; // Un point virgule doit clôre la définition de la classe.
 
 // Les fonctions membres de la classe sont habituellement implémentées dans des
 // fichiers .cpp.
@@ -522,7 +521,7 @@ void ChienDomestique::imprimer() const
     // Appelle la fonction "imprimer" dans la classe de base Chien
     Chien::imprimer();
     std::cout << "Le chien appartient à " << proprietaire << "\n";
-    // Imprime "Le chien est <nom> et pèse <poids>"
+    // Affiche "Le chien est <nom> et pèse <poids>"
     //         "Le chien appartient à <proprietaire>"
 }
 
@@ -548,7 +547,7 @@ public:
     // mais initialise le Point à la valeur par défaut (0, 0)
     Point() { };
 
-    // La syntaxe suivante est connue comme une liste d'initialisation et est
+    // La syntaxe suivante s'appelle une liste d'initialisation et est
     // la façon correcte d'initialiser les valeurs des membres d'une classe.
     Point (double a, double b) :
         x(a),
@@ -584,7 +583,7 @@ int main () {
     // Appelle l'opérateur + du Point
     // Le point "haut" appelle la fonction + avec "droite" comme paramètre
     Point resultat = haut + droite;
-    // Prints "Le résultat est haut-droite (1,1)"
+    // Affiche "Le résultat est haut-droite (1,1)"
     cout << "Le résultat est haut-droite (" << resultat.x << ','
          << resultat.y << ")\n";
     return 0;
@@ -594,7 +593,7 @@ int main () {
 // Patrons (templates)
 ////////////////////////////////
 
-// Les modèles (patrons, ou encore "templates") en C++ sont majoritairement
+// Les templates (patrons) en C++ sont majoritairement
 // utilisés pour la programmation générique, bien qu'ils soient bien plus
 // puissants que les constructeurs génériques dans d'autres langages.
 // Ils gèrent également la spécialisation explicite et partielle ainsi que
@@ -654,7 +653,7 @@ void aboyerTroisFois(const T& entree)
 
 Chien docile;
 docile.initialiserNom("Docile")
-aboyerTroisFois(docile); // Imprime "Docile fait ouaf !" trois fois.
+aboyerTroisFois(docile); // Affiche "Docile fait ouaf !" trois fois.
 
 // Les paramètres génériques (ou paramètres template) ne sont pas forcément des
 // classes :
@@ -673,16 +672,16 @@ void imprimerMessage<10>() {
   cout << "Apprenez le C++ plus vite en seulement 10 minutes !" << endl;
 }
 
-// Imprime "Apprenez le C++ en 20 minutes !"
+// Affiche "Apprenez le C++ en 20 minutes !"
 imprimerMessage<20>();
-// Imprime "Apprenez le C++ plus vite en seulement 10 minutes !"
+// Affiche "Apprenez le C++ plus vite en seulement 10 minutes !"
 imprimerMessage<10>();
 
 //////////////////////////////////
 // Gestion des exceptions
 //////////////////////////////////
 
-// La librairie standard fournit quelques types d'exception
+// La bibliothèque standard fournit quelques types d'exception
 // (voir http://en.cppreference.com/w/cpp/error/exception)
 // mais n'importe quel type peut être lancé en tant qu'exception.
 #include <exception>
@@ -743,22 +742,22 @@ void faireQuelqueChoseAvecUnFichier(const char* nomDuFichier)
 // gestion du fichier si un problème se produit.
 bool faireQuelqueChoseAvecUnFichier(const char* nomDuFichier)
 {
-    FILE* fh = fopen(nomDuFichier, "r"); // Open the file in read mode
+    FILE* fh = fopen(nomDuFichier, "r"); // Ouvre le fichier en mode lecture.
     if (fh == nullptr) // Le pointeur retourné est null à un échec.
         return false; // Signale cet échec à l'appelant.
 
     // Suppose que chaque fonction retourne faux si elle échoue
     if (!faireQuelqueChoseAvecLeFichier(fh)) {
-        fclose(fh); // Ferme la gestion du fichier pour que cela ne fuite pas
-        return false; // Propage l'erreur
+        fclose(fh); // Ferme le flux d'entrée du fichier pour empêcher les fuites
+        return false; // Propage l'erreur
     }
     if (!faireAutreChoseAvec(fh)) {
-        fclose(fh); // Ferme la gestion du fichier pour que cela ne fuite pas
-        return false; // Propage l'erreur
+        fclose(fh);
+        return false;
     }
 
-    fclose(fh); // Ferme la gestion du fichier pour que cela ne fuite pas
-    return true; // Indique le succès
+    fclose(fh);
+    return true;
 }
 
 // Les programmeurs en C clarifient souvent tout cela en utilisant goto :
@@ -822,9 +821,9 @@ void faireQuelqueChoseAvecUnFichier(const std::string& nomDuFichier)
 
 // Ceci a des avantages _énormes_ :
 // 1. Peu importe la situation, la ressource (dans ce cas précis la gestion
-//    de fichier) sera libérée. Dès que le destructeur est écrit correctement,
+//    de fichier) sera libérée. Si le destructeur est écrit correctement,
 //    il est _impossible_ d'oublier de fermer la gestion et d'entraîner une
-//    une fuite de ressources.
+//    une fuite de ressources (si l'objet est sur la pile).
 // 2. Remarquez que le code est beaucoup plus clair.
 //    Le destructeur gère la fermeture du fichier discrètement sans avoir
 //    besoin de s'en préoccuper.
