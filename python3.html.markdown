@@ -9,7 +9,7 @@ contributors:
 filename: learnpython3.py
 ---
 
-Python was created by Guido Van Rossum in the early 90s. It is now one of the most popular
+Python was created by Guido van Rossum in the early 90s. It is now one of the most popular
 languages in existence. I fell in love with Python for its syntactic clarity. It's basically
 executable pseudocode.
 
@@ -23,7 +23,7 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 
 """ Multiline strings can be written
     using three "s, and are often used
-    as comments
+    as documentation.
 """
 
 ####################################################
@@ -114,7 +114,7 @@ b == a            # => True, a's and b's objects are equal
 
 # Strings can be added too! But try not to do this.
 "Hello " + "world!"  # => "Hello world!"
-# Strings can be added without using '+'
+# String literals (but not variables) can be concatenated without using '+'
 "Hello " "world!"    # => "Hello world!"
 
 # A string can be treated like a list of characters
@@ -162,14 +162,14 @@ bool(())  # => False
 print("I'm Python. Nice to meet you!")  # => I'm Python. Nice to meet you!
 
 # By default the print function also prints out a newline at the end.
-# Use the optional argument end to change the end character.
+# Use the optional argument end to change the end string.
 print("Hello, World", end="!")  # => Hello, World!
 
 # Simple way to get input data from console
 input_string_var = input("Enter some data: ") # Returns the data as a string
 # Note: In earlier versions of Python, input() method was named as raw_input()
 
-# No need to declare variables before assigning to them.
+# There are no declarations, only assignments.
 # Convention is to use lower_case_with_underscores
 some_var = 5
 some_var  # => 5
@@ -206,6 +206,7 @@ li[-1]  # => 3
 li[4]  # Raises an IndexError
 
 # You can look at ranges with slice syntax.
+# The start index is included, the end index is not
 # (It's a closed/open range for you mathy types.)
 li[1:3]   # => [2, 4]
 # Omit the end
@@ -277,7 +278,7 @@ d, e, f = 4, 5, 6
 e, d = d, e  # d is now 5 and e is now 4
 
 
-# Dictionaries store mappings
+# Dictionaries store mappings from keys to values
 empty_dict = {}
 # Here is a prefilled dictionary
 filled_dict = {"one": 1, "two": 2, "three": 3}
@@ -323,7 +324,7 @@ filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5
 
 # Adding to a dictionary
 filled_dict.update({"four":4})  # => {"one": 1, "two": 2, "three": 3, "four": 4}
-#filled_dict["four"] = 4        #another way to add to dict
+filled_dict["four"] = 4         # another way to add to dict
 
 # Remove keys from a dictionary with del
 del filled_dict["one"]  # Removes the key "one" from filled dict
@@ -342,9 +343,6 @@ some_set = {1, 1, 2, 2, 3, 4}  # some_set is now {1, 2, 3, 4}
 # Similar to keys of a dictionary, elements of a set have to be immutable.
 invalid_set = {[1], 1}  # => Raises a TypeError: unhashable type: 'list'
 valid_set = {(1,), 1}
-
-# Can set new variables to a set
-filled_set = some_set
 
 # Add one more item to the set
 filled_set.add(5)  # filled_set is now {1, 2, 3, 4, 5}
@@ -381,8 +379,9 @@ filled_set | other_set  # => {1, 2, 3, 4, 5, 6}
 # Let's just make a variable
 some_var = 5
 
-# Here is an if statement. Indentation is significant in python!
-# prints "some_var is smaller than 10"
+# Here is an if statement. Indentation is significant in Python!
+# Convention is to use four spaces, not tabs.
+# This prints "some_var is smaller than 10"
 if some_var > 10:
     print("some_var is totally bigger than 10.")
 elif some_var < 10:    # This elif clause is optional.
@@ -470,7 +469,7 @@ with open("myfile.txt") as f:
 
 # Python offers a fundamental abstraction called the Iterable.
 # An iterable is an object that can be treated as a sequence.
-# The object returned the range function, is an iterable.
+# The object returned by the range function, is an iterable.
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
@@ -494,7 +493,7 @@ next(our_iterator)  # => "one"
 next(our_iterator)  # => "two"
 next(our_iterator)  # => "three"
 
-# After the iterator has returned all of its data, it gives you a StopIteration Exception
+# After the iterator has returned all of its data, it raises a StopIteration exception
 next(our_iterator)  # Raises StopIteration
 
 # You can grab all the elements of an iterator by calling list() on it.
@@ -566,13 +565,13 @@ x = 5
 def set_x(num):
     # Local var x not the same as global variable x
     x = num    # => 43
-    print (x)  # => 43
+    print(x)   # => 43
 
 def set_global_x(num):
     global x
-    print (x)  # => 5
+    print(x)   # => 5
     x = num    # global var x is now set to 6
-    print (x)  # => 6
+    print(x)   # => 6
 
 set_x(43)
 set_global_x(6)
@@ -628,12 +627,12 @@ from math import *
 import math as m
 math.sqrt(16) == m.sqrt(16)  # => True
 
-# Python modules are just ordinary python files. You
+# Python modules are just ordinary Python files. You
 # can write your own, and import them. The name of the
 # module is the same as the name of the file.
 
 # You can find out which functions and attributes
-# defines a module.
+# are defined in a module.
 import math
 dir(math)
 
@@ -648,7 +647,7 @@ dir(math)
 ## 6. Classes
 ####################################################
 
-# We use the "class" operator to get a class
+# We use the "class" statement to create a class
 class Human:
 
     # A class attribute. It is shared by all instances of this class
@@ -656,9 +655,9 @@ class Human:
 
     # Basic initializer, this is called when this class is instantiated.
     # Note that the double leading and trailing underscores denote objects
-    # or attributes that are used by python but that live in user-controlled
+    # or attributes that are used by Python but that live in user-controlled
     # namespaces. Methods(or objects or attributes) like: __init__, __str__,
-    # __repr__ etc. are called magic methods (or sometimes called dunder methods)
+    # __repr__ etc. are called special methods (or sometimes called dunder methods)
     # You should not invent such names on your own.
     def __init__(self, name):
         # Assign the argument to the instance's name attribute
@@ -687,8 +686,8 @@ class Human:
         return "*grunt*"
 
     # A property is just like a getter.
-    # It turns the method age() into an read-only attribute
-    # of the same name.
+    # It turns the method age() into an read-only attribute of the same name.
+    # There's no need to write trivial getters and setters in Python, though.
     @property
     def age(self):
         return self._age
@@ -768,7 +767,7 @@ if __name__ == '__main__':
 # To take advantage of modularization by file you could place the classes above in their own files,
 # say, human.py and bat.py
 
-# to import functions from other files use the following format
+# To import functions from other files use the following format
 # from "filename-without-extension" import "function-or-class"
 
 # superhero.py
