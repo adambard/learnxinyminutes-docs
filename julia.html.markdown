@@ -118,7 +118,7 @@ some_var # => 5
 
 # Accessing a previously unassigned variable is an error
 try
-    some_other_var # => ERROR: some_other_var not defined
+    some_other_var # => UndefVarError(:some_other_var)
 catch e
     println(e)
 end
@@ -192,8 +192,8 @@ sort!(arr) # => [4,5,6]; arr is now [4,5,6]
 
 # Looking out of bounds is a BoundsError
 try
-    a[0] # => ERROR: BoundsError() in getindex at array.jl:270
-    a[end+1] # => ERROR: BoundsError() in getindex at array.jl:270
+    a[0] # => BoundsError([7,2,4,3,4,5,6],(0,))
+    a[end+1] 
 catch e
     println(e)
 end
@@ -227,7 +227,7 @@ length(a) # => 8
 tup = (1, 2, 3) # => (1,2,3) # an (Int64,Int64,Int64) tuple.
 tup[1] # => 1
 try:
-    tup[1] = 3 # => ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
+    tup[1] = 3 # => MethodError(setindex!, (:tup,3,1))
 catch e
     println(e)
 end
@@ -249,26 +249,26 @@ d, e, f = 4, 5, 6 # => (4,5,6)
 
 # Look how easy it is to swap two values
 e, d = d, e  # => (5,4) # d is now 5 and e is now 4
-
+# WARNING: imported binding for e overwritten in module Main
 
 # Dictionaries store mappings
 empty_dict = Dict() # => Dict{Any,Any}()
 
 # You can create a dictionary using a literal
 filled_dict = Dict("one"=> 1, "two"=> 2, "three"=> 3)
-# => Dict{ASCIIString,Int64}
+# => Dict{String, Int64}
 
 # Look up values with []
 filled_dict["one"] # => 1
 
 # Get all keys
 keys(filled_dict)
-# => KeyIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
+# => KeyIterator{Dict{String,Int64}}(["three"=>3,"one"=>1,"two"=>2])
 # Note - dictionary keys are not sorted or in the order you inserted them.
 
 # Get all values
 values(filled_dict)
-# => ValueIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
+# => ValueIterator{Dict{String,Int64}}(["three"=>3,"one"=>1,"two"=>2])
 # Note - Same as above regarding key ordering.
 
 # Check for existence of keys in a dictionary with in, haskey
@@ -279,7 +279,7 @@ haskey(filled_dict, 1) # => false
 
 # Trying to look up a non-existent key will raise an error
 try
-    filled_dict["four"] # => ERROR: key not found: four in getindex at dict.jl:489
+    filled_dict["four"] # => KeyError("four")
 catch e
     println(e)
 end
@@ -405,8 +405,8 @@ f_add(x, y) = x + y # => "f (generic function with 1 method)"
 f_add(3, 4) # => 7
 
 # Function can also return multiple values as tuple
-f(x, y) = x + y, x - y
-f(3, 4) # => (7, -1)
+g(x, y) = x + y, x - y
+g(3, 4) # => (7, -1)
 
 # You can define functions that take a variable number of
 # positional arguments
@@ -437,8 +437,8 @@ defaults('h','g') # => "h g and 5 6"
 defaults('h','g','j') # => "h g and j 6"
 defaults('h','g','j','k') # => "h g and j k"
 try
-    defaults('h') # => ERROR: no method defaults(Char,)
-    defaults() # => ERROR: no methods defaults()
+    defaults('h') # => MethodError(defaults, ('h',))
+    defaults() 
 catch e
     println(e)
 end
@@ -553,15 +553,15 @@ subtypes(Number) # => 2-element Array{Any,1}:
 subtypes(Cat) # => 0-element Array{Any,1}
 
 # AbstractString, as the name implies, is also an abstract type
-subtypes(AbstractString)    # 8-element Array{Any,1}:
+subtypes(AbstractString)    # 7-element Array{Any,1}:
                             #  Base.SubstitutionString{T<:AbstractString}
+                            #  Base.Test.GenericString
                             #  DirectIndexString
                             #  RepString
                             #  RevString{T<:AbstractString}
-                            #  RopeString
+                            #  String
                             #  SubString{T<:AbstractString}
-                            #  UTF16String
-                            #  UTF8String
+
 
 # Every type has a super type; use the `super` function to get it.
 typeof(5) # => Int64
@@ -573,8 +573,8 @@ super(Number) # => Any
 super(super(Signed)) # => Real
 super(Any) # => Any
 # All of these type, except for Int64, are abstract.
-typeof("fire") # => ASCIIString
-super(ASCIIString) # => DirectIndexString
+typeof("fire") # => String
+super(String) # => AbstractString
 super(DirectIndexString) # => AbstractString
 # Likewise here with ASCIIString
 
@@ -639,7 +639,7 @@ end
 
 pet_cat(Lion("42")) # => prints "The cat says 42"
 try
-    pet_cat(tigger) # => ERROR: no method pet_cat(Tiger,)
+    pet_cat(tigger) # => MethodError(pet_cat, (Tiger(3.5, "orange"),))
 catch e
     println(e)
 end
