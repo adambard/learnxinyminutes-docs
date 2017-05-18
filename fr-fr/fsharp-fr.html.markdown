@@ -295,14 +295,14 @@ module DataTypeExamples =
     // On utilise "type" avec des accolades pour définir un type record
     type Person = {First:string; Last:string}
 
-    // On utilise "let" avec des accolades pour créer un record
+    // On utilise "let" avec des accolades pour créer un record (enregistrement)
     let person1 = {First="John"; Last="Doe"}
 
     // Pattern match pour déballer
     let {First=first} = person1    // assigne first="john"
 
     // ------------------------------------
-    // Union types (aka variants) ont un set de choix
+    // Union types (ou variants) ont un set (ensemble) de choix
     // Un seul cas peut être valide à la fois.
     // ------------------------------------
 
