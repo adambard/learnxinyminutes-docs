@@ -217,7 +217,7 @@ cout << myString + myOtherString; // "Hello World"
 
 cout << myString + " You"; // "Hello You"
 
-// C++ strings are mutable and have value semantics.
+// C++ strings are mutable.
 myString.append(" Dog");
 cout << myString; // "Hello Dog"
 
