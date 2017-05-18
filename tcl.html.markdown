@@ -233,19 +233,19 @@ if 0 {
 # local namespace.
 
 namespace eval people {
-    namespace eval person1 {
-        variable name Neo
-    }
+	namespace eval person1 {
+		variable name Neo
+	}
 }
 
 # Once a variable is declared in a namespace, [set] operates on the variable in
 # that namespace:
 
 namespace eval people {
-    namespace eval person1 {
-		variable name
-		set name Neo
-    }
+		namespace eval person1 {
+			variable name
+			set name Neo
+		}
 }
 
 
