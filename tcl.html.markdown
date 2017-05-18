@@ -8,16 +8,14 @@ filename: learntcl.tcl
 Tcl was created by [John Ousterhout](https://wiki.tcl.tk/John%20Ousterout) as a
 reusable scripting language for chip design tools he was creating.  In 1997 he
 was awarded the [ACM Software System
-Award](https://en.wikipedia.org/wiki/ACM_Software_System_Award) for Tcl.  It can
-be considered a domain-specific language for creating domain-specific
-languages.  As a file format, Tcl is the ideal format for configuration files.
-Tcl can be used both as an embeddable scripting language and as a general
+Award](https://en.wikipedia.org/wiki/ACM_Software_System_Award) for Tcl.   Tcl
+can be used both as an embeddable scripting language and as a general
 programming language.  It can also be used as a portable C library, even in
 cases where no scripting capability is needed, as it provides data structures
 such as dynamic strings, lists, and hash tables.  The C library also provides
 portable functionality for loading dynamic libraries, string formatting and
-code conversion, filesystem operations, network operations, and more.
-Various features of Tcl stand out:
+code conversion, filesystem operations, network operations, and more.  Various
+features of Tcl stand out:
 
 * Convenient cross-platform networking API
 
@@ -38,7 +36,7 @@ also a string format.  To achieve performance, Tcl internally caches structured
 representations of these values.  The list commands, for example, operate on
 the internal cached representation, and Tcl takes care of updating the string
 representation if it is ever actually needed in the script.  The copy-on-write
-design of Tcl allows script authors can pass around large data values without
+design of Tcl allows script authors to pass around large data values without
 actually incurring additional memory overhead.  Procedures are automatically
 byte-compiled unless they use the more dynamic commands such as "uplevel",
 "upvar", and "trace".
@@ -49,14 +47,8 @@ just want to get down to business with a tool that bends to their will.  Its
 discipline of exposing all programmatic functionality as commands, including
 things like loops and mathematical operations that are usually baked into the
 syntax of other languages, allows it to fade into the background of whatever
-domain-specific functionality a project needs. It's syntax, which is even
+domain-specific functionality a project needs. Its syntax, which is even
 lighter that that of Lisp, just gets out of the way.
-
-There is a document floating around the web titled "Why you should not use
-Tcl".  Ignore that.  It's woefully out-of-date, and even when it was published
-was mostly FUD.
-
-
 
 
 
@@ -67,15 +59,15 @@ was mostly FUD.
 ## 1. Guidelines
 ###############################################################################
 
-# Tcl is not Bash or C!  This needs to be said because standard shell quoting
+# Tcl is not Sh or C!  This needs to be said because standard shell quoting
 # habits almost work in Tcl and it is common for people to pick up Tcl and try
 # to get by with syntax they know from another language.  It works at first,
 # but soon leads to frustration with more complex scripts.
 
-# Braces are just a quoting mechanism, not a code block constructor or a list
-# constructor.  Tcl doesn't have either of those things.  Braces are used,
-# though, to escape special characters in procedure bodies and in strings that
-# are formatted as lists.
+# Braces are just a quoting mechanism, not a code block constructor or syntax
+# for list construction.  Tcl doesn't have either of those things.  Braces are
+# used though, to escape special characters in procedure bodies and in strings
+# that are formatted as lists.
 
 
 ###############################################################################
@@ -211,7 +203,7 @@ proc people::person1::speak {} {
 ###############################################################################
 
 # All other functionality is implemented via commands.  From this point on,
-# there is no ~~spoon~~ new syntax.  Everything else there is to learn about
+# there is no new syntax.  Everything else there is to learn about
 # Tcl is about the behaviour of individual commands and what meaning they
 # assign to their arguments.
 
@@ -221,7 +213,6 @@ proc people::person1::speak {} {
 # nature of Tcl.  The name of the namespace is actually the empty string, but
 # the only way to represent it is as an absolue namespace path. To see what
 # happens, change "0" to "1": 
-
 if 0 {
     namespace delete ::
 }
@@ -231,7 +222,6 @@ if 0 {
 # "name" already exists in the global namespace, using "set" here will assign
 # a value to the global variable instead of creating a new variable in the
 # local namespace.
-
 namespace eval people {
     namespace eval person1 {
         variable name Neo
@@ -240,19 +230,16 @@ namespace eval people {
 
 # Once a variable is declared in a namespace, [set] operates on the variable in
 # that namespace:
-
 namespace eval people {
-        namespace eval person1 {
-            variable name
-            set name Neo
-        }
+    namespace eval person1 {
+        variable name
+        set name Neo
+    }
 }
-
 
 
 # Within a procedure, the "variable" command does the same thing, and then also
 # makes the variable visible within the scope of the procedure:
-
 namespace eval people::person1 {
     proc fly {} {
         variable name
@@ -364,16 +351,20 @@ while {$i < 10} {
 }
 
 
-# A list is a specially-formatted string.  In the simple case, whitespace is
-# sufficient to delimit values
+# A list is a string in which list items are delimited by
+# whitespace
 set amounts 10\ 33\ 18
 set amount [lindex $amounts 1]
+
+# It's generally a better idea to use list commands when modifing lists:
+lappend amounts 20 30 40
 
 
 # Braces and backslash can be used to format more complex values in a list.  A
 # list looks exactly like a script, except that the newline character and the
-# semicolon character lose their special meanings.  This feature makes Tcl
-# homoiconic.  There are three items in the following list:
+# semicolon character lose their special meanings, and there is no command or
+# variable substitution.  This feature makes Tcl homoiconic.  There are three
+# items in the following list:
 set values {
 
     one\ two
