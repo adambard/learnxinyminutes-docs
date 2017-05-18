@@ -1,5 +1,6 @@
 ---
 language: F#
+lang: fr-fr
 contributors:
     - ["Scott Wlaschin", "http://fsharpforfunandprofit.com/"]
 translators:
