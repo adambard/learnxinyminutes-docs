@@ -48,7 +48,7 @@ not true -- false
 23 == 23 -- true
 1 /= 4 -- true
 1 >= 4 -- false
--- Comparisions < <= > >=
+-- Comparisons < <= > >=
 -- are defined in terms of compare
 compare 1 2 -- LT
 compare 2 2 -- EQ
@@ -62,10 +62,10 @@ true && (9 >= 19 || 1 < 2) -- true
 "Hellow\
 \orld" -- "Helloworld"
 -- Multiline string with newlines
-"""Hello 
+"""Hello
 world""" -- "Hello\nworld"
 -- Concatenate
-"such " ++ "amaze" -- "such amaze"
+"such " <> "amaze" -- "such amaze"
 
 --
 -- 2. Arrays are Javascript arrays, but must be homogeneous
@@ -85,7 +85,7 @@ head [1,2,3] -- Just (1)
 tail [3,2,1] -- Just ([2,1])
 init [1,2,3] -- Just ([1,2])
 last [3,2,1] -- Just (1)
--- Random access - indexing
+-- Array access - indexing
 [3,4,5,6,7] !! 2 -- Just (5)
 -- Range
 1..5 -- [1,2,3,4,5]
@@ -197,7 +197,7 @@ let even x = x `mod` 2 == 0
 filter even (1..10) -- [2,4,6,8,10]
 map (\x -> x + 11) (1..5) -- [12,13,14,15,16]
 
--- Requires purescript-foldable-traversabe (Data.Foldable)
+-- Requires purescript-foldable-traversable (Data.Foldable)
 
 foldr (+) 0 (1..10) -- 55
 sum (1..10) -- 55
@@ -208,4 +208,3 @@ any even [1,2,3] -- true
 all even [1,2,3] -- false
 
 ```
-

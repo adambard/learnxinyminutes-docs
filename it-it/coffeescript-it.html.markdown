@@ -4,8 +4,6 @@ contributors:
   - ["Luca 'Kino' Maroni", "http://github.com/kino90"]
   - ["Tenor Biel", "http://github.com/L8D"]
   - ["Xavier Yao", "http://github.com/xavieryao"]
-translators:
-    - ["Tommaso Pifferi","http://github.com/neslinesli93"]
 filename: coffeescript-it.coffee
 lang: it-it
 ---

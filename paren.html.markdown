@@ -4,6 +4,7 @@ language: Paren
 filename: learnparen.paren
 contributors:
   - ["KIM Taegyoon", "https://github.com/kimtg"]
+  - ["Claudson Martins", "https://github.com/claudsonm"]
 ---
 
 [Paren](https://bitbucket.org/ktg/paren) is a dialect of Lisp. It is designed to be an embedded language.
@@ -77,7 +78,7 @@ some-var ; => 5
 ;; Accessing a previously unassigned variable is an exception
 ; x ; => Unknown variable: x : nil
 
-;; Local binding: Use lambda calculus! `a' and `b' are bound to `1' and `2' only within the (fn ...)
+;; Local binding: Use lambda calculus! 'a' and 'b' are bound to '1' and '2' only within the (fn ...)
 ((fn (a b) (+ a b)) 1 2) ; => 3
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -88,12 +89,12 @@ some-var ; => 5
 
 ;; Lists are vector-like data structures. (Random access is O(1).)
 (cons 1 (cons 2 (cons 3 (list)))) ; => (1 2 3)
-;; `list' is a convenience variadic constructor for lists
+;; 'list' is a convenience variadic constructor for lists
 (list 1 2 3) ; => (1 2 3)
 ;; and a quote can also be used for a literal list value
 (quote (+ 1 2)) ; => (+ 1 2)
 
-;; Can still use `cons' to add an item to the beginning of a list
+;; Can still use 'cons' to add an item to the beginning of a list
 (cons 0 (list 1 2 3)) ; => (0 1 2 3)
 
 ;; Lists are a very basic type, so there is a *lot* of functionality for
@@ -106,7 +107,7 @@ some-var ; => 5
 ;; 3. Functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Use `fn' to create functions.
+;; Use 'fn' to create functions.
 ;; A function always returns the value of its last expression
 (fn () "Hello World") ; => (fn () Hello World) : fn
 
@@ -117,7 +118,7 @@ some-var ; => 5
 (set hello-world (fn () "Hello World"))
 (hello-world) ; => "Hello World"
 
-;; You can shorten this using the function definition syntatcic sugae:
+;; You can shorten this using the function definition syntactic sugar:
 (defn hello-world2 () "Hello World")
 
 ;; The () in the above is the list of arguments for the function
@@ -134,7 +135,7 @@ some-var ; => 5
 ;; 4. Equality
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; for numbers use `=='
+;; for numbers use '=='
 (== 3 3.0) ; => true
 (== 2 1) ; => false
 
@@ -166,7 +167,7 @@ some-var ; => 5
 ;; 6. Mutation
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Use `set' to assign a new value to a variable or a place
+;; Use 'set' to assign a new value to a variable or a place
 (set n 5) ; => 5
 (set n (inc n)) ; => 6
 n ; => 6

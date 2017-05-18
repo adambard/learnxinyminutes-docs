@@ -197,7 +197,6 @@ myObj.myFourthKey; // = undefined
 
 // A sintaxe para essa seção é quase idêntica a maioria das linguagens.
 
-// The `if` structure works as you'd expect.
 // A estrutura `if` funciona como deveria ser.
 var count = 1
 if (count == 3){
@@ -218,9 +217,6 @@ while (true){
 do {
     input = getInput();
 } while (!isValid(input))
-
-// The `for` loop is the same as C and Java:
-// initialisation; continue condition; iteration.
 
 // O loop `for` é o mesmo de C e Java:
 // inicialização, condição para continuar; iteração
@@ -519,13 +515,13 @@ if (Object.create === undefined){ // Não o sobrescreve se já existir
 ## Leitura Adicional
 
 O [Mozilla Developer
-Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) dispõe de uma
+Network](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) dispõe de uma
 excelente documentação sobre Javascript e seu uso nos browsers. E mais, 
 é uma wiki, portanto conforme você vai aprendendo, mais você pode ir ajudando
 os outros compartilhando do seu conhecimento.
 
 [Uma re-introdução do JavaScript pela MDN]
-(https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
+(https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
 cobre muito dos conceitos abordados aqui em mais detalhes. Este guia fala
 somente sobre a linguagem JavaScript em si; se você quiser aprender mais
 sobre e como usar o JavaScript em páginas na web, comece aprendendo sobre
@@ -542,5 +538,5 @@ profundo de todas as partes do JavaScript.
 / livro de referência. 
 
 Parte desse artigo foi adaptado do tutorial de Python do Louie Dinh que está
-nesse site e do [Tutorial de JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
+nesse site e do [Tutorial de JS](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
 da Mozilla Developer Network.

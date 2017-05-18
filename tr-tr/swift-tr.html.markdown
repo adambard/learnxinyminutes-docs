@@ -2,7 +2,7 @@
 language: swift
 contributors:
   - ["Özgür Şahin", "https://github.com/ozgurshn/"]
-filename: learnswift.swift
+filename: learnswift-tr.swift
 lang: tr-tr
 ---
 
@@ -25,14 +25,14 @@ import UIKit
 
 
 //XCode işaretlemelerle kodunuzu bölümlere ayırmanızı ve sağ üstteki metot
- listesinde gruplama yapmanıza olanak sağlıyor
+//listesinde gruplama yapmanıza olanak sağlıyor
 // MARK: Bölüm işareti
 // TODO: Daha sonra yapılacak
 // FIXME: Bu kodu düzelt
 
  
-//Swift 2 de, println ve print metotları print komutunda birleştirildi. Print
- otomatik olarak yeni satır ekliyor.  
+//Swift 2 de, println ve print metotları print komutunda birleştirildi.
+//Print otomatik olarak yeni satır ekliyor.
 print("Merhaba dünya") // println print olarak kullanılıyor.
 print("Merhaba dünya", appendNewLine: false) // yeni bir satır eklemeden yazar.
 
@@ -75,7 +75,7 @@ print("Build degiskeni: \(buildDegiskeni)") // Build degeri: 7
 */
 var baziOptionalString: String? = "optional" // nil olabilir.
 // yukarıdakiyle aynı ama ? bir postfix (sona eklenir) operatördür. (kolay 
-okunabilir)
+//okunabilir)
 var someOptionalString2: Optional<String> = "optional"  
 
 
@@ -104,7 +104,8 @@ if let baziOpsiyonelSabitString = baziOptionalString {
 // Swift değişkenlerde herhangi bir tip saklanabilir.
 // AnyObject == id
 // Objective-C deki `id` den farklı olarak, AnyObject tüm değişkenlerle
- çalışabilir (Class, Int, struct, etc)
+//çalışabilir
+(Class, Int, struct, etc)
 var herhangiBirObject: AnyObject = 7
 herhangiBirObject = "Değer string olarak değişti, iyi bir yöntem değil ama mümkün"
 
@@ -234,7 +235,7 @@ func fiyatlariGetir() -> (Double, Double, Double) {
 let fiyatTuple = fiyatlariGetir()
 let fiyat = fiyatTuple.2 // 3.79
 // _ (alt çizgi) kullanımı Tuple degerlerini veya diğer değerleri görmezden
-gelir
+//gelir
 let (_, fiyat1, _) = fiyatTuple // fiyat1 == 3.69
 print(fiyat1 == fiyatTuple.1) // true
 print("Benzin fiyatı: \(fiyat)")

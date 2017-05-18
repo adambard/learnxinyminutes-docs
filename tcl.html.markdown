@@ -63,9 +63,9 @@ was mostly FUD.
 ```tcl
 #! /bin/env tclsh
 
-################################################################################
+###############################################################################
 ## 1. Guidelines
-################################################################################
+###############################################################################
 
 # Tcl is not Bash or C!  This needs to be said because standard shell quoting
 # habits almost work in Tcl and it is common for people to pick up Tcl and try
@@ -78,9 +78,9 @@ was mostly FUD.
 # are formatted as lists.
 
 
-################################################################################
+###############################################################################
 ## 2. Syntax
-################################################################################
+###############################################################################
 
 # Every line is a command.  The first word is the name of the command, and
 # subsequent words are arguments to the command. Words are delimited by
@@ -111,12 +111,13 @@ set greeting $greeting1$greeting2[set greeting3]
 # Command substitution should really be called script substitution, because an
 # entire script, not just a command, can be placed between the brackets. The
 # "incr" command increments the value of a variable and returns its value:
+
 set greeting $greeting[
 	incr i
 	incr i
 	incr i
-] ;#-> salutations3
-
+]
+# i is now 3
 
 # Used in the next example.
 set action pu
@@ -167,9 +168,6 @@ set greeting "Hello, [set {first name}]"
 
 # To promote the words within a word to individual words of the current
 # command, use the expansion operator, "{*}".
-```
-
-```tcl
 set {*}{name Neo}
 
 # is equivalent to
@@ -196,21 +194,21 @@ namespace eval people {
 }
 
 
-# Use two colons to include namespaces in variable and procedure names:
-set people::person1::name Neo
-set greeting "Hello $people::person1::name"
+# Use two colons to delimit namespace components in variable names:
+namespace eval people {
+	set greeting "Hello $person1::name"
+}
 
-# Command names use the same namespace delimiters: 
-
+# Two colons also delimit namespace components in a command names:
 proc people::person1::speak {} {
 	puts {I am The One.  Who the hell are you?}
 }
 
 
 
-################################################################################
+###############################################################################
 ## 3. A Few Notes
-################################################################################
+###############################################################################
 
 # All other functionality is implemented via commands.  From this point on,
 # there is no ~~spoon~~ new syntax.  Everything else there is to learn about
@@ -228,19 +226,29 @@ if 0 {
 	namespace delete ::
 }
 
-# If a variable by some name doesn't exist in a namespace, Tcl looks for it in
-# the global namespace.  This can lead to a situation where the programmer
-# inadvertently  changes the value of a global variable.  Therefore, use the
-# "variable" command to declare the variable:
-namespace eval people::person1 {
-	variable name
-	set name Neo
+# Because of name resolution behaviour, it's safer to use the "variable"
+# command to declare or to assign a value to a namespace. If a variable called
+# "name" already exists in the global namespace, using "set" here will assign
+# a value to the global variable instead of creating a new variable in the
+# local namespace.
+
+namespace eval people {
+    namespace eval person1 {
+        variable name Neo
+    }
 }
 
-# Or just use the two-argument form of the "variable" command
-namespace eval people::person1 {
-	variable name Neo
+# Once a variable is declared in a namespace, [set] operates on the variable in
+# that namespace:
+
+namespace eval people {
+    namespace eval person1 {
+		variable name
+		set name Neo
+    }
 }
+
+
 
 # Within a procedure, the "variable" command does the same thing, and then also
 # makes the variable visible within the scope of the procedure:
@@ -260,9 +268,9 @@ set ::people::person1::name Neo
 
 
 
-################################################################################
+###############################################################################
 ## 4. Commands
-################################################################################
+###############################################################################
 
 # Math can be done with the "expr" command.
 set a 3
@@ -291,6 +299,14 @@ namespace import ::tcl::mathop::+
 set result [+ 5 3]
 
 
+# Non-numeric values must be quoted, and operators like "eq" can be used to
+# constrain the operation string to comparison:
+expr {{Bob} eq $name}
+
+# Although the normal operators might choose string comparison anyway
+expr {{Bob} == $name}
+
+
 # New commands can be created via the "proc" command.
 proc greet name {
     return "Hello, $name!"
@@ -305,7 +321,7 @@ proc greet {greeting name} {
 # As noted earlier, braces do not construct a code block.  Every value, even
 # the third argument of the "proc" command, is a string.  The previous command
 # rewritten to not use braces at all:
-proc greet greeting\ name return\ \"Hello,\ \$name!
+proc greet greeting\ name return\ \"\$greeting,\ \$name!\"
 
 
 
@@ -348,8 +364,8 @@ while {$i < 10} {
 
 
 # A list is a specially-formatted string.  In the simple case, whitespace is
-# sufficient to delimit values:
-set amounts 10\ 33\ 18 
+# sufficient to delimit values
+set amounts 10\ 33\ 18
 set amount [lindex $amounts 1]
 
 
@@ -505,6 +521,44 @@ catch {
 } cres copts 
 puts $cres
 puts [countdown2] ;# -> 3 
+
+
+# Coroutines stacks can yield control to each other:
+
+proc pass {who args} {
+	return [yieldto $who {*}$args]
+}
+
+coroutine a apply {{} {
+		yield
+		set result [pass b "please pass the salt"]
+		puts [list got the $result]
+		set result [pass b "please pass the pepper"]
+		puts [list got the $result]
+}}
+
+coroutine b apply {{} {
+	set request [yield]
+	while 1 {
+		set response [pass c $request]
+		puts "now yielding"
+		set request [pass a $response]
+	}
+}}
+
+coroutine c apply {{} {
+	set request [yield]
+	while 1 {
+		if {[string match *salt* $request]} {
+			set request [pass b salt]
+		} else {
+			set request [pass b huh?]
+		}
+	}
+}}
+
+# get things moving
+a
 
 
 ```

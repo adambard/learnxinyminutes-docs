@@ -28,7 +28,7 @@ Funcionam no C89 também.
 */
 
 // Constantes: #define <palavra-chave>
-#definie DAY_IN_YEAR 365
+#define DAY_IN_YEAR 365
 
 //enumerações também são modos de definir constantes.
 enum day {DOM = 1, SEG, TER, QUA, QUI, SEX, SAB};

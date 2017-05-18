@@ -18,7 +18,8 @@ rather than plain text.
 [Read more here.](https://technet.microsoft.com/en-us/library/bb978526.aspx)
 
 If you are uncertain about your environment:
-```
+
+```powershell
 Get-ExecutionPolicy -List
 Set-ExecutionPolicy AllSigned
 # Execution policies include:
@@ -33,7 +34,8 @@ $PSVersionTable
 ```
 
 Getting help:
-```
+
+```powershell
 # Find commands
 Get-Command about_* # alias: gcm
 Get-Command -Verb Add
@@ -49,7 +51,8 @@ Update-Help # Run as admin
 ```
 
 The tutorial starts here:
-```
+
+```powershell
 # As you already figured, comments start with #
 
 # Simple hello world example:
@@ -71,7 +74,7 @@ $aHashtable = @{name1='val1'; name2='val2'}
 # Using variables:
 echo $aString
 echo "Interpolation: $aString"
-echo "`$aString has length of $($aString.Length)"
+echo "$aString has length of $($aString.Length)"
 echo '$aString'
 echo @"
 This is a Here-String
@@ -110,7 +113,7 @@ if ($Age -is [string]) {
 	echo 'Adult'
 }
 
-# Switch statements are more powerfull compared to most languages
+# Switch statements are more powerful compared to most languages
 $val = "20"
 switch($val) {
   { $_ -eq 42 }           { "The answer equals 42"; break }
@@ -201,7 +204,7 @@ function foo([string]$name) {
 # Calling your function
 foo "Say my name"
 
-# Functions with named parameters, parameter attributes, parsable documention
+# Functions with named parameters, parameter attributes, parsable documentation
 <#
 .SYNOPSIS
 Setup a new website
@@ -244,10 +247,12 @@ function New-Website() {
 [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic')
 
 # Note that .NET functions MUST be called with parentheses
-# while PS functions CANNOT be called with parentheses
+# while PS functions CANNOT be called with parentheses.
+# If you do call a cmdlet/PS function with parentheses,
+# it is the same as passing a single parameter list
 $writer = New-Object System.IO.StreamWriter($path, $true)
 $writer.Write([Environment]::NewLine)
-$write.Dispose()
+$writer.Dispose()
 
 ### IO
 # Reading a value from input:
@@ -265,12 +270,14 @@ Get-Command ConvertTo-*,ConvertFrom-*
 # Refresh your PATH
 $env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + 
 	";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+
 # Find Python in path
 $env:PATH.Split(";") | Where-Object { $_ -like "*python*"}
 
 # Change working directory without having to remember previous path
 Push-Location c:\temp # change working directory to c:\temp
 Pop-Location # change back to previous working directory
+# Aliases are: pushd and popd
 
 # Unblock a directory after download
 Get-ChildItem -Recurse | Unblock-File
@@ -292,7 +299,8 @@ $Shortcut.Save()
 
 
 Configuring your shell
-```
+
+```powershell
 # $Profile is the full path for your `Microsoft.PowerShell_profile.ps1`
 # All code there will be executed when the PS session starts
 if (-not (Test-Path $Profile)) {
@@ -300,10 +308,11 @@ if (-not (Test-Path $Profile)) {
 	notepad $Profile
 }
 # More info: `help about_profiles`
-# For a more usefull shell, be sure to check the project PSReadLine below
+# For a more useful shell, be sure to check the project PSReadLine below
 ```
 
 Interesting Projects  
+
 * [Channel9](https://channel9.msdn.com/Search?term=powershell%20pipeline#ch9Search&lang-en=en) PowerShell tutorials
 * [PSGet](https://github.com/psget/psget) NuGet for PowerShell
 * [PSReadLine](https://github.com/lzybkr/PSReadLine/) A bash inspired readline implementation for PowerShell (So good that it now ships with Windows10 by default!)
@@ -314,6 +323,7 @@ Interesting Projects
 * [PowerShell Community Extensions](http://pscx.codeplex.com/) (Dead)
 
 Not covered  
+
 * WMI: Windows Management Intrumentation (Get-CimInstance)  
 * Multitasking: Start-Job -scriptBlock {...}, 
 * Code Signing

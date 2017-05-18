@@ -24,6 +24,12 @@ val phone_no = 5551337
 val pi = 3.14159
 val negative_number = ~15  (* Yeah, unary minus uses the 'tilde' symbol *)
 
+(* Optionally, you can explicitly declare types. This is not necessary as
+   ML will automatically figure out the types of your values. *)
+val diameter = 7926 : int
+val e = 2.718 : real
+val name = "Bobby" : string
+
 (* And just as importantly, functions: *)
 fun is_large(x : int) = if x > 37 then true else false
 
@@ -31,6 +37,8 @@ fun is_large(x : int) = if x > 37 then true else false
 val tau = 2.0 * pi         (* You can multiply two reals *)
 val twice_rent = 2 * rent  (* You can multiply two ints *)
 (* val meh = 1.25 * 10 *)  (* But you can't multiply an int and a real *)
+val yeh = 1.25 * (Real.fromInt 10) (* ...unless you explicitly convert
+                                      one or the other *)
 
 (* +, - and * are overloaded so they work for both int and real. *)
 (* The same cannot be said for division which has separate operators: *)
@@ -227,17 +235,18 @@ val hmm = answer "What is the meaning of life, the universe and everything?"
 
 (* Functions can take several arguments by taking one tuples as argument: *)
 fun solve2 (a : real, b : real, c : real) =
-    ( (~b + Math.sqrt(b * b - 4.0*a*c)) / (2.0 * a),
-      (~b - Math.sqrt(b * b - 4.0*a*c)) / (2.0 * a) )
+    ((~b + Math.sqrt(b * b - 4.0 * a * c)) / (2.0 * a),
+     (~b - Math.sqrt(b * b - 4.0 * a * c)) / (2.0 * a))
 
 (* Sometimes, the same computation is carried out several times. It makes sense
    to save and re-use the result the first time. We can use "let-bindings": *)
 fun solve2 (a : real, b : real, c : real) =
-    let val discr  = b * b - 4.0*a*c
+    let val discr  = b * b - 4.0 * a * c
         val sqr = Math.sqrt discr
         val denom = 2.0 * a
     in ((~b + sqr) / denom,
-        (~b - sqr) / denom) end
+        (~b - sqr) / denom)
+    end
 
 
 (* Pattern matching is a funky part of functional programming.  It is an
@@ -284,6 +293,9 @@ val thermometer =
 val some_result = (fn x => thermometer (x - 5) ^ thermometer (x + 5)) 37
 
 (* Here is a higher-order function that works on lists (a list combinator) *)
+(* map f l
+       applies f to each element of l from left to right, 
+       returning the list of results. *)
 val readings = [ 34, 39, 37, 38, 35, 36, 37, 37, 37 ]  (* first an int list *)
 val opinions = List.map thermometer readings (* gives [ "Cold", "Warm", ... ] *)
 
@@ -316,7 +328,11 @@ val n = op + (5, 5)   (* n is now 10 *)
 (* 'op' is useful when combined with high order functions because they expect
    functions and not operators as arguments. Most operators are really just
    infix functions. *)
-val sum_of_numbers = foldl op+ 0 [1,2,3,4,5]
+(* foldl f init [x1, x2, ..., xn]
+       returns
+       f(xn, ...f(x2, f(x1, init))...)
+       or init if the list is empty. *)
+val sum_of_numbers = foldl op+ 0 [1, 2, 3, 4, 5]
 
 
 (* Datatypes are useful for creating both simple and complex structures *)
@@ -399,7 +415,8 @@ fun writePoem(filename) =
     let val file = TextIO.openOut(filename)
         val _ = TextIO.output(file, "Roses are red,\nViolets are blue.\n")
         val _ = TextIO.output(file, "I have a gun.\nGet in the van.\n")
-    in TextIO.closeOut(file) end
+    in TextIO.closeOut(file)
+    end
 
 (* Read a nice poem from a file into a list of strings *)
 fun readPoem(filename) =

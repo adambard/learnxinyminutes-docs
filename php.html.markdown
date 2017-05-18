@@ -53,6 +53,8 @@ $int1 = 12;   // => 12
 $int2 = -12;  // => -12
 $int3 = 012;  // => 10 (a leading 0 denotes an octal number)
 $int4 = 0x0F; // => 15 (a leading 0x denotes a hex literal)
+// Binary integer literals are available since PHP 5.4.0.
+$int5 = 0b11111111; // 255 (a leading 0b denotes a binary number)
 
 // Floats (aka doubles)
 $float = 1.234;
@@ -86,6 +88,8 @@ $escaped   = "This contains a \t tab character.";
 $unescaped = 'This just contains a slash and a t: \t';
 
 // Enclose a variable in curly braces if needed
+$apples = "I have {$number} apples to eat.";
+$oranges = "I have ${number} oranges to eat.";
 $money = "I have $${number} in the bank.";
 
 // Since PHP 5.3, nowdocs can be used for uninterpolated multi-liners
@@ -116,11 +120,11 @@ echo 'Multiple', 'Parameters', 'Valid';  // Returns 'MultipleParametersValid'
 
 // a valid constant name starts with a letter or underscore,
 // followed by any number of letters, numbers, or underscores.
-define("FOO",     "something");
+define("FOO", "something");
 
 // access to a constant is possible by calling the choosen name without a $
 echo FOO; // Returns 'something'
-echo 'This outputs '.FOO;  // Returns 'This ouputs something'
+echo 'This outputs ' . FOO;  // Returns 'This ouputs something'
 
 
 
@@ -139,6 +143,9 @@ $associative = array('One' => 1, 'Two' => 2, 'Three' => 3);
 $associative = ['One' => 1, 'Two' => 2, 'Three' => 3];
 
 echo $associative['One']; // prints 1
+
+// Add an element to an associative array
+$associative['Four'] = 4;
 
 // List literals implicitly assign integer keys
 $array = ['One', 'Two', 'Three'];
@@ -276,7 +283,7 @@ if (false) {
 
 if (false) {
     print 'Does not get printed';
-} elseif(true) {
+} elseif (true) {
     print 'Does';
 }
 
@@ -298,7 +305,7 @@ echo $b ?? 'b is not set'; // prints 'Does print'
 $x = 0;
 if ($x === '0') {
     print 'Does not print';
-} elseif($x == '1') {
+} elseif ($x == '1') {
     print 'Does not print';
 } else {
     print 'Does print';
@@ -460,7 +467,7 @@ function variable($word, ...$list) {
 	}
 }
 
-variable("Separate", "Hello", "World") // Separate || Hello | World | 
+variable("Separate", "Hello", "World"); // Separate || Hello | World |
 
 /********************************
  * Includes
@@ -523,7 +530,8 @@ class MyClass
     private $priv   = 'private';   // Accessible within the class only
 
     // Create a constructor with __construct
-    public function __construct($instanceProp) {
+    public function __construct($instanceProp)
+    {
         // Access instance variables with $this
         $this->instanceProp = $instanceProp;
     }
@@ -534,9 +542,24 @@ class MyClass
         print 'MyClass';
     }
 
-    //final keyword would make a function unoverridable
+    // final keyword would make a function unoverridable
     final function youCannotOverrideMe()
     {
+    }
+
+    // Magic Methods
+
+    // what to do if Object is treated as a String
+    public function __toString()
+    {
+        return $property;
+    }
+
+    // opposite to __construct()
+    // called when object is no longer referenced
+    public function __destruct()
+    {
+        print "Destroying";
     }
 
 /*
@@ -735,11 +758,15 @@ $cls = new SomeOtherNamespace\MyClass();
 *
 */
 
-class ParentClass {
-    public static function who() {
+class ParentClass
+{
+    public static function who()
+    {
         echo "I'm a " . __CLASS__ . "\n";
     }
-    public static function test() {
+
+    public static function test()
+    {
         // self references the class the method is defined within
         self::who();
         // static references the class the method was invoked on
@@ -753,8 +780,10 @@ I'm a ParentClass
 I'm a ParentClass
 */
 
-class ChildClass extends ParentClass {
-    public static function who() {
+class ChildClass extends ParentClass
+{
+    public static function who()
+    {
         echo "But I'm " . __CLASS__ . "\n";
     }
 }
@@ -765,6 +794,37 @@ I'm a ParentClass
 But I'm ChildClass
 */
 
+/**********************
+*  Magic constants
+*  
+*/
+
+// Get current class name. Must be used inside a class declaration.
+echo "Current class name is " . __CLASS__;
+
+// Get full path directory of a file
+echo "Current directory is " . __DIR__;
+
+    // Typical usage
+    require __DIR__ . '/vendor/autoload.php';
+
+// Get full path of a file
+echo "Current file path is " . __FILE__;
+
+// Get current function name
+echo "Current function name is " . __FUNCTION__;
+
+// Get current line number
+echo "Current line number is " . __LINE__;
+
+// Get the name of the current method. Only returns a value when used inside a trait or object declaration.
+echo "Current method is " . __METHOD__;
+
+// Get the name of the current namespace
+echo "Current namespace is " . __NAMESPACE__;
+
+// Get the name of the current trait. Only returns a value when used inside a trait or object declaration.
+echo "Current trait is " . __TRAIT__;
 
 /**********************
 *  Error Handling

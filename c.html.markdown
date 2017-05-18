@@ -36,7 +36,6 @@ Multi-line comments don't nest /* Be careful */  // comment ends on this line...
 enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 // MON gets 2 automatically, TUE gets 3, etc.
 
-
 // Import headers with #include
 #include <stdlib.h>
 #include <stdio.h>
@@ -76,7 +75,7 @@ int main (int argc, char** argv)
   ///////////////////////////////////////
   // Types
   ///////////////////////////////////////
-  
+
   // All variables MUST be declared at the top of the current block scope
   // we declare them dynamically along the code for the sake of the tutorial
 
@@ -114,7 +113,6 @@ int main (int argc, char** argv)
   // sizeof(obj) yields the size of the expression (variable, literal, etc.).
   printf("%zu\n", sizeof(int)); // => 4 (on most machines with 4-byte words)
 
-
   // If the argument of the `sizeof` operator is an expression, then its argument
   // is not evaluated (except VLAs (see below)).
   // The value it yields in this case is a compile-time constant.
@@ -129,7 +127,6 @@ int main (int argc, char** argv)
   char my_char_array[20]; // This array occupies 1 * 20 = 20 bytes
   int my_int_array[20]; // This array occupies 4 * 20 = 80 bytes
   // (assuming 4-byte words)
-
 
   // You can initialize an array to 0 thusly:
   char my_array[20] = {0};
@@ -146,9 +143,9 @@ int main (int argc, char** argv)
   // can be declared as well. The size of such an array need not be a compile
   // time constant:
   printf("Enter the array size: "); // ask the user for an array size
-  int size;
-  fscanf(stdin, "%d", &size);
-  int var_length_array[size]; // declare the VLA
+  int array_size;
+  fscanf(stdin, "%d", &array_size);
+  int var_length_array[array_size]; // declare the VLA
   printf("sizeof array = %zu\n", sizeof var_length_array);
 
   // Example:
@@ -205,7 +202,7 @@ int main (int argc, char** argv)
   11 % 3; // => 2
 
   // Comparison operators are probably familiar, but
-  // there is no Boolean type in c. We use ints instead.
+  // there is no Boolean type in C. We use ints instead.
   // (Or _Bool or bool in C99.)
   // 0 is false, anything else is true. (The comparison
   // operators always yield 0 or 1.)
@@ -239,11 +236,9 @@ int main (int argc, char** argv)
   z = (e > f) ? e : f; // => 10 "if e > f return e, else return f."
 
   // Increment and decrement operators:
-  char *s = "iLoveC";
   int j = 0;
-  s[j++]; // => "i". Returns the j-th item of s THEN increments value of j.
-  j = 0;
-  s[++j]; // => "L". Increments value of j THEN returns j-th value of s.
+  int s = j++; // Return j THEN increase j. (s = 0, j = 1)
+  s = ++j; // Increase j THEN return j. (s = 2, j = 2)
   // same with j-- and --j
 
   // Bitwise operators!
@@ -313,9 +308,15 @@ int main (int argc, char** argv)
   case 1:
     printf("Huh, 'a' equals 1!\n");
     break;
+    // Be careful - without a "break", execution continues until the
+    // next "break" is reached.
+  case 3:
+  case 4:
+    printf("Look at that.. 'a' is either 3, or 4\n");
+    break;
   default:
     // if `some_integral_expression` didn't match any of the labels
-    fputs("error!\n", stderr);
+    fputs("Error!\n", stderr);
     exit(-1);
     break;
   }
@@ -340,8 +341,7 @@ int main (int argc, char** argv)
   https://ideone.com/GuPhd6
   this will print out "Error occured at i = 52 & j = 99."
   */
-  
-  
+
   ///////////////////////////////////////
   // Typecasting
   ///////////////////////////////////////
@@ -379,7 +379,6 @@ int main (int argc, char** argv)
   printf("%p\n", (void *)&x); // Use & to retrieve the address of a variable
   // (%p formats an object pointer of type void *)
   // => Prints some address in memory;
-
 
   // Pointers start with * in their declaration
   int *px, not_a_pointer; // px is a pointer to an int
@@ -426,7 +425,6 @@ int main (int argc, char** argv)
   printf("%zu, %zu\n", sizeof arraythethird, sizeof ptr);
   // probably prints "40, 4" or "40, 8"
 
-
   // Pointers are incremented and decremented based on their type
   // (this is called pointer arithmetic)
   printf("%d\n", *(x_ptr + 1)); // => Prints 19
@@ -440,7 +438,7 @@ int main (int argc, char** argv)
   for (xx = 0; xx < 20; xx++) {
     *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx
   } // Initialize memory to 20, 19, 18, 17... 2, 1 (as ints)
-  
+
   // Note that there is no standard way to get the length of a
   // dynamically allocated array in C. Because of this, if your arrays are
   // going to be passed around your program a lot, you need another variable
@@ -449,7 +447,8 @@ int main (int argc, char** argv)
   int size = 10;
   int *my_arr = malloc(sizeof(int) * size);
   // Add an element to the array
-  my_arr = realloc(my_arr, ++size);
+  size++;
+  my_arr = realloc(my_arr, sizeof(int) * size);
   my_arr[10] = 5;
 
   // Dereferencing memory that you haven't allocated gives
@@ -491,7 +490,7 @@ int add_two_ints(int x1, int x2)
 
 /*
 Functions are call by value. When a function is called, the arguments passed to
-≈the function are copies of the original arguments (except arrays). Anything you
+the function are copies of the original arguments (except arrays). Anything you
 do to the arguments in the function do not change the value of the original
 argument where the function was called.
 
@@ -512,6 +511,7 @@ void str_reverse(char *str_in)
     str_in[len - ii - 1] = tmp;
   }
 }
+//NOTE: string.h header file needs to be included to use strlen()
 
 /*
 char c[] = "This is a test.";
@@ -571,8 +571,6 @@ void testFunc2() {
   extern int j;
 }
 //**You may also declare functions as static to make them private**
-
-
 
 ///////////////////////////////////////
 // User-defined types and structs
@@ -690,6 +688,7 @@ typedef void (*my_fnp_type)(char *);
 "%o";    // octal
 "%%";    // prints %
 */
+
 ///////////////////////////////////////
 // Order of Evaluation
 ///////////////////////////////////////
@@ -716,14 +715,14 @@ typedef void (*my_fnp_type)(char *);
 
 /******************************* Header Files **********************************
 
-Header files are an important part of c as they allow for the connection of c 
-source files and can simplify code and definitions by seperating them into 
-seperate files.
+Header files are an important part of C as they allow for the connection of C
+source files and can simplify code and definitions by separating them into
+separate files.
 
-Header files are syntaxtically similar to c source files but reside in ".h" 
-files. They can be included in your c source file by using the precompiler 
-command #include "example.h", given that example.h exists in the same directory 
-as the c file.
+Header files are syntactically similar to C source files but reside in ".h"
+files. They can be included in your C source file by using the precompiler
+command #include "example.h", given that example.h exists in the same directory
+as the C file.
 */
 
 /* A safe guard to prevent the header from being defined too many times. This */
@@ -754,12 +753,12 @@ enum traffic_light_state {GREEN, YELLOW, RED};
 
 /* Function prototypes can also be defined here for use in multiple files,  */
 /* but it is bad practice to define the function in the header. Definitions */
-/* should instead be put in a c file.                                       */
+/* should instead be put in a C file.                                       */
 Node createLinkedList(int *vals, int len);
 
-/* Beyond the above elements, other definitions should be left to a c source */
-/* file. Excessive includeds or definitions should, also not be contained in */
-/* a header file but instead put into separate headers or a c file.          */
+/* Beyond the above elements, other definitions should be left to a C source */
+/* file. Excessive includes or definitions should, also not be contained in */
+/* a header file but instead put into separate headers or a C file.          */
 
 #endif /* End of the if precompiler directive. */
 
@@ -776,7 +775,7 @@ If you have a question, read the [compl.lang.c Frequently Asked Questions](http:
 
 It's very important to use proper spacing, indentation and to be consistent with your coding style in general.
 Readable code is better than clever code and fast code. For a good, sane coding style to adopt, see the
-[Linux kernel coding style](https://www.kernel.org/doc/Documentation/CodingStyle).
+[Linux kernel coding style](https://www.kernel.org/doc/Documentation/process/coding-style.rst).
 
 Other than that, Google is your friend.
 

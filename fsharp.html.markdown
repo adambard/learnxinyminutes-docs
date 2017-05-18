@@ -175,7 +175,12 @@ module ListExamples =
     // list comprehensions (aka generators)
     let squares = [for i in 1..10 do yield i * i]
 
-    // prime number generator
+    // A prime number generator
+    // - this is using a short notation for the pattern matching syntax
+    // - (p::xs) is 'first :: tail' of the list, could also be written as p :: xs
+    //   this means this matches 'p' (the first item in the list), and xs is the rest of the list
+    //   this is called the 'cons pattern'
+    // - uses 'rec' keyword, which is necessary when using recursion
     let rec sieve = function
         | (p::xs) -> p :: sieve [ for x in xs do if x % p > 0 then yield x ]
         | []      -> []
@@ -346,7 +351,7 @@ module DataTypeExamples =
     let trySendEmail email =
         match email with // use pattern matching
         | ValidEmailAddress address -> ()   // send
-        | InvalidEmailAddress address -> () // dont send
+        | InvalidEmailAddress address -> () // don't send
 
     // The combination of union types and record types together
     // provide a great foundation for domain driven design.
@@ -403,11 +408,14 @@ module ActivePatternExamples =
 
     // "banana clips" are the syntax for active patterns
 
+    // You can use "elif" instead of "else if" in conditional expressions.
+    // They are equivalent in F#
+
     // for example, define an "active" pattern to match character types...
     let (|Digit|Letter|Whitespace|Other|) ch =
        if System.Char.IsDigit(ch) then Digit
-       else if System.Char.IsLetter(ch) then Letter
-       else if System.Char.IsWhiteSpace(ch) then Whitespace
+       elif System.Char.IsLetter(ch) then Letter
+       elif System.Char.IsWhiteSpace(ch) then Whitespace
        else Other
 
     // ... and then use it to make parsing logic much clearer
@@ -426,7 +434,7 @@ module ActivePatternExamples =
     // -----------------------------------
 
     // You can create partial matching patterns as well
-    // Just use underscore in the defintion, and return Some if matched.
+    // Just use underscore in the definition, and return Some if matched.
     let (|MultOf3|_|) i = if i % 3 = 0 then Some MultOf3 else None
     let (|MultOf5|_|) i = if i % 5 = 0 then Some MultOf5 else None
 
@@ -627,7 +635,3 @@ module NetCompatibilityExamples =
 For more demonstrations of F#, go to the [Try F#](http://www.tryfsharp.org/Learn) site, or my [why use F#](http://fsharpforfunandprofit.com/why-use-fsharp/) series.
 
 Read more about F# at [fsharp.org](http://fsharp.org/).
-
-
-
-

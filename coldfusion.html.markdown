@@ -13,7 +13,7 @@ ColdFusion is a scripting language for web development.
 _**C**old**F**usion **M**arkup **L**anguage_  
 ColdFusion started as a tag-based language. Almost all functionality is available using tags.
 
-```html
+```cfm
 <em>HTML tags have been provided for output readability</em>
 
 <!--- Comments start with "<!---" and end with "--->" --->
@@ -232,41 +232,40 @@ ColdFusion started as a tag-based language. Almost all functionality is availabl
 <h1>Components</h1>
 
 <em>Code for reference (Functions must return something to support IE)</em>
+```
+```cfs
+<cfcomponent>
+	<cfset this.hello = "Hello" />
+	<cfset this.world = "world" />
 
-<pre>
-&lt;cfcomponent&gt;
-	&lt;cfset this.hello = "Hello" /&gt;
-	&lt;cfset this.world = "world" /&gt;
-
-	&lt;cffunction name="sayHello"&gt;
-		&lt;cfreturn this.hello & ", " & this.world & "!" /&gt;
-	&lt;/cffunction&gt;
+	<cffunction name="sayHello">
+		<cfreturn this.hello & ", " & this.world & "!" />
+	</cffunction>
 	
-	&lt;cffunction name="setHello"&gt;
-		&lt;cfargument name="newHello" type="string" required="true" /&gt;
+	<cffunction name="setHello">
+		<cfargument name="newHello" type="string" required="true" />
 		
-		&lt;cfset this.hello = arguments.newHello /&gt;
+		<cfset this.hello = arguments.newHello />
 		 
-		&lt;cfreturn true /&gt;
-	&lt;/cffunction&gt;
+		<cfreturn true />
+	</cffunction>
 	
-	&lt;cffunction name="setWorld"&gt;
-		&lt;cfargument name="newWorld" type="string" required="true" /&gt;
+	<cffunction name="setWorld">
+		<cfargument name="newWorld" type="string" required="true" />
 		
-		&lt;cfset this.world = arguments.newWorld /&gt;
+		<cfset this.world = arguments.newWorld />
 		 
-		&lt;cfreturn true /&gt;
-	&lt;/cffunction&gt;
+		<cfreturn true />
+	</cffunction>
 	
-	&lt;cffunction name="getHello"&gt;
-		&lt;cfreturn this.hello /&gt;
-	&lt;/cffunction&gt;
+	<cffunction name="getHello">
+		<cfreturn this.hello />
+	</cffunction>
 	
-	&lt;cffunction name="getWorld"&gt;
-		&lt;cfreturn this.world /&gt;
-	&lt;/cffunction&gt;
-&lt;/cfcomponent&gt;
-</pre>
+	<cffunction name="getWorld">
+		<cfreturn this.world />
+	</cffunction>
+</cfcomponent>
 
 <cfset this.hello = "Hello" />
 <cfset this.world = "world" />
