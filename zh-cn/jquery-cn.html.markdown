@@ -9,15 +9,15 @@ lang: zh-cn
 filename: jquery-cn.js
 ---
 
-jQuery is a JavaScript library that helps you "do more, write less". It makes many common JavaScript tasks and makes them easier to write. jQuery is used by many big companies and developers everywhere. It makes AJAX, event handling, document manipulation, and much more, easier and faster.
+jQuery是JavaScript的一个函数库，它可以帮你“写更少，做更多”。它集成了很多常见的JavaScript任务并且很容易调用。jQuery被世界各地的很多的大公司和开发者使用。它包括了AJAX，事件处理，文档操作以及很多其它功能，并且更加简单和快速。
 
-Because jQuery is a JavaScript library you should [learn JavaScript first](https://learnxinyminutes.com/docs/javascript/)
+正因为jQuery是JavaScript的一个函数库，所以你需要[首先学习JavaScript](https://learnxinyminutes.com/docs/javascript/)
 
 ```js
 
 
 ///////////////////////////////////
-// 1. Selectors
+// 1. 选择器
 
 // Selectors in jQuery are used to select an element
 var page = $(window); // Selects the whole viewport
