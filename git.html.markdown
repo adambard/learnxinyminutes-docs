@@ -261,6 +261,25 @@ $ git checkout branchName
 $ git checkout -b newBranch
 ```
 
+### clean (caution)
+
+Remove files not under version control
+
+```bash
+# Given we have two untracked files
+$ git status -s
+A  game.c
+?? tmp-file
+?? untracked
+# When we force clean
+$ git clean -f
+Removing tmp-file
+Removing untracked
+# Then the untracked files should be deleted
+$ git status -s
+A  game.c
+```
+
 ### clone
 
 Clones, or copies, an existing repository into a new directory. It also adds
