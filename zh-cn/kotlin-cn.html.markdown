@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
     所以我们不必要每次都去明确指定它。
     我们可以像这样明确地声明一个变量的类型：
     */
-    val foo : Int = 7
+    val foo: Int = 7
 
     /*
     可以采取和Java类似的方法来表示一个字符串。

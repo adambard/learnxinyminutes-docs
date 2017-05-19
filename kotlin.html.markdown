@@ -36,7 +36,7 @@ fun main(args: Array<String>) {
     so we don't have to explicitly specify it every time.
     We can explicitly declare the type of a variable like so:
     */
-    val foo : Int = 7
+    val foo: Int = 7
 
     /*
     Strings can be represented in a similar way as in Java.
