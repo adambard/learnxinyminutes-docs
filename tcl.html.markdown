@@ -541,8 +541,8 @@ puts [countdown2] ;# -> 3
 
 # Coroutine stacks can yield control to each other:
 
-proc pass {who args} {
-    return [yieldto $who {*}$args]
+proc pass {whom args} {
+    return [yieldto $whom {*}$args]
 }
 
 coroutine a apply {{} {
