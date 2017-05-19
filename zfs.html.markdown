@@ -24,6 +24,7 @@ VDEV's offer better reliability and safety than a RAID card.  It is discouraged 
 RAID setup with ZFS, as ZFS expects to directly manage the underlying disks.
 
 Types of VDEV's
+
 * stripe (a single disk, no redundancy)
 * mirror (n-way mirrors supported)
 * raidz
@@ -60,6 +61,7 @@ single host can have 2^64 storage pools.  The limits are huge.
 ### Storage Pools
 
 Actions:
+
 * List
 * Status
 * Destroy
