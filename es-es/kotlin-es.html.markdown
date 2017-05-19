@@ -39,7 +39,7 @@ fun main(args: Array<String>) {
     de tal manera que no tenemos que especificarlo explícitamente cada vez.
     Podemos declarar explícitamente el tipo de una variable así:
     */
-    val foo : Int = 7
+    val foo: Int = 7
 
     /*
     Las cadenas pueden ser representadas de la misma manera que Java.
