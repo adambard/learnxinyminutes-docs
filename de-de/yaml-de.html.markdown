@@ -38,7 +38,7 @@ literal_block: |
     Dieser ganze Block an Text ist der Wert vom Schlüssel literal_block,
     mit Erhaltung der Zeilenumbrüche.
 
-    Das Literal fährt solange fort bis dieses unverbeult ist und die vorherschende Einrückung wird 
+    Das Literal fährt solange fort bis dieses unverbeult ist und die vorherschende Einrückung wird
     gekürzt.
 
         Zeilen, die weiter eingerückt sind, behalten den Rest ihrer Einrückung -
@@ -96,7 +96,7 @@ json_seq: [3, 2, 1, "Start"]
 # EXTRA YAML EIGENSCHAFTEN #
 ############################
 
-# YAML stellt zusätzlich Verankerung zu Verfügung, welche es einfach machen 
+# YAML stellt zusätzlich Verankerung zu Verfügung, welche es einfach machen
 # Inhalte im Dokument zu vervielfältigen. Beide Schlüssel werden den selben Wert haben.
 verankerter_inhalt: &anker_name Dieser String wird als Wert beider Schlüssel erscheinen.
 anderer_anker: *anker_name
@@ -113,9 +113,9 @@ python_komplexe_Zahlen: !!python/komplex 1+2j
 
 # Strings and Zahlen sind nicht die einzigen Skalare, welche YAML versteht.
 # ISO-formatierte Datumsangaben and Zeiangaben können ebenso geparsed werden.
-DatumZeit: 2001-12-15T02:59:43.1Z
-DatumZeit_mit_Leerzeichen: 2001-12-14 21:59:43.10 -5
-Datum: 2002-12-14
+DatumZeit: 2001-05-15T03:14:15.9Z
+DatumZeit_mit_Leerzeichen: 2009-07-21 18:30:57.72 -1
+Datum: 2011-11-20
 
 # Der !!binary Tag zeigt das ein String base64 verschlüsselt ist.
 # Representation des Binären Haufens

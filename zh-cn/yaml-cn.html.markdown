@@ -139,9 +139,9 @@ python_complex_number: !!python/complex 1+2j
 
 # 除了字符串和数字，YAML 还能理解其它标量。
 # ISO 格式的日期和日期时间文本也可以被解析。
-datetime: 2001-12-15T02:59:43.1Z
-datetime_with_spaces: 2001-12-14 21:59:43.10 -5
-date: 2002-12-14
+datetime: 2001-05-15T03:14:15.9Z
+datetime_with_spaces: 2009-07-21 18:30:57.72 -1
+date: 2011-11-20
 
 # 这个 !!binary 标签表明这个字符串实际上
 # 是一个用 base64 编码表示的二进制 blob。

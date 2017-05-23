@@ -41,10 +41,10 @@ bloco_literal: |
     Todo esse bloco de texto será o valor da chave 'bloco_literal',
     preservando a quebra de com linhas.
 
-    O literal continua até de-dented, e a primeira identação é 
+    O literal continua até de-dented, e a primeira identação é
     removida.
 
-        Quaisquer linhas que são 'mais identadas' mantém o resto de suas identações - 
+        Quaisquer linhas que são 'mais identadas' mantém o resto de suas identações -
         estas linhas serão identadas com 4 espaços.
 estilo_compacto: >
     Todo esse bloco de texto será o valor de 'estilo_compacto', mas esta
@@ -116,9 +116,9 @@ numero_complexo_em_python: !! python / complex 1 + 2j
 
 # Strings e números não são os únicos que escalares YAML pode entender.
 # Data e 'data e hora' literais no formato ISO também são analisados.
-datetime: 2001-12-15T02: 59: 43.1Z
-datetime_com_espacos 2001/12/14: 21: 59: 43.10 -5
-Data: 2002/12/14
+datetime: 2001-05-15T03:14:15.9Z
+datetime_com_espacos: 2009-07-21 18:30:57.72 -1
+Data: 2011-11-20
 
 # A tag !!binary indica que a string é na verdade um base64-encoded (condificado)
 # representação de um blob binário.

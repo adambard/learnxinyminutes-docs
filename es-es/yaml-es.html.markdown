@@ -193,10 +193,10 @@ llave_negativa_infinita: -.inf
 llave_numero_invalido: .NaN
 
 # Tags para las fechas y horas
-llave_canonica: 2001-12-15T02:59:43.1Z
+llave_canonica: 2001-05-15T03:14:15.9Z
 llave_iso8601: 2001-12-14t21:59:43.10-05:00
-llave_con_espacios: 2001-12-14 21:59:43.10 -5
-llave_fecha: 2002-12-14
+llave_con_espacios: 2009-07-21 18:30:57.72 -1
+llave_fecha: 2011-11-20
 
 # Además existen tags para
 null: #valor nulo
