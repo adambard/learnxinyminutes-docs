@@ -269,7 +269,7 @@ int main (int argc, char** argv)
 
   // While loops exist
   int ii = 0;
-  while (ii < 10) { //ANY value not zero is true.
+  while (ii < 10) { //ANY value less than ten is true.
     printf("%d, ", ii++); // ii++ increments ii AFTER using its current value.
   } // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
