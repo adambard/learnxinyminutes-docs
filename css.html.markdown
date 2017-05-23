@@ -1,6 +1,6 @@
 ---
-lenguaje: css
-contribudores:
+language: css
+contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
     - ["Marco Scannadinari", "https://github.com/marcoms"]
     - ["Geoffrey Liu", "https://github.com/g-liu"]
@@ -8,34 +8,35 @@ contribudores:
     - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
     - ["Brett Taylor", "https://github.com/glutnix"]
     - ["Tyler Mumford", "https://tylermumford.com"]
-    - ["miky ackerman", "https://github.com/mikyackerman"]
-Archivo: learncss.css
+filename: learncss.css
 ---
 
-Paginas web estan contruidas en HTML, lo cual especifica el contenido de una pagina
-CSS(Hoja de Estilos en Cascada) es un lenguaje separado el cual especifica
-la **apariencia** de una pagina.
+Web pages are built with HTML, which specifies the content of a page.
+CSS (Cascading Style Sheets) is a separate language which specifies
+a page's **appearance**.
 
-codigo CSS esta hecho de *reglas* estaticas. Cada regla toma uno o mas *selectores* y da *valores* especificos a un numero de *propiedades* visuales. Esas propiedades estan entonces aplicadas a los elementos indicados en una pagina por los selectores
+CSS code is made of static *rules*. Each rule takes one or more *selectors* and
+gives specific *values* to a number of visual *properties*. Those properties are
+then applied to the page elements indicated by the selectors.
 
-Esta guia ha sido escrita con CSS 2 en mente, la cual es extendida por una nueva caracterica de CSS 3.
+This guide has been written with CSS 2 in mind, which is extended by the new
+features of CSS 3.
 
-**NOTA:** Debido a que CSS produce resultados visuales, para aprenderlo, necesitas
-Probar todo en un patio de juegos CSS como [dabblet] (http://dabblet.com/).
-El objetivo principal de este artículo es la sintaxis y algunos consejos generales.
+**NOTE:** Because CSS produces visual results, in order to learn it, you need to
+try everything in a CSS playground like [dabblet](http://dabblet.com/).
+The main focus of this article is on the syntax and some general tips.
 
-## Sintaxis
+## Syntax
 
 ```css
-/* Los comentarios aparecen dentro  de un diagonal-asterisco, justo como esta linea
-   no hay "comentarios en una linea"; este es el unico estilo de comentario.*/
- 
+/* comments appear inside slash-asterisk, just like this line!
+   there are no "one-line comments"; this is the only comment style */
 
 /* ####################
    ## SELECTORS
    #################### */
 
-/* el selector es usado para apuntar a un elemento de la pagina. */
+/* the selector is used to target an element on a page. */
 selector { property: value; /* more properties...*/ }
 
 /*
@@ -321,5 +322,3 @@ a new feature.
 * [Z-Index - The stacking context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
 * [SASS](http://sass-lang.com/) and [LESS](http://lesscss.org/) for CSS pre-processing
 * [CSS-Tricks](https://css-tricks.com)
-
-
