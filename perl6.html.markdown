@@ -440,6 +440,7 @@ say @array[^10]; # you can pass arrays as subscripts and it'll return
 # Note : when reading an infinite list, Perl 6 will "reify" the elements
 # it needs, then keep them in memory. They won't be calculated more than once.
 # It also will never calculate more elements that are needed.
+# Trying 
 
 # An array subscript can also be a closure.
 # It'll be called with the length as the argument
@@ -961,10 +962,9 @@ try {
 use JSON::Tiny; # if you installed Rakudo* or Panda, you'll have this module
 say from-json('[1]').perl; #=> [1]
 
-# Declare your own packages like this:
-#  `class Package::Name::Here;` to declare a class, or if you only want to
-#  export variables/subs, you can use `module`.  If you're coming from Perl 5
-#  please note you're not usually supposed to use the `package` keyword.
+# You should not declare packages using the `package` keyword (unlike Perl 5).
+# Instead, use `class Package::Name::Here;` to declare a class, or if you only want to
+#  export variables/subs, you can use `module`.
 
 module Hello::World { # Bracketed form
                       # If `Hello` doesn't exist yet, it'll just be a "stub",
@@ -1073,15 +1073,23 @@ ENTER { say "[*] Runs everytime you enter a block, repeats on loop blocks" }
 LEAVE { say "Runs everytime you leave a block, even when an exception
     happened. Repeats on loop blocks." }
 
-PRE { say "Asserts a precondition at every block entry,
-    before ENTER (especially useful for loops)" }
+PRE {
+    say "Asserts a precondition at every block entry,
+        before ENTER (especially useful for loops)";
+    say "If this block doesn't return a truthy value,
+        an exception of type X::Phaser::PrePost is thrown.";
+}
 # exemple:
 for 0..2 {
     PRE { $_ > 1 } # This is going to blow up with "Precondition failed"
 }
 
-POST { say "Asserts a postcondition at every block exit,
-    after LEAVE (especially useful for loops)" }
+POST {
+    say "Asserts a postcondition at every block exit,
+        after LEAVE (especially useful for loops)";
+    say "If this block doesn't return a truthy value,
+        an exception of type X::Phaser::PrePost is thrown, like PRE.";
+}
 for 0..2 {
     POST { $_ < 2 } # This is going to blow up with "Postcondition failed"
 }
@@ -1522,14 +1530,17 @@ say $0; # The same as above.
 #  IFF it can have more than one element
 #  (so, with `*`, `+` and `**` (whatever the operands), but not with `?`).
 # Let's use examples to see that:
-so 'fooABCbar' ~~ / foo ( A B C )? bar /; # `True`
+
+# Note: We quoted A B C to demonstrate that the whitespace between them isn't significant.
+#       If we want the whitespace to *be* significant there, we can use the :sigspace modifier.
+so 'fooABCbar' ~~ / foo ( "A" "B" "C" )? bar /; # `True`
 say $/[0]; #=> ｢ABC｣
 say $0.WHAT; #=> (Match)
-             # It can't be more than one, so it's only a single match object.
-so 'foobar' ~~ / foo ( A B C )? bar /; #=> True
+             # There can't be more than one, so it's only a single match object.
+so 'foobar' ~~ / foo ( "A" "B" "C" )? bar /; #=> True
 say $0.WHAT; #=> (Any)
              # This capture did not match, so it's empty
-so 'foobar' ~~ / foo ( A B C ) ** 0..1 bar /; # `True`
+so 'foobar' ~~ / foo ( "A" "B" "C" ) ** 0..1 bar /; # `True`
 say $0.WHAT; #=> (Array)
              # A specific quantifier will always capture an Array,
              #  may it be a range or a specific value (even 1).
