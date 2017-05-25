@@ -1,5 +1,6 @@
 ---
 language: HQ9+
+filename: hq9+.html
 contributors:
     - ["Alexey Nazaroff", "https://github.com/rogaven"]
 ---
