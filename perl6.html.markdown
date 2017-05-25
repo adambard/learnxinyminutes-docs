@@ -118,13 +118,38 @@ say %hash<key2>;   # If it's a string, you can actually use <>
 # created with the `sub` keyword.
 sub say-hello { say "Hello, world" }
 
-sub say-hello-to(Str $name) { # You can provide the type of an argument
-                              # and it'll be checked at compile-time.
-
+# You can provide (typed) arguments.
+# If specified, the type will be checked at compile-time if possible,
+#  otherwise at runtime.
+sub say-hello-to(Str $name) {
     say "Hello, $name !";
 }
 
-## It can also have optional arguments:
+# A sub returns the last value of the block.
+sub return-value {
+    5;
+}
+say return-value; # prints 5
+sub return-empty {
+}
+say return-empty; # prints Nil
+
+# Some control flow structures produce a value, like if:
+sub return-if {
+	if True {
+		"Truthy";
+	}
+}
+say return-if; # prints Truthy
+
+# Some don't, like for:
+sub return-for {
+    for 1, 2, 3 { }
+}
+say return-for; # prints Nil
+
+
+## A sub can have optional arguments:
 sub with-optional($arg?) { # the "?" marks the argument optional
   say "I might return `(Any)` (Perl's 'null'-like value) if I don't have
         an argument passed, or I'll return my argument";
