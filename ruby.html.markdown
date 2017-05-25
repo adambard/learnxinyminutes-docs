@@ -145,6 +145,12 @@ x = y = 10 #=> 10
 x #=> 10
 y #=> 10
 
+# Ruby also has a or-equals operator
+x = 10 #=> 10
+x ||= 20 #=> 10
+y = nil #=> nil
+y ||= 10 #=> 10
+
 # By convention, use snake_case for variable names
 snake_case = true
 
