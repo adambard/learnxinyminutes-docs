@@ -8,6 +8,7 @@ contributors:
     - ["Marco Scannadinari", "https://marcoms.github.io"]
     - ["Zachary Ferguson", "https://github.io/zfergus2"]
     - ["himanshu", "https://github.com/himanshu81494"]
+    - ["Aaroh Mankad", "https://github.com/aarohmankad"]
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
@@ -779,4 +780,4 @@ Readable code is better than clever code and fast code. For a good, sane coding 
 
 Other than that, Google is your friend.
 
-[1] http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member
+[1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)
