@@ -8,7 +8,6 @@ contributors:
     - ["Marco Scannadinari", "https://marcoms.github.io"]
     - ["Zachary Ferguson", "https://github.io/zfergus2"]
     - ["himanshu", "https://github.com/himanshu81494"]
-    - ["Aaroh Mankad", "https://github.com/aarohmankad"]
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
