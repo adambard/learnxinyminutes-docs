@@ -2,7 +2,8 @@
 name: Go
 category: language
 language: Go
-filename: learngo.go
+lang: ca-es
+filename: learngo-ca.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["Christopher Bess", "https://github.com/cbess"]
@@ -137,7 +138,7 @@ salts de línia.` // El mateix tipus
 	// Els "Mapes" són taules dinàmiques associatives com els hash o els
 	// diccionaris d'altres llenguatges.
 	m := map[string]int{"tres": 3, "quatre": 4}
-	m["one"] = 1
+	m["un"] = 1
 
 	// En Go les variables que no es fan servir generen un error.
 	// El subratllat permet fer servir una variable i descartar-ne el valor.
@@ -224,12 +225,12 @@ func aprenControlDeFluxe() {
 	// Es fa servir "range" per iterar a una taula, un slice, un mapa
 	// o un canal.
 	// range torna un valor (channel) o dos (array, slice, string o map).
-	for key, value := range map[string]int{"one": 1, "two": 2, "tres": 3} {
+	for key, value := range map[string]int{"un": 1, "dos": 2, "tres": 3} {
 		// Per cada parell del mapa imprimeix la clau i el valor.
-		fmt.Printf("key=%s, value=%d\n", key, value)
+		fmt.Printf("clau=%s, valor=%d\n", key, value)
 	}
 	// Si només cal el valor es pot fer servir _
-	for _, name := range []string{"Robert", "Bill", "Joe"} {
+	for _, name := range []string{"Robert", "Bill", "Josep"} {
 		fmt.Printf("Hola, %s\n", name)
 	}
 
@@ -325,7 +326,7 @@ func aprendreInterficies() {
 	fmt.Println(p) // Treu el mateix d'abans. Println crida el mètode String.
 	fmt.Println(i) // Idèntic resultat
 
-	aprendreParamentesVariables("great", "learning", "here!")
+	aprendreParamentesVariables("Aquí", "estem", "aprenent!")
 }
 
 // Les funcions poden tenir paràmetres variables.
@@ -337,7 +338,7 @@ func aprendreParamentesVariables(myStrings ...interface{}) {
 	}
 
 	// Passa el valor de múltipes variables com a paràmetre.
-	fmt.Println("params:", fmt.Sprintln(myStrings...))
+	fmt.Println("parametres:", fmt.Sprintln(myStrings...))
 
 	aprenControlErrors()
 }
@@ -383,7 +384,7 @@ func aprenConcurrencia() {
 	cs := make(chan string)       // Un altre canal que processa strings.
 	ccs := make(chan chan string) // Un canal de canals string.
 	go func() { c <- 84 }()       // Inicia una goroutine i li envia un valor.
-	go func() { cs <- "wordy" }() // El mateix però amb cs.
+	go func() { cs <- "paraula" }() // El mateix però amb cs.
 	// Select té una sintaxi semblant a switch però amb canals.
 	// Selecciona un cas aleatòriament dels que poden comunicar-se.
 	select {
