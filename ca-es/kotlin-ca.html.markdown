@@ -8,7 +8,8 @@ lang: ca-es
 filename: LearnKotlin.kt
 ---
 
-Kotlin és un llenguatge estàtic tipat per la JVM, Android i el navegador. És interoperable al 100% amb Java.
+Kotlin és un llenguatge estàtic tipat per la JVM, Android i el navegador.
+És interoperable al 100% amb Java.
 [Llegir-ne més aquí.](https://kotlinlang.org/)
 
 ```kotlin
@@ -54,8 +55,9 @@ fun main(args: Array<String>) {
     println(bazString)
 
     /*
-    Es poden definir strings literals envoltant-los amb les triples cometes (""").
-    Poden contenir salts de línies i altres caràcters.
+    Es poden definir strings literals envoltant-los amb les triples cometes 
+    (""").
+    Dins hi poden haver tant salts de línies com d'altres caràcters.
     */
     val fooRawString = """
 fun helloWorld(val name : String) {
@@ -72,10 +74,11 @@ fun helloWorld(val name : String) {
     println(fooTemplateString)
 
     /*
-    Perquè una variable pugui contenir null ha de ser declarada específicament com
-    a nullable afengint-li ? al seu tipus.
+    Perquè una variable pugui contenir null ha de ser declarada específicament
+    com a nullable afengint-li ? al seu tipus.
     Es pot accedir a una variable nulable fent servir l'operador ?.
-    L'operador ?: permet especificar un valor alternatiu en cas de que la variable sigui null.
+    L'operador ?: permet especificar un valor alternatiu en cas de que la
+    variable sigui null.
     */
     var fooNullable: String? = "abc"
     println(fooNullable?.length) // => 3
@@ -98,8 +101,9 @@ fun helloWorld(val name : String) {
     println(hello()) // => Hola, món!
 
     /*
-    Un dels paràmetres d'una funció pot ser marcat amb la paraula clau "vararg"
-    que permet que una funció accepti un número variable d'arguments.
+    Un dels paràmetres d'una funció pot ser marcat amb la paraula clau
+    "vararg" que permet que una funció accepti un número variable
+    d'arguments.
     */
     fun varargExample(vararg names: Int) {
         println("S'han rebut ${names.size} arguments")
@@ -252,7 +256,8 @@ fun helloWorld(val name : String) {
     val y = fibonacciSequence().take(10).toList()
     println(y) // => [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 
-    // Kotlin proporciona funcions de primer ordre per treballar amb col·leccions.
+    // Kotlin proporciona funcions de primer ordre per treballar amb
+    // col·leccions.
     val z = (1..9).map {it * 3}
                   .filter {it < 20}
                   .groupBy {it % 2 == 0}
