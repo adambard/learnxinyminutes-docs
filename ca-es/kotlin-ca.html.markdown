@@ -5,7 +5,7 @@ contributors:
 translators:
     - ["Xavier Sala", "https://github.com/utrescu"] 
 lang: ca-es
-filename: LearnKotlin.kt
+filename: LearnKotlin-ca.kt
 ---
 
 Kotlin és un llenguatge estàtic tipat per la JVM, Android i el navegador.
