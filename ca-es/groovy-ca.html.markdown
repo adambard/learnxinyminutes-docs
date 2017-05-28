@@ -3,7 +3,7 @@ name: Groovy
 category: language
 language: Groovy
 lang: ca-es
-filename: learngroovy.groovy
+filename: learngroovy-ca.groovy
 contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
 translations:
@@ -16,7 +16,7 @@ Groovy - Un llenguatge dinàmic per la plataforma Java [Llegir-ne més.](http://
 ```groovy
 
 /*
-  Set yourself up:
+  Posa'l en marxa tu mateix:
 
   1) Instal.la SDKMAN - http://sdkman.io/
   2) Instal.la Groovy: sdk install groovy
