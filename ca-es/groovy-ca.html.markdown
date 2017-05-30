@@ -8,7 +8,6 @@ contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
 translations:
     - ["Xavier Sala Pujolar", "http://github.com/utrescu"]
-filename: learngroovy.groovy
 ---
 
 Groovy - Un llenguatge dinàmic per la plataforma Java [Llegir-ne més.](http://www.groovy-lang.org/)
