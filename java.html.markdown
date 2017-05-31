@@ -92,7 +92,7 @@ public class LearnJava {
         int numInt = scanner.nextInt();
 
         // read long input
-        float numFloat - scanner.nextFloat();
+        float numFloat = scanner.nextFloat();
 
         // read double input
         double numDouble = scanner.nextDouble();
