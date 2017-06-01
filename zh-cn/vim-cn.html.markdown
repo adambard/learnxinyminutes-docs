@@ -10,7 +10,7 @@ lang: zh-cn
 ---
 
 
-[Vim](www.vim.org)
+[Vim](http://www.vim.org)
 (Vi IMproved) 是 Unix 上的流行编辑器 vi 的克隆版本。这个文本编辑器
 是为性能和提升效率而设计的，并且在大多数基于 unix 的系统上普遍存在。
 它有大量的快捷键可用来快速导航到文件的特定位置，以便进行快速编辑。

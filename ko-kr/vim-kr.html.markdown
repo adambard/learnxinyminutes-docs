@@ -9,7 +9,7 @@ filename: LearnVim-kr.txt
 lang: ko-kr
 ---
 
-[Vim](www.vim.org)
+[Vim](http://www.vim.org)
 (Vi IMproved)은 유닉스의 인기 있는 vi 에디터의 클론입니다. Vim은 속도와 생산성을 위해
 설계된 텍스트 에디터로, 대부분의 유닉스 기반 시스템에 내장되어 있습니다. 다양한 단축 키를 통해
 파일 안에서 빠르게 이동하고 편집할 수 있습니다.
