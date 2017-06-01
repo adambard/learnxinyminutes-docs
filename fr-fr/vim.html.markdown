@@ -10,7 +10,7 @@ lang: fr-fr
 ---
 
 
-[Vim](www.vim.org)
+[Vim](http://www.vim.org)
 (Vi IMproved) est le clone le plus populaire de l'éditeur de texte vi sous Unix.
 Vim est un éditeur de texte omniprésent sur les systèmes de type Unix, et a pour
 objectif la rapidité ainsi que l'augmentation de la productivité. Il a de 
