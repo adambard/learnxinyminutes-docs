@@ -67,16 +67,16 @@ Paths
 
 **The way to mix nodes and relationships.**
 
-```(a:Person)-[:KNOWS]-[b:Person]```
+```(a:Person)-[:KNOWS]-(b:Person)```
 A path describing that **a** and **b** know each other.
 
-```(a:Person)-[:MANAGES]->[b:Person]```
+```(a:Person)-[:MANAGES]->(b:Person)```
 A path can be directed. This path describes that **a** is the manager of **b**.
 
-```(a:Person)-[:KNOWS]-[b:Person]-[:KNOWS]-[c:Person]```
+```(a:Person)-[:KNOWS]-(b:Person)-[:KNOWS]-(c:Person)```
 You can chain multiple relationships. This path describes the friend of a friend.
 
-```(a:Person)-[:MANAGES]->[b:Person]-[:MANAGES]->[c:Person]```
+```(a:Person)-[:MANAGES]->(b:Person)-[:MANAGES]->(c:Person)```
 A chain can also be directed. This path describes that **a** is the boss of **b** and the big boss of **c**.
 
 Patterns often used (from Neo4j doc) :
