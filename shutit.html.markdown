@@ -36,7 +36,7 @@ python example.py
 outputs:
 
 ```bash
-python example.py
+$ python example.py
 echo "Hello World"
 echo "Hello World"
 Hello World
@@ -67,6 +67,7 @@ which will log you into your server (if you replace with your details) and
 output the hostname.
 
 ```
+$ python example.py
 hostname
 hostname
 example.com
@@ -87,6 +88,7 @@ session.logout()
 which forces you to input the password:
 
 ```
+$ python example.py
 Input Secret:
 hostname
 hostname
@@ -162,7 +164,7 @@ session1.logout()
 session2.logout()
 ```
 
-Here you use the 'send_and_get_output' method to retrieve the output of the
+Here you use the 'send\_and\_get\_output' method to retrieve the output of the
 capacity command (df).
 
 There are much more elegant ways to do the above (eg have a dictionary of the
@@ -187,7 +189,7 @@ session.logout()
 Note the 'expect' argument. You only need to give a subset of telnet's
 prompt to match and continue.
 
-Note also the 'check_exit' argument in the above, which is new. We'll come back
+Note also the 'check\_exit' argument in the above, which is new. We'll come back
 to that. The output of the above is:
 
 ```bash
@@ -217,8 +219,8 @@ here
 Connection closed by foreign host.
 ```
 
-Now back to 'check_exit=False'. Since the telnet command returns a failure exit
-code (1) and we don't want the script to fail, you set 'check_exit=False' to
+Now back to 'check\_exit=False'. Since the telnet command returns a failure exit
+code (1) and we don't want the script to fail, you set 'check\_exit=False' to
 let ShutIt know you don't care about the exit code.
 
 If you didn't pass that argument in, ShutIt gives you an interactive terminal
