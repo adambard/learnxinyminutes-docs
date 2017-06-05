@@ -243,7 +243,7 @@ around, then continue. Try this:
 import shutit
 session = shutit.create_session('bash')
 session.pause_point('Have a look around!')
-session.send('echo "Did you enjoy your pause point?"')
+session.send('echo "Did you enjoy your pause point?"', echo=True)
 ```
 
 with output like this:
@@ -252,11 +252,15 @@ with output like this:
 $ python example.py
 Have a look around!
 
-Ians-Air.home:ORIGIN_ENV:JCGFTB0h#  bash
-imiell@Ians-Air:/space/git/shutit  ⑂ master +   pwd
-/space/git/shutit
-imiell@Ians-Air:/space/git/shutit  ⑂ master +  
+Ians-Air.home:ORIGIN_ENV:I00LA1Mq#  bash
+imiell@Ians-Air:/space/git/shutit  ⑂ master +    
 CTRL-] caught, continuing with run...
+2017-06-05 15:12:33,577 INFO: Sending:  exit
+2017-06-05 15:12:33,633 INFO: Output (squashed):  exitexitIans-Air.home:ORIGIN_ENV:I00LA1Mq#  [...]
+echo "Did you enjoy your pause point?"
+echo "Did you enjoy your pause point?"
+Did you enjoy your pause point?
+Ians-Air.home:ORIGIN_ENV:I00LA1Mq#
 ```
 
 
