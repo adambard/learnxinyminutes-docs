@@ -6,6 +6,7 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
     - ["evuez", "http://github.com/evuez"]
+translators:
     - ["Xuan (Sean) Luong, https://github.com/xuanluong"]
 filename: learnpython3.py
 lang: vi-vn
