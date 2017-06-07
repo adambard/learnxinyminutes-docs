@@ -6,6 +6,7 @@ contributors:
 translators:
     - ["Robert Steed", "https://github.com/robochat"]
     - ["Xuan (Sean) Luong", "https://github.com/xuanluong"]
+lang: vi-vn
 ---
 
 HTML là viết tắt của HyperText Markup Language (Ngôn ngữ đánh dấu siêu văn bản).
@@ -117,6 +118,6 @@ HTML được viết trong tập tin có phần mở rộng `.html`.
 
 ## Thông tin mở rộng
 
-* [wikipedia](https://en.wikipedia.org/wiki/HTML)
+* [wikipedia](https://vi.wikipedia.org/wiki/HTML)
 * [HTML tutorial](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [W3School](http://www.w3schools.com/html/html_intro.asp)
