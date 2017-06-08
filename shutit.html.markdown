@@ -29,13 +29,13 @@ session.send('echo Hello World', echo=True)
 
 Running this with:
 
-```shell
+```bash
 python example.py
 ```
 
 outputs:
 
-```shell
+```bash
 python example.py
 echo "Hello World"
 echo "Hello World"
@@ -122,7 +122,7 @@ session2.logout()
 
 would output:
 
-```shell
+```bash
 $ python example.py
 Password for server1
 Input Secret:
@@ -190,7 +190,7 @@ prompt to match and continue.
 Note also the 'check_exit' argument in the above, which is new. We'll come back
 to that. The output of the above is:
 
-```shell
+```bash
 $ python example.py
 telnet
 telnet> open google.com 80
@@ -248,7 +248,7 @@ session.send('echo "Did you enjoy your pause point?"', echo=True)
 
 with output like this:
 
-```shell
+```bash
 $ python example.py
 Have a look around!
 
