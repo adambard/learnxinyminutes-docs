@@ -8,6 +8,7 @@ contributors:
     - ["Marco Scannadinari", "https://marcoms.github.io"]
     - ["Zachary Ferguson", "https://github.io/zfergus2"]
     - ["himanshu", "https://github.com/himanshu81494"]
+    - ["Aaroh Mankad", "https://github.com/aarohmankad"]
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
@@ -764,6 +765,8 @@ Node createLinkedList(int *vals, int len);
 
 ```
 ## Further Reading
+
+If you would like to start writing C right away, head over to the [repl.it playground](https://repl.it/languages/c)!
 
 Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language)
 It is *the* book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some
