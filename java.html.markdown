@@ -712,8 +712,8 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 // must be defined in a child class. Similar to interfaces, abstract classes
 // cannot be instantiated, but instead must be extended and the abstract
 // methods defined. Different from interfaces, abstract classes can contain a
-// concrete and abstract methods. Methods in an interface cannot have a body,
-// mixture of unless the method is static, and variables are final by default,
+// mixture of concrete and abstract methods. Methods in an interface cannot
+// have a body, unless the method is static, and variables are final by default,
 // unlike an abstract class. Also abstract classes CAN have the "main" method.
 public abstract class Animal
 {
@@ -730,7 +730,7 @@ public abstract class Animal
     // No need to initialize, however in an interface
     // a variable is implicitly final and hence has
     // to be initialized.
-    protected int age;
+    private int age;
 
     public void printAge()
     {
