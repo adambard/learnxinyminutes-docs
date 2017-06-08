@@ -730,7 +730,7 @@ public abstract class Animal
     // No need to initialize, however in an interface
     // a variable is implicitly final and hence has
     // to be initialized.
-    protected int age;
+    private int age;
 
     public void printAge()
     {
