@@ -104,34 +104,32 @@ val groups = [ [ "Alice", "Bob" ],
 
 val number_count = List.length numbers     (* 结果是 7 *)
 
-(* You can put single values in front of lists of the same kind using
-   the :: operator, called "the cons operator" (known from Lisp). *)
-val more_numbers = 13 :: numbers  (* gives [13, 1, 3, 3, 7, ...] *)
+(* 你可以使用 :: 操作符把单个值放到同样类型列表的最前面。
+   :: 叫做con操作符（名字来自Lisp） *)
+val more_numbers = 13 :: numbers  (* 结果是 [13, 1, 3, 3, 7, ...] *)
 val more_groups  = ["Batman","Superman"] :: groups
 
-(* Lists of the same kind can be appended using the @ ("append") operator *)
+(* 拥有同样类型元素的列表可以使用 @ 操作符连接起来 *)
 val guest_list = [ "Mom", "Dad" ] @ [ "Aunt", "Uncle" ]
 
-(* This could have been done with the "cons" operator.  It is tricky because the
-   left-hand-side must be an element whereas the right-hand-side must be a list
-   of those elements. *)
+(* 使用 :: 操作符也能完成这项工作。但是这有点绕，因为左手边必须是单个元素
+   而右边必须是这种元素的列表 *)
 val guest_list = "Mom" :: "Dad" :: [ "Aunt", "Uncle" ]
 val guest_list = "Mom" :: ("Dad" :: ("Aunt" :: ("Uncle" :: [])))
 
-(* If you have many lists of the same kind, you can concatenate them all *)
+(* 如果你有很多同样类型的列表，也可以整个拼接成一个。 *)
 val everyone = List.concat groups  (* [ "Alice", "Bob", "Huey", ... ] *)
 
-(* A list can contain any (finite) number of values *)
+(* 列表可以包含任意（无限）数量的元素 *)
 val lots = [ 5, 5, 5, 6, 4, 5, 6, 5, 4, 5, 7, 3 ]  (* still just an int list *)
 
-(* Lists can only contain one kind of thing... *)
+(* 但是列表只能包含一种类型的元素 *)
 (* val bad_list = [ 1, "Hello", 3.14159 ] : ??? list *)
 
-
-(* Tuples, on the other hand, can contain a fixed number of different things *)
+(* 而元组Tuples则可以包含有限固定数量的不同类型的元素 *)
 val person1 = ("Simon", 28, 3.14159)  (* : string * int * real *)
 
-(* You can even have tuples inside lists and lists inside tuples *)
+(* 你甚至可以让列表和元组相互嵌套 *)
 val likes = [ ("Alice", "ice cream"),
               ("Bob",   "hot dogs"),
               ("Bob",   "Alice") ]     (* : (string * string) list *)
@@ -144,32 +142,28 @@ val good_bad_stuff =
   (["ice cream", "hot dogs", "chocolate"],
    ["liver", "paying the rent" ])           (* : string list * string list *)
 
-
-(* Records are tuples with named slots *)
+(* 记录Record是每个位置带名字的元组 *)
 
 val rgb = { r=0.23, g=0.56, b=0.91 } (* : {b:real, g:real, r:real} *)
 
-(* You don't need to declare their slots ahead of time. Records with
-   different slot names are considered different types, even if their
-   slot value types match up. For instance... *)
-
+(* 使用Record时不需要提前声明每个位置的名字。 有不同名字的Record属于不同的类型
+   即使他们的值的类型是相同的。比如说：*)
 val Hsl = { H=310.3, s=0.51, l=0.23 } (* : {H:real, l:real, s:real} *)
 val Hsv = { H=310.3, s=0.51, v=0.23 } (* : {H:real, s:real, v:real} *)
 
-(* ...trying to evaluate `Hsv = Hsl` or `rgb = Hsl` would give a type
-   error. While they're all three-slot records composed only of `real`s,
-   they each have different names for at least some slots. *)
+(* ...如果你想判断 `Hsv = Hsl` 或者 `rgb = Hsl` 的话，会得到一个类型错误。虽然他们都包含3个
+   real，但是由于名字不同，其类型也不同。 *)
 
-(* You can use hash notation to get values out of tuples. *)
+(* 可以使用 # 符号取出元组的值 *)
 
 val H = #H Hsv (* : real *)
 val s = #s Hsl (* : real *)
 
-(* Functions! *)
-fun add_them (a, b) = a + b    (* A simple function that adds two numbers *)
-val test_it = add_them (3, 4)  (* gives 7 *)
+(* 函数！ *)
+fun add_them (a, b) = a + b    (* 一个简单的加法函数 *)
+val test_it = add_them (3, 4)  (* 结果是 7 *)
 
-(* Larger functions are usually broken into several lines for readability *)
+(* 复杂函数通常会为了可读性写成多行 *)
 fun thermometer temp =
     if temp < 37
     then "Cold"
@@ -177,19 +171,18 @@ fun thermometer temp =
          then "Warm"
          else "Normal"
 
-val test_thermo = thermometer 40  (* gives "Warm" *)
+val test_thermo = thermometer 40  (* 结果是 "Warm" *)
 
-(* if-sentences are actually expressions and not statements/declarations.
-   A function body can only contain one expression.  There are some tricks
-   for making a function do more than just one thing, though. *)
+(* if 实际上是表达式而不是声明。一个函数体只可以包含一个表达式。但是还是有一些小技巧
+   让一个函数做更多的事。 *)
 
-(* A function can call itself as part of its result (recursion!) *)
+(* 函数也可以使用调用自己的结果 (递归！) *)
 fun fibonacci n =
-    if n = 0 then 0 else                   (* Base case *)
-    if n = 1 then 1 else                   (* Base case *)
-    fibonacci (n - 1) + fibonacci (n - 2)  (* Recursive case *)
+    if n = 0 then 0 else                   (* 终止条件 *)
+    if n = 1 then 1 else                   (* 终止条件 *)
+    fibonacci (n - 1) + fibonacci (n - 2)  (* 递归 *)
 
-(* Sometimes recursion is best understood by evaluating a function by hand:
+(* 有的时候，手写出递归函数的执行过程能帮助理解递归概念：
 
  fibonacci 4
    ~> fibonacci (4 - 1) + fibonacci (4 - 2)
@@ -209,15 +202,12 @@ fun fibonacci n =
    ~> 2 + (1 + fibonacci 0)
    ~> 2 + (1 + 0)
    ~> 2 + 1
-   ~> 3  which is the 4th Fibonacci number, according to this definition
+   ~> 3  第四个斐波那契数
 
  *)
 
-(* A function cannot change the variables it can refer to.  It can only
-   temporarily shadow them with new variables that have the same names.  In this
-   sense, variables are really constants and only behave like variables when
-   dealing with recursion.  For this reason, variables are also called value
-   bindings. An example of this: *)
+(* 函数不能改变它引用的值。它只能暂时的使用同名的新变量来覆盖这个值。也就是说，变量其实是
+   常数，只有在递归的时候才表现的比较像变量。因此，变量也被叫做值绑定。举个例子： *)
 
 val x = 42
 fun answer(question) =
@@ -226,17 +216,15 @@ fun answer(question) =
     else raise Fail "I'm an exception. Also, I don't know what the answer is."
 val x = 43
 val hmm = answer "What is the meaning of life, the universe and everything?"
-(* Now, hmm has the value 42.  This is because the function answer refers to
-   the copy of x that was visible before its own function definition. *)
+(* 现在 hmm 的值是 42。  这是因为函数 answer 引用的x是函数定义之前的x。 *)
 
-
-(* Functions can take several arguments by taking one tuples as argument: *)
+(* 函数通过接受一个元组来接受多个参数。 *)
 fun solve2 (a : real, b : real, c : real) =
     ((~b + Math.sqrt(b * b - 4.0 * a * c)) / (2.0 * a),
      (~b - Math.sqrt(b * b - 4.0 * a * c)) / (2.0 * a))
 
-(* Sometimes, the same computation is carried out several times. It makes sense
-   to save and re-use the result the first time. We can use "let-bindings": *)
+(* 有时候同样的计算会被计算多次，因此把结果保存下来以重复使用是很有必要的。
+   这时可以使用 let 绑定。 *)
 fun solve2 (a : real, b : real, c : real) =
     let val discr  = b * b - 4.0 * a * c
         val sqr = Math.sqrt discr
@@ -245,38 +233,32 @@ fun solve2 (a : real, b : real, c : real) =
         (~b - sqr) / denom)
     end
 
+(* 模式匹配是函数式编程的一个精巧的部分，它是实现 if 的另一种方式。  
+   斐波那契函数可以被重写为如下方式： *)
+fun fibonacci 0 = 0  (* 终止条件 *)
+  | fibonacci 1 = 1  (* 终止条件 *)
+  | fibonacci n = fibonacci (n - 1) + fibonacci (n - 2)  (* 递归 *)
 
-(* Pattern matching is a funky part of functional programming.  It is an
-   alternative to if-sentences.  The fibonacci function can be rewritten: *)
-fun fibonacci 0 = 0  (* Base case *)
-  | fibonacci 1 = 1  (* Base case *)
-  | fibonacci n = fibonacci (n - 1) + fibonacci (n - 2)  (* Recursive case *)
-
-(* Pattern matching is also possible on composite types like tuples, lists and
-   records. Writing "fun solve2 (a, b, c) = ..." is in fact a pattern match on
-   the one three-tuple solve2 takes as argument. Similarly, but less intuitively,
-   you can match on a list consisting of elements in it (from the beginning of
-   the list only). *)
+(* 模式匹配也可以用于比如元组、列表和记录的复合类型。"fun solve2 (a, b, c) = ..."
+   的写法实际上也是对于一个三元素元组的模式匹配。类似但是比较不直观的是你也可以从列表的开头
+   对列表元素进行匹配。 *)
 fun first_elem (x::xs) = x
 fun second_elem (x::y::xs) = y
 fun evenly_positioned_elems (odd::even::xs) = even::evenly_positioned_elems xs
-  | evenly_positioned_elems [odd] = []  (* Base case: throw away *)
-  | evenly_positioned_elems []    = []  (* Base case *)
+  | evenly_positioned_elems [odd] = []  (* 终止条件：丢弃结果 *)
+  | evenly_positioned_elems []    = []  (* 终止条件 *)
 
-(* When matching on records, you must use their slot names, and you must bind
-   every slot in a record. The order of the slots doesn't matter though. *)
+(* 匹配记录的时候，比如使用每个位置的名字，每个位置的值都需要绑定，但是顺序并不重要。 *)
 
 fun rgbToTup {r, g, b} = (r, g, b)    (* fn : {b:'a, g:'b, r:'c} -> 'c * 'b * 'a *)
 fun mixRgbToTup {g, b, r} = (r, g, b) (* fn : {b:'a, g:'b, r:'c} -> 'c * 'b * 'a *)
 
-(* If called with {r=0.1, g=0.2, b=0.3}, either of the above functions
-   would return (0.1, 0.2, 0.3). But it would be a type error to call them
-   with {r=0.1, g=0.2, b=0.3, a=0.4} *)
+(* 如果传入参数 {r=0.1, g=0.2, b=0.3}，上面的两个函数都会返回 (0.1, 0.2, 0.3)。
+   但是传入参数 {r=0.1, g=0.2, b=0.3, a=0.4} 的话则会得到类型错误 *)
 
-(* Higher order functions: Functions can take other functions as arguments.
-   Functions are just other kinds of values, and functions don't need names
-   to exist.  Functions without names are called "anonymous functions" or
-   lambda expressions or closures (since they also have a lexical scope). *)
+(* 高阶函数： 可以接受其他函数作为参数的函数
+   函数只不过是另一种类型的值，不需要依附与一个名字而存在。
+   没有名字的函数被叫做匿名函数或者lambda表达式或者闭包（因为匿名函数也依赖于词法作用域）*)
 val is_large = (fn x => x > 37)
 val add_them = fn (a,b) => a + b
 val thermometer =
@@ -286,56 +268,53 @@ val thermometer =
                     then "Warm"
                     else "Normal"
 
-(* The following uses an anonymous function directly and gives "ColdWarm" *)
+(* 下面的代码就是用了匿名函数，结果是 "ColdWarm" *)
 val some_result = (fn x => thermometer (x - 5) ^ thermometer (x + 5)) 37
 
-(* Here is a higher-order function that works on lists (a list combinator) *)
+(* 这是一个作用于列表的高阶函数 *)
 (* map f l
-       applies f to each element of l from left to right, 
-       returning the list of results. *)
-val readings = [ 34, 39, 37, 38, 35, 36, 37, 37, 37 ]  (* first an int list *)
-val opinions = List.map thermometer readings (* gives [ "Cold", "Warm", ... ] *)
+       把f从左至右作用于l的每一个元素，并返回结果组成的列表。 *)
+val readings = [ 34, 39, 37, 38, 35, 36, 37, 37, 37 ]  (* 先定义一个列表 *)
+val opinions = List.map thermometer readings (* 结果是 [ "Cold", "Warm", ... ] *)
 
-(* And here is another one for filtering lists *)
-val warm_readings = List.filter is_large readings  (* gives [39, 38] *)
+(* filter 函数用于筛选列表 *)
+val warm_readings = List.filter is_large readings  (* 结果是 [39, 38] *)
 
-(* You can create your own higher-order functions, too.  Functions can also take
-   several arguments by "currying" them. Syntax-wise this means adding spaces
-   between function arguments instead of commas and surrounding parentheses. *)
+(* 你也可以创建自己的高阶函数。函数也可以通过 curry 来接受多个参数。
+   从语法上来说，curry就是使用空格来分隔参数，而不是逗号和括号。 *)
 fun map f [] = []
   | map f (x::xs) = f(x) :: map f xs
 
-(* map has type ('a -> 'b) -> 'a list -> 'b list and is called polymorphic. *)
-(* 'a is called a type variable. *)
+(* map 的类型是 ('a -> 'b) -> 'a list -> 'b list ，这就是多态。 *)
+(* 'a 被叫做类型变量 *)
 
 
-(* We can declare functions as infix *)
-val plus = add_them   (* plus is now equal to the same function as add_them *)
-infix plus            (* plus is now an infix operator *)
-val seven = 2 plus 5  (* seven is now bound to 7 *)
+(* 函数可以被声明为中缀的。 *)
+val plus = add_them   (* plus 现在和 add_them 是同一个函数。 *)
+infix plus            (* plus 现在是一个中缀操作符。 *)
+val seven = 2 plus 5  (* seven 现在被绑定上了 7 *)
 
-(* Functions can also be made infix before they are declared *)
+(* 函数也可以在声明之前就声明为中缀 *)
 infix minus
-fun x minus y = x - y (* It becomes a little hard to see what's the argument *)
-val four = 8 minus 4  (* four is now bound to 4 *)
+fun x minus y = x - y (* 这样有点不容易判断哪个是参数。 *)
+val four = 8 minus 4  (* four 现在被绑定上了 4 *)
 
-(* An infix function/operator can be made prefix with 'op' *)
+(* 中缀函数/操作符也可以使用 'op' 函数变回前缀函数。 *)
 val n = op + (5, 5)   (* n is now 10 *)
 
-(* 'op' is useful when combined with high order functions because they expect
-   functions and not operators as arguments. Most operators are really just
-   infix functions. *)
+(* 'op' 在结合高阶函数的时候非常有用，因为高阶函数接受的是函数而不是操作符作为参数。
+   大部分的操作符其实都是中缀函数。 *)
 (* foldl f init [x1, x2, ..., xn]
-       returns
+       返回
        f(xn, ...f(x2, f(x1, init))...)
-       or init if the list is empty. *)
+       或者如果列表为空时返回 init *)
 val sum_of_numbers = foldl op+ 0 [1, 2, 3, 4, 5]
 
 
-(* Datatypes are useful for creating both simple and complex structures *)
+(* 可以很方便的使用 datatype 定义或简单或复杂的数据结构。 *)
 datatype color = Red | Green | Blue
 
-(* Here is a function that takes one of these as argument *)
+(* 这个函数接受 color 之一作为参数。 *)
 fun say(col) =
     if col = Red then "You are red!" else
     if col = Green then "You are green!" else
@@ -344,21 +323,21 @@ fun say(col) =
 
 val _ = print (say(Red) ^ "\n")
 
-(* Datatypes are very often used in combination with pattern matching *)
+(* datatype 经常和模式匹配一起使用。 *)
 fun say Red   = "You are red!"
   | say Green = "You are green!"
   | say Blue  = "You are blue!"
   | say _     = raise Fail "Unknown color"
 
 
-(* Here is a binary tree datatype *)
+(* 一个二叉树 datatype *)
 datatype 'a btree = Leaf of 'a
-                  | Node of 'a btree * 'a * 'a btree (* three-arg constructor *)
+                  | Node of 'a btree * 'a * 'a btree (* 三个参数的构造器 *)
 
-(* Here is a binary tree *)
+(* 一颗二叉树： *)
 val myTree = Node (Leaf 9, 8, Node (Leaf 3, 5, Leaf 7))
 
-(* Drawing it, it might look something like...
+(* 画出来应该是这个样子：
 
            8
           / \
@@ -367,47 +346,46 @@ val myTree = Node (Leaf 9, 8, Node (Leaf 3, 5, Leaf 7))
    leaf -> 3   7 <- leaf
  *)
 
-(* This function counts the sum of all the elements in a tree *)
+(* 这个函数计算所有节点值的和。 *)
 fun count (Leaf n) = n
   | count (Node (leftTree, n, rightTree)) = count leftTree + n + count rightTree
 
 val myTreeCount = count myTree  (* myTreeCount is now bound to 32 *)
 
 
-(* Exceptions! *)
-(* Exceptions can be raised/thrown using the reserved word 'raise' *)
+(* 异常！ *)
+(* 使用关键字 'raise' 来抛出异常： *)
 fun calculate_interest(n) = if n < 0.0
                             then raise Domain
                             else n * 1.04
 
-(* Exceptions can be caught using "handle" *)
+(* 使用 "handle" 关键字来处理异常 *)
 val balance = calculate_interest ~180.0
-              handle Domain => ~180.0    (* x now has the value ~180.0 *)
+              handle Domain => ~180.0    (* x 现在的值是 ~180.0 *)
 
-(* Some exceptions carry extra information with them *)
-(* Here are some examples of built-in exceptions *)
-fun failing_function []    = raise Empty  (* used for empty lists *)
+(* 某些异常还包含额外信息 *)
+(* 一些内建异常的例子： *)
+fun failing_function []    = raise Empty  (* 空列表异常 *)
   | failing_function [x]   = raise Fail "This list is too short!"
-  | failing_function [x,y] = raise Overflow  (* used for arithmetic *)
+  | failing_function [x,y] = raise Overflow  (* 用作计算 *)
   | failing_function xs    = raise Fail "This list is too long!"
 
-(* We can pattern match in 'handle' to make sure
-   a specfic exception was raised, or grab the message *)
+(* 使用 'handle' 时也可以使用模式匹配来保证异常都被处理。 *)
 val err_msg = failing_function [1,2] handle Fail _ => "Fail was raised"
                                           | Domain => "Domain was raised"
                                           | Empty  => "Empty was raised"
                                           | _      => "Unknown exception"
 
-(* err_msg now has the value "Unknown exception" because Overflow isn't
-   listed as one of the patterns -- thus, the catch-all pattern _ is used. *)
+(* err_msg 的值会是 "Unknown exception" 
+   因为 Overflow 没有在模式中列出，因此匹配到了通配符_。 *)
 
-(* We can define our own exceptions like this *)
+(* 我们也可以定义自己的异常 *)
 exception MyException
 exception MyExceptionWithMessage of string
 exception SyntaxError of string * (int * int)
 
-(* File I/O! *)
-(* Write a nice poem to a file *)
+(* 文件读写！ *)
+(* 把一首诗写进文件： *)
 fun writePoem(filename) =
     let val file = TextIO.openOut(filename)
         val _ = TextIO.output(file, "Roses are red,\nViolets are blue.\n")
@@ -415,7 +393,7 @@ fun writePoem(filename) =
     in TextIO.closeOut(file)
     end
 
-(* Read a nice poem from a file into a list of strings *)
+(* 把一首诗读进一个字符串列表： *)
 fun readPoem(filename) =
     let val file = TextIO.openIn filename
         val poem = TextIO.inputAll file
@@ -429,32 +407,32 @@ val test_poem = readPoem "roses.txt"  (* gives [ "Roses are red,",
                                                  "I have a gun.",
                                                  "Get in the van." ] *)
 
-(* We can create references to data which can be updated *)
-val counter = ref 0 (* Produce a reference with the ref function *)
+(* 我们还可以创建指向值的引用，引用可以被更新。 *)
+val counter = ref 0 (* 使用 ref 函数创建一个引用。 *)
 
-(* Assign to a reference with the assignment operator *)
+(* 使用赋值运算符给引用复制 *)
 fun set_five reference = reference := 5
 
-(* Read a reference with the dereference operator *)
+(* 使用解引用运算符得到引用的值 *)
 fun equals_five reference = !reference = 5
 
-(* We can use while loops for when recursion is messy *)
+(* 递归很复杂的时候，也可以使用 while 循环 *)
 fun decrement_to_zero r = if !r < 0
                           then r := 0
                           else while !r >= 0 do r := !r - 1
 
-(* This returns the unit value (in practical terms, nothing, a 0-tuple) *)
+(* 这将会返回 unit （也就是什么都没有，一个0元素的元组） *)
 
-(* To allow returning a value, we can use the semicolon to sequence evaluations *)
+(* 要返回值，可以使用分号来分开表达式。 *)
 fun decrement_ret x y = (x := !x - 1; y)
 ```
 
-## Further learning
+## 阅读更多
 
-* Install an interactive compiler (REPL), for example
+* 安装交互式编译器 (REPL)，如：
   [Poly/ML](http://www.polyml.org/),
   [Moscow ML](http://mosml.org),
   [SML/NJ](http://smlnj.org/).
-* Follow the Coursera course [Programming Languages](https://www.coursera.org/course/proglang).
-* Get the book *ML for the Working Programmer* by Larry C. Paulson.
-* Use [StackOverflow's sml tag](http://stackoverflow.com/questions/tagged/sml).
+* 上Coursera上的课程 [Programming Languages](https://www.coursera.org/course/proglang).
+* 购买 Larry C. Paulson 写的 *ML for the Working Programmer* 书。
+* 使用 [StackOverflow's sml 标签](http://stackoverflow.com/questions/tagged/sml).
