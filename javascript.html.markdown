@@ -481,7 +481,7 @@ for (var x in myObj){
 }
 ///prints:
 // Hello world!
-// 42
+// 43
 // [Function: myFunc]
 
 // To only consider properties attached to the object itself
