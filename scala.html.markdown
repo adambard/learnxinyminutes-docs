@@ -25,7 +25,7 @@ Scala - the scalable language
 /*
   Try the REPL
 
-  Scala has a tool called the REPL (Read-Eval-Print Loop) that is anologus to
+  Scala has a tool called the REPL (Read-Eval-Print Loop) that is analogous to
   commandline interpreters in many other languages. You may type any Scala
   expression, and the result will be evaluated and printed.  
 
