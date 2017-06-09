@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: git
+tool: ansible
 contributors:
     - ["Jakub Muszynski" , "http://github.com/sirkubax"]
 filename: LearnAnsible.txt
