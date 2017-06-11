@@ -380,7 +380,7 @@ class LearnHaxe3{
         // The "_" case above is a "wildcard" value
         // that will match anything.
 
-        trace("My dog's name is" + my_dog_name
+        trace("My dog's name is " + my_dog_name
                 + ", and his favorite thing is a: "
                 + favorite_thing);
 
@@ -406,7 +406,7 @@ class LearnHaxe3{
             default     : "some unknown treat";
         }
 
-        trace("My dog's name is" + my_dog_name
+        trace("My dog's name is " + my_dog_name
                 + ", and his other favorite thing is a: "
                 + other_favorite_thing);
 
