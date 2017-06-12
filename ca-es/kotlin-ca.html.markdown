@@ -109,7 +109,7 @@ fun helloWorld(val name : String) {
         println("S'han rebut ${names.size} arguments")
     }
     varargExample() // => S'han rebut 0 elements
-    varargExample(1) // => S'han rebut 1 elements
+    varargExample(1) // => S'ha rebut 1 element
     varargExample(1, 2, 3) // => S'han rebut 3 elements
 
     /*
