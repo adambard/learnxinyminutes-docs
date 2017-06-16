@@ -342,7 +342,7 @@ switch ($x) {
 $i = 0;
 while ($i < 5) {
     echo $i++;
-}; // Prints "01234"
+} // Prints "01234"
 
 echo "\n";
 
