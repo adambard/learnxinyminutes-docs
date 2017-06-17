@@ -16,7 +16,7 @@ translators:
     - ['Mathieu Gemard', 'https://github.com/mgemard']
 lang: fr-fr
 ---
-Ce tutoriel est en cours de traduction (environ 35% de traduit au 16 Juin 2017).
+Ce tutoriel est en cours de traduction (environ 55% de traduit au 18 Juin 2017).
 
 Java est un langage orienté objet, concurrent et très facilement portable. Java
 est inspiré du C++ mais ne reprend pas tout les concepts comme par exemple les
@@ -207,7 +207,7 @@ public class JavaFr {
         // (BigInteger) et un entier de 32 bits représantant la position de la
         // virgule.
         //
-        // BigDecimal donne aux développeurs un contrôle totale pour l'arrondie
+        // BigDecimal donne aux développeurs un contrôle total pour l'arrondie
         // à la décimale. Il est recommandé de l'utiliser pour les valeurs
         // monétaires et pour les cas où la value exacte de l'arondie à la
         // décimale est requis.
@@ -221,7 +221,7 @@ public class JavaFr {
         // Sachez que la création d'un BigDecimal avec un float ou
         // un double prendra en compte l'inexactitude des représention en float
         // ou double.
-        // Préférez String pour une représention excate.
+        // Préférez String pour une représention exacte.
         BigDecimal tenCents = new BigDecimal("0.1");
 
         // String - Chaîne de caractères
@@ -321,63 +321,66 @@ public class JavaFr {
         //           en utilisant un comparateur fournit à la création.
 
         ///////////////////////////////////////
-        // Operators
+        // Opérateurs
         ///////////////////////////////////////
         System.out.println("\n->Operators");
 
-        int i1 = 1, i2 = 2; // Shorthand for multiple declarations
+        int i1 = 1, i2 = 2; // Raccourcis pour des déclarations multiples
 
-        // Arithmetic is straightforward
+        // L'arithmétique
         System.out.println("1+2 = " + (i1 + i2)); // => 3
         System.out.println("2-1 = " + (i2 - i1)); // => 1
         System.out.println("2*1 = " + (i2 * i1)); // => 2
         System.out.println("1/2 = " + (i1 / i2)); // => 0 (int/int returns int)
         System.out.println("1/2 = " + (i1 / (double)i2)); // => 0.5
 
-        // Modulo
+        // Le modulo
         System.out.println("11%3 = "+(11 % 3)); // => 2
 
-        // Comparison operators
-        System.out.println("3 == 2? " + (3 == 2)); // => false
-        System.out.println("3 != 2? " + (3 != 2)); // => true
-        System.out.println("3 > 2? " + (3 > 2)); // => true
-        System.out.println("3 < 2? " + (3 < 2)); // => false
-        System.out.println("2 <= 2? " + (2 <= 2)); // => true
-        System.out.println("2 >= 2? " + (2 >= 2)); // => true
+        // Opérateurs de comparaison
+        System.out.println("3 == 2? " + (3 == 2)); // => faux
+        System.out.println("3 != 2? " + (3 != 2)); // => vrai
+        System.out.println("3 > 2? " + (3 > 2)); // => vrai
+        System.out.println("3 < 2? " + (3 < 2)); // => faux
+        System.out.println("2 <= 2? " + (2 <= 2)); // => vrai
+        System.out.println("2 >= 2? " + (2 >= 2)); // => vrai
 
-        // Boolean operators
+        // Opérateurs boolean
         System.out.println("3 > 2 && 2 > 3? " + ((3 > 2) && (2 > 3))); // => false
         System.out.println("3 > 2 || 2 > 3? " + ((3 > 2) || (2 > 3))); // => true
         System.out.println("!(3 == 2)? " + (!(3 == 2))); // => true
 
-        // Bitwise operators!
+        // Opérateurs sur les bits
         /*
-        ~      Unary bitwise complement
-        <<     Signed left shift
-        >>     Signed/Arithmetic right shift
-        >>>    Unsigned/Logical right shift
-        &      Bitwise AND
-        ^      Bitwise exclusive OR
-        |      Bitwise inclusive OR
+        ~      Complément à un
+        <<     Décalage des bits vers la gauche
+        >>     Décalage des bits vers la droite, le signe est conservé
+        >>>    Décalage des bits vers la droite, zéro est utilisé pour les bits
+               les plus à gauche
+        &      Opérateur ET
+        ^      Opérateur OU exlusif
+        |      Opérateur OU inclusif
         */
 
-        // Increment operators
+        // Opérateurs d'incrémentation
         int i = 0;
         System.out.println("\n->Inc/Dec-rementation");
-        // The ++ and -- operators increment and decrement by 1 respectively.
-        // If they are placed before the variable, they increment then return;
-        // after the variable they return then increment.
-        System.out.println(i++); // i = 1, prints 0 (post-increment)
-        System.out.println(++i); // i = 2, prints 2 (pre-increment)
-        System.out.println(i--); // i = 1, prints 2 (post-decrement)
-        System.out.println(--i); // i = 0, prints 0 (pre-decrement)
+        // Les opérateurs ++ et -- incrémentent et décrémentent de 1
+        // respectivement.
+        // S'ils sont placés avant la variable, ils incrémentent la varible puis
+        // retourne la valeur. Placés après la varible, ils retourne la variable
+        // puis l'incrémentent
+        System.out.println(i++); // i = 1, affiche 0 (pré-incrément)
+        System.out.println(++i); // i = 2, affiche 2 (post-incrément)
+        System.out.println(i--); // i = 1, affiche 2 (post-incrément)
+        System.out.println(--i); // i = 0, affiche 0 (pré-incrément)
 
         ///////////////////////////////////////
-        // Control Structures
+        // Structures de contôles
         ///////////////////////////////////////
         System.out.println("\n->Control Structures");
 
-        // If statements are c-like
+        // Les instructions conditionnelle sont identiques aux langage C
         int j = 10;
         if (j == 10) {
             System.out.println("I get printed");
@@ -387,62 +390,63 @@ public class JavaFr {
             System.out.println("I also don't");
         }
 
-        // While loop
+        // Bouble while
         int fooWhile = 0;
         while(fooWhile < 100) {
             System.out.println(fooWhile);
-            // Increment the counter
-            // Iterated 100 times, fooWhile 0,1,2...99
+            // Incrémente le compteur
+            // Itéré 100 fois, fooWhile 0,1,2...99
             fooWhile++;
         }
         System.out.println("fooWhile Value: " + fooWhile);
 
-        // Do While Loop
+        // Boucle do-while
         int fooDoWhile = 0;
         do {
             System.out.println(fooDoWhile);
-            // Increment the counter
-            // Iterated 99 times, fooDoWhile 0->99
+            // Incrémente le compteur
+            // Itéré 99 fois, fooDoWhile 0->99
             fooDoWhile++;
         } while(fooDoWhile < 100);
         System.out.println("fooDoWhile Value: " + fooDoWhile);
 
-        // For Loop
-        // for loop structure => for(<start_statement>; <conditional>; <step>)
+        // Boucle for
+        // De la forme for(<start_statement>; <conditional>; <step>)
         for (int fooFor = 0; fooFor < 10; fooFor++) {
             System.out.println(fooFor);
-            // Iterated 10 times, fooFor 0->9
+            // Itéré 10 fois, fooFor 0->9
         }
         System.out.println("fooFor Value: " + fooFor);
 
-        // Nested For Loop Exit with Label
+        // Fin d'une boucle for avec un label
         outer:
         for (int i = 0; i < 10; i++) {
           for (int j = 0; j < 10; j++) {
             if (i == 5 && j ==5) {
               break outer;
-              // breaks out of outer loop instead of only the inner one
+              // termine l'itération de la boucle englobante avec le label outer
             }
           }
         }
 
-        // For Each Loop
-        // The for loop is also able to iterate over arrays as well as objects
-        // that implement the Iterable interface.
+        // Boucle for-each
+        // La boucle for est également capable d'itérer aussi bien sur un
+        // tableau que sur des objets qui implémentent l'interface Iterable.
         int[] fooList = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        // for each loop structure => for (<object> : <iterable>)
-        // reads as: for each element in the iterable
-        // note: the object type must match the element type of the iterable.
+        // De la forme: for (<object> : <iterable>)
+        // Lu comme: "Pour chaque élément du tableau"
+        // note: le type doit correspondre à celui de l'objet itérable
         for (int bar : fooList) {
             System.out.println(bar);
-            //Iterates 9 times and prints 1-9 on new lines
+            //Itère 9 fois et affiche les chiffres de 1 à 9
         }
 
-        // Switch Case
-        // A switch works with the byte, short, char, and int data types.
-        // It also works with enumerated types (discussed in Enum Types), the
-        // String class, and a few special classes that wrap primitive types:
-        // Character, Byte, Short, and Integer.
+        // Le switch-case
+        // Un switch fonctionne avec les données de type byte, short, char et
+        // int.
+        // On peut également utiliser le type Enum, la classe String et les
+        // classes spéciales qui englobent les types primitifs (Character, Byte,
+        // Short et Integer).
         int month = 3;
         String monthString;
         switch (month) {
@@ -457,7 +461,7 @@ public class JavaFr {
         }
         System.out.println("Switch Case Result: " + monthString);
 
-        // Starting in Java 7 and above, switching Strings works like this:
+        // Java 7 introduit une nouvelle syntax:
         String myAnswer = "maybe";
         switch(myAnswer) {
             case "yes":
@@ -475,58 +479,61 @@ public class JavaFr {
         }
 
 
-        // Try-with-resources (Java 7+)
-        // Try-catch-finally statements work as expected in Java but in Java 7+
-        // the try-with-resources statement is also available. Try-with-resources
-        // simplifies try-catch-finally statements by closing resources
-        // automatically.
+        // try-with-resources (Java 7+)
+        // Le mécanisme de gestion des erreurs try-catch-finally peut être
+        // utilisé mais depuis Java 7 il est également possible d'utiliser
+        // try-with-ressources.
+        // try-with-resources simplifie try-catch-finally en fermant
+        // automatiquement les ressources
 
-        // In order to use a try-with-resources, include a an instance of a class
-        // in the try statement. The class must implement java.lang.AutoCloseable.
+        // Pour utiliser un try-with-resources, il suffit d'inclure l'instance
+        // d'une classe qui implémente l'interface java.lang.AutoCloseable
         try(BufferedReader br = new BufferedReader(new FileReader("foo.txt"))) {
-            // You can attempt to do something that could throw an exception.
+            // Ici, vous pouvez essayer de faire quelque chose qui lance une
+            // exception.
             System.out.println(br.readLine());
-            // In Java 7, the resource will always be closed, even if it throws
-            // an Exception.
+            // Avec Java 7, la ressource sera toujours fermé, même si elle lance
+            // une exception.
         } catch (Exception ex) {
-            //The resource will be closed before the catch statement executes.
+            // La ressource sera fermé avant que le catch s'exécute.
             System.out.println("readLine() failed.");
         }
-        // No need for a finally statement in this case, the BufferedReader is
-        // already closed. This can be used to avoid certain edge cases where
-        // a finally statement might not be called.
-        // To learn more:
+        // Il n'y a pas besoin de finally dans ce cas, l'objet BufferedReader
+        // sera déjà fermé. Cela peut être utile dans certain cas spécifique
+        // où le code contenue dans finally ne serait pas exécuté.
+        // Consulter la documention Oracle pour en savoir plus (en anglais):
         // https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
 
 
-        // Conditional Shorthand
-        // You can use the '?' operator for quick assignments or logic forks.
-        // Reads as "If (statement) is true, use <first value>, otherwise, use
-        // <second value>"
+        // Expression ternaire
+        // Vous pouvez utiliser l'opérateur ternaire '?' pour faire un
+        // assignement rapide avec une condition logique.
+        // Il faut lire "Si la (condition) est vraie alors utiliser la
+        // <première valeur> sinon utilisez la <deuxième valeur>".
         int foo = 5;
         String bar = (foo < 10) ? "A" : "B";
-        System.out.println(bar); // Prints A, because the statement is true
+        System.out.println(bar); // Affiche A, parce que la condition est vraie
 
         ////////////////////////////////////////
-        // Converting Data Types And Typecasting
+        // Conversion de type
         ////////////////////////////////////////
 
-        // Converting data
+        // Autoboxing
 
-        // Convert String To Integer
-        Integer.parseInt("123");//returns an integer version of "123"
+        // Convertir un objet String en un objet Integer
+        Integer.parseInt("123"); // retourne un le type primitif int de 123
 
         // Convert Integer To String
-        Integer.toString(123);//returns a string version of 123
+        Integer.toString(123); // retourne un object String correspondant à"123"
 
-        // For other conversions check out the following classes:
+        // Pour les autres conversions, référer vous aux classes suivantes:
         // Double
         // Long
         // String
 
-        // Typecasting
-        // You can also cast Java objects, there's a lot of details and deals
-        // with some more intermediate concepts. Feel free to check it out here:
+        // Cast
+        // Vous pouvez aussi caster des objets Java. Vous pouvez consulter la
+        // documentation Oracle pour plus de détails et concepts:
         // https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
 
         ///////////////////////////////////////
