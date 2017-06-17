@@ -454,7 +454,7 @@ public class LearnJava {
         // simplifies try-catch-finally statements by closing resources
         // automatically.
         
-        // In order to use a try-with-resources, include a an instance of a class
+        // In order to use a try-with-resources, include an instance of a class
         // in the try statement. The class must implement java.lang.AutoCloseable.
         try(BufferedReader br = new BufferedReader(new FileReader("foo.txt"))) {
             // You can attempt to do something that could throw an exception.
