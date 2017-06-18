@@ -16,8 +16,6 @@ translators:
     - ['Mathieu Gemard', 'https://github.com/mgemard']
 lang: fr-fr
 ---
-Ce tutoriel est en cours de traduction (environ 55% de traduit au 18 Juin 2017).
-
 Java est un langage orienté objet, concurrent et très facilement portable. Java
 est inspiré du C++ mais ne reprend pas tout les concepts comme par exemple les
 pointeurs et en ajoute de nouveaux comme les interfaces.
@@ -54,7 +52,7 @@ le fichier.
 public class JavaFr {
 
     // Pour exécuter un programme Java, celui-ci doit posséder une méthode main
-    // qui fournir un point d'entré.
+    // qui fournir un point d'entrée.
     public static void main (String[] args) {
 
     ///////////////////////////////////////
@@ -537,26 +535,27 @@ public class JavaFr {
         // https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
 
         ///////////////////////////////////////
-        // Classes And Functions
+        // Classes et fonctions
         ///////////////////////////////////////
 
         System.out.println("\n->Classes & Functions");
 
-        // (definition of the Bicycle class follows)
+        // (voir plus loin pour la définition de la classe Bicycle)
 
-        // Use new to instantiate a class
+        // Utilisez new pour instancier une classe
         Bicycle trek = new Bicycle();
 
-        // Call object methods
-        trek.speedUp(3); // You should always use setter and getter methods
+        // Pour appeler une méthode de l'objet
+        trek.speedUp(3); // !! Il est conseiller de passer par une méthode pour
+        // changer la valeur d'une variable.
         trek.setCadence(100);
 
-        // toString returns this Object's string representation.
+        // toString retourne une représention de l'objet en chaîne de caractère.
         System.out.println("trek info: " + trek.toString());
 
-        // Double Brace Initialization
-        // The Java Language has no syntax for how to create static Collections
-        // in an easy way. Usually you end up in the following way:
+        // Initialisation avec double semi-colonnes
+        // Le langage Java ne permet pas de créer des collection statique d'une
+        // manière simple. Généralement, on utilise la forme suivante:
         private static final Set<String> COUNTRIES = new HashSet<String>();
         static {
            COUNTRIES.add("DENMARK");
@@ -564,62 +563,64 @@ public class JavaFr {
            COUNTRIES.add("FINLAND");
         }
 
-        // But there's a nifty way to achieve the same thing in an
-        // easier way, by using something that is called Double Brace
-        // Initialization.
+        // Mais on peut le faire d'une manière plus habile, dite initialisation
+        // avec double semi-colonnes
         private static final Set<String> COUNTRIES = new HashSet<String>() {{
             add("DENMARK");
             add("SWEDEN");
             add("FINLAND");
         }}
 
-        // The first brace is creating a new AnonymousInnerClass and the
-        // second one declares an instance initializer block. This block
-        // is called when the anonymous inner class is created.
-        // This does not only work for Collections, it works for all
-        // non-final classes.
+        // La première semi-colonne crée une classe anonyme et la deuxième est
+        // un bloc d'initialisation du bloc. Ce dernier est appelé lorsque Copyright (c)
+        // classe anonyme est crée. Cela ne fonctionne pas uniquement pour les
+        // collections mais également pour toutes les classes n'étant pas
+        // déclarées comme final.
 
-    } // End main method
-} // End LearnJava class
+    } // Fin de la méthode main
+} // Fin de la class JavaFr
 
-// You can include other, non-public outer-level classes in a .java file,
-// but it is not good practice. Instead split classes into separate files.
+// Vous pouvez inclure des classes qui ne sont pas publics dans un fichier Java.
+// Cependant, il est préférable de séparer les
+// classes dans des fichiers différents.
 
-// Class Declaration Syntax:
-// <public/private/protected> class <class name> {
-//    // data fields, constructors, functions all inside.
-//    // functions are called as methods in Java.
+// Syntaxe de déclaration des classes:
+// <public/private/protected> class <Nom de la classe> {
+//    // Les attributs, les constructeurs et les méthodes de la classe vont ici.
+//    // Les functions de classes sont appelées méthode.
 // }
 
 class Bicycle {
 
-    // Bicycle's Fields/Variables
-    public int cadence; // Public: Can be accessed from anywhere
-    private int speed;  // Private: Only accessible from within the class
-    protected int gear; // Protected: Accessible from the class and subclasses
-    String name; // default: Only accessible from within this package
-    static String className; // Static class variable
+    // Attributs et variables de la classe Bicycle
+    public int cadence; // Public: Peut être accesible depuis n'importe où
+    private int speed;  // Private: Accisible depuis la classe
+    protected int gear; // Protected: Accisible depuis la classe et ses sous-
+                        // classes
+    String name; // default: Uniquement accesible depuis ce package
+    static String className; // Variable de classe static
 
-    // Static block
-    // Java has no implementation of static constructors, but
-    // has a static block that can be used to initialize class variables
-    // (static variables).
-    // This block will be called when the class is loaded.
+    // Bloc static
+    // Java n'a pas d'implémentation pour les constructeurs statiques mais
+    // possède le bloc static qui peut être utilisé pour initialiser les
+    // variables de classe.
+    // Ce bloc sera appelé lorsque la classe sera chargée.
     static {
         className = "Bicycle";
     }
 
-    // Constructors are a way of creating classes
-    // This is a constructor
+    // Les constructeurs sont un moyen de créer les classe
+    // Ceci est le constructeur de la classe Bicycle
     public Bicycle() {
-        // You can also call another constructor:
+        // Vous pouvez aussie appeler un autre constructeur. Par exemple en
+        // appelant le constructeur de la classe mère (voir héritage):
         // this(1, 50, 5, "Bontrager");
         gear = 1;
         cadence = 50;
         speed = 5;
         name = "Bontrager";
     }
-    // This is a constructor that takes arguments
+    // Le constructeur peut prendre plusieurs arguments
     public Bicycle(int startCadence, int startSpeed, int startGear,
         String name) {
         this.gear = startGear;
@@ -628,18 +629,18 @@ class Bicycle {
         this.name = name;
     }
 
-    // Method Syntax:
-    // <public/private/protected> <return type> <function name>(<args>)
+    // Syntaxe d'une méthode:
+    // <public/private/protected> <type de retour> <nom de la fonction>(
+    // <arguments>)
 
-    // Java classes often implement getters and setters for their fields
+    // Les classes Java possèdent souvent des accesseurs (getters) et mutateurs
+    // (setters) pour leurs attributs.
 
-    // Method declaration syntax:
-    // <access modifier> <return type> <method name>(<args>)
     public int getCadence() {
         return cadence;
     }
 
-    // void methods require no return statement
+    // Les méthodes void ne retourne aucune valeur
     public void setCadence(int newValue) {
         cadence = newValue;
     }
@@ -659,26 +660,28 @@ class Bicycle {
         return name;
     }
 
-    //Method to display the attribute values of this Object.
-    @Override // Inherited from the Object class.
+    // Méthode pour afficher la valeur des attributs de l'objet.
+    @Override // Hérité de la class Objet. C'est une annotation (voir plus loin)
     public String toString() {
         return "gear: " + gear + " cadence: " + cadence + " speed: " + speed +
             " name: " + name;
     }
-} // end class Bicycle
+} // Fin de la classe Bicycle
 
-// PennyFarthing is a subclass of Bicycle
+// PennyFarthing est une sous-classe de Bicycle
 class PennyFarthing extends Bicycle {
-    // (Penny Farthings are those bicycles with the big front wheel.
-    // They have no gears.)
+    // (Penny Farthings sont des bicyclette avec une grande roue avant.
+    // Il n'y a pas de roue libre, le cycliste est obligé de pédaler en
+    // permanence .)
 
     public PennyFarthing(int startCadence, int startSpeed) {
-        // Call the parent constructor with super
+        // Appelez le constructeur parent avec la méthode super()
         super(startCadence, startSpeed, 0, "PennyFarthing");
     }
 
-    // You should mark a method you're overriding with an @annotation.
-    // To learn more about what annotations are and their purpose check this
+    // Ici nous modifions la méthode setGear() de la classe mère. Il faut donc
+    // utiliser l'annotation @Overide. Pour en savoir plus sur les annotations,
+    // consulter la documention officiel (en anglais) :
     // out: http://docs.oracle.com/javase/tutorial/java/annotations/
     @Override
     public void setGear(int gear) {
@@ -687,27 +690,30 @@ class PennyFarthing extends Bicycle {
 }
 
 // Interfaces
-// Interface declaration syntax
-// <access-level> interface <interface-name> extends <super-interfaces> {
-//     // Constants
-//     // Method declarations
+// Syntaxe de déclaration des interfaces
+// <niveau d'accès> interface <nom de l'interface> extends <nom de l'interface
+// mère> {
+//     // Constantes
+//     // Délaration des méthodes
 // }
 
-// Example - Food:
+// Exemple - Toute nouriture peut être manger et digégé différamment
+// L'interface Edible (traduction: comestible) décrit l'action de manger
 public interface Edible {
-    public void eat(); // Any class that implements this interface, must
-                       // implement this method.
+    public void eat(); // Toute classe qui implémente cette interface doit
+                       // implémenter cette méthode
 }
 
+// L'interface Digestible décrit l'action de digérer
 public interface Digestible {
     public void digest();
-    // In Java 8, interfaces can have default method.
+    // Depuis Java 8, les interfaces peuvent avoir des méthodes par défaut.
     // public void digest() {
     //     System.out.println("digesting ...");
     // }
 }
 
-// We can now create a class that implements both of these interfaces.
+// On peut maintenant créer une classe qui implémente chacune de ces interfaces.
 public class Fruit implements Edible, Digestible {
     @Override
     public void eat() {
@@ -720,8 +726,8 @@ public class Fruit implements Edible, Digestible {
     }
 }
 
-// In Java, you can extend only one class, but you can implement many
-// interfaces. For example:
+// En Java, on peut uniquement hériter d'une classe mais on peut implémenter
+// plusieurs interfaces:
 public class ExampleClass extends ExampleClassParent implements InterfaceOne,
     InterfaceTwo {
     @Override
@@ -734,36 +740,40 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 
 }
 
-// Abstract Classes
+// Classes abstraites
 
-// Abstract Class declaration syntax
-// <access-level> abstract <abstract-class-name> extends <super-abstract-classes> {
-//     // Constants and variables
-//     // Method declarations
+// Syntaxe de déclaration:
+// <niveau d'accès> abstract <nom de la classe abstraite> extends <nom de la
+//   classe mère abstraite> {
+//     // Constantes et variables
+//     // Méthode déclarations
 // }
 
-// Marking a class as abstract means that it contains abstract methods that
-// must be defined in a child class. Similar to interfaces, abstract classes
-// cannot be instantiated, but instead must be extended and the abstract
-// methods defined. Different from interfaces, abstract classes can contain a
-// mixture of concrete and abstract methods. Methods in an interface cannot
-// have a body, unless the method is static, and variables are final by default,
-// unlike an abstract class. Also abstract classes CAN have the "main" method.
+// Une classe abstraite contient une méthode abstraite qui doit être défine dans
+// la classe fille. Comme les interfaces, les classes abstraites ne peuvent pas
+// être instanciées mais doit être étendues avec la méthode abstraite
+// implémenté.
+// A la différence des interfaces, une classe abstraite peut contenir des
+// méthodes abstraites ou non-abstraites. Les méthodes dans une interfaces ne
+// peuvent pas être implémentées à l'exception des méthodes static. Les
+// variables d'une classe abstraite sont déclarées comme final par défaut à
+// l'opposé des interfaces. Finalement les classes abstraites peuvent avoir une
+// méthode main.
 public abstract class Animal
 {
     public abstract void makeSound();
 
-    // Method can have a body
+    // Les méthodes peuvent avoir une implémentation dans une classe abstraite.
     public void eat()
     {
         System.out.println("I am an animal and I am Eating.");
-        // Note: We can access private variable here.
+        // Note: On peut accéder à une variable privée ici.
         age = 30;
     }
 
-    // No need to initialize, however in an interface
-    // a variable is implicitly final and hence has
-    // to be initialized.
+    // On n'a pas besoin d'initialiser les variables dans les classe abstraites.
+    // Cependant, dans une interfaces, les variables sont implicitement
+    // déclarées comme final et doivent donc être initialisées.
     private int age;
 
     public void printAge()
@@ -771,7 +781,7 @@ public abstract class Animal
         System.out.println(age);  
     }
 
-    // Abstract classes can have main function.
+    // Les classes abstraites peuvent avoir une fonction main.
     public static void main(String[] args)
     {
         System.out.println("I am abstract");
@@ -780,20 +790,20 @@ public abstract class Animal
 
 class Dog extends Animal
 {
-    // Note still have to override the abstract methods in the
-    // abstract class.
+    // On doit également utiliser l'annotation @Override lors de la surchage de
+    // la méthode abstraite d'une classe abstraite.
     @Override
     public void makeSound()
     {
         System.out.println("Bark");
-        // age = 30;    ==> ERROR!    age is private to Animal
+        // age = 30;    ==> ERREUR!    age est privé et n'est pas accesible.
     }
 
-    // NOTE: You will get an error if you used the
-    // @Override annotation here, since java doesn't allow
-    // overriding of static methods.
-    // What is happening here is called METHOD HIDING.
-    // Check out this SO post: http://stackoverflow.com/questions/16313649/
+    // NOTE: Vous obtiendrez une erreur si vous utilisé l'annotation @Override
+    // ici car Java n'autorise pas la surcharge de méthodes statiques. Ce qui ce
+    // passe est appelé "method hiding". Si vous voulez en savoir plus,
+    // consultez cette discussion (en anglais) :
+    // http://stackoverflow.com/questions/16313649/
     public static void main(String[] args)
     {
         Dog pluto = new Dog();
@@ -803,22 +813,20 @@ class Dog extends Animal
     }
 }
 
-// Final Classes
+// Classes final
 
-// Final Class declaration syntax
-// <access-level> final <final-class-name> {
-//     // Constants and variables
-//     // Method declarations
+// Sintaxe de déclaration
+// <niveau d'accès> final <nom de la classe final> {
+//     // Constantes et variables
+//     // Méthodes déclarations
 // }
 
-// Final classes are classes that cannot be inherited from and are therefore a
-// final child. In a way, final classes are the opposite of abstract classes
-// because abstract classes must be extended, but final classes cannot be
-// extended.
+// Les classe déclarées comme final ne peuvent pas avoir d'héritiers. Elles
+// peuvent être considérées comme l'opposé des classes abstraites.
 public final class SaberToothedCat extends Animal
 {
-    // Note still have to override the abstract methods in the
-    // abstract class.
+    // On doit également utiliser l'annotation @Override lors de la surchage de
+    // la méthode abstraite d'une classe abstraite.
     @Override
     public void makeSound()
     {
@@ -826,36 +834,36 @@ public final class SaberToothedCat extends Animal
     }
 }
 
-// Final Methods
+// Méthodes final
 public abstract class Mammal()
 {
-    // Final Method Syntax:
-    // <access modifier> final <return type> <function name>(<args>)
+    // Syntaxe:
+    // <niveau d'accès> final <type de retour> <nom de la fonction>(<arguments>)
 
-    // Final methods, like, final classes cannot be overridden by a child
-    // class, and are therefore the final implementation of the method.
+    // Les méthodes déclarées comme final ne peuvent pas être surchargées par
+    // une classe fille et en sont donc l'implémentation finale.
     public final boolean isWarmBlooded()
     {
         return true;
     }
 }
 
-// Enum Type
+// Enumérations
 //
-// An enum type is a special data type that enables for a variable to be a set
-// of predefined constants. The variable must be equal to one of the values
-// that have been predefined for it. Because they are constants, the names of
-// an enum type's fields are in uppercase letters. In the Java programming
-// language, you define an enum type by using the enum keyword. For example,
-// you would specify a days-of-the-week enum type as:
+// Le type enum est un type de donnée spécial qui permet à une variable de ne
+// prendre que certaines valeurs prédéfinies. La variable doit être égales à une
+// des valeurs pédéfinies pour celle-ci. En Java, les variables constantes sont
+// notées en majuscules.
+// On définie un type enum en utilisant le mot clé enum. Par exemple pour les
+// jours de l'année:
 public enum Day {
     SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
     THURSDAY, FRIDAY, SATURDAY
 }
 
-// We can use our enum Day like that:
+// On l'utilise ainsi:
 public class EnumTest {
-    // Variable Enum
+    // On utilise notre énumération
     Day day;
 
     public EnumTest(Day day) {
@@ -882,23 +890,25 @@ public class EnumTest {
 
     public static void main(String[] args) {
         EnumTest firstDay = new EnumTest(Day.MONDAY);
-        firstDay.tellItLikeItIs(); // => Mondays are bad.
+        firstDay.tellItLikeItIs(); // => affiche "Mondays are bad"
         EnumTest thirdDay = new EnumTest(Day.WEDNESDAY);
-        thirdDay.tellItLikeItIs(); // => Midweek days are so-so.
+        thirdDay.tellItLikeItIs(); // => affiche "Midweek days are so-so"
     }
 }
 
-// Enum types are much more powerful than we show above.
-// The enum body can include methods and other fields.
-// You can see more at https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
+// Le type enum permet de faire bien plus que ce qui est montré ici. Il ne se
+// limite pas à une liste de constante mais peut inclure des champs et méthodes.
+// Vous pouvez en savoir plus ici (en anglais):
+//https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
 
 ```
 
-## Further Reading
+## Pour aller plus loin (en anglais)
 
-The links provided here below are just to get an understanding of the topic, feel free to Google and find specific examples.
+Les liens ci-dessous sont données si vous souhaitez approfondir sur le sujet,
+n'hésitez pas à consulter Google pour trouver des exemples spécifiques.
 
-**Official Oracle Guides**:
+**Guides officiels d'Oracle**:
 
 * [Java Tutorial Trail from Sun / Oracle](https://docs.oracle.com/javase/tutorial/index.html)
 
@@ -917,17 +927,17 @@ The links provided here below are just to get an understanding of the topic, fee
 
 * [Java Code Conventions](https://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
 
-* New features in Java 8:
+* Nouvelles fonctionnalités Java 8:
     * [Lambda expressions (functional programming)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
     * [Date and time API (java.time package)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
 
-**Online Practice and Tutorials**
+**Pratiquer en ligne et tutoriels**
 
 * [Learneroo.com - Learn Java](http://www.learneroo.com)
 
 * [Codingbat.com](http://codingbat.com/java)
 
-**Books**:
+**Livres**:
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
 
