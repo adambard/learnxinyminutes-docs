@@ -253,15 +253,19 @@ weirdSum(2, 4) // => 16
 // def that surrounds it.
 // WARNING: Using return in Scala is error-prone and should be avoided.
 // It has no effect on anonymous functions. For example:
-def foo(x: Int): Int = {
-  val anonFunc: Int => Int = { z =>
+def addTenButMaybeTwelve(x: Int): Int = {
+  val anonMaybeAddTwo: Int => Int = { z =>
     if (z > 5)
-      return z // This line makes z the return value of foo!
+      return z // This line makes z the return value of addTenButMaybeTwelve!
     else
       z + 2    // This line is the return value of anonFunc
   }
-  anonFunc(x)  // This line is the return value of foo
+  anonMaybeAddTwo(x) + 10  // This line is the return value of foo
 }
+
+addTenButMaybeTwelve(2) // Returns 14 as expected: 2 <= 5, adds 12
+addTenButMaybeTwelve(7) // Returns 7: 7 > 5, return value set to z, so
+                        // last line doesn't get called and 10 is not added
 
 
 /////////////////////////////////////////////////
