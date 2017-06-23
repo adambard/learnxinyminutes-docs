@@ -276,6 +276,7 @@ r foreach println
 // NB: Scala is quite lenient when it comes to dots and brackets - study the
 // rules separately. This helps write DSLs and APIs that read like English
 
+// Why doesn't `println` need any parameters here? Stay tuned for Functional Programming below!
 (5 to 1 by -1) foreach (println)
 
 // A while loop
@@ -299,7 +300,7 @@ do {
 // Recursion is the idiomatic way of repeating an action in Scala (as in most
 // other functional languages).
 // Recursive functions need an explicit return type, the compiler can't infer it.
-// Here it's Unit.
+// Here it's Unit, which is analagous to a `void` return type in Java
 def showNumbersInRange(a: Int, b: Int): Unit = {
   print(a)
   if (a < b)
@@ -412,8 +413,8 @@ class Dog(br: String) {
   private def sleep(hours: Int) =
     println(s"I'm sleeping for $hours hours")
 
-  // Abstract methods are simply methods with no body. If we uncomment the next
-  // line, class Dog would need to be declared abstract
+  // Abstract methods are simply methods with no body. If we uncomment the
+  // def line below, class Dog would need to be declared abstract like so:
   //   abstract class Dog(...) { ... }
   // def chaseAfter(what: String): String
 }
@@ -455,7 +456,7 @@ george.phoneNumber  // => "1234"
 Person("George", "1234") == Person("Kate", "1236")  // => false
 
 // Easy way to copy
-// otherGeorge == Person("george", "9876")
+// otherGeorge == Person("George", "9876")
 val otherGeorge = george.copy(phoneNumber = "9876")
 
 // And many others. Case classes also get pattern matching for free, see below.
@@ -479,7 +480,9 @@ def matchPerson(person: Person): String = person match {
   case Person(name, number)     => "We matched someone : " + name + ", phone : " + number
 }
 
-val email = "(.*)@(.*)".r  // Define a regex for the next example.
+// Regular expressions are also built in.
+// Create a regex with the `r` method on a string:
+val email = "(.*)@(.*)".r
 
 // Pattern matching might look familiar to the switch statements in the C family
 // of languages, but this is much more powerful. In Scala, you can match much
@@ -545,6 +548,8 @@ List("Dom", "Bob", "Natalia") foreach println
 
 
 // Combinators
+// Using `s` from above:
+// val s = Set(1, 3, 7)
 
 s.map(sq)
 
