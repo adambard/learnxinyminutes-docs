@@ -54,7 +54,7 @@ void main() {
     } while(n > 0);
 
     // For et while sont très utiles, mais en D, on préfère foreach.
-    // Les deux points : '..', créent un intervalle continue de valeurs
+    // Les deux points : '..', créent un intervalle continu de valeurs
     // incluant la première mais excluant la dernière.
     foreach(i; 1..1_000_000) {
         if(n % 2 == 0)
@@ -72,7 +72,7 @@ void main() {
 }
 ```
 On peut définir de nouveaux types avec les mots-clés `struct`, `class`,
-`union` et `enum`. Ces types sont passés au fonction par valeur (ils sont copiés)
+`union` et `enum`. Ces types sont passés à la fonction par valeur (ils sont copiés)
 De plus, on peut utiliser les templates pour rendre toutes ces abstractions génériques.
 
 ```c
@@ -88,7 +88,7 @@ struct LinkedList(T) {
 class BinTree(T) {
     T data = null;
 
-    // Si il n'y a qu'un seul paramètre de template,
+    // S'il n'y a qu'un seul paramètre de template,
     // on peut s'abstenir de mettre des parenthèses.
     BinTree!T left;
     BinTree!T right;
@@ -152,7 +152,7 @@ class MyClass(T, U) {
     T _data;
     U _other;
 
-	// Les constructeurs s'apellent toujours 'this'.
+	// Les constructeurs s'appellent toujours 'this'.
     this(T t, U u) {
 		// Ceci va appeller les setters ci-dessous.
         data = t;
@@ -197,8 +197,8 @@ void main() {
     writefln("Later: data = %d, str = %s", mc.data, mc.other);
 }
 ```
-Avec les propriétés, on peut constuire nos setters et nos getters
-comme on le souhaite, tout en gardant un syntaxe très propre,
+Avec les propriétés, on peut construire nos setters et nos getters
+comme on le souhaite, tout en gardant une syntaxe très propre,
 comme si on accédait directement à des membres de la classe.
 
 Les autres fonctionnalités orientées objets à notre disposition
@@ -208,8 +208,8 @@ d'une seule classe et implémenter autant d'interface que voulu.
 
 Nous venons d'explorer les fonctionnalités objet du D, mais changeons
 un peu de domaine. D permet la programmation fonctionelle, avec les fonctions
-de premier ordre, les fonctions `pure` et les données immuables.
-De plus, tout vos algorithmes fonctionelles favoris (map, reduce, filter)
+de premier ordre, les fonctions `pures` et les données immuables.
+De plus, tout vos algorithmes fonctionels favoris (map, reduce, filter)
 sont disponibles dans le module `std.algorithm`.
 
 ```c
@@ -217,11 +217,11 @@ import std.algorithm : map, filter, reduce;
 import std.range : iota; // construit un intervalle excluant la dernière valeur.
 
 void main() {
-	// On veut un algorithm qui affiche la somme de la listes des carrés
+	// On veut un algorithme qui affiche la somme de la liste des carrés
 	// des entiers paires de 1 à 100. Un jeu d'enfant !
 
-	// On se content de passer des expressions lambda en paramètre à des templates.
-	// On peut fournier au template n'importe quelle fonction, mais dans notre
+	// On se contente de passer des expressions lambda en paramètre à des templates.
+	// On peut fournir au template n'importe quelle fonction, mais dans notre
 	// cas, les lambdas sont pratiques.
     auto num = iota(1, 101).filter!(x => x % 2 == 0)
                            .map!(y => y ^^ 2)
@@ -231,15 +231,15 @@ void main() {
 }
 ```
 
-Vous voyez comme on a calculé `num` comme on le ferait en haskell par exemple ?
-C'est grâce à une innvoation de D qu'on appelle "Uniform Function Call Syntax".
-Avec l'UFCS, on peut choisir d'écrire un appelle à une fonction de manière
-classique, ou comme un appelle à une méthode. Walter Brighter a écrit un
+Vous voyez qu'on a calculé `num` comme on le ferait en haskell par exemple ?
+C'est grâce à une innovation de D qu'on appelle "Uniform Function Call Syntax".
+Avec l'UFCS, on peut choisir d'écrire un appel à une fonction de manière
+classique, ou comme un appel à une méthode. Walter Brighter a écrit un
 article en anglais sur l'UFCS [ici.](http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394)
 Pour faire court, on peut appeller une fonction dont le premier paramètre
 est de type A, comme si c'était une méthode de A.
 
-J'aime le parallélisme. Vous aimez les parallélisme ? Bien sur que vous aimez ça
+J'aime le parallélisme. Vous aimez le parallélisme ? Bien sûr que vous aimez ça.
 Voyons comment on le fait en D !
 
 ```c
@@ -248,7 +248,7 @@ import std.parallelism : parallel;
 import std.math : sqrt;
 
 void main() {
-    // On veut calculer la racine carré de tous les nombres
+    // On veut calculer la racine carrée de tous les nombres
     // dans notre tableau, et profiter de tous les coeurs
     // à notre disposition.
     auto arr = new double[1_000_000];
