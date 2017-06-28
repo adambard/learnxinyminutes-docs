@@ -345,6 +345,7 @@ invalid_set = {[1], 1}  # => Raises a TypeError: unhashable type: 'list'
 valid_set = {(1,), 1}
 
 # Add one more item to the set
+filled_set = some_set
 filled_set.add(5)  # filled_set is now {1, 2, 3, 4, 5}
 
 # Do set intersection with &
