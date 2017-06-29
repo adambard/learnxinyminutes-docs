@@ -1,9 +1,9 @@
 ---
-category: tool
-tool: tcsh
+language: tcsh
+filename: LearnTCSH.csh
 contributors:
     - ["Nicholas Christopoulos", "https://github.com/nereusx"]
-filename: LearnTCSH.csh
+lang: en
 ---
 tcsh ("tee-see-shell") is a Unix shell based on and compatible with the C shell (csh).
 It is essentially the C shell with programmable command-line completion, command-line editing,
