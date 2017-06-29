@@ -15,15 +15,11 @@ original csh. In most cases csh is a symbolic link that points to tcsh
 This is because tcsh is backward compatible with csh, and the last
 does not maintained anymore.
 
-[TCSH Home](http://www.tcsh.org/)
-
-[TCSH Wikipedia](https://en.wikipedia.org/wiki/Tcsh)
-
-[TCSH manual page](http://www.tcsh.org/tcsh.html/top.html)
-
-[“An Introduction to the C shell”, William Joy](https://docs.freebsd.org/44doc/usd/04.csh/paper.html)
-
-[TCSH Bug reports and/or feautures requests](https://bugs.gw.com/)
+- [TCSH Home](http://www.tcsh.org/)
+- [TCSH Wikipedia](https://en.wikipedia.org/wiki/Tcsh)
+- [TCSH manual page](http://www.tcsh.org/tcsh.html/top.html)
+- [“An Introduction to the C shell”, William Joy](https://docs.freebsd.org/44doc/usd/04.csh/paper.html)
+- [TCSH Bug reports and/or features requests](https://bugs.gw.com/)
 
 Some more files:
 [tcsh help command (for 132x35 terminal size)](https://github.com/nereusx/dotfiles/blob/master/csh-help),
