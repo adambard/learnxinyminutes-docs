@@ -258,9 +258,9 @@ def addTenButMaybeTwelve(x: Int): Int = {
     if (z > 5)
       return z // This line makes z the return value of addTenButMaybeTwelve!
     else
-      z + 2    // This line is the return value of anonFunc
+      z + 2    // This line is the return value of anonMaybeAddTwo
   }
-  anonMaybeAddTwo(x) + 10  // This line is the return value of foo
+  anonMaybeAddTwo(x) + 10  // This line is the return value of addTenButMaybeTwelve
 }
 
 addTenButMaybeTwelve(2) // Returns 14 as expected: 2 <= 5, adds 12
