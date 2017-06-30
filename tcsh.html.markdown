@@ -10,10 +10,10 @@ It is essentially the C shell with programmable command-line completion, command
 and a few other features.
 It is the native root shell for BSD-based systems such as FreeBSD.
 
-Almost all Linux distros and BSD they use today the tcsh instead of the
-original csh. In most cases csh is a symbolic link that points to tcsh
+Almost all Linux distros and BSD today use tcsh instead of the original csh. In
+most cases csh is a symbolic link that points to tcsh.
 This is because tcsh is backward compatible with csh, and the last
-does not maintained anymore.
+is not maintained anymore.
 
 - [TCSH Home](http://www.tcsh.org/)
 - [TCSH Wikipedia](https://en.wikipedia.org/wiki/Tcsh)
@@ -31,9 +31,9 @@ Some more files:
 # script: http://en.wikipedia.org/wiki/Shebang_(Unix)
 # TCSH emulates the shebang on systems which don't understand it.
 
-# In most cases you'll use `#!/bin/tcsh -f', that is because `-f' option 
-# does not load any resource or start-up files, or perform any command hashing,
-# and thus starts faster.
+# In most cases you'll use `#!/bin/tcsh -f', because `-f' option does not load
+# any resource or start-up files, or perform any command hashing, and thus
+# starts faster.
 
 # --- the echo command --------------------------------------------------------
 # The `echo' writes each word to the shell's standard output, separated by
@@ -44,7 +44,8 @@ Some more files:
 echo $echo_style
 
 # Enable `echo' to support backslashed characters and `-n' option (no new line)
-# This is the default for tcsh, but may your distro change it. Slackware did it
+# This is the default for tcsh, but your distro may change it. Slackware has
+# done so.
 set echo_style = both
 
 # Prints "Hello world"
