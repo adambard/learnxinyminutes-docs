@@ -514,7 +514,7 @@ endif
 
 switch ( $var )
 case *.[1-9]:
-case *.[1-9].tgz:
+case *.[1-9].gz:
 	echo "$var is a man-page."
 	breaksw
 case *gz:
