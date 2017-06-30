@@ -667,6 +667,28 @@ echo "usage: $0 [option]"
 echo "available options on kernel: $opts"
 # --- power-state script --- end ----------------------------------------------
 
+# Guess the secret number game
+# --- secretnum.csh --- begin -------------------------------------------------
+#!/bin/tcsh -f
+set secret=`shuf -i1-100 -n1`
+echo "I have a secret number from 1 up to 100"
+while ( 1 )
+	echo -n "Guess: "
+	set guess = $<
+	if ( $secret == $guess ) then
+		echo "You found it"
+		exit 1
+	else
+		if ( $secret > $guess ) then
+			echo "its greater"
+		else if ( $secret < $guess ) then
+				echo "its lesser"
+			endif
+		endif
+	endif
+end
+# --- secretnum.csh --- end ---------------------------------------------------
+
 # -----------------------------------------------------------------------------
 # Appendices
 
