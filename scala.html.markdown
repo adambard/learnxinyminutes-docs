@@ -569,8 +569,8 @@ List(
 ).filter(_.age > 25) // List(Person("Bob", 30))
 
 
-// Scala a foreach method defined on certain collections that takes a type
-// returning Unit (a void method)
+// Certain collections (such as List) in Scala have a `foreach` method,
+// which takes as an argument a type returning Unit - that is, a void method
 val aListOfNumbers = List(1, 2, 3, 4, 10, 20, 100)
 aListOfNumbers foreach (x => println(x))
 aListOfNumbers foreach println
