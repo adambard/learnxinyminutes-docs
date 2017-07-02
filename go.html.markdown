@@ -295,7 +295,7 @@ type pair struct {
 	x, y int
 }
 
-// Define a method on type pair. Pair now implements Stringer.
+// Define a method on type pair. Pair now implements Stringer because Pair has defined all the methods in the interface.
 func (p pair) String() string { // p is called the "receiver"
 	// Sprintf is another public function in package fmt.
 	// Dot syntax references fields of p.
