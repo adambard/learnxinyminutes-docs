@@ -487,7 +487,8 @@ res2: Boolean = true
 scala> b.bite  
 res3: Boolean = false  
 
-// Traits can also be used as Mixins (Keyword "with")
+// A trait can also be used as Mixin. The class "extends" the first trait,
+// but the keyword "with" can add additional traits.
 
 trait Bark {
 	def bark: String = "Woof"
