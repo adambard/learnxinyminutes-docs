@@ -538,8 +538,9 @@ res2: Boolean = true
 scala> b.beissen  
 res3: Boolean = false  
 
-
-// Traits können auch via Mixins (Schlüsselwort "with") eingebunden werden  
+// Ein Trait kann auch als Mixin eingebunden werden. Die Klasse erbt vom
+// ersten Trait mit dem Schlüsselwort "extends", während weitere Traits
+// mit "with" verwendet werden können.
 
 trait Bellen {
 	def bellen: String = "Woof"
