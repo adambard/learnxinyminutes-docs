@@ -303,7 +303,7 @@ filename: learn-emacs-lisp.el
 
 (hello-to-bonjour)
 
-;; Let's colorize the names:
+;; Let's boldify the names:
 
 (defun boldify-names ()
     (switch-to-buffer-other-window "*test*")
@@ -353,4 +353,5 @@ filename: learn-emacs-lisp.el
 ;; - Alan Schmitt
 ;; - LinXitoW
 ;; - Aaron Meurer
+;; - spacegoing
 ```
