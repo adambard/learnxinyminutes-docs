@@ -99,12 +99,12 @@ can include line breaks.` // Same string type.
 
 	// Arrays have size fixed at compile time.
 	var a4 [4]int           // An array of 4 ints, initialized to all 0.
-	a3 := [...]int{3, 1, 5} // An array initialized with a fixed size of three
-	// elements, with values 3, 1, and 5.
+	a5 := [...]int{3, 1, 5, 10, 100} // An array initialized with a fixed size of fize
+	// elements, with values 3, 1, 5, 10, and 100.
 
 	// Slices have dynamic size. Arrays and slices each have advantages
 	// but use cases for slices are much more common.
-	s3 := []int{4, 5, 9}    // Compare to a3. No ellipsis here.
+	s3 := []int{4, 5, 9}    // Compare to a5. No ellipsis here.
 	s4 := make([]int, 4)    // Allocates slice of 4 ints, initialized to all 0.
 	var d2 [][]float64      // Declaration only, nothing allocated here.
 	bs := []byte("a slice") // Type conversion syntax.
@@ -134,7 +134,7 @@ can include line breaks.` // Same string type.
 
 	// Unused variables are an error in Go.
 	// The underscore lets you "use" a variable but discard its value.
-	_, _, _, _, _, _, _, _, _, _ = str, s2, g, f, u, pi, n, a3, s4, bs
+	_, _, _, _, _, _, _, _, _, _ = str, s2, g, f, u, pi, n, a5, s4, bs
 	// Usually you use it to ignore one of the return values of a function
 	// For example, in a quick and dirty script you might ignore the
 	// error value returned from os.Create, and expect that the file
