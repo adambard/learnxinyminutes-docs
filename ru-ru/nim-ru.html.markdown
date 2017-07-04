@@ -161,7 +161,7 @@ var anotherArray = ["Default index", "starts at", "0"]
 
 # Доступны другие структуры данных, в том числе таблицы, множества,
 # списки, очереди и crit-bit деревья.
-# http://nim-lang.org/docs/lib.html#collections-and-algorithms
+# http://nim-lang.org/docs/lib.html#collections-and-algorithms (EN)
 
 #
 # IO и поток управления выполнением
@@ -180,7 +180,7 @@ else:
 
 # `while`, `if`, `continue`, `break`
 
-import strutils as str # http://nim-lang.org/docs/strutils.html
+import strutils as str # http://nim-lang.org/docs/strutils.html (EN)
 echo "I'm thinking of a number between 41 and 43. Guess which!"
 let number: int = 42
 var
@@ -267,7 +267,7 @@ let cmp = strcmp("C?", "Easy!")
 Кроме того, Nim выделяется среди себе подобных метапрограммированием,
 производительностью, функциями этапа компиляции.
 
-## Дальнейшее чтение
+## Дальнейшее чтение (EN)
 
 * [Домашняя страница](http://nim-lang.org)
 * [Скачать](http://nim-lang.org/download.html)
