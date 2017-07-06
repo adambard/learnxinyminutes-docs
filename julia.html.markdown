@@ -32,10 +32,21 @@ This is based on Julia 0.6.
 2 + 1im # => 2 + 1im (Complex{Int64})
 2//3 # => 2//3 (Rational{Int64})
 
+# There are mathematical constants.
+pi # => π = 3.1415926535897... (Irrational{:π})
+e # => e = 2.7182818284590... (Irrational{:e})
+# They are printed in a special way, including their symbol, to clearly indicate
+# that they are irrational. Their precision depends on context.
+
 # All of the normal infix operators are available.
 1 + 1 # => 2
 8 - 1 # => 7
 10 * 2 # => 20
+# No operator implies multiplication, when not ambiguous
+2pi # => 6.283185307179586
+2(3+2) # => 10
+1 / 2π == 1 / (2 * pi) # => true
+1 / 2π == 1 / 2 * pi # => false
 35 / 5 # => 7.0
 5 / 2 # => 2.5 # dividing an Int by an Int always results in a Float
 div(5, 2) # => 2 # for a truncated result, use div
@@ -126,12 +137,6 @@ SomeOtherVar123! = 6 # => 6
 # These are especially handy for mathematical notation
 2 * π # => 6.283185307179586 # \pi[TAB] enters π in julia REPL and juno IDE
 
-# No operator implies multiplication, when not ambiguous
-2π # => 6.283185307179586
-2(3+2) # => 10
-1 / 2π == 1 / (2 * π) # => true
-1 / 2π == 1 / 2 * π # => false
-
 # A note on naming conventions in Julia:
 #
 # * Word separation can be indicated by underscores ('_'), but use of
@@ -216,11 +221,13 @@ notwhatithought[1] # => 1:5
 discouraged = [1:5;] # => Int64[1,2,3,4,5]
 discouraged[1] # => 1
 # but it is discouraged.
+# It is because ; is a concatenation operator in square bracket context.
+[1:4; 48; 100:100:300] # => Int64[1,2,3,4,48,100,200,300]
+# In tripple slices, the middle is the step
 
 # You can look at arrays with slice syntax.
 a[1:3] # => [4,5,6]
 a[2:end] # => [5,6]
-# In tripple slices, the middle is the step
 a[end:-1:1] # => [6,5,4]
 
 # Arrays are mutable
@@ -302,21 +309,98 @@ a[a.>20] # => [40, 90]
 
 
 
+###########
+## Strings
+###########
+
+# Strings are created with "
+s = "This is a string."
+
+"""You can
+have multiline strings, too."""
+
+# Character literals are written with '
+'a'
+
+# Strings can be indexed like an array of characters
+s[1] # => 'T', a Char
+s[1:4] # => "This", a String
+
+# Indexing a unicode string in a wrong place will throw an arror,
+# rather than returning gibberish
+utf8string = "Θεσσαλονίκη"
+utf8string[1] # => 'Θ'
+try
+    utf8string[2] # => UnicodeError: invalid character index
+catch e
+    println(e)
+end
+utf8string[3] # => 'ε'
+
+# Iterating over Strings works as expected, even for Strings with
+# unicode characters
+[ c for c in utf8string ] # => 11-element Array{Char,1}:
+                          # ['Θ','ε','σ','σ','α','λ','ο','ν','ί','κ','η']
+
+
+# Strings are immutable
+try
+    s[1] = "T" # => MethodError: no method matching
+               #    setindex!(::String, ::String, ::Int64)
+catch e
+    println(e)
+end
+
+
+# $ can be used for string interpolation:
+"pi is $pi" # => "pi is π = 3.1415926535897..."
+"2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
+# You can put any Julia expression inside the parentheses.
+
+# Another way to format strings is the printf macro.
+@printf "%d is less than %f" 4.5 5.3 # prints "5 is less than 5.300000"
+
+# and sprintf, which returns a String
+@sprintf "%d is less than %f" 4.5 5.3 # => "5 is less than 5.300000"
+
+# Printing is easy
+print("Print without newline... ")
+println("Print with newline at the end.")
+
+# String can be compared lexicographically
+"good" > "bye" # => true
+"good" == "good" # => true
+"1 + 2 = 3" == "1 + 2 = $(1+2)" # => true
+
+# You can concatenate strings with * and repeat with ^
+"one" * "two" # => "onetwo"
+"one"^3 # => "oneoneone"
+
+# r"" syntax crates a regular expression
+ismatch(r"^\s*(?:#|$)", "not a comment") # => false
+ismatch(r"^\s*(?:#|$)", "# a comment") # => true
+
+# b"" is for raw byte arrays
+b"abc" # => 3-element Array{UInt8,1}: [0x61, 0x62, 0x63]
+
+
+
+
 ##############
 # Collections
 ##############
 
 a = [] # => Any[]
 # Any is the supertype of all types  (more on that later).
-# This means, that this vector can hold Anything
+# This means, that this vector can hold anything.
 
 # Add stuff to the end of a with push! (single element)
 # and append! (another collection)
-push!(a,1)     # => Any[1]
-push!(a,2)     # => Any[1,2]
-push!(a,4)     # => Any[1,2,4]
-push!(a,3)     # => Any[1,2,4,3]
-append!(a,["six", π]) # => Any[1,2,4,3,"six",π = 3.14…]
+push!(a, 1)     # => Any[1]
+push!(a, 2)     # => Any[1,2]
+push!(a, 4)     # => Any[1,2,4]
+push!(a, 3)     # => Any[1,2,4,3]
+append!(a, ["six", π]) # => Any[1,2,4,3,"six",π = 3.14…]
 # By convention, function names that end in exclamations points indicate that
 # they modify their arguments. Usually it is the first argument being modified.
 
@@ -449,84 +533,6 @@ setdiff(Set([1,2,3,4]), Set([2,3,5])) # => Set{Int64}([4,1])
 
 # Set operations work on arrays, too
 [1,2,3,4] ∩ [2,3,4] # => 3-element Array{Int64,1}: [2,3,4]
-
-
-
-
-###########
-## Strings
-###########
-
-# Strings are created with "
-s = "This is a string."
-
-"""You can
-have multiline strings, too."""
-
-# Character literals are written with '
-'a'
-
-# Strings can be indexed like an array of characters
-s[1] # => 'T', a Char
-s[1:4] # => "This", a String
-
-# Indexing a unicode string in a wrong place will throw an arror,
-# rather than returning gibberish
-utf8string = "Θεσσαλονίκη"
-utf8string[1] # => 'Θ'
-try
-    utf8string[2] # => UnicodeError: invalid character index
-catch e
-    println(e)
-end
-utf8string[3] # => 'ε'
-
-# Iterating over Strings works as expected, even for Strings with
-# unicode characters
-[ c for c in utf8string ] # => 11-element Array{Char,1}:
-                          # ['Θ','ε','σ','σ','α','λ','ο','ν','ί','κ','η']
-
-
-# Strings are immutable
-try
-    s[1] = "T" # => MethodError: no method matching
-               #    setindex!(::String, ::String, ::Int64)
-catch e
-    println(e)
-end
-
-
-# $ can be used for string interpolation:
-"pi is $pi" # => "pi is π = 3.1415926535897..."
-"2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
-# You can put any Julia expression inside the parentheses.
-
-# Another way to format strings is the printf macro.
-@printf "%d is less than %f" 4.5 5.3 # prints "5 is less than 5.300000"
-
-# and sprintf, which returns a String
-@sprintf "%d is less than %f" 4.5 5.3 # => "5 is less than 5.300000"
-
-# Printing is easy
-print("Print without newline... ")
-println("Print with newline at the end.")
-
-# String can be compared lexicographically
-"good" > "bye" # => true
-"good" == "good" # => true
-"1 + 2 = 3" == "1 + 2 = $(1+2)" # => true
-
-# You can concatenate strings with * and repeat with ^
-"one" * "two" # => "onetwo"
-"one"^3 # => "oneoneone"
-
-
-# r"" syntax crates a regular expression
-ismatch(r"^\s*(?:#|$)", "not a comment") # => false
-ismatch(r"^\s*(?:#|$)", "# a comment") # => true
-
-# b"" is for raw byte arrays
-b"abc" # => 3-element Array{UInt8,1}: [0x61, 0x62, 0x63]
 
 
 
