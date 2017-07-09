@@ -123,7 +123,7 @@ public class JavaFr {
         // Initialisez une variable sous la forme <type> <name> = <val>
         int barInt = 1;
         // Initialisez plusieurs variables du même type et avec la même valeur
-        // sous la forme 
+        // sous la forme
         // <type> <name1>, <name2>, <name3>
         // <name1> = <name2> = <name3> = <val>
         int barInt1, barInt2, barInt3;
@@ -198,7 +198,7 @@ public class JavaFr {
         // de la classe BigIntger
         //
         // BigInteger peut être initialiser en utilisant un tableau de bytes ou
-        // une chaîne de caractère.      
+        // une chaîne de caractère.
         BigInteger fooBigInteger = new BigInteger(fooByteArray);
 
         // BigDecimal - entier immuable et positif de taille arbitraire
@@ -365,7 +365,7 @@ public class JavaFr {
         // Opérateurs d'incrémentation
         int i = 0;
         System.out.println("\n->Inc/Dec-rementation");
-        // Les opérateurs ++ et -- incrémentent et décrémentent respectivement 
+        // Les opérateurs ++ et -- incrémentent et décrémentent respectivement
         // de 1.
         // S'ils sont placés avant la variable, ils incrémentent la variable puis
         // retournent la valeur. Placés après la varible, ils retournent la variable
@@ -447,6 +447,7 @@ public class JavaFr {
         // On peut également utiliser le type Enum, la classe String et les
         // classes spéciales qui englobent les types primitifs (Character, Byte,
         // Short et Integer).
+        // Depuis Java 7, on peut utiliser le type String.
         int month = 3;
         String monthString;
         switch (month) {
@@ -460,24 +461,6 @@ public class JavaFr {
                      break;
         }
         System.out.println("Switch Case Result: " + monthString);
-
-        // Java 7 introduit une nouvelle syntax:
-        String myAnswer = "maybe";
-        switch(myAnswer) {
-            case "yes":
-                System.out.println("You answered yes.");
-                break;
-            case "no":
-                System.out.println("You answered no.");
-                break;
-            case "maybe":
-                System.out.println("You answered maybe.");
-                break;
-            default:
-                System.out.println("You answered " + myAnswer);
-                break;
-        }
-
 
         // try-with-resources (Java 7+)
         // Le mécanisme de gestion des erreurs try-catch-finally peut être
@@ -530,11 +513,6 @@ public class JavaFr {
         // Double
         // Long
         // String
-
-        // Cast
-        // Vous pouvez aussi caster des objets Java. Vous pouvez consulter la
-        // documentation Oracle pour plus de détails et concepts:
-        // https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
 
         ///////////////////////////////////////
         // Classes et fonctions
@@ -662,9 +640,9 @@ class Bicycle {
         return name;
     }
 
-    // Méthode pour afficher la valeur des attributs de l'objet. @Override est 
+    // Méthode pour afficher la valeur des attributs de l'objet. @Override est
     // une annotation (voir plus loin).
-    @Override //On dit ici qu'on remplace la méthode de la classe Objet. 
+    @Override //On dit ici qu'on remplace la méthode de la classe Objet.
     public String toString() {
         return "gear: " + gear + " cadence: " + cadence + " speed: " + speed +
             " name: " + name;
@@ -692,6 +670,15 @@ class PennyFarthing extends Bicycle {
     }
 }
 
+// Polymorphisme (cast d'objets)
+// Comme la classe PennyFarthing héritent de la classe Bicycle, on peut dire
+// qu'un PennyFarthing est un Bicycle (un vélo en anglais) et écrire :
+// Bicycle bicycle = new PennyFarthing();
+// Le polymorphisme est la capacité d'un objet de se faire passer pour un autre.
+// Vous pouvez consulter la documentation Oracle pour plus de détails et
+// concepts (en anglais) :
+// https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
+
 // Interfaces
 // Déclaration d'une interface
 // <niveau d'accès> interface <nom de l'interface> extends <nom de l'interface
@@ -711,9 +698,9 @@ public interface Edible {
 public interface Digestible {
     public void digest();
     // Depuis Java 8, les interfaces peuvent avoir des méthodes par défaut.
-    // public void digest() {
-    //     System.out.println("digesting ...");
-    // }
+    public void defaultMethod() {
+        System.out.println("Hi from default method ...");
+    }
 }
 
 // On peut maintenant créer une classe qui implémente chacune de ces interfaces.
@@ -752,12 +739,12 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 //     // Méthodes
 // }
 
-// Une classe abstraite contient au moins une méthode abstraite qui doit être 
-// définee dans la classe fille. Comme les interfaces, les classes abstraites ne 
-// peuvent pas être instanciées mais doivent être étendues avec les méthodes 
-// abstraites implémentées. À la différence des interfaces, une classe abstraite 
-// peut contenir des méthodes abstraites ou non-abstraites. Les méthodes dans une 
-// interfaces ne peuvent pas être implémentées à l'exception des méthodes static. 
+// Une classe abstraite contient au moins une méthode abstraite qui doit être
+// définee dans la classe fille. Comme les interfaces, les classes abstraites ne
+// peuvent pas être instanciées mais doivent être étendues avec les méthodes
+// abstraites implémentées. À la différence des interfaces, une classe abstraite
+// peut contenir des méthodes abstraites ou non-abstraites. Les méthodes dans une
+// interfaces ne peuvent pas être implémentées à l'exception des méthodes static.
 // Les variables d'une classe abstraite sont déclarées comme final par défaut à
 // l'opposé des interfaces. Finalement les classes abstraites peuvent avoir une
 // méthode main.
@@ -780,7 +767,7 @@ public abstract class Animal
 
     public void printAge()
     {
-        System.out.println(age);  
+        System.out.println(age);
     }
 
     // Les classes abstraites peuvent avoir une fonction main.
@@ -879,11 +866,11 @@ public class EnumTest {
                 break;
             case FRIDAY:
                 System.out.println("Fridays are better.");
-                break;   
+                break;
             case SATURDAY:
             case SUNDAY:
                 System.out.println("Weekends are best.");
-                break;     
+                break;
             default:
                 System.out.println("Midweek days are so-so.");
                 break;
