@@ -6,6 +6,7 @@ contributors:
     - ["Dominic Bou-Samra", "http://dbousamra.github.com"]
     - ["Geoff Liu", "http://geoffliu.me"]
     - ["Ha-Duong Nguyen", "http://reference-error.org"]
+    - ["Lyall Jonathan Di Trapani", "http://ditrapani.info"]
 ---
 
 Scala - the scalable language
@@ -154,7 +155,7 @@ true == false // false
 // Strings have the usual Java methods defined on them
 "hello world".length
 "hello world".substring(2, 6)
-"hello world".replace("C", "3")
+"hello world".replace("worl", "bir")
 
 // They also have some extra Scala methods. See also: scala.collection.immutable.StringOps
 "hello world".take(5)
