@@ -17,7 +17,7 @@ translators:
 lang: fr-fr
 ---
 Java est un langage orienté objet, concurrent et très facilement portable. Java
-est inspiré du C++ mais ne reprend pas tout les concepts comme par exemple les
+est inspiré du C++ mais ne reprend pas tous les concepts comme par exemple les
 pointeurs et en ajoute de nouveaux comme les interfaces.
 [En savoir plus.](https://fr.wikipedia.org/wiki/Java_(langage))
 
@@ -53,7 +53,7 @@ public class JavaFr {
 
     // Pour exécuter un programme Java, celui-ci doit posséder une méthode main
     // qui fournir un point d'entrée.
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
     ///////////////////////////////////////
     // Entrée/Sortie
@@ -74,7 +74,7 @@ public class JavaFr {
         System.out.print("Hello ");
         System.out.print("World");
 
-        // Utilisez System.out.printf() pour formatter l'affichage.
+        // Utilisez System.out.printf() pour formatter les données à afficher.
         System.out.printf("pi = %.5f", Math.PI); // => pi = 3.14159
 
         /*
@@ -85,22 +85,22 @@ public class JavaFr {
         // Nécessite: import java.util.Scanner;
         Scanner scanner = new Scanner(System.in);
 
-        // Lire une entrée string
+        // Lire une chaîne de caractères
         String name = scanner.next();
 
-        // Lire une entrée byte
+        // Lire un byte
         byte numByte = scanner.nextByte();
 
-        // Lire une entrée int
+        // Lire un entier
         int numInt = scanner.nextInt();
 
-        // Lire une entrée long
+        // Lire une entrée de type long
         float numFloat = scanner.nextFloat();
 
-        // Lire une entrée double
+        // Lire une entrée de type double
         double numDouble = scanner.nextDouble();
 
-        // Lire une entrée boolean
+        // Lire une entrée de type boolean
         boolean bool = scanner.nextBoolean();
 
         ///////////////////////////////////////
@@ -110,7 +110,7 @@ public class JavaFr {
         /*
         *  Déclaration de variable
         */
-        // Déclarez une variable sous la forme <type> <name>
+        // Déclarez une variable avec la forme <type> <name>
         int fooInt;
         // Declarez plusieurs variables du même type <type> <name1>, <name2>,
         // <name3>
@@ -123,7 +123,9 @@ public class JavaFr {
         // Initialisez une variable sous la forme <type> <name> = <val>
         int barInt = 1;
         // Initialisez plusieurs variables du même type et avec la même valeur
-        // sous la forme <type> <name1>, <name2>, <name3> = <val>
+        // sous la forme 
+        // <type> <name1>, <name2>, <name3>
+        // <name1> = <name2> = <name3> = <val>
         int barInt1, barInt2, barInt3;
         barInt1 = barInt2 = barInt3 = 1;
 
@@ -188,7 +190,7 @@ public class JavaFr {
         final double E;
         E = 2.71828;
 
-        // BigInteger - entiers immuable de taille arbitraire
+        // BigInteger - entier immuable de taille arbitraire
         //
         // BigInteger est un type de donné qui autorise les développeurs à
         // manipuler des entiers au delà de 64 bits. Les entiers sont stockés
@@ -199,7 +201,7 @@ public class JavaFr {
         // une chaîne de caractère.      
         BigInteger fooBigInteger = new BigInteger(fooByteArray);
 
-        // BigDecimal - entiers immuable et positif de taille arbitraire
+        // BigDecimal - entier immuable et positif de taille arbitraire
         //
         // BigDecimal comprend deux parties: une entier de taille arbitraire
         // (BigInteger) et un entier de 32 bits représantant la position de la
@@ -227,7 +229,7 @@ public class JavaFr {
 
         // \n est un caractère d'échappement qui indique une nouvelle ligne
         String barString = "Printing on a new line?\nNo Problem!";
-        // \t est un caractère d'échappement qui ajoute une tabulation
+        // \t est un caractère d'échappement qui indique une tabulation
         String bazString = "Do you want to add a tab?\tNo Problem!";
         System.out.println(fooString);
         System.out.println(barString);
@@ -241,11 +243,11 @@ public class JavaFr {
         // Affiche: Strings can be concatenated via + operator.
 
         // #2 - avec StringBuilder
-        // Cette méthode ne nécessite pas d'objet String intermédiaire. elle
-        // stocke juste les différentes chaînes de caractères et les assemblent
+        // Cette méthode ne nécessite pas d'objet String intermédiaire. Elle
+        // stocke juste les différentes chaînes de caractères et les assemble
         // lorsque la méthode toString() est appelée.
-        // Attention: Cette classe n'est pas thread-safe (capable de fonctionner
-        // correctement lorsqu'il est exécuter dans un thread). Une alternative
+        // Attention: Cette classe n'est pas thread-safe (l'objet ne peut pas être partagé
+        // entre les threads). Une alternative
         // (avec un impact sur les performances) thread-safe est d'utiliser la
         // classe StringBuffer.
         StringBuilder builderConcatenated = new StringBuilder();
@@ -259,7 +261,7 @@ public class JavaFr {
         // utilisée avec la fin de sa construction.
         StringBuilder stringBuilder = new StringBuilder();
         String inefficientString = "";
-        for(int i = 0 ; i < 10; i++){
+        for (int i = 0 ; i < 10; i++) {
             stringBuilder.append(i).append(" ");
             inefficientString += i + " ";
         }
@@ -293,7 +295,7 @@ public class JavaFr {
         // Accéder à un élément
         System.out.println("intArray @ 0: " + intArray[0]);
 
-        // Les tableau commencent à 0 et sont muables
+        // Les tableaus commencent à 0 et sont muables
         intArray[1] = 1;
         System.out.println("intArray @ 1: " + intArray[1]); // => 1
 
@@ -363,11 +365,11 @@ public class JavaFr {
         // Opérateurs d'incrémentation
         int i = 0;
         System.out.println("\n->Inc/Dec-rementation");
-        // Les opérateurs ++ et -- incrémentent et décrémentent de 1
-        // respectivement.
-        // S'ils sont placés avant la variable, ils incrémentent la varible puis
-        // retourne la valeur. Placés après la varible, ils retourne la variable
-        // puis l'incrémentent
+        // Les opérateurs ++ et -- incrémentent et décrémentent respectivement 
+        // de 1.
+        // S'ils sont placés avant la variable, ils incrémentent la variable puis
+        // retournent la valeur. Placés après la varible, ils retournent la variable
+        // puis l'incrémentent.
         System.out.println(i++); // i = 1, affiche 0 (pré-incrément)
         System.out.println(++i); // i = 2, affiche 2 (post-incrément)
         System.out.println(i--); // i = 1, affiche 2 (post-incrément)
@@ -486,7 +488,7 @@ public class JavaFr {
 
         // Pour utiliser un try-with-resources, il suffit d'inclure l'instance
         // d'une classe qui implémente l'interface java.lang.AutoCloseable
-        try(BufferedReader br = new BufferedReader(new FileReader("foo.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("foo.txt"))) {
             // Ici, vous pouvez essayer de faire quelque chose qui lance une
             // exception.
             System.out.println(br.readLine());
@@ -497,9 +499,9 @@ public class JavaFr {
             System.out.println("readLine() failed.");
         }
         // Il n'y a pas besoin de finally dans ce cas, l'objet BufferedReader
-        // sera déjà fermé. Cela peut être utile dans certain cas spécifique
-        // où le code contenue dans finally ne serait pas exécuté.
-        // Consulter la documention Oracle pour en savoir plus (en anglais):
+        // sera déjà fermé. Cela peut être utile dans certains cas spécifiques
+        // où le code contenu dans finally ne serait pas exécuté.
+        // Consulter la documention Oracle pour en savoir plus (en anglais) :
         // https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
 
 
@@ -546,15 +548,15 @@ public class JavaFr {
         Bicycle trek = new Bicycle();
 
         // Pour appeler une méthode de l'objet
-        trek.speedUp(3); // !! Il est conseiller de passer par une méthode pour
+        trek.speedUp(3); // !! Il est conseillé de passer par une méthode pour
         // changer la valeur d'une variable.
         trek.setCadence(100);
 
-        // toString retourne une représention de l'objet en chaîne de caractère.
+        // toString retourne une représentation de l'objet en chaîne de caractères.
         System.out.println("trek info: " + trek.toString());
 
-        // Initialisation avec double semi-colonnes
-        // Le langage Java ne permet pas de créer des collection statique d'une
+        // Initialisation avec double accolades
+        // Le langage Java ne permet pas de créer des collections statiques d'une
         // manière simple. Généralement, on utilise la forme suivante:
         private static final Set<String> COUNTRIES = new HashSet<String>();
         static {
@@ -629,7 +631,7 @@ class Bicycle {
         this.name = name;
     }
 
-    // Syntaxe d'une méthode:
+    // Syntaxe d'une méthode :
     // <public/private/protected> <type de retour> <nom de la fonction>(
     // <arguments>)
 
@@ -660,8 +662,9 @@ class Bicycle {
         return name;
     }
 
-    // Méthode pour afficher la valeur des attributs de l'objet.
-    @Override // Hérité de la class Objet. C'est une annotation (voir plus loin)
+    // Méthode pour afficher la valeur des attributs de l'objet. @Override est 
+    // une annotation (voir plus loin).
+    @Override //On dit ici qu'on remplace la méthode de la classe Objet. 
     public String toString() {
         return "gear: " + gear + " cadence: " + cadence + " speed: " + speed +
             " name: " + name;
@@ -670,9 +673,9 @@ class Bicycle {
 
 // PennyFarthing est une sous-classe de Bicycle
 class PennyFarthing extends Bicycle {
-    // (Penny Farthings sont des bicyclette avec une grande roue avant.
+    // (Les Penny Farthings sont des bicyclette avec une grande roue avant.
     // Il n'y a pas de roue libre, le cycliste est obligé de pédaler en
-    // permanence .)
+    // permanence.)
 
     public PennyFarthing(int startCadence, int startSpeed) {
         // Appelez le constructeur parent avec la méthode super()
@@ -690,15 +693,15 @@ class PennyFarthing extends Bicycle {
 }
 
 // Interfaces
-// Syntaxe de déclaration des interfaces
+// Déclaration d'une interface
 // <niveau d'accès> interface <nom de l'interface> extends <nom de l'interface
 // mère> {
 //     // Constantes
 //     // Délaration des méthodes
 // }
 
-// Exemple - Toute nouriture peut être manger et digégé différamment
-// L'interface Edible (traduction: comestible) décrit l'action de manger
+// Exemple - Toute nourriture peut être mangée et digégée différemment
+// L'interface Edible (traduction : comestible) décrit l'action de manger
 public interface Edible {
     public void eat(); // Toute classe qui implémente cette interface doit
                        // implémenter cette méthode
@@ -726,7 +729,7 @@ public class Fruit implements Edible, Digestible {
     }
 }
 
-// En Java, on peut uniquement hériter d'une classe mais on peut implémenter
+// En Java, on peut hériter uniquement d'une classe mais on peut implémenter
 // plusieurs interfaces:
 public class ExampleClass extends ExampleClassParent implements InterfaceOne,
     InterfaceTwo {
@@ -743,20 +746,19 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 // Classes abstraites
 
 // Syntaxe de déclaration:
-// <niveau d'accès> abstract <nom de la classe abstraite> extends <nom de la
+// <niveau d'accès> abstract class <nom de la classe abstraite> extends <nom de la
 //   classe mère abstraite> {
 //     // Constantes et variables
-//     // Méthode déclarations
+//     // Méthodes
 // }
 
-// Une classe abstraite contient une méthode abstraite qui doit être défine dans
-// la classe fille. Comme les interfaces, les classes abstraites ne peuvent pas
-// être instanciées mais doit être étendues avec la méthode abstraite
-// implémenté.
-// A la différence des interfaces, une classe abstraite peut contenir des
-// méthodes abstraites ou non-abstraites. Les méthodes dans une interfaces ne
-// peuvent pas être implémentées à l'exception des méthodes static. Les
-// variables d'une classe abstraite sont déclarées comme final par défaut à
+// Une classe abstraite contient au moins une méthode abstraite qui doit être 
+// définee dans la classe fille. Comme les interfaces, les classes abstraites ne 
+// peuvent pas être instanciées mais doivent être étendues avec les méthodes 
+// abstraites implémentées. À la différence des interfaces, une classe abstraite 
+// peut contenir des méthodes abstraites ou non-abstraites. Les méthodes dans une 
+// interfaces ne peuvent pas être implémentées à l'exception des méthodes static. 
+// Les variables d'une classe abstraite sont déclarées comme final par défaut à
 // l'opposé des interfaces. Finalement les classes abstraites peuvent avoir une
 // méthode main.
 public abstract class Animal
@@ -813,15 +815,15 @@ class Dog extends Animal
     }
 }
 
-// Classes final
+// Classes finales
 
-// Sintaxe de déclaration
+// Syntaxe de déclaration
 // <niveau d'accès> final <nom de la classe final> {
 //     // Constantes et variables
 //     // Méthodes déclarations
 // }
 
-// Les classe déclarées comme final ne peuvent pas avoir d'héritiers. Elles
+// Les classe déclarées comme final ne peuvent pas avoir de classe fille. Elles
 // peuvent être considérées comme l'opposé des classes abstraites.
 public final class SaberToothedCat extends Animal
 {
