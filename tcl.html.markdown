@@ -75,7 +75,7 @@ lighter that that of Lisp, just gets out of the way.
 ## 2. Syntax
 ###############################################################################
 
-# A script is made up of commands delimited by newlines or semiclons.  Each
+# A script is made up of commands delimited by newlines or semicolons.  Each
 # command is a call to a routine.  The first word is the name of a routine to
 # call, and subsequent words are arguments to the routine.  Words are delimited
 # by whitespace.  Since each argument is a word in the command it is already a
@@ -99,13 +99,13 @@ set greeting $part1$part2[set part3]
 
 
 # An embedded script may be composed of multiple commands, the last of which provides
-# the result for the substtution:
+# the result for the substitution:
 set greeting $greeting[
     incr i
     incr i
     incr i
 ]
-puts $greeting ;# The output is "Salutations3" 
+puts $greeting ;# The output is "Salutations3"
 
 # Every word in a command is a string, including the name of the routine, so
 # substitutions can be used on it as well. Given this variable
@@ -422,8 +422,7 @@ eval {set name Neo}
 eval [list set greeting "Hello, $name"]
 
 
-# Therefore, when using "eval", , use "list" to build
-# up the desired command:
+# Therefore, when using "eval", use "list" to build up the desired command:
 set command {set name}
 lappend command {Archibald Sorbisol}
 eval $command
@@ -517,7 +516,7 @@ proc while {condition script} {
 # and then calls that routine.  "yield" suspends evaluation in that stack and
 # returns control to the calling stack:
 proc countdown count {
-    # send something back to the creater of the coroutine, effectively pausing
+    # send something back to the creator of the coroutine, effectively pausing
     # this call stack for the time being.
     yield [info coroutine]
 
