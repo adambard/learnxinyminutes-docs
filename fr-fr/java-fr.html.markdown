@@ -497,7 +497,7 @@ public class JavaFr {
         String bar = (foo < 10) ? "A" : "B";
         System.out.println("bar : " + bar); // Affiche "bar : A", car la condition est vraie
         // Ou alors plus simplement
-        System.out.println("bar : + (foo < 10 ? "A" : "B")); // Affiche également "bar : A"
+        System.out.println("bar : " + (foo < 10 ? "A" : "B")); // Affiche également "bar : A"
 
         ////////////////////////////////////////
         // Conversion de type
