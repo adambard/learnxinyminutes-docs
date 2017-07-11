@@ -463,7 +463,11 @@ public class LearnJava {
         // <second value>"
         int foo = 5;
         String bar = (foo < 10) ? "A" : "B";
-        System.out.println(bar); // Prints A, because the statement is true
+        System.out.println("bar : " + bar); // Prints "bar : A", because the 
+        // statement is true.
+        // Or simply
+        System.out.println("bar : " + (foo < 10 ? "A" : "B"));
+        
 
         ////////////////////////////////////////
         // Converting Data Types
