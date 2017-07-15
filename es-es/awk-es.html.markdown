@@ -359,5 +359,4 @@ Más información:
 
 * [Tutorial de AWK](http://www.grymoire.com/Unix/Awk.html)
 * [Página man de AWK](https://linux.die.net/man/1/awk)
-* [La guía del usuario de GNU Awk](https://www.gnu.org/software/gawk/manual/gawk.html) 
-GNU Awk se encuentra en la mayoría de los sistemas Linux.
+* [La guía del usuario de GNU Awk](https://www.gnu.org/software/gawk/manual/gawk.html): GNU Awk se encuentra en la mayoría de los sistemas Linux.
