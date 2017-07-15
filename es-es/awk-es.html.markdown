@@ -197,14 +197,14 @@ function string_functions(    localvar, arr) {
     sub("fo+", "Meet me at the ", localvar) # localvar => "Meet me at the bar"
     gsub("e+", ".", localvar) # localvar => "m..t m. at th. bar"
 
-    # Search for a string that matches a regular expression
-    # index() does the same thing, but doesn't allow a regular expression
-    match(localvar, "t") # => 4, since the 't' is the fourth character
+    # Buscar una cadena que haga match con una expresión regular
+    # index() hace lo mismo, pero no permite expresiones regulares
+    match(localvar, "t") # => 4, dado que 't' es el cuarto caracter
 
-    # Split on a delimiter
+    # Separar con base en un delimitador
     split("foo-bar-baz", arr, "-") # a => ["foo", "bar", "baz"]
 
-    # Other useful stuff
+    # Otras funciones útiles
     sprintf("%s %d %d %d", "Testing", 1, 2, 3) # => "Testing 1 2 3"
     substr("foobar", 2, 3) # => "oob"
     substr("foobar", 4) # => "bar"
@@ -215,87 +215,86 @@ function string_functions(    localvar, arr) {
 
 function io_functions(    localvar) {
 
-    # You've already seen print
+    # Ya has visto print
     print "Hello world"
 
-    # There's also printf
+    # También hay printf
     printf("%s %d %d %d\n", "Testing", 1, 2, 3)
 
-    # AWK doesn't have file handles, per se. It will automatically open a file
-    # handle for you when you use something that needs one. The string you used
-    # for this can be treated as a file handle, for purposes of I/O. This makes
-    # it feel sort of like shell scripting:
+    # AWK no tiene handles de archivos en sí mismo. Automáticamente abrirá un 
+    # handle de archivo cuando use algo que necesite uno. El string que usaste 
+    # para esto puede ser tratada como un handle de archivo para propósitos de I/O.
+    # Esto lo hace similar al scripting de shell:
 
     print "foobar" >"/tmp/foobar.txt"
 
-    # Now the string "/tmp/foobar.txt" is a file handle. You can close it:
+    # Ahora el string "/tmp/foobar.txt" es un handle. Puedes cerrarlo:
     close("/tmp/foobar.txt")
 
-    # Here's how you run something in the shell
-    system("echo foobar") # => prints foobar
+    # Aquí está como correr algo en el shell
+    system("echo foobar") # => muestra foobar
 
-    # Reads a line from standard input and stores in localvar
+    # Lee una línea de la entrada estándar (stdin) y lo guarda en localvar
     getline localvar
 
-    # Reads a line from a pipe
+    # Lee una línea desde un pipe
     "echo foobar" | getline localvar # localvar => "foobar"
     close("echo foobar")
 
-    # Reads a line from a file and stores in localvar
+    # Lee una línea desde un archivo y la guarda en localvar
     getline localvar <"/tmp/foobar.txt"
     close("/tmp/foobar.txt")
 }
 
-# As I said at the beginning, AWK programs consist of a collection of patterns
-# and actions. You've already seen the all-important BEGIN pattern. Other
-# patterns are used only if you're processing lines from files or standard
-# input.
-#
-# When you pass arguments to AWK, they are treated as file names to process.
-# It will process them all, in order. Think of it like an implicit for loop,
-# iterating over the lines in these files. these patterns and actions are like
-# switch statements inside the loop. 
+# Como dije al inicio, los programas en AWK son una colección de patrones y 
+# acciones. Ya conociste el patrón BEGIN. otros patrones sólo se usan si estás
+# procesando líneas desde archivos o stdin.
+
+# Cuando pasas argumentos a AWK, son tratados como nombres de archivos a 
+# procesar. Los va a procesar todos, en orden. Imagínalos como un ciclo for 
+# implícito, iterando sobre las líneas de estos archivos. Estos patrones y
+# acciones son como instrucciones switch dentro del ciclo.
 
 /^fo+bar$/ {
     
-    # This action will execute for every line that matches the regular
-    # expression, /^fo+bar$/, and will be skipped for any line that fails to
-    # match it. Let's just print the line:
+    # Esta acción se ejecutará por cada línea que haga match con la expresión
+    # regular /^fo+bar$/, y será saltada por cualquier línea que no haga match.
+    # Vamos a sólo mostrar la línea:
 
     print
 
-    # Whoa, no argument! That's because print has a default argument: $0.
-    # $0 is the name of the current line being processed. It is created
-    # automatically for you.
+    # ¡Wow, sin argumento! Eso es porque print tiene uno por defecto: $0.
+    # $0 es el nombre de la línea actual que se está procesando.
+    # Se crea automáticamente para ti.
 
-    # You can probably guess there are other $ variables. Every line is
-    # implicitely split before every action is called, much like the shell
-    # does. And, like the shell, each field can be access with a dollar sign
+    # Probablemente puedas adivinar que hay otras variables $. Cada línea es 
+    # separada implícitamente antes de que se llame cada acción, justo como lo
+    # hace shell. Y, como shell, cada campo puede ser accesado con $.
 
-    # This will print the second and fourth fields in the line
+    # Esto mostrará el segundo y cuarto campos de la línea
     print $2, $4
 
-    # AWK automatically defines many other variables to help you inspect and
-    # process each line. The most important one is NF
+    # AWK automáticamente define muchas otras variables que te ayudan a
+    # inspeccionar y procesar cada línea. La más importante es NF
 
-    # Prints the number of fields on this line
+    # Imprime el número de campos de esta línea
     print NF
 
-    # Print the last field on this line
+    # Imprime el último campo de esta línea
     print $NF
 }
 
-# Every pattern is actually a true/false test. The regular expression in the
-# last pattern is also a true/false test, but part of it was hidden. If you
-# don't give it a string to test, it will assume $0, the line that it's
-# currently processing. Thus, the complete version of it is this:
+# Cada patrón es realmente un prueba de verdadero/falso. La expresión regular
+# en el último patrón también es una prueba verdadero/falso, pero parte de eso
+# estaba oculto. Si no le das un string a la prueba, supondrá $0, la línea que
+# se está procesando. La versión completa de esto es:
 
 $0 ~ /^fo+bar$/ {
-    print "Equivalent to the last pattern"
+    print "Equivalente al último patrón"
 }
 
 a > 0 {
-    # This will execute once for each line, as long as a is positive
+    # Esto se ejecutará una vez por línea, mientras a sea positivo
 }
 
 # You get the idea. Processing text files, reading in a line at a time, and
