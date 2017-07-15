@@ -297,16 +297,16 @@ a > 0 {
     # Esto se ejecutará una vez por línea, mientras a sea positivo
 }
 
-# You get the idea. Processing text files, reading in a line at a time, and
-# doing something with it, particularly splitting on a delimiter, is so common
-# in UNIX that AWK is a scripting language that does all of it for you, without
-# you needing to ask. All you have to do is write the patterns and actions
-# based on what you expect of the input, and what you want to do with it.
+# Y ya te das una idea. Procesar archivos de texto, leyendo una línea a la vez,
+# y haciendo algo con ella, particularmente separando en un deliminator, es tan
+# común en UNIX que AWK es un lenguaje de scripting que hace todo eso por ti
+# sin que tengas que pedirlo. Basta con escribir los patrones y acciones 
+# basados en lo que esperas de la entrada y lo quieras quieras hacer con ella.
 
-# Here's a quick example of a simple script, the sort of thing AWK is perfect
-# for. It will read a name from standard input and then will print the average
-# age of everyone with that first name. Let's say you supply as an argument the
-# name of a this data file:
+# Aquí está un ejemplo de un script simple, para lo que AWK es perfecto.
+# El script lee un nombre de stdin y muestra el promedio de edad para todos los
+# que tengan ese nombre. Digamos que como argumento pasamos el nombre de un
+# archivo con este contenido:
 #
 # Bob Jones 32
 # Jane Doe 22
@@ -314,50 +314,50 @@ a > 0 {
 # Bob Smith 29
 # Bob Barker 72
 #
-# Here's the script:
+# Éste es el script:
 
 BEGIN {
 
-    # First, ask the user for the name
-    print "What name would you like the average age for?"
+    # Primero, pedir al usuario el nombre
+    print "¿Para qué nombre quieres el promedio de edad?"
 
-    # Get a line from standard input, not from files on the command line
+    # Recuperar una línea de stdin, no de archivos en la línea de comandos
     getline name <"/dev/stdin"
 }
 
-# Now, match every line whose first field is the given name
+# Ahora, hacer match con cada línea cuyo primer campo es el nombre dado
 $1 == name {
 
-    # Inside here, we have access to a number of useful variables, already
-    # pre-loaded for us:
-    # $0 is the entire line
-    # $3 is the third field, the age, which is what we're interested in here
-    # NF is the number of fields, which should be 3
-    # NR is the number of records (lines) seen so far
-    # FILENAME is the name of the file being processed
-    # FS is the field separator being used, which is " " here
-    # ...etc. There are plenty more, documented in the man page.
+    # Aquí dentro tenemos acceso a variables útiles precargadas:
+    # $0 es toda la línea
+    # $3 es el tercer campo, la edad, que es lo que nos interesa
+    # NF es el número de campos, que debe ser 3
+    # NR es el número de registros (líneas) vistos hasta ahora
+    # FILENAME es el nombre del archivo que está siendo procesado
+    # FS es el campo separador, " " en este caso
+    # Y muchas más que puedes conocer ejecutando 'man awk' en la terminal.
 
-    # Keep track of a running total and how many lines matched
+    # Llevar el registro de la suma y cuantas líneas han hecho match.
     sum += $3
     nlines++
 }
 
-# Another special pattern is called END. It will run after processing all the
-# text files. Unlike BEGIN, it will only run if you've given it input to
-# process. It will run after all the files have been read and processed
-# according to the rules and actions you've provided. The purpose of it is
-# usually to output some kind of final report, or do something with the
-# aggregate of the data you've accumulated over the course of the script.
+# Otro patrón especial es END. Va a ejecutarse después de procesar todos los 
+# archivos de texto. A diferencia de BEGIN, sólo se ejecuta si le das dado una
+# entrada a procesar. Se ejecutará después de que todos los archivos hayan sido
+# leídos y procesados según las reglas y acciones que programaste. El propósito
+# es usualmente para mostrar un reporte final, o hacer algo con el agregado de
+# los datos que has acumulado durante la ejecución del script.
 
 END {
     if (nlines)
-        print "The average age for " name " is " sum / nlines
+        print "La edad promedio para " name " es " sum / nlines
 }
 
 ```
-Further Reading:
+Más información:
 
-* [Awk tutorial](http://www.grymoire.com/Unix/Awk.html)
-* [Awk man page](https://linux.die.net/man/1/awk)
-* [The GNU Awk User's Guide](https://www.gnu.org/software/gawk/manual/gawk.html) GNU Awk is found on most Linux systems.
+* [Tutorial de AWK](http://www.grymoire.com/Unix/Awk.html)
+* [Página man de AWK](https://linux.die.net/man/1/awk)
+* [La guía del usuario de GNU Awk](https://www.gnu.org/software/gawk/manual/gawk.html) 
+GNU Awk se encuentra en la mayoría de los sistemas Linux.
