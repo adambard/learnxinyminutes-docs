@@ -83,19 +83,19 @@ BEGIN {
     for (i = 0; i < 10; i++)
         print "El viejo confiable ciclo for"
 
-    # As for comparisons, they're the standards:
-    a < b   # Less than
-    a <= b  # Less than or equal
-    a != b  # Not equal
-    a == b  # Equal
-    a > b   # Greater than
-    a >= b  # Greater than or equal
+    # Los operaciones de comparación son estándar...
+    a < b   # Menor que
+    a <= b  # Menor o igual que
+    a != b  # No igual
+    a == b  # Igual
+    a > b   # Mayor que
+    a >= b  # Mayor o igual que
 
-    # Logical operators as well
+    # ...así como los operadores lógicos
     a && b  # AND
     a || b  # OR
 
-    # In addition, there's the super useful regular expression match
+    # Además están las expresiones regulares
     if ("foo" ~ "^fo+$")
         print "Fooey!"
     if ("boo" !~ "^fo+$")
@@ -104,83 +104,85 @@ BEGIN {
     # Arrays
     arr[0] = "foo"
     arr[1] = "bar"
-    # Unfortunately, there is no other way to initialize an array. Ya just
-    # gotta chug through every value line by line like that.
+    # Desafortunadamente no hay otra manera de inicializar un array.
+    # Tienes que inicializar cada posición del array.
 
-    # You also have associative arrays
+    # También hay arrays asociativos
     assoc["foo"] = "bar"
     assoc["bar"] = "baz"
 
-    # And multi-dimensional arrays, with some limitations I won't mention here
+    # Y arrays multidimensionales con limitaciones que no mencionaré aquí
     multidim[0,0] = "foo"
     multidim[0,1] = "bar"
     multidim[1,0] = "baz"
     multidim[1,1] = "boo"
 
-    # You can test for array membership
+    # Puedes probar pertenencia a un array
     if ("foo" in assoc)
         print "Fooey!"
 
-    # You can also use the 'in' operator to traverse the keys of an array
+    # También puedes usar el operador 'in' para iterar las claves de un array
     for (key in assoc)
         print assoc[key]
 
-    # The command line is in a special array called ARGV
+    # La terminal es un array especial llamado ARGV
     for (argnum in ARGV)
         print ARGV[argnum]
 
-    # You can remove elements of an array
-    # This is particularly useful to prevent AWK from assuming the arguments
-    # are files for it to process
+    # Puedes eliminar elementos de un array.
+    # Esto es útil para prevenir que AWK suponga que algunos argumentos
+    # son archivos por procesar.
     delete ARGV[1]
 
-    # The number of command line arguments is in a variable called ARGC
+    # El número de argumentos de la terminal está en la variable ARGC
     print ARGC
 
-    # AWK has several built-in functions. They fall into three categories. I'll
-    # demonstrate each of them in their own functions, defined later.
+    # AWK tiene tres categorías de funciones incluidas.
+    # Demostraré esas funciones posteriormente.
 
     return_value = arithmetic_functions(a, b, c)
     string_functions()
     io_functions()
 }
 
-# Here's how you define a function
+# Así se define una función
 function arithmetic_functions(a, b, c,     localvar) {
 
-    # Probably the most annoying part of AWK is that there are no local
-    # variables. Everything is global. For short scripts, this is fine, even
-    # useful, but for longer scripts, this can be a problem.
+    # Probablemente la parte más molesta de AWK es que no hay variables locales
+    # Todo es global. No es problema en scripts pequeños, pero sí para
+    # scripts más grandes.
 
-    # There is a work-around (ahem, hack). Function arguments are local to the
-    # function, and AWK allows you to define more function arguments than it
-    # needs. So just stick local variable in the function declaration, like I
-    # did above. As a convention, stick in some extra whitespace to distinguish
-    # between actual function parameters and local variables. In this example,
-    # a, b, and c are actual parameters, while d is merely a local variable.
+    # Hay un work-around (mmm... hack). Los argumentos de las funciones son 
+    # locales para la función, y AWK permite definir más argumentos de función
+    # de los que necesita, por lo que define las variables locales en la 
+    # declaración como en la función de arriba. Como convención, agrega
+    # espacios en blanco para distinguir los parámetros de la función de las 
+    # variables locales. En este ejemplo, a, b y c son parámetros y localvar es una 
+    # variable local.
 
-    # Now, to demonstrate the arithmetic functions
+    # Ahora, a demostrar las funciones aritméticas
 
-    # Most AWK implementations have some standard trig functions
+    # La mayoría de las implementaciones de AWK tienen funciones
+    # trigonométricas estándar
     localvar = sin(a)
     localvar = cos(a)
-    localvar = atan2(a, b) # arc tangent of b / a
+    localvar = atan2(a, b) # arcotangente de b / a
 
-    # And logarithmic stuff
+    # Y cosas logarítmicas
     localvar = exp(a)
     localvar = log(a)
 
-    # Square root
+    # Raíz cuadrada
     localvar = sqrt(a)
 
-    # Truncate floating point to integer
+    # Trucar un flotante a entero
     localvar = int(5.34) # localvar => 5
 
-    # Random numbers
-    srand() # Supply a seed as an argument. By default, it uses the time of day
-    localvar = rand() # Random number between 0 and 1.
+    # Números aleatorios
+    srand() # La semilla es el argumento. Por defecto usa el tiempo del sistema
+    localvar = rand() # Número aleatorio entre 0 y 1.
 
-    # Here's how to return a value
+    # Y aquí se regresa el valor
     return localvar
 }
 
