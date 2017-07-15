@@ -23,26 +23,27 @@ delimitadores, probablemente AWK es la herramienta correcta para el trabajo.
 ```awk
 #!/usr/bin/awk -f
 
-# Comments are like this
+# Los comentarios tienen este aspecto.
 
-# AWK programs consist of a collection of patterns and actions. The most
-# important pattern is called BEGIN. Actions go into brace blocks.
+# Los programas AWK son una colección de patrones y acciones. El patrón más
+# importante es BEGIN. Las acciones van en bloques delimitados por llaves.
+
 BEGIN {
 
-    # BEGIN will run at the beginning of the program. It's where you put all
-    # the preliminary set-up code, before you process any text files. If you
-    # have no text files, then think of BEGIN as the main entry point.
+    # BEGIN correrá al inicio del programa. Es donde pones todo el código
+    # preliminar antes de procesar los archivos de texto. Si no tienes archivos
+    # de texto, piensa en BEGIN como el punto de entrada principal del script.
 
-    # Variables are global. Just set them or use them, no need to declare..
+    # Las variables son globales. Asígnalas o úsalas sin declararlas.
     count = 0
 
-    # Operators just like in C and friends
+    # Los operadores son justo como en C (y amigos).
     a = count + 1
     b = count - 1
     c = count * 1
     d = count / 1
-    e = count % 1 # modulus
-    f = count ^ 1 # exponentiation
+    e = count % 1 # módulo
+    f = count ^ 1 # exponenciación
 
     a += 1
     b -= 1
@@ -51,36 +52,36 @@ BEGIN {
     e %= 1
     f ^= 1
 
-    # Incrementing and decrementing by one
+    # Incremento y decremento en uno
     a++
     b--
 
-    # As a prefix operator, it returns the incremented value
+    # Como un operador prefijo, regresa el valor modificado
     ++a
     --b
 
-    # Notice, also, no punctuation such as semicolons to terminate statements
+    # Nota que no hay puntación para terminar las instrucciones
 
-    # Control statements
+    # Instrucciones de control
     if (count == 0)
-        print "Starting with count of 0"
+        print "Iniciando count en 0"
     else
-        print "Huh?"
+        print "Eh?"
 
-    # Or you could use the ternary operator
-    print (count == 0) ? "Starting with count of 0" : "Huh?"
+    # O puedes usar el operador ternario
+    print (count == 0) ? "Iniciando count en 0" : "Eh?"
 
-    # Blocks consisting of multiple lines use braces
+    # Bloques formados por múltiples líneas usan llaves
     while (a < 10) {
-        print "String concatenation is done" " with a series" " of"
-            " space-separated strings"
+        print "La concatenación de strings se hace " " con series " " de"
+            " strings separados por espacios"
         print a
 
         a++
     }
 
     for (i = 0; i < 10; i++)
-        print "Good ol' for loop"
+        print "El viejo confiable ciclo for"
 
     # As for comparisons, they're the standards:
     a < b   # Less than
