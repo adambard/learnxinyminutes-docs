@@ -188,11 +188,11 @@ function arithmetic_functions(a, b, c,     localvar) {
 
 function string_functions(    localvar, arr) {
 
-    # AWK, being a string-processing language, has several string-related
-    # functions, many of which rely heavily on regular expressions.
+    # AWK tiene algunas funciones para procesamiento de strings,
+    # y muchas dependen fuertemente en expresiones regulares.
 
-    # Search and replace, first instance (sub) or all instances (gsub)
-    # Both return number of matches replaced
+    # Buscar y remplazar, primer instancia (sub) o todas las instancias (gsub)
+    # Ambas regresan el número de matches remplazados.
     localvar = "fooooobar"
     sub("fo+", "Meet me at the ", localvar) # localvar => "Meet me at the bar"
     gsub("e+", ".", localvar) # localvar => "m..t m. at th. bar"
