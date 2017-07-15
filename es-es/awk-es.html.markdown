@@ -8,17 +8,17 @@ translators:
 lang: es-es
 ---
 
-AWK is a standard tool on every POSIX-compliant UNIX system. It's like a
-stripped-down Perl, perfect for text-processing tasks and other scripting
-needs. It has a C-like syntax, but without semicolons, manual memory
-management, or static typing. It excels at text processing. You can call to it
-from a shell script, or you can use it as a stand-alone scripting language.
+AWK es una herramienta estándar en cada sistema UNIX compatible con POSIX.
+Es como un Perl restringido, perfecto para tareas de procesamiento de texto y
+otras necesidades de scripting. Tiene una sintaxis similar a C, pero sin 
+puntos y comas, manejo manual de memoria y tipado estático. Puedes llamarlo 
+desde un script de shell o usarlo como un lenguaje stand-alone para scripting.
 
-Why use AWK instead of Perl? Mostly because AWK is part of UNIX. You can always
-count on it, whereas Perl's future is in question. AWK is also easier to read
-than Perl. For simple text-processing scripts, particularly ones that read
-files line by line and split on delimiters, AWK is probably the right tool for
-the job.
+¿Por qué elegir AWK sobre Perl? Principalmente, porque AWK es parte de UNIX.
+Siempre puedes contar con él, mientras que el futuro de Perl está en duda. AWK
+es más fácil de leer que Perl. Para scripts sencillos de procesamiento de texto,
+particularmente si es para leer archivos línea a línea y dividir por
+delimitadores, probablemente AWK es la herramienta correcta para el trabajo.
 
 ```awk
 #!/usr/bin/awk -f
