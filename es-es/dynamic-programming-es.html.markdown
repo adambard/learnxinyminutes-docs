@@ -44,13 +44,10 @@ for i=0 to n-1
 ```
 
 ### Algunos problemas famosos de Programación Dinámica (DP).
-```
-Algoritmo Floyd Warshall(EN) - [Tutorial y código fuente del programa en C](http://www.thelearningpoint.net/computer-science/algorithms-all-to-all-shortest-paths-in-graphs---floyd-warshall-algorithm-with-c-program-source-code)
 
-Problema de la Mochila(EN) - [Tutorial y código fuente del programa en C](http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---the-integer-knapsack-problem)
-
-
-Problema de Subsecuencia Común mas Larga(EN) - [Tutorial y código fuente del programa en C](http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---longest-common-subsequence)
+- Algoritmo Floyd Warshall(EN) - [Tutorial y código fuente del programa en C](http://www.thelearningpoint.net/computer-science/algorithms-all-to-all-shortest-paths-in-graphs---floyd-warshall-algorithm-with-c-program-source-code)
+- Problema de la Mochila(EN) - [Tutorial y código fuente del programa en C](http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---the-integer-knapsack-problem)
+- Problema de Subsecuencia Común mas Larga(EN) - [Tutorial y código fuente del programa en C](http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---longest-common-subsequence)
 
 ## Recursos en línea
 
