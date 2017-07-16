@@ -111,6 +111,8 @@ man tcsh
 # Assign nothing
 set var
 # Assign a numeric value
+# the '@' denotes the expression is arithmetic; it works similar to 'set' but
+# the right value can be a numeric expression.
 @ var = 1 + 2
 # Assign a string value
 set var = "Hello, I am the contents of 'var' variable"
