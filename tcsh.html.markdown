@@ -154,7 +154,7 @@ echo $var[3-]
 echo $var[-3]
 
 ### Special Variables
-# $argv         list of command-line arguments 
+# $argv         list of command-line arguments
 # $argv[0]      this file-name (the file of the script file)
 # $# $0, $n, $* are the same as $#argv, $argv[0], $argv[n], $argv[*]
 # $status, $?   the exit code of the last command that executed
@@ -283,11 +283,11 @@ if ( "$name" == "Daniya" || "$name" == "Zach" ) then
     echo "This will run if $name is Daniya OR Zach."
 endif
 
-# String matching operators ( `=~' and `!~' ) 
+# String matching operators ( `=~' and `!~' )
 # The ‘==’ ‘!=’ ‘=~’ and ‘!~’ operators compare their arguments as strings;
-# all others operate on numbers. The operators ‘=~’ and ‘!~’ are like ‘!=’ 
+# all others operate on numbers. The operators ‘=~’ and ‘!~’ are like ‘!=’
 # and ‘==’ except that the right hand side is a glob-pattern against which
-# the left hand operand is matched. 
+# the left hand operand is matched.
 
 if ( $user =~ ni[ck]* ) echo "Greetings Mr. Nicholas."
 if ( $user !~ ni[ck]* ) echo "Hey, get out of Nicholas PC."
@@ -380,10 +380,10 @@ endif
 # -P  returns the permissions as octal number  -Pmode returns perm. AND mode
 
 # this will display the date as Unix-time integer: 1498511486
-filetest -M README.md 
+filetest -M README.md
 
 # This will display "Tue Jun 27 00:11:26 2017"
-filetest -M: README.md 
+filetest -M: README.md
 
 # --- Basic Commands ----------------------------------------------------------
 
@@ -577,11 +577,26 @@ while ( $#lst )
 	shift lst
 end
 
+# separate command-line arguments to options or parameters
+set options
+set params
+set lst = ( $* )
+while ( $#lst )
+	if ( "$lst[1]" =~ '-*' ) then
+		set options = ( $options $lst[1] )
+	else
+		set params = ( $params $lst[1] )
+	endif
+	shift lst
+end
+echo 'options =' $options
+echo 'paramaters =' $params
+
 #### REPEAT
 # Syntax: repeat count command
 #
 # The specified command, which is subject to the same restrictions as the
-# command in the one line if statement above, is executed count times. 
+# command in the one line if statement above, is executed count times.
 # I/O redirections occur exactly once, even if count is 0.
 #
 # TIP: in most cases prefer `while'
@@ -596,7 +611,7 @@ repeat 3 echo "ding dong"
 # supplied to it and apply them to the commands that it refers to.
 # Tcsh is the only shell that provides this feature.
 #
-# \!#   argument selector for all arguments, including the alias/command 
+# \!#   argument selector for all arguments, including the alias/command
 #       itself; arguments need not be supplied.
 # \!*   argument selector for all arguments, excluding the alias/command;
 #       arguments need not be supplied.
@@ -704,10 +719,10 @@ end
 # * It is smaller and consume far less memory than bash, zsh even mksh!
 #   (memusage reports)
 # * TCSH still has bugs; less but have; if you write readable clean code you'll
-#   find none; well almost none... This has to do with the implementation of 
+#   find none; well almost none... This has to do with the implementation of
 #   csh; that no means the other shells has good implementation.
 # * no one well known shell is capable for regular programming; if your script
-#   getting big, use a programming language, or at least PHP or Perl (good 
+#   getting big, use a programming language, or at least PHP or Perl (good
 #   script languages).
 #
 # Advises:
