@@ -46,7 +46,7 @@ Some more files:
 # spaces and terminated with a newline.
 #
 # The shell's standard output it is the terminal screen but can be also a file
-# or a pipe-line; depended of they way that you will run it.
+# or a pipe-line; depended of the way that you will run it.
 #
 # The echo_style shell variable may be set to emulate (or not) the flags and
 # escape sequences.
