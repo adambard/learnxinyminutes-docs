@@ -365,20 +365,17 @@ echo $result
 # C's operators ++ and -- are supported if there is not assignment
 @ result ++
 
-# None shell created to do mathematics;
-# Except for the basic operations, use an external command with backslashes.
+# No shell is designed to do math;
+# Except for the integer expressions, use an external command with backquote.
 #
-# I suggest the calc as the best option.
+# I suggest the `calc' as the best option; it is powerful and fast.
 # (http://www.isthe.com/chongo/tech/comp/calc/)
 #
-# The standard Unix's bc as second option
+# The standard UNIX's bc as second option
 # (https://www.gnu.org/software/bc/manual/html_mono/bc.html)
 #
-# The standard Unix's AWK as third option
-# (https://www.gnu.org/software/gawk/manual/gawk.html)
-
-# You can also use `perl', `php' or even several BASICs, but prefer the
-# above utilities for faster load-and-run results.
+# You can also use `perl', or several BASICs, but prefer the above
+# utilities for faster load-and-run results.
 
 # real example: (that I answer in StackExchange)
 # REQ: x := 1001b OR 0110b
@@ -818,4 +815,27 @@ end
 
 #### a nice prompt
 #    set prompt = "%B%{\033[35m%}%t %{\033[32m%}%n@%m%b %C4 %# "
+
+#### numeric expression replacement benchmarks
+# tcsh '@' native loop, integer only = 0.09 sec
+# tcsh '@' external, integer only = 8.20 sec
+# each test executed at least 2 times to ensure that the program is loaded
+# in cache
+
+# --- the script for the tests ---
+#!/bin/tcsh -f
+set count = 1000
+while ( $count )
+	echo '1.0/2.0' | program > /dev/null
+	@ count --
+end
+
+# Results in seconds:
+# calc     1.62 backquotes instead of echo 1.52
+# bc       1.80
+# sbasic   1.96 (SmallBASIC console-version)
+# bas      3.18 (BASIC 2.4 by Michael Haardt)
+# perl     4.98
+# awk      5.02 (GNU version)
+# python2 18.05
 ```
