@@ -27,14 +27,16 @@ Some more files:
 
 ```tcsh
 #!/bin/tcsh
-# First line of the script is shebang which tells the system how to execute the
-# script: http://en.wikipedia.org/wiki/Shebang_(Unix)
-# TCSH emulates the shebang on systems which don't understand it.
 #
 # The lines which starting with '#' are comments
 # The lines of comments ignored by the shell; all others are executed.
 # Empty lines are ignored too.
-
+#
+# First line of the script is the so called "shebang" which tells the system
+# how to execute the script (see http://en.wikipedia.org/wiki/Shebang_(Unix))
+#
+# TCSH emulates the shebang on systems which don't understand it.
+#
 # In most cases you'll use `#!/bin/tcsh -f', because `-f' option does not load
 # any resource or start-up files, or perform any command hashing, and thus
 # starts faster.
@@ -44,20 +46,22 @@ Some more files:
 # spaces and terminated with a newline.
 #
 # The shell's standard output it is the terminal screen but can be also a file
-# or a pipe-line.
+# or a pipe-line; depended of they way that you will run it.
 #
 # The echo_style shell variable may be set to emulate (or not) the flags and
 # escape sequences.
 
-# Display the value of echo_style
+# Print the value of echo_style
 echo $echo_style
 
 # Enable `echo' to support backslashed characters and `-n' option (no new line)
 # This is the default for tcsh, but your distro may change it. Slackware has
-# done so.
+# done so. AFAIK this is undocumented: if your script run it as `csh' instead
+# of `tcsh' the echo_style also will be altered for compatibility with
+# Berkley's C-Shell.
 set echo_style = both
 
-# Prints "Hello world"
+# Several ways to print "Hello world"
 echo Hello world
 echo "Hello world"
 echo 'Hello world'
@@ -75,6 +79,9 @@ echo `echo Hello world`
 # So if you want to include one of those characters inside the string, type:
 # \"   = for double quotes
 # \'   = for single quotes
+#
+# Using the \ as the last character of a line, it means that the line continues
+# to the next line; This is very useful on long pipe-lines and other cases.
 #
 # To display the backslash you have to type it two times, like this: \\
 
@@ -122,7 +129,7 @@ make && ( espeak "BOSS, compilation finished"; make install )
 # prints the home directory but leaving you where you were
 (cd; pwd); pwd
 
-# Read tcsh man-page documentation
+# Read tcsh manual page
 man tcsh
 
 # --- Variables ---------------------------------------------------------------
@@ -268,7 +275,7 @@ LABEL
 (grep 'AGP' /usr/src/linux/Documentation/* > output-file.txt) >& error-file.txt
 
 # example: read a name from standard input and display a greetings message
-echo -n "Enter your name? "
+echo -n "Enter your name: "
 set name = $<
 echo "Greetings $name"
 
@@ -319,6 +326,9 @@ endif
 
 if ( $user =~ ni[ck]* ) echo "Greetings Mr. Nicholas."
 if ( $user !~ ni[ck]* ) echo "Hey, get out of Nicholas PC."
+
+# TIP: if something goes wrong with your expressions, try to enclose it
+#      in quotes.
 
 # Arithmetic expressions are denoted with the following format:
 @ result = 10 + 5
@@ -458,28 +468,27 @@ ls -l | grep key | less
 # tcsh, along with grep, gcc and perl is one of the first Unix programs that
 # ported to DOS (with EMX DOS extender) and later to Windows (1998).
 
-# example: this will convert tcsh to PostScript and will show it with okular
-zcat /usr/man/man1/tcsh.1.gz | groff -Tps -man | okular -
+# example: this will convert tcsh to PDF and will show it with okular
+zcat /usr/man/man1/tcsh.1.gz | groff -Tpdf -man | okular -
 
 # a better version
-zcat `locate -b -n 1 '\tcsh.1.gz'` | groff -Tps -man | okular -
+zcat `locate -b -n 1 '\tcsh.1.gz'` | groff -Tpdf -man | okular -
 
 # even better
-set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz");
- zcat `eval $loc` | groff -Tps -man | okular -
+set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz"); \
+ zcat `eval $loc` | groff -Tpdf -man | okular -
 
-# the same, modified to create man page pdf
-set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz");
- zcat `eval $loc` | groff -Tps -man | ps2pdf - ${page}.pdf
-
-# the same, but now shows the ${page}.pdf too
-set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz");
- zcat `eval $loc` | groff -Tps -man | ps2pdf - ${page}.pdf && okular tcsh.pdf
+# even more better...
+# This one-line code will ask you to type the page that are you
+# looking for and then it will show its manual with okular
+echo -n "Enter the command you are looking for or press ^C to cancel: "; \
+ set page = $<; \
+ set loc = (locate -b -n 1 "\\\\"${page}".1.gz"); \
+ zcat `eval $loc` | groff -Tpdf -man | okular -
 
 # NOTE: `okular' is the default application of KDE environment and it shows
-# postcript and pdf files. You can replace it with your lovely pdf viewer.
-# zcat, locate, groff, are common programs in all Unices. `ps2pdf' program
-# is part of `ghostscript' package that is widely used.
+# PostScript and PDF files. You can replace it with your lovely PDF viewer.
+# zcat, locate, groff, are common programs in all Unices.
 
 # --- Control Flow ------------------------------------------------------------
 
@@ -504,7 +513,7 @@ set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz");
 #
 # If `expr' evaluates true, then command is executed.
 # `command' must be a simple command, not an alias, a pipeline, a command list
-# or a parenthesized command list. With few words, avoid to use it.
+# or a parenthesised command list. With few words, avoid to use it.
 #
 # BUG: Input/output redirection occurs even if expr is false and command is
 # thus not executed.
@@ -576,7 +585,7 @@ foreach f ( a.txt b.txt c.txt )
 	cat $f
 end
 
-# example: convert all wma files on this directory to ogg format
+# example: convert all .wma files (windows audio) to .ogg format
 foreach f ( *.wma )
 	ffmpeg -i "$f" "$f:r".ogg
 end
@@ -618,7 +627,7 @@ while ( $#lst )
 	shift lst
 end
 echo 'options =' $options
-echo 'paramaters =' $params
+echo 'parameters =' $params
 
 #### REPEAT
 # Syntax: repeat count command
@@ -722,12 +731,8 @@ while ( 1 )
 		echo "You found it"
 		exit 1
 	else
-		if ( $secret > $guess ) then
-			echo "its greater"
-		else if ( $secret < $guess ) then
-				echo "its lesser"
-			endif
-		endif
+		if ( $secret > $guess ) echo "its greater"
+		if ( $secret < $guess ) echo "its lesser"
 	endif
 end
 # --- secretnum.csh --- end ---------------------------------------------------
@@ -738,10 +743,10 @@ end
 #### About [T]CSH:
 # * CSH is notorious about its bugs;
 # * It was also famous about its advanced interactive mode.
-# * TCSH is famous that have the most advanced completition subsystem.
+# * TCSH is famous that have the most advanced completion subsystem.
 # * TCSH is famous that have the most advanced aliases subsystem; aliases
 #   can take parameters and often used as functions!
-# * TCSH is well known that preferred by people  (me too) because of better
+# * TCSH is well known that preferred by people (me too) because of better
 #   syntax. All shells are using Thomson's syntax with exception of [t]csh,
 #   fish and plan9's shells (rc, ex).
 # * It is smaller and consume far less memory than bash, zsh even mksh!
