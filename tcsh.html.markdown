@@ -82,7 +82,7 @@ echo `echo Hello world`
 # before executed by the `echo'. This is the correct, not a bug.
 echo line1\nline2
 
-# To prints the two lines you have to type
+# To print the two lines you have to type
 echo "line1\nline2"
 # or
 echo 'line1\nline2'
