@@ -136,14 +136,14 @@ if a < 0 [print "a is negative"]
 ; Evaluate a block of code if a given condition is true, else evaluate an
 ; alternative block of code. If the last expressions in both blocks have the
 ; same type, EITHER can be used inside an expression.
-either a < 0 [
+either a > 0 [
+   msg: "positive"
+][
    either a = 0 [
        msg: "zero"
    ][
        msg: "negative"
    ]
-][
-   msg: "positive"
 ]
 
 print ["a is " msg lf]
@@ -151,14 +151,14 @@ print ["a is " msg lf]
 ; There is an alternative way to write this
 ; (Which is allowed because all code paths return a value of the same type):
 
-msg: either a < 0 [
+msg: either a > 0 [
+   "positive"
+][
    either a = 0 [
        "zero"
    ][
        "negative"
    ]
- ][
-   "positive"
 ]
 print ["a is " msg lf]
 
