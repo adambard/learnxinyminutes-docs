@@ -3,7 +3,7 @@ language: Visual Basic
 contributors:
     - ["Brian Martin", "http://brianmartin.biz"]
 translators:
-    - ["Abner Chou", "http://github.com/NoahDragon"]
+    - ["Abner Chou", "http://cn.abnerchou.me"]
 lang: zh-cn
 filename: learnvisualbasic.vb-cn
 ---

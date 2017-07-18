@@ -50,8 +50,8 @@ __Kuten on tämäkin teksti.__
 **_Kuten tämäkin!_**
 *__Kuten tämäkin!__*
 
-<!-- Github-tyylisessä Markdownissa, jota käytetään tiedostojen esittämiseksi
-Githubissa, meillä on käytössämme myös yliviivaus: -->
+<!-- GitHub-tyylisessä Markdownissa, jota käytetään tiedostojen esittämiseksi
+GitHubissa, meillä on käytössämme myös yliviivaus: -->
 
 ~~Tämä teksti on yliviivattua.~~
 
@@ -150,7 +150,7 @@ rivin neljällä välilyönnillä tai tabulaattorilla. -->
 
 John ei tiennyt edes mitä `go_to()` -funktio teki!
 
-<!-- Githubin Markdownissa voit käyttää erityissyntaksia koodille. -->
+<!-- GitHubin Markdownissa voit käyttää erityissyntaksia koodille. -->
 
 \`\`\`ruby <!-- paitsi että poista nuo kenoviivat, vain ```ruby ! -->
 def foobar
@@ -158,7 +158,7 @@ def foobar
 end
 \`\`\` <!-- tästä myös, ei kenoviivoja, vain ``` -->
 
-<!-- Yllä oleva teksti ei vaadi sisennystä. Lisäksi Github käyttää ``` jälkeen
+<!-- Yllä oleva teksti ei vaadi sisennystä. Lisäksi GitHub käyttää ``` jälkeen
 mainitsemasi kielen syntaksin korostusta  -->
 
 <!-- Vaakaviiva (<hr />) -->
@@ -231,13 +231,13 @@ haluan kirjoittaa *tämän tekstin jonka ympärillä on asteriskit* mutta en hal
 sen kursivoituvan, joten teen näin: \*tämän tekstin ympärillä on asteriskit\*.
 
 <!-- Näppäimistön näppäimet -->
-<!-- Githubin Markdownissa, voit käyttää <kbd> -tagia esittämään näppäimiä -->
+<!-- GitHubin Markdownissa, voit käyttää <kbd> -tagia esittämään näppäimiä -->
 
 Tietokoneesi kaatui? Kokeile painaa
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
 
 <!-- Taulukot -->
-<!-- Taulukot ovat saatavilla vain Githubin markdownissa ja ne ovat melko
+<!-- Taulukot ovat saatavilla vain GitHubin markdownissa ja ne ovat melko
 vaivalloisia käyttää, mutta jos todella haluat: -->
 
 | Kolumni1     | Kolumni2 | Kolumni3      |

@@ -7,9 +7,11 @@ contributors:
   - ["Luke Holder", "http://twitter.com/lukeholder"]
   - ["Tristan Hume", "http://thume.ca/"]
   - ["Nick LaMuro", "https://github.com/NickLaMuro"]
+
 translators:
   - ["Geoffrey Roguelon", "https://github.com/GRoguelon"]
   - ["Nami-Doc", "https://github.com/Nami-Doc"]
+  - ["Sylvain Abélard", "http://github.com/abelards"]
 lang: fr-fr
 ---
 
@@ -22,19 +24,23 @@ Personne ne les utilise
 Vous devriez en faire de même
 =end
 
-# Tout d'abord : Tout est un objet.
+# Tout d'abord : tout est un objet.
 
 # Les nombres sont des objets
 
-3.class #=> Fixnum
+3.class #=> Fixnum # on voit que c'est une classe Ruby et non un "type spécial"
 
-3.to_s #=> "3"
+3.to_s #=> "3" # on peut appeler des méthodes sur ces objets, comme `to_s` (transforme en texte)
 
 # Les opérateurs de base
 1 + 1 #=> 2
 8 - 1 #=> 7
 10 * 2 #=> 20
-35 / 5 #=> 7
+22 / 7 #=> 3 # si les deux éléments sont entiers, c'est une division entière
+22.0 / 7 #=> 3.142857142857143
+22 / 7.0 #=> 3.142857142857143
+2**10 #=> 1024 # exposant
+1024 % 10 #=> 4 # modulo (reste de la division euclidienne)
 
 # Les opérateurs sont juste des raccourcis
 # pour appeler une méthode sur un objet
@@ -42,9 +48,9 @@ Vous devriez en faire de même
 10.* 5 #=> 50
 
 # Les valeurs spéciales sont des objets
-nil # Nul
-true # Vrai
-false # Faux
+nil # nul, vide ou indéfini
+true # vrai
+false # faux
 
 nil.class #=> NilClass
 true.class #=> TrueClass
@@ -60,8 +66,7 @@ false.class #=> FalseClass
 !true  #=> false
 !false #=> true
 
-# à part false lui-même, nil est la seule autre valeur 'false'
-
+# à part false lui-même, nil est la seule autre valeur "considérée comme fausse"
 !nil   #=> true
 !false #=> true
 !0     #=> false
@@ -73,7 +78,6 @@ false.class #=> FalseClass
 2 >= 2 #=> true
 
 # Les chaînes de caractères sont des objets
-
 'Je suis une chaîne de caractères'.class #=> String
 "Je suis également une chaîne de caractères".class #=> String
 
@@ -83,6 +87,15 @@ placeholder = "utiliser l'interpolation de chaîne de caractères"
 
 # Affichez un message
 puts "J'affiche à l'écran!"
+
+# Il y a quelques autres raccourcis pour les chaînes de caractères
+rb = "Ruby"
+interpolation = "Bonjour Ruby" # s'écrit aussi %Q[Bonjour #{rb}] %Q{Bonjour #{rb}} avec l'interpolation
+literal = "Bonjour \#{rb}" # avec le backslash, le dièse est un "vrai dièse" (le slash ne s'affiche que pour le debug)
+literal == %q[Bonjour #{rb}] # le Q majuscule fait l'interpolation, le q minuscule ne la fait pas
+multi = %Q[Cette chaîne
+est sur plusieurs
+lignes] # => "Cette chaîne\nest sur plusieurs\nlignes" # le caractère \n signifie retour à la ligne
 
 # Variables
 x = 25 #=> 25
@@ -131,7 +144,7 @@ array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 [1, "hello", false] #=> [1, "hello", false]
 
 # Les tableaux peuvent être indexés
-# Du début
+# Trouver la valeur en donnant la position en partant du début (le premier élément est à l'index 0)
 array[0] #=> 1
 array[12] #=> nil
 
@@ -140,13 +153,13 @@ array[12] #=> nil
 array.[] 0 #=> 1
 array.[] 12 #=> nil
 
-# Depuis la fin
+# On peut compter en partant de la fin avec un index négatif (le dernier élément est à l'index -1)
 array[-1] #=> 5
 
-# Avec un index de début et de fin
-array[2, 4] #=> [3, 4, 5]
+# Avec un index de début et un nombre d'éléments [position, nombre]
+array[1, 3] #=> [2, 3, 4]
 
-# Ou avec un intervalle
+# Ou avec un intervalle [index de début .. index de fin]
 array[1..3] #=> [2, 3, 4]
 
 # Ajoutez un élément au tableau comme ceci
@@ -180,11 +193,11 @@ new_hash.keys #=> [:defcon, :action]
 # Structures de contrôle
 
 if true
-  "si instruction"
+  "si l'instruction est vraie"
 elsif false
-  "autrement si, facultatif"
+  "si l'instruction de départ n'était pas vraie, et que cette nouvelle condition est vraie (facultatif)"
 else
-  "autrement, également facultatif"
+  "tous les autres cas (il est également facultatif de faire une clause else)"
 end
 
 for compteur in 1..5

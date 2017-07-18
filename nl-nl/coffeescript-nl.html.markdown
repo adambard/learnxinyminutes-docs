@@ -6,6 +6,7 @@ contributors:
 translators:
   - ["Jelle Besseling", "https://github.com/Jell-E"]
   - ["D.A.W. de Waal", "http://github.com/diodewaal"]
+  - ["Sam van Kampen", "http://tehsvk.net"]
 filename: coffeescript-nl.coffee
 lang: nl-nl
 ---
@@ -13,10 +14,10 @@ lang: nl-nl
 CoffeeScript is een kleine programmeertaal die direct compileert naar
 JavaScript en er is geen interpretatie tijdens het uitvoeren.
 CoffeeScript probeert om leesbare, goed geformatteerde en goed draaiende
-JavaScript code te genereren, die in elke JavaScript runtime werkt, als een
+JavaScript code te genereren, die in elke JavaScript-runtime werkt, als een
 opvolger van JavaScript.
 
-Op [de CoffeeScript website](http://coffeescript.org/), staat een
+Op [de CoffeeScript-website](http://coffeescript.org/), staat een
 volledigere tutorial voor CoffeeScript.
 
 ``` coffeescript
@@ -26,7 +27,7 @@ volledigere tutorial voor CoffeeScript.
 
 ###
 Blokken commentaar maak je zo, ze vertalen naar JavaScripts */ en /*
-in de uitvoer van de CoffeeScript compiler.
+in de uitvoer van de CoffeeScript-compiler.
 
 Het is belangrijk dat je ongeveer snapt hoe JavaScript
 werkt voordat je verder gaat.
@@ -43,7 +44,7 @@ getal = -42 if tegengestelde #=> if(tegengestelde) { getal = -42; }
 kwadraat = (x) -> x * x #=> var kwadraat = function(x) { return x * x; }
 
 vul = (houder, vloeistof = "koffie") ->
-  "Nu de #{houder} met #{koffie} aan het vullen..."
+  "Nu de #{houder} met #{vloeistof} aan het vullen..."
 #=>var vul;
 #
 #vul = function(houder, vloeistof) {
@@ -80,7 +81,7 @@ wedstrijd = (winnaar, lopers...) ->
 alert "Ik wist het!" if elvis?
 #=> if(typeof elvis !== "undefined" && elvis !== null) { alert("I knew it!"); }
 
-# Lijst abstractie:
+# Lijstabstracties:
 derdemachten = (wiskunde.derdemacht num for num in lijst)
 #=>derdemachten = (function() {
 #	var _i, _len, _results;

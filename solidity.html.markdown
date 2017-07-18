@@ -8,7 +8,7 @@ contributors:
 
 Solidity lets you program on [Ethereum](https://www.ethereum.org/), a
 blockchain-based virtual machine that allows the creation and
-execution of smart contracts, without needing centralized or trusted parties.
+execution of smart contracts, without requiring centralized or trusted parties.
 
 Solidity is a statically typed, contract programming language that has
 similarities to Javascript and C. Like objects in OOP, each contract contains
@@ -18,8 +18,17 @@ global variables.
 
 Some Ethereum contract examples include crowdfunding, voting, and blind auctions.
 
+There is a high risk and high cost of errors in Solidity code, so you must be very careful to test
+and slowly rollout. WITH THE RAPID CHANGES IN ETHEREUM, THIS DOCUMENT IS UNLIKELY TO STAY UP TO
+DATE, SO YOU SHOULD FOLLOW THE SOLIDITY CHAT ROOM AND ETHEREUM BLOG FOR THE LATEST. ALL CODE HERE IS
+PROVIDED AS IS, WITH SUBSTANTIAL RISK OF ERRORS OR DEPRECATED CODE PATTERNS.
+
+Unlike other code, you may also need to add in design patterns like pausing, deprecation, and
+throttling usage to reduce risk. This document primarily discusses syntax, and so excludes many
+popular design patterns.
+
 As Solidity and Ethereum are under active development, experimental or beta
-features are explicitly marked, and subject to change. Pull requests welcome.
+features are typically marked, and subject to change. Pull requests welcome.
 
 ```javascript
 // First, a simple Bank contract
@@ -36,10 +45,11 @@ features are explicitly marked, and subject to change. Pull requests welcome.
 
 /* 'contract' has similarities to 'class' in other languages (class variables,
 inheritance, etc.) */
-contract SimpleBank { // CamelCase
+contract SimpleBank { // CapWords
     // Declare state variables outside function, persist through life of contract
 
     // dictionary that maps addresses to balances
+    // always be careful about overflow attacks with numbers
     mapping (address => uint) private balances;
 
     // "private" means that other contracts can't directly query balances
@@ -49,10 +59,10 @@ contract SimpleBank { // CamelCase
     // 'public' makes externally readable (not writeable) by users or contracts
 
     // Events - publicize actions to external listeners
-    event DepositMade(address accountAddress, uint amount);
+    event LogDepositMade(address accountAddress, uint amount);
 
     // Constructor, can receive one or many variables here; only one allowed
-    function AcmeBank() {
+    function SimpleBank() {
         // msg provides details about the message that's sent to the contract
         // msg.sender is contract caller (address of contract creator)
         owner = msg.sender;
@@ -65,7 +75,7 @@ contract SimpleBank { // CamelCase
         // no "this." or "self." required with state variable
         // all values set to data type's initial value by default
 
-        DepositMade(msg.sender, msg.value); // fire event
+        LogDepositMade(msg.sender, msg.value); // fire event
 
         return balances[msg.sender];
     }
@@ -76,11 +86,14 @@ contract SimpleBank { // CamelCase
     /// @return The balance remaining for the user
     function withdraw(uint withdrawAmount) public returns (uint remainingBal) {
         if(balances[msg.sender] >= withdrawAmount) {
+            // Note the way we deduct the balance right away, before sending - due to
+            // the risk of a recursive call that allows the caller to request an amount greater
+            // than their balance
             balances[msg.sender] -= withdrawAmount;
 
             if (!msg.sender.send(withdrawAmount)) {
-                // to be safe, may be sending to contract that
-                // has overridden 'send' which may then fail
+                // increment back only on fail, as may be sending to contract that
+                // has overridden 'send' on the receipt end
                 balances[msg.sender] += withdrawAmount;
             }
         }
@@ -150,8 +163,10 @@ address public owner;
 
 // All addresses can be sent ether
 owner.send(SOME_BALANCE); // returns false on failure
-if (owner.send) {} // typically wrap in 'if', as contract addresses have
-// functions have executed on send and can fail
+if (owner.send) {} // REMEMBER: wrap in 'if', as contract addresses have
+// functions executed on send and these can fail
+// Also, make sure to deduct balances BEFORE attempting a send, as there is a risk of a recursive
+// call that can drain the contract
 
 // can override send by defining your own
 
@@ -215,9 +230,9 @@ mapping (string => uint) public balances;
 balances["charles"] = 1;
 console.log(balances["ada"]); // is 0, all non-set key values return zeroes
 // 'public' allows following from another contract
-contractName.balances("claude"); // returns 1
+contractName.balances("charles"); // returns 1
 // 'public' created a getter (but not setter) like the following:
-function balances(address _account) returns (uint balance) {
+function balances(string _account) returns (uint balance) {
     return balances[_account];
 }
 
@@ -351,8 +366,11 @@ function b() {
 // access events from outside blockchain (with lightweight clients)
 // typically declare after contract parameters
 
+// Typically, capitalized - and add Log in front to be explicit and prevent confusion
+// with a function call
+
 // Declare
-event Sent(address from, address to, uint amount); // note capital first letter
+event LogSent(address indexed from, address indexed to, uint amount); // note capital first letter
 
 // Call
 Sent(from, to, amount);
@@ -396,7 +414,10 @@ onlyIfState(State.A)
 modifier checkValue(uint amount) {
     _
     if (msg.value > amount) {
-        msg.sender.send(amount - msg.value);
+        uint amountToRefund = amount - msg.value;
+        if (!msg.sender.send(amountToRefund)) {
+            throw;
+        }
     }
 }
 
@@ -408,6 +429,21 @@ modifier checkValue(uint amount) {
 
 // Syntax same as javascript, but no type conversion from non-boolean
 // to boolean (comparison operators must be used to get the boolean val)
+
+// For loops that are determined by user behavior, be careful - as contracts have a maximal
+// amount of gas for a block of code - and will fail if that is exceeded
+// For example:
+for(uint x = 0; x < refundAddressList.length; x++) {
+    if (!refundAddressList[x].send(SOME_AMOUNT)) {
+       throw;
+    }
+}
+
+// Two errors above:
+// 1. A failure on send stops the loop from completing, tying up money
+// 2. This loop could be arbitrarily long (based on the amount of users who need refunds), and
+// therefore may always fail as it exceeds the max gas for a block
+// Instead, you should let people withdraw individually from their subaccount, and mark withdrawn
 
 
 // 7. OBJECTS/CONTRACTS
@@ -587,13 +623,13 @@ contract CrowdFunder {
     address public fundRecipient; // creator may be different than recipient
     uint public minimumToRaise; // required to tip, else everyone gets refund
     string campaignUrl;
+    byte constant version = 1;
 
     // Data structures
     enum State {
         Fundraising,
-        ExpiredRefundPending,
-        Successful,
-        ExpiredRefundComplete
+        ExpiredRefund,
+        Successful
     }
     struct Contribution {
         uint amount;
@@ -604,11 +640,11 @@ contract CrowdFunder {
     State public state = State.Fundraising; // initialize on create
     uint public totalRaised;
     uint public raiseBy;
+    uint public completeAt;
     Contribution[] contributions;
 
-    event fundingReceived(address addr, uint amount, uint currentTotal);
-    event allRefundsSent();
-    event winnerPaid(address winnerAddress);
+    event LogFundingReceived(address addr, uint amount, uint currentTotal);
+    event LogWinnerPaid(address winnerAddress);
 
     modifier inState(State _state) {
         if (state != _state) throw;
@@ -620,10 +656,13 @@ contract CrowdFunder {
         _
     }
 
+    // Wait 6 months after final contract state before allowing contract destruction
     modifier atEndOfLifecycle() {
-        if(state != State.ExpiredRefundComplete && state != State.Successful) {
+    if(!((state == State.ExpiredRefund || state == State.Successful) &&
+        completeAt + 6 months < now)) {
             throw;
         }
+        _
     }
 
     function CrowdFunder(
@@ -651,9 +690,10 @@ contract CrowdFunder {
         );
         totalRaised += msg.value;
 
-        fundingReceived(msg.sender, msg.value, totalRaised);
+        LogFundingReceived(msg.sender, msg.value, totalRaised);
 
         checkIfFundingCompleteOrExpired();
+        return contributions.length - 1; // return id
     }
 
     function checkIfFundingCompleteOrExpired() {
@@ -663,9 +703,9 @@ contract CrowdFunder {
 
             // could incentivize sender who initiated state change here
         } else if ( now > raiseBy )  {
-            state = State.ExpiredRefundPending;
-            refundAll();
+            state = State.ExpiredRefund; // backers can now collect refunds by calling getRefund(id)
         }
+        completeAt = now;
     }
 
     function payOut()
@@ -676,22 +716,27 @@ contract CrowdFunder {
             throw;
         }
 
-        winnerPaid(fundRecipient);
+
+        LogWinnerPaid(fundRecipient);
     }
 
-    function refundAll()
+    function getRefund(id)
     public
-    inState(State.ExpiredRefundPending)
+    inState(State.ExpiredRefund)
     {
-        uint length = contributions.length;
-        for (uint i = 0; i < length; i++) {
-            if(!contributions[i].contributor.send(contributions[i].amount)) {
-                throw;
-            }
+        if (contributions.length <= id || id < 0 || contributions[id].amount == 0 ) {
+            throw;
         }
 
-        allRefundsSent();
-        state = State.ExpiredRefundComplete;
+        uint amountToRefund = contributions[id].amount;
+        contributions[id].amount = 0;
+
+        if(!contributions[id].contributor.send(amountToSend)) {
+            contributions[id].amount = amountToSend;
+            return false;
+        }
+
+      return true;
     }
 
     function removeContract()
@@ -700,12 +745,12 @@ contract CrowdFunder {
     atEndOfLifecycle()
     {
         selfdestruct(msg.sender);
+        // creator gets all money that hasn't be claimed
     }
 
     function () { throw; }
 }
 // ** END EXAMPLE **
-
 
 // 10. OTHER NATIVE FUNCTIONS
 
@@ -732,8 +777,14 @@ sha3("ab", "cd");
 ripemd160("abc");
 sha256("def");
 
+// 11. SECURITY
 
-// 11. LOW LEVEL FUNCTIONS
+// Bugs can be disastrous in Ethereum contracts - and even popular patterns in Solidity,
+// may be found to be antipatterns
+
+// See security links at the end of this doc
+
+// 12. LOW LEVEL FUNCTIONS
 // call - low level, not often used, does not provide type safety
 successBoolean = someContractAddress.call('function_name', 'arg1', 'arg2');
 
@@ -742,7 +793,7 @@ successBoolean = someContractAddress.call('function_name', 'arg1', 'arg2');
 someContractAddress.callcode('function_name');
 
 
-// 12. STYLE NOTES
+// 13. STYLE NOTES
 // Based on Python's PEP8 style guide
 
 // Quick summary:
@@ -753,7 +804,7 @@ someContractAddress.callcode('function_name');
 // else should be placed on own line
 
 
-// 13. NATSPEC COMENTS
+// 14. NATSPEC COMENTS
 // used for documentation, commenting, and external UIs
 
 // Contract natspec - always above contract definition
@@ -773,9 +824,8 @@ someContractAddress.callcode('function_name');
 - [Solidity Docs](https://solidity.readthedocs.org/en/latest/)
 - [Solidity Style Guide](https://ethereum.github.io/solidity//docs/style-guide/): Ethereum's style guide is heavily derived from Python's [pep8](https://www.python.org/dev/peps/pep-0008/) style guide.
 - [Browser-based Solidity Editor](http://chriseth.github.io/browser-solidity/)
-- [Gitter Chat room](https://gitter.im/ethereum/solidity)
+- [Gitter Solidity Chat room](https://gitter.im/ethereum/solidity)
 - [Modular design strategies for Ethereum Contracts](https://docs.erisindustries.com/tutorials/solidity/)
-- Editor Snippets ([Ultisnips format](https://gist.github.com/nemild/98343ce6b16b747788bc))
 
 ## Sample contracts
 - [Dapp Bin](https://github.com/ethereum/dapp-bin)
@@ -783,13 +833,24 @@ someContractAddress.callcode('function_name');
 - [ConsenSys Contracts](https://github.com/ConsenSys/dapp-store-contracts)
 - [State of Dapps](http://dapps.ethercasts.com/)
 
+## Security
+- [Thinking About Smart Contract Security](https://blog.ethereum.org/2016/06/19/thinking-smart-contract-security/)
+- [Smart Contract Security](https://blog.ethereum.org/2016/06/10/smart-contract-security/)
+- [Hacking Distributed Blog](http://hackingdistributed.com/)
+
 ## Information purposefully excluded
 - Libraries
 
 ## Style
 - Python's [PEP8](https://www.python.org/dev/peps/pep-0008/) is used as the baseline style guide, including its general philosophy
 
+## Editors
+- [Vim Solidity](https://github.com/tomlion/vim-solidity)
+- Editor Snippets ([Ultisnips format](https://gist.github.com/nemild/98343ce6b16b747788bc))
+
 ## Future To Dos
 - New keywords: protected, inheritable
+- List of common design patterns (throttling, RNG, version upgrade)
+- Common security anti patterns
 
 Feel free to send a pull request with any edits - or email nemild -/at-/ gmail

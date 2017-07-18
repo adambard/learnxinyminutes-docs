@@ -285,7 +285,7 @@ while (a > 4) {
 }
 
 # 记住，在 R 语言中 for / while 循环都很慢
-# 建议使用 apply()（我们一会介绍）来错做一串数据（比如一列或者一行数据）
+# 建议使用 apply()（我们一会介绍）来操作一串数据（比如一列或者一行数据）
 
 # IF/ELSE
 
@@ -303,7 +303,7 @@ if (4 > 3) {
 
 # 定义如下
 jiggle <- function(x) {
-	x + rnorm(x, sd=.1)	#add in a bit of (controlled) noise
+	x = x + rnorm(1, sd=.1)	# 添加一点（正态）波动	
 	return(x)
 }
 

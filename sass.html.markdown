@@ -5,6 +5,7 @@ contributors:
   - ["Laura Kyle", "https://github.com/LauraNK"]
   - ["Sean Corrales", "https://github.com/droidenator"]
   - ["Kyle Mendes", "https://github.com/pink401k"]
+  - ["Keith Miyake", "https://github.com/kaymmm"]
 ---
 
 Sass is a CSS extension language that adds features such as variables, nesting, mixins and more.
@@ -15,7 +16,7 @@ This tutorial is written using SCSS.
 
 If you're already familiar with CSS3, you'll be able to pick up Sass relatively quickly. It does not provide any new styling properties but rather the tools to write your CSS more efficiently and make maintenance much easier.
 
-```scss
+```sass
 
 
 //Single line comments are removed when Sass is compiled to CSS.
@@ -52,16 +53,161 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
-
 /* This is much more maintainable than having to change the color
 each time it appears throughout your stylesheet. */
 
 
 
-/* Mixins
+/* Control Directives
 ============================== */
 
+/* Sass lets you use @if, @else, @for, @while, and @each to control the
+   compilation of your code to CSS. */
 
+/* @if/@else blocks behave exactly as you might expect */
+
+$debug: true !default;
+
+@mixin debugmode {
+	@if $debug {
+		@debug "Debug mode enabled";
+
+		display: inline-block;
+	}
+	@else {
+		display: none;
+	}
+}
+
+.info {
+	@include debugmode;
+}
+
+/* If $debug is set to true, .info is displayed; if it's set to false then
+.info is not displayed.
+
+Note: @debug will output debugging information to the command line.
+Useful for checking variables while debugging your SCSS. */
+
+.info {
+	display: inline-block;
+}
+
+/* @for is a control loop that iterates through a range of values.
+Particularly useful for setting styles on a collection of items.
+There are two forms, "through" and "to". The former includes the last value,
+the latter stops at the last value. */
+
+@for $c from 1 to 4 {
+	div:nth-of-type(#{$c}) {
+		left: ($c - 1) * 900 / 3;
+	}
+}
+
+@for $c from 1 through 3 {
+	.myclass-#{$c} {
+		color: rgb($c * 255 / 3, $c * 255 / 3, $c * 255 / 3);
+	}
+}
+
+/* Will compile to: */
+
+div:nth-of-type(1) {
+	left: 0;
+}
+
+div:nth-of-type(2) {
+	left: 300;
+}
+
+div:nth-of-type(3) {
+	left: 600;
+}
+
+.myclass-1 {
+	color: #555555;
+}
+
+.myclass-2 {
+	color: #aaaaaa;
+}
+
+.myclass-3 {
+	color: white;
+// SASS automatically converts #FFFFFF to white
+}
+
+/* @while is very straightforward: */
+
+$columns: 4;
+$column-width: 80px;
+
+@while $columns > 0 {
+	.col-#{$columns} {
+		width: $column-width;
+		left: $column-width * ($columns - 1);
+	}
+
+	$columns: $columns - 1;
+}
+
+/* Will output the following CSS: */
+
+.col-4 {
+	width: 80px;
+	left: 240px;
+}
+
+.col-3 {
+	width: 80px;
+	left: 160px;
+}
+
+.col-2 {
+	width: 80px;
+	left: 80px;
+}
+
+.col-1 {
+	width: 80px;
+	left: 0px;
+}
+
+/* @each functions like @for, except using a list instead of ordinal values
+Note: you specify lists just like other variables, with spaces as
+delimiters. */
+
+$social-links: facebook twitter linkedin reddit;
+
+.social-links {
+	@each $sm in $social-links {
+		.icon-#{$sm} {
+			background-image: url("images/#{$sm}.png");
+		}
+	}
+}
+
+/* Which will output: */
+
+.social-links .icon-facebook {
+	background-image: url("images/facebook.png");
+}
+
+.social-links .icon-twitter {
+	background-image: url("images/twitter.png");
+}
+
+.social-links .icon-linkedin {
+	background-image: url("images/linkedin.png");
+}
+
+.social-links .icon-reddit {
+	background-image: url("images/reddit.png");
+}
+
+
+/* Mixins
+==============================*/
 
 /* If you find you are writing the same code for more than one
 element, you might want to store that code in a mixin.
@@ -92,7 +238,6 @@ div {
 	right: 0;
 	background-color: #A3A4FF;
 }
-
 
 /* You can use mixins to create a shorthand property. */
 
@@ -139,7 +284,7 @@ body {
 }
 
 .footer {
-  background-color: fade_out(#000000, 0.25)
+  background-color: fade_out(#000000, 0.25);
 }
 
 /* Compiles to: */
@@ -156,7 +301,7 @@ body {
    mixins. When trying to choose between a function or a mixin, remember
    that mixins are best for generating CSS while functions are better for
    logic that might be used throughout your Sass code. The examples in
-   the Math Operators' section are ideal candidates for becoming a reusable
+   the 'Math Operators' section are ideal candidates for becoming a reusable
    function. */
 
 /* This function will take a target size and the parent size and calculate
@@ -432,9 +577,7 @@ You can use either syntax, just go into the settings and select either Sass or S
 
 
 ## Compatibility
-Sass can be used in any project as long as you have a program to compile it
-into CSS. You'll want to verify that the CSS you're using is compatible
-with your target browsers.
+Sass can be used in any project as long as you have a program to compile it into CSS. You'll want to verify that the CSS you're using is compatible with your target browsers.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) and [CanIUse](http://caniuse.com) are great resources for checking compatibility.
 

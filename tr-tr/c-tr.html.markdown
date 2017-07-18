@@ -202,7 +202,7 @@ int main() {
     0x02 >> 1; // => 0x01 (bitwise right shift (by 1))
 
     // Isaretli sayilari kaydirirken dikkatli olun - tanimsizlar sunlardir:
-    // - isaretli sayinin isaret bitinde yapÄilan kaydirma (int a = 1 << 32)
+    // - isaretli sayinin isaret bitinde yap?ilan kaydirma (int a = 1 << 32)
     // - negatif sayilarda sol kaydirma (int a = -1 << 2)
     // - LHS tipinde >= ile olan ofset genisletmelerde yapilan kaydirma:
     //   int a = 1 << 32; // UB if int is 32 bits wide

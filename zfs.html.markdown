@@ -9,7 +9,7 @@ filename: LearnZfs.txt
 
 [ZFS](http://open-zfs.org/wiki/Main_Page)
 is a rethinking of the storage stack, combining traditional file systems as well as volume
-managers into one cohesive tool.  ZFS has some specific teminology that sets it appart from
+managers into one cohesive tool.  ZFS has some specific terminology that sets it apart from
 more traditional storage systems, however it has a great set of features with a focus on
 usability for systems administrators.
 
@@ -23,7 +23,8 @@ types of VDEV's that offer various advantages, including redundancy and speed.  
 VDEV's offer better reliability and safety than a RAID card.  It is discouraged to use a
 RAID setup with ZFS, as ZFS expects to directly manage the underlying disks.
 
-Types of VDEV's 
+Types of VDEV's
+
 * stripe (a single disk, no redundancy)
 * mirror (n-way mirrors supported)
 * raidz
@@ -39,13 +40,13 @@ increase your IOPS.
 ### Storage Pools
 
 ZFS uses Storage Pools as an abstraction over the lower level storage provider (VDEV), allow
-you to separate the user visable file system from the physcal layout.
+you to separate the user visible file system from the physical layout.
 
 ### ZFS Dataset
 
-ZFS datasets are analagous to traditional filesystems but with many more features.  They
+ZFS datasets are analogous to traditional filesystems but with many more features.  They
 provide many of ZFS's advantages.  Datasets support [Copy on Write](https://en.wikipedia.org/wiki/Copy-on-write)
-snapshots, quota's, compression and deduplication.
+snapshots, quota's, compression and de-duplication.
 
 
 ### Limits
@@ -60,6 +61,7 @@ single host can have 2^64 storage pools.  The limits are huge.
 ### Storage Pools
 
 Actions:
+
 * List
 * Status
 * Destroy
@@ -68,7 +70,7 @@ Actions:
 List zpools
 
 ```bash
-# Create a raidz zpool 
+# Create a raidz zpool
 $ zpool create bucket raidz1 gpt/zfs0 gpt/zfs1 gpt/zfs2
 
 # List ZPools
@@ -347,7 +349,7 @@ $ zfs promote tank/home/sarlalian_new
 
 ### Putting it all together
 
-This following a script utilizing FreeBSD, jails and ZFS to automate 
+This following a script utilizing FreeBSD, jails and ZFS to automate
 provisioning a clean copy of a mysql staging database from a live replication
 slave.
 
@@ -384,7 +386,7 @@ mv /jails/staging/etc/rc.conf.staging /jails/staging/etc/rc.conf.local
 echo "==== Starting the staging db server ===="
 jail -c staging
 
-echo "==== Make sthe staging database not pull from the master ===="
+echo "==== Makes the staging database not pull from the master ===="
 echo "STOP SLAVE;" | /usr/local/bin/mysql -u root -pmyrootpassword -h staging
 echo "RESET SLAVE;" | /usr/local/bin/mysql -u root -pmyrootpassword -h staging
 ```
@@ -393,7 +395,7 @@ echo "RESET SLAVE;" | /usr/local/bin/mysql -u root -pmyrootpassword -h staging
 ### Additional Reading
 
 * [BSDNow's Crash Course on ZFS](http://www.bsdnow.tv/tutorials/zfs)
-* [FreeBSD Handbook on ZFS](https://wiki.freebsd.org/ZF://wiki.freebsd.org/ZFS)
+* [FreeBSD Handbook on ZFS](https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/zfs.html)
 * [BSDNow's Crash Course on ZFS](http://www.bsdnow.tv/tutorials/zfs)
 * [Oracle's Tuning Guide](http://www.oracle.com/technetwork/articles/servers-storage-admin/sto-recommended-zfs-settings-1951715.html)
 * [OpenZFS Tuning Guide](http://open-zfs.org/wiki/Performance_tuning)

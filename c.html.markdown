@@ -36,7 +36,6 @@ Multi-line comments don't nest /* Be careful */  // comment ends on this line...
 enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 // MON gets 2 automatically, TUE gets 3, etc.
 
-
 // Import headers with #include
 #include <stdlib.h>
 #include <stdio.h>
@@ -114,7 +113,6 @@ int main (int argc, char** argv)
   // sizeof(obj) yields the size of the expression (variable, literal, etc.).
   printf("%zu\n", sizeof(int)); // => 4 (on most machines with 4-byte words)
 
-
   // If the argument of the `sizeof` operator is an expression, then its argument
   // is not evaluated (except VLAs (see below)).
   // The value it yields in this case is a compile-time constant.
@@ -129,7 +127,6 @@ int main (int argc, char** argv)
   char my_char_array[20]; // This array occupies 1 * 20 = 20 bytes
   int my_int_array[20]; // This array occupies 4 * 20 = 80 bytes
   // (assuming 4-byte words)
-
 
   // You can initialize an array to 0 thusly:
   char my_array[20] = {0};
@@ -146,9 +143,9 @@ int main (int argc, char** argv)
   // can be declared as well. The size of such an array need not be a compile
   // time constant:
   printf("Enter the array size: "); // ask the user for an array size
-  int size;
-  fscanf(stdin, "%d", &size);
-  int var_length_array[size]; // declare the VLA
+  int array_size;
+  fscanf(stdin, "%d", &array_size);
+  int var_length_array[array_size]; // declare the VLA
   printf("sizeof array = %zu\n", sizeof var_length_array);
 
   // Example:
@@ -205,7 +202,7 @@ int main (int argc, char** argv)
   11 % 3; // => 2
 
   // Comparison operators are probably familiar, but
-  // there is no Boolean type in c. We use ints instead.
+  // there is no Boolean type in C. We use ints instead.
   // (Or _Bool or bool in C99.)
   // 0 is false, anything else is true. (The comparison
   // operators always yield 0 or 1.)
@@ -239,11 +236,9 @@ int main (int argc, char** argv)
   z = (e > f) ? e : f; // => 10 "if e > f return e, else return f."
 
   // Increment and decrement operators:
-  char *s = "ILoveC";
   int j = 0;
-  s[j++]; // => "i". Returns the j-th item of s THEN increments value of j.
-  j = 0;
-  s[++j]; // => "L". Increments value of j THEN returns j-th value of s.
+  int s = j++; // Return j THEN increase j. (s = 0, j = 1)
+  s = ++j; // Increase j THEN return j. (s = 2, j = 2)
   // same with j-- and --j
 
   // Bitwise operators!
@@ -274,7 +269,7 @@ int main (int argc, char** argv)
 
   // While loops exist
   int ii = 0;
-  while (ii < 10) { //ANY value not zero is true.
+  while (ii < 10) { //ANY value less than ten is true.
     printf("%d, ", ii++); // ii++ increments ii AFTER using its current value.
   } // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
@@ -347,7 +342,6 @@ int main (int argc, char** argv)
   this will print out "Error occured at i = 52 & j = 99."
   */
 
-
   ///////////////////////////////////////
   // Typecasting
   ///////////////////////////////////////
@@ -385,7 +379,6 @@ int main (int argc, char** argv)
   printf("%p\n", (void *)&x); // Use & to retrieve the address of a variable
   // (%p formats an object pointer of type void *)
   // => Prints some address in memory;
-
 
   // Pointers start with * in their declaration
   int *px, not_a_pointer; // px is a pointer to an int
@@ -432,7 +425,6 @@ int main (int argc, char** argv)
   printf("%zu, %zu\n", sizeof arraythethird, sizeof ptr);
   // probably prints "40, 4" or "40, 8"
 
-
   // Pointers are incremented and decremented based on their type
   // (this is called pointer arithmetic)
   printf("%d\n", *(x_ptr + 1)); // => Prints 19
@@ -455,7 +447,8 @@ int main (int argc, char** argv)
   int size = 10;
   int *my_arr = malloc(sizeof(int) * size);
   // Add an element to the array
-  my_arr = realloc(my_arr, ++size);
+  size++;
+  my_arr = realloc(my_arr, sizeof(int) * size);
   my_arr[10] = 5;
 
   // Dereferencing memory that you haven't allocated gives
@@ -518,6 +511,7 @@ void str_reverse(char *str_in)
     str_in[len - ii - 1] = tmp;
   }
 }
+//NOTE: string.h header file needs to be included to use strlen()
 
 /*
 char c[] = "This is a test.";
@@ -577,8 +571,6 @@ void testFunc2() {
   extern int j;
 }
 //**You may also declare functions as static to make them private**
-
-
 
 ///////////////////////////////////////
 // User-defined types and structs
@@ -696,6 +688,7 @@ typedef void (*my_fnp_type)(char *);
 "%o";    // octal
 "%%";    // prints %
 */
+
 ///////////////////////////////////////
 // Order of Evaluation
 ///////////////////////////////////////
@@ -722,14 +715,14 @@ typedef void (*my_fnp_type)(char *);
 
 /******************************* Header Files **********************************
 
-Header files are an important part of c as they allow for the connection of c
-source files and can simplify code and definitions by seperating them into
-seperate files.
+Header files are an important part of C as they allow for the connection of C
+source files and can simplify code and definitions by separating them into
+separate files.
 
-Header files are syntactically similar to c source files but reside in ".h"
-files. They can be included in your c source file by using the precompiler
+Header files are syntactically similar to C source files but reside in ".h"
+files. They can be included in your C source file by using the precompiler
 command #include "example.h", given that example.h exists in the same directory
-as the c file.
+as the C file.
 */
 
 /* A safe guard to prevent the header from being defined too many times. This */
@@ -760,12 +753,12 @@ enum traffic_light_state {GREEN, YELLOW, RED};
 
 /* Function prototypes can also be defined here for use in multiple files,  */
 /* but it is bad practice to define the function in the header. Definitions */
-/* should instead be put in a c file.                                       */
+/* should instead be put in a C file.                                       */
 Node createLinkedList(int *vals, int len);
 
-/* Beyond the above elements, other definitions should be left to a c source */
-/* file. Excessive includeds or definitions should, also not be contained in */
-/* a header file but instead put into separate headers or a c file.          */
+/* Beyond the above elements, other definitions should be left to a C source */
+/* file. Excessive includes or definitions should, also not be contained in */
+/* a header file but instead put into separate headers or a C file.          */
 
 #endif /* End of the if precompiler directive. */
 
@@ -782,8 +775,8 @@ If you have a question, read the [compl.lang.c Frequently Asked Questions](http:
 
 It's very important to use proper spacing, indentation and to be consistent with your coding style in general.
 Readable code is better than clever code and fast code. For a good, sane coding style to adopt, see the
-[Linux kernel coding style](https://www.kernel.org/doc/Documentation/CodingStyle).
+[Linux kernel coding style](https://www.kernel.org/doc/Documentation/process/coding-style.rst).
 
 Other than that, Google is your friend.
 
-[1] http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member
+[1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)

@@ -19,7 +19,7 @@ rather than plain text.
 
 If you are uncertain about your environment:
 
-```
+```powershell
 Get-ExecutionPolicy -List
 Set-ExecutionPolicy AllSigned
 # Execution policies include:
@@ -35,7 +35,7 @@ $PSVersionTable
 
 Getting help:
 
-```
+```powershell
 # Find commands
 Get-Command about_* # alias: gcm
 Get-Command -Verb Add
@@ -52,7 +52,7 @@ Update-Help # Run as admin
 
 The tutorial starts here:
 
-```
+```powershell
 # As you already figured, comments start with #
 
 # Simple hello world example:
@@ -74,7 +74,7 @@ $aHashtable = @{name1='val1'; name2='val2'}
 # Using variables:
 echo $aString
 echo "Interpolation: $aString"
-echo "`$aString has length of $($aString.Length)"
+echo "$aString has length of $($aString.Length)"
 echo '$aString'
 echo @"
 This is a Here-String
@@ -113,7 +113,7 @@ if ($Age -is [string]) {
 	echo 'Adult'
 }
 
-# Switch statements are more powerfull compared to most languages
+# Switch statements are more powerful compared to most languages
 $val = "20"
 switch($val) {
   { $_ -eq 42 }           { "The answer equals 42"; break }
@@ -204,7 +204,7 @@ function foo([string]$name) {
 # Calling your function
 foo "Say my name"
 
-# Functions with named parameters, parameter attributes, parsable documention
+# Functions with named parameters, parameter attributes, parsable documentation
 <#
 .SYNOPSIS
 Setup a new website
@@ -300,7 +300,7 @@ $Shortcut.Save()
 
 Configuring your shell
 
-```
+```powershell
 # $Profile is the full path for your `Microsoft.PowerShell_profile.ps1`
 # All code there will be executed when the PS session starts
 if (-not (Test-Path $Profile)) {
@@ -308,7 +308,7 @@ if (-not (Test-Path $Profile)) {
 	notepad $Profile
 }
 # More info: `help about_profiles`
-# For a more usefull shell, be sure to check the project PSReadLine below
+# For a more useful shell, be sure to check the project PSReadLine below
 ```
 
 Interesting Projects  

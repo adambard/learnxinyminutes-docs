@@ -25,6 +25,23 @@ like
 this
 %}
 
+% Two percent signs denote the start of a new code section
+% Individual code sections can be run by moving the cursor to the section followed by
+% either clicking the "Run Section" button
+% or     using Ctrl+Shift+Enter (Windows) or Cmd+Shift+Return (OS X)
+
+%% This is the start of a code section
+%  One way of using sections is to separate expensive but unchanging start-up code like loading data
+load myFile.mat y
+
+%% This is another code section
+%  This section can be edited and run repeatedly on its own, and is helpful for exploratory programming and demos
+A = A * 2;
+plot(A);
+
+%% Code sections are also known as code cells or cell mode (not to be confused with cell arrays)
+
+
 % commands can span multiple lines, using '...':
  a = 1 + 2 + ...
  + 4
@@ -540,6 +557,8 @@ c = a + b
 
 ## More on Matlab
 
-* The official website [http://http://www.mathworks.com/products/matlab/](http://www.mathworks.com/products/matlab/)
-* The official MATLAB Answers forum: [http://www.mathworks.com/matlabcentral/answers/](http://www.mathworks.com/matlabcentral/answers/)
+* [The official website](http://www.mathworks.com/products/matlab/)
+* [The official MATLAB Answers forum](http://www.mathworks.com/matlabcentral/answers/)
+* [Loren on the Art of MATLAB](http://blogs.mathworks.com/loren/)
+* [Cleve's Corner](http://blogs.mathworks.com/cleve/)
 

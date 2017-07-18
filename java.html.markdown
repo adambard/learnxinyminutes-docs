@@ -1,28 +1,42 @@
 ---
 language: java
 contributors:
-    - ["Jake Prather", "http://github.com/JakeHP"]
-    - ["Jakukyo Friel", "http://weakish.github.io"]
-    - ["Madison Dickson", "http://github.com/mix3d"]
-    - ["Simon Morgan", "http://sjm.io/"]
-    - ["Zachary Ferguson", "http://github.com/zfergus2"]
-    - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
+    - ["Jake Prather", "https://github.com/JakeHP"]
+    - ["Jakukyo Friel", "https://weakish.github.io"]
+    - ["Madison Dickson", "https://github.com/mix3d"]
+    - ["Simon Morgan", "https://sjm.io/"]
+    - ["Zachary Ferguson", "https://github.com/zfergus2"]
+    - ["Cameron Schermerhorn", "https://github.com/cschermerhorn"]
     - ["Rachel Stiyer", "https://github.com/rstiyer"]
+    - ["Michael Dähnert", "https://github.com/JaXt0r"]
+    - ["Rob Rose", "https://github.com/RobRoseKnows"]
+    - ["Sean Nam", "https://github.com/seannam"]
 filename: LearnJava.java
 ---
 
 Java is a general-purpose, concurrent, class-based, object-oriented computer
 programming language.
-[Read more here.](http://docs.oracle.com/javase/tutorial/java/)
+[Read more here.](https://docs.oracle.com/javase/tutorial/java/)
 
 ```java
 // Single-line comments start with //
+
 /*
 Multi-line comments look like this.
 */
+
 /**
-JavaDoc comments look like this. Used to describe the Class or various
-attributes of a Class.
+ * JavaDoc comments look like this. Used to describe the Class or various
+ * attributes of a Class.
+ * Main attributes:
+ *
+ * @author         Name (and contact information such as email) of author(s).
+ * @version     Current version of the program.
+ * @since        When this part of the program was first added.
+ * @param         For describing the different parameters for a method.
+ * @return        For describing what the method returns.
+ * @deprecated  For showing the code is outdated or shouldn't be used.
+ * @see         Links to another part of documentation.
 */
 
 // Import ArrayList class inside of the java.util package
@@ -30,12 +44,21 @@ import java.util.ArrayList;
 // Import all classes inside of java.security package
 import java.security.*;
 
-// Each .java file contains one outer-level public class, with the same name as
-// the file.
+// Each .java file contains one outer-level public class, with the same name
+// as the file.
 public class LearnJava {
 
-    // In order to run a java program, it must have a main method as an entry point.
-    public static void main (String[] args) {
+    // In order to run a java program, it must have a main method as an entry
+    // point.
+    public static void main(String[] args) {
+
+    ///////////////////////////////////////
+    // Input/Output
+    ///////////////////////////////////////
+
+        /*
+        * Ouput
+        */
 
         // Use System.out.println() to print lines.
         System.out.println("Hello World!");
@@ -51,6 +74,32 @@ public class LearnJava {
         // Use System.out.printf() for easy formatted printing.
         System.out.printf("pi = %.5f", Math.PI); // => pi = 3.14159
 
+        /*
+         * Input
+         */
+
+        // use Scanner to read input
+        // must import java.util.Scanner;
+        Scanner scanner = new Scanner(System.in);
+
+        // read string input
+        String name = scanner.next();
+
+        // read byte input
+        byte numByte = scanner.nextByte();
+
+        // read int input
+        int numInt = scanner.nextInt();
+
+        // read long input
+        float numFloat = scanner.nextFloat();
+
+        // read double input
+        double numDouble = scanner.nextDouble();
+
+        // read boolean input
+        boolean bool = scanner.nextBoolean();
+
         ///////////////////////////////////////
         // Variables
         ///////////////////////////////////////
@@ -60,7 +109,8 @@ public class LearnJava {
         */
         // Declare a variable using <type> <name>
         int fooInt;
-        // Declare multiple variables of the same type <type> <name1>, <name2>, <name3>
+        // Declare multiple variables of the same
+        // type <type> <name1>, <name2>, <name3>
         int fooInt1, fooInt2, fooInt3;
 
         /*
@@ -68,10 +118,12 @@ public class LearnJava {
         */
 
         // Initialize a variable using <type> <name> = <val>
-        int fooInt = 1;
-        // Initialize multiple variables of same type with same value <type> <name1>, <name2>, <name3> = <val>
-        int fooInt1, fooInt2, fooInt3;
-        fooInt1 = fooInt2 = fooInt3 = 1;
+        int barInt = 1;
+        // Initialize multiple variables of same type with same
+        // value <type> <name1>, <name2>, <name3>
+        // <name1> = <name2> = <name3> = <val>
+        int barInt1, barInt2, barInt3;
+        barInt1 = barInt2 = barInt3 = 1;
 
         /*
         *  Variable types
@@ -80,13 +132,19 @@ public class LearnJava {
         // (-128 <= byte <= 127)
         byte fooByte = 100;
 
+        // If you would like to interpret a byte as an unsigned integer
+        // then this simple operation can help
+        int unsignedIntLessThan256 = 0xff & fooByte;
+        // this contrasts a cast which can be negative.
+        int signedInt = (int) fooByte;
+
         // Short - 16-bit signed two's complement integer
         // (-32,768 <= short <= 32,767)
         short fooShort = 10000;
 
         // Integer - 32-bit signed two's complement integer
         // (-2,147,483,648 <= int <= 2,147,483,647)
-        int fooInt = 1;
+        int bazInt = 1;
 
         // Long - 64-bit signed two's complement integer
         // (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
@@ -94,7 +152,9 @@ public class LearnJava {
         // L is used to denote that this variable value is of type Long;
         // anything without is treated as integer by default.
 
-        // Note: Java has no unsigned types.
+        // Note: byte, short, int and long are signed. They can have positive and negative values.
+        // There are no unsigned variants.
+        // char, however, is 16-bit unsigned.
 
         // Float - Single-precision 32-bit IEEE 754 Floating Point
         // 2^-149 <= float <= (2-2^-23) * 2^127
@@ -119,7 +179,6 @@ public class LearnJava {
         final double E;
         E = 2.71828;
 
-
         // BigInteger - Immutable arbitrary-precision integers
         //
         // BigInteger is a data type that allows programmers to manipulate
@@ -127,13 +186,11 @@ public class LearnJava {
         // of bytes and are manipulated using functions built into BigInteger
         //
         // BigInteger can be initialized using an array of bytes or a string.
-        
         BigInteger fooBigInteger = new BigInteger(fooByteArray);
-
 
         // BigDecimal - Immutable, arbitrary-precision signed decimal number
         //
-        // A BigDecimal takes two parts: an arbitrary precision integer 
+        // A BigDecimal takes two parts: an arbitrary precision integer
         // unscaled value and a 32-bit integer scale
         //
         // BigDecimal allows the programmer complete control over decimal
@@ -142,15 +199,12 @@ public class LearnJava {
         //
         // BigDecimal can be initialized with an int, long, double or String
         // or by initializing the unscaled value (BigInteger) and scale (int).
-
         BigDecimal fooBigDecimal = new BigDecimal(fooBigInteger, fooInt);
-        
+
         // Be wary of the constructor that takes a float or double as
         // the inaccuracy of the float/double will be copied in BigDecimal.
         // Prefer the String constructor when you need an exact value.
-        
         BigDecimal tenCents = new BigDecimal("0.1");
-
 
         // Strings
         String fooString = "My String Is Here!";
@@ -162,6 +216,42 @@ public class LearnJava {
         System.out.println(fooString);
         System.out.println(barString);
         System.out.println(bazString);
+
+        // String Building
+        // #1 - with plus operator
+        // That's the basic way to do it (optimized under the hood)
+        String plusConcatenated = "Strings can " + "be concatenated " + "via + operator.";
+        System.out.println(plusConcatenated);
+        // Output: Strings can be concatenated via + operator.
+
+        // #2 - with StringBuilder
+        // This way doesn't create any intermediate strings. It just stores the string pieces, and ties them together
+        // when toString() is called.
+        // Hint: This class is not thread safe. A thread-safe alternative (with some impact on performance) is StringBuffer.
+        StringBuilder builderConcatenated = new StringBuilder();
+        builderConcatenated.append("You ");
+        builderConcatenated.append("can use ");
+        builderConcatenated.append("the StringBuilder class.");
+        System.out.println(builderConcatenated.toString()); // only now is the string built
+        // Output: You can use the StringBuilder class.
+
+        // StringBuilder is efficient when the fully constructed String is not required until the end of some processing.
+        StringBuilder stringBuilder = new StringBuilder();
+        String inefficientString = "";
+        for (int i = 0 ; i < 10; i++) {
+            stringBuilder.append(i).append(" ");
+            inefficientString += i + " ";
+        }
+        System.out.println(inefficientString);
+        System.out.println(stringBuilder.toString());
+        // inefficientString requires a lot more work to produce, as it generates a String on every loop iteration.
+        // Simple concatenation with + is compiled to a StringBuilder and toString()
+        // Avoid string concatenation in loops.
+
+        // #3 - with String formatter
+        // Another alternative way to create strings. Fast and readable.
+        String.format("%s may prefer %s.", "Or you", "String.format()");
+        // Output: Or you may prefer String.format().
 
         // Arrays
         // The array size must be decided upon instantiation
@@ -175,7 +265,7 @@ public class LearnJava {
         // Another way to declare & initialize an array
         int[] y = {9000, 1000, 1337};
         String names[] = {"Bob", "John", "Fred", "Juan Pedro"};
-        boolean bools[] = new boolean[] {true, false, false};
+        boolean bools[] = {true, false, false};
 
         // Indexing an array - Accessing an element
         System.out.println("intArray @ 0: " + intArray[0]);
@@ -184,7 +274,7 @@ public class LearnJava {
         intArray[1] = 1;
         System.out.println("intArray @ 1: " + intArray[1]); // => 1
 
-        // Others to check out
+        // Other data types worth checking out
         // ArrayLists - Like arrays except more functionality is offered, and
         //              the size is mutable.
         // LinkedLists - Implementation of doubly-linked list. All of the
@@ -200,6 +290,9 @@ public class LearnJava {
         //            interface. This allows the execution time of basic
         //            operations, such as get and insert element, to remain
         //            constant even for large sets.
+        // TreeMap - This class is a sorted tree structure. It implements a red
+        //           black tree and sorts the entries based on the key value or
+        //           the comparator provided while creating the object
 
         ///////////////////////////////////////
         // Operators
@@ -212,7 +305,7 @@ public class LearnJava {
         System.out.println("1+2 = " + (i1 + i2)); // => 3
         System.out.println("2-1 = " + (i2 - i1)); // => 1
         System.out.println("2*1 = " + (i2 * i1)); // => 2
-        System.out.println("1/2 = " + (i1 / i2)); // => 0 (int/int returns an int)
+        System.out.println("1/2 = " + (i1 / i2)); // => 0 (int/int returns int)
         System.out.println("1/2 = " + (i1 / (double)i2)); // => 0.5
 
         // Modulo
@@ -242,7 +335,7 @@ public class LearnJava {
         |      Bitwise inclusive OR
         */
 
-        // Incrementations
+        // Increment operators
         int i = 0;
         System.out.println("\n->Inc/Dec-rementation");
         // The ++ and -- operators increment and decrement by 1 respectively.
@@ -295,7 +388,7 @@ public class LearnJava {
             // Iterated 10 times, fooFor 0->9
         }
         System.out.println("fooFor Value: " + fooFor);
-        
+
         // Nested For Loop Exit with Label
         outer:
         for (int i = 0; i < 10; i++) {
@@ -306,7 +399,7 @@ public class LearnJava {
             }
           }
         }
-        
+
         // For Each Loop
         // The for loop is also able to iterate over arrays as well as objects
         // that implement the Iterable interface.
@@ -314,7 +407,6 @@ public class LearnJava {
         // for each loop structure => for (<object> : <iterable>)
         // reads as: for each element in the iterable
         // note: the object type must match the element type of the iterable.
-
         for (int bar : fooList) {
             System.out.println(bar);
             //Iterates 9 times and prints 1-9 on new lines
@@ -325,6 +417,7 @@ public class LearnJava {
         // It also works with enumerated types (discussed in Enum Types), the
         // String class, and a few special classes that wrap primitive types:
         // Character, Byte, Short, and Integer.
+        // Starting in Java 7 and above, we can also use the String type.
         int month = 3;
         String monthString;
         switch (month) {
@@ -338,23 +431,31 @@ public class LearnJava {
                      break;
         }
         System.out.println("Switch Case Result: " + monthString);
-        
-        // Starting in Java 7 and above, switching Strings works like this:
-        String myAnswer = "maybe";
-        switch(myAnswer) {
-            case "yes":
-                System.out.println("You answered yes.");
-                break;
-            case "no":
-                System.out.println("You answered no.");
-                break;
-            case "maybe":
-                System.out.println("You answered maybe.");
-                break;
-            default:
-                System.out.println("You answered " + myAnswer);
-                break;
+
+
+        // Try-with-resources (Java 7+)
+        // Try-catch-finally statements work as expected in Java but in Java 7+
+        // the try-with-resources statement is also available. Try-with-resources
+        // simplifies try-catch-finally statements by closing resources
+        // automatically.
+
+        // In order to use a try-with-resources, include an instance of a class
+        // in the try statement. The class must implement java.lang.AutoCloseable.
+        try (BufferedReader br = new BufferedReader(new FileReader("foo.txt"))) {
+            // You can attempt to do something that could throw an exception.
+            System.out.println(br.readLine());
+            // In Java 7, the resource will always be closed, even if it throws
+            // an Exception.
+        } catch (Exception ex) {
+            //The resource will be closed before the catch statement executes.
+            System.out.println("readLine() failed.");
         }
+        // No need for a finally statement in this case, the BufferedReader is
+        // already closed. This can be used to avoid certain edge cases where
+        // a finally statement might not be called.
+        // To learn more:
+        // https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
+
 
         // Conditional Shorthand
         // You can use the '?' operator for quick assignments or logic forks.
@@ -362,11 +463,14 @@ public class LearnJava {
         // <second value>"
         int foo = 5;
         String bar = (foo < 10) ? "A" : "B";
-        System.out.println(bar); // Prints A, because the statement is true
-
+        System.out.println("bar : " + bar); // Prints "bar : A", because the 
+        // statement is true.
+        // Or simply
+        System.out.println("bar : " + (foo < 10 ? "A" : "B"));
+        
 
         ////////////////////////////////////////
-        // Converting Data Types And Typecasting
+        // Converting Data Types
         ////////////////////////////////////////
 
         // Converting data
@@ -381,12 +485,6 @@ public class LearnJava {
         // Double
         // Long
         // String
-
-        // Typecasting
-        // You can also cast Java objects, there's a lot of details and deals
-        // with some more intermediate concepts. Feel free to check it out here:
-        // http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
-
 
         ///////////////////////////////////////
         // Classes And Functions
@@ -409,18 +507,16 @@ public class LearnJava {
         // Double Brace Initialization
         // The Java Language has no syntax for how to create static Collections
         // in an easy way. Usually you end up in the following way:
-
         private static final Set<String> COUNTRIES = new HashSet<String>();
         static {
-           validCodes.add("DENMARK");
-           validCodes.add("SWEDEN");
-           validCodes.add("FINLAND");
+           COUNTRIES.add("DENMARK");
+           COUNTRIES.add("SWEDEN");
+           COUNTRIES.add("FINLAND");
         }
 
         // But there's a nifty way to achieve the same thing in an
         // easier way, by using something that is called Double Brace
         // Initialization.
-
         private static final Set<String> COUNTRIES = new HashSet<String>() {{
             add("DENMARK");
             add("SWEDEN");
@@ -436,10 +532,8 @@ public class LearnJava {
     } // End main method
 } // End LearnJava class
 
-
 // You can include other, non-public outer-level classes in a .java file,
-// but it is good practice. Instead split classes into separate files.
-
+// but it is not good practice. Instead split classes into separate files.
 
 // Class Declaration Syntax:
 // <public/private/protected> class <class name> {
@@ -454,13 +548,12 @@ class Bicycle {
     private int speed;  // Private: Only accessible from within the class
     protected int gear; // Protected: Accessible from the class and subclasses
     String name; // default: Only accessible from within this package
-
     static String className; // Static class variable
 
-    // Static block 
+    // Static block
     // Java has no implementation of static constructors, but
-    // has a static block that can be used to initialize class variables 
-    // (static variables). 
+    // has a static block that can be used to initialize class variables
+    // (static variables).
     // This block will be called when the class is loaded.
     static {
         className = "Bicycle";
@@ -476,7 +569,6 @@ class Bicycle {
         speed = 5;
         name = "Bontrager";
     }
-
     // This is a constructor that takes arguments
     public Bicycle(int startCadence, int startSpeed, int startGear,
         String name) {
@@ -501,23 +593,18 @@ class Bicycle {
     public void setCadence(int newValue) {
         cadence = newValue;
     }
-
     public void setGear(int newValue) {
         gear = newValue;
     }
-
     public void speedUp(int increment) {
         speed += increment;
     }
-
     public void slowDown(int decrement) {
         speed -= decrement;
     }
-
     public void setName(String newName) {
         name = newName;
     }
-
     public String getName() {
         return name;
     }
@@ -545,9 +632,17 @@ class PennyFarthing extends Bicycle {
     // out: http://docs.oracle.com/javase/tutorial/java/annotations/
     @Override
     public void setGear(int gear) {
-        gear = 0;
+        this.gear = 0;
     }
 }
+
+// Object casting
+// Since the PennyFarthing class is extending the Bicycle class, we can say
+// a PennyFarthing is a Bicycle and write :
+// Bicycle bicycle = new PennyFarthing();
+// This is called object casting where an object is taken for another one. There
+// are lots of details and deals with some more intermediate concepts here:
+// https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
 
 // Interfaces
 // Interface declaration syntax
@@ -564,12 +659,14 @@ public interface Edible {
 
 public interface Digestible {
     public void digest();
+    // Since Java 8, interfaces can have default method.
+    public void defaultMethod() {
+        System.out.println("Hi from default method ...");
+    }
 }
-
 
 // We can now create a class that implements both of these interfaces.
 public class Fruit implements Edible, Digestible {
-  
     @Override
     public void eat() {
         // ...
@@ -585,7 +682,6 @@ public class Fruit implements Edible, Digestible {
 // interfaces. For example:
 public class ExampleClass extends ExampleClassParent implements InterfaceOne,
     InterfaceTwo {
-
     @Override
     public void InterfaceOneMethod() {
     }
@@ -599,19 +695,19 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 // Abstract Classes
 
 // Abstract Class declaration syntax
-// <access-level> abstract <abstract-class-name> extends <super-abstract-classes> {
+// <access-level> abstract class <abstract-class-name> extends
+// <super-abstract-classes> {
 //     // Constants and variables
 //     // Method declarations
 // }
 
-// Marking a class as abstract means that it contains abstract methods that must
-// be defined in a child class. Similar to interfaces, abstract classes cannot
-// be instantiated, but instead must be extended and the abstract methods
-// defined. Different from interfaces, abstract classes can contain a mixture of
-// concrete and abstract methods. Methods in an interface cannot have a body,
-// unless the method is static, and variables are final by default, unlike an
-// abstract class. Also abstract classes CAN have the "main" method.
-
+// Marking a class as abstract means that it contains at least one abstract
+// method that must be defined in a child class. Similar to interfaces, abstract
+// classes cannot be instantiated, but instead must be extended and the abstract
+// methods defined. Different from interfaces, abstract classes can contain a
+// mixture of concrete and abstract methods. Methods in an interface cannot
+// have a body, unless the method is static, and variables are final by default,
+// unlike an abstract class. Also abstract classes CAN have the "main" method.
 public abstract class Animal
 {
     public abstract void makeSound();
@@ -619,7 +715,7 @@ public abstract class Animal
     // Method can have a body
     public void eat()
     {
-        System.out.println("I am an animal and I am Eating.");  
+        System.out.println("I am an animal and I am Eating.");
         // Note: We can access private variable here.
         age = 30;
     }
@@ -627,11 +723,11 @@ public abstract class Animal
     // No need to initialize, however in an interface
     // a variable is implicitly final and hence has
     // to be initialized.
-    protected int age;
+    private int age;
 
     public void printAge()
     {
-        System.out.println(age);  
+        System.out.println(age);
     }
 
     // Abstract classes can have main function.
@@ -649,14 +745,14 @@ class Dog extends Animal
     public void makeSound()
     {
         System.out.println("Bark");
-        // age = 30;	==> ERROR!	age is private to Animal
+        // age = 30;    ==> ERROR!    age is private to Animal
     }
 
     // NOTE: You will get an error if you used the
     // @Override annotation here, since java doesn't allow
     // overriding of static methods.
     // What is happening here is called METHOD HIDING.
-    // Check out this awesome SO post: http://stackoverflow.com/questions/16313649/
+    // Check out this SO post: http://stackoverflow.com/questions/16313649/
     public static void main(String[] args)
     {
         Dog pluto = new Dog();
@@ -695,61 +791,54 @@ public abstract class Mammal()
     // Final Method Syntax:
     // <access modifier> final <return type> <function name>(<args>)
 
-    // Final methods, like, final classes cannot be overridden by a child class,
-    // and are therefore the final implementation of the method.
+    // Final methods, like, final classes cannot be overridden by a child
+    // class, and are therefore the final implementation of the method.
     public final boolean isWarmBlooded()
     {
         return true;
     }
 }
 
-
 // Enum Type
 //
 // An enum type is a special data type that enables for a variable to be a set
-// of predefined constants. The variable must be equal to one of the values that
-// have been predefined for it. Because they are constants, the names of an enum
-// type's fields are in uppercase letters. In the Java programming language, you
-// define an enum type by using the enum keyword. For example, you would specify
-// a days-of-the-week enum type as:
-
+// of predefined constants. The variable must be equal to one of the values
+// that have been predefined for it. Because they are constants, the names of
+// an enum type's fields are in uppercase letters. In the Java programming
+// language, you define an enum type by using the enum keyword. For example,
+// you would specify a days-of-the-week enum type as:
 public enum Day {
     SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
-    THURSDAY, FRIDAY, SATURDAY 
+    THURSDAY, FRIDAY, SATURDAY
 }
 
 // We can use our enum Day like that:
-
 public class EnumTest {
-    
     // Variable Enum
     Day day;
-    
+
     public EnumTest(Day day) {
         this.day = day;
     }
-    
+
     public void tellItLikeItIs() {
         switch (day) {
             case MONDAY:
                 System.out.println("Mondays are bad.");
                 break;
-                    
             case FRIDAY:
                 System.out.println("Fridays are better.");
                 break;
-                         
-            case SATURDAY: 
+            case SATURDAY:
             case SUNDAY:
                 System.out.println("Weekends are best.");
                 break;
-                        
             default:
                 System.out.println("Midweek days are so-so.");
                 break;
         }
     }
-    
+
     public static void main(String[] args) {
         EnumTest firstDay = new EnumTest(Day.MONDAY);
         firstDay.tellItLikeItIs(); // => Mondays are bad.
@@ -758,9 +847,9 @@ public class EnumTest {
     }
 }
 
-// Enum types are much more powerful than we show above. 
+// Enum types are much more powerful than we show above.
 // The enum body can include methods and other fields.
-// You can se more at https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
+// You can see more at https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
 
 ```
 
@@ -770,22 +859,26 @@ The links provided here below are just to get an understanding of the topic, fee
 
 **Official Oracle Guides**:
 
-* [Java Tutorial Trail from Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
+* [Java Tutorial Trail from Sun / Oracle](https://docs.oracle.com/javase/tutorial/index.html)
 
-* [Java Access level modifiers](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
+* [Java Access level modifiers](https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
 
-* [Object-Oriented Programming Concepts](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
-    * [Inheritance](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
-    * [Polymorphism](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
-    * [Abstraction](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
+* [Object-Oriented Programming Concepts](https://docs.oracle.com/javase/tutorial/java/concepts/index.html):
+    * [Inheritance](https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
+    * [Polymorphism](https://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
+    * [Abstraction](https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
 
-* [Exceptions](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
+* [Exceptions](https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
 
-* [Interfaces](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
+* [Interfaces](https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
 
-* [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
+* [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
 
-* [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
+* [Java Code Conventions](https://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
+
+* New features in Java 8:
+    * [Lambda expressions (functional programming)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+    * [Date and time API (java.time package)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
 
 **Online Practice and Tutorials**
 
@@ -793,13 +886,12 @@ The links provided here below are just to get an understanding of the topic, fee
 
 * [Codingbat.com](http://codingbat.com/java)
 
-
 **Books**:
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
 
 * [Thinking in Java](http://www.mindview.net/Books/TIJ/)
 
-* [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
+* [Objects First with Java](https://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
 
-* [Java The Complete Reference](http://www.amazon.com/gp/product/0071606300)
+* [Java The Complete Reference](https://www.amazon.com/gp/product/0071606300)

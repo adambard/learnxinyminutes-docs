@@ -210,7 +210,7 @@ array.push(6) #=> [1, 2, 3, 4, 5, 6]
 # Check if an item exists in an array
 array.include?(1) #=> true
 
-# Hashes are Ruby's primary dictionary with keys/value pairs.
+# Hashes are Ruby's primary dictionary with key/value pairs.
 # Hashes are denoted with curly braces:
 hash = { 'color' => 'green', 'number' => 5 }
 
@@ -612,7 +612,7 @@ Something.new.qux # => 'qux'
 
 - [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - A variant of this reference with in-browser challenges.
 - [An Interactive Tutorial for Ruby](https://rubymonk.com/) - Learn Ruby through a series of interactive tutorials.
-- [Official Documentation](http://www.ruby-doc.org/core-2.1.1/)
+- [Official Documentation](http://ruby-doc.org/core)
 - [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
 - [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - An older [free edition](http://ruby-doc.com/docs/ProgrammingRuby/) is available online.
 - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - A community-driven Ruby coding style guide.

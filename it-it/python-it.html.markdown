@@ -4,9 +4,11 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "http://aminbandali.com"]
     - ["Andre Polykanine", "https://github.com/Oire"]
+    - ["evuez", "http://github.com/evuez"]
 filename: learnpython.py
 translators:
     - ["Ale46", "http://github.com/Ale46/"]
+    - ["Tommaso Pifferi", "http://github.com/neslinesli93/"]
 lang: it-it
 ---
 Python è stato creato da Guido Van Rossum agli inizi degli anni 90. Oggi è uno dei più popolari
@@ -15,8 +17,15 @@ pseudocodice eseguibile.
 
 Feedback sono altamente apprezzati! Potete contattarmi su [@louiedinh](http://twitter.com/louiedinh) oppure [at] [google's email service]
 
-Nota: Questo articolo è valido solamente per Python 2.7, ma dovrebbe andar bene anche per
-Python 2.x. Per Python 3.x, dai un'occhiata a [Python 3 tutorial](http://learnxinyminutes.com/docs/python3/).
+Nota: questo articolo è riferito a Python 2.7 in modo specifico, ma dovrebbe andar
+bene anche per Python 2.x. Python 2.7 sta raggiungendo il "fine vita", ovvero non sarà
+più supportato nel 2020. Quindi è consigliato imparare Python utilizzando Python 3.
+Per maggiori informazioni su Python 3.x, dai un'occhiata al [tutorial di Python 3](http://learnxinyminutes.com/docs/python3/).
+
+E' possibile anche scrivere codice compatibile sia con Python 2.7 che con Python 3.x,
+utilizzando [il modulo `__future__`](https://docs.python.org/2/library/__future__.html) di Python.
+Il modulo `__future__` permette di scrivere codice in Python 3, che può essere eseguito
+utilizzando Python 2: cosa aspetti a vedere il tutorial di Python 3?
 
 ```python
 
@@ -53,6 +62,12 @@ Python 2.x. Per Python 3.x, dai un'occhiata a [Python 3 tutorial](http://learnxi
 5.0 // 3.0 # => 1.0 # funziona anche per i floats
 -5 // 3  # => -2
 -5.0 // 3.0 # => -2.0
+
+# E' possibile importare il modulo "division" (vedi la sezione 6 di questa guida, Moduli)
+# per effettuare la divisione normale usando solo '/'.
+from __future__ import division
+11/4    # => 2.75  ...divisione normale
+11//4   # => 2 ...divisione troncata
 
 # Operazione Modulo
 7 % 3 # => 1
@@ -112,11 +127,19 @@ not False  # => True
 # Una stringa può essere considerata come una lista di caratteri
 "Questa è una stringa"[0]  # => 'Q'
 
-# % può essere usato per formattare le stringhe, in questo modo:
-"%s possono essere %s" % ("le stringhe", "interpolate")
+# Per sapere la lunghezza di una stringa
+len("Questa è una stringa")  # => 20
+
+# Formattazione delle stringhe con %
+# Anche se l'operatore % per le stringe sarà deprecato con Python 3.1, e verrà rimosso
+# successivamente, può comunque essere utile sapere come funziona
+x = 'mela'
+y = 'limone'
+z = "La cesta contiene una %s e un %s" % (x,y)
 
 # Un nuovo modo per fomattare le stringhe è il metodo format.
 # Questo metodo è quello consigliato
+"{} è un {}".format("Questo", "test")
 "{0} possono essere {1}".format("le stringhe", "formattate")
 # Puoi usare delle parole chiave se non vuoi contare
 "{nome} vuole mangiare {cibo}".format(nome="Bob", cibo="lasagna")
@@ -132,9 +155,17 @@ None is None  # => True
 # L'operatore 'is' testa l'identità di un oggetto. Questo non è
 # molto utile quando non hai a che fare con valori primitivi, ma lo è
 # quando hai a che fare con oggetti.
-
-# None, 0, e stringhe/liste vuote sono tutte considerate a False.
-# Tutti gli altri valori sono True
+ 
+# Qualunque oggetto può essere usato nei test booleani
+# I seguenti valori sono considerati falsi:
+#     - None
+#     - Lo zero, come qualunque tipo numerico (quindi 0, 0L, 0.0, 0.j)
+#     - Sequenze vuote (come '', (), [])
+#     - Contenitori vuoti (tipo {}, set())
+#     - Istanze di classi definite dall'utente, che soddisfano certi criteri
+#       vedi: https://docs.python.org/2/reference/datamodel.html#object.__nonzero__
+#       
+# Tutti gli altri valori sono considerati veri: la funzione bool() usata su di loro, ritorna True.
 bool(0)  # => False
 bool("")  # => False
 
@@ -144,7 +175,13 @@ bool("")  # => False
 ####################################################
 
 # Python ha una funzione di stampa
-print "Sono Python. Piacere di conoscerti!"
+print "Sono Python. Piacere di conoscerti!" # => Sono Python. Piacere di conoscerti!
+
+# Un modo semplice per ricevere dati in input dalla riga di comando
+variabile_stringa_input = raw_input("Inserisci del testo: ") # Ritorna i dati letti come stringa
+variabile_input = input("Inserisci del testo: ") # Interpreta i dati letti come codice python
+# Attenzione: bisogna stare attenti quando si usa input()
+# Nota: In python 3, input() è deprecato, e raw_input() si chiama input()
 
 # Non c'è bisogno di dichiarare una variabile per assegnarle un valore
 una_variabile = 5    # Convenzionalmente si usa caratteri_minuscoli_con_underscores
@@ -155,6 +192,7 @@ una_variabile  # => 5
 un_altra_variabile  # Genera un errore di nome
 
 # if può essere usato come un'espressione
+# E' l'equivalente dell'operatore ternario in C
 "yahoo!" if 3 > 2 else 2  # => "yahoo!"
 
 # Liste immagazzinano sequenze
@@ -207,6 +245,17 @@ li + altra_li   # => [1, 2, 3, 4, 5, 6]
 # Concatena liste con "extend()"
 li.extend(altra_li)   # Ora li è [1, 2, 3, 4, 5, 6]
 
+# Rimuove la prima occorrenza di un elemento
+li.remove(2)  # Ora li è [1, 3, 4, 5, 6]
+li.remove(2)  # Emette un ValueError, poichè 2 non è contenuto nella lista
+
+# Inserisce un elemento all'indice specificato
+li.insert(1, 2)  # li è di nuovo [1, 2, 3, 4, 5, 6]
+
+# Ritorna l'indice della prima occorrenza dell'elemento fornito
+li.index(2)  # => 1
+li.index(7)  # Emette un ValueError, poichè 7 non è contenuto nella lista
+
 # Controlla l'esistenza di un valore in una lista con "in"
 1 in li   # => True
 
@@ -227,8 +276,9 @@ tup[:2]   # => (1, 2)
 
 # Puoi scompattare le tuple (o liste) in variabili
 a, b, c = (1, 2, 3)     # a è ora 1, b è ora 2 and c è ora 3
+d, e, f = 4, 5, 6       # puoi anche omettere le parentesi
 # Le tuple sono create di default se non usi le parentesi
-d, e, f = 4, 5, 6
+g = 4, 5, 6             # => (4, 5, 6)
 # Guarda come è facile scambiare due valori
 e, d = d, e     # d è ora 5 ed e è ora 4
 
@@ -249,6 +299,9 @@ filled_dict.keys()   # => ["tre", "due", "uno"]
 # Ottieni tutt i valori come una lista con "values()"
 filled_dict.values()   # => [3, 2, 1]
 # Nota - Come sopra riguardo l'ordinamento delle chiavi.
+
+# Ottieni tutte le coppie chiave-valore, sotto forma di lista di tuple, utilizzando "items()"
+filled_dicts.items()    # => [("uno", 1), ("due", 2), ("tre", 3)]
 
 # Controlla l'esistenza delle chiavi in un dizionario con "in"
 "uno" in filled_dict   # => True
@@ -297,6 +350,15 @@ filled_set | other_set   # => {1, 2, 3, 4, 5, 6}
 
 # Fai differenze su set con -
 {1, 2, 3, 4} - {2, 3, 5}   # => {1, 4}
+
+# Effettua la differenza simmetrica con ^
+{1, 2, 3, 4} ^ {2, 3, 5}  # => {1, 4, 5}
+
+# Controlla se il set a sinistra contiene quello a destra
+{1, 2} >= {1, 2, 3} # => False
+
+# Controlla se il set a sinistra è un sottoinsieme di quello a destra
+{1, 2} <= {1, 2, 3} # => True
 
 # Controlla l'esistenza in un set con in
 2 in filled_set   # => True
@@ -405,7 +467,7 @@ aggiungi(y=6, x=5)   # Le parole chiave come argomenti possono arrivare in ogni 
 
 
 # Puoi definire funzioni che accettano un numero variabile di argomenti posizionali
-# che verranno interpretati come tuple se non usi il *
+# che verranno interpretati come tuple usando il *
 def varargs(*args):
     return args
 
@@ -413,7 +475,7 @@ varargs(1, 2, 3)   # => (1, 2, 3)
 
 
 # Puoi definire funzioni che accettano un numero variabile di parole chiave
-# come argomento, che saranno interpretati come un dizionario se non usi **
+# come argomento, che saranno interpretati come un dizionario usando **
 def keyword_args(**kwargs):
     return kwargs
 
@@ -449,19 +511,19 @@ def pass_all_the_args(*args, **kwargs):
 # Funzioni Scope
 x = 5
 
-def setX(num):
+def set_x(num):
     # La variabile locale x non è uguale alla variabile globale x
     x = num # => 43
     print x # => 43
 
-def setGlobalX(num):
+def set_global_x(num):
     global x
     print x # => 5
     x = num # la variabile globable x è ora 6
     print x # => 6
 
-setX(43)
-setGlobalX(6)
+set_x(43)
+set_global_x(6)
 
 # Python ha funzioni di prima classe
 def create_adder(x):
@@ -474,14 +536,21 @@ add_10(3)   # => 13
 
 # Ci sono anche funzioni anonime
 (lambda x: x > 2)(3)   # => True
+(lambda x, y: x ** 2 + y ** 2)(2, 1) # => 5
 
 # Esse sono incluse in funzioni di alto livello
 map(add_10, [1, 2, 3])   # => [11, 12, 13]
+map(max, [1, 2, 3], [4, 2, 1])   # => [4, 2, 3]
+
 filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 
 # Possiamo usare la comprensione delle liste per mappe e filtri
 [add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]   # => [6, 7]
+
+# Puoi fare anche la comprensione di set e dizionari
+{x for x in 'abcddeef' if x in 'abc'}  # => {'d', 'e', 'f'}
+{x: x**2 for x in range(5)}  # => {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
 
 
 ####################################################
@@ -502,6 +571,9 @@ class Human(object):
         # Assegna l'argomento all'attributo name dell'istanza
         self.name = name
 
+        # Inizializza una proprietà
+        self.age = 0
+
     # Un metodo dell'istanza. Tutti i metodi prendo "self" come primo argomento
     def say(self, msg):
         return "{0}: {1}".format(self.name, msg)
@@ -517,6 +589,21 @@ class Human(object):
     def grunt():
         return "*grunt*"
 
+    # Una proprietà è come un metodo getter.
+    # Trasforma il metodo age() in un attributo in sola lettura, che ha lo stesso nome
+    @property
+    def age(self):
+        return self._age
+
+    # Questo metodo permette di modificare la proprietà
+    @age.setter
+    def age(self, age):
+        self._age = age
+
+    # Questo metodo permette di cancellare la proprietà
+    @age.deleter
+    def age(self):
+        del self._age
 
 # Instanziare una classe
 i = Human(name="Ian")
@@ -535,6 +622,16 @@ j.get_species()   # => "H. neanderthalensis"
 
 # Chiamare il metodo condiviso
 Human.grunt()   # => "*grunt*"
+
+# Aggiorna la proprietà
+i.age = 42
+
+# Ritorna il valore della proprietà
+i.age # => 42
+
+# Cancella la proprietà
+del i.age
+i.age  # => Emette un AttributeError
 
 
 ####################################################
@@ -570,33 +667,66 @@ math.sqrt == m.sqrt == sqrt  # => True
 import math
 dir(math)
 
+# Se nella cartella corrente hai uno script chiamato math.py,
+# Python caricherà quello invece del modulo math.
+# Questo succede perchè la cartella corrente ha priorità
+# sulle librerie standard di Python
+
 
 ####################################################
 ## 7. Avanzate
 ####################################################
 
-# I generatori ti aiutano a fare codice pigro
+# Generatori
+# Un generatore appunto "genera" valori solo quando vengono richiesti,
+# invece di memorizzarli tutti subito fin dall'inizio
+
+# Il metodo seguente (che NON è un generatore) raddoppia tutti i valori e li memorizza
+# dentro `double_arr`. Se gli oggetti iterabili sono grandi, il vettore risultato
+# potrebbe diventare enorme!
 def double_numbers(iterable):
+    double_arr = []
+    for i in iterable:
+        double_arr.append(i + i)
+
+# Eseguendo il seguente codice, noi andiamo a raddoppiare prima tutti i valori, e poi
+# li ritorniamo tutti e andiamo a controllare la condizione
+for value in double_numbers(range(1000000)):  # `test_senza_generatore`
+    print value
+    if value > 5:
+        break
+
+# Invece, potremmo usare un generatore per "generare" il valore raddoppiato non
+# appena viene richiesto
+def double_numbers_generator(iterable):
     for i in iterable:
         yield i + i
 
-# Un generatore crea valori al volo.
-# Invece di generare e ritornare tutti i valori in una volta ne crea uno in ciascuna
-# iterazione.  Ciò significa che i valori più grandi di 15 non saranno considerati in
-# double_numbers.
-# Nota xrange è un generatore che fa la stessa cosa di range.
-# Creare una lista  1-900000000 occuperebbe molto tempo e spazio.
-# xrange crea un oggetto generatore xrange  invece di creare l'intera lista
-# come fa range.
-# Usiamo un underscore finale nel nome delle variabile quando vogliamo usare un nome
-# che normalmente colliderebbe con una parola chiave di python
-xrange_ = xrange(1, 900000000)
-
-# raddoppierà tutti i numeri fino a che result >=30 non sarà trovato
-for i in double_numbers(xrange_):
-    print i
-    if i >= 30:
+# Utilizzando lo stesso test di prima, stavolta però con un generatore, ci permette
+# di iterare sui valori e raddoppiarli uno alla volta, non appena vengono richiesti dalla
+# logica del programma. Per questo, non appena troviamo un valore > 5, usciamo dal ciclo senza
+# bisogno di raddoppiare la maggior parte dei valori del range (MOLTO PIU VELOCE!)
+for value in double_numbers_generator(xrange(1000000)):  # `test_generatore`
+    print value
+    if value > 5:
         break
+
+# Nota: hai notato l'uso di `range` in `test_senza_generatore` e `xrange` in `test_generatore`?
+# Proprio come `double_numbers_generator` è la versione col generatore di `double_numbers`
+# Abbiamo `xrange` come versione col generatore di `range`
+# `range` ritorna un array di 1000000 elementi
+# `xrange` invece genera 1000000 valori quando lo richiediamo/iteriamo su di essi
+
+# Allo stesso modo della comprensione delle liste, puoi creare la comprensione
+# dei generatori.
+values = (-x for x in [1,2,3,4,5])
+for x in values:
+    print(x)  # stampa -1 -2 -3 -4 -5
+
+# Puoi anche fare il cast diretto di una comprensione di generatori ad una lista.
+values = (-x for x in [1,2,3,4,5])
+gen_to_list = list(values)
+print(gen_to_list)  # => [-1, -2, -3, -4, -5]
 
 
 # Decoratori
@@ -604,7 +734,6 @@ for i in double_numbers(xrange_):
 # Beg chiamerà say. Se say_please è True allora cambierà il messaggio
 # ritornato
 from functools import wraps
-
 
 def beg(target_function):
     @wraps(target_function)
@@ -634,11 +763,13 @@ print say(say_please=True)  # Puoi comprarmi una birra? Per favore! Sono povero 
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
-* [The Official Docs](http://docs.python.org/2.6/)
+* [The Official Docs](http://docs.python.org/2/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
 * [Python Module of the Week](http://pymotw.com/2/)
 * [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
+* [LearnPython](http://www.learnpython.org/)
+* [Fullstack Python](https://www.fullstackpython.com/)
 
 ### Libri cartacei
 

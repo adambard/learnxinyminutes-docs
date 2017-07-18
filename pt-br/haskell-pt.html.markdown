@@ -93,7 +93,7 @@ not False -- Nega uma falácia
 "AbBbbcAbbcbBbcbcb" !! 2 -- 'B'
 
 ----------------------------------------------------
--- Listas e Túplas
+-- 2. Listas e Túplas
 ----------------------------------------------------
 
 -- A construção de uma lista precisa ser de elementos homogêneos

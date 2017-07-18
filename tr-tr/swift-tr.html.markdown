@@ -2,7 +2,7 @@
 language: swift
 contributors:
   - ["Özgür Şahin", "https://github.com/ozgurshn/"]
-filename: learnswift.swift
+filename: learnswift-tr.swift
 lang: tr-tr
 ---
 

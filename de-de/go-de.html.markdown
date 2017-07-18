@@ -4,13 +4,14 @@ filename: learngo-de.go
 contributors:
     - ["Joseph Adams", "https://github.com/jcla1"]
     - ["Dennis Keller", "https://github.com/denniskeller"]
+translators:
     - ["Jerome Meinke", "https://github.com/jmeinke"]
 lang: de-de
 ---
 Die Sprache Go (auch golang) wurde von Google entwickelt und wird seit 2007
 benutzt. Go ähnelt in der Syntax der Sprache C, bietet darüber hinaus aber viele
-Vorteile. Einerseits verzichtet Gp auf Speicherarithmetik und
-benutzt einen Garbabe Collector. Andererseits enthält Go native Sprachelemente
+Vorteile. Einerseits verzichtet Go auf Speicherarithmetik und
+benutzt einen Garbage Collector. Andererseits enthält Go native Sprachelemente
 für die Unterstützung von Nebenläufigkeit. Durch den Fokus auf einen schnellen
 Kompilierprozess wird außerdem die Softwareentwicklung in Großprojekten
 erleichtert.

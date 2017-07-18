@@ -9,7 +9,7 @@ filename: learnjulia.jl
 Julia is a new homoiconic functional language focused on technical computing.
 While having the full power of homoiconic macros, first-class functions, and low-level control, Julia is as easy to learn and use as Python.
 
-This is based on Julia 0.3.
+This is based on Julia 0.4.
 
 ```ruby
 
@@ -23,7 +23,7 @@ This is based on Julia 0.3.
 ## 1. Primitive Datatypes and Operators
 ####################################################
 
-# Everything in Julia is a expression.
+# Everything in Julia is an expression.
 
 # There are several basic types of numbers.
 3 # => 3 (Int64)
@@ -155,7 +155,7 @@ b = [4; 5; 6] # => 3-element Int64 Array: [4, 5, 6]
 b[1] # => 4
 b[end] # => 6
 
-# 2-dimentional arrays use space-separated values and semicolon-separated rows.
+# 2-dimensional arrays use space-separated values and semicolon-separated rows.
 matrix = [1 2; 3 4] # => 2x2 Int64 Array: [1 2; 3 4]
 
 # Arrays of a particular Type
@@ -255,7 +255,7 @@ e, d = d, e  # => (5,4) # d is now 5 and e is now 4
 empty_dict = Dict() # => Dict{Any,Any}()
 
 # You can create a dictionary using a literal
-filled_dict = ["one"=> 1, "two"=> 2, "three"=> 3]
+filled_dict = Dict("one"=> 1, "two"=> 2, "three"=> 3)
 # => Dict{ASCIIString,Int64}
 
 # Look up values with []
@@ -272,8 +272,8 @@ values(filled_dict)
 # Note - Same as above regarding key ordering.
 
 # Check for existence of keys in a dictionary with in, haskey
-in(("one", 1), filled_dict) # => true
-in(("two", 3), filled_dict) # => false
+in(("one" => 1), filled_dict) # => true
+in(("two" => 3), filled_dict) # => false
 haskey(filled_dict, "one") # => true
 haskey(filled_dict, 1) # => false
 
@@ -292,7 +292,7 @@ get(filled_dict,"four",4) # => 4
 # Use Sets to represent collections of unordered, unique values
 empty_set = Set() # => Set{Any}()
 # Initialize a set with values
-filled_set = Set(1,2,2,3,4) # => Set{Int64}(1,2,3,4)
+filled_set = Set([1,2,2,3,4]) # => Set{Int64}(1,2,3,4)
 
 # Add more values to a set
 push!(filled_set,5) # => Set{Int64}(5,4,2,3,1)
@@ -302,10 +302,10 @@ in(2, filled_set) # => true
 in(10, filled_set) # => false
 
 # There are functions for set intersection, union, and difference.
-other_set = Set(3, 4, 5, 6) # => Set{Int64}(6,4,5,3)
+other_set = Set([3, 4, 5, 6]) # => Set{Int64}(6,4,5,3)
 intersect(filled_set, other_set) # => Set{Int64}(3,4,5)
 union(filled_set, other_set) # => Set{Int64}(1,2,3,4,5,6)
-setdiff(Set(1,2,3,4),Set(2,3,5)) # => Set{Int64}(1,4)
+setdiff(Set([1,2,3,4]),Set([2,3,5])) # => Set{Int64}(1,4)
 
 
 ####################################################
@@ -346,7 +346,7 @@ end
 #    cat is a mammal
 #    mouse is a mammal
 
-for a in ["dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal"]
+for a in Dict("dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal")
     println("$(a[1]) is a $(a[2])")
 end
 # prints:
@@ -354,7 +354,7 @@ end
 #    cat is a mammal
 #    mouse is a mammal
 
-for (k,v) in ["dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal"]
+for (k,v) in Dict("dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal")
     println("$k is a $v")
 end
 # prints:
@@ -420,14 +420,12 @@ varargs(1,2,3) # => (1,2,3)
 
 # The ... is called a splat.
 # We just used it in a function definition.
-# It can also be used in a fuction call,
+# It can also be used in a function call,
 # where it will splat an Array or Tuple's contents into the argument list.
-Set([1,2,3])    # => Set{Array{Int64,1}}([1,2,3]) # produces a Set of Arrays
-Set([1,2,3]...) # => Set{Int64}(1,2,3) # this is equivalent to Set(1,2,3)
+add([5,6]...) # this is equivalent to add(5,6)
 
-x = (1,2,3)     # => (1,2,3)
-Set(x)          # => Set{(Int64,Int64,Int64)}((1,2,3)) # a Set of Tuples
-Set(x...)       # => Set{Int64}(2,3,1)
+x = (5,6)     # => (5,6)
+add(x...)     # this is equivalent to add(5,6)
 
 
 # You can define functions with optional positional arguments
@@ -447,7 +445,7 @@ end
 
 # You can define functions that take keyword arguments
 function keyword_args(;k1=4,name2="hello") # note the ;
-    return ["k1"=>k1,"name2"=>name2]
+    return Dict("k1"=>k1,"name2"=>name2)
 end
 
 keyword_args(name2="ness") # => ["name2"=>"ness","k1"=>4]
@@ -549,12 +547,8 @@ abstract Cat # just a name and point in the type hierarchy
 
 # Abstract types cannot be instantiated, but can have subtypes.
 # For example, Number is an abstract type
-subtypes(Number) # => 6-element Array{Any,1}:
-                 #     Complex{Float16}
-                 #     Complex{Float32}
-                 #     Complex{Float64}
+subtypes(Number) # => 2-element Array{Any,1}:
                  #     Complex{T<:Real}
-                 #     ImaginaryUnit
                  #     Real
 subtypes(Cat) # => 0-element Array{Any,1}
 
@@ -572,10 +566,11 @@ subtypes(AbstractString)    # 8-element Array{Any,1}:
 # Every type has a super type; use the `super` function to get it.
 typeof(5) # => Int64
 super(Int64) # => Signed
-super(Signed) # => Real
+super(Signed) # => Integer
+super(Integer) # => Real
 super(Real) # => Number
 super(Number) # => Any
-super(super(Signed)) # => Number
+super(super(Signed)) # => Real
 super(Any) # => Any
 # All of these type, except for Int64, are abstract.
 typeof("fire") # => ASCIIString
@@ -778,6 +773,6 @@ code_native(circle_area, (Float64,))
 
 ## Further Reading
 
-You can get a lot more detail from [The Julia Manual](http://docs.julialang.org/en/latest/manual/)
+You can get a lot more detail from [The Julia Manual](http://docs.julialang.org/en/latest/#Manual-1)
 
-The best place to get help with Julia is the (very friendly) [mailing list](https://groups.google.com/forum/#!forum/julia-users).
+The best place to get help with Julia is the (very friendly) [Discourse forum](https://discourse.julialang.org/).

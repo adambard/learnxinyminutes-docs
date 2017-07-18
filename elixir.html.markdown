@@ -3,6 +3,7 @@ language: elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
+    - ["Ryan Plant", "https://github.com/ryanplant-au"]
 filename: learnelixir.ex
 ---
 
@@ -96,6 +97,14 @@ string.
 lower..upper = 1..10 # Can use pattern matching on ranges as well
 [lower, upper] #=> [1, 10]
 
+# Maps are key-value pairs
+genders = %{"david" => "male", "gillian" => "female"}
+genders["david"] #=> "male"
+
+# Maps with atom keys can be used like this
+genders = %{david: "male", gillian: "female"}
+genders.gillian #=> "female"
+
 ## ---------------------------
 ## -- Operators
 ## ---------------------------
@@ -170,7 +179,7 @@ case {:one, :two} do
   {:four, :five} ->
     "This won't match"
   {:one, x} ->
-    "This will match and bind `x` to `:two`"
+    "This will match and bind `x` to `:two` in this clause"
   _ ->
     "This will match any value"
 end
@@ -316,6 +325,14 @@ defmodule MyMod do
   IO.inspect(@my_data) #=> 100
 end
 
+# The pipe operator |> allows you to pass the output of an expression
+# as the first parameter into a function. 
+
+Range.new(1,10)
+|> Enum.map(fn x -> x * x end)
+|> Enum.filter(fn x -> rem(x, 2) == 0 end)
+#=> [4, 16, 36, 64, 100]
+
 ## ---------------------------
 ## -- Structs and Exceptions
 ## ---------------------------
@@ -407,11 +424,28 @@ send pid, {:circle, 2}
 
 # The shell is also a process, you can use `self` to get the current pid
 self() #=> #PID<0.27.0>
+
+## ---------------------------
+## -- Agents
+## ---------------------------
+
+# An agent is a process that keeps track of some changing value
+
+# Create an agent with `Agent.start_link`, passing in a function
+# The initial state of the agent will be whatever that function returns
+{ok, my_agent} = Agent.start_link(fn -> ["red", "green"] end)
+
+# `Agent.get` takes an agent name and a `fn` that gets passed the current state
+# Whatever that `fn` returns is what you'll get back
+Agent.get(my_agent, fn colors -> colors end) #=> ["red", "green"]
+
+# Update the agent's state the same way
+Agent.update(my_agent, fn colors -> ["blue" | colors] end)
 ```
 
 ## References
 
-* [Getting started guide](http://elixir-lang.org/getting_started/1.html) from [elixir webpage](http://elixir-lang.org)
+* [Getting started guide](http://elixir-lang.org/getting-started/introduction.html) from the [Elixir website](http://elixir-lang.org)
 * [Elixir Documentation](http://elixir-lang.org/docs/master/)
 * ["Programming Elixir"](https://pragprog.com/book/elixir/programming-elixir) by Dave Thomas
 * [Elixir Cheat Sheet](http://media.pragprog.com/titles/elixir/ElixirCheat.pdf)

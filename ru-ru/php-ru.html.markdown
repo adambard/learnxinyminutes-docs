@@ -32,7 +32,7 @@ print('Hello '); // Напечатать "Hello " без перевода стр
 
 // () необязательно применять для print и echo
 echo "World\n"; // Напечатать "World" и перейти на новую строку.
-// (все утверждения должны заканчиваться ;)
+// (все утверждения должны заканчиваться точкой с запятой)
 
 // Любые символы за пределами закрывающего тега выводятся автоматически:
 ?>
@@ -45,8 +45,8 @@ Hello World Again!
  */
 
 // Переменные начинаются с символа $.
-// Правильное имя переменной начинается с буквы или знака подчеркивания,
-// и может содержать любые цифры, буквы, или знаки подчеркивания.
+// Правильное имя переменной начинается с буквы или символа подчеркивания,
+// за которым следует любое количество букв, цифр или символов подчеркивания.
 // Не рекомендуется использовать кириллические символы в именах (прим. пер.)
 
 // Логические значения нечувствительны к регистру
@@ -55,9 +55,12 @@ $boolean = false; // или FALSE или False
 
 // Целые числа
 $int1 = 12;   // => 12
-$int2 = -12;  // => -12-
+$int2 = -12;  // => -12
 $int3 = 012;  // => 10 (ведущий 0 обозначает восьмеричное число)
 $int4 = 0x0F; // => 15 (ведущие символы 0x означают шестнадцатеричное число)
+
+// Двоичная запись integer доступна начиная с PHP 5.4.0.
+$int5 = 0b11111111; // 255 (0b в начале означает двоичное число)
 
 // Дробные числа
 $float = 1.234;
@@ -87,7 +90,9 @@ $dbl_quotes = "This is a $sgl_quotes."; // => 'This is a $String.'
 $escaped   = "This contains a \t tab character.";
 $unescaped = 'This just contains a slash and a t: \t';
 
-// Заключайте переменные в фигурные скобки если это необходимо
+// Заключайте переменные в фигурные скобки, если это необходимо
+$apples = "I have {$number} apples to eat.";
+$oranges = "I have ${number} oranges to eat.";
 $money = "I have $${number} in the bank.";
 
 // Начиная с PHP 5.3, синтаксис nowdocs может использоваться для
@@ -106,6 +111,9 @@ END;
 // Строки соединяются при помощи .
 echo 'This string ' . 'is concatenated';
 
+// echo можно передавать строки как параметры
+echo 'Multiple', 'Parameters', 'Valid'; // печатает 'MultipleParametersValid'
+
 
 /********************************
  * Константы
@@ -114,18 +122,19 @@ echo 'This string ' . 'is concatenated';
 // Константа определяется при помощи define()
 // и никогда не может быть изменена во время выполнения программы!
 
-// Правильное имя константы начинается с буквы или символа подчеркивания,
-// и содержит любое колличество букв, цифр и знаков подчеркивания.
+// Правильное имя константы начинается с буквы или символа подчеркивания
+// и содержит любое колличество букв, цифр или символов подчеркивания.
 define("FOO", "something");
 
-// Доступ к константе возможен через прямое указание её имени
-echo 'This outputs '.FOO;
+// Доступ к константе возможен через прямое указание её имени без знака $
+echo FOO; // печатает 'something'
+echo 'This outputs ' . FOO; // печатает 'This ouputs something'
 
 /********************************
  * Массивы
  */
 
-// Все массивы в PHP - это ассоциативные массивы или хеши,
+// Все массивы в PHP - это ассоциативные массивы
 
 // Ассоциативные массивы, известные в других языках как HashMap.
 
@@ -136,11 +145,20 @@ $associative = array('One' => 1, 'Two' => 2, 'Three' => 3);
 $associative = ['One' => 1, 'Two' => 2, 'Three' => 3];
 
 echo $associative['One']; // печатает 1
+// Добавить элемент в ассоциативный массив
+$associative['Four'] = 4;
+
 
 // Список тоже содержит целочисленные ключи
 $array = ['One', 'Two', 'Three'];
 echo $array[0]; // => "One"
 
+// Добавить элемент в конец массива
+$array[] = 'Four';
+// или
+array_push($array, 'Five');
+// удалить элемент из массива
+unset($array[3]);
 
 /********************************
  * Вывод
@@ -180,6 +198,10 @@ $y = 0;
 echo $x; // => 2
 echo $z; // => 0
 
+// Вывести тип и значение переменной в stdout
+var_dump($z); // печатает int(0)
+// Напечатать переменную в stdout в удобочитаемом виде
+print_r($array); // печатает: Array ( [0] => One [1] => Two [2] => Three )
 
 /********************************
  * Логические выражения
@@ -189,7 +211,7 @@ $b = '0';
 $c = '1';
 $d = '1';
 
-// Утверждение (assert) выдает предупреждение если аргумент не true
+// Утверждение (assert) выдает предупреждение, если его аргумент не true
 
 // Эти сравнения всегда будут истинными, даже если типы будут различаться
 assert($a == $b); // "равно"
@@ -200,12 +222,21 @@ assert($c > $b); // больше
 assert($a <= $b); // меньше или равно
 assert($c >= $d); // больше или равно
 
-// Следующие утверждения истинны, если переменные имеют одинаковый тип.
+// Следующие утверждения истинны, если переменные имеют одинаковые тип.
 assert($c === $d);
 assert($a !== $d);
 assert(1 == '1');
 assert(1 !== '1');
 
+// 'Spaceship' оператор (с PHP 7) используется для сравнения двух выражений.
+// Возвращает -1, 0 или 1, когда выражение слева меньше, равно или больше
+// выражения справа.
+$a = 100;
+$b = 1000;
+
+echo $a <=> $a; // 0, выражения равны
+echo $a <=> $b; // -1, $a < $b
+echo $b <=> $a; // 1, $b > $a
 // Переменные могут изменять тип в зависимости от их использования.
 $integer = 1;
 echo $integer + $integer; // => 2
@@ -261,6 +292,11 @@ if (false) {
 // Тернарный оператор
 print (false ? 'Does not get printed' : 'Does');
 
+// сокращенная запись тернарного оператора с PHP 5.3
+// эквивалентно "$x ? $x : 'Does'"
+$x = false;
+print($x ?: 'Does');
+
 $x = 0;
 if ($x === '0') {
     print 'Does not print';
@@ -284,35 +320,35 @@ This is displayed otherwise.
 // Использование switch.
 switch ($x) {
     case '0':
-        print 'Switch does type coercion';
-        break; // You must include a break, or you will fall through
-               // to cases 'two' and 'three'
+        print 'Switch использует неточное сравнение';
+        break; // вы должны использовать break, иначе PHP будет продолжать
+               // исполнять команды следующих секций case 'two' и 'three'
     case 'two':
     case 'three':
-        // Do something if $variable is either 'two' or 'three'
+        // делаем что-то, если $x == 'two' или $x == 'three'
         break;
     default:
-        // Do something by default
+        // делаем что-то по умолчанию
 }
 
 // Циклы: while, do...while и for
 $i = 0;
 while ($i < 5) {
     echo $i++;
-}; // Prints "01234"
+}; // печатает "01234"
 
 echo "\n";
 
 $i = 0;
 do {
     echo $i++;
-} while ($i < 5); // Prints "01234"
+} while ($i < 5); // печатает "01234"
 
 echo "\n";
 
 for ($x = 0; $x < 10; $x++) {
     echo $x;
-} // Напечатает "0123456789"
+} // печатает "0123456789"
 
 echo "\n";
 
@@ -335,17 +371,17 @@ echo "\n";
 $i = 0;
 while ($i < 5) {
     if ($i === 3) {
-        break; // Exit out of the while loop
+        break; // выйти из цикла while
     }
     echo $i++;
 } // Напечатает "012"
 
 for ($i = 0; $i < 5; $i++) {
     if ($i === 3) {
-        continue; // Skip this iteration of the loop
+        continue; // пропустить текущую итерацию цикла
     }
     echo $i;
-} // Напечатает "0124"
+} // печатает "0124"
 
 
 /********************************
@@ -360,7 +396,7 @@ function my_function () {
 echo my_function(); // => "Hello"
 
 // Правильное имя функции начинается с буквы или символа подчеркивания
-// и состоит из букв, цифр или знаков подчеркивания.
+// и состоит из букв, цифр или символов подчеркивания.
 
 function add ($x, $y = 1) { // $y по умолчанию равно 1
   $result = $x + $y;
@@ -447,7 +483,7 @@ $value = include 'my-include.php';
 
 class MyClass
 {
-    const MY_CONST      = 'value'; // A constant
+    const MY_CONST      = 'value'; // Константа
 
     static $staticVar   = 'static';
 
@@ -651,12 +687,167 @@ use My\Namespace as SomeOtherNamespace;
 
 $cls = new SomeOtherNamespace\MyClass();
 
+*//**********************
+* Позднее статическое связывание.
+*
 */
+
+class ParentClass
+{
+    public static function who()
+    {
+        echo "I'm a " . __CLASS__ . "\n";
+    }
+
+    public static function test()
+    {
+        // self ссылается на класс в котором определен метод.
+        self::who();
+        // static ссылается на класс в котором метод вызван.
+        static::who();
+    }
+}
+
+ParentClass::test();
+/*
+I'm a ParentClass
+I'm a ParentClass
+*/
+
+class ChildClass extends ParentClass
+{
+    public static function who()
+    {
+        echo "But I'm " . __CLASS__ . "\n";
+    }
+}
+
+ChildClass::test();
+/*
+I'm a ParentClass
+But I'm ChildClass
+
+/**********************
+* Позднее статическое связывание.
+*
+*/
+
+class ParentClass
+{
+    public static function who()
+    {
+        echo "I'm a " . __CLASS__ . "\n";
+    }
+
+    public static function test()
+    {
+        // self ссылается на класс в котором определен метод.
+        self::who();
+        // static ссылается на класс в котором метод вызван.
+        static::who();
+    }
+}
+
+ParentClass::test();
+/*
+I'm a ParentClass
+I'm a ParentClass
+*/
+
+class ChildClass extends ParentClass
+{
+    public static function who()
+    {
+        echo "But I'm " . __CLASS__ . "\n";
+    }
+}
+
+ChildClass::test();
+/*
+I'm a ParentClass
+But I'm ChildClass
+*/
+
+
+/**********************
+*  Магические константы
+*
+*/
+
+// Возвращает имя текущего класса. Должно быть использовано внутри класса.
+echo "Current class name is " . __CLASS__;
+
+// Возвращает полный путь текущей папки из которой вызван файл.
+echo "Current directory is " . __DIR__;
+
+    // Обычно используют в таких случаях:
+    require __DIR__ . '/vendor/autoload.php';
+
+// Возвращает полный путь к текущему файлу.
+echo "Current file path is " . __FILE__;
+
+// Возвращает имя текущей функции.
+echo "Current function name is " . __FUNCTION__;
+
+// Возвращает номер текущей линии.
+echo "Current line number is " . __LINE__;
+
+// Возвращает имя текущего метода. Возвращает только если вызван внутри метода.
+echo "Current method is " . __METHOD__;
+
+// Возвращает имя текущего пространства имен.
+echo "Current namespace is " . __NAMESPACE__;
+
+// Возвращает имя текущего трейта.
+// Возвращает только если испольщуется внутри трейта.
+echo "Current namespace is " . __TRAIT__;
+
+
+/**********************
+*  Обработка ошибок
+*  
+*/
+
+// Простую обработку ошибок можно произвести спомощью try catch блока.
+
+try {
+    // Выполняем что-то
+} catch (Exception $e) {
+    // Обработка исключения
+}
+
+// При использовании try catch блока в области вилимости, стоит использовать
+// следующий подход:
+
+try {
+    // Do something
+} catch (\Exception $e) {
+    // Обработка исключения
+}
+
+// Специальное(кастомное) исключение - exceptions
+
+class MyException extends Exception {}
+
+try {
+
+    $condition = true;
+
+    if ($condition) {
+        throw new MyException('Something just happend');
+    }
+
+} catch (MyException $e) {
+    // Обработка исключения
+}
 
 ```
 
 ## Смотрите также:
-Посетите страницу [официальной документации PHP](http://www.php.net/manual/) для справки. 
+Посетите страницу [официальной документации PHP](http://www.php.net/manual/) для справки.
+
 Если вас интересуют полезные приемы использования PHP посетите [PHP The Right Way](http://www.phptherightway.com/).
+
 Если вы раньше пользовались языком с хорошей организацией пакетов, посмотрите [Composer](http://getcomposer.org/).
-Для изучения стандартов использования языка посетите PHP Framework Interoperability Group's [PSR standards](https://github.com/php-fig/fig-standards). 
+
+Для изучения стандартов использования языка посетите PHP Framework Interoperability Group's [PSR standards](https://github.com/php-fig/fig-standards).

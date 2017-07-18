@@ -3,6 +3,7 @@ language: javascript
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
+    - ["clearsense", "https://github.com/clearsense"]
 filename: javascript-uk.js
 translators:
   - ["Ivan", "https://github.com/IvanEh"]
@@ -10,7 +11,7 @@ translators:
 lang: uk-ua
 ---
 
-JavaScript було створено в 1995 році Бренданом Айком, який працював у копаніх Netscape.
+JavaScript було створено в 1995 році Бренданом Айком, який працював у компанії Netscape.
 Він був задуманий як проста мова сценаріїв для веб-сайтів, який би доповнював Java
 для більш складних веб-застосунків. Але тісна інтеграція з веб-сторінками і
 вбудована підтримка браузерами призвела до того, що JavaScript став популярніший
@@ -350,6 +351,7 @@ myFunc(); // = undefined
 // Функція може бути присвоєна іншому об’єкту. Тоді вона матиме доступ до 
 // цього об’єкта через this
 var myOtherFunc = function() {
+    return this.myString.toUpperCase();
 }
 myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "HELLO, WORLD!"
@@ -407,7 +409,7 @@ myObj.__proto__ = myPrototype;
 myObj.meaningOfLife; // = 42
 
 // Аналогічно для функцій
-myObj.myFunc(); // = "Hello, world!"
+myObj.myFunc(); // = "hello, world!"
 
 // Якщо інтерпретатор не знайде властивості в прототипі, то він продовжить пошук
 // в прототипі прототипа і так далі
@@ -432,7 +434,7 @@ myObj.meaningOfLife; // = 43
 
 // Другий спосіб: у конструкторів є властивість з іменем prototype. Це *не*
 // прототип функції-конструктора, це прототип для нових об’єктів, які будуть створені
-// цим конструктором і ключового слова new.
+// цим конструктором і ключовим словом new.
 MyConstructor.prototype = {
     myNumber: 5,
     getMyNumber: function() {
@@ -454,9 +456,6 @@ myNumber == myNumberObj; // = true
 typeof myNumber; // = 'number'
 typeof myNumberObj; // = 'object'
 myNumber === myNumberObj; // = false
-if (0) {
-    // Цей код не виконається, тому що 0 - це хиба.
-}
 
 // Об’єкти-обгортки і вбудовані типи мають спільні прототипи, тому
 // ви можете розширити функціонал рядків:
@@ -484,12 +483,12 @@ if (Object.create === undefined) { // не перезаписуємо метод
 
 ## Що почитати
 
-[1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
-[2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
-[3]: https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core
-[4]: http://www.learneroo.com/modules/64/nodes/350
-[5]: http://bonsaiden.github.io/JavaScript-Garden/
-[6]: http://www.amazon.com/gp/product/0596805527/
-[7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
-[8]: http://eloquentjavascript.net/
-[9]: http://jstherightway.org/
+* [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+* [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
+* [3]: https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core
+* [4]: http://www.learneroo.com/modules/64/nodes/350
+* [5]: http://bonsaiden.github.io/JavaScript-Garden/
+* [6]: http://www.amazon.com/gp/product/0596805527/
+* [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
+* [8]: http://eloquentjavascript.net/
+* [9]: http://jstherightway.org/

@@ -9,7 +9,7 @@ contributors:
 filename: learnpython3.py
 ---
 
-Python was created by Guido Van Rossum in the early 90s. It is now one of the most popular
+Python was created by Guido van Rossum in the early 90s. It is now one of the most popular
 languages in existence. I fell in love with Python for its syntactic clarity. It's basically
 executable pseudocode.
 
@@ -23,7 +23,7 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 
 """ Multiline strings can be written
     using three "s, and are often used
-    as comments
+    as documentation.
 """
 
 ####################################################
@@ -37,8 +37,6 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 1 + 1   # => 2
 8 - 1   # => 7
 10 * 2  # => 20
-
-# Except division which returns floats, real numbers, by default
 35 / 5  # => 7.0
 
 # Result of integer division truncated down both for positive and negative.
@@ -47,14 +45,14 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 -5 // 3      # => -2
 -5.0 // 3.0  # => -2.0
 
-# When you use a float, results are floats
-3 * 2.0  # => 6.0
+# The result of division is always a float
+10.0 / 3  # => 3.3333333333333335
 
 # Modulo operation
 7 % 3  # => 1
 
 # Exponentiation (x**y, x to the yth power)
-2**4  # => 16
+2**3  # => 8
 
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
@@ -73,11 +71,14 @@ True and False  # => False
 False or True   # => True
 
 # Note using Bool operators with ints
+# False is 0 and True is 1
+# Don't mix up with bool(ints) and bitwise and/or (&,|)
 0 and 2     # => 0
 -5 or 0     # => -5
 0 == False  # => True
 2 == True   # => False
 1 == True   # => True
+-5 != False != True #=> True
 
 # Equality is ==
 1 == 1  # => True
@@ -113,11 +114,14 @@ b == a            # => True, a's and b's objects are equal
 
 # Strings can be added too! But try not to do this.
 "Hello " + "world!"  # => "Hello world!"
-# Strings can be added without using '+'
+# String literals (but not variables) can be concatenated without using '+'
 "Hello " "world!"    # => "Hello world!"
 
 # A string can be treated like a list of characters
 "This is a string"[0]  # => 'T'
+
+# You can find the length of a string
+len("This is a string")  # => 16
 
 # .format can be used to format strings, like this:
 "{} can be {}".format("Strings", "interpolated")  # => "Strings can be interpolated"
@@ -142,13 +146,13 @@ None  # => None
 "etc" is None  # => False
 None is None   # => True
 
-# None, 0, and empty strings/lists/dicts all evaluate to False.
+# None, 0, and empty strings/lists/dicts/tuples all evaluate to False.
 # All other values are True
 bool(0)   # => False
 bool("")  # => False
 bool([])  # => False
 bool({})  # => False
-
+bool(())  # => False
 
 ####################################################
 ## 2. Variables and Collections
@@ -158,14 +162,14 @@ bool({})  # => False
 print("I'm Python. Nice to meet you!")  # => I'm Python. Nice to meet you!
 
 # By default the print function also prints out a newline at the end.
-# Use the optional argument end to change the end character.
+# Use the optional argument end to change the end string.
 print("Hello, World", end="!")  # => Hello, World!
 
 # Simple way to get input data from console
 input_string_var = input("Enter some data: ") # Returns the data as a string
 # Note: In earlier versions of Python, input() method was named as raw_input()
 
-# No need to declare variables before assigning to them.
+# There are no declarations, only assignments.
 # Convention is to use lower_case_with_underscores
 some_var = 5
 some_var  # => 5
@@ -173,6 +177,10 @@ some_var  # => 5
 # Accessing a previously unassigned variable is an exception.
 # See Control Flow to learn more about exception handling.
 some_unknown_var  # Raises a NameError
+
+# if can be used as an expression
+# Equivalent of C's '?:' ternary operator
+"yahoo!" if 3 > 2 else 2  # => "yahoo!"
 
 # Lists store sequences
 li = []
@@ -198,11 +206,12 @@ li[-1]  # => 3
 li[4]  # Raises an IndexError
 
 # You can look at ranges with slice syntax.
+# The start index is included, the end index is not
 # (It's a closed/open range for you mathy types.)
 li[1:3]   # => [2, 4]
-# Omit the beginning
-li[2:]    # => [4, 3]
 # Omit the end
+li[2:]    # => [4, 3]
+# Omit the beginning
 li[:3]    # => [1, 2, 4]
 # Select every second entry
 li[::2]   # =>[1, 4]
@@ -269,7 +278,7 @@ d, e, f = 4, 5, 6
 e, d = d, e  # d is now 5 and e is now 4
 
 
-# Dictionaries store mappings
+# Dictionaries store mappings from keys to values
 empty_dict = {}
 # Here is a prefilled dictionary
 filled_dict = {"one": 1, "two": 2, "three": 3}
@@ -315,7 +324,7 @@ filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5
 
 # Adding to a dictionary
 filled_dict.update({"four":4})  # => {"one": 1, "two": 2, "three": 3, "four": 4}
-#filled_dict["four"] = 4        #another way to add to dict
+filled_dict["four"] = 4         # another way to add to dict
 
 # Remove keys from a dictionary with del
 del filled_dict["one"]  # Removes the key "one" from filled dict
@@ -335,10 +344,8 @@ some_set = {1, 1, 2, 2, 3, 4}  # some_set is now {1, 2, 3, 4}
 invalid_set = {[1], 1}  # => Raises a TypeError: unhashable type: 'list'
 valid_set = {(1,), 1}
 
-# Can set new variables to a set
-filled_set = some_set
-
 # Add one more item to the set
+filled_set = some_set
 filled_set.add(5)  # filled_set is now {1, 2, 3, 4, 5}
 
 # Do set intersection with &
@@ -373,8 +380,9 @@ filled_set | other_set  # => {1, 2, 3, 4, 5, 6}
 # Let's just make a variable
 some_var = 5
 
-# Here is an if statement. Indentation is significant in python!
-# prints "some_var is smaller than 10"
+# Here is an if statement. Indentation is significant in Python!
+# Convention is to use four spaces, not tabs.
+# This prints "some_var is smaller than 10"
 if some_var > 10:
     print("some_var is totally bigger than 10.")
 elif some_var < 10:    # This elif clause is optional.
@@ -462,7 +470,7 @@ with open("myfile.txt") as f:
 
 # Python offers a fundamental abstraction called the Iterable.
 # An iterable is an object that can be treated as a sequence.
-# The object returned the range function, is an iterable.
+# The object returned by the range function, is an iterable.
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
@@ -486,7 +494,7 @@ next(our_iterator)  # => "one"
 next(our_iterator)  # => "two"
 next(our_iterator)  # => "three"
 
-# After the iterator has returned all of its data, it gives you a StopIterator Exception
+# After the iterator has returned all of its data, it raises a StopIteration exception
 next(our_iterator)  # Raises StopIteration
 
 # You can grab all the elements of an iterator by calling list() on it.
@@ -558,13 +566,13 @@ x = 5
 def set_x(num):
     # Local var x not the same as global variable x
     x = num    # => 43
-    print (x)  # => 43
+    print(x)   # => 43
 
 def set_global_x(num):
     global x
-    print (x)  # => 5
+    print(x)   # => 5
     x = num    # global var x is now set to 6
-    print (x)  # => 6
+    print(x)   # => 6
 
 set_x(43)
 set_global_x(6)
@@ -583,107 +591,24 @@ add_10(3)   # => 13
 (lambda x: x > 2)(3)                  # => True
 (lambda x, y: x ** 2 + y ** 2)(2, 1)  # => 5
 
-# TODO - Fix for iterables
 # There are built-in higher order functions
-map(add_10, [1, 2, 3])          # => [11, 12, 13]
-map(max, [1, 2, 3], [4, 2, 1])  # => [4, 2, 3]
+list(map(add_10, [1, 2, 3]))          # => [11, 12, 13]
+list(map(max, [1, 2, 3], [4, 2, 1]))  # => [4, 2, 3]
 
-filter(lambda x: x > 5, [3, 4, 5, 6, 7])  # => [6, 7]
+list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  # => [6, 7]
 
 # We can use list comprehensions for nice maps and filters
 # List comprehension stores the output as a list which can itself be a nested list
 [add_10(i) for i in [1, 2, 3]]         # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]  # => [6, 7]
 
-####################################################
-## 5. Classes
-####################################################
-
-
-# We use the "class" operator to get a class
-class Human:
-
-    # A class attribute. It is shared by all instances of this class
-    species = "H. sapiens"
-
-    # Basic initializer, this is called when this class is instantiated.
-    # Note that the double leading and trailing underscores denote objects
-    # or attributes that are used by python but that live in user-controlled
-    # namespaces. Methods(or objects or attributes) like: __init__, __str__,
-    # __repr__ etc. are called magic methods (or sometimes called dunder methods)
-    # You should not invent such names on your own.
-    def __init__(self, name):
-        # Assign the argument to the instance's name attribute
-        self.name = name
-
-        # Initialize property
-        self.age = 0
-
-    # An instance method. All methods take "self" as the first argument
-    def say(self, msg):
-        return "{name}: {message}".format(name=self.name, message=msg)
-
-    # A class method is shared among all instances
-    # They are called with the calling class as the first argument
-    @classmethod
-    def get_species(cls):
-        return cls.species
-
-    # A static method is called without a class or instance reference
-    @staticmethod
-    def grunt():
-        return "*grunt*"
-
-    # A property is just like a getter.
-    # It turns the method age() into an read-only attribute
-    # of the same name.
-    @property
-    def age(self):
-        return self._age
-
-    # This allows the property to be set
-    @age.setter
-    def age(self, age):
-        self._age = age
-
-    # This allows the property to be deleted
-    @age.deleter
-    def age(self):
-        del self._age
-
-
-# Instantiate a class
-i = Human(name="Ian")
-print(i.say("hi"))     # prints out "Ian: hi"
-
-j = Human("Joel")
-print(j.say("hello"))  # prints out "Joel: hello"
-
-# Call our class method
-i.get_species()  # => "H. sapiens"
-
-# Change the shared attribute
-Human.species = "H. neanderthalensis"
-i.get_species()  # => "H. neanderthalensis"
-j.get_species()  # => "H. neanderthalensis"
-
-# Call the static method
-Human.grunt()    # => "*grunt*"
-
-# Update the property
-i.age = 42
-
-# Get the property
-i.age # => 42
-
-# Delete the property
-del i.age
-i.age  # => raises an AttributeError
-
+# You can construct set and dict comprehensions as well.
+{x for x in 'abcddeef' if x not in 'abc'}  # => {'d', 'e', 'f'}
+{x: x**2 for x in range(5)}  # => {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
 
 
 ####################################################
-## 6. Modules
+## 5. Modules
 ####################################################
 
 # You can import modules
@@ -703,43 +628,245 @@ from math import *
 import math as m
 math.sqrt(16) == m.sqrt(16)  # => True
 
-# Python modules are just ordinary python files. You
+# Python modules are just ordinary Python files. You
 # can write your own, and import them. The name of the
 # module is the same as the name of the file.
 
 # You can find out which functions and attributes
-# defines a module.
+# are defined in a module.
 import math
 dir(math)
+
+# If you have a Python script named math.py in the same
+# folder as your current script, the file math.py will
+# be loaded instead of the built-in Python module.
+# This happens because the local folder has priority
+# over Python's built-in libraries.
+
+
+####################################################
+## 6. Classes
+####################################################
+
+# We use the "class" statement to create a class
+class Human:
+
+    # A class attribute. It is shared by all instances of this class
+    species = "H. sapiens"
+
+    # Basic initializer, this is called when this class is instantiated.
+    # Note that the double leading and trailing underscores denote objects
+    # or attributes that are used by Python but that live in user-controlled
+    # namespaces. Methods(or objects or attributes) like: __init__, __str__,
+    # __repr__ etc. are called special methods (or sometimes called dunder methods)
+    # You should not invent such names on your own.
+    def __init__(self, name):
+        # Assign the argument to the instance's name attribute
+        self.name = name
+
+        # Initialize property
+        self._age = 0
+
+    # An instance method. All methods take "self" as the first argument
+    def say(self, msg):
+        print ("{name}: {message}".format(name=self.name, message=msg))
+
+    # Another instance method
+    def sing(self):
+        return 'yo... yo... microphone check... one two... one two...'
+
+    # A class method is shared among all instances
+    # They are called with the calling class as the first argument
+    @classmethod
+    def get_species(cls):
+        return cls.species
+
+    # A static method is called without a class or instance reference
+    @staticmethod
+    def grunt():
+        return "*grunt*"
+
+    # A property is just like a getter.
+    # It turns the method age() into an read-only attribute of the same name.
+    # There's no need to write trivial getters and setters in Python, though.
+    @property
+    def age(self):
+        return self._age
+
+    # This allows the property to be set
+    @age.setter
+    def age(self, age):
+        self._age = age
+
+    # This allows the property to be deleted
+    @age.deleter
+    def age(self):
+        del self._age
+
+
+# When a Python interpreter reads a source file it executes all its code.
+# This __name__ check makes sure this code block is only executed when this
+# module is the main program.
+if __name__ == '__main__':
+    # Instantiate a class
+    i = Human(name="Ian")
+    i.say("hi")                     # "Ian: hi"
+    j = Human("Joel")
+    j.say("hello")                  # "Joel: hello"
+    # i and j are instances of type Human, or in other words: they are Human objects
+
+    # Call our class method
+    i.say(i.get_species())          # "Ian: H. sapiens"
+    # Change the shared attribute
+    Human.species = "H. neanderthalensis"
+    i.say(i.get_species())          # => "Ian: H. neanderthalensis"
+    j.say(j.get_species())          # => "Joel: H. neanderthalensis"
+
+    # Call the static method
+    print(Human.grunt())            # => "*grunt*"
+    
+    # Cannot call static method with instance of object 
+    # because i.grunt() will automatically put "self" (the object i) as an argument
+    print(i.grunt())                # => TypeError: grunt() takes 0 positional arguments but 1 was given
+                                    
+    # Update the property for this instance
+    i.age = 42
+    # Get the property
+    i.say(i.age)                    # => "Ian: 42"
+    j.say(j.age)                    # => "Joel: 0"
+    # Delete the property
+    del i.age
+    # i.age                         # => this would raise an AttributeError
+
+
+####################################################
+## 6.1 Multiple Inheritance
+####################################################
+
+# Another class definition
+class Bat:
+
+    species = 'Baty'
+
+    def __init__(self, can_fly=True):
+        self.fly = can_fly
+
+    # This class also has a say method
+    def say(self, msg):
+        msg = '... ... ...'
+        return msg
+
+    # And its own method as well
+    def sonar(self):
+        return '))) ... ((('
+
+if __name__ == '__main__':
+    b = Bat()
+    print(b.say('hello'))
+    print(b.fly)
+
+# To take advantage of modularization by file you could place the classes above in their own files,
+# say, human.py and bat.py
+
+# To import functions from other files use the following format
+# from "filename-without-extension" import "function-or-class"
+
+# superhero.py
+from human import Human
+from bat import Bat
+
+# Batman inherits from both Human and Bat
+class Batman(Human, Bat):
+
+    # Batman has its own value for the species class attribute
+    species = 'Superhero'
+
+    def __init__(self, *args, **kwargs):
+        # Typically to inherit attributes you have to call super:
+        #super(Batman, self).__init__(*args, **kwargs)      
+        # However we are dealing with multiple inheritance here, and super()
+        # only works with the next base class in the MRO list.
+        # So instead we explicitly call __init__ for all ancestors.
+        # The use of *args and **kwargs allows for a clean way to pass arguments,
+        # with each parent "peeling a layer of the onion".
+        Human.__init__(self, 'anonymous', *args, **kwargs)
+        Bat.__init__(self, *args, can_fly=False, **kwargs)
+        # override the value for the name attribute
+        self.name = 'Sad Affleck'
+
+    def sing(self):
+        return 'nan nan nan nan nan batman!'
+
+
+if __name__ == '__main__':
+    sup = Batman()
+
+    # Instance type checks
+    if isinstance(sup, Human):
+        print('I am human')
+    if isinstance(sup, Bat):
+        print('I am bat')
+    if type(sup) is Batman:
+        print('I am Batman')
+
+    # Get the Method Resolution search Order used by both getattr() and super().
+    # This attribute is dynamic and can be updated
+    print(Batman.__mro__)       # => (<class '__main__.Batman'>, <class 'human.Human'>, <class 'bat.Bat'>, <class 'object'>)
+
+    # Calls parent method but uses its own class attribute
+    print(sup.get_species())    # => Superhero
+
+    # Calls overloaded method
+    print(sup.sing())           # => nan nan nan nan nan batman!
+
+    # Calls method from Human, because inheritance order matters
+    sup.say('I agree')          # => Sad Affleck: I agree
+
+    # Call method that exists only in 2nd ancestor
+    print(sup.sonar())          # => ))) ... (((
+
+    # Inherited class attribute
+    sup.age = 100
+    print(sup.age)
+
+    # Inherited attribute from 2nd ancestor whose default value was overridden.
+    print('Can I fly? ' + str(sup.fly))
+
 
 
 ####################################################
 ## 7. Advanced
 ####################################################
 
-# Generators help you make lazy code
+# Generators help you make lazy code.
 def double_numbers(iterable):
     for i in iterable:
         yield i + i
 
-# A generator creates values on the fly.
-# Instead of generating and returning all values at once it creates one in each
-# iteration.  This means values bigger than 15 wont be processed in
-# double_numbers.
-# We use a trailing underscore in variable names when we want to use a name that
-# would normally collide with a python keyword
-range_ = range(1, 900000000)
-# will double all numbers until a result >=30 found
-for i in double_numbers(range_):
+# Generators are memory-efficient because they only load the data needed to
+# process the next value in the iterable. This allows them to perform
+# operations on otherwise prohibitively large value ranges.
+# NOTE: `range` replaces `xrange` in Python 3.
+for i in double_numbers(range(1, 900000000)):  # `range` is a generator.
     print(i)
     if i >= 30:
         break
 
+# Just as you can create a list comprehension, you can create generator
+# comprehensions as well.
+values = (-x for x in [1,2,3,4,5])
+for x in values:
+    print(x)  # prints -1 -2 -3 -4 -5 to console/terminal
+
+# You can also cast a generator comprehension directly to a list.
+values = (-x for x in [1,2,3,4,5])
+gen_to_list = list(values)
+print(gen_to_list)  # => [-1, -2, -3, -4, -5]
+
 
 # Decorators
-# in this example beg wraps say
-# Beg will call say. If say_please is True then it will change the returned
-# message
+# In this example `beg` wraps `say`. If say_please is True then it
+# will change the returned message.
 from functools import wraps
 
 
@@ -769,21 +896,14 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 ### Free Online
 
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
-* [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
-* [Dive Into Python](http://www.diveintopython.net/)
 * [Ideas for Python Projects](http://pythonpracticeprojects.com)
 * [The Official Docs](http://docs.python.org/3/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
-* [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 * [Python Course](http://www.python-course.eu/index.php)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 * [A curated list of awesome Python frameworks, libraries and software](https://github.com/vinta/awesome-python)
 * [30 Python Language Features and Tricks You May Not Know About](http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
 * [Official Style Guide for Python](https://www.python.org/dev/peps/pep-0008/)
 * [Python 3 Computer Science Circles](http://cscircles.cemc.uwaterloo.ca/)
-
-### Dead Tree
-
-* [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
-* [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
-* [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
+* [Dive Into Python 3](http://www.diveintopython3.net/index.html)
+* [A Crash Course in Python for Scientists](http://nbviewer.jupyter.org/gist/anonymous/5924718)

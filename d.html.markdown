@@ -6,7 +6,7 @@ contributors:
 lang: en
 ---
 
-```c
+```d
 // You know what's coming...
 module hello;
 
@@ -28,7 +28,7 @@ D is actively developed by a large group of super-smart people and is spearheade
 [Andrei Alexandrescu](https://en.wikipedia.org/wiki/Andrei_Alexandrescu).
 With all that out of the way, let's look at some examples!
 
-```c
+```d
 import std.stdio;
 
 void main() {
@@ -73,7 +73,7 @@ We can define new types with `struct`, `class`, `union`, and `enum`. Structs and
 are passed to functions by value (i.e. copied) and classes are passed by reference. Furthermore,
 we can use templates to parameterize all of these on both types and values!
 
-```c
+```d
 // Here, 'T' is a type parameter. Think '<T>' from C++/C#/Java.
 struct LinkedList(T) {
     T data = null;
@@ -136,7 +136,7 @@ is roughly a function that may act like an lvalue, so we can
 have the syntax of POD structures (`structure.x = 7`) with the semantics of
 getter and setter methods (`object.setX(7)`)!
 
-```c
+```d
 // Consider a class parameterized on types 'T' & 'U'.
 class MyClass(T, U) {
     T _data;
@@ -209,7 +209,7 @@ functions, and immutable data. In addition, all of your favorite
 functional algorithms (map, filter, reduce and friends) can be
 found in the wonderful `std.algorithm` module!
 
-```c
+```d
 import std.algorithm : map, filter, reduce;
 import std.range : iota; // builds an end-exclusive range
 
@@ -237,7 +237,7 @@ is of some type A on any expression of type A as a method.
 
 I like parallelism. Anyone else like parallelism? Sure you do. Let's do some!
 
-```c
+```d
 // Let's say we want to populate a large array with the square root of all
 // consecutive integers starting from 1 (up until the size of the array), and we
 // want to do this concurrently taking advantage of as many cores as we have

@@ -1,11 +1,11 @@
 ---
 language: xml
-filename: learnxml.xml
+filename: learnxml-ta.xml
 contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
 translators:
   - ["Rasendran Kirushan", "https://github.com/kirushanr"]
-lang:in-ta
+lang: in-ta
 ---
 
 

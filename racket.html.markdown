@@ -114,17 +114,41 @@ some-var ; => 5
   "Alice"
   me) ; => "Bob"
 
+;; let* is like let, but allows you to use previous bindings in creating later bindings
+(let* ([x 1]
+       [y (+ x 1)])
+       (* x y))
+
+;; finally, letrec allows you to define recursive and mutually recursive functions
+(letrec ([is-even? (lambda (n)
+                       (or (zero? n)
+                           (is-odd? (sub1 n))))]
+           [is-odd? (lambda (n)
+                      (and (not (zero? n))
+                           (is-even? (sub1 n))))])
+    (is-odd? 11))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 3. Structs and Collections
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Structs
+; By default, structs are immutable
 (struct dog (name breed age))
 (define my-pet
   (dog "lassie" "collie" 5))
 my-pet ; => #<dog>
+; returns whether the variable was constructed with the dog constructor
 (dog? my-pet) ; => #t
+; accesses the name field of the variable constructed with the dog constructor
 (dog-name my-pet) ; => "lassie"
+
+; You can explicitly declare a struct to be mutable with the #:mutable option
+(struct rgba-color (red green blue alpha) #:mutable)
+(define burgundy
+   (rgba-color 144 0 32 1.0))
+(set-rgba-color-green! burgundy 10)
+(rgba-color-green burgundy) ; => 10
 
 ;;; Pairs (immutable)
 ;; `cons' constructs pairs, `car' and `cdr' extract the first
@@ -140,8 +164,25 @@ my-pet ; => #<dog>
 (cons 1 (cons 2 (cons 3 null))) ; => '(1 2 3)
 ;; `list' is a convenience variadic constructor for lists
 (list 1 2 3) ; => '(1 2 3)
-;; and a quote can also be used for a literal list value
+;; a quote can also be used for a literal list value
 '(1 2 3) ; => '(1 2 3)
+;; a quasiquote (represented by the backtick character) with commas 
+;; can be used to evaluate functions
+`(1 ,(+ 1 1) 3) ; => '(1 2 3)
+
+;; With lists, car/cdr work slightly differently
+(car '(1 2 3)) ; => 1
+(cdr '(1 2 3)) ; => '(2 3)
+
+;; Racket also has predefined functions on top of car and cdr, to extract parts of a list
+(cadr (list 1 2 3)) ; => 2
+(car (cdr (list 1 2 3))) ; => 2
+
+(cddr (list 1 2 3)) ; => '(3)
+(cdr (cdr (list 1 2 3))) ; => '(3)
+
+(caddr (list 1 2 3)) ; => 3
+(car (cdr (cdr (list 1 2 3)))) ; => 3
 
 ;; Can still use `cons' to add an item to the beginning of a list
 (cons 4 '(1 2 3)) ; => '(4 1 2 3)

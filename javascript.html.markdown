@@ -225,31 +225,28 @@ do {
 } while (!isValid(input))
 
 // The `for` loop is the same as C and Java:
-// initialisation; continue condition; iteration.
+// initialization; continue condition; iteration.
 for (var i = 0; i < 5; i++){
     // will run 5 times
 }
 
-// The for/in statement iterates over every property across the entire prototype chain.
+// Breaking out of labeled loops is similar to Java
+outer:
+for (var i = 0; i < 10; i++) {
+    for (var j = 0; j < 10; j++) {
+        if (i == 5 && j ==5) {
+            break outer;
+            // breaks out of outer loop instead of only the inner one
+        }
+    }
+}
+
+// The for/in statement allows iteration over properties of an object.
 var description = "";
 var person = {fname:"Paul", lname:"Ken", age:18};
 for (var x in person){
     description += person[x] + " ";
-}
-
-// To only consider properties attached to the object itself
-// and not its prototypes, use the `hasOwnProperty()` check.
-var description = "";
-var person = {fname:"Paul", lname:"Ken", age:18};
-for (var x in person){
-    if (person.hasOwnProperty(x)){
-        description += person[x] + " ";
-    }
-}
-
-// For/in should not be used to iterate over an Array where the index order
-// is important, as there is no guarantee that for/in will return the indexes
-// in any particular order.
+} // description = 'Paul Ken 18 '
 
 // && is logical and, || is logical or
 if (house.size == "big" && house.colour == "blue"){
@@ -261,7 +258,6 @@ if (colour == "red" || colour == "blue"){
 
 // && and || "short circuit", which is useful for setting default values.
 var name = otherName || "default";
-
 
 // The `switch` statement checks for equality with `===`.
 // Use 'break' after each case
@@ -438,6 +434,10 @@ var MyConstructor = function(){
 myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
 
+// Unlike most other popular object-oriented languages, JavaScript has no 
+// concept of 'instances' created from 'class' blueprints; instead, JavaScript
+// combines instantiation and inheritance into a single concept: a 'prototype'.
+
 // Every JavaScript object has a 'prototype'. When you go to access a property
 // on an object that doesn't exist on the actual object, the interpreter will
 // look at its prototype.
@@ -473,6 +473,26 @@ myObj.myBoolean; // = true
 // reflected everywhere.
 myPrototype.meaningOfLife = 43;
 myObj.meaningOfLife; // = 43
+
+// The for/in statement allows iteration over properties of an object,
+// walking up the prototype chain until it sees a null prototype.
+for (var x in myObj){
+    console.log(myObj[x]);
+}
+///prints:
+// Hello world!
+// 43
+// [Function: myFunc]
+
+// To only consider properties attached to the object itself
+// and not its prototypes, use the `hasOwnProperty()` check.
+for (var x in myObj){
+    if (myObj.hasOwnProperty(x)){
+        console.log(myObj[x]);
+    }
+}
+///prints:
+// Hello world!
 
 // We mentioned that `__proto__` was non-standard, and there's no standard way to
 // change the prototype of an existing object. However, there are two ways to
@@ -559,12 +579,15 @@ of the language.
 
 [JavaScript: The Definitive Guide][6] is a classic guide and reference book.
 
-[Eloquent Javascript][8] by Marijn Haverbeke is an excellent JS book/ebook with attached terminal
+[Eloquent Javascript][8] by Marijn Haverbeke is an excellent JS book/ebook with
+attached terminal
 
-[Eloquent Javascript - The Annotated Version][9] by Gordon Zhu is also a great derivative of Eloquent Javascript with extra explanations and clarifications for some of the more complicated examples.
+[Eloquent Javascript - The Annotated Version][9] by Gordon Zhu is also a great
+derivative of Eloquent Javascript with extra explanations and clarifications for
+some of the more complicated examples.
 
-[Javascript: The Right Way][10] is a guide intended to introduce new developers to JavaScript and help experienced developers learn more about its best practices.
-
+[Javascript: The Right Way][10] is a guide intended to introduce new developers
+to JavaScript and help experienced developers learn more about its best practices.
 
 In addition to direct contributors to this article, some content is adapted from
 Louie Dinh's Python tutorial on this site, and the [JS Tutorial][7] on the

@@ -279,6 +279,19 @@ public class AprendeJava {
         // 'toString' es una convención para mostrar los valores de este objeto.
         System.out.println("informacion de la excursion: " + excursion.toString());
 
+        ///////////////////////////////////////
+        // Genéricos
+        ///////////////////////////////////////
+
+        // Utilizando genéricos (a partir de Java 1.5) es posible detectar en tiempo de
+        // compilación errores de tipado (en versiones anteriores se detectarían como error
+        // de ejecución)
+
+        List<String> v = new ArrayList<String>();
+        v.add("test");
+        String s = v.get(0); // Si intentamos recuperar s como otro tipo diferente a String
+                             // (por ejemplo, un Integer) obtendríamos un error de compilación
+
     } // Fin del método 'main'
 } // Fin de la clase AprendeJava
 

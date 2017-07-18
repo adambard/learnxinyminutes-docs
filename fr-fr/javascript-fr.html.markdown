@@ -190,7 +190,7 @@ someNinthVar; // = 9
 
 // Il y a des raccourcis pour les opérations mathématiques:
 someVar += 5; // équivalent pour someVar = someVar + 5;
-someVar *= 10; // de même, someVar = someVar * 100;
+someVar *= 10; // de même, someVar = someVar * 10;
 someVar++;    // = someVar += 1;
 someVar--;  // = someVar -= 1;
 
