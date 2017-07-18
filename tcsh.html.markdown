@@ -30,6 +30,10 @@ Some more files:
 # First line of the script is shebang which tells the system how to execute the
 # script: http://en.wikipedia.org/wiki/Shebang_(Unix)
 # TCSH emulates the shebang on systems which don't understand it.
+#
+# The lines which starting with '#' are comments
+# The lines of comments ignore by the shell; all others are executed.
+# Empty lines are ignored too.
 
 # In most cases you'll use `#!/bin/tcsh -f', because `-f' option does not load
 # any resource or start-up files, or perform any command hashing, and thus
@@ -105,7 +109,7 @@ man tcsh
 # changed with the `set' and `unset' commands.
 # The system maintains its own list of ``environment'' variables.
 # These can be displayed and changed with `printenv', `setenv' and `unsetenv'.
-# The syntax of setenv is similar to POSIX sh.
+# The syntax of `setenv' is similar to POSIX sh.
 
 # Assign a value or nothing will create a variable
 # Assign nothing
@@ -515,8 +519,8 @@ endif
 # control may fall through case labels and default labels as in C.
 
 switch ( $var )
-case *.[1-9]:
-case *.[1-9].gz:
+case *.[1-8]:
+case *.[1-8].gz:
 	echo "$var is a man-page."
 	breaksw
 case *gz:
@@ -550,7 +554,7 @@ foreach f ( a.txt b.txt c.txt )
 	cat $f
 end
 
-# example: convert wma to ogg
+# example: convert all wma files on this directory to ogg format
 foreach f ( *.wma )
 	ffmpeg -i "$f" "$f:r".ogg
 end
