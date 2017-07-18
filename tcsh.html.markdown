@@ -729,7 +729,7 @@ while ( 1 )
 	set guess = $<
 	if ( $secret == $guess ) then
 		echo "You found it"
-		exit 1
+		break
 	else
 		if ( $secret > $guess ) echo "its greater"
 		if ( $secret < $guess ) echo "its lesser"
