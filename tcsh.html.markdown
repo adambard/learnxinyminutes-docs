@@ -32,7 +32,7 @@ Some more files:
 # TCSH emulates the shebang on systems which don't understand it.
 #
 # The lines which starting with '#' are comments
-# The lines of comments ignore by the shell; all others are executed.
+# The lines of comments ignored by the shell; all others are executed.
 # Empty lines are ignored too.
 
 # In most cases you'll use `#!/bin/tcsh -f', because `-f' option does not load
@@ -41,8 +41,13 @@ Some more files:
 
 # --- the echo command --------------------------------------------------------
 # The `echo' writes each word to the shell's standard output, separated by
-# spaces and terminated with a newline. The echo_style shell variable may be
-# set to emulate (or not) the flags and escape sequences.
+# spaces and terminated with a newline.
+#
+# The shell's standard output it is the terminal screen but can be also a file
+# or a pipe-line.
+#
+# The echo_style shell variable may be set to emulate (or not) the flags and
+# escape sequences.
 
 # Display the value of echo_style
 echo $echo_style
@@ -58,12 +63,29 @@ echo "Hello world"
 echo 'Hello world'
 echo `echo Hello world`
 
-# This prints "twonlines" in one line
-echo two\nlines
+# For those who are unfamiliar with backslash: 
+# This character has special meaning in C language and so in shells and in the
+# whole Unix.
+# \n   = a new line,
+# \t   = a [TAB] character, 
+# \033 = the ESC-ape character (ASCII 27) used often by terminals to select
+# colours or communicate with its hardware.
+#
+# The quote characters in shells have the special meaning to defines a string.
+# So if you want to include one of those characters inside the string, type:
+# \"   = for double quotes
+# \'   = for single quotes
+#
+# To display the backslash you have to type it two times, like this: \\
 
-# Prints the two lines
-echo "two\nlines"
-echo 'two\nlines'
+# This prints "line1nline2" in one line, because the \n interpreted
+# before executed by the `echo'. This is the correct, not a bug.
+echo line1\nline2
+
+# To prints the two lines you have to type
+echo "line1\nline2"
+# or
+echo 'line1\nline2'
 
 # --- Basic Syntax ------------------------------------------------------------
 
