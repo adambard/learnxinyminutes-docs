@@ -328,7 +328,11 @@ if ( $user =~ ni[ck]* ) echo "Greetings Mr. Nicholas."
 if ( $user !~ ni[ck]* ) echo "Hey, get out of Nicholas PC."
 
 # TIP: if something goes wrong with your expressions, try to enclose it
-#      in quotes.
+#      in quotes and single-quotes, depending of what is most logical.
+#
+# My advice is, **always use quotes**, this will save you many times.
+
+if ( "$user" =~ 'ni[ck]*' ) echo "Greetings Mr. Nicholas."
 
 # Arithmetic expressions are denoted with the following format:
 @ result = 10 + 5
@@ -365,8 +369,8 @@ echo $result
 # C's operators ++ and -- are supported if there is not assignment
 @ result ++
 
-# No shell is designed to do math;
-# Except for the integer expressions, use an external command with backquote.
+# No shell is designed to do math .-
+# Except for the integer expressions, use an external command with back-quote.
 #
 # I suggest the `calc' as the best option; it is powerful and fast.
 # (http://www.isthe.com/chongo/tech/comp/calc/)
@@ -377,13 +381,13 @@ echo $result
 # You can also use `perl', or several BASICs, but prefer the above
 # utilities for faster load-and-run results.
 
-# real example: (that I answer in StackExchange)
+# real example: (that I answered in StackExchange)
 # REQ: x := 1001b OR 0110b
 
 # in `tcsh' expression (by using octal)
 @ x = ( 011 | 06 ); echo $x
 
-# the same by using `calc' (and using binary as the original req)
+# the same by using `calc' (and using binary as the original REQ)
 set x = `calc '0b1001 | 0b110'`; echo $x
 
 # --- File Inquiry Operators --------------------------------------------------
