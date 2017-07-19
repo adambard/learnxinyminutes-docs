@@ -94,10 +94,10 @@ echo '!!'
 # Strings enclosed by back-quotes will be executed and replaced by the result.
 echo `ls`
 
-# Semi-colon separate commands
+# Execute multiple cmds on the same line (;)
 echo 'first line'; echo 'second line'
 
-# There is also conditional execution
+# There is also conditional execution (||) (&&)
 echo "Always executed" || echo "Only executed if first command fails"
 echo "Always executed" && echo "Only executed if first command does NOT fail"
 
@@ -109,6 +109,9 @@ make && ( espeak "BOSS, compilation finished"; make install )
 
 # prints the home directory but leaving you where you were
 (cd; pwd); pwd
+
+# Execute command in background (&)
+(sleep 5; echo 'DING! dinner is ready') &
 
 # Read tcsh manual page
 man tcsh
@@ -255,6 +258,13 @@ echo $lst:gh
 # this prints the file-names:
 # awk.csh bas.csh bc.csh
 echo $lst:gt
+
+# the `shift' built-in command removes the first element of a list.
+# if no variable name is given, then uses the $argv
+set lst = ( a b c )
+shift lst
+# prints: b c
+echo $lst
 
 # --- Redirection -------------------------------------------------------------
 
@@ -491,7 +501,6 @@ echo -n "Enter the command you are looking for or press ^C to cancel: "; \
 # --- Control Flow ------------------------------------------------------------
 
 #### IF-THEN-ELSE-ENDIF
-# Syntax:
 # if ( expr ) then
 #    ...
 # [else if ( expr2 ) then
@@ -504,21 +513,6 @@ echo -n "Enter the command you are looking for or press ^C to cancel: "; \
 # executed; otherwise if expr2 is true then the commands to the second else
 # are executed, etc.
 # Any number of else-if pairs are possible; only one endif is needed.
-#
-# Single-line form:
-#
-# if ( expr ) command
-#
-# If `expr' evaluates true, then command is executed.
-# `command' must be a simple command, not an alias, a pipeline, a command list
-# or a parenthesised command list. With few words, avoid to use it.
-#
-# BUG: Input/output redirection occurs even if expr is false and command is
-# thus not executed.
-#
-
-# check if we are in non-interactive shell and quit if true
-if ( $?USER == 0 || $?prompt == 0 ) exit
 
 # check if we are a login shell
 if ( $?loginsh ) then
@@ -529,8 +523,20 @@ if ( $?loginsh ) then
 	endif
 endif
 
+#### SINGLE-LINE-IF
+# if ( expr ) command
+#
+# If `expr' evaluates true, then command is executed.
+# `command' must be a simple command, not an alias, a pipeline, a command list
+# or a parenthesised command list. With few words, avoid to use it.
+#
+# BUG: Input/output redirection occurs even if expr is false and command is
+# thus not executed.
+
+# check if we are in non-interactive shell and quit if true
+if ( $?USER == 0 || $?prompt == 0 ) exit
+
 #### SWITCH-ENDSW
-# Syntax:
 # switch ( expr )
 # case pattern:
 #     ...
@@ -560,7 +566,6 @@ default:
 endsw
 
 #### FOREACH-END
-# Syntax:
 # foreach name ( wordlist )
 #	...
 #   [break | continue]
@@ -638,6 +643,46 @@ echo 'parameters =' $params
 
 repeat 3 echo "ding dong"
 
+#### GOTO
+# label:
+#	...
+# goto label
+#
+# The shell rewinds its input as much as possible, searches for a line of the
+# form `label:', and continues execution after that line.
+# The label must be alone in the line.
+
+# a classic endless loop
+set n = 1
+start:
+echo $n bottles of beer
+@ n ++
+goto start
+
+# using variable destination
+set n = 1
+set where_to_go = start
+start:
+echo $n
+@ n ++
+if ( $n == 100 ) set where_to_go = loop_exit
+goto $where_to_go
+loop_exit:
+echo "finish"
+
+# A Random Destination Program; results are random
+# Also, this is an implementation of BASIC's ON-GOTO
+start:
+set n = `shuf -i1-3 -n1`
+set ongoto = ( label_a label_b label_c )
+goto $ongoto[$n]
+label_a:
+label_b:
+echo "this port is closed"
+goto start
+label_c:
+echo "at last, a light in the tunnel"
+
 # --- Functions ---------------------------------------------------------------
 # tcsh has no functions but its expression syntax is advanced enough to use
 # `alias' as functions. Another method is recursion
@@ -664,6 +709,10 @@ repeat 3 echo "ding dong"
 # Alias the cd command so that when you change directories, the contents
 # are immediately displayed.
 alias cd 'cd \!* && ls'
+
+# Sets the pager with selection order as parameters
+alias selectpager 'setenv PAGER=`which \!:1` || setenv PAGER=`which \!:2` || setenv PAGER=`which \!:3`'
+selectpager less most more
 
 # Recursion method example.
 # You can use this example as template for your scripts
@@ -694,6 +743,11 @@ default:
 	exit 0
 endsw
 # --- end ---
+
+# --- other built-in commands -------------------------------------------------
+
+# prints all built-in commands in alphabetical order
+builtins
 
 # --- examples ----------------------------------------------------------------
 
