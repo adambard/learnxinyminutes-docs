@@ -700,8 +700,8 @@ echo "at last, a light in the tunnel"
 alias cd 'cd \!* && ls'
 
 # Sets the pager with selection order as parameters
-alias selectpager 'setenv PAGER=`which \!:1` || setenv PAGER=`which \!:2` || setenv PAGER=`which \!:3`'
-selectpager less most more
+alias selectpager 'setenv PAGER=`which \!:1` || setenv PAGER=`which \!:2`'
+selectpager less most
 
 # Recursion method example.
 # You can use this example as template for your scripts
