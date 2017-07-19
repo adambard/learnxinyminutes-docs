@@ -13,6 +13,23 @@ Almost all **Linux** distros and **BSD** today use **tcsh** instead of the origi
 In most cases **csh** is a *symbolic link* that points to **tcsh**.
 This is because **tcsh** is backward compatible with **csh**, and the last is not maintained anymore.
 
+## About [T]CSH:
+* CSH is **notorious** about its bugs;
+* It was also **famous** about its advanced interactive mode.
+* TCSH is famous that have the most advanced completion subsystem.
+* TCSH is famous that have the most advanced aliases subsystem; aliases
+   can take parameters and often used as functions!
+* TCSH is well known that preferred by people (me too) because of better
+   syntax. All shells are using Thomson's syntax with exception of [t]csh,
+   fish and plan9's shells (rc, ex).
+* It is smaller and consume far less memory than bash, zsh even mksh!
+   (memusage reports)
+* TCSH still has bugs; less but have; if you write readable clean code you'll
+   find none; well almost none... This has to do with the implementation of
+   csh; that no means the other shells has good implementation.
+* No shell is capable of regular programming. If your script is large, use
+   a programming language or at least PHP or Perl (good scripting languages)
+
 ```tcsh
 #!/bin/tcsh
 # The lines which starting with '#' are comments; comments are ignored.
@@ -293,7 +310,7 @@ echo -n "Enter your name: "
 set name = $<
 echo "Greetings $name"
 
-# --- Expressions ------------------------------------------------------------
+# --- Expressions -------------------------------------------------------------
 
 # Operators:
 # ==  equal         !=  not equal    !  not
@@ -393,7 +410,7 @@ echo $result
 @ result ++
 
 # No shell is designed to do math .-
-# Except for the integer expressions, use an external command with back-quote.
+# Except for the integer expressions, use an external command with back-quotes.
 #
 # I suggest the `calc' as the best option; it is powerful and fast.
 # (http://www.isthe.com/chongo/tech/comp/calc/)
@@ -798,26 +815,6 @@ while ( 1 )
 end
 # --- secretnum.csh --- end ---------------------------------------------------
 
-# -----------------------------------------------------------------------------
-# Appendices
-
-#### About [T]CSH:
-# * CSH is notorious about its bugs;
-# * It was also famous about its advanced interactive mode.
-# * TCSH is famous that have the most advanced completion subsystem.
-# * TCSH is famous that have the most advanced aliases subsystem; aliases
-#   can take parameters and often used as functions!
-# * TCSH is well known that preferred by people (me too) because of better
-#   syntax. All shells are using Thomson's syntax with exception of [t]csh,
-#   fish and plan9's shells (rc, ex).
-# * It is smaller and consume far less memory than bash, zsh even mksh!
-#   (memusage reports)
-# * TCSH still has bugs; less but have; if you write readable clean code you'll
-#   find none; well almost none... This has to do with the implementation of
-#   csh; that no means the other shells has good implementation.
-# * No shell is capable of regular programming. If your script is large, use
-#   a programming language or at least PHP or Perl (good scripting languages)
-#
 # Advises:
 # 1. Do not use redirection in single-line if (it is well documented bug)
 #    In most cases avoid to use single-line IFs.
