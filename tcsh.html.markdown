@@ -301,9 +301,9 @@ echo "Greetings $name"
 # &&  logical AND   ||  logical OR
 
 if ( $user == "mchris" ) then
-    echo "Welcome Maria"
+	echo "Welcome Maria"
 else
-    echo "Welcome $user"
+	echo "Welcome $user"
 endif
 
 # single-line form
@@ -318,11 +318,11 @@ echo "Always executed" && echo "Only executed if first command does NOT fail"
 # from other shells
 
 if ( $name != "root" && $age > 18 ) then
-    echo "This will run for any normal adult user."
+	echo "This will run for any normal adult user."
 endif
 
 if ( $name == "Daniya" || $name == "Zach" ) then
-    echo "This will run if $name is Daniya OR Zach."
+	echo "This will run if $name is Daniya OR Zach."
 endif
 
 # String matching operators ( `=~' and `!~' )
@@ -341,6 +341,19 @@ if ( $user !~ ni[ck]* ) echo "Hey, get out of Nicholas PC."
 
 if ( "$user" =~ 'ni[ck]*' ) echo "Greetings Mr. Nicholas."
 
+# Special operators { cmd }
+# Executes the `cmd' and returns 0 if the command failed.
+# This is the opposite of normal exit code (see $status).
+# It works only inside `@', `if' and `while' expressions
+
+# This prints:
+# /bin/tcsh (the result of the first `which')
+# 3
+set x = 1
+@ x += { which tcsh }
+@ x += { which tcsh > /dev/null }
+echo $x
+
 # Arithmetic expressions are denoted with the following format:
 @ result = 10 + 5
 echo $result
@@ -348,11 +361,14 @@ echo $result
 # Arithmetic Operators
 # +, -, *, /, %
 #
+# Reassign operators
+# += -= *= /= %= &= ^= |=
+#
 # Arithmetic Operators which must be parenthesised
 # !, ~, |, &, ^, ~, <<, >>,
 # Compare and logical operators
 #
-# All operators are same as in C.
+# All operators are same as in C with the same priority.
 
 # It is non so well documented that numeric expressions require spaces
 # in-between; Also, `@' has its own parser, it seems that work well when the
@@ -484,15 +500,15 @@ zcat `locate -b -n 1 '\tcsh.1.gz'` | groff -Tpdf -man | okular -
 
 # even better
 set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz"); \
- zcat `eval $loc` | groff -Tpdf -man | okular -
+	zcat `eval $loc` | groff -Tpdf -man | okular -
 
 # even more better...
 # This one-line code will ask you to type the page that are you
 # looking for and then it will show its manual with okular
 echo -n "Enter the command you are looking for or press ^C to cancel: "; \
- set page = $<; \
- set loc = (locate -b -n 1 "\\\\"${page}".1.gz"); \
- zcat `eval $loc` | groff -Tpdf -man | okular -
+	set page = $<; \
+	set loc = (locate -b -n 1 "\\\\"${page}".1.gz"); \
+	zcat `eval $loc` | groff -Tpdf -man | okular -
 
 # NOTE: `okular' is the default application of KDE environment and it shows
 # Postscript and PDF files. You can replace it with your lovely PDF viewer.
@@ -580,7 +596,7 @@ endsw
 
 # example: counting 1 to 10
 foreach i ( `seq 1 10` )
-    echo $i
+	echo $i
 end
 
 # example: type all files in the list
@@ -723,13 +739,13 @@ case option2:
 	breaksw
 case results:
 	echo "print the results here"
-	exit 1
+	exit 0
 help:
 	echo "usage: $0 { help | option1 | option2 }"
 	breaksw
 default:
 	echo "error, unknown parameter: $todo"
-	exit 0
+	exit -1
 endsw
 # --- end ---
 
@@ -830,7 +846,7 @@ end
 #
 # These options are not necessary but I suggest to begin using tcsh with them
 #
-# enabled:
+# enable:
 #    set inputmode=insert
 #    set autolist
 #    set listjobs
@@ -839,12 +855,13 @@ end
 #    set colorcat
 #    set nobeep
 #    set cdtohome
+#    set ellipsis
 #
 #    set histdup
 #    set histlit
 #    set nohistclop
 #
-# disabled:
+# disable:
 #    unset compat_expr
 #    unset noglob
 #    unset autologout
