@@ -54,10 +54,11 @@ my $forced-bool = so $str; # And you can use the prefix `so` operator
                            # which turns its operand into a Bool
 ```
 
-### Lists
+### Arrays and Lists
 
 ```perl6
-# Lists represent multiple values. Their name start with `@`.
+# Arrays represent multiple values. Their name start with `@`.
+# Lists are similar but are an immutable type
 
 my @array = 'a', 'b', 'c';
 # equivalent to :

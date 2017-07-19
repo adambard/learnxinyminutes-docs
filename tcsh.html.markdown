@@ -57,11 +57,10 @@ This is because **tcsh** is backward compatible with **csh**, and the last is no
 # Print the value of echo_style
 echo $echo_style
 
-# Enable `echo' to support backslashed characters and `-n' option (no new line)
-# This is the default for tcsh, but your distro may change it. Slackware has
-# done so. AFAIK this is undocumented: if your script run it as `csh' instead
-# of `tcsh' the echo_style also will be altered for compatibility with
-# Berkley's C-Shell.
+# Enable `echo' to support back-slashed characters and the `-n' option (no new
+# line). This is the default for tcsh, but your distro may change it. Slackware
+# has done so. If your script run it as `csh' instead of `tcsh' the echo_style
+# also will be altered for compatibility with Berkley's C-Shell.
 set echo_style = both
 
 # Several ways to print "Hello world"

@@ -460,8 +460,52 @@ val otherGeorge = george.copy(phoneNumber = "9876")
 
 // And many others. Case classes also get pattern matching for free, see below.
 
+// Traits
+// Similar to Java interfaces, traits define an object type and method
+// signatures. Scala allows partial implementation of those methods.
+// Constructor parameters are not allowed. Traits can inherit from other
+// traits or classes without parameters.
 
-// Traits coming soon!
+trait Dog {
+	def breed: String
+	def color: String
+	def bark: Boolean = true
+	def bite: Boolean
+}
+class SaintBernard extends Dog {
+	val breed = "Saint Bernard"
+	val color = "brown"
+	def bite = false
+}  
+
+scala> b  
+res0: SaintBernard = SaintBernard@3e57cd70  
+scala> b.breed  
+res1: String = Saint Bernard  
+scala> b.bark  
+res2: Boolean = true  
+scala> b.bite  
+res3: Boolean = false  
+
+// A trait can also be used as Mixin. The class "extends" the first trait,
+// but the keyword "with" can add additional traits.
+
+trait Bark {
+	def bark: String = "Woof"
+}
+trait Dog {
+	def breed: String
+	def color: String
+}
+class SaintBernard extends Dog with Bark {
+	val breed = "Saint Bernard"
+	val color = "brown"
+}
+
+scala> val b = new SaintBernard
+b: SaintBernard = SaintBernard@7b69c6ba
+scala> b.bark
+res0: String = Woof
 
 
 /////////////////////////////////////////////////

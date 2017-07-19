@@ -7,7 +7,7 @@ contributors:
 
 LOLCODE is an esoteric programming language designed to resemble the speech of [lolcats](https://upload.wikimedia.org/wikipedia/commons/a/ab/Lolcat_in_folder.jpg?1493656347257).
 
-```LOLCODE
+```
 BTW This is an inline comment
 BTW All code must begin with `HAI <language version>` and end with `KTHXBYE`
 

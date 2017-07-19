@@ -9,8 +9,6 @@ filename: learn-emacs-lisp.el
 ```scheme
 ;; This gives an introduction to Emacs Lisp in 15 minutes (v0.2d)
 ;;
-;; Author: Bastien / @bzg2 / https://bzg.fr
-;;
 ;; First make sure you read this text by Peter Norvig:
 ;; http://norvig.com/21-days.html
 ;;
@@ -303,7 +301,7 @@ filename: learn-emacs-lisp.el
 
 (hello-to-bonjour)
 
-;; Let's colorize the names:
+;; Let's boldify the names:
 
 (defun boldify-names ()
     (switch-to-buffer-other-window "*test*")
@@ -344,13 +342,4 @@ filename: learn-emacs-lisp.el
 ;;
 ;; To read an online introduction to Emacs Lisp:
 ;; https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html
-
-;; Thanks to these people for their feedback and suggestions:
-;; - Wes Hardaker
-;; - notbob
-;; - Kevin Montuori
-;; - Arne Babenhauserheide
-;; - Alan Schmitt
-;; - LinXitoW
-;; - Aaron Meurer
 ```
