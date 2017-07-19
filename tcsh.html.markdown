@@ -192,6 +192,10 @@ echo $var[2-3]
 echo $var[3-]
 # Prints print all up to 3rd element: one two three
 echo $var[-3]
+# insert a value at the beginning of the list
+set -f path = ( $path /bin )
+# append a value at the end of the list
+set -l path = ( $path /usr/local/bin )
 
 ### Special Variables
 # $argv         list of command-line arguments
@@ -770,6 +774,33 @@ default:
 endsw
 # --- end ---
 
+# --- Completion --------------------------------------------------------------
+
+# first get the latest package of the tcsh's community with a big list of
+# command's completions, and put it in the  ~/.tcshrc
+cd
+wget https://raw.githubusercontent.com/tcsh-org/tcsh/master/complete.tcsh
+install -m 0644 -o root -g root complete.tcsh /etc
+echo 'source /etc/complete.tcsh' >> ~/.tcshrc
+# reload the tcshrc
+source ~/.tcshrc
+
+# is it annoying for some commands? lets say for the cp, mv and rm...
+# remove them...
+uncomplete {cp,mv,rm}
+
+# lets build a completion rule for tmux
+set tmux_cmds = `tmux list-commands | awk '{print$1}'`
+uncomplete tmux
+complete tmux "p/1/(${tmux_cmds})/"
+
+# ready, now type 'tmux ' and press the [TAB], it will display a big list
+# with all the parameters of tmux.
+
+# TCSH has the most advanced completion subsystem in the UNIX world.
+# Use the man, it is your friend!
+# Read the /etc/complete.tcsh it is your tutorial.
+
 # --- Directory Stack ---------------------------------------------------------
 # pushd, popd, and dirs are shell built-ins which allow you manipulate a 
 # directory stack. This can be used to change directories but return to the
@@ -785,7 +816,7 @@ pushd /var/spool/news
 dirs -v
 
 # now we can move to one of those directories or using their names in other
-# commands with the sequence character = and the number as ir displayed by
+# commands with the sequence character = and the number as it displayed by
 # `dirs'
 
 # this will copy the file /etc/termcap to the current directory
@@ -819,10 +850,39 @@ alias cd 'pushd'
 alias dirs 'dirs -v'
 # the standard cd command can be accessed with its long name: `chdir'
 
+# the popd can remove any directory in the stack without change to next.
+pushd /a; pushd /b; pushd /c
+# it will print:
+# 0 /c
+# 1 /b
+# 2 /a
+dirs -v
+# this will remove the #2 directory:
+popd +2
+
+# In the man-page you ll find more tools to play with directory stack...
+
+# --- Job Control -------------------------------------------------------------
+TODO
+
+# --- History -----------------------------------------------------------------
+TODO
+
 # --- other built-in commands -------------------------------------------------
 
 # prints all built-in commands in alphabetical order
-builtins
+set bins = `builtins`
+echo $bins > syntax-highlight-keywords.conf
+
+# bindkey is used to configure our keyboard key.
+# let's fix the key-code of [END] key on urxvt terminal emulator
+if ( $TERM == "rxvt-unicode" ) then
+	bindkey "^[[8~" end-of-line
+endif
+
+# read and execute commands from a file. this is useful when we change our
+# ~/.tcshrc; by giving `source ~/.tcshrc' we reload our configuration file.
+source a-plain-text-file
 
 # --- examples ----------------------------------------------------------------
 
@@ -994,3 +1054,4 @@ ALT means alternative method.
 - [my ~/.tcshrc](https://github.com/nereusx/dotfiles/blob/master/.tcshrc)
 - [tcsh-mode for JED text editor](https://github.com/nereusx/dotfiles/blob/master/.jed/tcsh-mode.sl?ts=4)
 - [tcsh-mode for NANO text editor](https://github.com/nereusx/nanorc/blob/master/csh.nanorc?ts=4)
+- [tcsh-mode for EMACS text editor](https://github.com/tcsh-org/tcsh/blob/master/csh-mode.el)
