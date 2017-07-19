@@ -15,7 +15,6 @@ It is the native root shell for **BSD**-based systems such as the *FreeBSD* and 
 Almost all **Linux** distros and **BSD** today use **tcsh** instead of the original **csh**.
 In most cases **csh** is a *symbolic link* that points to **tcsh**.
 This is because **tcsh** is backward compatible with **csh**, and the last is not maintained anymore.
-</blockquote>
 
 ## About [T]CSH:
 * CSH is **notorious** about its bugs;
@@ -884,7 +883,7 @@ end
 #### common aliases
 #    alias hist  'history 20'
 #    alias ll    'ls --color -lha'
-#    alias today "date '+%d%h%y'
+#    alias today "date '+%d%h%y'"
 #    alias ff    'find . -name '
 
 #### a nice prompt
