@@ -5,61 +5,96 @@ contributors:
     - ["Nicholas Christopoulos", "https://github.com/nereusx"]
 lang: en
 ---
-tcsh ("tee-see-shell") is a Unix shell based on and compatible with the C shell (csh).
-It is essentially the C shell with programmable command-line completion, command-line editing,
-and a few other features.
-It is the native root shell for BSD-based systems such as FreeBSD.
+# The Tenex C Shell (TCSH)
 
-Almost all Linux distros and BSD today use tcsh instead of the original csh. In
-most cases csh is a symbolic link that points to tcsh.
-This is because tcsh is backward compatible with csh, and the last
-is not maintained anymore.
+## Abstract
+**tcsh** (tee-see-shell) is a **Unix** shell based on and compatible with the **C shell** (csh).
+It is essentially the C shell with programmable command-line *completion*, command-line editing, and a lot more features.
+It is the native root shell for **BSD**-based systems such as the *FreeBSD* and the *MacOS X*.
 
-- [TCSH Home](http://www.tcsh.org/)
-- [TCSH Wikipedia](https://en.wikipedia.org/wiki/Tcsh)
-- [TCSH manual page](http://www.tcsh.org/tcsh.html/top.html)
-- [“An Introduction to the C shell”, William Joy](https://docs.freebsd.org/44doc/usd/04.csh/paper.html)
-- [TCSH Bug reports and/or features requests](https://bugs.gw.com/)
+Almost all **Linux** distros and **BSD** today use **tcsh** instead of the original **csh**.
+In most cases **csh** is a *symbolic link* that points to **tcsh**.
+This is because **tcsh** is backward compatible with **csh**, and the last is not maintained anymore.
 
-Some more files:
-[tcsh help command (for 132x35 terminal size)](https://github.com/nereusx/dotfiles/blob/master/csh-help),
-[my ~/.tcshrc](https://github.com/nereusx/dotfiles/blob/master/.tcshrc)
+## About [T]CSH:
+* CSH is **notorious** about its bugs;
+* It was also **famous** about its advanced interactive mode.
+* TCSH is famous that have the most advanced completion subsystem.
+* TCSH is famous that have the most advanced aliases subsystem; aliases
+   can take parameters and often used as functions!
+* TCSH is well known that preferred by people (me too) because of better
+   syntax. All shells are using Thomson's syntax with exception of [t]csh,
+   fish and plan9's shells (rc, ex).
+* It is smaller and consume far less memory than bash, zsh even mksh!
+   (memusage reports)
+* TCSH still has bugs; less but have; if you write readable clean code you'll
+   find none; well almost none... This has to do with the implementation of
+   csh; that no means the other shells has good implementation.
+* No shell is capable of regular programming. If your script is large, use
+   a programming language or at least PHP or Perl (good scripting languages)
+
+---
 
 ```tcsh
 #!/bin/tcsh
-# First line of the script is shebang which tells the system how to execute the
-# script: http://en.wikipedia.org/wiki/Shebang_(Unix)
-# TCSH emulates the shebang on systems which don't understand it.
-
+# The lines which starting with '#' are comments; comments are ignored.
+#
+# The first line of the script is the "shebang" which tells the system how to
+# execute the script (see http://en.wikipedia.org/wiki/Shebang_(Unix))
+#
 # In most cases you'll use `#!/bin/tcsh -f', because `-f' option does not load
 # any resource or start-up files, or perform any command hashing, and thus
 # starts faster.
 
 # --- the echo command --------------------------------------------------------
 # The `echo' writes each word to the shell's standard output, separated by
-# spaces and terminated with a newline. The echo_style shell variable may be
-# set to emulate (or not) the flags and escape sequences.
+# spaces and terminated with a newline. The shell's standard output it is the
+# terminal screen but can be also a file or a pipe-line.
+#
+# The echo_style shell variable may be set to emulate (or not) the flags and
+# escape sequences.
 
-# Display the value of echo_style
+# Print the value of echo_style
 echo $echo_style
 
-# Enable `echo' to support backslashed characters and `-n' option (no new line)
-# This is the default for tcsh, but your distro may change it. Slackware has
-# done so.
+# Enable `echo' to support back-slashed characters and the `-n' option (no new
+# line). This is the default for tcsh, but your distro may change it. Slackware
+# has done so. If your script run it as `csh' instead of `tcsh' the echo_style
+# also will be altered for compatibility with Berkley's C-Shell.
 set echo_style = both
 
-# Prints "Hello world"
+# Several ways to print "Hello world"
 echo Hello world
 echo "Hello world"
 echo 'Hello world'
 echo `echo Hello world`
 
-# This prints "twonlines" in one line
-echo two\nlines
+# For those who are unfamiliar with backslash: 
+# This character has special meaning in C language and so in shells and in the
+# whole Unix.
+# \n   = a new line,
+# \t   = a [TAB] character, 
+# \033 = the ESC-ape character (ASCII 27) used often by terminals to select
+# colours or communicate with its hardware.
+#
+# The quote characters in shells have the special meaning to defines a string.
+# So if you want to include one of those characters inside the string, type:
+# \"   = for double quotes
+# \'   = for single quotes
+#
+# Using the \ as the last character of a line, it means that the line continues
+# to the next line; This is very useful on long pipe-lines and other cases.
+#
+# To display the backslash you have to type it two times, like this: \\
 
-# Prints the two lines
-echo "two\nlines"
-echo 'two\nlines'
+# This prints "line1nline2" in one line, because the \n interpreted
+# before executed by the `echo'. This is the correct, not a bug.
+echo line1\nline2
+
+# To print the two lines you have to type
+echo "line1\nline2"
+# or
+echo 'line1\nline2'
 
 # --- Basic Syntax ------------------------------------------------------------
 
@@ -80,10 +115,10 @@ echo '!!'
 # Strings enclosed by back-quotes will be executed and replaced by the result.
 echo `ls`
 
-# Semi-colon separate commands
+# Execute multiple cmds on the same line (;)
 echo 'first line'; echo 'second line'
 
-# There is also conditional execution
+# There is also conditional execution (||) (&&)
 echo "Always executed" || echo "Only executed if first command fails"
 echo "Always executed" && echo "Only executed if first command does NOT fail"
 
@@ -96,7 +131,10 @@ make && ( espeak "BOSS, compilation finished"; make install )
 # prints the home directory but leaving you where you were
 (cd; pwd); pwd
 
-# Read tcsh man-page documentation
+# Execute command in background (&)
+(sleep 5; echo 'DING! dinner is ready') &
+
+# Read tcsh manual page
 man tcsh
 
 # --- Variables ---------------------------------------------------------------
@@ -105,7 +143,7 @@ man tcsh
 # changed with the `set' and `unset' commands.
 # The system maintains its own list of ``environment'' variables.
 # These can be displayed and changed with `printenv', `setenv' and `unsetenv'.
-# The syntax of setenv is similar to POSIX sh.
+# The syntax of `setenv' is similar to POSIX shell.
 
 # Assign a value or nothing will create a variable
 # Assign nothing
@@ -187,7 +225,7 @@ echo $var[-3]
 # TIP: $verbose this is useful to debugging scripts
 # NOTE: $PWD and $PATH are synchronised with $cwd and $pwd automatically.
 
-# --- Variable modifiers ------------------------------------------------------
+# --- Variable Modifiers ------------------------------------------------------
 # Syntax: ${var}:m[:mN]
 # Where <m> is:
 # h : the directory  t : the filenane  r : remove extension   e : the extension
@@ -219,6 +257,36 @@ echo $f:t:r:u
 # prints Biota
 echo $f:t:r:u:s/eta/iota/
 
+# playing with modifiers in lists
+set lst = ( bench-expr/* )
+
+# this prints the whole list:
+# bench-expr/awk.csh bench-expr/bas.csh bench-expr/bc.csh
+echo $lst
+
+# this prints the base-names with the directories:
+# bench-expr/awk bench-expr/bas bench-expr/bc
+echo $lst:gr
+
+# this prints the extensions:
+# csh csh csh
+echo $lst:ge
+
+# this prints the directories:
+# bench-expr bench-expr bench-expr
+echo $lst:gh
+
+# this prints the file-names:
+# awk.csh bas.csh bc.csh
+echo $lst:gt
+
+# the `shift' built-in command removes the first element of a list.
+# if no variable name is given, then uses the $argv
+set lst = ( a b c )
+shift lst
+# prints: b c
+echo $lst
+
 # --- Redirection -------------------------------------------------------------
 
 # Create file.txt and write the standard output to it
@@ -242,47 +310,40 @@ LABEL
 (grep 'AGP' /usr/src/linux/Documentation/* > output-file.txt) >& error-file.txt
 
 # example: read a name from standard input and display a greetings message
-echo -n "Enter your name? "
+echo -n "Enter your name: "
 set name = $<
 echo "Greetings $name"
 
-# --- Expressions ------------------------------------------------------------
+# --- Expressions -------------------------------------------------------------
 
 # Operators:
 # ==  equal         !=  not equal    !  not
 #  >  greater than   <  less than   >=  greater or equal  <= less or equal
 # &&  logical AND   ||  logical OR
 
-if ( $name != $user ) then
-    echo "Your name isn't your username"
+if ( $user == "mchris" ) then
+	echo "Welcome Maria"
 else
-    echo "Your name is your username"
+	echo "Welcome $user"
 endif
 
 # single-line form
-if ( $name != $user ) echo "Your name isn't your username"
+if ( $user == "nicholas" ) echo "Greetings Mr. Nicholas"
 
-# NOTE: if $name is empty, tcsh sees the above condition as:
-# if ( != $user ) ...
-# which is invalid syntax
-# so the "safe" way to use potentially empty variables in tcsh is:
-# if ( "$name" != $user ) ...
-# which, when $name is empty, is seen by tcsh as:
-# if ( "" != $user ) ...
-# which works as expected
-
-# There is also conditional execution
+# conditional execution
 echo "Always executed" || echo "Only executed if first command fails"
 echo "Always executed" && echo "Only executed if first command does NOT fail"
 
-# To use && and || with if statements, you don't need multiple pairs of
-# square brackets:
-if ( "$name" == "Steve" && "$age" == 15 ) then
-    echo "This will run if $name is Steve AND $age is 15."
+# you don't need multiple pairs of parenthesis as in other shells, no special
+# operators, nor quotes; generally speaking the expressions are more improved
+# from other shells
+
+if ( $name != "root" && $age > 18 ) then
+	echo "This will run for any normal adult user."
 endif
 
-if ( "$name" == "Daniya" || "$name" == "Zach" ) then
-    echo "This will run if $name is Daniya OR Zach."
+if ( $name == "Daniya" || $name == "Zach" ) then
+	echo "This will run if $name is Daniya OR Zach."
 endif
 
 # String matching operators ( `=~' and `!~' )
@@ -294,6 +355,26 @@ endif
 if ( $user =~ ni[ck]* ) echo "Greetings Mr. Nicholas."
 if ( $user !~ ni[ck]* ) echo "Hey, get out of Nicholas PC."
 
+# TIP: if something goes wrong with your expressions, try to enclose it
+#      in quotes and single-quotes, depending of what is most logical.
+#
+# My advice is, always use quotes, this will save you many times.
+
+if ( "$user" =~ 'ni[ck]*' ) echo "Greetings Mr. Nicholas."
+
+# Special operators { cmd }
+# Executes the `cmd' and returns 0 if the command failed.
+# This is the opposite of normal exit code (see $status).
+# It works only inside `@', `if' and `while' expressions
+
+# This prints:
+# /bin/tcsh (the result of the first `which')
+# 3
+set x = 1
+@ x += { which tcsh }
+@ x += { which tcsh > /dev/null }
+echo $x
+
 # Arithmetic expressions are denoted with the following format:
 @ result = 10 + 5
 echo $result
@@ -301,11 +382,14 @@ echo $result
 # Arithmetic Operators
 # +, -, *, /, %
 #
+# Reassign operators
+# += -= *= /= %= &= ^= |=
+#
 # Arithmetic Operators which must be parenthesised
 # !, ~, |, &, ^, ~, <<, >>,
 # Compare and logical operators
 #
-# All operators are same as in C.
+# All operators are same as in C with the same priority.
 
 # It is non so well documented that numeric expressions require spaces
 # in-between; Also, `@' has its own parser, it seems that work well when the
@@ -329,28 +413,25 @@ echo $result
 # C's operators ++ and -- are supported if there is not assignment
 @ result ++
 
-# None shell created to do mathematics;
-# Except for the basic operations, use an external command with backslashes.
+# No shell is designed to do math .-
+# Except for the integer expressions, use an external command with back-quotes.
 #
-# I suggest the calc as the best option.
+# I suggest the `calc' as the best option; it is powerful and fast.
 # (http://www.isthe.com/chongo/tech/comp/calc/)
 #
-# The standard Unix's bc as second option
+# The standard UNIX's bc as second option
 # (https://www.gnu.org/software/bc/manual/html_mono/bc.html)
 #
-# The standard Unix's AWK as third option
-# (https://www.gnu.org/software/gawk/manual/gawk.html)
+# You can also use `perl', or several BASICs, but prefer the above
+# utilities for faster load-and-run results.
 
-# You can also use `perl', `php' or even several BASICs, but prefer the
-# above utilities for faster load-and-run results.
-
-# real example: (that I answer in StackExchange)
+# real example: (that I answered in StackExchange)
 # REQ: x := 1001b OR 0110b
 
 # in `tcsh' expression (by using octal)
 @ x = ( 011 | 06 ); echo $x
 
-# the same by using `calc' (and using binary as the original req)
+# the same by using `calc' (and using binary as the original REQ)
 set x = `calc '0b1001 | 0b110'`; echo $x
 
 # --- File Inquiry Operators --------------------------------------------------
@@ -432,33 +513,31 @@ ls -l | grep key | less
 # tcsh, along with grep, gcc and perl is one of the first Unix programs that
 # ported to DOS (with EMX DOS extender) and later to Windows (1998).
 
-# example: this will convert tcsh to PostScript and will show it with okular
-zcat /usr/man/man1/tcsh.1.gz | groff -Tps -man | okular -
+# example: this will convert tcsh to PDF and will show it with okular
+zcat /usr/man/man1/tcsh.1.gz | groff -Tpdf -man | okular -
 
 # a better version
-zcat `locate -b -n 1 '\tcsh.1.gz'` | groff -Tps -man | okular -
+zcat `locate -b -n 1 '\tcsh.1.gz'` | groff -Tpdf -man | okular -
 
 # even better
-set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz");
- zcat `eval $loc` | groff -Tps -man | okular -
+set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz"); \
+	zcat `eval $loc` | groff -Tpdf -man | okular -
 
-# the same, modified to create man page pdf
-set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz");
- zcat `eval $loc` | groff -Tps -man | ps2pdf - ${page}.pdf
-
-# the same, but now shows the ${page}.pdf too
-set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz");
- zcat `eval $loc` | groff -Tps -man | ps2pdf - ${page}.pdf && okular tcsh.pdf
+# even more better...
+# This one-line code will ask you to type the page that are you
+# looking for and then it will show its manual with okular
+echo -n "Enter the command you are looking for or press ^C to cancel: "; \
+	set page = $<; \
+	set loc = (locate -b -n 1 "\\\\"${page}".1.gz"); \
+	zcat `eval $loc` | groff -Tpdf -man | okular -
 
 # NOTE: `okular' is the default application of KDE environment and it shows
-# postcript and pdf files. You can replace it with your lovely pdf viewer.
-# zcat, locate, groff, are common programs in all Unices. `ps2pdf' program
-# is part of `ghostscript' package that is widely used.
+# Postscript and PDF files. You can replace it with your lovely PDF viewer.
+# zcat, locate, groff, are common programs in all Unixes.
 
 # --- Control Flow ------------------------------------------------------------
 
 #### IF-THEN-ELSE-ENDIF
-# Syntax:
 # if ( expr ) then
 #    ...
 # [else if ( expr2 ) then
@@ -471,21 +550,6 @@ set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz");
 # executed; otherwise if expr2 is true then the commands to the second else
 # are executed, etc.
 # Any number of else-if pairs are possible; only one endif is needed.
-#
-# Single-line form:
-#
-# if ( expr ) command
-#
-# If `expr' evaluates true, then command is executed.
-# `command' must be a simple command, not an alias, a pipeline, a command list
-# or a parenthesized command list. With few words, avoid to use it.
-#
-# BUG: Input/output redirection occurs even if expr is false and command is
-# thus not executed.
-#
-
-# check if we are in non-interactive shell and quit if true
-if ( $?USER == 0 || $?prompt == 0 ) exit
 
 # check if we are a login shell
 if ( $?loginsh ) then
@@ -496,8 +560,20 @@ if ( $?loginsh ) then
 	endif
 endif
 
+#### SINGLE-LINE-IF
+# if ( expr ) command
+#
+# If `expr' evaluates true, then command is executed.
+# `command' must be a simple command, not an alias, a pipeline, a command list
+# or a parenthesised command list. With few words, avoid to use it.
+#
+# BUG: Input/output redirection occurs even if expr is false and command is
+# thus not executed.
+
+# check if we are in non-interactive shell and quit if true
+if ( $?USER == 0 || $?prompt == 0 ) exit
+
 #### SWITCH-ENDSW
-# Syntax:
 # switch ( expr )
 # case pattern:
 #     ...
@@ -515,8 +591,8 @@ endif
 # control may fall through case labels and default labels as in C.
 
 switch ( $var )
-case *.[1-9]:
-case *.[1-9].gz:
+case *.[1-8]:
+case *.[1-8].gz:
 	echo "$var is a man-page."
 	breaksw
 case *gz:
@@ -527,7 +603,6 @@ default:
 endsw
 
 #### FOREACH-END
-# Syntax:
 # foreach name ( wordlist )
 #	...
 #   [break | continue]
@@ -542,7 +617,7 @@ endsw
 
 # example: counting 1 to 10
 foreach i ( `seq 1 10` )
-    echo $i
+	echo $i
 end
 
 # example: type all files in the list
@@ -550,7 +625,7 @@ foreach f ( a.txt b.txt c.txt )
 	cat $f
 end
 
-# example: convert wma to ogg
+# example: convert all .wma files (windows audio) to .ogg format
 foreach f ( *.wma )
 	ffmpeg -i "$f" "$f:r".ogg
 end
@@ -592,7 +667,7 @@ while ( $#lst )
 	shift lst
 end
 echo 'options =' $options
-echo 'paramaters =' $params
+echo 'parameters =' $params
 
 #### REPEAT
 # Syntax: repeat count command
@@ -604,6 +679,35 @@ echo 'paramaters =' $params
 # TIP: in most cases prefer `while'
 
 repeat 3 echo "ding dong"
+
+#### GOTO
+# label:
+#	...
+# goto label
+#
+# The shell rewinds its input as much as possible, searches for a line of the
+# form `label:', and continues execution after that line.
+# The label must be alone in the line.
+
+# a classic endless loop
+set n = 1
+start:
+echo $n bottles of beer
+@ n ++
+goto start
+
+# A Random Destination Program; results are random
+# Also, this is an implementation of BASIC's ON-GOTO
+start:
+set n = `shuf -i1-3 -n1`
+set ongoto = ( label_a label_b label_c )
+goto $ongoto[$n]
+label_a:
+label_b:
+echo "this port is closed"
+goto start
+label_c:
+echo "at last, a light in the tunnel"
 
 # --- Functions ---------------------------------------------------------------
 # tcsh has no functions but its expression syntax is advanced enough to use
@@ -632,31 +736,93 @@ repeat 3 echo "ding dong"
 # are immediately displayed.
 alias cd 'cd \!* && ls'
 
-# --- Recursion method --- begin ---
-#!/bin/tcsh -f
-set todo = option1
-if ( $#argv > 0 ) then
-	set todo = $argv[1]
-endif
+# Sets the pager with selection order as parameters
+alias selectpager 'setenv PAGER=`which \!:1` || setenv PAGER=`which \!:2`'
+selectpager less most
 
+# Recursion method example.
+# You can use this example as template for your scripts
+# --- begin ---
+#!/bin/tcsh -f
+# set todo to default action
+set todo = help
+# if parameters have been passed, use the parameter
+if ( $#argv > 0 ) set todo = $argv[1]
+# execute
 switch ( $todo )
 case option1:
-#	...
-	$0 results
+	echo "we do some stuff"
+	$0 results ...
 	breaksw
 case option2:
-#	...
-	$0 results
+	echo "we do some stuff"
+	$0 results ...
 	breaksw
 case results:
 	echo "print the results here"
-#	...
+	exit 0
+help:
+	echo "usage: $0 { help | option1 | option2 }"
 	breaksw
 default:
-	echo "Unknown option: $todo"
-#	exit 0
+	echo "error, unknown parameter: $todo"
+	exit -1
 endsw
-# --- Recursion method --- end ---
+# --- end ---
+
+# --- Directory Stack ---------------------------------------------------------
+# pushd, popd, and dirs are shell built-ins which allow you manipulate a 
+# directory stack. This can be used to change directories but return to the
+# directory from which you came.
+
+# push directory in stack and changes to it
+pushd /etc
+# again
+pushd /var/spool/news
+# prints the directory stack:
+# 0	/var/spool/news
+# 1	/etc
+dirs -v
+
+# now we can move to one of those directories or using their names in other
+# commands with the sequence character = and the number as ir displayed by
+# `dirs'
+
+# this will copy the file /etc/termcap to the current directory
+cp =1/termcap .
+# this will move us back to /etc
+cd =1
+# and this will remove the top directory from the stack and move us to the next
+# which is in our example, the `/etc/'
+popd
+# `dirs' now prints:
+# 0 /etc
+dirs -v
+
+# this ability was so famous that copied to all other shells. I really had big
+# problem to use this; because when I was needed a pre-previous directory,
+# always I had been forgot to use the pushd.
+
+# But the tcsh is so powerful, that I solved it easily with aliases
+
+# 1st, I don't want the same directory more than one time in the stack
+set dunique
+# 2nd, do not bother me with stack's messages
+set pushdsilent
+# 3rd, when I use pushd without parameters I demand to go to my $HOME,
+# exactly as cd does.
+set pushdtohome
+
+# Finally I want to use always pushd instead of cd
+alias cd 'pushd'
+# and dirs to display the directories vertical with their numbers
+alias dirs 'dirs -v'
+# the standard cd command can be accessed with its long name: `chdir'
+
+# --- other built-in commands -------------------------------------------------
+
+# prints all built-in commands in alphabetical order
+builtins
 
 # --- examples ----------------------------------------------------------------
 
@@ -694,52 +860,31 @@ while ( 1 )
 	set guess = $<
 	if ( $secret == $guess ) then
 		echo "You found it"
-		exit 1
+		break
 	else
-		if ( $secret > $guess ) then
-			echo "its greater"
-		else if ( $secret < $guess ) then
-				echo "its lesser"
-			endif
-		endif
+		if ( $secret > $guess ) echo "its greater"
+		if ( $secret < $guess ) echo "its lesser"
 	endif
 end
 # --- secretnum.csh --- end ---------------------------------------------------
 
-# -----------------------------------------------------------------------------
-# Appendices
-
-#### About [T]CSH:
-# * CSH is notorious about its bugs;
-# * It was also famous about its advanced interactive mode.
-# * TCSH is famous that have the most advanced completition subsystem.
-# * TCSH is famous that have the most advanced aliases subsystem; aliases
-#   can take parameters and often used as functions!
-# * TCSH is well known that preferred by people  (me too) because of better
-#   syntax. All shells are using Thomson's syntax with exception of [t]csh,
-#   fish and plan9's shells (rc, ex).
-# * It is smaller and consume far less memory than bash, zsh even mksh!
-#   (memusage reports)
-# * TCSH still has bugs; less but have; if you write readable clean code you'll
-#   find none; well almost none... This has to do with the implementation of
-#   csh; that no means the other shells has good implementation.
-# * no one well known shell is capable for regular programming; if your script
-#   getting big, use a programming language, or at least PHP or Perl (good
-#   script languages).
-#
 # Advises:
 # 1. Do not use redirection in single-line if (it is well documented bug)
 #    In most cases avoid to use single-line IFs.
 # 2. Do not mess up with other shells code, c-shell is not compatible with
 #    other shells and has different abilities and priorities.
 # 3. Use spaces as you'll use them to write readable code in any language.
+#    It is not so well documented (never was) that it requires spaces
+#    (separators) between everything except those that constitute an element.
 #    A bug of csh was `set x=1' worked, `set x = 1' worked, `set x =1' did not!
+#    A bug of tcsh was `if ( ! $x )' worked but `if (! $x ) did not.
 # 4. It is well documented that numeric expressions require spaces in-between;
 #    also parenthesise all bit-wise and unary operators.
 # 5. Do not write a huge weird expression with several quotes, backslashes etc
 #    It is bad practice for generic programming, it is dangerous in any shell.
-# 6. Help tcsh, report the bug here <https://bugs.gw.com/>
-# 7. Read the man page, `tcsh' has huge number of options, and variables.
+# 6  Use quotes, it will save you many times.
+# 7. Help tcsh, report the bug here <https://bugs.gw.com/>
+# 8. Read the man page, `tcsh' has a huge list of options, and variables.
 #
 #    I suggest the following options enabled by default
 #    --------------------------------------------------
@@ -749,7 +894,9 @@ end
 #    set parseoctal
 #    unset noclobber
 #
-# Whatever...
+# These options are not necessary but I suggest to begin using tcsh with them
+#
+# enable:
 #    set inputmode=insert
 #    set autolist
 #    set listjobs
@@ -758,11 +905,13 @@ end
 #    set colorcat
 #    set nobeep
 #    set cdtohome
+#    set ellipsis
 #
 #    set histdup
 #    set histlit
 #    set nohistclop
 #
+# disable:
 #    unset compat_expr
 #    unset noglob
 #    unset autologout
@@ -782,9 +931,66 @@ end
 #### common aliases
 #    alias hist  'history 20'
 #    alias ll    'ls --color -lha'
-#    alias today "date '+%d%h%y'
+#    alias today "date '+%d%h%y'"
 #    alias ff    'find . -name '
 
 #### a nice prompt
 #    set prompt = "%B%{\033[35m%}%t %{\033[32m%}%n@%m%b %C4 %# "
+
+#### debugging a script
+# TCSH options:
+# -v Display commands before executing them; expand history substitutions, but
+#    not other substitutions (e.g., filename, variable, and command).
+# -V as -v, but also display .tcshrc
+# -x Display commands before executing them; expand all substitutions.
+# -X as -x, but also display .tcshrc
+# -n parse commands, but do not execute them.
+
+# example
+tcsh -v script
 ```
+
+### Numeric expression replacement benchmarks
+- tcsh '@' native loop, integer only = 0.09 sec
+- tcsh '@' external, integer only = 8.20 sec
+- each test executed at least 2 times to ensure that the program is loaded in cache
+
+#### the script for the tests
+```tcsh
+#!/bin/tcsh -f
+set count = 1000
+while ( $count )
+	echo '1.0/2.0' | program > /dev/null
+	@ count --
+end
+```
+---
+
+#### Results
+
+| Application | Seconds |     ALT | Comments                   |
+| ----------- | -------:| -------:| -------------------------- |
+| calc        |    1.62 |    1.52 |                            |
+| bc          |    1.80 |         |                            |
+| sbasic      |    1.96 |         | SmallBASIC console-version |
+| bas         |    3.18 |         | bas 2.4 (Michael Haardt)   |
+| perl        |    4.98 |         |                            |
+| awk         |         |    5.02 | GNU version                |
+| python-2.7  |   18.05 |         |                            |
+
+ALT means alternative method.
+**calc** can be used with block-quotes and **awk** takes parameter the code.
+ 
+### Further Readings
+- [TCSH Home](http://www.tcsh.org/)
+- [TCSH Wikipedia](https://en.wikipedia.org/wiki/Tcsh)
+- [TCSH manual page](http://www.tcsh.org/tcsh.html/top.html)
+- [“An Introduction to the C shell”, William Joy](https://docs.freebsd.org/44doc/usd/04.csh/paper.html)
+- [TCSH Bug reports and/or features requests](https://bugs.gw.com/)
+- [Writing Aliases in csh and tcsh](http://home.adelphi.edu/sbloch/class/archive/271/fall2005/notes/aliases.html)
+
+### Some more files:
+- [tcsh help command (for 132x35 terminal size)](https://github.com/nereusx/dotfiles/blob/master/csh-help),
+- [my ~/.tcshrc](https://github.com/nereusx/dotfiles/blob/master/.tcshrc)
+- [tcsh-mode for JED text editor](https://github.com/nereusx/dotfiles/blob/master/.jed/tcsh-mode.sl?ts=4)
+- [tcsh-mode for NANO text editor](https://github.com/nereusx/nanorc/blob/master/csh.nanorc?ts=4)
