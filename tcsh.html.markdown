@@ -770,6 +770,55 @@ default:
 endsw
 # --- end ---
 
+# --- Directory Stack ---------------------------------------------------------
+# pushd, popd, and dirs are shell built-ins which allow you manipulate a 
+# directory stack. This can be used to change directories but return to the
+# directory from which you came.
+
+# push directory in stack and changes to it
+pushd /etc
+# again
+pushd /var/spool/news
+# prints the directory stack:
+# 0	/var/spool/news
+# 1	/etc
+dirs -v
+
+# now we can move to one of those directories or using their names in other
+# commands with the sequence character = and the number as ir displayed by
+# `dirs'
+
+# this will copy the file /etc/termcap to the current directory
+cp =1/termcap .
+# this will move us back to /etc
+cd =1
+# and this will remove the top directory from the stack and move us to the next
+# which is in our example, the `/etc/'
+popd
+# `dirs' now prints:
+# 0 /etc
+dirs -v
+
+# this ability was so famous that copied to all other shells. I really had big
+# problem to use this; because when I was needed a pre-previous directory,
+# always I had been forgot to use the pushd.
+
+# But the tcsh is so powerful, that I solved it easily with aliases
+
+# 1st, I don't want the same directory more than one time in the stack
+set dunique
+# 2nd, do not bother me with stack's messages
+set pushdsilent
+# 3rd, when I use pushd without parameters I demand to go to my $HOME,
+# exactly as cd does.
+set pushdtohome
+
+# Finally I want to use always pushd instead of cd
+alias cd 'pushd'
+# and dirs to display the directories vertical with their numbers
+alias dirs 'dirs -v'
+# the standard cd command can be accessed with its long name: `chdir'
+
 # --- other built-in commands -------------------------------------------------
 
 # prints all built-in commands in alphabetical order
