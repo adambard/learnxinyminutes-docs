@@ -290,35 +290,28 @@ echo "Greetings $name"
 #  >  greater than   <  less than   >=  greater or equal  <= less or equal
 # &&  logical AND   ||  logical OR
 
-if ( $name != $user ) then
-    echo "Your name isn't your username"
+if ( $user == "mchris" ) then
+    echo "Welcome Maria"
 else
-    echo "Your name is your username"
+    echo "Welcome $user"
 endif
 
 # single-line form
-if ( $name != $user ) echo "Your name isn't your username"
+if ( $user == "nicholas" ) echo "Greetings Mr. Nicholas"
 
-# NOTE: if $name is empty, tcsh sees the above condition as:
-# if ( != $user ) ...
-# which is invalid syntax
-# so the "safe" way to use potentially empty variables in tcsh is:
-# if ( "$name" != $user ) ...
-# which, when $name is empty, is seen by tcsh as:
-# if ( "" != $user ) ...
-# which works as expected
-
-# There is also conditional execution
+# conditional execution
 echo "Always executed" || echo "Only executed if first command fails"
 echo "Always executed" && echo "Only executed if first command does NOT fail"
 
-# To use && and || with if statements, you don't need multiple pairs of
-# square brackets:
-if ( "$name" == "Steve" && "$age" == 15 ) then
-    echo "This will run if $name is Steve AND $age is 15."
+# you don't need multiple pairs of parenthesis as in other shells, no special
+# operators, nor quotes; generally speaking the expressions are more improved
+# from other shells
+
+if ( $name != "root" && $age > 18 ) then
+    echo "This will run for any normal adult user."
 endif
 
-if ( "$name" == "Daniya" || "$name" == "Zach" ) then
+if ( $name == "Daniya" || $name == "Zach" ) then
     echo "This will run if $name is Daniya OR Zach."
 endif
 
@@ -334,7 +327,7 @@ if ( $user !~ ni[ck]* ) echo "Hey, get out of Nicholas PC."
 # TIP: if something goes wrong with your expressions, try to enclose it
 #      in quotes and single-quotes, depending of what is most logical.
 #
-# My advice is, **always use quotes**, this will save you many times.
+# My advice is, always use quotes, this will save you many times.
 
 if ( "$user" =~ 'ni[ck]*' ) echo "Greetings Mr. Nicholas."
 
