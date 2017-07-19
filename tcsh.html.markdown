@@ -5,25 +5,13 @@ contributors:
     - ["Nicholas Christopoulos", "https://github.com/nereusx"]
 lang: en
 ---
-tcsh ("tee-see-shell") is a Unix shell based on and compatible with the C shell (csh).
-It is essentially the C shell with programmable command-line completion, command-line editing,
-and a few other features.
-It is the native root shell for BSD-based systems such as FreeBSD.
+**tcsh** (tee-see-shell) is a **Unix** shell based on and compatible with the **C shell** (csh).
+It is essentially the C shell with programmable command-line *completion*, command-line editing, and a lot more features.
+It is the native root shell for **BSD**-based systems such as the *FreeBSD* and the *MacOS X*.
 
-Almost all Linux distros and BSD today use tcsh instead of the original csh. In
-most cases csh is a symbolic link that points to tcsh.
-This is because tcsh is backward compatible with csh, and the last
-is not maintained anymore.
-
-- [TCSH Home](http://www.tcsh.org/)
-- [TCSH Wikipedia](https://en.wikipedia.org/wiki/Tcsh)
-- [TCSH manual page](http://www.tcsh.org/tcsh.html/top.html)
-- [“An Introduction to the C shell”, William Joy](https://docs.freebsd.org/44doc/usd/04.csh/paper.html)
-- [TCSH Bug reports and/or features requests](https://bugs.gw.com/)
-
-Some more files:
-[tcsh help command (for 132x35 terminal size)](https://github.com/nereusx/dotfiles/blob/master/csh-help),
-[my ~/.tcshrc](https://github.com/nereusx/dotfiles/blob/master/.tcshrc)
+Almost all **Linux** distros and **BSD** today use **tcsh** instead of the original **csh**.
+In most cases **`csh`** is a *symbolic link* that points to **`tcsh`**.
+This is because **tcsh** is backward compatible with **csh**, and the last is not maintained anymore.
 
 ```tcsh
 #!/bin/tcsh
@@ -220,7 +208,7 @@ echo $var[-3]
 # TIP: $verbose this is useful to debugging scripts
 # NOTE: $PWD and $PATH are synchronised with $cwd and $pwd automatically.
 
-# --- Variable modifiers ------------------------------------------------------
+# --- Variable Modifiers ------------------------------------------------------
 # Syntax: ${var}:m[:mN]
 # Where <m> is:
 # h : the directory  t : the filenane  r : remove extension   e : the extension
@@ -251,6 +239,29 @@ echo $f:t:r
 echo $f:t:r:u
 # prints Biota
 echo $f:t:r:u:s/eta/iota/
+
+# playing with modifiers in lists
+set lst = ( bench-expr/* )
+
+# this prints the whole list:
+# bench-expr/awk.csh bench-expr/bas.csh bench-expr/bc.csh
+echo $lst
+
+# this prints the base-names with the directories:
+# bench-expr/awk bench-expr/bas bench-expr/bc
+echo $lst:gr
+
+# this prints the extensions:
+# csh csh csh
+echo $lst:ge
+
+# this prints the directories:
+# bench-expr bench-expr bench-expr
+echo $lst:gh
+
+# this prints the file-names:
+# awk.csh bas.csh bc.csh
+echo $lst:gt
 
 # --- Redirection -------------------------------------------------------------
 
@@ -488,8 +499,8 @@ echo -n "Enter the command you are looking for or press ^C to cancel: "; \
  zcat `eval $loc` | groff -Tpdf -man | okular -
 
 # NOTE: `okular' is the default application of KDE environment and it shows
-# PostScript and PDF files. You can replace it with your lovely PDF viewer.
-# zcat, locate, groff, are common programs in all Unices.
+# Postscript and PDF files. You can replace it with your lovely PDF viewer.
+# zcat, locate, groff, are common programs in all Unixes.
 
 # --- Control Flow ------------------------------------------------------------
 
@@ -668,31 +679,35 @@ repeat 3 echo "ding dong"
 # are immediately displayed.
 alias cd 'cd \!* && ls'
 
-# --- Recursion method --- begin ---
+# Recursion method example.
+# You can use this example as template for your scripts
+# --- begin ---
 #!/bin/tcsh -f
-set todo = option1
-if ( $#argv > 0 ) then
-	set todo = $argv[1]
-endif
-
+# set todo to default action
+set todo = help
+# if parameters have been passed, use the parameter
+if ( $#argv > 0 ) set todo = $argv[1]
+# execute
 switch ( $todo )
 case option1:
-#	...
-	$0 results
+	echo "we do some stuff"
+	$0 results ...
 	breaksw
 case option2:
-#	...
-	$0 results
+	echo "we do some stuff"
+	$0 results ...
 	breaksw
 case results:
 	echo "print the results here"
-#	...
+	exit 1
+help:
+	echo "usage: $0 { help | option1 | option2 }"
 	breaksw
 default:
-	echo "Unknown option: $todo"
-#	exit 0
+	echo "error, unknown parameter: $todo"
+	exit 0
 endsw
-# --- Recursion method --- end ---
+# --- end ---
 
 # --- examples ----------------------------------------------------------------
 
@@ -755,9 +770,8 @@ end
 # * TCSH still has bugs; less but have; if you write readable clean code you'll
 #   find none; well almost none... This has to do with the implementation of
 #   csh; that no means the other shells has good implementation.
-# * no one well known shell is capable for regular programming; if your script
-#   getting big, use a programming language, or at least PHP or Perl (good
-#   script languages).
+# * No shell is capable of regular programming. If your script is large, use
+#   a programming language or at least PHP or Perl (good scripting languages)
 #
 # Advises:
 # 1. Do not use redirection in single-line if (it is well documented bug)
@@ -770,8 +784,9 @@ end
 #    also parenthesise all bit-wise and unary operators.
 # 5. Do not write a huge weird expression with several quotes, backslashes etc
 #    It is bad practice for generic programming, it is dangerous in any shell.
-# 6. Help tcsh, report the bug here <https://bugs.gw.com/>
-# 7. Read the man page, `tcsh' has huge number of options, and variables.
+# 6  Use quotes, it will save you many times.
+# 7. Help tcsh, report the bug here <https://bugs.gw.com/>
+# 8. Read the man page, `tcsh' has a huge list of options, and variables.
 #
 #    I suggest the following options enabled by default
 #    --------------------------------------------------
@@ -820,26 +835,57 @@ end
 #### a nice prompt
 #    set prompt = "%B%{\033[35m%}%t %{\033[32m%}%n@%m%b %C4 %# "
 
-#### numeric expression replacement benchmarks
-# tcsh '@' native loop, integer only = 0.09 sec
-# tcsh '@' external, integer only = 8.20 sec
-# each test executed at least 2 times to ensure that the program is loaded
-# in cache
+#### debug a script
+#
+# TCSH options:
+# -v Display commands before executing them; expand history substitutions, but
+#    not other substitutions (e.g., filename, variable, and command).
+# -V as -v, but also display .tcshrc
+# -x Display commands before executing them; expand all substitutions.
+# -X as -x, but also display .tcshrc
+# -n parse commands, but do not execute them.
 
-# --- the script for the tests ---
+# example
+tcsh -v script
+```
+
+### Numeric expression replacement benchmarks
+- tcsh '@' native loop, integer only = 0.09 sec
+- tcsh '@' external, integer only = 8.20 sec
+- each test executed at least 2 times to ensure that the program is loaded in cache
+
+#### the script for the tests
+```
 #!/bin/tcsh -f
 set count = 1000
 while ( $count )
 	echo '1.0/2.0' | program > /dev/null
 	@ count --
 end
-
-# Results in seconds:
-# calc     1.62 backquotes instead of echo 1.52
-# bc       1.80
-# sbasic   1.96 (SmallBASIC console-version)
-# bas      3.18 (BASIC 2.4 by Michael Haardt)
-# perl     4.98
-# awk      5.02 (GNU version)
-# python2 18.05
 ```
+
+#### Results
+
+| Application | Seconds |      BQ | Comments                   |
+| ----------- | -------:| -------:| -------------------------- |
+| calc        |    1.62 |    1.52 |                            |
+| bc          |    1.80 |         |                            |
+| sbasic      |    1.96 |         | SmallBASIC console-version |
+| bas         |    3.18 |         | bas 2.4 (Michael Haardt)   |
+| perl        |    4.98 |         |                            |
+| awk         |    5.10 |    5.02 | GNU version                |
+| python-2.7  |   18.05 |         |                            |
+ 
+### Further Readings
+- [TCSH Home](http://www.tcsh.org/)
+- [TCSH Wikipedia](https://en.wikipedia.org/wiki/Tcsh)
+- [TCSH manual page](http://www.tcsh.org/tcsh.html/top.html)
+- [“An Introduction to the C shell”, William Joy](https://docs.freebsd.org/44doc/usd/04.csh/paper.html)
+- [TCSH Bug reports and/or features requests](https://bugs.gw.com/)
+- [Writing Aliases in csh and tcsh](http://home.adelphi.edu/sbloch/class/archive/271/fall2005/notes/aliases.html)
+
+### Some more files:
+- [tcsh help command (for 132x35 terminal size)](https://github.com/nereusx/dotfiles/blob/master/csh-help),
+- [my ~/.tcshrc](https://github.com/nereusx/dotfiles/blob/master/.tcshrc)
+- [tcsh-mode for JED text editor](https://github.com/nereusx/dotfiles/blob/master/.jed/tcsh-mode.sl?ts=4)
+- [tcsh-mode for NANO text editor](https://github.com/nereusx/nanorc/blob/master/csh.nanorc?ts=4)
