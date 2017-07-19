@@ -10,20 +10,15 @@ It is essentially the C shell with programmable command-line *completion*, comma
 It is the native root shell for **BSD**-based systems such as the *FreeBSD* and the *MacOS X*.
 
 Almost all **Linux** distros and **BSD** today use **tcsh** instead of the original **csh**.
-In most cases **`csh`** is a *symbolic link* that points to **`tcsh`**.
+In most cases **csh** is a *symbolic link* that points to **tcsh**.
 This is because **tcsh** is backward compatible with **csh**, and the last is not maintained anymore.
 
 ```tcsh
 #!/bin/tcsh
+# The lines which starting with '#' are comments; comments are ignored.
 #
-# The lines which starting with '#' are comments
-# The lines of comments ignored by the shell; all others are executed.
-# Empty lines are ignored too.
-#
-# First line of the script is the so called "shebang" which tells the system
-# how to execute the script (see http://en.wikipedia.org/wiki/Shebang_(Unix))
-#
-# TCSH emulates the shebang on systems which don't understand it.
+# The first line of the script is the "shebang" which tells the system how to
+# execute the script (see http://en.wikipedia.org/wiki/Shebang_(Unix))
 #
 # In most cases you'll use `#!/bin/tcsh -f', because `-f' option does not load
 # any resource or start-up files, or perform any command hashing, and thus
@@ -31,10 +26,8 @@ This is because **tcsh** is backward compatible with **csh**, and the last is no
 
 # --- the echo command --------------------------------------------------------
 # The `echo' writes each word to the shell's standard output, separated by
-# spaces and terminated with a newline.
-#
-# The shell's standard output it is the terminal screen but can be also a file
-# or a pipe-line; depended of the way that you will run it.
+# spaces and terminated with a newline. The shell's standard output it is the
+# terminal screen but can be also a file or a pipe-line.
 #
 # The echo_style shell variable may be set to emulate (or not) the flags and
 # escape sequences.
@@ -126,7 +119,7 @@ man tcsh
 # changed with the `set' and `unset' commands.
 # The system maintains its own list of ``environment'' variables.
 # These can be displayed and changed with `printenv', `setenv' and `unsetenv'.
-# The syntax of `setenv' is similar to POSIX sh.
+# The syntax of `setenv' is similar to POSIX shell.
 
 # Assign a value or nothing will create a variable
 # Assign nothing
