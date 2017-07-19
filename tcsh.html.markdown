@@ -8,7 +8,6 @@ lang: en
 # The Tenex C Shell (TCSH)
 
 ## Abstract
-<blockquote>
 **tcsh** (tee-see-shell) is a **Unix** shell based on and compatible with the **C shell** (csh).
 It is essentially the C shell with programmable command-line *completion*, command-line editing, and a lot more features.
 It is the native root shell for **BSD**-based systems such as the *FreeBSD* and the *MacOS X*.
