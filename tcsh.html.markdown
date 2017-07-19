@@ -808,7 +808,10 @@ end
 # 2. Do not mess up with other shells code, c-shell is not compatible with
 #    other shells and has different abilities and priorities.
 # 3. Use spaces as you'll use them to write readable code in any language.
+#    It is not so well documented (never was) that it requires spaces
+#    (separators) between everything except those that constitute an element.
 #    A bug of csh was `set x=1' worked, `set x = 1' worked, `set x =1' did not!
+#    A bug of tcsh was `if ( ! $x )' worked but `if (! $x ) did not.
 # 4. It is well documented that numeric expressions require spaces in-between;
 #    also parenthesise all bit-wise and unary operators.
 # 5. Do not write a huge weird expression with several quotes, backslashes etc
