@@ -828,8 +828,7 @@ end
 #### a nice prompt
 #    set prompt = "%B%{\033[35m%}%t %{\033[32m%}%n@%m%b %C4 %# "
 
-#### debug a script
-#
+#### debugging a script
 # TCSH options:
 # -v Display commands before executing them; expand history substitutions, but
 #    not other substitutions (e.g., filename, variable, and command).
@@ -848,7 +847,7 @@ tcsh -v script
 - each test executed at least 2 times to ensure that the program is loaded in cache
 
 #### the script for the tests
-```
+```tcsh
 #!/bin/tcsh -f
 set count = 1000
 while ( $count )
@@ -859,15 +858,18 @@ end
 
 #### Results
 
-| Application | Seconds |      BQ | Comments                   |
+| Application | Seconds |     ALT | Comments                   |
 | ----------- | -------:| -------:| -------------------------- |
 | calc        |    1.62 |    1.52 |                            |
 | bc          |    1.80 |         |                            |
 | sbasic      |    1.96 |         | SmallBASIC console-version |
 | bas         |    3.18 |         | bas 2.4 (Michael Haardt)   |
 | perl        |    4.98 |         |                            |
-| awk         |    5.10 |    5.02 | GNU version                |
+| awk         |         |    5.02 | GNU version                |
 | python-2.7  |   18.05 |         |                            |
+
+ALT means alternative method.
+**calc** can be used with block-quotes and **awk** takes parameter the code.
  
 ### Further Readings
 - [TCSH Home](http://www.tcsh.org/)
