@@ -30,6 +30,8 @@ This is because **tcsh** is backward compatible with **csh**, and the last is no
 * No shell is capable of regular programming. If your script is large, use
    a programming language or at least PHP or Perl (good scripting languages)
 
+---
+
 ```tcsh
 #!/bin/tcsh
 # The lines which starting with '#' are comments; comments are ignored.
@@ -911,6 +913,7 @@ while ( $count )
 	@ count --
 end
 ```
+---
 
 #### Results
 
