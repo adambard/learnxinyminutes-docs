@@ -782,7 +782,9 @@ end
 #    set parseoctal
 #    unset noclobber
 #
-# Whatever...
+# These options are not necessary but I suggest to begin using tcsh with them
+#
+# enabled:
 #    set inputmode=insert
 #    set autolist
 #    set listjobs
@@ -796,6 +798,7 @@ end
 #    set histlit
 #    set nohistclop
 #
+# disabled:
 #    unset compat_expr
 #    unset noglob
 #    unset autologout
