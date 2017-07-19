@@ -659,17 +659,6 @@ echo $n bottles of beer
 @ n ++
 goto start
 
-# using variable destination
-set n = 1
-set where_to_go = start
-start:
-echo $n
-@ n ++
-if ( $n == 100 ) set where_to_go = loop_exit
-goto $where_to_go
-loop_exit:
-echo "finish"
-
 # A Random Destination Program; results are random
 # Also, this is an implementation of BASIC's ON-GOTO
 start:
