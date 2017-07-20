@@ -6,10 +6,7 @@ contributors:
 lang: en
 ---
 # The Tenex C Shell (TCSH)
-<style>
-sq:before{content:"‘";}
-sq:after{content:"’";}
-</style>
+
 ## Abstract
 **tcsh** (tee-see-shell) is a **Unix** shell based on and compatible with the **C shell** (csh).
 It is essentially the C shell with programmable command-line *completion*, command-line editing, and a lot more features.
@@ -1098,8 +1095,8 @@ other than themselves.
 | {aa,bb[1-3]}     | aa, bb1, bb2, or bb3                   |
 
 ### Numeric expression replacement benchmarks
-- tcsh <sq>@</sq> native loop, integer only = 0.09 sec
-- tcsh <sq>@</sq> external, integer only = 8.20 sec
+- tcsh ‘@’ native loop, integer only = 0.09 sec
+- tcsh ‘@’ external, integer only = 8.20 sec
 - each test executed at least 2 times to ensure that the program is loaded in cache
 
 #### the script for the tests
