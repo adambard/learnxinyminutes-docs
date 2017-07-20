@@ -404,8 +404,8 @@ endif
 # String matching operators ( `=~' and `!~' )
 # The ‘==’ ‘!=’ ‘=~’ and ‘!~’ operators compare their arguments as strings;
 # all others operate on numbers. The operators ‘=~’ and ‘!~’ are like ‘!=’
-# and ‘==’ except that the right hand side is a glob-pattern against which
-# the left hand operand is matched.
+# and ‘==’ except that the right hand side is a wild-cards expression against
+# which the left hand operand is matched.
 
 if ( $user =~ ni[ck]* ) echo "Greetings Mr. Nicholas."
 if ( $user !~ ni[ck]* ) echo "Hey, get out of Nicholas PC."
@@ -1079,8 +1079,8 @@ tcsh -v script
 ```
 
 ### Wildcards
-<q>Wildcards</q> (known as glob-patterns too) expression is a shorthand notation to specify file-names, aliases or
-shell variables by supplying a certain special characters that represent things
+<q>Wildcards</q> (known as glob-pattern too) expression is a shorthand notation to specify file-names,
+aliases or shell variables by supplying a certain special characters that represent things
 other than themselves.
 
 | Wildcards        | Matches                                |
@@ -1095,7 +1095,7 @@ other than themselves.
 | {aa,bb[1-3]}     | aa, bb1, bb2, or bb3                   |
 
 ### Numeric expression replacement benchmarks
-- tcsh '@' native loop, integer only = 0.09 sec
+- tcsh <q><q>@</q></q> native loop, integer only = 0.09 sec
 - tcsh '@' external, integer only = 8.20 sec
 - each test executed at least 2 times to ensure that the program is loaded in cache
 
