@@ -18,20 +18,20 @@ This is because **tcsh** is backward compatible with **csh**, and the last is no
 
 ## About [T]CSH:
 * CSH is **notorious** about its bugs;
-* It was also **famous** about its advanced interactive mode.
-* TCSH is famous that have the most advanced completion subsystem.
-* TCSH is famous that have the most advanced aliases subsystem; aliases
+* It was also **famous** about its advanced **interactive mode**.
+* TCSH is famous that have the most advanced *completion subsystem*.
+* TCSH is famous that have the most advanced *aliases subsystem*; aliases
    can take parameters and often used as functions!
-* TCSH is well known that preferred by people (me too) because of better
-   syntax. All shells are using Thomson's syntax with exception of [t]csh,
-   fish and plan9's shells (rc, ex).
+* TCSH is well known that preferred by people (me too) because of **better syntax**.
+   All shells are using Thomson's syntax with exception of [t]csh, fish and plan9's shells (rc, ex).
 * It is smaller and consume far less memory than bash, zsh even mksh!
    (memusage reports)
-* TCSH still has bugs; less but have; if you write readable clean code you'll
-   find none; well almost none... This has to do with the implementation of
-   csh; that no means the other shells has good implementation.
+* TCSH still has bugs; Less but has.
+  If you write a readable clean code you will find none; well almost none...
+  This has to do with the implementation of csh - which was inherited in tcsh - and
+  does not mean the other shells has good implementation.
 * No shell is capable of regular programming. If your script is large, use
-   a programming language or at least PHP or Perl (good scripting languages)
+  a programming language or at least PHP or Perl (good scripting languages)
 
 ---
 
@@ -1077,6 +1077,22 @@ end
 # example
 tcsh -v script
 ```
+
+### Wildcards
+``Wildcards'' (known as glob-patterns too) expression is a shorthand notation to specify file-names, aliases or
+shell variables by supplying a certain special characters that represent things
+other than themselves.
+
+| Wildcards        | Matches                                |
+| ---------------- | -------------------------------------- |
+| *                | Zero or more characters                |
+| ?                | Exactly one character                  |
+| [xyz]            | One character in the set x, y, or z    |
+| [a-m]            | One character in the range from a to m |
+| [A-Za-z]         | All alphabetic characters              |
+| [0-9]            | All numeric characters                 |
+| {alpha,beta,a,b} | A set of options, alpha, beta, a, or b |
+| {aa,bb[1-3]}     | aa, bb1, bb2, or bb3                   |
 
 ### Numeric expression replacement benchmarks
 - tcsh '@' native loop, integer only = 0.09 sec
