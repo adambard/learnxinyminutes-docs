@@ -758,7 +758,7 @@ echo "at last, a light in the tunnel"
 # `alias' as functions. Another method is recursion
 
 # Aliases is almost the most useful command in TCSH, 'alias' command assigns
-# a string to a name, 'set' do to variables; but aliases are not variables,
+# a string to a name, as 'set' do to variables; but aliases are not variables,
 # they are commands.
 
 # In this example the newly created 'reload' command will reloads the
@@ -1121,10 +1121,11 @@ For small I/O it will work well.
 - [TCSH Wikipedia](https://en.wikipedia.org/wiki/Tcsh)
 - [TCSH manual page](http://www.tcsh.org/tcsh.html/top.html)
 - [“An Introduction to the C shell”, William Joy](https://docs.freebsd.org/44doc/usd/04.csh/paper.html)
-- [TCSH Bug reports and/or features requests](https://bugs.gw.com/)
 - [Writing Aliases in csh and tcsh](http://home.adelphi.edu/sbloch/class/archive/271/fall2005/notes/aliases.html)
+- [TCSH Bug reports and/or features requests](https://bugs.gw.com/)
 
 ### Some more files:
+- [The complete.tcsh file](https://raw.githubusercontent.com/tcsh-org/tcsh/master/complete.tcsh)
 - [tcsh help command (for 132x35 terminal size)](https://github.com/nereusx/dotfiles/blob/master/csh-help),
 - [my ~/.tcshrc](https://github.com/nereusx/dotfiles/blob/master/.tcshrc)
 - [tcsh-mode for JED text editor](https://github.com/nereusx/dotfiles/blob/master/.jed/tcsh-mode.sl?ts=4)
