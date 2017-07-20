@@ -895,7 +895,7 @@ popd
 # 0 /etc
 dirs -v
 
-# this ability was so famous that copied to all other shells. I really had big
+# This ability was so famous that copied to all other shells. I really had big
 # problem to use this; because when I was needed a pre-previous directory,
 # always I had been forgot to use the pushd.
 
@@ -915,7 +915,7 @@ alias cd 'pushd'
 alias dirs 'dirs -v'
 # the standard cd command can be accessed with its long name: `chdir'
 
-# the popd can remove any directory in the stack without change to next.
+# The popd can remove any directory in the stack without change to next.
 pushd /a; pushd /b; pushd /c
 # it will print:
 # 0 /c
@@ -925,7 +925,7 @@ dirs -v
 # this will remove the #2 directory:
 popd +2
 
-# In the man-page you ll find more tools to play with directory stack...
+# In the man-page you'll find more tools to play with directory stack...
 
 # --- Job Control -------------------------------------------------------------
 TODO
@@ -938,11 +938,11 @@ TODO
 
 # --- other built-in commands -------------------------------------------------
 
-# prints all built-in commands in alphabetical order
+# Prints all built-in commands in alphabetical order
 set bins = `builtins`
 echo $bins > syntax-highlight-keywords.conf
 
-# bindkey is used to configure our keyboard key.
+# bindkey is used to configure our keyboard's short-cut keys.
 # let's fix the key-code of [END] key on urxvt terminal emulator
 if ( $TERM == "rxvt-unicode" ) then
 	bindkey "^[[8~" end-of-line
