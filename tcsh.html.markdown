@@ -124,11 +124,11 @@ echo "Always executed" && echo "Only executed if first command does NOT fail"
 
 # Parenthesised commands are always executed in a subshell,
 
-# example: create a project and then informs you that it finished while
+# Example: create a project and then informs you that it finished while
 # it does the installation.
 make && ( espeak "BOSS, compilation finished"; make install )
 
-# prints the home directory but leaving you where you were
+# Prints the home directory but leaving you where you were
 (cd; pwd); pwd
 
 # Execute command in background (&)
@@ -136,6 +136,38 @@ make && ( espeak "BOSS, compilation finished"; make install )
 
 # Read tcsh manual page
 man tcsh
+
+# --- Executing a script ------------------------------------------------------
+# Read and execute commands - in the current process - from a file.
+# Because we execute it in the current process any change that made will affect
+# the our current shell's environment. This is useful when we changes our
+# ~/.tcshrc; by giving `source ~/.tcshrc' it reloads the configuration file.
+
+echo "echo Hello World; set new_variable = 1" > script.csh
+source script.csh
+echo $new_variable
+
+# Another method to run a script but in separated process, is by using
+# the shebang 
+
+echo "#\!/bin/tcsh -f\necho Hello World" > script.csh
+chmod +x script.csh
+./script.csh
+
+# Another method to run a script is by using it as parameter of tcsh
+
+echo "echo Hello World" > script.csh
+tcsh -f script.csh
+
+# or without creating the file, just passing the commands as parameter
+
+tcsh -f -c "echo Hello World"
+
+# Of course we can use back-quotes as already explained
+`echo "echo Hello World"`
+
+# or using the braces but only inside '@', 'if' or 'while' expressions
+@ x = { echo "Hello, World" }
 
 # --- Variables ---------------------------------------------------------------
 # The shell maintains a list of variables, each of which has as value a list of
@@ -170,7 +202,7 @@ echo "$var";
 # Prints the string `$var'
 echo \$var
 echo '$var'
-# braces can be used to separate variable from the rest when its needed
+# Braces can be used to separate variable from the rest when its needed
 set num = 12; echo "There ${num}th element"
 
 # Prints the number of characters of the value: 6
@@ -244,51 +276,51 @@ set -l path = ( $path /usr/local/bin )
 # replaced by l
 # & : Repeat the previous substitution
 
-# start with this file
+# Start with this file
 set f = ~/Documents/Alpha/beta.txt
-# prints ~/Documents/Alpha/beta
+# Prints ~/Documents/Alpha/beta
 echo $f:r
-# prints ~/Documents/Alpha
+# Prints ~/Documents/Alpha
 echo $f:h
-# prints beta.txt
+# Prints beta.txt
 echo $f:t
-# prints txt
+# Prints txt
 echo $f:e
-# prints beta
+# Prints beta
 echo $f:t:r
-# prints Beta
+# Prints Beta
 echo $f:t:r:u
-# prints Biota
+# Prints Biota
 echo $f:t:r:u:s/eta/iota/
 
-# playing with modifiers in lists
+# Playing with modifiers in lists
 set lst = ( bench-expr/* )
 
-# this prints the whole list:
+# This prints the whole list:
 # bench-expr/awk.csh bench-expr/bas.csh bench-expr/bc.csh
 echo $lst
 
-# this prints the base-names with the directories:
+# This prints the base-names with the directories:
 # bench-expr/awk bench-expr/bas bench-expr/bc
 echo $lst:gr
 
-# this prints the extensions:
+# This prints the extensions:
 # csh csh csh
 echo $lst:ge
 
-# this prints the directories:
+# This prints the directories:
 # bench-expr bench-expr bench-expr
 echo $lst:gh
 
-# this prints the file-names:
+# This prints the file-names:
 # awk.csh bas.csh bc.csh
 echo $lst:gt
 
-# the `shift' built-in command removes the first element of a list.
-# if no variable name is given, then uses the $argv
+# The `shift' built-in command removes the first element of a list.
+# If no variable name is given, then uses the $argv
 set lst = ( a b c )
 shift lst
-# prints: b c
+# Prints: b c
 echo $lst
 
 # --- Redirection -------------------------------------------------------------
@@ -305,7 +337,7 @@ echo 'this string' >>& file.txt
 cat < file.txt
 # Input from keyboard; this stores the input line to variable `x'
 set x = $<
-# Document here;
+# The so called "Here Document" method
 cat << LABEL
 ...text here...
 LABEL
@@ -317,6 +349,25 @@ LABEL
 echo -n "Enter your name: "
 set name = $<
 echo "Greetings $name"
+
+# "Here Document" examples
+# This prints the whole text until EOT label found
+cat << EOT
+Welcome $user to XYZ server.
+
+We are provide the following services:
+1. help . .. Help-desk menu
+2. hosts ... List of associated hosts
+...
+EOT
+
+# here's an example of creating a temporary file:
+set tempdata = /tmp/tempdata.$$
+cat > $tempdata << ENDOFTMP
+53.3 94.3 67.1
+48.3 01.3 99.9
+42.1 48.6 92.8
+ENDOFTMP
 
 # --- Expressions -------------------------------------------------------------
 
@@ -331,14 +382,14 @@ else
 	echo "Welcome $user"
 endif
 
-# single-line form
+# Single-line form
 if ( $user == "nicholas" ) echo "Greetings Mr. Nicholas"
 
-# conditional execution
+# Conditional execution
 echo "Always executed" || echo "Only executed if first command fails"
 echo "Always executed" && echo "Only executed if first command does NOT fail"
 
-# you don't need multiple pairs of parenthesis as in other shells, no special
+# You don't need multiple pairs of parenthesis as in other shells, no special
 # operators, nor quotes; generally speaking the expressions are more improved
 # from other shells
 
@@ -359,7 +410,7 @@ endif
 if ( $user =~ ni[ck]* ) echo "Greetings Mr. Nicholas."
 if ( $user !~ ni[ck]* ) echo "Hey, get out of Nicholas PC."
 
-# TIP: if something goes wrong with your expressions, try to enclose it
+# TIP: If something goes wrong with your expressions, try to enclose it
 #      in quotes and single-quotes, depending of what is most logical.
 #
 # My advice is, always use quotes, this will save you many times.
@@ -368,16 +419,12 @@ if ( "$user" =~ 'ni[ck]*' ) echo "Greetings Mr. Nicholas."
 
 # Special operators { cmd }
 # Executes the `cmd' and returns 0 if the command failed.
-# This is the opposite of normal exit code (see $status).
 # It works only inside `@', `if' and `while' expressions
 
-# This prints:
-# /bin/tcsh (the result of the first `which')
-# 3
-set x = 1
-@ x += { which tcsh }
-@ x += { which tcsh > /dev/null }
-echo $x
+# Check for a user in password database
+if ( { grep -s "$1" /etc/passwd } ) then
+	echo "User name $1 already exists"
+endif
 
 # Arithmetic expressions are denoted with the following format:
 @ result = 10 + 5
@@ -432,10 +479,10 @@ echo $result
 # real example: (that I answered in StackExchange)
 # REQ: x := 1001b OR 0110b
 
-# in `tcsh' expression (by using octal)
+# In `tcsh' expression (by using octal)
 @ x = ( 011 | 06 ); echo $x
 
-# the same by using `calc' (and using binary as the original REQ)
+# The same by using `calc' (and using binary as the original REQ)
 set x = `calc '0b1001 | 0b110'`; echo $x
 
 # --- File Inquiry Operators --------------------------------------------------
@@ -450,10 +497,10 @@ set x = `calc '0b1001 | 0b110'`; echo $x
 # -b  block device   -c  char device
 # -t  file (digit) is an open file descriptor for a terminal device
 
-# if the file `README' exists, displays a message
+# If the file `README' exists, displays a message
 if ( -e README ) echo "I have already README file"
 
-# if the `less' program is installed, use this instead of `more'
+# If the `less' program is installed, use this instead of `more'
 if ( -e `where less` ) then
 	alias more 'less'
 endif
@@ -466,7 +513,7 @@ endif
 # -G  returns the group ID                     -G: returns the group-name
 # -P  returns the permissions as octal number  -Pmode returns perm. AND mode
 
-# this will display the date as Unix-time integer: 1498511486
+# This will display the date as Unix-time integer: 1498511486
 filetest -M README.md
 
 # This will display "Tue Jun 27 00:11:26 2017"
@@ -488,10 +535,10 @@ mkdir newdir
 # The `-p` flag causes new intermediate directories to be created as necessary.
 mkdir -p ~/.backup/saves
 
-# which & where
-# find if csh points to tcsh
+# Find if csh points to tcsh
 ls -lha `which csh`
-# find if csh is installed on more than one directory
+
+# Find if csh is installed on more than one directory
 where csh
 
 # --- Pipe-lines --------------------------------------------------------------
@@ -506,7 +553,7 @@ ls -l | grep key | less
 # input (stdin) of the process for "grep key"; and likewise for the process
 # for "less".
 
-# the `ls', the `grep' and the `less' are programs of Unix and they have their
+# The `ls', the `grep' and the `less' are programs of Unix and they have their
 # own man-page. The `pipe' mechanism is part of the kernel but the syntax
 # and the control is job of the shell, the tcsh in our case.
 
@@ -517,7 +564,7 @@ ls -l | grep key | less
 # tcsh, along with grep, gcc and perl is one of the first Unix programs that
 # ported to DOS (with EMX DOS extender) and later to Windows (1998).
 
-# example: this will convert tcsh to PDF and will show it with okular
+# Example: this will convert tcsh to PDF and will show it with okular
 zcat /usr/man/man1/tcsh.1.gz | groff -Tpdf -man | okular -
 
 # a better version
@@ -555,7 +602,7 @@ echo -n "Enter the command you are looking for or press ^C to cancel: "; \
 # are executed, etc.
 # Any number of else-if pairs are possible; only one endif is needed.
 
-# check if we are a login shell
+# Check if we are a login shell
 if ( $?loginsh ) then
 	# check if you are on linux console (not X's terminal)
 	if ( $tty =~ tty* ) then
@@ -619,17 +666,17 @@ endsw
 #
 # BUG: `foreach' doesn't ignore here documents when looking for its end.
 
-# example: counting 1 to 10
+# Counting 1 to 10
 foreach i ( `seq 1 10` )
 	echo $i
 end
 
-# example: type all files in the list
+# Type all files in the list
 foreach f ( a.txt b.txt c.txt )
 	cat $f
 end
 
-# example: convert all .wma files (windows audio) to .ogg format
+# Convert all .wma files (windows audio) to .ogg format
 foreach f ( *.wma )
 	ffmpeg -i "$f" "$f:r".ogg
 end
@@ -644,21 +691,21 @@ end
 # evaluates non-zero. `break' and `continue' may be used to terminate or
 # continue the loop prematurely.
 
-# count from 1 to 10
+# Count from 1 to 10
 set num = 1
 while ( $num <= 10 )
 	echo $num
 	@ num ++
 end
 
-# print all directories of CWD
+# Print all directories of CWD
 set lst = ( * )
 while ( $#lst )
 	if ( -d $lst[1] ) echo $lst[1] is directory
 	shift lst
 end
 
-# separate command-line arguments to options or parameters
+# Separate command-line arguments to options or parameters
 set options
 set params
 set lst = ( $* )
@@ -693,7 +740,7 @@ repeat 3 echo "ding dong"
 # form `label:', and continues execution after that line.
 # The label must be alone in the line.
 
-# a classic endless loop
+# A classic endless loop
 set n = 1
 start:
 echo $n bottles of beer
@@ -716,6 +763,30 @@ echo "at last, a light in the tunnel"
 # --- Functions ---------------------------------------------------------------
 # tcsh has no functions but its expression syntax is advanced enough to use
 # `alias' as functions. Another method is recursion
+
+# Aliases is almost the most useful command in TCSH, 'alias' command assigns
+# a string to a name, 'set' do to variables; but aliases are not variables,
+# they are commands.
+
+# In this example the newly created 'reload' command will reloads the
+# our configuration file every time we execute it.
+alias reload ‘source ~/.tcshrc‘
+reload
+
+# The 'make' is an common UNIX utility that it is used when build a program
+# from its source files. The 'make clean' removes the already built files
+# and the 'make' rebuilt them again.
+# It is needed to use clean parameter first if you want to make a clean build
+# from the beginning.
+alias remake 'make clean; make'
+remake
+
+# Prints the aliases list
+alias
+
+# Removes aliases with 'unalias'
+unalias reload
+unalias remake
 
 # Alias argument selectors; the ability to define an alias to take arguments
 # supplied to it and apply them to the commands that it refers to.
@@ -744,8 +815,9 @@ alias cd 'cd \!* && ls'
 alias selectpager 'setenv PAGER=`which \!:1` || setenv PAGER=`which \!:2`'
 selectpager less most
 
-# Recursion method example.
+# --- Recursion method example ---
 # You can use this example as template for your scripts
+
 # --- begin ---
 #!/bin/tcsh -f
 # set todo to default action
@@ -755,11 +827,11 @@ if ( $#argv > 0 ) set todo = $argv[1]
 # execute
 switch ( $todo )
 case option1:
-	echo "we do some stuff"
+	echo "do stuff for option1"
 	$0 results ...
 	breaksw
 case option2:
-	echo "we do some stuff"
+	echo "do stuff for option2"
 	$0 results ...
 	breaksw
 case results:
@@ -770,7 +842,7 @@ help:
 	breaksw
 default:
 	echo "error, unknown parameter: $todo"
-	exit -1
+	exit 1
 endsw
 # --- end ---
 
@@ -868,6 +940,9 @@ TODO
 # --- History -----------------------------------------------------------------
 TODO
 
+# --- Terminal manipulation ---------------------------------------------------
+TODO
+
 # --- other built-in commands -------------------------------------------------
 
 # prints all built-in commands in alphabetical order
@@ -880,9 +955,9 @@ if ( $TERM == "rxvt-unicode" ) then
 	bindkey "^[[8~" end-of-line
 endif
 
-# read and execute commands from a file. this is useful when we change our
-# ~/.tcshrc; by giving `source ~/.tcshrc' we reload our configuration file.
-source a-plain-text-file
+# `umask' defines the default permissions of newly created file
+# 022 means octal mode 0755 rwxr-xr-x (0644 rw-r--r-- for simple files) 
+umask 022
 
 # --- examples ----------------------------------------------------------------
 
