@@ -57,10 +57,10 @@ This is because **tcsh** is backward compatible with **csh**, and the last is no
 # Print the value of echo_style
 echo $echo_style
 
-# Enable `echo' to support back-slashed characters and the `-n' option (no new
-# line). This is the default for tcsh, but your distro may change it. Slackware
-# has done so. If your script run it as `csh' instead of `tcsh' the echo_style
-# also will be altered for compatibility with Berkley's C-Shell.
+# Enable `echo' to support back-slashed[1] characters and the `-n' option
+# (no new line). This is the default for tcsh, but your distro may change it.
+# Slackware has done so. If your script run it as `csh' instead of `tcsh'
+# the echo_style also will be altered for compatibility with Berkley's C-Shell.
 set echo_style = both
 
 # Several ways to print "Hello world"
@@ -68,24 +68,6 @@ echo Hello world
 echo "Hello world"
 echo 'Hello world'
 echo `echo Hello world`
-
-# For those who are unfamiliar with backslash: 
-# This character has special meaning in C language and so in shells and in the
-# whole Unix.
-# \n   = a new line,
-# \t   = a [TAB] character, 
-# \033 = the ESC-ape character (ASCII 27) used often by terminals to select
-# colours or communicate with its hardware.
-#
-# The quote characters in shells have the special meaning to defines a string.
-# So if you want to include one of those characters inside the string, type:
-# \"   = for double quotes
-# \'   = for single quotes
-#
-# Using the \ as the last character of a line, it means that the line continues
-# to the next line; This is very useful on long pipe-lines and other cases.
-#
-# To display the backslash you have to type it two times, like this: \\
 
 # This prints "line1nline2" in one line, because the \n interpreted
 # before executed by the `echo'. This is the correct, not a bug.
@@ -401,11 +383,11 @@ if ( $name == "Daniya" || $name == "Zach" ) then
 	echo "This will run if $name is Daniya OR Zach."
 endif
 
-# String matching operators ( `=~' and `!~' )
-# The ‘==’ ‘!=’ ‘=~’ and ‘!~’ operators compare their arguments as strings;
-# all others operate on numbers. The operators ‘=~’ and ‘!~’ are like ‘!=’
-# and ‘==’ except that the right hand side is a wild-cards expression against
-# which the left hand operand is matched.
+# String matching operators ( '=~' and '!~' )
+# The '==' '!=' '=~' and '!~' operators compare their arguments as strings;
+# all others operate on numbers. The operators '=~' and '!~' are like '!='
+# and '==' except that the right hand side is a wild-cards[2] expression
+# against which the left hand operand is matched.
 
 if ( $user =~ ni[ck]* ) echo "Greetings Mr. Nicholas."
 if ( $user !~ ni[ck]* ) echo "Hey, get out of Nicholas PC."
@@ -418,8 +400,8 @@ if ( $user !~ ni[ck]* ) echo "Hey, get out of Nicholas PC."
 if ( "$user" =~ 'ni[ck]*' ) echo "Greetings Mr. Nicholas."
 
 # Special operators { cmd }
-# Executes the `cmd' and returns 0 if the command failed.
-# It works only inside `@', `if' and `while' expressions
+# Executes the 'cmd' and returns 0 if the command failed.
+# It works only inside '@', 'if' and 'while' expressions
 
 # Check for a user in password database
 if ( { grep -s "$1" /etc/passwd } ) then
@@ -443,7 +425,7 @@ echo $result
 # All operators are same as in C with the same priority.
 
 # It is non so well documented that numeric expressions require spaces
-# in-between; Also, `@' has its own parser, it seems that work well when the
+# in-between; Also, '@' has its own parser, it seems that work well when the
 # expression is parenthesised otherwise the primary parser seems it is active.
 # Parenthesis require spaces around, this is documented.
 
@@ -1078,21 +1060,43 @@ end
 tcsh -v script
 ```
 
-### Wildcards
+### [1] Back-slash 
+For those who are unfamiliar with backslash;
+This character has special meaning in C language and so in shells and in the whole Unix.
+
+| Code   | Description                                             |
+| ------ | --------------------------------------------------------|
+| `\n`   | New line                                                |
+| `\t`   | [TAB] character                                         |
+| `\033` | The ESCape character (ASCII 27) used often by terminals |
+|        | to select colours or communicate with its hardware.     |
+
+The quote characters in shells have the special meaning to defines a string.
+So if you want to include one of those characters inside the string, type:
+
+* `\"` for double quotes
+* `\'`  for single quotes
+
+Using the `\` as the last character of a line, it means that the line continues
+to the next line; This is very useful on long pipe-lines and other cases.
+
+To display the backslash you have to type it two times, like this: `\\`
+
+### [2] Wildcards
 “Wildcards” (also known as “glob-pattern”) expression is a shorthand notation to specify file-names,
 aliases or shell variables by supplying a certain special characters that represent things
 other than themselves.
 
-| Wildcards        | Matches                                |
-| ---------------- | -------------------------------------- |
-| *                | Zero or more characters                |
-| ?                | Exactly one character                  |
-| [xyz]            | One character in the set x, y, or z    |
-| [a-m]            | One character in the range from a to m |
-| [A-Za-z]         | All alphabetic characters              |
-| [0-9]            | All numeric characters                 |
-| {alpha,beta,a,b} | A set of options, alpha, beta, a, or b |
-| {aa,bb[1-3]}     | aa, bb1, bb2, or bb3                   |
+| Wildcards          | Matches                                |
+| ------------------ | -------------------------------------- |
+| `*`                | Zero or more characters                |
+| `?`                | Exactly one character                  |
+| `[xyz]`            | One character in the set x, y, or z    |
+| `[a-m]`            | One character in the range from a to m |
+| `[A-Za-z]`         | All alphabetic characters              |
+| `[0-9]`            | All numeric characters                 |
+| `{alpha,beta,a,b}` | A set of options, alpha, beta, a, or b |
+| `{aa,bb[1-3]}`     | aa, bb1, bb2, or bb3                   |
 
 ### Numeric expression replacement benchmarks
 - tcsh ‘@’ native loop, integer only = 0.09 sec
@@ -1114,13 +1118,13 @@ end
 
 | Application | Seconds |     ALT | Comments                   |
 | ----------- | -------:| -------:| -------------------------- |
-| calc        |    1.62 |    1.52 |                            |
-| bc          |    1.80 |         |                            |
-| sbasic      |    1.96 |         | SmallBASIC console-version |
-| bas         |    3.18 |         | bas 2.4 (Michael Haardt)   |
-| perl        |    4.98 |         |                            |
-| awk         |         |    5.02 | GNU version                |
-| python-2.7  |   18.05 |         |                            |
+| `calc`      |    1.62 |    1.52 |                            |
+| `bc`        |    1.80 |         |                            |
+| `sbasic`    |    1.96 |         | SmallBASIC console-version |
+| `bas`       |    3.18 |         | bas 2.4 (Michael Haardt)   |
+| `perl`      |    4.98 |         |                            |
+| `awk`       |         |    5.02 | GNU version                |
+| `python-2.7`|   18.05 |         |                            |
 
 ALT means alternative method.
 **calc** can be used with block-quotes and **awk** takes parameter the code.
