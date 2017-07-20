@@ -557,13 +557,6 @@ ls -l | grep key | less
 # own man-page. The `pipe' mechanism is part of the kernel but the syntax
 # and the control is job of the shell, the tcsh in our case.
 
-# NOTE: `pipe' mechanism has Windows too, but it is buggy and I sign it for all
-# versions until Windows XP SP3 API32 which was the last one that I worked on.
-# Microsoft still denied it but is well known bug since it is a common method
-# for inter-process communication. For small I/O it will work well.
-# tcsh, along with grep, gcc and perl is one of the first Unix programs that
-# ported to DOS (with EMX DOS extender) and later to Windows (1998).
-
 # Example: this will convert tcsh to PDF and will show it with okular
 zcat /usr/man/man1/tcsh.1.gz | groff -Tpdf -man | okular -
 
@@ -1115,6 +1108,13 @@ end
 
 ALT means alternative method.
 **calc** can be used with block-quotes and **awk** takes parameter the code.
+
+### WARNING: Pipe-lines at Windows
+Anonymous pipe mechanism has Windows too, but it is buggy and I sign it for all
+versions until Windows XP SP3 API32 - and for all of their examples in MSDN -
+which was the last one that I worked on. Microsoft still denied it but
+is well known bug since it is a common method for inter-process communication.
+For small I/O it will work well.
  
 ### Further Readings
 - [TCSH Home](http://www.tcsh.org/)
