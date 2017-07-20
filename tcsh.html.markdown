@@ -1142,9 +1142,9 @@ For small I/O it will work well.
 - [TCSH Bug reports and/or features requests](https://bugs.gw.com/)
 
 ### Some more files:
-- [The complete.tcsh file](https://raw.githubusercontent.com/tcsh-org/tcsh/master/complete.tcsh)
+- [The ‘complete.tcsh’ file](https://raw.githubusercontent.com/tcsh-org/tcsh/master/complete.tcsh)
 - [tcsh help command (for 132x35 terminal size)](https://github.com/nereusx/dotfiles/blob/master/csh-help),
-- [my ~/.tcshrc](https://github.com/nereusx/dotfiles/blob/master/.tcshrc)
+- [my ‘~/.tcshrc’](https://github.com/nereusx/dotfiles/blob/master/.tcshrc)
 - [tcsh-mode for JED text editor](https://github.com/nereusx/dotfiles/blob/master/.jed/tcsh-mode.sl?ts=4)
 - [tcsh-mode for NANO text editor](https://github.com/nereusx/nanorc/blob/master/csh.nanorc?ts=4)
 - [tcsh-mode for EMACS text editor](https://github.com/tcsh-org/tcsh/blob/master/csh-mode.el)
