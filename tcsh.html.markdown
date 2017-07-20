@@ -42,12 +42,12 @@ This is because **tcsh** is backward compatible with **csh**, and the last is no
 # The first line of the script is the "shebang" which tells the system how to
 # execute the script (see http://en.wikipedia.org/wiki/Shebang_(Unix))
 #
-# In most cases you'll use `#!/bin/tcsh -f', because `-f' option does not load
+# In most cases you'll use '#!/bin/tcsh -f', because '-f' option does not load
 # any resource or start-up files, or perform any command hashing, and thus
 # starts faster.
 
 # --- the echo command --------------------------------------------------------
-# The `echo' writes each word to the shell's standard output, separated by
+# The 'echo' writes each word to the shell's standard output, separated by
 # spaces and terminated with a newline. The shell's standard output it is the
 # terminal screen but can be also a file or a pipe-line.
 #
@@ -57,9 +57,9 @@ This is because **tcsh** is backward compatible with **csh**, and the last is no
 # Print the value of echo_style
 echo $echo_style
 
-# Enable `echo' to support back-slashed[1] characters and the `-n' option
+# Enable 'echo' to support back-slashed[1] characters and the '-n' option
 # (no new line). This is the default for tcsh, but your distro may change it.
-# Slackware has done so. If your script run it as `csh' instead of `tcsh'
+# Slackware has done so. If your script run it as 'csh' instead of 'tcsh'
 # the echo_style also will be altered for compatibility with Berkley's C-Shell.
 set echo_style = both
 
@@ -69,8 +69,8 @@ echo "Hello world"
 echo 'Hello world'
 echo `echo Hello world`
 
-# This prints "line1nline2" in one line, because the \n interpreted
-# before executed by the `echo'. This is the correct, not a bug.
+# This prints "line1nline2" in one line, because the '\n' interpreted
+# before executed by the 'echo'. This is the correct, not a bug.
 echo line1\nline2
 
 # To print the two lines you have to type
@@ -81,14 +81,14 @@ echo 'line1\nline2'
 # --- Basic Syntax ------------------------------------------------------------
 
 # A special character (including a blank or tab) may be prevented from having
-# its special meaning by preceding it with a backslash `\'.
+# its special meaning by preceding it with a backslash '\'.
 # this will display the last history commands
 echo !!
 # this will not
 echo \!\!
 
 # Single quotes prevents expanding special characters too, but some
-# characters like `!' and backslash have higher priority
+# characters like '!' and backslash have higher priority
 # `$' (variable value) will not expands
 echo '$1 tip'
 # `!' (history) will expands
@@ -104,7 +104,8 @@ echo 'first line'; echo 'second line'
 echo "Always executed" || echo "Only executed if first command fails"
 echo "Always executed" && echo "Only executed if first command does NOT fail"
 
-# Parenthesised commands are always executed in a subshell,
+# Parenthesis used to group commands.
+# Parenthesised commands are always executed in a sub-shell.
 
 # Example: create a project and then informs you that it finished while
 # it does the installation.
@@ -123,7 +124,7 @@ man tcsh
 # Read and execute commands - in the current process - from a file.
 # Because we execute it in the current process any change that made will affect
 # the our current shell's environment. This is useful when we changes our
-# ~/.tcshrc; by giving `source ~/.tcshrc' it reloads the configuration file.
+# ~/.tcshrc; by giving 'source ~/.tcshrc' it reloads the configuration file.
 
 echo "echo Hello World; set new_variable = 1" > script.csh
 source script.csh
@@ -154,10 +155,23 @@ tcsh -f -c "echo Hello World"
 # --- Variables ---------------------------------------------------------------
 # The shell maintains a list of variables, each of which has as value a list of
 # zero or more words. The values of shell variables can be displayed and
-# changed with the `set' and `unset' commands.
-# The system maintains its own list of ``environment'' variables.
-# These can be displayed and changed with `printenv', `setenv' and `unsetenv'.
-# The syntax of `setenv' is similar to POSIX shell.
+# changed with the 'set' and 'unset' commands.
+# The system maintains its own list of "environment" variables.
+# These can be displayed and changed with 'printenv', 'setenv' and 'unsetenv'.
+# The syntax of 'setenv' is similar to POSIX shell.
+
+# The difference of system and shells variables is that programmes may use
+# system variables, for example 'getenv("HOME");' in C
+# this is what does the 'export' of POSIX shells
+
+# Changes system variable
+setenv VISUAL /usr/bin/vi
+# Display
+echo $VISUAL
+# Display all
+printenv
+# and remove
+unsetenv VISUAL
 
 # Assign a value or nothing will create a variable
 # Assign nothing
@@ -763,6 +777,12 @@ alias
 unalias reload
 unalias remake
 
+# more examples
+alias hist  'history 20'
+alias ll    'ls --color -lha'
+alias today "date '+%d%h%y'"
+alias ff    'find . -name '
+
 # Alias argument selectors; the ability to define an alias to take arguments
 # supplied to it and apply them to the commands that it refers to.
 # Tcsh is the only shell that provides this feature.
@@ -1038,12 +1058,6 @@ end
 # This enable automatically rescan `path' directories if need to. (like bash)
 #    set autorehash
 
-#### common aliases
-#    alias hist  'history 20'
-#    alias ll    'ls --color -lha'
-#    alias today "date '+%d%h%y'"
-#    alias ff    'find . -name '
-
 #### a nice prompt
 #    set prompt = "%B%{\033[35m%}%t %{\033[32m%}%n@%m%b %C4 %# "
 
@@ -1143,6 +1157,7 @@ For small I/O it will work well.
 - [“An Introduction to the C shell”, William Joy, 4.3BSD, ~1998](https://docs.freebsd.org/44doc/usd/04.csh/paper.html)
 - [“C-shell Cookbook”, Malcolm J. Currie, Starlink Project, v1.3 Nov 2006](http://www.starlink.rl.ac.uk/star/docs/sc4.htx/sc4.html)
 - [“Writing Aliases in csh and tcsh”, Stephen Bloch, 2005](http://home.adelphi.edu/sbloch/class/archive/271/fall2005/notes/aliases.html)
+- [“POSIX 1003.1 SH(1P)” manual page](http://www.unix.com/man-page/posix/1p/sh/)
 - [TCSH Bug reports and/or features requests](https://bugs.gw.com/)
 
 ### Some more files:
