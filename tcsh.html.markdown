@@ -463,13 +463,13 @@ echo $result
 # No shell is designed to do math .-
 # Except for the integer expressions, use an external command with back-quotes.
 #
-# I suggest the `calc' as the best option; it is powerful and fast.
+# I suggest the 'calc' as the best option; it is powerful and fast.
 # (http://www.isthe.com/chongo/tech/comp/calc/)
 #
 # The standard UNIX's bc as second option
 # (https://www.gnu.org/software/bc/manual/html_mono/bc.html)
 #
-# You can also use `perl', or several BASICs, but prefer the above
+# You can also use 'perl', or several BASICs, but prefer the above
 # utilities for faster load-and-run results.
 
 # real example: (that I answered in StackExchange)
@@ -842,6 +842,7 @@ endsw
 # --- end ---
 
 # --- Completion --------------------------------------------------------------
+# Completion takes part when we press [TAB] to auto-complete the what we type
 
 # first get the latest package of the tcsh's community with a big list of
 # command's completions, and put it in the  ~/.tcshrc
@@ -864,12 +865,31 @@ complete tmux "p/1/(${tmux_cmds})/"
 # ready, now type 'tmux ' and press the [TAB], it will display a big list
 # with all the parameters of tmux.
 
+# typical file selection;
+# for gcc: position of parameter / any / files *.{c,cpp,cxx}
+complete gcc 'p/*/f:*.{c,cpp,cxx}/'
+
+# typical selection from list
+complete my-command 'p/*/(one two three)/'
+
+# for finger (finger username@hostname)
+# rule 1: complete any word / if pattern is '*@' / list of hosts
+# rule 2: position of parameter / 1 / list of users / append the '@' character
+set hostnames = ( forthnet.gr gnu.org ... )
+complete finger 'c/*@/$hostnames/' 'p/1/u/@'
+
+# for telnet (telnet [-l username] hostname)
+# rule 1: complete next word of / -l / with usernames
+# rule 2: position of parameter / 1 / list of hosts
+set hostnames = ( `awk '/^[1-9]+/ {print $2}' /etc/hosts` )
+complete telnet 'n/-l/u/' 'p/1/$hostnames/'
+
 # TCSH has the most advanced completion subsystem in the UNIX world.
 # Use the man, it is your friend!
 # Read the /etc/complete.tcsh it is your tutorial.
 
 # --- Directory Stack ---------------------------------------------------------
-# pushd, popd, and dirs are shell built-ins which allow you manipulate a 
+# 'pushd', 'popd', and 'dirs' are shell built-ins which allow you manipulate a 
 # directory stack. This can be used to change directories but return to the
 # directory from which you came.
 
@@ -1006,18 +1026,18 @@ end
 # 3. Use spaces as you'll use them to write readable code in any language.
 #    It is not so well documented (never was) that it requires spaces
 #    (separators) between everything except those that constitute an element.
-#    A bug of csh was `set x=1' worked, `set x = 1' worked, `set x =1' did not!
-#    A bug of tcsh was `if ( ! $x )' worked but `if (! $x ) did not.
+#    A bug of csh was 'set x=1' worked, 'set x = 1' worked, 'set x =1' did not!
+#    A bug of tcsh was 'if ( ! $x )' worked but 'if (! $x ) did not.
 # 4. It is well documented that numeric expressions require spaces in-between;
 #    also parenthesise all bit-wise and unary operators.
 # 5. Do not write a huge weird expression with several quotes, backslashes etc
 #    It is bad practice for generic programming, it is dangerous in any shell.
 # 6  Use quotes, it will save you many times.
 # 7. Help tcsh, report the bug here <https://bugs.gw.com/>
-# 8. Read the man page, `tcsh' has a huge list of options, and variables.
+# 8. Read the man page, 'tcsh' has a huge list of options, and variables.
 #
-#    I suggest the following options enabled by default
-#    --------------------------------------------------
+#    I suggest the following options by default
+#    ------------------------------------------
 # Even in non-interactive shells
 #    set echo_style=both
 #    set backslash_quote
@@ -1048,14 +1068,14 @@ end
 #    unset time
 #    unset tperiod
 #
-# NOTE: If the `backslash_quote' is set, it may create compatibility issues
+# NOTE: If the 'backslash_quote' is set, it may create compatibility issues
 # with other tcsh scripts which was written without it.
 #
-# NOTE: The same for `parseoctal', but it is better to fix the problematic
+# NOTE: The same for 'parseoctal', but it is better to fix the problematic
 # scripts.
 #
 # NOTE: **for beginners only**
-# This enable automatically rescan `path' directories if need to. (like bash)
+# This enable automatically rescan 'path' directories if need to. (like bash)
 #    set autorehash
 
 #### a nice prompt
@@ -1111,6 +1131,15 @@ other than themselves.
 | `[0-9]`            | All numeric characters                 |
 | `{alpha,beta,a,b}` | A set of options, alpha, beta, a, or b |
 | `{aa,bb[1-3]}`     | aa, bb1, bb2, or bb3                   |
+
+Wildcards syntax is different than regular-expression's.
+
+Example:
+```tcsh
+# this will match any file with base-name 'abc' which had any 2 characters
+# long extension
+ls abc.??
+```
 
 ### Numeric expression replacement benchmarks
 - tcsh ‘@’ native loop, integer only = 0.09 sec
