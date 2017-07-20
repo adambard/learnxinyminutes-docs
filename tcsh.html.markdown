@@ -1079,7 +1079,7 @@ tcsh -v script
 ```
 
 ### Wildcards
-``Wildcards'' (known as glob-patterns too) expression is a shorthand notation to specify file-names, aliases or
+<q>Wildcards</q> (known as glob-patterns too) expression is a shorthand notation to specify file-names, aliases or
 shell variables by supplying a certain special characters that represent things
 other than themselves.
 
