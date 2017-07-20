@@ -1079,7 +1079,7 @@ tcsh -v script
 ```
 
 ### Wildcards
-<q>Wildcards</q> (known as glob-pattern too) expression is a shorthand notation to specify file-names,
+“Wildcards” (also known as “glob-pattern”) expression is a shorthand notation to specify file-names,
 aliases or shell variables by supplying a certain special characters that represent things
 other than themselves.
 
@@ -1136,8 +1136,9 @@ For small I/O it will work well.
 - [TCSH Home](http://www.tcsh.org/)
 - [TCSH Wikipedia](https://en.wikipedia.org/wiki/Tcsh)
 - [TCSH manual page](http://www.tcsh.org/tcsh.html/top.html)
-- [“An Introduction to the C shell”, William Joy](https://docs.freebsd.org/44doc/usd/04.csh/paper.html)
-- [Writing Aliases in csh and tcsh](http://home.adelphi.edu/sbloch/class/archive/271/fall2005/notes/aliases.html)
+- [“An Introduction to the C shell”, William Joy, 4.3BSD, ~1998](https://docs.freebsd.org/44doc/usd/04.csh/paper.html)
+- [“C-shell Cookbook”, Malcolm J. Currie, Starlink Project, v1.3 Nov 2006](http://www.starlink.rl.ac.uk/star/docs/sc4.htx/sc4.html)
+- [“Writing Aliases in csh and tcsh”, Stephen Bloch, 2005](http://home.adelphi.edu/sbloch/class/archive/271/fall2005/notes/aliases.html)
 - [TCSH Bug reports and/or features requests](https://bugs.gw.com/)
 
 ### Some more files:
