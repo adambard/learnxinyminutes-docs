@@ -903,8 +903,8 @@ pushd /var/spool/news
 dirs -v
 
 # now we can move to one of those directories or using their names in other
-# commands with the sequence character = and the number as it displayed by
-# `dirs'
+# commands with the sequence character '=; and the number as it displayed by
+# `dirs'. Also the '=-' returns the last one.
 
 # this will copy the file /etc/termcap to the current directory
 cp =1/termcap .
@@ -950,13 +950,96 @@ popd +2
 # In the man-page you'll find more tools to play with directory stack...
 
 # --- Job Control -------------------------------------------------------------
-TODO
+# The shell it keeps a table of current jobs, as 'job' it means the processes
+# which start by the shell. When a job is started asynchronously with ‘&’,
+# the shell prints its number and their PID.
+
+# this prints
+
+# [1] ..the-PID...
+ps &
+# when it finished it will display
+# [1] Done
+
+# by pressing Ctrl+Z we move the current process to the background
+less csh-help 
+# CTRL+Z
+# [1]  + Suspended                     less csh-help
+# To getting back we use the 'fg' command or typing % and [ENTER]
+%
+
+# Do it again but this time run 'jobs'
+jobs
+# [1]  + Suspended                     less csh-help
+
+# and kill it
+kill %1
+# [1]    Terminated                    less csh-help
+
+# The command 'stop' can suspend a background (or not!) job; the 'bg'
+# can resume it in background and 'fg' pop it up to foreground.
+#
+# Notice the commands referred to jobs with '%' prefix, that is because
+# otherwise they means the PID.
 
 # --- History -----------------------------------------------------------------
-TODO
+# History substitutions begin with the character '!' and followed with:
+#  n  - A number, referring to a particular line
+# −n  - An offset, referring to the line n before the current
+#  #  - The current line
+#  !  - The previous event (equivalent to '−1')
+#  s  - The most recent line whose first word begins with the string 's'
+# ?s? - The most recent line which contains the string s. The last '?' can be
+#       omitted if it is followed by a new line.
+
+# display all 'history' lines
+history
+# or the last 20
+history 20
+# at the left side is the line number, we can get with this
+
+# get the last 4 lines
+# 174	19:10	less /etc/hosts
+# 175	19:12	awk '/^[1-9]+/ {print $2}' /etc/hosts
+# 176	19:12	man tcsh
+# 177	00:41	man-to-pdf tcsh
+history 4
+# prints:
+# echo less /etc/hosts
+# less /etc/hosts
+echo !174
+# execute the line 174
+!174
+# recall the last 'awk' command
+# awk '/^[1-9]+/ {print $2}' /etc/hosts
+# ...
+!awk
+# recall the last command-line that contain the word 'pdf'
+# man-to-pdf tcsh
+!?pdf
+
+# History commands is very powerful for an unknown reason, it have a big list
+# of more selectors and modifiers. You can select words with several ways
+# and you can apply the same modifiers as in variables.
+# All these are described in the manual page: man tcsh
 
 # --- Terminal manipulation ---------------------------------------------------
-TODO
+# The 'echotc', 'settc' and 'telltc' commands can be used to manipulate and
+# debug terminal capabilities from the command line. This will be loved by some
+# guys like me. Did you ever get involved with termcap (man termcap 5) mess?
+
+# Lists the values of all terminal capabilities
+telltc
+
+# Syntax: settc cap value
+# The 'settc' tells the shell to believe that the terminal capability 'cap' has
+# the value 'value'. No sanity checking is done.
+
+# display the actual number of terminal's lines 
+echotc li
+
+# display the actual number of terminal's columns
+echotc co
 
 # --- other built-in commands -------------------------------------------------
 
@@ -974,27 +1057,45 @@ endif
 # 022 means octal mode 0755 rwxr-xr-x (0644 rw-r--r-- for simple files) 
 umask 022
 
+# Executes the specified command in place of the current shell.
+# This has the meaning that the shell will removed from memory
+
+# prints: 22550 pts/3    00:00:00 tcsh
+ps
+tcsh
+# prints:
+# 22550 pts/3    00:00:00 tcsh
+# 23691 pts/3    00:00:00 tcsh
+ps
+exec mksh
+# prints:
+# 22550 pts/3    00:00:00 tcsh
+# 28948 pts/3    00:00:00 mksh
+ps
+
+# The shell exits either with the value of the specified expression;
+# otherwise with the value of the status variable.
+exit
+
+# sched, scheduler
+sched 11:00 echo It\’s eleven o\’clock. Time to sleep
+
 # --- examples ----------------------------------------------------------------
 
 # this script prints available power-states if no argument is set;
 # otherwise it set the state of the $argv[1]
 # --- power-state script --- begin --------------------------------------------
 #!/bin/tcsh -f
-# get parameter ("help" for none)
-set todo = help
+set opts = `cat /sys/power/state`
 if ( $#argv > 0 ) then
 	set todo = $argv[1]
+	foreach o ( $opts )
+		if ( $todo == $o ) then
+			echo -n $todo > /sys/power/state
+			exit
+		endif
+	end
 endif
-# available options
-set opts = `cat /sys/power/state`
-# is known?
-foreach o ( $opts )
-	if ( $todo == $o ) then
-		# found; execute it
-		echo -n $todo > /sys/power/state
-		break
-	endif
-end
 # print help and exit
 echo "usage: $0 [option]"
 echo "available options on kernel: $opts"
@@ -1018,66 +1119,6 @@ while ( 1 )
 end
 # --- secretnum.csh --- end ---------------------------------------------------
 
-# Advises:
-# 1. Do not use redirection in single-line if (it is well documented bug)
-#    In most cases avoid to use single-line IFs.
-# 2. Do not mess up with other shells code, c-shell is not compatible with
-#    other shells and has different abilities and priorities.
-# 3. Use spaces as you'll use them to write readable code in any language.
-#    It is not so well documented (never was) that it requires spaces
-#    (separators) between everything except those that constitute an element.
-#    A bug of csh was 'set x=1' worked, 'set x = 1' worked, 'set x =1' did not!
-#    A bug of tcsh was 'if ( ! $x )' worked but 'if (! $x ) did not.
-# 4. It is well documented that numeric expressions require spaces in-between;
-#    also parenthesise all bit-wise and unary operators.
-# 5. Do not write a huge weird expression with several quotes, backslashes etc
-#    It is bad practice for generic programming, it is dangerous in any shell.
-# 6  Use quotes, it will save you many times.
-# 7. Help tcsh, report the bug here <https://bugs.gw.com/>
-# 8. Read the man page, 'tcsh' has a huge list of options, and variables.
-#
-#    I suggest the following options by default
-#    ------------------------------------------
-# Even in non-interactive shells
-#    set echo_style=both
-#    set backslash_quote
-#    set parseoctal
-#    unset noclobber
-#
-# These options are not necessary but I suggest to begin using tcsh with them
-#
-# enable:
-#    set inputmode=insert
-#    set autolist
-#    set listjobs
-#    set padhour
-#    set color
-#    set colorcat
-#    set nobeep
-#    set cdtohome
-#    set ellipsis
-#
-#    set histdup
-#    set histlit
-#    set nohistclop
-#
-# disable:
-#    unset compat_expr
-#    unset noglob
-#    unset autologout
-#    unset time
-#    unset tperiod
-#
-# NOTE: If the 'backslash_quote' is set, it may create compatibility issues
-# with other tcsh scripts which was written without it.
-#
-# NOTE: The same for 'parseoctal', but it is better to fix the problematic
-# scripts.
-#
-# NOTE: **for beginners only**
-# This enable automatically rescan 'path' directories if need to. (like bash)
-#    set autorehash
-
 #### a nice prompt
 #    set prompt = "%B%{\033[35m%}%t %{\033[32m%}%n@%m%b %C4 %# "
 
@@ -1093,6 +1134,19 @@ end
 # example
 tcsh -v script
 ```
+### Advises:
+1. Do not use redirection in single-line if (it is well documented bug). In most cases avoid to use single-line IFs.
+2. Do not mess up with other shells code, c-shell is not compatible with other shells and has different abilities and priorities.
+3. Use spaces as you'll use them to write readable code in any language. It is not so well documented (never was) that it requires spaces
+	(separators) between everything except those that constitute an element.
+	A bug of csh was 'set x=1' worked, 'set x = 1' worked, 'set x =1' did not!
+	A bug of tcsh was 'if ( ! $x )' worked but 'if (! $x ) did not.
+4. It is well documented that numeric expressions require spaces in-between; also parenthesise all bit-wise and unary operators.
+5. Do not write a huge weird expression with several quotes, backslashes etc.
+	It is bad practice for generic programming, it is dangerous in any shell.
+6  Use quotes, it will save you many times.
+7. Help tcsh, report the bug here <https://bugs.gw.com/>
+8. Read the man page, 'tcsh' has a huge list of options, and variables.
 
 ### [1] Back-slash 
 For those who are unfamiliar with backslash;
@@ -1139,6 +1193,10 @@ Example:
 # this will match any file with base-name 'abc' which had any 2 characters
 # long extension
 ls abc.??
+# prints all except those that start with 'cr'
+ls ^cr*
+# prints all C related files
+ls *.{h,c,hpp,cpp,cxx}
 ```
 
 ### Numeric expression replacement benchmarks
@@ -1178,7 +1236,49 @@ versions until Windows XP SP3 API32 - and for all of their examples in MSDN -
 which was the last one that I worked on. Microsoft still denied it but
 is well known bug since it is a common method for inter-process communication.
 For small I/O it will work well.
- 
+
+#### SETTINGS
+I suggest the following options by default
+Even in non-interactive shells
+```tcsh
+set echo_style=both
+set backslash_quote
+set parseoctal
+unset noclobber
+```
+
+These options are not necessary but I suggest to begin using tcsh with them
+```tcsh
+set inputmode=insert
+set autolist
+set listjobs
+set padhour
+set color
+set colorcat
+set nobeep
+set cdtohome
+set ellipsis
+
+set histdup
+set histlit
+set nohistclop
+
+unset compat_expr
+unset noglob
+unset autologout
+unset time
+unset tperiod
+```
+NOTE: If the 'backslash_quote' is set, it may create compatibility issues with other tcsh scripts which was written without it.
+
+NOTE: The same for 'parseoctal', but it is better to fix the problematic scripts.
+
+NOTE: **for beginners only**
+This enable automatically rescan 'path' directories if need to. (like bash)
+```
+set autorehash
+```
+
 ### Further Readings
 - [TCSH Home](http://www.tcsh.org/)
 - [TCSH Wikipedia](https://en.wikipedia.org/wiki/Tcsh)
