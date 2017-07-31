@@ -531,7 +531,8 @@ $ git reset --hard 31f2bb1
 Reflog will list most of the git commands you have done for a given time period,
 default 90 days.
 
-This give you the chance to reverse any git commands that have gone wrong (for instance, if a rebase has broken your application).
+This give you the chance to reverse any git commands that have gone wrong 
+(for instance, if a rebase has broken your application).
 
 You can do this:
 
