@@ -326,10 +326,6 @@ fun helloWorld(val name : String) {
     }
     println(result)
 
-    fun myFun(x:Int) : Any {
-        if (x>10) return "b"
-        else return 1
-    }
 
     /*
     Bir objenin tipini 'is' operatörü ile tayin edebiliriz.
