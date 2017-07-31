@@ -381,6 +381,63 @@ fun helloWorld(val name : String) {
 
     println(EnumExample.A) // => A
     println(ObjectExample.hello()) // => Merhaba
+
+    //Biraz detaylı Kotlin
+
+
+    /*
+     * Delegated Properties, bir değişken tanımlarken kullanılan birkaç standart yöntemler içerir.
+     * https://kotlinlang.org/docs/reference/delegated-properties.html
+     * En bilinen delegate property metodları: lazy(), observable()
+     * */
+
+    /*
+     * Lazy, bir değişkeni ilk erişimde çalıştırılacak olan bir lambda ile tanımlama metodudur.
+     * Sonraki erişimlerde değişkene atanan değer hatırlanır.
+     * Lazy, synchronized bir delegation yöntemidir; değer sadece bir thread içinde hesaplanır,
+     * tüm thread ler aynı değere erişir. Eğer senkronizasyon gerekli değilse, lazy metodu içine
+     * LazyThreadSafetyMode.PUBLICATION paslanabilir.
+     * */
+
+    val lazyValue: String by lazy( {
+        println("bi sn... hesaplıyorum....")
+        "Selam!"
+    })
+
+    println(lazyValue)// bi sn... hesaplıyorum.... Selam!
+    println(lazyValue) // Selam!
+    /*
+     * Observable, bir değişkende olabilecek yeniden atama değişikliklerini dinleme yöntemidir.
+     * İki arguman alır; değişkenin ilk değeri, değiştiğinde çağrılan bir handler metodu. Handler
+     * metodu değişken her değiştiğinde çağırılır.
+     * */
+    var myObservableName: String by Delegates.observable("<isim yok>") {
+        prop, old, new ->
+        println("$old -> $new")
+    }
+    myObservableName = "Baha" //<isim yok> -> Baha
+    myObservableName = "Can"  //Baha -> Can
+
+
+    /*
+     * Eğer değişkenin yeniden atanmasını denetlemek isterek vetoable()
+     * metodunu kullanabiliriz.
+     * */
+
+    var myVetoableName : String by Delegates.vetoable("<isim yok>"){
+        property, oldValue, newValue ->
+        if (newValue.length < 2) {
+            println("Tek harfli isim kabul etmiyoruz!")
+            false
+        } else {
+            println("$oldValue -> $newValue")
+            true
+        }
+    }
+
+    myVetoableName = "Baha" //<isim yok> -> Baha
+    myVetoableName = "C"    //Tek harfli isim kabul etmiyoruz!
+    println(myVetoableName) //Baha
 }
 
 // Enum class lar Java'daki enum lara benzerdir.
