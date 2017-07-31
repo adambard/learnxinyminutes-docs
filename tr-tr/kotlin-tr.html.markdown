@@ -14,7 +14,6 @@ Java %100 birlikte çalışabilir.
     Birkaç satırı yoruma almak için
 */
 
-//  "package" keyword works in the same way as in Java.
 //  "package" anahtar kelimesi tıpkı Java'da olduğu gibidir.
 package com.learnxinyminutes.kotlin
 
@@ -140,6 +139,18 @@ fun helloWorld(val name : String) {
     for (i in 0..4) {
         println("${notOdd(i)} ${notEven(i)} ${notZero(i)} ${notPositive(i)}")
     }
+
+    /*
+    * Diğer for döngüleri
+    * */
+    val myInt = 3
+    for (i in 1..100) {  }  // kapalı aralık. 100 dahil.
+    for (i in 1 until 100) {  } // 100 dahil değil
+    for (x in 2..10 step 2) {  } // ikişer adımlı
+    for (x in 10 downTo 1) {  } // Ondan geriye doğru. 1 dahil.
+    if (myInt in 1..10) {  }
+
+
 
     /*
     Bir sınıf tanımlamak için 'class' anahtar kelimesi kullanılır.
