@@ -99,7 +99,7 @@ can include line breaks.` // Same string type.
 
 	// Arrays have size fixed at compile time.
 	var a4 [4]int           // An array of 4 ints, initialized to all 0.
-	a5 := [...]int{3, 1, 5, 10, 100} // An array initialized with a fixed size of fize
+	a5 := [...]int{3, 1, 5, 10, 100} // An array initialized with a fixed size of five
 	// elements, with values 3, 1, 5, 10, and 100.
 
 	// Slices have dynamic size. Arrays and slices each have advantages
