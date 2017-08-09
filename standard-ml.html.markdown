@@ -351,7 +351,10 @@ val _ = print (say(Red) ^ "\n")
 fun say Red   = "You are red!"
   | say Green = "You are green!"
   | say Blue  = "You are blue!"
-  | say _     = raise Fail "Unknown color"
+
+(* We did not include the match arm `say _ = raise Fail "Unknown color"`
+because after specifying all three colors, the pattern is exhaustive
+and redundancy is not permitted in pattern matching *)
 
 
 (* Here is a binary tree datatype *)
