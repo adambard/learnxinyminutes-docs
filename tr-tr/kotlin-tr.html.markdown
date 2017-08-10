@@ -215,7 +215,6 @@ fun helloWorld(val name : String) {
         println("$key -> $value")
     }
 
-    // The "with" function is similar to the JavaScript "with" statement.
     // 'with' metodu ile bir objeye bir lamda metodu uygulayabiliriz.
     data class MutableDataClassExample (var x: Int, var y: Int, var z: Int)
     val fooMutableData = MutableDataClassExample(7, 4, 9)
@@ -379,8 +378,7 @@ fun helloWorld(val name : String) {
     }
     println("Merhaba, dünya!".remove('a')) // => Merhb, düny!
 
-    println(EnumExample.A) // => A
-    println(ObjectExample.hello()) // => Merhaba
+
 
     //Biraz detaylı Kotlin
 
@@ -438,6 +436,10 @@ fun helloWorld(val name : String) {
     myVetoableName = "Baha" //<isim yok> -> Baha
     myVetoableName = "C"    //Tek harfli isim kabul etmiyoruz!
     println(myVetoableName) //Baha
+
+
+    //singleton değişkene ulaşmak:
+    println(ObjectExample.hello()) // => Merhaba
 }
 
 // Enum class lar Java'daki enum lara benzerdir.
