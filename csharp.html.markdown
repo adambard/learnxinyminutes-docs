@@ -1095,6 +1095,28 @@ namespace Learning.More.CSharp
         }
     }
 }
+
+using System;
+namespace Csharp7
+{
+	//New C# 7 Feature
+	//Install Microsoft.Net.Compilers Latest from Nuget
+	//Install System.ValueTuple Latest from Nuget
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			//Type 1 Declaration
+			(string FirstName, string LastName) names1 = ("Peter", "Parker");
+			Console.WriteLine(names1.FirstName);
+
+			//Type 2 Declaration
+			var names2 = (First:"Peter", Last:"Parker");
+			Console.WriteLine(names2.Last);
+		}
+	}
+}
+
 ```
 
 ## Topics Not Covered
