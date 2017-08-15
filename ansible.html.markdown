@@ -38,6 +38,8 @@ Ansible uses ssh or paramiko as a transport layer. In a way you can imagine that
 In the 'low-level' way you can use it to execute remote command in more controlled way (still using ssh). 
 On the other hand - in advanced scope - you can use python anible code as a library to your own python scrips! This is awesome! (if you know what you are doing). It is a bit like fabric then.
 
+But ansible is way more! It provides an execution plans, an API, library, callbacks, not forget to mention - COMUNITY! and great support by developers!
+
 ## Ansible naming and basic concept
 
 ### Naming
@@ -104,7 +106,30 @@ and other!
 There are tasks (modules) that can be run via CLI
 The execution plans of multiple tasks (with variables and logic) are called playbooks.
 
-Fot parts of the code, that is reusable, a concept called `role` was introduced
+For parts of the code, that is reusable, a concept called `role` was introduced
+
+Role in a way is just a structured way to keep your set of tasks, your variables, handlers, default settings, and way more (meta, files, templates).
+Rele allows to reuse the same parts of code in multiple plybooks (usually with some parametisation).
+It is a great way to introduce `object oriented` management for your applications.
+
+Role can be included in your playbook (executed in your playbook).
+
+
+```
+hosts: all
+
+tasks:
+    - name: "ping all"
+      ping:
+    - name: "execute a shell command"
+      shell: "date; whoami; df -h;"
+
+role: 
+    - some_role
+
+pre_tasks:
+    - name: some pre-task
+      shell: echo 'this task is the last, but would be executed before roles, and before tasks'
 
 ### ansible - variables
 lookup's
