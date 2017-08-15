@@ -7,7 +7,7 @@ filename: LearnAnsible.txt
 ---
 
 Ansible is (one of the many) orchestration tools. It allows you to controll your environment (infrastructure and a code) and automate the manual tasks.
-Ansible have great integration with multiple operating systems (even Windows using Power Shell) and some hardware (switches, Firewalls, etc). It has multiple tools that integrate with the could providers. Almost every worth-notice cloud provider is present in the ecosystem (AWS, Azure, Google, DigitalOcean, OVH, etc...)
+Ansible have great integration with multiple operating systems (even Windows) and some hardware (switches, Firewalls, etc). It has multiple tools that integrate with the could providers. Almost every worth-notice cloud provider is present in the ecosystem (AWS, Azure, Google, DigitalOcean, OVH, etc...)
 
 ## Main cons and pros
 
@@ -15,10 +15,12 @@ Ansible have great integration with multiple operating systems (even Windows usi
 
 It is an agent-less tool - every agent consumes up to 16MB ram - in some environments, it may be noticable amount.
 It is agent-less - you have to verify your environment consistency 'on-demand' - there is no built-in mechanism taht would warn you about some change automatically (this can be achieved with reasonable effort - but it must be known)
+Official GUI Tool (web inferface) - Ansible Tower - is more than GUI, but it is expensive. There is no 'small enterprice' payment plan. Easy workaround with Rundeck or Jenkins is possible with reasonable workload.
 
 ### Pros
 
 It is an agent-less tools :) In most scenarios, it use ssh as a transport layer. 
+In some way you can use it as 'bash on steroids'.
 It is very-very-very easy to start. If you are familiar with ssh concept - you already know ansible :) (almost). My personal record is: 'I did show how to install and use ansible (for simple raspberry pi cluster management) and it tool me 30 seconds to deliver a working tool !!!)'
 I do provide a training services - I'm able to teach a production-ready person - in 8 hours (1 training day)! It covers all needed to work aspects! No other tool can match this ease of use!
 It executes when you do it - other tools (salt, puppet, chef - might execute in different scenario than you would expect)
@@ -30,12 +32,66 @@ Writing own modules and extension is fairly easy.
 ### Neutral
 Migration Ansible<->Salt is failrly easy - so if you would need an event-driven agent environment - it would be a good choice to start quick with Ansible, and convert to salt when needed.
 
+## Basics on ansible
+
+Ansible uses ssh or paramiko as a transport layer. In a way you can imagine that you are using a ssh with API to perform your action.
+In the 'low-level' way you can use it to execute remote command in more controlled way (still using ssh). 
+On the other hand - in advanced scope - you can use python anible code as a library to your own python scrips! This is awesome! (if you know what you are doing). It is a bit like fabric then.
 
 ## Ansible naming and basic concept
 
 ### Naming
 
-### ansible (run module (task))
+#### Inventory
+Inventory is a set of objects/hosts against which we are executing our playbooks 
+For this few minutes, lets asume that we are using default ansible inventory (which in Debian based system is placed in /etc/ansible/hosts_
+
+#### Module - this is name for an logical program (usaly python) that consume proper JSON input and return proper output :)
+This program perform certain task/action (like manage Amazon instances, execute shell command, any of your program).
+Example: Module:shell - a module that executes shell command on a delegated host(s).
+Example: Module:file - performs file operations (stat, link, dir, ...) 
+
+##### Task
+Execution of a single module is called a `task`
+
+Example of a Task run in CLI:
+###### Run a ansible module
+
+ansible -m shell -a 'date; whoami'
+
+as a contrast - please note a module `command` that allows to execute a single command only
+
+ansible -m command -a 'date; whoami' # FAILURE
+
+ansible -m command -a 'date'
+ansible -m command -a 'whoami'
+
+##### Playbook
+
+A list of tasks written in a file of proper structure is called a `playbook`
+Playbook must have a list (or group) of hosts that is executed against, some task(s) or role(s) that are going to be executed, and multiple optional settings.
+
+Example of the playbook:
+
+```
+hosts: all
+
+tasks:
+    - name: "ping all"
+      ping:
+    - name: "execute a shell command"
+      shell: "date; whoami; df -h;"
+```
+
+### Basic ansible commands
+
+There are few binaries you should know
+
+`ansible` (to run modules in CLI)
+`ansible-playbook` (to run playbooks)
+`ansible-vault` (to manage secrets)
+`ansible-galaxy` (to install roles from github/galaxy)
+and other!
 
 ### ansible-playbook (run set of tasks)
 
