@@ -451,7 +451,7 @@ apply _F/3 ( a1, a2, a3 )
 
 ## Extra Info
 *    [LFE PDF](http://www.erlang-factory.com/upload/presentations/61/Robertvirding-LispFlavouredErlang.pdf)
-*     [LFE mail](https://groups.google.com/d/msg/lisp-flavoured-erlang/XA5HeLbQQDk/TUHabZCHXB0J)
+*    [LFE mail](https://groups.google.com/d/msg/lisp-flavoured-erlang/XA5HeLbQQDk/TUHabZCHXB0J)
 
 ## Credits
 
