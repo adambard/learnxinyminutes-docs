@@ -93,9 +93,14 @@ There are few binaries you should know
 `ansible-galaxy` (to install roles from github/galaxy)
 and other!
 
-### ansible-playbook (run set of tasks)
+### More on ansible concept
 
 ### ansible-roles (a 'template-playbooks in right structure')
+
+There are tasks (modules) that can be run via CLI
+The execution plans of multiple tasks (with variables and logic) are called playbooks.
+
+Fot parts of the code, that is reusable, a concept called `role` was introduced
 
 ### ansible - variables
 lookup's
