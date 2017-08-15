@@ -57,14 +57,18 @@ Execution of a single module is called a `task`
 Example of a Task run in CLI:
 ###### Run a ansible module
 
+```
 ansible -m shell -a 'date; whoami'
+```
 
 as a contrast - please note a module `command` that allows to execute a single command only
 
+```
 ansible -m command -a 'date; whoami' # FAILURE
 
 ansible -m command -a 'date'
 ansible -m command -a 'whoami'
+```
 
 ##### Playbook
 
