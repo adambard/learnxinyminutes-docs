@@ -132,9 +132,7 @@ echo 'This outputs ' . FOO;  // Returns 'This ouputs something'
  * Arrays
  */
 
-// All arrays in PHP are associative arrays (hashmaps),
-
-// Associative arrays, known as hashmaps in some languages.
+// All arrays in PHP are associative arrays (hashmaps in some languages)
 
 // Works with all PHP versions
 $associative = array('One' => 1, 'Two' => 2, 'Three' => 3);
