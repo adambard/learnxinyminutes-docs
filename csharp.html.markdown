@@ -593,7 +593,7 @@ on a new line! ""Wow!"", the masses cried";
                 Console.WriteLine(bikeSummary.Name);
 
             // ASPARALLEL
-            // And this is where things get wicked - combines linq and parallel operations
+            // And this is where things get wicked - combine linq and parallel operations
             var threeWheelers = bikes.AsParallel().Where(b => b.Wheels == 3).Select(b => b.Name);
             // this will happen in parallel! Threads will automagically be spun up and the
             // results divvied amongst them! Amazing for large datasets when you have lots of
@@ -613,7 +613,7 @@ on a new line! ""Wow!"", the masses cried";
                 .ThenBy(b => b.Name)
                 .Select(b => b.Name); // still no query run
 
-            // Now the query runs, but opens a reader, so only populates are you iterate through
+            // Now the query runs, but opens a reader, so only populates as you iterate through
             foreach (string bike in query)
                 Console.WriteLine(result);
 
