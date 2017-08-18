@@ -4,6 +4,7 @@ contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
     - ["Ryan Plant", "https://github.com/ryanplant-au"]
+    - ["Ev Bogdanov", "https://github.com/evbogdanov"]
 filename: learnelixir.ex
 ---
 
@@ -127,7 +128,8 @@ rem(10, 3) #=> 1
 # These operators expect a boolean as their first argument.
 true and true #=> true
 false or true #=> true
-# 1 and true    #=> ** (ArgumentError) argument error
+# 1 and true
+#=> ** (BadBooleanError) expected a boolean on left-side of "and", got: 1
 
 # Elixir also provides `||`, `&&` and `!` which accept arguments of any type.
 # All values except `false` and `nil` will evaluate to true.
