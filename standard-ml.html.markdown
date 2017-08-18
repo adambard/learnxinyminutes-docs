@@ -385,7 +385,7 @@ fun calculate_interest(n) = if n < 0.0
 
 (* Exceptions can be caught using "handle" *)
 val balance = calculate_interest ~180.0
-              handle Domain => ~180.0    (* x now has the value ~180.0 *)
+              handle Domain => ~180.0    (* balance now has the value ~180.0 *)
 
 (* Some exceptions carry extra information with them *)
 (* Here are some examples of built-in exceptions *)
