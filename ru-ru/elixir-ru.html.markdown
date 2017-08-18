@@ -238,4 +238,111 @@ end
 #=> Я выполнюсь всегда
 # "Поймана ошибка с сообщением hello."
 
+## ---------------------------
+## -- Модули и функции
+## ---------------------------
+
+# Анонимные функции (обратите внимание на точку при вызове функции)
+square = fn(x) -> x * x end
+square.(5) #=> 25
+
+# Анонимные функции принимают клозы и гарды.
+#
+# Клозы (от англ. clause) — варианты исполнения функции. 
+#
+# Гарды (от англ. guard) — охранные выражения, уточняющие сопоставление с
+# образцом в функциях. Гарды следуют после ключевого слова `when`.
+f = fn
+  x, y when x > 0 -> x + y
+  x, y -> x * y
+end
+
+f.(1, 3)  #=> 4
+f.(-1, 3) #=> -3
+
+# В Elixir много встроенных функций.
+# Они доступны в текущей области видимости.
+is_number(10)    #=> true
+is_list("hello") #=> false
+elem({1,2,3}, 0) #=> 1
+
+# Вы можете объединить несколько функций в модуль. Внутри модуля используйте `def`,
+# чтобы определить свои функции.
+defmodule Math do
+  def sum(a, b) do
+    a + b
+  end
+
+  def square(x) do
+    x * x
+  end
+end
+
+Math.sum(1, 2) #=> 3
+Math.square(3) #=> 9
+
+# Чтобы скомпилировать модуль Math, сохраните его в файле `math.ex`
+# и наберите в терминале: `elixirc math.ex`
+
+defmodule PrivateMath do
+  # Публичные функции начинаются с `def` и доступны из других модулей.
+  def sum(a, b) do
+    do_sum(a, b)
+  end
+
+  # Приватные функции начинаются с `defp` и доступны только внутри своего модуля.
+  defp do_sum(a, b) do
+    a + b
+  end
+end
+
+PrivateMath.sum(1, 2)    #=> 3
+PrivateMath.do_sum(1, 2) #=> ** (UndefinedFunctionError)
+
+# Функции внутри модуля тоже принимают клозы и гарды
+defmodule Geometry do
+  def area({:rectangle, w, h}) do
+    w * h
+  end
+
+  def area({:circle, r}) when is_number(r) do
+    3.14 * r * r
+  end
+end
+
+Geometry.area({:rectangle, 2, 3})        #=> 6
+Geometry.area({:circle, 3})              #=> 28.25999999999999801048
+Geometry.area({:circle, "not_a_number"}) #=> ** (FunctionClauseError)
+
+# Из-за неизменяемых переменных в Elixir важную роль играет рекурсия
+defmodule Recursion do
+  def sum_list([head | tail], acc) do
+    sum_list(tail, acc + head)
+  end
+
+  def sum_list([], acc) do
+    acc
+  end
+end
+
+Recursion.sum_list([1,2,3], 0) #=> 6
+
+# Модули в Elixir поддерживают атрибуты.
+# Атрибуты бывают как встроенные, так и ваши собственные.
+defmodule MyMod do
+  @moduledoc """
+  Это встроенный атрибут
+  """
+
+  @my_data 100 # А это ваш атрибут
+  IO.inspect(@my_data) #=> 100
+end
+
+# Одна из фишек языка — оператор `|>`
+# Он передаёт выражение слева в качестве первого аргумента функции справа:
+Range.new(1,10)
+|> Enum.map(fn x -> x * x end)
+|> Enum.filter(fn x -> rem(x, 2) == 0 end)
+#=> [4, 16, 36, 64, 100]
+
 ```
