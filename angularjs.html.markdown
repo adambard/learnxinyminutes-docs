@@ -699,10 +699,10 @@ app.controller('myCtrl', function($scope) {
 
 **Examples**
 
-- http://www.w3schools.com/angular/angular_examples.asp
+- [http://www.w3schools.com/angular/angular_examples.asp](http://www.w3schools.com/angular/angular_examples.asp)
 
 **References**
 
-- http://www.w3schools.com/angular/angular_ref_directives.asp
-- http://www.w3schools.com/angular/default.asp
-- https://teamtreehouse.com/library/angular-basics/
+- [http://www.w3schools.com/angular/angular_ref_directives.asp](http://www.w3schools.com/angular/angular_ref_directives.asp)
+- [http://www.w3schools.com/angular/default.asp](http://www.w3schools.com/angular/default.asp)
+- [https://teamtreehouse.com/library/angular-basics/](https://teamtreehouse.com/library/angular-basics/)
