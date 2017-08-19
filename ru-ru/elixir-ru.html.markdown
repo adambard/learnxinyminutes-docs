@@ -457,3 +457,11 @@ Agent.get(my_agent, fn colors -> colors end) #=> ["красный", "зелён�
 # Похожим образом вы можете обновить состояние агента
 Agent.update(my_agent, fn colors -> ["синий" | colors] end)
 ```
+
+## Ссылки
+
+* [Официальный сайт](http://elixir-lang.org)
+* [Шпаргалка по языку](http://media.pragprog.com/titles/elixir/ElixirCheat.pdf)
+* [Книга "Programming Elixir"](https://pragprog.com/book/elixir/programming-elixir)
+* [Книга "Learn You Some Erlang for Great Good!"](http://learnyousomeerlang.com/)
+* [Книга "Programming Erlang: Software for a Concurrent World"](https://pragprog.com/book/jaerlang2/programming-erlang)
