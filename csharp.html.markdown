@@ -711,7 +711,7 @@ on a new line! ""Wow!"", the masses cried";
         // Before .NET 4: (aBike.Accessories & Bicycle.BikeAccessories.Bell) == Bicycle.BikeAccessories.Bell
         public BikeAccessories Accessories { get; set; }
 
-        // Static members belong to the type itself rather then specific object.
+        // Static members belong to the type itself rather than specific object.
         // You can access them without a reference to any object:
         // Console.WriteLine("Bicycles created: " + Bicycle.bicyclesCreated);
         public static int BicyclesCreated { get; set; }
