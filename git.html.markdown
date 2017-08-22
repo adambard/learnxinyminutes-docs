@@ -8,6 +8,7 @@ contributors:
     - ["Bruno Volcov", "http://github.com/volcov"]
     - ["Andrew Taylor", "http://github.com/andrewjt71"]
     - ["Jason Stathopulos", "http://github.com/SpiritBreaker226"]
+    - ["Milo Gilad", "http://github.com/Myl0g"]
 filename: LearnGit.txt
 ---
 
@@ -23,7 +24,7 @@ manage your source code.
 
 Version control is a system that records changes to a file(s), over time.
 
-### Centralized Versioning VS Distributed Versioning
+### Centralized Versioning vs. Distributed Versioning
 
 * Centralized version control focuses on synchronizing, tracking, and backing 
 up files.
@@ -157,6 +158,7 @@ $ git init --help
 
 To intentionally untrack file(s) & folder(s) from git. Typically meant for
 private & temp files which would otherwise be shared in the repository.
+
 ```bash
 $ echo "temp/" >> .gitignore
 $ echo "private_key" >> .gitignore
@@ -189,6 +191,9 @@ $ git add /path/to/file/HelloWorld.c
 
 # Regular Expression support!
 $ git add ./*.java
+
+# You can also add everything in your working directory to the staging area.
+$ git add -A
 ```
 
 This only adds a file to the staging area/index, it doesn't commit it to the
@@ -226,7 +231,7 @@ Manage your tags
 $ git tag
 
 # Create a annotated tag
-# The -m specifies a tagging message,which is stored with the tag.
+# The -m specifies a tagging message, which is stored with the tag.
 # If you don’t specify a message for an annotated tag,
 # Git launches your editor so you can type it in.
 $ git tag -a v2.0 -m 'my version 2.0'
@@ -526,12 +531,13 @@ $ git reset --hard 31f2bb1
 Reflog will list most of the git commands you have done for a given time period,
 default 90 days.
 
-This give you the a change to reverse any git commands that have gone wrong
-for instance if a rebase is has broken your application.
+This give you the chance to reverse any git commands that have gone wrong 
+(for instance, if a rebase has broken your application).
 
 You can do this:
 
 1. `git reflog` to list all of the git commands for the rebase
+
 ```
 38b323f HEAD@{0}: rebase -i (finish): returning to refs/heads/feature/add_git_reflog
 38b323f HEAD@{1}: rebase -i (pick): Clarify inc/dec operators
