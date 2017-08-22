@@ -1,4 +1,5 @@
 ---
+category: language
 language: bf
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
@@ -6,6 +7,7 @@ contributors:
 translators:
     - ["Jakub Młokosiewicz", "https://github.com/hckr"]
 lang: pl-pl
+filename: bf-pl.html
 ---
 
 Brainfuck (pisane małymi literami, za wyjątkiem początku zdania) jest bardzo 

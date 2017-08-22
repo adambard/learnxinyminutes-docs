@@ -1,6 +1,6 @@
 ---
+category: language
 language: json
-filename: learnjson-pl.json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]
@@ -9,6 +9,7 @@ contributors:
 translators:
   - ["Michał Mitrosz", "https://github.com/Voltinus"]
 lang: pl-pl
+filename: learnjson-pl.json
 ---
 
 JSON to bardzo prosty format wymiany danych. Jak jest napisane na [json.org](http://json.org), jest łatwy do pisania i czytania dla ludzi i do parsowania i generowania dla maszyn.
