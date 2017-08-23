@@ -907,7 +907,7 @@ b := String isWords.                                        true if index instan
 Object withAllSubclasses size.                              "get total number of class entries"
 ```
 
-## Debuging:
+## Debugging:
 ```
 | a b x |
 x yourself.                                                 "returns receiver"

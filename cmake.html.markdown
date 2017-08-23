@@ -28,8 +28,8 @@ are used in the usual way.
 #  - cmake ..
 #  - make
 # 
-# With those steps, we will follow the best pratice to compile into a subdir
-# and the second line will request to CMake to generate a new OS-dependant
+# With those steps, we will follow the best practice to compile into a subdir
+# and the second line will request to CMake to generate a new OS-dependent
 # Makefile. Finally, run the native Make command.
 
 #------------------------------------------------------------------------------

@@ -447,7 +447,7 @@ False ~~ True; # True
 # http://perlcabal.org/syn/S03.html#Smart_matching
 
 # You also, of course, have `<`, `<=`, `>`, `>=`.
-# Their string equivalent are also avaiable : `lt`, `le`, `gt`, `ge`.
+# Their string equivalent are also available : `lt`, `le`, `gt`, `ge`.
 3 > 4;
 
 ## * Range constructors
@@ -618,7 +618,7 @@ my @arrayplus3 = map(*+3, @array); # `*+3` is the same as `{ $_ + 3 }`
 my @arrayplus3 = map(*+*+3, @array); # Same as `-> $a, $b { $a + $b + 3 }`
                                      # also `sub ($a, $b) { $a + $b + 3 }`
 say (*/2)(4); #=> 2
-              # Immediatly execute the function Whatever created.
+              # Immediately execute the function Whatever created.
 say ((*+3)/5)(5); #=> 1.6
                   # works even in parens !
 
@@ -750,7 +750,7 @@ sub call_say_dyn {
   my $*dyn_scoped_1 = 25; # Defines $*dyn_scoped_1 only for this sub.
   $*dyn_scoped_2 = 100; # Will change the value of the file scoped variable.
   say_dyn(); #=> 25 100 $*dyn_scoped 1 and 2 will be looked for in the call.
-             # It uses he value of $*dyn_scoped_1 from inside this sub's lexical
+             # It uses the value of $*dyn_scoped_1 from inside this sub's lexical
              # scope even though the blocks aren't nested (they're call-nested).
 }
 say_dyn(); #=> 1 10
@@ -816,7 +816,7 @@ $class-obj.other-attrib = 10; # This, however, works, because the public
 #  Perl 6 also has inheritance (along with multiple inheritance)
 #  While `method`'s are inherited, `submethod`'s are not.
 #  Submethods are useful for object construction and destruction tasks,
-#  such as BUILD, or methods that must be overriden by subtypes.
+#  such as BUILD, or methods that must be overridden by subtypes.
 #  We will learn about BUILD later on.
 
 class Parent {
@@ -840,7 +840,7 @@ $Richard.talk; #=> "Hi, my name is Richard"
 # # $Richard is able to access the submethod, he knows how to say his name.
 
 my Child $Madison .= new(age => 1, name => 'Madison');
-$Madison.talk; # prints "Goo goo ga ga" due to the overrided method.
+$Madison.talk; # prints "Goo goo ga ga" due to the overridden method.
 # $Madison.favorite-color does not work since it is not inherited
 
 # When you use `my T $var`, `$var` starts off with `T` itself in it,
@@ -1054,7 +1054,7 @@ say why-not[^5]; #=> 5 15 25 35 45
 
 ## * `state` (happens at run time, but only once)
 # State variables are only initialized one time
-# (they exist in other langages such as C as `static`)
+# (they exist in other languages such as C as `static`)
 sub fixed-rand {
   state $val = rand;
   say $val;
@@ -1105,7 +1105,7 @@ PRE {
     say "If this block doesn't return a truthy value,
         an exception of type X::Phaser::PrePost is thrown.";
 }
-# exemple:
+# example:
 for 0..2 {
     PRE { $_ > 1 } # This is going to blow up with "Precondition failed"
 }
@@ -1204,7 +1204,7 @@ say (1, 10, (20, 10) ).flat; #> (1 10 20 10) Now the iterable is flat
 
 # - `lazy` - Defer actual evaluation until value is fetched (forces lazy context)
 my @lazy-array = (1..100).lazy;
-say @lazy-array.is-lazy; #> True # Check for lazyness with the `is-lazy` method.
+say @lazy-array.is-lazy; #> True # Check for laziness with the `is-lazy` method.
 say @lazy-array; #> [...] List has not been iterated on!
 my @lazy-array { .print }; # This works and will only do as much work as is
 # needed.
@@ -1599,7 +1599,7 @@ so 'ayc' ~~ / a [ b | y ] c /; # `True`. Obviously enough ...
 # To decide which part is the "longest", it first splits the regex in two parts:
 # The "declarative prefix" (the part that can be statically analyzed)
 #  and the procedural parts.
-# Declarative prefixes include alternations (`|`), conjuctions (`&`),
+# Declarative prefixes include alternations (`|`), conjunctions (`&`),
 #  sub-rule calls (not yet introduced), literals, characters classes and quantifiers.
 # The latter include everything else: back-references, code assertions,
 #  and other things that can't traditionnaly be represented by normal regexps.
@@ -1755,10 +1755,10 @@ If you want to go further, you can:
  This will give you a dropdown menu of all the pages referencing your search
  term (Much better than using Google to find Perl 6 documents!)
  - Read the [Perl 6 Advent Calendar](http://perl6advent.wordpress.com/). This
- is a great source of Perl 6 snippets and explainations.  If the docs don't
+ is a great source of Perl 6 snippets and explanations.  If the docs don't
  describe something well enough, you may find more detailed information here.
  This information may be a bit older but there are many great examples and
- explainations.  Posts stopped at the end of 2015 when the language was declared
+ explanations.  Posts stopped at the end of 2015 when the language was declared
  stable and Perl 6.c was released.
  - Come along on `#perl6` at `irc.freenode.net`. The folks here are always helpful.
  - Check the [source of Perl 6's functions and classes](https://github.com/rakudo/rakudo/tree/nom/src/core). Rakudo is mainly written in Perl 6 (with a lot of NQP, "Not Quite Perl", a Perl 6 subset easier to implement and optimize).

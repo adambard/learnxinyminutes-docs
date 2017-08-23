@@ -395,7 +395,7 @@ fun failing_function []    = raise Empty  (* used for empty lists *)
   | failing_function xs    = raise Fail "This list is too long!"
 
 (* We can pattern match in 'handle' to make sure
-   a specfic exception was raised, or grab the message *)
+   a specific exception was raised, or grab the message *)
 val err_msg = failing_function [1,2] handle Fail _ => "Fail was raised"
                                           | Domain => "Domain was raised"
                                           | Empty  => "Empty was raised"

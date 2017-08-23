@@ -191,7 +191,7 @@ string n = "hello"; // stored in UTF8, note double quotes, not single
 // string utility functions to be added in future
 // prefer bytes32/bytes, as UTF8 uses more storage
 
-// Type inferrence
+// Type inference
 // var does inferred typing based on first assignment,
 // can't be used in functions parameters
 var a = true;
@@ -487,7 +487,7 @@ contract MyContract is abc, def("a custom argument to def") {
     function z() {
         if (msg.sender == owner) {
             def.z(); // call overridden function from def
-            super.z(); // call immediate parent overriden function
+            super.z(); // call immediate parent overridden function
         }
     }
 }
@@ -807,7 +807,7 @@ someContractAddress.callcode('function_name');
 // else should be placed on own line
 
 
-// 14. NATSPEC COMENTS
+// 14. NATSPEC COMMENTS
 // used for documentation, commenting, and external UIs
 
 // Contract natspec - always above contract definition

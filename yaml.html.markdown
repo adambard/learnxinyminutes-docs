@@ -27,7 +27,7 @@ another_key: Another value goes here.
 a_number_value: 100
 scientific_notation: 1e+12
 # The number 1 will be interpreted as a number, not a boolean. if you want
-# it to be intepreted as a boolean, use true
+# it to be interpreted as a boolean, use true
 boolean: true
 null_value: null
 key with spaces: value
@@ -132,7 +132,7 @@ python_complex_number: !!python/complex 1+2j
 # We can also use yaml complex keys with language specific tags
 ? !!python/tuple [5, 7]
 : Fifty Seven
-# Would be {(5, 7): 'Fifty Seven'} in python
+# Would be {(5, 7): 'Fifty Seven'} in Python
 
 ####################
 # EXTRA YAML TYPES #

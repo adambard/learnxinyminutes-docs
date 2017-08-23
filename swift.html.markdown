@@ -281,7 +281,7 @@ testGuard()
 
 // Variadic Args
 func setup(numbers: Int...) {
-    // its an array
+    // it's an array
     let _ = numbers[0]
     let _ = numbers.count
 }

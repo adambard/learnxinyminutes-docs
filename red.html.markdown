@@ -51,7 +51,7 @@ comment {
 ; no need to restrict this to a 'main' function.
 
 ; Valid variable names start with a letter and can contain numbers,
-; variables containing only capital A thru F and numbers and ending with 'h'
+; variables containing only capital A through F and numbers and ending with 'h'
 ; are forbidden, because that is how hexadecimal numbers are expressed in Red
 ; and Red/System.
 

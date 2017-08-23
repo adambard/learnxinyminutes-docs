@@ -20,7 +20,7 @@ Nodes
 It's an empty *node*, to indicate that there is a *node*, but it's not relevant for the query.
 
 ```(n)```
-It's a *node* refered by the variable **n**, reusable in the query. It begins with lowercase and uses camelCase.
+It's a *node* referred by the variable **n**, reusable in the query. It begins with lowercase and uses camelCase.
 
 ```(p:Person)```
 You can add a *label* to your node, here **Person**. It's like a type / a class / a category. It begins with uppercase and uses camelCase.
@@ -53,7 +53,7 @@ Relationships (or Edges)
 It's a *relationship* with the *label* **KNOWS**. It's a *label* as the node's label. It begins with uppercase and use UPPER_SNAKE_CASE.
 
 ```[k:KNOWS]```
-The same *relationship*, refered by the variable **k**, reusable in the query, but it's not necessary.
+The same *relationship*, referred by the variable **k**, reusable in the query, but it's not necessary.
 
 ```[k:KNOWS {since:2017}]```
 The same *relationship*, with *properties* (like *node*), here **since**.
@@ -244,6 +244,6 @@ Special hints
 ---
 
 - There is just single-line comments in Cypher, with double-slash : // Comments
-- You can execute a Cypher script stored in a **.cql** file directly in Neo4j (it's an import). However, you can't have multiple statements in this file (separed by **;**).
+- You can execute a Cypher script stored in a **.cql** file directly in Neo4j (it's an import). However, you can't have multiple statements in this file (separated by **;**).
 - Use the Neo4j shell to write Cypher, it's really awesome.
 - The Cypher will be the standard query language for all graph databases (known as **OpenCypher**).

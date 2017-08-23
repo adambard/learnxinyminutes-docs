@@ -122,9 +122,9 @@ echo 'Multiple', 'Parameters', 'Valid';  // Returns 'MultipleParametersValid'
 // followed by any number of letters, numbers, or underscores.
 define("FOO", "something");
 
-// access to a constant is possible by calling the choosen name without a $
+// access to a constant is possible by calling the chosen name without a $
 echo FOO; // Returns 'something'
-echo 'This outputs ' . FOO;  // Returns 'This ouputs something'
+echo 'This outputs ' . FOO;  // Returns 'This outputs something'
 
 
 
@@ -837,7 +837,7 @@ try {
     // Handle exception
 }
 
-// When using try catch blocks in a namespaced enviroment use the following
+// When using try catch blocks in a namespaced environment use the following
 
 try {
     // Do something
@@ -854,7 +854,7 @@ try {
     $condition = true;
 
     if ($condition) {
-        throw new MyException('Something just happend');
+        throw new MyException('Something just happened');
     }
 
 } catch (MyException $e) {

@@ -104,7 +104,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 %matplotlib inline
 
-# To do data vizualization in Python, use matplotlib
+# To do data visualization in Python, use matplotlib
 
 plt.hist(pets.age);
 

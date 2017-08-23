@@ -264,7 +264,7 @@ function io_functions(    localvar) {
     # automatically for you.
 
     # You can probably guess there are other $ variables. Every line is
-    # implicitely split before every action is called, much like the shell
+    # implicitly split before every action is called, much like the shell
     # does. And, like the shell, each field can be access with a dollar sign
 
     # This will print the second and fourth fields in the line
