@@ -37,6 +37,9 @@ features are typically marked, and subject to change. Pull requests welcome.
 // simple_bank.sol (note .sol extension)
 /* **** START EXAMPLE **** */
 
+// Declare the source file compiler version.
+pragma solidity ^0.4.2;
+
 // Start with Natspec comment (the three slashes)
 // used for documentation - and as descriptive data for UI elements/actions
 
