@@ -2,11 +2,13 @@
 name: perl
 category: language
 language: perl
-filename: learnperl.pl
 contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]
+    - ["Dan Book", "http://github.com/Grinnz"]
+translators:
     - ["Michał Kupczyński", "http://github.com/ukoms"]
 lang: pl-pl
+filename: learnperl-pl.pl
 ---
 
 Perl 5 jest wysoce użytecznym, bogatym w wiele opcji językiem programowania
