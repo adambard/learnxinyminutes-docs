@@ -276,7 +276,7 @@ i    // Montre la valeur de i. Notez que while est une boucle au sens classique.
 i = 0
 // La boucle do while
 do {
-  println("x is still less then 10");
+  println("x is still less than 10");
   i += 1
 } while (i < 10)
 

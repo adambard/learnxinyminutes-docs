@@ -76,7 +76,7 @@ let myDrink = drinks[2]
 # static typing powerful and useful.
 
 type
-  Name = string # A type alias gives you a new type that is interchangable
+  Name = string # A type alias gives you a new type that is interchangeable
   Age = int     # with the old type but is more descriptive.
   Person = tuple[name: Name, age: Age] # Define data structures too.
   AnotherSyntax = tuple
@@ -109,7 +109,7 @@ when compileBadCode:
 
 type
   Color = enum cRed, cBlue, cGreen
-  Direction = enum # Alternative formating
+  Direction = enum # Alternative formatting
     dNorth
     dWest
     dEast

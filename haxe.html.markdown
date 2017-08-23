@@ -466,7 +466,7 @@ class LearnHaxe3{
            The untyped keyword operates on entire *blocks* of code, skipping
            any type checks that might be otherwise required. This keyword should
            be used very sparingly, such as in limited conditionally-compiled
-           situations where type checking is a hinderance.
+           situations where type checking is a hindrance.
 
            In general, skipping type checks is *not* recommended.  Use the
            enum, inheritance, or structural type models in order to help ensure

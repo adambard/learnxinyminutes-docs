@@ -336,10 +336,10 @@ int main (int argc, char** argv)
         goto error;
   }
   error :
-  printf("Error occured at i = %d & j = %d.\n", i, j);
+  printf("Error occurred at i = %d & j = %d.\n", i, j);
   /*
   https://ideone.com/GuPhd6
-  this will print out "Error occured at i = 52 & j = 99."
+  this will print out "Error occurred at i = 52 & j = 99."
   */
 
   ///////////////////////////////////////

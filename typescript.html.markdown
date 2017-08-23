@@ -50,7 +50,7 @@ function bigHorribleAlert(): void {
 // Functions are first class citizens, support the lambda "fat arrow" syntax and
 // use type inference
 
-// The following are equivalent, the same signature will be infered by the
+// The following are equivalent, the same signature will be inferred by the
 // compiler, and same JavaScript will be emitted
 let f1 = function (i: number): number { return i * i; }
 // Return type inferred

@@ -786,7 +786,7 @@ MyClass *newVar = [classVar retain]; // If classVar is released, object is still
 // Automatic Reference Counting (ARC)
 // Because memory management can be a pain, Xcode 4.2 and iOS 4 introduced Automatic Reference Counting (ARC).
 // ARC is a compiler feature that inserts retain, release, and autorelease automatically for you, so when using ARC,
-// you must not use retain, relase, or autorelease
+// you must not use retain, release, or autorelease
 MyClass *arcMyClass = [[MyClass alloc] init];
 // ... code using arcMyClass
 // Without ARC, you will need to call: [arcMyClass release] after you're done using arcMyClass. But with ARC,

@@ -242,7 +242,7 @@ do {
 } while (j <= 10000);
 writeln(jSum);
 
-// for loops are much like those in python in that they iterate over a
+// for loops are much like those in Python in that they iterate over a
 // range. Ranges (like the 1..10 expression below) are a first-class object
 // in Chapel, and as such can be stored in variables.
 for i in 1..10 do write(i, ", ");
@@ -1064,14 +1064,14 @@ proc main() {
     }
   }
 
-// Heres an example using atomics and a sync variable to create a
+// Here's an example using atomics and a sync variable to create a
 // count-down mutex (also known as a multiplexer).
   var count: atomic int; // our counter
   var lock$: sync bool;   // the mutex lock
 
   count.write(2);       // Only let two tasks in at a time.
   lock$.writeXF(true);  // Set lock$ to full (unlocked)
-  // Note: The value doesnt actually matter, just the state
+  // Note: The value doesn't actually matter, just the state
   // (full:unlocked / empty:locked)
   // Also, writeXF() fills (F) the sync var regardless of its state (X)
 

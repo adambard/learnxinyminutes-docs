@@ -57,7 +57,7 @@ public class LearnJava {
     ///////////////////////////////////////
 
         /*
-        * Ouput
+        * Output
         */
 
         // Use System.out.println() to print lines.

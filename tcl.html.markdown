@@ -49,7 +49,7 @@ discipline of exposing all programmatic functionality as routines, including
 things like looping and mathematical operations that are usually baked into the
 syntax of other languages, allows it to fade into the background of whatever
 domain-specific functionality a project needs. Its syntax, which is even
-lighter that that of Lisp, just gets out of the way.
+lighter than that of Lisp, just gets out of the way.
 
 
 
@@ -75,7 +75,7 @@ lighter that that of Lisp, just gets out of the way.
 ## 2. Syntax
 ###############################################################################
 
-# A script is made up of commands delimited by newlines or semiclons.  Each
+# A script is made up of commands delimited by newlines or semicolons.  Each
 # command is a call to a routine.  The first word is the name of a routine to
 # call, and subsequent words are arguments to the routine.  Words are delimited
 # by whitespace.  Since each argument is a word in the command it is already a
@@ -99,7 +99,7 @@ set greeting $part1$part2[set part3]
 
 
 # An embedded script may be composed of multiple commands, the last of which provides
-# the result for the substtution:
+# the result for the substitution:
 set greeting $greeting[
     incr i
     incr i
@@ -377,7 +377,7 @@ set amount [lindex $amounts 1]
 set inventory {"item 1" item\ 2 {item 3}}
 
 
-# It's generally a better idea to use list routines when modifing lists:
+# It's generally a better idea to use list routines when modifying lists:
 lappend inventory {item 1} {item 2} {item 3}
 
 
@@ -517,7 +517,7 @@ proc while {condition script} {
 # and then calls that routine.  "yield" suspends evaluation in that stack and
 # returns control to the calling stack:
 proc countdown count {
-    # send something back to the creater of the coroutine, effectively pausing
+    # send something back to the creator of the coroutine, effectively pausing
     # this call stack for the time being.
     yield [info coroutine]
 

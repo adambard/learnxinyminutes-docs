@@ -32,7 +32,7 @@ false
 "hungarian breakfast"
 "farmer's cheesy omelette"
 
-; Characters are preceeded by backslashes
+; Characters are preceded by backslashes
 \g \r \a \c \e
 
 ; Keywords start with a colon. They behave like enums. Kind of
@@ -42,7 +42,7 @@ false
 :olives
 
 ; Symbols are used to represent identifiers. They start with #.
-; You can namespace symbols by using /. Whatever preceeds / is
+; You can namespace symbols by using /. Whatever precedes / is
 ; the namespace of the name.
 #spoon
 #kitchen/spoon ; not the same as #spoon

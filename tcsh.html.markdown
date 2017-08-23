@@ -592,7 +592,7 @@ while ( $#lst )
 	shift lst
 end
 echo 'options =' $options
-echo 'paramaters =' $params
+echo 'parameters =' $params
 
 #### REPEAT
 # Syntax: repeat count command

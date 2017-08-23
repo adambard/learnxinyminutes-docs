@@ -235,12 +235,12 @@ sqr                        ;; => #<procedure (sqr x)>
 (= 2 1)                    ;; => #f
 
 ;; 'eq?' returns #t if two arguments refer to the same object in memory
-;; In other words, it's a simple pointer comparision.
+;; In other words, it's a simple pointer comparison.
 (eq? '() '())              ;; => #t ;; there's only one empty list in memory
 (eq? (list 3) (list 3))    ;; => #f ;; not the same object
 (eq? 'yes 'yes)            ;; => #t
 (eq? 3 3)                  ;; => #t ;; don't do this even if it works in this case
-(eq? 3 3.0)                ;; => #f ;; it's better to use '=' for number comparisions
+(eq? 3 3.0)                ;; => #f ;; it's better to use '=' for number comparisons
 (eq? "Hello" "Hello")      ;; => #f
 
 ;; 'eqv?' is same as 'eq?' all datatypes except numbers and characters

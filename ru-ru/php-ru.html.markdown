@@ -128,7 +128,7 @@ define("FOO", "something");
 
 // Доступ к константе возможен через прямое указание её имени без знака $
 echo FOO; // печатает 'something'
-echo 'This outputs ' . FOO; // печатает 'This ouputs something'
+echo 'This outputs ' . FOO; // печатает 'This outputs something'
 
 /********************************
  * Массивы

@@ -6,7 +6,7 @@ filename: learnfortran.f95
 ---
 
 Fortran is one of the oldest computer languages. It was developed in the 1950s 
-by IBM for numeric calculations (Fortran is an abreviation of "Formula 
+by IBM for numeric calculations (Fortran is an abbreviation of "Formula 
 Translation"). Despite its age, it is still used for high-performance computing
 such as weather prediction. However, the language has changed considerably over
 the years, although mostly maintaining backwards compatibility; well known
@@ -242,7 +242,7 @@ program example   !declare a program called example.
     close(12)
 
     ! There are more features available than discussed here and alternative 
-    ! variants due to backwards compatability with older Fortran versions.  
+    ! variants due to backwards compatibility with older Fortran versions.
     
     
     ! Built-in Functions

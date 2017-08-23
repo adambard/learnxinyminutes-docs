@@ -215,7 +215,7 @@ Range.new(1, 10).class #=> Range(Int32, Int32)
 # possibly different types.
 {1, "hello", 'x'}.class #=> Tuple(Int32, String, Char)
 
-# Acces tuple's value by its index
+# Access tuple's value by its index
 tuple = {:key1, :key2}
 tuple[1] #=> :key2
 tuple[2] #=> syntax error : Index out of bound
