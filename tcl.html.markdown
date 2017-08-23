@@ -105,7 +105,7 @@ set greeting $greeting[
     incr i
     incr i
 ]
-puts $greeting ;# The output is "Salutations3" 
+puts $greeting ;# The output is "Salutations3"
 
 # Every word in a command is a string, including the name of the routine, so
 # substitutions can be used on it as well. Given this variable
@@ -422,8 +422,7 @@ eval {set name Neo}
 eval [list set greeting "Hello, $name"]
 
 
-# Therefore, when using "eval", , use "list" to build
-# up the desired command:
+# Therefore, when using "eval", use "list" to build up the desired command:
 set command {set name}
 lappend command {Archibald Sorbisol}
 eval $command
