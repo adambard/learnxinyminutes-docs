@@ -21,5 +21,31 @@ Comment */
 * Documentation comment
 */
 
+/*
+Data Types
+*/
+
+// Vala supports the data types supported by most other programming languages.
+
+char character = 'a'
+unichar unicode_character = 'u' // 32-bit unicode character
+
+int i; // ints can also have guaranteed sizes (e.g. int64, uint64)
+uint j;
+
+long k;
+
+short l;
+ushort m;
+
+
+
+/*
+Basic Syntax
+*/
+
+// Like in C#, scope is defined using braces.
+// An object or reference is only valid between braces.
+
 
 ```
