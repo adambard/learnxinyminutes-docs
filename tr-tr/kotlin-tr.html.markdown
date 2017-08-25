@@ -1,7 +1,9 @@
 ---
 language: kotlin
+filename: kotlin-tr.kt
 contributors:
-    - ["Baha Can Aydın", "https://github.com/bahacan19"]
+        - ["Baha Can Aydın", "https://github.com/bahacan19"]
+lang: tr-tr
 ---
 Kotlin, JVM, Android ve tarayıcı için statik olarak yazılmış bir programlama dilidir.
 Java %100 birlikte çalışabilir.
