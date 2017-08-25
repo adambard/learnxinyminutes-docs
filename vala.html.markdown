@@ -279,6 +279,29 @@ public class Calculator : GLib.Object {
 var calc1 = new Calculator.with_name("Temp");
 var calc2 = new Calculator.model("TI-84");
 
+// Signals (a.k.a. events or event listeners) are a way to execute multiple
+// methods with the same signature at the same time.
+
+public class SignalDemo : GLib.Object {
+  public signal void sig_demo(int sig_demo_int); // Must be public
+
+  public static int main(string[] args) {
+    // main method; program does not compile without it
+    var sig_demo_class = new SignalDemo(); // New instance of class
+
+    sig_demo_class.sig_demo.connect((ob, sig_int) => { // Lambda used as handler
+        stdout.printf("%d\n", sig_int); // "ob" is object on which it is emitted
+      });
+
+    sig_demo_class.sig_demo(27); // Signal is emitted
+
+    return 0;
+  }
+}
+
+// You may use the connect() method and attach as many handlers as you'd like.
+// They'll all run when the signal is emitted.
+
 ```
 * More Vala documentation can be found [here](https://valadoc.org/).
 * Read about building GUIs with GTK+ and Vala [here](http://archive.is/7C7bw).
