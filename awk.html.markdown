@@ -2,8 +2,8 @@
 language: awk
 filename: learnawk.awk
 contributors:
-    - ["Marshall Mason", "http://github.com/marshallmason"]
-lang: en
+     - ["Marshall Mason", "http://github.com/marshallmason"]
+
 ---
 
 AWK is a standard tool on every POSIX-compliant UNIX system. It's like a
