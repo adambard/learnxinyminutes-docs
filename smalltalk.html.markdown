@@ -1,5 +1,6 @@
 ---
 language: smalltalk
+filename: smalltalk.st
 contributors:
     - ["Jigyasa Grover", "https://github.com/jig08"]
 ---
@@ -907,7 +908,7 @@ b := String isWords.                                        true if index instan
 Object withAllSubclasses size.                              "get total number of class entries"
 ```
 
-## Debuging:
+## Debugging:
 ```
 | a b x |
 x yourself.                                                 "returns receiver"

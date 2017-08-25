@@ -36,7 +36,7 @@ $ haml input_file.haml output_file.html
   To write a multi line comment, indent your commented code to be
   wrapped by the forward slash
 
--# This is a silent comment, which means it wont be rendered into the doc at all
+-# This is a silent comment, which means it won't be rendered into the doc at all
 
 
 / -------------------------------------------

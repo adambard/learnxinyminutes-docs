@@ -192,7 +192,7 @@ class(-Inf)	# "numeric"
 2.0 * 2L  # 4       # numeric times integer gives numeric
 3L / 4    # 0.75    # integer over numeric gives numeric
 3 %% 2	  # 1       # the remainder of two numerics is another numeric
-# Illegal arithmetic yeilds you a "not-a-number":
+# Illegal arithmetic yields you a "not-a-number":
 0 / 0 # NaN
 class(NaN) # "numeric"
 # You can do arithmetic on two vectors with length greater than 1,
@@ -662,7 +662,7 @@ require(plyr)
 #########################
 
 # "pets.csv" is a file on the internet
-# (but it could just as easily be be a file on your own computer)
+# (but it could just as easily be a file on your own computer)
 pets <- read.csv("http://learnxinyminutes.com/docs/pets.csv")
 pets
 head(pets, 2) # first two rows

@@ -1,6 +1,6 @@
 ---
 language: xml
-filename: learnxml.xml
+filename: learnxml-es.xml
 contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
 translators:

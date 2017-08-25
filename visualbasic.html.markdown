@@ -12,7 +12,7 @@ Module Module1
         'A Quick Overview of Visual Basic Console Applications before we dive
         'in to the deep end.
         'Apostrophe starts comments.
-        'To Navigate this tutorial within the Visual Basic Complier, I've put
+        'To Navigate this tutorial within the Visual Basic Compiler, I've put
         'together a navigation system.
         'This navigation system is explained however as we go deeper into this
         'tutorial, you'll understand what it all means.

@@ -1,12 +1,13 @@
 ---
 language: swift
+filename: learnswift-pt.swift
 contributors:
     - ["Grant Timmerman", "http://github.com/grant"]
     - ["Christopher Bess", "http://github.com/cbess"]
 translators:
     - ["Mariane Siqueira Machado", "https://twitter.com/mariane_sm"]
 lang: pt-br
-filename: learnswift.swift
+
 ---
 
 Swift é uma linguagem de programação para desenvolvimento de aplicações no iOS e OS X criada pela Apple. Criada para

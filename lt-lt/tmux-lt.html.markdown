@@ -1,12 +1,13 @@
 ---
 category: tool
 tool: tmux
-filename: tmux.json
-lang: lt-lt
+filename: tmux-lt.json
 contributors:
     - ["mdln", "https://github.com/mdln"]
 translators:
     - ["Zygimantus", "https://github.com/zygimantus"]
+lang: lt-lt
+
 ---
 
 

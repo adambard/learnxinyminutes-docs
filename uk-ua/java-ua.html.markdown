@@ -1,5 +1,6 @@
 ---
 language: java
+filename: LearnJava-ua.java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Jakukyo Friel", "http://weakish.github.io"]
@@ -11,8 +12,8 @@ contributors:
 translators:
     - ["Oleksandr Tatarchuk", "https://github.com/tatarchuk"]
     - ["Andre Polykanine", "https://github.com/Oire"]
-filename: LearnJavaUa.java
 lang: uk-ua
+
 ---
 
 Java є об’єктно-орієнтованою мовою програмування загального призначення з підтримкою паралельного програмування, яка базується на класах.

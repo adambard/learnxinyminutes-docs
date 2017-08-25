@@ -8,7 +8,7 @@ contributors:
     - ["Connor Waters", "http://github.com/connorwaters"]
     - ["Ankush Goyal", "http://github.com/ankushg07"]
     - ["Jatin Dhankhar", "https://github.com/jatindhankhar"]
-lang: en
+
 ---
 
 C++ is a systems programming language that,

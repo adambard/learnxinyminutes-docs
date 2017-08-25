@@ -286,7 +286,7 @@ leftmostElement tree =
 -- Put this at the top of the file. If omitted, you're in Main.
 module Name where
 
--- By default, everything is exported. You can specify exports explicity.
+-- By default, everything is exported. You can specify exports explicitly.
 module Name (MyType, myValue) where
 
 -- One common pattern is to export a union type but not its tags. This is known

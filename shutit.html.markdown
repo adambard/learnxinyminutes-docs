@@ -10,7 +10,7 @@ filename: learnshutit.html
 
 ShutIt is an shell automation framework designed to be easy to use.
 
-It is a wrapper around a python-based expect clone (pexpect).
+It is a wrapper around a Python-based expect clone (pexpect).
 
 You can look at it as 'expect without the pain'.
 
@@ -167,8 +167,8 @@ session2.logout()
 Here you use the 'send\_and\_get\_output' method to retrieve the output of the
 capacity command (df).
 
-There are much more elegant ways to do the above (eg have a dictionary of the
-servers to iterate over), but it's up to you how clever you need the python to
+There are much more elegant ways to do the above (e.g. have a dictionary of the
+servers to iterate over), but it's up to you how clever you need the Python to
 be.
 
 
@@ -300,7 +300,7 @@ over a minute to complete (using the 'wait' method).
 
 Again, this is trivial, but imagine you have hundreds of servers to manage like
 this and you can see the power it can bring in a few lines of code and one
-python import.
+Python import.
 
 
 ## Learn More

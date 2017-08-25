@@ -1,12 +1,13 @@
 ---
-language: c#
+language: C#(C Sharp)
+filename: LearnCSharp-es.cs
 contributors:
     - ["Irfan Charania", "https://github.com/irfancharania"]
     - ["Max Yankov", "https://github.com/golergka"]
 translators:
     - ["Olfran Jiménez", "https://twitter.com/neslux"]	
-filename: LearnCSharp-es.cs
 lang: es-es
+
 ---
 
 C# es un lenguaje orientado a objetos elegante y de tipado seguro que

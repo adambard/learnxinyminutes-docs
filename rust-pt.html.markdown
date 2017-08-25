@@ -3,8 +3,8 @@ language: rust
 filename: rust-pt.rs
 contributors:
     - ["Paulo Henrique Rodrigues Pinheiro", "https://about.me/paulohrpinheiro"]
-filename: learnrust.rs
 lang: pt-br
+
 ---
 
 Rust é uma linguagem de programação desenvolvida pelo Mozilla Research. Rust
