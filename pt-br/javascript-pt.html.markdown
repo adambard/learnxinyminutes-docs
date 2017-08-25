@@ -1,5 +1,6 @@
 ---
 language: javascript
+filename: javascript-pt.js
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
