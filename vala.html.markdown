@@ -353,6 +353,34 @@ class SubDemo : SuperDemo {
   }
 }
 
+// Abstract Classes and Methods
+
+public abstract class OperatingSystem : GLib.Object {
+  public void turn_on() {
+    stdout.printf("Booted successfully.\n");
+  }
+  public abstract void use_computer();
+}
+
+public class Ubuntu : OperatingSystem {
+  public override void use_computer() { // Abstract methods must be overridden
+    stdout.printf("Beep boop\n");
+  }
+}
+
+// Add default behavior to an abstract method by making it "virtual".
+
+public abstract class HardDrive : GLib.Object {
+  public virtual void die() {
+    stdout.printf("CLICK-CLICK-CLICK\n");
+  }
+}
+public class MyHD : HardDrive {
+  public override void die() {
+    return;
+  }
+}
+
 ```
 * More Vala documentation can be found [here](https://valadoc.org/).
 * Read about building GUIs with GTK+ and Vala [here](http://archive.is/7C7bw).
