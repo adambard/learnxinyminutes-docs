@@ -251,6 +251,25 @@ interface InterfaceDemo { // Can be used as a mixin
   // ...
 }
 
+// Since method overloading isn't possible, you can use named constructors
+// to get the same functionality.
+
+public class Calculator : GLib.Object {
+
+    public Calculator() {
+    }
+
+    public Calculator.with_name(string name) {
+    }
+
+    public Calculator.model(string model_id, string name = "") {
+      this.with_name(@"$model_id $name"); // Chained constructors with "this"
+    }
+    ~Calculator() { } // Only needed if you're using manual memory management
+}
+
+var calc1 = new Calculator.with_name("Temp");
+var calc2 = new Calculator.model("TI-84");
 
 enum HouseSize {
   SMALL,
