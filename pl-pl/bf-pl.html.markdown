@@ -1,13 +1,14 @@
 ---
 category: language
 language: bf
+filename: learnbf-pl.bf
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Jakub Młokosiewicz", "https://github.com/hckr"]
 lang: pl-pl
-filename: bf-pl.html
+
 ---
 
 Brainfuck (pisane małymi literami, za wyjątkiem początku zdania) jest bardzo 
