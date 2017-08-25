@@ -1,5 +1,6 @@
 ---
 language: python3
+filename: learnpython3-vi.py
 contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
     - ["Steven Basart", "http://github.com/xksteven"]
@@ -8,8 +9,8 @@ contributors:
     - ["evuez", "http://github.com/evuez"]
 translators:
     - ["Xuan (Sean) Luong, https://github.com/xuanluong"]
-filename: learnpython3.py
 lang: vi-vn
+
 ---
 
 Python được tạo ra bởi Guido van Rossum vào đầu những năm 90s. Ngày nay nó là một trong những ngôn ngữ phổ biến
