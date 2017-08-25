@@ -279,5 +279,5 @@ var calc1 = new Calculator.with_name("Temp");
 var calc2 = new Calculator.model("TI-84");
 
 ```
-
+* More Vala documentation can be found [here](https://valadoc.org/).
 * Read about building GUIs with GTK+ and Vala [here](http://archive.is/7C7bw).
