@@ -240,7 +240,7 @@ enum HouseSize { // An example of an enum
 
 class Message : GLib.Object { // Class Message extends GLib's Object
   private string sender; // a private field
-  public string text {get; set;} // a public property
+  public string text {get; set;} // a public property (more on that later)
   protected bool is_digital = true; // protected (this class and subclasses)
   internal bool sent = false; // internal (classes in same package)
 
@@ -301,6 +301,24 @@ public class SignalDemo : GLib.Object {
 
 // You may use the connect() method and attach as many handlers as you'd like.
 // They'll all run when the signal is emitted.
+
+// Properties (getters and setters)
+
+class Animal : GLib.Object {
+  private int _legs; // prefixed with underscore to prevents name clashes
+
+  public int legs {
+    get { return _legs; }
+    set { _legs = value; }
+  }
+
+  public int eyes { get; set; default = 5; } // Shorter way
+}
+
+rabbit = new Animal();
+rabbit.legs = 2;
+rabbit.legs += 2;
+rabbit.eyes = 2;
 
 ```
 * More Vala documentation can be found [here](https://valadoc.org/).
