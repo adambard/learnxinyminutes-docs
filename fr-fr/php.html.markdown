@@ -1,5 +1,6 @@
 ---
 language: PHP
+filename: php-fr.php
 contributors:
     - ["Malcolm Fell", "http://emarref.net/"]
     - ["Trismegiste", "https://github.com/Trismegiste"]
