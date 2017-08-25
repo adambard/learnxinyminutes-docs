@@ -255,7 +255,7 @@ sqr                        ;; => #<procedure (sqr x)>
 (equal? '(1 2 3) '(1 2 3)) ;; => #t
 (equal? #(a b c) #(a b c)) ;; => #t
 (equal? 'a 'a)             ;; => #t
-(equal? "abc" "abc")       ;; => #f
+(equal? "abc" "abc")       ;; => #t
 
 ;; In Summary:
 ;; eq? tests if objects are identical
