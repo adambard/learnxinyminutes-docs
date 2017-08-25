@@ -1,5 +1,6 @@
 ---
 language: "Standard ML"
+filename: standardml.sml
 contributors:
     - ["Simon Shine", "http://shine.eu.org/"]
     - ["David Pedersen", "http://lonelyproton.com/"]
