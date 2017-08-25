@@ -1,7 +1,7 @@
 ---
 language: Groovy
 category: language
-filename: learngroovy.groovy
+filename: learngroovy-pt.groovy
 contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
 translators:
