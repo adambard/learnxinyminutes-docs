@@ -1,5 +1,6 @@
 ---
 language: smalltalk
+filename: smalltalk.st
 contributors:
     - ["Jigyasa Grover", "https://github.com/jig08"]
 ---
