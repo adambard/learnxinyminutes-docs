@@ -1,8 +1,8 @@
 ---
 language: prolog
+filename: learnprolog.pl
 contributors:
     - ["hyphz", "http://github.com/hyphz/"]
-filename: learnprolog.pl
 ---
 
 Prolog is a logic programming language first specified in 1972, and refined into multiple modern implementations.
