@@ -1,6 +1,6 @@
 ---
 language: java
-filename: LearnJavaDe.java
+filename: LearnJavaDe-de.java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Jakukyo Friel", "http://weakish.github.io"]
