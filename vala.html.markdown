@@ -141,20 +141,7 @@ switch (a) {
     break;
 } // switch statement
 
-/* Reference Types */
-
-// Reference types are classes.
-
-class Message : GLib.Object { // Class Message extends GLib's Object
-  public string sender; // a public field
-  public string text {get; set;} // a public property
-  private bool sent = false; // private field
-  public void send(string message_sender) { // public method
-    sender = message_sender;
-    sent = true;
-  }
-
-}
+/* Type Casting and Inference */
 
 int cast_to_float = 10;
 float casted_float = (float) cast_to_float; // static casting; no runtime checks
@@ -217,10 +204,53 @@ void final_delegate_demo() {
 
 (a) => { stdout.printf("%d\n", a); } // Prints "a"
 
+/* Namespaces */
+
+namespace NamespaceDemo {
+  // Allows you to organize variable names
+  int namespace_int = 12;
+}
+namespace_int += 5; // Won't compile
+
+using NamespaceDemo;
+namespace_int += 5; // Valid
+
+/* Structs */
+
 struct Closet {
-  public uint shirts;
+  public uint shirts; // Default access modifier is private
   public uint jackets;
 }
+
+Closet struct_init_1 = Closet(); // or Closet struct_init_1 = {};
+Closet struct_init_2 = {15, 3};
+var struct_init_3 = Closet() { // Type inference also works
+  shirts = 15;
+  jackets = 3;
+}
+
+/* Classes and Object-Oriented Programming */
+
+class Message : GLib.Object { // Class Message extends GLib's Object
+  private string sender; // a private field
+  public string text {get; set;} // a public property
+  internal bool sent = false; // internal (classes in same package) field
+
+  public void send(string message_sender) { // public method
+    sender = message_sender;
+    sent = true;
+  }
+
+  public Message() { // Constructor
+    // ...
+  }
+
+}
+
+interface InterfaceDemo { // Can be used as a mixin
+  // ...
+}
+
 
 enum HouseSize {
   SMALL,
