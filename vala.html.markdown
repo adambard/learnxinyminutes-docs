@@ -67,6 +67,8 @@ stderr.printf("Error message"); // Error printing
 /* Arrays */
 
 int[] int_array = new int[10]; // Array of ints with 10 slots
+int_array.length; // => 10;
+
 int[] int_array2 = {5, 10, 15, 20}; // Can be created on-the-fly
 
 int[] array_slice = int_array2[1:3]; // Slice (copy of data)
@@ -79,6 +81,14 @@ int[,] multi_array2 = {{7, 4, 6, 4},
                        {3, 2, 4, 6},
                        {5, 9, 5, 1}};
 multi_array2[2,3] = 12; // 2 is the array, 3 is the index in the array
+int first_d = multi_array2.length[0] // => 3
+int second_d = multi_array2.length[1] // => 4
+
+// Stacked arrays (e.g. int[][]) where array lengths vary are not supported.
+
+// Multi-dimensional arrays cannot be sliced, nor can they be converted to one-
+// dimensional.
+
 
 struct Closet {
   public uint shirts;
