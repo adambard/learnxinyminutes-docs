@@ -1,5 +1,5 @@
 ---
-language: c#
+language: C#(C Sharp)
 filename: LearnCSharp-es.cs
 contributors:
     - ["Irfan Charania", "https://github.com/irfancharania"]
