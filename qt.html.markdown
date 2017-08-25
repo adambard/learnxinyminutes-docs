@@ -5,7 +5,7 @@ language: c++
 filename: learnqt.cpp
 contributors:
     - ["Aleksey Kholovchuk", "https://github.com/vortexxx192"]
-lang: en
+    
 ---
 
 **Qt** is a widely-known framework for developing cross-platform software that can be run on various software and hardware platforms with little or no change in the code, while having the power and speed of native applications. Though **Qt** was originally written in *C++*, there are its ports to other languages: *[PyQt](https://learnxinyminutes.com/docs/pyqt/)*, *QtRuby*, *PHP-Qt*, etc.
