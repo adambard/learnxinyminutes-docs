@@ -1,6 +1,6 @@
 ---
 language: bf
-filename: bf-fa-ir.bf
+filename: bf-fa.bf
 contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
 lang: fa-ir
