@@ -149,7 +149,8 @@ class Message : GLib.Object { // Class Message extends GLib's Object
   public string sender; // a public field
   public string text {get; set;} // a public property
   private bool sent = false; // private field
-  public void send() { // public method
+  public void send(string message_sender) { // public method
+    sender = message_sender;
     sent = true;
   }
 
@@ -167,6 +168,54 @@ float casted_float = (float) cast_to_float; // static casting; no runtime checks
 float dyna_casted_float = cast_to_float as float // Won't compile
 
 var inferred_string = "hello"; // Type inference
+
+/* Methods (a.k.a. functions) */
+
+// Vala methods are C functions, and are bound by the same rules.
+
+int method_demo(string arg1, Object arg2) { // Returns int and takes args
+    return 1;
+}
+
+// Vala methods cannot be overloaded.
+
+void some_method(string text) { }
+void some_method(int number) { }  // Won't compile
+
+// To achieve similar functionality, use default argument values.
+
+void some_better_method(string text, int number = 0) { }
+
+// varargs (variable-length argument lists) are also supported.
+
+void method_with_varargs(int arg1, ...) {
+    var varargs_list = va_list(); // gets the varargs list
+    string arg_string = varargs_list.arg(); // gets arguments, one after another
+    int int_vararg = varargs_list.arg();
+    stdout.printf("%s, %d\n", arg_string, int_vararg)
+}
+
+string? ok_to_be_null(int? test_int) { } // "?" denotes possible null value
+
+// Delegates
+
+delegate void DelegateDemo(char char_a);
+
+void delegate_match(char char_a) { // Matches the delegate's signature
+  stdout.printf("%d\n");
+}
+
+void call_delegate(DelegateDemo d, char char_b) { // Takes a delegate arg
+  d(char_b) // calls delegate
+}
+
+void final_delegate_demo() {
+  call_delegate(delegate_match); // Passes matching method as argument
+}
+
+// Lambdas/Anonymous Methods are defined with "=>"
+
+(a) => { stdout.printf("%d\n", a); } // Prints "a"
 
 struct Closet {
   public uint shirts;
