@@ -244,8 +244,8 @@ class Message : GLib.Object { // Class Message extends GLib's Object
   protected bool is_digital = true; // protected (this class and subclasses)
   internal bool sent = false; // internal (classes in same package)
 
-  public void send(string message_sender) { // public method
-    sender = message_sender;
+  public void send(string sender) { // public method
+    this.sender = sender;
     sent = true;
   }
 
@@ -331,6 +331,25 @@ class Animal : GLib.Object {
     rabbit.legs += 2;
     rabbit.eyes = 2;
 
+  }
+}
+
+// Inheritance: Vala classes may inherit 1 class. Inheritance is not implicit.
+
+class SuperDemo : GLib.Object {
+  public int data1;
+  protected int data2;
+  internal int data3;
+  private int data4;
+
+  public static void test_method {  } // Statics can be called w/out an object
+}
+class SubDemo : SuperDemo {
+  public static void main(string args[]) {
+    stdout.printf((string) data1); // Will compile
+    stdout.printf((string) data2); // Protected can be accessed by subclasses
+    stdout.printf((string) data3); // Internal is accessible to package
+    stdout.printf((string) data4); // Won't compile
   }
 }
 
