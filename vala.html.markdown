@@ -313,12 +313,26 @@ class Animal : GLib.Object {
   }
 
   public int eyes { get; set; default = 5; } // Shorter way
-}
+  public int kingdom { get; private set; default = "Animalia"} // Read-only
 
-rabbit = new Animal();
-rabbit.legs = 2;
-rabbit.legs += 2;
-rabbit.eyes = 2;
+  public static void main(string args[]) {
+    rabbit = new Animal();
+
+    // All GLib.Objects have a signal "notify" emitted when a property changes.
+
+    // If you specify a specific property, replace all underscores with dashes
+    // to conform with the GObject naming convention.
+
+    rabbit.notify["eyes"].connect((s, p) => { // Remove the ["eyes"] for all
+      stdout.printf("Property '%s' has changed!\n", p.name);
+    });
+
+    rabbit.legs = 2;
+    rabbit.legs += 2;
+    rabbit.eyes = 2;
+
+  }
+}
 
 ```
 * More Vala documentation can be found [here](https://valadoc.org/).
