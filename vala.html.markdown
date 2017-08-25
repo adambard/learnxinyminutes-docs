@@ -7,7 +7,7 @@ filename: LearnVala.vala
 
 In GNOME's own words, "Vala is a programming language that aims to bring modern programming language features to GNOME developers without imposing any additional runtime requirements and without using a different ABI compared to applications and libraries written in C."
 
-Vala has aspects of Java and C#, so it'll be natural to those who know either or.
+Vala has aspects of Java and C#, so it'll be natural to those who know either.
 
 [Read more here.](https://wiki.gnome.org/Projects/Vala)
 
@@ -24,8 +24,6 @@ Comment */
 
 /* Data Types */
 
-// Vala supports the data types supported by most other programming languages.
-
 char character = 'a'
 unichar unicode_character = 'u' // 32-bit unicode character
 
@@ -40,10 +38,10 @@ ushort m;
 string text = "Hello,"; // Note that the == operator will check string content
 
 string verbatim = """This is a verbatim (a.k.a. raw) string. Special characters
-(e.g. \n) are not interpreted. They may also be multiple lines long.""";
+(e.g. \n and "") are not interpreted. They may also be multiple lines long.""";
 
 // String Templates allow for easy string formatting
-string string_template = @"$text world"; // "$text" evaluates to "Hello"
+string string_template = @"$text world"; // "$text" evaluates to "Hello,"
 
 int test = 5;
 int test2 = 10;
@@ -54,8 +52,8 @@ string template_slice = string_template[7:12]; // => "world"
 // Most data types have methods for parsing.
 
 bool parse_bool = bool.parse("false"); // => false
-int parse_int = int.parse("-52");
-string parse_string = parse_int.to_string();
+int parse_int = int.parse("-52"); // => -52
+string parse_string = parse_int.to_string(); // => "-52"
 
 /* Basic I/O */
 
@@ -67,7 +65,7 @@ stderr.printf("Error message"); // Error printing
 /* Arrays */
 
 int[] int_array = new int[10]; // Array of ints with 10 slots
-int better_int_array[10]; // Shorter way of making int array with 10 slots
+int better_int_array[10]; // Above expression, shortened
 int_array.length; // => 10;
 
 int[] int_array2 = {5, 10, 15, 20}; // Can be created on-the-fly
@@ -80,7 +78,7 @@ unowned int[] array_slice_ref = int_array2[1:3]; // Reference to data
 int[,] multi_array = new int[6,4]; // 6 is the number of arrays, 4 is their size
 int[,] multi_array2 = {{7, 4, 6, 4},
                        {3, 2, 4, 6},
-                       {5, 9, 5, 1}};
+                       {5, 9, 5, 1}}; // new int[3,4]
 multi_array2[2,3] = 12; // 2 is the array, 3 is the index in the array
 int first_d = multi_array2.length[0] // => 3
 int second_d = multi_array2.length[1] // => 4
@@ -97,12 +95,12 @@ add_to_array.resize(20); // Array now has 20 slots
 
 uint8[] chars = "test message".data;
 chars.move(5, 0, 7);
-print ((string) chars); // Casts the array to a string and prints "message"
+stdout.printf((string) chars); // Casts the array to a string and prints it
 
 /* Control Flow */
 
-var a = 1;
-var b = 2;
+int a = 1;
+int b = 2;
 int[] foreach_demo = {2, 4, 6, 8};
 
 while (b > a) { // While loop; checks if expression is true before executing
@@ -147,7 +145,7 @@ int cast_to_float = 10;
 float casted_float = (float) cast_to_float; // static casting; no runtime checks
 
 // For runtime checks, use dynamic casting.
-// Dynamically casted objects must meet the following:
+// Dynamically casted objects must be the following:
 // - Object's class is the same class as the desired type
 // - Object's class is a subclass of the desired type
 // - Desired class is an interface implemented by the object's class
@@ -157,8 +155,6 @@ float dyna_casted_float = cast_to_float as float // Won't compile
 var inferred_string = "hello"; // Type inference
 
 /* Methods (a.k.a. functions) */
-
-// Vala methods are C functions, and are bound by the same rules.
 
 int method_demo(string arg1, Object arg2) { // Returns int and takes args
     return 1;
@@ -173,12 +169,17 @@ void some_method(int number) { }  // Won't compile
 
 void some_better_method(string text, int number = 0) { }
 
+some_better_method("text");
+some_better_method("text", 12);
+
 // varargs (variable-length argument lists) are also supported.
 
 void method_with_varargs(int arg1, ...) {
     var varargs_list = va_list(); // gets the varargs list
+
     string arg_string = varargs_list.arg(); // gets arguments, one after another
     int int_vararg = varargs_list.arg();
+
     stdout.printf("%s, %d\n", arg_string, int_vararg)
 }
 
@@ -200,7 +201,7 @@ void final_delegate_demo() {
   call_delegate(delegate_match); // Passes matching method as argument
 }
 
-// Lambdas/Anonymous Methods are defined with "=>"
+// Lambdas (a.k.a. Anonymous Methods) are defined with "=>"
 
 (a) => { stdout.printf("%d\n", a); } // Prints "a"
 
@@ -235,13 +236,13 @@ enum HouseSize { // An example of an enum
   BIG
 }
 
-
 /* Classes and Object-Oriented Programming */
 
 class Message : GLib.Object { // Class Message extends GLib's Object
   private string sender; // a private field
   public string text {get; set;} // a public property
-  internal bool sent = false; // internal (classes in same package) field
+  protected bool is_digital = true; // protected (this class and subclasses)
+  internal bool sent = false; // internal (classes in same package)
 
   public void send(string message_sender) { // public method
     sender = message_sender;
