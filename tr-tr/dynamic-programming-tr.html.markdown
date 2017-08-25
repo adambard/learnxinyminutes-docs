@@ -1,5 +1,6 @@
 ---
 language: Dynamic Programming
+filename: dynamic-tr.txt
 contributors:
     - ["Akashdeep Goel", "https://github.com/akashdeepgoel"]
 translators:
