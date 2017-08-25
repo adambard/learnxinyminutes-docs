@@ -215,7 +215,7 @@ namespace_int += 5; // Won't compile
 using NamespaceDemo;
 namespace_int += 5; // Valid
 
-/* Structs */
+/* Structs and Enums */
 
 struct Closet {
   public uint shirts; // Default access modifier is private
@@ -228,6 +228,13 @@ var struct_init_3 = Closet() { // Type inference also works
   shirts = 15;
   jackets = 3;
 }
+
+enum HouseSize { // An example of an enum
+  SMALL,
+  MODERATE,
+  BIG
+}
+
 
 /* Classes and Object-Oriented Programming */
 
@@ -270,12 +277,6 @@ public class Calculator : GLib.Object {
 
 var calc1 = new Calculator.with_name("Temp");
 var calc2 = new Calculator.model("TI-84");
-
-enum HouseSize {
-  SMALL,
-  MODERATE,
-  BIG
-}
 
 ```
 
