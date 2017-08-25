@@ -1,5 +1,6 @@
 ---
 language: Haskell
+filename: learnhaskell.hs
 contributors:
     - ["Adit Bhargava", "http://adit.io"]
 ---
