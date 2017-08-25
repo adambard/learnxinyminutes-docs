@@ -7,7 +7,7 @@ filename: LearnVala.vala
 
 In GNOME's own words, "Vala is a programming language that aims to bring modern programming language features to GNOME developers without imposing any additional runtime requirements and without using a different ABI compared to applications and libraries written in C."
 
-Vala has aspects of Java and C#, so it'll be familiar to those who know either or.
+Vala has aspects of Java and C#, so it'll be natural to those who know either or.
 
 [Read more here.](https://wiki.gnome.org/Projects/Vala)
 
@@ -67,6 +67,7 @@ stderr.printf("Error message"); // Error printing
 /* Arrays */
 
 int[] int_array = new int[10]; // Array of ints with 10 slots
+int better_int_array[10]; // Shorter way of making int array with 10 slots
 int_array.length; // => 10;
 
 int[] int_array2 = {5, 10, 15, 20}; // Can be created on-the-fly
@@ -89,6 +90,14 @@ int second_d = multi_array2.length[1] // => 4
 // Multi-dimensional arrays cannot be sliced, nor can they be converted to one-
 // dimensional.
 
+int[] add_to_array = {};
+add_to_array += 12; // Arrays can be dynamically added to
+
+add_to_array.resize(20); // Array now has 20 slots
+
+uint8[] chars = "test message".data;
+chars.move(5, 0, 7);
+print ((string) chars); // Casts the array to a string and prints "message"
 
 struct Closet {
   public uint shirts;
@@ -102,3 +111,5 @@ enum HouseSize {
 }
 
 ```
+
+* Read about building GUIs with GTK+ and Vala [here](http://archive.is/7C7bw).
