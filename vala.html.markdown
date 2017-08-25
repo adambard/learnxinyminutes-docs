@@ -99,6 +99,75 @@ uint8[] chars = "test message".data;
 chars.move(5, 0, 7);
 print ((string) chars); // Casts the array to a string and prints "message"
 
+/* Control Flow */
+
+var a = 1;
+var b = 2;
+int[] foreach_demo = {2, 4, 6, 8};
+
+while (b > a) { // While loop; checks if expression is true before executing
+  b--;
+}
+
+do {
+  b--;
+}
+while (b > a); // Do While loop; executes the code in "do" before while (b > a)
+
+for (a = 0; a < 10; a++) { stdout.printf("%d\n", a); } // for loop
+
+foreach (int foreach_demo_var in foreach_demo) {
+  stdout.printf("%d\n", foreach_demo_var);
+} // foreach works on any iterable collection
+
+if (a == 0) {
+  break;
+} else if (a > 1) {
+  stdout.printf("%d\n", a);
+} else {
+  break;
+} // if-then-else
+
+switch (a) {
+  case 1:
+    stdout.printf("A is 1\n");
+    break;
+  case 5:
+  case 10:
+    stdout.printf("A is 5 or 10\n");
+    break;
+  default:
+    stdout.printf("???\n")
+    break;
+} // switch statement
+
+/* Reference Types */
+
+// Reference types are classes.
+
+class Message : GLib.Object { // Class Message extends GLib's Object
+  public string sender; // a public field
+  public string text {get; set;} // a public property
+  private bool sent = false; // private field
+  public void send() { // public method
+    sent = true;
+  }
+
+}
+
+int cast_to_float = 10;
+float casted_float = (float) cast_to_float; // static casting; no runtime checks
+
+// For runtime checks, use dynamic casting.
+// Dynamically casted objects must meet the following:
+// - Object's class is the same class as the desired type
+// - Object's class is a subclass of the desired type
+// - Desired class is an interface implemented by the object's class
+
+float dyna_casted_float = cast_to_float as float // Won't compile
+
+var inferred_string = "hello"; // Type inference
+
 struct Closet {
   public uint shirts;
   public uint jackets;
