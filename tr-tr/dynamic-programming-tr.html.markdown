@@ -28,6 +28,8 @@ En Uzun Artan Subsequence problemi belirli bir dizinin en uzun artan alt dizini 
 En uzun artan alt dizinin uzunluğunu bulmak için sözde kod: Bu algoritmaların karmaşıklığı dizi yerine daha iyi veri yapısı kullanılarak azaltılabilir. Büyük dizin ve dizin gibi selefi dizi ve değişkeni saklama çok zaman kazandıracaktır.
 
 Yönlendirilmiş asiklik grafiğinde en uzun yolu bulmak için benzer bir kavram uygulanabilir.
+
+```python
 for i=0 to n-1
     LS[i]=1
     for j=0 to i-1
@@ -36,6 +38,8 @@ for i=0 to n-1
 for i=0 to n-1
     if (largest < LS[i])
     
+```  
+
 Bazı Ünlü Dinamik Programlama Problemleri
 -Floyd Warshall Algorithm - Tutorial and C Program source code:http://www.thelearningpoint.net/computer-science/algorithms-all-to-all-shortest-paths-in-graphs—floyd-warshall-algorithm-with-c-program-source-code
 -Integer Knapsack Problem - Tutorial and C Program source code: http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming—the-integer-knapsack-problem
