@@ -473,7 +473,18 @@ void main() {
   loop.run();
 }
 
-// Pointers
+// Pointers (manual memory management)
+
+Object* pointer_obj = new Object(); // Creates Object instance and gives pointer
+
+pointer_obj->some_method(); // Executes some_method
+pointer_obj->some_data; // Returns some_data
+
+delete pointer_obj;
+
+int more = 57;
+int* more_pointer = &i; // & = address-of
+int indirection_demo = more_pointer*; // indirection
 
 ```
 * More Vala documentation can be found [here](https://valadoc.org/).
