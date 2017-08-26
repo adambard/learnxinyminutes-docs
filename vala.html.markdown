@@ -380,10 +380,25 @@ public class MyHD : HardDrive {
 
 // Interfaces: classes can implement any number of these.
 
-interface Laptop { // May only contain abstract methods
+interface Laptop { // May only contain abstracts or virtuals
   public abstract void turn_on();
   public abstract void turn_off();
+
+  public abstract int cores; // Won't compile; fields cannot be abstract
+  public abstract int cores {get; set;} // Will compile
+
+  public virtual void keyboard() { // Virtuals are allowed (unlike Java/C#)
+    stdout.printf("Clickity-clack\n");
+  }
 }
+
+// The ability to use virtuals in Vala means that multiple inheritance is
+// possible (albeit somewhat confined)
+
+// Interfaces cannot implement interfaces, but they may specify that certain
+// interfaces or classes must be also implemented (pre-requisites).
+
+public interface CellPhone : Collection, GLib.Object {}
 
 
 ```
