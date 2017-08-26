@@ -410,6 +410,21 @@ var type_name = type_info2.name();
 Type type_info3 = typeof(Linux);
 Linux type_demo = (Linux) Object.new(type_info3);
 
+// Generics
+
+class Computer<OperatingSystem> : GLib.Object {
+  private OperatingSystem os;
+
+  public void install_os(OperatingSystem os) {
+    this.os = os;
+  }
+  public OperatingSystem retrieve_os() {
+    return this.os;
+  }
+}
+
+var new_computer = new Computer<Linux>();
+
 ```
 * More Vala documentation can be found [here](https://valadoc.org/).
 * Read about building GUIs with GTK+ and Vala [here](http://archive.is/7C7bw).
