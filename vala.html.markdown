@@ -455,8 +455,30 @@ void error_demo2() {
   }
 }
 
+// Main Loop
+
+void main() {
+
+  var main_loop = new MainLoop();
+  var time = new TimeoutSource(2000);
+
+  time.set_callback(() => { // Executes the following lambda after 2000ms
+      stdout.printf("2000ms have passed\n");
+      main_loop.quit();
+      return false;
+  });
+
+  time.attach(main_loop.get_context());
+
+  loop.run();
+}
+
+// Pointers
+
 ```
 * More Vala documentation can be found [here](https://valadoc.org/).
 * [Alternate construction syntax](https://wiki.gnome.org/Projects/Vala/Tutorial#GObject-Style_Construction) similar to GObject
 * More on contract programming [here](http://en.wikipedia.org/wiki/Contract_programming)
+* Collections library can be found [here](https://wiki.gnome.org/Projects/Vala/Tutorial#Collections)
+* [Multithreading](https://wiki.gnome.org/Projects/Vala/Tutorial#Multi-Threading)
 * Read about building GUIs with GTK+ and Vala [here](http://archive.is/7C7bw).
