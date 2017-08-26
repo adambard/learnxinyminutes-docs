@@ -189,7 +189,7 @@ string? ok_to_be_null(int? test_int) { } // "?" denotes possible null value
 
 delegate void DelegateDemo(char char_a);
 
-void delegate_match(char char_a) { // Matches the delegate's signature
+void delegate_match(char char_a) { // Matches DelegateDemo's signature
   stdout.printf("%d\n");
 }
 
