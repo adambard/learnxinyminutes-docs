@@ -486,6 +486,13 @@ int more = 57;
 int* more_pointer = &i; // & = address-of
 int indirection_demo = more_pointer*; // indirection
 
+// Profiles: affect which Vala features are avaliable and which libraries the
+// C-code will use.
+// - gobject (default)
+// posix
+// dova
+// Use "--profile=whatever" when compiling.
+
 ```
 * More Vala documentation can be found [here](https://valadoc.org/).
 * [Alternate construction syntax](https://wiki.gnome.org/Projects/Vala/Tutorial#GObject-Style_Construction) similar to GObject
@@ -493,3 +500,4 @@ int indirection_demo = more_pointer*; // indirection
 * Collections library can be found [here](https://wiki.gnome.org/Projects/Vala/Tutorial#Collections)
 * [Multithreading](https://wiki.gnome.org/Projects/Vala/Tutorial#Multi-Threading)
 * Read about building GUIs with GTK+ and Vala [here](http://archive.is/7C7bw).
+* D-Bus [integration](https://wiki.gnome.org/Projects/Vala/Tutorial#D-Bus_Integration)
