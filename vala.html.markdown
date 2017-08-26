@@ -359,7 +359,7 @@ public abstract class OperatingSystem : GLib.Object {
   public abstract void use_computer();
 }
 
-public class Ubuntu : OperatingSystem {
+public class Linux : OperatingSystem {
   public override void use_computer() { // Abstract methods must be overridden
     stdout.printf("Beep boop\n");
   }
@@ -400,6 +400,15 @@ interface Laptop { // May only contain abstracts or virtuals
 
 public interface CellPhone : Collection, GLib.Object {}
 
+// You can get the type info of a class at runtime dynamically.
+
+bool type_info = object is TypeName; // uses "is" to get a bool
+
+Type type_info2 = object.get_type();
+var type_name = type_info2.name();
+
+Type type_info3 = typeof(Linux);
+Linux type_demo = (Linux) Object.new(type_info3);
 
 ```
 * More Vala documentation can be found [here](https://valadoc.org/).
