@@ -119,11 +119,11 @@ foreach (int foreach_demo_var in foreach_demo) {
 } // foreach works on any iterable collection
 
 if (a == 0) {
-  break;
+  stdout.printf("%d\n", a);
 } else if (a > 1) {
   stdout.printf("%d\n", a);
 } else {
-  break;
+  stdout.printf("A is less than 0");
 } // if-then-else
 
 switch (a) {
