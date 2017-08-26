@@ -255,8 +255,9 @@ class Message : GLib.Object { // Class Message extends GLib's Object
 
 }
 
-interface InterfaceDemo { // Can be used as a mixin
-  // ...
+interface Laptop { // May only contain abstract methods
+  public abstract void turn_on();
+  public abstract void turn_off();
 }
 
 // Since method overloading isn't possible, you can use named constructors
