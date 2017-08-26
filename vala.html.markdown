@@ -323,7 +323,7 @@ class Animal : GLib.Object {
     // All GLib.Objects have a signal "notify" emitted when a property changes.
 
     // If you specify a specific property, replace all underscores with dashes
-    // to conform with the GObject naming convention.
+    // to conform to the GObject naming convention.
 
     rabbit.notify["eyes"].connect((s, p) => { // Remove the ["eyes"] for all
       stdout.printf("Property '%s' has changed!\n", p.name);
