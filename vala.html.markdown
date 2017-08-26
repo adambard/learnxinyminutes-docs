@@ -427,4 +427,5 @@ var new_computer = new Computer<Linux>();
 
 ```
 * More Vala documentation can be found [here](https://valadoc.org/).
+* [Alternate construction syntax](https://wiki.gnome.org/Projects/Vala/Tutorial#GObject-Style_Construction) similar to GObject
 * Read about building GUIs with GTK+ and Vala [here](http://archive.is/7C7bw).
