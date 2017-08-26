@@ -255,13 +255,8 @@ class Message : GLib.Object { // Class Message extends GLib's Object
 
 }
 
-interface Laptop { // May only contain abstract methods
-  public abstract void turn_on();
-  public abstract void turn_off();
-}
-
-// Since method overloading isn't possible, you can use named constructors
-// to get the same functionality.
+// Since method overloading isn't possible, you can't overload constructors.
+// However, you can use named constructors to achieve the same functionality.
 
 public class Calculator : GLib.Object {
 
@@ -382,6 +377,14 @@ public class MyHD : HardDrive {
     return;
   }
 }
+
+// Interfaces: classes can implement any number of these.
+
+interface Laptop { // May only contain abstract methods
+  public abstract void turn_on();
+  public abstract void turn_off();
+}
+
 
 ```
 * More Vala documentation can be found [here](https://valadoc.org/).
