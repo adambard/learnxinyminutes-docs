@@ -425,7 +425,38 @@ class Computer<OperatingSystem> : GLib.Object {
 
 var new_computer = new Computer<Linux>();
 
+/* Other Features */
+
+// Assertions: crash if a statement is not true (at runtime)
+
+bool is_true = true;
+assert(is_true);
+
+// Contract Programming
+
+int contract_demo(int arg1, int arg2) {
+  requires(arg1 > 0 && arg1 < 10) // Notice the lack of semicolon
+  requires(arg2 >= 12)
+  ensures(result >= 0)
+}
+
+// Error Handling
+
+void error_demo(int int_ex) throws GError {
+  if (int_ex != 1) {
+    throw new GError("TEST MESSAGE");
+  }
+}
+void error_demo2() {
+  try {
+    error_demo(0);
+  } catch (GError ge) {
+    stdout.printf("%s\n", ge.message);
+  }
+}
+
 ```
 * More Vala documentation can be found [here](https://valadoc.org/).
 * [Alternate construction syntax](https://wiki.gnome.org/Projects/Vala/Tutorial#GObject-Style_Construction) similar to GObject
+* More on contract programming [here](http://en.wikipedia.org/wiki/Contract_programming)
 * Read about building GUIs with GTK+ and Vala [here](http://archive.is/7C7bw).
