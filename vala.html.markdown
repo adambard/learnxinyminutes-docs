@@ -288,6 +288,7 @@ public class SignalDemo : GLib.Object {
 
   public static int main(string[] args) {
     // main method; program does not compile without it
+
     var sig_demo_class = new SignalDemo(); // New instance of class
 
     sig_demo_class.sig_demo.connect((ob, sig_int) => { // Lambda used as handler
@@ -301,12 +302,12 @@ public class SignalDemo : GLib.Object {
 }
 
 // You may use the connect() method and attach as many handlers as you'd like.
-// They'll all run when the signal is emitted.
+// They'll all run at around the same time when the signal is emitted.
 
 // Properties (getters and setters)
 
 class Animal : GLib.Object {
-  private int _legs; // prefixed with underscore to prevents name clashes
+  private int _legs; // prefixed with underscore to prevent name clashes
 
   public int legs {
     get { return _legs; }
