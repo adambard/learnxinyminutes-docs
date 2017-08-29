@@ -8,7 +8,6 @@ contributors:
     - ["Connor Waters", "http://github.com/connorwaters"]
     - ["Ankush Goyal", "http://github.com/ankushg07"]
     - ["Jatin Dhankhar", "https://github.com/jatindhankhar"]
-
 ---
 
 C++ is a systems programming language that,
@@ -474,6 +473,7 @@ int main() {
 // without a public or protected method for doing so
 class OwnedDog : public Dog {
 
+public:
     void setOwner(const std::string& dogsOwner);
 
     // Override the behavior of the print function for all OwnedDogs. See
