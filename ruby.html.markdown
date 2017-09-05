@@ -359,13 +359,13 @@ ensure
   puts 'This code always runs no matter what'
 end
 
-# Functions
+# Methods
 
 def double(x)
   x * 2
 end
 
-# Functions (and all blocks) implicitly return the value of the last statement
+# Methods (and all blocks) implicitly return the value of the last statement
 double(2) #=> 4
 
 # Parentheses are optional where the result is unambiguous
@@ -399,7 +399,7 @@ surround { puts 'hello world' }
 # }
 
 
-# You can pass a block to a function
+# You can pass a block to a method
 # "&" marks a reference to a passed block
 def guests(&block)
   block.call 'some_argument'
