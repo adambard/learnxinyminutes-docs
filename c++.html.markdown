@@ -1000,24 +1000,26 @@ cout << get<5>(concatenated_tuple) << "\n"; // prints: 'A'
 
 // Vector (Dynamic array)
 // Allow us to Define the Array or list of objects at run time
-#include<vector>
-vector<Data_Type> Vector_name; // used to initialize the vector
+#include <vector>
+typedef string my_vector_type;
+my_vector_type val;
+vector<my_vector_type> my_vector; // initialize the vector
 cin >> val;
-Vector_name.push_back(val); // will push the value of variable into array
+my_vector.push_back(val); // will push the value of 'val' into vector ("array") my_vector
+cin >> val;
+my_vector.push_back(val); // will push another value into the vector
 
-// To iterate through vector, we have 2 choices:
-// Normal looping
-for(int i=0; i<Vector_name.size(); i++)
-// It will iterate through the vector from index '0' till last index
+// To iterate through a vector we have 2 choices:
+// Either classic looping (iterating through the vector from index 0 to its last index):
+for (int i = 0; i < my_vector.size(); i++) {
+	cout << my_vector[i] << endl; // for accessing a vector's element we can use the operator []
+}
 
-// Iterator
-vector<Data_Type>::iterator it; // initialize the iterator for vector
-for(it=vector_name.begin(); it!=vector_name.end();++it)
-
-// For accessing the element of the vector
-// Operator []
-var = vector_name[index]; // Will assign value at that index to var
-
+// or using an iterator:
+vector<my_vector_type>::iterator it; // initialize the iterator for vector
+for (it = my_vector.begin(); it != my_vector.end(); ++it) {
+	cout << *it  << endl;
+}
 
 // Set
 // Sets are containers that store unique elements following a specific order.
