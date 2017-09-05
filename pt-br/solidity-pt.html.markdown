@@ -1,7 +1,7 @@
 ---
 language: Solidity
 filename: learnSolidity.sol
-contribuidors:
+contributors:
   - ["Nemil Dalal", "https://www.nemil.com"]
   - ["Joseph Chow", ""]
 translators:
