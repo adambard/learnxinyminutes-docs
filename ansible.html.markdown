@@ -7,38 +7,11 @@ filename: LearnAnsible.txt
 ---
 
 Ansible is (one of the many) orchestration tools. It allows you to controll your environment (infrastructure and a code) and automate the manual tasks.
+'You can think as simple as writing in bash with python API :)
+Of course the rabit hole is way deeper.'
+
 Ansible have great integration with multiple operating systems (even Windows) and some hardware (switches, Firewalls, etc). It has multiple tools that integrate with the could providers. Almost every worth-notice cloud provider is present in the ecosystem (AWS, Azure, Google, DigitalOcean, OVH, etc...)
 
-## Main cons and pros
-
-### Cons
-
-It is an agent-less tool - every agent consumes up to 16MB ram - in some environments, it may be noticable amount.
-It is agent-less - you have to verify your environment consistency 'on-demand' - there is no built-in mechanism taht would warn you about some change automatically (this can be achieved with reasonable effort - but it must be known)
-Official GUI Tool (web inferface) - Ansible Tower - is more than GUI, but it is expensive. There is no 'small enterprice' payment plan. Easy workaround with Rundeck or Jenkins is possible with reasonable workload.
-
-### Pros
-
-It is an agent-less tools :) In most scenarios, it use ssh as a transport layer. 
-In some way you can use it as 'bash on steroids'.
-It is very-very-very easy to start. If you are familiar with ssh concept - you already know ansible :) (almost). My personal record is: 'I did show how to install and use ansible (for simple raspberry pi cluster management) and it tool me 30 seconds to deliver a working tool !!!)'
-I do provide a training services - I'm able to teach a production-ready person - in 8 hours (1 training day)! It covers all needed to work aspects! No other tool can match this ease of use!
-It executes when you do it - other tools (salt, puppet, chef - might execute in different scenario than you would expect)
-Documentation is at the world-class standard!
-The comunity (github, stackOverflow) would help you very fast.
-Writing own modules and extension is fairly easy.
-
-
-### Neutral
-Migration Ansible<->Salt is failrly easy - so if you would need an event-driven agent environment - it would be a good choice to start quick with Ansible, and convert to salt when needed.
-
-## Basics on ansible
-
-Ansible uses ssh or paramiko as a transport layer. In a way you can imagine that you are using a ssh with API to perform your action.
-In the 'low-level' way you can use it to execute remote command in more controlled way (still using ssh). 
-On the other hand - in advanced scope - you can use python anible code as a library to your own python scrips! This is awesome! (if you know what you are doing). It is a bit like fabric then.
-
-But ansible is way more! It provides an execution plans, an API, library, callbacks, not forget to mention - COMUNITY! and great support by developers!
 
 ## Ansible naming and basic concept
 
@@ -56,42 +29,54 @@ Example: Module:file - performs file operations (stat, link, dir, ...)
 ##### Task
 Execution of a single module is called a `task`
 
+The simplest module is called `ping`. 
+Another example of the module that allow you to execute command remotly on multiple resources is called shell. It is the same as you would execute command remotely over ssh.
+
 Example of a Task run in CLI:
 ###### Run a ansible module
 
-```
-ansible -m shell -a 'date; whoami'
+```bash
+$ ansible -m ping hostname_or_a_group_name
+$ ansible -m shell -a 'date; whoami' hostname_or_a_group_name
 ```
 
-as a contrast - please note a module `command` that allows to execute a single command only
+another module - `command` that allows to execute a single command only with a simple shell #JM
+We should also mention a module `raw` 
 
-```
-ansible -m command -a 'date; whoami' # FAILURE
+```bash
+$ ansible -m command -a 'date; whoami' # FAILURE
 
-ansible -m command -a 'date'
-ansible -m command -a 'whoami'
+$ ansible -m command -a 'date'
+$ ansible -m command -a 'whoami'
 ```
 
 ##### Playbook
 
-A list of tasks written in a file of proper structure is called a `playbook`
-Playbook must have a list (or group) of hosts that is executed against, some task(s) or role(s) that are going to be executed, and multiple optional settings.
+A common way to execute tasks is called `playbook`.
+You have to define a list (or group) of hosts that is executed against, some `task(s)` or `role(s)` that are going to be executed. There are also multiple optional settings (like default variables, and way more).
+
+You can think that it is very advanced CLI script that you are executing.
 
 Example of the playbook:
 
-```
+```yml
 hosts: all
 
 tasks:
-    - name: "ping all"
-      ping:
-    - name: "execute a shell command"
-      shell: "date; whoami; df -h;"
+  - name: "ping all"
+    ping:
+  - name: "execute a shell command"
+    shell: "date; whoami; df -h;"
+```
+
+You can execute a playbook with a command:
+```bash
+$ ansible-playbook path/name_of_the_playbook.yml
 ```
 
 ### Basic ansible commands
 
-There are few binaries you should know
+There are few commands you should know about
 
 `ansible` (to run modules in CLI)
 `ansible-playbook` (to run playbooks)
@@ -106,16 +91,16 @@ and other!
 There are tasks (modules) that can be run via CLI
 The execution plans of multiple tasks (with variables and logic) are called playbooks.
 
-For parts of the code, that is reusable, a concept called `role` was introduced
+For parts of the code, that should be reusable, a concept called `role` was introduced
 
-Role in a way is just a structured way to keep your set of tasks, your variables, handlers, default settings, and way more (meta, files, templates).
-Rele allows to reuse the same parts of code in multiple plybooks (usually with some parametisation).
+Role is a structured way to keep your set of tasks, variables, handlers, default settings, and way more (meta, files, templates).
+Role allows to reuse the same parts of code in multiple plybooks (you can parametrize this).
 It is a great way to introduce `object oriented` management for your applications.
 
 Role can be included in your playbook (executed in your playbook).
 
 
-```
+```yml
 hosts: all
 
 tasks:
@@ -126,10 +111,28 @@ tasks:
 
 role: 
     - some_role
+    - { role: another_role, some_variable: 'learnxiny', tags: ['my_tag'] }
 
 pre_tasks:
     - name: some pre-task
       shell: echo 'this task is the last, but would be executed before roles, and before tasks'
+```
+
+```
+roles/
+   some_role/
+     defaults/
+     files/
+     templates/
+     tasks/
+     handlers/
+     vars/
+     meta/
+```
+
+#### Role Handlers
+Handlers are a task that can be triggered (notified) during execution of a playbook, but they itself execute at the very end of a playbook.
+It is a best way to restart a service, check if application port is open, etc.
 
 ### ansible - variables
 lookup's
@@ -173,6 +176,41 @@ AND,XOR
 tags
 meta
 no_logs
+
+
+## Main cons and pros
+
+### Cons
+
+It is an agent-less tool - every agent consumes up to 16MB ram - in some environments, it may be noticable amount.
+It is agent-less - you have to verify your environment consistency 'on-demand' - there is no built-in mechanism taht would warn you about some change automatically (this can be achieved with reasonable effort - but it must be known)
+Official GUI Tool (web inferface) - Ansible Tower - is more than GUI, but it is expensive. There is no 'small enterprice' payment plan. Easy workaround with Rundeck or Jenkins is possible with reasonable workload.
+
+### Pros
+
+It is an agent-less tools :) In most scenarios, it use ssh as a transport layer. 
+In some way you can use it as 'bash on steroids'.
+It is very-very-very easy to start. If you are familiar with ssh concept - you already know ansible :) (almost). My personal record is: 'I did show how to install and use ansible (for simple raspberry pi cluster management) and it tool me 30 seconds to deliver a working tool !!!)'
+I do provide a training services - I'm able to teach a production-ready person - in 8 hours (1 training day)! It covers all needed to work aspects! No other tool can match this ease of use!
+It executes when you do it - other tools (salt, puppet, chef - might execute in different scenario than you would expect)
+Documentation is at the world-class standard!
+The comunity (github, stackOverflow) would help you very fast.
+Writing own modules and extension is fairly easy.
+
+
+### Neutral
+Migration Ansible<->Salt is failrly easy - so if you would need an event-driven agent environment - it would be a good choice to start quick with Ansible, and convert to salt when needed.
+
+## Basics on ansible
+
+Ansible uses ssh or paramiko as a transport layer. In a way you can imagine that you are using a ssh with API to perform your action.
+In the 'low-level' way you can use it to execute remote command in more controlled way (still using ssh). 
+On the other hand - in advanced scope - you can use python anible code as a library to your own python scrips! This is awesome! (if you know what you are doing). It is a bit like fabric then.
+
+But ansible is way more! It provides an execution plans, an API, library, callbacks, not forget to mention - COMUNITY! and great support by developers!
+
+
+
 
 ---
 Github template placeholder - to be removed
