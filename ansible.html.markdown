@@ -15,7 +15,15 @@ Ansible have great integration with multiple operating systems (even Windows) an
 
 ## Ansible naming and basic concept
 
-### Naming
+### Basic ansible commands
+
+There are few commands you should know about
+
+`ansible` (to run modules in CLI)
+`ansible-playbook` (to run playbooks)
+`ansible-vault` (to manage secrets)
+`ansible-galaxy` (to install roles from github/galaxy)
+and other!
 
 #### Inventory
 Inventory is a set of objects/hosts against which we are executing our playbooks 
@@ -23,6 +31,7 @@ For this few minutes, lets asume that we are using default ansible inventory (wh
 
 #### Module - this is name for an logical program (usaly python) that consume proper JSON input and return proper output :)
 This program perform certain task/action (like manage Amazon instances, execute shell command, any of your program).
+The simplest module is called `ping` - it just returns a JSON with `pong` message and ansible variables. 
 Example: Module:shell - a module that executes shell command on a delegated host(s).
 Example: Module:file - performs file operations (stat, link, dir, ...) 
 
@@ -75,17 +84,7 @@ You can execute a playbook with a command:
 $ ansible-playbook path/name_of_the_playbook.yml
 ```
 
-### Basic ansible commands
-
-There are few commands you should know about
-
-`ansible` (to run modules in CLI)
-`ansible-playbook` (to run playbooks)
-`ansible-vault` (to manage secrets)
-`ansible-galaxy` (to install roles from github/galaxy)
-and other!
-
-### More on ansible concept
+## More on ansible concept
 
 ### ansible-roles (a 'template-playbooks in right structure')
 
@@ -162,6 +161,8 @@ virtualenv
 ### create instance in AWS
 
 ### create env in AWS
+
+### Naming
 
 ## Bonus
 
