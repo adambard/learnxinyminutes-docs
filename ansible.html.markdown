@@ -54,6 +54,7 @@ $ ansible -m command -a 'whoami'
 
 A common way to execute tasks is called `playbook`.
 You have to define a list (or group) of hosts that is executed against, some `task(s)` or `role(s)` that are going to be executed. There are also multiple optional settings (like default variables, and way more).
+Playbook script language is YAML
 
 You can think that it is very advanced CLI script that you are executing.
 
@@ -118,6 +119,7 @@ pre_tasks:
       shell: echo 'this task is the last, but would be executed before roles, and before tasks'
 ```
 
+Role directory structure:
 ```
 roles/
    some_role/
