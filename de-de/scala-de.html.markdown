@@ -8,6 +8,7 @@ contributors:
     - ["Dennis Keller", "github.com/denniskeller"]
 translators:
   - ["Christian Albrecht", "https://github.com/coastalchief"]
+  - ["Jonas Grote", "https://github.com/exic"]
 filename: learnscala-de.scala
 lang: de-de
 ---
@@ -19,11 +20,11 @@ der EPFL (Lausanne / Schweiz) unter der Leitung von Martin Odersky entwickelt.
 
 ```scala
 /*
-Scala Umgebung einrichten:
+Scala-Umgebung einrichten:
 
 1. Scala binaries herunterladen- http://www.scala-lang.org/downloads
 2. Unzip/untar in ein Verzeichnis
-3. das bin Unterverzeichnis der `PATH` Umgebungsvariable hinzufügen
+3. das Unterverzeichnis `bin` der `PATH`-Umgebungsvariable hinzufügen
 4. Mit dem Kommando `scala` wird die REPL gestartet und zeigt als Prompt:
 
 scala>
@@ -31,47 +32,47 @@ scala>
 Die REPL (Read-Eval-Print Loop) ist der interaktive Scala Interpreter.
 Hier kann man jeden Scala Ausdruck verwenden und das Ergebnis wird direkt
 ausgegeben.
-Als nächstes beschäftigen wir uns mit ein paar Scala Basics.
+Als nächstes beschäftigen wir uns mit ein paar Scala-Grundlagen.
 */
 
 
 /////////////////////////////////////////////////
-// 1. Basics
+// 1. Grundlagen
 /////////////////////////////////////////////////
 
-// Einzeilige Kommentare beginnen mit zwei Slashes
+// Einzeilige Kommentare beginnen mit zwei Slashes.
 
 /*
-  Mehrzeilige Kommentare, starten
-  mit einem Slash-Stern und enden mit einem Stern-Slash
+  Mehrzeilige Kommentare starten mit einem Slash-Stern
+  und enden mit einem Stern-Slash.
 */
 
-// Einen Wert, und eine zusätzliche neue Zeile ausgeben
+// Einen Wert und eine zusätzliche neue Zeile ausgeben:
 
 println("Hello world!")
 println(10)
 
 
-// Einen Wert, ohne eine zusätzliche neue Zeile ausgeben
+// Einen Wert ohne eine zusätzliche neue Zeile ausgeben:
 
 print("Hello world")
 
 /*
   Variablen werden entweder mit var oder val deklariert.
-  Deklarationen mit val sind immutable, also unveränderlich
-  Deklarationen mit var sind mutable, also veränderlich
+  Deklarationen mit val sind immutable, also unveränderlich.
+  Deklarationen mit var sind mutable, also veränderlich.
   Immutability ist gut.
 */
 val x = 10 // x ist 10
-x = 20     // error: reassignment to val
+x = 20     // Error: reassignment to val (Fehler: neue Zuweisung zu einem unveränderlichen Wert)
 var y = 10
 y = 20     // y ist jetzt 20
 
 /*
 Scala ist eine statisch getypte Sprache, auch wenn wir in dem o.g. Beispiel
 keine Typen an x und y geschrieben haben.
-In Scala ist etwas eingebaut, was sich Type Inference nennt. Das heißt das der
-Scala Compiler in den meisten Fällen erraten kann, von welchen Typ eine Variable ist,
+In Scala ist etwas eingebaut, was sich Type Inference nennt. Das heißt, dass der
+Scala Compiler in den meisten Fällen erraten kann, von welchem Typ eine Variable ist,
 so dass der Typ nicht jedes mal angegeben werden muss.
 Einen Typ gibt man bei einer Variablendeklaration wie folgt an:
 */
@@ -79,18 +80,18 @@ val z: Int = 10
 val a: Double = 1.0
 
 
-// Bei automatischer Umwandlung von Int auf Double wird aus 10 eine 10.0
+// Bei automatischer Umwandlung von Int auf Double wird aus 10 eine 10.0:
 
 val b: Double = 10
 
 
-// Boolean Werte
+// Boolean-Werte:
 
 true
 false
 
 
-// Boolean Operationen
+// Boolean-Operationen:
 
 !true         // false
 !false        // true
@@ -98,7 +99,7 @@ true == false // false
 10 > 5        // true
 
 
-// Mathematische Operationen sind wie gewohnt
+// Mathematische Operationen sind wie gewohnt:
 
 1 + 1   // 2
 2 - 1   // 1
@@ -109,73 +110,72 @@ true == false // false
 
 
 // Die Auswertung eines Ausdrucks in der REPL gibt den Typ
-// und das Ergebnis zurück.
+// und das Ergebnis zurück:
 
   scala> 1 + 7
   res29: Int = 8
 
 /*
 Das bedeutet, dass das Resultat der Auswertung von 1 + 7 ein Objekt
-von Typ Int ist und einen Wert 0 hat.
-"res29" ist ein sequentiell generierter name, um das Ergebnis des
+von Typ Int ist und einen Wert 8 hat.
+"res29" ist ein sequentiell generierter Name, um das Ergebnis des
 Ausdrucks zu speichern. Dieser Wert kann bei Dir anders sein...
 */
 
 "Scala strings werden in doppelten Anführungszeichen eingeschlossen"
-'a' // A Scala Char
-// 'Einzeln ge-quotete strings gibt es nicht!' <= This causes an error
+'a' // Ein Scala Char
+// 'Einzeln ge-quotete strings gibt es nicht!' <= Das erzeugt einen Fehler!
 
-// Für Strings gibt es die üblichen Java Methoden
+// Für Strings gibt es die üblichen Java-Methoden:
 
 "hello world".length
 "hello world".substring(2, 6)
 "hello world".replace("C", "3")
 
 
-// Zusätzlich gibt es noch extra Scala Methoden
+// Zusätzlich gibt es noch extra Scala-Methoden
 // siehe: scala.collection.immutable.StringOps
 
 "hello world".take(5)
 "hello world".drop(5)
 
 
-// String interpolation: prefix "s"
+// String-Interpolation: prefix "s":
 
 val n = 45
-s"We have $n apples" // => "We have 45 apples"
+s"Wir haben $n Äpfel" // => "Wir haben 45 Äpfel"
 
 
-// Ausdrücke im Innern von interpolierten Strings gibt es auch
+// Ausdrücke im Innern von interpolierten Strings gibt es auch:
 
 val a = Array(11, 9, 6)
-val n = 100
-s"My second daughter is ${a(0) - a(2)} years old."    // => "My second daughter is 5 years old."
-s"We have double the amount of ${n / 2.0} in apples." // => "We have double the amount of 22.5 in apples."
-s"Power of 2: ${math.pow(2, 2)}"                      // => "Power of 2: 4"
+s"Meine zweite Tochter ist ${a(0) - a(2)} Jahre alt."    // => "Meine zweite Tochter ist 5 Jahre alt."
+s"Wir haben das Doppelte von ${n / 2.0} an Äpfeln." // => "Wir haben das Doppelte von 22.5 an Äpfeln."
+s"2 im Quadrat: ${math.pow(2, 2)}"                      // => "2 im Quadrat: 4"
 
 
-// Formatierung der interpolierten Strings mit dem prefix "f"
+// Formatierung der interpolierten Strings mit dem prefix "f":
 
-f"Power of 5: ${math.pow(5, 2)}%1.0f"         // "Power of 5: 25"
-f"Square root of 122: ${math.sqrt(122)}%1.4f" // "Square root of 122: 11.0454"
+f"5 im Quadrat: ${math.pow(5, 2)}%1.0f"         // "5 im Quadrat: 25"
+f"Quadratwurzel von 122: ${math.sqrt(122)}%1.4f" // "Quadratwurzel von 122: 11.0454"
 
 
-// Raw Strings, ignorieren Sonderzeichen.
+// Raw Strings ignorieren Sonderzeichen:
 
 raw"New line feed: \n. Carriage return: \r." // => "New line feed: \n. Carriage return: \r."
 
 
 // Manche Zeichen müssen "escaped" werden, z.B.
-// ein doppeltes Anführungszeichen in innern eines Strings.
+// ein doppeltes Anführungszeichen im Innern eines Strings:
 
-"They stood outside the \"Rose and Crown\"" // => "They stood outside the "Rose and Crown""
+"Sie standen vor der \"Rose and Crown\"" // => "Sie standen vor der "Rose and Crown""
 
 
 // Dreifache Anführungszeichen erlauben es, dass ein String über mehrere Zeilen geht
-// und Anführungszeichen enthalten kann.
+// und Anführungszeichen enthalten kann:
 
-val html = """<form id="daform">
-                <p>Press belo', Joe</p>
+val html = """<form id="dieform">
+                <p>Drück belo', Joe</p>
                 <input type="submit">
               </form>"""
 
@@ -184,12 +184,12 @@ val html = """<form id="daform">
 // 2. Funktionen
 /////////////////////////////////////////////////
 
-// Funktionen werden so definiert
+// Funktionen werden so definiert:
 //
 //   def functionName(args...): ReturnType = { body... }
 //
-// Beachte: Es gibt kein return Schlüsselwort. In Scala ist der letzte Ausdruck
-// in einer Funktion der Rückgabewert.
+// Beachte: Es wird hier kein Schlüsselwort "return" verwendet.
+// In Scala ist der letzte Ausdruck in einer Funktion der Rückgabewert.
 
 def sumOfSquares(x: Int, y: Int): Int = {
   val x2 = x * x
@@ -209,14 +209,14 @@ def sumOfSquaresShort(x: Int, y: Int): Int = x * x + y * y
 sumOfSquares(3, 4)  // => 25
 
 
-// In den meisten Fällen (mit Ausnahme von rekursiven Funktionen), können
-// Rückgabetypen auch weggelassen werden, da dieselbe Typ Inference, wie bei
+// In den meisten Fällen (mit Ausnahme von rekursiven Funktionen) können
+// Rückgabetypen auch weggelassen werden, da dieselbe Typ-Inferenz, wie bei
 // Variablen, auch bei Funktionen greift:
 
 def sq(x: Int) = x * x  // Compiler errät, dass der return type Int ist
 
 
-// Funktionen können default parameter haben:
+// Funktionen können Default-Parameter haben:
 
 def addWithDefault(x: Int, y: Int = 5) = x + y
 addWithDefault(1, 2) // => 3
@@ -253,7 +253,7 @@ addOne(5)      // => 6
 weirdSum(2, 4) // => 16
 
 
-// Es gibt einen keyword return in Scala. Allerdings ist seine Verwendung
+// Es gibt ein Schlüsselwort "return" in Scala. Allerdings ist seine Verwendung
 // nicht immer ratsam und kann fehlerbehaftet sein. "return" gibt nur aus
 // dem innersten def, welches den return Ausdruck umgibt, zurück.
 // "return" hat keinen Effekt in anonymen Funktionen:
@@ -270,10 +270,10 @@ def foo(x: Int): Int = {
 
 
 /////////////////////////////////////////////////
-// 3. Flow Control
+// 3. Flusskontrolle
 /////////////////////////////////////////////////
 
-// Wertebereiche und Schleifen
+// Wertebereiche und Schleifen:
 
 1 to 5
 val r = 1 to 5
@@ -281,11 +281,11 @@ r.foreach(println)
 r foreach println
 (5 to 1 by -1) foreach (println)
 
-// Scala ist syntaktisch sehr großzügig, Semikolons am Zeilenende
+// Scala ist syntaktisch sehr großzügig; Semikolons am Zeilenende
 // sind optional, beim Aufruf von Methoden können die Punkte
-// und Klammern entfallen und Operatoren sind im Grunde austauschbare Methoden
+// und Klammern entfallen und Operatoren sind im Grunde austauschbare Methoden.
 
-// while Schleife
+// while Schleife:
 
 var i = 0
 while (i < 10) { println("i " + i); i += 1 }
@@ -294,22 +294,22 @@ i    // i ausgeben, res3: Int = 10
 
 // Beachte: while ist eine Schleife im klassischen Sinne -
 // Sie läuft sequentiell ab und verändert die loop-Variable.
-// While in Scala läuft schneller ab als in Java und die o.g.
+// "while" in Scala läuft schneller ab als in Java und die o.g.
 // Kombinatoren und Zusammenlegungen sind einfacher zu verstehen
 // und zu parellelisieren.
 
 // Ein do while Schleife
 
 do {
-  println("x ist immer noch weniger wie 10")
+  println("x ist immer noch weniger als 10")
   x += 1
 } while (x < 10)
 
 
-// Endrekursionen sind ideomatisch um sich wiederholende
-// Dinge in Scala zu lösen. Rekursive Funtionen benötigen explizit einen
-// return Typ, der Compiler kann ihn nicht erraten.
-// Unit, in diesem Beispiel.
+// Endrekursionen sind idiomatisch um sich wiederholende
+// Aufgaben in Scala zu lösen. Rekursive Funtionen benötigen explizit einen
+// Rückgabe-Typ, der Compiler kann ihn nicht erraten.
+// Der Rückgabe-Typ in diesem Beispiel ist Unit:
 
 def showNumbersInRange(a: Int, b: Int): Unit = {
   print(a)
@@ -331,7 +331,7 @@ val text = if (x == 10) "yeah" else "nope"
 
 
 /////////////////////////////////////////////////
-// 4. Daten Strukturen (Array, Map, Set, Tuples)
+// 4. Datenstrukturen (Array, Map, Set, Tuples)
 /////////////////////////////////////////////////
 
 // Array
@@ -344,11 +344,11 @@ a(21)    // Exception
 
 // Map - Speichert Key-Value-Paare
 
-val m = Map("fork" -> "tenedor", "spoon" -> "cuchara", "knife" -> "cuchillo")
+val m = Map("fork" -> "Gabel", "spoon" -> "Löffel", "knife" -> "Messer")
 m("fork")
 m("spoon")
 m("bottle")       // Exception
-val safeM = m.withDefaultValue("no lo se")
+val safeM = m.withDefaultValue("unbekannt")
 safeM("bottle")
 
 // Set - Speichert Unikate, unsortiert (sortiert -> SortedSet)
@@ -369,7 +369,7 @@ s: scala.collection.immutable.Set[Int] = Set(1, 3, 7)
 
 
 // Hier ist der Rückgabewert der Funktion ein Tuple
-// Die Funktion gibt das Ergebnis, so wie den Rest zurück.
+// Die Funktion gibt das Ergebnis sowie den Rest zurück.
 
 val divideInts = (x: Int, y: Int) => (x / y, x % y)
 divideInts(10, 3)
@@ -390,8 +390,8 @@ d._2
 /*
   Bislang waren alle gezeigten Sprachelemente einfache Ausdrücke, welche zwar
   zum Ausprobieren und Lernen in der REPL gut geeignet sind, jedoch in
-  einem Scala file selten alleine zu finden sind.
-  Die einzigen Top-Level Konstrukte in Scala sind nämlich:
+  einer Scala-Datei selten alleine zu finden sind.
+  Die einzigen Top-Level-Konstrukte in Scala sind nämlich:
 
   - Klassen (classes)
   - Objekte (objects)
@@ -406,7 +406,7 @@ d._2
 // Zum Erstellen von Objekten benötigt man eine Klasse, wie in vielen
 // anderen Sprachen auch.
 
-// erzeugt Klasse mit default Konstruktor
+// erzeugt Klasse mit default Konstruktor:
 
 class Hund
 scala> val t = new Hund
@@ -433,7 +433,7 @@ res18: String = Dackel
 
 // Methoden werden mit def geschrieben
 
-def bark = "Woof, woof!"
+def bark = "Wuff, wuff!"
 
 
 // Felder und Methoden können public, protected und private sein
@@ -460,9 +460,9 @@ class Dackel extends Hund {
 // Wird ein Objekt ohne das Schlüsselwort "new" instanziert, wird das sog.
 // "companion object" aufgerufen. Mit dem "object" Schlüsselwort wird so
 // ein Objekt (Typ UND Singleton) erstellt. Damit kann man dann eine Klasse
-// benutzen ohne ein Objekt instanziieren zu müssen.
+// verwenden, ohne ein Objekt instanziieren zu müssen.
 // Ein gültiges companion Objekt einer Klasse ist es aber erst dann, wenn
-// es genauso heisst und in derselben Datei wie die Klasse definiert wurde.
+// es genauso heißt und in derselben Datei wie die Klasse definiert wurde.
 
 object Hund {
   def alleSorten = List("Pitbull", "Dackel", "Retriever")
@@ -470,8 +470,9 @@ object Hund {
 }
 
 // Case classes
-// Fallklassen bzw. Case classes sind Klassen die normale Klassen um extra
-// Funktionalität erweitern. Mit Case Klassen bekommt man ein paar
+// Fallklassen bzw. Case classes sind Klassen, die normale Klassen um
+// zusätzliche Funktionalität erweitern.
+// Mit Case-Klassen bekommt man ein paar
 // Dinge einfach dazu, ohne sich darum kümmern zu müssen. Z.B.
 // ein companion object mit den entsprechenden Methoden,
 // Hilfsmethoden wie toString(), equals() und hashCode() und auch noch
@@ -481,13 +482,13 @@ class Person(val name: String)
 class Hund(val sorte: String, val farbe: String, val halter: Person)
 
 
-// Es genügt das Schlüsselwort case vor die Klasse zu schreiben.
+// Es genügt, das Schlüsselwort case vor die Klasse zu schreiben:
 
 case class Person(name: String)
 case class Hund(sorte: String, farbe: String, halter: Person)
 
 
-// Für neue Instanzen brauch man kein "new"
+// Für neue Instanzen braucht man kein "new":
 
 val dackel = Hund("dackel", "grau", Person("peter"))
 val dogge = Hund("dogge", "grau", Person("peter"))
@@ -511,7 +512,7 @@ val otherGeorge = george.copy(phoneNumber = "9876")
 // Traits
 // Ähnlich wie Java interfaces, definiert man mit traits einen Objekttyp
 // und Methodensignaturen. Scala erlaubt allerdings das teilweise
-// implementieren dieser Methoden. Konstruktorparameter sind nicht erlaubt.
+// Implementieren dieser Methoden. Konstruktorparameter sind nicht erlaubt.
 // Traits können von anderen Traits oder Klassen erben, aber nur von
 // parameterlosen.
 
@@ -543,7 +544,7 @@ res3: Boolean = false
 // mit "with" verwendet werden können.
 
 trait Bellen {
-	def bellen: String = "Woof"
+	def bellen: String = "Wuff"
 }
 trait Hund {
 	def sorte: String
@@ -556,10 +557,10 @@ class Bernhardiner extends Hund with Bellen{
 scala> val b = new Bernhardiner
 b: Bernhardiner = Bernhardiner@7b69c6ba
 scala> b.bellen
-res0: String = Woof
+res0: String = Wuff
 
 /////////////////////////////////////////////////
-// 6. Pattern Matching
+// 6. Mustervergleich (Pattern Matching)
 /////////////////////////////////////////////////
 
 // Pattern matching in Scala ist ein sehr nützliches und wesentlich
@@ -581,7 +582,7 @@ x match {
 val any: Any = ...
 val gleicht = any match {
   case 2 | 3 | 5 => "Zahl"
-  case "woof" => "String"
+  case "wuff" => "String"
   case true | false => "Boolean"
   case 45.35 => "Double"
   case _ => "Unbekannt"
@@ -620,8 +621,8 @@ def matchEverything(obj: Any): String = obj match {
 }
 
 
-// Jedes Objekt mit einer "unapply" Methode kann per Pattern geprüft werden
-// Ganze Funktionen können Patterns sein
+// Jedes Objekt mit einer "unapply" Methode kann per Pattern geprüft werden.
+// Ganze Funktionen können Patterns sein:
 
 val patternFunc: Person => String = {
   case Person("George", number) => s"George's number: $number"
@@ -630,50 +631,50 @@ val patternFunc: Person => String = {
 
 
 /////////////////////////////////////////////////
-// 37. Higher-order functions
+// 7. "Higher-order"-Funktionen
 /////////////////////////////////////////////////
 
-Scala erlaubt, das Methoden und Funktion wiederum Funtionen und Methoden
-als Aufrufparameter oder Return Wert verwenden. Diese Methoden heissen
-higher-order functions
-Es gibt zahlreiche higher-order functions nicht nur für Listen, auch für
-die meisten anderen Collection Typen, sowie andere Klassen in Scala
-Nennenswerte sind:
-"filter", "map", "reduce", "foldLeft"/"foldRight", "exists", "forall"
+// Scala erlaubt, dass Methoden und Funktionen wiederum Funtionen und Methoden
+// als Aufrufparameter oder Rückgabewert verwenden. Diese Methoden heißen
+// higher-order functions.
+// Es gibt zahlreiche higher-order-Funtionen nicht nur für Listen, auch für
+// die meisten anderen Collection-Typen, sowie andere Klassen in Scala.
+// Nennenswerte sind:
+// "filter", "map", "reduce", "foldLeft"/"foldRight", "exists", "forall"
 
-## List
+// List
 
-def isGleichVier(a:Int) = a == 4
+def istGleichVier(a:Int) = a == 4
 val list = List(1, 2, 3, 4)
 val resultExists4 = list.exists(isEqualToFour)
 
 
-## map
+// map
 // map nimmt eine Funktion und führt sie auf jedem Element aus und erzeugt
 // eine neue Liste
 
-// Funktion erwartet ein Int und returned ein Int
+// Funktion erwartet einen Int und gibt einen Int zurück:
 
 val add10: Int => Int = _ + 10
 
 
-// add10 wird auf jedes Element angewendet
+// add10 wird auf jedes Element angewendet:
 
 List(1, 2, 3) map add10 // => List(11, 12, 13)
 
 
-// Anonyme Funktionen können anstatt definierter Funktionen verwendet werden
+// Anonyme Funktionen können anstatt definierter Funktionen verwendet werden:
 
 List(1, 2, 3) map (x => x + 10)
 
 
 // Der Unterstrich wird anstelle eines Parameters einer anonymen Funktion
-// verwendet. Er wird an die Variable gebunden.
+// verwendet. Er wird an die Variable gebunden:
 
 List(1, 2, 3) map (_ + 10)
 
 
-// Wenn der anonyme Block und die Funtion beide EIN Argument erwarten,
+// Wenn der anonyme Block und die Funktion beide EIN Argument erwarten,
 // kann sogar der Unterstrich weggelassen werden.
 
 List("Dom", "Bob", "Natalia") foreach println
@@ -681,7 +682,7 @@ List("Dom", "Bob", "Natalia") foreach println
 
 // filter
 // filter nimmt ein Prädikat (eine Funktion von A -> Boolean) und findet
-// alle Elemente die auf das Prädikat passen
+// alle Elemente, die auf das Prädikat passen:
 
 List(1, 2, 3) filter (_ > 2) // => List(3)
 case class Person(name: String, age: Int)
@@ -693,7 +694,7 @@ List(
 
 // reduce
 // reduce nimmt zwei Elemente und kombiniert sie zu einem Element,
-// und zwar solange bis nur noch ein Element da ist.
+// und zwar so lange, bis nur noch ein Element da ist.
 
 // foreach
 // foreach gibt es für einige Collections
@@ -718,12 +719,12 @@ for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
 
 // **ACHTUNG:**
 // Implicits sind ein sehr mächtiges Sprachfeature von Scala.
-// Es sehr einfach
+// Es sehr einfach,
 // sie falsch zu benutzen und Anfänger sollten sie mit Vorsicht oder am
-// besten erst dann benutzen, wenn man versteht wie sie funktionieren.
+// besten erst dann benutzen, wenn sie verstehen, wie sie funktionieren.
 // Dieses Tutorial enthält Implicits, da sie in Scala an jeder Stelle
-// vorkommen und man auch mit einer Lib die Implicits benutzt nichts sinnvolles
-// machen kann.
+// vorkommen und man auch mit einer Bibliothek, die Implicits benutzt, sonst
+// nichts sinnvolles machen kann.
 // Hier soll ein Grundverständnis geschaffen werden, wie sie funktionieren.
 
 // Mit dem Schlüsselwort implicit können Methoden, Werte, Funktion, Objekte
@@ -754,10 +755,10 @@ def sendGreetings(toWhom: String)(implicit howMany: Int) =
 sendGreetings("John")(1000)  // => "Hello John, 1000 blessings to you and yours!"
 
 
-// Wird der implicit Parameter jedoch weggelassen, wird ein anderer
-// implicit Wert vom gleichen Typ genommen. Der Compiler sucht im
-// lexikalischen Scope und im companion object nach einem implicit Wert,
-// der vom Typ passt, oder  nach einer implicit Methode mit der er in den
+// Wird der implicit-Parameter jedoch weggelassen, wird ein anderer
+// implicit-Wert vom gleichen Typ genommen. Der Compiler sucht im
+// lexikalischen Scope und im companion object nach einem implicit-Wert,
+// der vom Typ passt, oder nach einer implicit-Methode, mit der er in den
 // geforderten Typ konvertieren kann.
 
 // Hier also: "myImplicitInt", da ein Int gesucht wird
@@ -766,14 +767,14 @@ sendGreetings("Jane")  // => "Hello Jane, 100 blessings to you and yours!"
 
 
 // bzw. "myImplicitFunction"
-// Der String wird erst mit Hilfe der Funktion in Hund konvertiert, und
-// dann wird die Methode aufgerufen
+// Der String wird erst mit Hilfe der Funktion in Hund konvertiert,
+// dann wird die Methode aufgerufen:
 
 "Retriever".sorte // => "Golden Retriever"
 
 
 /////////////////////////////////////////////////
-// 19. Misc
+// 9. Misc
 /////////////////////////////////////////////////
 // Importe
 
@@ -804,7 +805,7 @@ import scala.collection.immutable.{Map => _, Set => _, _}
 
 object Application {
   def main(args: Array[String]): Unit = {
-    // Sachen kommen hierhin
+    // Zeugs hier rein.
   }
 }
 
