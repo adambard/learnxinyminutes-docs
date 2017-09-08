@@ -829,11 +829,11 @@ writer.close()
 
 ## Weiterführende Hinweise
 
-// DE
+### DE
 * [Scala Tutorial](https://scalatutorial.wordpress.com)
 * [Scala Tutorial](http://scalatutorial.de)
 
-// EN
+### EN
 * [Scala for the impatient](http://horstmann.com/scala/)
 * [Twitter Scala school](http://twitter.github.io/scala_school/)
 * [The scala documentation](http://docs.scala-lang.org/)
