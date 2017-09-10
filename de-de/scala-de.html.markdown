@@ -40,22 +40,22 @@ Als nächstes beschäftigen wir uns mit ein paar Scala-Grundlagen.
 // 1. Grundlagen
 /////////////////////////////////////////////////
 
-// Einzeilige Kommentare beginnen mit zwei Slashes.
+// Einzeilige Kommentare beginnen mit zwei Schrägstrichen.
 
 /*
-  Mehrzeilige Kommentare starten mit einem Slash-Stern
-  und enden mit einem Stern-Slash.
+  Mehrzeilige Kommentare starten mit Schrägstrich und Stern
+  und enden mit Stern und Schrägstrich.
 */
 
 // Einen Wert und eine zusätzliche neue Zeile ausgeben:
 
-println("Hello world!")
+println("Hallo Welt!")
 println(10)
 
 
 // Einen Wert ohne eine zusätzliche neue Zeile ausgeben:
 
-print("Hello world")
+print("Hallo Welt")
 
 /*
   Variablen werden entweder mit var oder val deklariert.
@@ -128,16 +128,16 @@ Ausdrucks zu speichern. Dieser Wert kann bei Dir anders sein...
 
 // Für Strings gibt es die üblichen Java-Methoden:
 
-"hello world".length
-"hello world".substring(2, 6)
-"hello world".replace("C", "3")
+"Hallo Welt".length
+"Hallo Welt".substring(2, 6)
+"Hallo Welt".replace("C", "3")
 
 
 // Zusätzlich gibt es noch extra Scala-Methoden
 // siehe: scala.collection.immutable.StringOps
 
-"hello world".take(5)
-"hello world".drop(5)
+"Hallo Welt".take(5)
+"Hallo Welt".drop(5)
 
 
 // String-Interpolation: prefix "s":
@@ -296,7 +296,7 @@ i    // i ausgeben, res3: Int = 10
 // Sie läuft sequentiell ab und verändert die loop-Variable.
 // "while" in Scala läuft schneller ab als in Java und die o.g.
 // Kombinatoren und Zusammenlegungen sind einfacher zu verstehen
-// und zu parellelisieren.
+// und zu parallelisieren.
 
 // Ein do while Schleife
 
@@ -331,7 +331,7 @@ val text = if (x == 10) "yeah" else "nope"
 
 
 /////////////////////////////////////////////////
-// 4. Datenstrukturen (Array, Map, Set, Tuples)
+// 4. Datenstrukturen (Array, Map, Set, Tupel)
 /////////////////////////////////////////////////
 
 // Array
@@ -359,8 +359,8 @@ s(1) //true
 val s = Set(1,1,3,3,7)
 s: scala.collection.immutable.Set[Int] = Set(1, 3, 7)
 
-// Tuple - Speichert beliebige Daten und "verbindet" sie miteinander
-// Ein Tuple ist keine Collection.
+// Tupel - Speichert beliebige Daten und "verbindet" sie miteinander
+// Ein Tupel ist keine Collection.
 
 (1, 2)
 (4, 3, 2)
@@ -368,14 +368,14 @@ s: scala.collection.immutable.Set[Int] = Set(1, 3, 7)
 (a, 2, "three")
 
 
-// Hier ist der Rückgabewert der Funktion ein Tuple
+// Hier ist der Rückgabewert der Funktion ein Tupel
 // Die Funktion gibt das Ergebnis sowie den Rest zurück.
 
 val divideInts = (x: Int, y: Int) => (x / y, x % y)
 divideInts(10, 3)
 
 
-// Um die Elemente eines Tuples anzusprechen, benutzt man diese
+// Um die Elemente eines Tupels anzusprechen, benutzt man diese
 // Notation: _._n wobei n der index des Elements ist (Index startet bei 1)
 
 val d = divideInts(10, 3)
@@ -603,21 +603,21 @@ def matchPerson(person: Person): String = person match {
 val email = "(.*)@(.*)".r  // regex
 def matchEverything(obj: Any): String = obj match {
   // Werte:
-  case "Hello world" => "Got the string Hello world"
+  case "Hallo Welt" => "string Hallo Welt gefunden"
   // Typen:
-  case x: Double => "Got a Double: " + x
-  // Conditions:
-  case x: Int if x > 10000 => "Got a pretty big number!"
-  // Case Classes:
-  case Person(name, number) => s"Got contact info for $name!"
+  case x: Double => "Double gefunden: " + x
+  // Bedingungen:
+  case x: Int if x > 10000 => "Ziemlich große Zahl gefunden!"
+  // Case-Klassen:
+  case Person(name, number) => s"Kontaktinformationen für $name gefunden!"
   // RegEx:
-  case email(name, domain) => s"Got email address $name@$domain"
-  // Tuples:
-  case (a: Int, b: Double, c: String) => s"Got a tuple: $a, $b, $c"
+  case email(name, domain) => s"E-Mail-Adresse $name@$domain gefunden"
+  // Tupel:
+  case (a: Int, b: Double, c: String) => s"Tupel gefunden: $a, $b, $c"
   // Strukturen:
-  case List(1, b, c) => s"Got a list with three elements and starts with 1: 1, $b, $c"
-  // Patterns kann man ineinander schachteln:
-  case List(List((1, 2, "YAY"))) => "Got a list of list of tuple"
+  case List(1, b, c) => s"Liste aus drei Elementen gefunden, startend mit 1: 1, $b, $c"
+  // Pattern kann man ineinander schachteln:
+  case List(List((1, 2, "YAY"))) => "Liste von Tupeln gefunden"
 }
 
 
@@ -747,12 +747,12 @@ myImplicitFunction("Pitbull").sorte // => "Golden Pitbull"
 // Diese Funktion hat zwei Parameter: einen normalen und einen implicit
 
 def sendGreetings(toWhom: String)(implicit howMany: Int) =
-  s"Hello $toWhom, $howMany blessings to you and yours!"
+  s"Hallo $toWhom, $howMany Segenswünsche für Sie und Ihre Angehörigen!"
 
 
 // Werden beide Parameter gefüllt, verhält sich die Funktion wie erwartet
 
-sendGreetings("John")(1000)  // => "Hello John, 1000 blessings to you and yours!"
+sendGreetings("John")(1000)  // => "Hallo John, 1000 Segenswünsche für Sie und Ihre Angehörigen!"
 
 
 // Wird der implicit-Parameter jedoch weggelassen, wird ein anderer
@@ -763,7 +763,7 @@ sendGreetings("John")(1000)  // => "Hello John, 1000 blessings to you and yours!
 
 // Hier also: "myImplicitInt", da ein Int gesucht wird
 
-sendGreetings("Jane")  // => "Hello Jane, 100 blessings to you and yours!"
+sendGreetings("Jane")  // => "Hallo Jane, 100 Segenswünsche für Sie und Ihre Angehörigen!"
 
 
 // bzw. "myImplicitFunction"
@@ -774,7 +774,7 @@ sendGreetings("Jane")  // => "Hello Jane, 100 blessings to you and yours!"
 
 
 /////////////////////////////////////////////////
-// 9. Misc
+// 9. Sonstiges
 /////////////////////////////////////////////////
 // Importe
 
