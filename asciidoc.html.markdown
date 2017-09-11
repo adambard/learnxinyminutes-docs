@@ -2,6 +2,7 @@
 language: asciidoc
 contributors:
     - ["Ryan Mavilia", "http://unoriginality.rocks/"]
+    - ["Abel Salgado Romero", "https://twitter.com/abelsromero"]
 filename: asciidoc.md
 ---
 
@@ -120,3 +121,16 @@ You can nest lists by adding extra asterisks or periods up to five times.
 .... foo 4
 ..... foo 5
 ```
+
+## Further Reading
+
+There are two tools to process AsciiDoc documents:
+
+1. [AsciiDoc](http://asciidoc.org/): original Python implementation available in the main Linux distributions. Stable and currently in maintenance mode.
+2. [Asciidoctor](http://asciidoctor.org/): alternative Ruby implementation, usable also from Java and JavasScript. Under active development, it aims to extend the AsciiDoc syntax with new features and output formats.
+
+Following links are related to `Asciidoctor` implementation:
+
+* [Markdown - AsciiDoc syntax comparision](http://asciidoctor.org/docs/user-manual/#comparison-by-example): side-by-side comparision of common Markdown and AsciiDoc elements.
+* [Getting started](http://asciidoctor.org/docs/#get-started-with-asciidoctor): installation and quick start guides to render simple documents.
+* [Asciidoctor User Manual](http://asciidoctor.org/docs/user-manual/): complete single-document manual with syntax reference, examples, rendering tools, amongst others.
