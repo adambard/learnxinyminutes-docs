@@ -1001,13 +1001,11 @@ cout << get<5>(concatenated_tuple) << "\n"; // prints: 'A'
 // Vector (Dynamic array)
 // Allow us to Define the Array or list of objects at run time
 #include <vector>
-typedef string my_vector_type;
-my_vector_type val;
-vector<my_vector_type> my_vector; // initialize the vector
+string val;
+vector<string> my_vector; // initialize the vector
 cin >> val;
 my_vector.push_back(val); // will push the value of 'val' into vector ("array") my_vector
-cin >> val;
-my_vector.push_back(val); // will push another value into the vector
+my_vector.push_back(val); // will push the value into the vector again (now having two elements)
 
 // To iterate through a vector we have 2 choices:
 // Either classic looping (iterating through the vector from index 0 to its last index):
@@ -1016,7 +1014,7 @@ for (int i = 0; i < my_vector.size(); i++) {
 }
 
 // or using an iterator:
-vector<my_vector_type>::iterator it; // initialize the iterator for vector
+vector<string>::iterator it; // initialize the iterator for vector
 for (it = my_vector.begin(); it != my_vector.end(); ++it) {
 	cout << *it  << endl;
 }
