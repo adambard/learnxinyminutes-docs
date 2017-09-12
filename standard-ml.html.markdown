@@ -463,5 +463,5 @@ fun decrement_ret x y = (x := !x - 1; y)
   [Moscow ML](http://mosml.org),
   [SML/NJ](http://smlnj.org/).
 * Follow the Coursera course [Programming Languages](https://www.coursera.org/course/proglang).
-* Get the book *ML for the Working Programmer* by Larry C. Paulson.
+* Read *[ML for the Working Programmer](https://www.cl.cam.ac.uk/~lp15/MLbook/pub-details.html)* by Larry C. Paulson.
 * Use [StackOverflow's sml tag](http://stackoverflow.com/questions/tagged/sml).
