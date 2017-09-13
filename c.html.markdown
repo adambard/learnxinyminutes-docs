@@ -756,8 +756,14 @@ as the C file.
 /* Like c source files macros can be defined in headers and used in files */
 /* that include this header file.                                         */
 #define EXAMPLE_NAME "Dennis Ritchie"
-/* Function macros can also be defined. */
-#define ADD(a, b) (a + b)
+
+/* Function macros can also be defined.  */
+#define ADD(a, b) ((a) + (b))
+
+/* Notice the parenthesis surrounding the arguments -- this is important to   */
+/* ensure that a and b don't get expanded in an unexpected way (e.g. consider */
+/* MUL(x, y) (x * y); MUL(1 + 2, 3) would expand to (1 + 2 * 3), yielding an  */
+/* incorrect result)                                                          */
 
 /* Structs and typedefs can be used for consistency between files. */
 typedef struct Node
