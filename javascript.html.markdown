@@ -80,6 +80,15 @@ false;
 'abc';
 "Hello, world";
 
+// [ES2015] Strings can also be created using template literals, which are
+// surrounded by `, and can contain JavaScript expressions inside ${ } blocks.
+`one plus two is ${1 + 2}`; // = "one plus two is 3"
+
+// Unlike string literals, template literals can also span multiple lines.
+`  1
++ 2
+= ${1 + 2}`; // = "  1\n+ 2\n= 3"
+
 // Negation uses the ! symbol
 !true; // = false
 !false; // = true
