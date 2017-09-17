@@ -21,6 +21,20 @@ a lot of the basic syntax will already be familiar. Despite this, and despite
 the similarity in name, JavaScript's object model is significantly different to
 Java's.
 
+The syntax and behaviour of JavaScript is standardised by Ecma International, in
+the ECMAScript specification. In this document, we describe the ECMAScript 2015
+version (also known as ES6), which is supported by the latest versions of
+most popular implementations.
+
+There are still JavaScript implementations without ES2015 support in the wild,
+though; the most popular being Microsoft Internet Explorer with a 3.7% market
+share on the public Internet (Aug 2017) and much higher usage in some corporate
+environments. Although [Babel] can be used to translate ES2015 code into a form
+older implementations understand, we've marked new ES2015 features with
+`[ES2015]` in this document for that reason.
+
+[Babel]: https://babeljs.io
+
 ```js
 // Single-line comments start with two slashes.
 /* Multiline comments start with slash-star,
@@ -611,6 +625,11 @@ some of the more complicated examples.
 [Javascript: The Right Way][10] is a guide intended to introduce new developers
 to JavaScript and help experienced developers learn more about its best practices.
 
+The [ECMAScript Compatibility Table][11] can tell you which parts of new
+versions of the ECMAScript standard are supported by which versions of which
+JavaScript implementations, and for browsers [StatCounter GlobalStats][12] can
+tell you how widely-used each version of each one is.
+
 In addition to direct contributors to this article, some content is adapted from
 Louie Dinh's Python tutorial on this site, and the [JS Tutorial][7] on the
 Mozilla Developer Network.
@@ -626,3 +645,5 @@ Mozilla Developer Network.
 [8]: http://eloquentjavascript.net/
 [9]: http://watchandcode.com/courses/eloquent-javascript-the-annotated-version
 [10]: http://jstherightway.org/
+[11]: http://kangax.github.io/compat-table/
+[12]: http://gs.statcounter.com
