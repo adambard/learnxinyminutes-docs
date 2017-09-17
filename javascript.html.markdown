@@ -594,6 +594,50 @@ if (Object.create === undefined){ // don't overwrite it if it exists
         return new Constructor();
     }
 }
+
+///////////////////////////////////////////
+// 6. [ES2015] Modules, Imports and Exports
+
+// ES2015 introduces a module system, which allows JavaScript files to access
+// code and data from each other. Unlike most parts of ES2015, many modern
+// browsers are still working on native support for modules, so it's usually
+// necessary to use a build tool to resolve module imports and exports.
+
+// To access code and data from another file, use the import keyword.
+import {foo, bar} from 'myModule';
+
+// Imports can also be aliased using the as keyword, to improve clarity or
+// avoid name clashes.
+import {foo as otherFoo} from 'otherModule';
+
+// You can also import everything that another module exports into one alias.
+// Note that the alias is mandatory in this case.
+import * as thirdModule from 'thirdModule';
+thirdModule.foo;
+thirdModule.bar;
+
+// To expose code and data for other files to import, use the export keyword.
+// Like import, it supports aliasing.
+export {myNumber, myFunction as func};
+
+// You can also use a shorthand to declare a variable, constant, function or
+// class and export it in the same line.
+export var myNumber = 42;
+export let myOtherNumber = 43;
+export const TAU = Math.PI / 2;
+export function double(x){ return x * 2; }
+export class foo { constructor(x){ this.x = x; } }
+
+// Sometimes a module has one particular thing in it that is either the only
+// thing it needs to export, or the most common or important one. In those
+// cases, it can expose a default export.
+export {myNumber, myFunction as default};
+export default function double(x){ return x * 2; }
+
+// Import a module's default export by putting it outside the curly brackets.
+import myDefault from 'fourthModule';
+import otherDefault, { otherValue } from 'fifthModule';
+
 ```
 
 ## Further Reading
