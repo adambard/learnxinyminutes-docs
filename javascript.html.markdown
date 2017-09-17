@@ -447,7 +447,7 @@ var MyConstructor = function(){
 myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
 
-// Unlike most other popular object-oriented languages, JavaScript has no 
+// Unlike most other popular object-oriented languages, JavaScript has no
 // concept of 'instances' created from 'class' blueprints; instead, JavaScript
 // combines instantiation and inheritance into a single concept: a 'prototype'.
 
