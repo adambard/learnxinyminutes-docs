@@ -200,6 +200,19 @@ myObj.myThirdKey = true;
 // If you try to access a value that's not yet set, you'll get undefined.
 myObj.myFourthKey; // = undefined
 
+// [ES2015] Constants are declared using the const keyword.
+const MY_CONST = 2;
+const MY_OBJ = {key1: "Hello", key2: "World"};
+
+// Constants can't be reassigned to a different value.
+MY_CONST = 3; // raises a TypeError
+const MY_OBJ = {key1: "Hello", key2: "World"}; // raises a TypeError
+
+// However, mutable values (like objects and lists) are still mutable when
+// assigned to constants.
+MY_OBJ.key1 = "Goodbye";
+MY_OBJ; // = {key1: "Goodbye", key2: "World"
+
 ///////////////////////////////////
 // 3. Logic and Control Structures
 
