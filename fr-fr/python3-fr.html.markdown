@@ -5,6 +5,7 @@ contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
+    - ["Julien M'Poy", "http://github.com/groovytron"]
 translators:
     - ["Gnomino", "https://github.com/Gnomino"]
 filename: learnpython3-fr.py
@@ -12,7 +13,7 @@ lang: fr-fr
 ---
 
 Python a été créé par Guido Van Rossum au début des années 90. C'est maintenant un des 
-langages les populaires. Je suis tombé amoureux de Python pour la clarté de sa syntaxe.
+langages les plus populaires. Je suis tombé amoureux de Python pour la clarté de sa syntaxe.
 C'est tout simplement du pseudo-code exécutable.
 
 L'auteur original apprécierait les retours (en anglais): vous pouvez le contacter sur Twitter à [@louiedinh](http://twitter.com/louiedinh) ou par mail à l'adresse louiedinh [at] [google's email service]
@@ -131,6 +132,10 @@ b == a # => True, les objets a et b ne pointent pas sur le même objet
 # On peut aussi utiliser des mots clés pour éviter de devoir compter.
 "{name} wants to eat {food}".format(name="Bob", food="lasagna") #=> "Bob wants to eat lasagna"
 
+# Il est également possible d'utiliser les f-strings depuis Python 3.6 (https://docs.python.org/3/whatsnew/3.6.html#pep-498-formatted-string-literals)
+name = "Fred"
+f"He said his name is {name}." #=> "He said his name is Fred."
+
 # Si votre code doit aussi être compatible avec Python 2.5 et moins,
 # vous pouvez encore utiliser l'ancienne syntaxe :
 "Les %s peuvent être %s avec la %s méthode" % ("chaînes", "interpolées", "vieille")
@@ -220,7 +225,7 @@ del li[2]   # li is now [1, 2, 3]
 li + other_li   # => [1, 2, 3, 4, 5, 6]
 
 # Concaténer des listes avec "extend()"
-li.extend(other_li)   # Now li is [1, 2, 3, 4, 5, 6]
+li.extend(other_li)   # Maintenant li contient [1, 2, 3, 4, 5, 6]
 
 # Vérifier la présence d'un objet dans une liste avec "in"
 1 in li   # => True
@@ -476,7 +481,7 @@ def add(x, y):
 # Appel d'une fonction avec des paramètres :
 add(5, 6)   # => affiche "x est 5 et y est 6" et retourne 11
 
-# Une autre manière d'appeller une fonction : avec des arguments
+# Une autre manière d'appeler une fonction : avec des arguments
 add(y=6, x=5)   # Les arguments peuvent être dans n'importe quel ordre.
 
 # Définir une fonction qui prend un nombre variable d'arguments
@@ -570,7 +575,7 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 ####################################################
 
 
-# On utilise l'opérateur "classe" pour définir une classe
+# On utilise l'opérateur "class" pour définir une classe
 class Human:
 
     # Un attribut de la classe. Il est partagé par toutes les instances de la classe.
@@ -646,7 +651,7 @@ math.sqrt(16) == m.sqrt(16)   # => True
 # Vous pouvez écrire les vôtres et les importer. Le nom du module
 # est le nom du fichier.
 
-# On peut voir quels fonctions et objets un module définit
+# On peut voir quelles fonctions et objets un module définit
 import math
 dir(math)
 
@@ -662,7 +667,7 @@ def double_numbers(iterable):
 
 # Un générateur crée des valeurs à la volée.
 # Au lieu de générer et retourner toutes les valeurs en une fois, il en crée une à chaque
-# itération.  Cela signifie que les valeurs supérieures à 15 ne seront pas traîtées par
+# itération.  Cela signifie que les valeurs supérieures à 30 ne seront pas traîtées par
 # double_numbers.
 # Note : range est un générateur aussi. 
 # Créer une liste 1-900000000 prendrait beaucoup de temps
