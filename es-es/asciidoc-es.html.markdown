@@ -2,6 +2,7 @@
 language: asciidoc
 contributors:
     - ["Ryan Mavilia", "http://unoriginality.rocks/"]
+translators:
     - ["Abel Salgado Romero", "https://twitter.com/abelsromero"]
 lang: es-es
 filename: asciidoc-es.md
@@ -43,7 +44,7 @@ Inicio de un documento con múltiples autores.
 Linea de versión (requiere línea de autor)
 
 ```
-= Titulo V1
+= Título del documento V1
 Potato Man <chip@crunchy.com>
 v1.0, 2016-01-13
 
@@ -66,7 +67,7 @@ Dando formato al texto
 ```
 _guión bajo para cursiva_
 *asteriscos para negrita*
-*_combinalos y verás_*
+*_combínalos y verás_*
 `usa comillas invertidas para monospace`
 `*combina para negrita monospace*`
 ```
@@ -83,11 +84,6 @@ Títulos de sección
 ==== Nivel 3 <h4>
 
 ===== Nivel 4 <h5>
-
-====== Nivel 5 <h6>
-
-======= Nivel 6  <h7>
-
 ```
 
 Listas
@@ -133,6 +129,6 @@ Existen dos herramientas para procesar documentación en AsciiDoc:
 
 Los siguientes enlaces pertenecen a `Asciidoctor` (documentación en inglés):
 
-* [Comparación de sintaxi Markdown - AsciiDoc](http://asciidoctor.org/docs/user-manual/#comparison-by-example): comparativa de elements comunes entre Markdown y AsciiDoc.
+* [Comparación de sintaxis Markdown - AsciiDoc](http://asciidoctor.org/docs/user-manual/#comparison-by-example): comparativa de elements comunes entre Markdown y AsciiDoc.
 * [Primeros pasos](http://asciidoctor.org/docs/#get-started-with-asciidoctor): manuales de instalación e inicio para convertir documentos simples.
 * [Manual de usuario de Asciidoctor](http://asciidoctor.org/docs/user-manual/): referencia completa en un único documento, contiene ejemplos, guías de herramientas, etc.
