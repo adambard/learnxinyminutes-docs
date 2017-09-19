@@ -5,9 +5,9 @@ contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
-    - ["Julien M'Poy", "http://github.com/groovytron"]
 translators:
     - ["Gnomino", "https://github.com/Gnomino"]
+    - ["Julien M'Poy", "http://github.com/groovytron"]
 filename: learnpython3-fr.py
 lang: fr-fr
 ---
@@ -134,7 +134,7 @@ b == a # => True, les objets a et b ne pointent pas sur le même objet
 
 # Il est également possible d'utiliser les f-strings depuis Python 3.6 (https://docs.python.org/3/whatsnew/3.6.html#pep-498-formatted-string-literals)
 name = "Fred"
-f"He said his name is {name}." #=> "He said his name is Fred."
+f"Il a dit que son nom est {name}." #=> "Il a dit que son nom est Fred."
 
 # Si votre code doit aussi être compatible avec Python 2.5 et moins,
 # vous pouvez encore utiliser l'ancienne syntaxe :
@@ -651,7 +651,7 @@ math.sqrt(16) == m.sqrt(16)   # => True
 # Vous pouvez écrire les vôtres et les importer. Le nom du module
 # est le nom du fichier.
 
-# On peut voir quelles fonctions et objets un module définit
+# On peut voir quels fonctions et objets un module définit
 import math
 dir(math)
 
