@@ -721,6 +721,10 @@ print(say(say_please=True))  # affiche Can you buy me a beer? Please! I am poor 
 * [Python Course](http://www.python-course.eu/index.php)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 
+### En ligne et gratuit (en français)
+
+* [Le petit guide des batteries à découvrir](https://he-arc.github.io/livre-python/)
+
 ### Livres (en anglais)
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
