@@ -82,10 +82,6 @@ Section Titles
 
 ===== Level 4 <h5>
 
-====== Level 5 <h6>
-
-======= Level 6  <h7>
-
 ```
 
 Lists
