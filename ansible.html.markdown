@@ -8,9 +8,9 @@ filename: LearnAnsible.txt
 
 ```yaml
 ---
-Ansible: 'the easiest orchestration tool'
+Ansible: "the easiest orchestration tool"
 
-Why Ansible and Intro - in the second part of document
+"{{ Why Ansible and Intro }}" in the second part of document
 
 ```
 
