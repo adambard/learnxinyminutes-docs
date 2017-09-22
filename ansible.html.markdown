@@ -43,7 +43,9 @@ There are few commands you should know about
 * `ansible-playbook` (to run playbooks)
 * `ansible-vault` (to manage secrets)
 * `ansible-galaxy` (to install roles from github/galaxy)
-and other!
+* and other!
+
+Example of usage - `shell`
 
 ```bash
 $ ansible -m shell -a 'date; whoami' localhost #hostname_or_a_group_name
