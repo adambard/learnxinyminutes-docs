@@ -47,7 +47,7 @@ There are few commands you should know about
 * and other!
 
 ### Module
-_*program (usaly python) that execute, do some work and return proper JSON output :)*_
+_*program (usally python) that execute, do some work and return proper JSON output :)*_
 
 This *program* perform specialized task/action (like manage instances in the cloud, execute shell command).
 
@@ -64,7 +64,7 @@ $ ansible -m ping
 $ ansible -m shell -a 'date; whoami' localhost #hostname_or_a_group_name
 ```
 
-* Module: `command` - executes a single command that will not be processed through the shell, so variables like $HOME will not work
+* Module: `command` - executes a single command that will not be processed through the shell, so variables like $HOME or operands like `|` will not work
 
 
 ```bash
@@ -72,6 +72,7 @@ $ ansible -m command -a 'date; whoami' # FAILURE
 
 $ ansible -m command -a 'date'
 $ ansible -m command -a 'whoami'
+$ ansible -m command -a 'echo $HOME'
 ```
 
 * Module: `file` - performs file operations (stat, link, dir, ...) 
