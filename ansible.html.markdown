@@ -47,9 +47,10 @@ There are few commands you should know about
 
 
 #### Module
-_*program (usaly python) that execute, do some work and return proper output :)*_
+_*program (usaly python) that execute, do some work and return proper JSON output :)*_
 
-This program perform specialized task/action (like manage instances in the cloud, execute shell command).
+This *program* perform specialized task/action (like manage instances in the cloud, execute shell command).
+
 The simplest module is called `ping` - it just returns a JSON with `pong` message.
 
 Example of modules:
