@@ -39,10 +39,10 @@ localhost | SUCCESS => {
 ### Commands
 There are few commands you should know about
 
-`ansible` (to run modules in CLI)
-`ansible-playbook` (to run playbooks)
-`ansible-vault` (to manage secrets)
-`ansible-galaxy` (to install roles from github/galaxy)
+* `ansible` (to run modules in CLI)
+* `ansible-playbook` (to run playbooks)
+* `ansible-vault` (to manage secrets)
+* `ansible-galaxy` (to install roles from github/galaxy)
 and other!
 
 ```bash
@@ -50,6 +50,7 @@ $ ansible -m shell -a 'date; whoami' localhost #hostname_or_a_group_name
 ```
 
 The module `command` allows to execute a single command. It will not be processed through the shell, so variables like $HOME and operations like "<", ">", "|", ";" and "&" will not work. Use shell :)
+
 We should also mention a module `raw` that sometimes can save the day.
 
 ```bash
