@@ -6,10 +6,10 @@ contributors:
 filename: LearnAnsible.txt
 ---
 
+## Ansible: the easiest orchestration tool
+
 ```yaml
 ---
-Ansible: "the easiest orchestration tool"
-
 "{{ Why Ansible and Intro }}" in the second part of document
 
 ```
