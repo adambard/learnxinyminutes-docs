@@ -26,7 +26,7 @@ $ apt-get install ansible
 * Appendix A - How do I install ansible
 * [Additional Reading.](http://docs.ansible.com/ansible/latest/intro_installation.html)
 
-### Basic ansible commands (shell execution)
+### Your first ansible command (shell execution)
 ```bash
 # This command ping the localhost (defined in default inventory /etc/ansible/hosts) 
 $ ansible -m ping localhost
@@ -36,7 +36,7 @@ localhost | SUCCESS => {
 }
 
 ```
-### Commands
+### Shell Commands
 There are few commands you should know about
 
 * `ansible` (to run modules in CLI)
@@ -45,8 +45,7 @@ There are few commands you should know about
 * `ansible-galaxy` (to install roles from github/galaxy)
 * and other!
 
-
-#### Module
+### Module
 _*program (usaly python) that execute, do some work and return proper JSON output :)*_
 
 This *program* perform specialized task/action (like manage instances in the cloud, execute shell command).
@@ -57,7 +56,7 @@ Example of modules:
 * Module: `ping` - the simplest module that is usefull to verify host connectivity
 * Module: `shell` - a module that executes shell command on a specified host(s).
 
-Example of usage - `ping`, `shell`
+Example of execution - `ping`, `shell`
 
 ```bash
 $ ansible -m ping
