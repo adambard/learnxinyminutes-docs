@@ -45,15 +45,24 @@ There are few commands you should know about
 * `ansible-galaxy` (to install roles from github/galaxy)
 * and other!
 
-Example of usage - `shell`
+
+#### Module - program (usaly python) that execute, do some work and return proper output :)
+This program perform specialized task/action (like manage instances in the cloud, execute shell command).
+The simplest module is called `ping` - it just returns a JSON with `pong` message.
+
+Example of modules:
+* Module: `ping` - the simplest module that is usefull to verify host connectivity
+* Module: `shell` - a module that executes shell command on a specified host(s).
+
+Example of usage - `ping`, `shell`
 
 ```bash
+$ ansible -m ping
 $ ansible -m shell -a 'date; whoami' localhost #hostname_or_a_group_name
 ```
 
-The module `command` allows to execute a single command. It will not be processed through the shell, so variables like $HOME and operations like "<", ">", "|", ";" and "&" will not work. Use shell :)
+* Module: `command` - executes a single command that will not be processed through the shell, so variables like $HOME will not work
 
-We should also mention a module `raw` that sometimes can save the day.
 
 ```bash
 $ ansible -m command -a 'date; whoami' # FAILURE
@@ -62,14 +71,8 @@ $ ansible -m command -a 'date'
 $ ansible -m command -a 'whoami'
 ```
 
-
-#### Module - program (usaly python) that execute, do some work and return proper output :)
-This program perform specialized task/action (like manage instances in the cloud, execute shell command).
-The simplest module is called `ping` - it just returns a JSON with `pong` message.
-
-Example of modules:
-Module: `shell` - a module that executes shell command on a specified host(s).
-Module: `file` - performs file operations (stat, link, dir, ...) 
+* Module: `file` - performs file operations (stat, link, dir, ...) 
+* Module: `raw` - executes a low-down and dirty SSH command, not going through the module subsystem (usefull to install python2.7)
 
 
 ```yaml
