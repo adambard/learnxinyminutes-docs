@@ -24,17 +24,16 @@ $ apt-get install ansible
 
 ```
 * Appendix A - How do I install ansible
-[Additional Reading.](http://docs.ansible.com/ansible/latest/intro_installation.html)
+* [Additional Reading.](http://docs.ansible.com/ansible/latest/intro_installation.html)
 
 ### Basic ansible commands (shell execution)
 ```bash
 # This command ping the localhost (defined in default inventory /etc/ansible/hosts) 
-
 $ ansible -m ping localhost
-<span style="color:green">localhost | SUCCESS => {
+localhost | SUCCESS => {
     "changed": false, 
     "ping": "pong"
-}</span>
+}
 
 ```
 ### Commands
