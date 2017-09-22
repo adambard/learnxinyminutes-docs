@@ -6,17 +6,38 @@ contributors:
 filename: LearnAnsible.txt
 ---
 
-Ansible is (one of the many) orchestration tools. It allows you to controll your environment (infrastructure and a code) and automate the manual tasks.
-'You can think as simple as writing in bash with python API :)
-Of course the rabit hole is way deeper.'
+```yaml
+---
+Ansible - the easiest orchestration tool
 
-Ansible have great integration with multiple operating systems (even Windows) and some hardware (switches, Firewalls, etc). It has multiple tools that integrate with the could providers. Almost every worth-notice cloud provider is present in the ecosystem (AWS, Azure, Google, DigitalOcean, OVH, etc...)
+Why Ansible and Intro - in the second part of document
 
+```
 
-## Ansible naming and basic concept
+## Installation
+```bash
+# Universal way
+$ pip install ansible
 
-### Basic ansible commands
+# Debian, Ubuntu
+$ apt-get install ansible
 
+```
+* Appendix A - How do I install ansible
+[Additional Reading.](http://docs.ansible.com/ansible/latest/intro_installation.html)
+
+### Basic ansible commands (shell execution)
+```bash
+# This command ping the localhost (defined in default inventory /etc/ansible/hosts) 
+
+$ ansible -m ping localhost
+<span style="color:green">localhost | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}</span>
+
+```
+### Commands
 There are few commands you should know about
 
 `ansible` (to run modules in CLI)
@@ -25,15 +46,36 @@ There are few commands you should know about
 `ansible-galaxy` (to install roles from github/galaxy)
 and other!
 
+```bash
+$ ansible -m shell -a 'date; whoami' localhost #hostname_or_a_group_name
+```
+
+The module `command` allows to execute a single command. It will not be processed through the shell, so variables like $HOME and operations like "<", ">", "|", ";" and "&" will not work. Use shell :)
+We should also mention a module `raw` that sometimes can save the day.
+
+```bash
+$ ansible -m command -a 'date; whoami' # FAILURE
+
+$ ansible -m command -a 'date'
+$ ansible -m command -a 'whoami'
+```
+
+
+#### Module - program (usaly python) that execute, do some work and return proper output :)
+This program perform specialized task/action (like manage instances in the cloud, execute shell command).
+The simplest module is called `ping` - it just returns a JSON with `pong` message.
+
+Example of modules:
+Module: `shell` - a module that executes shell command on a specified host(s).
+Module: `file` - performs file operations (stat, link, dir, ...) 
+
+
+```yaml
+```
+
 #### Inventory
 Inventory is a set of objects/hosts against which we are executing our playbooks 
 For this few minutes, lets asume that we are using default ansible inventory (which in Debian based system is placed in /etc/ansible/hosts_
-
-#### Module - this is name for an logical program (usaly python) that consume proper JSON input and return proper output :)
-This program perform certain task/action (like manage Amazon instances, execute shell command, any of your program).
-The simplest module is called `ping` - it just returns a JSON with `pong` message and ansible variables. 
-Example: Module:shell - a module that executes shell command on a delegated host(s).
-Example: Module:file - performs file operations (stat, link, dir, ...) 
 
 ##### Task
 Execution of a single module is called a `task`
@@ -44,30 +86,22 @@ Another example of the module that allow you to execute command remotly on multi
 Example of a Task run in CLI:
 ###### Run a ansible module
 
-```bash
-$ ansible -m ping hostname_or_a_group_name
-$ ansible -m shell -a 'date; whoami' hostname_or_a_group_name
-```
-
-another module - `command` that allows to execute a single command only with a simple shell #JM
-We should also mention a module `raw` 
-
-```bash
-$ ansible -m command -a 'date; whoami' # FAILURE
-
-$ ansible -m command -a 'date'
-$ ansible -m command -a 'whoami'
-```
 
 ##### Playbook
-
-A common way to execute tasks is called `playbook`.
-You have to define a list (or group) of hosts that is executed against, some `task(s)` or `role(s)` that are going to be executed. There are also multiple optional settings (like default variables, and way more).
+Execution plan written in a form of script file(s) is called `playbook`.
+Playbook consist of multiple elements
+* a list (or group) of hosts that 'the play' is executed against
+* `task(s)` or `role(s)` that are going to be executed
+* multiple optional settings (like default variables, and way more)
 Playbook script language is YAML
 
-You can think that it is very advanced CLI script that you are executing.
+You can think that playbook is very advanced CLI script that you are executing.
 
-Example of the playbook:
+
+##### Example of the playbook:
+This playbook would execute (on all hosts defined in the inventory) two tasks 
+*`ping` that would return message *pong*
+* `shell` that execute three commands and return the output to our terminal
 
 ```yml
 hosts: all
@@ -83,7 +117,7 @@ You can execute a playbook with a command:
 ```bash
 $ ansible-playbook path/name_of_the_playbook.yml
 ```
-
+It is also possible to become a user other than root using --become-user:
 ## More on ansible concept
 
 ### ansible-roles (a 'template-playbooks in right structure')
@@ -138,6 +172,9 @@ It is a best way to restart a service, check if application port is open, etc.
 ### ansible - variables
 lookup's
 
+#### templates
+JINJA2
+
 ### ansible-vault
 
 ### inventory
@@ -179,6 +216,14 @@ AND,XOR
 tags
 meta
 no_logs
+
+## Introduction
+Ansible is (one of the many) orchestration tools. It allows you to controll your environment (infrastructure and a code) and automate the manual tasks.
+'You can think as simple as writing in bash with python API :)
+Of course the rabit hole is way deeper.'
+
+Ansible have great integration with multiple operating systems (even Windows) and some hardware (switches, Firewalls, etc). It has multiple tools that integrate with the could providers. Almost every worth-notice cloud provider is present in the ecosystem (AWS, Azure, Google, DigitalOcean, OVH, etc...)
+
 
 
 ## Main cons and pros
