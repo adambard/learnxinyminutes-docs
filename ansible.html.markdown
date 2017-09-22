@@ -30,6 +30,7 @@ $ apt-get install ansible
 ```bash
 # This command ping the localhost (defined in default inventory /etc/ansible/hosts) 
 $ ansible -m ping localhost
+# you should see this output
 localhost | SUCCESS => {
     "changed": false, 
     "ping": "pong"
