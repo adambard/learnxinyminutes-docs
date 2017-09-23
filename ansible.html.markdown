@@ -106,12 +106,14 @@ Example of a Task run in CLI:
 
 
 ##### Playbook
-Execution plan written in a form of script file(s) is called `playbook`.
+Execution plan written in a form of script file(s) is called `playbook`.--
+
 Playbook consist of multiple elements
 * a list (or group) of hosts that 'the play' is executed against
 * `task(s)` or `role(s)` that are going to be executed
 * multiple optional settings (like default variables, and way more)
-Playbook script language is YAML
+Playbook script language is YAML--
+
 
 You can think that playbook is very advanced CLI script that you are executing.
 
