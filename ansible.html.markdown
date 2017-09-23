@@ -64,7 +64,7 @@ $ ansible -m ping
 $ ansible -m shell -a 'date; whoami' localhost #hostname_or_a_group_name
 ```
 
-* Module: `command` - executes a single command that will not be processed through the shell, so variables like $HOME or operands like `|` will not work
+* Module: `command` - executes a single command that will not be processed through the shell, so variables like $HOME or operands like `|` `;` will not work
 
 
 ```bash
@@ -79,17 +79,27 @@ $ ansible -m command -a 'echo $HOME'
 * Module: `raw` - executes a low-down and dirty SSH command, not going through the module subsystem (usefull to install python2.7)
 
 
-```yaml
-```
+### Ansible - naming and basic concept
 
 #### Inventory
-Inventory is a set of objects/hosts against which we are executing our playbooks 
-For this few minutes, lets asume that we are using default ansible inventory (which in Debian based system is placed in /etc/ansible/hosts_
+Inventory is a set of an objects or hosts, against which we are executing our playbooks or single tasks via shell commands
+For this few minutes, lets asume that we are using default ansible inventory (which in Debian based system is placed in /etc/ansible/hosts)
 
-##### Task
+`/etc/ansible/hosts`
+```
+localhost
+
+[some_group]
+hostA.mydomain.com
+hostB.localdomain
+```
+* [Additional Reading.](http://docs.ansible.com/ansible/latest/intro_inventory.html)
+
+#### Task
 Execution of a single module is called a `task`
 
-The simplest module is called `ping`. 
+The simplest module is called `ping` as you could see above
+
 Another example of the module that allow you to execute command remotly on multiple resources is called shell. It is the same as you would execute command remotely over ssh.
 
 Example of a Task run in CLI:
@@ -180,6 +190,8 @@ It is a best way to restart a service, check if application port is open, etc.
 
 ### ansible - variables
 lookup's
+```yaml
+```
 
 #### templates
 JINJA2
