@@ -99,6 +99,7 @@ hostB.localdomain
 Execution of a single Ansible **module** is called a **task**
 
   The simplest module is called `ping` as you could see above
+
   Another example of the module that allow you to execute command remotly on multiple resources is called shell. It is the same as you would execute command remotely over ssh.
 
 Example of a Task run in CLI:
@@ -106,14 +107,12 @@ Example of a Task run in CLI:
 
 
 ##### Playbook
-Execution plan written in a form of script file(s) is called `playbook`.--
-
+Execution plan written in a form of script file(s) is called `playbook`.
 Playbook consist of multiple elements
 * a list (or group) of hosts that 'the play' is executed against
 * `task(s)` or `role(s)` that are going to be executed
 * multiple optional settings (like default variables, and way more)
-Playbook script language is YAML--
-
+Playbook script language is YAML
 
 You can think that playbook is very advanced CLI script that you are executing.
 
