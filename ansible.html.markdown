@@ -99,6 +99,7 @@ hostB.localdomain
   Execution of a single Ansible **module** is called a **task**
 
    The simplest module is called `ping` as you could see above
+
    Another example of the module that allow you to execute command remotly on multiple resources is called shell. It is the same as you would execute command remotely over ssh.
 
 
