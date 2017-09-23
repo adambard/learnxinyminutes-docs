@@ -79,7 +79,7 @@ $ ansible -m command -a 'echo $HOME'
 * Module: `raw` - executes a low-down and dirty SSH command, not going through the module subsystem (usefull to install python2.7)
 
 
-### Ansible - naming and basic concept
+### Ansible - naming and quick intro
 
 #### Inventory
 Inventory is a set of an objects or hosts, against which we are executing our playbooks or single tasks via shell commands
@@ -96,11 +96,10 @@ hostB.localdomain
 * [Additional Reading.](http://docs.ansible.com/ansible/latest/intro_inventory.html)
 
 #### Task
-Execution of a single module is called a `task`
+Execution of a single Ansible **module** is called a **task**
 
-The simplest module is called `ping` as you could see above
-
-Another example of the module that allow you to execute command remotly on multiple resources is called shell. It is the same as you would execute command remotely over ssh.
+  The simplest module is called `ping` as you could see above
+  Another example of the module that allow you to execute command remotly on multiple resources is called shell. It is the same as you would execute command remotely over ssh.
 
 Example of a Task run in CLI:
 ###### Run a ansible module
