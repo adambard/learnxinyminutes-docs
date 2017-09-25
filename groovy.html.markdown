@@ -173,7 +173,7 @@ class Foo {
     final String name = "Roberto"
 
     // read only property with public getter and protected setter
-    String language
+    final String language
     protected void setLanguage(String language) { this.language = language }
 
     // dynamically typed property
