@@ -262,7 +262,7 @@ Bank b = Bank({
 // or
 Bank c = Bank(msg.sender, 5);
 
-c.amount = 5; // set to new value
+c.balance = 5; // set to new value
 delete b;
 // sets to initial value, set all variables in struct to 0, except mappings
 
