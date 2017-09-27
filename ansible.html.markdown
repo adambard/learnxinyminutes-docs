@@ -139,20 +139,20 @@ You can run the playbook with the command:
 ```bash
 $ ansible-playbook path/name_of_the_playbook.yml
 ```
-## More on ansible concept
+### More on ansible concept
 
-### ansible-roles (a 'template-playbooks in right structure')
+#### ansible-roles (a 'template-playbooks' with right structure)
 
-There are tasks (modules) that can be run via CLI
+You already know the tasks (modules) that can be run via CLI
 The execution plans of multiple tasks (with variables and logic) are called playbooks.
 
-For parts of the code, that should be reusable, a concept called `role` was introduced
+A concept called `role` was introduced for parts of the code that should be reusable.
 
-Role is a structured way to keep your set of tasks, variables, handlers, default settings, and way more (meta, files, templates).
-Role allows to reuse the same parts of code in multiple plybooks (you can parametrize this).
+**Role** is a structured way to manage your set of tasks, variables, handlers, default settings, and way more (meta, files, templates).
+Role allows to reuse the same parts of code in multiple plybooks (you can parametrize the role 'further' during it's execution).
 It is a great way to introduce `object oriented` management for your applications.
 
-Role can be included in your playbook (executed in your playbook).
+Role can be included in your playbook (executed via your playbook).
 
 
 ```yml
@@ -171,6 +171,16 @@ role:
 pre_tasks:
     - name: some pre-task
       shell: echo 'this task is the last, but would be executed before roles, and before tasks'
+```
+
+Example-role
+
+We would clone the ready-to-use examples from additional repository
+```bash
+$ git colone git@github.com:sirkubax/ansible-for-learnXinYminutes.git
+$ cd ansible-for-learnXinYminutes
+$ source environment
+$(venv) ansible-playbook playbooks/role_example.yml
 ```
 
 Role directory structure:
