@@ -79,9 +79,9 @@ $ ansible -m command -a 'echo $HOME'
 * Module: `raw` - executes a low-down and dirty SSH command, not going through the module subsystem (usefull to install python2.7)
 
 
-### Ansible - naming and quick intro
+## Ansible - naming and quick intro
 
-#### Inventory
+### Inventory
 Inventory is a set of an objects or hosts, against which we are executing our playbooks or single tasks via shell commands
 For this few minutes, lets asume that we are using default ansible inventory (which in Debian based system is placed in /etc/ansible/hosts)
 
@@ -95,15 +95,15 @@ hostB.localdomain
 ```
 * [Additional Reading.](http://docs.ansible.com/ansible/latest/intro_inventory.html)
 
-#### Task
+### Task
   Execution of a single Ansible **module** is called a **task**
 
    The simplest module is called `ping` as you could see above
 
-   Another example of the module that allow you to execute command remotly on multiple resources is called shell. It is the same as you would execute command remotely over ssh.
+   Another example of the module that allow you to execute command remotly on multiple resources is called `shell`. See above how you were using them already.
 
 
-##### Playbook
+### Playbook
 Execution plan written in a form of script file(s) is called `playbook`.
 Playbook consist of multiple elements
 * a list (or group) of hosts that 'the play' is executed against
@@ -114,7 +114,7 @@ Playbook script language is YAML
 You can think that playbook is very advanced CLI script that you are executing.
 
 
-##### Example of the playbook:
+#### Example of the playbook:
 This playbook would execute (on all hosts defined in the inventory) two tasks 
 *`ping` that would return message *pong*
 * `shell` that execute three commands and return the output to our terminal
