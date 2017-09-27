@@ -1,4 +1,4 @@
----
+o--
 category: tool
 tool: ansible
 contributors:
@@ -143,10 +143,9 @@ $ ansible-playbook path/name_of_the_playbook.yml
 
 #### ansible-roles (a 'template-playbooks' with right structure)
 
-   You already know the tasks (modules) that can be run via CLI.
-   The execution plans of multiple tasks (with variables and logic) are called playbooks.
+   You already know the tasks (modules) that can be run via CLI. You also know the playbooks - the execution plans of multiple tasks (with variables and logic).
 
-A concept called `role` was introduced for parts of the code that should be reusable.
+A concept called `role` was introduced for parts of the code (playbooks) that should be reusable.
 
 **Role** is a structured way to manage your set of tasks, variables, handlers, default settings, and way more (meta, files, templates).
 Role allows to reuse the same parts of code in multiple plybooks (you can parametrize the role 'further' during it's execution).
@@ -173,7 +172,7 @@ pre_tasks:
       shell: echo 'this task is the last, but would be executed before roles, and before tasks'
 ```
 
-Example-role
+Example->role
 
 We would clone the ready-to-use examples from additional repository
 ```bash
@@ -183,30 +182,59 @@ $ source environment
 $(venv) ansible-playbook playbooks/role_example.yml
 ```
 
-Role directory structure:
+#### Role directory structure:
 ```
 roles/
    some_role/
-     defaults/
-     files/
-     templates/
-     tasks/
-     handlers/
-     vars/
-     meta/
+     defaults/      # contains default variables
+     files/         # for static files
+     templates/     # for jinja templates
+     tasks/         # tasks
+     handlers/      # handlers
+     vars/          # more variables (higher priority)
+     meta/          # meta - package (role) info
 ```
 
 #### Role Handlers
-Handlers are a task that can be triggered (notified) during execution of a playbook, but they itself execute at the very end of a playbook.
-It is a best way to restart a service, check if application port is open, etc.
+Handlers are a tasks that can be triggered (notified) during execution of a playbook, but they itself execute at the very end of a playbook.
+It is a best way to restart a service, check if application port is active (successfull deployment criteria), etc.
 
 ### ansible - variables
-lookup's
+
+Ansible is flexible - it has 21 levels of variable precedence
+
+[read more] 
+
+For now you might like to know, that CLI variables has the top priority.
+
+You should also know, that a nice way to pool some data is a **lookup**
+
+##### Lookups
+
+* pipe
+* file
+* stream
+* etcd
+
+You can use them in CLI too
 ```yaml
+ansible -m shell -a 'echo {{ my_variable }}` -e '{{ lookup('pipe'; 'date' }}"
+
 ```
 
-#### templates
-JINJA2
+#### Templates
+
+Template is a powerfull way to deliver some (partially) dynamic content. Ansible uses **Jinja2** langueage to describe the template.
+
+```jinja2
+Some static content
+
+{{ a_variable }}
+
+{% for item in loop_items %} 
+    this line item is {{ item }}
+{% endfor %}
+```
 
 ### ansible-vault
 
