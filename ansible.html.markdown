@@ -143,8 +143,8 @@ $ ansible-playbook path/name_of_the_playbook.yml
 
 #### ansible-roles (a 'template-playbooks' with right structure)
 
-You already know the tasks (modules) that can be run via CLI
-The execution plans of multiple tasks (with variables and logic) are called playbooks.
+   You already know the tasks (modules) that can be run via CLI.
+   The execution plans of multiple tasks (with variables and logic) are called playbooks.
 
 A concept called `role` was introduced for parts of the code that should be reusable.
 
