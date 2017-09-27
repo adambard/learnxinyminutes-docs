@@ -61,13 +61,12 @@ $ haml input_file.haml output_file.html
 /
   The div tag is the default element, so it can be omitted.
   You can define only class/id using . or #
-  For example:
+  For example
 
 %div.my_class
   %div#my_id
 
-/ Can be written:
-
+/ Can be written
 .my_class
   #my_id
 
