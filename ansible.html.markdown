@@ -137,7 +137,7 @@ some_other_group
 
 ```
 * [Additional Reading.](http://docs.ansible.com/ansible/latest/intro_inventory.html)
-#### ansible-roles (a 'template-playbooks' with right structure)
+### ansible-roles (a 'template-playbooks' with right structure)
 
    You already know the tasks (modules) that can be run via CLI. You also know the playbooks - the execution plans of multiple tasks (with variables and logic).
 
@@ -205,7 +205,7 @@ For now you might like to know, that CLI variables has the top priority.
 
 You should also know, that a nice way to pool some data is a **lookup**
 
-##### Lookups
+### Lookups
 
 * pipe
 * file
@@ -218,7 +218,7 @@ ansible -m shell -a 'echo {{ my_variable }}` -e '{{ lookup('pipe'; 'date' }}" lo
 
 ```
 
-#### Templates
+### Templates
 
 Template is a powerfull way to deliver some (partially) dynamic content. Ansible uses **Jinja2** langueage to describe the template.
 
@@ -233,7 +233,7 @@ Some static content
 ```
 Jinja may have some limitations, but it is a powerfull tool that you might like.
 
-#### Jinja2 CLI
+### Jinja2 CLI
 You can use the jinja in the CLI too
 ```bash
 ansible -m shell -a 'echo {{ my_variable }}` -e 'my_variable=something, playbook_parameter=twentytwo" localhost
@@ -248,7 +248,7 @@ Junja is powerfull. It has built-in many usefull functions.
 {{ some_variable | default('default_value') }}
 ```
 
-#### ansible-vault
+### ansible-vault
 To maintain **ifrastructure as a code** you need to store secrets. 
   Ansible provides a way to encrypt the poufne files so you can store it in the repository, yet the files are decrypted in-fly during ansible execution.
 
@@ -278,7 +278,7 @@ $ cat path/somefile
 $ ansible-vault decrypt path/somefile
 ```
 
-#### dynamic inventory
+### dynamic inventory
 You might like to know, that you can build your inventory dynamically.
 
 (For Ansible) inventory is just a JSON with proper structure - if you can deliver that to ansible - anything is possible.
@@ -291,7 +291,7 @@ $ etc/inv/ec2.py --refresh
 $ ansible -m ping all -i etc/inv/ec2.py
 ```
 
-#### ansible profiling - callback
+### ansible profiling - callback
 It is ok that your playbook executes some time. Sometimes you may like to speed things up 
 
 Since ansible 2.x there is bouilt-in callback for task execution profiling
@@ -302,7 +302,7 @@ vi ansible.cfg
 callback_whitelist = profile_tasks
 ```
 
-#### facts-cache and ansible-cmdb
+### facts-cache and ansible-cmdb
 You can pool some infrmations of you environment from another hosts.
 If the informations does not change - you may consider using a facts_cache to speed things up.
 
@@ -322,7 +322,7 @@ fact_caching_timeout = 86400
 I like to use `jsonfile` as my backend. It allows to use another project
 `ansible-cmdb` [github] that generates a HTML page of your inventory resources. A nice 'free' addition!
 
-#### debugging ansible
+### debugging ansible
 When your job fails - it is good to be effective with debugging.
 
 1. Increase verbosiy by using multiple -v  **[ -vvvvv]**
@@ -330,7 +330,7 @@ When your job fails - it is good to be effective with debugging.
 3. If variable (dictionary or a list) is undefined
 4. Jinja template debug 
 
-#### Infrastructure as a code - what about Ansible
+### Infrastructure as a code - what about Ansible
 You already know, that ansible-vault allow you to store your poufne data along with your code (in repository). You can go further - and define your ansible installation and configuration as-a-code. 
 See `environment.sh` to learn how to install the ansible itself inside a `virtualenv` that is not attached to your operating system (can be changed by non-privilages user), and as additiinal benefit - upgrading version of ansible is as easy as installing new version in new virtualenv. You can have multiple versions of Ansible present in the same time. This is very helpfull!
 
@@ -379,46 +379,46 @@ For my 'business cases' I use Jenkins - it has a 'cron', jobs can be binded into
 ### create instance in AWS
 ### create env in AWS
 
-### Tips and tricks
+## Tips and tricks
 
-##### --check -C
+#### --check -C
 Always make sure that your playbook can executes in 'dry run' mode (--check), and it's execution is not declaring 'Changed' objects.
 
-##### --diff -D
+#### --diff -D
 Diff is usefull to see nice detail of the files changed
 
 It compare 'in memory' the files like `diff -BbruN fileA fileB`
 
 
-##### Execute hosts with 'regex'
+#### Execute hosts with 'regex'
 ```bash
 ansible -m ping web*
 ```
 
-#####
+####
 Host groups can be joined, negated, etc
 
 ```bash
 ansible -m ping web*:!backend:monitoring:&allow_change
 ```
 
-##### Tagging
+#### Tagging
 You should tag some (not all) objects - a task in a playbook, all tasks included form a role, etc.
 It allwos you to execute the choosen parts of the playbook.
 
-##### no_logs: True
+#### no_logs: True
 You may see, that some roles print a lot of output in verbose mode. There is also a debug module.
 This is the place where credentials may leak. Use `no_log` to hide the output.
 
-##### Debug module
+#### Debug module
 allows to print a value to the screen
 
-##### Register the output of a task
+#### Register the output of a task
 You can register the output (stdout), rc (return code), stderr of a task with the `register` command.
 
-##### Conditionals: when: 
+#### Conditionals: when: 
 
-##### Loop: with, with_items, with_dict, with_together
+#### Loop: with, with_items, with_dict, with_together
 
 
 ## Introduction
