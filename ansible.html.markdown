@@ -10,7 +10,7 @@ filename: LearnAnsible.txt
 
 ```yaml
 ---
-"{{ Why Ansible and Intro }}" in the second part of document
+"{{ Why Ansible and detailed Intro }}" written in the second part of document
 
 ```
 
@@ -60,19 +60,19 @@ Example of modules:
 Example of execution - `ping`, `shell`
 
 ```bash
-$ ansible -m ping
+$ ansible -m ping all
 $ ansible -m shell -a 'date; whoami' localhost #hostname_or_a_group_name
 ```
 
 * Module: `command` - executes a single command that will not be processed through the shell, so variables like $HOME or operands like `|` `;` will not work
+#JM
 
 
 ```bash
 $ ansible -m command -a 'date; whoami' # FAILURE
 
-$ ansible -m command -a 'date'
-$ ansible -m command -a 'whoami'
-$ ansible -m command -a 'echo $HOME'
+$ ansible -m command -a 'date' all
+$ ansible -m command -a 'whoami' all
 ```
 
 * Module: `file` - performs file operations (stat, link, dir, ...) 
@@ -92,6 +92,11 @@ localhost
 [some_group]
 hostA.mydomain.com
 hostB.localdomain
+
+[a_group_of_a_groups:children]
+some_group
+some_other_group
+
 ```
 * [Additional Reading.](http://docs.ansible.com/ansible/latest/intro_inventory.html)
 
@@ -104,7 +109,7 @@ hostB.localdomain
 
 
 ### Playbook
-Execution plan written in a form of script file(s) is called `playbook`.
+**Execution plan** written in a form of script file(s) is called `playbook`.
 Playbook consist of multiple elements
 * a list (or group) of hosts that 'the play' is executed against
 * `task(s)` or `role(s)` that are going to be executed
@@ -116,7 +121,7 @@ You can think that playbook is very advanced CLI script that you are executing.
 
 #### Example of the playbook:
 This playbook would execute (on all hosts defined in the inventory) two tasks 
-*`ping` that would return message *pong*
+* `ping` that would return message *pong*
 * `shell` that execute three commands and return the output to our terminal
 
 ```yml
