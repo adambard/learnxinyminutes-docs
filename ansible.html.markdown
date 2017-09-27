@@ -47,7 +47,7 @@ There are few commands you should know about
 * and other!
 
 ### Module
-_*program (usally python) that execute, do some work and return proper JSON output :)*_
+_*program (usally python) that execute, do some work and return proper JSON output *_
 
 This *program* perform specialized task/action (like manage instances in the cloud, execute shell command).
 
@@ -77,28 +77,6 @@ $ ansible -m command -a 'whoami' all
 
 * Module: `file` - performs file operations (stat, link, dir, ...) 
 * Module: `raw` - executes a low-down and dirty SSH command, not going through the module subsystem (usefull to install python2.7)
-
-
-## Ansible - naming and quick intro
-
-### Inventory
-Inventory is a set of an objects or hosts, against which we are executing our playbooks or single tasks via shell commands
-For this few minutes, lets asume that we are using default ansible inventory (which in Debian based system is placed in /etc/ansible/hosts)
-
-`/etc/ansible/hosts`
-```
-localhost
-
-[some_group]
-hostA.mydomain.com
-hostB.localdomain
-
-[a_group_of_a_groups:children]
-some_group
-some_other_group
-
-```
-* [Additional Reading.](http://docs.ansible.com/ansible/latest/intro_inventory.html)
 
 ### Task
   Execution of a single Ansible **module** is called a **task**
@@ -141,6 +119,24 @@ $ ansible-playbook path/name_of_the_playbook.yml
 ```
 ### More on ansible concept
 
+### Inventory
+Inventory is a set of an objects or hosts, against which we are executing our playbooks or single tasks via shell commands
+For this few minutes, lets asume that we are using default ansible inventory (which in Debian based system is placed in /etc/ansible/hosts)
+
+`/etc/ansible/hosts`
+```
+localhost
+
+[some_group]
+hostA.mydomain.com
+hostB.localdomain
+
+[a_group_of_a_groups:children]
+some_group
+some_other_group
+
+```
+* [Additional Reading.](http://docs.ansible.com/ansible/latest/intro_inventory.html)
 #### ansible-roles (a 'template-playbooks' with right structure)
 
    You already know the tasks (modules) that can be run via CLI. You also know the playbooks - the execution plans of multiple tasks (with variables and logic).
@@ -296,7 +292,7 @@ $ ansible -m ping all -i etc/inv/ec2.py
 ```
 
 #### ansible profiling - callback
-It is ok that your playbook executes some time. Sometimes you may like to speed things up :)
+It is ok that your playbook executes some time. Sometimes you may like to speed things up 
 
 Since ansible 2.x there is bouilt-in callback for task execution profiling
 
@@ -427,7 +423,7 @@ You can register the output (stdout), rc (return code), stderr of a task with th
 
 ## Introduction
 Ansible is (one of the many) orchestration tools. It allows you to controll your environment (infrastructure and a code) and automate the manual tasks.
-'You can think as simple as writing in bash with python API :)
+'You can think as simple as writing in bash with python API 
 Of course the rabit hole is way deeper.'
 
 Ansible have great integration with multiple operating systems (even Windows) and some hardware (switches, Firewalls, etc). It has multiple tools that integrate with the could providers. Almost every worth-notice cloud provider is present in the ecosystem (AWS, Azure, Google, DigitalOcean, OVH, etc...)
@@ -444,9 +440,9 @@ Official GUI Tool (web inferface) - Ansible Tower - is more than GUI, but it is 
 
 ### Pros
 
-It is an agent-less tools :) In most scenarios, it use ssh as a transport layer. 
+It is an agent-less tools In most scenarios, it use ssh as a transport layer. 
 In some way you can use it as 'bash on steroids'.
-It is very-very-very easy to start. If you are familiar with ssh concept - you already know ansible :) (almost). My personal record is: 'I did show how to install and use ansible (for simple raspberry pi cluster management) and it tool me 30 seconds to deliver a working tool !!!)'
+It is very-very-very easy to start. If you are familiar with ssh concept - you already know ansible (ALMOST). My personal record is: 'I did show how to install and use ansible (for simple raspberry pi cluster management) and it tool me 30 seconds to deliver a working tool !!!)'
 I do provide a training services - I'm able to teach a production-ready person - in 8 hours (1 training day)! It covers all needed to work aspects! No other tool can match this ease of use!
 It executes when you do it - other tools (salt, puppet, chef - might execute in different scenario than you would expect)
 Documentation is at the world-class standard!
