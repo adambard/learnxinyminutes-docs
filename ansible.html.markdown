@@ -109,18 +109,19 @@ some_other_group
 
 
 ### Playbook
-**Execution plan** written in a form of script file(s) is called `playbook`.
+**Execution plan** written in a form of script file(s) is called **playbook**.
 Playbook consist of multiple elements
 * a list (or group) of hosts that 'the play' is executed against
 * `task(s)` or `role(s)` that are going to be executed
 * multiple optional settings (like default variables, and way more)
-Playbook script language is YAML
+
+Playbook script language is YAML.
 
 You can think that playbook is very advanced CLI script that you are executing.
 
 
 #### Example of the playbook:
-This playbook would execute (on all hosts defined in the inventory) two tasks 
+This example-playbook would execute (on all hosts defined in the inventory) two tasks:
 * `ping` that would return message *pong*
 * `shell` that execute three commands and return the output to our terminal
 
@@ -134,11 +135,10 @@ tasks:
     shell: "date; whoami; df -h;"
 ```
 
-You can execute a playbook with a command:
+You can run the playbook with the command:
 ```bash
 $ ansible-playbook path/name_of_the_playbook.yml
 ```
-It is also possible to become a user other than root using --become-user:
 ## More on ansible concept
 
 ### ansible-roles (a 'template-playbooks in right structure')
@@ -232,6 +232,7 @@ virtualenv
 
 ### Web-UI: Ansible Tower, Jenkins, Rundeck
 
+#become-user, become
 
 ### Tips and tricks
 AND,XOR
