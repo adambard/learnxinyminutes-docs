@@ -47,7 +47,7 @@ There are few commands you should know about
 * and other!
 
 ### Module
-_*program (usally python) that execute, do some work and return proper JSON output *_
+_program (usally python) that execute, do some work and return proper JSON output_
 
 This *program* perform specialized task/action (like manage instances in the cloud, execute shell command).
 
