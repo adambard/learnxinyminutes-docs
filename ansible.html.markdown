@@ -291,6 +291,8 @@ $ etc/inv/ec2.py --refresh
 $ ansible -m ping all -i etc/inv/ec2.py
 ```
 
+Read also about `dynamic inventory` below
+
 ### ansible profiling - callback
 It is ok that your playbook executes some time. Sometimes you may like to speed things up 
 
