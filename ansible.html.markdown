@@ -1,4 +1,8 @@
-o--
+# JM inventory dynamic aws ec2
+# vault
+# roles
+
+---
 category: tool
 tool: ansible
 contributors:
@@ -218,7 +222,7 @@ You should also know, that a nice way to pool some data is a **lookup**
 
 You can use them in CLI too
 ```yaml
-ansible -m shell -a 'echo {{ my_variable }}` -e '{{ lookup('pipe'; 'date' }}"
+ansible -m shell -a 'echo {{ my_variable }}` -e '{{ lookup('pipe'; 'date' }}" localhost
 
 ```
 
@@ -235,15 +239,62 @@ Some static content
     this line item is {{ item }}
 {% endfor %}
 ```
+Jinja may have some limitations, but it is a powerfull tool that you might like.
 
-### ansible-vault
+#### Jinja2 CLI
+You can use the jinja in the CLI too
+```bash
+ansible -m shell -a 'echo {{ my_variable }}` -e 'my_variable=something, playbook_parameter=twentytwo" localhost
+```
 
-### inventory
-
-### dynamic inventory
 
 ### Jinja2 and templates
 jinja filters
+
+
+#### ansible-vault
+To maintain **ifrastructure as a code** you need to store secrets. 
+  Ansible provides a way to encrypt the poufne files so you can store it in the repository, yet the files are decrypted in-fly during ansible execution.
+
+The best way to use the **ansible-vault** is to store the secret in some secure location, and configure ansible to use during runtime.
+
+```bash
+$ echo some_very_very_long_secret > ~/.ssh/secure_located_file
+
+$ vi ansible.cfg
+  ansible_vault_password_file = ~/.ssh/secure_located_file
+
+#or to use env
+export ANSIBLE_VAULT_PASSWORD_FILE=~/.ssh/secure_located_file
+
+$ ansible-playbook playbooks/vault_example.yml
+
+  # decrypt the file
+$ ansible-vault encrypt path/somefile
+
+  # view the file
+$ ansible-vault view path/somefile
+
+  # check the file content:
+$ cat path/somefile
+
+  # decrypt the file
+$ ansible-vault decrypt path/somefile
+```
+
+#### dynamic inventory
+You might like to know, that you can build your inventory dynamically.
+
+(For Ansible) inventory is just a JSON with proper structure - if you can deliver that to ansible - anything is possible.
+
+You do not need to invent the wheel - there are plenty ready to use inventory script for most popular Cloud provicers and a lot of in-house popular usecaseses.
+
+```bash
+$ etc/inv/ec2.py --refresh
+
+$ ansible -m ping all -i etc/inv/ec2.py
+```
+
 
 ### ansible profiling - callback
 
