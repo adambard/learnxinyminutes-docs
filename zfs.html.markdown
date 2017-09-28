@@ -149,6 +149,7 @@ $ zpool destroy test
 ### Datasets
 
 Actions:
+
 * Create
 * List
 * Rename
@@ -269,6 +270,7 @@ ZFS snapshots are one of the things about zfs that are a really big deal
 * They are easy to automate.
 
 Actions:
+
 * Create
 * Delete
 * Rename
