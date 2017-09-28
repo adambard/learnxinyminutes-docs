@@ -188,18 +188,18 @@ $ haml input_file.haml output_file.html
 
 /
   Filters pass the block to another filtering program and return the result in Haml
-  To use filter type colon and the name of the filter
+  To use a filter, type a colon and the name of the filter
 
 / Markdown filter
 :markdown
   # Header
 
-  Text **inside** *block*
+  Text **inside** the *block*
 
 / The code above is compiled into
 <h1>Header</h1>
 
-<p>Text <strong>inside</strong> <em>block</em></p>
+<p>Text <strong>inside</strong> the <em>block</em></p>
 
 / Javascript filter
 :javascript
@@ -212,7 +212,7 @@ $ haml input_file.haml output_file.html
 
 /
   There are many types of filters (:markdown, :javascript, :coffee, :css, :ruby and so on)
-  Also you can define own filter using Haml::Filters
+  Also you can define your own filters using Haml::Filters
 
 ```
 
