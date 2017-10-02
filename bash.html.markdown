@@ -15,6 +15,7 @@ contributors:
     - ["Leo Rudberg", "https://github.com/LOZORD"]
     - ["Betsy Lorton", "https://github.com/schbetsy"]
     - ["John Detter", "https://github.com/jdetter"]
+    - ["Harry Mumford-Turner", "https://github.com/harrymt"]
 filename: LearnBash.sh
 ---
 
@@ -235,10 +236,8 @@ EOF
 python hello.py < "input.in" # pass input.in as input to the script
 python hello.py > "output.out" # redirect output from the script to output.out
 python hello.py 2> "error.err" # redirect error output to error.err
-python hello.py > "output-and-error.log" 2>&1 # redirect both output and
-																						  # errors to output-and-error.log
-python hello.py > /dev/null 2>&1 # redirect all output and errors to 
-																 # the black hole, /dev/null, i.e., no output
+python hello.py > "output-and-error.log" 2>&1 # redirect both output and errors to output-and-error.log
+python hello.py > /dev/null 2>&1 # redirect all output and errors to the black hole, /dev/null, i.e., no output
 # The output error will overwrite the file if it exists,
 # if you want to append instead, use ">>":
 python hello.py >> "output.out" 2>> "error.err"
