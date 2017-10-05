@@ -418,6 +418,8 @@ public class LearnJava {
         // String class, and a few special classes that wrap primitive types:
         // Character, Byte, Short, and Integer.
         // Starting in Java 7 and above, we can also use the String type.
+        // Note: Do remember that, not adding "break" at end any particular case ends up in
+        // executing the very next case(given it satisfies the condition provided) as well.
         int month = 3;
         String monthString;
         switch (month) {
@@ -885,6 +887,8 @@ The links provided here below are just to get an understanding of the topic, fee
 * [Learneroo.com - Learn Java](http://www.learneroo.com)
 
 * [Codingbat.com](http://codingbat.com/java)
+
+* [Codewars - Java Katas](https://www.codewars.com/?language=java)
 
 **Books**:
 
