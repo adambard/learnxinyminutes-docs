@@ -660,7 +660,7 @@ public interface Edible {
 public interface Digestible {
     public void digest();
     // Since Java 8, interfaces can have default method.
-    public void defaultMethod() {
+    public default void defaultMethod() {
         System.out.println("Hi from default method ...");
     }
 }
