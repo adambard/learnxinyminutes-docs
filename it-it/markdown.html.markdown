@@ -169,7 +169,7 @@ Il box subito sotto è una checkbox HTML spuntata.
 ```
 ## Estratti di codice
 
-Potete inserire un estratto di codice (che utilizza l'elemento <code>) indentando una linea con quattro spazi oppure con un carattere tab.
+Potete inserire un estratto di codice (che utilizza l'elemento `<code>`) indentando una linea con quattro spazi oppure con un carattere tab.
 
 ```markdown
     Questa è una linea di codice
@@ -191,14 +191,13 @@ Giovanni non sapeva neppure a cosa servisse la funzione `go_to()`!
 ```
 
 In Github Flavored Markdown, potete inoltre usare una sintassi speciale per il codice
-```markdown
-```ruby
+<pre>
+<code class="highlight">&#x60;&#x60;&#x60;ruby
 def foobar
     puts "Hello world!"
 end
-`` `
-```
-Se usate questa sintassi, il testo non richiederà di essere indentato, inoltre Github userà l'evidenziazione della sintassi del linguaggio specificato dopo i ``` iniziali
+&#x60;&#x60;&#x60;</code></pre>
+Se usate questa sintassi, il testo non richiederà di essere indentato, inoltre Github userà l'evidenziazione della sintassi del linguaggio specificato dopo i \`\`\` iniziali
 
 ## Linea orizzontale
 Le linee orizzontali (`<hr/>`) sono inserite facilmente usanto tre o più asterischi o trattini, con o senza spazi. 
@@ -280,7 +279,7 @@ Voglio inserire *questo testo circondato da asterischi* ma non voglio che venga 
 ```
 
 ### Combinazioni di tasti
-In Github Flavored Markdown, potete utilizzare il tag <kbd> per raffigurare i tasti della tastiera.
+In Github Flavored Markdown, potete utilizzare il tag `<kbd>` per raffigurare i tasti della tastiera.
 
 ```markdown
 Il tuo computer è crashato? Prova a premere
