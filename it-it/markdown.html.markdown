@@ -29,7 +29,10 @@ Markdown varia nelle sue implementazioni da un parser all'altro. Questa guida ce
 Markdown è un superset di HTML, quindi ogni file HTML è a sua volta un file Markdown valido.
 
 ```markdown
-<!-- Questo significa che possiamo usare elementi di HTML in Markdown, come per esempio i commenti, e questi non saranno modificati dal parser di Markdown. State attenti però, se inserite un elemento HTML nel vostro file Markdown, non potrete usare la sua sintassi all'interno del contenuto dell'elemento. -->
+<!-- Questo significa che possiamo usare elementi di HTML in Markdown, come per esempio i commenti,
+e questi non saranno modificati dal parser di Markdown. State attenti però, 
+se inserite un elemento HTML nel vostro file Markdown, non potrete usare la sua sintassi 
+all'interno del contenuto dell'elemento. -->
 ```
 
 ## Titoli
