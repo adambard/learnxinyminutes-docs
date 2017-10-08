@@ -186,7 +186,7 @@ x := Float pi.                                              "pi"
 x := Float e.                                               "exp constant"
 x := Float infinity.                                        "infinity"
 x := Float nan.                                             "not-a-number"
-x := Random new next; yourself. x next.                     "random number stream (0.0 to 1.0)
+x := Random new next; yourself. x next.                     "random number stream (0.0 to 1.0)"
 x := 100 atRandom.                                          "quick random number"
 
 ```
