@@ -443,19 +443,19 @@ if let daire = benimBosDairem {
 // Sınıflar gibi metotlar içerebilirler.
 
 enum Kart {
-    case Kupa, Maca, Sinek, Karo
+    case kupa, maca, sinek, karo
     func getIcon() -> String {
         switch self {
-        case .Maca: return "♤"
-        case .Kupa: return "♡"
-        case .Karo: return "♢"
-        case .Sinek: return "♧"
+        case .maca: return "♤"
+        case .kupa: return "♡"
+        case .karo: return "♢"
+        case .sinek: return "♧"
         }
     }
 }
 
 // Enum değerleri kısayol syntaxa izin verir. Eğer değişken tipi açık olarak belirtildiyse enum tipini yazmaya gerek kalmaz.
-var kartTipi: Kart = .Kupa
+var kartTipi: Kart = .kupa
 
 // Integer olmayan enumlar direk değer (rawValue) atama gerektirir.
 enum KitapAdi: String {

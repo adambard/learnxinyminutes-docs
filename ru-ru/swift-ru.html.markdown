@@ -535,20 +535,20 @@ if let circle = myEmptyCircle {
 // Они могут содержать методы подобно классам.
 
 enum Suit {
-    case Spades, Hearts, Diamonds, Clubs
+    case spades, hearts, diamonds, clubs
     func getIcon() -> String {
         switch self {
-        case .Spades: return "♤"
-        case .Hearts: return "♡"
-        case .Diamonds: return "♢"
-        case .Clubs: return "♧"
+        case .spades: return "♤"
+        case .hearts: return "♡"
+        case .diamonds: return "♢"
+        case .clubs: return "♧"
         }
     }
 }
 
 // Значения перечислений допускают сокращенный синтаксис, нет необходимости
 // указывать тип перечисления, когда переменная объявляется явно
-var suitValue: Suit = .Hearts
+var suitValue: Suit = .hearts
 
 // Значения нецелочисленных перечислений должны быть указаны явно
 // или могут выводится с помощью функции `rawValue` из имени

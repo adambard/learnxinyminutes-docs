@@ -389,13 +389,13 @@ if mySquare === mySquare {
 // Podem conter métodos do mesmo jeito que classes.
 
 enum Suit {
-    case Spades, Hearts, Diamonds, Clubs
+    case spades, hearts, diamonds, clubs
     func getIcon() -> String {
         switch self {
-        case .Spades: return "♤"
-        case .Hearts: return "♡"
-        case .Diamonds: return "♢"
-        case .Clubs: return "♧"
+        case .spades: return "♤"
+        case .hearts: return "♡"
+        case .diamonds: return "♢"
+        case .clubs: return "♧"
         }
     }
 }

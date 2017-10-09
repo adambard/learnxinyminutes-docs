@@ -445,21 +445,21 @@ if let circle = myEmptyCircle {
 // Enums pode opcionalmente ser um tipo especifico ou não.
 // Enums podem conter métodos tal como as classes.
 
-enum Suit {
-    case Spades, Hearts, Diamonds, Clubs
+enum suit {
+    case spades, hearts, diamonds, clubs
     func getIcon() -> String {
         switch self {
-        case .Spades: return "♤"
-        case .Hearts: return "♡"
-        case .Diamonds: return "♢"
-        case .Clubs: return "♧"
+        case .spades: return "♤"
+        case .hearts: return "♡"
+        case .diamonds: return "♢"
+        case .clubs: return "♧"
         }
     }
 }
 
 // Os valores de Enum permitem syntax reduzida, não é preciso escrever o tipo do enum
 // quando a variável é explicitamente definida.
-var suitValue: Suit = .Hearts
+var suitValue: Suit = .hearts
 
 // Enums que não sejam inteiros obrigam a atribuições valor bruto (raw value) diretas
 enum BookName: String {

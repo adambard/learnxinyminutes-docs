@@ -440,13 +440,13 @@ if let circle = myEmptyCircle {
 // Wie Klassen auch können sie Methoden haben
 
 enum Suit {
-    case Spades, Hearts, Diamonds, Clubs
+    case spades, hearts, diamonds, clubs
     func getIcon() -> String {
         switch self {
-        case .Spades: return "♤"
-        case .Hearts: return "♡"
-        case .Diamonds: return "♢"
-        case .Clubs: return "♧"
+        case .spades: return "♤"
+        case .hearts: return "♡"
+        case .diamonds: return "♢"
+        case .clubs: return "♧"
         }
     }
 }
@@ -455,7 +455,7 @@ enum Suit {
 // Enum-Werte können vereinfacht geschrieben werden, es muss nicht der Enum-Typ
 // genannt werden, wenn die Variable explizit deklariert wurde
 
-var suitValue: Suit = .Hearts
+var suitValue: Suit = .hearts
 
 // Nicht-Integer-Enums brauchen direkt zugewiesene "Rohwerte"
 enum BookName: String {

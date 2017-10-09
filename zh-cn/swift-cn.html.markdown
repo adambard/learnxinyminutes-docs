@@ -445,19 +445,19 @@ if let circle = myEmptyCircle {
 // 枚举可以像类一样，拥有方法
 
 enum Suit {
-    case Spades, Hearts, Diamonds, Clubs
+    case spades, hearts, diamonds, clubs
     func getIcon() -> String {
         switch self {
-        case .Spades: return "♤"
-        case .Hearts: return "♡"
-        case .Diamonds: return "♢"
-        case .Clubs: return "♧"
+        case .spades: return "♤"
+        case .hearts: return "♡"
+        case .diamonds: return "♢"
+        case .clubs: return "♧"
         }
     }
 }
 
 // 当变量类型明确指定为某个枚举类型时，赋值时可以省略枚举类型
-var suitValue: Suit = .Hearts
+var suitValue: Suit = .hearts
 
 // 非整型的枚举类型需要在定义时赋值
 enum BookName: String {

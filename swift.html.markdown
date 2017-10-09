@@ -518,20 +518,20 @@ if let circle = myEmptyCircle {
 // They can contain methods like classes.
 
 enum Suit {
-    case Spades, Hearts, Diamonds, Clubs
+    case spades, hearts, diamonds, clubs
     func getIcon() -> String {
         switch self {
-        case .Spades: return "♤"
-        case .Hearts: return "♡"
-        case .Diamonds: return "♢"
-        case .Clubs: return "♧"
+        case .spades: return "♤"
+        case .hearts: return "♡"
+        case .diamonds: return "♢"
+        case .clubs: return "♧"
         }
     }
 }
 
 // Enum values allow short hand syntax, no need to type the enum type
 // when the variable is explicitly declared
-var suitValue: Suit = .Hearts
+var suitValue: Suit = .hearts
 
 // String enums can have direct raw value assignments
 // or their raw values will be derived from the Enum field
