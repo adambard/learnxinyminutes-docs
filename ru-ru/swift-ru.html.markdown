@@ -553,10 +553,10 @@ var suitValue: Suit = .hearts
 // Значения нецелочисленных перечислений должны быть указаны явно
 // или могут выводится с помощью функции `rawValue` из имени
 enum BookName: String {
-    case John
-    case Luke = "Лука"
+    case john
+    case luke = "Лука"
 }
-print("Имя: \(BookName.John.rawValue)")
+print("Имя: \(BookName.john.rawValue)")
 
 // Перечисление (enum) со связанными значениями
 enum Furniture {

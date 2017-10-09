@@ -463,10 +463,10 @@ var suitValue: Suit = .hearts
 
 // Enums de tipo no-entero requiere asignaciones de valores crudas directas
 enum BookName: String {
-    case John = "John"
-    case Luke = "Luke"
+    case john = "John"
+    case luke = "Luke"
 }
-print("Name: \(BookName.John.rawValue)")
+print("Name: \(BookName.john.rawValue)")
 
 // Enum con valores asociados
 enum Furniture {

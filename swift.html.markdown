@@ -536,10 +536,10 @@ var suitValue: Suit = .hearts
 // String enums can have direct raw value assignments
 // or their raw values will be derived from the Enum field
 enum BookName: String {
-    case John
-    case Luke = "Luke"
+    case john
+    case luke = "Luke"
 }
-print("Name: \(BookName.John.rawValue)")
+print("Name: \(BookName.john.rawValue)")
 
 // Enum with associated Values
 enum Furniture {

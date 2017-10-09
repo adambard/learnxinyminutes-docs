@@ -461,10 +461,10 @@ var suitValue: Suit = .hearts
 
 // 非整型的枚举类型需要在定义时赋值
 enum BookName: String {
-    case John = "John"
-    case Luke = "Luke"
+    case john = "John"
+    case luke = "Luke"
 }
-print("Name: \(BookName.John.rawValue)")
+print("Name: \(BookName.john.rawValue)")
 
 // 与特定数据类型关联的枚举
 enum Furniture {

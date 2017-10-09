@@ -459,10 +459,10 @@ var suitValue: Suit = .hearts
 
 // Nicht-Integer-Enums brauchen direkt zugewiesene "Rohwerte"
 enum BookName: String {
-    case John = "John"
-    case Luke = "Luke"
+    case john = "John"
+    case luke = "Luke"
 }
-print("Name: \(BookName.John.rawValue)")
+print("Name: \(BookName.john.rawValue)")
 
 // Enum mit assoziierten Werten
 enum Furniture {

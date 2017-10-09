@@ -463,10 +463,10 @@ var suitValue: Suit = .hearts
 
 // Enums que não sejam inteiros obrigam a atribuições valor bruto (raw value) diretas
 enum BookName: String {
-    case John = "John"
-    case Luke = "Luke"
+    case john = "John"
+    case luke = "Luke"
 }
-print("Name: \(BookName.John.rawValue)")
+print("Name: \(BookName.john.rawValue)")
 
 // Enum com valores associados
 enum Furniture {

@@ -459,10 +459,10 @@ var kartTipi: Kart = .kupa
 
 // Integer olmayan enumlar direk değer (rawValue) atama gerektirir.
 enum KitapAdi: String {
-    case John = "John"
-    case Luke = "Luke"
+    case john = "John"
+    case luke = "Luke"
 }
-print("Name: \(KitapAdi.John.rawValue)")
+print("Name: \(KitapAdi.john.rawValue)")
 
 // Değerlerle ilişkilendirilmiş Enum
 enum Mobilya {
