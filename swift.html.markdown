@@ -361,14 +361,14 @@ print("Name is \(name)") // Name is Them
 
 // The `Error` protocol is used when throwing errors to catch
 enum MyError: Error {
-    case BadValue(msg: String)
-    case ReallyBadValue(msg: String)
+    case badValue(msg: String)
+    case reallyBadValue(msg: String)
 }
 
 // functions marked with `throws` must be called using `try`
 func fakeFetch(value: Int) throws -> String {
     guard 7 == value else {
-        throw MyError.ReallyBadValue(msg: "Some really bad value")
+        throw MyError.reallyBadValue(msg: "Some really bad value")
     }
 
     return "test"
@@ -385,7 +385,7 @@ func testTryStuff() {
     do {
         // normal try operation that provides error handling via `catch` block
         try fakeFetch(value: 1)
-    } catch MyError.BadValue(let msg) {
+    } catch MyError.badValue(let msg) {
         print("Error message: \(msg)")
     } catch {
         // must be exhaustive

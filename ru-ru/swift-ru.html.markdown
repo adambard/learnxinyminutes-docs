@@ -376,14 +376,14 @@ print("Имя :\(name)") // Имя: Яков
 
 // Протокол `Error` используется для перехвата выбрасываемых ошибок
 enum MyError: Error {
-    case BadValue(msg: String)
-    case ReallyBadValue(msg: String)
+    case badValue(msg: String)
+    case reallyBadValue(msg: String)
 }
 
 // фунции помеченные словом `throws` должны вызываться с помощью `try`
 func fakeFetch(value: Int) throws -> String {
     guard 7 == value else {
-        throw MyError.ReallyBadValue(msg: "Действительно плохое значение")
+        throw MyError.reallyBadValue(msg: "Действительно плохое значение")
     }
 
     return "тест"
@@ -401,7 +401,7 @@ func testTryStuff() {
     do {
         // обычно try оператор, позволяющий обработать ошибку в `catch` блоке
         try fakeFetch(value: 1)
-    } catch MyError.BadValue(let msg) {
+    } catch MyError.badValue(let msg) {
         print("Ошибка: \(msg)")
     } catch {
         // все остальное
