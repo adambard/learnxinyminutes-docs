@@ -544,23 +544,23 @@ print("Name: \(BookName.john.rawValue)")
 // Enum with associated Values
 enum Furniture {
     // Associate with Int
-    case Desk(height: Int)
+    case desk(height: Int)
     // Associate with String and Int
-    case Chair(String, Int)
+    case chair(String, Int)
 
     func description() -> String {
         switch self {
-        case .Desk(let height):
+        case .desk(let height):
             return "Desk with \(height) cm"
-        case .Chair(let brand, let height):
+        case .chair(let brand, let height):
             return "Chair of \(brand) with \(height) cm"
         }
     }
 }
 
-var desk: Furniture = .Desk(height: 80)
+var desk: Furniture = .desk(height: 80)
 print(desk.description())     // "Desk with 80 cm"
-var chair = Furniture.Chair("Foo", 40)
+var chair = Furniture.chair("Foo", 40)
 print(chair.description())    // "Chair of Foo with 40 cm"
 
 

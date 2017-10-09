@@ -469,23 +469,23 @@ print("Name: \(BookName.john.rawValue)")
 // 与特定数据类型关联的枚举
 enum Furniture {
     // 和 Int 型数据关联的枚举记录
-    case Desk(height: Int)
+    case desk(height: Int)
     // 和 String, Int 关联的枚举记录
-    case Chair(brand: String, height: Int)
+    case chair(brand: String, height: Int)
 
     func description() -> String {
         switch self {
-        case .Desk(let height):
+        case .desk(let height):
             return "Desk with \(height) cm"
-        case .Chair(let brand, let height):
+        case .chair(let brand, let height):
             return "Chair of \(brand) with \(height) cm"
         }
     }
 }
 
-var desk: Furniture = .Desk(height: 80)
+var desk: Furniture = .desk(height: 80)
 print(desk.description())     // "Desk with 80 cm"
-var chair = Furniture.Chair(brand: "Foo", height: 40)
+var chair = Furniture.chair(brand: "Foo", height: 40)
 print(chair.description())    // "Chair of Foo with 40 cm"
 
 

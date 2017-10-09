@@ -561,23 +561,23 @@ print("Имя: \(BookName.john.rawValue)")
 // Перечисление (enum) со связанными значениями
 enum Furniture {
     // Связать с типом Int
-    case Desk(height: Int)
+    case desk(height: Int)
     // Связать с типами String и Int
-    case Chair(String, Int)
+    case chair(String, Int)
 
     func description() -> String {
         switch self {
-        case .Desk(let height):
+        case .desk(let height):
             return "Письменный стол высотой \(height) см."
-        case .Chair(let brand, let height):
+        case .chair(let brand, let height):
             return "Стул марки \(brand) высотой \(height) см."
         }
     }
 }
 
-var desk: Furniture = .Desk(height: 80)
+var desk: Furniture = .desk(height: 80)
 print(desk.description())     // "Письменный стол высотой 80 см."
-var chair = Furniture.Chair("Foo", 40)
+var chair = Furniture.chair("Foo", 40)
 print(chair.description())    // "Стул марки Foo высотой 40 см."
 
 
