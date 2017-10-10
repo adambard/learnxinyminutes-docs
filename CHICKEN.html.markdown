@@ -8,7 +8,7 @@ contributors:
 
 CHICKEN is an implementation of Scheme programming language that can
 compile Scheme programs to C code as well as interpret them. CHICKEN
-supports RSR5 and RSR7 (work in progress) standards and many extensions.
+supports R5RS and R7RS (work in progress) standards and many extensions.
 
 
 ```scheme
@@ -510,7 +510,7 @@ sqr                        ;; => #<procedure (sqr x)>
 ```
 ## Further Reading
 * [CHICKEN User's Manual](http://wiki.call-cc.org/man/4/The%20User%27s%20Manual).
-* [RSR5 standards](http://www.schemers.org/Documents/Standards/R5RS)
+* [R5RS standards](http://www.schemers.org/Documents/Standards/R5RS)
 
 
 ## Extra Info
