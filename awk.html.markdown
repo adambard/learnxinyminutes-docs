@@ -38,7 +38,7 @@ BEGIN {
     a = count + 1
     b = count - 1
     c = count * 1
-    d = count / 1
+    d = count / 1 # integer division
     e = count % 1 # modulus
     f = count ^ 1 # exponentiation
 
@@ -143,7 +143,7 @@ BEGIN {
 }
 
 # Here's how you define a function
-function arithmetic_functions(a, b, c,     localvar) {
+function arithmetic_functions(a, b, c,     d) {
 
     # Probably the most annoying part of AWK is that there are no local
     # variables. Everything is global. For short scripts, this is fine, even
