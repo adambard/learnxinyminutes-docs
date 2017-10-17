@@ -5,6 +5,7 @@ contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
     - ["Ale46", "http://github.com/Ale46/"]
+lang: it-it
 ---
 
 HTML sta per HyperText Markup Language (linguaggio a marcatori per ipertesti).
