@@ -292,6 +292,10 @@ contains the changes made and a message created by the user.
 # commit with a message
 $ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
 
+# signed commit with a message (user.signingkey must have been set
+# with your GPG key e.g. git config --global user.signingkey 5173AAD5)
+$ git commit -S -m "signed commit message"
+
 # automatically stage modified or deleted files, except new files, and then commit
 $ git commit -a -m "Modified foo.php and removed bar.php"
 
