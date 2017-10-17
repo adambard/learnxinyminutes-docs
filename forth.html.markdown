@@ -59,7 +59,7 @@ Forth, but most of what is written here should work elsewhere.
 
 \ ---------------------- More Advanced Stack Manipulation ----------------------
 
-1 2 3 4 tuck   \ duplicate the top item into the second slot:      1 2 4 3 4 ok
+1 2 3 4 tuck   \ duplicate the top item below the second slot:      1 2 4 3 4 ok
 1 2 3 4 over   \ duplicate the second item to the top:             1 2 3 4 3 ok
 1 2 3 4 2 roll \ *move* the item at that position to the top:      1 3 4 2 ok
 1 2 3 4 2 pick \ *duplicate* the item at that position to the top: 1 2 3 4 2 ok
