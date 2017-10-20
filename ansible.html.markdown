@@ -109,6 +109,7 @@ hosts: all
 tasks:
   - name: "ping all"
     ping:
+
   - name: "execute a shell command"
     shell: "date; whoami; df -h;"
 ```
@@ -174,8 +175,12 @@ We would clone the ready-to-use examples from additional repository
 ```bash
 $ git colone git@github.com:sirkubax/ansible-for-learnXinYminutes.git
 $ cd ansible-for-learnXinYminutes
-$ source environment
-$(venv) ansible-playbook playbooks/role_example.yml
+$ source environment.sh
+(venv) u@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbooks/role_example.yml
+
+# First lets execute the simple_playbook.yml
+(venv) user@host:~/ansible-for-learnXinYminute$ ansible-playbook playbook/simple_playbook.yml
+
 ```
 
 #### Role directory structure:
