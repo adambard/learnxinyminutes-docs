@@ -225,7 +225,8 @@ You should also know, that a nice way to pool some data is a **lookup**
 
 You can use them in CLI too
 ```yaml
-ansible -m shell -a 'echo {{ my_variable }}` -e '{{ lookup('pipe'; 'date' }}" localhost
+ansible -m shell -a 'echo "{{ my_variable }}"' -e 'my_variable="{{ lookup("pipe", "date") }}"' localhost
+ansible -m shell -a 'echo "{{ my_variable }}"' -e 'my_variable="{{ lookup("pipe", "hostname") }}"' all
 
 ```
 
