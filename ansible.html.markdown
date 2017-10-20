@@ -104,14 +104,14 @@ This example-playbook would execute (on all hosts defined in the inventory) two 
 * `shell` that execute three commands and return the output to our terminal
 
 ```yml
-hosts: all
-
-tasks:
-  - name: "ping all"
-    ping:
-
-  - name: "execute a shell command"
-    shell: "date; whoami; df -h;"
+- hosts: all
+  
+  tasks:
+    - name: "ping all"
+      ping:
+  
+    - name: "execute a shell command"
+      shell: "date; whoami; df -h;"
 ```
 
 You can run the playbook with the command:
@@ -152,21 +152,21 @@ Role can be included in your playbook (executed via your playbook).
 
 
 ```yml
-hosts: all
+- hosts: all
 
-tasks:
-    - name: "ping all"
-      ping:
-    - name: "execute a shell command"
-      shell: "date; whoami; df -h;"
-
-role: 
-    - some_role
-    - { role: another_role, some_variable: 'learnxiny', tags: ['my_tag'] }
-
-pre_tasks:
-    - name: some pre-task
-      shell: echo 'this task is the last, but would be executed before roles, and before tasks'
+  tasks:
+      - name: "ping all"
+        ping:
+      - name: "execute a shell command"
+        shell: "date; whoami; df -h;"
+  
+  roles: 
+      - some_role
+      - { role: another_role, some_variable: 'learnxiny', tags: ['my_tag'] }
+  
+  pre_tasks:
+      - name: some pre-task
+        shell: echo 'this task is the last, but would be executed before roles, and before tasks'
 ```
 
 #### For remaining examples we would use additional repository
