@@ -176,15 +176,14 @@ $ git colone git@github.com:sirkubax/ansible-for-learnXinYminutes.git
 $ cd ansible-for-learnXinYminutes
 $ source environment.sh
 $
-$# First lets execute the simple_playbook.yml
+$ # First lets execute the simple_playbook.yml
 (venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbook/simple_playbook.yml
 
 ```
 
 ```bash
 $ source environment.sh
-$
-$# Now we would run the above playbook with roles
+$ # Now we would run the above playbook with roles
 (venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbooks/role_example.yml
 ```
 
