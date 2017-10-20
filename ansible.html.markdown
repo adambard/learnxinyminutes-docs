@@ -171,10 +171,12 @@ pre_tasks:
 
 #### We would use repository with *ready to use* examples
 We would clone the repository
+This example install ansible in `virtualenv` so it is independend from a system. You need to init it with `source environment.sh` command
+
 ```bash
 $ git colone git@github.com:sirkubax/ansible-for-learnXinYminutes.git
-$ cd ansible-for-learnXinYminutes
-$ source environment.sh
+user@host:~/$ cd ansible-for-learnXinYminutes
+user@host:~/ansible-for-learnXinYminutes$ source environment.sh
 $
 $ # First lets execute the simple_playbook.yml
 (venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbook/simple_playbook.yml
