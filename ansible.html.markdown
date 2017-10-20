@@ -170,7 +170,7 @@ pre_tasks:
 ```
 
 #### We would use repository with *ready to use* examples
-We would clone the repository
+For remaining examples we would clone the repository
 This example install ansible in `virtualenv` so it is independend from a system. You need to init it with `source environment.sh` command
 
 ```bash
