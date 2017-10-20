@@ -44,13 +44,13 @@ false
 :cheese
 :olives
 
-; Symbols are used to represent identifiers. They start with #.
+; Symbols are used to represent identifiers. 
 ; You can namespace symbols by using /. Whatever precedes / is
-; the namespace of the name.
-#spoon
-#kitchen/spoon ; not the same as #spoon
-#kitchen/fork
-#github/fork   ; you can't eat with this
+; the namespace of the symbol.
+spoon
+kitchen/spoon ; not the same as spoon
+kitchen/fork
+github/fork   ; you can't eat with this
 
 ; Integers and floats
 42
