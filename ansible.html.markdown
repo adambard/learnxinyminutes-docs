@@ -169,8 +169,7 @@ pre_tasks:
       shell: echo 'this task is the last, but would be executed before roles, and before tasks'
 ```
 
-#### We would use repository with *ready to use* examples
-For remaining examples we would clone the repository
+#### For remaining examples we would use repository with *ready to use* examples
 This example install ansible in `virtualenv` so it is independend from a system. You need to init it with `source environment.sh` command
 
 ```bash
