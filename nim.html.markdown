@@ -12,6 +12,25 @@ that gives the programmer power without compromises on runtime efficiency.
 Nim is efficient, expressive, and elegant.
 
 ```nim
+# Single-line comments start with a #
+
+#[
+  Multi-line comments begin with a #[
+  ... and end with ]#
+
+They don't care about indentation
+
+  #[
+  and they can be nested
+  ]#
+
+]#
+
+discard """
+This can also work as a multiline comment.
+Or for unparsable, broken code
+"""
+
 var                     # Declare (and assign) variables,
   letter: char = 'n'    # with or without type annotations
   lang = "N" & "im"
@@ -35,10 +54,6 @@ when compileBadCode:            # `when` is a compile time `if`
 discard 1 > 2 # Note: The compiler will complain if the result of an expression
               # is unused. `discard` bypasses this.
 
-discard """
-This can work as a multiline comment.
-Or for unparsable, broken code
-"""
 
 #
 # Data Structures
