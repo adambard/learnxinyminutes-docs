@@ -169,18 +169,23 @@ pre_tasks:
       shell: echo 'this task is the last, but would be executed before roles, and before tasks'
 ```
 
-Example->role
-
-We would clone the ready-to-use examples from additional repository
+#### We would use repository with *ready to use* examples
+We would clone the repository
 ```bash
 $ git colone git@github.com:sirkubax/ansible-for-learnXinYminutes.git
 $ cd ansible-for-learnXinYminutes
 $ source environment.sh
-(venv) u@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbooks/role_example.yml
+$
+$# First lets execute the simple_playbook.yml
+(venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbook/simple_playbook.yml
 
-# First lets execute the simple_playbook.yml
-(venv) user@host:~/ansible-for-learnXinYminute$ ansible-playbook playbook/simple_playbook.yml
+```
 
+```bash
+$ source environment.sh
+$
+$# Now we would run the above playbook with roles
+(venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbooks/role_example.yml
 ```
 
 #### Role directory structure:
