@@ -376,10 +376,7 @@ It can perform  roling-deployment (without Ansible), can integrate with clouds, 
 #### Jenkins
 For my 'business cases' I use Jenkins - it has a 'cron', jobs can be binded into 'pipelines'.
 
-### become-user, become
-### ansible - dynamic in AWS
-### create instance in AWS
-### create env in AWS
+#### become-user, become
 
 ## Tips and tricks
 
@@ -470,3 +467,6 @@ But ansible is way more! It provides an execution plans, an API, library, callba
 # vault
 # roles
 
+#### ansible - dynamic in AWS
+#### create instance in AWS
+#### create env in AWS
