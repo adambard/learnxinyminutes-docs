@@ -2,6 +2,7 @@
 language: TypeScript
 contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
+translators:
     - ["Thanh Duy Phan", "https://github.com/thanhpd"]
 filename: learntypescript-vi.ts
 lang: vi-vn
