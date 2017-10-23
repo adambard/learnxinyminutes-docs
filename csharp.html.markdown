@@ -135,7 +135,7 @@ namespace Learning.CSharp
             // Verbatim String
             // You can use the @ symbol before a string literal to escape all characters in the string
             string path = "C:\\Users\\User\\Desktop";
-            string verbatimPath = "C:\Users\User\Desktop";
+            string verbatimPath = @"C:\Users\User\Desktop";
             Console.WriteLine(path == verbatimPath);  // => true
 
             // You can split a string over two lines with the @ symbol. To escape " use ""
