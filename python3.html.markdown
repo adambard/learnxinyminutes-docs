@@ -785,7 +785,7 @@ class Superhero(Human):
         self.superpowers = superpowers
 
         # The "super" function lets you access the parent class's methods
-        # that are overwritten by the child, in this case, the __init__ method.
+        # that are overridden by the child, in this case, the __init__ method.
         # This calls the parent class constructor:
         super().__init__(name)
 
@@ -814,7 +814,7 @@ if __name__ == '__main__':
                                 # => <class 'human.Human'>, <class 'object'>)
 
     # Calls parent method but uses its own class attribute
-    print(sup.get_species())    # => Superhero
+    print(sup.get_species())    # => Superhuman
 
     # Calls overloaded method
     print(sup.sing())           # => Dun, dun, DUN!
@@ -838,6 +838,7 @@ if __name__ == '__main__':
 ####################################################
 
 # Another class definition
+# bat.py
 class Bat:
 
     species = 'Baty'
@@ -859,16 +860,13 @@ if __name__ == '__main__':
     print(b.say('hello'))
     print(b.fly)
 
-# To take advantage of modularization by file you could place the classes above in their own files,
-# say, superhero.py and bat.py
 
-# To import functions from other files use the following format
-# from "filename-without-extension" import "function-or-class"
+# And yet another class definition that inherits from Superhero and Bat
 # superhero.py
 from superhero import Superhero
 from bat import Bat
 
-# Batman inherits from both Superhero and Bat
+# Define Batman as a child that inherits from both Superhero and Bat
 class Batman(Superhero, Bat):
 
     def __init__(self, *args, **kwargs):
@@ -891,14 +889,6 @@ class Batman(Superhero, Bat):
 
 if __name__ == '__main__':
     sup = Batman()
-
-    # Instance type checks
-    if isinstance(sup, Superhero):
-        print('I am a superhero)
-    if isinstance(sup, Bat):
-        print('I am bat')
-    if type(sup) is Batman:
-        print('I am Batman')
 
     # Get the Method Resolution search Order used by both getattr() and super().
     # This attribute is dynamic and can be updated
