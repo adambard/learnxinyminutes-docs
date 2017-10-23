@@ -955,6 +955,7 @@ on a new line! ""Wow!"", the masses cried";
 
     // String interpolation by prefixing the string with $
     // and wrapping the expression you want to interpolate with { braces }
+    // You can also combine both interpolated and verbatim strings with $@
     public class Rectangle
     {
         public int Length { get; set; }
@@ -967,6 +968,9 @@ on a new line! ""Wow!"", the masses cried";
         {
             Rectangle rect = new Rectangle { Length = 5, Width = 3 };
             Console.WriteLine($"The length is {rect.Length} and the width is {rect.Width}");
+
+            string username = "User";
+            Console.WriteLine($@"C:\Users\{username}\Desktop");
         }
     }
 
