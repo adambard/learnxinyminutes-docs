@@ -132,6 +132,12 @@ namespace Learning.CSharp
             DateTime fooDate = DateTime.Now;
             Console.WriteLine(fooDate.ToString("hh:mm, dd MMM yyyy"));
 
+            // Verbatim String
+            // You can use the @ symbol before a string literal to escape all characters in the string
+            string path = "C:\\Users\\User\\Desktop";
+            string verbatimPath = @"C:\Users\User\Desktop";
+            Console.WriteLine(path == verbatimPath);  // => true
+
             // You can split a string over two lines with the @ symbol. To escape " use ""
             string bazString = @"Here's some stuff
 on a new line! ""Wow!"", the masses cried";
@@ -949,6 +955,7 @@ on a new line! ""Wow!"", the masses cried";
 
     // String interpolation by prefixing the string with $
     // and wrapping the expression you want to interpolate with { braces }
+    // You can also combine both interpolated and verbatim strings with $@
     public class Rectangle
     {
         public int Length { get; set; }
@@ -961,6 +968,9 @@ on a new line! ""Wow!"", the masses cried";
         {
             Rectangle rect = new Rectangle { Length = 5, Width = 3 };
             Console.WriteLine($"The length is {rect.Length} and the width is {rect.Width}");
+
+            string username = "User";
+            Console.WriteLine($@"C:\Users\{username}\Desktop");
         }
     }
 
