@@ -20,7 +20,7 @@ foi concebida para
 
 Embora sua sintaxe pode ser mais difícil ou complexa do que as linguagens mais
 recentes, C++ é amplamente utilizado porque compila para instruções nativas que
-podem ser executadas diretamente pelo processador e oferece um controlo rígido sobre hardware (como C), enquanto oferece recursos de alto nível, como os
+podem ser executadas diretamente pelo processador e oferece um controle rígido sobre hardware (como C), enquanto oferece recursos de alto nível, como os
 genéricos, exceções e classes. Esta combinação de velocidade e funcionalidade
 faz C++ uma das linguagens de programação mais utilizadas.
 
@@ -40,10 +40,10 @@ faz C++ uma das linguagens de programação mais utilizadas.
 
 int main(int argc, char** argv)
 {
-    // Argumentos de linha de comando são passados em pelo argc e argv da mesma
+    // Argumentos de linha de comando são passados para argc e argv da mesma
     // forma que eles estão em C.
     // argc indica o número de argumentos,
-    // e argv é um array de strings, feito C (char*) representado os argumentos
+    // e argv é um array de strings, feito C (char*) representando os argumentos
     // O primeiro argumento é o nome pelo qual o programa foi chamado.
     // argc e argv pode ser omitido se você não se importa com argumentos,
     // dando a assinatura da função de int main()
@@ -274,7 +274,7 @@ public:
 
     void setWeight(int dogsWeight);
 
-    // Funções que não modificam o estado do objecto devem ser marcadas como
+    // Funções que não modificam o estado do objeto devem ser marcadas como
     // const. Isso permite que você chamá-los se for dada uma referência const
     // para o objeto. Além disso, observe as funções devem ser explicitamente
     // declarados como _virtual_, a fim de ser substituídas em classes
