@@ -191,7 +191,7 @@ int main() {
     f1 / f2; // => 0.5, mais ou menos epsilon
     // Números e cálculos de ponto flutuante não são exatos
 
-    // Modulo também existe
+    // Módulo também existe
     11 % 3; // => 2
 
 	// Operadores de comparação provavelmente são familiares,
