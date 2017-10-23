@@ -132,6 +132,12 @@ namespace Learning.CSharp
             DateTime fooDate = DateTime.Now;
             Console.WriteLine(fooDate.ToString("hh:mm, dd MMM yyyy"));
 
+            // Verbatim String
+            // You can use the @ symbol before a string literal to escape all characters in the string
+            string path = "C:\\Users\\User\\Desktop";
+            string verbatimPath = "C:\Users\User\Desktop";
+            Console.WriteLine(path == verbatimPath);  // => true
+
             // You can split a string over two lines with the @ symbol. To escape " use ""
             string bazString = @"Here's some stuff
 on a new line! ""Wow!"", the masses cried";
