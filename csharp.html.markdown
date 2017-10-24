@@ -640,6 +640,54 @@ on a new line! ""Wow!"", the masses cried";
         }
     }
 
+
+    // DELEGATES AND EVENTS
+    public class DelegateTest
+    {
+        public static int count = 0;
+        public static int Increment()
+        {
+            // increment count then return it
+            return ++count;
+        }
+
+        // A delegate is a reference to a method
+        // To reference the Increment method,
+        // first declare a delegate with the same signature
+        // ie. takes no arguments and returns an int
+        public delegate int IncrementDelegate();
+
+        // An event can also be used to trigger delegates
+        // Create an event with the delegate type
+        public static event IncrementDelegate MyEvent;
+
+        static void Main(string[] args)
+        {
+            // Refer to the Increment method by instantiating the delegate
+            // and passing the method itself in as an argument
+            IncrementDelegate inc = new IncrementDelegate(Increment);
+            Console.WriteLine(inc());  // => 1
+
+            // Delegates can be composed with the + operator
+            IncrementDelegate composedInc = inc;
+            composedInc += inc;
+            composedInc += inc;
+
+            // composedInc will run Increment 3 times
+            Console.WriteLine(composedInc());  // => 4
+
+
+            // Subscribe to the event with the delegate
+            MyEvent += new IncrementDelegate(Increment);
+            MyEvent += new IncrementDelegate(Increment);
+
+            // Trigger the event
+            // ie. run all delegates subscribed to this event
+            Console.WriteLine(MyEvent());  // => 6
+        }
+    }
+
+
     // Class Declaration Syntax:
     // <public/private/protected/internal> class <class name>{
     //    //data fields, constructors, functions all inside.
