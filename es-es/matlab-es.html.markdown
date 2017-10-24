@@ -13,8 +13,8 @@ lang: es-es
 
 MATLAB significa 'MATrix LABoratory'. Es un poderoso lenguaje de computación numérica comúnmente usado en ingeniería y matemáticas.
 
-If you have any feedback please feel free to reach me at
-[@the_ozzinator](https://twitter.com/the_ozzinator), or
+Si tiene algún comentario, no dude en ponerse en contacto conmigo en
+[@the_ozzinator](https://twitter.com/the_ozzinator), o
 [osvaldo.t.mendoza@gmail.com](mailto:osvaldo.t.mendoza@gmail.com).
 
 ```matlab
@@ -565,3 +565,4 @@ c = a + b
 * [The official MATLAB Answers forum (EN)](http://www.mathworks.com/matlabcentral/answers/)
 * [Loren on the Art of MATLAB (EN)](http://blogs.mathworks.com/loren/)
 * [Cleve's Corner (EN)](http://blogs.mathworks.com/cleve/)
+
