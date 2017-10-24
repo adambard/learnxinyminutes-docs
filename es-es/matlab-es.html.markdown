@@ -1,16 +1,17 @@
 ---
 language: Matlab
-filename: learnmatlab.mat
+filename: learnmatlab-es.mat
 contributors:
     - ["mendozao", "http://github.com/mendozao"]
     - ["jamesscottbrown", "http://jamesscottbrown.com"]
     - ["Colton Kohnke", "http://github.com/voltnor"]
     - ["Claudson Martins", "http://github.com/claudsonm"]
+translators:
+    - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
 lang: es-es
 ---
 
-MATLAB stands for MATrix LABoratory. It is a powerful numerical computing language commonly used in engineering and mathematics.
-MATLAB significa MATrix LABoratory. Es un poderoso lenguaje de computacion numerica
+MATLAB significa 'MATrix LABoratory'. Es un poderoso lenguaje de computación numérica comúnmente usado en ingeniería y matemáticas.
 
 If you have any feedback please feel free to reach me at
 [@the_ozzinator](https://twitter.com/the_ozzinator), or
@@ -314,7 +315,7 @@ set(gca, 'XDir', 'reverse'); % reverse the direction of the x-axis
 
 % Para crear una figura que contenga varios ejes en posiciones de mosaico, use 'subplot'
 subplot(2,3,1); % seleccione la primera posición en una grilla de subtramas de 2 por 3
-plot(x1); title('First Plot') % trazar algo en esta posición
+plot(x1); title('First Plot') % traza algo en esta posición
 subplot(2,3,2); % selecciona la segunda posición en la grilla
 plot(x2); title('Second Plot') % trazar algo allí
 
