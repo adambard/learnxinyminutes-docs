@@ -1106,25 +1106,65 @@ namespace Learning.More.CSharp
     }
 }
 
+//New C# 7 Feature
+//Install Microsoft.Net.Compilers Latest from Nuget
+//Install System.ValueTuple Latest from Nuget
 using System;
 namespace Csharp7
 {
-	//New C# 7 Feature
-	//Install Microsoft.Net.Compilers Latest from Nuget
-	//Install System.ValueTuple Latest from Nuget
-	class Program
-	{
-		static void Main(string[] args)
-		{
-			//Type 1 Declaration
-			(string FirstName, string LastName) names1 = ("Peter", "Parker");
-			Console.WriteLine(names1.FirstName);
+    // TUPLES, DECONSTRUCTION AND DISCARDS
+    class TuplesTest
+    {
+        public (string, string) GetName()
+        {
+            // Fields in tuples are by default named Item1, Item2...
+            var names1 = ("Peter", "Parker");
+            Console.WriteLine(names1.Item2);  // => Parker
 
-			//Type 2 Declaration
-			var names2 = (First:"Peter", Last:"Parker");
-			Console.WriteLine(names2.Last);
-		}
-	}
+            // Fields can instead be explicitly named
+            // Type 1 Declaration
+            (string FirstName, string LastName) names2 = ("Peter", "Parker");
+
+            // Type 2 Declaration
+            var names3 = (First:"Peter", Last:"Parker");
+
+            Console.WriteLine(names2.FirstName);  // => Peter
+            Console.WriteLine(names3.Last);  // => Parker
+
+            return names3;
+        }
+
+        public string GetLastName() {
+            var fullName = GetName();
+
+            // Tuples can be deconstructed
+            (string firstName, string lastName) = fullName;
+
+            // Fields in a deconstructed tuple can be discarded by using _
+            var (_, last) = fullName;
+            return last;
+        }
+
+        // Any type can be deconstructed in the same way by
+        // specifying a Deconstruct method
+        public int randomNumber = 4;
+        public int anotherRandomNumber = 10;
+
+        public void Deconstruct(out int randomNumber, out int anotherRandomNumber)
+        {
+            randomNumber = this.randomNumber;
+            anotherRandomNumber = this.anotherRandomNumber;
+        }
+
+        static void Main(string[] args)
+        {
+            var tt = new TuplesTest();
+            (int num1, int num2) = tt;
+            Console.WriteLine($"num1: {num1}, num2: {num2}");  // => num1: 4, num2: 10
+
+            Console.WriteLine(tt.GetLastName());
+        }
+    }
 }
 
 ```
