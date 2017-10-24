@@ -41,7 +41,7 @@ false
 ; Charaktere werden einem Backslash vorangestellt
 \g \r \a \c \e
 
-; Schlüsselwörter beginnen mit einenm Doppelpunkt. Sie verhalten sich wie Enums.
+; Schlüsselwörter beginnen mit einem Doppelpunkt. Sie verhalten sich wie Enums.
 ; Ähnlich, wie Symbole in Ruby.
 :eggs
 :cheese
@@ -79,7 +79,7 @@ false
 #{:a :b 88 "huat"}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; makierte Elemente ;;;
+;;; markierte Elemente ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; EDN kann erweitert werden, indem Elemente mit # Symbolen makiert werden.
@@ -91,7 +91,7 @@ false
 (defrecord MenuItem [name rating])
    
 ; Um EDN in clojure Werte umzuwandeln, muss ich den eingebauten EDN Leser 
-;edn/read-string verwenden
+; edn/read-string verwenden
 
 (edn/read-string "{:eggs 2 :butter 1 :flour 5}")
 ; -> {:eggs 2 :butter 1 :flour 5}
