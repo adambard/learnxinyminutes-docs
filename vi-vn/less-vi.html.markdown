@@ -30,8 +30,6 @@ Less là một CSS pre-processor (bộ tiền xử lí CSS), nó thêm các tín
 @secondary-color: #51527f;
 @body-font: 'Roboto', sans-serif;
 
-/* You can use the variables throughout your stylesheet.
-   Now if you want to change a color, you only have to make the change once.*/
 /* Sau khi khai báo biến, ta có thể sử dụng nó ở trong tệp stylesheet.
    Nhờ sử dụng biến ta chỉ cần thay đổi một lần
    tại 1 nơi để thay đổi tất cả những đoạn sử dụng biến */
@@ -98,8 +96,6 @@ div {
 	background-color: #a3a4ff;
 }
 
-/* You can omit the mixin code from being compiled by adding parenthesis
-   after the selector */
 /* Ta có thể ngăn không cho code mixin được biên dịch
    bằng cách thêm cặp ngoặc tròn đằng sau selector */
 
@@ -275,12 +271,6 @@ div {
   border-color: #22df56;
 }
 
-/* Extending a CSS statement is preferable to creating a mixin
-   because of the way it groups together the classes that all share
-   the same base styling. If this was done with a mixin, the properties
-   would be duplicated for each statement that
-   called the mixin. While it won't affect your workflow, it will
-   add unnecessary bloat to the files created by the Less compiler. */
 /* Nên mở rộng một khai báo CSS có trước thay vì tạo một mixin mới
    bởi cách nó nhóm các lớp có chung một style gốc.
    Nếu thực hiện với mixin, các thuộc tính sẽ bị trùng lặp
