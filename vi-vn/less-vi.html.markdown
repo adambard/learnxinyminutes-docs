@@ -4,7 +4,7 @@ contributors:
   - ["Saravanan Ganesh", "http://srrvnn.me"]
 translators:
     - ["Thanh Duy Phan", "https://github.com/thanhpd"]
-filename: learnless-vi.ts
+filename: learnless-vi.less
 lang: vi-vn
 ---
 
