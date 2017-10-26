@@ -823,7 +823,7 @@ on a new line! ""Wow!"", the masses cried";
         }
     }
 
-    // Interfaces only contain signatures of the members, without the implementation.
+    // Interfaces contêm apenas as assinaturas dos membros, sem a implementação.
     interface IJumpable
     {
         void Jump(int meters); // all interface members are implicitly public
