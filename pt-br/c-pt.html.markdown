@@ -182,7 +182,7 @@ int main() {
     int a, b, c;
     a = b = c = 0;
 
-    // Aritimética é óbvia
+    // Aritmética é óbvia
     i1 + i2; // => 3
     i2 - i1; // => 1
     i2 * i1; // => 2
