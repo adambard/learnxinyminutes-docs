@@ -762,7 +762,7 @@ on a new line! ""Wow!"", the masses cried";
             }
         }
 
-        //Method to display the attribute values of this Object.
+        //Método para exibir os valores dos atributos deste objeto.
         public virtual string Info()
         {
             return "Gear: " + Gear +
