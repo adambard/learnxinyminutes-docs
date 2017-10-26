@@ -52,7 +52,7 @@ my %fruta_cor = (
   banana => "amarelo",
 );
 
-# Scalars, arrays and hashes são documentados mais profundamentes em perldata.
+# Scalars, arrays and hashes são documentados mais profundamente em perldata.
 # (perldoc perldata).
 
 # Mais tipos de dados complexos podem ser construídas utilizando referências,
