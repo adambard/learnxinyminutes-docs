@@ -29,7 +29,7 @@ faz C++ uma das linguagens de programação mais utilizadas.
 // Comparação com C
 //////////////////
 
-// C ++ é quase um super conjunto de C e compartilha sua sintaxe básica para
+// C++ é quase um super conjunto de C e compartilha sua sintaxe básica para
 // declarações de variáveis, tipos primitivos, e funções. No entanto, C++ varia
 // em algumas das seguintes maneiras:
 
@@ -170,7 +170,7 @@ int main()
 // Entrada/Saída
 ///////////////
 
-// C ++ usa a entrada e saída de fluxos (streams)
+// C++ usa a entrada e saída de fluxos (streams)
 // cin, cout, and cerr representa stdin, stdout, and stderr.
 // << É o operador de inserção e >> é o operador de extração.
 
@@ -221,7 +221,7 @@ cout << myString; // "Hello Dog"
 /////////////
 
 // Além de indicadores como os de C, C++ têm _referências_. Esses são tipos de
-// ponteiro que não pode ser reatribuída uma vez definidos e não pode ser nulo.
+// ponteiros que não podem ser reatribuídos uma vez definidos e não pode ser nulos.
 // Eles também têm a mesma sintaxe que a própria variável: Não * é necessário
 // para _dereferencing_ e & (endereço de) não é usado para atribuição.
 
