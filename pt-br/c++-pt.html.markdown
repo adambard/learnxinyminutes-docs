@@ -18,9 +18,9 @@ foi concebida para
 - suportar programação orientada a objetos
 - suportar programação genérica
 
-Embora sua sintaxe pode ser mais difícil ou complexa do que as linguagens mais
-recentes, C++ é amplamente utilizado porque compila para instruções nativas que
-podem ser executadas diretamente pelo processador e oferece um controle rígido sobre hardware (como C), enquanto oferece recursos de alto nível, como os
+Embora sua sintaxe possa ser mais difícil ou complexa do que as linguagens mais
+recentes, C++ é amplamente utilizada porque compila para instruções nativas que
+podem ser executadas diretamente pelo processador e oferece um controle rígido sobre o hardware (como C), enquanto oferece recursos de alto nível, como os
 genéricos, exceções e classes. Esta combinação de velocidade e funcionalidade
 faz C++ uma das linguagens de programação mais utilizadas.
 
