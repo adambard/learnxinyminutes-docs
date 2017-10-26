@@ -6,23 +6,23 @@ contributors:
 lang: pt-br
 ---
 
-C# é uma linguagem elegante e altamente tipado orientada a objetos que permite aos desenvolvedores criarem uma variedade de aplicações seguras e robustas que são executadas no .NET Framework.
+C# é uma linguagem elegante, altamente tipada e orientada a objetos que permite aos desenvolvedores criar uma variedade de aplicações seguras e robustas que são executadas no .NET Framework.
 
-[Read more here.](http://msdn.microsoft.com/pt-br/library/vstudio/z1zx9t92.aspx)
+[Leia mais aqui.](http://msdn.microsoft.com/pt-br/library/vstudio/z1zx9t92.aspx)
 
 ```c#
-// Comentário de linha única começa com //
+// Comentários de linha única começam com //
 /*
-Múltipas linhas é desta forma
+Comentários de múltiplas linhas são desta forma
 */
 /// <summary>
-/// Esta é uma documentação comentário XML que pode ser usado para gerar externo
-/// documentação ou fornecer ajuda de contexto dentro de um IDE
+/// Este é um comentário de documentação XML que pode ser usado para gerar documentação
+/// externa ou para fornecer ajuda de contexto dentro de uma IDE
 /// </summary>
 //public void MethodOrClassOrOtherWithParsableHelp() {}
 
-// Especificar qual namespace seu código irá usar
-// Os namespaces a seguir são padrões do .NET Framework Class Library 
+// Especifica os namespaces que o código irá usar
+// Os namespaces a seguir são padrões da biblioteca de classes do .NET Framework
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -33,11 +33,11 @@ using System.IO;
 
 // Mas este aqui não é :
 using System.Data.Entity;
-// Para que consiga utiliza-lo, você precisa adicionar novas referências
+// Para que consiga utilizá-lo, você precisa adicionar novas referências
 // Isso pode ser feito com o gerenciador de pacotes NuGet : `Install-Package EntityFramework`
 
-// Namespaces são escopos definidos para organizar o códgo em "pacotes" or "módulos"
-// Usando este código a partir de outra arquivo de origem: using Learning.CSharp;
+// Namespaces são escopos definidos para organizar o código em "pacotes" ou "módulos"
+// Usando este código a partir de outro arquivo de origem: using Learning.CSharp;
 namespace Learning.CSharp
 {
     // Cada .cs deve conter  uma classe com o mesmo nome do arquivo
