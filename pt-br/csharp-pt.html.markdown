@@ -790,7 +790,7 @@ on a new line! ""Wow!"", the masses cried";
         // (Penny Farthings are those bicycles with the big front wheel.
         // They have no gears.)
 
-        // calling parent constructor
+        // chamando construtor pai
         public PennyFarthing(int startCadence, int startSpeed) :
             base(startCadence, startSpeed, 0, "PennyFarthing", true, BikeBrand.Electra)
         {
