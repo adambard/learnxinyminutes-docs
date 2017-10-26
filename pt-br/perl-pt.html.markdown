@@ -55,7 +55,7 @@ my %fruta_cor = (
 # Scalars, arrays and hashes são documentados mais profundamentes em perldata.
 # (perldoc perldata).
 
-# Mais tipos de dados complexos podem ser construídas utilizando referências,
+# Mais tipos de dados complexos podem ser construídos utilizando referências,
 # o que permite que você crie listas e hashes dentro de listas e hashes.
 
 #### Condicionais e construtores de iteração
