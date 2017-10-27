@@ -290,7 +290,7 @@ You can define complex logic with Ansible and Jinja functions. Most common is us
 
 
 
-### ansible - tags, limmit
+### ansible - tags, limit
 
 You should know about a way to increase efficiency by this simple functionality
 
@@ -304,8 +304,8 @@ You can tag a task, role (and its tasks), include, etc...
     
     --skip-tags can be used to exclude a block of code
 
-#### LIMMIT
-You can limmit an execution of your tasks to defined hosts 
+#### LIMIT
+You can limit an execution of your tasks to defined hosts 
 
     --limit my_hostname
     --limit groupname
