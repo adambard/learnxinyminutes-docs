@@ -103,7 +103,7 @@ false;
 
 // ... which works with more than just strings
 "1, 2, " + 3; // = "1, 2, 3"
-"Hello " + ["world", "!"] // = "Hello world,!"
+"Hello " + ["world", "!"]; // = "Hello world,!"
 
 // and are compared with < and >
 "a" < "b"; // = true
@@ -222,7 +222,7 @@ while (true){
 var input;
 do {
     input = getInput();
-} while (!isValid(input))
+} while (!isValid(input));
 
 // The `for` loop is the same as C and Java:
 // initialization; continue condition; iteration.
@@ -293,7 +293,7 @@ myFunction("foo"); // = "FOO"
 // automatic semicolon insertion. Watch out for this when using Allman style.
 function myFunction(){
     return // <- semicolon automatically inserted here
-    {thisIsAn: 'object literal'}
+    {thisIsAn: 'object literal'};
 }
 myFunction(); // = undefined
 
@@ -388,7 +388,7 @@ myFunc(); // = undefined
 // through `this`, even if it wasn't attached when it was defined.
 var myOtherFunc = function(){
     return this.myString.toUpperCase();
-}
+};
 myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "HELLO WORLD!"
 
@@ -397,7 +397,7 @@ myObj.myOtherFunc(); // = "HELLO WORLD!"
 
 var anotherFunc = function(s){
     return this.myString + s;
-}
+};
 anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
 
 // The `apply` function is nearly identical, but takes an array for an argument
@@ -420,7 +420,7 @@ boundFunc(" And Hello Saturn!"); // = "Hello World! And Hello Saturn!"
 
 // `bind` can also be used to partially apply (curry) a function.
 
-var product = function(a, b){ return a * b; }
+var product = function(a, b){ return a * b; };
 var doubler = product.bind(this, 2);
 doubler(8); // = 16
 
@@ -430,11 +430,11 @@ doubler(8); // = 16
 
 var MyConstructor = function(){
     this.myNumber = 5;
-}
+};
 myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
 
-// Unlike most other popular object-oriented languages, JavaScript has no 
+// Unlike most other popular object-oriented languages, JavaScript has no
 // concept of 'instances' created from 'class' blueprints; instead, JavaScript
 // combines instantiation and inheritance into a single concept: a 'prototype'.
 
@@ -451,7 +451,7 @@ var myObj = {
 var myPrototype = {
     meaningOfLife: 42,
     myFunc: function(){
-        return this.myString.toLowerCase()
+        return this.myString.toLowerCase();
     }
 };
 
@@ -515,7 +515,7 @@ MyConstructor.prototype = {
 };
 var myNewObj2 = new MyConstructor();
 myNewObj2.getMyNumber(); // = 5
-myNewObj2.myNumber = 6
+myNewObj2.myNumber = 6;
 myNewObj2.getMyNumber(); // = 6
 
 // Built-in types like strings and numbers also have constructors that create
@@ -540,7 +540,7 @@ if (new Number(0)){
 // you can actually add functionality to a string, for instance.
 String.prototype.firstCharacter = function(){
     return this.charAt(0);
-}
+};
 "abc".firstCharacter(); // = "a"
 
 // This fact is often used in "polyfilling", which is implementing newer
@@ -556,7 +556,7 @@ if (Object.create === undefined){ // don't overwrite it if it exists
         Constructor.prototype = proto;
         // then use it to create a new, appropriately-prototyped object
         return new Constructor();
-    }
+    };
 }
 ```
 
