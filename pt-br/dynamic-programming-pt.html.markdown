@@ -22,7 +22,7 @@ Sempre se lembre!!
 
 ## Maneiras de Solucionar tais Problemas
 
-1. Top-Down (De cima para baixo): Começe solucionando o problema quebrando-o em 
+1. Top-Down (De cima para baixo): Comece solucionando o problema quebrando-o em 
 partes. Se você perceber que o problema já foi resolvido, então simplemente 
 pegue a resposta salva. Se ainda não foi resolvido, solucione-o e salve a 
 resposta. Isso é geralmente fácil de pensar e muito intuitivo. É geralmente 
