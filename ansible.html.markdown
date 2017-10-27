@@ -285,7 +285,7 @@ for execution further tasks.
 ```
 #### Conditionals
 
-You can define complex logic with ansible and Jinja functions. Most common is usage of `when:`, with some variable (often dynamicly generated in previous playbook steps with `register` or `lookup`)
+You can define complex logic with Ansible and Jinja functions. Most common is usage of `when:`, with some variable (often dynamicly generated in previous playbook steps with `register` or `lookup`)
 
 
 
