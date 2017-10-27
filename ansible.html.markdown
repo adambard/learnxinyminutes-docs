@@ -178,7 +178,7 @@ user@host:~/$ cd ansible-for-learnXinYminutes
 user@host:~/ansible-for-learnXinYminutes$ source environment.sh
 $
 $ # First lets execute the simple_playbook.yml
-(venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbook/simple_playbook.yml
+(venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbooks/simple_playbook.yml
 
 ```
 
@@ -186,7 +186,7 @@ Run the above playbook with roles example
 ```bash
 $ source environment.sh
 $ # Now we would run the above playbook with roles
-(venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbooks/role_example.yml
+(venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbooks/simple_role.yml
 ```
 
 #### Role directory structure:
@@ -206,6 +206,15 @@ roles/
 Handlers are a tasks that can be triggered (notified) during execution of a playbook, but they itself execute at the very end of a playbook.
 It is a best way to restart a service, check if application port is active (successfull deployment criteria), etc.
 
+Please get familiar how you can use role in simple_apache_role example
+```
+playbooks/roles/simple_apache_role/
+├── tasks
+│   └── main.yml
+└── templates
+    └── main.yml
+```
+
 ### ansible - variables
 
 Ansible is flexible - it has 21 levels of variable precedence
@@ -223,11 +232,29 @@ You should also know, that a nice way to pool some data is a **lookup**
 * stream
 * etcd
 
+```bash
+# read playbooks/lookup.yml
+# run
+(venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbooks/lookup.yml
+```
+
 You can use them in CLI too
 ```yaml
 ansible -m shell -a 'echo "{{ my_variable }}"' -e 'my_variable="{{ lookup("pipe", "date") }}"' localhost
 ansible -m shell -a 'echo "{{ my_variable }}"' -e 'my_variable="{{ lookup("pipe", "hostname") }}"' all
 
+# Or use in playbook
+
+(venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbooks/lookup.yml
+
+```
+
+### Register
+Another way to dynamicaly generate the variable content is a `register` command
+`Register` is also useful to store an output of a task, and use it's value as a logic 
+for execution further tasks.
+```
+(venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbooks/register_and_when.yml
 ```
 
 ### Templates
@@ -259,6 +286,7 @@ Junja is powerfull. It has built-in many usefull functions.
 # if variable is undefined - use default value
 {{ some_variable | default('default_value') }}
 ```
+### ansible - tags, limmit, diff, check_mode
 
 ### ansible-vault
 To maintain **ifrastructure as a code** you need to store secrets. 
