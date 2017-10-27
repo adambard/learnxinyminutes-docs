@@ -295,14 +295,16 @@ You can define complex logic with Ansible and Jinja functions. Most common is us
 You should know about a way to increase efficiency by this simple functionality
 
 #### TAGS
-You can tag a task, role (and its tasks), include, etc...
+You can tag a task, role (and its tasks), include, etc, and then run only the tagged resources
 
-    You can then limit an execution by using 
-    ansible-playbook playbooks/simple_playbook.yml --tags tagA, tag_other
+    ansible-playbook playbooks/simple_playbook.yml --tags=tagA,tag_other
+    ansible-playbook playbooks/simple_playbook.yml -t tagA,tag_other
 
-    There are special tags: always
+    There are special tags: 
+        always
     
     --skip-tags can be used to exclude a block of code
+    --list-tags to list available tags
 
 #### LIMIT
 You can limit an execution of your tasks to defined hosts 
