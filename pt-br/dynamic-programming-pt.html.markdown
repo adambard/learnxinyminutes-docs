@@ -51,7 +51,7 @@ array antecedente e uma variável como maiorSequenciasAteAgora e seu índice
 ajudariam a poupar muito tempo.
 Um conceito similar poderia ser aplicado ao procurar o maior caminho em um 
 grafo acíclico dirigido.
----------------------------------------------------------------------------
+
 ```
  for i=0 to n-1
             LS[i]=1
@@ -62,7 +62,7 @@ grafo acíclico dirigido.
             if (largest < LS[i])
 ```
 
-### Alguns Problemas Famosos de Programação Dinâmica
+## Alguns Problemas Famosos de Programação Dinâmica
 ```
 Floyd Warshall Algorithm - Tutorial and C Program source code:http://www.thelearningpoint.net/computer-science/algorithms-all-to-all-shortest-paths-in-graphs---floyd-warshall-algorithm-with-c-program-source-code 
 
