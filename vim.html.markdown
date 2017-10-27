@@ -17,6 +17,7 @@ specific points in the file, and for fast editing.
 
 ```
     vim <filename>   # Open <filename> in vim
+    :help <topic>    # Open up built-in help docs about <topic> if any exists
     :q               # Quit vim
     :w               # Save current file
     :wq              # Save file and quit vim
@@ -72,6 +73,15 @@ specific points in the file, and for fast editing.
     M                # Move to the middle of the screen
     L                # Move to the bottom of the screen
 ```
+
+## Help docs:
+
+Vim has built in help documentation that can accessed with `:help <topic>`.
+For example `:help navigation` will pull up documentation about how to navigate
+your workspace!
+
+`:help` can also be used without an option. This will bring up a default help dialog
+that aims to make getting started with vim more approachable!
 
 ## Modes:
 
