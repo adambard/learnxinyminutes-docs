@@ -249,13 +249,65 @@ ansible -m shell -a 'echo "{{ my_variable }}"' -e 'my_variable="{{ lookup("pipe"
 
 ```
 
-### Register
+### Register and Conditional 
+
+#### Register
 Another way to dynamicaly generate the variable content is a `register` command
 `Register` is also useful to store an output of a task, and use it's value as a logic 
 for execution further tasks.
 ```
 (venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbooks/register_and_when.yml
 ```
+
+```yaml
+#file content
+---
+- hosts: localhost
+  tasks:
+   - name: check the system capacity
+     shell: df -h /
+     register: root_size
+
+   - name: debug root_size
+     debug:
+        msg: "{{ root_size }}"
+   
+   - name: debug root_size return code
+     debug:
+       msg:  "{{ root_size.rc }}"
+
+           
+   - name: Print this message when return code of 'check the system capacity' was ok
+     debug:
+       msg:  "{{ root_size.rc }}"
+     when: root_size.rc == 0
+
+```
+#### Conditionals
+
+You can define complex logic with ansible and Jinja functions. Most common is usage of `when:`, with some variable (often dynamicly generated in previous playbook steps with `register` or `lookup`)
+
+
+
+### ansible - tags, limmit
+
+You should know about a way to increase efficiency by this simple functionality
+
+#### TAGS
+    You can tag a task, role (and its tasks), include, etc...
+    You can then limit an execution by using 
+    --tags tagA, other_tag,...
+
+    There are special tags: always
+    
+    --skip-tags can be used to exclude a block of code
+
+#### LIMMIT
+    You can limmit an execution of your tasks to defined hosts 
+    --limit my_hostname
+    --limit groupname
+    --limit some_prefix*
+    --limit hostname:group #JM
 
 ### Templates
 
@@ -286,7 +338,6 @@ Junja is powerfull. It has built-in many usefull functions.
 # if variable is undefined - use default value
 {{ some_variable | default('default_value') }}
 ```
-### ansible - tags, limmit, diff, check_mode
 
 ### ansible-vault
 To maintain **ifrastructure as a code** you need to store secrets. 
