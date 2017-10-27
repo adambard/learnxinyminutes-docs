@@ -6,10 +6,12 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
 translators:
     - ["Ale46", "https://github.com/Ale46"]
+    - ["Chris54721", "https://chris54721.net"]
 lang: it-it
 ---
 
-RST è un formato di file formalmente creato dalla comunità Python per scrivere documentazione (e quindi fa parte di Docutils).
+RST (Restructured Text) è un formato di file inizialmente creato dalla comunità Python
+per la documentazione (per questo motivo appartiene a Docutils).
 
 I file RST sono semplici file di testo con una sintassi leggera (in confronto all'HTML).
 
@@ -23,7 +25,7 @@ Per usare Restructured Text, sarà necessario installare [Python](http://www.pyt
 $ easy_install docutils
 ```
 
-O se il tuo sistema ha `pip`, puoi usare anche lui:
+Oppure, se hai `pip` installato sul tuo sistema:
 
 ```bash
 $ pip install docutils
@@ -32,7 +34,7 @@ $ pip install docutils
 
 ## Sintassi del file
 
-Un semplice esempio della sintassi del file:
+Ecco un semplice esempio della sintassi RST:
 
 ```
 .. Le righe che iniziano con due punti sono comandi speciali. Ma se non è possibile trovare alcun comando, la riga viene considerata come un commento
@@ -41,16 +43,16 @@ Un semplice esempio della sintassi del file:
 I titoli principali sono scritti utilizzando caratteri di uguale, sopra e sotto
 ===============================================================================
 
-Si noti che devono esistere tanti caratteri di uguale quanti sono i caratteri del titolo.
+Si noti che devono esserci tanti caratteri di uguale quanti caratteri del titolo.
 
-Anche il titolo è sottolineato con caratteri di uguale
-======================================================
+Anche i titoli normali usano caratteri di uguale, ma solo sotto
+===============================================================
 
-Sottotitoli con i trattini
---------------------------
+I sottotitoli usano i trattini
+------------------------------
 
-E sotto-sottotitoli con tildi
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+E i sotto-sottotitoli le tildi
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Puoi inserire il testo in *corsivo* o in **grassetto**, puoi "contrassegnare" il testo come codice con un doppio apice ``: `` print () ``.
 
@@ -60,13 +62,13 @@ Le liste sono semplici come in Markdown:
 - Secondo elemento
      - Sottoelemento
 
-o
+oppure
 
 * Primo elemento
 * Secondo elemento
      * Sottoelemento
 
-Le tabelle sono davvero facili da scrivere:
+Le tabelle sono molto semplici da inserire:
 
 =========== ========
 Stato       Capitale
@@ -75,22 +77,21 @@ Francia     Parigi
 Giappone    Tokio
 =========== ========
 
-Le tabelle più complesse possono essere fatte facilmente (colonne e/o righe unite) ma ti suggerisco di leggere il documento completo per questo :)
+Anche le tabelle più complesse possono essere inserite facilmente (colonne e/o righe unite) ma ti suggerisco di leggere la documentazione completa per questo :)
 
 Esistono diversi modi per creare collegamenti:
 
-- Aggiungendo un underscore dopo una parola: Github_ e aggiungendo l'URL di destinazione dopo il testo (questo modo ha il vantaggio di non inserire URL non necessari all'interno del testo leggibile).
+- Aggiungendo un underscore dopo una parola: Github_ e aggiungendo l'URL di destinazione dopo il testo (questo metodo ha il vantaggio di non inserire URL non necessari all'interno del testo leggibile).
 - Digitando un URL completo: https://github.com/ (verrà automaticamente convertito in un collegamento)
-- Facendo un collegamento simile a Markdown: `Github <https://github.com/>`_ .
+- Utilizzando una sintassi simile a Markdown: `Github <https://github.com/>`_ .
 
 .. _Github https://github.com/
 
 ```
 
-
 ## Come usarlo
 
-RST viene fornito con docutils che dispone di `rst2html`, per esempio:
+RST viene fornito con docutils, che dispone di `rst2html`, per esempio:
 
 ```bash
 $ rst2html miofile.rst output.html
