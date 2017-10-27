@@ -298,7 +298,7 @@ You should know about a way to increase efficiency by this simple functionality
 You can tag a task, role (and its tasks), include, etc...
 
     You can then limit an execution by using 
-    --tags tagA, other_tag,...
+    ansible-playbook playbooks/simple_playbook.yml --tags tagA, tag_other
 
     There are special tags: always
     
@@ -306,6 +306,8 @@ You can tag a task, role (and its tasks), include, etc...
 
 #### LIMIT
 You can limit an execution of your tasks to defined hosts 
+
+    ansible-playbook playbooks/simple_playbook.yml --limmit localhost
 
     --limit my_hostname
     --limit groupname
