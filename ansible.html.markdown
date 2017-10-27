@@ -284,7 +284,7 @@ for execution further tasks.
      when: root_size.rc == 0
 
 ```
-#### Conditionals
+#### Conditionals - when:
 
 You can define complex logic with Ansible and Jinja functions. Most common is usage of `when:`, with some variable (often dynamicly generated in previous playbook steps with `register` or `lookup`)
 
