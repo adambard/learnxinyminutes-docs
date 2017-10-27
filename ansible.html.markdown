@@ -276,7 +276,8 @@ for execution further tasks.
      debug:
        msg:  "{{ root_size.rc }}"
 
-           
+# when: example           
+
    - name: Print this message when return code of 'check the system capacity' was ok
      debug:
        msg:  "{{ root_size.rc }}"
