@@ -1213,6 +1213,85 @@ namespace Csharp7
             Console.WriteLine(tt.GetLastName());
         }
     }
+    
+    // PATTERN MATCHING
+    class PatternMatchingTest
+    {
+        public static (string, int)? CreateLogMessage(object data)
+        {
+            switch(data)
+            {
+                // Additional filtering using when
+                case System.Net.Http.HttpRequestException h when h.Message.Contains("404"):
+                    return (h.Message, 404);
+                case System.Net.Http.HttpRequestException h when h.Message.Contains("400"):
+                    return (h.Message, 400);
+                case Exception e:
+                    return (e.Message, 500);
+                case string s:
+                    return (s, s.Contains("Error") ? 500 : 200);
+                case null:
+                    return null;
+                default:
+                    return (data.ToString(), 500);
+            }
+        }
+    }
+
+    // REFERENCE LOCALS
+    // Allow you to return a reference to an object instead of just its value
+    class RefLocalsTest
+    {
+        // note ref in return
+        public static ref string FindItem(string[] arr, string el)
+        {
+            for(int i=0; i<arr.Length; i++)
+            {
+                if(arr[i] == el) {
+                    // return the reference
+                    return ref arr[i];
+                }
+            }
+            throw new Exception("Item not found");
+        }
+
+        public static void SomeMethod()
+        {
+            string[] arr = {"this", "is", "an", "array"};
+
+            // note refs everywhere
+            ref string item = ref FindItem(arr, "array");
+            item = "apple";
+            Console.WriteLine(arr[3]);  // => apple
+        }
+    }
+
+    // LOCAL FUNCTIONS
+    class LocalFunctionTest
+    {
+        private static int _id = 0;
+        public int id;
+        public LocalFunctionTest()
+        {
+            id = generateId();
+
+            // This local function can only be accessed in this scope
+            int generateId()
+            {
+                return _id++;
+            }
+        }
+
+        public static void AnotherMethod()
+        {
+            var lf1 = new LocalFunctionTest();
+            var lf2 = new LocalFunctionTest();
+            Console.WriteLine($"{lf1.id}, {lf2.id}");  // => 0, 1
+
+            int id = generateId();
+            // error CS0103: The name 'generateId' does not exist in the current context
+        }
+    }
 }
 
 ```
