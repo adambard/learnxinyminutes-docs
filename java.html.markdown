@@ -173,7 +173,7 @@ public class LearnJava {
         // Char - A single 16-bit Unicode character
         char fooChar = 'A';
 
-        // final variables can't be reassigned to another object,
+        // final variables can't be reassigned,
         final int HOURS_I_WORK_PER_WEEK = 9001;
         // but they can be initialized later.
         final double E;
