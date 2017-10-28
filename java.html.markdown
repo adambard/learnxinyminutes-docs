@@ -703,15 +703,21 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 //     // Method declarations
 // }
 
-// Marking a class as abstract means that it contains at least one abstract
-// method that must be defined in a child class. Similar to interfaces, abstract
-// classes cannot be instantiated, but instead must be extended and the abstract
-// methods defined. Different from interfaces, abstract classes can contain a
-// mixture of concrete and abstract methods. Methods in an interface cannot
-// have a body, unless the method is static, and variables are final by default,
-// unlike an abstract class. Also abstract classes CAN have the "main" method.
+// Abstract Classes cannot be instantiated.
+// Abstract classes may define abstract methods.
+// Abstract methods have no body and are marked abstract
+// Non-abstract child classes must @Override all abstract methods
+// from their super-classes.
+// Abstract classes can be useful when combining repetitive logic
+// with customised behavior, but as Abstract classes require
+// inheritance, they violate "Composition over inheritance"
+// so consider other approaches using composition.
+// https://en.wikipedia.org/wiki/Composition_over_inheritance
+
 public abstract class Animal
 {
+    private int age;
+
     public abstract void makeSound();
 
     // Method can have a body
@@ -722,17 +728,12 @@ public abstract class Animal
         age = 30;
     }
 
-    // No need to initialize, however in an interface
-    // a variable is implicitly final and hence has
-    // to be initialized.
-    private int age;
-
     public void printAge()
     {
         System.out.println(age);
     }
 
-    // Abstract classes can have main function.
+    // Abstract classes can have main method.
     public static void main(String[] args)
     {
         System.out.println("I am abstract");
