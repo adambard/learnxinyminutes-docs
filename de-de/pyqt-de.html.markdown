@@ -9,13 +9,13 @@ translators:
 lang: de-de
 ---
 
-**Qt** ist eine weit bekanntes Framework mit den man plattformunabhängige Programme schreiben kann,
-die auf verschiedenen Sotfware und Hardware Plattformen laufen mit kleinen oder keinen Änderungen im Code.
-Dabei besitzen sie trozdem die Power und Geschwindigkeit von nativen Anwendungen.
+**Qt** ist ein weit bekanntes Framework mit dem man plattformunabhängige Programme schreiben kann,
+die auf verschiedenen Software und Hardware Plattformen laufen, mit kleinen oder keinen Änderungen im Code.
+Dabei besitzen sie trotzdem die Power und Geschwindigkeit von nativen Anwendungen.
 **Qt** wurde ursprünglich in *C++** geschrieben.
 
 Das ist eine Adaption von dem C++ Intro für QT von [Aleksey Kholovchuk](https://github.com/vortexxx192),
-manche der Codebeispiele sollte in der selben Funktionalität resultieren.
+manche der Codebeispiele sollten in der selben Funktionalität resultieren.
 Diese Version wurde in pyqt erstellt.
 
 ```python
@@ -31,7 +31,7 @@ def window():
     b = QtGui.QLabel(w)
 	# Setzt einen Text für das Label.
     b.setText("Hello World!")
-	# Setzt die Größe und die Platzierungsinfomationen.
+	# Setzt die Größe und die Platzierungsinformationen.
     w.setGeometry(100, 100, 200, 50)
     b.move(50, 20)
 	# Setzt unserem Fenster einen schönen Titel.
@@ -49,7 +49,7 @@ if __name__ == '__main__':
 Damit wir weitere fortgeschrittene Funktionen in **pyqt** verwenden können,
 müssen wir anfangen zusätzliche Elemente zu bauen.
 Hier zeigen wir wie man eine Dialog Popup Box einführt. 
-Diese ist nützlich, um den Benutzer eine Entscheidung zu bestätigen oder um Informationen anzuzeigen.
+Diese ist nützlich, um dem Benutzer eine Entscheidung zu bestätigen oder um Informationen anzuzeigen.
 
 ```Python 
 import sys
@@ -60,7 +60,7 @@ from PyQt4.QtCore import *
 def window():
     app = QApplication(sys.argv)
     w = QWidget()
-    # Erschafft einen Knopf und fügt das Widget w hinzu
+    # Erschafft einen Knopf und fügt das Widget w hinzu.
     b = QPushButton(w)
     b.setText("drücke mich")
     b.move(50, 50)
@@ -72,7 +72,7 @@ def window():
     sys.exit(app.exec_())
 	
 # Diese Funktion soll ein Dialogfenster mit einem Knopf erschaffen.
-# Der Knopf wartet bis er geklickt wird und beendet das Programm
+# Der Knopf wartet bis er geklickt wird und beendet das Programm.
 def showdialog():
     d = QDialog()
     b1 = QPushButton("ok", d)
