@@ -280,7 +280,7 @@ public class LearnJava {
         // LinkedLists - Implementation of doubly-linked list. All of the
         //               operations perform as could be expected for a
         //               doubly-linked list.
-        // Maps - A set of objects that map keys to values. Map is
+        // Maps - A mapping of key Objects to value Objects. Map is
         //        an interface and therefore cannot be instantiated.
         //        The type of keys and values contained in a Map must
         //        be specified upon instantiation of the implementing
@@ -289,10 +289,16 @@ public class LearnJava {
         // HashMaps - This class uses a hashtable to implement the Map
         //            interface. This allows the execution time of basic
         //            operations, such as get and insert element, to remain
-        //            constant even for large sets.
-        // TreeMap - This class is a sorted tree structure. It implements a red
-        //           black tree and sorts the entries based on the key value or
-        //           the comparator provided while creating the object
+        //            constant-amortized even for large sets.
+        // TreeMap - A Map that is sorted by its keys. Each modification 
+        //           maintains the sorting defined by either a Comparator
+        //           supplied at instantiation, or comparisons of each Object
+        //           if they implement the Comparable interface.
+        //           Failure of keys to implement Comparable combined with failure to
+        //           supply a Comparator will throw ClassCastExceptions.
+        //           Insertion and removal operations take O(log(n)) time
+        //           so avoid using this data structure unless you are taking
+        //           advantage of the sorting.
 
         ///////////////////////////////////////
         // Operators
