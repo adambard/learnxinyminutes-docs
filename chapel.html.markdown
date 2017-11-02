@@ -2,11 +2,11 @@
 language: chapel
 filename: learnchapel.chpl
 contributors:
-    - ["Ian J. Bertolacci", "http://www.cs.colostate.edu/~ibertola/"]
-    - ["Ben Harshbarger", "http://github.com/benharsh/"]
+    - ["Ian J. Bertolacci", "https://www.cs.arizona.edu/~ianbertolacci/"]
+    - ["Ben Harshbarger", "https://github.com/benharsh/"]
 ---
 
-You can read all about Chapel at [Cray's official Chapel website](http://chapel.cray.com).
+You can read all about Chapel at [Cray's official Chapel website](https://chapel-lang.org).
 In short, Chapel is an open-source, high-productivity, parallel-programming
 language in development at Cray Inc., and is designed to run on multi-core PCs
 as well as multi-kilocore supercomputers.
@@ -1124,16 +1124,16 @@ This tutorial is for people who want to learn the ropes of chapel without
 having to hear about what fiber mixture the ropes are, or how they were
 braided, or how the braid configurations differ between one another. It won't
 teach you how to develop amazingly performant code, and it's not exhaustive.
-Refer to the [language specification](http://chapel.cray.com/language.html) and
-the [module documentation](http://chapel.cray.com/docs/latest/) for more
+Refer to the [language specification](https://chapel-lang.org/docs/latest/language/spec.html) and
+the [module documentation](https://chapel-lang.org/docs/latest/) for more
 details.
 
-Occasionally check back here and on the [Chapel site](http://chapel.cray.com)
+Occasionally check back here and on the [Chapel site](https://chapel-lang.org)
 to see if more topics have been added or more tutorials created.
 
 ### What this tutorial is lacking:
 
- * Exposition of the [standard modules](http://chapel.cray.com/docs/latest/modules/modules.html)
+ * Exposition of the [standard modules](https://chapel-lang.org/docs/latest/modules/standard.html)
  * Multiple Locales (distributed memory system)
  * Records
  * Parallel iterators
