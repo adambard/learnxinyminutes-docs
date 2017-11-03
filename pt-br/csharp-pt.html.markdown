@@ -784,11 +784,11 @@ on a new line! ""Wow!"", the masses cried";
 
     } // end class Bicycle
 
-    // PennyFarthing is a subclass of Bicycle
+    // PennyFarthing é uma subclasse de Bicycle
     class PennyFarthing : Bicycle
     {
-        // (Penny Farthings are those bicycles with the big front wheel.
-        // They have no gears.)
+        // (Penny Farthings são aquelas bicicletas com uma grande roda frontal.
+        // Elas não tem correias.)
 
         // chamando construtor pai
         public PennyFarthing(int startCadence, int startSpeed) :
