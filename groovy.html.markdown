@@ -230,10 +230,12 @@ for (i in array) {
 
 //Iterate over a map
 def map = ['name':'Roberto', 'framework':'Grails', 'language':'Groovy']
-x = 0
+x = ""
 for ( e in map ) {
     x += e.value
+    x += " "
 }
+assert x.equals("Roberto Grails Groovy ")
 
 /*
   Operators

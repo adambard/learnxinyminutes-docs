@@ -16,7 +16,7 @@ This tutorial is written using SCSS.
 
 If you're already familiar with CSS3, you'll be able to pick up Sass relatively quickly. It does not provide any new styling properties but rather the tools to write your CSS more efficiently and make maintenance much easier.
 
-```scss
+```sass
 
 
 //Single line comments are removed when Sass is compiled to CSS.

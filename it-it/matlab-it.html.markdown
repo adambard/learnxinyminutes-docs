@@ -217,7 +217,7 @@ A .* B % Moltiplica ogni elemento di A per il corrispondente elemento di B
 % l'altra (il cui nome termina con m) agisce sull'intera matrice.
 exp(A) % Calcola l'esponenziale di ogni elemento
 expm(A) % Calcola la matrice esponenziale
-sqrt(A) % Calcola la radice quadrata di ogni elementotake the square root of each element
+sqrt(A) % Calcola la radice quadrata di ogni elemento
 sqrtm(A) % Trova la matrice di cui A nè è la matrice quadrata
 
 

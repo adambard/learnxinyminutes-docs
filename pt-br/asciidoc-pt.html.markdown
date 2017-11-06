@@ -87,10 +87,6 @@ Título de seções
 
 ===== Nível 4 <h5>
 
-====== Nível 5 <h6>
-
-======= Nível 6  <h7>
-
 ```
 
 Listas
@@ -103,7 +99,7 @@ Para criar uma lista com marcadores use asteriscos.
 * baz
 ```
 
-Para criar uma lista númerada use pontos.
+Para criar uma lista numerada use pontos.
 
 ```
 . item 1

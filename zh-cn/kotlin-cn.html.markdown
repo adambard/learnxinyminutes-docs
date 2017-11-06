@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
     所以我们不必要每次都去明确指定它。
     我们可以像这样明确地声明一个变量的类型：
     */
-    val foo : Int = 7
+    val foo: Int = 7
 
     /*
     可以采取和Java类似的方法来表示一个字符串。
@@ -178,13 +178,13 @@ fun helloWorld(val name : String) {
 
     // "with"函数类似于JavaScript中的"with"用法。
     data class MutableDataClassExample (var x: Int, var y: Int, var z: Int)
-    val fooMutableDate = MutableDataClassExample(7, 4, 9)
-    with (fooMutableDate) {
+    val fooMutableData = MutableDataClassExample(7, 4, 9)
+    with (fooMutableData) {
         x -= 2
         y += 2
         z--
     }
-    println(fooMutableDate) // => MutableDataClassExample(x=5, y=6, z=8)
+    println(fooMutableData) // => MutableDataClassExample(x=5, y=6, z=8)
 
     /*
     我们可以使用"listOf"函数来创建一个list。

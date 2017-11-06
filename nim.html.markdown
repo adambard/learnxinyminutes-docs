@@ -12,6 +12,25 @@ that gives the programmer power without compromises on runtime efficiency.
 Nim is efficient, expressive, and elegant.
 
 ```nim
+# Single-line comments start with a #
+
+#[
+  Multi-line comments begin with a #[
+  ... and end with ]#
+
+They don't care about indentation
+
+  #[
+  and they can be nested
+  ]#
+
+]#
+
+discard """
+This can also work as a multiline comment.
+Or for unparsable, broken code
+"""
+
 var                     # Declare (and assign) variables,
   letter: char = 'n'    # with or without type annotations
   lang = "N" & "im"
@@ -35,10 +54,6 @@ when compileBadCode:            # `when` is a compile time `if`
 discard 1 > 2 # Note: The compiler will complain if the result of an expression
               # is unused. `discard` bypasses this.
 
-discard """
-This can work as a multiline comment.
-Or for unparsable, broken code
-"""
 
 #
 # Data Structures
@@ -76,7 +91,7 @@ let myDrink = drinks[2]
 # static typing powerful and useful.
 
 type
-  Name = string # A type alias gives you a new type that is interchangable
+  Name = string # A type alias gives you a new type that is interchangeable
   Age = int     # with the old type but is more descriptive.
   Person = tuple[name: Name, age: Age] # Define data structures too.
   AnotherSyntax = tuple
@@ -109,7 +124,7 @@ when compileBadCode:
 
 type
   Color = enum cRed, cBlue, cGreen
-  Direction = enum # Alternative formating
+  Direction = enum # Alternative formatting
     dNorth
     dWest
     dEast

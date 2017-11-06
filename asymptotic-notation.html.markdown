@@ -92,8 +92,8 @@ case, or ceiling of growth for a given function. It provides us with an
 _**asymptotic upper bound**_ for the growth rate of runtime of an algorithm.
 Say `f(n)` is your algorithm runtime, and `g(n)` is an arbitrary time 
 complexity you are trying to relate to your algorithm. `f(n)` is O(g(n)), if 
-for some real constant c (c > 0), `f(n)` <= `c g(n)` for every input size 
-n (n > 0).
+for some real constants c (c > 0) and n<sub>0</sub>, `f(n)` <= `c g(n)` for every input size 
+n (n > n<sub>0</sub>).
 
 *Example 1*
 
@@ -110,7 +110,7 @@ Let's look to the definition of Big-O.
 3log n + 100 <= c * log n
 ```
 
-Is there some constant c that satisfies this for all n?
+Is there some pair of constants c, n<sub>0</sub> that satisfies this for all n > <sub>0</sub>?
 
 ```
 3log n + 100 <= 150 * log n, n > 2 (undefined at n = 1)
@@ -133,7 +133,7 @@ Let's look at the definition of Big-O.
 3 * n^2 <= c * n
 ```
 
-Is there some constant c that satisfies this for all n?
+Is there some pair of constants c, n<sub>0</sub> that satisfies this for all n > <sub>0</sub>?
 No, there isn't. `f(n)` is NOT O(g(n)).
 
 ### Big-Omega
@@ -141,8 +141,8 @@ Big-Omega, commonly written as **Ω**, is an Asymptotic Notation for the best
 case, or a floor growth rate for a given function. It provides us with an 
 _**asymptotic lower bound**_ for the growth rate of runtime of an algorithm.
 
-`f(n)` is Ω(g(n)), if for some real constant c (c > 0), `f(n)` is >= `c g(n)` 
-for every input size n (n > 0).
+`f(n)` is Ω(g(n)), if for some real constants c (c > 0) and n<sub>0</sub> (n<sub>0</sub> > 0), `f(n)` is >= `c g(n)` 
+for every input size n (n > n<sub>0</sub>).
 
 ### Note
 
@@ -155,8 +155,8 @@ Small-o, commonly written as **o**, is an Asymptotic Notation to denote the
 upper bound (that is not asymptotically tight) on the growth rate of runtime 
 of an algorithm.
 
-`f(n)` is o(g(n)), if for any real constant c (c > 0), `f(n)` is < `c g(n)` 
-for every input size n (n > 0).
+`f(n)` is o(g(n)), if for some real constants c (c > 0) and n<sub>0</sub> (n<sub>0</sub> > 0), `f(n)` is < `c g(n)` 
+for every input size n (n > n<sub>0</sub>).
 
 The definitions of O-notation and o-notation are similar. The main difference 
 is that in f(n) = O(g(n)), the bound f(n) <= g(n) holds for _**some**_ 
@@ -168,8 +168,8 @@ Small-omega, commonly written as **ω**, is an Asymptotic Notation to denote
 the lower bound (that is not asymptotically tight) on the growth rate of 
 runtime of an algorithm.
 
-`f(n)` is ω(g(n)), if for any real constant c (c > 0), `f(n)` is > `c g(n)` 
-for every input size n (n > 0).
+`f(n)` is ω(g(n)), if for some real constants c (c > 0) and n<sub>0</sub> (n<sub>0</sub> > 0), `f(n)` is > `c g(n)` 
+for every input size n (n > n<sub>0</sub>).
 
 The definitions of Ω-notation and ω-notation are similar. The main difference 
 is that in f(n) = Ω(g(n)), the bound f(n) >= g(n) holds for _**some**_ 
@@ -180,8 +180,8 @@ _**all**_ constants c > 0.
 Theta, commonly written as **Θ**, is an Asymptotic Notation to denote the 
 _**asymptotically tight bound**_ on the growth rate of runtime of an algorithm. 
 
-`f(n)` is Θ(g(n)), if for some real constants c1, c2 (c1 > 0, c2 > 0), 
-`c1 g(n)` is < `f(n)` is < `c2 g(n)` for every input size n (n > 0).
+`f(n)` is Θ(g(n)), if for some real constants c1, c2 and n<sub>0</sub> (c1 > 0, c2 > 0, n<sub>0</sub> > 0), 
+`c1 g(n)` is < `f(n)` is < `c2 g(n)` for every input size n (n > n<sub>0</sub>).
 
 ∴ `f(n)` is Θ(g(n)) implies `f(n)` is O(g(n)) as well as `f(n)` is Ω(g(n)).
 

@@ -31,7 +31,7 @@ referenciado como Memorização.
 2. Bottom-Up (De baixo para cima): Analise o problema e veja a ordem em que os 
 subproblemas são resolvidos e começe a solucionar dos problemas mais triviais, 
 até o problema dado. Neste processo, é garantido que os subproblemas são 
-resolvidos antes de resoler o problema. Isto é referenciado como Programação Dinâmica.
+resolvidos antes de resolver o problema. Isto é referenciado como Programação Dinâmica.
 
 ## Exemplo de Programação Dinâmica
 
@@ -51,7 +51,7 @@ array antecedente e uma variável como maiorSequenciasAteAgora e seu índice
 ajudariam a poupar muito tempo.
 Um conceito similar poderia ser aplicado ao procurar o maior caminho em um 
 grafo acíclico dirigido.
----------------------------------------------------------------------------
+
 ```
  for i=0 to n-1
             LS[i]=1
@@ -62,7 +62,7 @@ grafo acíclico dirigido.
             if (largest < LS[i])
 ```
 
-### Alguns Problemas Famosos de Programação Dinâmica
+## Alguns Problemas Famosos de Programação Dinâmica
 ```
 Floyd Warshall Algorithm - Tutorial and C Program source code:http://www.thelearningpoint.net/computer-science/algorithms-all-to-all-shortest-paths-in-graphs---floyd-warshall-algorithm-with-c-program-source-code 
 

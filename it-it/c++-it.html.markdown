@@ -461,7 +461,7 @@ void Cane::print() const
 
 Cane::~Cane()
 {
-    cout << "Ciao ciao " << nome << "\n";
+    std::cout << "Ciao ciao " << nome << "\n";
 }
 
 int main() {
@@ -647,7 +647,7 @@ void stampaMessaggio<10>() {
 
 printMessage<20>();  // Stampa "impara il C++ in 20 minuti!"
 printMessage<10>();  // Stampa "Impara il C++ più velocemente in soli 10 minuti!"                                   
-                                        
+
 ////////////////////////////
 // Gestione delle eccezioni
 ///////////////////////////
@@ -658,7 +658,7 @@ printMessage<10>();  // Stampa "Impara il C++ più velocemente in soli 10 minuti
 #include <exception>
 #include <stdexcept>
 
-// Tutte le eccezioni lanciate all'interno del blocco _try_ possono essere catturate dai successivi 
+// Tutte le eccezioni lanciate all'interno del blocco _try_ possono essere catturate dai successivi
 // handlers _catch_.
 try {
     // Non allocare eccezioni nello heap usando _new_.

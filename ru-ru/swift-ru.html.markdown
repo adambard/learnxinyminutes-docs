@@ -376,14 +376,14 @@ print("Имя :\(name)") // Имя: Яков
 
 // Протокол `Error` используется для перехвата выбрасываемых ошибок
 enum MyError: Error {
-    case BadValue(msg: String)
-    case ReallyBadValue(msg: String)
+    case badValue(msg: String)
+    case reallyBadValue(msg: String)
 }
 
 // фунции помеченные словом `throws` должны вызываться с помощью `try`
 func fakeFetch(value: Int) throws -> String {
     guard 7 == value else {
-        throw MyError.ReallyBadValue(msg: "Действительно плохое значение")
+        throw MyError.reallyBadValue(msg: "Действительно плохое значение")
     }
 
     return "тест"
@@ -401,7 +401,7 @@ func testTryStuff() {
     do {
         // обычно try оператор, позволяющий обработать ошибку в `catch` блоке
         try fakeFetch(value: 1)
-    } catch MyError.BadValue(let msg) {
+    } catch MyError.badValue(let msg) {
         print("Ошибка: \(msg)")
     } catch {
         // все остальное
@@ -535,49 +535,49 @@ if let circle = myEmptyCircle {
 // Они могут содержать методы подобно классам.
 
 enum Suit {
-    case Spades, Hearts, Diamonds, Clubs
+    case spades, hearts, diamonds, clubs
     func getIcon() -> String {
         switch self {
-        case .Spades: return "♤"
-        case .Hearts: return "♡"
-        case .Diamonds: return "♢"
-        case .Clubs: return "♧"
+        case .spades: return "♤"
+        case .hearts: return "♡"
+        case .diamonds: return "♢"
+        case .clubs: return "♧"
         }
     }
 }
 
 // Значения перечислений допускают сокращенный синтаксис, нет необходимости
 // указывать тип перечисления, когда переменная объявляется явно
-var suitValue: Suit = .Hearts
+var suitValue: Suit = .hearts
 
 // Значения нецелочисленных перечислений должны быть указаны явно
 // или могут выводится с помощью функции `rawValue` из имени
 enum BookName: String {
-    case John
-    case Luke = "Лука"
+    case john
+    case luke = "Лука"
 }
-print("Имя: \(BookName.John.rawValue)")
+print("Имя: \(BookName.john.rawValue)")
 
 // Перечисление (enum) со связанными значениями
 enum Furniture {
     // Связать с типом Int
-    case Desk(height: Int)
+    case desk(height: Int)
     // Связать с типами String и Int
-    case Chair(String, Int)
+    case chair(String, Int)
 
     func description() -> String {
         switch self {
-        case .Desk(let height):
+        case .desk(let height):
             return "Письменный стол высотой \(height) см."
-        case .Chair(let brand, let height):
+        case .chair(let brand, let height):
             return "Стул марки \(brand) высотой \(height) см."
         }
     }
 }
 
-var desk: Furniture = .Desk(height: 80)
+var desk: Furniture = .desk(height: 80)
 print(desk.description())     // "Письменный стол высотой 80 см."
-var chair = Furniture.Chair("Foo", 40)
+var chair = Furniture.chair("Foo", 40)
 print(chair.description())    // "Стул марки Foo высотой 40 см."
 
 

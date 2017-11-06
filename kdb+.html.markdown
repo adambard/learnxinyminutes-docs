@@ -2,11 +2,11 @@
 language: kdb+
 contributors:
     - ["Matt Doherty", "https://github.com/picodoc"]
-    - ["Jonny Press", "jonny.press@aquaq.co.uk"]
+    - ["Jonny Press", "https://github.com/jonnypress"]
 filename: learnkdb.q
 ---
 
-The q langauge and its database component kdb+ were developed by Arthur Whitney
+The q language and its database component kdb+ were developed by Arthur Whitney
 and released by Kx systems in 2003. q is a descendant of APL and as such is
 very terse and a little strange looking for anyone from a "C heritage" language
 background. Its expressiveness and vector oriented nature make it well suited
@@ -25,6 +25,8 @@ separable so this distinction is not really useful.
 
 All Feedback welcome!  You can reach me at matt.doherty@aquaq.co.uk, or Jonny
 at jonny.press@aquaq.co.uk
+
+To learn more about kdb+ you can join the [Personal kdb+](https://groups.google.com/forum/#!forum/personal-kdbplus) or [TorQ kdb+](https://groups.google.com/forum/#!forum/kdbtorq) group.
 
 ```
 / Single line comments start with a forward-slash
@@ -256,7 +258,7 @@ l / => 5 2 3 4
 / Lists can also be used for indexing and indexed assignment
 l[1 3] / => 2 4
 l[1 3]: 1 3
-l / => 1 1 3 3
+l / => 5 1 3 3
 
 / Lists can be untyped/mixed type
 l:(1;2;`hi)
@@ -290,6 +292,7 @@ last 1 2 3 / => 3
 
 / Take (#), drop (_) and find (?) are also useful working with lists
 l:1 2 3 4 5 6 7 8 9
+l:1+til 9 / til is a useful shortcut for generating ranges
 / take the first 5 elements
 5#l / => 1 2 3 4 5
 / drop the first 5
@@ -297,8 +300,8 @@ l:1 2 3 4 5 6 7 8 9
 / take the last 5
 -5#l / => 5 6 7 8 9
 / drop the last 5
--5_l / => 1 2 3 4 5
-/ find the first occurance of 4
+-5_l / => 1 2 3 4
+/ find the first occurrence of 4
 l?4 / => 3
 l[3] / => 4
 
@@ -313,7 +316,7 @@ key d / => `a`b`c
 / and value the second
 value d / => 1 2 3
 
-/ Indexing is indentical to lists
+/ Indexing is identical to lists
 / with the first list as a key instead of the position
 d[`a] / => 1
 d[`b] / => 2
@@ -397,13 +400,13 @@ k!t
 / => id| c1 c2 c3
 / => --| --------
 / => 1 | 1  4  7
-/ => 2 | 2  5  8
+/ => 2 | 3  5  8
 / => 3 | 3  6  9
 
 / We can also use this shortcut for defining keyed tables
 kt:([id:1 2 3]c1:1 2 3;c2:4 5 6;c3:7 8 9)
 
-/ Records can then be retreived based on this key
+/ Records can then be retrieved based on this key
 kt[1]
 / => c1| 1
 / => c2| 4
@@ -425,7 +428,7 @@ kt[`id!1]
 f:{x+x}
 f[2] / => 4
 
-/ Functions can be annonymous and called at point of definition
+/ Functions can be anonymous and called at point of definition
 {x+x}[2] / => 4
 
 / By default the last expression is returned
@@ -437,7 +440,7 @@ f[2] / => 4
 
 / Function arguments can be specified explicitly (separated by ;)
 {[arg1;arg2] arg1+arg2}[1;2] / => 3
-/ or if ommited will default to x, y and z
+/ or if omitted will default to x, y and z
 {x+y+z}[1;2;3] / => 6
 
 / Built in functions are no different, and can be called the same way (with [])
@@ -455,7 +458,7 @@ f[2] / => 4
 / however using a dictionary as a single argument can overcome this
 / allows for optional arguments or differing functionality
 d:`arg1`arg2`arg3!(1.0;2;"my function argument")
-{x[`arg1]+x[`arg2]}[d] / => 3.0
+{x[`arg1]+x[`arg2]}[d] / => 3f
 
 / Functions in q see the global scope
 a:1
@@ -464,11 +467,12 @@ a:1
 / However local scope obscures this
 a:1
 {a:2;:a}[] / => 2
+a / => 1
 
 / Functions cannot see nested scopes (only local and global)
 {local:1;{:local}[]}[] / throws error as local is not defined in inner function
 
-/ A function can have one or more of it's arguments fixed (projection)
+/ A function can have one or more of its arguments fixed (projection)
 f:+[4]
 f[4] / => 8
 f[5] / => 9
@@ -479,7 +483,7 @@ f[6] / => 10
 //////////     q-sql      //////////
 ////////////////////////////////////
 
-/ q has it's own syntax for manipulating tables, similar to standard SQL
+/ q has its own syntax for manipulating tables, similar to standard SQL
 / This contains the usual suspects of select, insert, update etc.
 / and some new functionality not typically available
 / q-sql has two significant differences (other than syntax) to normal SQL:
@@ -494,11 +498,11 @@ t:([]name:`Arthur`Thomas`Polly;age:35 32 52;height:180 175 160;sex:`m`m`f)
 
 / equivalent of SELECT * FROM t
 select from t / (must be lower case, and the wildcard is not necessary)
-/ => name   age height
-/ => -----------------
-/ => Arthur 35  180
-/ => Thomas 32  175
-/ => Polly  52  160
+/ => name   age height sex
+/ => ---------------------
+/ => Arthur 35  180    m
+/ => Thomas 32  175    m
+/ => Polly  52  160    f
 
 / Select specific columns
 select name,age from t
@@ -523,6 +527,7 @@ select name, feet:floor height*0.032, inches:12*(height*0.032) mod 1 from t
 / => ------------------
 / => Arthur 5    9.12
 / => Thomas 5    7.2
+/ => Polly  5    1.44
 
 / Including custom functions
 select name, growth:{[h;a]h%a}[height;age] from t
@@ -534,18 +539,18 @@ select name, growth:{[h;a]h%a}[height;age] from t
 
 / The where clause can contain multiple statements separated by commas
 select from t where age>33,height>175
-/ => name   age height
-/ => -----------------
-/ => Arthur 35  180
+/ => name   age height sex
+/ => ---------------------
+/ => Arthur 35  180    m
 
 / The where statements are executed sequentially (not the same as logical AND)
 select from t where age<40,height=min height
-/ => name   age height
-/ => -----------------
-/ => Thomas 32  175
+/ => name   age height sex
+/ => ---------------------
+/ => Thomas 32  175    m
 select from t where (age<40)&(height=min height)
-/ => name age height
-/ => ---------------
+/ => name age height sex
+/ => -------------------
 
 / The by clause falls between select and from
 / and is equivalent to SQL's GROUP BY
@@ -585,7 +590,7 @@ t
 / => Polly  52  160    f
 
 / Insert however is in place, it takes a table name, and new data
-`t insert (`John;25;178;`m)
+`t insert (`John;25;178;`m) / => ,3
 t
 / => name   age height sex
 / => ---------------------
@@ -677,7 +682,7 @@ aj[`time`sym;trades;quotes]
 / where possible functionality should be vectorized (i.e. operations on lists)
 / adverbs supplement this, modifying the behaviour of functions
 / and providing loop type functionality when required
-/ (in q functions are sometimes refered to as verbs, hence adverbs)
+/ (in q functions are sometimes referred to as verbs, hence adverbs)
 / the "each" adverb modifies a function to treat a list as individual variables
 first each (1 2 3;4 5 6;7 8 9)
 / => 1 4 7
@@ -757,7 +762,7 @@ select from splayed / (the columns are read from disk on request)
 / kdb+ is typically used for data capture and analysis.
 / This involves using an architecture with multiple processes
 / working together.  kdb+ frameworks are available to streamline the setup
-/ and configuration of this architecuture and add additional functionality
+/ and configuration of this architecture and add additional functionality
 / such as disaster recovery, logging, access, load balancing etc.
 / https://github.com/AquaQAnalytics/TorQ
 ```
