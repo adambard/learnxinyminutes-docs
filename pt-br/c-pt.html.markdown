@@ -182,7 +182,7 @@ int main() {
     int a, b, c;
     a = b = c = 0;
 
-    // Aritimética é óbvia
+    // Aritmética é óbvia
     i1 + i2; // => 3
     i2 - i1; // => 1
     i2 * i1; // => 2
@@ -191,7 +191,7 @@ int main() {
     f1 / f2; // => 0.5, mais ou menos epsilon
     // Números e cálculos de ponto flutuante não são exatos
 
-    // Modulo também existe
+    // Módulo também existe
     11 % 3; // => 2
 
 	// Operadores de comparação provavelmente são familiares,

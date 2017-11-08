@@ -173,7 +173,7 @@ public class LearnJava {
         // Char - A single 16-bit Unicode character
         char fooChar = 'A';
 
-        // final variables can't be reassigned to another object,
+        // final variables can't be reassigned,
         final int HOURS_I_WORK_PER_WEEK = 9001;
         // but they can be initialized later.
         final double E;
@@ -280,7 +280,7 @@ public class LearnJava {
         // LinkedLists - Implementation of doubly-linked list. All of the
         //               operations perform as could be expected for a
         //               doubly-linked list.
-        // Maps - A set of objects that map keys to values. Map is
+        // Maps - A mapping of key Objects to value Objects. Map is
         //        an interface and therefore cannot be instantiated.
         //        The type of keys and values contained in a Map must
         //        be specified upon instantiation of the implementing
@@ -289,10 +289,16 @@ public class LearnJava {
         // HashMaps - This class uses a hashtable to implement the Map
         //            interface. This allows the execution time of basic
         //            operations, such as get and insert element, to remain
-        //            constant even for large sets.
-        // TreeMap - This class is a sorted tree structure. It implements a red
-        //           black tree and sorts the entries based on the key value or
-        //           the comparator provided while creating the object
+        //            constant-amortized even for large sets.
+        // TreeMap - A Map that is sorted by its keys. Each modification 
+        //           maintains the sorting defined by either a Comparator
+        //           supplied at instantiation, or comparisons of each Object
+        //           if they implement the Comparable interface.
+        //           Failure of keys to implement Comparable combined with failure to
+        //           supply a Comparator will throw ClassCastExceptions.
+        //           Insertion and removal operations take O(log(n)) time
+        //           so avoid using this data structure unless you are taking
+        //           advantage of the sorting.
 
         ///////////////////////////////////////
         // Operators
@@ -306,7 +312,7 @@ public class LearnJava {
         System.out.println("2-1 = " + (i2 - i1)); // => 1
         System.out.println("2*1 = " + (i2 * i1)); // => 2
         System.out.println("1/2 = " + (i1 / i2)); // => 0 (int/int returns int)
-        System.out.println("1/2 = " + (i1 / (double)i2)); // => 0.5
+        System.out.println("1/2.0 = " + (i1 / (double)i2)); // => 0.5
 
         // Modulo
         System.out.println("11%3 = "+(11 % 3)); // => 2
@@ -418,6 +424,8 @@ public class LearnJava {
         // String class, and a few special classes that wrap primitive types:
         // Character, Byte, Short, and Integer.
         // Starting in Java 7 and above, we can also use the String type.
+        // Note: Do remember that, not adding "break" at end any particular case ends up in
+        // executing the very next case(given it satisfies the condition provided) as well.
         int month = 3;
         String monthString;
         switch (month) {
@@ -660,7 +668,7 @@ public interface Edible {
 public interface Digestible {
     public void digest();
     // Since Java 8, interfaces can have default method.
-    public void defaultMethod() {
+    public default void defaultMethod() {
         System.out.println("Hi from default method ...");
     }
 }
@@ -701,15 +709,21 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 //     // Method declarations
 // }
 
-// Marking a class as abstract means that it contains at least one abstract
-// method that must be defined in a child class. Similar to interfaces, abstract
-// classes cannot be instantiated, but instead must be extended and the abstract
-// methods defined. Different from interfaces, abstract classes can contain a
-// mixture of concrete and abstract methods. Methods in an interface cannot
-// have a body, unless the method is static, and variables are final by default,
-// unlike an abstract class. Also abstract classes CAN have the "main" method.
+// Abstract Classes cannot be instantiated.
+// Abstract classes may define abstract methods.
+// Abstract methods have no body and are marked abstract
+// Non-abstract child classes must @Override all abstract methods
+// from their super-classes.
+// Abstract classes can be useful when combining repetitive logic
+// with customised behavior, but as Abstract classes require
+// inheritance, they violate "Composition over inheritance"
+// so consider other approaches using composition.
+// https://en.wikipedia.org/wiki/Composition_over_inheritance
+
 public abstract class Animal
 {
+    private int age;
+
     public abstract void makeSound();
 
     // Method can have a body
@@ -720,17 +734,12 @@ public abstract class Animal
         age = 30;
     }
 
-    // No need to initialize, however in an interface
-    // a variable is implicitly final and hence has
-    // to be initialized.
-    private int age;
-
     public void printAge()
     {
         System.out.println(age);
     }
 
-    // Abstract classes can have main function.
+    // Abstract classes can have main method.
     public static void main(String[] args)
     {
         System.out.println("I am abstract");
@@ -885,6 +894,8 @@ The links provided here below are just to get an understanding of the topic, fee
 * [Learneroo.com - Learn Java](http://www.learneroo.com)
 
 * [Codingbat.com](http://codingbat.com/java)
+
+* [Codewars - Java Katas](https://www.codewars.com/?language=java)
 
 **Books**:
 

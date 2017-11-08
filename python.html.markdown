@@ -363,6 +363,12 @@ filled_set | other_set  # => {1, 2, 3, 4, 5, 6}
 # Check for existence in a set with in
 2 in filled_set  # => True
 10 in filled_set  # => False
+10 not in filled_set # => True
+
+# Check data type of variable
+type(li)   # => list
+type(filled_dict)   # => dict
+type(5)   # => int
 
 
 ####################################################

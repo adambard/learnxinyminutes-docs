@@ -141,7 +141,7 @@ require(['jquery', 'coolLibFromBower', 'modules/algunsHelpers'], function($, coo
   coolLib.facaAlgoDoidoCom(helpers.transform($('#foo')));
 });
 ```
-Apps baseados em `require.js` geralmente terão u´m único ponto de acesso (`main.js`) que é passado à tag script do `require.js` como um data-attribute. Ele vai ser automaticamente carregado e executado com o carregamento da página:
+Apps baseados em `require.js` geralmente terão um único ponto de acesso (`main.js`) que é passado à tag script do `require.js` como um data-attribute. Ele vai ser automaticamente carregado e executado com o carregamento da página:
 
 ```html
 <!DOCTYPE html>

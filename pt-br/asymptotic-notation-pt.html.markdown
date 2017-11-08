@@ -38,7 +38,7 @@ Na primeira seção desse documento, descrevemos como Notação Assintótica ide
  *f*, *n* como o tamanho da entrada e *f(n)* sendo o tempo de execução. Então,
  para dado algoritmo *f*, com entrada de tamanho *n*, você terá tempo de execução
  *f(n)*. Isto resulta em um gráfico onde a coordernada Y é o tempo de execução
-, a coordernada X representa o tamanho da entrada e os pontos representao o tempo
+, a coordernada X representa o tamanho da entrada e os pontos representam o tempo
 de execução para dado tamanho de entrada.
 
 Você pode representar a função, ou o algoritmo, com Notação Assintótica de várias

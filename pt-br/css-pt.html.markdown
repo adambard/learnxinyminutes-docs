@@ -25,7 +25,7 @@ O foco principal deste artigo é sobre a sintaxe e algumas dicas gerais.
 
 ```css
 /* Comentários aparecem dentro do slash-asterisk, tal como esta linha!
-   não há "comentários de uma linha"; este é o único estilo de comentário * /
+   Não há "comentários de uma linha"; este é o único estilo de comentário * /
 
 /* ####################
    ## SELETORES

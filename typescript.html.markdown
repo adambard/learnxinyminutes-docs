@@ -9,7 +9,7 @@ TypeScript is a language that aims at easing development of large scale applicat
 TypeScript adds common concepts such as classes, modules, interfaces, generics and (optional) static typing to JavaScript.
 It is a superset of JavaScript: all JavaScript code is valid TypeScript code so it can be added seamlessly to any project. The TypeScript compiler emits JavaScript.
 
-This article will focus only on TypeScript extra syntax, as opposed to [JavaScript](javascript.html.markdown).
+This article will focus only on TypeScript extra syntax, as opposed to [JavaScript](/docs/javascript).
 
 To test TypeScript's compiler, head to the [Playground] (http://www.typescriptlang.org/Playground) where you will be able to type code, have auto completion and directly see the emitted JavaScript.
 

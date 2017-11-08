@@ -445,49 +445,49 @@ if let circle = myEmptyCircle {
 // Enums pode opcionalmente ser um tipo especifico ou não.
 // Enums podem conter métodos tal como as classes.
 
-enum Suit {
-    case Spades, Hearts, Diamonds, Clubs
+enum suit {
+    case spades, hearts, diamonds, clubs
     func getIcon() -> String {
         switch self {
-        case .Spades: return "♤"
-        case .Hearts: return "♡"
-        case .Diamonds: return "♢"
-        case .Clubs: return "♧"
+        case .spades: return "♤"
+        case .hearts: return "♡"
+        case .diamonds: return "♢"
+        case .clubs: return "♧"
         }
     }
 }
 
 // Os valores de Enum permitem syntax reduzida, não é preciso escrever o tipo do enum
 // quando a variável é explicitamente definida.
-var suitValue: Suit = .Hearts
+var suitValue: Suit = .hearts
 
 // Enums que não sejam inteiros obrigam a atribuições valor bruto (raw value) diretas
 enum BookName: String {
-    case John = "John"
-    case Luke = "Luke"
+    case john = "John"
+    case luke = "Luke"
 }
-print("Name: \(BookName.John.rawValue)")
+print("Name: \(BookName.john.rawValue)")
 
 // Enum com valores associados
 enum Furniture {
     // Associar com um inteiro (Int)
-    case Desk(height: Int)
+    case desk(height: Int)
     // Associar com uma String e um Int
-    case Chair(String, Int)
+    case chair(String, Int)
 
     func description() -> String {
         switch self {
-        case .Desk(let height):
+        case .desk(let height):
             return "Desk with \(height) cm"
-        case .Chair(let brand, let height):
+        case .chair(let brand, let height):
             return "Chair of \(brand) with \(height) cm"
         }
     }
 }
 
-var desk: Furniture = .Desk(height: 80)
+var desk: Furniture = .desk(height: 80)
 print(desk.description())     // "Desk with 80 cm"
-var chair = Furniture.Chair("Foo", 40)
+var chair = Furniture.chair("Foo", 40)
 print(chair.description())    // "Chair of Foo with 40 cm"
 
 

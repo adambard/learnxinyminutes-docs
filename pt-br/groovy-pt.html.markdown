@@ -226,10 +226,12 @@ for (i in array) {
 
 //Itera sobre um mapa
 def map = ['name':'Roberto', 'framework':'Grails', 'language':'Groovy']
-x = 0
+x = ""
 for ( e in map ) {
     x += e.value
+    x += " "
 }
+assert x.equals("Roberto Grails Groovy ")
 
 /*
   Operadores

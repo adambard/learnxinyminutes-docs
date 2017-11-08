@@ -56,7 +56,7 @@ Variable= 'Some string' # => returns error: "Some string: command not found"
 # Using the variable:
 echo $Variable # => Some string
 echo "$Variable" # => Some string
-echo '$Variable' # => Some string
+echo '$Variable' # => $Variable
 # When you use the variable itself — assign it, export it, or else — you write
 # its name without $. If you want to use the variable's value, you should use $.
 # Note that ' (single quote) won't expand the variables!

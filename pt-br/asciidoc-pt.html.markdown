@@ -99,7 +99,7 @@ Para criar uma lista com marcadores use asteriscos.
 * baz
 ```
 
-Para criar uma lista númerada use pontos.
+Para criar uma lista numerada use pontos.
 
 ```
 . item 1
