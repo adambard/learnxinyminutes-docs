@@ -29,7 +29,7 @@ resposta. Isso é geralmente fácil de pensar e muito intuitivo. É geralmente
 referenciado como Memorização.
 
 2. Bottom-Up (De baixo para cima): Analise o problema e veja a ordem em que os 
-subproblemas são resolvidos e começe a solucionar dos problemas mais triviais, 
+subproblemas são resolvidos e comece a solucionar dos problemas mais triviais, 
 até o problema dado. Neste processo, é garantido que os subproblemas são 
 resolvidos antes de resolver o problema. Isto é referenciado como Programação Dinâmica.
 
