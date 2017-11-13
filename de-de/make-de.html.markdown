@@ -2,6 +2,7 @@
 language: make
 contributors:
     - ["Robert Steed", "https://github.com/robochat"]
+    - ["Stephan Fuhrmann", "https://github.com/sfuhrm"]
 translators:
   - ["Martin Schimandl", "https://github.com/Git-Jiro"]
 filename: Makefile-de
@@ -58,7 +59,7 @@ file2.txt file3.txt: file0.txt file1.txt
 	touch file3.txt
 
 # Make wird sich beschweren wenn es mehrere Rezepte für die gleiche Regel gibt.
-# Leere Rezepte zählen nicht und können dazu verwendet werden weitere 
+# Leere Rezepte zählen nicht und können dazu verwendet werden weitere
 # Voraussetzungen hinzuzufügen.
 
 #-----------------------------------------------------------------------
@@ -182,9 +183,9 @@ echo: name2 = Sara # Wahr innerhalb der passenden Regel und auch innerhalb
 # Ein paar Variablen die von Make automatisch definiert werden.
 echo_inbuilt:
 	echo $(CC)
-	echo ${CXX)}
+	echo ${CXX}
 	echo $(FC)
-	echo ${CFLAGS)}
+	echo ${CFLAGS}
 	echo $(CPPFLAGS)
 	echo ${CXXFLAGS}
 	echo $(LDFLAGS)
