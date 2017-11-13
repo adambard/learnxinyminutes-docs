@@ -422,7 +422,7 @@ class Human
     @name
   end
 
-  # The above functionality can be encapsulated using the attr_accessor method as follows
+  # The above functionality can be encapsulated using the propery method as follows
   property :name
 
   # Getter/setter methods can also be created individually like this
