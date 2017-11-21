@@ -12,7 +12,7 @@ Module Module1
         'A Quick Overview of Visual Basic Console Applications before we dive
         'in to the deep end.
         'Apostrophe starts comments.
-        'To Navigate this tutorial within the Visual Basic Complier, I've put
+        'To Navigate this tutorial within the Visual Basic Compiler, I've put
         'together a navigation system.
         'This navigation system is explained however as we go deeper into this
         'tutorial, you'll understand what it all means.
@@ -272,11 +272,3 @@ Module Module1
 End Module
 
 ```
-
-## References
-
-I learnt Visual Basic in the console application. It allowed me to understand the principles of computer programming to go on to learn other programming languages easily.
-
-I created a more indepth <a href="http://www.vbbootcamp.co.uk/" Title="Visual Basic Tutorial">Visual Basic tutorial</a> for those who would like to learn more.
-
-The entire syntax is valid. Copy the and paste in to the Visual Basic compiler and run (F5) the program.

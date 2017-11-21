@@ -2,11 +2,11 @@
 language: kdb+
 contributors:
     - ["Matt Doherty", "https://github.com/picodoc"]
-    - ["Jonny Press", "jonny.press@aquaq.co.uk"]
+    - ["Jonny Press", "https://github.com/jonnypress"]
 filename: learnkdb.q
 ---
 
-The q langauge and its database component kdb+ were developed by Arthur Whitney
+The q language and its database component kdb+ were developed by Arthur Whitney
 and released by Kx systems in 2003. q is a descendant of APL and as such is
 very terse and a little strange looking for anyone from a "C heritage" language
 background. Its expressiveness and vector oriented nature make it well suited
@@ -25,6 +25,8 @@ separable so this distinction is not really useful.
 
 All Feedback welcome!  You can reach me at matt.doherty@aquaq.co.uk, or Jonny
 at jonny.press@aquaq.co.uk
+
+To learn more about kdb+ you can join the [Personal kdb+](https://groups.google.com/forum/#!forum/personal-kdbplus) or [TorQ kdb+](https://groups.google.com/forum/#!forum/kdbtorq) group.
 
 ```
 / Single line comments start with a forward-slash
@@ -299,7 +301,7 @@ l:1+til 9 / til is a useful shortcut for generating ranges
 -5#l / => 5 6 7 8 9
 / drop the last 5
 -5_l / => 1 2 3 4
-/ find the first occurance of 4
+/ find the first occurrence of 4
 l?4 / => 3
 l[3] / => 4
 
@@ -314,7 +316,7 @@ key d / => `a`b`c
 / and value the second
 value d / => 1 2 3
 
-/ Indexing is indentical to lists
+/ Indexing is identical to lists
 / with the first list as a key instead of the position
 d[`a] / => 1
 d[`b] / => 2
@@ -404,7 +406,7 @@ k!t
 / We can also use this shortcut for defining keyed tables
 kt:([id:1 2 3]c1:1 2 3;c2:4 5 6;c3:7 8 9)
 
-/ Records can then be retreived based on this key
+/ Records can then be retrieved based on this key
 kt[1]
 / => c1| 1
 / => c2| 4
@@ -426,7 +428,7 @@ kt[`id!1]
 f:{x+x}
 f[2] / => 4
 
-/ Functions can be annonymous and called at point of definition
+/ Functions can be anonymous and called at point of definition
 {x+x}[2] / => 4
 
 / By default the last expression is returned
@@ -438,7 +440,7 @@ f[2] / => 4
 
 / Function arguments can be specified explicitly (separated by ;)
 {[arg1;arg2] arg1+arg2}[1;2] / => 3
-/ or if ommited will default to x, y and z
+/ or if omitted will default to x, y and z
 {x+y+z}[1;2;3] / => 6
 
 / Built in functions are no different, and can be called the same way (with [])
@@ -470,7 +472,7 @@ a / => 1
 / Functions cannot see nested scopes (only local and global)
 {local:1;{:local}[]}[] / throws error as local is not defined in inner function
 
-/ A function can have one or more of it's arguments fixed (projection)
+/ A function can have one or more of its arguments fixed (projection)
 f:+[4]
 f[4] / => 8
 f[5] / => 9
@@ -481,7 +483,7 @@ f[6] / => 10
 //////////     q-sql      //////////
 ////////////////////////////////////
 
-/ q has it's own syntax for manipulating tables, similar to standard SQL
+/ q has its own syntax for manipulating tables, similar to standard SQL
 / This contains the usual suspects of select, insert, update etc.
 / and some new functionality not typically available
 / q-sql has two significant differences (other than syntax) to normal SQL:
@@ -680,7 +682,7 @@ aj[`time`sym;trades;quotes]
 / where possible functionality should be vectorized (i.e. operations on lists)
 / adverbs supplement this, modifying the behaviour of functions
 / and providing loop type functionality when required
-/ (in q functions are sometimes refered to as verbs, hence adverbs)
+/ (in q functions are sometimes referred to as verbs, hence adverbs)
 / the "each" adverb modifies a function to treat a list as individual variables
 first each (1 2 3;4 5 6;7 8 9)
 / => 1 4 7
@@ -760,7 +762,7 @@ select from splayed / (the columns are read from disk on request)
 / kdb+ is typically used for data capture and analysis.
 / This involves using an architecture with multiple processes
 / working together.  kdb+ frameworks are available to streamline the setup
-/ and configuration of this architecuture and add additional functionality
+/ and configuration of this architecture and add additional functionality
 / such as disaster recovery, logging, access, load balancing etc.
 / https://github.com/AquaQAnalytics/TorQ
 ```

@@ -380,7 +380,7 @@ class LearnHaxe3{
         // The "_" case above is a "wildcard" value
         // that will match anything.
 
-        trace("My dog's name is" + my_dog_name
+        trace("My dog's name is " + my_dog_name
                 + ", and his favorite thing is a: "
                 + favorite_thing);
 
@@ -406,7 +406,7 @@ class LearnHaxe3{
             default     : "some unknown treat";
         }
 
-        trace("My dog's name is" + my_dog_name
+        trace("My dog's name is " + my_dog_name
                 + ", and his other favorite thing is a: "
                 + other_favorite_thing);
 
@@ -466,7 +466,7 @@ class LearnHaxe3{
            The untyped keyword operates on entire *blocks* of code, skipping
            any type checks that might be otherwise required. This keyword should
            be used very sparingly, such as in limited conditionally-compiled
-           situations where type checking is a hinderance.
+           situations where type checking is a hindrance.
 
            In general, skipping type checks is *not* recommended.  Use the
            enum, inheritance, or structural type models in order to help ensure
@@ -770,8 +770,8 @@ class UsingExample {
 ```
 
 We're still only scratching the surface here of what Haxe can do.  For a formal
-overiew of all Haxe features, checkout the [online
-manual](http://haxe.org/manual), the [online api](http://api.haxe.org/), and
+overview of all Haxe features, checkout the [online
+manual](http://haxe.org/manual), the [online API](http://api.haxe.org/), and
 "haxelib", the [haxe library repo] (http://lib.haxe.org/).
 
 For more advanced topics, consider checking out:

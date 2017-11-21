@@ -10,7 +10,7 @@ filename: LearnVim-pt.txt
 ---
 
 
-[Vim](www.vim.org)
+[Vim](http://www.vim.org)
 (Vi IMproved - Vi Melhorado) é um clone do editor vi para Unix. Ele é um
 editor de texto projetado para ter velocidade e produtividade, e está presente
 na maioria dos systemas UNIX. O editor tem um grande número de atalhos de teclado

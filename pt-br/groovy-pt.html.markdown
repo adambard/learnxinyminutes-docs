@@ -1,7 +1,7 @@
 ---
 language: Groovy
 category: language
-filename: learngroovy.groovy
+filename: learngroovy-pt.groovy
 contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
 translators:
@@ -226,10 +226,12 @@ for (i in array) {
 
 //Itera sobre um mapa
 def map = ['name':'Roberto', 'framework':'Grails', 'language':'Groovy']
-x = 0
+x = ""
 for ( e in map ) {
     x += e.value
+    x += " "
 }
+assert x.equals("Roberto Grails Groovy ")
 
 /*
   Operadores

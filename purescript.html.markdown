@@ -1,5 +1,6 @@
 ---
 language: purescript
+filename: purescript.purs
 contributors:
     - ["Fredrik Dyrkell", "http://www.lexicallyscoped.com"]
     - ["Thimoteus", "https://github.com/Thimoteus"]
@@ -65,7 +66,7 @@ true && (9 >= 19 || 1 < 2) -- true
 """Hello
 world""" -- "Hello\nworld"
 -- Concatenate
-"such " ++ "amaze" -- "such amaze"
+"such " <> "amaze" -- "such amaze"
 
 --
 -- 2. Arrays are Javascript arrays, but must be homogeneous
@@ -85,7 +86,7 @@ head [1,2,3] -- Just (1)
 tail [3,2,1] -- Just ([2,1])
 init [1,2,3] -- Just ([1,2])
 last [3,2,1] -- Just (1)
--- Random access - indexing
+-- Array access - indexing
 [3,4,5,6,7] !! 2 -- Just (5)
 -- Range
 1..5 -- [1,2,3,4,5]

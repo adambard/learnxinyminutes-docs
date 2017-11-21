@@ -6,15 +6,17 @@ contributors:
 filename: coffeescript.coffee
 ---
 
-CoffeeScript is a little language that compiles one-to-one into the equivalent JavaScript, and there is no interpretation at runtime.
-As one of the successors to JavaScript, CoffeeScript tries its best to output readable, pretty-printed and smooth-running JavaScript code, which works well in every JavaScript runtime.
+CoffeeScript is a little language that compiles one-to-one into the equivalent
+JavaScript, and there is no interpretation at runtime. As one of the successors
+to JavaScript, CoffeeScript tries its best to output readable, pretty-printed
+and smooth-running JavaScript code, which works well in every JavaScript runtime.
+It also attempts to try and make JavaScript more in line with the trends of many
+modern languages.
 
 See also [the CoffeeScript website](http://coffeescript.org/), which has a complete tutorial on CoffeeScript.
 
 ```coffeescript
-# CoffeeScript is a hipster language.
-# It goes with the trends of many modern languages.
-# So comments are like Ruby and Python, they use number symbols.
+# Comments are similar to Ruby and Python, using the hash symbol `#`
 
 ###
 Block comments are like these, and they translate directly to '/ *'s and '* /'s

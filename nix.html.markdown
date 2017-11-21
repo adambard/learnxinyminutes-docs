@@ -208,6 +208,12 @@ with builtins; [
   { a = 1; b = 2; }.a
   #=> 1
 
+  # The ? operator tests whether a key is present in a set.
+  ({ a = 1; b = 2; } ? a)
+  #=> true
+  ({ a = 1; b = 2; } ? c)
+  #=> false
+
   # The // operator merges two sets.
   ({ a = 1; } // { b = 2; })
   #=> { a = 1; b = 2; }

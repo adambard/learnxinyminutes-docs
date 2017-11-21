@@ -88,7 +88,7 @@ implementation.
   to have stopped since Microsoft pulled their support.
 
 Ruby implementations may have their own release version numbers, but they always
-target a specific version of MRI for compatability. Many implementations have
+target a specific version of MRI for compatibility. Many implementations have
 the ability to enter different modes (for example, 1.8 or 1.9 mode) to specify
 which MRI version to target.
 

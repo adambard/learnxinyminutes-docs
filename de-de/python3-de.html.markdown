@@ -146,7 +146,7 @@ bool({}) #=> False
 ####################################################
 
 # Textausgabe ist sehr einfach
-print "Ich bin Python. Schön, dich kennenzulernen!"
+print("Ich bin Python. Schön, dich kennenzulernen!")
 
 # Es gibt keinen Grund, Variablen vor der Zuweisung zu deklarieren.
 some_var = 5    # kleinschreibung_mit_unterstrichen entspricht der Norm
@@ -307,11 +307,11 @@ some_var = 5
 # Hier eine if-Anweisung. Die Einrückung ist in Python wichtig!
 # gibt "some_var ist kleiner als 10" aus
 if some_var > 10:
-    print "some_var ist viel größer als 10."
+    print("some_var ist viel größer als 10.")
 elif some_var < 10:    # Dieser elif-Absatz ist optional.
-    print "some_var ist kleiner als 10."
+    print("some_var ist kleiner als 10.")
 else:           # Das hier ist auch optional.
-    print "some_var ist tatsächlich 10."
+    print("some_var ist tatsächlich 10.")
 
 
 """
@@ -334,7 +334,7 @@ Ausgabe:
     3
 """
 for i in range(4):
-    print i
+    print(i)
 
 """
 "range(unten, oben)" gibt eine Liste von der unteren Zahl bis zur oberen Zahl aus
@@ -357,7 +357,7 @@ Ausgabe:
 """
 x = 0
 while x < 4:
-    print x
+    print(x)
     x += 1  # Kurzform für x = x + 1
 
 # Ausnahmebehandlung mit einem try/except-Block
@@ -418,7 +418,7 @@ list(filled_dict.keys())  #=> ["one", "two", "three"]
 
 # Mit def neue Funktionen erstellen
 def add(x, y):
-    print "x ist %s und y ist %s" % (x, y)
+    print("x ist %s und y ist %s" % (x, y))
     return x + y    # Werte werden mit return zurückgegeben
 
 # Funktionen mit Parametern aufrufen
@@ -444,8 +444,8 @@ keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
 
 # Wir können beides gleichzeitig machem, wenn wir wollen
 def all_the_args(*args, **kwargs):
-    print args
-    print kwargs
+    print(args)
+    print(kwargs)
 """
 all_the_args(1, 2, a=3, b=4) Ausgabe:
     (1, 2)
@@ -532,10 +532,10 @@ class Human(object):
 
 # Eine Instanz einer Klasse erstellen
 i = Human(name="Ian")
-print i.say("hi")     # gibt "Ian: hi" aus
+print(i.say("hi"))     # gibt "Ian: hi" aus
 
 j = Human("Joel")
-print j.say("hello")  #gibt "Joel: hello" aus
+print(j.say("hello"))  #gibt "Joel: hello" aus
 
 # Rufen wir mal unsere Klassenmethode auf
 i.get_species() #=> "H. sapiens"
@@ -555,12 +555,12 @@ Human.grunt() #=> "*grunt*"
 
 # Wir können Module importieren
 import math
-print math.sqrt(16) #=> 4
+print(math.sqrt(16)) #=> 4
 
 # Wir können auch nur spezielle Funktionen eines Moduls importieren
 from math import ceil, floor
-print ceil(3.7)  #=> 4.0
-print floor(3.7) #=> 3.0
+print(ceil(3.7))  #=> 4.0
+print(floor(3.7)) #=> 3.0
 
 # Wir können auch alle Funktionen eines Moduls importieren
 # Warnung: Dies wird nicht empfohlen

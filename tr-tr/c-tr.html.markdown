@@ -481,7 +481,7 @@ Diğer bir iyi kaynak ise [Learn C the hard way](http://c.learncodethehardway.or
 
 It's very important to use proper spacing, indentation and to be consistent with your coding style in general.
 Readable code is better than clever code and fast code. For a good, sane coding style to adopt, see the
-[Linux kernel coding stlye](https://www.kernel.org/doc/Documentation/CodingStyle).
+[Linux kernel coding style](https://www.kernel.org/doc/Documentation/CodingStyle).
 
 Diğer taraftan google sizin için bir arkadaş olabilir.
 

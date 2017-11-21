@@ -108,7 +108,7 @@ public class LearnJava {
         boolean [] booleanArray = new boolean[100];
 
         // 声明并初始化数组也可以这样:
-        int [] y = {9000, 1000, 1337};
+        int [] intArray = {9000, 1000, 1337};
 
         // 随机访问数组中的元素
         System.out.println("intArray @ 0: " + intArray[0]);
@@ -309,7 +309,7 @@ class Bicycle {
         name = "Bontrager";
     }
 
-    // 一下是一个含有参数的构造函数
+    // 以下是一个含有参数的构造函数
     public Bicycle(int startCadence, int startSpeed, int startGear, String name) {
         this.gear = startGear;
         this.cadence = startCadence;

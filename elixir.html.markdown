@@ -4,6 +4,7 @@ contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
     - ["Ryan Plant", "https://github.com/ryanplant-au"]
+    - ["Ev Bogdanov", "https://github.com/evbogdanov"]
 filename: learnelixir.ex
 ---
 
@@ -127,7 +128,8 @@ rem(10, 3) #=> 1
 # These operators expect a boolean as their first argument.
 true and true #=> true
 false or true #=> true
-# 1 and true    #=> ** (ArgumentError) argument error
+# 1 and true
+#=> ** (BadBooleanError) expected a boolean on left-side of "and", got: 1
 
 # Elixir also provides `||`, `&&` and `!` which accept arguments of any type.
 # All values except `false` and `nil` will evaluate to true.
@@ -433,11 +435,11 @@ self() #=> #PID<0.27.0>
 
 # Create an agent with `Agent.start_link`, passing in a function
 # The initial state of the agent will be whatever that function returns
-{ok, my_agent} = Agent.start_link(fn -> ["red, green"] end)
+{ok, my_agent} = Agent.start_link(fn -> ["red", "green"] end)
 
 # `Agent.get` takes an agent name and a `fn` that gets passed the current state
 # Whatever that `fn` returns is what you'll get back
-Agent.get(my_agent, fn colors -> colors end) #=> ["red, "green"]
+Agent.get(my_agent, fn colors -> colors end) #=> ["red", "green"]
 
 # Update the agent's state the same way
 Agent.update(my_agent, fn colors -> ["blue" | colors] end)

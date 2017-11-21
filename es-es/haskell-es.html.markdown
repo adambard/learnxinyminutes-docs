@@ -66,7 +66,7 @@ not False -- True
 
 
 ----------------------------------------------------
--- Listas y Tuplas
+-- 2. Listas y Tuplas
 ----------------------------------------------------
 
 -- Cada elemento en una lista debe ser del mismo tipo.

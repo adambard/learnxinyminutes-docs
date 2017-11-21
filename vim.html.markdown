@@ -7,16 +7,17 @@ filename: LearnVim.txt
 ---
 
 
-[Vim](www.vim.org)
-(Vi IMproved) is a clone of the popular vi editor for Unix. It is a text 
-editor designed for speed and increased productivity, and is ubiquitous in most 
-unix-based systems. It has numerous keybindings for speedy navigation to 
+[Vim](http://www.vim.org)
+(Vi IMproved) is a clone of the popular vi editor for Unix. It is a text
+editor designed for speed and increased productivity, and is ubiquitous in most
+unix-based systems. It has numerous keybindings for speedy navigation to
 specific points in the file, and for fast editing.
 
 ## Basics of navigating Vim
 
 ```
     vim <filename>   # Open <filename> in vim
+    :help <topic>    # Open up built-in help docs about <topic> if any exists
     :q               # Quit vim
     :w               # Save current file
     :wq              # Save file and quit vim
@@ -40,9 +41,9 @@ specific points in the file, and for fast editing.
 
     # Searching in the text
 
-    /word            # Highlights all occurences of word after cursor
-    ?word            # Highlights all occurences of word before cursor
-    n                # Moves cursor to next occurence of word after search
+    /word            # Highlights all occurrences of word after cursor
+    ?word            # Highlights all occurrences of word before cursor
+    n                # Moves cursor to next occurrence of word after search
     N                # Moves cursor to previous occerence of word
 
     :%s/foo/bar/g    # Change 'foo' to 'bar' on every line in the file
@@ -51,12 +52,12 @@ specific points in the file, and for fast editing.
     # Jumping to characters
 
     f<character>     # Jump forward and land on <character>
-    t<character>     # Jump forward and land right before <character> 
+    t<character>     # Jump forward and land right before <character>
 
-    # For example,    
+    # For example,
     f<               # Jump forward and land on <
     t<               # Jump forward and land right before <
-    
+
     # Moving by word
 
     w                # Move forward by one word
@@ -73,19 +74,28 @@ specific points in the file, and for fast editing.
     L                # Move to the bottom of the screen
 ```
 
+## Help docs:
+
+Vim has built in help documentation that can accessed with `:help <topic>`.
+For example `:help navigation` will pull up documentation about how to navigate
+your workspace!
+
+`:help` can also be used without an option. This will bring up a default help dialog
+that aims to make getting started with vim more approachable!
+
 ## Modes:
 
 Vim is based on the concept on **modes**.
 
-Command Mode - vim starts up in this mode, used to navigate and write commands 
-Insert Mode  - used to make changes in your file 
-Visual Mode  - used to highlight text and do operations to them 
+Command Mode - vim starts up in this mode, used to navigate and write commands
+Insert Mode  - used to make changes in your file
+Visual Mode  - used to highlight text and do operations to them
 Ex Mode      - used to drop down to the bottom with the ':' prompt to enter commands
 
 ```
     i                # Puts vim into insert mode, before the cursor position
     a                # Puts vim into insert mode, after the cursor position
-    v                # Puts vim into visual mode    
+    v                # Puts vim into visual mode
     :                # Puts vim into ex mode
     <esc>            # 'Escapes' from whichever mode you're in, into Command mode
 
@@ -102,18 +112,18 @@ Ex Mode      - used to drop down to the bottom with the ':' prompt to enter comm
 
 ## The 'Grammar' of vim
 
-Vim can be thought of as a set of commands in a 
+Vim can be thought of as a set of commands in a
 'Verb-Modifier-Noun' format, where:
 
-Verb     - your action 
-Modifier - how you're doing your action 
+Verb     - your action
+Modifier - how you're doing your action
 Noun     - the object on which your action acts on
 
 A few important examples of 'Verbs', 'Modifiers', and 'Nouns':
 
 ```
     # 'Verbs'
- 
+
     d                # Delete
     c                # Change
     y                # Yank (copy)
@@ -135,7 +145,7 @@ A few important examples of 'Verbs', 'Modifiers', and 'Nouns':
     s                # Sentence
     p                # Paragraph
     b                # Block
-    
+
     # Sample 'sentences' or commands
 
     d2w              # Delete 2 words
@@ -180,7 +190,7 @@ Here's a sample ~/.vimrc file:
 
 ```
 " Example ~/.vimrc
-" 2015.10 
+" 2015.10
 
 " Required for vim to be iMproved
 set nocompatible

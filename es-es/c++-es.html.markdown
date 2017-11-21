@@ -20,11 +20,11 @@ fue diseñado para
 - soportar programación orientada a objetos
 - soportar programación genérica
 
-Aunque su sintaxis puede ser más difícil o compleja que los nuevos lenguajes, 
-es ampliamente utilizado, ya que compila instrucciones nativas que pueden ser 
-directamente ejecutadas por el procesador y ofrece un estricto control sobre 
-el hardware (como C), mientras ofrece características de alto nivel como 
-genericidad, excepciones, y clases. Esta combinación de velocidad y 
+Aunque su sintaxis puede ser más difícil o compleja que los nuevos lenguajes,
+es ampliamente utilizado, ya que compila instrucciones nativas que pueden ser
+directamente ejecutadas por el procesador y ofrece un estricto control sobre
+el hardware (como C), mientras ofrece características de alto nivel como
+genericidad, excepciones, y clases. Esta combinación de velocidad y
 funcionalidad hace de C ++ uno de los lenguajes de programación más utilizados.
 
 ```c++
@@ -32,22 +32,22 @@ funcionalidad hace de C ++ uno de los lenguajes de programación más utilizados
 // Comparación con C
 ////////////////////
 
-// C ++ es _casi_ un superconjunto de C y comparte su sintaxis básica para las 
+// C ++ es _casi_ un superconjunto de C y comparte su sintaxis básica para las
 // declaraciones de variables, tipos primitivos y funciones.
 
-// Al igual que en C, el punto de entrada de tu programa es una función llamada 
-// main con un retorno de tipo entero. 
+// Al igual que en C, el punto de entrada de tu programa es una función llamada
+// main con un retorno de tipo entero.
 // Este valor sirve como código de salida del programa.
 // Mira http://en.wikipedia.org/wiki/Exit_status para mayor información.
 int main(int argc, char** argv)
 {
-	// Los argumentos de la línea de comandos se pasan por argc y argv de la 
+	// Los argumentos de la línea de comandos se pasan por argc y argv de la
 	// misma manera que en C.
-	// argc indica el número de argumentos, 
-	// y argv es un arreglo de strings de estilo C (char*) 
+	// argc indica el número de argumentos,
+	// y argv es un arreglo de strings de estilo C (char*)
 	// representando los argumentos.
 	// El primer argumento es el nombre con el que el programa es llamado.
-	// argc y argv pueden omitirse si no te preocupan los argumentos, 
+	// argc y argv pueden omitirse si no te preocupan los argumentos,
 	// dejando la definición de la función como int main ()
 
 	// Un estado de salida 0 indica éxito.
@@ -72,7 +72,7 @@ void func(); // función que puede aceptar cualquier número de argumentos
 // Use nullptr en lugar de NULL en C++
 int* ip = nullptr;
 
-// Las cabeceras (headers) estándar de C están disponibles en C ++, 
+// Las cabeceras (headers) estándar de C están disponibles en C ++,
 // pero tienen el prefijo "c" y no tienen sufijo .h.
 #include <cstdio>
 
@@ -109,7 +109,7 @@ int main()
 // Argumentos de función por defecto
 ////////////////////////////////////
 
-// Puedes proporcionar argumentos por defecto para una función si no son 
+// Puedes proporcionar argumentos por defecto para una función si no son
 // proporcionados por quien la llama.
 
 void doSomethingWithInts(int a = 1, int b = 4)
@@ -134,7 +134,7 @@ void invalidDeclaration(int a = 1, int b) // Error!
 // Espacios de nombre
 /////////////////////
 
-// Espacios de nombres proporcionan ámbitos separados para variable, función y 
+// Espacios de nombres proporcionan ámbitos separados para variable, función y
 // otras declaraciones.
 // Los espacios de nombres se pueden anidar.
 
@@ -162,8 +162,8 @@ void foo()
 int main()
 {
 
-	// Incluye todos los símbolos del espacio de nombre Second en el ámbito 
-	// actual. Tenga en cuenta que simplemente foo() no funciona, ya que ahora 
+	// Incluye todos los símbolos del espacio de nombre Second en el ámbito
+	// actual. Tenga en cuenta que simplemente foo() no funciona, ya que ahora
 	// es ambigua si estamos llamando a foo en espacio de nombres Second o en
 	// el nivel superior.
     using namespace Second;
@@ -254,7 +254,7 @@ const string& barRef = bar; // Crea una referencia constante a bar.
 // modificados.
 barRef += ". Hola!"; // Error, referencia constante no puede ser modificada.
 
-// Sidetrack: Antes de hablar más sobre referencias, hay que introducir un 
+// Sidetrack: Antes de hablar más sobre referencias, hay que introducir un
 // concepto llamado objeto temporal. Supongamos que tenemos el siguiente código:
 string tempObjectFun() { ... }
 string retVal = tempObjectFun();
@@ -267,16 +267,16 @@ string retVal = tempObjectFun();
 // El objeto devuelto se llama objeto temporal. Objetos temporales son
 // creados cada vez que una función devuelve un objeto, y es destruido en el
 // fin de la evaluación de la expresión que encierra (Bueno, esto es lo que la
-// norma dice, pero los compiladores están autorizados a cambiar este 
-// comportamiento. Busca "return value optimization" para ver mas detalles). 
+// norma dice, pero los compiladores están autorizados a cambiar este
+// comportamiento. Busca "return value optimization" para ver mas detalles).
 // Así que en este código:
 foo(bar(tempObjectFun()))
 
 // Suponiendo que foo y bar existen, el objeto retornado de tempObjectFun es
 // pasado al bar, y se destruye antes de llamar foo.
 
-// Ahora, de vuelta a las referencias. La excepción a la regla "en el extremo 
-// de la expresión encerrada" es si un objeto temporal se une a una 
+// Ahora, de vuelta a las referencias. La excepción a la regla "en el extremo
+// de la expresión encerrada" es si un objeto temporal se une a una
 // referencia constante, en cuyo caso su vida se extiende al ámbito actual:
 
 void constReferenceTempObjectFun() {
@@ -287,7 +287,7 @@ void constReferenceTempObjectFun() {
 }
 
 // Otro tipo de referencia introducida en C ++ 11 es específicamente para
-// objetos temporales. No se puede tener una variable de este tipo, pero tiene 
+// objetos temporales. No se puede tener una variable de este tipo, pero tiene
 // prioridad en resolución de sobrecarga:
 
 void someFun(string& s) { ... }  // Referencia regular
@@ -302,7 +302,7 @@ someFun(tempObjectFun());  // Llama la versión con referencia temporal
 basic_string(const basic_string& other);
 basic_string(basic_string&& other);
 
-// La idea es que si estamos construyendo una nueva cadena de un objeto temporal 
+// La idea es que si estamos construyendo una nueva cadena de un objeto temporal
 // (que va a ser destruido pronto de todos modos), podemos tener un constructor
 // mas eficiente que "rescata" partes de esa cadena temporal. Usted verá este
 // Concepto denominado "movimiento semántico".
@@ -341,13 +341,13 @@ public:
 	// Funciones que no modifican el estado del objeto
 	// Deben marcarse como const.
 	// Esto le permite llamarlas si se envia una referencia constante al objeto.
-	// También tenga en cuenta que las funciones deben ser declaradas 
-	// explícitamente como _virtual_ para que sea reemplazada en las clases 
+	// También tenga en cuenta que las funciones deben ser declaradas
+	// explícitamente como _virtual_ para que sea reemplazada en las clases
 	// derivadas.
-	// Las funciones no son virtuales por defecto por razones de rendimiento.	
+	// Las funciones no son virtuales por defecto por razones de rendimiento.
     virtual void print() const;
 
-    // Las funciones también se pueden definir en el interior 
+    // Las funciones también se pueden definir en el interior
     // del cuerpo de la clase.
 	// Funciones definidas como tales están entre líneas automáticamente.
     void bark() const { std::cout << name << " barks!\n"; }
@@ -358,7 +358,7 @@ public:
 	// (mira abajo)
 	// El destructor debe ser virtual si una clase es dervada desde el;
 	// Si no es virtual, entonces la clase derivada destructor
-	// No será llamada si el objeto se destruye a través de una referencia de 
+	// No será llamada si el objeto se destruye a través de una referencia de
 	// la clase base o puntero.
     virtual ~Dog();
 
@@ -392,7 +392,7 @@ void Dog::print() const
 
 Dog::~Dog()
 {
-    cout << "Adiós " << name << "\n";
+    std::cout << "Adiós " << name << "\n";
 }
 
 int main() {
@@ -410,7 +410,7 @@ class OwnedDog : public Dog {
 
     void setOwner(const std::string& dogsOwner);
 
-	// Reemplaza el comportamiento de la función de impresión 
+	// Reemplaza el comportamiento de la función de impresión
 	// de todos los OwnedDogs. Mira
 	// http://en.wikipedia.org/wiki/Polymorphism_(computer_science)#Subtyping
 	// Para una introducción más general si no está familiarizado con el
@@ -442,7 +442,7 @@ void OwnedDog::print() const
 // Inicialización y sobrecarga de operadores
 ////////////////////////////////////////////
 
-// En C ++ se puede sobrecargar el comportamiento 
+// En C ++ se puede sobrecargar el comportamiento
 // de los operadores como +, -, *, /, etc.
 // Esto se hace mediante la definición de una función que es llamada
 // cada vez que se utiliza el operador.
@@ -505,14 +505,14 @@ int main () {
 // Plantillas (Templates)
 /////////////////////////
 
-// Las plantillas en C++ se utilizan sobre todo en la programación genérica, 
-// a pesar de que son mucho más poderoso que los constructores genéricos 
-// en otros lenguajes. Ellos también soportan especialización explícita y 
-// parcial y clases de tipo estilo funcional; de hecho, son un lenguaje 
+// Las plantillas en C++ se utilizan sobre todo en la programación genérica,
+// a pesar de que son mucho más poderoso que los constructores genéricos
+// en otros lenguajes. Ellos también soportan especialización explícita y
+// parcial y clases de tipo estilo funcional; de hecho, son un lenguaje
 // funcional Turing-completo incrustado en C ++!
 
-// Empezamos con el tipo de programación genérica que podría estar 
-// familiarizado. 
+// Empezamos con el tipo de programación genérica que podría estar
+// familiarizado.
 // Para definir una clase o función que toma un parámetro de tipo:
 template<class T>
 class Box {
@@ -521,9 +521,9 @@ public:
     void insert(const T&) { ... }
 };
 
-// Durante la compilación, el compilador realmente genera copias de cada 
-// plantilla con parámetros sustituidos, por lo que la definición completa 
-// de la clase debe estar presente en cada invocación. 
+// Durante la compilación, el compilador realmente genera copias de cada
+// plantilla con parámetros sustituidos, por lo que la definición completa
+// de la clase debe estar presente en cada invocación.
 // Es por esto que usted verá clases de plantilla definidas
 // Enteramente en archivos de cabecera.
 
@@ -537,8 +537,8 @@ intBox.insert(123);
 Box<Box<int> > boxOfBox;
 boxOfBox.insert(intBox);
 
-// Hasta C++11, había que colocar un espacio entre los dos '>'s, 
-// de lo contrario '>>' serían analizados como el operador de desplazamiento 
+// Hasta C++11, había que colocar un espacio entre los dos '>'s,
+// de lo contrario '>>' serían analizados como el operador de desplazamiento
 // a la derecha.
 
 
@@ -558,9 +558,9 @@ void barkThreeTimes(const T& input)
     input.bark();
 }
 
-// Observe que no se especifica nada acerca de los tipos de parámetros aquí. 
-// El compilador generará y comprobará cada invocación de la plantilla, 
-// por lo que la función anterior funciona con cualquier tipo "T" 
+// Observe que no se especifica nada acerca de los tipos de parámetros aquí.
+// El compilador generará y comprobará cada invocación de la plantilla,
+// por lo que la función anterior funciona con cualquier tipo "T"
 // que tenga un método 'bark' constante!
 
 
@@ -574,12 +574,12 @@ void printMessage() {
   cout << "Aprende C++ en " << Y << " minutos!" << endl;
 }
 
-// Y usted puede especializar explícitamente plantillas 
-// para código más eficiente. 
-// Por supuesto, la mayor parte del mundo real que utiliza una especialización 
+// Y usted puede especializar explícitamente plantillas
+// para código más eficiente.
+// Por supuesto, la mayor parte del mundo real que utiliza una especialización
 // no son tan triviales como esta.
-// Tenga en cuenta que usted todavía tiene que declarar la función (o clase) 
-// como plantilla incluso si ha especificado de forma explícita todos 
+// Tenga en cuenta que usted todavía tiene que declarar la función (o clase)
+// como plantilla incluso si ha especificado de forma explícita todos
 // los parámetros.
 
 template<>
@@ -601,7 +601,7 @@ printMessage<10>();  // Prints "Aprende C++ rapido en solo 10 minutos!"
 #include <exception>
 #include <stdexcept>
 
-//Todas las excepciones lanzadas dentro del bloque _try_ pueden ser 
+//Todas las excepciones lanzadas dentro del bloque _try_ pueden ser
 // capturados por los siguientes manejadores _catch_.
 try {
     // No asignar excepciones en el heap usando _new_.
@@ -651,7 +651,7 @@ void doSomethingWithAFile(const char* filename)
 // 	(Excepciones son la mejor forma de manejar los fallos,
 // 	 pero algunos programadores, especialmente los que tienen un fondo C,
 // 	 estan en desacuerdo sobre la utilidad de las excepciones).
-// Ahora tenemos que comprobar cada llamado por fallos y cerrar el manejador 
+// Ahora tenemos que comprobar cada llamado por fallos y cerrar el manejador
 // del archivo si se ha producido un problema.
 bool doSomethingWithAFile(const char* filename)
 {
@@ -716,7 +716,7 @@ void doSomethingWithAFile(const char* filename)
 
 // Compare esto con el uso de la clase de flujo de archivos de C++ (fstream)
 // fstream utiliza su destructor para cerrar el archivo.
-// Los destructores son llamados automáticamente 
+// Los destructores son llamados automáticamente
 // cuando un objeto queda fuera del ámbito.
 void doSomethingWithAFile(const std::string& filename)
 {
@@ -734,7 +734,7 @@ void doSomethingWithAFile(const std::string& filename)
 // 1. No importa lo que pase,
 //    El recurso (en este caso el manejador de archivo) será limpiado.
 //    Una vez que escribes el destructor correctamente,
-//    Es _imposible_ olvidar cerrar el identificador y permitir 
+//    Es _imposible_ olvidar cerrar el identificador y permitir
 //    fugas del recurso.
 // 2. Tenga en cuenta que el código es mucho más limpio.
 //    El destructor se encarga de cerrar el archivo detrás de cámaras
@@ -743,13 +743,13 @@ void doSomethingWithAFile(const std::string& filename)
 //    Una excepción puede ser lanzado en cualquier lugar de la función
 //    y la limpieza ocurrirá.
 
-// Todo el código idiomático C++ utiliza RAII ampliamente para todos los 
+// Todo el código idiomático C++ utiliza RAII ampliamente para todos los
 // recursos.
 // Otros ejemplos incluyen
 // - Memoria usando unique_ptr y shared_ptr
 // - Contenedores (Containers) - la biblioteca estándar linked list,
 //   vector (es decir, array con auto-cambio de tamaño), hash maps, etc.
-//   Destruimos todos sus contenidos de forma automática 
+//   Destruimos todos sus contenidos de forma automática
 //   cuando quedan fuera del ámbito.
 // - Mutex utilizando lock_guard y unique_lock
 
@@ -758,9 +758,9 @@ void doSomethingWithAFile(const std::string& filename)
 // Cosas divertidas
 /////////////////////
 
-// Aspectos de C ++ que pueden sorprender a los recién llegados 
+// Aspectos de C ++ que pueden sorprender a los recién llegados
 // (e incluso algunos veteranos).
-// Esta sección es, por desgracia, salvajemente incompleta; 
+// Esta sección es, por desgracia, salvajemente incompleta;
 // C++ es uno de los lenguajes con los que mas facil te disparas en el pie.
 
 // Tu puedes sobreescribir métodos privados!
@@ -788,13 +788,13 @@ pt2 = nullptr;  // Establece pt2 como null.
 *pt = nullptr;  // Esto todavía compila, a pesar de que '*pt' es un bool!
 
 // '=' != '=' != '='!
-// Llama Foo::Foo(const Foo&) o alguna variante (mira movimientos semanticos) 
+// Llama Foo::Foo(const Foo&) o alguna variante (mira movimientos semanticos)
 // copia del constructor.
 Foo f2;
 Foo f1 = f2;
 
 // Llama Foo::Foo(const Foo&) o variante, pero solo copia el 'Foo' parte de
-// 'fooSub'. Cualquier miembro extra de 'fooSub' se descarta. Este 
+// 'fooSub'. Cualquier miembro extra de 'fooSub' se descarta. Este
 // comportamiento horrible se llama "Corte de objetos."
 FooSub fooSub;
 Foo f1 = fooSub;
@@ -809,13 +809,13 @@ class Foo { ... };
 vector<Foo> v;
 for (int i = 0; i < 10; ++i)
   v.push_back(Foo());
-// La siguiente línea establece el tamaño de v en 0, 
+// La siguiente línea establece el tamaño de v en 0,
 // pero los destructores no son llamados y los recursos no se liberan!
 
 v.empty();
 v.push_back(Foo());  // Nuevo valor se copia en el primer Foo que insertamos
 
-// En verdad destruye todos los valores en v. 
+// En verdad destruye todos los valores en v.
 // Consulta la sección acerca de los objetos temporales para la
 // explicación de por qué esto funciona.
 v.swap(vector<Foo>());

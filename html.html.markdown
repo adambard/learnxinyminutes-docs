@@ -9,7 +9,7 @@ translators:
 
 HTML stands for HyperText Markup Language. 
 It is a language which allows us to write pages for the world wide web.
-It is a markup language, it enables us to write to write webpages using code to indicate how text and data should be displayed.
+It is a markup language, it enables us to write webpages using code to indicate how text and data should be displayed.
 In fact, html files are simple text files.
 What is this markup? It is a method of organising the page's data by surrounding it with opening tags and closing tags.
 This markup serves to give significance to the text that it encloses. 
@@ -111,7 +111,7 @@ This article is concerned principally with HTML syntax and some useful tips.
 
 ## Usage
 
-HTML is written in files ending with `.html`.
+HTML is written in files ending with `.html` or `.htm`. The mime type is `text/html`.
 
 ## To Learn More 
 

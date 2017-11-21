@@ -54,19 +54,19 @@ not False -- True
 ["příliš", "žluťoučký", "kůň", "úpěl"]
 [1, 2, 3, 4, 5]
 -- Druhý příklad lze zapsat také pomocí dvou teček.
-[1..5]
+List.range 1 5
 
 -- Spojovat seznamy lze stejně jako řetězce.
-[1..5] ++ [6..10] == [1..10] -- True
+List.range 1 5 ++ List.range 6 10 == List.range 1 10 -- True
 
 -- K přidání položky do seznamu použijte funkci "cons".
-0 :: [1..5] -- [0, 1, 2, 3, 4, 5]
+0 :: List.range 1 5 -- [0, 1, 2, 3, 4, 5]
 
 -- Funkce "head" pro získání první položky seznamu i funkce "tail" pro získání následujích položek
 -- vrací typ Maybe. Místo zjišťování, jestli nějaká položka není null,
 -- se s chybějcími hodnotami vypořádáme explicitně.
-List.head [1..5] -- Just 1
-List.tail [1..5] -- Just [2, 3, 4, 5]
+List.head (List.range 1 5) -- Just 1
+List.tail (List.range 1 5) -- Just [2, 3, 4, 5]
 List.head [] -- Nothing
 -- List.nazevFunkce odkazuje na funkci, která žije v modulu List.
 
@@ -82,7 +82,7 @@ snd ("elm", 42) -- 42
 -- Je to jediná hodnota svého typu, který se také nazývá "Unit".
 ()
 
--- Záznamy jsou podobné n-ticím, ale prvky jsou pojmenovány. Na pořadí nezáleží. 
+-- Záznamy jsou podobné n-ticím, ale prvky jsou pojmenovány. Na pořadí nezáleží.
 -- Povšimněte si, že hodnoty vlastností se přiřazují rovnítky, ne dvojtečkami.
 { x = 3, y = 7 }
 
@@ -153,10 +153,10 @@ odpoved =
   42
 
 -- Předejte funkci jako parametr jiným funkcím.
-List.map zdvoj [1..4] -- [2, 4, 6, 8]
+List.map zdvoj (List.range 1 4) -- [2, 4, 6, 8]
 
 -- Nebo použijte anonymní funkci.
-List.map (\a -> a * 2) [1..4] -- [2, 4, 6, 8]
+List.map (\a -> a * 2) (List.range 1 4) -- [2, 4, 6, 8]
 
 -- V definici funkce lze zapsat vzor, může-li nastat pouze jeden případ.
 -- Tato funkce přijímá jednu dvojici místo dvou parametrů.
@@ -182,7 +182,7 @@ fib n =
   else
     fib (n - 1) + fib (n - 2)
 
-List.map fib [0..8] -- [1, 1, 2, 3, 5, 8, 13, 21, 34]
+List.map fib (List.range 0 8) -- [1, 1, 2, 3, 5, 8, 13, 21, 34]
 
 -- Jiná rekurzivní funkce (v praxi použijte List.length).
 delkaSeznamu seznam =
@@ -339,11 +339,11 @@ $ elm repl
 
 -- Balíčky jsou určeny uživatelským jménem na GitHubu a názvem repozitáře.
 -- Nainstalujte nový balíček a uložte jej v souboru elm-package.json.
-$ elm package install evancz/elm-html
+$ elm package install evancz/elm-lang/html
 
 -- Porovnejte změny mezi verzemi jednoho balíčku.
-$ elm package diff evancz/elm-html 3.0.0 4.0.2
--- Správce balíčků v Elmu vyžaduje sémantické verzování, 
+$ elm package diff elm-lang/html 1.1.0 2.0.0
+-- Správce balíčků v Elmu vyžaduje sémantické verzování,
 -- takže minor verze nikdy nerozbije váš build.
 ```
 

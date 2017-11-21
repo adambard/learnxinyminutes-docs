@@ -9,7 +9,7 @@ contributors:
 
 ## Introduction
 
-Dynamic Programming is a powerful technique used for solving a particular class of problems as we will see.The idea is very simple, If you have solved a problem with the given input, then save the result for future reference, so as to avoid solving the same problem again.
+Dynamic Programming is a powerful technique used for solving a particular class of problems as we will see. The idea is very simple, If you have solved a problem with the given input, then save the result for future reference, so as to avoid solving the same problem again.
 
 Always remember!
 "Those who can't remember the past are condemned to repeat it"
@@ -26,7 +26,7 @@ The Longest Increasing Subsequence problem is to find the longest increasing sub
 First of all we have to find the value of the longest subsequences(LSi) at every index i with last element of sequence being ai. Then largest LSi would be the longest subsequence in the given sequence. To begin LSi is assigned to be one since ai is element of the sequence(Last element). Then for all `j` such that `j<i` and `aj<ai`, we find Largest LSj and add it to LSi. Then algorithm take *O(n2)* time.
 
 Pseudo-code for finding the length of the longest increasing subsequence:
-This algorithms complexity could be reduced by using better data structure rather than array. Storing predecessor array and variable like largest_sequences_so_far and its index would save a lot time.
+This algorithms complexity could be reduced by using better data structure rather than array. Storing predecessor array and variable like `largest_sequences_so_far` and its index would save a lot time.
 
 Similar concept could be applied in finding longest path in Directed acyclic graph.
 

@@ -34,7 +34,8 @@ brackets can be filled with useful information about this script or program:
 the author's name, the filename, the version, the license, a summary of what
 the program does or any other files it needs. The red/System header is just
 like the red header, only saying "red/System" and not "red".
-
+```
+```red
 Red []
 
 ;this is a commented line
@@ -50,7 +51,7 @@ comment {
 ; no need to restrict this to a 'main' function.
 
 ; Valid variable names start with a letter and can contain numbers,
-; variables containing only capital A thru F and numbers and ending with 'h'
+; variables containing only capital A through F and numbers and ending with 'h'
 ; are forbidden, because that is how hexadecimal numbers are expressed in Red
 ; and Red/System.
 
@@ -135,14 +136,14 @@ if a < 0 [print "a is negative"]
 ; Evaluate a block of code if a given condition is true, else evaluate an
 ; alternative block of code. If the last expressions in both blocks have the
 ; same type, EITHER can be used inside an expression.
-either a < 0 [
+either a > 0 [
+   msg: "positive"
+][
    either a = 0 [
        msg: "zero"
    ][
        msg: "negative"
    ]
-][
-   msg: "positive"
 ]
 
 print ["a is " msg lf]
@@ -150,14 +151,14 @@ print ["a is " msg lf]
 ; There is an alternative way to write this
 ; (Which is allowed because all code paths return a value of the same type):
 
-msg: either a < 0 [
+msg: either a > 0 [
+   "positive"
+][
    either a = 0 [
        "zero"
    ][
        "negative"
    ]
- ][
-   "positive"
 ]
 print ["a is " msg lf]
 

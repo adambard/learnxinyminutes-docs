@@ -1,11 +1,11 @@
 ---
 language: python
+filename: learnpython-it.py
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "http://aminbandali.com"]
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["evuez", "http://github.com/evuez"]
-filename: learnpython.py
 translators:
     - ["Ale46", "http://github.com/Ale46/"]
     - ["Tommaso Pifferi", "http://github.com/neslinesli93/"]

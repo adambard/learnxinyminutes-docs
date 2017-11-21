@@ -36,7 +36,7 @@ fun main(args: Array<String>) {
     so we don't have to explicitly specify it every time.
     We can explicitly declare the type of a variable like so:
     */
-    val foo : Int = 7
+    val foo: Int = 7
 
     /*
     Strings can be represented in a similar way as in Java.
@@ -65,7 +65,7 @@ fun helloWorld(val name : String) {
     A template expression starts with a dollar sign ($).
     */
     val fooTemplateString = "$fooString has ${fooString.length} characters"
-    println(fooTemplateString)
+    println(fooTemplateString) // => My String Is Here! has 18 characters 
 
     /*
     For a variable to hold null it must be explicitly specified as nullable.
@@ -189,13 +189,13 @@ fun helloWorld(val name : String) {
 
     // The "with" function is similar to the JavaScript "with" statement.
     data class MutableDataClassExample (var x: Int, var y: Int, var z: Int)
-    val fooMutableDate = MutableDataClassExample(7, 4, 9)
-    with (fooMutableDate) {
+    val fooMutableData = MutableDataClassExample(7, 4, 9)
+    with (fooMutableData) {
         x -= 2
         y += 2
         z--
     }
-    println(fooMutableDate) // => MutableDataClassExample(x=5, y=6, z=8)
+    println(fooMutableData) // => MutableDataClassExample(x=5, y=6, z=8)
 
     /*
     We can create a list using the "listOf" function.

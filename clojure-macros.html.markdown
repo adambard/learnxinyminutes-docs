@@ -99,13 +99,13 @@ You'll want to be familiar with Clojure. Make sure you understand everything in
 (list x) ; -> (4)
 
 ;; You can use # within ` to produce a gensym for each symbol automatically
-(defmacro define-x-hygenically []
+(defmacro define-x-hygienically []
   `(do
      (def x# 2)
      (list x#)))
 
 (def x 4)
-(define-x-hygenically) ; -> (2)
+(define-x-hygienically) ; -> (2)
 (list x) ; -> (4)
 
 ;; It's typical to use helper functions with macros. Let's create a few to
@@ -131,7 +131,7 @@ You'll want to be familiar with Clojure. Make sure you understand everything in
 
 ; However, we'll need to make it a macro if we want it to be run at compile time
 (defmacro inline-2 [form]
-  (inline-2-helper form)))
+  (inline-2-helper form))
 
 (macroexpand '(inline-2 (1 + (3 / 2) - (1 / 2) + 1)))
 ; -> (+ (- (+ 1 (/ 3 2)) (/ 1 2)) 1)

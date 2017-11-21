@@ -35,7 +35,7 @@ $PSVersionTable
 
 Getting help:
 
-```
+```powershell
 # Find commands
 Get-Command about_* # alias: gcm
 Get-Command -Verb Add
@@ -52,7 +52,7 @@ Update-Help # Run as admin
 
 The tutorial starts here:
 
-```
+```powershell
 # As you already figured, comments start with #
 
 # Simple hello world example:
@@ -74,7 +74,7 @@ $aHashtable = @{name1='val1'; name2='val2'}
 # Using variables:
 echo $aString
 echo "Interpolation: $aString"
-echo "`$aString has length of $($aString.Length)"
+echo "$aString has length of $($aString.Length)"
 echo '$aString'
 echo @"
 This is a Here-String
@@ -244,7 +244,7 @@ function New-Website() {
 'string' | gm
 
 # Syntax for calling static .NET methods
-[System.Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic')
+\[System.Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic')
 
 # Note that .NET functions MUST be called with parentheses
 # while PS functions CANNOT be called with parentheses.
@@ -300,7 +300,7 @@ $Shortcut.Save()
 
 Configuring your shell
 
-```
+```powershell
 # $Profile is the full path for your `Microsoft.PowerShell_profile.ps1`
 # All code there will be executed when the PS session starts
 if (-not (Test-Path $Profile)) {
