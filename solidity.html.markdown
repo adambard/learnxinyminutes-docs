@@ -826,6 +826,7 @@ someContractAddress.callcode('function_name');
 ## Additional resources
 - [Solidity Docs](https://solidity.readthedocs.org/en/latest/)
 - [Solidity Style Guide](https://ethereum.github.io/solidity//docs/style-guide/): Ethereum's style guide is heavily derived from Python's [pep8](https://www.python.org/dev/peps/pep-0008/) style guide.
+- [EthFiddle - The JsFiddle for Solidity](https://ethfiddle.com/)
 - [Browser-based Solidity Editor](http://chriseth.github.io/browser-solidity/)
 - [Gitter Solidity Chat room](https://gitter.im/ethereum/solidity)
 - [Modular design strategies for Ethereum Contracts](https://docs.erisindustries.com/tutorials/solidity/)
