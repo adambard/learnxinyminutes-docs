@@ -10,8 +10,6 @@ translators:
 lang: fr-fr
 ---
 
-This document describes PHP 5+.
-
 Ce document décrit PHP 5+.
 
 ```php
