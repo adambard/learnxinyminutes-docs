@@ -1142,9 +1142,14 @@ tcsh -v script
 	A bug of csh was 'set x=1' worked, 'set x = 1' worked, 'set x =1' did not!
 	A bug of tcsh was 'if ( ! $x )' worked but 'if (! $x ) did not.
 4. It is well documented that numeric expressions require spaces in-between; also parenthesise all bit-wise and unary operators.
+<<<<<<< HEAD
 5. Do not write a huge weird expression with several quotes, backslashes etc.
 	It is bad practice for generic programming, it is dangerous in any shell.
 6. Use quotes, it will save you many times.
+=======
+5. Do not write a huge weird expression with several quotes, backslashes etc.It is bad practice for generic programming, it is dangerous in any shell.
+6.  Use quotes, it will save you many times.
+>>>>>>> 8330f27120d9ac80770068e9e5dbc9b120923532
 7. Help tcsh, report the bug here <https://bugs.gw.com/>
 8. Read the man page, 'tcsh' has a huge list of options, and variables.
 
