@@ -832,7 +832,7 @@ case option2:
 case results:
 	echo "print the results here"
 	exit 0
-help:
+case help:
 	echo "usage: $0 { help | option1 | option2 }"
 	breaksw
 default:
@@ -1144,7 +1144,7 @@ tcsh -v script
 4. It is well documented that numeric expressions require spaces in-between; also parenthesise all bit-wise and unary operators.
 5. Do not write a huge weird expression with several quotes, backslashes etc.
 	It is bad practice for generic programming, it is dangerous in any shell.
-6  Use quotes, it will save you many times.
+6. Use quotes, it will save you many times.
 7. Help tcsh, report the bug here <https://bugs.gw.com/>
 8. Read the man page, 'tcsh' has a huge list of options, and variables.
 
