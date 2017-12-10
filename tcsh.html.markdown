@@ -842,7 +842,9 @@ endsw
 # --- end ---
 ```
 
-## Part two: complete guide
+### Part Two: Completing the Guide
+This part explain the rest capabilities of tcsh.
+They are not necessary to work with it.
 
 ```tcsh
 # --- Completion --------------------------------------------------------------
@@ -1085,7 +1087,7 @@ exit
 sched 11:00 echo It\’s eleven o\’clock. Time to sleep
 ```
 
-## Part Three: Examples
+### Part Three: Examples
 
 ```tcsh
 # this script prints available power-states if no argument is set;
