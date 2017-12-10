@@ -840,7 +840,11 @@ default:
 	exit 1
 endsw
 # --- end ---
+```
 
+## Part two: complete guide
+
+```tcsh
 # --- Completion --------------------------------------------------------------
 # Completion takes part when we press [TAB] to auto-complete the what we type
 
@@ -1079,9 +1083,11 @@ exit
 
 # sched, scheduler
 sched 11:00 echo It\’s eleven o\’clock. Time to sleep
+```
 
-# --- examples ----------------------------------------------------------------
+## Part Three: Examples
 
+```tcsh
 # this script prints available power-states if no argument is set;
 # otherwise it set the state of the $argv[1]
 # --- power-state script --- begin --------------------------------------------
@@ -1120,7 +1126,7 @@ end
 # --- secretnum.csh --- end ---------------------------------------------------
 
 #### a nice prompt
-#    set prompt = "%B%{\033[35m%}%t %{\033[32m%}%n@%m%b %C4 %# "
+set prompt = "%B%{\033[35m%}%t %{\033[32m%}%n@%m%b %C4 %# "
 
 #### debugging a script
 # TCSH options:
