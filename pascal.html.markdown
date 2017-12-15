@@ -2,7 +2,7 @@
 language: Pascal
 filename: learnpascal.pas
 contributors:
-    - ["Ganesha Danu", "http://github.com/blinfolfking"]
+    - ["Ganesha Danu", "http://github.com/blinfoldking"]
 ---
 
 
@@ -60,10 +60,10 @@ program Learn_More;
 
 //Declaring variables
 var 
-    int : integer; // a variables that contains an integer number data types
-    ch  : char;    // a variables that contains a character data types
-    str : string; // a variables that contains a string data types
-    r   : real;   // a variables that contains a real number data types
+    int : integer; // a variable that contains an integer number data types
+    ch  : char;    // a variable that contains a character data types
+    str : string; // a variable that contains a string data types
+    r   : real;   // a variable that contains a real number data types
     bool : boolean; //a variables that contains a Boolean(True/False) value data types
 Begin
     int := 1;// how to assign a value to a variable
@@ -79,5 +79,18 @@ Begin
     int := 3 div 2; //int = 1
     int := 1 div 2; //int = 0
 
+    bool := true or false; // bool = true
+    bool := false and true; // bool = false
+    bool := true xor true; // bool = false
+    
+    r := 3 / 2; // a division operator for real
+    r := int; // you can assign an integer to a real variable but not the otherwise
+
+    c := str[1]; // assign the first letter of str to c
+    str := 'hello' + 'world'; //combining strings
 End.
+```
+
+```pascal
+
 ```
