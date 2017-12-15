@@ -71,8 +71,13 @@ Begin
     ch  := 'a';
     str := 'apple';
     bool := true;
+    //pascal is not a case-sensitive language
+    //arithmethic operation
     int := 1 + 1; // int = 2 overwriting the previous assignment
     int := int + 1; // int = 2 + 1 = 3;
-End.
+    int := 4 div 2; //int = 2 a division operation which the result will be floored
+    int := 3 div 2; //int = 1
+    int := 1 div 2; //int = 0
 
+End.
 ```
