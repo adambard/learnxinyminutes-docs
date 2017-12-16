@@ -64,7 +64,7 @@ delejNeco()
 30 % 4; // = 2
 18.5 % 7; // = 4.5
 
-// Bitové operace také fungují; když provádíte bitové operace, desetinné číslo  
+// Bitové operace také fungují; když provádíte bitové operace, desetinné číslo
 // (float) se převede na celé číslo (int) se znaménkem *do* 32 bitů
 1 << 2; // = 4
 
@@ -329,7 +329,7 @@ setInterval(myFunction, 5000);
 // Objekty funkcí nemusíme ani deklarovat pomocí jména, můžeme je napsat jako
 // ananymní funkci přímo vloženou jako argument
 setTimeout(function(){
-  // tento kód bude zavolán za 5 vteřin    
+  // tento kód bude zavolán za 5 vteřin
 }, 5000);
 
 // JavaScript má oblast platnosti funkce, funkce ho mají, ale jiné bloky ne

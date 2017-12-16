@@ -106,7 +106,7 @@ null == undefined; // = true
 
 // ... але приведення не виконується при ===
 "5" === 5; // = false
-null === undefined; // = false 
+null === undefined; // = false
 
 // ... приведення типів може призвести до дивних результатів
 13 + !0; // 14
@@ -232,7 +232,7 @@ if (color == "red" || color == "blue") {
 var name = otherName || "default";
 
 // Оператор switch виконує перевірку на рівність за допомогою ===
-// використовуйте break, щоб призупити виконання наступного case,  
+// використовуйте break, щоб призупити виконання наступного case,
 grade = 4;
 switch (grade) {
   case 5:
@@ -258,7 +258,7 @@ function myFunction(thing) {
     return thing.toUpperCase();
 }
 myFunction("foo"); // = "FOO"
- 
+
 // Зверніть увагу, що значення яке буде повернено, повинно починатися на тому ж
 // рядку, що і ключове слово return, інакше завжди буде повертатися значення undefined
 // через автоматичну вставку крапки з комою
@@ -332,7 +332,7 @@ var myObj = {
 };
 myObj.myFunc(); // = "Hello, world!"
 
-// Функції, що прикріплені до об’єктів мають доступ до поточного об’єкта за 
+// Функції, що прикріплені до об’єктів мають доступ до поточного об’єкта за
 // допомогою ключового слова this.
 myObj = {
     myString: "Hello, world!",
@@ -348,7 +348,7 @@ myObj.myFunc(); // = "Hello, world!"
 var myFunc = myObj.myFunc;
 myFunc(); // = undefined
 
-// Функція може бути присвоєна іншому об’єкту. Тоді вона матиме доступ до 
+// Функція може бути присвоєна іншому об’єкту. Тоді вона матиме доступ до
 // цього об’єкта через this
 var myOtherFunc = function() {
     return this.myString.toUpperCase();
@@ -371,7 +371,7 @@ Math.min(42, 6, 27); // = 6
 Math.min([42, 6, 27]); // = NaN (Ой-ой!)
 Math.min.apply(Math, [42, 6, 27]); // = 6
 
-// Але call і apply — тимчасові. Коли ми хочемо зв’язати функцію і об’єкт 
+// Але call і apply — тимчасові. Коли ми хочемо зв’язати функцію і об’єкт
 // використовують bind
 var boundFunc = anotherFunc.bind(myObj);
 boundFunc(" Hello!"); // = "Hello world, Hello!"
@@ -475,7 +475,7 @@ if (Object.create === undefined) { // не перезаписуємо метод
         // Створюємо правильний конструктор з правильним прототипом
         var Constructor = function(){};
         Constructor.prototype = proto;
-    
+
         return new Constructor();
     }
 }

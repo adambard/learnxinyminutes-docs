@@ -7,25 +7,25 @@ translators:
     - ["Haydar KULEKCI", "http://scanf.info/"]
 lang: tr-tr
 ---
-Python Guido Van Rossum tarafından 90'ların başında yaratılmıştır. Şu anda 
+Python Guido Van Rossum tarafından 90'ların başında yaratılmıştır. Şu anda
 varolanlar arasında en iyi dillerden birisidir. Ben (Louie Dinh) Python
-dilinin syntax'ının belirginliğine aşığım. O basit olarak çalıştırılabilir 
+dilinin syntax'ının belirginliğine aşığım. O basit olarak çalıştırılabilir
 pseudocode'dur.
 
 Geri bildirimlerden son derece mutluluk duyarım! Bana [@louiedinh](http://twitter.com/louiedinh)
 adresinden ya da louiedinh [at] [google's email service] adresinden ulaşabilirsiniz.
 
-Çeviri için geri bildirimleri de [@kulekci](http://twitter.com/kulekci) 
-adresine yapabilirsiniz. 
+Çeviri için geri bildirimleri de [@kulekci](http://twitter.com/kulekci)
+adresine yapabilirsiniz.
 
-Not: Bu yazıdaki özellikler Python 2.7 için geçerlidir, ama Python 2.x için de 
-uygulanabilir. Python 3 için başka bir zaman tekrar bakınız. 
+Not: Bu yazıdaki özellikler Python 2.7 için geçerlidir, ama Python 2.x için de
+uygulanabilir. Python 3 için başka bir zaman tekrar bakınız.
 
 
 ```python
 # Tek satır yorum hash işareti ile başlar.
-""" Çoklu satır diziler üç tane çift tırnak 
-    arasında yazılır. Ve yorum olarak da 
+""" Çoklu satır diziler üç tane çift tırnak
+    arasında yazılır. Ve yorum olarak da
     kullanılabilir
 """
 
@@ -44,7 +44,7 @@ uygulanabilir. Python 3 için başka bir zaman tekrar bakınız.
 35 / 5 #=> 7
 
 # Bölünme biraz ilginç. EĞer tam sayılar üzerinde bölünme işlemi yapıyorsanız
-# sonuç otomatik olarak kırpılır. 
+# sonuç otomatik olarak kırpılır.
 5 / 2 #=> 2
 
 # Bölünme işlemini düzenlemek için kayan noktalı sayıları bilmeniz gerekir.
@@ -88,13 +88,13 @@ not False #=> True
 "Hello " + "world!" #=> "Hello world!"
 
 # A string can be treated like a list of characters
-# Bir string'e karakter listesi gibi davranabilirsiniz. 
+# Bir string'e karakter listesi gibi davranabilirsiniz.
 "This is a string"[0] #=> 'T'
 
 # % karakter dizisini(string) formatlamak için kullanılır, bunun gibi:
 "%s can be %s" % ("strings", "interpolated")
 
-# String'leri formatlamanın yeni bir yöntem ise format metodudur. 
+# String'leri formatlamanın yeni bir yöntem ise format metodudur.
 # Bu metod tercih edilen yöntemdir.
 "{0} can be {1}".format("strings", "formatted")
 # Eğer saymak istemiyorsanız anahtar kelime kullanabilirsiniz.
@@ -126,12 +126,12 @@ print "I'm Python. Nice to meet you!"
 
 
 # Değişkenlere bir değer atamadan önce tanımlamaya gerek yoktur.
-some_var = 5    # Değişken isimlerinde gelenek küçük karakter ve alt çizgi 
+some_var = 5    # Değişken isimlerinde gelenek küçük karakter ve alt çizgi
                 # kullanmaktır.
 some_var #=> 5
 
-# Daha önceden tanımlanmamış ya da assign edilmemeiş bir değişkene erişmeye 
-# çalıştığınızda bir hata fırlatılacaktır. Hata ayıklama hakkında daha fazla 
+# Daha önceden tanımlanmamış ya da assign edilmemeiş bir değişkene erişmeye
+# çalıştığınızda bir hata fırlatılacaktır. Hata ayıklama hakkında daha fazla
 # bilgi için kontrol akışı kısmına göz atınız.
 some_other_var  # isim hatası fırlatılır
 
@@ -158,8 +158,8 @@ li[0] #=> 1
 # Son elemanın değerine ulaşmak
 li[-1] #=> 3
 
-# Listede bulunmayan bir index'teki elemana erişirken "IndexError" hatası 
-# fırlatılır 
+# Listede bulunmayan bir index'teki elemana erişirken "IndexError" hatası
+# fırlatılır
 li[4] # IndexError fırlatılır
 
 # slice syntax'ı ile belli aralıktakı değerlere bakabilirsiniz.
@@ -216,7 +216,7 @@ filled_dict["one"] #=> 1
 # Tüm anahtarlara(key) "keys()" metodu ile ulaşılır
 filled_dict.keys() #=> ["three", "two", "one"]
 # Not - Sözlüklerin anahtarlarının sıralı geleceği garanti değildir
-# Sonuçlarınız değer listesini aldığınızda tamamen eşleşmeyebilir 
+# Sonuçlarınız değer listesini aldığınızda tamamen eşleşmeyebilir
 
 # Tüm değerleri almak için "values()" kullanabilirsiniz.
 filled_dict.values() #=> [3, 2, 1]
@@ -237,7 +237,7 @@ filled_dict.get("four") #=> None
 filled_dict.get("one", 4) #=> 1
 filled_dict.get("four", 4) #=> 4
 
-# "setdefault()" metodu sözlüğe yeni bir key-value eşleşmesi eklemenin 
+# "setdefault()" metodu sözlüğe yeni bir key-value eşleşmesi eklemenin
 # güvenli bir yoludur.
 filled_dict.setdefault("five", 5) #filled_dict["five"] is set to 5
 filled_dict.setdefault("five", 6) #filled_dict["five"] is still 5
@@ -258,7 +258,7 @@ filled_set.add(5) # filled_set is now {1, 2, 3, 4, 5}
 other_set = {3, 4, 5, 6}
 filled_set & other_set #=> {3, 4, 5}
 
-# | işareti ile 
+# | işareti ile
 filled_set | other_set #=> {1, 2, 3, 4, 5, 6}
 
 # "-" işareti ile iki set'in farkları alınabilir
@@ -296,7 +296,7 @@ Ekrana yazdırılan:
 for animal in ["dog", "cat", "mouse"]:
     # Biçimlendirmeleri string'e katmak için % kullanabilirsiniz
     print "%s is a mammal" % animal
-    
+
 """
 "range(number)" ifadesi sıfırdan verilen sayıya kadar bir sayı listesi döner
 Ekrana yazdırılan:
@@ -353,7 +353,7 @@ def varargs(*args):
 
 varargs(1, 2, 3) #=> (1,2,3)
 
-# Değişken sayıda anahtar argümanlı parametre alan fonksiyonlar da 
+# Değişken sayıda anahtar argümanlı parametre alan fonksiyonlar da
 # tanımlayabilirsiniz.
 def keyword_args(**kwargs):
     return kwargs
@@ -395,7 +395,7 @@ add_10(3) #=> 13
 map(add_10, [1,2,3]) #=> [11, 12, 13]
 filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 
-# Map etme(maps) ve filtreleme(filtres) için liste kullanabiliriz. 
+# Map etme(maps) ve filtreleme(filtres) için liste kullanabiliriz.
 [add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
 
@@ -406,17 +406,17 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 
 # We subclass from object to get a class.
 class Human(object):
-    
+
     # Bir sınıf özelliği. Bu sınıfın tüm "instance"larına paylaşılmıştır.
     species = "H. sapiens"
 
     # Basic initializer
     def __init__(self, name):
-        # Metoda gelen argümanın değerini sınıfın elemanı olan "name" 
+        # Metoda gelen argümanın değerini sınıfın elemanı olan "name"
         # değişkenine atama
         self.name = name
 
-    # Bir instance metodu. Tüm metodlar ilk argüman olarak "self" 
+    # Bir instance metodu. Tüm metodlar ilk argüman olarak "self"
     # parametresini alır
     def say(self, msg):
        return "%s: %s" % (self.name, msg)
@@ -473,7 +473,7 @@ from math import *
 import math as m
 math.sqrt(16) == m.sqrt(16) #=> True
 
-# Python modülleri sıradan python dosyalarıdır. Kendinize bir modül 
+# Python modülleri sıradan python dosyalarıdır. Kendinize bir modül
 # yazabilirsiniz, ve dahil edebilirsiniz. Modülün adı ile dosya adı
 # aynı olmalıdır.
 

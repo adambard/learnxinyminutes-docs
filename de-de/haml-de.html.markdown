@@ -62,11 +62,11 @@ $ haml input_file.haml output_file.html
 %h1 Headline copy
 
 / Mehrzeilige Inhalte müssen stattdessen eingerückt werden:
-%p 
+%p
   This is a lot of content that we could probably split onto two
   separate lines.
 
-/ 
+/
   HTML kann mit &= escaped werden. So werden HTML-sensitive Zeichen
   enkodiert. Zum Beispiel:
 

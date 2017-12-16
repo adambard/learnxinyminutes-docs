@@ -38,7 +38,7 @@ literal_block: |
     Dieser ganze Block an Text ist der Wert vom Schlüssel literal_block,
     mit Erhaltung der Zeilenumbrüche.
 
-    Das Literal fährt solange fort bis dieses unverbeult ist und die vorherschende Einrückung wird 
+    Das Literal fährt solange fort bis dieses unverbeult ist und die vorherschende Einrückung wird
     gekürzt.
 
         Zeilen, die weiter eingerückt sind, behalten den Rest ihrer Einrückung -
@@ -96,7 +96,7 @@ json_seq: [3, 2, 1, "Start"]
 # EXTRA YAML EIGENSCHAFTEN #
 ############################
 
-# YAML stellt zusätzlich Verankerung zu Verfügung, welche es einfach machen 
+# YAML stellt zusätzlich Verankerung zu Verfügung, welche es einfach machen
 # Inhalte im Dokument zu vervielfältigen. Beide Schlüssel werden den selben Wert haben.
 verankerter_inhalt: &anker_name Dieser String wird als Wert beider Schlüssel erscheinen.
 anderer_anker: *anker_name

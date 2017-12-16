@@ -772,7 +772,7 @@ Pero soy una ClaseHija
 
 /**********************
 *  Manejo de errores
-*  
+*
 */
 
 // Una simple gestión de errores puede ser realizada con un bloque try catch

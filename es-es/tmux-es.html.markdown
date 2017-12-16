@@ -25,7 +25,7 @@ y luego ser insertado nuevamente.
     new              # Crea una nueva sesión
      -s "Session"    # Crea sesión con nombre
      -n "Window"     # Crea ventana con nombre
-     -c "/dir"       # Comienza en el directorio destino 
+     -c "/dir"       # Comienza en el directorio destino
 
     attach           # Adjunta sesión última/disponible
      -t "#"          # Adjunta sesión destino

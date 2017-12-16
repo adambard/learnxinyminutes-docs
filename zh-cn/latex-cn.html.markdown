@@ -44,7 +44,7 @@ Svetlana Golubeva}
 
 % 现在我们开始正文
 % 这一行之前都是“序章”
-\begin{document} 
+\begin{document}
 % 如果想设定作者，时间，标题字段我们可使用 LaTeX 来建立标题页
 \maketitle
 
@@ -82,15 +82,15 @@ Much better now.
 
 % 使用型号我们可以借助 LaTeX 内置的编号功能
 % 这一技巧也在其他指令中有效
-\section*{This is an unnumbered section} 
+\section*{This is an unnumbered section}
 然而并不是所有章节都要被标序号
 
 \section{Some Text notes}
 %\section{Spacing} % 需要增加有关空白间隔的信息
 \LaTeX \hspace{1pt} is generally pretty good about placing text where it should
-go. If 
-a line \\ needs \\ to \\ break \\ you add \textbackslash\textbackslash 
-\hspace{1pt} to the source code. \\ 
+go. If
+a line \\ needs \\ to \\ break \\ you add \textbackslash\textbackslash
+\hspace{1pt} to the source code. \\
 
 \section{Lists}
 Lists are one of the easiest things to create in \LaTeX! I need to go shopping
@@ -110,7 +110,7 @@ tomorrow, so let's make a grocery list.
 \section{Math}
 
 使用 \LaTeX \hspace{1pt} 的一个最主要的方面是学术论文和技术文章
-通常在数学和科学的领域 
+通常在数学和科学的领域
 因此我们需要在文章中插入特殊符号！ \\
 
 数学符号极多，远超出你能在键盘上找到的那些；
@@ -130,11 +130,11 @@ My favorite Greek letter is $\xi$. I also like $\beta$, $\gamma$ and $\sigma$.
 I haven't found a Greek letter yet that \LaTeX \hspace{1pt} doesn't know
 about! \\
 
-常用函数操作符同样很重要： 
-trigonometric functions ($\sin$, $\cos$, $\tan$), 
-logarithms 和 exponentials ($\log$, $\exp$), 
-limits ($\lim$), etc. 
-在 LaTeX 指令中预定义 
+常用函数操作符同样很重要：
+trigonometric functions ($\sin$, $\cos$, $\tan$),
+logarithms 和 exponentials ($\log$, $\exp$),
+limits ($\lim$), etc.
+在 LaTeX 指令中预定义
 让我们写一个等式看看发生了什么：
 $\cos(2\theta) = \cos^{2}(\theta) - \sin^{2}(\theta)$ \\
 
@@ -157,19 +157,19 @@ $$ \frac{n!}{k!(n - k)!} $$ \\
 
 引用我们的新等式！
 Eqn.~\ref{eq:pythagoras} is also known as the Pythagoras Theorem which is also
-the subject of Sec.~\ref{subsec:pythagoras}. A lot of things can be labeled: 
+the subject of Sec.~\ref{subsec:pythagoras}. A lot of things can be labeled:
 figures, equations, sections, etc.
 
 求和（Summations）与整合（Integrals）写作 sum 和 int ：
 
 % 一些编译器会提醒在等式环境中的空行
 
-\begin{equation} 
+\begin{equation}
   \sum_{i=0}^{5} f_{i}
-\end{equation} 
-\begin{equation} 
+\end{equation}
+\begin{equation}
   \int_{0}^{\infty} \mathrm{e}^{-x} \mathrm{d}x
-\end{equation} 
+\end{equation}
 
 \section{Figures}
 
@@ -179,7 +179,7 @@ figures, equations, sections, etc.
 \begin{figure}[H] % H 是放置选项的符号
     \centering % 图片在本页居中
     % 宽度放缩为页面的0.8倍
-    %\includegraphics[width=0.8\linewidth]{right-triangle.png} 
+    %\includegraphics[width=0.8\linewidth]{right-triangle.png}
     % 需要使用想象力决定是否语句超出编译预期
     \caption{Right triangle with sides $a$, $b$, $c$}
     \label{fig:right-triangle}
@@ -192,7 +192,7 @@ figures, equations, sections, etc.
   \caption{Caption for the Table.}
   % 下方的 {} 描述了表格中每一行的绘制方式
   % 同样，我在每次使用时都会查找可用选项。
-  \begin{tabular}{c|cc} 
+  \begin{tabular}{c|cc}
     Number &  Last Name & First Name \\ % 每一列被 & 分开
     \hline % 水平线
     1 & Biggus & Dickus \\
@@ -203,17 +203,17 @@ figures, equations, sections, etc.
 \section{Getting \LaTeX \hspace{1pt} to not compile something (i.e. Source Code)}
 现在增加一些源代码在 \LaTeX \hspace{1pt} 文档中，
 我们之后需要 \LaTeX \hspace{1pt} 不翻译这些内容而仅仅是把他们打印出来
-这里使用 verbatim environment。 
+这里使用 verbatim environment。
 
 % 也有其他库存在 (如. minty, lstlisting, 等)
 % 但是 verbatim 是最基础和简单的一个
-\begin{verbatim} 
+\begin{verbatim}
   print("Hello World!")
   a%b; % 在这一环境下我们可以使用 %
   random = 4; #decided by fair random dice roll
 \end{verbatim}
 
-\section{Compiling} 
+\section{Compiling}
 
 现在你大概想了解如何编译这个美妙的文档
 然后得到饱受称赞的 \LaTeX \hspace{1pt} pdf文档
@@ -221,9 +221,9 @@ figures, equations, sections, etc.
 得到最终文档，使用 \LaTeX \hspace{1pt} 组合步骤：
   \begin{enumerate}
     \item Write the document in plain text (the ``source code'').
-    \item Compile source code to produce a pdf. 
+    \item Compile source code to produce a pdf.
      The compilation step looks like this (in Linux): \\
-     \begin{verbatim} 
+     \begin{verbatim}
         > pdflatex learn-latex.tex
      \end{verbatim}
   \end{enumerate}
@@ -241,12 +241,12 @@ figures, equations, sections, etc.
 \section{Hyperlinks}
 同样可以在文档中加入超链接
 使用如下命令在序言中引入库：
-\begin{verbatim} 
+\begin{verbatim}
     \usepackage{hyperref}
 \end{verbatim}
 
 有两种主要的超链接方式 \\
-\url{https://learnxinyminutes.com/docs/latex/}， 或  
+\url{https://learnxinyminutes.com/docs/latex/}， 或
 \href{https://learnxinyminutes.com/docs/latex/}{shadowed by text}
 % 你不可以增加特殊空格和符号，因为这将会造成编译错误
 
@@ -262,7 +262,7 @@ figures, equations, sections, etc.
 \begin{thebibliography}{1}
   % 与其他列表相同， \bibitem 命令被用来列出条目
   % 每个记录可以直接被文章主体引用
-  \bibitem{latexwiki} The amazing \LaTeX \hspace{1pt} wikibook: {\em 
+  \bibitem{latexwiki} The amazing \LaTeX \hspace{1pt} wikibook: {\em
 https://en.wikibooks.org/wiki/LaTeX}
   \bibitem{latextutorial} An actual tutorial: {\em http://www.latex-tutorial.com}
 \end{thebibliography}

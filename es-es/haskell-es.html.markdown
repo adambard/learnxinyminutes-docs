@@ -174,7 +174,7 @@ myMap func (x:xs) = func x:(myMap func xs)
 myMap (\x -> x + 2) [1..5] -- [3, 4, 5, 6, 7]
 
 -- utilizando pliegues (llamado `inject` en algunos lenguajes) con una función
--- anónima. foldl1 significa pliegue por la izquierda, y usa el primer valor 
+-- anónima. foldl1 significa pliegue por la izquierda, y usa el primer valor
 -- en la lista como el valor inicial para el acumulador.
 foldl1 (\acc x -> acc + x) [1..5] -- 15
 
@@ -203,10 +203,10 @@ foo = (*5) . (+10)
 -- (5 + 10) * 5 = 75
 foo 5 -- 75
 
--- fijación de precedencia 
--- Haskell tiene otro operador llamado `$`. Este operador aplica a una función 
--- para un parámetro dado. En contraste a la aplicación de función estándar,  
--- la cúal tiene prioridad más alta posible de 10 y es asociativa por la izquierda, 
+-- fijación de precedencia
+-- Haskell tiene otro operador llamado `$`. Este operador aplica a una función
+-- para un parámetro dado. En contraste a la aplicación de función estándar,
+-- la cúal tiene prioridad más alta posible de 10 y es asociativa por la izquierda,
 -- el operador `$` tiene prioridad de 0 y es asociativa por la derecha. Tal que
 -- una baja prioridad significa que la expresión a su derecha es aplicada como parámetro a la función a su izquierda.
 
@@ -254,7 +254,7 @@ haskell = if 1 == 1
             then "awesome"
             else "awful"
 
--- expressiones case: Aquí se muestra como analizar los argumentos 
+-- expressiones case: Aquí se muestra como analizar los argumentos
 -- desde línea de comandos
 case args of
   "help" -> printHelp
@@ -338,7 +338,7 @@ countLines = show . length . lines
 
 main' = interact countLines
 
--- Puedes pensar en el valor de tipo `IO ()` como la representación 
+-- Puedes pensar en el valor de tipo `IO ()` como la representación
 -- de una secuencia de acciones que la computadora hace, al igual que
 -- un programa escrito en un lenguaje imperativo. Podemos utilizar
 -- la notación `do` para encadenar acciones. Por ejemplo:
@@ -349,7 +349,7 @@ sayHello = do
    name <- getLine -- obtenemos un valor y lo proporcionamos a "name"
    putStrLn $ "Hola, " ++ name
 
--- Ejercicio: escribe tu propia version de `interact` que solo lea 
+-- Ejercicio: escribe tu propia version de `interact` que solo lea
 --           una linea como entrada.
 
 -- Nunca se ejecuta el código en `sayHello`, sin embargo. La única

@@ -135,7 +135,7 @@ None  # => None
 "etc" is None  # => False
 None is None  # => True
 
-# Operator 'is' testuje identyczność obiektów. Nie jest to zbyt 
+# Operator 'is' testuje identyczność obiektów. Nie jest to zbyt
 # pożyteczne, gdy działamy tylko na prostych wartościach,
 # ale przydaje się, gdy mamy do czynienia z obiektami.
 
@@ -302,7 +302,7 @@ pelen_zbior.add(5)   # pelen_zbior is now {1, 2, 3, 4, 5}
 inny_zbior = {3, 4, 5, 6}
 pelen_zbior & other_set   # => {3, 4, 5}
 
-# Suma zbiorów |  
+# Suma zbiorów |
 pelen_zbior | other_set   # => {1, 2, 3, 4, 5, 6}
 
 # Różnicę zbiorów da znak -
@@ -442,7 +442,7 @@ def setX(num):
     # Lokalna zmienna x nie jest tym samym co zmienna x
     x = num # => 43
     print x # => 43
-    
+
 def setGlobalX(num):
     global x
     print x # => 5
@@ -482,7 +482,7 @@ class Czlowiek(object):
 
     # Atrybut klasy. Występuje we wszystkich instancjach klasy.
     gatunek = "H. sapiens"
-    
+
     # Podstawowa inicjalizacja - wywoływana podczas tworzenia instacji.
     # Zauważ, że podwójne podkreślenia przed i za nazwą oznaczają
     # specjalne obiekty lub atrybuty wykorzystywane wewnętrznie przez Pythona.
@@ -569,9 +569,9 @@ def podwojne_liczby(iterowalne):
         yield i + i
 
 # Generatory tworzą wartości w locie.
-# Zamiast generować wartości raz i zapisywać je (np. w liście), 
+# Zamiast generować wartości raz i zapisywać je (np. w liście),
 # generator tworzy je na bieżąco, w wyniku iteracji. To oznacza,
-# że w poniższym przykładzie wartości większe niż 15 nie będą przetworzone 
+# że w poniższym przykładzie wartości większe niż 15 nie będą przetworzone
 # w funkcji "podwojne_liczby".
 # Zauważ, że xrange to generator, który wykonuje tę samą operację co range.
 # Stworzenie listy od 1 do 900000000 zajęłoby sporo czasu i pamięci,
@@ -581,7 +581,7 @@ def podwojne_liczby(iterowalne):
 # zwykle na końcu znaku podkreślenia
 xrange_ = xrange(1, 900000000)
 
-# poniższa pętla będzie podwajać liczby aż do 30 
+# poniższa pętla będzie podwajać liczby aż do 30
 for i in podwojne_liczby(xrange_):
     print(i)
     if i >= 30:
@@ -637,4 +637,3 @@ print(say(say_please=True))  # Kupisz mi piwo? Proszę! Jestem spłukany :(
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
 * [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
-

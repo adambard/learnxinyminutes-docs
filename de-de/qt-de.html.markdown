@@ -7,7 +7,7 @@ contributors:
     - ["Aleksey Kholovchuk", "https://github.com/vortexxx192"]
 translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
-lang: de-de    
+lang: de-de
 ---
 
 **Qt** ist ein weithin bekanntes Framework zum Entwickeln von cross-platform Software,
@@ -50,10 +50,10 @@ dazwischen.
 /*
  * Lass uns Label und einen Button machen.
  * Ein Label soll auftauchen, wenn der Button gedrückt wird.
- * 
+ *
  * Der Qt Code spricht für sich selbst.
  */
- 
+
 #include <QApplication>
 #include <QDialog>
 #include <QVBoxLayout>
@@ -65,10 +65,10 @@ int main(int argc, char *argv[]) {
 
     QDialog dialogWindow;
     dialogWindow.show();
-    
+
     // Füge ein vertikales Layout hinzu
     QVBoxLayout layout;
-    dialogWindow.setLayout(&layout);  
+    dialogWindow.setLayout(&layout);
 
     QLabel textLabel("Danke für das Knopf drücken");
     layout.addWidget(&textLabel);
@@ -76,7 +76,7 @@ int main(int argc, char *argv[]) {
 
     QPushButton button("Drück mich");
     layout.addWidget(&button);
-    
+
     // Zeigt verstecktes Label, wenn der Button gedrückt wird.
     QObject::connect(&button, &QPushButton::pressed,
                      &textLabel, &QLabel::show);

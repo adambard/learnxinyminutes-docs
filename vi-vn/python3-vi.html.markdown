@@ -729,11 +729,11 @@ if __name__ == '__main__':
 
     # Gọi phương thức tĩnh
     print(Human.grunt())            # => "*grunt*"
-    
+
     # Không thể gọi phương thức tĩnh với một thực thể/đối tượng
     # bởi vì i.grunt() sẽ tự động đặt "self" (tức là đối tượng i) làm đối số thứ nhất
     print(i.grunt())                # => TypeError: grunt() takes 0 positional arguments but 1 was given
-                                    
+
     # Thay đổi thuộc tính của đối tượng
     i.age = 42
     # Truy cập thuộc tính

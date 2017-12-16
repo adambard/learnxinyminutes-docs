@@ -247,7 +247,7 @@ grep "^foo.*bar$" file.txt
 # 使用选项 "-c" 统计行数
 grep -c "^foo.*bar$" file.txt
 # 如果只是要按字面形式搜索字符串而不是按正则表达式，使用 fgrep (或 grep -F)
-fgrep "^foo.*bar$" file.txt 
+fgrep "^foo.*bar$" file.txt
 
 
 # 以 bash 内建的 'help' 指令阅读 Bash 自带文档：

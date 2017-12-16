@@ -72,7 +72,7 @@ func learnMultiple(x, y int) (sum, prod int) {
     prod = x * y
     return
     Ez ugyanezzel az eredménnyel járt volna, mint a fenti sor.
-    Üres return esetén, az elnevezett visszatérési változók 
+    Üres return esetén, az elnevezett visszatérési változók
     aktuális értékeikkel térnek vissza. */
 }
 
@@ -170,7 +170,7 @@ func learnFlowControl() {
         // ez nem fog lefutni, nincs szükség break-ekre.
     }
     // A for ciklus sem használ zárójeleket
-    for x := 0; x < 3; x++ { 
+    for x := 0; x < 3; x++ {
         fmt.Println("iteráció", x)
     }
     // itt az x == 1.
@@ -181,8 +181,8 @@ func learnFlowControl() {
         continue // soha nem fut le
     }
 
-    //Akárcsak a for-nál, az if-nél is lehet rövid deklarálással egy lokális változót létrehozni, 
-    //ami a blokk összes if/else szerkezetén keresztül érvényes marad. 
+    //Akárcsak a for-nál, az if-nél is lehet rövid deklarálással egy lokális változót létrehozni,
+    //ami a blokk összes if/else szerkezetén keresztül érvényes marad.
     if y := expensiveComputation(); y > x {
         x = y
     }
@@ -271,7 +271,7 @@ func learnConcurrency() {
     // Ugyanaz a make függvény, amivel korábban szeleteket hoztunk létre.
     // A make allokál map-eket, szeleteket és csatornákat.
     c := make(chan int)
-    // Indítsunk három konkurens goroutine-t.  A számok konkurensen lesznek 
+    // Indítsunk három konkurens goroutine-t.  A számok konkurensen lesznek
     // megnövelve, ha a számítógép képes rá és jól be van állítva, akkor pedig
     // paralellizálva/egymás mellett. Mind a 3 ugyanabba a csatornába küldi az
     // eredményeket.
@@ -280,7 +280,7 @@ func learnConcurrency() {
     go inc(-805, c)
     // Beolvassuk 3x a csatornából az eredményeket és kiírjuk őket a kimenetre.
     // Nem lehet tudni milyen sorrendben fognak érkezni az eredmények!
-    fmt.Println(<-c, <-c, <-c) // hogyha a jobb oldalon csatorna van, akkor a 
+    fmt.Println(<-c, <-c, <-c) // hogyha a jobb oldalon csatorna van, akkor a
                                // "<-" a beolvasó/kapó operátor
 
     cs := make(chan string)       // még egy csatorna, ez stringekkel kommunikál

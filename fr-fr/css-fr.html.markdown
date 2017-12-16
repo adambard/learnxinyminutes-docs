@@ -200,9 +200,9 @@ et le code HTML:
 Les priorités de style sont :
 Attention, les priorités s'appliquent aux **propriétés**, pas aux blocs entiers.
 
-* `E` a la priorité grâce à `!important`.  
+* `E` a la priorité grâce à `!important`.
 * `F` vient ensuite, car le code se trouve directement dans le HTML.
-* `A` vient ensuite, car il est le plus spécifique.  
+* `A` vient ensuite, car il est le plus spécifique.
 	plus spécifique veut dire, celui qui cible le plus l'élément
 * `C` vient ensuite. Il est aussi spécifique que `B`, mais est écrit après.
 * Puis `B`

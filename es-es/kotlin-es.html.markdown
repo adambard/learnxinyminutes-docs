@@ -123,7 +123,7 @@ fun main(args: Array<String>) {
     println(even(6)) // => true
     println(even(7)) // => false
 
-    // Las funciones pueden tomar funciones como argumentos y 
+    // Las funciones pueden tomar funciones como argumentos y
     // retornar funciones.
     fun not(f: (Int) -> Boolean) : (Int) -> Boolean {
         return {n -> !f.invoke(n)}

@@ -26,7 +26,7 @@ O versiune Python 3 va apărea în curând, în limba engleză mai întâi.
 """
 
 ####################################################
-## 1. Operatori şi tipuri de date primare 
+## 1. Operatori şi tipuri de date primare
 ####################################################
 
 # Avem numere
@@ -43,9 +43,9 @@ O versiune Python 3 va apărea în curând, în limba engleză mai întâi.
 # automat spre valoarea mai mică
 5 / 2 #=> 2
 
-# Pentru a folosi împărţirea fără rest avem nevoie de numere reale 
+# Pentru a folosi împărţirea fără rest avem nevoie de numere reale
 2.0     # Acesta e un număr real
-11.0 / 4.0 #=> 2.75 ahhh ... cum ne aşteptam 
+11.0 / 4.0 #=> 2.75 ahhh ... cum ne aşteptam
 
 # Ordinea operaţiilor se poate forţa cu paranteze
 (1 + 3) * 2 #=> 8
@@ -72,7 +72,7 @@ not False #=> True
 2 <= 2 #=> True
 2 >= 2 #=> True
 
-# Comparaţiile pot fi inlănţuite! 
+# Comparaţiile pot fi inlănţuite!
 1 < 2 < 3 #=> True
 2 < 3 < 2 #=> False
 
@@ -83,7 +83,7 @@ not False #=> True
 # Şirurile de caractere pot fi adăugate!
 "Hello " + "world!" #=> "Hello world!"
 
-# Un şir de caractere poate fi folosit ca o listă 
+# Un şir de caractere poate fi folosit ca o listă
 "Acesta e un şir de caractere"[0] #=> 'A'
 
 # Caracterul % (procent) poate fi folosit pentru a formata şiruri de caractere :
@@ -92,7 +92,7 @@ not False #=> True
 # O metodă mai nouă de a formata şiruri este metoda "format"
 # Este metoda recomandată
 "{0} pot fi {1}".format("şirurile", "formatate")
-# Puteţi folosi cuvinte cheie dacă nu doriţi sa număraţi 
+# Puteţi folosi cuvinte cheie dacă nu doriţi sa număraţi
 "{nume} vrea să mănânce {fel}".format(nume="Bob", fel="lasagna")
 
 # "None", care reprezintă valoarea nedefinită, e un obiect
@@ -107,7 +107,7 @@ None is None  #=> True
 # Acastă operaţie nu e foarte folositoare cu tipuri primare,
 # dar e foarte folositoare cu obiecte.
 
-# None, 0, şi şiruri de caractere goale sunt evaluate ca si fals, False. 
+# None, 0, şi şiruri de caractere goale sunt evaluate ca si fals, False.
 # Toate celelalte valori sunt adevărate, True.
 0 == False  #=> True
 "" == False #=> True
@@ -117,37 +117,37 @@ None is None  #=> True
 ## 2. Variabile şi colecţii
 ####################################################
 
-# Printarea este uşoară 
-print "Eu sunt Python. Încântat de cunoştinţă!" 
+# Printarea este uşoară
+print "Eu sunt Python. Încântat de cunoştinţă!"
 
 
-# Nu este nevoie sa declari variabilele înainte de a le folosi 
-o_variabila = 5    # Convenţia este de a folosi caractere_minuscule_cu_underscore 
+# Nu este nevoie sa declari variabilele înainte de a le folosi
+o_variabila = 5    # Convenţia este de a folosi caractere_minuscule_cu_underscore
 o_variabila #=> 5
 
 # Dacă accesăm o variabilă nefolosită declanşăm o excepţie.
 # Vezi secţiunea Control de Execuţie pentru mai multe detalii despre excepţii.
-alta_variabila # Declanşează o eroare de nume 
+alta_variabila # Declanşează o eroare de nume
 
 # "If" poate fi folosit într-o expresie.
 "yahoo!" if 3 > 2 else 2 #=> "yahoo!"
 
 # Listele sunt folosite pentru colecţii
 li = []
-# O listă poate avea valori de la început 
+# O listă poate avea valori de la început
 alta_li = [4, 5, 6]
 
-# Se adaugă valori la sfârşitul lister cu append 
+# Se adaugă valori la sfârşitul lister cu append
 li.append(1)    #li e acum [1]
 li.append(2)    #li e acum [1, 2]
 li.append(4)    #li e acum [1, 2, 4]
 li.append(3)    #li este acum [1, 2, 4, 3]
-# Se şterg de la sfarşit cu pop 
+# Se şterg de la sfarşit cu pop
 li.pop()        #=> 3 şi li e acum [1, 2, 4]
 # Să o adaugăm înapoi valoarea
 li.append(3)    # li e din nou [1, 2, 4, 3]
 
-# Putem accesa valorile individuale dintr-o listă cu operatorul index 
+# Putem accesa valorile individuale dintr-o listă cu operatorul index
 li[0] #=> 1
 # Valoarea speciala -1 pentru index accesează ultima valoare
 li[-1] #=> 3
@@ -155,8 +155,8 @@ li[-1] #=> 3
 # Dacă depaşim limitele listei declanşăm o eroare IndexError
 li[4] # Declanşează IndexError
 
-# Putem să ne uităm la intervale folosind sintaxa de "felii" 
-# În Python, intervalele sunt închise la început si deschise la sfârşit. 
+# Putem să ne uităm la intervale folosind sintaxa de "felii"
+# În Python, intervalele sunt închise la început si deschise la sfârşit.
 li[1:3] #=> [2, 4]
 # Fără început
 li[2:] #=> [4, 3]
@@ -167,40 +167,40 @@ li[:3] #=> [1, 2, 4]
 del li[2] # li e acum [1, 2, 3]
 
 # Listele pot fi adăugate
-li + alta_li #=> [1, 2, 3, 4, 5, 6] - Notă: li si alta_li nu sunt modificate! 
+li + alta_li #=> [1, 2, 3, 4, 5, 6] - Notă: li si alta_li nu sunt modificate!
 
 # Concatenăm liste cu "extend()"
 li.extend(alta_li) # Acum li este [1, 2, 3, 4, 5, 6]
 
-# Se verifică existenţa valorilor in lista cu "in" 
+# Se verifică existenţa valorilor in lista cu "in"
 1 in li #=> True
 
 # Şi lungimea cu "len()"
 len(li) #=> 6
 
 
-# Tuplele sunt ca şi listele dar imutabile 
+# Tuplele sunt ca şi listele dar imutabile
 tup = (1, 2, 3)
 tup[0] #=> 1
 tup[0] = 3  # Declanşează TypeError
 
-# Pot fi folosite ca şi liste 
+# Pot fi folosite ca şi liste
 len(tup) #=> 3
 tup + (4, 5, 6) #=> (1, 2, 3, 4, 5, 6)
 tup[:2] #=> (1, 2)
 2 in tup #=> True
 
-# Tuplele pot fi despachetate 
+# Tuplele pot fi despachetate
 a, b, c = (1, 2, 3)     # a este acum 1, b este acum 2 şi c este acum 3
-# Tuplele pot fi folosite şi fără paranteze 
+# Tuplele pot fi folosite şi fără paranteze
 d, e, f = 4, 5, 6
-# Putem inversa valori foarte uşor! 
+# Putem inversa valori foarte uşor!
 e, d = d, e     # d este acum 5 şi e este acum 4
 
 
 # Dicţionarele stochează chei şi o valoare pentru fiecare cheie
 dict_gol = {}
-# Şi un dicţionar cu valori 
+# Şi un dicţionar cu valori
 dict_cu_valori = {"unu": 1, "doi": 2, "trei": 3}
 
 # Căutaţi valori cu []
@@ -208,14 +208,14 @@ dict_cu_valori["unu"] #=> 1
 
 # Obţinem lista cheilor cu "keys()"
 dict_cu_valori.keys() #=> ["trei", "doi", "unu"]
-# Notă - ordinea cheilor obţinute cu keys() nu este garantată. 
-# Puteţi obţine rezultate diferite de exemplul de aici. 
+# Notă - ordinea cheilor obţinute cu keys() nu este garantată.
+# Puteţi obţine rezultate diferite de exemplul de aici.
 
-# Obţinem valorile cu values() 
+# Obţinem valorile cu values()
 dict_cu_valori.values() #=> [3, 2, 1]
 # Notă - aceeaşi ca mai sus, aplicată asupra valorilor.
 
-# Verificăm existenţa unei valori cu "in" 
+# Verificăm existenţa unei valori cu "in"
 "unu" in dict_cu_valori #=> True
 1 in dict_cu_valori #=> False
 
@@ -226,7 +226,7 @@ dict_cu_valori["four"] # KeyError
 dict_cu_valori.get("one") #=> 1
 dict_cu_valori.get("four") #=> None
 # Metoda get poate primi ca al doilea argument o valoare care va fi returnată
-# când cheia nu este prezentă. 
+# când cheia nu este prezentă.
 dict_cu_valori.get("one", 4) #=> 1
 dict_cu_valori.get("four", 4) #=> 4
 
@@ -240,13 +240,13 @@ set_gol = set()
 # Putem crea un set cu valori
 un_set = set([1,2,2,3,4]) # un_set este acum set([1, 2, 3, 4]), amintiţi-vă ca mulţimile garantează unicatul!
 
-# În Python 2.7, {} poate fi folosit pentru un set 
+# În Python 2.7, {} poate fi folosit pentru un set
 set_cu_valori = {1, 2, 2, 3, 4} # => {1 2 3 4}
 
-# Putem adăuga valori cu add 
+# Putem adăuga valori cu add
 set_cu_valori.add(5) # set_cu_valori este acum {1, 2, 3, 4, 5}
 
-# Putem intersecta seturi 
+# Putem intersecta seturi
 alt_set = {3, 4, 5, 6}
 set_cu_valori & alt_set #=> {3, 4, 5}
 
@@ -256,7 +256,7 @@ set_cu_valori | alt_set #=> {1, 2, 3, 4, 5, 6}
 # Diferenţa între seturi se face cu -
 {1,2,3,4} - {2,3,5} #=> {1, 4}
 
-# Verificăm existenţa cu "in" 
+# Verificăm existenţa cu "in"
 2 in set_cu_valori #=> True
 10 in set_cu_valori #=> False
 
@@ -265,14 +265,14 @@ set_cu_valori | alt_set #=> {1, 2, 3, 4, 5, 6}
 ## 3. Controlul Execuţiei
 ####################################################
 
-# O variabilă 
+# O variabilă
 o_variabila = 5
 
 # Acesta este un "if". Indentarea este importanta în python!
 # Printează "o_variabila este mai mică ca 10"
 if o_variabila > 10:
     print "o_variabila e mai mare ca 10."
-elif o_variabila < 10:    # Clauza elif e opţională. 
+elif o_variabila < 10:    # Clauza elif e opţională.
     print "o_variabila este mai mică ca 10."
 else:           # Şi else e opţional.
     print "o_variabila este exact 10."
@@ -281,16 +281,16 @@ else:           # Şi else e opţional.
 """
 Buclele "for" pot fi folosite pentru a parcurge liste
 Vom afişa:
-    câinele este un mamifer 
+    câinele este un mamifer
     pisica este un mamifer
     şoarecele este un mamifer
 """
 for animal in ["câinele", "pisica", "şoarecele"]:
-    # Folosim % pentru a compune mesajul 
+    # Folosim % pentru a compune mesajul
     print "%s este un mamifer" % animal
-    
+
 """
-"range(număr)" crează o lista de numere 
+"range(număr)" crează o lista de numere
 de la zero la numărul dat
 afişează:
     0
@@ -302,7 +302,7 @@ for i in range(4):
     print i
 
 """
-While repetă pana când condiţia dată nu mai este adevărată. 
+While repetă pana când condiţia dată nu mai este adevărată.
 afişează:
     0
     1
@@ -314,30 +314,30 @@ while x < 4:
     print x
     x += 1  # Prescurtare pentru x = x + 1
 
-# Recepţionăm excepţii cu blocuri try/except 
+# Recepţionăm excepţii cu blocuri try/except
 
 # Acest cod e valid in Python > 2.6:
 try:
-    # Folosim "raise" pentru a declanşa o eroare 
+    # Folosim "raise" pentru a declanşa o eroare
     raise IndexError("Asta este o IndexError")
 except IndexError as e:
-    pass    # Pass nu face nimic. În mod normal aici ne-am ocupa de eroare. 
+    pass    # Pass nu face nimic. În mod normal aici ne-am ocupa de eroare.
 
 
 ####################################################
 ## 4. Funcţii
 ####################################################
 
-# Folosim "def" pentru a defini funcţii 
+# Folosim "def" pentru a defini funcţii
 def add(x, y):
     print "x este %s şi y este %s" % (x, y)
-    return x + y    # Funcţia poate returna valori cu "return" 
+    return x + y    # Funcţia poate returna valori cu "return"
 
-# Apelăm funcţia "add" cu parametrii 
-add(5, 6) #=> Va afişa "x este 5 şi y este 6" şi va returna 11 
+# Apelăm funcţia "add" cu parametrii
+add(5, 6) #=> Va afişa "x este 5 şi y este 6" şi va returna 11
 
-# Altă cale de a apela funcţii: cu parametrii numiţi 
-add(y=6, x=5)   # Ordinea parametrilor numiţi nu contează 
+# Altă cale de a apela funcţii: cu parametrii numiţi
+add(y=6, x=5)   # Ordinea parametrilor numiţi nu contează
 
 # Putem defini funcţii care primesc un număr variabil de parametrii nenumiţi
 # Aceşti parametrii nenumiţi se cheamă si poziţinali
@@ -351,10 +351,10 @@ varargs(1, 2, 3) #=> (1,2,3)
 def keyword_args(**kwargs):
     return kwargs
 
-# Hai să vedem cum merge 
+# Hai să vedem cum merge
 keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
 
-# Se pot combina 
+# Se pot combina
 def all_the_args(*args, **kwargs):
     print args
     print kwargs
@@ -381,14 +381,14 @@ def create_adder(x):
 add_10 = create_adder(10)
 add_10(3) #=> 13
 
-# Funcţiile pot fi anonime 
+# Funcţiile pot fi anonime
 (lambda x: x > 2)(3) #=> True
 
-# Există funcţii de ordin superior (care operează pe alte funcţii) predefinite 
+# Există funcţii de ordin superior (care operează pe alte funcţii) predefinite
 map(add_10, [1,2,3]) #=> [11, 12, 13]
 filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 
-# Putem folosi scurtături de liste pentru a simplifica munca cu map si filter 
+# Putem folosi scurtături de liste pentru a simplifica munca cu map si filter
 [add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
 
@@ -396,15 +396,15 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 ## 5. Clase
 ####################################################
 
-# Moştenim object pentru a crea o nouă clasă 
+# Moştenim object pentru a crea o nouă clasă
 class Om(object):
 
-    # Acesta este un atribut al clasei. Va fi moştenit de toate instanţele. 
+    # Acesta este un atribut al clasei. Va fi moştenit de toate instanţele.
     species = "H. sapiens"
 
-    # Constructor (mai degrabă, configurator de bază) 
+    # Constructor (mai degrabă, configurator de bază)
     def __init__(self, nume):
-        # Valoarea parametrului este stocată in atributul instanţei 
+        # Valoarea parametrului este stocată in atributul instanţei
         self.nume = nume
 
     # Aceasta este o metoda a instanţei.
@@ -413,33 +413,33 @@ class Om(object):
        return "%s: %s" % (self.nume, mesaj)
 
     # O metodă a clasei. Este partajată de toate instanţele.
-    # Va primi ca si primul argument clasa căreia îi aparţine. 
+    # Va primi ca si primul argument clasa căreia îi aparţine.
     @classmethod
     def get_species(cls):
         return cls.species
 
-    # O metoda statica nu primeste un argument automat. 
+    # O metoda statica nu primeste un argument automat.
     @staticmethod
     def exclama():
         return "*Aaaaaah*"
 
 
-# Instanţiem o clasă 
+# Instanţiem o clasă
 i = Om(nume="Ion")
 print i.spune("salut")  # afişează: "Ion: salut"
 
 j = Om("George")
 print j.spune("ciau")   # afişează George: ciau"
 
-# Apelăm metoda clasei 
+# Apelăm metoda clasei
 i.get_species() #=> "H. sapiens"
 
-# Modificăm atributul partajat 
+# Modificăm atributul partajat
 Om.species = "H. neanderthalensis"
 i.get_species() #=> "H. neanderthalensis"
 j.get_species() #=> "H. neanderthalensis"
 
-# Apelăm metoda statică 
+# Apelăm metoda statică
 Om.exclama() #=> "*Aaaaaah*"
 
 
@@ -447,11 +447,11 @@ Om.exclama() #=> "*Aaaaaah*"
 ## 6. Module
 ####################################################
 
-# Pentru a folosi un modul, trebuie importat 
+# Pentru a folosi un modul, trebuie importat
 import math
 print math.sqrt(16) #=> 4
 
-# Putem importa doar anumite funcţii dintr-un modul 
+# Putem importa doar anumite funcţii dintr-un modul
 from math import ceil, floor
 print ceil(3.7)  #=> 4.0
 print floor(3.7) #=> 3.0
@@ -460,11 +460,11 @@ print floor(3.7) #=> 3.0
 # Nu faceţi asta!
 from math import *
 
-# Numele modulelor pot fi modificate la import, de exemplu pentru a le scurta 
+# Numele modulelor pot fi modificate la import, de exemplu pentru a le scurta
 import math as m
 math.sqrt(16) == m.sqrt(16) #=> True
 
-# Modulele python sunt pur şi simplu fişiere cu cod python. 
+# Modulele python sunt pur şi simplu fişiere cu cod python.
 # Puteţi sa creaţi modulele voastre, şi sa le importaţi.
 # Numele modulului este acelasi cu numele fişierului.
 
@@ -490,4 +490,3 @@ dir(math)
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
 * [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
-

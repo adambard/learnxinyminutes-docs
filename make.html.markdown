@@ -11,7 +11,7 @@ target to the most recent version of the source. Famously written over a
 weekend by Stuart Feldman in 1976, it is still widely used (particularly
 on Unix and Linux) despite many competitors and criticisms.
 
-There are many varieties of make in existence, however this article 
+There are many varieties of make in existence, however this article
 assumes that we are using GNU make which is the standard on Linux.
 
 ```make

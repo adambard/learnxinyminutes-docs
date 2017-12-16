@@ -11,8 +11,8 @@ lang: tr-tr
 
 Objective-C Apple tarafından, OSX ve iOS işletim sistemleri ve onların
 kendi çatıları olan Cocoa ve Cocoa Touch için kullanılan bir programlama dilidir.
-Genel açamlı, object-oriented bir yapıya sahip programlama dilidir. C 
-programlama diline Smalltalk stilinde mesajlaşma ekler.  
+Genel açamlı, object-oriented bir yapıya sahip programlama dilidir. C
+programlama diline Smalltalk stilinde mesajlaşma ekler.
 
 ```objective-c
 // Tek satır yorum // işaretleri ile başlar
@@ -21,43 +21,43 @@ programlama diline Smalltalk stilinde mesajlaşma ekler.
 Çoklu satır yorum bu şekilde görünür.
 */
 
-// #import ile Foundation başlıklarını projeye import edebiliriz. 
+// #import ile Foundation başlıklarını projeye import edebiliriz.
 #import <Foundation/Foundation.h>
 #import "MyClass.h"
 
 // Progarmınızı girişi bir main fonksiyonudur ve bir integer değer döner.
 int main (int argc, const char * argv[])
 {
-    // Programdaki bellek kullanımını kontrol etmek için autorelease bir 
-    // oluşturuyoruz. Autorelease bellekte kullanılmayan değerlerin kendi 
+    // Programdaki bellek kullanımını kontrol etmek için autorelease bir
+    // oluşturuyoruz. Autorelease bellekte kullanılmayan değerlerin kendi
     // kendini silmesi demektir.
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
- 
+
     // NSLog konsola bir satırlık bilgi yazdırmak için kullanılır.
     NSLog(@"Hello World!"); // "Hello World!" değeri yazdırılır.
- 
+
     ///////////////////////////////////////
     // Tipler & Değişkenler
     ///////////////////////////////////////
-    
+
     // Basit Tanımlamalar
     int myPrimitive1  = 1;
     long myPrimitive2 = 234554664565;
-    
+
     // Nesne Tanımlamaları
-    // strongly-typed nesne tanımlaması için karakter değişken isminin önüne 
+    // strongly-typed nesne tanımlaması için karakter değişken isminin önüne
     // * karakteri konulur.
     MyClass *myObject1 = nil;  // Strong typing
     id       myObject2 = nil;  // Weak typing
     // %@ bir nesnedir.
     // 'description' objelerin değerlerinin gösterilmesi için bir düzendir.
-    NSLog(@"%@ and %@", myObject1, [myObject2 description]); 
+    NSLog(@"%@ and %@", myObject1, [myObject2 description]);
             // "(null) and (null)" yazdırılacaktır.
-    
+
     // Karakter Dizisi (String)
     NSString *worldString = @"World";
     NSLog(@"Hello %@!", worldString); // "Hello World!" yazdırılacaktır.
-    
+
     // Karakterler
     NSNumber *theLetterZNumber = @'Z';
     char theLetterZ            = [theLetterZNumber charValue];
@@ -67,15 +67,15 @@ int main (int argc, const char * argv[])
     NSNumber *fortyTwoNumber = @42;
     int fortyTwo             = [fortyTwoNumber intValue];
     NSLog(@"%i", fortyTwo);
-    
+
     NSNumber *fortyTwoUnsignedNumber = @42U;
     unsigned int fortyTwoUnsigned    = [fortyTwoUnsignedNumber unsignedIntValue];
     NSLog(@"%u", fortyTwoUnsigned);
-    
+
     NSNumber *fortyTwoShortNumber = [NSNumber numberWithShort:42];
     short fortyTwoShort           = [fortyTwoShortNumber shortValue];
     NSLog(@"%hi", fortyTwoShort);
-    
+
     NSNumber *fortyTwoLongNumber = @42L;
     long fortyTwoLong            = [fortyTwoLongNumber longValue];
     NSLog(@"%li", fortyTwoLong);
@@ -84,7 +84,7 @@ int main (int argc, const char * argv[])
     NSNumber *piFloatNumber = @3.141592654F;
     float piFloat           = [piFloatNumber floatValue];
     NSLog(@"%f", piFloat);
-    
+
     NSNumber *piDoubleNumber = @3.1415926535;
     piDouble                 = [piDoubleNumber doubleValue];
     NSLog(@"%f", piDouble);
@@ -106,7 +106,7 @@ int main (int argc, const char * argv[])
     ///////////////////////////////////////
     // Operatörler
     ///////////////////////////////////////
-    
+
     // Operatörler C dilindeki gibi çalışır.
     // Örneğin:
     2 + 5; // => 7
@@ -151,14 +151,14 @@ int main (int argc, const char * argv[])
             NSLog(@"I print");
         } break;
     }
-    
+
     // While döngü ifadesi
     int ii = 0;
     while (ii < 4)
     {
-        NSLog(@"%d,", ii++); // ii++, ii değişkenini kullanıldıktan 
+        NSLog(@"%d,", ii++); // ii++, ii değişkenini kullanıldıktan
                              //sonra yerinde artırır.
-    } // =>        "0," 
+    } // =>        "0,"
       //           "1,"
       //           "2,"
       //           "3," yazdırılır
@@ -168,17 +168,17 @@ int main (int argc, const char * argv[])
     for (jj=0; jj < 4; jj++)
     {
         NSLog(@"%d,", jj++);
-    } // =>        "0," 
+    } // =>        "0,"
       //           "1,"
       //           "2,"
       //           "3," yazdırılır
-     
-    // Foreach ifadesi             
+
+    // Foreach ifadesi
     NSArray *values = @[@0, @1, @2, @3];
     for (NSNumber *value in values)
     {
         NSLog(@"%@,", value);
-    } // =>        "0," 
+    } // =>        "0,"
       //           "1,"
       //           "2,"
       //           "3," yazdırılır
@@ -198,24 +198,24 @@ int main (int argc, const char * argv[])
     } // =>        "Exception: Sistemde Dosya Bulunamadı"
       //           "Finally"
       // yazdırılacaktır
- 
+
     ///////////////////////////////////////
     // Objeler
     ///////////////////////////////////////
-    
-    // Bellekten bir alan ayırmak ve objeyi burada oluşturmak bir obje örneği 
+
+    // Bellekten bir alan ayırmak ve objeyi burada oluşturmak bir obje örneği
     // oluşturalım. Bir obje allocate ve init aşamalarını bitirmeden tam olarak
     // işlevsel değildir.
     MyClass *myObject = [[MyClass alloc] init];
-    
-    // Objective-C nesne yönelimli programlama modelinin temelinde objelere 
+
+    // Objective-C nesne yönelimli programlama modelinin temelinde objelere
     // mesaj gönderme vardır.
     // Objective-C'de bir method çağırılmaz, ona bir mesaj gönderilir.
     [myObject instanceMethodWithParameter:@"Steve Jobs"];
 
     // Programda kullanılan bellek temizlenir
     [pool drain];
-    
+
     // Program Sonu
     return 0;
 }
@@ -300,9 +300,9 @@ int main (int argc, const char * argv[])
 @end
 
 /*
- * Bir `protocol` herhangi bir sınıf tarafından implement edilen metodları tanımlar 
- * `Protocol`ler sınıfların kendileri değildir. Onlar basitçe diğer objelerin 
- * implementasyon için sorumlu oldukları bir arayüz (interface) tanımlarlar. 
+ * Bir `protocol` herhangi bir sınıf tarafından implement edilen metodları tanımlar
+ * `Protocol`ler sınıfların kendileri değildir. Onlar basitçe diğer objelerin
+ * implementasyon için sorumlu oldukları bir arayüz (interface) tanımlarlar.
  */
 @protocol MyProtocol
     - (void)myProtocolMethod;

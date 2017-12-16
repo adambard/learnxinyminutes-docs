@@ -106,7 +106,7 @@ undefined; usado para indicar un valor que aún no está definido.
 ; Las variables que aún no son asignadas tendrán el valor `undefined`.
 (def mi_variable 5)
 ; `def` asignará la variable al contexto global.
-; `let` asignará la variable al contexto local,  
+; `let` asignará la variable al contexto local,
 ; y tiene una sintaxis distinta.
 (let ((mi_variable 5)) (+ mi_variable 5)) ; => 10
 (+ mi_variable 5) ; = undefined + 5 => undefined

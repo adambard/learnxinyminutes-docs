@@ -3,7 +3,7 @@ language: swift
 contributors:
   - ["Grant Timmerman", "http://github.com/grant"]
   - ["Christopher Bess", "http://github.com/cbess"]
-  - ["Joey Huang", "http://github.com/kamidox"]  
+  - ["Joey Huang", "http://github.com/kamidox"]
   - ["Anthony Nguyen", "http://github.com/anthonyn60"]
 translators:
     - ["Jonas Wippermann", "http://vfuc.co"]
@@ -34,8 +34,8 @@ import UIKit
 print("Hello, world!") // println ist jetzt print
 print("Hello, world!", appendNewLine: false) // printen ohne Zeilenumbruch am Ende
 
-// Variablen (var) können nach der Initialisierung verändert werden 
-// Konstanten (let) können nach der Initialisierung NICHT verändert werden 
+// Variablen (var) können nach der Initialisierung verändert werden
+// Konstanten (let) können nach der Initialisierung NICHT verändert werden
 
 var myVariable = 42
 let øπΩ = "value" // Unicode-Variablennamen
@@ -75,7 +75,7 @@ if someOptionalString != nil {
     if someOptionalString!.hasPrefix("opt") {
         print("has the prefix")
     }
-    
+
     let empty = someOptionalString?.isEmpty
 }
 someOptionalString = nil
@@ -100,7 +100,7 @@ anyObjectVar = "Changed value to a string, not good practice, but possible."
 
 /*
     Ein Kommentar
-    
+
     /*
         Verschachtelte Kommentare sind ebenfalls unterstützt
     */
@@ -111,7 +111,7 @@ anyObjectVar = "Changed value to a string, not good practice, but possible."
 //
 
 /*
-    Array und Dictionary-Typen sind structs. 
+    Array und Dictionary-Typen sind structs.
     Deswegen implizieren `let` und `var` bei der Initialisierung auch ob sie änderbar (var) oder unveränderlich (let) sind.
 */
 
@@ -307,7 +307,7 @@ print(numbers) // [3, 6, 18]
 // Structures und Klassen haben sehr ähnliche Fähigkeiten
 struct NamesTable {
     let names = [String]()
-    
+
     // Eigendefiniertes subscript
     subscript(index: Int) -> String {
         return names[index]
@@ -339,7 +339,7 @@ public class Shape {
 
 internal class Rect: Shape {
     var sideLength: Int = 1
-    
+
     // Eigendefinierte Getter und Setter für die Property
     private var perimeter: Int {
         get {
@@ -350,33 +350,33 @@ internal class Rect: Shape {
             sideLength = newValue / 4
         }
     }
-    
+
     // "Lazy" (faules) Laden einer Property, sie bleibt uninitialisiert (nil),
     // bis sie aufgerufen wird
     lazy var subShape = Rect(sideLength: 4)
-    
+
     // Wenn kein eigendefinierter Getter/Setter notwendig ist,
     // aber trotzdem Code vor und nach dem Setzen eines Variablenwertes laufen soll,
     // kann "willSet" und "didSet" benutzt werden
     var identifier: String = "defaultID" {
-        // der `willSet` Parameter wird der Variablenname für den neuen Wert sein 
+        // der `willSet` Parameter wird der Variablenname für den neuen Wert sein
         willSet(someIdentifier) {
             print(someIdentifier)
         }
     }
-    
+
     init(sideLength: Int) {
         self.sideLength = sideLength
         // super.init muss immer aufgerufen werden, wenn eigene Properties initialisiert werden
         super.init()
     }
-    
+
     func shrink() {
         if sideLength > 0 {
             sideLength -= 1
         }
     }
-    
+
     override func getArea() -> Int {
         return sideLength * sideLength
     }
@@ -397,7 +397,7 @@ print(mySquare.sideLength) // 4
 // Casten der Instanz
 let aShape = mySquare as Shape
 
-// Vergleiche Instanzen, nicht äquivalent zum == , welches Objekte vergleicht ("equal to") 
+// Vergleiche Instanzen, nicht äquivalent zum == , welches Objekte vergleicht ("equal to")
 if mySquare === mySquare {
     print("Yep, it's mySquare")
 }
@@ -408,13 +408,13 @@ class Circle: Shape {
     override func getArea() -> Int {
         return 3 * radius * radius
     }
-    
+
     // Ein Fragezeichen nach `init` ist eine optionale Initialisierung,
     // welche nil zurückgeben kann
     init?(radius: Int) {
         self.radius = radius
         super.init()
-        
+
         if radius <= 0 {
             return nil
         }
@@ -509,7 +509,7 @@ protocol ShapeGenerator {
 
 class MyShape: Rect {
     var delegate: TransformShape?
-    
+
     func grow() {
         sideLength += 2
 
@@ -544,7 +544,7 @@ extension Int {
     var customProperty: String {
         return "This is \(self)"
     }
-    
+
     func multiplyBy(num: Int) -> Int {
         return num * self
     }

@@ -31,7 +31,7 @@ Tipe data yang didukung oleh JSON:
 ```json
 {
   "kunci": "nilai",
-  
+
   "kunci": "harus selalu diapit tanda kutip",
   "angka": 0,
   "strings": "Halø, dunia. Semua karaktor unicode diperbolehkan, terumasuk \"escaping\".",
@@ -61,7 +61,7 @@ Tipe data yang didukung oleh JSON:
       [0, 0, 0, 1]
     ]
   ],
-  
+
   "gaya alternatif": {
     "komentar": "lihat ini!"
   , "posisi tanda koma": "tak masalah. selama sebelum nilai berikutnya, valid-valid saja"

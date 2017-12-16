@@ -41,13 +41,13 @@ Mari kita lihat beberapa program brainfuck dasar.
 Program ini mencetak huruf 'A'. Mula-mula, cell #1 dinaikkan ke 6.
 Cell #1 akan digunakan untuk rekursi. Lalu, masuk ke rekursi ([) dan pindah
 ke cell #2. Cell #2 dinaikkan 10 kali, mundur ke cell #1, dan menurunkan
-cell #1. Rekursi ini berlangsung 6 kali (melakukan 6 penurunan nilai untuk 
+cell #1. Rekursi ini berlangsung 6 kali (melakukan 6 penurunan nilai untuk
 cell #1 hingga mencapai 0, di titik mana dia melewati hingga mencapai ] dan
 terus berlanjut).
 
 Pada titik ini, kita berada pada cell #1, yang memiliki nilai 0, sedangkan cell #2
-memiliki sebuah nilai 60. Kita berpindah ke cell #2, menaikkan nilai 5 kali, memunculkan 
-nilai 65, lalu cetak nilai pada cell #2. 65 adalah 'A' pada ASCII, jadi 'A' 
+memiliki sebuah nilai 60. Kita berpindah ke cell #2, menaikkan nilai 5 kali, memunculkan
+nilai 65, lalu cetak nilai pada cell #2. 65 adalah 'A' pada ASCII, jadi 'A'
 dicetak ke terminal.
 
 , [ > + < - ] > .
@@ -58,7 +58,7 @@ mundur ke cell #1, dan menurunkan nilai pada cell #1. Hal ini berlanjut sampai c
 bernilai 0, dan cell #2 menyimpan nilai lama dari cell #1. Karena kita berada di cell #1
 saat ujung rekursi, geser ke cell #2, lalu cetak nilai dalam bentuk ASCII.
 
-Perlu diingat bahwa spasi itu murni untuk memudahkan membaca. Anda bisa 
+Perlu diingat bahwa spasi itu murni untuk memudahkan membaca. Anda bisa
 menuliskannya dengan mudah seperti:
 
 ,[>+<-]>.
@@ -78,9 +78,8 @@ Untuk menyelesaikan masalah tersebut, kita juga menaikkan cell #4, dan menyalin
 ulang cell #4 ke cell #2. Maka cell #3 adalah hasilnya.
 ```
 
-Dan itulah brainfuck. Tidak terlalu sulit kan? Hanya untuk iseng-iseng, anda 
-bisa menuliskan porgram brainfuck anda sendiri, atau anda bisa menuliskan interpreter 
-brainfuck pada bahasa lain. Interpreternya tidak begitu sulit untuk diimplementasikan, 
-tapi jika anda seorang masokis, cobalah menulis sebuah interpreter brainfuck... dalam 
+Dan itulah brainfuck. Tidak terlalu sulit kan? Hanya untuk iseng-iseng, anda
+bisa menuliskan porgram brainfuck anda sendiri, atau anda bisa menuliskan interpreter
+brainfuck pada bahasa lain. Interpreternya tidak begitu sulit untuk diimplementasikan,
+tapi jika anda seorang masokis, cobalah menulis sebuah interpreter brainfuck... dalam
 brainfuck.
-

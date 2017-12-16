@@ -59,7 +59,7 @@ false
 42
 3.14159
 
-; Listen sind Sequenzen von Werten  
+; Listen sind Sequenzen von Werten
 (:bun :beef-patty 9 "yum!")
 
 ; Vektoren erlauben zufälligen Zugriff
@@ -68,7 +68,7 @@ false
 ; Maps sind assoziative Datenstrukturen, die einen Schlüssel mit einem Wert verbinden.
 {:eggs        2
  :lemon-juice 3.5
- :butter      1}                
+ :butter      1}
 
 ; Du bist nicht beschränkt ausschließlich Schlüsselwörter als Schlüssel zu verwenden.
 {[1 2 3 4] "tell the people what she wore",
@@ -89,8 +89,8 @@ false
 ; Lass mich das mit einem Clojure Beispiel erklären.
 ; Angenommen ich möchte dieses Stück EDM in einen MenuItem record umwandeln.
 (defrecord MenuItem [name rating])
-   
-; Um EDN in clojure Werte umzuwandeln, muss ich den eingebauten EDN Leser 
+
+; Um EDN in clojure Werte umzuwandeln, muss ich den eingebauten EDN Leser
 ; edn/read-string verwenden
 
 (edn/read-string "{:eggs 2 :butter 1 :flour 5}")

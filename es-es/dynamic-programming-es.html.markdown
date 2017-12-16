@@ -5,14 +5,14 @@ contributors:
     - ["Akashdeep Goel", "http://github.com/akashdeepgoel"]
 translators:
     - ["Gino Amaury", "https://github.com/ginoamaury"]
-lang: es-es 
+lang: es-es
 ---
 
 # Programación Dinámica
 
 ## Introducción
 
-La programación dinámica es una técnica poderosa usada para resolver una clase particular de problemas como veremos más adelante. 
+La programación dinámica es una técnica poderosa usada para resolver una clase particular de problemas como veremos más adelante.
 La idea es muy simple: si has solucionado un problema con la entrada dada, entonces, guardaremos el resultado para una futura referencia, con el fin de evitar la solución del mismo problema de nuevo.
 
 Recuerda siempre:

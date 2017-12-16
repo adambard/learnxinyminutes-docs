@@ -9,14 +9,14 @@ lang: pt-br
 ---
 
 Como todas as Lisps, a inerente [homoiconicity](https://en.wikipedia.org/wiki/Homoiconic)
-do Clojure lhe dá acesso a toda a extensão da linguagem 
-para escrever rotinas de geração de código chamados "macros". Macros fornecem uma poderosa forma de adequar a linguagem 
+do Clojure lhe dá acesso a toda a extensão da linguagem
+para escrever rotinas de geração de código chamados "macros". Macros fornecem uma poderosa forma de adequar a linguagem
 às suas necessidades.
 
-Pórem Tenha cuidado. É considerado má pratica escrever uma macro quando uma função vai fazer. Use uma macro apenas 
+Pórem Tenha cuidado. É considerado má pratica escrever uma macro quando uma função vai fazer. Use uma macro apenas
 quando você precisar do controle sobre quando ou se os argumentos para um formulário será avaliado.
 
-Você vai querer estar familiarizado com Clojure. Certifique-se de entender tudo em 
+Você vai querer estar familiarizado com Clojure. Certifique-se de entender tudo em
 [Clojure em Y Minutos](/docs/clojure/).
 
 ```clojure
@@ -55,8 +55,8 @@ Você vai querer estar familiarizado com Clojure. Certifique-se de entender tudo
 
 (inc2 2) ; -> 4
 
-;; Mas se você tentar fazer isso com uma lista entre aspas simples, você vai receber um erro, por que o 
-;; argumento irá entra aspas simples também. Para contornar isso, Clojure prover uma maneira de utilizar aspas simples 
+;; Mas se você tentar fazer isso com uma lista entre aspas simples, você vai receber um erro, por que o
+;; argumento irá entra aspas simples também. Para contornar isso, Clojure prover uma maneira de utilizar aspas simples
 ;; em macros: `. Dentro `, você pode usar ~ para chegar ao escopo externo.
 (defmacro inc2-quoted [arg]
   `(+ 2 ~arg))
@@ -149,8 +149,8 @@ Você vai querer estar familiarizado com Clojure. Certifique-se de entender tudo
 Escrevendo Macros de [Clojure para o Brave e True](http://www.braveclojure.com/)
 [http://www.braveclojure.com/writing-macros/](http://www.braveclojure.com/writing-macros/)
 
-Documentos oficiais 
+Documentos oficiais
 [http://clojure.org/macros](http://clojure.org/macros)
 
-Quando utilizar macros? 
+Quando utilizar macros?
 [http://dunsmor.com/lisp/onlisp/onlisp_12.html](http://dunsmor.com/lisp/onlisp/onlisp_12.html)

@@ -44,7 +44,7 @@ namespace Learning
     public class LearnCSharp
     {
         // 基本语法 -  如果你以前用过 Java 或 C++ 的话，可以直接跳到后文「有趣的特性」
-        public static void Syntax() 
+        public static void Syntax()
         {
             // 使用 Console.WriteLine 打印信息
             Console.WriteLine("Hello World");
@@ -355,7 +355,7 @@ on a new line! ""Wow!"", the masses cried";
         //
         // 有趣的特性
         //
-        
+
         // 默认方法签名
 
         public // 可见性
@@ -367,7 +367,7 @@ on a new line! ""Wow!"", the masses cried";
             int another = 3,
             params string[] otherParams // 捕获其他参数
         )
-        { 
+        {
             return -1;
         }
 
@@ -380,8 +380,8 @@ on a new line! ""Wow!"", the masses cried";
         // TKey和TValue类由用用户调用函数时指定。
         // 以下函数模拟了Python的SetDefault
         public static TValue SetDefault<TKey, TValue>(
-            IDictionary<TKey, TValue> dictionary, 
-            TKey key, 
+            IDictionary<TKey, TValue> dictionary,
+            TKey key,
             TValue defaultItem)
         {
             TValue result;
@@ -401,13 +401,13 @@ on a new line! ""Wow!"", the masses cried";
 
         public static void OtherInterestingFeatures()
         {
-            // 可选参数  
+            // 可选参数
             MethodSignatures(3, 1, 3, "Some", "Extra", "Strings");
             MethodSignatures(3, another: 3); // 显式指定参数，忽略可选参数
 
             // 扩展方法
             int i = 3;
-            i.Print(); // 参见下面的定义 
+            i.Print(); // 参见下面的定义
 
             // 可为null的类型 对数据库交互、返回值很有用
             // 任何值类型 (i.e. 不为类) 添加后缀 ? 后会变为可为null的值
@@ -421,11 +421,11 @@ on a new line! ""Wow!"", the masses cried";
 
             // 变量类型推断 - 你可以让编译器推断变量类型:
             var magic = "编译器确定magic是一个字符串，所以仍然是类型安全的";
-            // magic = 9; // 不工作，因为magic是字符串，而不是整数。 
+            // magic = 9; // 不工作，因为magic是字符串，而不是整数。
 
             // 泛型
             //
-            var phonebook = new Dictionary<string, string>() { 
+            var phonebook = new Dictionary<string, string>() {
                 {"Sarah", "212 555 5555"} // 在电话簿中加入新条目
             };
 
@@ -440,26 +440,26 @@ on a new line! ""Wow!"", the masses cried";
 
             // 可抛弃的资源管理 - 让你很容易地处理未管理的资源
             // 大多数访问未管理资源 (文件操作符、设备上下文, etc.)的对象
-            // 都实现了IDisposable接口。 
+            // 都实现了IDisposable接口。
             // using语句会为你清理IDisposable对象。
             using (StreamWriter writer = new StreamWriter("log.txt"))
             {
                 writer.WriteLine("这里没有什么可疑的东西");
                 // 在作用域的结尾，资源会被回收
                 // （即使有异常抛出，也一样会回收）
-            } 
+            }
 
             // 并行框架
             // http://blogs.msdn.com/b/csharpfaq/archive/2010/06/01/parallel-programming-in-net-framework-4-getting-started.aspx
-            var websites = new string[] { 
-                "http://www.google.com", "http://www.reddit.com", 
+            var websites = new string[] {
+                "http://www.google.com", "http://www.reddit.com",
                 "http://www.shaunmccarthy.com"
             };
             var responses = new Dictionary<string, string>();
-            
+
             // 为每个请求新开一个线程
             // 在运行下一步前合并结果
-            Parallel.ForEach(websites, 
+            Parallel.ForEach(websites,
                 new ParallelOptions() {MaxDegreeOfParallelism = 3}, // max of 3 threads
                 website =>
             {
@@ -514,7 +514,7 @@ on a new line! ""Wow!"", the masses cried";
             // 执行被延迟了，这对于查询数据库来说很好
             var filter = db.Bikes.Where(b => b.HasTassles); // 不运行查询
             if (42 > 6) // 你可以不断地增加筛选，包括有条件的筛选，例如用于“高级搜索”功能
-                filter = filter.Where(b => b.IsBroken); // 不运行查询 
+                filter = filter.Where(b => b.IsBroken); // 不运行查询
 
             var query = filter
                 .OrderBy(b => b.Wheels)
@@ -522,9 +522,9 @@ on a new line! ""Wow!"", the masses cried";
                 .Select(b => b.Name); // 仍然不运行查询
 
             // 现在运行查询，运行查询的时候会打开一个读取器，所以你迭代的是一个副本
-            foreach (string bike in query) 
+            foreach (string bike in query)
                 Console.WriteLine(result);
-            
+
 
 
         }
@@ -598,14 +598,14 @@ on a new line! ""Wow!"", the masses cried";
         // 你无需引用对象就可以访问他们。
         // Console.WriteLine("Bicycles created: " + Bicycle.bicyclesCreated);
         static public int BicyclesCreated = 0;
-        
+
         // 只读值在运行时确定
         // 它们只能在声明或构造器内被赋值
         readonly bool _hasCardsInSpokes = false; // read-only private
 
         // 构造器是创建类的一种方式
         // 下面是一个默认的构造器
-        public Bicycle() 
+        public Bicycle()
         {
             this.Gear = 1; // 你可以使用关键词this访问对象的成员
             Cadence = 50;  // 不过你并不总是需要它
@@ -617,13 +617,13 @@ on a new line! ""Wow!"", the masses cried";
 
         // 另一个构造器的例子（包含参数）
         public Bicycle(int startCadence, int startSpeed, int startGear,
-                       string name, bool hasCardsInSpokes, BikeBrand brand) 
+                       string name, bool hasCardsInSpokes, BikeBrand brand)
             : base() // 首先调用base
         {
-            Gear = startGear; 
+            Gear = startGear;
             Cadence = startCadence;
             _speed = startSpeed;
-            Name = name; 
+            Name = name;
             _hasCardsInSpokes = hasCardsInSpokes;
             Brand = brand;
         }
@@ -660,7 +660,7 @@ on a new line! ""Wow!"", the masses cried";
             get { return _hasTassles; }
             set { _hasTassles = value; }
         }
-        
+
         // 你可以在一行之内定义自动属性
         // 这个语法会自动创建后备字段
         // 你可以给getter或setter设置访问修饰符

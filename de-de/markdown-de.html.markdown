@@ -75,7 +75,7 @@ Jetzt ist das dann Nummer drei!
 <!-- Sollte man jemals ein <br />-Tag einfügen wollen, kann man einen Absatz
 mit zwei oder mehr Leerzeichen beenden, und danach einen neuen Absatz beginnen. -->
 
-Ich höre mit zwei Leerzeichen auf (markiere mich, und du siehst es).  
+Ich höre mit zwei Leerzeichen auf (markiere mich, und du siehst es).
 
 Über mir ist wohl ein <br />!
 

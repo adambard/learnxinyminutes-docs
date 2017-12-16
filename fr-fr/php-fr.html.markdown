@@ -172,7 +172,7 @@ print('Hello World!'); // Pareil à "écho"
 // Il n'ont pas besoin de parenthèses car ils sont traités comme
 // des opérateurs unaires.
 echo 'Hello World!';
-print 'Hello World!'; 
+print 'Hello World!';
 
 $paragraph = 'paragraphe';
 

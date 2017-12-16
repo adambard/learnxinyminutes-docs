@@ -9,11 +9,11 @@ lang: it-it
 ---
 
 CoffeeScript è un piccolo linguaggio che compila direttamente nell'equivalente
-JavaScript, non c'è nessuna interpretazione a runtime. Come possibile 
-successore di Javascript, CoffeeScript fa il suo meglio per restituire 
+JavaScript, non c'è nessuna interpretazione a runtime. Come possibile
+successore di Javascript, CoffeeScript fa il suo meglio per restituire
 un codice leggibile, ben stampato e performante in ogni ambiente JavaScript.
 
-Guarda anche [il sito di CoffeeScript](http://coffeescript.org/), che ha una 
+Guarda anche [il sito di CoffeeScript](http://coffeescript.org/), che ha una
 guida completa a CoffeeScript.
 
 ```coffeescript
@@ -22,7 +22,7 @@ guida completa a CoffeeScript.
 # Quindi i commenti sono come quelli di Ruby e Python, usano il cancelletto.
 
 ###
-I blocchi di commenti sono definiti con tre cancelletti, che vengono tradotti 
+I blocchi di commenti sono definiti con tre cancelletti, che vengono tradotti
 direttamente in `/*` e `*/` nel codice JavaScript risultante.
 
 Prima di continuare devi conoscere la maggior parte

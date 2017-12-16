@@ -13,7 +13,7 @@ least the next hundred years.
 The primary Perl 6 compiler is called [Rakudo](http://rakudo.org), which runs on
 the JVM and [the MoarVM](http://moarvm.com).
 
-Meta-note : double pound signs (##) are used to indicate paragraphs, while 
+Meta-note : double pound signs (##) are used to indicate paragraphs, while
 single pound signs (#) indicate notes.
 
 `#=>` represents the output of a command.
@@ -311,7 +311,7 @@ say $age > 18 ?? "You are an adult" !! "You are under 18";
 ##  and `when` compares it using the "smart matching" (`~~`) operator.
 ##
 ## Since other Perl 6 constructs use this variable (as said before, like `for`,
-## blocks, etc), this means the powerful `when` is not only applicable along 
+## blocks, etc), this means the powerful `when` is not only applicable along
 ## with a `given`, but instead anywhere a `$_` exists.
 
 given "foo bar" {
@@ -321,7 +321,7 @@ given "foo bar" {
     say "Yay !";
   }
   when $_.chars > 50 { # smart matching anything with True is True,
-                       # i.e. (`$a ~~ True`) 
+                       # i.e. (`$a ~~ True`)
                        # so you can also put "normal" conditionals.
                        # This `when` is equivalent to this `if`:
                        #  if $_ ~~ ($_.chars > 50) {...}
@@ -394,7 +394,7 @@ if long-computation() -> $result {
 ## - "postfix": after (like `++` in `$a++`).
 ## - "infix": in between (like `*` in `4 * 3`).
 ## - "circumfix": around (like `[`-`]` in `[1, 2]`).
-## - "post-circumfix": around, after another term (like `{`-`}` in 
+## - "post-circumfix": around, after another term (like `{`-`}` in
 ##                     `%hash{'key'}`)
 
 ## The associativity and precedence list are explained below.
@@ -467,7 +467,7 @@ say @array[^10]; # you can pass arrays as subscripts and it'll return
 ## Note : when reading an infinite list, Perl 6 will "reify" the elements
 ## it needs, then keep them in memory. They won't be calculated more than once.
 ## It also will never calculate more elements that are needed.
-## Trying 
+## Trying
 
 ## An array subscript can also be a closure.
 ## It'll be called with the length as the argument
@@ -688,7 +688,7 @@ multi with-or-without-you(:$with!) { # You need make it mandatory to
 multi with-or-without-you {
   say "Definitely can't live.";
 }
-## This is very, very useful for many purposes, like `MAIN` subs (covered 
+## This is very, very useful for many purposes, like `MAIN` subs (covered
 ## later), and even the language itself is using it in several places.
 ##
 ## - `is`, for example, is actually a `multi sub` named `trait_mod:<is>`,
@@ -751,8 +751,8 @@ sub call_say_dyn {
   my $*dyn_scoped_1 = 25; # Defines $*dyn_scoped_1 only for this sub.
   $*dyn_scoped_2 = 100; # Will change the value of the file scoped variable.
   say_dyn(); #=> 25 100 $*dyn_scoped 1 and 2 will be looked for in the call.
-             # It uses the value of $*dyn_scoped_1 from inside this sub's 
-             # lexical scope even though the blocks aren't nested (they're 
+             # It uses the value of $*dyn_scoped_1 from inside this sub's
+             # lexical scope even though the blocks aren't nested (they're
              # call-nested).
 }
 say_dyn(); #=> 1 10
@@ -881,8 +881,8 @@ class Item does PrintableVal {
   ## (this means a parent class can shadow a child class's `multi print() {}`,
   ##  but it's an error if a role does)
 
-  ## NOTE: You can use a role as a class (with `is ROLE`). In this case, 
-  ##       methods will be shadowed, since the compiler will consider `ROLE` to 
+  ## NOTE: You can use a role as a class (with `is ROLE`). In this case,
+  ##       methods will be shadowed, since the compiler will consider `ROLE` to
   ##       be a class.
 }
 ```
@@ -975,7 +975,7 @@ try {
 }
 
 ## There is also another kind of exception: Control exceptions.
-## Those are "good" exceptions, which happen when you change your program's 
+## Those are "good" exceptions, which happen when you change your program's
 ## flow, using operators like `return`, `next` or `last`.
 ## You can "catch" those with `CONTROL` (not 100% working in Rakudo yet).
 ```
@@ -1086,7 +1086,7 @@ for ^5 -> $a {
 ## Phasers in Perl 6 are blocks that happen at determined points of time in your
 ## program.  They are called phasers because they mark a change in the phase
 ## of a program.  For example, when the program is compiled, a for loop runs,
-## you leave a block, or an exception gets thrown. 
+## you leave a block, or an exception gets thrown.
 ## (`CATCH` is actually a phaser!)
 ## Some of them can be used for their return values, some of them can't
 ## (those that can have a "[*]" in the beginning of their explanation text).
@@ -1131,7 +1131,7 @@ for 0..2 {
 sub {
     KEEP { say "Runs when you exit a block successfully
                 (without throwing an exception)" }
-    UNDO { say "Runs when you exit a block unsuccessfully 
+    UNDO { say "Runs when you exit a block unsuccessfully
                 (by throwing an exception)" }
 }
 
@@ -1212,7 +1212,7 @@ constant thrice = eager gather for ^3 { say take $_ }; #=> 0 1 2
 say (1, 10, (20, 10) ); #> (1 10 (20 10)) Notice how grouping is maintained
 say (1, 10, (20, 10) ).flat; #> (1 10 20 10) Now the iterable is flat
 
-## - `lazy` - Defer actual evaluation until value is fetched 
+## - `lazy` - Defer actual evaluation until value is fetched
 ## (forces lazy context)
 my @lazy-array = (1..100).lazy;
 say @lazy-array.is-lazy; #> True # Check for laziness with the `is-lazy` method.
@@ -1368,10 +1368,10 @@ say [[&add]] 1, 2, 3; #=> 6
 ## * Zip meta-operator
 ## This one is an infix meta-operator than also can be used as a "normal"
 ## operator.  It takes an optional binary function (by default, it just creates
-## a pair), and will pop one value off of each array and call its binary 
-## function on these until it runs out of elements. It returns an array with 
+## a pair), and will pop one value off of each array and call its binary
+## function on these until it runs out of elements. It returns an array with
 ## all of these new elements.
-(1, 2) Z (3, 4); # ((1, 3), (2, 4)), since by default, the function 
+(1, 2) Z (3, 4); # ((1, 3), (2, 4)), since by default, the function
                  # makes an array.
 1..3 Z+ 4..6; # (5, 7, 9), using the custom infix:<+> function
 
@@ -1418,7 +1418,7 @@ say @fib[^10]; #=> 1 1 2 3 5 8 13 21 34 55
 ```perl6
 ## I'm sure a lot of you have been waiting for this one.
 ## Well, now that you know a good deal of Perl 6 already, we can get started.
-## First off, you'll have to forget about "PCRE regexps" (perl-compatible 
+## First off, you'll have to forget about "PCRE regexps" (perl-compatible
 ## regexps).
 ##
 ## IMPORTANT: Don't skip them because you know PCRE. They're different.
@@ -1458,7 +1458,7 @@ say so 'a' ~~ / a /; #=> True #  More readable with some spaces!
 
 ## In Perl 6, you can have any alphanumeric as a literal,
 ## everything else has to be escaped, using a backslash or quotes.
-say so 'a|b' ~~ / a '|' b /; # `True`. Wouldn't mean the same if `|` wasn't 
+say so 'a|b' ~~ / a '|' b /; # `True`. Wouldn't mean the same if `|` wasn't
                              # escaped
 say so 'a|b' ~~ / a \| b /;  # `True`. Another way to escape it.
 
@@ -1467,23 +1467,23 @@ say so 'a|b' ~~ / a \| b /;  # `True`. Another way to escape it.
 say so 'a b c' ~~ / a  b  c /; #> `False`. Space is not significant here
 say so 'a b c' ~~ /:s a b c /; #> `True`. We added the modifier `:s` here.
 ## If we use only one space between strings in a regex, Perl 6 will warn us:
-say so 'a b c' ~~ / a b c /; #> 'False' #> Space is not significant here; 
+say so 'a b c' ~~ / a b c /; #> 'False' #> Space is not significant here;
 ## please use quotes or :s (:sigspace) modifier (or, to suppress this warning,
 ## omit the space, or otherwise change the spacing)
 ## To fix this and make the spaces less ambiguous,  either use at least two
 ## spaces between strings or use the `:s` adverb.
 
-## As we saw before, we can embed the `:s` inside the slash delimiters, but we 
+## As we saw before, we can embed the `:s` inside the slash delimiters, but we
 ## can also put it outside of them if we specify `m` for 'match':
 say so 'a b c' ~~ m:s/a  b  c/; #> `True`
-## By using `m` to specify 'match', we can also use delimiters other 
+## By using `m` to specify 'match', we can also use delimiters other
 ## than slashes:
 say so 'abc' ~~ m{a  b  c}; #> `True`
 
 ## Use the :i adverb to specify case insensitivity:
 say so 'ABC' ~~ m:i{a  b  c}; #> `True`
 
-## It is, however, important as for how modifiers (that you're gonna see just 
+## It is, however, important as for how modifiers (that you're gonna see just
 ## below) are applied ...
 
 ## Quantifying - `?`, `+`, `*` and `**`.
@@ -1528,7 +1528,7 @@ say 'fooa' ~~ / f <[ o a ]>+ /; #=> 'fooa'
 ## You can use ranges:
 say 'aeiou' ~~ / a <[ e..w ]> /; #=> 'ae'
 
-## Just like in normal regexes, if you want to use a special character, 
+## Just like in normal regexes, if you want to use a special character,
 ## escape it (the last one is escaping a space)
 say 'he-he !' ~~ / 'he-' <[ a..z \! \  ]> + /; #=> 'he-he !'
 
@@ -1543,7 +1543,7 @@ so 'foo' ~~ / <-[ f o ]> + /; # False
 ## ... and compose them: :
 so 'foo' ~~ / <[ a..z ] - [ f o ]> + /;   # False (any letter except f and o)
 so 'foo' ~~ / <-[ a..z ] + [ f o ]> + /;  # True (no letter except f and o)
-so 'foo!' ~~ / <-[ a..z ] + [ f o ]> + /; # True (the + doesn't replace the 
+so 'foo!' ~~ / <-[ a..z ] + [ f o ]> + /; # True (the + doesn't replace the
                                           # left part)
 ```
 
@@ -1559,14 +1559,14 @@ so 'foo012012bar' ~~ / foo [ '01' <[0..9]> ] + bar /;
 
 ## But this does not go far enough, because we can't actually get back what
 ## we matched.
-## Capture: We can actually *capture* the results of the regexp, 
+## Capture: We can actually *capture* the results of the regexp,
 ## using parentheses.
 so 'fooABCABCbar' ~~ / foo ( 'A' <[A..Z]> 'C' ) + bar /; # `True`. (using `so`
                                                          #  here, `$/` below)
 
 ## So, starting with the grouping explanations.
 ## As we said before, our `Match` object is available as `$/`:
-say $/; # Will print some weird stuff (we'll explain) (or "Nil" if 
+say $/; # Will print some weird stuff (we'll explain) (or "Nil" if
         # nothing matched).
 
 ## As we also said before, it has array indexing:
@@ -1575,7 +1575,7 @@ say $/[0]; #=> ｢ABC｣ ｢ABC｣
            # Here, we have an array of these.
 say $0; # The same as above.
 
-## Our capture is `$0` because it's the first and only one capture in the 
+## Our capture is `$0` because it's the first and only one capture in the
 ## regexp. You might be wondering why it's an array, and the answer is simple:
 ## Some capture (indexed using `$0`, `$/[0]` or a named one) will be an array
 ## IFF it can have more than one element
@@ -1583,7 +1583,7 @@ say $0; # The same as above.
 ## Let's use examples to see that:
 
 ## Note: We quoted A B C to demonstrate that the whitespace between them isn't
-##       significant. If we want the whitespace to *be* significant there, we 
+##       significant. If we want the whitespace to *be* significant there, we
 ##       can use the :sigspace modifier.
 so 'fooABCbar' ~~ / foo ( "A" "B" "C" )? bar /; # `True`
 say $/[0]; #=> ｢ABC｣
@@ -1597,13 +1597,13 @@ say $0.WHAT; #=> (Array)
              # A specific quantifier will always capture an Array,
              #  may it be a range or a specific value (even 1).
 
-## The captures are indexed per nesting. This means a group in a group will be 
+## The captures are indexed per nesting. This means a group in a group will be
 ## nested under its parent group: `$/[0][0]`, for this code:
 'hello-~-world' ~~ / ( 'hello' ( <[ \- \~ ]> + ) ) 'world' /;
 say $/[0].Str; #=> hello~
 say $/[0][0].Str; #=> ~
 
-## This stems from a very simple fact: `$/` does not contain strings, integers 
+## This stems from a very simple fact: `$/` does not contain strings, integers
 ## or arrays, it only contains match objects. These contain the `.list`, `.hash`
 ## and `.Str` methods. (but you can also just use `match<key>` for hash access
 ## and `match[idx]` for array access)
@@ -1622,12 +1622,12 @@ so 'ayc' ~~ / a [ b | y ] c /; # `True`. Obviously enough ...
 ## LTM means "Longest Token Matching". This means that the engine will always
 ## try to match as much as possible in the strng
 'foo' ~~ / fo | foo /; # `foo`, because it's longer.
-## To decide which part is the "longest", it first splits the regex in 
+## To decide which part is the "longest", it first splits the regex in
 ## two parts:
 ## The "declarative prefix" (the part that can be statically analyzed)
 ## and the procedural parts.
 ## Declarative prefixes include alternations (`|`), conjunctions (`&`),
-## sub-rule calls (not yet introduced), literals, characters classes and 
+## sub-rule calls (not yet introduced), literals, characters classes and
 ## quantifiers.
 ## The latter include everything else: back-references, code assertions,
 ## and other things that can't traditionnaly be represented by normal regexps.
@@ -1740,8 +1740,8 @@ for <well met young hero we shall meet later> {
 .say if 'B' ff 'B' for <A B C B A>; #=> B B
                                     # because the right-hand-side was tested
                                     # directly (and returned `True`).
-                                    # "B"s are printed since it matched that 
-                                    # time (it just went back to `False` 
+                                    # "B"s are printed since it matched that
+                                    # time (it just went back to `False`
                                     # right away).
 .say if 'B' fff 'B' for <A B C B A>; #=> B C B
                                     # The right-hand-side wasn't tested until
@@ -1789,11 +1789,11 @@ If you want to go further, you can:
  This information may be a bit older but there are many great examples and
  explanations.  Posts stopped at the end of 2015 when the language was declared
  stable and Perl 6.c was released.
- - Come along on `#perl6` at `irc.freenode.net`. The folks here are 
+ - Come along on `#perl6` at `irc.freenode.net`. The folks here are
  always helpful.
- - Check the [source of Perl 6's functions and 
- classes](https://github.com/rakudo/rakudo/tree/nom/src/core). Rakudo is 
+ - Check the [source of Perl 6's functions and
+ classes](https://github.com/rakudo/rakudo/tree/nom/src/core). Rakudo is
  mainly written in Perl 6 (with a lot of NQP, "Not Quite Perl", a Perl 6 subset
  easier to implement and optimize).
- - Read [the language design documents](http://design.perl6.org). They explain 
+ - Read [the language design documents](http://design.perl6.org). They explain
  P6 from an implementor point-of-view, but it's still very interesting.

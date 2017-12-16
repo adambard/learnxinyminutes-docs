@@ -14,11 +14,11 @@ XML adalah bahasa markup yang dirancang untuk menyimpan dan mengirim data. XML m
 Tidak seperti HTML, XML tidak menentukan bagaimana menampilkan atau format data, hanya membawanya.
 
 Terdapat perbedaan antara **konten** dan **markup**. Singkatnya, konten dapat berupa apapun dan markup adalah sebagai penentu.
- 
+
 ## Definisi dan Pendahuluan
- 
+
 Dokumen XML pada dasarnya disusun oleh *elemen* yang dapat memiliki *atribut* untuk menjelaskan elemen tersebut dan dapat memiliki beberapa konten tekstual atau beberapa elemen sebagai anak-nya. Setiap dokumen XML hendaknya memiliki satu elemen akar, yang menjadi induk dari semua elemen dalam dokumen XML.
- 
+
 Pengurai XML dirancang menjadi sangat ketat, dan akan berhenti melakukan penguraian terhadap dokumen yang cacat. Oleh karena itu semua dokumen XML harus mengikuti [Aturan Sintaks XML](http://www.w3schools.com/xml/xml_syntax.asp).
 
 ```xml
@@ -68,7 +68,7 @@ Pengurai XML dirancang menjadi sangat ketat, dan akan berhenti melakukan pengura
 <!-- …tidak sama dengan -->
 <anak>Teks</anak>
 ```
- 
+
 
 ## Dokumen XML
 
@@ -114,8 +114,8 @@ Pengurai XML dirancang menjadi sangat ketat, dan akan berhenti melakukan pengura
    2 - Elemen -> Itu data yang murni.
        Itulah yang parser akan mengambil dari file XML.
        Elemen muncul antara tag membuka dan menutup.-->
-      
-  
+
+
 <!-- Di bawah ini, unsur dengan dua atribut-->
 <file type="gif" id="4293">komputer.gif</file>
 

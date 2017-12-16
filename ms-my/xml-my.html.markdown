@@ -5,7 +5,7 @@ contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
 translators:
     - ["hack1m", "https://github.com/hack1m"]
-lang: ms-my   
+lang: ms-my
 ---
 
 XML adalah bahasa markup direka untuk menyimpan dan mengangkutan data.

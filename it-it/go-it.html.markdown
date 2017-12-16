@@ -37,7 +37,7 @@ Go include un'ottima libreria standard e ha una community entusiasta.
 // Main è un package speciale che identifica un eseguibile anziché una libreria.
 package main
 
-// Con import sono dichiarate tutte le librerie a cui si fa riferimento 
+// Con import sono dichiarate tutte le librerie a cui si fa riferimento
 // all'interno del file.
 import (
 	"fmt"       // Un package nella libreria standard di Go.
@@ -97,7 +97,7 @@ può includere andata a capo.` // Sempre di tipo stringa.
 
     // Inizializzare le variabili con var.
 	var u uint = 7 // Senza segno, ma la dimensione dipende dall'implementazione (come l'int)
-	var pi float32 = 22. / 7 
+	var pi float32 = 22. / 7
 
     // Sintassi per la conversione.
 	n := byte('\n') // Il tipo byte è un alias per uint8.
@@ -437,7 +437,7 @@ Osserva che puoi usare [https://play.golang.org](https://play.golang.org) come
 una [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) per scrivere
 codice all'interno del browser, senza neanche installare Go!
 
-Una lettura importante per capire Go in modo più profondo è il [codice 
+Una lettura importante per capire Go in modo più profondo è il [codice
 sorgente della libreria standard](http://golang.org/src/pkg/). Infatti è
 molto ben documentato e costituisce quanto più chiaro e conciso ci sia riguardo
 gli idiomi e le buone pratiche del Go. Inoltre, clickando sul nome di una

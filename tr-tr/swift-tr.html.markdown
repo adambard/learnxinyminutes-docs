@@ -7,7 +7,7 @@ lang: tr-tr
 ---
 
 Swift iOS ve OSX platformlarında geliştirme yapmak için Apple tarafından oluşturulan yeni bir programlama dilidir.  Objective - C ile beraber kullanılabilecek ve de hatalı kodlara karşı daha esnek bir yapı sunacak bir şekilde tasarlanmıştır. Swift 2014 yılında Apple'ın geliştirici konferansı WWDC de tanıtıldı. Xcode 6+'a dahil edilen LLVM derleyici ile geliştirildi.
- 
+
 
 Apple'ın resmi [Swift Programlama Dili](https://itunes.apple.com/us/book/swift-programming-language/id881256329) kitabı iBooks'ta yerini aldı.
 
@@ -30,7 +30,7 @@ import UIKit
 // TODO: Daha sonra yapılacak
 // FIXME: Bu kodu düzelt
 
- 
+
 //Swift 2 de, println ve print metotları print komutunda birleştirildi.
 //Print otomatik olarak yeni satır ekliyor.
 print("Merhaba dünya") // println print olarak kullanılıyor.
@@ -43,9 +43,9 @@ var degiskenim = 42
 let øπΩ = "deger" // unicode degişken adları
 let π = 3.1415926
 let convenience = "keyword" // bağlamsal değişken adı
-let isim = "ahmet"; let soyad = "un" // farklı ifadeler noktalı virgül 
+let isim = "ahmet"; let soyad = "un" // farklı ifadeler noktalı virgül
 kullanılarak ayrılabilir.
-let `class` = "keyword" // rezerve edilmiş keywordler tek tırnak içerisine 
+let `class` = "keyword" // rezerve edilmiş keywordler tek tırnak içerisine
 alınarak değişken adı olarak kullanılabilir
 let doubleOlduguBelli: Double = 70
 let intDegisken = 0007 // 7
@@ -64,19 +64,19 @@ let piYazi = "Pi = \(π), Pi 2 = \(π * 2)" // String içerisine değiken yazdı
 #endif
 print("Build degiskeni: \(buildDegiskeni)") // Build degeri: 7
 
-/*  
-    Optionals Swift dilinde bazı değerleri veya yokluğu (None) bir değişkende 
-    	tutmanıza olanak sağlar.  
-    
-    Swift'te her bir degişkeninin bir değeri olması gerektiğinden, nil değeri 
+/*
+    Optionals Swift dilinde bazı değerleri veya yokluğu (None) bir değişkende
+    	tutmanıza olanak sağlar.
+
+    Swift'te her bir degişkeninin bir değeri olması gerektiğinden, nil değeri
     	 bile Optional değer olarak saklanır.
 
     Optional<T> bir enum'dır.
 */
 var baziOptionalString: String? = "optional" // nil olabilir.
-// yukarıdakiyle aynı ama ? bir postfix (sona eklenir) operatördür. (kolay 
+// yukarıdakiyle aynı ama ? bir postfix (sona eklenir) operatördür. (kolay
 //okunabilir)
-var someOptionalString2: Optional<String> = "optional"  
+var someOptionalString2: Optional<String> = "optional"
 
 
 if baziOptionalString != nil {
@@ -84,7 +84,7 @@ if baziOptionalString != nil {
     if baziOptionalString!.hasPrefix("opt") {
         print("ön eki var")
     }
-    
+
     let bos = baziOptionalString?.isEmpty
 }
 baziOptionalString = nil
@@ -111,7 +111,7 @@ herhangiBirObject = "Değer string olarak değişti, iyi bir yöntem değil ama 
 
 /*
     Yorumlar buraya
-    
+
     /*
         İç içe yorum yazılması da mümkün
     */
@@ -122,10 +122,10 @@ herhangiBirObject = "Değer string olarak değişti, iyi bir yöntem değil ama 
 //
 
 /*
-    	Array ve Dictionary tipleri aslında structdırlar. Bu yüzden `let` ve `var` 
-    	ayrıca bu tipleri tanımlarken değişebilir(var) veya değişemez(let) 
+    	Array ve Dictionary tipleri aslında structdırlar. Bu yüzden `let` ve `var`
+    	ayrıca bu tipleri tanımlarken değişebilir(var) veya değişemez(let)
     	olduğunu 	belirtir.
-    	
+
 */
 
 // Diziler
@@ -310,7 +310,7 @@ print(sayilar) // [3, 6, 18]
 // Structurelar ve sınıflar birçok aynı özelliğe sahiptir.
 struct IsimTablosu {
     let isimler = [String]()
-    
+
     // Özelleştirilmiş dizi erişimi
     subscript(index: Int) -> String {
         return isimler[index]
@@ -341,7 +341,7 @@ public class Sekil {
 
 internal class Rect: Sekil {
     var yanUzunluk: Int = 1
-    
+
     // Özelleştirilmiş getter ve setter propertyleri
     private var cevre: Int {
         get {
@@ -352,13 +352,13 @@ internal class Rect: Sekil {
             yanUzunluk = newValue / 4
         }
     }
-    
+
     // Bir değişkene geç atama(lazy load) yapmak
     // altSekil getter cağrılana dek nil (oluşturulmamış) olarak kalır
     lazy var altSekil = Rect(yanUzunluk: 4)
-    
+
     // Eğer özelleştirilmiş getter ve setter a ihtiyacınız yoksa,
-    // ama bir değişkene get veya set yapıldıktan sonra bir işlem yapmak 
+    // ama bir değişkene get veya set yapıldıktan sonra bir işlem yapmak
     // istiyorsanız, `willSet` ve `didSet` metotlarını kullanabilirsiniz
     var identifier: String = "defaultID" {
         // `willSet` argümanı yeni değer için değişkenin adı olacaktır.
@@ -366,20 +366,20 @@ internal class Rect: Sekil {
             print(someIdentifier)
         }
     }
-    
+
     init(yanUzunluk: Int) {
         self. yanUzunluk = yanUzunluk
         // super.init i her zaman özelleştirilmiş değerleri oluşturduktan sonra
          çağırın
         super.init()
     }
-    
+
     func kisalt() {
         if yanUzunluk > 0 {
             --yanUzunluk
         }
     }
-    
+
     override func alaniGetir() -> Int {
         return yanUzunluk * yanUzunluk
     }
@@ -400,7 +400,7 @@ print(benimKarem.yanUzunluk) // 4
 // sınıf örneğini cast etme
 let birSekil = benimKarem as Sekil
 
-// örnekleri karşılaştır, objeleri karşılaştıran == (equal to) ile aynı değil  
+// örnekleri karşılaştır, objeleri karşılaştıran == (equal to) ile aynı değil
 if benimKarem === benimKarem {
     print("Evet, bu benimKarem")
 }
@@ -411,13 +411,13 @@ class Daire: Sekil {
     override func alaniGetir() -> Int {
         return 3 * yaricap * yaricap
     }
-    
+
     // Eğer init opsiyonelse (nil dönebilir) `init` den sonra soru işareti
     // son eki ekle.
     init?(yaricap: Int) {
         self.yaricap = yaricap
         super.init()
-        
+
         if yaricap <= 0 {
             return nil
         }
@@ -509,11 +509,11 @@ protocol SekilUretici {
 
 class BenimSeklim: Rect {
     var delegate: SekliDondur?
-    
+
     func buyut() {
         yanUzlunluk += 2
 
-	// Bir çalışma zamanı hatası("optional chaining") fırlatmak yerine nil 
+	// Bir çalışma zamanı hatası("optional chaining") fırlatmak yerine nil
 	//değeri görmezden gelerek nil dönmek için opsiyonel değişken, metot veya
 	// altindisten sonra soru işareti koyabilirsiniz.
         if let izinVeriyormu = self.delegate?.sekillendirilebilir?() {
@@ -544,7 +544,7 @@ extension Int {
     var customProperty: String {
         return "Bu sayı \(self)"
     }
-    
+
     func carp(num: Int) -> Int {
         return num * self
     }

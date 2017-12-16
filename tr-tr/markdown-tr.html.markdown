@@ -68,7 +68,7 @@ Bu da 3. paragrafım!
 paragrafı bitirdikten sonra 2 veya daha fazla boşluk bırakın ve yeni paragrafa
 başlayın, bu bir <br /> etiketi sayılacaktır  -->
 
-Bu yazının sonunda 2 boşluk var (bu satırı seçerek kontrol edebilirsiniz).  
+Bu yazının sonunda 2 boşluk var (bu satırı seçerek kontrol edebilirsiniz).
 
 Bir üst satırda <br /> etiketi var!
 
@@ -76,7 +76,7 @@ Bir üst satırda <br /> etiketi var!
 
 > Bu bir blok etiketi. Satırlara ayırmak için
 > her satırın başında `>` karakter yerleştirmeli veya tek satırda bütün içeriği yazabilirsiniz.
-> Satır `>` karakteri ile başladığı sürece sorun yok. 
+> Satır `>` karakteri ile başladığı sürece sorun yok.
 
 > Ayrıca alt alta da blok elementi açabilirsiniz
 >> iç içe yani
@@ -159,7 +159,7 @@ def foobar
 end
 \`\`\` <!-- burada da (\) işaretlerini kullanmayın, sadece ``` -->
 
-<!-- Yukarıdaki örnekte girinti kullanmanıza gerek yok, GitHub da 
+<!-- Yukarıdaki örnekte girinti kullanmanıza gerek yok, GitHub da
 ``` işaretinden sonra belirttiğiniz yazılım diline göre gerekli
 syntax aydınlatmaları uygulanacaktır -->
 
@@ -172,7 +172,7 @@ syntax aydınlatmaları uygulanacaktır -->
 ****************
 
 <!-- Linkler -->
-<!-- Markdown'daki en güzel şeylerden biri kolayca link oluşturmaktır. 
+<!-- Markdown'daki en güzel şeylerden biri kolayca link oluşturmaktır.
 Linkte göstermek istediğiniz yazıyı [] içerisine yerleştirin ve sonuna parantezler içerisinde ()
 gideceği adresi belirtin -->
 
@@ -194,7 +194,7 @@ gideceği adresi belirtin -->
 [foobar]: http://foobar.biz/ "okey!"
 
 <!--Başlık ayrıca tek tırnak veya parantez içinde olabilir, veya direk yazılabilir.
-Referans döküman içerisindeki herhangi bir yer olabilir ve referans IDsi 
+Referans döküman içerisindeki herhangi bir yer olabilir ve referans IDsi
 benzersiz olduğu sürece sorunsuz çalışacaktır. -->
 
 <!-- Ayrıca "dolaylı adlandırma" bulunmaktadır, "dolaylı adlandırma", linkin yazısının

@@ -337,7 +337,7 @@ body {
 
 
 /*Placeholder Selectors
-==============================*/  
+==============================*/
 
 
 /* Os espaços reservados são úteis na criação de uma declaração CSS para ampliar. Se você

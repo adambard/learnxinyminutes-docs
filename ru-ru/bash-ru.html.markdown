@@ -184,7 +184,7 @@ echo "Здесь $(ls | wc -l) элементов."
 echo "Здесь `ls | wc -l` элементов."
 
 # В Bash есть структура case, которая похожа на switch в Java и C++:
-case "$VARIABLE" in 
+case "$VARIABLE" in
     # Перечислите шаблоны для условий, которые хотите отловить
     0) echo "Тут ноль.";;
     1) echo "Тут один.";;
@@ -264,7 +264,7 @@ grep "^foo.*bar$" file.txt
 # передайте опцию -c чтобы вывести число строк, в которых совпал шаблон
 grep -c "^foo.*bar$" file.txt
 # чтобы искать по строке, а не шаблону regex, используйте fgrep (или grep -F)
-fgrep "^foo.*bar$" file.txt 
+fgrep "^foo.*bar$" file.txt
 
 # Читайте встроенную документацию оболочки Bash командой 'help':
 help

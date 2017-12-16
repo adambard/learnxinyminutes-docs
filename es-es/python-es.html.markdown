@@ -502,7 +502,7 @@ def duplicar_numeros(iterable):
 
 # Un generador crea valores sobre la marcha
 # En vez de generar y devolver todos los valores de una vez, crea un valor
-# en cada iteración. En este ejemplo los valores mayores que 15 no serán 
+# en cada iteración. En este ejemplo los valores mayores que 15 no serán
 # procesados en duplicar_numeros.
 # Nota: xrange es un generador que hace lo mismo que range.
 # Crear una lista de 1 a 900000000 lleva mucho tiempo y ocupa mucho espacio.
@@ -559,4 +559,3 @@ print hablar(por_favor=True)  # ¿Me puedes comprar una cerveza? ¡Por favor! So
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
 * [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
-

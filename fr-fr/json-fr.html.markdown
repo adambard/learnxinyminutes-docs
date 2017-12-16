@@ -20,7 +20,7 @@ tout sera du JSON 100% valide. Heureusement, il s'explique par lui-même.
 ```json
 {
   "Clé": "valeur",
-  
+
   "Clés": "devront toujours être entourées par des guillemets",
   "nombres": 0,
   "chaînes de caractères": "Hellø, wørld. Tous les caractères Unicode sont autorisés, accompagné d'un \"caractère d'échappement\".",
@@ -50,7 +50,7 @@ tout sera du JSON 100% valide. Heureusement, il s'explique par lui-même.
       [0, 0, 0, 1]
     ]
   ],
-  
+
   "style alternatif": {
     "commentaire": "regarde ça !"
   , "position de la virgule": "n'a pas d'importance - aussi longtemps qu'elle est avant la valeur, alors elle est valide."

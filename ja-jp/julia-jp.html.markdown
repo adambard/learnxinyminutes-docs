@@ -19,7 +19,7 @@ Julia は科学技術計算向けに作られた、同図像性を持った(homo
 # ハッシュ（シャープ）記号から改行までは単一行コメントとなります。
 #= 複数行コメントは、
    '#=' と '=#' とで囲むことで行えます。
-   #= 
+   #=
    入れ子構造にすることもできます。
    =#
 =#
@@ -682,7 +682,7 @@ square_area(l) = l * l      # square_area (generic function with 1 method)
 square_area(5) #25
 
 # square_area に整数を渡すと何が起きる？
-code_native(square_area, (Int32,))  
+code_native(square_area, (Int32,))
 	#	    .section    __TEXT,__text,regular,pure_instructions
 	#	Filename: none
 	#	Source line: 1              # Prologue
@@ -715,7 +715,7 @@ code_native(square_area, (Float64,))
 	#	    vmulsd  XMM0, XMM0, XMM0 # 倍精度浮動小数点数演算 (AVX)
 	#	    pop RBP
 	#	    ret
-	#	
+	#
 
 # Julia では、浮動小数点数と整数との演算では
 # 自動的に浮動小数点数用の命令が生成されることに注意してください。
@@ -750,7 +750,7 @@ code_native(circle_area, (Float64,))
 	#	    vmulsd  XMM0, XMM1, XMM0
 	#	    pop RBP
 	#	    ret
-	#	
+	#
 ```
 
 ## より勉強するために
@@ -759,4 +759,3 @@ code_native(circle_area, (Float64,))
 
 Julia に関して助けが必要ならば、[メーリングリスト](https://groups.google.com/forum/#!forum/julia-users) が役に立ちます。
 みんな非常に親密に教えてくれます。
-

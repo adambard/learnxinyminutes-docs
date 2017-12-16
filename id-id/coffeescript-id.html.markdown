@@ -10,7 +10,7 @@ lang: id-id
 ---
 
 CoffeeScript adalah bahasa sederhana yang diterjemahkan saat kompilasi ke dalam JavaScript,
-dan bukan diterjemahkan pada saat *runtime*.  
+dan bukan diterjemahkan pada saat *runtime*.
 CoffeeScript mencoba agar kode JavaScript yang dihasilkan tetap mudah dibaca
 dan kompatibel dengan semua *runtime* JavaScript.
 

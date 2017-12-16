@@ -10,9 +10,9 @@ filename: learntcl-es.tcl
 
 Tcl fue creado por [John Ousterhout](https://wiki.tcl.tk/John%20Ousterout) como
 un lenguaje reutilizable de scripting para herramientas de diseño de circuitos
-de las que él era autor.  En 1997 recibió el 
-[ACM Software System Award](https://en.wikipedia.org/wiki/ACM_Software_System_Award) 
-por Tcl.   Tcl puede ser utilizado tanto como lenguaje de scripting embebido, 
+de las que él era autor.  En 1997 recibió el
+[ACM Software System Award](https://en.wikipedia.org/wiki/ACM_Software_System_Award)
+por Tcl.   Tcl puede ser utilizado tanto como lenguaje de scripting embebido,
 como lenguaje de programación general.  Puede ser utilizado también como una
 biblioteca portable de C, incluso en casos donde no se requieren capacidades
 de scripting, ya que provee de estructuras de datos tales como cadenas (*string*)
@@ -71,7 +71,7 @@ incluso más simple que la de lisp, simplemente se quita de en medio.
 
 # Las llaves son un mecanismo de entrecomillado, no de sintaxis para la construcción
 # de bloques de código o listas.  Tcl no tiene ninguna de ellas.  Las llaves se
-# usan para escapar caracteres especiales, lo que las hace apropiadas para 
+# usan para escapar caracteres especiales, lo que las hace apropiadas para
 # entrecomillar cuerpos de procedimientos y cadenas que deberían ser interpretadas
 # como listas.
 
@@ -118,7 +118,7 @@ set action pu
 
 # los siguientes tres comandos son equivalentes:
 puts $greeting
-${action}ts $greeting 
+${action}ts $greeting
 [set action]ts $greeting
 
 
@@ -453,7 +453,7 @@ try {
 
 set replacement {Archibald Sorbisol}
 set command {set name $replacement}
-set command [subst $command] 
+set command [subst $command]
 try {
     eval $command ;# El mismo error que antes:  demasiados argumentos a "set" en \
         {set name Archibald Sorbisol}
@@ -540,15 +540,15 @@ proc countdown count {
 }
 coroutine countdown1 countdown 3
 coroutine countdown2 countdown 5
-puts [countdown1] ;# -> 2 
-puts [countdown2] ;# -> 4 
-puts [countdown1] ;# -> 1 
-puts [countdown1] ;# -> 0 
+puts [countdown1] ;# -> 2
+puts [countdown2] ;# -> 4
+puts [countdown1] ;# -> 1
+puts [countdown1] ;# -> 0
 catch {
     puts [coundown1] ;# -> invalid command name "countdown1"
-} cres copts 
+} cres copts
 puts $cres
-puts [countdown2] ;# -> 3 
+puts [countdown2] ;# -> 3
 
 
 # Pilas de corrutinas pueden cederse el control entre sí:

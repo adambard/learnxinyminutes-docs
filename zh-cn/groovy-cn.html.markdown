@@ -419,4 +419,3 @@ assert sum(2,5) == 7
 [3] http://mrhaki.blogspot.mx/2011/05/groovy-goodness-cache-closure-results.html
 
 
-

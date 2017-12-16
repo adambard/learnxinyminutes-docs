@@ -420,7 +420,7 @@ class Hochrad extends Fahrrad {
 public interface Essbar {
 	public void essen(); // Jede Klasse, die dieses Interface implementiert
                        // muss auch diese Methode implementieren.
-}                       
+}
 
 
 public interface Verdaulich {

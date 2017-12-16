@@ -14,10 +14,10 @@ Module Module1
 module Module1
 
     Sub Main ()
-        ' Uma visão geral de console de aplicativos do Visual Basic antes de 
+        ' Uma visão geral de console de aplicativos do Visual Basic antes de
         ' mergulharmos mais profundamente na linguagem.
         ' Aspas simples começam comentários.
-        ' Para navegar neste tutorial dentro do compilador do Visual Basic, 
+        ' Para navegar neste tutorial dentro do compilador do Visual Basic,
         ' eu criei um sistema de navegação.
         ' Este sistema de navegação vai ser explicado conforme avançarmos no
         ' tutorial, e você vai entender o que isso significa.

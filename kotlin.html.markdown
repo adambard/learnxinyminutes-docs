@@ -65,7 +65,7 @@ fun helloWorld(val name : String) {
     A template expression starts with a dollar sign ($).
     */
     val fooTemplateString = "$fooString has ${fooString.length} characters"
-    println(fooTemplateString) // => My String Is Here! has 18 characters 
+    println(fooTemplateString) // => My String Is Here! has 18 characters
 
     /*
     For a variable to hold null it must be explicitly specified as nullable.
@@ -175,12 +175,12 @@ fun helloWorld(val name : String) {
     // Objects can be destructured into multiple variables.
     val (a, b, c) = fooCopy
     println("$a $b $c") // => 1 100 4
-    
+
     // destructuring in "for" loop
     for ((a, b, c) in listOf(fooData)) {
         println("$a $b $c") // => 1 100 4
     }
-    
+
     val mapData = mapOf("a" to 1, "b" to 2)
     // Map.Entry is destructurable as well
     for ((key, value) in mapData) {

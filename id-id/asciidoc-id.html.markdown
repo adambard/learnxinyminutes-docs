@@ -14,7 +14,7 @@ Kepala Dokumen
 
 Kepala Dokumen adalah opsional dan tidak dapat berisi baris kosong. Harus diimbangi konten, setidaknya satu baris kosong.
 
-Hanya Judul 
+Hanya Judul
 
 ```
 = Judul Dokumen

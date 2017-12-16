@@ -3,7 +3,7 @@ language: kotlin
 contributors:
     - ["S Webber", "https://github.com/s-webber"]
 translators:
-    - ["Xavier Sala", "https://github.com/utrescu"] 
+    - ["Xavier Sala", "https://github.com/utrescu"]
 lang: ca-es
 filename: LearnKotlin-ca.kt
 ---
@@ -55,7 +55,7 @@ fun main(args: Array<String>) {
     println(bazString)
 
     /*
-    Es poden definir strings literals envoltant-los amb les triples cometes 
+    Es poden definir strings literals envoltant-los amb les triples cometes
     (""").
     Dins hi poden haver tant salts de línies com d'altres caràcters.
     */

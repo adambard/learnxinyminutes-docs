@@ -5,7 +5,7 @@ contributors:
     - ["isomorphismes", "http://twitter.com/isomorphisms"]
 translators:
     - ["David Hsieh", "http://github.com/deivuh"]
-lang: es-es    
+lang: es-es
 filename: learnr-es.r
 ---
 
@@ -19,7 +19,7 @@ LaTeX.
 # Los comentariso inician con símbolos numéricos.
 
 # No puedes hacer comentarios de múltiples líneas
-# pero puedes agrupar múltiples comentarios de esta manera. 
+# pero puedes agrupar múltiples comentarios de esta manera.
 
 # En Windows puedes utilizar CTRL-ENTER para ejecutar una línea.
 # En Mac utilizas COMMAND-ENTER
@@ -30,7 +30,7 @@ LaTeX.
 #############################################################################
 
 # En esta sección, mostramos algunas cosas chileras / cool que puedes hacer en
-# R sin entender nada de programación. No te preocupes en entender nada 
+# R sin entender nada de programación. No te preocupes en entender nada
 # de lo que hace este código. Solo disfruta!
 
 data()	        # Examinar sets de datos pre-cargados
@@ -48,7 +48,7 @@ summary(rivers) # ¿Cuáles son algunas estadísticas generales?
 # Generar una gráfica tallo-y-hoja (Visualización de datos tipo histograma)
 stem(rivers)
 
-# El punto decimal son 2 dígitos a la derecha de | 
+# El punto decimal son 2 dígitos a la derecha de |
 #
 #   0 | 4
 #   2 | 011223334555566667778888899900001111223333344455555666688888999
@@ -140,7 +140,7 @@ summary(discoveries)
 # Tirar los dados varias veces
 round(runif(7, min=.5, max=6.5))
 # 1 4 6 1 4 6 4
-# Tus números será diferente de los míos, a menos que tengamos el mismo valor 
+# Tus números será diferente de los míos, a menos que tengamos el mismo valor
 # de random.seed(31337)
 
 # Dibuja de un Gaussian 9 veces
@@ -181,7 +181,7 @@ c(3,3,3,2,2,1) # 3 3 3 2 2 1
 # También puedes utilizar el notación científica
 5e4 # 50000
 6.02e23 # Número de Avogadro
-1.6e-35 # Logintud Planck 
+1.6e-35 # Logintud Planck
 # También puedes tener números infinitamente grandes o pequeños
 class(Inf)	# "numeric"
 class(-Inf)	# "numeric"
@@ -217,7 +217,7 @@ length(c("Call","me","Ishmael")) # 3
 # Puedes hacer operaciones regex en vectores de caracteres:
 substr("Fortuna multis dat nimis, nulli satis.", 9, 15) # "multis "
 gsub('u', 'ø', "Fortuna multis dat nimis, nulli satis.") # "Fortøna møltis dat nimis, nølli satis."
-# R tiene varios vectores predefinidos de caracteres 
+# R tiene varios vectores predefinidos de caracteres
 letters
 # =>
 #  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"
@@ -248,7 +248,7 @@ c('Z', 'o', 'r', 'r', 'o') == "Z" # TRUE FALSE FALSE FALSE FALSE
 
 # FACTORES
 # La clase factor es para datos de categoría
-# Los factores pueden ser ordenados (como las calificaciones de los niños) 
+# Los factores pueden ser ordenados (como las calificaciones de los niños)
 # o sin orden (como el género)
 factor(c("female", "female", "male", NA, "female"))
 #  female female male   <NA>   female
@@ -261,7 +261,7 @@ levels(factor(c("male", "male", "female", NA, "female"))) # "female" "male"
 
 length(factor("male")) # 1
 length(levels(factor("male"))) # 1
-# Los factores son comúnmente vistos en marcos de dato, y una estructura de 
+# Los factores son comúnmente vistos en marcos de dato, y una estructura de
 # datos que cubriremos después
 data(infert) # "Infertility after Spontaneous and Induced Abortion"
 levels(infert$education) # "0-5yrs"  "6-11yrs" "12+ yrs"
@@ -400,7 +400,7 @@ mat
 # [1,]    1    4
 # [2,]    2    5
 # [3,]    3    6
-# A diferencia de un vector, una clase matriz es una 'matriz', 
+# A diferencia de un vector, una clase matriz es una 'matriz',
 # sin importar qué contiene
 class(mat) # => "matrix"
 # Consulta la primera fila
@@ -475,7 +475,7 @@ class(students[,3])	# "factor"
 nrow(students)	# 6
 ncol(students)	# 3
 dim(students)	# 6 3
-# La función data.frame() convierte vectores de caracteres en vectores 
+# La función data.frame() convierte vectores de caracteres en vectores
 # de factores por defecto; deshabilita este atributo
 # stringsAsFactors = FALSE cuando vayas a crear el data.frame
 ?data.frame
@@ -486,7 +486,7 @@ students[,2]	# 3  2  2  1  0 -1
 students[,"year"]	# 3  2  2  1  0 -1
 
 # Una versión aumentada de la estructura data.frame es el data.table
-# Si estás trabajando huge o panel data, o necesitas unificar algunos 
+# Si estás trabajando huge o panel data, o necesitas unificar algunos
 # subconjuntos de datos, data.table puede ser una buena elección.
 # Aquí un tour:
 install.packages("data.table") # Descarga el paquete de CRAN
@@ -544,7 +544,7 @@ students[,sum(year),by=house]
 # 3:     R  1
 # 4:     S  0
 
-# Para eliminar una columna de un data.frame o data.table, 
+# Para eliminar una columna de un data.frame o data.table,
 # asignarle el valor NULL.
 students$houseFounderName <- NULL
 students
@@ -621,7 +621,7 @@ list1$price[4]
 
 # Las listas no son la estructura de datos más eficiente para trabajar en R;
 # a menos de que tengas una buena razón, deberías de quedarte con data.frames
-# Las listas son usualmente devueltas por funciones que realizan regresiones 
+# Las listas son usualmente devueltas por funciones que realizan regresiones
 # lineales
 
 ##################################################
@@ -704,7 +704,7 @@ pp + geom_histogram()
 ll <- as.data.table(list1)
 pp <- ggplot(ll, aes(x=time,price))
 pp + geom_point()
-# ggplot2 tiene una excelente documentación 
+# ggplot2 tiene una excelente documentación
 # (disponible en http://docs.ggplot2.org/current/)
 
 

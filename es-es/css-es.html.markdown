@@ -17,14 +17,14 @@ las páginas con contenido visual empezaron a ser más comunes.
 CSS es el lenguaje estándar que existe para separar el contenido
 (HTML) y el aspecto visual de las páginas web.
 
-Lo que CSS hace es proveer con una sintaxis que te permite apuntar a distintos 
+Lo que CSS hace es proveer con una sintaxis que te permite apuntar a distintos
 elementos HTML y asignarles diferentes propiedades visuales.
 
 CSS, como cualquier otro lenguaje, tiene múltiples versiones. Aquí nos enfocamos
 en CSS 2.0. No es la versión más reciente pero sí la más soportada y compatible.
 
-**NOTA:** Como los resultados de CSS son efectos visuales, para aprenderlo, 
-necesitarás probar todo tipo de cosas en ambientes como 
+**NOTA:** Como los resultados de CSS son efectos visuales, para aprenderlo,
+necesitarás probar todo tipo de cosas en ambientes como
 [dabblet](http://dabblet.com/). Este artículo se enfoca, principalmente, en
 la sintaxis y consejos generales.
 
@@ -77,7 +77,7 @@ div { }
 [attr~='lo'] { font-size:smaller; }
 
 /*Más importante, puedes combinar estos criterios de búsqueda entre sí.
-No debe existir ningún espacio entre estas partes porque hace que el 
+No debe existir ningún espacio entre estas partes porque hace que el
 significado cambie.*/
 div.una-clase[attr$='or'] { }
 
@@ -124,7 +124,7 @@ la página) */
    ####################*/
 
 selector {
-    
+
     /* Unidades */
     width: 50%; /* en porcentaje */
     font-size: 2em; /* dos veces el tamaño de la fuente actual */
@@ -133,7 +133,7 @@ selector {
     width: 5cm; /* en centimetros */
     width: 50mm; /* en milimetros */
     width: 5in; /* en pulgadas */
-    
+
     /* Colores */
     background-color: #F6E;  /* en hexadecimal corto */
     background-color: #F262E2; /* en hexadecimal largo */
@@ -141,14 +141,14 @@ selector {
     background-color: rgb(255, 255, 255); /* en rgb */
     background-color: rgb(10%, 20%, 50%); /* en rgb percent */
     background-color: rgba(255, 0, 0, 0.3); /* en rgb semi-transparente (con valor alfa)*/
-    
+
     /* Imagenes */
     background-image: url(/ruta-a-la-imagen/imagen.jpg);
-    
+
     /* Fuentes */
     font-family: Arial;
     font-family: "Courier New"; /* si el nombre contiene espacios, debe ir entre comillas */
-    font-family: "Courier New", Trebuchet, Arial; /* si la primera fuente no se encontró 
+    font-family: "Courier New", Trebuchet, Arial; /* si la primera fuente no se encontró
     entonces se busca la seguna, o la tercera, así recursivamente*/
 }
 
@@ -212,23 +212,23 @@ Y el siguiente HTML:
 </p>
 ```
 
-El orden respetado es el siguiente:  
+El orden respetado es el siguiente:
 Recuerda, la preferencia es por cada **property**, no para el bloque completo.
 
-* `E` tiene la preferencia más elevada gracias a la palabra `!important`.  
+* `E` tiene la preferencia más elevada gracias a la palabra `!important`.
 	Es recomendado evitar esto a menos que sea estrictamente necesario incluirlo.
 * `F` le sigue, porque es estilo incrustado directamente en el HTML.
-* `A` le sigue, porque es más específico que cualquier otra opción.  
-	más específico = más especificadores. Aquí hay tres especificadores: elemento `p` +   
+* `A` le sigue, porque es más específico que cualquier otra opción.
+	más específico = más especificadores. Aquí hay tres especificadores: elemento `p` +
 	nombre de la clase `clase1` + un atributo `attr='valor'`
-* `C` le sigue. Aunque tiene el mismo número de especificadores como `B`  
+* `C` le sigue. Aunque tiene el mismo número de especificadores como `B`
 	pero aparece después.
 * Luego va `B`
 * y al final  `D`.
 
 ## Compatibilidad
 
-La mayoría de las funcionalidades de CSS2 (y gradualmente de CSS3) son compatibles 
+La mayoría de las funcionalidades de CSS2 (y gradualmente de CSS3) son compatibles
 en todos los navegadores y dispositivos. Pero siempre es vital tener en mente la
 compatibilidad y disponibilidad del CSS que uses con respecto a los navegadores
 y dispositivos para los que desarrolles.
@@ -250,4 +250,3 @@ y dispositivos para los que desarrolles.
 * [Z-Index - The stacking context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
 * [SASS](http://sass-lang.com/) y [LESS](http://lesscss.org/) para preprocesamiento CSS.
 * [CSS-Tricks](https://css-tricks.com).
-

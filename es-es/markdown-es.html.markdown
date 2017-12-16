@@ -17,7 +17,7 @@ fácilmente a HTML (y, actualmente, otros formatos también).
 ```markdown
 <!-- Markdown está basado en HTML, así que cualquier archivo HTML es Markdown
 válido, eso significa que podemos usar elementos HTML en Markdown como, por
-ejemplo, el comentario y no serán afectados por un parseador Markdown. Aún 
+ejemplo, el comentario y no serán afectados por un parseador Markdown. Aún
 así si creas un elemento HTML en tu archivo Markdown no podrás usar sintaxis
 Markdown dentro de él. -->
 
@@ -44,7 +44,7 @@ Esto es un h2
 -------------
 
 <!-- Estilos para texto plano -->
-<!-- El texto puede ser fácilmente estilizado con italicas, negritas o tachado 
+<!-- El texto puede ser fácilmente estilizado con italicas, negritas o tachado
 usando markdown -->
 
 *Este texto está en itálicas.*
@@ -57,12 +57,12 @@ __Al igual que este texto.__
 **_Al igual que este!_**
 *__¡Y este!__*
 
-<!-- En GitHub Flavored Markdown, el cual es usado para mostrar archivos 
+<!-- En GitHub Flavored Markdown, el cual es usado para mostrar archivos
 Markdown en GitHub, también tenemos: -->
 
 ~~Este texto está tachado.~~
 
-<!-- Los párrafos son una o múltiples líneas de texto adyacentes separadas por 
+<!-- Los párrafos son una o múltiples líneas de texto adyacentes separadas por
 una o múltiples líneas en blanco-->
 
 Este es un párrafo. Estoy escribiendo un párrafo, ¿No es divertido?
@@ -75,7 +75,7 @@ Ahora estoy en el párrafo dos.
 <!-- Si en algún momento quieres insertar un break HTML <br />, puedes terminar
 un párrafo con dos o más espacios y luego empieza un párrafo nuevo-->
 
-Termino con dos espacios (selecciona esta línea completa para que los veas).  
+Termino con dos espacios (selecciona esta línea completa para que los veas).
 
 ¡Hay un <br /> arriba de mí!
 
@@ -133,7 +133,7 @@ es una buena idea -->
 4. Item cuatro
 
 <!-- Bloques de código -->
-<!-- Puedes indicar un bloque de código (usan los elementos <code>) indentando 
+<!-- Puedes indicar un bloque de código (usan los elementos <code>) indentando
 una línea con cuatro espacios o un tab-->
 
     Esto es código
@@ -167,7 +167,7 @@ con o sin espacios. -->
 
 ***
 ---
-- - - 
+- - -
 ****************
 
 <!-- Ligas -->

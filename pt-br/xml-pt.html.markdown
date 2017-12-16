@@ -10,7 +10,7 @@ lang: pt-br
 
 XML é uma linguagem de marcação projetada para armazenar e transportar dados.
 
-Ao contrário de HTML, XML não especifica como exibir ou formatar os dados, 
+Ao contrário de HTML, XML não especifica como exibir ou formatar os dados,
 basta carregá-lo.
 
 * Sintaxe XML
@@ -42,26 +42,26 @@ basta carregá-lo.
 
 <!-- Um típico arquivo XML é mostrado acima.
 	Ele começa com uma declaração, informando alguns metadados (opcional).
-	
+
 	XML usa uma estrutura de árvore. Acima, o nó raiz é "Livraria", que tem
-	três nós filhos, todos os 'Livros'. Esses nós tem mais nós filhos, 
+	três nós filhos, todos os 'Livros'. Esses nós tem mais nós filhos,
 	e assim por diante...
-	
-	Nós são criados usando tags abre/fecha, filhos são justamente os nós que 
+
+	Nós são criados usando tags abre/fecha, filhos são justamente os nós que
 	estão entre estes nós. -->
 
 
 <!-- XML traz dois tipos de dados:
 	1 - Atributos -> Isso é metadados sobre um nó.
 			Normalmente, o parser XML usa esta informação para armazenar os dados
-			corretamente. Caracteriza-se por aparecer em parênteses dentro da tag 
+			corretamente. Caracteriza-se por aparecer em parênteses dentro da tag
 			de abertura.
 	2 - Elementos -> É dados puros.
-			Isso é o que o analisador irá recuperar a partir do arquivo XML. 
-			Elementos aparecem entre as tags de abertura e fechamento, 
+			Isso é o que o analisador irá recuperar a partir do arquivo XML.
+			Elementos aparecem entre as tags de abertura e fechamento,
 			sem parênteses. -->
-			
-	
+
+
 <!-- Abaixo, um elemento com dois atributos -->
 <arquivo type="gif" id="4293">computer.gif</arquivo>
 
@@ -71,10 +71,10 @@ basta carregá-lo.
 * Documento bem formatado x Validação
 
 Um documento XML é bem formatado se estiver sintaticamente correto.No entanto,
-é possível injetar mais restrições no documento, utilizando definições de 
+é possível injetar mais restrições no documento, utilizando definições de
 documentos, tais como DTD e XML Schema.
 
-Um documento XML que segue uma definição de documento é chamado válido, sobre 
+Um documento XML que segue uma definição de documento é chamado válido, sobre
 esse documento.
 
 Com esta ferramenta, você pode verificar os dados XML fora da lógica da aplicação.
@@ -106,8 +106,8 @@ com a adição de definição DTD.-->
 
 
 <!-- O DTD começa com uma declaração.
-	Na sequência, o nó raiz é declarado, o que requer uma ou mais crianças nós 
-	'Livro'. Cada 'Livro' deve conter exatamente um 'titulo' e um 'preco' e um 
+	Na sequência, o nó raiz é declarado, o que requer uma ou mais crianças nós
+	'Livro'. Cada 'Livro' deve conter exatamente um 'titulo' e um 'preco' e um
 	atributo chamado "categoria", com "Literatura", como o valor padrão.
 	Os nós "título" e "preço" contêm um conjunto de dados de caráter analisados.-->
 

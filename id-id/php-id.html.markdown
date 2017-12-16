@@ -355,7 +355,7 @@ echo "\n";
 
 $roda = ['sepeda' => 2, 'mobil' => 4];
 
-// Perulangan "foreach" dapat melakukan iterasi pada larik (array) 
+// Perulangan "foreach" dapat melakukan iterasi pada larik (array)
 foreach ($roda as $jumlah_roda) {
     echo $jumlah_roda;
 } // Menampilkan "24"
@@ -452,7 +452,7 @@ function parameter() {
 
 parameter('Halo', 'Dunia'); // Halo | 0 - Halo | 1 - Dunia |
 
-// Sejak PHP 5.6, mendapatkan jumlah variabel yang ada pada parameter 
+// Sejak PHP 5.6, mendapatkan jumlah variabel yang ada pada parameter
 function variabel($kata, ...$daftar) {
 	echo $kata . " || ";
 	foreach ($daftar as $item) {
@@ -460,7 +460,7 @@ function variabel($kata, ...$daftar) {
 	}
 }
 
-variable("Pemisah", "Halo", "Dunia") // Pemisah || Halo | Dunia | 
+variable("Pemisah", "Halo", "Dunia") // Pemisah || Halo | Dunia |
 
 /********************************
  * Penyertaan ("include")
@@ -475,12 +475,12 @@ include 'dokumen-saya.php';
 
 include_once 'dokumen-saya.php';
 // Jika dokumen-saya telah disertakan (include) oleh perintah sebelumnya, maka
-// dokumen tersebut tidak akan disertakan lagi. Ini bertujuan untuk menghindari kesalahan 
+// dokumen tersebut tidak akan disertakan lagi. Ini bertujuan untuk menghindari kesalahan
 // yang diakibatkan oleh deklarasi ganda.
 
 require 'dokumen-saya.php';
 require_once 'dokumen-saya.php';
-// Memiliki fungsi yang sama dengan "include", namun jika dokumen tidak ditemukan 
+// Memiliki fungsi yang sama dengan "include", namun jika dokumen tidak ditemukan
 // atau tidak dapat disertakan maka akan menghasilkan pesan kesalahan fatal.
 
 // Isi dari dokumen-saya.php:
@@ -765,7 +765,7 @@ Tapi ini adalah KelasAnak
 
 /**********************
 *  Magic constants
-*  
+*
 */
 
 // Mendapatkan nama dari suatu kelas. Harus dideklarasikan didalam kelas tersebut.
@@ -789,7 +789,7 @@ echo "Nomor baris perintah ini adalah " . __LINE__;
 // Mendapatkan nama method. Hanya mengembalikan sebuah nilai jika berada didalam trait atau deklarasi objek.
 echo "Nama method ini adalah " . __METHOD__;
 
-// Mendapatkan nama namespace 
+// Mendapatkan nama namespace
 echo "Namespace saat ini adalah " . __NAMESPACE__;
 
 // Mendapatkan nama dari trait. Hanya mengembalikan sebuah nilai jika berada didalam trait atau deklarasi objek.
@@ -797,7 +797,7 @@ echo "Namespace saat ini adalah " . __TRAIT__;
 
 /**********************
 *  Penanganan Kesalahan (Error)
-*  
+*
 */
 
 // Penanganan error sederhana menggunakan "try...catch"
@@ -838,7 +838,7 @@ try {
 
 Kunjungi [Dokumentasi resmi PHP](http://www.php.net/manual/) untuk referensi dan masukan komunitas.
 
-Jika anda tertarik untuk belajar lebih dalam, kunjungi 
+Jika anda tertarik untuk belajar lebih dalam, kunjungi
 [PHP The Right Way](http://www.phptherightway.com/).
 
 Jika anda terbiasa dengan manajemen paket, kunjungi

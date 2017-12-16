@@ -41,7 +41,7 @@ Wenn Lisp ein Listen-Prozessor ist, dann ist TCl ein Zeichenketten-Prozessor.
 Alle Werte sind Zeichenketten. Eine Liste ist ein Zeichenketten-Format. Eine
 Prozedur-Definition ist ein Zeichenketten-Format. Um leistungsfähig zu sein,
 werden Tcl-intern diese Zeichenketten in Strukutierter-Form gepuffert. Ein
-Beispiel: Der "list" Befehl arbeitet mit diesen internen gepufferten 
+Beispiel: Der "list" Befehl arbeitet mit diesen internen gepufferten
 Repräsentationen. Tcl kümmert sich selbständig darum die String-Repräsentationen
 zu aktualisieren, falls dies im Skript benötigt werden sollten. Das Kopieren-
 beim-Schreiben-Design von Tcl erlaubt es Skript-Authoren mit großen Daten-
@@ -65,12 +65,12 @@ Tcl steht dir einfach nicht im Weg.
 #! /bin/env tclsh
 
 ################################################################################
-## 1. Richtlinien 
+## 1. Richtlinien
 ################################################################################
 
 # Tcl ist nicht Bash oder C! Das muss gesagt werden, denn standard Shell-Quoting
 # funktioniert fast mit Tcl. Daher glauben viele sie können diese Syntax für
-# Tcl übernehmen. Am Beginn funktioniert das meist, führt aber schnell zu 
+# Tcl übernehmen. Am Beginn funktioniert das meist, führt aber schnell zu
 # Frustrationen wenn die Skripte komplexer werden.
 
 # Eckige-Klammern sind nur Quoting-Mechanismen, keine Code-Block-Konstruktoren
@@ -79,7 +79,7 @@ Tcl steht dir einfach nicht im Weg.
 # und in Zeichenketten die als Listen formattiert sind.
 
 ################################################################################
-## 2. Syntax 
+## 2. Syntax
 ################################################################################
 
 # Jede Zeile ist ein Befehl. Das erste Wort ist der Name des Befehls, jedes
@@ -89,13 +89,13 @@ Tcl steht dir einfach nicht im Weg.
 # Selbst wenn Anführungs-Zeichen verwendet werden, denn sie sind ja keine
 # String-Konstruktoren, sondern nur Escape-Zeichen.
 
-set greeting1 Sal 
+set greeting1 Sal
 set greeting2 ut
 set greeting3 ations
 
 
 # Strichpunkte begrenzen auch Befehle
-set greeting1 Sal; set greeting2 ut; set greeting3 ations 
+set greeting1 Sal; set greeting2 ut; set greeting3 ations
 
 
 # Das Dollar-Zeichen zeigt eine Variablen-Substitution an.
@@ -133,7 +133,7 @@ puts lots\nof\n\n\n\n\n\nnewlines
 set somevar {
     Das ist ein literales $ Zeichen, diese geschweifte Klammer \} wird nicht
     als Ende interpretiert.
-} 
+}
 
 
 # Bei einem Wort das in doppelten Anführungszeichen steht verlieren Leerzeichen
@@ -186,7 +186,7 @@ set greeting "Hello $people::person1::name"
 
 ```tcl
 ################################################################################
-## 3. Einige Notizen 
+## 3. Einige Notizen
 ################################################################################
 
 # Jede weitere Funktion ist über Befehle implementiert. Von nun an kommt keine
@@ -219,7 +219,7 @@ set people::person1::name Neo
 
 
 ################################################################################
-## 4. Befehle 
+## 4. Befehle
 ################################################################################
 
 # Berechnungen werde mit dem "expr" Befehl durchgeführt.
@@ -244,7 +244,7 @@ set c [expr {$a + [set b]}]
 set c [expr {pow($a,$b)}]
 
 
-# Mathematische Operatoren sind als Befehle auch im Namensraum 
+# Mathematische Operatoren sind als Befehle auch im Namensraum
 # ::tcl::mathop verfügbar.
 ::tcl::mathop::+ 5 3
 
@@ -310,13 +310,13 @@ while {$i < 10} {
 
 # Eine Liste ist eine speziell formatierte Zeichenkette. Im einfachsten Fall
 # genügen Leerzeichen als Trennzeichen zwischen den einzelnen Werten.
-set amounts 10\ 33\ 18 
+set amounts 10\ 33\ 18
 set amount [lindex $amounts 1]
 
 
 # Geschwungene Klammern und Backslashes können verwendet werden um komplexe
 # Werte in einer Liste zu formatieren. Eine Liste sieht aus wie ein Skript,
-# allerdings verlieren verlieren Zeilenumbrüche und Doppelüunkte ihre 
+# allerdings verlieren verlieren Zeilenumbrüche und Doppelüunkte ihre
 # besondere Bedeutung. Diese Funktionalität macht Tcl homoikonisch. Die
 # folgende Liste enhtält drei Elemente.
 set values {
@@ -375,7 +375,7 @@ eval $command ;# Hier passiert eine Fehler, denn der "set" Befehl hat nun zu \
 # Dieser Fehler kann auch leicht beim "subst" Befehl passieren.
 set replacement {Archibald Sorbisol}
 set command {set name $replacement}
-set command [subst $command] 
+set command [subst $command]
 eval $command ;# The same error as before: too many arguments to "set" in \
     {set name Archibald Sorbisol}
 
@@ -384,7 +384,7 @@ eval $command ;# The same error as before: too many arguments to "set" in \
 # Befehl zu formatieren.
 set replacement [list {Archibald Sorbisol}]
 set command {set name $replacement}
-set command [subst $command] 
+set command [subst $command]
 eval $command
 
 
@@ -448,7 +448,7 @@ proc countdown {} {
 	#send something back to the initial "coroutine" command
 	yield
 
-	set count 3 
+	set count 3
 	while {$count > 1} {
 		yield [incr count -1]
 	}
@@ -456,12 +456,12 @@ proc countdown {} {
 }
 coroutine countdown1 countdown
 coroutine countdown2 countdown
-puts [countdown 1] ;# -> 2 
-puts [countdown 2] ;# -> 2 
-puts [countdown 1] ;# -> 1 
-puts [countdown 1] ;# -> 0 
+puts [countdown 1] ;# -> 2
+puts [countdown 2] ;# -> 2
+puts [countdown 1] ;# -> 1
+puts [countdown 1] ;# -> 0
 puts [coundown 1] ;# -> invalid command name "countdown1"
-puts [countdown 2] ;# -> 1 
+puts [countdown 2] ;# -> 1
 
 
 ```

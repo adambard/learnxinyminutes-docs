@@ -152,26 +152,26 @@ hre = pd.read_csv(fp)
 
 hre.head()
 """
-   Ix      Dynasty        Name        Birth             Death Election 1  
-0 NaN  Carolingian   Charles I  2 April 742    28 January 814        NaN   
-1 NaN  Carolingian     Louis I          778       20 June 840        NaN   
-2 NaN  Carolingian   Lothair I          795  29 September 855        NaN   
-3 NaN  Carolingian    Louis II          825     12 August 875        NaN   
-4 NaN  Carolingian  Charles II  13 June 823     6 October 877        NaN   
+   Ix      Dynasty        Name        Birth             Death Election 1
+0 NaN  Carolingian   Charles I  2 April 742    28 January 814        NaN
+1 NaN  Carolingian     Louis I          778       20 June 840        NaN
+2 NaN  Carolingian   Lothair I          795  29 September 855        NaN
+3 NaN  Carolingian    Louis II          825     12 August 875        NaN
+4 NaN  Carolingian  Charles II  13 June 823     6 October 877        NaN
 
-  Election 2      Coronation 1   Coronation 2 Ceased to be Emperor  
-0        NaN   25 December 800            NaN       28 January 814   
-1        NaN  11 September 813  5 October 816          20 June 840   
-2        NaN       5 April 823            NaN     29 September 855   
-3        NaN        Easter 850     18 May 872        12 August 875   
-4        NaN   29 December 875            NaN        6 October 877   
+  Election 2      Coronation 1   Coronation 2 Ceased to be Emperor
+0        NaN   25 December 800            NaN       28 January 814
+1        NaN  11 September 813  5 October 816          20 June 840
+2        NaN       5 April 823            NaN     29 September 855
+3        NaN        Easter 850     18 May 872        12 August 875
+4        NaN   29 December 875            NaN        6 October 877
 
-  Descent from whom 1 Descent how 1 Descent from whom 2 Descent how 2  
-0                 NaN           NaN                 NaN           NaN  
-1           Charles I           son                 NaN           NaN  
-2             Louis I           son                 NaN           NaN  
-3           Lothair I           son                 NaN           NaN  
-4             Louis I           son                 NaN           NaN  
+  Descent from whom 1 Descent how 1 Descent from whom 2 Descent how 2
+0                 NaN           NaN                 NaN           NaN
+1           Charles I           son                 NaN           NaN
+2             Louis I           son                 NaN           NaN
+3           Lothair I           son                 NaN           NaN
+4             Louis I           son                 NaN           NaN
 """
 
 # limpiar las columnas de Nacimiento y Muerte

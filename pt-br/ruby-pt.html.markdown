@@ -391,7 +391,7 @@ module ModuloDeExemplo
   end
 end
 
-# Incluir (include) módulos conecta seus métodos às instâncias da classe 
+# Incluir (include) módulos conecta seus métodos às instâncias da classe
 # Herdar (extend) módulos conecta seus métodos à classe em si
 
 class Pessoa

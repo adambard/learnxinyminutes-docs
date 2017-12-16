@@ -646,7 +646,7 @@ void stampaMessaggio<10>() {
 }
 
 printMessage<20>();  // Stampa "impara il C++ in 20 minuti!"
-printMessage<10>();  // Stampa "Impara il C++ più velocemente in soli 10 minuti!"                                   
+printMessage<10>();  // Stampa "Impara il C++ più velocemente in soli 10 minuti!"
 
 ////////////////////////////
 // Gestione delle eccezioni

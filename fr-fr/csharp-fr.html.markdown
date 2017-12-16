@@ -42,13 +42,13 @@ using System.Threading.Tasks;
 // Définit la portée du code pour une meilleure organisation
 namespace Learning
 {
-    // Chaque fichier .cs devrait au moins contenir une classe avec le même nom 
-    // que celui du fichier. Ce n'est pas une obligation mais c'est mieux ! 
+    // Chaque fichier .cs devrait au moins contenir une classe avec le même nom
+    // que celui du fichier. Ce n'est pas une obligation mais c'est mieux !
     public class LearnCSharp
     {
         // LES BASES - si vous avez déjà de l'expérience en Java ou C++
-        // passez directement à la partie FONCTIONNALITÉS INTERÉSSANTES 
-        public static void Syntax() 
+        // passez directement à la partie FONCTIONNALITÉS INTERÉSSANTES
+        public static void Syntax()
         {
             // Utilisez Console.WriteLine pour écrire sur la sortie
             Console.WriteLine("Hello World");
@@ -90,15 +90,15 @@ namespace Learning
             // Par défaut le type d'un littéral entier est int ou uint
             // on ajoute 'L' pour spécifier la création d'un long
 
-            // Double - Réel sur 64 bits en virgule flottante (norme IEEE 754) 
+            // Double - Réel sur 64 bits en virgule flottante (norme IEEE 754)
             double fooDouble = 123.4; // Precision : 15-16 chiffres
 
-            // Float - Réel sur 32 bits en virgule flottante (norme IEEE 754) 
+            // Float - Réel sur 32 bits en virgule flottante (norme IEEE 754)
             float fooFloat = 234.5f; // Precision : 7 chiffres
             // Par défaut le type d'un littéral réel est double
             // on ajoute 'f' pour spécifier la création d'un float
 
-            // Decimal - Type de donnée numérique sur 128 bits, fournit une plus 
+            // Decimal - Type de donnée numérique sur 128 bits, fournit une plus
             // grande précision et une plage de valeurs réduite.
             // Approprié aux calculs financiers et monétaires
             decimal fooDecimal = 150.3m;
@@ -162,7 +162,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             List<int> intList = new List<int>();
             List<string> stringList = new List<string>();
             List<int> z = new List<int> { 9000, 1000, 1337 }; // intialisation
-            // Les <> indiquent un type générique 
+            // Les <> indiquent un type générique
             // Pus d'info dans la partie FONCTIONNALITÉS INTERÉSSANTES
 
             // Les éléments d'une liste ne sont pas null par défaut
@@ -258,7 +258,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
                 fooDoWhile++;
             } while (fooDoWhile < 100);
 
-            // Boucle for 
+            // Boucle for
             // Structure : for(<etat_initial>; <condition>; <pas>)
             for (int fooFor = 0; fooFor < 10; fooFor++)
             {
@@ -362,10 +362,10 @@ sur une nouvelle ligne! ""Wow!"", quel style";
         //
         // FONCTIONNALITÉS INTÉRÉSSANTES
         //
-        
+
         // SIGNATURE DE METHODE
         public // Visibilité
-        static // Permet un appel direct par la classe (sans instanciation) 
+        static // Permet un appel direct par la classe (sans instanciation)
         int // Type de retour,
         MethodSignatures(
             int maxCount, // Premier paramètre, de type int
@@ -373,7 +373,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             int another = 3,
             params string[] otherParams // Capture tous les arguments passés à la méthode
         )
-        { 
+        {
             return -1;
         }
 
@@ -383,12 +383,12 @@ sur une nouvelle ligne! ""Wow!"", quel style";
         }
 
         // TYPE GÉNÉRIQUE
-        
+
         // Les types TKey et TValue sont spécifiés par l'utilisateur lors de l'appel de la fonction
         // Cette méthode émule SetDefaut de Python
         public static TValue SetDefault<TKey, TValue>(
-            IDictionary<TKey, TValue> dictionary, 
-            TKey key, 
+            IDictionary<TKey, TValue> dictionary,
+            TKey key,
             TValue defaultItem)
         {
             TValue result;
@@ -410,7 +410,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
         {
             // PARAMÈTERES OPTIONNELS
             MethodSignatures(3, 1, 3, "Des", "Paramètres", "En plus");
-            MethodSignatures(3, another: 3); // affectation explicite, les autres 
+            MethodSignatures(3, another: 3); // affectation explicite, les autres
                                              // paramètres ont la valeur par défaut
 
             // MÉTHODE D'EXTENSION
@@ -433,7 +433,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             // magic = 9; // ne fonctionnera pas car magic est désormais une chaîne de caractères
 
             // TYPES GÉNÉRIQUES
-            var agenda = new Dictionary<string, string>() { 
+            var agenda = new Dictionary<string, string>() {
                 {"Sarah", "212 555 5555"} // Ajout d'une entrée à notre agenda
             };
 
@@ -455,19 +455,19 @@ sur une nouvelle ligne! ""Wow!"", quel style";
                 writer.WriteLine("Rien à signaler");
                 // À la fin de cette portée les ressources seront libérées.
                 // Même si une exception est levée.
-            } 
+            }
 
             // BIBLIOTHÈQUE DE TÂCHES PARALLÈLES (TPL)
             // http://msdn.microsoft.com/fr-fr/library/dd460717.aspx
-            var websites = new string[] { 
-                "http://www.google.com", "http://www.reddit.com", 
+            var websites = new string[] {
+                "http://www.google.com", "http://www.reddit.com",
                 "http://www.shaunmccarthy.com"
             };
             var responses = new Dictionary<string, string>();
-            
+
             // L'exemple suivant exécutera chaque requête dans un thread séparé,
             // et attendra la fin de chacun d'entre eux avant de continuer
-            Parallel.ForEach(websites, 
+            Parallel.ForEach(websites,
                 new ParallelOptions() {MaxDegreeOfParallelism = 3}, // maximum de 3 threads
                 website =>
             {
@@ -492,7 +492,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             Console.WriteLine(student.Introduce("Beth"));
 
             // IQUERYABLE<T> - quasiment toutes les collections implémentent cette interface
-            // ce qui permet d'utiliser des méthodes de style 'Filter' / 'Map' / 'Reduce' 
+            // ce qui permet d'utiliser des méthodes de style 'Filter' / 'Map' / 'Reduce'
             var bikes = new List<Bicycle>();
             bikes.Sort(); // Trie le tableau sur place
             bikes.Sort((b1, b2) => b1.Wheels.CompareTo(b2.Wheels)); // Trie en se basant sur la propriété Wheels
@@ -506,7 +506,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
 
             // Creation d'une liste d'objet anonymes basés sur des paramètres de la classe Bike
             var bikeSummaries = bikes.Select(b=>new { Name = b.Name, IsAwesome = !b.IsBroken && b.HasTassles });
-            // Le compilateur peut inférer le type de ces objets anonymes, permettant à certains IDE d'effectuer 
+            // Le compilateur peut inférer le type de ces objets anonymes, permettant à certains IDE d'effectuer
             // des autos-complétion.
             foreach (var bikeSummary in bikeSummaries.Where(b => b.IsAwesome))
                 Console.WriteLine(bikeSummary.Name);
@@ -516,7 +516,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
             // C'est ici que les choses se compliquent - un mélange de LINQ et de TPL
             var threeWheelers = bikes.AsParallel().Where(b => b.Wheels == 3).Select(b => b.Name);
             // La ligne précédente s'exécute en parallèle ! Des threads seront gérés automatiquement
-            // et les données y seront réparties. Idéal sur de grosses données (et si votre 
+            // et les données y seront réparties. Idéal sur de grosses données (et si votre
             // machine dispose de plusieurs coeurs)
 
 
@@ -535,9 +535,9 @@ sur une nouvelle ligne! ""Wow!"", quel style";
                 .Select(b => b.Name); // toujours pas de requête exécutée
 
             // Maintenant la requête est exécutée, mais retourne des données uniquement au fil de l'itération
-            foreach (string bike in query) 
+            foreach (string bike in query)
                 Console.WriteLine(result);
-            
+
         }
 
     } // Fin de la classe LearnCSharp
@@ -620,7 +620,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
 
         // Les constructeurs sont un moyen de créer des objets
         // Voici un constructeur par défaut (pas d'arguments)
-        public Bicycle() 
+        public Bicycle()
         {
             this.Gear = 1; // accès aux membres de la classe via le mot clé this
             Cadence = 50;  // qui est souvent implicite
@@ -632,13 +632,13 @@ sur une nouvelle ligne! ""Wow!"", quel style";
 
         // Voici un constructeur spécifique (qui prend des arguments)
         public Bicycle(int startCadence, int startSpeed, int startGear,
-                       string name, bool hasCardsInSpokes, BikeBrand brand) 
+                       string name, bool hasCardsInSpokes, BikeBrand brand)
             : base() // possibilité d'appeler le constructeur de la classe mère (ici Object)
         {
-            Gear = startGear; 
+            Gear = startGear;
             Cadence = startCadence;
             _speed = startSpeed;
-            Name = name; 
+            Name = name;
             _hasCardsInSpokes = hasCardsInSpokes;
             Brand = brand;
         }
@@ -706,7 +706,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
         {
             // À l'intérieur d'une méthode statique on ne peut que référencer des membres statiques !
             return BicyclesCreated > 9000;
-        } // Si votre classe n'a que des membres statiques, marquez la comme statique 
+        } // Si votre classe n'a que des membres statiques, marquez la comme statique
 
     } // fin de la classe Bicycle
 
@@ -748,7 +748,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
 
     interface IBreakable
     {
-        bool Broken { get; } // Les interfaces peuvent contenir des propriétés, 
+        bool Broken { get; } // Les interfaces peuvent contenir des propriétés,
                              // des méthodes et des évènements
     }
 
@@ -773,7 +773,7 @@ sur une nouvelle ligne! ""Wow!"", quel style";
 
     /// <summary>
     /// Utilisé pour illustrer la connexion à une base donnée dans l'exemple LinqToSql
-    /// L'approche code first d'EntityFramework est très pratique (un peu comme ActiveRecord de Ruby) 
+    /// L'approche code first d'EntityFramework est très pratique (un peu comme ActiveRecord de Ruby)
     /// http://msdn.microsoft.com/fr-fr/data/jj193542.aspx
     /// </summary>
     public class BikeRespository : DbSet

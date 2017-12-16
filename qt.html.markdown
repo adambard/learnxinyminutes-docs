@@ -5,7 +5,7 @@ language: c++
 filename: learnqt.cpp
 contributors:
     - ["Aleksey Kholovchuk", "https://github.com/vortexxx192"]
-    
+
 ---
 
 **Qt** is a widely-known framework for developing cross-platform software that can be run on various software and hardware platforms with little or no change in the code, while having the power and speed of native applications. Though **Qt** was originally written in *C++*, there are its ports to other languages: *[PyQt](https://learnxinyminutes.com/docs/pyqt/)*, *QtRuby*, *PHP-Qt*, etc.
@@ -42,10 +42,10 @@ GUI-related part of **Qt** is all about *widgets* and *connections* between them
 /*
  * Let's create a label and a button.
  * A label should appear when a button is pressed.
- * 
+ *
  * Qt code is speaking for itself.
  */
- 
+
 #include <QApplication>
 #include <QDialog>
 #include <QVBoxLayout>
@@ -57,10 +57,10 @@ int main(int argc, char *argv[]) {
 
     QDialog dialogWindow;
     dialogWindow.show();
-    
-    // add vertical layout 
+
+    // add vertical layout
     QVBoxLayout layout;
-    dialogWindow.setLayout(&layout);  
+    dialogWindow.setLayout(&layout);
 
     QLabel textLabel("Thanks for pressing that button");
     layout.addWidget(&textLabel);
@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
 
     QPushButton button("Press me");
     layout.addWidget(&button);
-    
+
     // show hidden label when the button is pressed
     QObject::connect(&button, &QPushButton::pressed,
                      &textLabel, &QLabel::show);

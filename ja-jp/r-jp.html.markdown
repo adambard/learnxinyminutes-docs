@@ -48,8 +48,8 @@ head(rivers)        # データの先頭部分です
 length(rivers)        # 何本の川がデータにある?
 # 141
 summary(rivers) # 統計的に要約するとどうなる?
-#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-#  135.0   310.0   425.0   591.2   680.0  3710.0 
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+#  135.0   310.0   425.0   591.2   680.0  3710.0
 
 
 # 茎葉図（ヒストグラムに似た図）を描く
@@ -68,14 +68,14 @@ stem(rivers)
 #  14 | 56
 #  16 | 7
 #  18 | 9
-#  20 | 
+#  20 |
 #  22 | 25
 #  24 | 3
-#  26 | 
-#  28 | 
-#  30 | 
-#  32 | 
-#  34 | 
+#  26 |
+#  28 |
+#  30 |
+#  32 |
+#  34 |
 #  36 | 1
 
 
@@ -86,7 +86,7 @@ stem(log(rivers)) # このデータは、正規分布でも対数正規分布で
 #  The decimal point is 1 digit(s) to the left of the |
 #
 #  48 | 1
-#  50 | 
+#  50 |
 #  52 | 15578
 #  54 | 44571222466689
 #  56 | 023334677000124455789
@@ -101,7 +101,7 @@ stem(log(rivers)) # このデータは、正規分布でも対数正規分布で
 #  74 | 84
 #  76 | 56
 #  78 | 4
-#  80 | 
+#  80 |
 #  82 | 2
 
 
@@ -128,7 +128,7 @@ sort(discoveries)
 
 
 stem(discoveries, scale=2)
-# 
+#
 #  The decimal point is at the |
 #
 #   0 | 000000000
@@ -142,15 +142,15 @@ stem(discoveries, scale=2)
 #   8 | 0
 #   9 | 0
 #  10 | 0
-#  11 | 
+#  11 |
 #  12 | 0
 
 
 max(discoveries)
 # 12
 summary(discoveries)
-#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-#    0.0     2.0     3.0     3.1     4.0    12.0 
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+#    0.0     2.0     3.0     3.1     4.0    12.0
 
 
 # サイコロを振ります
@@ -270,7 +270,7 @@ factor(c("female", "female", "male", "NA", "female"))
 #  female female male   NA     female
 # Levels: female male NA
 # "levels" は、カテゴリカルデータがとりうる値を返します
-levels(factor(c("male", "male", "female", "NA", "female"))) # "female" "male"   "NA" 
+levels(factor(c("male", "male", "female", "NA", "female"))) # "female" "male"   "NA"
 # 因子ベクターの長さが1ならば、そのlevelも1です
 length(factor("male")) # 1
 length(levels(factor("male"))) # 1
@@ -284,7 +284,7 @@ levels(infert$education) # "0-5yrs"  "6-11yrs" "12+ yrs"
 class(NULL)        # NULL
 parakeet
 # =>
-# [1] "beak"     "feathers" "wings"    "eyes"    
+# [1] "beak"     "feathers" "wings"    "eyes"
 parakeet <- NULL
 parakeet
 # =>
@@ -302,7 +302,7 @@ as.numeric("Bilbo")
 # =>
 # [1] NA
 # Warning message:
-# NAs introduced by coercion 
+# NAs introduced by coercion
 
 
 # 追記: ここで紹介したのは、基本的な型だけです
@@ -461,10 +461,10 @@ mat %*% t(mat)
 mat2 <- cbind(1:4, c("dog", "cat", "bird", "dog"))
 mat2
 # =>
-#      [,1] [,2]   
-# [1,] "1"  "dog"  
-# [2,] "2"  "cat"  
-# [3,] "3"  "bird" 
+#      [,1] [,2]
+# [1,] "1"  "dog"
+# [2,] "2"  "cat"
+# [3,] "3"  "bird"
 # [4,] "4"  "dog"
 class(mat2)        # matrix
 # ここでいま1度、2次元配列内の型について注意してください!

@@ -27,7 +27,7 @@ Este tutorial funciona para hy ≥ 0.9.12
 (print "hello world")
 
 ;; Tipos de dados simples
-; Todos os tipos de dados simples são exatamente semelhantes aos seus homólogos 
+; Todos os tipos de dados simples são exatamente semelhantes aos seus homólogos
 ; em python que
 42 ; => 42
 3.14 ; => 3.14
@@ -112,7 +112,7 @@ True ; => True
 ; assoc pode definir elementos em chaves/índices
 (assoc mylist 2 10) ; faz mylist [1 2 10 4]
 (assoc mydict "c" 3) ; faz mydict {"a" 1 "b" 2 "c" 3}
-; há toda uma série de outras funções essenciais que torna o trabalho com 
+; há toda uma série de outras funções essenciais que torna o trabalho com
 ; sequências uma diversão
 
 ;; Python interop

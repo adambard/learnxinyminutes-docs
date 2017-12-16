@@ -11,7 +11,7 @@ lang: it-it
 ---
 
 Java è un linguaggio di programmazione orientato ad oggetti,
-concorrente, basato su classi e adatto a svariati scopi. 
+concorrente, basato su classi e adatto a svariati scopi.
 [Per saperne di più](http://docs.oracle.com/javase/tutorial/java/index.html)
 
 ```java
@@ -127,12 +127,12 @@ public class LearnJava {
         //
         // BigInteger e' un tipo di dato che permette ai programmatori di
         // gestire interi piu' grandi di 64 bit. Internamente, le variabili
-        // di tipo  BigInteger vengono memorizzate come un vettore di byte e 
+        // di tipo  BigInteger vengono memorizzate come un vettore di byte e
         // vengono manipolate usando funzioni dentro la classe BigInteger.
         //
         // Una variabile di tipo BigInteger puo' essere inizializzata usando
         // un array di byte oppure una stringa.
-        
+
         BigInteger fooBigInteger = new BigDecimal(fooByteArray);
 
         // BigDecimal - Numero con segno, immutabile, a precisione arbitraria
@@ -211,7 +211,7 @@ public class LearnJava {
         System.out.println("1+2 = " + (i1 + i2)); // => 3
         System.out.println("2-1 = " + (i2 - i1)); // => 1
         System.out.println("2*1 = " + (i2 * i1)); // => 2
-        System.out.println("1/2 = " + (i1 / i2)); // => 0 
+        System.out.println("1/2 = " + (i1 / i2)); // => 0
             // (con 0.5 arrotonda per difetto)
 
         // Modulo
@@ -228,7 +228,7 @@ public class LearnJava {
         // Operatori binari orientati ai bit
         // effettuano le operazioni logiche confrontando, i bit degli operandi:
         /*
-        ~       complemento 
+        ~       complemento
         <<      shift sinistro con segno
         >>      shift destro con segno
         >>>     shift destro senza segno
@@ -242,7 +242,7 @@ public class LearnJava {
         System.out.println("\n->Incrementare/Decrementare");
         // Gli operatori ++ e -- incrementano e decrementano rispettivamente di 1.
         // Se posizionati prima della variabile, incrementano, quindi riportano.
-        // Se si trovano dopo la variabile, riporano, e quindi incrementano. 
+        // Se si trovano dopo la variabile, riporano, e quindi incrementano.
         System.out.println(i++); //i = 1, Stampa 0 (post-incremento)
         System.out.println(++i); //i = 2, Stampa 2 (pre-incremento)
         System.out.println(i--); //i = 1, Stampa 2 (post-decremento)
@@ -330,11 +330,11 @@ public class LearnJava {
         // Condizioni brevi
         // Si puo' usare l'operatore '?' per un rapido assegnamento
         // o per operazioni logiche.
-        // Si legge: 
+        // Si legge:
         // Se (condizione) e' vera, usa <primo valore>, altrimenti usa <secondo valore>
         int foo = 5;
         String bar = (foo < 10) ? "A" : "B";
-        System.out.println("Se la condizione e' vera stampa A: "+bar); 
+        System.out.println("Se la condizione e' vera stampa A: "+bar);
         // Stampa A, perche' la condizione e' vera.
 
 
@@ -355,7 +355,7 @@ public class LearnJava {
         // String
 
         // Typecasting
-        // Vi sono molti dettagli che non si possono spiegare qui, 
+        // Vi sono molti dettagli che non si possono spiegare qui,
         // java dispone di una ottima documentazione
         // Sentiti libero di leggerla
         // http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
@@ -376,7 +376,7 @@ public class LearnJava {
         percorso.accellera(3); // Si usano sempre metodi set... get...
         percorso.setCadenza(100);
 
-        // toString riporta la rappresenzazione dell'oggetto 
+        // toString riporta la rappresenzazione dell'oggetto
         // come se fosse una stringa
         System.out.println("percorso info: " + percorso.toString());
 
@@ -396,13 +396,13 @@ public class LearnJava {
 class Bicicletta {
 
     // Variabili della bicicletta
-    public int cadenza; 
+    public int cadenza;
       // Public: Puo' essere richiamato da qualsiasi classe
-    private int velocita; 
+    private int velocita;
       // Private: e'' accessibile solo dalla classe dove e'' stato inizializzato
-    protected int ingranaggi; 
+    protected int ingranaggi;
       // Protected: e'' visto sia dalla classe che dalle sottoclassi
-    String nome; 
+    String nome;
       // default: e'' accessibile sono all'interno dello stesso package
 
     // I costruttori vengono usati per creare variabili
@@ -426,7 +426,7 @@ class Bicicletta {
     // <public/private/protected> <tipo di ritorino> <nome della funzione>(<parametri>)
 
     // Le classi in java spesso implementano delle funzioni o metodo
-    // 'get...' o 'set...' 
+    // 'get...' o 'set...'
 
     // Dichiarazione di un metodo
     // <scope> <tipo di ritorno> <nome del metodo>(<parametri>)
@@ -479,7 +479,7 @@ class PennyFarthing extends Bicicletta {
         super(cadenzaIniziale, velocitaIniziale, 0, "PennyFarthing");
     }
 
-    // Bisogna contrassegnre un medodo che si sta riscrivendo 
+    // Bisogna contrassegnre un medodo che si sta riscrivendo
     // con una @annotazione
     // Per saperne di piu' sulle annotazioni
     // Vedi la guida: http://docs.oracle.com/javase/tutorial/java/annotations/
@@ -499,7 +499,7 @@ class PennyFarthing extends Bicicletta {
 
 //Esempi- Cibo:
 interface Commestibile {
-	public void mangia(); 
+	public void mangia();
         //Ogni classe che implementa questa interfaccia
         //deve implementare questo metodo.
         }
@@ -514,11 +514,11 @@ class Frutta implements Commestibile, Digestibile {
 	}
 
 	public void digerisci() {
-		//... 
+		//...
 	}
 }
 
-//In Java si puo' estendere solo una classe, ma si possono implementare 
+//In Java si puo' estendere solo una classe, ma si possono implementare
 //piu' interfaccie, per esempio:
 class ClasseEsempio extends AltraClasse implements PrimaInterfaccia, SecondaInterfaccia {
 	public void MetodoPrimaInterfaccia() {

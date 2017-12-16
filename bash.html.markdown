@@ -11,7 +11,7 @@ contributors:
     - ["Rahil Momin", "https://github.com/iamrahil"]
     - ["Gregrory Kielian", "https://github.com/gskielian"]
     - ["Etan Reisner", "https://github.com/deryni"]
-    - ["Jonathan Wang", "https://github.com/Jonathansw"]   
+    - ["Jonathan Wang", "https://github.com/Jonathansw"]
     - ["Leo Rudberg", "https://github.com/LOZORD"]
     - ["Betsy Lorton", "https://github.com/schbetsy"]
     - ["John Detter", "https://github.com/jdetter"]
@@ -78,7 +78,7 @@ echo ${Variable:0:Length} # => Some st
 # This will return only the first 7 characters of the value
 
 # Default value for variable
-echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"} 
+echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"}
 # => DefaultValueIfFooIsMissingOrEmpty
 # This works for null (Foo=) and empty string (Foo=""); zero (Foo=0) returns 0.
 # Note that it only returns default value and doesn't change variable value.
@@ -199,7 +199,7 @@ cp -r srcDirectory/ dst/ # recursively copy
 # `mv` is also useful for renaming files!
 mv s0urc3.txt dst.txt # sorry, l33t hackers...
 
-# Since bash works in the context of a current directory, you might want to 
+# Since bash works in the context of a current directory, you might want to
 # run your command in some other directory. We have cd for changing location:
 cd ~    # change to home directory
 cd ..   # go up one directory
@@ -231,7 +231,7 @@ for line in sys.stdin:
     print(line, file=sys.stdout)
 EOF
 
-# Run the hello.py Python script with various stdin, stdout, and 
+# Run the hello.py Python script with various stdin, stdout, and
 # stderr redirections:
 python hello.py < "input.in" # pass input.in as input to the script
 python hello.py > "output.out" # redirect output from the script to output.out
@@ -386,8 +386,8 @@ grep "^foo.*bar$" file.txt | grep -v "baz"
 # and not the regex, use fgrep (or grep -F)
 fgrep "foobar" file.txt
 
-# The trap command allows you to execute a command whenever your script 
-# receives a signal. Here, trap will execute `rm` if it receives any of the 
+# The trap command allows you to execute a command whenever your script
+# receives a signal. Here, trap will execute `rm` if it receives any of the
 # three listed signals.
 trap "rm $TEMP_FILE; exit" SIGHUP SIGINT SIGTERM
 

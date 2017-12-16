@@ -139,7 +139,7 @@ z = "The items in the basket are %s and %s" % (x,y)
 None  # => None
 
 # 不要用等於符號 "==" 對 無(None)做比較
-# 用 "is" 
+# 用 "is"
 "etc" is None  # => False
 None is None  # => True
 
@@ -509,7 +509,7 @@ def set_x(num):
 def set_global_x(num):
     global x
     print x # => 5
-    x = num # 全域變數 x 在set_global_x(6)被設定為 6 
+    x = num # 全域變數 x 在set_global_x(6)被設定為 6
     print x # => 6
 
 set_x(43)

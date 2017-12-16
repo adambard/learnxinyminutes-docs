@@ -283,7 +283,7 @@ ressemblent à toutes les autres formes:
 ; de la transformation, la forme courante en la seconde position
 ; de la forme suivante, constituant à chaque fois un nouvel étage
 ; de transformation. Par exemple:
-(->  
+(->
    {:a 1 :b 2}
    (assoc :c 3) ;=> Génère ici (assoc {:a 1 :b 2} :c 3)
    (dissoc :b)) ;=> Génère ici (dissoc (assoc {:a 1 :b 2} :c 3) :b)
@@ -302,7 +302,7 @@ ressemblent à toutes les autres formes:
    (into []))    ;=> Génère ici (into [] (filter odd? (map inc (range 10))), ce qui est évalué au final à;
                  ; [1 3 5 7 9]
 
-; Quand vous êtes dans une situation où vous voulez plus de liberté pour choisir 
+; Quand vous êtes dans une situation où vous voulez plus de liberté pour choisir
 ; où mettre le résultat des étages précédents, vous pouvez utiliser la
 ; macro as->. Avec cette macro, donnez un nom spécifique au résultat de la transformation
 ; précédente pour le placer, à votre guise, où bon vous semble dans l'étage courant:

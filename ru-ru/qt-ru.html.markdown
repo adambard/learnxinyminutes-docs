@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
 
     // добавляем вертикальное расположение
     QVBoxLayout layout;
-    dialogWindow.setLayout(&layout);  
+    dialogWindow.setLayout(&layout);
 
     QLabel textLabel("Thanks for pressing that button");
     layout.addWidget(&textLabel);

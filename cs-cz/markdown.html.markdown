@@ -70,7 +70,7 @@ Toto je odstavec 3.
 <!-- Chtěli jste někdy vložit znak <br /> tag? Můžete napsat na konec odstavce
 dvě nebo více mezer a potom začít nový odstavec. -->
 
-Tento odstavec končí dvěma mezerami.  
+Tento odstavec končí dvěma mezerami.
 
 Nad tímto odstavcem je  <br />!
 

@@ -216,7 +216,7 @@ public class LearnJava {
 
         // switch-case 문
         // switch는 byte, short, char, int 자료형을 대상으로 동작합니다.
-        // 아울러 열거형을 비롯해 String 클래스 및 원시 타입을 감싼 Character, 
+        // 아울러 열거형을 비롯해 String 클래스 및 원시 타입을 감싼 Character,
         // Byte, Short, Integer와 같은 몇 가지 특별한 클래스에 대해서도 동작합니다.
         int month = 3;
         String monthString;

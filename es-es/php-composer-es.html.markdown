@@ -51,13 +51,13 @@ Composer almacena sus dependencias del proyecto en `composer.json`. Usted puede 
 ```sh
 # Crear un nuevo proyecto en la carpeta actual
 composer init
-# Este corre un cuestionario interactivo que le pide detalles sobre su proyecto. 
+# Este corre un cuestionario interactivo que le pide detalles sobre su proyecto.
 # Dejándolos en blanco está bien a menos que usted está haciendo otros proyectos que dependen de éste.
 
 # Si un archivo 'composer.json' ya existe, descargar las dependencias
 composer install
 
-# Para descargar solo las dependencias de producción, es decir, excluyendo las 
+# Para descargar solo las dependencias de producción, es decir, excluyendo las
 # dependencias de desarrollo
 composer install --no-dev
 
@@ -67,20 +67,20 @@ composer require guzzlehttp/guzzle
 # y finalmente añade la nueva dependencia al campo requerido en 'composer.json'.
 
 composer require guzzlehttp/guzzle:6.0.*
-# Composer descargará la versión más reciente que coincida con el patrón 
+# Composer descargará la versión más reciente que coincida con el patrón
 # (ej 6.0.2) y añade la dependencia al campo requerido en 'composer.json'.
 
 composer require --dev phpunit/phpunit:~4.5.0
-# Se requerirá como una dependencia de desarrollo. Se usará la última 
+# Se requerirá como una dependencia de desarrollo. Se usará la última
 # versión >= 4.5.0 y < 4.6.0
 
 composer require-dev phpunit/phpunit:^4.5.0
 # Se requerirá como una dependencia de desarrollo. Se usará la última versión >= 4.5.0 y <  5.0
 
-# Para obtener más información sobre las coincidencias de versiones de Composer, 
+# Para obtener más información sobre las coincidencias de versiones de Composer,
 ver [La Documentación de Composer\'s Sobre Versiones (EN)](https://getcomposer.org/doc/articles/versions.md)
 
-# Para ver qué opciones están disponibles para instalar y los paquetes instalados actualmente  
+# Para ver qué opciones están disponibles para instalar y los paquetes instalados actualmente
 composer show
 
 # Para ver qué paquetes están instalados actualmente

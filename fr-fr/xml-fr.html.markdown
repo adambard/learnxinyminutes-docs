@@ -42,10 +42,10 @@ Contrairement à HTML, XML ne spécifie pas comment afficher ou formater les inf
 <!-- Ce qui suit est un fichier XML typique.
   Il commence par une déclaration, qui informe certaines métadonnées (en option).
 
-XML utilise une structure arborescente. Ci-dessus, le nœud racine est «librairie», qui a 
+XML utilise une structure arborescente. Ci-dessus, le nœud racine est «librairie», qui a
    trois nœuds enfants, qui sont appelés «livres». Ces nœuds ont plus de nœuds enfants, et ainsi de suite ...
 
-On crée les nœuds avec des balises d'ouverture / fermeture, et les enfants sont les nœuds juste entre 
+On crée les nœuds avec des balises d'ouverture / fermeture, et les enfants sont les nœuds juste entre
    les balises d'ouverture et de fermeture. -->
 
 
@@ -55,8 +55,8 @@ On crée les nœuds avec des balises d'ouverture / fermeture, et les enfants son
   2 - Les éléments -> les informations pures.
       C'est ce que l'analyseur retrouvera du fichier XML.
       Les éléments apparaissent entre les balises d'ouverture et de fermeture, sans parenthèses. -->
-      
-  
+
+
 <!-- Ci-dessous, un élément avec deux attributs -->
 <fichier type="gif" id="4293">ordinateur.gif</fichier>
 
@@ -65,18 +65,18 @@ On crée les nœuds avec des balises d'ouverture / fermeture, et les enfants son
 
 * Un document bien formaté & le validation
 
-Un document XML est bien formaté s'il est syntaxiquement correct. 
-Cependant, il est possible d'injecter plus de contraintes dans le document, 
+Un document XML est bien formaté s'il est syntaxiquement correct.
+Cependant, il est possible d'injecter plus de contraintes dans le document,
 en utilisant les définitions de documents, tels que les schémas DTD et XML.
 
-Un document XML qui suit une définition de document est dit valide, 
+Un document XML qui suit une définition de document est dit valide,
 en ce qui concerne ce document.
 
 Avec cet outil, vous pouvez vérifier les données XML en dehors de la logique de l'application.
 
 ```xml
 
-<!-- Ci-dessous, vous pouvez voir une version simplifiée du document de librairie, 
+<!-- Ci-dessous, vous pouvez voir une version simplifiée du document de librairie,
    avec l'addition de définition DTD. -->
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -100,9 +100,9 @@ Avec cet outil, vous pouvez vérifier les données XML en dehors de la logique d
 ]>
 
 <!-- La DTD commence par une déclaration.
-   Après, le nœud racine est déclaré, qui exige un ou plusieurs nœuds enfants. 
-   Chaque «livre» doit contenir exactement un «titre» et «prix» et un attribut 
-   appelé «catégorie», avec «littérature» comme valeur par défaut. 
+   Après, le nœud racine est déclaré, qui exige un ou plusieurs nœuds enfants.
+   Chaque «livre» doit contenir exactement un «titre» et «prix» et un attribut
+   appelé «catégorie», avec «littérature» comme valeur par défaut.
    Les nœuds de «titre» et «prix» contiennent des informations de caractère analysés
    (Anglais: «parsed character data») -->
 

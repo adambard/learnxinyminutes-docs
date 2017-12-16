@@ -126,7 +126,7 @@ div {
 
 
 /*Funkce
-==============================*/   
+==============================*/
 
 
 
@@ -134,7 +134,7 @@ div {
 
 /* Funkce se spouštějí pomocí jejich jména, které následuje seznam argumentů uzavřený v kulatých závorkách. */
 body {
-  width: round(10.25px);    
+  width: round(10.25px);
 }
 
 .footer {
@@ -149,7 +149,7 @@ body {
 
 .footer {
   background-color: rgba(0, 0, 0, 0.75);
-}   
+}
 
 /* Můžete také definovat vlastní funkce. Funkce jsou velmi podobné mixinům.
    Když se snažíte vybrat mezi funkcí a mixinem, mějte na paměti, že mixiny
@@ -281,7 +281,7 @@ ul li a {
 
 
 /*Částečné soubory a importy
-==============================*/   
+==============================*/
 
 
 
@@ -315,7 +315,7 @@ body {
 html, body, ul, ol {
   margin: 0;
   padding: 0;
-}   
+}
 
 body {
   font-size: 16px;
@@ -325,7 +325,7 @@ body {
 
 
 /*Zástupné selektory
-==============================*/  
+==============================*/
 
 
 
@@ -362,7 +362,7 @@ body {
 
 
 /*Matematické operace
-==============================*/   
+==============================*/
 
 
 

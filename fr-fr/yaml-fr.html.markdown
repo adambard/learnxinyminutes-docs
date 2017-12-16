@@ -6,8 +6,8 @@ contributors:
 lang: fr-fr
 ---
 
-Proposé à l'origine par Clark Evans en Mai 2001, YAML est un un format de 
-représentation de données par sérialisation, conçu pour être aisément 
+Proposé à l'origine par Clark Evans en Mai 2001, YAML est un un format de
+représentation de données par sérialisation, conçu pour être aisément
 modifiable et lisible par nous-mêmes, les humains.
 
 YAML est plus concis que le XML auquel il est parfois comparé par ceux qui le
@@ -45,7 +45,7 @@ toutefois: "Une chaîne, peut être contenue entre guillemets."
 # Les chaînes couvrant plusieurs lignes, peuvent être écrites au choix,
 # comme un "bloc littéral" (avec '|') ou bien un "bloc replié" (avec '>').
 bloc_littéral: |
-    Tout ce bloc de texte sera la valeur de la clé "bloc_littéral", 
+    Tout ce bloc de texte sera la valeur de la clé "bloc_littéral",
     avec préservation des retours à la ligne.
 
     Le littéral continue jusqu'à ce que l'indentation soit annulée.
@@ -53,7 +53,7 @@ bloc_littéral: |
         Toutes lignes qui seraient "davantage indentées" conservent leur
         indentation, constituée de 4 espaces.
 bloc_replié: >
-    Tout ce bloc de texte sera la valeur de la clé "bloc_replié", mais 
+    Tout ce bloc de texte sera la valeur de la clé "bloc_replié", mais
     cette fois-ci, toutes les nouvelles lignes deviendront un simple espace.
 
     Les lignes vides, comme ci-dessus, seront converties en caractère de

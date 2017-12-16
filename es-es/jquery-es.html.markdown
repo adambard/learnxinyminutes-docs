@@ -119,7 +119,7 @@ tables.animate({margin-top:"+=50", height: "100px"}, 500, myFunction);
 // Estos son similares a los efectos, pero pueden hacer más
 $('div').addClass('div') // Añade la clase div a todos los divs
 
-// Métodos comunes de manipulación 
+// Métodos comunes de manipulación
 $('p').append('Hola mundo'); // Añade al final del elemento
 $('p').attr('class'); // Obtiene atributo
 $('p').attr('class', 'content'); // Configura atributos

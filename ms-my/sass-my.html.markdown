@@ -166,7 +166,7 @@ ul {
 	margin-top: 2em;
 
 	li {
-		background-color: #FF0000;		
+		background-color: #FF0000;
 	}
 }
 

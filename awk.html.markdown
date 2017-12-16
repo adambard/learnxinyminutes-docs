@@ -249,10 +249,10 @@ function io_functions(    localvar) {
 # When you pass arguments to AWK, they are treated as file names to process.
 # It will process them all, in order. Think of it like an implicit for loop,
 # iterating over the lines in these files. these patterns and actions are like
-# switch statements inside the loop. 
+# switch statements inside the loop.
 
 /^fo+bar$/ {
-    
+
     # This action will execute for every line that matches the regular
     # expression, /^fo+bar$/, and will be skipped for any line that fails to
     # match it. Let's just print the line:

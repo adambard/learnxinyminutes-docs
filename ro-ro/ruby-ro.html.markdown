@@ -83,7 +83,7 @@ fi_inlocuit = "fi inlocuit"
 #=> "Pot fi inlocuit atunci cand folosesc dublu apostrof"
 
 
-# Printeaza 
+# Printeaza
 puts "Afisez rezultate!"
 
 # Variabile
@@ -105,8 +105,8 @@ adresa_radacina_proiect = '/nume/bun/'
 adresa = '/nume/nu atat de bun/'
 
 # Simbolurile (sunt obiecte)
-# Simbolurile sunt constante imutabile, reutilizabile, reprezentate intern 
-# de o valoare numerica. Sunt deseori folosite in locul sirurilor de caractere 
+# Simbolurile sunt constante imutabile, reutilizabile, reprezentate intern
+# de o valoare numerica. Sunt deseori folosite in locul sirurilor de caractere
 # pentru a da un nume reprezentativ unei valori
 
 :exemplu_simbol.class #=> Symbol
@@ -161,11 +161,11 @@ hash.keys #=> ['culoare', 'numar']
 hash['culoare'] #=> 'verde'
 hash['numar'] #=> 5
 
-# Incercand sa accesezi un element dintr-un hash 
+# Incercand sa accesezi un element dintr-un hash
 # printr-o cheie care nu exista va returna "nil".
 hash['nimic_aici'] #=> nil
 
-# Incepand cu Ruby 1.9, este o sintaxa speciala 
+# Incepand cu Ruby 1.9, este o sintaxa speciala
 # pentru atunci cand se folosesc simboluri drept chei:
 
 hash_nou = { defcon: 3, actiune: true}
@@ -260,7 +260,7 @@ def dublu(x)
   x * 2
 end
 
-# Functille (si toate block-urile) 
+# Functille (si toate block-urile)
 # returneaza implicit valoarea ultimei instructiuni
 dublu(2) #=> 4
 
@@ -298,9 +298,9 @@ incercuieste { puts 'Salut Mihai!' }
 # Poti trimite un block unei functii.
 # "&" marcheaza o referinta trimisa unui block
 def vizitatori(&block)
- block.call "un_parametru" 
+ block.call "un_parametru"
 end
- 
+
 # Poti trimite o lista de argumente, care va fi convertita intr-un vector (array).
 # Pentru asta se foloseste ("*")
 def vizitatori(*vector)
@@ -332,16 +332,16 @@ class Om
     @nume
   end
 
-  # Functionalitatea de mai sus poate fi obtinuta 
+  # Functionalitatea de mai sus poate fi obtinuta
   # folosing metoda "attr_accessor" dupa cum urmeaza:
   attr_accessor :nume
 
-  # Metodele pentru a lua si a seta valoarea unei variabile 
+  # Metodele pentru a lua si a seta valoarea unei variabile
   # pot fi de asemenea obtinute individial:
   attr_reader :nume
   attr_writer :nume
 
-  # O metoda apartinand unei clase foloseste "self" pentru a se diferentia 
+  # O metoda apartinand unei clase foloseste "self" pentru a se diferentia
   # de metodele unei instante ale clasei respective
   # Poate fi invocata doar pe clasa, si nu pe o instanta a acesteia
   def self.spune(msg)
@@ -389,9 +389,9 @@ defined? @@var #=> "class variable"
 Var = "Sunt o constanta"
 defined? Var #=> "constant"
 
-# Clasele sunt de asemenea obiecte in ruby. Astfel incat clasele 
+# Clasele sunt de asemenea obiecte in ruby. Astfel incat clasele
 # pot avea variabile care apartin unei instante
-# O variabila care apartine unei clase poate fi accesata de toate 
+# O variabila care apartine unei clase poate fi accesata de toate
 # instantele acesteia si de clasele care o extind
 
 # clasa parinte
@@ -417,7 +417,7 @@ Muncitor.foo # 0
 Om.foo = 2 # 2
 Muncitor.foo # 2
 
-# Variabilele care apartin unei instante ale unei clase, 
+# Variabilele care apartin unei instante ale unei clase,
 # nu sunt impartite de (copii acesteia) clasele care o extind
 class Om
   @bar = 0

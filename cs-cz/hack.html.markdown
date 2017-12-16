@@ -8,12 +8,12 @@ translators:
 lang: cs-cz
 ---
 
-Hack je nadmnožinou PHP a běží v rámci virtuálního stroje zvaného HHVM. Hack 
-dokáže skoro plně spolupracovat s existujícím PHP a přidává několik vylepšení, 
+Hack je nadmnožinou PHP a běží v rámci virtuálního stroje zvaného HHVM. Hack
+dokáže skoro plně spolupracovat s existujícím PHP a přidává několik vylepšení,
 které známe ze staticky typovaných jazyků.
 
 Níže jsou popsané pouze vlastnosti jazyka Hack. Detaily ohledně jazyka PHP a jeho
-syntaxe pak najdete na těchto stránkách v samostatném 
+syntaxe pak najdete na těchto stránkách v samostatném
 [článku o PHP](http://learnxinyminutes.com/docs/php/).
 
 ```php
@@ -53,7 +53,7 @@ function identity(?string $stringOrNull) : ?string
 class TypeHintedProperties
 {
     public ?string $name;
-    
+
     protected int $id;
 
     private float $score = 100.0;
@@ -93,7 +93,7 @@ function openBox(Box<int> $box) : int
 
 
 // Tvary
-// 
+//
 // Hack zavádí koncept tvaru pro definování strukturovaných polí s garantovanou
 // typovou kontrolou pro klíče.
 type Point2D = shape('x' => int, 'y' => int);
@@ -110,7 +110,7 @@ distance(
 
 
 // Type aliasing
-// 
+//
 // Hack přidává několik vylepšení pro lepší čitelnost komplexních typů
 newtype VectorArray = array<int, Vector<int>>;
 
@@ -144,9 +144,9 @@ function getRoadType() : RoadType
 
 
 // Automatické nastavení proměnných třídy
-// 
+//
 // Aby se nemuseli definovat proměnné třídy a její konstruktor,
-// který pouze nastavuje třídní proměnné, můžeme v Hacku vše 
+// který pouze nastavuje třídní proměnné, můžeme v Hacku vše
 // definovat najednou.
 class ArgumentPromotion
 {
@@ -174,12 +174,12 @@ class WithoutArugmentPromotion
 
 
 // Ko-operativní multi-tasking
-// 
+//
 // Nová klíčová slova "async" and "await" mohou být použité pro spuštění mutli-taskingu
 // Tato vlastnost ovšem zahrnuje vícevláknové zpracování, pouze povolí řízení přenosu
 async function cooperativePrint(int $start, int $end) : Awaitable<void>
 {
-    for ($i = $start; $i <= $end; $i++) { 
+    for ($i = $start; $i <= $end; $i++) {
         echo "$i ";
 
         // Dává ostatním úlohám šanci něco udělat
@@ -196,8 +196,8 @@ AwaitAllWaitHandle::fromArray([
 
 
 // Atributy
-// 
-// Atributy jsou určitou formou metadat pro funkce. Hack přidává některé vestavěné 
+//
+// Atributy jsou určitou formou metadat pro funkce. Hack přidává některé vestavěné
 // atributy které aktivnují uživatečné chování funkcí.
 
 // Speciální atribut __Memoize způsobí, že výsledek funkce je uložen do cache
@@ -251,7 +251,7 @@ class ConsistentBar extends ConsistentFoo
 class InvalidFooSubclass extends ConsistentFoo
 {
     // Nedodržení zápisu dle rodičovského konstruktoru způsobí syntaktickou chybu:
-    //  
+    //
     //  "Tento objekt je typu ConsistentBaz a není kompatibilní v tímto objektem,
     //   který je typu ConsistentFoo protože některé jeho metody nejsou kompatibilní."
     //
@@ -261,7 +261,7 @@ class InvalidFooSubclass extends ConsistentFoo
     }
 
     // Použitím anotace __Override na nepřetíženou metodu způsobí chybu typové kontroly:
-    //  
+    //
     //  "InvalidFooSubclass::otherMethod() je označená jako přetížená, ale nebyla nalezena
     //   taková rodičovská metoda, nebo rodič kterého přetěžujete není zapsán v <?hh kódu"
     //
@@ -300,7 +300,7 @@ $cat instanceof KittenInterface === true; // True
 
 ## Více informací
 
-Pro více informací navštivte [referenční příručku jazyka Hack](http://docs.hhvm.com/manual/en/hacklangref.php), 
+Pro více informací navštivte [referenční příručku jazyka Hack](http://docs.hhvm.com/manual/en/hacklangref.php),
 kde se dozvíte více detailu a vylepšení, které jazyk Hack přidává do PHP, a nebo navštivte [oficiální stránky jazyka Hack](http://hacklang.org/)
 pro obecné informace.
 

@@ -5,11 +5,11 @@ contributors:
     - ["Christina Whyte", "http://github.com/kurisuwhyte/"]
 translators:
     - ["ShengDa Lyu", "http://github.com/SDLyu/"]
-lang: zh-cn    
+lang: zh-cn
 ---
 
 LiveScript 是一种具有函数式特性且编译成 JavaScript 的语言，能对应 JavaScript 的基本语法。
-还有些额外的特性如：柯里化，组合函数，模式匹配，还有借镜于 Haskell，F# 和 Scala 的许多特点。 
+还有些额外的特性如：柯里化，组合函数，模式匹配，还有借镜于 Haskell，F# 和 Scala 的许多特点。
 
 LiveScript 诞生于 [Coco][]，而 Coco 诞生于 [CoffeeScript][]。
 LiveScript 目前已释出稳定版本，开发中的新版本将会加入更多特性。
@@ -159,7 +159,7 @@ not false       # => true
 
 ########################################################################
 ## 3. 函数
-########################################################################        
+########################################################################
 
 # 因为 LiveScript 是函数式特性的语言，你可以期待函数在语言里被高规格的对待。
 add = (left, right) -> left + right
@@ -271,7 +271,7 @@ take = (n, [x, ...xs]) -->
 ########################################################################
 
 # 在 JavaScript 的标准函式库里有一些辅助函数能帮助处理列表及对象
-#（LiveScript 则带有一个 prelude.ls ，作为标准函式库的补充 ）， 
+#（LiveScript 则带有一个 prelude.ls ，作为标准函式库的补充 ），
 # 推导式能让你使用优雅的语法且快速地处理这些事：
 oneToTwenty = [1 to 20]
 evens       = [x for x in oneToTwenty when x % 2 == 0]
@@ -313,10 +313,10 @@ kitten.hug!     # => "*Mei (a cat) is hugged*"
 
 ## 延伸阅读
 
-LiveScript 还有许多强大之处，但这些应该足够启发你写些小型函数式程式了。 
+LiveScript 还有许多强大之处，但这些应该足够启发你写些小型函数式程式了。
 [LiveScript](http://livescript.net/)有更多关于 LiveScript 的资讯
 和线上编译器等着你来试！
 
 你也可以参考
-[prelude.ls](http://gkz.github.io/prelude-ls/)，和一些 `#livescript` 
+[prelude.ls](http://gkz.github.io/prelude-ls/)，和一些 `#livescript`
 的网络聊天室频道。

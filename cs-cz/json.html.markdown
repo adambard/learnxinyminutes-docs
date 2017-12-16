@@ -9,18 +9,18 @@ filename: learnjson-cz.json
 lang: cs-cz
 ---
 
-JSON je exterémně jednoduchý datově nezávislý formát a bude asi jeden z 
+JSON je exterémně jednoduchý datově nezávislý formát a bude asi jeden z
 nejjednodušších 'Learn X in Y Minutes' ze všech.
 
-JSON nemá ve své nejzákladnější podobě žádné komentáře, ale většina parserů 
-umí pracovat s komentáři ve stylu jazyka C (`//`, `/* */`). Pro tyto účely 
-však budeme používat 100% validní JSON bez komentářů. Pojďme se podívat na 
+JSON nemá ve své nejzákladnější podobě žádné komentáře, ale většina parserů
+umí pracovat s komentáři ve stylu jazyka C (`//`, `/* */`). Pro tyto účely
+však budeme používat 100% validní JSON bez komentářů. Pojďme se podívat na
 syntaxi formátu JSON:
 
 ```json
 {
   "klic": "value",
-  
+
   "hodnoty": "Musí být vždy uvozený v dvojitých uvozovkách",
   "cisla": 0,
   "retezce": "Hellø, wørld. Všechny unicode znaky jsou povolené, společně s \"escapováním\".",
@@ -50,7 +50,7 @@ syntaxi formátu JSON:
       [0, 0, 0, 1]
     ]
   ],
-  
+
   "alternativni_styl_zapisu": {
     "komentar": "Mrkni se na toto!"
   , "pozice_carky": "Na pozici čárky nezáleží - pokud je před hodnotou, ať už je kdekoli, tak je validní."

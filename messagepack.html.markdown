@@ -6,7 +6,7 @@ contributors:
   - ["Gabriel Chuan", "https://github.com/gczh"]
 ---
 
-MessagePack is an efficient binary serialization format. It lets you exchange data among multiple languages like JSON. The benefits over other formats is that it's faster and smaller. 
+MessagePack is an efficient binary serialization format. It lets you exchange data among multiple languages like JSON. The benefits over other formats is that it's faster and smaller.
 
 In MessagePack, small integers are encoded into a single byte, and typical short strings require only one extra byte in addition to the strings themselves. This makes MessagePack useful for efficient transmission over wire.
 
@@ -15,7 +15,7 @@ In MessagePack, small integers are encoded into a single byte, and typical short
 # 0. Understanding The Structure ====
 
 JSON, 40 Bytes UTF-8
-	
+
 ----------------------------------------------
 | {"name":"John Doe","age":12}		         |
 ----------------------------------------------
@@ -32,7 +32,7 @@ JSON, 40 Bytes UTF-8
 
 
 MessagePack, 27 Bytes UTF-8
-	
+
 ----------------------------------------------
 | ‚¤name¨John Doe£age.12                     |
 ----------------------------------------------

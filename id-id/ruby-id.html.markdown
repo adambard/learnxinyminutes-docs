@@ -156,7 +156,7 @@ path = '/bad/name/'
 
 # Simbol (adalah objek)
 # Simbol adalah konstanta yang dapat didaur ulang yang tidak dapat diubah
-# (immutable), secara internal diwakili oleh nilai integer. Seringkali 
+# (immutable), secara internal diwakili oleh nilai integer. Seringkali
 # digunakan sebagai pengganti string untuk menyampaikan nilai yang mengandung
 # makna spesifik secara efisien.
 

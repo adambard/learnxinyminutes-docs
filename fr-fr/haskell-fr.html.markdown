@@ -3,7 +3,7 @@ language: Haskell
 contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:
-    - ["David Baumgartner", "http://davidbaumgartner.ch"]    
+    - ["David Baumgartner", "http://davidbaumgartner.ch"]
 lang: fr-fr
 filename: learnhaskell-fr.hs
 ---
@@ -84,10 +84,10 @@ not False -- True
 [1..] !! 999 -- 1000
 
 -- Et là, Haskell a évalué les éléments 1 à 1000 de la liste... mais le reste
--- de cette liste « infinie » n'existe pas encore ! En fait, Haskell ne va jamais 
+-- de cette liste « infinie » n'existe pas encore ! En fait, Haskell ne va jamais
 -- le faire à moins qu'il ne le doive.
 
--- Adjoindre deux listes 
+-- Adjoindre deux listes
 [1..5] ++ [6..10]
 
 -- ajouter au début de la liste
@@ -135,7 +135,7 @@ add 1 2 -- 3
 1 `add` 2 -- 3
 
 -- Vous pouvez également définir des fonctions qui n'ont pas de
--- lettres ! Ça vous laisse créer vos propres opérateurs ! Voilà 
+-- lettres ! Ça vous laisse créer vos propres opérateurs ! Voilà
 -- un opérateur qui fait une division entière :
 (//) a b = a `div` b
 35 // 4 -- 8
@@ -145,7 +145,7 @@ fib x
   | x < 2 = x
   | otherwise = fib (x - 1) + fib (x - 2)
 
--- Le filtrage par motif est similaire. Là, on a donné trois 
+-- Le filtrage par motif est similaire. Là, on a donné trois
 -- définitions différentes de `fib`. Haskell appellera automatiquement
 -- la première fonction qui correspond au motif de la valeur.
 fib 1 = 1
@@ -161,7 +161,7 @@ foo (x, y) = (x + 1, y + 2)
 myMap func [] = []
 myMap func (x:xs) = func x:(myMap func xs)
 
--- Les fonctions anonymes sont créées avec des barres obliques 
+-- Les fonctions anonymes sont créées avec des barres obliques
 -- inverses, suivies de tous les arguments.
 myMap (\x -> x + 2) [1..5] -- [3, 4, 5, 6, 7]
 
@@ -198,8 +198,8 @@ foo 5 -- 75
 
 -- fixation de priorité
 -- Haskell a une autre fonction appelée `$`. Elle peut changer la priorité
--- de sorte que tout ce qu'il y a à sa gauche est calculé d'abord et ensuite 
--- appliqué à tout ce qu'il y a à droite. Vous pouvez utiliser `.` et `$` 
+-- de sorte que tout ce qu'il y a à sa gauche est calculé d'abord et ensuite
+-- appliqué à tout ce qu'il y a à droite. Vous pouvez utiliser `.` et `$`
 -- pour vous débarrasser de beaucoup de parenthèses :
 
 -- avant
@@ -243,7 +243,7 @@ haskell = if 1 == 1
             then "awesome"
             else "awful"
 
--- les structures case : voilà comment vous pourriez analyser les arguments de 
+-- les structures case : voilà comment vous pourriez analyser les arguments de
 -- ligne de commande
 case args of
   "help" -> printHelp
@@ -265,12 +265,12 @@ for [0..5] $ \i -> show i
 -- nous aurions pu l'écrire également ainsi
 for [0..5] show
 
--- vous pouvez utiliser foldl et foldr pour 
+-- vous pouvez utiliser foldl et foldr pour
 -- réduire une liste
 -- foldl <fonction> <valeur initiale> <liste>
 foldl (\x y -> 2*x + y) 4 [1,2,3] -- 43
 
--- C'est donc la même chose que 
+-- C'est donc la même chose que
 (2 * (2 * (2 * 4 + 1) + 2) + 3)
 
 -- foldl évalue de gauche à droite, foldr
@@ -318,10 +318,10 @@ Nothing         -- of type `Maybe a` for any `a`
 -- Par exemple :
 
 main :: IO ()
-main = putStrLn $ "Bonjour, le ciel ! " ++ (say Blue) 
+main = putStrLn $ "Bonjour, le ciel ! " ++ (say Blue)
 -- putStrLn a comme type String -> IO ()
 
--- La façon la plus simple pour faire de l'IO est de faire un programme 
+-- La façon la plus simple pour faire de l'IO est de faire un programme
 -- fonction de String vers String. La fonction
 --    interact :: (String -> String) -> IO ()
 -- prend un texte, applique une fonction et affiche le résultat.
@@ -332,26 +332,26 @@ countLines = show . length . lines
 main' = interact countLines
 
 -- Vous pouvez considérer qu'une valeur de type `IO ()` représente
--- une séquence d'actions que l'ordinateur exécute, un peu comme 
--- dans un langage impératif. On peut utiliser la structure `do` 
+-- une séquence d'actions que l'ordinateur exécute, un peu comme
+-- dans un langage impératif. On peut utiliser la structure `do`
 -- pour enchaîner des actions. Par exemple :
 
 sayHello :: IO ()
-sayHello = do 
+sayHello = do
    putStrLn "Quel est ton nom ?"
    name <- getLine -- prend une ligne et assigne sa valeur à `name`
    putStrLn $ "Salut, " ++ name
-   
--- Exercice : écrire votre propre version d'`interact` qui ne fait 
+
+-- Exercice : écrire votre propre version d'`interact` qui ne fait
 --           que de lire une ligne d'entrée.
-   
+
 -- Le code de `sayHello` ne sera jamais exécuté, cependant. La seule
 -- action qui sera exécutée est la valeur de `main`.
 -- Pour lancer `sayHello`, commentez l'ancienne définition de `main`
 -- et remplacez-le par :
 --   main = sayHello
 
--- Essaions de mieux comprendre comment la fonction `getLine` que 
+-- Essaions de mieux comprendre comment la fonction `getLine` que
 -- nous venons d'utiliser. Son type est :
 --    getLine :: IO String
 -- vous pouvez considérer le type `IO a` comme un programme que
@@ -363,7 +363,7 @@ sayHello = do
 action :: IO String
 action = do
    putStrLn "C'est une ligne. Heu"
-   input1 <- getLine 
+   input1 <- getLine
    input2 <- getLine
    -- Le type de la structure `do` est celui de sa dernière ligne.
    -- `return` n'est pas un mot clef, mais simplement une fonction.
@@ -374,7 +374,7 @@ action = do
 
 main'' = do
     putStrLn "Je vais afficher deux lignes !"
-    result <- action 
+    result <- action
     putStrLn result
     putStrLn "C'était tout !"
 
@@ -385,7 +385,7 @@ main'' = do
 -- quelles fonctions sont « pures » (n'interagissent pas avec le monde extérieur
 -- ou ne changent pas d'état) et quelles fonctions ne le sont pas.
 
--- C'est une fonctionnalité très puissante, car il est facile d'exécuter 
+-- C'est une fonctionnalité très puissante, car il est facile d'exécuter
 -- des fonctions pures simultanément, et donc la concurrence en Haskell
 -- est très facile.
 
@@ -396,7 +396,7 @@ main'' = do
 
 -- Lancer le REPL en tapant `ghci`.
 -- Vous pouvez maintenant taper du code Haskell.
--- Toutes les nouvelles valeurs peuvent être crées 
+-- Toutes les nouvelles valeurs peuvent être crées
 -- avec `let` :
 
 let foo = 5

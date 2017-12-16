@@ -30,8 +30,8 @@ Markdown è un superset di HTML, quindi ogni file HTML è a sua volta un file Ma
 
 ```markdown
 <!-- Questo significa che possiamo usare elementi di HTML in Markdown, come per esempio i commenti,
-e questi non saranno modificati dal parser di Markdown. State attenti però, 
-se inserite un elemento HTML nel vostro file Markdown, non potrete usare la sua sintassi 
+e questi non saranno modificati dal parser di Markdown. State attenti però,
+se inserite un elemento HTML nel vostro file Markdown, non potrete usare la sua sintassi
 all'interno del contenuto dell'elemento. -->
 ```
 
@@ -94,7 +94,7 @@ Qui siamo nel paragrafo 3!
 Se volete inserire l'elemento HTML `<br />`, potete terminare la linea con due o più spazi e poi iniziare un nuovo paragrafo.
 
 ```markdown
-Questa frase finisce con due spazi (evidenziatemi per vederli).  
+Questa frase finisce con due spazi (evidenziatemi per vederli).
 
 C'è un <br /> sopra di me!
 ```
@@ -203,7 +203,7 @@ end
 Se usate questa sintassi, il testo non richiederà di essere indentato, inoltre Github userà l'evidenziazione della sintassi del linguaggio specificato dopo i \`\`\` iniziali
 
 ## Linea orizzontale
-Le linee orizzontali (`<hr/>`) sono inserite facilmente usanto tre o più asterischi o trattini, con o senza spazi. 
+Le linee orizzontali (`<hr/>`) sono inserite facilmente usanto tre o più asterischi o trattini, con o senza spazi.
 
 ```markdown
 ***
@@ -263,7 +263,7 @@ E la modalità a riferimento funziona esattamente come ci si aspetta
 
 [myimage]: relative/urls/cool/image.jpg "Se vi serve un titolo, lo mettete qui"
 ```
-## Miscellanea 
+## Miscellanea
 ### Auto link
 
 ```markdown

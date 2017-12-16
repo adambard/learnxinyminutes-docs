@@ -6,11 +6,11 @@ contributors:
 lang: fr-fr
 ---
 
-HTML signifie HyperText Markup Language. 
+HTML signifie HyperText Markup Language.
 C'est un langage (format de fichiers) qui permet d'écrire des pages internet.
 C’est un langage de balisage, il nous permet d'écrire des pages HTML au moyen de balises (Markup, en anglais).
 Les fichiers HTML sont en réalité de simple fichier texte.
-Qu'est-ce que le balisage ? C'est une façon de hiérarchiser ses données en les entourant par une balise ouvrante et une balise fermante. 
+Qu'est-ce que le balisage ? C'est une façon de hiérarchiser ses données en les entourant par une balise ouvrante et une balise fermante.
 Ce balisage sert à donner une signification au texte ainsi entouré.
 Comme tous les autres langages, HTML a plusieurs versions. Ici, nous allons parlons de HTML5.
 
@@ -22,9 +22,9 @@ Cet article porte principalement sur la syntaxe et quelques astuces.
 <!-- Les commentaires sont entouré comme cette ligne! -->
 
 <!-- #################### Les balises #################### -->
-   
+
 <!-- Voici un exemple de fichier HTML que nous allons analyser -->
-<!-- Venez voir ce que ça donne  --> 
+<!-- Venez voir ce que ça donne  -->
 
 <!doctype html>
 	<html>
@@ -112,7 +112,7 @@ Cet article porte principalement sur la syntaxe et quelques astuces.
 
 Le HTML s'écrit dans des fichiers `.html`.
 
-## En savoir plus 
+## En savoir plus
 
 * [Tutoriel HTML](http://slaout.linux62.org/html_css/html.html)
 * [W3School](http://www.w3schools.com/html/html_intro.asp)

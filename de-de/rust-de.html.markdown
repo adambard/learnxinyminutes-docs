@@ -8,30 +8,30 @@ lang: de-de
 filename: lernerust-de.rs
 ---
 
-Rust ist eine Programmiersprache von Mozilla Research.  
-Rust vereint Sicherheit, Nebenläufigkeit und eine hohe Praxistauglichkeit.  
-  
-Sicherheit bedeuted, dass Programmierfehler ausgeschlossen werden, die zu  
-Speicherzugriffsfehlern führen könnten. Das funktioniert u.a. dadurch, dass  
-es keinen Garbage Collector gibt, sondern ein besonderes Typsystem.  
-  
-Das erste Release von Rust, 0.1, wurde im Januar 2012 veröffentlicht.  
-In den nächsten drei Jahren wurde die Sprache so schnell und aktiv weiter-  
-entwickelt, dass es einfach keine stabile gab und geraten wurde den  
-nightly build zu nutzen.  
-  
-Am 15. Mai 2015 wurde Rust 1.0 freigegeben, und zwar mit der Garantie einer  
-Abwärtskompatabilität. Verbesserungen der Kompilierzeit und andere Compiler  
-verbesserungen finden im Moment im nightly build statt. Von Rust gibt es im  
-Moment ungefähr alle sechs Wochen ein Release. Rust 1.1 beta wurde zusammen  
-mit dem 1.0 Release zur Verfügung gestellt.  
-  
-Obwohl Rust eine ziemlich low-level Sprache ist, vereint sie Ansätze aus  
-der Welt der funktionalen, der objektorientierten und der nebenläufigen  
-Programmierung. Dadurch kann in Rust nicht nur schnell, sondern auch sehr  
-effizient entwickelt werden.  
-  
-  
+Rust ist eine Programmiersprache von Mozilla Research.
+Rust vereint Sicherheit, Nebenläufigkeit und eine hohe Praxistauglichkeit.
+
+Sicherheit bedeuted, dass Programmierfehler ausgeschlossen werden, die zu
+Speicherzugriffsfehlern führen könnten. Das funktioniert u.a. dadurch, dass
+es keinen Garbage Collector gibt, sondern ein besonderes Typsystem.
+
+Das erste Release von Rust, 0.1, wurde im Januar 2012 veröffentlicht.
+In den nächsten drei Jahren wurde die Sprache so schnell und aktiv weiter-
+entwickelt, dass es einfach keine stabile gab und geraten wurde den
+nightly build zu nutzen.
+
+Am 15. Mai 2015 wurde Rust 1.0 freigegeben, und zwar mit der Garantie einer
+Abwärtskompatabilität. Verbesserungen der Kompilierzeit und andere Compiler
+verbesserungen finden im Moment im nightly build statt. Von Rust gibt es im
+Moment ungefähr alle sechs Wochen ein Release. Rust 1.1 beta wurde zusammen
+mit dem 1.0 Release zur Verfügung gestellt.
+
+Obwohl Rust eine ziemlich low-level Sprache ist, vereint sie Ansätze aus
+der Welt der funktionalen, der objektorientierten und der nebenläufigen
+Programmierung. Dadurch kann in Rust nicht nur schnell, sondern auch sehr
+effizient entwickelt werden.
+
+
 ```rust
 // Dies ist ein Kommentar. Ein einzeiliger...
 /* ...und multi-zeilen Kommentare sehe so aus */
@@ -41,23 +41,23 @@ effizient entwickelt werden.
 /////////////////////
 // Stabile binaries gibt es unter https://www.rust-lang.org/downloads.html
 
-// Programme werden in .rs Dateien geschrieben also zum Beispiel  
-// "main.rs" und dann kompiliert "rustc main.rs"  
-// Herauskommt eine ausführbare Datei "main"  
-// Für dieses Tutorial reicht das vollkommen aus. Für größere Projekte  
-// sollte das unten beschriebene Cargo angeschaut werden.  
+// Programme werden in .rs Dateien geschrieben also zum Beispiel
+// "main.rs" und dann kompiliert "rustc main.rs"
+// Herauskommt eine ausführbare Datei "main"
+// Für dieses Tutorial reicht das vollkommen aus. Für größere Projekte
+// sollte das unten beschriebene Cargo angeschaut werden.
 
-// Cargo  
-// Ein gängiges Tool um Rust Projekte zu verwalten ist Cargo. Es macht im  
-// wesentlichen drei Dinge: Code bauen, Dependencies laden und  
-// Dependencies bauen.  
-// Um ein vorhandenes Projekt zu cargo-ifyen müssen drei Dinge gemacht werden  
-// * Erstelle eine Cargo.toml Konfigurationsdatei  
-// * Verschiebe Source Code in ein src Verzeichnis  
-// * Lösche das alte Executable  
+// Cargo
+// Ein gängiges Tool um Rust Projekte zu verwalten ist Cargo. Es macht im
+// wesentlichen drei Dinge: Code bauen, Dependencies laden und
+// Dependencies bauen.
+// Um ein vorhandenes Projekt zu cargo-ifyen müssen drei Dinge gemacht werden
+// * Erstelle eine Cargo.toml Konfigurationsdatei
+// * Verschiebe Source Code in ein src Verzeichnis
+// * Lösche das alte Executable
 //
-// 'cargo build' baut den Code  
-// 'cargo run' baut und führt das Programm aus  
+// 'cargo build' baut den Code
+// 'cargo run' baut und führt das Programm aus
 
 ///////////////
 // 1. Basics //
@@ -299,8 +299,8 @@ fn main() {
     // wird es automatisch im Speicher de-allokiert.
     let mut mine: Box<i32> = Box::new(3);
     // Jetzt wird die Box dereferenziert
-    *mine = 5; 
-    // Jetzt geht `mine` in den Besitz von `now_its_mine` über. 
+    *mine = 5;
+    // Jetzt geht `mine` in den Besitz von `now_its_mine` über.
     // `mine` wird verschoben.
     let mut now_its_mine = mine;
     *now_its_mine += 2;
@@ -308,7 +308,7 @@ fn main() {
     println!("{}", now_its_mine); // ergibt 7
 
     // Das würde nicht kompilieren, da `now_its_mine` jetzt den Pointer besitzt
-    // println!("{}", mine); 
+    // println!("{}", mine);
 
     // Reference – ein unveränderlicher Pointer der fremde Daten referenziert
     // Wenn eine Referenz auf einen Wert gesetzt wird, heisst das, dass man den
@@ -337,16 +337,16 @@ fn main() {
 
 ## Weitere Informationen
 
-Es gibt eine ganze Reihe mehr über Rust zu sagen. Dieser Text gibt nur einen  
-Einblick in die wichtigsten Sprachmerkmale.  
+Es gibt eine ganze Reihe mehr über Rust zu sagen. Dieser Text gibt nur einen
+Einblick in die wichtigsten Sprachmerkmale.
 Um mehr über Rust zu erfahren, sollte man mit den folgenden Stellen starten:
 
-1. Englisch:  
+1. Englisch:
   * [Die offizielle Rust Webseite](http://rust-lang.org)
   * [The Rust Programming Language](https://doc.rust-lang.org/stable/book/README.html)
   * [/r/rust](http://reddit.com/r/rust)
-  * the #rust channel on irc.mozilla.org 
-  
+  * the #rust channel on irc.mozilla.org
+
 2. Deutsch
   * [Rust Wikipedia](https://de.wikipedia.org/wiki/Rust_(Programmiersprache))
   * [Artikel im LinuxMagazin](http://www.linux-magazin.de/Ausgaben/2015/08/Rust)

@@ -12,7 +12,7 @@ filename: learnpython3-fr.py
 lang: fr-fr
 ---
 
-Python a été créé par Guido Van Rossum au début des années 90. C'est maintenant un des 
+Python a été créé par Guido Van Rossum au début des années 90. C'est maintenant un des
 langages les plus populaires. Je suis tombé amoureux de Python pour la clarté de sa syntaxe.
 C'est tout simplement du pseudo-code exécutable.
 
@@ -278,7 +278,7 @@ filled_dict["one"]   # => 1
 list(filled_dict.keys())   # => ["three", "two", "one"]
 
 
-# On obtient toutes les valeurs sous forme d'un itérable avec "values()". 
+# On obtient toutes les valeurs sous forme d'un itérable avec "values()".
 # Là aussi, il faut utiliser list() pour avoir une liste.
 # Note : l'ordre n'est toujours pas garanti.
 list(filled_dict.values())   # => [3, 2, 1]
@@ -509,7 +509,7 @@ all_the_args(1, 2, a=3, b=4) affiche:
 """
 
 # En appelant des fonctions, on peut aussi faire l'inverse :
-# utiliser * pour étendre un tuple de paramètres 
+# utiliser * pour étendre un tuple de paramètres
 # et ** pour étendre un dictionnaire d'arguments.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
@@ -669,7 +669,7 @@ def double_numbers(iterable):
 # Au lieu de générer et retourner toutes les valeurs en une fois, il en crée une à chaque
 # itération.  Cela signifie que les valeurs supérieures à 30 ne seront pas traîtées par
 # double_numbers.
-# Note : range est un générateur aussi. 
+# Note : range est un générateur aussi.
 # Créer une liste 1-900000000 prendrait beaucoup de temps
 # On met un underscore à la fin d'un nom de variable normalement réservé par Python.
 range_ = range(1, 900000000)

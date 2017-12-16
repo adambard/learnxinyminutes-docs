@@ -127,7 +127,7 @@ berdasarkan perilaku lamannya (bukan struktur lamannya) */
    ####################*/
 
 selektor {
-    
+
     /* Unit */
     width: 50%; /* dalam persen */
     font-size: 2em; /* angka kali jumlah font-size saat ini */
@@ -136,7 +136,7 @@ selektor {
     width: 5cm; /* dalam centimeter */
     width: 50mm; /* dalam milimeter */
     width: 5in; /* dalam inci */
-    
+
     /* Warna */
     background-color: #F6E;  /* dalam short hex */
     background-color: #F262E2; /* dalam format long hex */
@@ -144,10 +144,10 @@ selektor {
     background-color: rgb(255, 255, 255); /* dalam rgb */
     background-color: rgb(10%, 20%, 50%); /* dalam persen rgb */
     background-color: rgba(255, 0, 0, 0.3); /* dalam rgb semi-transparan*/
-    
+
     /* Gambar */
     background-image: url(/folder-gambar/image.jpg);
-    
+
     /* Font */
     font-family: Arial;
     font-family: "Courier New"; /* jika nama font memiliki spasi,
@@ -173,7 +173,7 @@ Namun, sebisa mungkin metode ini dihindari. -->
    selektor { properti:nilai; }
 </style>
 
-<!-- atau langsung mengetik properti CSS pada sebuah elemen. 
+<!-- atau langsung mengetik properti CSS pada sebuah elemen.
 Metode ini harus dihindari sebisa mungkin. -->
 <div style='properti:nilai;'>
 </div>
@@ -182,7 +182,7 @@ Metode ini harus dihindari sebisa mungkin. -->
 
 ## Prioritas
 
-Kita tahu bahwa sebuah elemen bisa dipilih dengan lebih dari satu selektor, 
+Kita tahu bahwa sebuah elemen bisa dipilih dengan lebih dari satu selektor,
 serta bisa diberi lebih dari satu properti.
 Dalam kasus seperti ini, hanya salah satu properti saja yang akan diterapkan
 pada elemen dengan prioritas tertentu.
@@ -215,14 +215,14 @@ dan susunan markup:
 </p>
 ```
 
-Maka prioritas penerapan style-nya ialah sbb.:  
+Maka prioritas penerapan style-nya ialah sbb.:
 Ingat, penerapan ini untuk masing-masing **properti**,
 bukan keseluruhan larik.
 
-* `E` prioritas pertama sebab ada kata `!important`.  
+* `E` prioritas pertama sebab ada kata `!important`.
 	Dianjurkan untuk menghindari kata ini jika tidak benar-benar perlu.
 * `F` prioritas kedua sebab ia diketik secara inline.
-* `A` prioritas ketiga sebab selektor ini lebih spesifik dibanding yang lain.  
+* `A` prioritas ketiga sebab selektor ini lebih spesifik dibanding yang lain.
 	lebih spesifik = lebih banyak unsur selektor. contoh ini punya 3 unsur:
 	1 tagname `p` + 1 nama class `class1` + 1 attribute `attr='nilai'`
 * `C` prioritas berikutnya sebab meski sama spesifik dengan `B` namun
@@ -243,4 +243,3 @@ unsur dan nilai yang kita ketikkan dalam CSS dengan peramban yang ditargetkan.
 * [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
 * [QuirksMode CSS](http://www.quirksmode.org/css/)
 * [Z-Index - The stacking context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
-

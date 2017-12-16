@@ -24,12 +24,12 @@ La programmation dynamique est une technique très efficace pour résoudre une c
 ## Exemple de Programmation Dynamique
 
 Le problème de la plus grande sous-chaîne croissante est de trouver la plus grande sous-chaîne croissante dans une chaîne. Soit la chaîne `S = {a1, a2, a3, a4, ............., an-1, an}`, nous avons à trouver la plus grande chaîne telle que pour tout `j` et `i`, `j<i` dans la chaîne `aj<ai`.
-Premièrement, nous avons à trouver la valeur de la plus grande sous-chaîne (LSi) à chaque index `i`, avec le dernier élément de la sous-chaîne étant ai. Alors, la plus grande sous-chaîne sera le plus gros LSi. Pour commencer, LSi est égal à 1, car ai est le seul élément de la chaîne (le dernier). Ensuite, pour chaque `j` tel que `j<i` et `aj<ai`, nous trouvons le plus grand LSj et ajoutons le à LSi. L'algorithme fonctionne en temps *O(n2)*.   
+Premièrement, nous avons à trouver la valeur de la plus grande sous-chaîne (LSi) à chaque index `i`, avec le dernier élément de la sous-chaîne étant ai. Alors, la plus grande sous-chaîne sera le plus gros LSi. Pour commencer, LSi est égal à 1, car ai est le seul élément de la chaîne (le dernier). Ensuite, pour chaque `j` tel que `j<i` et `aj<ai`, nous trouvons le plus grand LSj et ajoutons le à LSi. L'algorithme fonctionne en temps *O(n2)*.
 
 Pseudo-code pour trouver la longueur de la plus grande sous-chaîne croissante :
-La complexité de cet algorithme peut être réduite en utilisant une meilleure structure de données qu'un tableau. Par exemple, si nous sauvegardions le tableau d'origine, ou une variable comme plus_grande_chaîne_jusqu'à_maintenant et son index, nous pourrions sauver beaucoup de temps. 
+La complexité de cet algorithme peut être réduite en utilisant une meilleure structure de données qu'un tableau. Par exemple, si nous sauvegardions le tableau d'origine, ou une variable comme plus_grande_chaîne_jusqu'à_maintenant et son index, nous pourrions sauver beaucoup de temps.
 
-Le même concept peut être appliqué pour trouver le chemin le plus long dans un graphe acyclique orienté.  
+Le même concept peut être appliqué pour trouver le chemin le plus long dans un graphe acyclique orienté.
 
 ```python
  for i=0 to n-1

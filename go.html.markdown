@@ -142,7 +142,7 @@ can include line breaks.` // Same string type.
 	file, _ := os.Create("output.txt")
 	fmt.Fprint(file, "This is how you write to a file, by the way")
 	file.Close()
-	
+
 	// Output of course counts as using a variable.
 	fmt.Println(s, c, a4, s3, d2, m)
 

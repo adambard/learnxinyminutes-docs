@@ -486,10 +486,10 @@ perms(x) % Lista todas as permutações de elementos de x
 % Início ClassePosicoesGPS.m
 classdef ClassePosicoesGPS % O nome da classe.
   properties % As propriedades da classe comportam-se como estruturas
-    latitude 
-    longitude 
+    latitude
+    longitude
   end
-  methods 
+  methods
     % Este método que tem o mesmo nome da classe é o construtor.
     function obj = ClassePosicoesGPS(lat, lon)
       obj.latitude = lat;
@@ -537,4 +537,3 @@ c = a + b
 
 * O site oficial [http://http://www.mathworks.com/products/matlab/](http://www.mathworks.com/products/matlab/)
 * O fórum oficial de respostas: [http://www.mathworks.com/matlabcentral/answers/](http://www.mathworks.com/matlabcentral/answers/)
-
