@@ -22,7 +22,7 @@ lang: pl-pl
 ```ruby
 # To jest komentarz
 
-=begin 
+=begin
 To jest wielolinijkowy komentarz
 Nikt ich nie używa
 Ty też nie powinieneś
@@ -68,7 +68,7 @@ false.class #=> FalseClass
 1 != 1 #=> false
 2 != 1 #=> true
 
-# jedyną 'fałszywą' wartością poza false, jest nil 
+# jedyną 'fałszywą' wartością poza false, jest nil
 
 !nil   #=> true
 !false #=> true
@@ -124,7 +124,7 @@ puts "Drukuję!"
 #=> Drukuję!
 #=> nil
 
-# wydrukowanie wartości bez nowej linii na końcu 
+# wydrukowanie wartości bez nowej linii na końcu
 print "Drukuję!"
 #=> Drukuję! => nill
 
@@ -147,7 +147,7 @@ sciezka_do_projektu = '/dobra/nazwa/'
 sciezka = '/zla/nazwa/'
 
 # Symbole (są obiektami)
-# Symbole są niezmiennymi, wielokrotnie używanymi stałymi reprezentowanymi wewnętrznie jako 
+# Symbole są niezmiennymi, wielokrotnie używanymi stałymi reprezentowanymi wewnętrznie jako
 # liczby całkowite. Często używane są zamiast stringów w celu wydajniejszego przekazywania danych
 
 :oczekujacy.class #=> Symbol
@@ -278,7 +278,7 @@ hasz.each do |klucz, wartosc|
   puts "#{klucz} jest #{wartosc}"
 end
 
-# Jeśli nadal potrzebujesz indeksum, możesz użyć "each_with_index" i zdefiniować 
+# Jeśli nadal potrzebujesz indeksum, możesz użyć "each_with_index" i zdefiniować
 # zmienną odpowiadającą indeksowi
 tablica.each_with_index do |element, indeks|
   puts "#{element} jest numerem #{indeks} w tablicy"

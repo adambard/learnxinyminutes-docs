@@ -23,7 +23,7 @@ Get-ExecutionPolicy -List
 Set-ExecutionPolicy AllSigned
 # Otras opciones de políticas de ejecución son:
 # - Restricted: Los scripts no correrán.
-# - RemoteSigned: Los scripts que se hayan descargado sólo correrán si han sido firmados por un editor de confianza. 
+# - RemoteSigned: Los scripts que se hayan descargado sólo correrán si han sido firmados por un editor de confianza.
 # - AllSigned: Los scripts requieren ser firmados por un editor de confianza.
 # - Unrestricted: Ejecuta cualquier script.
 help about_Execution_Policies # para obtener más ayuda sobre políticas de ejecución.
@@ -65,15 +65,15 @@ echo 'Esta es la primer línea'; echo 'Esta es la segunda'
 # La declaración de una variable se ve así:
 $unaCadena ="Algún texto"
 # O así:
-$unNumero = 5 -as [double] 
+$unNumero = 5 -as [double]
 $unaLista = 1,2,3,4,5
-$unaCadena = $unaLista -join '--' # también existe el parámetro -split 
+$unaCadena = $unaLista -join '--' # también existe el parámetro -split
 $unaTablaHash = @{nom1='val1'; nom2='val2'}
 
 # Uso de variables:
 echo $unaCadena
 echo "Interpolación: $unaCadena"
-echo "`$unaCadena tiene longitud de $($unaCadena.Length)"  
+echo "`$unaCadena tiene longitud de $($unaCadena.Length)"
 echo '$unaCadena'
 echo @"
 Esta es una Here-String
@@ -162,7 +162,7 @@ Get-PSProvider
 # Los Cmdlets tienen parámetros que controlan su ejecución:
 Get-ChildItem -Filter *.txt -Name # Se obtiene sólo el nombre de todos los archivos txt
 # Sólo se necesita escribir caracteres de un parámetro hasta que deja de ser ambiguo
-ls -fi *.txt -n # -f no se puede porque también existe -Force 
+ls -fi *.txt -n # -f no se puede porque también existe -Force
 # Use `Get-Help Get-ChildItem -Full` para un tratado más completo
 
 # Los results del cmdlet anterior se le pueden pasar como entrada al siguiente.
@@ -233,7 +233,7 @@ function Crear-SitioWeb() {
 
 
 ### Todo es .NET
-# Una cadena PS es, de hecho, una cadena tipo System.String de .NET 
+# Una cadena PS es, de hecho, una cadena tipo System.String de .NET
 # Todos los métodos y propiedades de .NET están disponibles
 'cadena'.ToUpper().Replace('E', 'eee')
 # O más powershellezco
@@ -254,7 +254,7 @@ $writer.Write([Environment]::NewLine)
 $writer.Dispose()
 
 ### Entrada/Salida
-# Leyendo una variable 
+# Leyendo una variable
 $Nombre = Read-Host "¿Cómo se llama?"
 echo "¡Hola $Nombre!"
 [int]$Edad = Read-Host "¿Cuál es su edad?"
@@ -267,7 +267,7 @@ Get-Command ConvertTo-*,ConvertFrom-*
 
 ### Material útil
 # Actualizar la ruta de ejecuciones (PATH)
-$env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + 
+$env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") +
 	";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
 # Encontrar Python en el path
@@ -301,7 +301,7 @@ Configurando el shell
 
 ```
 # $Profile es la ruta completa para su `Microsoft.PowerShell_profile.ps1`
-# Todo el código alojado allí será ejecutado cuando se ejecuta una nueva sesión de PS 
+# Todo el código alojado allí será ejecutado cuando se ejecuta una nueva sesión de PS
 if (-not (Test-Path $Profile)) {
 	New-Item -Type file -Path $Profile -Force
 	notepad $Profile
@@ -321,9 +321,9 @@ Proyectos interesantes (EN)
 * [Jump-Location](https://github.com/tkellogg/Jump-Location) Powershell `cd` que lee su mente
 
 
-Material no cubierto en esta guía  
+Material no cubierto en esta guía
 
-* WMI: Windows Management Intrumentation (Get-CimInstance)  
-* Multitarea: Start-Job -scriptBlock {...}, 
+* WMI: Windows Management Intrumentation (Get-CimInstance)
+* Multitarea: Start-Job -scriptBlock {...},
 * Firmas de código
 * Remoting (Enter-PSSession/Exit-PSSession; Invoke-Command)

@@ -129,4 +129,3 @@ PAUSE
 
 * [Código fuente](https://github.com/smallbasic/SmallBASIC)
 * [Reference snapshot](http://smallbasic.github.io/)
- 

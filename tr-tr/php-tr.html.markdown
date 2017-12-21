@@ -14,8 +14,8 @@ PHP 5+ versiyonu için geçerlidir.
 ```php
 <?php // PHP kodları <?php etiketleri içerisinde bulunmalıdır.
 
-// Eğer php dosyanız sadece PHP kodu içeriyorsa, php'nin kapatma 
-// etiketini kapatmayabilirsiniz. 
+// Eğer php dosyanız sadece PHP kodu içeriyorsa, php'nin kapatma
+// etiketini kapatmayabilirsiniz.
 
 // // işareti ile tek satırlık yorum satırı başlar.
 
@@ -24,15 +24,15 @@ PHP 5+ versiyonu için geçerlidir.
 
 
 /*
-    Çoklu satır kodu bu şekilde yazıyoruz. slash yıldız ile başlar 
+    Çoklu satır kodu bu şekilde yazıyoruz. slash yıldız ile başlar
     ve yıldız slash ile biter.
 */
 
 // "echo" ya da "print" metodları çıktı almak için kullanılır.
-print('Hello '); // Ekrana Yeni satır karakteri olmadan "Hello " 
+print('Hello '); // Ekrana Yeni satır karakteri olmadan "Hello "
                  // yazdırılır.
 
-// () parantezler "echo" ve "print" metodları için isteğe bağlıdır. 
+// () parantezler "echo" ve "print" metodları için isteğe bağlıdır.
 echo "World\n"; // Ekrana yeni satır karakteri olmadan "World"
                 // yazdırılır.
 // (Bütün ifadeler noktalı virgül ile bitmelidir.)
@@ -49,9 +49,9 @@ Hello World Again!
 
 // Değişkenler $ sembolü ile başlar.
 // Geçerli bir değişken bir harf veya alt çizgi ile başlar,
-// devamında da bir sayı, harf veya alt çizgi ile devam eder. 
+// devamında da bir sayı, harf veya alt çizgi ile devam eder.
 
-// Mantıksal değerler 
+// Mantıksal değerler
 // Boolean values are harf büyüklüğüne duyarsızdır.
 $boolean = true;  // veya TRUE veya True
 $boolean = false; // veya FALSE veya False
@@ -123,7 +123,7 @@ echo 'This string ' . 'is concatenated';
 // ve bir sayı, harf ya da altçizgi ile devam eder.
 define("FOO",     "something");
 
-// sabite ulaşmak için direk olarak seçilen ismi kullanabilirsiniz. 
+// sabite ulaşmak için direk olarak seçilen ismi kullanabilirsiniz.
 echo 'This outputs '.FOO;
 
 
@@ -132,7 +132,7 @@ echo 'This outputs '.FOO;
  */
 
 // PHP'de bütün diziler ilişikilendirilebilirdir. (hashmaps),
-// İlişkilendirilebilir(associative) diziler, hashmap olarak bilinir. 
+// İlişkilendirilebilir(associative) diziler, hashmap olarak bilinir.
 
 // PHP'nin bütün versiyonları için çalışır
 $associative = array('One' => 1, 'Two' => 2, 'Three' => 3);
@@ -162,16 +162,16 @@ echo('Hello World!');
 
 print('Hello World!'); // echo ile aynıdır.
 
-// Aslında echo bir dil sabitidir, parantezleri kullanmayabilirsiniz. 
+// Aslında echo bir dil sabitidir, parantezleri kullanmayabilirsiniz.
 echo 'Hello World!';
-print 'Hello World!'; // Bu yazdırılacaktır. 
+print 'Hello World!'; // Bu yazdırılacaktır.
 
 $paragraph = 'paragraph';
 
 echo 100;        // Echo ile doğrudan sayısal değer kullanımı
 echo $paragraph; // veya değişken
 
-// PHP 5.4.0 veya daha üstü sürümlerde kısa açılış etiketi 
+// PHP 5.4.0 veya daha üstü sürümlerde kısa açılış etiketi
 // konfigürasyonları yapıldı ise, kısa açılış etiketini kullanabilirsiniz.
 ?>
 <p><?= $paragraph ?></p>
@@ -181,7 +181,7 @@ $x = 1;
 $y = 2;
 $x = $y; // Şu anda $x değişkeni $y ile aynı değere sahiptir.
 $z = &$y;
-// $z, $y'nin referansını içermektedir. 
+// $z, $y'nin referansını içermektedir.
 // $z'nin değerinin değişmesi $y'nin değerinide değiştireceltir veya
 // tam tersi. Ancak $x özgün değeri olarak kalacaktır.
 
@@ -194,7 +194,7 @@ echo $z; // => 0
 // Dump'lar değişkenin tipi ve değerini yazdırır
 var_dump($z); // int(0) yazdırılacaktır
 
-// Print'ler ise değişkeni okunabilir bir formatta yazdıracaktır. 
+// Print'ler ise değişkeni okunabilir bir formatta yazdıracaktır.
 print_r($array); // Çıktı: Array ( [0] => One [1] => Two [2] => Three )
 
 
@@ -236,7 +236,7 @@ echo $string + $string; // => 0
 // Çıktı 0 olacaktır, çünkü + operatörü karakter dizisi olan 'one' değerini
 // bir sayıya çeviremez.
 
-// Veri tipi çevirileri bir değişkeni farklı bir türde 
+// Veri tipi çevirileri bir değişkeni farklı bir türde
 // düzenlemek için kullanılabilir.
 
 $boolean = (boolean) 1; // => true
@@ -304,7 +304,7 @@ switch ($x) {
                // durumunuda kapsarsınız.
     case 'two':
     case 'three':
-        // $variable değişkeni 'two' ya da 'three' ise 
+        // $variable değişkeni 'two' ya da 'three' ise
         break;
     default:
         // Varsayılan olarak bir şey yap
@@ -357,7 +357,7 @@ while ($i < 5) {
 
 for ($i = 0; $i < 5; $i++) {
     if ($i === 3) {
-        continue; // Aktif döngüyü atlar 
+        continue; // Aktif döngüyü atlar
     }
     echo $i;
 } // "0124" yazdırılacaktır.
@@ -378,7 +378,7 @@ echo my_function(); // => "Hello"
 // Geçerli bir fonksiyon ismi bir harf veya altçizgi ile başlar ve
 // bir sayı, harf ya da alt çizgi ile devam eder.
 
-function add ($x, $y = 1) { // $y değeri isteğe bağlıdır ve 
+function add ($x, $y = 1) { // $y değeri isteğe bağlıdır ve
                             // varsayılan değeri 1'dir
   $result = $x + $y;
   return $result;
@@ -387,7 +387,7 @@ function add ($x, $y = 1) { // $y değeri isteğe bağlıdır ve
 echo add(4); // => 5
 echo add(4, 2); // => 6
 
-// $result fonksiyon dışında ulaşılabilir değildir. 
+// $result fonksiyon dışında ulaşılabilir değildir.
 // print $result; // Bir uyarı verecektir.
 
 // PHP 5.3'den beri bir anonymous fonksiyon tanımlayabilirsiniz;
@@ -412,7 +412,7 @@ function bar ($x, $y) {
 $bar = bar('A', 'B');
 $bar('C'); // "A - B - C" yazdırılacaktır.
 
-// Fonksiyonun ismini karakter dizinden çağırabilirsiniz. 
+// Fonksiyonun ismini karakter dizinden çağırabilirsiniz.
 $function_name = 'add';
 echo $function_name(1, 2); // => 3
 // Programatik olarak fonksiyonları çalıştırmak için yararlı olabilir
@@ -428,7 +428,7 @@ echo $function_name(1, 2); // => 3
 
 include 'my-file.php';
 // my-file.php dosyasındaki kodlar artık mevcut scope'da kullanılabilir.
-// Eğer dosya include edilemezse bir uyarı (örneğin: file not found) 
+// Eğer dosya include edilemezse bir uyarı (örneğin: file not found)
 // fırlatılacaktır.
 
 include_once 'my-file.php';
@@ -437,7 +437,7 @@ include_once 'my-file.php';
 
 require 'my-file.php';
 require_once 'my-file.php';
-// Dosya include edilemediğinde fatal error veren require() bu konu 
+// Dosya include edilemediğinde fatal error veren require() bu konu
 // dışında include() ile aynıdır.
 
 // my-include.php dosyasının içeriği:
@@ -449,9 +449,9 @@ return 'Anything you like.';
 // Include'lar ver require'lar aynı zamanda bir return dönebilir.
 $value = include 'my-include.php';
 
-// Dosyalar verilen dosya yoluna göre include edilir veya, hiçbirşey 
-// verilmezse include_path konfigürasyonuna göre include edecektir. 
-// Eğer dosya include_path'da da bulunamazsa include hata vermeden 
+// Dosyalar verilen dosya yoluna göre include edilir veya, hiçbirşey
+// verilmezse include_path konfigürasyonuna göre include edecektir.
+// Eğer dosya include_path'da da bulunamazsa include hata vermeden
 // önce içinde bulunulan dizini kontrol ecektir.
 /* */
 
@@ -470,9 +470,9 @@ class MyClass
 
     // Static değişkenler ve onların görünürlüğü
     public static $publicStaticVar = 'publicStatic';
-    private static $privateStaticVar = 'privateStatic'; 
+    private static $privateStaticVar = 'privateStatic';
         // Sadece bu sınıf içerisinde erişilebilir
-    protected static $protectedStaticVar = 'protectedStatic'; 
+    protected static $protectedStaticVar = 'protectedStatic';
         // Bu sınıf ve alt sınıflarından erişilebilir
 
     // Özellikler görünürlüğü ile birlikte tanımlanmalıdır.
@@ -499,8 +499,8 @@ class MyClass
     }
 
 /*
-Bir sınıfın özelliğini ya da metodunu statik yaptığınız takdirde sınıfın bir 
-objesini oluşturmadan bu elemana erişebilirsiniz. Bir özellik statik tanımlanmış 
+Bir sınıfın özelliğini ya da metodunu statik yaptığınız takdirde sınıfın bir
+objesini oluşturmadan bu elemana erişebilirsiniz. Bir özellik statik tanımlanmış
 ise obje üzerinden bu elemana erişilemez. (Statik metodlar öyle değildir.)
 */
 
@@ -567,7 +567,7 @@ class MyMapClass
 
 $x = new MyMapClass();
 echo $x->property; // __get() metodunu kullanacaktır.
-$x->property = 'Something'; // __set() metodunu kullanacaktır. 
+$x->property = 'Something'; // __set() metodunu kullanacaktır.
 
 // Sınıflar abstract olabilir(abstract kelimesini kullanarak) veya
 // interface'ler uygulanabilir (implements kelimesi kullanılarak).
@@ -627,7 +627,7 @@ class SomeOtherClass implements InterfaceOne, InterfaceTwo
 /********************************
  * Traits
  */
-// Trait'ler PHP 5.4.0'dan beri kullanılabilir ve "trait" kullanılarak 
+// Trait'ler PHP 5.4.0'dan beri kullanılabilir ve "trait" kullanılarak
 // tanımlanır.
 
 trait MyTrait
@@ -652,12 +652,12 @@ $cls->myTraitMethod(); // "I have MyTrait" çıktısını verir.
  * İsim Uzayları
  */
 
-// Bu alan ayrılmıştır, çünkü isim uzayı tanımı bir dosyada en başta 
+// Bu alan ayrılmıştır, çünkü isim uzayı tanımı bir dosyada en başta
 // yapılmalıdır. Bu örnekte böyle olmadığını varsayalım.
 
 <?php
 
-// Varsayılan olarak, sınıflar global isim uzayındadır, ve açıkça bir 
+// Varsayılan olarak, sınıflar global isim uzayındadır, ve açıkça bir
 // ters slash ile çağrılabilir.
 
 $cls = new \MyClass();
@@ -701,5 +701,4 @@ Güncel en yi örnekler için [PHP Usulüne Uygun](http://kulekci.net/php-the-ri
 
 Eğer bir paket yöneticisi olan dil kullandıysanız, [Composer](http://getcomposer.org/)'a bir göz atın.
 
-Genel standartlar için PHP Framework Interoperability Group'unun [PSR standards](https://github.com/php-fig/fig-standards) ziyaret edebilirsiniz. 
-
+Genel standartlar için PHP Framework Interoperability Group'unun [PSR standards](https://github.com/php-fig/fig-standards) ziyaret edebilirsiniz.

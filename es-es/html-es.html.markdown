@@ -9,7 +9,7 @@ lang: es-es
 ---
 
 HTML significa Lenguaje de marcado de hipertexto (HyperText Markup Language).
-Este es un lenguaje usado para escribir páginas en la web (WWW). 
+Este es un lenguaje usado para escribir páginas en la web (WWW).
 Este es un lenguaje de marcado, es usado para escribir páginas web usando código para indicar cómo se debe mostrar el texto y los datos.
 En efecto, los archivos html son simples archivos de texto.
 Qué es esto de marcado? es un método para organizar los datos de la página encerrandolos con etiquetas de apertura y cierre.
@@ -24,7 +24,7 @@ Este artículo está centrado principalmente en la sintaxis HTML y algunos tips 
 <!-- los comentarios están encerrados como en esta línea! -->
 
 <!-- #################### Las Etiquetas #################### -->
-   
+
 <!-- Este es un ejemplo de un archivo HTML que analizaremos! -->
 
 <!doctype html>
@@ -115,7 +115,7 @@ Este artículo está centrado principalmente en la sintaxis HTML y algunos tips 
 
 HTML es escrito en archivos que terminan con (extensión) `.html`.
 
-## Para aprender más! 
+## Para aprender más!
 
 * [wikipedia](https://es.wikipedia.org/wiki/HTML)
 * [HTML tutorial](https://developer.mozilla.org/es/docs/Web/HTML)

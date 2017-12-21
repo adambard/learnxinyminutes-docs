@@ -88,7 +88,7 @@ false
 # Uma string pode ser indexada como um vetor de caracteres
 "Isso é uma string"[1] # => 'I' # Julia começa a indexar a partir do 1
 # Porém isso não funcionará direito com strings em UTF8,
-# portanto é recomendado usar iterações sobre uma string (map, loops com for, etc). 
+# portanto é recomendado usar iterações sobre uma string (map, loops com for, etc).
 
 # $ pode ser usado para interpolação de string:
 "2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
@@ -110,7 +110,7 @@ some_var # => 5
 
 # Acessando a variável anterior não iniciada é um erro
 try
-    some_other_var # => ERROR: some_other_var não definida 
+    some_other_var # => ERROR: some_other_var não definida
 catch e
     println(e)
 end
@@ -130,7 +130,7 @@ SomeOtherVar123! = 6 # => 6
 #   de underscore é desencorajado a menos que o nome da variável seja dificil
 #   de ler.
 #
-# * Os nomes de tipos começam com letra maiúscula e a separação de letras é 
+# * Os nomes de tipos começam com letra maiúscula e a separação de letras é
 #   feita a partir de CamelCase no lugar de underscores.
 #
 # * Nomes de funções e macros são em minúsculo, sem underscore.
@@ -186,8 +186,8 @@ catch e
     println(e)
 end
 
-# Erros listam a linha e o nome do arquivo que ele está, mesmo se for uma 
-# biblioteca padrão. Se você construiu Julia pelo source, você pode olhar na 
+# Erros listam a linha e o nome do arquivo que ele está, mesmo se for uma
+# biblioteca padrão. Se você construiu Julia pelo source, você pode olhar na
 # pasta base dentro da pasta do Julia para encontrar esses arquivos.
 
 # Você pode inicializar vetores com limites
@@ -386,7 +386,7 @@ end
 add(5, 6) # => 11 after printing out "x is 5 and y is 6"
 
 # Você pode definir funções que tomam um numero incerto de
-# argumentos 
+# argumentos
 function varargs(args...)
     return args
     # use a palavra chave return para retornar um valor em qualquer parte da função
@@ -471,7 +471,7 @@ add_10 = create_adder(10)
 add_10(3) # => 13
 
 
-# Há 
+# Há
 # There are built-in higher order functions
 map(add_10, [1,2,3]) # => [11, 12, 13]
 filter(x -> x > 5, [3, 4, 5, 6, 7]) # => [6, 7]
@@ -672,7 +672,7 @@ square_area(5) #25
 
 # O que acontece quando alimentamos square_area com um inteiro?
 # What happens when we feed square_area an integer?
-code_native(square_area, (Int32,))  
+code_native(square_area, (Int32,))
     #       .section    __TEXT,__text,regular,pure_instructions
     #   Filename: none
     #   Source line: 1              # Prólogo
@@ -705,7 +705,7 @@ code_native(square_area, (Float64,))
     #       vmulsd  XMM0, XMM0, XMM0 # Duplicação ecalar de precisão multipla(AVX)
     #       pop RBP
     #       ret
-    #   
+    #
 # Note que Julia usará instruções de ponto flutuante se quaser um dos
 # argumentos forem float
 # Vamos calcular a área de um circulo
@@ -739,7 +739,7 @@ code_native(circle_area, (Float64,))
     #       vmulsd  XMM0, XMM1, XMM0
     #       pop RBP
     #       ret
-    #   
+    #
 ```
 
 ## Extras

@@ -25,7 +25,7 @@ samanaikaisten komentojen suorittamisen nykyaikaisten moniytimisten
 prosessoreiden hyödyntämiseksi ja antaa käyttäjälle ominaisuuksia suurten
 projektien käsittelemiseksi.
 
-Go tuo mukanaan loistavan oletuskirjaston sekä innokkaan yhteisön.  
+Go tuo mukanaan loistavan oletuskirjaston sekä innokkaan yhteisön.
 
 ```go
 // Yhden rivin kommentti

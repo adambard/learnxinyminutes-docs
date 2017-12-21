@@ -31,7 +31,7 @@ Riadenie revízií je systém, ktorý postupom času zaznamenáva zmeny súboru 
 
 [Ďalšie informácie](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
 
-### Prečo Používať Git? 
+### Prečo Používať Git?
 
 * Môžeš pracovať offline.
 * Spolupráca s ostatnými je jednoduchá!
@@ -223,7 +223,7 @@ $ git push origin --tags
 Aktualizuje všetky súbory v pracovnom strome, aby odpovedali verzií v indexe, alebo v inom strome.
 
 ```bash
-# Aktualizuj strom, aby odpovedal (predvolene) 
+# Aktualizuj strom, aby odpovedal (predvolene)
 # hlavnej vetve repozitáru (master branch)
 $ git checkout
 # Aktualizuj strom, aby odpovedal konrkétnej vetve
@@ -359,7 +359,7 @@ Uloží obsah repozitára a zlúči ho s inou vetvou.
 $ git pull origin master
 
 # Predvolene, git pull aktualizuje tvoju aktuálnu vetvu
-# zlúčením nových zmien zo vzdialenej vetvy 
+# zlúčením nových zmien zo vzdialenej vetvy
 $ git pull
 
 # Zlúč zmeny zo vzdialenej vetvy a presuň vetvu do nového základného commitu (rebase)

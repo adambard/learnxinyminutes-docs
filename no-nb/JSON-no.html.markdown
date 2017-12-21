@@ -1,4 +1,4 @@
---- 
+---
 language: json
 filename: learnjson-no.json
 lang: no-nb
@@ -18,7 +18,7 @@ C-stil (`//`, `/* */`) kommentarer.
 ```json
 {
   "nøkkel": "verdi",
-  
+
   "nøkler": "må alltid være i doble anførselstegn",
   "tall": 0,
   "strings": "Hellø, wørld. Alt unicode er godkjent, også \"escaping\".",
@@ -48,7 +48,7 @@ C-stil (`//`, `/* */`) kommentarer.
       [0, 0, 0, 1]
     ]
   ],
-  
+
   "Alternativ": {
     "Kommentar": "Sjekk ut ditta!"
   , "plassering av komma": "Sålenge den er før verdien er det gyldig"

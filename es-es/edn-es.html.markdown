@@ -5,7 +5,7 @@ contributors:
   - ["Jason Yeo", "https://github.com/jsyeo"]
 translators:
     - ["Gino Amaury", "https://github.com/ginoamaury"]
-lang: es-es 
+lang: es-es
 ---
 
 La notación de datos extensible (Extensible Data Notation (EDN)) es un formato para serializar los datos.
@@ -14,7 +14,7 @@ La notación se utiliza internamente por Clojure para representar programas. Tam
 utilizado como un formato de transferencia de datos como JSON. A pesar de que se utiliza más comúnmente en
 Clojure, existen implementaciones de EDN para muchos otros lenguajes.
 
-El principal beneficio de EDN sobre JSON y YAML es que es extensible. 
+El principal beneficio de EDN sobre JSON y YAML es que es extensible.
 Vamos a ver cómo se extiende más adelante.
 
 ```clojure

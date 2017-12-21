@@ -33,7 +33,7 @@ Num = 42.  % 모든 변수 이름은 반드시 대문자로 시작해야 한다.
 % 만약 다른 값을 `Num` 변수에 할당하려고 시도하면 오류가 발생한다.
 Num = 43. % ** 예외 오류: 우변의 값 43과 매칭되지 않음
 
-% 대부분 언어에서 `=`는 할당문을 나타낸다. 그러나 Erlang에서 
+% 대부분 언어에서 `=`는 할당문을 나타낸다. 그러나 Erlang에서
 % `=`는 패턴 매칭 연산자를 나타낸다. 비어 있는 변수가 `=` 연산자의 좌변에
 % 사용되면 바인드(할당) 된다, 그러나 바인드 변수가 좌변에 사용된 경우에
 % 다음 행동은 그 바인드 변수가 관측된다.
@@ -172,7 +172,7 @@ is_pet(A) when is_atom(A), (A =:= dog);(A =:= cat) -> true;
 is_pet(A)                                          -> false.
 
 % 주의: 모든 유효한 Erlang 식이 Guard 식으로 사용될 수 있는 것은 아니다;
-% 특히, 함수 `is_cat`과 `is_dog`는 `is_pet`의 정의 안에 있는 
+% 특히, 함수 `is_cat`과 `is_dog`는 `is_pet`의 정의 안에 있는
 % 연속적인 Guard 사이에 사용될 수 없다.
 % 연속적인 Guard에 허용되는 식의 자세한 설명은 Erlang 레퍼런스 메뉴얼
 % [section](http://erlang.org/doc/reference_manual/expressions.html#id81912)
@@ -217,7 +217,7 @@ max(X, Y) ->
     true -> nil
   end.
 
-% 주의: 적어도 if 식의 Guard 중의 하나는 반드시 `true`로 평가되어야 한다. 
+% 주의: 적어도 if 식의 Guard 중의 하나는 반드시 `true`로 평가되어야 한다.
 % 그렇지 않으면 예외가 발생한다.
 
 
@@ -313,7 +313,7 @@ fib_test_() ->
      ?_assert(fib(31) =:= 2178309)
     ].
 
-% EUnit은 Erlang 셸에서 테스트를 실행할 수 있게 
+% EUnit은 Erlang 셸에서 테스트를 실행할 수 있게
 % 자동으로 test() 함수를 내보낸다(export).
 fib:test()
 

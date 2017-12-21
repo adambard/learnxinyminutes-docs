@@ -41,12 +41,12 @@ sólo la guarda.
 
 <!-- Este es un archivo típico de XML.
   Empieza con una declaración de metadatos (opcional).
-  
+
   XML usa una estructura de árbol. El nodo raíz es 'tiendaDeLibros', el cual
-  tiene tres nodos hijos, todos llamados 'libros'. 
-  Esos nodos tienen más nodos hijos, y así continúa... 
-  
-  Los nodos son creados usando tags que abren y cierran, y los hijos 
+  tiene tres nodos hijos, todos llamados 'libros'.
+  Esos nodos tienen más nodos hijos, y así continúa...
+
+  Los nodos son creados usando tags que abren y cierran, y los hijos
   son sólo nodos entre estas tags.-->
 
 
@@ -58,8 +58,8 @@ sólo la guarda.
   2 - Elementos -> Ese es el dato puro.
   	  Eso es lo que el parseador recuperará del archivo XML.
   	  Los elementos aparecen entre las tags que abren y cierran.-->
-      
-  
+
+
 <!-- Debajo, un elemento con dos atributos. -->
 <archivo tipo="gif" id="4293">computer.gif</archivo>
 
@@ -73,13 +73,13 @@ Aún esto, es posible inyectar más restricciones en el documento,
 usando definiciones de documento, así como DTD o XML Schemas.
 
 Un documento XML que sigue a una definición de documento (un esquema) es
-válida. 
+válida.
 
 Con esta herramienta puedes validar datos XML fuera de la aplicación
 
 ```xml
 
-<!-- Debajo puedes encontrar una versión simplificada del documento 
+<!-- Debajo puedes encontrar una versión simplificada del documento
   tiendaDeLibros en adición a la definición DTD.-->
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -105,11 +105,11 @@ Con esta herramienta puedes validar datos XML fuera de la aplicación
 <!--El DTD empieza con una declaración.
 	Después el nodo raíz es declarado, requiriendo 1 o más nodos 'libro'
 	Cada 'libro' debe contener exactamente un 'titulo' y un 'precio' y
-	un atributo llamado 'categoria', con "Literatura" como su valor 
+	un atributo llamado 'categoria', con "Literatura" como su valor
 	default.
 	Los nodos 'titulo' y 'precio' contienen datos de caracteres
 	parseados.
-	
+
 	El DTD puede ser declarado dentro del XML mismo.-->
 
 <?xml version="1.0" encoding="UTF-8"?>

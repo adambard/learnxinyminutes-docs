@@ -10,21 +10,21 @@ Markdown a été créé par John Gruber en 2004. Il se veut être d'une syntaxe
 facile à lire et à écrire, aisément convertible en HTML
  (et beaucoup d'autres formats aussi à présent).
 
-Faites moi autant de retours que vous voulez! Sentez vous libre de "forker" 
+Faites moi autant de retours que vous voulez! Sentez vous libre de "forker"
 et envoyer des pull request!
 
 
 ```markdown
-<!-- Markdown est une sorte de cousin du HTML, si bien que tout document HTML 
-est un document Markdown valide. Autrement dit, vous pouvez utiliser des 
-balises HTML dans un fichier Markdown, comme la balise commentaire dans 
-laquelle nous sommes à présent, car celle-ci ne sera pas affectée par 
+<!-- Markdown est une sorte de cousin du HTML, si bien que tout document HTML
+est un document Markdown valide. Autrement dit, vous pouvez utiliser des
+balises HTML dans un fichier Markdown, comme la balise commentaire dans
+laquelle nous sommes à présent, car celle-ci ne sera pas affectée par
 le parser( analyseur syntaxique ) Markdown. -->
 
 <!-- Toutefois, si vous voulez créer un élément HTML dans un fichier Markdown,
  vous ne pourrez pas utiliser du Markdown à l'intérieur de ce dernier. -->
 
-<!--  Le Markdown est implémenté de différentes manières, selon le parser. 
+<!--  Le Markdown est implémenté de différentes manières, selon le parser.
 Ce guide va alors tenter de trier les fonctionnalités universelles de celles
 spécifiques à un parser.  -->
 
@@ -39,8 +39,8 @@ spécifiques à un parser.  -->
 ##### Ceci est un <h5>
 ###### Ceci est un <h6>
 
-<!-- 
-Markdown fournit également une façon alternative de marquer les h1 et h2 
+<!--
+Markdown fournit également une façon alternative de marquer les h1 et h2
 -->
 
 Ceci est un h1
@@ -62,12 +62,12 @@ __Celui-là aussi.__
 **_Pareil ici_**
 *__Et là!__*
 
-<!-- Dans le "GitHub Flavored Markdown", utilisé pour interpréter le Markdown 
+<!-- Dans le "GitHub Flavored Markdown", utilisé pour interpréter le Markdown
 sur GitHub, on a également le strikethrough ( texte barré ) : -->
 
 ~~Ce texte est barré avec strikethrough.~~
 
-<!--  Les Paragraphes sont représentés par une ou plusieurs lignes de texte 
+<!--  Les Paragraphes sont représentés par une ou plusieurs lignes de texte
 séparées par une ou plusieurs lignes vides. -->
 
 Ceci est un paragraphe. Là, je suis dans un paragraphe, facile non?
@@ -78,20 +78,20 @@ Je suis toujours dans le paragraphe 2!
 
 Puis là, eh oui, le paragraphe 3!
 
-<!--  
-Si jamais vous souhaitez insérer une balise HTML <br />, vous pouvez ajouter 
-un ou plusieurs espaces à la fin de votre paragraphe, et en commencer 
+<!--
+Si jamais vous souhaitez insérer une balise HTML <br />, vous pouvez ajouter
+un ou plusieurs espaces à la fin de votre paragraphe, et en commencer
 un nouveau.
 -->
 
-J'ai deux espaces vides à la fin (sélectionnez moi pour les voir). 
+J'ai deux espaces vides à la fin (sélectionnez moi pour les voir).
 
 Bigre, il y a un <br /> au dessus de moi!
 
 <!-- Les 'Blocs de Citations' sont générés aisément, grâce au caractère > -->
 
 > Ceci est une superbe citation. Vous pouvez même
-> revenir à la ligne quand ça vous chante, et placer un `>` 
+> revenir à la ligne quand ça vous chante, et placer un `>`
 > devant chaque bout de ligne faisant partie
 > de la citation.
 > La taille ne compte pas^^ tant que chaque ligne commence par un `>`.
@@ -101,7 +101,7 @@ Bigre, il y a un <br /> au dessus de moi!
 > Classe et facile, pas vrai?
 
 <!-- les Listes -->
-<!-- les Listes non ordonnées sont marquées par des asterisques, 
+<!-- les Listes non ordonnées sont marquées par des asterisques,
 signes plus ou signes moins. -->
 
 * Item
@@ -126,7 +126,7 @@ ou
 2. Item deux
 3. Item trois
 
-<!-- Vous pouvez même vous passer de tout numéroter, et Markdown générera 
+<!-- Vous pouvez même vous passer de tout numéroter, et Markdown générera
 les bons chiffres. Ceci dit, cette variante perd en clarté.-->
 
 1. Item un
@@ -143,10 +143,10 @@ les bons chiffres. Ceci dit, cette variante perd en clarté.-->
 * Sub-item
 4. Item quatre
 
-<!-- Il y a même des "listes de Taches". Elles génèrent des champs HTML 
+<!-- Il y a même des "listes de Taches". Elles génèrent des champs HTML
 de type checkbox. -->
 
-Les [ ] ci dessous, n'ayant pas de [ x ], 
+Les [ ] ci dessous, n'ayant pas de [ x ],
 deviendront des cases à cocher HTML non-cochées.
 
 - [ ] Première tache à réaliser.
@@ -155,13 +155,13 @@ La case suivante sera une case à cocher HTML cochée.
 - [x] Ça ... c'est fait!
 
 <!-- les Blocs de Code -->
-<!-- Pour marquer du texte comme étant du code, il suffit de commencer 
+<!-- Pour marquer du texte comme étant du code, il suffit de commencer
 chaque ligne en tapant 4 espaces (ou un Tab) -->
 
     echo "Ça, c'est du Code!";
     var Ça = "aussi !";
 
-<!-- L'indentation par tab ou série de quatre espaces 
+<!-- L'indentation par tab ou série de quatre espaces
 fonctionne aussi à l'intérieur du bloc de code -->
 
     my_array.each do |item|
@@ -172,22 +172,22 @@ fonctionne aussi à l'intérieur du bloc de code -->
 
 La fonction `run()` ne vous oblige pas à aller courir!
 
-<!-- Via GitHub Flavored Markdown, vous pouvez utiliser 
+<!-- Via GitHub Flavored Markdown, vous pouvez utiliser
 des syntaxes spécifiques -->
 
-\`\`\`ruby 
-<!-- mais enlevez les backslashes quand vous faites ça, 
+\`\`\`ruby
+<!-- mais enlevez les backslashes quand vous faites ça,
 gardez juste ```ruby ( ou nom de la syntaxe correspondant à votre code )-->
 def foobar
 puts "Hello world!"
 end
 \`\`\` <!-- pareil, pas de backslashes, juste ``` en guise de fin -->
 
-<-- Pas besoin d'indentation pour le code juste au dessus, de plus, GitHub 
+<-- Pas besoin d'indentation pour le code juste au dessus, de plus, GitHub
 va utiliser une coloration syntaxique pour le langage indiqué après les ``` -->
 
 <!-- Ligne Horizontale (<hr />) -->
-<!-- Pour en insérer une, utilisez trois ou plusieurs astérisques ou tirets, 
+<!-- Pour en insérer une, utilisez trois ou plusieurs astérisques ou tirets,
 avec ou sans espaces entre chaque un. -->
 
 ***
@@ -196,15 +196,15 @@ avec ou sans espaces entre chaque un. -->
 ****************
 
 <!-- Liens -->
-<!-- Une des fonctionnalités sympathiques du Markdown est la facilité 
-d'ajouter des liens. Le texte du lien entre [ ], l'url entre ( ), 
+<!-- Une des fonctionnalités sympathiques du Markdown est la facilité
+d'ajouter des liens. Le texte du lien entre [ ], l'url entre ( ),
 et voilà l'travail.
 -->
 
 [Clic moi!](http://test.com/)
 
-<!-- 
-Pour ajouter un attribut Title, collez le entre guillemets, avec le lien. 
+<!--
+Pour ajouter un attribut Title, collez le entre guillemets, avec le lien.
 -->
 
 [Clic moi!](http://test.com/ "Lien vers Test.com")
@@ -221,9 +221,9 @@ Pour ajouter un attribut Title, collez le entre guillemets, avec le lien.
 [link1]: http://test.com/ "Cool!"
 [foobar]: http://foobar.biz/ "Alright!"
 
-<!--  Le titre peut aussi être entouré de guillemets simples, 
-entre parenthèses ou absent. Les références peuvent être placées 
-un peu où vous voulez dans le document, et les identifiants 
+<!--  Le titre peut aussi être entouré de guillemets simples,
+entre parenthèses ou absent. Les références peuvent être placées
+un peu où vous voulez dans le document, et les identifiants
 (link1, foobar, ...) quoi que ce soit tant qu'ils sont uniques -->
 
 <!-- Il y a également le "nommage implicite" qui transforme le texte du lien
@@ -260,12 +260,12 @@ un peu où vous voulez dans le document, et les identifiants
 <!-- Escaping -->
 Il suffit de précéder les caractères spécifiques à ignorer par des backslash \
 
-Pour taper *ce texte* entouré d'astérisques mais pas en italique : 
+Pour taper *ce texte* entouré d'astérisques mais pas en italique :
 Tapez \*ce texte\*.
 
 <!-- Tableaux -->
 <!-- les Tableaux ne sont disponibles que dans le GitHub Flavored Markdown
- et c'est ce n'est pas super agréable d'utilisation. 
+ et c'est ce n'est pas super agréable d'utilisation.
  Mais si vous en avez besoin :
  -->
 
@@ -285,5 +285,5 @@ Ough que c'est moche | svp | arrêtez
 ```
 
 Pour plus d'information :
- consultez [ici](http://daringfireball.net/projects/markdown/syntax) le post officiel de Jhon Gruber à propos de la syntaxe, 
+ consultez [ici](http://daringfireball.net/projects/markdown/syntax) le post officiel de Jhon Gruber à propos de la syntaxe,
  et [là](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) la superbe cheatsheet de Adam Pritchard.

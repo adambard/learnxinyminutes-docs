@@ -1,5 +1,5 @@
 ---
-language: Haskell 
+language: Haskell
 filename: learn-haskell-zh.hs
 contributors:
     - ["Adit Bhargava", "http://adit.io"]
@@ -305,7 +305,7 @@ Nothing         -- 对任意 `a` 为 `Maybe a` 类型
 -- 当执行一个 Haskell 程序时，函数 `main` 就被调用。
 -- 它必须返回一个类型 `IO ()` 的值。例如：
 main :: IO ()
-main = putStrLn $ "Hello, sky! " ++ (say Blue) 
+main = putStrLn $ "Hello, sky! " ++ (say Blue)
 -- putStrLn 的类型是 String -> IO ()
 
 -- 如果你的程序输入 String 返回 String，那样编写 IO 是最简单的。
@@ -322,13 +322,13 @@ main' = interact countLines
 -- 我们可以使用 `do` 声明来把动作连接到一起。
 -- 举个列子
 sayHello :: IO ()
-sayHello = do 
+sayHello = do
    putStrLn "What is your name?"
    name <- getLine -- 这里接受一行输入并绑定至 "name"
    putStrLn $ "Hello, " ++ name
-   
+
 -- 练习：编写只读取一行输入的 `interact`
-   
+
 -- 然而，`sayHello` 中的代码将不会被执行。唯一被执行的动作是 `main` 的值。
 -- 为了运行 `sayHello`，注释上面 `main` 的定义，替换为：
 --   main = sayHello
@@ -342,7 +342,7 @@ sayHello = do
 action :: IO String
 action = do
    putStrLn "This is a line. Duh"
-   input1 <- getLine 
+   input1 <- getLine
    input2 <- getLine
    -- `do` 语句的类型是它的最后一行
    -- `return` 不是关键字，只是一个普通函数
@@ -351,7 +351,7 @@ action = do
 -- 我们可以像调用 `getLine` 一样调用它
 main'' = do
     putStrLn "I will echo two lines!"
-    result <- action 
+    result <- action
     putStrLn result
     putStrLn "This was all, folks!"
 

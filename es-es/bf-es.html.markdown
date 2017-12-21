@@ -34,7 +34,7 @@ Existen ocho comandos:
 [ : Si el valor en la celda actual es cero mueve el apuntador
 	hasta el primer ']' que encuentre. Si no es cero sigue a la
 	siguiente instrucción.
-] : Si el valor en la celda actual es cero, entonces sigue con 
+] : Si el valor en la celda actual es cero, entonces sigue con
 	la siguiente instrucción. Si no entonces mueve el apuntador
 	hacia atrás	hasta encontrar el primer '['.
 
@@ -44,7 +44,7 @@ Estos son algunos ejemplos de programas escritos con brainfuck.
 
 ++++++ [ > ++++++++++ < - ] > +++++ .
 
-Este programa imprime la letra 'A'. Primero, incrementa la celda #1 a 
+Este programa imprime la letra 'A'. Primero, incrementa la celda #1 a
 6. La celda #1 será usada para hacer los ciclos. Después entra al ciclo
 ([) y se mueve a la celda #2 (>). Después incrementa la celda #2 10 veces,
 y se regresa a la celda #1 (<), para después decrementarla en 1 (-).
@@ -59,10 +59,10 @@ se imprime.
 
 , [ > + < - ] > .
 
-Este programa lee un caracter del input y lo copia en la celda #2 (,). 
+Este programa lee un caracter del input y lo copia en la celda #2 (,).
 Después empieza un ciclo. Nos movemos a la celda #2 (>) e incrementamos su
 valor (+). Regresamos a la celda #1 y decrementamos su valor en 1 (-).
-Esto continúa hasta que la celda #1 contenga un cero. Cuando #1 contenga un 
+Esto continúa hasta que la celda #1 contenga un cero. Cuando #1 contenga un
 cero la celda #2 tendrá el valor inicial de #1. Como este ciclo siempre
 terminara en la celda #1 nos movemos a la celda #2 e imprimimos (.).
 

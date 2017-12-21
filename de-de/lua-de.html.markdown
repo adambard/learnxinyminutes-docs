@@ -21,7 +21,7 @@ lang: de-de
 
 num = 42  -- Alle Nummern sind vom Typ: Double.
 -- Werd nicht nervös, 64-Bit Double haben 52 Bits zum Speichern von exakten
--- Ganzzahlen; Maschinen-Genauigkeit ist kein Problem für Ganzzahlen kleiner als 
+-- Ganzzahlen; Maschinen-Genauigkeit ist kein Problem für Ganzzahlen kleiner als
 -- 52 Bit.
 
 s = 'walternate'  -- Zeichenketten sind unveränderlich, wie bei Python.

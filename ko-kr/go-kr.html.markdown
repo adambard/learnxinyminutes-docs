@@ -165,7 +165,7 @@ func learnFlowControl() {
     // 여기서 x는 1이다. 위 for에서 x는 for 안의 블록 범위에 있기 때문.
 
     // For is the only loop statement in Go, but it has alternate forms.
-    // for 는 Go에서 유일한 루프 구문이지만 다양한 형태로 조건을 주거나 while 
+    // for 는 Go에서 유일한 루프 구문이지만 다양한 형태로 조건을 주거나 while
     // 처럼 쓸 수도 있다.
     for { // 무한루프
         break    // 여기서 곧바로 break를 한 건 단지
@@ -197,7 +197,7 @@ func learnDefer() (ok bool) {
     // 연기된(deferred) 구문은 함수가 리턴하기 직전에 실행된다.
     defer fmt.Println("deferred statements execute in reverse (LIFO) order.") // 연기된 구문은 LIFO순으로 실행된다.
     defer fmt.Println("\nThis line is being printed first because")           // 이 줄이 먼저 실행된다.
-    // defer는 주로 파일을 닫는데 사용된다. 
+    // defer는 주로 파일을 닫는데 사용된다.
     // 파일을 닫는함수를 파일을 여는함수에 가까이 둘수 있다.
     return true
 }
@@ -299,7 +299,7 @@ func learnConcurrency() {
     go func() { c <- 84 }()       // c 채널로 값을 보내는 goroutine 시작.
     go func() { cs <- "wordy" }() // cs 채널로 값을 보내느 goroutine 시작.
     // select 구문은 switch 문과 비슷하지만, case에서 채널 연산에 관한 일을 한다.
-    // select의 case들은 채널통신을 할 준비가 된 case 하나가 무작위로 선택되어 
+    // select의 case들은 채널통신을 할 준비가 된 case 하나가 무작위로 선택되어
     // 그 부분이 실행된다.
     select {
     case i := <-c: // 채널로부터 받아진 값은 변수에 대입할 수 있다.

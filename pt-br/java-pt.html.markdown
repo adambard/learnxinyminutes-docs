@@ -340,12 +340,12 @@ class Bicicleta {
     }
 
     // Sintaxe de um método:
-    // <public/private/protected> <tipo de retorno> <nome do método>(<args>) //  
+    // <public/private/protected> <tipo de retorno> <nome do método>(<args>) //
 
     // Classes em Java costumam implementar métodos getters e setters para seus campos.
 
     // Sintaxe de declaração de métodos
-    // <escopo> <tipo de retorno> <nome do método>(<args>) //   
+    // <escopo> <tipo de retorno> <nome do método>(<args>) //
     public int getRitmo() {
         return ritmo;
     }
@@ -479,7 +479,7 @@ public abstract class Animal
     // Método pode ter um corpo
     public void comer()
     {
-        System.out.println("Eu sou um animal e estou comendo.");  
+        System.out.println("Eu sou um animal e estou comendo.");
         //Nota: Nós podemos acessar variáveis privadas aqui.
         idade = 30;
     }
@@ -491,7 +491,7 @@ public abstract class Animal
 
     public void mostrarIdade()
     {
-        System.out.println(idade);  
+        System.out.println(idade);
     }
 
     //Classes abstratas podem ter o método main.
@@ -567,7 +567,7 @@ public abstract class Mamifero()
 
 // Tipo Enum
 //
-// Um tipo enum é um tipo de dado especial que permite a uma variável ser um conjunto de constantes predefinidas. A 
+// Um tipo enum é um tipo de dado especial que permite a uma variável ser um conjunto de constantes predefinidas. A
 // variável deve ser igual a um dos valores que foram previamente definidos para ela.
 // Por serem constantes, os nomes dos campos de um tipo de enumeração estão em letras maiúsculas.
 // Na linguagem de programação Java, você define um tipo de enumeração usando a palavra-chave enum. Por exemplo, você poderia
@@ -575,7 +575,7 @@ public abstract class Mamifero()
 
 public enum Dia {
     DOMINGO, SEGUNDA, TERÇA, QUARTA,
-    QUINTA, SEXTA, SABADO 
+    QUINTA, SEXTA, SABADO
 }
 
 // Nós podemos usar nosso enum Dia assim:
@@ -599,7 +599,7 @@ public class EnumTeste {
                 System.out.println("Sextas são melhores.");
                 break;
 
-            case SABADO: 
+            case SABADO:
             case DOMINGO:
                 System.out.println("Finais de semana são os melhores.");
                 break;

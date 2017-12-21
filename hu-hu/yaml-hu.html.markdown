@@ -8,7 +8,7 @@ translators:
 lang: hu-hu
 ---
 
-A YAML egy adat sorosító nyelv, amit úgy terveztek, hogy közvetlenül is 
+A YAML egy adat sorosító nyelv, amit úgy terveztek, hogy közvetlenül is
 olvasható és írható legyen emberi szemmel.
 
 A JSON formátum egy szigorú befoglaló halmazát alkotja, kiegészítve azt
@@ -48,7 +48,7 @@ literal_block: |
     Az ilyen sztringet az indentáció visszahúzása zárja le, a behúzás pedig
     eltávolításra kerül.
 
-        A 'még jobban' behúzott részek megtartják a behúzásukat - 
+        A 'még jobban' behúzott részek megtartják a behúzásukat -
         ezeknek a soroknak 4 szóköz behúzása lesz.
 folded_style: >
     Az az egész szöveg-blokk lesz az értéke a 'folded_style' kulcsnak, de

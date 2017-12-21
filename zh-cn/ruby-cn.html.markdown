@@ -47,7 +47,7 @@ translators:
 # 算术符号只是语法糖而已
 # 实际上是调用对象的方法
 1.+(3) #=> 4
-10.* 5 #=> 50 
+10.* 5 #=> 50
 
 # 特殊的值也是对象
 nil # 相当于其它语言中的 null
@@ -319,7 +319,7 @@ when 'D'
   puts "Scraping through"
 when 'F'
   puts "You failed!"
-else 
+else
   puts "Alternative grading system, eh?"
 end
 #=> "Better luck next time"
@@ -428,7 +428,7 @@ class Human
 
   # 一个类变量，它被这个类的所有实例变量共享
   @@species = "H. sapiens"
-  
+
   # 基本构造函数
   def initialize(name, age = 0)
     # 将参数值赋给实例变量"name"
@@ -436,30 +436,30 @@ class Human
     # 如果没有给出age,那么会采用参数列表中的默认值
     @age = age
   end
-  
+
   # 基本的setter方法
   def name=(name)
     @name = name
   end
-  
+
   # 基本地getter方法
   def name
     @name
   end
-  
+
   # 以上的功能也可以用下面的attr_accessor来封装
   attr_accessor :name
-  
+
   # Getter/setter方法也可以像这样单独创建
   attr_reader :name
   attr_writer :name
-  
+
   # 类方法通过使用self与实例方法区别开来。
   # 它只能通过类来调用，不能通过实例调用。
   def self.say(msg)
     puts "#{msg}"
   end
-  
+
   def species
     @@species
   end

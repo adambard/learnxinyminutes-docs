@@ -49,7 +49,7 @@ utilizzando Python 2: cosa aspetti a vedere il tutorial di Python 3?
 10 * 2  # => 20
 35 / 5  # => 7
 
-# La divisione è un po' complicata. E' una divisione fra interi in cui viene 
+# La divisione è un po' complicata. E' una divisione fra interi in cui viene
 # restituito in automatico il risultato intero.
 5 / 2  # => 2
 
@@ -155,7 +155,7 @@ None is None  # => True
 # L'operatore 'is' testa l'identità di un oggetto. Questo non è
 # molto utile quando non hai a che fare con valori primitivi, ma lo è
 # quando hai a che fare con oggetti.
- 
+
 # Qualunque oggetto può essere usato nei test booleani
 # I seguenti valori sono considerati falsi:
 #     - None
@@ -164,7 +164,7 @@ None is None  # => True
 #     - Contenitori vuoti (tipo {}, set())
 #     - Istanze di classi definite dall'utente, che soddisfano certi criteri
 #       vedi: https://docs.python.org/2/reference/datamodel.html#object.__nonzero__
-#       
+#
 # Tutti gli altri valori sono considerati veri: la funzione bool() usata su di loro, ritorna True.
 bool(0)  # => False
 bool("")  # => False

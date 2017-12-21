@@ -8,7 +8,7 @@ translators:
     - ["Vadim Toptunov", "https://github.com/VadimToptunov"]
 ---
 
-Kotlin - статистически типизированный язык для JVM, Android и браузера. Язык полностью cjdvtcnbv c Java. 
+Kotlin - статистически типизированный язык для JVM, Android и браузера. Язык полностью cjdvtcnbv c Java.
 [Более детальная информация здесь.](https://kotlinlang.org/)
 
 ```kotlin
@@ -116,7 +116,7 @@ fun helloWorld(val name : String) {
     println(even(6)) // => true
     println(even(7)) // => false
 
-    // Функции могут брать другие функции в качестве аргументов, а также могут возвращать функции. 
+    // Функции могут брать другие функции в качестве аргументов, а также могут возвращать функции.
     fun not(f: (Int) -> Boolean): (Int) -> Boolean {
         return {n -> !f.invoke(n)}
     }
@@ -134,7 +134,7 @@ fun helloWorld(val name : String) {
         println("${notOdd(i)} ${notEven(i)} ${notZero(i)} ${notPositive(i)}")
     }
 
-    // Ключевое слово "class" используется для 
+    // Ключевое слово "class" используется для
     // объявления классов.
     class ExampleClass(val x: Int) {
         fun memberFunction(y: Int): Int {
@@ -153,13 +153,13 @@ fun helloWorld(val name : String) {
     // Функции-члены могут быть вызваны с использованием точечной нотации.
     println(fooExampleClass.memberFunction(4)) // => 11
     /*
-    В случае, если функция была помечена ключевым словом "infix", она может быть вызвана с помощью инфиксной нотации. 
+    В случае, если функция была помечена ключевым словом "infix", она может быть вызвана с помощью инфиксной нотации.
     */
     println(fooExampleClass infixMemberFunction 4) // => 28
 
     /*
     Data-классы - это компактный способ создать классы, которые лишь хранят данные.
-    Методы "hashCode"/"equals" и "toString" генерируютсяч автоматически. 
+    Методы "hashCode"/"equals" и "toString" генерируютсяч автоматически.
     */
     data class DataClassExample (val x: Int, val y: Int, val z: Int)
     val fooData = DataClassExample(1, 2, 4)
@@ -172,12 +172,12 @@ fun helloWorld(val name : String) {
     // Объекты могут быть деструктурированы на множество переменных.
     val (a, b, c) = fooCopy
     println("$a $b $c") // => 1 100 4
-    
+
     // Деструктурирование в цикле "for"
     for ((a, b, c) in listOf(fooData)) {
         println("$a $b $c") // => 1 100 4
     }
-    
+
     val mapData = mapOf("a" to 1, "b" to 2)
     // Map.Entry также может быть дествуктурирован
     for ((key, value) in mapData) {
@@ -202,7 +202,7 @@ fun helloWorld(val name : String) {
     println(fooList.size) // => 3
     println(fooList.first()) // => a
     println(fooList.last()) // => c
-    // Элементы списка доступны по их индексу в нем. 
+    // Элементы списка доступны по их индексу в нем.
     println(fooList[1]) // => b
 
     // Изменяемый список может быть создан спомощью функции "mutableListOf".
@@ -211,14 +211,14 @@ fun helloWorld(val name : String) {
     println(fooMutableList.last()) // => d
     println(fooMutableList.size) // => 4
 
-    // Мы можем создать набор, используя функцию "setOf". 
+    // Мы можем создать набор, используя функцию "setOf".
     val fooSet = setOf("a", "b", "c")
     println(fooSet.contains("a")) // => true
     println(fooSet.contains("z")) // => false
 
     // Мы можем создать отображение (map), используя функцию "mapOf".
     val fooMap = mapOf("a" to 8, "b" to 7, "c" to 9)
-    // Получить доступ к значениям отображения (map) можно с помощью их ключа. 
+    // Получить доступ к значениям отображения (map) можно с помощью их ключа.
     println(fooMap["a"]) // => 8
 
     /*
@@ -333,7 +333,7 @@ fun helloWorld(val name : String) {
     }
 
     /*
-    Расширения - это способ добавить новый функционал к классу. 
+    Расширения - это способ добавить новый функционал к классу.
     Это то же самое, что методы расширений в C#.
     */
     fun String.remove(c: Char): String {

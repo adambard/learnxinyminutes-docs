@@ -69,7 +69,7 @@ Olen kolmannessa kappaleessa!
 <!-- Jos haluat lisätä <br /> HTML-elementin, päätä kappale kahdella tai
 useammalla välilyönnillä ja aloita sitten uusi kappale -->
 
-Päätän tämän kahteen välilyöntiin (maalaa minut nähdäksesi ne).  
+Päätän tämän kahteen välilyöntiin (maalaa minut nähdäksesi ne).
 
 There's a <br /> above me!
 

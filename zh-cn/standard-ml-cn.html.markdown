@@ -63,7 +63,7 @@ val is_wrong_phone_no = (phone_no <> 5551337)  (* false *)
 (* 'andalso' 和 'orelse' 在很多其他语言里被叫做 && 和 || 。 *)
 
 (* 实际上，上面大部分的圆括号都是不需要的。比如表达上面内容的一些不同的方式： *)
-fun is_large x = x > 37  
+fun is_large x = x > 37
 val is_sad = not has_something
 val pays_same_rent = rent = 1300  (* 看起来很奇怪，但是就是这样的。 *)
 val is_wrong_phone_no = phone_no <> 5551337
@@ -233,7 +233,7 @@ fun solve2 (a : real, b : real, c : real) =
         (~b - sqr) / denom)
     end
 
-(* 模式匹配是函数式编程的一个精巧的部分，它是实现 if 的另一种方式。  
+(* 模式匹配是函数式编程的一个精巧的部分，它是实现 if 的另一种方式。
    斐波那契函数可以被重写为如下方式： *)
 fun fibonacci 0 = 0  (* 终止条件 *)
   | fibonacci 1 = 1  (* 终止条件 *)
@@ -376,7 +376,7 @@ val err_msg = failing_function [1,2] handle Fail _ => "Fail was raised"
                                           | Empty  => "Empty was raised"
                                           | _      => "Unknown exception"
 
-(* err_msg 的值会是 "Unknown exception" 
+(* err_msg 的值会是 "Unknown exception"
    因为 Overflow 没有在模式中列出，因此匹配到了通配符_。 *)
 
 (* 我们也可以定义自己的异常 *)

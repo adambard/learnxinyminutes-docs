@@ -26,7 +26,7 @@ Bài viết này chủ yếu bàn về cú pháp của HTML và một vài mẹo
 <!-- Bình luận được bao quanh bởi các ký tự giống như trong ví dụ này -->
 
 <!-- #################### Các thẻ #################### -->
-   
+
 <!-- Dưới đây là tập tin HTML ví dụ mà chúng ta sẽ phân tích. -->
 
 <!doctype html>

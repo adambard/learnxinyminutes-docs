@@ -112,7 +112,7 @@ f [ . ] when*      ! No output, empty stack, f is consumed because it's false
 { 2 4 6 8 } [ 1 + ] map             ! Leaves { 3 5 7 9 } on stack
 
 ! Loop reducing or building lists:
-{ 1 2 3 4 5 } [ 2 mod 0 = ] filter  ! Keeps only list members for which quotation yields true: { 2 4 }  
+{ 1 2 3 4 5 } [ 2 mod 0 = ] filter  ! Keeps only list members for which quotation yields true: { 2 4 }
 { 2 4 6 8 } 0 [ + ] reduce .        ! Like "fold" in functional languages: prints 20 (0+2+4+6+8)
 { 2 4 6 8 } 0 [ + ] accumulate . .  ! Like reduce but keeps the intermediate values in a list: prints { 0 2 6 12 } then 20
 1 5 [ 2 * dup ] replicate .         ! Loops the quotation 5 times and collects the results in a list: { 2 4 8 16 32 }
@@ -130,7 +130,7 @@ f [ . ] when*      ! No output, empty stack, f is consumed because it's false
 
 SYMBOL: name            ! Creates name as an identifying word
 "Bob" name set-global   ! No output
-name get-global .       ! "Bob"                     
+name get-global .       ! "Bob"
 
 ! Named local variables are considered an extension but are available
 ! In a quotation..

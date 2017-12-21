@@ -10,14 +10,14 @@ lang: pl-pl
 
 ---
 
-Haskell został zaprojektowany jako praktyczny, czysto funkcyjny język 
+Haskell został zaprojektowany jako praktyczny, czysto funkcyjny język
 programowania. Jest znany przede wszystkim ze względu na jego monady oraz system
-typów, ale ja lubię do niego wracać przez jego elegancję. Sprawił on, że 
+typów, ale ja lubię do niego wracać przez jego elegancję. Sprawił on, że
 programowanie jest prawdziwą przyjemnością.
 
 ```haskell
 -- Komentarze jednolinijkowe zaczynają się od dwóch myślników
-{- Komentarze wielolinijkowe należy 
+{- Komentarze wielolinijkowe należy
 zamykać w bloki klamrami.
 -}
 
@@ -92,14 +92,14 @@ not False -- True
 -- Można nawet tworzyć listy nieskończone!
 [1..] -- lista wszystkich liczb naturalnych
 
--- Nieskończone listy mają prawo działać, ponieważ Haskell cechuje się leniwym 
--- wartościowaniem. To oznacza, że obliczane są jedynie te elementy listy, 
--- których istotnie potrzebujemy. Możemy poprosić o tysiączny element i 
+-- Nieskończone listy mają prawo działać, ponieważ Haskell cechuje się leniwym
+-- wartościowaniem. To oznacza, że obliczane są jedynie te elementy listy,
+-- których istotnie potrzebujemy. Możemy poprosić o tysiączny element i
 -- dostaniemy go:
 
 [1..] !! 999 -- 1000
 
--- Haskell wyznaczył pierwsze tysiąc elementów listy, ale cała jej reszta 
+-- Haskell wyznaczył pierwsze tysiąc elementów listy, ale cała jej reszta
 -- jeszcze nie istnieje! Nie zostanie obliczona ich wartość, póki nie zajdzie
 -- taka potrzeba.
 
@@ -121,7 +121,7 @@ last [1..5] -- 5
 -- z dodatkowym warunkiem
 [x*2 | x <- [1..5], x*2 > 4] -- [6, 8, 10]
 
--- każdy element krotki może być innego typu, jednak sama krotka musi być stałej 
+-- każdy element krotki może być innego typu, jednak sama krotka musi być stałej
 -- długości. Przykładowo:
 ("haskell", 1)
 
@@ -135,7 +135,7 @@ snd ("haskell", 1) -- 1
 -- Prosta funkcja przyjmująca dwa argumenty
 add a b = a + b
 
--- Pamiętaj, że podczas stosowania ghci, interpretera Haskella, wszelkie 
+-- Pamiętaj, że podczas stosowania ghci, interpretera Haskella, wszelkie
 -- definicje muszą zostać poprzedzone słowem `let`, na przykład:
 -- let add a b = a + b
 
@@ -146,7 +146,7 @@ add 1 2 -- 3
 -- otoczona grawisami:
 1 `add` 2 -- 3
 
--- Nazwa funkcji nie musi zawierać żadnych liter, przykładem czego jest 
+-- Nazwa funkcji nie musi zawierać żadnych liter, przykładem czego jest
 -- operator dzielenia:
 (//) a b = a `div` b
 35 // 4 -- 8
@@ -165,7 +165,7 @@ fib x = fib (x - 1) + fib (x - 2)
 -- Dopasowanie z krotkami:
 foo (x, y) = (x + 1, y + 2)
 
--- Dopasowanie z listami. Tutaj `x` jest pierwszym elementem listy, 
+-- Dopasowanie z listami. Tutaj `x` jest pierwszym elementem listy,
 -- natomiast `xs` to jej reszta (ogon). Poniższa funkcja nakłada funkcję
 -- na każdy z elementów listy:
 myMap func [] = []
@@ -183,7 +183,7 @@ foldl1 (\acc x -> acc + x) [1..5] -- 15
 -- 4. Więcej funkcji
 ----------------------------------------------------
 
--- częściowe nakładanie: jeśli funkcja nie otrzyma wszystkich swoich argumentów, 
+-- częściowe nakładanie: jeśli funkcja nie otrzyma wszystkich swoich argumentów,
 -- zostaje cześciowo nałożona - zwraca funkcję, która przyjmuje pozostałe,
 -- brakujące argumenty.
 
@@ -197,7 +197,7 @@ foo 5 -- 15
 
 -- składanie funkcji:
 -- operator `.` składa wiele funkcji w jedną.
--- Dla przykładu, foo jest funkcją, która powiększa swój argument o 10, mnoży 
+-- Dla przykładu, foo jest funkcją, która powiększa swój argument o 10, mnoży
 -- tak uzyskaną liczbę przez 4 i zwraca wynik:
 foo = (4*) . (10+)
 
@@ -206,7 +206,7 @@ foo 5 -- 60
 
 -- ustalanie kolejności
 -- Haskell posiada inny operator, `$`, który nakłada funkcję do podanego
--- parametru. W przeciwieństwie do zwykłego lewostronnie łącznego nakładania 
+-- parametru. W przeciwieństwie do zwykłego lewostronnie łącznego nakładania
 -- funkcji, którego priorytet jest najwyższy (10), operator `$` posiada
 -- priorytet 0 i jest prawostronnie łączny. Tak niski priorytet oznacza, że
 -- wyrażenie po prawej traktowane jest jako parametr funkcji po lewej
@@ -225,7 +225,7 @@ even . fib $ 7 -- fałsz
 -- 5. Sygnatury typów
 ----------------------------------------------------
 
--- Haskell posiada wyjątkowo silny system typów, w którym każde poprawne 
+-- Haskell posiada wyjątkowo silny system typów, w którym każde poprawne
 -- wyrażenie ma swój typ.
 
 -- Kilka podstawowych typów:
@@ -252,7 +252,7 @@ double x = x * 2
 -- wyrażenie warunkowe
 haskell = if 1 == 1 then "wspaniale" else "paskudnie" -- haskell = "wspaniale"
 
--- wyrażenie warunkowe można rozbić na wiele linii, 
+-- wyrażenie warunkowe można rozbić na wiele linii,
 -- ale trzeba uważać na wcięcia w kodzie
 haskell = if 1 == 1
             then "wspaniale"
@@ -322,14 +322,14 @@ Nothing         -- typu `Maybe a` for any `a`
 -- Chociaż obsługa wejścia i wyjścia nie może zostać wyjaśniona przez poznaniem
 -- monad, spróbujemy zrobić to częściowo
 
--- Wykonanie programu napisanego w Haskellu wywołuje funkcję `main` 
+-- Wykonanie programu napisanego w Haskellu wywołuje funkcję `main`
 -- Musi zwrócić wartość typu `IO a` dla pewnego `a`. Przykład:
 
 main :: IO ()
 main = putStrLn $ "Hello, sky! " ++ (say Blue)
 -- putStrLn has type String -> IO ()
 
--- Najłatwiej obsłużyć wejście i wyjście, kiedy program zostanie 
+-- Najłatwiej obsłużyć wejście i wyjście, kiedy program zostanie
 -- zaimplementowany jako funkcja String -> String. Funkcja
 --    interact :: (String -> String) -> IO ()
 -- pobiera pewien tekst, wykonuje na nim operacje, po czym wypisuje wynik.
@@ -349,10 +349,10 @@ sayHello = do
    name <- getLine -- this gets a line and gives it the name "name"
    putStrLn $ "Hello, " ++ name
 
--- Ćwiczenie: napisz własną wersję `interact`, 
+-- Ćwiczenie: napisz własną wersję `interact`,
 -- która czyta tylko jedną linię wejścia.
 
--- Kod w `sayHello` nigdy się nie wykona. Jedyną akcją, która zostanie 
+-- Kod w `sayHello` nigdy się nie wykona. Jedyną akcją, która zostanie
 -- uruchomiona, jest wartość `main`.
 -- Aby uruchomić `sayHello`, należy zastąpić poprzednią definicję `main` przez
 --   main = sayHello
@@ -381,7 +381,7 @@ main'' = do
     putStrLn result
     putStrLn "This was all, folks!"
 
--- Typ `IO` jest przykładem monady. Sposób w jakim Haskell używa monad do 
+-- Typ `IO` jest przykładem monady. Sposób w jakim Haskell używa monad do
 -- obsługi wejścia i wyjścia pozwala mu być czysto funkcyjnym językiem.
 -- Każda funkcja, która wchodzi w interakcje ze światem zewnętrznym, oznaczana
 -- jest jako `IO` w jej sygnaturze typu, co umożliwia odróżnianie funkcji
@@ -429,7 +429,7 @@ Hello, Friend!
 
 ```
 
-Pominęliśmy wiele aspektów Haskella, wliczając w to monady. To właśnie one 
+Pominęliśmy wiele aspektów Haskella, wliczając w to monady. To właśnie one
 sprawiają, że programowanie w Haskellu sprawia tyle frajdy. Na zakończenie
 pokażę Tobie implementację algorytmu quicksort w Haskellu:
 

@@ -4,25 +4,25 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
-lang: pt-br    
+lang: pt-br
 filename: learnmarkdown-pt.md
 ---
 
-Markdown foi criado por John Gruber in 2004. Originado para ser fácil de ler e 
+Markdown foi criado por John Gruber in 2004. Originado para ser fácil de ler e
 escrever sintaxe que converte facilmente em HTML (hoje, suporta outros formatos também).
 
-Dê-me feedback tanto quanto você quiser! / Sinta-se livre para a garfar (fork) e 
+Dê-me feedback tanto quanto você quiser! / Sinta-se livre para a garfar (fork) e
 puxar o projeto (pull request)
 
 ```markdown
-<!-- Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é 
-um arquivo Markdown válido, isso significa que nós podemos usar elementos HTML 
+<!-- Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é
+um arquivo Markdown válido, isso significa que nós podemos usar elementos HTML
 em Markdown, como o elemento de comentário, e eles não serão afetados pelo analisador
 de remarcação. No entanto, se você criar um elemento HTML em seu arquivo Markdown, você
 não pode usar sintaxe remarcação dentro desse conteúdo do elemento.-->
 
 <!--Markdown também varia de implementação de um analisador para uma próxima.
-Este guia vai tentar esclarecer quando as características são universais, ou quando eles são 
+Este guia vai tentar esclarecer quando as características são universais, ou quando eles são
 específico para um determinado parser -->
 
 <!-- Cabeçalhos -->
@@ -42,7 +42,7 @@ Isto é um cabeçalho h1
 Isto é um cabeçalho h2
 ----------------------
 
-<!-- Estilos de texto simples --> 
+<!-- Estilos de texto simples -->
 <!-- O texto pode ser facilmente denominado como remarcação itálico, negrito ou tachado usando -->
 
 *Este texto está em itálico*
@@ -55,12 +55,12 @@ __E este também está._
 **_E este também está_**
 *--Danouse! Este também__*
 
-<!-- Em GitHub Flavored Markdown, que é usado para processar arquivos Markdown 
-GitHub, nós também temos: --> 
+<!-- Em GitHub Flavored Markdown, que é usado para processar arquivos Markdown
+GitHub, nós também temos: -->
 
 ~~Este texto é processado com tachado.~~
 
-<!-- Os parágrafos estão uma ou várias linhas adjacentes de texto separadas por 
+<!-- Os parágrafos estão uma ou várias linhas adjacentes de texto separadas por
 uma ou múltiplas linhas em branco. -->
 
 Este é um parágrafo. Eu estou digitando em um parágrafo, não é legal?
@@ -70,25 +70,25 @@ Agora, eu estou no parágrado 2.
 
 Eu estou no parágrafo três.
 
-<!-- Se você quiser inserir uma tag HTML <br />, você pode acabar com um parágrafo 
+<!-- Se você quiser inserir uma tag HTML <br />, você pode acabar com um parágrafo
 com dois ou mais espaços e, em seguida, começar um novo parágrafo -->
 
-Termino com dois espaços (destacar-me para vê-los). 
+Termino com dois espaços (destacar-me para vê-los).
 
 Há um <br /> acima de mim!
 
 <!-- Bloco de citações são fáceis e feito com o caractere >. -->
 
-> Este é um bloco de citação. Você pode 
+> Este é um bloco de citação. Você pode
 > Enrolar manualmente suas linhas e colocar um `>` antes de cada linha ou você pode
-> deixar suas linhas ficarem muito longas e enrolar por conta própria. Não faz diferença, 
+> deixar suas linhas ficarem muito longas e enrolar por conta própria. Não faz diferença,
 > desde que eles começam com um `>`.
 
-> Você também pode usar mais de um nível 
->> De recuo? 
+> Você também pode usar mais de um nível
+>> De recuo?
 > Como pura é isso?
 
-<!-- Listas --> 
+<!-- Listas -->
 <!-- As listas não ordenadas podem ser feitas usando asteriscos, positivos ou hífens -->
 
 * Item
@@ -130,19 +130,19 @@ tornar os números em ordem, mas isso pode não ser uma boa idéia -->
     * Sub-item
 4. Item quatro
 
-<!-- blocos de código --> 
+<!-- blocos de código -->
 <!-- Você pode indicar um bloco de código (que utiliza o elemento <code>) pelo recuo
 uma linha com quatro espaços ou uma guia -->
 
 	Isto é código
 	É assim, sacou?
 
-<!-- Você pode também re-guia (ou adicionar mais quatro espaços adicionais) para o recuo 
+<!-- Você pode também re-guia (ou adicionar mais quatro espaços adicionais) para o recuo
 dentro do seu código -->
 
 	my_array.each do |item|
         puts item
-    end	
+    end
 
 <!-- Código embutido pode ser criada usando o caractere de crase ` -->
 
@@ -151,26 +151,26 @@ John não sabia nem o que o função 'goto()' fazia!
 <!-- Em GitHub Flavored Markdown, você pode usar uma sintaxe especial para o código -->
 
 \`\`\`ruby <!-- exceto remover essas barras invertidas quando você faz isso, apenas ```
-ruby! --> 
+ruby! -->
 def foobar
     puts "Hello world!"
 end
 \`\`\` <!-- Aqui também, não barras invertidas, apenas ``` -->
 
-<-- O texto acima não requer recuo, mas o GitHub vai usar a sintaxe 
+<-- O texto acima não requer recuo, mas o GitHub vai usar a sintaxe
 destacando do idioma que você especificar após a ``` -->
 
-<!-- Regra Horizontal (<hr />) --> 
+<!-- Regra Horizontal (<hr />) -->
 <!-- Regras horizontais são facilmente adicionados com três ou mais asteriscos ou hífens,
 com ou sem espaços. -->
 
 ***
 ---
-- - - 
+- - -
 ****************
 
-<!-- Links --> 
-<!-- Uma das melhores coisas sobre a remarcação é o quão fácil é fazer ligações. Colocar 
+<!-- Links -->
+<!-- Uma das melhores coisas sobre a remarcação é o quão fácil é fazer ligações. Colocar
 o texto a ser exibido entre parênteses rígidos [] seguido pela url em parênteses () -->
 
 [Click aqui!](http://test.com/)
@@ -191,46 +191,46 @@ o texto a ser exibido entre parênteses rígidos [] seguido pela url em parênte
 [link1]: http://test.com/ "Legal!"
 [foobar]: http://foobar.biz/ "OK!"
 
-<!-- O título também pode estar entre aspas simples ou entre parênteses, ou omitido 
-inteiramente. As referências podem estar em qualquer lugar no documento e os IDs de referência 
+<!-- O título também pode estar entre aspas simples ou entre parênteses, ou omitido
+inteiramente. As referências podem estar em qualquer lugar no documento e os IDs de referência
 pode ser qualquer um, desde que eles são únicos. -->
 
-<!-- Existe também o "nomear implícita", que permite que você use o texto do link como o id --> 
+<!-- Existe também o "nomear implícita", que permite que você use o texto do link como o id -->
 
-[Este] [] é um link. 
+[Este] [] é um link.
 
-[este]: http://thisisalink.com/ 
+[este]: http://thisisalink.com/
 
-<!-- Mas não são usados normalmente--> 
+<!-- Mas não são usados normalmente-->
 
-<!-- Imagens --> 
+<!-- Imagens -->
 <!-- As imagens são feitas da mesma forma que as ligações, mas com um ponto de exclamação na frente! -->
 
-![Este é pairar-texto (texto alternativo) para minha imagem](http://imgur.com/myimage.jpg "Um título opcional") 
+![Este é pairar-texto (texto alternativo) para minha imagem](http://imgur.com/myimage.jpg "Um título opcional")
 
-<!-- E estilo de referência funciona como esperado --> 
+<!-- E estilo de referência funciona como esperado -->
 
-![Este é o pairar-texto.][Myimage] 
+![Este é o pairar-texto.][Myimage]
 
-[myimage]: relative/urls/legal/image.jpg "se você precisa de um título, é aqui" 
+[myimage]: relative/urls/legal/image.jpg "se você precisa de um título, é aqui"
 
-<!-- Miscelânea --> 
-<!-- Auto-links --> 
+<!-- Miscelânea -->
+<!-- Auto-links -->
 
-<http://testwebsite.com/> é equivalente a 
-[http://testwebsite.com/](http://testwebsite.com/) 
+<http://testwebsite.com/> é equivalente a
+[http://testwebsite.com/](http://testwebsite.com/)
 
-<!-- Auto-links para e-mails --> 
+<!-- Auto-links para e-mails -->
 
-<foo@bar.com> 
+<foo@bar.com>
 
-<!-- Escapando caracteres --> 
+<!-- Escapando caracteres -->
 
-Quero digitar * Este texto entre asteriscos *, mas eu não quero que ele seja 
+Quero digitar * Este texto entre asteriscos *, mas eu não quero que ele seja
 em itálico, então eu faço o seguinte: \*Este texto entre asteriscos \*.
 
-<!-- Tabelas --> 
-<!-- Tabelas estão disponíveis apenas no GitHub Flavored Markdown e são ligeiramente 
+<!-- Tabelas -->
+<!-- Tabelas estão disponíveis apenas no GitHub Flavored Markdown e são ligeiramente
 complicadas, mas se você realmente quer: -->
 
 | Col1         | Col2     | Col3          |

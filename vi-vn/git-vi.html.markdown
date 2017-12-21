@@ -333,7 +333,7 @@ $ git push origin master
 # Để liên kết đến một branch local với một branch remote, thêm vào cờ -u:
 $ git push -u origin master
 # Từ lúc này, bất cứ khi nào bạn muốn push từ cùng một nhánh local đó, sử dụng lối tắt:
-$ git push 
+$ git push
 ```
 
 ### rebase (thận trọng)
@@ -399,5 +399,4 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [GitGuys](http://www.gitguys.com/)
 
 * [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
-
 

@@ -295,7 +295,7 @@ val some_result = (fn x => thermometer (x - 5) ^ thermometer (x + 5)) 37
 
 (* Here is a higher-order function that works on lists (a list combinator) *)
 (* map f l
-       applies f to each element of l from left to right, 
+       applies f to each element of l from left to right,
        returning the list of results. *)
 val readings = [ 34, 39, 37, 38, 35, 36, 37, 37, 37 ]  (* first an int list *)
 val opinions = List.map thermometer readings (* gives [ "Cold", "Warm", ... ] *)

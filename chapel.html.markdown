@@ -100,7 +100,7 @@ writeln(varCmdLineArg, ", ", constCmdLineArg, ", ", paramCmdLineArg);
 // be made to alias a variable other than the variable it is initialized with.
 // Here, refToActual refers to actual.
 var actual = 10;
-ref refToActual = actual; 
+ref refToActual = actual;
 writeln(actual, " == ", refToActual); // prints the same value
 actual = -123; // modify actual (which refToActual refers to)
 writeln(actual, " == ", refToActual); // prints the same value
@@ -444,7 +444,7 @@ arrayFromLoop = [value in arrayFromLoop] value + 1;
 
 // Procedures
 
-// Chapel procedures have similar syntax functions in other languages. 
+// Chapel procedures have similar syntax functions in other languages.
 proc fibonacci(n : int) : int {
   if n <= 1 then return n;
   return fibonacci(n-1) + fibonacci(n-2);

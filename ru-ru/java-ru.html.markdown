@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.security.*;
 
 // Каждый .java файл содержит один публичный класс, имя которого совпадает с
-// именем файла. 
+// именем файла.
 public class LearnJavaRu {
 
     // Программа должна содержать метод main, который является точкой входа.
@@ -162,7 +162,7 @@ public class LearnJavaRu {
         //             интерфейса Map. Это позволяет сохранить постоянной
         //             скорость выполнения базовых операций, таких как
         //             добавление и удаление элементов, вне зависимости
-        //             от размера множества. 
+        //             от размера множества.
 
         ///////////////////////////////////////
         // Операторы
@@ -448,7 +448,7 @@ class PennyFarthing extends Bicycle {
 }
 
 // Интерфейсы
-// Синтаксис определения интерфейса: 
+// Синтаксис определения интерфейса:
 // <модификатор доступа> interface <имя интерфейса> extends <базовый интерфейс> {
 //     // Константы
 //     // Определение методов
@@ -472,7 +472,7 @@ public class Fruit implements Edible, Digestible {
     }
 
     public void digest() {
-        //... 
+        //...
     }
 }
 
@@ -527,5 +527,4 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne, In
 * [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
 
 * [Java The Complete Reference](http://www.amazon.com/gp/product/0071606300)
-
 

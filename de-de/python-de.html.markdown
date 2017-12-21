@@ -17,7 +17,7 @@ Hinweis: Dieser Beitrag bezieht sich besonders auf Python 2.7, er sollte aber au
 
 ```python
 # Einzeilige Kommentare beginnen mit einer Raute (Doppelkreuz)
-""" Mehrzeilige Strings werden mit 
+""" Mehrzeilige Strings werden mit
     drei '-Zeichen geschrieben und werden
     oft als Kommentare genutzt.
 """
@@ -283,7 +283,7 @@ Ausgabe:
 for animal in ["hund", "katze", "maus"]:
     # Wir können Strings mit % formatieren
     print "%s  ist ein Säugetier" % animal
-    
+
 """
 `range(Zahl)` gibt eine null-basierte Liste bis zur angegebenen Zahl wieder
 Ausgabe:
@@ -458,7 +458,7 @@ import math as m
 math.sqrt(16) == m.sqrt(16) #=> True
 
 # Module sind in Python nur gewöhnliche Dateien. Wir
-# können unsere eigenen schreiben und importieren. Der Name des 
+# können unsere eigenen schreiben und importieren. Der Name des
 # Moduls ist der Dateiname.
 
 # Wir können auch die Funktionen und Attribute eines
@@ -484,4 +484,3 @@ dir(math)
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
 * [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
-

@@ -59,7 +59,7 @@ let çiftler liste =
    List.filter çiftMi liste     // List.filter 'boolean bir fonksiyon' ve
                                 // 'üzerinde çalışılacak bir liste' parametrelerinden oluşan
                                 // bir kütüphane fonksiyonu
-                              
+
 çiftler birdenBeşe              // Şimdi fonksiyonu uygula.
 
 // Parantezleri önceliği netleştirmek için kullanabilirsiniz. Bu örnek
@@ -108,7 +108,7 @@ optionKalıpEşleştirme geçerliDeğer
 optionKalıpEşleştirme geçersizDeğer
 
 // ------ Yazdırma ------
-// printf/printfn fonksiyonları C#'taki 
+// printf/printfn fonksiyonları C#'taki
 // Console.Write/WriteLine fonksiyonlarına benzer.
 printfn "Bir tamsayı %i, bir ondalık %f, bir boolean %b yazdırma" 1 2.0 true
 printfn "Bir string %s, ve jenerik bir tip %A" "merhaba" [1; 2; 3; 4]
@@ -162,8 +162,8 @@ module FonksiyonOrnekleri =
 // Üç çesit sıralı fonksiyon vardır:
 // * Listeler en temel değiştirilemez kolleksiyonlardır.
 // * Diziler değiştirilebilir ve gerektiğinde daha verimlidirler.
-// * Seriler tembel (lazy evaluation) ve sonsuzdurlar (Enumeratörler gibi). 
-// 
+// * Seriler tembel (lazy evaluation) ve sonsuzdurlar (Enumeratörler gibi).
+//
 // Değiştirilmez map'ler ve kümeler ve bütün .NET kolleksiyonları
 // diğer kolleksiyon türleridir.
 
@@ -283,7 +283,7 @@ module VeriTipiÖrnekleri =
     // -- Tuple oluşturmak için virgül kullan
     let ikiliTuple = 1, 2
     let üçlüTuple = "a", 2, true
-    
+
     // Tuple'lar çabuk ve kolay anonim tiplerdir.
     // paketi açmak için kalıp eşleştirme kullan
     let x, y = ikiliTuple  // x = 1, y = 2
@@ -469,7 +469,7 @@ module AlgoritmaÖrnekleri =
             []                              // boş listeyi döndür
        // Liste boş değilse
        | ilkEleman::diğerElemanlar ->       // İlk elemanı al
-            let küçükElemanlar =            // Daha küçük elemanları 
+            let küçükElemanlar =            // Daha küçük elemanları
                 diğerElemanlar              // diğerlerinden ayır
                 |> List.filter (fun e -> e < ilkEleman)
                 |> sırala                   // ve sırala

@@ -11,7 +11,7 @@ contributors:
     - ["Rahil Momin", "https://github.com/iamrahil"]
     - ["Gregrory Kielian", "https://github.com/gskielian"]
     - ["Etan Reisner", "https://github.com/deryni"]
-    - ["Jonathan Wang", "https://github.com/Jonathansw"]   
+    - ["Jonathan Wang", "https://github.com/Jonathansw"]
     - ["Leo Rudberg", "https://github.com/LOZORD"]
     - ["Betsy Lorton", "https://github.com/schbetsy"]
     - ["John Detter", "https://github.com/jdetter"]
@@ -248,7 +248,7 @@ echo "Ci sono $(ls | wc -l) oggetti qui."
 echo "Ci sono `ls | wc -l` oggetti qui."
 
 # Bash utilizza uno statemente case che funziona in maniera simile allo switch in Java e C++:
-case "$Variabile" in 
+case "$Variabile" in
     #Lista di pattern per le condizioni che vuoi soddisfare
     0) echo "C'è uno zero.";;
     1) echo "C'è un uno.";;

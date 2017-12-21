@@ -723,7 +723,7 @@ $cls = new SomeOtherNamespace\MyClass();
 
 /**********************
 *  エラーハンドリング
-*  
+*
 */
 
 // シンプルなエラーハンドリングは、try catchを使えば行えます
@@ -736,10 +736,10 @@ try {
 
 // try catchを名前空間を持った環境で使用するときは、次のようにします。
 
-try { 
+try {
     // Do something
     // 処理を実行します
-} catch (\Exception $e) { 
+} catch (\Exception $e) {
     // 例外を処理します
 }
 
@@ -748,13 +748,13 @@ try {
 class MyException extends Exception {}
 
 try {
-    
-    $condition = true; 
-    
+
+    $condition = true;
+
     if ($condition) {
         throw new MyException('Something just happend');
     }
-    
+
 } catch (MyException $e) {
     // Handle my exception
 }

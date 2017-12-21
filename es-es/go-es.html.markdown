@@ -113,7 +113,7 @@ saltos de línea.` // mismo tipo cadena
 	// Para añadir elementos a un sector, se utiliza la función incorporada
 	// append().
 	// El primer argumento es el sector al que se está anexando. Comúnmente,
-	// la variable del arreglo se actualiza en su lugar, como en el 
+	// la variable del arreglo se actualiza en su lugar, como en el
 	// siguiente ejemplo.
 	sec := []int{1, 2 , 3}      // El resultado es un sector de longitud 3.
 	sec = append(sec, 4, 5, 6)  // Añade 3 elementos. El sector ahora tiene una
@@ -440,7 +440,7 @@ utilizar [https://play.golang.org]( https://play.golang.org) como un
 cosas y el código en el navegador, sin ni siquiera instalar Go.
 
 En la lista de lecturas para estudiantes de Go está el
-[código fuente de la biblioteca estándar](http://golang.org/src/pkg/). 
+[código fuente de la biblioteca estándar](http://golang.org/src/pkg/).
 Ampliamente documentado, que demuestra lo mejor del legible y comprensible
 Go, con su característico estilo y modismos.  ¡O puedes hacer clic en un
 nombre de función en [la documentación](http://golang.org/pkg/) y

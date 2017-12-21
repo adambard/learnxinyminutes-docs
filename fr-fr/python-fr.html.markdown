@@ -413,7 +413,7 @@ class Human(object):
     def get_species(cls):
         return cls.species
 
-    # Une méthode statique est appellée sans référence à une classe ou à une instance 
+    # Une méthode statique est appellée sans référence à une classe ou à une instance
     @staticmethod
     def grunt():
         return "*grunt*"
@@ -485,4 +485,3 @@ dir(math)
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
 * [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
-

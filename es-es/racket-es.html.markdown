@@ -46,7 +46,7 @@ Racket es un lenguaje de propósito general, multiparadigma que hace parte de la
 1+2i                   ; numeros complejos
 
 ;; La aplicación de funciones es escrita de la siguiente forma: (f x y z ...)
-;; donde f es una función y “x, y, z” son sus operandos 
+;; donde f es una función y “x, y, z” son sus operandos
 ;; Si quieres crear una lista de literales debes agregar ' al inicio
 ;; para que no sean evaluados
 '(+ 1 2) ; => (+ 1 2)
@@ -283,7 +283,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no 'd'
 (= 3 3.0) ; => #t
 (= 2 1)   ; => #f
 
-;; 'eq?' retorna #t si 2 argumentos refieren al mismo objeto en memoria 
+;; 'eq?' retorna #t si 2 argumentos refieren al mismo objeto en memoria
 ;; #f de lo contrario.
 ;; En otras palabras, es una simple comparación de punteros.
 (eq? '() '()) ; => #t, Debido a que existe solo una lista vacia en memoria
@@ -318,7 +318,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no 'd'
 (eqv? (string-append "foo" "bar") (string-append "foo" "bar"))   ; => #f
 
 ;; 'equal?' permite comparar los siguientes tipos de datos:
-;; strings, byte strings, pairs, mutable pairs, vectors, boxes, 
+;; strings, byte strings, pairs, mutable pairs, vectors, boxes,
 ;; hash tables, and inspectable estructuras.
 ;; para otros tipos de datos, 'equal?' y 'eqv?' devuelven el mismo resultado.
 (equal? 3 3.0)                                                   ; => #f
@@ -515,7 +515,7 @@ vec ; => #(1 2 3 4)
     (show " | ~a | " n #\space)
     (show "---~a---" n #\-))
 
-  (define (show fmt n ch) ; función interna 
+  (define (show fmt n ch) ; función interna
     (printf fmt (make-string n ch))
     (newline)))
 
@@ -677,7 +677,6 @@ vec ; => #(1 2 3 4)
 ## Mas información
 
 ¿Quieres saber mas? Prueba en [Empezando con Racket](http://docs.racket-lang.org/getting-started/)
-
 
 
 

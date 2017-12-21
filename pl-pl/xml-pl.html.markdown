@@ -3,8 +3,8 @@ language: xml
 filename: learnxml-pl.xml
 contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
-translators:  
-  - ["Tomasz Janiszewski", "https://github.com/janisz"]  
+translators:
+  - ["Tomasz Janiszewski", "https://github.com/janisz"]
 lang: pl-pl
 ---
 
@@ -42,7 +42,7 @@ tylko je przechowuje.
 </ksiegarnia>
 
 <!-- Powyżej jest typowy plik XML.
-  Zaczyna się od deklaracji zawierającej metadane (opcjonalne).  
+  Zaczyna się od deklaracji zawierającej metadane (opcjonalne).
 
   XML używa drzewiastej struktury. Powyżej, głównym wierzchołkiem jest
   'ksiegarnia' , która zawiera trzy (3) węzły potomne, wszystkie 'ksiazki',

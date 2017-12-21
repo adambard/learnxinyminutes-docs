@@ -42,13 +42,13 @@ informatia, ci doar o transporta.
 
 <!-- Deasupra este un fisier XML obisnuit.
   Incepe cu o declaratie ce adauga niste metadata (optional).
-  
+
   XML foloseste o structura arborescenta. Deasupra, nodul de baza este
   'librarie', care are trei noduri copil, toate 'carti'. Acele noduri au la
   randul lor noduri copii si asa mai departe...
 
   Nodurile sunt create folosind taguri deschise/inchise, iar copii sunt doar
-  noduri intre tagurile de deschis si inchis.-->  
+  noduri intre tagurile de deschis si inchis.-->
 
 
 <!-- XML transporta doua tipuri de date:
@@ -59,8 +59,8 @@ informatia, ci doar o transporta.
   2 - Elemente -> Date pure.
       Asta este ceea ce parserul va extrage din documentul XML.
       Elementele apar intre tagurile deschis si inchis, fara paranteze. -->
-      
-  
+
+
 <!-- Dedesubt, un element cu doua atribute -->
 <file type="gif" id="4293">computer.gif</file>
 
@@ -74,13 +74,13 @@ Cu toate astea este posibil sa injectam mai multe constrangeri in document
 folosind definitii precum DTD si XML Schema.
 
 Un document XML ce foloseste o definitie de document este numit valid in
-contextul documentului. 
+contextul documentului.
 
 Cu acest tool poti verifica datele XML in afara codului aplicatiei.
 
 ```xml
 
-<!-- Dedesubt este o versiune simplificata a documentului librarie, 
+<!-- Dedesubt este o versiune simplificata a documentului librarie,
   cu aditia definitiei DTD.-->
 
 <?xml version="1.0" encoding="UTF-8"?>

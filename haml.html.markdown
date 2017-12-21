@@ -143,7 +143,7 @@ $ haml input_file.haml output_file.html
 
   - if book do
     %p This is a book
-    
+
 / Adding ordered / unordered list
 %ul
   %li
@@ -163,11 +163,11 @@ $ haml input_file.haml output_file.html
     %tr
       %th Header 1
       %th Header 2
-    
+
     %tr
       %td Value1
       %td value2
-    
+
   %tfoot
     %tr
       %td

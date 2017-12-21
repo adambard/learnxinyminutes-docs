@@ -8,14 +8,14 @@ translators:
 lang: nl-nl
 ---
 
-Markdown is gecreëerd door John Gruber in 2004. Het is bedoeld om met een gemakkelijke te lezen en 
+Markdown is gecreëerd door John Gruber in 2004. Het is bedoeld om met een gemakkelijke te lezen en
 schrijven syntax te zijn die gemakkelijk omgevormd kan worden naar HTML (en op heden verschillende
 andere formaten)
 
 ```markdown
 <!-- Markdown erft over van HTML, dus ieder HTML bestand is een geldig Markdown
 bestand. Dit betekend ook dat html elementen gebruikt kunnen worden in Markdown
-zoals het commentaar element. Echter, als je een html element maakt in een Markdown 
+zoals het commentaar element. Echter, als je een html element maakt in een Markdown
 document kan je geen markdown gebruiken voor de waarde van dat element. -->
 
 <!-- Markdown varieert ook van implementatie tot implementatie en per parser. Deze
@@ -58,7 +58,7 @@ op Github, is er ook doorstrepen -->
 
 <!-- Paragrafen worden onderscheiden door een of meerdere lege lijnen -->
 
-Dit is een paragraaf. 
+Dit is een paragraaf.
 
 Dit is paragraaf 2.
 Dit is nog steeds paragraaf 2!
@@ -187,7 +187,7 @@ plaats de tekst om weer te geven tussen [ en ] gevolgd door de link tussen ( en 
 
 
 <!-- Afbeeldingen -->
-<!-- Afbeeldingen worden toegevoegd op exact de zelfde manier als links maar met een 
+<!-- Afbeeldingen worden toegevoegd op exact de zelfde manier als links maar met een
 uitroepteken aan het begin van de lijn. -->
 
 ![Dit is de alt waarde van een afbeelding](http://imgur.com/myimage.jpg "Optionele titel")

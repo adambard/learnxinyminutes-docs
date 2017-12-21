@@ -30,7 +30,7 @@ JavaDoc-коментар виглядає так. Використовуєтьс
 
 // Імпорт класу ArrayList з пакета java.util
 import java.util.ArrayList;
-// Імпорт усіх класів з пакета java.security 
+// Імпорт усіх класів з пакета java.security
 import java.security.*;
 
 // Кожний .java файл містить один зовнішній публічний клас, ім’я якого співпадає
@@ -99,13 +99,13 @@ public class LearnJava {
 
         // Примітка: Java не має беззнакових типів.
 
-        // Float — 32-бітне число з рухомою комою одиничної точності за стандартом IEEE 754 
+        // Float — 32-бітне число з рухомою комою одиничної точності за стандартом IEEE 754
         // 2^-149 <= float <= (2-2^-23) * 2^127
         float fooFloat = 234.5f;
         // f або F використовується для позначення того, що змінна має тип float;
         // інакше трактується як double.
 
-        // Double — 64-бітне число з рухомою комою подвійної точності за стандартом IEEE 754 
+        // Double — 64-бітне число з рухомою комою подвійної точності за стандартом IEEE 754
         // 2^-1074 <= x <= (2-2^-52) * 2^1023
         double fooDouble = 123.4;
 
@@ -130,13 +130,13 @@ public class LearnJava {
         // байтів, операції над ними виконуються функціями, які мають клас BigInteger
         //
         // BigInteger можна ініціалізувати, використовуючи масив байтів чи рядок.
-        
+
         BigInteger fooBigInteger = new BigInteger(fooByteArray);
 
 
         // BigDecimal — Незмінні знакові дробові числа довільної точності
         //
-        // BigDecimal складається з двох частин: цілого числа довільної точності 
+        // BigDecimal складається з двох частин: цілого числа довільної точності
         // з немасштабованим значенням та 32-бітного масштабованого цілого числа
         //
         // BigDecimal дозволяє розробникам контролювати десяткове округлення.
@@ -147,10 +147,10 @@ public class LearnJava {
         // чи немасштабованим значенням (BigInteger) і масштабованим значенням (int).
 
         BigDecimal fooBigDecimal = new BigDecimal(fooBigInteger, fooInt);
-        
+
         // Для дотримання заданої точності рекомендується використовувати
-        // конструктор, який приймає String 
-        
+        // конструктор, який приймає String
+
         BigDecimal tenCents = new BigDecimal("0.1");
 
 
@@ -195,7 +195,7 @@ public class LearnJava {
         //        інтерфейсом, тому не може бути успадкований.
         //        Типи ключів і значень, які зберігаються в Map, мають
         //        вказуватись у класі, який його реалізує.
-		//		  Ключ не може повторюватись і пов’язаний лише з одним значенням        
+		//		  Ключ не може повторюватись і пов’язаний лише з одним значенням
         // HashMaps — Цей клас використовує хеш-таблицю для реалізації інтерфейсу Map.
         //            Це дозволяє виконувати певні операції,
         //            такі, як отримання та вставка елемента,
@@ -295,7 +295,7 @@ public class LearnJava {
             // Виконається 10 разів, fooFor 0->9
         }
         System.out.println("Значення fooFor: " + fooFor);
-        
+
         // Вихід із вкладеного циклу через мітку
         outer:
         for (int i = 0; i < 10; i++) {
@@ -306,10 +306,10 @@ public class LearnJava {
             }
           }
         }
-        
+
         // Цикл For Each
-        // Призначений для перебору масивів та колекцій       
-        int[] fooList = {1, 2, 3, 4, 5, 6, 7, 8, 9};       
+        // Призначений для перебору масивів та колекцій
+        int[] fooList = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
         for (int bar : fooList) {
             System.out.println(bar);
@@ -318,7 +318,7 @@ public class LearnJava {
 
         // Оператор вибору Switch Case
         // Оператор вибору працює з типами даних byte, short, char, int.
-        // Також працює з переліками Enum, 
+        // Також працює з переліками Enum,
         // класом String та класами-обгортками примітивних типів:
         // Character, Byte, Short та Integer.
         int month = 3;
@@ -334,7 +334,7 @@ public class LearnJava {
                      break;
         }
         System.out.println("Результат Switch Case: " + monthString);
-        
+
         // Починаючи з Java 7 і далі, вибір рядкових змінних здійснюється так:
         String myAnswer = "можливо";
         switch(myAnswer) {
@@ -398,7 +398,7 @@ public class LearnJava {
 
         // toString повертає рядкове представлення об’єкту.
         System.out.println("Інформація про об’єкт trek: " + trek.toString());
-        
+
         // У Java немає синтаксису для явного створення статичних колекцій.
         // Це можна зробити так:
 
@@ -445,7 +445,7 @@ class Bicycle {
 
     // статичний блок
     // Java не має статичних конструкторів, але
-    // має статичний блок ініціалізації змінних класу    
+    // має статичний блок ініціалізації змінних класу
     // Цей блок виконується при завантаженні класу.
     static {
         className = "Bicycle";
@@ -554,7 +554,7 @@ public interface Digestible {
 
 // Можна створити клас, що реалізує обидва інтерфейси.
 public class Fruit implements Edible, Digestible {
-  
+
     @Override
     public void eat() {
         // ...
@@ -604,7 +604,7 @@ public abstract class Animal
     // Метод може мати тіло
     public void eat()
     {
-        System.out.println("Я тварина, і я їм.");  
+        System.out.println("Я тварина, і я їм.");
         // Зауваження: є доступ до приватних змінних.
         age = 30;
     }
@@ -614,7 +614,7 @@ public abstract class Animal
 
     public void printAge()
     {
-        System.out.println(age);  
+        System.out.println(age);
     }
 
     // Абстрактні класи МОЖУТЬ мати метод «main».
@@ -694,41 +694,41 @@ public abstract class Mammal()
 
 public enum Day {
     SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
-    THURSDAY, FRIDAY, SATURDAY 
+    THURSDAY, FRIDAY, SATURDAY
 }
 
 // Перелік Day можна використовувати так:
 
 public class EnumTest {
-    
+
     // Змінна того же типу, що й перелік
     Day day;
-    
+
     public EnumTest(Day day) {
         this.day = day;
     }
-    
+
     public void tellItLikeItIs() {
         switch (day) {
             case MONDAY:
                 System.out.println("Понеділкі важкі.");
                 break;
-                    
+
             case FRIDAY:
                 System.out.println("П’ятниці краще.");
                 break;
-                         
-            case SATURDAY: 
+
+            case SATURDAY:
             case SUNDAY:
                 System.out.println("Вихідні найліпші.");
                 break;
-                        
+
             default:
                 System.out.println("Середина тижня так собі.");
                 break;
         }
     }
-    
+
     public static void main(String[] args) {
         EnumTest firstDay = new EnumTest(Day.MONDAY);
         firstDay.tellItLikeItIs(); // => Понеділки важкі.
@@ -737,7 +737,7 @@ public class EnumTest {
     }
 }
 
-// Переліки набагато потужніші, ніж тут показано. 
+// Переліки набагато потужніші, ніж тут показано.
 // Тіло переліків може містити методи та інші змінні.
 // Дивіться більше тут: https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
 

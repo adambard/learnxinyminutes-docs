@@ -28,7 +28,7 @@ e di una sorta di [DTD](https://it.wikipedia.org/wiki/Document_Type_Definition).
 ```json
 {
   "chiave": "valore",
-  
+
   "chiavi": "devono sempre essere racchiuse tra doppi apici",
   "numeri": 0,
   "stringhe": "Ciaø, møndø. Tutti i caratteri Unicode sono permessi, insieme all'\"escaping\".",
@@ -58,7 +58,7 @@ e di una sorta di [DTD](https://it.wikipedia.org/wiki/Document_Type_Definition).
       [0, 0, 0, 1]
     ]
   ],
-  
+
   "stile alternativo": {
     "commento": "Guarda qua!"
   , "posizione della virgola": "non conta - se è prima della chiave successiva, allora è valida"

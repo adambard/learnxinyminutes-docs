@@ -95,7 +95,7 @@ t ; outro atom, denotado true.
 
 ;; Funções são escritas como (f x y z ...)
 ;; onde f é uma função e x, y, z, ... são operadores
-;; Se você quiser criar uma lista literal de dados, use ' para evitar 
+;; Se você quiser criar uma lista literal de dados, use ' para evitar
 ;; que a lista seja avaliada - literalmente, "quote" os dados.
 '(+ 1 2) ; => (+ 1 2)
 ;; Você também pode chamar uma função manualmente:
@@ -260,7 +260,7 @@ nil                  ; para false - e para lista vazia
 ;;  de tamanho fixo
 (defparameter *adjvec* (make-array '(3) :initial-contents '(1 2 3)
       :adjustable t :fill-pointer t))
-      
+
 *adjvec* ; => #(1 2 3)
 
 ;; Adicionando novo elemento
@@ -459,7 +459,7 @@ nil                  ; para false - e para lista vazia
  ; => 2
 
 
-;; Um bom estilo Lisp é para minimizar funções destrutivas e para evitar 
+;; Um bom estilo Lisp é para minimizar funções destrutivas e para evitar
 ;; mutação quando razoável.
 
 

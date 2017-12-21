@@ -255,7 +255,7 @@ $ python example.py
 Have a look around!
 
 Ians-Air.home:ORIGIN_ENV:I00LA1Mq#  bash
-imiell@Ians-Air:/space/git/shutit  ⑂ master +    
+imiell@Ians-Air:/space/git/shutit  ⑂ master +  
 CTRL-] caught, continuing with run...
 2017-06-05 15:12:33,577 INFO: Sending:  exit
 2017-06-05 15:12:33,633 INFO: Output (squashed):  exitexitIans-Air.home:ORIGIN_ENV:I00LA1Mq#  [...]

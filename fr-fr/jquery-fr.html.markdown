@@ -9,7 +9,7 @@ filename: jquery-fr.js
 lang: fr-fr
 ---
 
-jQuery est une bibliothèque JavaScript dont le but est de permettre de "faire plus en écrivant moins" (do more, write less). Elle facilite l'écriture de nombreuses fonctions, notamment au niveau d'AJAX, de la gestion d'événements, ou encore de la manipulation de documents. 
+jQuery est une bibliothèque JavaScript dont le but est de permettre de "faire plus en écrivant moins" (do more, write less). Elle facilite l'écriture de nombreuses fonctions, notamment au niveau d'AJAX, de la gestion d'événements, ou encore de la manipulation de documents.
 C'est pourquoi aujourd'hui, jQuery est utilisée par de nombreuses grandes entreprises et par des développeurs du monde entier.
 
 Étant donné que jQuery est une bibliothèque JavaScript, vous devriez d'abord [apprendre le JavaScript](https://learnxinyminutes.com/docs/fr-fr/javascript-fr/)
@@ -79,7 +79,7 @@ $('#btn').on(
 // On peut déplacer et cacher des éléments grâce à des fonctions d'effets
 $('.table').hide(); // Cache le(s) élément(s)
 
-// Note: même avec un appel à une fonction dans ces méthodes 
+// Note: même avec un appel à une fonction dans ces méthodes
 // cache quand même l'élément
 $('.table').hide(function(){
     // L'élément est caché, puis la fonction est exécutée
@@ -100,7 +100,7 @@ tables.slideUp(); // Cache l'élément avec un effet de glissement vers le haut
 tables.slideDown(); // Fait apparaître l'élément avec un glissement vers le bas
 tables.slideToggle(); // Cache/Montre l'élément avec un effet de glissement
 
-// Les méthodes ci-dessus prennent en arguments 
+// Les méthodes ci-dessus prennent en arguments
 // une vitesse (millisecondes) et une function callback
 tables.hide(1000, myFunction); // Animation d'une seconde, puis appel à la fonction
 
@@ -117,7 +117,7 @@ tables.animate({margin-top:"+=50", height: "100px"}, 500, myFunction);
 // 3. Manipulation
 
 // Ces méthodes sont similaires aux effets mais permettent d'aller plus loin
-$('div').addClass('taming-slim-20'); // Ajoute la classe taming-slim-20 aux div 
+$('div').addClass('taming-slim-20'); // Ajoute la classe taming-slim-20 aux div
 
 // Méthodes ordinaires de manipulation
 $('p').append('Hello world'); // Ajoute à la fin de l'élément
@@ -139,4 +139,3 @@ $('p').each(function() {
 
 
 ``
-

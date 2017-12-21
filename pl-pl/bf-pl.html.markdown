@@ -11,11 +11,11 @@ lang: pl-pl
 
 ---
 
-Brainfuck (pisane małymi literami, za wyjątkiem początku zdania) jest bardzo 
+Brainfuck (pisane małymi literami, za wyjątkiem początku zdania) jest bardzo
 minimalistycznym, kompletnym w sensie Turinga, językiem programowania.
 Zawiera zaledwie 8 poleceń.
 
-Możesz przetesotwać brainfucka w swojej przeglądarce, korzystając z narzędzia 
+Możesz przetesotwać brainfucka w swojej przeglądarce, korzystając z narzędzia
 [brainfuck-visualizer](http://fatiherikli.github.io/brainfuck-visualizer/).
 
 ```
@@ -60,7 +60,7 @@ pięć razy, uzyskując wartość 65. Następnie wyświetlamy wartość komórki
 , [ > + < - ] > .
 
 Ten program wczytuje znak z wejścia i umieszcza jego kod ASCII w komórce #1.
-Następnie zaczyna się pętla, w której znajdują się następujące instrukcje: 
+Następnie zaczyna się pętla, w której znajdują się następujące instrukcje:
 przesunięcie wskaźnika na komórkę #2, inkrementacja wartości komóri #2,
 powrót do komórki #1 i dekrementacja wartości komórki #1. Instrukcje pętli
 wykonują się aż wartość komórki #1 osiągnie zero, a komórka #2 osiągnie

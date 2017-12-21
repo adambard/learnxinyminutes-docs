@@ -10,7 +10,7 @@ lang: ms-my
 
 Clojure ialah salah satu bahasa pengaturcaraan dalam keluarga Lisp yang dibangunkan untuk Java Virtual Machine. Ia lebih
 menekankan kepada konsep [functional programming](https://en.wikipedia.org/wiki/Functional_programming) jika dibandingkan
-dengan Common Lisp, tetapi juga menyediakan kemudahan [STM](https://en.wikipedia.org/wiki/Software_transactional_memory) 
+dengan Common Lisp, tetapi juga menyediakan kemudahan [STM](https://en.wikipedia.org/wiki/Software_transactional_memory)
 untuk mengendalikan *state* apabila diperlukan.
 
 Gabungan tersebut membolehkan Clojure untuk mengendalikan beberapa proses serentak (*concurrency*) dengan mudah,
@@ -272,8 +272,8 @@ keymap ; => {:a 1, :b 2, :c 3}
 
 ; Macro "thread-first" (->) memasukkan hasil perkiraan ke setiap form
 ; yang selepasnya, sebagai argument pertama (item yang kedua)
-(->  
-   {:a 1 :b 2} 
+(->
+   {:a 1 :b 2}
    (assoc :c 3) ;=> (assoc {:a 1 :b 2} :c 3)
    (dissoc :b)) ;=> (dissoc (assoc {:a 1 :b 2} :c 3) :b)
 
@@ -281,8 +281,8 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; (dissoc (assoc {:a 1 :b 2} :c 3) :b)
 ; dan hasilnya ialah {:a 1 :c 3}
 
-; Yang dua anak panah pula membuat benda yang sama, tetapi memasukkan hasil perkiraan 
-; setiap baris ke pengakhiran form selepasnya. Cara ini berguna untuk operasi 
+; Yang dua anak panah pula membuat benda yang sama, tetapi memasukkan hasil perkiraan
+; setiap baris ke pengakhiran form selepasnya. Cara ini berguna untuk operasi
 ; yang melibatkan collection:
 (->>
    (range 10)

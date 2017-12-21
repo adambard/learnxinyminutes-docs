@@ -44,7 +44,7 @@ versão do Ruby, ela está se referindo a versão de lançamento do MRI.
 
 As três principais versões do Ruby em uso são:
 
-* 2.0.0 - Lançada em Fevereiro de 2013. Maioria das principais bibliotecas e 
+* 2.0.0 - Lançada em Fevereiro de 2013. Maioria das principais bibliotecas e
   suporte a frameworks 2.0.0.
 * 1.9.3 - Lançada em Outubro de 2011. Está é a versão mais utilizada pelos rubistas
   atualmente. Também [aposentada](https://www.ruby-lang.org/en/news/2015/02/23/support-for-ruby-1-9-3-has-ended/).
@@ -110,7 +110,7 @@ implementações com a MRI.
 [RubyGems](http://rubygems.org/) é um gerenciador de pacotes para Ruby mantido
 pela comunidade. RubyGems vem com o Ruby, portanto não é preciso baixar separadamente.
 
-Os pacotes do Ruby são chamados de "gemas", e elas podem ser hospedadas pela 
+Os pacotes do Ruby são chamados de "gemas", e elas podem ser hospedadas pela
 comunidade em RubyGems.org. Cada gema contém seu código-fonte e alguns metadados,
 incluindo coisas como versão, dependências, autor(es) e licença(s).
 
@@ -118,24 +118,24 @@ incluindo coisas como versão, dependências, autor(es) e licença(s).
 
 [Bundler](http://bundler.io/) é um gerenciador de dependências para as gemas.
 Ele usa a Gemfile de um projeto para encontrar dependências, e então busca as
-dependências dessas dependências de forma recursiva. Ele faz isso até que todas 
+dependências dessas dependências de forma recursiva. Ele faz isso até que todas
 as dependências sejam resolvidas e baixadas, ou para se encontrar um conflito.
 
-O Bundler gerará um erro se encontrar um conflito entre dependências. Por exemplo, 
-se a gema A requer versão 3 ou maior que a gema Z, mas a gema B requer a versão 
+O Bundler gerará um erro se encontrar um conflito entre dependências. Por exemplo,
+se a gema A requer versão 3 ou maior que a gema Z, mas a gema B requer a versão
 2, o Bundler irá notificá-lo que há um conflito. Isso se torna extremamente útil
 quando diversas gemas começam a referenciar outras gemas (que referem-se a outras
 gemas), o que pode formar uma grande cascata de dependências a serem resolvidas.
 
 # Testes
 
-Testes são uma grande parte da cultura do Ruby. O Ruby vem com o seu próprio 
-framework de teste de unidade chamado minitest (ou TestUnit para Ruby versão 1.8.x). 
+Testes são uma grande parte da cultura do Ruby. O Ruby vem com o seu próprio
+framework de teste de unidade chamado minitest (ou TestUnit para Ruby versão 1.8.x).
 Existem diversas bibliotecas de teste com diferentes objetivos.
 
-* [TestUnit](http://ruby-doc.org/stdlib-1.8.7/libdoc/test/unit/rdoc/Test/Unit.html) - 
+* [TestUnit](http://ruby-doc.org/stdlib-1.8.7/libdoc/test/unit/rdoc/Test/Unit.html) -
   Framework de testes "Unit-style" para o Ruby 1.8 (built-in)
-* [minitest](http://ruby-doc.org/stdlib-2.0.0/libdoc/minitest/rdoc/MiniTest.html) - 
+* [minitest](http://ruby-doc.org/stdlib-2.0.0/libdoc/minitest/rdoc/MiniTest.html) -
   Framework de testes para o Ruby 1.9/2.0 (built-in)
 * [RSpec](http://rspec.info/) - Um framework de testes que foca na expressividade
 * [Cucumber](http://cukes.info/) - Um framework de testes BDD que analisa testes Gherkin formatados

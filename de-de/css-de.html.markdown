@@ -141,7 +141,7 @@ selector {
     font-family: Arial;
     font-family: "Courier New"; /* wenn der Name ein Leerzeichen beinhält, kommt er in
     Anführungszeichen */
-    font-family: "Courier New", Trebuchet, Arial; /* wird die erste Schriftart 
+    font-family: "Courier New", Trebuchet, Arial; /* wird die erste Schriftart
     nicht gefunden, wird die zweite benutzt, usw. */
 }
 
@@ -227,4 +227,3 @@ vom Projekt unterstützten Browser zu überprüfen.
 * [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
 * [QuirksMode CSS](http://www.quirksmode.org/css/)
 * [Z-Index - The stacking context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
-

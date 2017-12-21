@@ -18,12 +18,12 @@ $ haml fichier_entree.haml fichier_sortie.html
 
 ```haml
 / -------------------------------------------
-/ Indentation 
+/ Indentation
 / -------------------------------------------
 
 /
   A cause de l'importance de l'indentation sur la manière dont votre code sera
-  converti, l'indentation doit être constante à travers votre document. Un 
+  converti, l'indentation doit être constante à travers votre document. Un
   simple changement d'indentation entrainera une erreur. En général, on utilise
   deux espaces, mais ce genre de décision sur l'indentation vous appartient, du
   moment que vous vous y tenez.
@@ -92,7 +92,7 @@ $ haml fichier_entree.haml fichier_sortie.html
 / Des attributs pour n'importe quelles balises peuvent être ajoutés au hash
 %a{:href => '#', :class => 'machin', :title => 'Titre machin'}
 
-/ Pour affecter une valeur à un booléen, utilisez 'true' 
+/ Pour affecter une valeur à un booléen, utilisez 'true'
 %input{:selected => true}
 
 / Pour écrire des data-attributes, utilisez le :data avec la valeur d'un hash
@@ -119,7 +119,7 @@ $ haml fichier_entree.haml fichier_sortie.html
 
 / Ceci vous permet de faire des choses géniales comme des blocs Ruby
 - livre.shuffle.each_with_index do |livre, index|
-  %h1= livre 
+  %h1= livre
 
   if livre do
     %p Ceci est un livre

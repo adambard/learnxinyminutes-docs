@@ -8,16 +8,16 @@ filename: learnelixir-de.ex
 lang: de-de
 ---
 
-Elixir ist eine moderne, funktionale Sprache für die Erlang VM. Sie ist voll 
-kompatibel mit Erlang, verfügt aber über eine freundlichere Syntax und bringt 
-viele Features mit. 
+Elixir ist eine moderne, funktionale Sprache für die Erlang VM. Sie ist voll
+kompatibel mit Erlang, verfügt aber über eine freundlichere Syntax und bringt
+viele Features mit.
 
 ```ruby
 
 # Einzeilige Kommentare werden mit der Raute gesetzt.
 
 # Es gibt keine mehrzeiligen Kommentare;
-# es ist aber problemlos möglich mehrere einzeilige Kommentare hintereinander 
+# es ist aber problemlos möglich mehrere einzeilige Kommentare hintereinander
 # zu setzen (so wie hier).
 
 # Mit 'iex' ruft man die Elixir-Shell auf.
@@ -35,7 +35,7 @@ viele Features mit.
 0x1F # Integer
 3.0  # Float
 
-# Atome, das sind Literale, sind Konstanten mit Namen. Sie starten mit einem 
+# Atome, das sind Literale, sind Konstanten mit Namen. Sie starten mit einem
 # ':'.
 :hello # Atom
 
@@ -60,13 +60,13 @@ rest # => [2, 3]
 # Auf diese Weise kann im Beispiel oben auf Kopf und Rest der Liste zugegriffen
 # werden.
 
-# Ein Musterabgleich wird einen Fehler werfen, wenn die beiden Seiten nicht 
-# zusammenpassen. 
+# Ein Musterabgleich wird einen Fehler werfen, wenn die beiden Seiten nicht
+# zusammenpassen.
 # Im folgenden Beispiel haben die Tupel eine unterschiedliche Anzahl an
 # Elementen:
 {a, b, c} = {1, 2} #=> ** (MatchError) no match of right hand side value: {1,2}
 
-# Es gibt außerdem 'binaries', 
+# Es gibt außerdem 'binaries',
 <<1,2,3>> # binary.
 
 # Strings und 'char lists'
@@ -75,7 +75,7 @@ rest # => [2, 3]
 
 # ... und mehrzeilige Strings
 """
-Ich bin ein 
+Ich bin ein
 mehrzeiliger String.
 """
 #=> "Ich bin ein\nmehrzeiliger String.\n"
@@ -117,12 +117,12 @@ div(10, 2) #=> 5
 rem(10, 3) #=> 1
 
 # Natürlich gibt es auch Operatoren für Booleans: 'or', 'and' und 'not'. Diese
-# Operatoren erwarten einen Boolean als erstes Argument. 
+# Operatoren erwarten einen Boolean als erstes Argument.
 true and true #=> true
 false or true #=> true
 # 1 and true    #=> ** (ArgumentError) argument error
 
-# Elixir bietet auch '||', '&&' und '!', die Argumente jedweden Typs 
+# Elixir bietet auch '||', '&&' und '!', die Argumente jedweden Typs
 # akzeptieren. Alle Werte außer 'false' und 'nil' werden zu wahr evaluiert.
 1 || true  #=> 1
 false && 1 #=> false
@@ -131,7 +131,7 @@ nil && 20  #=> nil
 !true #=> false
 
 # Für Vergleiche gibt es die Operatoren `==`, `!=`, `===`, `!==`, `<=`, `>=`,
-# `<` und `>` 
+# `<` und `>`
 1 == 1 #=> true
 1 != 1 #=> false
 1 < 2  #=> true
@@ -147,7 +147,7 @@ nil && 20  #=> nil
 # number < atom < reference < functions < port < pid < tuple < list < bitstring
 
 # Um Joe Armstrong zu zitieren: "The actual order is not important, but that a
-# total ordering is well defined is important." 
+# total ordering is well defined is important."
 
 ## ---------------------------
 ## -- Kontrollstrukturen
@@ -201,7 +201,7 @@ cond do
     "Aber ich!"
 end
 
-# Es ist üblich eine letzte Bedingung einzufügen, die immer zu wahr evaluiert. 
+# Es ist üblich eine letzte Bedingung einzufügen, die immer zu wahr evaluiert.
 cond do
   1 + 1 == 3 ->
     "Ich werde nie aufgerufen."
@@ -344,7 +344,7 @@ joe_info.name #=> "Joe"
 joe_info = joe_info.age(31) #=> Person[name: "Joe", age: 31, height: 180]
 
 # Der 'try'-Block wird zusammen mit dem 'rescue'-Schlüsselwort dazu verwendet,
-# um Ausnahmen beziehungsweise Fehler zu behandeln. 
+# um Ausnahmen beziehungsweise Fehler zu behandeln.
 try do
   raise "Irgendein Fehler."
 rescue
@@ -366,7 +366,7 @@ end
 
 # Elixir beruht auf dem Aktoren-Model zur Behandlung der Nebenläufigkeit. Alles
 # was man braucht um in Elixir nebenläufige Programme zu schreiben sind drei
-# Primitive: Prozesse erzeugen, Nachrichten senden und Nachrichten empfangen. 
+# Primitive: Prozesse erzeugen, Nachrichten senden und Nachrichten empfangen.
 
 # Um einen neuen Prozess zu erzeugen nutzen wir die 'spawn'-Funktion, die
 # wiederum eine Funktion als Argument entgegen nimmt.
@@ -374,9 +374,9 @@ f = fn -> 2 * 2 end #=> #Function<erl_eval.20.80484245>
 spawn(f) #=> #PID<0.40.0>
 
 # 'spawn' gibt eine pid (einen Identifikator des Prozesses) zurück. Diese kann
-# nun verwendet werden, um Nachrichten an den Prozess zu senden. Um 
+# nun verwendet werden, um Nachrichten an den Prozess zu senden. Um
 # zu senden nutzen wir den '<-' Operator. Damit das alles Sinn macht müssen wir
-# in der Lage sein Nachrichten zu empfangen. Dies wird mit dem 
+# in der Lage sein Nachrichten zu empfangen. Dies wird mit dem
 # 'receive'-Mechanismus sichergestellt:
 defmodule Geometry do
   def area_loop do

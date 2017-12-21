@@ -68,7 +68,7 @@ lang: zh-cn
 ;; ->
 ;; (if (clojure.core/not true) (do (reverse "Hello World")))
 
-;; 当第一个参数为假时，(unless)会演算、返回主体。 
+;; 当第一个参数为假时，(unless)会演算、返回主体。
 ;; 否则返回nil。
 
 (unless true "Hello") ; -> nil

@@ -8,10 +8,10 @@ translators:
 lang: nl-nl
 ---
 
-XML is een markuptaal die ontwikkeld is om data in te bewaren en data mee te 
+XML is een markuptaal die ontwikkeld is om data in te bewaren en data mee te
 verzenden.
 
-Anders dan HTML specificeert XML niet hoe data getoond of geformatteerd moet worden. 
+Anders dan HTML specificeert XML niet hoe data getoond of geformatteerd moet worden.
 Het bevat de data slechts.
 
 * XML Syntax
@@ -44,17 +44,17 @@ Het bevat de data slechts.
 <!-- Hierboven staat een standaard XML bestand.
   Het begint met een declaratie die optionele metadata bevat.
 
-  XML werkt met een boomstructuur. De stamknoop hierboven is 'boekenwinkel'. 
-  Deze heeft drie kinderen die allemaal 'boek' zijn. Deze knopen hebben op 
+  XML werkt met een boomstructuur. De stamknoop hierboven is 'boekenwinkel'.
+  Deze heeft drie kinderen die allemaal 'boek' zijn. Deze knopen hebben op
   hun beurt weer kinderen, enzovoort...
 
-  Knopen hebben open- en sluittags. Kinderen zijn knopen die zich tussen de 
+  Knopen hebben open- en sluittags. Kinderen zijn knopen die zich tussen de
   open- en sluittags van hun ouders bevinden. -->
 
 <!-- XML bevat two soorten data:
   1 - Attributen -> Dit is metadata van een knoop.
       Deze informatie wordt meestal door de XML parser gebruikt om de data op
-      de juiste manier op te slaan. Je herkent het door de syntax in de vorm 
+      de juiste manier op te slaan. Je herkent het door de syntax in de vorm
       van naam="waarde" in de open tag.
   2 - Elementen -> Dit is de pure data
       Deze gegevens worden door de parser uit het XML bestand gehaald.
@@ -69,14 +69,14 @@ Het bevat de data slechts.
 
 * Grammaticaal correcte documenten x Validatie
 
-Een XML document is "grammaticaal correct" of "well-formatted" als de 
-syntax correct is. Het is ook mogelijk om meer structuur in het document 
+Een XML document is "grammaticaal correct" of "well-formatted" als de
+syntax correct is. Het is ook mogelijk om meer structuur in het document
 aan te brengen met document definities zoals DTD en XML Schema.
 
-Een XML document dat aan een document definitie voldoet wordt "valide" volgens 
+Een XML document dat aan een document definitie voldoet wordt "valide" volgens
 die document definitie genoemd.
 
-Met deze gereedschappen kan je de XML data buiten je applicatie logica 
+Met deze gereedschappen kan je de XML data buiten je applicatie logica
 controleren.
 
 ```xml
@@ -106,9 +106,9 @@ controleren.
 
 
 <!-- De DTD begint met een declaratie.
-  Hierna volgt de declaratie van de stamknoop, die 1 of meer 'boek' kinderen 
-  moet bevatten. 
-  Elk 'boek' moet precies 1 'titel' en 'prijs' element bevatten en een attribuut 
+  Hierna volgt de declaratie van de stamknoop, die 1 of meer 'boek' kinderen
+  moet bevatten.
+  Elk 'boek' moet precies 1 'titel' en 'prijs' element bevatten en een attribuut
   'categorie' hebben waarvan 'Literatuur' de standaard waarde is.
   De 'titel' en 'prijs' knopen bevatten parsed character data.-->
 

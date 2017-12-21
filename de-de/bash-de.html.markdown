@@ -17,7 +17,7 @@ Beinahe alle der folgenden Beispiele können als Teile eines Shell-Skripts oder 
 
 ```bash
 #!/bin/bash
-# Die erste Zeile des Scripts nennt sich Shebang, dies gibt dem System an, 
+# Die erste Zeile des Scripts nennt sich Shebang, dies gibt dem System an,
 # wie das Script ausgeführt werden soll: http://de.wikipedia.org/wiki/Shebang
 # Du hast es bestimmt schon mitgekriegt, Kommentare fangen mit # an. Das Shebang ist auch ein Kommentar
 
@@ -32,12 +32,12 @@ Variable="irgendein String"
 
 # Aber nicht so:
 Variable = "irgendein String"
-# Bash wird 'Variable' für einen Befehl halten, den es ausführen soll. Es wird einen Fehler ausgeben, 
-# weil es den Befehl nicht findet. 
+# Bash wird 'Variable' für einen Befehl halten, den es ausführen soll. Es wird einen Fehler ausgeben,
+# weil es den Befehl nicht findet.
 
 # Und so auch nicht:
 Variable= 'Some string'
-# Bash wird 'Variable' wieder für einen Befehl halten, den es ausführen soll. Es wird einen Fehler ausgeben, 
+# Bash wird 'Variable' wieder für einen Befehl halten, den es ausführen soll. Es wird einen Fehler ausgeben,
 # Hier wird der Teil 'Variable=' als nur für diesen einen Befehl gültige Zuweisung an die Variable gesehen.
 
 # Eine Variable wird so benutzt:
@@ -46,7 +46,7 @@ echo "$Variable"
 echo ${Variable}
 # aber
 echo '$Variable'
-# Wenn du eine Variable selbst benutzt – ihr Werte zuweist, sie exportierst oder irgendetwas anderes –, 
+# Wenn du eine Variable selbst benutzt – ihr Werte zuweist, sie exportierst oder irgendetwas anderes –,
 # dann über ihren Namen ohne $. Aber wenn du ihren zugewiesenen Wert willst, dann musst du $ voranstellen.
 # Beachte: ' (Hochkomma) verhindert das Interpretieren der Variablen
 
@@ -138,7 +138,7 @@ python hello.py > "output.out"
 python hello.py 2> "error.err"
 python hello.py > "output-and-error.log" 2>&1
 python hello.py > /dev/null 2>&1
-# Die Fehlerausgabe würde die Datei "error.err" überschreiben (falls sie existiert) 
+# Die Fehlerausgabe würde die Datei "error.err" überschreiben (falls sie existiert)
 # verwende ">>" um stattdessen anzuhängen:
 python hello.py >> "output.out" 2>> "error.err"
 

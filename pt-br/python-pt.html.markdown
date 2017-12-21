@@ -296,7 +296,7 @@ Irá imprimir:
 for animal in ["cachorro", "gato", "rato"]:
     # Você pode usar % para interpolar strings formatadas
     print "%s é um mamífero" % animal
-    
+
 """
 A função `range(um número)` retorna uma lista de números
 do zero até o número dado.
@@ -384,7 +384,7 @@ todos_args(*args)  # equivalente a todos_args(1, 2, 3, 4)
 todos_args(**ch_args) # equivalente a todos_args(a=3, b=4)
 todos_args(*args, **ch_args) # equivalente a todos_args(1, 2, 3, 4, a=3, b=4)
 
-# Em Python, funções são elementos de primeira ordem (são como objetos, 
+# Em Python, funções são elementos de primeira ordem (são como objetos,
 # strings ou números)
 def cria_somador(x):
     def somador(y):
@@ -506,4 +506,3 @@ dir(math)
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
 * [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
-

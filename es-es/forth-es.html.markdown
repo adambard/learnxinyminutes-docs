@@ -10,7 +10,7 @@ filename: learnforth-es.fs
 
 Forth fue criado por Charles H. Moore en los 70s. Forth es un lenguaje imperativo, basado en pila y entorno de programación, siendo usado en proyectos como Open Firmware. También esta usado por NASA.
 
-Nota: Este articulo enfoca predominantemente en la Gforth implementación de Forth, pero casi todo 
+Nota: Este articulo enfoca predominantemente en la Gforth implementación de Forth, pero casi todo
 de lo que esta escrito aquí debe funcionar en otro sitio.
 
 ```
@@ -90,7 +90,7 @@ see cuadrado     \ : cuadrado dup * ; ok
 \ Else:
 : ?>64 ( n -- n ) dup 64 > if ." Mas que 64!" else ." Menos que 64!" then ;
 100 ?>64    \ Mas que 64! ok
-20 ?>64     \ Menos que 64! ok 
+20 ?>64     \ Menos que 64! ok
 
 \ ------------------------------------ Loops -----------------------------------
 

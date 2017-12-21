@@ -105,7 +105,7 @@ He necesitado añadir el signo $ antes de los símbolos. Esto se debe a que cuan
 Mi letra griega favorita es $\xi$. También me gustan $\beta$, $\gamma$ y $\sigma$.
 Todavía no he encontrado una letra griega que LaTeX no conozca.
 
-Los operadores son también una parte esencial de un documento matemático: 
+Los operadores son también una parte esencial de un documento matemático:
 funciones trigonométricas ($\sin$, $\cos$, $\tan$), logaritmos y exponenciales ($\log$, $\exp$), límites ($\lim$), etc. tienen comandos predefinidos en LaTeX.
 
 Vamos a escribir una ecuación para ver cómo se hace: \\

@@ -47,16 +47,16 @@ int main (int argc, const char * argv[])
 
     // NSLog() permet d'afficher une chaine de caractères dans la console
     // Affiche la chaine de caractères "Bonjour Tous Le Monde !"
-    NSLog(@"Bonjour tous le Monde !"); 
- 
+    NSLog(@"Bonjour tous le Monde !");
+
     ///////////////////////////////////////
     // Les Types & Les Variables
     ///////////////////////////////////////
-    
+
     // La déclaration de primitive
     int maPrimitive1  = 1;
     long maPrimitive2 = 234554664565;
-    
+
     // La déclaration d'objet
     // Il faut mettre un astérisque devant la déclaration d'objet fortement typé
     MaClasse *monObject1 = nil;  // Typage fort
@@ -64,15 +64,15 @@ int main (int argc, const char * argv[])
     // 'description' est une méthode qui permet de retourner un aperçut de l'objet sous forme textuelle
     // La méthode 'description' est appelée par défaut quand on utilise le paramètre '%@'
     NSLog(@"%@ and %@", monObject1, [monObject2 description]); // Affiche "(null) et (null)"
-    
+
     // Les chaines de caractères
     NSString *chaineMonde = @"Monde";
-    NSLog(@"Bonjour tous le %@ !", chaineMonde); // affiche => "Bonjour Tous Le Monde !" 
+    NSLog(@"Bonjour tous le %@ !", chaineMonde); // affiche => "Bonjour Tous Le Monde !"
     // NSMutableString est une chaine mutable
     NSMutableString *chaineMutable = [NSMutableString stringWithString:@"Bonjour tous le"];
     [chaineMutable appendString:@" Monde !"];
     NSLog(@"%@", chaineMutable); // affiche => "Bonjour Tous Le Monde !"
-    
+
     // Les caractères
     NSNumber *laLettreZSousFormeDeNombre = @'Z';
     char laLettreZ                       = [laLettreZSousFormeDeNombre charValue]; // ou 'Z'
@@ -82,15 +82,15 @@ int main (int argc, const char * argv[])
     NSNumber *nombreQuaranteDeux = @42;
     int quaranteDeux             = [nombreQuaranteDeux intValue]; // ou 42
     NSLog(@"%i", quaranteDeux);
-    
+
     NSNumber *nombreQuaranteDeuxnonSigne = @42U;
     unsigned int quaranteDeuxnonSigne    = [nombreQuaranteDeuxnonSigne unsignedIntValue];
     NSLog(@"%u", fortyTwoUnsigned);
-    
+
     NSNumber *nombreQuaranteDeuxCourt = [NSNumber numberWithShort:42];
     short quaranteDeuxCourt           = [nombreQuaranteDeuxCourt shortValue]; // ou 42
     NSLog(@"%hi", fortyTwoShort);
-    
+
     NSNumber *nombreQuaranteDeuxLong = @42L;
     long quaranteDeuxLong            = [nombreQuaranteDeuxLong longValue]; // ou 42
     NSLog(@"%li", fortyTwoLong);
@@ -100,7 +100,7 @@ int main (int argc, const char * argv[])
     float piFlottant           = [nombrePiFlottant floatValue]; // ou 3.141592654f
     NSLog(@"%f", piFlottant); // affiche => 3.141592654
     NSLog(@"%5.2f", piFlottant); // affiche => " 3.14"
-    
+
     NSNumber *nombrePiDouble = @3.1415926535;
     double piDouble          = [nombrePiDouble doubleValue]; // ou 3.1415926535
     NSLog(@"%f", piDouble);
@@ -112,7 +112,7 @@ int main (int argc, const char * argv[])
     NSDecimalNumber *decNumDeux = [NSDecimalNumber decimalNumberWithString:@"5.002"];
     // NSDecimalNumber ne permet pas d'utiliser les opérations standards (+, -, *, /)
     // Il faut utiliser les méthodes suivantes à la place :
-    [decNumUn decimalNumberByAdding:decNumDeux]; 
+    [decNumUn decimalNumberByAdding:decNumDeux];
     [decNumUn decimalNumberBySubtracting:decNumDeux];
     [decNumUn decimalNumberByMultiplyingBy:decNumDeux];
     [decNumUn decimalNumberByDividingBy:decNumDeux];
@@ -156,7 +156,7 @@ int main (int argc, const char * argv[])
     // Un ensemble ne peut contenir de duplicatas contrairement aux NSArray
     NSSet *ensemble = [NSSet setWithObjects:@"Salut", @"Salut", @"Monde", nil];
     NSLog(@"%@", ensemble); // affiche => {(Salut, Monde)} (Pas forcément dans le même ordre)
-    // NSMutableSet est un ensemble mutable 
+    // NSMutableSet est un ensemble mutable
     NSMutableSet *ensembleMutable = [NSMutableSet setWithCapacity:2];
     [ensembleMutable addObject:@"Salut"];
     [ensembleMutable addObject:@"Salut"];
@@ -165,7 +165,7 @@ int main (int argc, const char * argv[])
     ///////////////////////////////////////
     // Les Operateurs
     ///////////////////////////////////////
-    
+
     // Les opérateurs sont pareil qu'en C
     // Par exemple :
     2 + 5; // => 7
@@ -182,7 +182,7 @@ int main (int argc, const char * argv[])
     // Les Structures de Contrôle
     ///////////////////////////////////////
 
-    // Structure "Si-Sinon" (If-Else) 
+    // Structure "Si-Sinon" (If-Else)
     if (NO)
     {
         NSLog(@"Je ne suis jamais affiché");
@@ -210,13 +210,13 @@ int main (int argc, const char * argv[])
             NSLog(@"Je suis affiché");
         } break;
     }
-    
+
     // Structure de boucle "Tant Que" (While)
     int ii = 0;
     while (ii < 4)
     {
         NSLog(@"%d,", ii++); // ii++ incrémente ii après avoir utilisé sa valeur
-    } // => affiche "0," 
+    } // => affiche "0,"
       //            "1,"
       //            "2,"
       //            "3,"
@@ -226,17 +226,17 @@ int main (int argc, const char * argv[])
     for (jj=0; jj < 4; jj++)
     {
         NSLog(@"%d,", jj);
-    } // => affiche "0," 
+    } // => affiche "0,"
       //            "1,"
       //            "2,"
       //            "3,"
-     
+
     // Structure de boucle "Pour Chaque" (Foreach)
     NSArray *valeurs = @[@0, @1, @2, @3];
     for (NSNumber *valeur in valeurs)
     {
         NSLog(@"%@,", valeur);
-    } // => affiche "0," 
+    } // => affiche "0,"
       //            "1,"
       //            "2,"
       //            "3,"
@@ -254,16 +254,16 @@ int main (int argc, const char * argv[])
         NSLog(@"Finalement");
     } // => affiche "Une exception est survenue : Fichier non trouvé"
       //            "Finalement"
- 
+
     ///////////////////////////////////////
     // Les Objets
     ///////////////////////////////////////
-    
+
     // Définis et créé une instance d'objet en allouant un espace mémoire puis en
     // l'initialisant. Un objet n'est pas complétement fonctionnel tant que les deux
     // étapes précédentes ne sont pas terminées
     MaClass *monObjet = [[MaClass alloc] init];
-        
+
     // L'Objet en Objective-C est basé sur le principe d'envoie de message et non sur
     // celui d'appel de méthode comme la plupart des autres langages
     // C'est un détail important car cela veut dire que l'on peut envoyer un message
@@ -276,7 +276,7 @@ int main (int argc, const char * argv[])
 
     // Fin de l'@autoreleasepool
     }
-    
+
     // Fin du programme
     return 0;
 }
@@ -299,7 +299,7 @@ int main (int argc, const char * argv[])
 {
     int nombre; // Accès protégé par défaut (équivalent à '@protected int nombre;')
     @private id donnee; // Accès privé (il est plus pratique de le faire dans l'implémentation)
-    NSString *nom; 
+    NSString *nom;
 }
 // Les propriétés permettent de générer les accésseurs/affecteurs publiques à la compilation
 // Par défaut, le nom de l'affecteur est la chaine 'set' suivi par le nom de la @property
@@ -310,7 +310,7 @@ int main (int argc, const char * argv[])
 @property (readonly) NSString *roString;
 // Vous pouvez aussi personnaliser les noms des accésseurs ou des affecteurs
 @property (getter=longeurGet, setter=longeurSet:) int longeur;
- 
+
 // Methodes
 +/- (TypeDeRetour)signatureDeLaMethode:(TypeDuParametre *)nomDuParametre;
 
@@ -331,11 +331,11 @@ int main (int argc, const char * argv[])
 
 // Voici un exemple d'utilisation de MaClasse
 MaClasse *maClasse = [[MaClasse alloc] init]; // créer une instance de MaClasse
-[maClasse setNombre:10]; 
+[maClasse setNombre:10];
 NSLog(@"%d", [maClasse nombre]); // affiche => 10
 [myClass longeurSet:32];
 NSLog(@"%i", [maClasse longeurGet]); // affiche => 32
-// Pour des raisons pratiques vous pouvez aussi utiliser la notation en point pour accéder aux 
+// Pour des raisons pratiques vous pouvez aussi utiliser la notation en point pour accéder aux
 // variables d'instances :
 maClasse.nombre = 45;
 NSLog(@"%i", maClasse.nombre); // maClasse => 45
@@ -352,10 +352,10 @@ NSString *stringDepuisUneInstanceDeMethode = [maClasse methodeInstanceAvecUnPara
 // Ils sont utilisés pour appeler des méthodes de classe et avoir des pointeurs de fonctions
 // facilement manipulable
 // SEL est un type de donnée et @selector retourne un selecteur à partir d'un nom de methode
-SEL selecteur = @selector(methodeInstanceAvecUnParametre:puisUnDeuxieme:); 
+SEL selecteur = @selector(methodeInstanceAvecUnParametre:puisUnDeuxieme:);
 if ([maClasse respondsToSelector:selecteur]) { // Vérifie si la classe possède la méthode
     // Met les arguments de la méthode dans un seul objet pour l'envoyer via la fonction
-    // performSelector:withObject: 
+    // performSelector:withObject:
     NSArray *arguments = [NSArray arrayWithObjects:@"Hello", @4, nil];
     [myClass performSelector:selectorVar withObject:arguments]; // Appele la méthode via le sélecteur
 }
@@ -375,16 +375,16 @@ else {
 _nombre = 5;
 // Accès d'une variable définie dans le fichier d'implémentation :
 distance = 18;
-// Pour utiliser la variable définie par l'intermédiaire de @property, il faut utiliser @synthesize 
+// Pour utiliser la variable définie par l'intermédiaire de @property, il faut utiliser @synthesize
 // qui permet de créer les affecteurs et les accésseurs correspondants :
 @synthesize roString = _roString; // _roString est maintenant disponible dans l'implementation
 
-// A l'inverse dela méthode 'init' qui est appelée lors de la création d'un objet, la fonction 
+// A l'inverse dela méthode 'init' qui est appelée lors de la création d'un objet, la fonction
 // 'dealloc' est appelée quand l'objet est supprimé
 - (void)dealloc
 {
-    [hauteur release]; // Si vous n'utilisez pas ARC, pensez bien à supprimer l'objet 
-    [super dealloc];   // et à appeler la méthode 'dealloc' de la classe parent 
+    [hauteur release]; // Si vous n'utilisez pas ARC, pensez bien à supprimer l'objet
+    [super dealloc];   // et à appeler la méthode 'dealloc' de la classe parent
 }
 
 // Les constructeurs sont des fonctions qui permettent d'instancier un objet
@@ -400,7 +400,7 @@ distance = 18;
 
 // Vous pouvez aussi créer des constructeurs avec des arguments
 // Attention : chaque nom de constructeur doit absolument commencer par 'init'
-- (id)initAvecUneDistance:(int)distanceParDefault 
+- (id)initAvecUneDistance:(int)distanceParDefault
 {
     if ((self = [super init]))
     {
@@ -432,7 +432,7 @@ distance = 18;
     return @42;
 }
 
-// Pour créer une méthode privée, il faut la définir dans l'implementation et non pas dans 
+// Pour créer une méthode privée, il faut la définir dans l'implementation et non pas dans
 // l'interface
 - (NSNumber *)methodePrivee
 {
@@ -462,7 +462,7 @@ distance = 18;
 ///////////////////////////////////////
 // Gestion de la mémoire
 ///////////////////////////////////////
-/* 
+/*
 À chaque fois qu'un objet est créé dans l'application, un bloc mémoire doit être alloué.
 Quand l'application en a fini avec cet objet, la mémoire doit être libérée afin d'éviter les fuites
 mémoires
@@ -486,7 +486,7 @@ MaClasse *classeVar = [MyClass alloc]; // 'alloc' incrémente le compteur de ré
 MaClasse *nouvelleVar = [classVar retain];
 [classeVar autorelease]; // Supprime l'appartenance de l'objet à la fin du bloc
 
-// Les @property peuvent utiliser 'retain' et 'assign' 
+// Les @property peuvent utiliser 'retain' et 'assign'
 @property (retain) MaClasse *instance; // Libère l'ancienne valeur et retient la nouvelle
 @property (assign) NSSet *set; // Pointeur vers la valeur sans retenir/libérer l'ancienne valeur
 
@@ -495,7 +495,7 @@ MaClasse *nouvelleVar = [classVar retain];
 // référence automatique (Automatic Reference Counting en anglais)
 // ARC est une fonctionnalité du compilateur qui permet d'ajouter les 'retain', 'release' et 'autorelease'
 // automatiquement. Cela veut dire que lorsque vous utilisez ARC vous ne devez plus utiliser ces mot-clés
-MaClasse *arcMaClasse = [[MaClasse alloc] init]; 
+MaClasse *arcMaClasse = [[MaClasse alloc] init];
 // ... code utilisant arcMaClasse
 // Sans ARC, vous auriez dû appeler [arcMaClasse release] après avoir utilisé l'objet. Mais avec ARC
 // activé il n'est plus nécessaire de le faire car le compilateur ajoutera l'expréssion automatiquement

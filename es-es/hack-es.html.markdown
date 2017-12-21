@@ -40,7 +40,7 @@ function truncate(resource $handle) : void
     // ...
 }
 
-// Al determinar un tipo, hay que indicar explícitamente si permite el valor 
+// Al determinar un tipo, hay que indicar explícitamente si permite el valor
 // NULL
 function identity(?string $stringOrNull) : ?string
 {
@@ -51,7 +51,7 @@ function identity(?string $stringOrNull) : ?string
 class TypeHintedProperties
 {
     public ?string $name;
-    
+
     protected int $id;
 
     private float $score = 100.0;
@@ -173,10 +173,10 @@ class WithoutArgumentPromotion
 // Multitarea cooperativa
 //
 // "async" y "await" son dos palabras claves nuevas para realizar multi-tarea.
-// Esto no implica que se usen hilos, sólo permiten transferir el control de la 
+// Esto no implica que se usen hilos, sólo permiten transferir el control de la
 // ejecución.
 {
-    for ($i = $start; $i <= $end; $i++) { 
+    for ($i = $start; $i <= $end; $i++) {
         echo "$i ";
 
         // Da a otras tareas la oportunidad de hacer algo
@@ -230,7 +230,7 @@ class ConsistentBar extends ConsistentFoo
 {
     public function __construct(int $x, float $y)
     {
-		 // El comprobador de tipos de Hack fuerza que los constructores de 
+		 // El comprobador de tipos de Hack fuerza que los constructores de
 		 // los padres sean llamados.
         parent::__construct($x, $y);
 
@@ -251,8 +251,8 @@ class InvalidFooSubclass extends ConsistentFoo
 {
 	// Este constructor no coincide con el padre y causará el siguiente error:
 	//
-	//  "This object is of type ConsistentBaz. It is incompatible with this 
-	//   object of type ConsistentFoo because some of their methods are 
+	//  "This object is of type ConsistentBaz. It is incompatible with this
+	//   object of type ConsistentFoo because some of their methods are
 	//   incompatible"
     public function __construct(float $x)
     {
@@ -263,7 +263,7 @@ class InvalidFooSubclass extends ConsistentFoo
     // producirá el siguiente error:
     //
     //  "InvalidFooSubclass::otherMethod() is marked as override; no non-private
-    //   parent definition found or overridden parent is defined in non-<?hh 
+    //   parent definition found or overridden parent is defined in non-<?hh
     //   code"
     <<__Override>>
     public function otherMethod()

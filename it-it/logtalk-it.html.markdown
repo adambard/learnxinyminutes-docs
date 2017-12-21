@@ -64,7 +64,7 @@ X = 3
 yes
 ```
 
-Analogamente alla programmazione object-oriented, logtalk consente anche l'Incapsulamento. 
+Analogamente alla programmazione object-oriented, logtalk consente anche l'Incapsulamento.
 Un predicato può essere dichiarata pubblico, protetto o privato. Può anche essere _local_ quando non esiste una direttiva specifica per esso all'interno dello scope. Per esempio:
 
 ```logtalk

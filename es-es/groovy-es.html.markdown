@@ -161,7 +161,7 @@ println devMap.values()
 
     * Si accedes a una propiedad desde dentro de la clase, la propiedad es definida
       en tiempo de compilación con this implícito o explícito (por ejemplo, this.foo
-      o simplemente foo), Groovy accederá al campo directamente en vez de usar el 
+      o simplemente foo), Groovy accederá al campo directamente en vez de usar el
       getter y setter.
 
     * Si accedes a una propiedad que no existe usando foo explícito o implícito, entonces
@@ -258,7 +258,7 @@ def username = user?.username
 
 /*
   Closures
-  Un Closure en Groovy es como un "bloque de código" o un puntero a un método. Es una 
+  Un Closure en Groovy es como un "bloque de código" o un puntero a un método. Es una
   porci´øn de código que es definida y ejecutada en un punto futuro en el tiempo.
 
   Más información en: http://www.groovy-lang.org/closures.html

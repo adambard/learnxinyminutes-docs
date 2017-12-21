@@ -53,11 +53,11 @@ var f2 = function(i: number) { return i * i; }
 var f3 = (i: number): number => { return i * i; }
 // Következtetett visszatérési értékkel
 var f4 = (i: number) => { return i * i; }
-// Következtetett visszatérési értékkel, 
+// Következtetett visszatérési értékkel,
 // ebben az egysoros formában nem szükséges a return kulcsszó
 var f5 = (i: number) =>  i * i;
 
-// Az interfészek szerkezeti alapon működnek, vagyis minden objektum, ahol 
+// Az interfészek szerkezeti alapon működnek, vagyis minden objektum, ahol
 // jelen vannak a megfelelő mezők kompatibilis az interfésszel
 interface Person {
   name: string;
@@ -92,7 +92,7 @@ class Point {
 
     // Konstruktor - a public/private kulcsszavak ebben a kontextusban
     // legenerálják a mezőkhöz szükséges kódot a konstruktorban.
-    // Ebben a példában az "y" ugyanúgy definiálva lesz, mint az "x", csak 
+    // Ebben a példában az "y" ugyanúgy definiálva lesz, mint az "x", csak
     // kevesebb kóddal.
     // Alapértelmezett (default) értékek is megadhatóak.
 

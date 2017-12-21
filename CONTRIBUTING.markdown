@@ -54,7 +54,7 @@ Other fields:
 
 - **filename**: The filename for this article's code. It will be fetched, mashed
   together, and made downloadable.
-    + For non-English articles, *filename* should   have a language-specific 
+    + For non-English articles, *filename* should   have a language-specific
       suffix.
 - **lang**: For translations, the human language this article is in. For
   categorization, mostly.

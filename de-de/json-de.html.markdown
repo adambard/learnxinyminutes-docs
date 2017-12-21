@@ -21,7 +21,7 @@ selbsterklärend.
 ```json
 {
   "schlüssel": "wert",
-  
+
   "alle schlüssel": "müssen durch doppelte Anführungszeichen begrenzt werden",
   "zahlen": 0,
   "zeichenketten": "Alle Unicode-Zeichen (inklusive \"escaping\") sind erlaubt.",
@@ -51,12 +51,12 @@ selbsterklärend.
       [0, 0, 0, 1]
     ]
   ],
-  
+
   "alternative formatierung": {
     "kommentar": "..."
   , "die position": "des Kommas ist nicht relevant - so lange es vor dem Wert steht."
   , "weiterer kommentar": "wie schön"
-  , "übrigens": "Auch die Einrückung ist nicht relevant." 
+  , "übrigens": "Auch die Einrückung ist nicht relevant."
   , "jede": "beliebige Anzahl von Leerzeichen / Tabs ist erlaubt.", "wirklich?":true
   },
 

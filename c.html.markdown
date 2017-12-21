@@ -17,7 +17,7 @@ it more than makes up for it with raw speed. Just be aware of its manual
 memory management and C will take you as far as you need to go.
 
 > **About compiler flags**
-> 
+>
 > By default, gcc and clang are pretty quiet about compilation warnings and
 > errors, which can be very useful information. Using some
 > stricter compiler flags is recommended. Here is an example you can
@@ -447,7 +447,7 @@ int main (int argc, char** argv)
   for (xx = 0; xx < 20; xx++) {
     *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx
   } // Initialize memory to 20, 19, 18, 17... 2, 1 (as ints)
-  
+
   // Be careful passing user-provided values to malloc! If you want
   // to be safe, you can use calloc instead (which, unlike malloc, also zeros out the memory)
   int* my_other_ptr = calloc(20, sizeof(int));

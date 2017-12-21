@@ -5,7 +5,7 @@ contributors:
     - ["Abhishek Jaisingh", "http://github.com/abhishekjiitr"]
 translators:
     - ["Evan K.", "https://github.com/justblah"]
-lang: ru-ru    
+lang: ru-ru
 ---
 
 # Двоичный (бинарный) поиск

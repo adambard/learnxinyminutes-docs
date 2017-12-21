@@ -300,7 +300,7 @@ fn main() {
     *ref_var2 += 2;         // '*' serve a puntare al binding var2, preso in presto mutevolmente
 
     println!("{}", *ref_var2); // 6
-    // var2 non compilerebbe. ref_var2 è di tipo &mut i32, e quindi 
+    // var2 non compilerebbe. ref_var2 è di tipo &mut i32, e quindi
     // immagazzina un riferimento a un i32, e non il valore stesso.
     // var2 = 2; // questo non compilerebbe, perché `var2` è stato preso in prestito
 }

@@ -187,7 +187,7 @@ Wir können Tabellen genauso wie Grafiken einfügen.
 \begin{table}[H]
   \caption{Überschrift der Tabelle.}
   % Die {} Argumente geben an, wie eine Zeile der Tabelle dargestellt werden soll.
-  % Auch hier muss ich jedes Mal nachschauen. Jedes. einzelne. Mal.  
+  % Auch hier muss ich jedes Mal nachschauen. Jedes. einzelne. Mal.
   \begin{tabular}{c|cc}
     Nummer &  Nachname & Vorname \\ % Spalten werden durch & getrennt
     \hline % Eine horizontale Linie

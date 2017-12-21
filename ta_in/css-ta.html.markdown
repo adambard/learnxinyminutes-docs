@@ -13,7 +13,7 @@ lang: in-ta
 ---
 
 
-இணையத்தின்    ஆரம்ப காலத்தில்  முழுமையாக உரைகளை மட்டுமே கொண்டிருந்தன. 
+இணையத்தின்    ஆரம்ப காலத்தில்  முழுமையாக உரைகளை மட்டுமே கொண்டிருந்தன.
 ஆனால் உலாவிகளில் கொண்டு வரப்பட்ட மாற்றங்களில் முழுமையான காட்சிபடுத்தல்களுடன்
 கூடிய இணையதளங்கள் உருவாகின.
 
@@ -78,7 +78,7 @@ div { }
 [otherAttr|='en'] { font-size:smaller; }
 
 
-/* நாம் இரண்டு selectors ஐ ஒன்றாக உபயோகித்தும் ஒரு உறுப்பை அணுக முடியும்  , 
+/* நாம் இரண்டு selectors ஐ ஒன்றாக உபயோகித்தும் ஒரு உறுப்பை அணுக முடியும்  ,
 அவற்றுக்கு இடயே இடைவெளி காணப்படகூடாது
  */
 div.some-class[attr$='ue'] { }
@@ -89,7 +89,7 @@ div.some-parent > .class-name { }
 /* ஒரு  ஒரு  பிரதான உறுப்பில் உள்ள உப உறுப்புகளை அணுக*/
 div.some-parent .class-name { }
 
-/* மேலே  குறிபிட்ட அணுகுமுறையில் இடைவெளி காணப்படாது விடின் 
+/* மேலே  குறிபிட்ட அணுகுமுறையில் இடைவெளி காணப்படாது விடின்
 	அந்த selector வேலை செய்யாது
  */
 div.some-parent.class-name { }
@@ -100,7 +100,7 @@ div.some-parent.class-name { }
 /* or அல்லது அதற்கு முந்தய உறுப்பின்  மூலம் */
 .i-am-any-element-before ~ .this-element { }
 
-/* 
+/*
 	சில selectors ஐ pseudo class மூலம் அணுக முடியும் , எப்போது எனில் அவை
 	குறித்த ஒரு நிலையில் இருக்கும் போது ஆகும்
    */
@@ -112,13 +112,13 @@ selector:hover { }
 பார்வையிட்ட இணைப்பு */
 selector:visited { }
 
-/* அல்லது ஒரு  பார்வையிடபடாத இணைப்பு */   
+/* அல்லது ஒரு  பார்வையிடபடாத இணைப்பு */
 selected:link { }
 
 /* அல்லது  ஒரு element ஐ  focus செய்யும் போது */
 selected:focus { }
 
-/* 
+/*
 	எல்லா elementகளையும் ஒரே நேரத்தில் அணுக `*`
 */
 * { } /* all elements */
@@ -130,9 +130,9 @@ selected:focus { }
    #################### */
 
 selector {
-    
+
     /*  நீளத்தின் அலகுகள் absolute அல்லது relative ஆக இருக்கலாம். */
-    
+
     /* Relative units */
     width: 50%;       /* percentage of parent element width */
     font-size: 2em;   /* multiples of element's original font-size */
@@ -141,15 +141,15 @@ selector {
     font-size: 2vh;   /* or its height */
     font-size: 2vmin; /* whichever of a vh or a vw is smaller */
     font-size: 2vmax; /* or greater */
-    
+
     /* Absolute units */
     width: 200px;     /* pixels */
     font-size: 20pt;  /* points */
     width: 5cm;       /* centimeters */
     min-width: 50mm;  /* millimeters */
     max-width: 5in;   /* inches */
-    
-	
+
+
     /* Colors */
     color: #F6E;                 /* short hex format */
     color: #FF66EE;              /* long hex format */
@@ -160,10 +160,10 @@ selector {
     color: transparent;          /* equivalent to setting the alpha to 0 */
     color: hsl(0, 100%, 50%);    /* as hsl percentages (CSS 3) */
     color: hsla(0, 100%, 50%, 0.3); /* as hsla percentages with alpha */
-    
+
     /* Images as backgrounds of elements */
     background-image: url(/img-path/img.jpg); /* quotes inside url() optional */
-    
+
     /* Fonts */
     font-family: Arial;
     /* if the font family name has a space, it must be quoted */
@@ -178,7 +178,7 @@ selector {
 ஒரு css file ஐ  save செய்ய `.css`.
 
 ```xml
-<!-- உங்கள் css file ஐ  <head>. உள் குறிப்பிட வேண்டும் 
+<!-- உங்கள் css file ஐ  <head>. உள் குறிப்பிட வேண்டும்
      சரியான முறையை பார்க்க  http://stackoverflow.com/questions/8284365 -->
 <link rel='stylesheet' type='text/css' href='path/to/style.css' />
 
@@ -194,7 +194,7 @@ selector {
 
 ## Precedence அல்லது Cascade
 
-ஒரு element ஆனது ஒன்றுக்கு மேற்பட்ட selectors மூலம் அணுகபடலாம் ,இவ்வாறான சந்தர்பங்களில் 
+ஒரு element ஆனது ஒன்றுக்கு மேற்பட்ட selectors மூலம் அணுகபடலாம் ,இவ்வாறான சந்தர்பங்களில்
 ஒரு குறிபிட்ட விதிமுறையை பின்பற்றுகிறது இது cascading என அழைக்கபடுகிறது, அதனால் தன
 இது  Cascading Style Sheets என அழைக்கபடுகிறது.
 
@@ -225,7 +225,7 @@ p { property: value !important; }
 ```
 
 
-css முன்னுரிமை பின்வருமாறு 
+css முன்னுரிமை பின்வருமாறு
 * `E` இதுவே அதிக முக்கியத்துவம் வாய்ந்தது காரணம் இது `!important` பயன்படுத்துகிறது. இதை பயன்படுத்துவதை தவிர்க்கவும்
 * `F` இது இரண்டாவது காரணம் இது inline style.
 * `A` இது  மூன்றவதாக வருகிறது, காரணம் இது மூன்று காரணிகளை குறிக்கிறது : element(உறுப்பு) பெயர் `p`, அதன் class `class1`, an அதன் பண்பு(attribute) `attr='value'`.

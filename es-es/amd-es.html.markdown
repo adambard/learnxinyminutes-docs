@@ -39,7 +39,7 @@ define('awesomeAMD', function(){
 });
 
 // Ahora definamos otro módulo que dependa de nuestro módulo `awesomeAMD`.
-// Observe que ahora hay un argumento adicional que define 
+// Observe que ahora hay un argumento adicional que define
 // las dependencias de nuestro módulo:
 define('loudmouth', ['awesomeAMD'], function(awesomeAMD){
   // las dependencias serán enviadas a los argumentos de la fábrica

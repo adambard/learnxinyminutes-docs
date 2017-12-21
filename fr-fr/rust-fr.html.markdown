@@ -53,7 +53,7 @@ fn main() {
     let f: f64 = 1.3f64;
 
     // Inférence de type
-    // La plupart du temps, le compilateur Rust peut déduire quel est le type 
+    // La plupart du temps, le compilateur Rust peut déduire quel est le type
     // de variable, donc vous n'avez pas à écrire une annotation de type explicite.
     // Tout au long de ce tutoriel, les types sont explicitement annotées dans
     // de nombreux endroits, mais seulement à des fins de démonstration.

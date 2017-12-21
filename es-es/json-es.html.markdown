@@ -17,7 +17,7 @@ JSON en su forma más pura no tiene comentarios, pero la mayoría de los parsead
 
 {
   "llave": "valor",
-  
+
   "llaves": "siempre debe estar entre comillas (ya sean dobles o simples)",
   "numeros": 0,
   "strings": "Høla, múndo. Todo el unicode está permitido, así como \"escapar\".",
@@ -47,7 +47,7 @@ JSON en su forma más pura no tiene comentarios, pero la mayoría de los parsead
       [0, 0, 0, 1]
     ]
   ],
-  
+
   "estilo alternativo": {
     "comentario": "Mira esto!"
   , "posición de la coma": "no importa - mientras este antes del valor, entonces sera válido"

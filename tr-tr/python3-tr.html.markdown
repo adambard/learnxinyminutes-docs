@@ -73,8 +73,8 @@ False or True #=> True
 # Bool operatörleri ile sayı kullanımı
 0 and 2 #=> 0
 -5 or 0 #=> -5
-0 == False #=> True 
-2 == True #=> False 
+0 == False #=> True
+2 == True #=> False
 1 == True #=> True
 
 # Eşitlik kontrolü ==
@@ -115,7 +115,7 @@ False or True #=> True
 # Argümanın sırasını saymak istemiyorsanız, anahtar kelime kullanabilirsiniz.
 "{isim} yemek olarak {yemek} istiyor".format(isim="Ahmet", yemek="patates") #=> "Ahmet yemek olarak patates istiyor"
 
-# Eğer Python 3 kodunuz ayrıca Python 2.5 ve üstünde çalışmasını istiyorsanız, 
+# Eğer Python 3 kodunuz ayrıca Python 2.5 ve üstünde çalışmasını istiyorsanız,
 # eski stil formatlamayı kullanabilirsiniz:
 "%s bu %s yolla da %s" % ("yazılar", "eski", "biçimlendirilebilir")
 
@@ -143,7 +143,7 @@ bool({}) #=> False
 # Python bir yazdırma fonksiyonuna sahip
 print("Ben Python. Tanıştığıma memnun oldum!")
 
-# Değişkenlere veri atamak için önce değişkeni oluşturmanıza gerek yok. 
+# Değişkenlere veri atamak için önce değişkeni oluşturmanıza gerek yok.
 # Düzenli bir değişken için hepsi_kucuk_ve_alt_cizgi_ile_ayirin
 bir_degisken = 5
 bir_degisken  # => 5
@@ -193,7 +193,7 @@ del li[2]   # li artık [1, 2, 3] oldu
 
 # Listelerde de ekleme yapabilirsiniz
 # Not: değerler üzerinde değişiklik yapılmaz.
-li + diger_li   # => [1, 2, 3, 4, 5, 6] 
+li + diger_li   # => [1, 2, 3, 4, 5, 6]
 
 # Listeleri birbirine bağlamak için "extend()" kullanılabilir
 li.extend(diger_li)   #  li artık [1, 2, 3, 4, 5, 6] oldu
@@ -232,7 +232,7 @@ dolu_sozl = {"bir": 1, "iki": 2, "uc": 3}
 # Değere bakmak için [] kullanalım
 dolu_sozl["bir"]   # => 1
 
-# Bütün anahtarları almak için  "keys()" kullanılabilir. 
+# Bütün anahtarları almak için  "keys()" kullanılabilir.
 # Listelemek için list() kullanacağınız çünkü dönen değerin işlenmesi gerekiyor. Bu konuya daha sonra değineceğiz.
 # Not - Sözlük anahtarlarının sıralaması kesin değildir.
 # Beklediğiniz çıktı sizinkiyle tam uyuşmuyor olabilir.
@@ -270,7 +270,7 @@ dolu_sozl.update({"dort":4}) #=> {"bir": 1, "iki": 2, "uc": 3, "dort": 4}
 del dolu_sozl["bir"]  # "bir" anahtarını dolu sözlükten silecektir
 
 
-# Setler ... set işte :D 
+# Setler ... set işte :D
 bos_set = set()
 # Seti bir veri listesi ile de oluşturabilirsiniz. Evet, biraz sözlük gibi duruyor. Üzgünüm.
 bir_set = {1, 1, 2, 2, 3, 4}   # bir_set artık {1, 2, 3, 4}
@@ -278,7 +278,7 @@ bir_set = {1, 1, 2, 2, 3, 4}   # bir_set artık {1, 2, 3, 4}
 # Sete yeni setler ekleyebilirsiniz
 dolu_set = bir_set
 
-# Sete bir diğer öğe ekleme 
+# Sete bir diğer öğe ekleme
 dolu_set.add(5)   # dolu_set artık {1, 2, 3, 4, 5} oldu
 
 # Setlerin çakışan kısımlarını almak için '&' kullanabilirsiniz
@@ -439,14 +439,14 @@ tum_argumanlar(**anahtarla)   # = foo(a=3, b=4)
 tum_argumanlar(*argumanlar, **anahtarla)   # = foo(1, 2, 3, 4, a=3, b=4)
 
 
-# Fonksiyonlarda kullanacağımız bir değişken oluşturalım                                  
+# Fonksiyonlarda kullanacağımız bir değişken oluşturalım
 x = 5
 
 def belirleX(sayi):
     # Fonksiyon içerisindeki x ile global tanımladığımız x aynı değil
     x = sayi # => 43
     print (x) # => 43
-    
+
 def globalBelirleX(sayi):
     global x
     print (x) # => 5
@@ -491,7 +491,7 @@ class Insan(obje):
 
     # Basit başlatıcı, Sınıf çağrıldığında tetiklenecektir.
     # Dikkat edin, iki adet alt çizgi(_) bulunmakta. Bunlar
-    # python tarafından tanımlanan isimlerdir. 
+    # python tarafından tanımlanan isimlerdir.
     # Kendinize ait bir fonksiyon oluştururken __fonksiyon__ kullanmayınız!
     def __init__(self, isim):
         # Parametreyi sınıfın değerine atayalım
@@ -578,7 +578,7 @@ def kare_sayilar(nesne):
 # değerler işlenmeyecektir.
 # Not: range() da bir oluşturucu(generator)dur. 1-900000000 arası bir liste yapmaya çalıştığınızda
 # çok fazla vakit alacaktır.
-# Python tarafından belirlenen anahtar kelimelerden kaçınmak için basitçe alt çizgi(_) kullanılabilir. 
+# Python tarafından belirlenen anahtar kelimelerden kaçınmak için basitçe alt çizgi(_) kullanılabilir.
 range_ = range(1, 900000000)
 # kare_sayilar'dan dönen değer 30'a ulaştığında durduralım
 for i in kare_sayilar(range_):
@@ -637,4 +637,3 @@ print(soyle(lutfen_soyle=True))  # Ban soda alır mısın? Lutfen! Artık dayana
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
 * [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
-

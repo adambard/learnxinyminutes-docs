@@ -19,7 +19,7 @@ va fi JSON 100% valid. Din fericire codul vorbeste de la sine.
 ```json
 {
   "cheie": "valoare",
-  
+
   "chei": "trebuie mereu inconjurate de ghilimele",
   "numere": 0,
   "stringuri": "Bunã. Tot setul unicode este permis, chiar si \"escaping\".",
@@ -49,7 +49,7 @@ va fi JSON 100% valid. Din fericire codul vorbeste de la sine.
       [0, 0, 0, 1]
     ]
   ],
-  
+
   "stil alternativ": {
     "comentariu": "ia uite la asta!"
   , "pozitia virgulei": "nu conteaza - daca e inaintea valorii atunci e valida"

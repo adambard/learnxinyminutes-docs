@@ -3,7 +3,7 @@ language: swift
 contributors:
   - ["Grant Timmerman", "http://github.com/grant"]
   - ["Christopher Bess", "http://github.com/cbess"]
-  - ["Joey Huang", "http://github.com/kamidox"]  
+  - ["Joey Huang", "http://github.com/kamidox"]
   - ["Anthony Nguyen", "http://github.com/anthonyn60"]
 translators:
     - ["David Hsieh", "http://github.com/deivuh"]
@@ -124,7 +124,7 @@ anyObjectVar = "Cambiado a un valor string, no es buena práctica, pero posible.
 /*
     Tipos Array (arreglo) y Dictionary (diccionario) son structs (estructuras).
     Así que `let` y `var` también indican si son mudables (var) o
-    inmutables (let) durante la declaración de sus tipos.    
+    inmutables (let) durante la declaración de sus tipos.
 */
 
 // Array (arreglo)
@@ -361,7 +361,7 @@ internal class Rect: Shape {
 
     // Si no necesitas un getter y setter personalizado
     // pero aún quieres ejecutar código antes y después de hacer get o set
-    // a una propiedad, puedes utilizar `willSet` y `didSet`    
+    // a una propiedad, puedes utilizar `willSet` y `didSet`
     var identifier: String = "defaultID" {
         // El argumento `willSet` será el nombre de variable para el nuevo valor
         willSet(someIdentifier) {
@@ -415,7 +415,7 @@ class Circle: Shape {
     }
 
     // Un signo de interrogación como sufijo después de `init` es un init opcional
-    // que puede devolver nil    
+    // que puede devolver nil
     init?(radius: Int) {
         self.radius = radius
         super.init()
@@ -521,7 +521,7 @@ class MyShape: Rect {
         // Pon un signo de interrogación después de la propiedad opcional,
         // método, o subscript para ignorar un valor nil y devolver nil
         // en lugar de  tirar un error de tiempo de ejecución
-        // ("optional chaining")        
+        // ("optional chaining")
         if let allow = self.delegate?.canReshape?() {
             // test for delegate then for method
             self.delegate?.reshaped?()

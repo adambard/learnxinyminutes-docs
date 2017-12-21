@@ -309,7 +309,7 @@ chamaClosure(3, 4)
 /*
   Expando
 
-  A classe Expando é um bean dinâmico que permite adicionar propriedade e 
+  A classe Expando é um bean dinâmico que permite adicionar propriedade e
   closures como métodos a uma instância desta classe
 
   http://mrhaki.blogspot.mx/2009/10/groovy-goodness-expando-as-dynamic-bean.html
@@ -432,6 +432,5 @@ Junte-se a um [grupo de usuários Groovy](http://www.groovy-lang.org/usergroups.
 [1] http://roshandawrani.wordpress.com/2010/10/18/groovy-new-feature-closures-can-now-memorize-their-results/
 [2] http://www.solutionsiq.com/resources/agileiq-blog/bid/72880/Programming-with-Groovy-Trampoline-and-Memoize
 [3] http://mrhaki.blogspot.mx/2011/05/groovy-goodness-cache-closure-results.html
-
 
 

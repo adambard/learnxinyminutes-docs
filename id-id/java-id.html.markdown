@@ -129,7 +129,7 @@ public class BelajarJava {
         // pada BigInteger
         //
         // BigInteger dapat diinisialisasi menggunakan kumpulan byte atau teks.
-        
+
         BigInteger nilaiBigInteger = new BigInteger(kumpulanByte);
 
 
@@ -143,23 +143,23 @@ public class BelajarJava {
         // dimana sangat mementingkan presisi nilai desimal.
         //
         // BigDecimal dapat diinisialisasi dengan int, long, double, String,
-        // atau dengan melakukan inisialisasi nilai tanpa skala (BigInteger) 
-        // dan nilai dengan skala (int). 
+        // atau dengan melakukan inisialisasi nilai tanpa skala (BigInteger)
+        // dan nilai dengan skala (int).
 
         BigDecimal nilaiBigDecimal = new BigDecimal(nilaiBigInteger, nilaiInt);
-        
+
         // Perlu diperhatikan konstruktor yang digunakan apakah float atau double
         // karena dapat mengakibatkan ketidak-akurasian float/double yang akan digunakan
         // dalam BigDecimal. Sebaiknya gunakan nilai String pada konstruktor
         // jika membutuhkan nilai pasti.
-        
+
         BigDecimal sepuluhSen = new BigDecimal("0.1");
 
 
         // Strings
         String nilaiString1 = "Ini adalah contoh String!";
 
-        // Karakter \n berfungsi untuk membuat baris baru 
+        // Karakter \n berfungsi untuk membuat baris baru
         String nilaiString2 = "Menampilkan baris baru?\nTidak masalah!";
         // Karakter \t berfungsi untuk membuat tab antar karakter
         String nilaiString3 = "Ingin menambahkan sebuah tab?\tTidak masalah!";
@@ -295,18 +295,18 @@ public class BelajarJava {
             // 10 kali iterasi, foofor 0-9
         }
         System.out.println("Nilai fooFor: " + fooFor);
-        
+
         // Perulangan "for" bertingkat dengan label "exit"
         outer:
         for (int i = 0; i < 10; i++) {
           for (int j = 0; j < 10; j++) {
             if (i == 5 && j ==5) {
               break outer;
-              // Menghentikan semua perulangan, tidak hanya perulangan bagian dalam saja 
+              // Menghentikan semua perulangan, tidak hanya perulangan bagian dalam saja
             }
           }
         }
-        
+
         // Perulangan "for each"
         // Perulangan "for" juga dapat melakukan iterasi terhadap larik (array) dari objek
         // yang mana mengimplementasikan interface Ieterable.
@@ -338,7 +338,7 @@ public class BelajarJava {
                      break;
         }
         System.out.println("Hasil switch case: " + bulanString);
-        
+
         // Mulai dari Java 7 keatas, "switch" memiliki format:
         String jawabanSaya = "mungkin";
         switch(jawabanSaya) {
@@ -568,7 +568,7 @@ public interface dapatDicerna {
 
 // Membuat kelas dengan mengimplementasikan dua interface dalam satu waktu.
 public class Buah implements dapatDimakan, dapatDicerna {
-  
+
     @Override
     public void makan() {
         // ...
@@ -623,12 +623,12 @@ public abstract class Hewan
     }
 
     // Tidak perlu dilakukan inisialisasi, berbeda dengan Interface
-    // sebuah variabel adalah final dan harus dilakukan inisialisasi. 
+    // sebuah variabel adalah final dan harus dilakukan inisialisasi.
     protected int umur;
 
     public void tampilkanUmur()
     {
-        System.out.println(umur);  
+        System.out.println(umur);
     }
 
     // Kelas abstrak dapat memiliki fungsi utama (main).
@@ -649,7 +649,7 @@ class Kucing extends Hewan
         // umur = 30;	==> ERROR!	umur merupakan variabel private pada abstrak Hewan
     }
 
-    // CATATAN: Akan muncul error jika menggunakan 
+    // CATATAN: Akan muncul error jika menggunakan
     // keterangan @Override pada method utama (main),
     // Java tidak mengizinkan hal tersebut.
     // Kejadian ini sering disebut sebagai METHOD HIDING.
@@ -710,41 +710,41 @@ public abstract class Mamalia()
 
 public enum Hari {
     SENIN, SELASA, RABU, KAMIS,
-    JUMAT, SABTU, MUNGGU 
+    JUMAT, SABTU, MUNGGU
 }
 
 // Cara menggunakan Enum:
 public class CobaEnum {
-    
+
     // Variabel Enum
     Hari hari;
-    
+
     // Konstruktor
     public CobaEnum(Hari hari) {
         this.hari = hari;
     }
-    
+
     public void tampilkanKeterangan() {
         switch (day) {
             case SENIN:
                 System.out.println("Senin adalah hari yang menyebalkan.");
                 break;
-                    
+
             case JUMAT:
                 System.out.println("Jumat adalah hari yang singkat.");
                 break;
-                         
-            case SABTU: 
+
+            case SABTU:
             case MINGGU:
                 System.out.println("Akhir pekan adalah hari yang menyenangkan.");
                 break;
-                        
+
             default:
                 System.out.println("Hari kerja yang biasa saja.");
                 break;
         }
     }
-    
+
     public static void main(String[] args) {
         CobaEnum hariPertama = new CobaEnum(Hari.SENIN);
         hariPertama.tampilkanKeterangan();      // Senin adalah hari yang menyebalkan.
@@ -761,8 +761,8 @@ public class CobaEnum {
 
 ## Referensi Lainnya
 
-Link-link berikut hanya menyediakan pemahaman lebih lanjut mengenai topik diatas. 
-Tip, trik, dan contoh lainnya dapat melakukan pencarian melalui Google atau mesin pencari yang lain. 
+Link-link berikut hanya menyediakan pemahaman lebih lanjut mengenai topik diatas.
+Tip, trik, dan contoh lainnya dapat melakukan pencarian melalui Google atau mesin pencari yang lain.
 
 **Panduan resmi Oracle**
 

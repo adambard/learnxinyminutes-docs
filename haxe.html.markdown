@@ -785,4 +785,3 @@ Finally, please join us on [the mailing list](https://groups.google.com/forum/#!
 freenode](http://webchat.freenode.net/), or on
 [Google+](https://plus.google.com/communities/103302587329918132234).
 
-

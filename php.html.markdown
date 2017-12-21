@@ -794,7 +794,7 @@ But I'm ChildClass
 
 /**********************
 *  Magic constants
-*  
+*
 */
 
 // Get current class name. Must be used inside a class declaration.
@@ -826,7 +826,7 @@ echo "Current trait is " . __TRAIT__;
 
 /**********************
 *  Error Handling
-*  
+*
 */
 
 // Simple error handling can be done with try catch block

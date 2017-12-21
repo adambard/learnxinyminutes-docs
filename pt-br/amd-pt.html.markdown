@@ -11,7 +11,7 @@ filename: learnamd-pt.js
 
 ## Começando com AMD
 
-A API de Definição de Módulos Assíncrona **Asynchronous Module Definition** 
+A API de Definição de Módulos Assíncrona **Asynchronous Module Definition**
 especifica um mecanismo para definição de módulos em JavaScript para os quais o
 módulo e suas dependências podem ser carregados de forma assíncrona. Isso é
 particularmente bem adequado para o ambiente do browser onde o carregamento de

@@ -32,7 +32,7 @@ var square_p = $('p.square') // Seleciona todos elementos de parágrafo com a cl
 ///////////////////////////////////
 // 2. Eventos e Efeitos
 // jQuery é muito bom em manipular o que acontece quando um evento é disparado
-// Um evento muito usado é o 'ready'  
+// Um evento muito usado é o 'ready'
 // Você pode usar o método ready para esperar até que um elemento tenha terminado de carregar
 $(document).ready(function(){
   // O código não será executado até que o documento carregue
@@ -117,7 +117,7 @@ $('p').hasClass('taming-slim-20'); // Retorna true se tiver a classe
 $('p').height(); // Obtém/define a altura do elemento
 
 
-// Pra maioria dos métodos de manipulação, pegar o valor de um 
+// Pra maioria dos métodos de manipulação, pegar o valor de um
 // elemento só afetará o primeiro deles
 $('p').height(); // Obtém a altura da primeira tag 'p'
 

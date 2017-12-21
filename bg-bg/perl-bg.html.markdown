@@ -281,7 +281,7 @@ sub increment {
 
 1;
 
-# Методите могат да се извикват на клас или на обект като се използва оператора 
+# Методите могат да се извикват на клас или на обект като се използва оператора
 # стрелка (->).
 
 use MyCounter;
@@ -323,4 +323,3 @@ sub increment {
  - [Learn at www.perl.com](http://www.perl.org/learn.html)
  - [perldoc](http://perldoc.perl.org/)
  - и идващото с perl: `perldoc perlintro`
-

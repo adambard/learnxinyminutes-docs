@@ -153,7 +153,7 @@ nil && 20  #=> nil
 ## -- Fluxo de Controle
 ## ---------------------------
 
-# expressão `if` 
+# expressão `if`
 if false do
   "Isso nunca será visto"
 else

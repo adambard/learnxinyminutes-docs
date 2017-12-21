@@ -8,11 +8,11 @@ translators:
 lang: fr-fr
 ---
 
-LiveScript est un langage qui compile en JavaScript. Il a un rapport direct 
-avec JavaScript, et vous permet d'écrire du JavaScript plus simplement, plus 
-efficacement et sans répétitivité. LiveScript ajoute non seulement des 
-fonctionnalités pour écrire du code fonctionnel, mais possède aussi nombre 
-d'améliorations pour la programmation orientée objet et la programmation 
+LiveScript est un langage qui compile en JavaScript. Il a un rapport direct
+avec JavaScript, et vous permet d'écrire du JavaScript plus simplement, plus
+efficacement et sans répétitivité. LiveScript ajoute non seulement des
+fonctionnalités pour écrire du code fonctionnel, mais possède aussi nombre
+d'améliorations pour la programmation orientée objet et la programmation
 impérative.
 
 LiveScript est un descendant direct de [Coco][], indirect de [CoffeeScript][],
@@ -26,7 +26,7 @@ Vous pouvez contacter l'auteur du guide original en anglais ici :
 
 
 ```coffeescript
-# Comme son cousin CoffeeScript, LiveScript utilise le symbole dièse pour les 
+# Comme son cousin CoffeeScript, LiveScript utilise le symbole dièse pour les
 # commentaires sur une ligne.
 
 /*
@@ -35,8 +35,8 @@ Vous pouvez contacter l'auteur du guide original en anglais ici :
  */
 ```
 ```coffeescript
-# LiveScript utilise l'indentation pour délimiter les blocs de code plutôt que 
-# les accolades, et les espaces pour appliquer les fonctions (bien que les 
+# LiveScript utilise l'indentation pour délimiter les blocs de code plutôt que
+# les accolades, et les espaces pour appliquer les fonctions (bien que les
 # parenthèses soient utilisables).
 
 
@@ -65,7 +65,7 @@ yes; no
 10
 0.4     # Notez que le `0` est requis
 
-# Dans un souci de lisibilité, vous pouvez utiliser les tirets bas et les 
+# Dans un souci de lisibilité, vous pouvez utiliser les tirets bas et les
 # suffixes sur les nombres. Il seront ignorés à la compilation.
 12_344km
 
@@ -78,7 +78,7 @@ yes; no
    okay
    too."""
 
-# De temps à autre, vous voulez encoder un mot clé; la notation en backslash 
+# De temps à autre, vous voulez encoder un mot clé; la notation en backslash
 # rend cela facile:
 \keyword                # => 'keyword'
 
@@ -92,14 +92,14 @@ fruits =
 # Il peuvent être écrits de manière plus consises à l'aide des crochets:
 fruits = [ \apple, \orange, \pear ]
 
-# Vous pouvez également utiliser la syntaxe suivante, à l'aide d'espaces, pour 
+# Vous pouvez également utiliser la syntaxe suivante, à l'aide d'espaces, pour
 # créer votre liste de valeurs:
 fruits = <[ apple orange pear ]>
 
 # Vous pouvez récupérer une entrée à l'aide de son index:
 fruits[0]       # => "apple"
 
-# Les objets sont une collection non ordonnées de paires clé/valeur, et 
+# Les objets sont une collection non ordonnées de paires clé/valeur, et
 # d'autres choses (que nous verrons plus tard).
 person =
   name: "Christina"
@@ -107,7 +107,7 @@ person =
     * "kittens"
     * "and other cute stuff"
 
-# A nouveau, vous pouvez utiliser une expression plus consise à l'aide des 
+# A nouveau, vous pouvez utiliser une expression plus consise à l'aide des
 # accolades:
 person = {name: "Christina", likes: ["kittens", "and other cute stuff"]}
 
@@ -142,8 +142,8 @@ funRE = //
 
 
 # Les comparaisons sont presque identiques, à l'exception que `==` équivaut au
-# `===` de JS, là où le `==` de JS est `~=` en LiveScript, et `===` active la 
-# comparaison d'objets et de tableaux, ainsi que les comparaisons strictes 
+# `===` de JS, là où le `==` de JS est `~=` en LiveScript, et `===` active la
+# comparaison d'objets et de tableaux, ainsi que les comparaisons strictes
 # (sans conversion de type)
 2 == 2          # => true
 2 == "2"        # => false
@@ -158,7 +158,7 @@ funRE = //
 
 # Les opérateurs suivants sont également disponibles: <, <=, > et >=
 
-# Les valeurs logiques peuvent être combinéees grâce aux opérateurs logiques 
+# Les valeurs logiques peuvent être combinéees grâce aux opérateurs logiques
 # `or`, `and` et `not`
 true and false  # => false
 false or true   # => true
@@ -173,30 +173,30 @@ not false       # => true
 
 ########################################################################
 ## 3. Fonctions
-########################################################################        
+########################################################################
 
-# Puisque LiveScript est fonctionnel, vous vous attendez à une bonne prise en 
-# charge des fonctions. En LiveScript, il est encore plus évident que les 
+# Puisque LiveScript est fonctionnel, vous vous attendez à une bonne prise en
+# charge des fonctions. En LiveScript, il est encore plus évident que les
 # fonctions sont de premier ordre:
 add = (left, right) -> left + right
 add 1, 2        # => 3
 
-# Les fonctions qui ne prennent pas d'arguments peuvent être appelées avec un 
+# Les fonctions qui ne prennent pas d'arguments peuvent être appelées avec un
 # point d'exclamation!
 two = -> 2
 two!
 
 # LiveScript utilise l'environnement de la fonction, comme JavaScript.
-# A l'inverse de JavaScript, le `=` fonctionne comme un opérateur de 
+# A l'inverse de JavaScript, le `=` fonctionne comme un opérateur de
 # déclaration, et il déclarera toujours la variable située à gauche (sauf si
-# la variable a été déclarée dans l'environnement parent). 
+# la variable a été déclarée dans l'environnement parent).
 
-# L'opérateur `:=` est disponible pour réutiliser un nom provenant de 
+# L'opérateur `:=` est disponible pour réutiliser un nom provenant de
 # l'environnement parent.
 
 
-# Vous pouvez extraire les arguments d'une fonction pour récupérer 
-# rapidement les valeurs qui vous intéressent dans une structure de données 
+# Vous pouvez extraire les arguments d'une fonction pour récupérer
+# rapidement les valeurs qui vous intéressent dans une structure de données
 # complexe:
 tail = ([head, ...rest]) -> rest
 tail [1, 2, 3]  # => [2, 3]
@@ -206,7 +206,7 @@ tail [1, 2, 3]  # => [2, 3]
 foo = (a = 1, b = 2) -> a + b
 foo!    # => 3
 
-# You pouvez utiliser cela pour cloner un argument en particulier pour éviter 
+# You pouvez utiliser cela pour cloner un argument en particulier pour éviter
 # les effets secondaires. Par exemple:
 copy = (^^target, source) ->
   for k,v of source => target[k] = v
@@ -226,17 +226,17 @@ add1 2          # => 3
 identity = -> it
 identity 1      # => 1
 
-# Les opérateurs ne sont pas des fonctions en LiveScript, mais vous pouvez 
+# Les opérateurs ne sont pas des fonctions en LiveScript, mais vous pouvez
 # facilement les transformer en fonction:
 divide-by-two = (/ 2)
 [2, 4, 8, 16].map(divide-by-two).reduce (+)
 
-# Comme dans tout bon langage fonctionnel, vous pouvez créer des fonctions 
+# Comme dans tout bon langage fonctionnel, vous pouvez créer des fonctions
 # composées d'autres fonctions:
 double-minus-one = (- 1) . (* 2)
 
 # En plus de la formule mathématique `f . g`, vous avez les opérateurs `>>`
-# et `<<`, qui décrivent l'ordre d'application des fonctions composées. 
+# et `<<`, qui décrivent l'ordre d'application des fonctions composées.
 double-minus-one = (* 2) >> (- 1)
 double-minus-one = (- 1) << (* 2)
 
@@ -249,7 +249,7 @@ map = (f, xs) --> xs.map f
 # La version sans pipe correspond à:
 ((map (* 2)) [1, 2, 3])
 
-# You pouvez aussi choisir où vous voulez que la valeur soit placée, en 
+# You pouvez aussi choisir où vous voulez que la valeur soit placée, en
 # marquant la position avec un tiret bas (_):
 reduce = (f, xs, initial) --> xs.reduce f, initial
 [1 2 3] |> reduce (+), _, 0     # => 6
@@ -263,7 +263,7 @@ div-by-two 4      # => 2
 
 
 # Pour conclure, LiveScript vous permet d'utiliser les fonctions de rappel.
-# (mais vous devriez essayer des approches plus fonctionnelles, comme 
+# (mais vous devriez essayer des approches plus fonctionnelles, comme
 # Promises).
 # Un fonction de rappel est une fonction qui est passée en argument à une autre
 # fonction:
@@ -296,7 +296,7 @@ x = switch
   | otherwise             => \object      # `otherwise` et `_` correspondent.
 
 # Le corps des fonctions, les déclarations et les assignements disposent d'un
-# `switch` implicite, donc vous n'avez pas besoin de le réécrire: 
+# `switch` implicite, donc vous n'avez pas besoin de le réécrire:
 take = (n, [x, ...xs]) -->
     | n == 0 => []
     | _      => [x] ++ take (n - 1), xs
@@ -307,7 +307,7 @@ take = (n, [x, ...xs]) -->
 ########################################################################
 
 # Comme en python, vous allez pouvoir utiliser les listes en compréhension,
-# ce qui permet de générer rapidement et de manière élégante une liste de 
+# ce qui permet de générer rapidement et de manière élégante une liste de
 # valeurs:
 oneToTwenty = [1 to 20]
 evens       = [x for x in oneToTwenty when x % 2 == 0]
@@ -351,7 +351,7 @@ kitten.hug!     # => "*Mei (a cat) is hugged*"
 
 ## Lectures complémentaires
 
-Il y a beaucoup plus de choses à dire sur LiveScript, mais ce guide devrait 
+Il y a beaucoup plus de choses à dire sur LiveScript, mais ce guide devrait
 suffire pour démarrer l'écriture de petites fonctionnalités.
 Le [site officiel](http://livescript.net/) dispose de beaucoup d'information,
 ainsi que d'un compilateur en ligne vous permettant de tester le langage!

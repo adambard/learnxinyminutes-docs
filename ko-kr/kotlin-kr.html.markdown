@@ -2,7 +2,7 @@
 language: kotlin
 contributors:
     - ["S Webber", "https://github.com/s-webber"]
-translators: 
+translators:
     - ["Alan Jeon", "https://github.com/skyisle"]
 lang: ko-kr
 filename: LearnKotlin-kr.kt
@@ -14,14 +14,14 @@ Kotlin 은 정적 타입 프로그래밍 언어로 JVM, 안드로이드, 브라�
 ```kotlin
 // 한 줄짜리 주석은 // 로 시작합니다.
 /*
-여러 줄 주석은 이와 같이 표시합니다. 
+여러 줄 주석은 이와 같이 표시합니다.
 */
 
 // "package" 예약어는 자바와 동일하게 사용됩니다.
 package com.learnxinyminutes.kotlin
 
 /*
-Kotlin 프로그램의 진입점은 main 이라는 함수명으로 지정됩니다. 
+Kotlin 프로그램의 진입점은 main 이라는 함수명으로 지정됩니다.
 이 함수에 명령행 인수가 배열로 전달됩니다.
 */
 fun main(args: Array<String>) {
@@ -52,7 +52,7 @@ fun main(args: Array<String>) {
 
     /*
     Raw 문자열은 쌍따옴표 3개(""")로 표기합니다.
-    Raw 문자열에는 줄바꿈이나 모든 다른 문자들을 사용할 수 있습니다. 
+    Raw 문자열에는 줄바꿈이나 모든 다른 문자들을 사용할 수 있습니다.
     */
     val fooRawString = """
 fun helloWorld(val name : String) {
@@ -63,7 +63,7 @@ fun helloWorld(val name : String) {
 
     /*
     문자열은 템플릿 표현식을 포함할 수 있습니다.
-    템플릿은 달러 기호($)로 시작합니다. 
+    템플릿은 달러 기호($)로 시작합니다.
     */
     val fooTemplateString = "$fooString has ${fooString.length} characters"
     println(fooTemplateString)
@@ -95,7 +95,7 @@ fun helloWorld(val name : String) {
     println(hello()) // => Hello, world!
 
     /*
-    함수에 가변 인자를 넘기려면 인자에 "vararg" 예약어를 사용합니다. 
+    함수에 가변 인자를 넘기려면 인자에 "vararg" 예약어를 사용합니다.
     */
     fun varargExample(vararg names: Int) {
         println("Argument has ${names.size} elements")
@@ -112,19 +112,19 @@ fun helloWorld(val name : String) {
     println(odd(6)) // => false
     println(odd(7)) // => true
 
-    // 리턴 타입이 유추 가능한 경우 이를 명시하지 않아도 됩니다. 
+    // 리턴 타입이 유추 가능한 경우 이를 명시하지 않아도 됩니다.
     fun even(x: Int) = x % 2 == 0
     println(even(6)) // => true
     println(even(7)) // => false
 
-    // 함수는 함수를 인자를 받을 수 있고 함수를 리턴할 수 있습니다. 
+    // 함수는 함수를 인자를 받을 수 있고 함수를 리턴할 수 있습니다.
     fun not(f: (Int) -> Boolean): (Int) -> Boolean {
         return {n -> !f.invoke(n)}
     }
-    // 함수는 :: 연산자를 사용해서 다른 함수에 인자로 넘길 수 있습니다. 
+    // 함수는 :: 연산자를 사용해서 다른 함수에 인자로 넘길 수 있습니다.
     val notOdd = not(::odd)
     val notEven = not(::even)
-    // 람다식을 인자로 사용할 수 있습니다. 
+    // 람다식을 인자로 사용할 수 있습니다.
     val notZero = not {n -> n == 0}
     /*
     하나의 인자를 가지는 람다식의 선언부와 -> 연산자는 생략될 수 있습니다.
@@ -135,7 +135,7 @@ fun helloWorld(val name : String) {
         println("${notOdd(i)} ${notEven(i)} ${notZero(i)} ${notPositive(i)}")
     }
 
-    // "class" 예약어는 클래스를 선언할 때 사용됩니다. 
+    // "class" 예약어는 클래스를 선언할 때 사용됩니다.
     class ExampleClass(val x: Int) {
         fun memberFunction(y: Int): Int {
             return x + y
@@ -150,10 +150,10 @@ fun helloWorld(val name : String) {
     Kotlin 에서는 new 예약어가 없다는 걸 기억하세요.
     */
     val fooExampleClass = ExampleClass(7)
-    // 맴버 함수는 dot 표기로 호출할 수 있습니다. 
+    // 맴버 함수는 dot 표기로 호출할 수 있습니다.
     println(fooExampleClass.memberFunction(4)) // => 11
     /*
-    함수 선언에 "infix" 예약어를 사용하면 이 함수를 중위 표현식(infix notation)으로 호출할 수 있습니다 
+    함수 선언에 "infix" 예약어를 사용하면 이 함수를 중위 표현식(infix notation)으로 호출할 수 있습니다
     */
     println(fooExampleClass infixMemberFunction 4) // => 28
 
@@ -165,26 +165,26 @@ fun helloWorld(val name : String) {
     val fooData = DataClassExample(1, 2, 4)
     println(fooData) // => DataClassExample(x=1, y=2, z=4)
 
-    // 데이터 클래스는 copy 함수를 가지고 있습니다. 
+    // 데이터 클래스는 copy 함수를 가지고 있습니다.
     val fooCopy = fooData.copy(y = 100)
     println(fooCopy) // => DataClassExample(x=1, y=100, z=4)
 
-    // 객체를 여러 변수로 분리할 수 있습니다. 
+    // 객체를 여러 변수로 분리할 수 있습니다.
     val (a, b, c) = fooCopy
     println("$a $b $c") // => 1 100 4
-    
-    // "for" 루프에서 변수 분리 하기 
+
+    // "for" 루프에서 변수 분리 하기
     for ((a, b, c) in listOf(fooData)) {
         println("$a $b $c") // => 1 100 4
     }
-    
+
     val mapData = mapOf("a" to 1, "b" to 2)
-    // Map.Entry 또한 키와 값으로 분리가 가능합니다. 
+    // Map.Entry 또한 키와 값으로 분리가 가능합니다.
     for ((key, value) in mapData) {
         println("$key -> $value")
     }
 
-    // "with" 함수는 JavaScript 의 "with" 구문과 비슷하게 사용됩니다. 
+    // "with" 함수는 JavaScript 의 "with" 구문과 비슷하게 사용됩니다.
     data class MutableDataClassExample (var x: Int, var y: Int, var z: Int)
     val fooMutableData = MutableDataClassExample(7, 4, 9)
     with (fooMutableData) {
@@ -202,10 +202,10 @@ fun helloWorld(val name : String) {
     println(fooList.size) // => 3
     println(fooList.first()) // => a
     println(fooList.last()) // => c
-    // 각 항목은 인덱스로 접근이 가능합니다. 
+    // 각 항목은 인덱스로 접근이 가능합니다.
     println(fooList[1]) // => b
 
-    // 변경가능한(mutable) 리스트는 "mutableListOf" 함수로 만들 수 있습니다. 
+    // 변경가능한(mutable) 리스트는 "mutableListOf" 함수로 만들 수 있습니다.
     val fooMutableList = mutableListOf("a", "b", "c")
     fooMutableList.add("d")
     println(fooMutableList.last()) // => d
@@ -352,7 +352,7 @@ enum class EnumExample {
 }
 
 /*
-"object" 예약어는 싱클톤 객체를 생성할 때 사용됩니다. 
+"object" 예약어는 싱클톤 객체를 생성할 때 사용됩니다.
 객체를 새로 생성할 수는 없지만 이름을 가지고 접근해 사용할 수 있습니다.
 이는 스칼라의 싱글톤 객체와 유사합니다.
 */

@@ -2,7 +2,7 @@
 language: c#
 filename: csharp-pt.cs
 contributors:
-    - ["Robson Alves", "http://robsonalves.net/"]    
+    - ["Robson Alves", "http://robsonalves.net/"]
 lang: pt-br
 ---
 
@@ -110,7 +110,7 @@ namespace Learning.CSharp
             string fooString = "\"escape\" quotes and add \n (new lines) and \t (tabs)";
             Console.WriteLine(fooString);
 
-            //  Você pode acessar todos os caracteres de string com um indexador: 
+            //  Você pode acessar todos os caracteres de string com um indexador:
             char charFromString = fooString[1]; // => 'e'
             // Strings são imutáveis: você não pode fazer fooString[1] = 'X';
 
@@ -138,7 +138,7 @@ on a new line! ""Wow!"", the masses cried";
 
             // Matrizes - zero indexado
             // O tamanho do array pode ser decidido ainda na declaração
-            // O formato para declarar uma matriz é o seguinte: 
+            // O formato para declarar uma matriz é o seguinte:
             // <tipodado>[] <var nome> = new <tipodado>[<array tamanho>];
             int[] intArray = new int[10];
 

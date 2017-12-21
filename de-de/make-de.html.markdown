@@ -58,7 +58,7 @@ file2.txt file3.txt: file0.txt file1.txt
 	touch file3.txt
 
 # Make wird sich beschweren wenn es mehrere Rezepte für die gleiche Regel gibt.
-# Leere Rezepte zählen nicht und können dazu verwendet werden weitere 
+# Leere Rezepte zählen nicht und können dazu verwendet werden weitere
 # Voraussetzungen hinzuzufügen.
 
 #-----------------------------------------------------------------------
@@ -257,4 +257,3 @@ endif
 + [gnu make documentation](https://www.gnu.org/software/make/manual/)
 + [software carpentry tutorial](http://swcarpentry.github.io/make-novice/)
 + learn C the hard way [ex2](http://c.learncodethehardway.org/book/ex2.html) [ex28](http://c.learncodethehardway.org/book/ex28.html)
-

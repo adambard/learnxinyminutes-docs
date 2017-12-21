@@ -51,8 +51,8 @@ Variabele= 'Een string'
 echo $Variabele
 echo "$Variabele"
 echo '$Variabele'
-# Wanneer je een variable wil toekennen, exporteren of nog anders gebruik je 
-# de naam zonder '$'. Als je de waarde van de variabele wilt, gebruik je een 
+# Wanneer je een variable wil toekennen, exporteren of nog anders gebruik je
+# de naam zonder '$'. Als je de waarde van de variabele wilt, gebruik je een
 # '$' voor de naam.
 
 # Strings vervangen in variables
@@ -122,7 +122,7 @@ ls
 # Commandos hebben opties die de uitvoer beinvloeden
 ls -l # Lijst elk bestand en map op een nieuwe lijn.
 
-# Resultaten van een vorig commando kunnen doorgegeven worden aan een volgend 
+# Resultaten van een vorig commando kunnen doorgegeven worden aan een volgend
 # commando als input.
 # Het grep commando filter de input met een bepaald patroon. Op deze manier kunnen
 # we alle .txt bestanden weergeven in de huidige map.

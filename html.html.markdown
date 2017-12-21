@@ -7,12 +7,12 @@ translators:
     - ["Robert Steed", "https://github.com/robochat"]
 ---
 
-HTML stands for HyperText Markup Language. 
+HTML stands for HyperText Markup Language.
 It is a language which allows us to write pages for the world wide web.
 It is a markup language, it enables us to write webpages using code to indicate how text and data should be displayed.
 In fact, html files are simple text files.
 What is this markup? It is a method of organising the page's data by surrounding it with opening tags and closing tags.
-This markup serves to give significance to the text that it encloses. 
+This markup serves to give significance to the text that it encloses.
 Like other computer languages, HTML has many versions. Here we will talk about HTML5.
 
 **NOTE :**  You can test the different tags and elements as you progress through the tutorial on a site like [codepen](http://codepen.io/pen/) in order to see their effects, understand how they work and familiarise yourself with the language.
@@ -23,7 +23,7 @@ This article is concerned principally with HTML syntax and some useful tips.
 <!-- Comments are enclosed like this line! -->
 
 <!-- #################### The Tags #################### -->
-   
+
 <!-- Here is an example HTML file that we are going to analyse. -->
 
 <!doctype html>
@@ -113,7 +113,7 @@ This article is concerned principally with HTML syntax and some useful tips.
 
 HTML is written in files ending with `.html` or `.htm`. The mime type is `text/html`.
 
-## To Learn More 
+## To Learn More
 
 * [wikipedia](https://en.wikipedia.org/wiki/HTML)
 * [HTML tutorial](https://developer.mozilla.org/en-US/docs/Web/HTML)

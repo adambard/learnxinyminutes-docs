@@ -8,7 +8,7 @@ translators:
 lang: de-de
 ---
 
-Git ist eine verteilte Versions- und Quellcodeverwaltung. 
+Git ist eine verteilte Versions- und Quellcodeverwaltung.
 
 Es nimmt Schnappschüsse der Projekte, um mit diesen Schnappschüssen verschiedene Versionen unterscheiden und den Quellcode verwalten zu können.
 
@@ -70,7 +70,7 @@ Ein Branch, ein Ast oder Zweig, ist im Kern ein Pointer auf den letzten Commit, 
 
 ### HEAD und head (Teil des .git-Verzeichnisses)
 
-HEAD ist ein Pointer auf den aktuellen Branch. Ein Repository hat nur einen *aktiven* HEAD. 
+HEAD ist ein Pointer auf den aktuellen Branch. Ein Repository hat nur einen *aktiven* HEAD.
 
 Ein *head* ist ein Pointer, der auf einen beliebigen Commit zeigt.  Ein Repository kann eine beliebige Zahl von *heads* enthalten.
 
@@ -251,7 +251,7 @@ $ git config --global alias.g "grep --break --heading --line-number"
 $ git grep 'variableName' -- '*.java'
 
 # Suche nach eine Zeile, die "arrayListName" und  "add" oder "remove" enthält
-$ git grep -e 'arrayListName' --and \( -e add -e remove \) 
+$ git grep -e 'arrayListName' --and \( -e add -e remove \)
 ```
 
 Google ist dein Freund; für mehr Beispiele:
@@ -286,7 +286,7 @@ $ git merge --no-ff branchName
 
 ### mv
 
-Eine Datei umbenennen oder verschieben.	
+Eine Datei umbenennen oder verschieben.
 
 ```bash
 # Umbenennen
@@ -328,7 +328,7 @@ Führe einen Push, ein Hochladen, und einen Merge von Änderungen eines remote-B
 $ git push origin master
 ```
 
-### rebase (mit Vorsicht einsetzen) 
+### rebase (mit Vorsicht einsetzen)
 
 Nimm alle Änderungen, die in einem Branch durch Commits vorgenommen wurden, und übertrage sie auf einen anderen Branch. Achtung: Führe keinen Rebase von Commits durch, die auf ein öffentliches Repo gepusht wurden.
 

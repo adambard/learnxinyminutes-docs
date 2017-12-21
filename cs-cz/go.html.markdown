@@ -16,7 +16,7 @@ translators:
     - ["Ondra Linek", "https://github.com/defectus/"]
 ---
 
-Jazyk Go byl vytvořen, jelikož bylo potřeba dokončit práci. Není to poslední 
+Jazyk Go byl vytvořen, jelikož bylo potřeba dokončit práci. Není to poslední
 trend ve světě počítačové vědy, ale je to nejrychlejší a nejnovější způsob,
 jak řešit realné problémy.
 
@@ -62,7 +62,7 @@ func main() {
 func svetPoHello() {
 	var x int // Deklarace proměnné. Proměnné musí být před použitím deklarované
 	x = 3     // Přiřazení hodnoty do proměnné
-	// Existuje "krátká" deklarace := kde se typ proměnné odvodí, 
+	// Existuje "krátká" deklarace := kde se typ proměnné odvodí,
 	// proměnná vytvoří a přiřadí se jí hodnota
 	y := 4
 	sum, prod := naucSeNasobit(x, y)        // Funkce mohou vracet více hodnot

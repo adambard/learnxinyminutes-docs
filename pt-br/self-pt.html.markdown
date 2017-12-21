@@ -41,20 +41,20 @@ O analisador interno de Self pode construir objetos, incluindo objetos método.
   x <- 20.
 |)
 
-"Um objeto o qual entende o método 'doubleX' que 
+"Um objeto o qual entende o método 'doubleX' que
 dobra o valor de x e então retorna o objeto"
 (|
   x <- 20.
   doubleX = (x: x * 2. self)
 |)
 
-"Um objeto o qual entende todas as mensagens 
-que 'traits point' entende". O analisador  
-procura 'traits point' enviando as mensagens 
+"Um objeto o qual entende todas as mensagens
+que 'traits point' entende". O analisador
+procura 'traits point' enviando as mensagens
 'traits' e 'point' para um objeto conhecido
 chamado de 'lobby'. Ele procura pelo objeto
 'true' também enviando a mensagem 'true'
-para o 'lobby'."" 
+para o 'lobby'.""
 (|     parent* = traits point.
        x = 7.
        y <- 5.
@@ -67,19 +67,19 @@ para o 'lobby'.""
 Mensagens podem ser unárias, binárias ou palavras-chave. Precedência é nesta ordem. Diferentemente de Smalltalk, a precedência de mensagens binárias precisam ser especificadas, e todas as palavras-chave após a primeira devem começar com letra maiúscula. Mensagens são separadas de seu destinatário através de espaço em branco.
 
 ```
-"mensagem unária, envia 'printLine' para o objeto '23' 
+"mensagem unária, envia 'printLine' para o objeto '23'
 o qual escreve a string '23' para stdout e retorna o objeto recebido (ie 23)"
 23 printLine
 
 "envia a mensagem '+' com '7' para '23', em seguida a mensagem '*' com '8' para o resultado"
-(23 + 7) * 8 
+(23 + 7) * 8
 
 "envia 'power:' para '2' com '8' retorna 256"
-2 power: 8 
+2 power: 8
 
-"envia 'keyOf:IfAbsent:' para 'hello' com argumentos 'e' e '-1'. 
+"envia 'keyOf:IfAbsent:' para 'hello' com argumentos 'e' e '-1'.
 Retorna 1, o índice de 'e' em 'hello'."
-'hello' keyOf: 'e' IfAbsent: -1 
+'hello' keyOf: 'e' IfAbsent: -1
 ```
 
 # Blocos
@@ -94,13 +94,13 @@ Exemplos do uso de um bloco:
 
 ```
 "retorna 'HELLO'"
-'hello' copyMutable mapBy: [|:c| c capitalize] 
+'hello' copyMutable mapBy: [|:c| c capitalize]
 
 "retorna 'Nah'"
-'hello' size > 5 ifTrue: ['Yay'] False: ['Nah'] 
+'hello' size > 5 ifTrue: ['Yay'] False: ['Nah']
 
 "retorna 'HaLLO'"
-'hello' copyMutable mapBy: [|:c| 
+'hello' copyMutable mapBy: [|:c|
    c = 'e' ifTrue: [c capitalize]
             False: ['a']]
 ```
@@ -109,7 +109,7 @@ Múltiplas expressões são separadas por ponto final. ^ retorna imediatamente.
 
 ```
 "retorna An 'E'! How icky!"
-'hello' copyMutable mapBy: [|:c. tmp <- ''| 
+'hello' copyMutable mapBy: [|:c. tmp <- ''|
    tmp: c capitalize.
    tmp = 'E' ifTrue: [^ 'An \'E\'! How icky!'].
    c capitalize
@@ -123,7 +123,7 @@ Blocos são realizados (completados) ao enviá-los a mensagem 'value' e herdando
     x: 15.
     "Repetidamente envia 'value' para o primeiro bloco enquanto o resultado do
      envio de 'value' para o segundo bloco é o objeto 'true'"
-    [x > 0] whileTrue: [x: x - 1]. 
+    [x > 0] whileTrue: [x: x - 1].
     x
 ] value
 ```
@@ -134,12 +134,12 @@ Métodos são como blocos, porém eles não estão dentro de um contexto, ao inv
 
 ```
 "Aqui está um objeto com um slot atribuível 'x' e um método 'reduceXTo: y'.
-Enviar a mensagem 'reduceXTo: 10' para este objeto colocará 
+Enviar a mensagem 'reduceXTo: 10' para este objeto colocará
 o objeto '10' no slot 'x' e retornará o objeto original"
-(| 
+(|
     x <- 50.
     reduceXTo: y = (
-        [x > y] whileTrue: [x: x - 1]. 
+        [x > y] whileTrue: [x: x - 1].
         self)
 |)
 .

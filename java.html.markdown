@@ -290,7 +290,7 @@ public class LearnJava {
         //            interface. This allows the execution time of basic
         //            operations, such as get and insert element, to remain
         //            constant-amortized even for large sets.
-        // TreeMap - A Map that is sorted by its keys. Each modification 
+        // TreeMap - A Map that is sorted by its keys. Each modification
         //           maintains the sorting defined by either a Comparator
         //           supplied at instantiation, or comparisons of each Object
         //           if they implement the Comparable interface.
@@ -471,11 +471,11 @@ public class LearnJava {
         // <second value>"
         int foo = 5;
         String bar = (foo < 10) ? "A" : "B";
-        System.out.println("bar : " + bar); // Prints "bar : A", because the 
+        System.out.println("bar : " + bar); // Prints "bar : A", because the
         // statement is true.
         // Or simply
         System.out.println("bar : " + (foo < 10 ? "A" : "B"));
-        
+
 
         ////////////////////////////////////////
         // Converting Data Types

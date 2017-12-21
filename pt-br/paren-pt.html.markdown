@@ -79,7 +79,7 @@ alguma-variavel ; => 5
 ;; Acessar uma variável ainda não atribuída gera uma exceção
 ; x ; => Unknown variable: x : nil
 
-;; Ligações locais: Utiliza cálculo lambda! 
+;; Ligações locais: Utiliza cálculo lambda!
 ;; 'a' e 'b' estão ligados a '1' e '2' apenas dentro de (fn ...)
 ((fn (a b) (+ a b)) 1 2) ; => 3
 

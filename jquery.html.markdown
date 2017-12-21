@@ -104,7 +104,7 @@ tables.animate({margin-top:"+=50", height: "100px"}, 500, myFunction);
 // 3. Manipulation
 
 // These are similar to effects but can do more
-$('div').addClass('taming-slim-20'); // Adds class taming-slim-20 to all div 
+$('div').addClass('taming-slim-20'); // Adds class taming-slim-20 to all div
 
 // Common manipulation methods
 $('p').append('Hello world'); // Adds to end of element

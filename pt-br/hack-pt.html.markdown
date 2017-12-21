@@ -54,7 +54,7 @@ function identity(?string $stringOuNulo) : ?string
 class PropriedadesComTipos
 {
     public ?string $nome;
-    
+
     protected int $id;
 
     private float $pontuacao = 100.0;
@@ -146,7 +146,7 @@ function getTipoDePista() : TipoDePista
 
 
 // Especificação de argumentos no construtor (Argument Promotion)
-// 
+//
 // Para evitar que propriedades sejam definidas em mais de um lugar, e
 // construtores que só definem propriedades, o Hack adiciona uma sintaxe para
 // definir as propriedades e o construtor ao mesmo tempo.
@@ -181,7 +181,7 @@ class SemArgumentPromotion
 // Obs. Isto não envolve threads - apenas permite a transferência de controle
 async function printCooperativo(int $inicio, int $fim) : Awaitable<void>
 {
-    for ($i = $inicio; $i <= $fim; $i++) { 
+    for ($i = $inicio; $i <= $fim; $i++) {
         echo "$i ";
 
         // Permite que outras tarefas façam algo
@@ -259,7 +259,7 @@ class SubclasseFooInvalida extends FooConsistente
     //
     //  "Este objeto é incompatível com o objeto FooConsistente porque algum(ns)
     //   dos seus métodos são incompatíveis"
-    //  
+    //
     public function __construct(float $x)
     {
         // ...
@@ -270,7 +270,7 @@ class SubclasseFooInvalida extends FooConsistente
     //  "SubclasseFooInvalida::outroMetodo() está marcada para sobrescrever;
     //   nenhuma definição não-privada foi encontrada ou a classe pai foi
     //   definida em código não-<?hh"
-    //  
+    //
     <<__Override>>
     public function outroMetodo()
     {
