@@ -66,7 +66,10 @@ magicNumber(42).
 % follows:
 %  If both sides are bound (ie, defined), check equality.
 %  If one side is free (ie, undefined), assign to match the other side.
-%  If both sides are free, abort because this can't be resolved.
+%  If both sides are free, the assignment is remembered. With some luck,
+%    one of the two sides will eventually be bound, but this isn't
+%    necessary.
+%
 % The = sign in Prolog represents unification, so:
 
 ?- 2 = 3.                            % False - equality test
@@ -86,6 +89,10 @@ magicNumber(42).
 ?- 5 is X+2.                         % Error. Unlike =, the right hand side of IS
                                      % must always be bound, thus guaranteeing
                                      % no attempt to solve an equation.
+?- X = Y, X = 2, Z is Y + 3.         % X = Y, Y = 2, Z = 5.
+                                     % X = Y are both free, so Prolog remembers
+				     % it. Therefore assigning X will also
+				     % assign Y.
 
 % Any unification, and thus any predicate in Prolog, can either:
 % Succeed (return True) without changing anything,
