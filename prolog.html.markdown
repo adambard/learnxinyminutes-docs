@@ -237,9 +237,9 @@ nearby3(X,Y) :- nearby2(X,Y).
 
 % Here is the structured comment declaration for nearby3:
 
-%%    nearby3(+X:Int, +Y:Int) is semidet.
-%%    nearby3(+X:Int, -Y:Int) is multi.
-%%    nearby3(-X:Int, +Y:Int) is multi.
+%!    nearby3(+X:Int, +Y:Int) is semidet.
+%!    nearby3(+X:Int, -Y:Int) is multi.
+%!    nearby3(-X:Int, +Y:Int) is multi.
 
 % For each variable we list a type. The + or - before the variable name
 % indicates if the parameter is bound (+) or free (-). The word after
@@ -274,8 +274,8 @@ character(darthVader).        % Creates atom value darthVader
 % Note that below, writeln is used instead of print because print is
 % intended for debugging.
 
-%%    countTo(+X:Int) is det.
-%%    countUpTo(+Value:Int, +Limit:Int) is det.
+%!    countTo(+X:Int) is det.
+%!    countUpTo(+Value:Int, +Limit:Int) is det.
 countTo(X) :- countUpTo(1,X).
 countUpTo(Value, Limit) :- Value = Limit, writeln(Value), !.
 countUpTo(Value, Limit) :- Value \= Limit, writeln(Value),
@@ -288,7 +288,7 @@ countUpTo(Value, Limit) :- Value \= Limit, writeln(Value),
 % IF test. If Value = Limit fails the second declaration is run.
 % There is also a more elegant syntax.
 
-%%    countUpTo2(+Value:Int, +Limit:Int) is det.
+%!    countUpTo2(+Value:Int, +Limit:Int) is det.
 countUpTo2(Value, Limit) :- writeln(Value),
     Value = Limit -> true ; (
         NextValue is Value+1,
@@ -301,14 +301,14 @@ countUpTo2(Value, Limit) :- writeln(Value),
 % called a "failure-driven loop" to do this, but newer ones use a higher
 % order function.
 
-%%    countTo2(+X:Int) is det.
+%!    countTo2(+X:Int) is det.
 countTo2(X) :- forall(between(1,X,Y),writeln(Y)).
 
 ?- countTo2(10).                     % Outputs 1 to 10
 
 % Lists are given in square brackets. Use memberchk to check membership.
 % A group is safe if it doesn't include Joker or does include Batman.
-%%        safe(Group:list(atom)) is det.
+%!     safe(Group:list(atom)) is det.
 safe(Group) :- memberchk(joker, Group) -> memberchk(batman, Group) ; true.
 
 ?- safe([robin]).                    % True
