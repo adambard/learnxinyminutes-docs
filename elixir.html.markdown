@@ -3,6 +3,8 @@ language: elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
+    - ["Ryan Plant", "https://github.com/ryanplant-au"]
+    - ["Ev Bogdanov", "https://github.com/evbogdanov"]
 filename: learnelixir.ex
 ---
 
@@ -91,6 +93,19 @@ string.
 <<1,2,3>> <> <<4,5>> #=> <<1,2,3,4,5>>
 "hello " <> "world"  #=> "hello world"
 
+# Ranges are represented as `start..end` (both inclusive)
+1..10 #=> 1..10
+lower..upper = 1..10 # Can use pattern matching on ranges as well
+[lower, upper] #=> [1, 10]
+
+# Maps are key-value pairs
+genders = %{"david" => "male", "gillian" => "female"}
+genders["david"] #=> "male"
+
+# Maps with atom keys can be used like this
+genders = %{david: "male", gillian: "female"}
+genders.gillian #=> "female"
+
 ## ---------------------------
 ## -- Operators
 ## ---------------------------
@@ -113,7 +128,8 @@ rem(10, 3) #=> 1
 # These operators expect a boolean as their first argument.
 true and true #=> true
 false or true #=> true
-# 1 and true    #=> ** (ArgumentError) argument error
+# 1 and true
+#=> ** (BadBooleanError) expected a boolean on left-side of "and", got: 1
 
 # Elixir also provides `||`, `&&` and `!` which accept arguments of any type.
 # All values except `false` and `nil` will evaluate to true.
@@ -165,7 +181,7 @@ case {:one, :two} do
   {:four, :five} ->
     "This won't match"
   {:one, x} ->
-    "This will match and bind `x` to `:two`"
+    "This will match and bind `x` to `:two` in this clause"
   _ ->
     "This will match any value"
 end
@@ -190,7 +206,7 @@ cond do
     "But I will"
 end
 
-# It is common to see the last condition equal to `true`, which will always match.
+# It is common to set the last condition equal to `true`, which will always match.
 cond do
   1 + 1 == 3 ->
     "I will never be seen"
@@ -311,6 +327,14 @@ defmodule MyMod do
   IO.inspect(@my_data) #=> 100
 end
 
+# The pipe operator |> allows you to pass the output of an expression
+# as the first parameter into a function. 
+
+Range.new(1,10)
+|> Enum.map(fn x -> x * x end)
+|> Enum.filter(fn x -> rem(x, 2) == 0 end)
+#=> [4, 16, 36, 64, 100]
+
 ## ---------------------------
 ## -- Structs and Exceptions
 ## ---------------------------
@@ -338,6 +362,7 @@ rescue
   RuntimeError -> "rescued a runtime error"
   _error -> "this will rescue any error"
 end
+#=> "rescued a runtime error"
 
 # All exceptions have a message
 try do
@@ -346,6 +371,7 @@ rescue
   x in [RuntimeError] ->
     x.message
 end
+#=> "some error"
 
 ## ---------------------------
 ## -- Concurrency
@@ -364,6 +390,13 @@ spawn(f) #=> #PID<0.40.0>
 # messages to the process. To do message passing we use the `send` operator.
 # For all of this to be useful we need to be able to receive messages. This is
 # achieved with the `receive` mechanism:
+
+# The `receive do` block is used to listen for messages and process
+# them when they are received. A `receive do` block will only
+# process one received message. In order to process multiple
+# messages, a function with a `receive do` block must recursively
+# call itself to get into the `receive do` block again.
+
 defmodule Geometry do
   def area_loop do
     receive do
@@ -379,6 +412,8 @@ end
 
 # Compile the module and create a process that evaluates `area_loop` in the shell
 pid = spawn(fn -> Geometry.area_loop() end) #=> #PID<0.40.0>
+# Alternatively
+pid = spawn(Geometry, :area_loop, [])
 
 # Send a message to `pid` that will match a pattern in the receive statement
 send pid, {:rectangle, 2, 3}
@@ -391,11 +426,28 @@ send pid, {:circle, 2}
 
 # The shell is also a process, you can use `self` to get the current pid
 self() #=> #PID<0.27.0>
+
+## ---------------------------
+## -- Agents
+## ---------------------------
+
+# An agent is a process that keeps track of some changing value
+
+# Create an agent with `Agent.start_link`, passing in a function
+# The initial state of the agent will be whatever that function returns
+{ok, my_agent} = Agent.start_link(fn -> ["red", "green"] end)
+
+# `Agent.get` takes an agent name and a `fn` that gets passed the current state
+# Whatever that `fn` returns is what you'll get back
+Agent.get(my_agent, fn colors -> colors end) #=> ["red", "green"]
+
+# Update the agent's state the same way
+Agent.update(my_agent, fn colors -> ["blue" | colors] end)
 ```
 
 ## References
 
-* [Getting started guide](http://elixir-lang.org/getting_started/1.html) from [elixir webpage](http://elixir-lang.org)
+* [Getting started guide](http://elixir-lang.org/getting-started/introduction.html) from the [Elixir website](http://elixir-lang.org)
 * [Elixir Documentation](http://elixir-lang.org/docs/master/)
 * ["Programming Elixir"](https://pragprog.com/book/elixir/programming-elixir) by Dave Thomas
 * [Elixir Cheat Sheet](http://media.pragprog.com/titles/elixir/ElixirCheat.pdf)

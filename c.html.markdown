@@ -6,7 +6,8 @@ contributors:
     - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
     - ["Jakub Trzebiatowski", "http://cbs.stgn.pl"]
     - ["Marco Scannadinari", "https://marcoms.github.io"]
-
+    - ["Zachary Ferguson", "https://github.io/zfergus2"]
+    - ["himanshu", "https://github.com/himanshu81494"]
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
@@ -15,25 +16,34 @@ C is the lowest-level language most programmers will ever use, but
 it more than makes up for it with raw speed. Just be aware of its manual
 memory management and C will take you as far as you need to go.
 
+> **About compiler flags**
+> 
+> By default, gcc and clang are pretty quiet about compilation warnings and
+> errors, which can be very useful information. Using some
+> stricter compiler flags is recommended. Here is an example you can
+> tweak to your liking:
+>
+> `-Wall -Wextra -Werror -O0 -ansi -pedantic -std=c11`
+
 ```c
 // Single-line comments start with // - only available in C99 and later.
 
-  /*
+/*
 Multi-line comments look like this. They work in C89 as well.
-  */
+*/
 
 /*
 Multi-line comments don't nest /* Be careful */  // comment ends on this line...
 */ // ...not this one!
 
 // Constants: #define <keyword>
+// Constants are written in all-caps out of convention, not requirement
 #define DAYS_IN_YEAR 365
 
 // Enumeration constants are also ways to declare constants.
 // All statements must end with a semicolon
 enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 // MON gets 2 automatically, TUE gets 3, etc.
-
 
 // Import headers with #include
 #include <stdlib.h>
@@ -52,10 +62,21 @@ int function_2(void);
 // Must declare a 'function prototype' before main() when functions occur after
 // your main() function.
 int add_two_ints(int x1, int x2); // function prototype
+// although `int add_two_ints(int, int);` is also valid (no need to name the args),
+// it is recommended to name arguments in the prototype as well for easier inspection
 
 // Your program's entry point is a function called
 // main with an integer return type.
-int main() {
+int main(void) {
+  // your program
+}
+
+// The command line arguments used to run your program are also passed to main
+// argc being the number of arguments - your program's name counts as 1
+// argv is an array of character arrays - containing the arguments themselves
+// argv[0] = name of your program, argv[1] = first argument, etc.
+int main (int argc, char** argv)
+{
   // print output using printf, for "print formatted"
   // %d is an integer, \n is a newline
   printf("%d\n", 0); // => Prints 0
@@ -63,6 +84,9 @@ int main() {
   ///////////////////////////////////////
   // Types
   ///////////////////////////////////////
+
+  // All variables MUST be declared at the top of the current block scope
+  // we declare them dynamically along the code for the sake of the tutorial
 
   // ints are usually 4 bytes
   int x_int = 0;
@@ -85,7 +109,7 @@ int main() {
   // doubles are usually 64-bit floating-point numbers
   double x_double = 0.0; // real numbers without any suffix are doubles
 
-  // integer types may be unsigned (only positive)
+  // integer types may be unsigned (greater than or equal to zero)
   unsigned short ux_short;
   unsigned int ux_int;
   unsigned long long ux_long_long;
@@ -97,7 +121,6 @@ int main() {
   // sizeof(T) gives you the size of a variable with type T in bytes
   // sizeof(obj) yields the size of the expression (variable, literal, etc.).
   printf("%zu\n", sizeof(int)); // => 4 (on most machines with 4-byte words)
-
 
   // If the argument of the `sizeof` operator is an expression, then its argument
   // is not evaluated (except VLAs (see below)).
@@ -114,7 +137,6 @@ int main() {
   int my_int_array[20]; // This array occupies 4 * 20 = 80 bytes
   // (assuming 4-byte words)
 
-
   // You can initialize an array to 0 thusly:
   char my_array[20] = {0};
 
@@ -130,15 +152,12 @@ int main() {
   // can be declared as well. The size of such an array need not be a compile
   // time constant:
   printf("Enter the array size: "); // ask the user for an array size
-  char buf[0x100];
-  fgets(buf, sizeof buf, stdin);
-
-  // strtoul parses a string to an unsigned integer
-  size_t size2 = strtoul(buf, NULL, 10);
-  int var_length_array[size2]; // declare the VLA
+  int array_size;
+  fscanf(stdin, "%d", &array_size);
+  int var_length_array[array_size]; // declare the VLA
   printf("sizeof array = %zu\n", sizeof var_length_array);
 
-  // A possible outcome of this program may be:
+  // Example:
   // > Enter the array size: 10
   // > sizeof array = 40
 
@@ -157,12 +176,12 @@ int main() {
   int cha = 'a'; // fine
   char chb = 'a'; // fine too (implicit conversion from int to char)
 
-  //Multi-dimensional arrays:
+  // Multi-dimensional arrays:
   int multi_array[2][5] = {
     {1, 2, 3, 4, 5},
     {6, 7, 8, 9, 0}
   };
-  //access elements:
+  // access elements:
   int array_int = multi_array[0][2]; // => 3
 
   ///////////////////////////////////////
@@ -183,8 +202,8 @@ int main() {
   i1 / i2; // => 0 (0.5, but truncated towards 0)
 
   // You need to cast at least one integer to float to get a floating-point result
-  (float)i1 / i2 // => 0.5f
-  i1 / (double)i2 // => 0.5 // Same with double
+  (float)i1 / i2; // => 0.5f
+  i1 / (double)i2; // => 0.5 // Same with double
   f1 / f2; // => 0.5, plus or minus epsilon
   // Floating-point numbers and calculations are not exact
 
@@ -192,7 +211,7 @@ int main() {
   11 % 3; // => 2
 
   // Comparison operators are probably familiar, but
-  // there is no Boolean type in c. We use ints instead.
+  // there is no Boolean type in C. We use ints instead.
   // (Or _Bool or bool in C99.)
   // 0 is false, anything else is true. (The comparison
   // operators always yield 0 or 1.)
@@ -219,22 +238,20 @@ int main() {
   0 || 1; // => 1 (Logical or)
   0 || 0; // => 0
 
-  //Conditional expression ( ? : )
+  // Conditional ternary expression ( ? : )
   int e = 5;
   int f = 10;
   int z;
   z = (e > f) ? e : f; // => 10 "if e > f return e, else return f."
 
-  //Increment and decrement operators:
-  char *s = "iLoveC";
+  // Increment and decrement operators:
   int j = 0;
-  s[j++]; // => "i". Returns the j-th item of s THEN increments value of j.
-  j = 0;
-  s[++j]; // => "L". Increments value of j THEN returns j-th value of s.
+  int s = j++; // Return j THEN increase j. (s = 0, j = 1)
+  s = ++j; // Increase j THEN return j. (s = 2, j = 2)
   // same with j-- and --j
 
   // Bitwise operators!
-  ~0x0F; // => 0xF0 (bitwise negation, "1's complement")
+  ~0x0F; // => 0xFFFFFFF0 (bitwise negation, "1's complement", example result for 32-bit int)
   0x0F & 0xF0; // => 0x00 (bitwise AND)
   0x0F | 0xF0; // => 0xFF (bitwise OR)
   0x04 ^ 0x0F; // => 0x0B (bitwise XOR)
@@ -242,7 +259,7 @@ int main() {
   0x02 >> 1; // => 0x01 (bitwise right shift (by 1))
 
   // Be careful when shifting signed integers - the following are undefined:
-  // - shifting into the sign bit of a signed integer (int a = 1 << 32)
+  // - shifting into the sign bit of a signed integer (int a = 1 << 31)
   // - left-shifting a negative number (int a = -1 << 2)
   // - shifting by an offset which is >= the width of the type of the LHS:
   //   int a = 1 << 32; // UB if int is 32 bits wide
@@ -261,7 +278,7 @@ int main() {
 
   // While loops exist
   int ii = 0;
-  while (ii < 10) { //ANY value not zero is true.
+  while (ii < 10) { //ANY value less than ten is true.
     printf("%d, ", ii++); // ii++ increments ii AFTER using its current value.
   } // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
@@ -289,21 +306,50 @@ int main() {
   for (i = 0; i <= 5; i++) {
     ; // use semicolon to act as the body (null statement)
   }
+  // Or
+  for (i = 0; i <= 5; i++);
 
   // branching with multiple choices: switch()
   switch (a) {
-  case 0: // labels need to be integral *constant* expressions
+  case 0: // labels need to be integral *constant* expressions (such as enums)
     printf("Hey, 'a' equals 0!\n");
     break; // if you don't break, control flow falls over labels
   case 1:
     printf("Huh, 'a' equals 1!\n");
     break;
+    // Be careful - without a "break", execution continues until the
+    // next "break" is reached.
+  case 3:
+  case 4:
+    printf("Look at that.. 'a' is either 3, or 4\n");
+    break;
   default:
     // if `some_integral_expression` didn't match any of the labels
-    fputs("error!\n", stderr);
+    fputs("Error!\n", stderr);
     exit(-1);
     break;
   }
+  /*
+  using "goto" in C
+  */
+  typedef enum { false, true } bool;
+  // for C don't have bool as data type before C99 :(
+  bool disaster = false;
+  int i, j;
+  for(i=0;i<100;++i)
+  for(j=0;j<100;++j)
+  {
+    if((i + j) >= 150)
+        disaster = true;
+    if(disaster)
+        goto error;
+  }
+  error :
+  printf("Error occurred at i = %d & j = %d.\n", i, j);
+  /*
+  https://ideone.com/GuPhd6
+  this will print out "Error occurred at i = 51 & j = 99."
+  */
 
   ///////////////////////////////////////
   // Typecasting
@@ -343,7 +389,6 @@ int main() {
   // (%p formats an object pointer of type void *)
   // => Prints some address in memory;
 
-
   // Pointers start with * in their declaration
   int *px, not_a_pointer; // px is a pointer to an int
   px = &x; // Stores the address of x in px
@@ -371,7 +416,7 @@ int main() {
     x_array[xx] = 20 - xx;
   } // Initialize x_array to 20, 19, 18,... 2, 1
 
-    // Declare a pointer of type int and initialize it to point to x_array
+  // Declare a pointer of type int and initialize it to point to x_array
   int* x_ptr = x_array;
   // x_ptr now points to the first element in the array (the integer 20).
   // This works because arrays often decay into pointers to their first element.
@@ -389,7 +434,6 @@ int main() {
   printf("%zu, %zu\n", sizeof arraythethird, sizeof ptr);
   // probably prints "40, 4" or "40, 8"
 
-
   // Pointers are incremented and decremented based on their type
   // (this is called pointer arithmetic)
   printf("%d\n", *(x_ptr + 1)); // => Prints 19
@@ -403,9 +447,29 @@ int main() {
   for (xx = 0; xx < 20; xx++) {
     *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx
   } // Initialize memory to 20, 19, 18, 17... 2, 1 (as ints)
+  
+  // Be careful passing user-provided values to malloc! If you want
+  // to be safe, you can use calloc instead (which, unlike malloc, also zeros out the memory)
+  int* my_other_ptr = calloc(20, sizeof(int));
 
-    // Dereferencing memory that you haven't allocated gives
-    // "unpredictable results" - the program is said to invoke "undefined behavior"
+  // Note that there is no standard way to get the length of a
+  // dynamically allocated array in C. Because of this, if your arrays are
+  // going to be passed around your program a lot, you need another variable
+  // to keep track of the number of elements (size) of an array. See the
+  // functions section for more info.
+  size_t size = 10;
+  int *my_arr = calloc(size, sizeof(int));
+  // Add an element to the array
+  size++;
+  my_arr = realloc(my_arr, sizeof(int) * size);
+  if (my_arr == NULL) {
+    //Remember to check for realloc failure!
+    return
+  }
+  my_arr[10] = 5;
+
+  // Dereferencing memory that you haven't allocated gives
+  // "unpredictable results" - the program is said to invoke "undefined behavior"
   printf("%d\n", *(my_ptr + 21)); // => Prints who-knows-what? It may even crash.
 
   // When you're done with a malloc'd block of memory, you need to free it,
@@ -443,7 +507,7 @@ int add_two_ints(int x1, int x2)
 
 /*
 Functions are call by value. When a function is called, the arguments passed to
-≈the function are copies of the original arguments (except arrays). Anything you
+the function are copies of the original arguments (except arrays). Anything you
 do to the arguments in the function do not change the value of the original
 argument where the function was called.
 
@@ -464,27 +528,66 @@ void str_reverse(char *str_in)
     str_in[len - ii - 1] = tmp;
   }
 }
+//NOTE: string.h header file needs to be included to use strlen()
 
 /*
 char c[] = "This is a test.";
 str_reverse(c);
 printf("%s\n", c); // => ".tset a si sihT"
 */
+/*
+as we can return only one variable
+to change values of more than one variables we use call by reference
+*/
+void swapTwoNumbers(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+/*
+int first = 10;
+int second = 20;
+printf("first: %d\nsecond: %d\n", first, second);
+swapTwoNumbers(&first, &second);
+printf("first: %d\nsecond: %d\n", first, second);
+// values will be swapped
+*/
 
-//if referring to external variables outside function, must use extern keyword.
+/*
+With regards to arrays, they will always be passed to functions
+as pointers. Even if you statically allocate an array like `arr[10]`,
+it still gets passed as a pointer to the first element in any function calls.
+Again, there is no standard way to get the size of a dynamically allocated
+array in C.
+*/
+// Size must be passed!
+// Otherwise, this function has no way of knowing how big the array is.
+void printIntArray(int *arr, size_t size) {
+    int i;
+    for (i = 0; i < size; i++) {
+        printf("arr[%d] is: %d\n", i, arr[i]);
+    }
+}
+/*
+int my_arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+int size = 10;
+printIntArray(my_arr, size);
+// will print "arr[0] is: 1" etc
+*/
+
+// if referring to external variables outside function, you should use the extern keyword.
 int i = 0;
 void testFunc() {
   extern int i; //i here is now using external variable i
 }
 
-//make external variables private to source file with static:
+// make external variables private to source file with static:
 static int j = 0; //other files using testFunc2() cannot access variable j
 void testFunc2() {
   extern int j;
 }
 //**You may also declare functions as static to make them private**
-
-
 
 ///////////////////////////////////////
 // User-defined types and structs
@@ -570,6 +673,7 @@ typedef void (*my_fnp_type)(char *);
 // ...
 // my_fnp_type f;
 
+
 //Special characters:
 /*
 '\a'; // alert (bell) character
@@ -602,6 +706,7 @@ typedef void (*my_fnp_type)(char *);
 "%o";    // octal
 "%%";    // prints %
 */
+
 ///////////////////////////////////////
 // Order of Evaluation
 ///////////////////////////////////////
@@ -626,22 +731,76 @@ typedef void (*my_fnp_type)(char *);
 // ,                                 | left to right //
 //---------------------------------------------------//
 
-```
+/******************************* Header Files **********************************
 
+Header files are an important part of C as they allow for the connection of C
+source files and can simplify code and definitions by separating them into
+separate files.
+
+Header files are syntactically similar to C source files but reside in ".h"
+files. They can be included in your C source file by using the precompiler
+command #include "example.h", given that example.h exists in the same directory
+as the C file.
+*/
+
+/* A safe guard to prevent the header from being defined too many times. This */
+/* happens in the case of circle dependency, the contents of the header is    */
+/* already defined.                                                           */
+#ifndef EXAMPLE_H /* if EXAMPLE_H is not yet defined. */
+#define EXAMPLE_H /* Define the macro EXAMPLE_H. */
+
+/* Other headers can be included in headers and therefore transitively */
+/* included into files that include this header.                       */
+#include <string.h>
+
+/* Like c source files macros can be defined in headers and used in files */
+/* that include this header file.                                         */
+#define EXAMPLE_NAME "Dennis Ritchie"
+
+/* Function macros can also be defined.  */
+#define ADD(a, b) ((a) + (b))
+
+/* Notice the parenthesis surrounding the arguments -- this is important to   */
+/* ensure that a and b don't get expanded in an unexpected way (e.g. consider */
+/* MUL(x, y) (x * y); MUL(1 + 2, 3) would expand to (1 + 2 * 3), yielding an  */
+/* incorrect result)                                                          */
+
+/* Structs and typedefs can be used for consistency between files. */
+typedef struct Node
+{
+    int val;
+    struct Node *next;
+} Node;
+
+/* So can enumerations. */
+enum traffic_light_state {GREEN, YELLOW, RED};
+
+/* Function prototypes can also be defined here for use in multiple files,  */
+/* but it is bad practice to define the function in the header. Definitions */
+/* should instead be put in a C file.                                       */
+Node createLinkedList(int *vals, int len);
+
+/* Beyond the above elements, other definitions should be left to a C source */
+/* file. Excessive includes or definitions should, also not be contained in */
+/* a header file but instead put into separate headers or a C file.          */
+
+#endif /* End of the if precompiler directive. */
+
+```
 ## Further Reading
 
 Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language)
 It is *the* book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some
 inaccuracies (well, ideas that are not considered good anymore) or now-changed practices.
 
-Another good resource is [Learn C the hard way](http://c.learncodethehardway.org/book/).
+Another good resource is [Learn C The Hard Way](http://c.learncodethehardway.org/book/).
 
 If you have a question, read the [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 
 It's very important to use proper spacing, indentation and to be consistent with your coding style in general.
 Readable code is better than clever code and fast code. For a good, sane coding style to adopt, see the
-[Linux kernel coding style](https://www.kernel.org/doc/Documentation/CodingStyle).
+[Linux kernel coding style](https://www.kernel.org/doc/Documentation/process/coding-style.rst).
 
 Other than that, Google is your friend.
 
-[1] http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member
+[1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)

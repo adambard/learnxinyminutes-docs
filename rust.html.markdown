@@ -5,23 +5,37 @@ contributors:
 filename: learnrust.rs
 ---
 
-Rust is an in-development programming language developed by Mozilla Research.
-It is relatively unique among systems languages in that it can assert memory
-safety *at compile time* without resorting to garbage collection. Rust’s first
-release, 0.1, occurred in January 2012, and development moves so quickly that at
-the moment the use of stable releases is discouraged, and instead one should use
-nightly builds. On January 9 2015, Rust 1.0 Alpha was released, and the rate of
-changes to the Rust compiler that break existing code has dropped significantly
-since. However, a complete guarantee of backward compatibility will not exist
-until the final 1.0 release.
+Rust is a programming language developed by Mozilla Research.
+Rust combines low-level control over performance with high-level convenience and
+safety guarantees.
+
+It achieves these goals without requiring a garbage collector or runtime, making
+it possible to use Rust libraries as a "drop-in replacement" for C.
+
+Rust’s first release, 0.1, occurred in January 2012, and for 3 years development
+moved so quickly that until recently the use of stable releases was discouraged
+and instead the general advice was to use nightly builds.
+
+On May 15th 2015, Rust 1.0 was released with a complete guarantee of backward
+compatibility. Improvements to compile times and other aspects of the compiler are
+currently available in the nightly builds. Rust has adopted a train-based release
+model with regular releases every six weeks. Rust 1.1 beta was made available at
+the same time of the release of Rust 1.0.
 
 Although Rust is a relatively low-level language, Rust has some functional
 concepts that are generally found in higher-level languages. This makes
 Rust not only fast, but also easy and efficient to code in.
 
 ```rust
-// This is a comment. Single-line look like this...
-/* ...and multi-line comment look like this */
+// This is a comment. Line comments look like this...
+// and extend multiple lines like this.
+
+/// Documentation comments look like this and support markdown notation.
+/// # Examples
+///
+/// ```
+/// let five = 5
+/// ```
 
 ///////////////
 // 1. Basics //
@@ -74,10 +88,11 @@ fn main() {
     let s: String = "hello world".to_string();
 
     // A string slice – an immutable view into another string
-    // This is basically an immutable pointer to a string – it doesn’t
+    // This is basically an immutable pair of pointers to a string – it doesn’t
     // actually contain the contents of a string, just a pointer to
-    // something that does (in this case, `s`)
-    let s_slice: &str = &*s;
+    // the begin and a pointer to the end of a string buffer,
+    // statically allocated or contained in another object (in this case, `s`)
+    let s_slice: &str = &s;
 
     println!("{} {}", s, s_slice); // hello world hello world
 
@@ -92,7 +107,7 @@ fn main() {
 
     // A slice – an immutable view into a vector or array
     // This is much like a string slice, but for vectors
-    let slice: &[i32] = &*vector;
+    let slice: &[i32] = &vector;
 
     // Use `{:?}` to print something debug-style
     println!("{:?} {:?}", vector, slice); // [1, 2, 3, 4, 5] [1, 2, 3, 4, 5]
@@ -271,19 +286,20 @@ fn main() {
     var = 3;
     let ref_var: &i32 = &var;
 
-    println!("{}", var); // Unlike `box`, `var` can still be used
+    println!("{}", var); // Unlike `mine`, `var` can still be used
     println!("{}", *ref_var);
     // var = 5; // this would not compile because `var` is borrowed
-    // *ref_var = 6; // this would too, because `ref_var` is an immutable reference
+    // *ref_var = 6; // this would not either, because `ref_var` is an immutable reference
 
     // Mutable reference
     // While a value is mutably borrowed, it cannot be accessed at all.
     let mut var2 = 4;
     let ref_var2: &mut i32 = &mut var2;
-    *ref_var2 += 2;
+    *ref_var2 += 2;         // '*' is used to point to the mutably borrowed var2
 
-    println!("{}", *ref_var2); // 6
-    // var2 = 2; // this would not compile because `var2` is borrowed
+    println!("{}", *ref_var2); // 6 , // var2 would not compile.
+    // ref_var2 is of type &mut i32, so stores a reference to an i32, not the value.
+    // var2 = 2; // this would not compile because `var2` is borrowed.
 }
 ```
 

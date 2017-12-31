@@ -3,6 +3,7 @@ language: haxe
 filename: LearnHaxe3.hx
 contributors:
     - ["Justin Donaldson", "https://github.com/jdonaldson/"]
+    - ["Dan Korostelev", "https://github.com/nadako/"]
 ---
 
 Haxe is a web-oriented language that provides platform support for C++, C#,
@@ -34,16 +35,20 @@ references.
 /*
    This is your first actual haxe code coming up, it's declaring an empty
    package.  A package isn't necessary, but it's useful if you want to create a
-   namespace for your code (e.g. org.module.ClassName).
+   namespace for your code (e.g. org.yourapp.ClassName).
+
+   Omitting package declaration is the same as declaring an empty package.
  */
 package; // empty package, no namespace.
 
 /*
-   Packages define modules for your code. Each module (e.g. org.module) must
-   be lower case, and should exist as a folder structure containing the class.
-   Class (and type) names must be capitalized. E.g, the class "org.module.Foo"
-   should have the folder structure org/module/Foo.hx, as accessible from the
-   compiler's working directory or class path.
+   Packages are directories that contain modules. Each module is a .hx file
+   that contains types defined in a package. Package names (e.g. org.yourapp)
+   must be lower case while module names are capitalized. A module contain one
+   or more types whose names are also capitalized.
+
+   E.g, the class "org.yourapp.Foo" should have the folder structure org/module/Foo.hx,
+   as accessible from the compiler's working directory or class path.
 
    If you import code from other files, it must be declared before the rest of
    the code.  Haxe provides a lot of common default classes to get you started:
@@ -52,6 +57,12 @@ import haxe.ds.ArraySort;
 
 // you can import many classes/modules at once with "*"
 import haxe.ds.*;
+
+// you can import static fields
+import Lambda.array;
+
+// you can also use "*" to import all static fields
+import Math.*;
 
 /*
    You can also import classes in a special way, enabling them to extend the
@@ -172,7 +183,8 @@ class LearnHaxe3{
            Regexes are also supported, but there's not enough space to go into
            much detail.
          */
-        trace((~/foobar/.match('foo')) + " is the value for (~/foobar/.match('foo')))");
+        var re = ~/foobar/;
+        trace(re.match('foo') + " is the value for (~/foobar/.match('foo')))");
 
         /*
            Arrays are zero-indexed, dynamic, and mutable.  Missing values are
@@ -311,7 +323,7 @@ class LearnHaxe3{
         var  l = 0;
         do{
             trace("do statement always runs at least once");
-        } while (i > 0);
+        } while (l > 0);
 
         // for loop
         /*
@@ -328,7 +340,7 @@ class LearnHaxe3{
         // (more on ranges later as well)
         var n = ['foo', 'bar', 'baz'];
         for (val in 0...n.length){
-            trace(val + " is the value for val (an index for m)");
+            trace(val + " is the value for val (an index for n)");
         }
 
 
@@ -363,12 +375,12 @@ class LearnHaxe3{
             case "rex"  : favorite_thing = "shoe";
             case "spot" : favorite_thing = "tennis ball";
             default     : favorite_thing = "some unknown treat";
-            // case _   : "some unknown treat"; // same as default
+            // case _   : favorite_thing = "some unknown treat"; // same as default
         }
         // The "_" case above is a "wildcard" value
         // that will match anything.
 
-        trace("My dog's name is" + my_dog_name
+        trace("My dog's name is " + my_dog_name
                 + ", and his favorite thing is a: "
                 + favorite_thing);
 
@@ -383,13 +395,9 @@ class LearnHaxe3{
         */
 
         // if statements
-        var k = if (true){
-            10;
-        } else {
-            20;
-        }
+        var k = if (true) 10 else 20;
 
-        trace("K equals ", k); // outputs 10
+        trace("k equals ", k); // outputs 10
 
         var other_favorite_thing = switch(my_dog_name) {
             case "fido" : "teddy";
@@ -398,7 +406,7 @@ class LearnHaxe3{
             default     : "some unknown treat";
         }
 
-        trace("My dog's name is" + my_dog_name
+        trace("My dog's name is " + my_dog_name
                 + ", and his other favorite thing is a: "
                 + other_favorite_thing);
 
@@ -458,7 +466,7 @@ class LearnHaxe3{
            The untyped keyword operates on entire *blocks* of code, skipping
            any type checks that might be otherwise required. This keyword should
            be used very sparingly, such as in limited conditionally-compiled
-           situations where type checking is a hinderance.
+           situations where type checking is a hindrance.
 
            In general, skipping type checks is *not* recommended.  Use the
            enum, inheritance, or structural type models in order to help ensure
@@ -487,8 +495,10 @@ class LearnHaxe3{
         // foo_instance.public_read = 4; // this will throw an error if uncommented:
         // trace(foo_instance.public_write); // as will this.
 
-        trace(foo_instance + " is the value for foo_instance"); // calls the toString method
-        trace(foo_instance.toString() + " is the value for foo_instance.toString()"); // same thing
+        // calls the toString method:
+        trace(foo_instance + " is the value for foo_instance");
+        // same thing:
+        trace(foo_instance.toString() + " is the value for foo_instance.toString()");
 
 
         /*
@@ -516,8 +526,8 @@ class LearnHaxe3{
  */
 class FooClass extends BarClass implements BarInterface{
     public var public_any:Int; // public variables are accessible anywhere
-    public var public_read (default,null): Int; // use this style to only enable public read
-    public var public_write (null, default): Int; // or public write
+    public var public_read (default, null): Int; // enable only public read
+    public var public_write (null, default): Int; // or only public write
     public var property (get, set): Int; // use this style to enable getters/setters
 
     // private variables are not available outside the class.
@@ -526,9 +536,10 @@ class FooClass extends BarClass implements BarInterface{
 
     // a public constructor
     public function new(arg:Int){
-        super(); // call the constructor of the parent object, since we extended BarClass
+        // call the constructor of the parent object, since we extended BarClass:
+        super();
 
-        this.public_any= 0;
+        this.public_any = 0;
         this._private = arg;
 
     }
@@ -628,6 +639,7 @@ enum ComplexEnum{
     ComplexEnumEnum(c:ComplexEnum);
 }
 // Note: The enum above can include *other* enums as well, including itself!
+// Note: This is what's called *Algebraic data type* in some other languages.
 
 class ComplexEnumTest{
     public static function example(){
@@ -758,8 +770,8 @@ class UsingExample {
 ```
 
 We're still only scratching the surface here of what Haxe can do.  For a formal
-overiew of all Haxe features, checkout the [online
-manual](http://haxe.org/manual), the [online api](http://api.haxe.org/), and
+overview of all Haxe features, checkout the [online
+manual](http://haxe.org/manual), the [online API](http://api.haxe.org/), and
 "haxelib", the [haxe library repo] (http://lib.haxe.org/).
 
 For more advanced topics, consider checking out:

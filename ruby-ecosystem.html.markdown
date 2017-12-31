@@ -42,7 +42,7 @@ The three major version of Ruby in use are:
 * 2.0.0 - Released in February 2013. Most major libraries and frameworks support
   2.0.0.
 * 1.9.3 - Released in October 2011. This is the version most rubyists use
-  currently.
+  currently. Also [retired](https://www.ruby-lang.org/en/news/2015/02/23/support-for-ruby-1-9-3-has-ended/)
 * 1.8.7 - Ruby 1.8.7 has been
   [retired](http://www.ruby-lang.org/en/news/2013/06/30/we-retire-1-8-7/).
 
@@ -54,7 +54,7 @@ the community has moved to at least 1.9.2 or 1.9.3.
 ## Ruby Implementations
 
 The Ruby ecosystem enjoys many different implementations of Ruby, each with
-unique strengths and states of compatability. To be clear, the different
+unique strengths and states of compatibility. To be clear, the different
 implementations are written in different languages, but *they are all Ruby*.
 Each implementation has special hooks and extra features, but they all run
 normal Ruby files well. For instance, JRuby is written in Java, but you do
@@ -88,7 +88,7 @@ implementation.
   to have stopped since Microsoft pulled their support.
 
 Ruby implementations may have their own release version numbers, but they always
-target a specific version of MRI for compatability. Many implementations have
+target a specific version of MRI for compatibility. Many implementations have
 the ability to enter different modes (for example, 1.8 or 1.9 mode) to specify
 which MRI version to target.
 

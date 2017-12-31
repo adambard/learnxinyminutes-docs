@@ -2,11 +2,14 @@
 name: perl
 category: language
 language: perl
-filename: learnperl.pl
+filename: learnperl-pl.pm
 contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]
+    - ["Dan Book", "http://github.com/Grinnz"]
+translators:
     - ["Michał Kupczyński", "http://github.com/ukoms"]
 lang: pl-pl
+
 ---
 
 Perl 5 jest wysoce użytecznym, bogatym w wiele opcji językiem programowania
@@ -163,7 +166,7 @@ z repozytorium CPAN do zrealizowania konkretnego zadania.
 
 #### Do doczytania
 
-    - [perl-tutorial](http://perl-tutorial.org/)
-    - [Naucz się Perla na www.perl.com](http://www.perl.org/learn.html)
-    - [perldoc](http://perldoc.perl.org/)
-    - wbudowane w Perla: `perldoc perlintro`
+ - [perl-tutorial](http://perl-tutorial.org/)
+ - [Naucz się Perla na www.perl.com](http://www.perl.org/learn.html)
+ - [perldoc](http://perldoc.perl.org/)
+ - wbudowane w Perla: `perldoc perlintro`

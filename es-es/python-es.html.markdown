@@ -4,12 +4,13 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
     - ["Camilo Garrido", "http://www.twitter.com/hirohope"]
+    - ["Fabio Souto", "http://fabiosouto.me"]
 lang: es-es
 filename: learnpython-es.py
 ---
 
-Python fue creado por Guido Van Rossum en el principio de los 90'. Ahora es uno
-de los lenguajes más populares en existencia. Me enamoré de Python por su claridad sintáctica.
+Python fue creado por Guido Van Rossum en el principio de los 90. Ahora es uno
+de los lenguajes más populares que existen. Me enamoré de Python por su claridad sintáctica.
 Es básicamente pseudocódigo ejecutable.
 
 ¡Comentarios serán muy apreciados! Pueden contactarme en [@louiedinh](http://twitter.com/louiedinh) o louiedinh [at] [servicio de email de google]
@@ -18,8 +19,8 @@ Nota: Este artículo aplica a Python 2.7 específicamente, pero debería ser apl
 
 ```python
 # Comentarios de una línea comienzan con una almohadilla (o signo gato)
-""" Strings multilinea pueden escribirse
-    usando tres "'s, y comunmente son usados
+""" Strings multilínea pueden escribirse
+    usando tres "'s, y comúnmente son usados
     como comentarios.
 """
 
@@ -30,27 +31,47 @@ Nota: Este artículo aplica a Python 2.7 específicamente, pero debería ser apl
 # Tienes números
 3 #=> 3
 
-# Matemática es lo que esperarías
-1 + 1 #=> 2
-8 - 1 #=> 7
-10 * 2 #=> 20
-35 / 5 #=> 7
+# Evidentemente puedes realizar operaciones matemáticas
+1 + 1  #=> 2
+8 - 1  #=> 7
+10 * 2  #=> 20
+35 / 5  #=> 7
 
 # La división es un poco complicada. Es división entera y toma la parte entera
 # de los resultados automáticamente.
-5 / 2 #=> 2
+5 / 2  #=> 2
 
 # Para arreglar la división necesitamos aprender sobre 'floats'
 # (números de coma flotante).
 2.0     # Esto es un 'float'
-11.0 / 4.0 #=> 2.75 ahhh...mucho mejor
+11.0 / 4.0  #=> 2.75 ahhh...mucho mejor
+
+# Resultado de la división de enteros truncada para positivos y negativos
+5 // 3     # => 1
+5.0 // 3.0 # => 1.0 # funciona con números de coma flotante
+-5 // 3  # => -2
+-5.0 // 3.0 # => -2.0
+
+# El operador módulo devuelve el resto de una división entre enteros
+7 % 3 # => 1
+
+# Exponenciación (x elevado a y)
+2**4 # => 16
 
 # Refuerza la precedencia con paréntesis
-(1 + 3) * 2 #=> 8
+(1 + 3) * 2  #=> 8
 
-# Valores 'boolean' (booleanos) son primitivos
-True
-False
+# Operadores booleanos
+# Nota: "and" y "or" son sensibles a mayúsculas
+True and False #=> False
+False or True #=> True
+
+# Podemos usar operadores booleanos con números enteros
+0 and 2 #=> 0
+-5 or 0 #=> -5
+0 == False #=> True
+2 == True #=> False
+1 == True #=> True
 
 # Niega con 'not'
 not True #=> False
@@ -90,7 +111,7 @@ not False #=> True
 # Una forma más reciente de formatear strings es el método 'format'.
 # Este método es la forma preferida
 "{0} pueden ser {1}".format("strings", "formateados")
-# Puedes usar palabras claves si no quieres contar.
+# Puedes usar palabras clave si no quieres contar.
 "{nombre} quiere comer {comida}".format(nombre="Bob", comida="lasaña")
 
 # None es un objeto
@@ -107,8 +128,8 @@ None is None  #=> True
 
 # None, 0, y strings/listas vacíos(as) todas se evalúan como False.
 # Todos los otros valores son True
-0 == False  #=> True
-"" == False #=> True
+bool(0) #=> False
+bool("") #=> False
 
 
 ####################################################
@@ -130,16 +151,16 @@ otra_variable  # Levanta un error de nombre
 # 'if' puede ser usado como una expresión
 "yahoo!" if 3 > 2 else 2 #=> "yahoo!"
 
-# Listas almacenan secuencias
+# Las listas almacenan secuencias
 lista = []
 # Puedes empezar con una lista prellenada
 otra_lista = [4, 5, 6]
 
 # Añadir cosas al final de una lista con 'append'
-lista.append(1)    #lista ahora es [1]
-lista.append(2)    #lista ahora es [1, 2]
-lista.append(4)    #lista ahora es [1, 2, 4]
-lista.append(3)    #lista ahora es [1, 2, 4, 3]
+lista.append(1)    # lista ahora es [1]
+lista.append(2)    # lista ahora es [1, 2]
+lista.append(4)    # lista ahora es [1, 2, 4]
+lista.append(3)    # lista ahora es [1, 2, 4, 3]
 # Remueve del final de la lista con 'pop'
 lista.pop()        #=> 3 y lista ahora es [1, 2, 4]
 # Pongámoslo de vuelta
@@ -173,11 +194,11 @@ lista.extend(otra_lista) # lista ahora es [1, 2, 3, 4, 5, 6]
 # Chequea la existencia en una lista con
 1 in lista #=> True
 
-# Examina el largo de una lista con 'len'
+# Examina el tamaño de una lista con 'len'
 len(lista) #=> 6
 
 
-# Tuplas son como listas pero son inmutables.
+# Las tuplas son como las listas, pero son inmutables.
 tupla = (1, 2, 3)
 tupla[0] #=> 1
 tupla[0] = 3  # Levanta un error TypeError
@@ -266,7 +287,7 @@ conjunto_lleno | otro_conjunto #=> {1, 2, 3, 4, 5, 6}
 # Hagamos sólo una variable
 una_variable = 5
 
-# Aquí está una declaración de un 'if'. ¡La indentación es significativa en Python!
+# Aquí está una declaración de un 'if'. ¡La indentación es importante en Python!
 # imprime "una_variable es menor que 10"
 if una_variable > 10:
     print "una_variable es completamente mas grande que 10."
@@ -400,12 +421,12 @@ class Humano(object):
     # Un atributo de clase es compartido por todas las instancias de esta clase
     especie = "H. sapiens"
 
-    # Constructor basico
+    # Constructor básico, se llama al instanciar la clase.
     def __init__(self, nombre):
         # Asigna el argumento al atributo nombre de la instancia
         self.nombre = nombre
 
-    # Un metodo de instancia. Todos los metodos toman self como primer argumento
+    # Un método de instancia. Todos los metodos toman self como primer argumento
     def decir(self, msg):
        return "%s: %s" % (self.nombre, msg)
 
@@ -415,7 +436,7 @@ class Humano(object):
     def get_especie(cls):
         return cls.especie
 
-    # Un metodo estatico es llamado sin la clase o instancia como referencia
+    # Un metodo estático es llamado sin la clase o instancia como referencia
     @staticmethod
     def roncar():
         return "*roncar*"
@@ -470,6 +491,56 @@ import math
 dir(math)
 
 
+####################################################
+## 7. Avanzado
+####################################################
+
+# Los generadores permiten evaluación perezosa
+def duplicar_numeros(iterable):
+    for i in iterable:
+        yield i + i
+
+# Un generador crea valores sobre la marcha
+# En vez de generar y devolver todos los valores de una vez, crea un valor
+# en cada iteración. En este ejemplo los valores mayores que 15 no serán 
+# procesados en duplicar_numeros.
+# Nota: xrange es un generador que hace lo mismo que range.
+# Crear una lista de 1 a 900000000 lleva mucho tiempo y ocupa mucho espacio.
+# xrange crea un generador, mientras que range crea toda la lista.
+# Añadimos un guión bajo a los nombres de variable que coinciden con palabras
+# reservadas de python.
+xrange_ = xrange(1, 900000000)
+
+# duplica todos los números hasta que encuentra un resultado >= 30
+for i in duplicar_numeros(xrange_):
+    print i
+    if i >= 30:
+        break
+
+# Decoradores
+# en este ejemplo pedir rodea a hablar
+# Si por_favor es True se cambiará el mensaje.
+from functools import wraps
+
+
+def pedir(target_function):
+    @wraps(target_function)
+    def wrapper(*args, **kwargs):
+        msg, por_favor = target_function(*args, **kwargs)
+        if por_favor:
+            return "{} {}".format(msg, "¡Por favor! Soy pobre :(")
+        return msg
+
+    return wrapper
+
+
+@pedir
+def hablar(por_favor=False):
+    msg = "¿Me puedes comprar una cerveza?"
+    return msg, por_favor
+
+print hablar()  # ¿Me puedes comprar una cerveza?
+print hablar(por_favor=True)  # ¿Me puedes comprar una cerveza? ¡Por favor! Soy pobre :(
 ```
 
 ## ¿Listo para más?
@@ -481,6 +552,7 @@ dir(math)
 * [The Official Docs](http://docs.python.org/2.6/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
 * [Python Module of the Week](http://pymotw.com/2/)
+* [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 
 ### Encuadernados
 

@@ -1,14 +1,13 @@
 ---
 language: elisp
 contributors:
-    - ["Bastien Guerry", "http://bzg.fr"]
+    - ["Bastien Guerry", "https://bzg.fr"]
+    - ["Saurabh Sandav", "http://github.com/SaurabhSandav"]
 filename: learn-emacs-lisp.el
 ---
 
 ```scheme
 ;; This gives an introduction to Emacs Lisp in 15 minutes (v0.2d)
-;;
-;; Author: Bastien / @bzg2 / http://bzg.fr
 ;;
 ;; First make sure you read this text by Peter Norvig:
 ;; http://norvig.com/21-days.html
@@ -26,10 +25,10 @@ filename: learn-emacs-lisp.el
 ;;
 ;; Going through this tutorial won't damage your computer unless
 ;; you get so angry that you throw it on the floor.  In that case,
-;; I hereby decline any responsability.  Have fun!
+;; I hereby decline any responsibility.  Have fun!
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;; Fire up Emacs.
 ;;
 ;; Hit the `q' key to dismiss the welcome message.
@@ -42,9 +41,9 @@ filename: learn-emacs-lisp.el
 ;; The scratch buffer is the default buffer when opening Emacs.
 ;; You are never editing files: you are editing buffers that you
 ;; can save to a file.
-;; 
+;;
 ;; "Lisp interaction" refers to a set of commands available here.
-;; 
+;;
 ;; Emacs has a built-in set of commands available in every buffer,
 ;; and several subsets of commands available when you activate a
 ;; specific mode.  Here we use the `lisp-interaction-mode', which
@@ -109,7 +108,7 @@ filename: learn-emacs-lisp.el
 ;; The empty parentheses in the function's definition means that
 ;; it does not accept arguments.  But always using `my-name' is
 ;; boring, let's tell the function to accept one argument (here
-;; the argument is called "name"): 
+;; the argument is called "name"):
 
 (defun hello (name) (insert "Hello " name))
 ;; `C-xC-e' => hello
@@ -193,7 +192,7 @@ filename: learn-emacs-lisp.el
 ;; And evaluate it:
 (greeting "you")
 
-;; Some function are interactive:
+;; Some functions are interactive:
 (read-from-minibuffer "Enter your name: ")
 
 ;; Evaluating this function returns what you entered at the prompt.
@@ -224,6 +223,8 @@ filename: learn-emacs-lisp.el
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Let's store a list of names:
+;; If you want to create a literal list of data, use ' to stop it from
+;; being evaluated - literally, "quote" the data.
 (setq list-of-names '("Sarah" "Chloe" "Mathilde"))
 
 ;; Get the first element of this list with `car':
@@ -300,12 +301,12 @@ filename: learn-emacs-lisp.el
 
 (hello-to-bonjour)
 
-;; Let's colorize the names:
+;; Let's boldify the names:
 
 (defun boldify-names ()
     (switch-to-buffer-other-window "*test*")
     (goto-char (point-min))
-    (while (re-search-forward "Bonjour \\([^!]+\\)!" nil 't)
+    (while (re-search-forward "Bonjour \\(.+\\)!" nil 't)
       (add-text-properties (match-beginning 1)
                            (match-end 1)
                            (list 'face 'bold)))
@@ -318,7 +319,7 @@ filename: learn-emacs-lisp.el
 ;; The regular expression is "Bonjour \\(.+\\)!" and it reads:
 ;; the string "Bonjour ", and
 ;; a group of            | this is the \\( ... \\) construct
-;;   any character not ! | this is the [^!]
+;;   any character       | this is the .
 ;;   possibly repeated   | this is the +
 ;; and the "!" string.
 
@@ -341,13 +342,4 @@ filename: learn-emacs-lisp.el
 ;;
 ;; To read an online introduction to Emacs Lisp:
 ;; https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html
-
-;; Thanks to these people for their feedback and suggestions:
-;; - Wes Hardaker
-;; - notbob
-;; - Kevin Montuori
-;; - Arne Babenhauserheide
-;; - Alan Schmitt
-;; - LinXitoW
-;; - Aaron Meurer
 ```

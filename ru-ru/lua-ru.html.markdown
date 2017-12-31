@@ -1,5 +1,5 @@
 ---
-language: lua
+language: Lua
 filename: learnlua-ru.lua
 contributors:
     - ["Tyler Neylon", "http://tylerneylon.com/"]

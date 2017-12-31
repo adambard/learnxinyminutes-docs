@@ -175,7 +175,8 @@ nil                  ; for false - and the empty list
               :age 5))
 *rover* ; => #S(DOG :NAME "rover" :BREED "collie" :AGE 5)
 
-(dog-p *rover*) ; => t  ;; ewww)
+(dog-p *rover*) ; => true  #| -p signifies "predicate". It's used to
+                              check if *rover* is an instance of dog. |#
 (dog-name *rover*) ; => "rover"
 
 ;; Dog-p, make-dog, and dog-name are all created by defstruct!
@@ -260,7 +261,7 @@ nil                  ; for false - and the empty list
 
 (defparameter *adjvec* (make-array '(3) :initial-contents '(1 2 3)
       :adjustable t :fill-pointer t))
-      
+
 *adjvec* ; => #(1 2 3)
 
 ;; Adding new element:
@@ -338,7 +339,7 @@ nil                  ; for false - and the empty list
 
 ;; The () in the above is the list of arguments for the function
 (defun hello (name)
-   (format nil "Hello, ~a " name))
+   (format nil "Hello, ~a" name))
 
 (hello "Steve") ; => "Hello, Steve"
 
@@ -429,7 +430,7 @@ nil                  ; for false - and the empty list
 (defun walker (n)
   (if (zerop n)
       :walked
-      (walker (1- n))))
+      (walker (- n 1))))
 
 (walker 5) ; => :walked
 
@@ -573,13 +574,15 @@ nil                  ; for false - and the empty list
     "While `condition` is true, `body` is executed.
 
 `condition` is tested prior to each execution of `body`"
-    (let ((block-name (gensym)))
+    (let ((block-name (gensym)) (done (gensym)))
         `(tagbody
+           ,block-name
            (unless ,condition
-               (go ,block-name))
+               (go ,done))
            (progn
            ,@body)
-           ,block-name)))
+           (go ,block-name)
+           ,done)))
 
 ;; Let's look at the high-level version of this:
 
@@ -611,8 +614,15 @@ nil                  ; for false - and the empty list
 
 ## Further Reading
 
-[Keep moving on to the Practical Common Lisp book.](http://www.gigamonkeys.com/book/)
+*   [Keep moving on to the Practical Common Lisp book.](http://www.gigamonkeys.com/book/)
+*   [A Gentle Introduction to...](https://www.cs.cmu.edu/~dst/LispBook/book.pdf)
 
+
+## Extra Info
+
+*   [CLiki](http://www.cliki.net/)
+*   [common-lisp.net](https://common-lisp.net/)
+*   [Awesome Common Lisp](https://github.com/CodyReichert/awesome-cl)
 
 ## Credits.
 

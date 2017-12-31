@@ -3,14 +3,34 @@ language: Nim
 filename: learnNim.nim
 contributors:
     - ["Jason J. Ayala P.", "http://JasonAyala.com"]
+    - ["Dennis Felsing", "http://felsin9.de/nnis/"]
 ---
 
-Nim (formally Nimrod) is a statically typed, imperative programming language
+Nim (formerly Nimrod) is a statically typed, imperative programming language
 that gives the programmer power without compromises on runtime efficiency.
 
 Nim is efficient, expressive, and elegant.
 
-```ruby
+```nim
+# Single-line comments start with a #
+
+#[
+  Multi-line comments begin with a #[
+  ... and end with ]#
+
+They don't care about indentation
+
+  #[
+  and they can be nested
+  ]#
+
+]#
+
+discard """
+This can also work as a multiline comment.
+Or for unparsable, broken code
+"""
+
 var                     # Declare (and assign) variables,
   letter: char = 'n'    # with or without type annotations
   lang = "N" & "im"
@@ -34,10 +54,6 @@ when compileBadCode:            # `when` is a compile time `if`
 discard 1 > 2 # Note: The compiler will complain if the result of an expression
               # is unused. `discard` bypasses this.
 
-discard """
-This can work as a multiline comment.
-Or for unparsable, broken code
-"""
 
 #
 # Data Structures
@@ -60,6 +76,13 @@ var
 
 drinks = @["Water", "Juice", "Chocolate"] # @[V1,..,Vn] is the sequence literal
 
+drinks.add("Milk")
+
+if "Milk" in drinks:
+  echo "We have Milk and ", drinks.len - 1, " other drinks"
+
+let myDrink = drinks[2]
+
 #
 # Defining Types
 #
@@ -68,7 +91,7 @@ drinks = @["Water", "Juice", "Chocolate"] # @[V1,..,Vn] is the sequence literal
 # static typing powerful and useful.
 
 type
-  Name = string # A type alias gives you a new type that is interchangable
+  Name = string # A type alias gives you a new type that is interchangeable
   Age = int     # with the old type but is more descriptive.
   Person = tuple[name: Name, age: Age] # Define data structures too.
   AnotherSyntax = tuple
@@ -101,7 +124,7 @@ when compileBadCode:
 
 type
   Color = enum cRed, cBlue, cGreen
-  Direction = enum # Alternative formating
+  Direction = enum # Alternative formatting
     dNorth
     dWest
     dEast
@@ -147,7 +170,7 @@ var anotherArray = ["Default index", "starts at", "0"]
 
 # More data structures are available, including tables, sets, lists, queues,
 # and crit bit trees.
-# http://nimrod-lang.org/lib.html#collections-and-algorithms
+# http://nim-lang.org/docs/lib.html#collections-and-algorithms
 
 #
 # IO and Control Flow
@@ -166,7 +189,7 @@ else:
 
 # `while`, `if`, `continue`, `break`
 
-import strutils as str # http://nimrod-lang.org/strutils.html
+import strutils as str # http://nim-lang.org/docs/strutils.html
 echo "I'm thinking of a number between 41 and 43. Guess which!"
 let number: int = 42
 var
@@ -227,7 +250,7 @@ proc ask(question: string): Answer =
     else: echo("Please be clear: yes or no")
 
 proc addSugar(amount: int = 2) = # Default amount is 2, returns nothing
-  assert(amount > 0 or amount < 9000, "Crazy Sugar")
+  assert(amount > 0 and amount < 9000, "Crazy Sugar")
   for a in 1..amount:
     echo(a, " sugar...")
 
@@ -255,11 +278,11 @@ performance, and compile-time features.
 
 ## Further Reading
 
-* [Home Page](http://nimrod-lang.org)
-* [Download](http://nimrod-lang.org/download.html)
-* [Community](http://nimrod-lang.org/community.html)
-* [FAQ](http://nimrod-lang.org/question.html)
-* [Documentation](http://nimrod-lang.org/documentation.html)
-* [Manual](http://nimrod-lang.org/manual.html)
-* [Standard Libray](http://nimrod-lang.org/lib.html)
-* [Rosetta Code](http://rosettacode.org/wiki/Category:Nimrod)
+* [Home Page](http://nim-lang.org)
+* [Download](http://nim-lang.org/download.html)
+* [Community](http://nim-lang.org/community.html)
+* [FAQ](http://nim-lang.org/question.html)
+* [Documentation](http://nim-lang.org/documentation.html)
+* [Manual](http://nim-lang.org/docs/manual.html)
+* [Standard Library](http://nim-lang.org/docs/lib.html)
+* [Rosetta Code](http://rosettacode.org/wiki/Category:Nim)

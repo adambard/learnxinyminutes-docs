@@ -1,7 +1,7 @@
 ---
 language: Groovy
 category: language
-filename: learngroovy.groovy
+filename: learngroovy-pt.groovy
 contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
 translators:
@@ -9,7 +9,7 @@ translators:
 lang: pt-br
 ---
 
-Groovy - Uma linguagem dinâmica para a plataforma Java. [Leia mais aqui.](http://groovy.codehaus.org)
+Groovy - Uma linguagem dinâmica para a plataforma Java. [Leia mais aqui.](http://www.groovy-lang.org/)
 
 ```groovy
 
@@ -226,17 +226,19 @@ for (i in array) {
 
 //Itera sobre um mapa
 def map = ['name':'Roberto', 'framework':'Grails', 'language':'Groovy']
-x = 0
+x = ""
 for ( e in map ) {
     x += e.value
+    x += " "
 }
+assert x.equals("Roberto Grails Groovy ")
 
 /*
   Operadores
 
   Sobrecarregamento de Operadores para uma lsita dos operadores comuns que
   Grooby suporta:
-  http://groovy.codehaus.org/Operator+Overloading
+  http://www.groovy-lang.org/operators.html#Operator-Overloading
 
   Operadores Groovy úteis
 */
@@ -255,7 +257,7 @@ def nomeUsuario = usuario?.nomeUsuario
   Um closure, em Grooby, é como um "bloco de código" ou um ponteiro para método.
   É um pedação de código que é definido e executado em um momento posterior.
 
-  Mais informação em: http://groovy.codehaus.org/Closures+-+Formal+Definition
+  Mais informação em: http://www.groovy-lang.org/closures.html
 */
 //Exemplo:
 def clos = { println "Hello World!" }
@@ -413,11 +415,11 @@ assert soma(2,5) == 7
 
 ## Referências
 
-[Groovy documentation](http://groovy.codehaus.org/Documentation)
+[Groovy documentation](http://www.groovy-lang.org/documentation.html)
 
 [Groovy web console](http://groovyconsole.appspot.com/)
 
-Junte-se a um [grupo de usuários Groovy](http://groovy.codehaus.org/User+Groups)
+Junte-se a um [grupo de usuários Groovy](http://www.groovy-lang.org/usergroups.html)
 
 ## Livro
 

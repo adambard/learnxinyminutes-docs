@@ -42,7 +42,7 @@ public class LearnJava {
             " Double: " + 3.14 +
             " Boolean: " + true);
 
-        // Para imprimir sem inserir uma nova lina, use o System.out.print
+        // Para imprimir sem inserir uma nova linha, use o System.out.print
         System.out.print("Olá ");
         System.out.print("Mundo");
 
@@ -214,42 +214,42 @@ public class LearnJava {
             //Iteração feita 10 vezes, fooFor 0->9
         }
         System.out.println("Valor do fooFor: " + fooFor);
-        
-        // O Loop For Each 
+
+        // O Loop For Each
         // Itera automaticamente por um array ou lista de objetos.
         int[] fooList = {1,2,3,4,5,6,7,8,9};
         //estrutura do loop for each => for(<objeto> : <array_de_objeto>)
         //lê-se: para cada objeto no array
         //nota: o tipo do objeto deve ser o mesmo do array.
-        
+
         for( int bar : fooList ){
             //System.out.println(bar);
             //Itera 9 vezes e imprime 1-9 em novas linhas
         }
-        
+
         // Switch
         // Um switch funciona com os tipos de dados: byte, short, char e int
         // Ele também funciona com tipos enumerados (vistos em tipos Enum)
         // como também a classe String e algumas outras classes especiais
         // tipos primitivos: Character, Byte, Short e Integer
-        int mes = 3; 
-        String mesString; 
-        switch (mes){ 
+        int mes = 3;
+        String mesString;
+        switch (mes){
             case 1:
-                    mesString = "Janeiro"; 
+                    mesString = "Janeiro";
                     break;
             case 2:
-                    mesString = "Fevereiro"; 
+                    mesString = "Fevereiro";
                     break;
             case 3:
-                    mesString = "Março"; 
+                    mesString = "Março";
                     break;
             default:
-                    mesString = "Algum outro mês"; 
+                    mesString = "Algum outro mês";
                     break;
         }
         System.out.println("Resultado do Switch: " + mesString);
-        
+
         // Condição de forma abreviada.
         // Você pode usar o operador '?' para atribuições rápidas ou decisões lógicas.
         // Lê-se "Se (declaração) é verdadeira, use <primeiro valor>
@@ -287,9 +287,9 @@ public class LearnJava {
         // Classes e Métodos
         ///////////////////////////////////////
 
-        System.out.println("\n->Classes e Métodos"); 
+        System.out.println("\n->Classes e Métodos");
 
-        // (segue a definição da classe Bicicleta) 
+        // (segue a definição da classe Bicicleta)
 
         // Use o new para instanciar uma classe
         Bicicleta caloi = new Bicicleta(); // Objeto caloi criado.
@@ -318,9 +318,9 @@ class Bicicleta {
 
     // Atributos/Variáveis da classe Bicicleta.
     public int ritmo;          // Public: Pode ser acessada em qualquer lugar.
-    private int velocidade;    // Private: Apenas acessível a classe. 
+    private int velocidade;    // Private: Apenas acessível a classe.
     protected int catraca; // Protected: Acessível a classe e suas subclasses.
-    String nome;               // default: Apenas acessível ao pacote. 
+    String nome;               // default: Apenas acessível ao pacote.
 
     // Construtores são uma forma de criação de classes
     // Este é o construtor padrão.
@@ -388,7 +388,7 @@ class Bicicleta {
 // Velocipede é uma subclasse de bicicleta.
 class Velocipede extends Bicicleta {
     // (Velocípedes são bicicletas com rodas dianteiras grandes
-    // Elas não possuem catraca.) 
+    // Elas não possuem catraca.)
 
     public Velocipede(int ritmoInicial, int velocidadeInicial){
         // Chame o construtor do pai (construtor de Bicicleta) com o comando super.
@@ -405,6 +405,223 @@ class Velocipede extends Bicicleta {
 
 }
 
+// Interfaces
+// Sintaxe de declaração de Interface
+// <nível de acesso> interface <nome-da-interface> extends <super-interfaces> {
+// // Constantes
+// // Declarações de método
+//}
+
+// Exemplo - Comida:
+public interface Comestivel {
+    public void comer(); // Qualquer classe que implementa essa interface, deve
+                         // implementar este método.
+}
+
+public interface Digestivel {
+    public void digerir();
+    // Em Java 8, interfaces podem ter métodos default.
+    // public void digerir() {
+    //     System.out.println("digerindo ...");
+    // }
+}
+
+
+// Agora podemos criar uma classe que implementa ambas as interfaces.
+public class Fruta implements Comestivel, Digestivel {
+
+    @Override
+    public void comer() {
+        // ...
+    }
+
+    @Override
+    public void digerir() {
+        // ...
+    }
+}
+
+// Em Java, você pode estender somente uma classe, mas você pode implementar muitas
+// interfaces. Por exemplo:
+public class ClasseExemplo extends ExemploClassePai implements InterfaceUm,
+    InterfaceDois {
+
+    @Override
+    public void InterfaceUmMetodo() {
+    }
+
+    @Override
+    public void InterfaceDoisMetodo() {
+    }
+
+}
+
+// Classes abstratas
+
+// Sintaxe de declaração de classe abstrata
+// <Nível de acesso> abstract <nome-da-classe-abstrata> extends <estende super-abstratas-classes> {
+// // Constantes e variáveis
+// // Declarações de método
+//}
+
+// Marcar uma classe como abstrata significa que ela contém métodos abstratos que devem
+// ser definidos em uma classe filha. Semelhante às interfaces, classes abstratas não podem
+// ser instanciadas, ao invés disso devem ser estendidas e os métodos abstratos
+// definidos. Diferente de interfaces, classes abstratas podem conter uma mistura de
+// métodos concretos e abstratos. Métodos em uma interface não podem ter um corpo,
+// a menos que o método seja estático, e as variáveis sejam finais, por padrão, ao contrário de um
+// classe abstrata. Classes abstratas também PODEM ter o método "main".
+
+public abstract class Animal
+{
+    public abstract void fazerSom();
+
+    // Método pode ter um corpo
+    public void comer()
+    {
+        System.out.println("Eu sou um animal e estou comendo.");  
+        //Nota: Nós podemos acessar variáveis privadas aqui.
+        idade = 30;
+    }
+
+    // Não há necessidade de inicializar, no entanto, em uma interface
+    // a variável é implicitamente final e, portanto, tem
+    // de ser inicializada.
+    protected int idade;
+
+    public void mostrarIdade()
+    {
+        System.out.println(idade);  
+    }
+
+    //Classes abstratas podem ter o método main.
+    public static void main(String[] args)
+    {
+        System.out.println("Eu sou abstrata");
+    }
+}
+
+class Cachorro extends Animal
+{
+
+    // Nota: ainda precisamos substituir os métodos abstratos na
+    // classe abstrata.
+    @Override
+    public void fazerSom()
+    {
+        System.out.println("Bark");
+        // idade = 30;    ==> ERRO!  idade é privada de Animal
+    }
+
+    // NOTA: Você receberá um erro se usou a
+    // anotação Override aqui, uma vez que java não permite
+    // sobrescrita de métodos estáticos.
+    // O que está acontecendo aqui é chamado de "esconder o método".
+    // Vejá também este impressionante SO post: http://stackoverflow.com/questions/16313649/
+    public static void main(String[] args)
+    {
+        Cachorro pluto = new Cachorro();
+        pluto.fazerSom();
+        pluto.comer();
+        pluto.mostrarIdade();
+    }
+}
+
+// Classes Finais
+
+// Sintaxe de declaração de classe final
+// <nível de acesso> final <nome-da-classe-final> {
+// // Constantes e variáveis
+// // Declarações de método
+//}
+
+// Classes finais são classes que não podem ser herdadas e são, portanto, um
+// filho final. De certa forma, as classes finais são o oposto de classes abstratas,
+// porque classes abstratas devem ser estendidas, mas as classes finais não podem ser
+// estendidas.
+public final class TigreDenteDeSabre extends Animal
+{
+    // Nota: Ainda precisamos substituir os métodos abstratos na
+    // classe abstrata.
+    @Override
+    public void fazerSom();
+    {
+        System.out.println("Roar");
+    }
+}
+
+// Métodos Finais
+public abstract class Mamifero()
+{
+    // Sintaxe de Métodos Finais:
+    // <modificador-de-acesso> final <tipo-de-retorno> <nome-do-método>(<argumentos>)
+
+    // Métodos finais, como classes finais, não podem ser substituídos por uma classe filha,
+    // e são, portanto, a implementação final do método.
+    public final boolean EImpulsivo()
+    {
+        return true;
+    }
+}
+
+
+// Tipo Enum
+//
+// Um tipo enum é um tipo de dado especial que permite a uma variável ser um conjunto de constantes predefinidas. A 
+// variável deve ser igual a um dos valores que foram previamente definidos para ela.
+// Por serem constantes, os nomes dos campos de um tipo de enumeração estão em letras maiúsculas.
+// Na linguagem de programação Java, você define um tipo de enumeração usando a palavra-chave enum. Por exemplo, você poderia
+// especificar um tipo de enum dias-da-semana como:
+
+public enum Dia {
+    DOMINGO, SEGUNDA, TERÇA, QUARTA,
+    QUINTA, SEXTA, SABADO 
+}
+
+// Nós podemos usar nosso enum Dia assim:
+
+public class EnumTeste {
+
+    // Variável Enum
+    Dia dia;
+
+    public EnumTeste(Dia dia) {
+        this.dia = dia;
+    }
+
+    public void digaComoE() {
+        switch (dia) {
+            case SEGUNDA:
+                System.out.println("Segundas são ruins.");
+                break;
+
+            case SEXTA:
+                System.out.println("Sextas são melhores.");
+                break;
+
+            case SABADO: 
+            case DOMINGO:
+                System.out.println("Finais de semana são os melhores.");
+                break;
+
+            default:
+                System.out.println("Dias no meio da semana são mais ou menos.");
+                break;
+        }
+    }
+
+    public static void main(String[] args) {
+        EnumTeste primeiroDia = new EnumTeste(Dia.SEGUNDA);
+        primeiroDia.digaComoE(); // => Segundas-feiras são ruins.
+        EnumTeste terceiroDia = new EnumTeste(Dia.QUARTA);
+        terceiroDia.digaComoE(); // => Dias no meio da semana são mais ou menos.
+    }
+}
+
+// Tipos Enum são muito mais poderosos do que nós mostramos acima.
+// O corpo de um enum pode incluir métodos e outros campos.
+// Você pode ver mais em https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
+
 ```
 
 ## Leitura Recomendada
@@ -413,11 +630,11 @@ Os links fornecidos aqui abaixo são apenas para ter uma compreensão do tema, u
 
 Outros tópicos para pesquisar:
 
-* [Tutorial Java para Sun Trail / Oracle](http://docs.oracle.com/javase/tutorial/index.html) 
+* [Tutorial Java para Sun Trail / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
 
 * [Modificadores de acesso do Java](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
 
-* [Coceitos de Programação Orientada à Objetos](http://docs.oracle.com/javase/tutorial/java/concepts/index.html): 
+* [Coceitos de Programação Orientada à Objetos](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
     * [Herança](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
     * [Polimorfismo](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
     * [Abstração](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
@@ -433,3 +650,9 @@ Outros tópicos para pesquisar:
 Livros:
 
 * [Use a cabeça, Java] (http://www.headfirstlabs.com/books/hfjava/)
+
+Apostila:
+
+* [Java e Orientação a Objetos] (http://www.caelum.com.br/apostila-java-orientacao-objetos/)
+
+* [Java para Desenvolvimento Web] (https://www.caelum.com.br/apostila-java-web/)

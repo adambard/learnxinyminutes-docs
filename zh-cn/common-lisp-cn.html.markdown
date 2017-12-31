@@ -14,6 +14,8 @@ ANSI Common Lisp 是一个广泛通用于各个工业领域的、支持多种范
 
 免费的经典的入门书籍[《实用 Common Lisp 编程》](http://www.gigamonkeys.com/book/)
 
+许多人都抱怨上面这本书的翻译。[《ANSI Common Lisp》](http://acl.readthedocs.org/en/latest/)也许对中文读者更友好一些。
+
 另外还有一本热门的近期出版的
 [Land of Lisp](http://landoflisp.com/).
 
@@ -287,7 +289,7 @@ nil                  ; 逻辑假，或者空列表
 ;; （通过键）检索对应的值
 (gethash 'a *m*) ; => 1, t
 
-;; 注意此处有一细节：Common Lisp往往返回多个值。`gethash`返回的两个值是t，代表找到了这个元素；返回nil表示没有找到这个元素。
+;; 注意此处有一细节：Common Lisp往往返回多个值。`gethash`返回的第二个值是t，代表找到了这个元素；返回nil表示没有找到这个元素。
 ;;（译者注：返回的第一个值表示给定的键所对应的值或者nil；）
 ;;（第二个是一个布尔值，表示在哈希表中是否存在这个给定的键）
 ;; 例如，如果可以找到给定的键所对应的值，则返回一个t，否则返回nil

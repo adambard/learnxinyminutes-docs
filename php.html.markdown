@@ -12,7 +12,7 @@ This document describes PHP 5+.
 <?php // PHP code must be enclosed with <?php tags
 
 // If your php file only contains PHP code, it is best practice
-// to omit the php closing tag.
+// to omit the php closing tag to prevent accidental output.
 
 // Two forward slashes start a one-line comment.
 
@@ -53,6 +53,8 @@ $int1 = 12;   // => 12
 $int2 = -12;  // => -12
 $int3 = 012;  // => 10 (a leading 0 denotes an octal number)
 $int4 = 0x0F; // => 15 (a leading 0x denotes a hex literal)
+// Binary integer literals are available since PHP 5.4.0.
+$int5 = 0b11111111; // 255 (a leading 0b denotes a binary number)
 
 // Floats (aka doubles)
 $float = 1.234;
@@ -60,7 +62,7 @@ $float = 1.2e3;
 $float = 7E-10;
 
 // Delete variable
-unset($int1)
+unset($int1);
 
 // Arithmetic
 $sum        = 1 + 1; // 2
@@ -86,6 +88,8 @@ $escaped   = "This contains a \t tab character.";
 $unescaped = 'This just contains a slash and a t: \t';
 
 // Enclose a variable in curly braces if needed
+$apples = "I have {$number} apples to eat.";
+$oranges = "I have ${number} oranges to eat.";
 $money = "I have $${number} in the bank.";
 
 // Since PHP 5.3, nowdocs can be used for uninterpolated multi-liners
@@ -103,6 +107,9 @@ END;
 // String concatenation is done with .
 echo 'This string ' . 'is concatenated';
 
+// Strings can be passed in as parameters to echo
+echo 'Multiple', 'Parameters', 'Valid';  // Returns 'MultipleParametersValid'
+
 
 /********************************
  * Constants
@@ -113,19 +120,19 @@ echo 'This string ' . 'is concatenated';
 
 // a valid constant name starts with a letter or underscore,
 // followed by any number of letters, numbers, or underscores.
-define("FOO",     "something");
+define("FOO", "something");
 
-// access to a constant is possible by direct using the choosen name
-echo 'This outputs '.FOO;
+// access to a constant is possible by calling the chosen name without a $
+echo FOO; // Returns 'something'
+echo 'This outputs ' . FOO;  // Returns 'This outputs something'
+
 
 
 /********************************
  * Arrays
  */
 
-// All arrays in PHP are associative arrays (hashmaps),
-
-// Associative arrays, known as hashmaps in some languages.
+// All arrays in PHP are associative arrays (hashmaps in some languages)
 
 // Works with all PHP versions
 $associative = array('One' => 1, 'Two' => 2, 'Three' => 3);
@@ -135,12 +142,17 @@ $associative = ['One' => 1, 'Two' => 2, 'Three' => 3];
 
 echo $associative['One']; // prints 1
 
+// Add an element to an associative array
+$associative['Four'] = 4;
+
 // List literals implicitly assign integer keys
 $array = ['One', 'Two', 'Three'];
 echo $array[0]; // => "One"
 
 // Add an element to the end of an array
 $array[] = 'Four';
+// or
+array_push($array, 'Five');
 
 // Remove element from array
 unset($array[3]);
@@ -155,9 +167,9 @@ echo('Hello World!');
 
 print('Hello World!'); // The same as echo
 
-// echo is actually a language construct, so you can drop the parentheses.
+// echo and print are language constructs too, so you can drop the parentheses
 echo 'Hello World!';
-print 'Hello World!'; // So is print
+print 'Hello World!';
 
 $paragraph = 'paragraph';
 
@@ -215,6 +227,18 @@ assert($a !== $d);
 assert(1 === '1');
 assert(1 !== '1');
 
+// 'Spaceship' operator (since PHP 7)
+// Returns 0 if values on either side are equal
+// Returns 1 if value on the left is greater
+// Returns -1 if the value on the right is greater
+
+$a = 100;
+$b = 1000;
+
+echo $a <=> $a; // 0 since they are equal
+echo $a <=> $b; // -1 since $a < $b
+echo $b <=> $a; // 1 since $b > $a
+
 // Variables can be converted between types, depending on their usage.
 
 $integer = 1;
@@ -257,17 +281,29 @@ if (false) {
 
 if (false) {
     print 'Does not get printed';
-} elseif(true) {
+} elseif (true) {
     print 'Does';
 }
 
 // ternary operator
 print (false ? 'Does not get printed' : 'Does');
 
+// ternary shortcut operator since PHP 5.3
+// equivalent of "$x ? $x : 'Does'""
+$x = false;
+print($x ?: 'Does');
+
+// null coalesce operator since php 7
+$a = null;
+$b = 'Does print';
+echo $a ?? 'a is not set'; // prints 'a is not set'
+echo $b ?? 'b is not set'; // prints 'Does print'
+
+
 $x = 0;
 if ($x === '0') {
     print 'Does not print';
-} elseif($x == '1') {
+} elseif ($x == '1') {
     print 'Does not print';
 } else {
     print 'Does print';
@@ -304,7 +340,7 @@ switch ($x) {
 $i = 0;
 while ($i < 5) {
     echo $i++;
-}; // Prints "01234"
+} // Prints "01234"
 
 echo "\n";
 
@@ -359,7 +395,7 @@ for ($i = 0; $i < 5; $i++) {
 
 // Define a function with "function":
 function my_function () {
-  return 'Hello';
+    return 'Hello';
 }
 
 echo my_function(); // => "Hello"
@@ -368,8 +404,8 @@ echo my_function(); // => "Hello"
 // number of letters, numbers, or underscores.
 
 function add ($x, $y = 1) { // $y is optional and defaults to 1
-  $result = $x + $y;
-  return $result;
+    $result = $x + $y;
+    return $result;
 }
 
 echo add(4); // => 5
@@ -380,21 +416,21 @@ echo add(4, 2); // => 6
 
 // Since PHP 5.3 you can declare anonymous functions;
 $inc = function ($x) {
-  return $x + 1;
+    return $x + 1;
 };
 
 echo $inc(2); // => 3
 
 function foo ($x, $y, $z) {
-  echo "$x - $y - $z";
+    echo "$x - $y - $z";
 }
 
 // Functions can return functions
 function bar ($x, $y) {
-  // Use 'use' to bring in outside variables
-  return function ($z) use ($x, $y) {
-    foo($x, $y, $z);
-  };
+    // Use 'use' to bring in outside variables
+    return function ($z) use ($x, $y) {
+        foo($x, $y, $z);
+    };
 }
 
 $bar = bar('A', 'B');
@@ -405,6 +441,31 @@ $function_name = 'add';
 echo $function_name(1, 2); // => 3
 // Useful for programatically determining which function to run.
 // Or, use call_user_func(callable $callback [, $parameter [, ... ]]);
+
+
+// You can get the all the parameters passed to a function
+function parameters() {
+    $numargs = func_num_args();
+    if ($numargs > 0) {
+        echo func_get_arg(0) . ' | ';
+    }
+    $args_array = func_get_args();
+    foreach ($args_array as $key => $arg) {
+        echo $key . ' - ' . $arg . ' | ';
+    }
+}
+
+parameters('Hello', 'World'); // Hello | 0 - Hello | 1 - World |
+
+// Since PHP 5.6 you can get a variable number of arguments
+function variable($word, ...$list) {
+	echo $word . " || ";
+	foreach ($list as $item) {
+		echo $item . ' | ';
+	}
+}
+
+variable("Separate", "Hello", "World"); // Separate || Hello | World |
 
 /********************************
  * Includes
@@ -467,7 +528,8 @@ class MyClass
     private $priv   = 'private';   // Accessible within the class only
 
     // Create a constructor with __construct
-    public function __construct($instanceProp) {
+    public function __construct($instanceProp)
+    {
         // Access instance variables with $this
         $this->instanceProp = $instanceProp;
     }
@@ -478,16 +540,31 @@ class MyClass
         print 'MyClass';
     }
 
-    //final keyword would make a function unoverridable
+    // final keyword would make a function unoverridable
     final function youCannotOverrideMe()
     {
+    }
+
+    // Magic Methods
+
+    // what to do if Object is treated as a String
+    public function __toString()
+    {
+        return $property;
+    }
+
+    // opposite to __construct()
+    // called when object is no longer referenced
+    public function __destruct()
+    {
+        print "Destroying";
     }
 
 /*
  * Declaring class properties or methods as static makes them accessible without
  * needing an instantiation of the class. A property declared as static can not
  * be accessed with an instantiated class object (though a static method can).
-*/
+ */
 
     public static function myStaticMethod()
     {
@@ -495,7 +572,9 @@ class MyClass
     }
 }
 
+// Class constants can always be accessed statically
 echo MyClass::MY_CONST;    // Outputs 'value';
+
 echo MyClass::$staticVar;  // Outputs 'static';
 MyClass::myStaticMethod(); // Outputs 'I am static';
 
@@ -671,7 +750,116 @@ use My\Namespace as SomeOtherNamespace;
 
 $cls = new SomeOtherNamespace\MyClass();
 
+
+/**********************
+* Late Static Binding
+*
 */
+
+class ParentClass
+{
+    public static function who()
+    {
+        echo "I'm a " . __CLASS__ . "\n";
+    }
+
+    public static function test()
+    {
+        // self references the class the method is defined within
+        self::who();
+        // static references the class the method was invoked on
+        static::who();
+    }
+}
+
+ParentClass::test();
+/*
+I'm a ParentClass
+I'm a ParentClass
+*/
+
+class ChildClass extends ParentClass
+{
+    public static function who()
+    {
+        echo "But I'm " . __CLASS__ . "\n";
+    }
+}
+
+ChildClass::test();
+/*
+I'm a ParentClass
+But I'm ChildClass
+*/
+
+/**********************
+*  Magic constants
+*  
+*/
+
+// Get current class name. Must be used inside a class declaration.
+echo "Current class name is " . __CLASS__;
+
+// Get full path directory of a file
+echo "Current directory is " . __DIR__;
+
+    // Typical usage
+    require __DIR__ . '/vendor/autoload.php';
+
+// Get full path of a file
+echo "Current file path is " . __FILE__;
+
+// Get current function name
+echo "Current function name is " . __FUNCTION__;
+
+// Get current line number
+echo "Current line number is " . __LINE__;
+
+// Get the name of the current method. Only returns a value when used inside a trait or object declaration.
+echo "Current method is " . __METHOD__;
+
+// Get the name of the current namespace
+echo "Current namespace is " . __NAMESPACE__;
+
+// Get the name of the current trait. Only returns a value when used inside a trait or object declaration.
+echo "Current trait is " . __TRAIT__;
+
+/**********************
+*  Error Handling
+*  
+*/
+
+// Simple error handling can be done with try catch block
+
+try {
+    // Do something
+} catch (Exception $e) {
+    // Handle exception
+}
+
+// When using try catch blocks in a namespaced environment use the following
+
+try {
+    // Do something
+} catch (\Exception $e) {
+    // Handle exception
+}
+
+// Custom exceptions
+
+class MyException extends Exception {}
+
+try {
+
+    $condition = true;
+
+    if ($condition) {
+        throw new MyException('Something just happened');
+    }
+
+} catch (MyException $e) {
+    // Handle my exception
+}
 
 ```
 

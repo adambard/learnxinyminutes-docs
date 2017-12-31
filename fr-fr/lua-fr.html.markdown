@@ -434,9 +434,9 @@ les librairies standard:
 
 Autres références complémentaires:
 
-* <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">Lua for programmers</a>
-* <a href="lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">Courte de référence de Lua</a>
-* <a href="http://www.lua.org/pil/contents.html">Programming In Lua</a>
+* <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">Lua pour programmeurs</a>
+* <a href="lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">Référence condensée de Lua</a>
+* <a href="http://www.lua.org/pil/contents.html">Programmer en Lua</a>
 * <a href="http://www.lua.org/manual/">Les manuels de référence Lua</a>
 
 A propos, ce fichier est exécutable. Sauvegardez-le sous le nom *learn.lua* et

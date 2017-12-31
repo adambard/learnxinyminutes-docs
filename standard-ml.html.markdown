@@ -1,15 +1,18 @@
 ---
 language: "Standard ML"
+filename: standardml.sml
 contributors:
     - ["Simon Shine", "http://shine.eu.org/"]
     - ["David Pedersen", "http://lonelyproton.com/"]
+    - ["James Baker", "http://www.jbaker.io/"]
+    - ["Leo Zovic", "http://langnostic.inaimathi.ca/"]
 ---
 
 Standard ML is a functional programming language with type inference and some
 side-effects.  Some of the hard parts of learning Standard ML are: Recursion,
 pattern matching, type inference (guessing the right types but never allowing
-implicit type conversion).  If you have an imperative background, not being able
-to update variables can feel severely inhibiting.
+implicit type conversion). Standard ML is distinguished from Haskell by including
+references, allowing variables to be updated.
 
 ```ocaml
 (* Comments in Standard ML begin with (* and end with *).  Comments can be
@@ -22,6 +25,12 @@ val phone_no = 5551337
 val pi = 3.14159
 val negative_number = ~15  (* Yeah, unary minus uses the 'tilde' symbol *)
 
+(* Optionally, you can explicitly declare types. This is not necessary as
+   ML will automatically figure out the types of your values. *)
+val diameter = 7926 : int
+val e = 2.718 : real
+val name = "Bobby" : string
+
 (* And just as importantly, functions: *)
 fun is_large(x : int) = if x > 37 then true else false
 
@@ -29,6 +38,8 @@ fun is_large(x : int) = if x > 37 then true else false
 val tau = 2.0 * pi         (* You can multiply two reals *)
 val twice_rent = 2 * rent  (* You can multiply two ints *)
 (* val meh = 1.25 * 10 *)  (* But you can't multiply an int and a real *)
+val yeh = 1.25 * (Real.fromInt 10) (* ...unless you explicitly convert
+                                      one or the other *)
 
 (* +, - and * are overloaded so they work for both int and real. *)
 (* The same cannot be said for division which has separate operators: *)
@@ -135,8 +146,28 @@ val mixup = [ ("Alice", 39),
 
 val good_bad_stuff =
   (["ice cream", "hot dogs", "chocolate"],
-   ["liver", "paying the rent" ])           (* string list * string list *)
+   ["liver", "paying the rent" ])           (* : string list * string list *)
 
+
+(* Records are tuples with named slots *)
+
+val rgb = { r=0.23, g=0.56, b=0.91 } (* : {b:real, g:real, r:real} *)
+
+(* You don't need to declare their slots ahead of time. Records with
+   different slot names are considered different types, even if their
+   slot value types match up. For instance... *)
+
+val Hsl = { H=310.3, s=0.51, l=0.23 } (* : {H:real, l:real, s:real} *)
+val Hsv = { H=310.3, s=0.51, v=0.23 } (* : {H:real, s:real, v:real} *)
+
+(* ...trying to evaluate `Hsv = Hsl` or `rgb = Hsl` would give a type
+   error. While they're all three-slot records composed only of `real`s,
+   they each have different names for at least some slots. *)
+
+(* You can use hash notation to get values out of tuples. *)
+
+val H = #H Hsv (* : real *)
+val s = #s Hsl (* : real *)
 
 (* Functions! *)
 fun add_them (a, b) = a + b    (* A simple function that adds two numbers *)
@@ -205,17 +236,18 @@ val hmm = answer "What is the meaning of life, the universe and everything?"
 
 (* Functions can take several arguments by taking one tuples as argument: *)
 fun solve2 (a : real, b : real, c : real) =
-    ( (~b + Math.sqrt(b * b - 4.0*a*c)) / (2.0 * a),
-      (~b - Math.sqrt(b * b - 4.0*a*c)) / (2.0 * a) )
+    ((~b + Math.sqrt(b * b - 4.0 * a * c)) / (2.0 * a),
+     (~b - Math.sqrt(b * b - 4.0 * a * c)) / (2.0 * a))
 
 (* Sometimes, the same computation is carried out several times. It makes sense
    to save and re-use the result the first time. We can use "let-bindings": *)
 fun solve2 (a : real, b : real, c : real) =
-    let val discr  = b * b - 4.0*a*c
+    let val discr  = b * b - 4.0 * a * c
         val sqr = Math.sqrt discr
         val denom = 2.0 * a
     in ((~b + sqr) / denom,
-        (~b - sqr) / denom) end
+        (~b - sqr) / denom)
+    end
 
 
 (* Pattern matching is a funky part of functional programming.  It is an
@@ -224,17 +256,26 @@ fun fibonacci 0 = 0  (* Base case *)
   | fibonacci 1 = 1  (* Base case *)
   | fibonacci n = fibonacci (n - 1) + fibonacci (n - 2)  (* Recursive case *)
 
-(* Pattern matching is also possible on composite types like tuples and lists.
-   Writing "fun solve2 (a, b, c) = ..." is in fact a pattern match on the one
-   three-tuple solve2 takes as argument. Similarly, but less intuitively, you
-   can match on a list consisting of elements in it (from the beginning of the
-   list only). *)
+(* Pattern matching is also possible on composite types like tuples, lists and
+   records. Writing "fun solve2 (a, b, c) = ..." is in fact a pattern match on
+   the one three-tuple solve2 takes as argument. Similarly, but less intuitively,
+   you can match on a list consisting of elements in it (from the beginning of
+   the list only). *)
 fun first_elem (x::xs) = x
 fun second_elem (x::y::xs) = y
 fun evenly_positioned_elems (odd::even::xs) = even::evenly_positioned_elems xs
   | evenly_positioned_elems [odd] = []  (* Base case: throw away *)
   | evenly_positioned_elems []    = []  (* Base case *)
 
+(* When matching on records, you must use their slot names, and you must bind
+   every slot in a record. The order of the slots doesn't matter though. *)
+
+fun rgbToTup {r, g, b} = (r, g, b)    (* fn : {b:'a, g:'b, r:'c} -> 'c * 'b * 'a *)
+fun mixRgbToTup {g, b, r} = (r, g, b) (* fn : {b:'a, g:'b, r:'c} -> 'c * 'b * 'a *)
+
+(* If called with {r=0.1, g=0.2, b=0.3}, either of the above functions
+   would return (0.1, 0.2, 0.3). But it would be a type error to call them
+   with {r=0.1, g=0.2, b=0.3, a=0.4} *)
 
 (* Higher order functions: Functions can take other functions as arguments.
    Functions are just other kinds of values, and functions don't need names
@@ -253,6 +294,9 @@ val thermometer =
 val some_result = (fn x => thermometer (x - 5) ^ thermometer (x + 5)) 37
 
 (* Here is a higher-order function that works on lists (a list combinator) *)
+(* map f l
+       applies f to each element of l from left to right, 
+       returning the list of results. *)
 val readings = [ 34, 39, 37, 38, 35, 36, 37, 37, 37 ]  (* first an int list *)
 val opinions = List.map thermometer readings (* gives [ "Cold", "Warm", ... ] *)
 
@@ -285,7 +329,11 @@ val n = op + (5, 5)   (* n is now 10 *)
 (* 'op' is useful when combined with high order functions because they expect
    functions and not operators as arguments. Most operators are really just
    infix functions. *)
-val sum_of_numbers = foldl op+ 0 [1,2,3,4,5]
+(* foldl f init [x1, x2, ..., xn]
+       returns
+       f(xn, ...f(x2, f(x1, init))...)
+       or init if the list is empty. *)
+val sum_of_numbers = foldl op+ 0 [1, 2, 3, 4, 5]
 
 
 (* Datatypes are useful for creating both simple and complex structures *)
@@ -304,7 +352,10 @@ val _ = print (say(Red) ^ "\n")
 fun say Red   = "You are red!"
   | say Green = "You are green!"
   | say Blue  = "You are blue!"
-  | say _     = raise Fail "Unknown color"
+
+(* We did not include the match arm `say _ = raise Fail "Unknown color"`
+because after specifying all three colors, the pattern is exhaustive
+and redundancy is not permitted in pattern matching *)
 
 
 (* Here is a binary tree datatype *)
@@ -338,7 +389,7 @@ fun calculate_interest(n) = if n < 0.0
 
 (* Exceptions can be caught using "handle" *)
 val balance = calculate_interest ~180.0
-              handle Domain => ~180.0    (* x now has the value ~180.0 *)
+              handle Domain => ~180.0    (* balance now has the value ~180.0 *)
 
 (* Some exceptions carry extra information with them *)
 (* Here are some examples of built-in exceptions *)
@@ -348,7 +399,7 @@ fun failing_function []    = raise Empty  (* used for empty lists *)
   | failing_function xs    = raise Fail "This list is too long!"
 
 (* We can pattern match in 'handle' to make sure
-   a specfic exception was raised, or grab the message *)
+   a specific exception was raised, or grab the message *)
 val err_msg = failing_function [1,2] handle Fail _ => "Fail was raised"
                                           | Domain => "Domain was raised"
                                           | Empty  => "Empty was raised"
@@ -368,7 +419,8 @@ fun writePoem(filename) =
     let val file = TextIO.openOut(filename)
         val _ = TextIO.output(file, "Roses are red,\nViolets are blue.\n")
         val _ = TextIO.output(file, "I have a gun.\nGet in the van.\n")
-    in TextIO.closeOut(file) end
+    in TextIO.closeOut(file)
+    end
 
 (* Read a nice poem from a file into a list of strings *)
 fun readPoem(filename) =
@@ -383,6 +435,25 @@ val test_poem = readPoem "roses.txt"  (* gives [ "Roses are red,",
                                                  "Violets are blue.",
                                                  "I have a gun.",
                                                  "Get in the van." ] *)
+
+(* We can create references to data which can be updated *)
+val counter = ref 0 (* Produce a reference with the ref function *)
+
+(* Assign to a reference with the assignment operator *)
+fun set_five reference = reference := 5
+
+(* Read a reference with the dereference operator *)
+fun equals_five reference = !reference = 5
+
+(* We can use while loops for when recursion is messy *)
+fun decrement_to_zero r = if !r < 0
+                          then r := 0
+                          else while !r >= 0 do r := !r - 1
+
+(* This returns the unit value (in practical terms, nothing, a 0-tuple) *)
+
+(* To allow returning a value, we can use the semicolon to sequence evaluations *)
+fun decrement_ret x y = (x := !x - 1; y)
 ```
 
 ## Further learning
@@ -392,5 +463,5 @@ val test_poem = readPoem "roses.txt"  (* gives [ "Roses are red,",
   [Moscow ML](http://mosml.org),
   [SML/NJ](http://smlnj.org/).
 * Follow the Coursera course [Programming Languages](https://www.coursera.org/course/proglang).
-* Get the book *ML for the Working Programmer* by Larry C. Paulson.
+* Read *[ML for the Working Programmer](https://www.cl.cam.ac.uk/~lp15/MLbook/pub-details.html)* by Larry C. Paulson.
 * Use [StackOverflow's sml tag](http://stackoverflow.com/questions/tagged/sml).

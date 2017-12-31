@@ -11,7 +11,7 @@ lang: es-es
 Markdown fue creado por John Gruber en 2004. Su propósito es ser una sintaxis fácil de leer y escribir que se convierta
 fácilmente a HTML (y, actualmente, otros formatos también).
 
-¡Denme todo la retroalimentación que quieran! / ¡Sientanse en la libertad de hacer forks o pull requests!
+¡Denme toda la retroalimentación que quieran! / ¡Sientanse en la libertad de hacer forks o pull requests!
 
 
 ```markdown
@@ -44,7 +44,7 @@ Esto es un h2
 -------------
 
 <!-- Estilos para texto plano -->
-<!-- El texto puede ser fácilmente estilizaedo con italicas, negritas o tachado 
+<!-- El texto puede ser fácilmente estilizado con italicas, negritas o tachado 
 usando markdown -->
 
 *Este texto está en itálicas.*
@@ -57,12 +57,12 @@ __Al igual que este texto.__
 **_Al igual que este!_**
 *__¡Y este!__*
 
-<!-- En Github Flavored Markdown, el cual es usado para mostrar archivos 
-Markdown en Github, también tenemos: -->
+<!-- En GitHub Flavored Markdown, el cual es usado para mostrar archivos 
+Markdown en GitHub, también tenemos: -->
 
 ~~Este texto está tachado.~~
 
-<!-- Los párrafos son una o múltuples líneas de texto adyacentes separadas por 
+<!-- Los párrafos son una o múltiples líneas de texto adyacentes separadas por 
 una o múltiples líneas en blanco-->
 
 Este es un párrafo. Estoy escribiendo un párrafo, ¿No es divertido?
@@ -150,7 +150,7 @@ para indentar dentro del código -->
 
 ¡John no sabía lo que la función `go_to()` hacía!
 
-<!-- Con Github Flavored Markdown, puedes usar una sintaxis especial para código -->
+<!-- Con GitHub Flavored Markdown, puedes usar una sintaxis especial para código -->
 
 \`\`\`ruby <!-- quita esas comillas cuando lo hagas, deja sólo ```ruby ! -->
 def foobar
@@ -158,7 +158,7 @@ def foobar
 end
 \`\`\` <!-- aquí también, sin comillas, sólo ``` -->
 
-<!-- El texto de arriba no necesita indentación, aparte Github usará
+<!-- El texto de arriba no necesita indentación, aparte GitHub usará
 resaltará la sintaxis del lenguaje que especifiques después de ``` -->
 
 <!-- Regla horizontal (<hr />) -->
@@ -231,7 +231,7 @@ Quiero escribir *este texto rodeado por asteriscos* pero no quiero que esté en 
 así que hago esto: \*Este texto está rodeado de asteriscos\*.
 
 <!-- Tablas -->
-<!-- Las tablas sólo están disponibles en Github Flavored Markdown y son un poco pesadas,
+<!-- Las tablas sólo están disponibles en GitHub Flavored Markdown y son un poco pesadas,
 pero si de verdad las quieres: -->
 
 | Col1         | Col2     | Col3          |

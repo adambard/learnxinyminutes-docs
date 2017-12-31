@@ -1,5 +1,4 @@
 ---
-
 language: Objective-C
 contributors:
     - ["Eugene Yagrushkin", "www.about.me/yagrushkin"]
@@ -9,12 +8,11 @@ translators:
     - ["Yannick Loriot", "https://github.com/YannickL"]
 filename: LearnObjectiveC-fr.m
 lang: fr-fr
-
 ---
 
 L'Objective-C est un langage de programmation orienté objet réflexif principalement utilisé par Apple pour les systèmes d'exploitations Mac OS X et iOS et leurs frameworks respectifs, Cocoa et Cocoa Touch.
 
-```objective_c
+```objective-c
 // Les commentaires sur une seule ligne commencent par //
 
 /*
@@ -519,6 +517,7 @@ __unsafe_unretained NSArray *unsafeArray; // Comme __weak, mais la variable n'es
 // l'objet est supprimé
 
 ```
+
 ##  Lectures Complémentaires
 
 [La Page Wikipedia de l'Objective-C](http://fr.wikipedia.org/wiki/Objective-C)
