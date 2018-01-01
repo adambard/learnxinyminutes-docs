@@ -176,7 +176,8 @@ This example install ansible in `virtualenv` so it is independend from a system.
 We are going to use repository with examples: https://github.com/sirkubax/ansible-for-learnXinYminutes
 
 ```bash
-$ git colone git@github.com:sirkubax/ansible-for-learnXinYminutes.git
+$ # The folowing example contain a shell-prompt to indicate the venv and relative path 
+$ git clone git@github.com:sirkubax/ansible-for-learnXinYminutes.git
 user@host:~/$ cd ansible-for-learnXinYminutes
 user@host:~/ansible-for-learnXinYminutes$ source environment.sh
 $
