@@ -385,7 +385,7 @@ Junja is powerfull. It has built-in many usefull functions.
 # if variable is undefined - use default value
 {{ some_variable | default('default_value') }}
 ```
-[Read More]
+[Read More](http://docs.ansible.com/ansible/latest/playbooks_filters.html)
 
 ### ansible-vault
 To maintain **ifrastructure as a code** you need to store secrets. 
