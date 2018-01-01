@@ -23,7 +23,7 @@ $ pip install ansible
 $ apt-get install ansible
 
 ```
-* Appendix A - How do I install ansible
+* [Appendix A - How do I install ansible](#infrastructure-as-a-code)
 * [Additional Reading.](http://docs.ansible.com/ansible/latest/intro_installation.html)
 
 ### Your first ansible command (shell execution)
@@ -480,7 +480,7 @@ When your job fails - it is good to be effective with debugging.
 4. Jinja template debug 
 5. Strange behaviour - try to run the code 'at the destination'
 
-### Infrastructure as a code - what about Ansible
+### Infrastructure as a code
 You already know, that ansible-vault allow you to store your poufne data along with your code (in repository). You can go further - and define your ansible installation and configuration as-a-code. 
 See `environment.sh` to learn how to install the ansible itself inside a `virtualenv` that is not attached to your operating system (can be changed by non-privilages user), and as additiinal benefit - upgrading version of ansible is as easy as installing new version in new virtualenv. You can have multiple versions of Ansible present in the same time. This is very helpfull!
 
@@ -499,30 +499,6 @@ $ source environment.1.9.sh
 
   # please note that you have both venv1.9 and venv2 present - you need to (de)activate one - that is all
 ```
-### Naming
-
-### Bonus
-
-### writing own module
-
-### Python API
-
-### Web-UI: Ansible Tower, Jenkins, Rundeck
-
-#### Ansible Tower
-Ansible provides a Web User Interface called `Ansible Tower`.
-It is a convienient way to run Ansible Playbooks, have proper user management, log retention, and cron (periodic jobs).
-
-Personaly I'm not a fan of it - it's to expensive for my cases, and the trial is 10 inventory-hosts only.
-
-For my usecases I hide the 'pure ansible' commands behind other projects.
-
-#### Rundeck
-This is nice, secure interface, that allows you to execute a jobs of your choice (CLI, script, execution plan).
-It can perform  roling-deployment (without Ansible), can integrate with clouds, etc.
-
-#### Jenkins
-For my 'business cases' I use Jenkins - it has a 'cron', jobs can be binded into 'pipelines'.
 
 #### become-user, become
 
@@ -608,13 +584,3 @@ On the other hand - in advanced scope - you can use python anible code as a libr
 
 But ansible is way more! It provides an execution plans, an API, library, callbacks, not forget to mention - COMUNITY! and great support by developers!
 
-
-
-
-# JM inventory dynamic aws ec2
-# vault
-# roles
-
-#### ansible - dynamic in AWS
-#### create instance in AWS
-#### create env in AWS
