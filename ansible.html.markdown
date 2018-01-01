@@ -176,7 +176,7 @@ This example install ansible in `virtualenv` so it is independend from a system.
 We are going to use repository with examples: https://github.com/sirkubax/ansible-for-learnXinYminutes
 
 ```bash
-$ # The folowing example contain a shell-prompt to indicate the venv and relative path 
+$ # The folowing example contains a shell-prompt to indicate the venv and relative path 
 $ git clone git@github.com:sirkubax/ansible-for-learnXinYminutes.git
 user@host:~/$ cd ansible-for-learnXinYminutes
 user@host:~/ansible-for-learnXinYminutes$ source environment.sh
@@ -186,7 +186,7 @@ $ # First lets execute the simple_playbook.yml
 
 ```
 
-Run the above playbook with roles example
+Run the playbook with roles example
 ```bash
 $ source environment.sh
 $ # Now we would run the above playbook with roles
@@ -223,9 +223,9 @@ playbooks/roles/simple_apache_role/
 
 Ansible is flexible - it has 21 levels of variable precedence
 
-[read more] 
+[read more](http://docs.ansible.com/ansible/latest/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable)
 
-For now you might like to know, that CLI variables has the top priority.
+For now you should know that CLI variables have the top priority.
 
 You should also know, that a nice way to pool some data is a **lookup**
 
