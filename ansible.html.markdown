@@ -566,35 +566,35 @@ Of course the rabit hole is way deeper.'
 Ansible have great integration with multiple operating systems (even Windows) and some hardware (switches, Firewalls, etc). It has multiple tools that integrate with the could providers. Almost every worth-notice cloud provider is present in the ecosystem (AWS, Azure, Google, DigitalOcean, OVH, etc...)
 
 
+But ansible is way more! It provides an execution plans, an API, library, callbacks, not forget to mention - COMMUNITY! and great support by developers!
 
-## Main cons and pros
 
-### Cons
+### Main cons and pros
+
+#### Cons
 
 It is an agent-less tool - every agent consumes up to 16MB ram - in some environments, it may be noticable amount.  
 It is agent-less - you have to verify your environment consistency 'on-demand' - there is no built-in mechanism that would warn you about some change automatically (this can be achieved with reasonable effort)
 Official GUI Tool (web inferface) - Ansible Tower - is great, but it is expensive. There is no 'small enterprice' payment plan. Easy workaround with Rundeck or Jenkins is possible with reasonable workload.  
 
-### Pros
+#### Pros
 
 It is an agent-less tools In most scenarios, it use ssh as a transport layer.   
 In some way you can use it as 'bash on steroids'.  
-It is very-very-very easy to start. If you are familiar with ssh concept - you already know ansible (ALMOST). My personal record is: 'I did show how to install and use ansible (for simple raspberry pi cluster management) and it tool me 30 seconds to deliver a working tool !!!)'  
+It is very-very-very easy to start. If you are familiar with ssh concept - you already know Ansible (ALMOST). My personal record is: 'I did show "how to install and use ansible" (for simple raspberry pi cluster management) - it took me 30 seconds to deliver a complete working example !!!)'  
 I do provide a training services - I'm able to teach a production-ready person - in 8 hours (1 training day)! It covers all needed to work aspects! No other tool can match this ease of use!  
-It executes when you do it - other tools (salt, puppet, chef - might execute in different scenario than you would expect)  
+It executes 'as is' - other tools (salt, puppet, chef - might execute in different scenario than you would expect)  
 Documentation is at the world-class standard!  
 The comunity (github, stackOverflow) would help you very fast.  
 Writing own modules and extension is fairly easy.  
 
-
-### Neutral
+#### Neutral
 Migration Ansible<->Salt is failrly easy - so if you would need an event-driven agent environment - it would be a good choice to start quick with Ansible, and convert to salt when needed.
 
-## Basics on ansible
+#### Some concepts
 
 Ansible uses ssh or paramiko as a transport layer. In a way you can imagine that you are using a ssh with API to perform your action.  
-In the 'low-level' way you can use it to execute remote command in more controlled way (still using ssh).   
-On the other hand - in advanced scope - you can use python anible code as a library to your own python scrips! This is awesome! (if you know what you are doing). It is a bit like fabric then.  
+The simplest way is to execute remote command in more controlled way (still using ssh).   
+On the other hand - in advanced scope - you can wrap Ansible (use python Ansible code as a library) with your own Python scrips! This is awesome! It would act a bit like Fabric then.  
 
-But ansible is way more! It provides an execution plans, an API, library, callbacks, not forget to mention - COMUNITY! and great support by developers!
 
