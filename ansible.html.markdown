@@ -320,6 +320,8 @@ You can tag a task, role (and its tasks), include, etc, and then run only the ta
     --skip-tags can be used to exclude a block of code
     --list-tags to list available tags
 
+[Read more](http://docs.ansible.com/ansible/latest/playbooks_tags.html)
+
 #### LIMIT
 You can limit an execution of your tasks to defined hosts 
 
@@ -349,6 +351,20 @@ Jinja may have some limitations, but it is a powerfull tool that you might like.
 You can use the jinja in the CLI too
 ```bash
 ansible -m shell -a 'echo {{ my_variable }}` -e 'my_variable=something, playbook_parameter=twentytwo" localhost
+```
+In fact - jinja is used to template parts of the playbooks too
+```yml
+#check part of this playbook: playbooks/roles/sys_debug/tasks/debug_time.yml
+- local_action: shell date +'%F %T'
+  register: ts
+  become: False
+  changed_when: False
+
+- name: Timestamp
+  debug: msg="{{ ts.stdout }}"
+  when: ts is defined and ts.stdout is defined
+  become: False
+
 ```
 
 #### Jinja2 filters
