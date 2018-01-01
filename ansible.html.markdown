@@ -538,14 +538,14 @@ ansible -m ping web*:!backend:monitoring:&allow_change
 
 #### Tagging
 You should tag some (not all) objects - a task in a playbook, all tasks included form a role, etc.
-It allwos you to execute the choosen parts of the playbook.
+It allows you to execute the choosen parts of the playbook.
 
 #### no_logs: True
 You may see, that some roles print a lot of output in verbose mode. There is also a debug module.
 This is the place where credentials may leak. Use `no_log` to hide the output.
 
 #### Debug module
-allows to print a value to the screen
+allows to print a value to the screen - use it!
 
 #### Register the output of a task
 You can register the output (stdout), rc (return code), stderr of a task with the `register` command.
@@ -553,6 +553,8 @@ You can register the output (stdout), rc (return code), stderr of a task with th
 #### Conditionals: when: 
 
 #### Loop: with, with_items, with_dict, with_together
+
+[Read more](http://docs.ansible.com/ansible/latest/playbooks_conditionals.html)
 
 
 ## Introduction
