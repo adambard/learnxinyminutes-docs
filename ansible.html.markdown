@@ -173,7 +173,7 @@ Role can be included in your playbook (executed via your playbook).
 #### For remaining examples we would use additional repository
 This example install ansible in `virtualenv` so it is independend from a system. You need to initialize it into your shell-context with `source environment.sh` command. 
 
-We are going to use repository with examples: sirkubax/ansible-for-learnXinYminutes.git
+We are going to use repository with examples: https://github.com/sirkubax/ansible-for-learnXinYminutes
 
 ```bash
 $ git colone git@github.com:sirkubax/ansible-for-learnXinYminutes.git
