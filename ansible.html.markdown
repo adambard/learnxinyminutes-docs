@@ -14,6 +14,7 @@ filename: LearnAnsible.txt
 
 ```
 
+
 ## Installation
 ```bash
 # Universal way
@@ -571,7 +572,7 @@ Ansible have great integration with multiple operating systems (even Windows) an
 ### Cons
 
 It is an agent-less tool - every agent consumes up to 16MB ram - in some environments, it may be noticable amount.  
-It is agent-less - you have to verify your environment consistency 'on-demand' - there is no built-in mechanism taht would warn you about some change automatically (this can be achieved with reasonable effort - but it must be known)  
+It is agent-less - you have to verify your environment consistency 'on-demand' - there is no built-in mechanism that would warn you about some change automatically (this can be achieved with reasonable effort)
 Official GUI Tool (web inferface) - Ansible Tower - is great, but it is expensive. There is no 'small enterprice' payment plan. Easy workaround with Rundeck or Jenkins is possible with reasonable workload.  
 
 ### Pros
