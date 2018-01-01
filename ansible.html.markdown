@@ -10,7 +10,7 @@ filename: LearnAnsible.txt
 
 ```yaml
 ---
-"{{ Why Ansible and detailed Intro }}" written in the second part of document
+"{{ Explanation: Why Ansible and detailed Intro }}" written in the second part of document
 
 ```
 
@@ -64,8 +64,7 @@ $ ansible -m ping all
 $ ansible -m shell -a 'date; whoami' localhost #hostname_or_a_group_name
 ```
 
-* Module: `command` - executes a single command that will not be processed through the shell, so variables like $HOME or operands like `|` `;` will not work
-#JM
+* Module: `command` - executes a single command that will not be processed through the shell, so variables like $HOME or operands like `|` `;` will not work. The command module is more secure, because it will not be affected by the user’s environment. For more complex command - use shell module.
 
 
 ```bash
@@ -114,10 +113,11 @@ This example-playbook would execute (on all hosts defined in the inventory) two 
       shell: "date; whoami; df -h;"
 ```
 
-You can run the playbook with the command:
+Run the playbook with the command:
 ```bash
 $ ansible-playbook path/name_of_the_playbook.yml
 ```
+_Note: Example playbook is explained in the next chapter: 'Roles'
 ### More on ansible concept
 
 ### Inventory
@@ -131,6 +131,7 @@ localhost
 [some_group]
 hostA.mydomain.com
 hostB.localdomain
+1.2.3.4
 
 [a_group_of_a_groups:children]
 some_group
@@ -140,7 +141,7 @@ some_other_group
 * [Additional Reading.](http://docs.ansible.com/ansible/latest/intro_inventory.html)
 ### ansible-roles (a 'template-playbooks' with right structure)
 
-   You already know the tasks (modules) that can be run via CLI. You also know the playbooks - the execution plans of multiple tasks (with variables and logic).
+   You already know that the tasks (modules) can be run via CLI. You also know the playbooks - the execution plans of multiple tasks (with variables and logic).
 
 A concept called `role` was introduced for parts of the code (playbooks) that should be reusable.
 
@@ -170,7 +171,9 @@ Role can be included in your playbook (executed via your playbook).
 ```
 
 #### For remaining examples we would use additional repository
-This example install ansible in `virtualenv` so it is independend from a system. You need to init it with `source environment.sh` command
+This example install ansible in `virtualenv` so it is independend from a system. You need to initialize it into your shell-context with `source environment.sh` command. 
+
+We are going to use repository with examples: sirkubax/ansible-for-learnXinYminutes.git
 
 ```bash
 $ git colone git@github.com:sirkubax/ansible-for-learnXinYminutes.git
@@ -331,13 +334,13 @@ Some static content
 ```
 Jinja may have some limitations, but it is a powerfull tool that you might like.
 
-### Jinja2 CLI
+#### Jinja2 CLI
 You can use the jinja in the CLI too
 ```bash
 ansible -m shell -a 'echo {{ my_variable }}` -e 'my_variable=something, playbook_parameter=twentytwo" localhost
 ```
 
-### Jinja2 filters
+#### Jinja2 filters
 Junja is powerfull. It has built-in many usefull functions.
 ```jinja
 # get first item of the list
@@ -345,6 +348,7 @@ Junja is powerfull. It has built-in many usefull functions.
 # if variable is undefined - use default value
 {{ some_variable | default('default_value') }}
 ```
+[Read More]
 
 ### ansible-vault
 To maintain **ifrastructure as a code** you need to store secrets. 
@@ -353,13 +357,17 @@ To maintain **ifrastructure as a code** you need to store secrets.
 The best way to use the **ansible-vault** is to store the secret in some secure location, and configure ansible to use during runtime.
 
 ```bash
+# Try (this would fail)
+$ ansible-playbook playbooks/vault_example.yml
+
 $ echo some_very_very_long_secret > ~/.ssh/secure_located_file
 
+# in ansible.cfg set the path to your secret file
 $ vi ansible.cfg
   ansible_vault_password_file = ~/.ssh/secure_located_file
 
-#or to use env
-export ANSIBLE_VAULT_PASSWORD_FILE=~/.ssh/secure_located_file
+#or use env
+$ export ANSIBLE_VAULT_PASSWORD_FILE=~/.ssh/secure_located_file
 
 $ ansible-playbook playbooks/vault_example.yml
 
