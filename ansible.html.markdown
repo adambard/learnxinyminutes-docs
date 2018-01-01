@@ -570,20 +570,20 @@ Ansible have great integration with multiple operating systems (even Windows) an
 
 ### Cons
 
-It is an agent-less tool - every agent consumes up to 16MB ram - in some environments, it may be noticable amount.
-It is agent-less - you have to verify your environment consistency 'on-demand' - there is no built-in mechanism taht would warn you about some change automatically (this can be achieved with reasonable effort - but it must be known)
-Official GUI Tool (web inferface) - Ansible Tower - is more than GUI, but it is expensive. There is no 'small enterprice' payment plan. Easy workaround with Rundeck or Jenkins is possible with reasonable workload.
-
+  It is an agent-less tool - every agent consumes up to 16MB ram - in some environments, it may be noticable amount.
+  It is agent-less - you have to verify your environment consistency 'on-demand' - there is no built-in mechanism taht would warn you about some change automatically (this can be achieved with reasonable effort - but it must be known)
+  Official GUI Tool (web inferface) - Ansible Tower - is great, but it is expensive. There is no 'small enterprice' payment plan. Easy workaround with Rundeck or Jenkins is possible with reasonable workload.
+  
 ### Pros
 
-It is an agent-less tools In most scenarios, it use ssh as a transport layer. 
-In some way you can use it as 'bash on steroids'.
-It is very-very-very easy to start. If you are familiar with ssh concept - you already know ansible (ALMOST). My personal record is: 'I did show how to install and use ansible (for simple raspberry pi cluster management) and it tool me 30 seconds to deliver a working tool !!!)'
-I do provide a training services - I'm able to teach a production-ready person - in 8 hours (1 training day)! It covers all needed to work aspects! No other tool can match this ease of use!
-It executes when you do it - other tools (salt, puppet, chef - might execute in different scenario than you would expect)
-Documentation is at the world-class standard!
-The comunity (github, stackOverflow) would help you very fast.
-Writing own modules and extension is fairly easy.
+  It is an agent-less tools In most scenarios, it use ssh as a transport layer. 
+  In some way you can use it as 'bash on steroids'.
+  It is very-very-very easy to start. If you are familiar with ssh concept - you already know ansible (ALMOST). My personal record is: 'I did show how to install and use ansible (for simple raspberry pi cluster management) and it tool me 30 seconds to deliver a working tool !!!)'
+  I do provide a training services - I'm able to teach a production-ready person - in 8 hours (1 training day)! It covers all needed to work aspects! No other tool can match this ease of use!
+  It executes when you do it - other tools (salt, puppet, chef - might execute in different scenario than you would expect)
+  Documentation is at the world-class standard!
+  The comunity (github, stackOverflow) would help you very fast.
+  Writing own modules and extension is fairly easy.
 
 
 ### Neutral
