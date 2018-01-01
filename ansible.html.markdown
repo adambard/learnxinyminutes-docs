@@ -439,7 +439,7 @@ $ ansible -m ping all -i etc/inv/ec2.py
 [Read more](http://docs.ansible.com/ansible/latest/intro_dynamic_inventory.html)
 
 ### ansible profiling - callback
-It is ok that your playbook executes some time. Sometimes you may like to speed things up 
+Playbook execution takes some time. It is OK. First make it run, then you may like to speed things up 
 
 Since ansible 2.x there is bouilt-in callback for task execution profiling
 
