@@ -441,7 +441,7 @@ $ ansible -m ping all -i etc/inv/ec2.py
 ### ansible profiling - callback
 Playbook execution takes some time. It is OK. First make it run, then you may like to speed things up 
 
-Since ansible 2.x there is bouilt-in callback for task execution profiling
+Since ansible 2.x there is built-in callback for task execution profiling
 
 ```
 vi ansible.cfg 
@@ -467,7 +467,7 @@ fact_caching_timeout = 86400
 ```
 
 I like to use `jsonfile` as my backend. It allows to use another project
-`ansible-cmdb` [github] that generates a HTML page of your inventory resources. A nice 'free' addition!
+`ansible-cmdb` [github](https://github.com/fboender/ansible-cmdb) that generates a HTML page of your inventory resources. A nice 'free' addition!
 
 ### debugging ansible
 When your job fails - it is good to be effective with debugging.
