@@ -389,7 +389,7 @@ Junja is powerfull. It has built-in many usefull functions.
 
 ### ansible-vault
 To maintain **ifrastructure as a code** you need to store secrets. 
-  Ansible provides a way to encrypt the poufne files so you can store it in the repository, yet the files are decrypted in-fly during ansible execution.
+  Ansible provides a way to encrypt the confidential files so you can store it in the repository, yet the files are decrypted in-fly during ansible execution.
 
 The best way to use the **ansible-vault** is to store the secret in some secure location, and configure ansible to use during runtime.
 
@@ -481,7 +481,7 @@ When your job fails - it is good to be effective with debugging.
 5. Strange behaviour - try to run the code 'at the destination'
 
 ### Infrastructure as a code
-You already know, that ansible-vault allow you to store your poufne data along with your code (in repository). You can go further - and define your ansible installation and configuration as-a-code. 
+You already know, that ansible-vault allow you to store your confidential data along with your code (in repository). You can go further - and define your ansible installation and configuration as-a-code. 
 See `environment.sh` to learn how to install the ansible itself inside a `virtualenv` that is not attached to your operating system (can be changed by non-privilages user), and as additiinal benefit - upgrading version of ansible is as easy as installing new version in new virtualenv. You can have multiple versions of Ansible present in the same time. This is very helpfull!
 
 ```bash
