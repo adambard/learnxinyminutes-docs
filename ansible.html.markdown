@@ -230,6 +230,7 @@ For now you should know that CLI variables have the top priority.
 You should also know, that a nice way to pool some data is a **lookup**
 
 ### Lookups
+query from:
 
 * pipe
 * file
