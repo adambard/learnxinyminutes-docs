@@ -467,15 +467,18 @@ fact_caching_timeout = 86400
 ```
 
 I like to use `jsonfile` as my backend. It allows to use another project
-`ansible-cmdb` [github](https://github.com/fboender/ansible-cmdb) that generates a HTML page of your inventory resources. A nice 'free' addition!
+`ansible-cmdb` [(project on github)](https://github.com/fboender/ansible-cmdb) that generates a HTML page of your inventory resources. A nice 'free' addition!
 
-### debugging ansible
+### debugging ansible [chapter in progres]
 When your job fails - it is good to be effective with debugging.
 
 1. Increase verbosiy by using multiple -v  **[ -vvvvv]**
-2. If variable is undefined
+2. If variable is undefined 
+    - grep -R path_of_your_inventory -e missing_variable
 3. If variable (dictionary or a list) is undefined
+    - grep -R path_of_your_inventory -e missing_variable
 4. Jinja template debug 
+5. Strange behaviour - try to run the code 'at the destination'
 
 ### Infrastructure as a code - what about Ansible
 You already know, that ansible-vault allow you to store your poufne data along with your code (in repository). You can go further - and define your ansible installation and configuration as-a-code. 
