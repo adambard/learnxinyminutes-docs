@@ -408,7 +408,7 @@ $ export ANSIBLE_VAULT_PASSWORD_FILE=~/.ssh/secure_located_file
 
 $ ansible-playbook playbooks/vault_example.yml
 
-  # decrypt the file
+  # encrypt the file
 $ ansible-vault encrypt path/somefile
 
   # view the file
@@ -428,13 +428,15 @@ You might like to know, that you can build your inventory dynamically.
 
 You do not need to invent the wheel - there are plenty ready to use inventory script for most popular Cloud provicers and a lot of in-house popular usecaseses.
 
+[AWS example](http://docs.ansible.com/ansible/latest/intro_dynamic_inventory.html#example-aws-ec2-external-inventory-script)
+
 ```bash
-$ etc/inv/ec2.py --refresh
+$ etc/inv/ec2.py --refresh 
 
 $ ansible -m ping all -i etc/inv/ec2.py
 ```
 
-Read also about `dynamic inventory` below
+[Read more](http://docs.ansible.com/ansible/latest/intro_dynamic_inventory.html)
 
 ### ansible profiling - callback
 It is ok that your playbook executes some time. Sometimes you may like to speed things up 
