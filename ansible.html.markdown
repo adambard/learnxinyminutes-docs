@@ -239,7 +239,7 @@ query from:
 
 ```bash
 # read playbooks/lookup.yml
-# run
+# then run
 (venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbooks/lookup.yml
 ```
 
@@ -257,7 +257,7 @@ ansible -m shell -a 'echo "{{ my_variable }}"' -e 'my_variable="{{ lookup("pipe"
 ### Register and Conditional 
 
 #### Register
-Another way to dynamicaly generate the variable content is a `register` command
+Another way to dynamicaly generate the variable content is a `register` command.
 `Register` is also useful to store an output of a task, and use it's value as a logic 
 for execution further tasks.
 ```
@@ -265,7 +265,6 @@ for execution further tasks.
 ```
 
 ```yaml
-#file content
 ---
 - hosts: localhost
   tasks:
@@ -293,6 +292,16 @@ for execution further tasks.
 
 You can define complex logic with Ansible and Jinja functions. Most common is usage of `when:`, with some variable (often dynamicly generated in previous playbook steps with `register` or `lookup`)
 
+```yaml
+---
+- hosts: localhost
+  tasks:
+   - name: check the system capacity
+     shell: df -h /
+     when: some_variable in 'a string'
+  roles:
+   - { role: mid_nagios_probe, when: allow_nagios_probes }
+```
 
 
 ### ansible - tags, limit
