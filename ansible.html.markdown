@@ -347,6 +347,16 @@ Some static content
 ```
 Jinja may have some limitations, but it is a powerfull tool that you might like.
 
+Please examine this simple example that install apache2 and generate index.html from the template
+"playbooks/roles/simple_apache_role/templates/index.html"
+
+```bash
+$ source environment.sh
+$ # Now we would run the above playbook with roles
+(venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbooks/simple_role.yml --tags apache2
+```
+
+
 #### Jinja2 CLI
 You can use the jinja in the CLI too
 ```bash
