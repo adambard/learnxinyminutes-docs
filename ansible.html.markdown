@@ -502,6 +502,14 @@ $ source environment.1.9.sh
 
 #### become-user, become
 In Ansible - to become `sudo` - use the `become` parameter. Use `become_user` to specify the username.
+```
+- name: Ensure the httpd service is running
+  service:
+    name: httpd
+    state: started
+  become: true
+```
+Note: You may like to execute Ansible with `--ask-sudo-pass` or add the user to sudoers file in order to allow non-supervised execution if you require 'admin' privilages.
 
 [Read more](http://docs.ansible.com/ansible/latest/become.html)
 
