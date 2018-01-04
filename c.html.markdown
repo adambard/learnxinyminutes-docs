@@ -20,11 +20,12 @@ memory management and C will take you as far as you need to go.
 > **About compiler flags**
 > 
 > By default, gcc and clang are pretty quiet about compilation warnings and
-> errors, which can be very useful information. Using some
-> stricter compiler flags is recommended. Here is an example you can
-> tweak to your liking:
+> errors, which can be very useful information. Explicitly using stricter
+> compiler flags is recommended. Here are some recommended defaults:
 >
 > `-Wall -Wextra -Werror -O2 -std=c99 -pedantic`
+>
+> For information on what these flags do as well as other flags, consult the man page for your C compiler (e.g. `man 1 gcc`) or just search online.
 
 ```c
 // Single-line comments start with // - only available in C99 and later.
