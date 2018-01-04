@@ -8,6 +8,7 @@ contributors:
     - ["Marco Scannadinari", "https://marcoms.github.io"]
     - ["Zachary Ferguson", "https://github.io/zfergus2"]
     - ["himanshu", "https://github.com/himanshu81494"]
+    - ["Joshua Li", "https://github.com/JoshuaRLi"]
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
@@ -23,7 +24,7 @@ memory management and C will take you as far as you need to go.
 > stricter compiler flags is recommended. Here is an example you can
 > tweak to your liking:
 >
-> `-Wall -Wextra -Werror -O0 -ansi -pedantic -std=c11`
+> `-Wall -Wextra -Werror -O2 -std=c99 -pedantic`
 
 ```c
 // Single-line comments start with // - only available in C99 and later.
