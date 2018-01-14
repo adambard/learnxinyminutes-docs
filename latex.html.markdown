@@ -255,7 +255,7 @@ There exists two main types of links: visible URL \\
 % You can not add extra-spaces or special symbols into shadowing text since it 
 % will cause mistakes during the compilation
 
-This package also produces list of tumbnails in the output pdf document and 
+This package also produces list of thumbnails in the output pdf document and 
 active links in the table of contents.
 
 \section{End}
