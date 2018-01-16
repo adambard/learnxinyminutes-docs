@@ -169,7 +169,7 @@ then
 fi
 # Note that =~ only works within double [[ ]] square brackets,
 # which are subtly different from single [ ].
-# See the appropriate [manual section](http://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs) for more on this.
+# See http://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs for more on this.
 
 # Expressions are denoted with the following format:
 echo $(( 10 + 5 )) # => 15
