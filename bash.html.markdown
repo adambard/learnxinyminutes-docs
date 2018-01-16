@@ -77,8 +77,11 @@ echo ${Variable/Some/A} # => A string
 Length=7
 echo ${Variable:0:Length} # => Some st
 # This will return only the first 7 characters of the value
-echo ${Variable: -Length}
-# This will return the last 7 characters (note the space before -Length)
+echo ${Variable: -5} # => tring
+# This will return the last 5 characters (note the space before -5)
+
+# String length
+echo ${#Variable} # => 11
 
 # Default value for variable
 echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"} 
