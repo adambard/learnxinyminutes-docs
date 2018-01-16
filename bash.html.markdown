@@ -16,6 +16,7 @@ contributors:
     - ["Betsy Lorton", "https://github.com/schbetsy"]
     - ["John Detter", "https://github.com/jdetter"]
     - ["Harry Mumford-Turner", "https://github.com/harrymt"]
+    - ["Martin Nicholson", "https://github.com/mn113"]
 filename: LearnBash.sh
 ---
 
@@ -76,6 +77,8 @@ echo ${Variable/Some/A} # => A string
 Length=7
 echo ${Variable:0:Length} # => Some st
 # This will return only the first 7 characters of the value
+echo ${Variable: -Length}
+# This will return the last 7 characters (note the space before -Length)
 
 # Default value for variable
 echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"} 
