@@ -1659,7 +1659,7 @@ sub MAIN($name) { say "Hello, $name !" }
 ##    Usage:
 ##      t.pl <name>
 
-## And since it's a regular Perl 6 sub, you can haz multi-dispatch:
+## And since it's a regular Perl 6 sub, you can have multi-dispatch:
 ## (using a "Bool" for the named argument so that we can do `--replace`
 ##  instead of `--replace=1`)
 subset File of Str where *.IO.d; # convert to IO object to check the file exists
