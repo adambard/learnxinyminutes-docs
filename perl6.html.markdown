@@ -1366,7 +1366,7 @@ sub add($a, $b) { $a + $b }
 say [[&add]] 1, 2, 3; #=> 6
 
 ## * Zip meta-operator
-## This one is an infix meta-operator than also can be used as a "normal"
+## This one is an infix meta-operator that also can be used as a "normal"
 ## operator.  It takes an optional binary function (by default, it just creates
 ## a pair), and will pop one value off of each array and call its binary 
 ## function on these until it runs out of elements. It returns an array with 
