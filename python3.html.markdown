@@ -31,7 +31,8 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 ####################################################
 
 # You have numbers
-3  # => 3
+3  # => 3 therefore, inline comments start with a number symbol which not in
+   # pair of " or ' and end with newline. now it is a multiline comment.
 
 # Math is what you would expect
 1 + 1   # => 2

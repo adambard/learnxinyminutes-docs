@@ -33,7 +33,8 @@ Python 3 tutorial.
 
 """ Multiline strings can be written
     using three "s, and are often used
-    as comments
+    as comments but not actual becuase they may be
+    the __doc__ attribute of an object.
 """
 
 ####################################################
@@ -41,7 +42,8 @@ Python 3 tutorial.
 ####################################################
 
 # You have numbers
-3  # => 3
+3  # => 3 therefore, inline comments start with a number symbol which not in
+   # pair of " or ' and end with newline. now it is a multiline comments.
 
 # Math is what you would expect
 1 + 1  # => 2
