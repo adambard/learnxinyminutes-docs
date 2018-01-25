@@ -29,7 +29,7 @@ let notSure: any = 4;
 notSure = "maybe a string instead";
 notSure = false; // okay, definitely a boolean
 
-// Use const keyword for constant variables
+// Use const keyword for constants
 const numLivesForCat = 9;
 numLivesForCat = 1; // Error
 
