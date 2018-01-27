@@ -72,8 +72,8 @@ List.head [] -- Nothing
 
 -- Access the elements of a pair with the first and second functions.
 -- (This is a shortcut; we'll come to the "real way" in a bit.)
-fst ("elm", 42) -- "elm"
-snd ("elm", 42) -- 42
+Tuple.first ("elm", 42) -- "elm"
+Tuple.second ("elm", 42) -- 42
 
 -- The empty tuple, or "unit", is sometimes used as a placeholder.
 -- It is the only value of its type, also called "Unit".

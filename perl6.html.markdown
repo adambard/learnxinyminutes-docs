@@ -1366,7 +1366,7 @@ sub add($a, $b) { $a + $b }
 say [[&add]] 1, 2, 3; #=> 6
 
 ## * Zip meta-operator
-## This one is an infix meta-operator than also can be used as a "normal"
+## This one is an infix meta-operator that also can be used as a "normal"
 ## operator.  It takes an optional binary function (by default, it just creates
 ## a pair), and will pop one value off of each array and call its binary 
 ## function on these until it runs out of elements. It returns an array with 
@@ -1659,7 +1659,7 @@ sub MAIN($name) { say "Hello, $name !" }
 ##    Usage:
 ##      t.pl <name>
 
-## And since it's a regular Perl 6 sub, you can haz multi-dispatch:
+## And since it's a regular Perl 6 sub, you can have multi-dispatch:
 ## (using a "Bool" for the named argument so that we can do `--replace`
 ##  instead of `--replace=1`)
 subset File of Str where *.IO.d; # convert to IO object to check the file exists
