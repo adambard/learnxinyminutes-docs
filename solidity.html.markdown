@@ -830,6 +830,7 @@ someContractAddress.callcode('function_name');
 - [Browser-based Solidity Editor](http://chriseth.github.io/browser-solidity/)
 - [Gitter Solidity Chat room](https://gitter.im/ethereum/solidity)
 - [Modular design strategies for Ethereum Contracts](https://docs.erisindustries.com/tutorials/solidity/)
+- [Community Curated Solidity Resources](https://hackr.io/tutorials/learn-solidity)
 
 ## Sample contracts
 - [Dapp Bin](https://github.com/ethereum/dapp-bin)
