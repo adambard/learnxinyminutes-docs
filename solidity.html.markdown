@@ -834,6 +834,7 @@ someContractAddress.callcode('function_name');
 - [Browser-based Solidity Editor](https://remix.ethereum.org/)
 - [Gitter Solidity Chat room](https://gitter.im/ethereum/solidity)
 - [Modular design strategies for Ethereum Contracts](https://docs.erisindustries.com/tutorials/solidity/)
+- [Community Curated Solidity Resources](https://hackr.io/tutorials/learn-solidity)
 
 ## Important libraries
 - [Zeppelin](https://github.com/OpenZeppelin/zeppelin-solidity/): Libraries that provide common contract patterns (crowdfuding, safemath, etc)
