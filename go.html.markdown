@@ -180,7 +180,7 @@ func learnFlowControl() {
 	if true {
 		fmt.Println("told ya")
 	}
-	// Formatting is standardized by the command line command "go fmt."
+	// Formatting is standardized by the command line command "go fmt".
 	if false {
 		// Pout.
 	} else {
