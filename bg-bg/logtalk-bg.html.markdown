@@ -585,7 +585,7 @@ X = 99
 true
 ```
 
-# Допылнителна информация (Further information)
+# Допълнителна информация (Further information)
 
 
 Посетете сайта на [Logtalk website](http://logtalk.org) за повече информация.
