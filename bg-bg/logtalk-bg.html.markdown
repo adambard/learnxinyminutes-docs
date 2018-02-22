@@ -1,3 +1,13 @@
+---
+language: Logtalk
+contributors:
+    - ["Paulo Moura", "http://github.com/pmoura"]
+translators:
+    - ["vsraptor", "https://github.com/vsraptor"]
+lang: bg-bg
+
+---
+
 Logtalk е обектно-ориентиран (ОО) модерен логически език за програмиране, които разширява Prolog с възможности за капсулиране (еncapsulation) и многократно използване на кода без да компрометира декларативните възможности на езика. Logtalk е имплементиран така че да може да бъде адапртиран към всеки стандартен Prolog като back-end компилатор, тоест е напълно прозрачен за нормална Prolog програма.
 Допълнително, Logtalk също може да интерпретира Prolog модули, като Logtalk обекти.
 
