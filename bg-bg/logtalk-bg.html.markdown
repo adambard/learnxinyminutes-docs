@@ -63,6 +63,7 @@ Sending a message to an object (Изпращане на събщение до о
 
 Както казахме ::/2 infix оператор се използва за изпращане на съобщение до обекта. Както в Prolog, ние можем да backtrack-нем за алтернативни решения, понеже метода е просто стандартен предикат :
 
+```logtalk
 ?- list::member(X, [1,2,3]).
 X = 1 ;
 X = 2 ;
@@ -71,9 +72,11 @@ yes
 
 ?- write_canonical(list::member(X, [1,2,3])).
 ::(list,member(_,[1,2,3]))
+```
 
 Кагато декларирме обект автоматично предикатите са капсулирани (еncapsulation), тоест извън обекта те са невидими за останалата част от програмата. Естествено има опции да променим това поведение чрез public, protected, или private предикати. 
 
+```logtalk
 :- object(scopes).
 
     :- private(bar/0).
@@ -82,9 +85,11 @@ yes
     local.
 
 :- end_object.
+```
 
 Ако кода е записан в scopes.lgt фаил и се опитаме да изпратим саобщтение до частен(private) или локален предикат ще получим грешка:
 
+```logtalk
 ?- {scopes}.
 yes
 
@@ -101,16 +106,18 @@ Error = error(
     logtalk(scopes::local, user)
 )
 yes
+```
 
 Когато предиката е непознат за обекта това също генерира грешка. Например :
 
+```logtalk
 ?- catch(scopes::unknown, Error, true).
 Error = error(
     existence_error(predicate_declaration, unknown/0),
     logtalk(scopes::unknown, user)
 )
 yes
-
+```
 
 Протоколи (Defining and implementing a protocol)
 -----------------------------------
@@ -118,6 +125,7 @@ yes
 За тези от вас свикнали със стандартно ООП, Protocols наподобяват Interfaces в Java.
 Протоколите съдържат предикати които могат да бъдат в последствие имплементирани в обекти и категории :
 
+```logtalk
 :- protocol(listp).
 
     :- public(member/2).
@@ -132,15 +140,17 @@ yes
         member(Head, Tail).
 
 :- end_object.
+```
 
 Обхвата(scope) на предикатите в протокола могат да бъде ограничени чрез protected или private клаузи. 
 Например:
 
+```logtalk
 :- object(stack,
     implements(private::listp)).
 
 :- end_object.
-
+```
 
 Всички субекти(entity) релации могат да бъдат пре-дефинирани с public, protected или private, подбно на начина показан по горе.
 
@@ -151,6 +161,7 @@ yes
 Всеки обект без instantiation или specialization спецификация с друг обект, играе ролята на прототип. 
 Прототип-обект може да предефинира и разщири протоипа-родител.
 
+```logtalk
 % clyde, our prototypical elephant
 :- object(clyde).
 
@@ -169,10 +180,11 @@ yes
     color(white).
 
 :- end_object.
+```
 
 Когато системата отговаря на съобщение изпратено до обект който играе ролята на прототип, тя търси отговор първо в прототипа и ако не намери предикат делегира отговора на прототипа-родител-обект :
 
-
+```logtalk
 ?- fred::number_of_legs(N).
 N = 4
 yes
@@ -180,18 +192,22 @@ yes
 ?- fred::color(C).
 C = white
 yes
+```
 
 Съобщението е валидно но няма да генерира грещка, ако предиката е дефиниран но не е деклариран/имплементиран. Това е така наречения closed-world assumption. 
 Например :
 
+```logtalk
 :- object(foo).
 
     :- public(bar/0).
 
 :- end_object.
+```
 
 Ако заредим файла и се опитаме да извикаме bar/0, няма да получим отговор, както може да очакваме. Ако обаче предиката не е дори дефиниран, ще получим гращка :
 
+```logtalk
 ?- {foo}.
 yes
 
@@ -204,6 +220,7 @@ Error = error(
     logtalk(foo::baz, user)
 )
 yes
+```
 
 Класове и инстанции (Classes and instances)
 -----------------------------------
@@ -211,6 +228,7 @@ yes
 За да саздадем обекти които играят ролята на класове и/или инстанции, трябва да използваме поне instantiation или specialization дефиниция с друг обект. Обектите които играят роля на мета-класове могат да се използват ако е нужно още за саздаване на инстанции на класа.
 Следващия пример ще илюстрира как можем динамично да саздадаваме обекти :
 
+```logtalk
 % a simple, generic, metaclass defining a new/2 predicate for its instances
 :- object(metaclass,
     instantiates(metaclass)).
@@ -243,9 +261,11 @@ yes
     age(12).
 
 :- end_object.
+```
 
 Когато отговаряме на съобщение изпратено до обект който играе ролята на инстанция, системата валидира съобщението първо в текущия клас, след това класа-родител ако е необходимо. Ако съобщението е валидно тогава проверяваме инстанцията :
 
+```logtalk
 ?- person::new(Instance, [name(paulo)]).
 Instance = o1
 yes
@@ -261,7 +281,7 @@ yes
 ?- john::age(Age).
 Age = 12
 yes
-
+```
 
 Категории (Categories)
 -----------------------------------
@@ -270,6 +290,7 @@ yes
 В следващия пример ще дефинираме категории представящи автомобилни двигатели след което ще ги импортираме в автомобил-обекти :
    
 
+```logtalk
 % a protocol describing engine characteristics
 :- protocol(carenginep).
 
@@ -319,9 +340,11 @@ yes
     imports(sport)).
 
 :- end_object.
+```
 
 Категориите се компилират отделно и разрешават импортираните обекти да бъдат обновени като просто обновим категориите без да е необходимо да прекомпилираме обекта:
 
+```logtalk
 ?- sedan::current_predicate(Predicate).
 Predicate = reference/1 ;
 Predicate = capacity/1 ;
@@ -330,7 +353,7 @@ Predicate = horsepower_rpm/2 ;
 Predicate = bore_stroke/2 ;
 Predicate = fuel/1
 yes
-
+```
 
 Hot patching
 -----------------------------------
@@ -338,24 +361,29 @@ Hot patching
 Категориите още могат да се използват за промяна на обекти "в движение", след като вече са били инстанциирани. 
 Например :
 
+```logtalk
 :- object(buggy).
 
     :- public(p/0).
     p :- write(foo).
 
 :- end_object.
+```
 
 Да предположим че обекта изпечатва грешното съобщение p/0 :
 
+```logtalk
 ?- {buggy}.
 yes
 
 ?- buggy::p.
 foo
 yes
+```
 
 Ако кода който описва този обект не е наличен и трябва да коригираме приложението, ние можем просто да създадем категория която да коригира необходимия предикат :
 
+```logtalk
 :- category(patch,
     complements(buggy)).
 
@@ -363,16 +391,18 @@ yes
     p :- write(bar).
 
 :- end_category.
+```
 
 След компилиране и зареждане на категорията ще получим :
 
+```logtalk
 ?- {patch}.
 yes
 
 ?- buggy::p.
 bar
 yes
-
+```
 
 
 Parametric objects and categories
@@ -382,6 +412,7 @@ Parametric objects and categories
 Параметрите са логически променливи достъпни за всички капсулирани предикати. 
 Пример с геометрични кръгове :
 
+```logtalk
 :- object(circle(_Radius, _Color)).
 
     :- public([
@@ -397,28 +428,36 @@ Parametric objects and categories
         Perimeter is 2*pi*Radius.
 
 :- end_object.
+```
 
 Параметричните-обекти се използват като всеки друг обект, обикновенно осигуряваики стойности за параметрите когато изпращаме съобщение.
 
+```logtalk
 ?- circle(1.23, blue)::area(Area).
 Area = 4.75291
 yes
+```
 
 Параметричните-обекти още осигуряват лесен начин за ассоцииране на различни предикати със нормални Prolog предикати.
 Prolog факти могат да бъдат интерпретирани като посредници (proxies).
 Например следните клаузи на circle/2 предикат :
 
+
+```logtalk
 circle(1.23, blue).
 circle(3.71, yellow).
 circle(0.39, green).
 circle(5.74, black).
 circle(8.32, cyan).
+```
 
 можем лесно да изчислим площа на всички кръгове :
 
+```logtalk
 ?- findall(Area, {circle(_, _)}::area(Area), Areas).
 Areas = [4.75291, 43.2412, 0.477836, 103.508, 217.468]
 yes
+```
 
 {Goal}::Message формата доказва(proves) Goal и изпраща съобщение до генерирания термин.
 
@@ -431,6 +470,7 @@ Logtalk поддържа event-driven програмиране чрез дефи
 Мониторите дефинират предикати които ще прихаванат тези събития (before/3 и after/3).
 Нампример следния монитор ще прихаване съобщенията изпратени чрез ::/2  :
 
+```logtalk
 :- object(tracer,
     implements(monitoring)).    % built-in protocol for event handlers
 
@@ -445,9 +485,11 @@ Logtalk поддържа event-driven програмиране чрез дефи
         write(' from '), writeq(Sender), nl.
 
 :- end_object.
+```
 
 Ето как можем да проследим реакцията на изпращане на съобщение :
 
+```logtalk
 ?- list::member(X, [1,2,3]).
 
 call: list <-- member(X, [1,2,3]) from user
@@ -458,6 +500,7 @@ X = 2 ;
 exit: list <-- member(3, [1,2,3]) from user
 X = 3
 yes
+```
 
 Събития могат да се изтрият динамично чрез define_events/5 и abolish_events/5 предикати.
 
@@ -468,18 +511,22 @@ Lambda expressions
 Logtalk поддържа lambda expressions. Lambda параметрите се предават чрез списък към (>>)/2 infix оператор свързвайки ги с lambda.
 Ето няколко примера :
 
+```logtalk
 ?- {library(metapredicates_loader)}.
 yes
 
 ?- meta::map([X,Y]>>(Y is 2*X), [1,2,3], Ys).
 Ys = [2,4,6]
 yes
+```
 
 Currying се поддържа :
 
+```logtalk
 ?- meta::map([X]>>([Y]>>(Y is 2*X)), [1,2,3], Ys).
 Ys = [2,4,6]
 yes
+```
 
 Lambda free variables can be expressed using the extended syntax {Free1, ...}/[Parameter1, ...]>>Lambda.
 
@@ -490,6 +537,7 @@ Lambda free variables can be expressed using the extended syntax {Free1, ...}/[P
 Термини и Цели могат да бъдат пре-интерпретирани (expanded) по време на компилация ако специфицираме hook-обект който дефинира прецедурите на пре-интерпретиране.
 Нека следният обект е записан във фаил source.lgt :
 
+```logtalk
 :- object(source).
 
     :- public(bar/1).
@@ -498,9 +546,11 @@ Lambda free variables can be expressed using the extended syntax {Free1, ...}/[P
     foo(a). foo(b). foo(c).
 
 :- end_object.
+```
 
 и следния hooк-обект е записан в my_macros.lgt, който пре-интерпретира foo/1 предиката :
 
+```logtalk
 :- object(my_macros,
     implements(expanding)).    % built-in protocol for expanding predicates
 
@@ -510,9 +560,11 @@ Lambda free variables can be expressed using the extended syntax {Free1, ...}/[P
     goal_expansion(foo(X), baz(X)).
 
 :- end_object.
+```
 
 След зареждането на файла с макроси ние можем да пре-интерпретираме ползайки hook-флаг за компилатора :
 
+```logtalk
 ?- logtalk_load(my_macros), logtalk_load(source, [hook(my_macros)]).
 yes
 
@@ -521,7 +573,7 @@ X = 97 ;
 X = 98 ;
 X = 99
 true
-
+```
 
 Допылнителна информация (Further information)
 -----------------------------------
