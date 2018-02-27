@@ -106,10 +106,10 @@ example7() {
 }
 
 // Literais são ótimos, mas há uma limitação para o que eles podem ser
-// quando estão fora do corpo de uma função/método. Literals on the outer scope of class
-// or outside of class have to be constant. Strings and numbers are constant
-// by default. But arrays and maps are not. They can be made constant by
-// declaring them "const".
+// quando estão fora do corpo de uma função/método. Literais fora do escopo da classe
+// ou fora da classe têm que ser constantes. Strings e números são constantes
+// por padrão. Mas arrays e mapas não. Eles podem ser declarados como constantes
+// usando o comando "const".
 var example8A = const ["Example8 const array"],
   example8M = const {"someKey": "Example8 const map"};
 example8() {
@@ -117,9 +117,9 @@ example8() {
   print(example8M["someKey"]);
 }
 
-// Loops in Dart take the form of standard for () {} or while () {} loops,
-// slightly more modern for (.. in ..) {}, or functional callbacks with many
-// supported features, starting with forEach.
+// Loops em Dart são criados com  for () {} ou while () {},
+// um pouco mais moderno temos for (.. in ..) {}, ou funções de callbacks com muitas
+// funcionalidades, começando com o forEach.
 var example9A = const ["a", "b"];
 example9() {
   for (var i = 0; i < example9A.length; i++) {
@@ -136,7 +136,7 @@ example9() {
   example9A.forEach((e) => print("Example9 forEach loop '${e}'"));
 }
 
-// To loop over the characters of a string or to extract a substring.
+// Para percorrer os caracteres de uma string ou extrair uma substring.
 var example10S = "ab";
 example10() {
   for (var i = 0; i < example10S.length; i++) {
@@ -147,14 +147,14 @@ example10() {
   }
 }
 
-// Int and double are the two supported number formats.
+// Int e double são os dois formatos de número suportados.
 example11() {
   var i = 1 + 320, d = 3.2 + 0.01;
   print("Example11 int ${i}");
   print("Example11 double ${d}");
 }
 
-// DateTime provides date/time arithmetic.
+// DateTime traz operações com data/hora.
 example12() {
   var now = new DateTime.now();
   print("Example12 now '${now}'");
@@ -162,7 +162,7 @@ example12() {
   print("Example12 tomorrow '${now}'");
 }
 
-// Regular expressions are supported.
+// Expressões regulares são suportadas.
 example13() {
   var s1 = "some string", s2 = "some", re = new RegExp("^s.+?g\$");
   match(s) {
