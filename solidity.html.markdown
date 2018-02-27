@@ -109,10 +109,9 @@ contract SimpleBank { // CapWords
 
     /// @notice Get balance
     /// @return The balance of the user
-    // 'constant' prevents function from editing state variables;
+    // 'view' (ex: constant) prevents function from editing state variables;
     // allows function to run locally/off blockchain
-    // NOTE: 'constant' on functions is an alias to 'view', but this is deprecated and is planned to be dropped in version 0.5.0.
-    function balance() constant public returns (uint) {
+    function balance() view public returns (uint) {
         return balances[msg.sender];
     }
 }
@@ -342,25 +341,26 @@ function increment(uint x, uint y) returns (uint x, uint y) {
 // Call previous functon
 uint (a,b) = increment(1,1);
 
-// 'constant' (alias for 'view')
+// 'view' (alias for 'constant')
 // indicates that function does not/cannot change persistent vars
-// Constant function execute locally, not on blockchain
+// View function execute locally, not on blockchain
+// Noted: constant keyword will soon be deprecated.
 uint y = 1;
 
-function increment(uint x) constant returns (uint x) {
+function increment(uint x) view returns (uint x) {
     x += 1;
     y += 1; // this line would fail
-    // y is a state variable, and can't be changed in a constant function
+    // y is a state variable, and can't be changed in a view function
 }
 
-// 'pure' is more strict than 'constant', and does not
+// 'pure' is more strict than 'view' or 'constant', and does not
 // even allow reading of state vars
 // The exact rules are more complicated, so see more about
-// constant/pure:
+// view/pure:
 // http://solidity.readthedocs.io/en/develop/contracts.html#view-functions
 
 // 'Function Visibility specifiers'
-// These can be placed where 'constant' is, including:
+// These can be placed where 'view' is, including:
 // public - visible externally and internally (default for function)
 // external - only visible externally (including a call made with this.)
 // private - only visible in the current contract
