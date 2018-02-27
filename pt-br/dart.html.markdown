@@ -326,10 +326,10 @@ example23() {
   print("Example23 addTwo(1, 2) results in '${r2}'");
 }
 
-// The Class constructor method uses the same name of the class and
-// takes the form of SomeClass() : super() {}, where the ": super()"
-// part is optional and it's used to delegate constant parameters to the
-// super-parent's constructor.
+// O método construtor da classe usa o mesmo nome da classe e
+// é feito assim SomeClass() : super() {}, onde a parte ": super()"
+// é opcional e é usada para passar parâmetros estáticos para o
+// construtor da classe pai.
 class Example24A {
   var _value;
   Example24A({value: "someValue"}) {
@@ -347,9 +347,9 @@ example24() {
   print("Example24 calling super during constructor '${o2.value}'");
 }
 
-// There's a shortcut to set constructor parameters in case of simpler classes.
-// Just use the this.parameterName prefix and it will set the parameter on
-// an instance variable of same name.
+// Há um atalho para passar parâmetros para o construtor no caso de classes mais simples.
+// Simplesmente use o prefixo this.nomeDoParametro e isso irá passar o parâmetro para uma
+// instância de variável de mesmo nome.
 class Example25 {
   var value, anotherValue;
   Example25({this.value, this.anotherValue});
@@ -360,9 +360,9 @@ example25() {
     "'${o.anotherValue}'");
 }
 
-// Named parameters are available when declared between {}.
-// Parameter order can be optional when declared between {}.
-// Parameters can be made optional when declared between [].
+// Parâmetros com nome estão disponíveis quando declarados entre {}.
+// Quando os parâmetros têm nomes, eles podem ser passados em qualquer ordem.
+// Parâmetros declarados entre [] são opcionais.
 example26() {
   var _name, _surname, _email;
   setConfig1({name, surname}) {
@@ -382,13 +382,13 @@ example26() {
   "email '${_email}'");
 }
 
-// Variables declared with final can only be set once.
-// In case of classes, final instance variables can be set via constant
-// constructor parameter.
+// Variáveis declaradas com um final só podem receber valor uma vez.
+// No caso de classes, variáveis final podem ter valor atribuido através
+// de um parâmetro no construtor
 class Example27 {
   final color1, color2;
-  // A little flexibility to set final instance variables with syntax
-  // that follows the :
+  // Um pouco de flexibilidade ao criar variáveis final com a sintaxe
+  // que é a seguinte:
   Example27({this.color1, color2}) : color2 = color2;
 }
 example27() {
@@ -397,11 +397,11 @@ example27() {
   print("Example27 color is '${o.color1}' and '${o.color2}'");
 }
 
-// To import a library, use import "libraryPath" or if it's a core library,
-// import "dart:libraryName". There's also the "pub" package management with
-// its own convention of import "package:packageName".
-// See import "dart:collection"; at the top. Imports must come before
-// other code declarations. IterableBase comes from dart:collection.
+// para importar uma biblioteca, use import "libraryPath" ou se for uma biblioteca da linguagem,
+// import "dart:libraryName". Também tem o gerenciador de pacotes "pub"que tem 
+// sua própria convenção de import "package:packageName".
+// Veja o import "dart:collection"; no início do arquivo. Imports devem vir no início
+// do arquivo. IterableBase vem de dart:collection.
 class Example28 extends IterableBase {
   var names;
   Example28() {
@@ -414,7 +414,7 @@ example28() {
   o.forEach((name) => print("Example28 '${name}'"));
 }
 
-// For control flow we have:
+// Para controle de fluxo nós temos:
 // * standard switch with must break statements
 // * if-else if-else and ternary ..?..:.. operator
 // * closures and anonymous functions
