@@ -109,7 +109,7 @@ contract SimpleBank { // CapWords
 
     /// @notice Get balance
     /// @return The balance of the user
-    // 'view' (ex: constant) prevents function from editing state variables;
+    // 'view' (ex: 'constant') prevents function from editing state variables;
     // allows function to run locally/off blockchain
     function balance() view public returns (uint) {
         return balances[msg.sender];
