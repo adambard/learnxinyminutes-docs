@@ -109,9 +109,9 @@ contract SimpleBank { // CapWords
 
     /// @notice Get balance
     /// @return The balance of the user
-    // 'constant' prevents function from editing state variables;
+    // 'view' (ex: constant) prevents function from editing state variables;
     // allows function to run locally/off blockchain
-    function balance() constant public returns (uint) {
+    function balance() view public returns (uint) {
         return balances[msg.sender];
     }
 }
@@ -134,7 +134,7 @@ uint constant VERSION_ID = 0x123A1; // A hex constant
 // All state variables (those outside a function)
 // are by default 'internal' and accessible inside contract
 // and in all contracts that inherit ONLY
-// Need to explicitly set to 'public' to allow external contracts to access	
+// Need to explicitly set to 'public' to allow external contracts to access
 int256 public a = 8;
 
 // For int and uint, can explicitly set space in steps of 8 up to 256
@@ -341,25 +341,26 @@ function increment(uint x, uint y) returns (uint x, uint y) {
 // Call previous functon
 uint (a,b) = increment(1,1);
 
-// 'constant' (alias for 'view')
+// 'view' (alias for 'constant')
 // indicates that function does not/cannot change persistent vars
-// Constant function execute locally, not on blockchain
+// View function execute locally, not on blockchain
+// Noted: constant keyword will soon be deprecated.
 uint y = 1;
 
-function increment(uint x) constant returns (uint x) {
+function increment(uint x) view returns (uint x) {
     x += 1;
     y += 1; // this line would fail
-    // y is a state variable, and can't be changed in a constant function
+    // y is a state variable, and can't be changed in a view function
 }
 
-// 'pure' is more strict than 'constant', and does not 
+// 'pure' is more strict than 'view' or 'constant', and does not
 // even allow reading of state vars
 // The exact rules are more complicated, so see more about
-// constant/pure:
+// view/pure:
 // http://solidity.readthedocs.io/en/develop/contracts.html#view-functions
 
 // 'Function Visibility specifiers'
-// These can be placed where 'constant' is, including:
+// These can be placed where 'view' is, including:
 // public - visible externally and internally (default for function)
 // external - only visible externally (including a call made with this.)
 // private - only visible in the current contract
@@ -384,7 +385,7 @@ function depositEther() public payable {
 
 
 // Prefer loops to recursion (max call stack depth is 1024)
-// Also, don't setup loops that you haven't bounded, 
+// Also, don't setup loops that you haven't bounded,
 // as this can hit the gas limit
 
 // B. Events
@@ -401,7 +402,7 @@ event LogSent(address indexed from, address indexed to, uint amount); // note ca
 // Call
 Sent(from, to, amount);
 
-// For an external party (a contract or external entity), to watch using 
+// For an external party (a contract or external entity), to watch using
 // the Web3 Javascript library:
 Coin.Sent().watch({}, '', function(error, result) {
     if (!error) {
@@ -709,7 +710,7 @@ contract CrowdFunder {
         return contributions.length - 1; // return id
     }
 
-    function checkIfFundingCompleteOrExpired() 
+    function checkIfFundingCompleteOrExpired()
     public
     {
         if (totalRaised > minimumToRaise) {
