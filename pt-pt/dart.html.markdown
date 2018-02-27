@@ -176,8 +176,8 @@ example13() {
   match(s2);
 }
 
-// Boolean expressions need to resolve to either true or false, as no
-// implicit conversions are supported.
+// Expressões booleanas precisam retornar ou true ou false, já que
+// Dart não faz a conversão implicitamente.
 example14() {
   var v = true;
   if (v) {
@@ -186,17 +186,17 @@ example14() {
   v = null;
   try {
     if (v) {
-      // Never runs
+      // Nunca seria executada
     } else {
-      // Never runs
+      // Nunca seria executada
     }
   } catch (e) {
     print("Example14 null value causes an exception: '${e}'");
   }
 }
 
-// try/catch/finally and throw are used for exception handling.
-// throw takes any object as parameter;
+// try/catch/finally e throw são usados para tratamento de exceções.
+// throw aceita qualquer objeto como parâmetro;
 example15() {
   try {
     try {
@@ -212,8 +212,8 @@ example15() {
   }
 }
 
-// To be efficient when creating a long string dynamically, use
-// StringBuffer. Or you could join a string array.
+// Para mais eficiência ao criar strings longas dinamicamente, use o
+// StringBuffer. Ou você pode também concatenar um array de strings.
 example16() {
   var sb = new StringBuffer(), a = ["a", "b", "c", "d"], e;
   for (e in a) { sb.write(e); }
@@ -222,53 +222,52 @@ example16() {
   print("Example16 join string array '${a.join()}'");
 }
 
-// Strings can be concatenated by just having string literals next to
-// one another with no further operator needed.
+// Strings podem ser concatenadas apenas colocando strings literais uma perto
+// da outra, sem necessidade de nenhum outro operador.
 example17() {
   print("Example17 "
-      "concatenate "
+      "concatenar "
       "strings "
-      "just like that");
+      "é simples assim");
 }
 
-// Strings have single-quote or double-quote for delimiters with no
-// actual difference between the two. The given flexibility can be good
-// to avoid the need to escape content that matches the delimiter being
-// used. For example, double-quotes of HTML attributes if the string
-// contains HTML content.
+// Strings podem ser delimitadas por apóstrofos ou aspas e não há
+// diferença entre os dois. Essa flexibilidade pode ser boa para
+// evitar a necessidade de escapar conteúdos que contenham o delimitador da string.
+// Por exemplo, aspas dos atributos HTMLse a string conter HTML.
 example18() {
   print('Example18 <a href="etc">'
       "Don't can't I'm Etc"
       '</a>');
 }
 
-// Strings with triple single-quotes or triple double-quotes span
-// multiple lines and include line delimiters.
+// Strings com três apóstrofos ou aspas podem
+// ter muitas linhas e incluem os delimitadores de linha (ou seja, os enter).
 example19() {
   print('''Example19 <a href="etc">
 Example19 Don't can't I'm Etc
 Example19 </a>''');
 }
 
-// Strings have the nice interpolation feature with the $ character.
-// With $ { [expression] }, the return of the expression is interpolated.
-// $ followed by a variable name interpolates the content of that variable.
-// $ can be escaped like so \$ to just add it to the string instead.
+// Strings têm a função de interpolação que é chamada com o caractere $.
+// Com $ { [expression] }, o retorno da expressão é interpolado.
+// $ seguido pelo nome de uma variável interpola o conteúdo dessa variável.
+// $ pode ser escapedo assim \$.
 example20() {
   var s1 = "'\${s}'", s2 = "'\$s'";
   print("Example20 \$ interpolation ${s1} or $s2 works.");
 }
 
-// Optional types allow for the annotation of APIs and come to the aid of
-// IDEs so the IDEs can better refactor, auto-complete and check for
-// errors. So far we haven't declared any types and the programs have
-// worked just fine. In fact, types are disregarded during runtime.
-// Types can even be wrong and the program will still be given the
-// benefit of the doubt and be run as though the types didn't matter.
-// There's a runtime parameter that checks for type errors which is
-// the checked mode, which is said to be useful during development time,
-// but which is also slower because of the extra checking and is thus
-// avoided during deployment runtime.
+// A tipagem opcional permite que APIs usem anotações e também ajuda os
+// IDEs na hora das refatorações, auto-complete e checagem de
+// erros. Note que até agora não declaramos nenhum tipo e o programa está
+// funcionando normalmente. De fato, os tipos são ignorados em tempo de execução.
+// Os tipos podem até mesmo estarem errados e o programa ainda vai dar o
+// benefício da dúvida e rodar, visto que os tipos não importam.
+// Existe um parâmetro que checa erros de tipagem que é o
+// checked mode, dizem que é útil enquanto se está desenvolvendo,
+// mas também é mais lento devido às checagens extras e por isso
+// é evitado em ambiente de produção.
 class Example21 {
   List<String> _names;
   Example21() {
@@ -291,7 +290,7 @@ void example21() {
   print("Example21 names '${o.names}' and length '${o.length}'");
 }
 
-// Class inheritance takes the form of class name extends AnotherClassName {}.
+// Herança em classes é feito assim: class name extends AnotherClassName {}.
 class Example22A {
   var _name = "Some Name!";
   get name => _name;
