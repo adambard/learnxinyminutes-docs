@@ -301,13 +301,13 @@ example22() {
   print("Example22 class inheritance '${o.name}'");
 }
 
-// Class mixin is also available, and takes the form of
-// class name extends SomeClass with AnotherClassName {}.
-// It's necessary to extend some class to be able to mixin another one.
-// The template class of mixin cannot at the moment have a constructor.
-// Mixin is mostly used to share methods with distant classes, so the
-// single inheritance doesn't get in the way of reusable code.
-// Mixins follow the "with" statement during the class declaration.
+// Mistura de classes também é possível, e é feito assim:
+// class name extends SomeClass with AnotherClassName {}
+// É necessário extender uma classe para poder misturar com outra.
+// No momento, classes misturadas não podem ter construtor.
+// Mistura de classes é mais usado para compartilhar métodos com classes distantes, então
+// a herança comum não fica no caminho do reuso de código.
+// As misturas aparecem após o comando "with" na declaração da classe.
 class Example23A {}
 class Example23Utils {
   addTwo(n1, n2) {
