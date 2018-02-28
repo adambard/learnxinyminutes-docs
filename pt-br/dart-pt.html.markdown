@@ -501,8 +501,9 @@ main() {
 
 Dart tem um site bastante fácil de entender. Ele tem os docs da API, tutoriais, artigos e muito mais, incluindo uma
 opção muito útil de testar o Dart online.
-http://www.dartlang.org/
-http://try.dartlang.org/
+* [https://www.dartlang.org](https://www.dartlang.org)
+* [https://try.dartlang.org](https://try.dartlang.org)
+
 
 
 
