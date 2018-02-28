@@ -21,6 +21,7 @@ specific points in the file, and for fast editing.
     :q               # Quit vim
     :w               # Save current file
     :wq              # Save file and quit vim
+    ZZ               # Save file and quit vim
     :q!              # Quit vim without saving file
                      # ! *forces* :q to execute, hence quiting vim without saving
     :x               # Save file and quit vim, shorter version of :wq
@@ -48,6 +49,7 @@ specific points in the file, and for fast editing.
 
     :%s/foo/bar/g    # Change 'foo' to 'bar' on every line in the file
     :s/foo/bar/g     # Change 'foo' to 'bar' on the current line
+    :%s/\n/\r/g      # Replace new line characters with new line characters
 
     # Jumping to characters
 
@@ -167,6 +169,20 @@ A few important examples of 'Verbs', 'Modifiers', and 'Nouns':
     ddp              # Swap position of consecutive lines, dd then p
     .                # Repeat previous action
     :w !sudo tee %   # Save the current file as root
+    :set syntax=c    # Set syntax highlighting to 'c'
+    :sort            # Sort all lines
+    :sort!           # Sort all lines in reverse
+    :sort u          # Sort all lines and remove duplicates
+    ~                # Toggle letter case of selected text
+    u                # Selected text to lower case
+    U                # Selected text to upper case
+    
+    # Fold text
+    zf               # Create fold from selected text
+    zo               # Open current fold
+    zc               # Close current fold
+    zR               # Open all folds
+    zM               # Close all folds
 ```
 
 ## Macros
