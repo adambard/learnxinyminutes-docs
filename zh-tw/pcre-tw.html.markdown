@@ -1,11 +1,10 @@
 ---
 language: PCRE
-filename: pcre.txt
+filename: pcre-tw.txt
 contributors:
     - ["Sachin Divekar", "http://github.com/ssd532"]
 translators:
     - ["Michael Yeh", "https://hinet60613.github.io/"]
-filename: pcre-tw.py
 lang: zh-tw
 ---
 
