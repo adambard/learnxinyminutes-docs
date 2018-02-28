@@ -1,11 +1,12 @@
 ---
 language: html
-filename: learnhtml.html
+filename: learnhtml-nl.html
 contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
     - ["Robert Steed", "https://github.com/robochat"]
     - ["Jeroen Deviaene", "https://github.com/jerodev"]
+lang: nl-nl
 ---
 
 HTML staat voor HyperText Markup Language.
