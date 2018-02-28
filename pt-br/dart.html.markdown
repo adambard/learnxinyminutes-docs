@@ -455,7 +455,7 @@ example30() {
   var gn, tooHigh = false,
     n, n2 = (2.0).toInt(), top = int.parse("123") ~/ n2, bottom = 0;
   top = top ~/ 6;
-  gn = new DM.Random().nextInt(top + 1); // +1 because nextInt top is exclusive
+  gn = new DM.Random().nextInt(top + 1); // +1 porque o máximo do nextInt conta o número passado - 1 
   print("Example30 Diga um número entre 0 e ${top}");
   guessNumber(i) {
     if (n == gn) {
