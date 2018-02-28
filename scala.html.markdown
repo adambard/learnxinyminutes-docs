@@ -276,7 +276,8 @@ r foreach println
 // NB: Scala is quite lenient when it comes to dots and brackets - study the
 // rules separately. This helps write DSLs and APIs that read like English
 
-// Why doesn't `println` need any parameters here? Stay tuned for Functional Programming below!
+// Why doesn't `println` need any parameters here?
+// Stay tuned for first-class functions in the Functional Programming section below!
 (5 to 1 by -1) foreach (println)
 
 // A while loop
