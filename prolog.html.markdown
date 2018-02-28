@@ -111,7 +111,7 @@ magicNumber(42).
 ?- plus(1, 2, 3).                    % True
 ?- plus(1, 2, X).                    % X = 3 because 1+2 = X.
 ?- plus(1, X, 3).                    % X = 2 because 1+X = 3.
-?- plus(X, 2, 3).                    % X = 1 because X+1 = 3.
+?- plus(X, 2, 3).                    % X = 1 because X+2 = 3.
 ?- plus(X, 5, Y).                    % Error - although this could be solved,
                                      % the number of solutions is infinite,
                                      % which most predicates try to avoid.
@@ -237,14 +237,14 @@ nearby3(X,Y) :- nearby2(X,Y).
 
 % Here is the structured comment declaration for nearby3:
 
-%!    nearby3(+X:Int, +Y:Int) is semidet.
+%!    nearby3(+X:Int, +Y:Int) is semideterministic.
 %!    nearby3(+X:Int, -Y:Int) is multi.
 %!    nearby3(-X:Int, +Y:Int) is multi.
 
 % For each variable we list a type. The + or - before the variable name
 % indicates if the parameter is bound (+) or free (-). The word after
 % "is" describes the behaviour of the predicate:
-%   semidet - can succeed once or fail
+%   semideterministic - can succeed once or fail
 %     ( Two specific numbers are either nearby or not )
 %   multi - can succeed multiple times but cannot fail
 %     ( One number surely has at least 3 nearby numbers )
@@ -274,8 +274,8 @@ character(darthVader).        % Creates atom value darthVader
 % Note that below, writeln is used instead of print because print is
 % intended for debugging.
 
-%!    countTo(+X:Int) is det.
-%!    countUpTo(+Value:Int, +Limit:Int) is det.
+%!    countTo(+X:Int) is deterministic.
+%!    countUpTo(+Value:Int, +Limit:Int) is deterministic.
 countTo(X) :- countUpTo(1,X).
 countUpTo(Value, Limit) :- Value = Limit, writeln(Value), !.
 countUpTo(Value, Limit) :- Value \= Limit, writeln(Value),
@@ -288,7 +288,7 @@ countUpTo(Value, Limit) :- Value \= Limit, writeln(Value),
 % IF test. If Value = Limit fails the second declaration is run.
 % There is also a more elegant syntax.
 
-%!    countUpTo2(+Value:Int, +Limit:Int) is det.
+%!    countUpTo2(+Value:Int, +Limit:Int) is deterministic.
 countUpTo2(Value, Limit) :- writeln(Value),
     Value = Limit -> true ; (
         NextValue is Value+1,
@@ -301,14 +301,15 @@ countUpTo2(Value, Limit) :- writeln(Value),
 % called a "failure-driven loop" to do this, but newer ones use a higher
 % order function.
 
-%!    countTo2(+X:Int) is det.
+%!    countTo2(+X:Int) is deterministic.
 countTo2(X) :- forall(between(1,X,Y),writeln(Y)).
 
 ?- countTo2(10).                     % Outputs 1 to 10
 
 % Lists are given in square brackets. Use memberchk to check membership.
 % A group is safe if it doesn't include Joker or does include Batman.
-%!     safe(Group:list(atom)) is det.
+
+%!     safe(Group:list(atom)) is deterministic.
 safe(Group) :- memberchk(joker, Group) -> memberchk(batman, Group) ; true.
 
 ?- safe([robin]).                    % True

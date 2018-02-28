@@ -13,7 +13,9 @@ lang: pt-br
 Brainfuck (em letras minúsculas, exceto no início de frases) é uma linguagem de
 programação Turing-completa extremamente simples com apenas 8 comandos.
 
-```
+Você pode experimentar brainfuck pelo seu browser com [brainfuck-visualizer](http://fatiherikli.github.io/brainfuck-visualizer/).
+
+```bf
 Qualquer caractere exceto "><+-.,[]" (sem contar as aspas) é ignorado.
 
 Brainfuck é representado por um vetor com 30 000 células inicializadas em zero

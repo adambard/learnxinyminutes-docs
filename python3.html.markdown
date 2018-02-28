@@ -209,9 +209,9 @@ li[4]  # Raises an IndexError
 # The start index is included, the end index is not
 # (It's a closed/open range for you mathy types.)
 li[1:3]   # => [2, 4]
-# Omit the end
+# Omit the beginning and return the list
 li[2:]    # => [4, 3]
-# Omit the beginning
+# Omit the end and return the list
 li[:3]    # => [1, 2, 4]
 # Select every second entry
 li[::2]   # =>[1, 4]
