@@ -1,6 +1,6 @@
 ---
 language: nix
-filename: learn.nix
+filename: learn-sv.nix
 contributors:
     - ["Chris Martin", "http://chris-martin.org/"]
 translators:
