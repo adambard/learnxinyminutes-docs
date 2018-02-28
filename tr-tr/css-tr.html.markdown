@@ -8,7 +8,7 @@ contributors:
     - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
     - ["Brett Taylor", "https://github.com/glutnix"]
     - ["Tyler Mumford", "https://tylermumford.com"]
-filename: learncss.css
+filename: learncss-tr.css
 translators:
     - ["Fatih Turan", "http://fatihturan.com"]
 lang: tr-tr
