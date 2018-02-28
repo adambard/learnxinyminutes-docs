@@ -841,7 +841,7 @@ try {
 
 try {
     // Do something
-} catch (\Exception $e) {
+} catch (Exception $e) {
     // Handle exception
 }
 
