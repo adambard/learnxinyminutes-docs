@@ -6,6 +6,7 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
     - ["evuez", "http://github.com/evuez"]
+    - ["Rommel Martinez", "https://ebzzry.io"]
 filename: learnpython3.py
 ---
 
@@ -546,9 +547,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # Use * to expand tuples and use ** to expand kwargs.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args)            # equivalent to foo(1, 2, 3, 4)
-all_the_args(**kwargs)         # equivalent to foo(a=3, b=4)
-all_the_args(*args, **kwargs)  # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args)            # equivalent to all_the_args(1, 2, 3, 4)
+all_the_args(**kwargs)         # equivalent to all_the_args(a=3, b=4)
+all_the_args(*args, **kwargs)  # equivalent to all_the_args(1, 2, 3, 4, a=3, b=4)
 
 # Returning multiple values (with tuple assignments)
 def swap(x, y):
