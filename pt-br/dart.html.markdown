@@ -415,10 +415,10 @@ example28() {
 }
 
 // Para controle de fluxo nós temos:
-// * standard switch with must break statements
-// * if-else if-else and ternary ..?..:.. operator
-// * closures and anonymous functions
-// * break, continue and return statements
+// * switch com comandos break obrigatórios
+// * if-else if-else e se-ternário ..?..:.. 
+// * closures e funções anônimas
+// * comandos break, continue e return
 example29() {
   var v = true ? 30 : 60;
   switch (v) {
@@ -445,25 +445,25 @@ example29() {
     } else {
       continue;
     }
-    // Never gets here.
+    // Nunca chega aqui.
   }
 }
 
-// Parse int, convert double to int, or just keep int when dividing numbers
-// by using the ~/ operation. Let's play a guess game too.
+// Você pode converter string para int, double para int, ou só pegar a parte inteira da divisão
+// usando o comando ~/. Vamos jogar um jogo de adivinhação.
 example30() {
   var gn, tooHigh = false,
     n, n2 = (2.0).toInt(), top = int.parse("123") ~/ n2, bottom = 0;
   top = top ~/ 6;
   gn = new DM.Random().nextInt(top + 1); // +1 because nextInt top is exclusive
-  print("Example30 Guess a number between 0 and ${top}");
+  print("Example30 Diga um número entre 0 e ${top}");
   guessNumber(i) {
     if (n == gn) {
-      print("Example30 Guessed right! The number is ${gn}");
+      print("Example30 Você acertou! O número é ${gn}");
     } else {
       tooHigh = n > gn;
-      print("Example30 Number ${n} is too "
-        "${tooHigh ? 'high' : 'low'}. Try again");
+      print("Example30 O número ${n} é muito "
+        "${tooHigh ? 'alto' : 'baixo'}. Tente de novo");
     }
     return n == gn;
   }
@@ -478,13 +478,13 @@ example30() {
   }
 }
 
-// Programs have only one entry point in the main function.
-// Nothing is expected to be executed on the outer scope before a program
-// starts running with what's in its main function.
-// This helps with faster loading and even lazily loading of just what
-// the program needs to startup with.
+// Programas em Dart só têm um ponto de entrada, que é a função main.
+// Nada será executado antes da funcão main de um programa.
+// Isso ajuda a carregar o programa mais rapidamente, até mesmo quando o
+// carregamento é "Lazy".
+// O programa deve começar com:
 main() {
-  print("Learn Dart in 15 minutes!");
+  print("Aprenda Dart em 15 minutos!");
   [example1, example2, example3, example4, example5, example6, example7,
     example8, example9, example10, example11, example12, example13, example14,
     example15, example16, example17, example18, example19, example20,
@@ -495,10 +495,10 @@ main() {
 
 ```
 
-## Further Reading
+## Continue lendo
 
-Dart has a comprehensive web-site. It covers API reference, tutorials, articles and more, including a
-useful Try Dart online.
+Dart tem um site bastante fácil de entender. Ele tem os docs da API, tutoriais, artigos e muito mais, incluindo uma
+opção muito útil de testar o Dart online.
 http://www.dartlang.org/
 http://try.dartlang.org/
 
