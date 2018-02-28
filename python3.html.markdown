@@ -790,11 +790,11 @@ class Superhero(Human):
         # This calls the parent class constructor:
         super().__init__(name)
 
-    # overload the sing method
+    # override the sing method
     def sing(self):
         return 'Dun, dun, DUN!'
 
-    # add an additional class method
+    # add an additional instance method
     def boast(self):
         for power in self.superpowers:
             print("I wield the power of {pow}!".format(pow=power))
@@ -817,7 +817,7 @@ if __name__ == '__main__':
     # Calls parent method but uses its own class attribute
     print(sup.get_species())    # => Superhuman
 
-    # Calls overloaded method
+    # Calls overridden method
     print(sup.sing())           # => Dun, dun, DUN!
 
     # Calls method from Human
@@ -872,7 +872,7 @@ class Batman(Superhero, Bat):
 
     def __init__(self, *args, **kwargs):
         # Typically to inherit attributes you have to call super:
-        #super(Batman, self).__init__(*args, **kwargs)      
+        # super(Batman, self).__init__(*args, **kwargs)      
         # However we are dealing with multiple inheritance here, and super()
         # only works with the next base class in the MRO list.
         # So instead we explicitly call __init__ for all ancestors.
@@ -901,7 +901,7 @@ if __name__ == '__main__':
     # Calls parent method but uses its own class attribute
     print(sup.get_species())    # => Superhuman
 
-    # Calls overloaded method
+    # Calls overridden method
     print(sup.sing())           # => nan nan nan nan nan batman!
 
     # Calls method from Human, because inheritance order matters
