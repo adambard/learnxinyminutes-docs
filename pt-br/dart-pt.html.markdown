@@ -1,9 +1,11 @@
 ---
 language: dart
-filename: learndart.dart
+filename: learndart-pt.dart
 contributors:
     - ["Joao Pedrosa", "https://github.com/jpedrosa/"]
+translators:
     - ["Junior Damacena", "https://github.com/jdamacena/"]
+lang: pt-br
 ---
 
 Dart é uma novata no reino das linguagens de programação.
