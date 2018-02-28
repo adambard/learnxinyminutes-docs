@@ -44,8 +44,6 @@ import java.util.ArrayList;
 // Import all classes inside of java.security package
 import java.security.*;
 
-// Each .java file contains one outer-level public class, with the same name
-// as the file.
 public class LearnJava {
 
     // In order to run a java program, it must have a main method as an entry
