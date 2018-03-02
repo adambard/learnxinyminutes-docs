@@ -153,7 +153,7 @@ var pairToTuple = function<T>(p: Pair<T>) {
 var tuple = pairToTuple({ item1:"hello", item2:"world"});
 
 // 引用定义文件
-// <reference path="jquery.d.ts" />
+/// <reference path="jquery.d.ts" />
 
 // 模板字符串(使用反引号的字符串)
 // 嵌入变量的模板字符串
