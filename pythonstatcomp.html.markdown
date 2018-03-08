@@ -38,18 +38,16 @@ r.text  # raw page source
 print(r.text)  # prettily formatted
 # save the page source in a file:
 os.getcwd()  # check what's the working directory
-f = open("learnxinyminutes.html", "wb")
-f.write(r.text.encode("UTF-8"))
-f.close()
+with open("learnxinyminutes.html", "wb") as f:
+    f.write(r.text.encode("UTF-8"))
 
 # downloading a csv
 fp = "https://raw.githubusercontent.com/adambard/learnxinyminutes-docs/master/"
 fn = "pets.csv"
 r = requests.get(fp + fn)
 print(r.text)
-f = open(fn, "wb")
-f.write(r.text.encode("UTF-8"))
-f.close()
+with open(fn, "wb") as f:
+    f.write(r.text.encode("UTF-8"))
 
 """ for more on the requests module, including APIs, see
     http://docs.python-requests.org/en/latest/user/quickstart/
@@ -71,8 +69,8 @@ pets
 # 1  vesuvius    6      23    fish
 # 2       rex    5      34     dog
 
-""" R users: note that Python, like most normal programming languages, starts
-    indexing from 0. R is the unusual one for starting from 1.
+""" R users: note that Python, like most C-influenced programming languages, starts
+    indexing from 0. R starts indexing at 1 due to Fortran influnce.
 """
 
 # two different ways to print out a column
