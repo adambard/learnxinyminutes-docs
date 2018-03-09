@@ -70,7 +70,7 @@ pets
 # 2       rex    5      34     dog
 
 """ R users: note that Python, like most C-influenced programming languages, starts
-    indexing from 0. R starts indexing at 1 due to Fortran influnce.
+    indexing from 0. R starts indexing at 1 due to Fortran influence.
 """
 
 # two different ways to print out a column
