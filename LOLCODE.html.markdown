@@ -5,7 +5,7 @@ contributors:
     - ["abactel", "https://github.com/abactel"]
 ---
 
-LOLCODE is an esoteric programming language designed to resemble the speech of [lolcats](https://upload.wikimedia.org/wikipedia/commons/a/ab/Lolcat_in_folder.jpg?1493656347257).
+LOLCODE is an esoteric programming language designed to resemble the speech of [lolcats](https://en.wikipedia.org/wiki/Lolcat).
 
 ```
 BTW This is an inline comment
@@ -69,8 +69,8 @@ BOTH OF WIN AN WIN           BTW and: WIN if x=WIN, y=WIN
 EITHER OF FAIL AN WIN        BTW or: FAIL if x=FAIL, y=FAIL
 WON OF WIN AN FAIL           BTW xor: FAIL if x=y
 NOT FAIL                     BTW unary negation: WIN if x=FAIL
-ALL OF WIN AN WIN MKAY   BTW infinite arity AND
-ANY OF WIN AN FAIL MKAY  BTW infinite arity OR
+ALL OF WIN AN WIN MKAY       BTW infinite arity AND
+ANY OF WIN AN FAIL MKAY      BTW infinite arity OR
 
 BTW Comparison:
 
