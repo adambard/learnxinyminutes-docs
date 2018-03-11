@@ -98,7 +98,7 @@ false
 # You can put any Julia expression inside the parentheses.
 
 # Another way to format strings is the printf macro.
-@printf "%d is less than %f" 4.5 5.3 # 5 is less than 5.300000
+@printf "%d is less than %f" 4.5 5.3 # 4.5 is less than 5.300000
 
 # Printing is easy
 println("I'm Julia. Nice to meet you!")

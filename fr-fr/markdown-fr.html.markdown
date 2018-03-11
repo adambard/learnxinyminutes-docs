@@ -14,7 +14,7 @@ Faites moi autant de retours que vous voulez! Sentez vous libre de "forker"
 et envoyer des pull request!
 
 
-```markdown
+```md
 <!-- Markdown est une sorte de cousin du HTML, si bien que tout document HTML 
 est un document Markdown valide. Autrement dit, vous pouvez utiliser des 
 balises HTML dans un fichier Markdown, comme la balise commentaire dans 

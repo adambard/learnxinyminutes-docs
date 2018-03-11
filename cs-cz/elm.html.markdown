@@ -75,8 +75,8 @@ List.head [] -- Nothing
 
 -- K získání hodnot z dvojice použijte funkce first a second.
 -- (Toto je pouze zkratka. Brzy si ukážeme, jak na to "správně".)
-fst ("elm", 42) -- "elm"
-snd ("elm", 42) -- 42
+Tuple.first ("elm", 42) -- "elm"
+Tuple.second ("elm", 42) -- 42
 
 -- Prázná n-tice, neboli "unit", se občas používá jako zástupný symbol.
 -- Je to jediná hodnota svého typu, který se také nazývá "Unit".

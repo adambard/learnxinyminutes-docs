@@ -13,10 +13,11 @@ This is a tutorial on how to do some typical statistical programming tasks using
 
 # 0. Getting set up ====
 
-""" Get set up with IPython and pip install the following: numpy, scipy, pandas,
+""" To get started, pip install the following: jupyter, numpy, scipy, pandas,
     matplotlib, seaborn, requests.
-        Make sure to do this tutorial in the IPython notebook so that you get
-    the inline plots and easy documentation lookup.
+        Make sure to do this tutorial in a Jupyter notebook so that you get
+    the inline plots and easy documentation lookup. The shell command to open 
+    one is simply `jupyter notebook`, then click New -> Python.
 """
 
 # 1. Data acquisition ====

@@ -83,6 +83,25 @@ echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"}
 # This works for null (Foo=) and empty string (Foo=""); zero (Foo=0) returns 0.
 # Note that it only returns default value and doesn't change variable value.
 
+# Declare an array with 6 elements
+array0=(one two three four five six)
+# Print first element
+echo $array0 # => "one"
+# Print first element
+echo ${array0[0]} # => "one"
+# Print all elements
+echo ${array0[@]} # => "one two three four five six"
+# Print number of elements
+echo ${#array0[@]} # => "6"
+# Print number of characters in third element
+echo ${#array0[2]} # => "5"
+# Print 2 elements starting from forth
+echo ${array0[@]:3:2} # => "four five"
+# Print all elements. Each of them on new line.
+for i in "${array0[@]}"; do
+    echo "$i"
+done
+
 # Brace Expansion { }
 # Used to generate arbitrary strings
 echo {1..10} # => 1 2 3 4 5 6 7 8 9 10
@@ -154,6 +173,13 @@ if [ "$Name" == "Daniya" ] || [ "$Name" == "Zach" ]
 then
     echo "This will run if $Name is Daniya OR Zach."
 fi
+
+# Redefine command 'ping' as alias to send only 5 packets
+alias ping='ping -c 5'
+# Escape alias and use command with this name instead
+\ping 192.168.1.1
+# Print all aliases
+alias -p
 
 # Expressions are denoted with the following format:
 echo $(( 10 + 5 )) # => 15

@@ -7,6 +7,7 @@ contributors:
     - ["evuez", "http://github.com/evuez"]
     - ["asyne", "https://github.com/justblah"]
     - ["habi", "http://github.com/habi"]
+    - ["Rommel Martinez", "https://ebzzry.io"]
 filename: learnpython.py
 ---
 
@@ -508,9 +509,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # Use * to expand positional args and use ** to expand keyword args.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args)  # equivalent to foo(1, 2, 3, 4)
-all_the_args(**kwargs)  # equivalent to foo(a=3, b=4)
-all_the_args(*args, **kwargs)  # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args)  # equivalent to all_the_args(1, 2, 3, 4)
+all_the_args(**kwargs)  # equivalent to all_the_args(a=3, b=4)
+all_the_args(*args, **kwargs)  # equivalent to all_the_args(1, 2, 3, 4, a=3, b=4)
 
 
 # you can pass args and kwargs along to other functions that take args/kwargs
