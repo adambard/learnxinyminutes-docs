@@ -143,82 +143,83 @@ undefined; // menandakan sesuatu yang belum/atau tidak ada (meskipun
 ///////////////////////////////////
 // 2. Variables, Arrays and Objects
 
-// Variables are declared with the `var` keyword. JavaScript is dynamically
-// typed, so you don't need to specify type. Assignment uses a single `=`
-// character.
+// sebuah variable dideklarasikan dengan keyword `var`. JavaScript memiliki
+// type data dinamis, sehingga anda tidak perlu menentukan tipe datanya. 
+// Assignment dilakukan menggunakan '='.
 var someVar = 5;
 
-// If you leave the var keyword off, you won't get an error...
+// jika anda lupa akan 'var', anda tidak akan mendapat error...
 someOtherVar = 10;
 
-// ...but your variable will be created in the global scope, not in the scope
-// you defined it in.
+// ...tapi variable yang anda dapat diakses secara global (global scope), tidak pada
+// scope yang seharusnya.
 
-// Variables declared without being assigned to are set to undefined.
+// Variabel yang dideklarasikan tanpa di assign memiliki tipe data undefined.
 var someThirdVar; // = undefined
 
-// If you want to declare a couple of variables, then you could use a comma
-// separator
+// jika ingin mendeklarasikan beberapa variable, hanya perlu menggunakan
+// pembatas koma
 var someFourthVar = 2, someFifthVar = 4;
 
-// There's shorthand for performing math operations on variables:
-someVar += 5; // equivalent to someVar = someVar + 5; someVar is 10 now
-someVar *= 10; // now someVar is 100
+// terdapat beberapa singkatan dalam operasi matematika:
+someVar += 5; // sama saja dengan someVar = someVar + 5; someVar = 10
+someVar *= 10; // someVar = 100
 
-// and an even-shorter-hand for adding or subtracting 1
-someVar++; // now someVar is 101
-someVar--; // back to 100
+// singkatan yang lebih pendek untuk penjumlahan dan pengurangan dengan 1
+someVar++; // sekarang someVar adalah 101
+someVar--; // kembali menjadi 100
 
-// Arrays are ordered lists of values, of any type.
+// Array adalah himpunan terurut dari object apapun.
 var myArray = ["Halo", 45, true];
 
-// Their members can be accessed using the square-brackets subscript syntax.
-// Array indices start at zero.
+// isi dari sebuah array dapat diakses dengan menggunakan [].
+// array memiliki indeks dari 0.
 myArray[1]; // = 45
 
-// Arrays are mutable and of variable length.
+// array dapat diubah dan memiliki panjang.
 myArray.push("World");
 myArray.length; // = 4
 
-// Add/Modify at specific index
+// menambahkan atau merubah isi array
 myArray[3] = "Halo";
 
-// Add and remove element from front or back end of an array
-myArray.unshift(3); // Add as the first element
-someVar = myArray.shift(); // Remove first element and return it
-myArray.push(3); // Add as the last element
-someVar = myArray.pop(); // Remove last element and return it
+// menambahkan atau membuang isi array pada awal atau akhir array
+myArray.unshift(3); // menambahkan pada awal array
+someVar = myArray.shift(); // membuang array pada posisi awal dan me-return-kannya
+myArray.push(3); // menambahkan array pada posisi akhir
+someVar = myArray.pop(); // membuang array pada posisi akhir dan me-return-kannya
 
-// Join all elements of an array with semicolon
+// menyatukan semua array dengan ';'
 var myArray0 = [32,false,"js",12,56,90];
 myArray0.join(";") // = "32;false;js;12;56;90"
 
-// Get subarray of elements from index 1 (include) to 4 (exclude)
+// mengakses subarray dari indeks 1 (include) ke 4 (exclude)
 myArray0.slice(1,4); // = [false,"js",12]
 
-// Remove 4 elements starting from index 2, and insert there strings
-// "hi","wr" and "ld"; return removed subarray
+// membuang 4 elemen mulai dari indeks 2, dan menambahkan string
+// "hi","wr" dan "ld"; me-return subarray
 myArray0.splice(2,4,"hi","wr","ld"); // = ["js",12,56,90]
 // myArray0 === [32,false,"hi","wr","ld"]
 
-// JavaScript's objects are equivalent to "dictionaries" or "maps" in other
-// languages: an unordered collection of key-value pairs.
+// JavaScript memiliki objek yang mirip dengan "dictionaries" atau "maps" pada
+// language lain: sebuah koleksi key-value pair.
 var myObj = {key1: "Hello", key2: "World"};
 
-// Keys are strings, but quotes aren't required if they're a valid
-// JavaScript identifier. Values can be any type.
+// Key adalah string, tapi kutip tidak diperlukan selama valid sebagai
+// JavaScript identifier. Values bisa bertipe apa saja.
 var myObj = {myKey: "myValue", "my other key": 4};
 
-// Object attributes can also be accessed using the subscript syntax,
+// atribut dari object dapat diakses menggunakan [],
 myObj["my other key"]; // = 4
 
-// ... or using the dot syntax, provided the key is a valid identifier.
+// ... atau menggunakan titik, jika terdapat  key sebagai indentifier yang valid.
 myObj.myKey; // = "myValue"
 
-// Objects are mutable; values can be changed and new keys added.
+// Object dapat diubah; value dapat diubah dan menambahkan key baru.
 myObj.myThirdKey = true;
 
-// If you try to access a value that's not yet set, you'll get undefined.
+// jika kamu mencoba mengakses value yang tidak ada, kamu akan mendapat 
+//data berupa undefined.
 myObj.myFourthKey; // = undefined
 
 ///////////////////////////////////
