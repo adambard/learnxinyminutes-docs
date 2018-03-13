@@ -374,8 +374,8 @@ disp('Hello World') % Print out a string
 fprintf % Print to Command Window with more control
 
 % Conditional statements (the parentheses are optional, but good style)
-if (a > 15)
-	disp('Greater than 15')
+if (a > 23)
+	disp('Greater than 23')
 elseif (a == 23)
 	disp('a is 23')
 else
