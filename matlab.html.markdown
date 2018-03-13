@@ -545,7 +545,7 @@ ans = multiplyLatBy(a,3)
 
 % The method can also be called using dot notation. In this case, the object 
 % does not need to be passed to the method.
-ans = a.multiplyLatBy(a,1/3)
+ans = a.multiplyLatBy(1/3)
 
 % Matlab functions can be overloaded to handle objects. 
 % In the method above, we have overloaded how Matlab handles 
