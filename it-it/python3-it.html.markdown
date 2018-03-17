@@ -9,9 +9,9 @@ contributors:
     - ["evuez", "http://github.com/evuez"]
     - ["Rommel Martinez", "https://ebzzry.io"]
 translators:
+    - ["Draio", "http://github.com/Draio/"]
     - ["Ale46", "http://github.com/Ale46/"]
     - ["Tommaso Pifferi", "http://github.com/neslinesli93/"]
-    - ["Draio", "http://github.com/Draio/"]
 lang: it-it    
 ---
 
@@ -180,13 +180,13 @@ variabile_stringa_input  = input("Inserisci del testo: ") # Restituisce i dati l
 # Non c'è bisogno di dichiarare una variabile per assegnarle un valore
 # Come convenzione, per i nomi delle variabili, si utilizzano i caratteri 
 # minuscoli separati, se necessario, da underscore
-una_variabile = 5
-una_variabile  # => 5
+some_var = 5
+some_var          # => 5
 
 # Accedendo ad una variabile non precedentemente assegnata genera un'eccezione.
 # Dai un'occhiata al Control Flow per imparare di più su come gestire 
 # le eccezioni.
-un_altra_variabile  # Genera un errore di nome
+some_unknown_var  # Genera un errore di nome
 
 # if può essere usato come un'espressione
 # È l'equivalente dell'operatore ternario in C
@@ -195,7 +195,7 @@ un_altra_variabile  # Genera un errore di nome
 # Le liste immagazzinano sequenze
 li = []
 # Puoi partire con una lista pre-riempita
-altra_li = [4, 5, 6]
+other_li = [4, 5, 6]
 
 # Aggiungere alla fine di una lista con append
 li.append(1)    # li ora è [1]
@@ -247,11 +247,11 @@ li.index(2)  # => 1
 li.index(7)  # Emette un ValueError, poichè 7 non è contenuto nella lista
 
 # Puoi sommare le liste
-# Nota: i valori per li e per altra_li non vengono modificati.
-li + altra_li  # => [1, 2, 3, 4, 5, 6]
+# Nota: i valori per li e per other_li non vengono modificati.
+li + other_li  # => [1, 2, 3, 4, 5, 6]
 
 # Concatena le liste con "extend()"
-li.extend(altra_li)  # Adesso li è [1, 2, 3, 4, 5, 6]
+li.extend(other_li)  # Adesso li è [1, 2, 3, 4, 5, 6]
 
 # Controlla l'esistenza di un valore in una lista con "in"
 1 in li   # => True
@@ -286,83 +286,83 @@ g = 4, 5, 6             # => (4, 5, 6)
 e, d = d, e             # d è ora 5 ed e è ora 4
 
 # I dizionari memorizzano insiemi di dati indicizzati da nomi arbitrari (chiavi)
-dizio_vuoto= {}
+empty_dict= {}
 # Questo è un dizionario pre-caricato
-dizio_pieno = {"uno": 1, "due": 2, "tre": 3}
+filled_dict = {"uno": 1, "due": 2, "tre": 3}
 
 # Nota: le chiavi  dei dizionari devono essere di tipo immutabile. Questo per
 # assicurare che le chiavi possano essere convertite in calori hash costanti 
 # per un risposta più veloce.
-dizio_nonvalido = {[1,2,3]: "123"}  # => Emette un TypeError: unhashable type: 'list'
-dizio_valido = {(1,2,3):[1,2,3]}   # I valori, invece, possono essere di qualunque tipo
+invalid_dict = {[1,2,3]: "123"}  # => Emette un TypeError: unhashable type: 'list'
+valid_dict = {(1,2,3):[1,2,3]}   # I valori, invece, possono essere di qualunque tipo
 
 # Accedi ai valori indicando la chiave tra []
-dizio_pieno["uno"]   # => 1
+filled_dict["uno"]   # => 1
 
 # Puoi ottenere tutte le chiavi di un dizionario con "keys()" 
 # (come oggetto iterabile). Per averle in formato lista è necessario 
 # utilizzare list().
 # Nota - Nei dizionari l'ordine delle chiavi non è garantito.
 # Il tuo risultato potrebbe non essere uguale a questo.
-list(dizio_pieno.keys())  # => ["tre", "due", "uno"]
+list(filled_dict.keys())  # => ["tre", "due", "uno"]
 
 
 # Puoi ottenere tutti i valori di un dizionario con "values()" 
 # (come oggetto iterabile). 
 # Anche in questo caso, er averle in formato lista, è necessario utilizzare list()
 # Anche in questo caso, come per le chiavi, l'ordine non è garantito
-list(dizio_pieno.values())  # => [3, 2, 1]
+list(filled_dict.values())  # => [3, 2, 1]
 
 # Controlla l'esistenza delle chiavi in un dizionario con "in"
-"uno" in dizio_pieno   # => True
-1 in dizio_pieno       # => False
+"uno" in filled_dict   # => True
+1 in filled_dict       # => False
 
 # Cercando una chiave non esistente genera un KeyError
-dizio_pieno["quattro"]   # KeyError
+filled_dict["quattro"]   # KeyError
 
 # Usa il metodo "get()" per evitare KeyError
-dizio_pieno.get("uno")      # => 1
-dizio_pieno.get("quattro")  # => None
+filled_dict.get("uno")      # => 1
+filled_dict.get("quattro")  # => None
 # Il metodo get supporta un argomento di default quando il valore è mancante
-dizio_pieno.get("uno", 4)   # => 1
-dizio_pieno.get("quattro", 4)   # => 4
+filled_dict.get("uno", 4)   # => 1
+filled_dict.get("quattro", 4)   # => 4
 
 
 # "setdefault()" inserisce un valore per una chiave in un dizionario 
 # solo se la chiave data non è già presente
-dizio_pieno.setdefault("cinque", 5)  # dizio_pieno["cinque"] viene impostato a 5
-dizio_pieno.setdefault("cinque", 6)  # dizio_pieno["cinque"] rimane 5
+filled_dict.setdefault("cinque", 5)  # filled_dict["cinque"] viene impostato a 5
+filled_dict.setdefault("cinque", 6)  # filled_dict["cinque"] rimane 5
 
 # Aggiungere una coppia chiave->valore a un dizionario
-dizio_pieno.update({"quattro":4})  # => {"uno": 1, "due": 2, "tre": 3, "quattro": 4}
-dizio_pieno["quattro"] = 4         # un altro modo pe aggiungere a un dizionario
+filled_dict.update({"quattro":4})  # => {"uno": 1, "due": 2, "tre": 3, "quattro": 4}
+filled_dict["quattro"] = 4         # un altro modo pe aggiungere a un dizionario
 
 # Rimuovi una chiave da un dizionario con del
-del dizio_pieno["uno"]  # Rimuove la chiave "uno" dal dizionario
+del filled_dict["uno"]  # Rimuove la chiave "uno" dal dizionario
 
 # Da Python 3.5 puoi anche usare ulteriori opzioni di spacchettamento
 {'a': 1, **{'b': 2}}  # => {'a': 1, 'b': 2}
 {'a': 1, **{'a': 2}}  # => {'a': 2}
 
 # I set sono come le liste ma non possono contenere doppioni
-set_vuoto = set()
+empty_set = set()
 # Inizializza un "set()" con un dei valori. Sì, sembra un dizionario.
-set_pieno = {1, 1, 2, 2, 3, 4}  # set_nuovo è {1, 2, 3, 4}
+some_set = {1, 1, 2, 2, 3, 4}  # set_nuovo è {1, 2, 3, 4}
 
 # Come le chiavi di un dizionario, gli elementi di un set devono essere 
 # di tipo immutabile
-set_nonvalido = {[1], 1}  # => Genera un "TypeError: unhashable type: 'list'""
-set_valido = {(1,), 1}
+invalid_set = {[1], 1}  # => Genera un "TypeError: unhashable type: 'list'""
+valid_set = {(1,), 1}
 
 # Aggiungere uno o più elementi ad un set
-set_pieno.add(5)  # set_pieno ora è  {1, 2, 3, 4, 5}
+some_set.add(5)  # some_set ora è  {1, 2, 3, 4, 5}
 
 # Fai intersezioni su un set con &
-set_altro = {3, 4, 5, 6}
-set_pieno & set_altro  # => {3, 4, 5}
+other_set = {3, 4, 5, 6}
+some_set & other_set  # => {3, 4, 5}
 
 # Fai unioni su set con |
-set_pieno | set_altro  # => {1, 2, 3, 4, 5, 6}
+some_set | other_set  # => {1, 2, 3, 4, 5, 6}
 
 # Fai differenze su set con -
 {1, 2, 3, 4} - {2, 3, 5}  # => {1, 4}
@@ -377,8 +377,8 @@ set_pieno | set_altro  # => {1, 2, 3, 4, 5, 6}
 {1, 2} <= {1, 2, 3} # => True
 
 # Controlla l'esistenza in un set con in
-2 in set_pieno   # => True
-10 in set_pieno  # => False
+2 in some_set   # => True
+10 in some_set  # => False
 
 
 
@@ -480,35 +480,35 @@ with open("myfile.txt") as f:
 # sequenza è definito un oggetto Iterable (itarabile).
 # L'oggetto restituito da una funzione range è un iterabile.
 
-dizio_pieno = {"uno": 1, "due": 2, "tre": 3}
-ogg_iterabile = dizio_pieno.keys()
-print(ogg_iterabile)  # => dict_keys(['uno', 'due', 'tre']). 
+filled_dict = {"uno": 1, "due": 2, "tre": 3}
+our_iterable = filled_dict.keys()
+print(our_iterable)  # => dict_keys(['uno', 'due', 'tre']). 
 # Questo è un oggetto che implementa la nostra interfaccia Iterable.
 
 # È possibile utilizzarlo con i loop:
-for i in ogg_iterabile:
+for i in our_iterable:
     print(i)  # Scrive uno, due, tre
 
 # Tuttavia non possiamo recuperarne i valori tramite indice.
-ogg_iterabile[1]  # Genera un TypeError
+our_iterable[1]  # Genera un TypeError
 
 # Un oggetto iterabile è in grado di generare un iteratore
-ogg_iteratore = iter(ogg_iterabile)
+our_iterator = iter(our_iterable)
 
 # L'iteratore è un oggetto che ricorda il suo stato mentro lo si "attraversa"
 # Possiamo accedere al successivo elemento con "next()".
-next(ogg_iteratore)  # => "uno"
+next(our_iterator)  # => "uno"
 
 # Mantiene il suo stato mentro eseguiamo l'iterazione
-next(ogg_iteratore)  # => "due"
-next(ogg_iteratore)  # => "tre"
+next(our_iterator)  # => "due"
+next(our_iterator)  # => "tre"
 
 # Dopo che un iteratore ha restituito tutti i suoi dati, genera 
 # un'eccezione StopIteration 
-next(ogg_iteratore)  # Raises StopIteration
+next(our_iterator)  # Raises StopIteration
 
 # Puoi prendere tutti gli elementi di un iteratore utilizzando list().
-list(dizio_pieno.keys())  # => Returns ["one", "two", "three"]
+list(filled_dict.keys())  # => Returns ["one", "two", "three"]
 
 
 
