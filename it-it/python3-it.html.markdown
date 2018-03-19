@@ -44,7 +44,7 @@ Nota: Questo articolo è riferito a Python 3 in modo specifico. Se volete avete 
 10 * 2  # => 20
 35 / 5  # => 7.0
 
-# Result of integer division truncated down both for positive and negative.
+# Risultato della divisione intera troncata sia in positivo che in negativo
 5 // 3       # => 1
 5.0 // 3.0   # => 1.0 # works on floats too
 -5 // 3      # => -2
@@ -167,7 +167,7 @@ bool(())  # => False
 # Python ha una funzione per scrivere (sul tuo schermo)
 print("Sono Python. Piacere di conoscerti!")  # => Sono Python. Piacere di conoscerti!
 
-# Di default la funzione print scrive e va a capo aggiungendo un carattere 
+# Di default la funzione print() scrive e va a capo aggiungendo un carattere 
 # newline alla fine della stringa. È possibile utilizzare l'argomento opzionale
 # end per cambiare quest'ultimo carattere aggiunto.
 print("Hello, World", end="!")  # => Hello, World!
@@ -278,7 +278,7 @@ tup[:2]          # => (1, 2)
 2 in tup         # => True
 
 # Puoi scompattare le tuple (o liste) in variabili
-a, b, c = (1, 2, 3)     # a è ora 1, b è ora 2 and c è ora 3
+a, b, c = (1, 2, 3)     # a è ora 1, b è ora 2 e c è ora 3
 d, e, f = 4, 5, 6       # puoi anche omettere le parentesi
 # Le tuple sono create di default se non usi le parentesi
 g = 4, 5, 6             # => (4, 5, 6)
@@ -408,8 +408,8 @@ Il seguente codice scriverà:
     topo è un mammifero
 """
 for animale in ["cane", "gatto", "topo"]:
-    # Puoi usare {0} per interpolare le stringhe formattate.
-    print "{0} è un mammifero".format(animale)
+    # Puoi usare format() per interpolare le stringhe formattate.
+    print("{} is a mammal".format(animal))
 
 """
 "range(numero)" restituisce una lista di numeri da zero al numero dato
@@ -420,7 +420,7 @@ Il seguente codice scriverà:
     3
 """
 for i in range(4):
-    print i
+    print(i)
 
 """
 "range(lower, upper)" restituisce una lista di numeri dal più piccolo (lower)
@@ -432,7 +432,7 @@ Il seguente codice scriverà:
     7
 """
 for i in range(4, 8):
-    print i
+    print(i)
 
 """
 "range(lower, upper, step)" rrestituisce una lista di numeri dal più piccolo 
@@ -467,14 +467,14 @@ except IndexError as e:
 except (TypeError, NameError):
     pass    # Eccezioni multiple possono essere gestite tutte insieme, se necessario.
 else:   # Clausola opzionale al blocco try/except. Deve essere dopo tutti i blocchi except
-    print "Tutto ok!"   # Viene eseguita solo se il codice dentro try non genera eccezioni
+    print("Tutto ok!")   # Viene eseguita solo se il codice dentro try non genera eccezioni
 finally: #  Eseguito sempre
-    print "Possiamo liberare risorse qui"
+    print("Possiamo liberare risorse qui")
 
 # Se ti serve solo un try/finally, per liberare risorse, puoi usare il metodo with
 with open("myfile.txt") as f:
     for line in f:
-        print line
+        print(line)
 
 # In Python qualunque oggetto in grado di essere trattato come una 
 # sequenza è definito un oggetto Iterable (itarabile).
@@ -544,8 +544,8 @@ keyword_args(big="foot", loch="ness")   # => {"big": "foot", "loch": "ness"}
 
 # Puoi farle entrambi in una volta, se ti va
 def all_the_args(*args, **kwargs):
-    print args
-    print kwargs
+    print(args)
+    print(kwargs)
 """
 all_the_args(1, 2, a=3, b=4) stampa:
     (1, 2)
@@ -674,11 +674,11 @@ class Human:
     species = "H. sapiens"
 
     # Si noti che i doppi underscore iniziali e finali denotano gli oggetti o
-    # attributi utilizzati da Python ma che vivono nel namespace controllato 
+    # attributi utilizzati da Python ma che vivono nel namespace controllato 
     # dall'utente
-    # Metodi, oggetti o attributi come: __init__, __str__, __repr__, etc. sono
-    # chiamati metodi speciali (o talvolta chiamati "dunder methods").
-    # Non dovresti inventare tali nomi da solo.
+    # Metodi, oggetti o attributi come: __init__, __str__, __repr__, etc. sono
+    # chiamati metodi speciali (o talvolta chiamati "dunder methods").
+    # Non dovresti inventare tali nomi da solo.
 
     def __init__(self, name):
         # Assegna l'argomento all'attributo name dell'istanza
