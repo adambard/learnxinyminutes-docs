@@ -101,7 +101,7 @@ int main (int argc, char** argv)
   char y_char = 'y'; // Char literals are quoted with ''
 
   // longs are often 4 to 8 bytes; long longs are guaranteed to be at least
-  // 64 bits
+  // 8 bytes
   long x_long = 0;
   long long x_long_long = 0;
 
