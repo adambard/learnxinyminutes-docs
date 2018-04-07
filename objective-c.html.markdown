@@ -807,10 +807,6 @@ __unsafe_unretained NSArray *unsafeArray; // Like __weak, but unsafeArray not se
 
 [Wikipedia Objective-C](http://en.wikipedia.org/wiki/Objective-C)
 
-[Programming with Objective-C. Apple PDF book](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/ProgrammingWithObjectiveC.pdf)
-
-[Programming with Objective-C for iOS](https://developer.apple.com/library/ios/documentation/General/Conceptual/DevPedia-CocoaCore/ObjectiveC.html)
-
-[Programming with Objective-C for Mac OSX](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html)
+[Programming with Objective-C. Apple book](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html)
 
 [iOS For High School Students: Getting Started](http://www.raywenderlich.com/5600/ios-for-high-school-students-getting-started)
