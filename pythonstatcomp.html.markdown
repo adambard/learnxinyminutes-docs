@@ -205,7 +205,7 @@ hre["DeathY"] = extractYear(hre.Death)
 hre["EstAge"] = hre.DeathY.astype(int) - hre.BirthY.astype(int)
 
 # simple scatterplot, no trend line, color represents dynasty
-sns.lmplot("BirthY", "EstAge", data=hre, hue="Dynasty", fit_reg=False);
+sns.lmplot("BirthY", "EstAge", data=hre, hue="Dynasty", fit_reg=False)
 
 # use scipy to run a linear regression
 from scipy import stats
@@ -222,7 +222,7 @@ rval**2  # 0.020363950027333586
 pval  # 0.34971812581498452
 
 # use seaborn to make a scatterplot and plot the linear regression trend line
-sns.lmplot("BirthY", "EstAge", data=hre);
+sns.lmplot("BirthY", "EstAge", data=hre)
 
 """ For more information on seaborn, see
       - http://web.stanford.edu/~mwaskom/software/seaborn/
