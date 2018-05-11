@@ -1,5 +1,5 @@
 ---
-category: to::
+category: tool
 tool: git
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
@@ -12,107 +12,97 @@ contributors:
 filename: LearnGit.txt
 ---
 
-Git is a distributed version control and source code management system.
+Git dağınık versiyon kontrol ve kaynak kod yönetim sistemidir.
 
-It does this through a series of snapshots of your project, and it works
-with those snapshots to provide you with functionality to version and
-manage your source code.
+Bunu projenin bir seri anlık durumunu kaydederek yapar ve bu anlık durumları 
+kullanarak versiyon ve kaynak kodu yönetmeni sağlar.
 
-## Versioning Concepts
+## Versiyonlama Konseptleri
 
-### What is version control?
+### Versiyon kontrol nedir?
 
-Version control is a system that records changes to a file(s), over time.
+Versiyon kontrol, zaman içerisinde dosya(lar)daki değişikliği kaydeden sistemdir.
 
-### Centralized Versioning vs. Distributed Versioning
+### Merkezi Versiyonlama vs. Dağınık Versiyonlama
 
-* Centralized version control focuses on synchronizing, tracking, and backing 
-up files.
-* Distributed version control focuses on sharing changes. Every change has a 
-unique id.
-* Distributed systems have no defined structure. You could easily have a SVN 
-style, centralized system, with git.
+* Merkezi versiyon kontrolü dosyaların eşitlenmesine, takibine ve yedeklenmesine odaklanır. 
+* Dağınık versiyon kontrolü değişimin paylaşılmasına odaklanır. Her değişiminin benzersiz bir adı vardır.
+* Dağınık sistemlerin belirlenmiş bir yapısı yoktur. Git ile kolayca SVN'deki gibi merkezi bir sistem elde edebilirsin. 
 
-[Additional Information](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
+[Daha fazla bilgi](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
 
-### Why Use Git?
+### Neden Git?
 
-* Can work offline.
-* Collaborating with others is easy!
-* Branching is easy!
-* Branching is fast!
-* Merging is easy!
-* Git is fast.
-* Git is flexible.
+* Çevrimdışı çalışabilir
+* Diğerleriyle beraber çalışmak kolaydır!
+* Dallanma kolaydır!
+* Dallanma hızlıdır!
+* Git hızlıdır
+* Git esnektir
 
-## Git Architecture
+## Git Mimarisi
 
 ### Repository
 
-A set of files, directories, historical records, commits, and heads. Imagine it
-as a source code data structure, with the attribute that each source code
-"element" gives you access to its revision history, among other things.
+Bir grup dosya, dizin, geriye dönük kayıt, commit, head. Bunları kaynak kodun veri
+yapısı gibi düşünebilirsin, herbir kaynak kod "elemanı" seni kendi revizyon geçmişine 
+eriştirir. 
 
-A git repository is comprised of the .git directory & working tree.
+Bir git repo'su .git dizini ve çalışma ağacından oluşur. 
 
-### .git Directory (component of repository)
+### .git Dizini (repository bileşeni)
 
-The .git directory contains all the configurations, logs, branches, HEAD, and 
-more.
-[Detailed List.](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+.git dizini bütün konfigrasyon, log, dallanma, HEAD ve daha fazlasını tutar.
+[detaylı liste](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
-### Working Tree (component of repository)
+### Çalışma Ağacı (repository bileşeni)
 
-This is basically the directories and files in your repository. It is often
-referred to as your working directory.
+Temelde repo'daki dizinlerin ve dosyalarındır. Sıkça çalışma ağacın olarak anılır.
 
-### Index (component of .git dir)
+### Index (.git dizininin birleşeni)
 
-The Index is the staging area in git. It's basically a layer that separates 
-your working tree from the Git repository. This gives developers more power 
-over what gets sent to the Git repository.
+Index git'in evreleme alanıdır (staging area). Temelde çalışma ağacını Git repo'sundan 
+ayıran bir katmandır. Bu geliştiricilere neyin Git repo'suna gönderileceği hakkında daha 
+fazla güç verir. 
 
 ### Commit
 
-A git commit is a snapshot of a set of changes, or manipulations to your 
-Working Tree. For example, if you added 5 files, and removed 2 others, these 
-changes will be contained in a commit (or snapshot). This commit can then be 
-pushed to other repositories, or not!
+Bir git commit'i Çalışma Ağacındaki bir takım değişiklerdir. Mesela 5 tane dosya
+eklemişsindir ve diğer 2 tanesini silmişindir, bu değişikler commit'te (anlık kayıtta) 
+tutulacaktır. Bu commit daha sonra diğer repo'lara bastırılabilir (pushed) ve bastırılmaz!
 
 ### Branch
 
-A branch is essentially a pointer to the last commit you made. As you go on
-committing, this pointer will automatically update to point the latest commit.
+Bir branch esasen yaptığın son commit'e göstericidir(pointer). Commit'lemeye devam ettiğinde,
+bu gösterici otomatik olarak son commit'e güncellenir.
 
 ### Tag
 
-A tag is a mark on specific point in history. Typically people use this
-functionality to mark release points (v1.0, and so on)
+Bir tag, tarihteki belirli bir noktanın işaretidir. İnsanlar bunu genelde 
+sürüm notları için kullanır (v1.0 vs.)
 
-### HEAD and head (component of .git dir)
+### HEAD ve head (.git dizininin birleşenleri)
 
-HEAD is a pointer that points to the current branch. A repository only has 1 
-*active* HEAD.  
-head is a pointer that points to any commit. A repository can have any number 
-of heads.
+HEAD mevcut branch'a bir göstericidir. Bir repository yalnızca 1 *aktif*
+HEAD'e sahiptir.
+head, commit'e bir göstericidir. Bir repository herhangi bir sayıda head'e sahip olabilir.
 
-### Stages of Git
-* Modified - Changes have been made to a file but file has not been committed 
-to Git Database yet
-* Staged - Marks a modified file to go into your next commit snapshot
-* Committed - Files have been committed to the Git Database
+### Git'in Stage'leri
+* Modified - Dosyada değişikler yapıldı ama henüz Git Veritabanına commit yapılmadı.
+* Staged - Modified edilmiş bir dosyayı, sonraki commit'e gitmek üzere işaretler.
+* Committed - Dosyalar Git Veritabanına commit'lendi.  
 
-### Conceptual Resources
+### Kavramsal Kaynaklar 
 
-* [Git For Computer Scientists](http://eagain.net/articles/git-for-computer-scientists/)
-* [Git For Designers](http://hoth.entp.com/output/git_for_designers.html)
+* [Bilgisayar Bilimciler için Git](http://eagain.net/articles/git-for-computer-scientists/)
+* [Tasarımcılar için Git](http://hoth.entp.com/output/git_for_designers.html)
 
-## Commands
+## Komutlar
 
 ### init
 
-Create an empty Git repository. The Git repository's settings, stored 
-information, and more is stored in a directory (a folder) named ".git".
+Boş bir Git repository'si oluştur. Git repository'sinin ayarları, depolanmış
+bilgileri ve daha fazlası ".git" adlı dizinde (bir klasör) tutulur.
 
 ```bash
 $ git init
@@ -120,8 +110,8 @@ $ git init
 
 ### config
 
-To configure settings. Whether it be for the repository, the system itself,
-or global configurations ( global config file is `~/.gitconfig` ).
+Ayarları yapılandırmak için. Repository, sistemin kendisi veya global yapılandırmalar
+için olarabilir. (global yapılandırma dosyası `~/.gitconfig`).
 
 ```bash
 # Print & Set Some Basic Config Variables (Global)
@@ -129,12 +119,12 @@ $ git config --global user.email "MyEmail@Zoho.com"
 $ git config --global user.name "My Name"
 ```
 
-[Learn More About git config.](http://git-scm.com/docs/git-config)
+[git config hakkında daha fazla bilgi için.](http://git-scm.com/docs/git-config)
 
 ### help
 
-To give you quick access to an extremely detailed guide of each command. Or to
-just give you a quick reminder of some semantics.
+Her bir komutun detaylı kılavuzuna hızlı bir erişim için. Ya da sadece bazı şeylerin
+anlamı için hızlı bir hatırlatıcı için.
 
 ```bash
 # Quickly check available commands
@@ -154,10 +144,10 @@ $ git commit --help
 $ git init --help
 ```
 
-### ignore files
+### dosyaları ignore etme 
 
-To intentionally untrack file(s) & folder(s) from git. Typically meant for
-private & temp files which would otherwise be shared in the repository.
+git'in bazı dosya(ları) ve klasör(leri) kasıtlı olarak takip etmemesi için. Genel
+olarak,repository'de ne de olsa paylaşılacak, private ve temp dosyaları için.
 
 ```bash
 $ echo "temp/" >> .gitignore
@@ -166,8 +156,7 @@ $ echo "private_key" >> .gitignore
 
 ### status
 
-To show differences between the index file (basically your working copy/repo)
-and the current HEAD commit.
+index dosyası(temelde çalıştığın repo) ve mevcut HEAD commit arasındaki farkı göstermek için.
 
 ```bash
 # Will display the branch, untracked files, changes and other differences
@@ -179,8 +168,8 @@ $ git help status
 
 ### add
 
-To add files to the staging area/index. If you do not `git add` new files to 
-the staging area/index, they will not be included in commits!
+Dosyaları staging area'ya eklemek için. Eğer yeni dosyaları staging area'ya `git add` 
+yapmazsanız, commit'lere eklenmez!
 
 ```bash
 # add a file in your current working directory
@@ -195,14 +184,11 @@ $ git add ./*.java
 # You can also add everything in your working directory to the staging area.
 $ git add -A
 ```
-
-This only adds a file to the staging area/index, it doesn't commit it to the
-working directory/repo.
+Bu yalnızca dosyayı staging area'a/index'e ekler, çalışılan dizine/repo'ya commit etmez.
 
 ### branch
 
-Manage your branches. You can view, edit, create, delete branches using this 
-command.
+Branch'ları yönetir. Bu komutu kullanarak, branch'ları görebilir, düzenleyebilir, oluşturabilir, silebilirsin.
 
 ```bash
 # list existing branches & remotes
@@ -224,7 +210,7 @@ $ git branch myBranchName --edit-description
 
 ### tag
 
-Manage your tags
+tag'leri yönetir
 
 ```bash
 # List tags
@@ -250,8 +236,7 @@ $ git push origin --tags
 
 ### checkout
 
-Updates all files in the working tree to match the version in the index, or 
-specified tree.
+index'in versiyonun eşlemek için çalışma ağacındaki,veya belirtilen ağactaki, tüm dosyaları günceller.
 
 ```bash
 # Checkout a repo - defaults to master branch
@@ -268,9 +253,9 @@ $ git checkout -b newBranch
 
 ### clone
 
-Clones, or copies, an existing repository into a new directory. It also adds
-remote-tracking branches for each branch in the cloned repo, which allows you 
-to push to a remote branch.
+Varolan bir repository'i yeni bir dizine clone'lar veya kopyalar. 
+Ayrıca clone'lanmış repodaki her bir branch için, uzak branch'a bastırmana izin veren,
+uzak takip branch'ları ekler.
 
 ```bash
 # Clone learnxinyminutes-docs
@@ -285,8 +270,8 @@ $ git clone -b master-cn https://github.com/adambard/learnxinyminutes-docs.git -
 
 ### commit
 
-Stores the current contents of the index in a new "commit." This commit 
-contains the changes made and a message created by the user.
+index'in mevcut içeriğini yeni bir "commit"te saklar. Bu commit, kullanıcının oluşturduğu
+bir mesajı ve yapılan değişiklikleri saklar. 
 
 ```bash
 # commit with a message
@@ -306,6 +291,7 @@ $ git commit --amend -m "Correct message"
 ### diff
 
 Shows differences between a file in the working directory, index and commits.
+Bir dosyanın, çalışma ağacı, index ve commit'ler arasındaki farklarını göster.
 
 ```bash
 # Show difference between your working dir and the index
@@ -320,9 +306,9 @@ $ git diff HEAD
 
 ### grep
 
-Allows you to quickly search a repository.
+Bir repository'de hızlıca arama yapmana izin verir.
 
-Optional Configurations:
+İsteğe Bağlı Yapılandırmalar:
 
 ```bash
 # Thanks to Travis Jeffery for these
@@ -341,12 +327,12 @@ $ git grep 'variableName' -- '*.java'
 $ git grep -e 'arrayListName' --and \( -e add -e remove \)
 ```
 
-Google is your friend; for more examples
+Daha fazla örnek için
 [Git Grep Ninja](http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
 
 ### log
 
-Display commits to the repository.
+Repository'deki commitleri gösterir.
 
 ```bash
 # Show all commits
@@ -364,7 +350,7 @@ $ git log --graph
 
 ### merge
 
-"Merge" in changes from external commits into the current branch.
+Dış commit'lerdeki değişiklikleri mevcut branch'a "merge" et (birleştir).
 
 ```bash
 # Merge the specified branch into the current.
@@ -376,7 +362,7 @@ $ git merge --no-ff branchName
 
 ### mv
 
-Rename or move a file
+Bir dosyayı yeniden taşı veya yeniden adlandır
 
 ```bash
 # Renaming a file
@@ -392,7 +378,7 @@ $ git mv -f myFile existingFile
 
 ### pull
 
-Pulls from a repository and merges it with another branch.
+Bir repository'den çeker ve diğer branch'a merge eder.
 
 ```bash
 # Update your local repo, by merging in new changes
@@ -412,7 +398,7 @@ $ git pull origin master --rebase
 
 ### push
 
-Push and merge changes from a branch to a remote & branch.
+Bir branch'taki değişikleri, uzak branch'a bastır ve birleştir.
 
 ```bash
 # Push and merge changes from a local repo to a
@@ -432,13 +418,14 @@ $ git push
 
 ### stash
 
-Stashing takes the dirty state of your working directory and saves it on a 
-stack of unfinished changes that you can reapply at any time.
+Stash'leme çalışma dizinindeki kirli durumu alır ve bitmemiş değişiklikler 
+yığınına kaydeder. Bu değişikleri istediğin zaman tekrar uygulayabilirsin.
 
-Let's say you've been doing some work in your git repo, but you want to pull
-from the remote. Since you have dirty (uncommitted) changes to some files, you
-are not able to run `git pull`. Instead, you can run `git stash` to save your
-changes onto a stack!
+Mesela git repo'nda bazı işler yaptın ama remote'dan pull yapmak istiyorsun.
+Bazı dosyalarında kirli (commit'lenmemiş) değişiklikler olduğundan `git pull`
+yapamazsın. Onun yerine önce `git stash` ile değişikliklerini yığına kaydet!
+
+(stash, sözlük anlamı: bir şeyi, özel bir yere güvenli biçimde saklamak)
 
 ```bash
 $ git stash
@@ -448,24 +435,23 @@ Saved working directory and index state \
   (To restore them type "git stash apply")
 ```
 
-Now you can pull!
+Şimdi pull yapabilirsin!
 
 ```bash
 git pull
 ```
 `...changes apply...`
 
-Now check that everything is OK
+Herşeyin tamam olduğunu kontrol et
 
 ```bash
 $ git status
 # On branch master
 nothing to commit, working directory clean
 ```
-
-You can see what "hunks" you've stashed so far using `git stash list`.
-Since the "hunks" are stored in a Last-In-First-Out stack, our most recent 
-change will be at top.
+Şu ana kadar neleri stash'lediğini `git stash list` kullanarak görebilirsin.
+Stash'lenen şeyler Son-Giren-İlk-Çıkar şeklinde tutulduğundan en son değişim
+en üste olacaktır.
 
 ```bash
 $ git stash list
@@ -473,8 +459,7 @@ stash@{0}: WIP on master: 049d078 added the index file
 stash@{1}: WIP on master: c264051 Revert "added file_size"
 stash@{2}: WIP on master: 21d80a5 added number to log
 ```
-
-Now let's apply our dirty changes back by popping them off the stack.
+Şimdi de kirli değişiklileri yığından çıkarıp uygulayalım.
 
 ```bash
 $ git stash pop
@@ -487,17 +472,16 @@ $ git stash pop
 #
 ```
 
-`git stash apply` does the same thing
+`git stash apply` da aynı şeyi yapar
 
-Now you're ready to get back to work on your stuff!
+Şimdi kendi işine dönmeye hazırsın!
 
-[Additional Reading.](http://git-scm.com/book/en/v1/Git-Tools-Stashing)
+[Ek Okuma.](http://git-scm.com/book/en/v1/Git-Tools-Stashing)
 
-### rebase (caution)
+### rebase (dikkat)
 
-Take all changes that were committed on one branch, and replay them onto 
-another branch.
-*Do not rebase commits that you have pushed to a public repo*.
+Branch'ta commit'lenen tüm değişimleri al ve onları başka bir branch'ta tekrar oynat
+*Public repo'ya push edilmiş commit'leri rebase etme*
 
 ```bash
 # Rebase experimentBranch onto master
@@ -505,13 +489,17 @@ another branch.
 $ git rebase master experimentBranch
 ```
 
-[Additional Reading.](http://git-scm.com/book/en/Git-Branching-Rebasing)
+[Ek Okuma.](http://git-scm.com/book/en/Git-Branching-Rebasing)
 
-### reset (caution)
+### reset (dikkat)
 
 Reset the current HEAD to the specified state. This allows you to undo merges,
 pulls, commits, adds, and more. It's a great command but also dangerous if you 
 don't know what you are doing.
+
+HEAD'i belirtilen duruma resetle. Bu merge'leri, pull'ları, commit'leri, add'leri
+ve daha fazlasını geriye almanı sağlar. Muhteşem bir komuttur ama aynı zamanda, ne
+yaptığını bilmiyorsan, tehlikelidir.
 
 ```bash
 # Reset the staging area, to match the latest commit (leaves dir unchanged)
@@ -530,17 +518,16 @@ $ git reset 31f2bb1
 $ git reset --hard 31f2bb1
 ```
 
-### reflog (caution)
+### reflog (dikkat)
 
-Reflog will list most of the git commands you have done for a given time period,
-default 90 days.
+Reflog, verilen zaman içinde,default olarak 90 gündür, yaptığın git komutlarını listeler.
 
-This give you the chance to reverse any git commands that have gone wrong 
-(for instance, if a rebase has broken your application).
+Bu sana beklemediğin şekilde yanlış giden komutları geriye çevirme şansı verir. 
+(mesela, eğer bir rebase uygulamanı kırdıysa)
 
-You can do this:
+Şu şekilde yapıbilirsin:
 
-1. `git reflog` to list all of the git commands for the rebase
+1. `git reflog` rebase için tüm git komutlarını listele
 
 ```
 38b323f HEAD@{0}: rebase -i (finish): returning to refs/heads/feature/add_git_reflog
@@ -550,17 +537,17 @@ You can do this:
 ed8ddf2 HEAD@{4}: rebase -i (pick): pythonstatcomp spanish translation (#1748)
 2e6c386 HEAD@{5}: rebase -i (start): checkout 02fb96d
 ```
-2. Select where to reset to, in our case its `2e6c386`, or `HEAD@{5}`
-3. 'git reset --hard HEAD@{5}' this will reset your repo to that head
-4. You can start the rebase again or leave it alone.
+2. Nereye reset'leyeceğini seç, şu durumda `2e6c386` veya `HEAD@{5}`
+3. 'git reset --hard HEAD@{5}' bu repo'nu seçilen head'e eşitler 
+4. Rebase'e yeniden başlayabilir veya onu yalnız bırakabilirsin.
 
-[Additional Reading.](https://git-scm.com/docs/git-reflog)
+[Ek Okuma.](https://git-scm.com/docs/git-reflog)
 
 ### revert
 
-Revert can be used to undo a commit. It should not be confused with reset which 
-restores the state of a project to a previous point. Revert will add a new 
-commit which is the inverse of the specified commit, thus reverting it.
+Revert commit'leri geri almada kullanılır. Projenin durumunu önceki bir noktaya 
+alan reset ile karıştırılmamalıdır. Revert, belirtilen commit'in tersine yeni bir
+commit ekleyecektir.
 
 ```bash
 # Revert a specified commit
@@ -569,7 +556,7 @@ $ git revert <commit>
 
 ### rm
 
-The opposite of git add, git rm removes files from the current working tree.
+git add'in tersine, git rm çalışma ağacından dosyaları kaldırır.
 
 ```bash
 # remove HelloWorld.c
@@ -579,28 +566,28 @@ $ git rm HelloWorld.c
 $ git rm /pather/to/the/file/HelloWorld.c
 ```
 
-## Further Information
+## Daha Fazla Bilgi
 
-* [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
+* [tryGit - Git'i öğrenmek için eğlenceli interaktif bir yol](http://try.github.io/levels/1/challenges/1)
 
-* [Learn Git Branching - the most visual and interactive way to learn Git on the web](http://learngitbranching.js.org/)
+* [Git Dallanmayı Öğren -  Git'i web üzerinde öğrenmek için en görsel ve interaktif yol](http://learngitbranching.js.org/)
 
-* [Udemy Git Tutorial: A Comprehensive Guide](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
+* [Udemy Git Tutorial: Kapsayıcı bir kılavuz](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
 
-* [Git Immersion - A Guided tour that walks through the fundamentals of git](http://gitimmersion.com/)
+* [Git Immersion - Git'in temelinden başlayan bir tur](http://gitimmersion.com/)
 
-* [git-scm - Video Tutorials](http://git-scm.com/videos)
+* [git-scm - Video Tutorial](http://git-scm.com/videos)
 
-* [git-scm - Documentation](http://git-scm.com/docs)
+* [git-scm - Dökümantasyon](http://git-scm.com/docs)
 
-* [Atlassian Git - Tutorials & Workflows](https://www.atlassian.com/git/)
+* [Atlassian Git - Tutorial & Workflow](https://www.atlassian.com/git/)
 
-* [SalesForce Cheat Sheet](http://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf)
+* [SalesForce Kopya Kağıdı](http://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf)
 
 * [GitGuys](http://www.gitguys.com/)
 
-* [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
+* [Git - Basit bir kılavuz](http://rogerdudler.github.io/git-guide/index.html)
 
 * [Pro Git](http://www.git-scm.com/book/en/v2)
 
-* [An introduction to Git and GitHub for Beginners (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+* [Yeni başlayanlar için Git ve Github](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
