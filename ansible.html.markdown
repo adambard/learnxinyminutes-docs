@@ -6,14 +6,73 @@ contributors:
 filename: LearnAnsible.txt
 ---
 
-## Ansible: the easiest orchestration tool
-
-```yaml
 ---
-"{{ Explanation: Why Ansible and detailed Intro }}" written in the second part of document
+"{{ Ansible }}" is an orchestration tool written in Python.
 
 ```
 
+## Example
+An example playbook to install apache and configure log level
+```yml
+---
+- hosts: apache
+
+  vars:
+      apache2_log_level: "warn"
+
+  handlers:
+  - name: restart apache
+    service: 
+      name: apache2
+      state: restarted
+      enabled: True
+    notify: 
+      - Wait for instances to listen on port 80
+    become: True
+
+  - name: reload apache
+    service: 
+      name: apache2
+      state: reloaded
+    notify: 
+      - Wait for instances to listen on port 80
+    become: True
+
+  - name: Wait for instances to listen on port 80
+    wait_for: 
+      state: started 
+      host: localhost 
+      port: 80 
+      timeout: 15 
+      delay: 5
+
+  tasks:
+  - name: Update cache 
+    apt: 
+      update_cache: yes 
+      cache_valid_time: 7200
+    become: True
+
+  - name: Install packages
+    apt: 
+      name={{ item }}
+    with_items:
+      - apache2
+      - logrotate
+    notify:
+      - restart apache
+    become: True
+
+  - name: Configure apache2 log level
+    lineinfile: 
+      dest: /etc/apache2/apache2.conf
+      line: "LogLevel {{ apache2_log_level }}"
+      regexp: "^LogLevel"
+    notify:
+      - reload apache
+    become: True
+
+```
 
 ## Installation
 ```bash
@@ -29,7 +88,7 @@ $ apt-get install ansible
 
 ### Your first ansible command (shell execution)
 ```bash
-# This command ping the localhost (defined in default inventory /etc/ansible/hosts) 
+# This command ping the localhost (defined in default inventory: /etc/ansible/hosts) 
 $ ansible -m ping localhost
 # you should see this output
 localhost | SUCCESS => {
@@ -231,12 +290,15 @@ For now you should know that CLI variables have the top priority.
 You should also know, that a nice way to pool some data is a **lookup**
 
 ### Lookups
+Awesome tool to query data from various sources!!! Awesome!  
 query from:
 
-* pipe
+* pipe  (load shell command output into variable!)
 * file
 * stream
 * etcd
+* password management tools
+* url
 
 ```bash
 # read playbooks/lookup.yml
