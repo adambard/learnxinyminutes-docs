@@ -1131,3 +1131,5 @@ An up-to-date language reference can be found at
 <http://cppreference.com/w/cpp>
 
 Additional resources may be found at <http://cplusplus.com>
+
+Programmming Community Curated Resources for learning Hadoop may be found at <https://hackr.io/tutorials/learn-hadoop-big-data>
