@@ -8,7 +8,7 @@ contributors:
 
 CHICKEN is an implementation of Scheme programming language that can
 compile Scheme programs to C code as well as interpret them. CHICKEN
-supports RSR5 and RSR7 (work in progress) standards and many extensions.
+supports R5RS and R7RS (work in progress) standards and many extensions.
 
 
 ```scheme
@@ -81,7 +81,7 @@ supports RSR5 and RSR7 (work in progress) standards and many extensions.
 (string-append "pine" "apple") ;; => "pineapple"
 (string-ref "tapioca" 3)       ;; => #\i;; character 'i' is at index 3
 (string->list "CHICKEN")       ;; => (#\C #\H #\I #\C #\K #\E #\N)
-(string->intersperse '("1" "2") ":") ;; => "1:2"
+(string-intersperse '("1" "2") ":") ;; => "1:2"
 (string-split "1:2:3" ":")     ;; => ("1" "2" "3")
 
 
@@ -235,12 +235,12 @@ sqr                        ;; => #<procedure (sqr x)>
 (= 2 1)                    ;; => #f
 
 ;; 'eq?' returns #t if two arguments refer to the same object in memory
-;; In other words, it's a simple pointer comparision.
+;; In other words, it's a simple pointer comparison.
 (eq? '() '())              ;; => #t ;; there's only one empty list in memory
 (eq? (list 3) (list 3))    ;; => #f ;; not the same object
 (eq? 'yes 'yes)            ;; => #t
 (eq? 3 3)                  ;; => #t ;; don't do this even if it works in this case
-(eq? 3 3.0)                ;; => #f ;; it's better to use '=' for number comparisions
+(eq? 3 3.0)                ;; => #f ;; it's better to use '=' for number comparisons
 (eq? "Hello" "Hello")      ;; => #f
 
 ;; 'eqv?' is same as 'eq?' all datatypes except numbers and characters
@@ -255,7 +255,7 @@ sqr                        ;; => #<procedure (sqr x)>
 (equal? '(1 2 3) '(1 2 3)) ;; => #t
 (equal? #(a b c) #(a b c)) ;; => #t
 (equal? 'a 'a)             ;; => #t
-(equal? "abc" "abc")       ;; => #f
+(equal? "abc" "abc")       ;; => #t
 
 ;; In Summary:
 ;; eq? tests if objects are identical
@@ -510,7 +510,7 @@ sqr                        ;; => #<procedure (sqr x)>
 ```
 ## Further Reading
 * [CHICKEN User's Manual](http://wiki.call-cc.org/man/4/The%20User%27s%20Manual).
-* [RSR5 standards](http://www.schemers.org/Documents/Standards/R5RS)
+* [R5RS standards](http://www.schemers.org/Documents/Standards/R5RS)
 
 
 ## Extra Info

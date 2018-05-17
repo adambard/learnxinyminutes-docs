@@ -2,8 +2,8 @@
 language: awk
 filename: learnawk.awk
 contributors:
-    - ["Marshall Mason", "http://github.com/marshallmason"]
-lang: en
+     - ["Marshall Mason", "http://github.com/marshallmason"]
+
 ---
 
 AWK is a standard tool on every POSIX-compliant UNIX system. It's like a
@@ -38,7 +38,7 @@ BEGIN {
     a = count + 1
     b = count - 1
     c = count * 1
-    d = count / 1
+    d = count / 1 # integer division
     e = count % 1 # modulus
     f = count ^ 1 # exponentiation
 
@@ -143,7 +143,7 @@ BEGIN {
 }
 
 # Here's how you define a function
-function arithmetic_functions(a, b, c,     localvar) {
+function arithmetic_functions(a, b, c,     d) {
 
     # Probably the most annoying part of AWK is that there are no local
     # variables. Everything is global. For short scripts, this is fine, even
@@ -264,7 +264,7 @@ function io_functions(    localvar) {
     # automatically for you.
 
     # You can probably guess there are other $ variables. Every line is
-    # implicitely split before every action is called, much like the shell
+    # implicitly split before every action is called, much like the shell
     # does. And, like the shell, each field can be access with a dollar sign
 
     # This will print the second and fourth fields in the line

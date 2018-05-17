@@ -445,47 +445,47 @@ if let circle = myEmptyCircle {
 // 枚举可以像类一样，拥有方法
 
 enum Suit {
-    case Spades, Hearts, Diamonds, Clubs
+    case spades, hearts, diamonds, clubs
     func getIcon() -> String {
         switch self {
-        case .Spades: return "♤"
-        case .Hearts: return "♡"
-        case .Diamonds: return "♢"
-        case .Clubs: return "♧"
+        case .spades: return "♤"
+        case .hearts: return "♡"
+        case .diamonds: return "♢"
+        case .clubs: return "♧"
         }
     }
 }
 
 // 当变量类型明确指定为某个枚举类型时，赋值时可以省略枚举类型
-var suitValue: Suit = .Hearts
+var suitValue: Suit = .hearts
 
 // 非整型的枚举类型需要在定义时赋值
 enum BookName: String {
-    case John = "John"
-    case Luke = "Luke"
+    case john = "John"
+    case luke = "Luke"
 }
-print("Name: \(BookName.John.rawValue)")
+print("Name: \(BookName.john.rawValue)")
 
 // 与特定数据类型关联的枚举
 enum Furniture {
     // 和 Int 型数据关联的枚举记录
-    case Desk(height: Int)
+    case desk(height: Int)
     // 和 String, Int 关联的枚举记录
-    case Chair(brand: String, height: Int)
+    case chair(brand: String, height: Int)
 
     func description() -> String {
         switch self {
-        case .Desk(let height):
+        case .desk(let height):
             return "Desk with \(height) cm"
-        case .Chair(let brand, let height):
+        case .chair(let brand, let height):
             return "Chair of \(brand) with \(height) cm"
         }
     }
 }
 
-var desk: Furniture = .Desk(height: 80)
+var desk: Furniture = .desk(height: 80)
 print(desk.description())     // "Desk with 80 cm"
-var chair = Furniture.Chair(brand: "Foo", height: 40)
+var chair = Furniture.chair(brand: "Foo", height: 40)
 print(chair.description())    // "Chair of Foo with 40 cm"
 
 

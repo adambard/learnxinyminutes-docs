@@ -142,6 +142,7 @@ func learnTypes() {
 func learnNamedReturns(x, y int) (z int) {
     z = x * y
     return // z is implicit here, because we named it earlier.
+}
 
 // Go全面支持垃圾回收。Go有指针，但是不支持指针运算。
 // 你会因为空指针而犯错，但是不会因为增加指针而犯错。

@@ -72,8 +72,8 @@ List.head [] -- Nothing
 
 -- Access the elements of a pair with the first and second functions.
 -- (This is a shortcut; we'll come to the "real way" in a bit.)
-fst ("elm", 42) -- "elm"
-snd ("elm", 42) -- 42
+Tuple.first ("elm", 42) -- "elm"
+Tuple.second ("elm", 42) -- 42
 
 -- The empty tuple, or "unit", is sometimes used as a placeholder.
 -- It is the only value of its type, also called "Unit".
@@ -286,7 +286,7 @@ leftmostElement tree =
 -- Put this at the top of the file. If omitted, you're in Main.
 module Name where
 
--- By default, everything is exported. You can specify exports explicity.
+-- By default, everything is exported. You can specify exports explicitly.
 module Name (MyType, myValue) where
 
 -- One common pattern is to export a union type but not its tags. This is known

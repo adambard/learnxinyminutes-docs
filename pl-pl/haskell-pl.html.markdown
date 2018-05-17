@@ -1,8 +1,13 @@
 ---
+category: language
+filename: haskell-pl.hs
 language: Haskell
-lang: pl-pl
 contributors:
+    - ["Adit Bhargava", "http://adit.io"]
+translators:
     - ["Remigiusz Suwalski", "https://github.com/remigiusz-suwalski"]
+lang: pl-pl
+
 ---
 
 Haskell został zaprojektowany jako praktyczny, czysto funkcyjny język 

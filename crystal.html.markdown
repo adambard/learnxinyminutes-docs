@@ -215,7 +215,7 @@ Range.new(1, 10).class #=> Range(Int32, Int32)
 # possibly different types.
 {1, "hello", 'x'}.class #=> Tuple(Int32, String, Char)
 
-# Acces tuple's value by its index
+# Access tuple's value by its index
 tuple = {:key1, :key2}
 tuple[1] #=> :key2
 tuple[2] #=> syntax error : Index out of bound
@@ -301,7 +301,6 @@ end
 (1..3).each do |index|
   puts "Index: #{index}"
 end
-# Index: 0
 # Index: 1
 # Index: 2
 # Index: 3
@@ -422,7 +421,7 @@ class Human
     @name
   end
 
-  # The above functionality can be encapsulated using the attr_accessor method as follows
+  # The above functionality can be encapsulated using the propery method as follows
   property :name
 
   # Getter/setter methods can also be created individually like this

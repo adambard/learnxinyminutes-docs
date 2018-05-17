@@ -182,7 +182,7 @@ int main() {
     int a, b, c;
     a = b = c = 0;
 
-    // Aritimética é óbvia
+    // Aritmética é óbvia
     i1 + i2; // => 3
     i2 - i1; // => 1
     i2 * i1; // => 2
@@ -191,7 +191,7 @@ int main() {
     f1 / f2; // => 0.5, mais ou menos epsilon
     // Números e cálculos de ponto flutuante não são exatos
 
-    // Modulo também existe
+    // Módulo também existe
     11 % 3; // => 2
 
 	// Operadores de comparação provavelmente são familiares,
@@ -647,7 +647,7 @@ Se você tem uma pergunta, leia [compl.lang.c Frequently Asked Questions](http:/
 
 É importante usar espaços e indentação adequadamente e ser consistente com seu estilo de código em geral.
 Código legível é melhor que código 'esperto' e rápido. Para adotar um estilo de código bom e são, veja
-[Linux kernel coding stlye](https://www.kernel.org/doc/Documentation/CodingStyle).
+[Linux kernel coding style](https://www.kernel.org/doc/Documentation/CodingStyle).
 
 Além disso, Google é teu amigo.
 [1] http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member

@@ -122,9 +122,9 @@ echo 'Multiple', 'Parameters', 'Valid';  // Returns 'MultipleParametersValid'
 // followed by any number of letters, numbers, or underscores.
 define("FOO", "something");
 
-// access to a constant is possible by calling the choosen name without a $
+// access to a constant is possible by calling the chosen name without a $
 echo FOO; // Returns 'something'
-echo 'This outputs ' . FOO;  // Returns 'This ouputs something'
+echo 'This outputs ' . FOO;  // Returns 'This outputs something'
 
 
 
@@ -132,9 +132,7 @@ echo 'This outputs ' . FOO;  // Returns 'This ouputs something'
  * Arrays
  */
 
-// All arrays in PHP are associative arrays (hashmaps),
-
-// Associative arrays, known as hashmaps in some languages.
+// All arrays in PHP are associative arrays (hashmaps in some languages)
 
 // Works with all PHP versions
 $associative = array('One' => 1, 'Two' => 2, 'Three' => 3);
@@ -839,11 +837,11 @@ try {
     // Handle exception
 }
 
-// When using try catch blocks in a namespaced enviroment use the following
+// When using try catch blocks in a namespaced environment use the following
 
 try {
     // Do something
-} catch (\Exception $e) {
+} catch (Exception $e) {
     // Handle exception
 }
 
@@ -856,7 +854,7 @@ try {
     $condition = true;
 
     if ($condition) {
-        throw new MyException('Something just happend');
+        throw new MyException('Something just happened');
     }
 
 } catch (MyException $e) {

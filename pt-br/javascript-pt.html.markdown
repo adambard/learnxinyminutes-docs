@@ -1,5 +1,6 @@
 ---
 language: javascript
+filename: javascript-pt.js
 contributors:
     - ["Adam Brenecki", "http://adam.brenecki.id.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
@@ -24,7 +25,7 @@ Feedback são muito apreciados! Você me encontrar em
 
 ```js
 // Comentários são como em C. Comentários de uma linha começam com duas barras,
-/* e comentários de múltplas linhas começam com barra-asterisco
+/* e comentários de múltiplas linhas começam com barra-asterisco
    e fecham com asterisco-barra */
 
 // comandos podem ser terminados com  ;

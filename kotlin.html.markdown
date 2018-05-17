@@ -65,7 +65,7 @@ fun helloWorld(val name : String) {
     A template expression starts with a dollar sign ($).
     */
     val fooTemplateString = "$fooString has ${fooString.length} characters"
-    println(fooTemplateString)
+    println(fooTemplateString) // => My String Is Here! has 18 characters 
 
     /*
     For a variable to hold null it must be explicitly specified as nullable.

@@ -9,7 +9,7 @@ lang: de-de
 ---
 
 HTML steht für HyperText Markup Language (Hypertext-Auszeichnungssprache).
-Sie ist eine Sprache, um Seiten für das World Wide Web zu schreiben..
+Sie ist eine Sprache, um Seiten für das World Wide Web zu schreiben.
 Es ist eine Auszeichnugssprache, die es uns ermöglicht Webseiten mithilfe des Codes zu schreiben, der kennzeichnet  wie Text und Daten angezeigt werden sollen. Eigentlich sind HTML Dateien nur einfache Textdateien.
 Was sind das für Auszeichnungen? Es ist eine Methode, um die Daten der Website zu organisieren mithilfe von Start- und Endtags.
 Diese Auszeichnung dient dazu dem Text Bedeutung zu geben, welchen sie umschließt.
@@ -111,7 +111,7 @@ Dieser Artikel ist bedacht darauf, nur HTML Syntax und nützliche Tipps zu geben
 
 ## Verwendung
 
-HTML Dateien enden mit `.html`.
+HTML Dateien enden mit `.html` oder mit `.htm`. Der Mime Typ ist meist `text/html`.
 
 ## Um mehr zu lernen
 

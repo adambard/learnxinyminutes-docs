@@ -7,6 +7,7 @@ contributors:
     - ["evuez", "http://github.com/evuez"]
     - ["asyne", "https://github.com/justblah"]
     - ["habi", "http://github.com/habi"]
+    - ["Rommel Martinez", "https://ebzzry.io"]
 filename: learnpython.py
 ---
 
@@ -302,7 +303,7 @@ filled_dict.values()  # => [3, 2, 1]
 # Note - Same as above regarding key ordering.
 
 # Get all key-value pairs as a list of tuples with "items()"
-filled_dicts.items()  # => [("one", 1), ("two", 2), ("three", 3)]
+filled_dict.items()  # => [("one", 1), ("two", 2), ("three", 3)]
 
 # Check for existence of keys in a dictionary with "in"
 "one" in filled_dict  # => True
@@ -363,6 +364,12 @@ filled_set | other_set  # => {1, 2, 3, 4, 5, 6}
 # Check for existence in a set with in
 2 in filled_set  # => True
 10 in filled_set  # => False
+10 not in filled_set # => True
+
+# Check data type of variable
+type(li)   # => list
+type(filled_dict)   # => dict
+type(5)   # => int
 
 
 ####################################################
@@ -502,9 +509,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # Use * to expand positional args and use ** to expand keyword args.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args)  # equivalent to foo(1, 2, 3, 4)
-all_the_args(**kwargs)  # equivalent to foo(a=3, b=4)
-all_the_args(*args, **kwargs)  # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args)  # equivalent to all_the_args(1, 2, 3, 4)
+all_the_args(**kwargs)  # equivalent to all_the_args(a=3, b=4)
+all_the_args(*args, **kwargs)  # equivalent to all_the_args(1, 2, 3, 4, a=3, b=4)
 
 
 # you can pass args and kwargs along to other functions that take args/kwargs

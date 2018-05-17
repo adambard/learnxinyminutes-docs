@@ -205,6 +205,12 @@ Speichert die aktuellen Inhalte des Index in einen neuen *Commit*. Dieser Commit
 ```bash
 # Commit mit Beschreibung erstellen.
 $ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
+
+# Alle veränderten oder gelöschten Dateien außer neue Dateien werden gestaged und dann wird ein Commit erstellt.
+$ git commit -a -m "Modified foo.php and removed bar.php"
+
+# Ändert den letzten Commit (der letzte Commit wird mit einem neuen Commit ersetzt)
+$ git commit --amend -m "Correct message"
 ```
 
 ### diff

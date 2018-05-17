@@ -1,5 +1,6 @@
 ---
 language: purescript
+filename: purescript.purs
 contributors:
     - ["Fredrik Dyrkell", "http://www.lexicallyscoped.com"]
     - ["Thimoteus", "https://github.com/Thimoteus"]

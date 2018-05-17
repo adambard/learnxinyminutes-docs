@@ -1,10 +1,12 @@
 ---
 language: "Standard ML"
+filename: standardml.sml
 contributors:
     - ["Simon Shine", "http://shine.eu.org/"]
     - ["David Pedersen", "http://lonelyproton.com/"]
     - ["James Baker", "http://www.jbaker.io/"]
     - ["Leo Zovic", "http://langnostic.inaimathi.ca/"]
+    - ["Chris Wilson", "http://sencjw.com/"]
 ---
 
 Standard ML is a functional programming language with type inference and some
@@ -265,6 +267,16 @@ fun second_elem (x::y::xs) = y
 fun evenly_positioned_elems (odd::even::xs) = even::evenly_positioned_elems xs
   | evenly_positioned_elems [odd] = []  (* Base case: throw away *)
   | evenly_positioned_elems []    = []  (* Base case *)
+  
+(* The case expression can also be used to pattern match and return a value *)
+datatype temp =
+      C of real
+    | F of real
+
+fun temp_to_f t =
+    case t of
+      C x => x * (9.0 / 5.0) + 32.0
+    | F x => x
 
 (* When matching on records, you must use their slot names, and you must bind
    every slot in a record. The order of the slots doesn't matter though. *)
@@ -351,7 +363,10 @@ val _ = print (say(Red) ^ "\n")
 fun say Red   = "You are red!"
   | say Green = "You are green!"
   | say Blue  = "You are blue!"
-  | say _     = raise Fail "Unknown color"
+
+(* We did not include the match arm `say _ = raise Fail "Unknown color"`
+because after specifying all three colors, the pattern is exhaustive
+and redundancy is not permitted in pattern matching *)
 
 
 (* Here is a binary tree datatype *)
@@ -385,7 +400,7 @@ fun calculate_interest(n) = if n < 0.0
 
 (* Exceptions can be caught using "handle" *)
 val balance = calculate_interest ~180.0
-              handle Domain => ~180.0    (* x now has the value ~180.0 *)
+              handle Domain => ~180.0    (* balance now has the value ~180.0 *)
 
 (* Some exceptions carry extra information with them *)
 (* Here are some examples of built-in exceptions *)
@@ -395,7 +410,7 @@ fun failing_function []    = raise Empty  (* used for empty lists *)
   | failing_function xs    = raise Fail "This list is too long!"
 
 (* We can pattern match in 'handle' to make sure
-   a specfic exception was raised, or grab the message *)
+   a specific exception was raised, or grab the message *)
 val err_msg = failing_function [1,2] handle Fail _ => "Fail was raised"
                                           | Domain => "Domain was raised"
                                           | Empty  => "Empty was raised"
@@ -459,5 +474,5 @@ fun decrement_ret x y = (x := !x - 1; y)
   [Moscow ML](http://mosml.org),
   [SML/NJ](http://smlnj.org/).
 * Follow the Coursera course [Programming Languages](https://www.coursera.org/course/proglang).
-* Get the book *ML for the Working Programmer* by Larry C. Paulson.
+* Read *[ML for the Working Programmer](https://www.cl.cam.ac.uk/~lp15/MLbook/pub-details.html)* by Larry C. Paulson.
 * Use [StackOverflow's sml tag](http://stackoverflow.com/questions/tagged/sml).
