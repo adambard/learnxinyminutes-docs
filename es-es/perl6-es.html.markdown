@@ -5,7 +5,7 @@ contributors:
     - ["vendethiel", "http://github.com/vendethiel"]
     - ["Samantha McVey", "https://cry.nu"]
 translators:
-	- ["Luis F. Uceta", "https://github.com/uzluisf"]
+    - ["Luis F. Uceta", "https://github.com/uzluisf"]
 lang: es-es
 ---
 
