@@ -1,19 +1,19 @@
 ---
-category: language
 language: perl6
-filename: learnperl6-es.p6
+filename: perl6-es.p6
 contributors:
     - ["vendethiel", "http://github.com/vendethiel"]
     - ["Samantha McVey", "https://cry.nu"]
 translators:
 	- ["Luis F. Uceta", "https://github.com/uzluisf"]
+lang: es-es
 ---
 
 Perl 6 es un lenguaje de programación altamente capaz y con características 
 abundantes para hacerlo el lenguage ideal por los próximos 100 años.
 
 El compilador primario de Perl 6 se llama [Rakudo](http://rakudo.org), el cual 
-se ejecuta en JVM y el [MoarVM](http://moarvm.com).
+se ejecuta en JVM y en [MoarVM](http://moarvm.com).
 
 Meta-nota: dos signos de números (##) son usados para indicar párrafos,
 mientras que un solo signo de número (#) indica notas.
