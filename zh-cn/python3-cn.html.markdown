@@ -568,13 +568,14 @@ def double_numbers(iterable):
         yield i + i
 
 # 生成器只有在需要时才计算下一个值。它们每一次循环只生成一个值，而不是把所有的
-# 值全部算好。这意味着double_numbers不会生成大于15的数字。
+# 值全部算好。
 #
 # range的返回值也是一个生成器，不然一个1到900000000的列表会花很多时间和内存。
 #
 # 如果你想用一个Python的关键字当作变量名，可以加一个下划线来区分。
 range_ = range(1, 900000000)
 # 当找到一个 >=30 的结果就会停
+# 这意味着 `double_numbers` 不会生成大于30的数。
 for i in double_numbers(range_):
     print(i)
     if i >= 30:
