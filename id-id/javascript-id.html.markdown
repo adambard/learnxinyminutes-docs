@@ -302,80 +302,82 @@ switch (grade) {
 
 
 ///////////////////////////////////
-// 4. Functions, Scope and Closures
+// 4. Functions (Fungsi), Scope(Ruang Lingkup) dan Closures
 
-// JavaScript functions are declared with the `function` keyword.
+// Fungsi JavaScript dideklarasikan dengan keyword `function`.
 function myFunction(thing){
     return thing.toUpperCase();
 }
 myFunction("foo"); // = "FOO"
 
-// Note that the value to be returned must start on the same line as the
-// `return` keyword, otherwise you'll always return `undefined` due to
-// automatic semicolon insertion. Watch out for this when using Allman style.
+// Perhatikan bahwa nilai yang dikembalikan haruslah satu bari dengan
+// keyword `return`, atau fungsinya akan mengembalikan `undefined` bedasarkan
+// penyisipan semicolon (;) secara otomatis.
+// Hati-hati akan hal ini jika menggunakan style allman.
 function myFunction(){
-    return // <- semicolon automatically inserted here
+    return // <- semicolon disisipkan disini
     {thisIsAn: 'object literal'};
 }
 myFunction(); // = undefined
 
-// JavaScript functions are first class objects, so they can be reassigned to
-// different variable names and passed to other functions as arguments - for
-// example, when supplying an event handler:
+// fungsi di JavaScript adalah first class object. jadi dapat dimasukkan kedalam
+// nama variable yang berbeda dan menjadi argumen dari fungsi lain - untuk
+// contoh, ketika menyuplai fungsi kedalam event handler:
 function myFunction(){
-    // this code will be called in 5 seconds' time
+    // code ini akan dijalankan dalam 5 detik
 }
 setTimeout(myFunction, 5000);
-// Note: setTimeout isn't part of the JS language, but is provided by browsers
-// and Node.js.
+// Note: setTimeout bukan bagian dari JS language, tapi disediakan browsers
+// dan Node.js.
 
-// Another function provided by browsers is setInterval
+// fungsi lain yang disediakan browser, setInterval
 function myFunction(){
-    // this code will be called every 5 seconds
+    // code ini akan dijalankan setiap 5 detik
 }
 setInterval(myFunction, 5000);
 
-// Function objects don't even have to be declared with a name - you can write
-// an anonymous function definition directly into the arguments of another.
+// Function object bahkan tidak perlu diberi nama - kamu dapat menulis
+// sebuah anonymous function secara langsung kedalam sebuah argument
 setTimeout(function(){
-    // this code will be called in 5 seconds' time
+    // code ini akan djalankan dalam 5 detik
 }, 5000);
 
-// JavaScript has function scope; functions get their own scope but other blocks
-// do not.
+// fungsi di JavaScript memiliki scope (ruang lingkup); fungsi memiliki tapi jenis
+//blok (statement) yang lain tidak
 if (true){
     var i = 5;
 }
-i; // = 5 - not undefined as you'd expect in a block-scoped language
+i; // = 5 - tidak undefined seperti bahasa lain yang memiliki scope pada blok
 
-// This has led to a common pattern of "immediately-executing anonymous
-// functions", which prevent temporary variables from leaking into the global
-// scope.
+// Hal inilah yang menyebabkan penggunaan "immediately-executing anonymous
+// functions (function anonym yang langsung dieksekusi)", yang 
+// mecegah variable sementara 'bocor' ke scope global
 (function(){
     var temporary = 5;
-    // We can access the global scope by assigning to the "global object", which
-    // in a web browser is always `window`. The global object may have a
-    // different name in non-browser environments such as Node.js.
+    // Kita dapat mengakses scope global dengan memasukkannya kedalam
+    // "global object", yang mana di dalam web browser selalu disebu
+    // `window`. global object dapat memiliki nama yang berbeda
+    // pada non-browser environment seperti Node.js.
     window.permanent = 10;
 })();
-temporary; // raises ReferenceError
+temporary; // memiliki ReferenceError
 permanent; // = 10
 
-// One of JavaScript's most powerful features is closures. If a function is
-// defined inside another function, the inner function has access to all the
-// outer function's variables, even after the outer function exits.
+// Salah satu fitur paling berguna JavaScript adalah closures. Jika sebuah fungsi
+// didefinisikan dalam sebuah fungsi, fungsi yang di dalam dapat mengakses semua
+// variable yang ada di luar, bahkan juka fungsi yang di luar sudah dikeluarkan.
 function sayHelloInFiveSeconds(name){
     var prompt = "Hello, " + name + "!";
-    // Inner functions are put in the local scope by default, as if they were
-    // declared with `var`.
+    // Fungsi tedalam masuk kedalam local scope secara default, sebagaimana
+    // dideklarasikan dengan `var`.
     function inner(){
         alert(prompt);
     }
     setTimeout(inner, 5000);
-    // setTimeout is asynchronous, so the sayHelloInFiveSeconds function will
-    // exit immediately, and setTimeout will call inner afterwards. However,
-    // because inner is "closed over" sayHelloInFiveSeconds, inner still has
-    // access to the `prompt` variable when it is finally called.
+    // setTimeout dalah fungsi asynchronous, jadi fungsi sayHelloInFiveSeconds akan
+    // keluar sesegera mungkin, dan setTimeout akan memanggil inner setelah. Namun,
+    // karena inner "ditutup setelah" sayHelloInFiveSeconds, inner masih
+    // memiliki akses pada variable `prompt`ketika dipanggil.
 }
 sayHelloInFiveSeconds("Adam"); // will open a popup with "Hello, Adam!" in 5s
 
