@@ -223,67 +223,67 @@ myObj.myThirdKey = true;
 myObj.myFourthKey; // = undefined
 
 ///////////////////////////////////
-// 3. Logic and Control Structures
+// 3. Struktur logik dan kontrol
 
-// The `if` structure works as you'd expect.
+// Struktur 'if' seperti pada umumnya.
 var count = 1;
 if (count == 3){
-    // evaluated if count is 3
+    // mengevaluasi apakah count bernilai 3
 } else if (count == 4){
-    // evaluated if count is 4
+    // mengevaluasi apakah count bernilai 4
 } else {
-    // evaluated if it's not either 3 or 4
+    // mengevaluasi apakah count tidak bernilai 3 atau 4
 }
 
-// As does `while`.
+// Begitu juga dengan `while`.
 while (true){
-    // An infinite loop!
+    // Sebuah infinite loop!
 }
 
-// Do-while loops are like while loops, except they always run at least once.
+// Do-while loops seperti while loops, namu struktur ini berjalan setidaknya sekali.
 var input;
 do {
     input = getInput();
 } while (!isValid(input));
 
-// The `for` loop is the same as C and Java:
-// initialization; continue condition; iteration.
+// `for` loop sama seperti yang ada di C and Java:
+// kondisi awal; kondisi berjalan; iterasi (perubahan).
 for (var i = 0; i < 5; i++){
-    // will run 5 times
+    // akan berjalan 5 kali
 }
 
-// Breaking out of labeled loops is similar to Java
+// keluar dari loop yang sudah di beri 'label' seperti Java
 outer:
 for (var i = 0; i < 10; i++) {
     for (var j = 0; j < 10; j++) {
         if (i == 5 && j ==5) {
             break outer;
-            // breaks out of outer loop instead of only the inner one
+            // keluar  dari loop yang terluar (yang diberi label outer) bukan yang di dalam
         }
     }
 }
 
-// The for/in statement allows iteration over properties of an object.
+// for/in statement dapat melakukan perulangan di dalam properti sebuah objek.
 var description = "";
 var person = {fname:"Paul", lname:"Ken", age:18};
 for (var x in person){
     description += person[x] + " ";
 } // description = 'Paul Ken 18 '
 
-// && is logical and, || is logical or
+// && adalah operasi logis and, || operasi logis or
 if (house.size == "big" && house.colour == "blue"){
     house.contains = "bear";
 }
 if (colour == "red" || colour == "blue"){
-    // colour is either red or blue
+    // 'color' dapat berupa red atau blue
 }
 
-// && and || "short circuit", which is useful for setting default values.
+// && dan || disebut "short circuit", yang berguna untuk menentukan nilai default
 var name = otherName || "default";
 
-// The `switch` statement checks for equality with `===`.
-// Use 'break' after each case
-// or the cases after the correct one will be executed too.
+// `switch` statement mengecek persamaan dengan `===`.
+// Gunakan 'break' untuk setiap kasus (case)
+// atau kasus (case) setelahnya yang benar akan dieksekusi juga.
 grade = 'B';
 switch (grade) {
   case 'A':
