@@ -1,4 +1,6 @@
 ---
+name: perl6
+category: language
 language: perl6
 filename: perl6-es.p6
 contributors:
