@@ -58,7 +58,7 @@ Exponentielle - a^n, où a est une constante
 
 Big-O, couramment écris **O**, est une notation asymptotique pour le cas le plus mauvais (ou plafond de croissance) d'une fonction donnée. Il nous fournit une _**limite supérieure asymptotique**_ pour le taux de croissance du temps d'exécution d'un algorithme. 
 
-Prenons 'f(n)' comme temps d'exécution de notre algorithme et 'g(n)' comme complexité de temps arbitraire que nous essayons d'appliquer à notre algorithme. 'f(n)' est O(g(n)), si pour certaines constantes c (c > 0) et n<sub>0</sub>,  'f(n)' <= 'c g(n)' pour toute taille d'entrée n (n > n<sub>0</sub>).
+Prenons `f(n)` comme temps d'exécution de notre algorithme et `g(n)` comme complexité de temps arbitraire que nous essayons d'appliquer à notre algorithme. `f(n)` est O(g(n)), si pour certaines constantes c (c > 0) et n<sub>0</sub>, `f(n)` <= `c g(n)` pour toute taille d'entrée n (n > n<sub>0</sub>).
 
 *Exemple 1*
 
@@ -105,7 +105,7 @@ Non, il n'en existe pas. `f(n)` n'est pas égal à O(g(n)).
 
 Big-Omega, courrament écris **Ω**, est une notation asymptotique pour le meilleur cas (ou limite de croissance basse) d'une fonction donnée. Il nous fournit une _**limite inférieure asymptotique**_ pour le taux de croissance du temps d'exécution d'un algorithme. 
 
-Prenons 'f(n)' comme temps d'exécution de notre algorithme et 'g(n)' comme complexité de temps arbitraire que nous essayons d'appliquer à notre algorithme. 'f(n)' est Ω(g(n)), si pour certaines constantes c (c > 0) et n<sub>0</sub>, 'f(n)' >= 'c g(n)' pour toute taille d'entrée n (n > n<sub>0</sub>).
+Prenons `f(n)` comme temps d'exécution de notre algorithme et `g(n)` comme complexité de temps arbitraire que nous essayons d'appliquer à notre algorithme. `f(n)` est Ω(g(n)), si pour certaines constantes c (c > 0) et n<sub>0</sub>, `f(n)` >= `c g(n)` pour toute taille d'entrée n (n > n<sub>0</sub>).
 
 ### Remarque
 
