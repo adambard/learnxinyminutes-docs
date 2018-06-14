@@ -15,32 +15,28 @@ contributors:
   - ["Gabriel Halley", "https://github.com/ghalley"]
   - ["Persa Zula", "http://persazula.com"]
   - ["Jake Faris", "https://github.com/farisj"]
+  - ["Corey Ward", "https://github.com/coreyward"]
 ---
 
 ```ruby
 # This is a comment
 
-=begin
-This is a multiline comment
-No-one uses them
-You shouldn't either
-=end
+# In Ruby, (almost) everything is an object.
+# This includes numbers…
+3.class #=> Integer
 
-# First and foremost: Everything is an object.
+# …strings…
+"Hello".class #=> String
 
-# Numbers are objects
-
-3.class #=> Fixnum
-
-3.to_s #=> "3"
-
+# …even methods!
+"Hello".method(:class).class #=> Method
 
 # Some basic arithmetic
 1 + 1 #=> 2
 8 - 1 #=> 7
 10 * 2 #=> 20
 35 / 5 #=> 7
-2**5 #=> 32
+2 ** 5 #=> 32
 5 % 3 #=> 2
 
 # Bitwise operators
@@ -52,6 +48,7 @@ You shouldn't either
 # for calling a method on an object
 1.+(3) #=> 4
 10.* 5 #=> 50
+100.methods.include?(:/) #=> true
 
 # Special values are objects
 nil # equivalent to null in other languages
@@ -72,9 +69,10 @@ false.class #=> FalseClass
 
 # apart from false itself, nil is the only other 'falsey' value
 
-!nil   #=> true
-!false #=> true
-!0     #=> false
+!!nil   #=> false
+!!false #=> false
+!!0     #=> true
+!!""    #=> true
 
 # More comparisons
 1 < 10 #=> true
@@ -82,7 +80,8 @@ false.class #=> FalseClass
 2 <= 2 #=> true
 2 >= 2 #=> true
 
-# Combined comparison operator
+# Combined comparison operator (returns `1` when the first argument is greater, 
+# `-1` when the second argument is greater, and `0` otherwise)
 1 <=> 10 #=> -1
 10 <=> 1 #=> 1
 1 <=> 1 #=> 0
@@ -90,7 +89,6 @@ false.class #=> FalseClass
 # Logical operators
 true && false #=> false
 true || false #=> true
-!true #=> false
 
 # There are alternate versions of the logical operators with much lower
 # precedence. These are meant to be used as flow-control constructs to chain
@@ -101,23 +99,17 @@ do_something() and do_something_else()
 # `log_error` only called if `do_something` fails.
 do_something() or log_error()
 
-
-# Strings are objects
-
-'I am a string'.class #=> String
-"I am a string too".class #=> String
+# String interpolation
 
 placeholder = 'use string interpolation'
 "I can #{placeholder} when using double quoted strings"
 #=> "I can use string interpolation when using double quoted strings"
 
-# Prefer single quoted strings to double quoted ones where possible
-# Double quoted strings perform additional inner calculations
-
-# Combine strings, but not with numbers
+# You can combine strings using `+`, but not with other types
 'hello ' + 'world'  #=> "hello world"
 'hello ' + 3 #=> TypeError: can't convert Fixnum into String
 'hello ' + 3.to_s #=> "hello 3"
+"hello #{3}" #=> "hello 3"
 
 # Combine strings and operators
 'hello ' * 3 #=> "hello hello hello "
@@ -150,9 +142,8 @@ snake_case = true
 
 # Use descriptive variable names
 path_to_project_root = '/good/name/'
-path = '/bad/name/'
+m = '/bad/name/'
 
-# Symbols (are objects)
 # Symbols are immutable, reusable constants represented internally by an
 # integer value. They're often used instead of strings to efficiently convey
 # specific, meaningful values
@@ -166,6 +157,11 @@ status == :pending #=> true
 status == 'pending' #=> false
 
 status == :approved #=> false
+
+Strings can be converted into symbols and vice versa:
+
+status.to_s #=> "pending"
+"argon".to_sym #=> :argon
 
 # Arrays
 
@@ -196,7 +192,7 @@ array.last #=> 5
 array[2, 3] #=> [3, 4, 5]
 
 # Reverse an Array
-a=[1,2,3]
+a = [1,2,3]
 a.reverse! #=> [3,2,1]
 
 # Or with a range
@@ -223,7 +219,7 @@ hash['number'] #=> 5
 # Asking a hash for a key that doesn't exist returns nil:
 hash['nothing here'] #=> nil
 
-# Since Ruby 1.9, there's a special syntax when using symbols as keys:
+# When using symbols for keys in a hash, you can use this alternate syntax:
 
 new_hash = { defcon: 3, action: true }
 
@@ -246,33 +242,26 @@ else
   'else, also optional'
 end
 
-for counter in 1..5
-  puts "iteration #{counter}"
-end
-#=> iteration 1
-#=> iteration 2
-#=> iteration 3
-#=> iteration 4
-#=> iteration 5
 
-# HOWEVER, No-one uses for loops.
-# Instead you should use the "each" method and pass it a block.
-# A block is a bunch of code that you can pass to a method like "each".
-# It is analogous to lambdas, anonymous functions or closures in other
-# programming languages.
-#
-# The "each" method of a range runs the block once for each element of the range.
-# The block is passed a counter as a parameter.
-# Calling the "each" method with a block looks like this:
+# In Ruby, traditional `for` loops aren't very common. Instead, these 
+# basic loops are implemented using enumerable, which hinges on `each`:
 
 (1..5).each do |counter|
   puts "iteration #{counter}"
 end
-#=> iteration 1
-#=> iteration 2
-#=> iteration 3
-#=> iteration 4
-#=> iteration 5
+
+# Which is roughly equivalent to this, which is unusual to see in Ruby:
+
+for counter in 1..5
+  puts "iteration #{counter}"
+end
+
+# The `do |variable| ... end` construct above is called a “block”. Blocks are similar
+# to lambdas, anonymous functions or closures in other programming languages. They can
+# be passed around as objects, called, or attached as methods. 
+#
+# The "each" method of a range runs the block once for each element of the range.
+# The block is passed a counter as a parameter.
 
 # You can also surround blocks in curly brackets:
 (1..5).each { |counter| puts "iteration #{counter}" }
@@ -365,10 +354,10 @@ def double(x)
   x * 2
 end
 
-# Methods (and all blocks) implicitly return the value of the last statement
+# Methods (and blocks) implicitly return the value of the last statement
 double(2) #=> 4
 
-# Parentheses are optional where the result is unambiguous
+# Parentheses are optional where the interpretation is unambiguous
 double 3 #=> 6
 
 double double 3 #=> 12
@@ -399,11 +388,22 @@ surround { puts 'hello world' }
 # }
 
 
-# You can pass a block to a method
-# "&" marks a reference to a passed block
+# Blocks can be converted into a `proc` object, which wraps the block 
+# and allows it to be passed to another method, bound to a different scope,
+# or manipulated otherwise. This is most common in method parameter lists,
+# where you frequently see a trailing `&block` parameter that will accept 
+# the block, if one is given, and convert it to a `Proc`. The naming here is
+# convention; it would work just as well with `&pineapple`:
 def guests(&block)
-  block.call 'some_argument'
+  block.class #=> Proc
+  block.call(4)
 end
+
+# The `call` method on the Proc is similar to calling `yield` when a block is 
+# present. The arguments passed to `call` will be forwarded to the block as arugments:
+
+guests { |n| "You have #{n} guests." }
+# => "You have 4 guests."
 
 # You can pass a list of arguments, which will be converted into an array
 # That's what splat operator ("*") is for
@@ -411,13 +411,34 @@ def guests(*array)
   array.each { |guest| puts guest }
 end
 
-# If a method returns an array, you can use destructuring assignment
-def foods
-    ['pancake', 'sandwich', 'quesadilla']
+# Destructuring
+
+# Ruby will automatically destrucure arrays on assignment to multiple variables:
+a, b, c = [1, 2, 3]
+a #=> 1
+b #=> 2
+c #=> 3
+
+# In some cases, you will want to use the splat operator: `*` to prompt destructuring
+# of an array into a list:
+
+ranked_competitors = ["John", "Sally", "Dingus", "Moe", "Marcy"]
+
+def best(first, second, third)
+  puts "Winners are #{first}, #{second}, and #{third}."
 end
-breakfast, lunch, dinner = foods
-breakfast #=> 'pancake'
-dinner #=> 'quesadilla'
+
+best *ranked_competitors.first(3) #=> Winners are John, Sally, and Dingus.
+
+# The splat operator can also be used in parameters:
+def best(first, second, third, *others)
+  puts "Winners are #{first}, #{second}, and #{third}."
+  puts "There were #{others.count} other participants."
+end
+
+best *ranked_competitors 
+#=> Winners are John, Sally, and Dingus.
+#=> There were 2 other participants.
 
 # By convention, all methods that return booleans end with a question mark
 5.even? # false
