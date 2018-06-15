@@ -1,5 +1,6 @@
 ---
 category: tool
+lang: tr-tr
 tool: git
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
