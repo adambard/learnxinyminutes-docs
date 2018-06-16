@@ -413,7 +413,7 @@ end
 
 # Destructuring
 
-# Ruby will automatically destrucure arrays on assignment to multiple variables:
+# Ruby will automatically destructure arrays on assignment to multiple variables:
 a, b, c = [1, 2, 3]
 a #=> 1
 b #=> 2
