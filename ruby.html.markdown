@@ -80,7 +80,7 @@ false.class #=> FalseClass
 2 <= 2 #=> true
 2 >= 2 #=> true
 
-# Combined comparison operator (returns `1` when the first argument is greater, 
+# Combined comparison operator (returns `1` when the first argument is greater,
 # `-1` when the second argument is greater, and `0` otherwise)
 1 <=> 10 #=> -1
 10 <=> 1 #=> 1
@@ -243,7 +243,7 @@ else
 end
 
 
-# In Ruby, traditional `for` loops aren't very common. Instead, these 
+# In Ruby, traditional `for` loops aren't very common. Instead, these
 # basic loops are implemented using enumerable, which hinges on `each`:
 
 (1..5).each do |counter|
@@ -258,7 +258,7 @@ end
 
 # The `do |variable| ... end` construct above is called a “block”. Blocks are similar
 # to lambdas, anonymous functions or closures in other programming languages. They can
-# be passed around as objects, called, or attached as methods. 
+# be passed around as objects, called, or attached as methods.
 #
 # The "each" method of a range runs the block once for each element of the range.
 # The block is passed a counter as a parameter.
@@ -388,10 +388,10 @@ surround { puts 'hello world' }
 # }
 
 
-# Blocks can be converted into a `proc` object, which wraps the block 
+# Blocks can be converted into a `proc` object, which wraps the block
 # and allows it to be passed to another method, bound to a different scope,
 # or manipulated otherwise. This is most common in method parameter lists,
-# where you frequently see a trailing `&block` parameter that will accept 
+# where you frequently see a trailing `&block` parameter that will accept
 # the block, if one is given, and convert it to a `Proc`. The naming here is
 # convention; it would work just as well with `&pineapple`:
 def guests(&block)
@@ -399,7 +399,7 @@ def guests(&block)
   block.call(4)
 end
 
-# The `call` method on the Proc is similar to calling `yield` when a block is 
+# The `call` method on the Proc is similar to calling `yield` when a block is
 # present. The arguments passed to `call` will be forwarded to the block as arugments:
 
 guests { |n| "You have #{n} guests." }
@@ -413,7 +413,7 @@ end
 
 # Destructuring
 
-# Ruby will automatically destrucure arrays on assignment to multiple variables:
+# Ruby will automatically destructure arrays on assignment to multiple variables:
 a, b, c = [1, 2, 3]
 a #=> 1
 b #=> 2
@@ -436,7 +436,7 @@ def best(first, second, third, *others)
   puts "There were #{others.count} other participants."
 end
 
-best *ranked_competitors 
+best *ranked_competitors
 #=> Winners are John, Sally, and Dingus.
 #=> There were 2 other participants.
 
