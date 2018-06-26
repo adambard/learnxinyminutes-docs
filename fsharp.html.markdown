@@ -306,7 +306,7 @@ module DataTypeExamples =
 
     // ------------------------------------
     // Union types (aka variants) have a set of choices
-    // Only case can be valid at a time.
+    // Only one case can be valid at a time.
     // ------------------------------------
 
     // Use "type" with bar/pipe to define a union type
