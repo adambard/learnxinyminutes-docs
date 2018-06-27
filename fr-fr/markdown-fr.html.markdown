@@ -7,12 +7,13 @@ lang: fr-fr
 ---
 
 Markdown a été créé par John Gruber en 2004. Il se veut être d'une syntaxe
-facile à lire et à écrire, aisément convertible en HTML
- (et beaucoup d'autres formats aussi à présent).
+facile à lire et à écrire, aisément convertible en HTML (et beaucoup d'autres formats aussi à présent).
 
-Le Markdown est implémenté de différentes manières, selon le parser. 
-Ce guide va alors tenter de trier les fonctionnalités universelles de celles
-spécifiques à un parser.
+Il existe de nombreuses formes de Markdown : Markown classique, Markdown GitHub, Multi-Markdown, etc. Dans ce guide, nous signalerons quand les fonctionnalités sont spécifiques à une forme.
+
+_Faites moi autant de retours que vous voulez! Sentez vous libre de "forker" 
+et envoyer des pull request!_
+
 
 - [HTML](#html)
 - [Titres](#titres)
@@ -28,21 +29,20 @@ spécifiques à un parser.
 
 ## HTML
 
-Markdown est une sorte de cousin du HTML, si bien que tout document HTML 
-est un document Markdown valide. Autrement dit, vous pouvez utiliser des 
-balises HTML dans un fichier Markdown, comme la balise commentaire dans 
-laquelle nous sommes à présent, car celle-ci ne sera pas affectée par 
-le parser( analyseur syntaxique ) Markdown.
+Markdown est une sorte de cousin du HTML, si bien que tout document HTML est un document Markdown valide.
 
 ```md
-<!-- Autrement dit, vous pouvez utiliser des balises HTML dans un fichier Markdown, comme la balise commentaire dans laquelle nous sommes à présent, car celle-ci ne sera pas affectée par le parser( analyseur syntaxique ) Markdown. Toutefois, si vous voulez créer un élément HTML dans un fichier Markdown,
- vous ne pourrez pas utiliser du Markdown à l'intérieur de ce dernier. -->
+<!-- Autrement dit, vous pouvez utiliser des balises HTML dans un fichier
+Markdown, comme la balise commentaire dans laquelle nous sommes à présent, car 
+celle-ci ne sera pas affectée par le parser (analyseur syntaxique) Markdown.
+ Toutefois, si vous voulez créer un élément HTML dans un fichier Markdown,
+  vous ne pourrez pas utiliser du Markdown à l'intérieur de ce dernier. -->
 ```
 
 
 ## Titres
 
-Vous pouvez facilement créer des éléments HTML `<h1>` à `<h6> en précédant le texte de votre futur titre par un ou plusieurs dièses ( # ), de un à six, selon le niveau de titre souhaité.
+Vous pouvez facilement créer des titres HTML `<h1>` à `<h6>` en précédant le texte de votre futur titre par un ou plusieurs dièses (#), de un à six, selon le niveau de titre souhaité.
 
 ```md
 # Ceci est un <h1>
@@ -53,7 +53,7 @@ Vous pouvez facilement créer des éléments HTML `<h1>` à `<h6> en précédant
 ###### Ceci est un <h6>
 ```
 
-Markdown fournit également une façon alternative de marquer les h1 et h2
+Markdown fournit également une façon alternative de marquer les `<h1>` et `<h2>`
 
 ```md
 Ceci est un h1
@@ -65,7 +65,7 @@ Ceci est un h2
 
 ## Formatage simple du texte
 
- On peut facilement rendre un texte "gras" ou "italique" en Markdown
+ On peut facilement mettre un texte en « gras » ou en « italique » en Markdown
 
 ```md
 *Ce texte est en italique.*
@@ -79,9 +79,7 @@ __Celui-là aussi.__
 *__Et là!__*
 ```
 
-
-Dans le Markdown de GitHub, utilisé pour interpréter le Markdown 
-sur GitHub, on a également le strikethrough ( texte barré ) :
+Dans le Markdown GitHub, utilisé pour interpréter le Markdown sur le site de GitHub, on a également le texte barré :
 
 ```md
 ~~Ce texte est barré avec strikethrough.~~
@@ -90,8 +88,7 @@ sur GitHub, on a également le strikethrough ( texte barré ) :
 
 ## Les paragraphes
 
-Les Paragraphes sont représentés par une ou plusieurs lignes de texte 
-séparées par une ou plusieurs lignes vides.
+Les Paragraphes sont représentés par une ou plusieurs lignes de texte séparées par une ou plusieurs lignes vides.
 
 ```md
 Ceci est un paragraphe. Là, je suis dans un paragraphe, facile non?
@@ -103,17 +100,17 @@ Je suis toujours dans le paragraphe 2!
 Puis là, eh oui, le paragraphe 3!
 ```
 
-Si jamais vous souhaitez insérer une balise HTML <br />, vous pouvez ajouter 
+Si jamais vous souhaitez insérer une balise HTML `<br />`, vous pouvez ajouter 
 un ou plusieurs espaces à la fin de votre paragraphe, et en commencer 
 un nouveau.
 
 ```md
-J'ai deux espaces vides à la fin (sélectionnez moi pour les voir). 
+J'ai deux espaces vides à la fin (sélectionnez moi pour les voir).  
 
 Bigre, il y a un <br /> au dessus de moi!
 ```
 
-Les 'Blocs de Citations' sont générés aisément, grâce au caractère `>`
+Les « Blocs de Citations » sont générés aisément, grâce au caractère `>`
 
 ```md
 > Ceci est une superbe citation. Vous pouvez même
@@ -130,7 +127,7 @@ Les 'Blocs de Citations' sont générés aisément, grâce au caractère `>`
 
 ## Les listes
 
-les Listes non ordonnées sont marquées par des asterisques, signes plus ou signes moins.
+Les listes non ordonnées sont marquées par des astérisques, signes plus ou signes moins.
 
 ```md
 * Item
@@ -150,7 +147,7 @@ ou
 - Un dernier item
 ```
 
-les Listes Ordonnées sont générées via un nombre suivi d'un point
+Les listes ordonnées sont générées via un nombre suivi d'un point
 
 ```md
 1. Item un
@@ -168,7 +165,7 @@ Vous pouvez même vous passer de tout numéroter, et Markdown générera les bon
 
 (cette liste sera interprétée de la même façon que celle au-dessus)
 
-Vous pouvez également utiliser des sous-listes
+Vous pouvez également utiliser des sous-listes.
 
 ```md
 1. Item un
@@ -179,7 +176,7 @@ Vous pouvez également utiliser des sous-listes
 4. Item quatre
 ```
 
-Il y a même des "listes de Taches". Elles génèrent des champs HTML de type checkbox. Les [ ] ci-dessous, n'ayant pas de [ x ], deviendront des cases à cocher HTML non-cochées.
+En Markdown GitHub, il y a même des « listes de tâches ». Elles génèrent des champs HTML de type checkbox. Les [ ] ci-dessous, n'ayant pas de [ x ], deviendront des cases à cocher HTML non-cochées.
 
 ```md
 - [ ] Première tache à réaliser.
@@ -191,15 +188,14 @@ La case suivante sera une case à cocher HTML cochée.
 
 ## Insertion de code
 
-Pour marquer du texte comme étant du code, il suffit de commencer 
-chaque ligne en tapant 4 espaces (ou un Tab).
+Pour marquer du texte comme étant du code, il suffit de commencer chaque ligne en tapant 4 espaces (ou un Tab).
 
 ```md
     echo "Ça, c'est du Code!";
     var Ça = "aussi !";
 ```
 
-L'indentation par tab ou série de quatre espaces fonctionne aussi à l'intérieur du bloc de code.
+L'indentation par tab ou série de quatre espaces fonctionne aussi à 'intérieur du bloc de code.
 
 ```md
     my_array.each do |item|
@@ -207,7 +203,7 @@ L'indentation par tab ou série de quatre espaces fonctionne aussi à l'intérie
     end
 ```
 
-On peut insérer du code dans le texte des paragraphes en entourant le code par des `.
+On peut insérer du code à l'intérieur du texte en entourant le code par des `.
 
 ```md
 La fonction `run()` ne vous oblige pas à aller courir!
@@ -215,20 +211,18 @@ La fonction `run()` ne vous oblige pas à aller courir!
 
 En Markdown GitHub, vous pouvez utiliser des syntaxes spécifiques.
 
-
     ```ruby 
     def foobar
     puts "Hello world!"
     end
     ```
 
-Pas besoin d'indentation pour le code juste au dessus, de plus, GitHub 
+Pas besoin d'indentation pour le code juste au-dessus, de plus, GitHub 
 va utiliser une coloration syntaxique pour le langage indiqué après les ```.
 
 ## Ligne Horizontale
 
-Pour en insérer une, utilisez trois ou plusieurs astérisques ou tirets, 
-avec ou sans espaces entre chaque un.
+Pour insérer une ligne horizontale, utilisez trois ou plusieurs astérisques ou tirets, avec ou sans espaces entre.
 
 ```md
 ***
@@ -245,19 +239,19 @@ Une des fonctionnalités sympathiques du Markdown est la facilité d'ajouter des
 [Clic moi!](http://test.com/)
 ```
 
-Pour ajouter un attribut Title, collez-le entre guillemets, avec le lien.
+Pour ajouter un attribut `Title`, collez-le entre guillemets, avec le lien.
 
 ```md
 [Clic moi!](http://test.com/ "Lien vers Test.com")
 ```
 
-Les Liens Relatifs marchent aussi.
+Les liens relatifs marchent aussi.
 
 ```md
 [En avant la musique](/music/).
 ```
 
-Les liens façon "références" sont eux aussi disponibles en Markdown.
+Les liens façon « références » sont eux aussi disponibles en Markdown.
 
 ```md
 [Cliquez ici][link1] pour plus d'information!
@@ -267,9 +261,9 @@ Les liens façon "références" sont eux aussi disponibles en Markdown.
 [foobar]: http://foobar.biz/ "Alright!"
 ```
 
-Le titre peut aussi être entouré de guillemets simples, entre parenthèses ou absent. Les références peuvent être placées un peu où vous voulez dans le document, et les identifiants (link1, foobar, ...) pevent être n'importe quoi tant qu'ils sont uniques.
+Le titre peut aussi être entouré de guillemets simples, entre parenthèses ou absent. Les références peuvent être placées un peu où vous voulez dans le document, et les identifiants (link1, foobar, ...) peuvent être n'importe quoi tant qu'ils sont uniques.
 
-Il y a également le "nommage implicite" qui transforme le texte du lien en identifiant.
+Il y a également le « nommage implicite » qui transforme le texte du lien en identifiant.
 
 ```md
 [Ceci][] est un lien.
@@ -277,7 +271,7 @@ Il y a également le "nommage implicite" qui transforme le texte du lien en iden
 [ceci]: http://ceciestunlien.com/
 ```
 
-mais ce n'est pas beaucoup utilisé.
+Mais ce n'est pas beaucoup utilisé.
 
 ## Images
 
@@ -313,7 +307,7 @@ Là aussi, on peut utiliser le mode "références".
 
 ### Caractères d'échappement
 
-Il suffit de précéder les caractères spécifiques à ignorer par des anti slash `\`.`
+Il suffit de faire précéder les caractères spécifiques à ignorer par des anti slash `\`.`
 
 ```md
 Pour taper *ce texte* entouré d'astérisques mais pas en italique : Tapez \*ce texte\*.
@@ -321,7 +315,7 @@ Pour taper *ce texte* entouré d'astérisques mais pas en italique : Tapez \*ce 
 
 ### Tableaux
 
-Les Tableaux ne sont disponibles que dans le GitHub Flavored Markdown et c'est ce n'est pas super agréable d'utilisation. Mais si vous en avez besoin :
+Les Tableaux ne sont disponibles que dans le Markdown GitHub et ce n'est pas super agréable d'utilisation. Mais si vous en avez besoin :
 
 ```md
 | Col1 | Col2 | Col3 |
@@ -341,8 +335,3 @@ Ough que c'est moche | svp | arrêtez
 ***
 
 Pour plus d'information, consultez [ici](http://daringfireball.net/projects/markdown/syntax) le post officiel de John Gruber à propos de la syntaxe, et [là](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) la superbe cheatsheet de Adam Pritchard.
-
-***
-
-Faites moi autant de retours que vous voulez! Sentez vous libre de "forker" 
-et envoyer des pull request!
