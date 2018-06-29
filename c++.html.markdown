@@ -1025,20 +1025,20 @@ for (it = my_vector.begin(); it != my_vector.end(); it++) {
 // without any other functions or code.
 
 #include<set>
-set<int> ST;    // Will initialize the set of int data type
-ST.insert(30);  // Will insert the value 30 in set ST
-ST.insert(10);  // Will insert the value 10 in set ST
-ST.insert(20);  // Will insert the value 20 in set ST
-ST.insert(30);  // Will insert the value 30 in set ST
+set<int> my_set;    // Will initialize the set of int data type
+my_set.insert(30);  // Will insert the value 30 in set my_set
+my_set.insert(10);  // Will insert the value 10 in set my_set
+my_set.insert(20);  // Will insert the value 20 in set my_set
+my_set.insert(30);  // Will insert the value 30 in set my_set
 // Now elements of sets are as follows
 //  10 20 30
 
 // To erase an element
-ST.erase(20);  // Will erase element with value 20
-// Set ST: 10 30
+my_set.erase(20);  // Will erase element with value 20
+// Set my_set: 10 30
 // To iterate through Set we use iterators
 set<int>::iterator it;
-for(it = ST.begin(); it != ST.end(); it++) {
+for(it = my_set.begin(); it != my_set.end(); it++) {
     cout << *it << endl;
 }
 // Output:
@@ -1046,8 +1046,8 @@ for(it = ST.begin(); it != ST.end(); it++) {
 // 30
 
 // To clear the complete container we use Container_name.clear()
-ST.clear();
-cout << ST.size();  // will print the size of set ST
+my_set.clear();
+cout << my_set.size();  // will print the size of set my_set
 // Output: 0
 
 // NOTE: for duplicate elements we can use multiset
@@ -1057,23 +1057,23 @@ cout << ST.size();  // will print the size of set ST
 // and a mapped value, following a specific order.
 
 #include<map>
-map<char, int> mymap;  // Will initialize the map with key as char and value as int
+map<char, int> my_map;  // Will initialize the map with key as char and value as int
 
-mymap.insert(pair<char,int>('A',1));
+my_map.insert(pair<char,int>('A',1));
 // Will insert value 1 for key A
-mymap.insert(pair<char,int>('Z',26));
+my_map.insert(pair<char,int>('Z',26));
 // Will insert value 26 for key Z
 
 // To iterate
 map<char,int>::iterator it;
-for (it=mymap.begin(); it!=mymap.end(); ++it)
+for (it=my_map.begin(); it!=my_map.end(); it++)
     std::cout << it->first << "->" << it->second << '\n';
 // Output:
 // A->1
 // Z->26
 
 // To find the value corresponding to a key
-it = mymap.find('Z');
+it = my_map.find('Z');
 cout << it->second;
 
 // Output: 26
