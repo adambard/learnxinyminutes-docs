@@ -327,7 +327,7 @@ enum ECarTypes
 
 ECarTypes GetPreferredCarType()
 {
-	return ECarTypes::Hatchback;
+    return ECarTypes::Hatchback;
 }
 
 // As of C++11 there is an easy way to assign a type to the enum which can be
@@ -343,13 +343,13 @@ enum ECarTypes : uint8_t
 
 void WriteByteToFile(uint8_t InputValue)
 {
-	// Serialize the InputValue to a file
+    // Serialize the InputValue to a file
 }
 
 void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 {
-	// The enum is implicitly converted to a uint8_t due to its declared enum type
-	WriteByteToFile(InputCarType);
+    // The enum is implicitly converted to a uint8_t due to its declared enum type
+    WriteByteToFile(InputCarType);
 }
 
 // On the other hand you may not want enums to be accidentally cast to an integer
@@ -365,14 +365,14 @@ enum class ECarTypes : uint8_t
 
 void WriteByteToFile(uint8_t InputValue)
 {
-	// Serialize the InputValue to a file
+    // Serialize the InputValue to a file
 }
 
 void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 {
-	// Won't compile even though ECarTypes is a uint8_t due to the enum
-	// being declared as an "enum class"!
-	WriteByteToFile(InputCarType);
+    // Won't compile even though ECarTypes is a uint8_t due to the enum
+    // being declared as an "enum class"!
+    WriteByteToFile(InputCarType);
 }
 
 //////////////////////////////////////////
@@ -858,7 +858,7 @@ sort(tester.begin(), tester.end(), [](const pair<int, int>& lhs, const pair<int,
 vector<int> dog_ids;
 // number_of_dogs = 3;
 for(int i = 0; i < 3; i++) {
-	dog_ids.push_back(i);
+    dog_ids.push_back(i);
 }
 
 int weight[3] = {30, 50, 10};
@@ -882,14 +882,14 @@ sort(dog_ids.begin(), dog_ids.end(), [&weight](const int &lhs, const int &rhs) {
 int arr[] = {1, 10, 3};
 
 for(int elem: arr){
-	cout << elem << endl;
+    cout << elem << endl;
 }
 
 // You can use "auto" and not worry about the type of the elements of the container
 // For example:
 
 for(auto elem: arr) {
-	// Do something with each element of arr
+    // Do something with each element of arr
 }
 
 /////////////////////
@@ -1010,13 +1010,13 @@ my_vector.push_back(val); // will push the value into the vector again (now havi
 // To iterate through a vector we have 2 choices:
 // Either classic looping (iterating through the vector from index 0 to its last index):
 for (int i = 0; i < my_vector.size(); i++) {
-	cout << my_vector[i] << endl; // for accessing a vector's element we can use the operator []
+    cout << my_vector[i] << endl; // for accessing a vector's element we can use the operator []
 }
 
 // or using an iterator:
 vector<string>::iterator it; // initialize the iterator for vector
-for (it = my_vector.begin(); it != my_vector.end(); ++it) {
-	cout << *it  << endl;
+for (it = my_vector.begin(); it != my_vector.end(); it++) {
+    cout << *it  << endl;
 }
 
 // Set
@@ -1038,8 +1038,8 @@ ST.erase(20);  // Will erase element with value 20
 // Set ST: 10 30
 // To iterate through Set we use iterators
 set<int>::iterator it;
-for(it=ST.begin();it<ST.end();it++) {
-	cout << *it << endl;
+for(it = ST.begin(); it != ST.end(); it++) {
+    cout << *it << endl;
 }
 // Output:
 // 10
