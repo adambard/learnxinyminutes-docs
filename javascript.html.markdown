@@ -248,6 +248,13 @@ for (var x in person){
     description += person[x] + " ";
 } // description = 'Paul Ken 18 '
 
+// The for/of statement allows iteration over an iterator.
+var myPets = "";
+var pets = ["cat", "dog", "hamster", "hedgehog"];
+for (var pet of pets){
+    myPets += pet + " ";
+} // myPets = 'cat dog hamster hedgehog '
+
 // && is logical and, || is logical or
 if (house.size == "big" && house.colour == "blue"){
     house.contains = "bear";
