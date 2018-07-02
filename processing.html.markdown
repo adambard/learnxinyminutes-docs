@@ -203,9 +203,44 @@ noLoop(); // only allows it to run once.
 redraw(); // runs the draw() method once more.
 exit(); // This stops the program. It is useful for programs with draw() running continuously.
 ```
+## Drawing with Processing
 Since you will have understood the basics of the language, we will now look into the best part of Processing; DRAWING.
 
 ```processing
+/* ------
+   Shapes
+   ------
+*/
+
+// 2D Shapes
+
+// Point
+point(x, y); // In 2D space
+point(x, y, z); // In 3D space
+// Draws a point in the coordinate space.
+
+// Line
+line(x1, y1, x2, y2); // In 2D space
+line(x1, y1, z1, x2, y2, z2); // In 3D space
+// Draws a line connecting two points defined by (x1, y1) and (x2, y2)
+
+// Rectangle
+rect(a, b, c, d, [r]); // With optional parameter defining the radius of all corners
+rect(a, b, c, d, tl, tr, br, bl); // With optional set of parameters defining radius of each corner
+// Draws a rectangle with {a, b} as a top left coordinate and c and d as width and height respectively.
+
+// Quad
+quad(x,y,x2,y2,x3,y3,x4,y4)
+// Draws a quadrilateral with parameters defining coordinates of each corner point.
+
+// Arc;
+arc(x, y, width, height, start, stop, [mode]);
+// While the first four parameters are self-explanatory,
+// start and end defined the angles the arc starts and ends (in radians).
+// Optional parameter [mode] defines the filling;
+// PIE gives pie-like outline, CHORD gives the chord-like outline and OPEN is CHORD without strokes
+
+
 
 
 
