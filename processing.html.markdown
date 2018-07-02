@@ -54,9 +54,9 @@ void draw() {
 // Now that we know how to write the working script and how to run it,
 // we will proceed to explore what data types and collections are supported in Processing.
 
-/* -----------------------
-  Datatypes & collections
-  ------------------------
+/* ------------------------
+   Datatypes & collections
+   ------------------------
 */
 
 // According to Processing References, Processing supports 8 primitive datatypes as follows.
@@ -113,10 +113,11 @@ SomeRandomClass myObjectInstantiated = new SomeRandomClass();
 // Processing comes up with more collections (eg. - Dictionaries and Lists) by default,
 // for the simplicity sake, I will leave them out of discussion here.
 
-/* -----------
-  Maths
-  ------------
+/* ------------
+   Maths
+   ------------
 */
+
 // Arithmetic
 1 + 1 // 2
 2 - 1 // 0
@@ -147,6 +148,66 @@ float sr = sqrt(25); // sr = 5.0
 float one = sin(PI/2); // one = 1.0
 // As you may have noticed, there exists a set of constants for trigonometric uses;
 // PI, HALF_PI, QUARTER_PI and so on...
+
+/* -------------
+   Control Flow
+   -------------
+*/
+
+// Conditional Statements
+// If Statements - The same syntax as if statements in Java.
+if (author.getAppearance().equals("hot")) {
+  print("Narcissism at its best!");
+} else {
+  // You can check for other conditions here.
+  print("Something is really wrong here!");
+}
+// A shortcut for if-else statements can also be used.
+int i = 3;
+String value = (i > 5) ? "Big" : "Small"; // "Small"
+
+// Switch-case structure can be used to check multiple conditions more concisely.
+int value = 2;
+switch(value) {
+  case 0:
+    print("Nought!"); // This doesn't get executed.
+    break; // Jumps to the next statement
+  case 1:
+    print("Getting there..."); // This again doesn't get executed.
+    break;
+  case 2:
+    print("Bravo!"); // This line gets executed.
+    break;
+  default:
+    print("Not found!"); // This line gets executed if our value was some other value.
+    break;
+}
+
+// Iterative statements
+// For Statements - Again, the same syntax as in Java
+for(int i = 0; i < 5; i ++){
+  print(i); // prints from 0 to 4
+}
+
+// While Statements - Again, nothing new if you are familiar with Java syntax.
+int j = 3;
+while(j > 0) {
+  print(j);
+  j--; // This is important to prevent from the code running indefinitely.
+}
+
+// loop()| noLoop() | redraw() | exit()
+// These are more of Processing-specific functions to configure program flow.
+loop(); // allows the draw() method to run forever while
+noLoop(); // only allows it to run once.
+redraw(); // runs the draw() method once more.
+exit(); // This stops the program. It is useful for programs with draw() running continuously.
+```
+Since you will have understood the basics of the language, we will now look into the best part of Processing; DRAWING.
+
+```processing
+
+
 
 ```
 Processing is easy to learn and is particularly useful to create multimedia contents (even in 3D) without
