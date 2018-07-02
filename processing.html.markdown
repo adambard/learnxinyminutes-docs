@@ -108,7 +108,7 @@ ArrayList<Integer> intArrayList = new ArrayList<Integer>();
 // Format --> ClassName InstanceName
 SomeRandomClass myObject // then instantiate later
 //or
-SomeRandomClass myObjectInstantiated = new SomeRandomClass(); // Assuming we have nothing to pass into the constructor
+SomeRandomClass myObjectInstantiated = new SomeRandomClass();
 
 // Processing comes up with more collections (eg. - Dictionaries and Lists) by default,
 // for the simplicity sake, I will leave them out of discussion here.
@@ -135,15 +135,18 @@ float sr = sqrt(25); // sr = 5.0
 
 // Vectors
 // Processing provides an easy way to implement vectors in its environment using PVector class.
-// It can describe a two or three dimensional vector and comes with a set of methods which are useful for matrices operations.
-// You can find more information on PVector class and its functions here. (https://processing.org/reference/PVector.html)
+// It can describe a two or three dimensional vector and
+// comes with a set of methods which are useful for matrices operations.
+// You can find more information on PVector class and its functions here.
+// (https://processing.org/reference/PVector.html)
 
 // Trigonometry
 // Processing also supports trigonometric operations by supplying a set of functions.
 // sin(), cos(), tan(), asin(), acos(), atan() and also degrees() and radians() for convenient conversion.
-// However, a thing to note is those functions take angle in radians as the parameter so it has to be converted beforehand.
+// However, those functions take angle in radians as the parameter so it has to be converted beforehand.
 float one = sin(PI/2); // one = 1.0
-// As you may have noticed, there exists a set of constants for trigonometric uses; PI, HALF_PI, QUARTER_PI and so on...
+// As you may have noticed, there exists a set of constants for trigonometric uses;
+// PI, HALF_PI, QUARTER_PI and so on...
 
 ```
 Processing is easy to learn and is particularly useful to create multimedia contents (even in 3D) without
