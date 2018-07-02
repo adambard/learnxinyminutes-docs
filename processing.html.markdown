@@ -344,11 +344,76 @@ There's too much to cover in a short documentation, so I will leave them out her
 import processing.something.*;
 
 ```
+## DTC?
+
+Down To Code? Let's get our hands dirty!  
+
+Let us see an example from openprocessing to visualize how much Processing is capable of within few lines of code.  
+Copy the code below into your Processing IDE and see the magic.
+
+```processing
+
+// Disclaimer: I did not write this program since I currently am occupied with internship and
+//             this sketch is adapted from openprocessing since it shows something cool with simple codes.
+// Retrieved from: (https://www.openprocessing.org/sketch/559769)
+
+float theta;
+float a;
+float col;
+float num;
+
+void setup() {
+  size(600,600);
+}
+
+void draw() {
+  background(#F2F2F2);
+  translate(width/2, height/2);
+  theta = map(sin(millis()/1000.0), -1, 1, 0, PI/6);
+
+  float num=6;
+  for (int i=0; i<num; i++) {
+    a =350;
+    rotate(TWO_PI/num);
+    branch(a);
+  }
+
+}
+
+
+
+void branch(float len) {
+  col=map(len, 0, 90, 150, 255);
+  fill(col, 0, 74);
+  stroke (col, 0, 74);
+  line(0, 0, 0, -len);
+  ellipse(0, -len, 3, 3);
+  len *= 0.7;
+
+
+  if (len>30) {
+    pushMatrix();
+    translate(0, -30);
+    rotate(theta);
+    branch(len);
+    popMatrix();
+
+    pushMatrix();
+    translate(0, -30);
+    rotate(-theta);
+    branch(len);
+    popMatrix();
+
+  }
+}
+
+```
+
 Processing is easy to learn and is particularly useful to create multimedia contents (even in 3D) without
 having to type a lot of codes. It is so simple that you can read through the code and get a rough idea of
 the program flow.  
 However, that does not apply when you introduce external libraries, packages and even your own classes.
-(Trust me! Processing projects can get really large)  
+(Trust me! Processing projects can get real humongous...)  
 
 ## What's Next?
 
