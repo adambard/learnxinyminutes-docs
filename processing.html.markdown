@@ -209,6 +209,7 @@ exit(); // This stops the program. It is useful for programs with draw() running
 Since you will have understood the basics of the language by now, we will now look into the best part of Processing; DRAWING.
 
 ```processing
+
 /* ------
    Shapes
    ------
@@ -276,6 +277,7 @@ sphere(radius); // Its size is defined using the radius parameter
 // What if you wanted to draw something that's not made available by Processing's functions?
 // You can use beginShape(), endShape(), vertex(x,y) to define shapes by specifying each point.
 // More information here: (https://processing.org/reference/beginShape_.html)
+// You can also use custom made shapes using PShape class.(https://processing.org/reference/PShape.html)
 
 /* ---------------
    Transformations
@@ -307,7 +309,30 @@ scale(s); // Scale the coordinate system by either expanding or contracting it.
    --------------------
 */
 
+// Colours
+// As I have discussed earlier, the background colour can be configured using background() function.
+// You can define a color object beforehand and then pass it to the function as an argument.
+color c = color(255, 255, 255); // WHITE!
+// By default, Processing uses RGB colour scheme but it can be configured to HSB using colorMode().
+// Read here: (https://processing.org/reference/colorMode_.html)
+background(color); // By now, the background colour should be white.
+// You can use fill() function to select the colour for filling the shapes.
+// It has to be configured before you start drawing shapes so the colours gets applied.
+fill(color(0, 0, 0));
+// If you just want to colour the outlines of the shapes then you can use stroke() function.
+stroke(255, 255, 255, 200); // stroke colour set to yellow with transparency set to a lower value.
 
+// Images
+// Processing can render images and use them in several ways. Mostly stored as PImage datatype.
+filter(shader); // Processing supports several filter functions for image manipulation.
+texture(image); // PImage can be passed into arguments for texture-mapping the shapes.
+
+```
+If you want to take things further, there are more things Processing is powered for. Rendering models, shaders and whatnot.  
+There's too much to cover in a short documentation, so I will leave them out here. Shoud you be interested, please check out the references.
+```processing
+// Before we move on, I will touch a little bit more on how to import libraries
+// so you can extend Processing's functionality to another horizon.
 
 /* -------
    Imports
