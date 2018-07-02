@@ -40,6 +40,8 @@ void setup() {
 
 // Normally, we put all the static codes inside the setup() method as the name suggest since it only runs once.
 // It can range from setting the background colours, setting the canvas size.
+background(color); // setting the background colour
+size(width,height,[renderer]); // setting the canvas size with optional parameter defining renderer
 // You will see more of them throughout this document.
 
 // If you want to run the codes indefinitely, it has to be placed in draw() method.
@@ -204,7 +206,7 @@ redraw(); // runs the draw() method once more.
 exit(); // This stops the program. It is useful for programs with draw() running continuously.
 ```
 ## Drawing with Processing
-Since you will have understood the basics of the language, we will now look into the best part of Processing; DRAWING.
+Since you will have understood the basics of the language by now, we will now look into the best part of Processing; DRAWING.
 
 ```processing
 /* ------
@@ -222,27 +224,99 @@ point(x, y, z); // In 3D space
 // Line
 line(x1, y1, x2, y2); // In 2D space
 line(x1, y1, z1, x2, y2, z2); // In 3D space
-// Draws a line connecting two points defined by (x1, y1) and (x2, y2)
+// Draws a line connecting two points defined by (x1, y1) and (x2, y2).
+
+// Triangle
+triangle(x1, y1, x2, y2, x3, y3);
+// Draws a triangle connecting three points defined by coordinate paramters.
 
 // Rectangle
 rect(a, b, c, d, [r]); // With optional parameter defining the radius of all corners
-rect(a, b, c, d, tl, tr, br, bl); // With optional set of parameters defining radius of each corner
+rect(a, b, c, d, [tl, tr, br, bl]); // With optional set of parameters defining radius of each corner
 // Draws a rectangle with {a, b} as a top left coordinate and c and d as width and height respectively.
 
 // Quad
-quad(x,y,x2,y2,x3,y3,x4,y4)
+quad(x, y, x2, y2, x3, y3, x4, y4);
 // Draws a quadrilateral with parameters defining coordinates of each corner point.
 
-// Arc;
+// Ellipse
+ellipse(x, y, width, height);
+// Draws an eclipse at point {x, y} with width and height specified.
+
+// Arc
 arc(x, y, width, height, start, stop, [mode]);
 // While the first four parameters are self-explanatory,
 // start and end defined the angles the arc starts and ends (in radians).
 // Optional parameter [mode] defines the filling;
 // PIE gives pie-like outline, CHORD gives the chord-like outline and OPEN is CHORD without strokes
 
+// Curves
+// Processing provides two implementation of curves; using curve() and bezier().
+// Since I plan to keep this simple I won't be discussing any further details.
+// However, if you want to implement it in your sketch, here are the references:
+// (https://processing.org/reference/curve_.html)(https://processing.org/reference/bezier_.html)
+
+// 3D Shapes
+
+// 3D space can be configured by setting "P3D" to the renderer parameter in size() method.
+size(width, height, P3D);
+// In 3D space, you will have to translate to the particular coordinate to render the 3D shapes.
+
+// Box
+box(size);  // Cube with same length defined by size
+box(w, h, d); // Box with width, height and depth separately defined
+
+// Sphere
+sphere(radius); // Its size is defined using the radius parameter
+// Mechanism behind rendering spheres is implemented by tessellating triangles.
+// That said, how much detail being rendered is controlled by function sphereDetail(res)
+// More information here: (https://processing.org/reference/sphereDetail_.html)
+
+// Irregular Shapes
+// What if you wanted to draw something that's not made available by Processing's functions?
+// You can use beginShape(), endShape(), vertex(x,y) to define shapes by specifying each point.
+// More information here: (https://processing.org/reference/beginShape_.html)
+
+/* ---------------
+   Transformations
+   ---------------
+*/
+
+// Transformations are particularly useful to keep track of the coordinate space
+// and the vertices of the shapes you have drawn.
+// Particularly, matrix stack methods; pushMatrix(), popMatrix() and translate(x,y)
+pushMatrix(); // Saves the current coordinate system to the stack
+// ... apply all the transformations here ...
+popMatrix(); // Restores the saved coordinate system
+// Using them, the coordinate system can be preserved and visualized without causing any conflicts.
+
+// Translate
+translate(x, y); // Translates to point{x, y} i.e. - setting origin to that point
+translate(x, y, z); // 3D counterpart of the function
+
+// Rotate
+rotate(angle); // Rotate the amount specified by the angle parameter
+// It has 3 3D counterparts to perform rotation, each for every dimension,
+// namely: rotateX(angle), rotateY(angle), rotateZ(angle)
+
+// Scale
+scale(s); // Scale the coordinate system by either expanding or contracting it.
+
+/* --------------------
+   Styling and Textures
+   --------------------
+*/
 
 
 
+/* -------
+   Imports
+   -------
+*/
+
+// The power of Processing can be further visualized when we import libraries and packages into our sketches.
+// Import statement can be written as below at the top of the source code.
+import processing.something.*;
 
 ```
 Processing is easy to learn and is particularly useful to create multimedia contents (even in 3D) without
