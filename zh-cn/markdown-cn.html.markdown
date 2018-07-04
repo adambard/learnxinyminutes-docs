@@ -4,6 +4,7 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Fangzhou Chen","https://github.com/FZSS"]
+	- ["Luffy Zhong", "https://github.com/mengzhongshi"]
 filename: learnmarkdown-cn.md
 lang: zh-cn
 ---
@@ -13,16 +14,16 @@ Markdown 由 John Gruber 于 2004年创立. 它旨在成为一门容易读写的
 在不同的解析器中，Markdown 的实现方法有所不同。
 此教程会指出哪些特征是通用，哪一些只对某一解析器有效。
 
-- [HTML标签](#html-elements)
-- [标题](#headings)
-- [文本样式](#simple-text-styles)
-- [段落](#paragraphs)
-- [列表](#lists)
-- [代码块](#code-blocks)
-- [水平线分隔](#horizontal-rule)
-- [链接](#links)
-- [图片](#images)
-- [杂项](#miscellany)
+- [HTML标签](#HTML标签)
+- [标题](#标题)
+- [文本样式](#文本样式)
+- [段落](#段落)
+- [列表](#列表)
+- [代码块](#代码块)
+- [水平线分隔](#水平线分隔)
+- [链接](#链接)
+- [图片](#图片)
+- [杂项](#杂项)
 
 ## HTML标签
 Markdown 是 HTML 的父集，所以任何 HTML 文件都是有效的 Markdown。
