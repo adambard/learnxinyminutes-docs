@@ -8,41 +8,35 @@ filename: learnawk-cn.awk
 lang: zh-cn
 ---
 
-AWK is a standard tool on every POSIX-compliant UNIX system. It's like a
-stripped-down Perl, perfect for text-processing tasks and other scripting
-needs. It has a C-like syntax, but without semicolons, manual memory
-management, or static typing. It excels at text processing. You can call to it
-from a shell script, or you can use it as a stand-alone scripting language.
+AWK是POSIX兼容的UNIX系统中的标准工具. 它像简化版的Perl, 非常适用于文本处理任务和其他脚本类需求.
+它有着C风格的语法, 但是没有分号, 没有手动内存管理, 没有静态类型. 
+他擅长于文本处理, 你可以通过shell脚本调用AWK, 也可以用作独立的脚本语言.
 
-Why use AWK instead of Perl? Mostly because AWK is part of UNIX. You can always
-count on it, whereas Perl's future is in question. AWK is also easier to read
-than Perl. For simple text-processing scripts, particularly ones that read
-files line by line and split on delimiters, AWK is probably the right tool for
-the job.
+为什么使用AWK而不是Perl, 大概是因为AWK是UNIX的一部分, 你总能依靠它, 而Perl已经前途未卜了.
+AWK比Perl更易读. 对于简单的文本处理脚本, 特别是按行读取文件, 按分隔符分隔处理, AWK极可能是正确的工具.
 
 ```awk
 #!/usr/bin/awk -f
 
-# Comments are like this
+# 注释使用井号
 
-# AWK programs consist of a collection of patterns and actions. The most
-# important pattern is called BEGIN. Actions go into brace blocks.
+# AWK程序由一系列 模式(patterns) 和 动作(actions) 组成. 
+# 最重要的模式叫做 BEGIN. 动作由大括号包围.
 BEGIN {
 
-    # BEGIN will run at the beginning of the program. It's where you put all
-    # the preliminary set-up code, before you process any text files. If you
-    # have no text files, then think of BEGIN as the main entry point.
+    # BEGIN在程序最开始运行. 在这里放一些在真正处理文件之前的准备和setup的代码.
+    # 如果没有文本文件要处理, 那就把BEGIN作为程序的主入口吧.
 
-    # Variables are global. Just set them or use them, no need to declare..
+    # 变量是全局的. 直接赋值使用即可, 无需声明.
     count = 0
 
-    # Operators just like in C and friends
+    # 运算符和C语言系一样
     a = count + 1
     b = count - 1
     c = count * 1
-    d = count / 1 # integer division
-    e = count % 1 # modulus
-    f = count ^ 1 # exponentiation
+    d = count / 1 # 整数除法
+    e = count % 1 # 取余
+    f = count ^ 1 # 取幂
 
     a += 1
     b -= 1
@@ -51,26 +45,26 @@ BEGIN {
     e %= 1
     f ^= 1
 
-    # Incrementing and decrementing by one
+    # 自增1, 自减1
     a++
     b--
 
-    # As a prefix operator, it returns the incremented value
+    # 前置运算, 返回增加之后的值
     ++a
     --b
 
-    # Notice, also, no punctuation such as semicolons to terminate statements
+    # 注意, 不需要分号之类的标点来分隔语句
 
-    # Control statements
+    # 控制语句
     if (count == 0)
         print "Starting with count of 0"
     else
         print "Huh?"
 
-    # Or you could use the ternary operator
+    # 或者三目运算符
     print (count == 0) ? "Starting with count of 0" : "Huh?"
 
-    # Blocks consisting of multiple lines use braces
+    # 多行的代码块用大括号包围
     while (a < 10) {
         print "String concatenation is done" " with a series" " of"
             " space-separated strings"
@@ -82,126 +76,118 @@ BEGIN {
     for (i = 0; i < 10; i++)
         print "Good ol' for loop"
 
-    # As for comparisons, they're the standards:
-    a < b   # Less than
-    a <= b  # Less than or equal
-    a != b  # Not equal
-    a == b  # Equal
-    a > b   # Greater than
-    a >= b  # Greater than or equal
+    # 标准的比较运算符
+    a < b   # 小于
+    a <= b  # 小于或等于
+    a != b  # 不等于
+    a == b  # 等于
+    a > b   # 大于
+    a >= b  # 大于或等于
 
-    # Logical operators as well
-    a && b  # AND
-    a || b  # OR
+    # 也有逻辑运算符
+    a && b  # 且
+    a || b  # 或
 
-    # In addition, there's the super useful regular expression match
+    # 并且有超实用的正则表达式匹配
     if ("foo" ~ "^fo+$")
         print "Fooey!"
     if ("boo" !~ "^fo+$")
         print "Boo!"
 
-    # Arrays
+    # 数组
     arr[0] = "foo"
     arr[1] = "bar"
-    # Unfortunately, there is no other way to initialize an array. Ya just
-    # gotta chug through every value line by line like that.
+    # 不幸的是, 没有其他方式初始化数组. 必须像这样一行一行的赋值.
 
-    # You also have associative arrays
+    # 关联数组, 类似map或dict的用法.
     assoc["foo"] = "bar"
     assoc["bar"] = "baz"
 
-    # And multi-dimensional arrays, with some limitations I won't mention here
+    # 多维数组. 但是有一些局限性这里不提了.
     multidim[0,0] = "foo"
     multidim[0,1] = "bar"
     multidim[1,0] = "baz"
     multidim[1,1] = "boo"
 
-    # You can test for array membership
+    # 可以检测数组包含关系
     if ("foo" in assoc)
         print "Fooey!"
 
-    # You can also use the 'in' operator to traverse the keys of an array
+    # 可以使用in遍历数组
     for (key in assoc)
         print assoc[key]
 
-    # The command line is in a special array called ARGV
+    # 命令行参数是一个叫ARGV的数组
     for (argnum in ARGV)
         print ARGV[argnum]
 
-    # You can remove elements of an array
-    # This is particularly useful to prevent AWK from assuming the arguments
-    # are files for it to process
+    # 可以从数组中移除元素
+    # 在 防止awk把文件参数当做数据来处理 时delete功能很有用.
     delete ARGV[1]
 
-    # The number of command line arguments is in a variable called ARGC
+    # 命令行参数的个数是一个叫ARGC的变量
     print ARGC
 
-    # AWK has several built-in functions. They fall into three categories. I'll
-    # demonstrate each of them in their own functions, defined later.
+    # AWK有很多内置函数, 分为三类, 会在接下来定义的各个函数中介绍.
 
     return_value = arithmetic_functions(a, b, c)
     string_functions()
     io_functions()
 }
 
-# Here's how you define a function
+# 定义函数
 function arithmetic_functions(a, b, c,     d) {
 
-    # Probably the most annoying part of AWK is that there are no local
-    # variables. Everything is global. For short scripts, this is fine, even
-    # useful, but for longer scripts, this can be a problem.
+    # 或许AWK最让人恼火的地方是没有局部变量, 所有东西都是全局的, 
+    # 对于短的脚本还好, 对于长一些的就会成问题.
 
-    # There is a work-around (ahem, hack). Function arguments are local to the
-    # function, and AWK allows you to define more function arguments than it
-    # needs. So just stick local variable in the function declaration, like I
-    # did above. As a convention, stick in some extra whitespace to distinguish
-    # between actual function parameters and local variables. In this example,
-    # a, b, and c are actual parameters, while d is merely a local variable.
+    # 这里有一个技巧, 函数参数是对函数局部可见的, 并且AWK允许定义多余的参数, 
+    # 因此可以像上面那样把局部变量插入到函数声明中. 
+    # 为了方便区分普通参数(a,b,c)和局部变量(d), 可以多键入一些空格.
 
-    # Now, to demonstrate the arithmetic functions
+    # 现在介绍数学类函数
 
-    # Most AWK implementations have some standard trig functions
+    # 多数AWK实现中包含标准的三角函数
     localvar = sin(a)
     localvar = cos(a)
     localvar = atan2(a, b) # arc tangent of b / a
 
-    # And logarithmic stuff
+    # 对数
     localvar = exp(a)
     localvar = log(a)
 
-    # Square root
+    # 平方根
     localvar = sqrt(a)
 
-    # Truncate floating point to integer
+    # 浮点型转为整型
     localvar = int(5.34) # localvar => 5
 
-    # Random numbers
-    srand() # Supply a seed as an argument. By default, it uses the time of day
-    localvar = rand() # Random number between 0 and 1.
+    # 随机数
+    srand() # 接受随机种子作为参数, 默认使用当天的时间
+    localvar = rand() # 0到1之间随机
 
-    # Here's how to return a value
+    # 函数返回
     return localvar
 }
 
 function string_functions(    localvar, arr) {
 
-    # AWK, being a string-processing language, has several string-related
-    # functions, many of which rely heavily on regular expressions.
+    # AWK, 作为字符处理语言, 有很多字符串相关函数, 其中大多数都严重依赖正则表达式.
 
-    # Search and replace, first instance (sub) or all instances (gsub)
-    # Both return number of matches replaced
+    # 搜索并替换, 第一个出现的 (sub) or 所有的 (gsub)
+    # 都是返回替换的个数
     localvar = "fooooobar"
     sub("fo+", "Meet me at the ", localvar) # localvar => "Meet me at the bar"
     gsub("e+", ".", localvar) # localvar => "m..t m. at th. bar"
 
-    # Search for a string that matches a regular expression
-    # index() does the same thing, but doesn't allow a regular expression
-    match(localvar, "t") # => 4, since the 't' is the fourth character
+    # 搜索匹配正则的字符串
+    # index() 也是搜索, 不支持正则
+    match(localvar, "t") # => 4, 't'在4号位置. (译者注: awk是1开始计数的,不是常见的0-base)
 
-    # Split on a delimiter
+    # 按分隔符分隔
     split("foo-bar-baz", arr, "-") # a => ["foo", "bar", "baz"]
 
-    # Other useful stuff
+    # 其他有用的函数
     sprintf("%s %d %d %d", "Testing", 1, 2, 3) # => "Testing 1 2 3"
     substr("foobar", 2, 3) # => "oob"
     substr("foobar", 4) # => "bar"
@@ -212,99 +198,81 @@ function string_functions(    localvar, arr) {
 
 function io_functions(    localvar) {
 
-    # You've already seen print
+    # 你已经见过的print函数
     print "Hello world"
 
-    # There's also printf
+    # 也有printf
     printf("%s %d %d %d\n", "Testing", 1, 2, 3)
 
-    # AWK doesn't have file handles, per se. It will automatically open a file
-    # handle for you when you use something that needs one. The string you used
-    # for this can be treated as a file handle, for purposes of I/O. This makes
-    # it feel sort of like shell scripting:
-
+    # AWK本身没有文件句柄, 当你使用需要文件的东西时会自动打开文件, 做文件I/O时, 字符串就是打开的文件句柄.
+    # 这看起来像Shell
     print "foobar" >"/tmp/foobar.txt"
 
-    # Now the string "/tmp/foobar.txt" is a file handle. You can close it:
+    # 现在"/tmp/foobar.txt"字符串是一个文件句柄, 你可以关闭它
     close("/tmp/foobar.txt")
 
-    # Here's how you run something in the shell
+    # 在shell里运行一些东西
     system("echo foobar") # => prints foobar
 
-    # Reads a line from standard input and stores in localvar
+    # 从标准输入中读一行, 并存储在localvar中
     getline localvar
 
-    # Reads a line from a pipe
+    # 从管道中读一行, 并存储在localvar中
     "echo foobar" | getline localvar # localvar => "foobar"
     close("echo foobar")
 
-    # Reads a line from a file and stores in localvar
+    # 从文件中读一行, 并存储在localvar中
     getline localvar <"/tmp/foobar.txt"
     close("/tmp/foobar.txt")
 }
 
-# As I said at the beginning, AWK programs consist of a collection of patterns
-# and actions. You've already seen the all-important BEGIN pattern. Other
-# patterns are used only if you're processing lines from files or standard
-# input.
-#
-# When you pass arguments to AWK, they are treated as file names to process.
-# It will process them all, in order. Think of it like an implicit for loop,
-# iterating over the lines in these files. these patterns and actions are like
-# switch statements inside the loop. 
+# 正如开头所说, AWK程序由一系列模式和动作组成. 你已经看见了重要的BEGIN pattern, 
+# 其他的pattern在你需要处理来自文件或标准输入的的数据行时才用到.
+# 
+# 当你给AWK程序传参数时, 他们会被视为要处理文件的文件名, 按顺序全部会处理. 
+# 可以把这个过程看做一个隐式的循环, 遍历这些文件中的所有行.
+# 然后这些模式和动作就是这个循环里的switch语句一样
 
 /^fo+bar$/ {
     
-    # This action will execute for every line that matches the regular
-    # expression, /^fo+bar$/, and will be skipped for any line that fails to
-    # match it. Let's just print the line:
-
+    # 这个动作会在匹配这个正则(/^fo+bar$/)的每一行上执行. 不匹配的则会跳过.
+    # 先让我们打印它:
     print
 
-    # Whoa, no argument! That's because print has a default argument: $0.
-    # $0 is the name of the current line being processed. It is created
-    # automatically for you.
+    # 哦, 没有参数, 那是因为print有一个默认参数 $0.
+    # $0 是当前正在处理的行, 自动被创建好了.
 
-    # You can probably guess there are other $ variables. Every line is
-    # implicitly split before every action is called, much like the shell
-    # does. And, like the shell, each field can be access with a dollar sign
+    # 你可能猜到有其他的$变量了. 
+    # 每一行在动作执行前会被分隔符分隔. 像shell中一样, 每个字段都可以用$符访问
 
-    # This will print the second and fourth fields in the line
+    # 这个会打印这行的第2和第4个字段
     print $2, $4
 
-    # AWK automatically defines many other variables to help you inspect and
-    # process each line. The most important one is NF
-
-    # Prints the number of fields on this line
+    # AWK自动定义了许多其他的变量帮助你处理行. 最常用的是NF变量
+    # 打印这一行的字段数
     print NF
 
-    # Print the last field on this line
+    # 打印这一行的最后一个字段
     print $NF
 }
 
-# Every pattern is actually a true/false test. The regular expression in the
-# last pattern is also a true/false test, but part of it was hidden. If you
-# don't give it a string to test, it will assume $0, the line that it's
-# currently processing. Thus, the complete version of it is this:
+# 每一个模式其实是一个true/false判断, 上面那个正则其实也是一个true/false判断, 只不过被部分省略了.
+# 没有指定时默认使用当前处理的整行($0)进行匹配. 因此, 完全版本是这样:
 
 $0 ~ /^fo+bar$/ {
     print "Equivalent to the last pattern"
 }
 
 a > 0 {
-    # This will execute once for each line, as long as a is positive
+    # 只要a是整数, 这块会在每一行上执行.
 }
 
-# You get the idea. Processing text files, reading in a line at a time, and
-# doing something with it, particularly splitting on a delimiter, is so common
-# in UNIX that AWK is a scripting language that does all of it for you, without
-# you needing to ask. All you have to do is write the patterns and actions
-# based on what you expect of the input, and what you want to do with it.
+# 就是这样, 处理文本文件, 一次读一行, 对行做一些操作. 按分隔符分隔, 这在UNIX中很常见, awk都帮你做好了.
+# 你所需要做的是基于自己的需求写一些模式和动作.
 
-# Here's a quick example of a simple script, the sort of thing AWK is perfect
-# for. It will read a name from standard input and then will print the average
-# age of everyone with that first name. Let's say you supply as an argument the
-# name of a this data file:
+# 这里有一个快速的例子, 展示了AWK所擅长做的事.
+# 它从标准输入读一个名字, 打印这个first name下所有人的平均年龄.
+# 示例数据:
 #
 # Bob Jones 32
 # Jane Doe 22
@@ -312,41 +280,36 @@ a > 0 {
 # Bob Smith 29
 # Bob Barker 72
 #
-# Here's the script:
+# 示例脚本:
 
 BEGIN {
 
-    # First, ask the user for the name
+    # 首先, 问用户要一个名字
     print "What name would you like the average age for?"
 
-    # Get a line from standard input, not from files on the command line
+    # 从标准输入获取名字
     getline name <"/dev/stdin"
 }
 
-# Now, match every line whose first field is the given name
+# 然后, 用给定的名字匹配每一行的第一个字段.
 $1 == name {
 
-    # Inside here, we have access to a number of useful variables, already
-    # pre-loaded for us:
-    # $0 is the entire line
-    # $3 is the third field, the age, which is what we're interested in here
-    # NF is the number of fields, which should be 3
-    # NR is the number of records (lines) seen so far
-    # FILENAME is the name of the file being processed
-    # FS is the field separator being used, which is " " here
-    # ...etc. There are plenty more, documented in the man page.
+    # 这里我们要使用几个有用的变量, 已经提前为我们加载好的:
+    # $0 是整行
+    # $3 是第三个字段, 就是我们所感兴趣的年龄
+    # NF 字段数, 这里是3
+    # NR 至此为止的行数
+    # FILENAME 在处理的文件名
+    # FS 在使用的字段分隔符, 这里是空格" "
+    # ...等等, 还有很多, 在帮助文档中列出.
 
-    # Keep track of a running total and how many lines matched
+    # 跟踪 总和以及行数
     sum += $3
     nlines++
 }
 
-# Another special pattern is called END. It will run after processing all the
-# text files. Unlike BEGIN, it will only run if you've given it input to
-# process. It will run after all the files have been read and processed
-# according to the rules and actions you've provided. The purpose of it is
-# usually to output some kind of final report, or do something with the
-# aggregate of the data you've accumulated over the course of the script.
+# 另一个特殊的模式叫END. 它会在处理完所有行之后运行. 不像BEGIN, 它只会在有输入的时候运行.
+# 它在所有文件依据给定的模式和动作处理完后运行, 目的通常是输出一些最终报告, 做一些数据聚合操作.
 
 END {
     if (nlines)
@@ -354,8 +317,8 @@ END {
 }
 
 ```
-Further Reading:
+更多:
 
-* [Awk tutorial](http://www.grymoire.com/Unix/Awk.html)
-* [Awk man page](https://linux.die.net/man/1/awk)
-* [The GNU Awk User's Guide](https://www.gnu.org/software/gawk/manual/gawk.html) GNU Awk is found on most Linux systems.
+* [Awk 教程](http://www.grymoire.com/Unix/Awk.html)
+* [Awk 手册](https://linux.die.net/man/1/awk)
+* [The GNU Awk 用户指南](https://www.gnu.org/software/gawk/manual/gawk.html) GNU Awk在大多数Linux中预装
