@@ -4,7 +4,7 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Fangzhou Chen","https://github.com/FZSS"]
-	- ["Luffy Zhong", "https://github.com/mengzhongshi"]
+    - ["Luffy Zhong", "https://github.com/mengzhongshi"]
 filename: learnmarkdown-cn.md
 lang: zh-cn
 ---
@@ -79,8 +79,6 @@ GitHub 也支持 Markdown，在 GitHub 的 Markdown 解析器中，我们可以�
 ```
 ## 段落
 
-Paragraphs are a one or multiple adjacent lines of text separated by one or
-multiple blank lines.
 段落由一个句子或是多个中间没有空行的句子组成，每个段落由一个或是多个空行分隔开来。
 
 ```md
@@ -93,8 +91,8 @@ multiple blank lines.
 这句话在第三段落！
 ```
 
-如果你插入一个 HTML中的<br />标签，你可以在段末加入两个以上的空格，然后另起一段。
-(译者注：试了一下，很多解析器，并不需要空两个空格，直接换行就会添加一个`<br />`)
+如果你想插入一个 `<br />` 标签，你可以在段末加入两个以上的空格，然后另起一
+段。(译者注：试了一下，很多解析器，并不需要空两个空格，直接换行就会添加一个`<br />`)
 
 ```md
 此段落结尾有两个空格（选中以显示）。  
@@ -144,7 +142,7 @@ multiple blank lines.
 3. 项目三
 ```
 
-即使你的标签数字有误，Markdown 依旧会呈现出正确的序号，
+即使你的数字标签有误，Markdown 依旧会呈现出正确的序号，
 不过这并不是一个好主意
 
 ```md
@@ -152,7 +150,7 @@ multiple blank lines.
 1. 项目二
 1. 项目三
 ```
-(此段与上面一模一样)
+(此段与上面效果一模一样)
 
 你也可以使用子列表
 
@@ -177,12 +175,12 @@ multiple blank lines.
 
 ## 代码块
 
-代码块（HTML中 <code>标签）可以由缩进四格（spaces）
+代码块（HTML中 `<code>` 标签）可以由缩进四格（spaces）
 或者一个制表符（tab）实现
 
 ```md
     This is code
-    So is this
+	So is this
 ```
 
 在你的代码中，你仍然使用tab（或者四个空格）可以进行缩进操作
@@ -212,9 +210,7 @@ end
 
 ## 水平线分隔
 
-Horizontal rules (`<hr/>`) are easily added with three or more asterisks or 
-hyphens, with or without spaces.
-水平线可由三个或以上的星号或是减号创建，它们之间可以带或不带空格
+水平线（`<hr/>`）可由三个或以上的星号或是减号创建，它们之间可以带或不带空格
 
 ```md
 ***
@@ -232,8 +228,7 @@ Markdown 最棒的地方就是便捷的书写链接。把链接文字放在中�
 [点我点我!](http://test.com/)
 
 ```
-You can also add a link title using quotes inside the parentheses.
-你也可以为链接加入一个标题：在括弧号内使用引号
+
 你也可以在小括号内使用引号，为链接加上一个标题（title）
 
 ```md
@@ -253,8 +248,7 @@ Markdown同样支持引用形式的链接
 &#x5b;<span class="nv">link1</span>]: <span class="sx">http://test.com/</span> <span class="nn">"Cool!"</span>
 &#x5b;<span class="nv">foobar</span>]: <span class="sx">http://foobar.biz/</span> <span class="nn">"Alright!"</span></code></pre>
 
-对于引用形式，链接的标题可以处于单引号中，括弧中或是忽略。引用名可以在文档的任意何处，
-并且可以随意命名，只要名称不重复。
+对于引用形式，链接的标题可以处于单引号中，括弧中或是忽略。引用名可以在文档的任何地方，并且可以随意命名，只要名称不重复。
 
 “隐含式命名” 的功能可以让链接文字作为引用名
 
@@ -268,12 +262,12 @@ Markdown同样支持引用形式的链接
 图片与链接相似，只需在前添加一个感叹号
 
 ```md
-![这是我图片的悬停文本(alt text)](http://imgur.com/myimage.jpg "可选命名")
+![这是alt,请把鼠标放在图片上](http://imgur.com/myimage.jpg "这是title")
 ```
 
 引用形式也同样起作用
 
-<pre><code class="highlight">!&#x5b;<span class="nv">这是我的悬停文本.</span>][<span class="ss">myimage</span>]
+<pre><code class="highlight">!&#x5b;<span class="nv">这是alt</span>][<span class="ss">myimage</span>]
 
 &#x5b;<span class="nv">myimage</span>]: <span class="sx">relative/urls/cool/image.jpg</span> <span class="nn">"在此输入标题"</span></code></pre>
 
@@ -300,15 +294,13 @@ Markdown同样支持引用形式的链接
 
 ### 键盘上的功能键
 
-In GitHub Flavored Markdown, you can use a `<kbd>` tag to represent keyboard 
-keys.
 在 GitHub 的 Markdown中，你可以使用 `<kbd>` 标签来表示功能键。
 
 ```md
 你的电脑死机了？试试
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
 ```
-
+<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
 ### 表格
 
 表格只被 GitHub 的 Markdown 支持，并且有一点笨重，但如果你真的要用的话: (译者注：其实现在大部分markdown都已经支持)
