@@ -37,7 +37,7 @@ hello_world .asciiz "Hello World\n"         # Declare a null terminated string
 .text                                       # Section that contains instructions and program logic
 .globl _main                                # Declares an instruction label as global, making it accessible to other files
 
-  _main:                                    # MIPS programs execute instructions sequentially, where this will be executed first
+  _main:                                    # MIPS programs execute instructions sequentially, where the code under this label will be executed firsts
 
     # Let's print "hello world"
     la $a0, hello_world                     # Load address of string stored in memory
@@ -61,5 +61,13 @@ hello_world .asciiz "Hello World\n"         # Declare a null terminated string
     sw $t0, label                           # Store word value into memory address mapped by label
     sw $t0, 8($s0)                          # Store word value into address specified in $s0 and offset of 8 bytes
     # Same idea using 'sb' and 'sh' for bytes and halfwords. 'sa' does not exist
+
+### Math ###
+  _math:
+    # Remember to load your values into a register
+    lw $t0, num # From the data section
+    li $t0, 5 # Or from an immediate (constant)
+    li $t1, 6
+    add $t2, $t0, $t1 # $t2 = $t0 + $t1
 
 ```
