@@ -65,9 +65,30 @@ hello_world .asciiz "Hello World\n"         # Declare a null terminated string
 ### Math ###
   _math:
     # Remember to load your values into a register
-    lw $t0, num # From the data section
-    li $t0, 5 # Or from an immediate (constant)
+    lw $t0, num                             # From the data section
+    li $t0, 5                               # Or from an immediate (constant)
     li $t1, 6
-    add $t2, $t0, $t1 # $t2 = $t0 + $t1
+    add $t2, $t0, $t1                               # $t2 = $t0 + $t1
+    sub $t2, $t0, $t1                               # $t2 = $t0 - $t1
+    mul $t2, $t0, $t1                               # $t2 = $t0 * $t1
+    div $t2, $t0, $t1                               # $t2 = $t0 / $t1 (Might not be supported in some versons of MARS)
+    div $t0, $t1                              # Performs $t0 / $t1. Get the quotient using 'mflo' and remainder using 'mfhi'
+
+    # Bitwise Shifting
+    sll $t0, $t0, 2 # Bitwise shift to the left with immediate (constant value) of 2
+    sllv $t0, $t1, $t2 # Shift left by a variable amount in register
+    srl $t0, $t0, 5 # Bitwise shift to the right (does not sign preserve, sign-extends with 0)
+    srlv $t0, $t1, $t2 # Shift right by a variable amount in a register
+    sra $t0, $t0, 7 # Bitwise arithmetic shift to the right (preserves sign)
+    srav $t0, $t1, $t2 # Shift right by a variable amount in a register
+
+    # Bitwise operators
+    and $t0, $t1, $t2 # Bitwise AND
+    andi $t0, $t1, 0xFFF # Bitwise AND with immediate
+    or $t0, $t1, $t2 # Bitwise OR
+    ori $t0, $t1, 0xFFF # Bitwise OR with immediate
+    xor $t0, $t1, $t2 # Bitwise XOR
+    xori $t0, $t1, 0xFFF # Bitwise XOR with immediate
+    nor $t0, $t1, $t2 # Bitwise NOR
 
 ```
