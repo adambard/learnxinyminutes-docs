@@ -1,6 +1,6 @@
 ---
-language: "MIPS"
-filename: MIPS.mips
+language: "MIPS Assembly"
+filename: MIPS.asm
 contributors:
   - ["Stanley Lim", "https://github.com/Spiderpig86"]
 ---
@@ -42,7 +42,7 @@ hello_world .asciiz "Hello World\n"         # Declare a null terminated string
   .align 2                                  # Memory alignment of data, where 
                                             # number indicates byte alignment in
                                             # powers of 2. (.align 2 represents 
-                                            #word alignment since 2^2 = 4 bytes)
+                                            # word alignment since 2^2 = 4 bytes)
 
 .text                                       # Section that contains instructions
                                             # and program logic
