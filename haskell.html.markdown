@@ -125,7 +125,7 @@ fst ("haskell", 1) -- "haskell"
 snd ("haskell", 1) -- 1
 
 -- pair element accessing does not work on n-tuples (i.e. triple, quadruple, etc)
-snd ("snd", "can't touch this", "da na na na") -- error! see function below to get around this
+snd ("snd", "can't touch this", "da na na na") -- error! see function below
 
 ----------------------------------------------------
 -- 3. Functions
@@ -163,7 +163,7 @@ fib 2 = 2
 fib x = fib (x - 1) + fib (x - 2)
 
 -- Pattern matching on tuples
-sndOfTriple (_, y, _) = y -- you can use a wild card (_) to bypass naming an unused value
+sndOfTriple (_, y, _) = y -- use a wild card (_) to bypass naming unused value
 
 -- Pattern matching on lists. Here `x` is the first element
 -- in the list, and `xs` is the rest of the list. We can write
@@ -210,7 +210,7 @@ foo 5 -- 60
 -- to a given parameter. In contrast to standard function application, which
 -- has highest possible priority of 10 and is left-associative, the `$` operator
 -- has priority of 0 and is right-associative. Such a low priority means that
--- the expression on its right is applied as the parameter to the function on its left.
+-- the expression on its right is applied as parameter to function on its left.
 
 -- before
 even (fib 7) -- false
