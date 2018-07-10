@@ -162,8 +162,8 @@ fib 1 = 1
 fib 2 = 2
 fib x = fib (x - 1) + fib (x - 2)
 
--- Pattern matching on tuples, using wild card (_) to bypass naming an unused value
-sndOfTriple (_, y, _) = y
+-- Pattern matching on tuples
+sndOfTriple (_, y, _) = y -- you can use a wild card (_) to bypass naming an unused value
 
 -- Pattern matching on lists. Here `x` is the first element
 -- in the list, and `xs` is the rest of the list. We can write
