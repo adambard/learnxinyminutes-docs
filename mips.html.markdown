@@ -134,4 +134,68 @@ hello_world .asciiz "Hello World\n"         # Declare a null terminated string
     xori $t0, $t1, 0xFFF                    # Bitwise XOR with immediate
     nor $t0, $t1, $t2                       # Bitwise NOR
 
+## BRANCHING ##
+  _branching:
+    # The basic format of these branching instructions typically follow <instr>
+    # <reg1> <reg2> <label> where label is the label we want to jump to if the
+    # given conditional evaluates to true
+    # Sometimes it is easier to write the conditional logic backwards, as seen
+    # in the simple if statement example below
+
+    beq $t0, $t1, reg_eq                    # Will branch to reg_eq if
+                                            # $t0 == $t1, otherwise
+                                            # execute the next line
+    bne $t0, $t1, reg_neq                   # Branches when $t0 != $t1
+    b branch_target                         # Unconditional branch, will always execute
+    beqz $t0, req_eq_zero                   # Branches when $t0 == 0
+    bnez $t0, req_neq_zero                  # Branches when $t0 != 0
+    bgt $t0, $t1, t0_gt_t1                  # Branches when $t0 > $t1
+    bge $t0, $t1, t0_gte_t1                 # Branches when $t0 >= $t1
+    bgtz $t0, t0_gt0                        # Branches when $t0 > 0
+    blt $t0, $t1, t0_gt_t1                  # Branches when $t0 < $t1
+    ble $t0, $t1, t0_gte_t1                 # Branches when $t0 <= $t1
+    bltz $t0, t0_lt0                        # Branches when $t0 < 0
+    slt $s0, $t0, $t1                       # Instruction that sends a signal when
+                                            # $t0 < $t1 with reuslt in $s0 (1 for true)
+
+    # Simple if statement
+    # if (i == j)
+    #     f = g + h;
+    #  f = f - i;
+
+    # Let $s0 = f, $s1 = g, $s2 = h, $s3 = i, $s4 = j
+    bne $s3, $s4, L1 # if (i !=j)
+    add $s0, $s1, $s2 # f = g + h
+
+    L1:
+      sub $s0, $s0, $s3 # f = f - i
+    
+    # Below is an example of finding the max of 3 numbers
+    # A direct translation in Java from MIPS logic:
+    # if (a > b)
+    #   if (a > c)
+    #     max = a;
+    #   else
+    #     max = c;
+    # else
+    #     max = b;
+    #   else
+    #     max = c;
+
+    # Let $s0 = a, $s1 = b, $s2 = c, $v0 = return register
+    ble $s0, $s1, a_LTE_b                   # if (a <= b) branch(a_LTE_b)
+    ble $s0, $s2, max_C                     # if (a > b && a <=c) branch(max_C)
+    move $v0, $s1                           # else [a > b && a > c] max = a
+    j done                                  # Jump to the end of the program
+
+    a_LTE_b:                                # Label for when a <= b
+      ble $s1, $s2, max_C                   # if (a <= b && b <= c) branch(max_C)
+      move $v0, $s1                         # if (a <= b && b > c) max = b
+      j done                                # Jump to done
+
+    max_C:
+      move $v0, $s2                         # max = c
+
+    done:                                   # End of program
+
 ```
