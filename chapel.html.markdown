@@ -893,7 +893,6 @@ foo();
 // We can declare a main procedure, but all the code above main still gets
 // executed.
 proc main() {
-  writeln("PARALLELISM START");
 
 // A begin statement will spin the body of that statement off
 // into one new task.
