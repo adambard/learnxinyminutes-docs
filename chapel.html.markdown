@@ -1145,8 +1145,8 @@ occasional hiccups with performance and language features. The more information
 you give the Chapel development team about issues you encounter or features you
 would like to see, the better the language becomes.
 There are several ways to interact with the developers:
-+ [sourceforge email lists](https://sourceforge.net/p/chapel/mailman).
 + [Gitter chat](https://gitter.im/chapel-lang/chapel)
++ [sourceforge email lists](https://sourceforge.net/p/chapel/mailman)
 
 If you're really interested in the development of the compiler or contributing
 to the project, [check out the master GitHub repository](https://github.com/chapel-lang/chapel).
