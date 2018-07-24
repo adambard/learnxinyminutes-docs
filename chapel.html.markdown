@@ -1155,6 +1155,8 @@ It is under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0)
 Installing the Compiler
 -----------------------
 
+[The Official Chapel documentation details how to download and compile the Chapel compiler.](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html)
+
 Chapel can be built and installed on your average 'nix machine (and cygwin).
 [Download the latest release version](https://github.com/chapel-lang/chapel/releases/)
 and it's as easy as
