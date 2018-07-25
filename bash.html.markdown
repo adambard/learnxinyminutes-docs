@@ -25,7 +25,7 @@ Nearly all examples below can be a part of a shell script or executed directly i
 [Read more here.](http://www.gnu.org/software/bash/manual/bashref.html)
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
 # First line of the script is shebang which tells the system how to execute
 # the script: http://en.wikipedia.org/wiki/Shebang_(Unix)
 # As you already figured, comments start with #. Shebang is also a comment.
