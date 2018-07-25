@@ -9,12 +9,12 @@ lang: zh-cn
 ---
 
 Fortran 是最古老的计算机语言之一。它由IBM开发于1950年用于数值运算（Fortran 为 "Formula
-Translation" 的缩写）。虽然该语言的开发时间距离现在比较遥远，但目前仍用于高性能计算，例如
-天气预报。该语言仍在持续发展，并且基本保持向下兼容。知名的版本为 FORTRAN 77, Fortran 90,
+Translation" 的缩写）。虽然该语言已年代久远，但目前仍用于高性能计算，如天气预报。
+该语言仍在持续发展，并且基本保持向下兼容。知名的版本为 Fortran 77, Fortran 90,
 Fortran 95, Fortran 2003, Fortran 2008 与 Fortran 2015。
 
 这篇概要将讨论 Fortran 95 的一些特征。因为它是目前所广泛采用的标准版本，并且与最新版本的内容
-也基本相同（而 FORTRAN 77 则是一个非常不同的版本）。
+也基本相同（而 Fortran 77 则是一个非常不同的版本）。
 
 ```fortran
 
@@ -34,7 +34,7 @@ program example   !声明一个叫做 example 的程序
     implicit none    !阻止变量的隐式声明 (推荐!)
     ! Implicit none 必须在每一个 函数/程序/模块 中进行声明
 
-    ! 重要  - Fortran 对大小写敏感
+    ! 重要  - Fortran 对大小写不敏感
     real z
     REAL Z2
 
