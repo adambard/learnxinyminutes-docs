@@ -53,7 +53,7 @@ program example   !声明一个叫做 example 的程序
 
     ! 分隔符 '::' 并不总是必要的，但推荐使用
 
-    ! many other variable attributes also exist:
+    ! 还存在很多其他的变量特征:
     real, pointer :: p    !声明一个指针
 
     integer, parameter :: LP = selected_real_kind(20)
