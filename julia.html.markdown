@@ -3,13 +3,14 @@ language: Julia
 contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
     - ["Pranit Bauva", "http://github.com/pranitbauva1997"]
+    - ["Daniel YC Lin", "http://github.com/dlintw"]
 filename: learnjulia.jl
 ---
 
 Julia is a new homoiconic functional language focused on technical computing.
 While having the full power of homoiconic macros, first-class functions, and low-level control, Julia is as easy to learn and use as Python.
 
-This is based on Julia 0.4.
+This is based on Julia 0.6.4
 
 ```ruby
 
@@ -49,7 +50,7 @@ div(5, 2) # => 2 # for a truncated result, use div
 ~2 # => -3   # bitwise not
 3 & 5 # => 1 # bitwise and
 2 | 4 # => 6 # bitwise or
-2 $ 4 # => 6 # bitwise xor
+xor(2, 4) # => 6 # bitwise xor
 2 >>> 1 # => 1 # logical shift right
 2 >> 1  # => 1 # arithmetic shift right
 2 << 1  # => 4 # logical/arithmetic shift left
@@ -80,25 +81,33 @@ false
 2 < 3 < 2 # => false
 
 # Strings are created with "
+try
 "This is a string."
+catch ; end
 
 # Julia has several types of strings, including ASCIIString and UTF8String.
 # More on this in the Types section.
 
 # Character literals are written with '
+try
 'a'
+catch ; end
 
 # Some strings can be indexed like an array of characters
+try
 "This is a string"[1] # => 'T' # Julia indexes from 1
+catch ; end
 # However, this is will not work well for UTF8 strings,
 # so iterating over strings is recommended (map, for loops, etc).
 
 # $ can be used for string interpolation:
+try
 "2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
+catch ; end
 # You can put any Julia expression inside the parentheses.
 
 # Another way to format strings is the printf macro.
-@printf "%d is less than %f" 4.5 5.3 # 4.5 is less than 5.300000
+@printf "%d is less than %f" 4.5 5.3 # 4 is less than 5.300000
 
 # Printing is easy
 println("I'm Julia. Nice to meet you!")
@@ -405,8 +414,8 @@ f_add(x, y) = x + y # => "f (generic function with 1 method)"
 f_add(3, 4) # => 7
 
 # Function can also return multiple values as tuple
-f(x, y) = x + y, x - y
-f(3, 4) # => (7, -1)
+fn(x, y) = x + y, x - y
+fn(3, 4) # => (7, -1)
 
 # You can define functions that take a variable number of
 # positional arguments
@@ -543,7 +552,7 @@ sherekhan = typeof(tigger)(5.6,"fire") # => Tiger(5.6,"fire")
 # The other kind of types is abstract types.
 
 # abstract Name
-abstract Cat # just a name and point in the type hierarchy
+abstract type Cat end # just a name and point in the type hierarchy
 
 # Abstract types cannot be instantiated, but can have subtypes.
 # For example, Number is an abstract type
@@ -553,30 +562,28 @@ subtypes(Number) # => 2-element Array{Any,1}:
 subtypes(Cat) # => 0-element Array{Any,1}
 
 # AbstractString, as the name implies, is also an abstract type
-subtypes(AbstractString)    # 8-element Array{Any,1}:
-                            #  Base.SubstitutionString{T<:AbstractString}
-                            #  DirectIndexString
-                            #  RepString
-                            #  RevString{T<:AbstractString}
-                            #  RopeString
-                            #  SubString{T<:AbstractString}
-                            #  UTF16String
-                            #  UTF8String
+subtypes(AbstractString)        # 6-element Array{Union{DataType, UnionAll},1}:
+				# Base.SubstitutionString
+				# Base.Test.GenericString
+				# DirectIndexString      
+				# RevString              
+				# String                 
+				# SubString
 
-# Every type has a super type; use the `super` function to get it.
+# Every type has a super type; use the `supertype` function to get it.
 typeof(5) # => Int64
-super(Int64) # => Signed
-super(Signed) # => Integer
-super(Integer) # => Real
-super(Real) # => Number
-super(Number) # => Any
-super(super(Signed)) # => Real
-super(Any) # => Any
+supertype(Int64) # => Signed
+supertype(Signed) # => Integer
+supertype(Integer) # => Real
+supertype(Real) # => Number
+supertype(Number) # => Any
+supertype(supertype(Signed)) # => Real
+supertype(Any) # => Any
 # All of these type, except for Int64, are abstract.
-typeof("fire") # => ASCIIString
-super(ASCIIString) # => DirectIndexString
-super(DirectIndexString) # => AbstractString
-# Likewise here with ASCIIString
+typeof("fire") # => String
+supertype(String) # => AbstractString
+# Likewise here with String
+supertype(DirectIndexString) # => AbstractString
 
 # <: is the subtyping operator
 type Lion <: Cat # Lion is a subtype of Cat
@@ -670,23 +677,22 @@ fight(l::Lion,c::Cat) = println("The victorious cat says $(meow(c))")
 
 fight(Lion("balooga!"),Panther()) # => prints The victorious cat says grrr
 try
-  fight(Panther(),Lion("RAWR")) # => ERROR: no method fight(Panther,Lion)
-catch
+  fight(Panther(),Lion("RAWR"))
+catch e
+  println(e) 
+  # => MethodError(fight, (Panther("green"), Lion("green", "RAWR")), 0x000000000000557b)
 end
 
 # Also let the cat go first
 fight(c::Cat,l::Lion) = println("The cat beats the Lion")
-# => Warning: New definition
-#    fight(Cat,Lion) at none:1
-# is ambiguous with
-#    fight(Lion,Cat) at none:2.
-# Make sure
-#    fight(Lion,Lion)
-# is defined first.
-#fight (generic function with 4 methods)
 
 # This warning is because it's unclear which fight will be called in:
-fight(Lion("RAR"),Lion("brown","rarrr")) # => prints The victorious cat says rarrr
+try
+  fight(Lion("RAR"),Lion("brown","rarrr")) # => prints The victorious cat says rarrr
+catch e
+  println(e)
+  # => MethodError(fight, (Lion("green", "RAR"), Lion("brown", "rarrr")), 0x000000000000557c)
+end
 # The result may be different in other versions of Julia
 
 fight(l::Lion,l2::Lion) = println("The lions come to a tie")

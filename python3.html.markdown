@@ -138,6 +138,10 @@ len("This is a string")  # => 16
 # still use the old style of formatting:
 "%s can be %s the %s way" % ("Strings", "interpolated", "old")  # => "Strings can be interpolated the old way"
 
+# You can also format using f-strings or formatted string literals
+name = "Reiko"
+f"She said her name is {name}." # => "She said her name is Reiko"
+
 
 # None is an object
 None  # => None

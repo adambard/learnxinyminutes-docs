@@ -74,7 +74,7 @@ echo ${Variable/Some/A} # => A string
 
 # Substring from a variable
 Length=7
-echo ${Variable:0:Length} # => Some st
+echo ${Variable:0:$Length} # => Some st
 # This will return only the first 7 characters of the value
 
 # Default value for variable

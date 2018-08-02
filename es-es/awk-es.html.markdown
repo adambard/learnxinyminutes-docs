@@ -166,7 +166,7 @@ function arithmetic_functions(a, b, c,     localvar) {
     # trigonométricas estándar
     localvar = sin(a)
     localvar = cos(a)
-    localvar = atan2(a, b) # arcotangente de b / a
+    localvar = atan2(b, a) # arcotangente de b / a
 
     # Y cosas logarítmicas
     localvar = exp(a)
