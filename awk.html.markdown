@@ -161,7 +161,7 @@ function arithmetic_functions(a, b, c,     d) {
     # Most AWK implementations have some standard trig functions
     localvar = sin(a)
     localvar = cos(a)
-    localvar = atan2(a, b) # arc tangent of b / a
+    localvar = atan2(b, a) # arc tangent of b / a
 
     # And logarithmic stuff
     localvar = exp(a)
