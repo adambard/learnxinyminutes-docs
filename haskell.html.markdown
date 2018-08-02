@@ -210,7 +210,7 @@ foo 5 -- 60
 -- to a given parameter. In contrast to standard function application, which
 -- has highest possible priority of 10 and is left-associative, the `$` operator
 -- has priority of 0 and is right-associative. Such a low priority means that
--- the expression on its right is applied as parameter to function on its left.
+-- the expression on its right is applied as a parameter to the function on its left.
 
 -- before
 even (fib 7) -- false
