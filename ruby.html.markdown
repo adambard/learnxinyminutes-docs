@@ -158,7 +158,7 @@ status == 'pending' #=> false
 
 status == :approved #=> false
 
-Strings can be converted into symbols and vice versa:
+# Strings can be converted into symbols and vice versa:
 
 status.to_s #=> "pending"
 "argon".to_sym #=> :argon
