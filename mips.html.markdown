@@ -198,4 +198,34 @@ hello_world .asciiz "Hello World\n"         # Declare a null terminated string
 
     done:                                   # End of program
 
+## LOOPS ##
+  _loops:
+    # The basic structure of loops is having an exit condition and a jump instruction to continue its execution
+    li $t0, 0
+    while:
+      bgt $t0, 10, end_while                # While $t0 is less than 10, keep iterating
+      addi $t0, $t0, 1                      # Increment the value
+      j while                               # Jump back to the beginning of the loop
+    end_while:
+
+    # 2D Matrix Traversal
+    # Assume that $a0 stores the address of an integer matrix which is 3 x 3
+    li $t0, 0                               # Counter for i
+    li $t1, 0                               # Counter for j
+    matrix_row:
+      bgt $t0, 3, matrix_row_end
+
+      matrix_col:
+        bgt $t1, 3, matrix_col_end
+
+        # Do stuff
+
+        addi $t1, $t1, 1 # Increment the col counter
+      matrix_col_end:
+
+      # Do stuff
+
+      addi $t0, $t0, 1
+    matrix_row_end:
+
 ```
