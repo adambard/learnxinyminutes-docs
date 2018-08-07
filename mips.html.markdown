@@ -200,7 +200,8 @@ hello_world .asciiz "Hello World\n"         # Declare a null terminated string
 
 ## LOOPS ##
   _loops:
-    # The basic structure of loops is having an exit condition and a jump instruction to continue its execution
+    # The basic structure of loops is having an exit condition and a jump 
+    instruction to continue its execution
     li $t0, 0
     while:
       bgt $t0, 10, end_while                # While $t0 is less than 10, keep iterating
@@ -220,12 +221,71 @@ hello_world .asciiz "Hello World\n"         # Declare a null terminated string
 
         # Do stuff
 
-        addi $t1, $t1, 1 # Increment the col counter
+        addi $t1, $t1, 1                  # Increment the col counter
       matrix_col_end:
 
       # Do stuff
 
       addi $t0, $t0, 1
     matrix_row_end:
+
+## FUNCTIONS ##
+  _functions:
+    # Functions are callable procedures that can accept arguments and return 
+    values all denoted with labels, like above
+
+    main:                                 # Programs begin with main func
+      jal return_1                        # jal will store the current PC in $ra
+                                          # and then jump to return_1
+
+      # What if we want to pass in args?
+      # First we must pass in our parameters to the argument registers
+      li $a0, 1
+      li $a1, 2
+      jal sum                             # Now we can call the function
+
+      # How about recursion?
+      # This is a bit more work since we need to make sure we save and restore
+      # the previous PC in $ra since jal will automatically overwrite on each call
+      li $a0, 3
+      jal fact
+
+      li $v0, 10
+      syscall
+    
+    # This function returns 1
+    return_1:
+      li $v0, 1                           # Load val in return register $v0
+      jr $ra                              # Jump back to old PC to continue exec
+
+
+    # Function with 2 args
+    sum:
+      add $v0, $a0, $a1
+      jr $ra                              # Return
+
+    # Recursive function to find factorial
+    fact:
+      addi $sp, $sp, -8                   # Allocate space in stack
+      sw $s0, ($sp)                       # Store reg that holds current num
+      sw $ra, 4($sp)                      # Store previous PC
+
+      li $v0, 1                           # Init return value
+      beq $a0, 0, fact_done               # Finish if param is 0
+
+      # Otherwise, continue recursion
+      move $s0, $a0                       # Copy $a0 to $s0
+      sub $a0, $a0, 1
+      jal fact
+
+      mul $v0, $s0, $v0                   # Multiplication is done
+
+      fact_done:
+        lw $s0, ($sp)
+        lw $ra, ($sp)                     # Restore the PC
+        addi $sp, $sp, 8
+
+        jr $ra
+
 
 ```
