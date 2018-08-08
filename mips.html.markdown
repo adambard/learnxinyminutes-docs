@@ -287,5 +287,47 @@ hello_world .asciiz "Hello World\n"         # Declare a null terminated string
 
         jr $ra
 
+## MACROS ##
+  _macros:
+    # Macros are extremly useful for substituting repeated code blocks with a
+    # single label for better readability
+    # These are in no means substitutes for functions
+    # These must be declared before it is used
 
+    # Macro for printing new lines (since these can be very repetitive)
+    .macro println()
+      la $a0, newline                     # New line string stored here
+      li $v0, 4
+      syscall
+    .end_macro
+
+    println()                             # Assembler will copy that block of
+                                          # code here before running
+
+    # Parameters can be passed in through macros.
+    # These are denoted by a '%' sign with any name you choose
+    .macro print_int(%num)
+      li $v0, 1
+      lw $a0, %num
+      syscall
+    .end_macro
+    
+    li $t0, 1
+    print_int($t0)
+    
+    # We can also pass in immediates for macros
+    .macro immediates(%a, %b)
+      add $t0, %a, %b
+    .end_macro
+
+    immediates(3, 5)
+
+    # Along with passing in labels
+    .macro print(%string)
+      la $a0, %string
+      li $v0, 4
+      syscall
+    .end_macro
+
+    print(hello_world)
 ```
