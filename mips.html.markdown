@@ -358,7 +358,8 @@ hello_world .asciiz "Hello World\n"         # Declare a null terminated string
   end_loop:
 
 ## INCLUDE ##
-# You do this to import external files into your program (behind the scenes, it really just takes whatever code that is in that file and places it where the include statement is)
+# You do this to import external files into your program (behind the scenes, 
+# it really just takes whatever code that is in that file and places it where the include statement is)
 .include "somefile.asm"
 
 ```
