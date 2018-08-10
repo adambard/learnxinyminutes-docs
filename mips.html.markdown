@@ -20,7 +20,7 @@ gateways and routers.
 # Programs typically contain a .data and .text sections
 
 .data # Section where data is stored in memory (allocated in RAM), similar to
-variables in higher level languages
+      # variables in higher level languages
 
   # Declarations follow a ( label: .type value(s) ) form of declaration
 hello_world .asciiz "Hello World\n"         # Declare a null terminated string
