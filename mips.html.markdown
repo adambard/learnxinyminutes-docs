@@ -23,7 +23,7 @@ gateways and routers.
 variables in higher level languages
 
   # Declarations follow a ( label: .type value(s) ) form of declaration
-hello_world .asciiz "Hello World\n"         # Declare a null terminated string
+  hello_world: .asciiz "Hello World\n"      # Declare a null terminated string
   num1: .word 42                            # Integers are referred to as words
                                             # (32 bit value)
 
@@ -359,7 +359,8 @@ hello_world .asciiz "Hello World\n"         # Declare a null terminated string
 
 ## INCLUDE ##
 # You do this to import external files into your program (behind the scenes, 
-# it really just takes whatever code that is in that file and places it where the include statement is)
+# it really just takes whatever code that is in that file and places it where
+# the include statement is)
 .include "somefile.asm"
 
 ```
