@@ -566,9 +566,9 @@ subtypes(Cat) # => 0-element Array{Any,1}
 subtypes(AbstractString)        # 6-element Array{Union{DataType, UnionAll},1}:
                 # Base.SubstitutionString
                 # Base.Test.GenericString
-                # DirectIndexString      
-                # RevString              
-                # String                 
+                # DirectIndexString
+                # RevString
+                # String
                 # SubString
 
 # Every type has a super type; use the `supertype` function to get it.
@@ -680,7 +680,7 @@ fight(Lion("balooga!"), Panther()) # => prints The victorious cat says grrr
 try
     fight(Panther(), Lion("RAWR"))
 catch e
-    println(e) 
+    println(e)
   # => MethodError(fight, (Panther("green"), Lion("green", "RAWR")), 0x000000000000557b)
 end
 
