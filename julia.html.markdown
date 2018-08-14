@@ -28,33 +28,33 @@ This is based on Julia 1.0.0
 # Everything in Julia is an expression.
 
 # There are several basic types of numbers.
-3 # => 3 (Int64)
-3.2 # => 3.2 (Float64)
-2 + 1im # => 2 + 1im (Complex{Int64})
-2 // 3 # => 2//3 (Rational{Int64})
+3  # => 3 (Int64)
+3.2  # => 3.2 (Float64)
+2 + 1im  # => 2 + 1im (Complex{Int64})
+2 // 3  # => 2//3 (Rational{Int64})
 
 # All of the normal infix operators are available.
-1 + 1 # => 2
-8 - 1 # => 7
-10 * 2 # => 20
-35 / 5 # => 7.0
-5 / 2 # => 2.5 # dividing an Int by an Int always results in a Float
-div(5, 2) # => 2 # for a truncated result, use div
-5 \ 35 # => 7.0
-2^2 # => 4 # power, not bitwise xor
-12 % 10 # => 2
+1 + 1  # => 2
+8 - 1  # => 7
+10 * 2  # => 20
+35 / 5  # => 7.0
+5 / 2  # => 2.5  # dividing an Int by an Int always results in a Float
+div(5, 2) # => 2  # for a truncated result, use div
+5 \ 35  # => 7.0
+2^2  # => 4  # power, not bitwise xor
+12 % 10  # => 2
 
 # Enforce precedence with parentheses
-(1 + 3) * 2 # => 8
+(1 + 3) * 2  # => 8
 
 # Bitwise Operators
-~2 # => -3   # bitwise not
-3 & 5 # => 1 # bitwise and
-2 | 4 # => 6 # bitwise or
-xor(2, 4) # => 6 # bitwise xor
-2 >>> 1 # => 1 # logical shift right
-2 >> 1  # => 1 # arithmetic shift right
-2 << 1  # => 4 # logical/arithmetic shift left
+~2  # => -3   # bitwise not
+3 & 5  # => 1  # bitwise and
+2 | 4  # => 6  # bitwise or
+xor(2, 4) # => 6  # bitwise xor
+2 >>> 1  # => 1  # logical shift right
+2 >> 1  # => 1  # arithmetic shift right
+2 << 1  # => 4  # logical/arithmetic shift left
 
 # You can use the bits function to see the binary representation of a number.
 bits(12345)
@@ -67,19 +67,19 @@ true
 false
 
 # Boolean operators
-!true # => false
-!false # => true
-1 == 1 # => true
-2 == 1 # => false
-1 != 1 # => false
-2 != 1 # => true
-1 < 10 # => true
-1 > 10 # => false
-2 <= 2 # => true
-2 >= 2 # => true
+!true  # => false
+!false  # => true
+1 == 1  # => true
+2 == 1  # => false
+1 != 1  # => false
+2 != 1  # => true
+1 < 10  # => true
+1 > 10  # => false
+2 <= 2  # => true
+2 >= 2  # => true
 # Comparisons can be chained
-1 < 2 < 3 # => true
-2 < 3 < 2 # => false
+1 < 2 < 3  # => true
+2 < 3 < 2  # => false
 
 # Strings are created with "
 try
@@ -108,7 +108,7 @@ catch ; end
 # You can put any Julia expression inside the parentheses.
 
 # Another way to format strings is the printf macro.
-@printf "%d is less than %f" 4.5 5.3 # 4 is less than 5.300000
+@printf "%d is less than %f" 4.5 5.3  # 4 is less than 5.300000
 
 # Printing is easy
 println("I'm Julia. Nice to meet you!")
@@ -123,22 +123,22 @@ println("I'm Julia. Nice to meet you!")
 ####################################################
 
 # You don't declare variables before assigning to them.
-some_var = 5 # => 5
-some_var # => 5
+some_var = 5  # => 5
+some_var  # => 5
 
 # Accessing a previously unassigned variable is an error
 try
-    some_other_var # => ERROR: some_other_var not defined
+    some_other_var  # => ERROR: some_other_var not defined
 catch e
     println(e)
 end
 
 # Variable names start with a letter or underscore.
 # After that, you can use letters, digits, underscores, and exclamation points.
-SomeOtherVar123! = 6 # => 6
+SomeOtherVar123! = 6  # => 6
 
 # You can also use certain unicode characters
-☃ = 8 # => 8
+☃ = 8  # => 8
 # These are especially handy for mathematical notation
 2 * π # => 6.283185307179586
 
@@ -184,7 +184,7 @@ pop!(b)        # => 6 and b is now [4,5]
 # Let's put it back
 push!(b, 6)   # b is now [4,5,6] again.
 
-a[1] # => 1 # remember that Julia indexes from 1, not 0!
+a[1] # => 1  # remember that Julia indexes from 1, not 0!
 
 # end is a shorthand for the last index. It can be used in any
 # indexing expression
@@ -237,7 +237,7 @@ length(a) # => 8
 tup = (1, 2, 3) # => (1,2,3) # an (Int64,Int64,Int64) tuple.
 tup[1] # => 1
     try:
-    tup[1] = 3 # => ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
+    tup[1] = 3  # => ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
 catch e
     println(e)
 end
@@ -251,11 +251,11 @@ in(2, tup) # => true
 a, b, c = (1, 2, 3) # => (1,2,3)  # a is now 1, b is now 2 and c is now 3
 
 # Tuples are created even if you leave out the parentheses
-d, e, f = 4, 5, 6 # => (4,5,6)
+d, e, f = 4, 5, 6  # => (4,5,6)
 
 # A 1-element tuple is distinct from the value it contains
-(1,) == 1 # => false
-(1) == 1 # => true
+(1,) == 1  # => false
+(1) == 1  # => true
 
 # Look how easy it is to swap two values
 e, d = d, e  # => (5,4) # d is now 5 and e is now 4
@@ -411,7 +411,7 @@ end
 add(5, 6) # => 11 after printing out "x is 5 and y is 6"
 
 # Compact assignment of functions
-f_add(x, y) = x + y # => "f (generic function with 1 method)"
+f_add(x, y) = x + y  # => "f (generic function with 1 method)"
 f_add(3, 4) # => 7
 
 # Function can also return multiple values as tuple
@@ -538,7 +538,7 @@ typeof(DataType) # => DataType
 # end
 type Tiger
     taillength::Float64
-    coatcolor # not including a type annotation is the same as `::Any`
+    coatcolor  # not including a type annotation is the same as `::Any`
 end
 
 # The default constructor's arguments are the properties
@@ -553,7 +553,7 @@ sherekhan = typeof(tigger)(5.6, "fire") # => Tiger(5.6,"fire")
 # The other kind of types is abstract types.
 
 # abstract Name
-abstract type Cat end # just a name and point in the type hierarchy
+abstract type Cat end  # just a name and point in the type hierarchy
 
 # Abstract types cannot be instantiated, but can have subtypes.
 # For example, Number is an abstract type
@@ -587,7 +587,7 @@ supertype(String) # => AbstractString
 supertype(DirectIndexString) # => AbstractString
 
 # <: is the subtyping operator
-type Lion <: Cat # Lion is a subtype of Cat
+type Lion <: Cat  # Lion is a subtype of Cat
     mane_color
     roar::AbstractString
 end
@@ -598,7 +598,7 @@ end
 Lion(roar::AbstractString) = Lion("green", roar)
 # This is an outer constructor because it's outside the type definition
 
-type Panther <: Cat # Panther is also a subtype of Cat
+type Panther <: Cat  # Panther is also a subtype of Cat
     eye_color
     Panther() = new("green")
   # Panthers will only have this constructor, and no default constructor.
@@ -619,7 +619,7 @@ end
 
 # Definitions for Lion, Panther, Tiger
 function meow(animal::Lion)
-    animal.roar # access type properties using dot notation
+    animal.roar  # access type properties using dot notation
 end
 
 function meow(animal::Panther)
@@ -738,7 +738,7 @@ code_native(square_area, (Float64,))
 	#	    push    RBP
 	#	    mov RBP, RSP
 	#	Source line: 1
-	#	    vmulsd  XMM0, XMM0, XMM0 # Scalar double precision multiply (AVX)
+	#	    vmulsd  XMM0, XMM0, XMM0  # Scalar double precision multiply (AVX)
 	#	    pop RBP
 	#	    ret
 	#
