@@ -33,27 +33,27 @@ This is based on Julia 1.0.0
 2 // 3  # => 2//3 (Rational{Int64})
 
 # All of the normal infix operators are available.
-1 + 1  # => 2
-8 - 1  # => 7
-10 * 2  # => 20
-35 / 5  # => 7.0
-5 / 2  # => 2.5  # dividing an Int by an Int always results in a Float
-div(5, 2) # => 2  # for a truncated result, use div
-5 \ 35  # => 7.0
-2^2  # => 4  # power, not bitwise xor
-12 % 10  # => 2
+1 + 1      # => 2
+8 - 1      # => 7
+10 * 2     # => 20
+35 / 5     # => 7.0
+5 / 2      # => 2.5  # dividing integers always results in a Float64
+div(5, 2)  # => 2    # for a truncated result, use div
+5 \ 35     # => 7.0
+2^2        # => 4    # power, not bitwise xor
+12 % 10    # => 2
 
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
 
 # Bitwise Operators
-~2  # => -3   # bitwise not
-3 & 5  # => 1  # bitwise and
-2 | 4  # => 6  # bitwise or
-xor(2, 4) # => 6  # bitwise xor
-2 >>> 1  # => 1  # logical shift right
-2 >> 1  # => 1  # arithmetic shift right
-2 << 1  # => 4  # logical/arithmetic shift left
+~2         # => -3 # bitwise not
+3 & 5      # => 1  # bitwise and
+2 | 4      # => 6  # bitwise or
+xor(2, 4)  # => 6  # bitwise xor
+2 >>> 1    # => 1  # logical shift right
+2 >> 1     # => 1  # arithmetic shift right
+2 << 1     # => 4  # logical/arithmetic shift left
 
 # You can use the bitstring function to see the binary representation of a number.
 bitstring(12345)
@@ -66,7 +66,7 @@ true
 false
 
 # Boolean operators
-!true  # => false
+!true   # => false
 !false  # => true
 1 == 1  # => true
 2 == 1  # => false
@@ -172,17 +172,17 @@ matrix = [1 2; 3 4] # => 2x2 Int64 Array: [1 2; 3 4]
 b = Int8[4, 5, 6] # => 3-element Int8 Array: [4, 5, 6]
 
 # Add stuff to the end of a list with push! and append!
-push!(a, 1)     # => [1]
-push!(a, 2)     # => [1,2]
-push!(a, 4)     # => [1,2,4]
-push!(a, 3)     # => [1,2,4,3]
-append!(a, b) # => [1,2,4,3,4,5,6]
+push!(a, 1)    # => [1]
+push!(a, 2)    # => [1,2]
+push!(a, 4)    # => [1,2,4]
+push!(a, 3)    # => [1,2,4,3]
+append!(a, b)  # => [1,2,4,3,4,5,6]
 
 # Remove from the end with pop
-pop!(b)        # => 6 and b is now [4,5]
+pop!(b)  # => 6 and b is now [4,5]
 
 # Let's put it back
-push!(b, 6)   # b is now [4,5,6] again.
+push!(b, 6)  # b is now [4,5,6] again.
 
 a[1] # => 1  # remember that Julia indexes from 1, not 0!
 
@@ -191,14 +191,14 @@ a[1] # => 1  # remember that Julia indexes from 1, not 0!
 a[end] # => 6
 
 # we also have popfirst! and pushfirst!
-popfirst!(a) # => 1 and a is now [2,4,3,4,5,6]
-pushfirst!(a, 7) # => [7,2,4,3,4,5,6]
+popfirst!(a)  # => 1 and a is now [2,4,3,4,5,6]
+pushfirst!(a, 7)  # => [7,2,4,3,4,5,6]
 
 # Function names that end in exclamations points indicate that they modify
 # their argument.
 arr = [5,4,6] # => 3-element Int64 Array: [5,4,6]
-sort(arr) # => [4,5,6]; arr is still [5,4,6]
-sort!(arr) # => [4,5,6]; arr is now [4,5,6]
+sort(arr)  # => [4,5,6]; arr is still [5,4,6]
+sort!(arr)  # => [4,5,6]; arr is now [4,5,6]
 
 # Looking out of bounds is a BoundsError
 try
@@ -221,20 +221,20 @@ a[2:end] # => [2, 3, 4, 5]
 
 # Remove elements from an array by index with splice!
 arr = [3,4,5]
-splice!(arr, 2) # => 4 ; arr is now [3,5]
+splice!(arr, 2)  # => 4 ; arr is now [3,5]
 
 # Concatenate lists with append!
 b = [1,2,3]
-append!(a, b) # Now a is [1, 2, 3, 4, 5, 1, 2, 3]
+append!(a, b)  # Now a is [1, 2, 3, 4, 5, 1, 2, 3]
 
 # Check for existence in a list with in
-in(1, a) # => true
+in(1, a)  # => true
 
 # Examine the length with length
-length(a) # => 8
+length(a)  # => 8
 
 # Tuples are immutable.
-tup = (1, 2, 3) # => (1,2,3) # an (Int64,Int64,Int64) tuple.
+tup = (1, 2, 3)  # => (1,2,3)  # an (Int64,Int64,Int64) tuple.
 tup[1] # => 1
 try
     tup[1] = 3  # => ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
@@ -243,12 +243,12 @@ catch e
 end
 
 # Many list functions also work on tuples
-length(tup) # => 3
+length(tup)  # => 3
 tup[1:2] # => (1,2)
-in(2, tup) # => true
+in(2, tup)  # => true
 
 # You can unpack tuples into variables
-a, b, c = (1, 2, 3) # => (1,2,3)  # a is now 1, b is now 2 and c is now 3
+a, b, c = (1, 2, 3)  # => (1,2,3)  # a is now 1, b is now 2 and c is now 3
 
 # Tuples are created even if you leave out the parentheses
 d, e, f = 4, 5, 6  # => (4,5,6)
@@ -258,11 +258,11 @@ d, e, f = 4, 5, 6  # => (4,5,6)
 (1) == 1  # => true
 
 # Look how easy it is to swap two values
-e, d = d, e  # => (5,4) # d is now 5 and e is now 4
+e, d = d, e  # => (5,4)  # d is now 5 and e is now 4
 
 
 # Dictionaries store mappings
-empty_dict = Dict() # => Dict{Any,Any}()
+empty_dict = Dict()  # => Dict{Any,Any}()
 
 # You can create a dictionary using a literal
 filled_dict = Dict("one" => 1, "two" => 2, "three" => 3)
@@ -282,10 +282,10 @@ values(filled_dict)
 # Note - Same as above regarding key ordering.
 
 # Check for existence of keys in a dictionary with in, haskey
-in(("one" => 1), filled_dict) # => true
-in(("two" => 3), filled_dict) # => false
-haskey(filled_dict, "one") # => true
-haskey(filled_dict, 1) # => false
+in(("one" => 1), filled_dict)  # => true
+in(("two" => 3), filled_dict)  # => false
+haskey(filled_dict, "one")     # => true
+haskey(filled_dict, 1)         # => false
 
 # Trying to look up a non-existent key will raise an error
 try
@@ -296,26 +296,26 @@ end
 
 # Use the get method to avoid that error by providing a default value
 # get(dictionary,key,default_value)
-get(filled_dict, "one", 4) # => 1
-get(filled_dict, "four", 4) # => 4
+get(filled_dict, "one", 4)   # => 1
+get(filled_dict, "four", 4)  # => 4
 
 # Use Sets to represent collections of unordered, unique values
-empty_set = Set() # => Set{Any}()
+empty_set = Set()  # => Set{Any}()
 # Initialize a set with values
-filled_set = Set([1,2,2,3,4]) # => Set{Int64}(1,2,3,4)
+filled_set = Set([1,2,2,3,4])  # => Set{Int64}(1,2,3,4)
 
 # Add more values to a set
-push!(filled_set, 5) # => Set{Int64}(5,4,2,3,1)
+push!(filled_set, 5)  # => Set{Int64}(5,4,2,3,1)
 
 # Check if the values are in the set
-in(2, filled_set) # => true
-in(10, filled_set) # => false
+in(2, filled_set)  # => true
+in(10, filled_set)  # => false
 
 # There are functions for set intersection, union, and difference.
-other_set = Set([3, 4, 5, 6]) # => Set{Int64}(6,4,5,3)
-intersect(filled_set, other_set) # => Set{Int64}(3,4,5)
-union(filled_set, other_set) # => Set{Int64}(1,2,3,4,5,6)
-setdiff(Set([1,2,3,4]), Set([2,3,5])) # => Set{Int64}(1,4)
+other_set = Set([3, 4, 5, 6])          # => Set{Int64}(6,4,5,3)
+intersect(filled_set, other_set)       # => Set{Int64}(3,4,5)
+union(filled_set, other_set)           # => Set{Int64}(1,2,3,4,5,6)
+setdiff(Set([1,2,3,4]), Set([2,3,5]))  # => Set{Int64}(1,4)
 
 
 ####################################################
@@ -409,15 +409,15 @@ function add(x, y)
     x + y
 end
 
-add(5, 6) # => 11 after printing out "x is 5 and y is 6"
+add(5, 6)  # => 11 after printing out "x is 5 and y is 6"
 
 # Compact assignment of functions
 f_add(x, y) = x + y  # => "f (generic function with 1 method)"
-f_add(3, 4) # => 7
+f_add(3, 4)  # => 7
 
 # Function can also return multiple values as tuple
 fn(x, y) = x + y, x - y
-fn(3, 4) # => (7, -1)
+fn(3, 4)  # => (7, -1)
 
 # You can define functions that take a variable number of
 # positional arguments
@@ -427,16 +427,16 @@ function varargs(args...)
 end
 # => varargs (generic function with 1 method)
 
-varargs(1, 2, 3) # => (1,2,3)
+varargs(1, 2, 3)  # => (1,2,3)
 
 # The ... is called a splat.
 # We just used it in a function definition.
 # It can also be used in a function call,
 # where it will splat an Array or Tuple's contents into the argument list.
-add([5,6]...) # this is equivalent to add(5,6)
+add([5,6]...)  # this is equivalent to add(5,6)
 
-x = (5, 6)     # => (5,6)
-add(x...)     # this is equivalent to add(5,6)
+x = (5, 6)  # => (5,6)
+add(x...)  # this is equivalent to add(5,6)
 
 
 # You can define functions with optional positional arguments
@@ -444,24 +444,24 @@ function defaults(a, b, x=5, y=6)
     return "$a $b and $x $y"
 end
 
-defaults('h', 'g') # => "h g and 5 6"
-defaults('h', 'g', 'j') # => "h g and j 6"
-defaults('h', 'g', 'j', 'k') # => "h g and j k"
+defaults('h', 'g')  # => "h g and 5 6"
+defaults('h', 'g', 'j')  # => "h g and j 6"
+defaults('h', 'g', 'j', 'k')  # => "h g and j k"
 try
-    defaults('h') # => ERROR: no method defaults(Char,)
-    defaults() # => ERROR: no methods defaults()
+    defaults('h')  # => ERROR: no method defaults(Char,)
+    defaults()  # => ERROR: no methods defaults()
 catch e
     println(e)
 end
 
 # You can define functions that take keyword arguments
-function keyword_args(;k1=4, name2="hello") # note the ;
+function keyword_args(;k1=4, name2="hello")  # note the ;
     return Dict("k1" => k1, "name2" => name2)
 end
 
-keyword_args(name2="ness") # => ["name2"=>"ness","k1"=>4]
-keyword_args(k1="mine") # => ["k1"=>"mine","name2"=>"hello"]
-keyword_args() # => ["name2"=>"hello","k1"=>4]
+keyword_args(name2="ness")  # => ["name2"=>"ness","k1"=>4]
+keyword_args(k1="mine")  # => ["k1"=>"mine","name2"=>"hello"]
+keyword_args()  # => ["name2"=>"hello","k1"=>4]
 
 # You can combine all kinds of arguments in the same function
 function all_the_args(normal_arg, optional_positional_arg=2; keyword_arg="foo")
@@ -485,7 +485,7 @@ function create_adder(x)
 end
 
 # This is "stabby lambda syntax" for creating anonymous functions
-(x -> x > 2)(3) # => true
+(x -> x > 2)(3)  # => true
 
 # This function is identical to create_adder implementation above.
 function create_adder(x)
@@ -501,12 +501,12 @@ function create_adder(x)
 end
 
 add_10 = create_adder(10)
-add_10(3) # => 13
+add_10(3)  # => 13
 
 
 # There are built-in higher order functions
-map(add_10, [1,2,3]) # => [11, 12, 13]
-filter(x -> x > 5, [3, 4, 5, 6, 7]) # => [6, 7]
+map(add_10, [1,2,3])  # => [11, 12, 13]
+filter(x -> x > 5, [3, 4, 5, 6, 7])  # => [6, 7]
 
 # We can use list comprehensions for nicer maps
 [add_10(i) for i = [1, 2, 3]] # => [11, 12, 13]
@@ -519,11 +519,11 @@ filter(x -> x > 5, [3, 4, 5, 6, 7]) # => [6, 7]
 # Julia has a type system.
 # Every value has a type; variables do not have types themselves.
 # You can use the `typeof` function to get the type of a value.
-typeof(5) # => Int64
+typeof(5)  # => Int64
 
 # Types are first-class values
-typeof(Int64) # => DataType
-typeof(DataType) # => DataType
+typeof(Int64)  # => DataType
+typeof(DataType)  # => DataType
 # DataType is the type that represents types, including itself.
 
 # Types are used for documentation, optimizations, and dispatch.
@@ -544,10 +544,10 @@ end
 
 # The default constructor's arguments are the properties
 # of the type, in the order they are listed in the definition
-tigger = Tiger(3.5, "orange") # => Tiger(3.5,"orange")
+tigger = Tiger(3.5, "orange")  # => Tiger(3.5,"orange")
 
 # The type doubles as the constructor function for values of that type
-sherekhan = typeof(tigger)(5.6, "fire") # => Tiger(5.6,"fire")
+sherekhan = typeof(tigger)(5.6, "fire")  # => Tiger(5.6,"fire")
 
 # These struct-style types are called concrete types
 # They can be instantiated, but cannot have subtypes.
@@ -559,32 +559,32 @@ abstract type Cat end  # just a name and point in the type hierarchy
 # Abstract types cannot be instantiated, but can have subtypes.
 using InteractiveUtils  # defines the subtype and supertype function
 # For example, Number is an abstract type
-subtypes(Number) # => 2-element Array{Any,1}:
+subtypes(Number)  # => 2-element Array{Any,1}:
                  #     Complex{T<:Real}
                  #     Real
-subtypes(Cat) # => 0-element Array{Any,1}
+subtypes(Cat)  # => 0-element Array{Any,1}
 
 # AbstractString, as the name implies, is also an abstract type
-subtypes(AbstractString)    # 4-element Array{Any,1}:
+subtypes(AbstractString)  # 4-element Array{Any,1}:
                             #  String
                             #  SubString
                             #  SubstitutionString
                             #  Test.GenericString
 
 # Every type has a super type; use the `supertype` function to get it.
-typeof(5) # => Int64
-supertype(Int64) # => Signed
-supertype(Signed) # => Integer
-supertype(Integer) # => Real
-supertype(Real) # => Number
-supertype(Number) # => Any
-supertype(supertype(Signed)) # => Real
-supertype(Any) # => Any
+typeof(5)  # => Int64
+supertype(Int64)  # => Signed
+supertype(Signed)  # => Integer
+supertype(Integer)  # => Real
+supertype(Real)  # => Number
+supertype(Number)  # => Any
+supertype(supertype(Signed))  # => Real
+supertype(Any)  # => Any
 # All of these type, except for Int64, are abstract.
-typeof("fire") # => String
-supertype(String) # => AbstractString
+typeof("fire")  # => String
+supertype(String)  # => AbstractString
 # Likewise here with String
-supertype(SubString) # => AbstractString
+supertype(SubString)  # => AbstractString
 
 # <: is the subtyping operator
 struct Lion <: Cat  # Lion is a subtype of Cat
@@ -631,9 +631,9 @@ function meow(animal::Tiger)
 end
 
 # Testing the meow function
-meow(tigger) # => "rawwr"
-meow(Lion("brown", "ROAAR")) # => "ROAAR"
-meow(Panther()) # => "grrr"
+meow(tigger)  # => "rawwr"
+meow(Lion("brown", "ROAAR"))  # => "ROAAR"
+meow(Panther())  # => "grrr"
 
 # Review the local type hierarchy
 Tiger <: Cat # => false
@@ -645,9 +645,9 @@ function pet_cat(cat::Cat)
     println("The cat says $(meow(cat))")
 end
 
-pet_cat(Lion("42")) # => prints "The cat says 42"
+pet_cat(Lion("42"))  # => prints "The cat says 42"
 try
-    pet_cat(tigger) # => ERROR: no method pet_cat(Tiger,)
+    pet_cat(tigger)  # => ERROR: no method pet_cat(Tiger,)
 catch e
     println(e)
 end
@@ -662,21 +662,21 @@ function fight(t::Tiger, c::Cat)
 end
 # => fight (generic function with 1 method)
 
-fight(tigger, Panther()) # => prints The orange tiger wins!
-fight(tigger, Lion("ROAR")) # => prints The orange tiger wins!
+fight(tigger, Panther())  # => prints The orange tiger wins!
+fight(tigger, Lion("ROAR"))  # => prints The orange tiger wins!
 
 # Let's change the behavior when the Cat is specifically a Lion
 fight(t::Tiger, l::Lion) = println("The $(l.mane_color)-maned lion wins!")
 # => fight (generic function with 2 methods)
 
-fight(tigger, Panther()) # => prints The orange tiger wins!
-fight(tigger, Lion("ROAR")) # => prints The green-maned lion wins!
+fight(tigger, Panther())  # => prints The orange tiger wins!
+fight(tigger, Lion("ROAR"))  # => prints The green-maned lion wins!
 
 # We don't need a Tiger in order to fight
 fight(l::Lion, c::Cat) = println("The victorious cat says $(meow(c))")
 # => fight (generic function with 3 methods)
 
-fight(Lion("balooga!"), Panther()) # => prints The victorious cat says grrr
+fight(Lion("balooga!"), Panther())  # => prints The victorious cat says grrr
 try
     fight(Panther(), Lion("RAWR"))
 catch e
@@ -689,7 +689,7 @@ fight(c::Cat, l::Lion) = println("The cat beats the Lion")
 
 # This warning is because it's unclear which fight will be called in:
 try
-    fight(Lion("RAR"), Lion("brown", "rarrr")) # => prints The victorious cat says rarrr
+    fight(Lion("RAR"), Lion("brown", "rarrr"))  # => prints The victorious cat says rarrr
 catch e
     println(e)
   # => MethodError(fight, (Lion("green", "RAR"), Lion("brown", "rarrr")), 0x000000000000557c)
@@ -697,7 +697,7 @@ end
 # The result may be different in other versions of Julia
 
 fight(l::Lion, l2::Lion) = println("The lions come to a tie")
-fight(Lion("RAR"), Lion("brown", "rarrr")) # => prints The lions come to a tie
+fight(Lion("RAR"), Lion("brown", "rarrr"))  # => prints The lions come to a tie
 
 
 # Under the hood
@@ -705,7 +705,7 @@ fight(Lion("RAR"), Lion("brown", "rarrr")) # => prints The lions come to a tie
 
 square_area(l) = l * l      # square_area (generic function with 1 method)
 
-square_area(5) #25
+square_area(5)  #25
 
 # What happens when we feed square_area an integer?
 code_native(square_area, (Int32,))
@@ -746,7 +746,7 @@ code_native(square_area, (Float64,))
 # arguments are floats.
 # Let's calculate the area of a circle
 circle_area(r) = pi * r * r     # circle_area (generic function with 1 method)
-circle_area(5)                  # 78.53981633974483
+circle_area(5)  # 78.53981633974483
 
 code_native(circle_area, (Int32,))
     #        .section    __TEXT,__text,regular,pure_instructions
