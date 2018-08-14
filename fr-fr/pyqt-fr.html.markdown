@@ -13,7 +13,7 @@ lang: fr-fr
 
 
 C'est une adaptation de l'intro du C++ vers QT par [Aleksey Kholovchuk](https://github.com/vortexxx192
-), certains exemples du code doivent avoir la même fonctionnalité
+), certains exemples du code doivent avoir la même fonctionnalité,
 cette version ayant juste été faite en utilisant pyqt! 
 
 ```python
