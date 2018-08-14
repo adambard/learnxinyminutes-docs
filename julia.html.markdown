@@ -2,17 +2,18 @@
 language: Julia
 contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
-    - ["Pranit Bauva", "http://github.com/pranitbauva1997"]
-    - ["Daniel YC Lin", "http://github.com/dlintw"]
+    - ["Pranit Bauva", "https://github.com/pranitbauva1997"]
+    - ["Daniel YC Lin", "https://github.com/dlintw"]
+    - ["Martijn Visser", "https://github.com/visr"]
 filename: learnjulia.jl
 ---
 
 Julia is a new homoiconic functional language focused on technical computing.
 While having the full power of homoiconic macros, first-class functions, and low-level control, Julia is as easy to learn and use as Python.
 
-This is based on Julia 0.6.4
+This is based on Julia 1.0.0
 
-```ruby
+```julia
 
 # Single line comments start with a hash (pound) symbol.
 #= Multiline comments can be written
@@ -779,6 +780,6 @@ code_native(circle_area, (Float64,))
 
 ## Further Reading
 
-You can get a lot more detail from [The Julia Manual](http://docs.julialang.org/en/latest/#Manual-1)
+You can get a lot more detail from the [Julia Documentation](https://docs.julialang.org/)
 
 The best place to get help with Julia is the (very friendly) [Discourse forum](https://discourse.julialang.org/).
