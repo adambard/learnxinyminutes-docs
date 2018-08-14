@@ -9,33 +9,34 @@ translators:
 lang: fr-fr
 ---
 
-**Qt** is a widely-known framework for developing cross-platform software that can be run on various software and hardware platforms with little or no change in the code, while having the power and speed of native applications. Though **Qt** was originally written in *C++*.
+**Qt** est un framework très connu pour le developpement de logiciel cross-platform qui peuvent être lancé sur différents systèmes avec de petit ou aucun changement dans le code, tout en ayant la puissance et la vitesse des applications natives. Bien que **Qt** ait été écrit à l'origine en *C++*.
 
-This is an adaption on the C++ intro to QT by [Aleksey Kholovchuk](https://github.com/vortexxx192
-), some of the code examples should result in the same functionality
-this version just having been done using pyqt! 
+
+C'est une adaptation de l'intro du C++ vers QT par [Aleksey Kholovchuk](https://github.com/vortexxx192
+), certains exemples du code doivent avoir la même fonctionnalité
+cette version ayant juste été faite en utilisant pyqt! 
 
 ```python
 import sys
 from PyQt4 import QtGui
 	
 def window():
-	# Create an application object 
+	# Création de l'objet application 
     app = QtGui.QApplication(sys.argv)
-	# Create a widget where our label will be placed in
+	# Création d'un widget où notre label sera placé
     w = QtGui.QWidget()
-	# Add a label to the widget 
+	# Ajout d'un label au widget
     b = QtGui.QLabel(w)
-	# Set some text for the label 
+	# Assignation de texte au label
     b.setText("Hello World!")
-	# Give some size and placement information 
+	# Assignation des tailles et des informations de placement
     w.setGeometry(100, 100, 200, 50)
     b.move(50, 20)
-	# Give our window a nice title 
+	# Assignation d'un nom à notre fenêtre
     w.setWindowTitle("PyQt")
-	# Have everything display
+	# Affichage de la fenêtre
     w.show()
-	# Execute what we have asked for, once all setup
+	# Exécution de l'application
     sys.exit(app.exec_())
 
 if __name__ == '__main__':
