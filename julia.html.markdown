@@ -4,7 +4,6 @@ contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
     - ["Pranit Bauva", "https://github.com/pranitbauva1997"]
     - ["Daniel YC Lin", "https://github.com/dlintw"]
-    - ["Martijn Visser", "https://github.com/visr"]
 filename: learnjulia.jl
 ---
 
