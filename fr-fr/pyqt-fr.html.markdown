@@ -9,7 +9,7 @@ translators:
 lang: fr-fr
 ---
 
-**Qt** est un framework très connu pour le developpement de logiciel cross-platform qui peuvent être lancé sur différents systèmes avec de petit ou aucun changement dans le code, tout en ayant la puissance et la vitesse des applications natives. Bien que **Qt** ait été écrit à l'origine en *C++*.
+**Qt** est un framework très connu pour le développement de logiciel cross-platform qui peuvent être lancé sur différents systèmes avec de petit ou aucun changement dans le code, tout en ayant la puissance et la vitesse des applications natives. Bien que **Qt** ait été écrit à l'origine en *C++*.
 
 
 C'est une adaptation de l'intro du C++ vers QT par [Aleksey Kholovchuk](https://github.com/vortexxx192
