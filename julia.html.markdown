@@ -564,12 +564,12 @@ subtypes(Cat) # => 0-element Array{Any,1}
 
 # AbstractString, as the name implies, is also an abstract type
 subtypes(AbstractString)        # 6-element Array{Union{DataType, UnionAll},1}:
-				# Base.SubstitutionString
-				# Base.Test.GenericString
-				# DirectIndexString      
-				# RevString              
-				# String                 
-				# SubString
+                # Base.SubstitutionString
+                # Base.Test.GenericString
+                # DirectIndexString      
+                # RevString              
+                # String                 
+                # SubString
 
 # Every type has a super type; use the `supertype` function to get it.
 typeof(5) # => Int64
@@ -709,39 +709,39 @@ square_area(5) #25
 
 # What happens when we feed square_area an integer?
 code_native(square_area, (Int32,))
-	#	    .section    __TEXT,__text,regular,pure_instructions
-	#	Filename: none
-	#	Source line: 1              # Prologue
-	#	    push    RBP
-	#	    mov RBP, RSP
-	#	Source line: 1
-	#	    movsxd  RAX, EDI        # Fetch l from memory?
-	#	    imul    RAX, RAX        # Square l and store the result in RAX
-	#	    pop RBP                 # Restore old base pointer
-	#	    ret                     # Result will still be in RAX
+    #        .section    __TEXT,__text,regular,pure_instructions
+    #    Filename: none
+    #    Source line: 1              # Prologue
+    #        push    RBP
+    #        mov RBP, RSP
+    #    Source line: 1
+    #        movsxd  RAX, EDI        # Fetch l from memory?
+    #        imul    RAX, RAX        # Square l and store the result in RAX
+    #        pop RBP                 # Restore old base pointer
+    #        ret                     # Result will still be in RAX
 
 code_native(square_area, (Float32,))
-	#	    .section    __TEXT,__text,regular,pure_instructions
-	#	Filename: none
-	#	Source line: 1
-	#	    push    RBP
-	#	    mov RBP, RSP
-	#	Source line: 1
-	#	    vmulss  XMM0, XMM0, XMM0  # Scalar single precision multiply (AVX)
-	#	    pop RBP
-	#	    ret
+    #        .section    __TEXT,__text,regular,pure_instructions
+    #    Filename: none
+    #    Source line: 1
+    #        push    RBP
+    #        mov RBP, RSP
+    #    Source line: 1
+    #        vmulss  XMM0, XMM0, XMM0  # Scalar single precision multiply (AVX)
+    #        pop RBP
+    #        ret
 
 code_native(square_area, (Float64,))
-	#	    .section    __TEXT,__text,regular,pure_instructions
-	#	Filename: none
-	#	Source line: 1
-	#	    push    RBP
-	#	    mov RBP, RSP
-	#	Source line: 1
-	#	    vmulsd  XMM0, XMM0, XMM0  # Scalar double precision multiply (AVX)
-	#	    pop RBP
-	#	    ret
-	#
+    #        .section    __TEXT,__text,regular,pure_instructions
+    #    Filename: none
+    #    Source line: 1
+    #        push    RBP
+    #        mov RBP, RSP
+    #    Source line: 1
+    #        vmulsd  XMM0, XMM0, XMM0  # Scalar double precision multiply (AVX)
+    #        pop RBP
+    #        ret
+    #
 # Note that julia will use floating point instructions if any of the
 # arguments are floats.
 # Let's calculate the area of a circle
@@ -749,33 +749,33 @@ circle_area(r) = pi * r * r     # circle_area (generic function with 1 method)
 circle_area(5)                  # 78.53981633974483
 
 code_native(circle_area, (Int32,))
-	#	    .section    __TEXT,__text,regular,pure_instructions
-	#	Filename: none
-	#	Source line: 1
-	#	    push    RBP
-	#	    mov RBP, RSP
-	#	Source line: 1
-	#	    vcvtsi2sd   XMM0, XMM0, EDI          # Load integer (r) from memory
-	#	    movabs  RAX, 4593140240              # Load pi
-	#	    vmulsd  XMM1, XMM0, QWORD PTR [RAX]  # pi * r
-	#	    vmulsd  XMM0, XMM0, XMM1             # (pi * r) * r
-	#	    pop RBP
-	#	    ret
-	#
+    #        .section    __TEXT,__text,regular,pure_instructions
+    #    Filename: none
+    #    Source line: 1
+    #        push    RBP
+    #        mov RBP, RSP
+    #    Source line: 1
+    #        vcvtsi2sd   XMM0, XMM0, EDI          # Load integer (r) from memory
+    #        movabs  RAX, 4593140240              # Load pi
+    #        vmulsd  XMM1, XMM0, QWORD PTR [RAX]  # pi * r
+    #        vmulsd  XMM0, XMM0, XMM1             # (pi * r) * r
+    #        pop RBP
+    #        ret
+    #
 
 code_native(circle_area, (Float64,))
-	#	    .section    __TEXT,__text,regular,pure_instructions
-	#	Filename: none
-	#	Source line: 1
-	#	    push    RBP
-	#	    mov RBP, RSP
-	#	    movabs  RAX, 4593140496
-	#	Source line: 1
-	#	    vmulsd  XMM1, XMM0, QWORD PTR [RAX]
-	#	    vmulsd  XMM0, XMM1, XMM0
-	#	    pop RBP
-	#	    ret
-	#
+    #        .section    __TEXT,__text,regular,pure_instructions
+    #    Filename: none
+    #    Source line: 1
+    #        push    RBP
+    #        mov RBP, RSP
+    #        movabs  RAX, 4593140496
+    #    Source line: 1
+    #        vmulsd  XMM1, XMM0, QWORD PTR [RAX]
+    #        vmulsd  XMM0, XMM1, XMM0
+    #        pop RBP
+    #        ret
+    #
 ```
 
 ## Further Reading
