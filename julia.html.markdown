@@ -56,10 +56,10 @@ xor(2, 4) # => 6  # bitwise xor
 2 >> 1  # => 1  # arithmetic shift right
 2 << 1  # => 4  # logical/arithmetic shift left
 
-# You can use the bits function to see the binary representation of a number.
-bits(12345)
+# You can use the bitstring function to see the binary representation of a number.
+bitstring(12345)
 # => "0000000000000000000000000000000000000000000000000011000000111001"
-bits(12345.0)
+bitstring(12345.0)
 # => "0100000011001000000111001000000000000000000000000000000000000000"
 
 # Boolean values are primitives
@@ -107,8 +107,9 @@ try
 catch ; end
 # You can put any Julia expression inside the parentheses.
 
-# Another way to format strings is the printf macro.
-@printf "%d is less than %f" 4.5 5.3  # 4 is less than 5.300000
+# Another way to format strings is the printf macro from the stdlib Printf.
+using Printf
+@printf "%d is less than %f\n" 4.5 5.3  # => 5 is less than 5.300000
 
 # Printing is easy
 println("I'm Julia. Nice to meet you!")
@@ -128,7 +129,7 @@ some_var  # => 5
 
 # Accessing a previously unassigned variable is an error
 try
-    some_other_var  # => ERROR: some_other_var not defined
+    some_other_var  # => ERROR: UndefVarError: some_other_var not defined
 catch e
     println(e)
 end
@@ -190,9 +191,9 @@ a[1] # => 1  # remember that Julia indexes from 1, not 0!
 # indexing expression
 a[end] # => 6
 
-# we also have shift and unshift
-shift!(a) # => 1 and a is now [2,4,3,4,5,6]
-unshift!(a, 7) # => [7,2,4,3,4,5,6]
+# we also have popfirst! and pushfirst!
+popfirst!(a) # => 1 and a is now [2,4,3,4,5,6]
+pushfirst!(a, 7) # => [7,2,4,3,4,5,6]
 
 # Function names that end in exclamations points indicate that they modify
 # their argument.
@@ -236,7 +237,7 @@ length(a) # => 8
 # Tuples are immutable.
 tup = (1, 2, 3) # => (1,2,3) # an (Int64,Int64,Int64) tuple.
 tup[1] # => 1
-    try:
+try
     tup[1] = 3  # => ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
 catch e
     println(e)
@@ -373,10 +374,11 @@ end
 #    mouse is a mammal
 
 # While loops loop while a condition is true
-x = 0
-while x < 4
-    println(x)
-    x += 1  # Shorthand for x = x + 1
+let x = 0
+    while x < 4
+        println(x)
+        x += 1  # Shorthand for x = x + 1
+    end
 end
 # prints:
 #   0
@@ -530,13 +532,13 @@ typeof(DataType) # => DataType
 
 # Users can define types
 # They are like records or structs in other languages.
-# New types are defined using the `type` keyword.
+# New types are defined using the `struct` keyword.
 
-# type Name
+# struct Name
 #   field::OptionalType
 #   ...
 # end
-type Tiger
+struct Tiger
     taillength::Float64
     coatcolor  # not including a type annotation is the same as `::Any`
 end
@@ -556,6 +558,7 @@ sherekhan = typeof(tigger)(5.6, "fire") # => Tiger(5.6,"fire")
 abstract type Cat end  # just a name and point in the type hierarchy
 
 # Abstract types cannot be instantiated, but can have subtypes.
+using InteractiveUtils  # defines the subtype and supertype function
 # For example, Number is an abstract type
 subtypes(Number) # => 2-element Array{Any,1}:
                  #     Complex{T<:Real}
@@ -563,13 +566,11 @@ subtypes(Number) # => 2-element Array{Any,1}:
 subtypes(Cat) # => 0-element Array{Any,1}
 
 # AbstractString, as the name implies, is also an abstract type
-subtypes(AbstractString)        # 6-element Array{Union{DataType, UnionAll},1}:
-                # Base.SubstitutionString
-                # Base.Test.GenericString
-                # DirectIndexString
-                # RevString
-                # String
-                # SubString
+subtypes(AbstractString)    # 4-element Array{Any,1}:
+                            #  String
+                            #  SubString
+                            #  SubstitutionString
+                            #  Test.GenericString
 
 # Every type has a super type; use the `supertype` function to get it.
 typeof(5) # => Int64
@@ -584,10 +585,10 @@ supertype(Any) # => Any
 typeof("fire") # => String
 supertype(String) # => AbstractString
 # Likewise here with String
-supertype(DirectIndexString) # => AbstractString
+supertype(SubString) # => AbstractString
 
 # <: is the subtyping operator
-type Lion <: Cat  # Lion is a subtype of Cat
+struct Lion <: Cat  # Lion is a subtype of Cat
     mane_color
     roar::AbstractString
 end
@@ -598,10 +599,10 @@ end
 Lion(roar::AbstractString) = Lion("green", roar)
 # This is an outer constructor because it's outside the type definition
 
-type Panther <: Cat  # Panther is also a subtype of Cat
+struct Panther <: Cat  # Panther is also a subtype of Cat
     eye_color
     Panther() = new("green")
-  # Panthers will only have this constructor, and no default constructor.
+    # Panthers will only have this constructor, and no default constructor.
 end
 # Using inner constructors, like Panther does, gives you control
 # over how values of the type can be created.
@@ -636,9 +637,9 @@ meow(Lion("brown", "ROAAR")) # => "ROAAR"
 meow(Panther()) # => "grrr"
 
 # Review the local type hierarchy
-issubtype(Tiger, Cat) # => false
-issubtype(Lion, Cat) # => true
-issubtype(Panther, Cat) # => true
+Tiger <: Cat # => false
+Lion <: Cat # => true
+Panther <: Cat # => true
 
 # Defining a function that takes Cats
 function pet_cat(cat::Cat)
