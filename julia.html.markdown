@@ -31,7 +31,7 @@ This is based on Julia 1.0.0
 3 # => 3 (Int64)
 3.2 # => 3.2 (Float64)
 2 + 1im # => 2 + 1im (Complex{Int64})
-2//3 # => 2//3 (Rational{Int64})
+2 // 3 # => 2//3 (Rational{Int64})
 
 # All of the normal infix operators are available.
 1 + 1 # => 2
@@ -41,7 +41,7 @@ This is based on Julia 1.0.0
 5 / 2 # => 2.5 # dividing an Int by an Int always results in a Float
 div(5, 2) # => 2 # for a truncated result, use div
 5 \ 35 # => 7.0
-2 ^ 2 # => 4 # power, not bitwise xor
+2^2 # => 4 # power, not bitwise xor
 12 % 10 # => 2
 
 # Enforce precedence with parentheses
@@ -83,7 +83,7 @@ false
 
 # Strings are created with "
 try
-"This is a string."
+    "This is a string."
 catch ; end
 
 # Julia has several types of strings, including ASCIIString and UTF8String.
@@ -91,19 +91,19 @@ catch ; end
 
 # Character literals are written with '
 try
-'a'
+    'a'
 catch ; end
 
 # Some strings can be indexed like an array of characters
 try
-"This is a string"[1] # => 'T' # Julia indexes from 1
+    "This is a string"[1] # => 'T' # Julia indexes from 1
 catch ; end
 # However, this is will not work well for UTF8 strings,
 # so iterating over strings is recommended (map, for loops, etc).
 
 # $ can be used for string interpolation:
 try
-"2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
+    "2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
 catch ; end
 # You can put any Julia expression inside the parentheses.
 
@@ -116,7 +116,7 @@ println("I'm Julia. Nice to meet you!")
 # String can be compared lexicographically
 "good" > "bye" # => true
 "good" == "good" # => true
-"1 + 2 = 3" == "1 + 2 = $(1+2)" # => true
+"1 + 2 = 3" == "1 + 2 = $(1 + 2)" # => true
 
 ####################################################
 ## 2. Variables and Collections
@@ -172,17 +172,17 @@ matrix = [1 2; 3 4] # => 2x2 Int64 Array: [1 2; 3 4]
 b = Int8[4, 5, 6] # => 3-element Int8 Array: [4, 5, 6]
 
 # Add stuff to the end of a list with push! and append!
-push!(a,1)     # => [1]
-push!(a,2)     # => [1,2]
-push!(a,4)     # => [1,2,4]
-push!(a,3)     # => [1,2,4,3]
-append!(a,b) # => [1,2,4,3,4,5,6]
+push!(a, 1)     # => [1]
+push!(a, 2)     # => [1,2]
+push!(a, 4)     # => [1,2,4]
+push!(a, 3)     # => [1,2,4,3]
+append!(a, b) # => [1,2,4,3,4,5,6]
 
 # Remove from the end with pop
 pop!(b)        # => 6 and b is now [4,5]
 
 # Let's put it back
-push!(b,6)   # b is now [4,5,6] again.
+push!(b, 6)   # b is now [4,5,6] again.
 
 a[1] # => 1 # remember that Julia indexes from 1, not 0!
 
@@ -192,7 +192,7 @@ a[end] # => 6
 
 # we also have shift and unshift
 shift!(a) # => 1 and a is now [2,4,3,4,5,6]
-unshift!(a,7) # => [7,2,4,3,4,5,6]
+unshift!(a, 7) # => [7,2,4,3,4,5,6]
 
 # Function names that end in exclamations points indicate that they modify
 # their argument.
@@ -203,7 +203,7 @@ sort!(arr) # => [4,5,6]; arr is now [4,5,6]
 # Looking out of bounds is a BoundsError
 try
     a[0] # => ERROR: BoundsError() in getindex at array.jl:270
-    a[end+1] # => ERROR: BoundsError() in getindex at array.jl:270
+    a[end + 1] # => ERROR: BoundsError() in getindex at array.jl:270
 catch e
     println(e)
 end
@@ -221,11 +221,11 @@ a[2:end] # => [2, 3, 4, 5]
 
 # Remove elements from an array by index with splice!
 arr = [3,4,5]
-splice!(arr,2) # => 4 ; arr is now [3,5]
+splice!(arr, 2) # => 4 ; arr is now [3,5]
 
 # Concatenate lists with append!
 b = [1,2,3]
-append!(a,b) # Now a is [1, 2, 3, 4, 5, 1, 2, 3]
+append!(a, b) # Now a is [1, 2, 3, 4, 5, 1, 2, 3]
 
 # Check for existence in a list with in
 in(1, a) # => true
@@ -236,7 +236,7 @@ length(a) # => 8
 # Tuples are immutable.
 tup = (1, 2, 3) # => (1,2,3) # an (Int64,Int64,Int64) tuple.
 tup[1] # => 1
-try:
+    try:
     tup[1] = 3 # => ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
 catch e
     println(e)
@@ -265,7 +265,7 @@ e, d = d, e  # => (5,4) # d is now 5 and e is now 4
 empty_dict = Dict() # => Dict{Any,Any}()
 
 # You can create a dictionary using a literal
-filled_dict = Dict("one"=> 1, "two"=> 2, "three"=> 3)
+filled_dict = Dict("one" => 1, "two" => 2, "three" => 3)
 # => Dict{ASCIIString,Int64}
 
 # Look up values with []
@@ -296,8 +296,8 @@ end
 
 # Use the get method to avoid that error by providing a default value
 # get(dictionary,key,default_value)
-get(filled_dict,"one",4) # => 1
-get(filled_dict,"four",4) # => 4
+get(filled_dict, "one", 4) # => 1
+get(filled_dict, "four", 4) # => 4
 
 # Use Sets to represent collections of unordered, unique values
 empty_set = Set() # => Set{Any}()
@@ -305,7 +305,7 @@ empty_set = Set() # => Set{Any}()
 filled_set = Set([1,2,2,3,4]) # => Set{Int64}(1,2,3,4)
 
 # Add more values to a set
-push!(filled_set,5) # => Set{Int64}(5,4,2,3,1)
+push!(filled_set, 5) # => Set{Int64}(5,4,2,3,1)
 
 # Check if the values are in the set
 in(2, filled_set) # => true
@@ -315,7 +315,7 @@ in(10, filled_set) # => false
 other_set = Set([3, 4, 5, 6]) # => Set{Int64}(6,4,5,3)
 intersect(filled_set, other_set) # => Set{Int64}(3,4,5)
 union(filled_set, other_set) # => Set{Int64}(1,2,3,4,5,6)
-setdiff(Set([1,2,3,4]),Set([2,3,5])) # => Set{Int64}(1,4)
+setdiff(Set([1,2,3,4]), Set([2,3,5])) # => Set{Int64}(1,4)
 
 
 ####################################################
@@ -338,7 +338,7 @@ end
 
 # For loops iterate over iterables.
 # Iterable types include Range, Array, Set, Dict, and AbstractString.
-for animal=["dog", "cat", "mouse"]
+for animal = ["dog", "cat", "mouse"]
     println("$animal is a mammal")
     # You can use $ to interpolate variables or expression into strings
 end
@@ -356,7 +356,7 @@ end
 #    cat is a mammal
 #    mouse is a mammal
 
-for a in Dict("dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal")
+for a in Dict("dog" => "mammal", "cat" => "mammal", "mouse" => "mammal")
     println("$(a[1]) is a $(a[2])")
 end
 # prints:
@@ -364,7 +364,7 @@ end
 #    cat is a mammal
 #    mouse is a mammal
 
-for (k,v) in Dict("dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal")
+for (k, v) in Dict("dog" => "mammal", "cat" => "mammal", "mouse" => "mammal")
     println("$k is a $v")
 end
 # prints:
@@ -386,9 +386,9 @@ end
 
 # Handle exceptions with a try/catch block
 try
-   error("help")
+    error("help")
 catch e
-   println("caught it $e")
+    println("caught it $e")
 end
 # => caught it ErrorException("help")
 
@@ -426,7 +426,7 @@ function varargs(args...)
 end
 # => varargs (generic function with 1 method)
 
-varargs(1,2,3) # => (1,2,3)
+varargs(1, 2, 3) # => (1,2,3)
 
 # The ... is called a splat.
 # We just used it in a function definition.
@@ -434,18 +434,18 @@ varargs(1,2,3) # => (1,2,3)
 # where it will splat an Array or Tuple's contents into the argument list.
 add([5,6]...) # this is equivalent to add(5,6)
 
-x = (5,6)     # => (5,6)
+x = (5, 6)     # => (5,6)
 add(x...)     # this is equivalent to add(5,6)
 
 
 # You can define functions with optional positional arguments
-function defaults(a,b,x=5,y=6)
+function defaults(a, b, x=5, y=6)
     return "$a $b and $x $y"
 end
 
-defaults('h','g') # => "h g and 5 6"
-defaults('h','g','j') # => "h g and j 6"
-defaults('h','g','j','k') # => "h g and j k"
+defaults('h', 'g') # => "h g and 5 6"
+defaults('h', 'g', 'j') # => "h g and j 6"
+defaults('h', 'g', 'j', 'k') # => "h g and j k"
 try
     defaults('h') # => ERROR: no method defaults(Char,)
     defaults() # => ERROR: no methods defaults()
@@ -454,8 +454,8 @@ catch e
 end
 
 # You can define functions that take keyword arguments
-function keyword_args(;k1=4,name2="hello") # note the ;
-    return Dict("k1"=>k1,"name2"=>name2)
+function keyword_args(;k1=4, name2="hello") # note the ;
+    return Dict("k1" => k1, "name2" => name2)
 end
 
 keyword_args(name2="ness") # => ["name2"=>"ness","k1"=>4]
@@ -508,7 +508,7 @@ map(add_10, [1,2,3]) # => [11, 12, 13]
 filter(x -> x > 5, [3, 4, 5, 6, 7]) # => [6, 7]
 
 # We can use list comprehensions for nicer maps
-[add_10(i) for i=[1, 2, 3]] # => [11, 12, 13]
+[add_10(i) for i = [1, 2, 3]] # => [11, 12, 13]
 [add_10(i) for i in [1, 2, 3]] # => [11, 12, 13]
 
 ####################################################
@@ -537,16 +537,16 @@ typeof(DataType) # => DataType
 #   ...
 # end
 type Tiger
-  taillength::Float64
-  coatcolor # not including a type annotation is the same as `::Any`
+    taillength::Float64
+    coatcolor # not including a type annotation is the same as `::Any`
 end
 
 # The default constructor's arguments are the properties
 # of the type, in the order they are listed in the definition
-tigger = Tiger(3.5,"orange") # => Tiger(3.5,"orange")
+tigger = Tiger(3.5, "orange") # => Tiger(3.5,"orange")
 
 # The type doubles as the constructor function for values of that type
-sherekhan = typeof(tigger)(5.6,"fire") # => Tiger(5.6,"fire")
+sherekhan = typeof(tigger)(5.6, "fire") # => Tiger(5.6,"fire")
 
 # These struct-style types are called concrete types
 # They can be instantiated, but cannot have subtypes.
@@ -588,19 +588,19 @@ supertype(DirectIndexString) # => AbstractString
 
 # <: is the subtyping operator
 type Lion <: Cat # Lion is a subtype of Cat
-  mane_color
-  roar::AbstractString
+    mane_color
+    roar::AbstractString
 end
 
 # You can define more constructors for your type
 # Just define a function of the same name as the type
 # and call an existing constructor to get a value of the correct type
-Lion(roar::AbstractString) = Lion("green",roar)
+Lion(roar::AbstractString) = Lion("green", roar)
 # This is an outer constructor because it's outside the type definition
 
 type Panther <: Cat # Panther is also a subtype of Cat
-  eye_color
-  Panther() = new("green")
+    eye_color
+    Panther() = new("green")
   # Panthers will only have this constructor, and no default constructor.
 end
 # Using inner constructors, like Panther does, gives you control
@@ -619,30 +619,30 @@ end
 
 # Definitions for Lion, Panther, Tiger
 function meow(animal::Lion)
-  animal.roar # access type properties using dot notation
+    animal.roar # access type properties using dot notation
 end
 
 function meow(animal::Panther)
-  "grrr"
+    "grrr"
 end
 
 function meow(animal::Tiger)
-  "rawwwr"
+    "rawwwr"
 end
 
 # Testing the meow function
 meow(tigger) # => "rawwr"
-meow(Lion("brown","ROAAR")) # => "ROAAR"
+meow(Lion("brown", "ROAAR")) # => "ROAAR"
 meow(Panther()) # => "grrr"
 
 # Review the local type hierarchy
-issubtype(Tiger,Cat) # => false
-issubtype(Lion,Cat) # => true
-issubtype(Panther,Cat) # => true
+issubtype(Tiger, Cat) # => false
+issubtype(Lion, Cat) # => true
+issubtype(Panther, Cat) # => true
 
 # Defining a function that takes Cats
 function pet_cat(cat::Cat)
-  println("The cat says $(meow(cat))")
+    println("The cat says $(meow(cat))")
 end
 
 pet_cat(Lion("42")) # => prints "The cat says 42"
@@ -657,47 +657,47 @@ end
 # In Julia, all of the argument types contribute to selecting the best method.
 
 # Let's define a function with more arguments, so we can see the difference
-function fight(t::Tiger,c::Cat)
-  println("The $(t.coatcolor) tiger wins!")
+function fight(t::Tiger, c::Cat)
+    println("The $(t.coatcolor) tiger wins!")
 end
 # => fight (generic function with 1 method)
 
-fight(tigger,Panther()) # => prints The orange tiger wins!
-fight(tigger,Lion("ROAR")) # => prints The orange tiger wins!
+fight(tigger, Panther()) # => prints The orange tiger wins!
+fight(tigger, Lion("ROAR")) # => prints The orange tiger wins!
 
 # Let's change the behavior when the Cat is specifically a Lion
-fight(t::Tiger,l::Lion) = println("The $(l.mane_color)-maned lion wins!")
+fight(t::Tiger, l::Lion) = println("The $(l.mane_color)-maned lion wins!")
 # => fight (generic function with 2 methods)
 
-fight(tigger,Panther()) # => prints The orange tiger wins!
-fight(tigger,Lion("ROAR")) # => prints The green-maned lion wins!
+fight(tigger, Panther()) # => prints The orange tiger wins!
+fight(tigger, Lion("ROAR")) # => prints The green-maned lion wins!
 
 # We don't need a Tiger in order to fight
-fight(l::Lion,c::Cat) = println("The victorious cat says $(meow(c))")
+fight(l::Lion, c::Cat) = println("The victorious cat says $(meow(c))")
 # => fight (generic function with 3 methods)
 
-fight(Lion("balooga!"),Panther()) # => prints The victorious cat says grrr
+fight(Lion("balooga!"), Panther()) # => prints The victorious cat says grrr
 try
-  fight(Panther(),Lion("RAWR"))
+    fight(Panther(), Lion("RAWR"))
 catch e
-  println(e) 
+    println(e) 
   # => MethodError(fight, (Panther("green"), Lion("green", "RAWR")), 0x000000000000557b)
 end
 
 # Also let the cat go first
-fight(c::Cat,l::Lion) = println("The cat beats the Lion")
+fight(c::Cat, l::Lion) = println("The cat beats the Lion")
 
 # This warning is because it's unclear which fight will be called in:
 try
-  fight(Lion("RAR"),Lion("brown","rarrr")) # => prints The victorious cat says rarrr
+    fight(Lion("RAR"), Lion("brown", "rarrr")) # => prints The victorious cat says rarrr
 catch e
-  println(e)
+    println(e)
   # => MethodError(fight, (Lion("green", "RAR"), Lion("brown", "rarrr")), 0x000000000000557c)
 end
 # The result may be different in other versions of Julia
 
-fight(l::Lion,l2::Lion) = println("The lions come to a tie")
-fight(Lion("RAR"),Lion("brown","rarrr")) # => prints The lions come to a tie
+fight(l::Lion, l2::Lion) = println("The lions come to a tie")
+fight(Lion("RAR"), Lion("brown", "rarrr")) # => prints The lions come to a tie
 
 
 # Under the hood
