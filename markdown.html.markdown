@@ -197,7 +197,7 @@ inside your code
     end
 ```
 
-Inline code can be created using the backtick character `
+Inline code can be created using the backtick character `` ` ``
 
 ```md
 John didn't even know what the `go_to()` function did!
