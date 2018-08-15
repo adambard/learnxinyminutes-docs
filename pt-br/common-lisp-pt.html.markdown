@@ -19,7 +19,7 @@ Outro livro recente e popular é o
 [Land of Lisp](http://landoflisp.com/).
 
 
-```common-lisp
+```lisp
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 0. Sintaxe
