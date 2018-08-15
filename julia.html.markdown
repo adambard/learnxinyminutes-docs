@@ -55,7 +55,7 @@ xor(2, 4)  # => 6  # bitwise xor
 2 >> 1     # => 1  # arithmetic shift right
 2 << 1     # => 4  # logical/arithmetic shift left
 
-# You can use the bitstring function to see the binary representation of a number.
+# Use the bitstring function to see the binary representation of a number.
 bitstring(12345)
 # => "0000000000000000000000000000000000000000000000000011000000111001"
 bitstring(12345.0)
@@ -674,7 +674,8 @@ try
     fight(Panther(), Lion("RAWR"))
 catch e
     println(e)
-  # => MethodError(fight, (Panther("green"), Lion("green", "RAWR")), 0x000000000000557b)
+    # => MethodError(fight, (Panther("green"), Lion("green", "RAWR")),
+    #                0x000000000000557b)
 end
 
 # Also let the cat go first
@@ -682,10 +683,12 @@ fight(c::Cat, l::Lion) = println("The cat beats the Lion")
 
 # This warning is because it's unclear which fight will be called in:
 try
-    fight(Lion("RAR"), Lion("brown", "rarrr"))  # => prints The victorious cat says rarrr
+    fight(Lion("RAR"), Lion("brown", "rarrr"))
+    # => prints The victorious cat says rarrr
 catch e
     println(e)
-  # => MethodError(fight, (Lion("green", "RAR"), Lion("brown", "rarrr")), 0x000000000000557c)
+  # => MethodError(fight, (Lion("green", "RAR"), Lion("brown", "rarrr")),
+  #                0x000000000000557c)
 end
 # The result may be different in other versions of Julia
 
