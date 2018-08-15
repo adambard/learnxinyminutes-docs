@@ -30,7 +30,7 @@ This is based on Julia 1.0.0
 3  # => 3 (Int64)
 3.2  # => 3.2 (Float64)
 2 + 1im  # => 2 + 1im (Complex{Int64})
-2 // 3  # => 2//3 (Rational{Int64})
+2 // 3  # => 2 // 3 (Rational{Int64})
 
 # All of the normal infix operators are available.
 1 + 1      # => 2
@@ -81,29 +81,18 @@ false
 2 < 3 < 2  # => false
 
 # Strings are created with "
-try
-    "This is a string."
-catch ; end
-
-# Julia has several types of strings, including ASCIIString and UTF8String.
-# More on this in the Types section.
+"This is a string."
 
 # Character literals are written with '
-try
-    'a'
-catch ; end
+'a'
 
-# Some strings can be indexed like an array of characters
-try
-    "This is a string"[1] # => 'T' # Julia indexes from 1
-catch ; end
-# However, this is will not work well for UTF8 strings,
-# so iterating over strings is recommended (map, for loops, etc).
+# Strings are UTF8 encoded. Only if they contain only ASCII characters can
+# they be safely indexed.
+ascii("This is a string")[1]  # => 'T' # Julia indexes from 1
+# Otherwise, iterating over strings is recommended (map, for loops, etc).
 
 # $ can be used for string interpolation:
-try
-    "2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
-catch ; end
+"2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
 # You can put any Julia expression inside the parentheses.
 
 # Another way to format strings is the printf macro from the stdlib Printf.
@@ -157,19 +146,19 @@ SomeOtherVar123! = 6  # => 6
 #   functions are sometimes called mutating functions or in-place functions.
 
 # Arrays store a sequence of values indexed by integers 1 through n:
-a = Int64[] # => 0-element Int64 Array
+a = Int64[]  # => 0-element Int64 Array
 
 # 1-dimensional array literals can be written with comma-separated values.
-b = [4, 5, 6] # => 3-element Int64 Array: [4, 5, 6]
-b = [4; 5; 6] # => 3-element Int64 Array: [4, 5, 6]
-b[1] # => 4
-b[end] # => 6
+b = [4, 5, 6]  # => 3-element Int64 Array: [4, 5, 6]
+b = [4; 5; 6]  # => 3-element Int64 Array: [4, 5, 6]
+b[1]  # => 4
+b[end]  # => 6
 
 # 2-dimensional arrays use space-separated values and semicolon-separated rows.
-matrix = [1 2; 3 4] # => 2x2 Int64 Array: [1 2; 3 4]
+matrix = [1 2; 3 4]  # => 2x2 Int64 Array: [1 2; 3 4]
 
-# Arrays of a particular Type
-b = Int8[4, 5, 6] # => 3-element Int8 Array: [4, 5, 6]
+# Arrays of a particular type
+b = Int8[4, 5, 6]  # => 3-element Int8 Array: [4, 5, 6]
 
 # Add stuff to the end of a list with push! and append!
 push!(a, 1)    # => [1]
@@ -184,11 +173,11 @@ pop!(b)  # => 6 and b is now [4,5]
 # Let's put it back
 push!(b, 6)  # b is now [4,5,6] again.
 
-a[1] # => 1  # remember that Julia indexes from 1, not 0!
+a[1]  # => 1  # remember that Julia indexes from 1, not 0!
 
 # end is a shorthand for the last index. It can be used in any
 # indexing expression
-a[end] # => 6
+a[end]  # => 6
 
 # we also have popfirst! and pushfirst!
 popfirst!(a)  # => 1 and a is now [2,4,3,4,5,6]
@@ -196,28 +185,30 @@ pushfirst!(a, 7)  # => [7,2,4,3,4,5,6]
 
 # Function names that end in exclamations points indicate that they modify
 # their argument.
-arr = [5,4,6] # => 3-element Int64 Array: [5,4,6]
+arr = [5,4,6]  # => 3-element Int64 Array: [5,4,6]
 sort(arr)  # => [4,5,6]; arr is still [5,4,6]
 sort!(arr)  # => [4,5,6]; arr is now [4,5,6]
 
 # Looking out of bounds is a BoundsError
 try
-    a[0] # => ERROR: BoundsError() in getindex at array.jl:270
-    a[end + 1] # => ERROR: BoundsError() in getindex at array.jl:270
+    a[0]
+    # => BoundsError: attempt to access 7-element Array{Int64,1} at index [0]
+    a[end + 1]
+    # => BoundsError: attempt to access 7-element Array{Int64,1} at index [8]
 catch e
     println(e)
 end
 
 # Errors list the line and file they came from, even if it's in the standard
-# library. If you built Julia from source, you can look in the folder base
-# inside the julia folder to find these files.
+# library. You can look in the folder share/julia inside the julia folder to
+# find these files.
 
 # You can initialize arrays from ranges
-a = [1:5;] # => 5-element Int64 Array: [1,2,3,4,5]
+a = [1:5;]  # => 5-element Int64 Array: [1,2,3,4,5]
 
 # You can look at ranges with slice syntax.
-a[1:3] # => [1, 2, 3]
-a[2:end] # => [2, 3, 4, 5]
+a[1:3]  # => [1, 2, 3]
+a[2:end]  # => [2, 3, 4, 5]
 
 # Remove elements from an array by index with splice!
 arr = [3,4,5]
@@ -235,16 +226,16 @@ length(a)  # => 8
 
 # Tuples are immutable.
 tup = (1, 2, 3)  # => (1,2,3)  # an (Int64,Int64,Int64) tuple.
-tup[1] # => 1
+tup[1]  # => 1
 try
     tup[1] = 3  # => ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
 catch e
     println(e)
 end
 
-# Many list functions also work on tuples
+# Many array functions also work on tuples
 length(tup)  # => 3
-tup[1:2] # => (1,2)
+tup[1:2]  # => (1,2)
 in(2, tup)  # => true
 
 # You can unpack tuples into variables
@@ -266,19 +257,20 @@ empty_dict = Dict()  # => Dict{Any,Any}()
 
 # You can create a dictionary using a literal
 filled_dict = Dict("one" => 1, "two" => 2, "three" => 3)
-# => Dict{ASCIIString,Int64}
+# => Dict{String,Int64}
 
 # Look up values with []
-filled_dict["one"] # => 1
+filled_dict["one"]  # => 1
 
 # Get all keys
 keys(filled_dict)
-# => KeyIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
+# => Base.KeySet for a Dict{String,Int64} with 3 entries. Keys:
+# "two", "one", "three"
 # Note - dictionary keys are not sorted or in the order you inserted them.
 
 # Get all values
 values(filled_dict)
-# => ValueIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
+# => Base.ValueIterator{Dict{String,Int64}} with 3 entries. Values: 2, 1, 3
 # Note - Same as above regarding key ordering.
 
 # Check for existence of keys in a dictionary with in, haskey
@@ -289,33 +281,33 @@ haskey(filled_dict, 1)         # => false
 
 # Trying to look up a non-existent key will raise an error
 try
-    filled_dict["four"] # => ERROR: key not found: four in getindex at dict.jl:489
+    filled_dict["four"]  # => KeyError: key "four" not found
 catch e
     println(e)
 end
 
 # Use the get method to avoid that error by providing a default value
-# get(dictionary,key,default_value)
+# get(dictionary, key, default_value)
 get(filled_dict, "one", 4)   # => 1
 get(filled_dict, "four", 4)  # => 4
 
 # Use Sets to represent collections of unordered, unique values
 empty_set = Set()  # => Set{Any}()
 # Initialize a set with values
-filled_set = Set([1,2,2,3,4])  # => Set{Int64}(1,2,3,4)
+filled_set = Set([1, 2, 2, 3, 4])  # => Set([4, 2, 3, 1])
 
 # Add more values to a set
-push!(filled_set, 5)  # => Set{Int64}(5,4,2,3,1)
+push!(filled_set, 5)  # => Set([4, 2, 3, 5, 1])
 
 # Check if the values are in the set
 in(2, filled_set)  # => true
 in(10, filled_set)  # => false
 
 # There are functions for set intersection, union, and difference.
-other_set = Set([3, 4, 5, 6])          # => Set{Int64}(6,4,5,3)
-intersect(filled_set, other_set)       # => Set{Int64}(3,4,5)
-union(filled_set, other_set)           # => Set{Int64}(1,2,3,4,5,6)
-setdiff(Set([1,2,3,4]), Set([2,3,5]))  # => Set{Int64}(1,4)
+other_set = Set([3, 4, 5, 6])          # => Set([4, 3, 5, 6])
+intersect(filled_set, other_set)       # => Set([4, 3, 5])
+union(filled_set, other_set)           # => Set([4, 2, 3, 5, 6, 1])
+setdiff(Set([1,2,3,4]), Set([2,3,5]))  # => Set([4, 1])
 
 
 ####################################################
@@ -356,8 +348,9 @@ end
 #    cat is a mammal
 #    mouse is a mammal
 
-for a in Dict("dog" => "mammal", "cat" => "mammal", "mouse" => "mammal")
-    println("$(a[1]) is a $(a[2])")
+for pair in Dict("dog" => "mammal", "cat" => "mammal", "mouse" => "mammal")
+    from, to = pair
+    println("$from is a $to")
 end
 # prints:
 #    dog is a mammal
@@ -509,8 +502,8 @@ map(add_10, [1,2,3])  # => [11, 12, 13]
 filter(x -> x > 5, [3, 4, 5, 6, 7])  # => [6, 7]
 
 # We can use list comprehensions for nicer maps
-[add_10(i) for i = [1, 2, 3]] # => [11, 12, 13]
-[add_10(i) for i in [1, 2, 3]] # => [11, 12, 13]
+[add_10(i) for i = [1, 2, 3]]   # => [11, 12, 13]
+[add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
 
 ####################################################
 ## 5. Types
@@ -703,9 +696,9 @@ fight(Lion("RAR"), Lion("brown", "rarrr"))  # => prints The lions come to a tie
 # Under the hood
 # You can take a look at the llvm  and the assembly code generated.
 
-square_area(l) = l * l      # square_area (generic function with 1 method)
+square_area(l) = l * l  # square_area (generic function with 1 method)
 
-square_area(5)  #25
+square_area(5)  # => 25
 
 # What happens when we feed square_area an integer?
 code_native(square_area, (Int32,))
