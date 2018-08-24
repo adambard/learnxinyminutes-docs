@@ -14,7 +14,7 @@ escrever sintaxe que converte facilmente em HTML (hoje, suporta outros formatos 
 Dê-me feedback tanto quanto você quiser! / Sinta-se livre para a garfar (fork) e 
 puxar o projeto (pull request)
 
-```markdown
+```md
 <!-- Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é 
 um arquivo Markdown válido, isso significa que nós podemos usar elementos HTML 
 em Markdown, como o elemento de comentário, e eles não serão afetados pelo analisador

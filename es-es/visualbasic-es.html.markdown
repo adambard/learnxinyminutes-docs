@@ -10,7 +10,7 @@ filename: learnvisualbasic-es.vb
 lang: es-es
 ---
 
-```vb
+```
 Module Module1
 
     Sub Main()

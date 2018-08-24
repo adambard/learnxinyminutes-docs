@@ -16,7 +16,7 @@ popular and recent book is [Land of Lisp](http://landoflisp.com/). A new book ab
 
 
 
-```common-lisp
+```lisp
 
 ;;;-----------------------------------------------------------------------------
 ;;; 0. Syntax
