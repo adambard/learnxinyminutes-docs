@@ -416,3 +416,6 @@ Clojuredocs.org has documentation with examples for most core functions:
 
 Clojure-doc.org (yes, really) has a number of getting started articles:
 [http://clojure-doc.org/](http://clojure-doc.org/)
+
+Hackr.io is a great place to find a curated list of resources for learning clojure.
+[https://hackr.io/tutorials/learn-clojure](https://hackr.io/tutorials/learn-clojure)
