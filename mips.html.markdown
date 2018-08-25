@@ -12,7 +12,7 @@ gateways and routers.
 
 [Read More](https://en.wikipedia.org/wiki/MIPS_architecture)
 
-```assembly
+```asm
 # Comments are denoted with a '#'
 
 # Everything that occurs after a '#' will be ignored by the assembler's lexer.
