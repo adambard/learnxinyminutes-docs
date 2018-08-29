@@ -28,7 +28,7 @@ Markdown varia nelle sue implementazioni da un parser all'altro. Questa guida ce
 ## Elementi HTML
 Markdown è un superset di HTML, quindi ogni file HTML è a sua volta un file Markdown valido.
 
-```markdown
+```md
 <!-- Questo significa che possiamo usare elementi di HTML in Markdown, come per esempio i commenti,
 e questi non saranno modificati dal parser di Markdown. State attenti però, 
 se inserite un elemento HTML nel vostro file Markdown, non potrete usare la sua sintassi 
@@ -39,7 +39,7 @@ all'interno del contenuto dell'elemento. -->
 
 Potete creare gli elementi HTML da `<h1>` a `<h6>` facilmente, basta che inseriate un egual numero di caratteri cancelletto (#) prima del testo che volete all'interno dell'elemento
 
-```markdown
+```md
 # Questo è un <h1>
 ## Questo è un <h2>
 ### Questo è un <h3>
@@ -49,7 +49,7 @@ Potete creare gli elementi HTML da `<h1>` a `<h6>` facilmente, basta che inseria
 ```
 Markdown inoltre fornisce due alternative per indicare gli elementi h1 e h2
 
-```markdown
+```md
 Questo è un h1
 ==============
 
@@ -60,7 +60,7 @@ Questo è un h2
 ## Stili di testo semplici
 Il testo può essere stilizzato in corsivo o grassetto usando markdown
 
-```markdown
+```md
 *Questo testo è in corsivo.*
 _Come pure questo._
 
@@ -74,12 +74,12 @@ __Come pure questo.__
 
 In Github Flavored Markdown, che è utilizzato per renderizzare i file markdown su Github, è presente anche lo stile barrato:
 
-```markdown
+```md
 ~~Questo testo è barrato.~~
 ```
 ## Paragrafi
 
-```markdown
+```md
 I paragrafi sono una o più linee di testo adiacenti separate da una o più righe vuote.
 
 Questo è un paragrafo. Sto scrivendo in un paragrafo, non è divertente?
@@ -93,7 +93,7 @@ Qui siamo nel paragrafo 3!
 
 Se volete inserire l'elemento HTML `<br />`, potete terminare la linea con due o più spazi e poi iniziare un nuovo paragrafo.
 
-```markdown
+```md
 Questa frase finisce con due spazi (evidenziatemi per vederli).  
 
 C'è un <br /> sopra di me!
@@ -101,7 +101,7 @@ C'è un <br /> sopra di me!
 
 Le citazioni sono semplici da inserire, basta usare il carattere >.
 
-```markdown
+```md
 > Questa è una citazione. Potete
 > mandare a capo manualmente le linee e inserire un `>` prima di ognuna, oppure potete usare una sola linea e lasciare che vada a capo automaticamente.
 > Non c'è alcuna differenza, basta che iniziate ogni riga con `>`.
@@ -115,7 +115,7 @@ Le citazioni sono semplici da inserire, basta usare il carattere >.
 ## Liste
 Le liste non ordinate possono essere inserite usando gli asterischi, il simbolo più o dei trattini
 
-```markdown
+```md
 * Oggetto
 * Oggetto
 * Altro oggetto
@@ -135,7 +135,7 @@ oppure
 
 Le liste ordinate invece, sono inserite con un numero seguito da un punto.
 
-```markdown
+```md
 1. Primo oggetto
 2. Secondo oggetto
 3. Terzo oggetto
@@ -143,7 +143,7 @@ Le liste ordinate invece, sono inserite con un numero seguito da un punto.
 
 Non dovete nemmeno mettere i numeri nell'ordine giusto, markdown li visualizzerà comunque nell'ordine corretto, anche se potrebbe non essere una buona idea.
 
-```markdown
+```md
 1. Primo oggetto
 1. Secondo oggetto
 1. Terzo oggetto
@@ -152,7 +152,7 @@ Non dovete nemmeno mettere i numeri nell'ordine giusto, markdown li visualizzer�
 
 Potete inserire anche sotto liste
 
-```markdown
+```md
 1. Primo oggetto
 2. Secondo oggetto
 3. Terzo oggetto
@@ -163,7 +163,7 @@ Potete inserire anche sotto liste
 
 Sono presenti anche le task list. In questo modo è possibile creare checkbox in HTML.
 
-```markdown
+```md
 I box senza la 'x' sono checkbox HTML ancora da completare.
 - [ ] Primo task da completare.
 - [ ] Secondo task che deve essere completato.
@@ -174,14 +174,14 @@ Il box subito sotto è una checkbox HTML spuntata.
 
 Potete inserire un estratto di codice (che utilizza l'elemento `<code>`) indentando una linea con quattro spazi oppure con un carattere tab.
 
-```markdown
+```md
     Questa è una linea di codice
     Come questa
 ```
 
 Potete inoltre inserire un altro tab (o altri quattro spazi) per indentare il vostro codice
 
-```markdown
+```md
     my_array.each do |item|
         puts item
     end
@@ -189,7 +189,7 @@ Potete inoltre inserire un altro tab (o altri quattro spazi) per indentare il vo
 
 Codice inline può essere inserito usando il carattere backtick `
 
-```markdown
+```md
 Giovanni non sapeva neppure a cosa servisse la funzione `go_to()`!
 ```
 
@@ -205,7 +205,7 @@ Se usate questa sintassi, il testo non richiederà di essere indentato, inoltre 
 ## Linea orizzontale
 Le linee orizzontali (`<hr/>`) sono inserite facilmente usanto tre o più asterischi o trattini, con o senza spazi. 
 
-```markdown
+```md
 ***
 ---
 - - -
@@ -215,24 +215,24 @@ Le linee orizzontali (`<hr/>`) sono inserite facilmente usanto tre o più asteri
 ## Links
 Una delle funzionalità migliori di markdown è la facilità con cui si possono inserire i link. Mettete il testo da visualizzare fra parentesi quadre [] seguite dall'url messo fra parentesi tonde ()
 
-```markdown
+```md
 [Cliccami!](http://test.com/)
 ```
 
 Potete inoltre aggiungere al link un titolo mettendolo fra doppi apici dopo il link
 
-```markdown
+```md
 [Cliccami!](http://test.com/ "Link a Test.com")
 ```
 
 La sintassi funziona anche con i path relativi.
 
-```markdown
+```md
 [Vai a musica](/music/).
 ```
 
 Markdown supporta inoltre anche la possibilità di aggiungere i link facendo riferimento ad altri punti del testo.
-```markdown
+```md
 [Apri questo link][link1] per più informazioni!
 [Guarda anche questo link][foobar] se ti va.
 
@@ -242,7 +242,7 @@ Markdown supporta inoltre anche la possibilità di aggiungere i link facendo rif
 l titolo può anche essere inserito in apici singoli o in parentesi, oppure omesso interamente. Il riferimento può essere inserito in un punto qualsiasi del vostro documento e l'identificativo del riferimento può essere lungo a piacere a patto che sia univoco.
 
 Esiste anche un "identificativo implicito" che vi permette di usare il testo del link come id.
-```markdown
+```md
 [Questo][] è un link.
 
 [Questo]: http://thisisalink.com/
@@ -252,13 +252,13 @@ Ma non è comunemente usato.
 ## Immagini
 Le immagini sono inserite come i link ma con un punto esclamativo inserito prima delle parentesi quadre!
 
-```markdown
+```md
 ![Qeusto è il testo alternativo per l'immagine](http://imgur.com/myimage.jpg "Il titolo opzionale")
 ```
 
 E la modalità a riferimento funziona esattamente come ci si aspetta
 
-```markdown
+```md
 ![Questo è il testo alternativo.][myimage]
 
 [myimage]: relative/urls/cool/image.jpg "Se vi serve un titolo, lo mettete qui"
@@ -266,25 +266,25 @@ E la modalità a riferimento funziona esattamente come ci si aspetta
 ## Miscellanea 
 ### Auto link
 
-```markdown
+```md
 <http://testwebsite.com/> è equivalente ad
 [http://testwebsite.com/](http://testwebsite.com/)
 ```
 ### Auto link per le email
 
-```markdown
+```md
 <foo@bar.com>
 ```
 ### Caratteri di escaping
 
-```markdown
+```md
 Voglio inserire *questo testo circondato da asterischi* ma non voglio che venga renderizzato in corsivo, quindi lo inserirò così: \*questo testo è circondato da asterischi\*.
 ```
 
 ### Combinazioni di tasti
 In Github Flavored Markdown, potete utilizzare il tag `<kbd>` per raffigurare i tasti della tastiera.
 
-```markdown
+```md
 Il tuo computer è crashato? Prova a premere
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Canc</kbd>
 ```
@@ -292,7 +292,7 @@ Il tuo computer è crashato? Prova a premere
 ### Tabelle
 Le tabelle sono disponibili solo in Github Flavored Markdown e sono leggeremente complesse, ma se proprio volete inserirle fate come segue:
 
-```markdown
+```md
 | Col1                 | Col2     | Col3               |
 | :------------------- | :------: | -----------------: |
 | Allineato a sinistra | Centrato | Allineato a destra |
@@ -300,7 +300,7 @@ Le tabelle sono disponibili solo in Github Flavored Markdown e sono leggeremente
 ```
 oppure, per lo stesso risultato
 
-```markdown
+```md
 Col 1 | Col2 | Col3
 :-- | :-: | --:
 È una cosa orrenda | fatela | finire in fretta
