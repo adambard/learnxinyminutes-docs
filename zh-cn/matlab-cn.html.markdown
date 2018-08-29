@@ -45,7 +45,7 @@ edit('myfunction.m')  % 在编辑器中打开指定函数或脚本
 type('myfunction.m')  % 在命令窗口中打印指定函数或脚本的源码
 
 profile on  % 打开 profile 代码分析工具
-profile of  % 关闭 profile 代码分析工具
+profile off % 关闭 profile 代码分析工具
 profile viewer  % 查看 profile 代码分析工具的分析结果
 
 help command    % 在命令窗口中显示指定命令的帮助文档
@@ -226,7 +226,7 @@ A .* B  % 元素乘法，要求 A 和 B 形状一致（A 的行数等于 B 的�
 exp(A)  % 对矩阵中每个元素做指数运算
 expm(A)  % 对矩阵整体做指数运算
 sqrt(A)  % 对矩阵中每个元素做开方运算
-sqrtm(A)  % 对矩阵整体做开放运算（即试图求出一个矩阵，该矩阵与自身的乘积等于 A 矩阵）
+sqrtm(A)  % 对矩阵整体做开方运算（即试图求出一个矩阵，该矩阵与自身的乘积等于 A 矩阵）
 
 
 % 绘图
