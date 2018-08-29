@@ -362,7 +362,7 @@ else:   # else语句是可选的，必须在所有的except之后
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
-print(our_iterable) # => range(1,10) 是一个实现可迭代接口的对象
+print(our_iterable) # => dict_keys(['one', 'two', 'three'])，是一个实现可迭代接口的对象
 
 # 可迭代对象可以遍历
 for i in our_iterable:
