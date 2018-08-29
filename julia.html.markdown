@@ -10,7 +10,7 @@ filename: learnjulia.jl
 Julia is a new homoiconic functional language focused on technical computing.
 While having the full power of homoiconic macros, first-class functions, and low-level control, Julia is as easy to learn and use as Python.
 
-This is based on Julia 1.0.0
+This is based on Julia 1.0.0.
 
 ```julia
 
@@ -43,10 +43,10 @@ div(5, 2)  # => 2    # for a truncated result, use div
 2^2        # => 4    # power, not bitwise xor
 12 % 10    # => 2
 
-# Enforce precedence with parentheses
+# Enforce precedence with parentheses.
 (1 + 3) * 2  # => 8
 
-# Bitwise Operators
+# Bitwise operators
 ~2         # => -3 # bitwise not
 3 & 5      # => 1  # bitwise and
 2 | 4      # => 6  # bitwise or
@@ -61,7 +61,7 @@ bitstring(12345)
 bitstring(12345.0)
 # => "0100000011001000000111001000000000000000000000000000000000000000"
 
-# Boolean values are primitives
+# Boolean values are primitives.
 true
 false
 
@@ -99,10 +99,10 @@ ascii("This is a string")[1]  # => 'T' # Julia indexes from 1
 using Printf
 @printf "%d is less than %f\n" 4.5 5.3  # => 5 is less than 5.300000
 
-# Printing is easy
+# Printing is easy.
 println("I'm Julia. Nice to meet you!")
 
-# String can be compared lexicographically
+# String can be compared lexicographically.
 "good" > "bye" # => true
 "good" == "good" # => true
 "1 + 2 = 3" == "1 + 2 = $(1 + 2)" # => true
@@ -126,7 +126,7 @@ end
 # After that, you can use letters, digits, underscores, and exclamation points.
 SomeOtherVar123! = 6  # => 6
 
-# You can also use certain unicode characters
+# You can also use certain Unicode characters
 ☃ = 8  # => 8
 # These are especially handy for mathematical notation
 2 * π # => 6.283185307179586
@@ -151,8 +151,8 @@ a = Int64[]  # => 0-element Int64 Array
 # 1-dimensional array literals can be written with comma-separated values.
 b = [4, 5, 6]  # => 3-element Int64 Array: [4, 5, 6]
 b = [4; 5; 6]  # => 3-element Int64 Array: [4, 5, 6]
-b[1]  # => 4
-b[end]  # => 6
+b[begin]  # => 4
+b[end]    # => 6
 
 # 2-dimensional arrays use space-separated values and semicolon-separated rows.
 matrix = [1 2; 3 4]  # => 2x2 Int64 Array: [1 2; 3 4]
@@ -167,16 +167,16 @@ push!(a, 4)    # => [1,2,4]
 push!(a, 3)    # => [1,2,4,3]
 append!(a, b)  # => [1,2,4,3,4,5,6]
 
-# Remove from the end with pop
+# Remove from the end with pop.
 pop!(b)  # => 6 and b is now [4,5]
 
 # Let's put it back
 push!(b, 6)  # b is now [4,5,6] again.
 
-a[1]  # => 1  # remember that Julia indexes from 1, not 0!
+a[1]  # => 1  # Julia indexes from 1, not 0 by default, so a[begin] is more general.
 
-# end is a shorthand for the last index. It can be used in any
-# indexing expression
+# "end" is a shorthand for the last index, and "begin" for the first index.
+# Either or both can be used in any indexing expression:
 a[end]  # => 6
 
 # we also have popfirst! and pushfirst!
@@ -207,8 +207,8 @@ end
 a = [1:5;]  # => 5-element Int64 Array: [1,2,3,4,5]
 
 # You can look at ranges with slice syntax.
-a[1:3]  # => [1, 2, 3]
-a[2:end]  # => [2, 3, 4, 5]
+a[1:3]          # => [1, 2, 3]
+a[begin+1:end]  # => [2, 3, 4, 5]
 
 # Remove elements from an array by index with splice!
 arr = [3,4,5]
@@ -238,68 +238,68 @@ length(tup)  # => 3
 tup[1:2]  # => (1,2)
 in(2, tup)  # => true
 
-# You can unpack tuples into variables
-a, b, c = (1, 2, 3)  # => (1,2,3)  # a is now 1, b is now 2 and c is now 3
+# You can unpack tuples into variables.
+a, b, c = (1, 2, 3)  # => (1,2,3)  # a is now 1, b is now 2 and c is now 3.
 
-# Tuples are created even if you leave out the parentheses
+# Tuples are created even if you leave out the parentheses.
 d, e, f = 4, 5, 6  # => (4,5,6)
 
-# A 1-element tuple is distinct from the value it contains
+# A 1-element tuple is distinct from the value it contains.
 (1,) == 1  # => false
 (1) == 1  # => true
 
-# Look how easy it is to swap two values
-e, d = d, e  # => (5,4)  # d is now 5 and e is now 4
+# Look how easy it is to swap two values.
+e, d = d, e  # => (5,4)  # d is now 5 and e is now 4.
 
 
-# Dictionaries store mappings
+# Dictionaries store mappings.
 empty_dict = Dict()  # => Dict{Any,Any}()
 
-# You can create a dictionary using a literal
+# You can create a dictionary using a literal.
 filled_dict = Dict("one" => 1, "two" => 2, "three" => 3)
 # => Dict{String,Int64}
 
 # Look up values with []
 filled_dict["one"]  # => 1
 
-# Get all keys
+# Get all keys.
 keys(filled_dict)
 # => Base.KeySet for a Dict{String,Int64} with 3 entries. Keys:
 # "two", "one", "three"
-# Note - dictionary keys are not sorted or in the order you inserted them.
+# Note, dictionary keys are not sorted or in the order you inserted them.
 
-# Get all values
+# Get all values.
 values(filled_dict)
 # => Base.ValueIterator{Dict{String,Int64}} with 3 entries. Values: 2, 1, 3
-# Note - Same as above regarding key ordering.
+# Note, same as above regarding key ordering.
 
-# Check for existence of keys in a dictionary with in, haskey
+# Check for existence of keys in a dictionary with in, haskey.
 in(("one" => 1), filled_dict)  # => true
 in(("two" => 3), filled_dict)  # => false
 haskey(filled_dict, "one")     # => true
 haskey(filled_dict, 1)         # => false
 
-# Trying to look up a non-existent key will raise an error
+# Trying to look up a non-existent key will raise an error.
 try
     filled_dict["four"]  # => KeyError: key "four" not found
 catch e
     println(e)
 end
 
-# Use the get method to avoid that error by providing a default value
+# Use the get method to avoid that error by providing a default value.
 # get(dictionary, key, default_value)
 get(filled_dict, "one", 4)   # => 1
 get(filled_dict, "four", 4)  # => 4
 
-# Use Sets to represent collections of unordered, unique values
+# Use Sets to represent collections of unordered, unique values.
 empty_set = Set()  # => Set{Any}()
 # Initialize a set with values
 filled_set = Set([1, 2, 2, 3, 4])  # => Set([4, 2, 3, 1])
 
-# Add more values to a set
+# Add more values to a set.
 push!(filled_set, 5)  # => Set([4, 2, 3, 5, 1])
 
-# Check if the values are in the set
+# Check if the values are in the set.
 in(2, filled_set)  # => true
 in(10, filled_set)  # => false
 
@@ -314,10 +314,10 @@ setdiff(Set([1,2,3,4]), Set([2,3,5]))  # => Set([4, 1])
 ## 3. Control Flow
 ####################################################
 
-# Let's make a variable
+# Let's make a variable.
 some_var = 5
 
-# Here is an if statement. Indentation is not meaningful in Julia.
+# Here is an if statement. Indentation is not meaningful in Julia, but is recommended.
 if some_var > 10
     println("some_var is totally bigger than 10.")
 elseif some_var < 10    # This elseif clause is optional.
@@ -391,7 +391,7 @@ end
 ## 4. Functions
 ####################################################
 
-# The keyword 'function' creates new functions
+# The keyword 'function' creates new functions.
 #function name(arglist)
 #  body...
 #end
@@ -408,12 +408,12 @@ add(5, 6)  # => 11 after printing out "x is 5 and y is 6"
 f_add(x, y) = x + y  # => "f (generic function with 1 method)"
 f_add(3, 4)  # => 7
 
-# Function can also return multiple values as tuple
+# Function can also return multiple values as tuple.
 fn(x, y) = x + y, x - y
 fn(3, 4)  # => (7, -1)
 
 # You can define functions that take a variable number of
-# positional arguments
+# positional arguments.
 function varargs(args...)
     return args
     # use the keyword return to return anywhere in the function
@@ -432,7 +432,7 @@ x = (5, 6)  # => (5,6)
 add(x...)  # this is equivalent to add(5,6)
 
 
-# You can define functions with optional positional arguments
+# You can define functions with optional positional arguments.
 function defaults(a, b, x=5, y=6)
     return "$a $b and $x $y"
 end
@@ -447,7 +447,7 @@ catch e
     println(e)
 end
 
-# You can define functions that take keyword arguments
+# You can define functions that take keyword arguments.
 function keyword_args(;k1=4, name2="hello")  # note the ;
     return Dict("k1" => k1, "name2" => name2)
 end
@@ -456,7 +456,7 @@ keyword_args(name2="ness")  # => ["name2"=>"ness","k1"=>4]
 keyword_args(k1="mine")  # => ["k1"=>"mine","name2"=>"hello"]
 keyword_args()  # => ["name2"=>"hello","k1"=>4]
 
-# You can combine all kinds of arguments in the same function
+# You can combine all kinds of arguments in the same function.
 function all_the_args(normal_arg, optional_positional_arg=2; keyword_arg="foo")
     println("normal arg: $normal_arg")
     println("optional arg: $optional_positional_arg")
@@ -469,7 +469,7 @@ all_the_args(1, 3, keyword_arg=4)
 #   optional arg: 3
 #   keyword arg: 4
 
-# Julia has first class functions
+# Julia has first-class functions.
 function create_adder(x)
     adder = function (y)
         return x + y
@@ -477,7 +477,7 @@ function create_adder(x)
     return adder
 end
 
-# This is "stabby lambda syntax" for creating anonymous functions
+# This is "stabby lambda syntax" for creating anonymous functions.
 (x -> x > 2)(3)  # => true
 
 # This function is identical to create_adder implementation above.
@@ -485,7 +485,7 @@ function create_adder(x)
     y -> x + y
 end
 
-# You can also name the internal function, if you want
+# You can also name the internal function, if you want.
 function create_adder(x)
     function adder(y)
         x + y
@@ -497,7 +497,7 @@ add_10 = create_adder(10)
 add_10(3)  # => 13
 
 
-# There are built-in higher order functions
+# There are built-in higher order functions.
 map(add_10, [1,2,3])  # => [11, 12, 13]
 filter(x -> x > 5, [3, 4, 5, 6, 7])  # => [6, 7]
 
@@ -523,7 +523,7 @@ typeof(DataType)  # => DataType
 # Types are used for documentation, optimizations, and dispatch.
 # They are not statically checked.
 
-# Users can define types
+# Users can define types.
 # They are like records or structs in other languages.
 # New types are defined using the `struct` keyword.
 
@@ -537,7 +537,7 @@ struct Tiger
 end
 
 # The default constructor's arguments are the properties
-# of the type, in the order they are listed in the definition
+# of the type, in the order they are listed in the definition.
 tigger = Tiger(3.5, "orange")  # => Tiger(3.5,"orange")
 
 # The type doubles as the constructor function for values of that type
@@ -554,11 +554,11 @@ abstract type Cat end  # just a name and point in the type hierarchy
 using InteractiveUtils  # defines the subtype and supertype function
 # For example, Number is an abstract type
 subtypes(Number)  # => 2-element Array{Any,1}:
-                 #     Complex{T<:Real}
-                 #     Real
-subtypes(Cat)  # => 0-element Array{Any,1}
+                  #    Complex{T<:Real}
+                  #    Real
+subtypes(Cat)     # => 0-element Array{Any,1}
 
-# AbstractString, as the name implies, is also an abstract type
+# AbstractString, as the name implies, is also an abstract type.
 subtypes(AbstractString)  # 4-element Array{Any,1}:
                             #  String
                             #  SubString
@@ -581,18 +581,18 @@ supertype(String)  # => AbstractString
 supertype(SubString)  # => AbstractString
 
 # <: is the subtyping operator
-struct Lion <: Cat  # Lion is a subtype of Cat
+struct Lion <: Cat  # Lion is a subtype of Cat.
     mane_color
     roar::AbstractString
 end
 
-# You can define more constructors for your type
+# You can define more constructors for your type.
 # Just define a function of the same name as the type
-# and call an existing constructor to get a value of the correct type
+# and call an existing constructor to get a value of the correct type.
 Lion(roar::AbstractString) = Lion("green", roar)
-# This is an outer constructor because it's outside the type definition
+# This is an outer constructor because it's outside the type definition.
 
-struct Panther <: Cat  # Panther is also a subtype of Cat
+struct Panther <: Cat  # Panther is also a subtype of Cat.
     eye_color
     Panther() = new("green")
     # Panthers will only have this constructor, and no default constructor.
@@ -605,8 +605,8 @@ end
 ## 6. Multiple-Dispatch
 ####################################################
 
-# In Julia, all named functions are generic functions
-# This means that they are built up from many small methods
+# In Julia, all named functions are generic functions.
+# This means that they are built up from many small methods.
 # Each constructor for Lion is a method of the generic function Lion.
 
 # For a non-constructor example, let's make a function meow:
@@ -650,7 +650,7 @@ end
 # this means that the method is picked based on the type of the first argument.
 # In Julia, all of the argument types contribute to selecting the best method.
 
-# Let's define a function with more arguments, so we can see the difference
+# Let's define a function with more arguments, so we can see the difference.
 function fight(t::Tiger, c::Cat)
     println("The $(t.coatcolor) tiger wins!")
 end
@@ -659,18 +659,18 @@ end
 fight(tigger, Panther())  # => prints The orange tiger wins!
 fight(tigger, Lion("ROAR"))  # => prints The orange tiger wins!
 
-# Let's change the behavior when the Cat is specifically a Lion
+# Let's change the behavior when the Cat is specifically a Lion.
 fight(t::Tiger, l::Lion) = println("The $(l.mane_color)-maned lion wins!")
 # => fight (generic function with 2 methods)
 
 fight(tigger, Panther())  # => prints The orange tiger wins!
 fight(tigger, Lion("ROAR"))  # => prints The green-maned lion wins!
 
-# We don't need a Tiger in order to fight
-fight(l::Lion, c::Cat) = println("The victorious cat says $(meow(c))")
+# We don't need a Tiger in order to fight.
+fight(l::Lion, c::Cat) = println("The victorious cat says $(meow(c)).")
 # => fight (generic function with 3 methods)
 
-fight(Lion("balooga!"), Panther())  # => prints The victorious cat says grrr
+fight(Lion("balooga!"), Panther())  # => prints The victorious cat says grrr.
 try
     fight(Panther(), Lion("RAWR"))
 catch e
@@ -679,7 +679,7 @@ catch e
     #                0x000000000000557b)
 end
 
-# Also let the cat go first
+# Also let the cat go first.
 fight(c::Cat, l::Lion) = println("The cat beats the Lion")
 
 # This warning is because it's unclear which fight will be called in:
@@ -693,8 +693,8 @@ catch e
 end
 # The result may be different in other versions of Julia
 
-fight(l::Lion, l2::Lion) = println("The lions come to a tie")
-fight(Lion("RAR"), Lion("brown", "rarrr"))  # => prints The lions come to a tie
+fight(l::Lion, l2::Lion) = println("The lions come to a tie.")
+fight(Lion("RAR"), Lion("brown", "rarrr"))  # => prints The lions come to a tie.
 
 
 # Under the hood
