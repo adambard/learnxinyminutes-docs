@@ -28,17 +28,17 @@ This is based on Julia 1.0.0
 # Everything in Julia is an expression.
 
 # There are several basic types of numbers.
-3  # => 3 (Int64)
-3.2  # => 3.2 (Float64)
-2 + 1im  # => 2 + 1im (Complex{Int64})
-2 // 3  # => 2 // 3 (Rational{Int64})
+typeof(3)       # => Int64
+typeof(3.2)     # => Float64
+typeof(2 + 1im) # => Complex{Int64}
+typeof(2 // 3)  # => Rational{Int64}
 
 # All of the normal infix operators are available.
 1 + 1      # => 2
 8 - 1      # => 7
 10 * 2     # => 20
 35 / 5     # => 7.0
-5 / 2      # => 2.5  # dividing integers always results in a Float64
+10 / 2     # => 5.0  # dividing integers always results in a Float64
 div(5, 2)  # => 2    # for a truncated result, use div
 5 \ 35     # => 7.0
 2^2        # => 4    # power, not bitwise xor
