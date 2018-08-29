@@ -8,7 +8,8 @@ filename: learnjulia.jl
 ---
 
 Julia is a new homoiconic functional language focused on technical computing.
-While having the full power of homoiconic macros, first-class functions, and low-level control, Julia is as easy to learn and use as Python.
+While having the full power of homoiconic macros, first-class functions,
+and low-level control, Julia is as easy to learn and use as Python.
 
 This is based on Julia 1.0.0
 
