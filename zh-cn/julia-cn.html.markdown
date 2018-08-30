@@ -5,10 +5,11 @@ contributors:
     - ["Jichao Ouyang", "http://oyanglul.us"]
 translators:
     - ["Jichao Ouyang", "http://oyanglul.us"]
+    - ["woclass", "https://github.com/inkydragon"]
 lang: zh-cn
 ---
 
-```ruby
+```julia
 # 单行注释只需要一个井号
 #= 多行注释
    只需要以 '#=' 开始 '=#' 结束
@@ -19,41 +20,41 @@ lang: zh-cn
 ## 1. 原始类型与操作符
 ####################################################
 
-# Julia 中一切皆是表达式。
+# Julia 中一切皆为表达式
 
-# 这是一些基本数字类型.
-3 # => 3 (Int64)
-3.2 # => 3.2 (Float64)
-2 + 1im # => 2 + 1im (Complex{Int64})
-2//3 # => 2//3 (Rational{Int64})
+# 这是一些基本数字类型
+typeof(3)       # => Int64
+typeof(3.2)     # => Float64
+typeof(2 + 1im) # => Complex{Int64}
+typeof(2 // 3)  # => Rational{Int64}
 
-# 支持所有的普通中缀操作符。
-1 + 1 # => 2
-8 - 1 # => 7
-10 * 2 # => 20
-35 / 5 # => 7.0
-5 / 2 # => 2.5 # 用 Int 除 Int 永远返回 Float
-div(5, 2) # => 2 # 使用 div 截断小数点
-5 \ 35 # => 7.0
-2 ^ 2 # => 4 # 次方, 不是二进制 xor
-12 % 10 # => 2
+# 支持所有的普通中缀操作符
+1 + 1      # => 2
+8 - 1      # => 7
+10 * 2     # => 20
+35 / 5     # => 7.0
+10 / 2     # => 5.0  # 整数除法总是返回浮点数
+div(5, 2)  # => 2    # 使用 div 可以获得整除的结果
+5 \ 35     # => 7.0
+2^2        # => 4    # 幂运算，不是异或 (xor)
+12 % 10    # => 2
 
 # 用括号提高优先级
 (1 + 3) * 2 # => 8
 
-# 二进制操作符
-~2 # => -3   # 非
-3 & 5 # => 1 # 与
-2 | 4 # => 6 # 或
-2 $ 4 # => 6 # 异或
-2 >>> 1 # => 1 # 逻辑右移
-2 >> 1  # => 1 # 算术右移
-2 << 1  # => 4 # 逻辑/算术 右移
+# 位操作符
+~2         # => -3 # 按位非 (not)
+3 & 5      # => 1  # 按位与 (and)
+2 | 4      # => 6  # 按位或 (or)
+xor(2, 4)  # => 6  # 按位异或 (xor)
+2 >>> 1    # => 1  # 逻辑右移
+2 >> 1     # => 1  # 算术右移
+2 << 1     # => 4  # 逻辑/算术左移
 
-# 可以用函数 bits 查看二进制数。
-bits(12345)
+# 可以用函数 bitstring 查看二进制数。
+bitstring(12345)
 # => "0000000000000000000000000000000000000000000000000011000000111001"
-bits(12345.0)
+bitstring(12345.0)
 # => "0100000011001000000111001000000000000000000000000000000000000000"
 
 # 布尔值是原始类型
@@ -61,17 +62,18 @@ true
 false
 
 # 布尔操作符
-!true # => false
-!false # => true
-1 == 1 # => true
-2 == 1 # => false
-1 != 1 # => false
-2 != 1 # => true
-1 < 10 # => true
-1 > 10 # => false
-2 <= 2 # => true
-2 >= 2 # => true
-# 比较可以串联
+!true   # => false
+!false  # => true
+1 == 1  # => true
+2 == 1  # => false
+1 != 1  # => false
+2 != 1  # => true
+1 < 10  # => true
+1 > 10  # => false
+2 <= 2  # => true
+2 >= 2  # => true
+
+# 链式比较
 1 < 2 < 3 # => true
 2 < 3 < 2 # => false
 
@@ -82,7 +84,8 @@ false
 'a'
 
 # 可以像取数组取值一样用 index 取出对应字符
-"This is a string"[1] # => 'T' # Julia 的 index 从 1 开始 :(
+ascii("This is a string")[1]  # => 'T' 
+# Julia 的 index 从 1 开始 :(
 # 但是对 UTF-8 无效,
 # 因此建议使用遍历器 (map, for loops, 等).
 
@@ -90,11 +93,17 @@ false
 "2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
 # 可以将任何 Julia 表达式放入括号。
 
-# 另一种格式化字符串的方式是 printf 宏.
-@printf "%d is less than %f" 4.5 5.3 # 5 is less than 5.300000
+# 另一种输出格式化字符串的方法是使用标准库 Printf 中的 Printf 宏
+using Printf
+@printf "%d is less than %f\n" 4.5 5.3  # => 5 is less than 5.300000
 
 # 打印字符串很容易
 println("I'm Julia. Nice to meet you!")
+
+# 字符串可以按字典序进行比较
+"good" > "bye" # => true
+"good" == "good" # => true
+"1 + 2 = 3" == "1 + 2 = $(1 + 2)" # => true
 
 ####################################################
 ## 2. 变量与集合
@@ -106,12 +115,12 @@ some_var # => 5
 
 # 访问未声明变量会抛出异常
 try
-    some_other_var # => ERROR: some_other_var not defined
+    some_other_var # => ERROR: UndefVarError: some_other_var not defined
 catch e
     println(e)
 end
 
-# 变量名需要以字母开头.
+# 变量名必须以下划线或字母开头
 # 之后任何字母，数字，下划线，叹号都是合法的。
 SomeOtherVar123! = 6 # => 6
 
@@ -122,7 +131,7 @@ SomeOtherVar123! = 6 # => 6
 
 # 注意 Julia 的命名规约:
 #
-# * 变量名为小写，单词之间以下划线连接('\_')。
+# * 变量名为小写，单词之间以下划线连接 "_" 。
 #
 # * 类型名以大写字母开头，单词以 CamelCase 方式连接。
 #
@@ -131,57 +140,81 @@ SomeOtherVar123! = 6 # => 6
 # * 会改变输入的函数名末位为 !。
 #   这类函数有时被称为 mutating functions 或 in-place functions.
 
-# 数组存储一列值，index 从 1 开始。
-a = Int64[] # => 0-element Int64 Array
+# 数组存储一列值，index 从 1 开始
+a = Int64[]  # => 0-element Array{Int64,1}
 
-# 一维数组可以以逗号分隔值的方式声明。
-b = [4, 5, 6] # => 包含 3 个 Int64 类型元素的数组: [4, 5, 6]
-b[1] # => 4
-b[end] # => 6
+# 一维数组可以以逗号分隔值的方式声明
+b = [4, 5, 6]  # => 3-element Array{Int64,1}: [4, 5, 6]
+b = [4; 5; 6]  # => 3-element Array{Int64,1}: [4, 5, 6]
+b[1]    # => 4
+b[end]  # => 6
 
-# 二维数组以分号分隔维度。
-matrix = [1 2; 3 4] # => 2x2 Int64 数组: [1 2; 3 4]
+# 二维数组以分号分隔维度
+matrix = [1 2; 3 4]  # => 2×2 Array{Int64,2}: [1 2; 3 4]
+
+# 指定数组的类型
+b = Int8[4, 5, 6]  # => 3-element Array{Int8,1}: [4, 5, 6]
 
 # 使用 push! 和 append! 往数组末尾添加元素
-push!(a,1)     # => [1]
-push!(a,2)     # => [1,2]
-push!(a,4)     # => [1,2,4]
-push!(a,3)     # => [1,2,4,3]
-append!(a,b) # => [1,2,4,3,4,5,6]
+push!(a, 1)    # => [1]
+push!(a, 2)    # => [1,2]
+push!(a, 4)    # => [1,2,4]
+push!(a, 3)    # => [1,2,4,3]
+append!(a, b)  # => [1,2,4,3,4,5,6]
 
-# 用 pop 弹出末尾元素
-pop!(b)        # => 6 and b is now [4,5]
+# 用 pop 弹出尾部的元素
+pop!(b)  # => 6
+b # => [4,5]
 
-# 可以再放回去
-push!(b,6)   # b 又变成了 [4,5,6].
+# 再放回去
+push!(b, 6)  # => [4,5,6]
+b # => [4,5,6]
 
-a[1] # => 1 #  永远记住 Julia 的 index 从 1 开始!
+a[1] # => 1 #  永远记住 Julia 的引索从 1 开始！而不是 0！
 
 # 用 end 可以直接取到最后索引. 可用作任何索引表达式
 a[end] # => 6
 
-# 还支持 shift 和 unshift
-shift!(a) # => 返回 1，而 a 现在时 [2,4,3,4,5,6]
-unshift!(a,7) # => [7,2,4,3,4,5,6]
+# 数组还支持 popfirst! 和 pushfirst!
+popfirst!(a)  # => 1 
+a # => [2,4,3,4,5,6]
+pushfirst!(a, 7)  # => [7,2,4,3,4,5,6]
+a # => [7,2,4,3,4,5,6]
 
 # 以叹号结尾的函数名表示它会改变参数的值
-arr = [5,4,6] # => 包含三个 Int64 元素的数组: [5,4,6]
-sort(arr) # => [4,5,6]; arr 还是 [5,4,6]
-sort!(arr) # => [4,5,6]; arr 现在是 [4,5,6]
+arr = [5,4,6]  # => 3-element Array{Int64,1}: [5,4,6]
+sort(arr)   # => [4,5,6]
+arr         # => [5,4,6]
+sort!(arr)  # => [4,5,6]
+arr         # => [4,5,6]
 
-# 越界会抛出 BoundsError 异常
+# 数组越界会抛出 BoundsError
 try
-    a[0] # => ERROR: BoundsError() in getindex at array.jl:270
-    a[end+1] # => ERROR: BoundsError() in getindex at array.jl:270
+    a[0] 
+    # => ERROR: BoundsError: attempt to access 7-element Array{Int64,1} at 
+    # index [0]
+    # => Stacktrace:
+    # =>  [1] getindex(::Array{Int64,1}, ::Int64) at .\array.jl:731
+    # =>  [2] top-level scope at none:0
+    # =>  [3] ...
+    # => in expression starting at ...\LearnJulia.jl:188
+    a[end + 1] 
+    # => ERROR: BoundsError: attempt to access 7-element Array{Int64,1} at 
+    # index [8]
+    # => Stacktrace:
+    # =>  [1] getindex(::Array{Int64,1}, ::Int64) at .\array.jl:731
+    # =>  [2] top-level scope at none:0
+    # =>  [3] ...
+    # => in expression starting at ...\LearnJulia.jl:196
 catch e
     println(e)
 end
 
-# 错误会指出发生的行号，包括标准库
-# 如果你有 Julia 源代码，你可以找到这些地方
+# 报错时错误会指出出错的文件位置以及行号，标准库也一样
+# 你可以在 Julia 安装目录下的 share/julia 文件夹里找到这些标准库
 
 # 可以用 range 初始化数组
-a = [1:5] # => 5-element Int64 Array: [1,2,3,4,5]
+a = [1:5;]  # => 5-element Array{Int64,1}: [1,2,3,4,5]
 
 # 可以切割数组
 a[1:3] # => [1, 2, 3]
@@ -189,11 +222,13 @@ a[2:end] # => [2, 3, 4, 5]
 
 # 用 splice! 切割原数组
 arr = [3,4,5]
-splice!(arr,2) # => 4 ; arr 变成了 [3,5]
+splice!(arr, 2) # => 4 
+arr # => [3,5]
 
 # 用 append! 连接数组
 b = [1,2,3]
-append!(a,b) # a 变成了 [1, 2, 3, 4, 5, 1, 2, 3]
+append!(a, b) # => [1, 2, 3, 4, 5, 1, 2, 3]
+a # => [1, 2, 3, 4, 5, 1, 2, 3]
 
 # 检查元素是否在数组中
 in(1, a) # => true
@@ -201,162 +236,174 @@ in(1, a) # => true
 # 用 length 获得数组长度
 length(a) # => 8
 
-# Tuples 是 immutable 的
-tup = (1, 2, 3) # => (1,2,3) # an (Int64,Int64,Int64) tuple.
+# 元组(Tuples)是不可变的
+tup = (1, 2, 3)  # => (1,2,3)
+typeof(tup) # => Tuple{Int64,Int64,Int64}
 tup[1] # => 1
-try:
-    tup[1] = 3 # => ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
+try
+    tup[1] = 3  
+    # => ERROR: MethodError: no method matching 
+    # setindex!(::Tuple{Int64,Int64,Int64}, ::Int64, ::Int64)
 catch e
     println(e)
 end
 
-# 大多数组的函数同样支持 tuples
+# 大多数组的函数同样支持元组
 length(tup) # => 3
-tup[1:2] # => (1,2)
-in(2, tup) # => true
+tup[1:2]    # => (1,2)
+in(2, tup)  # => true
 
-# 可以将 tuples 元素分别赋给变量
-a, b, c = (1, 2, 3) # => (1,2,3)  # a is now 1, b is now 2 and c is now 3
+# 可以将元组的元素解包赋给变量
+a, b, c = (1, 2, 3)  # => (1,2,3)  
+a # => 1
+b # => 2
+c # => 3
 
 # 不用括号也可以
-d, e, f = 4, 5, 6 # => (4,5,6)
+d, e, f = 4, 5, 6  # => (4,5,6)
+d # => 4
+e # => 5
+f # => 6
 
 # 单元素 tuple 不等于其元素值
 (1,) == 1 # => false
-(1) == 1 # => true
+(1) == 1  # => true
 
 # 交换值
-e, d = d, e  # => (5,4) # d is now 5 and e is now 4
+e, d = d, e  # => (5,4) 
+d # => 5
+e # => 4
 
 
 # 字典Dictionaries store mappings
-empty_dict = Dict() # => Dict{Any,Any}()
+empty_dict = Dict()  # => Dict{Any,Any} with 0 entries
 
 # 也可以用字面量创建字典
-filled_dict = ["one"=> 1, "two"=> 2, "three"=> 3]
-# => Dict{ASCIIString,Int64}
+filled_dict = Dict("one" => 1, "two" => 2, "three" => 3)
+# => Dict{String,Int64} with 3 entries:
+# =>  "two" => 2, "one" => 1, "three" => 3
 
 # 用 [] 获得键值
 filled_dict["one"] # => 1
 
 # 获得所有键
 keys(filled_dict)
-# => KeyIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
+# => Base.KeySet for a Dict{String,Int64} with 3 entries. Keys:
+# =>  "two", "one", "three"
 # 注意，键的顺序不是插入时的顺序
 
 # 获得所有值
 values(filled_dict)
-# => ValueIterator{Dict{ASCIIString,Int64}}(["three"=>3,"one"=>1,"two"=>2])
+# => Base.ValueIterator for a Dict{String,Int64} with 3 entries. Values: 
+# =>  2, 1, 3
 # 注意，值的顺序也一样
 
 # 用 in 检查键值是否已存在，用 haskey 检查键是否存在
-in(("one", 1), filled_dict) # => true
-in(("two", 3), filled_dict) # => false
-haskey(filled_dict, "one") # => true
-haskey(filled_dict, 1) # => false
+in(("one" => 1), filled_dict)  # => true
+in(("two" => 3), filled_dict)  # => false
+haskey(filled_dict, "one")     # => true
+haskey(filled_dict, 1)         # => false
 
 # 获取不存在的键的值会抛出异常
 try
-    filled_dict["four"] # => ERROR: key not found: four in getindex at dict.jl:489
+    filled_dict["four"]  # => ERROR: KeyError: key "four" not found
 catch e
     println(e)
 end
 
 # 使用 get 可以提供默认值来避免异常
 # get(dictionary,key,default_value)
-get(filled_dict,"one",4) # => 1
-get(filled_dict,"four",4) # => 4
+get(filled_dict, "one", 4)   # => 1
+get(filled_dict, "four", 4)  # => 4
 
-# 用 Sets 表示无序不可重复的值的集合
-empty_set = Set() # => Set{Any}()
-# 初始化一个 Set 并定义其值
-filled_set = Set(1,2,2,3,4) # => Set{Int64}(1,2,3,4)
+# Sets 表示无序不可重复的值的集合
+empty_set = Set()  # => Set(Any[])
+# 初始化一个带初值的 Set
+filled_set = Set([1, 2, 2, 3, 4])  # => Set([4, 2, 3, 1])
 
-# 添加值
-push!(filled_set,5) # => Set{Int64}(5,4,2,3,1)
+# 新增值
+push!(filled_set, 5)  # => Set([4, 2, 3, 5, 1])
 
-# 检查是否存在某值
-in(2, filled_set) # => true
-in(10, filled_set) # => false
+# 检查 Set 中是否存在某值
+in(2, filled_set)   # => true
+in(10, filled_set)  # => false
 
 # 交集，并集，差集
-other_set = Set(3, 4, 5, 6) # => Set{Int64}(6,4,5,3)
-intersect(filled_set, other_set) # => Set{Int64}(3,4,5)
-union(filled_set, other_set) # => Set{Int64}(1,2,3,4,5,6)
-setdiff(Set(1,2,3,4),Set(2,3,5)) # => Set{Int64}(1,4)
+other_set = Set([3, 4, 5, 6])         # => Set([4, 3, 5, 6])
+intersect(filled_set, other_set)      # => Set([4, 3, 5])
+union(filled_set, other_set)          # => Set([4, 2, 3, 5, 6, 1])
+setdiff(Set([1,2,3,4]), Set([2,3,5])) # => Set([4, 1])
 
 
 ####################################################
-## 3. 控制流
+## 3. 控制语句
 ####################################################
 
 # 声明一个变量
 some_var = 5
 
-# 这是一个 if 语句，缩进不是必要的
+# 这是一个 if 语句块，其中的缩进不是必须的
 if some_var > 10
     println("some_var is totally bigger than 10.")
-elseif some_var < 10    # elseif 是可选的.
+elseif some_var < 10    # elseif 是可选的
     println("some_var is smaller than 10.")
-else                    # else 也是可选的.
+else                    # else 也是可选的
     println("some_var is indeed 10.")
 end
-# => prints "some var is smaller than 10"
+# => some_var is smaller than 10.
 
 
 # For 循环遍历
-# Iterable 类型包括 Range, Array, Set, Dict, 以及 String.
-for animal=["dog", "cat", "mouse"]
+# 可迭代的类型包括：Range, Array, Set, Dict 和 AbstractString
+for animal = ["dog", "cat", "mouse"]
     println("$animal is a mammal")
-    # 可用 $ 将 variables 或 expression 转换为字符串into strings
+    # 你可以用 $ 将变量或表达式插入字符串中 
 end
-# prints:
-#    dog is a mammal
-#    cat is a mammal
-#    mouse is a mammal
+# => dog is a mammal
+# => cat is a mammal
+# => mouse is a mammal
 
-# You can use 'in' instead of '='.
+# 你也可以不用 '=' 而使用 'in'
 for animal in ["dog", "cat", "mouse"]
     println("$animal is a mammal")
 end
-# prints:
-#    dog is a mammal
-#    cat is a mammal
-#    mouse is a mammal
+# => dog is a mammal
+# => cat is a mammal
+# => mouse is a mammal
 
-for a in ["dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal"]
-    println("$(a[1]) is a $(a[2])")
+for pair in Dict("dog" => "mammal", "cat" => "mammal", "mouse" => "mammal")
+    from, to = pair
+    println("$from is a $to")
 end
-# prints:
-#    dog is a mammal
-#    cat is a mammal
-#    mouse is a mammal
+# => mouse is a mammal
+# => cat is a mammal
+# => dog is a mammal
+# 注意！这里的输出顺序和上面的不同
 
-for (k,v) in ["dog"=>"mammal","cat"=>"mammal","mouse"=>"mammal"]
+for (k, v) in Dict("dog" => "mammal", "cat" => "mammal", "mouse" => "mammal")
     println("$k is a $v")
 end
-# prints:
-#    dog is a mammal
-#    cat is a mammal
-#    mouse is a mammal
+# => mouse is a mammal
+# => cat is a mammal
+# => dog is a mammal
 
 # While 循环
-x = 0
-while x < 4
-    println(x)
-    x += 1  # x = x + 1
+let x = 0
+    while x < 4
+        println(x)
+        x += 1  # x = x + 1 的缩写
+    end
 end
-# prints:
-#   0
-#   1
-#   2
-#   3
+# => 0
+# => 1
+# => 2
+# => 3
 
 # 用 try/catch 处理异常
 try
-   error("help")
+    error("help")
 catch e
-   println("caught it $e")
+    println("caught it $e")
 end
 # => caught it ErrorException("help")
 
