@@ -770,9 +770,9 @@ class UsingExample {
 ```
 
 We're still only scratching the surface here of what Haxe can do.  For a formal
-overview of all Haxe features, checkout the [online
-manual](https://haxe.org/manual), the [online API docs](https://api.haxe.org/), and
-"haxelib", the [haxe library repo](https://lib.haxe.org/).
+overview of all Haxe features, see the [manual](https://haxe.org/manual) and
+the [API docs](https://api.haxe.org/). For a comprehensive directory of available
+third-party Haxe libraries, see [Haxelib](https://lib.haxe.org/).
 
 For more advanced topics, consider checking out:
 
