@@ -2,7 +2,9 @@
 language: Julia
 filename: learn-julia-zh.jl
 contributors:
-    - ["Jichao Ouyang", "http://oyanglul.us"]
+    - ["Leah Hanson", "http://leahhanson.us"]
+    - ["Pranit Bauva", "https://github.com/pranitbauva1997"]
+    - ["Daniel YC Lin", "https://github.com/dlintw"]
 translators:
     - ["Jichao Ouyang", "http://oyanglul.us"]
     - ["woclass", "https://github.com/inkydragon"]
