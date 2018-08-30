@@ -771,18 +771,17 @@ class UsingExample {
 
 We're still only scratching the surface here of what Haxe can do.  For a formal
 overview of all Haxe features, checkout the [online
-manual](http://haxe.org/manual), the [online API](http://api.haxe.org/), and
-"haxelib", the [haxe library repo] (http://lib.haxe.org/).
+manual](https://haxe.org/manual), the [online API docs](https://api.haxe.org/), and
+"haxelib", the [haxe library repo](https://lib.haxe.org/).
 
 For more advanced topics, consider checking out:
 
-* [Abstract types](http://haxe.org/manual/abstracts)
-* [Macros](http://haxe.org/manual/macros), and [Compiler Macros](http://haxe.org/manual/macros_compiler)
-* [Tips and Tricks](http://haxe.org/manual/tips_and_tricks)
+* [Abstract types](https://haxe.org/manual/types-abstract.html)
+* [Macros](https://haxe.org/manual/macro.html)
+* [Compiler Features](https://haxe.org/manual/cr-features.html)
 
 
-Finally, please join us on [the mailing list](https://groups.google.com/forum/#!forum/haxelang), on IRC [#haxe on
-freenode](http://webchat.freenode.net/), or on
-[Google+](https://plus.google.com/communities/103302587329918132234).
-
-
+Finally, please join us on [the Haxe forum](https://community.haxe.org/),
+on IRC [#haxe on
+freenode](http://webchat.freenode.net/), or on the
+[Haxe Gitter chat](https://gitter.im/HaxeFoundation/haxe).
