@@ -17,9 +17,9 @@ Julia 是一种新的同像函数式编程语言(homoiconic functional language)
 示例代码基于 Julia 1.0.0
 
 ```julia
-# 单行注释只需要一个井号
+# 单行注释只需要一个井号「#」
 #= 多行注释
-   只需要以 '#=' 开始 '=#' 结束
+   只需要以「#=」开始「=#」结束
    还可以嵌套.
 =#
 
@@ -84,10 +84,10 @@ false
 1 < 2 < 3 # => true
 2 < 3 < 2 # => false
 
-# 字符串可以由 " 创建
+# 字符串可以由「"」创建
 "This is a string."
 
-# 字符字面量可用 ' 创建
+# 字符字面量可用「'」创建
 'a'
 
 # 字符串使用 UTF-8 编码
@@ -147,7 +147,7 @@ SomeOtherVar123! = 6 # => 6
 #
 # * 函数与宏的名字小写，无下划线。
 #
-# * 会改变输入的函数名末位为 !。
+# * 会改变输入的函数名末位为「!」。
 #   这类函数有时被称为 mutating functions 或 in-place functions.
 
 # 数组存储一列值，index 从 1 开始
@@ -374,7 +374,7 @@ end
 # => cat is a mammal
 # => mouse is a mammal
 
-# 你也可以不用 '=' 而使用 'in'
+# 你也可以不用「=」而使用「in」
 for animal in ["dog", "cat", "mouse"]
     println("$animal is a mammal")
 end
@@ -454,7 +454,7 @@ end
 
 varargs(1,2,3) # => (1,2,3)
 
-# 省略号 ... 称为 splat
+# 省略号「...」称为 splat
 # 刚刚用在了函数定义中
 # 在调用函数时也可以使用它，此时它会把数组或元组解包为参数列表
 add([5,6]...)  # 等价于 add(5,6)
@@ -644,7 +644,7 @@ end
 
 # Lion, Panther, Tiger 的 meow 定义分别为
 function meow(animal::Lion)
-    animal.roar # 使用点记号 '.' 访问属性
+    animal.roar # 使用点记号「.」访问属性
 end
 # => meow (generic function with 1 method)
 
