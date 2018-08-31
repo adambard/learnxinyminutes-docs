@@ -10,13 +10,13 @@ filename: learnpython3-cn.py
 lang: zh-cn
 ---
 
-Python是由吉多·范罗苏姆(Guido Van Rossum)在90年代早期设计。它是如今最常用的编程
-语言之一。它的语法简洁且优美，几乎就是可执行的伪代码。
+Python 是由吉多·范罗苏姆(Guido Van Rossum)在 90 年代早期设计。
+它是如今最常用的编程语言之一。它的语法简洁且优美，几乎就是可执行的伪代码。
 
-欢迎大家斧正。英文版原作Louie Dinh [@louiedinh](http://twitter.com/louiedinh)
-或着Email louiedinh [at] [谷歌的信箱服务]。中文翻译Geoff Liu。
+欢迎大家斧正。英文版原作 Louie Dinh [@louiedinh](http://twitter.com/louiedinh)
+邮箱 louiedinh [at] [谷歌的信箱服务]。中文翻译 Geoff Liu。
 
-注意：这篇教程是特别为Python3写的。如果你想学旧版Python2，我们特别有另一篇教程。
+注意：这篇教程是基于 Python 3 写的。如果你想学旧版 Python 2，我们特别有[另一篇教程](http://learnxinyminutes.com/docs/python/)。
 
 ```python
 
@@ -113,10 +113,11 @@ False or True #=> True
 
 # 可以重复参数以节省时间
 "{0} be nimble, {0} be quick, {0} jump over the {1}".format("Jack", "candle stick")
-#=> "Jack be nimble, Jack be quick, Jack jump over the candle stick"
+# => "Jack be nimble, Jack be quick, Jack jump over the candle stick"
 
 # 如果不想数参数，可以用关键字
-"{name} wants to eat {food}".format(name="Bob", food="lasagna") #=> "Bob wants to eat lasagna"
+"{name} wants to eat {food}".format(name="Bob", food="lasagna") 
+# => "Bob wants to eat lasagna"
 
 # 如果你的Python3程序也要在Python2.5以下环境运行，也可以用老式的格式化语法
 "%s can be %s the %s way" % ("strings", "interpolated", "old")
@@ -233,7 +234,8 @@ filled_dict = {"one": 1, "two": 2, "three": 3}
 filled_dict["one"]   # => 1
 
 
-# 用keys获得所有的键。因为keys返回一个可迭代对象，所以在这里把结果包在list里。我们下面会详细介绍可迭代。
+# 用 keys 获得所有的键。
+# 因为 keys 返回一个可迭代对象，所以在这里把结果包在 list 里。我们下面会详细介绍可迭代。
 # 注意：字典键的顺序是不定的，你得到的结果可能和以下不同。
 list(filled_dict.keys())   # => ["three", "two", "one"]
 
