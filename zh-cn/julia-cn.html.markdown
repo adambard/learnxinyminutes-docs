@@ -11,6 +11,11 @@ translators:
 lang: zh-cn
 ---
 
+Julia 是一种新的同像函数式编程语言(homoiconic functional language)，它专注于科学计算领域。
+虽然拥有同像宏(homoiconic macros)、一级函数(first-class functions)和底层控制等全部功能，但 Julia 依旧和 Python 一样易于学习和使用。
+
+示例代码基于 Julia 1.0.0
+
 ```julia
 # 单行注释只需要一个井号
 #= 多行注释
@@ -841,3 +846,10 @@ code_native(circle_area, (Float64,))
     #         nopl    (%rax,%rax)
     # ;}
 ```
+
+## 拓展阅读材料
+
+你可以在 [Julia 中文文档](http://docs.juliacn.com/latest/) / [Julia 文档(en)](https://docs.julialang.org/)
+中获得关于 Julia 的更多细节。
+
+如果有任何问题可以去 [Julia 中文社区](http://discourse.juliacn.com/) / [官方社区(en)](https://discourse.julialang.org/) 提问，大家对待新手都非常的友好。
