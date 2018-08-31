@@ -748,50 +748,51 @@ square_area(l) = l * l  # => square_area (generic function with 1 method)
 square_area(5)  # => 25
 
 # 当我们喂给 square_area 一个整数时会发生什么？
-code_native(square_area, (Int32,))
-    #         .text
-    # ; Function square_area {
-    # ; Location: REPL[49]:1
-    #         pushq   %rbp
-    #         movq    %rsp, %rbp
-    # ; Function *; {
-    # ; Location: int.jl:54
-    #         imull   %ecx, %ecx
-    # ;}
-    #         movl    %ecx, %eax
-    #         popq    %rbp
-    #         retq
-    #         nopl    (%rax,%rax)
-    # ;}
+code_native(square_area, (Int32,), syntax = :intel)
+	#         .text
+	# ; Function square_area {
+	# ; Location: REPL[116]:1       # 函数序言 (Prologue)
+	#         push    rbp
+	#         mov     rbp, rsp
+	# ; Function *; {
+	# ; Location: int.jl:54
+	#         imul    ecx, ecx      # 求 l 的平方，并把结果放在 ECX 中
+	# ;}
+	#         mov     eax, ecx
+	#         pop     rbp           # 还原旧的基址指针(base pointer)
+	#         ret                   # 返回值放在 EAX 中
+	#         nop     dword ptr [rax + rax]
+	# ;}
+# 使用 syntax 参数指定输出语法。默认为 AT&T 格式，这里指定为 Intel 格式
 
-code_native(square_area, (Float32,))
+code_native(square_area, (Float32,), syntax = :intel)
     #         .text
     # ; Function square_area {
-    # ; Location: REPL[49]:1
-    #         pushq   %rbp
-    #         movq    %rsp, %rbp
+    # ; Location: REPL[116]:1
+    #         push    rbp
+    #         mov     rbp, rsp
     # ; Function *; {
     # ; Location: float.jl:398
-    #         vmulss  %xmm0, %xmm0, %xmm0
+    #         vmulss  xmm0, xmm0, xmm0  # 标量双精度乘法 (AVX)
     # ;}
-    #         popq    %rbp
-    #         retq
-    #         nopw    (%rax,%rax)
+    #         pop     rbp
+    #         ret
+    #         nop     word ptr [rax + rax]
     # ;}
 
-code_native(square_area, (Float64,))
+code_native(square_area, (Float64,), syntax = :intel)
     #         .text
     # ; Function square_area {
-    # ; Location: REPL[49]:1
-    #         pushq   %rbp
-    #         movq    %rsp, %rbp
+    # ; Location: REPL[116]:1
+    #         push    rbp
+    #         mov     rbp, rsp
     # ; Function *; {
     # ; Location: float.jl:399
-    #         vmulsd  %xmm0, %xmm0, %xmm0
+    #         vmulsd  xmm0, xmm0, xmm0  # 标量双精度乘法 (AVX)
     # ;}
-    #         popq    %rbp
-    #         retq
-    #         nopw    (%rax,%rax)
+    #         pop     rbp
+    #         ret
+    #         nop     word ptr [rax + rax]
     # ;}
 
 # 注意！只要参数中有浮点数，Julia 就会使用浮点指令
@@ -799,12 +800,12 @@ code_native(square_area, (Float64,))
 circle_area(r) = pi * r * r # => circle_area (generic function with 1 method)
 circle_area(5)  # => 78.53981633974483
 
-code_native(circle_area, (Int32,))
+code_native(circle_area, (Int32,), syntax = :intel)
     #         .text
     # ; Function circle_area {
-    # ; Location: REPL[53]:1
-    #         pushq   %rbp
-    #         movq    %rsp, %rbp
+    # ; Location: REPL[121]:1
+    #         push    rbp
+    #         mov     rbp, rsp
     # ; Function *; {
     # ; Location: operators.jl:502
     # ; Function *; {
@@ -817,41 +818,41 @@ code_native(circle_area, (Int32,))
     # ; Location: number.jl:7
     # ; Function Type; {
     # ; Location: float.jl:60
-    #         vcvtsi2sdl      %ecx, %xmm0, %xmm0
-    #         movabsq $532051920, %rax        # imm = 0x1FB677D0
+    #         vcvtsi2sd       xmm0, xmm0, ecx     # 从内存中读取整数 r
+    #         movabs  rax, 497710928              # 读取 pi
     # ;}}}}}
     # ; Function *; {
     # ; Location: float.jl:399
-    #         vmulsd  (%rax), %xmm0, %xmm1
-    #         vmulsd  %xmm0, %xmm1, %xmm0
+    #         vmulsd  xmm1, xmm0, qword ptr [rax] # pi * r
+    #         vmulsd  xmm0, xmm1, xmm0            # (pi * r) * r
     # ;}}
-    #         popq    %rbp
-    #         retq
-    #         nopl    (%rax)
+    #         pop     rbp
+    #         ret
+    #         nop     dword ptr [rax]
     # ;}
 
-code_native(circle_area, (Float64,))
+code_native(circle_area, (Float64,), syntax = :intel)
     #         .text
     # ; Function circle_area {
-    # ; Location: REPL[53]:1
-    #         pushq   %rbp
-    #         movq    %rsp, %rbp
-    #         movabsq $532052040, %rax        # imm = 0x1FB67848
+    # ; Location: REPL[121]:1
+    #         push    rbp
+    #         mov     rbp, rsp
+    #         movabs  rax, 497711048
     # ; Function *; {
     # ; Location: operators.jl:502
     # ; Function *; {
     # ; Location: promotion.jl:314
     # ; Function *; {
     # ; Location: float.jl:399
-    #         vmulsd  (%rax), %xmm0, %xmm1
+    #         vmulsd  xmm1, xmm0, qword ptr [rax]
     # ;}}}
     # ; Function *; {
     # ; Location: float.jl:399
-    #         vmulsd  %xmm0, %xmm1, %xmm0
+    #         vmulsd  xmm0, xmm1, xmm0
     # ;}
-    #         popq    %rbp
-    #         retq
-    #         nopl    (%rax,%rax)
+    #         pop     rbp
+    #         ret
+    #         nop     dword ptr [rax + rax]
     # ;}
 ```
 
