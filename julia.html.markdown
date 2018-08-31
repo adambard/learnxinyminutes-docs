@@ -89,7 +89,9 @@ false
 
 # Strings are UTF8 encoded. Only if they contain only ASCII characters can
 # they be safely indexed.
-ascii("This is a string")[1]  # => 'T' # Julia indexes from 1
+ascii("This is a string")[1]  
+# => 'T': ASCII/Unicode U+0054 (category Lu: Letter, uppercase)
+# Julia indexes from 1
 # Otherwise, iterating over strings is recommended (map, for loops, etc).
 
 # $ can be used for string interpolation:
@@ -101,7 +103,7 @@ using Printf
 @printf "%d is less than %f\n" 4.5 5.3  # => 5 is less than 5.300000
 
 # Printing is easy
-println("I'm Julia. Nice to meet you!")
+println("I'm Julia. Nice to meet you!") # => I'm Julia. Nice to meet you!
 
 # String can be compared lexicographically
 "good" > "bye" # => true
@@ -147,19 +149,18 @@ SomeOtherVar123! = 6  # => 6
 #   functions are sometimes called mutating functions or in-place functions.
 
 # Arrays store a sequence of values indexed by integers 1 through n:
-a = Int64[]  # => 0-element Int64 Array
+a = Int64[] # => 0-element Array{Int64,1}
 
 # 1-dimensional array literals can be written with comma-separated values.
-b = [4, 5, 6]  # => 3-element Int64 Array: [4, 5, 6]
-b = [4; 5; 6]  # => 3-element Int64 Array: [4, 5, 6]
-b[1]  # => 4
+b = [4, 5, 6] # => 3-element Array{Int64,1}: [4, 5, 6]
+b = [4; 5; 6] # => 3-element Array{Int64,1}: [4, 5, 6]
 b[end]  # => 6
 
 # 2-dimensional arrays use space-separated values and semicolon-separated rows.
-matrix = [1 2; 3 4]  # => 2x2 Int64 Array: [1 2; 3 4]
+matrix = [1 2; 3 4] # => 2×2 Array{Int64,2}: [1 2; 3 4]
 
 # Arrays of a particular type
-b = Int8[4, 5, 6]  # => 3-element Int8 Array: [4, 5, 6]
+b = Int8[4, 5, 6] # => 3-element Array{Int8,1}: [4, 5, 6]
 
 # Add stuff to the end of a list with push! and append!
 push!(a, 1)    # => [1]
@@ -186,16 +187,28 @@ pushfirst!(a, 7)  # => [7,2,4,3,4,5,6]
 
 # Function names that end in exclamations points indicate that they modify
 # their argument.
-arr = [5,4,6]  # => 3-element Int64 Array: [5,4,6]
 sort(arr)  # => [4,5,6]; arr is still [5,4,6]
 sort!(arr)  # => [4,5,6]; arr is now [4,5,6]
+arr = [5,4,6]  # => 3-element Array{Int64,1}: [5,4,6]
 
 # Looking out of bounds is a BoundsError
 try
-    a[0]
-    # => BoundsError: attempt to access 7-element Array{Int64,1} at index [0]
-    a[end + 1]
-    # => BoundsError: attempt to access 7-element Array{Int64,1} at index [8]
+    a[0] 
+    # => ERROR: BoundsError: attempt to access 7-element Array{Int64,1} at 
+    # index [0]
+    # => Stacktrace:
+    # =>  [1] getindex(::Array{Int64,1}, ::Int64) at .\array.jl:731
+    # =>  [2] top-level scope at none:0
+    # =>  [3] ...
+    # => in expression starting at ...\LearnJulia.jl:180
+    a[end + 1] 
+    # => ERROR: BoundsError: attempt to access 7-element Array{Int64,1} at 
+    # index [8]
+    # => Stacktrace:
+    # =>  [1] getindex(::Array{Int64,1}, ::Int64) at .\array.jl:731
+    # =>  [2] top-level scope at none:0
+    # =>  [3] ...
+    # => in expression starting at ...\LearnJulia.jl:188
 catch e
     println(e)
 end
@@ -205,7 +218,8 @@ end
 # find these files.
 
 # You can initialize arrays from ranges
-a = [1:5;]  # => 5-element Int64 Array: [1,2,3,4,5]
+a = [1:5;]  # => 5-element Array{Int64,1}: [1,2,3,4,5]
+a2 = [1:5]  # => 1-element Array{UnitRange{Int64},1}: [1:5]
 
 # You can look at ranges with slice syntax.
 a[1:3]  # => [1, 2, 3]
@@ -229,7 +243,9 @@ length(a)  # => 8
 tup = (1, 2, 3)  # => (1,2,3)  # an (Int64,Int64,Int64) tuple.
 tup[1]  # => 1
 try
-    tup[1] = 3  # => ERROR: no method setindex!((Int64,Int64,Int64),Int64,Int64)
+    tup[1] = 3  
+    # => ERROR: MethodError: no method matching 
+    # setindex!(::Tuple{Int64,Int64,Int64}, ::Int64, ::Int64)
 catch e
     println(e)
 end
@@ -254,11 +270,12 @@ e, d = d, e  # => (5,4)  # d is now 5 and e is now 4
 
 
 # Dictionaries store mappings
-empty_dict = Dict()  # => Dict{Any,Any}()
+empty_dict = Dict()  # => Dict{Any,Any} with 0 entries
 
 # You can create a dictionary using a literal
 filled_dict = Dict("one" => 1, "two" => 2, "three" => 3)
-# => Dict{String,Int64}
+# => Dict{String,Int64} with 3 entries:
+# =>  "two" => 2, "one" => 1, "three" => 3
 
 # Look up values with []
 filled_dict["one"]  # => 1
@@ -266,12 +283,13 @@ filled_dict["one"]  # => 1
 # Get all keys
 keys(filled_dict)
 # => Base.KeySet for a Dict{String,Int64} with 3 entries. Keys:
-# "two", "one", "three"
+# =>  "two", "one", "three"
 # Note - dictionary keys are not sorted or in the order you inserted them.
 
 # Get all values
 values(filled_dict)
-# => Base.ValueIterator{Dict{String,Int64}} with 3 entries. Values: 2, 1, 3
+# => Base.ValueIterator for a Dict{String,Int64} with 3 entries. Values: 
+# =>  2, 1, 3
 # Note - Same as above regarding key ordering.
 
 # Check for existence of keys in a dictionary with in, haskey
@@ -282,7 +300,7 @@ haskey(filled_dict, 1)         # => false
 
 # Trying to look up a non-existent key will raise an error
 try
-    filled_dict["four"]  # => KeyError: key "four" not found
+    filled_dict["four"]  # => ERROR: KeyError: key "four" not found
 catch e
     println(e)
 end
@@ -293,7 +311,7 @@ get(filled_dict, "one", 4)   # => 1
 get(filled_dict, "four", 4)  # => 4
 
 # Use Sets to represent collections of unordered, unique values
-empty_set = Set()  # => Set{Any}()
+empty_set = Set()  # => Set(Any[])
 # Initialize a set with values
 filled_set = Set([1, 2, 2, 3, 4])  # => Set([4, 2, 3, 1])
 
@@ -353,18 +371,16 @@ for pair in Dict("dog" => "mammal", "cat" => "mammal", "mouse" => "mammal")
     from, to = pair
     println("$from is a $to")
 end
-# prints:
-#    dog is a mammal
-#    cat is a mammal
-#    mouse is a mammal
+# => mouse is a mammal
+# => cat is a mammal
+# => dog is a mammal
 
 for (k, v) in Dict("dog" => "mammal", "cat" => "mammal", "mouse" => "mammal")
     println("$k is a $v")
 end
-# prints:
-#    dog is a mammal
-#    cat is a mammal
-#    mouse is a mammal
+# => mouse is a mammal
+# => cat is a mammal
+# => dog is a mammal
 
 # While loops loop while a condition is true
 let x = 0
@@ -406,11 +422,11 @@ end
 add(5, 6)  # => 11 after printing out "x is 5 and y is 6"
 
 # Compact assignment of functions
-f_add(x, y) = x + y  # => "f (generic function with 1 method)"
+f_add(x, y) = x + y  # => f_add (generic function with 1 method)
 f_add(3, 4)  # => 7
 
 # Function can also return multiple values as tuple
-fn(x, y) = x + y, x - y
+fn(x, y) = x + y, x - y # => fn (generic function with 1 method)
 fn(3, 4)  # => (7, -1)
 
 # You can define functions that take a variable number of
@@ -437,13 +453,14 @@ add(x...)  # this is equivalent to add(5,6)
 function defaults(a, b, x=5, y=6)
     return "$a $b and $x $y"
 end
+# => defaults (generic function with 3 methods)
 
 defaults('h', 'g')  # => "h g and 5 6"
 defaults('h', 'g', 'j')  # => "h g and j 6"
 defaults('h', 'g', 'j', 'k')  # => "h g and j k"
 try
-    defaults('h')  # => ERROR: no method defaults(Char,)
-    defaults()  # => ERROR: no methods defaults()
+    defaults('h')  # => ERROR: MethodError: no method matching defaults(::Char)
+    defaults()  # => ERROR: MethodError: no method matching defaults()
 catch e
     println(e)
 end
@@ -452,10 +469,11 @@ end
 function keyword_args(;k1=4, name2="hello")  # note the ;
     return Dict("k1" => k1, "name2" => name2)
 end
+# => keyword_args (generic function with 1 method)
 
-keyword_args(name2="ness")  # => ["name2"=>"ness","k1"=>4]
-keyword_args(k1="mine")  # => ["k1"=>"mine","name2"=>"hello"]
-keyword_args()  # => ["name2"=>"hello","k1"=>4]
+keyword_args(name2="ness")  # => ["name2"=>"ness", "k1"=>4]
+keyword_args(k1="mine")     # => ["name2"=>"hello", "k1"=>"mine"]
+keyword_args()              # => ["name2"=>"hello", "k1"=>4]
 
 # You can combine all kinds of arguments in the same function
 function all_the_args(normal_arg, optional_positional_arg=2; keyword_arg="foo")
@@ -463,6 +481,7 @@ function all_the_args(normal_arg, optional_positional_arg=2; keyword_arg="foo")
     println("optional arg: $optional_positional_arg")
     println("keyword arg: $keyword_arg")
 end
+# => all_the_args (generic function with 2 methods)
 
 all_the_args(1, 3, keyword_arg=4)
 # prints:
@@ -477,6 +496,7 @@ function create_adder(x)
     end
     return adder
 end
+# => create_adder (generic function with 1 method)
 
 # This is "stabby lambda syntax" for creating anonymous functions
 (x -> x > 2)(3)  # => true
@@ -485,6 +505,7 @@ end
 function create_adder(x)
     y -> x + y
 end
+# => create_adder (generic function with 1 method)
 
 # You can also name the internal function, if you want
 function create_adder(x)
@@ -493,9 +514,11 @@ function create_adder(x)
     end
     adder
 end
+# => create_adder (generic function with 1 method)
 
-add_10 = create_adder(10)
-add_10(3)  # => 13
+add_10 = create_adder(10) # => (::getfield(Main, Symbol("#adder#11")){Int64}) 
+                          # (generic function with 1 method)
+add_10(3) # => 13
 
 
 # There are built-in higher order functions
@@ -555,16 +578,16 @@ abstract type Cat end  # just a name and point in the type hierarchy
 using InteractiveUtils  # defines the subtype and supertype function
 # For example, Number is an abstract type
 subtypes(Number)  # => 2-element Array{Any,1}:
-                 #     Complex{T<:Real}
-                 #     Real
+                  # =>  Complex
+                  # =>  Real
 subtypes(Cat)  # => 0-element Array{Any,1}
 
 # AbstractString, as the name implies, is also an abstract type
-subtypes(AbstractString)  # 4-element Array{Any,1}:
-                            #  String
-                            #  SubString
-                            #  SubstitutionString
-                            #  Test.GenericString
+subtypes(AbstractString)  # => 4-element Array{Any,1}:
+                          # =>  String
+                          # =>  SubString
+                          # =>  SubstitutionString
+                          # =>  Test.GenericString
 
 # Every type has a super type; use the `supertype` function to get it.
 typeof(5)  # => Int64
@@ -626,7 +649,7 @@ function meow(animal::Tiger)
 end
 
 # Testing the meow function
-meow(tigger)  # => "rawwr"
+meow(tigger)  # => "rawwwr"
 meow(Lion("brown", "ROAAR"))  # => "ROAAR"
 meow(Panther())  # => "grrr"
 
@@ -639,10 +662,11 @@ Panther <: Cat # => true
 function pet_cat(cat::Cat)
     println("The cat says $(meow(cat))")
 end
+# => pet_cat (generic function with 1 method)
 
-pet_cat(Lion("42"))  # => prints "The cat says 42"
+pet_cat(Lion("42")) # => The cat says 42
 try
-    pet_cat(tigger)  # => ERROR: no method pet_cat(Tiger,)
+    pet_cat(tigger) # => ERROR: MethodError: no method matching pet_cat(::Tiger)
 catch e
     println(e)
 end
@@ -657,45 +681,54 @@ function fight(t::Tiger, c::Cat)
 end
 # => fight (generic function with 1 method)
 
-fight(tigger, Panther())  # => prints The orange tiger wins!
-fight(tigger, Lion("ROAR"))  # => prints The orange tiger wins!
+fight(tigger, Panther())  # => The orange tiger wins!
+fight(tigger, Lion("ROAR")) # => The orange tiger wins!
 
 # Let's change the behavior when the Cat is specifically a Lion
 fight(t::Tiger, l::Lion) = println("The $(l.mane_color)-maned lion wins!")
 # => fight (generic function with 2 methods)
 
-fight(tigger, Panther())  # => prints The orange tiger wins!
-fight(tigger, Lion("ROAR"))  # => prints The green-maned lion wins!
+fight(tigger, Panther())  # => The orange tiger wins!
+fight(tigger, Lion("ROAR")) # => The green-maned lion wins!
 
 # We don't need a Tiger in order to fight
 fight(l::Lion, c::Cat) = println("The victorious cat says $(meow(c))")
 # => fight (generic function with 3 methods)
 
-fight(Lion("balooga!"), Panther())  # => prints The victorious cat says grrr
+fight(Lion("balooga!"), Panther())  # => The victorious cat says grrr
 try
-    fight(Panther(), Lion("RAWR"))
+    fight(Panther(), Lion("RAWR"))  
+    # => ERROR: MethodError: no method matching fight(::Panther, ::Lion)
+    # => Closest candidates are:
+    # =>   fight(::Tiger, ::Lion) at ...
+    # =>   fight(::Tiger, ::Cat) at ...
+    # =>   fight(::Lion, ::Cat) at ...
+    # => ...
 catch e
     println(e)
-    # => MethodError(fight, (Panther("green"), Lion("green", "RAWR")),
-    #                0x000000000000557b)
 end
 
 # Also let the cat go first
 fight(c::Cat, l::Lion) = println("The cat beats the Lion")
+# => fight (generic function with 4 methods)
 
 # This warning is because it's unclear which fight will be called in:
 try
     fight(Lion("RAR"), Lion("brown", "rarrr"))
-    # => prints The victorious cat says rarrr
+    # => ERROR: MethodError: fight(::Lion, ::Lion) is ambiguous. Candidates:
+    # =>   fight(c::Cat, l::Lion) in Main at ...
+    # =>   fight(l::Lion, c::Cat) in Main at ...
+    # => Possible fix, define
+    # =>   fight(::Lion, ::Lion)
+    # => ...
 catch e
     println(e)
-  # => MethodError(fight, (Lion("green", "RAR"), Lion("brown", "rarrr")),
-  #                0x000000000000557c)
 end
 # The result may be different in other versions of Julia
 
-fight(l::Lion, l2::Lion) = println("The lions come to a tie")
-fight(Lion("RAR"), Lion("brown", "rarrr"))  # => prints The lions come to a tie
+fight(l::Lion, l2::Lion) = println("The lions come to a tie") 
+# => fight (generic function with 5 methods)
+fight(Lion("RAR"), Lion("brown", "rarrr"))  # => The lions come to a tie
 
 
 # Under the hood
@@ -706,74 +739,112 @@ square_area(l) = l * l  # square_area (generic function with 1 method)
 square_area(5)  # => 25
 
 # What happens when we feed square_area an integer?
-code_native(square_area, (Int32,))
-    #        .section    __TEXT,__text,regular,pure_instructions
-    #    Filename: none
-    #    Source line: 1              # Prologue
-    #        push    RBP
-    #        mov RBP, RSP
-    #    Source line: 1
-    #        movsxd  RAX, EDI        # Fetch l from memory?
-    #        imul    RAX, RAX        # Square l and store the result in RAX
-    #        pop RBP                 # Restore old base pointer
-    #        ret                     # Result will still be in RAX
+code_native(square_area, (Int32,), syntax = :intel)
+	#         .text
+	# ; Function square_area {
+	# ; Location: REPL[116]:1       # Prologue
+	#         push    rbp
+	#         mov     rbp, rsp
+	# ; Function *; {
+	# ; Location: int.jl:54
+	#         imul    ecx, ecx      # Square l and store the result in ECX
+	# ;}
+	#         mov     eax, ecx
+	#         pop     rbp           # Restore old base pointer
+	#         ret                   # Result will still be in EAX
+	#         nop     dword ptr [rax + rax]
+	# ;}
 
-code_native(square_area, (Float32,))
-    #        .section    __TEXT,__text,regular,pure_instructions
-    #    Filename: none
-    #    Source line: 1
-    #        push    RBP
-    #        mov RBP, RSP
-    #    Source line: 1
-    #        vmulss  XMM0, XMM0, XMM0  # Scalar single precision multiply (AVX)
-    #        pop RBP
-    #        ret
+code_native(square_area, (Float32,), syntax = :intel)
+    #         .text
+    # ; Function square_area {
+    # ; Location: REPL[116]:1
+    #         push    rbp
+    #         mov     rbp, rsp
+    # ; Function *; {
+    # ; Location: float.jl:398
+    #         vmulss  xmm0, xmm0, xmm0  # Scalar single precision multiply (AVX)
+    # ;}
+    #         pop     rbp
+    #         ret
+    #         nop     word ptr [rax + rax]
+    # ;}
 
-code_native(square_area, (Float64,))
-    #        .section    __TEXT,__text,regular,pure_instructions
-    #    Filename: none
-    #    Source line: 1
-    #        push    RBP
-    #        mov RBP, RSP
-    #    Source line: 1
-    #        vmulsd  XMM0, XMM0, XMM0  # Scalar double precision multiply (AVX)
-    #        pop RBP
-    #        ret
-    #
+code_native(square_area, (Float64,), syntax = :intel)
+    #         .text
+    # ; Function square_area {
+    # ; Location: REPL[116]:1
+    #         push    rbp
+    #         mov     rbp, rsp
+    # ; Function *; {
+    # ; Location: float.jl:399
+    #         vmulsd  xmm0, xmm0, xmm0  # Scalar double precision multiply (AVX)
+    # ;}
+    #         pop     rbp
+    #         ret
+    #         nop     word ptr [rax + rax]
+    # ;}
+
 # Note that julia will use floating point instructions if any of the
 # arguments are floats.
 # Let's calculate the area of a circle
 circle_area(r) = pi * r * r     # circle_area (generic function with 1 method)
 circle_area(5)  # 78.53981633974483
 
-code_native(circle_area, (Int32,))
-    #        .section    __TEXT,__text,regular,pure_instructions
-    #    Filename: none
-    #    Source line: 1
-    #        push    RBP
-    #        mov RBP, RSP
-    #    Source line: 1
-    #        vcvtsi2sd   XMM0, XMM0, EDI          # Load integer (r) from memory
-    #        movabs  RAX, 4593140240              # Load pi
-    #        vmulsd  XMM1, XMM0, QWORD PTR [RAX]  # pi * r
-    #        vmulsd  XMM0, XMM0, XMM1             # (pi * r) * r
-    #        pop RBP
-    #        ret
-    #
+code_native(circle_area, (Int32,), syntax = :intel)
+    #         .text
+    # ; Function circle_area {
+    # ; Location: REPL[121]:1
+    #         push    rbp
+    #         mov     rbp, rsp
+    # ; Function *; {
+    # ; Location: operators.jl:502
+    # ; Function *; {
+    # ; Location: promotion.jl:314
+    # ; Function promote; {
+    # ; Location: promotion.jl:284
+    # ; Function _promote; {
+    # ; Location: promotion.jl:261
+    # ; Function convert; {
+    # ; Location: number.jl:7
+    # ; Function Type; {
+    # ; Location: float.jl:60
+    #         vcvtsi2sd       xmm0, xmm0, ecx     # Load integer (r) from memory
+    #         movabs  rax, 497710928              # Load pi
+    # ;}}}}}
+    # ; Function *; {
+    # ; Location: float.jl:399
+    #         vmulsd  xmm1, xmm0, qword ptr [rax] # pi * r
+    #         vmulsd  xmm0, xmm1, xmm0            # (pi * r) * r
+    # ;}}
+    #         pop     rbp
+    #         ret
+    #         nop     dword ptr [rax]
+    # ;}
 
-code_native(circle_area, (Float64,))
-    #        .section    __TEXT,__text,regular,pure_instructions
-    #    Filename: none
-    #    Source line: 1
-    #        push    RBP
-    #        mov RBP, RSP
-    #        movabs  RAX, 4593140496
-    #    Source line: 1
-    #        vmulsd  XMM1, XMM0, QWORD PTR [RAX]
-    #        vmulsd  XMM0, XMM1, XMM0
-    #        pop RBP
-    #        ret
-    #
+code_native(circle_area, (Float64,), syntax = :intel)
+    #         .text
+    # ; Function circle_area {
+    # ; Location: REPL[121]:1
+    #         push    rbp
+    #         mov     rbp, rsp
+    #         movabs  rax, 497711048
+    # ; Function *; {
+    # ; Location: operators.jl:502
+    # ; Function *; {
+    # ; Location: promotion.jl:314
+    # ; Function *; {
+    # ; Location: float.jl:399
+    #         vmulsd  xmm1, xmm0, qword ptr [rax]
+    # ;}}}
+    # ; Function *; {
+    # ; Location: float.jl:399
+    #         vmulsd  xmm0, xmm1, xmm0
+    # ;}
+    #         pop     rbp
+    #         ret
+    #         nop     dword ptr [rax + rax]
+    # ;}
 ```
 
 ## Further Reading
