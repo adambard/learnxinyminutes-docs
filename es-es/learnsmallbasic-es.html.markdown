@@ -18,7 +18,7 @@ SmallBASIC fue desarrollado originalmente por Nicholas Christopoulos a finales d
 Versiones de SmallBASIC se han hecho para una serie dispositivos de mano antiguos, incluyendo Franklin eBookman y el Nokia 770. También se han publicado varias versiones de escritorio basadas en una variedad de kits de herramientas GUI, algunas de las cuales han desaparecido. Las plataformas actualmente soportadas son Linux y Windows basadas en SDL2 y Android basadas en NDK. También está disponible una versión de línea de comandos de escritorio, aunque no suele publicarse en formato binario.
 Alrededor de 2008 una gran corporación lanzó un entorno de programación BASIC con un nombre de similar. SmallBASIC no está relacionado con este otro proyecto.
 
-```SmallBASIC
+```
 REM Esto es un comentario
 ' y esto tambien es un comentario
 
