@@ -500,5 +500,5 @@ perms(x) % x 元素的全排列
 
 ## 相关资料
 
-* 官方网页：[http://http://www.mathworks.com/products/matlab/](http://www.mathworks.com/products/matlab/)
-* 官方论坛：[http://www.mathworks.com/matlabcentral/answers/](http://www.mathworks.com/matlabcentral/answers/)
+* 官方网页：[MATLAB - 技术计算语言 - MATLAB & Simulink](https://ww2.mathworks.cn/products/matlab.html)
+* 官方论坛：[MATLAB Answers - MATLAB Central](https://ww2.mathworks.cn/matlabcentral/answers/)
