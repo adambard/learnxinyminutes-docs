@@ -70,15 +70,15 @@ not True  # => False
 not False  # => True
 
 # 逻辑运算符，注意and和or都是小写
-True and False #=> False
-False or True #=> True
+True and False # => False
+False or True # => True
 
 # 整数也可以当作布尔值
-0 and 2 #=> 0
--5 or 0 #=> -5
-0 == False #=> True
-2 == True #=> False
-1 == True #=> True
+0 and 2 # => 0
+-5 or 0 # => -5
+0 == False # => True
+2 == True # => False
+1 == True # => True
 
 # 用==判断相等
 1 == 1  # => True
@@ -133,8 +133,8 @@ None is None  # => True
 # 所有其他值都是True
 bool(0)  # => False
 bool("")  # => False
-bool([]) #=> False
-bool({}) #=> False
+bool([]) # => False
+bool({}) # => False
 
 
 ####################################################
@@ -263,7 +263,7 @@ filled_dict.setdefault("five", 5)  # filled_dict["five"]设为5
 filled_dict.setdefault("five", 6)  # filled_dict["five"]还是5
 
 # 字典赋值
-filled_dict.update({"four":4}) #=> {"one": 1, "two": 2, "three": 3, "four": 4}
+filled_dict.update({"four":4}) # => {"one": 1, "two": 2, "three": 3, "four": 4}
 filled_dict["four"] = 4  # 另一种赋值方法
 
 # 用del删除
@@ -378,17 +378,17 @@ our_iterator = iter(our_iterable)
 
 # 迭代器是一个可以记住遍历的位置的对象
 # 用__next__可以取得下一个元素
-our_iterator.__next__()  #=> "one"
+our_iterator.__next__()  # => "one"
 
 # 再一次调取__next__时会记得位置
-our_iterator.__next__()  #=> "two"
-our_iterator.__next__()  #=> "three"
+our_iterator.__next__()  # => "two"
+our_iterator.__next__()  # => "three"
 
 # 当迭代器所有元素都取出后，会抛出StopIteration
 our_iterator.__next__() # 抛出StopIteration
 
 # 可以用list一次取出迭代器所有的元素
-list(filled_dict.keys())  #=> Returns ["one", "two", "three"]
+list(filled_dict.keys())  # => Returns ["one", "two", "three"]
 
 
 
