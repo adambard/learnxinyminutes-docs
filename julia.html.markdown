@@ -369,19 +369,17 @@ for animal = ["dog", "cat", "mouse"]
     println("$animal is a mammal")
     # You can use $ to interpolate variables or expression into strings
 end
-# prints:
-#    dog is a mammal
-#    cat is a mammal
-#    mouse is a mammal
+# => dog is a mammal
+# => cat is a mammal
+# => mouse is a mammal
 
 # You can use 'in' instead of '='.
 for animal in ["dog", "cat", "mouse"]
     println("$animal is a mammal")
 end
-# prints:
-#    dog is a mammal
-#    cat is a mammal
-#    mouse is a mammal
+# => dog is a mammal
+# => cat is a mammal
+# => mouse is a mammal
 
 for pair in Dict("dog" => "mammal", "cat" => "mammal", "mouse" => "mammal")
     from, to = pair
@@ -405,11 +403,10 @@ let x = 0
         x += 1  # Shorthand for x = x + 1
     end
 end
-# prints:
-#   0
-#   1
-#   2
-#   3
+# => 0
+# => 1
+# => 2
+# => 3
 
 # Handle exceptions with a try/catch block
 try
@@ -502,10 +499,9 @@ end
 # => all_the_args (generic function with 2 methods)
 
 all_the_args(1, 3, keyword_arg=4)
-# prints:
-#   normal arg: 1
-#   optional arg: 3
-#   keyword arg: 4
+# => normal arg: 1
+# => optional arg: 3
+# => keyword arg: 4
 
 # Julia has first class functions
 function create_adder(x)
