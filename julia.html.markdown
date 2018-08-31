@@ -14,7 +14,6 @@ and low-level control, Julia is as easy to learn and use as Python.
 This is based on Julia 1.0.0
 
 ```julia
-
 # Single line comments start with a hash (pound) symbol.
 #= Multiline comments can be written
    by putting '#=' before the text  and '=#'
@@ -361,7 +360,6 @@ else                    # The else clause is optional too.
     println("some_var is indeed 10.")
 end
 # => prints "some var is smaller than 10"
-
 
 # For loops iterate over iterables.
 # Iterable types include Range, Array, Set, Dict, and AbstractString.
