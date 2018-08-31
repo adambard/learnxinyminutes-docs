@@ -90,11 +90,13 @@ false
 # 字符字面量可用 ' 创建
 'a'
 
+# 字符串使用 UTF-8 编码
 # 可以像取数组取值一样用 index 取出对应字符
-ascii("This is a string")[1]  # => 'T' 
+ascii("This is a string")[1]
+# => 'T': ASCII/Unicode U+0054 (category Lu: Letter, uppercase) 
 # Julia 的 index 从 1 开始 :(
-# 但是对 UTF-8 无效,
-# 因此建议使用遍历器 (map, for loops, 等).
+# 但只有在字符串仅由 ASCII 字符构成时，字符串才能够被安全的引索
+# 因此建议使用遍历器 (map, for loops, 等)
 
 # $ 可用于字符插值:
 "2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
@@ -105,7 +107,7 @@ using Printf
 @printf "%d is less than %f\n" 4.5 5.3  # => 5 is less than 5.300000
 
 # 打印字符串很容易
-println("I'm Julia. Nice to meet you!")
+println("I'm Julia. Nice to meet you!") # => I'm Julia. Nice to meet you!
 
 # 字符串可以按字典序进行比较
 "good" > "bye" # => true
@@ -138,9 +140,10 @@ SomeOtherVar123! = 6 # => 6
 
 # 注意 Julia 的命名规约:
 #
-# * 变量名为小写，单词之间以下划线连接 "_" 。
+# * 名称可以用下划线「_」分割。
+#   不过一般不推荐使用下划线，除非不用变量名就会变得难于理解
 #
-# * 类型名以大写字母开头，单词以 CamelCase 方式连接。
+# * 类型名以大写字母开头，单词以 CamelCase 方式连接，无下划线。
 #
 # * 函数与宏的名字小写，无下划线。
 #
@@ -179,7 +182,7 @@ b # => [4,5,6]
 
 a[1] # => 1 #  永远记住 Julia 的引索从 1 开始！而不是 0！
 
-# 用 end 可以直接取到最后索引. 可用作任何索引表达式
+# 用 end 可以直接取到最后索引。它可以用在任何索引表达式中
 a[end] # => 6
 
 # 数组还支持 popfirst! 和 pushfirst!
@@ -204,7 +207,7 @@ try
     # =>  [1] getindex(::Array{Int64,1}, ::Int64) at .\array.jl:731
     # =>  [2] top-level scope at none:0
     # =>  [3] ...
-    # => in expression starting at ...\LearnJulia.jl:188
+    # => in expression starting at ...\LearnJulia.jl:203
     a[end + 1] 
     # => ERROR: BoundsError: attempt to access 7-element Array{Int64,1} at 
     # index [8]
@@ -212,7 +215,7 @@ try
     # =>  [1] getindex(::Array{Int64,1}, ::Int64) at .\array.jl:731
     # =>  [2] top-level scope at none:0
     # =>  [3] ...
-    # => in expression starting at ...\LearnJulia.jl:196
+    # => in expression starting at ...\LearnJulia.jl:211
 catch e
     println(e)
 end
@@ -222,6 +225,8 @@ end
 
 # 可以用 range 初始化数组
 a = [1:5;]  # => 5-element Array{Int64,1}: [1,2,3,4,5]
+# 注意！分号不可省略
+a2 = [1:5]  # => 1-element Array{UnitRange{Int64},1}: [1:5]
 
 # 可以切割数组
 a[1:3] # => [1, 2, 3]
@@ -282,7 +287,7 @@ d # => 5
 e # => 4
 
 
-# 字典Dictionaries store mappings
+# 字典用于储存映射(mappings)（键值对）
 empty_dict = Dict()  # => Dict{Any,Any} with 0 entries
 
 # 也可以用字面量创建字典
@@ -323,7 +328,7 @@ end
 get(filled_dict, "one", 4)   # => 1
 get(filled_dict, "four", 4)  # => 4
 
-# Sets 表示无序不可重复的值的集合
+# Set 表示无序不可重复的值的集合
 empty_set = Set()  # => Set(Any[])
 # 初始化一个带初值的 Set
 filled_set = Set([1, 2, 2, 3, 4])  # => Set([4, 2, 3, 1])
@@ -417,7 +422,7 @@ end
 ## 4. 函数
 ####################################################
 
-# 关键字 'function' 用于定义函数
+# 关键字 function 用于定义函数
 # function name(arglist)
 #   body...
 # end
@@ -553,7 +558,7 @@ typeof(DataType)  # => DataType
 # Julia 并不只是静态的检查类型
 
 # 用户还可以自定义类型
-# 就跟其它语言的 records 或 structs 一样
+# 就跟其它语言的 record 或 struct 一样
 # 用 `struct` 关键字定义新的类型
 
 # struct Name
@@ -641,14 +646,17 @@ end
 function meow(animal::Lion)
     animal.roar # 使用点记号 '.' 访问属性
 end
+# => meow (generic function with 1 method)
 
 function meow(animal::Panther)
     "grrr"
 end
+# => meow (generic function with 2 methods)
 
 function meow(animal::Tiger)
     "rawwwr"
 end
+# => meow (generic function with 3 methods)
 
 # 试试 meow 函数
 meow(tigger)  # => "rawwwr"
@@ -656,8 +664,8 @@ meow(Lion("brown", "ROAAR"))  # => "ROAAR"
 meow(Panther()) # => "grrr"
 
 # 回顾类型的层次结构
-Tiger <: Cat    # => false
-Lion <: Cat     # => true
+Tiger   <: Cat  # => false
+Lion    <: Cat  # => true
 Panther <: Cat  # => true
 
 # 定义一个接收 Cat 类型的函数
@@ -733,7 +741,7 @@ fight(l::Lion, l2::Lion) = println("The lions come to a tie")
 fight(Lion("RAR"), Lion("brown", "rarrr"))  # => The lions come to a tie
 
 
-# Under the hood
+# 深入编译器之后
 # 你还可以看看 llvm 以及它生成的汇编代码
 
 square_area(l) = l * l  # => square_area (generic function with 1 method)
