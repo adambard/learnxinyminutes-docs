@@ -154,6 +154,7 @@ a = Int64[] # => 0-element Array{Int64,1}
 # 1-dimensional array literals can be written with comma-separated values.
 b = [4, 5, 6] # => 3-element Array{Int64,1}: [4, 5, 6]
 b = [4; 5; 6] # => 3-element Array{Int64,1}: [4, 5, 6]
+b[1]    # => 4
 b[end]  # => 6
 
 # 2-dimensional arrays use space-separated values and semicolon-separated rows.
@@ -277,7 +278,7 @@ e # => 5
 f # => 6
 
 # A 1-element tuple is distinct from the value it contains
-(1,) == 1  # => false
+(1,) == 1 # => false
 (1) == 1  # => true
 
 # Look how easy it is to swap two values
@@ -335,15 +336,14 @@ filled_set = Set([1, 2, 2, 3, 4])  # => Set([4, 2, 3, 1])
 push!(filled_set, 5)  # => Set([4, 2, 3, 5, 1])
 
 # Check if the values are in the set
-in(2, filled_set)  # => true
+in(2, filled_set)   # => true
 in(10, filled_set)  # => false
 
 # There are functions for set intersection, union, and difference.
-other_set = Set([3, 4, 5, 6])          # => Set([4, 3, 5, 6])
-intersect(filled_set, other_set)       # => Set([4, 3, 5])
-union(filled_set, other_set)           # => Set([4, 2, 3, 5, 6, 1])
-setdiff(Set([1,2,3,4]), Set([2,3,5]))  # => Set([4, 1])
-
+other_set = Set([3, 4, 5, 6])         # => Set([4, 3, 5, 6])
+intersect(filled_set, other_set)      # => Set([4, 3, 5])
+union(filled_set, other_set)          # => Set([4, 2, 3, 5, 6, 1])
+setdiff(Set([1,2,3,4]), Set([2,3,5])) # => Set([4, 1])
 
 ####################################################
 ## 3. Control Flow
@@ -416,15 +416,14 @@ catch e
 end
 # => caught it ErrorException("help")
 
-
 ####################################################
 ## 4. Functions
 ####################################################
 
 # The keyword 'function' creates new functions
-#function name(arglist)
-#  body...
-#end
+# function name(arglist)
+#   body...
+# end
 function add(x, y)
     println("x is $x and y is $y")
 
@@ -540,8 +539,8 @@ map(add_10, [1,2,3])  # => [11, 12, 13]
 filter(x -> x > 5, [3, 4, 5, 6, 7])  # => [6, 7]
 
 # We can use list comprehensions
-[add_10(i) for i = [1, 2, 3]] # => [11, 12, 13]
-[add_10(i) for i in [1, 2, 3]] # => [11, 12, 13]
+[add_10(i) for i = [1, 2, 3]]   # => [11, 12, 13]
+[add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5] # => [6, 7]
 
 ####################################################
@@ -554,7 +553,7 @@ filter(x -> x > 5, [3, 4, 5, 6, 7])  # => [6, 7]
 typeof(5)  # => Int64
 
 # Types are first-class values
-typeof(Int64)  # => DataType
+typeof(Int64)     # => DataType
 typeof(DataType)  # => DataType
 # DataType is the type that represents types, including itself.
 
@@ -604,17 +603,17 @@ subtypes(AbstractString)  # => 4-element Array{Any,1}:
                           # =>  Test.GenericString
 
 # Every type has a super type; use the `supertype` function to get it.
-typeof(5)  # => Int64
-supertype(Int64)  # => Signed
-supertype(Signed)  # => Integer
+typeof(5) # => Int64
+supertype(Int64)    # => Signed
+supertype(Signed)   # => Integer
 supertype(Integer)  # => Real
-supertype(Real)  # => Number
-supertype(Number)  # => Any
+supertype(Real)     # => Number
+supertype(Number)   # => Any
 supertype(supertype(Signed))  # => Real
-supertype(Any)  # => Any
+supertype(Any)      # => Any
 # All of these type, except for Int64, are abstract.
-typeof("fire")  # => String
-supertype(String)  # => AbstractString
+typeof("fire")      # => String
+supertype(String)   # => AbstractString
 # Likewise here with String
 supertype(SubString)  # => AbstractString
 
@@ -665,12 +664,12 @@ end
 # Testing the meow function
 meow(tigger)  # => "rawwwr"
 meow(Lion("brown", "ROAAR"))  # => "ROAAR"
-meow(Panther())  # => "grrr"
+meow(Panther()) # => "grrr"
 
 # Review the local type hierarchy
-Tiger <: Cat # => false
-Lion <: Cat # => true
-Panther <: Cat # => true
+Tiger   <: Cat  # => false
+Lion    <: Cat  # => true
+Panther <: Cat  # => true
 
 # Defining a function that takes Cats
 function pet_cat(cat::Cat)
