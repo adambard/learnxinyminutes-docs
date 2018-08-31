@@ -170,10 +170,12 @@ push!(a, 3)    # => [1,2,4,3]
 append!(a, b)  # => [1,2,4,3,4,5,6]
 
 # Remove from the end with pop
-pop!(b)  # => 6 and b is now [4,5]
+pop!(b)  # => 6
+b # => [4,5]
 
 # Let's put it back
-push!(b, 6)  # b is now [4,5,6] again.
+push!(b, 6)  # => [4,5,6]
+b # => [4,5,6]
 
 a[1]  # => 1  # remember that Julia indexes from 1, not 0!
 
@@ -182,14 +184,18 @@ a[1]  # => 1  # remember that Julia indexes from 1, not 0!
 a[end]  # => 6
 
 # we also have popfirst! and pushfirst!
-popfirst!(a)  # => 1 and a is now [2,4,3,4,5,6]
+popfirst!(a)  # => 1 
+a # => [2,4,3,4,5,6]
 pushfirst!(a, 7)  # => [7,2,4,3,4,5,6]
+a # => [7,2,4,3,4,5,6]
 
 # Function names that end in exclamations points indicate that they modify
 # their argument.
-sort(arr)  # => [4,5,6]; arr is still [5,4,6]
-sort!(arr)  # => [4,5,6]; arr is now [4,5,6]
 arr = [5,4,6]  # => 3-element Array{Int64,1}: [5,4,6]
+sort(arr)   # => [4,5,6]
+arr         # => [5,4,6]
+sort!(arr)  # => [4,5,6]
+arr         # => [4,5,6]
 
 # Looking out of bounds is a BoundsError
 try
@@ -227,11 +233,13 @@ a[2:end]  # => [2, 3, 4, 5]
 
 # Remove elements from an array by index with splice!
 arr = [3,4,5]
-splice!(arr, 2)  # => 4 ; arr is now [3,5]
+splice!(arr, 2) # => 4 
+arr # => [3,5]
 
 # Concatenate lists with append!
 b = [1,2,3]
-append!(a, b)  # Now a is [1, 2, 3, 4, 5, 1, 2, 3]
+append!(a, b) # => [1, 2, 3, 4, 5, 1, 2, 3]
+a # => [1, 2, 3, 4, 5, 1, 2, 3]
 
 # Check for existence in a list with in
 in(1, a)  # => true
@@ -240,8 +248,9 @@ in(1, a)  # => true
 length(a)  # => 8
 
 # Tuples are immutable.
-tup = (1, 2, 3)  # => (1,2,3)  # an (Int64,Int64,Int64) tuple.
-tup[1]  # => 1
+tup = (1, 2, 3)  # => (1,2,3)
+typeof(tup) # => Tuple{Int64,Int64,Int64}
+tup[1] # => 1
 try
     tup[1] = 3  
     # => ERROR: MethodError: no method matching 
@@ -251,23 +260,30 @@ catch e
 end
 
 # Many array functions also work on tuples
-length(tup)  # => 3
-tup[1:2]  # => (1,2)
+length(tup) # => 3
+tup[1:2]    # => (1,2)
 in(2, tup)  # => true
 
 # You can unpack tuples into variables
-a, b, c = (1, 2, 3)  # => (1,2,3)  # a is now 1, b is now 2 and c is now 3
+a, b, c = (1, 2, 3)  # => (1,2,3)  
+a # => 1
+b # => 2
+c # => 3
 
 # Tuples are created even if you leave out the parentheses
 d, e, f = 4, 5, 6  # => (4,5,6)
+d # => 4
+e # => 5
+f # => 6
 
 # A 1-element tuple is distinct from the value it contains
 (1,) == 1  # => false
 (1) == 1  # => true
 
 # Look how easy it is to swap two values
-e, d = d, e  # => (5,4)  # d is now 5 and e is now 4
-
+e, d = d, e  # => (5,4) 
+d # => 5
+e # => 4
 
 # Dictionaries store mappings
 empty_dict = Dict()  # => Dict{Any,Any} with 0 entries
@@ -419,7 +435,9 @@ function add(x, y)
     x + y
 end
 
-add(5, 6)  # => 11 after printing out "x is 5 and y is 6"
+add(5, 6)
+# => x is 5 and y is 6
+# => 11
 
 # Compact assignment of functions
 f_add(x, y) = x + y  # => f_add (generic function with 1 method)
