@@ -586,7 +586,6 @@ sherekhan = typeof(tigger)(5.6, "fire")  # => Tiger(5.6,"fire")
 abstract type Cat end  # just a name and point in the type hierarchy
 
 # Abstract types cannot be instantiated, but can have subtypes.
-using InteractiveUtils  # defines the subtype and supertype function
 # For example, Number is an abstract type
 subtypes(Number)  # => 2-element Array{Any,1}:
                   # =>  Complex
