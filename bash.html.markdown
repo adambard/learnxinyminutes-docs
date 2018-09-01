@@ -177,7 +177,7 @@ fi
 # Redefine command 'ping' as alias to send only 5 packets
 alias ping='ping -c 5'
 # Escape alias and use command with this name instead
-\ping 192.168.1.1
+ping 192.168.1.1
 # Print all aliases
 alias -p
 
