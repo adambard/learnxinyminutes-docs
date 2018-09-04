@@ -9,6 +9,7 @@ contributors:
     - ["Zachary Ferguson", "https://github.io/zfergus2"]
     - ["himanshu", "https://github.com/himanshu81494"]
     - ["Joshua Li", "https://github.com/JoshuaRLi"]
+    - ["Dragos B. Chirila", "https://github.com/dchirila"]
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
@@ -18,7 +19,7 @@ it more than makes up for it with raw speed. Just be aware of its manual
 memory management and C will take you as far as you need to go.
 
 > **About compiler flags**
-> 
+>
 > By default, gcc and clang are pretty quiet about compilation warnings and
 > errors, which can be very useful information. Explicitly using stricter
 > compiler flags is recommended. Here are some recommended defaults:
@@ -89,6 +90,8 @@ int main (int argc, char** argv)
 
   // All variables MUST be declared at the top of the current block scope
   // we declare them dynamically along the code for the sake of the tutorial
+  // (however, C99-compliant compilers allow declarations near the point where
+  // the value is used)
 
   // ints are usually 4 bytes
   int x_int = 0;
@@ -141,6 +144,17 @@ int main (int argc, char** argv)
 
   // You can initialize an array to 0 thusly:
   char my_array[20] = {0};
+  // where the "{0}" part is called an "array initializer".
+  // NOTE that you get away without explicitly declaring the size of the array,
+  // IF you initialize the array on the same line. So, the following declaration
+  // is equivalent:
+  char my_array[] = {0};
+  // BUT, then you have to evaluate the size of the array at run-time, like this:
+  size_t my_array_size = sizeof(my_array) / sizeof(my_array[0]);
+  // WARNING If you adopt this approach, you should evaluate the size *before*
+  // you begin passing the array to function (see later discussion), because
+  // arrays get "downgraded" to raw pointers when they are passed to functions
+  // (so the statement above will produce the wrong result inside the function).
 
   // Indexing an array is like other languages -- or,
   // rather, other languages are like C
@@ -433,7 +447,7 @@ int main (int argc, char** argv)
   // or when it's the argument of the `sizeof` or `alignof` operator:
   int arraythethird[10];
   int *ptr = arraythethird; // equivalent with int *ptr = &arr[0];
-  printf("%zu, %zu\n", sizeof arraythethird, sizeof ptr);
+  printf("%zu, %zu\n", sizeof(arraythethird), sizeof(ptr));
   // probably prints "40, 4" or "40, 8"
 
   // Pointers are incremented and decremented based on their type
@@ -449,7 +463,7 @@ int main (int argc, char** argv)
   for (xx = 0; xx < 20; xx++) {
     *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx
   } // Initialize memory to 20, 19, 18, 17... 2, 1 (as ints)
-  
+
   // Be careful passing user-provided values to malloc! If you want
   // to be safe, you can use calloc instead (which, unlike malloc, also zeros out the memory)
   int* my_other_ptr = calloc(20, sizeof(int));
@@ -522,9 +536,11 @@ Example: in-place string reversal
 void str_reverse(char *str_in)
 {
   char tmp;
-  int ii = 0;
+  size_t ii = 0;
   size_t len = strlen(str_in); // `strlen()` is part of the c standard library
-  for (ii = 0; ii < len / 2; ii++) {
+                               // NOTE: length returned by `strlen` DOESN'T include the
+                               //       terminating NULL byte ('\0')
+  for (ii = 0; ii < len / 2; ii++) { // in C99 you can directly declare type of `ii` here
     tmp = str_in[ii];
     str_in[ii] = str_in[len - ii - 1]; // ii-th char from end
     str_in[len - ii - 1] = tmp;
@@ -703,7 +719,8 @@ typedef void (*my_fnp_type)(char *);
 "%3.2f"; // minimum 3 digits left and 2 digits right decimal float
 "%7.4s"; // (can do with strings too)
 "%c";    // char
-"%p";    // pointer
+"%p";    // pointer. NOTE: need to (void *)-cast the pointer, before passing
+         //                it as an argument to `printf`.
 "%x";    // hexadecimal
 "%o";    // octal
 "%%";    // prints %
