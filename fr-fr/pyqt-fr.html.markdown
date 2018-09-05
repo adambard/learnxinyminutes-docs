@@ -44,8 +44,8 @@ if __name__ == '__main__':
 
 ```
 
-In order to get some of the more advanced features in **pyqt** we need to start looking at building additional elements. 
-Here we show how to introduce a dialog popup box, useful for asking the user to confirm a decision or to provide information.
+Pour obtenir certaines des fonctionnalités les plus avancées de **pyqt** nous devons commencer par chercher à construire des éléments supplémentaires.
+Ici nous voyons comment introduire une boîte de dialogue popup, utile pour demander une confirmation à un utilisateur ou fournir des informations.
 
 ```Python 
 import sys
@@ -56,27 +56,27 @@ from PyQt4.QtCore import *
 def window():
     app = QApplication(sys.argv)
     w = QWidget()
-    # Create a button and attach to widget w
+    # Creation d'un bouton attaché au widget w
     b = QPushButton(w)
     b.setText("Press me")
     b.move(50, 50)
-    # Tell b to call this function when clicked
-    # notice the lack of "()" on the function call
+    # Dire à b d'appeler cette fonction quand il est cliqué
+    # remarquez l'absence de "()" sur l'appel de la fonction
     b.clicked.connect(showdialog)
     w.setWindowTitle("PyQt Dialog")
     w.show()
     sys.exit(app.exec_())
 	
-# This function should create a dialog window with a button
-# that waits to be clicked and then exits the program
+# Cette fonction devrait créer une fenêtre de dialogue avec un bouton
+# qui attend d'être cliqué puis quitte le programme
 def showdialog():
     d = QDialog()
     b1 = QPushButton("ok", d)
     b1.move(50, 50)
     d.setWindowTitle("Dialog")
-    # This modality tells the popup to block the parent whilst it's active
+    # Cette "Modality" dit au popup de bloquer le parent pendant qu'il est actif
     d.setWindowModality(Qt.ApplicationModal)
-    # On click I'd like the entire process to end
+    # En cliquant je voudrais que tout le processus se termine
     b1.clicked.connect(sys.exit)
     d.exec_()
 
