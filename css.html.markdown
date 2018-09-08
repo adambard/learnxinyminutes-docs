@@ -135,6 +135,10 @@ selector::after {}
 .parent * { } /* all descendants */
 .parent > * { } /* all children */
 
+/* Group any number of selectors to define styles that affect all selectors
+   in the group */
+selector1, selector2 { }
+
 /* ####################
    ## PROPERTIES
    #################### */
