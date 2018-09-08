@@ -1,6 +1,5 @@
 ---
-
-language: "MontiLang"
+language: "montilang"
 filename: montilang.ml
 contributors:
   - ["Leo Whitehead", "https://github.com/lduck11007"]
