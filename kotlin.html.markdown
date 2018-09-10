@@ -370,6 +370,12 @@ fun useObject() {
     val someRef: Any = ObjectExample // we use objects name just as is
 }
 
+
+/* The not-null assertion operator (!!) converts any value to a non-null type and
+throws an exception if the value is null.
+*/
+var b: String? = "abc"
+val l = b!!.length
 ```
 
 ### Further Reading
