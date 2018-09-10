@@ -74,7 +74,7 @@ def showdialog():
     b1 = QPushButton("ok", d)
     b1.move(50, 50)
     d.setWindowTitle("Dialog")
-    # Cette "Modality" dit au popup de bloquer le parent pendant qu'il est actif
+    # Cette modalité dit au popup de bloquer le parent pendant qu'il est actif
     d.setWindowModality(Qt.ApplicationModal)
     # En cliquant je voudrais que tout le processus se termine
     b1.clicked.connect(sys.exit)
