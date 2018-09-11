@@ -1,5 +1,5 @@
 ---
-language: "Processing"
+language: processing
 filename: learnprocessing.pde
 contributors:
     - ["Phone Thant Ko", "http://github.com/phonethantko"]
@@ -417,7 +417,7 @@ However, that does not apply when you introduce external libraries, packages and
 
 ## What's Next?
 
-Here, I have compiled some useful resources:  
+Some useful resources:
 
  - [Processing Website](http://processing.org)
  - [Processing Sketches](http://openprocessing.org)
