@@ -415,9 +415,7 @@ the program flow.
 However, that does not apply when you introduce external libraries, packages and even your own classes.
 (Trust me! Processing projects can get real humongous...)  
 
-## What's Next?
-
-Some useful resources:
+## Some useful resources:
 
  - [Processing Website](http://processing.org)
  - [Processing Sketches](http://openprocessing.org)
