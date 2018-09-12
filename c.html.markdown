@@ -388,8 +388,8 @@ int main (int argc, char** argv)
   // respectively, use the CHAR_MAX, SCHAR_MAX and UCHAR_MAX macros from <limits.h>
 
   // Integral types can be cast to floating-point types, and vice-versa.
-  printf("%f\n", (float)100); // %f formats a float
-  printf("%lf\n", (double)100); // %lf formats a double
+  printf("%f\n", (double) 100); // %f always formats a double...
+  printf("%f\n", (float)  100); // ...even with a float.
   printf("%d\n", (char)100.0);
 
   ///////////////////////////////////////
