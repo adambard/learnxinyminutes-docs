@@ -41,7 +41,7 @@ enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 void function_1(char c);
 void function_2(void);
 
-// 如果函数调用在main()之后，那么必须在main()之前
+// 如果函数调用在main()之后，那么必须声明在main()之前
 // 先声明一个函数原型
 int add_two_ints(int x1, int x2); // 函数原型
 
