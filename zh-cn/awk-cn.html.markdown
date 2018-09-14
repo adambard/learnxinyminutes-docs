@@ -182,7 +182,8 @@ function string_functions(    localvar, arr) {
 
     # 搜索匹配正则的字符串
     # index() 也是搜索, 不支持正则
-    match(localvar, "t") # => 4, 't'在4号位置. (译者注: awk是1开始计数的,不是常见的0-base)
+    match(localvar, "t") # => 4, 't'在4号位置. 
+    # (译者注: awk是1开始计数的,不是常见的0-base)
 
     # 按分隔符分隔
     split("foo-bar-baz", arr, "-") # a => ["foo", "bar", "baz"]
@@ -204,8 +205,8 @@ function io_functions(    localvar) {
     # 也有printf
     printf("%s %d %d %d\n", "Testing", 1, 2, 3)
 
-    # AWK本身没有文件句柄, 当你使用需要文件的东西时会自动打开文件, 做文件I/O时, 字符串就是打开的文件句柄.
-    # 这看起来像Shell
+    # AWK本身没有文件句柄, 当你使用需要文件的东西时会自动打开文件, 
+    # 做文件I/O时, 字符串就是打开的文件句柄. 这看起来像Shell
     print "foobar" >"/tmp/foobar.txt"
 
     # 现在"/tmp/foobar.txt"字符串是一个文件句柄, 你可以关闭它
@@ -267,7 +268,8 @@ a > 0 {
     # 只要a是整数, 这块会在每一行上执行.
 }
 
-# 就是这样, 处理文本文件, 一次读一行, 对行做一些操作. 按分隔符分隔, 这在UNIX中很常见, awk都帮你做好了.
+# 就是这样, 处理文本文件, 一次读一行, 对行做一些操作. 
+# 按分隔符分隔, 这在UNIX中很常见, awk都帮你做好了.
 # 你所需要做的是基于自己的需求写一些模式和动作.
 
 # 这里有一个快速的例子, 展示了AWK所擅长做的事.
