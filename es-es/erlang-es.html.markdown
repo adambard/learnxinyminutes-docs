@@ -30,10 +30,10 @@ expresiones en el shell.
 
 - Todos los nombres de variables deben comenzar con una letra mayúscula.
 
-- Erlang tiene variables de asignación única; si intentas asignar un diferente de valor a la variable `Num`, obtendrá un error.
+- Erlang tiene variables de asignación única; si intentas asignar un diferente de valor a la variable **`Num`**, obtendrá un error.
 Num = 43. **error de excepción**: no coincide con el valor del lado derecho 43
 
-- En la mayoría de los idiomas, `=` denota una declaración de asignación. En Erlang, sin embargo,`=` denota una operación de coincidencia de patrones.
+- En la mayoría de los idiomas, **`=`** denota una declaración de asignación. En Erlang, sin embargo,**`=`** denota una operación de coincidencia de patrones.
 
 - Cuando se usa una variable vacía en el del lado izquierdo del operador `=` to está vinculado (asignado), pero cuando está atado variable se usa en el lado izquierdo, se observa el siguiente comportamiento.
 >**`Lhs = Rhs`** realmente significa esto: evaluar el lado derecho (**` Rhs`**),  y luego coincide con el resultado contra el patrón en el lado izquierdo (**`Lhs`**).
@@ -73,7 +73,7 @@ Pi = 3.14159.
 - El primer elemento de una lista es el encabezado de la lista. Si te imaginas eliminar del encabezado de la lista, lo que queda se llama cola de la lista.
 >**ThingsToBuy = [{manzanas, 10}, {peras, 6}, {leche, 3}].**
 
-- Si `T` es una lista, entonces` [H | T] `también es una lista, con la cabeza` H` y la cola `T`.
+- Si `T` es una lista, entonces **` [H | T] `** también es una lista, con la cabeza **` H`** y la cola **`T`**.
 
 + La barra vertical (**`|`**) separa el encabezado de una lista de su cola.
   **`[]`** es la lista vacía.
@@ -172,8 +172,9 @@ is_pet (A) -> false.**
 }).**
 
 - Tenemos que leer las definiciones de registro en el shell antes de que podamos definir un
- de registro. Usamos la función shell `rr` (abreviatura de los registros de lectura) para hacer esto.
-rr ("records.hrl"). % [que hacer]
+ de registro. Usamos la función shell **`rr`** (abreviatura de los registros de lectura) para hacer esto.
+
+>**rr ("records.hrl").** % [que hacer]
 
 - **Creando y actualizando registros:**
 >**X = #todo {}.
@@ -184,7 +185,7 @@ X2 = X1 # todo {estado = hecho}.
 % #todo {status = done, who = joe, text = "Corregir errata en el libro"}
 expresiones `case`**.
 
-**`filter`** devuelve una lista de todos los elementos` X` en una lista `L` para la cual **` P (X) `** es true.
+**`filter`** devuelve una lista de todos los elementos **` X`** en una lista **`L`** para la cual **` P (X) `** es true.
 >**filter(P, [H|T]) ->
   case P(H) of
     true -> [H|filter(P, T)];
@@ -230,7 +231,7 @@ generate_exception (5) -> erlang: error (a).**
 
 - Erlang se basa en el modelo de actor para concurrencia. Todo lo que necesitamos para escribir de programas simultáneos en Erlang son tres primitivos: procesos de desove, de envío de mensajes y recepción de mensajes.
 
-- Para comenzar un nuevo proceso, usamos la función `spawn`, que toma una función como argumento.
+- Para comenzar un nuevo proceso, usamos la función **`spawn`**, que toma una función como argumento.
 
 >**F = diversión () -> 2 + 2 final. % #Fun <erl_eval.20.67289768>
 spawn (F). % <0.44.0>**
