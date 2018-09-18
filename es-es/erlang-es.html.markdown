@@ -202,3 +202,26 @@ expresiones **`if`**.
   end.**
 
 **Advertencia:** al menos uno de los guardias en la expresión **`if`** debe evaluar a **`true`**; de lo contrario, se generará una excepción.
+
+## 3. Excepciones.
+
+
+- El sistema genera excepciones cuando se encuentran errores internos o explícitamente en el código llamando **`throw (Exception)`**, **`exit (Exception)`**, o **`erlang: error (Exception)`**.
+>**generate_exception (1) -> a;
+generate_exception (2) -> throw (a);
+generate_exception (3) -> exit (a);
+generate_exception (4) -> {'EXIT', a};
+generate_exception (5) -> erlang: error (a).**
+
+- Erlang tiene dos métodos para atrapar una excepción. Una es encerrar la llamada a de la función que genera la excepción dentro de una expresión **`try ... catch`**.
+>**receptor (N) ->
+  prueba generar_excepción (N) de
+    Val -> {N, normal, Val}
+  captura
+    throw: X -> {N, atrapado, arrojado, X};
+    exit: X -> {N, atrapado, salido, X};
+    error: X -> {N, atrapado, error, X}
+  end.**
+
+- El otro es encerrar la llamada en una expresión **`catch`**. Cuando atrapas un de excepción, se convierte en una tupla que describe el error.
+>**catcher (N) -> catch generate_exception (N).**
