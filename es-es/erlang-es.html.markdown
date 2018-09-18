@@ -144,7 +144,7 @@ Puede usar guardias en la cabeza de las definiciones de funciones donde están i
 max (X, Y) -> Y.**
 
 - Un guardia es una serie de expresiones de guardia, separadas por comas (**`,`**).
-- La guardia `GuardExpr1, GuardExpr2, ..., GuardExprN` es verdadera si todos los guardias expresiones `GuardExpr1`,` GuardExpr2`, ..., `GuardExprN` evalúan **`true`**.
+- La guardia **`GuardExpr1, GuardExpr2, ..., GuardExprN`** es verdadera si todos los guardias expresiones **`GuardExpr1`,` GuardExpr2`, ..., `GuardExprN`** evalúan **`true`**.
 >**is_cat (A) cuando is_atom (A), A =: = cat -> true;
 is_cat (A) -> false.
 is_dog (A) cuando is_atom (A), A =: = dog -> true;
