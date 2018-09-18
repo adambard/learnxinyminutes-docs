@@ -225,3 +225,35 @@ generate_exception (5) -> erlang: error (a).**
 
 - El otro es encerrar la llamada en una expresión **`catch`**. Cuando atrapas un de excepción, se convierte en una tupla que describe el error.
 >**catcher (N) -> catch generate_exception (N).**
+## 4. Concurrencia
+
+- Erlang se basa en el modelo de actor para concurrencia. Todo lo que necesitamos para escribir de programas simultáneos en Erlang son tres primitivos: procesos de desove, de envío de mensajes y recepción de mensajes.
+
+- Para comenzar un nuevo proceso, usamos la función `spawn`, que toma una función como argumento.
+
+>**F = diversión () -> 2 + 2 final. % #Fun <erl_eval.20.67289768>
+spawn (F). % <0.44.0>**
+
+- **`spawn`** devuelve un pid (identificador de proceso); puedes usar este pid para enviar de mensajes al proceso. Para pasar mensajes, usamos el operador **`!`**.
+
+- Para que todo esto sea útil, debemos poder recibir mensajes. Esto es logrado con el mecanismo **`receive`**:
+
+>**-module (calcular Geometría).
+-compile (export_all).
+calculateArea () ->
+    recibir
+      {rectángulo, W, H} ->
+        W * H;
+      {circle, R} ->
+        3.14 * R * R;
+      _ ->
+        io: format ("Solo podemos calcular el área de rectángulos o círculos")
+    end.**
+
+- Compile el módulo y cree un proceso que evalúe **`calculateArea`** en cáscara.
+>**c (calcular Geometría).
+CalculateArea = spawn (calcular Geometría, calcular Área, []).
+CalculateArea! {círculo, 2}. % 12.56000000000000049738**
+
+- El shell también es un proceso; puedes usar **`self`** para obtener el pid actual.
+**self(). % <0.41.0>**
