@@ -89,3 +89,116 @@ Pi = 3.14159.
 + Las cadenas están entre comillas dobles (**`" `**).
 >**Nombre = "Hola".
 [72, 101, 108, 108, 111] = "Hola".**
+
+##  2. Programación secuencial.
+
+
+- Los módulos son la unidad básica de código en Erlang. Todas las funciones que escribimos son almacenado en módulos.
+
+- Los módulos se almacenan en archivos con extensiones **`.erl`**.
+- Los módulos deben compilarse antes de poder ejecutar el código. Un módulo compilado tiene el extensión **`.beam`**.
+>-módulo (geometría).
+-export ([area / 1]).  de la lista de funciones exportadas desde el módulo.
+
++ La función **`área`** consta de dos cláusulas. Las cláusulas están separadas por un punto y coma, y ​​la cláusula final termina con punto-espacio en blanco. Cada cláusula tiene una cabeza y un cuerpo; la cabeza consiste en un nombre de función seguido de un patrón (entre paréntesis), y el cuerpo consiste en una secuencia de expresiones, que se evalúan si el patrón en la cabeza es exitoso coincide con los argumentos de llamada. Los patrones se combinan en el orden aparecen en la definición de la función.
+>**área ({rectángulo, ancho, Ht}) -> ancho * Ht;
+área ({círculo, R}) -> 3.14159 * R * R** .
+
+ ### Compila el código en el archivo geometry.erl.
+c (geometría).  {ok, geometría}
+
++ Necesitamos incluir el nombre del módulo junto con el nombre de la función para identifica exactamente qué función queremos llamar.
+>**geometría: área ({rectángulo, 10, 5}). % 50**
+**geometría: área ({círculo, 1.4}). % 6.15752**
+
++ En Erlang, dos funciones con el mismo nombre y arity diferente (número de argumentos) en el mismo módulo representan funciones completamente diferentes.
+>-**module (lib_misc)**.
+-**export ([sum / 1])**.  
+
+- función de exportación **`suma`** de arity 1  acepta un argumento:
+>**lista de enteros**.
+suma (L) -> suma (L, 0).
+suma ([], N) -> N;
+suma ([H | T], N) -> suma (T, H + N).
++ Funs son funciones **"anónimas"**. Se llaman así porque tienen sin nombre. Sin embargo, pueden asignarse a variables.
+Doble = diversión (X) -> 2 * X final.  **`Doble`** apunta a una función anónima con el controlador: **#Fun <erl_eval.6.17052888>
+Doble (2). % 4**
+
+- Functions acepta funs como sus argumentos y puede devolver funs.
+>Mult = diversión (Times) -> (fun (X) -> X * Times end) end.
+Triple = Mult (3).
+Triple (5). % 15
+
+- Las listas de comprensión son expresiones que crean listas sin tener que usar
+ funs, mapas o filtros.
+ - La notación **`[F (X) || X <- L] `** significa" la lista de **`F (X)`** donde se toma **`X`**% de la lista **`L`."**
+>**L = [1,2,3,4,5].
+[2 * X || X <- L]. % [2,4,6,8,10]**
+
+- Una lista de comprensión puede tener generadores y filtros, que seleccionan un subconjunto de los valores generados
+>**EvenNumbers = [N || N <- [1, 2, 3, 4], N rem 2 == 0]. % [2, 4]**
+
+- Los protectores son construcciones que podemos usar para aumentar el poder del patrón coincidencia. Usando guardias, podemos realizar pruebas simples y comparaciones en el de variables en un patrón.
+Puede usar guardias en la cabeza de las definiciones de funciones donde están introducido por la palabra clave **`when`**, o puede usarlos en cualquier lugar del lenguaje donde se permite una expresión.
+>**max (X, Y) cuando X> Y -> X;
+max (X, Y) -> Y.**
+
+- Un guardia es una serie de expresiones de guardia, separadas por comas (**`,`**).
+- La guardia `GuardExpr1, GuardExpr2, ..., GuardExprN` es verdadera si todos los guardias expresiones `GuardExpr1`,` GuardExpr2`, ..., `GuardExprN` evalúan **`true`**.
+>**is_cat (A) cuando is_atom (A), A =: = cat -> true;
+is_cat (A) -> false.
+is_dog (A) cuando is_atom (A), A =: = dog -> true;
+is_dog (A) -> false.**
+
+No nos detendremos en el operador **`=: =`** aquí; Solo tenga en cuenta que está acostumbrado a comprueba si dos expresiones de Erlang tienen el mismo valor * y * del mismo tipo. Contrasta este comportamiento con el del operador **`==`**:
+
+>**1 + 2 =: = 3.% true
+1 + 2 =: = 3.0. % false
+1 + 2 == 3.0. % true**
+
+ Una secuencia de guardia es una guardia individual o una serie de guardias, separadas por punto y coma (**`;`**). La secuencia de guardia **`G1; G2; ...; Gn`** es verdadero si en menos uno de los guardias **`G1`,` G2`, ..., `Gn`** se evalúa como **` true`**.
+>**is_pet (A) cuando is_atom (A), (A =: = dog); (A =: = cat) -> true;
+is_pet (A) -> false.**
+
+- **Advertencia**: no todas las expresiones de Erlang válidas se pueden usar como expresiones de guarda; en particular, nuestras funciones **`is_cat`** y **`is_dog`** no se pueden usar dentro del secuencia de protección en la definición de **`is_pet`**. Para una descripción de expresiones permitidas en secuencias de guarda, consulte la sección específica en el manual de referencia de Erlang:
+### http://erlang.org/doc/reference_manual/expressions.html#guards
+
+- Los registros proporcionan un método para asociar un nombre con un elemento particular en un de tupla De las definiciones de registros se pueden incluir en los archivos de código fuente de Erlang o poner en archivos con la extensión **`.hrl`**, que luego están incluidos en el código fuente de Erlang de archivos.
+
+>-record (todo, {
+  status = recordatorio,% valor predeterminado
+  quien = joe,
+  texto
+}).
+
+- Tenemos que leer las definiciones de registro en el shell antes de que podamos definir un
+ de registro. Usamos la función shell `rr` (abreviatura de los registros de lectura) para hacer esto.
+rr ("records.hrl"). % [que hacer]
+
+- **Creando y actualizando registros:**
+>**X = #todo {}.
+% #todo {status = recordatorio, who = joe, text = undefined}
+X1 = #todo {estado = urgente, texto = "Corregir errata en el libro"}.
+% #todo {status = urgent, who = joe, text = "Corregir errata en el libro"}
+X2 = X1 # todo {estado = hecho}.
+% #todo {status = done, who = joe, text = "Corregir errata en el libro"}
+expresiones `case`**.
+
+**`filter`** devuelve una lista de todos los elementos` X` en una lista `L` para la cual **` P (X) `** es true.
+>**filter(P, [H|T]) ->
+  case P(H) of
+    true -> [H|filter(P, T)];
+    false -> filter(P, T)
+  end;
+filter(P, []) -> [].
+filter(fun(X) -> X rem 2 == 0 end, [1, 2, 3, 4]). % [2, 4]**
+
+expresiones **`if`**.
+>**max(X, Y) ->
+  if
+    X > Y -> X;
+    X < Y -> Y;
+    true -> nil
+  end.**
+
+**Advertencia:** al menos uno de los guardias en la expresión **`if`** debe evaluar a **`true`**; de lo contrario, se generará una excepción.
