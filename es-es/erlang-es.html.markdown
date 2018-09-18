@@ -27,7 +27,7 @@ Erlang
 % de expresiones
 
 + 1.- Variables y coincidencia de patrones.
-
+-------------------------------------------
 % En Erlang, las nuevas variables están vinculadas con una instrucción `=`.
 Num = 42.% Todos los nombres de variables deben comenzar con una letra mayúscula.
 
