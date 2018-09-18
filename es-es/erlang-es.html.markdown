@@ -97,8 +97,8 @@ Pi = 3.14159.
 
 - Los módulos se almacenan en archivos con extensiones **`.erl`**.
 - Los módulos deben compilarse antes de poder ejecutar el código. Un módulo compilado tiene el extensión **`.beam`**.
->-módulo (geometría).
--export ([area / 1]).  de la lista de funciones exportadas desde el módulo.
+>**-módulo (geometría).
+-export ([area / 1]).  de la lista de funciones exportadas desde el módulo.**
 
 + La función **`área`** consta de dos cláusulas. Las cláusulas están separadas por un punto y coma, y ​​la cláusula final termina con punto-espacio en blanco. Cada cláusula tiene una cabeza y un cuerpo; la cabeza consiste en un nombre de función seguido de un patrón (entre paréntesis), y el cuerpo consiste en una secuencia de expresiones, que se evalúan si el patrón en la cabeza es exitoso coincide con los argumentos de llamada. Los patrones se combinan en el orden aparecen en la definición de la función.
 >**área ({rectángulo, ancho, Ht}) -> ancho * Ht;
@@ -116,7 +116,7 @@ c (geometría).  {ok, geometría}
 -**export ([sum / 1])**.  
 
 - función de exportación **`suma`** de arity 1  acepta un argumento:
->**lista de enteros**.
+>**lista de enteros.
 suma (L) -> suma (L, 0).
 suma ([], N) -> N;
 suma ([H | T], N) -> suma (T, H + N).
@@ -125,9 +125,9 @@ Doble = diversión (X) -> 2 * X final.  **`Doble`** apunta a una función anóni
 Doble (2). % 4**
 
 - Functions acepta funs como sus argumentos y puede devolver funs.
->Mult = diversión (Times) -> (fun (X) -> X * Times end) end.
+>**Mult = diversión (Times) -> (fun (X) -> X * Times end) end.
 Triple = Mult (3).
-Triple (5). % 15
+Triple (5). % 15**
 
 - Las listas de comprensión son expresiones que crean listas sin tener que usar
  funs, mapas o filtros.
@@ -165,11 +165,11 @@ is_pet (A) -> false.**
 
 - Los registros proporcionan un método para asociar un nombre con un elemento particular en un de tupla De las definiciones de registros se pueden incluir en los archivos de código fuente de Erlang o poner en archivos con la extensión **`.hrl`**, que luego están incluidos en el código fuente de Erlang de archivos.
 
->-record (todo, {
+>**-record (todo, {
   status = recordatorio,% valor predeterminado
   quien = joe,
   texto
-}).
+}).**
 
 - Tenemos que leer las definiciones de registro en el shell antes de que podamos definir un
  de registro. Usamos la función shell `rr` (abreviatura de los registros de lectura) para hacer esto.
