@@ -26,7 +26,7 @@ Erlang
 % de definiciones de funciones y en `case`,` if`, `try..catch`, y` receive`
 % de expresiones
 
-+ 1. Variables y coincidencia de patrones.
++ 1.- Variables y coincidencia de patrones.
 
 % En Erlang, las nuevas variables están vinculadas con una instrucción `=`.
 Num = 42.% Todos los nombres de variables deben comenzar con una letra mayúscula.
