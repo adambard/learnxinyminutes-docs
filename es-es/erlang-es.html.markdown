@@ -119,7 +119,7 @@ c (geometría).  {ok, geometría}
 >**lista de enteros.
 suma (L) -> suma (L, 0).
 suma ([], N) -> N;
-suma ([H | T], N) -> suma (T, H + N).
+suma ([H | T], N) -> suma (T, H + N).**
 + Funs son funciones **"anónimas"**. Se llaman así porque tienen sin nombre. Sin embargo, pueden asignarse a variables.
 Doble = diversión (X) -> 2 * X final.  **`Doble`** apunta a una función anónima con el controlador: **#Fun <erl_eval.6.17052888>
 Doble (2). % 4**
