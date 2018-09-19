@@ -1,0 +1,1348 @@
+[33mba526c2f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m se le da diseño a la numeracion
+[33m9ab47c1b[m se agrega numeracion
+[33m1e68da5d[m se agrego Variables y coincidencia de patrones
+[33m5e4c651c[m Merge pull request #3113 from filonenko-mikhail/master
+[33m9882d5f3[m Merge pull request #3218 from yvan-sraka/patch-1
+[33md3335643[m Update lambda-calculus-fr.html.markdown
+[33m9db9ba30[m Merge pull request #3153 from tianzhipeng-git/patch-2
+[33m4c3ea202[m wrap some line
+[33mc28e97fe[m Merge pull request #3211 from LeonardoLiuXD/master
+[33m8e04270f[m Merge pull request #3217 from divayprakash/fix-rst-rendering
+[33mc8c351d1[m Fix rst rendering issue, closes #2775
+[33m7989696a[m Merge pull request #3216 from divayprakash/fix-printf
+[33m70f896ee[m Fix printf, closes #2730
+[33md5e97c1c[m Merge pull request #3203 from muxueqz/patch-1
+[33mfdd5e19d[m Merge pull request #3209 from Hugo1380/Hugo1380-Translate-PyQt
+[33m75ec4fe2[m Merge pull request #3215 from dtkerns/master
+[33m73a5e522[m Merge pull request #3129 from shuliang/master
+[33mc8284c9c[m Update awk.html.markdown
+[33m4c36ee69[m Merge pull request #3201 from inkydragon/Julia_1.0
+[33m957d3ebf[m Merge pull request #3202 from inkydragon/Julia-zh-cn
+[33ma15ad34e[m Merge pull request #3196 from inkydragon/py3-zh-cn-fix
+[33mcddf7549[m Merge pull request #3208 from dchirila/master
+[33mf947bd3a[m Merge pull request #3173 from piumosso/patch-1
+[33m49e8895b[m Merge pull request #3149 from phonethantko/master
+[33m0bbd51ba[m Fixing the wrong placement
+[33m7daca0ea[m Updates as per request
+[33mddbd0a7e[m Merge pull request #3139 from yvan-sraka/lambda-calculus-fr
+[33md765bc8d[m Merge pull request #3194 from inkydragon/matlab-zh-cn-fix-issue
+[33mfb392645[m Merge pull request #3199 from inkydragon/matlab-all-version-fix
+[33mfc920845[m Merge pull request #3127 from lduck11007/master
+[33mafe99cb6[m Merge pull request #3212 from Vap0r1ze/master
+[33mbd921b8c[m Merge pull request #3198 from uvtc/patch-1
+[33m69118566[m Merge pull request #3200 from evbogdanov/jquery-ru
+[33m305e08b9[m Update pyqt-fr.html.markdown
+[33m3cfdf577[m Merge remote-tracking branch 'origin/master' into patch-1
+[33m6d087ae0[m Revert "[scala/en] Make return value example actually demonstrate issue" (#3213)
+[33m4bc5f2a9[m [moonscript/en] Created MoonScript markdown
+[33m0799909e[m Merge remote-tracking branch 'upstream/master' into jquery-ru
+[33m49a2bf30[m Merge pull request #2769 from cincodenada/patch-2
+[33me6b01188[m Merge pull request #3157 from alexgrejuc/master
+[33ma8bb5c76[m Update montilang.html.markdown
+[33me6c27bb8[m Merge pull request #3081 from thalesmello/patch-1
+[33md67d5079[m Merge pull request #3111 from antonalekseev/solidity-en
+[33mafb7102b[m Merge pull request #3109 from BenQuigley/patch-2
+[33m82122345[m Merge pull request #3112 from smhanes15/java-en-lambdas
+[33maedd4fff[m Merge pull request #3121 from erikarvstedt/patch-2
+[33mb5246195[m Merge pull request #3131 from BWStearns/scala_spelling
+[33m8bfba242[m Merge pull request #3138 from yvan-sraka/dynamic-programming-fr
+[33m9136fb9a[m Merge pull request #3151 from Fake4d/patch-1
+[33md27199d0[m Merge pull request #3148 from hamidra/hamid/js
+[33m0ae2fc7c[m Merge pull request #3174 from ajrussellaudio/patch-1
+[33m2d2db482[m Merge pull request #3181 from kanyuga/patch-1
+[33md13203fa[m Merge pull request #3204 from divayprakash/fix-build-issues
+[33m5cf96201[m Merge pull request #3210 from Rholais/patch-1
+[33m619f97a1[m Fix space style and little content
+[33m5da3efeb[m Add language label
+[33mb955d938[m Translate: Part 2
+[33m123c5672[m Merge pull request #3207 from divayprakash/fix-yaml-errors
+[33m5a78f9b3[m Add C99 comments, fix some typos and add clarifications in 'c.html.markdown'
+[33m2e55664c[m Fix YAML error (#3206)
+[33m7debaf3b[m Add language code suffix (#3206)
+[33m63924d02[m Add language code suffix (#3206)
+[33m4d9aff1d[m Add language code suffix (#3206)
+[33m478a43c1[m Add language code suffix (#3206)
+[33mf0849286[m Fix build error in 'build/docs/es-es/learnsmallbasic-es/index.html'
+[33me8ff91c8[m Update c-cn.html.markdown
+[33m0393e516[m [en] Adjust statement
+[33m4f8f1d0a[m Uniform output symbol
+[33m5f1439e5[m Keep a line 80 chars
+[33m54498dbc[m Merge pull request #3193 from divayprakash/fix-build-issues
+[33medf7a981[m Update localized links
+[33m246922fc[m Keep a line 80 chars
+[33m2a7bf762[m Remove useless lib
+[33m7b773b91[m Using Chinese square brackets
+[33m5c3a6d1f[m Using Intel asm syntax
+[33m639c56cc[m Polish translation
+[33m099462b4[m Reinstate test
+[33m6353b66f[m update Statements outside of code
+[33mb0bbe39b[m remove useless Blank Lines
+[33me96bfe49[m Adjust for alignment
+[33m749e81ac[m Uniform output format
+[33m4fcac31e[m ry to use as few words as possible
+[33m5691fb7a[m Update output for Julia 1.0
+[33m207e16a9[m Update to Julia 1.0 (Finish 6/6)
+[33mb622673d[m Slightly improve text for JS learning
+[33md9d04d38[m A better explanation of the Manipulation topic
+[33mdf78ed16[m Translate topic: Manipulation
+[33m656ef60a[m Translate topic: Events and Effects (part II)
+[33md8beb065[m Translate topic: Events and Effects (part I)
+[33mcf3736c7[m Translate topic: Selectors
+[33m6d8c4b19[m Start translating jQuery into Russian
+[33mefd37d96[m Correct contributors
+[33m3a76acef[m Update to Julia 1.0 (Finish 3/6)
+[33m4d2626d9[m pt-br fix #3054
+[33m130cacf7[m it-it fix #3054
+[33m93a7d100[m fix #3054
+[33m60eac5d5[m Update haxe.html.markdown
+[33mad0fb434[m update links on haxe.html.markdown
+[33mb0d4255a[m fix #2672
+[33m8f87b527[m fix #3176
+[33m3a5c47af[m fix #3054
+[33mf95558ff[m Revert "Fix build error in 'build/docs/cypher/index.html'"
+[33m926a2bdc[m Revert "Fix build error in 'build/docs/es-es/objective-c-es/index.html'"
+[33mb57cca85[m Fix build error in 'build/docs/cypher/index.html'
+[33m38ac974e[m Fix build error in 'build/docs/es-es/objective-c-es/index.html'
+[33m61abf1c1[m Fix build error in 'build/docs/pt-br/visualbasic-pt/index.html'
+[33m94bf9e85[m Fix build error in 'build/docs/es-es/visualbasic-es/index.html'
+[33mc6879483[m Fix build error in 'error build/docs/ko-kr/markdown/index.html'
+[33m5fd4665d[m Fix build error in 'error build/docs/tr-tr/markdown/index.html'
+[33m7efc2fbe[m Fix build error in 'error build/docs/pt-br/markdown/index.html'
+[33m2ab9fccb[m Fix build error in 'error build/docs/id-id/markdown/index.html'
+[33m71e089d5[m Fix build error in 'build/docs/fi-fi/markdown-fi/index.html'
+[33m0b361593[m Fix build error in 'build/docs/es-es/markdown-es/index.html'
+[33m150e8666[m Fix build error in 'build/docs/it-it/markdown/index.html'
+[33mafdacc70[m Fix build error in 'build/docs/ru-ru/markdown-ru/index.html'
+[33mdcfb420f[m Fix build error in 'build/docs/cs-cz/markdown/index.html'
+[33m35215e4a[m Use more clearly example
+[33me1ab28f4[m Keep a line 80 chars
+[33m440247a5[m Update jquery-fr.html.markdown
+[33m62625380[m Merge branch 'master' of https://github.com/adambard/learnxinyminutes-docs
+[33m9d0e755d[m mips asm
+[33m573b2f67[m md
+[33mafd18bd4[m Merge branch 'master' of https://github.com/adambard/learnxinyminutes-docs
+[33m5359298b[m Merge pull request #3150 from luc4leone/broken-link
+[33mef105ab9[m Merge pull request #3167 from archatas/patch-1
+[33mb3049e42[m Merge pull request #3155 from dhu23/master
+[33m8de7389e[m Merge pull request #3156 from isomorphisms/patch-7
+[33maf6ea670[m Merge pull request #3159 from alimpfard/master
+[33m7cc01d69[m Merge pull request #3180 from robertofd1995/patch-1
+[33m84470bdd[m Merge pull request #3183 from janniks/patch-1
+[33m08850cda[m Merge pull request #3186 from Hugo1380/Hugo1380-Fix-JQuery
+[33m4c2ca97e[m Merge pull request #2983 from ogroleg/master
+[33mba713d72[m Merge pull request #3189 from visr/julia1
+[33m79bcf8ce[m Merge pull request #3187 from divayprakash/fix-build-issues
+[33mb9bdba7a[m Merge pull request #3191 from muxueqz/master
+[33m5befc570[m Merge pull request #3182 from Spiderpig86/master
+[33mf2139847[m Update c-cn.html.markdown
+[33m67637e02[m Merge branch 'master' into julia1
+[33mf81e0f45[m Merge pull request #3190 from ephetic/patch-1
+[33m55d4030e[m add comprehension filter example
+[33m843ba701[m wrap lines longer than 80
+[33m9fab30a2[m one more quick run over the code
+[33m883fe074[m Merge pull request #3188 from divayprakash/fix-asymptotic-notation
+[33m9ed484b7[m Fix content error
+[33mcbc69e80[m Fix build error in 'build/docs/cypher/index.html'
+[33mf1bdf8f8[m Fix build error in 'build/docs/id-id/markdown/index.html'
+[33m2a4356b8[m Fix build error in 'build/docs/fi-fi/markdown-fi/index.html'
+[33mfaf66f5f[m Fix build error in 'build/docs/es-es/markdown-es/index.html'
+[33m7ec13dba[m Fix build error in 'build/docs/es-es/objective-c-es/index.html'
+[33m20edaa61[m Fix build error in 'build/docs/es-es/visualbasic-es/index.html'
+[33m330e30ed[m Fix build error in 'build/docs/tr-tr/markdown-tr/index.html'
+[33mfac7428d[m Fix build error in 'build/docs/markdown/index.html'
+[33m5ad44337[m Fix build error in 'build/docs/it-it/markdown/index.html'
+[33me0f0d44a[m Fix build error in 'build/docs/ru-ru/markdown-ru/index.html'
+[33m6e11fd12[m Fix build error in 'build/docs/common-lisp/index.html'
+[33mf5a53518[m Fix build error in 'build/docs/cs-cz/markdown/index.html'
+[33m00e1aeb1[m Fix build error in 'build/docs/zh-cn/visualbasic-cn/index.html'
+[33m286339ec[m Fix build error in 'build/docs/visualbasic/index.html'
+[33m1ab3d26f[m Fix build error in 'build/docs/nl-nl/markdown-nl/index.html'
+[33m6e5abf01[m Fix build error in 'build/docs/ko-kr/markdown-kr/index.html'
+[33md490ed15[m Fix build error in 'build/docs/toml/index.html'
+[33me4f328aa[m Fix build error in 'build/docs/pt-br/visualbasic-pt/index.html'
+[33mb06452ef[m Fix build error in 'error build/docs/pt-br/common-lisp-pt/index.html'
+[33me4894a56[m Fix build error in 'build/docs/pt-br/markdown-pt/index.html'
+[33mc8ad0d08[m more comment spacing
+[33m10f50ca2[m no need for credit
+[33m876e4135[m fix julia 0.7 deprecation warnings
+[33m93499a09[m Translate: Header + Part 1
+[33m21c899e4[m Fix(mardown layout): Missing one caracter
+[33m912a51c8[m remove some trailing spaces
+[33me18bab11[m replace tabs with 4 spaces
+[33m031d9d75[m double space before comments
+[33mcf5cc6b7[m autoformat with VS code
+[33me9dd7202[m julia update version number
+[33md4c5ff14[m Merge branch 'master' of github.com:Spiderpig86/learnxinyminutes-docs
+[33mb0d5beb4[m chore(mips.html.markdown): Added missing colon
+[33m803c6127[m chore(mips.html.markdown): Fixed missing hash for comment
+[33mbce44c5e[m Update ruby.html.markdown
+[33m7cd9cef8[m chore(mips.html.markdown): Fixed line wrapping
+[33m8239325a[m feat(mips.html.markdown): Added example for using include statements
+[33mb7bb2fc9[m feat(mips.html.markdown): Added entry about arrays
+[33m5e4079fa[m [lua/en] Fixed formatting and variable names
+[33m057511f3[m [lua/en] Added a note about the wonky ternary
+[33mffff6d9b[m feat(mips.html.markdown): Added examples of macros
+[33m04de3a34[m Clarification about sets
+[33m76bb8b21[m Merge pull request #3175 from abonte/fix-typos
+[33m9d908ebb[m feat(mips.html.markdown): Added entry on functions
+[33me6961a69[m feat(mips.html.markdown): Added examples of using loops in MIPS
+[33m9cf7115d[m fix translation
+[33m4af377e9[m fix comment
+[33m62c238fc[m Update ruby-ecosystem.html.markdown
+[33m4a2fa42b[m Update clojure-ru.html.markdown
+[33md063ea64[m Restore lost articles
+[33m6f2003a3[m Merge branch 'master' of https://github.com/adambard/learnxinyminutes-docs
+[33m8a6a3db5[m Merge pull request #3145 from foochuanwei/fsharp-en
+[33m273e91dc[m Merge pull request #3160 from yanhh0/master
+[33mfca2e822[m Merge pull request #3162 from vitaliel/elixir-ro
+[33m218778bd[m Merge pull request #3163 from kfrncs/patch-1
+[33ma0a62132[m Merge pull request #3165 from ian-bertolacci/chapel-versioning
+[33mf9f4b37f[m Merge pull request #3166 from Corvusnest/master
+[33mf661b8a2[m Merge pull request #3168 from PerrySetGo/master
+[33mb4e31c89[m Merge pull request #3169 from dlintw/master
+[33me2fdbf2e[m Merge pull request #3170 from alexmazurik/master
+[33macb72a41[m Merge pull request #3171 from lowlevelware/master
+[33m51d86629[m Merge pull request #3141 from p1v0t/master
+[33mb6aed7a0[m added example for f-string
+[33md3750923[m [awk/en] Fix atan2 args order
+[33m43664fa0[m porting to julia 0.6.4
+[33mfbba6ede[m fix typo in uk-ua/java file
+[33m9aac9b30[m fix typos in uk-ua/javascript file
+[33m6f0aec01[m shebang updated
+[33m2ddbf5b7[m Adding a missing translation
+[33m42a4ed84[m Bug fixes and words retouching
+[33m1b630b37[m [Fortran/zh-cn] Simplified Chinese Translation for Fortran 95
+[33mbf16388f[m [Fortran/zh-cn] Simplified Chinese Translation for Fortran 95
+[33md0784d21[m Note official chaple build doc
+[33m72db77d3[m permute intraction links
+[33mfdf12d97[m removed parallelism start marker
+[33ma52115be[m Make version agnostic
+[33mdbb85828[m missing $ on line 77 - $Length
+[33m81f9f0fe[m feat(mips.html.markdown): Added examples for branching and conditionals
+[33mf6300aad[m Added Romanian translation for Elixir
+[33m3ab2e88b[m SKI, SK and Iota
+[33m40de8820[m Merge branch 'master' of https://github.com/adambard/learnxinyminutes-docs
+[33mdaff9c8f[m Merge pull request #1 from alimpfard/alimpfard-patch-1
+[33m1298dfef[m [Citron/en] Add basic explanations
+[33mc421b1bd[m trimmed loc over 80 chars
+[33m093e6b62[m moved comment on sndOfTriple
+[33m8c30522d[m added info about tuples, integrated wild card use into a function definition
+[33m3315df63[m chore(.vscode): Removed config folder
+[33me566cee6[m chore(mips.html.markdown): Fixed minor space issue
+[33m119c4172[m chore(mips.html.markdown): Content now wraps at 80 chars
+[33m6f32ec98[m chore(mips.html.markdown): Fixed formatting of comments
+[33m4c025bc1[m feat(mips.html.markdown): Added mathematical operations and logical operator examples
+[33mb3d8f0cd[m feat(mips.html.markdown): Started working on math
+[33ma78942e8[m clear up wording
+[33m779840f9[m Update kdb+.html.markdown
+[33mb13b8af2[m Update kdb+.html.markdown
+[33m0d211d34[m [Ruby/en] Fixed a typo
+[33md1cf3639[m Merge pull request #3143 from luthub/patch-1
+[33m72ab89ea[m translate awk to zh-cn
+[33m626af76c[m create learnawk-cn.awk
+[33me42e4b9b[m Update bash-de.html.markdown
+[33mc2e2fca1[m Delete broken link to Eloquent Javascript - The Annotated Version by Gordon Zhu
+[33mfb78575d[m 2/7/18 4:14PM
+[33m66c62977[m 2/7/18 3:18PM
+[33mfa305fc9[m 2/7/18 2:55PM
+[33m90ee4454[m 2/7/18 12:15PM
+[33me7603786[m 2/7/18 11:50AM
+[33mdd92983e[m 2/7/18 11:17AM
+[33mc2588551[m 2/7/18 11:14PM
+[33m2a3d19ef[m add for/of to js (change description)
+[33mfaca0e79[m add for/of to js
+[33m96335abf[m 29/06/2018 - 6:02PM
+[33m45432cdc[m Update processing.html.markdown
+[33m8f5f8d57[m Initial Commit
+[33m2dbfcc8f[m Fix sentence mistake in fsharp.html.markdown
+[33m254879a3[m feat(mips.html.markdown): Added basics of loading and storing instructions
+[33m86b8304b[m feat(mips.html.markdown): Added info for data section
+[33m4fbd630d[m [python3/de] Fix a few typos
+[33maef4ab86[m Merge pull request #1 from p1v0t/p1v0t/tr-tr
+[33m16974844[m Fixed: Several typos
+[33m13812cc1[m feat(mips.html.markdown): Added description and comments for MIPS
+[33m1f4fea47[m Fixed a typo
+[33md2fb2730[m Add lang to tr-tr
+[33ma5f04d7e[m Merge pull request #3101 from a3f/master
+[33m44f9834b[m Merge pull request #3100 from chrisdusovic/master
+[33m65041984[m Merge pull request #3099 from gergesh/master
+[33m69b7519f[m Merge pull request #3097 from coreyward/patch-1
+[33m2b19ea7a[m Merge pull request #3095 from emilyaviva/master
+[33mc08e13d8[m Merge pull request #3135 from p1v0t/master-tr
+[33ma1680153[m Translate Lambda Calculus in French
+[33m8aa693c8[m Fix typos in French version of Dynamic Programming tutorial
+[33m11dbfc2e[m [python3/it] Added italian translation Python3 (#3094)
+[33m4e48207b[m Merge branch 'master' of https://github.com/p1v0t/learnxinyminutes-docs
+[33m41b64ee7[m C++/tr
+[33m5e0781e3[m Update: credit added.
+[33mbffdaa54[m Merge pull request #3133 from prertik/master
+[33m30a2c3a5[m Update ISSUE_TEMPLATE.md
+[33m1bb3b749[m Update perl6-es.html.markdown
+[33me24fc2ee[m [perl6/es-es] Added Spanish translation for Perl 6 (#3093)
+[33ma462b444[m Correct English a/an usage
+[33m685f83e1[m Merge pull request #3092 from nemild/make-event-consistent
+[33m127d91a4[m Merge pull request #3086 from veghp/master
+[33ma1073cdb[m Merge pull request #3085 from Rholais/patch-1
+[33md3ab7a1e[m Merge pull request #3080 from meleu/patch-1
+[33m198df477[m update to swift 4.1
+[33me1d76fb6[m Create montilang.html.markdown
+[33m1586ed93[m Git/tr
+[33m50021745[m  css: add selector groups
+[33m3fd6697c[m Common Lisp: ru-ru
+[33mcc0329ef[m [Java/en] Added Lambdas section.
+[33ma80844ca[m [Java/en] Added Lambdas section.
+[33m47f49bc2[m Fix dead link to style guide, mention Emacs mode
+[33m3f027999[m Removed semicolons
+[33m21ec02e5[m [tcl/en] Workaround for broken syntax highlighting
+[33m2e7ecbae[m Add missing block referred to in comment
+[33mf1cc661f[m Update c.html.markdown
+[33m74ed7c68[m Various improvements to Ruby language doc
+[33m354543c9[m add clarifying example and text for date/time offsets
+[33m588b699b[m Make event name consistent, remove trailing spaces
+[33m71389bd4[m Merge pull request #3091 from adambard/prertik-patch-5
+[33m591a42af[m Merge pull request #3090 from adambard/prertik-patch-4
+[33m1f6d6e1e[m Merge pull request #3089 from adambard/prertik-patch-3
+[33m85b6c3e8[m Merge pull request #3088 from adambard/prertik-patch-2
+[33mf5bdb745[m Update bf-pt.html.markdown
+[33m1e875d99[m Update bf-id.html.markdown
+[33m0345980f[m Update bf-fr.html.markdown
+[33m41766243[m Update bf-es.html.markdown
+[33m5f3fd665[m Update bf.html.markdown
+[33mf3416abd[m Merge pull request #3087 from adambard/prertik-patch-1
+[33mb65ea41d[m Update name #2120
+[33m19f3a857[m Update matlab.html.markdown
+[33ma8911cb7[m Update matlab.html.markdown
+[33me5422acf[m Reorder confusing comments
+[33mbb18dc81[m Update pythonstatcomp.html.markdown
+[33m3743c596[m Improvements to syntax and comments
+[33m8330d94d[m small typo and better translated words
+[33m35cfeef9[m Merge pull request #3079 from brannx/patch-1
+[33m7dcd513d[m Update kotlin-ru.html.markdown
+[33mcaa89930[m Assorted fixes
+[33m3fb60810[m Merge pull request #3075 from ebzzry/master
+[33mf4c124a9[m Same filename with english version fix
+[33mbc2b3105[m Merge pull request #3048 from Tapmemer/master
+[33m9764b328[m Fix #3074
+[33m99a94141[m Merge pull request #3076 from ebzzry/nix
+[33m7177047a[m Merge pull request #3073 from vegito2002/patch-1
+[33m631d1c1b[m Merge pull request #3072 from Imlisten/patch-1
+[33m7dd95d99[m [nix/en]: remove and update broken link
+[33m6968c572[m [common-lisp/en]: clean up and add more information
+[33m50f93a94[m Corrections on Python3 page
+[33m4d49a48d[m [typescript/zh-cn] fix reference (#3040)
+[33m9f33f260[m Fix typo
+[33m02524e04[m Fix URLs
+[33m784bc7a9[m Fix URLs
+[33mb0cbcaad[m Fix URLs
+[33m5ae8ac99[m [Dart/pt-br] Translated Dart to pt-BR (#3071)
+[33m99409ef1[m Merge pull request #3056 from ebzzry/master
+[33m1e88ceb0[m Merge pull request #3057 from ebzzry/fix-typo
+[33meefc0a9c[m [prolog/en] Corrected statement about unifying two free terms (#3033)
+[33m7d303e50[m Remove per the request #3017
+[33m5fa3782b[m Fix #3058
+[33m7a90605d[m Fix #3060
+[33m5cf4dcf1[m Merge pull request #3067 from OpenDGPS/patch-1
+[33m0a9fe08b[m Merge pull request #3063 from xtyxtyx/crystal-cn
+[33m20ea089e[m Merge pull request #3047 from edwtjo/nix-sv
+[33m03b9fce5[m follow-up for #2768
+[33m52a4a4ac[m [scala/en] A few editing improvements as I read through (#2768)
+[33m93bd3ab9[m Update nix-sv.html.markdown
+[33ma526d2f4[m Merge pull request #3046 from edwtjo/haskell-sv
+[33me3b0f32c[m Update haskell-sv.html.markdown
+[33m3b0a97df[m Merge pull request #3037 from twopoint718/master
+[33ma26d106e[m Fix language name
+[33md57fe66c[m Fix language name
+[33m0fbbab2a[m Merge pull request #3034 from suuuzi/bf/pt-br
+[33me6f08294[m Merge pull request #3032 from GloverDonovan/fix/nim-comments
+[33m8e65231b[m [Pascal/en] Add pascal language (#3025)
+[33m51b591a3[m Merge pull request #3022 from aswinsanakan/patch-1
+[33m99321d9e[m Merge pull request #3021 from fatihturan/css-tr
+[33m9d70058b[m Update and rename css.html.markdown to css-tr.html.markdown
+[33m371620a6[m Merge pull request #3019 from mvhirsch/unify-namespace-exceptions
+[33mbcd41be2[m [kdb+/en] Updated external links to the KX wiki (#3008)
+[33mafdc29ec[m Merge pull request #3003 from hinet60613/pcre-tw
+[33m96333145[m Update pcre-tw.html.markdown
+[33m0bbd9875[m Merge pull request #3001 from Neinei0k/bash-en
+[33m27765075[m Merge pull request #3000 from Neinei0k/vim-en
+[33m5a666e37[m Merge pull request #2998 from sfuhrm/master
+[33med388112[m Merge pull request #2922 from jerodev/master
+[33m7ad8be6d[m Update html-nl.html.markdown
+[33mc11335a6[m Merge pull request #2870 from jcouyang/make-cn
+[33m960cf986[m Update make-cn.html.markdown
+[33m496d4947[m Merge pull request #2923 from paulohrpinheiro/latex-pt
+[33m8c10a04b[m Merge pull request #2921 from maxsun/lambda-calculus
+[33mb4a65990[m Merge pull request #2920 from santifa/master
+[33m01836f41[m Merge pull request #2910 from ditam/python-hungarian
+[33mf5951674[m Merge pull request #3036 from JoshuaRLi/master
+[33m7cdf1053[m Merge pull request #3064 from jimmydg/prolog-en
+[33m3fed4b11[m Merge pull request #3068 from BenQuigley/patch-1
+[33m728a09da[m Merge pull request #3069 from Monpt7/master
+[33mde276acf[m Merge pull request #3070 from Monpt7/fr_corrected_mistake
+[33m2abfabae[m removing false statement about classes (#3039)
+[33mc0868506[m [crystal/fr] Corrected mistake
+[33m01ab4a60[m [crystal/en] Corrected mistake
+[33m27bf16ac[m IPython notebooks are Jupyter notebooks now
+[33m3d847f5e[m Update go-de.html.markdown
+[33m543a1b51[m [prolog/en] Fixed typo in expected result, changed 'deterministic' jargon to its full name
+[33mc1037971[m shouldnt copy
+[33m999e0ce3[m Delete bf-it.html.markdown
+[33m7f9c345c[m Merge pull request #3005 from alexandru-cazacu/patch-1
+[33mc8eb5b82[m Merge pull request #3052 from ingydotnet/yaml
+[33m10f0121b[m Merge pull request #3051 from simsieg/patch-1
+[33m064b5307[m Merge pull request #3053 from nemild/update-to-latest-solidity
+[33m6d41c355[m Merge pull request #3059 from saplf/master
+[33m53a38e1d[m Merge pull request #3062 from iezepov/patch-3
+[33mdaa8e8e6[m Translate
+[33mc90ee720[m [go/en] Small typo
+[33m05f090fb[m More idiomaticallywq
+[33m213019c6[m [python3/en]: fix typo
+[33m60fcfe86[m [python/en]: fix typo
+[33m23c11c9a[m Merge branch 'master' into update-to-latest-solidity
+[33m7cd43d8a[m [yaml/en] Use preferred style; add missing uses
+[33m0d0b536b[m Fix naming of constant
+[33m1cb515c5[m [nix/sv-se] initial
+[33macf13c54[m copy
+[33m1eb85345[m typo
+[33mfce4a810[m Merge pull request #3020 from pashcovich/patch-1
+[33mf1564399[m Merge pull request #3018 from pimgeek/patch-1
+[33m19bd8a7a[m Merge pull request #3010 from loomnetwork/master
+[33m97b0390d[m Merge pull request #3045 from bmusin/patch-2
+[33ma6ec4c42[m Merge pull request #3044 from bmusin/patch-1
+[33m5c6411dd[m [haskell/sv-se] initial
+[33m654e0052[m [perl6/en]: fix spelling
+[33m11e12b93[m fix typo
+[33md3fe11f6[m Merge pull request #3041 from Colin-Colin/patch-1
+[33meb3918dd[m Merge pull request #3030 from andys8/elm-tuple-access
+[33m0d33508a[m fix typo
+[33m9999a30e[m Add `case` expression to SML docs
+[33m81a637e1[m Update c.html.markdown
+[33m95d41ddf[m Update c.html.markdown
+[33md28abc39[m updating BF translation
+[33m42f9329b[m Merge pull request #1 from adambard/master
+[33m84881b3c[m Initial update to latest solidity
+[33m563e135e[m Fix the multiline Nim comment
+[33mc52ae611[m [elm] Update code to access tuples
+[33m70a36c9b[m Merge pull request #3028 from apooravc/master
+[33mc06af7a5[m Added a resource to read for Javascript
+[33m83d3efe4[m follow-up on #2971
+[33m33861711[m Fix omitting in list and clarified comments
+[33m3ed8f9c8[m [css/tr]Turkish translate for CSS documentation
+[33m50dbc5e7[m Update python3-ru.html.markdown
+[33m973883c5[m unifies namespace variants in exception handling
+[33m8d09ffb0[m Update javascript-cn.html.markdown
+[33mc6c6b819[m add ethfiddle
+[33m6c58f36f[m [bf/it] Added italian translation for brainfuck
+[33m0e046521[m Create PCRE-tw.
+[33m2dda2601[m [bash/en] Add arrays and alias
+[33m20af61ee[m [vim/en] Add sorting, folding, change letter case.
+[33m990f5129[m Update CONTRIBUTING.markdown
+[33m6c439fa8[m Merge pull request #2999 from damireh/patch-1
+[33mb777242f[m Update crystal.html.markdown
+[33m96436a33[m Fix for wrong/mixed parenthesis usage.
+[33m3e52b2e2[m Merge pull request #2971 from groovytron/master
+[33mf924aa69[m Merge pull request #2992 from Neinei0k/master
+[33maff623e2[m Comments improved
+[33m5e818537[m Merge remote-tracking branch 'upstream/master'
+[33m20893f5d[m Change file name as requested by @prertik
+[33m6ce71c56[m Merge pull request #2973 from milenaduo/patch-1
+[33m9961c90f[m Merge pull request #2974 from milenaduo/patch-2
+[33m2b50811f[m Merge pull request #2988 from Retoc/master
+[33md8cc6800[m Merge pull request #2991 from meisyarahd/master
+[33me42fa72b[m [bf/id-id] Add Indonesian translation for brainfuck language (#2985)
+[33mbeec5bf9[m Fix file names (#2987)
+[33m2d4a8f38[m Merge pull request #2993 from nasgul/patch-8
+[33m0e0ece66[m Merge pull request #2995 from thanhpd/markdown-vi
+[33m62a5b027[m Merge pull request #2996 from ian-bertolacci/patch-3
+[33m2ed552d1[m Merge pull request #2972 from thanhpd/master
+[33mc6c5dc4d[m Merge pull request #2958 from ferfedel/patch-2
+[33m8b9732e2[m Merge pull request #2957 from ferfedel/patch-1
+[33ma877bebb[m [chapel/en] Update links
+[33m28ce1bc6[m Added Vietnamese translation for Markdown language
+[33m4aa729da[m Merge branch 'master' of https://github.com/thanhpd/learnxinyminutes-docs
+[33mef8e7278[m Added Vietnamese translation for Sass language
+[33m90058a76[m Add delete of variable
+[33mcbb09c2d[m [javascript/en] Add several usefull functions to work with arrays
+[33m3ffb8256[m Add data type checking examples
+[33m61c8a084[m Merge pull request #2990 from adambard/bemusementpark-patch-1
+[33m833c7bea[m Improve arithmetic output
+[33mab34af7c[m Merge pull request #2989 from adambard/bemusementpark-patch-1
+[33md1ed7e02[m Improve TreeMap documentation
+[33m59dc72ce[m [nix/de] fixed some typos
+[33m50603013[m Merge pull request #2970 from ksami/ksami-csharp-7
+[33m0aaae265[m Fix file names in french (#2984)
+[33m2e218f5d[m [python/ua] Add Ukrainian translation
+[33mf4b01968[m Merge pull request #2975 from milenaduo/patch-3
+[33mce1d290a[m Merge pull request #2976 from milenaduo/patch-4
+[33m65e4c2ef[m Merge pull request #2977 from chris54721/patch-1
+[33m4e46adce[m Merge pull request #2978 from chris54721/patch-3
+[33mc5ea4e40[m Merge pull request #2979 from Kyle-Mendes/vim-help-docs
+[33m8fdd3de4[m Merge pull request #2980 from Kyle-Mendes/javascript-semicolons
+[33m7be206ce[m Merge pull request #2982 from adambard/bemusementpark-patch-1
+[33m32090679[m Improve comments on abstract classes
+[33md5ea29ce[m Merge pull request #2981 from adambard/bemusementpark-patch-1
+[33m56a82546[m Improve comment about final modifier
+[33m575dc7c0[m Adding missing semicolons
+[33m437adfa5[m Adding help documentation
+[33m6800d632[m Cleaning up whitespace
+[33mf21a5f06[m [rst/it] Improve wording
+[33m9ac6b577[m [go/it-it] Wording and missing translation
+[33m5f5dd742[m [dynamic-programming/pt-br] - Better reading
+[33m01bcf645[m [dynamic-programming/pt-br] - Small typos
+[33m1504f4af[m [dynamic-programming/pt-br] - Small typos
+[33m46fab3c0[m [dynamic-programming/pt-br] - Small typos
+[33me8c59853[m Merge branch 'master' of https://github.com/thanhpd/learnxinyminutes-docs
+[33m5a511b6e[m Added Vietnamese translation for Sass language
+[33m7466732d[m Added Vietnamese translation for Sass language
+[33mb443f3c7[m Merge pull request #2956 from SmuSmu/master
+[33me063c7ef[m Update csharp-pt.html.markdown
+[33mc14dc8fd[m Update csharp-pt.html.markdown
+[33m5a9f042e[m Corrected french mistakes
+[33m6d836a9f[m Add more c#7 features
+[33md5c14ac9[m Merge pull request #2967 from daniloyamauti/patch-3
+[33m6a96f8b4[m Merge pull request #2965 from lbertolazzi/patch-4
+[33m90f972ae[m Merge pull request #2964 from lbertolazzi/patch-3
+[33mb9596766[m Merge pull request #2963 from lbertolazzi/patch-2
+[33mb89cfb7b[m Merge pull request #2962 from daniloyamauti/patch-1
+[33me65fa44b[m Merge pull request #2961 from lbertolazzi/patch-1
+[33m6d0502db[m Merge pull request #2960 from ferfedel/patch-4
+[33m08262563[m Merge pull request #2959 from ferfedel/patch-3
+[33mbaa8abed[m Merge pull request #2952 from arfurlaneto/patch-1
+[33m7f6e6cc3[m Merge pull request #2950 from thanhpd/master
+[33m41ffb9c4[m Merge pull request #2949 from ksami/ksami-csharp-tuples
+[33m4a40fa21[m Merge pull request #2946 from ksami/ksami-csharp-delegates
+[33m7620e7b4[m Merge pull request #2944 from paulohrpinheiro/whip-pt
+[33mca7cb0d7[m Merge pull request #2943 from santifa/lol
+[33m1d8756c3[m Merge pull request #2968 from daniloyamauti/patch-4
+[33m189336c6[m [visualbasic/pt-br] Small typos
+[33m1569318b[m [c++/pt-br] Small typos
+[33madb4fb69[m [perl/pt-br] Missing translation
+[33me787065d[m [perl/pt-br] Missing translation
+[33m469740c3[m [perl/pt-br] Missing translation
+[33m12d42772[m [c++/pt-br] Small typos
+[33m18eb083f[m [css/pt-br] Missing translation
+[33mee3f3437[m [csharp/pt-br] Missing translation
+[33mb5cac96e[m [csharp/pt-br] Missing translation
+[33m9f7322b6[m [csharp/pt-br] Missing translation
+[33m5670c738[m [csharp/pt-br] Missing translation
+[33m312ac2ce[m Merge pull request #2953 from arfurlaneto/patch-2
+[33md0e145ea[m Merge pull request #2954 from arfurlaneto/patch-3
+[33m3094460e[m Merge pull request #2955 from arfurlaneto/patch-4
+[33m3a41a600[m html-de.html.markdown
+[33m5a4785ca[m [javascript/pt-br] Small typo
+[33ma246fb40[m [json/pt-br] Small typo
+[33md1b6dda7[m [java/pt-br] Small typo
+[33mab84fe8c[m [c#/pt-br] Small typos
+[33m2e7207a1[m Merge pull request #2951 from allwinpb/master
+[33m838efd36[m Fix link to javascript docs
+[33mab094ff0[m Re-edit Less translation file
+[33m4d248efd[m Fixed minor typo for Less translation file
+[33m52324c9d[m Added Vietnamese translation for Less
+[33m4eb33f98[m add topics for tuples to csharp/en
+[33m70c9d58b[m Merge pull request #2947 from Senuros/master
+[33m09fd1892[m Merge pull request #2918 from paulohrpinheiro/awk_pt-br
+[33mbe1381f6[m [edn/de] fixing typos
+[33m95b5f9a4[m #2314 add delegates and events to csharp/en
+[33me5ea3d0b[m Merge pull request #2936 from CraryPrimitiveMan/patch-1
+[33md5e7aaad[m Merge pull request #2937 from ksami/ksami-csharp-strings
+[33m11bd39f2[m Merge pull request #2938 from victorwpbastos/patch-1
+[33mf6ced5ec[m Merge pull request #2939 from victorwpbastos/patch-2
+[33m0de680b3[m Merge pull request #2940 from victorwpbastos/patch-3
+[33m24f4ff62[m Merge pull request #2941 from victorwpbastos/patch-4
+[33m5ef6a20e[m Merge pull request #2942 from thiagofribeiro/patch-1
+[33m419a561f[m Merge pull request #2945 from paulohrpinheiro/fix-whip-en
+[33m0b1190b2[m Merge pull request #2924 from kaymmm/python-inheritance
+[33m55efb934[m python3/en cleanup for single inheritance merge
+[33m265042a2[m Add comment to separate functions categories
+[33mfc57b354[m Translate whip to pt_BR
+[33m10bd1721[m Translated LOLCODE to german
+[33mb057f5f2[m [c/pt-br] small typo
+[33m0f3b319d[m [c++/pt-br] Small typos
+[33mb485624a[m [asymptotic-notation/pt-br] Small typo
+[33m62892f4c[m [asciidoc/pt-br] Small typo
+[33md7326e1b[m small typo
+[33m467f143b[m add example for verbatim interpolated string
+[33m3e072363[m missed out the @ symbol
+[33mb01b53a4[m clarify use case for verbatim strings
+[33ma01402b7[m Update go-cn.html.markdown
+[33m7c2bd365[m Merge pull request #2929 from denniskeller/pyqt-de
+[33m12247cce[m Merge pull request #2930 from denniskeller/qt-de
+[33mfe6a90be[m Merge pull request #2931 from denniskeller/edn-de
+[33m91ef5e5c[m Merge pull request #2932 from denniskeller/nix-de
+[33md5308a81[m Merge pull request #2935 from jdjohnston/edn-tags
+[33mf03c79d7[m Merge pull request #2933 from thanhpd/master
+[33m25c57dc0[m Update typescript-vi.html.markdown
+[33ma6562373[m Added Vietnamese translation for TypeScript language
+[33m8d311de2[m [nix/de] Translate nix to german
+[33m8dedecc9[m [edn/de] Translate edn to german
+[33maa94772b[m [qt/de] Translate qt to german
+[33m8368738b[m [pyqt/de] Translate pyqt to german
+[33m2eb1aa6a[m Update html.html.markdown
+[33md86597d4[m Improve the "Tagged Elements" section of EDN doc
+[33m65d4f596[m Merge pull request #2928 from Ale46/rst/it-it
+[33m2cc38552[m [rst/it-it] Italian translation for rst
+[33mb88f112e[m Merge pull request #2927 from AdamFrey/patch-1
+[33m2dc7a13e[m Merge pull request #2925 from kaymmm/nim-multiline-comments
+[33m2e9cad56[m Merge pull request #2926 from kaymmm/r-require-curl
+[33m1e97fa34[m [edn] Fix incorrect format for EDN symbols
+[33mb3cb49f6[m [r/en] Fix read.csv per #2236
+[33m5bbb8ef6[m [nim/en] Add multi-line comments
+[33m9b6d8430[m [python3/en] Add single inheritance section
+[33m5c8c0186[m Translate latex to pt_BR
+[33m35c2d3d2[m Added dutch translation for html
+[33m8676459a[m Added lambda calculus
+[33m4d3637bf[m Merge pull request #2917 from b10s/patch-1
+[33m757128ad[m fixed line length
+[33mb5a681fd[m dynamic programming de translation
+[33m42d9ae2d[m Translate awk to pt_BR
+[33mcccc97c0[m Update ruby-ru.html.markdown
+[33mbd9021d4[m Merge pull request #2911 from ditam/dynamic-programming-markdown-escaping
+[33m76d91ae4[m Merge pull request #2913 from ditam/haxe-typos
+[33m86bc2d4e[m Merge pull request #2914 from ditam/html-duplicate
+[33m9a4ce135[m Merge pull request #2915 from jgjadaoag/forth-fix-tuck-definition
+[33m233aabca[m Merge pull request #2916 from Xeleron/master
+[33m53604f03[m added signed commit example
+[33m6b826475[m Fix tuck definition
+[33m90e38481[m add missing lang declaration to html-it
+[33m5239dfad[m fix small typos
+[33mc174cb08[m add backticks to escape markdown formatting characters
+[33m24025fc2[m add Hungarian translation of Python entry
+[33m8612e00b[m Merge pull request #2909 from prertik/master
+[33m894ddf5e[m fix for #2859
+[33mec62935d[m Merge pull request #2908 from Xeleron/master
+[33m340a7b6d[m add more commit examples
+[33m4ffa934f[m Merge pull request #2907 from thejoycekung/patch-1
+[33m027e152d[m Fixed line 59 - printing
+[33m593e2baf[m Merge pull request #2905 from attil-io/master
+[33m7b7e3cd2[m Merge pull request #2906 from Saugardas/javascipt_ua_fix_typo
+[33m2095b65d[m [javascript/uk-ua] Fix typo
+[33m1ca9a091[m Fix typo
+[33m29e2f9ed[m Merge pull request #2904 from Saugardas/add_russian_translation_for_haml
+[33mace91ad5[m Merge pull request #2903 from kenrick95/master
+[33m03d10722[m [haml/ru] Add Russian translation for haml
+[33mefa793fb[m Fix typo in CHICKEN language
+[33m7a2a109f[m Merge pull request #2901 from fnscoder/master
+[33m1d8825eb[m Merge pull request #2895 from jjuanhdez/patch-1
+[33m72d86bb2[m Merge pull request #2902 from chris-martin/nix-question-mark
+[33m667cbfe2[m [nix/en] document using ? to test set membership
+[33m7415df00[m Merge pull request #2896 from Nameguy/master
+[33m3c37015d[m Merge pull request #2897 from Ale46/markdown/it-it
+[33m9b7a7499[m Merge pull request #2898 from ian-bertolacci/patch-2
+[33m33acac42[m Merge pull request #2899 from damian-rzeszot/swift-style-guidelines
+[33m6d2bd246[m Merge pull request #2900 from fplucas/master
+[33m8c2c5091[m delete duble file asymptoticnotation in pt-br
+[33m13ab5a04[m rust-pt.html.markdown to pt-br folder
+[33me7135ad6[m Merge pull request #2891 from fplucas/master
+[33mcfb7b656[m [java/fr] -Create java-fr.html.markdown (#2762)
+[33me8ee66c8[m swift | fix style guidelines
+[33m9a9e52b5[m swift | fix style guidelines
+[33md01e5242[m swift | fix style guidelines
+[33m62d4b148[m swift | fix style guidelines
+[33m8d9418f2[m [chapel/en] Chapel version update, mixed quotes
+[33m39665aaa[m Merge pull request #2886 from banan314/master
+[33mb8227057[m [markdown/it-it] Fix comment line too long
+[33mb90490ae[m [markdown/it-it] Fix some escape
+[33m44c0ba4f[m [markdown/it-it] Update structure and typo fix
+[33m0d85a037[m Update smalltalk.html.markdown
+[33md0ecb9f4[m Update smalltalk.html.markdown
+[33m7d2dcc0d[m Create learnsmallbasic-es.html.markdown
+[33mbb842f0e[m Merge pull request #2885 from haydarai/master
+[33m973532a0[m Merge pull request #2890 from sridhareaswaran/patch-1
+[33m64b1378b[m Merge pull request #2892 from tobyjsullivan/fix-default-method
+[33m8bccfb8b[m Add default keyword
+[33mc41bfe38[m [qt/pt-br] Translation of Qt to pt-br.
+[33m7a31cbd8[m Merge pull request #2887 from fplucas/master
+[33m11fed862[m Filename learnpyqt.py to learnpyqt-pt.py
+[33md66603dd[m Updating repo
+[33m7559305f[m added use of break keyword & new tutorial link
+[33mccaa6ce5[m Merge pull request #2888 from fnscoder/master
+[33mbb457d24[m fix names in pt-pt
+[33md00c5e67[m fix names in pt-br
+[33mf19b74ff[m Merge pull request #2881 from Ale46/html/it-it
+[33mc70502ea[m Merge pull request #2872 from 0xbf00/master
+[33m31b9d9b8[m [pyqt/pt-br] Translation of PyQt to pt-br.
+[33m9afd4fd1[m [groovy] small fix in iteration over a map
+[33mc80eeab9[m [rst/id-id] Add Indonesian translation for RST
+[33mc7036d6e[m Merge pull request #2882 from Ale46/matlab/it-it
+[33m6fc63e34[m Merge pull request #2883 from harrymt/patch-3
+[33m4f86cfaa[m [bash/en] Fixed formatting for The Black Hole
+[33m2a0ec06f[m Merge pull request #2880 from haydarai/master
+[33md1d774d2[m Merge pull request #2875 from Saugardas/haml_en_updating
+[33m7dca53df[m [matlab/it-it] removed text left from the original translation
+[33mf70e1e35[m [html/it-it] adds Italian translation for html
+[33m49629e8d[m [hq9+/id-id] Add Indonesian translation for HQ9+
+[33m2b54b468[m Merge pull request #2876 from kaymmm/zfs-md-lists
+[33m82efe7dc[m Merge pull request #2877 from kaymmm/perl6-formatting
+[33mc5e021be[m Merge pull request #2878 from kaymmm/bash-output
+[33m96f62560[m [bash/en] Provide example outputs for #549
+[33mc8ba31ad[m [perl6/en] Formatting consistency
+[33mf7198dfc[m [zfs/en] Fix unordered lists markdown formatting
+[33mda85cc82[m [haml/en] Fix mistakes in English text
+[33mf0664e67[m fix formatting
+[33m938988bd[m [haml/en] Add more information
+[33me27533f7[m [solidity/en] Fixed #2873
+[33m8f990317[m [c/en] Correct off-by-one error
+[33ma8ad68ae[m Merge pull request #2868 from abelsromero/feat/add_AsciiDoc_catalan
+[33m386c4882[m gnu make zh_cn
+[33m35d5487a[m Merge pull request #2869 from Monschichi/patch-1
+[33mbd945248[m fixed missing brackets for print
+[33m4af56e91[m [asciidoc/ca] adds Catalan translation for AsciiDoc
+[33m26065d27[m Merge pull request #2867 from abelsromero/fix_wrong_asciidoc_titles_levels
+[33m681f7cd6[m Merge pull request #2866 from lalnuo/patch-1
+[33m3c38bb81[m [asciidoc/en][asciidoc/de][asciidoc/is][asciidoc/pt] fixed wrong AsciiDoc section levels
+[33m1e321424[m [go/fi] Fix typo
+[33m2ef2ea72[m Merge pull request #2860 from abelsromero/feat/add_AsciiDoc_spanish
+[33m106a81cc[m Merge pull request #2863 from groovytron/master
+[33m2c774e7e[m Added link to he-arc/livre-python book
+[33md88ae3b3[m applied fixes from review
+[33md14d97c2[m Translated the f-string example and updated translators list
+[33m69709b44[m Merge pull request #2862 from Saugardas/actualize_ruby_translation
+[33mda6ee99f[m Corrected some spelling mistakes and added an f-string example
+[33m216044e4[m [ruby/ru] Add missing from English version
+[33m12d0381c[m [asciidoc/es-es] adds Spanish translation for AsciiDoc
+[33m33d6dce8[m Update c.html.markdown
+[33ma5c23e8a[m Update c.html.markdown
+[33ma6e46061[m Update c.html.markdown
+[33m67e2ff01[m Try a backslash to fix formatting
+[33m8cba5570[m Merge pull request #2857 from patricktcoakley/new-edits
+[33m4fd02c31[m Merge pull request #2856 from gim-/patch-1
+[33m5e6262e9[m Add a link to ML For The Working Programmer, as it has recently been released for free for personal use by the original author.
+[33md3cdfe33[m Remove Dolphin's clutter from the repository
+[33mcd379d9e[m [c++/en] container -> vector (#2838)
+[33ma148661c[m Merge pull request #2855 from abelsromero/feat/added_further_reading_section_to_AsciiDoc
+[33mca4b1b70[m Update asciidoc.html.markdown
+[33m0e32ded9[m fixes #2644 add `Further Reading` section to AsciiDoc
+[33m177db388[m [haskell/en] Added Happy Learn Haskell Tutorial. Fixed #2177
+[33m8c7e2653[m Merge pull request #2845 from exic/master
+[33ma392fec7[m Extend review.
+[33m6e56aa13[m Merge pull request #2844 from jdjohnston/edn-change
+[33m5a1816bc[m Fix formatting.
+[33m147907af[m Review translation.
+[33mbe9e47d8[m Remove trailing spaces.
+[33m25eca3c5[m [edn,en] Improve initial description of EDN
+[33m2a3fbe26[m Merge pull request #2842 from ian-bertolacci/patch-1
+[33m6ec7fdc1[m [python/en] filled_dict
+[33mf72c4ef5[m Merge pull request #2793 from hromojaro/tcl-es-new
+[33m5307c3e5[m Merge pull request #2798 from HugoGuillen/master
+[33m7bdc184c[m Merge pull request #2799 from begault/asymptotic-notation-fr
+[33m3e4f4e4d[m fix typo
+[33me4496d10[m Merge pull request #2771 from spacegoing/spacegoing_elisp_cn
+[33m68d9d413[m Merge pull request #2835 from JoaoGFarias/solidity-pt-br-translation
+[33m4ef9f380[m Merge pull request #2833 from Myl0g/master
+[33m018dc98a[m Add lang
+[33m3c28b2c3[m Merge pull request #2834 from wwalker/master
+[33m29e14704[m Merge pull request #2836 from duke-m/patch-1
+[33macdbaec2[m removed the vimformation
+[33mf225f0cb[m Solidity - PT/BR Translation
+[33mc076537c[m [c++/en] Added public declaration. Fixed #2805
+[33m836133b8[m Ruby has "methods" not "functions"
+[33mf5e226ae[m Added profiles and D-Bus integration reading
+[33m5eb6c151[m added pointers section
+[33m0fa0305a[m Added main loop section and collections library/multithreading info
+[33m374ce84f[m Added other features: assertions & contract programming & error handling
+[33m07431ea0[m Added reading on GObject style construction
+[33ma0095c28[m Added section on generics
+[33m1b780b2d[m Getting type info dynamically
+[33m41e5f956[m Began interface section
+[33mce745f43[m Moved interface into its own section and clarified constructor overloading
+[33m68951045[m Small improvements
+[33mf6de9355[m General spelling/grammer fixes
+[33m14c3fc4f[m fixed interface
+[33mb8678602[m Clarifications in delegates
+[33m82a37a45[m removed break statements from if-then-else
+[33ma6359357[m Added section on abstract classes/methods
+[33mbf7ed153[m Added inheritance
+[33mf560802e[m Added more to Properties section
+[33mfe5001ca[m Added properties (get and set)
+[33m81f58f4b[m Added section on Signals
+[33m4857a134[m General improvements
+[33ma300e6d1[m Added valadoc.org
+[33m09d8feda[m Moved enum into structs and renamed section to structs and enums
+[33m35aa1410[m Finished basic OOP
+[33ma6c3a64a[m Merge branch 'master' of github.com:adambard/learnxinyminutes-docs
+[33m1abae4b2[m Added namespaces, structs, began classes and OOP, and removed Reference Types.
+[33m0510b181[m Added section on functions
+[33m2d70b512[m Added control flow section
+[33m51eaad84[m Finished arrays section and added additional reading on GTK+ GUIs
+[33m8db30535[m Added more on arrays
+[33mbce21489[m Fix typo(#2816)
+[33maad51c54[m Merge pull request #2801 from hyphz/master
+[33m541e2c11[m Fix filename l
+[33me2905b99[m Merge pull request #2817 from marciojrtorres/kotlin/pt-br
+[33m4cd428b0[m Fix language code suffix
+[33md9b28d57[m add filename and language
+[33md6121158[m Merge pull request #2811 from saplf/master
+[33m123763d5[m Update red-cn.html.markdown
+[33m8f158696[m Merge pull request #2823 from ravinderjangra/NewLocalBranch
+[33m4004e7b3[m Merge pull request #2821 from k4rtik/patch-1
+[33me43c1545[m fix download file(#2832)
+[33mb799575f[m Fix yaml-frontmatter(#2832)
+[33m43bb6808[m fix language code suffix(#2832)
+[33md69afc40[m fix language code suffix(#2832)
+[33m75ab04d1[m fix language code suffix(#2832)
+[33mbd11722e[m fix language code suffix(#2832)
+[33m271db5c7[m Add filename(#2832)
+[33mf0d94e6f[m fix language code suffix(#2832)
+[33ma734cc54[m fix language code suffix(#2832)
+[33m96c7ccad[m fix language code suffix(#2832)
+[33m3959728d[m fix language code suffix(#2832)
+[33m924fc190[m Add filename(#2832)
+[33m8ba86ae8[m fix language code suffix(#2832)
+[33m4579bf5d[m fix language code suffix(#2832)
+[33m1a658cd8[m Add filename(#2832)
+[33mb4634d49[m Add filename(#2832)
+[33mc52af4de[m Add filename(#2832)
+[33m0634282d[m fix language code suffix(#2832)
+[33mdfed6c38[m fix language code suffix(#2832)
+[33m4939c23e[m fix language code suffix(#2832)
+[33m6ad74f89[m Add filename(#2832)
+[33m849e2295[m Add filename(#2832)
+[33m12eafb6c[m fix language code suffix(#2832)
+[33md3fbc5b7[m Add language code suffix(#2832)
+[33m9a32aeaa[m Add filename(#2832)
+[33m88ab678c[m Add filename(#2832)
+[33m892abe46[m Add language code suffix(#2832)
+[33mfb8a3308[m Add filename(#2832)
+[33m34b3dddd[m Add language code suffix(#2832)
+[33m5d67c543[m Add language code suffix(#2832)
+[33mca701ab3[m Add language code suffix(#2832)
+[33m5e5a2935[m Add language code suffix(#2832)
+[33m9541b814[m Add language code suffix(#2832)
+[33m153083a2[m Add language code suffix(#2832)
+[33mc0cde322[m Add filename(#2832)
+[33m9df9387d[m Add filename(#2832)
+[33mb3553281[m Add filename(#2832)
+[33ma9ee3df2[m Add filename(#2832)
+[33maf9d428a[m Add language code suffix(#2832)
+[33m698fc5f3[m Add filename(#2832)
+[33m0cd9364a[m Add language code suffix(#2832)
+[33mf390f02a[m Add filename(#2832)
+[33m1664d346[m Add filename(#2832)
+[33m21b76a01[m Add filename(#2832)
+[33m8905d61d[m Add language code suffix(#2832)
+[33m4b590f00[m Add language code suffix(#2832)
+[33m21b33209[m Add filename(#2832)
+[33m331ee47d[m Add language code suffix(#2832)
+[33m15fba06a[m Add filename(#2832)
+[33ma34db981[m Add language code suffix(#2832)
+[33m26ca6d1d[m Add language code suffix(#2832)
+[33mf2ee5c25[m Add language code suffix(#2832)
+[33m2a637ca9[m Add language code suffix(#2832)
+[33m447f28e0[m Add language code suffix(#2832)
+[33meb5cb39d[m Fix yaml-frontmatter(#2832)
+[33m46876c65[m Fix yaml-frontmatter(#2832)
+[33ma2b09ea7[m Add filename(#2832)
+[33m12ca184d[m Add language code suffix(#2832)
+[33m140be5e1[m Add language code (#2832)
+[33m096fcc97[m Add filename and language name according to #2832 issue
+[33m0c105ca0[m Added arrays section
+[33mca5d90eb[m Finished basic datatypes and basic io
+[33m56440bcf[m Merge pull request #2814 from bahacan19/kotlin-tr
+[33m35f39032[m Merge pull request #2830 from evbogdanov/master
+[33me8897e60[m Comments and GNOME link
+[33m7fd4359c[m Merge pull request #2792 from hromojaro/tcl-es
+[33m2694c89c[m Merge pull request #2807 from HairyFotr/typos
+[33m1058ecc7[m Merge pull request #2809 from sc0Vu/master
+[33mb903cac0[m Merge pull request #2785 from reddyalready/Kotlin-templ-str-print-output
+[33m985d23a5[m Fix a bunch of typos
+[33m9c5a67ca[m Merge pull request #2831 from Oire/fix-2829
+[33mac0332aa[m Merge pull request #2812 from jlescher/master
+[33mea60cc9b[m Merge pull request #2813 from rvinowise/patch-1
+[33mabed0ba3[m Merge pull request #2815 from pofigizm/patch-1
+[33m63373055[m Merge pull request #2818 from Myl0g/git-improvements
+[33m951d71e6[m Merge pull request #2820 from a2/patch-1
+[33mcb6a9d04[m Merge pull request #2787 from alexiscrack3/go-typos
+[33m16d6dc00[m Fixed #2810. Corrected a typo in the CSharp tutorial
+[33m3a0d915f[m Attempted to fix the messed-up frontmatter for Polish. See #2829.
+[33m92e36140[m [elixir/ru] References
+[33m04d2b5a2[m [elixir/ru] Agents
+[33m13a89c7f[m [elixir/ru] Concurrency
+[33mb4d50ee2[m [elixir/ru] Structs and Exceptions
+[33me3f904d9[m [elixir/ru] Modules and Functions
+[33m81256bc9[m [elixir/ru] Basic types, Operators and Control Flow
+[33m1ab776fa[m Merge pull request #2819 from larrybolt/patch-1
+[33m0d510c55[m Merge pull request #2822 from k4rtik/master
+[33m7c211272[m Update lfe.html.markdown
+[33m4fb11b5e[m Merge pull request #2824 from avimar/patch-1
+[33maac1e359[m Merge pull request #2826 from evbogdanov/master
+[33m90ab1bcc[m Merge pull request #2827 from AdamLombard/master
+[33mf8d6297f[m Merge pull request #2828 from mikaelz/patch-2
+[33mf7753399[m Merge pull request #2825 from prertik/master
+[33md6113f90[m Update angularjs.html.markdown
+[33m2c83e5e1[m [json/en] add carriage return to fix broken bullet list
+[33m512c6a7b[m fix flavoured spelling
+[33ma5188153[m [elixir/ru] Not ready yet
+[33m92928150[m [elixir/ru] Basic types
+[33mf1a5fb83[m [elixir/en] Fix exception name
+[33m59a6fe3f[m fix typo
+[33md6754e2f[m add lfe
+[33mc4b9f335[m php: fix double language for arrays
+[33m8b3b05a4[m [kotlin/tr] some cleanup
+[33m4ee29d1c[m C# 7 Feature Tuple
+[33m6b2d1274[m Use the correct identifier name
+[33madd335bd[m Redundancy is not permitted in pattern matching
+[33mcf976f3f[m Fix typo in Go comment
+[33m9d0d3a0e[m Spelling mistake that threw me of while reading
+[33m4d29f3f9[m Keeping lines under 80 chars
+[33m0e53a8a5[m Small changes to git docs
+[33mef1cf7d7[m [kotlin/tr] Delegated properties added
+[33m04c0ccb2[m [kotlin/tr] for loops added
+[33m2858d077[m [kotlin/tr] removed unused code
+[33m025c9d5b[m pt-br translation and localization of kotlin en tutorial
+[33me5d87c93[m Update php-ru.html.markdown
+[33ma2708498[m [kotlin/tr] kotlin turkish document
+[33mce9078b1[m Update c++-ru.html.markdown
+[33m13f88bc7[m Fix markdown formatting
+[33m4be98c51[m Add translation of Red language with Chinese.
+[33mb15f7191[m [solidity/en] Add version pragma
+[33m4b5a50eb[m A first try at prolog.
+[33m5ab5cb98[m Merge remote-tracking branch 'adambard/master'
+[33m6e7c5c79[m [red/en] Fix logic in "either" examples (#2800)
+[33m61370228[m [tcsh/en] (#2777)
+[33m9148619a[m famous problems formatting
+[33mad2f3714[m accurate translations, typos, formatting
+[33m1bfd17ee[m example 2
+[33mbad152cd[m example
+[33m1a2d09eb[m string patterns
+[33m73229efa[m Translate asymptotic-notation in french
+[33m3d3ab700[m string funcs
+[33m915a4b21[m awk-es script trig funcs
+[33mfed2f2a1[m awk-es script concatenate
+[33ma276468f[m awk-es script start
+[33m0f90bc5e[m awk-es intro
+[33m05dba0fb[m awk-es created
+[33m341d7b3c[m fix wrongly written (#2797)
+[33m11de9149[m [ruby fr-fr] more details, more examples (#2796)
+[33m3d2f171c[m Update ruby-ecosystem-fr.html.markdown (#2795)
+[33me9bb96aa[m [java/en] adding an exemple to ternary operator ?: (#2794)
+[33mdf6f8630[m [perl6] Lists are not Arrays. Make this clear
+[33mba3847a9[m [tcl/es-es] First version of the spanish translation
+[33m182ae227[m [tcl/en] Fixing typos
+[33made91a6f[m [amd/es-es] Replace 'Tópico' with 'Tema' (#2790)
+[33m4a359c30[m [java/en] few changes (#2788)
+[33m98912234[m [go/es] Fix typos
+[33m6350beb6[m Added print output for template string command
+[33mb67ac8da[m Update LOLCODE.html.markdown
+[33m70f7c0e1[m Update rst.html.markdown
+[33m281529b1[m [scala/de] Backport traits keyword explanation (#2781)
+[33m84c35749[m [scala/en] Add traits in objects chapter (#2760)
+[33m362135e6[m [nim/ru] Translation Nim to russian (#2778)
+[33mccce8de3[m Remove nonstandard contributor/author sections
+[33me95f38d5[m [elisp/en] fix typo (#2770)
+[33m88e19389[m fix #2700
+[33m801484a2[m more clear explanation for interface (#2779)
+[33m23cee36b[m Update more function mentions in comments
+[33me78e41ce[m Update python3.html.markdown (#2776)
+[33mec10b157[m fix typo (#2772)
+[33md8688223[m [zh-cn/elisp] Fix transation
+[33mbcb1b623[m [scala/en] Make return value example actually demonstrate issue
+[33m5b4c7436[m Fix typo (#2764)
+[33mfc58f4d1[m [java/en] typo (#2763)
+[33m34b6b504[m [PHP/en]Fix small typo in PHP English tutorial (#2761)
+[33m1adf0020[m Fix typo (#2757)
+[33m3983b8c3[m [haxe/en] Fix typo (#2756)
+[33md2e85e0a[m Merge pull request #2752 from rlgreen91/fix_js_en_typo
+[33me6d72fd1[m Merge pull request #2755 from tomkel/master
+[33m8d76182d[m [scala/en] fix anologus typo
+[33m8d78277b[m [shutit/en] shutit added (#2754)
+[33mfe631393[m Update shutit.html
+[33m966886c6[m Corrects typo in prototype section.
+[33m0567c077[m [sml/zh-cn] Chinese Translation for Standard ML (#2750)
+[33m846abc4d[m [en/java] Modify the Animal abstract class (#2751)
+[33m0c1d3dc2[m [html/vi-vn] Add HTML tutorial in Vietnamese (#2749)
+[33m04b6f429[m [python3/vi-vn] Add Python 3 tutorial in Vietnamese (#2747)
+[33m8f56f54c[m fixed node notation (#2745)
+[33m3ede04c5[m [shutit/en] shutit added (#2746)
+[33ma2ee84b2[m fix broken URL for vim (#2744)
+[33mbb1d9c2a[m [Java/en]Fix small typo in Java English tutorial (#2743)
+[33mb287837c[m [groovy/ca-es] Catalan translation of Groovy  (#2742)
+[33m8bf95851[m [go/ca-es] catalan translation of Go (#2741)
+[33mbea05702[m [c/en-en] Make reference link in footer/summary link to Stack Overflow article (#2739)
+[33m1ac2f694[m Update typescript.html.markdown (#2738)
+[33m66c4b1c0[m fix #1155
+[33mae9762fd[m Update perl6.html.markdown
+[33md20ff6bf[m 2431
+[33mc14b5f57[m [hq9+] Added manual for HQ9+ programming language (#2431)
+[33m3c7750b5[m fix css-es directory
+[33m55ac1595[m Fix #2736
+[33m03beca94[m Create css-es.html
+[33m4b7f47b2[m Revert 6d2973f78ecc5965355390b5f5121c2b7e1e9969
+[33m98f213bc[m Update c.html.markdown (#2734)
+[33mc809a163[m [language/tcl-en]Extensive edit of the Tcl document (#2731)
+[33md30d6f69[m [Kotlin/all] Remove whitespace in variable declaration with explicit type (#2733)
+[33m81a38874[m [zfs/en] Fix bullet points (#2732)
+[33m18aea748[m [jquery/zh-cn]add zh-cn for jquery (#2728)
+[33mb55efa6f[m close #2727
+[33mf5cb3924[m small changes to #1854
+[33meb44c5bc[m Update c++.html.markdown
+[33md2a8a520[m [fr/c++] c++ article translated in French (#1854)
+[33mda3abd31[m fixup #2446
+[33m53d56bb4[m [WIP][fsharp/fr] I just finish to translate the F# tuto to fr (#2446)
+[33m6d2973f7[m Fix #2660
+[33m5baf8fab[m Traduje algunos parrafos de el archivo (#2660)
+[33m064cbde9[m [java/en-us] Fix typo (#2708)
+[33m9ccd1ee0[m Some improvements to Python 3 (#2713)
+[33m6e3d29f0[m [perl/en] Use more single quotes and explain single vs double quotes (#2710)
+[33ma5833175[m [LOLCODE/en] Create LOLCODE tutorial (#2721)
+[33mb2cb3528[m Update vim-cn.html.markdown (#2726)
+[33m6a1ce1d9[m add zh-cn for html (#2725)
+[33mf4940fcc[m [c/ru] Fix typo: "большинствоа" -> "большинства" (#2723)
+[33mc97f310a[m [awk/en] Added tutorial for AWK (#2716)
+[33mbec5b2b8[m [go/zh-cn] Update content from English fork (#2722)
+[33m77241749[m [clojure/ms-my] Remove asterisks from code comments (#2720)
+[33m2aec0203[m Add clojure translation for ms-my (#2718)
+[33mb890a98a[m [clojure/en] Fix typo: "ans" should be "and" (#2717)
+[33m51e14b0e[m [racket/en] Fix Incorrect Names in Mutable Struct Examples (per Issue #2714) (#2715)
+[33mdba32328[m Update my site's address (#2712)
+[33m67953779[m update zh-cn version to latest (#2709)
+[33m8eb6ce41[m [cypher/en] Fix syntax for code blocks (#2706)
+[33mc5bf6127[m Update java-fa.html.markdown
+[33mf51e8691[m Update html-ar.html.markdown
+[33m61d3c1a0[m Update kotlin-ru.html.markdown
+[33m02c59f44[m Update pyqt-ru.html.markdown
+[33mefbcd3dc[m [cypher/en] Write tiny tutorial on Cypher (#2703)
+[33mc74df79b[m follow up for #2701
+[33me4dfd62b[m [java/fa]add java for Persian Language (#2701)
+[33me901344c[m [Python] Slightly tweak ** example
+[33m60c11f43[m Ammended a typo in links (#2699)
+[33maf3ed540[m fixup for #2698
+[33me99782a6[m Create kotlin-ru.html.markdown (#2698)
+[33m2b47f2f0[m followup #2697
+[33m134b24a2[m [pyqt-ru] New translation (#2697)
+[33m7b3b415b[m [chapel/en] Style and example changes for Chapel (#2696)
+[33m63a6eb11[m [haskell] Updating second headline (#2695)
+[33m5ab4fb65[m Update clojure-macros.html.markdown (#2694)
+[33m82c3ce4e[m add underscore to property (#2691)
+[33mc1d773ea[m [kotlin/all] Rename variable fooMutableDate to fooMutableData (#2688) (#2689)
+[33m29f41f28[m Merge branch 'seannam-master'
+[33me48049b7[m Replace tabs with 4 spaces in java
+[33m14e26472[m Update rust-fr.html.markdown (#2687)
+[33m4c206e26[m adds Gemfile.lock (#2664)
+[33mb37867fe[m Updating the PureScript string concatenation eg. (#2686)
+[33m9e8a3d73[m Fixed misnamed contract initializer (#2650)
+[33m7a760593[m [forth/ru] Added russian translation (#2675)
+[33m305ca361[m dynamic-programming-tr (#2667)
+[33meb2bd9e8[m [asymptotic-notation/ru] Added russian translation (#2679)
+[33m2b4fe43f[m Fix some missing double quotes in Agent section (#2682)
+[33m2c2c6e7b[m Fixed indentation in the java file
+[33m56275f78[m fix #2680
+[33m1fb8b49f[m Merge branch 'scorpiodawg-master'
+[33m54eff559[m [javascript/en] Minor changes to formatting, prototype explanations
+[33meba9d9ff[m Updated mistake in Python3/en tutorial (#2678)
+[33m75abbf20[m add much needed spacing with markdown headers (#2676)
+[33m7666ca93[m Update clojure-ru.html.markdown, typo fixed (#2674)
+[33m21652477[m [javascript/en] Clarify objects, remove premature reference to prototypes
+[33m4ec61bfa[m [logtalk/it-it] fix typo in example code (#2670)
+[33m5d55924b[m [logtalk/en] fix typo in example code (#2669)
+[33mdc34cd25[m [dynamic-programming/cn]Add Translation (#2663)
+[33m19e5398c[m [julia/en] Julia mailing list converted to forums (#2666)
+[33m56a18f79[m [python3/en] Fix two "getter" output examples (#2658)
+[33ma612d54b[m Merge pull request #2657 from ebroda/master
+[33m318522c1[m Add missing closing parenthesis
+[33m6c7c2df7[m [logtalk/it-it] Enable syntax coloring for code blocks (#2656)
+[33mcc782a7c[m fix further reading url (#2655)
+[33m303de42a[m [bash/en-us]Fix spelling (#2654)
+[33m88531dfd[m Update PULL_REQUEST_TEMPLATE.md
+[33m66c635dd[m Get the fuck out with your plagarism
+[33mf30a5376[m [logtalk/it-it] Add Italian translation of the Logtalk tutorial] (#2652)
+[33mdbecb473[m Fixes and improvements to the Logtalk tutorial (#2651)
+[33m870e2fbf[m Fix omitting end / beginning in ranges (#2649)
+[33md8a3184a[m [standard-ml/en-en] Format fixing and some APIs (#2645)
+[33m13663f37[m Merge branch 'master' of github.com:adambard/learnxinyminutes-docs
+[33m5254804c[m Merge remote-tracking branch 'upstream/master'
+[33m45de0120[m tmux lithuanian translation added (#2582)
+[33mfeff890a[m `[fr/elisp]` Add french translation of the elisp tutorial (#2570)
+[33meb1ed172[m [csharp/en] Add exception filters, pragma directives (#2409)
+[33mb4ca1f76[m Python decorators example added (#2408)
+[33m1d99d5a7[m added group information (#2568)
+[33m7afc3bc5[m [zh-cn/common-lisp] when describe return values of gethash, 两个值是t -> 第二个值是t (#2614)
+[33m447986c1[m [perl/en] more perlish iterations on perl5 (#2489)
+[33m4e6d0775[m Small modifications to definitions of functions (#2495)
+[33m0a0080a9[m #2550
+[33md064763e[m [haskell/en] some minor fixes (#2550)
+[33m5d6fe560[m #2533
+[33m0ddb15b6[m [yaml/de] improved on german translation for better understanding (#2533)
+[33me800bf6f[m Remove duplicate int declarations (#2521)
+[33m7408bd9e[m Update java-pt.html.markdown
+[33m2370ece8[m Some translation fixes. (#2421)
+[33made62f5b[m Brief explanation about ' (quote) (#2449)
+[33m52ff8f41[m Changed more indentation to 4 spaces
+[33m3bfb7404[m Changed indentation to 4 spaces
+[33m7f0fff0a[m Fit some more things into 80 columns in the Perl 6 doc
+[33m6e008740[m Merge pull request #2564 from technikyle/technikyle-patch-1
+[33m79004c5b[m Merge pull request #2571 from Smosker/patch-1
+[33m0809ee08[m Merge pull request #2576 from dvkndn/patch-2
+[33mfcfc8756[m Merge pull request #2630 from remigiusz-suwalski/master
+[33m43b73770[m [bash/no-nb] removes to lines of english (#2641)
+[33mc65e4512[m Update tcl.html.markdown (#2640)
+[33m05e4c41c[m [python3/en] Add examples to Bool operators with ints (#2639)
+[33m20b2a9a2[m Fix swift-tr filename
+[33m99bd2711[m [PT-BR/Scala] Translates Scala file to Brazilian Portuguese  (#2634)
+[33m66ec5f4d[m Merge pull request #2624 from Oire/fix-rst-en
+[33m05614d09[m [perl/en] some more examples of interacting with arrays and hashes (#2632)
+[33mff362fc0[m [perl/en] how to write to files (#2633)
+[33m74025004[m Merge pull request #2631 from sidgupta234/patch-1
+[33m96a46ef4[m Reverting to Readings as suggested by @sidgupta234; adding myself to contributors
+[33m01a84007[m edit broken link in julia.html.markdown
+[33m5ef6b107[m Add a missing letter
+[33m5a1df9e1[m Translate functions
+[33mca0d124a[m Translate more functions
+[33mac680b6a[m Translate Haskell IO
+[33mb57b771d[m [elm/cs] Fixes #2584 for Czech (#2629)
+[33mbd1a18fb[m [HTML/ar] Translate HTML to Arabic (#2627)
+[33m81c7372c[m Translate Vim doc to Korean (#2628)
+[33mcd034269[m a word was duplicated, I took it off. (#2626)
+[33mb80c70b4[m Translate REPL
+[33m6fa14954[m Translate Flow control
+[33mfd89a692[m Translate type signatures
+[33mcc0bd98a[m Translate data types
+[33m7e3b7a53[m Translate functions
+[33mfb5dac4b[m Lists and tuples
+[33mc3fb66cd[m Initial commit
+[33m33b1476f[m [rst/en] Correcting English language
+[33mfb9c7b91[m [bash/ko] Translate Bash to Korean (#2623)
+[33mf2a5bc8a[m Updated Java (en-us) to include Input using Scanner and System.in
+[33mae16d450[m [c++/en,es,it,br,ru,ch] Fix forgotten namespace std:: (#2619)
+[33m30d63b37[m Update rust-fr.html.markdown (#2616)
+[33meb6b74a5[m Add highlighting for fortran and logtalk
+[33me4e3050f[m Merge pull request #2615 from jparoz/patch-1
+[33m921952f8[m Use forth syntax highlighting
+[33m4d4dae03[m set highlighter for sass and red
+[33md44e9509[m Set syntax highlighting for coldfusion
+[33mf7e27eb9[m Have perl6 highlight as perl6 now
+[33mff3d2d17[m Set bf, chapel, d and dart to use the language's highlighting
+[33m60bba321[m [erlang] Update guard sequences URL to use named id (#2613)
+[33made786a7[m Update Guard Sequences link and change format (#2612)
+[33m584ae4f5[m [kotlin/ko-kr] Add korean translation for kotlin (#2609)
+[33me5ff868d[m [elm/en] Fixes #2584 (#2610)
+[33m9453efb8[m solidity contract name convention CamelCase to CapWords (#2606)
+[33m393bab2f[m [AngularJS/zh-cn] new translation (#2607)
+[33m68569341[m [jquery/en] typo fix (#2608)
+[33m2b6e4601[m Update angularjs.html.markdown
+[33m728852de[m follow-up fixes for #2602
+[33m601aae91[m [crystal/fr] French language for crystal (#2602)
+[33m0074c8f3[m Add Spanish translation for Elixir (#2604)
+[33me7b58390[m [angularjs/en] typo fix (#2605)
+[33m4737819e[m Made the file `pep8` compliant (#2601)
+[33m919e44f8[m [crystal/en] It would be greate to add crystal language :) (#2600)
+[33mdb8cc8bd[m Move the description to the beginning with the other text
+[33mf05246ce[m Make the CoffeeScript introduction a little more informative
+[33ma70f8469[m Random -> Safe
+[33m66e541e9[m [r/zh-cn] fix a bug (#2598)
+[33ma65150f7[m [sass/zh-cn] new translation (#2597)
+[33m98454c39[m Fixes #2593 (#2599)
+[33m744f3a6d[m Merge pull request #2456 from Serg-Maximchuk/patch-1
+[33m7dbbcd50[m missing right parenthesis (#2596)
+[33mbe9f44cf[m New translation: less-zh-cn (#2595)
+[33m61e0d6e1[m [python3/ja-jp] New Translation: python3/ja-jp (#2592)
+[33mc701931f[m [python3/en] fixed "StopIterator", no such Exception (#2591)
+[33m7c16ec5a[m [php/en] Fix typo (#2590)
+[33m6cc36cb0[m fix #2589
+[33m51ce7fda[m [racket/en] Expand list section (#2588)
+[33md0918b25[m [python3/en] Add empty tuple to "False if evaluated" list (#2587)
+[33m52bbc815[m Fix minor spacing typo (#2586)
+[33m152fddbd[m Fix backtick that was messing up syntax highlighting on powershell.
+[33mc518beae[m Add syntax highlight (#2581)
+[33me25918ac[m Fix comment in set comprehension example (#2580)
+[33mac99d3f1[m [typescript/en-us] Clarify function section in typescript (#2575)
+[33m03bab0e4[m Use ts for typescript syntax
+[33m41d7d73a[m Fix #2574
+[33m13369ee5[m [tcl/en] Fix #2569 and also fit to 79 columns width
+[33mce00d724[m Fix #2573 where ru-ru HTML file did not specify which language it was in the YAML frontmatter
+[33mebc70fe2[m Add a missing semi-colon (#2572)
+[33mac6d6416[m Fix a bug
+[33m809e5d20[m Remove checkboxes and make a helpful suggestion to submit a pull request to fix issues if the person is willing and able
+[33mfa83a136[m Add issue template
+[33mdcfbeeb6[m [fsharp/en] Use "elif" (#2566)
+[33ma19efad7[m Added nil-coalescing operator
+[33md70ad722[m Merge pull request #2528 from slukovskiy/vim-translate-edits
+[33mae1d18ad[m [yaml/en] Fix #2558 1 is interpreted as a number not as a boolean. For a boolean use we use true
+[33m0804650a[m series of fixes and improvements (#2563)
+[33m94787745[m Add another checkbox to pull request template form
+[33m2a9487c8[m Add about 3/4 of the languages to gitattributes
+[33m2b6d022c[m useful tip for saving a buffer as sudo (#2405)
+[33mb5411e18[m Merge pull request #2552 from robochat/red_line_length
+[33m932804c0[m Add some gitattributes so GitHub categorizes languages of this project (not complete yet)
+[33mf53e89f7[m Fix missing parenthesis
+[33md55180ff[m Make build status a link
+[33m5204594e[m Merge pull request #2562 from adambard/upstream
+[33mbb5e5143[m[33m ([m[1;31morigin/upstream[m[33m)[m Update rakefile so that it will return an exit code of 1 if there is a failure (Travis CI needs this). Make ISO-8859* encoding detections notices not failures
+[33m03980b63[m Fix encoding test, then make tests actually fail.
+[33m1d494a63[m Update README.markdown
+[33m36f46947[m Update README.markdown
+[33mf5f8bc75[m Merge pull request #2561 from samcv/Travis-CI
+[33m0a0acadf[m Add rubygems.org as gem source so Travis CI can use charlock_holmes
+[33m70d6977c[m Use charlock_holmes to do encoding detection. In my tests it has properly identified incorrect encodings that used to be present on older commits. This will help ensure this won't happen again, giving people instant feedback and allowing all pull requests to be checked
+[33m58ffb405[m Add UTF-8 check test
+[33m4241d44d[m Add support for checking YAML validity using Travis CI
+[33me837e25a[m [python3/en] Edit python3 division (#2560)
+[33m6b770a3e[m minor typos and corrections (#2559)
+[33m8b4313d2[m Update wolfram-es.html.markdown
+[33m85a3b446[m Translate to Spanish Wolfram.html.markdown (#2556)
+[33mf9fc5c3b[m Translation fixes. (#2557)
+[33mfe5a751c[m fixed a typo and a broken external link (#2554)
+[33me52cfdfd[m [html/en] small correction to english (#2553)
+[33m3e7394b7[m [red/en] changing the formatting of comments so that lines are always less than 80 characters.
+[33me5416f2a[m [vim/pl] fixed a typo (#2551)
+[33m844efb46[m [vim/pl] Tutorial translation to Polish language (#2544)
+[33m70db79b2[m [html/ru] (#2535)
+[33m5f9d8fe4[m [go] added practical examples for the underscore (#2414)
+[33m092b7a69[m Merge pull request #2549 from vra/master
+[33mda31b708[m fix typo
+[33m43ce4200[m [php/ru] Add magic constants (#2520)
+[33mb7eb4ad1[m [jQuery/pt-br] Add jQuery pt-br translation (#2532)
+[33mbf59fb4a[m Merge pull request #2541 from yihongang/matlab_blogs
+[33md4fe4401[m Merge pull request #2546 from amrue/scala-en
+[33mdb4b2ed6[m Merge pull request #2547 from amrue/powershell-en
+[33m92561f89[m Merge pull request #2545 from amrue/css-en
+[33m66f2062b[m Merge pull request #2548 from amrue/chicken-en
+[33m28a62c0d[m Corrected small spelling error
+[33m87cb7715[m Changed spelling of 'favourite' to use US english
+[33m8e51d5b5[m Fixed a few spelling errors
+[33m9ca9e466[m Add new reading resources on MATLAB
+[33m850aae6e[m Fixed confusing typo
+[33m2657960b[m Fixed small typo
+[33m0401e0d5[m fixes bullet/list issues in AngularJS markdown (#2534)
+[33mb95bbd93[m C/en typo, formatting fixes (#2537)
+[33mee26130c[m #2536
+[33m6d351553[m add labeled loop breaking for Javascript (#2539)
+[33ma98cc99e[m Adding new Java 8 features (#2543)
+[33m1f1f59d9[m c++/en typo, formatting fixes (#2531)
+[33meef26361[m [perl6] add myself as contributor (#2530)
+[33ma191e77c[m DTD Compatibility and XML Schema Definitions (#2529)
+[33m9ac2eaa9[m [vim/fr-fr] New translation (#2517)
+[33mbfc9853c[m Change some text markup, fix broken link and quotes
+[33m1b59bd10[m Merge pull request #2522 from adambard/string-builder-loops
+[33m70617f16[m Merge pull request #2527 from adambard/byte-info
+[33me01c16e5[m Update java.html.markdown
+[33mdb47ffd5[m Merge pull request #2526 from adambard/rename-duplicate-var
+[33m2040dfc8[m Rename duplicate fooInt
+[33m78a4ae7d[m [jQuery/en] [jQuery/es] Fixes syntax errors (#2525)
+[33mdf52fda2[m [jquery/fr] Adds French translation for jQuery (#2524)
+[33m2bb9cf6d[m Changes ambiguous class name (#2523)
+[33m46a02d6e[m [perl6] Explain `orelse` operator, add more information about exceptions, add an Iterables section... (#2505)
+[33m086284b2[m A translation of the binary search in french (#2436)
+[33m15e74d22[m A translation of dynamic programming in french (#2465)
+[33m06bfdc28[m [Ruby/pt-rb] Add modules explanation as in main file (#1827)
+[33mbb504b97[m Add StringBuilder usage tip
+[33ma0978c90[m Edit ru translations (#2519)
+[33m9420a489[m [php/en] Normalize PHP code style a bit according to PSR-2 (#2518)
+[33m4f43b011[m Fix the xml file which was saved as ISO-8859 or Latin 1 which wasn't being generated before (#2514)
+[33m9dd20e7a[m [latex/zh-cn] translation (#2515)
+[33me7257d0c[m [jquery/en] Reorganisation of Part 2 ( Events and Effects ) (#2516)
+[33md674a674[m Grammar fixes and update to a more comprehensive linguage to explain concepts. In addition updating the tmux.conf as done on the original doc. (#2512)
+[33m2861de1c[m Improved the translation a little bit (#2511)
+[33ma17682b3[m [java/el] Modified a sentence in the Greek java documentation (#2510)
+[33m650f0b54[m Remove the byte order mark from the Czech Javascript file.  This file… (#2509)
+[33mb1d9f3aa[m [yaml/ko-kr]Translate YAML doc (#2488)
+[33m304439b6[m Bring this version up to date with the english one (#2508)
+[33mf78b5834[m Bring this version up to date with the english one (#2507)
+[33mdaea2973[m [vim/ru] Translate Vim doc (#2506)
+[33m547174ad[m [json/ko-kr]Translate JSON doc (#2485)
+[33meebd9684[m [md/ko-kr]Translate Markdown doc (#2486)
+[33m946584a6[m [xml/ko-kr]Translate XML doc (#2487)
+[33m1e7d189b[m [asciidoc/pt_br] Translate asciidoc to portuguese (#2504)
+[33m923721eb[m [kdb+/en] Added new file for kdb+ (#2502)
+[33mdec92b05[m Bring this version up to date with the english one (#2503)
+[33m042ed503[m [c++/en] Fix typo of iterator (#2501)
+[33m4a8c39a2[m #2500 followup
+[33m47c209e0[m [ruby/uk-ua] Created Ukrainian's Ruby translation (#2500)
+[33mf8f071c6[m [javascript/uk-ua] Fixed typo (#2499)
+[33mcf2b7501[m try to fix (again) #2496
+[33m40550bd7[m Final fix #2498
+[33mc5579961[m Partial fix for #2498
+[33md6f6995d[m Fix for the three tutorials with broken YAML markup, causing them not to be accessible at all or show up in the index (#2497)
+[33mc7f2b23f[m typo fix in clojure.html.markdown nth input expression from 4 to 2 resolves: IndexOutOfBoundsException clojure.lang.RT.nthFrom (RT.java:885) (#2493)
+[33mc76be299[m Update less-es.html.markdown
+[33mb652505d[m Add Spanish version of Less tutorial (#2459)
+[33mda14e532[m [javascript/uk-ua] Fixed typo (#2492)
+[33mafc169e6[m Merge pull request #2466 from peterszatmary/elixir/sk
+[33mc8a954c5[m Merge branch 'master' of github.com:adambard/learnxinyminutes-docs
+[33m8bc771cc[m Remove binary search
+[33m0ede1e9f[m Merge pull request #2484 from davelima/composer-ptbr
+[33ma67deabb[m Add messagepack as a tool
+[33m356547aa[m Merge branch 'messagepack-docs' of https://github.com/gczh/learnxinyminutes-docs into gczh-messagepack-docs
+[33m620e5d20[m Merge branch 'master' of github.com:adambard/learnxinyminutes-docs
+[33mde376b43[m Added angularjs tutorial
+[33mea920c76[m [php-composer/pt_br] Translate Composer to portuguese
+[33m0659107a[m [latex/en] minor typo fixes (#2481)
+[33m8d0e3d6d[m Added line "lang: es-es" (#2483)
+[33md48aef96[m Added example of C# inline properties (#1464)
+[33m819d16b7[m [ruby/de] typo, formatting and translation fixes (#1792)
+[33m78617f6c[m Update edn-es.html.markdown
+[33m038bf6d5[m translate edn to spanish (#2467)
+[33m6c27e9e2[m [go/de] fixing typos (#2480)
+[33m9162cf44[m [clojure-macros/pt_br] Fixing references links positioning (#2476)
+[33me68bf145[m Add python3 class notes (#2479)
+[33m1d2a910f[m also fix #2463
+[33m8934f0c5[m fix #2463
+[33me336c909[m Perl 6: Make information about Hash tables correct. Rewrite the example for dynamically scoped variables.. (#2475)
+[33m8905c0c5[m [python3] updated docs on division for python3 (#2473)
+[33m0c6b3e73[m Delete LearnGit-sk.txt
+[33m8f9021a8[m Perl6: Add many more smartmatch examples. Make the ternary operator clearer (#2472)
+[33m11e3c934[m [vim/pt_br] Translate vim to portuguese (#2474)
+[33m0d11887c[m Perl6: Explain that Integers Can't be Passed and Modified in Sub's Even If Using `is rw´ (#2471)
+[33mc08ca5b9[m Fixes and improvements to the Logtalk tutorial (#2470)
+[33m95283618[m [c/pt_br]Fix correct name #define (#2469)
+[33m500a7981[m Move Spanish SASS tutorial to the ES folder (#2468)
+[33mdf1f8373[m Creating new translation page for awesome Elixir in Slovak language (sk-sk).
+[33m4ba4e9ab[m [html/de] Translate html to german (#2440)
+[33m5eda755a[m useless "lang: en" (#2462)
+[33mba574ecd[m [json/uk-ua] translation improvement (#2461)
+[33mced846af[m [sass/es-es] Add Spanish version for the Sass tutorial (#2457)
+[33mf7a106eb[m Fix typos and improve styles (#2460)
+[33m81ce1c4b[m [sass/en] Fix typos in Sass tutorial (#2458)
+[33m274067e0[m [bash/uk-ua] translation fixes
+[33m58c97eea[m Update syntax (#2455)
+[33m179b34b8[m Update d-de.html.markdown (#2454)
+[33m173a7664[m fix tag language pt_br for amd (#2452)
+[33m9b2da093[m Removed excessive dollar signs (#2447)
+[33m858171d7[m Several changes on Kontlin. (#2335)
+[33mc77d5655[m [dynamic-programming/pt-br] Translation to portuguese (#2442)
+[33mbba5f6c5[m Translate - Dynamic Programming to spanish  (#2428)
+[33m7b969732[m Csharp parallel (#2443)
+[33mc8fa53ca[m Added try-with-resources to Java docs (#2438)
+[33m04b80e59[m Translate asciidoc to german (#2439)
+[33mda26d353[m [elixir/en] Adds elixir documentation on the pipe operator. (#2434)
+[33ma18f6a59[m [swift/ru]  Updated code to Swift v.3, added some new sections from english version (#2429)
+[33m0ec3d660[m line "lang: ru-ru" was missing (#2433)
+[33mb7381264[m Updated code according Swift v.3 (#2427)
+[33m8425960f[m [binary search/pt-br] Binary Search translation to pt-br (#2424)
+[33m6f3c07ce[m Translate binary search to spanish  (#2425)
+[33m347996a2[m [php-composer/es] Translated php-composer to spanish (#2423)
+[33m877fa119[m [jQuery/es] Translated jQuery to spanish (#2422)
+[33mfba82d2f[m [vim/es] Translated Vim to spanish (#2420)
+[33macf4ea6f[m [kotlin/es] Translated Kotlin to spanish (#2397)
+[33m7d00a22b[m [Kotlin/en] Add more destructuring examples (#2419)
+[33m98bb8f84[m [Kotlin/en] Add when smartcast example (#2418)
+[33m2fa41491[m [Kotlin/en] correct object clarification (#2413)
+[33m6977b86d[m try to fix #2417
+[33m0450e679[m [rust/pt-br] initial translation (#2415)
+[33m529bf540[m Fixed "<br />" example tag by showing it as code (#2411)
+[33m5bebeff0[m Update python3.html.markdown
+[33m6d8a9d1b[m Bring this version up to date with the english one (#2401)
+[33m907db9f7[m [c/ru] C russian grammar error (#2404)
+[33mcf554eba[m [html/en] few changes to the file (#2406)
+[33m9123b543[m [coffeescript/id] Create coffeescript-id.html.markdown (#2400)
+[33ma5d20aba[m Translation - HTML english to spanish (#2396)
+[33mdacc2de3[m [qt/ru] Qt Russian translation (#2398)
+[33m52ff7917[m [PHP/ru] Update russian translation for PHP. (#2403)
+[33m81975893[m Reword pwd comments (#2402)
+[33mc9478229[m [csharp/en] Add more C# 6 features (#2399)
+[33mb552fe30[m Add as-> macro documentation (#2392)
+[33me7b9774e[m [smallbasic/id] Create smallbasic-id.html.markdown (#2388)
+[33m9234c9fe[m Update Swift pre-decrement syntax to match v3.0 (#2395)
+[33ma8704d31[m [binary-search/ru] Binary Search Russian translation (Upd) (#2394)
+[33m00f79b79[m [qt/en] Tidy up (#2391)
+[33m5e4f6344[m [pyqt/id] Create pyqt.html.markdown (#2387)
+[33me660eda3[m [asciidoc/id] Create asciidoc-id.html.markdown (#2389)
+[33m16c39fb1[m [json/id] Fix the missing ":" on YAML Frontmatter (#2390)
+[33m4dee8dd0[m Update c.html.markdown (#2385)
+[33mceb6b37b[m Fix mistakes in rust
+[33m970aff0d[m Fix comment in Rust docs: box -> mine (#2365)
+[33m8fa91ffc[m Add Hyperlinks description (#2370)
+[33macd1ac46[m corrections in mapping example (#2371)
+[33mf6ada69f[m Update translators info (#2383)
+[33m7aef4499[m fix #2382
+[33m048163b7[m Update python3.html.markdown (#2381)
+[33m13205b60[m Update logtalk.html.markdown
+[33m7b10fa38[m Update racket-es.html.markdown
