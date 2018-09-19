@@ -261,3 +261,32 @@ CalculateArea! {círculo, 2}. % 12.56000000000000049738**
 
 - El shell también es un proceso; puedes usar **`self`** para obtener el pid actual.
 **self(). % <0.41.0>**
+
+## 5. Prueba con EUnit
+
+- Las pruebas unitarias se pueden escribir utilizando los generadores de prueba de EUnits y afirmar macros
+>**-módulo (fib).
+-export ([fib / 1]).
+-include_lib ("eunit / include / eunit.hrl").**
+
+>**fib (0) -> 1;
+fib (1) -> 1;
+fib (N) when N> 1 -> fib (N-1) + fib (N-2).**
+
+>**fib_test_ () ->
+    [? _assert (fib (0) =: = 1),
+     ? _assert (fib (1) =: = 1),
+     ? _assert (fib (2) =: = 2),
+     ? _assert (fib (3) =: = 3),
+     ? _assert (fib (4) =: = 5),
+     ? _assert (fib (5) =: = 8),
+     ? _assertException (error, function_clause, fib (-1)),
+     ? _assert (fib (31) =: = 2178309)
+    ]**
+
+- EUnit exportará automáticamente a una función de prueba () para permitir la ejecución de las pruebas en el shell Erlang
+fib: test ()
+
+- La popular barra de herramientas de construcción de Erlang también es compatible con EUnit
+**`` ` de la unidad de barras de refuerzo
+ ``**
