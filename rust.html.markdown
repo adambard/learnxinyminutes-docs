@@ -260,13 +260,16 @@ fn main() {
     // `while` loop
     while 1 == 1 {
         println!("The universe is operating normally.");
-        break;
+        // break statement gets out of the while loop.
+        //  It avoids useless iterations.
+        break
     }
 
     // Infinite loop
     loop {
         println!("Hello!");
-        break;
+        // break statement gets out of the loop
+        break
     }
 
     /////////////////////////////////
