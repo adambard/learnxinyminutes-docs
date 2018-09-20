@@ -1,5 +1,6 @@
 ---
 language: rust
+
 filename: learnrust-ru.rs
 contributors:
     - ["P1start", "http://p1start.github.io/"]
