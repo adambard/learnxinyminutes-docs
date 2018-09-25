@@ -502,7 +502,7 @@ nil                    ; false; also, the empty list: ()
 
 (fact 5) ; => 120
 
-(loop :for x :across "abc" :collect x)
+(loop :for x :across "abcd" :collect x)
 ; => (#\a #\b #\c #\d)
 
 (dolist (i '(1 2 3 4))
