@@ -1,12 +1,13 @@
 ---
-language: Erlang
+language: erlang
 lang: es-es
 contributors:
-    ["Giovanni Cappellotto", "http://www.focustheweb.com/"]
+    - ["Giovanni Cappellotto", "http://www.focustheweb.com/"]
 translators:
   - ["Ernesto Pelayo", "http://github.com/ErnestoPelayo"]
-filename: learnerlang.erl
+filename: learnerlang-es.erl
 ---
+
 # Erlang
 %  Signo de porcentaje inicia un comentario de una línea.
 
