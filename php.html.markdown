@@ -443,7 +443,7 @@ echo $function_name(1, 2); // => 3
 // Or, use call_user_func(callable $callback [, $parameter [, ... ]]);
 
 
-// You can get the all the parameters passed to a function
+// You can get all the parameters passed to a function
 function parameters() {
     $numargs = func_num_args();
     if ($numargs > 0) {
