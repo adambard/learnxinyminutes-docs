@@ -178,6 +178,37 @@ let greeting = `Hi ${name}, how are you?`
 let multiline = `This is an example
 of a multiline string`;
 
+// READONLY: New Feature in TypeScript 3.1
+interface Person {
+  readonly name: string;
+  readonly age: number;
+}
+
+var p1: Person = { name: "Tyrone", age: 42 };
+p1.age = 25; // Error, p1.x is read-only
+
+var p2 = { name: "John", age: 60 };
+var p3: Person = p2; // Ok, read-only alias for p2
+p3.x = 35; // Error, p3.x is read-only
+p2.x = 45; // Ok, but also changes p3.x because of aliasing
+
+class Car {
+  readonly make: string;
+  readonly model: string;
+  readonly year = 2018;
+
+  constructor() {
+    this.make = "Unknown Make"; // Assignment permitted in constructor
+    this.model = "Unknown Model"; // Assignment permitted in constructor
+  }
+}
+
+let numbers: Array<number> = [0, 1, 2, 3, 4];
+let moreNumbers: ReadonlyArray<number> = numbers;
+moreNumbers[5] = 5; // Error, elements are read-only
+moreNumbers.push(5); // Error, no push method (because it mutates array)
+moreNumbers.length = 3; // Error, length is read-only
+numbers = moreNumbers; // Error, mutating methods are missing
 ```
 
 ## Further Reading

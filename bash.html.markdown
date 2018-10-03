@@ -75,7 +75,7 @@ echo ${Variable/Some/A} # => A string
 # Substring from a variable
 Length=7
 echo ${Variable:0:$Length} # => Some st
-# This will return only the first 7 characters of the value
+# This will return 7 characters of the string, starting from the first char
 
 # Default value for variable
 echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"} 
@@ -228,10 +228,13 @@ mv s0urc3.txt dst.txt # sorry, l33t hackers...
 # Since bash works in the context of a current directory, you might want to 
 # run your command in some other directory. We have cd for changing location:
 cd ~    # change to home directory
+cd      # also goes to home directory
 cd ..   # go up one directory
         # (^^say, from /home/username/Downloads to /home/username)
 cd /home/username/Documents   # change to specified directory
 cd ~/Documents/..    # still in home directory..isn't it??
+cd -    # change to last directory
+# => /home/username/Documents
 
 # Use subshells to work across directories
 (echo "First, I'm here: $PWD") && (cd someDir; echo "Then, I'm here: $PWD")
@@ -256,6 +259,7 @@ print("#stderr", file=sys.stderr)
 for line in sys.stdin:
     print(line, file=sys.stdout)
 EOF
+# Variables will be expanded if the first "EOF" is not quoted
 
 # Run the hello.py Python script with various stdin, stdout, and 
 # stderr redirections:
