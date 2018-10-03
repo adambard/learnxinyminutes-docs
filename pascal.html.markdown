@@ -3,6 +3,7 @@ language: Pascal
 filename: learnpascal.pas
 contributors:
     - ["Ganesha Danu", "http://github.com/blinfoldking"]
+    - ["Keith Miyake", "https://github.com/kaymmm"]
 ---
 
 
@@ -92,5 +93,46 @@ End.
 ```
 
 ```pascal
+program Functional_Programming;
+
+Var
+    i, dummy : integer;
+
+function factorial_recursion(const a: integer) : integer;
+{ recursively calculates the factorial of integer parameter a }
+
+// Declare local variables within the function
+// e.g.:
+// Var
+//    local_a : integer;
+
+Begin
+    If a >= 1 Then
+    // return values from functions by assigning a value to the function name
+        factorial_recursion := a * factorial_recursion(a-1)
+    Else
+        factorial_recursion := 1;
+End; // terminate a function using a semicolon after the End statement.
+
+procedure get_integer(var i : integer; dummy : integer);
+{ get user input and store it in the integer parameter i.
+  parameters prefaced with 'var' are variable, meaning their value can change
+  outside of the parameter. Value parameters (without 'var') like 'dummy' are
+  static and changes made within the scope of the function/procedure do not
+  affect the variable passed as a parameter }
+
+Begin
+    write('Enter an integer: ');
+    readln(i);
+    dummy := 4; // dummy will not change value outside of the procedure
+End;
+
+Begin // main program block
+    dummy := 3;
+    get_integer(i, dummy);
+    writeln(i, '! = ', factorial_recursion(i));
+    // outputs i!
+    writeln('dummy = ', dummy); // always outputs '3' since dummy is unchanged.
+End.
 
 ```
