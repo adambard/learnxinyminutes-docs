@@ -256,6 +256,7 @@ print("#stderr", file=sys.stderr)
 for line in sys.stdin:
     print(line, file=sys.stdout)
 EOF
+# Variables will be expanded if the first "EOF" is not quoted
 
 # Run the hello.py Python script with various stdin, stdout, and 
 # stderr redirections:
