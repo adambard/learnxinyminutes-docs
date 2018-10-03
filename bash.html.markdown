@@ -228,10 +228,13 @@ mv s0urc3.txt dst.txt # sorry, l33t hackers...
 # Since bash works in the context of a current directory, you might want to 
 # run your command in some other directory. We have cd for changing location:
 cd ~    # change to home directory
+cd      # also goes to home directory
 cd ..   # go up one directory
         # (^^say, from /home/username/Downloads to /home/username)
 cd /home/username/Documents   # change to specified directory
 cd ~/Documents/..    # still in home directory..isn't it??
+cd -    # change to last directory
+# => /home/username/Documents
 
 # Use subshells to work across directories
 (echo "First, I'm here: $PWD") && (cd someDir; echo "Then, I'm here: $PWD")
