@@ -434,8 +434,8 @@ add(5, 6)
 # => 11
 
 # Compact assignment of functions
-fAdd(x, y) = x + y  # => fAdd (generic function with 1 method)
-fAdd(3, 4)  # => 7
+f_add(x, y) = x + y  # => f_add (generic function with 1 method)
+f_add(3, 4)  # => 7
 
 # Function can also return multiple values as tuple
 fn(x, y) = x + y, x - y # => fn (generic function with 1 method)
@@ -478,56 +478,56 @@ catch e
 end
 
 # You can define functions that take keyword arguments
-function keywordArgs(;k1=4, name2="hello")  # note the ;
+function keyword_args(;k1=4, name2="hello")  # note the ;
     return Dict("k1" => k1, "name2" => name2)
 end
-# => keywordArgs (generic function with 1 method)
+# => keyword_args (generic function with 1 method)
 
-keywordArgs(name2="ness")  # => ["name2"=>"ness", "k1"=>4]
-keywordArgs(k1="mine")     # => ["name2"=>"hello", "k1"=>"mine"]
-keywordArgs()              # => ["name2"=>"hello", "k1"=>4]
+keyword_args(name2="ness")  # => ["name2"=>"ness", "k1"=>4]
+keyword_args(k1="mine")     # => ["name2"=>"hello", "k1"=>"mine"]
+keyword_args()              # => ["name2"=>"hello", "k1"=>4]
 
 # You can combine all kinds of arguments in the same function
-function allTheArgs(normalArg, optionalPositionalArg=2; keywordArg="foo")
+function all_the_args(normalArg, optionalPositionalArg=2; keywordArg="foo")
     println("normal arg: $normalArg")
     println("optional arg: $optionalPositionalArg")
     println("keyword arg: $keywordArg")
 end
-# => allTheArgs (generic function with 2 methods)
+# => all_the_args (generic function with 2 methods)
 
-allAheArgs(1, 3, keywordArg=4)
+all_the_args(1, 3, keywordArg=4)
 # => normal arg: 1
 # => optional arg: 3
 # => keyword arg: 4
 
 # Julia has first class functions
-function createAdder(x)
+function create_adder(x)
     adder = function (y)
         return x + y
     end
     return adder
 end
-# => createAdder (generic function with 1 method)
+# => create_adder (generic function with 1 method)
 
 # This is "stabby lambda syntax" for creating anonymous functions
 (x -> x > 2)(3)  # => true
 
-# This function is identical to createAdder implementation above.
-function createAdder(x)
+# This function is identical to create_adder implementation above.
+function create_adder(x)
     y -> x + y
 end
-# => createAdder (generic function with 1 method)
+# => create_adder (generic function with 1 method)
 
 # You can also name the internal function, if you want
-function createAdder(x)
+function create_adder(x)
     function adder(y)
         x + y
     end
     adder
 end
-# => createAdder (generic function with 1 method)
+# => create_adder (generic function with 1 method)
 
-add10 = createAdder(10) # => (::getfield(Main, Symbol("#adder#11")){Int64}) 
+add10 = create_adder(10) # => (::getfield(Main, Symbol("#adder#11")){Int64}) 
                           # (generic function with 1 method)
 add10(3) # => 13
 
@@ -669,14 +669,14 @@ Lion    <: Cat  # => true
 Panther <: Cat  # => true
 
 # Defining a function that takes Cats
-function petCat(cat::Cat)
+function pet_cat(cat::Cat)
     println("The cat says $(meow(cat))")
 end
-# => petCat (generic function with 1 method)
+# => pet_cat (generic function with 1 method)
 
-petCat(Lion("42")) # => The cat says 42
+pet_cat(Lion("42")) # => The cat says 42
 try
-    petCat(tigger) # => ERROR: MethodError: no method matching petCat(::Tiger)
+    pet_cat(tigger) # => ERROR: MethodError: no method matching pet_cat(::Tiger)
 catch e
     println(e)
 end
@@ -744,14 +744,14 @@ fight(Lion("RAR"), Lion("brown", "rarrr"))  # => The lions come to a tie
 # Under the hood
 # You can take a look at the llvm  and the assembly code generated.
 
-squareArea(l) = l * l  # squareArea (generic function with 1 method)
+square_area(l) = l * l  # square_area (generic function with 1 method)
 
-squareArea(5)  # => 25
+square_area(5)  # => 25
 
-# What happens when we feed squareArea an integer?
-codeNative(squareArea, (Int32,), syntax = :intel)
+# What happens when we feed square_area an integer?
+codeNative(square_area, (Int32,), syntax = :intel)
 	#         .text
-	# ; Function squareArea {
+	# ; Function square_area {
 	# ; Location: REPL[116]:1       # Prologue
 	#         push    rbp
 	#         mov     rbp, rsp
@@ -765,9 +765,9 @@ codeNative(squareArea, (Int32,), syntax = :intel)
 	#         nop     dword ptr [rax + rax]
 	# ;}
 
-codeNative(squareArea, (Float32,), syntax = :intel)
+codeNative(square_area, (Float32,), syntax = :intel)
     #         .text
-    # ; Function squareArea {
+    # ; Function square_area {
     # ; Location: REPL[116]:1
     #         push    rbp
     #         mov     rbp, rsp
@@ -780,9 +780,9 @@ codeNative(squareArea, (Float32,), syntax = :intel)
     #         nop     word ptr [rax + rax]
     # ;}
 
-codeNative(squareArea, (Float64,), syntax = :intel)
+codeNative(square_area, (Float64,), syntax = :intel)
     #         .text
-    # ; Function squareArea {
+    # ; Function square_area {
     # ; Location: REPL[116]:1
     #         push    rbp
     #         mov     rbp, rsp
@@ -798,12 +798,12 @@ codeNative(squareArea, (Float64,), syntax = :intel)
 # Note that julia will use floating point instructions if any of the
 # arguments are floats.
 # Let's calculate the area of a circle
-circleArea(r) = pi * r * r     # circleArea (generic function with 1 method)
-circleArea(5)  # 78.53981633974483
+circle_area(r) = pi * r * r     # circle_area (generic function with 1 method)
+circle_area(5)  # 78.53981633974483
 
-codeNative(circleArea, (Int32,), syntax = :intel)
+codeNative(circle_area, (Int32,), syntax = :intel)
     #         .text
-    # ; Function circleArea {
+    # ; Function circle_area {
     # ; Location: REPL[121]:1
     #         push    rbp
     #         mov     rbp, rsp
@@ -832,9 +832,9 @@ codeNative(circleArea, (Int32,), syntax = :intel)
     #         nop     dword ptr [rax]
     # ;}
 
-codeNative(circleArea, (Float64,), syntax = :intel)
+codeNative(circle_area, (Float64,), syntax = :intel)
     #         .text
-    # ; Function circleArea {
+    # ; Function circle_area {
     # ; Location: REPL[121]:1
     #         push    rbp
     #         mov     rbp, rsp
