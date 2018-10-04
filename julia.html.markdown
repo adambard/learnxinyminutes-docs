@@ -114,12 +114,12 @@ println("I'm Julia. Nice to meet you!") # => I'm Julia. Nice to meet you!
 ####################################################
 
 # You don't declare variables before assigning to them.
-some_var = 5  # => 5
-some_var  # => 5
+someVar = 5  # => 5
+someVar  # => 5
 
 # Accessing a previously unassigned variable is an error
 try
-    some_other_var  # => ERROR: UndefVarError: some_other_var not defined
+    someOtherVar  # => ERROR: UndefVarError: someOtherVar not defined
 catch e
     println(e)
 end
@@ -286,62 +286,62 @@ d # => 5
 e # => 4
 
 # Dictionaries store mappings
-empty_dict = Dict()  # => Dict{Any,Any} with 0 entries
+emptyDict = Dict()  # => Dict{Any,Any} with 0 entries
 
 # You can create a dictionary using a literal
-filled_dict = Dict("one" => 1, "two" => 2, "three" => 3)
+filledDict = Dict("one" => 1, "two" => 2, "three" => 3)
 # => Dict{String,Int64} with 3 entries:
 # =>  "two" => 2, "one" => 1, "three" => 3
 
 # Look up values with []
-filled_dict["one"]  # => 1
+filledDict["one"]  # => 1
 
 # Get all keys
-keys(filled_dict)
+keys(filledDict)
 # => Base.KeySet for a Dict{String,Int64} with 3 entries. Keys:
 # =>  "two", "one", "three"
 # Note - dictionary keys are not sorted or in the order you inserted them.
 
 # Get all values
-values(filled_dict)
+values(filledDict)
 # => Base.ValueIterator for a Dict{String,Int64} with 3 entries. Values: 
 # =>  2, 1, 3
 # Note - Same as above regarding key ordering.
 
 # Check for existence of keys in a dictionary with in, haskey
-in(("one" => 1), filled_dict)  # => true
-in(("two" => 3), filled_dict)  # => false
-haskey(filled_dict, "one")     # => true
-haskey(filled_dict, 1)         # => false
+in(("one" => 1), filledDict)  # => true
+in(("two" => 3), filledDict)  # => false
+haskey(filledDict, "one")     # => true
+haskey(filledDict, 1)         # => false
 
 # Trying to look up a non-existent key will raise an error
 try
-    filled_dict["four"]  # => ERROR: KeyError: key "four" not found
+    filledDict["four"]  # => ERROR: KeyError: key "four" not found
 catch e
     println(e)
 end
 
 # Use the get method to avoid that error by providing a default value
-# get(dictionary, key, default_value)
-get(filled_dict, "one", 4)   # => 1
-get(filled_dict, "four", 4)  # => 4
+# get(dictionary, key, defaultValue)
+get(filledDict, "one", 4)   # => 1
+get(filledDict, "four", 4)  # => 4
 
 # Use Sets to represent collections of unordered, unique values
-empty_set = Set()  # => Set(Any[])
+emptySet = Set()  # => Set(Any[])
 # Initialize a set with values
-filled_set = Set([1, 2, 2, 3, 4])  # => Set([4, 2, 3, 1])
+filledSet = Set([1, 2, 2, 3, 4])  # => Set([4, 2, 3, 1])
 
 # Add more values to a set
-push!(filled_set, 5)  # => Set([4, 2, 3, 5, 1])
+push!(filledSet, 5)  # => Set([4, 2, 3, 5, 1])
 
 # Check if the values are in the set
-in(2, filled_set)   # => true
-in(10, filled_set)  # => false
+in(2, filledSet)   # => true
+in(10, filledSet)  # => false
 
 # There are functions for set intersection, union, and difference.
-other_set = Set([3, 4, 5, 6])         # => Set([4, 3, 5, 6])
-intersect(filled_set, other_set)      # => Set([4, 3, 5])
-union(filled_set, other_set)          # => Set([4, 2, 3, 5, 6, 1])
+otherSet = Set([3, 4, 5, 6])         # => Set([4, 3, 5, 6])
+intersect(filledSet, otherSet)      # => Set([4, 3, 5])
+union(filledSet, otherSet)          # => Set([4, 2, 3, 5, 6, 1])
 setdiff(Set([1,2,3,4]), Set([2,3,5])) # => Set([4, 1])
 
 ####################################################
@@ -349,15 +349,15 @@ setdiff(Set([1,2,3,4]), Set([2,3,5])) # => Set([4, 1])
 ####################################################
 
 # Let's make a variable
-some_var = 5
+someVar = 5
 
 # Here is an if statement. Indentation is not meaningful in Julia.
-if some_var > 10
-    println("some_var is totally bigger than 10.")
-elseif some_var < 10    # This elseif clause is optional.
-    println("some_var is smaller than 10.")
+if someVar > 10
+    println("someVar is totally bigger than 10.")
+elseif someVar < 10    # This elseif clause is optional.
+    println("someVar is smaller than 10.")
 else                    # The else clause is optional too.
-    println("some_var is indeed 10.")
+    println("someVar is indeed 10.")
 end
 # => prints "some var is smaller than 10"
 
@@ -434,8 +434,8 @@ add(5, 6)
 # => 11
 
 # Compact assignment of functions
-f_add(x, y) = x + y  # => f_add (generic function with 1 method)
-f_add(3, 4)  # => 7
+fAdd(x, y) = x + y  # => fAdd (generic function with 1 method)
+fAdd(3, 4)  # => 7
 
 # Function can also return multiple values as tuple
 fn(x, y) = x + y, x - y # => fn (generic function with 1 method)
@@ -478,67 +478,67 @@ catch e
 end
 
 # You can define functions that take keyword arguments
-function keyword_args(;k1=4, name2="hello")  # note the ;
+function keywordArgs(;k1=4, name2="hello")  # note the ;
     return Dict("k1" => k1, "name2" => name2)
 end
-# => keyword_args (generic function with 1 method)
+# => keywordArgs (generic function with 1 method)
 
-keyword_args(name2="ness")  # => ["name2"=>"ness", "k1"=>4]
-keyword_args(k1="mine")     # => ["name2"=>"hello", "k1"=>"mine"]
-keyword_args()              # => ["name2"=>"hello", "k1"=>4]
+keywordArgs(name2="ness")  # => ["name2"=>"ness", "k1"=>4]
+keywordArgs(k1="mine")     # => ["name2"=>"hello", "k1"=>"mine"]
+keywordArgs()              # => ["name2"=>"hello", "k1"=>4]
 
 # You can combine all kinds of arguments in the same function
-function all_the_args(normal_arg, optional_positional_arg=2; keyword_arg="foo")
-    println("normal arg: $normal_arg")
-    println("optional arg: $optional_positional_arg")
-    println("keyword arg: $keyword_arg")
+function allTheArgs(normalArg, optionalPositionalArg=2; keywordArg="foo")
+    println("normal arg: $normalArg")
+    println("optional arg: $optionalPositionalArg")
+    println("keyword arg: $keywordArg")
 end
-# => all_the_args (generic function with 2 methods)
+# => allTheArgs (generic function with 2 methods)
 
-all_the_args(1, 3, keyword_arg=4)
+allAheArgs(1, 3, keywordArg=4)
 # => normal arg: 1
 # => optional arg: 3
 # => keyword arg: 4
 
 # Julia has first class functions
-function create_adder(x)
+function createAdder(x)
     adder = function (y)
         return x + y
     end
     return adder
 end
-# => create_adder (generic function with 1 method)
+# => createAdder (generic function with 1 method)
 
 # This is "stabby lambda syntax" for creating anonymous functions
 (x -> x > 2)(3)  # => true
 
-# This function is identical to create_adder implementation above.
-function create_adder(x)
+# This function is identical to createAdder implementation above.
+function createAdder(x)
     y -> x + y
 end
-# => create_adder (generic function with 1 method)
+# => createAdder (generic function with 1 method)
 
 # You can also name the internal function, if you want
-function create_adder(x)
+function createAdder(x)
     function adder(y)
         x + y
     end
     adder
 end
-# => create_adder (generic function with 1 method)
+# => createAdder (generic function with 1 method)
 
-add_10 = create_adder(10) # => (::getfield(Main, Symbol("#adder#11")){Int64}) 
+add10 = createAdder(10) # => (::getfield(Main, Symbol("#adder#11")){Int64}) 
                           # (generic function with 1 method)
-add_10(3) # => 13
+add10(3) # => 13
 
 
 # There are built-in higher order functions
-map(add_10, [1,2,3])  # => [11, 12, 13]
+map(add10, [1,2,3])  # => [11, 12, 13]
 filter(x -> x > 5, [3, 4, 5, 6, 7])  # => [6, 7]
 
 # We can use list comprehensions
-[add_10(i) for i = [1, 2, 3]]   # => [11, 12, 13]
-[add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
+[add10(i) for i = [1, 2, 3]]   # => [11, 12, 13]
+[add10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5] # => [6, 7]
 
 ####################################################
@@ -616,7 +616,7 @@ supertype(SubString)  # => AbstractString
 
 # <: is the subtyping operator
 struct Lion <: Cat  # Lion is a subtype of Cat
-    mane_color
+    maneColor
     roar::AbstractString
 end
 
@@ -627,7 +627,7 @@ Lion(roar::AbstractString) = Lion("green", roar)
 # This is an outer constructor because it's outside the type definition
 
 struct Panther <: Cat  # Panther is also a subtype of Cat
-    eye_color
+    eyeColor
     Panther() = new("green")
     # Panthers will only have this constructor, and no default constructor.
 end
@@ -669,14 +669,14 @@ Lion    <: Cat  # => true
 Panther <: Cat  # => true
 
 # Defining a function that takes Cats
-function pet_cat(cat::Cat)
+function petCat(cat::Cat)
     println("The cat says $(meow(cat))")
 end
-# => pet_cat (generic function with 1 method)
+# => petCat (generic function with 1 method)
 
-pet_cat(Lion("42")) # => The cat says 42
+petCat(Lion("42")) # => The cat says 42
 try
-    pet_cat(tigger) # => ERROR: MethodError: no method matching pet_cat(::Tiger)
+    petCat(tigger) # => ERROR: MethodError: no method matching petCat(::Tiger)
 catch e
     println(e)
 end
@@ -695,7 +695,7 @@ fight(tigger, Panther())  # => The orange tiger wins!
 fight(tigger, Lion("ROAR")) # => The orange tiger wins!
 
 # Let's change the behavior when the Cat is specifically a Lion
-fight(t::Tiger, l::Lion) = println("The $(l.mane_color)-maned lion wins!")
+fight(t::Tiger, l::Lion) = println("The $(l.maneColor)-maned lion wins!")
 # => fight (generic function with 2 methods)
 
 fight(tigger, Panther())  # => The orange tiger wins!
@@ -744,14 +744,14 @@ fight(Lion("RAR"), Lion("brown", "rarrr"))  # => The lions come to a tie
 # Under the hood
 # You can take a look at the llvm  and the assembly code generated.
 
-square_area(l) = l * l  # square_area (generic function with 1 method)
+squareArea(l) = l * l  # squareArea (generic function with 1 method)
 
-square_area(5)  # => 25
+squareArea(5)  # => 25
 
-# What happens when we feed square_area an integer?
-code_native(square_area, (Int32,), syntax = :intel)
+# What happens when we feed squareArea an integer?
+codeNative(squareArea, (Int32,), syntax = :intel)
 	#         .text
-	# ; Function square_area {
+	# ; Function squareArea {
 	# ; Location: REPL[116]:1       # Prologue
 	#         push    rbp
 	#         mov     rbp, rsp
@@ -765,9 +765,9 @@ code_native(square_area, (Int32,), syntax = :intel)
 	#         nop     dword ptr [rax + rax]
 	# ;}
 
-code_native(square_area, (Float32,), syntax = :intel)
+codeNative(squareArea, (Float32,), syntax = :intel)
     #         .text
-    # ; Function square_area {
+    # ; Function squareArea {
     # ; Location: REPL[116]:1
     #         push    rbp
     #         mov     rbp, rsp
@@ -780,9 +780,9 @@ code_native(square_area, (Float32,), syntax = :intel)
     #         nop     word ptr [rax + rax]
     # ;}
 
-code_native(square_area, (Float64,), syntax = :intel)
+codeNative(squareArea, (Float64,), syntax = :intel)
     #         .text
-    # ; Function square_area {
+    # ; Function squareArea {
     # ; Location: REPL[116]:1
     #         push    rbp
     #         mov     rbp, rsp
@@ -798,12 +798,12 @@ code_native(square_area, (Float64,), syntax = :intel)
 # Note that julia will use floating point instructions if any of the
 # arguments are floats.
 # Let's calculate the area of a circle
-circle_area(r) = pi * r * r     # circle_area (generic function with 1 method)
-circle_area(5)  # 78.53981633974483
+circleArea(r) = pi * r * r     # circleArea (generic function with 1 method)
+circleArea(5)  # 78.53981633974483
 
-code_native(circle_area, (Int32,), syntax = :intel)
+codeNative(circleArea, (Int32,), syntax = :intel)
     #         .text
-    # ; Function circle_area {
+    # ; Function circleArea {
     # ; Location: REPL[121]:1
     #         push    rbp
     #         mov     rbp, rsp
@@ -832,9 +832,9 @@ code_native(circle_area, (Int32,), syntax = :intel)
     #         nop     dword ptr [rax]
     # ;}
 
-code_native(circle_area, (Float64,), syntax = :intel)
+codeNative(circleArea, (Float64,), syntax = :intel)
     #         .text
-    # ; Function circle_area {
+    # ; Function circleArea {
     # ; Location: REPL[121]:1
     #         push    rbp
     #         mov     rbp, rsp
