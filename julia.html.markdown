@@ -527,18 +527,18 @@ function create_adder(x)
 end
 # => create_adder (generic function with 1 method)
 
-add10 = create_adder(10) # => (::getfield(Main, Symbol("#adder#11")){Int64}) 
+add_10 = create_adder(10) # => (::getfield(Main, Symbol("#adder#11")){Int64}) 
                           # (generic function with 1 method)
-add10(3) # => 13
+add_10(3) # => 13
 
 
 # There are built-in higher order functions
-map(add10, [1,2,3])  # => [11, 12, 13]
+map(add_10, [1,2,3])  # => [11, 12, 13]
 filter(x -> x > 5, [3, 4, 5, 6, 7])  # => [6, 7]
 
 # We can use list comprehensions
-[add10(i) for i = [1, 2, 3]]   # => [11, 12, 13]
-[add10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
+[add_10(i) for i = [1, 2, 3]]   # => [11, 12, 13]
+[add_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5] # => [6, 7]
 
 ####################################################
