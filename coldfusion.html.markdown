@@ -13,7 +13,7 @@ ColdFusion is a scripting language for web development.
 _**C**old**F**usion **M**arkup **L**anguage_  
 ColdFusion started as a tag-based language. Almost all functionality is available using tags.
 
-```html
+```cfm
 <em>HTML tags have been provided for output readability</em>
 
 <!--- Comments start with "<!---" and end with "--->" --->
@@ -232,7 +232,8 @@ ColdFusion started as a tag-based language. Almost all functionality is availabl
 <h1>Components</h1>
 
 <em>Code for reference (Functions must return something to support IE)</em>
-
+```
+```cfs
 <cfcomponent>
 	<cfset this.hello = "Hello" />
 	<cfset this.world = "world" />

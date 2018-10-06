@@ -9,7 +9,7 @@ Kotlin is a statically typed programming language for the JVM, Android and the
 browser. It is 100% interoperable with Java.
 [Read more here.](https://kotlinlang.org/)
 
-```java
+```kotlin
 // Single-line comments start with //
 /*
 Multi-line comments look like this.
@@ -36,18 +36,18 @@ fun main(args: Array<String>) {
     so we don't have to explicitly specify it every time.
     We can explicitly declare the type of a variable like so:
     */
-    val foo : Int = 7
+    val foo: Int = 7
 
     /*
     Strings can be represented in a similar way as in Java.
     Escaping is done with a backslash.
     */
-    val fooString = "My String Is Here!";
-    val barString = "Printing on a new line?\nNo Problem!";
-    val bazString = "Do you want to add a tab?\tNo Problem!";
-    println(fooString);
-    println(barString);
-    println(bazString);
+    val fooString = "My String Is Here!"
+    val barString = "Printing on a new line?\nNo Problem!"
+    val bazString = "Do you want to add a tab?\tNo Problem!"
+    println(fooString)
+    println(barString)
+    println(bazString)
 
     /*
     A raw string is delimited by a triple quote (""").
@@ -65,7 +65,7 @@ fun helloWorld(val name : String) {
     A template expression starts with a dollar sign ($).
     */
     val fooTemplateString = "$fooString has ${fooString.length} characters"
-    println(fooTemplateString)
+    println(fooTemplateString) // => My String Is Here! has 18 characters
 
     /*
     For a variable to hold null it must be explicitly specified as nullable.
@@ -87,7 +87,7 @@ fun helloWorld(val name : String) {
     Function arguments can optionally have a default value.
     The function return type, if required, is specified after the arguments.
     */
-    fun hello(name: String = "world") : String {
+    fun hello(name: String = "world"): String {
         return "Hello, $name!"
     }
     println(hello("foo")) // => Hello, foo!
@@ -119,16 +119,16 @@ fun helloWorld(val name : String) {
     println(even(7)) // => false
 
     // Functions can take functions as arguments and return functions.
-    fun not(f: (Int) -> Boolean) : (Int) -> Boolean {
+    fun not(f: (Int) -> Boolean): (Int) -> Boolean {
         return {n -> !f.invoke(n)}
     }
     // Named functions can be specified as arguments using the :: operator.
     val notOdd = not(::odd)
     val notEven = not(::even)
-    // Anonymous functions can be specified as arguments.
+    // Lambda expressions can be specified as arguments.
     val notZero = not {n -> n == 0}
     /*
-    If an anonymous function has only one parameter
+    If a lambda has only one parameter
     then its declaration can be omitted (along with the ->).
     The name of the single parameter will be "it".
     */
@@ -139,11 +139,11 @@ fun helloWorld(val name : String) {
 
     // The "class" keyword is used to declare classes.
     class ExampleClass(val x: Int) {
-        fun memberFunction(y: Int) : Int {
+        fun memberFunction(y: Int): Int {
             return x + y
         }
 
-        infix fun infixMemberFunction(y: Int) : Int {
+        infix fun infixMemberFunction(y: Int): Int {
             return x * y
         }
     }
@@ -175,12 +175,12 @@ fun helloWorld(val name : String) {
     // Objects can be destructured into multiple variables.
     val (a, b, c) = fooCopy
     println("$a $b $c") // => 1 100 4
-    
+
     // destructuring in "for" loop
     for ((a, b, c) in listOf(fooData)) {
         println("$a $b $c") // => 1 100 4
     }
-    
+
     val mapData = mapOf("a" to 1, "b" to 2)
     // Map.Entry is destructurable as well
     for ((key, value) in mapData) {
@@ -189,13 +189,13 @@ fun helloWorld(val name : String) {
 
     // The "with" function is similar to the JavaScript "with" statement.
     data class MutableDataClassExample (var x: Int, var y: Int, var z: Int)
-    val fooMutableDate = MutableDataClassExample(7, 4, 9)
-    with (fooMutableDate) {
+    val fooMutableData = MutableDataClassExample(7, 4, 9)
+    with (fooMutableData) {
         x -= 2
         y += 2
         z--
     }
-    println(fooMutableDate) // => MutableDataClassExample(x=5, y=6, z=8)
+    println(fooMutableData) // => MutableDataClassExample(x=5, y=6, z=8)
 
     /*
     We can create a list using the "listOf" function.
@@ -228,16 +228,16 @@ fun helloWorld(val name : String) {
     Sequences represent lazily-evaluated collections.
     We can create a sequence using the "generateSequence" function.
     */
-    val fooSequence = generateSequence(1, {it + 1})
+    val fooSequence = generateSequence(1, { it + 1 })
     val x = fooSequence.take(10).toList()
     println(x) // => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
     // An example of using a sequence to generate Fibonacci numbers:
-    fun fibonacciSequence() : Sequence<Long> {
+    fun fibonacciSequence(): Sequence<Long> {
         var a = 0L
         var b = 1L
 
-        fun next() : Long {
+        fun next(): Long {
             val result = a + b
             a = b
             b = result
@@ -347,6 +347,8 @@ fun helloWorld(val name : String) {
 
     println(EnumExample.A) // => A
     println(ObjectExample.hello()) // => hello
+
+    testOperator()
 }
 
 // Enum classes are similar to Java enum types.
@@ -360,7 +362,7 @@ We cannot instantiate it but we can refer to its unique instance by its name.
 This is similar to Scala singleton objects.
 */
 object ObjectExample {
-    fun hello() : String {
+    fun hello(): String {
         return "hello"
     }
 }
@@ -370,6 +372,77 @@ fun useObject() {
     val someRef: Any = ObjectExample // we use objects name just as is
 }
 
+
+/* The not-null assertion operator (!!) converts any value to a non-null type and
+throws an exception if the value is null.
+*/
+var b: String? = "abc"
+val l = b!!.length
+
+/* You can add many custom operations using symbol like +, to particular instance
+by overloading the built-in kotlin operator, using "operator" keyword
+
+below is the sample class to add some operator, and the most basic example
+*/
+data class SomeClass(var savedValue: Int = 0)
+
+// instance += valueToAdd
+operator fun SomeClass.plusAssign(valueToAdd: Int) {
+  this.savedValue += valueToAdd  
+}
+
+// -instance
+operator fun SomeClass.unaryMinus() = SomeClass(-this.savedValue)
+
+// ++instance or instance++
+operator fun SomeClass.inc() = SomeClass(this.savedValue + 1)
+
+// instance * other
+operator fun SomeClass.times(other: SomeClass) =
+  SomeClass(this.savedValue * other.savedValue)
+
+// an overload for multiply
+operator fun SomeClass.times(value: Int) = SomeClass(this.savedValue * value)
+
+// other in instance
+operator fun SomeClass.contains(other: SomeClass) =
+  other.savedValue == this.savedValue
+
+// instance[dummyIndex] = valueToSet
+operator fun SomeClass.set(dummyIndex: Int, valueToSet: Int) {
+  this.savedValue = valueToSet + dummyIndex
+}
+
+// instance()
+operator fun SomeClass.invoke() {
+  println("instance invoked by invoker")
+}
+
+/* return type must be Integer,
+so that, it can be translated to "returned value" compareTo 0
+
+for equality (==,!=) using operator will violates overloading equals function,
+since it is already defined in Any class
+*/
+operator fun SomeClass.compareTo(other: SomeClass) =
+  this.savedValue - other.savedValue
+
+fun testOperator() {
+  var x = SomeClass(4)
+
+  println(x) // => "SomeClass(savedValue=4)"
+  x += 10
+  println(x) // => "SomeClass(savedValue=14)"
+  println(-x) // => "SomeClass(savedValue=-14)"
+  println(++x) // => "SomeClass(savedValue=15)"
+  println(x * SomeClass(3)) // => "SomeClass(savedValue=45)"
+  println(x * 2) // => "SomeClass(savedValue=30)"
+  println(SomeClass(15) in x) // => true
+  x[2] = 10
+  println(x) // => "SomeClass(savedValue=12)"
+  x() // => "instance invoked by invoker"
+  println(x >= 15) // => false
+}
 ```
 
 ### Further Reading

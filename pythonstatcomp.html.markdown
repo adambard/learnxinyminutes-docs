@@ -13,10 +13,11 @@ This is a tutorial on how to do some typical statistical programming tasks using
 
 # 0. Getting set up ====
 
-""" Get set up with IPython and pip install the following: numpy, scipy, pandas,
+""" To get started, pip install the following: jupyter, numpy, scipy, pandas,
     matplotlib, seaborn, requests.
-        Make sure to do this tutorial in the IPython notebook so that you get
-    the inline plots and easy documentation lookup.
+        Make sure to do this tutorial in a Jupyter notebook so that you get
+    the inline plots and easy documentation lookup. The shell command to open 
+    one is simply `jupyter notebook`, then click New -> Python.
 """
 
 # 1. Data acquisition ====
@@ -37,18 +38,16 @@ r.text  # raw page source
 print(r.text)  # prettily formatted
 # save the page source in a file:
 os.getcwd()  # check what's the working directory
-f = open("learnxinyminutes.html", "wb")
-f.write(r.text.encode("UTF-8"))
-f.close()
+with open("learnxinyminutes.html", "wb") as f:
+    f.write(r.text.encode("UTF-8"))
 
 # downloading a csv
 fp = "https://raw.githubusercontent.com/adambard/learnxinyminutes-docs/master/"
 fn = "pets.csv"
 r = requests.get(fp + fn)
 print(r.text)
-f = open(fn, "wb")
-f.write(r.text.encode("UTF-8"))
-f.close()
+with open(fn, "wb") as f:
+    f.write(r.text.encode("UTF-8"))
 
 """ for more on the requests module, including APIs, see
     http://docs.python-requests.org/en/latest/user/quickstart/
@@ -70,8 +69,8 @@ pets
 # 1  vesuvius    6      23    fish
 # 2       rex    5      34     dog
 
-""" R users: note that Python, like most normal programming languages, starts
-    indexing from 0. R is the unusual one for starting from 1.
+""" R users: note that Python, like most C-influenced programming languages, starts
+    indexing from 0. R starts indexing at 1 due to Fortran influence.
 """
 
 # two different ways to print out a column
@@ -104,7 +103,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 %matplotlib inline
 
-# To do data vizualization in Python, use matplotlib
+# To do data visualization in Python, use matplotlib
 
 plt.hist(pets.age);
 
@@ -204,7 +203,7 @@ hre["DeathY"] = extractYear(hre.Death)
 hre["EstAge"] = hre.DeathY.astype(int) - hre.BirthY.astype(int)
 
 # simple scatterplot, no trend line, color represents dynasty
-sns.lmplot("BirthY", "EstAge", data=hre, hue="Dynasty", fit_reg=False);
+sns.lmplot("BirthY", "EstAge", data=hre, hue="Dynasty", fit_reg=False)
 
 # use scipy to run a linear regression
 from scipy import stats
@@ -221,7 +220,7 @@ rval**2  # 0.020363950027333586
 pval  # 0.34971812581498452
 
 # use seaborn to make a scatterplot and plot the linear regression trend line
-sns.lmplot("BirthY", "EstAge", data=hre);
+sns.lmplot("BirthY", "EstAge", data=hre)
 
 """ For more information on seaborn, see
       - http://web.stanford.edu/~mwaskom/software/seaborn/

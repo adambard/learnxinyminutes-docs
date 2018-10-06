@@ -18,7 +18,7 @@ Una diferencia clave con respecto a Bash es que en PowerShell casi todo son mani
 
 Si no está seguro sobre el ambiente de ejecución en su sistema:
 
-```
+```powershell
 Get-ExecutionPolicy -List
 Set-ExecutionPolicy AllSigned
 # Otras opciones de políticas de ejecución son:

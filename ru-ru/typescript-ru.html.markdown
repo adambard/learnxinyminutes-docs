@@ -5,7 +5,7 @@ contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
 translators:
     - ["Fadil Mamedov", "https://github.com/fadilmamedov"]
-    - "Andre Polykanine", "https://github.com/Oire"]
+    - ["Andre Polykanine", "https://github.com/Oire"]
 filename: learntypescript-ru.ts
 ---
 

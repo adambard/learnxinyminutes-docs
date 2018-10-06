@@ -11,7 +11,7 @@ its JavaScript sibling. Like JavaScript, Dart aims for great browser integration
 
 Dart's most controversial feature must be its Optional Typing.
 
-```javascript
+```dart
 import "dart:collection";
 import "dart:math" as DM;
 
@@ -500,8 +500,8 @@ main() {
 
 Dart has a comprehensive web-site. It covers API reference, tutorials, articles and more, including a
 useful Try Dart online.
-http://www.dartlang.org/
-http://try.dartlang.org/
+[https://www.dartlang.org](https://www.dartlang.org)
+[https://try.dartlang.org](https://try.dartlang.org)
 
 
 

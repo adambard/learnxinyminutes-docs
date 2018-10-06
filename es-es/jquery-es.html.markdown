@@ -79,7 +79,7 @@ $('#btn').on(
 );
 
 // Puede mover y ocultar elementos con algunos métodos de efecto
-$('.table').hide(); # Oculta el(los) elemento(s)
+$('.table').hide(); // Oculta el(los) elemento(s)
 
 // Nota: llamar a una función en estos métodos aún oculta el elemento
 $('.table').hide(function(){
@@ -134,7 +134,7 @@ $('p').height(); // Obtiene sólo la altura de la primera etiqueta 'p'
 // Puedes utilizar 'each' para recorrer todos los elementos
 var heights = [];
 $('p').each(function() {
-  heights.push($(this.height)); // Añade todas las alturas "p" de la etiqueta a la matriz
+  heights.push($(this).height()); // Añade todas las alturas "p" de la etiqueta a la matriz
 });
 
 

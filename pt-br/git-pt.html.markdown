@@ -2,7 +2,7 @@
 category: tool
 tool: git
 lang: pt-br
-filename: LearnGit.txt
+filename: LearnGit-br.txt
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Leo Rudberg" , "http://github.com/LOZORD"]

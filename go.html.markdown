@@ -11,18 +11,19 @@ contributors:
     - ["Jose Donizetti", "https://github.com/josedonizetti"]
     - ["Alexej Friesen", "https://github.com/heyalexej"]
     - ["Clayton Walker", "https://github.com/cwalk"]
+    - ["Leonid Shevtsov", "https://github.com/leonid-shevtsov"]
 ---
 
 Go was created out of the need to get work done. It's not the latest trend
-in computer science, but it is the newest fastest way to solve real-world
+in programming language theory, but it is a way to solve real-world
 problems.
 
-It has familiar concepts of imperative languages with static typing.
+It draws concepts from imperative languages with static typing.
 It's fast to compile and fast to execute, it adds easy-to-understand
-concurrency to leverage today's multi-core CPUs, and has features to
-help with large-scale programming.
+concurrency because multi-core CPUs are now common, and it's used successfully
+in large codebases (~100 million loc at Google, Inc.).
 
-Go comes with a great standard library and an enthusiastic community.
+Go comes with a good standard library and a sizeable community.
 
 ```go
 // Single line comment
@@ -39,6 +40,7 @@ import (
 	"io/ioutil" // Implements some I/O utility functions.
 	m "math"    // Math library with local alias m.
 	"net/http"  // Yes, a web server!
+	"os"        // OS functions like working with the file system
 	"strconv"   // String conversions.
 )
 
@@ -46,7 +48,7 @@ import (
 // executable program. Love it or hate it, Go uses brace brackets.
 func main() {
 	// Println outputs a line to stdout.
-	// Qualify it with the package name, fmt.
+	// It comes from the package fmt.
 	fmt.Println("Hello world!")
 
 	// Call another function within this package.
@@ -97,12 +99,12 @@ can include line breaks.` // Same string type.
 
 	// Arrays have size fixed at compile time.
 	var a4 [4]int           // An array of 4 ints, initialized to all 0.
-	a3 := [...]int{3, 1, 5} // An array initialized with a fixed size of three
-	// elements, with values 3, 1, and 5.
+	a5 := [...]int{3, 1, 5, 10, 100} // An array initialized with a fixed size of five
+	// elements, with values 3, 1, 5, 10, and 100.
 
 	// Slices have dynamic size. Arrays and slices each have advantages
 	// but use cases for slices are much more common.
-	s3 := []int{4, 5, 9}    // Compare to a3. No ellipsis here.
+	s3 := []int{4, 5, 9}    // Compare to a5. No ellipsis here.
 	s4 := make([]int, 4)    // Allocates slice of 4 ints, initialized to all 0.
 	var d2 [][]float64      // Declaration only, nothing allocated here.
 	bs := []byte("a slice") // Type conversion syntax.
@@ -132,7 +134,15 @@ can include line breaks.` // Same string type.
 
 	// Unused variables are an error in Go.
 	// The underscore lets you "use" a variable but discard its value.
-	_, _, _, _, _, _, _, _, _, _ = str, s2, g, f, u, pi, n, a3, s4, bs
+	_, _, _, _, _, _, _, _, _, _ = str, s2, g, f, u, pi, n, a5, s4, bs
+	// Usually you use it to ignore one of the return values of a function
+	// For example, in a quick and dirty script you might ignore the
+	// error value returned from os.Create, and expect that the file
+	// will always be created.
+	file, _ := os.Create("output.txt")
+	fmt.Fprint(file, "This is how you write to a file, by the way")
+	file.Close()
+	
 	// Output of course counts as using a variable.
 	fmt.Println(s, c, a4, s3, d2, m)
 
@@ -170,7 +180,7 @@ func learnFlowControl() {
 	if true {
 		fmt.Println("told ya")
 	}
-	// Formatting is standardized by the command line command "go fmt."
+	// Formatting is standardized by the command line command "go fmt".
 	if false {
 		// Pout.
 	} else {
@@ -210,6 +220,10 @@ func learnFlowControl() {
 	for key, value := range map[string]int{"one": 1, "two": 2, "three": 3} {
 		// for each pair in the map, print key and value
 		fmt.Printf("key=%s, value=%d\n", key, value)
+	}
+	// If you only need the value, use the underscore as the key
+	for _, name := range []string{"Bob", "Bill", "Joe"} {
+		fmt.Printf("Hello, %s\n", name)
 	}
 
 	// As with for, := in an if statement means to declare and assign
@@ -281,7 +295,7 @@ type pair struct {
 	x, y int
 }
 
-// Define a method on type pair. Pair now implements Stringer.
+// Define a method on type pair. Pair now implements Stringer because Pair has defined all the methods in the interface.
 func (p pair) String() string { // p is called the "receiver"
 	// Sprintf is another public function in package fmt.
 	// Dot syntax references fields of p.

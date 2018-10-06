@@ -5,10 +5,10 @@ contributors:
 translators:
     - ["Abner Chou", "http://cn.abnerchou.me"]
 lang: zh-cn
-filename: learnvisualbasic.vb-cn
+filename: learnvisualbasic-cn.vb
 ---
 
-```vb
+```
 Module Module1
 
     Sub Main()
@@ -77,7 +77,7 @@ Module Module1
     ' 使用 private subs 声明函数。 
     Private Sub HelloWorldOutput()
         ' 程序名
-        Console.Title = "Hello World Ouput | Learn X in Y Minutes"
+        Console.Title = "Hello World Output | Learn X in Y Minutes"
         ' 使用 Console.Write("") 或者 Console.WriteLine("") 来输出文本到屏幕上
         ' 对应的 Console.Read() 或 Console.Readline() 用来读取键盘输入
         Console.WriteLine("Hello World")

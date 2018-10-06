@@ -8,7 +8,6 @@ contributors:
     - ["Connor Waters", "http://github.com/connorwaters"]
     - ["Ankush Goyal", "http://github.com/ankushg07"]
     - ["Jatin Dhankhar", "https://github.com/jatindhankhar"]
-lang: en
 ---
 
 C++ is a systems programming language that,
@@ -217,7 +216,7 @@ cout << myString + myOtherString; // "Hello World"
 
 cout << myString + " You"; // "Hello You"
 
-// C++ strings are mutable and have value semantics.
+// C++ strings are mutable.
 myString.append(" Dog");
 cout << myString; // "Hello Dog"
 
@@ -456,7 +455,7 @@ void Dog::print() const
 
 Dog::~Dog()
 {
-    cout << "Goodbye " << name << "\n";
+    std::cout << "Goodbye " << name << "\n";
 }
 
 int main() {
@@ -474,6 +473,7 @@ int main() {
 // without a public or protected method for doing so
 class OwnedDog : public Dog {
 
+public:
     void setOwner(const std::string& dogsOwner);
 
     // Override the behavior of the print function for all OwnedDogs. See
@@ -981,7 +981,7 @@ cout << tuple_size<decltype(third)>::value << "\n"; // prints: 3
 // tuple_cat concatenates the elements of all the tuples in the same order.
 
 auto concatenated_tuple = tuple_cat(first, second, third);
-// concatenated_tuple becomes = (10, 'A', 1e9, 15, 11, 'A' ,3.14141)
+// concatenated_tuple becomes = (10, 'A', 1e9, 15, 11, 'A', 3.14141)
 
 cout << get<0>(concatenated_tuple) << "\n"; // prints: 10
 cout << get<3>(concatenated_tuple) << "\n"; // prints: 15
@@ -1000,24 +1000,24 @@ cout << get<5>(concatenated_tuple) << "\n"; // prints: 'A'
 
 // Vector (Dynamic array)
 // Allow us to Define the Array or list of objects at run time
-#include<vector>
-vector<Data_Type> Vector_name; // used to initialize the vector
+#include <vector>
+string val;
+vector<string> my_vector; // initialize the vector
 cin >> val;
-Vector_name.push_back(val); // will push the value of variable into array
+my_vector.push_back(val); // will push the value of 'val' into vector ("array") my_vector
+my_vector.push_back(val); // will push the value into the vector again (now having two elements)
 
-// To iterate through vector, we have 2 choices:
-// Normal looping
-for(int i=0; i<Vector_name.size(); i++)
-// It will iterate through the vector from index '0' till last index
+// To iterate through a vector we have 2 choices:
+// Either classic looping (iterating through the vector from index 0 to its last index):
+for (int i = 0; i < my_vector.size(); i++) {
+	cout << my_vector[i] << endl; // for accessing a vector's element we can use the operator []
+}
 
-// Iterator
-vector<Data_Type>::iterator it; // initialize the iteartor for vector
-for(it=vector_name.begin(); it!=vector_name.end();++it)
-
-// For accessing the element of the vector
-// Operator []
-var = vector_name[index]; // Will assign value at that index to var
-
+// or using an iterator:
+vector<string>::iterator it; // initialize the iterator for vector
+for (it = my_vector.begin(); it != my_vector.end(); ++it) {
+	cout << *it  << endl;
+}
 
 // Set
 // Sets are containers that store unique elements following a specific order.
@@ -1057,7 +1057,7 @@ cout << ST.size();  // will print the size of set ST
 // and a mapped value, following a specific order.
 
 #include<map>
-map<char, int> mymap;  // Will initalize the map with key as char and value as int
+map<char, int> mymap;  // Will initialize the map with key as char and value as int
 
 mymap.insert(pair<char,int>('A',1));
 // Will insert value 1 for key A
@@ -1072,7 +1072,7 @@ for (it=mymap.begin(); it!=mymap.end(); ++it)
 // A->1
 // Z->26
 
-// To find the value correponsing to a key
+// To find the value corresponding to a key
 it = mymap.find('Z');
 cout << it->second;
 

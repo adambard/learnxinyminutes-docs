@@ -1,5 +1,6 @@
 ---
 language: Haskell
+filename: learnhaskell.hs
 contributors:
     - ["Adit Bhargava", "http://adit.io"]
 ---
@@ -64,11 +65,11 @@ not False -- True
 
 
 ----------------------------------------------------
--- Lists and Tuples
+-- 2. Lists and Tuples
 ----------------------------------------------------
 
 -- Every element in a list must have the same type.
--- These two lists are the same:
+-- These two lists are equal:
 [1, 2, 3, 4, 5]
 [1..5]
 
@@ -77,11 +78,11 @@ not False -- True
 
 -- You can create a step in a range.
 [0,2..10] -- [0, 2, 4, 6, 8, 10]
-[5..1] -- This doesn't work because Haskell defaults to incrementing.
+[5..1] -- [] (Haskell defaults to incrementing)
 [5,4..1] -- [5, 4, 3, 2, 1]
 
 -- indexing into a list
-[1..10] !! 3 -- 4
+[1..10] !! 3 -- 4 (zero-based indexing)
 
 -- You can also have infinite lists in Haskell!
 [1..] -- a list of all the natural numbers
@@ -123,6 +124,9 @@ last [1..5] -- 5
 fst ("haskell", 1) -- "haskell"
 snd ("haskell", 1) -- 1
 
+-- pair element accessing does not work on n-tuples (i.e. triple, quadruple, etc)
+snd ("snd", "can't touch this", "da na na na") -- error! see function below
+
 ----------------------------------------------------
 -- 3. Functions
 ----------------------------------------------------
@@ -152,14 +156,14 @@ fib x
   | otherwise = fib (x - 1) + fib (x - 2)
 
 -- Pattern matching is similar. Here we have given three different
--- definitions for fib. Haskell will automatically call the first
--- function that matches the pattern of the value.
+-- equations that define fib. Haskell will automatically use the first
+-- equation whose left hand side pattern matches the value.
 fib 1 = 1
 fib 2 = 2
 fib x = fib (x - 1) + fib (x - 2)
 
--- Pattern matching on tuples:
-foo (x, y) = (x + 1, y + 2)
+-- Pattern matching on tuples
+sndOfTriple (_, y, _) = y -- use a wild card (_) to bypass naming unused value
 
 -- Pattern matching on lists. Here `x` is the first element
 -- in the list, and `xs` is the rest of the list. We can write
@@ -198,15 +202,15 @@ foo 5 -- 15
 -- multiplies the result of that by 4, and then returns the final value.
 foo = (4*) . (10+)
 
--- 4*(10 + 5) = 60
+-- 4*(10+5) = 60
 foo 5 -- 60
 
 -- fixing precedence
--- Haskell has another operator called `$`. This operator applies a function 
--- to a given parameter. In contrast to standard function application, which 
--- has highest possible priority of 10 and is left-associative, the `$` operator 
+-- Haskell has an operator called `$`. This operator applies a function
+-- to a given parameter. In contrast to standard function application, which
+-- has highest possible priority of 10 and is left-associative, the `$` operator
 -- has priority of 0 and is right-associative. Such a low priority means that
--- the expression on its right is applied as the parameter to the function on its left.
+-- the expression on its right is applied as a parameter to the function on its left.
 
 -- before
 even (fib 7) -- false
@@ -222,7 +226,7 @@ even . fib $ 7 -- false
 -- 5. Type signatures
 ----------------------------------------------------
 
--- Haskell has a very strong type system, and every valid expression has a type. 
+-- Haskell has a very strong type system, and every valid expression has a type.
 
 -- Some basic types:
 5 :: Integer
@@ -244,10 +248,10 @@ double x = x * 2
 -- 6. Control Flow and If Expressions
 ----------------------------------------------------
 
--- if expressions
+-- if-expressions
 haskell = if 1 == 1 then "awesome" else "awful" -- haskell = "awesome"
 
--- if expressions can be on multiple lines too, indentation is important
+-- if-expressions can be on multiple lines too, indentation is important
 haskell = if 1 == 1
             then "awesome"
             else "awful"
@@ -295,11 +299,10 @@ data Color = Red | Blue | Green
 
 -- Now you can use it in a function:
 
-
 say :: Color -> String
-say Red = "You are Red!"
-say Blue = "You are Blue!"
-say Green =  "You are Green!"
+say Red   = "You are Red!"
+say Blue  = "You are Blue!"
+say Green = "You are Green!"
 
 -- Your data types can have parameters too:
 
@@ -384,8 +387,8 @@ main'' = do
 -- The type `IO` is an example of a "monad". The way Haskell uses a monad to
 -- do IO allows it to be a purely functional language. Any function that
 -- interacts with the outside world (i.e. does IO) gets marked as `IO` in its
--- type signature. This lets us reason about what functions are "pure" (don't
--- interact with the outside world or modify state) and what functions aren't.
+-- type signature. This lets us reason about which functions are "pure" (don't
+-- interact with the outside world or modify state) and which functions aren't.
 
 -- This is a powerful feature, because it's easy to run pure functions
 -- concurrently; so, concurrency in Haskell is very easy.
@@ -444,5 +447,6 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
 There are two popular ways to install Haskell: The traditional [Cabal-based installation](http://www.haskell.org/platform/), and the newer [Stack-based process](https://www.stackage.org/install).
 
 You can find a much gentler introduction from the excellent
-[Learn you a Haskell](http://learnyouahaskell.com/) or
+[Learn you a Haskell](http://learnyouahaskell.com/),
+[Happy Learn Haskell Tutorial](http://www.happylearnhaskelltutorial.com/) or
 [Real World Haskell](http://book.realworldhaskell.org/).

@@ -1,10 +1,9 @@
 ---
 category: tool
 tool: PyQT
-filename: learnqt.py
+filename: learnpyqt.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
-lang: en
 ---
 
 **Qt** is a widely-known framework for developing cross-platform software that can be run on various software and hardware platforms with little or no change in the code, while having the power and speed of native applications. Though **Qt** was originally written in *C++*.
@@ -14,7 +13,7 @@ This is an adaption on the C++ intro to QT by [Aleksey Kholovchuk](https://githu
 ), some of the code examples should result in the same functionality
 this version just having been done using pyqt! 
 
-```Python
+```python
 import sys
 from PyQt4 import QtGui
 	

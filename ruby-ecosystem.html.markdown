@@ -10,6 +10,16 @@ contributors:
 People using Ruby generally have a way to install different Ruby versions,
 manage their packages (or gems), and manage their gem dependencies.
 
+## Ruby Versions
+
+Ruby was created by Yukihiro "Matz" Matsumoto, who remains somewhat of a
+[BDFL](https://en.wikipedia.org/wiki/Benevolent_Dictator_for_Life), although
+that is changing recently. As a result, the reference implementation of Ruby is
+called MRI (Matz' Reference Implementation), and when you hear a Ruby version,
+it is referring to the release version of MRI.
+
+New major versions of Ruby are traditionally released on Christmas Day. The current major version (25 December 2017) is 2.5. The most popular stable versions are 2.4.4 and 2.3.7 (both released 28 March 2018).
+
 ## Ruby Managers
 
 Some platforms have Ruby pre-installed or available as a package. Most rubyists
@@ -28,28 +38,6 @@ The following are the popular Ruby environment managers:
   Used with ruby-build.  Use this for finer control over how rubies load.
 * [chruby](https://github.com/postmodern/chruby) - Only switches between rubies.
   Similar in spirit to rbenv. Unopinionated about how rubies are installed.
-
-## Ruby Versions
-
-Ruby was created by Yukihiro "Matz" Matsumoto, who remains somewhat of a
-[BDFL](https://en.wikipedia.org/wiki/Benevolent_Dictator_for_Life), although
-that is changing recently. As a result, the reference implementation of Ruby is
-called MRI (Matz' Reference Implementation), and when you hear a Ruby version,
-it is referring to the release version of MRI.
-
-The three major version of Ruby in use are:
-
-* 2.0.0 - Released in February 2013. Most major libraries and frameworks support
-  2.0.0.
-* 1.9.3 - Released in October 2011. This is the version most rubyists use
-  currently. Also [retired](https://www.ruby-lang.org/en/news/2015/02/23/support-for-ruby-1-9-3-has-ended/)
-* 1.8.7 - Ruby 1.8.7 has been
-  [retired](http://www.ruby-lang.org/en/news/2013/06/30/we-retire-1-8-7/).
-
-The change between 1.8.7 to 1.9.x is a much larger change than 1.9.3 to 2.0.0.
-For instance, the 1.9 series introduced encodings and a bytecode VM.  There
-are projects still on 1.8.7, but they are becoming a small minority, as most of
-the community has moved to at least 1.9.2 or 1.9.3.
 
 ## Ruby Implementations
 
@@ -88,7 +76,7 @@ implementation.
   to have stopped since Microsoft pulled their support.
 
 Ruby implementations may have their own release version numbers, but they always
-target a specific version of MRI for compatability. Many implementations have
+target a specific version of MRI for compatibility. Many implementations have
 the ability to enter different modes (for example, 1.8 or 1.9 mode) to specify
 which MRI version to target.
 

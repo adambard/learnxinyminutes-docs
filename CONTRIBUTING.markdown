@@ -33,6 +33,9 @@ review them more effectively and/or individually.
     your file is UTF-8 encoded.
   + Try to leave out the byte-order-mark at the start of the file. (`:set nobomb`
     in Vim)
+  + You can check if the file contains a BOM on Linux/Unix systems by running
+    `file language.html.markdown`  You will see this if it uses a BOM:
+	`UTF-8 Unicode (with BOM) text`.
 
 
 ### Header configuration
@@ -68,3 +71,10 @@ contributors:
 lang: ep-ep
 ---
 ```
+
+### Should I add myself as a Contributor?
+
+If you want to add yourself to contributors, keep in mind that contributors get
+equal billing, and the first contributor usually wrote the whole article. Please
+use your judgement when deciding if your contribution constitutes a substantial
+addition or not.

@@ -180,7 +180,7 @@ esac
 
 # 'for' Schleifen iterieren über die angegebene Zahl von Argumenten:
 # Der Inhalt von $Variable wird dreimal ausgedruckt.
-for $Variable in {1..3}
+for Variable in {1..3}
 do
     echo "$Variable"
 done

@@ -10,8 +10,8 @@ lang: de-de
 ---
 Die Sprache Go (auch golang) wurde von Google entwickelt und wird seit 2007
 benutzt. Go ähnelt in der Syntax der Sprache C, bietet darüber hinaus aber viele
-Vorteile. Einerseits verzichtet Gp auf Speicherarithmetik und
-benutzt einen Garbabe Collector. Andererseits enthält Go native Sprachelemente
+Vorteile. Einerseits verzichtet Go auf Speicherarithmetik und
+benutzt einen Garbage Collector. Andererseits enthält Go native Sprachelemente
 für die Unterstützung von Nebenläufigkeit. Durch den Fokus auf einen schnellen
 Kompilierprozess wird außerdem die Softwareentwicklung in Großprojekten
 erleichtert.
@@ -94,7 +94,7 @@ Zeilenumbrüche beinhalten.` // Selber Zeichenketten-Typ
 
     // Arrays haben bei Kompile-Zeit festgelegte Größen
     var a4 [4]int           // Ein Array mit 4 ints, alle mit Initialwert 0
-    a3 := [...]int{3, 1, 5} // Ein Array mit 4 ints, Initialwerte wie angezeigt
+    a3 := [...]int{3, 1, 5} // Ein Array mit 3 ints, Initialwerte wie angezeigt
 
     // "slices" haben eine dynamische Größe. Arrays und Slices haben beide ihre
     // Vorzüge, aber slices werden viel häufiger verwendet

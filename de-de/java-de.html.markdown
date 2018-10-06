@@ -1,6 +1,6 @@
 ---
 language: java
-filename: LearnJavaDe.java
+filename: LearnJavaDe-de.java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Jakukyo Friel", "http://weakish.github.io"]
@@ -13,7 +13,7 @@ lang: de-de
 
 Java ist eine Programmiersprache für vielfältige Aufgaben. Sie ist imperative und objektorientiert.
 Oftmals wird sie für Desktop- Webapplikationen sowie als Programmiersprache im Betriebssystem Android verwendet.
-[Weitere Informationen \(Englisch\](http://docs.oracle.com/javase/tutorial/java/)
+[Weitere Informationen \(Englisch\)](http://docs.oracle.com/javase/tutorial/java/)
 
 ```java
 // Einzeilige Kommentare starten mit //
