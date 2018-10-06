@@ -287,7 +287,11 @@ end
 PrivateMath.sum(1, 2)    #=> 3
 # PrivateMath.do_sum(1, 2) #=> ** (UndefinedFunctionError)
 
-# Function declarations also support guards and multiple clauses:
+# Function declarations also support guards and multiple clauses.
+# When a function with multiple clauses is called, the first function
+# that satisfies the clause will be invoked.
+# Example: invoking area({:circle, 3}) will call the second area
+# function defined below, not the first:
 defmodule Geometry do
   def area({:rectangle, w, h}) do
     w * h
