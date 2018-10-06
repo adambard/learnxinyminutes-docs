@@ -86,12 +86,58 @@ cv2.ellipse(img,(256,256),(100,50),0,0,180,255,-1)
 # Adding Text On Images
 cv2.putText(img,"Hello World!!!", (x,y), cv2.FONT_HERSHEY_SIMPLEX, 2, 255)
 
+# Blending Images
+img1 = cv2.imread('cat.png')
+img2 = cv2.imread('openCV.jpg')
+dst = cv2.addWeighted(img1,0.5,img2,0.5,0)
+
+# Thresholding image
+# Binary Thresholding
+_,thresImg = cv2.threshold(img,127,255,cv2.THRESH_BINARY)
+# Adaptive Thresholding
+adapThres = cv2.adaptiveThreshold(img,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,11,2)
+
+# Blur Image
+# Gaussian Blur
+blur = cv2.GaussianBlur(img,(5,5),0)
+# Median Blur
+medianBlur = cv2.medianBlur(img,5)
+
+# Canny Edge Detection
+img = cv2.imread('cat.jpg',0)
+edges = cv2.Canny(img,100,200)
+
+# Face Detection using Haar Cascades
+# Download Haar Cascades from https://github.com/opencv/opencv/blob/master/data/haarcascades/
+import cv2
+import numpy as np
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
+
+img = cv2.imread('human.jpg')
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+aces = face_cascade.detectMultiScale(gray, 1.3, 5)
+for (x,y,w,h) in faces:
+    cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+    roi_gray = gray[y:y+h, x:x+w]
+    roi_color = img[y:y+h, x:x+w]
+    eyes = eye_cascade.detectMultiScale(roi_gray)
+    for (ex,ey,ew,eh) in eyes:
+        cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
+
+cv2.imshow('img',img)
+cv2.waitKey(0)
 
 cv2.destroyAllWindows()
-# destroyAllWindows() destroys all windows. If you wish to destroy specific window pass the exact name of window you created.
+# destroyAllWindows() destroys all windows. 
+# If you wish to destroy specific window pass the exact name of window you created.
 ```
 
 Further Reading:
+
+Download Cascade from
+<https://github.com/opencv/opencv/blob/master/data/haarcascades/>
 
 OpenCV drawing Functions
 <https://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html>
