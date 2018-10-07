@@ -749,7 +749,7 @@ square_area(l) = l * l  # square_area (generic function with 1 method)
 square_area(5)  # => 25
 
 # What happens when we feed square_area an integer?
-codeNative(square_area, (Int32,), syntax = :intel)
+code_native(square_area, (Int32,), syntax = :intel)
 	#         .text
 	# ; Function square_area {
 	# ; Location: REPL[116]:1       # Prologue
@@ -765,7 +765,7 @@ codeNative(square_area, (Int32,), syntax = :intel)
 	#         nop     dword ptr [rax + rax]
 	# ;}
 
-codeNative(square_area, (Float32,), syntax = :intel)
+code_native(square_area, (Float32,), syntax = :intel)
     #         .text
     # ; Function square_area {
     # ; Location: REPL[116]:1
@@ -780,7 +780,7 @@ codeNative(square_area, (Float32,), syntax = :intel)
     #         nop     word ptr [rax + rax]
     # ;}
 
-codeNative(square_area, (Float64,), syntax = :intel)
+code_native(square_area, (Float64,), syntax = :intel)
     #         .text
     # ; Function square_area {
     # ; Location: REPL[116]:1
@@ -801,7 +801,7 @@ codeNative(square_area, (Float64,), syntax = :intel)
 circle_area(r) = pi * r * r     # circle_area (generic function with 1 method)
 circle_area(5)  # 78.53981633974483
 
-codeNative(circle_area, (Int32,), syntax = :intel)
+code_native(circle_area, (Int32,), syntax = :intel)
     #         .text
     # ; Function circle_area {
     # ; Location: REPL[121]:1
@@ -832,7 +832,7 @@ codeNative(circle_area, (Int32,), syntax = :intel)
     #         nop     dword ptr [rax]
     # ;}
 
-codeNative(circle_area, (Float64,), syntax = :intel)
+code_native(circle_area, (Float64,), syntax = :intel)
     #         .text
     # ; Function circle_area {
     # ; Location: REPL[121]:1
