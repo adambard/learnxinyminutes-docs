@@ -1,4 +1,4 @@
-﻿---
+---
 language: crystal
 filename: learncrystal-ru.cr
 contributors:
