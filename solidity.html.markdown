@@ -111,6 +111,7 @@ contract SimpleBank { // CapWords
     /// @return The balance of the user
     // 'constant' prevents function from editing state variables;
     // allows function to run locally/off blockchain
+    // NOTE: 'constant' on functions is an alias to 'view', but this is deprecated and is planned to be dropped in version 0.5.0.
     function balance() constant public returns (uint) {
         return balances[msg.sender];
     }
