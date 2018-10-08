@@ -47,7 +47,7 @@ Title are underlined with equals signs too
 Subtitles with dashes
 ---------------------
 
-You can  put text in *italic* or in **bold**, you can "mark" text as code with double backquote ``: ``print()``.
+You can  put text in *italic* or in **bold**, you can "mark" text as code with double backquote ``print()``.
 
 Lists are as simple as in Markdown:
 
