@@ -277,7 +277,8 @@ func sentenceFactory(mystring string) func(before, after string) string {
 }
 
 func learnDefer() (ok bool) {
-	// Deferred statements are executed just before the function returns.
+	// A defer statement pushes a function call onto a list. The list of saved
+	// calls is executed AFTER the surrounding function returns.
 	defer fmt.Println("deferred statements execute in reverse (LIFO) order.")
 	defer fmt.Println("\nThis line is being printed first because")
 	// Defer is commonly used to close a file, so the function closing the
