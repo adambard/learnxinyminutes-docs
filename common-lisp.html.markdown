@@ -284,7 +284,8 @@ nil                    ; false; also, the empty list: ()
 ;;; To access the element at 1, 1, 1:
 
 (aref (make-array (list 2 2 2)) 1 1 1)     ;  => 0
-
+;;; This value is implementation-defined:
+;;; NIL on ECL, 0 on SBCL and CCL.
 
 ;;; Adjustable vectors
 
