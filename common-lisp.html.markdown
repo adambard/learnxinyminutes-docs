@@ -181,8 +181,8 @@ nil                    ; false; also, the empty list: ()
 ;;; You can also use unicode characters.
 (defparameter *AΛB* nil)
 
-;;; Accessing a previously unbound variable is an undefined behavior, but
-;;; possible. Don't do it.
+;;; Accessing a previously unbound variable results in an UNBOUND-VARIABLE
+;;; error, however it is defined behavior. Don't do it.
 
 ;;; You can create local bindings with LET. In the following snippet, `me` is
 ;;; bound to "dance with you" only within the (let ...). LET always returns
