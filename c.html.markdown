@@ -605,6 +605,14 @@ static int j = 0; //other files using testFunc2() cannot access variable j
 void testFunc2() {
   extern int j;
 }
+// The static keyword makes a variable inaccessible to code outside the
+// compilation unit. (On almost all systems, a "compilation unit" is a .c
+// file.) static can apply both to global (to the compilation unit) variables,
+// functions, and function-local variables. When using static with
+// function-local variables, the variable is effectively global and retains its
+// value across function calls, but is only accessible within the function it
+// is declared in. Additionally, static variables are initialized to 0 if not
+// declared with some other starting value.
 //**You may also declare functions as static to make them private**
 
 ///////////////////////////////////////
