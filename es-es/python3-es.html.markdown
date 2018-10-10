@@ -2,7 +2,6 @@
 language: python3
 contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
-    - ["Categulario", "https://twitter.com/categulario"]
 translators:
     - ["Camilo Garrido", "http://twitter.com/hirohope"]
 lang: es-es
