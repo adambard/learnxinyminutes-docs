@@ -139,9 +139,11 @@ len("This is a string")  # => 16
 # still use the old style of formatting:
 "%s can be %s the %s way" % ("Strings", "interpolated", "old")  # => "Strings can be interpolated the old way"
 
-# You can also format using f-strings or formatted string literals
+# You can also format using f-strings or formatted string literals (in Python 3.6+)
 name = "Reiko"
 f"She said her name is {name}." # => "She said her name is Reiko"
+# You can basically put any Python statement inside the braces and it will be output in the string.
+f"{name} is {len(name)} characters long."
 
 
 # None is an object
