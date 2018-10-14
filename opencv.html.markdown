@@ -17,7 +17,9 @@ Please refer to these articles for installation of OpenCV on your computer.
 * Windows Installation Instructions: [https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_setup_in_windows/py_setup_in_windows.html#install-opencv-python-in-windows]()
 * Mac Installation Instructions (High Sierra): [https://medium.com/@nuwanprabhath/installing-opencv-in-macos-high-sierra-for-python-3-89c79f0a246a]()
 * Linux Installation Instructions (Ubuntu 18.04): [https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv]()
+
 ### Here we will be focusing on python implementation of OpenCV
+
 ```python
 # Reading image in OpenCV
 import cv2
