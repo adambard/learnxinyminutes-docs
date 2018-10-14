@@ -45,9 +45,10 @@ for i=0 to n-1
 
 ### Alcuni famosi problemi DP
 
-- Floyd Warshall Algorithm - Tutorial e Codice sorgente in C del programma: http://www.thelearningpoint.net/computer-science/algorithms-all-to-all-shortest-paths-in-graphs---floyd-warshall-algorithm-with-c-program-source-code 
-- Integer Knapsack Problem - Tutorial e Codice sorgente in C del programma: http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---the-integer-knapsack-problem 
-- Longest Common Subsequence - Tutorial e Codice sorgente in C del programma: http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---longest-common-subsequence 
+- Floyd Warshall Algorithm - Tutorial e Codice sorgente in C del programma: [http://www.thelearningpoint.net/computer-science/algorithms-all-to-all-shortest-paths-in-graphs---floyd-warshall-algorithm-with-c-program-source-code]()
+- Integer Knapsack Problem - Tutorial e Codice sorgente in C del programma: [http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---the-integer-knapsack-problem]()
+- Longest Common Subsequence - Tutorial e Codice sorgente in C del programma: [http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---longest-common-subsequence]()
+
 
 ## Risorse online
 
