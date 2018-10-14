@@ -16,6 +16,8 @@ contributors:
   - ["Persa Zula", "http://persazula.com"]
   - ["Jake Faris", "https://github.com/farisj"]
   - ["Corey Ward", "https://github.com/coreyward"]
+translators:
+    - ["abonte", "https://github.com/abonte"]
 lang: it-it   
 ---
 
