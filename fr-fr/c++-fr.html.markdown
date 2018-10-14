@@ -910,7 +910,5 @@ v.swap(vector<Foo>());
 ```
 Lecture complémentaire :
 
-Une référence à jour du langage est disponible à
-<http://cppreference.com/w/cpp>
-
-Des ressources supplémentaires sont disponibles à <http://cplusplus.com>
+* Une référence à jour du langage est disponible à [CPP Reference](http://cppreference.com/w/cpp).
+* Des ressources supplémentaires sont disponibles à [CPlusPlus](http://cplusplus.com).
