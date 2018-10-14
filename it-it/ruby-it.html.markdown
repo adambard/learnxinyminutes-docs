@@ -80,8 +80,8 @@ false.class #=> FalseClass
 2 <= 2 #=> true
 2 >= 2 #=> true
 
-# Operatori di confronto combinati (ritorna '1' quando il primo argomento è più grande,
-# '-1' quando il secondo argomento è più grande, altrimenti '0')
+# Operatori di confronto combinati (ritorna '1' quando il primo argomento è più
+# grande, '-1' quando il secondo argomento è più grande, altrimenti '0')
 1 <=> 10 #=> -1
 10 <=> 1 #=> 1
 1 <=> 1 #=> 0
@@ -218,7 +218,8 @@ hash['numero'] #=> 5
 # Accedere all'hash con una chiave che non esiste ritorna nil:
 hash['nothing here'] #=> nil
 
-# Quando si usano simboli come chiavi di un hash, si possono utilizzare queste sintassi:
+# Quando si usano simboli come chiavi di un hash, si possono utilizzare
+# queste sintassi:
 
 hash = { :defcon => 3, :action => true }
 hash.keys #=> [:defcon, :action]
@@ -245,8 +246,8 @@ else
 end
 
 #Cicli
-# In Ruby, i tradizionali cicli `for` non sono molto comuni. Questi semplici cicli, invece,
-# sono implementati con un enumerable, usando `each`:
+# In Ruby, i tradizionali cicli `for` non sono molto comuni. Questi semplici
+# cicli, invece, sono implementati con un enumerable, usando `each`:
 (1..5).each do |contatore|
   puts "iterazione #{contatore}"
 end
@@ -297,8 +298,8 @@ end
 
 # Esistono in Ruby ulteriori funzioni per fare i cicli,
 # come per esempio 'map', 'reduce', 'inject' e altri.
-# Nel caso di 'map', esso prende l'array sul quale si sta iterando,
-# esegue le istruzioni definite nel blocco, e ritorna un array completamente nuovo.
+# Nel caso di 'map', esso prende l'array sul quale si sta iterando, esegue
+# le istruzioni definite nel blocco, e ritorna un array completamente nuovo.
 array = [1,2,3,4,5]
 doubled = array.map do |elemento|
   elemento * 2
@@ -396,40 +397,43 @@ surround { puts 'hello world' }
 # e gli permette di essere passato ad un altro metodo, legato ad uno scope
 # differente o modificato. Questo è molto comune nella lista parametri del
 # metodo, dove è frequente vedere il parametro '&block' in coda. Esso accetta
-# il blocco, se ne è stato passato uno, e lo converte in un 'Proc'. Qui la denominazione
-# è una convenzione; funzionerebbe anche con '&ananas'.
+# il blocco, se ne è stato passato uno, e lo converte in un 'Proc'.
+# Qui la denominazione è una convenzione; funzionerebbe anche con '&ananas'.
 def guests(&block)
   block.class #=> Proc
   block.call(4)
 end
 
-# Il metodo 'call' del Proc è simile chiamare 'yield' quando è presente un blocco.
+# Il metodo 'call' del Proc è simile allo 'yield' quando è presente un blocco.
 # Gli argomenti passati a 'call' sono inoltrati al blocco come argomenti:
 
 guests { |n| "You have #{n} guests." }
 # => "You have 4 guests."
 
-# L'operatore splat ("*") consente di convertire una lista di argomenti in un array
+# L'operatore splat ("*") converte una lista di argomenti in un array
 def guests(*array)
   array.each { |guest| puts guest }
 end
 
 # Destrutturazione
 
-# Ruby destruttura automaticamente gli array in assegnamento a variabili multiple:
+# Ruby destruttura automaticamente gli array in assegnamento
+# a variabili multiple:
 a, b, c = [1, 2, 3]
 a #=> 1
 b #=> 2
 c #=> 3
 
-# In alcuni casi si usa l'operatore splat ("*") per destrutturare un array in una lista.
+# In alcuni casi si usa l'operatore splat ("*") per destrutturare
+# un array in una lista.
 classifica_concorrenti = ["John", "Sally", "Dingus", "Moe", "Marcy"]
 
 def migliore(primo, secondo, terzo)
   puts "I vincitori sono #{primo}, #{secondo}, e #{terzo}."
 end
 
-migliore *classifica_concorrenti.first(3) #=> I vincitori sono John, Sally, e Dingus.
+migliore *classifica_concorrenti.first(3)
+#=> I vincitori sono John, Sally, e Dingus.
 
 # The splat operator can also be used in parameters:
 def migliore(primo, secondo, terzo, *altri)
@@ -441,7 +445,8 @@ migliore *classifica_concorrenti
 #=> I vincitori sono John, Sally, e Dingus.
 #=> C'erano altri 2 partecipanti.
 
-# Per convenzione, tutti i metodi che ritornano un booleano terminano con un punto interrogativo
+# Per convenzione, tutti i metodi che ritornano un booleano terminano
+# con un punto interrogativo
 5.even? #=> false
 5.odd? #=> true
 
@@ -468,7 +473,8 @@ class Umano
   def initialize(nome, eta = 0)
     # Assegna il valore dell'argomento alla variabile dell'istanza "nome"
     @nome = nome
-    # Se l'età non è fornita, verrà assegnato il valore di default indicato nella lista degli argomenti
+    # Se l'età non è fornita, verrà assegnato il valore di default indicato
+    # nella lista degli argomenti
     @eta = eta
   end
 
@@ -482,7 +488,8 @@ class Umano
     @nome
   end
 
-  # Le funzionalità di cui sopra posso essere incapsulate usando il metodo attr_accessor come segue
+  # Le funzionalità di cui sopra posso essere incapsulate usando
+  # il metodo attr_accessor come segue
   attr_accessor :nome
 
   # Getter/setter possono anche essere creati individualmente
@@ -517,7 +524,8 @@ dwight.nome #=> "Dwight K. Schrute"
 # Chiamare un metodo della classe
 Umano.say('Ciao') #=> "Ciao"
 
-# La visibilità della variabile (variable's scope) è determinata dal modo in cui le viene assegnato il nome
+# La visibilità della variabile (variable's scope) è determinata dal modo
+# in cui le viene assegnato il nome.
 # Variabili che iniziano con $ hanno uno scope globale
 $var = "Sono una variabile globale"
 defined? $var #=> "global-variable"
@@ -534,8 +542,9 @@ defined? @@var #=> "class variable"
 Var = "Sono una costante"
 defined? Var #=> "constant"
 
-# Anche una classe è un oggetto in ruby. Quindi la classe può avere una variabile dell'istanza.
-# Le variabili della classe sono condivise fra la classe e tutti i suoi discendenti.
+# Anche una classe è un oggetto in ruby. Quindi la classe può avere
+# una variabile dell'istanza. Le variabili della classe sono condivise
+# fra la classe e tutti i suoi discendenti.
 
 # Classe base
 class Umano
