@@ -17,7 +17,7 @@ contributors:
   - ["Jake Faris", "https://github.com/farisj"]
   - ["Corey Ward", "https://github.com/coreyward"]
 translators:
-    - ["abonte", "https://github.com/abonte"]
+  - ["abonte", "https://github.com/abonte"]
 lang: it-it   
 ---
 
