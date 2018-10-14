@@ -42,9 +42,9 @@ Le même concept peut être appliqué pour trouver le chemin le plus long dans u
 
 ### Problèmes classiques de programmation dynamique
 
-- L'algorithme de Floyd Warshall(EN)) - Tutorial and C Program source code:http://www.thelearningpoint.net/computer-science/algorithms-all-to-all-shortest-paths-in-graphs---floyd-warshall-algorithm-with-c-program-source-code
-- Problème du sac à dos(EN) - Tutorial and C Program source code: http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---the-integer-knapsack-problem
-- Plus longue sous-chaîne commune(EN) - Tutorial and C Program source code : http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---longest-common-subsequence
+- L'algorithme de Floyd Warshall(EN) - Tutorial and C Program source code: [http://www.thelearningpoint.net/computer-science/algorithms-all-to-all-shortest-paths-in-graphs---floyd-warshall-algorithm-with-c-program-source-code]()
+- Problème du sac à dos(EN) - Tutorial and C Program source code: [http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---the-integer-knapsack-problem]()
+- Plus longue sous-chaîne commune(EN) - Tutorial and C Program source code : [http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---longest-common-subsequence]()
 
 ## Online Resources
 
