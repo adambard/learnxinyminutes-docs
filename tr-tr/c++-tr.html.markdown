@@ -1073,3 +1073,4 @@ compl 4    // Bit seviyesinde değil işlemini gerçekleştirir
 
 * Güncel bir referans [CPP Reference](http://cppreference.com/w/cpp) adresinde bulunabilir.
 * Ek kaynaklar [CPlusPlus](http://cplusplus.com) adresinde bulunabilir.
+* Dilin temellerini ve kodlama ortamını belirleyen bir öğretici [TheChernoProject - C ++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb) adresinde bulunabilir.
