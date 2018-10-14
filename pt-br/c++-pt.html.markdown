@@ -609,7 +609,5 @@ h=sum<double>(f,g);
 ```
 Leitura Adicional:
 
-Uma referência atualizada da linguagem pode ser encontrada em
-<http://cppreference.com/w/cpp>
-
-Uma fonte adicional pode ser encontrada em <http://cplusplus.com>
+* Uma referência atualizada da linguagem pode ser encontrada em [CPP Reference](http://cppreference.com/w/cpp).
+* Uma fonte adicional pode ser encontrada em [CPlusPlus](http://cplusplus.com).
