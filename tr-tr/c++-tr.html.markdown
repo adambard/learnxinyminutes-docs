@@ -1071,7 +1071,5 @@ compl 4    // Bit seviyesinde değil işlemini gerçekleştirir
 ```
 İleri okuma:
 
-Güncel bir referans 
-<http://cppreference.com/w/cpp> adresinde bulunabilir
-
-Ek kaynaklar <http://cplusplus.com> adresinde bulunabilir
+* Güncel bir referans [CPP Reference](http://cppreference.com/w/cpp) adresinde bulunabilir.
+* Ek kaynaklar [CPlusPlus](http://cplusplus.com) adresinde bulunabilir.
