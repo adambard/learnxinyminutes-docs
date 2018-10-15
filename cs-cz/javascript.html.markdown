@@ -16,12 +16,12 @@ JavaScriptu s webovými stránkami a vestavěná podpora v prohlížečích způ
 že se stal ve webovém frontendu běžnějším než Java.
 
 JavaScript není omezen pouze na webové prohlížeče. Např. projekt Node.js,
-který zprostředkovává samostatně běžící prostředí V8 JavaScriptového enginu z
-Google Chrome se stává stále oblíbenější i pro serverovou část webových 
+který zprostředkovává samostatně běžící prostředí V8 JavaScriptového jádra z
+Google Chrome se stává stále oblíbenější i pro serverovou část webových
 aplikací.
 
 ```js
-// Jednořádkové komentáře začínájí dvojitým lomítkem,
+// Jednořádkové komentáře začínají dvojitým lomítkem,
 /* a víceřádkové komentáře začínají lomítkem s hvězdičkou
    a končí hvězdičkou s lomítkem */
 
@@ -30,7 +30,7 @@ delejNeco();
 
 // ... ale nemusí, protože středníky jsou automaticky vloženy kdekoliv,
 // kde končí řádka, kromě pár speciálních případů.
-delejNeco()
+delejNeco();
 
 // Protože tyto případy můžou způsobit neočekávané výsledky, budeme
 // středníky v našem návodu používat.
@@ -230,7 +230,7 @@ if (pocet == 3){
 } else if (pocet == 4){
     // provede, když se pocet rovná 4
 } else {
-    // provede, když je pocet cokoliv jinného
+    // provede, když je pocet cokoliv jiného
 }
 
 // Stejně tak cyklus `while`.
@@ -282,7 +282,7 @@ if (dum.velikost == "velký" && dum.barva == "modrá"){
     dum.obsahuje = "medvěd";
 }
 if (barva == "červená" || barva == "modrá"){
-    // barva je červená nebo modtrá
+    // barva je červená nebo modrá
 }
 
 // && a || jsou praktické i pro nastavení základních hodnot
@@ -358,7 +358,7 @@ i; // = 5 - ne undefined, jak byste očekávali v jazyku, kde mají bloky svůj
 //globální oblasti
 (function(){
     var docasna = 5;
-    // Můžeme přistupovat ke globálního oblasti přes přiřazování globalním
+    // Můžeme přistupovat ke globálního oblasti přes přiřazování globálním
     // objektům. Ve webovém prohlížeči je to vždy 'window`. Globální objekt
     // může mít v jiných prostředích jako Node.js jiné jméno.
     window.trvala = 10;
@@ -382,10 +382,10 @@ function ahojPoPetiVterinach(jmeno){
     // vnitrni je definována přes ahojPoPetiVterinach a má pořád přístup k
     // proměnné prompt, když je konečně zavolána.
 }
-ahojPoPetiVterinach("Adam"); // otevře popup s  "Ahoj, Adam!" za 5s
+ahojPoPetiVterinach("Adam"); // otevře pop-up s textem  "Ahoj, Adam!" za 5s
 
 ///////////////////////////////////////////////////
-// 5. Více o objektech, konstuktorech a prototypech
+// 5. Více o objektech, konstruktorech a prototypech
 
 // Objekty můžou obsahovat funkce.
 var mujObjekt = {
