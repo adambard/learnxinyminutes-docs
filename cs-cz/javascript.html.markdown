@@ -133,7 +133,7 @@ null;      // obvykle označuje něco záměrně bez hodnoty
 undefined; // obvykle označuje, že hodnota není momentálně definovaná (ačkoli
            // `undefined` je hodnota sama o sobě)
 
-// false, null, undefined, NaN, 0 and "" vrací nepravdu (false). Všechno ostatní
+// false, null, undefined, NaN, 0 a "" vrací nepravdu (false). Všechno ostatní
 // vrací pravdu (true).
 // Všimněte si, že 0 vrací nepravdu, ale "0" vrací pravdu, i když 0 == "0"
 // vrací pravdu.
@@ -382,7 +382,7 @@ function ahojPoPetiVterinach(jmeno){
     // vnitrni je definována přes ahojPoPetiVterinach a má pořád přístup k
     // proměnné prompt, když je konečně zavolána.
 }
-ahojPoPetiVterinach("Adam"); // otevře pop-up s textem  "Ahoj, Adam!" za 5s
+ahojPoPetiVterinach("Adam"); // otevře popup s  "Ahoj, Adam!" za 5s
 
 ///////////////////////////////////////////////////
 // 5. Více o objektech, konstruktorech a prototypech
@@ -442,7 +442,7 @@ Math.min.apply(Math, [42, 6, 27]); // = 6
 var pripojenaFunkce = dalsiFunkce.bind(mujObjekt);
 pripojenaFunkce(" A ahoj Saturne!"); // = "Hello world! A ahoj Saturne!"
 
-// `bind` může být použito částečně k přepoužití funkce
+// `bind` může být použito částečně k provázání funkcí
 
 var nasobeni = function(a, b){ return a * b; };
 var zdvojeni = nasobeni.bind(this, 2);
@@ -458,11 +458,11 @@ var MujKonstruktor = function(){
 mujObjekt = new MujKonstruktor(); // = {mojeCislo: 5}
 mujObjekt.mojeCislo; // = 5
 
-// Narozdíl od nejznámějších objektově orientovaných jazyků, JavaScript nezná
-// koncept instancí vyvořených z tříd. Místo toho Javascript kombinuje
-//  instanciování a dědění do konceptu zvaného 'prototyp'.
+// Na rozdíl od nejznámějších objektově orientovaných jazyků, JavaScript nezná
+// koncept instancí vytvořených z tříd. Místo toho Javascript kombinuje
+// vytváření instancí a dědění do konceptu zvaného 'prototyp'.
 
-// Každý JsavaScriptový objekt má prototyp. Když budete přistupovat k vlastnosti
+// Každý JavaScriptový objekt má prototyp. Když budete přistupovat k vlastnosti
 // objektu, který neexistuje na objektu, tak se JS podívá do prototypu.
 
 // Některé JS implementace vám umožní přistupovat k prototypu přes magickou
@@ -470,7 +470,7 @@ mujObjekt.mojeCislo; // = 5
 // to součást standardu. Ke standardnímu způsobu používání prototypu se
 // dostaneme později.
 var mujObjekt = {
-    mujText: "Ahoj svete!"
+    mujText: "Hello world!"
 };
 var mujPrototyp = {
     smyslZivota: 42,
@@ -498,7 +498,7 @@ mujObjekt.mujBoolean; // = true
 mujPrototyp.smyslZivota = 43;
 mujObjekt.smyslZivota; // = 43
 
-// Příkaz for/in umožňuje iterovat vlastnosti objetku až do úrovně null
+// Příkaz for/in umožňuje iterovat vlastnosti objektu až do úrovně null
 // prototypu.
 for (var x in myObj){
     console.log(myObj[x]);
@@ -527,7 +527,7 @@ for (var x in myObj){
 var mujObjekt = Object.create(mujPrototyp);
 mujObjekt.smyslZivota; // = 43
 
-// Druhý způsob, který funguje všude, je pomocí konstuktoru. Konstruktor má
+// Druhý způsob, který funguje všude, je pomocí konstruktoru. Konstruktor má
 // vlastnost jménem prototype. Toto *není* prototyp samotného konstruktoru, ale
 // prototyp nového objektu.
 MujKonstruktor.prototype = {
@@ -560,7 +560,7 @@ if (new Number(0)){
    // a objekty jsou vždy pravdivé
 }
 
-// Avšak, obalovací objekty a normální vestavěnné typy sdílejí prototyp, takže
+// Avšak, obalovací objekty a normální vestavěné typy sdílejí prototyp, takže
 // můžete přidat funkcionalitu k řetězci
 String.prototype.prvniZnak = function(){
     return this.charAt(0);
@@ -605,15 +605,15 @@ tohoto jazyka.
 
 [Eloquent Javascript][8] od Marijn Haverbeke je výbornou JS knihou/e-knihou.
 
-[Javascript: The Right Way][10] je průvodcem Javascriptem pro začínající
+[Javascript: The Right Way][10] je průvodcem JavaScriptem pro začínající
 vývojáře i pomocníkem pro zkušené vývojáře, kteří si chtějí prohloubit své
 znalosti.
 
-[Javascript:Info][11] je moderním Javascriptovým průvodcem, který pokrývá
+[Javascript:Info][11] je moderním JavaScriptovým průvodcem, který pokrývá
 základní i pokročilé témata velice výstižným výkladem.
 
 Jako dodatek k přímým autorům tohoto článku byly na těchto stránkách části
-obsahu převzaty z Pythoního tutoriálu Louiho Dinha, a tak0 z [JS Tutorial][7]
+obsahu převzaty z Pythonního tutoriálu Louiho Dinha, a tak0 z [JS Tutorial][7]
 na stránkách Mozilla Developer Network.
 
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
