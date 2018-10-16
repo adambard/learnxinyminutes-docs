@@ -186,6 +186,8 @@ rx = re.compile(r'\d+$')  # match trailing digits
       - http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.html
 """
 
+from functools import reduce
+
 def extractYear(v):
     return(pd.Series(reduce(lambda x, y: x + y, map(rx.findall, v), [])).astype(int))
 
