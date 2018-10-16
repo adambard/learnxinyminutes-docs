@@ -377,7 +377,7 @@ sum sum(3, 4), 5 #=> 12
 
 # yield
 # All methods have an implicit, optional block parameter.
-# Tt can be called with the 'yield' keyword.
+# It can be called with the 'yield' keyword.
 def surround
   puts '{'
   yield
