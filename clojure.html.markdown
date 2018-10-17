@@ -97,7 +97,7 @@ and often automatically.
 (take 4 (range)) ;  (0 1 2 3)
 
 ; Use cons to add an item to the beginning of a list or vector
-(cons 4 [1 2 3]) ; => (4 1 2 3)
+(cons 4 [1 2 3]) ; => [4 1 2 3]
 (cons 4 '(1 2 3)) ; => (4 1 2 3)
 
 ; Conj will add an item to a collection in the most efficient way.
