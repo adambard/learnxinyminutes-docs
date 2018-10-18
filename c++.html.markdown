@@ -71,9 +71,15 @@ void func(); // function which may accept any number of arguments
 // Use nullptr instead of NULL in C++
 int* ip = nullptr;
 
-// C standard headers are available in C++,
-// but are prefixed with "c" and have no .h suffix.
+// C standard headers are available in C++.
+// C headers end in .h, while 
+// C++ headers are prefixed with "c" and have no ".h" suffix.
+
+// The C++ standard version:
 #include <cstdio>
+
+//The C standard version:
+#include <stdio.h>
 
 int main()
 {
