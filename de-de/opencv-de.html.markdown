@@ -145,8 +145,9 @@ cv2.destroyAllWindows()
 * OpenCV Zeichenfunktionen [https://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html]()
 * Eine aktuelle Sprachenreferenz kann hier gefunden werden [https://opencv.org]()
 * Zusätzliche Ressourcen können hier gefunden werden [https://en.wikipedia.org/wiki/OpenCV]()
-* Gute OpenCv Tutorials
+* Gute OpenCV Tutorials
     * [https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html]()
     * [https://realpython.com/python-opencv-color-spaces]()
     * [https://pyimagesearch.com]()
     * [https://www.learnopencv.com]()
+    * [https://docs.opencv.org/master/]()
