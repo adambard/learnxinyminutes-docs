@@ -1057,6 +1057,8 @@ cout << ST.size();  // will print the size of set ST
 // Output: 0
 
 // NOTE: for duplicate elements we can use multiset
+// NOTE: For hash sets, use unordered_set. They are more effecient but 
+// do not preserve order. unordered_set is available since C++11
 
 // Map
 // Maps store elements formed by a combination of a key value
@@ -1084,6 +1086,8 @@ cout << it->second;
 
 // Output: 26
 
+// NOTE: For hash maps, use unordered_map. They are more effecient but do 
+// not preserve order. unordered_map is available since C++11.
 
 ///////////////////////////////////
 // Logical and Bitwise operators
