@@ -1027,6 +1027,7 @@ for (it = my_vector.begin(); it != my_vector.end(); ++it) {
 
 // Set
 // Sets are containers that store unique elements following a specific order.
+// For hash sets, use unordered_set. They are more effecient but do not preserve order.
 // Set is a very useful container to store unique values in sorted order
 // without any other functions or code.
 
@@ -1061,6 +1062,7 @@ cout << ST.size();  // will print the size of set ST
 // Map
 // Maps store elements formed by a combination of a key value
 // and a mapped value, following a specific order.
+// For hash maps, use unordered_map. They are more effecient but do not preserve order.
 
 #include<map>
 map<char, int> mymap;  // Will initialize the map with key as char and value as int
