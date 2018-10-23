@@ -5,7 +5,7 @@ contributors:
 filename: learntcl.tcl
 ---
 
-Tcl was created by [John Ousterhout](https://wiki.tcl.tk/John%20Ousterout) as a
+Tcl was created by [John Ousterhout](https://wiki.tcl-lang.org/page/John+Ousterhout) as a
 reusable scripting language for circuit design tools that he authored.  In 1997 he
 was awarded the [ACM Software System
 Award](https://en.wikipedia.org/wiki/ACM_Software_System_Award) for Tcl.   Tcl
@@ -283,7 +283,7 @@ set c [expr {$a + $b}]
 
 # Since "expr" performs variable substitution on its own, brace the expression
 # to prevent Tcl from performing variable substitution first.  See
-# "http://wiki.tcl.tk/Brace%20your%20#%20expr-essions" for details.
+# "https://wiki.tcl-lang.org/page/Brace+your+expr-essions" for details.
 
 
 # "expr" understands variable and script substitution:
@@ -581,8 +581,8 @@ a
 
 ## Reference
 
-[Official Tcl Documentation](http://www.tcl.tk/man/tcl/)
+[Official Tcl Documentation](https://www.tcl-lang.org)
 
-[Tcl Wiki](http://wiki.tcl.tk)
+[Tcl Wiki](https://wiki.tcl-lang.org)
 
 [Tcl Subreddit](http://www.reddit.com/r/Tcl)
