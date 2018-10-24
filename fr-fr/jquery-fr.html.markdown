@@ -13,6 +13,7 @@ jQuery est une bibliothèque JavaScript dont le but est de permettre de "faire p
 C'est pourquoi aujourd'hui, jQuery est utilisée par de nombreuses grandes entreprises et par des développeurs du monde entier.
 
 Étant donné que jQuery est une bibliothèque JavaScript, vous devriez d'abord [apprendre le JavaScript](https://learnxinyminutes.com/docs/fr-fr/javascript-fr/)
+
 ```js
 
 
@@ -138,5 +139,5 @@ $('p').each(function() {
 });
 
 
-``
+```
 

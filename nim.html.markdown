@@ -15,15 +15,9 @@ Nim is efficient, expressive, and elegant.
 # Single-line comments start with a #
 
 #[
-  Multi-line comments begin with a #[
-  ... and end with ]#
-
-They don't care about indentation
-
-  #[
-  and they can be nested
-  ]#
-
+  This is a multiline comment.
+  In Nim, multiline comments can be nested, beginning with #[
+  ... and ending with ]#
 ]#
 
 discard """

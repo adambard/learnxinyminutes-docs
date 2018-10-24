@@ -564,15 +564,15 @@ void doSomethingWithAFile(const std::string& filename)
 
 // Isto tem _grandes_ vantagens:
 // 1. Não importa o que aconteça,
-//    o recurso (neste caso, o identificador de ficheiro) irá ser limpo.
+//    o recurso (neste caso, o identificador de ficheiro) será limpo.
 //    Depois de escrever o destruidor corretamente,
 //    É _impossível_ esquecer de fechar e vazar o recurso
 // 2. Nota-se que o código é muito mais limpo.
 //    As alças destructor fecham o arquivo por trás das cenas
 //    sem que você precise se preocupar com isso.
 // 3. O código é seguro de exceção.
-//    Uma exceção pode ser jogado em qualquer lugar na função e a limpeza
-//    irá ainda ocorrer.
+//    Uma exceção pode ser lançada em qualquer lugar na função e a limpeza
+//    ainda irá ocorrer.
 
 // Todos códigos C++ usam RAII extensivamente para todos os recursos.
 // Outros exemplos incluem
@@ -609,7 +609,6 @@ h=sum<double>(f,g);
 ```
 Leitura Adicional:
 
-Uma referência atualizada da linguagem pode ser encontrada em
-<http://cppreference.com/w/cpp>
-
-Uma fonte adicional pode ser encontrada em <http://cplusplus.com>
+* Uma referência atualizada da linguagem pode ser encontrada em [CPP Reference](http://cppreference.com/w/cpp).
+* Uma fonte adicional pode ser encontrada em [CPlusPlus](http://cplusplus.com).
+* Um tutorial cobrindo o básico da linguagem e configurando o ambiente de codificação está disponível em [TheChernoProject - C ++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).

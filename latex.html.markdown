@@ -26,8 +26,8 @@ filename: learn-latex.tex
 
 % Next we define the packages the document uses.
 % If you want to include graphics, colored text, or
-% source code from another language file into your document, 
-% you need to enhance the capabilities of LaTeX. This is done by adding packages. 
+% source code from another language file into your document,
+% you need to enhance the capabilities of LaTeX. This is done by adding packages.
 % I'm going to include the float and caption packages for figures
 % and hyperref package for hyperlinks
 \usepackage{caption}
@@ -42,14 +42,14 @@ Svetlana Golubeva}
 
 % Now we're ready to begin the document
 % Everything before this line is called "The Preamble"
-\begin{document} 
-% if we set the author, date, title fields, we can have LaTeX 
+\begin{document}
+% if we set the author, date, title fields, we can have LaTeX
 % create a title page for us.
 \maketitle
 
 % If we have sections, we can create table of contents. We have to compile our
 % document twice to make it appear in right order.
-% It is a good practice to separate the table of contents form the body of the 
+% It is a good practice to separate the table of contents form the body of the
 % document. To do so we use \newpage command
 \newpage
 \tableofcontents
@@ -58,14 +58,14 @@ Svetlana Golubeva}
 
 % Most research papers have abstract, you can use the predefined commands for this.
 % This should appear in its logical order, therefore, after the top matter,
-% but before the main sections of the body. 
+% but before the main sections of the body.
 % This command is available in the document classes article and report.
 \begin{abstract}
  \LaTeX \hspace{1pt} documentation written as \LaTeX! How novel and totally not
  my idea!
 \end{abstract}
 
-% Section commands are intuitive. 
+% Section commands are intuitive.
 % All the titles of the sections are added automatically to the table of contents.
 \section{Introduction}
 Hello, my name is Colton and together we're going to explore \LaTeX!
@@ -81,16 +81,16 @@ Much better now.
 \label{subsec:pythagoras}
 
 % By using the asterisk we can suppress LaTeX's inbuilt numbering.
-% This works for other LaTeX commands as well. 
-\section*{This is an unnumbered section} 
+% This works for other LaTeX commands as well.
+\section*{This is an unnumbered section}
 However not all sections have to be numbered!
 
 \section{Some Text notes}
 %\section{Spacing} % Need to add more information about space intervals
 \LaTeX \hspace{1pt} is generally pretty good about placing text where it should
-go. If 
-a line \\ needs \\ to \\ break \\ you add \textbackslash\textbackslash 
-\hspace{1pt} to the source code. \\ 
+go. If
+a line \\ needs \\ to \\ break \\ you add \textbackslash\textbackslash
+\hspace{1pt} to the source code. \\
 
 \section{Lists}
 Lists are one of the easiest things to create in \LaTeX! I need to go shopping
@@ -110,7 +110,7 @@ tomorrow, so let's make a grocery list.
 \section{Math}
 
 One of the primary uses for \LaTeX \hspace{1pt} is to produce academic articles
-or technical papers. Usually in the realm of math and science. As such, 
+or technical papers. Usually in the realm of math and science. As such,
 we need to be able to add special symbols to our paper! \\
 
 Math has many symbols, far beyond what you can find on a keyboard;
@@ -118,9 +118,9 @@ Set and relation symbols, arrows, operators, and Greek letters to name a few.\\
 
 Sets and relations play a vital role in many mathematical research papers.
 Here's how you state all x that belong to X, $\forall$ x $\in$ X. \\
-% Notice how I needed to add $ signs before and after the symbols. This is 
-% because when writing, we are in text-mode. 
-% However, the math symbols only exist in math-mode. 
+% Notice how I needed to add $ signs before and after the symbols. This is
+% because when writing, we are in text-mode.
+% However, the math symbols only exist in math-mode.
 % We can enter math-mode from text mode with the $ signs.
 % The opposite also holds true. Variable can also be rendered in math-mode.
 % We can also enter math mode with \[\]
@@ -131,12 +131,12 @@ My favorite Greek letter is $\xi$. I also like $\beta$, $\gamma$ and $\sigma$.
 I haven't found a Greek letter yet that \LaTeX \hspace{1pt} doesn't know
 about! \\
 
-Operators are essential parts of a mathematical document: 
-trigonometric functions ($\sin$, $\cos$, $\tan$), 
-logarithms and exponentials ($\log$, $\exp$), 
-limits ($\lim$), etc. 
-have per-defined LaTeX commands. 
-Let's write an equation to see how it's done: 
+Operators are essential parts of a mathematical document:
+trigonometric functions ($\sin$, $\cos$, $\tan$),
+logarithms and exponentials ($\log$, $\exp$),
+limits ($\lim$), etc.
+have per-defined LaTeX commands.
+Let's write an equation to see how it's done:
 $\cos(2\theta) = \cos^{2}(\theta) - \sin^{2}(\theta)$ \\
 
 Fractions (Numerator-denominators) can be written in these forms:
@@ -156,31 +156,31 @@ We can also insert equations in an ``equation environment''.
     \label{eq:pythagoras} % for referencing
 \end{equation} % all \begin statements must have an end statement
 
-We can then reference our new equation! 
+We can then reference our new equation!
 Eqn.~\ref{eq:pythagoras} is also known as the Pythagoras Theorem which is also
-the subject of Sec.~\ref{subsec:pythagoras}. A lot of things can be labeled: 
+the subject of Sec.~\ref{subsec:pythagoras}. A lot of things can be labeled:
 figures, equations, sections, etc.
 
 Summations and Integrals are written with sum and int commands:
 
 % Some LaTeX compilers will complain if there are blank lines
 % In an equation environment.
-\begin{equation} 
+\begin{equation}
   \sum_{i=0}^{5} f_{i}
-\end{equation} 
-\begin{equation} 
+\end{equation}
+\begin{equation}
   \int_{0}^{\infty} \mathrm{e}^{-x} \mathrm{d}x
-\end{equation} 
+\end{equation}
 
 \section{Figures}
 
-Let's insert a Figure. Figure placement can get a little tricky. 
+Let's insert a Figure. Figure placement can get a little tricky.
 I definitely have to lookup the placement options each time.
 
-\begin{figure}[H] % H here denoted the placement option. 
+\begin{figure}[H] % H here denoted the placement option.
     \centering % centers the figure on the page
     % Inserts a figure scaled to 0.8 the width of the page.
-    %\includegraphics[width=0.8\linewidth]{right-triangle.png} 
+    %\includegraphics[width=0.8\linewidth]{right-triangle.png}
     % Commented out for compilation purposes. Please use your imagination.
     \caption{Right triangle with sides $a$, $b$, $c$}
     \label{fig:right-triangle}
@@ -193,7 +193,7 @@ We can also insert Tables in the same way as figures.
   \caption{Caption for the Table.}
   % the {} arguments below describe how each row of the table is drawn.
   % Again, I have to look these up. Each. And. Every. Time.
-  \begin{tabular}{c|cc} 
+  \begin{tabular}{c|cc}
     Number &  Last Name & First Name \\ % Column rows are separated by &
     \hline % a horizontal line
     1 & Biggus & Dickus \\
@@ -204,34 +204,34 @@ We can also insert Tables in the same way as figures.
 \section{Getting \LaTeX \hspace{1pt} to not compile something (i.e. Source Code)}
 Let's say we want to include some code into our \LaTeX \hspace{1pt} document,
 we would then need \LaTeX \hspace{1pt} to not try and interpret that text and
-instead just print it to the document. We do this with a verbatim 
-environment. 
+instead just print it to the document. We do this with a verbatim
+environment.
 
 % There are other packages that exist (i.e. minty, lstlisting, etc.)
 % but verbatim is the bare-bones basic one.
-\begin{verbatim} 
+\begin{verbatim}
   print("Hello World!")
-  a%b; % look! We can use % signs in verbatim. 
+  a%b; % look! We can use % signs in verbatim.
   random = 4; #decided by fair random dice roll
 \end{verbatim}
 
-\section{Compiling} 
+\section{Compiling}
 
-By now you're probably wondering how to compile this fabulous document 
+By now you're probably wondering how to compile this fabulous document
 and look at the glorious glory that is a \LaTeX \hspace{1pt} pdf.
 (yes, this document actually does compile). \\
-Getting to the final document using \LaTeX \hspace{1pt} consists of the following 
+Getting to the final document using \LaTeX \hspace{1pt} consists of the following
 steps:
   \begin{enumerate}
     \item Write the document in plain text (the ``source code'').
-    \item Compile source code to produce a pdf. 
+    \item Compile source code to produce a pdf.
      The compilation step looks like this (in Linux): \\
-     \begin{verbatim} 
+     \begin{verbatim}
         > pdflatex learn-latex.tex
      \end{verbatim}
   \end{enumerate}
 
-A number of \LaTeX \hspace{1pt}editors combine both Step 1 and Step 2 in the 
+A number of \LaTeX \hspace{1pt}editors combine both Step 1 and Step 2 in the
 same piece of software. So, you get to see Step 1, but not Step 2 completely.
 Step 2 is still happening behind the scenes\footnote{In cases, where you use
 references (like Eqn.~\ref{eq:pythagoras}), you may need to run Step 2
@@ -245,17 +245,17 @@ format you defined in Step 1.
 \section{Hyperlinks}
 We can also insert hyperlinks in our document. To do so we need to include the
 package hyperref into preamble with the command:
-\begin{verbatim} 
+\begin{verbatim}
     \usepackage{hyperref}
 \end{verbatim}
 
 There exists two main types of links: visible URL \\
-\url{https://learnxinyminutes.com/docs/latex/}, or  
+\url{https://learnxinyminutes.com/docs/latex/}, or
 \href{https://learnxinyminutes.com/docs/latex/}{shadowed by text}
-% You can not add extra-spaces or special symbols into shadowing text since it 
+% You can not add extra-spaces or special symbols into shadowing text since it
 % will cause mistakes during the compilation
 
-This package also produces list of tumbnails in the output pdf document and 
+This package also produces list of thumbnails in the output pdf document and
 active links in the table of contents.
 
 \section{End}
@@ -267,7 +267,7 @@ That's all for now!
 \begin{thebibliography}{1}
   % similar to other lists, the \bibitem command can be used to list items
   % each entry can then be cited directly in the body of the text
-  \bibitem{latexwiki} The amazing \LaTeX \hspace{1pt} wikibook: {\em 
+  \bibitem{latexwiki} The amazing \LaTeX \hspace{1pt} wikibook: {\em
 https://en.wikibooks.org/wiki/LaTeX}
   \bibitem{latextutorial} An actual tutorial: {\em http://www.latex-tutorial.com}
 \end{thebibliography}
@@ -280,3 +280,4 @@ https://en.wikibooks.org/wiki/LaTeX}
 
 * The amazing LaTeX wikibook: [https://en.wikibooks.org/wiki/LaTeX](https://en.wikibooks.org/wiki/LaTeX)
 * An actual tutorial: [http://www.latex-tutorial.com/](http://www.latex-tutorial.com/)
+* A quick guide for learning LaTeX: [Learn LaTeX in 30 minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)

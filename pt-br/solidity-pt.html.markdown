@@ -1,6 +1,6 @@
 ---
 language: Solidity
-filename: learnSolidity.sol
+filename: learnSolidity-br.sol
 contributors:
   - ["Nemil Dalal", "https://www.nemil.com"]
   - ["Joseph Chow", ""]

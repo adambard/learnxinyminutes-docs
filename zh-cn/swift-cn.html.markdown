@@ -110,7 +110,7 @@ anyObjectVar = "Changed value to a string, not good practice, but possible."
 
 
 //
-// Mark: 数组与字典（关联数组）
+// MARK: 数组与字典（关联数组）
 //
 
 /*
@@ -214,9 +214,9 @@ func greet(name: String, day: String) -> String {
 }
 greet("Bob", day: "Tuesday")
 
-// 第一个参数表示外部参数名和内部参数名使用同一个名称。
+// 第一个参数`_`表示不使用外部参数名，忽略`_`表示外部参数名和内部参数名使用同一个名称。
 // 第二个参数表示外部参数名使用 `externalParamName` ，内部参数名使用 `localParamName`
-func greet2(requiredName requiredName: String, externalParamName localParamName: String) -> String {
+func greet2(_ requiredName: String, externalParamName localParamName: String) -> String {
     return "Hello \(requiredName), the day is \(localParamName)"
 }
 greet2(requiredName:"John", externalParamName: "Sunday")    // 调用时，使用命名参数来指定参数的值
@@ -250,7 +250,7 @@ var increment = makeIncrementer()
 increment(7)
 
 // 强制进行指针传递 (引用传递)，使用 `inout` 关键字修饰函数参数
-func swapTwoInts(inout a: Int, inout b: Int) {
+func swapTwoInts(a: inout Int, b: inout Int) {
     let tempA = a
     a = b
     b = tempA
@@ -521,7 +521,7 @@ class MyShape: Rect {
 
         // 在 optional 属性，方法或下标运算符后面加一个问号，可以优雅地忽略 nil 值，返回 nil。
         // 这样就不会引起运行时错误 (runtime error)
-        if let reshape = self.delegate?.canReshape?() where reshape {
+        if let reshape = self.delegate?.canReshape?() {
             // 注意语句中的问号
             self.delegate?.reshape?()
         }
@@ -575,10 +575,10 @@ print(foundAtIndex == 2) // true
 // 自定义运算符可以以下面的字符打头:
 //      / = - + * % < > ! & | ^ . ~
 // 甚至是 Unicode 的数学运算符等
-prefix operator !!! {}
+prefix operator !!!
 
 // 定义一个前缀运算符，使矩形的边长放大三倍
-prefix func !!! (inout shape: Square) -> Square {
+prefix func !!! (shape: inout Square) -> Square {
     shape.sideLength *= 3
     return shape
 }
@@ -591,8 +591,8 @@ print(mySquare.sideLength) // 4
 print(mySquare.sideLength) // 12
 
 // 运算符也可以是泛型
-infix operator <-> {}
-func <-><T: Equatable> (inout a: T, inout b: T) {
+infix operator <->
+func <-><T: Equatable> (a: inout T, b: inout T) {
     let c = a
     a = b
     b = c
