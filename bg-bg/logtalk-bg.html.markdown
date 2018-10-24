@@ -1,5 +1,6 @@
 ---
 language: Logtalk
+filename: llearnlogtalk-bg.lgt
 contributors:
     - ["Paulo Moura", "http://github.com/pmoura"]
 translators:
