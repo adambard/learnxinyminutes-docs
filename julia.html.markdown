@@ -114,12 +114,12 @@ println("I'm Julia. Nice to meet you!") # => I'm Julia. Nice to meet you!
 ####################################################
 
 # You don't declare variables before assigning to them.
-some_var = 5  # => 5
-some_var  # => 5
+someVar = 5  # => 5
+someVar  # => 5
 
 # Accessing a previously unassigned variable is an error
 try
-    some_other_var  # => ERROR: UndefVarError: some_other_var not defined
+    someOtherVar  # => ERROR: UndefVarError: someOtherVar not defined
 catch e
     println(e)
 end
@@ -286,62 +286,62 @@ d # => 5
 e # => 4
 
 # Dictionaries store mappings
-empty_dict = Dict()  # => Dict{Any,Any} with 0 entries
+emptyDict = Dict()  # => Dict{Any,Any} with 0 entries
 
 # You can create a dictionary using a literal
-filled_dict = Dict("one" => 1, "two" => 2, "three" => 3)
+filledDict = Dict("one" => 1, "two" => 2, "three" => 3)
 # => Dict{String,Int64} with 3 entries:
 # =>  "two" => 2, "one" => 1, "three" => 3
 
 # Look up values with []
-filled_dict["one"]  # => 1
+filledDict["one"]  # => 1
 
 # Get all keys
-keys(filled_dict)
+keys(filledDict)
 # => Base.KeySet for a Dict{String,Int64} with 3 entries. Keys:
 # =>  "two", "one", "three"
 # Note - dictionary keys are not sorted or in the order you inserted them.
 
 # Get all values
-values(filled_dict)
+values(filledDict)
 # => Base.ValueIterator for a Dict{String,Int64} with 3 entries. Values: 
 # =>  2, 1, 3
 # Note - Same as above regarding key ordering.
 
 # Check for existence of keys in a dictionary with in, haskey
-in(("one" => 1), filled_dict)  # => true
-in(("two" => 3), filled_dict)  # => false
-haskey(filled_dict, "one")     # => true
-haskey(filled_dict, 1)         # => false
+in(("one" => 1), filledDict)  # => true
+in(("two" => 3), filledDict)  # => false
+haskey(filledDict, "one")     # => true
+haskey(filledDict, 1)         # => false
 
 # Trying to look up a non-existent key will raise an error
 try
-    filled_dict["four"]  # => ERROR: KeyError: key "four" not found
+    filledDict["four"]  # => ERROR: KeyError: key "four" not found
 catch e
     println(e)
 end
 
 # Use the get method to avoid that error by providing a default value
-# get(dictionary, key, default_value)
-get(filled_dict, "one", 4)   # => 1
-get(filled_dict, "four", 4)  # => 4
+# get(dictionary, key, defaultValue)
+get(filledDict, "one", 4)   # => 1
+get(filledDict, "four", 4)  # => 4
 
 # Use Sets to represent collections of unordered, unique values
-empty_set = Set()  # => Set(Any[])
+emptySet = Set()  # => Set(Any[])
 # Initialize a set with values
-filled_set = Set([1, 2, 2, 3, 4])  # => Set([4, 2, 3, 1])
+filledSet = Set([1, 2, 2, 3, 4])  # => Set([4, 2, 3, 1])
 
 # Add more values to a set
-push!(filled_set, 5)  # => Set([4, 2, 3, 5, 1])
+push!(filledSet, 5)  # => Set([4, 2, 3, 5, 1])
 
 # Check if the values are in the set
-in(2, filled_set)   # => true
-in(10, filled_set)  # => false
+in(2, filledSet)   # => true
+in(10, filledSet)  # => false
 
 # There are functions for set intersection, union, and difference.
-other_set = Set([3, 4, 5, 6])         # => Set([4, 3, 5, 6])
-intersect(filled_set, other_set)      # => Set([4, 3, 5])
-union(filled_set, other_set)          # => Set([4, 2, 3, 5, 6, 1])
+otherSet = Set([3, 4, 5, 6])         # => Set([4, 3, 5, 6])
+intersect(filledSet, otherSet)      # => Set([4, 3, 5])
+union(filledSet, otherSet)          # => Set([4, 2, 3, 5, 6, 1])
 setdiff(Set([1,2,3,4]), Set([2,3,5])) # => Set([4, 1])
 
 ####################################################
@@ -349,15 +349,15 @@ setdiff(Set([1,2,3,4]), Set([2,3,5])) # => Set([4, 1])
 ####################################################
 
 # Let's make a variable
-some_var = 5
+someVar = 5
 
 # Here is an if statement. Indentation is not meaningful in Julia.
-if some_var > 10
-    println("some_var is totally bigger than 10.")
-elseif some_var < 10    # This elseif clause is optional.
-    println("some_var is smaller than 10.")
+if someVar > 10
+    println("someVar is totally bigger than 10.")
+elseif someVar < 10    # This elseif clause is optional.
+    println("someVar is smaller than 10.")
 else                    # The else clause is optional too.
-    println("some_var is indeed 10.")
+    println("someVar is indeed 10.")
 end
 # => prints "some var is smaller than 10"
 
@@ -488,14 +488,14 @@ keyword_args(k1="mine")     # => ["name2"=>"hello", "k1"=>"mine"]
 keyword_args()              # => ["name2"=>"hello", "k1"=>4]
 
 # You can combine all kinds of arguments in the same function
-function all_the_args(normal_arg, optional_positional_arg=2; keyword_arg="foo")
-    println("normal arg: $normal_arg")
-    println("optional arg: $optional_positional_arg")
-    println("keyword arg: $keyword_arg")
+function all_the_args(normalArg, optionalPositionalArg=2; keywordArg="foo")
+    println("normal arg: $normalArg")
+    println("optional arg: $optionalPositionalArg")
+    println("keyword arg: $keywordArg")
 end
 # => all_the_args (generic function with 2 methods)
 
-all_the_args(1, 3, keyword_arg=4)
+all_the_args(1, 3, keywordArg=4)
 # => normal arg: 1
 # => optional arg: 3
 # => keyword arg: 4
@@ -616,7 +616,7 @@ supertype(SubString)  # => AbstractString
 
 # <: is the subtyping operator
 struct Lion <: Cat  # Lion is a subtype of Cat
-    mane_color
+    maneColor
     roar::AbstractString
 end
 
@@ -627,7 +627,7 @@ Lion(roar::AbstractString) = Lion("green", roar)
 # This is an outer constructor because it's outside the type definition
 
 struct Panther <: Cat  # Panther is also a subtype of Cat
-    eye_color
+    eyeColor
     Panther() = new("green")
     # Panthers will only have this constructor, and no default constructor.
 end
@@ -695,7 +695,7 @@ fight(tigger, Panther())  # => The orange tiger wins!
 fight(tigger, Lion("ROAR")) # => The orange tiger wins!
 
 # Let's change the behavior when the Cat is specifically a Lion
-fight(t::Tiger, l::Lion) = println("The $(l.mane_color)-maned lion wins!")
+fight(t::Tiger, l::Lion) = println("The $(l.maneColor)-maned lion wins!")
 # => fight (generic function with 2 methods)
 
 fight(tigger, Panther())  # => The orange tiger wins!
