@@ -11,7 +11,7 @@ Factor é uma linguagem moderna baseada em pilha, baseado em Forth, criada por S
 
 Código neste arquivo pode ser digitado em Fator, mas não importado diretamente porque o cabeçalho de vocabulário e importação faria o início completamente confuso.
 
-```
+```factor
 ! Este é um comentário
 
 ! Como Forth, toda a programação é feita manipulando a pilha.
