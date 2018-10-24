@@ -34,6 +34,11 @@ specific points in the file, and for fast editing.
     k                # Move up one line
     l                # Move right one character
 
+    Ctrl+B 	         # Move back one full screen
+    Ctrl+F 	         # Move forward one full screen
+    Ctrl+D 	         # Move forward 1/2 a screen
+    Ctrl+U           # Move back 1/2 a screen
+
     # Moving within the line
 
     0                # Move to beginning of line

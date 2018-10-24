@@ -16,7 +16,7 @@ popular and recent book is [Land of Lisp](http://landoflisp.com/). A new book ab
 
 
 
-```common-lisp
+```lisp
 
 ;;;-----------------------------------------------------------------------------
 ;;; 0. Syntax
@@ -181,8 +181,8 @@ nil                    ; false; also, the empty list: ()
 ;;; You can also use unicode characters.
 (defparameter *AΛB* nil)
 
-;;; Accessing a previously unbound variable is an undefined behavior, but
-;;; possible. Don't do it.
+;;; Accessing a previously unbound variable results in an UNBOUND-VARIABLE
+;;; error, however it is defined behavior. Don't do it.
 
 ;;; You can create local bindings with LET. In the following snippet, `me` is
 ;;; bound to "dance with you" only within the (let ...). LET always returns
@@ -284,7 +284,8 @@ nil                    ; false; also, the empty list: ()
 ;;; To access the element at 1, 1, 1:
 
 (aref (make-array (list 2 2 2)) 1 1 1)     ;  => 0
-
+;;; This value is implementation-defined:
+;;; NIL on ECL, 0 on SBCL and CCL.
 
 ;;; Adjustable vectors
 
@@ -502,7 +503,7 @@ nil                    ; false; also, the empty list: ()
 
 (fact 5) ; => 120
 
-(loop :for x :across "abc" :collect x)
+(loop :for x :across "abcd" :collect x)
 ; => (#\a #\b #\c #\d)
 
 (dolist (i '(1 2 3 4))

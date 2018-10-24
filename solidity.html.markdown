@@ -111,6 +111,7 @@ contract SimpleBank { // CapWords
     /// @return The balance of the user
     // 'constant' prevents function from editing state variables;
     // allows function to run locally/off blockchain
+    // NOTE: 'constant' on functions is an alias to 'view', but this is deprecated and is planned to be dropped in version 0.5.0.
     function balance() constant public returns (uint) {
         return balances[msg.sender];
     }
@@ -829,7 +830,6 @@ someContractAddress.callcode('function_name');
 ## Additional resources
 - [Solidity Docs](https://solidity.readthedocs.org/en/latest/)
 - [Smart Contract Best Practices](https://github.com/ConsenSys/smart-contract-best-practices)
-- [Solidity Style Guide](https://ethereum.github.io/solidity//docs/style-guide/): Ethereum's style guide is heavily derived from Python's [pep8](https://www.python.org/dev/peps/pep-0008/) style guide.
 - [EthFiddle - The JsFiddle for Solidity](https://ethfiddle.com/)
 - [Browser-based Solidity Editor](https://remix.ethereum.org/)
 - [Gitter Solidity Chat room](https://gitter.im/ethereum/solidity)
@@ -850,9 +850,10 @@ someContractAddress.callcode('function_name');
 - [Hacking Distributed Blog](http://hackingdistributed.com/)
 
 ## Style
-- Python's [PEP8](https://www.python.org/dev/peps/pep-0008/) is used as the baseline style guide, including its general philosophy
+- [Solidity Style Guide](http://solidity.readthedocs.io/en/latest/style-guide.html): Ethereum's style guide is heavily derived from Python's [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide.
 
 ## Editors
+- [Emacs Solidity Mode](https://github.com/ethereum/emacs-solidity)
 - [Vim Solidity](https://github.com/tomlion/vim-solidity)
 - Editor Snippets ([Ultisnips format](https://gist.github.com/nemild/98343ce6b16b747788bc))
 

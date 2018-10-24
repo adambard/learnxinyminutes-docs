@@ -1,6 +1,7 @@
 ---
 language: c++
-filename: learncpp.cpp
+lang: tr-tr
+filename: learncpp-tr.cpp
 contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Matt Kline", "https://github.com/mrkline"]
@@ -27,12 +28,12 @@ tipten bağımsızlık, exception'lar ve sınıflar gibi yüksek-seviyeli özell
 Bu hız ve kullanışlılık C++'ı en çok kullanılan dillerden biri yapar.
 
 ```c++
-//////////////////
+//////////////////////
 // C ile karşılaştırma
-//////////////////
+//////////////////////
 
 // C++ _neredeyse_ C'nin bir üstkümesidir, değişken tanımı, basit tipleri
-ve fonksiyonları için temelde aynı sözdizimini paylaşır.
+// ve fonksiyonları için temelde aynı sözdizimini paylaşır.
 
 // Aynı C gibi, programın başlangıç noktası bir integer döndüren 
 // main fonksiyonudur.
@@ -105,7 +106,7 @@ int main()
 
 ////////////////////////////////
 // Default fonksiyon argümanları
-/////////////////////////////i//
+////////////////////////////////
 
 // Eğer çağırıcı tarafından fonksiyona argüman sağlanmamışsa,
 // fonksiyona default argüman verebilirsin
@@ -263,7 +264,7 @@ string retVal = tempObjectFun();
 // Bu iki satırda aslında ne oluyor:
 //   - tempObjectFun fonksiyonundan bir string nesnesi dönüyor
 //   - dönmüş olan nesneyle yeni bir string oluşturuyor
-/    - dönmüş olan nesne yok ediliyor
+//   - dönmüş olan nesne yok ediliyor
 // İşte bu dönen nesneye geçici nesne denir. Geçici nesneler fonksiyon nesne
 // döndürdüğünde oluşturulur ve ifade işini bitirdiğinde yok edilir (Aslında,
 // standard'ın söylediği şey bu ama derleyiciler bu davranışı değiştirmemize 
@@ -366,7 +367,6 @@ void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 // Sınıfı tanımla.
 // Sınıflar genelde header (.h veya .hpp) dosyalarında tanımlanır.
 class Dog {
-    // Member variables and functions are private by default.
     // Üye değişkenler ve fonksiyonlar default olarak private'dir.
     std::string name;
     int weight;
@@ -548,7 +548,7 @@ int main () {
 // Şablonlar C++ dilinde tipten bağımsız programlama için kullanılır.
 
 // Zaten aşina olduğun tipten bağımsız programlamayla başladık. Bir tip parametresi
-alan fonksiyon veya sınıf tanımlamaık için:
+// alan fonksiyon veya sınıf tanımlamaık için:
 template<class T>
 class Box {
 public:
@@ -801,9 +801,9 @@ sort(tester.begin(), tester.end(), [](const pair<int, int>& lhs, const pair<int,
 // "Tutma listesi", fonksiyon gövdesinde nelerin, ne şekilde erişilebilir olduğunu tanımlar
 // Şunlardan biri olabilir:
 // 	1. bir değer : [x]
-	2. bir referans : [&x]
-	3. mevcut scope içindeki herhangi bir değişkene referans ile [&]
-	4. 3 ile aynı, ama değer ile [=]
+//	2. bir referans : [&x]
+//	3. mevcut scope içindeki herhangi bir değişkene referans ile [&]
+//	4. 3 ile aynı, ama değer ile [=]
 // Mesela:
 vector<int> dog_ids;
 // number_of_dogs = 3;
@@ -842,9 +842,9 @@ for(auto elem: arr) {
 	// arr dizisinin elemanlarıyla ilgili bir şeyler yap
 }
 
-/////////////////////
+////////////////
 // Güzel Şeyler
-/////////////////////
+////////////////
 
 // C++ dilinin bakış açısı yeni başlayanlar için (hatta dili iyi bilenler için bile)
 // şaşırtıcı olabilir. 
@@ -1071,7 +1071,6 @@ compl 4    // Bit seviyesinde değil işlemini gerçekleştirir
 ```
 İleri okuma:
 
-Güncel bir referans 
-<http://cppreference.com/w/cpp> adresinde bulunabilir
-
-Ek kaynaklar <http://cplusplus.com> adresinde bulunabilir
+* Güncel bir referans [CPP Reference](http://cppreference.com/w/cpp) adresinde bulunabilir.
+* Ek kaynaklar [CPlusPlus](http://cplusplus.com) adresinde bulunabilir.
+* Dilin temellerini ve kodlama ortamını belirleyen bir öğretici [TheChernoProject - C ++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb) adresinde bulunabilir.

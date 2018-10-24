@@ -10,13 +10,13 @@ filename: learnpython3-cn.py
 lang: zh-cn
 ---
 
-Python是由吉多·范罗苏姆(Guido Van Rossum)在90年代早期设计。它是如今最常用的编程
-语言之一。它的语法简洁且优美，几乎就是可执行的伪代码。
+Python 是由吉多·范罗苏姆(Guido Van Rossum)在 90 年代早期设计。
+它是如今最常用的编程语言之一。它的语法简洁且优美，几乎就是可执行的伪代码。
 
-欢迎大家斧正。英文版原作Louie Dinh [@louiedinh](http://twitter.com/louiedinh)
-或着Email louiedinh [at] [谷歌的信箱服务]。中文翻译Geoff Liu。
+欢迎大家斧正。英文版原作 Louie Dinh [@louiedinh](http://twitter.com/louiedinh)
+邮箱 louiedinh [at] [谷歌的信箱服务]。中文翻译 Geoff Liu。
 
-注意：这篇教程是特别为Python3写的。如果你想学旧版Python2，我们特别有另一篇教程。
+注意：这篇教程是基于 Python 3 写的。如果你想学旧版 Python 2，我们特别有[另一篇教程](http://learnxinyminutes.com/docs/python/)。
 
 ```python
 
@@ -70,15 +70,15 @@ not True  # => False
 not False  # => True
 
 # 逻辑运算符，注意and和or都是小写
-True and False #=> False
-False or True #=> True
+True and False # => False
+False or True # => True
 
 # 整数也可以当作布尔值
-0 and 2 #=> 0
--5 or 0 #=> -5
-0 == False #=> True
-2 == True #=> False
-1 == True #=> True
+0 and 2 # => 0
+-5 or 0 # => -5
+0 == False # => True
+2 == True # => False
+1 == True # => True
 
 # 用==判断相等
 1 == 1  # => True
@@ -113,10 +113,11 @@ False or True #=> True
 
 # 可以重复参数以节省时间
 "{0} be nimble, {0} be quick, {0} jump over the {1}".format("Jack", "candle stick")
-#=> "Jack be nimble, Jack be quick, Jack jump over the candle stick"
+# => "Jack be nimble, Jack be quick, Jack jump over the candle stick"
 
 # 如果不想数参数，可以用关键字
-"{name} wants to eat {food}".format(name="Bob", food="lasagna") #=> "Bob wants to eat lasagna"
+"{name} wants to eat {food}".format(name="Bob", food="lasagna") 
+# => "Bob wants to eat lasagna"
 
 # 如果你的Python3程序也要在Python2.5以下环境运行，也可以用老式的格式化语法
 "%s can be %s the %s way" % ("strings", "interpolated", "old")
@@ -132,8 +133,8 @@ None is None  # => True
 # 所有其他值都是True
 bool(0)  # => False
 bool("")  # => False
-bool([]) #=> False
-bool({}) #=> False
+bool([]) # => False
+bool({}) # => False
 
 
 ####################################################
@@ -233,7 +234,8 @@ filled_dict = {"one": 1, "two": 2, "three": 3}
 filled_dict["one"]   # => 1
 
 
-# 用keys获得所有的键。因为keys返回一个可迭代对象，所以在这里把结果包在list里。我们下面会详细介绍可迭代。
+# 用 keys 获得所有的键。
+# 因为 keys 返回一个可迭代对象，所以在这里把结果包在 list 里。我们下面会详细介绍可迭代。
 # 注意：字典键的顺序是不定的，你得到的结果可能和以下不同。
 list(filled_dict.keys())   # => ["three", "two", "one"]
 
@@ -261,7 +263,7 @@ filled_dict.setdefault("five", 5)  # filled_dict["five"]设为5
 filled_dict.setdefault("five", 6)  # filled_dict["five"]还是5
 
 # 字典赋值
-filled_dict.update({"four":4}) #=> {"one": 1, "two": 2, "three": 3, "four": 4}
+filled_dict.update({"four":4}) # => {"one": 1, "two": 2, "three": 3, "four": 4}
 filled_dict["four"] = 4  # 另一种赋值方法
 
 # 用del删除
@@ -362,7 +364,7 @@ else:   # else语句是可选的，必须在所有的except之后
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
-print(our_iterable) # => range(1,10) 是一个实现可迭代接口的对象
+print(our_iterable) # => dict_keys(['one', 'two', 'three'])，是一个实现可迭代接口的对象
 
 # 可迭代对象可以遍历
 for i in our_iterable:
@@ -376,17 +378,17 @@ our_iterator = iter(our_iterable)
 
 # 迭代器是一个可以记住遍历的位置的对象
 # 用__next__可以取得下一个元素
-our_iterator.__next__()  #=> "one"
+our_iterator.__next__()  # => "one"
 
 # 再一次调取__next__时会记得位置
-our_iterator.__next__()  #=> "two"
-our_iterator.__next__()  #=> "three"
+our_iterator.__next__()  # => "two"
+our_iterator.__next__()  # => "three"
 
 # 当迭代器所有元素都取出后，会抛出StopIteration
 our_iterator.__next__() # 抛出StopIteration
 
 # 可以用list一次取出迭代器所有的元素
-list(filled_dict.keys())  #=> Returns ["one", "two", "three"]
+list(filled_dict.keys())  # => Returns ["one", "two", "three"]
 
 
 

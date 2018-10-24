@@ -221,11 +221,11 @@ A(1, :) =[] % Delete the first row of the matrix
 A(:, 1) =[] % Delete the first column of the matrix
 
 transpose(A) % Transpose the matrix, which is the same as:
-A one
-ctranspose(A) % Hermitian transpose the matrix
-% (the transpose, followed by taking complex conjugate of each element)
-A' % Concise version of complex transpose
 A.' % Concise version of transpose (without taking complex conjugate)
+ctranspose(A) % Hermitian transpose the matrix, which is the same as:
+A'  % Concise version of complex transpose
+    % (the transpose, followed by taking complex conjugate of each element)
+
 
 
 
