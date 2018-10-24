@@ -54,7 +54,7 @@ le niveau de titre souhaité.
 ###### Ceci est un <h6>
 ```
 
-Markdown fournit également une façon alternative de marquer les h1 et h2.
+Markdown fournit également une façon alternative de marquer les `<h1>` et `<h2>`
 
 ```md
 Ceci est un h1
@@ -112,7 +112,7 @@ J'ai deux espaces vides à la fin (sélectionnez moi pour les voir).
 Bigre, il y a un <br /> au dessus de moi!
 ```
 
-Les blocs de citations sont générés aisément, grâce au caractère >.
+Les blocs de citations sont générés aisément, grâce au caractère `>`.
 
 ```md
 > Ceci est une superbe citation. Vous pouvez même
@@ -221,24 +221,20 @@ Des bouts de code en mode en ligne s'ajoutent en utilisant le caractères
 La fonction `run()` ne vous oblige pas à aller courir!
 ```
 
-En "GitHub Flavored Markdown", vous pouvez utiliser des syntaxes spécifiques
-selon le language.
+En Markdown GitHub, vous pouvez utiliser des syntaxes spécifiques.
 
-<pre>
-<code class="highlight">&#x60;&#x60;&#x60;ruby
-def foobar
+    ```ruby 
+    def foobar
     puts "Hello world!"
-end
-&#x60;&#x60;&#x60;</code>
-</pre>
+    end
+    ```
 
-Pas besoin d'indentation pour le code juste au dessus, de plus, GitHub va
-utiliser une coloration syntaxique pour le langage indiqué après les \`\`\`.
+Pas besoin d'indentation pour le code juste au-dessus, de plus, GitHub 
+va utiliser une coloration syntaxique pour le langage indiqué après les ```.
 
-## Séparateur horizontal
+## Ligne Horizontale
 
-La balise `<hr/>` peut être aisement ajoutée en utilisant trois ou plus
-astérisques ou tirets, avec ou sans espaces entre chacun.
+Pour insérer une ligne horizontale, utilisez trois ou plusieurs astérisques ou tirets, avec ou sans espaces entre.
 
 ```md
 ***
@@ -257,8 +253,7 @@ parenthèses `` () ``, et voilà le travail.
 [Clic moi!](http://test.com/)
 ```
 
-Pour ajouter un attribut titre, ajoutez le entre les parenthèses entre
-guillemets apres le lien.
+Pour ajouter un attribut `Title`, collez-le entre guillemets, avec le lien.
 
 ```md
 [Clic moi!](http://test.com/ "Lien vers Test.com")
@@ -304,7 +299,8 @@ d'un point d'exclamation!
 ![Attribut ALT de l'image](http://imgur.com/monimage.jpg "Titre optionnel")
 ```
 
-Là aussi, on peut utiliser les références.
+Là aussi, on peut utiliser le mode "références".
+
 
 ```md
 ![Ceci est l'attribut ALT de l'image][monimage]
@@ -314,14 +310,14 @@ Là aussi, on peut utiliser les références.
 
 ## Divers
 
-### Liens hypertextes automatiques
+### Liens Automatiques
 
 ```md
 <http://testwebsite.com/> est équivalent à :
 [http://testwebsite.com/](http://testwebsite.com/)
 ```
 
-### Liens hypertextes automatiques pour emails
+### Liens Automatiques pour emails
 
 ```md
 <foo@bar.com>
@@ -329,7 +325,7 @@ Là aussi, on peut utiliser les références.
 
 ### Caracteres d'echappement
 
-Il suffit de précéder les caractères spécifiques à ignorer par des backslash \
+Il suffit de précéder les caractères spécifiques à ignorer par des backslash `\`.
 
 ```md
 Pour taper *ce texte* entouré d'astérisques mais pas en italique :
