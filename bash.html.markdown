@@ -16,6 +16,7 @@ contributors:
     - ["Betsy Lorton", "https://github.com/schbetsy"]
     - ["John Detter", "https://github.com/jdetter"]
     - ["Harry Mumford-Turner", "https://github.com/harrymt"]
+    - ["Martin Nicholson", "https://github.com/mn113"]
 filename: LearnBash.sh
 ---
 
@@ -74,8 +75,13 @@ echo ${Variable/Some/A} # => A string
 
 # Substring from a variable
 Length=7
-echo ${Variable:0:$Length} # => Some st
-# This will return 7 characters of the string, starting from the first char
+echo ${Variable:0:Length} # => Some st
+# This will return only the first 7 characters of the value
+echo ${Variable: -5} # => tring
+# This will return the last 5 characters (note the space before -5)
+
+# String length
+echo ${#Variable} # => 11
 
 # Default value for variable
 echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"} 
@@ -173,6 +179,16 @@ if [ "$Name" == "Daniya" ] || [ "$Name" == "Zach" ]
 then
     echo "This will run if $Name is Daniya OR Zach."
 fi
+
+# There is also the =~ operator, which tests a string against a Regex pattern:
+Email=me@example.com
+if [[ "$Email" =~ [a-z]+@[a-z]{2,}\.(com|net|org) ]]
+then
+    echo "Valid email!"
+fi
+# Note that =~ only works within double [[ ]] square brackets,
+# which are subtly different from single [ ].
+# See http://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs for more on this.
 
 # Redefine command 'ping' as alias to send only 5 packets
 alias ping='ping -c 5'
