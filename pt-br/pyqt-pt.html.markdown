@@ -10,7 +10,7 @@ lang: pt-br
 ---
 
 **Qt** é amplamente conhecido como um framework para desenvolvimento de
-software multi-plataforma que pode rodar em vários outras plataformas de
+software multi-plataforma que pode rodar em várias outras plataformas de
 softwares e hardwares com pouca ou nenhuma alteração no código, enquanto mantém
 o poder e a velocidade de uma aplicação nativa. Embora o **Qt** tenha sido
 originalmente escrito em *C++*.

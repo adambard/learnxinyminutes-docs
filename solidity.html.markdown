@@ -400,11 +400,11 @@ function depositEther() public payable {
 event LogSent(address indexed from, address indexed to, uint amount); // note capital first letter
 
 // Call
-Sent(from, to, amount);
+LogSent(from, to, amount);
 
 // For an external party (a contract or external entity), to watch using
 // the Web3 Javascript library:
-Coin.Sent().watch({}, '', function(error, result) {
+Coin.LogSent().watch({}, '', function(error, result) {
     if (!error) {
         console.log("Coin transfer: " + result.args.amount +
             " coins were sent from " + result.args.from +

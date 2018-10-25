@@ -6,6 +6,8 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
     - ["evuez", "http://github.com/evuez"]
+    - ["Rommel Martinez", "https://ebzzry.io"]
+    - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
 filename: learnpython3.py
 ---
 
@@ -137,6 +139,12 @@ len("This is a string")  # => 16
 # still use the old style of formatting:
 "%s can be %s the %s way" % ("Strings", "interpolated", "old")  # => "Strings can be interpolated the old way"
 
+# You can also format using f-strings or formatted string literals (in Python 3.6+)
+name = "Reiko"
+f"She said her name is {name}." # => "She said her name is Reiko"
+# You can basically put any Python statement inside the braces and it will be output in the string.
+f"{name} is {len(name)} characters long."
+
 
 # None is an object
 None  # => None
@@ -209,9 +217,9 @@ li[4]  # Raises an IndexError
 # The start index is included, the end index is not
 # (It's a closed/open range for you mathy types.)
 li[1:3]   # => [2, 4]
-# Omit the end
+# Omit the beginning and return the list
 li[2:]    # => [4, 3]
-# Omit the beginning
+# Omit the end and return the list
 li[:3]    # => [1, 2, 4]
 # Select every second entry
 li[::2]   # =>[1, 4]
@@ -347,6 +355,8 @@ valid_set = {(1,), 1}
 # Add one more item to the set
 filled_set = some_set
 filled_set.add(5)  # filled_set is now {1, 2, 3, 4, 5}
+# Sets do not have duplicate elements
+filled_set.add(5)  # it remains as before {1, 2, 3, 4, 5}
 
 # Do set intersection with &
 other_set = {3, 4, 5, 6}
@@ -546,9 +556,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # Use * to expand tuples and use ** to expand kwargs.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args)            # equivalent to foo(1, 2, 3, 4)
-all_the_args(**kwargs)         # equivalent to foo(a=3, b=4)
-all_the_args(*args, **kwargs)  # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args)            # equivalent to all_the_args(1, 2, 3, 4)
+all_the_args(**kwargs)         # equivalent to all_the_args(a=3, b=4)
+all_the_args(*args, **kwargs)  # equivalent to all_the_args(1, 2, 3, 4, a=3, b=4)
 
 # Returning multiple values (with tuple assignments)
 def swap(x, y):
@@ -789,11 +799,11 @@ class Superhero(Human):
         # This calls the parent class constructor:
         super().__init__(name)
 
-    # overload the sing method
+    # override the sing method
     def sing(self):
         return 'Dun, dun, DUN!'
 
-    # add an additional class method
+    # add an additional instance method
     def boast(self):
         for power in self.superpowers:
             print("I wield the power of {pow}!".format(pow=power))
@@ -816,7 +826,7 @@ if __name__ == '__main__':
     # Calls parent method but uses its own class attribute
     print(sup.get_species())    # => Superhuman
 
-    # Calls overloaded method
+    # Calls overridden method
     print(sup.sing())           # => Dun, dun, DUN!
 
     # Calls method from Human
@@ -871,7 +881,7 @@ class Batman(Superhero, Bat):
 
     def __init__(self, *args, **kwargs):
         # Typically to inherit attributes you have to call super:
-        #super(Batman, self).__init__(*args, **kwargs)      
+        # super(Batman, self).__init__(*args, **kwargs)      
         # However we are dealing with multiple inheritance here, and super()
         # only works with the next base class in the MRO list.
         # So instead we explicitly call __init__ for all ancestors.
@@ -900,7 +910,7 @@ if __name__ == '__main__':
     # Calls parent method but uses its own class attribute
     print(sup.get_species())    # => Superhuman
 
-    # Calls overloaded method
+    # Calls overridden method
     print(sup.sing())           # => nan nan nan nan nan batman!
 
     # Calls method from Human, because inheritance order matters
