@@ -14,6 +14,8 @@ significant newlines and indentation, like Python. Unlike Python, however,
 YAML doesn't allow literal tab characters for indentation.
 
 ```yaml
+---  # document start
+
 # Comments in YAML look like this.
 
 ################
@@ -83,22 +85,22 @@ a_nested_map:
 # An example
 ? - Manchester United
   - Real Madrid
-: [ 2001-01-01, 2002-02-02 ]
+: [2001-01-01, 2002-02-02]
 
 # Sequences (equivalent to lists or arrays) look like this
 # (note that the '-' counts as indentation):
 a_sequence:
-- Item 1
-- Item 2
-- 0.5 # sequences can contain disparate types.
-- Item 4
-- key: value
-  another_key: another_value
--
-  - This is a sequence
-  - inside another sequence
-- - - Nested sequence indicators
-    - can be collapsed
+  - Item 1
+  - Item 2
+  - 0.5  # sequences can contain disparate types.
+  - Item 4
+  - key: value
+    another_key: another_value
+  -
+    - This is a sequence
+    - inside another sequence
+  - - - Nested sequence indicators
+      - can be collapsed
 
 # Since YAML is a superset of JSON, you can also write JSON-style maps and
 # sequences:
@@ -170,6 +172,8 @@ set2:
   item1: null
   item2: null
   item3: null
+
+...  # document end
 ```
 
 ### More Resources
