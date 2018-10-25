@@ -179,4 +179,4 @@ set2:
 ### More Resources
 
 + [YAML official website](http://yaml.org/)
-+ [Online YAML Validator](http://codebeautify.org/yaml-validator)
++ [Online YAML Validator](http://www.yamllint.com/)
