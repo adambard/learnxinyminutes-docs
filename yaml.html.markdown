@@ -171,7 +171,7 @@ set:
   ? item3
 or: {item1, item2, item3}
 
-# Like Python, sets are just maps with null values; the above is equivalent to:
+# Sets are just maps with null values; the above is equivalent to:
 set2:
   item1: null
   item2: null
