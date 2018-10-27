@@ -448,5 +448,5 @@ fun testOperator() {
 ### Further Reading
 
 * [Kotlin tutorials](https://kotlinlang.org/docs/tutorials/)
-* [Try Kotlin in your browser](http://try.kotlinlang.org/)
+* [Try Kotlin in your browser](https://play.kotlinlang.org/)
 * [A list of Kotlin resources](http://kotlin.link/)
