@@ -188,7 +188,7 @@ x := Random new next; yourself. x next.                     "random number strea
 x := 100 atRandom.                                          "quick random number"
 ```
 
-##Bitwise Manipulation:
+## Bitwise Manipulation:
 ```
 | b x |
 x := 16rFF bitAnd: 16r0F.                                   "and bits"
@@ -381,7 +381,9 @@ y := x asSet.                                               "convert string to s
 y := x shuffled.                                            "randomly shuffle string"
 ```
 
-## Array:         Fixed length collection
+## Array:
+Fixed length collection
+
 - ByteArray:     Array limited to byte elements (0-255)
 - WordArray:     Array limited to word elements (0-2^32)
 
@@ -424,7 +426,9 @@ y := x asBag.                                               "convert to bag coll
 y := x asSet.                                               "convert to set collection"
 ```
 
-## OrderedCollection: acts like an expandable array
+## OrderedCollection:
+acts like an expandable array
+
 ```
 | b x y sum max |
 x := OrderedCollection with: 4 with: 3 with: 2 with: 1.     "create collection with up to 4 elements"
@@ -616,7 +620,6 @@ y := x key.
 y := x value.
 ```
 
-## Dictionary:
 ## IdentityDictionary:
 uses identity test (== rather than =)
 
