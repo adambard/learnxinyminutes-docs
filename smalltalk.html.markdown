@@ -11,22 +11,22 @@ contributors:
 
 Feedback highly appreciated! Reach me at [@jigyasa_grover](https://twitter.com/jigyasa_grover) or send me an e-mail at `grover.jigyasa1@gmail.com`.
 
-
-##Allowable characters:
+## Allowable characters:
 - a-z
 - A-Z
 - 0-9
 - .+/\*~<>@%|&?
 - blank, tab, cr, ff, lf
 
-##Variables:
+## Variables:
 - variables must be declared before use
 - shared vars must begin with uppercase
 - local vars must begin with lowercase
 - reserved names: `nil`, `true`, `false`, `self`, `super`, and `Smalltalk`
 
-##Variable scope:
-- Global: defined in Dictionary Smalltalk and accessible by all objects in system                                 - Special: (reserved) `Smalltalk`, `super`, `self`, `true`, `false`, & `nil`
+## Variable scope:
+- Global: defined in Dictionary Smalltalk and accessible by all objects in system
+- Special: (reserved) `Smalltalk`, `super`, `self`, `true`, `false`, & `nil`
 - Method Temporary: local to a method
 - Block Temporary: local to a block
 - Pool: variables in a Dictionary object
@@ -54,7 +54,7 @@ Transcript cr.                                              "carriage return / l
 Transcript endEntry.                                        "flush the output buffer"
 ```
 
-##Assignment:
+## Assignment:
 ```
 | x y |
 x _ 4.                                                      "assignment (Squeak) <-"
@@ -73,7 +73,7 @@ y := x deepCopy.                                            "copy object and ins
 y := x veryDeepCopy.                                        "complete tree copy using a dictionary"
 ```
 
-##Constants:
+## Constants:
 ```
 | b |
 b := true.                                                  "true constant"
@@ -91,7 +91,6 @@ x := $ .                                                    "character constant 
 x := #aSymbol.                                              "symbol constants"
 x := #(3 2 1).                                              "array constants"
 x := #('abc' 2 $a).                                         "mixing of types allowed"
-
 ```
 
 ## Booleans:
@@ -130,7 +129,6 @@ b := x isFloat.                                             "test if object is f
 b := x isNumber.                                            "test if object is number"
 b := $A isUppercase.                                        "test if upper case character"
 b := $A isLowercase.                                        "test if lower case character"
-
 ```
 
 ## Arithmetic expressions:
@@ -188,7 +186,6 @@ x := Float infinity.                                        "infinity"
 x := Float nan.                                             "not-a-number"
 x := Random new next; yourself. x next.                     "random number stream (0.0 to 1.0)"
 x := 100 atRandom.                                          "quick random number"
-
 ```
 
 ##Bitwise Manipulation:
@@ -205,7 +202,6 @@ x := 16r80 highbit.                                         "position of highest
 b := 16rFF allMask: 16r0F.                                  "test if all bits set in mask set in receiver"
 b := 16rFF anyMask: 16r0F.                                  "test if any bits set in mask set in receiver"
 b := 16rFF noMask: 16r0F.                                   "test if all bits set in mask clear in receiver"
-
 ```
 
 ## Conversion:
@@ -221,7 +217,6 @@ x := 3.99 storeString.                                      "convert object to s
 x := 15 radix: 16.                                          "convert to string in given base"
 x := 15 printStringBase: 16.
 x := 15 storeStringBase: 16.
-
 ```
 
 ## Blocks:
@@ -245,7 +240,8 @@ Transcript show: (x value: 'First' value: 'Second'); cr.    "use block with argu
 ## Method calls:
 - unary methods are messages with no arguments
 - binary methods
-- keyword methods are messages with selectors including colons standard categories/protocols:                     - initialize-release    (methods called for new instance)
+- keyword methods are messages with selectors including colons standard categories/protocols:
+- initialize-release    (methods called for new instance)
 - accessing             (get/set methods)
 - testing               (boolean tests - is)
 - comparing             (boolean tests with parameter
@@ -254,6 +250,7 @@ Transcript show: (x value: 'First' value: 'Second'); cr.    "use block with argu
 - updating              (receive notification of changes)
 - private               (methods private to class)
 - instance-creation     (class methods for creating instance)
+
 ```
 | x |
 x := 2 sqrt.                                                "unary message"
@@ -268,7 +265,7 @@ Transcript                                                  "Cascading - send mu
 x := 3 + 2; * 100.                                          "result=300. Sends message to same receiver (3)"
 ```
 
-##Conditional Statements:
+## Conditional Statements:
 ```
 | x |
 x > 10 ifTrue: [Transcript show: 'ifTrue'; cr].             "if then"
@@ -330,7 +327,6 @@ y := x asciiValue.                                          "convert to numeric 
 y := x asString.                                            "convert to string"
 b := $A <= $B.                                              "comparison"
 y := $A max: $B.
-
 ```
 
 ## Symbol:
@@ -428,7 +424,7 @@ y := x asBag.                                               "convert to bag coll
 y := x asSet.                                               "convert to set collection"
 ```
 
-##OrderedCollection: acts like an expandable array
+## OrderedCollection: acts like an expandable array
 ```
 | b x y sum max |
 x := OrderedCollection with: 4 with: 3 with: 2 with: 1.     "create collection with up to 4 elements"
@@ -471,7 +467,9 @@ y := x asBag.                                               "convert to bag coll
 y := x asSet.                                               "convert to set collection"
 ```
 
-## SortedCollection:    like OrderedCollection except order of elements determined by sorting criteria
+## SortedCollection:
+like OrderedCollection except order of elements determined by sorting criteria
+
 ```
 | b x y sum max |
 x := SortedCollection with: 4 with: 3 with: 2 with: 1.      "create collection with up to 4 elements"
@@ -513,7 +511,9 @@ y := x asBag.                                               "convert to bag coll
 y := x asSet.                                               "convert to set collection"
 ```
 
-## Bag:        like OrderedCollection except elements are in no particular order
+## Bag:
+like OrderedCollection except elements are in no particular order
+
 ```
 | b x y sum max |
 x := Bag with: 4 with: 3 with: 2 with: 1.                   "create collection with up to 4 elements"
@@ -544,8 +544,12 @@ y := x asBag.                                               "convert to bag coll
 y := x asSet.                                               "convert to set collection"
 ```
 
-## Set:           like Bag except duplicates not allowed
-## IdentitySet:   uses identity test (== rather than =)
+## Set:
+like Bag except duplicates not allowed
+
+## IdentitySet:
+uses identity test (== rather than =)
+
 ```
 | b x y sum max |
 x := Set with: 4 with: 3 with: 2 with: 1.                   "create collection with up to 4 elements"
@@ -604,7 +608,7 @@ y := x asBag.                                               "convert to bag coll
 y := x asSet.                                               "convert to set collection"
 ```
 
-##Associations:
+## Associations:
 ```
 | x y |
 x := #myVar->'hello'.
@@ -613,7 +617,9 @@ y := x value.
 ```
 
 ## Dictionary:
-## IdentityDictionary:   uses identity test (== rather than =)
+## IdentityDictionary:
+uses identity test (== rather than =)
+
 ```
 | b x y |
 x := Dictionary new.                                        "allocate collection"
@@ -939,12 +945,7 @@ x := FillInTheBlank request: 'Prompt Me'.                   "prompt user for inp
 Utilities openCommandKeyHelp
 ```
 
-
-
-
 ## Ready For More?
-
-### Free Online
 
 * [GNU Smalltalk User's Guide](https://www.gnu.org/software/smalltalk/manual/html_node/Tutorial.html)
 * [smalltalk dot org](http://www.smalltalk.org/)
