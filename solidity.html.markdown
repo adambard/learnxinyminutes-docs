@@ -4,6 +4,7 @@ filename: learnSolidity.sol
 contributors:
   - ["Nemil Dalal", "https://www.nemil.com"]
   - ["Joseph Chow", ""]
+  - ["Bhoomtawath Plinsut", "https://github.com/varshard"]
 ---
 
 Solidity lets you program on [Ethereum](https://www.ethereum.org/), a
