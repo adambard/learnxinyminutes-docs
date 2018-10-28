@@ -6,7 +6,7 @@ contributors:
 filename: LearnAnsible.txt
 ---
 
-```yml
+```yaml
 ---
 "{{ Ansible }}" is an orchestration tool written in Python.
 
@@ -14,7 +14,7 @@ filename: LearnAnsible.txt
 
 ## Example
 An example playbook to install apache and configure log level
-```yml
+```yaml
 ---
 - hosts: apache
 
@@ -163,7 +163,7 @@ This example-playbook would execute (on all hosts defined in the inventory) two 
 * `ping` that would return message *pong*
 * `shell` that execute three commands and return the output to our terminal
 
-```yml
+```yaml
 - hosts: all
   
   tasks:
@@ -213,7 +213,7 @@ It is a great way to introduce `object oriented` management for your application
 Role can be included in your playbook (executed via your playbook).
 
 
-```yml
+```yaml
 - hosts: all
 
   tasks:
@@ -427,7 +427,7 @@ You can use the jinja in the CLI too
 ansible -m shell -a 'echo {{ my_variable }}` -e 'my_variable=something, playbook_parameter=twentytwo" localhost
 ```
 In fact - jinja is used to template parts of the playbooks too
-```yml
+```yaml
 #check part of this playbook: playbooks/roles/sys_debug/tasks/debug_time.yml
 - local_action: shell date +'%F %T'
   register: ts
@@ -638,18 +638,19 @@ But ansible is way more! It provides an execution plans, an API, library, callba
 
 It is an agent-less tool - every agent consumes up to 16MB ram - in some environments, it may be noticable amount.  
 It is agent-less - you have to verify your environment consistency 'on-demand' - there is no built-in mechanism that would warn you about some change automatically (this can be achieved with reasonable effort)
-Official GUI Tool (web inferface) - Ansible Tower - is great, but it is expensive. There is no 'small enterprice' payment plan. Easy workaround with Rundeck or Jenkins is possible with reasonable workload.  
+Official GUI Tool (web inferface) - Ansible Tower - is great, but it is expensive. There is no 'small enterprice' payment plan, however Ansible AWX is the free open source version we were all waiting for.
 
 #### Pros
 
-It is an agent-less tools In most scenarios, it use ssh as a transport layer.   
+It is an agent-less tools In most scenarios, it use ssh as a transport layer.
 In some way you can use it as 'bash on steroids'.  
 It is very-very-very easy to start. If you are familiar with ssh concept - you already know Ansible (ALMOST). My personal record is: 'I did show "how to install and use ansible" (for simple raspberry pi cluster management) - it took me 30 seconds to deliver a complete working example !!!)'  
 I do provide a training services - I'm able to teach a production-ready person - in 8 hours (1 training day)! It covers all needed to work aspects! No other tool can match this ease of use!  
 It executes 'as is' - other tools (salt, puppet, chef - might execute in different scenario than you would expect)  
 Documentation is at the world-class standard!  
 The comunity (github, stackOverflow) would help you very fast.  
-Writing own modules and extension is fairly easy.  
+Writing own modules and extension is fairly easy.
+Ansible AWX is the open source version of Ansible Tower we have been waiting for, which provides an excellent UI.
 
 #### Neutral
 Migration Ansible<->Salt is failrly easy - so if you would need an event-driven agent environment - it would be a good choice to start quick with Ansible, and convert to salt when needed.
@@ -657,7 +658,12 @@ Migration Ansible<->Salt is failrly easy - so if you would need an event-driven 
 #### Some concepts
 
 Ansible uses ssh or paramiko as a transport layer. In a way you can imagine that you are using a ssh with API to perform your action.  
-The simplest way is to execute remote command in more controlled way (still using ssh).   
+The simplest way is to execute remote command in more controlled way (still using ssh).
 On the other hand - in advanced scope - you can wrap Ansible (use python Ansible code as a library) with your own Python scrips! This is awesome! It would act a bit like Fabric then.  
 
+## Additional Resources
 
+* [Servers For Hackers: An Ansible Tutorial](https://serversforhackers.com/c/an-ansible-tutorial)
+* [A system administrator's guide to getting started with Ansible - FAST!](https://www.redhat.com/en/blog/system-administrators-guide-getting-started-ansible-fast)
+* [Ansible Tower](https://www.ansible.com/products/tower) - Ansible Tower provides a web UI, dashboard and rest interface to ansible.
+* [Ansible AWX](https://github.com/ansible/awx) - The Open Sourc version of Ansible Tower.
