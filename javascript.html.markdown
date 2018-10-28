@@ -248,8 +248,7 @@ for (var i = 0; i < 5; i++){
     // will run 5 times
 }
 
-// Breaking out of labeled loops is similar to Java
-outer:
+// Breaking out of labeled loops is similar to Java outer:
 for (var i = 0; i < 10; i++) {
     for (var j = 0; j < 10; j++) {
         if (i == 5 && j ==5) {
