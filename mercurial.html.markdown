@@ -2,7 +2,7 @@
 category: tool
 tool: hg
 contributors:
-	- ["Will L. Fife", "http://github.com/sarlalian"]
+  - ["Will L. Fife", "http://github.com/sarlalian"]
 filename: LearnHG.txt
 ---
 
