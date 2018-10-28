@@ -13,14 +13,14 @@ lang: es-es
 
 MATLAB significa 'MATrix LABoratory'. Es un poderoso lenguaje de computación numérica comúnmente usado en ingeniería y matemáticas.
 
-Si tiene algún comentario, no dude en ponerse en contacto conmigo en
+Si tiene algún comentario, no dude en ponerse en contacto el autor en
 [@the_ozzinator](https://twitter.com/the_ozzinator), o
 [osvaldo.t.mendoza@gmail.com](mailto:osvaldo.t.mendoza@gmail.com).
 
 ```matlab
-%% Una sección de código comienza con dos símbolos de porcentaje. Los títulos de la sección van en la misma línea.
+%% Una sección de código comienza con dos símbolos de porcentaje. Los títulos de la sección van en la misma líneas.
 % Los comentarios comienzan con un símbolo de porcentaje.
-W
+
 %{
 Los Comentarios de multiples lineas se
 ven
@@ -43,7 +43,7 @@ load learnmatlab.mat y
 A = A * 2;
 plot(A);
 
-%% Las secciones de códigos también son conocidas como celdas de código o modo celda (no ha de ser confundido con arreglo de celdas)
+%% Las secciones de código también son conocidas como celdas de código o modo celda (no ha de ser confundido con arreglo de celdas)
 
 
 % Los comandos pueden abarcar varias líneas, usando '...'
@@ -81,11 +81,11 @@ format short 	% 4 decimales en un número flotante
 format long 	% 15 decimales
 format bank 	% solo dos dígitos después del punto decimal - para cálculos financieros
 fprintf('texto') % imprime "texto" en la pantalla
-disp('texto') 	% imprime "text" en la pantalla
+disp('texto') 	% imprime "texto" en la pantalla
 
 % Variables y expresiones
 myVariable = 4 	% Espacio de trabajo de aviso muestra la variable recién creada
-myVariable = 4; % Semi-colon suprime la salida a la Ventana de Comando
+myVariable = 4; % Punto y coma suprime la salida a la Ventana de Comando
 4 + 6  		% ans = 10
 8 * myVariable 	% ans = 32
 2 ^ 3 		% ans = 8
@@ -121,16 +121,16 @@ A( A > 5 )
 % devuelve un vector que contiene los elementos en A para los que la condición es verdadera
 
 % Cadenas
-a = 'MyCadena'
+a = 'MiCadena'
 length(a) % ans = 8
 a(2) % ans = y
-[a,a] % ans = MyStringMyString
+[a,a] % ans = MiCadenaMiCadena
 
 
 % Celdas
 a = {'uno', 'dos', 'tres'}
 a(1) % ans = 'uno' - retorna una celda
-char(a(1)) % ans = one - retorna una cadena
+char(a(1)) % ans = uno - retorna una cadena
 
 % Estructuras
 A.b = {'uno','dos'};
@@ -139,7 +139,7 @@ A.d.e = false;
 
 % Vectores
 x = [4 32 53 7 1]
-x(2) % ans = 32, índices en Matlab comienzan 1, no 0
+x(2) % ans = 32, los índices en Matlab comienzan 1, no 0
 x(2:3) % ans = 32 53
 x(2:end) % ans = 32 53 7 1
 
@@ -157,7 +157,7 @@ A = [1 2 3; 4 5 6; 7 8 9]
 %     4     5     6
 %     7     8     9
 
-A(2,3) % ans = 6, A(row, column)
+A(2,3) % ans = 6, A(fila, columna)
 A(6) % ans = 8
 % (concatena implícitamente columnas en el vector, luego indexa en base a esto)
 
@@ -238,11 +238,11 @@ A.' % Versión concisa de transposición (sin tomar complejo conjugado)
 % Elemento por elemento Aritmética vs. Matriz Aritmética
 % Por sí solos, los operadores aritméticos actúan sobre matrices completas. Cuando preceden
 % por un punto, actúan en cada elemento en su lugar. Por ejemplo:
-A * B % Matrix multiplication
-A .* B % Multiple each element in A by its corresponding element in B
+A * B % Multiplicación de matrices
+A .* B % Multiplica cada elemento en A por su elemento correspondiente en B
 
-% There are several pairs of functions, where one acts on each element, and
-% the other (whose name ends in m) acts on the whole matrix.
+% Hay varios pares de funciones, donde una actúa sobre cada elemento y 
+% la otra (cuyo nombre termina en m) actúa sobre la matriz completa.
 exp(A) % exponencializar cada elemento
 expm(A) % calcular la matriz exponencial
 sqrt(A) % tomar la raíz cuadrada de cada elemento
@@ -276,7 +276,7 @@ fplot (@(x) x^2, [2,5]) % Un diagrama con el eje y logarítmico...
 
 grid on % Muestra la cuadrícula; apague con 'grid off'.
 axis square % Hace que la región actual de los ejes sea cuadrada.
-axis equal % Establezce la relación de aspecto para que las unidades de datos sean las mismas en todas las direcciones.
+axis equal % Establece la relación de aspecto para que las unidades de datos sean las mismas en todas las direcciones.
 
 scatter(x, y); % Gráfico de dispersión
 hist(x); % Histograma
@@ -306,12 +306,12 @@ h = plot(x, y); % Puedes guardar un control de una figura cuando la creas
 set(h, 'Color', 'r')
 % 'y' yellow; 'm' magenta, 'c' cyan, 'r' red, 'g' green, 'b' blue, 'w' white, 'k' black
 set(h, 'LineStyle', '--')
-% '-' es línea continua, '---' discontinua, ':' punteada, '-.' dash-dot, 'ninguno' no es línea
+% '--' es línea continua, '---' discontinua, ':' punteada, '-.' dash-dot, 'none' es sin línea
 get (h, 'LineStyle')
 
 
 % La función gca devuelve un mango a los ejes para la figura actual
-set(gca, 'XDir', 'reverse'); % reverse the direction of the x-axis
+set(gca, 'XDir', 'reverse'); % invierte la dirección del eje x
 
 % Para crear una figura que contenga varios ejes en posiciones de mosaico, use 'subplot'
 subplot(2,3,1); % seleccione la primera posición en una grilla de subtramas de 2 por 3
@@ -329,7 +329,7 @@ cd /path/to/move/into % cambia de directorio
 
 % Las variables se pueden guardar en archivos .mat
 save('myFileName.mat') % Guarda las variables en su espacio de trabajo
-load('myFileName.mat') % Carga las variables guardadas en Workspace
+load('myFileName.mat') % Carga las variables guardadas en espacio de trabajo
 
 % M-file Scripts
 % Un archivo de script es un archivo externo que contiene una secuencia de instrucciones.
@@ -338,7 +338,7 @@ load('myFileName.mat') % Carga las variables guardadas en Workspace
 
 % M-file Functions
 % Al igual que los scripts, y tienen la misma extensión .m
-% Pero puede aceptar argumentos de entrada y devolver una salida
+% Pero pueden aceptar argumentos de entrada y devolver una salida
 % Además, tienen su propio espacio de trabajo (es decir, diferente alcance variable).
 % El nombre de la función debe coincidir con el nombre del archivo (por lo tanto, guarde este ejemplo como double_input.m).
 % 'help double_input.m' devuelve los comentarios en la línea que comienza la función
@@ -374,16 +374,16 @@ fopen(filename)
 
 % Salida
 disp(a) % Imprime el valor de la variable a
-disp('Hello World') % Imprime una cadena
+disp('Hola Mundo') % Imprime una cadena
 fprintf % Imprime en la ventana de comandos con más control
 
 % Declaraciones condicionales (los paréntesis son opcionales, pero buen estilo)
 if (a > 15)
-	disp('Greater than 15')
+	disp('Mayor que 15')
 elseif (a == 23)
-	disp('a is 23')
+	disp('a es 23')
 else
-	disp('neither condition met')
+	disp('Ninguna condicion se ha cumplido')
 end
 
 % Bucles
@@ -469,7 +469,7 @@ linspace(x1, x2, n) % Devuelve n puntos equiespaciados, con min x1 y max x2
 inv(A) % Inverso de la matriz A
 det(A) % Determinante de A
 eig(A) % Valores propios y vectores propios de A
-trace(A) % Traza de la matriz: equivalente a la suma (diag (A))
+trace(A) % Traza de la matriz: equivalente a sum(diag(A))
 isempty(A) % Determina si la matriz está vacía
 all(A) % Determina si todos los elementos son distintos de cero o verdaderos
 any(A) % Determina si alguno de los elementos es distinto de cero o verdadero
@@ -480,8 +480,8 @@ tril(x) % Devuelve la parte triangular inferior de x
 cross(A,B) % Devuelve el producto cruzado de los vectores A y B
 dot(A,B) % Devuelve un producto escalar de dos vectores (debe tener la misma longitud)
 transpose(A) % Devuelve la transposición de A
-fliplr(A) % Voltee la matriz de izquierda a derecha
-flipud(A) % Voltear la matriz de arriba hacia abajo
+fliplr(A) % Voltea la matriz de izquierda a derecha
+flipud(A) % Voltea la matriz de arriba hacia abajo
 
 % Factorizaciones de matrices
 [L, U, P] = lu(A) % Descomposición LU: PA = LU, L es triangular inferior, U es triangular superior, P es matriz de permutación
@@ -494,7 +494,7 @@ min     % componente más pequeño
 length  % longitud de un vector
 sort    % ordenar en orden ascendente
 sum     % suma de elementos
-prod    % product of elements
+prod    % producto de elementos
 mode    % valor modal
 median  % valor mediano
 mean    % valor medio
@@ -507,7 +507,7 @@ find(x) % Encuentra todos los elementos distintos de cero de x y devuelve sus í
 
 % Clases
 % Matlab puede soportar programación orientada a objetos.
-% Las clases deben colocarse en un archivo del nombre de la clase con una extensión .m. 
+% Las clases deben colocarse en un archivo del nombre de la clase con la extensión .m. 
 % Para comenzar, creamos una clase simple para almacenar puntos de referencia de GPS.
 % Comience WaypointClass.m
 classdef WaypointClass % El nombre de la clase.
@@ -540,7 +540,7 @@ end
 % Podemos crear un objeto de la clase usando el constructor
 a = WaypointClass(45.0, 45.0)
 
-% Las propiedades de clase se comportan exactamente como Matlab Structures.
+% Las propiedades de clase se comportan exactamente como estructuras de Matlab.
 a.latitude = 70.0
 a.longitude = 25.0
 
