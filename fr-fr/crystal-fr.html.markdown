@@ -305,7 +305,6 @@ end
 (1..3).each do |index|
   puts "Index: #{index}"
 end
-# Index: 0
 # Index: 1
 # Index: 2
 # Index: 3

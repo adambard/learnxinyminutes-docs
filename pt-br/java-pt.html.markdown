@@ -42,7 +42,7 @@ public class LearnJava {
             " Double: " + 3.14 +
             " Boolean: " + true);
 
-        // Para imprimir sem inserir uma nova lina, use o System.out.print
+        // Para imprimir sem inserir uma nova linha, use o System.out.print
         System.out.print("Olá ");
         System.out.print("Mundo");
 

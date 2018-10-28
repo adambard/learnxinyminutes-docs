@@ -221,11 +221,11 @@ A(1, :) =[] % Delete the first row of the matrix
 A(:, 1) =[] % Delete the first column of the matrix
 
 transpose(A) % Transpose the matrix, which is the same as:
-A one
-ctranspose(A) % Hermitian transpose the matrix
-% (the transpose, followed by taking complex conjugate of each element)
-A' % Concise version of complex transpose
 A.' % Concise version of transpose (without taking complex conjugate)
+ctranspose(A) % Hermitian transpose the matrix, which is the same as:
+A'  % Concise version of complex transpose
+    % (the transpose, followed by taking complex conjugate of each element)
+
 
 
 
@@ -374,8 +374,8 @@ disp('Hello World') % Print out a string
 fprintf % Print to Command Window with more control
 
 % Conditional statements (the parentheses are optional, but good style)
-if (a > 15)
-	disp('Greater than 15')
+if (a > 23)
+	disp('Greater than 23')
 elseif (a == 23)
 	disp('a is 23')
 else
@@ -545,7 +545,7 @@ ans = multiplyLatBy(a,3)
 
 % The method can also be called using dot notation. In this case, the object 
 % does not need to be passed to the method.
-ans = a.multiplyLatBy(a,1/3)
+ans = a.multiplyLatBy(1/3)
 
 % Matlab functions can be overloaded to handle objects. 
 % In the method above, we have overloaded how Matlab handles 

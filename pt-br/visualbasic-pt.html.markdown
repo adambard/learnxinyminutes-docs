@@ -8,16 +8,16 @@ lang: pt-br
 filename: learnvisualbasic-pt.vb
 ---
 
-```vb
+```
 Module Module1
 
 module Module1
 
     Sub Main ()
         ' Uma visão geral de console de aplicativos do Visual Basic antes de 
-        ' mergulharmos mais profundamente na linguagem
+        ' mergulharmos mais profundamente na linguagem.
         ' Aspas simples começam comentários.
-        ' Para Navegar este tutorial dentro do compilador do Visual Basic, 
+        ' Para navegar neste tutorial dentro do compilador do Visual Basic, 
         ' eu criei um sistema de navegação.
         ' Este sistema de navegação vai ser explicado conforme avançarmos no
         ' tutorial, e você vai entender o que isso significa.
@@ -93,16 +93,16 @@ module Module1
     Private Sub HelloWorldInput ()
         Console.Title = " Olá Mundo YourName | Saiba X em Y Minutes"
         ' Variáveis
-        'Os dados inseridos por um usuário precisa ser armazenada .
+        'Os dados inseridos por um usuário precisam ser armazenados.
         ' As variáveis ​​também começar com um Dim e terminar com um Como VariableType .
 
-        ' Neste tutorial, nós queremos saber o que o seu nome, e faça o programa
+        ' Neste tutorial, nós queremos saber qual é o seu nome, e faça o programa
         ' Responder ao que é dito.
         Nome de usuário Dim As String
         " Nós usamos string como string é uma variável de texto baseado .
         Console.WriteLine (" Olá, Qual é o seu nome? ") ' Peça ao usuário seu nome.
-        username = Console.ReadLine () ' armazena o nome usuários.
-        Console.WriteLine (" Olá " + nome do usuário) " A saída é Olá ' Seu nome '
+        username = Console.ReadLine () ' armazena o nome do usuário.
+        Console.WriteLine (" Olá " + username) ' A saída é "Olá < seu nome >".
         Console.ReadLine () ' Outsputs acima.
         ' O código acima irá lhe fazer uma pergunta seguiu imprimindo sua resposta.
         " Outras variáveis ​​incluem Integer e usamos inteiro para números inteiros.

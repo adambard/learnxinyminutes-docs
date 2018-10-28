@@ -12,7 +12,7 @@ Markdown is gecreëerd door John Gruber in 2004. Het is bedoeld om met een gemak
 schrijven syntax te zijn die gemakkelijk omgevormd kan worden naar HTML (en op heden verschillende
 andere formaten)
 
-```markdown
+```md
 <!-- Markdown erft over van HTML, dus ieder HTML bestand is een geldig Markdown
 bestand. Dit betekend ook dat html elementen gebruikt kunnen worden in Markdown
 zoals het commentaar element. Echter, als je een html element maakt in een Markdown 

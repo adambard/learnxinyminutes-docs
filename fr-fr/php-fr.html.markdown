@@ -6,10 +6,11 @@ contributors:
     - ["Trismegiste", "https://github.com/Trismegiste"]
 translators:
     - ["Pascal Boutin", "http://pboutin.net/"]
+    - ["Julien M'Poy", "https://github.com/groovytron"]
 lang: fr-fr
 ---
 
-This document describes PHP 5+.
+Ce document décrit PHP 5+.
 
 ```php
  // Le code PHP doit être placé à l'intérieur de balises '<?php'
@@ -48,7 +49,7 @@ Hello World Again!
 // Un nom de variable valide commence par une lettre ou un souligné,
 // suivi de n'importe quelle lettre, nombre ou de soulignés.
 
-// Les valeurs booléenes ne sont pas sensibles à la casse
+// Les valeurs booléennes ne sont pas sensibles à la casse
 $boolean = true;  // ou TRUE ou True
 $boolean = false; // ou FALSE ou False
 
@@ -84,30 +85,30 @@ $number /= $float; // Divise et assigne le quotient à $number
 $sgl_quotes = '$String'; // => '$String'
 
 // Évitez les guillemets sauf pour inclure le contenu d'une autre variable
-$dbl_quotes = "This is a $sgl_quotes."; // => 'This is a $String.'
+$dbl_quotes = "Ceci est une $sgl_quotes."; // => 'Ceci est une $String.'
 
 // Les caractères spéciaux sont seulement échappés avec des guillemets
-$escaped   = "This contains a \t tab character.";
-$unescaped = 'This just contains a slash and a t: \t';
+$escaped   = "Ceci contient \t une tabulation.";
+$unescaped = 'Ceci contient juste un slash et un t: \t';
 
 // En cas de besoin, placez la variable dans des accolades
-$money = "I have $${number} in the bank.";
+$money = "J'ai $${number} sur mon compte en banque.";
 
 // Depuis PHP 5.3, Nowdoc peut être utilisé pour faire des chaînes
 // multi-lignes non-interprétées
 $nowdoc = <<<'END'
-Multi line
-string
+String
+mutli-lignes
 END;
 
 // Heredoc peut être utilisé pour faire des chaînes multi-lignes interprétées
 $heredoc = <<<END
-Multi line
 $sgl_quotes
+multi-lignes
 END;
 
 // La concaténation de chaînes se fait avec un .
-echo 'This string ' . 'is concatenated';
+echo 'Cette string ' . 'est concatenée'; // => 'Cette string est concaténée'
 
 
 /********************************
@@ -122,7 +123,7 @@ echo 'This string ' . 'is concatenated';
 define("FOO",     "something");
 
 // on peut accéder à une constante en utilisant directement son nom
-echo 'This outputs '.FOO;
+echo 'Ceci affiche ' . FOO;
 
 
 /********************************
@@ -149,6 +150,14 @@ $array[] = 'Four';
 // Retrait d'un élément du tableau
 unset($array[3]);
 
+// Depuis PHP 7, il est possible de déclarer des tableaux constants en
+// utilisant 'define'.
+define('ANIMAUX', [
+    'chien',
+    'chat',
+    'oiseau',
+]);
+
 /********************************
  * Affichage
  */
@@ -159,11 +168,13 @@ echo('Hello World!');
 
 print('Hello World!'); // Pareil à "écho"
 
-// Pour écho, vous n'avez pas besoin des parenthèses
+// 'echo' et 'print' sont des language constructs.
+// Il n'ont pas besoin de parenthèses car ils sont traités comme
+// des opérateurs unaires.
 echo 'Hello World!';
-print 'Hello World!'; // Pour print non plus
+print 'Hello World!'; 
 
-$paragraph = 'paragraph';
+$paragraph = 'paragraphe';
 
 echo 100;        // Affichez un scalaire directement
 echo $paragraph; // ou des variables
@@ -202,7 +213,8 @@ $b = '0';
 $c = '1';
 $d = '1';
 
-// assert affiche un avertissement dans son argument n'est pas vrai
+// assert affiche un avertissement quand l'expression booléenne passée
+// en argument n'est pas vraie.
 
 // Ces comparaisons vont toujours être vraies, même si leurs
 // types ne sont pas les mêmes.
@@ -315,7 +327,7 @@ if ($x === '0') {
 switch ($x) {
     case '0':
         print 'Les switch font du transtypage implicite';
-        break; // Il est important de déclaré un 'break', sinon les cas
+        break; // Il est important de déclarer un 'break', sinon les cas
                // 'two' et 'three' seront évalués
     case 'two':
     case 'three':
@@ -390,9 +402,10 @@ function my_function () {
 echo my_function(); // => "Hello"
 
 
-// Les noms de fonction débutent par le symbole $
-// Un nom de variable valide commence par une lettre ou un souligné,
+// Un nom de fonction valide commence par une lettre ou un souligné,
 // suivi de n'importe quelle lettre, nombre ou de soulignés.
+// Les noms des arguments d'une fonction doivent respecter le même format que
+// celui des variables.
 
 function add ($x, $y = 1) { // $y est facultatif et sa valeur par défaut est 1
   $result = $x + $y;
@@ -519,7 +532,7 @@ class MyClass
 
     public static function myStaticMethod()
     {
-        print 'I am static';
+        print 'Je suis static';
     }
 }
 
@@ -527,7 +540,7 @@ class MyClass
 echo MyClass::MY_CONST;    // Outputs 'value';
 
 echo MyClass::$staticVar;  // Retourne 'static';
-MyClass::myStaticMethod(); // Retourne 'I am static';
+MyClass::myStaticMethod(); // Retourne 'Je suis static';
 
 // On peut instancier une classe en utilisant le mot clé 'new'
 $my_class = new MyClass('An instance property');
@@ -584,7 +597,7 @@ echo $x->property; // Va utiliser la méthode __get()
 $x->property = 'Something'; // Va utiliser la méthode __set()
 
 // Les classes peuvent être abstraites (en utilisant le mot clé 'abstract'), ou
-// elle peuvent implémenter une interface (en utilisant le mot clé 'implement').
+// elle peuvent implémenter une interface (en utilisant le mot clé 'implements').
 
 // Une interface peut être déclarée avec le mot clé 'interface'
 
@@ -636,6 +649,35 @@ class SomeOtherClass implements InterfaceOne, InterfaceTwo
         echo 'doSomethingElse';
     }
 }
+
+// Il est possible de déclarer des classes internes anonymes depuis PHP 7
+
+interface Logger {
+    public function log(string $msg);
+}
+
+class Application {
+    private $logger;
+
+    public function getLogger(): Logger {
+         return $this->logger;
+    }
+
+    public function setLogger(Logger $logger) {
+         $this->logger = $logger;
+    }
+}
+
+$app = new Application;
+
+$app->setLogger(new class implements Logger {
+    public function log(string $msg) {
+        echo $msg;
+    }
+});
+
+var_dump($app->getLogger()); // => 'object(class@anonymous)#2 (0) {}'
+
 
 /********************************
  * Espaces de noms (namespaces)

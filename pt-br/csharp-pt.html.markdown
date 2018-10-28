@@ -6,23 +6,23 @@ contributors:
 lang: pt-br
 ---
 
-C# é uma linguagem elegante e altamente tipado orientada a objetos que permite aos desenvolvedores criarem uma variedade de aplicações seguras e robustas que são executadas no .NET Framework.
+C# é uma linguagem elegante, altamente tipada e orientada a objetos que permite aos desenvolvedores criar uma variedade de aplicações seguras e robustas que são executadas no .NET Framework.
 
-[Read more here.](http://msdn.microsoft.com/pt-br/library/vstudio/z1zx9t92.aspx)
+[Leia mais aqui.](http://msdn.microsoft.com/pt-br/library/vstudio/z1zx9t92.aspx)
 
 ```c#
-// Comentário de linha única começa com //
+// Comentários de linha única começam com //
 /*
-Múltipas linhas é desta forma
+Comentários de múltiplas linhas são desta forma
 */
 /// <summary>
-/// Esta é uma documentação comentário XML que pode ser usado para gerar externo
-/// documentação ou fornecer ajuda de contexto dentro de um IDE
+/// Este é um comentário de documentação XML que pode ser usado para gerar documentação
+/// externa ou para fornecer ajuda de contexto dentro de uma IDE
 /// </summary>
 //public void MethodOrClassOrOtherWithParsableHelp() {}
 
-// Especificar qual namespace seu código irá usar
-// Os namespaces a seguir são padrões do .NET Framework Class Library 
+// Especifica os namespaces que o código irá usar
+// Os namespaces a seguir são padrões da biblioteca de classes do .NET Framework
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -33,11 +33,11 @@ using System.IO;
 
 // Mas este aqui não é :
 using System.Data.Entity;
-// Para que consiga utiliza-lo, você precisa adicionar novas referências
+// Para que consiga utilizá-lo, você precisa adicionar novas referências
 // Isso pode ser feito com o gerenciador de pacotes NuGet : `Install-Package EntityFramework`
 
-// Namespaces são escopos definidos para organizar o códgo em "pacotes" or "módulos"
-// Usando este código a partir de outra arquivo de origem: using Learning.CSharp;
+// Namespaces são escopos definidos para organizar o código em "pacotes" ou "módulos"
+// Usando este código a partir de outro arquivo de origem: using Learning.CSharp;
 namespace Learning.CSharp
 {
     // Cada .cs deve conter  uma classe com o mesmo nome do arquivo
@@ -762,7 +762,7 @@ on a new line! ""Wow!"", the masses cried";
             }
         }
 
-        //Method to display the attribute values of this Object.
+        //Método para exibir os valores dos atributos deste objeto.
         public virtual string Info()
         {
             return "Gear: " + Gear +
@@ -784,13 +784,13 @@ on a new line! ""Wow!"", the masses cried";
 
     } // end class Bicycle
 
-    // PennyFarthing is a subclass of Bicycle
+    // PennyFarthing é uma subclasse de Bicycle
     class PennyFarthing : Bicycle
     {
-        // (Penny Farthings are those bicycles with the big front wheel.
-        // They have no gears.)
+        // (Penny Farthings são aquelas bicicletas com uma grande roda frontal.
+        // Elas não tem correias.)
 
-        // calling parent constructor
+        // chamando construtor pai
         public PennyFarthing(int startCadence, int startSpeed) :
             base(startCadence, startSpeed, 0, "PennyFarthing", true, BikeBrand.Electra)
         {
@@ -823,10 +823,10 @@ on a new line! ""Wow!"", the masses cried";
         }
     }
 
-    // Interfaces only contain signatures of the members, without the implementation.
+    // Interfaces contêm apenas as assinaturas dos membros, sem a implementação.
     interface IJumpable
     {
-        void Jump(int meters); // all interface members are implicitly public
+        void Jump(int meters); // todos os membros da interface são implicitamente públicos
     }
 
     interface IBreakable
@@ -834,7 +834,7 @@ on a new line! ""Wow!"", the masses cried";
         bool Broken { get; } // interfaces can contain properties as well as methods & events
     }
 
-    // Class can inherit only one other class, but can implement any amount of interfaces
+    // Classes podem herdar apenas de uma outra classe, mas podem implementar qualquer quantidade de interfaces.
     class MountainBike : Bicycle, IJumpable, IBreakable
     {
         int damage = 0;

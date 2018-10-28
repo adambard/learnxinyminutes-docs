@@ -1,6 +1,6 @@
 ---
 language: html
-filename: learnhtml.html
+filename: learnhtml.txt
 contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
@@ -111,7 +111,7 @@ This article is concerned principally with HTML syntax and some useful tips.
 
 ## Usage
 
-HTML is written in files ending with `.html`.
+HTML is written in files ending with `.html` or `.htm`. The mime type is `text/html`.
 
 ## To Learn More 
 

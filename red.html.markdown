@@ -103,7 +103,8 @@ type? my-integer
 integer!
 
 ; A variable can be initialized using another variable that gets initialized
-; at the same time.
+; at the same time. Initialize here refers to both declaring a variable and
+; assigning a value to it.
 i2: 1 + i1: 1
 
 ; Arithmetic is straightforward

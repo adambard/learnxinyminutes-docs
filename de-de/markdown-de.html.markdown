@@ -14,7 +14,7 @@ Syntax, in der sich Dokumente leicht schreiben *und* lesen lassen. Außerdem
 sollte Markdown sich leicht nach HTML (und in andere Formate) konvertieren
 lassen.
 
-```markdown
+```md
 <!-- Markdown ist eine Obermenge von HTML - jede valide HTML-Datei ist also
 automatisch valides Markdown - was heisst dass wir jedes HTML-Element (also auch
 Kommentare) in Markdown benutzen können, ohne dass der Parser sie verändert.

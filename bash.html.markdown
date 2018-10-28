@@ -16,6 +16,7 @@ contributors:
     - ["Betsy Lorton", "https://github.com/schbetsy"]
     - ["John Detter", "https://github.com/jdetter"]
     - ["Harry Mumford-Turner", "https://github.com/harrymt"]
+    - ["Martin Nicholson", "https://github.com/mn113"]
 filename: LearnBash.sh
 ---
 
@@ -25,7 +26,7 @@ Nearly all examples below can be a part of a shell script or executed directly i
 [Read more here.](http://www.gnu.org/software/bash/manual/bashref.html)
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
 # First line of the script is shebang which tells the system how to execute
 # the script: http://en.wikipedia.org/wiki/Shebang_(Unix)
 # As you already figured, comments start with #. Shebang is also a comment.
@@ -76,12 +77,36 @@ echo ${Variable/Some/A} # => A string
 Length=7
 echo ${Variable:0:Length} # => Some st
 # This will return only the first 7 characters of the value
+echo ${Variable: -5} # => tring
+# This will return the last 5 characters (note the space before -5)
+
+# String length
+echo ${#Variable} # => 11
 
 # Default value for variable
 echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"} 
 # => DefaultValueIfFooIsMissingOrEmpty
 # This works for null (Foo=) and empty string (Foo=""); zero (Foo=0) returns 0.
 # Note that it only returns default value and doesn't change variable value.
+
+# Declare an array with 6 elements
+array0=(one two three four five six)
+# Print first element
+echo $array0 # => "one"
+# Print first element
+echo ${array0[0]} # => "one"
+# Print all elements
+echo ${array0[@]} # => "one two three four five six"
+# Print number of elements
+echo ${#array0[@]} # => "6"
+# Print number of characters in third element
+echo ${#array0[2]} # => "5"
+# Print 2 elements starting from forth
+echo ${array0[@]:3:2} # => "four five"
+# Print all elements. Each of them on new line.
+for i in "${array0[@]}"; do
+    echo "$i"
+done
 
 # Brace Expansion { }
 # Used to generate arbitrary strings
@@ -155,6 +180,23 @@ then
     echo "This will run if $Name is Daniya OR Zach."
 fi
 
+# There is also the =~ operator, which tests a string against a Regex pattern:
+Email=me@example.com
+if [[ "$Email" =~ [a-z]+@[a-z]{2,}\.(com|net|org) ]]
+then
+    echo "Valid email!"
+fi
+# Note that =~ only works within double [[ ]] square brackets,
+# which are subtly different from single [ ].
+# See http://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs for more on this.
+
+# Redefine command 'ping' as alias to send only 5 packets
+alias ping='ping -c 5'
+# Escape alias and use command with this name instead
+\ping 192.168.1.1
+# Print all aliases
+alias -p
+
 # Expressions are denoted with the following format:
 echo $(( 10 + 5 )) # => 15
 
@@ -202,10 +244,13 @@ mv s0urc3.txt dst.txt # sorry, l33t hackers...
 # Since bash works in the context of a current directory, you might want to 
 # run your command in some other directory. We have cd for changing location:
 cd ~    # change to home directory
+cd      # also goes to home directory
 cd ..   # go up one directory
         # (^^say, from /home/username/Downloads to /home/username)
 cd /home/username/Documents   # change to specified directory
 cd ~/Documents/..    # still in home directory..isn't it??
+cd -    # change to last directory
+# => /home/username/Documents
 
 # Use subshells to work across directories
 (echo "First, I'm here: $PWD") && (cd someDir; echo "Then, I'm here: $PWD")
@@ -230,6 +275,7 @@ print("#stderr", file=sys.stderr)
 for line in sys.stdin:
     print(line, file=sys.stdout)
 EOF
+# Variables will be expanded if the first "EOF" is not quoted
 
 # Run the hello.py Python script with various stdin, stdout, and 
 # stderr redirections:
