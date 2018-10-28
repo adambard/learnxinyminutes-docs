@@ -22,7 +22,7 @@ Si tiene algún comentario, no dude en ponerse en contacto el autor en
 % Los comentarios comienzan con un símbolo de porcentaje.
 
 %{
-Los Comentarios de multiples lineas se
+Los Comentarios de multiples líneas se
 ven
 como 
 esto
@@ -33,7 +33,7 @@ esto
 % seguida por un clic en el botón de “Ejecutar Sección”
 % o usando Ctrl+Shift+Enter (Windows) o Cmd+Shift+Return (OS X)
 
-%% This is the start of a code section
+%% Este es el comienzo de una sección de código
 % Una forma de usar las secciones es separar un código de inicio costoso que no cambia, como cargar datos
 load learnmatlab.mat y
 
