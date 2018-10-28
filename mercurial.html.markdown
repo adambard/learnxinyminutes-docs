@@ -6,26 +6,17 @@ contributors:
 filename: LearnHG.txt
 ---
 
-Mercurial is a free, distributed source control management tool. It offers you
-the power to efficiently handle projects of any size while using an intuitive
-interface. It is easy to use and hard to break, making it ideal for anyone
-working with versioned files.
+Mercurial is a free, distributed source control management tool. It offers
+you the power to efficiently handle projects of any size while using an
+intuitive interface. It is easy to use and hard to break, making it ideal for
+anyone working with versioned files.
 
 ## Versioning Concepts
 
 ### What is version control?
 
-Version control is a system that records changes to a file(s), over time.
-
-### Centralized Versioning VS Distributed Versioning
-
-
-* Centralized version control focuses on synchronizing, tracking, and backing 
-up files.
-* Distributed version control focuses on sharing changes. Every change has a 
-unique id.
-* Distributed systems have no defined structure. You could easily have a SVN 
-style, centralized system, with mercurial.
+Version control is a system that keeps track fo changes to a set of file(s)
+and/or directorie(s) over time.
 
 
 ### Why Use Mercurial
@@ -40,27 +31,25 @@ style, centralized system, with mercurial.
 
 #### Distributed Architecture
 
-Traditional version control systems such as Subversion are typical
-client-server architectures with a central server to store the revisions of a
-project. In contrast, Mercurial is truly distributed, giving each developer a
-local copy of the entire development history. This way it works independent of
-network access or a central server. Committing, branching and merging are fast
-and cheap.
+Traditionally version control systems such as CVS and Subversion are a client server
+architecture with a central server to store the revsion history of a project.  Mercurial however
+is a truly distributed architecture, giving each devloper a full local copy of the entire
+development history.  It works independently of a central server.
 
 
 #### Fast
 
-Mercurial's implementation and data structures are designed to be fast. You can
-generate diffs between revisions, or jump back in time within seconds.
-Therefore Mercurial is perfectly suitable for large projects such as OpenJDK
-([hg](http://hg.openjdk.java.net/jdk7/jdk7)) or NetBeans
+Mercurial is implemented to be fast. You are able to generate diffs between
+revsions, and switch between tags and branches with little time and effort.
+Mercurial is used by large projects such as OpenJDK
+([hg](http://hg.openjdk.java.net/jdk7/jdk7)) and NetBeans
 ([hg](http://hg.netbeans.org/)).
 
 #### Platform Independent
 
-Mercurial was written with platform independence in mind. Therefore most of
-Mercurial is written in Python, with a small part in portable C for performance
-reasons. As a result, binary releases are available on all major platforms.
+Mercurial was written to be highly platform independent. Much of Mercurial is
+written in Python, with small performance critical parts written in portable
+C. Binary releases are available for all major platforms.
 
 
 #### Extensible
@@ -75,11 +64,10 @@ commands, add new commands and access all the core functions of Mercurial.
 
 #### Easy to Use
 
-Mercurial sports a consistent command set in which most subversion users feel
-right at home. Potentially dangerous actions are available via extensions you
-need to enable, so the basic interface is easy to use, easy to learn and hard
-to break. The [Quick Start](https://www.mercurial-scm.org/quickstart) should
-get you going in a just few minutes.
+The Mercurial command set is consistent with what subversion users would
+expect, so they are likely to feel right at home.  Most dangerous actions
+are part of extensions that need to be enabled to be used.
+
 
 #### Open Source
 
@@ -92,18 +80,18 @@ version.
 
 | Term          | Definition                         |
 | ------------- | ---------------------------------- |
-| Repository    |  Collection of revisions           |
-| hgrc          | A file which stores defaults for a repository. Global is ~/.hgrc and local is .hgrc inside the repository |
-| revision      | Committed changeset, by REV number |
-| changeset     | Set of work changes saved as diffs |
-| diff          | Changes between files              |
-| tag           | Name for a specific revision       |
-| parent(s)     | Immediate ancestor(s) of revision or work |
-| branch        | Child of a revision                |
+| Repository    | A repository is a collection of revisions            |
+| hgrc          | A configuration file which stores the defaults for a repository. |
+| revision      | A committed changeset: has a REV number |
+| changeset     | Set of changes saved as diffs |
+| diff          | Changes between file(s) |
+| tag           | A named named revision |
+| parent(s)     | Immediate ancestor(s) of a revison |
+| branch        | A child of a revision |
 | head          | A head is a changeset with no child changesets |
-| merge         | The process of merging two HEADS   |
-| tip           | Latest revision in any branch      |
-| patch         | All diffs between two revisions    |
+| merge         | The process of merging two HEADS |
+| tip           | The latest revision in any branch |
+| patch         | All of the diffs between two revisions |
 | bundle        | Patch with permis­sions and rename support  |
 
 
