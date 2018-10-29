@@ -1,7 +1,7 @@
 ---
 
 language: "Common Lisp"
-filename: commonlisp.lisp
+filename: commonlisp-es.lisp
 contributors:
   - ["Paul Nathan", "https://github.com/pnathan"]
   - ["Rommel Martinez", "https://ebzzry.io"]
@@ -126,7 +126,7 @@ t             ; otro atom, denotando true
 (/ 1 3)                ; => 1/3
 (+ #C(1 2) #C(6 -4))   ; => #C(7 -2)
 
-;;; Booleanos
+;;; Boleanos
 
 t                      ; true; cualquier valor non-NIL es true
 nil                    ; false; tambien, la lista vacia: ()
