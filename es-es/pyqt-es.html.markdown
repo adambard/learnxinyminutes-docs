@@ -63,7 +63,7 @@ def window():
     w.show()
     sys.exit(app.exec_())
 	
-# Esta funcion debería crear una ventana de diálogo con un botón
+# Esta función debería crear una ventana de diálogo con un botón
 # que espera a recibir un click y luego sale del programa
 def showdialog():
     d = QDialog()
