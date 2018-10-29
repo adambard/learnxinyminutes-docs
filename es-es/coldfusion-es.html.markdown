@@ -2,12 +2,8 @@
 language: coldfusion
 filename: learncoldfusion.cfm
 contributors:
-<<<<<<< HEAD
-    - ["Wayne Boka", "http://wboka.github.io"]
-=======
 		- ["Wayne Boka", "http://wboka.github.io"]
->>>>>>> 133281c7... Fix indentation issue in YAML
-    - ["Kevin Morris", "https://twitter.com/kevinmorris"]
+		- ["Kevin Morris", "https://twitter.com/kevinmorris"]
 translators:
     - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
 ---
