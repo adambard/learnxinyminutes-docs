@@ -5,10 +5,10 @@ contributors:
 translators:
     - ["Abner Chou", "http://cn.abnerchou.me"]
 lang: zh-cn
-filename: learnvisualbasic.vb-cn
+filename: learnvisualbasic-cn.vb
 ---
 
-```vb
+```
 Module Module1
 
     Sub Main()

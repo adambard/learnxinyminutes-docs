@@ -71,7 +71,8 @@ world""" -- "Hello\nworld"
 --
 -- 2. Arrays are Javascript arrays, but must be homogeneous
 
-[1,1,2,3,5,8] :: Array Number -- [1,1,2,3,5,8]
+[1,1,2,3,5,8] :: Array Int -- [1,1,2,3,5,8]
+[1.2,2.0,3.14] :: Array Number -- [1.2,2.0,3.14]
 [true, true, false] :: Array Boolean -- [true,true,false]
 -- [1,2, true, "false"] won't work
 -- `Cannot unify Prim.Int with Prim.Boolean`

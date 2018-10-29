@@ -81,3 +81,5 @@ Supported data types:
 ## Further Reading
 
 * [JSON.org](http://json.org) All of JSON beautifully explained using flowchart-like graphics.
+
+* [JSON Tutorial](https://www.youtube.com/watch?v=wI1CWzNtE-M) A concise introduction to JSON.

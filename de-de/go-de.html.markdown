@@ -94,7 +94,7 @@ Zeilenumbrüche beinhalten.` // Selber Zeichenketten-Typ
 
     // Arrays haben bei Kompile-Zeit festgelegte Größen
     var a4 [4]int           // Ein Array mit 4 ints, alle mit Initialwert 0
-    a3 := [...]int{3, 1, 5} // Ein Array mit 4 ints, Initialwerte wie angezeigt
+    a3 := [...]int{3, 1, 5} // Ein Array mit 3 ints, Initialwerte wie angezeigt
 
     // "slices" haben eine dynamische Größe. Arrays und Slices haben beide ihre
     // Vorzüge, aber slices werden viel häufiger verwendet

@@ -6,6 +6,8 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
     - ["evuez", "http://github.com/evuez"]
+    - ["Rommel Martinez", "https://ebzzry.io"]
+    - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
 filename: learnpython3.py
 ---
 
@@ -137,6 +139,12 @@ len("This is a string")  # => 16
 # still use the old style of formatting:
 "%s can be %s the %s way" % ("Strings", "interpolated", "old")  # => "Strings can be interpolated the old way"
 
+# You can also format using f-strings or formatted string literals (in Python 3.6+)
+name = "Reiko"
+f"She said her name is {name}." # => "She said her name is Reiko"
+# You can basically put any Python statement inside the braces and it will be output in the string.
+f"{name} is {len(name)} characters long."
+
 
 # None is an object
 None  # => None
@@ -209,9 +217,9 @@ li[4]  # Raises an IndexError
 # The start index is included, the end index is not
 # (It's a closed/open range for you mathy types.)
 li[1:3]   # => [2, 4]
-# Omit the end
+# Omit the beginning and return the list
 li[2:]    # => [4, 3]
-# Omit the beginning
+# Omit the end and return the list
 li[:3]    # => [1, 2, 4]
 # Select every second entry
 li[::2]   # =>[1, 4]
@@ -273,7 +281,8 @@ a, b, c = (1, 2, 3)  # a is now 1, b is now 2 and c is now 3
 # You can also do extended unpacking
 a, *b, c = (1, 2, 3, 4)  # a is now 1, b is now [2, 3] and c is now 4
 # Tuples are created by default if you leave out the parentheses
-d, e, f = 4, 5, 6
+d, e, f = 4, 5, 6  # tuple 4, 5, 6 is unpacked into variables d, e and f
+# respectively such that d = 4, e = 5 and f = 6
 # Now look how easy it is to swap two values
 e, d = d, e  # d is now 5 and e is now 4
 
@@ -347,6 +356,8 @@ valid_set = {(1,), 1}
 # Add one more item to the set
 filled_set = some_set
 filled_set.add(5)  # filled_set is now {1, 2, 3, 4, 5}
+# Sets do not have duplicate elements
+filled_set.add(5)  # it remains as before {1, 2, 3, 4, 5}
 
 # Do set intersection with &
 other_set = {3, 4, 5, 6}
@@ -546,9 +557,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # Use * to expand tuples and use ** to expand kwargs.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args)            # equivalent to foo(1, 2, 3, 4)
-all_the_args(**kwargs)         # equivalent to foo(a=3, b=4)
-all_the_args(*args, **kwargs)  # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args)            # equivalent to all_the_args(1, 2, 3, 4)
+all_the_args(**kwargs)         # equivalent to all_the_args(a=3, b=4)
+all_the_args(*args, **kwargs)  # equivalent to all_the_args(1, 2, 3, 4, a=3, b=4)
 
 # Returning multiple values (with tuple assignments)
 def swap(x, y):
@@ -669,7 +680,7 @@ class Human:
 
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
-        print ("{name}: {message}".format(name=self.name, message=msg))
+        print("{name}: {message}".format(name=self.name, message=msg))
 
     # Another instance method
     def sing(self):
@@ -740,10 +751,105 @@ if __name__ == '__main__':
 
 
 ####################################################
-## 6.1 Multiple Inheritance
+## 6.1 Inheritance
+####################################################
+
+# Inheritance allows new child classes to be defined that inherit methods and
+# variables from their parent class. 
+
+# Using the Human class defined above as the base or parent class, we can
+# define a child class, Superhero, which inherits the class variables like
+# "species", "name", and "age", as well as methods, like "sing" and "grunt"
+# from the Human class, but can also have its own unique properties.
+
+# To take advantage of modularization by file you could place the classes above in their own files,
+# say, human.py
+
+# To import functions from other files use the following format
+# from "filename-without-extension" import "function-or-class"
+
+from human import Human
+
+
+# Specify the parent class(es) as parameters to the class definition
+class Superhero(Human):
+
+    # If the child class should inherit all of the parent's definitions without
+    # any modifications, you can just use the "pass" keyword (and nothing else)
+    # but in this case it is commented out to allow for a unique child class:
+    # pass
+
+    # Child classes can override their parents' attributes
+    species = 'Superhuman'
+
+    # Children automatically inherit their parent class's constructor including
+    # its arguments, but can also define additional arguments or definitions
+    # and override its methods such as the class constructor.
+    # This constructor inherits the "name" argument from the "Human" class and
+    # adds the "superpower" and "movie" arguments:
+    def __init__(self, name, movie=False,
+                 superpowers=["super strength", "bulletproofing"]):
+
+        # add additional class attributes:
+        self.fictional = True
+        self.movie = movie
+        self.superpowers = superpowers
+
+        # The "super" function lets you access the parent class's methods
+        # that are overridden by the child, in this case, the __init__ method.
+        # This calls the parent class constructor:
+        super().__init__(name)
+
+    # override the sing method
+    def sing(self):
+        return 'Dun, dun, DUN!'
+
+    # add an additional instance method
+    def boast(self):
+        for power in self.superpowers:
+            print("I wield the power of {pow}!".format(pow=power))
+
+
+if __name__ == '__main__':
+    sup = Superhero(name="Tick")
+
+    # Instance type checks
+    if isinstance(sup, Human):
+        print('I am human')
+    if type(sup) is Superhero:
+        print('I am a superhero')
+
+    # Get the Method Resolution search Order used by both getattr() and super()
+    # This attribute is dynamic and can be updated
+    print(Superhero.__mro__)    # => (<class '__main__.Superhero'>,
+                                # => <class 'human.Human'>, <class 'object'>)
+
+    # Calls parent method but uses its own class attribute
+    print(sup.get_species())    # => Superhuman
+
+    # Calls overridden method
+    print(sup.sing())           # => Dun, dun, DUN!
+
+    # Calls method from Human
+    sup.say('Spoon')            # => Tick: Spoon
+
+    # Call method that exists only in Superhero
+    sup.boast()                 # => I wield the power of super strength!
+                                # => I wield the power of bulletproofing!
+
+    # Inherited class attribute
+    sup.age = 31
+    print(sup.age)              # => 31
+
+    # Attribute that only exists within Superhero
+    print('Am I Oscar eligible? ' + str(sup.movie))
+
+####################################################
+## 6.2 Multiple Inheritance
 ####################################################
 
 # Another class definition
+# bat.py
 class Bat:
 
     species = 'Baty'
@@ -765,31 +871,25 @@ if __name__ == '__main__':
     print(b.say('hello'))
     print(b.fly)
 
-# To take advantage of modularization by file you could place the classes above in their own files,
-# say, human.py and bat.py
 
-# To import functions from other files use the following format
-# from "filename-without-extension" import "function-or-class"
-
+# And yet another class definition that inherits from Superhero and Bat
 # superhero.py
-from human import Human
+from superhero import Superhero
 from bat import Bat
 
-# Batman inherits from both Human and Bat
-class Batman(Human, Bat):
-
-    # Batman has its own value for the species class attribute
-    species = 'Superhero'
+# Define Batman as a child that inherits from both Superhero and Bat
+class Batman(Superhero, Bat):
 
     def __init__(self, *args, **kwargs):
         # Typically to inherit attributes you have to call super:
-        #super(Batman, self).__init__(*args, **kwargs)      
+        # super(Batman, self).__init__(*args, **kwargs)      
         # However we are dealing with multiple inheritance here, and super()
         # only works with the next base class in the MRO list.
         # So instead we explicitly call __init__ for all ancestors.
         # The use of *args and **kwargs allows for a clean way to pass arguments,
         # with each parent "peeling a layer of the onion".
-        Human.__init__(self, 'anonymous', *args, **kwargs)
+        Superhero.__init__(self, 'anonymous', movie=True, 
+                           superpowers=['Wealthy'], *args, **kwargs)
         Bat.__init__(self, *args, can_fly=False, **kwargs)
         # override the value for the name attribute
         self.name = 'Sad Affleck'
@@ -801,22 +901,17 @@ class Batman(Human, Bat):
 if __name__ == '__main__':
     sup = Batman()
 
-    # Instance type checks
-    if isinstance(sup, Human):
-        print('I am human')
-    if isinstance(sup, Bat):
-        print('I am bat')
-    if type(sup) is Batman:
-        print('I am Batman')
-
     # Get the Method Resolution search Order used by both getattr() and super().
     # This attribute is dynamic and can be updated
-    print(Batman.__mro__)       # => (<class '__main__.Batman'>, <class 'human.Human'>, <class 'bat.Bat'>, <class 'object'>)
+    print(Batman.__mro__)       # => (<class '__main__.Batman'>, 
+                                # => <class 'superhero.Superhero'>, 
+                                # => <class 'human.Human'>, 
+                                # => <class 'bat.Bat'>, <class 'object'>)
 
     # Calls parent method but uses its own class attribute
-    print(sup.get_species())    # => Superhero
+    print(sup.get_species())    # => Superhuman
 
-    # Calls overloaded method
+    # Calls overridden method
     print(sup.sing())           # => nan nan nan nan nan batman!
 
     # Calls method from Human, because inheritance order matters
@@ -827,10 +922,10 @@ if __name__ == '__main__':
 
     # Inherited class attribute
     sup.age = 100
-    print(sup.age)
+    print(sup.age)              # => 100
 
     # Inherited attribute from 2nd ancestor whose default value was overridden.
-    print('Can I fly? ' + str(sup.fly))
+    print('Can I fly? ' + str(sup.fly)) # => Can I fly? False
 
 
 

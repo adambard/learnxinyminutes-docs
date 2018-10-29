@@ -4,7 +4,7 @@ contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Andre Polykanine", "https://github.com/Oire"]
-    - ["Andre Polykanine", "https://github.com/Oire"]
+    - ["Batuhan Osman T.", "https://github.com/BTaskaya"]
 translators:
     - ["Eray AYDIN", "http://erayaydin.me/"]
 lang: tr-tr
@@ -484,7 +484,7 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 
 
 # Sınıf oluşturmak için objeden alt sınıf oluşturacağız.
-class Insan(obje):
+class Insan(object):
 
     # Sınıf değeri. Sınıfın tüm nesneleri tarafından kullanılabilir
     tur = "H. sapiens"
@@ -499,7 +499,7 @@ class Insan(obje):
 
     # Bir metot. Bütün metotlar ilk parametre olarak "self "alır.
     def soyle(self, mesaj):
-        return "{isim}: {mesaj}".format(isim=self.name, mesaj=mesaj)
+        return "{isim}: {mesaj}".format(isim=self.isim, mesaj=mesaj)
 
     # Bir sınıf metotu bütün nesnelere paylaştırılır
     # İlk parametre olarak sınıf alırlar

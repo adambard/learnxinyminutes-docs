@@ -492,8 +492,8 @@ main() {
 
 Dart 有一个综合性网站。它涵盖了 API 参考、入门向导、文章以及更多，
 还包括一个有用的在线试用 Dart 页面。
-http://www.dartlang.org/
-http://try.dartlang.org/
+* [https://www.dartlang.org](https://www.dartlang.org)
+* [https://try.dartlang.org](https://try.dartlang.org)
 
 
 

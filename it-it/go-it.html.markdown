@@ -26,14 +26,14 @@ Aggiunge la concorrenza in maniera diretta e semplice da capire, per far
 forza sulle CPU multi-core di oggigiorno. Presenta caratteristiche utili
 per la programmazione in larga scala.
 
-Go comes with a great standard library and an enthusiastic community.
+Go include un'ottima libreria standard e ha una community entusiasta.
 
 ```go
 // Commento su riga singola
 /* Commento
  su riga multipla */
 
-// In cima a ogni file è necessario specificare il package.
+// In cima ad ogni file è necessario specificare il package.
 // Main è un package speciale che identifica un eseguibile anziché una libreria.
 package main
 
@@ -65,19 +65,19 @@ func oltreIlCiaoMondo() {
 	x = 3     // Assegnazione di una variabile.
     // E' possibile la dichiarazione "rapida" := per inferire il tipo, dichiarare e assegnare contemporaneamente.
 	y := 4
-    // Una funzione che ritorna due valori.
-	somma, prod := imparaMoltepliciValoriDiRitorno(x, y)
+    // Una funzione che restituisce due valori.
+	somma, prod := imparaMoltepliciValoriRestituiti(x, y)
 	fmt.Println("somma:", somma, "prodotto:", prod)    // Semplice output.
 	imparaTipi()                                       // < y minuti, devi imparare ancora!
 }
 
 /* <- commento su righe multiple
-Le funzioni possono avere parametri e ritornare (molteplici!) valori.
-Qua, x e y sono gli argomenti, mentre somma e prod sono i valori ritornati.
+Le funzioni possono avere parametri e restituire (molteplici!) valori.
+In questo esempio, x e y sono gli argomenti, mentre somma e prod sono i valori restituiti.
 Da notare il fatto che x e somma vengono dichiarati come interi.
 */
-func imparaMoltepliciValoriDiRitorno(x, y int) (somma, prod int) {
-	return x + y, x * y // Ritorna due valori.
+func imparaMoltepliciValoriRestituiti(x, y int) (somma, prod int) {
+	return x + y, x * y // Restituisce due valori.
 }
 
 // Ecco alcuni tipi presenti in Go
@@ -86,7 +86,7 @@ func imparaTipi() {
 	str := "Impara il Go!" // Tipo stringa.
 
 	s2 := `Una stringa letterale
-puo' includere andata a capo.` // Sempre di tipo stringa.
+può includere andata a capo.` // Sempre di tipo stringa.
 
     // Stringa letterale non ASCII. I sorgenti Go sono in UTF-8.
 	g := 'Σ' // Il tipo runa, alias per int32, è costituito da un code point unicode.
@@ -144,20 +144,20 @@ puo' includere andata a capo.` // Sempre di tipo stringa.
 	imparaControlloDiFlusso() // Torniamo in carreggiata.
 }
 
-// In Go è possibile associare dei nomi ai valori di ritorno di una funzione.
-// Assegnare un nome al tipo di dato ritornato permette di fare return in vari
+// In Go è possibile associare dei nomi ai valori restituiti da una funzione.
+// Assegnare un nome al tipo di dato restituito permette di fare return in vari
 // punti all'interno del corpo della funzione, ma anche di usare return senza
-// specificare in modo esplicito che cosa ritornare.
-func imparaValoriDiRitornoConNome(x, y int) (z int) {
+// specificare in modo esplicito che cosa restituire.
+func imparaValoriRestituitiConNome(x, y int) (z int) {
 	z = x * y
 	return // z è implicito, perchè compare nella definizione di funzione.
 }
 
 // Go è dotato di garbage collection. Ha i puntatori, ma non l'aritmetica dei
-// puntatori. Puoi fare errori coi puntatori a nil, ma non puoi direttamente
-// incrementare un puntatore.
+// puntatori. Puoi commettere errori a causa di puntatori nulli, ma non puoi
+// incrementare un puntatore direttamente.
 func imparaLaMemoria() (p, q *int) {
-    // I valori di ritorno (con nome) p e q sono puntatori a int.
+    // I valori restituiti (con nome) p e q sono puntatori a int.
 	p = new(int) // La funzione new si occupa di allocare memoria.
     // L'int allocato viene inizializzato a 0, dunque p non è più nil.
 	s := make([]int, 20) // Alloca 20 int come un singolo blocco di memoria.
@@ -207,14 +207,14 @@ func imparaControlloDiFlusso() {
 	}
 	// x == 42 qua.
 
-    // Il for è l'unica istruzione per ciclare in Go, ma ha varie forme.
+    // Il for è l'unica istruzione per i loop in Go, ma ha varie forme.
 	for { // Ciclo infinito.
 		break    // Scherzavo.
 		continue // Non si arriva qua.
 	}
 
-    // Puoi usare range per ciclare su un vettore, slice, stringa, mappa o canale.
-    // range ritorna uno (per i canali) o due valori (vettore, slice, stringa, mappa).
+    // Puoi usare range per iterare lungo un vettore, slice, stringa, mappa o canale.
+    // range restituisce uno (per i canali) o due valori (vettore, slice, stringa, mappa).
 	for chiave, valore := range map[string]int{"uno": 1, "due": 2, "tre": 3} {
         // per ogni coppia dentro la mappa, stampa chiave e valore
 		fmt.Printf("chiave=%s, valore=%d\n", chiave, valore)
@@ -236,7 +236,7 @@ func imparaControlloDiFlusso() {
     // Inoltre le funzioni letterali possono essere definite e chiamate
     // inline, col ruolo di parametri di funzione, a patto che:
     // a) la funzione letterale venga chiamata subito (),
-    // b) il valore ritornato è in accordo con il tipo dell'argomento.
+    // b) il valore restituito è in accordo con il tipo dell'argomento.
 	fmt.Println("Somma e raddoppia due numeri: ",
 		func(a, b int) int {
 			return (a + b) * 2
@@ -247,7 +247,7 @@ func imparaControlloDiFlusso() {
 	goto amore
 amore:
 
-	imparaFabbricaDiFunzioni() // Una funzione che ritorna un'altra funzione è divertente!
+	imparaFabbricaDiFunzioni() // Una funzione che restituisce un'altra funzione è divertente!
 	imparaDefer()              // Un tour veloce di una parola chiave importante.
 	imparaInterfacce()         // Arriva la roba buona!
 }
@@ -270,12 +270,13 @@ func fabbricaDiFrasi(miaStringa string) func(prima, dopo string) string {
 }
 
 func imparaDefer() (ok bool) {
-    // Le istruzioni dette "deferred" (rinviate) sono eseguite
-    // appena prima che la funzione ritorni.
+	// La parola chiave "defer" inserisce una funzione in una lista.
+	// La lista contenente tutte le chiamate a funzione viene eseguita DOPO
+	// il return finale della funzione che le circonda.
 	defer fmt.Println("le istruzioni 'deferred' sono eseguite in ordine inverso (LIFO).")
 	defer fmt.Println("\nQuesta riga viene stampata per prima perché")
     // defer viene usato di solito per chiudere un file, così la funzione che
-    // chiude il file viene messa vicino a quella che lo apre.
+    // chiude il file, preceduta da "defer", viene messa vicino a quella che lo apre.
 	return true
 }
 

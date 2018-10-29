@@ -62,6 +62,11 @@ if not aBoolValue then print('twas false') end
 -- in C/js:
 ans = aBoolValue and 'yes' or 'no'  --> 'no'
 
+-- BEWARE: this only acts as a ternary if the value returned when the condition 
+-- evaluates to true is not `false` or Nil
+iAmNotFalse = (not aBoolValue) and false or true --> true
+iAmAlsoNotFalse = (not aBoolValue) and true or false --> true
+
 karlSum = 0
 for i = 1, 100 do  -- The range includes both ends.
   karlSum = karlSum + i

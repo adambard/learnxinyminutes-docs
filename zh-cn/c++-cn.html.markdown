@@ -567,6 +567,6 @@ void doSomethingWithAFile(const std::string& filename)
 ```
 扩展阅读：
 
-<http://cppreference.com/w/cpp> 提供了最新的语法参考。
-
-可以在 <http://cplusplus.com> 找到一些补充资料。
+* [CPP Reference](http://cppreference.com/w/cpp) 提供了最新的语法参考。
+* 可以在 [CPlusPlus](http://cplusplus.com) 找到一些补充资料。
+* 可以在 [TheChernoProject - C ++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb）上找到涵盖语言基础和设置编码环境的教程。

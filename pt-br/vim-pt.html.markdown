@@ -13,7 +13,7 @@ filename: LearnVim-pt.txt
 [Vim](http://www.vim.org)
 (Vi IMproved - Vi Melhorado) é um clone do editor vi para Unix. Ele é um
 editor de texto projetado para ter velocidade e produtividade, e está presente
-na maioria dos systemas UNIX. O editor tem um grande número de atalhos de teclado
+na maioria dos sistemas UNIX. O editor tem um grande número de atalhos de teclado
 para agilizar a navegação para pontos específicos no arquivo, além de edição rápida.
 
 ## Navegação do Vim: o básico
@@ -25,7 +25,7 @@ para agilizar a navegação para pontos específicos no arquivo, além de ediç�
     :wq              # Salva o arquivo e fecha o vim
     :q!              # Fecha o vim e descarta as alterações no arquivo
                      # ! *força* :q a executar, fechando o vim sem salvar antes
-    :x               # Salvar o arquivo e fechao vim (atalho para :wq)
+    :x               # Salva o arquivo e fecha o vim (atalho para :wq)
 
     u                # Desfazer
     CTRL+R           # Refazer
@@ -62,7 +62,7 @@ para agilizar a navegação para pontos específicos no arquivo, além de ediç�
     
     # Movendo por palavras
 
-    w                # Move o cursor uma palavra a diante
+    w                # Move o cursor uma palavra adiante
     b                # Move o cursor uma palavra atrás
     e                # Move o cursor ao fim da palavra atual
 
