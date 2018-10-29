@@ -17,22 +17,22 @@ import sys
 from PyQt4 import QtGui
 	
 def window():
-	# Crear el objeto de la aplicación
+    # Crear el objeto de la aplicación
     app = QtGui.QApplication(sys.argv)
-	# Crear un widget en el que colocaremos nuestra etiqueta
+    # Crear un widget en el que colocaremos nuestra etiqueta
     w = QtGui.QWidget()
-	# Agregamos nuesta etiqueta al widget
+    # Agregamos nuesta etiqueta al widget
     b = QtGui.QLabel(w)
-	# Agregamos texto a nuestra etiqueta
+    # Agregamos texto a nuestra etiqueta
     b.setText("Hello World!")
-	# Fijemos información de posición y tamaño del widget
+    # Fijemos información de posición y tamaño del widget
     w.setGeometry(100, 100, 200, 50)
     b.move(50, 20)
-	# Proporcionemos un título a nuestra ventana
+    # Proporcionemos un título a nuestra ventana
     w.setWindowTitle("PyQt")
-	# Mostremos todo
+    # Mostremos todo
     w.show()
-	# Ejecutemos lo que hayamos solicitado ya inicializado el resto
+    # Ejecutemos lo que hayamos solicitado ya inicializado el resto
     sys.exit(app.exec_())
 
 if __name__ == '__main__':
