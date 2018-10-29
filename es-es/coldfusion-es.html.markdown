@@ -2,10 +2,10 @@
 language: coldfusion
 filename: learncoldfusion.cfm
 contributors:
-    - ["Wayne Boka", "http://wboka.github.io"]
-		- ["Kevin Morris", "https://twitter.com/kevinmorris"]
+		- ["Wayne Boka", "http://wboka.github.io"]
+    - ["Kevin Morris", "https://twitter.com/kevinmorris"]
 translators:
-		- ["Ivan Alburquerque", "https://github.com/AlburIvan"]
+    - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
 ---
 
 ColdFusion es un lenguaje de scripting para desarrollo web.
