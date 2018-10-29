@@ -20,7 +20,7 @@ Anmerkung des Übersetzers: Einige englische Begriffe wie *Repository*, *Commit*
 
 Eine Versionsverwaltung erfasst die Änderungen einer Datei oder eines Verzeichnisses im Verlauf der Zeit.
 
-### Zentrale im Vergleich mit verteilter Versionverwaltung
+### Vergleich zwischen Zentraler und verteilter Versionverwaltung
 
 * Zentrale Versionsverwaltung konzentriert sich auf das Synchronisieren, Verfolgen und Sichern von Dateien.
 * Verteilte Versionsverwaltung konzentriert sich auf das Teilen der Änderungen. Jede Änderung hat eine eindeutige ID.
