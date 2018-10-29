@@ -10,11 +10,6 @@ translators:
 
 **Qt** es un sistema altamente reconocido que permite desarrollar software multiplataforma que puede correr en diferentes entornos de software y hardware con pocos o ningún cambio. Aun así conserva la velocidad y poder de una palicacion nativa. **Qt** fue originalmente escrito en *C++*.
 
-
-This is an adaption on the C++ intro to QT by [Aleksey Kholovchuk](https://github.com/vortexxx192
-), some of the code examples should result in the same functionality
-this version just having been done using pyqt! 
-
 Esta es una adaptación de la introducción a QT con C++ por [Aleksey Kholovchuk](https://github.com/vortexxx192), parte del código ejemplo debería resultar en la misma funcionalidad ¡pero usando python con PyQT!
 
 ```python
@@ -44,9 +39,6 @@ if __name__ == '__main__':
     window()
 
 ```
-
-In order to get some of the more advanced features in **pyqt** we need to start looking at building additional elements. 
-Here we show how to introduce a dialog popup box, useful for asking the user to confirm a decision or to provide information.
 
 Para poder hacer uso de las funciones más avanzades en **pyqt** necestiamos agregar elementos adicionales.
 Aquí mostramos cómo introducir una caja de dialogo popup, útil para permitir al usuario confirmar su decisión o para brindarnos información.
