@@ -25,30 +25,23 @@ and Subversion are a client server architecture with a central server to
 store the revsion history of a project. Mercurial however is a truly
 distributed architecture, giving each devloper a full local copy of the
 entire development history. It works independently of a central server.
-
 * Fast - Traditionally version control systems such as CVS and Subversion are a
 client server architecture with a central server to store the revsion history
 of a project. Mercurial however is a truly distributed architecture, giving
 each devloper a full local copy of the entire development history. It works
 independently of a central server.
-
 * Platform Independent - Mercurial was written to be highly platform
 independent. Much of Mercurial is written in Python, with small performance
 critical parts written in portable C. Binary releases are available for all
 major platforms.
-
 * Extensible - The functionality of Mercurial can be increased with extensions,
 either by activating the official ones which are shipped with Mercurial or
-downloading some [from the
-wiki](https://www.mercurial-scm.org/wiki/UsingExtensions) or by [writing your
-own](https://www.mercurial-scm.org/wiki/WritingExtensions). Extensions are
-written in Python and can change the workings of the basic commands, add new
-commands and access all the core functions of Mercurial.
-
+downloading some [from the wiki](https://www.mercurial-scm.org/wiki/UsingExtensions) or by [writing your own](https://www.mercurial-scm.org/wiki/WritingExtensions). Extensions are written in
+Python and can change the workings of the basic commands, add new commands and
+access all the core functions of Mercurial.
 * Easy to use - The Mercurial command set is consistent with what subversion
 users would expect, so they are likely to feel right at home. Most dangerous
 actions are part of extensions that need to be enabled to be used.
-
 * Open Source - Mercurial is free software licensed under the terms of the [GNU
 General Public License Version 2](http://www.gnu.org/licenses/gpl-2.0.txt) or
 any later version.
@@ -101,7 +94,6 @@ $ hg help init
 
 Show the differences between what is on disk and what is committed to the current
 branch or tag.
-
 
 ```bash
 # Will display the status of files
