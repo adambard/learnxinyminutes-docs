@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: mercurial
+tool: Mercurial
 contributors:
   - ["Will L. Fife", "http://github.com/sarlalian"]
 filename: LearnMercurial.txt
@@ -69,7 +69,7 @@ any later version.
 ### init
 
 Create a new repository in the given directory, the settings and stored
-information are in a directory named ".hg"
+information are in a directory named `.hg`.
 
 ```bash
 $ hg init
@@ -105,7 +105,7 @@ $ hg help status
 
 ### add
 
-Will add the specified files to the repository on the next commit
+Will add the specified files to the repository on the next commit.
 
 ```bash
 # Add a file in the current directory
@@ -120,7 +120,7 @@ $ hg add *.rb
 
 ### branch
 
-Set or show the current branch name
+Set or show the current branch name.
 
 *Branch names are permanent and global. Use 'hg bookmark' to create a
 light-weight bookmark instead. See 'hg help glossary' for more information
@@ -138,7 +138,7 @@ marked working directory as branch new_branch
 
 ### tag
 
-Add one or more tags for the current or given revision
+Add one or more tags for the current or given revision.
 
 Tags are used to name particular revisions of the repository and are very
 useful to compare different revisions, to go back to significant earlier
@@ -207,7 +207,7 @@ $ hg diff -r 30 -r 20
 
 ### grep
 
-Search revision history for a pattern in specified files
+Search revision history for a pattern in specified files.
 
 ```bash
 # Search files for a specific phrase
@@ -234,7 +234,7 @@ $ hg log -G
 
 ### merge
 
-Merge another revision into working directory
+Merge another revision into working directory.
 
 ```bash
 # Merge changesets to local repository
@@ -297,7 +297,7 @@ $ hg push remote2
 
 ### rebase
 
-Move changeset (and descendants) to a different branch
+Move changeset (and descendants) to a different branch.
 
 Rebase uses repeated merging to graft changesets from one part of history
 (the source) onto another (the destination). This can be useful for
