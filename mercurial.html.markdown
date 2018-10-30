@@ -18,7 +18,7 @@ anyone working with versioned files.
 Version control is a system that keeps track fo changes to a set of file(s)
 and/or directorie(s) over time.
 
-### Why Use Mercurial
+### Why use Mercurial?
 
 * Distributed Architecture - Traditionally version control systems such as CVS
 and Subversion are a client server architecture with a central server to
@@ -348,7 +348,7 @@ $ hg remove go_away.txt
 $ hg remove *.txt
 ```
 
-## Further Information
+## Further information
 
 * [Learning Mercurial in Workflows](https://www.mercurial-scm.org/guid)
 * [Mercurial Quick Start](https://www.mercurial-scm.org/wiki/QuickStart)
