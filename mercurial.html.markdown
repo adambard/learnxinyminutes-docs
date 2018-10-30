@@ -1,9 +1,9 @@
 ---
 category: tool
-tool: hg
+tool: Mercurial
 contributors:
   - ["Will L. Fife", "http://github.com/sarlalian"]
-filename: LearnHG.txt
+filename: LearnMercurial.txt
 ---
 
 Mercurial is a free, distributed source control management tool. It offers
@@ -18,37 +18,30 @@ anyone working with versioned files.
 Version control is a system that keeps track fo changes to a set of file(s)
 and/or directorie(s) over time.
 
-### Why Use Mercurial
+### Why use Mercurial?
 
 * Distributed Architecture - Traditionally version control systems such as CVS
 and Subversion are a client server architecture with a central server to
 store the revsion history of a project. Mercurial however is a truly
 distributed architecture, giving each devloper a full local copy of the
 entire development history. It works independently of a central server.
-
 * Fast - Traditionally version control systems such as CVS and Subversion are a
 client server architecture with a central server to store the revsion history
 of a project. Mercurial however is a truly distributed architecture, giving
 each devloper a full local copy of the entire development history. It works
 independently of a central server.
-
 * Platform Independent - Mercurial was written to be highly platform
 independent. Much of Mercurial is written in Python, with small performance
 critical parts written in portable C. Binary releases are available for all
 major platforms.
-
 * Extensible - The functionality of Mercurial can be increased with extensions,
 either by activating the official ones which are shipped with Mercurial or
-downloading some [from the
-wiki](https://www.mercurial-scm.org/wiki/UsingExtensions) or by [writing your
-own](https://www.mercurial-scm.org/wiki/WritingExtensions). Extensions are
-written in Python and can change the workings of the basic commands, add new
-commands and access all the core functions of Mercurial.
-
+downloading some [from the wiki](https://www.mercurial-scm.org/wiki/UsingExtensions) or by [writing your own](https://www.mercurial-scm.org/wiki/WritingExtensions). Extensions are written in
+Python and can change the workings of the basic commands, add new commands and
+access all the core functions of Mercurial.
 * Easy to use - The Mercurial command set is consistent with what subversion
 users would expect, so they are likely to feel right at home. Most dangerous
 actions are part of extensions that need to be enabled to be used.
-
 * Open Source - Mercurial is free software licensed under the terms of the [GNU
 General Public License Version 2](http://www.gnu.org/licenses/gpl-2.0.txt) or
 any later version.
@@ -76,7 +69,7 @@ any later version.
 ### init
 
 Create a new repository in the given directory, the settings and stored
-information are in a directory named ".hg"
+information are in a directory named `.hg`.
 
 ```bash
 $ hg init
@@ -102,7 +95,6 @@ $ hg help init
 Show the differences between what is on disk and what is committed to the current
 branch or tag.
 
-
 ```bash
 # Will display the status of files
 $ hg status
@@ -113,7 +105,7 @@ $ hg help status
 
 ### add
 
-Will add the specified files to the repository on the next commit
+Will add the specified files to the repository on the next commit.
 
 ```bash
 # Add a file in the current directory
@@ -128,7 +120,7 @@ $ hg add *.rb
 
 ### branch
 
-Set or show the current branch name
+Set or show the current branch name.
 
 *Branch names are permanent and global. Use 'hg bookmark' to create a
 light-weight bookmark instead. See 'hg help glossary' for more information
@@ -146,7 +138,7 @@ marked working directory as branch new_branch
 
 ### tag
 
-Add one or more tags for the current or given revision
+Add one or more tags for the current or given revision.
 
 Tags are used to name particular revisions of the repository and are very
 useful to compare different revisions, to go back to significant earlier
@@ -215,7 +207,7 @@ $ hg diff -r 30 -r 20
 
 ### grep
 
-Search revision history for a pattern in specified files
+Search revision history for a pattern in specified files.
 
 ```bash
 # Search files for a specific phrase
@@ -242,7 +234,7 @@ $ hg log -G
 
 ### merge
 
-Merge another revision into working directory
+Merge another revision into working directory.
 
 ```bash
 # Merge changesets to local repository
@@ -305,7 +297,7 @@ $ hg push remote2
 
 ### rebase
 
-Move changeset (and descendants) to a different branch
+Move changeset (and descendants) to a different branch.
 
 Rebase uses repeated merging to graft changesets from one part of history
 (the source) onto another (the destination). This can be useful for
@@ -356,7 +348,7 @@ $ hg remove go_away.txt
 $ hg remove *.txt
 ```
 
-## Further Information
+## Further information
 
 * [Learning Mercurial in Workflows](https://www.mercurial-scm.org/guid)
 * [Mercurial Quick Start](https://www.mercurial-scm.org/wiki/QuickStart)
