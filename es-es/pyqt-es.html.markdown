@@ -1,14 +1,14 @@
 ---
 category: tool
 tool: PyQT
-filename: learnpyqt.py
+filename: learnpyqt-es.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
 translators:
     - ["Adrian Rocamora", "https://github.com/adrianrocamora"]
 ---
 
-**Qt** es un sistema altamente reconocido que permite desarrollar software multiplataforma que puede correr en diferentes entornos de software y hardware con pocos o ningún cambio. Aun así conserva la velocidad y poder de una palicacion nativa. **Qt** fue originalmente escrito en *C++*.
+**Qt** es un sistema altamente reconocido que permite desarrollar software multiplataforma que puede correr en diferentes entornos de software y hardware con pocos o ningún cambio. Aun así conserva la velocidad y poder de una aplicación nativa. **Qt** fue originalmente escrito en *C++*.
 
 Esta es una adaptación de la introducción a QT con C++ por [Aleksey Kholovchuk](https://github.com/vortexxx192), parte del código ejemplo debería resultar en la misma funcionalidad ¡pero usando python con PyQT!
 
@@ -21,7 +21,7 @@ def window():
     app = QtGui.QApplication(sys.argv)
     # Crear un widget en el que colocaremos nuestra etiqueta
     w = QtGui.QWidget()
-    # Agregamos nuesta etiqueta al widget
+    # Agregamos nuestra etiqueta al widget
     b = QtGui.QLabel(w)
     # Agregamos texto a nuestra etiqueta
     b.setText("Hello World!")
@@ -40,8 +40,8 @@ if __name__ == '__main__':
 
 ```
 
-Para poder hacer uso de las funciones más avanzades en **pyqt** necestiamos agregar elementos adicionales.
-Aquí mostramos cómo introducir una caja de dialogo popup, útil para permitir al usuario confirmar su decisión o para brindarnos información.
+Para poder hacer uso de las funciones más avanzades en **pyqt** necesitamos agregar elementos adicionales.
+Aquí mostramos cómo introducir una caja de diálogo popup, útil para permitir al usuario confirmar su decisión o para brindarnos información.
 
 ```Python 
 import sys
