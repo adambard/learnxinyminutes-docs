@@ -139,9 +139,11 @@ len("This is a string")  # => 16
 # still use the old style of formatting:
 "%s can be %s the %s way" % ("Strings", "interpolated", "old")  # => "Strings can be interpolated the old way"
 
-# You can also format using f-strings or formatted string literals
+# You can also format using f-strings or formatted string literals (in Python 3.6+)
 name = "Reiko"
 f"She said her name is {name}." # => "She said her name is Reiko"
+# You can basically put any Python statement inside the braces and it will be output in the string.
+f"{name} is {len(name)} characters long."
 
 
 # None is an object
@@ -279,7 +281,8 @@ a, b, c = (1, 2, 3)  # a is now 1, b is now 2 and c is now 3
 # You can also do extended unpacking
 a, *b, c = (1, 2, 3, 4)  # a is now 1, b is now [2, 3] and c is now 4
 # Tuples are created by default if you leave out the parentheses
-d, e, f = 4, 5, 6
+d, e, f = 4, 5, 6  # tuple 4, 5, 6 is unpacked into variables d, e and f
+# respectively such that d = 4, e = 5 and f = 6
 # Now look how easy it is to swap two values
 e, d = d, e  # d is now 5 and e is now 4
 

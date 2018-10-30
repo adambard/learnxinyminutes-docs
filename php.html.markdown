@@ -794,7 +794,7 @@ But I'm ChildClass
 
 /**********************
 *  Magic constants
-*  
+*
 */
 
 // Get current class name. Must be used inside a class declaration.
@@ -826,7 +826,7 @@ echo "Current trait is " . __TRAIT__;
 
 /**********************
 *  Error Handling
-*  
+*
 */
 
 // Simple error handling can be done with try catch block
@@ -870,6 +870,9 @@ and community input.
 
 If you're interested in up-to-date best practices, visit
 [PHP The Right Way](http://www.phptherightway.com/).
+
+A tutorial covering basics of language, setting up coding environment and making
+few practical projects at [Codecourse - PHP Basics](https://www.youtube.com/playlist?list=PLfdtiltiRHWHjTPiFDRdTOPtSyYfz3iLW).
 
 If you're coming from a language with good package management, check out
 [Composer](http://getcomposer.org/).

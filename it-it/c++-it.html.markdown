@@ -1130,7 +1130,6 @@ compl 4    // Effettua il NOT bit-a-bit
 ```
 Letture consigliate:
 
-Un riferimento aggiornato del linguaggio può essere trovato qui
-<http://cppreference.com/w/cpp>
-
-Risorse addizionali possono essere trovate qui <http://cplusplus.com>
+* Un riferimento aggiornato del linguaggio può essere trovato qui [CPP Reference](http://cppreference.com/w/cpp).
+* Risorse addizionali possono essere trovate qui [CPlusPlus](http://cplusplus.com).
+* Un tutorial che copre le basi del linguaggio e l'impostazione dell'ambiente di codifica è disponibile su [TheChernoProject - C ++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).

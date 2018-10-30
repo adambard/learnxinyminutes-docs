@@ -113,6 +113,13 @@ class Point {
   static origin = new Point(0, 0);
 }
 
+// Classes can be explicitly marked as implementing an interface.
+// Any missing properties will then cause an error at compile-time. 
+class PointPerson implements Person {
+    name: string
+    move() {}
+}
+
 let p1 = new Point(10, 20);
 let p2 = new Point(25); //y will be 0
 

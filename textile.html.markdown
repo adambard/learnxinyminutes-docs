@@ -30,7 +30,7 @@ written content published online.
 
 ## Comments
 
-```textile
+```
 ###. Comments begin with three (3) '#' signs followed by a full-stop period '.'.
 Comments can span multiple lines until a blank line is reached.
 
@@ -52,7 +52,7 @@ respected -->
 
 ## Paragraphs
 
-```textile
+```
 ###. Paragraphs are a one or multiple adjacent lines of text separated by one or
 multiple blank lines. They can also be indicated explicitly with a 'p. '
 
@@ -126,7 +126,7 @@ text you want to be in that element by 'h#.' where # is the level 1-6.
 A blank line is required after headings.
 
 
-```textile
+```
 h1. This is an <h1>
 
 h2. This is an <h2>
@@ -144,7 +144,7 @@ h6. This is an <h6>
 
 ## Simple text styles
 
-```textile
+```
 ###. Bold and strong text are indicated using asterisks:
 
 *This is strong text*
@@ -182,7 +182,7 @@ This is -deleted- text and this is +inserted+ text.
 
 ## Lists
 
-```textile
+```
 ###. Unordered lists can be made using asterisks '*' to indicate levels:
 
 * Item
@@ -222,7 +222,7 @@ definition =:
 
 ## Code blocks
 
-```textile
+```
 Code blocks use the 'bc.' shorthand:
 
 bc. This is code
@@ -244,13 +244,13 @@ p. Indicate @inline code@ using the '@' symbol.
 
 Horizontal rules (`<hr/>`) are easily added with two hyphens
 
-```textile
+```
 --
 ```
 
 ## Links
 
-```textile
+```
 ###. Link text is in quotes, followed by a colon and the URL:
 
 "Link text":http://linkurl.com/ plain text.
@@ -270,7 +270,7 @@ Multiple "references":txstyle to the "txstyle":txstyle website.
 
 ## Images
 
-```textile
+```
 ###. Images can be included by surrounding its URL with exclamation marks (!)
 Alt text is included in parenthesis after the URL, and they can be linked too:
 
@@ -284,7 +284,7 @@ Alt text is included in parenthesis after the URL, and they can be linked too:
 
 ## Footnotes and Endnotes
 
-```textile
+```
 A footnote is indicated with the reference id in square brackets.[1]
 
 fn1. Footnote text with a "link":http://link.com.
@@ -331,7 +331,7 @@ notelist!+.  Notes with no backlinks to the citations, followed by
 ## Tables
 
 
-```textile
+```
 ###. Tables are simple to define using the pipe '|' symbol
 
 | A | simple | table | row |
@@ -403,7 +403,7 @@ A backslash \ is used for a column span:
 ```
 or, for the same results
 
-```textile
+```
 Col 1 | Col2 | Col3
 :-- | :-: | --:
 Ugh this is so ugly | make it | stop
@@ -414,13 +414,13 @@ Ugh this is so ugly | make it | stop
 
 ### Registered, Trademark, Copyright Symbols
 
-```textile
+```
 RegisteredTrademark(r), Trademark(tm), Copyright (c)
 ```
 
 ### Acronyms
 
-```textile
+```
 ###. Acronym definitions can be provided in parentheses:
 
 EPA(Environmental Protection Agency) and CDC(Center for Disease Control)
@@ -428,7 +428,7 @@ EPA(Environmental Protection Agency) and CDC(Center for Disease Control)
 
 ### Angle Brackets and Ampersand
 
-```textile
+```
 ### Angled brackets < and > and ampersands & are automatically escaped:
 < => &lt;
 > => &gt;
@@ -437,13 +437,13 @@ EPA(Environmental Protection Agency) and CDC(Center for Disease Control)
 
 ### Ellipses
 
-```textile
+```
 p. Three consecutive periods are translated into ellipses...automatically
 ```
 
 ### Em and En dashes
 
-```textile
+```
 ###. En dashes (short) is a hyphen surrounded by spaces:
 
 This line uses an en dash to separate Oct - Nov 2018.
@@ -457,7 +457,7 @@ That last hyphen between 'less' and 'used' is not converted between words.
 
 ## Fractions and other Math Symbols
 
-```textile
+```
 One quarter: (1/4) => ¼
 One half: (1/2) => ½
 Three quarters: (3/4) => ¾
@@ -466,7 +466,7 @@ Plus/minus: (+/-) => ±
 ```
 ### Multiplication/Dimension
 
-```textile
+```
 p. Numbers separated by the letter 'x' translate to the multiplication
 or dimension symbol '×':
 3 x 5 => 3 × 5
@@ -474,7 +474,7 @@ or dimension symbol '×':
 
 ### Quotes and Apostrophes
 
-```textile
+```
 ###. Straight quotes and apostrophes are automatically converted to
 their curly equivalents:
 
@@ -484,7 +484,7 @@ Leave them straight using '==' around the text: =="straight quotes"==.
 
 ## CSS
 
-```textile
+```
 p{color:blue}. CSS Styles are enclosed in curly braces '{}'
 p(my-class). Classes are enclosed in parenthesis
 p(#my-id). IDs are enclosed in parentheses and prefaced with a pound '#'.
@@ -492,7 +492,7 @@ p(#my-id). IDs are enclosed in parentheses and prefaced with a pound '#'.
 
 ## Spans and Divs
 
-```textile
+```
 %spans% are enclosed in percent symbols
 div. Divs are indicated by the 'div.' shorthand
 ```
