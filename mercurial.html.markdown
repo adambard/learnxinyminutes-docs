@@ -1,9 +1,9 @@
 ---
 category: tool
-tool: hg
+tool: mercurial
 contributors:
   - ["Will L. Fife", "http://github.com/sarlalian"]
-filename: LearnHG.txt
+filename: LearnMercurial.txt
 ---
 
 Mercurial is a free, distributed source control management tool. It offers
