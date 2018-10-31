@@ -20,7 +20,9 @@ package com.learnxinyminutes.kotlin
 
 /*
 The entry point to a Kotlin program is a function named "main".
-The function is passed an array containing any command line arguments.
+The function is passed an array containing any command-line arguments.
+Since Kotlin 1.3 the "main" function can also be defined without
+any parameters.
 */
 fun main(args: Array<String>) {
     /*
