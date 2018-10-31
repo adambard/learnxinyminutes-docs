@@ -10,8 +10,7 @@ lang: pt-br
 
 XML é uma linguagem de marcação projetada para armazenar e transportar dados.
 
-Ao contrário de HTML, XML não especifica como exibir ou formatar os dados, 
-basta carregá-lo.
+Ao contrário de HTML, XML não especifica como exibir ou formatar os dados, apenas o transporta.
 
 * Sintaxe XML
 
