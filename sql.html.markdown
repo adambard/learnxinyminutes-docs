@@ -3,7 +3,6 @@ language: SQL
 filename: learnsql.sql
 contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
-https://github.com/adambard/learnxinyminutes-docs
 ---
 
 Structured Query Language (SQL) is an ISO standard language for creating and working with databases stored in a set of tables. Implementations usually add their own extensions to the language; [Comparison of different SQL implementations](http://troels.arvin.dk/db/rdbms/) is a good reference on product differences.
