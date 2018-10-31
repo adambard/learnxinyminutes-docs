@@ -522,7 +522,7 @@ on a new line! ""Wow!"", the masses cried";
             foreach (var key in responses.Keys)
                 Console.WriteLine("{0}:{1}", key, responses[key]);
 
-            // DYNAMIC OBJECTS (great for working with other languages)
+            // OBJETOS DINÂMICOS (ótimo para trabalhar com outros idiomas)
             dynamic student = new ExpandoObject();
             student.FirstName = "First Name"; // No need to define class first!
 
