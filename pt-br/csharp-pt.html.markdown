@@ -854,8 +854,8 @@ on a new line! ""Wow!"", the masses cried";
     }
 
     /// <summary>
-    /// Used to connect to DB for LinqToSql example.
-    /// EntityFramework Code First is awesome (similar to Ruby's ActiveRecord, but bidirectional)
+    /// Exemplo de como conectar-se ao DB via LinqToSql.
+    /// EntityFramework First Code é impressionante (semelhante ao ActiveRecord de Ruby, mas bidirecional)
     /// http://msdn.microsoft.com/en-us/data/jj193542.aspx
     /// </summary>
     public class BikeRepository : DbContext
