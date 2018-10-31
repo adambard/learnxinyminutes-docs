@@ -84,10 +84,6 @@ Abteilungstitel
 
 ===== Level 4 <h5>
 
-====== Level 5 <h6>
-
-======= Level 6  <h7>
-
 ```
 
 Listen
@@ -108,7 +104,7 @@ Um eine nummerierte Liste zu erstellen verwendest du Punkte.
 . item 3
 ```
 
-Um Listen zu verschachteln musst du zusätzliche Sternchen und Punkte hinzufügen. Dies ist bis zu fünf Mal möglich.
+Um Listen zu verschachteln musst du zusätzliche Sternchen beziehungsweise Punkte hinzufügen. Dies ist bis zu fünf Mal möglich.
 
 ```
 * foo 1

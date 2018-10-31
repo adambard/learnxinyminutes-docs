@@ -6,10 +6,12 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
     - ["evuez", "http://github.com/evuez"]
+    - ["Rommel Martinez", "https://ebzzry.io"]
+    - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
 filename: learnpython3.py
 ---
 
-Python was created by Guido Van Rossum in the early 90s. It is now one of the most popular
+Python was created by Guido van Rossum in the early 90s. It is now one of the most popular
 languages in existence. I fell in love with Python for its syntactic clarity. It's basically
 executable pseudocode.
 
@@ -23,7 +25,7 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 
 """ Multiline strings can be written
     using three "s, and are often used
-    as comments
+    as documentation.
 """
 
 ####################################################
@@ -37,8 +39,6 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 1 + 1   # => 2
 8 - 1   # => 7
 10 * 2  # => 20
-
-# Except division which defaults to rounding down
 35 / 5  # => 7.0
 
 # Result of integer division truncated down both for positive and negative.
@@ -47,18 +47,14 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 -5 // 3      # => -2
 -5.0 // 3.0  # => -2.0
 
-# When one of the inputs is a float, result is a float
+# The result of division is always a float
 10.0 / 3  # => 3.3333333333333335
-
-# to force this behavior on integers, use 
-from __future__ import division
-10 / 3 # => 3.3333333333333335
 
 # Modulo operation
 7 % 3  # => 1
 
 # Exponentiation (x**y, x to the yth power)
-2**4  # => 16
+2**3  # => 8
 
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
@@ -77,11 +73,14 @@ True and False  # => False
 False or True   # => True
 
 # Note using Bool operators with ints
+# False is 0 and True is 1
+# Don't mix up with bool(ints) and bitwise and/or (&,|)
 0 and 2     # => 0
 -5 or 0     # => -5
 0 == False  # => True
 2 == True   # => False
 1 == True   # => True
+-5 != False != True #=> True
 
 # Equality is ==
 1 == 1  # => True
@@ -117,7 +116,7 @@ b == a            # => True, a's and b's objects are equal
 
 # Strings can be added too! But try not to do this.
 "Hello " + "world!"  # => "Hello world!"
-# Strings can be added without using '+'
+# String literals (but not variables) can be concatenated without using '+'
 "Hello " "world!"    # => "Hello world!"
 
 # A string can be treated like a list of characters
@@ -140,6 +139,12 @@ len("This is a string")  # => 16
 # still use the old style of formatting:
 "%s can be %s the %s way" % ("Strings", "interpolated", "old")  # => "Strings can be interpolated the old way"
 
+# You can also format using f-strings or formatted string literals (in Python 3.6+)
+name = "Reiko"
+f"She said her name is {name}." # => "She said her name is Reiko"
+# You can basically put any Python statement inside the braces and it will be output in the string.
+f"{name} is {len(name)} characters long."
+
 
 # None is an object
 None  # => None
@@ -149,13 +154,13 @@ None  # => None
 "etc" is None  # => False
 None is None   # => True
 
-# None, 0, and empty strings/lists/dicts all evaluate to False.
+# None, 0, and empty strings/lists/dicts/tuples all evaluate to False.
 # All other values are True
 bool(0)   # => False
 bool("")  # => False
 bool([])  # => False
 bool({})  # => False
-
+bool(())  # => False
 
 ####################################################
 ## 2. Variables and Collections
@@ -165,14 +170,14 @@ bool({})  # => False
 print("I'm Python. Nice to meet you!")  # => I'm Python. Nice to meet you!
 
 # By default the print function also prints out a newline at the end.
-# Use the optional argument end to change the end character.
+# Use the optional argument end to change the end string.
 print("Hello, World", end="!")  # => Hello, World!
 
 # Simple way to get input data from console
 input_string_var = input("Enter some data: ") # Returns the data as a string
 # Note: In earlier versions of Python, input() method was named as raw_input()
 
-# No need to declare variables before assigning to them.
+# There are no declarations, only assignments.
 # Convention is to use lower_case_with_underscores
 some_var = 5
 some_var  # => 5
@@ -209,11 +214,12 @@ li[-1]  # => 3
 li[4]  # Raises an IndexError
 
 # You can look at ranges with slice syntax.
+# The start index is included, the end index is not
 # (It's a closed/open range for you mathy types.)
 li[1:3]   # => [2, 4]
-# Omit the beginning
+# Omit the beginning and return the list
 li[2:]    # => [4, 3]
-# Omit the end
+# Omit the end and return the list
 li[:3]    # => [1, 2, 4]
 # Select every second entry
 li[::2]   # =>[1, 4]
@@ -275,12 +281,13 @@ a, b, c = (1, 2, 3)  # a is now 1, b is now 2 and c is now 3
 # You can also do extended unpacking
 a, *b, c = (1, 2, 3, 4)  # a is now 1, b is now [2, 3] and c is now 4
 # Tuples are created by default if you leave out the parentheses
-d, e, f = 4, 5, 6
+d, e, f = 4, 5, 6  # tuple 4, 5, 6 is unpacked into variables d, e and f
+# respectively such that d = 4, e = 5 and f = 6
 # Now look how easy it is to swap two values
 e, d = d, e  # d is now 5 and e is now 4
 
 
-# Dictionaries store mappings
+# Dictionaries store mappings from keys to values
 empty_dict = {}
 # Here is a prefilled dictionary
 filled_dict = {"one": 1, "two": 2, "three": 3}
@@ -326,7 +333,7 @@ filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5
 
 # Adding to a dictionary
 filled_dict.update({"four":4})  # => {"one": 1, "two": 2, "three": 3, "four": 4}
-#filled_dict["four"] = 4        #another way to add to dict
+filled_dict["four"] = 4         # another way to add to dict
 
 # Remove keys from a dictionary with del
 del filled_dict["one"]  # Removes the key "one" from filled dict
@@ -346,11 +353,11 @@ some_set = {1, 1, 2, 2, 3, 4}  # some_set is now {1, 2, 3, 4}
 invalid_set = {[1], 1}  # => Raises a TypeError: unhashable type: 'list'
 valid_set = {(1,), 1}
 
-# Can set new variables to a set
-filled_set = some_set
-
 # Add one more item to the set
+filled_set = some_set
 filled_set.add(5)  # filled_set is now {1, 2, 3, 4, 5}
+# Sets do not have duplicate elements
+filled_set.add(5)  # it remains as before {1, 2, 3, 4, 5}
 
 # Do set intersection with &
 other_set = {3, 4, 5, 6}
@@ -384,8 +391,9 @@ filled_set | other_set  # => {1, 2, 3, 4, 5, 6}
 # Let's just make a variable
 some_var = 5
 
-# Here is an if statement. Indentation is significant in python!
-# prints "some_var is smaller than 10"
+# Here is an if statement. Indentation is significant in Python!
+# Convention is to use four spaces, not tabs.
+# This prints "some_var is smaller than 10"
 if some_var > 10:
     print("some_var is totally bigger than 10.")
 elif some_var < 10:    # This elif clause is optional.
@@ -473,7 +481,7 @@ with open("myfile.txt") as f:
 
 # Python offers a fundamental abstraction called the Iterable.
 # An iterable is an object that can be treated as a sequence.
-# The object returned the range function, is an iterable.
+# The object returned by the range function, is an iterable.
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
@@ -497,7 +505,7 @@ next(our_iterator)  # => "one"
 next(our_iterator)  # => "two"
 next(our_iterator)  # => "three"
 
-# After the iterator has returned all of its data, it gives you a StopIterator Exception
+# After the iterator has returned all of its data, it raises a StopIteration exception
 next(our_iterator)  # Raises StopIteration
 
 # You can grab all the elements of an iterator by calling list() on it.
@@ -549,9 +557,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # Use * to expand tuples and use ** to expand kwargs.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args)            # equivalent to foo(1, 2, 3, 4)
-all_the_args(**kwargs)         # equivalent to foo(a=3, b=4)
-all_the_args(*args, **kwargs)  # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args)            # equivalent to all_the_args(1, 2, 3, 4)
+all_the_args(**kwargs)         # equivalent to all_the_args(a=3, b=4)
+all_the_args(*args, **kwargs)  # equivalent to all_the_args(1, 2, 3, 4, a=3, b=4)
 
 # Returning multiple values (with tuple assignments)
 def swap(x, y):
@@ -569,13 +577,13 @@ x = 5
 def set_x(num):
     # Local var x not the same as global variable x
     x = num    # => 43
-    print (x)  # => 43
+    print(x)   # => 43
 
 def set_global_x(num):
     global x
-    print (x)  # => 5
+    print(x)   # => 5
     x = num    # global var x is now set to 6
-    print (x)  # => 6
+    print(x)   # => 6
 
 set_x(43)
 set_global_x(6)
@@ -631,12 +639,12 @@ from math import *
 import math as m
 math.sqrt(16) == m.sqrt(16)  # => True
 
-# Python modules are just ordinary python files. You
+# Python modules are just ordinary Python files. You
 # can write your own, and import them. The name of the
 # module is the same as the name of the file.
 
 # You can find out which functions and attributes
-# defines a module.
+# are defined in a module.
 import math
 dir(math)
 
@@ -651,7 +659,7 @@ dir(math)
 ## 6. Classes
 ####################################################
 
-# We use the "class" operator to get a class
+# We use the "class" statement to create a class
 class Human:
 
     # A class attribute. It is shared by all instances of this class
@@ -659,20 +667,20 @@ class Human:
 
     # Basic initializer, this is called when this class is instantiated.
     # Note that the double leading and trailing underscores denote objects
-    # or attributes that are used by python but that live in user-controlled
+    # or attributes that are used by Python but that live in user-controlled
     # namespaces. Methods(or objects or attributes) like: __init__, __str__,
-    # __repr__ etc. are called magic methods (or sometimes called dunder methods)
+    # __repr__ etc. are called special methods (or sometimes called dunder methods)
     # You should not invent such names on your own.
     def __init__(self, name):
         # Assign the argument to the instance's name attribute
         self.name = name
 
         # Initialize property
-        self.age = 0
+        self._age = 0
 
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
-        print ("{name}: {message}".format(name=self.name, message=msg))
+        print("{name}: {message}".format(name=self.name, message=msg))
 
     # Another instance method
     def sing(self):
@@ -690,8 +698,8 @@ class Human:
         return "*grunt*"
 
     # A property is just like a getter.
-    # It turns the method age() into an read-only attribute
-    # of the same name.
+    # It turns the method age() into an read-only attribute of the same name.
+    # There's no need to write trivial getters and setters in Python, though.
     @property
     def age(self):
         return self._age
@@ -727,23 +735,121 @@ if __name__ == '__main__':
 
     # Call the static method
     print(Human.grunt())            # => "*grunt*"
-    print(i.grunt())                # => "*grunt*"
-
+    
+    # Cannot call static method with instance of object 
+    # because i.grunt() will automatically put "self" (the object i) as an argument
+    print(i.grunt())                # => TypeError: grunt() takes 0 positional arguments but 1 was given
+                                    
     # Update the property for this instance
     i.age = 42
     # Get the property
-    i.say(i.age)                    # => 42
-    j.say(j.age)                    # => 0
+    i.say(i.age)                    # => "Ian: 42"
+    j.say(j.age)                    # => "Joel: 0"
     # Delete the property
     del i.age
     # i.age                         # => this would raise an AttributeError
 
 
 ####################################################
-## 6.1 Multiple Inheritance
+## 6.1 Inheritance
+####################################################
+
+# Inheritance allows new child classes to be defined that inherit methods and
+# variables from their parent class. 
+
+# Using the Human class defined above as the base or parent class, we can
+# define a child class, Superhero, which inherits the class variables like
+# "species", "name", and "age", as well as methods, like "sing" and "grunt"
+# from the Human class, but can also have its own unique properties.
+
+# To take advantage of modularization by file you could place the classes above in their own files,
+# say, human.py
+
+# To import functions from other files use the following format
+# from "filename-without-extension" import "function-or-class"
+
+from human import Human
+
+
+# Specify the parent class(es) as parameters to the class definition
+class Superhero(Human):
+
+    # If the child class should inherit all of the parent's definitions without
+    # any modifications, you can just use the "pass" keyword (and nothing else)
+    # but in this case it is commented out to allow for a unique child class:
+    # pass
+
+    # Child classes can override their parents' attributes
+    species = 'Superhuman'
+
+    # Children automatically inherit their parent class's constructor including
+    # its arguments, but can also define additional arguments or definitions
+    # and override its methods such as the class constructor.
+    # This constructor inherits the "name" argument from the "Human" class and
+    # adds the "superpower" and "movie" arguments:
+    def __init__(self, name, movie=False,
+                 superpowers=["super strength", "bulletproofing"]):
+
+        # add additional class attributes:
+        self.fictional = True
+        self.movie = movie
+        self.superpowers = superpowers
+
+        # The "super" function lets you access the parent class's methods
+        # that are overridden by the child, in this case, the __init__ method.
+        # This calls the parent class constructor:
+        super().__init__(name)
+
+    # override the sing method
+    def sing(self):
+        return 'Dun, dun, DUN!'
+
+    # add an additional instance method
+    def boast(self):
+        for power in self.superpowers:
+            print("I wield the power of {pow}!".format(pow=power))
+
+
+if __name__ == '__main__':
+    sup = Superhero(name="Tick")
+
+    # Instance type checks
+    if isinstance(sup, Human):
+        print('I am human')
+    if type(sup) is Superhero:
+        print('I am a superhero')
+
+    # Get the Method Resolution search Order used by both getattr() and super()
+    # This attribute is dynamic and can be updated
+    print(Superhero.__mro__)    # => (<class '__main__.Superhero'>,
+                                # => <class 'human.Human'>, <class 'object'>)
+
+    # Calls parent method but uses its own class attribute
+    print(sup.get_species())    # => Superhuman
+
+    # Calls overridden method
+    print(sup.sing())           # => Dun, dun, DUN!
+
+    # Calls method from Human
+    sup.say('Spoon')            # => Tick: Spoon
+
+    # Call method that exists only in Superhero
+    sup.boast()                 # => I wield the power of super strength!
+                                # => I wield the power of bulletproofing!
+
+    # Inherited class attribute
+    sup.age = 31
+    print(sup.age)              # => 31
+
+    # Attribute that only exists within Superhero
+    print('Am I Oscar eligible? ' + str(sup.movie))
+
+####################################################
+## 6.2 Multiple Inheritance
 ####################################################
 
 # Another class definition
+# bat.py
 class Bat:
 
     species = 'Baty'
@@ -765,31 +871,25 @@ if __name__ == '__main__':
     print(b.say('hello'))
     print(b.fly)
 
-# To take advantage of modularization by file you could place the classes above in their own files,
-# say, human.py and bat.py
 
-# to import functions from other files use the following format
-# from "filename-without-extension" import "function-or-class"
-
+# And yet another class definition that inherits from Superhero and Bat
 # superhero.py
-from human import Human
+from superhero import Superhero
 from bat import Bat
 
-# Batman inherits from both Human and Bat
-class Batman(Human, Bat):
-
-    # Batman has its own value for the species class attribute
-    species = 'Superhero'
+# Define Batman as a child that inherits from both Superhero and Bat
+class Batman(Superhero, Bat):
 
     def __init__(self, *args, **kwargs):
         # Typically to inherit attributes you have to call super:
-        #super(Batman, self).__init__(*args, **kwargs)      
+        # super(Batman, self).__init__(*args, **kwargs)      
         # However we are dealing with multiple inheritance here, and super()
         # only works with the next base class in the MRO list.
         # So instead we explicitly call __init__ for all ancestors.
         # The use of *args and **kwargs allows for a clean way to pass arguments,
         # with each parent "peeling a layer of the onion".
-        Human.__init__(self, 'anonymous', *args, **kwargs)
+        Superhero.__init__(self, 'anonymous', movie=True, 
+                           superpowers=['Wealthy'], *args, **kwargs)
         Bat.__init__(self, *args, can_fly=False, **kwargs)
         # override the value for the name attribute
         self.name = 'Sad Affleck'
@@ -801,22 +901,17 @@ class Batman(Human, Bat):
 if __name__ == '__main__':
     sup = Batman()
 
-    # Instance type checks
-    if isinstance(sup, Human):
-        print('I am human')
-    if isinstance(sup, Bat):
-        print('I am bat')
-    if type(sup) is Batman:
-        print('I am Batman')
-
     # Get the Method Resolution search Order used by both getattr() and super().
     # This attribute is dynamic and can be updated
-    print(Batman.__mro__)       # => (<class '__main__.Batman'>, <class 'human.Human'>, <class 'bat.Bat'>, <class 'object'>)
+    print(Batman.__mro__)       # => (<class '__main__.Batman'>, 
+                                # => <class 'superhero.Superhero'>, 
+                                # => <class 'human.Human'>, 
+                                # => <class 'bat.Bat'>, <class 'object'>)
 
     # Calls parent method but uses its own class attribute
-    print(sup.get_species())    # => Superhero
+    print(sup.get_species())    # => Superhuman
 
-    # Calls overloaded method
+    # Calls overridden method
     print(sup.sing())           # => nan nan nan nan nan batman!
 
     # Calls method from Human, because inheritance order matters
@@ -827,10 +922,10 @@ if __name__ == '__main__':
 
     # Inherited class attribute
     sup.age = 100
-    print(sup.age)
+    print(sup.age)              # => 100
 
     # Inherited attribute from 2nd ancestor whose default value was overridden.
-    print('Can I fly? ' + str(sup.fly))
+    print('Can I fly? ' + str(sup.fly)) # => Can I fly? False
 
 
 

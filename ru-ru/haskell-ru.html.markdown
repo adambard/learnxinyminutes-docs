@@ -1,5 +1,6 @@
 ---
 language: Haskell
+filename: haskell-ru.hs
 contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:
@@ -66,7 +67,7 @@ not False -- True
 
 
 ----------------------------------------------------
--- Списки и Кортежи
+-- 2. Списки и Кортежи
 ----------------------------------------------------
 
 -- Все элементы списка в Haskell

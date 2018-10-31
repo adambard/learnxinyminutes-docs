@@ -293,7 +293,7 @@ lang: zh-cn
  
 (hello-to-bonjour)
  
-;; 给这些名字上个色:
+;; 给这些名字加粗:
  
 (defun boldify-names ()
     (switch-to-buffer-other-window "*test*")
@@ -340,5 +340,6 @@ lang: zh-cn
 ;; - Kevin Montuori
 ;; - Arne Babenhauserheide
 ;; - Alan Schmitt
+;; - spacegoing
 ```
 

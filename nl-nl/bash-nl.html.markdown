@@ -17,8 +17,8 @@ lang: nl-nl
 filename: LearnBash-nl.sh
 ---
 
-Bash is de naam van den unix shell, deze wordt gebruikt voor het GNU operating system en is de standaard shell op Linux en Mac OS X.
-Bijna alle voorbeelden hier onder kunnen deel uitmaken van een shell script of kunnen uitgevoerd worden in de shell.
+Bash is de naam van de unix shell, deze wordt gebruikt voor het GNU operating system en is de standaard shell op Linux en Mac OS X.
+Bijna alle voorbeelden hieronder kunnen deel uitmaken van een shell script of kunnen uitgevoerd worden in de shell.
 
 [Lees er meer over hier.](http://www.gnu.org/software/bash/manual/bashref.html)
 
@@ -28,23 +28,23 @@ Bijna alle voorbeelden hier onder kunnen deel uitmaken van een shell script of k
 # het script uitgevoerd moet worden: http://en.wikipedia.org/wiki/Shebang_(Unix)
 # Zoals je kan zien wordt # gebruikt om een commentaar lijn te starten.
 
-# Simpel hello world voorbeeld:
+# Een simpel hello world voorbeeld:
 echo Hello world!
 
-# Elke command start op een nieuwe lijn, of achter een puntkomma (;):
+# Elk commando start op een nieuwe lijn, of achter een puntkomma (;):
 echo 'Dit is de eerste lijn'; echo 'Dit is de tweede lijn'
 
-# Een varialbe declareren gebeurt op volgende manier:
+# Een variabele declareren gebeurt op volgende manier:
 Variabele="Een string"
 
 # Maar niet op deze manier:
 Variabele = "Een string"
-# Bash ziet variable als een commando en zal een error geven omdat dit commando
+# Bash ziet variabelen als een commando en zal een error geven omdat dit commando
 # niet bestaat.
 
 # Of op deze manier:
 Variabele= 'Een string'
-# Bash zal 'Een string' zien als een commanda en een error geven omdat het niet
+# Bash zal 'Een string' zien als een commando en een error geven omdat het niet
 # gevonden kan worden.
 
 # Variabelen gebruiken:
@@ -83,7 +83,7 @@ echo "Wat is uw naam?"
 read Naam # Merk op dat we geen variabele gedeclareerd hebben
 echo Hallo, $Naam!
 
-# We hebben ook if structuren
+# We hebben ook logische if structuren
 # Gebruik 'man test' voor meer informatie over condities.
 if [ $Naam -ne $USER ]
 then

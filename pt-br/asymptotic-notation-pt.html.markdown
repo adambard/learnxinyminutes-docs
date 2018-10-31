@@ -38,7 +38,7 @@ Na primeira seção desse documento, descrevemos como Notação Assintótica ide
  *f*, *n* como o tamanho da entrada e *f(n)* sendo o tempo de execução. Então,
  para dado algoritmo *f*, com entrada de tamanho *n*, você terá tempo de execução
  *f(n)*. Isto resulta em um gráfico onde a coordernada Y é o tempo de execução
-, a coordernada X representa o tamanho da entrada e os pontos representao o tempo
+, a coordernada X representa o tamanho da entrada e os pontos representam o tempo
 de execução para dado tamanho de entrada.
 
 Você pode representar a função, ou o algoritmo, com Notação Assintótica de várias
@@ -88,7 +88,7 @@ Função Exponencial - a^n, onde *a* é uma constante
 
 Big-O, também escrita como O, é uma Notação Assintótica para o pior caso. Digamos
 *f(n)* seja o tempo de exeução de um algoritmo e *g(n)) um tempo de complexidade
-arbritário que você quer relacionar com seu algoritmo. *f(n)* é O(g(n)), se, para
+arbitrário que você quer relacionar com seu algoritmo. *f(n)* é O(g(n)), se, para
 quando constante real c (c > 0), *f(n)* <= *c g(n)* para todo tamanho de entrada
 n (n > 0).
 

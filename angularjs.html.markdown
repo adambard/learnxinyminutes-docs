@@ -18,9 +18,10 @@ AngularJS extends HTML attributes with Directives, and binds data to HTML with E
 ##What You Should Already Know
 
 Before you study AngularJS, you should have a basic understanding of:
-* HTML
-* CSS
-* JavaScript
+
+- HTML
+- CSS
+- JavaScript
 
 ```html
 // AngularJS is a JavaScript framework. It is a library written in JavaScript.
@@ -52,7 +53,7 @@ Before you study AngularJS, you should have a basic understanding of:
   * The ng-model directive binds the value of the input field to the application variable name.
   * The ng-bind directive binds the innerHTML of the <p> element to the application variable name.
 */
-<tag> Here are content to be intrepreted </tag>
+<tag> Here are content to be interpreted </tag>
 
 ///////////////////////////////////
 // AngularJS Expressions
@@ -274,16 +275,16 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 <script src="namesController.js"></script>
 
 ///////////////////////////////////
-// AngularJS Filers
+// AngularJS Filters
 
 // Filters can be added to expressions and directives using a pipe character.
 // AngularJS filters can be used to transform data:
 
-**currency:  Format a number to a currency format.
-**filter:  Select a subset of items from an array.
-**lowercase: Format a string to lower case.
-**orderBy: Orders an array by an expression.
-**uppercase: Format a string to upper case.
+- **currency**:  Format a number to a currency format.
+- **filter**:  Select a subset of items from an array.
+- **lowercase**: Format a string to lower case.
+- **orderBy**: Orders an array by an expression.
+- **uppercase**: Format a string to upper case.
 
 //A filter can be added to an expression with a pipe character (|) and a filter.
 //(For the next two examples we will use the person controller from the previous chapter)
@@ -325,7 +326,7 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 
 //An input filter can be added to a directive with a pipe character (|) 
 //and filter followed by a colon and a model name.
-//The filter filter selects a subset of an array:
+//The filter selects a subset of an array:
 
 <div ng-app="myApp" ng-controller="namesCtrl">
 
@@ -696,15 +697,12 @@ app.controller('myCtrl', function($scope) {
 
 ## Source & References
 
-**Examples
-* http://www.w3schools.com/angular/angular_examples.asp
+**Examples**
 
-**References
-* http://www.w3schools.com/angular/angular_ref_directives.asp
-* http://www.w3schools.com/angular/default.asp
-* https://teamtreehouse.com/library/angular-basics/
+- [http://www.w3schools.com/angular/angular_examples.asp](http://www.w3schools.com/angular/angular_examples.asp)
 
-Feedback is welcome! You can find me in:
-[@WalterC_87](https://twitter.com/WalterC_87), or
-[me@waltercordero.com](mailto:me@waltercordero.com).
+**References**
 
+- [http://www.w3schools.com/angular/angular_ref_directives.asp](http://www.w3schools.com/angular/angular_ref_directives.asp)
+- [http://www.w3schools.com/angular/default.asp](http://www.w3schools.com/angular/default.asp)
+- [https://teamtreehouse.com/library/angular-basics/](https://teamtreehouse.com/library/angular-basics/)

@@ -3,6 +3,7 @@ language: whip
 contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
   - ["Saurabh Sandav", "http://github.com/SaurabhSandav"]
+  - ["Paulo Henrique Rodrigues Pinheiro", "https://github.com/paulohrpinheiro"]
 author: Tenor Biel
 author_url: http://github.com/L8D
 filename: whip.lisp
@@ -232,6 +233,7 @@ undefined ; user to indicate a value that hasn't been set
 (words "foobar nachos cheese") ; => ("foobar" "nachos" "cheese")
 ; Join list of strings together.
 (unwords ("foo" "bar")) ; => "foobar"
+; Successor and Predecessor
 (pred 21) ; => 20
 (succ 20) ; => 21
 ```

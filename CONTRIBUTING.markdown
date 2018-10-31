@@ -71,3 +71,10 @@ contributors:
 lang: ep-ep
 ---
 ```
+
+### Should I add myself as a Contributor?
+
+If you want to add yourself to contributors, keep in mind that contributors get
+equal billing, and the first contributor usually wrote the whole article. Please
+use your judgement when deciding if your contribution constitutes a substantial
+addition or not.

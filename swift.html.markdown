@@ -13,9 +13,9 @@ filename: learnswift.swift
 
 Swift is a programming language for iOS and OS X development created by Apple. Designed to coexist with Objective-C and to be more resilient against erroneous code, Swift was introduced in 2014 at Apple's developer conference WWDC. It is built with the LLVM compiler included in Xcode 6+.
 
-The official [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) book from Apple is now available via iBooks.
+The official _[Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329)_ book from Apple is now available via iBooks.
 
-See also Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/), which has a complete tutorial on Swift.
+Another great reference is _About Swift_ on Swift's [website](https://docs.swift.org/swift-book/).
 
 ```swift
 // import a module
@@ -103,6 +103,11 @@ if let someOptionalStringConstant = someOptionalString {
         // does not have the prefix
     }
 }
+
+// The nil-coalescing operator ?? unwraps an optional if it contains a non-nil value, or returns a default value.
+var someOptionalString: String?
+let someString = someOptionalString ?? "abc"
+print(someString) // abc
 
 // Swift has support for storing a value of any type.
 // For that purposes there is two keywords: `Any` and `AnyObject`
@@ -276,7 +281,7 @@ testGuard()
 
 // Variadic Args
 func setup(numbers: Int...) {
-    // its an array
+    // it's an array
     let _ = numbers[0]
     let _ = numbers.count
 }
@@ -356,14 +361,14 @@ print("Name is \(name)") // Name is Them
 
 // The `Error` protocol is used when throwing errors to catch
 enum MyError: Error {
-    case BadValue(msg: String)
-    case ReallyBadValue(msg: String)
+    case badValue(msg: String)
+    case reallyBadValue(msg: String)
 }
 
 // functions marked with `throws` must be called using `try`
 func fakeFetch(value: Int) throws -> String {
     guard 7 == value else {
-        throw MyError.ReallyBadValue(msg: "Some really bad value")
+        throw MyError.reallyBadValue(msg: "Some really bad value")
     }
 
     return "test"
@@ -380,7 +385,7 @@ func testTryStuff() {
     do {
         // normal try operation that provides error handling via `catch` block
         try fakeFetch(value: 1)
-    } catch MyError.BadValue(let msg) {
+    } catch MyError.badValue(let msg) {
         print("Error message: \(msg)")
     } catch {
         // must be exhaustive
@@ -513,49 +518,49 @@ if let circle = myEmptyCircle {
 // They can contain methods like classes.
 
 enum Suit {
-    case Spades, Hearts, Diamonds, Clubs
+    case spades, hearts, diamonds, clubs
     func getIcon() -> String {
         switch self {
-        case .Spades: return "♤"
-        case .Hearts: return "♡"
-        case .Diamonds: return "♢"
-        case .Clubs: return "♧"
+        case .spades: return "♤"
+        case .hearts: return "♡"
+        case .diamonds: return "♢"
+        case .clubs: return "♧"
         }
     }
 }
 
 // Enum values allow short hand syntax, no need to type the enum type
 // when the variable is explicitly declared
-var suitValue: Suit = .Hearts
+var suitValue: Suit = .hearts
 
 // String enums can have direct raw value assignments
 // or their raw values will be derived from the Enum field
 enum BookName: String {
-    case John
-    case Luke = "Luke"
+    case john
+    case luke = "Luke"
 }
-print("Name: \(BookName.John.rawValue)")
+print("Name: \(BookName.john.rawValue)")
 
 // Enum with associated Values
 enum Furniture {
     // Associate with Int
-    case Desk(height: Int)
+    case desk(height: Int)
     // Associate with String and Int
-    case Chair(String, Int)
+    case chair(String, Int)
 
     func description() -> String {
         switch self {
-        case .Desk(let height):
+        case .desk(let height):
             return "Desk with \(height) cm"
-        case .Chair(let brand, let height):
+        case .chair(let brand, let height):
             return "Chair of \(brand) with \(height) cm"
         }
     }
 }
 
-var desk: Furniture = .Desk(height: 80)
+var desk: Furniture = .desk(height: 80)
 print(desk.description())     // "Desk with 80 cm"
-var chair = Furniture.Chair("Foo", 40)
+var chair = Furniture.chair("Foo", 40)
 print(chair.description())    // "Chair of Foo with 40 cm"
 
 

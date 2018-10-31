@@ -146,13 +146,13 @@ bool({}) #=> False
 ####################################################
 
 # Textausgabe ist sehr einfach
-print "Ich bin Python. Schön, dich kennenzulernen!"
+print("Ich bin Python. Schön, dich kennenzulernen!")
 
 # Es gibt keinen Grund, Variablen vor der Zuweisung zu deklarieren.
 some_var = 5    # kleinschreibung_mit_unterstrichen entspricht der Norm
 some_var #=> 5
 
-# Das Ansprechen einer noch nicht deklarierte Variable löst eine Exception aus.
+# Das Ansprechen einer noch nicht deklarierten Variable löst eine Exception aus.
 # Unter "Kontrollstruktur" kann noch mehr über
 # Ausnahmebehandlung erfahren werden.
 some_unknown_var  # Löst einen NameError aus
@@ -225,7 +225,7 @@ a, b, c = (1, 2, 3)     # a ist jetzt 1, b ist jetzt 2 und c ist jetzt 3
 # Tupel werden standardmäßig erstellt, wenn wir uns die Klammern sparen
 d, e, f = 4, 5, 6
 # Es ist kinderleicht zwei Werte zu tauschen
-e, d = d, e     # d is now 5 and e is now 4
+e, d = d, e     # d ist nun 5 und e ist nun 4
 
 
 # Dictionarys (Wörterbucher) speichern Schlüssel-Werte-Paare
@@ -307,11 +307,11 @@ some_var = 5
 # Hier eine if-Anweisung. Die Einrückung ist in Python wichtig!
 # gibt "some_var ist kleiner als 10" aus
 if some_var > 10:
-    print "some_var ist viel größer als 10."
+    print("some_var ist viel größer als 10.")
 elif some_var < 10:    # Dieser elif-Absatz ist optional.
-    print "some_var ist kleiner als 10."
+    print("some_var ist kleiner als 10.")
 else:           # Das hier ist auch optional.
-    print "some_var ist tatsächlich 10."
+    print("some_var ist tatsächlich 10.")
 
 
 """
@@ -334,7 +334,7 @@ Ausgabe:
     3
 """
 for i in range(4):
-    print i
+    print(i)
 
 """
 "range(unten, oben)" gibt eine Liste von der unteren Zahl bis zur oberen Zahl aus
@@ -357,7 +357,7 @@ Ausgabe:
 """
 x = 0
 while x < 4:
-    print x
+    print(x)
     x += 1  # Kurzform für x = x + 1
 
 # Ausnahmebehandlung mit einem try/except-Block
@@ -379,8 +379,8 @@ with open("meineDatei.txt") as f:
         print(line)
 
 # Python bietet ein fundamentales Konzept der Iteration.
-# Das Objekt, auf das die Interation, also die Wiederholung einer Methode angewandt wird heißt auf Englisch "iterable".
-# Die range Method gibt ein solches Objekt aus.
+# Das Objekt, auf das die Iteration, also die Wiederholung einer Methode angewandt wird heißt auf Englisch "iterable".
+# Die range Methode gibt ein solches Objekt aus.
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
@@ -396,8 +396,8 @@ our_iterable[1]  # TypeError
 # Ein iterable ist ein Objekt, das weiß wie es einen Iteratoren erschafft.
 our_iterator = iter(our_iterable)
 
-# Unser Iterator ist ein Objekt, das sich merkt, welchen Status es geraden hat während wir durch es gehen.
-# Das jeweeils nächste Objekt bekommen wir mit "next()"
+# Unser Iterator ist ein Objekt, das sich merkt, welchen Status es gerade hat während wir durch es gehen.
+# Das jeweils nächste Objekt bekommen wir mit "next()"
 next(our_iterator)  #=> "one"
 
 # Es hält den vorherigen Status
@@ -418,7 +418,7 @@ list(filled_dict.keys())  #=> ["one", "two", "three"]
 
 # Mit def neue Funktionen erstellen
 def add(x, y):
-    print "x ist %s und y ist %s" % (x, y)
+    print("x ist %s und y ist %s" % (x, y))
     return x + y    # Werte werden mit return zurückgegeben
 
 # Funktionen mit Parametern aufrufen
@@ -442,10 +442,10 @@ def keyword_args(**kwargs):
 # Rufen wir es mal auf, um zu sehen, was passiert
 keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
 
-# Wir können beides gleichzeitig machem, wenn wir wollen
+# Wir können beides gleichzeitig machen, wenn wir wollen
 def all_the_args(*args, **kwargs):
-    print args
-    print kwargs
+    print(args)
+    print(kwargs)
 """
 all_the_args(1, 2, a=3, b=4) Ausgabe:
     (1, 2)
@@ -532,10 +532,10 @@ class Human(object):
 
 # Eine Instanz einer Klasse erstellen
 i = Human(name="Ian")
-print i.say("hi")     # gibt "Ian: hi" aus
+print(i.say("hi"))     # gibt "Ian: hi" aus
 
 j = Human("Joel")
-print j.say("hello")  #gibt "Joel: hello" aus
+print(j.say("hello"))  #gibt "Joel: hello" aus
 
 # Rufen wir mal unsere Klassenmethode auf
 i.get_species() #=> "H. sapiens"
@@ -555,12 +555,12 @@ Human.grunt() #=> "*grunt*"
 
 # Wir können Module importieren
 import math
-print math.sqrt(16) #=> 4
+print(math.sqrt(16)) #=> 4
 
 # Wir können auch nur spezielle Funktionen eines Moduls importieren
 from math import ceil, floor
-print ceil(3.7)  #=> 4.0
-print floor(3.7) #=> 3.0
+print(ceil(3.7))  #=> 4.0
+print(floor(3.7)) #=> 3.0
 
 # Wir können auch alle Funktionen eines Moduls importieren
 # Warnung: Dies wird nicht empfohlen

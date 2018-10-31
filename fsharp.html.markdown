@@ -34,7 +34,7 @@ let myFloat = 3.14
 let myString = "hello"           // note that no types needed
 
 // ------ Lists ------
-let twoToFive = [2; 3; 4; 5]        // Square brackets create a list with
+let twoToFive = [2; 3; 4; 5]     // Square brackets create a list with
                                  // semicolon delimiters.
 let oneToFive = 1 :: twoToFive   // :: creates list with new 1st element
 // The result is [1; 2; 3; 4; 5]
@@ -53,7 +53,8 @@ add 2 3                       // Now run the function.
 
 // to define a multiline function, just use indents. No semicolons needed.
 let evens list =
-   let isEven x = x % 2 = 0     // Define "isEven" as a sub function
+   let isEven x = x % 2 = 0   // Define "isEven" as a sub function. Note
+                              // that equality operator is single char "=".
    List.filter isEven list    // List.filter is a library function
                               // with two parameters: a boolean function
                               // and a list to work on
@@ -306,7 +307,7 @@ module DataTypeExamples =
 
     // ------------------------------------
     // Union types (aka variants) have a set of choices
-    // Only case can be valid at a time.
+    // Only one case can be valid at a time.
     // ------------------------------------
 
     // Use "type" with bar/pipe to define a union type
@@ -408,11 +409,14 @@ module ActivePatternExamples =
 
     // "banana clips" are the syntax for active patterns
 
+    // You can use "elif" instead of "else if" in conditional expressions.
+    // They are equivalent in F#
+
     // for example, define an "active" pattern to match character types...
     let (|Digit|Letter|Whitespace|Other|) ch =
        if System.Char.IsDigit(ch) then Digit
-       else if System.Char.IsLetter(ch) then Letter
-       else if System.Char.IsWhiteSpace(ch) then Whitespace
+       elif System.Char.IsLetter(ch) then Letter
+       elif System.Char.IsWhiteSpace(ch) then Whitespace
        else Other
 
     // ... and then use it to make parsing logic much clearer

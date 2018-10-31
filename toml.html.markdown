@@ -12,7 +12,7 @@ It is an alternative to YAML and JSON. It aims to be more human friendly than JS
 Be warned, TOML's spec is still changing a lot. Until it's marked as 1.0, you
 should assume that it is unstable and act accordingly. This document follows TOML v0.4.0. 
 
-```toml
+```
 # Comments in TOML look like this.
 
 ################
@@ -102,9 +102,10 @@ boolMustBeLowercase = true
 # Datetime #
 ############
 
-date1 = 1979-05-27T07:32:00Z # follows the RFC 3339 spec
-date2 = 1979-05-27T07:32:00 # without offset
-date3 = 1979-05-27 # without offset nor time
+date1 = 1979-05-27T07:32:00Z # UTC time, following RFC 3339/ISO 8601 spec
+date2 = 1979-05-26T15:32:00+08:00 # with RFC 3339/ISO 8601 offset
+date3 = 1979-05-27T07:32:00 # without offset
+date4 = 1979-05-27 # without offset or time
 
 ####################
 # COLLECTION TYPES #

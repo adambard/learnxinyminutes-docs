@@ -13,10 +13,11 @@ This is a tutorial on how to do some typical statistical programming tasks using
 
 # 0. Getting set up ====
 
-""" Get set up with IPython and pip install the following: numpy, scipy, pandas,
+""" To get started, pip install the following: jupyter, numpy, scipy, pandas,
     matplotlib, seaborn, requests.
-        Make sure to do this tutorial in the IPython notebook so that you get
-    the inline plots and easy documentation lookup.
+        Make sure to do this tutorial in a Jupyter notebook so that you get
+    the inline plots and easy documentation lookup. The shell command to open 
+    one is simply `jupyter notebook`, then click New -> Python.
 """
 
 # 1. Data acquisition ====
@@ -37,18 +38,16 @@ r.text  # raw page source
 print(r.text)  # prettily formatted
 # save the page source in a file:
 os.getcwd()  # check what's the working directory
-f = open("learnxinyminutes.html", "wb")
-f.write(r.text.encode("UTF-8"))
-f.close()
+with open("learnxinyminutes.html", "wb") as f:
+    f.write(r.text.encode("UTF-8"))
 
 # downloading a csv
 fp = "https://raw.githubusercontent.com/adambard/learnxinyminutes-docs/master/"
 fn = "pets.csv"
 r = requests.get(fp + fn)
 print(r.text)
-f = open(fn, "wb")
-f.write(r.text.encode("UTF-8"))
-f.close()
+with open(fn, "wb") as f:
+    f.write(r.text.encode("UTF-8"))
 
 """ for more on the requests module, including APIs, see
     http://docs.python-requests.org/en/latest/user/quickstart/
@@ -70,8 +69,8 @@ pets
 # 1  vesuvius    6      23    fish
 # 2       rex    5      34     dog
 
-""" R users: note that Python, like most normal programming languages, starts
-    indexing from 0. R is the unusual one for starting from 1.
+""" R users: note that Python, like most C-influenced programming languages, starts
+    indexing from 0. R starts indexing at 1 due to Fortran influence.
 """
 
 # two different ways to print out a column
@@ -104,7 +103,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 %matplotlib inline
 
-# To do data vizualization in Python, use matplotlib
+# To do data visualization in Python, use matplotlib
 
 plt.hist(pets.age);
 
@@ -147,7 +146,7 @@ ggplot(aes(x="age",y="weight"), data=pets) + geom_point() + labs(title="pets")
 """
 
 # load some data on Holy Roman Emperors
-url = "https://raw.githubusercontent.com/e99n09/R-notes/master/data/hre.csv"
+url = "https://raw.githubusercontent.com/adambard/learnxinyminutes-docs/master/hre.csv"
 r = requests.get(url)
 fp = "hre.csv"
 with open(fp, "wb") as f:
@@ -157,26 +156,19 @@ hre = pd.read_csv(fp)
 
 hre.head()
 """
-   Ix      Dynasty        Name        Birth             Death Election 1
-0 NaN  Carolingian   Charles I  2 April 742    28 January 814        NaN
-1 NaN  Carolingian     Louis I          778       20 June 840        NaN
-2 NaN  Carolingian   Lothair I          795  29 September 855        NaN
-3 NaN  Carolingian    Louis II          825     12 August 875        NaN
-4 NaN  Carolingian  Charles II  13 June 823     6 October 877        NaN
+   Ix      Dynasty        Name        Birth             Death
+0 NaN  Carolingian   Charles I  2 April 742    28 January 814
+1 NaN  Carolingian     Louis I          778       20 June 840
+2 NaN  Carolingian   Lothair I          795  29 September 855
+3 NaN  Carolingian    Louis II          825     12 August 875
+4 NaN  Carolingian  Charles II  13 June 823     6 October 877
 
-  Election 2      Coronation 1   Coronation 2 Ceased to be Emperor
-0        NaN   25 December 800            NaN       28 January 814
-1        NaN  11 September 813  5 October 816          20 June 840
-2        NaN       5 April 823            NaN     29 September 855
-3        NaN        Easter 850     18 May 872        12 August 875
-4        NaN   29 December 875            NaN        6 October 877
-
-  Descent from whom 1 Descent how 1 Descent from whom 2 Descent how 2
-0                 NaN           NaN                 NaN           NaN
-1           Charles I           son                 NaN           NaN
-2             Louis I           son                 NaN           NaN
-3           Lothair I           son                 NaN           NaN
-4             Louis I           son                 NaN           NaN
+       Coronation 1   Coronation 2 Ceased to be Emperor
+0   25 December 800            NaN       28 January 814
+1  11 September 813  5 October 816          20 June 840
+2       5 April 823            NaN     29 September 855
+3        Easter 850     18 May 872        12 August 875
+4   29 December 875            NaN        6 October 877
 """
 
 # clean the Birth and Death columns
@@ -194,6 +186,8 @@ rx = re.compile(r'\d+$')  # match trailing digits
       - http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.html
 """
 
+from functools import reduce
+
 def extractYear(v):
     return(pd.Series(reduce(lambda x, y: x + y, map(rx.findall, v), [])).astype(int))
 
@@ -204,7 +198,7 @@ hre["DeathY"] = extractYear(hre.Death)
 hre["EstAge"] = hre.DeathY.astype(int) - hre.BirthY.astype(int)
 
 # simple scatterplot, no trend line, color represents dynasty
-sns.lmplot("BirthY", "EstAge", data=hre, hue="Dynasty", fit_reg=False);
+sns.lmplot("BirthY", "EstAge", data=hre, hue="Dynasty", fit_reg=False)
 
 # use scipy to run a linear regression
 from scipy import stats
@@ -221,7 +215,7 @@ rval**2  # 0.020363950027333586
 pval  # 0.34971812581498452
 
 # use seaborn to make a scatterplot and plot the linear regression trend line
-sns.lmplot("BirthY", "EstAge", data=hre);
+sns.lmplot("BirthY", "EstAge", data=hre)
 
 """ For more information on seaborn, see
       - http://web.stanford.edu/~mwaskom/software/seaborn/

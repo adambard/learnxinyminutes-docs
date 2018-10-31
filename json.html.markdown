@@ -11,6 +11,7 @@ contributors:
 JSON is an extremely simple data-interchange format. As [json.org](http://json.org) says, it is easy for humans to read and write and for machines to parse and generate.
 
 A piece of JSON must represent either:
+
 * A collection of name/value pairs (`{ }`). In various languages, this is realized as an object, record, struct, dictionary, hash table, keyed list, or associative array.
 * An ordered list of values (`[ ]`). In various languages, this is realized as an array, vector, list, or sequence.
  an array/list/sequence (`[ ]`) or a dictionary/object/associated array (`{ }`).
@@ -80,3 +81,5 @@ Supported data types:
 ## Further Reading
 
 * [JSON.org](http://json.org) All of JSON beautifully explained using flowchart-like graphics.
+
+* [JSON Tutorial](https://www.youtube.com/watch?v=wI1CWzNtE-M) A concise introduction to JSON.

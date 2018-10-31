@@ -3,6 +3,7 @@ language: haml
 filename: learnhaml.haml
 contributors:
   - ["Simon Neveu", "https://github.com/sneveu"]
+  - ["Vasiliy Petrov", "https://github.com/Saugardas"]
 ---
 
 Haml is a markup language predominantly used with Ruby that cleanly and simply describes the HTML of any web document without the use of inline code. It is a popular alternative to using Rails templating language (.erb) and allows you to embed Ruby code into your markup.
@@ -11,7 +12,9 @@ It aims to reduce repetition in your markup by closing tags for you based on the
 
 You can also use Haml on a project independent of Ruby, by installing the Haml gem on your machine and using the command line to convert it to html.
 
+```shell
 $ haml input_file.haml output_file.html
+```
 
 
 ```haml
@@ -36,7 +39,7 @@ $ haml input_file.haml output_file.html
   To write a multi line comment, indent your commented code to be
   wrapped by the forward slash
 
--# This is a silent comment, which means it wont be rendered into the doc at all
+-# This is a silent comment, which means it won't be rendered into the doc at all
 
 
 / -------------------------------------------
@@ -55,8 +58,17 @@ $ haml input_file.haml output_file.html
     </header>
   </body>
 
-/ The div tag is the default element, so they can be written simply like this
-.foo
+/
+  The div tag is the default element, so it can be omitted.
+  You can define only class/id using . or #
+  For example
+
+%div.my_class
+  %div#my_id
+
+/ Can be written
+.my_class
+  #my_id
 
 / To add content to a tag, add the text directly after the declaration
 %h1 Headline copy
@@ -97,6 +109,15 @@ $ haml input_file.haml output_file.html
 / To write data-attributes, use the :data key with its value as another hash
 %div{:data => {:attribute => 'foo'}}
 
+/ For Ruby version 1.9 or higher you can use Ruby's new hash syntax
+%div{ data: { attribute: 'foo' } }
+
+/ Also you can use HTML-style attribute syntax.
+%a(href='#' title='bar')
+
+/ And both syntaxes together
+%a(href='#'){ title: @my_class.title }
+
 
 / -------------------------------------------
 / Inserting Ruby
@@ -120,7 +141,7 @@ $ haml input_file.haml output_file.html
 - books.shuffle.each_with_index do |book, index|
   %h1= book
 
-  if book do
+  - if book do
     %p This is a book
     
 / Adding ordered / unordered list
@@ -166,11 +187,32 @@ $ haml input_file.haml output_file.html
 / -------------------------------------------
 
 /
-  Use the colon to define Haml filters, one example of a filter you can
-  use is :javascript, which can be used for writing inline js
+  Filters pass the block to another filtering program and return the result in Haml
+  To use a filter, type a colon and the name of the filter
 
+/ Markdown filter
+:markdown
+  # Header
+
+  Text **inside** the *block*
+
+/ The code above is compiled into
+<h1>Header</h1>
+
+<p>Text <strong>inside</strong> the <em>block</em></p>
+
+/ Javascript filter
 :javascript
   console.log('This is inline <script>');
+
+/ is compiled into
+<script>
+  console.log('This is inline <script>');
+</script>
+
+/
+  There are many types of filters (:markdown, :javascript, :coffee, :css, :ruby and so on)
+  Also you can define your own filters using Haml::Filters
 
 ```
 
