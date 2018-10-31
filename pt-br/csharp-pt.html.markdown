@@ -522,7 +522,7 @@ on a new line! ""Wow!"", the masses cried";
             foreach (var key in responses.Keys)
                 Console.WriteLine("{0}:{1}", key, responses[key]);
 
-            // DYNAMIC OBJECTS (great for working with other languages)
+            // OBJETOS DINÂMICOS (ótimo para trabalhar com outros idiomas)
             dynamic student = new ExpandoObject();
             student.FirstName = "First Name"; // No need to define class first!
 
@@ -730,10 +730,10 @@ on a new line! ""Wow!"", the masses cried";
             set { _hasTassles = value; }
         }
 
-        // You can also define an automatic property in one line
-        // this syntax will create a backing field automatically.
-        // You can set an access modifier on either the getter or the setter (or both)
-        // to restrict its access:
+        // Você também pode definir uma propriedade automática em uma linha
+        // Esta sintaxe criará um campo de apoio automaticamente.
+        // Você pode definir um modificador de acesso no getter ou no setter (ou ambos)
+        // para restringir seu acesso:
         public bool IsBroken { get; private set; }
 
         // Properties can be auto-implemented
