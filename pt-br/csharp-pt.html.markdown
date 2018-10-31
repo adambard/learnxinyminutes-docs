@@ -294,9 +294,9 @@ on a new line! ""Wow!"", the masses cried";
                 case 3:
                     monthString = "March";
                     break;
-                // You can assign more than one case to an action
-                // But you can't add an action without a break before another case
-                // (if you want to do this, you would have to explicitly add a goto case x
+                // Você pode declarar mais de um "case" para uma ação
+                // Mas você não pode adicionar uma ação sem um "break" antes de outro "case"
+                // (se você quiser fazer isso, você tem que explicitamente adicionar um "goto case x")
                 case 6:
                 case 7:
                 case 8:
