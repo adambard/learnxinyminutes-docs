@@ -11,7 +11,7 @@ translators:
 # Cálculo Lambda
 
 Cálculo Lambda (Cálculo-λ), originalmente creado por 
-[Alonzo Church](https://en.wikipedia.org/wiki/Alonzo_Church),
+[Alonzo Church](https://es.wikipedia.org/wiki/Alonzo_Church),
 es el lenguaje de programación más pequeño del mundo.
 A pesar de no tener números, cadenas, valores booleanos o cualquier 
 tipo de datos no funcional, el cálculo lambda se puede utilizar para 
@@ -23,7 +23,7 @@ El cálculo lambda se compone de 3 elementos: **variables**, **funciones** y
 | Nombre        | Sintaxis                             | Ejemplo   | Explicación                                   |
 |-------------|------------------------------------|-----------|-----------------------------------------------|
 | Variable    | `<nombre>`                           | `x`       | una variable llamada "x"                          |
-| Función    | `λ<parametro>.<cuerpo>`             | `λx.x`    | una función con parametro "x" y cuerpo "x"    |
+| Función    | `λ<parámetro>.<cuerpo>`             | `λx.x`    | una función con parámetro "x" y cuerpo "x"    |
 | Aplicación | `<función><variable o función>` | `(λx.x)a` | llamando a la función "λx.x" con el argumento "a" |
 
 La función más básica es la función de identidad: `λx.x` que es equivalente a
@@ -39,7 +39,7 @@ cuerpo de la función.
 ## Evaluación:
 
 Evaluación se realiza a través de
-[β-Reduction](https://en.wikipedia.org/wiki/Lambda_calculus#Beta_reduction),
+[β-Reduction](https://es.wikipedia.org/wiki/C%C3%A1lculo_lambda#%CE%B2-reducci%C3%B3n),
 que es, esencialmente, sustitución de ámbito léxico.
 
 Al evaluar la expresión `(λx.x)a`, reemplazamos todas las ocurrencias de "x" 
@@ -54,7 +54,7 @@ Incluso puedes crear funciones de orden superior:
 
 Aunque el cálculo lambda tradicionalmente solo admite funciones 
 de un solo parámetro, podemos crear funciones multiparamétricas usando 
-una técnica llamada [currying](https://en.wikipedia.org/wiki/Currying).
+una técnica llamada [Currificación](https://es.wikipedia.org/wiki/Currificación).
 
 - `(λx.λy.λz.xyz)` es equivalente a `f(x, y, z) = ((x y) z)`
 
@@ -90,7 +90,7 @@ Usando `IF` podemos definir los operadores lógicos booleanos básicos:
 
 *Note: `IF a b c` es esencialmente diciendo: `IF((a b) c)`*
 
-## Numeros:
+## Números:
 
 Aunque no hay números en el cálculo lambda, podemos codificar números usando 
 [Númeral de Church](https://en.wikipedia.org/wiki/Church_encoding).
@@ -147,7 +147,7 @@ Para la parte interior `λx.f(f x)`:
 = S (K f)  (S (K f) I)         (case 2, 1)
 ```
 
-Asi que:
+Así que:
 ```
   2
 = λf.λx.f(f x)
@@ -210,6 +210,6 @@ S = ι(K) = ι(ι(ι(ιι)))
 
 1. [A Tutorial Introduction to the Lambda Calculus](http://www.inf.fu-berlin.de/lehre/WS03/alpi/lambda.pdf)
 2. [Cornell CS 312 Recitation 26: The Lambda Calculus](http://www.cs.cornell.edu/courses/cs3110/2008fa/recitations/rec26.html)
-3. [Wikipedia - Lambda Calculus](https://en.wikipedia.org/wiki/Lambda_calculus)
+3. [Wikipedia - Lambda Calculus](https://es.wikipedia.org/wiki/Cálculo_lambda)
 4. [Wikipedia - SKI combinator calculus](https://en.wikipedia.org/wiki/SKI_combinator_calculus)
 5. [Wikipedia - Iota and Jot](https://en.wikipedia.org/wiki/Iota_and_Jot)
