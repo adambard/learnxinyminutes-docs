@@ -8,13 +8,6 @@ translators:
 lang: pt-br
 ---
 
-TypeScript is a language that aims at easing development of large scale applications written in JavaScript.
-TypeScript adds common concepts such as classes, modules, interfaces, generics and (optional) static typing to JavaScript.
-It is a superset of JavaScript: all JavaScript code is valid TypeScript code so it can be added seamlessly to any project. The TypeScript compiler emits JavaScript.
-
-This article will focus only on TypeScript extra syntax, as opposed to [JavaScript] (../javascript/).
-
-
 Typescript é uma linguagem que visa facilitar o desenvolvimento de aplicações em grande escala escritos em JavaScript.
 Typescript acrescenta conceitos comuns como classes, módulos, interfaces, genéricos e (opcional) tipagem estática para JavaScript.
 É um super conjunto de JavaScript: todo o código JavaScript é o código do texto dactilografado válido para que possa ser adicionados diretamente a qualquer projeto. O compilador emite typescript JavaScript.
