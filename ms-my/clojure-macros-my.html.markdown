@@ -144,11 +144,8 @@ Biasakan diri dengan Clojure terlebih dahulu. Pastikan anda memahami semuanya di
 
 ### Bacaaan Lanjut
 
-Writing Macros daripada [Clojure for the Brave and True](http://www.braveclojure.com/)
-[http://www.braveclojure.com/writing-macros/](http://www.braveclojure.com/writing-macros/)
+[Writing Macros daripada](http://www.braveclojure.com/writing-macros/)
 
-Dokumen rasmi
-[http://clojure.org/macros](http://clojure.org/macros)
+[Dokumen rasmi](http://clojure.org/macros)
 
-Bila perlu guna macro?
-[http://dunsmor.com/lisp/onlisp/onlisp_12.html](http://dunsmor.com/lisp/onlisp/onlisp_12.html)
+[Bila perlu guna macro?](https://lispcast.com/when-to-use-a-macro/)
