@@ -336,28 +336,28 @@ on a new line! ""Wow!"", the masses cried";
         }
 
         ///////////////////////////////////////
-        // CLASSES - see definitions at end of file
+        // CLASSES - Veja definições no fim do arquivo
         ///////////////////////////////////////
         public static void Classes()
         {
-            // See Declaration of objects at end of file
+            // Veja Declaração de objetos no fim do arquivo
 
-            // Use new to instantiate a class
+            // Use new para instanciar uma classe
             Bicycle trek = new Bicycle();
 
-            // Call object methods
-            trek.SpeedUp(3); // You should always use setter and getter methods
+            // Chame métodos do objeto
+            trek.SpeedUp(3); // Você deve sempre usar métodos setter e getter
             trek.Cadence = 100;
 
-            // ToString is a convention to display the value of this Object.
+            // ToString é uma convenção para exibir o valor desse Objeto.
             Console.WriteLine("trek info: " + trek.Info());
 
-            // Instantiate a new Penny Farthing
+            // Instancie um novo Penny Farthing
             PennyFarthing funbike = new PennyFarthing(1, 10);
             Console.WriteLine("funbike info: " + funbike.Info());
 
             Console.Read();
-        } // End main method
+        } // Fim do método principal
 
         // CONSOLE ENTRY A console application must have a main method as an entry point
         public static void Main(string[] args)
