@@ -59,7 +59,7 @@ namespace Learning.CSharp
             Console.Write("World");
 
             ///////////////////////////////////////////////////
-            // Tpos e Variáveis
+            // Tipos e Variáveis
             //
             // Declare uma variável usando <tipo> <nome>
             ///////////////////////////////////////////////////
@@ -95,8 +95,9 @@ namespace Learning.CSharp
             float fooFloat = 234.5f; // Precision: 7 digits
             // f is used to denote that this variable value is of type float
 
-            // Decimal - a 128-bits data type, with more precision than other floating-point types,
-            // suited for financial and monetary calculations
+            // Decimal - um tipo de dados de 128 bits, com mais precisão do que outros tipos de ponto flutuante,
+            // adequado para cálculos financeiros e monetários
+
             decimal fooDecimal = 150.3m;
 
             // Boolean - true & false
