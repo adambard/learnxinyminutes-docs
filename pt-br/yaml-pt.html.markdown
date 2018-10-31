@@ -11,8 +11,6 @@ lang: pt-br
 YAML é uma linguagem de serialização de dados projetado para ser diretamente gravável e
 legível por seres humanos.
 
-It's a strict superset of JSON, with the addition of syntactically significant newlines and indentation, like Python. Unlike Python, however, YAML doesn't allow literal tab characters for indentation.
-
 É um superconjunto de JSON, com a adição de indentação e quebras de linhas sintaticamente significativas, como Python. Ao contrário de Python, entretanto, YAML não permite o caracter literal tab para identação.
 
 ```yaml
