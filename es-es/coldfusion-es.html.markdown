@@ -5,7 +5,7 @@ contributors:
     - ["Wayne Boka", "http://wboka.github.io"]
     - ["Kevin Morris", "https://twitter.com/kevinmorris"]
 translators:
-		- ["Ivan Alburquerque", "https://github.com/AlburIvan"]
+    - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
 lang: es-es
 ---
 
