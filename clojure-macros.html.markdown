@@ -146,4 +146,4 @@ You'll want to be familiar with Clojure. Make sure you understand everything in
 
 [Official docs](http://clojure.org/macros)
 
-[When to use macros?](http://dunsmor.com/lisp/onlisp/onlisp_12.html)
+[When to use macros?](https://lispcast.com/when-to-use-a-macro/)
