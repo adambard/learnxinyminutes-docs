@@ -2,8 +2,8 @@
 language: SQL
 filename: learnsql.sql
 contributors:
-- ["Bob DuCharme", "http://bobdc.com/"]
-lang: en-en
+  - ["Bob DuCharme", "http://bobdc.com/"]
+https://github.com/adambard/learnxinyminutes-docs
 ---
 
 Structured Query Language (SQL) is an ISO standard language for creating and working with databases stored in a set of tables. Implementations usually add their own extensions to the language; [Comparison of different SQL implementations](http://troels.arvin.dk/db/rdbms/) is a good reference on product differences.
@@ -13,7 +13,7 @@ Implementations typically provide a command line prompt where you can enter the 
 Several of these sample commands assume that the [MySQL employee sample database](https://dev.mysql.com/doc/employee/en/) available on [github](https://github.com/datacharmer/test_db) has already been loaded. The github files are scripts of commands, similar to the relevant commands below, that create and populate tables of data about a fictional company’s employees. The syntax for running these scripts will depend on the SQL implementation you are using. A utility that you run from the operating system prompt is typical. 
 
 
-```
+```sql
 # Comments start with a pound sign. End each command with a semicolon.
 
 # SQL is not case-sensitive about keywords. The sample commands here
