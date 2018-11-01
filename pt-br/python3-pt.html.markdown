@@ -105,9 +105,9 @@ False or True   # => True
 1 < 2 < 3  # => True
 2 < 3 < 2  # => False
 
-# (operador 'is' e operador '==') is verifica se duas referenciam um
-# mesmo objeto, mas == verifica se as variáveis apontam para o
-# mesmo valor.
+# (operador 'is' e operador '==') is verifica se duas variáveis
+# referenciam um mesmo objeto, mas == verifica se as variáveis
+# apontam para o mesmo valor.
 a = [1, 2, 3, 4]  # Referência a uma nova lista, [1, 2, 3, 4]
 b = a             # b referencia o que está referenciado por a
 b is a            # => True, a e b referenciam o mesmo objeto
