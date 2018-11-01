@@ -837,14 +837,6 @@ try {
     // Handle exception
 }
 
-// When using try catch blocks in a namespaced environment use the following
-
-try {
-    // Do something
-} catch (Exception $e) {
-    // Handle exception
-}
-
 // Custom exceptions
 
 class MyException extends Exception {}
