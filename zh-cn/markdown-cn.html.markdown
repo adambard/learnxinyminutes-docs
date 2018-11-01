@@ -242,19 +242,21 @@ Markdown 最棒的地方就是便捷的书写链接。把链接文字放在中�
 
 Markdown同样支持引用形式的链接
 
-<pre><code class="highlight">&#x5b;<span class="nv">点此链接</span>][<span class="ss">link1</span>] 以获取更多信息！
-&#x5b;<span class="nv">看一看这个链接</span>][<span class="ss">foobar</span>] 如果你愿意的话。
-
-&#x5b;<span class="nv">link1</span>]: <span class="sx">http://test.com/</span> <span class="nn">"Cool!"</span>
-&#x5b;<span class="nv">foobar</span>]: <span class="sx">http://foobar.biz/</span> <span class="nn">"Alright!"</span></code></pre>
+```md
+[点此链接][link1] 以获取更多信息！
+[看一看这个链接][foobar] 如果你愿意的话。
+[link1]: http://test.com/
+[foobar]: http://foobar.biz/
+```
 
 对于引用形式，链接的标题可以处于单引号中，括弧中或是忽略。引用名可以在文档的任何地方，并且可以随意命名，只要名称不重复。
 
 “隐含式命名” 的功能可以让链接文字作为引用名
 
-<pre><code class="highlight">&#x5b;<span class="nv">This</span>][] is a link.
-
-&#x5b;<span class="nv">this</span>]: <span class="sx">http://thisisalink.com/</span></code></pre>
+```md
+[This][] is a link.
+[This]: http://thisisalink.com/
+```
 
 但这并不常用
 
@@ -267,9 +269,10 @@ Markdown同样支持引用形式的链接
 
 引用形式也同样起作用
 
-<pre><code class="highlight">!&#x5b;<span class="nv">这是alt</span>][<span class="ss">myimage</span>]
-
-&#x5b;<span class="nv">myimage</span>]: <span class="sx">relative/urls/cool/image.jpg</span> <span class="nn">"在此输入标题"</span></code></pre>
+```md
+![这是alt][myimage]
+[myimage]: relative/urls/cool/image.jpg
+```
 
 ## 杂项
 ### 自动链接
