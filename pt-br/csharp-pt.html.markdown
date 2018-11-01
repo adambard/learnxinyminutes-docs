@@ -97,7 +97,6 @@ namespace Learning.CSharp
 
             // Decimal - um tipo de dados de 128 bits, com mais precisão do que outros tipos de ponto flutuante,
             // adequado para cálculos financeiros e monetários
-
             decimal fooDecimal = 150.3m;
 
             // Boolean - true & false
