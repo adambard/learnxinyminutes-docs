@@ -789,7 +789,7 @@ install.packages("ggplot2")
 require(ggplot2)
 ?ggplot2
 pp <- ggplot(students, aes(x=house))
-pp + geom_histogram()
+pp + geom_bar()
 ll <- as.data.table(list1)
 pp <- ggplot(ll, aes(x=time,price))
 pp + geom_point()
